@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-04-12"
+lastupdated: "2017-04-06"
 ---
 
 {:new_window: target="_blank"}
@@ -21,7 +21,7 @@ There are several mechanisms available to obtain support and troubleshoot proble
 
 ## Non-defect issues
 
-1. The most expedient method is to navigate to the **Support** tab from your **Dashboard Monitor** as shown in the Figure 1 for version 0.6, or [the **Support** panel](v10_dashboard.html#dashboard_support) as in version 1.0.  
+1. The most expedient method is to navigate to the **Support** tab  from your **Dashboard Monitor** as shown in the Figure 1 for version 0.6, or [the **Support** panel](dashboard_support.html) as in version 1.0.  
 
 ![](images/IBC_BMX_Monitor_Support.png "Support tab")
 *Figure 1. Support tab*
