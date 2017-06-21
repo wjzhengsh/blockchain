@@ -98,7 +98,7 @@ Bluemix インスタンスで実行している Hyperledger Fabric のバージ�
 チェーンコードのバージョンは、チェーンコードのデプロイ先の Hyperledger Fabric のバージョンに適合していなければなりません。例えば、図 1 のネットワークでは、Hyperledger Fabric v0.6 プレビューのコードベースを複製する必要があります。いずれかのバージョンの Fabric コードベースを `$GOPATH/hyperledger/fabric` のパスに格納しておかなければなりません。
 
 - [v0.5 Hyperledger Fabric](https://github.com/hyperledger-archives/fabric/tree/v0.5-developer-preview)
-- [v0.6 HHyperledger Fabric](https://gerrit.hyperledger.org/r/gitweb?p=fabric.git;a=shortlog;h=refs/heads/v0.6)
+- [v0.6 Hyperledger Fabric](https://gerrit.hyperledger.org/r/gitweb?p=fabric.git;a=shortlog;h=refs/heads/v0.6)
 
 Hyperledger Fabric v0.5 コードベースをインストールするには、以下の git clone コマンドを使用します。
 

@@ -158,7 +158,7 @@ pour chaque version, doit être chemin dans votre chemin
 - [v0.5
 Hyperledger Fabric](https://github.com/hyperledger-archives/fabric/tree/v0.5-developer-preview)
 - [v0.6
-HHyperledger Fabric](https://gerrit.hyperledger.org/r/gitweb?p=fabric.git;a=shortlog;h=refs/heads/v0.6)
+Hyperledger Fabric](https://gerrit.hyperledger.org/r/gitweb?p=fabric.git;a=shortlog;h=refs/heads/v0.6)
 
 Pour installer la codebase Hyperledger Fabric v0.5,
 utilisez la commande git clone suivante :

@@ -98,7 +98,7 @@ Blockchain on Bluemix 支援兩種 Hyperledger Fabric 版本：0.5 版與 0.6 �
 您的 chaincode 版本必須與將部署您的 chaincode 的 Hyperledger Fabric 版本匹配。例如，圖 1 中描述的網路需要複製 Hyperledger Fabric 0.6 版預覽程式碼庫。任一版本的網狀架構程式碼庫均須儲存在 `$GOPATH/hyperledger/fabric` 路徑中：
 
 - [0.5 版 Hyperledger Fabric](https://github.com/hyperledger-archives/fabric/tree/v0.5-developer-preview)
-- [0.6 版 HHyperledger Fabric](https://gerrit.hyperledger.org/r/gitweb?p=fabric.git;a=shortlog;h=refs/heads/v0.6)
+- [0.6 版 Hyperledger Fabric](https://gerrit.hyperledger.org/r/gitweb?p=fabric.git;a=shortlog;h=refs/heads/v0.6)
 
 若要安裝 Hyperledger Fabric 0.5 版程式碼庫，請使用下列 git clone 指令：
 
