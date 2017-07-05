@@ -99,7 +99,7 @@ Figura 1. Versão do Hyperledger Fabric
 A versão do seu chaincode deve se alinhar à versão do Hyperledger Fabric à qual você implementará seu chaincode. Por exemplo, a rede apresentada na Figura 1 requer a clonagem do código base do Hyperledger Fabric v0.6-preview. O código base da malha, para qualquer versão, deve ser armazenado no caminho `$GOPATH/hyperledger/fabric`:
 
 - [v0.5 Hyperledger Fabric](https://github.com/hyperledger-archives/fabric/tree/v0.5-developer-preview)
-- [v0.6 HHyperledger Fabric](https://gerrit.hyperledger.org/r/gitweb?p=fabric.git;a=shortlog;h=refs/heads/v0.6)
+- [v0.6 Hyperledger Fabric](https://gerrit.hyperledger.org/r/gitweb?p=fabric.git;a=shortlog;h=refs/heads/v0.6)
 
 Para instalar o código base do Hyperledger Fabric v0.5, use o seguinte comando git clone:
 
