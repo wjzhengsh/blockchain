@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-03-16"
+lastupdated: "2017-07-26"
 
 ---
 
@@ -13,124 +13,42 @@ lastupdated: "2017-03-16"
 {:pre: .pre}
 
 
-# High Security Business Network (HSBN) vNext Beta
-{: #etn_overview}
+# Enterprise Plan
 
-The **HSBN vNext Beta** provides a turnkey solution for generating a blockchain business network.  The service quickly provisions you the network and offers a monitor for easy management and maintenance of your resources.  This straightforward process of forming and governing a network allows for more time and attention to be directed at developing and deploying business solutions. 
+The {{site.data.keyword.blockchainfull}} Platform on {{site.data.keyword.Bluemix}} supports the **Enterprise Plan** at GA level.
 {:shortdesc}
+  
+* The **Enterprise plan** is built on the Hyperledger Fabric V1.0 code base and leverages a modular architecture to deliver scalable and high performance functionalities. For more information about Hyperledger Fabric V1.0, see the [Hyperledger Fabric documentation ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/latest/){:new_window}.
+* The **Enterprise plan** provides a highly secure and single-tenant LinuxONE on z Systems environment to achieve next generation security, integrity, scalability, and performance. The **Enterprise plan** runs in IBM Secure Service Container that provides encapsulated operating system, encrypted appliance disks, tamper protection, protected memory, and strong LPAR isolation.
+* The **Enterprise plan** utilizes the IBM Bluemix platform for core networking services. You can quickly provision a fully-functional {{site.data.keyword.blockchain}} network that enables you to immediately run chaincode and applications without having to design and configure a private blockchain network. The plan also offers a network monitor for easy management and maintenance of your resources.  For more information, see [Network monitor](v10_dashboard.html).  
 
-**HSBN vNext Beta** networks run in a highly secured environment on LinuxONE, where the network resouces (peers, orderers, CA, source code, ledger)  are all contained within an **IBM Secure Service Container** (SSC). Features include:
-* Performance optimization for peer-to-peer communication
-* High availability and framework for scalability 
-* Hardware encryption, tamper-proof cryptographic keys and securely encrypted virtual machines
-* Secure boot with tamper-resistant software
-* No root access
-* FIPS compliance, high EAL protection, auditability, and crypto optimization
+For more information about {{site.data.keyword.blockchainfull_notm}} offerings, see [Blockchain offerings](index.html). 
 
-A subscription to the **HSNB vNext Beta** plan includes support for the following network resources:
+## Network resources
+New {{site.data.keyword.blockchainfull_notm}} on Bluemix subscribers can set up an enterprise business network with production-level security, performance, and availability. See [Getting Started with Enterprise Plan](get_start.html) to create your blockchain network with the {{site.data.keyword.blockchain}} Enterprise plan on {{site.data.keyword.Bluemix_notm}}. A subscription to the **Enterprise Plan** includes support for the following network resources:  
+* A member-specific certificate authority (CA)
+* Default governance policies
+* Up to six network members  
+* Three orderers and two intermediate CA servers 
+* Up to six peers for each member  
+* A crash fault tolerant ordering service
+* Up to 150 channels  
 
-- A crash fault tolerant ordering service
-- 2 peers per member
-- Up to 5 additional network members
-- 5 instantiated chaincodes per member
-- A member-specific Certificate Authority
-- Up to 100 channels
-- Default governance policies (all members are admins and can issue invitations to join the network)
+## Key features
+* The **Enterprise Plan** provides a secure and permissioned blockchain network upon which authenticated members can easily define assets and create the business solutions for modifying and exchanging them.  The **Enterprise Plan** moves beyond a single sandbox environment to deliver a distributed blockchain network with resource groups spanning across various Bluemix organizations.  **Figure 1** depicts an example of a deployed blockchain network consisting of four Bluemix organizations with each owning two peers, a Certificate Authority responsible for distributing cryptographic identity material, and an Ordering Service that defines policies and network participants.  The blue channel contains all four network organizations, whereas the yellow channel is restricted to organizations 2, 3 and 4:
+  ![Blockchain Network](images/blockchain_network.png "Example blockchain network")  
+  *Figure 1. An example blockchain network consisting of four organizations leveraging channels to isolate data*
+  
+* Peers are split into two distinct runtimes, that is, **endorsing** and **committing**, and responsibility for transaction ordering is handled by a separate component. Concerns about privacy and confidentiality are addressed through channels that provide data segregation. Ledgers exist on a per-channel basis so networks can be customized to support different combinations of bilateral, multilateral or even public transactions.  
+  A channel is a private subnet of communication between two or more specific network members that conducts private and confidential transactions. Imagine you are on a network with six members. You might have a consortium-type channel where all six members transact and maintain a ledger for a common asset. These transactions and the state of the involved assets would be available to all members. However, for certain bilateral or multilateral transactions that require privacy from the network at large, channels can be created to conceal this data.  
+  There are also methods for channel-to-channel interaction in the case of more complex business scenarios. An application can be coded to query for the values of a key or composite key on Channel A and then use the returned values to factor into a transaction on Channel B. For more information on channels, policies, and cross-channel transactions, see [Hyperledger Fabric documentation ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/latest/arch-deep-dive.html){:new_window}.
+  
+* The **high availability** for the integral components of the network, which include peers, ordering service, Certificate Authority, and chaincode, eliminates the crippling effects that can arise from single points of failure.  A built-in dashboard monitor allows for easy management of these components and provides a powerful mechanism to visualize assets and smart contracts.  
 
-See the [IBM Secure Service Container](etn_ssc.html) section for more details on environment security features.
+* The **checks** and **balances** that occur throughout the lifecycle of a transaction ensure consistent and integrite results; and ledgers constantly stay synchronized through an implementation of the well-known **gossip data dissemination protocol**.  Identity and access control are easily enforced through sign/verify operations that occur perpetually throughout the network.  For more information, see [Transaction flow](reference/v10_fabric.html#transaction-flow).
 
-## Using the HSBN vNext Beta plan
-{: #use_hsbn}
+* **Governance tooling** enables members to administer and manage the critical business rules for their network.  For example, you can implement a policy defining how many members of a network must agree in order for a new member to join.  Or you can define that an asset  requires endorsement from every participant before a modification to ledger takes place.  Rules of governance are a fundamental necessity for any type of business network and they can oftentimes be extremely elaborate.  Governance tooling, for example, policy editors, greatly simplifies this process.
 
-### Plan Access
+* The service runs in a **highly-secure and isolated** environment with no external access, including root access, to network components.  Data is encrypted in flight and at rest, and support available for hardware security modules allows for digital keys to be protected in accordance with industry regulations.  **Dedicated compute** is provided for network interactions, thereby ensuring high performance and data protection.  With the implementation of advanced cryptography, hashing, sign/verify operations, and component-to-component communications are accelerated.
 
-The IBM Blockchain on Bluemix **HSBN vNext Beta** plan is granted by request. When you select HSBN vNext Beta from the Bluemix Catalog and create a service instance, your request to participate in the latest Beta release is sent to the IBM Blockchain team. Once approved, you will receive an email invitation to participate in the plan; follow the instructions to launch the HSBN vNext Beta plan dashboard.
-
-On the HSBN vNext Beta dashboard, select from the three options:
-1. **Network Quick Start**: Create an HSBN vNext Beta network, and invite other Bluemix Orgs to join.
-2. **Join Network**: View invitations for you to join other HSBN vNext Beta networks.
-3. **Monitor Network**: Manage your network resources - peers, channels and chaincode.
-
-<!-- to do - the rest of this page final edit -->
-
-### Sample Scenario
-
-Let's assume you are a marble manufacturer, and want to leverage the IBM Blockchain network to transact with different vendors. How might this work?  You could create a consortium channel containing all network members and the current state of your publicly-available marble repository.  Any transactions occurring on this channel will be visible and query-able for all members on the network.  However, you could also create "sub-channels" or standalone channels in order to accomodate privacy and confidentiality concerns.  Say for instance that you are offering a certain vendor a better price if they meet a certain set of conditions.  This transaction can be conducted on the sub-channel, with the ensuing impact on your overall marble supply updated on the consortium channel.  Or perhaps you want to trade a specific class of marble that is not even available on the consortium channel.  You would simply transact with the necessary party on a standalone channel and the consortium channel's ledger would not be affected.  Channels provide a powerful mechanism for privacy because they all have unique ledgers, and only members that are subscribed and authenticated to a channel can interact with the ledger.  
-
-### Creating a network
-{: create_a_network}
-The network consists of the following components:
-* An ordering service responsible for authenticating transactions and ordering them into blocks for channels' ledgers.
-* A member-specific Certificate Authority(CA) responsible for issuing identity material for each member's network components.
-* Member-specifc peers that execute and commit transactions, and maintain a channel ledger.
-
-On the dashboard of blockchain service, click **Network Quick Start** button and follow the wizard:
-1. On the **Name your Network** page, enter the blockchain network name and the company name that will represent your member identity and then click **Next**;
-2. On the next **Invite members** page, specify the relevant organizational information for the participants you wish to invite. Each will be provisioned a peer and CA upon joining the network, and all network members will maintain a ledger for any channel to which they have joined.  <br>
-   **Note:** You can invite at most 5 members into a network.
-3. On the **Define Governance Rules** page, you will see the network policy settings. By default, anyone in the network can create new channels and invite members.  
-4. On the **Generate Certificate** page, use the **Auto generated** option to create the certificates for your Org's network components.  These x509 certificates are not exposed to the user.  
-5. Finally, on the **Review summary** page, review the configuration for your network and click **Done** to bootstrap your network.
-
-This process completes the initial setup of your network.
-
-### Joining a network
-{: invite_members}
-
-After the network is initialized, your invitees will receive an email indicating the network you have been invited to join and instructions for joining.  Invitees will see the **Pending invites** button enabled on the HSBN vNext plan dashboard. Click the button to join the network:
-
-1. Select the network on the list and click **Join Network**.
-2. On the next screen, review the governance rules and click **Next**.
-3. On the **Generate Certificate** page, enter your Organization Name and then select the **Auto generated** option.
-4. On the **Review Network Summary** page, review the settings of the network and click **Done**. The settings also show the **Invited Participants** who have received invitations to join the network.
-
-See the [Monitor](v10_dashboard.html) for instructions on creating channels and installing/instantiating chaincode.
-
-<!-- I think all of this is adequately covered in the Monitor Section; and we already tell the story in the Sample Scenario topic above -->
-
-
-<!-- From Jeff: Agreed. Commenting out all the rest sections on the page.
-
-
-### Creating new channels
-{: prepare_private_channels}
-
-With the latest HSBN vNext plan, you can create a private channel, install a customized chaincode, complete the trade, and update the inventory number upon the other parties in the network make a query or propose a new transaction.
-
-1. On the HSBN vNext plan dashboard, select **Enter Monitor**.
-2. Select **Channels**, and click **New Channel**.
-3. On the **Create a Channel** page, enter the channel name and choose the company that you want to make trade with by adding members. Then, click **Create** to create another private consortium channel.
-4. Select **Chaincode** after you click the **Enter Monitor** button on the dashboard. You can view the chaincode that are already installed on your peer, or install a new chaincode to the peer.<br>
-  **Note:** You can install at most 5 chaincode apps per peer.
-5. Click **Install Chaincode** to install the smart contract to the peer. A smart contract, also known as chaincode, is the programmatic code installed and instantiated onto a channel’s peers by an appropriately authorized member. End users then invoke chaincode through a client-side application that interfaces with a network peer. Chaincode runs network transactions, which if validated, are appended to the shared ledger and modify world state. Chaincode can be developed for business contracts, asset definitions, and collectively-managed decentralized applications. You can download [this sample code](https://github.com/hyperledger/fabric/blob/master/examples/chaincode/go/marbles02/marbles_chaincode.go){: new_window} to your local environment for testing.
-
-**Note:** After you install the chaincode onto the peer, you must instantiate the chaincode by providing the initial arguments. In the case of the Marbles sample chaincode, you can input `marble1, blue, 35` in a comma separated list to indicate that you have 35 blue marble1 for trade.
-
-
-### Commencing transactions
-{: commence_txs}
-
-To make transactions within your network, the trading parties must:
-* Join the same channel within the network.
-* Install the same version of the chaincode onto the peer that represents each organization.
-
-
-Each successful transaction results in a new block appended to the blockchain, and the ledger in the levelDB updated with the new state. Other members in the network can query the ledger or the transaction history to decide the next transaction.
-
-
-
-### Monitoring your network
-{: monitor_network}
-
-You can perform the following tasks after you click the **Enter Monitor** button on the dashboard:
-* Create new channels and invite other members to join your channels to trade privately.
-* Install new chaincodes to your peer to initiate or participate into new trade.
-* View the changes of blocks, transactions, chaincode invocations.
-* View the log on your peer.
-* View the information of resources that your organization owns.
-* Export a JSON file containing the low-level networking information for each of your components (such as enrollID/enrollSecret for your CA).  
-
-See the [HSBN vNext Beta dashboard](v10_dashboard.md) for more information about the usage of each panel on the dashboard. 
-
-
--->
+If you are ready to use the **Enterprise Plan** on {{site.data.keyword.Bluemix_notm}}, see [Getting started with Enterprise Plan](get_start.html).  
