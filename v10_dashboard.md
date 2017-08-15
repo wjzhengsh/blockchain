@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-04-12"
+lastupdated: "2017-08-15"
 ---
 
 {:new_window: target="_blank"}
@@ -11,179 +11,152 @@ lastupdated: "2017-04-12"
 {:screen: .screen}
 {:pre: .pre}
 
-# Monitor
+# Operate the network
 {: #v10_dashboard}
 
 
-The HSBN vNext Beta monitor provides an overview of your blockchain environment, including performance data, deployed chaincodes and network resources. Use the monitor to manage your network components.
+The Network Monitor provides an overview of your blockchain environment, including network components, members, joined channels, performance data, and deployed chaincodes.
 {:shortdesc}
 
-The monitor exposes four distinct screens:
-* A "Resouces" screen containing data about Certificate Authority, peers and ordering nodes.
-* A "Channels" screen for creating new channels and viewing ledger, chaincode and membership info for existing channels.
-* A "Chaincode" screen for easy installation and instantiation of chaincodes across your network.
-* A "Support" screen with links and suggestions for obtaining help and debugging problems.
+The Network Monitor exposes the following screens:
+* In the "Overview" screen, you can view network service credentials, component status information, and add peers.
+* In the "Members" screen, you can manage network members and certificates.
+* In the "Channels" screen, you can create new channels and view information about existing channels.
+* In the "Chaincode" screen, you can install and instantiate chaincodes on your peers.
+* In the "Notifications" screen, you can handle pending approvals and view completed approvals.
+* In the "Support" screen, you can find links of reference resources and see new and changed functions in each release.
 
-## Resources
-{: #dashboard_resources}
 
-This screen contains important network details and real-time status information for your blockchain components.  These 
-components include your peer, CA, and ordering node.  Each component has four distinct 
-headers - **Name**, **URL**, **Status** and **Actions**. 
-{:shortdesc}
+## Overview
 
-**Figure 1** shows the initial dashboard screen displaying your network components:
+The "Overview" screen displays real-time status information of your blockchain components including the orderer, CA, and peer nodes. Each component is displayed under four distinct headers: **Type**, **Name**, **Status**, and **Actions**. During the creation of your blockchain network, three orderer nodes and two CA nodes are automatically created. 
 
-![Blockchain Network](images/myresources.png "My Resources")
-*Figure 1. My Resources*
+**Figure 1** shows the "Overview" screen:
 
-#### Name
+![Overview screen](images/myresources.png "Network overview")
+*Figure 1. Network overview*
 
-The "Name" header displays the formal system-level name for your component.  We see that our components are 
-named `order01`, `peer01` and `ca01`.  
+- Node actions
 
-#### URL
+  The **Actions** header of the table provides buttons to start or stop your components. You can also start or stop a group of nodes by selecting multiple nodes and then clicking the **Start Selected** or **Stop Selected** button. The **Start Selected** or **Stop Selected** button appears on top of the table when you select one or more nodes.
 
-The "URL" header displays the API endpoint for each component.  These endpoints are required in order to 
-target specific network components from a client-side application, and their definitions will typically 
-live in a JSON-modeled configuration file that accompanies the app.  If you are customizing an application 
-that requires endorsement from peers that are not part of your Org, then you will need to retrieve these 
-IP addresses from the relevant admin(s) in an out-of-band operation.  Clients must be able to connect to 
-any peers from which they need a response.
+  You can also check component logs by clicking **View Logs** from the dropdown list under the **Actions** header. The logs expose the remote procedure calls occurring between the various network components and are useful for debugging and troubleshooting. For example, experiment by stopping a peer and attempting to target it with a transaction; you will see gRPC connectivity errors. When you restart the peer and attempt the transaction again you will see a successful connection. You can also leave a peer down for an extended period of time as your channel(s) continue to transact. When the peer is brought back up you will notice a synchronization of the ledger through gossip protocol. As soon as the peer has fully synchronized the ledger you can perform normal invokes and queries.  
+- Service Credentials  
+  You can view the JSON file about low level network information of each component by clicking the **Service Credentials** button at the top right of the "Resources" tab. This is all the configuration info that you will need for an application. Note, however, that this file only contains your peer IP. If you need to target additional peers, you'll need to obtain their endpoints.   
+  The header containing "url" displays the API endpoint of each component. These endpoints are required in order to target specific network components from a client-side application and their definitions will typically live in a JSON-modeled configuration file that accompanies the app. If you are customizing an application that requires endorsement from peers that are not part of your organization, you'll need to retrieve the IP addresses of those peers from the relevant operators in an out-of-band operation. Clients must be able to connect to any peers from which they need a response.  
+- Add peers  
+  Click the **Add Peers** button at the top right to add peer nodes to your network. Each member can add up to six peers in a network. You can add peer nodes for the first time when you create or join a network or later in the Network Monitor.   
+  In the pop-up "Add Peers" panel, select the number and size of peer nodes you want to add. A peer node size can be **Small**, **Medium**, or **Large** depending on the expected transaction workload.
+  
+### Peer sizing and pricing
+An understanding of the Hyperledger Fabric architecture and transaction flow is necessary when deciding upon peer sizing.  Peers are the central component involved with the execution, validation, and committment of transactions. As such, the expected workload of your peers needs to be determined in order to choose the correct size. It should also be noted that as channels grow and additional smart contracts are instantiated, the processing obligations of the peer are magnified.  Therefore, take into account your estimated throughput and the size of both deployed chaincodes and the data structures which accompany them.
 
-#### Status
+Peers are defined by memory, disk space (storage), and the number of channels allowed. Below you will find guidance on the different offerings and peer sizes available for the Enterprise Plan:
 
-The "Status" header displays the current network state of each component (e.g. Running or Stopped).
+| Peer Size      | Monthly Price USD      | Memory (GB)  | Disk (GB) | Expected Performance
+| ------------------------- |--------------------------|-----|-----|------|
+| **Small** | $$$ | 2 | xx | Link out to small peer profile |
+| **Medium** | $$$ | ?? | xx | Link out to medium peer profile |
+| **Large** | $$$ | ?? | xx | Link out to large peer profile |
 
-#### Actions
+### Peer performance and benchmarking
 
-The "Actions" header provides buttons to start or stop your components.  It also contains a dropdown 
-box that links out to your component logs.  The logs expose the remote procedure calls occurring 
-between the various network components and prove useful for debugging and troubleshooting.  Experiment 
-by stopping a peer and attempting to target it with a transaction; you will see gRPC connectivity errors.  Now restart the peer and attempt the transaction again; you will see a successful connection.  You can 
-also leave a peer down for an extended period of time as your channel(s) continue to transact.  When the 
-peer is brought back up you will notice a synchronization of the ledger through gossip protocol.  Once 
-the peer has fully synchronized the ledger, you are able to perform normal invokes and queries.  
+Use the below tables to see performance and benchmarking metrics for the available peer sizes and profiles:
 
-#### Service Credentials
+* **Enteprise Small Peer Workload Profile and Benchmark Table**
 
-At the top right of this screen you will notice a Service Credentials tab.  Click this tab to expose a 
-JSON file containing the low-level networking information for each of your components 
-(e.g. enrollID/enrollSecret for your CA).  This is the entirety of the configuration info that you will 
-need for an application.  Note, however, that this file only contains your peer IP.  If you need to target 
-additional peers then you will need to obtain these endpoints.   
+| Profile | Orgs | Tx Types | Endorsing Peers | Payload Size | Channels | Tx Proposals/sec | Validated Tx/sec |
+| ---- |----|----|----|----|----|----|----|
+| **S1** | 3 | Update | 3/3 | 512 MB | 1 | 12 | xx-xx |
+| **S2** | 3 | Update | 3/3 | 512 MB | 8 | 12 | xx-xx |
+
+
+## Members
+
+The "Members" screen contains two tabs to display network member information in the "Members" tab and certificate information in the "Certificates" tab.
+
+**Figure 2** shows the initial "Members" screen displaying your network members in the "Members" tab:
+
+![Members tab in Members screen](images/monitor_members.png "Network members")
+*Figure 2. Network members*
+
+Besides the members that you invite when you create the network, you can invite other members in the "Members" tab. To invite a member to your network, enter the institution name and operator's email address and click **Add Member**. A network can have a total of 15 members (including the network initiator). To remove a member from your network, click the "remove" symbol at the end of the member row.
+
+**Figure 3** shows the initial "Members" screen displaying member certificates in the "Certificates" tab:
+
+![Certificates tab in Members screen](images/monitor_certificates.png "Certificates")
+*Figure 3. Certificates*
+
+Operators can manage the certificates for the members in the same institution in the "Certificates" tab. Click **Add Certificate** to open the "Add Certificate" panel. Give a name to your certificate, paste your client-side certificates in PEM format to the "Key" field, and click **Submit**. You need to restart your peers before the client-side certificates can take effect.
+
+For information about generating your cerficate key, see [Generating the client-side certificates](v10_application.html#generating-the-client-side-certificates).
 
 ## Channels
-{: #dashboard_channels}
 
-Channels are an incredibly powerful mechanism for partitioning and isolating data, and they provide the primary foundation 
-for data privacy.  Every network must have at least one channel in order for transactions to take place.  
-{:shortdesc}
+You can segregate your network into channels where each channel represents a subset of members that are authorized to see the data for the chaincodes instantiated on that channel. Every network must have at least one channel for transactions to take place. Each channel has a unique ledger and users must be properly authenticated to perform read/write operations against this ledger. If you're not on a channel, you can't see any data.
 
-You segregate your network into channels, where each channel represents a subset of members that are 
-authorized to see the data for the chaincodes instantiated on that channel; if you're not on a channel, you can't see 
-the data.  Each channel has a unique ledger, and users must be properly authenticated in order to perform read/write operations against this data.  Additionally, access control lists can be implemented to restrict certain members and users (e.g. Member A restricted to read-only).
+**Figure 4** shows the initial dashboard screen displaying an overview of all channels of your network:
 
-Imagine you are on a network with six members...  You might have a consortium-type channel where all six members transact 
-and maintain a ledger for a common asset.  These transactions and the state of the involved assets would be available to 
-all members.  However, for certain bilateral or multilateral transactions that require privacy from the network at large, 
-you can create separate channels and thereby conceal this data.  
+![Channels](images/channels.png "Channels")
+*Figure 4. Channels*
 
-There are also methods for channel to channel interaction in the case of more complex business scenarios.  An application 
-can be coded to query for the value(s) of a key or composite key on Channel A and then use the returned values to factor 
-into a transaction on Channel B.  See the [Hyperledger Fabric documentation](http://hyperledger-fabric.readthedocs.io/en/latest/arch-deep-dive.html) for more information on channels, policies and cross-channel transactions.
+You can create a channel to get a channel-specific ledger. For more information, see [Creating a channel](howto/create_channel.html).
 
-**Figure 2** shows the initial dashboard screen displaying an overview of all channels for your Bluemix Org:
+You can also select an existing channel to view more precise details about the channel, membership, and chaincode. For more information, see [Monitoring a network](howto/monitor_network.html).  
 
-![Blockchain Network](images/channels.png "Channels")
-*Figure 2. Channels*
-
-From this screen you can create a channel, or select a specific channel to view more precise details about ledger, 
-chaincodes and membership.  
-
-**Figure 3** shows the *Create a Channel* screen:
-
-![Blockchain Network](images/create_channel.png "Create Channel")
-*Figure 3. Create Channel*
-
-Choose a name reflective of the channel's business objective and invite any combination of your network members by selecting 
-their **Company Name** and then clicking the **Add Member** button.  
-
-**Figure 4** shows a specific channel's overview.  It displays ledger information such as block height 
-and transaction history:
-
-![Blockchain Network](images/channel_overview.png "Channel Overview")
-*Figure 4. Channel Overview*
-
-**Figure 5** shows a specific channel's transaction history.  It displays timestamps for each transaction and the 
-transaction's corresponding chaincode ID:
-
-![Blockchain Network](images/channel_transactions.png "Channel Transactions")
-*Figure 5. Channel Transactions*
-
-**Figure 6** shows a specific channel's membership registry.  It displays Company Names and the corresponding email for 
-a system administrator:
-
-![Blockchain Network](images/channel_members.png "Channel Members")
-*Figure 6. Channel Members*
-
-**Figure 7** shows a specific channel's chaincode registry.  It displays unique information for each chaincode, such 
-as chaincode ID, version, instantiation arguments and peers:  
-
-![Blockchain Network](images/channel_chaincode.png "Channel Chaincode")
-*Figure 7. Channel Chaincode*
-
-The **PEERS** value is simply the number of peers on the channel who have the chaincode container running.  See the 
-**Chaincode** section below for more information on instantiation.  
 
 ## Chaincode
-{: #dashboard_chaincode}
 
-Chaincode is software (currently written in Go or Java) that encapsulates the business logic and transactional instructions 
-for creating and modifying assets.  It runs in a docker container associated with any peer that needs to interact with it.  
-{:shortdesc}
+Chaincode defines the business policy and transactional instructions for creating and modifying assets.
 
-Chaincode is first installed on a peer's filesystem and then instantiated on a channel.  The instantiation step involves 
-the initialization of key value pairs and the deployment of the chaincode container.  Any peer wishing to interact with a 
-chaincode must have the source code installed on its filesystem and a running chaincode container.  However, if a peer 
-wishes to use the same chaincode application on multiple channels, it needs only a single instance of the container.  
+**Figure 5** shows the initial dashboard screen of chaincodes:
 
-**Figure 8** shows the chaincode installation overview:
+![Chaincodes](images/chaincode_install_overview.png "Chaincodes")
+*Figure 5. Chaincodes*
 
-![Blockchain Network](images/chaincode_install_overview.png "Chaincode Install")
-*Figure 8. Chaincode Install Overview*
+Chaincode is first installed on a peer's filesystem and then instantiated on a channel.  For more information, see [Installing and instantiating a chaincode](howto/install_instantiate_chaincode.html).
 
-* Use the drop-down menu and select a peer to install chaincode onto.  
-* Click the **Install Chaincode** button on the right side of your screen; this will open a new panel.
 
-**Figure 9** shows the chaincode install window:
+## Notifications
 
-![Blockchain Network](images/chaincode_install.png "Chaincode Install")
-*Figure 9. Chaincode Install Window*
+You can handle pending requests and view completed requests in the "Notifications" screen. 
 
-* Fill in the fields for ChaincodeID and Chaincode Version.  Be cognizant of naming schemes, as these strings will be used in client apps in order to interact with particular chaincodes.
-* Click the browse button and navigate through your local filesystem to wherever your chaincode source is stored.  Select one or more files to install on your peer.  **Note**: It is recommended to only upload chaincode written in Go or Java.  
+**Figure 6** shows the "Notifications" screen:
 
-Once a chaincode has been installed on a peer's file system it must then be instantiated on a channel.  This instantiation step calls the `init` function to perform any necessary initialization of the chaincode.  Oftentimes this will involve setting the key value pairs that comprise a chaincode's initial world state.
+![Notifications](images/notifications.png "Notifications")
+*Figure 6. Notifications*
 
-**Figure 10** shows the chaincode instantiate window: 
+* When you create a channel or you are invited to a new channel, a notification will appear in the Network Monitor. 
+* The requests are grouped into "All", "Pending", and "Completed" subtabs. Numbers after the subtab header indicate the number of requests in each subtab.
+   * You can find all your requests in the "All" subtab.
+   * Requests that you have not accepted or declined, or you have not submitted are in the "Unread" subtab. Click the **Review Request** button to view the request, which includes the channel policy and members, and then either **Accept** or **Decline** it. You can also handle the requet at another time by clicking **Later**. If you accept a request and the request are accepted by enough channel operators, you can click **Submit Request** to activate the channel update.  
+   * Submitted requests are in the "Completed" subtab.  You can click **Review Request** to view its details.
+  
+When you have a long list of requests, you can search for a request in the search field on the top. Pending requests can be deleted by selecting the boxes in the front of them and clicking **Delete Requets**. Note that a completed request cannot be deleted.
 
-![Blockchain Network](images/chaincode_instantiate.png "Chaincode Instantiate")
-*Figure 10. Chaincode Instantiate Window*
-
-Note that the key value pairs are being set with the string - `["a","b","200","250"]` - and that there is a window to select the channel to instantiate on.  This example shows a chaincode named `end2end` installed on `fabric-peer1a` and instantiated on a channel named `mychannel`:
-
-The install/instantiate combination is a powerful feature because it allows for a peer to interact with the same chaincode container across multiple channels.  The only prerequisite is for the actual chaincode source to be installed on the peer's file system.  As such, if a piece of common chaincode is being used across dozens of channels, a peer would need only a single chaincode container to perform read/writes on all the channel ledgers.  This lightweight approach proves beneficial to computational performance and throughput as networks scale and chaincode applications become more elaborate.    
 
 ## Support
-{: #dashboard_support}
 
-Use the links and resources on this page to access troubleshooting and support forums.  If you are unable to debug your 
-issue or ascertain an answer to your question, please click the **Open a Bluemix support ticket** link, and you will be 
-redirected to a screen that guides you through the process.  
-{:shortdesc}
+The "Support" screen contains two tabs to provide support information in the "Support" tab and to describe new and changed functions of each release in the "Release Notes" tab.
 
-**Figure 11** shows the Support panel:
+Use the links and resources on this page to access troubleshooting and support forums. If you are unable to debug your issue or ascertain an answer to your question, please click the **Open a Bluemix support ticket** link and follow the guidance to submit tickets.
 
-![Blockchain Network](images/support.png "Support")
-*Figure 11. Blockchain Support*
+**Figure 7** shows the initial "Support" screen displaying support information in the "Support" tab:
+
+![Support](images/support.png "Support")
+*Figure 7. Blockchain support*
+
+* [{{site.data.keyword.blockchainfull_notm}} Service docs](index.html), which is this doc site, provides guidances on how to start with {{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.Bluemix_notm}}. You can find coresponding topics from the navigator or search any term with the search function on the top.  
+* [IBM Developer Works ![External link icon](images/external_link.svg "External link icon")](https://developer.ibm.com/blockchain/) under **Community help** contains resources and information for developers.  
+* [IBM dWAnswers ![External link icon](images/external_link.svg "External link icon")](https://developer.ibm.com/answers/smartspace/blockchain/) under **Support ticket** serves as platform for questions and responses. You can search for responses from previously posed questions or to submit a new question. Be sure to include the keyword **blockchain** in your question.   
+  You can also submit a ticket to {{site.data.keyword.blockchainfull_notm}} support team with [Open a {{site.data.keyword.Bluemix_notm}} support ticket ![External link icon](images/external_link.svg "External link icon")]().  Share details and code snippets from your specific Bluemix instance.  
+* [Sample applications ![External link icon](images/external_link.svg "External link icon")]() under **{{site.data.keyword.blockchain}} sample applications** provides guidance and sample codes for help in developing applications.  
+* [Hyperledger Fabric ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/) and [Hyperledger Fabric community ![External link icon](images/external_link.svg "External link icon")]() under **Hyperledger Fabric** provide more details about Hyperledger Fabric.  
+  Talk to a [Hyperledger Expert ![External link icon](images/external_link.svg "External link icon")](https://chat.hyperledger.org/channel/general) with questions about the Hyperledger Fabric code.   
+  
+  
+**Figure 8** shows the initial "Members" screen displaying new and changed functions of each release in the "Release Notes" tab:
+
+![Release notes](images/releasenotes.png "Release notes")
+*Figure 8. Release notes*
+
