@@ -32,4 +32,34 @@ IBM Blockchain Platform
 	{: .navgroup id="help"}
 	ibmblockchain_support.md
 	knownissues.md
+
+	{: .topicgroup}
+	Deprecated topics (No review needed)
+		pbft_test1.md
+		pbft_test2.md
+		pbft_test3.md
+		pbft_test4.md
+		nondeterministic.md
+		zblockchain.md
+		etn_overview.md	
+		etn_sbft.md
+		etn_txn.md
+		etn_sdk.md
+		etn_hsn.md
+		ibmblockchain_etn.md
+		ibmblockchain_help.md
+		ibmblockchainmonitor.md
+		ibmblockchain_tutorials.md
+		v10_netoverview.md
+		v10_newplan.md
+		v10_membership.md
+		v10_txflow.md
+		v10_ordering.md
+		reference/v10_sdk.md
+		ibmblockchain_whatsnew.md
+		howto/create_service.md
+		howto/create_bc_network.md
+		howto/join_bc_network.md
+		howto/service_credentials.md
+		howto/prerequisites.md
 	{: .navgroup-end}
