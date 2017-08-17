@@ -14,12 +14,12 @@ lastupdated: "2017-08-14"
 
 # {{site.data.keyword.blockchainfull_notm}} Platform
 
-**ATTENTION:** Before using a {{site.data.keyword.blockchainfull}} offering, read the technical and support information in the [Disclaimer](needtoknow.html).  
+**ATTENTION:** Before using a {{site.data.keyword.blockchainfull}} offering, read the technical and support information in the [Disclaimer](needtoknow.html) section.  
 {:shortdesc}
 
 The {{site.data.keyword.blockchainfull_notm}} Platform is the only integrated business ready platform that addresses the full life cycle (**develop**, **govern**, and **operate**) of a multi-organization blockchain network. It is designed to accelerate, through collaboration in each phase, the creation of "built for business" global blockchain networks with the performance and security for even the most demanding use cases and regulated industries. {{site.data.keyword.blockchainfull_notm}} offerings are built on the Hyperledger Fabric V1.0 code base leveraging a modular architecture to achieve enterprise levels of security, data integrity, scalability, and performance to meet your business needs.  
 
-Let's take a look at an overview of the various activites and roles in an {{site.data.keyword.blockchainfull_notm}} network, and how they interact with the network lifecycle.  
+Let's take a look at the primary activites and roles in an {{site.data.keyword.blockchainfull_notm}} network, and see how they fit into a network's lifecycle.  
 
 **Note**: The table below is not meant to represent a linear progression. Tasks such as development and network management will occur repeatedly as applications and membership evolve.
 
@@ -37,7 +37,7 @@ Explore and accelerate blockchain development by leveraging best practices honed
 * Quickly build blockchain skills within your existing roster of programmers by leveraging {{site.data.keyword.blockchainfull_notm}} developer tools.
 * Give developers the flexibility to learn and develop in their preferred environment with an open and modern toolset.  
   
-As a business owners, you can develop your use case with help from IBM's deep bench of industry and blockchain experts who come together in the {{site.data.keyword.blockchainfull_notm}} Garage to harness the full power of the IBM Blockchain Platform. 
+As a business owner, you can develop your use case with help from IBM's deep bench of industry and blockchain experts who come together in the {{site.data.keyword.blockchainfull_notm}} Garage to harness the full power of the IBM Blockchain Platform. 
 
 As a developer, you can quickly and easily align business requirements and accelerate blockchain application development for free with a cloud sandbox and interactive playground that turns any programmer into a blockchain developer. These tools are designed to turn business rules into code in your preferred environment:
 * **Explore online**  
@@ -73,13 +73,13 @@ Operating your network on the {{site.data.keyword.blockchainfull_notm}} Platform
 * Dashboards for monitoring and managing the resources on the network. 
 * Lifecycle management for seamless upgrades of the full code stack.
 * 24/7 technical support integrated into the portal.
-* Hardened security stack with no privileged access, malware and tamper resistance, 100% encryption, HSM key protection, and many more features for networks with sensitive data in regulated industries.
+* Hardened security stack with no privileged access, malware and tamper resistance, 100% encryption, and many more features for networks with sensitive data in regulated industries.
 
 ## Roles
 
 Form your consortium and launch a network using this fully managed blockchain-as-a-service offering.  Invite institutions to join your network and propose governance policies.  Before taking a deeper dive into the prominent fetures of the {{site.data.keyword.blockchainfull_notm}} Platform, let's take a quick look at the key personas and entities in more detail. Please refer back to the table at the top of the page to see the responsibilities for each.
 
-**Member** is anyone that interacts or is involved with the blockchain network. This could be the front end developer who creates applications that front the network or the institution who runs key components, including peers, Certificate Authorities (CA), and ordering service. There are two major roles in a blockchain network, maintainers and participants. Below you find out more information on these roles and people required to complete the activities of these roles.
+A **Participant** is anyone that interacts or is involved with the blockchain network. This could be the front end developer who creates applications that front the network or the institution who runs key components, including peers, Certificate Authorities (CA), and ordering service. There are two major roles in a blockchain network, maintainers and participants. Below you find out more information on these roles and people required to complete the activities of these roles.
 
 1. **Maintainers**  
   Typically aligned with an institution who owns the central components of the blockchain infrastructure, including peer nodes, CA, and so on. They share in the governance and operational duties of the network. All maintainers have a stake in the network, and by extension, have a vote in any operations that configure and customize their stance in the network. There are two types of maintainers, initiators and operators.
@@ -118,15 +118,17 @@ Before continuing, let's take a look at a simple configuration within the The {{
 
 ## {{site.data.keyword.IBM_notm}} Membership Offerings
 
-A summary of the membership offerings available now and coming soon. 
+[Membership options](enterprise_plan.md) currently available.
 
-|       | Entry      | **Enterprise**  | Enterprise Plus | Self Managed
+Below is a summary of current and future options:
+
+|       | Entry      | [Enterprise](enterprise_plan.md)  | Enterprise Plus | Self Managed
 | ------------------------- |--------------------------|-----|-----|------|
 | **What's Included** | Basic service levels | **Advanced service levels, enterprise production ready** | Dedicated compute for performance and isolation | Software stack to install on your own infrastructure + connect to a network hosted on this cloud service |
 | **Billing Policy** | Hourly charge | **Monthly subscription** | Monthly subscription | Monthly subscription |
 | **Availability** | Coming soon | **Available now** | Coming soon | Planned for 2018 |
 
-Access all of the {{site.data.keyword.IBM_notm}} [{{site.data.keyword.blockchainfull_notm}} Membership ![External link icon](images/external_link.svg "External link icon")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps) options.
+Sign up today for your {{site.data.keyword.IBM_notm}} [{{site.data.keyword.blockchainfull_notm}} membership ![External link icon](images/external_link.svg "External link icon")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps).
 
 ## {{site.data.keyword.IBM_notm}} Support 
 

@@ -26,7 +26,7 @@ The architecture behind {{site.data.keyword.blockchainfull_notm}} is the Linux F
 
 ## Open source statement
 
-{{site.data.keyword.blockchainfull_notm}} offering plans on {{site.data.keyword.Bluemix_notm}} are built on the Linux Foundation's Hyperledger Fabric V1.0 open source code. Hyperledger Project members, including IBM, continue to contribute to the source code after which it has been reviewed, vetted, and tested by the community. 
+{{site.data.keyword.blockchainfull_notm}} offering plans on {{site.data.keyword.Bluemix_notm}} are built on top of the Linux Foundation's Hyperledger Fabric V1.0 stack. Hyperledger Project members, including IBM, continue to contribute to various sub-projects under the Hyperleder umbrella.  All contributions are reviewed, vetted, and tested by the community. 
 
 Hyperledger Fabric announced it had reached *Production Level Status* for V1.0 on July 11, 2017. 
 
@@ -41,4 +41,4 @@ The following coding practices are NOT supported on {{site.data.keyword.blockcha
 5. Accessing external services, such as databases, directly from chaincode.
 6. Using libraries or global variables that could introduce non-determinism (such as using "random" or "time").  
 
-In addition, it is not recommanded to write non-deterministic chaincode, which introduces risk to data consistency and integrity.
+In addition, it is not recommended to write non-deterministic chaincode, which introduces risk to data consistency and integrity.  It should be noted that the Hyperledger Fabric architecture is designed to counter against non-deterministic chaincode through a series of endorsement and validation checks, however you are still strongly encouraged to code deterministic functions that are not reliant on non-static global variables (e.g. time).  
