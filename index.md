@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-08-14"
+lastupdated: "2017-08-21"
 
 ---
 
@@ -118,9 +118,7 @@ Before continuing, let's take a look at a simple configuration within the The {{
 
 ## {{site.data.keyword.IBM_notm}} Membership Offerings
 
-[Membership options](enterprise_plan.md) currently available.
-
-Below is a summary of current and future options:
+The following table summarizes the current and future membership options.  [Enterprise Plan](enterprise_plan.md) is the membership option that is currently available.
 
 |       | Entry      | [Enterprise](enterprise_plan.md)  | Enterprise Plus | Self Managed
 | ------------------------- |--------------------------|-----|-----|------|
@@ -128,11 +126,11 @@ Below is a summary of current and future options:
 | **Billing Policy** | Hourly charge | **Monthly subscription** | Monthly subscription | Monthly subscription |
 | **Availability** | Coming soon | **Available now** | Coming soon | Planned for 2018 |
 
-Sign up today for your {{site.data.keyword.IBM_notm}} [{{site.data.keyword.blockchainfull_notm}} membership ![External link icon](images/external_link.svg "External link icon")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps).
+Sign up now for your {{site.data.keyword.IBM_notm}} [{{site.data.keyword.blockchainfull_notm}} membership ![External link icon](images/external_link.svg "External link icon")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps)!
 
 ## {{site.data.keyword.IBM_notm}} Support 
 
-{{site.data.keyword.IBM_notm}} offers support on {{site.data.keyword.IBM_notm}} implemented {{site.data.keyword.blockchain}} solutions. Access the {{site.data.keyword.blockchainfull_notm}} Support details through the [{{site.data.keyword.blockchainfull_notm}} DockerHub ![External link icon](images/external_link.svg "External link icon")](https://hub.docker.com/u/ibmblockchain/) and explore the support engagements available.
+{{site.data.keyword.IBM_notm}} offers support on {{site.data.keyword.IBM_notm}} implemented {{site.data.keyword.blockchain}} solutions. To access the {{site.data.keyword.blockchainfull_notm}} Support, start by ordering through [Passport Advantage and Passport Advantage Express ![External link icon](images/external_link.svg "External link icon")](https://www-01.ibm.com/software/passportadvantage/) and explore the support engagements available.
 
 For complete details on all Hyperledger Fabric v1.0 features and functionality,
 see [Hyperledger Fabric documentation ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/latest/).
