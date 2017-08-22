@@ -20,7 +20,7 @@ For members who are going to initiate the network, IBM provides a graphical user
 
 The {{site.data.keyword.blockchainfull_notm}} Platform is built with key Hyperledger Fabric components including a Certificate Authority (CA) and at least 1 peer (max of 6).  IBM also provides a crash fault tolerant (CFT) Kafka ordering service for the network members. 
 
-The Fabric CA is the certificate authority provided with the Enterprise plan. One CA is provided per member, which grants membership to the network. By using the CA the member can also provide membership (certs) to end users of the network.
+The Fabric CA is the certificate authority provided with the Enterprise plan. Two intermediate CAs are provided per member, which grant membership to the network. By using the CA the member can also provide membership (certs) to end users of the network.
 
 It’s important to understand that for a transaction to be appended to the ledger, there are three phases involved:  
 1. Transaction Simulation and Endorsement (peer)
