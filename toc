@@ -9,7 +9,7 @@ IBM Blockchain Platform
 	[Develop the network](https://developer.ibm.com/blockchain/sandbox/)
 	get_start.md
 	v10_dashboard.md
-	[Membership options](enterprise_plan.md)
+	[Membership options](enterprise_plan.html)
 	needtoknow.md
 	{: .navgroup-end}
 
