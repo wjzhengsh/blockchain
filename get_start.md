@@ -49,7 +49,7 @@ Now you're ready to deploy a {{site.data.keyword.blockchain}} network that can s
 * Up to 15 network members  
 * Three orderers and two intermediate CA nodes
 * Up to six small peers for each member  
-* An ordering service tolerant of crash faults
+* A crash fault tolerant ordering service
 * Up to 150 channels
 * Up to 10 instantiations of chaincodes
 
@@ -71,8 +71,8 @@ If you are an invited network member, click the **Pending Invite ->** button, se
 ## Configuring network resources and environment
 
 1. Enter your Network Monitor after you create or join a {{site.data.keyword.blockchain}} network. The Network Monitor is a GUI dashboard where you can manage and keep track of network status information. For more information, see [Network monitor](v10_dashboard.html).
-2. Add your own peers to the network. If you have already added enough peers, skip this step. Peers run chaincode and they are the endpoint to interact with your applications. Click **Add Peers** in the "Resources" screen, and select the quantity and size of your peers. For more information, see [Resources](v10_dashboard.html#resources).
-3. Set up a channel. All members in the same channel get a channel-specific ledger, which ensures data isolation and confidentiality. For information on how to create a channel, see [Creating a channel](howto/create_channel.html#creating-a-channel).  
+2. Add your own peers to the network. If you have already added enough peers, skip this step. Peers run chaincode and they are the endpoint to interact with your applications. Click **Add Peers** in the "Overview" screen, and select the quantity and size of your peers. For more information, see [Overview](v10_dashboard.html#resources).
+3. Set up a channel. All members in the same channel are provisioned a channel-specific ledger, which delivers data isolation and confidentiality. For information on how to create a channel, see [Creating a channel](howto/create_channel.html#creating-a-channel).  
 	If you are a channel member who has been invited to join a channel, you will receive an email notification with a link to the wizard that will allow you to join the channel. 
 4. Join peers to the channel.  Only peers that are associated with the channel can access its ledger. For more information, see [Channels](v10_dashboard.html#channels).
 5. Install and instantiate chaincode. All channel members need to install the same chaincode with the same name and version on every peer that will run the chaincode. After being installed, chaincode must be instantiated on the channel before it can be used. For more information, see [Installing and instantiating a chaincode](howto/install_instantiate_chaincode.html).  
