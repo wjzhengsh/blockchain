@@ -98,7 +98,7 @@ It is sometimes useful to think about members via a persona that outlines the ro
  
 - **Initiator** – A member that has been selected by other members to bootstrap the Blockchain network.    The IBM Blockchain Platform requires a single member to sign in to the IBM Blockchain Platform and perform tasks to initiate the network.  These include naming the network, inviting the initial set of members, and setting the default set of network operation policies.  This is a transient role.  Once the network is bootstrapped, the initiator does not retain special privileges and simply resumes the role of member.  
 
-- **Maintainer** – A member that is running one or more network Peers & CAs.   These members are maintaining the integrity of the distributed ledger by participating in the consensus process, which is how transactions are validated on a blockchain network.   The maintainer, through ownership of a CA, also has the ability to issue certificates to participants and grant them access to the network . 
+- **Maintainer** – A member that is running one or more network Peers & CAs.   These members are maintaining the integrity of the distributed ledger by participating in the consensus process, which is how transactions are validated on a blockchain network.   The maintainer, through ownership of a CA, also has the ability to issue certificates to participants and grant them access to the network. 
  
 - **Operator** – A member that is running services on behalf of other network members, including the transaction ordering service, certificate authorities, transaction gateways and other foundational network services.  By default, IBM is the network operator of networks deployed on the IBM Blockchain Platform.
  
