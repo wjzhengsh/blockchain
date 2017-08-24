@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-08-21"
+lastupdated: "2017-08-24"
 
 ---
 
@@ -77,7 +77,7 @@ Operating your network on the {{site.data.keyword.blockchainfull_notm}} Platform
 
 ## Roles
 
-Form your consortium and launch a network using this fully managed blockchain-as-a-service offering.  Invite institutions to join your network and propose governance policies.  Before taking a deeper dive into the prominent fetures of the {{site.data.keyword.blockchainfull_notm}} Platform, let's take a quick look at the key personas and entities in more detail. Please refer back to the table at the top of the page to see the responsibilities for each.
+Form your consortium and launch a network using this fully managed blockchain-as-a-service offering.  Invite institutions to join your network and propose governance policies.  Before taking a deeper dive into the prominent features of the {{site.data.keyword.blockchainfull_notm}} Platform, let's take a quick look at the key personas and entities in more detail. Please refer back to the table at the top of the page to see the responsibilities for each.
 
 A **Participant** is anyone that interacts or is involved with the blockchain network. This could be the front end developer who creates applications that front the network or the institution who runs key components, including peers, Certificate Authorities (CA), and ordering service. There are two major roles in a blockchain network, maintainers and participants. Below you find out more information on these roles and people required to complete the activities of these roles.
 
