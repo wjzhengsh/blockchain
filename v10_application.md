@@ -20,7 +20,7 @@ With applications, you can invoke the chaincode to query or update a channel-spe
 You need to install software prerequisites to develop applications that can interact with the {{site.data.keyword.blockchain}} network on {{site.data.keyword.Bluemix}}.
 {:shortdesc}
 
-*	Git ([Git download page ![External link icon](../images/external_link.svg "External link icon")](https://git-scm.com/downloads){:new_window})
+*	Git ([Git download page ![External link icon](images/external_link.svg "External link icon")](https://git-scm.com/downloads){:new_window})
 	
 	Git is a version control tool to familiarize yourself with, both for chaincode development and software development in general.  Also, git bash, which is installed with git on Windows, is an excellent alternative to the the Windows command prompt.
  
@@ -31,7 +31,7 @@ You need to install software prerequisites to develop applications that can inte
 	```
 	{:screen}
 
-*	GoLang ([GoLang download page ![External link icon](../images/external_link.svg "External link icon")](https://golang.org/dl){:new_window})
+*	GoLang ([GoLang download page ![External link icon](images/external_link.svg "External link icon")](https://golang.org/dl){:new_window})
 
 	The GoLang installation installs a set of Go CLI tools, which are very useful to write chaincode.  For example, the `go build` command allows you to check that your chaincode actually compiles before you attempt to deploy it to a network.  At time of writing, this chaincode is known to build successfully with version `1.7.5`.
 
@@ -42,16 +42,16 @@ You need to install software prerequisites to develop applications that can inte
 	```
 	{:screen}
 	
-	Follow the [Installation instructions ![External link icon](../images/external_link.svg "External link icon")](https://golang.org/doc/install){:new_window} to properly set the environment variables.  Check your `GOPATH` using the below command.  Note that your `GOPATH` does not need to match the example, it only matters that you have this variable set to a valid directory on your filesystem.   
+	Follow the [Installation instructions ![External link icon](images/external_link.svg "External link icon")](https://golang.org/doc/install){:new_window} to properly set the environment variables.  Check your `GOPATH` using the below command.  Note that your `GOPATH` does not need to match the example, it only matters that you have this variable set to a valid directory on your filesystem.   
 	```
 	$ echo $GOPATH
 	C:\gopath
 	```
 	{:screen}
 
-	You can then verify your GoLang installation by building GoLang code with the [hello world ![External link icon](../images/external_link.svg "External link icon")](https://golang.org/doc/install#testing){:new_window} example.
+	You can then verify your GoLang installation by building GoLang code with the [hello world ![External link icon](images/external_link.svg "External link icon")](https://golang.org/doc/install#testing){:new_window} example.
 
-*	Node.js ([Node.js download page ![External link icon](../images/external_link.svg "External link icon")](https://nodejs.org/en/download/){:new_window}).  Choose a version between 6.9.5 < 7.  Node versions greater than 7 will cause errors when downloading the SDK modules.  
+*	Node.js ([Node.js download page ![External link icon](images/external_link.svg "External link icon")](https://nodejs.org/en/download/){:new_window}).  Choose a version between 6.9.5 < 7.  Node versions greater than 7 will cause errors when downloading the SDK modules.  
 
 	Use the following commands to verify your Node.js installation.  You should see an output similar to the below:  
 	```
@@ -67,9 +67,9 @@ You need to install software prerequisites to develop applications that can inte
 We won't delve into the minutiae of x509 and public key infrastructure, there are plenty of external resources for that.  Suffice it to say that communication flows in Fabric implement sign/verify operations for every touchpoint.  As such, any client sending calls (i.e. transactions) to the network will need to sign payloads (private key) and attach a properly signed x509 certificate for verification purposes (signed cert).  The private key and signed certificate, along with with an MSP identifier and the Certificate Authority (CA) root certificate make up what is referred to as the "user context" object.  Again no need for extraneous details.  We will simply communicate with the appropriate Certificate Authority and retrieve the keys and certs that allow for the object to be formed - this process is referred to as enrollment.  After you form the user context object, it's as easy as calling an API from your application to "set" or "get" this user context.  At this point, the application (i.e. client) is equipped with all the necessary artifacts and is ready to communicate with the network.  We'll look at two approaches for retrieving the keys and certs.
 
 ### Command Line
-This is the simpler of the two approaches.  First, follow the instructions to build the [Fabric CA client ![External link icon](../images/external_link.svg "External link icon")](http://hyperledger-fabric-ca.readthedocs.io/en/latest/users-guide.html).  This step allows you to communicate with a CA Server and receive back properly formatted certificates and keys.  
+This is the simpler of the two approaches.  First, follow the instructions to build the [Fabric CA client ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric-ca.readthedocs.io/en/latest/users-guide.html).  This step allows you to communicate with a CA Server and receive back properly formatted certificates and keys.  
 
-Second, download the TLS certs from [your Bluemix ![External link icon](../images/external_link.svg "External link icon")](http://blockchain-certs.mybluemix.net/3.secure.blockchain.ibm.com.rootcert) and save the contents to a folder, for example ``$HOME/tls``.  This step allows the data flowing to be encrypted on the wire.
+Second, download the TLS certs from [your Bluemix ![External link icon](images/external_link.svg "External link icon")](http://blockchain-certs.mybluemix.net/3.secure.blockchain.ibm.com.rootcert) and save the contents to a folder, for example ``$HOME/tls``.  This step allows the data flowing to be encrypted on the wire.
 
 Finally, open the **Service Credentials** JSON file from your **Overview** screen in the Network Monitor, and ascertain the following information:
 * URL for CA: ``url`` under `certificateAuthorities`
@@ -169,7 +169,7 @@ The service credentials are in JSON format and contain the API endpoint informat
 
 ## Hosting applications
 You can host your application on your local file system or push it to {{site.data.keyword.Bluemix_notm}}.  To push your application to {{site.data.keyword.Bluemix_notm}}, complete the following steps:
-1. Install the [Cloud Foundry Command Line Installer ![External link icon](../images/external_link.svg "External link icon")](https://github.com/cloudfoundry/cli/releases).  Test your installation with the `cf` command.	
+1. Install the [Cloud Foundry Command Line Installer ![External link icon](images/external_link.svg "External link icon")](https://github.com/cloudfoundry/cli/releases).  Test your installation with the `cf` command.	
     * If your installation is successful, you should see a bunch of text output in your terminal. 
     * If you see "command not found", your installation was either not successful or CF is not added to your system path.	
 2. Set up API endpoint and log in with your {{site.data.keyword.Bluemix_notm}} ID and password by issuing the following commands:
