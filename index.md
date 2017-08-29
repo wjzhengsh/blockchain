@@ -29,7 +29,7 @@ Let's take a look at the primary activites and roles in an {{site.data.keyword.b
 | [Govern](get_start.html)| Invite Members, Generate Credentials, Propose Governance Models, New members join, Disseminate certs & endpoint info | Network Operators, Network Members |
 | [Operate](v10_dashboard.html)| Monitor health & activity, Manage new deployments, Manage members (addition/removal), Manage chaincode lifecycle,  Manage channels, Support | Network Operators, Network Participants |
   
-Now let's take a closer look at these roles and activities....
+Now let's take a closer look at these roles and activities...
 
 ## **Develop** the network
 Explore and accelerate blockchain development by leveraging best practices honed across 400+ client engagements to:
@@ -146,7 +146,7 @@ Before continuing, let's take a look at a simple configuration within the The {{
 
 ## {{site.data.keyword.IBM_notm}} Membership Offerings
 
-The following table summarizes the current and future membership options.  [Enterprise Plan](enterprise_plan.md) is the membership option that is currently available.
+The following table summarizes the current and future membership options.  [Enterprise Plan](enterprise_plan.html) is the membership option that is currently available.
 
 |       | Entry      | [Enterprise](enterprise_plan.md)  | Enterprise Plus | Self Managed
 | ------------------------- |--------------------------|-----|-----|------|
