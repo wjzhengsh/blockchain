@@ -148,7 +148,7 @@ Before continuing, let's take a look at a simple configuration within the The {{
 
 The following table summarizes the current and future membership options.  [Enterprise Plan](enterprise_plan.html) is the membership option that is currently available.
 
-|       | Entry      | [Enterprise](enterprise_plan.md)  | Enterprise Plus | Self Managed
+|       | Entry      | [Enterprise](enterprise_plan.html)  | Enterprise Plus | Self Managed
 | ------------------------- |--------------------------|-----|-----|------|
 | **What's Included** | Basic service levels | **Advanced service levels, enterprise production ready** | Dedicated compute for performance and isolation | Software stack to install on your own infrastructure + connect to a network hosted on this cloud service |
 | **Billing Policy** | Hourly charge | **Monthly subscription** | Monthly subscription | Monthly subscription |
