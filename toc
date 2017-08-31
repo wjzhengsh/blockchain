@@ -26,6 +26,7 @@ IBM Blockchain Platform
 		howto/install_instantiate_chaincode.md
 		v10_application.md
 		howto/monitor_network.md
+		createmanagednetwork.md
 
 	howto/sample_applications.md
 	{: .navgroup-end}
