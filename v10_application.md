@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-08-14"
+lastupdated: "2017-08-30"
 ---
 
 {:new_window: target="_blank"}
@@ -33,12 +33,12 @@ You need to install software prerequisites to develop applications that can inte
 
 *	GoLang ([GoLang download page ![External link icon](images/external_link.svg "External link icon")](https://golang.org/dl){:new_window})
 
-	The GoLang installation installs a set of Go CLI tools, which are very useful to write chaincode.  For example, the `go build` command allows you to check that your chaincode actually compiles before you attempt to deploy it to a network.  At time of writing, this chaincode is known to build successfully with version `1.7.5`.
+	The GoLang installation installs a set of Go CLI tools, which are very useful to write chaincode.  For example, the `go build` command allows you to check that your chaincode actually compiles before you attempt to deploy it to a network.  At time of writing, this chaincode is known to build successfully with version `1.8.3`.
 
 	Use the following command to verify your GoLang version.  You should see an output similar to the below:
 	```
 	$ go version
-	go version go1.7.5 windows/amd64
+	go version go1.8.3 windows/amd64
 	```
 	{:screen}
 	
@@ -66,7 +66,7 @@ You need to install software prerequisites to develop applications that can inte
 ## Generating the client-side certificates
 We won't delve into the minutiae of x509 and public key infrastructure, there are plenty of external resources for that.  Suffice it to say that communication flows in Fabric implement sign/verify operations for every touchpoint.  As such, any client sending calls (i.e. transactions) to the network will need to sign payloads (private key) and attach a properly signed x509 certificate for verification purposes (signed cert).  The private key and signed certificate, along with with an MSP identifier and the Certificate Authority (CA) root certificate make up what is referred to as the "user context" object.  Again no need for extraneous details.  We will simply communicate with the appropriate Certificate Authority and retrieve the keys and certs that allow for the object to be formed - this process is referred to as enrollment.  After you form the user context object, it's as easy as calling an API from your application to "set" or "get" this user context.  At this point, the application (i.e. client) is equipped with all the necessary artifacts and is ready to communicate with the network.  We'll look at two approaches for retrieving the keys and certs.
 
-### Command Line
+### Command line
 This is the simpler of the two approaches.  First, follow the instructions to build the [Fabric CA client ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric-ca.readthedocs.io/en/latest/users-guide.html).  This step allows you to communicate with a CA Server and receive back properly formatted certificates and keys.  
 
 Second, download the TLS certs from [your Bluemix ![External link icon](images/external_link.svg "External link icon")](http://blockchain-certs.mybluemix.net/3.secure.blockchain.ibm.com.rootcert) and save the contents to a folder, for example ``$HOME/tls``.  This step allows the data flowing to be encrypted on the wire.
@@ -86,11 +86,12 @@ The ``fabric-ca-client`` binary is placed in ``$GOPATH/bin``, so you will need t
 ```
 ./fabric-ca-client enroll -u https://admin:B84F2C5436@tor-zbc01a.3.secure.blockchain.ibm.com:23042 --tls.certfiles /Users/XYZ/Downloads/3.secure.blockchain.ibm.com.rootcert --caname PeerOrg1CA
 ```
+  
+Find your admin certificate in `$HOME/.fabric-ca-client/msp/signcerts/cert.pem`. You can then upload the admin certificate to your blockchain network from the Network Monitor. For more information about adding certificates, see [the "Certificates" tab of "Memeber" screen](v10_dashboard.html#members) in the Network Monitor.
 
-Your certificates should then be placed in the following directory structure:
-* Client cert: ``$HOME/.fabric-ca-client/msp/signcerts/cert.pem``
-* CA root certificate: ``$HOME/.fabric-ca-client/msp/cacerts/--<ca_name>.pem``
-* The admin private key: ``$HOME/.fabric-ca-client/msp/keystore/<>_sk file``
+You can also find CA root certificate and admin private key in the following directories:
+* CA root certificate: `$HOME/.fabric-ca-client/msp/cacerts/--<ca_name>.pem`
+* The admin private key: `$HOME/.fabric-ca-client/msp/keystore/<>_sk file`
 
 ### SDK
 There are two Hyperledger repositories that contain excellent resources and scripts for understanding how to programatically interact with a Certificate Authortity.  The ``fabric-samples`` repo contains the "balance transfer" example and the ``fabric-sdk-node`` repo has a series of CA Services tests.  If you intend to issue your enrollment requests on the application side, then you will need to fully understand the APIs that need to be exposed within the ``fabric-ca-client`` and ``fabric-client`` packages.  Use these scripts and repos as a baseline for structuring your app.
@@ -131,6 +132,8 @@ And the final task is actually setting the crypto suite and building the user co
 }).then(() => {
 	return client.setUserContext(member);
 ```
+
+You can then upload the admin certificate to your blockchain network from the Network Monitor. For more information about adding certificates, see [the "Certificates" tab of "Memeber" screen](v10_dashboard.html#members) in the Network Monitor.
 
 ## Developing applications
 You can develop your application in Javascript or Java, and leverage the available APIs in the Hyperledger Fabric Client SDKs to enable interaction between your application and your network.  An application needs to include at least the following information:
