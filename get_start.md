@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-08-15"
+lastupdated: "2017-09-04"
 
 ---
 
@@ -73,9 +73,12 @@ If you are an invited network member, click the **Pending Invite ->** button, se
 1. Enter your Network Monitor after you create or join a {{site.data.keyword.blockchain}} network. The Network Monitor is a GUI dashboard where you can manage and keep track of network status information. For more information, see [Network monitor](v10_dashboard.html).
 2. Add your own peers to the network. If you have already added enough peers, skip this step. Peers run chaincode and they are the endpoint to interact with your applications. Click **Add Peers** in the "Overview" screen, and select the quantity and size of your peers. For more information, see [Overview](v10_dashboard.html#resources).
 3. Set up a channel. All members in the same channel are provisioned a channel-specific ledger, which delivers data isolation and confidentiality. For information on how to create a channel, see [Creating a channel](howto/create_channel.html#creating-a-channel).  
+	
 	If you are a channel member who has been invited to join a channel, you will receive an email notification with a link to the wizard that will allow you to join the channel. 
 4. Join peers to the channel.  Only peers that are associated with the channel can access its ledger. For more information, see [Channels](v10_dashboard.html#channels).
 5. Install and instantiate chaincode. All channel members need to install the same chaincode with the same name and version on every peer that will run the chaincode. After being installed, chaincode must be instantiated on the channel before it can be used. For more information, see [Installing and instantiating a chaincode](howto/install_instantiate_chaincode.html).  
+
+**Note**: To achieve high availability, each institution must purchase at least 2 peers, and within a channel, each participanting institution must join at least 2 peers.
 
 ## Enabling applications to interact with the network
 Applications leverage the SDK APIs to interact with your {{site.data.keyword.blockchain}} network components. You need to add the API endpoint information of your network components in your applicatoin so that the application can ultimately target your peers with transaction requests. You can then add the API endpoint information from the Network Monitor. Applications can be hosted on your local file system or on {{site.data.keyword.Bluemix_notm}}. For more information, see [Developing applications](v10_application.html).
