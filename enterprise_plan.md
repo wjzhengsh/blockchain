@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-08-22"
+lastupdated: "2017-09-06"
 
 ---
 
@@ -16,7 +16,7 @@ lastupdated: "2017-08-22"
 
 {{site.data.keyword.blockchainfull}} Platform Enterprise Plan is the first available membership option for organizations who would like to found or join a blockchain business network. This plan provides the key infrastructure along with tools and support to easily deploy a highly secure, production ready blockchain network.
 
-For members who are going to initiate the network, IBM provides a graphical user interface to guide the network initiator through key steps to set up and provision the network. This includes inviting other members and setting the governance rules. Once the network is deployed an interactive graphical user interface is available to monitor health & activity of the network; manage key network activities including new deployments, members addition/removal, chaincode lifecycle, and channel management; and seek technical support. Support is available 24x7 with a 99.95% service level agreement. Find more information on how to get [support](ibmblockchain_support.html).
+For members who are going to initiate the network, IBM provides a graphical user interface to guide the network initiator through key steps to set up and provision the network. This includes inviting other members and setting the governance rules. Once the network is deployed an interactive graphical user interface is available to monitor health & activity of the network; manage key network activities including new deployments, members addition/removal, chaincode lifecycle, and channel management; and seek technical support. Find more information on how to get [support](ibmblockchain_support.html).
 
 The {{site.data.keyword.blockchainfull_notm}} Platform is built with key Hyperledger Fabric components including a Certificate Authority (CA) and at least 1 peer (max of 6).  IBM also provides a crash fault tolerant (CFT) Kafka ordering service for the network members. 
 
