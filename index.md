@@ -158,7 +158,7 @@ Sign up now for your {{site.data.keyword.IBM_notm}} [{{site.data.keyword.blockch
 
 ## {{site.data.keyword.IBM_notm}} Support 
 
-{{site.data.keyword.IBM_notm}} offers support on {{site.data.keyword.IBM_notm}} implemented {{site.data.keyword.blockchain}} solutions. To access the {{site.data.keyword.blockchainfull_notm}} Support, start by ordering through [Passport Advantage and Passport Advantage Express ![External link icon](images/external_link.svg "External link icon")](https://www-01.ibm.com/software/passportadvantage/) and explore the support engagements available.
+{{site.data.keyword.IBM_notm}} offers support on {{site.data.keyword.IBM_notm}} implemented {{site.data.keyword.blockchain}} solutions. For more information about {{site.data.keyword.blockchainfull_notm}} Support, see [Getting support](ibmblockchain_support.html).
 
 For complete details on all Hyperledger Fabric v1.0 features and functionality,
 see [Hyperledger Fabric documentation ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/latest/).
