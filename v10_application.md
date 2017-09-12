@@ -77,7 +77,7 @@ Finally, open the **Service Credentials** JSON file from your **Overview** scree
 * Admin password: ``enrollSecret``
 * CA Name: ``caName``
 
-Using the Fabric CA client, we can send an "enroll" call to our Certificate Authority by passing pass in the TLS certs path and the four strings above with the following command:  
+Using the Fabric CA client, we can send an "enroll" call to our Certificate Authority by passing in the TLS certs path and the four strings above with the following command:  
 ```
 $GOPATH/bin/fabric-ca-client enroll -u https://<enroll_id>:<enroll_password>@<ca_url_with_port> --caname <ca_name> --tls.certfiles <tls_cert_path>
 ```
@@ -107,7 +107,7 @@ cryptoSuite.setCryptoKeyStore(hfc.newCryptoKeyStore({path: <PUBLIC_PRIVATE_KEY_P
 client.setCryptoSuite(cryptoSuite);
 ```
 
-The common practice would be to export an environment variable defining the key/value path on your machine and pass it to the above function.  Now that we've defined our KVS, let's use the a few methods from the ``FabricCAServices`` class.  This class is an implementation of the Fabric CA client, and as such it will allow us to communicate with the CA Server.  First we need to pass some information to our CA client, namely the CA URL:
+The common practice would be to export an environment variable defining the key/value path on your machine and pass it to the above function.  Now that we've defined our KVS, let's use a few methods from the ``FabricCAServices`` class.  This class is an implementation of the Fabric CA client, and as such it will allow us to communicate with the CA Server.  First we need to pass some information to our CA client, namely the CA URL:
 
 ```
 # the caURL can be defined manually or by setting an environment variable
