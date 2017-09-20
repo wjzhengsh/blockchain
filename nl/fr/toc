@@ -1,0 +1,37 @@
+{:navgroup: .navgroup}
+{:topicgroup: .topicgroup}
+
+{: .toc subcollection="blockchain" audience="service" href="/docs/services/blockchain/index.html"}
+Plateforme IBM Blockchain
+
+	{: .navgroup id="learn"}
+	index.md
+	[Développement du réseau](https://developer.ibm.com/blockchain/sandbox/)
+	get_start.md
+	v10_dashboard.md
+	[Options d'appartenance](enterprise_plan.html)
+	needtoknow.md
+	{: .navgroup-end}
+
+	{: .navgroup id="reference"}
+	ibmblockchain_overview.md
+	reference/v10_fabric.md
+	[Hyperledger Composer](https://hyperledger.github.io/composer/introduction/introduction.html)
+	{: .navgroup-end}
+
+	{: .navgroup id="howto"}
+	{: .topicgroup}
+	Tutoriels
+		howto/create_channel.md
+		howto/install_instantiate_chaincode.md
+		v10_application.md
+		howto/monitor_network.md
+		createmanagednetwork.md
+
+	howto/sample_applications.md
+	{: .navgroup-end}
+
+	{: .navgroup id="help"}
+	ibmblockchain_support.md
+	knownissues.md
+	{: .navgroup-end}
