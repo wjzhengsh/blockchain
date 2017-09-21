@@ -154,7 +154,7 @@ Hyperledger Fabric V1.0 アーキテクチャーの**モジュール性**と、�
 | **請求ポリシー** | 1 時間ごとの課金 | **月単位のサブスクリプション** | 月単位のサブスクリプション | 月単位のサブスクリプション |
 | **利用できる時期** | 近日中 | **現時点で利用可能** | 近日中 | 2018 年に計画 |
 
-{{site.data.keyword.IBM_notm}} [{{site.data.keyword.blockchainfull_notm}} メンバーシップ ![外部リンクのアイコン](images/external_link.svg "外部リンクのアイコン")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps)を今すぐお申し込みください。
+[{{site.data.keyword.blockchainfull_notm}} メンバーシップ ![外部リンクのアイコン](images/external_link.svg "外部リンクのアイコン")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps)を今すぐお申し込みください。
 
 ## {{site.data.keyword.IBM_notm}} サポート 
 

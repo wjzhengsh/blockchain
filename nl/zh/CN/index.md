@@ -154,7 +154,7 @@ Hyperledger Fabric V1.0 体系结构的**模块性**和网络角色的显著分�
 | **计费策略**| 每小时收费| **每月预订**| 每月预订| 每月预订|
 | **可用性**| 即将推出| **可立即获取**| 即将推出| 计划于 2018 年|
 
-立即注册以获取 {{site.data.keyword.IBM_notm}}[{{site.data.keyword.blockchainfull_notm}}成员资格 ![外部链接图标](images/external_link.svg "外部链接图标")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps)！
+立即注册以获取 [{{site.data.keyword.blockchainfull_notm}}成员资格 ![外部链接图标](images/external_link.svg "外部链接图标")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps)！
 
 ## {{site.data.keyword.IBM_notm}} 支持 
 

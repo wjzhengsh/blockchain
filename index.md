@@ -154,7 +154,7 @@ The following table summarizes the current and future membership options.  [Ente
 | **Billing Policy** | Hourly charge | **Monthly subscription** | Monthly subscription | Monthly subscription |
 | **Availability** | Coming soon | **Available now** | Coming soon | Planned for 2018 |
 
-Sign up now for your {{site.data.keyword.IBM_notm}} [{{site.data.keyword.blockchainfull_notm}} membership ![External link icon](images/external_link.svg "External link icon")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps)!
+Sign up now for your [{{site.data.keyword.blockchainfull_notm}} membership ![External link icon](images/external_link.svg "External link icon")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps)!
 
 ## {{site.data.keyword.IBM_notm}} Support 
 

@@ -154,7 +154,7 @@ Hyperledger Fabric 1.0 版架構的**模組性** 以及網路角色的明確區�
 | **計費原則** | 每小時費用 | **每月訂閱** | 每月訂閱 | 每月訂閱 |
 | **可用性** | 即將推出 | **現在推出** | 即將推出 | 計劃 2018 年推出 |
 
-立即註冊您的 {{site.data.keyword.IBM_notm}} [{{site.data.keyword.blockchainfull_notm}} 成員資格 ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps)！
+立即註冊您的 [{{site.data.keyword.blockchainfull_notm}} 成員資格 ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps)！
 
 ## {{site.data.keyword.IBM_notm}} 支援 
 

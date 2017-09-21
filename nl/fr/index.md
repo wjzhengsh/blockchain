@@ -154,7 +154,7 @@ La tableau ci-après récapitule les options d'appartenance actuelles et futures
 | **Règle facturat** | Fact horaire  | **Abonnement mensuel  ** | Abonnement mensuel   | Abonnement mensuel   |
 | **Disponibil  ** | Prochaine   | **Immédiate    ** | Prochaine   | Prévue pour 2018 |
 
-Inscrivez-vous dès maintenant en tant que {{site.data.keyword.IBM_notm}} [{{site.data.keyword.blockchainfull_notm}} membre ![External link icon](images/external_link.svg "External link icon")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps)!
+Inscrivez-vous dès maintenant en tant que [{{site.data.keyword.blockchainfull_notm}} membre ![External link icon](images/external_link.svg "External link icon")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps)!
 
 ## {{site.data.keyword.IBM_notm}} Support 
 

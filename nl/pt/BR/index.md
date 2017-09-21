@@ -154,7 +154,7 @@ A tabela a seguir resume as opções de associação atuais e futuras. [Plano Co
 | **Política de faturamento** | Encargos por hora | **Assinatura mensal** | Assinatura mensal | Assinatura mensal |
 | **Disponibilidade** | Em breve | **Disponível agora** | Em breve | Planejado para 2018 |
 
-Inscreva-se agora para sua associação do [{{site.data.keyword.blockchainfull_notm}} da {{site.data.keyword.IBM_notm}} ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps).
+Inscreva-se agora para sua associação do [{{site.data.keyword.blockchain}} da {{site.data.keyword.IBM_notm}} ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps).
 
 ## Suporte {{site.data.keyword.IBM_notm}}
 

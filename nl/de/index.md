@@ -157,7 +157,7 @@ In der folgenden Tabelle sind die aktuellen und zukünftigen Mitgliedschaftsopti
 | **Abrechnungsmodell** | Auf Stundenbasis | **Monatliche Subskription** | Monatliche Subskription | Monatliche Subskription |
 | **Verfügbarkeit** | In Kürze verfügbar | **Bereits verfügbar** | In Kürze verfügbar | Geplant für 2018 |
 
-Melden Sie sich jetzt für die {{site.data.keyword.IBM_notm}} [{{site.data.keyword.blockchainfull_notm}}-Mitgliedschaft ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps) an!
+Melden Sie sich jetzt für die [{{site.data.keyword.blockchainfull_notm}}-Mitgliedschaft ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps) an!
 
 ## {{site.data.keyword.IBM_notm}} Support 
 

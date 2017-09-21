@@ -154,7 +154,7 @@ Hyperledger Fabric V1.0 아키텍처의 **모듈화** 및 네트워크 역할의
 | **청구 정책** | 시간별 요금 | **월별 구독** | 월별 구독 | 월별 구독 |
 | **가용성** | 출시 예정 | **지금 사용 가능** | 출시 예정 | 2018년 출시 계획|
 
-{{site.data.keyword.IBM_notm}} [{{site.data.keyword.blockchainfull_notm}} 멤버십 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps)에 지금 가입하십시오!
+[{{site.data.keyword.blockchainfull_notm}} 멤버십 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps)에 지금 가입하십시오!
 
 ## {{site.data.keyword.IBM_notm}} 지원 
 
