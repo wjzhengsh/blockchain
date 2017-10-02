@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-09-06"
+lastupdated: "2017-09-20"
 
 ---
 
@@ -12,25 +12,29 @@ lastupdated: "2017-09-06"
 {:codeblock: .codeblock}
 {:pre: .pre}
 
-# {{site.data.keyword.blockchainfull_notm}} Platform Enterprise Plan
+# Piano Enterprise di {{site.data.keyword.blockchainfull_notm}} Platform
 
-{{site.data.keyword.blockchainfull}} Platform Enterprise Plan is the first available membership option for organizations who would like to found or join a blockchain business network. This plan provides the key infrastructure along with tools and support to easily deploy a highly secure, production ready blockchain network.
+Il piano Enterprise di {{site.data.keyword.blockchainfull}} Platform è la prima opzione di adesione disponibile per le organizzazioni che desiderano creare, o aderire a, una rete di business blockchain. Questo piano fornisce l'infrastruttura chiave insieme agli strumenti e al supporto per distribuire facilmente una rete blockchain pronta per la produzione altamente sicura.
 
-For members who are going to initiate the network, IBM provides a graphical user interface to guide the network initiator through key steps to set up and provision the network. This includes inviting other members and setting the governance rules. Once the network is deployed an interactive graphical user interface is available to monitor health & activity of the network; manage key network activities including new deployments, members addition/removal, chaincode lifecycle, and channel management; and seek technical support. Find more information on how to get [support](ibmblockchain_support.html).
+Per i membri che inizieranno la rete, IBM fornisce un'interfaccia grafica utente (GUI) per assistere passo dopo passo l'iniziatore della rete nelle procedure chiave per configurare la rete e fornirla. Ciò include l'invito di altri membri e l'impostazione delle regole di governance. Dopo che la rete è stata distribuita, è disponibile un'interfaccia grafica utente (GUI) per monitorare lo stato e l'attività della rete, gestire le attività di rete chiave quali le nuove distribuzioni, l'aggiunta/rimozione di membri, il ciclo di vita del chaincode e la gestione dei canali e per cercare supporto tecnico. Accedi ad ulteriori informazioni su come ottenere [supporto](ibmblockchain_support.html).
 
-The {{site.data.keyword.blockchainfull_notm}} Platform is built with key Hyperledger Fabric components including a Certificate Authority (CA) and at least 1 peer (max of 6).  IBM also provides a crash fault tolerant (CFT) Kafka ordering service for the network members. 
+{{site.data.keyword.blockchainfull_notm}} Platform è sviluppata con componenti Hyperledger Fabric chiave, compresi un'Autorità di certificazione (CA) e almeno 1 peer (massimo 6).  IBM fornisce anche un servizio ordini Kafka con tolleranza di errori anomali per i membri della rete. 
 
-The Fabric CA is the certificate authority provided with the Enterprise plan. Two intermediate CAs are provided per member, which grant membership to the network. By using the CA the member can also provide membership (certs) to end users of the network.
+La CA Fabric è l'autorità di certificazione fornita con il piano Enterprise. Sono fornite due CA intermedie per membro, che concedono l'adesione alla rete. Utilizzando la CA, il membro può anche fornire l'adesione (certificati) agli utenti finali della rete.
 
-It’s important to understand that for a transaction to be appended to the ledger, there are three phases involved:  
-1. Transaction Simulation and Endorsement (peer)
-2. Ordering (ordering service)
-3. Validation and Commit (peer)
+È importante comprendere che l'accodamento di una transazione al libro mastro coinvolge tre fasi:  
+1. Simulazione e approvazione della transazione (peer)
+2. Ordinazione (servizio ordini)
+3. Convalida e registrazione (peer)
 
-The Fabric peers owned by the members are the interface or gateway for applications to execute chain code, providing the business logic to execute transactions against the ledger.  All transactions must be endorsed. The other members of the network do this endorsement. After endorsement,  transactions are sent to an IBM provided ordering service (Kafka)
+I peer Fabric appartenenti ai membri sono l'interfaccia o il gateway per le applicazioni per eseguire il chaincode, fornendo la logica di business per eseguire le transazioni sul libro mastro.  Tutte le transazioni devono essere approvate. Gli altri membri della rete concedono questa approvazione. Dopo l'approvazione, le transazioni vengono inviate a un servizio ordini fornito da IBM (Kafka)
 
-Besides the core blockchain components, the Enterprise Membership option provides an infrastructure with secure data storage and communications (TLS), and high availability.  While Fabric networks share these infrastructure resources, isolation is provided for the Fabric component nodes in a network, and each node executes in a secure docker container protecting the execution environment.
+Oltre ai componenti blockchain principali, l'opzione di adesione Enterprise fornisce un'infrastruttura con memorizzazione di dati e comunicazioni protetti (TLS) e un'elevata disponibilità.  Mentre le reti Fabric condividono queste risorse d'infrastruttura, viene fornito un isolamento per i nodi componente Fabric in una rete e ciascun nodo viene eseguito in un contenitore docker sicuro che protegge l'ambiente di esecuzione.
 
-The sole aspect that must be determined is the size of the peers required for the network. This decision is based on the number of channels required, plus the workload per channel, memory usage, and disk space (storage). Below you will find peer sizes available via the Enterprise level service plan and guidance choosing the proper peer.
+Il solo aspetto che deve essere determinato è la dimensione dei peer richiesta per la rete. Questa decisione è basata sul numero di canali richiesti, più il carico di lavoro per canale, l'utilizzo della memoria e lo spazio su disco (memorizzazione). Sotto troverai le dimensioni di peer disponibili tramite il piano di servizio di livello Enterprise e delle indicazioni per scegliere il peer corretto.
 
-Sign up now for your {{site.data.keyword.IBM_notm}} [{{site.data.keyword.blockchainfull_notm}} membership ![External link icon](images/external_link.svg "External link icon")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps).
+La piattaforma IBM Blockchain dovrebbe venire utilizzata per una produzione più stabile o per le distribuzioni quasi al livello di produzione. Per scopi di test, utilizza il servizio IBM Container o le immagini scaricate localmente.
+
+Il piano Enterprise fornisce la CA e il servizio ordini. La tariffa di iscrizione è 1.000$ e una tariffa per peer di 1.000$ viene associata alla rete. Se desideri avere l'elevata disponibilità (HA), devi acquistare un ulteriore peer per fornire le funzionalità HA. Ad esempio, un'organizzazione (tariffa di iscrizione associata di 1.000$) di due peer (1.000 X 2 peer) con HA (1.000$ per 2 peer HA) richiede un addebito mensile di 5.000$.
+
+Registrati ora per la tua {{site.data.keyword.IBM_notm}} [adesione a {{site.data.keyword.blockchainfull_notm}} ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps).

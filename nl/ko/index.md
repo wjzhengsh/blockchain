@@ -148,13 +148,13 @@ Hyperledger Fabric V1.0 아키텍처의 **모듈화** 및 네트워크 역할의
 
 다음 표에서는 현재 및 미래 멤버십 옵션을 요약합니다. [엔터프라이즈 플랜](enterprise_plan.html)은 현재 사용 가능한 멤버십 옵션입니다. 
 
-|       | 항목      | [엔터프라이즈](enterprise_plan.html)  | 엔터프라이즈 플러스 | 자체 관리
+|       | 기본      | [엔터프라이즈](enterprise_plan.html)  | 엔터프라이즈 플러스 | 자체 관리
 | ------------------------- |--------------------------|-----|-----|------|
 | **포함되는 내용** | 기본 서비스 레벨 | **고급 서비스 레벨, 엔터프라이즈 프로덕션 준비** | 성능 및 격리를 위한 전용 컴퓨팅 | 이 클라우드 서비스에 호스팅하는 네트워크에 연결 + 사용자 자신의 인프라에 설치할 소프트웨어 스택 |
 | **청구 정책** | 시간별 요금 | **월별 구독** | 월별 구독 | 월별 구독 |
 | **가용성** | 출시 예정 | **지금 사용 가능** | 출시 예정 | 2018년 출시 계획|
 
-[{{site.data.keyword.blockchainfull_notm}} 멤버십 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps)에 지금 가입하십시오!
+{{site.data.keyword.IBM_notm}} [{{site.data.keyword.blockchainfull_notm}} 멤버십 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps)에 지금 가입하십시오!
 
 ## {{site.data.keyword.IBM_notm}} 지원 
 
