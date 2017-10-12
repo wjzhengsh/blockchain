@@ -41,7 +41,7 @@ The invited members will receive an invitation email.  They can also find the re
 As a special type of channel update request, when enough channel operators agree on the channel creation request and a channel operator submits the request, the new channel is created.  All channel members can find the channel in the "Channels" screen of their Network Monitor.
 
 ## Updating a channel
-If you want to modify the configuration of a channel, for example, add or remove channel members, or change the channel update policy, you can submit a channel update request.  In the "Channels" screen of your Network Monitor, locate the channel that you want to modify and select **Edit Channel** from the drop down list under the **Action** header.  Complete the same steps as you submit a channel creation request to submit a channel update request.
+If you want to modify the configuration of a channel, for example, add or remove channel members, or change the channel update policy, you can submit a channel update request.  In the "Channels" screen of your Network Monitor, locate the channel that you want to modify and select **Edit Channel** from the drop down list under the **Action** header. Navigate through the panels to make changes to the desired entities, and click "Submit Request" to initiate an update request.
 
 All channel members will receive email notification on the channel update request:
 * The newly invited members receive email notifications to invite them to join the channel.  They can also find the request with "Vote Pending" status in the **Notifications** screen of their Network Monitor:  
