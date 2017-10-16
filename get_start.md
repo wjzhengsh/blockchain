@@ -48,7 +48,7 @@ Now you're ready to deploy a {{site.data.keyword.blockchain}} network that can s
 * Default governance policies
 * Up to 15 network members  
 * Three orderers and two intermediate CA nodes
-* Up to six small peers for each member  
+* Up to three small peers for each member  
 * A crash fault tolerant ordering service
 * Up to 150 channels
 * Up to 10 instantiations of chaincodes
