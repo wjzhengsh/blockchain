@@ -27,11 +27,11 @@ It’s important to understand that for a transaction to be appended to the ledg
 2. Ordering (ordering service)
 3. Validation and Commit (peer)
 
-The Fabric peers owned by the members are the interface or gateway for applications to execute chain code, providing the business logic to execute transactions against the ledger.  All transactions must be endorsed. The other members of the network do this endorsement. After endorsement,  transactions are sent to an IBM provided ordering service (Kafka)
+The Fabric peers owned by the members are the interface or gateway for applications to execute chain code, providing the business logic to execute transactions against the ledger.  All transactions must be endorsed. The other members of the network do this endorsement. After endorsement,  transactions are sent to an IBM provided ordering service (Kafka).
 
 Besides the core blockchain components, the Enterprise Membership option provides an infrastructure with secure data storage and communications (TLS), and high availability.  While Fabric networks share these infrastructure resources, isolation is provided for the Fabric component nodes in a network, and each node executes in a secure docker container protecting the execution environment.
 
-The sole aspect that must be determined is the size of the peers required for the network. This decision is based on the number of channels required, plus the workload per channel, memory usage, and disk space (storage). Below you will find peer sizes available via the Enterprise level service plan and guidance choosing the proper peer.
+The sole aspect that must be determined is the size of the peers required for the network. This decision is based on the number of channels required, plus the workload per channel, memory usage, and disk space (storage). 
 
 The IBM Blockchain platform should be used for more stable, production, or almost production level deployments. For testing purposes, use the IBM Container service, or local downloadable images.
 
