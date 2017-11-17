@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-08-30"
+lastupdated: "2017-11-17"
 ---
 
 {:new_window: target="_blank"}
@@ -69,7 +69,7 @@ We won't delve into the minutiae of x509 and public key infrastructure, there ar
 ### Command line
 This is the simpler of the two approaches.  First, follow the instructions to build the [Fabric CA client ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric-ca.readthedocs.io/en/latest/users-guide.html).  This step allows you to communicate with a CA Server and receive back properly formatted certificates and keys.  
 
-Second, download the TLS certs from [your Bluemix ![External link icon](images/external_link.svg "External link icon")](http://blockchain-certs.mybluemix.net/3.secure.blockchain.ibm.com.rootcert) and save the contents to a folder, for example ``$HOME/tls``.  This step allows the data flowing to be encrypted on the wire.
+Second, download the TLS certs from [your {{site.data.keyword.Bluemix_notm}} ![External link icon](images/external_link.svg "External link icon")](http://blockchain-certs.mybluemix.net/3.secure.blockchain.ibm.com.rootcert) and save the contents to a folder, for example ``$HOME/tls``.  This step allows the data flowing to be encrypted on the wire.
 
 Finally, open the **Service Credentials** JSON file from your **Overview** screen in the Network Monitor, and ascertain the following information:
 * URL for CA: ``url`` under `certificateAuthorities`
@@ -163,7 +163,7 @@ The service credentials are in JSON format and contain the API endpoint informat
                 ...
 	```
 
-	**Note**: If you want to target additional peers in the network, for example, you require endorsement from a peer that does not belong to your organization, then you need to obtain the correct API endpoint information of those peers.  You also need to store the CA cert for the other organization to verify responses that return to your application. This information is not exposed in your service credentials, therefore you must contact the appropriate admin for the Bluemix Org and acquire this information in an out-of-band operation. The ordering service URL is common across the network; you don't need any member-specific information for ordering service.  
+	**Note**: If you want to target additional peers in the network, for example, you require endorsement from a peer that does not belong to your organization, then you need to obtain the correct API endpoint information of those peers.  You also need to store the CA cert for the other organization to verify responses that return to your application. This information is not exposed in your service credentials, therefore you must contact the appropriate admin for the CLoud Foundry Org and acquire this information in an out-of-band operation. The ordering service URL is common across the network; you don't need any member-specific information for ordering service.  
 
 3. Plug the API endpoint information into a configuration file of your application as shown in the following example:  
 	```
