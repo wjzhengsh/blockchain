@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-08-15"
+lastupdated: "2017-11-17"
 ---
 
 {:new_window: target="_blank"}
@@ -116,17 +116,17 @@ When you have a long list of requests, you can search for a request in the searc
 
 The "Support" screen contains two tabs to provide support information in the "Support" tab and to describe new and changed functions of each release in the "Release Notes" tab.
 
-Use the links and resources on this page to access troubleshooting and support forums. If you are unable to debug your issue or ascertain an answer to your question, please click the **Open a Bluemix support ticket** link and follow the guidance to submit tickets.
+Use the links and resources on this page to access troubleshooting and support forums. If you are unable to debug your issue or ascertain an answer to your question, please click the **Open an {{site.data.keyword.Bluemix_notm}} support ticket** link and follow the guidance to submit tickets.
 
 **Figure 7** shows the initial "Support" screen displaying support information in the "Support" tab:
 
 ![Support](images/support.png "Support")
 *Figure 7. Blockchain support*
 
-* [{{site.data.keyword.blockchainfull_notm}} Service docs](index.html), which is this doc site, provides guidances on how to start with {{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.Bluemix_notm}}. You can find coresponding topics from the navigator or search any term with the search function on the top.  
+* [{{site.data.keyword.blockchainfull_notm}} Service docs](index.html), which is this doc site, provides guidances on how to start with {{site.data.keyword.blockchainfull}} Platform on {{site.data.keyword.Bluemix_notm}}. You can find coresponding topics from the navigator or search any term with the search function on the top.  
 * [IBM Developer Works ![External link icon](images/external_link.svg "External link icon")](https://developer.ibm.com/blockchain/) under **Community help** contains resources and information for developers.  
 * [IBM dWAnswers ![External link icon](images/external_link.svg "External link icon")](https://developer.ibm.com/answers/smartspace/blockchain/) under **Support ticket** serves as a platform for questions and responses. You can search for responses from previously posed questions or submit a new question. Be sure to include the keyword **blockchain** in your question.   
-  You can also submit a ticket to {{site.data.keyword.blockchainfull_notm}} support team with the [Open a {{site.data.keyword.Bluemix_notm}} support ticket ![External link icon](images/external_link.svg "External link icon")]() option.  Share details and code snippets from your specific Bluemix instance.  
+  You can also submit a ticket to {{site.data.keyword.blockchainfull_notm}} support team with the [Open a {{site.data.keyword.Bluemix_notm}} support ticket ![External link icon](images/external_link.svg "External link icon")]() option.  Share details and code snippets from your specific {{site.data.keyword.Bluemix_notm}} instance.  
 * [Sample applications ![External link icon](images/external_link.svg "External link icon")]() under **{{site.data.keyword.blockchain}} sample applications** provides guidance and sample code snippets to assist in the development of applications.  
 * [Hyperledger Fabric ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/) and [Hyperledger Fabric community ![External link icon](images/external_link.svg "External link icon")]() under **Hyperledger Fabric** provide more details about the Hyperledger Fabric stack.  
   Talk to a [Hyperledger Expert ![External link icon](images/external_link.svg "External link icon")](https://chat.hyperledger.org/channel/general) with questions about the Hyperledger Fabric code.   
