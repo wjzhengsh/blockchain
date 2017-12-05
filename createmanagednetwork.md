@@ -14,7 +14,7 @@ lastupdated: "2017-08-14"
 
 # Creating Managed Channels 
 
-**ATTENTION:** Before using a {{site.data.keyword.blockchainfull}} offering, read the technical and support information in the [Disclaimer](needtoknow.html) section.  
+**ATTENTION:** Before using an {{site.data.keyword.blockchainfull}} offering, read the technical and support information in the [Disclaimer](needtoknow.html) section.  
 {:shortdesc}
 
 In some use cases – highly regulated foreign currency exchange markets, for example – it might be necessary to put a trusted third party in charge of the administrative roles on channels that would normally be handled by various operators or members. 
