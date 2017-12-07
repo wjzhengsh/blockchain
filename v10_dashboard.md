@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-11-17"
+lastupdated: "2017-12-05"
 ---
 
 {:new_window: target="_blank"}
@@ -103,13 +103,16 @@ You can handle pending requests and view completed requests in the "Notification
 ![Notifications](images/notifications.png "Notifications")
 *Figure 6. Notifications*
 
-* When you create a channel or are invited to a new channel, a notification will appear in the Network Monitor. 
-* The requests are grouped into "All", "Pending", and "Completed" subtabs. Numbers after the subtab header indicate the number of requests in each subtab.
+When you create a channel or are invited to a new channel, a notification will appear in the Network Monitor. 
+
+The requests are grouped into "All", "Pending", and "Completed" subtabs. Numbers after the subtab header indicate the number of requests in each subtab.
    * You can find all your requests in the "All" subtab.
-   * Requests that you have not accepted or declined, or you have not viewed, are in the "Pending" subtab. Click the **Review Request** button to view the request, which includes the channel policy and members, and then either **Accept** or **Decline** it. You can also handle the request at another time by clicking **Later**. If the request is accepted by enough channel operators, you can click **Submit Request** to activate the channel update.
+   * Requests that you have not accepted or declined, or you have not viewed, are in the "Pending" subtab. Click the **Review Request** button to view the request, which includes the channel policy and members, and voting status. If you are a channel operator, you can either **Accept** or **Decline** the request, or handle it at another time by clicking **Later**. If the request is accepted by enough channel operators, you can click **Submit Request** to activate the channel update.
    * A submitted request will appear in the "Completed" subtab.  You can click **Review Request** to view its details.
   
-When you have a long list of requests, you can search for a request in the search field on the top. Pending requests can be deleted by selecting the boxes in the front of them and clicking **Delete Request**. Note that a completed request cannot be deleted.
+When you have a long list of requests, you can search for a request in the search field on the top. 
+
+Pending requests can be deleted by selecting the boxes in the front of them and clicking **Delete Request**. Note that a completed request cannot be deleted.
 
 
 ## Support

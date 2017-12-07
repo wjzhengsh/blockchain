@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-08-14"
+lastupdated: "2017-12-06"
 
 ---
 
@@ -40,9 +40,9 @@ Once you've assigned the correct permissions, click **Next**.
 
 This will take you to a channel policy update screen. Since there is only one operator on this channel (you), select the number of members needed to create the channel as “1”. Then click **Submit Request**. 
 
-Note: Even though you are the sole operator of this channel, you must still navigate to the correct screen to approve and submit the request to actually create the channel. 
+Note: Even though you are the sole operator of this channel, this is still only a request; you must still navigate to the correct screen to approve and submit the request to create the channel. 
 
-Emails will be sent to the members you’ve invited and prompt them to join the channel. However, because they only have “write” privileges, the ability to actually create the channel falls to you. To do this, navigate to the “Notifications” screen, where an alert to create the channel should be waiting. Click **Review Request**. This will display the channel details. Review these details and click **Approve**. Then click **Submit Request**.
+Emails are sent to the members who you invite and prompt them to join the channel. However, they have only “write” privileges, and you are responsible to complete the channel creation process. Navigate to the “Notifications” screen in the Network Monitor, where an alert to create the channel shows up. Locate the request to handle in the "All" or "Pending" subtabs. Click **Review Request** to display the channel details and click **Approve**. Then click **Submit Request**. 
 
 Congratulations! You've just created a managed channel. 
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-09-04"
+lastupdated: "2017-12-05"
 
 ---
 
@@ -85,6 +85,12 @@ Applications leverage the SDK APIs to interact with your {{site.data.keyword.blo
 
 ## Monitoring network resources  
 After a transaction has been triggered from your application, you can view transaction status information in the Network Monitor. For more information about network monitoring, see [Monitoring a network](howto/monitor_network.html).
+  
+## Leaving a network 
+If you want to leave a network, delete the blockchain service instance from your {{site.data.keyword.Bluemix_notm}} dashboard.  
+
+**Note**: Before you leave a network, ensure that you are not a member in any channels of the network. Otherwise, you will get errors when you leave the network. A channel member removal needs to complete the channel update process. For more information about the channel update process, see [Updating a channel](howto/create_channel.html#updating-a-channel).
+
 
 <!--
 ## References
