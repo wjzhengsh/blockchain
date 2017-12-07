@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-07-14"
+lastupdated: "2017-12-05"
 
 ---
 
@@ -36,7 +36,8 @@ Enter Network Monitor and locate the channel that you want to view and monitor i
   Expand a chaincode row to get detailed information about the chaincode:  
     * You can click **JSON** to view the JSON file of the chaincode.
     * You can click **Logs** to view logs of the chaincode.
-    * You can click **Delete** to remove the running chaincode container.
+    * You can click **Delete** to remove the running chaincode container. 
+    **Note**: Deleting the running chaincode container does not actually delete the chaincode. An instantiated chaincode on blockchain network cannot be deleted.
   
   ![Channel chaincode](../images/channel_chaincode.png "Channel chaincode") 
   

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-08-14"
+lastupdated: "2017-12-05"
 
 ---
 
@@ -34,20 +34,29 @@ Click the **New Channel** button in the "Channels" screen of your Network Monito
 3. Configure the channel update policy by selecting the number of channel operators to approve channel update request, and click **Submit Request**.   
   ![Create channel 3](../images/create_channel_3.png "Create a channel panel 3")  
 
-The invited members will receive an invitation email.  They can also find the request with "Vote Pending" status in the **Notifications** screen of the Network Monitor:  
-* Members who are invited as channel operators can click the **Review Request** button to review the channel configuration, and then **Accept** or **Decline** the channel update request.  If the channel update request gets enough **Accept** votes from channel operators, its status changed to "Vote Accepted".  Any channel operator can then click the **Submit Request** button to complete the channel update.  
-* Members who are invited as channel writers or readers can click the **Review Request** button to review the channel configuration.
+The invited members will receive an invitation email.  They can also find the request in the "All" or "Pending" subtabs in the **Notifications** screen of the Network Monitor.  
+* Members who are invited as channel operators can click the **Review Request** button to review the channel configuration, and then **Accept** or **Decline** the request.  The "My Status" column shows the operator's voting status on the request:
+    * _Vote Pending_: The operator has not handled the request.
+    * _Vote Accepted_: The operator accepted the request.
+    * _Vote Declined_: The operator declined the request.
+    * _Vote Closing_: The request gets enough **Accept** votes, and the operator no long needs to accept or decline.
+* Members who are invited as channel writers or readers can see *Not Required* under the "My Status" column. Before the request gets enough **Accept** votes from channel operators, writers or readers can click the **Review Request** button to check the channel configuration.
 
-As a special type of channel update request, when enough channel operators agree on the channel creation request and a channel operator submits the request, the new channel is created.  All channel members can find the channel in the "Channels" screen of their Network Monitor.
+When enough channel operators agree on the request, any channel member can click the **Submit Request** button and the new channel is created.  All channel members can find the channel in the "Channels" screen of their Network Monitor.
 
 ## Updating a channel
-If you want to modify the configuration of a channel, for example, add or remove channel members, or change the channel update policy, you can submit a channel update request.  In the "Channels" screen of your Network Monitor, locate the channel that you want to modify and select **Edit Channel** from the drop down list under the **Action** header. Navigate through the panels to make changes to the desired entities, and click "Submit Request" to initiate an update request.
+If you want to modify the configuration of a channel, for example, add or remove channel members, or change the channel update policy, you can submit a channel update request.  In the "Channels" screen of your Network Monitor, locate the channel that you want to modify and select **Edit Channel** from the drop down list under the **Action** header. Navigate through the panels to make changes to the desired entities, and click **Submit Request** to initiate an channel update request.
 
-All channel members will receive email notification on the channel update request:
-* The newly invited members receive email notifications to invite them to join the channel.  They can also find the request with "Vote Pending" status in the **Notifications** screen of their Network Monitor:  
-    * Members who are invited as channel operators can click the **Review Request** button to review the channel configuration, and then **Accept** or **Decline** the channel update request.  If the channel update request gets enough **Accept** votes from channel operators, its status changed to "Vote Accepted".  Any channel operator can then click the **Submit Request** button to complete the channel update.  
-    * Members who are invited as channel writers or readers can click the **Review Request** button to review the channel configuration.
-* The removed members receive email notifications about the channel change.
-* Existing channel operators also receive email notification on channel update.  They can also find the request with "Vote Pending" status in the **Notifications** screen of their Network Monitor for them to **Accept** or **Decline**.
+All channel members will receive email notifications on the channel update request:
+* The newly invited members receive email notifications to invite them to join the channel.  They can also find the request with "Vote Pending" status in the **Notifications** screen of the Network Monitor. 
+    * Members who are invited as channel operators can click the **Review Request** button to review the channel configuration, and then **Accept** or **Decline** the channel update request.  The "My Status" column shows the operator's voting status on the request:
+        * _Vote Pending_: The operator has not handled the request.
+        * _Vote Accepted_: The operator accepted the request.
+        * _Vote Declined_: The operator declined the request.
+        * _Vote Closing_: The request gets enough **Accept** votes, and the operator no long needs to accept or decline.
+    * Members who are invited as channel writers or readers can see *Not Required* under the "My Status" column. Before the request gets enough **Accept** votes from channel operators, writers or readers can click the **Review Request** button to check the channel configuration.
+* The removed members receive email notifications on channel change.
+* Existing channel operators receive email notifications on channel update.  They can find the request with _Vote Pending_ status in the **Notifications** screen of the Network Monitor for them to **Accept** or **Decline**.
+* Existing channel writers or readers also receive email notifications on channel update.  They can find the request with _Not Required_ status in the **Notifications** screen of the Network Monitor.
 
-When enough channel operators agree on the channel update request and any channel operator submit the request, the channel is updated.  All channel members can find the updated channel in the "Channels" screen of their Network Monitor.
+When enough channel operators agree on the request, any channel member can click the **Submit Request** button and the channel is updated.  All channel members can find the updated channel in the "Channels" screen of the Network Monitor.
