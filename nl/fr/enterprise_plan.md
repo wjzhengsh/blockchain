@@ -32,10 +32,10 @@ Les homologues Fabric dont les membres sont propriétaires constituent l'interfa
 Outre les principaux composants blockchain, l'option Plan d'appartenance d'entreprise
 fournit une infrastructure avec un stockage de données et des communications sécurisées (TLS) ainsi qu'une haute disponibilité.  Alors que les réseaux Fabric partagent ces ressources d'infrastructure, l'isolement est fourni pour les noeuds de composant Fabric au sein d'un réseau, et chaque noeud s'exécute dans un  conteneur docker sécurisé qui protège l'environnement d'exécution.
 
-Le seul élément qui doit être défini est la taille des homologues nécessaires au réseau. Ce choix dépend du nombre de canaux requis, ainsi que de la charge de travail par canal, de l'utilisation de la mémoire et de l'espace disque (stockage). Vous trouverez ci-dessous les tailles d'homologue disponibles via le plan de service de niveau entreprise et une aide pour vous aider à choisir l'homologue approprié.
+Le seul élément qui doit être défini est la taille des homologues nécessaires au réseau. Ce choix dépend du nombre de canaux requis, ainsi que de la charge de travail par canal, de l'utilisation de la mémoire et de l'espace disque (stockage). 
 
 La plateforme IBM Blockchain doit être utilisée pour des déploiements de production, ou ayant quasiment atteint le niveau production, plus stables. A des fins de test, utilisez le service IBM Container ou des images téléchargeables locales.
 
 Le plan Enterprise fournit le service de commande et une autorité de certification. Les frais d'appartenance sont de 1000 dollars auxquels s'ajoutent des frais de 1000 dollars par homologue associés au réseau. Si vous souhaitez disposer de la haute disponibilité (HA), vous devez acquérir un homologue supplémentaire fournissant les fonctions HA. Par exemple, une organisation (avec des frais d'appartenance de 1000 dollars) ayant deux homologues (1000 dollars X 2 homologues) et disposant de la HA (1000 dollars X 2 homologues HA) devra s'acquitter chaque mois de 5000 dollars.
 
-Inscrivez-vous dès maintenant en tant que membre [{{site.data.keyword.blockchainfull_notm}} ![External link icon](images/external_link.svg "External link icon")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps).
+Inscrivez-vous dès maintenant en tant que membre [{{site.data.keyword.blockchainfull_notm}} ![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps).

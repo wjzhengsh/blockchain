@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-08-15"
+lastupdated: "2017-12-05"
 ---
 
 {:new_window: target="_blank"}
@@ -42,11 +42,12 @@ La **Figure 1** illustre l'écran "Présentation" :
 
   Vous pouvez également consulter les journaux de composant en cliquant sur **Afficher les journaux** dans la liste déroulante sous l'en-tête **Actions**. Ces journaux présentent les appels de procédure distante qui ont lieu entre les différents composants réseau et s'avèrent utiles pour le débogage et le traitement des incidents. Vous pouvez par exemple les tester en arrêtant un homologue et en le ciblant avec une transaction ; vous verrez alors des erreurs de connectivité gRPC. Lorsque vous redémarrez l'homologue et relancez la transaction, vous verrez qu'une connexion est réussie. Vous pouvez aussi arrêter un homologue pendant une longue période alors que vos canaux continuent à effectuer des transactions. Lorsque l'homologue est redémarré, vous remarquez une synchronisation du registre via le protocole gossip. Une fois que l'homologue a complètement synchronisé le registre, vous pouvez procéder à des appels et des requêtes normaux.  
 - Données d'identification pour le service  
-  Vous pouvez consulter le ficher JSON pour les informations réseau de faible niveau de chaque composant en cliquant sur le bouton **Données d'identification pour le service** dans l'angle supérieur droit de l'onglet "Ressources". Il s'agit de l'intégralité des infos de configuration dont vous aurez besoin pour une application. Notez, cependant, que ce fichier contient uniquement les adresses de vos composants spécifiques et des noeuds de tri partagés. Si vous devez cibler d'autres homologues, vous aurez besoin d'obtenir ces noeuds finaux. L'en-tête "url" affiche le noeud final d'API pour chaque composant. Ces noeuds finaux sont requis pour cibler les composants réseau spécifiques d'une application côté client, et leurs définitions résident généralement dans un fichier de configuration modélisé JSON qui est fourni avec l'application. Si vous personnalisez une application qui nécessite l'adhésion d'homologues qui ne font pas partie de votre organisation, vous devrez obtenir ces adresses IP auprès des opérateurs concernés dans le cadre d'une opération externe. Les clients doivent pouvoir se connecter aux
+  Vous pouvez consulter le ficher JSON pour les informations réseau de faible niveau de chaque composant en cliquant sur le bouton **Données d'identification pour le service** dans l'angle supérieur droit de l'onglet "Ressources". Il s'agit de l'intégralité des infos de configuration dont vous aurez besoin pour une application. Notez, cependant, que ce fichier contient uniquement les adresses de vos composants spécifiques et des noeuds de tri partagés. Si vous devez cibler d'autres homologues, vous aurez besoin d'obtenir ces noeuds finaux.
+  L'en-tête "url" affiche le noeud final d'API pour chaque composant. Ces noeuds finaux sont requis pour cibler les composants réseau spécifiques d'une application côté client, et leurs définitions résident généralement dans un fichier de configuration modélisé JSON qui est fourni avec l'application. Si vous personnalisez une application qui nécessite l'adhésion d'homologues qui ne font pas partie de votre organisation, vous devrez obtenir ces adresses IP auprès des opérateurs concernés dans le cadre d'une opération externe. Les clients doivent pouvoir se connecter aux
 homologues dont ils attendent une réponse.  
 - Ajout d'homologues  
-  Cliquez sur le bouton **Ajouter des homologues** dans l'angle supérieur droit pour ajouter des noeuds homologue à votre réseau. Chaque membre peut ajouter jusqu'à six homologues dans un réseau. Vous pouvez ajouter des noeuds homologue pour la première fois lorsque vous créez ou rejoignez un réseau ou ultérieurement dans le moniteur réseau.   
-  Dans la fenêtre contextuelle "Ajouter des homologues", sélectionnez le nombre et la taille des noeuds homologue que vous voulez ajouter. Actuellement, seuls de "petits" homologues sont disponibles à la vente, cependant des homologues de taille "moyenne" ou "grande" seront bientôt proposés pour l'hébergement de charges de travail plus importantes et de débits de transaction plus élevés. Des détails concernant le dimensionnement et les mesures de performance des homologues seront bientôt disponibles...
+  Cliquez sur le bouton **Ajouter des homologues** dans l'angle supérieur droit pour ajouter des noeuds homologue à votre réseau. Chaque membre peut ajouter jusqu'à trois homologues dans un réseau. Vous pouvez ajouter des noeuds homologue pour la première fois lorsque vous créez ou rejoignez un réseau ou ultérieurement dans le moniteur réseau.   
+  Dans la fenêtre contextuelle "Ajouter des homologues", sélectionnez le nombre et la taille des noeuds homologue que vous voulez ajouter.  Actuellement, seuls de "petits" homologues sont disponibles à la vente, cependant des homologues de taille "moyenne" ou "grande" seront bientôt proposés pour l'hébergement de charges de travail plus importantes et de débits de transaction plus élevés.  Des détails concernant le dimensionnement et les mesures de performance des homologues seront bientôt disponibles...
   
 ## Membres
 
@@ -72,7 +73,7 @@ Pour plus d'informations sur la génération de votre clé de certificat, voir [
 
 Vous pouvez diviser votre réseau en canaux, où chaque canal représente un sous-ensemble de membres qui sont autorisés à consulter les données des codes blockchain instanciés sur ce canal. Chaque réseau doit comporter au moins un canal pour que les transactions puissent s'effectuer. Chaque canal a un registre unique et les utilisateurs doivent être correctement authentifiés pour exécuter des opérations de lecture/écriture sur ce registre. Si vous n'êtes pas sur un canal, vous ne pouvez voir aucune donnée.
 
-La **Figure 4** illustre l'écran de tableau de bord initial qui affiche une présentation de tous les canaux de votre réseau. 
+La **Figure 4** illustre l'écran de tableau de bord initial qui affiche une présentation de tous les canaux de votre réseau.
 
 ![Canaux](images/channels.png "Canaux")
 *Figure 4. Canaux*
@@ -84,7 +85,7 @@ Vous pouvez aussi sélectionner un canal existant afin d'afficher des détails p
 
 ## Code blockchain
 
-Le code blockchain définit la logique métier et les instructions transactionnelles pour la création et la modification des actifs. 
+Le code blockchain définit la logique métier et les instructions transactionnelles pour la création et la modification des actifs.
 
 La **Figure 5** illustre l'écran de tableau de bord initial des codes blockchain :
 
@@ -103,33 +104,36 @@ La **Figure 6** illustre l'écran "Notifications" :
 ![Notifications](images/notifications.png "Notifications")
 *Figure 6. Notifications*
 
-* Lorsque vous créez un canal ou êtes invité à rejoindre un nouveau canal, une notification s'affiche dans le moniteur réseau. 
-* Les demandes sont regroupées dans les sous-onglets "Toutes", "En attente" et "Terminée". Les nombres figurant à la suite de l'en-tête du sous-onglet indiquent le nombre de demandes dans chaque sous-onglet.
+Lorsque vous créez un canal ou êtes invité à rejoindre un nouveau canal, une notification s'affiche dans le moniteur réseau. 
+
+Les demandes sont regroupées dans les sous-onglets "Toutes", "En attente" et "Terminée". Les nombres figurant à la suite de l'en-tête du sous-onglet indiquent le nombre de demandes dans chaque sous-onglet.
    * Vous pouvez trouver toutes vos demandes sous le sous-onglet "Toutes".
-   * Les demandes que vous n'avez pas acceptées ou que vous avez refusées, ou que vous n'avez pas encore consultées, figurent sous le sous-onglet "Non lue". Cliquez sur le bouton **Inspecter la demande** pour consulter la demande, qui comporte la règle de canal et les membres, puis cliquez sur **Accepter** ou **Refuser**. Vous pouvez aussi décider de traiter la demande ultérieurement en cliquant sur **Plus tard**. Si vous acceptez une demande et que celle-ci est acceptée par suffisamment d'opérateurs de canal, vous pouvez cliquer sur **Soumettre une demande** pour activer la mise à jour de canal.  
-   * Une demande soumise apparaît alors dans le sous-onglet "Terminée". Vous pouvez cliquez sur **Inspecter la demande** pour afficher ses détails.
+   * Les demandes que vous n'avez pas acceptées ou que vous avez refusées, ou que vous n'avez pas encore consultées, figurent sous le sous-onglet "En attente". Cliquez sur le bouton **Inspecter la demande** pour consulter la demande, qui comporte la règle de canal et les membres, ainsi que le statut de vote. Si vous être un opérateur de canal, vous pouvez soit **Accepter** soit **Décliner** la demande, ou la traiter à un autre moment en cliquant sur **Plus tard**. Si la demande est acceptée par suffisamment d'opérateurs de canal, vous pouvez cliquer sur **Soumettre une demande** pour activer la mise à jour de canal.
+   * Une demande soumise apparaît alors dans le sous-onglet "Terminée".  Vous pouvez cliquez sur **Inspecter la demande** pour afficher ses détails.
   
-Si vous avez une longue liste de demandes, vous pouvez rechercher dans la zone de recherche située dans la partie supérieure de l'écran. Les demandes en attente peuvent être supprimées en sélectionnant la case en regard et en cliquant sur **Supprimer les demandes**. Notez qu'une demande terminée ne peut pas être supprimée. 
+Si vous avez une longue liste de demandes, vous pouvez rechercher dans la zone de recherche située dans la partie supérieure de l'écran. 
+
+Les demandes en attente peuvent être supprimées en sélectionnant la case en regard et en cliquant sur **Supprimer la demande**. Notez qu'une demande terminée ne peut pas être supprimée.
 
 
 ## Support
 
 L'écran "Support" comporte deux onglets qui fournissent des informations de support sous l'onglet "Support" et une description des fonctions nouvelles et modifiées de chaque édition sous l'onglet "Notes sur l'édition".
 
-Utilisez les liens et les ressources de cette page pour accéder à des forums de dépannage et de support. Si vous ne parvenez pas à déboguer votre problème ou à obtenir une réponse à votre question, cliquez sur le lien **Ouvrez un ticket de demande de service Bluemix** et suivez les instructions pour soumettre des tickets.
+Utilisez les liens et les ressources de cette page pour accéder à des forums de dépannage et de support. Si vous ne parvenez pas à déboguer votre problème ou à obtenir une réponse à votre question, cliquez sur le lien **Ouvrez un ticket de demande de service {{site.data.keyword.Bluemix_notm}}** et suivez les instructions pour soumettre des tickets.
 
 La **Figure 7** illustre l'écran "Support" initial qui comporte des informations de support sous l'onglet "Support" :
 
 ![Support](images/support.png "Support")
 *Figure 7. Support Blockchain*
 
-* [Docs de service {{site.data.keyword.blockchainfull_notm}}](index.html), qui est le présent site de documentation, fournit une aide sur la mise en route de la plateforme {{site.data.keyword.blockchainfull_notm}} sur {{site.data.keyword.Bluemix_notm}}. Vous pouvez accéder aux rubriques correspondantes depuis le navigateur ou rechercher un termine à l'aide de la fonction de recherche située en haut de l'écran.  
-* [IBM Developer Works ![External link icon](images/external_link.svg "External link icon")](https://developer.ibm.com/blockchain/) sous **Aide communautaire** comporte des ressources et des informations pour les développeurs.  
-* [IBM dWAnswers ![External link icon](images/external_link.svg "External link icon")](https://developer.ibm.com/answers/smartspace/blockchain/) sous **Ticket de demande de service** fait office de plateforme pour les questions et les réponses. Vous pouvez rechercher des réponses à des questions préalablement posées ou soumettre une nouvelle question. Assurez-vous d'inclure le mot clé **blockchain** dans votre question.   
-  Vous pouvez également soumettre un ticket pour l'équipe de support {{site.data.keyword.blockchainfull_notm}} à l'aide de l'option [Ouvrir un ticket de demande de service {{site.data.keyword.Bluemix_notm}}![External link icon](images/external_link.svg "External link icon")](). Partagez les détails et les fragments de code de votre instance Bluemix spécifique.  
-* [Modèles d'application ![External link icon](images/external_link.svg "External link icon")]() sous Modèles d'application **{{site.data.keyword.blockchain}}** fournit une aide et des exemples de fragment de code pour vous aider dans le développement d'applications.  
-* [Hyperledger Fabric ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/) et [Communauté Hyperledger Fabric![External link icon](images/external_link.svg "External link icon")]() sous **Hyperledger Fabric** fournissent des données plus détaillées sur la pile Hyperledger Fabric.  
-  Dialoguez avec un [expert Hyperledger![External link icon](images/external_link.svg "External link icon")](https://chat.hyperledger.org/channel/general) si vous avez des questions sur le code Hyperledger Fabric.   
+* [Docs de service {{site.data.keyword.blockchainfull_notm}}](index.html), qui est le présent site de documentation, fournit une aide sur la mise en route de la plateforme {{site.data.keyword.blockchainfull}} sur {{site.data.keyword.Bluemix_notm}}. Vous pouvez accéder aux rubriques correspondantes depuis le navigateur ou rechercher un termine à l'aide de la fonction de recherche située en haut de l'écran.  
+* [IBM Developer Works ![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://developer.ibm.com/blockchain/) sous **Aide communautaire** comporte des ressources et des informations pour les développeurs.  
+* [IBM dWAnswers ![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://developer.ibm.com/answers/smartspace/blockchain/) sous **Ticket de demande de service** fait office de plateforme pour les questions et les réponses. Vous pouvez rechercher des réponses à des questions préalablement posées ou soumettre une nouvelle question. Assurez-vous d'inclure le mot clé **blockchain** dans votre question.   
+  Vous pouvez également soumettre un ticket pour l'équipe de support {{site.data.keyword.blockchainfull_notm}} à l'aide de l'option [Ouvrir un ticket de demande de service {{site.data.keyword.Bluemix_notm}}![Icône de lien externe](images/external_link.svg "Icône de lien externe")]().  Partagez les détails et les fragments de code de votre instance {{site.data.keyword.Bluemix_notm}} spécifique.  
+* [Modèles d'application ![Icône de lien externe](images/external_link.svg "Icône de lien externe")]() sous Modèles d'application **{{site.data.keyword.blockchain}}** fournit une aide et des exemples de fragment de code pour vous aider dans le développement d'applications.  
+* [Hyperledger Fabric ![Icône de lien externe](images/external_link.svg "Icône de lien externe")](http://hyperledger-fabric.readthedocs.io/) et [Communauté Hyperledger Fabric![Icône de lien externe](images/external_link.svg "Icône de lien externe")]() sous **Hyperledger Fabric** fournissent des données plus détaillées sur la pile Hyperledger Fabric.  
+  Dialoguez avec un [expert Hyperledger![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://chat.hyperledger.org/channel/general) si vous avez des questions sur le code Hyperledger Fabric.   
   
   
 La **Figure 8** illustre l'écran "Members" initial qui comporte les fonctions nouvelles et modifiées de chaque édition sous l'onglet "Notes sur l'édition" :

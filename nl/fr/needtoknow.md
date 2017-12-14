@@ -26,7 +26,7 @@ L'architecture d'{{site.data.keyword.blockchainfull_notm}} repose sur le projet 
 
 ## Déclaration Open source
 
-Les plans de l'offre {{site.data.keyword.blockchainfull_notm}} on {{site.data.keyword.Bluemix_notm}} reposent sur la pile Hyperledger Fabric V1.0 de Linux Foundation. Les membres du projet Hyperledger, y compris IBM, continuent à contribuer au différents sous-projets sous l'égide de Hyperledger. Toutes les contributions sont passées en revue, certifiées et testées par la communauté. 
+Les plans de l'offre {{site.data.keyword.blockchainfull_notm}} on {{site.data.keyword.Bluemix_notm}} reposent sur la pile Hyperledger Fabric V1.0 de Linux Foundation. Les membres du projet Hyperledger, y compris IBM, continuent à contribuer au différents sous-projets sous l'égide de Hyperledger.  Toutes les contributions sont passées en revue, certifiées et testées par la communauté. 
 
 Hyperledger Fabric a annoncé qu'il avait atteint l'*état de niveau de production* pour la version 1.0 le 11 juillet 2017. 
 
@@ -43,4 +43,4 @@ Les pratiques de codage suivantes suivantes NE sont PAS prises en charge sur les
 pourraient introduire du non déterminisme (utilisation de "random" ou
 "time", par exemple).  
 
-En outre, il n'est pas recommandé d'écrire du code blockchain non déterministe, car cela présente un risque pour la cohérence et l'intégrité des données. Il est à noter que l'architecture Hyperledger Fabric est conçue pour contrer le code blockchain non déterministe via une série de vérifications d'adhésion et de validation ; cependant, vous êtes quand même fortement encouragé à coder des fonctions déterministes qui ne reposent pas sur des variables globales non statiques (par exemple, le temps).  
+En outre, il n'est pas recommandé d'écrire du code blockchain non déterministe, car cela présente un risque pour la cohérence et l'intégrité des données.  Il est à noter que l'architecture Hyperledger Fabric est conçue pour contrer le code blockchain non déterministe via une série de vérifications d'adhésion et de validation ; cependant, vous êtes quand même fortement encouragé à coder des fonctions déterministes qui ne reposent pas sur des variables globales non statiques (par exemple, le temps).  

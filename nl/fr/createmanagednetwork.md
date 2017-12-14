@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-08-14"
+lastupdated: "2017-12-06"
 
 ---
 
@@ -33,16 +33,16 @@ Cliquez sur **Nouveau canal**. Vous êtes redirigé vers un écran dans lequel v
 
 Après avoir cliqué sur **Suivant**, vous accédez à un écran dans lequel vous pouvez inviter des membres à rejoindre le canal et gérer leurs droits. Dans cet exemple, on suppose que vous agissez en tant que tiers digne de confiance dans le cadre d'un échange de devises entre deux banques. Vous (le tiers de confiance) vous définissez vous-même en tant qu'“Opérateur” unique pour le canal et attribuez aux deux autres banques le rôle de “Rédacteurs”. Vous devenez ainsi la seule autorité qui peut éditer le canal (instanciation de code, par exemple, opération décrite plus loin) tout en laissant aux deux banques la possibilité d'appeler des transactions. Votre écran doit ressembler à ceci : 
 
-  ![Sélection des rôles de membre](images/selectmemberroles.png "Sélection des rôles de membre")
+  ![Sélection des rôles de membre](images/selectmemberroles.png "Sélection des rôles de membre") 
 *Où “JoeCo” est vous-même, le tiers de confiance, et “IBM” et “Chris” sont les deux banques (il s'agit juste d'un exemple).* 
 
 Une fois que vous avez affecté les droits appropriés, cliquez sur **Suivant**. 
 
 Vous accédez à un écran de mise à jour des règles de canal. Etant donné qu'il y a un seul opérateur sur ce canal (vous), sélectionnez le nombre de membres nécessaire à la création du canal : “1”. Cliquez ensuite sur **Soumettre une demande**. 
 
-Remarque : même si vous êtes le seul opérateur de ce canal, il s'agit encore seulement d'une demande ; vous devez encore accéder à l'écran correct pour approuver la demande et créer réellement le canal. 
+Remarque : même si vous êtes le seul opérateur de ce canal, il s'agit encore seulement d'une demande ; vous devez encore accéder à l'écran correct pour approuver et soumettre la demande de création du canal. 
 
-Des courriers électroniques seront envoyés aux membres que vous avez invités, pour les inviter à rejoindre le canal. Toutefois, comme ils disposent seulement de privilèges d'“écriture”, la capacité à créer réellement le canal vous incombe. Pour cela, accédez à l'écran “Notifications”, dans lequel une alerte de création du canal doit être en attente. Cliquez sur **Inspecter la demande**. Les détails du canal s'affichent. Passez ces détails en revue et cliquez sur **Soumettre**. 
+Des courriers électroniques sont envoyés aux membres que vous invitez, pour les inviter à rejoindre le canal. Toutefois, ils disposent seulement de privilège en “écriture”, et vous êtes chargé de terminer le processus de création de canal. Accédez à l'écran “Notifications” du moniteur réseau, dans lequel une alerte de création du canal s'affiche. Localisez la demande à traiter dans les sous-onglets "Tout" ou "En attente". Cliquez sur **Inspecter la demande** pour afficher les détails du canal et cliquez sur **Approuver**. Cliquez ensuite sur **Soumettre une demande**. 
 
 Félicitations ! Vous venez de créer un canal géré. 
 
@@ -62,7 +62,7 @@ Pour créer ce type de canal, suivez la même procédure de création de canal q
 
 ## {{site.data.keyword.IBM_notm}} Support 
 
-{{site.data.keyword.IBM_notm}} propose un support sur les solutions {{site.data.keyword.blockchain}} mises en oeuvre par {{site.data.keyword.IBM_notm}}. Vous pouvez accéder aux données relatives à {{site.data.keyword.blockchainfull_notm}} Support via [{{site.data.keyword.blockchainfull_notm}} DockerHub ![External link icon](images/external_link.svg "External link icon")](https://hub.docker.com/u/ibmblockchain/) et découvrir les engagements de support disponibles.
+{{site.data.keyword.IBM_notm}} propose un support sur les solutions {{site.data.keyword.blockchain}} mises en oeuvre par {{site.data.keyword.IBM_notm}}. Vous pouvez accéder aux données relatives à {{site.data.keyword.blockchainfull_notm}} Support via [{{site.data.keyword.blockchainfull_notm}} DockerHub ![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://hub.docker.com/u/ibmblockchain/) et découvrir les engagements de support disponibles.
 
 Pour une présentation complète des fonctions et fonctionnalités de Hyperledger Fabric v1.0,
-consultez la [documentation Hyperledger Fabric![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/latest/).
+consultez la [documentation Hyperledger Fabric![Icône de lien externe](images/external_link.svg "Icône de lien externe")](http://hyperledger-fabric.readthedocs.io/en/latest/).
