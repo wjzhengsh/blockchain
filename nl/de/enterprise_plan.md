@@ -31,9 +31,9 @@ Die Fabric-Peers der Mitglieder sind die Schnittstelle oder das Gateway für Anw
 
 Neben den zentralen Blockchain-Komponenten bietet die Enterprise-Mitgliedschaftsoption eine Infrastruktur mit sicherer Datenspeicherung und Kommunikation (TLS) sowie hoher Verfügbarkeit.  Während Fabric-Netze diese Infrastrukturressourcen gemeinsam nutzen, wird für die Fabric-Komponentenknoten im Netz eine Isolierung vorgenommen und jeder Knoten zum Schutz der Ausführungsumgebung in einem sicheren Docker-Container ausgeführt.
 
-Der einzige Aspekt, der festgelegt werden muss, ist die Größe der für das Netz erforderlichen Peers. Diese Entscheidung ist abhängig von der Anzahl der erforderlichen Kanäle sowie von der Workload pro Kanal, der Hauptspeicherbelegung und dem Plattenspeicherplatz. Im Folgenden finden Sie die Peergrößen, die über den Enterprise-Serviceplan erhältlich sind, sowie Hinweise zur Auswahl des richtigen Peers.
+Der einzige Aspekt, der festgelegt werden muss, ist die Größe der für das Netz erforderlichen Peers. Diese Entscheidung ist abhängig von der Anzahl der erforderlichen Kanäle sowie von der Workload pro Kanal, der Hauptspeicherbelegung und dem Plattenspeicherplatz. 
 
-Verwenden Sie die IBM Blockchain-Plattform für stabilere Bereitstellungen auf Produktionsniveau oder vergleichbarem Niveau. Verwenden Sie den IBM Container-Service oder lokale Download-Images zu Testzwecken. 
+Verwenden Sie die IBM Blockchain-Plattform für stabilere Bereitstellungen auf Produktionsniveau oder vergleichbarem Niveau. Verwenden Sie den IBM Container-Service oder lokale Download-Images zu Testzwecken.
 
 Im Rahmen des Enterprise-Plans werden der Anordnungs- und CA-Service bereitgestellt. Die Mitgliedsgebühr beträgt $ 1000, die dem jeweiligen Netz zugeordnete Peer-Gebühr $ 1000. Zur Bereitstellung von Hochverfügbarkeitfunktionen (HA-Funktionalität) müssen Sie einen zusätzlichen Peer erwerben. Beispiel: Für eine Organisation (zugehörige Mitgliedsgebühr $ 1000) mit zwei Peers $ 1000 X 2 Peers) und HA ($ 1000 X 2 HA-Peers) fallen monatlich Gebühren von $ 5000 an.
 

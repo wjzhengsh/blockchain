@@ -26,9 +26,9 @@ Mit den {{site.data.keyword.blockchainfull_notm}}-Angebotsplänen für {{site.da
 
 ## Open-Source-Aussage
 
-Die {{site.data.keyword.blockchainfull_notm}}-Angebotspläne für {{site.data.keyword.Bluemix_notm}} basieren auf dem Hyperledger Fabric V1.0-Stack der Linux Foundation. Hyperledger Project-Mitglieder, einschließlich IBM, tragen weiterhin zu verschiedenen Unterprojekten unter dem Hyperledger-Umbrella bei. Alle Beiträge werden von der Community überprüft, untersucht und getestet. 
+Die {{site.data.keyword.blockchainfull_notm}}-Angebotspläne für {{site.data.keyword.Bluemix_notm}} basieren auf dem Hyperledger Fabric V1.0-Stack der Linux Foundation. Hyperledger Project-Mitglieder, einschließlich IBM, tragen weiterhin zu verschiedenen Unterprojekten unter dem Hyperledger-Umbrella bei.  Alle Beiträge werden von der Community überprüft, untersucht und getestet. 
 
-Hyperledger Fabric gab am 11. Juli 2017 bekannt, dass für V1.0 der *Production Level Status* erreicht wurde.  
+Hyperledger Fabric gab am 11. Juli 2017 bekannt, dass für V1.0 der *Production Level Status* erreicht wurde. 
 
 ## Support-Aussage für Chaincode
 
@@ -41,4 +41,4 @@ Die folgenden Programmierungsverfahren werden in {{site.data.keyword.blockchainf
 5. Direkter Zugriff auf externe Services wie Datenbanken aus dem Chaincode.
 6. Verwendung von Bibliotheken oder globalen Variablen, die zu Nichtdeterminismus führen könnten (z. B. "random" oder "time").  
 
-Das Schreiben von nicht deterministischem Chaincode wird nicht empfohlen, da sich dadurch Risiken für die Datenkonsistenz und -integrität ergeben. Es sei darauf hingewiesen, dass die Hyperledger Fabric-Architektur mit einem speziellen Bewilligungs- und Validierungssystem entwickelt wurde, um der Erstellung von nicht deterministischem Chaincode entgegenzuwirken. Es wird weiterhin dringend empfohlen, deterministische Funktionen zu codieren, die auf nicht statischen globalen Variablen (z. B. Zeit) basieren.   
+Das Schreiben von nicht deterministischem Chaincode wird nicht empfohlen, da sich dadurch Risiken für die Datenkonsistenz und -integrität ergeben.  Es sei darauf hingewiesen, dass die Hyperledger Fabric-Architektur mit einem speziellen Bewilligungs- und Validierungssystem entwickelt wurde, um der Erstellung von nicht deterministischem Chaincode entgegenzuwirken. Es wird weiterhin dringend empfohlen, deterministische Funktionen zu codieren, die auf nicht statischen globalen Variablen (z. B. Zeit) basieren.  

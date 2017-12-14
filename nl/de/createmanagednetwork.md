@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-08-14"
+lastupdated: "2017-12-06"
 
 ---
 
@@ -17,7 +17,7 @@ lastupdated: "2017-08-14"
 **ACHTUNG:** Bevor Sie ein {{site.data.keyword.blockchainfull}}-Angebot verwenden, lesen Sie die technischen Angaben und Unterstützungsinformationen im Abschnitt [Haftungsausschluss](needtoknow.html).  
 {:shortdesc}
 
-Bei einigen Anwendungsfällen - z. B. auf Devisenmärkten mit strikten gesetzlichen Auflagen - kann es erforderlich sein, einem vertrauenswürdigen Dritten die Verantwortung für die Verwaltungsrollen auf den Kanälen zu geben, die normalerweise von verschiedenen Operatoren oder Mitgliedern gehandhabt werden.  
+Bei einigen Anwendungsfällen - z. B. auf Devisenmärkten mit strikten gesetzlichen Auflagen - kann es erforderlich sein, einem vertrauenswürdigen Dritten die Verantwortung für die Verwaltungsrollen auf den Kanälen zu geben, die normalerweise von verschiedenen Operatoren oder Mitgliedern gehandhabt werden. 
 
 Der Prozess der Einrichtung eines solchen Netzes gleicht im Wesentlichen der Erstellung aller anderen Netze. Der Hauptunterschied besteht darin, dass den Mitgliedern Berechtigungen zugewiesen werden, die bestimmen, wie sie Transaktionen in Kanälen ausführen können.  
 
@@ -31,19 +31,18 @@ Wenn Sie über ein Netz verfügen und die Mitglieder, die Sie eingeladen haben, 
 
 Klicken Sie auf **Neuer Kanal**. Dadurch werden Sie zu einer Anzeige geführt, in der Sie für Ihren Kanal einen Namen und eine Beschreibung angeben (die Beschreibung ist optional). 
 
-Nach dem Klicken auf **Weiter** gelangen Sie zu der Anzeige, auf der Sie Mitglieder für den Kanal einladen und ihre Berechtigungen verwalten können. 
-In diesem Beispiel wird davon ausgegangen, dass Sie bei einem Devisentausch als vertrauenswürdiger Dritter zwischen zwei Banken fungieren. Sie - als vertrauenswürdiger Dritter - ordnen sich als einziger die Rolle "Operator" für den Kanal zu und geben den Banken die Schreibberechtigung. Dadurch erhalten Sie die alleinige Berechtigung zur Bearbeitung des Kanals (z. B. für das Instanziieren des dortigen Chaincodes -- mehr dazu später), während die beiden Banken immer noch die Möglichkeit haben, Transaktionen aufzurufen. Die Anzeige sollte etwa wie folgt aussehen: 
+Nach dem Klicken auf **Weiter** gelangen Sie zu der Anzeige, auf der Sie Mitglieder für den Kanal einladen und ihre Berechtigungen verwalten können. In diesem Beispiel wird davon ausgegangen, dass Sie bei einem Devisentausch als vertrauenswürdiger Dritter zwischen zwei Banken fungieren. Sie - als vertrauenswürdiger Dritter - ordnen sich als einziger die Rolle "Operator" für den Kanal zu und geben den Banken die Schreibberechtigung. Dadurch erhalten Sie die alleinige Berechtigung zur Bearbeitung des Kanals (z. B. für das Instanziieren des dortigen Chaincodes -- mehr dazu später), während die beiden Banken immer noch die Möglichkeit haben, Transaktionen aufzurufen. Die Anzeige sollte etwa wie folgt aussehen: 
 
-  ![Mitgliedsrollen auswählen](images/selectmemberroles.png "Mitgliedsrollen auswählen")
+  ![Mitgliedsrollen auswählen](images/selectmemberroles.png "Mitgliedsrollen auswählen") 
 *Hierbei sind Sie "JoeCo", der vertrauenswürdige Dritte, und "IBM" und "Chris" sind die beiden Banken (dies ist nur ein Beispiel).* 
 
 Wenn Sie die gewünschten Berechtigungen zugewiesen haben, klicken Sie auf **Weiter**. 
 
 Dadurch gelangen Sie zu einer Anzeige für Kanalrichtlinienaktualisierungen. Da es nur einen Operator für diesen Kanal gibt (das sind Sie), wählen Sie für die Anzahl der Mitglieder, die zum Erstellen erforderlich sind, die Zahl "1" aus. Klicken Sie anschließend auf **Anforderung übergeben**. 
 
-Hinweis: Auch wenn Sie der einzige Operator dieses Kanals sind, handelt es sich hier nur um eine Anforderung. Sie müssen trotzdem zu der entsprechenden Anzeige navigieren, um die Anforderung zu genehmigen und den Kanal tatsächlich zu erstellen. 
+Hinweis: Auch wenn Sie der einzige Operator dieses Kanals sind, handelt es sich hier nur um eine Anforderung. Sie müssen trotzdem zu der entsprechenden Anzeige navigieren, um die Anforderung zu genehmigen und zu übergeben und den Kanal zu erstellen. 
 
-E-Mails werden an die Mitglieder gesendet, die Sie eingeladen haben, und fordern sie auf, dem Kanal beizutreten. Da sie jedoch nur die Berechtigung zum "Schreiben" haben, bleibt die Möglichkeit zum Erstellen des Kanals Ihnen vorbehalten. Um dies zu tun, navigieren Sie zur Anzeige "Benachrichtigungen", wobei bereits ein Alert zum Erstellen des Kanals angezeigt werden sollte. Klicken Sie auf **Anforderung überprüfen**. Dadurch werden die Kanaldetails angezeigt. Prüfen Sie diese Details und klicken Sie auf **Übergeben**. 
+E-Mails werden an die Mitglieder gesendet, die Sie einladen, und fordern sie auf, dem Kanal beizutreten. Diese verfügen jedoch nur über Schreibberechtigungen und Sie sind für den Abschluss des Kanalerstellungsprozesses zuständig. Navigieren Sie zur Anzeige "Benachrichtigungen" im Netzmonitor, wo ein Alert zu Erstellung des Kanals angezeigt wird. Suchen Sie die zu bearbeitende Anforderung auf den Unterregisterkarten "Alle" oder "Anstehend". Klicken Sie auf **Anforderung überprüfen**, um Details zum Kanal anzuzeigen, und klicken Sie auf **Genehmigen**. Klicken Sie anschließend auf **Anforderung übergeben**. 
 
 Herzlichen Glückwunsch! Sie haben soeben einen verwalteten Kanal erstellt. 
 
@@ -64,7 +63,7 @@ Um einen solchen Kanal zu erstellen, müssen Sie dieselben Verfahren zum Erstell
 ## {{site.data.keyword.IBM_notm}} Support 
 
 {{site.data.keyword.IBM_notm}} bietet Support für von {{site.data.keyword.IBM_notm}} implementierte {{site.data.keyword.blockchain}}-Lösungen. Rufen Sie die {{site.data.keyword.blockchainfull_notm}}-Support-Details über [{{site.data.keyword.blockchainfull_notm}} DockerHub
-![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://hub.docker.com/u/ibmblockchain/) ab und durchsuchen Sie die verfügbaren Support-Engagements. 
+![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://hub.docker.com/u/ibmblockchain/) ab und durchsuchen Sie die verfügbaren Support-Engagements.
 
 Umfassende Informationen zu allen Hyperledger Fabric v1.0-Features und -Funktionen finden Sie in der
 [Hyperledger Fabric-Dokumentation ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](http://hyperledger-fabric.readthedocs.io/en/latest/).
