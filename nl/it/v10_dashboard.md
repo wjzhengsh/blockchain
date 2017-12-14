@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-08-15"
+lastupdated: "2017-12-05"
 ---
 
 {:new_window: target="_blank"}
@@ -11,129 +11,140 @@ lastupdated: "2017-08-15"
 {:screen: .screen}
 {:pre: .pre}
 
-# Operate the network
+# Operare la rete
 {: #v10_dashboard}
 
 
-The Network Monitor provides an overview of your blockchain environment, including network components, members, joined channels, performance data, and deployed chaincodes.
+Il Network Monitor fornisce una panoramica del tuo ambiente blockchain, compresi componenti di rete, membri, canali oggetto di adesione, dati delle prestazioni e chaincode distribuiti.
 {:shortdesc}
 
-The Network Monitor exposes the following screens:
-* In the "Overview" screen, you can view network service credentials, component status information, and add peers.
-* In the "Members" screen, you can manage network members and certificates.
-* In the "Channels" screen, you can create new channels and view information on existing channels.
-* In the "Chaincode" screen, you can install and instantiate chaincodes on your peers.
-* In the "Notifications" screen, you can handle pending approvals and view completed approvals.
-* In the "Support" screen, you can find links for reference resources and see new and changed functions in each release.
+Il Network Monitor presenta le seguenti schermate:
+* Nella schermata "Overview", puoi visualizzare le credenziali del servizio di rete, le informazioni sullo stato dei componenti e aggiungere i peer.
+* Nella schermata "Members", puoi gestire i certificati e i membri della rete.
+* Nella schermata "Channels", puoi creare dei nuovi canali e visualizzare informazioni sui canali esistenti.
+* Nella schermata "Chaincode", puoi installare e istanziare i chaincode sui tuoi peer.
+* Nella schermata "Notifications", puoi gestire le approvazioni in sospeso e visualizzare le approvazioni completate.
+* Nella schermata "Support", puoi trovare i link per le risorse di riferimento e vedere le funzioni nuove e modificate in ciascuna release.
 
 
 ## Overview
 
-The "Overview" screen displays real-time status information on your blockchain components including the orderer, CA, and peer nodes. Each component is displayed under four distinct headers: **Type**, **Name**, **Status**, and **Actions**. During the creation of your blockchain network, three orderer nodes and two CA nodes are automatically created.  The CA's are member-specific, whereas the ordering nodes are common endpoints shared across the network.
+Lo schermo "Overview" visualizza le informazioni sullo stato in tempo reale relative ai componenti blockchain, compresi l'ordinante, la CA e i nodi peer. Ogni componente viene visualizzato in quattro intestazioni distinte: **Type**, **Name**, **Status** e **Actions**. Durante la creazione della tua rete blockchain, vengono automaticamente creati tre nodi ordinante e due nodi CA.  Le CA sono specifiche per i membri, mentre i nodi di ordine sono endpoint comuni condivisi nella rete.
 
-**Figure 1** shows the "Overview" screen:
+La **Figura 1** mostra la schermata "Overview":
 
-![Overview screen](images/myresources.png "Network overview")
-*Figure 1. Network overview*
+![Schermata Overview](images/myresources.png "Panoramica della rete")
+*Figura 1. Panoramica della rete*
 
-- Node actions
+- Azioni nodo
 
-  The **Actions** header of the table provides buttons to start or stop your components. You can also start or stop a group of nodes by selecting multiple nodes and then clicking the **Start Selected** or **Stop Selected** button. The **Start Selected** or **Stop Selected** button appears on top of the table when you select one or more nodes.
+  L'intestazione **Actions** della tabella fornisce i pulsanti per avviare o arrestare i tuoi componenti. Puoi anche avviare o arrestare un gruppo di nodi selezionando più nodi e facendo quindi clic sul pulsante **Start Selected** o **Stop Selected**. Il pulsante **Start Selected** o quello **Stop Selected** sono visualizzati sopra la tabella quando selezioni uno o più nodi.
 
-  You can also check component logs by clicking **View Logs** from the dropdown list under the **Actions** header. The logs expose the remote procedure calls occurring between the various network components and are useful for debugging and troubleshooting. For example, experiment by stopping a peer and attempting to target it with a transaction; you will see gRPC connectivity errors. When you restart the peer and attempt the transaction again you will see a successful connection. You can also leave a peer down for an extended period of time as your channel(s) continue to transact. When the peer is brought back up you will notice a synchronization of the ledger through gossip protocol. As soon as the peer has fully synchronized the ledger, you can perform normal invokes and queries.  
+  Puoi anche controllare i log componenti facendo clic su **View Logs** dall'elenco a discesa sotto l'intestazione **Actions**. I log espongono le chiamate di procedura remota che si verificano tra i diversi componenti di rete e sono utili per eseguire il debug e risolvere i problemi. Fai una prova, ad esempio, arrestando un peer e provando a sceglierlo come obiettivo di una transazione; vedrai degli errori di connettività gRPC. Quando riavvii il peer e tenti nuovamente la transazione, vedrai una connessione stabilita correttamente. Puoi anche
+lasciare inattivo il peer per un periodi di tempo prolungato mentre il tuo canale continua a interagire con il libro mastro. Quando il peer
+verrà di nuovo riattivato, noterai una sincronizzazione del libro mastro attraverso il protocollo gossip. Appena il peer ha completamente sincronizzato il registro, puoi eseguire i richiami e le query normali.  
 - Service Credentials  
-  You can view the JSON file about low level network information of each component by clicking the **Service Credentials** button at the top right of the "Resources" tab. This is all the configuration info that you will need for an application. Note, however, that this file only contains the addresses for your specific components and the shared ordering nodes. If you need to target additional peers, you'll need to obtain their endpoints.
-  The header containing "url" displays the API endpoint of each component. These endpoints are required in order to target specific network components from a client-side application and their definitions will typically live in a JSON-modeled configuration file that accompanies the app. If you are customizing an application that requires endorsement from peers that are not part of your organization, you'll need to retrieve the IP addresses of those peers from the relevant operators in an out-of-band operation. Clients must be able to connect to any peers from which they need a response.  
-- Add peers  
-  Click the **Add Peers** button at the top right to add peer nodes to your network. Each member can add up to six peers in a network. You can add peer nodes for the first time when you create or join a network or later in the Network Monitor.   
-  In the pop-up "Add Peers" panel, select the number and size of peer nodes you want to add.  Currently only "small" peers are available for purchase, however there will eventually be "medium" and "large" to help accommodate larger workloads and higher transaction throughput.  Details on peer sizing and performance metrics is coming soon...
+  Puoi visualizzare il file JSON in merito alle informazioni di rete di basso livello di ciascun componente facendo clic sul pulsante **Service Credentials** nella parte superiore destra della scheda "Resources". Queste sono tutte le informazioni di configurazione di cui avrai bisogno
+per un'applicazione. Nota, tuttavia, che questo file contiene solo gli indirizzi per i tuoi specifici componenti e i nodi di ordine condivisi. Se hai bisogno di avere come obiettivo ulteriori peer, dovrai ottenerne gli endpoint.
+  L'intestazione che contiene "url" visualizza l'endpoint API di ciascun componente. Questi endpoint sono necessari per
+avere come obiettivo specifici componenti di rete da un'applicazione lato client e le loro definizioni si trovano solitamente
+in un file di configurazione di tipo JSON che accompagna l'applicazione. Se stai personalizzando un'applicazione
+che richiede l'approvazione da peer che non fanno parte della tua organizzazione, dovrai recuperare gli
+indirizzi IP di questi peer dagli operatori pertinenti in un'operazione fuori banda. I client devono riuscire a connettersi a
+un qualsiasi peer da cui necessitano di una risposta.  
+- Aggiungi peer  
+  Fai clic sul pulsante **Add Peers** nella parte superiore destra per aggiungere dei nodi peer alla tua rete. Ogni membro può aggiungere fino a tre peer in una rete. Puoi aggiungere nodi peer per la prima volta quando crei una rete o aderisci a essa oppure in un secondo momento nel Network Monitor.   
+  Nel pannello "Add Peers" a comparsa, seleziona il numero e la dimensione dei nodi peer che vuoi aggiungere.  Attualmente sono disponibili solo dei "piccoli" peer per l'acquisto; tuttavia, saranno eventualmente disponibili dei peer "medi" e "grandi" per soddisfare carichi di lavoro più grandi e un throughput delle transazioni più elevato.  I dettagli sulle dimensioni dei peer e sulle metriche delle prestazioni saranno disponibili a breve...
   
 ## Members
 
-The "Members" screen contains two tabs to display network member information in the "Members" tab and certificate information in the "Certificates" tab.
+La schermata "Members" contiene due schede per visualizzare le informazioni sui membri della rete nella scheda "Members" e le informazioni sui certificati nella scheda "Certificates".
 
-**Figure 2** shows the initial "Members" screen displaying your network members in the "Members" tab:
+La **Figura 2** mostra la schermata "Members" iniziale che visualizza i membri della tua rete nella schede "Members":
 
-![Members tab in Members screen](images/monitor_members.png "Network members")
-*Figure 2. Network members*
+![Scheda Members nella schermata Members](images/monitor_members.png "Membri della rete")
+*Figura 2. Membri della rete*
 
-Besides the members that you invite when you create the network, you can invite other members in the "Members" tab. To invite a member to your network, enter the institution name and operator's email address and click **Add Member**. A network can have a total of 15 members (including the network initiator). To remove a member from your network, click the "remove" symbol at the end of the member row.
+Oltre ai membri che inviti quando crei la rete, puoi invitare altri membri nella scheda "Members". Per invitare un membro alla tua rete, immettere il nome dell'istituzione e l'indirizzo email dell'operatore e fai clic su **Add Member**. Una rete può avere un totale di 15 membri (compreso l'iniziatore della rete). Per rimuovere un membro dalla tua rete, fai clic sul simbolo di "rimozione" alla fine della riga del membro.
 
-**Figure 3** shows the initial "Members" screen displaying member certificates in the "Certificates" tab:
+La **Figura 3** mostra la schermata "Members" iniziale che visualizza i certificati dei membri nella scheda "Certificates":
 
-![Certificates tab in Members screen](images/monitor_certificates.png "Certificates")
-*Figure 3. Certificates*
+![Scheda Certificates nella schermata Members](images/monitor_certificates.png "Certificati")
+*Figura 3. Certificati*
 
-Operators can manage the certificates for the members in the same institution in the "Certificates" tab. Click **Add Certificate** to open the "Add Certificate" panel. Give a name to your certificate, paste your client-side certificates in PEM format to the "Key" field, and click **Submit**. You need to restart your peers before the client-side certificates can take effect.
+Gli operatori possono gestire i certificati per i membri nella stessa istituzione nella scheda "Certificates". Fai clic su **Add Certificate** per aprire il pannello "Add Certificate". Dai un nome al tuo certificato, incolla i certificati lato client in formato PEM nel campo "Key" e fai clic su **Submit**. Devi riavviare i peer prima che i certificati lato client possano diventare effettivi.
 
-For information about generating your cerficate key, see [Generating the client-side certificates](v10_application.html#generating-the-client-side-certificates).
+Per informazioni sulla generazione della tua chiave di certificato, vedi [Generazione dei certificati lato client](v10_application.html#generating-the-client-side-certificates).
 
 ## Channels
 
-You can segregate your network into channels where each channel represents a subset of members that are authorized to see the data for the chaincodes instantiated on that channel. Every network must have at least one channel for transactions to take place. Each channel has a unique ledger and users must be properly authenticated to perform read/write operations against this ledger. If you're not on a channel, you can't see any data.
+Puoi suddividere la tua rete in canali, dove ogni canale rappresenta un sottoinsieme di membri autorizzati a visualizzare i dati per i chaincode istanziati su tale canale. Ogni rete deve avere almeno un canale perché le transazioni possano avere luogo. Ogni canale ha un libro mastro univoco e gli utenti devono essere correttamente autenticati per effettuare operazioni di lettura/scrittura su questo libro mastro. Se non ti trovi su un canale, non puoi vedere alcun dato.
 
-**Figure 4** shows the initial dashboard screen displaying an overview of all channels in your network:
+La **Figura 4** mostra la schermata dashboard iniziale che visualizza una panoramica di tutti i canali nella tua rete.
 
-![Channels](images/channels.png "Channels")
-*Figure 4. Channels*
+![Canali](images/channels.png "Canali")
+*Figura 4. Canali*
 
-Creating a channel will result in the generation of a channel-specific ledger. For more information, see [Creating a channel](howto/create_channel.html).
+La creazione di un canale comporterà la generazione di un libro mastro specifico per il canale. Per ulteriori informazioni, vedi [Creazione di un canale](howto/create_channel.html).
 
-You can also select an existing channel to view more precise details about the channel, membership, and active chaincodes. For more information, see [Monitoring a network](howto/monitor_network.html).  
+Puoi anche selezionare un canale esistente per visualizzare dei dettagli più precisi sul canale, l'adesione e i chaincode attivi. Per ulteriori informazioni, vedi [Monitoraggio di una rete](howto/monitor_network.html).  
 
 
 ## Chaincode
 
-Chaincode defines the business logic and transactional instructions for creating and modifying assets.
+Il chaincode definisce la logica di business e le istruzioni transazionali per la creazione e la modifica di risorse.
 
-**Figure 5** shows the initial dashboard screen of chaincodes:
+La **Figura 5** mostra la schermata del dashboard iniziale dei chaincode:
 
-![Chaincodes](images/chaincode_install_overview.png "Chaincodes")
-*Figure 5. Chaincodes*
+![Chaincode](images/chaincode_install_overview.png "Chaincode")
+*Figura 5. Chaincode*
 
-Chaincode is first installed on a peer's filesystem and then instantiated on a channel.  For more information, see [Installing and instantiating a chaincode](howto/install_instantiate_chaincode.html).
+Il chaincode viene prima installato sul filesystem di un peer e quindi istanziato su un canale.  Per ulteriori informazioni, vedi [Installazione e istanziazione di un chaincode](howto/install_instantiate_chaincode.html).
 
 
 ## Notifications
 
-You can handle pending requests and view completed requests in the "Notifications" screen. 
+Puoi gestire le richieste in sospeso e visualizzare le richieste completate nella schermata "Notifications". 
 
-**Figure 6** shows the "Notifications" screen:
+La **Figura 6** mostra la schermata "Notifications":
 
-![Notifications](images/notifications.png "Notifications")
-*Figure 6. Notifications*
+![Notifiche](images/notifications.png "Notifiche")
+*Figura 6. Notifiche*
 
-* When you create a channel or are invited to a new channel, a notification will appear in the Network Monitor. 
-* The requests are grouped into "All", "Pending", and "Completed" subtabs. Numbers after the subtab header indicate the number of requests in each subtab.
-   * You can find all your requests in the "All" subtab.
-   * Requests that you have not accepted or declined, or you have not viewed, are in the "Unread" subtab. Click the **Review Request** button to view the request, which includes the channel policy and members, and then either **Accept** or **Decline** it. You can also handle the requet at another time by clicking **Later**. If you accept a request and the request is accepted by enough channel operators, you can click **Submit Request** to activate the channel update.  
-   * A submitted request will appear in the "Completed" subtab.  You can click **Review Request** to view its details.
+Quando crei un canale o viene invitato a un nuovo canale, nel Network Monitor comparirà una notifica. 
+
+Le richieste sono raggruppate nelle sottoschede "All", "Pending" e "Completed". I numeri dopo l'intestazione della sottoscheda indicano il numero di richieste in ciascuna sottoscheda.
+   * Puoi trovare tutte le tue richieste nella sottoscheda "All".
+   * Le richieste che non hai accettato o rifiutato, o che non hai visualizzato, sono nella sottoscheda "Pending". Fai clic sul pulsante **Review Request** per visualizzare la richiesta, che include la politica e i membri del canale e lo stato di voto. Se sei un operatore del canale, puoi accettare **Accept** o declinare **Decline** la richiesta o gestirla in un altro momento facendo clic su **Later**. Se la richiesta viene accettata da un numero sufficiente di operatori del canale, puoi fare clic su **Submit Request** per attivare l'aggiornamento del canale. 
+   * Una richiesta inoltrata sarà visualizzata nella sottoscheda "Completed".  Puoi fare clic su **Review Request** per visualizzarne i dettagli.
   
-When you have a long list of requests, you can search for a request in the search field on the top. Pending requests can be deleted by selecting the boxes in the front of them and clicking **Delete Requets**. Note that a completed request cannot be deleted.
+Quando hai un lungo elenco di richieste, puoi cercare una richiesta nel campo di ricerca in alto. 
+
+Le richieste in sospeso possono essere eliminate selezionando le caselle davanti a esse e facendo clic su **Delete Request**. Nota: una richiesta completata non può essere eliminata.
 
 
 ## Support
 
-The "Support" screen contains two tabs to provide support information in the "Support" tab and to describe new and changed functions of each release in the "Release Notes" tab.
+La schermata "Support" contiene due schede per fornire le informazioni di supporto nella scheda "Support" e per descrivere le funzioni nuove e modificate di ciascuna release nella scheda "Release Notes".
 
-Use the links and resources on this page to access troubleshooting and support forums. If you are unable to debug your issue or ascertain an answer to your question, please click the **Open a Bluemix support ticket** link and follow the guidance to submit tickets.
+Utilizza i link e le risorse in questa pagina per accedere ai forum di supporto e risoluzione dei problemi. Se non riesci a eseguire il debug del tuo problema o a trovare una risposta alla tua domanda, fai clic sul link **Open an {{site.data.keyword.Bluemix_notm}} support ticket** e segui le istruzioni per inoltrare dei ticket.
 
-**Figure 7** shows the initial "Support" screen displaying support information in the "Support" tab:
+La **Figura 7** mostra la schermata "Support" iniziale che visualizza le informazioni di supporto nella scheda "Support":
 
-![Support](images/support.png "Support")
-*Figure 7. Blockchain support*
+![Supporto](images/support.png "Supporto")
+*Figura 7. Supporto di blockchain*
 
-* [{{site.data.keyword.blockchainfull_notm}} Service docs](index.html), which is this doc site, provides guidances on how to start with {{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.Bluemix_notm}}. You can find coresponding topics from the navigator or search any term with the search function on the top.  
-* [IBM Developer Works ![External link icon](images/external_link.svg "External link icon")](https://developer.ibm.com/blockchain/) under **Community help** contains resources and information for developers.  
-* [IBM dWAnswers ![External link icon](images/external_link.svg "External link icon")](https://developer.ibm.com/answers/smartspace/blockchain/) under **Support ticket** serves as a platform for questions and responses. You can search for responses from previously posed questions or submit a new question. Be sure to include the keyword **blockchain** in your question.   
-  You can also submit a ticket to {{site.data.keyword.blockchainfull_notm}} support team with the [Open a {{site.data.keyword.Bluemix_notm}} support ticket ![External link icon](images/external_link.svg "External link icon")]() option.  Share details and code snippets from your specific Bluemix instance.  
-* [Sample applications ![External link icon](images/external_link.svg "External link icon")]() under **{{site.data.keyword.blockchain}} sample applications** provides guidance and sample code snippets to assist in the development of applications.  
-* [Hyperledger Fabric ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/) and [Hyperledger Fabric community ![External link icon](images/external_link.svg "External link icon")]() under **Hyperledger Fabric** provide more details about the Hyperledger Fabric stack.  
-  Talk to a [Hyperledger Expert ![External link icon](images/external_link.svg "External link icon")](https://chat.hyperledger.org/channel/general) with questions about the Hyperledger Fabric code.   
+* [{{site.data.keyword.blockchainfull_notm}} Service docs](index.html), che è il sito della documentazione, fornisce istruzioni introduttive a {{site.data.keyword.blockchainfull}} Platform su {{site.data.keyword.Bluemix_notm}}. Puoi trovare gli argomenti corrispondenti dal navigator oppure cercare qualsiasi termine con la funzione della ricerca in alto.  
+* [IBM Developer Works ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://developer.ibm.com/blockchain/) in **COMMUNITY HELP** contiene le risorse e le informazioni per gli sviluppatori.  
+* [IBM dWAnswers ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://developer.ibm.com/answers/smartspace/blockchain/) in **SUPPORT TICKET** funge da piattaforma per domande e risposte. Puoi cercare risposte dalle domande fatte in precedenza o inoltrare una nuova domanda. Assicurati di includere **blockchain** nella domanda.   
+  Puoi anche inoltrare un ticket al team di supporto {{site.data.keyword.blockchainfull_notm}} con l'opzione [Open a {{site.data.keyword.Bluemix_notm}} support ticket ![Icona link esterno](images/external_link.svg "Icona link esterno")]().  Condividi dettagli e frammenti di codice dalla tua istanza specifica {{site.data.keyword.Bluemix_notm}}.  
+* [Le applicazioni di esempio ![Icona link esterno](images/external_link.svg "Icona link esterno")]() in ** {{site.data.keyword.blockchain}} SAMPLE APPLICATIONS** forniscono assistenza e frammenti di codice di esempio per agevolare lo sviluppo di applicazioni.  
+* [Hyperledger Fabric ![Icona link esterno](images/external_link.svg "Icona link esterno")](http://hyperledger-fabric.readthedocs.io/) e la [community Hyperledger Fabric ![Icona link esterno](images/external_link.svg "Icona link esterno")]() in **Hyperledger Fabric** forniscono ulteriori dettagli sullo stack Hyperledger Fabric.  
+  Parla a un [esperto di Hyperledger ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://chat.hyperledger.org/channel/general) se hai delle domande sul codice Hyperledger Fabric.   
   
   
-**Figure 8** shows the initial "Members" screen displaying new and changed functions of each release in the "Release Notes" tab:
+La **Figura 8** mostra la schermata "Members" iniziale che visualizza le funzioni nuove e modificate di ciascuna release nella scheda "Release Notes":
 
-![Release notes](images/releasenotes.png "Release notes")
-*Figure 8. Release notes*
+![Note sulla release](images/releasenotes.png "Note sulla release")
+*Figura 8. Note sulla release*
 

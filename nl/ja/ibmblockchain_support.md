@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-07-13"
+lastupdated: "2017-11-17"
 ---
 
 {:new_window: target="_blank"}
@@ -16,7 +16,7 @@ lastupdated: "2017-07-13"
 {: #ibmblockchain_support}
 
 
-Bluemix にはブロックチェーン・インスタンスに関するサポートを受けたり、問題をトラブルシューティングしたりするための手段がいくつか用意されています。
+{{site.data.keyword.Bluemix}} にはブロックチェーン・インスタンスに関するサポートを受けたり、問題をトラブルシューティングしたりするための手段がいくつか用意されています。
 {:shortdesc}
 
 

@@ -27,14 +27,14 @@ A CA do Fabric é a autoridade de certificação fornecida com o plano Enterpris
 2. Pedido (serviço de solicitação)
 3. Validação e Confirmação (peer)
 
-Os peers do Fabric pertencentes aos membros são a interface ou o gateway para aplicativos para execução do chaincode, fornecendo a lógica de negócios para executar transações com relação ao livro razão.  Todas as transações devem ser aprovadas. Os outros membros da rede fazem esse endosso. Após o endosso, as transações são enviadas para um serviço de solicitação fornecido pela IBM (Kafka)
+Os peers do Fabric pertencentes aos membros são a interface ou o gateway para aplicativos para execução do chaincode, fornecendo a lógica de negócios para executar transações com relação ao livro razão.  Todas as transações devem ser aprovadas. Os outros membros da rede fazem esse endosso. Após a aprovação, as transações são enviadas para um serviço de solicitação fornecido pela IBM (Kafka).
 
 Além dos componentes de blockchain principais, a opção Associação Corporativa fornece uma infraestrutura com armazenamento de dados seguros e comunicações (TLS), além de alta disponibilidade.  Embora as redes do Fabric compartilhem esses recursos de infraestrutura, é fornecido isolamento para os nós do componente Fabric em uma rede e cada nó é executado em um contêiner do docker seguro protegendo o ambiente de execução.
 
-O único aspecto que deve ser determinado é o tamanho dos peers necessários para a rede. Essa decisão é baseada no número de canais necessários, além da carga de trabalho por canal, do uso de memória e do espaço em disco (armazenamento). Abaixo você encontrará os tamanhos de peer disponíveis por meio do plano de serviço de nível corporativo e orientação escolhendo o nível apropriado.
+O único aspecto que deve ser determinado é o tamanho dos peers necessários para a rede. Essa decisão é baseada no número de canais necessários, além da carga de trabalho por canal, do uso de memória e do espaço em disco (armazenamento). 
 
 A plataforma IBM Blockchain deve ser utilizada para implementações de produção ou quase no nível de produção mais estáveis. Para propósitos de teste, use o serviço IBM Container ou imagens locais que podem ser transferidas por download.
 
 O plano Enterprise fornece o serviço de ordenação e a autoridade de certificação. A taxa de participação é de $ 1.000, além de uma taxa de $ 1.000 por nível associado à rede. Se deseja ter alta disponibilidade (HA), deve-se comprar um nível adicional para fornecer os recursos de HA. Por exemplo, uma organização (taxa de participação associada de $ 1.000) de dois níveis ($ 1.000 × 2 níveis) com HA ($ 1.000 × 2 níveis de HA) requer um encargo mensal de $ 5.000.
 
-Inscreva-se agora para sua associação [{{site.data.keyword.blockchainfull_notm}} da {{site.data.keyword.IBM_notm}} ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps).
+Inscreva-se agora para sua associação {{site.data.keyword.IBM_notm}} [{{site.data.keyword.blockchainfull_notm}} da ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps).

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-08-30"
+lastupdated: "2017-11-17"
 ---
 
 {:new_window: target="_blank"}
@@ -12,9 +12,9 @@ lastupdated: "2017-08-30"
 {:pre: .pre}
 
 
-# Known issues
+# Problemi noti
 
-The following issues are already reported:
-- Configuring an external CA in not supported yet.  As an alternative, you can generate and upload admin certificates via the Network Monitor. For more information, see [Generating the client-side certificates](v10_application.html#generating-the-client-side-certificates) and the description on [the "Certificates" tab of "Memeber" screen](v10_dashboard.html#members) in the Network Monitor.
+I seguenti problemi sono già stati segnalati:
+- La configurazione di una CA esterna non è ancora supportata.  In alternativa, puoi generare e caricare i certificati di gestione tramite il Network Monitor. Per ulteriori informazioni, vedi [Generazione di certificati lato client](v10_application.html#generating-the-client-side-certificates) e la descrizione [nella scheda "Certificates" della schermata "Members"](v10_dashboard.html#members) nel Network Monitor.
 
-For support and help with your IBM Blockchain network on Bluemix, see [Getting support](ibmblockchain_support.html).
+Per supporto e assistenza con la rete IBM Blockchain su {{site.data.keyword.Bluemix_notm}}, vedi [Richiesta di assistenza tecnica](ibmblockchain_support.html).

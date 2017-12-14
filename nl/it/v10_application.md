@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-08-30"
+lastupdated: "2017-11-17"
 ---
 
 {:new_window: target="_blank"}
@@ -11,49 +11,49 @@ lastupdated: "2017-08-30"
 {:screen: .screen}
 {:pre: .pre}
 
-# Developing applications
+# Sviluppo di applicazioni
 
-With applications, you can invoke the chaincode to query or update a channel-specific ledger in your {{site.data.keyword.blockchain}} network. 
+Con le applicazioni, puoi richiamare il chaincode per interrogare mediante query o aggiornare un libro mastro specifico per il canale nella tua rete {{site.data.keyword.blockchain}}. 
 {:shortdesc}
 
-## Setting up application development environment
-You need to install software prerequisites to develop applications that can interact with the {{site.data.keyword.blockchain}} network on {{site.data.keyword.Bluemix}}.
+## Configurazione dell'ambiente di sviluppo di applicazioni
+Devi installare i prerequisiti software per sviluppare delle applicazioni che possano interagire con la rete {{site.data.keyword.blockchain}} su {{site.data.keyword.Bluemix}}.
 {:shortdesc}
 
-*	Git ([Git download page ![External link icon](images/external_link.svg "External link icon")](https://git-scm.com/downloads){:new_window})
+*	Git ([Pagina di download di Git ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://git-scm.com/downloads){:new_window})
 	
-	Git is a version control tool to familiarize yourself with, both for chaincode development and software development in general.  Also, git bash, which is installed with git on Windows, is an excellent alternative to the the Windows command prompt.
+	Git è uno strumento di controllo delle versioni con cui prendere dimestichezza, sia per lo sviluppo di chaincode che per lo sviluppo di software in generale.  Inoltre, git bash, che viene installato con git su Windows, è un'eccellente alternativa al prompt dei comandi Windows.
  
-	Use the following command to verify your Git installation.  You should see an output similar to the below:  
+	Utilizza il seguente comando per verificare la tua installazione di Git.  Dovresti vedere un output simile al seguente:  
 	```
 	$ git --version
 	git version 2.11.1.windows.1
 	```
 	{:screen}
 
-*	GoLang ([GoLang download page ![External link icon](images/external_link.svg "External link icon")](https://golang.org/dl){:new_window})
+*	GoLang ([Pagina di download di GoLang ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://golang.org/dl){:new_window})
 
-	The GoLang installation installs a set of Go CLI tools, which are very useful to write chaincode.  For example, the `go build` command allows you to check that your chaincode actually compiles before you attempt to deploy it to a network.  At time of writing, this chaincode is known to build successfully with version `1.8.3`.
+	L'installazione di GoLang installa una serie di strumenti di CLI Go, che sono molto utili per scrivere chaincode.  Ad esempio, il comando `go build` ti consente di controllare che il tuo chaincode venga effettivamente compilato prima di provare a distribuirlo a una rete.  Alla data della presente redazione, il build di questo chaincode risulta corretto con la versione `1.8.3`.
 
-	Use the following command to verify your GoLang version.  You should see an output similar to the below:
+	Utilizza il seguente comando per verificare la tua versione di GoLang.  Dovresti vedere un output simile al seguente:
 	```
 	$ go version
 	go version go1.8.3 windows/amd64
 	```
 	{:screen}
 	
-	Follow the [Installation instructions ![External link icon](images/external_link.svg "External link icon")](https://golang.org/doc/install){:new_window} to properly set the environment variables.  Check your `GOPATH` using the below command.  Note that your `GOPATH` does not need to match the example, it only matters that you have this variable set to a valid directory on your filesystem.   
+	Attieniti alle [istruzioni d'installazione ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://golang.org/doc/install){:new_window} per impostare correttamente le variabili di ambiente.  Controlla il tuo `GOPATH` utilizzando il comando indicato di seguito.  Nota: il tuo `GOPATH` non deve necessariamente corrispondere all'esempio; la cosa che conta è che tu abbia questa variabile impostata su una directory valida sul tuo filesystem.   
 	```
 	$ echo $GOPATH
-	C:\gopath
+C:\gopath
 	```
 	{:screen}
 
-	You can then verify your GoLang installation by building GoLang code with the [hello world ![External link icon](images/external_link.svg "External link icon")](https://golang.org/doc/install#testing){:new_window} example.
+	Puoi quindi verificare la tua installazione GoLang creando il codice GoLang con l'esempio [hello world ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://golang.org/doc/install#testing){:new_window}.
 
-*	Node.js ([Node.js download page ![External link icon](images/external_link.svg "External link icon")](https://nodejs.org/en/download/){:new_window}).  Choose a version between 6.9.5 < 7.  Node versions greater than 7 will cause errors when downloading the SDK modules.  
+*	Node.js ([pagina di download di Node.js ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://nodejs.org/en/download/){:new_window}).  Scegli una versione compresa tra 6.9.5 e 7.  Le versioni di nodo superiori alla 7 causeranno degli errori quando si scaricano i moduli SDK.  
 
-	Use the following commands to verify your Node.js installation.  You should see an output similar to the below:  
+	Utilizza i seguenti comandi per verificare la tua installazione di Node.js.  Dovresti vedere un output simile al seguente:  
 	```
 	$ node -v
 	v6.10.1
@@ -63,60 +63,60 @@ You need to install software prerequisites to develop applications that can inte
 	```
 	{:screen}
 
-## Generating the client-side certificates
-We won't delve into the minutiae of x509 and public key infrastructure, there are plenty of external resources for that.  Suffice it to say that communication flows in Fabric implement sign/verify operations for every touchpoint.  As such, any client sending calls (i.e. transactions) to the network will need to sign payloads (private key) and attach a properly signed x509 certificate for verification purposes (signed cert).  The private key and signed certificate, along with with an MSP identifier and the Certificate Authority (CA) root certificate make up what is referred to as the "user context" object.  Again no need for extraneous details.  We will simply communicate with the appropriate Certificate Authority and retrieve the keys and certs that allow for the object to be formed - this process is referred to as enrollment.  After you form the user context object, it's as easy as calling an API from your application to "set" or "get" this user context.  At this point, the application (i.e. client) is equipped with all the necessary artifacts and is ready to communicate with the network.  We'll look at two approaches for retrieving the keys and certs.
+## Generazione dei certificati lato client
+Non scenderemo nei dettagli dell'infrastruttura di chiavi pubbliche e x509, ci sono tante risorse esterne per questo.  Basti dire che i flussi di comunicazioni in Fabric implementano operazioni di firma/verifica per ogni touchpoint.  In quanto tali, qualsiasi client che invia delle chiamate (ossia delle transazioni) alla rete dovrà firmare i payload (chiave privata) e collegare un certificato x509 firmato correttamente per scopi di verifica (certificato firmato).  La chiave privata e il certificato firmato, insieme a un identificativo MSP e al certificato root dell'Autorità di certificazione (CA, Certificate Authority) formano l'oggetto indicato come "contesto utente".  Ancora una volta, non sono necessari dettagli estranei.  Comunicheremo semplicemente con l'Autorità di certificazione appropriata e richiameremo le chiavi e i certificati che consentono di formare l'oggetto; questo processo viene indicato come registrazione.  Dopo che hai formato l'oggetto di contesto utente, impostare (set) od ottenere (get) questo contesto utente è facile quanto richiamare un'API dalla tua applicazione.  A questo punto, l'applicazione (ossia il client) è dotata di tutte le risorse necessarie ed è pronta a comunicare con la rete.  Analizzeremo due approcci per richiamare le chiavi e i certificati.
 
-### Command line
-This is the simpler of the two approaches.  First, follow the instructions to build the [Fabric CA client ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric-ca.readthedocs.io/en/latest/users-guide.html).  This step allows you to communicate with a CA Server and receive back properly formatted certificates and keys.  
+### Riga di comando
+Questo è il più semplice dei due approcci.  Per prima cosa, attieniti alle istruzioni per creare il [client CA Fabric ![Icona link esterno](images/external_link.svg "Icona link esterno")](http://hyperledger-fabric-ca.readthedocs.io/en/latest/users-guide.html).  Questo passo ti consente di comunicare con un server CA e ricevere in risposta dei certificati e delle chiavi con un formato corretto.  
 
-Second, download the TLS certs from [your Bluemix ![External link icon](images/external_link.svg "External link icon")](http://blockchain-certs.mybluemix.net/3.secure.blockchain.ibm.com.rootcert) and save the contents to a folder, for example ``$HOME/tls``.  This step allows the data flowing to be encrypted on the wire.
+Scarica quindi i certificati TLS dal [tuo {{site.data.keyword.Bluemix_notm}} ![Icona link esterno](images/external_link.svg "Icona link esterno")](http://blockchain-certs.mybluemix.net/3.secure.blockchain.ibm.com.rootcert) e salva il contenuto in una cartella, ad esempio ``$HOME/tls``.  Questo passo consente di crittografare il flusso di dati in transito.
 
-Finally, open the **Service Credentials** JSON file from your **Overview** screen in the Network Monitor, and ascertain the following information:
-* URL for CA: ``url`` under `certificateAuthorities`
-* Admin user ID: ``enrollId``
-* Admin password: ``enrollSecret``
-* CA Name: ``caName``
+Per finire, apri il file JSON **Service Credentials** dalla tua schermata **Overview** nel Network Monitor e verifica le seguenti informazioni:
+* URL per CA: `url` in `certificateAuthorities`
+* ID utente amministratore: ``enrollId``
+* Password amministratore: ``enrollSecret``
+* Nome CA: ``caName``
 
-Using the Fabric CA client, we can send an "enroll" call to our Certificate Authority by passing pass in the TLS certs path and the four strings above with the following command:  
+Utilizzando il client CA Fabric, possiamo inviare una chiamata di registrazione (enroll) alla nostra Autorità di certificazione passando il percorso certificati TLS e le quattro stringhe di cui sopra con il seguente comando:    
 ```
-$GOPATH/bin/fabric-ca-client enroll -u https://<enroll_id>:<enroll_password>@<ca_url_with_port> --caname <ca_name> --tls.certfiles <tls_cert_path>
+$GOPATH/bin/fabric-ca-client enroll -u https://<id_registrazione>:<password_registrazione>@<url_CA_con_porta> --caname <nome_CA> --tls.certfiles <percorso_certificati_tls>
 ```
 
-The ``fabric-ca-client`` binary is placed in ``$GOPATH/bin``, so you will need to be in the proper location on your local machine when you run this command.  A real call might look similar to the following example command:  
+Il file binario ``fabric-ca-client`` viene inserito in ``$GOPATH/bin``, quindi dovrai trovarti nell'ubicazione corretta sul tuo computer locale quando esegui questo comando.  Una vera chiamata potrebbe essere simile al seguente comando di esempio:  
 ```
 ./fabric-ca-client enroll -u https://admin:B84F2C5436@tor-zbc01a.3.secure.blockchain.ibm.com:23042 --tls.certfiles /Users/XYZ/Downloads/3.secure.blockchain.ibm.com.rootcert --caname PeerOrg1CA
 ```
   
-Find your admin certificate in `$HOME/.fabric-ca-client/msp/signcerts/cert.pem`. You can then upload the admin certificate to your blockchain network from the Network Monitor. For more information about adding certificates, see [the "Certificates" tab of "Memeber" screen](v10_dashboard.html#members) in the Network Monitor.
+Trova il tuo certificato amministratore in `$HOME/.fabric-ca-client/msp/signcerts/cert.pem`. Puoi quindi caricare il certificato amministratore nella tua rete blockchain dal Network Monitor. Per ulteriori informazioni sull'aggiunta di certificati, vedi [la scheda "Certificates" della schermata "Members"](v10_dashboard.html#members) nel Network Monitor.
 
-You can also find CA root certificate and admin private key in the following directories:
-* CA root certificate: `$HOME/.fabric-ca-client/msp/cacerts/--<ca_name>.pem`
-* The admin private key: `$HOME/.fabric-ca-client/msp/keystore/<>_sk file`
+Puoi anche trovare il certificato root CA e la chiave privata amministratore nelle seguenti directory:
+* Certificato root CA: `$HOME/.fabric-ca-client/msp/cacerts/--<ca_name>.pem`
+* Chiave privata amministratore: `$HOME/.fabric-ca-client/msp/keystore/<>_sk file`
 
 ### SDK
-There are two Hyperledger repositories that contain excellent resources and scripts for understanding how to programatically interact with a Certificate Authortity.  The ``fabric-samples`` repo contains the "balance transfer" example and the ``fabric-sdk-node`` repo has a series of CA Services tests.  If you intend to issue your enrollment requests on the application side, then you will need to fully understand the APIs that need to be exposed within the ``fabric-ca-client`` and ``fabric-client`` packages.  Use these scripts and repos as a baseline for structuring your app.
+Ci sono due repository Hyperledger che contengono risorse e script eccellenti per capire come interagire programmaticamente con un'Autorità di certificazione.  Il repository ``fabric-samples`` contiene l'esempio "balance transfer" e il repository ``fabric-sdk-node`` ha una serie di test di servizi CA.  Se intendi emettere le tue richieste di registrazione sul lato applicazione, dovrai capire pienamente le API che devono essere esposte nei pacchetti ``fabric-ca-client`` e ``fabric-client``.  Usa questi script e repository come una base di riferimento per strutturare la tua applicazione.
 
-Let's take a quick look at a few key snippets from the "balance transfer" example:
+Diamo una rapida occhiata ad alcuni frammenti chiave per l'esempio "balance transfer":
 
-First we need to create our client object and set a key/value store instance where our certs and keys will be parked.  We can do this with a simple factory method - ``newCryptoSuite`` - that extends to the ``Client`` class from ``BaseClient``.  Here's a quick look at the code:
+Dobbiamo innanzitutto creare il nostro oggetto client e impostare un'istanza di archivio chiave/valore dove verranno messi i nostri certificati e le nostre chiavi.  Possiamo eseguire questa operazione con un semplice metodo factory, ``newCryptoSuite``, che esegue l'estensione alla classe ``Client`` da ``BaseClient``.  Ecco una rapida occhiata al codice:
 
 ```
-# <PUBLIC_PRIVATE_KEY_PATH> denotes the path on your local machine where you wish to store your key and cert
+# <PERCORSO_CHIAVE_PUBBLICA_PRIVATA> indica il percorso sul tuo computer locale dove desideri archiviare la tua chiave e il tuo certificato
 let cryptoSuite = hfc.newCryptoSuite();
-cryptoSuite.setCryptoKeyStore(hfc.newCryptoKeyStore({path: <PUBLIC_PRIVATE_KEY_PATH>)}));
+cryptoSuite.setCryptoKeyStore(hfc.newCryptoKeyStore({path: <PERCORSO_CHIAVE_PUBBLICA_PRIVATA>)}));
 client.setCryptoSuite(cryptoSuite);
 ```
 
-The common practice would be to export an environment variable defining the key/value path on your machine and pass it to the above function.  Now that we've defined our KVS, let's use the a few methods from the ``FabricCAServices`` class.  This class is an implementation of the Fabric CA client, and as such it will allow us to communicate with the CA Server.  First we need to pass some information to our CA client, namely the CA URL:
+La prassi comune consisterebbe nell'esportare una variabile di ambiente definendo il percorso di chiave/valore sul tuo computer e passarla alle funzioni sopra indicate.  Ora che abbiamo definito il nostro KVS, utilizziamo qualcuno dei metodi dalla classe ``FabricCAServices``. Questa classe è un'implementazione del client CA Fabric e, in quanto tale, ci consentirà di comunicare con il server CA.  Dobbiamo prima passare alcune informazioni al nostro client CA, vale a dire l'URL CA:
 
 ```
-# the caURL can be defined manually or by setting an environment variable
-# the copService variable is defined at the top of the program 
+# il caURL può essere definito manualmente oppure impostando una variabile di ambiente
+# la variabile copService è definita all'inizio del programma
 let caUrl = "https://XXX:7054";
 var caClient = new copService(caUrl, null, '' /* default CA */, cryptoSuite);
 ```
 
-Next, we will actually send the "enroll" call to the CA Server.  This will return to the client a private key and a public key that has been wrapped in an x509 cert and signed by the targeted CA - we call this the signcert or enrollment certificate.  This enrollment cert or "eCert" is the key piece, because it allows network entities to verify transactions and calls originating from the client:
+Invieremo quindi effettivamente la chiamata di registrazione (enroll) al server CA.  Questo restituirà al client una chiave privata e una chiave pubblica che è stata inclusa in un certificato x509 e firmata dalla CA di destinazione; chiamiamo questo il "signcert" o il certificato di registrazione.  Questo certificato di registrazione, o "eCert", è il pezzo chiave poiché consente alle entità di rete di verificare le transazioni e le chiamate che hanno origine dal client:
 
 ```
 return caClient.enroll({
@@ -124,7 +124,7 @@ enrollmentID: username,
 enrollmentSecret: password
 ```
 
-And the final task is actually setting the crypto suite and building the user context:
+E l'attività finale consiste nell'impostare effettivamente la crypto suite e nel creare il contesto utente:
 
 ```
 	member.setCryptoSuite(client.getCryptoSuite());
@@ -133,28 +133,28 @@ And the final task is actually setting the crypto suite and building the user co
 	return client.setUserContext(member);
 ```
 
-You can then upload the admin certificate to your blockchain network from the Network Monitor. For more information about adding certificates, see [the "Certificates" tab of "Memeber" screen](v10_dashboard.html#members) in the Network Monitor.
+Puoi quindi caricare il certificato amministratore nella tua rete blockchain dal Network Monitor. Per ulteriori informazioni sull'aggiunta di certificati, vedi [la scheda "Certificates" della schermata "Members"](v10_dashboard.html#members) nel Network Monitor.
 
-## Developing applications
-You can develop your application in Javascript or Java, and leverage the available APIs in the Hyperledger Fabric Client SDKs to enable interaction between your application and your network.  An application needs to include at least the following information:
-* Name and version of the chaincode to invoke.
-* API endpoint information of your network resources, including orderers, CAs, and peers.
-* Functions to query or update the ledger in the network.  If you want high availability, you need to consider node failover in your application.
+## Sviluppo di applicazioni
+Puoi sviluppare la tua applicazione in JavaScript o Java e avvalerti delle API disponibili negli SDK Hyperledger Fabric Client per abilitare l'interazione tra la tua applicazione e la tua rete.  Un'applicazione deve includere almeno le seguenti informazioni:
+* Nome e versione del chaincode da richiamare.
+* Le informazioni sull'endpoint API delle tue risorse di rete, compresi ordinanti, CA e peer.
+* Funzioni per interrogare mediante query o aggiornare il libro mastro nella rete.  Se vuoi un'elevata disponibilità, devi prendere in considerazione il failover di nodo nella tua applicazione.
 
-You can find sample applications for the **Enterprise Plan** on {{site.data.keyword.Bluemix_short}} in [Sample applications](howto/sample_applications.html).  Use these sample chaincodes and applications as a template for creating your own business solution.
+Puoi trovare delle applicazioni di esempio per il **piano Enterprise** su {{site.data.keyword.Bluemix_short}} in [Applicazioni di esempio](howto/sample_applications.html).  Utilizza questi chaincode e queste applicazioni di esempio come un template per creare la tua soluzione di business.
 
-## Adding network service credentials to your application
-You need to add service credentials of your network components to your application so that it can interact with your {{site.data.keyword.blockchain}} network on {{site.data.keyword.Bluemix_short}}.  If you don't have a {{site.data.keyword.blockchain}} network on {{site.data.keyword.Bluemix_short}}, see [Getting started with IBM Blockchain Platform](get_start.html). 
+## Aggiunta delle credenziali del servizio di rete alla tua applicazione
+Devi aggiungere le credenziali del servizio dei tuoi componenti di rete alla tua applicazione in modo che possa interagire con la tua rete {{site.data.keyword.blockchain}} su{{site.data.keyword.Bluemix_short}}.  Se non hai una rete {{site.data.keyword.blockchain}} su {{site.data.keyword.Bluemix_short}}, vedi [Introduzione a IBM Blockchain Platform](get_start.html). 
 
-The service credentials are in JSON format and contain the API endpoint information and enrollIDs/secrets for your network components, including orderer, CA, and peer nodes.  Your application will interact with peers and other network components through these API endpoints.  
+Le credenziali del servizio sono in formato JSON e contengono le informazioni sull'endpoint API e gli ID registrazione(enrollID)/segreti per i tuoi componenti di rete, compresi ordinante, CA e nodi peer.  La tua applicazione interagirà con i peer e altri componenti di rete tramite questi endpoint API.  
 
-1. Retrieve the API endpoint information of your network components from your Network Monitor with one of the following methods:
-	* To get the API endpoint information that is specific to a chaincode, in the specific channel screen, on which the chaincode is running, locate the chaincode and click the **JSON** button.
-	![Service credentials per chaincode](images/channel_chaincode_detail.png "Service credentials per chaincode")
-	* To get a complete set of API endpoint information about all your network components, click the **Service Credentials** button in the "Resources" screen.
-	![Service credentials in network monitor](images/service_credentials.png "Service credentials network monitor")
+1. Richiama le informazioni sull'endpoint API dei tuoi componenti di rete dal tuo Network Monitor con uno dei seguenti metodi:
+	* Per ottenere le informazioni sull'endpoint API specifiche per un chaincode, nella schermata dello specifico canale, individua il chaincode e fai clic sul pulsante **JSON**.
+	![Credenziali del servizio per chaincode](images/channel_chaincode_detail.png "Credenziali del servizio per chaincode")
+	* Per ottenere un set completo di informazioni sull'endpoint API relative a tutti i tuoi componenti di rete, fai clic sul pulsante **Service Credentials** nella schermata "Resources".
+	![Credenziali del servizio nel Network Monitor](images/service_credentials.png "Credenziali del servizio nel Network Monitor")
 	 
-2. Locate the credentials and API endpoint information of your network resources.  See the following example:
+2. Individua le credenziali e le informazioni sull'endpoint API delle tue risorse di rete.  Vedi il seguente esempio:
 	```
 	"peers": {
             "fabric-peer-org3-18400c": {
@@ -163,37 +163,37 @@ The service credentials are in JSON format and contain the API endpoint informat
                 ...
 	```
 
-	**Note**: If you want to target additional peers in the network, for example, you require endorsement from a peer that does not belong to your organization, then you need to obtain the correct API endpoint information of those peers.  You also need to store the CA cert for the other organization to verify responses that return to your application. This information is not exposed in your service credentials, therefore you must contact the appropriate admin for the Bluemix Org and acquire this information in an out-of-band operation. The ordering service URL is common across the network; you don't need any member-specific information for ordering service.  
+	**Nota**: se vuoi avere come obiettivo ulteriori peer nella rete, ad esempio ti serve l'approvazione da un peer che non appartiene alla tua organizzazioni, devi ottenere le informazioni sull'endpoint API corrette da tali peer.  Devi anche archiviare il certificato CA per l'altra organizzazione per verificare le risposte che vengono restituite alla tua applicazione. Queste informazioni non vengono esposte nelle tue credenziali del servizio e dovrai pertanto contattare l'amministratore dell'organizzazione CLoud Foundry appropriato e acquisire questi dati in un'operazione fuori banda. L'URL del servizio ordini è comune nella rete, pertanto non avrai bisogno di alcuna informazione specifica per il membro per il servizio ordini.  
 
-3. Plug the API endpoint information into a configuration file of your application as shown in the following example:  
+3. Inserisci le informazioni sull'endpoint API in un file di configurazione della tua applicazione come mostrato nel seguente esempio:  
 	```
 	orderer_url: 'grpcs://fft-zbc01a.4.secure.blockchain.ibm.com:18603'
 	```
 
-## Hosting applications
-You can host your application on your local file system or push it to {{site.data.keyword.Bluemix_notm}}.  To push your application to {{site.data.keyword.Bluemix_notm}}, complete the following steps:
-1. Install the [Cloud Foundry Command Line Installer ![External link icon](images/external_link.svg "External link icon")](https://github.com/cloudfoundry/cli/releases).  Test your installation with the `cf` command.	
-    * If your installation is successful, you should see a bunch of text output in your terminal. 
-    * If you see "command not found", your installation was either not successful or CF is not added to your system path.	
-2. Set up API endpoint and log in with your {{site.data.keyword.Bluemix_notm}} ID and password by issuing the following commands:
+## Applicazioni host
+Puoi ospitare la tua applicazione sul tuo file system locale oppure eseguirne il push a {{site.data.keyword.Bluemix_notm}}.  Per eseguire il push della tua applicazione a{{site.data.keyword.Bluemix_notm}}, completa la seguente procedura:
+1. Installa il [programma di installazione della riga di comando Cloud Foundry ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://github.com/cloudfoundry/cli/releases).  Verifica la tua installazione con il comando `cf`.	
+    * Se la tua installazione viene eseguita correttamente, dovresti vedere un bel po' di output di testo nel tuo terminale. 
+    * Se vedi "command not found", la tua installazione non è riuscita o CF non è stato aggiunto al tuo percorso di sistema.	
+2. Configura l'endpoint API ed esegui l'accesso con i tuoi ID e password {{site.data.keyword.Bluemix_notm}} immettendo i seguenti comandi:
     ```
     > cf api https://api.ng.bluemix.net
     > cf login
     ```  
-3. Browse to the directory of your application, and push your application by issuing the following command.  This can take several minutes depending on your application size.  You will see logs from {{site.data.keyword.Bluemix_notm}} in your terminal; they will cease once the application has successfully launched.  
+3. Accedi alla directory della tua applicazione ed esegui il push della tua applicazione immettendo il seguente comando.  Questa operazione può richiedere diversi minuti, a seconda della dimensione della tua applicazione.  Vreai i log da {{site.data.keyword.Bluemix_notm}} nel tuo terminale; cesseranno dopo che l'applicazione sarà stata avviata correttamente.  
 	```
-	> cf push YOUR_APP_NAME_HERE
+	> cf push IL_NOME_DELLA_TUA_APPLICAZIONE_QUI
 	```  
-	You can check your application logs by issuing one of the following commands:
-	* `> cf logs YOUR_APP_NAME_HERE`
-	* `> cf logs YOUR_APP_NAME_HERE --recent`
+	Puoi controllare i log della tua applicazione immettendo uno dei seguenti comandi:
+	* `> cf logs IL_NOME_DELLA_TUA_APPLICAZIONE_QUI`
+	* `> cf logs IL_NOME_DELLA_TUA_APPLICAZIONE_QUI --recent`
 
 
-## Disconnecting your application from the network
-Complete the following steps to remove the connection between your application and the {{site.data.keyword.blockchain}} network on {{site.data.keyword.Bluemix_short}}.
-1. Remove the API endpoint information from your application configuration file. For reference, see [Adding network service credentials to your application](#adding-network-service-credentials-to-your-application).
-2. Delete your chaincode container.
-	1. In the "Channel" screen of the Network Monitor, locate the channel where your chaincode is installed.
-	2. In the specific channel screen, locate the chaincode you want to disable.
-	3. Click the **Delete** button, and click **Submit** in the chaincode deletion panel. Your chaincode container will be removed.  
-	![Delete a chaincode](images/channel_chaincode_detail.png "Delete a chaincode")
+## Disconnessione della tua applicazione dalla rete
+Completa la seguente procedura per rimuovere la connessione tra la tua applicazione e la rete {{site.data.keyword.blockchain}} su {{site.data.keyword.Bluemix_short}}.
+1. Rimuovi le informazioni sull'endpoint API dal file di configurazione della tua applicazione. Per informazioni di riferimento, vedi [Aggiunta delle credenziali del servizio di rete alla tua applicazione](#adding-network-service-credentials-to-your-application).
+2. Elimina il tuo contenitore chaincode.
+	1. Nella schermata "Channel" del Network Monitor, individua il canale dove è installato il tuo chaincode.
+	2. Nella schermata dello specifico canale, individua il chaincode che vuoi disabilitare.
+	3. Fai clic sul pulsante **Delete** e fai clic su **Submit** nel pannello di eliminazione del chaincode. Il tuo contenitore chaincode sarà rimosso.  
+	![Elimina un chaincode](images/channel_chaincode_detail.png "Elimina un chaincode")

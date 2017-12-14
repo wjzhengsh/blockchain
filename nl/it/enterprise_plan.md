@@ -27,11 +27,11 @@ La CA Fabric è l'autorità di certificazione fornita con il piano Enterprise. S
 2. Ordinazione (servizio ordini)
 3. Convalida e registrazione (peer)
 
-I peer Fabric appartenenti ai membri sono l'interfaccia o il gateway per le applicazioni per eseguire il chaincode, fornendo la logica di business per eseguire le transazioni sul libro mastro.  Tutte le transazioni devono essere approvate. Gli altri membri della rete concedono questa approvazione. Dopo l'approvazione, le transazioni vengono inviate a un servizio ordini fornito da IBM (Kafka)
+I peer Fabric appartenenti ai membri sono l'interfaccia o il gateway per le applicazioni per eseguire il chaincode, fornendo la logica di business per eseguire le transazioni sul libro mastro.  Tutte le transazioni devono essere approvate. Gli altri membri della rete concedono questa approvazione. Dopo l'approvazione, le transazioni vengono inviate a un servizio ordini fornito da IBM (Kafka). 
 
 Oltre ai componenti blockchain principali, l'opzione di adesione Enterprise fornisce un'infrastruttura con memorizzazione di dati e comunicazioni protetti (TLS) e un'elevata disponibilità.  Mentre le reti Fabric condividono queste risorse d'infrastruttura, viene fornito un isolamento per i nodi componente Fabric in una rete e ciascun nodo viene eseguito in un contenitore docker sicuro che protegge l'ambiente di esecuzione.
 
-Il solo aspetto che deve essere determinato è la dimensione dei peer richiesta per la rete. Questa decisione è basata sul numero di canali richiesti, più il carico di lavoro per canale, l'utilizzo della memoria e lo spazio su disco (memorizzazione). Sotto troverai le dimensioni di peer disponibili tramite il piano di servizio di livello Enterprise e delle indicazioni per scegliere il peer corretto.
+Il solo aspetto che deve essere determinato è la dimensione dei peer richiesta per la rete. Questa decisione è basata sul numero di canali richiesti, più il carico di lavoro per canale, l'utilizzo della memoria e lo spazio su disco (memorizzazione). 
 
 La piattaforma IBM Blockchain dovrebbe venire utilizzata per una produzione più stabile o per le distribuzioni quasi al livello di produzione. Per scopi di test, utilizza il servizio IBM Container o le immagini scaricate localmente.
 

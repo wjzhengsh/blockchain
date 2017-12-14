@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-07-13"
+lastupdated: "2017-11-17"
 ---
 
 {:new_window: target="_blank"}
@@ -12,35 +12,35 @@ lastupdated: "2017-07-13"
 {:pre: .pre}
 
 
-# Getting support
+# Richiesta di assistenza tecnica
 {: #ibmblockchain_support}
 
 
-There are several mechanisms available to obtain support and troubleshoot problems that are associated with your blockchain instance on Bluemix.
+Sono disponibili diversi meccanismi per ottenere supporto e risolvere i problemi associati alla tua istanza blockchain su {{site.data.keyword.Bluemix}}.
 {:shortdesc}
 
 
-## Non-defect issues
+## Problemi non relativi a difetti software
 
-Navigate to the "Support" screen in your **Network Monitor** as shown in **Figure 1**.  You can find links to resources that provide technical and supporting information.  For detailed description on the "Support" screen, see the *Support* section in [Network Monitor](v10_dashboard.html).
+Vai alla schermata "Support" nel tuo **Network Monitor** come mostrato nella **Figura 1**.  Puoi trovare dei link a risorse che forniscono informazioni tecniche e di supporto.  Per una descrizione dettagliata della schermata "Support", consulta la sezione *Support* in [Network Monitor](v10_dashboard.html).
 
-![](images/support.png "Support screen")
-*Figure 1. Support screen*
+![](images/support.png "Schermata Support")
+*Figura 1. Schermata Support*
 
 
-## Software defect issues
+## Problemi relativi a difetti software
 
-For software defects or if your problem is unable to be solved by any of the above routes, you can look for answers with  {{site.data.keyword.Bluemix_notm}} support. Click the **Support** link at the upper right corner in your {{site.data.keyword.Bluemix_notm}} console as shown in **Figure 2**.  For more information, see [Troubleshooting](../../troubleshoot/troubleshoot.html){:new_window}.
+Per difetti software o se non è possibile risolvere il tuo problema utilizzando uno dei metodi descritti sopra, puoi cercare delle risposte con il supporto {{site.data.keyword.Bluemix_notm}}. Fai clic sul link **Supporto** nella parte superiore a destra nella tua console {{site.data.keyword.Bluemix_notm}} come mostrato nella **Figura 2**.  Per ulteriori informazioni, consulta [Risoluzione dei problemi](../../troubleshoot/troubleshoot.html){:new_window}.
 
-![](images/bmx_support.png "Support link")
-*Figure 2. Support link*
+![](images/bmx_support.png "Link Supporto")
+*Figura 2. Link Supporto*
 
-If your problem is still unable to be solved, follow these steps to submit a help ticket:
+Se il tuo problema ancora non può essere risolto, attieniti alla seguente procedura per inoltrare un ticket di aiuto:
 
-1. Click the **Support** link at the upper right corner in your {{site.data.keyword.Bluemix_notm}} console as shown in Figure 2.
-2. Click the **Add Tickets** link from the drop down list as shown in Figure 3.  
-  ![](images/bmx_addticket.png "Add Tickets")  
-  *Figure 3. Add Tickets*  
-3. Choose your support category from the "Support" panel.
-4. Enter the subject and brief description of your problem.  Optionally, you can upload attchments and add other email addresses to be notified.  Be sure to include the keyword **blockchain** in your question.
-5. Click the **Submit** button.  You will receive an email notification in a few minutes for the Service Ticket opened for your request.  Follow the instructions in the email for additional communications on the problem.
+1. Fai clic sul link **Supporto** nell'angolo superiore destro nella tua console {{site.data.keyword.Bluemix_notm}} come mostrato nella Figura 2.
+2. Fai clic sul link **Aggiungi ticket** dall'elenco a discesa come mostrato nella Figura 3.  
+  ![](images/bmx_addticket.png "Aggiungi ticket")  
+  *Figura 3. Aggiungi ticket*  
+3. Scegli la tua categoria di supporto dal pannello "Supporto".
+4. Immetti l'oggetto e una breve descrizione del tuo problema.  Facoltativamente, puoi caricare degli allegati e aggiungere altri indirizzi email a cui devono essere inviate delle notifiche.  Assicurati di includere **blockchain** nella domanda.
+5. Fai clic sul pulsante **Inoltra**.  In pochi minuti riceverai una notifica e-mail per il ticket di servizio aperto per la tua richiesta.  Segui le istruzioni nell'e-mail per ulteriori comunicazioni sul problema.

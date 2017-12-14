@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-09-04"
+lastupdated: "2017-12-05"
 
 ---
 
@@ -13,75 +13,87 @@ lastupdated: "2017-09-04"
 {:pre: .pre}
 {:tip: .tip}
 
-# Govern the network
+# Governance della rete
 {: #getting-started-with-blockchain}
 
-The {{site.data.keyword.blockchainfull}} Platform on {{site.data.keyword.Bluemix_notm}} provides a {{site.data.keyword.blockchain}} network with high security, integrity, scalability, and performance. You can quickly provision a fully functional {{site.data.keyword.blockchain}} network and use the Network Monitor to immediately run chaincode and applications without having to design and configure a private blockchain network. 
+{{site.data.keyword.blockchainfull}} Platform su {{site.data.keyword.Bluemix_notm}} fornisce una rete {{site.data.keyword.blockchain}} con sicurezza, integrità, scalabilità e prestazioni elevate. Puoi fornire rapidamente una rete {{site.data.keyword.blockchain}} pienamente funzionante e utilizzare il Network Monitor per eseguire immediatamente chaincode e applicazioni senza dover progettare e configurare una rete blockchain privata. 
 {:shortdesc}
  
-This getting started tutorial introduces the prequisites and steps you'll need to follow to get a {{site.data.keyword.blockchain}} network hosted on IBM's highly available and secure environment.  
+Questa esercitazione introduttiva presenta i prerequisiti e i passi a cui dovrai attenerti per ottenere una rete {{site.data.keyword.blockchain}} ospitata in un ambiente altamente disponibile e sicuro di IBM.  
 
-The following steps indicates the basic flow to launch a {{site.data.keyword.blockchain}} network with multiple member organizations:
-1. A **network initiator**, as one special type of network member, creates the {{site.data.keyword.blockchain}} network and defines governance policies. The network initiator can then invite other institutions to join this {{site.data.keyword.blockchain}} network as network members.  For more details, see [Creating a network](#creating-a-network).
-2. **Network members** receive an email notification that provides instructions for them to join a {{site.data.keyword.blockchain}} network. Besides the instructions in the email notification, you can also follow the steps in [Joining a network](#joining-a-network).
-3. All **network members**, after creating or joining a network, can enter the Network Monitor, which is a GUI dashboard, to configure and manage their network resources. You can set up channels with a group of network members to execute private transactions on a channel-specific ledger, which only channel members can access. In the Network Monitor, you can also join your own peers to the channel and install and instantiate chaincode on them. For more details, see [Configuring network resources and environment](#configuring-network-resources-and-environment).
-4. **Application developers** create applications that enable interaction with the {{site.data.keyword.blockchain}} network. For more information, see [Enabling applications to interact with the network](#enabling-applications-to-interact-with-the-network).
-5. **Network operators** monitor transactions on their channels using the Network Monitor. For more details, see [Monitoring network resources](#monitoring-network-resources).
+I seguenti passi indicano il flusso di base per avviare una rete {{site.data.keyword.blockchain}} con molteplici organizzazioni membro:
+1. Un **iniziatore di rete**, in quanto tipo speciale di membro di rete, crea la rete {{site.data.keyword.blockchain}} e definisce le politiche di governance. L'iniziatore di rete può quindi invitare altre istituzioni ad aderire a questa rete {{site.data.keyword.blockchain}} come membri della rete.  Per ulteriori dettagli, vedi [Creazione di una rete](#creating-a-network).
+2. I **membri della rete** ricevono una notifica email che fornisce le istruzioni per consentire loro di aderire a una rete {{site.data.keyword.blockchain}}. Oltre alle istruzioni nella notifica email, puoi anche attenerti alla procedura indicata in [Adesione a una rete](#joining-a-network).
+3. Tutti i **membri della rete**, dopo aver creato, o aver aderito a, una rete, possono accedere al Network Monitor, che è un dashboard GUI, per configurare e gestire le loro risorse di rete. Puoi configurare i canali con un gruppo di membri della rete per eseguire transazioni private su un libro mastro specifico per il canale, a cui possono accedere solo i membri del canale. Nel Network Monitor, puoi anche indicare l'adesione dei tuoi peer al canale e installare e istanziare il chaincode su di essi. Per ulteriori dettagli, vedi [Configurazione delle risorse di rete e dell'ambiente](#configuring-network-resources-and-environment).
+4. Gli **sviluppatori di applicazioni** creano delle applicazioni che abilitano l'interazione con la rete {{site.data.keyword.blockchain}}. Per ulteriori informazioni, vedi [Abilitazione delle applicazioni a interagire con la rete](#enabling-applications-to-interact-with-the-network).
+5. Gli **operatori di rete** monitorano le transazioni sui loro canali utilizzando il Network Monitor. Per ulteriori dettagli, vedi [Monitoraggio delle risorse di rete](#monitoring-network-resources).
 
-## Creating a network
-Before you begin, you need to create a [{{site.data.keyword.blockchain}} Platform service instance ![External link icon](images/external_link.svg "External link icon")](https://console.bluemix.net/catalog/services/blockchain) on {{site.data.keyword.Bluemix_notm}}. You'll need to log in with your {{site.data.keyword.Bluemix_notm}} ID. If you do not have an ID, click the **Sign up to Create** button.  Rename the service and credential names for your instance so you can recognize it easily in the future. Select the {{site.data.keyword.Bluemix_notm}} region, organization, and space, where you can deploy your {{site.data.keyword.blockchain}} network. Then select **Enterprise Plan** from the pricing plans table and click the **Create** button.  
+## Creazione di una rete
+Prima di iniziare, devi creare un'istanza del servizio di [{{site.data.keyword.blockchain}} Platform ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://console.bluemix.net/catalog/services/blockchain) su {{site.data.keyword.Bluemix_notm}}. Dovrai eseguire l'accesso con il tuo ID {{site.data.keyword.Bluemix_notm}}. Se non hai un ID, fai clic sul pulsante **Registrati per creare**.  Rinomina i nomi di servizio e credenziali per la tua istanza in modo che tu possa riconoscerli facilmente in futuro. Seleziona la regione, l'organizzazione e lo spazio {{site.data.keyword.Bluemix_notm}} dove puoi distribuire la tua rete {{site.data.keyword.blockchain}}. Seleziona quindi **Piano Enterprise** dalla tabella dei piani di determinazione del prezzo e fai clic sul pulsante **Crea**.  
 
-You can find your {{site.data.keyword.blockchain}} Platform service instance in your [{{site.data.keyword.Bluemix_notm}} service dashboard ![External link icon](images/external_link.svg "External link icon")](https://console.bluemix.net/dashboard/services "Bluemix service dashboard").  
+Puoi trovare la tua istanza del servizio {{site.data.keyword.blockchain}} Platform nel tuo [Dashboard servizio {{site.data.keyword.Bluemix_notm}} ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://console.bluemix.net/dashboard/services "{{site.data.keyword.Bluemix_notm}} dashboard servizio").  
 
-If you are a network initiator, click the **Create Network** button to initiate a {{site.data.keyword.blockchain}} network.  Follow the wizard to complete the basic configuration of your network and resources.  
-![Create Network wizard](images/create_network_name.png "Create Network wizard")  
+Se sei un iniziatore di rete, fai clic sul pulsante **Create Network** per iniziare una rete {{site.data.keyword.blockchain}}.  Attieniti alla procedura guidata per completare la configurazione di base della tua rete e delle risorse.  
+![Procedura guidata Create Network](images/create_network_name.png "Procedura guidata Create Network")  
 
-1. In the "Let's Get Started" screen, give a name to your network, choose the location of your {{site.data.keyword.Bluemix_notm}} organization, and add the name of your institution. When you invite other network members, they will look for this network name to join. Click **Next**.
-2. (Optional) In the "Invite Members" screen, enter the institution name and the email address of the member you want to invite to your network. The institution name you designate is not an official title. It simply allows the institution to be easily recognized and can be changed when they join the network. Note that a network can have up to 15 members including yourself. This step is optional, and you can invite members to your network later in the Network Monitor.  Click **Next**.
-	Members that you invite will receive an email notification about your invitation after you complete all of the steps to create the network.
-3. In the "Define Governance Rules" screen, establish the policies for membership, channel creation, and chaincode. By default, all network members can invite other members to join the network, create channels, and instantiate chaincode. For this GA, your network uses the default governance policies.  Click **Next**.
-4. In the "Review Summary" screen, verify your network configuration. If you want to make modifications, click **Edit** beside the section header or click the **Previous** button to go back to previous screens. When you complete the network configuration, click **Done**.  
-5. In the "Network Created" screen, you will be notified that your network has been successfully created. You can click **Add Peers** to configure your network resources or click **Enter Monitor** directly to open the Network Monitor. If you don't add peers first, they can be added later in the Network Monitor.  For more information about peers, see [Overview](v10_dashboard.html#overview).
+1. Nella schermata "Let's Get Started", dai un nome alla tua rete, scegli l'ubicazione dell'organizzazione {{site.data.keyword.Bluemix_notm}} e aggiungi il nome della tua istituzione. Quando inviti altri membri della rete, cercheranno questo nome di rete per aderire. Fai clic su **Next**.
+2. (Facoltativo) Nella schermata "Invite Members", immetti il nome dell'istituzione e l'indirizzo email del membro che vuoi invitare alla tua rete. Il nome dell'istituzione da te designato non è un titolo ufficiale. Consente semplicemente all'istituzione di essere facilmente riconosciuta e può essere modificato quando aderisce alla rete. Nota: una rete può avere fino a 15 membri, incluso te. Questo passo è facoltativo e puoi invitare i membri alla tua rete in un secondo momento nel Network Monitor.  Fai clic su **Next**.
+	I membri che inviti riceveranno una notifica email relativa al loro invito dopo che hai completato tutti i passi per creare la rete.
+3. Nella schermata "Define Governance Rules", stabilisci le politiche per l'adesione, la creazione del canale e il chaincode. Per impostazione predefinita, tutti i membri della rete possono invitare altri membri ad aderire alla rete, creare canali e istanziare chaincode. Per questo GA, la tua rete utilizza le politiche di governance predefinite.  Fai clic su **Next**.
+4. Nella schermata "Review Summary", verifica la tua configurazione di rete. Se vuoi apportare modifiche, fai clic su **Edit** accanto all'intestazione della sezione oppure fai clic sul pulsante **Previous** per tornare alle schermate precedenti. Una volta che hai completato la configurazione della rete, fai clic su **Done**.  
+5. Nella schermata "Network Created", verrai informato che la tua rete è stata creata correttamente. Puoi fare clic su **Add Peers** per configurare le tue risorse di rete oppure puoi fare clic su **Enter Monitor** direttamente per aprire il Network Monitor. Se non aggiungi prima dei peer, puoi aggiungerli in un secondo momento nel Network Monitor.  Per ulteriori informazioni sui peer, vedi [Overview](v10_dashboard.html#overview).
     
-Now you're ready to deploy a {{site.data.keyword.blockchain}} network that can support the following network resources:  
-* A member-specific certificate authority (CA)
-* Default governance policies
-* Up to 15 network members  
-* Three orderers and two intermediate CA nodes
-* Up to six small peers for each member  
-* A crash fault tolerant ordering service
-* Up to 150 channels
-* Up to 10 instantiations of chaincodes
+Ora sei pronto a distribuire una rete {{site.data.keyword.blockchain}} che può supportare le seguenti risorse di rete:  
+* Un'Autorità di certificazione (CA, Certificate Authority) specifica per il membro
+* Delle politiche di governance predefinite
+* Fino a 15 membri della rete  
+* Tre ordinatori e due nodi CA intermedi
+* Fino a tre piccoli peer per ogni membro   
+* Un servizio ordini con tolleranza di errori anomali
+* Fino a 150 canali
+* Fino a 10 istanziazioni di chaincode
 
 
-## Joining a network
-Similar to creating a network, you need to create a [{{site.data.keyword.blockchain}} Platform service instance ![External link icon](images/external_link.svg "External link icon")](https://console.bluemix.net/catalog/services/blockchain) on {{site.data.keyword.Bluemix_notm}}. You'll need to log in with your {{site.data.keyword.Bluemix_notm}} ID. If you do not have an ID, click the **Sign up to Create** button.  Rename the service and credential names for your instance so you can recognize it easily in the future. Select the {{site.data.keyword.Bluemix_notm}} region, organization, and space, where you can deploy your {{site.data.keyword.blockchain}} network. Then select **Enterprise Plan** from the pricing plans table and click the **Create** button.  
+## Adesione a una rete
+Analogamente alla creazione di una rete, devi creare un'istanza del servizio di [{{site.data.keyword.blockchain}} Platform ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://console.bluemix.net/catalog/services/blockchain) su {{site.data.keyword.Bluemix_notm}}. Dovrai eseguire l'accesso con il tuo ID {{site.data.keyword.Bluemix_notm}}. Se non hai un ID, fai clic sul pulsante **Registrati per creare**.  Rinomina i nomi di servizio e credenziali per la tua istanza in modo che tu possa riconoscerli facilmente in futuro. Seleziona la regione, l'organizzazione e lo spazio {{site.data.keyword.Bluemix_notm}} dove puoi distribuire la tua rete {{site.data.keyword.blockchain}}. Seleziona quindi **Piano Enterprise** dalla tabella dei piani di determinazione del prezzo e fai clic sul pulsante **Crea**.  
 
-You'll be able to find your {{site.data.keyword.blockchain}} Platform service instance in the [{{site.data.keyword.Bluemix_notm}} service dashboard ![External link icon](images/external_link.svg "External link icon")](https://console.bluemix.net/dashboard/services "Bluemix service dashboard"). 
+Potrai trovare la tua istanza del servizio {{site.data.keyword.blockchain}} Platform nel [Dashboard servizio {{site.data.keyword.Bluemix_notm}} ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://console.bluemix.net/dashboard/services "{{site.data.keyword.Bluemix_notm}} Dashboard servizio"). 
 
-If you are an invited network member, click the **Pending Invite ->** button, select the network you want to join from the drop down list, and click the **Join Network!** button. Follow the wizard to view the network basic configuration of your network and configure your own network components.  
-![Join Network wizard](images/join_network_name.png "Join Network wizard")  
+Se sei un membro della rete invitato, fai clic sul pulsante **Pending Invite ->**, seleziona la rete a cui vuoi aderire dall'elenco a discesa e fai clic sul pulsante**Join Network!**. Attieniti alla procedura guidata per visualizzare la configurazione di base della tua rete e configurare i tuoi componenti di rete.  
+![Procedura guidata Join Network](images/join_network_name.png "Procedura guidata Join Network")  
 
-1. In the "Let's Get Started" screen, add the name of your institution and verify the location of your {{site.data.keyword.Bluemix_notm}} organization. Click **Next**.
-2. In the "Review Governance Rules" screen, view the network's governance policies of membership, channel creation, and chaincode. Click **Next**.
-3. (Optional) In the "Add Peers" screen, choose the size and quantity of peers that you want to add. Click **Next**. Each member in a network can add up to 3 peers; at this point in time only "small" peers are available. This step is optional, and you can add your peers later in the Network Monitor. For more information about peers, see [Overview](v10_dashboard.html#overview).
-4. In the "Review Network Summary" screen, verify the network configuration. If you want to make modifications, click **Edit** besides the section header or click the **Previous** button to go back to previous screens. When you complete the resource configuration, Click **Done**. You will be notified that you have joined the network successfully. You can then click **Enter Monitor** to open the Network Monitor or click **Create a Channel** to initiate a channel creation request. You can create channels later in the Network Monitor. For more information, see [Channels](v10_dashboard.html#channels).
+1. Nella schermata "Let's Get Started", aggiungi il nome della tua istituzione e verifica l'ubicazione della tua organizzazione {{site.data.keyword.Bluemix_notm}}. Fai clic su **Next**.
+2. Nella schermata "Review Governance Rules", visualizza le politiche di governance della rete di adesione, creazione del canale e chaincode. Fai clic su **Next**.
+3. (Facoltativo) Nella schermata "Add Peers", scegli la dimensione e la quantità di peer che vuoi aggiungere. Fai clic su **Next**. Ciascun membro in una rete può aggiungere fino a 3 peer; in questo momento, sono disponibili solo "piccoli" peer. Questo passo è facoltativo e puoi aggiungere i tuoi peer in un secondo momento nel Network Monitor. Per ulteriori informazioni sui peer, vedi [Overview](v10_dashboard.html#overview).
+4. Nella schermata "Review Network Summary", verifica la configurazione di rete. Se vuoi apportare modifiche, fai clic su **Edit** accanto all'intestazione della sezione oppure fai clic sul pulsante **Previous** per tornare alle schermate precedenti. Una volta che hai completato la configurazione delle risorse, fai clic su **Done**. Sarai informato che la tua adesione alla rete è riuscita. Puoi quindi fare clic su **Enter Monitor** per aprire il Network Monitor o fare clic su **Create a Channel** per iniziare una richiesta di creazione di canale. Puoi creare i canali in un secondo momento nel Network Monitor. Per ulteriori informazioni, vedi [Canali](v10_dashboard.html#channels).
  
 
-## Configuring network resources and environment
+## Configurazione delle risorse di rete e dell'ambiente
 
-1. Enter your Network Monitor after you create or join a {{site.data.keyword.blockchain}} network. The Network Monitor is a GUI dashboard where you can manage and keep track of network status information. For more information, see [Network monitor](v10_dashboard.html).
-2. Add your own peers to the network. If you have already added enough peers, skip this step. Peers run chaincode and they are the endpoint to interact with your applications. Click **Add Peers** in the "Overview" screen, and select the quantity and size of your peers. For more information, see [Overview](v10_dashboard.html#resources).
-3. Set up a channel. All members in the same channel are provisioned a channel-specific ledger, which delivers data isolation and confidentiality. For information on how to create a channel, see [Creating a channel](howto/create_channel.html#creating-a-channel).  
+1. Accedi al tuo Network Monitor dopo che hai creato, o hai aderito a, una rete {{site.data.keyword.blockchain}}. Il Network Monitor è un dashboard GUI dove puoi gestire le informazioni sullo stato della rete e tenerne traccia. Per ulteriori informazioni, consulta [Network Monitor](v10_dashboard.html).
+2. Aggiungi i tuoi peer alla rete. Se già hai aggiunto abbastanza peer, tralascia questo passo. I peer eseguono il chaincode e sono l'endpoint per interagire con le tue applicazioni. Gai clic su **Add Peers** nella schermata "Overview" e seleziona la quantità e la dimensione dei tuoi peer. Per ulteriori informazioni, vedi [Overview](v10_dashboard.html#resources).
+3. Configura un canale. A tutti i membri nello stesso canale viene fornito un libro mastro specifico per il canale, che offre isolamento e confidenzialità dei dati. Per informazioni su come creare un canale, vedi [Creazione di un canale](howto/create_channel.html#creating-a-channel).  
 	
-	If you are a channel member who has been invited to join a channel, you will receive an email notification with a link to the wizard that will allow you to join the channel. 
-4. Join peers to the channel.  Only peers that are associated with the channel can access its ledger. For more information, see [Channels](v10_dashboard.html#channels).
-5. Install and instantiate chaincode. All channel members need to install the same chaincode with the same name and version on every peer that will run the chaincode. After being installed, chaincode must be instantiated on the channel before it can be used. For more information, see [Installing and instantiating a chaincode](howto/install_instantiate_chaincode.html).  
+	Se sei un membro del canale che è stato invitato ad aderire a un canale, riceverai una notifica email con un link alla procedura guidata che ti consentirà di aderire al canale. 
+4. Unisci i peer al canale.  Solo i peer associati al canale possono accedere al suo libro mastro. Per ulteriori informazioni, vedi [Canali](v10_dashboard.html#channels).
+5. Installa e istanzia il chaincode. Tutti i membri del canale devono installare lo stesso chaincode con lo stesso nome e la stessa versione su ogni peer che eseguirà il chaincode. Dopo l'installazione, il chaincode deve essere istanziato sul canale prima di poter essere usato. Per ulteriori informazioni, vedi [Installazione e istanziazione di un chaincode](howto/install_instantiate_chaincode.html).  
 
-**Note**: To achieve high availability, each institution must purchase at least 2 peers, and within a channel, each participanting institution must join at least 2 peers.
+**Nota**: per ottenere un'elevata disponibilità, ciascuna istituzione deve acquistare almeno 2 peer e, in un canale, ogni istituzione partecipante deve unire almeno 2 peer.
 
-## Enabling applications to interact with the network
-Applications leverage the SDK APIs to interact with your {{site.data.keyword.blockchain}} network components. You need to add the API endpoint information of your network components in your applicatoin so that the application can ultimately target your peers with transaction requests. You can then add the API endpoint information from the Network Monitor. Applications can be hosted on your local file system or on {{site.data.keyword.Bluemix_notm}}. For more information, see [Developing applications](v10_application.html).
+## Abilitazione delle applicazioni a interagire con la rete
+Le applicazioni si avvalgono delle API SDK per interagire con i tuoi componenti di rete {{site.data.keyword.blockchain}}. Devi aggiungere le informazioni sull'endpoint API dei tuoi componenti di rete nella tua applicazione in modo che l'applicazione possa alla fine avere come obiettivo i tuoi peer le richieste di transazione. Puoi quindi aggiungere le informazioni sull'endpoint API dal Network Monitor. Le applicazioni possono essere ospitate sul tuo file system locale o su {{site.data.keyword.Bluemix_notm}}. Per ulteriori informazioni, vedi [Sviluppo di applicazioni](v10_application.html).
 
-## Monitoring network resources  
-After a transaction has been triggered from your application, you can view transaction status information in the Network Monitor. For more information about network monitoring, see [Monitoring a network](howto/monitor_network.html).
+## Monitoraggio delle risorse di rete  
+Dopo che una transazione è stata attivata dalla tua applicazione, puoi visualizzare le informazioni sullo stato della transazione nel Network Monitor. Per ulteriori informazioni sul monitoraggio di rete, vedi [Monitoraggio di una rete](howto/monitor_network.html).
+  
+## Uscire da una rete 
+Se desideri uscire da una rete, elimina l'istanza del servizio blockchain dal tuo dashboard {{site.data.keyword.Bluemix_notm}}.  
+
+**Nota**: prima di uscire da una rete, assicurati di non essere un membro dei canali della rete. Altrimenti, riscontrerai degli errori quando esci dalla rete. Una rimozione di un membro del canale deve completare il processo di aggiornamento del canale. Per ulteriori informazioni sul processo di aggiornamento del canale, consulta [Aggiornamento di un canale](howto/create_channel.html#updating-a-channel).
+
+
+<!--
+## References
+* For more information about {{site.data.keyword.blockchainfull_notm}} offerings, see [Blockchain offerings](index.html).
+* For more information about Hyperledger Fabric V1.0, see [Hyperledger Fabric documentation ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/latest/){:new_window}.
+-->

@@ -26,7 +26,7 @@ A arquitetura por trás do {{site.data.keyword.blockchainfull_notm}} é o projet
 
 ## Instrução de software livre
 
-Os planos de oferta do {{site.data.keyword.blockchainfull_notm}} no {{site.data.keyword.Bluemix_notm}} são construídos em cima da pilha do Hyperledger Fabric V1.0 da Linux Foundation. Os membros do Hyperledger Project, incluindo a IBM, continuam contribuindo com vários subprojetos sob a coordenação do Hyperleder. Todas as contribuições são revisadas, avaliadas e testadas pela comunidade. 
+Os planos de oferta do {{site.data.keyword.blockchainfull_notm}} no {{site.data.keyword.Bluemix_notm}} são construídos em cima da pilha do Hyperledger Fabric V1.0 da Linux Foundation. Os membros do Hyperledger Project, incluindo a IBM, continuam contribuindo com vários subprojetos sob a coordenação do Hyperleder.  Todas as contribuições são revisadas, avaliadas e testadas pela comunidade. 
 
 O Hyperledger Fabric anunciou que atingiu o *Status de Nível de Produção* para a V1.0 em 11 de julho de 2017. 
 
@@ -41,4 +41,4 @@ As práticas de codificação a seguir NÃO são suportadas em redes do {{site.d
 5. Acessar serviços externos, como bancos de dados, diretamente de chaincode.
 6. Usar bibliotecas ou variáveis globais que podem introduzir o não determinismo (como usar "aleatório" ou "tempo").  
 
-Além disso, não é recomendado gravar chaincode não determinístico, o que apresenta risco à consistência e à integridade dos dados. Deve ser observado que a arquitetura do Hyperledger Fabric foi projetada para combater chaincode não determinístico por meio de uma série verificações de endosso e validação, no entanto, ainda é altamente recomendável que você codifique funções determinísticas que não sejam dependentes de variáveis globais não estáticas (por exemplo, tempo).  
+Além disso, não é recomendado gravar chaincode não determinístico, o que apresenta risco à consistência e à integridade dos dados.  Deve ser observado que a arquitetura do Hyperledger Fabric foi projetada para combater chaincode não determinístico por meio de uma série verificações de endosso e validação, no entanto, ainda é altamente recomendável que você codifique funções determinísticas que não sejam dependentes de variáveis globais não estáticas (por exemplo, tempo).  

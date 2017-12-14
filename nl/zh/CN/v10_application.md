@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-08-30"
+lastupdated: "2017-11-17"
 ---
 
 {:new_window: target="_blank"}
@@ -69,7 +69,7 @@ C:\gopath
 ### 命令行
 这是两种方法中较简单的做法。首先，按照指示信息来构建 [Fabric CA 客户机 ![外部链接图标](images/external_link.svg "外部链接图标")](http://hyperledger-fabric-ca.readthedocs.io/en/latest/users-guide.html)。此步骤允许您与 CA 服务器通信，并接收格式正确的证书和密钥。  
 
-其次，从 [Bluemix ![外部链接图标](images/external_link.svg "外部链接图标")](http://blockchain-certs.mybluemix.net/3.secure.blockchain.ibm.com.rootcert) 下载 TLS 证书，并将内容保存到文件夹中，例如 ``$HOME/tls``。此步骤允许在连线上加密数据流。
+其次，从 [{{site.data.keyword.Bluemix_notm}} ![外部链接图标](images/external_link.svg "外部链接图标")](http://blockchain-certs.mybluemix.net/3.secure.blockchain.ibm.com.rootcert) 下载 TLS 证书，并将内容保存到文件夹中，例如 ``$HOME/tls``。此步骤允许在连线上加密数据流。
 
 最后，从“网络监视器”中的**概述**屏幕打开**服务凭证** JSON 文件，并确定以下信息：
 * CA 的 URL：``certificateAuthorities`` 下的 ``url``
@@ -161,7 +161,7 @@ enrollmentSecret: password
                 ...
 	```
 
-	**注**：如果要以网络中的其他同级为目标，例如，您需要来自不属于贵组织的同级的支持，那么您需要获得那些同级的正确的 API 端点信息。您还需要为其他组织存储 CA 证书，以便验证返回到应用程序的响应。此信息不会在服务凭证中公开，因此您必须联系 Bluemix 组织的适当管理员，并在带外操作中获取此信息。订购服务 URL 在整个网络中很常用；对于此订购服务，您不需要任何成员特定信息。  
+	**注**：如果要以网络中的其他同级为目标，例如，您需要来自不属于贵组织的同级的支持，那么您需要获得那些同级的正确的 API 端点信息。您还需要为其他组织存储 CA 证书，以便验证返回到应用程序的响应。此信息不会在服务凭证中公开，因此您必须联系 CLoud Foundry 组织的适当管理员，并在带外操作中获取此信息。订购服务 URL 在整个网络中很常用；对于此订购服务，您不需要任何成员特定信息。  
 
 3. 将 API 端点信息插入应用程序的配置文件，如以下示例中所示：  
 	```

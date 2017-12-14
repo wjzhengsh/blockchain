@@ -11,30 +11,30 @@ lastupdated: "2017-08-14"
 {:codeblock: .codeblock}
 {:pre: .pre}
 
-# Sample applications
+# Applicazioni di esempio
 
-You can deploy and test sample applications to get a better understanding on {{site.data.keyword.blockchainfull}} network and application development.
+Puoi distribuire e testare applicazioni di esempio per ottenere una migliore comprensione della rete {{site.data.keyword.blockchainfull}} e dello sviluppo delle applicazioni.
 {:shortdesc}
 
-## Before you begin
+## Prima di cominciare
 
-Ensure that you install all software prerequisites on your local file system.  For more information, see [Setting up application development environment](../v10_application.html#setting-up-application-development-environment).
+Assicurati di installare tutti i prerequisiti software sul tuo file system locale.  Per ulteriori informazioni, vedi [Configurazione dell'ambiente di sviluppo di applicazioni](../v10_application.html#setting-up-application-development-environment).
 
-You also need to have a {{site.data.keyword.blockchain}} network on {{site.data.keyword.Bluemix_short}} with a channel and its peers configured.  For more information, see [Govern the Network](../get_start.html).  When your network is ready to use, retrieve API endpoints of your network resources that your application will access.  For more information, see [Adding network service credentials to your application](../v10_application.html#adding-network-service-credentials-to-your-application).
-
-
-## Marbles application
-
-In the Marbles application, multiple users can create marbles with different properties and transfer them with others.  The Marbles application is writen in Javascript and the chaincode is writen in Go.
-
-You can find the sample code and instructions in [Marbles in GitHub ![External link icon](../images/external_link.svg "External link icon")](https://github.com/IBM-Blockchain/marbles).
+Devi anche avere una rete {{site.data.keyword.blockchain}} su {{site.data.keyword.Bluemix_short}} con un canale e i suoi peer configurati.  Per ulteriori informazioni, vedi [Governance della rete](../get_start.html).  Quando la tua rete è pronta per l'uso, richiama gli endpoint API delle tue risorse di rete a cui accederà la tua applicazione.  Per ulteriori informazioni, vedi [Aggiunta delle credenziali del servizio di rete alla tua applicazione](../v10_application.html#adding-network-service-credentials-to-your-application).
 
 
-## Fabric car application
+## Applicazione Marbles
 
-In the Fabric car application, you can perform **query** and **update** on car records in the ledger.  The Fabric car application is writen in Javascript and the chaincode is writen in Go.
+Nell'applicazione Marbles, più utenti possono creare delle biglie con proprietà differenti e trasferirle ad altri.  L'applicazione Marbles è scritta in JavaScript e il chaincode è scritto in Go.
 
-You can find sample code in [Fabric car in GitHub ![External link icon](../images/external_link.svg "External link icon")](https://github.com/hyperledger/fabric-samples/tree/release/fabcar), and instruction in [Writing Your First Application ![External link icon](../images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/latest/write_first_app.html).
+Puoi trovare il codice di esempio e le istruzioni in [Marbles in GitHub ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://github.com/IBM-Blockchain/marbles).
+
+
+## Applicazione Fabric car
+
+Nell'applicazione Fabric car, puoi eseguire **query** e **aggiornamenti** sui record relativi alle automobili nel libro mastro.  L'applicazione Fabric car è scritta in JavaScript e il chaincode è scritto in Go.
+
+Puoi trovare il codice di esempio in [Fabric car in GitHub ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://github.com/hyperledger/fabric-samples/tree/release/fabcar) e le istruzioni in [Writing Your First Application ![Icona link esterno](../images/external_link.svg "Icona link esterno")](http://hyperledger-fabric.readthedocs.io/en/latest/write_first_app.html).
 
 <!-- 
 ## High available application

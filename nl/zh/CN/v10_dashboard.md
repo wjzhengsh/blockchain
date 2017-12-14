@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-08-15"
+lastupdated: "2017-12-05"
 ---
 
 {:new_window: target="_blank"}
@@ -52,7 +52,7 @@ lastupdated: "2017-08-15"
 客户端必须能够连接到它们需要从中获取响应的任何同级。
   
 - 添加同级  
-单击右上角的**添加同级**按钮，以将同级节点添加到网络。每个成员最多可在一个网络中添加六个同级。您可以在创建或加入网络时首次添加同级节点，或者稍后在“网络监视器”中进行添加。   
+单击右上角的**添加同级**按钮，以将同级节点添加到网络。每个成员在一个网络中最多可添加三个同级。您可以在创建或加入网络时首次添加同级节点，或者稍后在“网络监视器”中进行添加。   
 在弹出的“添加同级”面板中，选择要添加的同级节点的数目和大小。目前只有“小”同级可购买，但最终将有“中”和“大”，以适应更大的工作负载和更高的事务处理吞吐量。同级大小调整和性能指标的详细信息即将发布...
   
 ## 成员
@@ -111,30 +111,33 @@ lastupdated: "2017-08-15"
 ![通知](images/notifications.png "通知")
 *图 6. 通知*
 
-* 在您创建通道或您受邀加入新通道时，将在“网络监视器”中出现一个通知。 
-* 这些请求分组为“全部”、“暂挂”和“已完成”子选项卡。子选项卡标题后的数字指示每个子选项卡中的请求数。
+在您创建通道或您受邀加入新通道时，将在“网络监视器”中出现一个通知。 
+
+这些请求分组为“全部”、“暂挂”和“已完成”子选项卡。子选项卡标题后的数字指示每个子选项卡中的请求数。
    * 您可以在“全部”子选项卡中找到所有请求。
-   * 未接受或拒绝的请求或尚未查看的请求在“未读”子选项卡中。单击**复查请求**按钮以查看请求（包括通道策略和成员），然后**接受**或**拒绝**该请求。您还可以通过单击**稍后**在其他时间来处理请求。如果您接受请求并且请求已由足够多的通道操作员接受，那么您可以单击**提交请求**以激活通道更新。  
+   * 未接受或拒绝的请求或尚未查看的请求在“暂挂”子选项卡中。单击**复查请求**按钮以查看请求，包括通道策略和成员，以及投票状态。如果您是通道操作员，那么您可以**接受**或**拒绝**请求，或者单击**稍后**以在其他时间对其进行处理。如果有足够多的通道操作员接受请求，那么您可以单击**提交请求**以激活通道更新。
    * 提交的请求将显示在“已完成”子选项卡中。您可以单击**复查请求**以查看其详细信息。
   
-如果有一个较长的请求列表，那么可以在顶部的搜索字段中搜索请求。通过选择暂挂请求前面的框并单击**删除请求**，可以删除暂挂请求。请注意，无法删除已完成的请求。
+如果有一个较长的请求列表，那么可以在顶部的搜索字段中搜索请求。 
+
+通过选择暂挂请求前面的框并单击**删除请求**，可以删除暂挂请求。请注意，无法删除已完成的请求。
 
 
 ## 支持
 
 “支持”屏幕包含两个选项卡，在“支持”选项卡中提供支持信息，在“发行说明”选项卡中描述每个发行版的新增功能和已更改功能。
 
-使用此页面上的链接和资源，可访问故障诊断和支持论坛。如果您无法调试问题或确定问题的答案，请单击**开具 Bluemix 支持凭单**链接，并按照指南提交凭单。
+使用此页面上的链接和资源，可访问故障诊断和支持论坛。如果您无法调试问题或确定问题的答案，请单击**开具 {{site.data.keyword.Bluemix_notm}} 支持凭单**链接，并按照指南提交凭单。
 
 **图 7** 显示初始“支持”屏幕，其中在“支持”选项卡中显示支持信息：
 
 ![支持](images/support.png "支持")
 *图 7. 区块链支持*
 
-* [{{site.data.keyword.blockchainfull_notm}} 服务文档](index.html)，其为此文档的站点，提供有关如何在 {{site.data.keyword.Bluemix_notm}} 上开始使用 {{site.data.keyword.blockchainfull_notm}} Platform 的指导信息。您可以从导航器查找相应主题，也可以使用顶部的搜索功能搜索任何项。  
+* [{{site.data.keyword.blockchainfull_notm}} 服务文档](index.html)，其为此文档的站点，提供有关如何在 {{site.data.keyword.Bluemix_notm}} 上开始使用 {{site.data.keyword.blockchainfull}} Platform 的指导信息。您可以从导航器查找相应主题，也可以使用顶部的搜索功能搜索任何项。  
 * **社区帮助** 下的 [IBM DeveloperWorks ![外部链接图标](images/external_link.svg "外部链接图标")](https://developer.ibm.com/blockchain/) 包含适用于开发者的资源和信息。  
 * **支持凭单**下的 [IBM dWAnswers ![外部链接图标](images/external_link.svg "外部链接图标")](https://developer.ibm.com/answers/smartspace/blockchain/) 充当问题和响应的平台。您可以搜索先前发布的问题的响应，也可以提交新问题。请确保在问题中包含关键字**区块链**。   
-您也可以通过[开具 {{site.data.keyword.Bluemix_notm}} 支持凭单 ![外部链接图标](images/external_link.svg "外部链接图标")]() 选项，向 {{site.data.keyword.blockchainfull_notm}} 支持团队提交问题。从特定 Bluemix 实例共享详细信息和代码片段。  
+您也可以通过[开具 {{site.data.keyword.Bluemix_notm}} 支持凭单 ![外部链接图标](images/external_link.svg "外部链接图标")]() 选项，向 {{site.data.keyword.blockchainfull_notm}} 支持团队提交问题。从特定 {{site.data.keyword.Bluemix_notm}} 实例共享详细信息和代码片段。  
 * **{{site.data.keyword.blockchain}} 样本应用程序**下的[样本应用程序 ![外部链接图标](images/external_link.svg "外部链接图标")]() 提供了指导和样本代码片段，以帮助开发应用程序。  
 * **Hyperledger Fabric** 下的 [Hyperledger Fabric ![外部链接图标](images/external_link.svg "外部链接图标")](http://hyperledger-fabric.readthedocs.io/) 和 [Hyperledger Fabric 社区 ![外部链接图标](images/external_link.svg "外部链接图标")]() 提供有关 Hyperledger Fabric 堆栈的更多详细信息。  
 请与 [Hyperledger 专家 ![外部链接图标](images/external_link.svg "外部链接图标")](https://chat.hyperledger.org/channel/general) 讨论有关 Hyperledger Fabric 代码的问题。   

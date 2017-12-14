@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-07-13"
+lastupdated: "2017-11-17"
 ---
 
 {:new_window: target="_blank"}
@@ -16,7 +16,7 @@ lastupdated: "2017-07-13"
 {: #ibmblockchain_support}
 
 
-有多种可用的机制，可以获取与 Bluemix 上区块链实例相关联的支持和故障诊断问题。
+有多种可用的机制，可以获取与 {{site.data.keyword.Bluemix}} 上区块链实例相关联的支持和故障诊断问题。
 {:shortdesc}
 
 

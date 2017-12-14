@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-08-14"
+lastupdated: "2017-12-06"
 
 ---
 
@@ -12,57 +12,56 @@ lastupdated: "2017-08-14"
 {:codeblock: .codeblock}
 {:pre: .pre}
 
-# Creating Managed Channels 
+# Creazione di canali gestiti 
 
-**ATTENTION:** Before using a {{site.data.keyword.blockchainfull}} offering, read the technical and support information in the [Disclaimer](needtoknow.html) section.  
+**ATTENZIONE:** prima di utilizzare un'offerta {{site.data.keyword.blockchainfull}}, leggi le informazioni tecniche e di supporto nella sezione [Dichiarazione di non responsabilità](needtoknow.html).   
 {:shortdesc}
 
-In some use cases – highly regulated foreign currency exchange markets, for example – it might be necessary to put a trusted third party in charge of the administrative roles on channels that would normally be handled by various operators or members. 
+In alcuni casi d'uso, ad esempio dei mercati di cambio di valute estere altamente regolamentati, potrebbe essere necessario affidare a una terza parte attendibile i ruoli amministrativi sui canali che normalmente sarebbero gestiti da diversi operatori o membri. 
 
-The process for provisioning such a network is similar to creating any network. The main difference comes in assigning permissions to the members for how they can transact within channels.  
+Il processo per fornire una rete di questo tipo è simile a quello della creazione di una qualsiasi rete. La differenza principale riguarda le assegnazioni di autorizzazioni ai membri relative al modo in cui interagiscono con il libro mastro nei canali.  
 
-The steps to create a network and invite members can be found here: [Govern a network](get_start.html#creating-a-network). 
+La procedura per creare una rete e invitare membri è disponibile qui: [Governance della rete](get_start.html#creating-a-network). 
 
-**Note**: In a real-world example, the operator of such a network might install custom chaincodes during the "Create Network" phase using the Policy Editor, but for the purpose of this example we'll assume your network configuration to be standard. 
+**Nota**: in un esempio di utilizzo reale, l'operatore di una rete di questo tipo potrebbe installare del chaincode personalizzato durante la fase "Create Network" utilizzando l'editor delle politiche ma, al fine di questo esempio, presumeremo che la tua configurazione di rete sia quella standard. 
 
-## Create the channel
+## Crea il canale
 
-Once you’ve got a network and the members you've invited have gone through the onboarding process, navigate to **Channels** in the toolbar. 
+Una volta che hai una rete e che i membri che hai invitato sono passati per il processo di accoglienza, vai a **Channels** nella barra degli strumenti. 
 
-Click **New Channel**. This will lead you to a screen where you’ll give your channel a name and a description (the description is optional). 
+Fai clic su **New Channel**. Questo porterà a una schermata dove assegnerai un nome e una descrizione al canale (la descrizione è facoltativa). 
 
-After clicking **Next**, you'll get to the screen where invite members to the channel and manage their permissions. For the purpose of this example, let’s say that you are acting as a trusted third party in a foreign currency exchange between two banks. You – the trusted third party – make yourself the only “Operator” for the channel and assign the other two banks as “Writers”. This will give you sole authority to edit the channel (instantiating chaincode on it, for example -- more on this later) while still giving the two banks the ability to invoke transactions. Your screen should look something like this: 
+Dopo aver fatto clic su **Next**, ti troverai sulla schermata dove invitare i membri al canale e gestire le loro autorizzazioni. Al fine di questo esempio, poniamo che stai fungendo da terza parte attendibile in un cambio di valuta estera tra due banche. Tu, ossia la terza parte attendibile, indichi te stesso come solo operatore (Operator) per il canale e assegni le altre due banche come scrittori (Writer). Questo ti darà l'autorizzazione esclusiva a modificare il canale (istanziando un chaincode su di esso, ad esempio; ne riparleremo più avanti in maggiore dettaglio) concedendo al tempo stesso alle due banche la possibilità di richiamare delle transazioni. La schermata che vedi dovrebbe essere simile al seguente: 
 
-  ![Select member roles](images/selectmemberroles.png "Select member roles") 
-*Where “JoeCo” is you, the trusted third party, and “IBM” and “Chris” are the two banks (this is just an example, obviously).* 
+  ![Seleziona ruoli dei membri](images/selectmemberroles.png "Seleziona ruoli dei membri") 
+*Dove “JoeCo” sei tu, ossia la terza parte attendibile, e “IBM” e “Chris” sono le due banche (questo ovviamente è solo un esempio).* 
 
-Once you've assigned the correct permissions, click **Next**. 
+Dopo che hai assegnato le autorizzazioni corrette, fai clic su **Next**. 
 
-This will take you to a channel policy update screen. Since there is only one operator on this channel (you), select the number of members needed to create the channel as “1”. Then click **Submit Request**. 
+Questo ti porterà a una schermata di aggiornamento delle politiche di canale. Poiché c'è un solo operatore su questo canale (tu), seleziona il numero di membri necessari per creare il canale come "1". Fai clic quindi su **Submit Request**. 
 
-Note: even though you are the sole operator of this channel, this is still only a request; you must still navigate to the correct screen to approve the request and actually create the channel. 
+Nota: anche se sei il solo operatore di questo canale, questa continua a essere solo una richiesta; devi comunque andare alla schermata corretta per approvare e inviare la richiesta per creare il canale.  
 
-Emails will be sent to the members you’ve invited and prompt them to join the channel. However, because they only have “write” privileges, the ability to actually create the channel falls to you. To do this, navigate to the “Notifications” screen, where an alert to create the channel should be waiting. Click **Review Request**. This will display the channel details. Review these details and click **Submit**. 
+Ai membri che hai invitato vengono inviate delle email che chiedono loro di partecipare al canale. Tuttavia, hanno solo i privilegi di "scrittura" e tu sei responsabile di completare il processo di creazione del canale. Passa alla schermata "Notifications" nel Network Monitor, dove è stato visualizzato un avviso di creazione del canale. Individua la richiesta da gestire nelle schede secondarie "All" o "Pending". Fai clic su **Review Request** per visualizzare i dettagli del canale e fai clic su **Approve**. Fai clic quindi su **Submit Request**. 
 
-Congratulations! You've just created a managed channel. 
+Congratulazioni. Hai appena creato un canale gestito. 
 
-In a network with 15 members (14 banks as well as you, the trusted third party), you could potentially see dozens of these channels. Banks A and B on a channel. Banks B and F on a channel. Banks might choose to have separate channels for each type of currency they trade. But in each case, the trusted third party creates the channel, endorses the transactions, and serves as the sole operator. 
+In una rete con 15 membri (14 banche e tu, ossia la terza parte attendibile), potresti potenzialmente vedere dozzine di questi canali. Le banche A e B su un canale. Le banche B e F su un canale. Le banche potrebbero scegliere di avere dei canali separati per ogni tipo di valuta che trattano. Tuttavia, in ogni caso, la terza parte attendibile crea il canale, approva le transazioni e funge da unico operatore. 
 
-# Instantiating the Chaincode
+# Istanziazione del chaincode
 
-Your channel has been created successfully but it still needs chaincode attached to it. In a channel dedicated to foreign currency exchanges, this chaincode would presumably require all three members of the channel (the two banks in question and you, the trusted third party) to endorse **every** transaction. This chaincode might also be written to send a record of the *result* of this transaction to a managed "read-only" channel comprised of every member in the network (more on this later). Before any chaincode can be instantiated, however, it must first be installed on the members’ peers. Once it is, it can be instantiated by the channel operator (you).  
+Il tuo canale è stato creato correttamente ma ha ancora bisogno che a esso sia collegato un chaincode. In un canale dedicato agli scambi di valuta estera, questo chaincode richiederà presumibilmente che tutti e tre i membri del canale (le due banche in questione e tu, ossia la terza parte attendibile) approvino **ogni** transazione. Questo chaincode potrebbe anche essere scritto per inviare un record del *risultato* di questa transazione a un canale "di sola lettura" gestito composto da ogni membro nella rete (ne riparleremo in maggiore dettaglio più avanti). Tuttavia, prima di potere essere istanziato, il chaincode deve essere installato sui peer dei membri. Dopo essere stato installato, può essere istanziato dall'operatore del canale (tu).  
 
-The actual procedure for installing and instantiating this kind of chaincode is no different than for any chaincode (other than the number of operators needed to approve the instantiation), so follow the instructions here: [Installing and Instantiating a Chaincode](install_instantiate_chaincode.html.html).
+L'effettiva procedura per installare e istanziare questo tipo di chaincode non è diversa da quella per qualsiasi chaincode (a parte il numero di operatori necessari per approvare l'istanziazione); attieniti pertanto alle istruzioni che trovi qui: [Installazione e istanziazione di un chaincode](install_instantiate_chaincode.html.html).
 
-# A Managed Read-Only Channel
+# Un canale gestito di sola lettura
 
-Financial regulations in the foreign currency exchange market, to continue with this use case, might demand there also be a channel in the network that has every bank on it in a passive, “read-only” mode, allowing the **result** of these currency transactions to be tracked. This is to ensure that, for example, Bank A – which has just lost millions of dollars on a “bet” with Bank B (over how much the value of a currency will rise or fall over a period of time) – does not fail to endorse the transaction that will send those millions of dollars to Bank B. 
+I regolamenti finanziari nel mercato di scambio di valute estere, per continuare con questo caso d'uso, potrebbero richiedere che ci sia anche un canale nella rete su cui è presente ogni banca in una modalità passiva "di sola lettura", consentendo di tracciare il **risultato** di queste transazioni di valuta. Questo serve a garantire che, ad esempio, la Banca A che ha appena perso milioni di dollari per una "scommessa" con la Banca B (sulla misura in cui il valore di una valuta sarebbe salito o sceso in un periodo di tempo) non manchi di approvare la transazione che invierà questi milioni di dollari alla Banca B. 
 
-To create this kind of a channel, follow the same channel creation procedure you followed earlier, only instead of inviting two banks and making them "Writers" (with yourself as the sole Operator), you invite **every** bank and make them all "Readers". Then follow the same process for installing and instantiating the chaincode. 
+Per creare questo tipo di canale, attieniti alla stessa procedura di creazione di un canale a cui ti sei attenuto prima solo che, invece di invitare due banche e renderle scrittori (Writer) (con te stesso come unico operatore), inviti **ogni** banca e li rendi tutti lettori (Reader). Attieniti quindi allo stesso processo per installare e istanziare il chaincode. 
 
 ## {{site.data.keyword.IBM_notm}} Support 
 
-{{site.data.keyword.IBM_notm}} offers support on {{site.data.keyword.IBM_notm}} implemented {{site.data.keyword.blockchain}} solutions. Access the {{site.data.keyword.blockchainfull_notm}} Support details through the [{{site.data.keyword.blockchainfull_notm}} DockerHub ![External link icon](images/external_link.svg "External link icon")](https://hub.docker.com/u/ibmblockchain/) and explore the support engagements available.
+{{site.data.keyword.IBM_notm}} offre un supporto sulle soluzioni {{site.data.keyword.blockchain}} implementate da {{site.data.keyword.IBM_notm}}. Accedi ai dettagli del supporto {{site.data.keyword.blockchainfull_notm}} tramite il [{{site.data.keyword.blockchainfull_notm}} DockerHub ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://hub.docker.com/u/ibmblockchain/) ed esplora gli impegni di supporto disponibili.
 
-For complete details on all Hyperledger Fabric v1.0 features and functionality,
-see [Hyperledger Fabric documentation ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/latest/).
+Per dei dettagli completi su tutte le funzioni e la funzionalità di Hyperledger Fabric v1.0, consulta [la documentazione di Hyperledger Fabric ![Icona link esterno](images/external_link.svg "Icona link esterno")](http://hyperledger-fabric.readthedocs.io/en/latest/).

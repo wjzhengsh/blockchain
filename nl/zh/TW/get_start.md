@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-09-04"
+lastupdated: "2017-12-05"
 
 ---
 
@@ -31,7 +31,7 @@ lastupdated: "2017-09-04"
 ## 建立網路
 開始之前，您需要在 {{site.data.keyword.Bluemix_notm}} 上建立「[{{site.data.keyword.blockchain}} 平台」服務實例 ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](https://console.bluemix.net/catalog/services/blockchain)。您需要使用您的 {{site.data.keyword.Bluemix_notm}} ID 登入。如果您沒有 ID，請按一下**註冊以建立**按鈕。將實例的服務和認證名稱重新命名，以便您未來能夠輕易辨識。選取您可以在其中部署 {{site.data.keyword.blockchain}} 網路的 {{site.data.keyword.Bluemix_notm}} 地區、組織和空間。然後從定價方案表格選取**企業方案**，並按一下**建立**按鈕。  
 
-您可以在 [{{site.data.keyword.Bluemix_notm}} 服務儀表板 ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](https://console.bluemix.net/dashboard/services "Bluemix 服務儀表板") 中找到您的「{{site.data.keyword.blockchain}} 平台」服務實例。  
+您可以在 [{{site.data.keyword.Bluemix_notm}} 服務儀表板 ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](https://console.bluemix.net/dashboard/services "{{site.data.keyword.Bluemix_notm}} 服務儀表板") 中找到您的「{{site.data.keyword.blockchain}} 平台」服務實例。  
 
 如果您是網路起始者，請按一下**建立網路**按鈕，以起始 {{site.data.keyword.blockchain}} 網路。遵循精靈指示，完成網路和資源的基本配置。  
 ![建立網路精靈](images/create_network_name.png "建立網路精靈")  
@@ -47,7 +47,7 @@ lastupdated: "2017-09-04"
 * 預設控管原則
 * 最多 15 個網路成員  
 * 三個排序節點和兩個中繼 CA 節點
-* 每個成員最多 6 個小型對等節點  
+* 每個成員最多 3 個小型對等節點  
 * 損毀容錯排序服務
 * 最多 150 個通道
 * 最多 10 個鏈碼實例化作業
@@ -56,7 +56,7 @@ lastupdated: "2017-09-04"
 ## 加入網路
 與建立網路類似，您需要在 {{site.data.keyword.Bluemix_notm}} 上建立「[{{site.data.keyword.blockchain}} 平台」服務實例 ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](https://console.bluemix.net/catalog/services/blockchain)。您需要使用您的 {{site.data.keyword.Bluemix_notm}} ID 登入。如果您沒有 ID，請按一下**註冊以建立**按鈕。將實例的服務和認證名稱重新命名，以便您未來能夠輕易辨識。選取您可以在其中部署 {{site.data.keyword.blockchain}} 網路的 {{site.data.keyword.Bluemix_notm}} 地區、組織和空間。然後從定價方案表格選取**企業方案**，並按一下**建立**按鈕。  
 
-您將能夠在 [{{site.data.keyword.Bluemix_notm}} 服務儀表板 ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](https://console.bluemix.net/dashboard/services "Bluemix 服務儀表板") 中找到您的「{{site.data.keyword.blockchain}} 平台」服務實例。 
+您將能夠在 [{{site.data.keyword.Bluemix_notm}} 服務儀表板 ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](https://console.bluemix.net/dashboard/services "{{site.data.keyword.Bluemix_notm}} 服務儀表板") 中找到您的「{{site.data.keyword.blockchain}} 平台」服務實例。 
 
 如果您是受邀的網路成員，請按一下**擱置邀請 ->** 按鈕，從下拉清單中選取您要加入的網路，然後按一下**加入網路！**按鈕。遵循精靈指示，檢視您網路的網路基本配置，並配置您自己的網路元件。  
 ![加入網路精靈](images/join_network_name.png "加入網路精靈")  
@@ -84,3 +84,15 @@ lastupdated: "2017-09-04"
 
 ## 監視網路資源  
 從您的應用程式觸發交易之後，您可以在「網路監視器」中檢視交易狀態資訊。如需網路監視的相關資訊，請參閱[監視網路](howto/monitor_network.html)。
+  
+## 離開網路 
+如果您要離開網路，請從 {{site.data.keyword.Bluemix_notm}} 儀表板中刪除區塊鏈服務實例。  
+
+**附註**：在您離開網路之前，請確定您不是網路任何通道中的成員。否則，您會在離開網路時收到錯誤。通道成員移除需要完成通道更新處理程序。如需通道更新處理程序的相關資訊，請參閱[更新通道](howto/create_channel.html#updating-a-channel)。
+
+
+<!--
+## References
+* For more information about {{site.data.keyword.blockchainfull_notm}} offerings, see [Blockchain offerings](index.html).
+* For more information about Hyperledger Fabric V1.0, see [Hyperledger Fabric documentation ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/latest/){:new_window}.
+-->

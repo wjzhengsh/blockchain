@@ -12,33 +12,33 @@ lastupdated: "2017-07-19"
 {:pre: .pre}
 
 
-# Disclaimer
+# Dichiarazione di non responsabilità
 {: #etn_overview}
 
-**ATTENTION:** You must review the following information before using any {{site.data.keyword.blockchainfull}} plans.
+**ATTENZIONE:** devi riesaminare le seguenti informazioni prima di utilizzare qualsiasi piano {{site.data.keyword.blockchainfull}}.
 
-## IBM support statement
+## Istruzione di supporto IBM
 
-IBM's long history of leadership in innovation continues with the {{site.data.keyword.blockchainfull_notm}} offering plans on {{site.data.keyword.Bluemix_notm}}. {{site.data.keyword.blockchain}} is a rapidly progressing technology that is projected to disrupt the financial industry, local and global supply chains, and logistical support in any number of business spaces. Through various early adoption programs, IBM customers and business partners have been actively driving blockchain as an industrial solution. {{site.data.keyword.blockchainfull_notm}} on {{site.data.keyword.Bluemix_notm}} is one such program. **As with any new technology, {{site.data.keyword.blockchainfull_notm}} on {{site.data.keyword.Bluemix_notm}} users should be aware of the potential for rapid and fundamental change**.  
+La lunga tradizione di IBM di leadership nell'innovazione continua con i piani di offerta {{site.data.keyword.blockchainfull_notm}} su {{site.data.keyword.Bluemix_notm}}. {{site.data.keyword.blockchain}} è una tecnologia in rapido sviluppo destinata a cambiare profondamente il settore finanziario, le catene di approvvigionamento locali e globali e il supporto logistico in qualsiasi numero di spazi di business. Attraverso vari programmi di adozione anticipata, i clienti e i business partner IBM hanno portato attivamente la blockchain a diventare una soluzione industriale. {{site.data.keyword.blockchainfull_notm}} su {{site.data.keyword.Bluemix_notm}} è uno di questi programmi. **Come con qualsiasi nuova tecnologia, gli utenti di {{site.data.keyword.blockchainfull_notm}} su {{site.data.keyword.Bluemix_notm}} devono essere consapevoli della possibilità di cambiamenti rapidi e importanti**.  
 {:shortdesc}
 
-The architecture behind {{site.data.keyword.blockchainfull_notm}} is the Linux Foundation's Hyperledger Fabric project. Each open source community contribution improves Hyperledger Fabric but can present adoption challenges. **IBM cautions against defining or exchanging financial assets, or any assets of value, directly on any Hyperledger Fabric blockchain network**.  
+L'architettura che sta dietro {{site.data.keyword.blockchainfull_notm}} è il progetto Hyperledger della Linux Foundation. Ogni contributo della community open source apporta miglioramenti a Hyperledger Fabric ma può presentare delle difficoltà di adozione. **IBM mette in guardia dalla definizione o dallo scambio di risorse finanziarie, o di qualsiasi risorsa di valore, direttamente sulle reti blockchain Hyperledger Fabric**.  
 
-## Open source statement
+## Istruzione open source
 
-{{site.data.keyword.blockchainfull_notm}} offering plans on {{site.data.keyword.Bluemix_notm}} are built on top of the Linux Foundation's Hyperledger Fabric V1.0 stack. Hyperledger Project members, including IBM, continue to contribute to various sub-projects under the Hyperleder umbrella.  All contributions are reviewed, vetted, and tested by the community. 
+I piani di offerta {{site.data.keyword.blockchainfull_notm}} su {{site.data.keyword.Bluemix_notm}} sono sviluppati sullo stack Hyperledger Fabric V1.0 della Linux Foundation. I membri del progetto Hyperledger, compresa IBM, continuano ai vari progetti secondari che ricadono nell'ambito di Hyperledger.  Tutti i contributi sono revisionati, controllati e testati dalla community. 
 
-Hyperledger Fabric announced it had reached *Production Level Status* for V1.0 on July 11, 2017. 
+Hyperledger Fabric ha annunciato che ha raggiunto lo stato di livello produzione (*Production Level Status*) per la V1.0 l'11 luglio 2017. 
 
-## Chaincode support statement
+## Istruzione di supporto del chaincode
 
-The following coding practices are NOT supported on {{site.data.keyword.blockchainfull_notm}} networks:
+Le seguenti prassi di codifica NON sono supportate sulle reti {{site.data.keyword.blockchainfull_notm}}:
 
-1. Using associative arrays with iteration (the order is randomized in Go).
-2. Reading a list of items from a KVS table (the order is not guaranteed).
-3. Writing thread-unsafe chaincode (query and invoke may be called in parallel).
-4. Substituting global memory or cache storage for ledger state variables in chaincode.
-5. Accessing external services, such as databases, directly from chaincode.
-6. Using libraries or global variables that could introduce non-determinism (such as using "random" or "time").  
+1. Utilizzo di array associativi con iterazione (l'ordine è casuale in Go).
+2. Lettura di un elenco di voci da una tabella KVS (l'ordine non è garantito).
+3. Scrittura del chaincode thread-unsafe (query e richiamo possono essere chiamati in parallelo).
+4. Sostituzione della memoria globale o della memoria cache per le variabili di stato del libro mastro nel chaincode.
+5. Accesso ai servizi esterni, ad esempio database, direttamente dal chaincode.
+6. Utilizzo di librerie o variabili globali che potrebbero introdurre il non determinismo (ad esempio, l'uso di "random" o "time").  
 
-In addition, it is not recommended to write non-deterministic chaincode, which introduces risk to data consistency and integrity.  It should be noted that the Hyperledger Fabric architecture is designed to counter against non-deterministic chaincode through a series of endorsement and validation checks, however you are still strongly encouraged to code deterministic functions that are not reliant on non-static global variables (e.g. time).  
+Si sconsiglia inoltre di scrivere un chaincode non deterministico, che introduce un rischio per la congruenza e l'integrità dei dati.  Si deve notare che l'architettura Hyperledger Fabric è progettata per contrastare un chaincode non deterministico tramite una serie di controlli di approvazione e convalida; tuttavia, sei ancora vivamente invitato a codificare delle funzioni deterministiche che non si basano su variabili globali non statiche (ad esempio l'ora).  

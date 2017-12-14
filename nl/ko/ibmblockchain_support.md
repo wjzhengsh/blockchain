@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-07-13"
+lastupdated: "2017-11-17"
 ---
 
 {:new_window: target="_blank"}
@@ -16,7 +16,7 @@ lastupdated: "2017-07-13"
 {: #ibmblockchain_support}
 
 
-지원을 얻고 Bluemix의 블록체인 인스턴스와 연관된 문제점을 해결하는 데 사용할 수 있는 몇 가지 메커니즘이 있습니다.
+지원을 얻고 {{site.data.keyword.Bluemix}}의 블록체인 인스턴스와 연관된 문제점을 해결하는 데 사용할 수 있는 몇 가지 메커니즘이 있습니다.
 {:shortdesc}
 
 

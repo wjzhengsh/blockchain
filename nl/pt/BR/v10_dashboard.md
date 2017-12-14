@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-08-15"
+lastupdated: "2017-12-05"
 ---
 
 {:new_window: target="_blank"}
@@ -29,7 +29,7 @@ O Monitor de Rede expõe as telas a seguir:
 
 ## Visão Geral
 
-A tela "Visão Geral" exibe informações de status em tempo real sobre seus componentes de blockchain, incluindo o solicitante, a CA e os nós peer. Cada componente é exibido sob quatro cabeçalhos distintos: **Tipo**, **Nome**, **Status** e **Ações**. Durante a criação de sua rede de blockchain, três nós de solicitante e dois nós de CA são criados automaticamente. Os de CA são específicos do membro, enquanto que os nós de solicitação são terminais comuns compartilhados na rede.
+A tela "Visão Geral" exibe informações de status em tempo real sobre seus componentes de blockchain, incluindo o solicitante, a CA e os nós peer. Cada componente é exibido sob quatro cabeçalhos distintos: **Tipo**, **Nome**, **Status** e **Ações**. Durante a criação de sua rede de blockchain, três nós de solicitante e dois nós de CA são criados automaticamente.  Os de CA são específicos do membro, enquanto que os nós de solicitação são terminais comuns compartilhados na rede.
 
 A **Figura 1** mostra a tela "Visão Geral":
 
@@ -47,8 +47,8 @@ peer for trazido de volta, você perceberá uma sincronização do livro razão 
   O cabeçalho contendo "url" exibe o terminal de API de cada componente. Esses terminais são necessários para atingir componentes de rede específicos de um aplicativo do lado do cliente e suas definições geralmente existirão em um arquivo de configuração modelado pelo JSON que acompanha o aplicativo. Se você estiver customizando um aplicativo que requer endosso de peers que não fazem parte de sua organização, será necessário recuperar os endereços IP dos peers dos operadores relevantes em uma operação fora da banda. Os clientes devem ser capazes de se conectar
 a quaisquer peers dos quais eles precisam de uma resposta.  
 - Incluir peers  
-  Clique no botão **Incluir peers** na parte superior direita para incluir nós peer em sua rede. Cada membro pode incluir até seis peers em uma rede. É possível incluir nós peer pela primeira vez quando você cria ou se associa a uma rede ou posteriormente no Monitor de Rede.   
-  No painel pop-up "Incluir Peers", selecione o número e o tamanho dos nós peer que você deseja incluir. Atualmente, apenas peers "pequenos" estão disponíveis para compra, no entanto, eventualmente haverá "médio" e "grande" para ajudar a acomodar cargas de trabalho maiores e maior rendimento da transação. Detalhes sobre o dimensionamento de peer e as métricas de desempenho chegarão em breve...
+  Clique no botão **Incluir peers** na parte superior direita para incluir nós peer em sua rede. Cada membro pode incluir até três peers em uma rede. É possível incluir nós peer pela primeira vez quando você cria ou se associa a uma rede ou posteriormente no Monitor de Rede.   
+  No painel pop-up "Incluir Peers", selecione o número e o tamanho dos nós peer que você deseja incluir.  Atualmente, apenas peers "pequenos" estão disponíveis para compra, no entanto, eventualmente haverá "médio" e "grande" para ajudar a acomodar cargas de trabalho maiores e maior rendimento da transação.  Detalhes sobre o dimensionamento de peer e as métricas de desempenho chegarão em breve...
   
 ## Membros
 
@@ -105,30 +105,33 @@ A **Figura 6** mostra a tela "Notificações":
 ![Notificações](images/notifications.png "Notificações")
 *Figura 6. Notificações*
 
-* Quando você criar um canal ou for convidado para um novo canal, uma notificação será exibida no Monitor de Rede. 
-* As solicitações são agrupadas nas subguias "Todos", "Pendentes" e "Concluídos". Números após o cabeçalho da subguia indicam o número de solicitações em cada subguia.
+Quando você criar um canal ou for convidado para um novo canal, uma notificação será exibida no Monitor de Rede. 
+
+As solicitações são agrupadas nas subguias "Todos", "Pendentes" e "Concluídos". Números após o cabeçalho da subguia indicam o número de solicitações em cada subguia.
    * É possível localizar todas as suas solicitações na subguia "Todos".
-   * As solicitações que você não aceitou ou recusou, ou que você não visualizou, estão na subguia "Não Lidos". Clique no botão **Revisar solicitação** para visualizar a solicitação, o que inclui a política e os membros do canal e, em seguida, a **Aceitar** ou **Recusar**. Também é possível manipular a solicitação em outro momento clicando em **Posteriormente**. Se você aceitar uma solicitação e a solicitação for aceita por operadores do canal suficientes, poderá clicar em **Enviar solicitação** para ativar a atualização do canal.  
-   * Uma solicitação enviada aparecerá na subguia "Concluído". É possível clicar em **Revisar solicitação** para visualizar seus detalhes.
+   * As solicitações que você não aceitou nem recusou ou mesmo que não visualizou estão na subguia "Pendente". Clique no botão **Revisar solicitação** para visualizar a solicitação, que inclui a política do canal e os membros, além do status da votação. Se você for um operador de canal, será possível **Aceitar** ou **Recusar** a solicitação ou manipulá-la em outro momento clicando em **Depois**. Se a solicitação for aceita por operadores do canal suficientes, será possível clicar em **Enviar solicitação** para ativar a atualização do canal.
+   * Uma solicitação enviada aparecerá na subguia "Concluído".  É possível clicar em **Revisar solicitação** para visualizar seus detalhes.
   
-Quando você tem uma longa lista de solicitações, é possível procurar por uma solicitação no campo de procura na parte superior. As solicitações pendentes podem ser excluídas selecionando as caixas na frente delas e clicando em **Excluir solicitações**. Observe que uma solicitação concluída não pode ser excluída.
+Quando você tem uma longa lista de solicitações, é possível procurar por uma solicitação no campo de procura na parte superior. 
+
+Solicitações pendentes podem ser excluídas selecionando as caixas na frente delas e clicando em **Excluir solicitação**. Observe que uma solicitação concluída não pode ser excluída.
 
 
 ## Versão
 
 A tela "Suporte" contém duas guias que fornecem informações de suporte na guia "Suporte" e que descrevem funções novas e mudadas de cada liberação na guia "Notas sobre a Liberação".
 
-Use os links e recursos nesta página para acessar fóruns de resolução de problemas e suporte. Se você não puder depurar seu problema ou apurar uma resposta para sua pergunta, clique no link **Abrir um chamado de suporte do Bluemix** e siga as orientações para enviar chamados.
+Use os links e recursos nesta página para acessar fóruns de resolução de problemas e suporte. Se você não puder depurar seu problema ou apurar uma resposta para sua pergunta, clique no link **Abrir um chamado de suporte do {{site.data.keyword.Bluemix_notm}}** e siga as orientações para enviar chamados.
 
 A **Figura 7** mostra a tela "Suporte" inicial exibindo informações de suporte na guia "Suporte":
 
 ![Suporte](images/support.png "Suporte")
 *Figura 7. Suporte de blockchain*
 
-* [{{site.data.keyword.blockchainfull_notm}} Documentos de Serviço](index.html), que é este site de doc, fornece orientações sobre como iniciar o uso do {{site.data.keyword.blockchainfull_notm}} Platform no {{site.data.keyword.Bluemix_notm}}. É possível localizar tópicos correspondentes no navegador ou procurar qualquer termo com a função de procura na parte superior.  
+* [{{site.data.keyword.blockchainfull_notm}} Documentos de Serviço](index.html), que é este site de doc, fornece orientações sobre como iniciar o uso do {{site.data.keyword.blockchainfull}} Platform no {{site.data.keyword.Bluemix_notm}}. É possível localizar tópicos correspondentes no navegador ou procurar qualquer termo com a função de procura na parte superior.  
 * [IBM Developer Works ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://developer.ibm.com/blockchain/) em **Ajuda da Comunidade** contém recursos e informações para desenvolvedores.  
 * [IBM dWAnswers ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://developer.ibm.com/answers/smartspace/blockchain/) em **Chamado de Suporte** serve como uma plataforma para perguntas e respostas. É possível procurar respostas de perguntas feitas anteriormente ou enviar uma nova pergunta. Certifique-se de incluir a palavra-chave **blockchain** em sua pergunta.   
-  Também é possível enviar um chamado para a equipe de suporte do {{site.data.keyword.blockchainfull_notm}} com a opção [Abrir um chamado de suporte do {{site.data.keyword.Bluemix_notm}} ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](). Compartilhe detalhes e fragmentos de código a partir de sua instância do Bluemix específica.  
+  Também é possível enviar um chamado para a equipe de suporte do {{site.data.keyword.blockchainfull_notm}} com a opção [Abrir um chamado de suporte do {{site.data.keyword.Bluemix_notm}} ![Ícone de link externo](images/external_link.svg "Ícone de link externo")]().  Compartilhe detalhes e fragmentos de código de sua instância específica do {{site.data.keyword.Bluemix_notm}}.  
 * [Aplicativos de Amostra ![Ícone de link externo](images/external_link.svg "Ícone de link externo")]() em **Aplicativos de Amostra do {{site.data.keyword.blockchain}}** fornece fragmentos de código de orientação e de amostra para ajudar no desenvolvimento de aplicativos.  
 * [Hyperledger Fabric ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](http://hyperledger-fabric.readthedocs.io/) e [Comunidade do Hyperledger Fabric ![Ícone de link externo](images/external_link.svg "Ícone de link externo")]() em **Hyperledger Fabric** fornecem mais detalhes sobre a pilha do Hyperledger Fabric.  
   Fale com um [Especialista do Hyperledger ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://chat.hyperledger.org/channel/general) com perguntas sobre o código do Hyperledger Fabric.   

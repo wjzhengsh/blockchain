@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-08-30"
+lastupdated: "2017-11-17"
 ---
 
 {:new_window: target="_blank"}
@@ -45,8 +45,8 @@ lastupdated: "2017-08-30"
 	환경 변수를 올바르게 설정하려면 [설치 지시사항 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://golang.org/doc/install){:new_window}을 따르십시오. 아래 명령을 사용하여 `GOPATH`를 확인하십시오. `GOPATH`는 예제와 일치할 필요가 없다는 점을 참고하십시오. 사용자의 파일 시스템에서 올바른 디렉토리에 이 변수가 설정되어 있다는 것만이 중요합니다.    
 	```
 	$ echo $GOPATH
-C:\gopath
-```
+	C:\gopath
+	```
 	{:screen}
 
 	그리고 나서 [hello world ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://golang.org/doc/install#testing){:new_window} 예제와 함께 GoLang 코드를 빌드하여 GoLang 설치를 확인할 수 있습니다.
@@ -69,7 +69,7 @@ x509 및 공개 키 인프라의 상세를 깊게 조사하지 않을 것이며,
 ### 명령행
 두 가지 접근방식 중 더 단순한 방식입니다. 우선, 지시사항을 따라서 [Fabric CA 클라이언트 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](http://hyperledger-fabric-ca.readthedocs.io/en/latest/users-guide.html)을 빌드하십시오. 이 단계는 사용자가 CA 서버와 통신하고 올바르게 형식화된 인증서와 키를 수신하도록 허용합니다.   
 
-두 번째로, [사용자의 Bluemix ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](http://blockchain-certs.mybluemix.net/3.secure.blockchain.ibm.com.rootcert)에서 TLS 인증서를 다운로드하고 컨텐츠를 폴더(예: ``$HOME/tls``)에 저장하십시오. 이 단계는 데이터 플로우가 연결에서 암호화되도록 허용합니다. 
+두 번째로, [사용자의 {{site.data.keyword.Bluemix_notm}} ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](http://blockchain-certs.mybluemix.net/3.secure.blockchain.ibm.com.rootcert)에서 TLS 인증서를 다운로드하고 컨텐츠를 폴더(예: ``$HOME/tls``)에 저장하십시오. 이 단계는 데이터 플로우가 연결에서 암호화되도록 허용합니다. 
 
 마지막으로, 네트워크 모니터의 **개요** 화면에서 **서비스 신임 정보** JSON 파일을 열고 다음 정보를 확인하십시오. 
 * CA의 URL: ``certificateAuthorities`` 아래 ``url``
@@ -77,7 +77,7 @@ x509 및 공개 키 인프라의 상세를 깊게 조사하지 않을 것이며,
 * 관리 비밀번호: ``enrollSecret``
 * CA 이름: ``caName``
 
-Fabric CA 클라이언트를 사용하면 TLS 인증서 경로 및 위의 네 개 문자열을 다음 명령과 함께 전달하여 인증 기관에 "등록접수" 호출을 전송할 수 있습니다.   
+Fabric CA 클라이언트를 사용하면 TLS 인증서 경로 및 위의 네 개 문자열을 다음 명령과 함께 전달하여 인증 기관에 "등록접수" 호출을 전송할 수 있습니다.  
 ```
 $GOPATH/bin/fabric-ca-client enroll -u https://<enroll_id>:<enroll_password>@<ca_url_with_port> --caname <ca_name> --tls.certfiles <tls_cert_path>
 ```
@@ -163,7 +163,7 @@ Javascript 또는 Java로 애플리케이션을 개발하고 Hyperledger Fabric 
                 ...
 	```
 
-	**참고**: 예를 들어 네트워크에서 추가 피어를 대상으로 지정하려는 경우, 사용자의 조직에 속하지 않는 피어에서 인증이 필요하며, 그 다음에 해당 피어 중에서 올바른 API 엔드포인트 정보를 획득해야 합니다. 애플리케이션에 리턴되는 응답을 확인하기 위해 다른 조직에 대한 CA 인증서를 저장해야 할 수도 있습니다. 이 정보는 서비스 신임 정보에 노출되지 않으므로, Bluemix 조직의 적합한 관리자에게 문의하여 외부(out-of-band) 오퍼레이션에서 이 정보를 획득해야 합니다. 순서 지정 서비스 URL은 네트워크에서 공통이므로 순서 지정 서비스에 대한 멤버 특정 정보가 필요하지 않습니다.   
+	**참고**: 예를 들어 네트워크에서 추가 피어를 대상으로 지정하려는 경우, 사용자의 조직에 속하지 않는 피어에서 인증이 필요하며, 그 다음에 해당 피어 중에서 올바른 API 엔드포인트 정보를 획득해야 합니다. 애플리케이션에 리턴되는 응답을 확인하기 위해 다른 조직에 대한 CA 인증서를 저장해야 할 수도 있습니다. 이 정보는 서비스 신임 정보에 노출되지 않으므로, Cloud Foundry 조직의 적합한 관리자에게 문의하여 외부(out-of-band) 오퍼레이션에서 이 정보를 획득해야 합니다. 순서 지정 서비스 URL은 네트워크에서 공통이므로 순서 지정 서비스에 대한 멤버 특정 정보가 필요하지 않습니다.   
 
 3. 다음 예제에 표시된 대로 API 엔드포인트 정보를 애플리케이션의 구성 파일에 플러그로 지정하십시오.   
 	```

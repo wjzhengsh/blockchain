@@ -6,10 +6,10 @@ IBM Blockchain Platform
 
 	{: .navgroup id="learn"}
 	index.md
-	[Develop the network](https://developer.ibm.com/blockchain/sandbox/)
+	[Sviluppare la rete](https://developer.ibm.com/blockchain/sandbox/)
 	get_start.md
 	v10_dashboard.md
-	[Membership options](enterprise_plan.html)
+	[Opzioni di adesione](enterprise_plan.html)
 	needtoknow.md
 	{: .navgroup-end}
 
@@ -21,7 +21,7 @@ IBM Blockchain Platform
 
 	{: .navgroup id="howto"}
 	{: .topicgroup}
-	Tutorials
+	Esercitazioni
 		howto/create_channel.md
 		howto/install_instantiate_chaincode.md
 		v10_application.md

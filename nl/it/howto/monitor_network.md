@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-07-14"
+lastupdated: "2017-12-05"
 
 ---
 
@@ -12,31 +12,32 @@ lastupdated: "2017-07-14"
 {:codeblock: .codeblock}
 {:pre: .pre}
 
-# Monitoring a {{site.data.keyword.blockchain}} network
+# Monitoraggio di una rete {{site.data.keyword.blockchain}}
 
-This tutorial shows how to view and monitor the status information of your {{site.data.keyword.blockchain}} network on {{site.data.keyword.Bluemix_short}}.
+Questa esercitazione ti mostra come visualizzare e monitorare le informazioni sullo stato della tua rete {{site.data.keyword.blockchain}} su {{site.data.keyword.Bluemix_short}}.
 {:shortdesc}
 
-Enter Network Monitor and locate the channel that you want to view and monitor in the "Channel" screen.  In the specific channel screen, you can view the data status information, members, and instantiated chaincode of this channel in three tabs:
+Accedi a Network Monitor e individua il canale che vuoi visualizzare e monitorare nella schermata "Channel".  Nella schermata per lo specifico canale, puoi visualizzare le informazioni sullo stato dei dati, i membri e il chaincode istanziato di questo canale in tre schede:
 
 * **Channel Overview**  
-  The "Channel Overview" tab shows the block information on this channel:
-    * A series of data points including the total number of blocks that are created, the time interval since the last transaction, the number of chaincode instantiations, and the number of chaincode invocations.
-    * A table listing all blocks on this channel.  Expand a block and you can view the detailed information about the block.  
+  La scheda "Channel Overview" mostra le informazioni sui blocchi su questo canale:
+    * Viene creata una serie di punti di dati che includono il numero totale di blocchi, l'intervallo di tempo dall'ultima transazione, il numero di istanziazioni del chaincode e il numero di richiami del chaincode.
+    * Una tabella che elenca tutti i blocchi su questo canale.  Espandi un blocco e potrai vedere le informazioni dettagliate ad esso relativo.  
 
-  ![Channel overview](../images/channel_overview_detail.png "Channel overview")  
+  ![Panoramica del canale](../images/channel_overview_detail.png "Panoramica del canale")  
 
 * **Members**  
-  The "Members" tab shows the information of the members on this channel, including the email addresses for the organizational operators.
-  ![Channel members](../images/channel_members.png "Channel members")  
+  La scheda "Members" mostra le informazioni dei membri di questo canale, compresi gli indirizzi email per gli operatori organizzativi.
+  ![Membri del canale](../images/channel_members.png "Membri del canale")  
   
 * **Chaincode**  
-  The "Chaincode" tab lists all the chaincodes that are instantiated on this channel with chaincode ID, version, and number of peers that are running the chaincode.   
+  La scheda "Chaincode" elenca tutti i chaincode istanziati su questo canale con ID chaincode, versione e numero di peer che stanno eseguendo il chaincode.   
     
-  Expand a chaincode row to get detailed information about the chaincode:  
-    * You can click **JSON** to view the JSON file of the chaincode.
-    * You can click **Logs** to view logs of the chaincode.
-    * You can click **Delete** to remove the running chaincode container.
+  Espandi una riga di chaincode per ottenere informazioni dettagliate sul chaincode:  
+    * Puoi fare clic su **JSON** per visualizzare il file JSON del chaincode.
+    * Puoi fare clic su **Logs** per visualizzare i log del chaincode.
+    * Puoi fare clic su **Delete** per rimuovere il contenitore chaincode in esecuzione. 
+    **Nota**: al momento l'eliminazione del contenitore chaincode in esecuzione non elimina il chaincode. Un chaincode istanziato sulla rete blockchain non può essere eliminato.
   
-  ![Channel chaincode](../images/channel_chaincode.png "Channel chaincode") 
+  ![Chaincode del canale](../images/channel_chaincode.png "Chaincode del canale") 
   

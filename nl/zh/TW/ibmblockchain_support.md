@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-07-13"
+lastupdated: "2017-11-17"
 ---
 
 {:new_window: target="_blank"}
@@ -16,7 +16,7 @@ lastupdated: "2017-07-13"
 {: #ibmblockchain_support}
 
 
-有數種機制可用來取得支援，以及疑難排解與 Bluemix 上區塊鏈實例相關聯的問題。
+有數種機制可用來取得支援，以及疑難排解與 {{site.data.keyword.Bluemix}} 上區塊鏈實例相關聯的問題。
 {:shortdesc}
 
 

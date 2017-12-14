@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-09-04"
+lastupdated: "2017-12-05"
 
 ---
 
@@ -30,7 +30,7 @@ lastupdated: "2017-09-04"
 ## ネットワークの作成
 始める前に、{{site.data.keyword.Bluemix_notm}} で [{{site.data.keyword.blockchain}} Platform サービス・インスタンス ![外部リンク・アイコン ](images/external_link.svg "外部リンク・アイコン")](https://console.bluemix.net/catalog/services/blockchain) を作成しておく必要があります。{{site.data.keyword.Bluemix_notm}} ID でログインする必要があります。ID がない場合は、**「登録して作成」**ボタンをクリックします。インスタンスのサービスと資格情報の名前は、見分けやすいものに変更してください。{{site.data.keyword.blockchain}} ネットワークをデプロイする {{site.data.keyword.Bluemix_notm}} の地域、組織、スペースを選択します。次に、料金設定プランの表から**「エンタープライズ・プラン」**を選択し、**「作成」**ボタンをクリックします。  
 
-{{site.data.keyword.blockchain}} Platform サービス・インスタンスは、[{{site.data.keyword.Bluemix_notm}} サービス・ダッシュボード ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://console.bluemix.net/dashboard/services "Bluemix サービス・ダッシュボード") に表示されます。  
+{{site.data.keyword.blockchain}} Platform サービス・インスタンスが、[{{site.data.keyword.Bluemix_notm}} サービス・ダッシュボード ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://console.bluemix.net/dashboard/services "{{site.data.keyword.Bluemix_notm}} サービス・ダッシュボード") に表示されます。  
 
 ネットワーク・イニシエーターである場合は、**「ネットワークの作成」**ボタンをクリックして {{site.data.keyword.blockchain}} ネットワークを開始します。ウィザードに従って、ネットワークとリソースの基本的な構成を完了します。  
 ![「ネットワークの作成」ウィザード](images/create_network_name.png "「ネットワークの作成」ウィザード")  
@@ -47,7 +47,7 @@ lastupdated: "2017-09-04"
 * デフォルトのガバナンス・ポリシー
 * 最大 15 のネットワーク・メンバー  
 * 順序付けサービス 3 つ、中間 CA ノード 2 つ
-* メンバーごとに最大 6 つの小さなピア  
+* メンバーごとに最大 3 つの小さなピア  
 * 異常終了フォールト・トレラント順序付けサービス
 * 最大 150 のチャネル
 * 最大 10 のチェーンコード・インスタンス
@@ -56,7 +56,7 @@ lastupdated: "2017-09-04"
 ## ネットワークへの参加
 ネットワークを作成する場合と同じように、{{site.data.keyword.Bluemix_notm}} で [{{site.data.keyword.blockchain}} Platform サービス・インスタンス ![外部リンク・アイコン ](images/external_link.svg "外部リンク・アイコン")](https://console.bluemix.net/catalog/services/blockchain) を作成する必要があります。{{site.data.keyword.Bluemix_notm}} ID でログインする必要があります。ID がない場合は、**「登録して作成」**ボタンをクリックします。インスタンスのサービスと資格情報の名前は、見分けやすいものに変更してください。{{site.data.keyword.blockchain}} ネットワークをデプロイする {{site.data.keyword.Bluemix_notm}} の地域、組織、スペースを選択します。次に、料金設定プランの表から**「エンタープライズ・プラン」**を選択し、**「作成」**ボタンをクリックします。  
 
-{{site.data.keyword.blockchain}} Platform サービス・インスタンスが、[{{site.data.keyword.Bluemix_notm}} サービス・ダッシュボード ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://console.bluemix.net/dashboard/services "Bluemix サービス・ダッシュボード") に表示されます。 
+{{site.data.keyword.blockchain}} Platform サービス・インスタンスが、[{{site.data.keyword.Bluemix_notm}} サービス・ダッシュボード ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://console.bluemix.net/dashboard/services "{{site.data.keyword.Bluemix_notm}} サービス・ダッシュボード") に表示されます。 
 
 招待されたネットワーク・メンバーである場合は、**「保留中の招待 ->」**ボタンをクリックして、ドロップダウン・リストから参加するネットワークを選択し、**「ネットワークへの参加!」**ボタンをクリックします。ウィザードに従って、ネットワークの基本的な構成を確認し、自分のネットワーク・コンポーネントを構成します。  
 ![「ネットワークへの参加」ウィザード](images/join_network_name.png "「ネットワークへの参加」ウィザード")  
@@ -88,3 +88,15 @@ lastupdated: "2017-09-04"
 
 ## ネットワーク・リソースのモニター  
 トランザクションがアプリケーションからトリガーされたら、トランザクションの状況情報をネットワーク・モニターで確認できます。ネットワークのモニターについて詳しくは、[ネットワークのモニター](howto/monitor_network.html)を参照してください。
+  
+## ネットワークからの離脱 
+ネットワークから離脱する場合は、ブロックチェーン・サービス・インスタンスを {{site.data.keyword.Bluemix_notm}} ダッシュボードから削除します。  
+
+**注**: ネットワークから離脱する前に、ネットワークのいずれのチャネルのメンバーでもないことを確認してください。そうでない場合、ネットワークを離脱する際にエラーが発生します。 チャネル・メンバーを除去する場合は、チャネル更新処理を実行する必要があります。チャネル更新処理について詳しくは、[チャネルの更新](howto/create_channel.html#updating-a-channel)を参照してください。
+
+
+<!--
+## References
+* For more information about {{site.data.keyword.blockchainfull_notm}} offerings, see [Blockchain offerings](index.html).
+* For more information about Hyperledger Fabric V1.0, see [Hyperledger Fabric documentation ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/latest/){:new_window}.
+-->

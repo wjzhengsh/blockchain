@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-08-30"
+lastupdated: "2017-11-17"
 ---
 
 {:new_window: target="_blank"}
@@ -69,7 +69,7 @@ lastupdated: "2017-08-30"
 ### 指令行
 這是兩種方法中比較簡單的一種。首先，請遵循指示來建置 [Fabric CA 用戶端 ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](http://hyperledger-fabric-ca.readthedocs.io/en/latest/users-guide.html)。此步驟可讓您與 CA 伺服器通訊，並收回適當格式化的憑證和金鑰。  
 
-接著，從[您的 Bluemix ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](http://blockchain-certs.mybluemix.net/3.secure.blockchain.ibm.com.rootcert) 下載 TLS 憑證，並將內容儲存至資料夾，例如 ``$HOME/tls``。此步驟可讓資料流在通訊連線上加密。
+接著，從[您的 {{site.data.keyword.Bluemix_notm}} ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](http://blockchain-certs.mybluemix.net/3.secure.blockchain.ibm.com.rootcert) 下載 TLS 憑證，並將內容儲存至資料夾，例如 ``$HOME/tls``。此步驟可讓資料流在通訊連線上加密。
 
 最後，從「網路監視器」中的**概觀**畫面，開啟**服務認證** JSON 檔案，並確定下列資訊：
 * CA 的 URL：``certificateAuthorities`` 下的 ``url``
@@ -77,7 +77,7 @@ lastupdated: "2017-08-30"
 * 管理密碼：``enrollSecret``
 * CA 名稱：``caName``
 
-透過 Fabric CA 用戶端，我們可以使用下列指令來傳遞 TLS 憑證路徑和上述四個字串，以傳送 "enroll" 呼叫至我們的「憑證管理中心」：  
+透過 Fabric CA 用戶端，我們可以使用下列指令來傳入 TLS 憑證路徑及上述四個字串，以將 "enroll" 呼叫傳送至我們的「憑證管理中心」：  
 ```
 $GOPATH/bin/fabric-ca-client enroll -u https://<enroll_id>:<enroll_password>@<ca_url_with_port> --caname <ca_name> --tls.certfiles <tls_cert_path>
 ```
@@ -107,7 +107,7 @@ cryptoSuite.setCryptoKeyStore(hfc.newCryptoKeyStore({path: <PUBLIC_PRIVATE_KEY_P
 client.setCryptoSuite(cryptoSuite);
 ```
 
-一般作法是匯出您的機器上用來定義金鑰/值路徑的環境變數，並將它傳遞至上述函數。現在我們已經定義好 KVS，讓我們來使用 ``FabricCAServices`` 類別中的幾個方法。此類別是 Fabric CA 用戶端的實作，因此它可以讓我們與 CA 伺服器通訊。首先，我們需要傳遞一些資訊至 CA 用戶端，即 CA URL：
+一般作法是匯出您的機器上用來定義金鑰/值路徑的環境變數，並將它傳遞至上述函數。現在我們已經定義好 KVS，可以使用 ``FabricCAServices`` 類別中的幾個方法。此類別是 Fabric CA 用戶端的實作，因此它可以讓我們與 CA 伺服器通訊。首先，我們需要傳遞一些資訊至 CA 用戶端，即 CA URL：
 
 ```
 # the caURL can be defined manually or by setting an environment variable
@@ -163,7 +163,7 @@ enrollmentSecret: password
                 ...
 	```
 
-	**附註**：如果您要將目標設為網路中的其他對等節點（例如，需要不屬於您的組織的對等節點背書時），則需要取得這些對等節點的正確 API 端點資訊。您也需要儲存其他組織的 CA 憑證，才能驗證傳回至應用程式的回應。此資訊未公開在您的服務認證中，因此，您必須聯絡 Bluemix 組織的適當管理者，並在頻外作業中取得此資訊。排序服務 URL 通用於整個網路；您不需要排序服務的任何成員特定資訊。  
+	**附註**：如果您要將目標設為網路中的其他對等節點（例如，需要不屬於您的組織的對等節點背書時），則需要取得這些對等節點的正確 API 端點資訊。您也需要儲存其他組織的 CA 憑證，才能驗證傳回至應用程式的回應。此資訊未公開在您的服務認證中，因此，您必須聯絡「CLoud Foundry 組織」的適當管理者，並在頻外作業中取得此資訊。排序服務 URL 通用於整個網路；您不需要排序服務的任何成員特定資訊。  
 
 3. 將 API 端點資訊插入應用程式的配置檔中，如下列範例所示：  
 	```

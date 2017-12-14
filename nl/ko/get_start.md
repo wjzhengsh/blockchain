@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-09-04"
+lastupdated: "2017-12-05"
 
 ---
 
@@ -31,7 +31,7 @@ lastupdated: "2017-09-04"
 ## 네트워크 작성
 시작하기 전에 {{site.data.keyword.Bluemix_notm}}에서 [{{site.data.keyword.blockchain}} Platform 서비스 인스턴스 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://console.bluemix.net/catalog/services/blockchain)을 작성해야 합니다. {{site.data.keyword.Bluemix_notm}} ID로 로그인해야 합니다. ID가 없는 경우, **계정 작성을 위해 등록** 단추를 클릭하십시오. 나중에 쉽게 알아볼 수 있도록 사용자의 인스턴스에 대한 서비스 및 신임 정보 이름을 바꾸십시오. {{site.data.keyword.blockchain}} 네트워크를 배치할 수 있는 {{site.data.keyword.Bluemix_notm}} 지역, 조직 및 영역을 선택하십시오. 그리고 가격 책정 플랜 표에서 **엔터프라이즈 플랜**을 선택하고 **작성** 단추를 클릭하십시오.  
 
-{{site.data.keyword.blockchain}} Platform 서비스 인스턴스를 [{{site.data.keyword.Bluemix_notm}} 서비스 대시보드 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://console.bluemix.net/dashboard/services "Bluemix 서비스 대시보드")에서 찾을 수 있습니다.   
+{{site.data.keyword.blockchain}} Platform 서비스 인스턴스를 [{{site.data.keyword.Bluemix_notm}} 서비스 대시보드 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://console.bluemix.net/dashboard/services "{{site.data.keyword.Bluemix_notm}} 서비스 대시보드")에서 찾을 수 있습니다.  
 
 네트워크 개시자인 경우, **네트워크 작성** 단추를 클릭하여 {{site.data.keyword.blockchain}} 네트워크를 시작하십시오. 마법사를 따라서 사용자의 네트워크 및 리소스의 기본 구성을 완료하십시오.  
 ![네트워크 작성 마법사](images/create_network_name.png "네트워크 작성 마법사")  
@@ -48,7 +48,7 @@ lastupdated: "2017-09-04"
 * 기본 통제 정책
 * 최대 15개의 네트워크 멤버  
 * 세 개의 순서 지정자 및 두 개의 중간 CA 노드
-* 각 멤버에 최대 여섯 개의 작은 피어  
+* 각 멤버에 최대 세 개의 작은 피어  
 * 충돌 결함 허용 순서 지정 서비스
 * 최대 150개의 채널
 * 최대 10개의 체인코드 인스턴스화
@@ -57,7 +57,7 @@ lastupdated: "2017-09-04"
 ## 네트워크 가입
 네트워크 작성과 비슷하게 {{site.data.keyword.Bluemix_notm}}에서 [{{site.data.keyword.blockchain}} Platform 서비스 인스턴스 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://console.bluemix.net/catalog/services/blockchain)을 작성해야 합니다. {{site.data.keyword.Bluemix_notm}} ID로 로그인해야 합니다. ID가 없는 경우, **계정 작성을 위해 등록** 단추를 클릭하십시오. 나중에 쉽게 알아볼 수 있도록 사용자의 인스턴스에 대한 서비스 및 신임 정보 이름을 바꾸십시오. {{site.data.keyword.blockchain}} 네트워크를 배치할 수 있는 {{site.data.keyword.Bluemix_notm}} 지역, 조직 및 영역을 선택하십시오. 그리고 가격 책정 플랜 표에서 **엔터프라이즈 플랜**을 선택하고 **작성** 단추를 클릭하십시오.  
 
-{{site.data.keyword.blockchain}} Platform 서비스 인스턴스를 [{{site.data.keyword.Bluemix_notm}} 서비스 대시보드 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://console.bluemix.net/dashboard/services "Bluemix 서비스 대시보드")에서 찾을 수 있습니다. 
+{{site.data.keyword.blockchain}} Platform 서비스 인스턴스를 [{{site.data.keyword.Bluemix_notm}} 서비스 대시보드 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://console.bluemix.net/dashboard/services "{{site.data.keyword.Bluemix_notm}} 서비스 대시보드")에서 찾을 수 있습니다. 
 
 사용자가 초대된 네트워크 멤버인 경우, **보류 중인 초대 ->** 단추를 클릭하고, 드롭 다운 목록에서 가입하려는 네트워크를 선택하고, **네트워크 가입!** 단추를 클릭하십시오. 마법사를 따라서 사요자 네트워크의 네트워크 기본 구성을 보고 사용자 자신의 네트워크 컴포넌트를 구성하십시오.  
 ![네트워크 가입 마법사](images/join_network_name.png "네트워크 가입 마법사")  
@@ -85,3 +85,15 @@ lastupdated: "2017-09-04"
 
 ## 네트워크 리소스 모니터링  
 트랜잭션이 사용자의 애플리케이션에서 트리거된 후에 네트워크 모니터에서 트랜잭션 상태 정보를 볼 수 있습니다. 네트워크 모니터링에 대한 자세한 정보는 [네트워크 모니터링](howto/monitor_network.html)을 참조하십시오.
+  
+## 네트워크 나가기 
+네트워크에서 나가려면 {{site.data.keyword.Bluemix_notm}} 대시보드에서 블록체인 서비스 인스턴스를 삭제하십시오.  
+
+**참고**: 네트워크를 나가기 전에 네트워크 내의 채널의 멤버가 아닌지 확인하십시오. 멤버이면 네트워크를 나갈 때 오류가 발생합니다. 채널 업데이트 프로세스를 완료하려면 채널 멤버를 제거해야 합니다. 채널 업데이트 프로세스에 대한 자세한 정보는 [채널 업데이트](howto/create_channel.html#updating-a-channel)를 참조하십시오.
+
+
+<!--
+## References
+* For more information about {{site.data.keyword.blockchainfull_notm}} offerings, see [Blockchain offerings](index.html).
+* For more information about Hyperledger Fabric V1.0, see [Hyperledger Fabric documentation ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/latest/){:new_window}.
+-->

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-09-04"
+lastupdated: "2017-12-05"
 
 ---
 
@@ -31,7 +31,7 @@ lastupdated: "2017-09-04"
 ## 创建网络
 开始之前，需要在 {{site.data.keyword.Bluemix_notm}} 上创建 [{{site.data.keyword.blockchain}} Platform 服务实例 ![外部链接图标](images/external_link.svg "外部链接图标")](https://console.bluemix.net/catalog/services/blockchain)。您需要使用 {{site.data.keyword.Bluemix_notm}} 标识登录。如果没有标识，请单击**注册以创建**按钮。请为您的实例重命名服务和凭证名称，以便将来易于识别。选择 {{site.data.keyword.Bluemix_notm}} 区域、组织和空间，您可以在其中部署 {{site.data.keyword.blockchain}} 网络。然后从定价套餐表中选择**企业套餐**，然后单击**创建**按钮。  
 
-您可以在 [{{site.data.keyword.Bluemix_notm}} 服务仪表板 ![外部链接图标](images/external_link.svg "外部链接图标")](https://console.bluemix.net/dashboard/services "Bluemix 服务仪表板") 中找到 {{site.data.keyword.blockchain}} Platform 服务实例。  
+您可以在 [{{site.data.keyword.Bluemix_notm}} 服务仪表板 ![外部链接图标](images/external_link.svg "外部链接图标")](https://console.bluemix.net/dashboard/services "{{site.data.keyword.Bluemix_notm}} 服务仪表板") 中找到 {{site.data.keyword.blockchain}} Platform 服务实例。  
 
 如果您是网络发起者，请单击**创建网络**按钮，以启动 {{site.data.keyword.blockchain}} 网络。请遵循向导，以完成网络和资源的基本配置。  
 ![“创建网络”向导](images/create_network_name.png "“创建网络”向导")  
@@ -47,7 +47,7 @@ lastupdated: "2017-09-04"
 * 缺省管控策略
 * 最多 15 个网络成员  
 * 三个订货人和两个中间 CA 节点
-* 每个成员最多有六个小同级  
+* 每个成员最多有三个小同级  
 * 崩溃容错订购服务
 * 最多 150 个通道
 * 最多 10 个链代码实例化
@@ -56,7 +56,7 @@ lastupdated: "2017-09-04"
 ## 加入网络
 与创建网络类似，您需要在 {{site.data.keyword.Bluemix_notm}} 上创建 [{{site.data.keyword.blockchain}} Platform 服务实例 ![外部链接图标](images/external_link.svg "外部链接图标")](https://console.bluemix.net/catalog/services/blockchain)。您需要使用 {{site.data.keyword.Bluemix_notm}} 标识登录。如果没有标识，请单击**注册以创建**按钮。请为您的实例重命名服务和凭证名称，以便将来易于识别。选择 {{site.data.keyword.Bluemix_notm}} 区域、组织和空间，您可以在其中部署 {{site.data.keyword.blockchain}} 网络。然后从定价套餐表中选择**企业套餐**，然后单击**创建**按钮。  
 
-您可以在 [{{site.data.keyword.Bluemix_notm}} 服务仪表板 ![外部链接图标](images/external_link.svg "外部链接图标")](https://console.bluemix.net/dashboard/services "Bluemix 服务仪表板") 中找到 {{site.data.keyword.blockchain}} Platform 服务实例。 
+您可以在 [{{site.data.keyword.Bluemix_notm}} 服务仪表板 ![外部链接图标](images/external_link.svg "外部链接图标")](https://console.bluemix.net/dashboard/services "{{site.data.keyword.Bluemix_notm}} 服务仪表板") 中找到 {{site.data.keyword.blockchain}} Platform 服务实例。 
 
 如果您是受邀网络成员，请单击**暂挂邀请 ->** 按钮，从下拉列表中选择要加入的网络，然后单击**加入网络！**按钮。请遵循向导，以查看网络的基本配置并配置自己的网络组件。  
 ![“加入网络”向导](images/join_network_name.png "“加入网络”向导")  
@@ -84,3 +84,15 @@ lastupdated: "2017-09-04"
 
 ## 监视网络资源  
 从应用程序触发事务处理后，您可以在“网络监视器”中查看事务处理状态信息。有关网络监视的更多信息，请参阅[监视网络](howto/monitor_network.html)。
+  
+## 离开网络 
+如果您要离开网络，请从 {{site.data.keyword.Bluemix_notm}} 仪表板删除区块链服务实例。  
+
+**注**：在离开网络之前，请确保您不是网络任何通道中的成员。否则，当您离开网络时将会获得错误。除去通道成员需要完成通道更新过程。有关通道更新过程的更多信息，请参阅[更新通道](howto/create_channel.html#updating-a-channel)。
+
+
+<!--
+## References
+* For more information about {{site.data.keyword.blockchainfull_notm}} offerings, see [Blockchain offerings](index.html).
+* For more information about Hyperledger Fabric V1.0, see [Hyperledger Fabric documentation ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/latest/){:new_window}.
+-->
