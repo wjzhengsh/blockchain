@@ -47,7 +47,7 @@ As a developer, you can quickly and easily align business requirements and accel
 * **Collaborate in a cloud environment**  
   Free and fee options to develop and share your code with others.
   
-One you have developed your business network, you can deploy it to a live network running on the IBM Blockchain Platform with this [recipe ![External link icon](images/external_link.svg "External link icon")](https://ibm-blockchain.github.io/platform-deployment/).
+Once you have developed your business network, you can deploy it to a live network running on the IBM Blockchain Platform with this [recipe ![External link icon](images/external_link.svg "External link icon")](https://ibm-blockchain.github.io/platform-deployment/).
 
 ## **Govern** the network
 There are two options for creating the backend environment of your network. First, you can use the published Hyperledger Docker images, giving you the option of implementing the Composer library to build your applications and interact with your network. Or, you can write chaincode natively and develop the server side code to drive transactions. Running locally is the perfect opportunity to tinker with network configurations, explore potential use cases, and start building out proofs of concept. As your PoC begins to take shape, you'll be able to broaden the implementation by hosting your network in the cloud.
