@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017
-lastupdated: "2017-08-24"
+lastupdated: "2017-12-15"
 
 ---
 
@@ -25,7 +25,7 @@ Let's take a look at the primary activites and roles in an {{site.data.keyword.b
 
 |  Function     | Activities       | Roles  |
 | ------------------------- |--------------------------|-----|
-| [Develop ![External link icon](images/external_link.svg "External link icon")](https://developer.ibm.com/blockchain/sandbox/) | Develop Applications, Develop Chaincode | Application Developers |
+| [Develop](develop.html) | Develop Applications, Develop Chaincode | Application Developers |
 | [Govern](get_start.html)| Invite Members, Generate Credentials, Propose Governance Models, New members join, Disseminate certs & endpoint info | Network Operators, Network Members |
 | [Operate](v10_dashboard.html)| Monitor health & activity, Manage new deployments, Manage members (addition/removal), Manage chaincode lifecycle,  Manage channels, Support | Network Operators, Network Participants |
   
@@ -41,7 +41,7 @@ As a business owner, you can develop your use case with help from IBM's deep ben
 
 As a developer, you can quickly and easily align business requirements and accelerate blockchain application development for free with a cloud sandbox and interactive playground that turns any programmer into a blockchain developer. These tools are designed to turn business rules into code in your preferred environment:
 * **Explore online**  
-  Leverage [Hyperledger Composer ![External link icon](images/external_link.svg "External link icon")](https://hyperledger.github.io/composer/introduction/introduction.html), which is an open source development tool to learn key blockchain concepts, to create network definitions, and to leverage reusable industry models and smart contract libraries. 
+  Leverage [{{site.data.keyword.blockchainfull_notm}} Platform: Develop ![External link icon](images/external_link.svg "External link icon")](https://ibm-blockchain.github.io/develop/), which is an open source development tool to learn key blockchain concepts, to create network definitions, and to leverage reusable industry models and smart contract libraries. 
 * **Install locally**  
   Leverage IBM certified images of Hyperledger Fabric and Composer, which is an open source framework for building a business network, to develop and test directly on your laptop.
 * **Collaborate in a cloud environment**  
