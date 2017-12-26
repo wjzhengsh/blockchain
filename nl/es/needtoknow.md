@@ -26,8 +26,7 @@ La arquitectura que hay detrás de {{site.data.keyword.blockchainfull_notm}} es 
 
 ## Sentencia de código abierto
 
-Los planes de la oferta {{site.data.keyword.blockchainfull_notm}} on {{site.data.keyword.Bluemix_notm}} se han creado a partir de la pila de Hyperledger Fabric V1.0 de Linux Foundation. Los miembros de Hyperledger Project, incluido IBM, siguen realizando aportaciones a los varios subproyectos recogidos en Hyperledger.
-La comunidad revisa, evalúa y prueba todas las aportaciones.  
+Los planes de la oferta {{site.data.keyword.blockchainfull_notm}} on {{site.data.keyword.Bluemix_notm}} se han creado a partir de la pila de Hyperledger Fabric V1.0 de Linux Foundation. Los miembros de Hyperledger Project, incluido IBM, siguen realizando aportaciones a los varios subproyectos recogidos en Hyperledger.  La comunidad revisa, evalúa y prueba todas las aportaciones. 
 
 Hyperledger Fabric anunció que había alcanzado el *estado de nivel de producción* de la versión 1.0 el 11 de julio de 2017. 
 
@@ -42,4 +41,4 @@ Las siguientes prácticas de codificación NO reciben soporte en las redes de {{
 5. Acceso a servicios externos, como por ejemplo bases de datos, directamente desde el código de encadenamiento.
 6. Uso de bibliotecas o de variables globales que podrían introducir el no determinismo (como utilizar "random" o "time").  
 
-Además, no se recomienda escribir código de encadenamiento no determinista, lo que representa un riesgo en la coherencia e integridad de los datos. Cabe señalar que la arquitectura de Hyperledger Fabric está diseñada para contrarrestar el código de encadenamiento no determinista a través de una serie de comprobaciones de aprobación y validación; sin embargo, se sigue recomendando encarecidamente la codificación de funciones deterministas que no sean dependientes de variables globales no estáticas (por ejemplo, "time").  
+Además, no se recomienda escribir código de encadenamiento no determinista, lo que representa un riesgo en la coherencia e integridad de los datos.  Cabe señalar que la arquitectura de Hyperledger Fabric está diseñada para contrarrestar el código de encadenamiento no determinista a través de una serie de comprobaciones de aprobación y validación; sin embargo, se sigue recomendando encarecidamente la codificación de funciones deterministas que no sean dependientes de variables globales no estáticas (por ejemplo, "time").  

@@ -31,10 +31,10 @@ Los iguales de Fabric propiedad de los miembros son la interfaz o pasarela para 
 
 Además de los componentes principales de blockchain, la opción de pertenencia Empresarial proporciona una infraestructura con almacenamiento de datos y comunicaciones seguras (TLS) así como alta disponibilidad.  Aunque las redes de Fabric comparten estos recursos de infraestructura, se proporciona aislamiento en los nodos de los componentes de Fabric de una red y cada nodo se ejecuta en un contenedor Docker seguro que protege el entorno de ejecución.
 
-El único aspecto que se debe determinar es el tamaño de los iguales necesarios para la red. Esta decisión se basa en el número de canales necesarios, además de la carga por canal, el uso de memoria y el espacio en disco (almacenamiento). A continuación, encontrará los tamaños disponibles con el plan de servicio Empresarial y orientación para la elección del igual adecuado.
+El único aspecto que se debe determinar es el tamaño de los iguales necesarios para la red. Esta decisión se basa en el número de canales necesarios, además de la carga por canal, el uso de memoria y el espacio en disco (almacenamiento). 
 
 Debería utilizarse la plataforma IBM Blockchain para despliegues más estables, a nivel de producción o de casi producción. Para finalidades de pruebas, utilice el servicio IBM Container o imágenes descargables locales.
 
 El plan Empresarial proporciona el servicio de ordenación y CA. La tarifa de miembro es de 1.000 $ y una tarifa por igual de 1.000 $ que está asociada a la red. Si desea disponer de alta disponibilidad (HA), debe adquirir un igual adicional para proporcionar capacidades de HA. Por ejemplo, una organización (tarifa de miembro asociada de 1.000 $) de dos iguales (1.000 $ X 2 iguales) con HA (1.000 $ X 2 iguales HA) requiere un cargo mensual de 5.000 $.
 
-Regístrese ahora para ser [miembro de {{site.data.keyword.blockchainfull_notm}}![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps).
+Regístrese ahora para ser [miembro de {{site.data.keyword.IBM_notm}} {{site.data.keyword.blockchainfull_notm}} ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps).
