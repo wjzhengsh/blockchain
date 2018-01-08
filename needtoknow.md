@@ -26,7 +26,7 @@ The architecture behind {{site.data.keyword.blockchainfull_notm}} is the Linux F
 
 ## Open source statement
 
-{{site.data.keyword.blockchainfull_notm}} offering plans on {{site.data.keyword.Bluemix_notm}} are built on top of the Linux Foundation's Hyperledger Fabric V1.0 stack. Hyperledger Project members, including IBM, continue to contribute to various sub-projects under the Hyperleder umbrella.  All contributions are reviewed, vetted, and tested by the community. 
+{{site.data.keyword.blockchainfull_notm}} offering plans on {{site.data.keyword.Bluemix_notm}} are built on top of the Linux Foundation's Hyperledger Fabric V1.0 stack. Hyperledger Project members, including IBM, continue to contribute to various sub-projects under the Hyperledger umbrella.  All contributions are reviewed, vetted, and tested by the community. 
 
 Hyperledger Fabric announced it had reached *Production Level Status* for V1.0 on July 11, 2017. 
 
