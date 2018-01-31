@@ -16,6 +16,7 @@ IBM Blockchain Platform
 	{: .navgroup id="howto"}
 	{: .topicgroup}
 	Tutorials
+		howto/pay_for_the_network.md
 		howto/create_channel.md
 		howto/install_instantiate_chaincode.md
 		v10_application.md
