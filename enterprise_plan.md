@@ -14,7 +14,7 @@ lastupdated: "2017-09-20"
 
 # {{site.data.keyword.blockchainfull_notm}} Platform Enterprise Plan
 
-{{site.data.keyword.blockchainfull}} Platform Enterprise Plan is the first available membership option for organizations who would like to found or join a blockchain business network. This plan provides the key infrastructure along with tools and support to easily deploy a highly secure, production ready blockchain network.
+{{site.data.keyword.blockchainfull}} Platform Enterprise Plan is the first available membership option for organizations who would like to create or join a blockchain business network. This plan provides the key infrastructure along with tools and support to easily deploy a highly secure, production ready blockchain network.
 
 For members who are going to initiate the network, IBM provides a graphical user interface to guide the network initiator through key steps to set up and provision the network. This includes inviting other members and setting the governance rules. Once the network is deployed an interactive graphical user interface is available to monitor health & activity of the network; manage key network activities including new deployments, members addition/removal, chaincode lifecycle, and channel management; and seek technical support. Find more information on how to get [support](ibmblockchain_support.html).
 
