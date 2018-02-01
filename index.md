@@ -19,7 +19,7 @@ lastupdated: "2017-12-15"
 
 The {{site.data.keyword.blockchainfull_notm}} Platform is the only integrated business ready platform that addresses the full life cycle (**develop**, **govern**, and **operate**) of a multi-organization blockchain network. It is designed to accelerate, through collaboration in each phase, the creation of "built for business" global blockchain networks with the performance and security for even the most demanding use cases and regulated industries. {{site.data.keyword.blockchainfull_notm}} offerings are built on the Hyperledger Fabric V1.0 code base leveraging a modular architecture to achieve enterprise levels of security, data integrity, scalability, and performance to meet your business needs.  
 
-Let's take a look at the primary activites and roles in an {{site.data.keyword.blockchainfull_notm}} network, and see how they fit into a network's lifecycle.
+Let's take a look at the primary activities and roles in an {{site.data.keyword.blockchainfull_notm}} network, and see how they fit into a network's lifecycle.
 
 **Note**: The table below is not meant to represent a linear progression. Tasks such as development and network management will occur repeatedly as applications and membership evolve.
 
