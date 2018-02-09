@@ -14,7 +14,7 @@ lastupdated: "2018-01-31"
 
 # Paying for the network
 
-{{site.data.keyword.blockchainfull}} Platform charges monthly with membership fees and peer fees. Depending on the network plan that you choose and the amount of resources that you use, your payments are different.  Taking Enterprise Plan as an example, network members must pay $1,050 per month as the membership fee, and additionally $1,050 per month for each of their peers in the network. The monthly fee is billed daily prorated. For example, a member (associated membership fee of $1,050) of two peers (per peer fee of $1,050 X 2 peers) needs to pay $3,150 every month. If the month has 30 days, the member pays $105 ($3,150/30) every day. 
+{{site.data.keyword.blockchainfull}} Platform charges monthly with membership fees and peer fees. Depending on the network plan that you choose and the amount of resources that you use, your payments are different.  Taking Enterprise Plan as an example, network members must pay $1,000 per month as the membership fee, and additionally $1,000 per month for each of their peers in the network. The monthly fee is billed daily prorated. For example, a member (associated membership fee of $1,000) of two peers (per peer fee of $1,000 X 2 peers) needs to pay $3,000 every month. If the month has 30 days, the member pays $100 ($3,000/30) every day. 
 
 Network members can pay their bill with their IBM Cloud accounts that contain the space to create the network instance. Alternatively, one network member can cover the bill for all members in the network and pay for the entire network. 
   
