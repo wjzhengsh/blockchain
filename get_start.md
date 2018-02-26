@@ -81,7 +81,7 @@ If you are an invited network member, click the **Pending Invite ->** button, se
 **Note**: To achieve high availability, each institution must purchase at least 2 peers, and within a channel, each participanting institution must join at least 2 peers.
 
 ## Enabling applications to interact with the network
-Applications leverage the SDK APIs to interact with your {{site.data.keyword.blockchain}} network components. You need to add the API endpoint information of your network components in your applicatoin so that the application can ultimately target your peers with transaction requests. You can then add the API endpoint information from the Network Monitor. Applications can be hosted on your local file system or on {{site.data.keyword.Bluemix_notm}}. For more information, see [Developing applications](v10_application.html).
+Applications leverage the SDK APIs to interact with your {{site.data.keyword.blockchain}} network components. You need to add the API endpoint information of your network components in your application so that the application can ultimately target your peers with transaction requests. You can then add the API endpoint information from the Network Monitor. Applications can be hosted on your local file system or on {{site.data.keyword.Bluemix_notm}}. For more information, see [Developing applications](v10_application.html).
 
 ## Monitoring network resources  
 After a transaction has been triggered from your application, you can view transaction status information in the Network Monitor. For more information about network monitoring, see [Monitoring a network](howto/monitor_network.html).
