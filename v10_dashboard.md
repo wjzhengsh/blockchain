@@ -135,7 +135,7 @@ Use the links and resources on this page to access troubleshooting and support f
   Talk to a [Hyperledger Expert ![External link icon](images/external_link.svg "External link icon")](https://chat.hyperledger.org/channel/general) with questions about the Hyperledger Fabric code.   
   
   
-**Figure 8** shows the initial "Members" screen displaying new and changed functions of each release in the "Release Notes" tab:
+**Figure 8** shows the initial "Support" screen displaying new and changed functions of each release in the "Release Notes" tab:
 
 ![Release notes](images/releasenotes.png "Release notes")
 *Figure 8. Release notes*
