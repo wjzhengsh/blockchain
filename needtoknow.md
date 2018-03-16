@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017
-lastupdated: "2017-07-19"
+  years: 2017, 2018
+lastupdated: "2018-03-14"
 ---
 
 {:new_window: target="_blank"}
@@ -13,7 +13,7 @@ lastupdated: "2017-07-19"
 
 
 # Disclaimer
-{: #etn_overview}
+{: #disclainer}
 
 **ATTENTION:** You must review the following information before using any {{site.data.keyword.blockchainfull}} plans.
 
@@ -26,9 +26,7 @@ The architecture behind {{site.data.keyword.blockchainfull_notm}} is the Linux F
 
 ## Open source statement
 
-{{site.data.keyword.blockchainfull_notm}} offering plans on {{site.data.keyword.Bluemix_notm}} are built on top of the Linux Foundation's Hyperledger Fabric V1.0 stack. Hyperledger Project members, including IBM, continue to contribute to various sub-projects under the Hyperledger umbrella.  All contributions are reviewed, vetted, and tested by the community. 
-
-Hyperledger Fabric announced it had reached *Production Level Status* for V1.0 on July 11, 2017. 
+{{site.data.keyword.blockchainfull_notm}} offering plans on {{site.data.keyword.Bluemix_notm}} are built on top of the Linux Foundation's Hyperledger Fabric stack. Hyperledger Project members, including IBM, continue to contribute to various sub-projects under the Hyperledger umbrella.  All contributions are reviewed, vetted, and tested by the community.
 
 ## Chaincode support statement
 

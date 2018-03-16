@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017
-lastupdated: "2017-12-15"
+  years: 2017, 2018
+lastupdated: "2018-3-14"
 
 ---
 
@@ -16,14 +16,16 @@ lastupdated: "2017-12-15"
 # Develop the network
 {: #develop-the-network}
 
-Developing {{site.data.keyword.blockchain}} solutions using the {{site.data.keyword.blockchainfull}} Platform leverages the Hyperledger Composer open source development toolset. Hyperledger Composer uses a bespoke modelling language, which is combined with JavaScript transactions, and access control rules to model a {{site.data.keyword.blockchain}} business network in full _before_ deploying anything to a real {{site.data.keyword.blockchain}}.
+Developing blockchain solutions by using the {{site.data.keyword.blockchainfull}} Platform leverages the Hyperledger Composer open source development toolset. Hyperledger Composer uses a bespoke modelling language, combined with JavaScript transactions and access control rules to model a blockchain business network in full _before_ deploying anything to a real blockchain network.
 {:shortdesc}
+
+**Note**: Starter Plan provides sample applications that you can learn and try. You can run sample applications in Starter Plan before you develop your customized business network. For more information, see [About Starter Plan](starter_plan.html).
 
 This tutorial goes through the development of a {{site.data.keyword.blockchain}} solution that begins with creating and modelling a business network, and then deploys it to a running blockchain network.
 
 The following steps outline the basic development of a {{site.data.keyword.blockchain}} solution that is hosted on  {{site.data.keyword.blockchainfull_notm}} Platform:
 
-1. Create the data structure to contain the business network definition. The business network is defined in terms of assets, participants, and transactions by using the [Modelling Language](https://pages.github.ibm.com/Blockchain-WW-Labs/IBM-Composer/reference/cto_language.html).
+1. Create the data structure to contain the business network definition. The business network is defined in terms of assets, participants, and transactions by using the [Modelling Language](https://hyperledger.github.io/composer/latest/reference/cto_language).
 
 2. Model the business network by defining the asset classes, participant classes, transaction classes, event classes, and access control rules that will be used after deployment.
 
@@ -33,12 +35,7 @@ The following steps outline the basic development of a {{site.data.keyword.block
 
 ## Before you begin
 
-Before you begin, you need to run the following commands to install Yeoman (an open source generator tool), the Hyperledger Composer Playground, the Hyperledger Composer CLI, and the REST server generator:
-- `npm install -g yo`  
-- `npm install -g composer-cli`  
-- `npm install -g generator-hyperledger-composer`  
-- `npm install -g composer-rest-server`  
-- `npm install -g composer-playground`  
+Before you begin, ensure you have [installed the {{site.data.keyword.blockchainfull_notm}}: Develop development tools](./develop_install.html).
 
 ## Step One: Creating the business network structure
 
@@ -62,7 +59,7 @@ A business network is made up of assets, participants, transactions, access cont
 
 ### Modelling assets, participants, and transactions
 
-The first document to update is the model file (`.cto`). This file is written using the [Hyperledger Composer Modelling Language](https://pages.github.ibm.com/Blockchain-WW-Labs/IBM-Composer/reference/cto_language.html). The model file contains the definitions of each class of asset, transaction, participant, and event. It implicitly extends the system model that is described in the modelling language documentation.
+The first document to update is the model file (`.cto`). This file is written using the [Hyperledger Composer Modelling Language](https://hyperledger.github.io/composer/latest/reference/cto_language). The model file contains the definitions of each class of asset, transaction, participant, and event. It implicitly extends the system model that is described in the modelling language documentation.
 
 1. Open the `org.acme.biznet.cto` model file.
 
@@ -161,6 +158,6 @@ After running the command, a business network archive file (`tutorial-network@0.
 
 ## Step Four: Deploying the business network and generating a REST server
 
-Deploy the business network to the {{site.data.keyword.blockchainfull_notm}} Platform using the setup, installation, and interacting instructions at https://ibm-blockchain.github.io/setup/.
+Deploy the business network to the {{site.data.keyword.blockchainfull_notm}} Platform by using the [Starter Plan](./develop_starter.html) or [Enterprise Plan](./develop_enterprise.html).
 
-After the business network has been deployed to the {{site.data.keyword.blockchainfull_notm}} Platform Developer Sandbox, a bespoke REST server can be generated. The REST server examines the contents of the business network and builds rest calls for the assets, transactions and participants of the network. The instructions for generating a REST server are included in the [Interacting with your blockchain](https://ibm-blockchain.github.io/interacting/) instructions.
+After the business network has been deployed to the {{site.data.keyword.blockchainfull_notm}} Platform, a bespoke REST server can be generated. The REST server examines the contents of the business network and builds RESTful API calls for the assets, transactions and participants of the network. The instructions for generating a REST server are included in the [Hyperledger Composer documentation](https://hyperledger.github.io/composer/latest/integrating/getting-started-rest-api).
