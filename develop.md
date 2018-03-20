@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-3-16"
+lastupdated: "2018-3-14"
 
 ---
 
@@ -16,7 +16,7 @@ lastupdated: "2018-3-16"
 # Develop the network
 {: #develop-the-network}
 
-Developing blockchain solutions by using the {{site.data.keyword.blockchainfull}} Platform leverages the Hyperledger Composer open source development toolset. Hyperledger Composer uses a bespoke modelling language, combined with JavaScript transactions and access control rules to model a blockchain business network in full _before_ deploying anything to a real blockchain network.
+Developing blockchain solutions by using the {{site.data.keyword.blockchainfull}} Platform leverages the Hyperledger Composer open source development toolset. Hyperledger Composer uses a bespoke modelling language, which is combined with JavaScript transactions and access control rules to model a blockchain business network in full _before_ you deploy anything to a real blockchain network.
 {:shortdesc}
 
 **Note**: Starter Plan provides sample applications that you can learn and try. You can run sample applications in Starter Plan before you develop your customized business network. For more information, see [About Starter Plan](starter_plan.html).
@@ -35,11 +35,11 @@ The following steps outline the basic development of a {{site.data.keyword.block
 
 ## Before you begin
 
-Before you begin, ensure you have [installed the {{site.data.keyword.blockchainfull_notm}}: Develop development tools](./develop_install.html).
+Ensure that you have installed the [{{site.data.keyword.blockchainfull_notm}}: Develop development tools](./develop_install.html).
 
 ## Step One: Creating the business network structure
 
-A key concept for developing {{site.data.keyword.blockchain}} solutions is the **business network definition (BND)**. The BND defines the data model, transaction logic and access control rules for your blockchain solution. To create a BND,  you need to create a suitable project structure on disk.
+A key concept for developing {{site.data.keyword.blockchain}} solutions is the **business network definition (BND)**. The BND defines the data model, transaction logic, and access control rules for your blockchain solution. To create a BND,  you need to create a suitable project structure on disk.
 
 The easiest way to get started is to use the Yeoman generator to create a skeleton business network. The Yeoman generator creates a directory that contains all of the components of a business network, which can be modified for your specific use-case.
 
@@ -59,11 +59,11 @@ A business network is made up of assets, participants, transactions, access cont
 
 ### Modelling assets, participants, and transactions
 
-The first document to update is the model file (`.cto`). This file is written using the [Hyperledger Composer Modelling Language](https://hyperledger.github.io/composer/latest/reference/cto_language). The model file contains the definitions of each class of asset, transaction, participant, and event. It implicitly extends the system model that is described in the modelling language documentation.
+The first document to update is the model file (`.cto`). This file is written by using the [Hyperledger Composer Modelling Language](https://hyperledger.github.io/composer/latest/reference/cto_language). The model file contains the definitions of each class of asset, transaction, participant, and event. It implicitly extends the system model that is described in the modelling language documentation.
 
 1. Open the `org.acme.biznet.cto` model file.
 
-2. Replace the contents with the following:
+2. Replace the contents with the following information:
 
         /**
          * My commodity trading network
@@ -86,7 +86,8 @@ The first document to update is the model file (`.cto`). This file is written us
             --> Trader newOwner
         }
 
-3. Save your changes to `org.acme.biznet.cto`.
+3. Save your changes to the `org.acme.biznet.cto` file.
+
 
 ### Adding JavaScript transaction logic
 
@@ -96,7 +97,7 @@ The `Trade` transaction is intended to simply accept the identifier of the `Comm
 
 1. Open the `logic.js` script file in the `lib` directory.
 
-2. Replace the contents with the following:
+2. Replace the contents with the following information:
 
         /**
          * Track the trade of a commodity from one trader to another
@@ -154,10 +155,10 @@ After the business network is defined, it must be packaged into a deployable bus
 
         composer archive create -t dir -n .
 
-After running the command, a business network archive file (`tutorial-network@0.0.1.bna`) is created in the `tutorial-network` directory.
+After you run the command, a business network archive file (`tutorial-network@0.0.1.bna`) is created in the `tutorial-network` directory.
 
 ## Step Four: Deploying the business network and generating a REST server
 
 Deploy the business network to the {{site.data.keyword.blockchainfull_notm}} Platform by using the [Starter Plan](./develop_starter.html) or [Enterprise Plan](./develop_enterprise.html).
 
-After the business network has been deployed to the {{site.data.keyword.blockchainfull_notm}} Platform, a bespoke REST server can be generated. The REST server examines the contents of the business network and builds RESTful API calls for the assets, transactions and participants of the network. The instructions for generating a REST server are included in the [Hyperledger Composer documentation](https://hyperledger.github.io/composer/latest/integrating/getting-started-rest-api).
+After the business network is deployed to the {{site.data.keyword.blockchainfull_notm}} Platform, a bespoke REST server can be generated. The REST server examines the contents of the business network and builds RESTful API calls for the assets, transactions, and participants of the network. The instructions for generating a REST server are included in the [Hyperledger Composer documentation](https://hyperledger.github.io/composer/latest/integrating/getting-started-rest-api).

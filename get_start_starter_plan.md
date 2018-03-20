@@ -47,7 +47,7 @@ You can invite other [organizations](glossary.html#organization) to join your St
 1. On the "Members" screen of your Network Monitor, click the **Invite Members** button.
 2. The "Invite member" window opens.
     - If you want to invite another organization, choose "Invite a member".  Specify the name and operator email address of the organization that you want to invite.  You can also enter additional information that you want to include in your invitation in the "Add a note" field.  Click the **Send invite** button.  The invited organization will receive an invitation email and can then follow the instructions in the email to join your network.
-    - If you want to add additional organizations that can be added to a channel, choose "Add a member".  Specify a name for your new organization. You can optionally add peers to your new organization or do it later in the Network Monitor.  Click the **Create** button. Note that if you add peers for your new organization, you need to switch to this new organization to see your peers. For more information about swithing organizations, see [Switch organizations](dashboard.html#switch-organizations).
+    - If you want to add additional organizations that can be added to a channel, choose "Add a member".  Specify a name for your new organization. You can optionally add peers to your new organization or do it later in the Network Monitor.  Click the **Create** button. Note that if you add peers for your new organization, you need to switch to this new organization to see your peers. For more information about switching organizations, see [Switch organizations](dashboard.html#switch-organizations).
 
 
 ## Joining a network
@@ -58,7 +58,7 @@ You need to create a [{{site.data.keyword.blockchain}} Platform service instance
 1. Log in with your {{site.data.keyword.cloud_notm}} account. If you do not have an account, click the **Sign up to Create** button.
 2. Select the Cloud Foundry organization where you want to store your {{site.data.keyword.blockchain}} network.
 3. Select **Starter Membership Plan** from the pricing plans table.
-4. Click the **Create** button. The service instance page opens with a pon-up welcome panel. Note that you can choose to join a network or continue to create your own one. To create a network, see step 4 in [Creating a network](#creating-a-network).
+4. Click the **Create** button. The service instance page opens with a pop-up welcome panel. Note that you can choose to join a network or continue to create your own one. To create a network, see step 4 in [Creating a network](#creating-a-network).
 5. On the welcome panel, choose **Join existing network**, select the network to join from the drop-down list, and click **Continue**.
 
 You can find your blockchain service instance in the [{{site.data.keyword.cloud_notm}} service dashboard ![External link icon](images/external_link.svg "External link icon")](https://console.bluemix.net/dashboard/services "{{site.data.keyword.cloud_notm}} service dashboard").
@@ -82,7 +82,7 @@ You are on the service instance page right after you create a service instance. 
 Retrieve your service credentials with the following steps:
 1. On the service instance page, click **Service credentials** in the left navigator to show the "Service credentials" screen.
 2. Click **New credential** in the "Service credentials" screen.
-3. In the "Add new credential" screen, Give the credential a name and click **Add**. The new credential is added in the table. You can click **View credentials** under the "ACTIONS" column to view the credential details. This credentail contains the API key and secret, which you can use to authorize APIs.
+3. In the "Add new credential" screen, Give the credential a name and click **Add**. The new credential is added in the table. You can click **View credentials** under the "ACTIONS" column to view the credential details. This credential contains the API key and secret, which you can use to authorize APIs.
     If you want to see the connection profile of your network, enter **{"legacy": true}** as inline configuration parameter when you create new credentials. The connection profile contains API endpoints for your network resources, which you can use in your APIs and applications.
 
 ### Retrieving in the Network Monitor
@@ -98,7 +98,7 @@ For more information, see [Deploying sample applications](howto/prebuilt_samples
 
 
 ## Developing and deploying customized business networks
-Starter Plan integrates IBM Blockchain Platform: Develop developer environment and Hyperledger Composer developer toolset. You can develop your blockchain network basd on your business needs.  After you develop a network for your business, you can deploy your buisness network to Starter Plan network.
+Starter Plan integrates IBM Blockchain Platform: Develop developer environment and Hyperledger Composer developer toolset. You can develop your blockchain network based on your business needs.  After you develop a network for your business, you can deploy your business network to Starter Plan network.
 
 For more information, see [Develop the network](develop.html) and [Deploying business networks with Starter Plan](develop_starter.html).
 
@@ -108,7 +108,8 @@ If your application requests a transaction, you can view transaction status info
 
 
 ## Resetting a network
-If you want to clean your customized configurations, running chainchodes, or deployed applications, you can set your network back to the initial default configuration.  For more information, see [Reset network](dashboard.html#reset-network).
+If you want to clean your customized configurations, running chaincodes, or deployed applications, you can set your network back to the initial default configuration.  For more information, see [Reset network](dashboard.html#reset-network).
+
 
 ## Migrating from Starter Plan to Enterprise Plan
 {: #migrate}
@@ -117,9 +118,10 @@ You can deploy a `.bna`, chaincode, and applications that you test against a Sta
 
 If you have your business network archive file (`.bna`), follow the instructions for [deploying a business network to Enterprise Plan](./develop_enterprise.html). If you do not have your `.bna` file, use the `composer network download` command to retrieve it from the Starter Plan instance. For more information about the `composer network download` command, see [Hyperledger Composer command line documentation ![External link icon](images/external_link.svg "External link icon")](https://hyperledger.github.io/composer/reference/commands){:new_window}.
 
-Chaincodes, like `.bna` files, are developed externally. To deploy a chaincode that you test against a Starter Plan network into Enterprise, follow the instructions in [Installing and Instantiating a Chaincode](howto/install_instantiate_chaincode.html#installchaincode).
+Chaincodes, which are similar to `.bna` files, are developed externally. To deploy a chaincode that you test against a Starter Plan network into Enterprise, follow the instructions in [Installing and Instantiating a Chaincode](howto/install_instantiate_chaincode.html#installchaincode).
 
 As you can see in [Deploying sample applications](howto/prebuilt_samples.html), Starter Plan makes it easy to get a sample application integrated with your network by using Toolchain. This setup also allows for continuous integration by automatically updating your sample application whenever your forked application repo is changed. If you want to deploy this application into an Enterprise Plan network, you can copy your forked application repo into a new repo and then follow the instructions in [Deploying sample applications manually](howto/prebuilt_samples.html#deploy_sample_applications_manually).
+
 
 ## Deleting or leaving a network
 If you want to delete or leave a network, you can delete the blockchain service instance from your {{site.data.keyword.cloud_notm}} dashboard.
