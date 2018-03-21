@@ -43,7 +43,7 @@ You need to install software prerequisites to develop applications that can inte
 	```
 	{:screen}
 
-	Follow the [Installation instructions ![External link icon](images/external_link.svg "External link icon")](https://golang.org/doc/install){:new_window} to properly set the environment variables. Check your `GOPATH` using the below command. Note that your `GOPATH` does not need to match the example, it only matters that you have this variable set to a valid directory on your filesystem.
+	Follow the [Installation instructions ![External link icon](images/external_link.svg "External link icon")](https://golang.org/doc/install){:new_window} to properly set the environment variables. Check your `GOPATH` using the below command. Note that your `GOPATH` does not need to match the example, it only matters that you have this variable set to a valid directory on your file system.
 	```
 	$ echo $GOPATH
 	C:\gopath
@@ -52,7 +52,7 @@ You need to install software prerequisites to develop applications that can inte
 
 	You can then verify your GoLang installation by building GoLang code with the [hello world ![External link icon](images/external_link.svg "External link icon")](https://golang.org/doc/install#testing){:new_window} example.
 
-*	Node.js ([Node.js download page ![External link icon](images/external_link.svg "External link icon")](https://nodejs.org/en/download/){:new_window}).  Choose a version between 6.9.5 < 7. Node versions greater than 7 will cause errors when downloading the SDK modules.
+*	Node.js ([Node.js download page ![External link icon](images/external_link.svg "External link icon")](https://nodejs.org/en/download/){:new_window}).  Choose a version between 6.9.5 < 7. Node versions greater than 7 might cause errors when downloading the SDK modules.
 
 	Use the following commands to verify your Node.js installation.  You should see an output similar to the below:
 	```
@@ -65,7 +65,7 @@ You need to install software prerequisites to develop applications that can inte
 	{:screen}
 
 ## Generating the client-side certificates
-We won't delve into the minutiae of x509 and public key infrastructure; there are plenty of external resources for that. Suffice it to say that communication flows in Fabric use sign/verify operations at every touchpoint. As such, any client sending calls (i.e. transactions) to the network will need to sign payloads (private key) and attach a properly signed x509 certificate for verification purposes (signed cert). The private key and signed certificate, along with with an MSP identifier and the Certificate Authority (CA) root certificate make up what is referred to as the "user context" object. Again no need for extraneous details. We will simply communicate with the appropriate Certificate Authority and retrieve the keys and certs that allow for the object to be formed -- this process is referred to as "enrollment". After you form the user context object, it's as easy as calling an API from your application to "set" or "get" this user context. At this point, the application (i.e. client) is equipped with all the necessary artifacts and is ready to communicate with the network. We'll look at two approaches for retrieving the keys and certs.
+We won't delve into the minutiae of x509 and public key infrastructure; there are plenty of external resources for that. Suffice it to say that communication flows in Fabric use sign/verify operations at every touchpoint. As such, any client that sends calls (that is, transactions) to the network will need to sign payloads (private key) and attach a properly signed x509 certificate for verification purposes (signed cert). The private key and signed certificate, along with an MSP identifier and the Certificate Authority (CA) root certificate make up what is referred to as the "user context" object. Again no need for extraneous details. We will simply communicate with the appropriate Certificate Authority and retrieve the keys and certs that allow for the object to be formed -- this process is referred to as "enrollment". After you form the user context object, it's as easy as calling an API from your application to "set" or "get" this user context. At this point, the application (i.e. client) is equipped with all the necessary artifacts and is ready to communicate with the network. We'll look at two approaches for retrieving the keys and certs.
 
 ### Command line
 This is the simpler of the two approaches. First, follow the instructions to build the [Fabric CA client ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric-ca.readthedocs.io/en/latest/users-guide.html). This step allows you to communicate with a CA Server and receive back properly formatted certificates and keys.
@@ -95,11 +95,11 @@ You can also find CA root certificate and admin private key in the following dir
 * The admin private key: `$HOME/.fabric-ca-client/msp/keystore/<>_sk file`
 
 ### SDK
-There are two Hyperledger repositories that contain excellent resources and scripts for understanding how to programatically interact with a Certificate Authortity. The ``fabric-samples`` repo contains the "balance transfer" example and the ``fabric-sdk-node`` repo has a series of CA Services tests. If you intend to issue your enrollment requests on the application side, then you will need to fully understand the APIs that need to be exposed within the ``fabric-ca-client`` and ``fabric-client`` packages.  Use these scripts and repos as a baseline for structuring your app.
+There are two Hyperledger repositories that contain excellent resources and scripts for understanding how to programmatically interact with a Certificate Authority. The ``fabric-samples`` repo contains the "balance transfer" example and the ``fabric-sdk-node`` repo has a series of CA Services tests. If you intend to issue your enrollment requests on the application side, then you need to fully understand the APIs that need to be exposed within the ``fabric-ca-client`` and ``fabric-client`` packages.  Use these scripts and repos as a baseline for structuring your app.
 
 Let's take a quick look at a few key snippets from the "balance transfer" example:
 
-First we need to create our client object and set a key/value store instance where our certs and keys will be parked. We can do this with a simple factory method -- ``newCryptoSuite`` - that extends to the ``Client`` class from ``BaseClient``. Here's a quick look at the code:
+First, we need to create our client object and set a key/value store instance where our certs and keys will be parked. We can do this with a simple factory method -- ``newCryptoSuite`` - that extends to the ``Client`` class from ``BaseClient``. Here's a quick look at the code:
 
 ```
 # <PUBLIC_PRIVATE_KEY_PATH> denotes the path on your local machine where you wish to store your key and cert
@@ -108,7 +108,7 @@ cryptoSuite.setCryptoKeyStore(hfc.newCryptoKeyStore({path: <PUBLIC_PRIVATE_KEY_P
 client.setCryptoSuite(cryptoSuite);
 ```
 
-The common practice would be to export an environment variable defining the key/value path on your machine and pass it to the above function. Now that we've defined our KVS, let's use a few methods from the ``FabricCAServices`` class. This class is an implementation of the Fabric CA client, and as such it will allow us to communicate with the CA Server. First we need to pass some information to our CA client, namely the CA URL:
+The common practice would be to export an environment variable that defines the key/value path on your machine and pass it to the above function. Now that we've defined our KVS, let's use a few methods from the ``FabricCAServices`` class. This class is an implementation of the Fabric CA client, and as such it will allow us to communicate with the CA Server. First, we need to pass some information to our CA client, namely the CA URL:
 
 ```
 # the caURL can be defined manually or by setting an environment variable
@@ -138,7 +138,7 @@ You can then upload the admin certificate to your blockchain network from the Ne
 
 ## Developing applications
 {: #developing-applications}
-You can develop your application in Javascript or Java, and leverage the available APIs in the Hyperledger Fabric Client SDKs to enable interaction between your application and your network.  An application needs to include at least the following information:
+You can develop your application in JavaScript or Java, and leverage the available APIs in the Hyperledger Fabric Client SDKs to enable interaction between your application and your network.  An application needs to include at least the following information:
 * Name and version of the chaincode to invoke.
 * API endpoint information of your network resources, including orderers, CAs, and peers.
 * Functions to query or update the ledger in the network.  If you want high availability, you need to consider node failover in your application.
@@ -152,7 +152,7 @@ You can find the API endpoints in the connection profile of your network. The co
 
 1. Retrieve the API endpoint information of your network resources from your Network Monitor with one of the following methods:
 	* To get the API endpoint information that is specific to a chaincode, in the specific channel screen, on which the chaincode is running, locate the chaincode and click the **JSON** button.
-	![API endpointss per chaincode](images/channel_chaincode_detail.png "API endpoints per chaincode")
+	![API endpoints per chaincode](images/channel_chaincode_detail.png "API endpoints per chaincode")
 	* To get a complete set of API endpoint information about all your network resources, click the **Connection Profile** button in the "Overview" screen.
 	![Connection Profile in Network Monitor](images/service_credentials.png "Connection Profile in Network Monitor")
 
