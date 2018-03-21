@@ -15,7 +15,7 @@ lastupdated: "2018-03-16"
 # Disclaimer
 {: #disclainer}
 
-**ATTENTION:** You must review the following information before using any {{site.data.keyword.blockchainfull}} plans.
+**ATTENTION:** You must review the following information before you use any {{site.data.keyword.blockchainfull}} plans.
 
 ## IBM support statement
 
@@ -26,7 +26,7 @@ The architecture behind {{site.data.keyword.blockchainfull_notm}} is the Linux F
 
 ## Open source statement
 
-{{site.data.keyword.blockchainfull_notm}} offering plans on {{site.data.keyword.Bluemix_notm}} are built on top of the Linux Foundation's Hyperledger Fabric stack. Hyperledger Project members, including IBM, continue to contribute to various sub-projects under the Hyperledger umbrella.  All contributions are reviewed, vetted, and tested by the community.
+{{site.data.keyword.blockchainfull_notm}} offering plans on {{site.data.keyword.Bluemix_notm}} are built on top of the Linux Foundation's Hyperledger Fabric stack. Hyperledger Project members, including IBM, continue to contribute to various subprojects under the Hyperledger umbrella.  All contributions are reviewed, vetted, and tested by the community.
 
 ## Chaincode support statement
 
@@ -34,9 +34,9 @@ The following coding practices are NOT supported on {{site.data.keyword.blockcha
 
 1. Using associative arrays with iteration (the order is randomized in Go).
 2. Reading a list of items from a KVS table (the order is not guaranteed).
-3. Writing thread-unsafe chaincode (query and invoke may be called in parallel).
+3. Writing thread-unsafe chaincode (query and invoke might be called in parallel).
 4. Substituting global memory or cache storage for ledger state variables in chaincode.
 5. Accessing external services, such as databases, directly from chaincode.
 6. Using libraries or global variables that could introduce non-determinism (such as using "random" or "time").  
 
-In addition, it is not recommended to write non-deterministic chaincode, which introduces risk to data consistency and integrity.  It should be noted that the Hyperledger Fabric architecture is designed to counter against non-deterministic chaincode through a series of endorsement and validation checks, however you are still strongly encouraged to code deterministic functions that are not reliant on non-static global variables (e.g. time).  
+In addition, it is not recommended to write non-deterministic chaincode, which introduces risk to data consistency and integrity.  Note that the Hyperledger Fabric architecture is designed to counter against non-deterministic chaincode through a series of endorsement and validation checks. However, you are still strongly encouraged to code deterministic functions that are not reliant on non-static global variables, for example, time.  
