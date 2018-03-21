@@ -28,15 +28,15 @@ Starter Plan provides two sample applications for you to start with.
 
 * **Marbles**
 
-  The Marbles sample enables users to create virtual marbles with different properties and to transfer them with other users. For more information about Marbles, see [Marbles Demo](https://github.com/IBM-Blockchain/marbles).
+  The Marbles sample enables users to create virtual marbles with different properties and to transfer them with other users. For more information about Marbles, see [Marbles Demo ![External link icon](../images/external_link.svg "External link icon")](https://github.com/IBM-Blockchain/marbles).
 
 * **Vehicle Manufacture**
 
-  The Vehicle Manufacture sample enables users to go through the lifecycle of a virtual vehicle. For more information about this sample, see [Vehicle Manufacture](link).
+  The Vehicle Manufacture sample enables users to go through the lifecycle of a virtual vehicle. For more information about this sample, see [Vehicle Manufacture ![External link icon](../images/external_link.svg "External link icon")](https://github.com/IBM-Blockchain/vehicle-manufacture). 
 
 Complete the following steps to deploy a sample application:
 
-1. Enter the **Network Monitor** of your Starter Plan network. If you don't have one, see [Creating a network](get_start_starter_plan.html#creating-a-network).
+1. Enter the **Network Monitor** of your Starter Plan network. If you don't have one, see [Creating a network](../get_start_starter_plan.html#creating-a-network).
 
 2. Open the "Try samples" screen in your Network Monitor. Choose the sample application that you want to deploy and click the **Deploy via Toolchain** button.
 <!--
@@ -66,7 +66,7 @@ Because this process creates a forked GitHub repository that you have access to 
 
 If you want to deploy sample applications without using the Network Monitor, ensure that you install all software prerequisites on your local file system. For more information, see [Setting up application development environment](../v10_application.html#setting-up-application-development-environment).
 
-You also need a blockchain network on {{site.data.keyword.Bluemix_short}} with either Starter Plan or Enterprise Plan, and configure a channel and its peers. For more information, see [Govern Starter Plan network](get_start_starter_plan.html) and [Govern Enterprise Plan network](../get_start.html). When your network is ready to have a sample application deployed on it, retrieve the API endpoints of your network resources that your application will access, as in [Adding network API endpoints to your application](../v10_application.html#adding-network-api-endpoints-to-your-application).
+You also need a blockchain network on {{site.data.keyword.Bluemix_short}} with either Starter Plan or Enterprise Plan, and configure a channel and its peers. For more information, see [Govern Starter Plan network](../get_start_starter_plan.html) and [Govern Enterprise Plan network](../get_start.html). When your network is ready to have a sample application deployed on it, retrieve the API endpoints of your network resources that your application will access, as in [Adding network API endpoints to your application](../v10_application.html#adding-network-api-endpoints-to-your-application).
 
 You can deploy one of the following sample applications:
 
@@ -86,7 +86,7 @@ You can deploy one of the following sample applications:
 
 - **Other applications**
 
-  For more information about how to host your own applications inside {{site.data.keyword.cloud_notm}}, see [Hosting applications](v10_application.html#hosting-applications).
+  For more information about how to host your own applications inside {{site.data.keyword.cloud_notm}}, see [Hosting applications](../v10_application.html#hosting-applications).
 
 ## Deleting a sample application
 
