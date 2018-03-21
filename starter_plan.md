@@ -20,7 +20,7 @@ lastupdated: "2018-03-16"
 
 **Note**: {{site.data.keyword.blockchainfull_notm}} Platform Starter Plan is a development and testing environment. If you need a production environment, see [About Enterprise Plan](enterprise_plan.html).
 
-Sign up for your [{{site.data.keyword.blockchainfull_notm}} membership ![External link icon](images/external_link.svg "External link icon")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps) and try the Starter Plan now!
+Sign up for your [{{site.data.keyword.blockchainfull_notm}} membership ![External link icon](images/external_link.svg "External link icon")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps) and try the Starter Plan now! Note that you must choose **US South** as the region in {{site.data.keyword.cloud_notm}} to create blockchain networks with Starter Plan Beta.
 
 
 ## Target audiences
