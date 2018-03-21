@@ -15,10 +15,10 @@ lastupdated: "2018-03-16"
 # About Starter Plan
 {: #overview}
 
-{{site.data.keyword.blockchainfull_notm}} Platform is an entry level option that enables organizations to simulate multi-organization blockchain networks, quickly develop applications, and work with supplied examples. It also boasts the same UI experience as other membership options, helping to eliminate any learning curve. 
+{{site.data.keyword.blockchainfull}} Platform is an entry level option that enables organizations to simulate multi-organization blockchain networks, quickly develop applications, and work with supplied examples. It also boasts the same UI experience as other membership options, helping to eliminate any learning curve. 
 {:shortdesc}
 
-**Note**: {{site.data.keyword.blockchainfull}} Platform Starter Plan is a development and testing environment. If you need a production environment, see [About Enterprise Plan](enterprise_plan.html).
+**Note**: {{site.data.keyword.blockchainfull_notm}} Platform Starter Plan is a development and testing environment. If you need a production environment, see [About Enterprise Plan](enterprise_plan.html).
 
 Sign up for your [{{site.data.keyword.blockchainfull_notm}} membership ![External link icon](images/external_link.svg "External link icon")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps) and try the Starter Plan now!
 
