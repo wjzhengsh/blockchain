@@ -22,7 +22,7 @@ Before you begin, you need to create a [{{site.data.keyword.blockchain}} Platfor
 
 ## Retrieving network credentials
 
-Enter the Network Monitor of your Blockchain network and open the "APIs" screen from the left navigator. You can see your network credentials for the REST APIs. You will later authorize the APIs by using the values of the "key" and "secret" displayed here, and run the APIs with the "network_id" as a parameter. Click **Show secret** to reveal the value of the secret field. Copy the values of the key, secret and network_id fields to be used later in the Swagger UI.
+Enter the Network Monitor of your Blockchain network and open the "APIs" screen from the left navigator. You can see your network credentials for the REST APIs. You will later authorize the APIs by using the values of the "key" and "secret" displayed here, and run the APIs with the "network_id" as a parameter. Click **Show secret** to reveal the value of the secret field. Copy the values of the key, secret, and network_id fields, which you can used later in the Swagger UI.
 
 <!-- Removing this code snippet so people don't try to use these values
 ```
@@ -40,7 +40,7 @@ Enter the Network Monitor of your Blockchain network and open the "APIs" screen 
 ![Overview screen](../images/restAPI.png)
 *Figure 1. APIs*
 
-If you are using the Starter Plan, it is possible to switch between organizations in the Network Monitor. With the Starter Plan, two organizations are configured by default. Switching between organizations can be useful to try out the REST APIs from the perspective of each organization. To get the credentials for another organization in your network, click on your username in the top right corner of the Network Monitor console. In the menu that opens, click on the dropdown arrow next to the Organization to view all Organizations. Select the organization you would like to switch to and view the associated network credentials.
+If you are using the Starter Plan, it is possible to switch between organizations in the Network Monitor. With the Starter Plan, two organizations are configured by default. Switching between organizations can be useful to try out the REST APIs from the perspective of each organization. To get the credentials for another organization in your network, click your username in the upper right corner of the Network Monitor console. In the menu that opens, click the drop-down arrow next to the Organization to view all Organizations. Select the organization that you would like to switch to and view the associated network credentials.
 
 **Figure 2** shows how to Switch between organizations:
 ![Switching between Orgs](../images/restAPIOrganization.png)
@@ -54,7 +54,7 @@ Click the **Swagger UI** link on the "APIs" screen to open the Swagger UI.
 You can also open the Swagger UI with the URL in the connection profiles. For example, `http://blockchain-swagger-dev.stage1.mybluemix.net`.
 -->
 
-In the Swagger UI, click the **Authorize** button and the authorization window pops up. Enter the value of "key" and "secret" from your network credentials your as username and password, and click **Authorize** then **Done**. Now you are ready to run the APIs. Note that if you refresh your browser, you need to re-authorize with your credentials.
+In the Swagger UI, click the **Authorize** button and the authorization window pops up. Enter the value of "key" and "secret" in your network credentials as username and password, and click **Authorize** then **Done**. Now you are ready to run the APIs. Note that if you refresh your browser, you need to re-authorize with your credentials.
 
 Using Basic Auth authentication, any credentials that you specify in the Authorize window are stored after you click the **Authorize** and then **Done** buttons and are passed on each REST api call.
 
@@ -78,4 +78,4 @@ Click the REST API you want to run and click the **Try it out** button. Enter th
   Ensure that you have authorized the REST API by providing your network credentials. For more information, see [Authorizing Swagger APIs](#authorizing-swagger-apis).
 
 ### 400 Error: Bad Request
-  Some APIs may take an argument in the Body of the request which acts as a filter to show results only for a specific peer. A sample snippet is provided in the Body, which if used, needs to be edited to specify the peer or list of peers in that you would like to filter on. To avoid this error, either edit the snippet to specify a peer in your network or remove the snippet entirely.
+  Some APIs might take an argument in the Body of the request which acts as a filter to show results only for a specific peer. A sample snippet is provided in the Body, which if used, needs to be edited to specify the peer or list of peers in that you would like to filter on. To avoid this error, either edit the snippet to specify a peer in your network or remove the snippet entirely.
