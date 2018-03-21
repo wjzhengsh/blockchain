@@ -16,7 +16,7 @@ lastupdated: "2018-03-16"
 # Glossary
 {: #glossary}
 
-The {{site.data.keyword.blockchainfull}} Platform on {{site.data.keyword.cloud_notm}} simplifies your journey on blockchain. This topic defines terms that appear in this documentation and is meant to introduce you to blockchain concepts. For a deeper understanding of terms, you can refer to  [Hyperledger Fabric ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/master/glossary.html).
+{{site.data.keyword.blockchainfull}} Platform simplifies your journey on blockchain. This topic defines terms that appear in this documentation and is meant to introduce you to blockchain concepts. For a deeper understanding of terms, you can refer to  [Hyperledger Fabric ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/master/glossary.html).
 {:shortdesc}
 
 ## Asset
@@ -68,7 +68,7 @@ Hardware Security Module. Provides on-demand encryption, key management, and key
 [Hyperledger Composer ![External link icon](images/external_link.svg "External link icon")](https://hyperledger.github.io/composer/latest/introduction/introduction.html) is an open source development toolset. It uses a bespoke modeling language, which is combined with JavaScript transactions, and access control rules to model a blockchain business network in full. You can use Hyperledger Composer to integrate existing systems and data with your blockchain application before you deploy anything to a real blockchain.
 
 ## Hyperledger Fabric
- [Hyperledger Fabric ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/master/) is a business blockchain framework that the Linux Foundation hosts to serve as a foundation for developing blockchain applications or solutions with a modular architecture. Hyperledger Fabric components such as consensus and membership services are plug-and-play.
+[Hyperledger Fabric ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/master/) is a business blockchain framework that the Linux Foundation hosts to serve as a foundation for developing blockchain applications or solutions with a modular architecture. Hyperledger Fabric components such as consensus and membership services are plug-and-play.
 
 ## Install
 The process of placing a chaincode on a peer’s file system. You must install the chaincode on every peer that will run this chaincode.
