@@ -16,7 +16,7 @@ lastupdated: "2018-3-16"
 # Installing a development environment
 {: #installing-a-development-environment}
 
-Follow these instructions to obtain the {{site.data.keyword.blockchainfull}} Platform: Develop development tools for creating and testing business networks. To provide flexibility and enable the maximum number of dev, test and deployment scenarios, the development tools are delivered as npm modules, controlled from the command line.
+Follow these instructions to obtain the {{site.data.keyword.blockchainfull}} Platform: Develop development tools for creating and testing business networks. To provide flexibility and to enable the maximum number of dev, test, and deployment scenarios, the development tools are delivered as npm modules, which are controlled from the command line.
 
 ## Before you begin
 
@@ -54,19 +54,19 @@ The command line tools include **composer-cli**, the main {{site.data.keyword.bl
 
     Use **generator-hyperledger-composer** to generate skeleton business network structures, models, and an Angular application.
 
-4. Yeoman is a tool for generating applications, which utilises `generator-hyperledger-composer`:
+4. Yeoman is a tool for generating applications, which utilizes `generator-hyperledger-composer`:
 
         npm install -g yo
 
 ## Step Two: Install a local Playground
 
-The Hyperledger Composer playground is a user interface which can be connected to a real {{site.data.keyword.blockchain}} or used as a simulated environment for testing a business network. Install the Playground using the following command:
+The Hyperledger Composer playground is a user interface that can be connected to a real {{site.data.keyword.blockchain}} or used as a simulated environment for testing a business network. Install the playground by using the following command:
 
         npm install -g composer-playground@next
 
 ## Optional: Set up your IDE
 
-Playground can be used to develop, edit, and test business networks, however, if you wish to develop a business network in an IDE, there is a VSCode extension available which adds syntax highlighting for the Hyperledger Composer modelling language.
+You can use the playground to develop, edit, and test business networks. However, if you want to develop a business network in an IDE, there is a VSCode extension available, which adds syntax highlighting for the Hyperledger Composer modelling language.
 
 1. Install VSCode from this URL: [https://code.visualstudio.com/download](https://code.visualstudio.com/download)
 
@@ -76,18 +76,18 @@ Playground can be used to develop, edit, and test business networks, however, if
 
 By deploying a local Hyperledger Fabric instance, you can fully test access control rules and business networks.
 
-1. Create the `fabric-tools` directory using the following command:
+1. Create the `fabric-tools` directory by using the following command:
 
         mkdir ~/fabric-tools && cd ~/fabric-tools
 
-In a directory of your choice (we will assume `~/fabric-tools`), get the `.tar.gz` file that contains the tools to install Hyperledger Fabric:
+In a directory of your choice, for example, `~/fabric-tools`, get the `.tar.gz` file that contains the tools to install Hyperledger Fabric:
 
-2. Download the `tar.gz` file containing tools for installing Hyperledger Fabric in a Docker environment.
+2. Download the `tar.gz` file that contains tools for installing Hyperledger Fabric in a Docker environment.
 
         curl -O https://raw.githubusercontent.com/hyperledger/composer-tools/master/packages/fabric-dev-servers/fabric-dev-servers.tar.gz
         tar -xvf fabric-dev-servers.tar.gz
 
-    A `.zip` is also available. Replace the `.tar.gz` file with `fabric-dev-servers.zip` and the `tar -xvf` command with a `unzip` command in the preceding snippet.
+    A `.zip` is also available. Replace the `.tar.gz` file with `fabric-dev-servers.zip` and the `tar -xvf` command with an `unzip` command in the preceding snippet.
 
 3. Use the following commands to download a local Hyperledger Fabric v1.1 runtime:
 
@@ -97,7 +97,7 @@ In a directory of your choice (we will assume `~/fabric-tools`), get the `.tar.g
 
 ## Step Four: Starting the Hyperledger Fabric instance
 
-The `fabric-tools` directory contains a set of scripts that control the downloaded Hyperledger Fabric instance. The `./createPeerAdminCard.sh` command must be run to generate a business network card which can be used to deploy the business network to the Docker hosted Hyperledger Fabric instance.
+The `fabric-tools` directory contains a set of scripts that control the downloaded Hyperledger Fabric instance. You must run the `./createPeerAdminCard.sh` command to generate a business network card, which you can use to deploy the business network to the Docker that hosts Hyperledger Fabric instance.
 
 1. Run the following commands to start the Hyperledger Fabric v1.1 instance:
 
@@ -108,17 +108,17 @@ The `fabric-tools` directory contains a set of scripts that control the download
 
 ## Optional: Connect to Hyperledger Fabric instance using the Playground
 
-To begin developing a business network, use the Hyperledger Composer Playground or your IDE.
+To begin developing a business network, use the Hyperledger Composer playground or your IDE.
 
-1. To start the Playground, run the following command:
+1. To start the playground, run the following command:
 
         composer-playground
 
-    The Playground will open at the following URL: http://localhost:8080/login. The **PeerAdmin@hlfv1** card created in the previous step can be used to deploy a business network.
+    The playground opens at the following URL: http://localhost:8080/login. The **PeerAdmin@hlfv1** card created in the previous step can be used to deploy a business network.
 
 
 ## Starting and stopping Hyperledger Fabric
 
-There are a set of scripts in the `fabric-tools` directory which control the Hyperledger Fabric instance. You can stop and start the runtime using `~/fabric-tools/stopFabric.sh`, and `~/fabric-tools/startFabric.sh`.
+There are a set of scripts in the `fabric-tools` directory, which control the Hyperledger Fabric instance. You can stop and start the runtime by using `~/fabric-tools/stopFabric.sh` and `~/fabric-tools/startFabric.sh`.
 
 The `~/fabric-tools/teardownFabric.sh` will require you to create a new PeerAdmin card when the environment is next started.
