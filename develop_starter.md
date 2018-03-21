@@ -47,17 +47,17 @@ The secret retrieved in the preceding step will be used to create a business net
 
         composer identity request --card ca --path ./credentials
 
-The `composer identity request` command will create a `credentials` directory containing certificate `.pem` files.
+The `composer identity request` command creates a `credentials` directory that contains certificate `.pem` files.
 
 ## Step Three: Adding the certificates to the Starter Plan instance
 
-The certificates must be added to the Starter Plan instance. For convenience, they can be added using the {{site.data.keyword.blockchainfull_notm}} Platform API. The certificates must be added, then the peers must be stopped and restarted, and the certificates synced. The data required in the variables of the API calls can be retrieved from the **Connection Profile** in the Starter Plan Network Monitor.
+The certificates must be added to the Starter Plan instance. For convenience, they can be added by using the {{site.data.keyword.blockchainfull_notm}} Platform API. The certificates must be added, then the peers must be stopped and restarted, and the certificates synced. The data that is required in the variables of the API calls can be retrieved from the **Connection Profile** in the Starter Plan Network Monitor.
 
-1. The certificate must be added using the following API call:
+1. Add the certificate by using the following API call:
 
         curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' --basic --user ${USERID}:${PASSWORD} --data-binary <body> ${API_URL}/api/v1/networks/${NETWORKID}/certificates
 
-    In the preceding example, the body has been left blank, the following code is an example of the body of the API request:
+    In the above example, the body is left blank, the following code is an example of the body of the API request:
 
         {
         "msp_id": "ExamplePeerOrg1",
@@ -69,15 +69,15 @@ The certificates must be added to the Starter Plan instance. For convenience, th
         "SKIP_CACHE": true
         }
 
-2. After adding the certificate, the peers must be stopped using the following API call:
+2. Stop the peers by using the following API call:
 
         curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' --basic --user ${USERID}:${PASSWORD} --data-binary '{}' ${API_URL}/api/v1/networks/${NETWORKID}/nodes/${PEER}/stop
 
-3. After stopping the peers, the peers must be restarted using the following API call:
+3. Restart the peers by using the following API call:
 
         curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' --basic --user ${USERID}:${PASSWORD} --data-binary '{}' ${API_URL}/api/v1/networks/${NETWORKID}/nodes/${PEER}/start
 
-4. After the peers have been restarted, the certificates must be synced using the following API call:
+4. Synchronize the certificates by using the following API call:
 
         curl -X GET --header 'Content-Type: application/json' --header 'Accept: application/json' --basic --user ${USERID}:${PASSWORD} ${API_URL}/api/v1/networks/${NETWORKID}/nodes/status
 
