@@ -13,7 +13,7 @@ lastupdated: "2018-03-16"
 
 
 # Hyperledger Fabric
-IBM Blockchain network is built on the Hyperledger Fabric stack, one of the blockchain projects within the Linux Foundation's Hyperledger Project.  It is a "permissioned" network where all users and components have known identities.  Sign/verify logic is implemented at every communication touchpoint, and transactions are consented upon through a series of endorsement and validation checks.  In this sense, it differs greatly from traditional blockchain implementations that promote anonymity and are forced to rely on cryptocurrencies and heavy compute obligations to validate transactions.  
+{{site.data.keyword.blockchainfull}} network is built on the Hyperledger Fabric stack, one of the blockchain projects within the Linux Foundation's Hyperledger Project.  It is a "permissioned" network where all users and components have known identities.  Sign/verify logic is implemented at every communication touchpoint, and transactions are consented upon through a series of endorsement and validation checks.  In this sense, it differs greatly from traditional blockchain implementations that promote anonymity and are forced to rely on cryptocurrencies and heavy compute obligations to validate transactions.  
 {:shortdesc}
 
 Hyperledger Fabric offers a modular architecture to extend the scalability and performance.  This topic introduces some key components in Hyperledger Fabric.  For a complete introduction on Hyperledger Fabric, see [Hyperledger Fabric documentation ![External link icon](../images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/latest/){:new_window}.  
