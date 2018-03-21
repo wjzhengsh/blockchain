@@ -20,7 +20,7 @@ There are several mechanisms available to obtain support and troubleshoot proble
 {:shortdesc}
 
 
-## Seeking solutions in existing resources
+## Finding solutions in existing resources
 
 Navigate to the "Support" screen in your **Network Monitor** as shown in **Figure 1**.  You can find links to resources that provide technical and supporting information.  For detailed description on the "Support" screen, see the *Support* section in [Network Monitor](v10_dashboard.html).
 
