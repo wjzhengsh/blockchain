@@ -19,7 +19,7 @@ lastupdated: "2018-03-16"
 {{site.data.keyword.blockchainfull}} Platform Enterprise Plan provides a blockchain network with high security, integrity, scalability, and performance. You can quickly provision a fully functional network and use the Network Monitor, which is a GUI dashboard, to immediately run [chaincode](glossary.html#chaincode) and applications without having to design and configure a network for scratch.
 {:shortdesc}
 
-**Note**: {{site.data.keyword.blockchainfull}} Platform Enterprise Plan provides a production environment. If you need a development and testing environment, see [About Starter Plan](starter_plan.html).
+**Note**: {{site.data.keyword.blockchainfull_notm}} Platform Enterprise Plan provides a production environment. If you need a development and testing environment, see [About Starter Plan](starter_plan.html).
 
 This tutorial introduces the prequisites and steps you need to follow to get an Enterprise Plan network that is hosted in IBM's highly available and secure environment.  
 
