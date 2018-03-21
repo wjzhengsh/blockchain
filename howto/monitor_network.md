@@ -24,8 +24,8 @@ Enter Network Monitor and locate the channel that you want to view and monitor i
 
 * **Channel Overview**  
   The "Channel Overview" tab shows the block information on this channel:
-    * A series of data points including the total number of blocks that are created, the time interval since the last transaction, the number of chaincode instantiations, and the number of chaincode invocations.
-    * A table listing all blocks on this channel.  Expand a block and you can view the detailed information about the block.  
+    * A series of data points, which include the total number of blocks that are created, the time interval since the last transaction, the number of chaincode instantiations, and the number of chaincode invocations.
+    * A table that lists all blocks on this channel.  Expand a block and you can view the detailed information about the block.  
 
   ![Channel overview](../images/channel_overview_detail.png "Channel overview")  
 
@@ -47,7 +47,7 @@ Enter Network Monitor and locate the channel that you want to view and monitor i
 
 ## Monitoring chaincodes
 
-Enter Network Monitor and open the "Install Code" screen ("Chaincode" screen in Enterprise Plan network). If you have running chaincodes, choose a peer from the dropdown list and you can see all chaincodes for this peer in the table with chaincode IDs and versions.  You can perform installation and instantiation for your chaincode on this screen.  For more information, see [Installing and instantiating a chaincode](install_instantiate_chaincode.html).
+Enter Network Monitor and open the "Install Code" screen ("Chaincode" screen in Enterprise Plan network). If you have running chaincodes, choose a peer from the drop-down list and you can see all chaincodes for this peer in the table with chaincode IDs and versions.  You can perform installation and instantiation for your chaincode on this screen.  For more information, see [Installing and instantiating a chaincode](install_instantiate_chaincode.html).
 
   ![Chaincode](../images/chaincode_install_overview.png "Chaincode")
 
