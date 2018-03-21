@@ -48,10 +48,10 @@ When enough channel operators agree on the request, any channel member can click
 
 In highly regulated foreign currency exchange markets, to use one example, it might be necessary to put a trusted third party in charge of the administrative roles on channels that would normally be handled by various operators or members.
 
-In this case the trusted third party would make themselves the only “Operator” for a channel and assign other members as “Writers”. This would give the third party sole authority to edit the channel while still giving the two banks the ability to invoke transactions. A managed "read only" channel could also be created by setting other members as "Readers".
+In this case, the trusted third party would make themselves the only “Operator” for a channel and assign other members as “Writers”. This would give the third party sole authority to edit the channel while still giving the two banks the ability to invoke transactions. A managed "read only" channel could also be created by setting other members as "Readers".
 
 ## Updating a channel
-If you want to modify the configuration of a channel, for example, add or remove channel members, or change the channel update policy, you can submit a channel update request. In the "Channels" screen of your Network Monitor, locate the channel that you want to modify and select **Edit Channel** from the drop down list under the **Action** header. Navigate through the panels to make changes to the desired entities, and click **Submit Request** to initiate an channel update request.
+If you want to modify the configuration of a channel, for example, add or remove channel members, or change the channel update policy, you can submit a channel update request. In the "Channels" screen of your Network Monitor, locate the channel that you want to modify and select **Edit Channel** from the drop-down list under the **Action** header. Navigate through the panels to make changes to the desired entities, and click **Submit Request** to initiate a channel update request.
 
 All channel members will receive email notifications on the channel update request:
 * The newly invited members receive email notifications to invite them to join the channel. They can also find the request with "Vote Pending" status in the **Notifications** screen of the Network Monitor.
