@@ -20,10 +20,10 @@ lastupdated: "2018-03-16"
 
 The Network Monitor exposes the following screens in three sections. You can navigate to each screen from the left navigator in the Network Monitor.
 - The **My network** section contains the "[Overview](#overview)", "[Members](#members)", "[Channels](#channels)", "[Notifications](#notifications)", and "[APIs](#apis)" screens.
-- The **My code** section contains the "[Write code](#write_code)", "[Install code](#chaincode)", and "[Try samples](#samples)" screens.
+- The **My code** section contains the "[Write code](#write-code)", "[Install code](#chaincode)", and "[Try samples](#samples)" screens.
 - The "[Get help](#support)" screen.
 
-You can [switch between the organizations](#switch_organizations) that you own and [reset your network](#reset_network) from the drop-down menu on the upper right of the Network Monitor.
+You can [switch between the organizations](#switch-organizations) that you own and [reset your network](#reset-network) from the drop-down menu on the upper right of the Network Monitor.
 
 This tutorial describes each of the above screens and functions.
 
@@ -226,7 +226,7 @@ Starter Plan offers the capability to edit your network configuration without de
 
 Click the upper right corner and opens the drop-down menu. Click the **Reset Network** button in the menu. If you are ready to reset your network, click **OK** to continue. Your Network Monitor will be refreshed to reflect your new settings.
 
-**Figure 14** shows the "Switch organizations" function:
+**Figure 14** shows the "Reset network" function:
 
 ![Reset network](images/reset_network.png "Reset Network")
 *Figure 14. Reset network*
