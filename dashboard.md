@@ -226,7 +226,7 @@ Starter Plan offers the capability to edit your network configuration without de
 
 Click the upper right corner and opens the drop-down menu. Click the **Reset Network** button in the menu. If you are ready to reset your network, click **OK** to continue. Your Network Monitor will be refreshed to reflect your new settings.
 
-**Figure 14** shows the "Reset network" function:
+**Figure 14** shows the "Reset Network" function:
 
-![Reset network](images/reset_network.png "Reset Network")
+![Reset network](images/reset_network.png "Reset network")
 *Figure 14. Reset network*
