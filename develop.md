@@ -116,7 +116,7 @@ The `Trade` transaction is intended to simply accept the identifier of the `Comm
 
 ### Adding access control
 
-Access control is a key part of a business network. All business network must have an access control file that is called `permissions.acl`. Whenever any process is invoked in a deployed business network, the access control list is checked to ensure that the invoking identity or participant has can invoke the operation.
+Access control is a key part of a business network. All business network must have an access control file that is called `permissions.acl`. Whenever any process is invoked in a deployed business network, the access control list is checked to ensure that the invoking identity or participant can invoke the operation.
 
 For the purposes of this tutorial, set up a simple ACL. Note that this should not be deployed to a production environment.
 
