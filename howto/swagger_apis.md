@@ -78,4 +78,4 @@ Click the REST API you want to run and click the **Try it out** button. Enter th
   Ensure that you have authorized the REST API by providing your network credentials. For more information, see [Authorizing Swagger APIs](#authorizing-swagger-apis).
 
 ### 400 Error: Bad Request
-  Some APIs might take an argument in the Body of the request which acts as a filter to show results only for a specific peer. A sample snippet is provided in the Body, which if used, needs to be edited to specify the peer or list of peers in that you would like to filter on. To avoid this error, either edit the snippet to specify a peer in your network or remove the snippet entirely.
+  Some APIs might take an argument in the Body of the request which acts as a filter to show results only for a specific peer. A sample snippet is provided in the Body, which if used, needs to be edited to specify the peer or list of peers that you would like to filter on. To avoid this error, either edit the snippet to specify a peer in your network or remove the snippet entirely.
