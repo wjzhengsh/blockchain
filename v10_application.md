@@ -70,7 +70,11 @@ We won't delve into the minutiae of x509 and public key infrastructure; there ar
 ### Command line
 This is the simpler of the two approaches. First, follow the instructions to build the [Fabric CA client ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric-ca.readthedocs.io/en/latest/users-guide.html). This step allows you to communicate with a CA Server and receive back properly formatted certificates and keys.
 
-Second, download the TLS certs from [your {{site.data.keyword.Bluemix_notm}} ![External link icon](images/external_link.svg "External link icon")](http://blockchain-certs.mybluemix.net/3.secure.blockchain.ibm.com.rootcert) and save the contents to a folder, for example ``$HOME/tls``.  This step allows the data flowing to be encrypted on the wire.
+Second, download the TLS certs from IBM Cloud depending on the service plan you are using:
+- [Root TLS Cert for Starter Plan ![External link icon](images/external_link.svg "External link icon")](https://blockchain-certs.mybluemix.net/us2.blockchain.ibm.com.cert)
+- [Root TLS Cert for Enterprise Plan ![External link icon](images/external_link.svg "External link icon")](https://blockchain-certs.mybluemix.net/3.secure.blockchain.ibm.com.rootcert)
+
+Save the contents to a folder, for example ``$HOME/tls``.  This step allows the data flowing to be encrypted on the wire.
 
 Finally, open the **Connection Profile** JSON file from your **Overview** screen in the Network Monitor, and find the relevant variables:
 * URL for CA: ``url`` under `certificateAuthorities`
