@@ -26,11 +26,11 @@ Sign up for your [{{site.data.keyword.blockchainfull_notm}} membership ![Externa
 ## Target audiences
 
 If you fit into one of the following situations, the Starter Plan is suitable for you to start your blockchain journey.
-- **_Learning {{site.data.keyword.blockchainfull_notm}} Platform._**  
+- **_Learn {{site.data.keyword.blockchainfull_notm}} Platform._**  
     If you are curious about {{site.data.keyword.blockchainfull_notm}} Platform or even new to blockchain, Starter Plan offers you a great way to learn how to develop and govern a real blockchain network. You can find the components that a network consists of, learn how to deploy and manage chaincode (also known as "smart contracts"), how to add channels (and to manage channel permissions), and track when a new block is generated, just as in a production network. 
 - **_Want to act as multiple organizations to facilitate network development._**  
     Starter Plan enables you to act as multiple organizations, which allow you to see how the IBM Blockchain Platform (IBP) manages collaborative tasks like channel creation and chaincode instantiation, as well as testing applications and invoking transactions. You can also invite others to collaborate in a Starter Plan network (as in Enterprise plans).
-- **_Building demo solutions in a live network._**  
+- **_Build demo solutions in a live network._**  
     Starter Plan provides a powerful environment for testing network definitions (by integrating a `.bna` file that is developed by using {{site.data.keyword.blockchainfull_notm}} Platform: Develop) and blockchain applications. The ready-to-use blockchain network enables quick presentations to colleagues, management, and partners through the operational and management tools that the Network Monitor provides.
 - **_Iteratively develop and test blockchain applications._**  
     Starter Plan offers you a staging area to continuously develop and test your code on a blockchain network. You can iteratively develop your code and deploy into your continuous integration and continuous deployment architecture. Starter Plan provides the same blockchain network functionalities as well as operational and management tooling as the Enterprise Plan. After you are ready to push your project to one of the Enterprise plans, you can operate the same way as in Starter Plan, but with more opportunities to grow your network.
