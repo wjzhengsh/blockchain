@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017
-lastupdated: "2017-11-17"
+  years: 2017, 2018
+lastupdated: "2018-03-16"
 ---
 
 {:new_window: target="_blank"}
@@ -20,7 +20,7 @@ Plusieurs mécanismes sont disponibles pour obtenir un support et traiter les in
 {:shortdesc}
 
 
-## Problèmes non liés à un incident
+## Recherche de solutions dans les ressources existantes
 
 Accédez à l'écran "Support" de votre **moniteur réseau**, comme illustré dans la **Figure 1**.  Vous y trouverez des liens vers des ressources qui fournissent des informations techniques et une assistance.  Pour une description détaillée de l'écran "Support", voir la section *Support* dans [Moniteur réseau](v10_dashboard.html).
 
@@ -28,19 +28,23 @@ Accédez à l'écran "Support" de votre **moniteur réseau**, comme illustré da
 *Figure 1. Ecran Support*
 
 
-## Problèmes liés aux incidents de logiciel
+## Soumission de cas de support
 
-Pour les problèmes logiciels, ou si votre problème ne peut pas être résolu par l'une des méthodes précédentes, vous pouvez rechercher des réponses auprès du support {{site.data.keyword.Bluemix_notm}}. Cliquez sur le lien **Support** dans l'angle supérieur gauche de votre console {{site.data.keyword.Bluemix_notm}}, comme illustré dans la **Figure 2**.  Pour plus d'informations, voir [Traitement des incidents](../../troubleshoot/troubleshoot.html){:new_window}.
+Si votre problème ne peut être résolu par aucune des méthodes précédentes, procédez comme suit pour soumettre un cas de support sur le portail {{site.data.keyword.cloud_notm}} Service Portal.
 
-![](images/bmx_support.png "Lien Support")
-*Figure 2. Lien Support*
-
-Si votre problème ne peut toujours pas être résolu, suivez les étapes de soumission d'une demande de service :
-
-1. Cliquez sur le lien **Support** dans l'angle supérieur droit de votre console {{site.data.keyword.Bluemix_notm}}, comme illustré dans la Figure 2.
-2. Cliquez sur le lien **Ajouter des tickets** dans la liste déroulante, comme illustré dans la Figure 3.  
-  ![](images/bmx_addticket.png "Ajouter des tickets")  
-  *Figure 3. Ajouter des tickets*  
-3. Choisissez votre catégorie de support dans l'écran "Support".
-4. Entrez l'objet ainsi qu'une courte description de votre problème.  Vous pouvez aussi envoyer par téléchargement des pièces jointes et ajouter d'autres adresses électroniques de notification.  Assurez-vous d'inclure le mot clé **blockchain** dans votre question.
-5. Cliquez sur le bouton **Soumettre**.  Au bout de quelques minutes, vous recevez une notification par courrier électronique concernant le ticket de service ouvert pour votre demande.  Suivez les instructions du courrier électronique pour plus d'informations sur le problème.
+1. Connectez-vous au portail [{{site.data.keyword.cloud_notm}} Service Portal ![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://ibm.biz/ibmcloudsupport) à l'aide de votre {{site.data.keyword.IBM_notm}} ID.
+2. Cliquez sur l'avatar **Get help** au centre ou sur le bouton **Create a Case** dans l'angle supérieur droit.
+3. Remplissez le formulaire **Create Case**, en renseignant au minimum les zones suivantes.  
+    - Choisissez **Technical Support** comme type de cas.
+    - Dans la zone **Account**, sélectionnez le compte que vous utilisez pour créer l'instance de service de blockchain.
+    - Dans la zone **Service region or environment**, sélectionnez la région dans laquelle vous créez votre instance de service.
+    - Sélectionnez **Blockchain** en regard de la zone **Service Impacted**.
+    - Sélectionnez **Services** en regard de la zone **Category**.
+    - Dans les zones **Provide the Organization** et **Provide the Space**, indiquez votre organisation et votre espace Cloud Foundry, dans lesquels vous créez l'instance de service blockchain. Vous pouvez trouver ces informations sur la console {{site.data.keyword.cloud_notm}}.
+    - Dans la zone **Resource**, entrez l'ID de votre réseau de blockchain. Vous pouvez trouver l'ID réseau en cliquant sur le bouton **Profil de connexion** dans l'angle supérieur droit de l'écran **Présentation** de votre Moniteur réseau.
+    - Dans la zone **Case Summary**, entrez un court récapitulatif de votre problème.
+    - Dans la zone **Case Description**, décrivez votre problème de manière aussi détaillée que possible. Par exemple, le centre de données où votre réseau a été généré et les étapes qui ont mené au problème. Notez que plus vous fournissez des renseignements, plus votre problème a des chances d'être résolu rapidement.
+4. Cliquez sur le bouton **Submit**. Au bout de quelques minutes, vous recevez une notification par courrier électronique concernant ce cas. 
+  
+   
+Pour accéder aux cas précédemment soumis, cliquez sur **My Cases** dans l'angle supérieur droit du portail {{site.data.keyword.cloud_notm}} Service Portal. Cliquez sur un cas pour l'ouvrir et afficher son état ou pour fournir des renseignements supplémentaires.

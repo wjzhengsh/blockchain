@@ -6,31 +6,46 @@ IBM Blockchain Platform
 
 	{: .navgroup id="learn"}
 	index.md
-	[ネットワークの開発](https://developer.ibm.com/blockchain/sandbox/)
-	get_start.md
-	v10_dashboard.md
-	[メンバーシップ・オプション](enterprise_plan.html)
+
+	{: .topicgroup}
+	ネットワークの開発
+		develop.md
+		develop_install.md
+
+	{: .topicgroup}
+	Starter Plan
+		starter_plan.md
+		get_start_starter_plan.md
+		develop_starter.md
+		dashboard.md
+
+	{: .topicgroup}
+	Enterprise Plan
+		enterprise_plan.md
+		get_start.md
+		develop_enterprise.md
+		v10_dashboard.md
+
 	needtoknow.md
 	{: .navgroup-end}
 
-	{: .navgroup id="reference"}
-	ibmblockchain_overview.md
-	reference/v10_fabric.md
-	[Hyperledger Composer](https://hyperledger.github.io/composer/introduction/introduction.html)
-	{: .navgroup-end}
-
 	{: .navgroup id="howto"}
-	{: .topicgroup}
-	チュートリアル
-		howto/create_channel.md
-		howto/install_instantiate_chaincode.md
-		v10_application.md
-		howto/monitor_network.md
-		createmanagednetwork.md
-
-	howto/sample_applications.md
+	howto/pay_for_the_network.md
+	howto/create_channel.md
+	howto/install_instantiate_chaincode.md
+	howto/monitor_network.md
+	howto/prebuilt_samples.md
+	howto/swagger_apis.md
+	v10_application.md
 	{: .navgroup-end}
 
+	{: .navgroup id="reference"}
+	glossary.md
+	reference/v10_fabric.md
+	reference/hyperledger_composer.md
+	[IBM Blockchain Platform: Develop](https://ibm-blockchain.github.io/develop/)
+	{: .navgroup-end}
+	
 	{: .navgroup id="help"}
 	ibmblockchain_support.md
 	knownissues.md

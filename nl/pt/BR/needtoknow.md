@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017
-lastupdated: "2017-07-19"
+  years: 2017, 2018
+lastupdated: "2018-03-16"
 ---
 
 {:new_window: target="_blank"}
@@ -13,9 +13,9 @@ lastupdated: "2017-07-19"
 
 
 # Renúncia de Responsabilidade
-{: #etn_overview}
+{: #disclainer}
 
-**ATENÇÃO:** deve-se revisar as informações a seguir antes de usar quaisquer planos do {{site.data.keyword.blockchainfull}}.
+**ATENÇÃO:** deve-se revisar as informações a seguir antes de usar qualquer plano do {{site.data.keyword.blockchainfull}}.
 
 ## Instrução de suporte IBM
 
@@ -26,9 +26,7 @@ A arquitetura por trás do {{site.data.keyword.blockchainfull_notm}} é o projet
 
 ## Instrução de software livre
 
-Os planos de oferta do {{site.data.keyword.blockchainfull_notm}} no {{site.data.keyword.Bluemix_notm}} são construídos em cima da pilha do Hyperledger Fabric V1.0 da Linux Foundation. Os membros do Hyperledger Project, incluindo a IBM, continuam contribuindo com vários subprojetos sob a coordenação do Hyperleder.  Todas as contribuições são revisadas, avaliadas e testadas pela comunidade. 
-
-O Hyperledger Fabric anunciou que atingiu o *Status de Nível de Produção* para a V1.0 em 11 de julho de 2017. 
+Planos de oferta do {{site.data.keyword.blockchainfull_notm}} no {{site.data.keyword.Bluemix_notm}} são construídos na parte superior da pilha do Hyperledger Fabric da Linux Foundation. Os membros do Hyperledger Project, incluindo a IBM, continuam a contribuir com vários subprojetos sob o guarda-chuva do Hyperledger. Todas as contribuições são revisadas, avaliadas e testadas pela comunidade.
 
 ## Instrução de suporte de chaincode
 
@@ -36,9 +34,9 @@ As práticas de codificação a seguir NÃO são suportadas em redes do {{site.d
 
 1. Usar matrizes associativas com iteração (a ordem é aleatória em Go).
 2. Ler uma lista de itens de uma tabela de KVS (a ordem não é garantida).
-3. Gravar chaincode inseguro para encadeamento (consulta e chamada podem ser chamadas em paralelo).
-4. Substituir memória ou armazenamento em cache global para variáveis de estado do livro razão no chaincode.
+3. Gravando chaincode inseguro para encadeamento (consulta e chamada podem ser chamadas em paralelo).
+4. Substituir memória ou armazenamento em cache global para variáveis de estado do livro-razão no chaincode.
 5. Acessar serviços externos, como bancos de dados, diretamente de chaincode.
 6. Usar bibliotecas ou variáveis globais que podem introduzir o não determinismo (como usar "aleatório" ou "tempo").  
 
-Além disso, não é recomendado gravar chaincode não determinístico, o que apresenta risco à consistência e à integridade dos dados.  Deve ser observado que a arquitetura do Hyperledger Fabric foi projetada para combater chaincode não determinístico por meio de uma série verificações de endosso e validação, no entanto, ainda é altamente recomendável que você codifique funções determinísticas que não sejam dependentes de variáveis globais não estáticas (por exemplo, tempo).  
+Além disso, não é recomendado gravar chaincode não determinístico, o que apresenta risco à consistência e à integridade dos dados.  Observe que a arquitetura do Hyperledger Fabric foi projetada para combater o chaincode não determinístico por meio de uma série de verificações de endosso e validação. No entanto, ainda é altamente recomendável que você codifique funções determinísticas que não são dependentes de variáveis globais não estáticas, por exemplo, tempo.  

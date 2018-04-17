@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017
-lastupdated: "2017-07-19"
+  years: 2017, 2018
+lastupdated: "2018-03-16"
 ---
 
 {:new_window: target="_blank"}
@@ -13,7 +13,7 @@ lastupdated: "2017-07-19"
 
 
 # Clause de protection
-{: #etn_overview}
+{: #disclainer}
 
 **ATTENTION :** Vous devez prendre connaissance des informations suivantes avant d'utiliser des plans {{site.data.keyword.blockchainfull}}.
 
@@ -26,13 +26,11 @@ L'architecture d'{{site.data.keyword.blockchainfull_notm}} repose sur le projet 
 
 ## Déclaration Open source
 
-Les plans de l'offre {{site.data.keyword.blockchainfull_notm}} on {{site.data.keyword.Bluemix_notm}} reposent sur la pile Hyperledger Fabric V1.0 de Linux Foundation. Les membres du projet Hyperledger, y compris IBM, continuent à contribuer au différents sous-projets sous l'égide de Hyperledger.  Toutes les contributions sont passées en revue, certifiées et testées par la communauté. 
-
-Hyperledger Fabric a annoncé qu'il avait atteint l'*état de niveau de production* pour la version 1.0 le 11 juillet 2017. 
+Les plans de l'offre {{site.data.keyword.blockchainfull_notm}} on {{site.data.keyword.Bluemix_notm}} reposent sur la pile Hyperledger Fabric de Linux Foundation. Les membres du projet Hyperledger, y compris IBM, continuent à contribuer aux différents sous-projets sous l'égide de Hyperledger. Toutes les contributions sont passées en revue, certifiées et testées par la communauté.
 
 ## Déclaration du support du code blockchain
 
-Les pratiques de codage suivantes suivantes NE sont PAS prises en charge sur les réseaux {{site.data.keyword.blockchainfull_notm}} :
+Les pratiques de codage suivantes NE sont PAS prises en charge sur les réseaux {{site.data.keyword.blockchainfull_notm}} :
 
 1. Utilisation de tableaux associatifs avec itération (l'ordre est aléatoire en Go).
 2. Lecture d'une liste d'éléments d'une table KVS (l'ordre n'est pas garanti).
@@ -43,4 +41,4 @@ Les pratiques de codage suivantes suivantes NE sont PAS prises en charge sur les
 pourraient introduire du non déterminisme (utilisation de "random" ou
 "time", par exemple).  
 
-En outre, il n'est pas recommandé d'écrire du code blockchain non déterministe, car cela présente un risque pour la cohérence et l'intégrité des données.  Il est à noter que l'architecture Hyperledger Fabric est conçue pour contrer le code blockchain non déterministe via une série de vérifications d'adhésion et de validation ; cependant, vous êtes quand même fortement encouragé à coder des fonctions déterministes qui ne reposent pas sur des variables globales non statiques (par exemple, le temps).  
+En outre, il n'est pas recommandé d'écrire du code blockchain non déterministe, car cela présente un risque pour la cohérence et l'intégrité des données.  Il est à noter que l'architecture Hyperledger Fabric est conçue pour contrer le code blockchain non déterministe via une série de vérifications d'adhésion et de validation. Cependant, vous êtes quand même fortement encouragé à coder des fonctions déterministes qui ne reposent pas sur des variables globales non statiques (par exemple, le temps).  

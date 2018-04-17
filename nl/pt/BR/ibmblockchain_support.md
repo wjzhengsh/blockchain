@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017
-lastupdated: "2017-11-17"
+  years: 2017, 2018
+lastupdated: "2018-03-16"
 ---
 
 {:new_window: target="_blank"}
@@ -20,7 +20,7 @@ Existem vários mecanismos disponíveis para obter suporte e solucionar problema
 {:shortdesc}
 
 
-## Problemas não relacionados a defeitos
+## Localizando soluções em recursos existentes
 
 Navegue até a tela "Suporte" em seu **Monitor de rede** conforme mostrado na **Figura 1**.  É possível localizar links para recursos que fornecem informações técnicas e de suporte.  Para obter uma descrição detalhada na tela "Suporte", consulte a seção *Suporte* no [Monitor de Rede](v10_dashboard.html).
 
@@ -28,20 +28,23 @@ Navegue até a tela "Suporte" em seu **Monitor de rede** conforme mostrado na **
 *Figura 1. Tela de suporte*
 
 
-## Problemas de defeito de software
+## Enviando casos de suporte
 
-Para defeitos de software ou se seu problema não puder ser resolvido por qualquer uma das rotas acima, será possível procurar respostas no suporte do {{site.data.keyword.Bluemix_notm}}. Clique no link **Suporte** no canto superior direito em seu console do {{site.data.keyword.Bluemix_notm}}, conforme mostrado na **Figura 2**.  Para obter mais informações, veja [Resolução de problemas](../../troubleshoot/troubleshoot.html){:new_window}.
+Se o seu problema não puder ser resolvido por nenhuma das rotas acima, siga estas etapas para enviar um caso de suporte no Portal de serviço do {{site.data.keyword.cloud_notm}}.
 
-![](images/bmx_support.png "Link de suporte")
-*Figura 2. Link de suporte*
-
-Se seu problema ainda não puder ser resolvido, siga essas etapas para enviar um chamado de ajuda:
-
-1. Clique no link **Suporte** no canto superior direito em seu console do {{site.data.keyword.Bluemix_notm}}, conforme mostrado na Figura 2.
-2. Clique no link **Incluir chamados** da lista suspensa, conforme mostrado na Figura 3.  
-  ![](images/bmx_addticket.png "Incluir Chamados")  
-  *Figura 3. Incluir Chamados*  
-3. Escolha sua categoria de suporte no painel "Suporte".
-4. Insira o assunto e uma breve descrição de seu problema.  Opcionalmente, é possível fazer upload de anexos e incluir outros endereços de e-mail para ser notificado.  Certifique-se de incluir a palavra-chave **blockchain** em sua pergunta.
-5. Clique no botão **Enviar**.  Você receberá uma notificação por e-mail em alguns minutos para o Ticket de serviço aberto para a sua solicitação.  Siga as instruções no e-mail para
-obter comunicações adicionais sobre o problema.
+1. Efetue login no Portal de serviço do [{{site.data.keyword.cloud_notm}} ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://ibm.biz/ibmcloudsupport) com o seu ID do {{site.data.keyword.IBM_notm}}.
+2. Clique no avatar **Obter ajuda** no meio ou no botão **Criar um caso** na parte superior direita.
+3. Preencha o formulário **Criar caso** com as suas informações pelo menos para os campos a seguir.  
+    - Escolha **Suporte técnico** como o seu tipo de caso.
+    - No campo **Conta**, selecione a conta que você usa para criar a instância de serviço de blockchain.
+    - No campo **Região ou ambiente do serviço**, selecione a região na qual você cria a sua instância de serviço.
+    - Selecione **Blockchain** para o campo **Serviço impactado**.
+    - Selecione **Serviços** para o campo **Categoria**.
+    - Nos campos **Fornecer a organização** e **Fornecer o espaço**, especifique a sua organização e o espaço do Cloud Foundry, no qual você cria a instância de serviço de blockchain. É possível localizar essas informações por meio do console do {{site.data.keyword.cloud_notm}}.
+    - No campo **Fornecer o recurso**, insira o seu identificador de rede de blockchain. É possível localizar o identificador de rede clicando no botão **Perfil de conexão** na parte superior direita da tela **Visão geral** em seu Monitor de rede.
+    - No campo **Resumo de caso**, insira um resumo curto de seu problema.
+    - No campo **Descrição do caso**, descreva o seu problema o mais detalhado possível. Por exemplo, o data center no qual a sua rede foi construída e a sequência de etapas que levaram ao problema. Observe que quanto mais detalhes você fornecer, mais chances de que o seu problema possa ser resolvido rapidamente.
+4. Clique no botão **Enviar**.  Você receberá uma notificação por e-mail em alguns minutos para este caso.
+  
+   
+É possível localizar os seus casos enviados anteriormente clicando em **Meus casos** na parte superior direita no Portal de serviço do {{site.data.keyword.cloud_notm}}. Clique e abra um caso para verificar o seu status ou forneça informações adicionais.

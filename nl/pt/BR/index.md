@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017
-lastupdated: "2017-08-24"
+  years: 2017, 2018
+lastupdated: "2018-03-16"
 
 ---
 
@@ -14,54 +14,55 @@ lastupdated: "2017-08-24"
 
 # {{site.data.keyword.blockchainfull_notm}} Platform
 
-**ATENÇÃO:** antes de usar uma oferta do {{site.data.keyword.blockchainfull}}, leia as informações técnicas e de suporte na seção [Renúncia de responsabilidade](needtoknow.html).  
+**ATENÇÃO:** antes de usar uma oferta do {{site.data.keyword.blockchainfull}} Platform, leia as informações técnicas e de suporte na seção [Renúncia de responsabilidade](needtoknow.html).  
 {:shortdesc}
 
-O {{site.data.keyword.blockchainfull_notm}} Platform é a única plataforma integrada pronta para negócios que aborda o ciclo de vida completo (**desenvolver**, **administrar** e **operar**) de uma rede de blockchain de diversas organizações. Ele foi projetado para acelerar, por meio da colaboração em cada fase, a criação de redes de blockchain globais "construídas para os negócios" com o desempenho e a segurança até mesmo para os casos de uso e os setores regulamentados mais exigentes. As ofertas de {{site.data.keyword.blockchainfull_notm}} são construídas no código base do Hyperledger Fabric V1.0 alavancando uma arquitetura modular para atingir níveis corporativos de segurança, integridade de dados, escalabilidade e desempenho para atender às suas necessidades de negócios.  
+O {{site.data.keyword.blockchainfull_notm}} Platform é a única plataforma pronta para negócios integrada que aborda o ciclo de vida completo (**desenvolver**, **governar** e **operar**) de uma rede de blockchain de múltiplas organizações. Ele foi projetado para acelerar, por meio da colaboração em cada fase, a criação de redes de blockchain globais "construídas para os negócios" com o desempenho e a segurança até mesmo para os casos de uso e os setores regulamentados mais exigentes. As ofertas do {{site.data.keyword.blockchainfull_notm}} são construídas no código base do Hyperledger Fabric que alavanca uma arquitetura modular para atingir níveis corporativos de segurança, integridade de dados, escalabilidade e desempenho para atender às suas necessidades de negócios.  
 
-Vamos dar uma olhada nas atividades e funções primárias em uma rede de {{site.data.keyword.blockchainfull_notm}} e ver como elas se ajustam ao ciclo de vida de uma rede.
+Vamos ver as atividades e funções primárias em uma rede do {{site.data.keyword.blockchainfull_notm}} e ver como elas se ajustam ao ciclo de vida de uma rede.
 
 **Nota**: a tabela a seguir não é destinada a representar uma progressão linear. Tarefas como desenvolvimento e gerenciamento de rede ocorrerão repetidamente à medida que os aplicativos e a associação evoluírem.
 
-|  Função     | Atividades       | Funções  |
+|  Função     | Atividades       | [Funções](#participating-in-a-blockchain-network) |
 | ------------------------- |--------------------------|-----|
-| [Desenvolver ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://developer.ibm.com/blockchain/sandbox/) | Desenvolver Aplicativos, Desenvolver Chaincode | Desenvolvedores de Aplicativos |
-| [Controlar](get_start.html)| Convidar Membros, Gerar Credenciais, Propor Modelos de Governança, Associação de Novos Membros, Disseminar informações de certificados e de terminal | Operadores de Rede, Membros da Rede |
-| [Operar](v10_dashboard.html)| Monitorar o funcionamento e a atividade, Gerenciar novas implementações, Gerenciar membros (inclusão/remoção), Gerenciar ciclo de vida de chaincode, Gerenciar canais, Suporte | Operadores de Rede, Participantes da Rede |
-  
-Agora vamos dar uma olhada mais de perto nessas funções e atividades...
+| [Desenvolver](develop.html) | Desenvolver redes de negócios, desenvolver aplicativos, desenvolver chaincode | Desenvolvedores de rede, desenvolvedores de aplicativos|
+| [Controlar](get_start.html)| Convidar membros, gerar credenciais, propor modelos de governança, disseminar certificados e informações do terminal | Operadores de rede, membros de rede|
+| [Operar](v10_dashboard.html)| Monitorar funcionamento e atividade, gerenciar novas implementações, incluir ou remover membros, gerenciar o ciclo de vida do chaincode, gerenciar canais, suporte | Operadores de rede, participantes de rede|
+
+Agora vamos dar uma olhada mais de perto nessas atividades e funções.
 
 ## **Desenvolver** a rede
-Explore e acelere o desenvolvimento de blockchain alavancando as melhores práticas adquiridas em mais de 400 engajamentos de clientes para:
+Explorar e acelerar o desenvolvimento de blockchain alavancando as melhores práticas que são adquiridas em mais de 400 engajamentos de clientes para:
 * Assegurar o alinhamento estrito nos negócios utilizando uma tecnologia que reduz significativamente o tempo de desenvolvimento do aplicativo (aplicativos que de outra forma levariam seis semanas para serem desenvolvidos podem ser criados em menos de dois dias).
 * Construir rapidamente habilidades de blockchain em sua lista existente de programadores utilizando as ferramentas de desenvolvedor do {{site.data.keyword.blockchainfull_notm}}.
 * Fornecer aos desenvolvedores a flexibilidade para aprender e desenvolver em seus ambientes preferenciais com um conjunto de ferramentas aberto e moderno.  
-  
-Como um proprietário de negócios, é possível desenvolver seu caso de uso com a ajuda da bancada de especialistas da indústria e do blockchain da IBM que se reúnem no {{site.data.keyword.blockchainfull_notm}} Garage para aproveitar o poder total do IBM Blockchain Platform. 
 
-Como um desenvolvedor, é possível alinhar os requisitos de negócios de maneira rápida e fácil e acelerar o desenvolvimento de aplicativos de blockchain de graça com um ambiente de simulação em nuvem e um playground interativo que transformam qualquer programador em um desenvolvedor de blockchain. Essas ferramentas foram projetadas para transformar regras de negócios em código em seu ambiente preferencial:
+Como um proprietário de negócios, é possível desenvolver o seu caso de uso com a ajuda da profunda bancada de especialistas em segmento de mercado e blockchain da IBM que se reúnem no {{site.data.keyword.blockchainfull_notm}} Garage para aproveitar o poder total do {{site.data.keyword.blockchainfull_notm}} Platform.
+
+Como um desenvolvedor, é possível alinhar os requisitos de negócios de maneira rápida e fácil e acelerar o desenvolvimento de aplicativos de blockchain no ambiente de rede do {{site.data.keyword.blockchainfull_notm}} Platform usando um playground interativo para desenvolver, iterar e testar redes de negócios. Essas ferramentas foram projetadas para transformar regras de negócios em código de rede de negócios em seu ambiente preferencial:
 * **Explorar on-line**  
-  Utilize o [Hyperledger Composer ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://hyperledger.github.io/composer/introduction/introduction.html), que é uma ferramenta de desenvolvimento de software livre para aprender conceitos de blockchain chave, para criar definições de rede e para alavancar modelos da indústria reutilizáveis e bibliotecas de contratos inteligentes. 
+  Alavanque o [{{site.data.keyword.blockchainfull_notm}} Platform: Develop](./develop.html)<!--, which is powered by an open source development tool--> para aprender conceitos chaves de blockchain, criar definições de rede e alavancar modelos do segmento de mercado reutilizáveis e bibliotecas de contrato inteligentes.  
+  Após você ter desenvolvido a sua rede de negócios, será possível implementá-la em uma rede em tempo real em execução no IBM Blockchain Platform. Para obter mais informações, veja [Implementando redes de negócios com o Starter Plan](./develop_starter.html) e [Implementando redes de negócios com o Enterprise Plan](./develop_enterprise.html).
 * **Instale localmente**  
-  Alavanque as imagens certificadas da IBM do Hyperledger Fabric e Composer, que é uma estrutura de software livre para construir uma rede de negócios, para desenvolver e testar diretamente em seu laptop.
+  Alavanque as imagens certificadas da IBM do Hyperledger Fabric e Composer, que são estrutura de software livre e ferramenta para construir uma rede de negócios, para desenvolver e testar diretamente em seu laptop. Para obter mais informações, veja [Construindo a sua primeira rede](http://hyperledger-fabric.readthedocs.io/en/latest/build_network.html).
 * **Colabore em um ambiente de nuvem**  
-  Opções grátis e com taxa para desenvolver e compartilhar seu código com terceiros.
-  
-Assim que você tiver desenvolvido sua rede de negócios, poderá implementá-la em uma rede em tempo real em execução no IBM Blockchain Platform com esta [receita ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://ibm-blockchain.github.io/platform-deployment/).
+  Use redes em tempo real prontas para uso com opções do Starter Plan e Enterprise Plan para desenvolver e compartilhar o seu código com outros. Para obter mais informações, veja [Sobre o Starter Plan](starter_plan.html) e [Sobre o Enterprise Plan](enterprise_plan.html).
+
 
 ## **Controle** a rede
-Há duas opções para criar o ambiente de backend de sua rede. Primeiro, é possível usar as imagens do Hyperledger Docker publicadas, fornecendo a opção de implementar a biblioteca do Composer para construir seus aplicativos e interagir com sua rede. Ou, é possível gravar o chaincode nativamente e desenvolver o código do lado do servidor para conduzir as transações. A execução local é a oportunidade perfeita para mexer com as configurações de rede, explorar casos de uso potenciais e começar a construir a provas de conceito. À medida que sua PoC começar a tomar forma, será possível ampliar a implementação, hospedando sua rede na nuvem.
+Há duas opções para criar o ambiente de backend de sua rede. Primeiro, é possível usar as imagens do Hyperledger Docker publicadas, fornecendo a opção de implementar a biblioteca do Composer para construir seus aplicativos e interagir com sua rede. Ou é possível gravar o chaincode nativamente e desenvolver o código do lado do servidor para conduzir as transações. A execução local é a oportunidade perfeita para mexer com as configurações de rede, explorar casos de uso potenciais e começar a construir a provas de conceito. Quando o seu PoC começar a tomar forma, será possível ampliar a implementação hospedando a sua rede na nuvem.
 
-Com uma implementação de nuvem, você recebe uma coleção de receitas e scripts fáceis de usar para facilitar a implementação de uma rede do Hyperledger Fabric em execução no Kubernetes. Use esta fase para examinar o comportamento e a estabilidade de sua PoC em um ambiente hospedado. O [{{site.data.keyword.blockchainfull_notm}} Container Service ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://ibm-blockchain.github.io/) pode ser considerado um mecanismo de teste para a funcionalidade e a resiliência de seu aplicativo e como um precursor natural para o Plano Corporativo.
+Com uma implementação de nuvem, é fornecida a você uma coleção de receitas e scripts fáceis de usar para facilitar a implementação de uma rede do Hyperledger Fabric que é executado no Kubernetes. Use esta fase para examinar o comportamento e a estabilidade de sua PoC em um ambiente hospedado. O [{{site.data.keyword.blockchainfull_notm}} Container Service ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://ibm-blockchain.github.io/) pode ser considerado um mecanismo de teste para a funcionalidade e a resiliência de seu aplicativo e como um precursor natural para o Enterprise Plan.
 
-Assim que você tiver uma rede, o {{site.data.keyword.blockchainfull_notm}} foi projetado para criar uma experiência de gerenciamento de rede que oferece algum controle aos membros, embora nenhum membro único esteja no controle total. O {{site.data.keyword.blockchainfull_notm}} Platform tem o primeiro conjunto de ferramentas integradas para permitir que as equipes impinjam o gerenciamento de mudanças da rede por meio de políticas customizáveis. 
+Assim que você tiver uma rede, o {{site.data.keyword.blockchainfull_notm}} foi projetado para criar uma experiência de gerenciamento de rede que oferece algum controle aos membros, embora nenhum membro único esteja no controle total. O {{site.data.keyword.blockchainfull_notm}} Platform tem o primeiro conjunto de ferramentas integradas para permitir que as equipes impinjam o gerenciamento de mudanças da rede por meio de políticas customizáveis.
 
 A lista a seguir mostra os recursos-chave desse modelo de governança:
 
-* Ferramentas de gerenciamento democráticas que permitem o gerenciamento coletivo.
+* Ferramentas de gerenciamento democráticas para permitir o gerenciamento coletivo.
 * Editor de Política para definir políticas flexíveis e democráticas para controlar as mudanças na rede.
-* Ferramentas e políticas pré-construídas permitem a migração, a customização e a ativação mais rápidas.
+* Ferramentas e políticas pré-construídas para ativar a migração, a customização e a ativação mais rápidas.
 * Uma ferramenta de fluxo de trabalho multipartes com notificações integradas, um painel de atividades do membro e a coleta de assinatura segura.
+
 
 ## **Opere** a rede
 Implemente e opere redes descentralizadas com um serviço seguro pronto para produção. Comece pequeno e escale sua rede elasticamente à medida que seus volumes de associação e de transação aumentam, aproveitando os recursos a seguir:
@@ -69,90 +70,91 @@ Implemente e opere redes descentralizadas com um serviço seguro pronto para pro
 * Um ambiente de segurança ultra alta com muitos recursos de segurança de hardware, de firmware e de software.
 * Arquitetura protegida para escalabilidade, resiliência e disponibilidade.
 * Otimizado para desempenho e execução na computação do Linux mais rápida do mundo.
-  
+
+
 A operação de sua rede no {{site.data.keyword.blockchainfull_notm}} Platform inclui ferramentas e recursos para simplificar tarefas administrativas:
 
-* Painéis para monitorar e gerenciar os recursos na rede. 
-* Gerenciamento de ciclo de vida para upgrades contínuos da pilha de código completa.
+* Painéis para monitorar e gerenciar os recursos na rede.
+* Upgrades ininterruptos da pilha de código integral.
 * Suporte técnico 24/7 integrado no portal.
 * Pilha de segurança protegida sem acesso privilegiado, resistência a malware e violação, 100% de criptografia e muito mais recursos para redes com dados sensíveis em setores regulamentados.
 
-## Participando de uma rede de blockchain 
+## Serviços de rede básicos
 
-Usamos o termo **participante** como a classificação mais ampla para qualquer organização, indivíduo, aplicativo ou dispositivo que interage com a rede de blockchain.  Sob o grupo “participante“ há dois agrupamentos distintos – **membros** e **usuários**.   
- 
-Em termos práticos, um membro possui um certificado digital válido, que permite que ele emita e/ou valide transações em uma rede de blockchain.  Um usuário não tem um certificado, mas ele ainda pode interagir com a rede de blockchain por meio de um dos membros de rede existentes.   Você pode considerar um certificado do membro como seu “cartão de sócio“ para um clube de ginástica.    E, embora um usuário não tenha um cartão de sócio, ele pode entrar no clube de ginástica como o “convidado” de um membro existente.  Vamos ver essas funções um pouco mais de perto.
+Para tornar um blockchain operacional, os membros formam uma base de confiança, executando um ou mais serviços de rede básicos:
 
-### Membros 
+- **Serviço de solicitação** – Solicitando e sincronizando transações  
+  Essencialmente, o serviço de solicitação é a definição da rede.  Ele contém informações de identidade para cada membro, informações sobre canais e um conjunto de políticas que ditam quais membros têm permissão para executar determinadas tarefas (por exemplo, convidar outros membros, criar canais etc.). Cada operação de transação e configuração fluirá por meio do serviço de solicitação, portanto, ele é uma parte mais do que crítica no esquema geral das coisas.  Dada a importância fundamental do serviço de solicitação, é fácil ver os perigos de uma orquestração autoritária na qual, talvez, apenas um membro dite as regras.  Para combater isso, o serviço de solicitação é gerenciado comunitariamente pelos membros da rede e as implementações de governança são aplicadas em conjunto.  Por outras palavras, as decisões são tomadas coletivamente, NÃO unilateralmente. Todos os membros têm uma participação na rede e, por extensão, têm um voto em quaisquer operações que configurem e customizem sua posição na rede.  Essas noções de "democracia" e decisões tomadas em conjunto são os blocos de construção inerentes para uma rede confiável e descentralizada. A IBM serve como o "operador" do serviço de solicitação para quaisquer redes que são implementadas no IBM Blockchain Platform.
 
-O {{site.data.keyword.blockchainfull_notm}} Platform é suportado pelo Hyperledger Fabric, que é uma tecnologia de “blockchain com permissão“.  Portanto, todos os membros são inscritos na rede com um certificado que lhes concede permissões para usar a rede como um **provedor** de serviços (ou seja, emitir certificados, validar/ordenar transações) ou **consumidor** (ou seja, emitir transações).   
+- **Autoridade de certificação** – Emitindo certificados para os participantes  
+  Simplificando, a Autoridade de Certificação (CA) fornece a associação.  Todas as entidades na rede (peers, solicitantes, clientes etc.) deve ter uma identidade para se comunicar, autenticar e, finalmente, transacionar. Essas “identidades“ existem na forma de certificados x509 (ou seja, certificados de inscrição), que são necessários para qualquer participação direta na rede de blockchain.  Também há formas de participação indireta, mas vamos falar sobre isso mais tarde.  A CA pode ser mais bem entendida como o carimbo que fornece atestado e credibilidade às identidades.  Cada membro possui sua própria autoridade de certificação e, por meio dela, ele pode assinar certificados não apenas para os seus recursos de propriedade total (peers), mas também para clientes e aplicativos de terceiros. Você pode comparar a CA de um membro a uma caneta especial ou a um carimbo do tabelião.  Um certificado de que essas assinaturas de autoridade de certificação são um pré-requisito para acessar a rede.
 
-- **Provedores - Nós confiamos nos membros** - Uma rede de blockchain é desenvolvida pelos seus membros.   Para tornar uma rede de blockchain operacional, precisa haver um conjunto mínimo de membros *fornecendo* serviços de blockchain básicos, incluindo validação de transação, solicitação de transação e serviços de gerenciamento de certificado.  Executando esses serviços, esses membros se tornam mantenedores da integridade do livro razão compartilhado no epicentro da rede de blockchain.  Então, de quantos membros você precisa para tornar um blockchain operacional? A resposta é: depende do requisito de confiança da rede.   Algumas redes toleram um modelo de confiança mais centralizado que requer menos membros servindo como provedores.  Outras redes requerem um conjunto de membros mais diversificado (isto é, entidades separadas legalmente) e mantêm um modelo de confiança mais descentralizado.  Um exemplo de um modelo de confiança mais centralizado seria uma rede de visibilidade da cadeia de suprimento cujos membros de fornecimento são um varejista global, uma companhia de navegação global e a IBM.  Nesse caso, esses três membros agiriam como a “base de confiança“ para a rede, fornecendo os serviços básicos da rede de blockchain.   Esses membros podem emitir certificados para importadores, exportadores, agentes customizados e varejistas, de modo que eles possam participar (emitir transações) da rede.   Esta rede pode descentralizar a confiança, permitindo que mais membros participem do fornecimento de serviços básicos, garantindo, assim, que todos os membros tenham controle, mas nenhum membro único tenha controle exclusivo.    Uma rede típica terá cerca de 10 membros, que fornecem serviços de blockchain de base.
+- **Peer** – Validando/endossando transações  
+  O peer existe para executar duas funções principais: executar/validar transações e manter livros-razão. O peer executa contratos inteligentes e é o portador da história da transação e do estado atual de ativos nos canais da rede.  No final do dia, basta acessar o peer (direta ou indiretamente) e executar leituras e gravações com relação ao livro-razão. Quando um membro fornece um acesso de usuário à rede, ele realmente está fornecendo acesso à funcionalidade do peer.
 
-- **Consumidores - Confiança estabelecida, agora é só chamar** - Com uma base de confiança estabelecida, a rede está pronta para crescer.  É muito comum que a maioria dos membros em sua rede esteja simplesmente usando a rede para chamar transações no livro razão distribuído.  Esses membros são simplesmente *consumidores* e não estão participando do fornecimento de serviços básicos à rede.  Uma rede típica terá cerca de 10 a 100 membros com a permissão para emitir transações dentro de uma rede de blockchain especificada.
+Quando um membro se associa a uma rede por meio do {{site.data.keyword.blockchainfull_notm}} Platform, a emissão padrão é um Peer e uma CA.  Para uma rede de produção, os membros desejarão executar várias instâncias desses serviços para assegurar a disponibilidade. Por padrão, a IBM executa o Serviço de solicitação para redes que o {{site.data.keyword.blockchainfull_notm}} Platform cria.  
+
+## Participando de uma rede de blockchain
+
+O termo **participante** é a classificação mais ampla para qualquer organização, indivíduo, aplicativo ou dispositivo que interage com a rede de blockchain. Sob o guarda-chuva "participante", há dois agrupamentos distintos, ou seja, **membros** e **usuários**.   
+
+Em termos práticos, um membro possui um certificado digital válido, que permite que ele emita e/ou valide transações em uma rede de blockchain.  Um usuário não tem um certificado, mas ele ainda pode interagir com a rede de blockchain por meio de um dos membros de rede existentes.   Você pode considerar um certificado do membro como seu “cartão de sócio“ para um clube de ginástica.  Os usuários não podem ter tal cartão de associação, mas eles podem entrar no clube de ginástica como os "guests" de um membro existente. Vamos ver essas funções um pouco mais de perto.
+
+### Membros
+
+O {{site.data.keyword.blockchainfull_notm}} Platform é suportado pelo Hyperledger Fabric, que é uma tecnologia de "blockchain com permissão". Portanto, todos os membros são inscritos na rede com um certificado que lhes concede permissões para usar a rede como um serviço **provedor** (ou seja, emitir certificados, validar/pedir transações) ou **consumidor** (ou seja, emitir transações).   
+
+- **Provedores - Nós confiamos nos membros** - Uma rede de blockchain é desenvolvida pelos seus membros.   Para tornar uma rede de blockchain operacional, precisa haver um conjunto mínimo de membros que *forneça* serviços de blockchain fundamentais, incluindo validação de transação, solicitação de transação e serviços de gerenciamento de certificado. Executando esses serviços, esses membros se tornam mantenedores da integridade do livro-razão compartilhado no epicentro da rede de blockchain.  Então, de quantos membros você precisa para tornar um blockchain operacional? A resposta é: depende do requisito de confiança da rede. Algumas redes toleram um modelo de confiança mais centralizado que requer menos membros para servir como provedores. Outras redes requerem um conjunto de membros mais diversificado (ou seja, entidades separadas legalmente) e mantêm um modelo de confiança mais descentralizado. Um exemplo de um modelo de confiança mais centralizado seria uma rede de visibilidade da cadeia de suprimento cujos membros de fornecimento são um varejista global, uma companhia de navegação global e a IBM. Nesse caso, esses três membros agiriam como a “base de confiança“ para a rede, fornecendo os serviços básicos da rede de blockchain.   Esses membros podem emitir certificados para importadores, exportadores, agentes customizados e varejistas, de modo que eles possam participar (emitir transações) da rede. Esta rede pode descentralizar a confiança, permitindo que mais membros participem do fornecimento de serviços básicos, e, portanto, garantindo que todos os membros tenham controle, mas nenhum membro único tenha controle exclusivo. Uma rede típica tem cerca de 10 membros que fornecem serviços de blockchain de base.
+
+- **Consumidores - A confiança é estabelecida, agora chame à distância** - Quando uma base de confiança é estabelecida, a rede está pronta para crescer. É comum que a maioria dos membros em sua rede esteja simplesmente usando a rede para chamar transações com relação ao livro-razão distribuído. Esses membros são simplesmente *consumidores* e não estão participando do fornecimento de serviços básicos à rede.  Uma rede típica tem em torno de 10 a 100 membros com a permissão para emitir transações dentro de uma rede de blockchain especificada.
 
 
 #### Membros personas
- 
-Às vezes é útil pensar nos membros como uma persona que descreve a função do membro na rede de negócios.  Aqui estão alguns que são frequentemente usados.
- 
-- **Inicializador** – Um membro que foi selecionado por outros membros para autoinicializar a rede de Blockchain.    O IBM Blockchain Platform requer que um único membro se conecte a ele e execute tarefas para iniciar a rede.  Elas incluem nomenclatura da rede, convite do conjunto de membros inicial e configuração do conjunto padrão de políticas de operação de rede.  Esta é uma função temporária.  Assim que a rede é reinicializada, o inicializador não retém privilégios especiais e simplesmente retoma a função de membro.  
 
-- **Mantenedor** – Um membro que está executando um ou mais peers e CAs de rede.   Esses membros estão mantendo a integridade do livro razão distribuído pela participação no processo de consenso, que é como as transações são validadas em uma rede de blockchain.   O mantenedor, por meio da propriedade de uma CA, também tem a capacidade de emitir certificados aos participantes e conceder-lhes acesso à rede. 
- 
-- **Operador** – Um membro que está executando serviços em nome de outros membros de rede, incluindo o serviço de solicitação de transação, as autoridades de certificação, os gateways de transação e outros serviços de rede básicos.  Por padrão, a IBM é o operador de redes implementadas no IBM Blockchain Plataform.
- 
-- **Auditor** – Um membro que recebeu permissões pela rede para executar funções de auditoria na rede.  Exemplos de funções de auditoria incluem faturamento, rastreamento de conformidade ou analítica.  A função de auditor geralmente se traduz no membro tendo acesso a uma visualização mais ampla das transações no livro razão e/ou uma inscrição mais ampla em canais de transação.
+Às vezes é útil pensar nos membros como uma persona que descreve a função do membro na rede de negócios.  Aqui estão alguns que são frequentemente usados.
+
+- **Iniciador** - Um membro que outros membros selecionam para autoinicializar a rede de Blockchain. O IBM Blockchain Platform requer que um único membro se conecte a ele e execute tarefas para iniciar a rede.  Elas incluem nomenclatura da rede, convite do conjunto de membros inicial e configuração do conjunto padrão de políticas de operação de rede.  Esta é uma função temporária.  Após a rede ser reinicializada, o inicializador não reterá privilégios especiais e simplesmente continuará a função de membro.  
+
+- **Mantenedor** - Um membro que está executando um ou mais peers e autoridades de certificação de rede. Esses membros estão mantendo a integridade do livro-razão distribuído pela participação no processo de consenso, que é como as transações são validadas em uma rede de blockchain.   O mantenedor, por meio da propriedade de uma autoridade de certificação, também pode emitir certificados aos participantes e conceder-lhes acesso à rede.
+
+- **Operador** - Um membro que está executando serviços em nome de outros membros de rede, incluindo o serviço de solicitação de transação, as autoridades de certificação, os gateways de transação e outros serviços de rede básicos. Por padrão, a IBM é o operador de redes que são implementadas no IBM Blockchain Platform.
+
+- **Auditor** - Um membro que tem permissões concedidas pela rede para executar funções de auditoria na rede. Exemplos de funções de auditoria incluem faturamento, rastreamento de conformidade ou analítica. A função de auditor geralmente se traduz no membro que tem acesso a uma visualização mais ampla das transações no livro-razão e/ou uma inscrição mais ampla em canais de transação.
 
 ### Usuários
 
-Embora possa haver centenas de membros em uma rede de blockchain, pode haver milhares de usuários.   Um usuário é um participante em uma rede de blockchain que tem acesso indireto ao livro razão por meio de um “relacionamento de confiança“ com um membro existente.  Por exemplo, é comum para alguns aplicativos móveis implementar sua própria autenticação do usuário e o esquema de autorização (OAuth, OpenID) e mapear essas credenciais para um ou mais membros credenciados em uma rede de blockchain.    Um serviço de proxy ou de gateway normalmente é criado para executar essa função de mapeamento, mapeando, assim, o mundo exterior para o mundo do blockchain.
-
-## Serviços de rede básicos 
-
-Para tornar um blockchain operacional, os membros formam uma base de confiança, executando um ou mais serviços de rede básicos: 
-
-- **Serviço de solicitação** – Solicitando e sincronizando transações  
-  Essencialmente, o serviço de solicitação é a definição da rede.  Ele contém informações de identidade para cada membro, informações sobre canais e um conjunto de políticas que ditam quais membros têm permissão para executar determinadas tarefas (por exemplo, convidar outros membros, criar canais, etc.). Cada operação de transação e configuração fluirá por meio do serviço de solicitação, portanto, ele é uma parte mais do que crítica no esquema geral das coisas.  Dada a importância fundamental do serviço de solicitação, é fácil ver os perigos de uma orquestração autoritária na qual, talvez, apenas um membro dite as regras.  Para combater isso, o serviço de solicitação é gerenciado comunitariamente pelos membros da rede e as implementações de governança são aplicadas em conjunto.  Por outras palavras, as decisões são tomadas coletivamente, NÃO unilateralmente. Todos os membros têm uma participação na rede e, por extensão, têm um voto em quaisquer operações que configurem e customizem sua posição na rede.  Essas noções de “democracia“ e decisões tomadas em conjunto são os blocos de construção inerentes para uma rede confiável e descentralizada.  A IBM serve como o "operador" do serviço de solicitação para quaisquer redes implementadas no IBM Blockchain Plataform.
- 
-- **Autoridade de certificação** – Emitindo certificados para os participantes  
-  Simplificando, a Autoridade de Certificação (CA) fornece a associação.  Todas as entidades na rede (peers, solicitantes, clientes, etc.) devem ter uma identidade para se comunicar, autenticar e, por fim, transacionar. Essas “identidades“ existem na forma de certificados x509 (ou seja, certificados de inscrição), que são necessários para qualquer participação direta na rede de blockchain.  Também há formas de participação indireta, mas vamos falar sobre isso mais tarde.  A CA pode ser mais bem entendida como o carimbo que fornece atestado e credibilidade às identidades.  Cada membro possui sua própria CA e, por meio dessa CA, ele pode assinar certificados não apenas para seus componentes de propriedade (peers), mas também para clientes e aplicativos de terceiros.  Você pode comparar a CA de um membro a uma caneta especial ou a um carimbo do tabelião.  Um certificado assinado por essa CA é pré-requisito para acessar a rede.
- 
-- **Peer** – Validando/endossando transações  
-  O peer existe para executar duas funções principais: executar/validar transações e manter livros razão.  O peer executa contratos inteligentes e é o portador da história da transação e do estado atual de ativos nos canais da rede.  No final do dia, é só acessar o peer (direta ou indiretamente) e executar leituras e gravações no livro razão. Quando um membro fornece um acesso de usuário final à rede, ele está de fato fornecendo acesso à funcionalidade do peer.
-
-Quando um membro se associa a uma rede por meio do {{site.data.keyword.blockchainfull_notm}} Platform, a emissão padrão é um Peer e uma CA.  Para uma rede de produção, os membros desejarão executar várias instâncias desses serviços para assegurar a disponibilidade. Por padrão, a IBM executa o Serviço de Solicitação para redes criadas pelo {{site.data.keyword.blockchainfull_notm}} Platform.  
+Embora possa haver centenas de membros em uma rede de blockchain, pode haver milhares de usuários. Um usuário é um participante em uma rede de blockchain que tem acesso indireto ao livro-razão por meio de um “relacionamento de confiança“ com um membro existente.  Por exemplo, é comum para alguns aplicativos móveis implementar sua própria autenticação do usuário e o esquema de autorização (OAuth, OpenID) e mapear essas credenciais para um ou mais membros credenciados em uma rede de blockchain.    Um serviço de proxy ou de gateway normalmente é criado para executar essa função de mapeamento para mapear o mundo externo para o mundo do blockchain.
 
 ## O {{site.data.keyword.blockchainfull_notm}} Platform
 
-O {{site.data.keyword.blockchainfull_notm}} Platform fornece uma rede de blockchain altamente segura e com permissões na qual os membros autenticados podem definir ativos facilmente e criar as soluções de negócios para modificar e trocá-los.  Inicializar uma rede de blockchain no nível de produção não é mais um processo tedioso e complicado. Com o {{site.data.keyword.blockchainfull_notm}} Platform você pode aproveitar uma estrutura de orquestração que permite **organizar seu consórcio em uma rede de blockchain ativa no momento do registro**. Fornecemos um conjunto de ferramentas apto para consórcio projetado para facilitar a reunião de várias instituições e a criação de uma rede controlada democraticamente. As tarefas de criação, governança e gerenciamento da rede se tornam intuitivas e transparentes por meio de um monitor de painel integrado e de utilitários provisionados. Em vez de passar pelo processo complicado de criar uma rede e implementar a governança, os membros do consórcio podem **focar na implementação de contratos inteligentes e transferência de ativos e informações**.      
+O {{site.data.keyword.blockchainfull_notm}} Platform fornece uma rede de blockchain altamente segura e com permissões na qual os membros autenticados podem definir ativos facilmente e criar as soluções de negócios para modificar e trocá-los.  Inicializar uma rede de blockchain no nível de produção não é mais um processo tedioso e complicado. Com o {{site.data.keyword.blockchainfull_notm}} Platform, é possível aproveitar uma estrutura de orquestração que permite **organizar o seu consórcio em uma rede de blockchain ativa em tempo recorde**. O {{site.data.keyword.blockchainfull_notm}} Platform fornece consórcio amigável de ferramentas que é projetado para facilitar a reunião de múltiplas instituições para unir e criar uma rede controlada democraticamente. A criação, governança e tarefas de operação da rede se tornam intuitivas e transparentes por meio de um monitor de painel integrado e de utilitários provisionados. Em vez de passar pelo processo complicado de criar uma rede e implementar a governança, os membros do consórcio podem **focar na implementação de contratos inteligentes e transferência de ativos e informações**.      
 {:shortdesc}
 
-A **Alta Disponibilidade** para os componentes integrais da rede (peers, serviço de ordenação, Autoridade de Certificação, chaincode) elimina os efeitos paralisantes que podem surgir de pontos únicos de falha. Um monitor de painel integrado permite o fácil gerenciamento desses componentes e fornece um mecanismo poderoso para visualizar os ativos e contratos inteligentes.
+A **Alta disponibilidade** para os recursos integrais da rede (peers, serviço de solicitação, Autoridade de Certificação, chaincode) elimina os efeitos incapacitantes que podem surgir de pontos únicos de falha. Um monitor de painel integrado permite o fácil gerenciamento desses recursos e fornece um mecanismo poderoso para visualizar os ativos e contratos inteligentes.
 
-A **modularidade** da arquitetura do Hyperledger Fabric V1.0 e a separação distinta de funções de rede fornecem uma infraestrutura que permite a escalabilidade e a adaptabilidade para uma ampla variedade de casos de uso. 
+A **modularidade** da arquitetura do Hyperledger Fabric e a separação distinta de funções de rede (endossante, responsável, solicitante) fornecem uma infraestrutura que permite a escalabilidade e a adaptabilidade para uma ampla variedade de casos de uso.
 
-As verificações e os saldos que ocorrem em todo o ciclo de vida de uma transação asseguram resultados consistentes e completamente avaliados; e os livros razão permanecem constantemente sincronizados por meio de uma implementação do protocolo baseado em boato conhecido. A identidade e o controle de acesso são impingidos facilmente por meio das operações de **assinatura/verificação** que ocorrem permanentemente em toda a rede.  
+As verificações e os saldos que ocorrem em todo o ciclo de vida de uma transação asseguram resultados consistentes e completamente avaliados e os livros-razão permanecem constantemente sincronizados por meio de uma implementação do protocolo de fofocas bem conhecido. A identidade e o controle de acesso são impingidos facilmente por meio das operações de **assinatura/verificação** que ocorrem permanentemente em toda a rede.  
 
-É fornecido um **conjunto de ferramentas de governança** para permitir que os membros administrem e gerenciem as regras de negócios críticas para suas redes. Por exemplo, você pode desejar implementar uma política que defina quantos membros de uma rede devem concordar para que um novo membro participe. Ou, talvez haja um ativo que requeira aprovação de cada participante para que uma modificação ocorra. As regras de governança são fundamentais para qualquer tipo de rede de negócios e geralmente são extremamente elaboradas. O conjunto de ferramentas de governança (por exemplo, editores de política) simplifica bastante esse processo.
+É fornecido um **conjunto de ferramentas de governança** para permitir que os membros administrem e gerenciem as regras de negócios críticas para suas redes. Por exemplo, talvez você queira implementar uma política que defina quantos membros de uma rede devem concordar para que um novo membro se associe. Ou, talvez haja um ativo que requeira aprovação de cada participante para que uma modificação ocorra. As regras de governança são fundamentais para qualquer tipo de rede de negócios e geralmente são extremamente elaboradas. O conjunto de ferramentas de controle (por exemplo, editores de política) simplifica bastante esse processo.
 
-O serviço é executado em um ambiente **altamente seguro e isolado** sem acesso externo (incluindo acesso raiz) para componentes de rede. Os dados são criptografados em andamento e em repouso e os módulos de suporte de segurança de hardware permitem que chaves digitais sejam protegidas em conformidade com os regulamentos do segmento de mercado. A virtualização de hardware é usada para executar cada nó em um ambiente isolado, protegendo dessa forma outros nós na rede contra peers com chaincode potencialmente incorreto ou malicioso. Hashing, operações de assinatura/verificação e comunicações entre componentes são acelerados graças às implementações avançadas de criptografia.
+O serviço é executado em um ambiente **altamente seguro e isolado** sem acesso externo (incluindo acesso raiz) para recursos de rede. Os dados são criptografados em andamento e em repouso e os módulos de suporte de segurança de hardware permitem que chaves digitais sejam protegidas em conformidade com os regulamentos do segmento de mercado. A virtualização de hardware é usada para executar cada nó em um ambiente isolado, protegendo, assim, outros nós na rede contra peers com chaincode potencialmente inadequado ou malicioso. O hashing, as operações de assinatura/verificação e as comunicações de nó para nó são acelerados graças às implementações avançadas de criptografia.
 
-Antes de continuar, vamos dar uma olhada em uma configuração simples dentro do {{site.data.keyword.blockchainfull_notm}} Platform.  A **Figura 1** mostra um exemplo de uma rede de blockchain implementada que consiste em quatro membros (cada um possui dois peers), uma Autoridade de Certificação responsável por distribuir o material de identidade criptográfico e um serviço de solicitação que define políticas e participantes de rede. O canal azul contém todos os quatro membros de rede, ao passo que o canal amarelo é restrito a somente três membros: os Bancos B, C e D. Também podemos observar que o Banco A exerceu a função de inicializador de rede e que o Banco D existe somente como um membro no contexto do canal amarelo. Finalmente, um usuário final ou aplicativo em posse de um certificado x509 devidamente assinado é capaz de enviar chamadas para peers na rede. Conforme mencionado anteriormente, é bem possível que um usuário final não saiba sobre a existência da rede de blockchain.
+Antes de continuar, vamos dar uma olhada em uma configuração simples dentro do {{site.data.keyword.blockchainfull_notm}} Platform. A **Figura 1** mostra um exemplo de uma rede de blockchain implementada que consiste em quatro membros (cada um possui dois peers), uma Autoridade de certificação que é responsável por distribuir o material de identidade criptográfico e um serviço de solicitação que define políticas e participantes de rede. O canal azul contém todos os quatro membros de rede, enquanto que o canal amarelo é restrito a somente três membros: os Bancos B, C e D. Também é possível ver que o Banco A exerceu a função de inicializador de rede e que o Banco D existe somente como um membro no contexto do canal amarelo. Finalmente, um usuário ou aplicativo em posse de um certificado x509 devidamente assinado é capaz de enviar chamadas para peers na rede. Conforme mencionado anteriormente, é bem possível que um usuário nem mesmo saiba sobre a existência da rede de blockchain.
 
 ![Rede de Blockchain](images/blockchain_network_2-01.png "Exemplo de rede de blockchain")
 
-*Figura 2. Uma rede de blockchain de exemplo consiste em quatro membros que alavancam canais para isolar dados*
+*Figura 1. Uma rede de blockchain de exemplo consiste em quatro membros que alavancam canais para isolar dados*
 
 ## Ofertas de Associação da {{site.data.keyword.IBM_notm}}
 
-A tabela a seguir resume as opções de associação atuais e futuras.  [Plano Corporativo](enterprise_plan.html) é a opção de associação que está atualmente disponível.
+A tabela a seguir resume as opções de associação atuais e futuras.  
 
-|       | Entrada      | [Corporativo](enterprise_plan.html)  | Corporativo Plus | Autogerenciado
+|       | [Starter Plan](starter_plan.html)      | [Enterprise Plan](enterprise_plan.html)  | Plano corporativo plus | Plano autogerenciado
 | ------------------------- |--------------------------|-----|-----|------|
-| **O que está incluído** | Níveis básicos de serviço | **Níveis de serviço avançados, prontos para produção corporativa** | Computação dedicada para desempenho e isolamento | Pilha de software para instalar em sua própria infraestrutura + conectar-se a uma rede hospedada nesse serviço de nuvem |
-| **Política de faturamento** | Encargos por hora | **Assinatura mensal** | Assinatura mensal | Assinatura mensal |
-| **Disponibilidade** | Em breve | **Disponível agora** | Em breve | Planejado para 2018 |
+| **O que está incluído** | **Níveis de serviço básico** | **Níveis de serviço avançados, prontos para produção corporativa** | Computação dedicada para desempenho e isolamento | Pilha de software para instalar em sua própria infraestrutura + conectar-se a uma rede hospedada nesse serviço de nuvem |
+| **Política de faturamento** | **Grátis para beta<!--trial of 30 days, followed by monthly charge-->** | **Assinatura mensal** | Assinatura mensal | Assinatura mensal |
+| **Disponibilidade** | **Beta** | **Disponível agora** | Após a compra | Em breve |
 
 Inscreva-se agora para participação no [{{site.data.keyword.blockchainfull_notm}}
 ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps)!
@@ -161,5 +163,5 @@ Inscreva-se agora para participação no [{{site.data.keyword.blockchainfull_not
 
 A {{site.data.keyword.IBM_notm}} oferece suporte para as soluções {{site.data.keyword.blockchain}} implementadas pela {{site.data.keyword.IBM_notm}}. Para obter mais informações sobre o Suporte {{site.data.keyword.blockchainfull_notm}}, consulte [Obtendo suporte](ibmblockchain_support.html).
 
-Para obter detalhes completos sobre todos os recursos e a funcionalidade do Hyperledger Fabric v1.0,
-consulte a [Documentação do Hyperledger Fabric ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](http://hyperledger-fabric.readthedocs.io/en/latest/).
+Para obter mais detalhes sobre todos os recursos e a funcionalidade do Hyperledger Fabric,
+veja [Documentação do Hyperledger Fabric ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](http://hyperledger-fabric.readthedocs.io/en/latest/).

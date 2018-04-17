@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017
-lastupdated: "2017-11-17"
+  years: 2017, 2018
+lastupdated: "2018-03-16"
 ---
 
 {:new_window: target="_blank"}
@@ -20,27 +20,31 @@ Es gibt mehrere Verfahren, mit denen Sie Unterstützung anfordern und Fehler im 
 {:shortdesc}
 
 
-## Unproblematische Fehler
+## Lösungen in vorhandenen Ressourcen finden
 
-Navigieren Sie zur Anzeige "Support" in Ihrem **Netzmonitor**, wie aus **Abbildung 1** hervorgeht.  So finden Sie Links zu Ressourcen mit technischen Daten und Unterstützungsinformationen.  Eine detaillierte Beschreibung der Anzeige "Support" finden Sie im Abschnitt *Support* im [Netzmonitor](v10_dashboard.html).
+Navigieren Sie zur Anzeige "Support" in Ihrem **Netzmonitor**, wie aus **Abbildung 1** hervorgeht. So finden Sie Links zu Ressourcen mit technischen Daten und Unterstützungsinformationen. Eine detaillierte Beschreibung der Anzeige "Support" finden Sie im Abschnitt *Support* im [Netzmonitor](v10_dashboard.html).
 
 ![](images/support.png "Anzeige 'Support'")
 *Abbildung 1. Anzeige 'Support'*
 
 
-## Probleme aufgrund von Softwarefehlern
+## Supportfälle einreichen
 
-Falls Sie Softwarefehler feststellen oder ein Problem nicht mit einem der obigen Verfahren lösen können, können Sie über den {{site.data.keyword.Bluemix_notm}}-Support nach den entsprechenden Antworten suchen. Klicken Sie auf den Link **Support** in der rechten oberen Ecke in Ihrer {{site.data.keyword.Bluemix_notm}}-Konsole (siehe **Abbildung 2**).  Weitere Informationen finden Sie unter [Fehlerbehebung](../../troubleshoot/troubleshoot.html){:new_window}.
+Wenn sich Ihr Problem nicht durch einen der oben genannten Wege lösen lässt, führen Sie die folgenden Schritte aus, um einen Supportfall im {{site.data.keyword.cloud_notm}} Service Portal einzureichen.
 
-![](images/bmx_support.png "Support-Link")
-*Abbildung 2. Support-Link*
-
-Wenn das Problem noch nicht gelöst werden kann, führen Sie die folgenden Schritte aus, um ein Hilfeticket abzuschicken:
-
-1. Klicken Sie auf den Link **Support** in der rechten oberen Ecke in Ihrer {{site.data.keyword.Bluemix_notm}}-Konsole (siehe Abbildung 2).
-2. Klicken Sie auf den Link **Tickets hinzufügen** in der Dropdown-Liste (siehe Abbildung 3).  
-  ![](images/bmx_addticket.png "Tickets hinzufügen")  
-  *Abbildung 3. Tickets hinzufügen*  
-3. Wählen Sie Ihre Support-Kategorie in der Anzeige "Support" aus.
-4. Geben Sie den Betreff und eine kurze Beschreibung Ihres Problems ein.  Optional können Sie Anhänge hochladen und weitere E-Mail-Adressen hinzufügen, die benachrichtigt werden sollen.  Achten Sie darauf, das Stichwort **blockchain** in Ihrer Frage zu verwenden.
-5. Klicken Sie auf die Schaltfläche **Abschicken**.  Nach einigen Minuten erhalten Sie eine E-Mail-Benachrichtigung über das Service-Ticket, das für Ihre Anfrage geöffnet wurde.  Befolgen Sie die Anweisungen in der E-Mail, um die weitere Kommunikation über das Problem zu führen.
+1. Melden Sie sich beim [{{site.data.keyword.cloud_notm}} Service Portal ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://ibm.biz/ibmcloudsupport) mit Ihrer {{site.data.keyword.IBM_notm}}-ID an.
+2. Klicken Sie auf den Avatar **Hilfe anfordern** in der Mitte oder auf die Schaltfläche **Fall erstellen** rechts oben.
+3. Füllen Sie das Formular **Fall erstellen** mit Ihren Informationen mindestens in den folgenden Feldern aus.  
+    - Wählen Sie als Falltyp **technische Unterstützung** (Technical Support) aus.
+    - Wählen Sie im Feld **Konto** das Konto aus, das Sie zum Erstellen der Blockchain-Serviceinstanz verwenden.
+    - Wählen Sie im Feld **Serviceregion oder -umgebung** die Region aus, in der Sie Ihre Serviceinstanz erstellen.
+    - Wählen Sie **Blockchain** im Feld **Betroffener Service** aus.
+    - Wählen Sie **Services** für das Feld **Kategorie** aus.
+    - Geben Sie in den Feldern **Organisation angeben** und **Bereich angeben** Ihre Cloud Foundry-Organisation und den Bereich an, in denen Sie die Blockchain-Serviceinstanz erstellen. Sie finden Sie diese Informationen über die {{site.data.keyword.cloud_notm}}-Konsole.
+    - Geben Sie im Feld **Ressource angeben** Ihre Blockchain-Netz-ID an. Sie können die Netz-ID ermitteln, indem Sie auf die Schaltfläche **Verbindungsprofil** in der rechten oberen Ecke der Anzeige **Übersicht** im Netzmonitor klicken.
+    - Geben Sie im Feld **Fallzusammenfassung** eine kurze Zusammenfassung Ihres Problems ein.
+    - Beschreiben Sie im Feld **Fallbeschreibung** Ihr Problem so detailliert wie möglich. Geben Sie zum Beispiel das Rechenzentrum an, in dem Ihr Netz erstellt wurde, und beschreiben Sie die Abfolge der Schritte, die zu dem Problem geführt hat. Beachten Sie, dass Ihr Problem wahrscheinlich umso schneller gelöst werden kann, je mehr Details Sie angeben.
+4. Klicken Sie auf die Schaltfläche **Abschicken**. Nach ein paar Minuten empfangen Sie eine E-Mail-Benachrichtigung für diesen Fall.
+  
+   
+Sie finden Ihre zuvor eingereichten Fälle, indem Sie auf **Eigene Fälle** in der rechten oberen Ecke im {{site.data.keyword.cloud_notm}} Service Portal klicken. Klicken Sie auf einen Fall, um ihn zu öffnen und seinen Status zu prüfen oder um weitere Informationen bereitzustellen.

@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017
-lastupdated: "2017-09-20"
+  years: 2017, 2018
+lastupdated: "2018-03-16"
 
 ---
 
@@ -12,17 +12,21 @@ lastupdated: "2017-09-20"
 {:codeblock: .codeblock}
 {:pre: .pre}
 
-# Plan Empresarial de {{site.data.keyword.blockchainfull_notm}} Platform
+# Acerca del Plan empresarial
 
-El Plan Empresarial de {{site.data.keyword.blockchainfull}} Platform es la primera opción de pertenencia disponible para las organizaciones que quieran crear una red empresarial blockchain o unirse a una. Este plan proporciona la infraestructura clave junto con las herramientas y el soporte para desplegar con facilidad una red blockchain altamente segura lista para la producción.
+El Plan empresarial de la plataforma {{site.data.keyword.blockchainfull}} es una oferta lista para producción disponible para las organizaciones que quieran crear una red empresarial blockchain o unirse a una. Este plan proporciona la infraestructura clave junto con las herramientas y el soporte necesarios para iniciar con facilidad una red muy segura y lista para producción.
 
-Para los miembros que van a iniciar la red, IBM proporciona una interfaz gráfica de usuario para guiar al iniciador de la red a través de los pasos clave para establecer y suministrar la red. Ello incluye invitar a otros miembros y definir las reglas de gobierno. Una vez desplegada la red, hay disponible una interfaz gráfica de usuario interactiva para supervisar la actividad y el estado de la red; gestionar las actividades de red clave como nuevos despliegues de red, adición/eliminación de miembros y gestión tanto del ciclo de vida de encadenamiento como del canal; y buscar soporte técnico. Obtenga más información sobre cómo obtener [soporte](ibmblockchain_support.html).
+**Nota**: el Plan empresarial de la plataforma {{site.data.keyword.blockchainfull_notm}} proporciona un entorno de producción. Si necesita un entorno de desarrollo y pruebas, consulte [Acerca del Plan inicial](starter_plan.html).
 
-{{site.data.keyword.blockchainfull_notm}} Platform se crea con componentes clave de Hyperledger Fabric, incluyendo una entidad emisora de certificados (CA) y al menos 1 igual (máx. de 6).  IBM también proporciona un servicio de ordenación Kafka tolerante a errores de caída (CFT) para los miembros de la red. 
+Para los miembros que van a iniciar la red, IBM proporciona una interfaz gráfica de usuario para guiar al iniciador de la red a través de los pasos clave para establecer y suministrar la red. Ello incluye invitar a otros miembros y definir las reglas de gobierno. Para obtener más información, consulte [Gobierno de la red del Plan empresarial](get_start.html). Una vez desplegada la red, dispondrá de una interfaz gráfica de usuario, el supervisor de red, para supervisar la actividad y el estado de la red, gestionar las actividades de red clave (que incluyen nuevos despliegues, adición o eliminación de miembros, ciclo de vida del código de encadenamiento y gestión de canales) y buscar soporte técnico. Para obtener más información sobre el supervisor de red, consulte [Operación de la red del Plan empresarial](v10_dashboard.html).
 
-Fabric CA es la entidad emisora de certificados que se proporciona con el plan Empresarial. Se suministran dos CA intermedias por miembro, que otorgan pertenencia a la red. Mediante la CA, el miembro también puede proporcionar pertenencias (certificados) a los usuarios finales de la red.
+Regístrese ahora para ser [miembro de {{site.data.keyword.blockchainfull_notm}}![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps).
 
-Es importante comprender que, en la adición de una transacción al libro mayor, se producen tres fases:  
+La plataforma {{site.data.keyword.blockchainfull_notm}} se crea con componentes clave de Hyperledger Fabric, que incluyen una entidad emisora de certificados (CA) y al menos 1 igual (con un máximo de 6).  El Plan empresarial también proporciona un servicio de ordenación Kafka tolerante a errores de caída (CFT) para los miembros de la red.
+
+La CA de Fabric es la entidad emisora de certificados que se proporciona con el Plan empresarial. Se suministran dos CA intermedias por miembro, que otorgan pertenencia a la red. Mediante la CA, el miembro también puede proporcionar suscripciones (certificados) a los usuarios de la red.
+
+Es importante comprender que en el proceso de adición de una transacción al libro mayor intervienen tres fases:  
 1. Simulación de transacción y aprobación (igual)
 2. Ordenación (servicio de ordenación)
 3. Validación y confirmación (igual)
@@ -31,10 +35,13 @@ Los iguales de Fabric propiedad de los miembros son la interfaz o pasarela para 
 
 Además de los componentes principales de blockchain, la opción de pertenencia Empresarial proporciona una infraestructura con almacenamiento de datos y comunicaciones seguras (TLS) así como alta disponibilidad.  Aunque las redes de Fabric comparten estos recursos de infraestructura, se proporciona aislamiento en los nodos de los componentes de Fabric de una red y cada nodo se ejecuta en un contenedor Docker seguro que protege el entorno de ejecución.
 
-El único aspecto que se debe determinar es el tamaño de los iguales necesarios para la red. Esta decisión se basa en el número de canales necesarios, además de la carga por canal, el uso de memoria y el espacio en disco (almacenamiento). 
+El único aspecto que se debe determinar es el tamaño de los iguales que necesita la red. Esta decisión se basa en el número de canales necesarios, además de la carga por canal, el uso de memoria y el espacio en disco (almacenamiento).
 
-Debería utilizarse la plataforma IBM Blockchain para despliegues más estables, a nivel de producción o de casi producción. Para finalidades de pruebas, utilice el servicio IBM Container o imágenes descargables locales.
+Debe utilizar el Plan empresarial para despliegues más estables, de producción o casi de nivel de producción. Para realizar pruebas, utilice el [Plan inicial](starter_plan.html), [realice el desarrollo en IBM Container Service](https://ibm-blockchain.github.io/) o [instale imágenes de Docker localmente](http://hyperledger-fabric.readthedocs.io/en/latest/build_network.html).
 
-El plan Empresarial proporciona el servicio de ordenación y CA. La tarifa de miembro es de 1.000 $ y una tarifa por igual de 1.000 $ que está asociada a la red. Si desea disponer de alta disponibilidad (HA), debe adquirir un igual adicional para proporcionar capacidades de HA. Por ejemplo, una organización (tarifa de miembro asociada de 1.000 $) de dos iguales (1.000 $ X 2 iguales) con HA (1.000 $ X 2 iguales HA) requiere un cargo mensual de 5.000 $.
+<!--- The Enterprise plan provides the ordering service and CA. The membership fee is $1,000, and a per peer fee of $1,000 that is associated with the network. If you want to have high availability (HA), you must purchase an additional peer to provide the HA capabilities. For example, one organization (associated membership fee of $1,000) of two peers ($1,000 X 2 peers) with HA ($1,000 X 2 HA peers) requires a monthly charge of $5,000.  --->
 
-Regístrese ahora para ser [miembro de {{site.data.keyword.IBM_notm}} {{site.data.keyword.blockchainfull_notm}} ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps).
+## Precios  
+Para utilizar el Plan empresarial, los miembros de la red deben pagar 1.000 $ al mes como cuota de suscripción y otros 1.000 $ al mes por cada uno de los iguales de la red.  Las cuotas mensuales se facturan prorrateadas por día.  Por ejemplo, un miembro (cuota de suscripción asociada de 1.000 $) con dos iguales (la cuota por igual es de 1.000 $ X 2 iguales) pagaría 3.000 $ al mes.  Si el mes tiene 30 días, el miembro paga 100 $ (3.000 $/30) al día.  Tenga en cuenta que, si necesita alta disponibilidad (HA), debe doblar el número de iguales necesarios para disponer de las funciones de HA.
+
+Los miembros de la red pueden abonar su factura con sus propias cuentas de {{site.data.keyword.cloud_notm}} que contienen el espacio para crear la instancia de la red.  Si lo desea, un miembro de la red puede hacerse cargo de la factura de todos los miembros de la red.  Para obtener más información sobre cómo abonar las redes blockchain, consulte el apartado [Pago de la red](howto/pay_for_the_network.html).

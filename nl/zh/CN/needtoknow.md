@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017
-lastupdated: "2017-07-19"
+  years: 2017, 2018
+lastupdated: "2018-03-16"
 ---
 
 {:new_window: target="_blank"}
@@ -13,7 +13,7 @@ lastupdated: "2017-07-19"
 
 
 # 免责声明
-{: #etn_overview}
+{: #disclainer}
 
 **注意：**在使用任何 {{site.data.keyword.blockchainfull}} 套餐之前，必须先查看以下信息。
 
@@ -26,10 +26,7 @@ IBM 一直以来都在创新方面颇具领导能力，在 {{site.data.keyword.B
 
 ## 开放式源代码声明
 
-{{site.data.keyword.blockchainfull_notm}} on {{site.data.keyword.Bluemix_notm}} 产品套餐以 LinuxFoundation 的 Hyperledger Fabric V1.0 堆栈为基础构建。Hyperledger 项目成员（包括 IBM）将持续向 Hyperleder 伞下的各种子项目提供代码。
-所有添加项都由社区复查、审查和测试。 
-
-Hyperledger Fabric 于 2017 年 7 月 11 日宣布 V1.0 已经达到*生产级别状态*。 
+{{site.data.keyword.Bluemix_notm}} 上的 {{site.data.keyword.blockchainfull_notm}} 产品套餐以 Linux Foundation 的 Hyperledger Fabric 堆栈为基础构建。Hyperledger 项目成员（包括 IBM）将持续向 Hyperledger 伞下的各种子项目添加内容。所有添加项都由社区复查、审查和测试。
 
 ## 链代码支持声明
 
@@ -37,9 +34,9 @@ Hyperledger Fabric 于 2017 年 7 月 11 日宣布 V1.0 已经达到*生产级�
 
 1. 使用具有迭代的相关联数组（顺序在 Go 中为随机的）。
 2. 从 KVS 表中读取项目列表（不保证顺序）。
-3. 编写线程不安全链代码（可能会并行调用查询和呼叫调用）。
+3. 编写线程不安全链代码（可能会并行调用查询和调用）。
 4. 在链代码中将全局内存或高速缓存存储器替换为分类帐状态变量。
 5. 从链代码中直接访问外部服务，如数据库。
 6. 使用可能引入非确定性的库或全局变量（如使用“random”或“time”）。  
 
-此外，建议不要编写不确定的链代码，这会导致发生数据一致性和完整性风险。值得注意的是，Hyperledger Fabric 体系结构旨在通过一系列支持和验证检查来反对不确定的链代码，然而，对于不依赖于非静态全局变量（例如时间）的确定性函数，仍然强烈建议您进行编码。  
+此外，建议不要编写不确定的链代码，这会导致发生数据一致性和完整性风险。值得注意的是，Hyperledger Fabric 体系结构旨在通过一系列支持和验证检查来反对不确定的链代码。然而，对于不依赖于非静态全局变量（例如时间）的确定性函数，仍然强烈建议您进行编码。  
