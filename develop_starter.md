@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-3-16"
+lastupdated: "2018-4-16"
 
 ---
 
@@ -22,28 +22,40 @@ By using the developer environment, you can quickly model and test {{site.data.k
 
 ## Before you begin
 
-Ensure that you read the [About Starter Plan](./starter_plan.html) and [Getting started with Starter Plan](./get_start_starter_plan.html). Also ensure that you have installed the [{{site.data.keyword.blockchainfull_notm}} Platform: Develop developer environment](./develop_install.html) and created an instance of the {{site.data.keyword.blockchainfull_notm}} Platform Starter Plan following the instructions in [Govern Starter Plan network](./get_start_starter_plan.html).
+Ensure that you read the [About Starter Plan](./starter_plan.html) and [Getting started with Starter Plan](./get_start_starter_plan.html). Also ensure that you have installed the [{{site.data.keyword.blockchainfull_notm}} Platform: Develop developer environment](./develop_install.html) and created an instance of the {{site.data.keyword.blockchainfull_notm}} Platform Starter Plan following the instructions in [Govern Starter Plan network](./get_start_starter_plan.html). Ensure you have Node v8.9 or higher and npm v5.x. Lastly, you will need Composer-cli version 0.18.1. Uninstall your current version of the CLI:
+
+`npm uninstall -g composer-cli`
+
+and install version 0.18.1:
+
+`npm install -g composer-cli@0.18.1`
 
 
 ## Step One: Retrieve admin secret
 
-1. From the Starter Plan overview screen, click **Connection Profile**.
+1. From the Starter Plan overview screen, click **Connection Profile** and then download. Rename this file to 'connection-profile.json'. 
 
-2. Inside the connection profile is an **admin secret** property. Retrieve the secret and save a copy of it.
+2. Move this file to be in the same directory as your .bna file.
+
+3. Inside the connection profile, go all the way down until you see 'registrar'. Inside 'registrar', under 'enrollId' there is an **enrollSecret** property. Retrieve the secret and save a copy of it.
+
+![D8KBag](https://i.makeagif.com/media/4-12-2018/D8KBag.gif)
+
+
 
 ## Step Two: Creating a certificate authority card
 
-The secret retrieved in the preceding step will be used to create a business network card for the certificate authority (CA). The CA card will then be imported and the card will be used to exchange the **admin secret** for valid certificates from the Starter Plan certificate authority.
+The secret retrieved in the preceding step will be used to create a business network card for the certificate authority (CA). The CA card will then be imported and the card will be used to exchange the **enrollSecret** for valid certificates from the Starter Plan certificate authority.
 
-1. Using the secret noted from step one, run the following command to create the CA business network card:
+1. Using the **enrollSecret** noted from step one, run the following command to create the CA business network card:
 
-        composer card create -f ca.card -p ./config/connection-profile.json -u admin -s ${SECRET}
+        composer card create -f ca.card -p connection-profile.json -u admin -s ${enrollSecret}
 
 2. Import the card using the following command:
 
         composer card import -f ca.card -n ca
 
-3. Now that the card is imported, it can be used to exchange the **admin secret** for valid certificates from the CA. Run the following command to request certificates from the certificate authority:
+3. Now that the card is imported, it can be used to exchange the **enrollSecret** for valid certificates from the CA. Run the following command to request certificates from the certificate authority:
 
         composer identity request --card ca --path ./credentials
 
@@ -51,35 +63,15 @@ The `composer identity request` command creates a `credentials` directory that c
 
 ## Step Three: Adding the certificates to the Starter Plan instance
 
-The certificates must be added to the Starter Plan instance. For convenience, they can be added by using the {{site.data.keyword.blockchainfull_notm}} Platform API. The certificates must be added, then the peers must be stopped and restarted, and the certificates synced. The data that is required in the variables of the API calls can be retrieved from the **Connection Profile** in the Starter Plan Network Monitor.
+The certificates must be added to the Starter Plan instance. For convenience, they can be added by using the {{site.data.keyword.blockchainfull_notm}} Platform UI. The certificates must be added, then the peers must be restarted, and then the certificates must be synced on the channel. The certificate needed is the `admin-pub.pem` file that was generated from the previous command, which is in the `credentials` directory.
 
-1. Add the certificate by using the following API call:
+1. Back in the blockchain service, click on the members tab, then add certificate. Go to your `credentials` directory, and copy and paste the contents of the `admin-pub.pem` file in the certificate box. Submit the certificate and restart the peers. Note: restarting the peers takes a minute.
 
-        curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' --basic --user ${USERID}:${PASSWORD} --data-binary <body> ${API_URL}/api/v1/networks/${NETWORKID}/certificates
+![jlEb2y](https://i.makeagif.com/media/4-12-2018/jlEb2y.gif)
 
-    In the above example, the body is left blank, the following code is an example of the body of the API request:
+2. Next, the certificates must be synced on the channel. From our blockchain service, under ‘my network’ click on ‘Channels’ and then the three-dot button. Then click ‘Sync Certificate’.
 
-        {
-        "msp_id": "ExamplePeerOrg1",
-        "adminCertName": "exampleAdminCert1",
-        "adminCertificate": "-----BEGIN CERTIFICATE-----\nMIIBkzCCATqgAwIB...",
-        "peer_names": [
-          "example-fabric-peer-1234a"
-        ],
-        "SKIP_CACHE": true
-        }
-
-2. Stop the peers by using the following API call:
-
-        curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' --basic --user ${USERID}:${PASSWORD} --data-binary '{}' ${API_URL}/api/v1/networks/${NETWORKID}/nodes/${PEER}/stop
-
-3. Restart the peers by using the following API call:
-
-        curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' --basic --user ${USERID}:${PASSWORD} --data-binary '{}' ${API_URL}/api/v1/networks/${NETWORKID}/nodes/${PEER}/start
-
-4. Synchronize the certificates by using the following API call:
-
-        curl -X GET --header 'Content-Type: application/json' --header 'Accept: application/json' --basic --user ${USERID}:${PASSWORD} ${API_URL}/api/v1/networks/${NETWORKID}/nodes/status
+![E-sVV5](https://i.makeagif.com/media/4-12-2018/E-sVV5.gif)
 
 ## Step Four: Creating an admin business network card
 
@@ -87,7 +79,7 @@ Now that the correct certificates have been synced with the peers, business netw
 
 1. Create an admin card with the channel admin and peer admin roles by using the following command:
 
-        composer card create -f adminCard.card -p ./config/connection-profile.json -u admin -c ./credentials/admin-pub.pem -k ./credentials/admin-priv.pem --role PeerAdmin --role ChannelAdmin
+        composer card create -f adminCard.card -p connection-profile.json -u admin -c ./credentials/admin-pub.pem -k ./credentials/admin-priv.pem --role PeerAdmin --role ChannelAdmin
 
     This card will be used to deploy a business network to Starter Plan.
 
@@ -103,18 +95,23 @@ Next, the card created in the previous step can be used to install and start a b
 
         composer runtime install -c adminCard -n vehicle-manufacture-network
 
-2. Start the business network with the following command:
+2. Start the business network with the command below. If you get an error, wait a minute and try again.
 
         composer network start -c adminCard -a vehicle-manufacture-network.bna -A admin -C ./credentials/admin-pub.pem -f delete_me.card
 
 3. Delete the business network card called `delete_me.card`.
 
-4. Create a new business network card and reference the certificates that are retrieved earlier with the following command"
+4. Create a new business network card and reference the certificates that are retrieved earlier with the following command:
 
-        composer card create -n vehicle-manufacture-network -p ./config/connection-profile.json -u admin -c ./credentials/admin-pub.pem -k ./credentials/admin-priv.pem
+        composer card create -n vehicle-manufacture-network -p connection-profile.json -u admin -c ./credentials/admin-pub.pem -k ./credentials/admin-priv.pem
 
 5. Import the business network card with the following command:
 
         composer card import -f ./admin@vehicle-manufacture-network.card
 
-The business network is now deployed to the Starter Plan instance.
+The business network is now deployed to the Starter Plan instance. You can now view your chaincode logs from your installed business network. Back in your blockchain instance, you can go into channels, click on 'defaultchannel' or what what you named you channel
+And then on the small '>' symbol. Then, under 'Actions', clock on the three-dot symbol
+and 'view details'. This is your chaincode log. You will be able to see all relevant details for 
+your business network here. Congrats!
+
+![fN-Yuj](https://i.makeagif.com/media/4-13-2018/fN-Yuj.gif)
