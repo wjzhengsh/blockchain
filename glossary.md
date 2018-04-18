@@ -49,6 +49,9 @@ The Connection profile is visible in the "Overview" screen of the Network Monito
 ## Consensus
 A collaborative process to keep the ledger transactions synchronized across the network. Consensus ensures that ledgers are updated only when the appropriate participants approve transactions, and that ledgers are updated with the same transactions in the same order. There are many different algorithmic ways of achieving consensus.
 
+## Current state
+The current state of the ledger represents the latest values for all keys that are ever included in its chain transaction log. Because current state represents all latest key values known to the channel, it is sometimes referred to as World State. Chaincode executes transaction proposals against current state data. The current state changes every time when the value of a key changes or a new key is added. The current state is critical to a transaction flow because the latest key-value pair must be known before it can be changed. Peers commit the latest values to the current state of the ledger for each valid transaction in a block.
+
 ## Dynamic membership
 A member can be dynamically added to the network by a user with **registrar** privilege. Members are also assigned roles and attributes, which control their access and authority on the network. Neither roles nor attributes can be assigned dynamically though. Hyperledger Fabric supports the addition or removal of members, peers, and ordering service nodes, without compromising the operations of the overall network. Dynamic membership is critical when business relationships adjust and entities need to be added or removed for various reasons.
 
@@ -126,3 +129,6 @@ The mechanism that participants on the blockchain network use to interact with a
 
 ## User
 A user is a participant in a blockchain network that has indirect access to the ledger through a trust relationship to an existing member.
+
+## World state
+See [Current state](#current-state).
