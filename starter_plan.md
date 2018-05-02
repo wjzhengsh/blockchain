@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-03-16"
+lastupdated: "2018-05-02"
 
 ---
 
@@ -74,12 +74,27 @@ The monthly fees are prorated and billed daily. For example, a member with basic
 Network members can pay their bill with their own {{site.data.keyword.cloud_notm}} accounts that contain the space to create the network instance.  Alternatively, one network member can cover the bill for all members in the network.  For more details about how to pay for the blockchain networks, see [Paying for the network](howto/pay_for_the_network.html).
 -->
 
-## Need to know
+## Starter Plan considerations
+{: #considerations}
 
-- Starter Plan is an entry point to {{site.data.keyword.blockchainfull_notm}} Platform and it is different from Enterprise Plan in the following ways:
+Starter Plan is an entry point to {{site.data.keyword.blockchainfull_notm}} Platform and is for developing and testing purpose.  Check the following items before you use Starter Plan.
+
+- **Differences from Enterprise Plan**
     - [CA](glossary.html#ca) and [ordering service](glossary.html#orderer) are not fault tolerant because each organization has only one CA and a network has only one [orderer](glossary.html#orderer).
     - Ordering service uses only [SOLO](glossary.html#SOLO) [consensus](glossary.html#consensus). A Starter Plan network consists of only one [orderer](glossary.html#orderer) that performs consensus for all peers.
     - [Hardware Security Module (HSM)](glossary.html#hsm) is not available to safeguard and manage digital keys for strong authentication and crypto processing.
-- Starter Plan maintenance and network updates are performed on a fixed schedule. During the maintenance period, you cannot provision new networks and might notice brief periods of network interruption.
-- Starter Plan does not guarantee data retention with release upgrades, including moving from Beta to GA.
-- Migrating the data from a Starter Plan network to other membership options is not currently supported. However, it is possible to migrate `.bna` files, chaincode, and applications that were tested on Starter Plan. For more information, see [Migrating from Starter Plan to Enterprise Plan](get_start_starter_plan.html#migrate).
+- **Network resource limitation**  
+    Starter Plan assigns 1 CPU, 2GB RAM, and 20Gi storage of hardward constantly for each {{site.data.keyword.cloud_notm}} service instance. If you add more network resources to the same network, your resources share the hardware assignments. However, when you invite a member to join the network, the member creates a new service instance. Therefore, Starter Plan assigns another set of 1 CPU, 2GB RAM, and 20Gi storage hardware to the new member.
+- **Inactive network deletion**  
+    After you create a Starter Plan (Beta) network, if you don't visit the network or issue any transaction on it for 15 days, {{site.data.keyword.blockchainfull_notm}} Platform will delete the network. 
+    - If you don't need the network any more, you don't need to take any action and your network will be deleted automatically.
+    - If you still need to use the network, you can keep it active by issuing transactions on it. You can find your Starter Plan (Beta) network in your [{{site.data.keyword.cloud_notm}} Dashboard ![External link icon](images/external_link.svg "External link icon")](https://console.bluemix.net/dashboard/apps/){:new_window}. If you don't have regular trasanctions to issue, follow the [instructions](howto/prebuilt_samples.html#deploying-sample-applications-in-starter-plan) to try the sample applications.
+- **Maintenance and upgrade**
+    Starter Plan maintenance and network updates are performed on a fixed schedule. During the maintenance period, you cannot provision new networks and might notice brief periods of network interruption.
+- **Data retention**
+    Starter Plan does not guarantee data retention with release upgrades, including moving from Beta to GA.
+- **Migration considerations**
+    - Migrating the data from a Starter Plan network to other membership plans is not currently supported. However, it is possible to migrate `.bna` files, chaincode, and applications that were tested on Starter Plan. For more information, see [Migrating from Starter Plan to Enterprise Plan](get_start_starter_plan.html#migrate).
+    - Starter Plan membership plan is free during Beta.  If you want to migrate to other membership plans, for example, Enterprise Plan, you need to upgrade your {{site.data.keyword.cloud_notm}} account to a **Pay-As-You-Go** type. To upgrade your account, go to **Manage** > **Billing and Usage** > **Billing** in the {{site.data.keyword.cloud_notm}} console, and click **Add Credit Card**.
+<!--    - Starter Plan is built on Hyperledger Fabric V1.1.  If your chaincode is at Fabric V1.0 level, you need to upgrade your chaincode before you use it in Starter Plan. For more information, see [Updating chaincode for Hyperledger Fabric 1.1](knownissues.html/update-chaincode-fabric11).
+-->
