@@ -57,7 +57,7 @@ The secret retrieved in the preceding step will be used to create a business net
 
 3. Now that the card is imported, it can be used to exchange the **enrollSecret** for valid certificates from the CA. Run the following command to request certificates from the certificate authority:
 
-        composer identity request --card ca --path ./credentials
+        composer identity request --card ca --path ./credentials -u admin -s ${enrollSecret}
 
 The `composer identity request` command creates a `credentials` directory that contains certificate `.pem` files.
 
