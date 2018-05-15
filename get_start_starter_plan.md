@@ -69,7 +69,7 @@ You can create a [channel](glossary.html#channel) in your network and invite oth
 -->
 <!--
 ## Installing and instantiating your chaincode
-You can run [chaincode](glossary.html#chaincode) on your peers in the network.  For more information about deploying pre-built samples, see [Installing and instantiating a chaincode](howto/install_instantiate_chaincode.html).
+You can run [chaincode](glossary.html#chaincode) on your peers in the network.  For more information about deploying pre-built samples, see [Installing, instantiating, and updating a chaincode](howto/install_instantiate_chaincode.html).
 -->
 
 
@@ -82,8 +82,10 @@ You are on the service instance page right after you create a service instance. 
 Retrieve your service credentials with the following steps:
 1. On the service instance page, click **Service credentials** in the left navigator to show the "Service credentials" screen.
 2. Click **New credential** in the "Service credentials" screen.
-3. In the "Add new credential" screen, Give the credential a name and click **Add**. The new credential is added in the table. You can click **View credentials** under the "ACTIONS" column to view the credential details. This credential contains the API key and secret, which you can use to authorize APIs.
+3. In the "Add new credential" screen, Give the credential a name and click **Add**. The new credential is added in the table. You can click **View credentials** under the "ACTIONS" column to view the credential details. This credential contains the API key and secret, which you can use to authorize APIs.  
     If you want to see the connection profile of your network, enter **{"legacy": true}** as inline configuration parameter when you create new credentials. The connection profile contains API endpoints for your network resources, which you can use in your APIs and applications.
+
+![Retrieving network credentials](images/service_credentials.gif "Retrieving network credentials")
 
 ### Retrieving in the Network Monitor
 You can find the network credentials on the "APIs" screen in your Network Monitor. For more information about using APIs, see [Trying out APIs with Swagger](apis.html).
@@ -92,7 +94,7 @@ You can retrieve the connection profile on the "Overview" screen in your Network
 
 
 ## Deploying sample applications
-Starter Plan enables you to deploy sample applications to your network with only a few clicks. With the samples, you can easily learn how chaincodes and applications work in a network.
+Starter Plan enables you to deploy sample applications to your network with only a few clicks. With the samples, you can easily learn how chaincode and applications work in a network.
 
 For more information, see [Deploying sample applications](howto/prebuilt_samples.html).
 
@@ -108,7 +110,7 @@ If your application requests a transaction, you can view transaction status info
 
 
 ## Resetting a network
-If you want to clean your customized configurations, running chaincodes, or deployed applications, you can set your network back to the initial default configuration.  For more information, see [Reset network](dashboard.html#reset-network).
+If you want to clean your customized configurations, running chaincode, or deployed applications, you can set your network back to the initial default configuration.  For more information, see [Reset network](dashboard.html#reset-network).
 
 
 ## Migrating from Starter Plan to Enterprise Plan
@@ -118,7 +120,7 @@ You can deploy a `.bna`, chaincode, and applications that you test against a Sta
 
 If you have your business network archive file (`.bna`), follow the instructions for [deploying a business network to Enterprise Plan](./develop_enterprise.html). If you do not have your `.bna` file, use the `composer network download` command to retrieve it from the Starter Plan instance. For more information about the `composer network download` command, see [Hyperledger Composer command line documentation ![External link icon](images/external_link.svg "External link icon")](https://hyperledger.github.io/composer/reference/commands){:new_window}.
 
-Chaincodes, which are similar to `.bna` files, are developed externally. To deploy a chaincode that you test against a Starter Plan network into Enterprise, follow the instructions in [Installing and Instantiating a Chaincode](howto/install_instantiate_chaincode.html#installchaincode).
+Chaincode, which is similar to `.bna` files, is developed externally. To deploy a chaincode that you test against a Starter Plan network into Enterprise, follow the instructions in [Installing, instantiating, and updating a chaincode](howto/install_instantiate_chaincode.html#installchaincode).
 
 As you can see in [Deploying sample applications](howto/prebuilt_samples.html), Starter Plan makes it easy to get a sample application integrated with your network by using Toolchain. This setup also allows for continuous integration by automatically updating your sample application whenever your forked application repo is changed. If you want to deploy this application into an Enterprise Plan network, you can copy your forked application repo into a new repo and then follow the instructions in [Deploying sample applications manually](howto/prebuilt_samples.html#deploy_sample_applications_manually).
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-03-16"
+lastupdated: "2018-05-15"
 
 ---
 
@@ -12,7 +12,7 @@ lastupdated: "2018-03-16"
 {:codeblock: .codeblock}
 {:pre: .pre}
 
-# Trying out APIs with Swagger
+# Interacting with the network using Swagger APIs
 
 {{site.data.keyword.blockchainfull}} Platform exposes a number of REST APIs to facilitate your application development. You can test against your blockchain networks by using a Swagger UI.
 {:shortdesc}
@@ -21,6 +21,8 @@ Before you begin, you need to create a [{{site.data.keyword.blockchain}} Platfor
 
 
 ## Retrieving network credentials
+
+{: #retrieving-network-credentials}
 
 Enter the Network Monitor of your Blockchain network and open the "APIs" screen from the left navigator. You can see your network credentials for the REST APIs. You will later authorize the APIs by using the values of the "key" and "secret" displayed here, and run the APIs with the "network_id" as a parameter. Click **Show secret** to reveal the value of the secret field. Copy the values of the key, secret, and network_id fields, which you can used later in the Swagger UI.
 
@@ -37,14 +39,14 @@ Enter the Network Monitor of your Blockchain network and open the "APIs" screen 
 -->
 
 **Figure 1** shows the "APIs" screen:
-![Overview screen](../images/restAPI.png)
+![APIs screen](../images/API_screen_starter.png "APIs screen")
 *Figure 1. APIs*
 
 If you are using the Starter Plan, it is possible to switch between organizations in the Network Monitor. With the Starter Plan, two organizations are configured by default. Switching between organizations can be useful to try out the REST APIs from the perspective of each organization. To get the credentials for another organization in your network, click your username in the upper right corner of the Network Monitor console. In the menu that opens, click the drop-down arrow next to the Organization to view all Organizations. Select the organization that you would like to switch to and view the associated network credentials.
 
 **Figure 2** shows how to Switch between organizations:
-![Switching between Orgs](../images/restAPIOrganization.png)
-*Figure 2. Switching between Organizations*
+![Switching between organizations](../images/switch_orgs_starter.gif "Switching between organizations")
+*Figure 2. Switching between organizations*
 
 
 ## Authorizing Swagger APIs
@@ -59,7 +61,7 @@ In the Swagger UI, click the **Authorize** button and the authorization window p
 Using Basic Auth authentication, any credentials that you specify in the Authorize window are stored after you click the **Authorize** and then **Done** buttons and are passed on each REST api call.
 
 **Figure 3** shows the "Authorize" pop-up window:
-![Authorize pop-up window](../images/swaggerUIAuthorize.png)
+![Authorize pop-up window](../images/swaggerUIAuthorize.png "Authorize pop-up window")
 *Figure 3. Authorize pop-up window*
 
 
@@ -68,7 +70,7 @@ Using Basic Auth authentication, any credentials that you specify in the Authori
 Click the REST API you want to run and click the **Try it out** button. Enter the required parameters and click **Execute**. The REST API call runs against your network.
 
 **Figure 4** shows the "Swagger UI":
-![Swagger UI](../images/swaggerUITryItOut.png)
+![Swagger UI](../images/swaggerUITryItOut.png "Swagger UI")
 *Figure 4. Swagger UI*
 
 

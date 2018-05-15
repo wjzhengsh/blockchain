@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-03-16"
+lastupdated: "2018-05-15"
 
 ---
 
@@ -12,7 +12,7 @@ lastupdated: "2018-03-16"
 {:codeblock: .codeblock}
 {:pre: .pre}
 
-# Monitoring a {{site.data.keyword.blockchain}} network
+# Monitoring a blockchain network
 
 This tutorial shows how to view and monitor the status information of your {{site.data.keyword.blockchain}} network on {{site.data.keyword.Bluemix_short}}.
 {:shortdesc}
@@ -34,7 +34,7 @@ Enter Network Monitor and locate the channel that you want to view and monitor i
   ![Channel members](../images/channel_members.png "Channel members")  
 
 * **Chaincode**  
-  The "Chaincode" tab lists all the chaincodes that are instantiated on this channel with chaincode ID, version, and number of peers that are running the chaincode.   
+  The "Chaincode" tab lists all the chaincode that are instantiated on this channel with chaincode ID, version, and number of peers that are running the chaincode.   
 
   Expand a chaincode row to get detailed information about the chaincode:  
     * You can click **JSON** to view the JSON file of the chaincode.
@@ -45,9 +45,9 @@ Enter Network Monitor and locate the channel that you want to view and monitor i
   ![Channel chaincode](../images/channel_chaincode.png "Channel chaincode")
 
 
-## Monitoring chaincodes
+## Monitoring chaincode
 
-Enter Network Monitor and open the "Install Code" screen ("Chaincode" screen in Enterprise Plan network). If you have running chaincodes, choose a peer from the drop-down list and you can see all chaincodes for this peer in the table with chaincode IDs and versions.  You can perform installation and instantiation for your chaincode on this screen.  For more information, see [Installing and instantiating a chaincode](install_instantiate_chaincode.html).
+Enter Network Monitor and open the "Install Code" screen. If you have running chaincode, choose a peer from the drop-down list and you can see all chaincode for this peer in the table with chaincode IDs and versions.  You can perform installation and instantiation for your chaincode on this screen.  For more information, see [Installing, instantiating, and updating a chaincode](install_instantiate_chaincode.html).
 
   ![Chaincode](../images/chaincode_install_overview.png "Chaincode")
 

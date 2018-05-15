@@ -54,7 +54,7 @@ Now you successfully deploy a {{site.data.keyword.blockchain}} network that can 
 * Up to three small peers for each member  
 * A crash fault tolerant ordering service
 * Up to 150 channels
-* Up to 10 instantiations of chaincodes
+* Up to 10 instantiations of chaincode per member in Network Monitor
 
 
 ## Joining a network
@@ -80,13 +80,13 @@ If you are an invited network member, click the **Pending Invite ->** button, se
 3. Set up a channel. All members in the same channel are provisioned a channel-specific ledger, which delivers data isolation and confidentiality. For more information about how to create a channel, see [Creating a channel](howto/create_channel.html#creating-a-channel).  
     If you are a channel member who are invited to join a channel, you will receive an email notification with a link to the wizard that allows you to join the channel.
 4. Join peers to the channel.  Only peers that are associated with the channel can access its ledger. For more information, see [Channels](v10_dashboard.html#channels).
-5. Install and instantiate chaincode. All channel members need to install the same chaincode with the same name and version on every peer that will run the chaincode. After you install the chaincode, you need to instantiate it on the channel before you can use it. For more information, see [Installing and instantiating a chaincode](howto/install_instantiate_chaincode.html).  
+5. Install and instantiate chaincode. All channel members need to install the same chaincode with the same name and version on every peer that will run the chaincode. After you install the chaincode, you need to instantiate it on the channel before you can use it. For more information, see [Installing, instantiating, and updating a chaincode](howto/install_instantiate_chaincode.html).  
 
 **Note**: To achieve high availability, each organization must purchase at least two peers, and within a channel, each participating member must join at least two peers.
 
 
 ## Retrieving network credentials and connection profile
-After you create an Enterprise Plan network in {{site.data.keyword.cloud_notm}}, you can retrieve the network credentials and connection profile from the service instance page or in the Network Monitor. 
+After you create an Enterprise Plan network in {{site.data.keyword.cloud_notm}}, you can retrieve the network credentials and connection profile from the service instance page or in the Network Monitor.
 
 ### Retrieving from the service instance page
 You are on the service instance page right after you create a service instance. You can also click your service in the [{{site.data.keyword.cloud_notm}} service dashboard ![External link icon](images/external_link.svg "External link icon")](https://console.bluemix.net/dashboard/services "{{site.data.keyword.cloud_notm}} service dashboard") to open your service instance page.

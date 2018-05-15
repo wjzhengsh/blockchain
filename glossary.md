@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-03-16"
+lastupdated: "2018-05-15"
 
 ---
 
@@ -35,7 +35,7 @@ Certificate Authority. A blockchain network resource that issues certificates to
 The ledger’s chain is a transaction log structured as hash-linked blocks of transactions. Peers receive blocks of transactions from the ordering service, mark the block’s transactions as valid or invalid based on endorsement policies and concurrency violations, and append the block to the hash chain on the peer’s file system.
 
 ## Chaincode
-Also known as smart contracts, chaincodes are the pieces of software that contain a set of functions to query or update the ledger.
+Also known as smart contracts, chaincode are the pieces of software that contain a set of functions to query or update the ledger.
 
 ## Channel
 Consisting of a subset of network members who want to transact privately. Channels provide data isolation and confidentiality by allowing the members of a channel to establish specific rules and a separate ledger that only channel members can access. Peers, which are the nodes that function as transaction endpoints for organizations, are joined to channels.
@@ -48,6 +48,9 @@ The Connection profile is visible in the "Overview" screen of the Network Monito
 
 ## Consensus
 A collaborative process to keep the ledger transactions synchronized across the network. Consensus ensures that ledgers are updated only when the appropriate participants approve transactions, and that ledgers are updated with the same transactions in the same order. There are many different algorithmic ways of achieving consensus.
+
+## Current state
+The current state of the ledger represents the latest values for all keys that are ever included in its chain transaction log. Because current state represents all latest key values known to the channel, it is sometimes referred to as World State. Chaincode executes transaction proposals against current state data. The current state changes every time when the value of a key changes or a new key is added. The current state is critical to a transaction flow because the latest key-value pair must be known before it can be changed. Peers commit the latest values to the current state of the ledger for each valid transaction in a block.
 
 ## Dynamic membership
 A member can be dynamically added to the network by a user with **registrar** privilege. Members are also assigned roles and attributes, which control their access and authority on the network. Neither roles nor attributes can be assigned dynamically though. Hyperledger Fabric supports the addition or removal of members, peers, and ordering service nodes, without compromising the operations of the overall network. Dynamic membership is critical when business relationships adjust and entities need to be added or removed for various reasons.
@@ -76,6 +79,9 @@ The process of placing a chaincode on a peer’s file system. You must install t
 ## Instantiate
 The process of starting and initializing a chaincode container on a specific channel. After chaincode is installed on the Peers and every Peer has joined the channel, the chaincode must be instantiated on the channel. Instantiation performs any necessary initialization of the chaincode, which includes setting the key value pairs that comprise a chaincode's initial world state. After instantiation, peers that have the chaincode installed can accept chaincode invocations.
 
+## Kafka
+A consensus plugin implementation for Hyperledger Fabric that results in a cluster of ordering service nodes in the blockchain network. A kafka implementation is intended for a production network.
+
 ## Ledger
 Comprised of a literal "chain of blocks" that store the immutable, sequenced record of transactions, as well as a state database to maintain current state. There is one ledger per channel, and updates to it are managed by the consensus process according to the policies of a particular channel.
 
@@ -89,7 +95,7 @@ Membership Service Provider.  A set of cryptographic mechanisms and protocols fo
 An instance of an {{site.data.keyword.blockchainfull_notm}} Platform service on {{site.data.keyword.cloud_notm}}.
 
 ## Network Credentials
-Visible from the "APIs" screen of the Network Monitor. Credentials include your "key" (Username) and "secret" (Password) in the Swagger UI. You need to use these network credentials to authenticate before you try out the REST APIs. 
+Visible from the "APIs" screen of the Network Monitor. Credentials include your "key" (Username) and "secret" (Password) in the Swagger UI. You need to use these network credentials to authenticate before you try out the REST APIs.
 
 ## Network Monitor
 The GUI dashboard the {{site.data.keyword.blockchainfull_notm}} Platform provides to view and manage the blockchain network.
@@ -126,3 +132,6 @@ The mechanism that participants on the blockchain network use to interact with a
 
 ## User
 A user is a participant in a blockchain network that has indirect access to the ledger through a trust relationship to an existing member.
+
+## World state
+See [Current state](#current-state).
