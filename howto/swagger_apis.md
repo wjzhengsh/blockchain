@@ -45,7 +45,8 @@ Enter the Network Monitor of your Blockchain network and open the "APIs" screen 
 If you are using the Starter Plan, it is possible to switch between organizations in the Network Monitor. With the Starter Plan, two organizations are configured by default. Switching between organizations can be useful to try out the REST APIs from the perspective of each organization. To get the credentials for another organization in your network, click your username in the upper right corner of the Network Monitor console. In the menu that opens, click the drop-down arrow next to the Organization to view all Organizations. Select the organization that you would like to switch to and view the associated network credentials.
 
 **Figure 2** shows how to Switch between organizations:
-![Switching between organizations](../images/switch_orgs_starter.gif "Switching between organizations")
+
+![Switching between organizations](../images/switch_orgs_starter.gif "Switching between organizations")  
 *Figure 2. Switching between organizations*
 
 
@@ -60,9 +61,10 @@ In the Swagger UI, click the **Authorize** button and the authorization window p
 
 Using Basic Auth authentication, any credentials that you specify in the Authorize window are stored after you click the **Authorize** and then **Done** buttons and are passed on each REST api call.
 
-**Figure 3** shows the "Authorize" pop-up window:
-![Authorize pop-up window](../images/swaggerUIAuthorize.png "Authorize pop-up window")
-*Figure 3. Authorize pop-up window*
+**Figure 3** shows the the process to authorize Swagger APIs:
+
+![Authorize APIs](../images/swaggerUIAuthorize.gif "Authorize APIs")  
+*Figure 3. Authorize APIs*
 
 
 ## Trying out APIs
@@ -70,7 +72,8 @@ Using Basic Auth authentication, any credentials that you specify in the Authori
 Click the REST API you want to run and click the **Try it out** button. Enter the required parameters and click **Execute**. The REST API call runs against your network.
 
 **Figure 4** shows the "Swagger UI":
-![Swagger UI](../images/swaggerUITryItOut.png "Swagger UI")
+
+![Swagger UI](../images/swaggerUITryItOut.png "Swagger UI")  
 *Figure 4. Swagger UI*
 
 
