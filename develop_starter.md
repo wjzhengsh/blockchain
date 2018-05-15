@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-4-16"
+lastupdated: "2018-5-15"
 
 ---
 
@@ -14,33 +14,26 @@ lastupdated: "2018-4-16"
 {:tip: .tip}
 
 # Deploying a business network on Starter Plan
-{: #deploying-a-business-networks-on-starter-plan}
+{: #deploying-a-business-network}
 
-Business networks can be developed and deployed to a Starter Plan environment by using the {{site.data.keyword.blockchainfull}} Platform: Develop developer environment and Hyperledger Composer developer toolset.
+Business networks can be developed and deployed to a Starter Plan environment by using the {{site.data.keyword.blockchainfull}} Platform developer environment and Hyperledger Composer developer toolset.
 
 By using the developer environment, you can quickly model and test {{site.data.keyword.blockchain}} business networks and deploy them to an instance of the {{site.data.keyword.blockchainfull_notm}} Platform.
 
 ## Before you begin
 
-Ensure that you read the [About Starter Plan](./starter_plan.html) and [Getting started with Starter Plan](./get_start_starter_plan.html). Also ensure that you have installed the [{{site.data.keyword.blockchainfull_notm}} Platform: Develop developer environment](./develop_install.html) and created an instance of the {{site.data.keyword.blockchainfull_notm}} Platform Starter Plan following the instructions in [Govern Starter Plan network](./get_start_starter_plan.html). Ensure you have Node v8.9 or higher and npm v5.x. Lastly, you will need Composer-cli version 0.18.1. Uninstall your current version of the CLI:
-
-`npm uninstall -g composer-cli`
-
-and install version 0.18.1:
-
-`npm install -g composer-cli@0.18.1`
+Ensure that you read the [About Starter Plan](./starter_plan.html) and [Getting started with Starter Plan](./get_start_starter_plan.html). Also ensure that you have installed the [{{site.data.keyword.blockchainfull_notm}} Platform developer environment](./develop_install.html) and created an instance of the {{site.data.keyword.blockchainfull_notm}} Platform Starter Plan following the instructions in [Govern Starter Plan network](./get_start_starter_plan.html). Ensure you have Node v8.9 or higher, npm v5.x, and Hyperledger Composer at v0.19.x.
 
 
 ## Step One: Retrieve admin secret
 
-1. From the Starter Plan overview screen, click **Connection Profile** and then download. Rename this file to 'connection-profile.json'. 
+1. From the Starter Plan overview screen, click **Connection Profile** and then download. Rename this file to 'connection-profile.json'.
 
 2. Move this file to be in the same directory as your .bna file.
 
 3. Inside the connection profile, go all the way down until you see 'registrar'. Inside 'registrar', under 'enrollId' there is an **enrollSecret** property. Retrieve the secret and save a copy of it.
 
 ![D8KBag](https://i.makeagif.com/media/4-12-2018/D8KBag.gif)
-
 
 
 ## Step Two: Creating a certificate authority card
@@ -53,7 +46,7 @@ The secret retrieved in the preceding step will be used to create a business net
 
 2. Import the card using the following command:
 
-        composer card import -f ca.card -n ca
+        composer card import -f ca.card -c ca
 
 3. Now that the card is imported, it can be used to exchange the **enrollSecret** for valid certificates from the CA. Run the following command to request certificates from the certificate authority:
 
@@ -65,11 +58,11 @@ The `composer identity request` command creates a `credentials` directory that c
 
 The certificates must be added to the Starter Plan instance. For convenience, they can be added by using the {{site.data.keyword.blockchainfull_notm}} Platform UI. The certificates must be added, then the peers must be restarted, and then the certificates must be synced on the channel. The certificate needed is the `admin-pub.pem` file that was generated from the previous command, which is in the `credentials` directory.
 
-1. Back in the blockchain service, click on the members tab, then add certificate. Go to your `credentials` directory, and copy and paste the contents of the `admin-pub.pem` file in the certificate box. Submit the certificate and restart the peers. Note: restarting the peers takes a minute.
+1. In the Starter Plan UI, click on the **Members** tab, then **Certificates**, then **Add Certificate**. Go to your `credentials` directory, and copy and paste the contents of the `admin-pub.pem` file in the certificate box. Submit the certificate and restart the peers. Note: restarting the peers takes a minute.
 
-![jlEb2y](https://i.makeagif.com/media/4-12-2018/jlEb2y.gif)
+    ![jlEb2y](https://i.makeagif.com/media/4-12-2018/jlEb2y.gif)
 
-2. Next, the certificates must be synced on the channel. From our blockchain service, under ‘my network’ click on ‘Channels’ and then the three-dot button. Then click ‘Sync Certificate’.
+2. Next, the certificates must be synced on the channel. Click the **Channels** tab, then the **Actions** button, then **Sync Certificate** and **Submit**.
 
 ![E-sVV5](https://i.makeagif.com/media/4-12-2018/E-sVV5.gif)
 
@@ -85,19 +78,21 @@ Now that the correct certificates have been synced with the peers, business netw
 
 2. Import the card created in the previous step using the following command:
 
-        composer card import -f adminCard.card -n adminCard
+        composer card import -f adminCard.card -c adminCard
 
 ## Step Five: Installing and starting the business network
 
-Next, the card created in the previous step can be used to install and start a business network. For this guide, we'll install the vehicle manufacturing network sample. The command to start a business network will also create a card. For Starter Plan, this card must be deleted, the example command given names this card `delete_me.card` so it can be easily distinguished.
+Next, the card created in the previous step can be used to install and start a business network. For this guide, we'll install the vehicle manufacturing network sample, either use the vehicle manufacturing sample or install your own business network, but make sure to change the business network names specified in the commands. The command to start a business network will also create a card. For Starter Plan, this card must be deleted, the example command given names this card `delete_me.card` so it can be easily distinguished.
 
 1. Install the Hyperledger Composer runtime with the following command:
 
-        composer runtime install -c adminCard -n vehicle-manufacture-network
+        composer network install -c adminCard -a vehicle-manufacture-network.bna
 
-2. Start the business network with the command below. If you get an error, wait a minute and try again.
+    Note the business network version number which is returned when you run this command. It will be required in the next step.
 
-        composer network start -c adminCard -a vehicle-manufacture-network.bna -A admin -C ./credentials/admin-pub.pem -f delete_me.card
+2. Start the business network with the command below. If you get an error, wait a minute and try again. Use the version number from the last step after the `-V` option.
+
+        composer network start -c adminCard -n vehicle-manufacture-network -V 0.0.1 -A admin -C ./credentials/admin-pub.pem -f delete_me.card
 
 3. Delete the business network card called `delete_me.card`.
 
@@ -109,9 +104,14 @@ Next, the card created in the previous step can be used to install and start a b
 
         composer card import -f ./admin@vehicle-manufacture-network.card
 
-The business network is now deployed to the Starter Plan instance. You can now view your chaincode logs from your installed business network. Back in your blockchain instance, you can go into channels, click on 'defaultchannel' or what what you named you channel
-And then on the small '>' symbol. Then, under 'Actions', clock on the three-dot symbol
-and 'view details'. This is your chaincode log. You will be able to see all relevant details for 
-your business network here. Congrats!
+The business network is now deployed to the Starter Plan instance.
+
+## Step Six: Ping the business network to ensure it is running correctly
+
+1. Run the following command to ping the business network:
+
+        composer network ping -c admin@vehicle-manufacture-network
+
+To view the chaincode logs, click **Channels**, and then select your channel. Click the dropdown arrow to view the logs, or the Actions symbol to view in more detail.
 
 ![fN-Yuj](https://i.makeagif.com/media/4-13-2018/fN-Yuj.gif)

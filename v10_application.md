@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-03-16"
+lastupdated: "2018-05-15"
 
 ---
 
@@ -25,47 +25,29 @@ You need to install software prerequisites to develop applications that can inte
 
 	Git is a version control tool to familiarize yourself with, both for chaincode development and software development in general. Also, git bash, which is installed with git on Windows, is an excellent alternative to the the Windows command prompt.
 
-	Use the following command to verify your Git installation.  You should see an output similar to the below:
-	```
-	$ git --version
-	git version 2.11.1.windows.1
-	```
-	{:screen}
-
 *	GoLang ([GoLang download page ![External link icon](images/external_link.svg "External link icon")](https://golang.org/dl){:new_window})
 
-	The GoLang installation installs a set of Go CLI tools, which are very useful to write chaincode.  For example, the `go build` command allows you to check that your chaincode actually compiles before you attempt to deploy it to a network.  At time of writing, this chaincode is known to build successfully with version `1.8.3`.
-
-	Use the following command to verify your GoLang version.  You should see an output similar to the below:
-	```
-	$ go version
-	go version go1.8.3 windows/amd64
-	```
-	{:screen}
+	The GoLang installation installs a set of Go CLI tools, which are very useful to write chaincode. For example, the `go build` command allows you to check that your chaincode actually compiles before you attempt to deploy it to a network.
 
 	Follow the [Installation instructions ![External link icon](images/external_link.svg "External link icon")](https://golang.org/doc/install){:new_window} to properly set the environment variables. Check your `GOPATH` using the below command. Note that your `GOPATH` does not need to match the example, it only matters that you have this variable set to a valid directory on your file system.
+
 	```
 	$ echo $GOPATH
 	C:\gopath
 	```
-	{:screen}
 
 	You can then verify your GoLang installation by building GoLang code with the [hello world ![External link icon](images/external_link.svg "External link icon")](https://golang.org/doc/install#testing){:new_window} example.
 
-*	Node.js ([Node.js download page ![External link icon](images/external_link.svg "External link icon")](https://nodejs.org/en/download/){:new_window}).  Choose a version between 6.9.5 < 7. Node versions greater than 7 might cause errors when downloading the SDK modules.
+* Java ([Java download page ![External link icon](images/external_link.svg "External link icon")](https://java.com/en/download/){:new_window}).
 
-	Use the following commands to verify your Node.js installation.  You should see an output similar to the below:
-	```
-	$ node -v
-	v6.10.1
+*	Node.js ([Node.js download page ![External link icon](images/external_link.svg "External link icon")](https://nodejs.org/en/download/){:new_window}).
 
-	$ npm -v
-	3.10.10
-	```
-	{:screen}
+  Chaincode development is currently supported in Node.js, Go, and Java.
 
 ## Generating the client-side certificates
-We won't delve into the minutiae of x509 and public key infrastructure; there are plenty of external resources for that. Suffice it to say that communication flows in Fabric use sign/verify operations at every touchpoint. As such, any client that sends calls (that is, transactions) to the network will need to sign payloads (private key) and attach a properly signed x509 certificate for verification purposes (signed cert). The private key and signed certificate, along with an MSP identifier and the Certificate Authority (CA) root certificate make up what is referred to as the "user context" object. Again no need for extraneous details. We will simply communicate with the appropriate Certificate Authority and retrieve the keys and certs that allow for the object to be formed -- this process is referred to as "enrollment". After you form the user context object, it's as easy as calling an API from your application to "set" or "get" this user context. At this point, the application (i.e. client) is equipped with all the necessary artifacts and is ready to communicate with the network. We'll look at two approaches for retrieving the keys and certs.
+We won't delve into the minutiae of x509 and public key infrastructure; there are plenty of external resources for that. Suffice it to say that communication flows in Fabric use sign/verify operations at every touchpoint. As such, any client that sends calls (that is, ledger queries or updates) to the network will need to sign payloads and attach a properly signed x509 certificate for verification purposes. The private key and signed certificate, along with an MSP identifier and the Certificate Authority (CA) root certificate, make up what is referred to as the "user context" object.
+
+What's important here is the process of "enrollment", in which the keys and certs that allow for the object to be formed are retrieved from the appropriate CA. After you form the user context object, you can call an API from your application to "set" or "get" this user context. At this point, the application (i.e. client) is equipped with all the necessary artifacts and is ready to communicate with the network. We'll look at two approaches for retrieving the keys and certs.
 
 ### Command line
 This is the simpler of the two approaches. First, follow the instructions to build the [Fabric CA client ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric-ca.readthedocs.io/en/latest/users-guide.html). This step allows you to communicate with a CA Server and receive back properly formatted certificates and keys.
@@ -74,7 +56,7 @@ Second, download the TLS certs from IBM Cloud depending on the service plan that
 - [Root TLS Cert for Starter Plan ![External link icon](images/external_link.svg "External link icon")](https://blockchain-certs.mybluemix.net/us2.blockchain.ibm.com.cert)
 - [Root TLS Cert for Enterprise Plan ![External link icon](images/external_link.svg "External link icon")](https://blockchain-certs.mybluemix.net/3.secure.blockchain.ibm.com.rootcert)
 
-Save the contents to a folder, for example ``$HOME/tls``.  This step allows the data flowing to be encrypted on the wire.
+Save the contents to a folder, for example ``$HOME/tls``. This step allows the data flowing to be encrypted on the wire.
 
 Finally, open the **Connection Profile** JSON file from your **Overview** screen in the Network Monitor, and find the relevant variables:
 * URL for CA: ``url`` under `certificateAuthorities`
@@ -99,11 +81,11 @@ You can also find CA root certificate and admin private key in the following dir
 * The admin private key: `$HOME/.fabric-ca-client/msp/keystore/<>_sk file`
 
 ### SDK
-There are two Hyperledger repositories that contain excellent resources and scripts for understanding how to programmatically interact with a Certificate Authority. The ``fabric-samples`` repo contains the "balance transfer" example and the ``fabric-sdk-node`` repo has a series of CA Services tests. If you intend to issue your enrollment requests on the application side, then you need to fully understand the APIs that need to be exposed within the ``fabric-ca-client`` and ``fabric-client`` packages.  Use these scripts and repos as a baseline for structuring your app.
+There are a few Fabric repositories that contain excellent resources and scripts for understanding how to programmatically interact with a Certificate Authority. The ``fabric-samples`` repo contains the `balance transfer` example and the ``fabric-sdk-node`` repo has a series of CA Services tests. If you intend to issue your enrollment requests on the application side, then you need to fully understand the APIs that need to be exposed within the ``fabric-ca-client`` and ``fabric-client`` packages. Use these scripts and repos as a baseline for structuring your app.
 
-Let's take a quick look at a few key snippets from the "balance transfer" example:
+Let's take a quick look at a few key snippets from the `balance transfer` example:
 
-First, we need to create our client object and set a key/value store instance where our certs and keys will be parked. We can do this with a simple factory method -- ``newCryptoSuite`` - that extends to the ``Client`` class from ``BaseClient``. Here's a quick look at the code:
+First, we need to create our client object and set a key-value store instance where our certs and keys will be parked. We can do this with a simple factory method -- ``newCryptoSuite`` - that extends to the ``Client`` class from ``BaseClient``. Here's a quick look at the code:
 
 ```
 # <PUBLIC_PRIVATE_KEY_PATH> denotes the path on your local machine where you wish to store your key and cert
@@ -142,21 +124,22 @@ You can then upload the admin certificate to your blockchain network from the Ne
 
 ## Developing applications
 {: #developing-applications}
+
 You can develop your application in JavaScript or Java, and leverage the available APIs in the Hyperledger Fabric Client SDKs to enable interaction between your application and your network.  An application needs to include at least the following information:
 * Name and version of the chaincode to invoke.
 * API endpoint information of your network resources, including orderers, CAs, and peers.
 * Functions to query or update the ledger in the network.  If you want high availability, you need to consider node failover in your application.
 
-You can find sample applications for the **Enterprise Plan** on {{site.data.keyword.Bluemix_short}} in [Sample applications](howto/sample_applications.html).  Use these sample chaincodes and applications as a template for creating your own business solution.
+You can find sample applications for the blockchain networks on {{site.data.keyword.cloud_notm}} in [Sample applications](howto/prebuilt_samples.html).  Use these sample chaincode and applications as a template for creating your own business solution.
 
 ## Adding network API endpoints to your application
-You need to add API endpoints of your network resources to your application so that it can interact with your {{site.data.keyword.blockchain}} network on {{site.data.keyword.Bluemix_short}}.  If you don't have a {{site.data.keyword.blockchain}} network on {{site.data.keyword.Bluemix_short}}, you can create one with either Starter Plan or Enterprise Plan. For more information, see [Govern Starter Plan network](get_start_starter_plan.html) and [Govern Enterprise Plan network](get_start.html.
+You need to add API endpoints of your network resources to your application so that it can interact with your {{site.data.keyword.blockchain}} network on {{site.data.keyword.Bluemix_short}}.  If you don't have a {{site.data.keyword.blockchain}} network on {{site.data.keyword.Bluemix_short}}, you can create one with either Starter Plan or Enterprise Plan. For more information, see [Govern Starter Plan network](get_start_starter_plan.html) and [Govern Enterprise Plan network](get_start.html).
 
 You can find the API endpoints in the connection profile of your network. The connection profile is in JSON format and contain the API endpoint information and enrollIDs/secrets for your network resources, including orderer, CA, and peer nodes. Your application will interact with peers and other network resources through these API endpoints.
 
 1. Retrieve the API endpoint information of your network resources from your Network Monitor with one of the following methods:
 	* To get the API endpoint information that is specific to a chaincode, in the specific channel screen, on which the chaincode is running, locate the chaincode and click the **JSON** button.
-	![API endpoints per chaincode](images/channel_chaincode_detail.png "API endpoints per chaincode")
+	![API endpoints per chaincode](images/channel_chaincode.png "API endpoints per chaincode")
 	* To get a complete set of API endpoint information about all your network resources, click the **Connection Profile** button in the "Overview" screen.
 	![Connection Profile in Network Monitor](images/service_credentials.png "Connection Profile in Network Monitor")
 
@@ -168,13 +151,18 @@ You can find the API endpoints in the connection profile of your network. The co
                 "eventUrl": "grpcs://tor-zbc06c.3.secure.blockchain.ibm.com:13547",
                 ...
 	```
-
 	**Note**: If you want to target additional peers in the network, for example, you require endorsement from a peer that does not belong to your organization, then you need to obtain the correct API endpoint information of those peers.  You also need to store the CA cert for the other organization to verify responses that return to your application. This information is not exposed in your connection profile, therefore you must contact the appropriate admin for the CLoud Foundry Org and acquire this information in an out-of-band operation. The ordering service URL is common across the network; you don't need any member-specific information for ordering service.
 
 3. Plug the API endpoint information into a configuration file of your application as shown in the following example:
 	```
 	orderer_url: 'grpcs://fft-zbc01a.4.secure.blockchain.ibm.com:18603'
 	```
+
+## Using CouchDB indices
+
+If your network uses CouchDB and you want to take advantage of the CouchDB indexing feature (which improves the performance of CouchDB) the indexes need to be packaged with the chaincode.
+
+To learn more about CouchDB and how to set up indices, consult the [Fabric documentation on CouchDB ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/couchdb_as_state_database.html)
 
 ## Hosting applications
 You can host your application on your local file system or push it to {{site.data.keyword.Bluemix_notm}}. To push your application to {{site.data.keyword.Bluemix_notm}}, complete the following steps:
@@ -203,4 +191,4 @@ Complete the following steps to remove the connection between your application a
 	1. In the "Channel" screen of the Network Monitor, locate the channel where your chaincode is installed.
 	2. In the specific channel screen, locate the chaincode you want to disable.
 	3. Click the **Delete** button, and click **Submit** in the chaincode deletion panel. Your chaincode container will be removed.
-	![Delete a chaincode](images/channel_chaincode_detail.png "Delete a chaincode")
+	![Delete a chaincode](images/channel_chaincode.png "Delete a chaincode")

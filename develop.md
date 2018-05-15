@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-3-14"
+lastupdated: "2018-5-15"
 
 ---
 
@@ -43,15 +43,17 @@ A key concept for developing {{site.data.keyword.blockchain}} solutions is the *
 
 The easiest way to get started is to use the Yeoman generator to create a skeleton business network. The Yeoman generator creates a directory that contains all of the components of a business network, which can be modified for your specific use-case.
 
-1. Use Yeoman to create a skeleton business network. The following command requires a business network name, description, author name, author email address, license selection, and namespace:
+1. Create a new directory for your project and navigate to it on the command line.
+
+2. From your new directory, use Yeoman to create a skeleton business network. The following command requires a business network name, description, author name, author email address, license selection, and namespace:
 
         yo hyperledger-composer:businessnetwork
 
-2. Enter `tutorial-network` for the network name, and desired information for description, author name, and author email.
+3. Enter `tutorial-network` for the network name, and desired information for description, author name, and author email.
 
-3. Select `Apache-2.0` as the license.
+4. Select `Apache-2.0` as the license.
 
-4. Select `org.acme.biznet` as the namespace.
+5. Select `org.acme.biznet` as the namespace.
 
 ## Step Two: Defining the business network
 
@@ -59,9 +61,9 @@ A business network is made up of assets, participants, transactions, access cont
 
 ### Modelling assets, participants, and transactions
 
-The first document to update is the model file (`.cto`). This file is written by using the [Hyperledger Composer Modelling Language](https://hyperledger.github.io/composer/latest/reference/cto_language). The model file contains the definitions of each class of asset, transaction, participant, and event. It implicitly extends the system model that is described in the modelling language documentation.
+The first document to update is the model file (`.cto`). The model file is written using the [Hyperledger Composer Modelling Language](https://hyperledger.github.io/composer/latest/reference/cto_language). The model file contains the definitions of each class of asset, transaction, participant, and event. It implicitly extends the system model that is described in the modelling language documentation.
 
-1. Open the `org.acme.biznet.cto` model file.
+1. Open the `org.acme.biznet.cto` model file in an editor of your choice. It is located in the `models` folder of the business network you created in the last step.
 
 2. Replace the contents with the following information:
 

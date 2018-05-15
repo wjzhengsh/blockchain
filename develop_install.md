@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-3-16"
+lastupdated: "2018-5-15"
 
 ---
 
@@ -18,6 +18,8 @@ lastupdated: "2018-3-16"
 
 Follow these instructions to obtain the {{site.data.keyword.blockchainfull}} Platform: Develop development tools for creating and testing business networks. To provide flexibility and to enable the maximum number of dev, test, and deployment scenarios, the development tools are delivered as npm modules, which are controlled from the command line.
 
+Different versions of some components are required for use with Starter Plan and Enterprise Plan. To use the development environment with Starter Plan, the modules must be installed at version `0.19.x`. To use the development environment with Enterprise Plan, the modules must be installed at version `0.16.x`
+
 ## Before you begin
 
 Ensure that you install the following prerequisites:
@@ -27,30 +29,44 @@ Ensure that you install the following prerequisites:
 - npm v5.x
 - git v2.9.x or higher
 - Python v2.7.x
-- Docker Engine v17.03 or higher
-- Docker-Compose v1.8 of higher
 - A code editor of your choice, like VSCode.
 
-If you are using VSCode, there is a Hyperledger Composer VSCode extension available [here](https://marketplace.visualstudio.com/items?itemName=HyperledgerComposer.composer-support-client).
+If you are using Enterprise Plan, install the following additional prerequisites:
 
+- Docker Engine v17.03 or higher
+- Docker-Compose v1.8 of higher
+
+If you are using VSCode, there is a Hyperledger Composer VSCode extension available [here](https://marketplace.visualstudio.com/items?itemName=HyperledgerComposer.composer-support-client).
 
 ## Step One: Install the command line tools
 
 The command line tools include **composer-cli**, the main {{site.data.keyword.blockchainfull_notm}} Platform: Develop command line module; **generator-hyperledger-composer**, **composer-rest-server**, and **Yeoman**, these modules are used to generate business networks, bespoke REST servers, and Angular applications.
 
-1. Install **composer-cli** by using the following command:
+1. For use with Starter Plan, install **composer-cli** by using the following command:
 
-        npm install -g composer-cli@next
+        npm install -g composer-cli@0.19.x
 
-2. Install **composer-rest-server** by using the following command:
+    For use with Enterprise Plan, install **composer-cli** by using the following command:
 
-        npm install -g composer-rest-server@next
+        npm install -g composer-cli@0.16.x
+
+2. For use with Starter Plan, install **composer-rest-server** by using the following command:
+
+        npm install -g composer-rest-server@0.19.x
+
+    For use with Enterprise Plan, install **composer-rest-server** by using the following command:
+
+        npm install -g composer-rest-server@0.16.x
 
     Use the **composer-rest-server** module to create a REST Server on your machine to expose your business networks as RESTful APIs.
 
-3. Install **generator-hyperledger-composer** by using the following command:
+3. For use with Starter Plan, install **generator-hyperledger-composer** by using the following command:
 
-        npm install -g generator-hyperledger-composer@next
+        npm install -g generator-hyperledger-composer@0.19.x
+
+    For use with Enterprise Plan, install **generator-hyperledger-composer** by using the following command:
+
+        npm install -g generator-hyperledger-composer@0.16.x
 
     Use **generator-hyperledger-composer** to generate skeleton business network structures, models, and an Angular application.
 
@@ -60,9 +76,13 @@ The command line tools include **composer-cli**, the main {{site.data.keyword.bl
 
 ## Step Two: Install a local Playground
 
-The Hyperledger Composer playground is a user interface that can be connected to a real {{site.data.keyword.blockchain}} or used as a simulated environment for testing a business network. Install the playground by using the following command:
+The Hyperledger Composer playground is a user interface that can be connected to a real {{site.data.keyword.blockchain}} or used as a simulated environment for testing a business network. For use with Starter Plan, install the playground by using the following command:
 
-        npm install -g composer-playground@next
+        npm install -g composer-playground@0.19.x
+
+    For use with Enterprise Plan, install the playground by using the following command:
+
+        npm install -g composer-playground@0.16.x
 
 ## Optional: Set up your IDE
 
@@ -72,7 +92,7 @@ You can use the playground to develop, edit, and test business networks. However
 
 2. Open VSCode, go to Extensions, then search for and install the Hyperledger Composer extension from the marketplace.
 
-## Step Three: Install a local Hyperledger Fabric
+## Enterprise Plan only: Install a local Hyperledger Fabric and connect to it with the Playground
 
 By deploying a local Hyperledger Fabric instance, you can fully test access control rules and business networks.
 
@@ -95,22 +115,18 @@ In a directory of your choice, for example, `~/fabric-tools`, get the `.tar.gz` 
         export FABRIC_VERSION=hlfv11
         ./downloadFabric.sh
 
-## Step Four: Starting the Hyperledger Fabric instance
+    The `fabric-tools` directory contains a set of scripts that control the downloaded Hyperledger Fabric instance. You must run the `./createPeerAdminCard.sh` command to generate a business network card, which you can use to deploy the business network to the Docker that hosts Hyperledger Fabric instance.
 
-The `fabric-tools` directory contains a set of scripts that control the downloaded Hyperledger Fabric instance. You must run the `./createPeerAdminCard.sh` command to generate a business network card, which you can use to deploy the business network to the Docker that hosts Hyperledger Fabric instance.
-
-1. Run the following commands to start the Hyperledger Fabric v1.1 instance:
+4. Run the following commands to start the Hyperledger Fabric v1.1 instance:
 
         cd ~/fabric-tools
         export FABRIC_VERSION=hlfv11
         ./startFabric.sh
         ./createPeerAdminCard.sh
 
-## Optional: Connect to Hyperledger Fabric instance using the Playground
+    To begin developing a business network, use the Hyperledger Composer playground or your IDE.
 
-To begin developing a business network, use the Hyperledger Composer playground or your IDE.
-
-1. To start the playground, run the following command:
+5. To start the playground, run the following command:
 
         composer-playground
 

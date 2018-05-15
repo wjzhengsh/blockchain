@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-3-16"
+lastupdated: "2018-05-15"
 
 ---
 
@@ -14,6 +14,7 @@ lastupdated: "2018-3-16"
 {:tip: .tip}
 
 # Deploying a business network on Enterprise Plan
+{: #deploying-a-business-network}
 
 {{site.data.keyword.blockchainfull}} Platform: Develop's developer tools help you create a **Business Network Definition** which can then be packaged up into a business network archive (`.bna`). The developer environment allows you to deploy `.bna` files to a local or cloud {{site.data.keyword.blockchain}} for development and sharing.
 
@@ -68,13 +69,13 @@ You need access to an Enterprise Plan instance of {{site.data.keyword.blockchain
             "timeout": 300
         }
 
-    You will populate the newly created `connection.json` file with attributes that are provided via your {{site.data.keyword.blockchainfull_notm}} Platform dashboard. From your dashboard on, select **Overview**, then  **Service Credentials** button to display the endpoint and certificate information for the members of the channel.
+    You will populate the newly created `connection.json` file with attributes that are provided via your {{site.data.keyword.blockchainfull_notm}} Platform dashboard. From your dashboard on, select **Overview**, then **Connection Profile** button to display the endpoint and certificate information for the members of the channel.
 
 ## Step Two: Adding orderer information
 
-1. Now we can start to modify the template with the information that the Service Credentials provides. There might be multiple orderers in the Service Credentials, but only one is required for a `connection.json` file.
+1. Now we can start to modify the template with the information that the Connection Profile provides. There might be multiple orderers in the Connection Profile, but only one is required for a `connection.json` file.
 
-    Replace the orderer url values in the template with the relevant information from your service credentials in the following format:
+    Replace the orderer url values in the template with the relevant information from your Connection Profile in the following format:
 
         “url”: “grpcs://abca.4.secure.blockchain.ibm.com:12345”
 
@@ -84,7 +85,7 @@ You need access to an Enterprise Plan instance of {{site.data.keyword.blockchain
 
 ## Step Four: Adding peer information
 
-1. The **requestURL** and **eventURL** for each peer must be set. Replace the **url** attribute with the **url** value that is found in your service credentials. Replace the **eventURL** attribute with the **eventUrl** found in your Service Credentials. After making the changes, the peers section of `connection.json` should have the following format:
+1. The **requestURL** and **eventURL** for each peer must be set. Replace the **url** attribute with the **url** value that is found in your Connection Profile. Replace the **eventURL** attribute with the **eventUrl** found in your Connection Profile. After making the changes, the peers section of `connection.json` should have the following format:
 
         "peers": [
           {
@@ -103,7 +104,7 @@ You need access to an Enterprise Plan instance of {{site.data.keyword.blockchain
 
 ## Step Seven: Adding an mspID
 
-The **mspID** value in your `connection.json` file should be set to the mspID or your organization. The service credentials provide a list of the organizations with their associated mspid values. You should use the value from the **mspid** attribute for your organization.
+The **mspID** value in your `connection.json` file should be set to the mspID of your organization. The Connection Profile provides a list of the organizations with their associated mspid values. You should use the value from the **mspid** attribute of your organization.
 
 ## Step Eight: Adding the globalCert
 1. {{site.data.keyword.blockchainfull_notm}} Platform uses a common TLS certificate for the orderers and peers. For each orderer and peer, there is a **tlsCACerts** attribute that all contain the same certificate. Replace the dummy value in the `connection.json` file with the **tlsCACerts** value. It should take the following format:
@@ -114,7 +115,7 @@ The **mspID** value in your `connection.json` file should be set to the mspID or
 
 **Please Note**: This step **must** be performed before you create the channel to deploy a business network to. If this step is performed after channel creation, a deployed business network **will not start**.
 
-In the service credentials document under **certificateAuthorities** is an attribute **registrar** containing attributes for **enrollId** and **enrollSecret** in the following format:
+In the Connection Profile document under **certificateAuthorities** is an attribute **registrar** containing attributes for **enrollId** and **enrollSecret** in the following format:
 
         "registrar": [
             {
@@ -158,7 +159,7 @@ In the service credentials document under **certificateAuthorities** is an attri
 
 ## Step Eleven: Importing a new identity to administer your business network
 
-Create an identity in Composer by using the certificates that are requested previously. This new identity will have the authority to install chaincode onto the peers that have your uploaded public certificate and will be an issuer for the certificate authorities.
+Create an identity in Composer by using the certificates that are requested previously. This new identity will have the authority to install a chaincode onto the peers that have your uploaded public certificate and will be an issuer for the certificate authorities.
 
 1. To create the new identity, run the following command:
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-03-16"
+lastupdated: "2018-05-15"
 ---
 
 {:new_window: target="_blank"}
@@ -24,7 +24,7 @@ There are several mechanisms available to obtain support and troubleshoot proble
 
 Navigate to the "Support" screen in your **Network Monitor** as shown in **Figure 1**.  You can find links to resources that provide technical and supporting information.  For detailed description on the "Support" screen, see the *Support* section in [Network Monitor](v10_dashboard.html).
 
-![](images/support.png "Support screen")
+![Support screen](images/support.png "Support screen")
 *Figure 1. Support screen*
 
 
@@ -45,6 +45,6 @@ If your problem cannot be solved by any of the above routes, follow these steps 
     - In the **Case Summary** field, enter a short summary of your problem.
     - In the **Case Description** field, describe your problem as detailed as possible.  For example, the data center where your network was built and the sequence of steps that led to the problem.  Note that the more details you provide, the more chances that your problem can be resolved quickly.
 4. Click the **Submit** button.  You will receive an email notification in a few minutes for this case.
-  
-   
+
+
 You can find your previously submitted cases by clicking **My Cases** on the upper right in the {{site.data.keyword.cloud_notm}} Service Portal.  Click and open a case to check its status or provide additional information.
