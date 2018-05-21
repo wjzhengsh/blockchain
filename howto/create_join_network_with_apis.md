@@ -21,7 +21,7 @@ lastupdated: "2018-05-15"
 ## Retrieving basic auth credential for API
 {: #retrieve-id-token}
 
-Before you begin, you need to create an [{{site.data.keyword.blockchainfull_notm}} Platform service instance in ![External link icon](../images/external_link.svg "External link icon")](https://console.bluemix.net/catalog/services/blockchain) with Starter Plan or Enterprise Plan in {{site.data.keyword.cloud_notm}}.
+Before you begin, you need to create an [{{site.data.keyword.blockchainfull_notm}} Platform service instance ![External link icon](../images/external_link.svg "External link icon")](https://console.bluemix.net/catalog/services/blockchain) with Starter Plan or Enterprise Plan in {{site.data.keyword.cloud_notm}}.
 
 To use Swagger APIs to create or join a network, you need a basic authentication credential to ensure that you have access to the service instance in {{site.data.keyword.cloud_notm}}.
 
