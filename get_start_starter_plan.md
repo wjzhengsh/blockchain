@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-03-16"
+lastupdated: "2018-05-21"
 
 ---
 
@@ -20,7 +20,7 @@ lastupdated: "2018-03-16"
 {:shortdesc}
 
 **Notes**:
-1. {{site.data.keyword.blockchainfull}} Platform Starter Plan is a development and testing environment. If you need a production environment, see [About Enterprise Plan](enterprise_plan.html).
+1. {{site.data.keyword.blockchainfull}} Platform Starter Plan is a development and testing environment, and is not suitable for production workloads. If you need a production environment, see [About Enterprise Plan](enterprise_plan.html).
 2. Starter Plan is at beta stage now and is available in only the **US South** region in {{site.data.keyword.cloud_notm}}.
 
 Starter Plan enables you to learn and develop skills with {{site.data.keyword.blockchainfull_notm}} Platform, run sample applications, test your own applications, and simulate a multi-organization scenario.  This getting started tutorial introduces the prerequisites and steps you need to follow to create and use a Starter Plan network.
@@ -31,12 +31,14 @@ If you are new to {{site.data.keyword.blockchainfull_notm}} Platform and blockch
 ## Creating a network
 You can get a Starter Plan [network](glossary.html#network) with the default configuration immediately after you create an {{site.data.keyword.blockchainfull_notm}} Platform service instance.
 
-1. Locate the [Blockchain service ![External link icon](images/external_link.svg "External link icon")](https://console.bluemix.net/catalog/services/blockchain) in {{site.data.keyword.cloud_notm}} Catalog. You need to log in with your {{site.data.keyword.cloud_notm}} account. If you do not have an account, click the **Sign up to Create** button. Ensure that you choose **US South** as the region in {{site.data.keyword.cloud_notm}}.
-2. Select your Cloud Foundry organization and space, where you will create your network.
-3. Choose **Starter Membership Plan** from the pricing plans table.
-4. Click the **Create** button. Note that if you are invited to join a network, you can see a pop-up welcome panel. To create a network, choose **Proceed to your network** and click **Continue**. To join a network, see step 5 in [Joining a network](#joining-a-network).
+1. Locate the [Blockchain service ![External link icon](images/external_link.svg "External link icon")](https://console.bluemix.net/catalog/services/blockchain) in {{site.data.keyword.cloud_notm}} Catalog.   
+    **Note**: You need to log in with your {{site.data.keyword.cloud_notm}} paid account. If you do not have an account, click the **Sign up to Create** button. After you create a free trial account, upgrade it to a **Pay-As-You-Go** type by going to **Manage** > **Billing and Usage** > **Billing** in the {{site.data.keyword.cloud_notm}} console, and clicking **Add Credit Card**.
+2. Ensure that you choose **US South** as the region in {{site.data.keyword.cloud_notm}}.
+3. Select your Cloud Foundry organization and space, where you will create your network.
+4. Choose **Starter Membership Plan** from the pricing plans table.
+5. Click the **Create** button. Note that if you are invited to join a network, you can see a pop-up welcome panel. To create a network, choose **Proceed to your network** and click **Continue**. To join a network, see step 5 in [Joining a network](#joining-a-network).
   Now you're ready to use your Starter Plan network with the default configuration. The network is running with one orderer (known as a "SOLO" ordering service), two organizations, one CA, and one peer per each organization. A default channel is also created.
-5. Click the **Launch** button.
+6. Click the **Launch** button.
 
 You can find your blockchain service instance in your [{{site.data.keyword.Bluemix_notm}} service dashboard ![External link icon](images/external_link.svg "External link icon")](https://console.bluemix.net/dashboard/services "{{site.data.keyword.Bluemix_notm}} service dashboard").
 
