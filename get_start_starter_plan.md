@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-05-21"
+lastupdated: "2018-05-23"
 
 ---
 
@@ -90,7 +90,7 @@ Retrieve your service credentials with the following steps:
 ![Retrieving network credentials](images/service_credentials.gif "Retrieving network credentials")
 
 ### Retrieving in the Network Monitor
-You can find the network credentials on the "APIs" screen in your Network Monitor. For more information about using APIs, see [Trying out APIs with Swagger](apis.html).
+You can find the network credentials on the "APIs" screen in your Network Monitor. For more information about using APIs, see [Interacting with the network using Swagger APIs](howto/swagger_apis.html).
 
 You can retrieve the connection profile on the "Overview" screen in your Network Monitor. Click the **Connection Profile** button on the "Overview" screen and the connection profile shows in a new page.
 
