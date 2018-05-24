@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-05-15"
+lastupdated: "2018-05-24"
 
 ---
 
@@ -48,7 +48,7 @@ The IBM Blockchain Platform provides different membership plans to help all type
 
 {{site.data.keyword.blockchainfull_notm}} offerings are built on the [Hyperledger Fabric](./v10_fabric) code base that leverages a modular architecture to achieve enterprise levels of security, data integrity, scalability, and performance to meet your business needs.
 - **Starter Plan** networks are built on Hyperledger Fabric V1.1.
-- **Enterprise Plan** is upgraded to Hyperledger Fabric V1.1 soon. All networks that are created after the upgrade are at Fabric V1.1 level.
+- **Enterprise Plan** is upgraded to Hyperledger Fabric V1.1. All networks newly created networks are at Fabric V1.1 level.
 
 Sign up now for your [{{site.data.keyword.blockchainfull_notm}} membership ![External link icon](images/external_link.svg "External link icon")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps)!
 
