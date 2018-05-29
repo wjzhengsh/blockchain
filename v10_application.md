@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-05-15"
+lastupdated: "2018-05-29"
 
 ---
 
@@ -125,12 +125,74 @@ You can then upload the admin certificate to your blockchain network from the Ne
 ## Developing applications
 {: #developing-applications}
 
+An easy way to start to develop applications is to use sample chaincode and applications as a template for creating your own business solution. You can find sample applications for the blockchain networks on {{site.data.keyword.cloud_notm}} in [Sample applications](howto/prebuilt_samples.html). You can also start to develop applications from scratch based on your own business needs. 
+
 You can develop your application in JavaScript or Java, and leverage the available APIs in the Hyperledger Fabric Client SDKs to enable interaction between your application and your network.  An application needs to include at least the following information:
 * Name and version of the chaincode to invoke.
 * API endpoint information of your network resources, including orderers, CAs, and peers.
 * Functions to query or update the ledger in the network.  If you want high availability, you need to consider node failover in your application.
+<!--
+### Using Fabric SDKs
+{: #use-sdks}
+Fabric offers Node.js SDK and Java SDK currently and will support more programming languages, such as Python, REST, or GO, in future releases. For more information about Fabric SDKs and how to use them, see the following documentation:
+- [Hyperledger Fabric Node SDK documentation ![External link icon](images/external_link.svg "External link icon")](https://fabric-sdk-node.github.io/){:new_window}
+- [Hyperledger Fabric Java SDK documentation ![External link icon](images/external_link.svg "External link icon")](https://github.com/hyperledger/fabric-sdk-java){:new_window}
+-->
 
-You can find sample applications for the blockchain networks on {{site.data.keyword.cloud_notm}} in [Sample applications](howto/prebuilt_samples.html).  Use these sample chaincode and applications as a template for creating your own business solution.
+### Setting timeout values in Fabric SDKs
+{: #set-timeout-in-sdk}
+
+Fabric SDKs set default timeout values in client applications for events in the blockchain network. See the following example about default timeout settings in Fabric Java SDK. The file path is `src\main\java\org\hyperledger\fabric\sdk\helper\Config.java`.
+
+```
+    /**
+     * Timeout settings
+     **/
+    public static final String PROPOSAL_WAIT_TIME = "org.hyperledger.fabric.sdk.proposal.wait.time";
+    public static final String CHANNEL_CONFIG_WAIT_TIME = "org.hyperledger.fabric.sdk.channelconfig.wait_time";
+    public static final String TRANSACTION_CLEANUP_UP_TIMEOUT_WAIT_TIME = "org.hyperledger.fabric.sdk.client.transaction_cleanup_up_timeout_wait_time";
+    public static final String ORDERER_RETRY_WAIT_TIME = "org.hyperledger.fabric.sdk.orderer_retry.wait_time";
+    public static final String ORDERER_WAIT_TIME = "org.hyperledger.fabric.sdk.orderer.ordererWaitTimeMilliSecs";
+    public static final String PEER_EVENT_REGISTRATION_WAIT_TIME = "org.hyperledger.fabric.sdk.peer.eventRegistration.wait_time";
+    public static final String PEER_EVENT_RETRY_WAIT_TIME = "org.hyperledger.fabric.sdk.peer.retry_wait_time";
+    public static final String EVENTHUB_CONNECTION_WAIT_TIME = "org.hyperledger.fabric.sdk.eventhub_connection.wait_time";
+    public static final String EVENTHUB_RECONNECTION_WARNING_RATE = "org.hyperledger.fabric.sdk.eventhub.reconnection_warning_rate";
+    public static final String PEER_EVENT_RECONNECTION_WARNING_RATE = "org.hyperledger.fabric.sdk.peer.reconnection_warning_rate";
+    public static final String GENESISBLOCK_WAIT_TIME = "org.hyperledger.fabric.sdk.channel.genesisblock_wait_time";
+    
+    ...
+    
+    // Default values
+    /**
+     * Timeout settings
+     **/
+    defaultProperty(PROPOSAL_WAIT_TIME, "20000");
+    defaultProperty(CHANNEL_CONFIG_WAIT_TIME, "15000");
+    defaultProperty(ORDERER_RETRY_WAIT_TIME, "200");
+    defaultProperty(ORDERER_WAIT_TIME, "10000");
+    defaultProperty(PEER_EVENT_REGISTRATION_WAIT_TIME, "5000");
+    defaultProperty(PEER_EVENT_RETRY_WAIT_TIME, "500");
+    defaultProperty(EVENTHUB_CONNECTION_WAIT_TIME, "5000");
+    defaultProperty(GENESISBLOCK_WAIT_TIME, "5000");
+    /**
+     * This will NOT complete any transaction futures time out and must be kept WELL above any expected future timeout
+     * for transactions sent to the Orderer. For internal cleanup only.
+     */
+    defaultProperty(TRANSACTION_CLEANUP_UP_TIMEOUT_WAIT_TIME, "600000"); //10 min.
+```
+{:codeblock}
+
+However, you might need to change the default timeout values in your own application. For example, when your application invokes a transaction that needs more than 5000 ms, which is the default timeout value for event hub connection, to response, you will get a failing error because the invoke event ends at 5000 ms before the transaction completes. You can set the system property to overwrite the default values from your client application. Because the default values are initialized before you set the system property, the system property might not take effect. Therefore, you need to set the system property for timeout in a static construct in your client application. See the following example on changing timeout value for event hub connection to 15000 ms in Fabric Java SDK. The file path is `src\main\java\org\hyperledger\fabric\sdk\helper\Config.java`.
+
+```
+ public static final String EVENTHUB_CONNECTION_WAIT_TIME = "org.hyperledger.fabric.sdk.eventhub_connection.wait_time";
+ private static final long EVENTHUB_CONNECTION_WAIT_TIME_VALUE = 15000;
+  
+ static {
+     System.setProperty(EVENTHUB_CONNECTION_WAIT_TIME, EVENTHUB_CONNECTION_WAIT_TIME_VALUE);
+ }
+```
+{:codeblock}
 
 ## Adding network API endpoints to your application
 You need to add API endpoints of your network resources to your application so that it can interact with your {{site.data.keyword.blockchain}} network on {{site.data.keyword.Bluemix_short}}.  If you don't have a {{site.data.keyword.blockchain}} network on {{site.data.keyword.Bluemix_short}}, you can create one with either Starter Plan or Enterprise Plan. For more information, see [Govern Starter Plan network](get_start_starter_plan.html) and [Govern Enterprise Plan network](get_start.html).
