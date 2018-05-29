@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-05-15"
+lastupdated: "2018-05-29"
 ---
 
 {:new_window: target="_blank"}
@@ -16,8 +16,8 @@ lastupdated: "2018-05-15"
 
 The following issues are already reported:
 - Configuring an external CA in not supported yet.  As an alternative, you can generate and upload admin certificates via the Network Monitor. For more information, see [Generating the client-side certificates](v10_application.html#generating-the-client-side-certificates) and the description on the ["Certificates" tab of "Member" screen](v10_dashboard.html#members) in the Network Monitor.
-
 - In the Network Monitor of a Starter Plan network, when you click **View Logs** on the nodes that are listed on the "Overview" screen, the {{site.data.keyword.cloud}} Logging kibana interface is opened. By default, kibana is preconfigured to show logs from the last 15 minutes of activity. If there is no activity in the last 15 minutes, you will see a message that says 'No results found'. To view other logs, you can click the timer icon in the upper right corner under your user name and set a broader time range, such as 'This week' or 'This month'.
+- You might encounter stability issues, such as proxies falling over, and you are required to start again. Before you restart, try to overwrite the default timeout values in Fabric SDKs of your applications with bigger numbers. For more information about setting timeout values, see [Setting timeout values in Fabric SDKs](v10_application.html#set-timeout-in-sdk).
 
 For support and help with your {{site.data.keyword.blockchainfull_notm}} Platform network on {{site.data.keyword.Bluemix}}, see [Getting support](ibmblockchain_support.html).
 
