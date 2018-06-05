@@ -131,13 +131,6 @@ You can develop your application in JavaScript or Java, and leverage the availab
 * Name and version of the chaincode to invoke.
 * API endpoint information of your network resources, including orderers, CAs, and peers.
 * Functions to query or update the ledger in the network.  If you want high availability, you need to consider node failover in your application.
-<!--
-### Using Fabric SDKs
-{: #use-sdks}
-Fabric offers Node.js SDK and Java SDK currently and will support more programming languages, such as Python, REST, or GO, in future releases. For more information about Fabric SDKs and how to use them, see the following documentation:
-- [Hyperledger Fabric Node SDK documentation ![External link icon](images/external_link.svg "External link icon")](https://fabric-sdk-node.github.io/){:new_window}
-- [Hyperledger Fabric Java SDK documentation ![External link icon](images/external_link.svg "External link icon")](https://github.com/hyperledger/fabric-sdk-java){:new_window}
--->
 
 ### Setting timeout values in Fabric SDKs
 {: #set-timeout-in-sdk}
