@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-3-16"
+lastupdated: "2018-5-15"
 
 ---
 
@@ -16,7 +16,9 @@ lastupdated: "2018-3-16"
 # Instalación de un entorno de desarrollo
 {: #installing-a-development-environment}
 
-Siga estas instrucciones para obtener las herramientas de despliegue {{site.data.keyword.blockchainfull}} Plataform: Develop para crear y probar redes empresariales. Para proporcionar flexibilidad y permitir el número máximo de escenarios de desarrollo, prueba y despliegue, las herramientas de desarrollo se entregan como módulos npm, que se controlan desde la línea de mandatos.
+Siga estas instrucciones para obtener las herramientas de despliegue {{site.data.keyword.blockchainfull}} Platform: Develop para crear y probar redes empresariales. Para proporcionar flexibilidad y permitir el número máximo de escenarios de desarrollo, prueba y despliegue, las herramientas de desarrollo se entregan como módulos npm, que se controlan desde la línea de mandatos.
+
+Son necesarias distintas versiones de algunos componentes para utilizarlas con el Plan inicial y el Plan empresarial. Para utilizar el entorno de desarrollo con el Plan inicial, los módulos deben instalarse en la versión `0.19.x`. Para utilizar el entorno de desarrollo con el Plan empresarial, los módulos deben instalarse en la versión `0.16.x`
 
 ## Antes de empezar
 
@@ -27,30 +29,44 @@ Asegúrese de instalar los siguientes requisitos previos:
 - npm v5.x
 - git v2.9.x o superior
 - Python v2.7.x
-- Docker Engine v17.03 o superior
-- Docker-Compose v1.8 o superior
 - El editor de código que prefiera, como por ejemplo VSCode.
 
-Si utiliza VSCode, dispone de una extensión de VSCode de Hyperledger Composer [aquí](https://marketplace.visualstudio.com/items?itemName=HyperledgerComposer.composer-support-client).
+Si está utilizando el Plan empresarial, instale los siguientes requisitos previos adicionales:
 
+- Docker Engine v17.03 o superior
+- Docker-Compose v1.8 o superior
+
+Si utiliza VSCode, dispone de una extensión de VSCode de Hyperledger Composer [aquí](https://marketplace.visualstudio.com/items?itemName=HyperledgerComposer.composer-support-client).
 
 ## Paso uno: Instalar las herramientas de línea de mandatos
 
 Las herramientas de línea de mandatos incluyen **composer-cli**, el módulo principal de línea de mandatos de {{site.data.keyword.blockchainfull_notm}} Platform: Develop; **generator-hyperledger-composer**, **composer-rest-server** y **Yeoman**; estos módulos se utilizan para generar redes empresariales, servidores REST adaptados y aplicaciones Angular.
 
-1. Instale **composer-cli** con el siguiente mandato:
+1. Para utilizar con el Plan inicial, instale **composer-cli** con el siguiente mandato:
 
-        npm install -g composer-cli@next
+        npm install -g composer-cli@0.19.x
 
-2. Instale **composer-rest-server** con el siguiente mandato:
+    Para utilizar con el Plan empresarial, instale **composer-cli** con el siguiente mandato:
 
-        npm install -g composer-rest-server@next
+        npm install -g composer-cli@0.16.x
+
+2. Para utilizar con el Plan inicial, instale **composer-rest-server** con el siguiente mandato:
+
+        npm install -g composer-rest-server@0.19.x
+
+    Para utilizar con el Plan empresarial, instale **composer-rest-server** con el siguiente mandato:
+
+        npm install -g composer-rest-server@0.16.x
 
     Utilice el módulo **composer-rest-server** para crear un servidor REST en su máquina para exponer sus redes empresariales como API RESTful.
 
-3. Instale **generator-hyperledger-composer** con el siguiente mandato:
+3. Para utilizar con el Plan inicial, instale **generator-hyperledger-composer** con el siguiente mandato:
 
-        npm install -g generator-hyperledger-composer@next
+        npm install -g generator-hyperledger-composer@0.19.x
+
+    Para utilizar con el Plan empresarial, instale **generator-hyperledger-composer** con el siguiente mandato:
+
+        npm install -g generator-hyperledger-composer@0.16.x
 
     Utilice **generator-hyperledger-composer** para generar el esqueleto de estructuras de red empresarial, modelos y una aplicación Angular.
 
@@ -60,9 +76,13 @@ Las herramientas de línea de mandatos incluyen **composer-cli**, el módulo pri
 
 ## Paso dos: Instalar un recinto de pruebas local
 
-El recinto de pruebas de Hyperledger Composer es una interfaz de usuario que se puede conectar a un {{site.data.keyword.blockchain}} real o se puede utilizar como entorno simulado para probar una red empresarial. Instale el recinto de pruebas con el siguiente mandato:
+El recinto de pruebas de Hyperledger Composer es una interfaz de usuario que se puede conectar a un {{site.data.keyword.blockchain}} real o se puede utilizar como entorno simulado para probar una red empresarial. Para utilizar con el Plan inicial, instale el recinto de pruebas con el siguiente mandato:
 
-        npm install -g composer-playground@next
+        npm install -g composer-playground@0.19.x
+
+    Para utilizar con el Plan empresarial, instale el recinto de pruebas con el siguiente mandato:
+
+        npm install -g composer-playground@0.16.x
 
 ## Opcional: Configurar el IDE
 
@@ -72,7 +92,7 @@ Puede utilizar el recinto de pruebas para desarrollar, editar y probar redes emp
 
 2. Abra VSCode, vaya a Extensiones y busque e instale la extensión de Hyperledger Composer.
 
-## Paso tres: Instalar un Hyperledger Fabric local
+## Solo Plan empresarial: Instale un Hyperledger Fabric local y conecte al mismo con el recinto de pruebas
 
 Si despliega una instancia de un Hyperledger Fabric local, puede probar de forma exhaustiva las reglas de control y las redes empresariales.
 
@@ -95,22 +115,18 @@ En el directorio que elija, por ejemplo `~/fabric-tools`, obtenga el archivo `.t
         export FABRIC_VERSION=hlfv11
         ./downloadFabric.sh
 
-## Paso cuatro: Iniciar la instancia de Hyperledger Fabric
+    El directorio `fabric-tools` contiene un conjunto de scripts que controlan la instancia descargada de Hyperledger Fabric. Debe ejecutar el mandato `./createPeerAdminCard.sh` para generar una tarjeta de red empresarial, que puede utilizar para desplegar la red empresarial en el Docker que contiene la instancia de Hyperledger Fabric.
 
-El directorio `fabric-tools` contiene un conjunto de scripts que controlan la instancia descargada de Hyperledger Fabric. Debe ejecutar el mandato `./createPeerAdminCard.sh` para generar una tarjeta de red empresarial, que puede utilizar para desplegar la red empresarial en el Docker que contiene la instancia de Hyperledger Fabric.
-
-1. Ejecute los mandatos siguientes para iniciar la instancia de Hyperledger Fabric v1.1:
+4. Ejecute los mandatos siguientes para iniciar la instancia de Hyperledger Fabric v1.1:
 
         cd ~/fabric-tools
         export FABRIC_VERSION=hlfv11
         ./startFabric.sh
         ./createPeerAdminCard.sh
 
-## Opcional: Conectar la instancia de Hyperledger Fabric mediante el recinto de pruebas
+    Para empezar a desarrollar una red empresarial, utilice el recinto de pruebas de Hyperledger Composer o el IDE.
 
-Para empezar a desarrollar una red empresarial, utilice el recinto de pruebas de Hyperledger Composer o el IDE.
-
-1. Para iniciar el recinto de pruebas, ejecute el mandato siguiente:
+5. Para iniciar el recinto de pruebas, ejecute el mandato siguiente:
 
         composer-playground
 

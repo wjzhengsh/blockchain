@@ -54,7 +54,7 @@ Ahora ha desplegado correctamente una red de {{site.data.keyword.blockchain}} qu
 * Hasta tres iguales pequeños en cada miembro  
 * Un servicio de ordenación tolerante a errores de caída
 * Hasta 150 canales
-* Hasta 10 creaciones de instancias de código de encadenamiento
+* Hasta 10 instanciaciones de código de encadenamiento por miembro en el Supervisor de red
 
 
 ## Cómo unirse a una red
@@ -80,13 +80,13 @@ Si es un miembro de red invitado, pulse el botón **Invitación pendiente->**, s
 3. Configure un canal. Se suministra un libro mayor específico del canal a todos los miembros de un mismo canal; este libro mayor presenta datos de aislamiento y confidencialidad. Para obtener información sobre cómo crear un canal, consulte [Creación de un canal](howto/create_channel.html#creating-a-channel).  
     Si es un miembro del canal a quien se ha invitado a unirse a un canal, recibirá una notificación por correo electrónico con un enlace al asistente que le permitirá unirse al canal.
 4. Una iguales al canal.  Solo los iguales que estén asociados con el canal podrán acceder a su libro mayor. Para obtener más información, consulte [Canales](v10_dashboard.html#channels).
-5. Instale y cree una instancia de código de encadenamiento. Todos los miembros del canal deben instalar el mismo código de encadenamiento con el mismo nombre y versión en cada igual que ejecutará dicho código de encadenamiento. Después de instalar el código de encadenamiento, debe crear una instancia del mismo en el canal para poder utilizarlo. Para obtener más información, consulte [Instalación y creación de una instancia de código de encadenamiento](howto/install_instantiate_chaincode.html).  
+5. Instale y cree una instancia de código de encadenamiento. Todos los miembros del canal deben instalar el mismo código de encadenamiento con el mismo nombre y versión en cada igual que ejecutará dicho código de encadenamiento. Después de instalar el código de encadenamiento, debe crear una instancia del mismo en el canal para poder utilizarlo. Para obtener más información, consulte [Instalación, creación de instancias y actualización de un código de encadenamiento](howto/install_instantiate_chaincode.html).  
 
 **Nota**: para conseguir una alta disponibilidad, cada organización debe adquirir como mínimo dos iguales, y, dentro de un canal, cada miembro participante debe unir al menos a dos iguales.
 
 
 ## Recuperación de credenciales de red y del perfil de conexión
-Después de crear una red del Plan empresarial en {{site.data.keyword.cloud_notm}}, puede recuperar las credenciales de red y el perfil de conexión desde la página de la instancia del servicio o en el supervisor de red. 
+Después de crear una red del Plan empresarial en {{site.data.keyword.cloud_notm}}, puede recuperar las credenciales de red y el perfil de conexión desde la página de la instancia del servicio o en el supervisor de red.
 
 ### Recuperación desde la página de la instancia del servicio
 Se encontrará en la página de la instancia del servicio justo después de crear una instancia del servicio. También puede pulsar el servicio en el [panel de control del servicio {{site.data.keyword.cloud_notm}} ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://console.bluemix.net/dashboard/services "panel de control del servicio {{site.data.keyword.cloud_notm}}") para abrir la página de su instancia del servicio.

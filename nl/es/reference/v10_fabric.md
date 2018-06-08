@@ -68,16 +68,16 @@ Los nodos del servicio de ordenación también prestan los servicios siguientes:
 Para obtener más información sobre el servicio de ordenación de Hyperledger Fabric, consulte la información acerca de la *[puesta en marcha de un servicio de ordenación basado en Kafka ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](http://hyperledger-fabric.readthedocs.io/en/latest/kafka.html){:new_window}* en la [documentación de Hyperledger Fabric ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](http://hyperledger-fabric.readthedocs.io/en/latest/){:new_window}.
 
 ## SDK de HFC
-Los SDK de Hyperledger Fabric Client (HFC) permiten a los desarrolladores de aplicaciones crear aplicaciones que interactúan con una red de blockchain. El SDK de HFC facilita la gestión en las aplicaciones del ciclo de vida de los canales y códigos de encadenamiento.
+Los SDK de Hyperledger Fabric Client (HFC) permiten a los desarrolladores de aplicaciones crear aplicaciones que interactúan con una red de blockchain. El SDK de HFC facilita la gestión en las aplicaciones del ciclo de vida de los canales y del código de encadenamiento.
 
 Hyperledger Fabric proporciona SDK de Node.js y Java y ofrece las funciones siguientes para la interacción con la red de blockchain:
 * Registrar e inscribir usuarios
 * Crear canales
 * Unir iguales a un canal
 * Actualizar la configuración del canal de sistema o canal de aplicación
-* Instalar códigos de encadenamiento en iguales
-* Crear instancias de códigos de encadenamiento en un canal
-* Actualizar códigos de encadenamiento en un canal
+* Instalar código de encadenamiento en iguales
+* Crear instancias de código de encadenamiento en un canal
+* Actualizar el código de encadenamiento en un canal
 * Invocar funciones de código de encadenamiento para actualizar el libro mayor
 * Realizar consultar al libro mayor sobre transacciones, bloques o claves específicos
 * Supervisar sucesos de un canal (por ejemplo, la correcta confirmación de una transacción)
