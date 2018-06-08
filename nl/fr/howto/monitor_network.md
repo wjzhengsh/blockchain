@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-03-16"
+lastupdated: "2018-05-15"
 
 ---
 
@@ -12,7 +12,7 @@ lastupdated: "2018-03-16"
 {:codeblock: .codeblock}
 {:pre: .pre}
 
-# Surveillance d'un réseau {{site.data.keyword.blockchain}}
+# Surveillance d'un réseau de blockchain
 
 Ce tutoriel vous explique comment afficher et surveiller les informations de statut de votre réseau {{site.data.keyword.blockchain}} sur {{site.data.keyword.Bluemix_short}}.
 {:shortdesc}
@@ -34,26 +34,26 @@ Accédez au moniteur réseau et localisez le canal que vous voulez afficher et s
   ![Channel members](../images/channel_members.png "Channel members")  
 
 * **Code blockchain**  
-  L'onglet "Code blockchain" répertorie tous les codes blockchain  qui sont instanciés sur ce canal avec l'ID de code blockchain, la version et le nombre d'homologues qui exécutent ce code blockchain.   
+  L'onglet "Code blockchain" répertorie tout le code blockchain qui est instancié sur ce canal avec l'ID de code blockchain, la version et le nombre d'homologues qui exécutent ce code blockchain.   
 
   Développez un code blockchain pour afficher ses informations détaillées :  
     * Vous pouvez cliquer sur **JSON** pour afficher le fichier JSON du code blockchain.
-    * Vous pouvez cliquer sur  **Journaux** pour consulter les journaux du code blockchain.
+    * Vous pouvez cliquer sur **Journaux** pour consulter les journaux du code blockchain.
     * Vous pouvez cliquer sur **Supprimer** pour supprimer le conteneur de code blockchain en cours d'exécution.
     **Remarque **: La suppression du conteneur de code blockchain n'a pas pour effet de supprimer réellement le code blockchain. Un code blockchain instancié sur un réseau de blockchain ne peut pas être supprimé.
 
   ![Code blockchain de canal](../images/channel_chaincode.png "Code blockchain de canal")
 
 
-## Surveillance des codes blockchain
+## Surveillance du code blockchain
 
-Accédez au Moniteur réseau et affichez l'écran "Installer le code" (écran "Code blockchain" sur le réseau Enterprise Plan). Si des codes blockchain sont en cours d'exécution, choisissez un homologue dans la liste déroulante afin d'afficher tous les codes blockchain de cet homologue dans le tableau avec les ID et les versions de code blockchain. Vous pouvez effectuer l'installation et l'instanciation de votre code blockchain sur cet écran. Pour plus d'informations, voir [Installation et instanciation d'un code blockchain](install_instantiate_chaincode.html).
+Accédez au Moniteur réseau et affichez l'écran "Installer le code". Si du code blockchain est en cours d'exécution, choisissez un homologue dans la liste déroulante afin d'afficher tout le code blockchain de cet homologue dans le tableau avec les ID et les versions de code blockchain. Vous pouvez effectuer l'installation et l'instanciation de votre code blockchain sur cet écran.  Pour plus d'informations, voir [Installation, instanciation et mise à jour d'un code blockchain](install_instantiate_chaincode.html).
 
   ![Code blockchain](../images/chaincode_install_overview.png "Code blockchain")
 
 
 ## Surveillance des modèles d'application
 
-Dans un réseau de plan Starter, vous pouvez consulter et accéder à des modèles d'application dans l'écran "Essayer les modèles" du moniteur réseau. Après avoir déployé un modèle d'application, vous pouvez cliquer sur le bouton **Lancer** pour accéder à l'interface de votre application ou sur le lien **Afficher sur GitHub** pour visiter le référentiel de  code.  Pour plus d'informations, voir [Déploiement de modèles d'application](prebuilt_samples.html).
+Dans un réseau de plan Starter, vous pouvez consulter et accéder à des modèles d'application dans l'écran "Essayer les modèles" du moniteur réseau.  Après avoir déployé un modèle d'application, vous pouvez cliquer sur le bouton **Lancer** pour accéder à l'interface de votre application ou sur le lien **Afficher sur GitHub** pour visiter le référentiel de code.  Pour plus d'informations, voir [Déploiement de modèles d'application](prebuilt_samples.html).
 
   ![Modèles d'application](../images/sampleappflow0.png "Modèles d'application")

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-03-16"
+lastupdated: "2018-05-24"
 
 ---
 
@@ -14,7 +14,7 @@ lastupdated: "2018-03-16"
 
 # A propos du plan Enterprise
 
-Le plan Enterprise de la plateforme {{site.data.keyword.blockchainfull}} est une offre prête pour la production pour les organisations qui souhaitent trouver ou rejoindre un réseau d'entreprise de type Blockchain pour de vraies activités. Ce plan fournit l'infrastructure de base ainsi que les outils et le support nécessaires à un démarrage d'un réseau hautement sécurisé et prêt pour la production. 
+Le plan Enterprise de la plateforme {{site.data.keyword.blockchainfull}} est une offre prête pour la production pour les organisations qui souhaitent trouver ou rejoindre un réseau d'entreprise de type Blockchain pour de vraies activités. Ce plan fournit l'infrastructure de base ainsi que les outils et le support nécessaires à un démarrage d'un réseau hautement sécurisé et prêt pour la production. Le plan Enterprise est mis à niveau de Hyperledger Fabric V1.0 vers la V1.1. Tous les réseaux nouvellement créés sont au niveau Fabric V1.1.Toutefois, les réseaux qui ont été créés précédemment resteront au niveau Fabric V1.0.{:shortdesc}
 
 **Remarque **: Le plan Enterprise de la plateforme {{site.data.keyword.blockchainfull_notm}} fournit un environnement de production. Si vous avez besoin d'un environnement de tests et de développement, voir [A propos du plan Starter](starter_plan.html).
 
@@ -43,6 +43,6 @@ Vous devez utiliser le plan Enterprise pour des déploiements de production, ou 
 <!--- The Enterprise plan provides the ordering service and CA. The membership fee is $1,000, and a per peer fee of $1,000 that is associated with the network. If you want to have high availability (HA), you must purchase an additional peer to provide the HA capabilities. For example, one organization (associated membership fee of $1,000) of two peers ($1,000 X 2 peers) with HA ($1,000 X 2 HA peers) requires a monthly charge of $5,000.  --->
 
 ## Tarification  
-Pour utiliser le plan Enterprise, les membres réseau doivent régler 1 000 dollars par mois de frais d'appartenance et 1 000 euros mensuels supplémentaires pour chacun des homologues du réseau. Les frais mensuels sont facturés par jour au prorata.  Par exemple, une organisation (avec des frais d'appartenance de 1 000 dollars) ayant deux homologues (frais par homologue de 1 000 dollars X 2 homologues) doit payer 3 000 dollars par mois. Si le mois comporte 30 jours, le membre paie 100 dollars (3 000/30) par jour. Notez que si vous souhaitez disposer de la haute disponibilité (HA), vous devez doubler le nombre d'homologues nécessaires pour fournir les fonctions HA. 
+Pour utiliser le plan Enterprise, les membres réseau doivent régler 1 000 dollars par mois de frais d'appartenance et 1 000 euros mensuels supplémentaires pour chacun des homologues du réseau.  Les frais mensuels sont facturés par jour au prorata.  Par exemple, une organisation (avec des frais d'appartenance de 1 000 dollars) ayant deux homologues (frais par homologue de 1 000 dollars X 2 homologues) doit payer 3 000 dollars par mois.  Si le mois comporte 30 jours, le membre paie 100 dollars (3 000/30) par jour.  Notez que si vous souhaitez disposer de la haute disponibilité (HA), vous devez doubler le nombre d'homologues nécessaires pour fournir les fonctions HA.
 
-Les membres réseau peuvent régler leur facture avec leurs comptes {{site.data.keyword.cloud_notm}} qui contiennent l'espace nécessaire à la création de l'instance de réseau. Un membre réseau peut aussi couvrir les factures de tous les membres du réseau. Pour plus d'informations sur la facturation des réseaux de blockchain, voir [Facturation du réseau](howto/pay_for_the_network.html).
+Les membres réseau peuvent régler leur facture avec leurs comptes {{site.data.keyword.cloud_notm}} qui contiennent l'espace nécessaire à la création de l'instance de réseau.  Un membre réseau peut aussi couvrir les factures de tous les membres du réseau.  Pour plus d'informations sur la facturation des réseaux de blockchain, voir [Facturation du réseau](howto/pay_for_the_network.html).

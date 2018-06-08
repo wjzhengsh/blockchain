@@ -44,7 +44,7 @@ Si vous êtes un initiateur du réseau, cliquez sur le bouton **Créer un résea
 	Les membres que vous invitez vont recevoir une notification par courrier électronique relative à votre invitation une fois que vous avez effectué toutes les étapes de création du réseau.
 3. Dans l'écran "Définir des règles de gouvernance", définissez des règles pour l'appartenance, la création de canal et le code blockchain. Par défaut, tous les membres du réseau peuvent inviter d'autres membres à rejoindre le réseau, créer des canaux et instancier du code blockchain. Actuellement, votre réseau utilise les règles de gouvernance par défaut.  Cliquez sur **Suivant**.
 4. Dans l'écran "Vérifier le récapitulatif", vérifiez la configuration de votre réseau. Si vous voulez apporter des modifications, cliquez sur **Editer** en regard de l'en-tête de section ou cliquez sur le bouton **Précédent** pour revenir aux écrans précédents. Une fois la configuration réseau terminée, cliquez sur **Terminé**.  
-5. Dans l'écran "Le réseau a été créé", vous êtes informé que la création de votre réseau a abouti. Vous pouvez cliquer sur **Ajouter [des homologues](glossary.html#peer)** pour configurer vos ressources réseau ou cliquer directement sur **Afficher le moniteur** pour ouvrir le moniteur réseau. Vous pourrez aussi ajouter des homologues plus tard dans le Moniteur réseau. Pour plus d'informations sur les homologues, voir [Ajout d'homologues](v10_dashboard.md#add_peers).
+5. Dans l'écran "Le réseau a été créé", vous êtes informé que la création de votre réseau a abouti. Vous pouvez cliquer sur **Ajouter [des homologues](glossary.html#peer)** pour configurer vos ressources réseau ou cliquer directement sur **Afficher le moniteur** pour ouvrir le moniteur réseau. Vous pourrez aussi ajouter des homologues plus tard dans le Moniteur réseau.  Pour plus d'informations sur les homologues, voir [Ajout d'homologues](v10_dashboard.md#add_peers).
 
 Vous avez maintenant déployé un réseau {{site.data.keyword.blockchain}} qui peut prendre en charge les ressources réseau suivantes :  
 * Une autorité de certification spécifique aux membres
@@ -54,7 +54,7 @@ Vous avez maintenant déployé un réseau {{site.data.keyword.blockchain}} qui p
 * Jusqu'à trois petits homologues pour chaque membre  
 * Un service de tri tolérant aux pannes
 * Jusqu'à 150 canaux
-* Jusqu'à 10 instanciations de codes blockchain
+* Jusqu'à 10 instanciations de codes blockchain dans le moniteur réseau
 
 
 ## Rejoindre un réseau
@@ -68,7 +68,7 @@ Si vous êtes un membre de réseau invité, cliquez sur le bouton **Invitation e
 1. Dans l'écran "Mise en route", entrez le nom de votre organisation et cliquez sur **Suivant**.
 2. Dans l'écran "Examiner les règles de gouvernance", passez en revue les règles de gouvernance du réseau relatives à l'appartenance, à la création de canal et au code blockchain. Cliquez sur **Suivant**.
 3. (Facultatif) Dans l'écran "Ajouter des homologues", choisissez le nombre d'homologues à ajouter. Cliquez sur **Suivant**. Chaque membre d'un réseau peut ajouter jusqu'à trois homologues dans un réseau. Cette étape est facultative, et vous pouvez ajouter vos homologues plus tard dans le moniteur réseau. Pour plus d'informations sur les homologues, voir [Ajout d'homologues](v10_dashboard.html#peers).
-4. Dans l'écran "Vérification du récapitulatif du réseau", vérifiez la configuration du réseau. Si vous voulez apporter des modifications, cliquez sur le bouton **Précédent** pour revenir aux écrans précédents. Une fois la configuration des ressources terminée, cliquez sur **Terminé**. Vous serez informé que vous avez rejoint le réseau. Vous pouvez ensuite cliquer sur **Afficher le moniteur** pour ouvrir le moniteur réseau. 
+4. Dans l'écran "Vérification du récapitulatif du réseau", vérifiez la configuration du réseau. Si vous voulez apporter des modifications, cliquez sur le bouton **Précédent** pour revenir aux écrans précédents. Une fois la configuration des ressources terminée, cliquez sur **Terminé**. Vous serez informé que vous avez rejoint le réseau. Vous pouvez ensuite cliquer sur **Afficher le moniteur** pour ouvrir le moniteur réseau.
 
 <!-- or click **Create a Channel** to initiate a channel creation request. You can create channels later in the Network Monitor. For more information, see [Channels](v10_dashboard.html#channels).  -->
 
@@ -78,16 +78,15 @@ Si vous êtes un membre de réseau invité, cliquez sur le bouton **Invitation e
 1. Accédez au moniteur réseau une fois que vous avez créé ou rejoint un réseau {{site.data.keyword.blockchain}}. Le moniteur réseau est un tableau de bord doté d'une interface graphique depuis lequel vous pouvez gérer et conserver un suivi des informations de statut réseau. Pour plus d'informations, voir [Moniteur réseau](v10_dashboard.html).
 2. Ajoutez vos propres homologues au réseau. Si vous avez déjà ajouté suffisamment d'homologues, vous pouvez omettre cette étape. Les homologues exécutent du code blockchain et ils constituent le noeud final pour interagir avec vos applications. Cliquez sur **Ajouter des homologues** dans l'écran "Présentation", puis sélectionnez le nombre et la taille de vos homologues. Pour plus d'informations, voir [Présentation générale](v10_dashboard.html#resources).
 3. Configurez un canal. Tous les membres du même canal sont mis à disposition avec un registre spécifique à un canal, lequel fournit l'isolement de données et la confidentialité. Pour plus d'informations sur la création d'un canal, voir [Création d'un canal](howto/create_channel.html#creating-a-channel).  
-Si vous êtes un membre de canal qui a été invité à rejoindre un canal, vous allez recevoir une notification par courrier électronique avec un lien vers l'assistant qui va vous autoriser à rejoindre ce canal.
-
+    Si vous êtes un membre de canal qui a été invité à rejoindre un canal, vous allez recevoir une notification par courrier électronique avec un lien vers l'assistant qui va vous autoriser à rejoindre ce canal.
 4. Joignez les homologues au canal.  Seuls les homologues qui sont associés au canal peuvent accéder à son registre. Pour plus d'informations, voir [Canaux](v10_dashboard.html#channels).
-5. Installez et instanciez du code blockchain. Tous les membres de canal doivent installer le même code blockchain avec le même nom et la même version sur chaque homologue qui va exécuter le code blockchain. Une fois que vous avez installé le code blockchain, vous devez l'instancier sur un canal pour pouvoir l'utiliser. Pour plus d'informations, voir [Installation et instanciation d'un code blockchain](howto/install_instantiate_chaincode.html).  
+5. Installez et instanciez du code blockchain. Tous les membres de canal doivent installer le même code blockchain avec le même nom et la même version sur chaque homologue qui va exécuter le code blockchain. Une fois que vous avez installé le code blockchain, vous devez l'instancier sur un canal pour pouvoir l'utiliser. Pour plus d'informations, voir [Installation, instanciation et mise à jour d'un code blockchain](howto/install_instantiate_chaincode.html).  
 
 **Remarque **: Pour atteindre une haute disponibilité, chaque organisation doit acheter au moins deux homologues, et au sein d'un canal, chaque membre participant doit rejoindre au moins deux homologues.
 
 
 ## Extraction des données d'identification réseau et du profil de connexion
-Dès que vous avez créé un réseau de plan Enterprise dans {{site.data.keyword.cloud_notm}}, vous pouvez obtenir les données d'identification réseau et le profil de connexion depuis la page d'instance de service ou le Moniteur réseau. 
+Dès que vous avez créé un réseau de plan Enterprise dans {{site.data.keyword.cloud_notm}}, vous pouvez obtenir les données d'identification réseau et le profil de connexion depuis la page d'instance de service ou le Moniteur réseau.
 
 ### Extraction à partir de la page d'instance de service
 Vous accédez à la page d'instance de service dès que vous créez une instance de service. Vous pouvez également cliquer sur votre service dans le tableau de bord de service[{{site.data.keyword.cloud_notm}} - tableau de bord de service![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://console.bluemix.net/dashboard/services "{{site.data.keyword.cloud_notm}}") pour ouvrir votre page d'instance de service.
