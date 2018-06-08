@@ -30,9 +30,16 @@ lastupdated: "2018-03-16"
 
   Marbles 샘플을 사용하면 사용자는 서로 다른 특성으로 가상 Marbles를 작성하고 다른 사용자에게 전송할 수 있습니다. Marbles에 대한 자세한 정보는 [Marbles 데모 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://github.com/IBM-Blockchain/marbles)를 참조하십시오.
 
+<!--
+* **Perishable Goods**
+
+  The Perishable Goods sample enables users to deploy legal contracts that purchase goods in a supply chain based on delivery and temperature readings. For more information about this sample, see [Perishable Goods ![External link icon](../images/external_link.svg "External link icon")](https://github.com/clauseHQ/demo-clause-ibm-perishable-goods).
+
+-->
+
 * **차량 제조업체**
 
-  차량 제조업체 샘플을 사용하면 사용자는 가상 차량의 라이프사이클을 살펴볼 수 있습니다. 이 샘플에 대한 자세한 정보는 [차량 제조업체 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://github.com/IBM-Blockchain/vehicle-manufacture)를 참조하십시오. 
+  차량 제조업체 샘플을 사용하면 사용자는 가상 차량의 라이프사이클을 살펴볼 수 있습니다. 이 샘플에 대한 자세한 정보는 [차량 제조업체 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://github.com/IBM-Blockchain/vehicle-manufacture)를 참조하십시오.
 
 다음 단계를 완료하여 샘플 애플리케이션을 배치하십시오.
 
@@ -92,4 +99,4 @@ lastupdated: "2018-03-16"
 
 도구 체인 프로세스를 통해 확보한 샘플 애플리케이션을 삭제하려면 UI에서 샘플이 있는 위치를 탐색하십시오. 샘플 애플리케이션이 채널에서 인스턴스화되므로 채널에서 샘플을 찾을 수 있습니다. 왼쪽 탐색에서 **채널**을 클릭하여 "채널" 화면을 여십시오. 샘플이 인스턴스화된 관련 채널을 클릭한 다음 **체인코드**를 클릭하십시오. 이렇게 하면 이 채널에서 인스턴스화된 체인코드가 표시됩니다.
 
-애플리케이션의 체인코드를 클릭하면 **삭제** 탭을 볼 수 있습니다. 하지만 **삭제**를 클릭하면 샘플 애플리케이션은 삭제되지 않고 체인코드 컨테이너만 삭제됩니다. 샘플을 삭제하려면 {{site.data.keyword.cloud_notm}} 대시보드 및 도구 체인 대시보드로 이동해야 합니다.
+애플리케이션의 체인코드를 클릭하면 **삭제** 탭을 볼 수 있습니다. 하지만 **삭제**를 클릭하면 샘플 애플리케이션은 삭제되지 않고 체인코드 컨테이너만 삭제됩니다.  샘플을 삭제하려면 {{site.data.keyword.cloud_notm}} 대시보드 및 도구 체인 대시보드로 이동해야 합니다.
