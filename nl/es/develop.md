@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-3-14"
+lastupdated: "2018-5-15"
 
 ---
 
@@ -43,15 +43,17 @@ Un concepto clave para desarrollar soluciones {{site.data.keyword.blockchain}} e
 
 El modo más fácil de empezar es utilizar el generador Yeoman para crear el esqueleto de la red empresarial. El generador Yeoman crea un directorio que contiene todos los componentes de una red empresarial, que se puede modificar para adaptarla a su caso de uso específico.
 
-1. Utilice Yeoman para crear el esqueleto de una red empresarial. El siguiente mandato requiere un nombre de red empresarial, una descripción, un nombre de autor, la dirección de correo electrónico del autor, una selección de licencia y un espacio de nombres:
+1. Cree un directorio nuevo para el proyecto y vaya al mismo en la línea de mandatos.
+
+2. En el nuevo directorio, utilice Yeoman para crear el esqueleto de una red empresarial. El siguiente mandato requiere un nombre de red empresarial, una descripción, un nombre de autor, la dirección de correo electrónico del autor, una selección de licencia y un espacio de nombres:
 
         yo hyperledger-composer:businessnetwork
 
-2. Escriba `tutorial-network` como nombre de red y la información que desee para la descripción, el nombre del autor y la dirección de correo electrónico del autor.
+3. Escriba `tutorial-network` como nombre de red y la información que desee para la descripción, el nombre del autor y la dirección de correo electrónico del autor.
 
-3. Seleccione `Apache-2.0` como licencia.
+4. Seleccione `Apache-2.0` como licencia.
 
-4. Seleccione `org.acme.biznet` como espacio de nombres.
+5. Seleccione `org.acme.biznet` como espacio de nombres.
 
 ## Paso dos: Definición de la red empresarial
 
@@ -59,9 +61,9 @@ Una red empresarial se compone de activos, participantes, transacciones, reglas 
 
 ### Modelado de activos, participantes y transacciones
 
-El primer documento que se debe actualizar es el archivo modelo (`.cto`). Este archivo está escrito con el [lenguaje de modelado de Hyperledger Composer](https://hyperledger.github.io/composer/latest/reference/cto_language). El archivo modelo contiene las definiciones de cada clase de activo, transacción, participante y suceso. Extiende de forma implícita el modelo de sistema que se describe en la documentación del lenguaje de modelado.
+El primer documento que se debe actualizar es el archivo modelo (`.cto`). El archivo de modelo se escribe utilizando el [lenguaje de modelado de Hyperledger Composer](https://hyperledger.github.io/composer/latest/reference/cto_language). El archivo modelo contiene las definiciones de cada clase de activo, transacción, participante y suceso. Extiende de forma implícita el modelo de sistema que se describe en la documentación del lenguaje de modelado.
 
-1. Abra el archivo modelo `org.acme.biznet.cto`.
+1. Abra el archivo de modelo `org.acme.biznet.cto` en un editor de su elección. Se encuentra en la carpeta `models` de la red empresarial que ha creado en el último paso.
 
 2. Sustituya el contenido por la información siguiente:
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-3-14"
+lastupdated: "2018-5-15"
 
 ---
 
@@ -43,15 +43,17 @@ La **définition de réseau d'entreprise (BND)** est un concept essentiel en ter
 
 Le moyen le plus simple pour commencer consiste à utiliser le générateur Yeoman pour créer un squelette de réseau d'entreprise. Le générateur Yeoman crée un répertoire qui contient tous les composants d'un réseau d'entreprise, lesquels peuvent être modifiés pour votre cas d'utilisation particulier.
 
-1. Utilisez le générateur Yeoman pour créer un squelette de réseau d'entreprise. La commande suivante requiert un nom de réseau d'entreprise, une description, un nom d'auteur, une adresse e-mail d'auteur, un choix de licence et un espace de nom :
+1. Créez un nouveau répertoire pour votre projet et accédez à la ligne de commande.
+
+2. Depuis votre nouveau répertoire, utilisez le générateur Yeoman pour créer un squelette de réseau d'entreprise. La commande suivante requiert un nom de réseau d'entreprise, une description, un nom d'auteur, une adresse e-mail d'auteur, un choix de licence et un espace de nom :
 
         yo hyperledger-composer:businessnetwork
 
-2. Entrez `tutorial-network` comme nom de réseau, ainsi que les informations de votre choix pour la description, le nom d'auteur et l'adresse e-mail d'auteur.
+3. Entrez `tutorial-network` comme nom de réseau, ainsi que les informations de votre choix pour la description, le nom d'auteur et l'adresse e-mail d'auteur.
 
-3. Sélectionnez la licence `Apache-2.0`.
+4. Sélectionnez la licence `Apache-2.0`.
 
-4. Sélectionnez l'espace de nom `org.acme.biznet`.
+5. Sélectionnez l'espace de nom `org.acme.biznet`.
 
 ## Etape 2 : Définir le réseau d'entreprise
 
@@ -59,9 +61,9 @@ Un réseau d'entreprise se compose de ressources, de participants, de transactio
 
 ### Modélisation des ressources, des participants et des transactions
 
-Le premier document à mettre à jour est le fichier de modèle (`.cto`). Ce fichier est écrit à l'aide du [langage de modélisation Hyperledger Composer](https://hyperledger.github.io/composer/latest/reference/cto_language). Le fichier de modèle contient les définitions de chaque classe de ressource, transaction, participant et événement. Il étend implicitement le modèle de système qui est décrit dans la documentation du langage de modélisation.
+Le premier document à mettre à jour est le fichier de modèle (`.cto`). Le fichier modèle est écrit à l'aide du [langage de modélisation Hyperledger Composer](https://hyperledger.github.io/composer/latest/reference/cto_language). Le fichier de modèle contient les définitions de chaque classe de ressource, transaction, participant et événement. Il étend implicitement le modèle de système qui est décrit dans la documentation du langage de modélisation.
 
-1. Ouvrez le fichier de modèle `org.acme.biznet.cto`.
+1. Ouvrez le fichier de modèle `org.acme.biznet.cto` dans un éditeur de votre choix. Il se trouve dans le dossier `models` du réseau d'entreprise que vous avez créé à la dernière étape.
 
 2. Remplacez le contenu par les informations suivantes :
 

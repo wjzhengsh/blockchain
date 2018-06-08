@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-03-16"
+lastupdated: "2018-05-24"
 
 ---
 
@@ -17,11 +17,7 @@ lastupdated: "2018-03-16"
 **ATTENTION :** Avant d'utiliser une offre de plateforme {{site.data.keyword.blockchainfull}}, lisez les informations relatives aux données techniques et à l'aide dans la section [Clause de protection](needtoknow.html).  
 {:shortdesc}
 
-La plateforme {{site.data.keyword.blockchainfull_notm}} est la seule plateforme d'entreprise intégrée capable de gérer le cycle de vie complet (**développement**, **gouvernance** et **exploitation**) d'un réseau de blockchain à plusieurs organisations. Elle est conçue pour accélérer, grâce à une collaboration à chaque stade, la création de réseaux de blockchain globaux "conçus pour l'entreprise" à la fois performants et sécurisés même dans les environnements les plus exigeants et les secteurs réglementés. Les offres de solution {{site.data.keyword.blockchainfull_notm}} reposent sur une base de code Hyperledger Fabric qui optimise une architecture modulaire pour parvenir aux niveaux de sécurité, d'intégrité des données, d'évolutivité et de performance nécessaires pour répondre aux besoins de votre entreprise.  
-
-Examinons les activités et rôles principaux au sein du réseau {{site.data.keyword.blockchainfull_notm}} et voyons comment ils s'intègrent au cycle de vie d'un réseau.
-
-**Remarque **: Le tableau ci-dessous n'est pas censé représenter une progression linéaire. Des tâches telles que le développement et la gestion de réseau se reproduisent de manière répétée au fur et à mesure de l'évolution des applications et de l'appartenance des membres.
+La plateforme {{site.data.keyword.blockchainfull_notm}} est la seule plateforme d'entreprise intégrée capable de gérer le cycle de vie complet (**développement**, **gouvernance** et **exploitation**) d'un réseau de blockchain à plusieurs organisations. Elle est conçue pour accélérer, grâce à une collaboration à chaque stade, la création de réseaux de blockchain globaux "conçus pour l'entreprise" à la fois performants et sécurisés même dans les environnements les plus exigeants et les secteurs réglementés.
 
 |  Fonction     | Activités       | [Rôles](#participating-in-a-blockchain-network)  |
 | ------------------------- |--------------------------|-----|
@@ -29,7 +25,33 @@ Examinons les activités et rôles principaux au sein du réseau {{site.data.key
 | [Gouvernance](get_start.html)| Inviter des membres, générer des données d'identification, proposer des modèles de gouvernance, diffuser des informations de certificat et de noeud final | Opérateurs réseau, membres réseau |
 | [Exploitation](v10_dashboard.html)| Surveiller la santé et l'activité, gérer les nouveaux déploiements, ajouter ou retirer des membres, gérer le cycle de vie du code blockchain,  gérer les canaux, le support | Opérateurs réseau, participants réseau |
 
-Maintenant, regardons de plus près ces rôles et activités.
+**Remarque **: Le tableau ci-dessous n'est pas censé représenter une progression linéaire. Des tâches telles que le développement et la gestion de réseau se reproduisent de manière répétée au fur et à mesure de l'évolution des applications et de l'appartenance des membres.
+
+## Offres d'appartenance de membre {{site.data.keyword.IBM_notm}}
+
+La plateforme IBM Blockchain fournit différents plans d'appartenance pour aider tous les types d'utilisateurs à démarrer leur parcours sur la blockchain et à placer leurs applications en production.
+
+|       | [Plan Starter](starter_plan.html)      | [Plan Enterprise](enterprise_plan.html)  | Plan Enterprise Plus | Plan Self Managed
+| ------------------------- |--------------------------|-----|-----|------|
+| **Inclus         ** | **Niveaux de service de base, environnement de développement et de tests** | **Services avancés, prêts pour prod entreprise** | **Calcul dédié aux performances et à l'isolement, prêt pour production en entreprise** |Pile de logiciels à installer dans votre infrastructure, connexion à un réseau hébergé sur ce service cloud |
+| **Règle facturat** | **Gratuit pour bêta<!--trial of 30 days, followed by monthly charge-->** | **Abonnement mensuel** | **Abonnement mensuel** | Abonnement mensuel |
+| **Disponibilité** | **Bêta** | **Immédiate    ** | **Lors de l'achat** | Prochaine |
+
+
+<!--
+- **The IBM Blockchain Starter Plan** is ideal for those who are learning or getting started developing their blockchain network.
+- **Enterprise Plan** is a production environment offering high levels of security and support.
+- **Enterprise Plus Plan** offers a dedicated production environment for additional performance and isolated compute and storage resources to protect critical data.
+-->
+
+**Attention :** N'utilisez pas le **plan Starter** en production. Il s'agit d'un environnement de tests et de développement. 
+
+Les offres de solution {{site.data.keyword.blockchainfull_notm}} reposent sur une base de code [Hyperledger Fabric](./v10_fabric) qui optimise une architecture modulaire pour parvenir aux niveaux de sécurité, d'intégrité des données, d'évolutivité et de performance nécessaires pour répondre aux besoins de votre entreprise.
+- Les réseaux du **plan Starter** reposent sur Hyperledger Fabric V1.1.
+- Le **plan Enterprise** est mise à niveau vers Hyperledger Fabric V1.1. Tous les réseaux nouvellement créés sont au niveau Fabric V1.1.
+
+Inscrivez-vous dès maintenant en tant que [{{site.data.keyword.blockchainfull_notm}} membre ![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps)!
+
 
 ## **Développement** du réseau
 Vous pouvez explorer et accélérer le développement blockchain en optimisant les meilleures pratiques affinées dans plus de 400 engagements clients pour :
@@ -39,7 +61,7 @@ Vous pouvez explorer et accélérer le développement blockchain en optimisant l
 
 En tant que propriétaire de l'activité, vous pouvez développer votre scénario d'utilisation avec l'aide d'une équipe chevronnée d'experts IBM du secteur et en matière de blockchain, qui se sont engagés sur la voie {{site.data.keyword.blockchainfull_notm}} pour exploiter toutes les capacités de la plateforme {{site.data.keyword.blockchainfull_notm}}.
 
-En tant que développeur, vous pouvez mettre rapidement et facilement en concordance les besoins métier et accélérer le développement gratuit d'applications dans un environnement réseau de plateforme {{site.data.keyword.blockchainfull_notm}} à l'aide du bac à sable interactif permettant de développer, d'itérer et de tester les réseaux d'entreprise. Les outils suivants sont conçus pour vous permettre de transformer des règles métier en code de réseau d'entreprise dans votre environnement préféré :
+En tant que développeur, vous pouvez mettre rapidement et facilement en concordance les besoins métier et accélérer le développement gratuit d'applications dans un environnement réseau de plateforme {{site.data.keyword.blockchainfull_notm}} à l'aide de l'aire de jeu interactive permettant de développer, d'itérer et de tester les réseaux d'entreprise. Les outils suivants sont conçus pour vous permettre de transformer des règles métier en code de réseau d'entreprise dans votre environnement préféré :
 * **Exploration en ligne**  
   Avec la plateforme [{{site.data.keyword.blockchainfull_notm}} : Developp](./develop.html)<!--, which is powered by an open source development tool-->, découvrez les principaux concepts de blockchain, créez des définitions réseau, et optimisez des modèles d'industrie réutilisables et des bibliothèques de smart contract.  
   Une fois que vous avez développé votre réseau d'entreprise, vous pouvez le déployer dans un réseau opérationnel qui s'exécute sur la plateforme IBM Blockchain. Pour plus d'informations, voir [Déploiement de réseaux d'entreprise avec le plan Starter](./develop_starter.html) et [Déploiement de réseaux d'entreprise avec le plan Enterprise](./develop_enterprise.html).
@@ -104,7 +126,7 @@ En termes simples, un membre possède un certificat numérique valide qui lui pe
 
 La plateforme {{site.data.keyword.blockchainfull_notm}} repose sur l'architecture Hyperledger Fabric, qui elle-même utilise la technologie du “blockchain privé”.  Par conséquent, tous les membres sont inscrits au sein du réseau au moyen d'un certificat qui leur accorde le droit d'utiliser le réseau en tant que **fournisseur** de services (pour émettre des certificats, valider/trier des transactions) ou en tant que **consommateur** de services (pour émettre des transactions).   
 
-- **Fournisseurs - Accordent leur confiance aux membres** - Un réseau de blockchain est dirigé par ses membres.   Pour qu'un réseau de blockchain soit opérationnel, un ensemble minimum de membres doit *fournir* les services de blockchain de base : services de validation des transactions, de tri des transactions et de gestion de certificats.  Dès lors qu'ils exécutent ces services, les membres deviennent responsables de l'intégrité du registre partagé à l'épicentre du réseau de blockchain.  Peut-être vous interrogez-vous sur le nombre de membres nécessaire pour qu'un réseau de blockchain soit opérationnel ? En fait, cela dépend du niveau de confiance exigé pour votre réseau. Certains réseaux tolèrent un modèle de confiance plus centralisé qui requiert moins de membres faisant office de fournisseurs.  D'autres exigent un ensemble de membres plus diversifié (c'est-à-dire, des entités juridiquement distinctes) et la gestion d'un modèle de confiance plus décentralisé.  Un exemple de modèle plus centralisé serait un réseau de visibilité de la chaîne d'approvisionnement dont les membres seraient un détaillant global, une compagnie de transport internationale et IBM.  Dans ce cas, ces trois membres constitueraient la “base de confiance” du réseau, et fourniraient les services de base du réseau de blockchain.   Ces membres pourraient émettre des certificats pour des importateurs et des exportateurs, des agents personnalisés, des détaillants, de manière à pouvoir participer (émettre des transactions) au réseau. Ce réseau permet de décentraliser la confiance en permettant à davantage de membres de participer à la fourniture de services de base, garantissant ainsi un contrôle de l'ensemble des membres, en ne laissant pas le contrôle exclusif à un seul membre.    Un réseau typique comporte une dizaine de membres fournissant les services de base du réseau de blockchain.
+- **Fournisseurs - Accordent leur confiance aux membres** - Un réseau de blockchain est dirigé par ses membres.   Pour qu'un réseau de blockchain soit opérationnel, un ensemble minimum de membres doit *fournir* les services de blockchain de base : services de validation des transactions, de tri des transactions et de gestion de certificats. Dès lors qu'ils exécutent ces services, les membres deviennent responsables de l'intégrité du registre partagé à l'épicentre du réseau de blockchain. Peut-être vous interrogez-vous sur le nombre de membres nécessaire pour qu'un réseau de blockchain soit opérationnel ? En fait, cela dépend du niveau de confiance exigé pour votre réseau. Certains réseaux tolèrent un modèle de confiance plus centralisé qui requiert moins de membres faisant office de fournisseurs.  D'autres exigent un ensemble de membres plus diversifié (c'est-à-dire, des entités juridiquement distinctes) et la gestion d'un modèle de confiance plus décentralisé.  Un exemple de modèle plus centralisé serait un réseau de visibilité de la chaîne d'approvisionnement dont les membres seraient un détaillant global, une compagnie de transport internationale et IBM.  Dans ce cas, ces trois membres constitueraient la “base de confiance” du réseau, et fourniraient les services de base du réseau de blockchain. Ces membres pourraient émettre des certificats pour des importateurs et des exportateurs, des agents personnalisés, des détaillants, de manière à pouvoir participer (émettre des transactions) au réseau. Ce réseau permet de décentraliser la confiance en permettant à davantage de membres de participer à la fourniture de services de base, garantissant ainsi un contrôle de l'ensemble des membres, en ne laissant pas le contrôle exclusif à un seul membre. Un réseau typique comporte une dizaine de membres fournissant les services de base du réseau de blockchain.
 
 - **Consommateurs - Confiance établie, appels extérieurs possibles** – Une fois la base de confiance établie, le réseau peut prendre de l'expansion.  Il n'est pas rare que la plupart des membres de votre réseau utilisent simplement celui-ci pour l'appel de transactions dans le registre partagé.  Ces membres sont de simples *consommateurs* et ils ne participent pas aux services de base du réseau.  Un réseau typique comporte une dizaine à une centaine de membres autorisés à émettre des transactions au sein d'un réseau de blockchain donné.
 
@@ -115,7 +137,7 @@ Il est parfois utile de considérer les membres comme des personnes qui définis
 
 - **Initiateur** – Membre qui a été choisi par les autres membres pour amorcer le réseau de blockchain.    Un seul membre est nécessaire pour la connexion à la plateforme IBM Blockchain et l'exécution des tâches de démarrage du réseau.  Ces tâches consistent à nommer le réseau, à inviter les membres de l'ensemble initial et à définir le jeu de règles de fonctionnement par défaut du réseau.  Il s'agit d'un rôle transitoire.  Une fois le réseau amorcé, l'initiateur ne conserve pas de privilèges spéciaux et reprend simplement son rôle de membre.  
 
-- **Responsable** – Membre qui exécute un ou plusieurs homologues réseau et autorités de certification. Ce type de membre est responsable de l'intégrité du registre partagé car il participe au processus de consensus, qui définit le mode de validation des transactions sur un réseau de blockchain.   Le responsable, propriétaire d'une autorité de certification, peut aussi émettre des certificats pour les participants et d'accorder à ces derniers l'accès au réseau.
+- **Responsable** – Membre qui exécute un ou plusieurs homologues réseau et autorités de certification.   Ce type de membre est responsable de l'intégrité du registre partagé car il participe au processus de consensus, qui définit le mode de validation des transactions sur un réseau de blockchain.   Le responsable, propriétaire d'une autorité de certification, peut aussi émettre des certificats pour les participants et d'accorder à ces derniers l'accès au réseau.
 
 - **Opérateur** – Membre qui exécute des services pour le compte d'autres membres du réseau, comme le service de tri des transactions, les autorités de certification, les passerelles de transaction et d'autres services de base du réseau.  Par défaut, IBM est l'opérateur réseau des réseaux déployés sur la plateforme IBM Blockchain.
 
@@ -145,18 +167,6 @@ Avant de poursuivre, examinons une configuration simple au sein de la plateforme
 ![Réseau de blockchain](images/blockchain_network_2-01.png "Exemple de réseau de blockchain")
 
 *Figure 1. Exemple de réseau de blockchain composé de quatre membres utilisant des canaux pour isoler des données*
-
-## Offres d'appartenance de membre {{site.data.keyword.IBM_notm}}
-
-La tableau ci-après récapitule les options d'appartenance actuelles et futures.  
-
-|       | [Plan Starter](starter_plan.html)      | [Plan Enterprise](enterprise_plan.html)  | Plan Enterprise Plus | Plan Self Managed
-| ------------------------- |--------------------------|-----|-----|------|
-| **Inclus         ** | **Niveaux de service de base** | **Services avancés, prêts pour prod entreprise** | Calcul dédié aux performances et à l'isolement | Pile de logiciels à installer dans votre infrastructure + connexion à un réseau hébergé sur ce service cloud |
-| **Règle facturat** | **Gratuit pour bêta<!--trial of 30 days, followed by monthly charge-->** | **Abonnement mensuel  ** | Abonnement mensuel | Abonnement mensuel |
-| **Disponibilité** | **Bêta** | **Immédiate    ** | Lors de l'achat | Prochaine |
-
-Inscrivez-vous dès maintenant en tant que [{{site.data.keyword.blockchainfull_notm}} membre ![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps)!
 
 ## {{site.data.keyword.IBM_notm}} Support
 

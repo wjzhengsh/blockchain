@@ -35,7 +35,12 @@ Plateforme IBM Blockchain
 	howto/install_instantiate_chaincode.md
 	howto/monitor_network.md
 	howto/prebuilt_samples.md
-	howto/swagger_apis.md
+
+	{: .topicgroup}
+	Test des API avec Swagger
+		howto/swagger_apis.md
+		howto/create_join_network_with_apis.md
+
 	v10_application.md
 	{: .navgroup-end}
 
@@ -45,7 +50,7 @@ Plateforme IBM Blockchain
 	reference/hyperledger_composer.md
 	[Plateforme IBM Blockchain : Develop](https://ibm-blockchain.github.io/develop/)
 	{: .navgroup-end}
-	
+
 	{: .navgroup id="help"}
 	ibmblockchain_support.md
 	knownissues.md

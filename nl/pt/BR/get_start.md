@@ -24,7 +24,7 @@ O {{site.data.keyword.blockchainfull}} Platform Enterprise Plan fornece uma rede
 Este tutorial apresenta os pré-requisitos e as etapas que você precisa seguir para obter uma rede de Enterprise Plan que seja hospedada no ambiente altamente disponível e seguro da IBM.  
 
 As etapas a seguir indicam o fluxo básico para ativar uma rede de Enterprise Plan com múltiplos [membros](glossary.html#member) de rede:
-1. Um **inicializador de rede**, como um tipo especial de membro de rede, cria a rede e define políticas de controle. O inicializador de rede pode, então, convidar outras [organizações](glossary.html#organization) para se associarem a essa rede como membros de rede. Para obter mais informações, veja [Criando uma rede](#creating-a-network).
+1. Um **inicializador de rede**, como um tipo especial de membro de rede, cria a rede e define políticas de controle. O inicializador de rede pode, então, convidar outras [organizações](glossary.html#organization) para se associarem a essa rede como membros de rede.  Para obter mais informações, veja [Criando uma rede](#creating-a-network).
 2. Os **membros de rede** convidados recebem uma notificação por e-mail que fornece instruções para que eles se associem a uma rede do {{site.data.keyword.blockchain}}. Além das instruções na notificação por e-mail, também é possível seguir as etapas em [Participando de uma rede](#joining-a-network).
 3. Todos os **membros de rede**, após criarem ou se associarem a uma rede, poderão entrar no Monitor de rede para configurar e gerenciar os seus recursos de rede. É possível configurar [canais](glossary.html#channel) com um grupo de membros de rede para executar transações privadas em um livro-razão específico do canal, que somente membros do canal podem acessar. No Monitor de rede, também é possível associar os seus próprios peers ao canal e, em seguida, instalar e instanciar chaincode neles. Para obter mais informações, veja [Configurando recursos de rede e ambiente](#configuring-network-resources-and-environment).
 4. **Desenvolvedores de aplicativos**, após desenvolverem aplicativos, ativam a interação entre os seus aplicativos e a rede. Para obter mais informações, consulte [Ativando aplicativos para interagir com a rede](#enabling-applications-to-interact-with-the-network).
@@ -44,7 +44,7 @@ Se você for um inicializador de rede, clique no botão **Criar rede** para inic
 	Os membros que você convidar receberão uma notificação por e-mail sobre seu convite após você concluir todas as etapas para criar a rede.
 3. Na tela "Definir Regras de Controle", estabeleça as políticas para associação, criação de canal e chaincode. Por padrão, todos os membros de rede podem convidar outros membros para participarem da rede, criar canais e instanciar chaincode. Atualmente, a sua rede usa as políticas de controle padrão.  Clique em **Avançar**.
 4. Na tela "Resumo da Revisão", verifique sua configuração de rede. Se você desejar fazer modificações, clique em **Editar** ao lado do cabeçalho da seção ou clique no botão **Anterior** para voltar para as telas anteriores. Ao concluir a configuração de rede, clique em **Pronto**.  
-5. Na tela "Rede Criada", você será notificado de que sua rede foi criada com êxito. É possível clicar em **Incluir [Peers](glossary.html#peer)** para configurar os recursos de sua rede ou clicar em **Entrar no monitor** diretamente para abrir o Monitor de rede. Também é possível incluir peers posteriormente no Monitor de rede. Para obter mais informações sobre peers, veja [Incluir peers](v10_dashboard.md#add_peers).
+5. Na tela "Rede Criada", você será notificado de que sua rede foi criada com êxito. É possível clicar em **Incluir [Peers](glossary.html#peer)** para configurar os recursos de sua rede ou clicar em **Entrar no monitor** diretamente para abrir o Monitor de rede. Também é possível incluir peers posteriormente no Monitor de rede.  Para obter mais informações sobre peers, veja [Incluir peers](v10_dashboard.md#add_peers).
 
 Agora você implementar com êxito uma rede do {{site.data.keyword.blockchain}} que possa suportar os recursos de rede a seguir:  
 * Uma autoridade de certificação (CA) específica do membro
@@ -54,7 +54,7 @@ Agora você implementar com êxito uma rede do {{site.data.keyword.blockchain}} 
 * Até três pequenos peers para cada membro  
 * Um serviço de ordenação tolerante a falhas e travamento
 * Até 150 canais
-* Até 10 instanciações de chaincodes
+* Até 10 instanciações de chaincode por membro no Monitor de rede
 
 
 ## Participando de uma rede
@@ -80,13 +80,13 @@ Se você for um membro de rede convidado, clique no botão **Convite pendente ->
 3. Configure um canal. Todos os membros no mesmo canal recebem um livro-razão específico do canal, o que fornece isolamento e confidencialidade dos dados. Para obter mais informações sobre como criar um canal, veja [Criando um canal](howto/create_channel.html#creating-a-channel).  
     Se você for um membro do canal convidado a se associar a um canal, receberá uma notificação por e-mail com um link para o assistente que permite que se associe ao canal.
 4. Associe peers ao canal.  Apenas peers que estão associados ao canal podem acessar seu livro-razão. Para obter mais informações, consulte [Canais](v10_dashboard.html#channels).
-5. Instale e instancie o chaincode. Todos os membros do canal precisam instalar o mesmo chaincode com o mesmo nome e versão em cada peer que executará o chaincode. Após você instalar o chaincode, precisará instanciá-lo no canal antes de poder usá-lo. Para obter mais informações, consulte [Instalando e instanciando um chaincode](howto/install_instantiate_chaincode.html).  
+5. Instale e instancie o chaincode. Todos os membros do canal precisam instalar o mesmo chaincode com o mesmo nome e versão em cada peer que executará o chaincode. Após você instalar o chaincode, precisará instanciá-lo no canal antes de poder usá-lo. Para obter mais informações, veja [Instalando, instanciando e atualizando um chaincode](howto/install_instantiate_chaincode.html).  
 
 **Nota**: para atingir alta disponibilidade, cada organização deverá comprar pelo menos dois peers e, dentro de um canal, cada membro participante deverá se associar a pelo menos dois peers.
 
 
 ## Recuperando credenciais de rede e perfil de conexão
-Após você criar uma rede de Enterprise Plan no {{site.data.keyword.cloud_notm}}, será possível recuperar as credenciais de rede e o perfil de conexão por meio da página da instância de serviço ou no Monitor de rede. 
+Após você criar uma rede de Enterprise Plan no {{site.data.keyword.cloud_notm}}, será possível recuperar as credenciais de rede e o perfil de conexão por meio da página da instância de serviço ou no Monitor de rede.
 
 ### Recuperando por meio da página da instância de serviço
 Você estará na página da instância de serviço logo após criar uma instância de serviço. Também é possível clicar em seu serviço no [painel do serviço do {{site.data.keyword.cloud_notm}}![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://console.bluemix.net/dashboard/services "{{site.data.keyword.cloud_notm}} painel do serviço") para abrir a página da instância de serviço.

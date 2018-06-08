@@ -13,7 +13,7 @@ lastupdated: "2018-03-16"
 
 
 # Hyperledger Fabric
-{{site.data.keyword.blockchainfull}} ネットワークは、Linux Foundation の Hyperledger Project 内のブロックチェーン・プロジェクトの 1 つである Hyperledger Fabric スタック上に構築されています。これは「許可制」のネットワークで、すべてのユーザーとコンポーネントには既知のアイデンティティーがあります。  すべてのコミュニケーション・タッチポイントに署名/検証ロジックが実装されており、一連のエンドースメントと検証の検査によってトランザクションが承認されます。  この点は匿名性を重視する従来型のブロックチェーンとは大きく異なります。従来型の実装は暗号通貨に依存し、トランザクションの検証を行うために高度な計算負荷がかかります。  
+{{site.data.keyword.blockchainfull}} ネットワークは、Linux Foundation の Hyperledger Project 内のブロックチェーン・プロジェクトの 1 つである Hyperledger Fabric スタック上に構築されています。  これは「許可制」のネットワークで、すべてのユーザーとコンポーネントには既知のアイデンティティーがあります。  すべてのコミュニケーション・タッチポイントに署名/検証ロジックが実装されており、一連のエンドースメントと検証の検査によってトランザクションが承認されます。  この点は匿名性を重視する従来型のブロックチェーンとは大きく異なります。従来型の実装は暗号通貨に依存し、トランザクションの検証を行うために高度な計算負荷がかかります。  
 {:shortdesc}
 
 Hyperledger Fabric は、スケーラビリティーとパフォーマンスを拡張するためのモジュラー・アーキテクチャーを提供します。  このトピックでは、Hyperledger Fabric のいくつかのキー・コンポーネントを説明します。  Hyperledger Fabric の概要全体については、[Hyperledger Fabric の資料 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](http://hyperledger-fabric.readthedocs.io/en/latest/){:new_window} を参照してください。  
@@ -51,14 +51,14 @@ Hyperledger Fabric ネットワークでは、照会とトランザクション�
 	* 検証プロセスで不合格になったトランザクションはブロック内で無効のマークが付き、そのブロックはチャネルのハッシュ・チェーンに追加されます。  
 	* すべての有効なトランザクションは、変更されたキー/値のペアに従って状態データベースを更新します。  
 
-**gossip データ配布プロトコル**は、チャネル全体に台帳データを継続的にブロードキャストして、ピア間で台帳が同期しているようにします。詳しくは、[Hyperledger Fabric 資料 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](http://hyperledger-fabric.readthedocs.io/en/latest/){:new_window} の *[Gossip data dissemination protocol ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](http://hyperledger-fabric.readthedocs.io/en/latest/gossip.html){:new_window}* を参照してください。
+**gossip データ配布プロトコル**は、チャネル全体に台帳データを継続的にブロードキャストして、ピア間で台帳が同期しているようにします。  詳しくは、[Hyperledger Fabric 資料 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](http://hyperledger-fabric.readthedocs.io/en/latest/){:new_window} の *[Gossip data dissemination protocol ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](http://hyperledger-fabric.readthedocs.io/en/latest/gossip.html){:new_window}* を参照してください。
 
 トランザクション・フローの詳しい紹介については、[Hyperledger Fabric 資料 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](http://hyperledger-fabric.readthedocs.io/en/latest/){:new_window} の *[Transaction Flow![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](http://hyperledger-fabric.readthedocs.io/en/latest/txflow.html){:new_window}* を参照してください。  
 
 ## 順序付けサービス
 Hyperledger Fabric には、ネットワーク・トランザクションの順序付けとブロードキャストに使用する Kafka ベースのサービスが組み込まれています。 Kafka は、ネットワークの異常終了耐障害機能も提供します。つまり、受け入れた数の順序付けサービス・ノードを使用できない場合でも、サービスはトランザクションのブロックの順序付けとチャネル・ピアへの配布を継続します。
 
-クライアント・サイド・アプリケーションは、'channel.sendTransaction' API を呼び出してエンドース済みトランザクションを順序付けサービスに転送します。 続いて順序付けサービス・ノードは、Kafka サービスとそれに関連付けられた ZooKeeper サーバーを使用して、ブロック内のトランザクションを順序付けします。順序付けされたトランザクション・ブロックは、検証と台帳へのコミットメントのために、最終的にはチャネル・ピアに「配信」されます。
+クライアント・サイド・アプリケーションは、'channel.sendTransaction' API を呼び出してエンドース済みトランザクションを順序付けサービスに転送します。 続いて順序付けサービス・ノードは、Kafka サービスとそれに関連付けられた ZooKeeper サーバーを使用して、ブロック内のトランザクションを順序付けします。 順序付けされたトランザクション・ブロックは、検証と台帳へのコミットメントのために、最終的にはチャネル・ピアに「配信」されます。
 
 順序付けサービス・ノードは、以下のサービスも提供します。
 1. クライアントの認証

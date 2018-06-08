@@ -13,10 +13,10 @@ lastupdated: "2018-03-16"
 
 
 # Hyperledger Fabric
-{{site.data.keyword.blockchainfull}} 네트워크는 Linux Foundation의 Hyperledger Project 내 블록체인 프로젝트 중 하나인 Hyperledger Fabric 스택에 빌드됩니다. 모든 사용자 및 컴포넌트에 알려진 ID가 있는 "권한 부여된" 네트워크입니다.  서명/확인 로직이 모든 통신 터치포인트마다 구현되어 있으며, 트랜잭션이 일련의 보증 및 유효성 검증 검사를 통해 승인되었습니다.  이런 의미에서 익명성을 승격하고 트랜잭션의 유효성을 검증하기 위해 암호화된 화폐 및 과도한 컴퓨팅 의무에 의존하도록 되어 있는 기존 블록체인 구현과 크게 다릅니다.  
+{{site.data.keyword.blockchainfull}} 네트워크는 Linux Foundation의 Hyperledger Project 내 블록체인 프로젝트 중 하나인 Hyperledger Fabric 스택에 빌드됩니다.  모든 사용자 및 컴포넌트에 알려진 ID가 있는 "권한 부여된" 네트워크입니다.  서명/확인 로직이 모든 통신 터치포인트마다 구현되어 있으며, 트랜잭션이 일련의 보증 및 유효성 검증 검사를 통해 승인되었습니다.  이런 의미에서 익명성을 승격하고 트랜잭션의 유효성을 검증하기 위해 암호화된 화폐 및 과도한 컴퓨팅 의무에 의존하도록 되어 있는 기존 블록체인 구현과 크게 다릅니다.  
 {:shortdesc}
 
-Hyperledger Fabric은 확장성 및 성능을 확장하기 위해 모듈식 아키텍처를 제공합니다. 이 주제에서는 Hyperledger Fabric의 일부 주요 컴포넌트를 소개합니다. Hyperledger Fabric에 대한 전체 소개는 [Hyperledger Fabric 문서 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](http://hyperledger-fabric.readthedocs.io/en/latest/){:new_window}를 참조하십시오.  
+Hyperledger Fabric은 확장성 및 성능을 확장하기 위해 모듈식 아키텍처를 제공합니다.  이 주제에서는 Hyperledger Fabric의 일부 주요 컴포넌트를 소개합니다.  Hyperledger Fabric에 대한 전체 소개는 [Hyperledger Fabric 문서 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](http://hyperledger-fabric.readthedocs.io/en/latest/){:new_window}를 참조하십시오.  
 
 ## 인증 기관(Certificate Authority)  
 **권한 부여된** 블록체인 네트워크용 플랫폼으로서 Hyperledger Fabric에는 모든 구성원 조직 및 해당 사용자의 네트워크 ID를 관리하기 위한 모듈식 **Certificate Authority(CA)** 컴포넌트가 포함되어 있습니다. 모든 사용자에 대한 권한 부여된 ID의 요구사항은 네트워크 활동을 통해 ACL 기반 제어를 사용 가능하게 하며, 모든 트랜잭션이 결국 등록된 사용자에게 추적 가능함을 보장합니다.  
@@ -29,7 +29,7 @@ Hyperledger Fabric은 확장성 및 성능을 확장하기 위해 모듈식 아�
 Hyperledger Fabric Certificate Authority(CA) 컴포넌트에 대한 자세한 정보는 [Fabric CA User’s Guide ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](http://hyperledger-fabric-ca.readthedocs.io/en/latest/){:new_window}를 참조하십시오.
 
 ## 멤버십 서비스 제공자(Membership Service Provider)  
-Hyperledger Fabric에는 인증서 발행과 유효성 검증 및 사용자 인증 이면의 모든 암호화 메커니즘 및 프로토콜의 추상 개념을 제공하기 위한 **Membership Service Provider(MSP)** 컴포넌트가 포함되어 있습니다. MSP는 각 채널 피어에 설치되어 피어에 발행된 트랜잭션 요청이 인증되고 권한이 부여된 사용자 ID에서 시작하는지 확인합니다.
+Hyperledger Fabric에는 인증서 발행과 유효성 검증 및 사용자 인증 이면의 모든 암호화 메커니즘 및 프로토콜의 추상 개념을 제공하기 위한 **Membership Service Provider(MSP)** 컴포넌트가 포함되어 있습니다.  MSP는 각 채널 피어에 설치되어 피어에 발행된 트랜잭션 요청이 인증되고 권한이 부여된 사용자 ID에서 시작하는지 확인합니다.
 
 Hyperledger Fabric Membership Services Provider(MSP) 컴포넌트에 대한 자세한 정보는 [Hyperledger Fabric 문서 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](http://hyperledger-fabric.readthedocs.io/en/latest/){:new_window}에서 *[Membership Service Providers (MSP) ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](http://hyperledger-fabric.readthedocs.io/en/latest/msp.html){:new_window}*를 참조하십시오.
 
@@ -45,13 +45,13 @@ Hyperledger Fabric 네트워크에서는 조회 및 트랜잭션을 위한 데�
 1. SDK에서 사용 가능한 `channel.SendTransactionProposal` API를 사용하여 클라이언트 애플리케이션은 트랜잭션 제안을 지정된 채널에서 적합한 보증 피어에 서명하고 제출합니다.  이 초기 트랜잭션 제안은 보증을 위한 **요청**입니다.  
 2. 채널의 각 피어는 제출하는클라이언트의 ID 및 권한을 확인하고, (유효한 경우)제공된 입력(키/값)에 대해 지정된 체인코드를 실행합니다.  트랜잭션 결과 및 호출된 체인코드의 보증 정책을 기반으로 각 피어는 서명된 예(YES) 또는 아니오(NO) 응답을 애플리케이션에 리턴합니다.  각 서명된 예(YES) 응답이 트랜잭션의 **보증**입니다.
 
-	이 때 트랜잭션 플로우에서 프로세스는 조회 및 트랜잭션을 위해 분기합니다. 제안이 체인코드에서 조회 함수를 호출하면 애플리케이션은 클라이언트에 데이터를 리턴합니다.  제안이 체인코드에서 원장을 업데이트하기 위해 함수를 호출하면 애플리케이션은 다음 단계를 계속합니다.  
+	이 때 트랜잭션 플로우에서 프로세스는 조회 및 트랜잭션을 위해 분기합니다.  제안이 체인코드에서 조회 함수를 호출하면 애플리케이션은 클라이언트에 데이터를 리턴합니다.  제안이 체인코드에서 원장을 업데이트하기 위해 함수를 호출하면 애플리케이션은 다음 단계를 계속합니다.  
 3. 애플리케이션은 트랜잭션(읽기/쓰기 설정 및 보증)을 네트워크 **순서 지정 서비스**에 전달합니다.  
-4. 그러면 트랜잭션이 순서 지정을 위해 Kafka 클러스터에서 채널의 파티션 토픽에 전달됩니다. 모든 채널 피어는 체인코드 특정 유효성 검증 정책을 적용하고 동시성 제어 버전 검사를 실행하여 블록에서 각 트랜잭션의 유효성을 검증합니다.  
+4. 그러면 트랜잭션이 순서 지정을 위해 Kafka 클러스터에서 채널의 파티션 토픽에 전달됩니다.  모든 채널 피어는 체인코드 특정 유효성 검증 정책을 적용하고 동시성 제어 버전 검사를 실행하여 블록에서 각 트랜잭션의 유효성을 검증합니다.  
 	* 유효성 검증 프로세스에 실패하는 트랜잭션은 블록에서 올바르지 않음으로 표시되며, 블록이 채널의 해시체인에 추가됩니다.  
 	* 유효한 모든 트랜잭션은 수정된 키/값 쌍에 따라 상태 데이터베이스를 업데이트합니다.  
 
-**가십 데이터 분배 프로토콜**은 피어 사이에서 동기화된 원장을 확인하기 위해 채널에서 원장 데이터를 지속적으로 브로드캐스트합니다. 자세한 정보는 [Hyperledger Fabric 문서 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](http://hyperledger-fabric.readthedocs.io/en/latest/){:new_window}에서
+**가십 데이터 분배 프로토콜**은 피어 사이에서 동기화된 원장을 확인하기 위해 채널에서 원장 데이터를 지속적으로 브로드캐스트합니다.  자세한 정보는 [Hyperledger Fabric 문서 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](http://hyperledger-fabric.readthedocs.io/en/latest/){:new_window}에서
 *[Gossip data dissemination protocol ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](http://hyperledger-fabric.readthedocs.io/en/latest/gossip.html){:new_window}*을 참조하십시오.
 
 트랜잭션 플로우에 대한 단계별 소개는 [Hyperledger Fabric 문서 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](http://hyperledger-fabric.readthedocs.io/en/latest/){:new_window}에서 *[Transaction Flow ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](http://hyperledger-fabric.readthedocs.io/en/latest/txflow.html){:new_window}*를 참조하십시오.  

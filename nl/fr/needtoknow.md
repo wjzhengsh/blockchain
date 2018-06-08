@@ -26,7 +26,7 @@ L'architecture d'{{site.data.keyword.blockchainfull_notm}} repose sur le projet 
 
 ## Déclaration Open source
 
-Les plans de l'offre {{site.data.keyword.blockchainfull_notm}} on {{site.data.keyword.Bluemix_notm}} reposent sur la pile Hyperledger Fabric de Linux Foundation. Les membres du projet Hyperledger, y compris IBM, continuent à contribuer aux différents sous-projets sous l'égide de Hyperledger. Toutes les contributions sont passées en revue, certifiées et testées par la communauté.
+Les plans de l'offre {{site.data.keyword.blockchainfull_notm}} on {{site.data.keyword.Bluemix_notm}} reposent sur la pile Hyperledger Fabric de Linux Foundation. Les membres du projet Hyperledger, y compris IBM, continuent à contribuer aux différents sous-projets sous l'égide de Hyperledger.  Toutes les contributions sont passées en revue, certifiées et testées par la communauté.
 
 ## Déclaration du support du code blockchain
 

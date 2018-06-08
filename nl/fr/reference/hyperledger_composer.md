@@ -27,7 +27,7 @@ Hyperledger Composer vous permet de rapidement modéliser votre réseau d'entrep
 
 Pour plus d'informations sur la génération de réseaux d'entreprise, voir [Développement de réseaux d'entreprise](./develop.html) ou consultez la [documentation Hyperledger Composer ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger.github.io/composer/latest/introduction/introduction.html).
 
-## Requêtes 
+## Requêtes
 
 Les requêtes sont utilisées pour renvoyer des données relatives à la blockchain "world state". Les requêtes sont définies au sein d'un réseau d'entreprise, et elles peuvent inclure des paramètres de variable pour une personnalisation simple. Grâce aux requêtes, les données peuvent être facilement extraites de votre réseau {{site.data.keyword.blockchain}}. Les requêtes sont envoyées à l'aide de l'[API Hyperledger Composer![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger.github.io/composer/latest/api/api-doc-index).
 

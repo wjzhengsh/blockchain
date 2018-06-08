@@ -26,7 +26,7 @@ A arquitetura por trás do {{site.data.keyword.blockchainfull_notm}} é o projet
 
 ## Instrução de software livre
 
-Planos de oferta do {{site.data.keyword.blockchainfull_notm}} no {{site.data.keyword.Bluemix_notm}} são construídos na parte superior da pilha do Hyperledger Fabric da Linux Foundation. Os membros do Hyperledger Project, incluindo a IBM, continuam a contribuir com vários subprojetos sob o guarda-chuva do Hyperledger. Todas as contribuições são revisadas, avaliadas e testadas pela comunidade.
+Planos de oferta do {{site.data.keyword.blockchainfull_notm}} no {{site.data.keyword.Bluemix_notm}} são construídos na parte superior da pilha do Hyperledger Fabric da Linux Foundation. Os membros do Hyperledger Project, incluindo a IBM, continuam a contribuir com vários subprojetos sob o guarda-chuva do Hyperledger.  Todas as contribuições são revisadas, avaliadas e testadas pela comunidade.
 
 ## Instrução de suporte de chaincode
 

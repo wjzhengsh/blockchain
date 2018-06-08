@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-03-16"
+lastupdated: "2018-05-24"
 
 ---
 
@@ -17,11 +17,7 @@ lastupdated: "2018-03-16"
 **ATENCIÓN:** Antes de utilizar una oferta de {{site.data.keyword.blockchainfull}}, debe leer la información técnica y de soporte de la sección [Descargo de responsabilidad](needtoknow.html).  
 {:shortdesc}
 
-La plataforma {{site.data.keyword.blockchainfull_notm}} es la única plataforma integrada lista para la empresa que aborda el ciclo de vida completo (**desarrollo**, **gobierno** y **funcionamiento**) de una red de blockchain entre diversas organizaciones. Está diseñada para acelerar, mediante la colaboración en cada fase, la creación de redes de blockchain globales "creadas para la empresa" con el rendimiento y la seguridad para los casos de uso y los sectores regulados más exigentes. Las ofertas de {{site.data.keyword.blockchainfull_notm}} parten del código base de Hyperledger Fabric que utiliza una arquitectura modular para alcanzar los niveles de seguridad empresarial, la integridad de datos, la escalabilidad y el rendimiento necesarios para satisfacer sus necesidades empresariales.  
-
-Veamos las principales actividades y roles de una red de {{site.data.keyword.blockchainfull_notm}} y cómo se adaptan a un ciclo de vida de red.
-
-**Nota**:la tabla siguiente no está pensada para representar una progresión lineal. Tareas como el desarrollo y la gestión de red se producen repetidamente a medida que evolucionan las aplicaciones y la pertenencia.
+La plataforma {{site.data.keyword.blockchainfull_notm}} es la única plataforma integrada lista para la empresa que aborda el ciclo de vida completo (**desarrollo**, **gobierno** y **funcionamiento**) de una red de blockchain entre diversas organizaciones. Está diseñada para acelerar, mediante la colaboración en cada fase, la creación de redes de blockchain globales "creadas para la empresa" con el rendimiento y la seguridad para los casos de uso y los sectores regulados más exigentes.
 
 |  Función     | Actividades       | [Roles](#participating-in-a-blockchain-network)  |
 | ------------------------- |--------------------------|-----|
@@ -29,7 +25,33 @@ Veamos las principales actividades y roles de una red de {{site.data.keyword.blo
 | [Gobierno](get_start.html)| Invitar a miembros, generar credenciales, proponer modelos de gobierno, distribuir certificados e información de punto final | Operadores de la red, miembros de la red |
 | [Funcionamiento](v10_dashboard.html)| Supervisar estado y actividad, gestionar nuevos despliegues, añadir o eliminar miembros, gestionar el ciclo de vida del código de encadenamiento, gestionar canales, soporte | Operadores de la red, participantes en la red |
 
-Ahora veamos estos roles y actividades con más detalle.
+**Nota**: La tabla no está pensada para representar una progresión lineal. Tareas como el desarrollo y la gestión de red se producen repetidamente a medida que evolucionan las aplicaciones y la pertenencia.
+
+## Ofertas de pertenencia de {{site.data.keyword.IBM_notm}}
+
+La plataforma IBM Blockchain Platform proporciona distintos planes de pertenencia para ayudar a todos los tipos de usuarios a empezar su viaje en blockchain y a mover sus aplicaciones en producción.
+
+|       | [Plan inicial](starter_plan.html)      | [Plan empresarial](enterprise_plan.html)  | Plan empresarial Plus | Plan autogestionado
+| ------------------------- |--------------------------|-----|-----|------|
+| **Qué se incluye** | **Niveles de servicio básicos; entorno de desarrollo y de prueba** | **Niveles de servicio avanzado; listo para producción empresarial** | **Cálculo dedicado para rendimiento y aislamiento; listo para producción empresarial** | Pila de software para instalar en su propia infraestructura; conexión a red alojada en este servicio en la nube |
+| **Política de facturación** | **Gratuita para beta<!--trial of 30 days, followed by monthly charge-->** | **Suscripción mensual** | **Suscripción mensual** | Suscripción mensual |
+| **Disponibilidad** | **Beta** | **Ya disponible** | **Al comprar** | Próximamente |
+
+
+<!--
+- **The IBM Blockchain Starter Plan** is ideal for those who are learning or getting started developing their blockchain network.
+- **Enterprise Plan** is a production environment offering high levels of security and support.
+- **Enterprise Plus Plan** offers a dedicated production environment for additional performance and isolated compute and storage resources to protect critical data.
+-->
+
+**Precaución:** No utilice el **Plan inicial** para producción. Es un entorno de desarrollo y de prueba.
+
+Las ofertas de {{site.data.keyword.blockchainfull_notm}} parten del código base de [Hyperledger Fabric](./v10_fabric) que utiliza una arquitectura modular para alcanzar los niveles de seguridad empresarial, la integridad de datos, la escalabilidad y el rendimiento necesarios para satisfacer sus necesidades empresariales.
+- Las redes del **Plan inicial** se basan en Hyperledger Fabric V1.1.
+- El **Plan empresarial** se actualiza a Hyperledger Fabric V1.1. Todas las redes recién creadas estén en el nivel V1.1 de fábrica.
+
+Regístrese ahora para ser [miembro de {{site.data.keyword.blockchainfull_notm}}![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps).
+
 
 ## **Desarrollo** de red
 Explore y acelere el desarrollo de blockchain utilizando las mejores prácticas derivadas de la colaboración de más de 400 clientes para:
@@ -104,7 +126,7 @@ En otras palabras: un miembro posee un certificado digital válido que le permit
 
 La plataforma {{site.data.keyword.blockchainfull_notm}} está respaldada por Hyperledger Fabric, que es una tecnología de “blockchain autorizada”.  Por lo tanto, todos los miembros están inscritos en la red con un certificado que les otorga permisos para utilizar la red como **proveedor** de servicios (es decir, les permite emitir certificados, validar/ordenar transacciones) o como **consumidor** (por ejemplo, para emitir transacciones).   
 
-- **Proveedores: confiamos en los miembros**. Una red de blockchain se basa en sus miembros.   Para que una red de blockchain sea operativa, debe haber un conjunto mínimo de miembros que *proporcionen* servicios de blockchain básicos, lo que incluye la validación de transacciones, la ordenación de transacciones y los servicios de gestión de certificados.  Al ejecutar estos servicios, los miembros mantienen la integridad del libro mayor compartido en el epicentro de la red de blockchain.  ¿Cuántos miembros se necesitan para que blockchain esté operativo? La respuesta dependerá del requisito de confianza de la red. Algunas redes toleran un modelo de confianza más centralizado que necesite menos miembros que actúen como proveedores.  Otras redes requieren un conjunto de miembros más diverso (es decir, entidades jurídicamente separadas) y disponen de un modelo de confianza más descentralizado.  Un ejemplo de modelo de confianza más centralizado sería una red de visibilidad de la cadena de suministro cuyos miembros sean un minorista global, una empresa de envíos globales e IBM.  En este caso, estos tres miembros actuarían como “base de confianza” de la red y prestarían los servicios básicos de la red de blockchain.   Estos miembros pueden emitir certificados a importadores, exportadores, agentes personalizados o minoristas para que estos puedan participar (emitir transacciones) en la red. Esta red puede descentralizar la confianza mediante la habilitación de más miembros para la prestación de servicios básicos, garantizando que todos los miembros tengan control pero que ningún miembro tenga el control exclusivo. Una red típica tiene alrededor de 10 miembros que prestan servicios de base de blockchain.
+- **Proveedores: confiamos en los miembros**. Una red de blockchain se basa en sus miembros.   Para que una red de blockchain sea operativa, debe haber un conjunto mínimo de miembros que *proporcionen* servicios de blockchain básicos, lo que incluye la validación de transacciones, la ordenación de transacciones y los servicios de gestión de certificados. Al ejecutar estos servicios, los miembros mantienen la integridad del libro mayor compartido en el epicentro de la red de blockchain. ¿Cuántos miembros se necesitan para que blockchain esté operativo? La respuesta dependerá del requisito de confianza de la red. Algunas redes toleran un modelo de confianza más centralizado que necesite menos miembros que actúen como proveedores.  Otras redes requieren un conjunto de miembros más diverso (es decir, entidades jurídicamente separadas) y disponen de un modelo de confianza más descentralizado.  Un ejemplo de modelo de confianza más centralizado sería una red de visibilidad de la cadena de suministro cuyos miembros sean un minorista global, una empresa de envíos globales e IBM.  En este caso, estos tres miembros actuarían como “base de confianza” de la red y prestarían los servicios básicos de la red de blockchain. Estos miembros pueden emitir certificados a importadores, exportadores, agentes personalizados o minoristas para que estos puedan participar (emitir transacciones) en la red. Esta red puede descentralizar la confianza mediante la habilitación de más miembros para la prestación de servicios básicos, garantizando que todos los miembros tengan control pero que ningún miembro tenga el control exclusivo. Una red típica tiene alrededor de 10 miembros que prestan servicios de base de blockchain.
 
 - **Consumidores: con la confianza establecida, es hora de invocar**. Con una base de confianza ya establecida, la red está lista para crecer.  Es bastante habitual que la mayoría de los miembros de la red solo la utilicen para invocar transacciones en el libro mayor distribuido.  Estos miembros son solo *consumidores* y no participan en la prestación de servicios básicos a la red.  Una red típica tiene entre 10 y 100 miembros con permiso para emitir transacciones dentro de una red de blockchain determinada.
 
@@ -136,7 +158,7 @@ La **modularidad** de la arquitectura Hyperledger Fabric y la separación de rol
 
 Las comprobaciones y compensaciones que se producen durante el ciclo de vida de una transacción garantizan resultados coherentes y rigurosos, y los libros mayores siempre están sincronizados durante la implementación del protocolo de rumores ("gossip") conocido. Se aplican controles de identidad y de acceso mediante operaciones de tipo **sign/verify** que se ejecutan constantemente en la red.  
 
-Se proporcionan **herramientas de gobierno** para que los miembros puedan administrar y gestionar las reglas empresariales de sus redes. Por ejemplo, es posible que un cliente desee implementar una política que defina el número de miembros de una red que deben estar de acuerdo para que se una un nuevo miembro. O quizás exista un activo que requiera la aprobación de cada participante para que entre en vigor una modificación. Las reglas de gobierno son fundamentales para cualquier tipo de red empresarial y, en ocasiones, son muy elaboradas. Las herramientas de gobierno (como por ejemplo los editores de políticas) simplifican en gran medida este proceso.
+Se proporcionan **herramientas de gobierno** para que los miembros puedan administrar y gestionar las reglas empresariales de sus redes. Por ejemplo, es posible que un cliente desee implementar una política que defina el número de miembros de una red que deben estar de acuerdo para que se una un nuevo miembro. O quizás exista un activo que requiera la aprobación de cada participante para que entre en vigor una modificación. Las reglas de gobierno son fundamentales para cualquier tipo de red empresarial y, en ocasiones, son muy elaboradas. Las herramientas de control (como por ejemplo los editores de políticas) simplifican en gran medida este proceso.
 
 El servicio se ejecuta en un entorno **aislado y de alta seguridad** sin acceso externo (incluido el acceso raíz) a los recursos de la red. Los datos se cifran al momento y en reposo y los módulos de soporte para módulos de seguridad de hardware permiten proteger las claves digitales según la regulación de la industria. La virtualización de hardware se utiliza para ejecutar cada nodo en un entorno aislado, protegiendo así otros nodos en la red de iguales con código de encadenamiento malicioso o que falla. La tarea de troceado ("hashing"), las operaciones sign/verify y las comunicaciones entre nodos se aceleran gracias a las avanzadas implementaciones criptográficas.
 
@@ -145,18 +167,6 @@ Antes de continuar, veamos una configuración simple dentro de la plataforma {{s
 ![Red de blockchain](images/blockchain_network_2-01.png "Ejemplo de red de blockchain")
 
 *Figura 1. Una red de blockchain de ejemplo que consta de cuatro miembros que aprovechan los canales para aislar los datos*
-
-## Ofertas de pertenencia de {{site.data.keyword.IBM_notm}}
-
-En la tabla siguiente, se resumen las opciones de miembros actuales y futuros.  
-
-|       | [Plan inicial](starter_plan.html)      | [Plan empresarial](enterprise_plan.html)  | Plan empresarial Plus | Plan autogestionado
-| ------------------------- |--------------------------|-----|-----|------|
-| **Qué se incluye** | **Niveles de servicio básico** | **Niveles de servicio avanzado; listo para producción empresarial** | Sistema dedicado para rendimiento y aislamiento | Pila de software para la instalación de una infraestructura propia + conexión a red alojada en este servicio en la nube |
-| **Política de facturación** | **Gratuita para beta<!--trial of 30 days, followed by monthly charge-->** | **Suscripción mensual** | Suscripción mensual | Suscripción mensual |
-| **Disponibilidad** | **Beta** | **Ya disponible** | Tras la adquisición | Próximamente |
-
-Regístrese ahora para ser [miembro de {{site.data.keyword.blockchainfull_notm}}![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps).
 
 ## {{site.data.keyword.IBM_notm}} Soporte
 

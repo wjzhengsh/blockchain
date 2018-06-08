@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-03-16"
+lastupdated: "2018-05-15"
 
 ---
 
@@ -12,7 +12,7 @@ lastupdated: "2018-03-16"
 {:codeblock: .codeblock}
 {:pre: .pre}
 
-# 监视 {{site.data.keyword.blockchain}} 网络
+# 监视区块链网络
 
 本教程显示如何在 {{site.data.keyword.Bluemix_short}} 上查看和监视 {{site.data.keyword.blockchain}} 网络的状态信息。
 {:shortdesc}
@@ -33,7 +33,7 @@ lastupdated: "2018-03-16"
 “成员”选项卡显示此通道上的成员的信息，包括组织操作员的电子邮件地址。![通道成员](../images/channel_members.png "通道成员")  
 
 * **链代码**  
-“链代码”选项卡将列出在此通道上实例化的所有链代码，其中包括代码标识、版本和运行链代码的同级数。   
+“链代码”选项卡列出在此通道上实例化的所有链代码，其中包括代码标识、版本和运行链代码的同级数。   
 
   展开链代码行，以获取有关链代码的详细信息：  
     * 您可以单击 **JSON** 以查看链代码的 JSON 文件。
@@ -45,7 +45,7 @@ lastupdated: "2018-03-16"
 
 ## 监视链代码
 
-进入“网络监视器”并打开“安装代码”屏幕（企业套餐网络中的“链代码”屏幕）。如果您有正在运行的链代码，请从下拉列表中选择一个同级，然后可以在表中查看该同级的所有链代码以及链代码标识和版本。可以在此屏幕上为对链代码执行安装和实例化。有关更多信息，请参阅[安装和实例化链代码](install_instantiate_chaincode.html)。
+进入“网络监视器”并打开“安装代码”屏幕。如果您有正在运行的链代码，请从下拉列表中选择一个同级，然后可以在表中查看该同级的所有链代码以及链代码标识和版本。可以在此屏幕上为对链代码执行安装和实例化。有关更多信息，请参阅[安装、实例化和更新链代码](install_instantiate_chaincode.html)。
 
   ![链代码](../images/chaincode_install_overview.png "链代码")
 

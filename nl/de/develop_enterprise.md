@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-3-16"
+lastupdated: "2018-05-15"
 
 ---
 
@@ -13,17 +13,18 @@ lastupdated: "2018-3-16"
 {:pre: .pre}
 {:tip: .tip}
 
-# Unternehmensnetz in Enterprise Plan bereitstellen
+# Unternehmensnetz im Enterprise Plan bereitstellen
+{: #deploying-a-business-network}
 
 Mithilfe der Entwicklertools von {{site.data.keyword.blockchainfull}} Platform: Develop können Sie eine **Unternehmensnetzdefinition** erstellen, die anschließend in ein Unternehmensnetzarchiv (Dateierweiterung `.bna`) gepackt werden kann. In der Entwicklerumgebung können Sie BNA-Dateien (`.bna`) in einer lokalen Blockchain oder in einer Cloud-{{site.data.keyword.blockchain}} zu Entwicklungszwecken und zur gemeinsamen Nutzung dieser Dateien bereitstellen.
 
-Dieses Lernprogramm erläutert den nächsten Schritt des Lebenszyklus eines Unternehmensnetzes, das heißt, die Aktivierung Ihres Unternehmensnetzes durch Bereitstellen der BNA-Dateien (`.bna`) in {{site.data.keyword.blockchainfull_notm}} Platform Enterprise Plan.
+Dieses Lernprogramm erläutert den nächsten Schritt des Lebenszyklus eines Unternehmensnetzes, das heißt, die Aktivierung Ihres Unternehmensnetzes durch Bereitstellen der BNA-Dateien (`.bna`) im {{site.data.keyword.blockchainfull_notm}} Platform Enterprise Plan.
 
 ## Vorbemerkungen
 
 Stellen Sie sicher, dass Sie die {{site.data.keyword.blockchainfull}}: Develop-Entwicklerumgebung installiert haben und mit der Entwicklung und Bereitstellung von Unternehmensnetzen vertraut sind. Anleitungen zum Schreiben von Unternehmensnetzen sind in der [Hyperledger Composer-Dokumentation](https://hyperledger.github.io/composer/latest/business-network/business-network-index) verfügbar.
 
-Sie benötigen Zugriff auf eine Enterprise Plan-Instanz von {{site.data.keyword.blockchainfull_notm}} Platform. Weitere Informationen zu {{site.data.keyword.blockchainfull_notm}} Platform Enterprise Plan finden Sie in der [Übersicht zu Enterprise Plan](./enterprise_plan.html).
+Sie benötigen Zugriff auf eine Enterprise Plan-Instanz von {{site.data.keyword.blockchainfull_notm}} Platform. Weitere Informationen zum {{site.data.keyword.blockchainfull_notm}} Platform Enterprise Plan finden Sie in der [Übersicht zu Enterprise Plan](./enterprise_plan.html).
 
 ## Schritt 1: Verbindungsprofil für {{site.data.keyword.blockchainfull_notm}} Platform erstellen
 
@@ -68,13 +69,13 @@ Sie benötigen Zugriff auf eine Enterprise Plan-Instanz von {{site.data.keyword.
             "timeout": 300
         }
 
-    Sie füllen die neu erstellte Datei `connection.json` mit Attributen, die über Ihr {{site.data.keyword.blockchainfull_notm}} Platform-Dashboard bereitgestellt werden. Wählen Sie in Ihrem Dashboard die Option **Übersicht** aus, klicken Sie auf die Schaltfläche **Serviceberechtigungsnachweise**, um die Endpunkt- und Zertifikatsinformationen für die Mitglieder des Kanals anzuzeigen.
+    Sie füllen die neu erstellte Datei `connection.json` mit Attributen, die über Ihr {{site.data.keyword.blockchainfull_notm}} Platform-Dashboard bereitgestellt werden. Wählen Sie in Ihrem Dashboard die Option **Übersicht** aus, klicken Sie auf die Schaltfläche **Verbindungsprofil**, um die Endpunkt- und Zertifikatsinformationen für die Mitglieder des Kanals anzuzeigen.
 
 ## Schritt 2: Informationen zu Anordnungsknoten hinzufügen
 
-1. Jetzt kann mit der Änderung der Vorlage mit den Informationen begonnen werden, die von den Serviceberechtigungsnachweisen bereitgestellt werden. Es sind möglicherweise mehrere Anordnungsknoten in den Serviceberechtigungsnachweisen vorhanden, jedoch ist nur einer für eine Datei `connection.json` erforderlich.
+1. Jetzt kann mit der Änderung der Vorlage mit den Informationen begonnen werden, die vom Verbindungsprofil bereitgestellt werden. Es sind möglicherweise mehrere Anordnungsknoten im Verbindungsprofil vorhanden, jedoch ist nur einer für eine Datei `connection.json` erforderlich.
 
-    Ersetzen Sie die URL-Werte für die Anordnungsknoten in der Vorlage durch die relevanten Informationen aus Ihren Serviceberechtigungsnachweisen im folgenden Format:
+    Ersetzen Sie die URL-Werte für die Anordnungsknoten in der Vorlage durch die relevanten Informationen aus Ihrem Verbindungsprofil im folgenden Format:
 
         “url”: “grpcs://abca.4.secure.blockchain.ibm.com:12345”
 
@@ -84,7 +85,7 @@ Sie benötigen Zugriff auf eine Enterprise Plan-Instanz von {{site.data.keyword.
 
 ## Schritt 4: Peerinformationen hinzufügen
 
-1. Die Anforderungs-URL (**requestURL**) und die Ereignis-URL (**eventURL**) müssen für jeden Peer festgelegt werden. Ersetzen Sie das Attribut **url** durch den Wert für **url**, der sich in Ihren Serviceberechtigungsnachweisen befindet. Ersetzen Sie das Attribut **eventURL** durch die Ereignis-URL (**eventUrl**), die sich in Ihren Serviceberechtigungsnachweisen befindet. Nach diesen Änderungen sollte der Abschnitt "peers" in der Datei `connection.json` das folgende Format haben:
+1. Die Anforderungs-URL (**requestURL**) und die Ereignis-URL (**eventURL**) müssen für jeden Peer festgelegt werden. Ersetzen Sie das Attribut **url** durch den Wert für **url**, der sich in Ihrem Verbindungsprofil befindet. Ersetzen Sie das Attribut **eventURL** durch die Ereignis-URL (**eventUrl**), die sich in Ihrem Verbindungsprofil befindet. Nach diesen Änderungen sollte der Abschnitt "peers" in der Datei `connection.json` das folgende Format haben:
 
         "peers": [
           {
@@ -103,7 +104,7 @@ Sie benötigen Zugriff auf eine Enterprise Plan-Instanz von {{site.data.keyword.
 
 ## Schritt 7: MSP-ID hinzufügen
 
-Der Wert **mspID** in Ihrer Datei `connection.json` muss auf den mspID-Wert Ihrer Organisation gesetzt werden. Die Serviceberechtigungsnachweise geben eine Liste der Organisationen mit ihren zugeordneten mspID-Werten an. Sie müssen den Wert aus dem Attribut **mspid** Ihrer Organisation verwenden.
+Der Wert **mspID** in Ihrer Datei `connection.json` muss auf den mspID-Wert Ihrer Organisation gesetzt werden. Das Verbindungsprofil enthält eine Liste der Organisationen mit ihren zugeordneten mspID-Werten. Sie müssen den Wert aus dem Attribut **mspid** Ihrer Organisation verwenden.
 
 ## Schritt 8: globalCert-Wert hinzufügen
 1. {{site.data.keyword.blockchainfull_notm}} Platform verwendet ein allgemeines TLS-Zertifikat für die Anordnungsknoten und Peers. Für jeden Anordnungsknoten und jeden Peer gibt es ein Attribut **tlsCACerts**, das jeweils dasselbe Zertifikat enthält. Ersetzen Sie den Pseudowert in der Datei `connection.json` durch den Wert aus **tlsCACerts**. Der Wert sollte das folgende Format haben:
@@ -114,7 +115,7 @@ Der Wert **mspID** in Ihrer Datei `connection.json` muss auf den mspID-Wert Ihre
 
 **Hinweis:** Dieser Schritt **muss** ausgeführt werden, bevor Sie den Kanal erstellen, für den ein Unternehmensnetz bereitgestellt werden soll. Falls dieser Schritt nach der Kanalerstellung ausgeführt wird, lässt sich ein bereitgestelltes Unternehmensnetz **nicht starten**.
 
-Im Dokument der Serviceberechtigungsnachweise befindet sich unter **certificateAuthorities** ein Attribut **registrar**, das Attribute für **enrollId** und **enrollSecret** im folgenden Format enthält:
+Im Verbindungsprofildokument befindet sich unter **certificateAuthorities** ein Attribut **registrar**, das Attribute für **enrollId** und **enrollSecret** im folgenden Format enthält:
 
         "registrar": [
             {

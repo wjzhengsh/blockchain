@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-3-16"
+lastupdated: "2018-05-15"
 
 ---
 
@@ -14,6 +14,7 @@ lastupdated: "2018-3-16"
 {:tip: .tip}
 
 # 在企业套餐上部署业务网络
+{: #deploying-a-business-network}
 
 {{site.data.keyword.blockchainfull}} Platform: Develop 的开发者工具可帮助您创建**业务网络定义**，然后可将其打包成业务网络归档 (`.bna`)。开发者环境支持您将 `.bna` 文件部署到本地或云 {{site.data.keyword.blockchain}} 以进行开发和共享。
 
@@ -68,13 +69,13 @@ lastupdated: "2018-3-16"
             "timeout": 300
         }
 
-    您将使用通过 {{site.data.keyword.blockchainfull_notm}} Platform 仪表板提供的属性来填充新创建的 `connection.json` 文件。在仪表板上，选择**概述**，然后选择**服务凭证**按钮以显示通道成员的端点和证书信息。
+    您将使用通过 {{site.data.keyword.blockchainfull_notm}} Platform 仪表板提供的属性来填充新创建的 `connection.json` 文件。在仪表板上，选择**概述**，然后选择**连接概要文件**按钮以显示通道成员的端点和证书信息。
 
 ## 步骤 2：添加排序者信息
 
-1. 现在，我们可以开始使用“服务凭证”提供的信息来修改模板。“服务凭证”中可能有多个排序者，但 `connection.json` 文件只需要一个排序者。
+1. 现在，我们可以开始使用“连接概要文件”提供的信息来修改模板。“连接概要文件”中可能有多个排序者，但 `connection.json` 文件只需要一个排序者。
 
-    将模板中的排序者 URL 值替换为“服务凭证”中的相关信息，格式如下：
+    将模板中的排序者 URL 值替换为“连接概要文件”中的相关信息，格式如下：
 
         “url”: “grpcs://abca.4.secure.blockchain.ibm.com:12345”
 
@@ -84,7 +85,7 @@ lastupdated: "2018-3-16"
 
 ## 步骤 4：添加同级信息
 
-1. 必须设置每个同级的 **requestURL** 和 **eventURL**。将 **url** 属性替换为在“服务凭证”中找到的 **url** 值。将 **eventURL** 属性替换为在“服务凭证”中找到的 **eventUrl**。进行更改后，`connection.json` 的 peers 部分应该具有以下格式：
+1. 必须设置每个同级的 **requestURL** 和 **eventURL**。将 **url** 属性替换为在“连接概要文件”中找到的 **url** 值。将 **eventURL** 属性替换为在“连接概要文件”中找到的 **eventUrl**。进行更改后，`connection.json` 的 peers 部分应该具有以下格式：
 
         "peers": [
           {
@@ -103,7 +104,7 @@ lastupdated: "2018-3-16"
 
 ## 步骤 7：添加 mspID
 
-`connection.json` 文件中的 **mspID** 值应设置为您组织的 mspID。“服务凭证”提供了组织及其关联 mspid 值的列表。应该使用组织的 **mspid** 属性值。
+`connection.json` 文件中的 **mspID** 值应设置为您组织的 mspID。“连接概要文件”提供了组织及其关联 mspid 值的列表。应该使用组织的 **mspid** 属性值。
 
 ## 步骤 8：添加 globalCert
 1. {{site.data.keyword.blockchainfull_notm}} Platform 对排序者和同级使用一个公共 TLS 证书。对于每个排序者和同级，都有 **tlsCACerts** 属性，这些属性都包含相同的证书。将 `connection.json` 文件中的哑元值替换为 **tlsCACerts** 值。该值应该采用以下格式：
@@ -114,7 +115,7 @@ lastupdated: "2018-3-16"
 
 **请注意**：**必须**在创建要将业务网络部署到的通道之前执行此步骤。如果在通道创建后执行此步骤，部署的业务网络**不会启动**。
 
-在服务凭证文档中，**certificateAuthorities** 下是 **registrar** 属性，包含 **enrollId** 和 **enrollSecret** 属性，格式如下：
+在“连接概要文件”文档中，**certificateAuthorities** 下是 **registrar** 属性，包含 **enrollId** 和 **enrollSecret** 属性，格式如下：
 
         "registrar": [
             {

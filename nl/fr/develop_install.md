@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-3-16"
+lastupdated: "2018-5-15"
 
 ---
 
@@ -18,6 +18,8 @@ lastupdated: "2018-3-16"
 
 Suivez ces instructions pour obtenir les outils de développement de la plateforme {{site.data.keyword.blockchainfull}} : Develop pour créer et tester des réseaux d'entreprise. Pour une plus grande souplesse et un nombre maximum de scénarios de développement, test et déploiement, les outils de développement sont fournis sous la forme de modules npm, qui peuvent être contrôlés depuis la ligne de commande.
 
+Différentes de certains composants sont nécessaires pour une utilisation avec le plan Starter et le plan Enterprise. Pour utiliser l'environnement de développement avec le plan Starter, les modules doivent être installés en version `0.19.x 19.`. Pour utiliser l'environnement de développement avec le plan Enterprise, les modules doivent être installés en version `0.16.x`. 
+
 ## Avant de commencer
 
 Assurez-vous d'installer les éléments prérequis suivants :
@@ -27,30 +29,44 @@ Assurez-vous d'installer les éléments prérequis suivants :
 - npm version 5.x
 - git version 2.9.x ou suivante
 - Python version 2.7.x
-- Docker Engine version 17.03 ou suivante
-- Docker-Compose version 1.8 ou suivante
 - Editeur de code de votre choix, par exemple VSCode.
 
-Si vous utilisez VSCode, une extension VSCode Hyperledger Composer est disponible [ici](https://marketplace.visualstudio.com/items?itemName=HyperledgerComposer.composer-support-client).
+Si vous utilisez le plan Enterprise, installez les autres éléments prérequis suivants :
 
+- Docker Engine version 17.03 ou suivante
+- Docker-Compose version 1.8 ou suivante
+
+Si vous utilisez VSCode, une extension VSCode Hyperledger Composer est disponible [ici](https://marketplace.visualstudio.com/items?itemName=HyperledgerComposer.composer-support-client).
 
 ## Etape 1 : Installer les outils de ligne de commande
 
 Les outils de ligne de commande incluent **composer-cli**, module de ligne de commande principal de la plateforme {{site.data.keyword.blockchainfull_notm}} : Develop. Les modules **generator-hyperledger-composer**, **composer-rest-server** et **Yeoman** sont utilisés pour générer des réseaux d'entreprise, des serveur REST spécifiques et des applications Angular.
 
-1. Installez **composer-cli** à l'aide de la commande suivante :
+1. Pour une utilisation avec le plan Starter, installez **composer-cli** à l'aide de la commande suivante :
 
-        npm install -g composer-cli@next
+        npm install -g composer-cli@0.19.x
 
-2. Installez **composer-rest-server** à l'aide de la commande suivante :
+    Pour une utilisation avec le plan Enterprise, installez **composer-cli** à l'aide de la commande suivante :
 
-        npm install -g composer-rest-server@next
+        npm install -g composer-cli@0.16.x
+
+2. Pour une utilisation avec le plan Starter, installez **composer-rest-server** à l'aide de la commande suivante :
+
+        npm install -g composer-rest-server@0.19.x
+
+    Pour une utilisation avec le plan Enterprise, installez **composer-rest-server** à l'aide de la commande suivante :
+
+        npm install -g composer-rest-server@0.16.x
 
     Utilisez le module **composer-rest-server** pour créer un serveur REST sur votre machine et exposer votre réseau d'entreprise sous la forme d'API RESTful.
 
-3. Installez **generator-hyperledger-composer** à l'aide de la commande suivante :
+3. Pour une utilisation avec le plan Starter, installez **generator-hyperledger-composer** à l'aide de la commande suivante :
 
-        npm install -g generator-hyperledger-composer@next
+        npm install -g generator-hyperledger-composer@0.19.x
+
+    Pour une utilisation avec le plan Enterprise, installez **generator-hyperledger-composer** à l'aide de la commande suivante :
+
+        npm install -g generator-hyperledger-composer@0.16.x
 
     Utilisez **generator-hyperledger-composer** pour générer des structures de réseau d'entreprise, des modèles et une application Angular.
 
@@ -60,9 +76,13 @@ Les outils de ligne de commande incluent **composer-cli**, module de ligne de co
 
 ## Etape 2 : Installer une interface Playground
 
-L'interface Playground d'Hyperledger Composer est une interface utilisateur qui peut être connectée à une {{site.data.keyword.blockchain}} réelle ou utilisée en tant qu'environnement simulé pour tester un réseau d'entreprise. Installez l'interface Playground à l'aide de la commande suivante :
+L'interface Playground d'Hyperledger Composer est une interface utilisateur qui peut être connectée à une {{site.data.keyword.blockchain}} réelle ou utilisée en tant qu'environnement simulé pour tester un réseau d'entreprise. Pour une utilisation avec le plan Starter, installez l'interface Playground à l'aide de la commande suivante :
 
-        npm install -g composer-playground@next
+        npm install -g composer-playground@0.19.x
+
+    Pour une utilisation avec le plan Enterprise, installez l'aire de jeu à l'aide de la commande suivante :
+
+        npm install -g composer-playground@0.16.x
 
 ## Facultatif : Configurez votre environnement de développement intégré
 
@@ -72,7 +92,7 @@ Vous pouvez utiliser l'interface Playground pour développer, éditer et tester 
 
 2. Ouvrez VSCode, accédez à Extensions, puis recherchez et installez l'extension Hyperledger Composer depuis la place du marché.
 
-## Etape 3 : Installer une instance locale d'Hyperledger Fabric
+## Plan Enterprise uniquement : Installez une version locale de Hyperledger Fabric et connectez-vous à celle-ci avec l'interface Playground
 
 Le déploiement d'une instance locale d'Hyperledger Fabric vous permet de tester intégralement des règles de contrôle d'accès et des réseaux d'entreprise.
 
@@ -95,26 +115,22 @@ Dans un répertoire de votre choix, par exemple `~/fabric-tools`, recevez le fic
         export FABRIC_VERSION=hlfv11
         ./downloadFabric.sh
 
-## Etape 4 : Démarrer l'instance Hyperledger Fabric
+    Le répertoire `fabric-tools` contient un ensemble de scripts qui contrôlent l'instance Hyperledger Fabric téléchargée. Vous devez exécuter la commande `./createPeerAdminCard.sh` pour générer une carte de réseau d'entreprise, laquelle peut ensuite être utilisée pour déployer le réseau d'entreprise dans le Docker qui héberge l'instance Hyperledger Fabric.
 
-Le répertoire `fabric-tools` contient un ensemble de scripts qui contrôlent l'instance Hyperledger Fabric téléchargée. Vous devez exécuter la commande `./createPeerAdminCard.sh` pour générer une carte de réseau d'entreprise, laquelle peut ensuite être utilisée pour déployer le réseau d'entreprise dans le Docker qui héberge l'instance Hyperledger Fabric.
-
-1. Exécutez les commandes suivantes pour démarrer l'instance Hyperledger Fabric version 1.1 :
+4. Exécutez les commandes suivantes pour démarrer l'instance Hyperledger Fabric version 1.1 :
 
         cd ~/fabric-tools
         export FABRIC_VERSION=hlfv11
         ./startFabric.sh
         ./createPeerAdminCard.sh
 
-## Facultatif : Connectez-vous à l'instance Hyperledger Fabric à l'aide de l'interface Playground
+    Pour commencer à développer un réseau d'entreprise, utilisez l'interface Hyperledger Composer ou votre environnement de développement intégré.
 
-Pour commencer à développer un réseau d'entreprise, utilisez l'interface Hyperledger Composer ou votre environnement de développement intégré.
-
-1. Pour démarrer l'interface Playground, exécutez la commande suivante :
+5. Pour démarrer l'interface Playground, exécutez la commande suivante :
 
         composer-playground
 
-    L'interface Playground s'ouvre à l'URL suivante : http://localhost:8080/login. La carte **PeerAdmin@hlfv1** créée à l'étape précédente peut être utilisée pour déployer un réseau d'entreprise. 
+    L'interface Playground s'ouvre à l'URL suivante : http://localhost:8080/login. La carte **PeerAdmin@hlfv1** créée à l'étape précédente peut être utilisée pour déployer un réseau d'entreprise.
 
 
 ## Démarrage et arrêt d'Hyperledger Fabric

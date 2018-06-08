@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-3-16"
+lastupdated: "2018-05-15"
 
 ---
 
@@ -14,6 +14,7 @@ lastupdated: "2018-3-16"
 {:tip: .tip}
 
 # Despliegue de una red empresarial en el Plan empresarial
+{: #deploying-a-business-network}
 
 Las herramientas del desarrollador de {{site.data.keyword.blockchainfull}} Platform: Develop le ayudan a crear una **Definición de red empresarial**, que se puede empaquetar en un archivo de red empresarial (`.bna`). El entorno del desarrollador le permite desplegar archivos `.bna` en un {{site.data.keyword.blockchain}} local o de nube para su desarrollo y compartición.
 
@@ -68,13 +69,13 @@ Necesita acceso a una instancia del Plan empresarial de la plataforma {{site.dat
             "timeout": 300
         }
 
-    Deberá llenar el archivo `connection.json` recién creado con los atributos que se proporcionan mediante el panel de control de la plataforma {{site.data.keyword.blockchainfull_notm}}. Desde el panel de control, seleccione **Visión general** y luego el botón **Credenciales de servicio** para visualizar el punto final y la información de certificado para los miembros del canal.
+    Deberá llenar el archivo `connection.json` recién creado con los atributos que se proporcionan mediante el panel de control de la plataforma {{site.data.keyword.blockchainfull_notm}}. Desde el panel de control, seleccione **Visión general** y luego el botón **Perfil de conexión** para visualizar el punto final y la información de certificado para los miembros del canal.
 
 ## Paso dos: Adición de información del clasificador
 
-1. Ahora podemos empezar a modificar la plantilla con la información que proporcionan las credenciales de servicio. Podría haber varios clasificadores en las credenciales de servicio, pero solo se necesita uno para el archivo `connection.json`.
+1. Ahora podemos empezar a modificar la plantilla con la información que proporciona el perfil de conexión. Podría haber varios clasificadores en el perfil de conexión, pero solo se necesita uno para un archivo `connection.json`.
 
-    Sustituya los valores de url del clasificador de la plantilla por la información pertinente de las credenciales de servicio en el formato siguiente:
+    Sustituya los valores url del clasificador de la plantilla por la información relevante del perfil de conexión en el formato siguiente:
 
         “url”: “grpcs://abca.4.secure.blockchain.ibm.com:12345”
 
@@ -84,7 +85,7 @@ Necesita acceso a una instancia del Plan empresarial de la plataforma {{site.dat
 
 ## Paso cuatro: Adición de información de iguales
 
-1. Se deben establecer los valores de **requestURL** y **eventURL** para cada igual. Sustituya el atributo **url** por el valor de **url** que se encuentra en las credenciales de servicio. Sustituya el atributo **eventURL** por el valor **eventUrl** que se encuentra en las credenciales de servicio. Después de realizar los cambios, la sección peers del archivo `connection.json` debería tener el siguiente formato:
+1. Se deben establecer los valores de **requestURL** y **eventURL** para cada igual. Sustituya el atributo **url** por el valor **url** que se encuentra en el perfil de conexión. Sustituya el atributo **eventURL** por el valor **eventUrl** que se encuentra en el perfil de conexión. Después de realizar los cambios, la sección peers del archivo `connection.json` debería tener el siguiente formato:
 
         "peers": [{
               "requestURL": "grpcs://abca.4.secure.blockchain.ibm.com:12345",
@@ -102,7 +103,7 @@ Necesita acceso a una instancia del Plan empresarial de la plataforma {{site.dat
 
 ## Paso siete: Adición de un mspID
 
-El valor de **mspID** del archivo `connection.json` se debe establecer en el mspID o la organización. Las credenciales de servicio proporcionan una lista de organizaciones con sus valores de mspid asociados. Debe utilizar el valor del atributo **mspid** correspondiente a su organización.
+El valor de **mspID** del archivo `connection.json` debe establecerse en el mspID de la organización. El perfil de conexión proporciona una lista de las organizaciones con sus valores mspid asociados. Debe utilizar el valor del atributo **mspid** de su organización.
 
 ## Paso ocho: Adición de globalCert
 1. La plataforma {{site.data.keyword.blockchainfull_notm}} utiliza un certificado TLS común para clasificadores e iguales. Para cada clasificador e igual, hay un atributo **tlsCACerts**; todos contienen el mismo certificado. Sustituya el valor ficticio del archivo `connection.json` por el valor de **tlsCACerts**. Debe tener el siguiente formato:
@@ -113,7 +114,7 @@ El valor de **mspID** del archivo `connection.json` se debe establecer en el msp
 
 **Nota**: este paso se **debe** realizar antes de crear el canal en el que se va a desplegar una red empresarial. Si este paso se realiza después de crear el canal, la red empresarial desplegada **no se iniciará**.
 
-En el documento de credenciales de servicio, bajo **certificateAuthorities**, hay un atributo **registrar** que contiene atributos correspondientes a **enrollId** y **enrollSecret** en el formato siguiente:
+En el documento de perfil de conexión, bajo **certificateAuthorities**, hay un atributo **registrar** que contiene atributos correspondientes a **enrollId** y **enrollSecret** en el formato siguiente:
 
         "registrar": [
             {
@@ -157,7 +158,7 @@ En el documento de credenciales de servicio, bajo **certificateAuthorities**, ha
 
 ## Paso once: Importación de una nueva identidad para administrar la red empresarial
 
-Cree una identidad en Composer utilizando los certificados solicitados con anterioridad. Esta nueva identidad tendrá autoridad para instalar código de encadenamiento en los iguales que tienen el certificado público cargado y será un emisor para las entidades emisoras de certificados.
+Cree una identidad en Composer utilizando los certificados solicitados con anterioridad. Esta nueva identidad tendrá autoridad para instalar un código de encadenamiento en los iguales que tienen el certificado público cargado y será un emisor para las entidades emisoras de certificados.
 
 1. Para crear la nueva identidad, ejecute el mandato siguiente:
 

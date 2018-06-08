@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-03-16"
+lastupdated: "2018-05-15"
 
 ---
 
@@ -12,7 +12,7 @@ lastupdated: "2018-03-16"
 {:codeblock: .codeblock}
 {:pre: .pre}
 
-# Test des API avec Swagger
+# Interaction avec le réseau à l'aide d'API Swagger
 
 La plateforme {{site.data.keyword.blockchainfull}} expose un certain nombre d'API REST pour simplifier le développement de vos applications. Vous pouvez les tester sur vos réseaux de blockchain à l'aide d'une interface utilisateur Swagger.
 {:shortdesc}
@@ -22,7 +22,9 @@ Avant de commencer, vous devez créer une instance de service de plateforme [{{s
 
 ## Extraction des données d'identification réseau
 
-Accédez au Moniteur réseau de votre réseau de blockchain et ouvrez l'écran "API" dans le navigateur de gauche. Vous pouvez voir vos données d'identification réseau pour les API REST. Vous pourrez autoriser ultérieurement les API à l'aide des valeurs de "key" et "secret" affichées ici, puis exécuter les API avec "network_id" comme paramètre. Cliquez sur **Show secret** pour afficher la valeur de la zone de valeur confidentielle. Copiez les valeurs des zones key, secret et network_id, que vous pouvez utiliser plus tard dans l'interface utilisateur Swagger.
+{: #retrieving-network-credentials}
+
+Accédez au Moniteur réseau de votre réseau de blockchain et ouvrez l'écran "API" dans le navigateur de gauche. Vous pouvez voir vos données d'identification réseau pour les API REST. Vous pourrez autoriser ultérieurement les API à l'aide des valeurs de "key" et "secret" affichées ici, puis exécuter les API avec "network_id" comme paramètre. Cliquez sur **Afficher le secret** pour afficher la valeur de la zone de valeur confidentielle. Copiez les valeurs des zones key, secret et network_id, que vous pouvez utiliser plus tard dans l'interface utilisateur Swagger.
 
 <!-- Removing this code snippet so people don't try to use these values
 ```
@@ -37,13 +39,15 @@ Accédez au Moniteur réseau de votre réseau de blockchain et ouvrez l'écran "
 -->
 
 La **Figure 1** illustre l'écran "API" :
-![Ecran Présentation](../images/restAPI.png)
+
+![Ecran API](../images/API_screen_starter.png "Ecran API")
 *Figure 1. API*
 
 Si vous utilisez le plan Starter, il est possible de basculer entre les organisations dans le Moniteur réseau. Avec le plan Starter, deux organisations sont configurées par défaut. le basculement entre organisations peut être utile pour tester les API REST du point de vue de chaque organisation. Pour obtenir les données d'identification d'une autre organisation de votre réseau, cliquez sur votre nom d'utilisateur dans l'angle supérieur droit de la console Moniteur réseau. Dans le menu qui s'ouvre, cliquez sur la flèche déroulante en regard de la vue Organisation pour afficher toutes les organisations. Sélectionnez l'organisation vers laquelle vous voulez basculer et afficher les données d'identification réseau associées.
 
 La **Figure 2** illustre le basculement entre organisations :
-![Basculement entre organisations](../images/restAPIOrganization.png)
+
+![Basculement entre organisations](../images/switch_orgs_starter.gif "Basculement entre organisations")  
 *Figure 2. Basculement entre organisations*
 
 
@@ -58,18 +62,20 @@ Dans l'interface utilisateur swagger, cliquez sur le bouton **Autoriser** afin d
 
 Avec l'authentification de base, les données d'identification que vous indiquez dans la fenêtre Autoriser sont stockées dès que vous cliquez sur les boutons **Autoriser** et **Terminé** et elles sont transmises sur chaque appel d'API REST.
 
-La **Figure 3** illustre la fenêtre en incrustation "Autoriser" :
-![Fenêtre en incrustation Autoriser](../images/swaggerUIAuthorize.png)
-*Figure 3. Fenêtre en incrustation Autoriser*
+La **Figure 3** illustre le processus d'autorisation des API Swagger :
+
+![Autorisation des API](../images/swaggerUIAuthorize.gif "Autorisation des API")  
+*Figure 3. Autorisation des API*
 
 
 ## Test des API
 
 Cliquez sur l'API REST que vous voulez exécuter puis sur le bouton **Essayez**. Entrez les paramètres obligatoires et cliquez sur **Exécuter**. L'appel API REST s'exécute sur votre réseau.
 
-La **Figure 4** illustre l'"interface utilisateur swagger" :
-![Swagger UI](../images/swaggerUITryItOut.png)
-*Figure 4. Swagger UI*
+La **Figure 4** illustre l'"interface utilisateur Swagger":
+
+![Interface utilisateur Swagger](../images/swaggerUITryItOut.png "Interface utilisateur Swagger")  
+*Figure 4. Interface utilisateur Swagger*
 
 
 ## Conseils pour l'identification et la résolution des problèmes

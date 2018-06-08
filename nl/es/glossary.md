@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-03-16"
+lastupdated: "2018-05-15"
 
 ---
 
@@ -35,7 +35,7 @@ Autoridad emisora de certificados. Un recurso de la red de blockchain que emite 
 La cadena del libro mayor es un registro de transacciones estructurado como bloques de transacciones relacionadas con hash. Los iguales reciben bloques de transacciones del servicio de ordenación, marcan las transacciones del bloque como válidas o no válidas en función de las políticas de aprobación y de las infracciones de simultaneidad y añaden el bloque a la cadena hash en el sistema de archivos del igual.
 
 ## Código de encadenamiento
-También conocidos como contratos digitales, los códigos de encadenamiento son fragmentos de software que contienen un conjunto de funciones para consultar o actualizar el libro mayor.
+También conocidos como contratos digitales, el código de encadenamiento son fragmentos de software que contienen un conjunto de funciones para consultar o actualizar el libro mayor.
 
 ## Canal
 Consiste en una subred de miembros de la red que desean realizar transacciones en privado. Los canales proporcionan aislamiento de datos y confidencialidad permitiendo que los miembros de un canal establezcan normas específicas y un libro mayor separado, al que solo pueden acceder los miembros del canal. Los iguales, que son los nodos que funcionan como puntos finales de transacción para las organizaciones, se unen a los canales.
@@ -48,6 +48,9 @@ El archivo de conexión se puede ver en la pantalla "Visión general" del superv
 
 ## Consenso
 Proceso de colaboración para mantener las transacciones del libro mayor sincronizadas en la red. El consenso garantiza que los libros mayores se actualizan solo cuando los participantes adecuados apruebas las transacciones y que los libros mayores se actualizan con las mismas transacciones en el mismo orden. Existen muchas maneras algorítmicas diferentes para alcanzar un consenso.
+
+## Estado actual
+El estado actual del libro mayor representa los valores más recientes para todas las claves alguna vez incluidas en su registro de transacciones de encadenamiento. Dado que el estado actual representa todos los valores de claves más recientes conocidos en el canal, a veces se refiere al mismo como Escenario mundial. El código de encadenamiento ejecuta propuestas de transacción en los datos de estado actuales. El estado actual cambia cada vez cuando cambia el valor de una clave o cuando se añade una clave nueva. El estado actual es fundamental para un flujo de transacciones porque el valor clave-valor más reciente debe ser conocido para poder cambiarse. Los iguales confirman los valores más recientes en el estado actual del libro mayor para cada transacción válida de un bloque.
 
 ## Pertenencia dinámica
 Un usuario con el privilegio de **registrador** puede añadir de forma dinámica un miembro a la red. A los miembros también se les asignan roles y atributos, que controlan su acceso y autoridad en la red. Sin embargo, ni los roles ni los atributos se pueden asignar de forma dinámica. Hyperledger Fabric permite añadir o eliminar miembros, iguales y nodos de servicio de ordenación sin poner en peligro las operaciones de la red general. La pertenencia dinámica resulta crítica cuando se tienen que añadir o eliminar ajustes de relaciones empresariales y entidades por diversos motivos.
@@ -76,6 +79,9 @@ Proceso de colocar un código de encadenamiento en el sistema de archivos en un 
 ## Crear instancia
 Proceso de iniciar e inicializar un contenedor de código de encadenamiento en un canal específico. Una vez se ha instalado el código de encadenamiento en los iguales y cada igual se ha unido al canal, se debe crear una instancia del código de encadenamiento en el canal. La creación de una instancia realiza la inicialización necesaria del código de encadenamiento, lo que incluye definir los pares de clave y valor que forman el estado inicial de un código de encadenamiento. Después de crear la instancia, los iguales que tienen el código de encadenamiento instalado pueden aceptar invocaciones de código de encadenamiento.
 
+## Kafka
+Implementación de plug-in de consenso para Hyperledger Fabric que da lugar a un clúster de nodos de servicio de ordenación en la red de blockchain. Una implementación kafka está pensada para una red de producción.
+
 ## Libro mayor
 Consta de una "cadena de bloques" literal que almacena el registro de transacciones inmutable y secuencial, así como una base de datos de estado que permite mantener el estado actual. Hay un libro mayor por canal y las actualizaciones en el mismo se gestionan mediante el proceso de consenso según las políticas de cada canal.
 
@@ -89,7 +95,7 @@ Proveedor de servicios de pertenencia (Membership Service Provider).  Conjunto d
 Instancia de un servicio de la plataforma {{site.data.keyword.blockchainfull_notm}} en {{site.data.keyword.cloud_notm}}.
 
 ## Credenciales de red
-Visibles desde la pantalla "API" del supervisor de red. Las credenciales incluyen su "clave" (nombre de usuario) y "secreto" (contraseña) en la IU de Swagger. Debe utilizar estas credenciales de red para autenticarse antes de ejecutar las API REST. 
+Visibles desde la pantalla "API" del supervisor de red. Las credenciales incluyen su "clave" (nombre de usuario) y "secreto" (contraseña) en la IU de Swagger. Debe utilizar estas credenciales de red para autenticarse antes de ejecutar las API REST.
 
 ## Supervisor de red
 Panel de control de GUI que proporciona la plataforma {{site.data.keyword.blockchainfull_notm}} para ver y gestionar la red de blockchain.
@@ -126,3 +132,6 @@ Mecanismo que utilizan los participantes en la red de blockchain para interactua
 
 ## Usuario
 Un usuario es un participante en una red de blockchain que tiene acceso indirecto al libro mayor a través de una relación de confianza con un miembro existente.
+
+## Escenario mundial
+Consulte [Estado actual](#current-state).

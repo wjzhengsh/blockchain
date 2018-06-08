@@ -22,11 +22,11 @@ lastupdated: "2018-03-16"
 IBM 在創新領域擁有歷史悠久的領導地位，現在更以 {{site.data.keyword.Bluemix_notm}} 上的 {{site.data.keyword.blockchainfull_notm}} 供應項目方案延續這項創新精神。{{site.data.keyword.blockchain}} 是一項快速發展的技術，預計將會為金融業、區域和廣域供應鏈，以及無數商業領域的物流支援帶來一陣紛亂。透過各種早期採用計劃，IBM 客戶及事業夥伴已主動將區塊鏈推進為產業解決方案。{{site.data.keyword.blockchainfull_notm}} on {{site.data.keyword.Bluemix_notm}} 就是一個這樣的計劃。**如同所有新技術一樣，{{site.data.keyword.blockchainfull_notm}} on {{site.data.keyword.Bluemix_notm}} 使用者應該注意快速及根本性變化的可能性**。  
 {:shortdesc}
 
-{{site.data.keyword.blockchainfull_notm}} 背後的基礎架構是 Linux Foundation 的 Hyperledger Fabric 專案。每一個開放程式碼社群的貢獻都會改進 Hyperledger Fabric，但可能會有採用上的挑戰。**IBM 警告不要直接在任何 Hyperledger Fabric 區塊鏈網路上定義或交換金融資產或任何有價值的資產**。  
+{{site.data.keyword.blockchainfull_notm}} 背後的基礎架構是 Linux Foundation 的 Hyperledger Fabric 專案。每一份開放程式碼社群的提出內容都會改進 Hyperledger Fabric，但可能會有採用上的挑戰。**IBM 警告不要直接在任何 Hyperledger Fabric 區塊鏈網路上定義或交換金融資產或任何有價值的資產**。  
 
 ## 開放程式碼聲明
 
-{{site.data.keyword.Bluemix_notm}} 上的 {{site.data.keyword.blockchainfull_notm}} 供應項目方案是以 Linux Foundation 的 Hyperledger Fabric 堆疊為建置基礎。Hyperledger Project 成員（包括 IBM）在 Hyperledger 的保護傘下，持續提出各種子專案。所有貢獻都會經過社群的檢閱、審查及測試。
+{{site.data.keyword.Bluemix_notm}} 上的 {{site.data.keyword.blockchainfull_notm}} 供應項目方案是以 Linux Foundation 的 Hyperledger Fabric 堆疊為建置基礎。Hyperledger Project 成員（包括 IBM）在 Hyperledger 的保護傘下，持續提出各種子專案。所有提出內容都會經過社群的檢閱、審查及測試。
 
 ## 鏈碼支援聲明
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-3-16"
+lastupdated: "2018-5-15"
 
 ---
 
@@ -18,6 +18,8 @@ lastupdated: "2018-3-16"
 
 按照以下指示信息来获取用于创建和测试业务网络的 {{site.data.keyword.blockchainfull}} Platform: Develop 开发工具。为了提供灵活性并支持最大数量的开发、测试和部署场景，开发工具以 npm 模块的形式提供，这些模块通过命令行进行控制。
 
+要与入门套餐和企业套餐配合使用，需要某些组件的不同版本。要将开发环境与入门套餐配合使用，必须在 V`0.19.x` 上安装这些模块。要将开发环境与企业套餐配合使用，必须在 V`0.16.x` 上安装这些模块
+
 ## 开始之前
 
 确保安装以下必备软件：
@@ -27,30 +29,44 @@ lastupdated: "2018-3-16"
 - npm V5.x
 - git V2.9.x 或更高版本
 - Python V2.7.x
-- Docker Engine V17.03 或更高版本
-- Docker-Compose V1.8 或更高版本
 - 所选的代码编辑器，如 VSCode。
 
-如果使用的是 VSCode，[此处](https://marketplace.visualstudio.com/items?itemName=HyperledgerComposer.composer-support-client)提供了 Hyperledger Composer VSCode 扩展。
+如果使用企业套餐，请安装以下其他必备软件：
 
+- Docker Engine V17.03 或更高版本
+- Docker-Compose V1.8 或更高版本
+
+如果使用的是 VSCode，[此处](https://marketplace.visualstudio.com/items?itemName=HyperledgerComposer.composer-support-client)提供了 Hyperledger Composer VSCode 扩展。
 
 ## 步骤 1：安装命令行工具
 
 命令行工具包括 **composer-cli**（主 {{site.data.keyword.blockchainfull_notm}} Platform: Develop 命令行模块）、**generator-hyperledger-composer**、**composer-rest-server** 和 **Yeoman**，这些模块用于生成业务网络、定制的 REST 服务器和 Angular 应用程序。
 
-1. 使用以下命令来安装 **composer-cli**：
+1. 要与入门套餐配合使用，请使用以下命令来安装 **composer-cli**：
 
-        npm install -g composer-cli@next
+        npm install -g composer-cli@0.19.x
 
-2. 使用以下命令来安装 **composer-rest-server**：
+    要与企业套餐配合使用，请使用以下命令来安装 **composer-cli**：
 
-        npm install -g composer-rest-server@next
+        npm install -g composer-cli@0.16.x
+
+2. 要与入门套餐配合使用，请使用以下命令来安装 **composer-rest-server**：
+
+        npm install -g composer-rest-server@0.19.x
+
+    要与企业套餐配合使用，请使用以下命令来安装 **composer-rest-server**：
+
+        npm install -g composer-rest-server@0.16.x
 
     使用 **composer-rest-server** 模块在机器上创建 REST 服务器，以将业务网络公开为 RESTful API。
 
-3. 使用以下命令来安装 **generator-hyperledger-composer**：
+3. 要与入门套餐配合使用，请使用以下命令来安装 **generator-hyperledger-composer**：
 
-        npm install -g generator-hyperledger-composer@next
+        npm install -g generator-hyperledger-composer@0.19.x
+
+    要与企业套餐配合使用，请使用以下命令来安装 **generator-hyperledger-composer**：
+
+        npm install -g generator-hyperledger-composer@0.16.x
 
     使用 **generator-hyperledger-composer** 生成框架业务网络结构、模型和 Angular 应用程序。
 
@@ -60,9 +76,13 @@ lastupdated: "2018-3-16"
 
 ## 步骤 2：安装本地 Playground
 
-Hyperledger Composer Playground 是一个用户界面，可以连接到真正的 {{site.data.keyword.blockchain}}，或用作模拟环境来测试业务网络。使用以下命令来安装 Playground：
+Hyperledger Composer Playground 是一个用户界面，可以连接到真正的 {{site.data.keyword.blockchain}}，或用作模拟环境来测试业务网络。要与入门套餐配合使用，请使用以下命令来安装 Playground：
 
-        npm install -g composer-playground@next
+        npm install -g composer-playground@0.19.x
+
+    要与企业套餐配合使用，请使用以下命令来安装 Playground：
+
+        npm install -g composer-playground@0.16.x
 
 ## 可选：设置 IDE
 
@@ -72,7 +92,7 @@ Hyperledger Composer Playground 是一个用户界面，可以连接到真正的
 
 2. 打开 VSCode，转至“扩展”，然后在市场中搜索并安装 Hyperledger Composer 扩展。
 
-## 步骤 3：安装本地 Hyperledger Fabric
+## 仅限企业套餐：安装本地 Hyperledger Fabric 并使用 Playground 与其连接
 
 通过部署本地 Hyperledger Fabric 实例，可以充分测试访问控制规则和业务网络。
 
@@ -95,22 +115,18 @@ Hyperledger Composer Playground 是一个用户界面，可以连接到真正的
         export FABRIC_VERSION=hlfv11
         ./downloadFabric.sh
 
-## 步骤 4：启动 Hyperledger Fabric 实例
+    `fabric-tools` 目录包含一组用于控制已下载 Hyperledger Fabric 实例的脚本。您必须运行 `./createPeerAdminCard.sh` 命令来生成业务网络卡，您可以使用该卡将业务网络部署到托管 Hyperledger Fabric 实例的 Docker。
 
-`fabric-tools` 目录包含一组用于控制已下载 Hyperledger Fabric 实例的脚本。您必须运行 `./createPeerAdminCard.sh` 命令来生成业务网络卡，您可以使用该卡将业务网络部署到托管 Hyperledger Fabric 实例的 Docker。
-
-1. 运行以下命令来启动 Hyperledger Fabric V1.1 实例：
+4. 运行以下命令来启动 Hyperledger Fabric V1.1 实例：
 
         cd ~/fabric-tools
         export FABRIC_VERSION=hlfv11
         ./startFabric.sh
         ./createPeerAdminCard.sh
 
-## 可选：使用 Playground 连接到 Hyperledger Fabric 实例
+    要开始开发业务网络，请使用 Hyperledger Composer Playground 或您的 IDE。
 
-要开始开发业务网络，请使用 Hyperledger Composer Playground 或您的 IDE。
-
-1. 要启动 Playground，请运行以下命令：
+5. 要启动 Playground，请运行以下命令：
 
         composer-playground
 

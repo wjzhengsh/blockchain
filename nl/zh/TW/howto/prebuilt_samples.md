@@ -30,9 +30,16 @@ lastupdated: "2018-03-16"
 
   Marbles 範例可讓使用者建立具有不同內容的虛擬彈珠，並與其他使用者互相轉移彈珠。如需 Marbles 的相關資訊，請參閱 [Marbles 示範 ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](https://github.com/IBM-Blockchain/marbles)。
 
+<!--
+* **Perishable Goods**
+
+  The Perishable Goods sample enables users to deploy legal contracts that purchase goods in a supply chain based on delivery and temperature readings. For more information about this sample, see [Perishable Goods ![External link icon](../images/external_link.svg "External link icon")](https://github.com/clauseHQ/demo-clause-ibm-perishable-goods).
+
+-->
+
 * **Vehicle Manufacture**
 
-  Vehicle Manufacture 範例可讓使用者體驗虛擬汽車的整個生命週期。如需此範例的相關資訊，請參閱 [Vehicle Manufacture ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](https://github.com/IBM-Blockchain/vehicle-manufacture)。 
+  Vehicle Manufacture 範例可讓使用者體驗虛擬汽車的整個生命週期。如需此範例的相關資訊，請參閱 [Vehicle Manufacture ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](https://github.com/IBM-Blockchain/vehicle-manufacture)。
 
 請完成下列步驟來部署範例應用程式：
 
@@ -66,7 +73,7 @@ lastupdated: "2018-03-16"
 
 如果您要部署範例應用程式，但不想使用「網路監視器」，請確定您已在本端檔案系統上安裝所有軟體必備項目。如需相關資訊，請參閱[設定應用程式開發環境](../v10_application.html#setting-up-application-development-environment)。
 
-您在 {{site.data.keyword.cloud_notm}} 上也需要有使用「入門範本方案」或「企業方案」的區塊鏈網路，並配置通道及其對等節點。如需相關資訊，請參閱[控管入門範本方案網路](../get_start_starter_plan.html)和[控管企業方案網路](../get_start.html)。在您佈建網路並可以在其上部署應用程式之後，請擷取應用程式將要存取之網路資源的 API 端點。如需相關資訊，請參閱[將網路 API 端點新增至應用程式](../v10_application.html#adding-network-api-endpoints-to-your-application)。
+您在 {{site.data.keyword.cloud_notm}} 上也需要有使用「入門範本方案」或「企業方案」的區塊鏈網路，並配置頻道及其對等節點。如需相關資訊，請參閱[控管入門範本方案網路](../get_start_starter_plan.html)和[控管企業方案網路](../get_start.html)。在您佈建網路並可以在其上部署應用程式之後，請擷取應用程式將要存取之網路資源的 API 端點。如需相關資訊，請參閱[將網路 API 端點新增至應用程式](../v10_application.html#adding-network-api-endpoints-to-your-application)。
 
 您可以將下列其中一個範例應用程式部署至您的網路：
 
@@ -76,7 +83,7 @@ lastupdated: "2018-03-16"
 
   您可以在 [GitHub 中的 Marbles ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](https://github.com/IBM-Blockchain/marbles) 中找到範例程式碼和指示。
 
-  請使用 Bluemix 指示，而不是使用在本端管理 Marbles 的指示，並輸入來自網路的相關資訊。請注意，Marbles GitHub 中的畫面擷取是顯示「企業方案」使用者介面（因為「企業方案」僅支援手動部署 Marbles 的途徑），與「入門範本方案」使用者介面稍微不同。不過，這兩種使用者介面都有相同的基本部分，您可以在適當的畫面中找到對等節點的名稱、通道及其他服務認證資訊。
+  請使用 Bluemix 指示，而不是使用在本端管理 Marbles 的指示，並輸入來自網路的相關資訊。請注意，Marbles GitHub 中的畫面擷取是顯示「企業方案」使用者介面（因為「企業方案」僅支援手動部署 Marbles 的途徑），與「入門範本方案」使用者介面稍微不同。不過，這兩種使用者介面都有相同的基本部分，您可以在適當的畫面中找到對等節點的名稱、頻道及其他服務認證資訊。
 
 - **Fabcar**
 
@@ -90,6 +97,6 @@ lastupdated: "2018-03-16"
 
 ## 刪除範例應用程式
 
-若要刪除透過「工具鏈」處理程序取得的範例應用程式，請導覽至該範例在使用者介面中的位置。由於範例應用程式已在通道上實例化，因此您可以在通道中找到該範例。按一下左導覽中的**通道**，以開啟「通道」畫面。按一下範例實例化所在的相關通道，然後按一下**鏈碼**。這樣會顯示在此通道上實例化的鏈碼。
+若要刪除透過「工具鏈」處理程序取得的範例應用程式，請導覽至該範例在使用者介面中的位置。由於範例應用程式已在頻道上實例化，因此您可以在頻道中找到該範例。按一下左導覽中的**頻道**，以開啟「頻道」畫面。按一下範例實例化所在的相關頻道，然後按一下**鏈碼**。這樣會顯示在此頻道上實例化的鏈碼。
 
 如果您按一下應用程式的鏈碼，就可以看到**刪除**標籤。然而，只是按一下**刪除**並不會刪除範例應用程式，這只會刪除鏈碼容器。您還需要導覽至 {{site.data.keyword.cloud_notm}} 儀表板和「工具鏈」儀表板，在那裡才能刪除範例。

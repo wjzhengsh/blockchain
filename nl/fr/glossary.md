@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-03-16"
+lastupdated: "2018-05-15"
 
 ---
 
@@ -55,6 +55,9 @@ Les données d'identification du service sont disponibles au format JSON et elle
 ## Données d'identification réseau
 Les données d'identification sont visibles depuis l'écran "API" du Moniteur réseau. Elles incluent votre "clé" (nom d'utilisateur) et votre "valeur confidentielle" (mot de passe) dans l'interface utilisateur Swagger. Vous devez utiliser ces données d'identification réseau pour vous authentifier avant de tester les API REST. 
 
+## Etat en cours
+L'état en cours du registre représente les valeurs les plus récentes pour toutes les clés qui sont incluses dans son journal des transactions de chaîne. Etant donné que l'état actuel représente toutes les valeurs de clé les plus récentes connues du canal, il est parfois appelé "World State". Le code blockchain exécute les propositions de transaction en fonction des données d'état actuel. L'état actuel change chaque fois que la valeur d'une clé change ou qu'un nouvelle clé est ajoutée. L'état actuel est critique pour un flux de transaction car la dernière paire clé-valeur doit être connue pour pouvoir être modifiée. Les homologues valident les valeurs les plus récentes en fonction de l'état actuel du registre pour chaque transaction valide dans un bloc.
+
 ## Homologue
 Ressource de réseau blockchain qui fournit les services permettant d'exécuter et de valider les transactions, et de gérer les registres. L'homologue exécute du code blockchain et il détient l'historique de transactions ainsi que l'état en cours des actifs sur les canaux du réseau, c'est-à-dire le registre. Ceux-ci sont détenus et gérés par des organisations et associés à des canaux.
 
@@ -72,6 +75,9 @@ Processus consistant à placer un code blockchain sur le système de fichiers d'
 
 ## Instancier
 Processus consistant à démarrer et à initialiser un conteneur de code blockchain sur un canal spécifique. Dès que le code blockchain est installé sur les homologues et que chaque homologue a rejoint le canal, le code blockchain doit être instancié sur le canal. L'instanciation doit effectuer l'initialisation nécessaire du code blockchain, ce qui inclut la base de données "world state" initiale d'un code blockchain. Après l'instanciation, les homologues sur lesquels le code blockchain est installé peuvent accepter les appels de code blockchain.
+
+## Kafka
+Implémentation de plug-in de consensus pour Hyperledger Fabric qui se traduit par un cluster de noeuds de service de tri dans le réseau de blockchain. Une implémentation kafka est destinée à un réseau de production. 
 
 ## Membre
 Egalement appelés "organisations", les membres d'un réseau de blockchain, semblables aux membres d'un groupe, forment la structure du réseau. Un membre peut avoir la taille d'une multinationale ou d'un individu. Les membres sont inscrits sur le réseau avec un certificat qui leur accorde le droit d'utiliser le réseau en tant que fournisseur de services (par exemple, en émettant des certificats, en validant/ordonnant des transactions) ou en tant que consommateur. Le premier fournit des services de blockchain de base qui incluent la validation de transaction, le classement des transactions ainsi que des services de gestion de certificats. Les membres consommateurs utilisent le réseau pour appeler des transactions par rapport au registre partagé. Les membres peuvent comporter plusieurs homologues. 
@@ -126,3 +132,6 @@ Mécanisme mis en oeuvre par les participants sur le réseau de blockchain pour 
 
 ## Utilisateur
 Un utilisateur a le rôle d'un participant au sein d'un réseau de blockchain et qui a un accès indirect au registre via une relation d'accréditation avec un membre existant.  
+
+## World state
+Voir [Etat en cours](#current-state).

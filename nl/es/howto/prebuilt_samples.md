@@ -30,9 +30,16 @@ El Plan inicial proporciona dos aplicaciones de ejemplo con las que comenzar a t
 
   El ejemplo Canicas permite a los usuarios crear canicas virtuales con diferentes propiedades y transferirlas a otros usuarios. Para obtener más información sobre Canicas, consulte la [demo de Canicas ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://github.com/IBM-Blockchain/marbles).
 
+<!--
+* **Perishable Goods**
+
+  The Perishable Goods sample enables users to deploy legal contracts that purchase goods in a supply chain based on delivery and temperature readings. For more information about this sample, see [Perishable Goods ![External link icon](../images/external_link.svg "External link icon")](https://github.com/clauseHQ/demo-clause-ibm-perishable-goods).
+
+-->
+
 * **Fabricación de vehículos**
 
-  El ejemplo Fabricación de vehículos permite a los usuarios seguir el ciclo de vida de un vehículo virtual. Para obtener más información sobre este ejemplo, consulte [Fabricación de vehículos ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://github.com/IBM-Blockchain/vehicle-manufacture). 
+  El ejemplo Fabricación de vehículos permite a los usuarios seguir el ciclo de vida de un vehículo virtual. Para obtener más información sobre este ejemplo, consulte [Fabricación de vehículos ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://github.com/IBM-Blockchain/vehicle-manufacture).
 
 Siga los pasos siguientes para desplegar una aplicación de ejemplo:
 
@@ -90,6 +97,6 @@ Puede desplegar una de las siguientes aplicaciones de ejemplo en su red:
 
 ## Supresión de una aplicación de ejemplo
 
-Para suprimir una aplicación de ejemplo que se ha adquirido a través del proceso de Toolchain, vaya a donde reside el ejemplo en la IU. Puesto que se ha creado una instancia de las aplicaciones en un canal, puede encontrar el ejemplo en los canales. Pulse **Canales** en el panel de navegación izquierdo para abrir la pantalla "Canales". Pulse el canal relevante en el que se ha creado la instancia del ejemplo y luego pulse **Código de encadenamiento**. Aparecerán los códigos de encadenamiento de los que se ha creado una instancia en este canal.
+Para suprimir una aplicación de ejemplo que se ha adquirido a través del proceso de Toolchain, vaya a donde reside el ejemplo en la IU. Puesto que se ha creado una instancia de las aplicaciones en un canal, puede encontrar el ejemplo en los canales. Pulse **Canales** en el panel de navegación izquierdo para abrir la pantalla "Canales". Pulse el canal relevante en el que se ha creado la instancia del ejemplo y luego pulse **Código de encadenamiento**. Aparecerá el código de encadenamiento del que se ha creado una instancia en este canal.
 
 Si pulsa el código de encadenamiento de la aplicación, verá un separador **Suprimir**. Sin embargo, el hecho de pulsar **Suprimir** no suprime la aplicación de ejemplo; solo suprime el contenedor del código de encadenamiento.  Tiene que ir al panel de control de {{site.data.keyword.cloud_notm}} y al panel de control de Toolchain para suprimir ahí el ejemplo.

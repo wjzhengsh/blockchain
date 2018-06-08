@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-03-16"
+lastupdated: "2018-05-15"
 ---
 
 {:new_window: target="_blank"}
@@ -24,7 +24,7 @@ Plusieurs mécanismes sont disponibles pour obtenir un support et traiter les in
 
 Accédez à l'écran "Support" de votre **moniteur réseau**, comme illustré dans la **Figure 1**.  Vous y trouverez des liens vers des ressources qui fournissent des informations techniques et une assistance.  Pour une description détaillée de l'écran "Support", voir la section *Support* dans [Moniteur réseau](v10_dashboard.html).
 
-![](images/support.png "Ecran Support")
+![Ecran Support](images/support.png "Ecran Support")
 *Figure 1. Ecran Support*
 
 
@@ -40,11 +40,11 @@ Si votre problème ne peut être résolu par aucune des méthodes précédentes,
     - Dans la zone **Service region or environment**, sélectionnez la région dans laquelle vous créez votre instance de service.
     - Sélectionnez **Blockchain** en regard de la zone **Service Impacted**.
     - Sélectionnez **Services** en regard de la zone **Category**.
-    - Dans les zones **Provide the Organization** et **Provide the Space**, indiquez votre organisation et votre espace Cloud Foundry, dans lesquels vous créez l'instance de service blockchain. Vous pouvez trouver ces informations sur la console {{site.data.keyword.cloud_notm}}.
+    - Dans les zones **Provide the Organization** et **Provide the Space**, indiquez votre organisation et votre espace Cloud Foundry, dans lesquels vous créez l'instance de service blockchain.  Vous pouvez trouver ces informations sur la console {{site.data.keyword.cloud_notm}}.
     - Dans la zone **Resource**, entrez l'ID de votre réseau de blockchain. Vous pouvez trouver l'ID réseau en cliquant sur le bouton **Profil de connexion** dans l'angle supérieur droit de l'écran **Présentation** de votre Moniteur réseau.
     - Dans la zone **Case Summary**, entrez un court récapitulatif de votre problème.
-    - Dans la zone **Case Description**, décrivez votre problème de manière aussi détaillée que possible. Par exemple, le centre de données où votre réseau a été généré et les étapes qui ont mené au problème. Notez que plus vous fournissez des renseignements, plus votre problème a des chances d'être résolu rapidement.
-4. Cliquez sur le bouton **Submit**. Au bout de quelques minutes, vous recevez une notification par courrier électronique concernant ce cas. 
-  
-   
-Pour accéder aux cas précédemment soumis, cliquez sur **My Cases** dans l'angle supérieur droit du portail {{site.data.keyword.cloud_notm}} Service Portal. Cliquez sur un cas pour l'ouvrir et afficher son état ou pour fournir des renseignements supplémentaires.
+    - Dans la zone **Case Description**, décrivez votre problème de manière aussi détaillée que possible.  Par exemple, le centre de données où votre réseau a été généré et les étapes qui ont mené au problème.  Notez que plus vous fournissez des renseignements, plus votre problème a des chances d'être résolu rapidement.
+4. Cliquez sur le bouton **Submit**.  Au bout de quelques minutes, vous recevez une notification par courrier électronique concernant ce cas.
+
+
+Pour accéder aux cas précédemment soumis, cliquez sur **My Cases** dans l'angle supérieur droit du portail {{site.data.keyword.cloud_notm}} Service Portal.  Cliquez sur un cas pour l'ouvrir et afficher son état ou pour fournir des renseignements supplémentaires.

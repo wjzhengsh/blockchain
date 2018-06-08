@@ -13,14 +13,14 @@ IBM Blockchain Platform
 		develop_install.md
 
 	{: .topicgroup}
-	Starter Plan
+	Piano Starter
 		starter_plan.md
 		get_start_starter_plan.md
 		develop_starter.md
 		dashboard.md
 
 	{: .topicgroup}
-	Enterprise Plan
+	Piano Enterprise
 		enterprise_plan.md
 		get_start.md
 		develop_enterprise.md
@@ -35,7 +35,12 @@ IBM Blockchain Platform
 	howto/install_instantiate_chaincode.md
 	howto/monitor_network.md
 	howto/prebuilt_samples.md
-	howto/swagger_apis.md
+
+	{: .topicgroup}
+	Prova delle API con Swagger
+		howto/swagger_apis.md
+		howto/create_join_network_with_apis.md
+
 	v10_application.md
 	{: .navgroup-end}
 
@@ -45,7 +50,7 @@ IBM Blockchain Platform
 	reference/hyperledger_composer.md
 	[IBM Blockchain Platform: Develop](https://ibm-blockchain.github.io/develop/)
 	{: .navgroup-end}
-	
+
 	{: .navgroup id="help"}
 	ibmblockchain_support.md
 	knownissues.md

@@ -13,10 +13,10 @@ lastupdated: "2018-03-16"
 
 
 # Hyperledger Fabric
-Le réseau {{site.data.keyword.blockchainfull}} repose sur la pile Hyperledger Fabric V1.0, projet de blockchain au sein du projet Hyperledger de Linux Foundation. Il s'agit d'un réseau "privé" dans lequel l'ensemble des utilisateurs et des composants ont des identités connues.  Une logique de signature/vérification est mise en oeuvre à chaque point de contact de communication, et les transactions sont accordées par le biais d'une série de contrôles d'adhésion et de validation.  En ce sens, il diffère grandement des implémentations de blockchain traditionnelles qui encouragent l'anonymat et sont forcées de s'appuyer sur des crypto-monnaies et de lourdes contraintes de calcul pour valider les transactions.  
+Le réseau {{site.data.keyword.blockchainfull}} repose sur la pile Hyperledger Fabric V1.0, projet de blockchain au sein du projet Hyperledger de Linux Foundation.  Il s'agit d'un réseau "privé" dans lequel l'ensemble des utilisateurs et des composants ont des identités connues.  Une logique de signature/vérification est mise en oeuvre à chaque point de contact de communication, et les transactions sont accordées par le biais d'une série de contrôles d'adhésion et de validation.  En ce sens, il diffère grandement des implémentations de blockchain traditionnelles qui encouragent l'anonymat et sont forcées de s'appuyer sur des crypto-monnaies et de lourdes contraintes de calcul pour valider les transactions.  
 {:shortdesc}
 
-Hyperledger Fabric propose une architecture modulaire qui permet d'étendre l'évolutivité et les performances.  Cette rubrique présente certains des principaux composants dans Hyperledger Fabric. Pour une présentation complète de Hyperledger Fabric, consultez la [documentation Hyperledger Fabric ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](http://hyperledger-fabric.readthedocs.io/en/latest/){:new_window}.  
+Hyperledger Fabric propose une architecture modulaire qui permet d'étendre l'évolutivité et les performances.  Cette rubrique présente certains des principaux composants dans Hyperledger Fabric.  Pour une présentation complète de Hyperledger Fabric, consultez la [documentation Hyperledger Fabric ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](http://hyperledger-fabric.readthedocs.io/en/latest/){:new_window}.  
 
 ## Autorité de certification  
 En tant que plateforme pour les réseaux de blockchain **privés**, Hyperledger Fabric inclut un composant **Autorité de certification (CA)** modulaire pour la gestion des identités réseau de l'ensemble des organisations membres et leurs utilisateurs. L'exigence d'une identité privée pour chaque utilisateur permet un contrôle ACL sur l'activité réseau et garantit que chaque transaction est finalement traçable jusqu'à un utilisateur inscrit.  
@@ -68,16 +68,16 @@ Les noeuds du service de tri fournissent également les services suivants :
 Pour plus d'informations sur le service de tri Hyperledger Fabric, consultez la rubrique *[Bringing up a Kafka-based Ordering Service ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](http://hyperledger-fabric.readthedocs.io/en/latest/kafka.html){:new_window}* dans la [documentation Hyperledger Fabric![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](http://hyperledger-fabric.readthedocs.io/en/latest/){:new_window}.
 
 ## Kits de développement de logiciels HFC
-Les kits de développement de logiciels Hyperledger Fabric Client (HFC) permettent aux développeurs d'applications de générer des applications qui interagissent avec un réseau de blockchain. Le kit de développement HFC SDK aide les applications à gérer le cycle de vie des canaux et des codes blockchain.
+Les kits de développement de logiciels Hyperledger Fabric Client (HFC) permettent aux développeurs d'applications de générer des applications qui interagissent avec un réseau de blockchain. Le kit de développement HFC SDK aide les applications à gérer le cycle de vie des canaux et du code blockchain.
 
 Hyperledger Fabric offre les kits Node.js et Java, ainsi que les fonctions suivantes pour l'interaction avec le réseau de blockchain :
 * Enregistrer et inscrire des utilisateurs
 * Créer des canaux
 * Joindre des homologues à un canal
 * Mettre à jour la configuration du canal système ou du canal application
-* Installer du code blockchain sur les homologues
-* Instancier des codes blockchain sur un canal
-* Mettre à jour des codes blockchain sur un canal
+* Installer de code blockchain sur les homologues
+* Instancier de code blockchain sur un canal
+* Mettre à jour de code blockchain sur un canal
 * Appeler des fonctions de code blockchain pour la mise à jour du registre
 * Interroger le registre au sujet de transactions, blocs ou clés spécifiques
 * Surveiller les événements sur un canal (validation d'une transaction, par exemple)

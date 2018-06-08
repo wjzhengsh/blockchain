@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-03-16"
+lastupdated: "2018-05-15"
 
 ---
 
@@ -12,7 +12,7 @@ lastupdated: "2018-03-16"
 {:codeblock: .codeblock}
 {:pre: .pre}
 
-# APIs mit Swagger ausprobieren
+# Swagger-APIs verwenden, um mit dem Netz zu interagieren
 
 {{site.data.keyword.blockchainfull}} Platform stellt eine Reihe von REST-APIs zur Verfügung, die Ihre Anwendungsentwicklung vereinfachen. Mithilfe einer Swagger-Benutzerschnittstelle (UI) können Sie Tests für Ihre Blockchain-Netze durchführen.
 {:shortdesc}
@@ -22,7 +22,9 @@ Bevor Sie beginnen, müssen Sie eine [{{site.data.keyword.blockchain}} Platform-
 
 ## Netzberechtigungsnachweise abrufen
 
-Wechseln Sie in den Netzmonitor Ihres Blockchain-Netzes und öffnen Sie die Anzeige "APIs" im Navigator auf der linken Seite. Ihre Netzberechtigungsnachweise für die REST-APIs werden angezeigt. Später berechtigen Sie die APIs, indem Sie die hier angezeigten Werte des Schlüssels ("key") und des geheimen Schlüssels ("secret") verwenden und die APIs mit dem Parameter "network_id" (Netz-ID) ausführen. Klicken Sie auf **Geheimen Schlüssel anzeigen**, um den Wert des Felds für den geheimen Schlüssel ("secret") sichtbar zu machen. Kopieren Sie die Werte der Felder für Schlüssel, geheimen Schlüssel und Netz-ID, die Sie später in der Swagger-Benutzerschnittstelle verwenden können.
+{: #retrieving-network-credentials}
+
+Wechseln Sie in den Network Monitor Ihres Blockchain-Netzes und öffnen Sie die Anzeige "APIs" im Navigator auf der linken Seite. Ihre Netzberechtigungsnachweise für die REST-APIs werden angezeigt. Später berechtigen Sie die APIs, indem Sie die hier angezeigten Werte des Schlüssels ("key") und des geheimen Schlüssels ("secret") verwenden und die APIs mit dem Parameter "network_id" (Netz-ID) ausführen. Klicken Sie auf **Geheimen Schlüssel anzeigen**, um den Wert des Felds für den geheimen Schlüssel ("secret") sichtbar zu machen. Kopieren Sie die Werte der Felder für Schlüssel, geheimen Schlüssel und Netz-ID, die Sie später in der Swagger-Benutzerschnittstelle verwenden können.
 
 <!-- Removing this code snippet so people don't try to use these values
 ```
@@ -37,14 +39,16 @@ Wechseln Sie in den Netzmonitor Ihres Blockchain-Netzes und öffnen Sie die Anze
 -->
 
 **Abbildung 1** zeigt die Anzeige "APIs":
-![Übersichtsanzeige](../images/restAPI.png)
+
+![Anzeige 'APIs'](../images/API_screen_starter.png "Anzeige 'APIs'")
 *Abbildung 1. APIs*
 
-Wenn Sie den Starter Plan verwenden, ist es möglich, im Netzmonitor zwischen Organisationen zu wechseln. Mit dem Starter Plan werden standardmäßig zwei Organisationen konfiguriert. Das Wechseln zwischen Organisationen kann nützlich sein, um die REST-APIs aus der Perspektive jeder Organisation auszuprobieren. Zum Abrufen der Berechtigungsnachweise für eine andere Organisation in Ihrem Netz klicken Sie auf Ihren Benutzernamen in der rechten oberen Ecke der Netzmonitorkonsole. Klicken Sie in dem Menü, das sich daraufhin öffnet, auf den Dropdown-Pfeil neben der Organisation, um alle Organisationen anzuzeigen. Wählen Sie die Organisation aus, zu der Sie wechseln möchten, und zeigen Sie die zugeordneten Netzberechtigungsnachweise an.
+Wenn Sie den Starter Plan verwenden, ist es möglich, im Network Monitor zwischen Organisationen zu wechseln. Mit dem Starter Plan werden standardmäßig zwei Organisationen konfiguriert. Das Wechseln zwischen Organisationen kann nützlich sein, um die REST-APIs aus der Perspektive jeder Organisation auszuprobieren. Zum Abrufen der Berechtigungsnachweise für eine andere Organisation in Ihrem Netz klicken Sie auf Ihren Benutzernamen in der rechten oberen Ecke der Network Monitorkonsole. Klicken Sie in dem Menü, das sich daraufhin öffnet, auf den Dropdown-Pfeil neben der Organisation, um alle Organisationen anzuzeigen. Wählen Sie die Organisation aus, zu der Sie wechseln möchten, und zeigen Sie die zugeordneten Netzberechtigungsnachweise an.
 
 **Abbildung 2** zeigt das Wechseln zwischen Organisationen:
-![Zwischen Organisationen wechseln](../images/restAPIOrganization.png)
-*Abbildung 2. Zwischen Organisationen wechseln*
+
+![Wechseln zwischen Organisationen](../images/switch_orgs_starter.gif "Wechseln zwischen Organisationen")  
+*Abbildung 2. Wechseln zwischen Organisationen*
 
 
 ## Swagger-APIs berechtigen
@@ -58,17 +62,19 @@ Klicken Sie in der Swagger-Benutzerschnittstelle auf die Schaltfläche **Berecht
 
 Bei Verwendung der Basisauthentifizierung werden alle Berechtigungsnachweise, die Sie im Fenster **Berechtigen** angeben, nach dem Klick auf die Schaltflächen **Berechtigen** und **Fertig** gespeichert und mit jedem REST-API-Aufruf übergeben.
 
-**Abbildung 3** zeigt das Popup-Fenster "Berechtigen":
-![Popup-Fenster 'Berechtigen'](../images/swaggerUIAuthorize.png)
-*Abbildung 3. Popup-Fenster "Berechtigen"*
+**Abbildung 3** zeigt den Prozess der Berechtigung von Swagger-APIs:
+
+![Berechtigung von Swagger-APIs](../images/swaggerUIAuthorize.gif "Berechtigung von Swagger-APIs")  
+*Abbildung 3. Berechtigung von Swagger-APIs*
 
 
 ## APIs ausprobieren
 
 Klicken Sie auf die REST-API, die Sie ausführen möchten, und klicken Sie auf die Schaltfläche **Ausprobieren**. Geben Sie die erforderlichen Parameter ein und klicken Sie auf **Ausführen**. Der REST-API-Aufruf wird für Ihr Netz ausgeführt.
 
-**Abbildung 4** zeigt die Anzeige der Swagger-Benutzerschnittstelle (UI):
-![Swagger-UI](../images/swaggerUITryItOut.png)
+**Abbildung 4** zeigt die Swagger-Benutzerschnittstelle:
+
+![Swagger-Benutzerschnittstelle](../images/swaggerUITryItOut.png "Swagger-Benutzerschnittstelle")  
 *Abbildung 4. Swagger-Benutzerschnittstelle*
 
 

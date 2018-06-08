@@ -35,7 +35,12 @@ IBM Blockchain 平台
 	howto/install_instantiate_chaincode.md
 	howto/monitor_network.md
 	howto/prebuilt_samples.md
-	howto/swagger_apis.md
+
+	{: .topicgroup}
+	以 Swagger 來試用 API
+		howto/swagger_apis.md
+		howto/create_join_network_with_apis.md
+
 	v10_application.md
 	{: .navgroup-end}
 
@@ -45,7 +50,7 @@ IBM Blockchain 平台
 	reference/hyperledger_composer.md
 	[IBM Blockchain 平台：開發](https://ibm-blockchain.github.io/develop/)
 	{: .navgroup-end}
-	
+
 	{: .navgroup id="help"}
 	ibmblockchain_support.md
 	knownissues.md
