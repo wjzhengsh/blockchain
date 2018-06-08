@@ -30,9 +30,16 @@ lastupdated: "2018-03-16"
 
   Marbles 样本支持用户创建具有不同属性的虚拟弹珠，并向其他用户传输这些弹珠。有关 Marbles 的更多信息，请参阅 [Marbles 演示 ![外部链接图标](../images/external_link.svg "外部链接图标")](https://github.com/IBM-Blockchain/marbles)。
 
+<!--
+* **Perishable Goods**
+
+  The Perishable Goods sample enables users to deploy legal contracts that purchase goods in a supply chain based on delivery and temperature readings. For more information about this sample, see [Perishable Goods ![External link icon](../images/external_link.svg "External link icon")](https://github.com/clauseHQ/demo-clause-ibm-perishable-goods).
+
+-->
+
 * **Vehicle Manufacture**
 
-  Vehicle Manufacture 样本支持用户虚拟经历车辆的整个生命周期。有关此样本的更多信息，请参阅 [Vehicle Manufacture ![外部链接图标](../images/external_link.svg "外部链接图标")](https://github.com/IBM-Blockchain/vehicle-manufacture)。 
+  Vehicle Manufacture 样本支持用户虚拟经历车辆的整个生命周期。有关此样本的更多信息，请参阅 [Vehicle Manufacture ![外部链接图标](../images/external_link.svg "外部链接图标")](https://github.com/IBM-Blockchain/vehicle-manufacture)。
 
 要部署样本应用程序，请完成以下步骤：
 

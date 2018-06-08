@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-03-16"
+lastupdated: "2018-05-15"
 
 ---
 
@@ -12,7 +12,7 @@ lastupdated: "2018-03-16"
 {:codeblock: .codeblock}
 {:pre: .pre}
 
-# 使用 Swagger 试用 API
+# 使用 Swagger API 与网络进行交互
 
 {{site.data.keyword.blockchainfull}} Platform 公开了多个 REST API，以协助应用程序开发。您可以使用 Swagger UI 对区块链网络进行测试。
 {:shortdesc}
@@ -21,6 +21,8 @@ lastupdated: "2018-03-16"
 
 
 ## 检索网络凭证
+
+{: #retrieving-network-credentials}
 
 进入区块链网络的“网络监视器”，然后在左侧导航器中打开“API”屏幕。您可以查看 REST API 的网络凭证。稍后将使用此处显示的“key”和“secret”的值对 API 进行授权，然后将“network_id”作为参数运行 API。单击**显示私钥**可显示 secret 字段的值。复制 key、secret 和 network_id 字段的值，稍后在 Swagger UI 中可以使用这些值。
 
@@ -37,13 +39,15 @@ lastupdated: "2018-03-16"
 -->
 
 **图 1** 显示“API”屏幕：
-![“概述”屏幕](../images/restAPI.png)
+
+![API 屏幕](../images/API_screen_starter.png "API 屏幕")
 *图 1. API*
 
 如果使用的是入门套餐，可以在“网络监视器”中切换组织。对于入门套餐，缺省情况下配置了两个组织。要在每个组织的透视图中试用 REST API，切换组织会非常有用。要获取网络中其他组织的凭证，请单击“网络监视器”控制台右上角的用户名。在打开的菜单中，单击“组织”旁边的下拉箭头以查看所有组织。选择要切换到的组织并查看关联的网络凭证。
 
 **图 2** 显示如何切换组织：
-![切换组织](../images/restAPIOrganization.png)
+
+![切换组织](../images/switch_orgs_starter.gif "切换组织")  
 *图 2. 切换组织*
 
 
@@ -58,9 +62,10 @@ You can also open the Swagger UI with the URL in the connection profiles. For ex
 
 使用“基本授权认证”时，单击**授权**，再单击**完成**按钮后，将存储在“授权”窗口中指定的任何凭证，并且每个 REST API 调用上都会传递这些凭证。
 
-**图 3** 显示了“授权”弹出窗口：
-![“授权”弹出窗口](../images/swaggerUIAuthorize.png)
-*图 3.“授权”弹出窗口*
+**图 3** 显示授权 Swagger API 的过程：
+
+![授权 API](../images/swaggerUIAuthorize.gif "授权 API")  
+*图 3. 授权 API*
 
 
 ## 试用 API
@@ -68,7 +73,8 @@ You can also open the Swagger UI with the URL in the connection profiles. For ex
 单击要运行的 REST API，然后单击**试用**按钮。输入必需参数，然后单击**执行**。REST API 调用会针对您的网络运行。
 
 **图 4** 显示“Swagger UI”：
-![Swagger UI](../images/swaggerUITryItOut.png)
+
+![Swagger UI](../images/swaggerUITryItOut.png "Swagger UI")  
 *图 4. Swagger UI*
 
 

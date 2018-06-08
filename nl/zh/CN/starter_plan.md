@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-03-16"
+lastupdated: "2018-05-21"
 
 ---
 
@@ -15,10 +15,10 @@ lastupdated: "2018-03-16"
 # 关于入门套餐
 {: #overview}
 
-{{site.data.keyword.blockchainfull}} Platform 是一个入门级选项，支持组织模拟多组织区块链网络，快速开发应用程序以及使用提供的示例。它还拥有与其他成员资格选项相同的 UI 体验，有助于消除任何学习曲线。
-{:shortdesc}
+{{site.data.keyword.blockchainfull}} Platform 入门套餐是一个入门级选项，支持组织模拟多组织区块链网络，快速开发应用程序以及使用提供的示例。它还拥有与其他成员资格选项相同的 UI 体验，有助于消除任何学习曲线。
+入门套餐网络是基于 Hyperledger Fabric V1.1 构建的。{:shortdesc}
 
-**注：**{{site.data.keyword.blockchainfull_notm}} Platform 入门套餐是一个开发与测试环境。如果需要生产环境，请参阅[关于企业套餐](enterprise_plan.html)。
+**注**：{{site.data.keyword.blockchainfull_notm}} Platform 入门套餐是一个开发与测试环境，不适合生产工作负载。如果需要生产环境，请参阅[关于企业套餐](enterprise_plan.html)。在使用入门套餐之前，请检查[入门套餐注意事项](#considerations)。
 
 立即注册 [{{site.data.keyword.blockchainfull_notm}} 成员资格 ![外部链接图标](images/external_link.svg "外部链接图标")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps) 并试用入门套餐！请注意，使用入门套餐 Beta 时，必须在 {{site.data.keyword.cloud_notm}} 中选择**美国南部**作为创建区块链网络的区域。
 
@@ -27,9 +27,9 @@ lastupdated: "2018-03-16"
 
 如果您符合下列其中一种情况，那么入门套餐适合您开始区块链之旅。
 - **_了解 {{site.data.keyword.blockchainfull_notm}} Platform。_**  
-    如果您对 {{site.data.keyword.blockchainfull_notm}} Platform 感兴趣，甚或完全不熟悉区块链，那么通过入门套餐，可以很好地了解如何开发和管理真正的区块链网络。您可以了解组成网络的组件，了解如何部署和管理链代码（也称为“智能合同”），如何添加通道（并管理通道许可权）以及跟踪何时生成新区块，就像在生产网络中一样。 
+    如果您对 {{site.data.keyword.blockchainfull_notm}} Platform 感兴趣，甚或完全不熟悉区块链，那么通过入门套餐，可以很好地了解如何开发和管理真正的区块链网络。您可以了解组成网络的组件，了解如何部署和管理链代码（也称为“智能合同”），如何添加通道（并管理通道许可权）以及跟踪何时生成新区块，就像在生产网络中一样。
 - **_希望充当多个组织来促进网络开发。_**  
-    通过入门套餐，您可充当多个组织，这将允许您了解 IBM Blockchain Platform (IBP) 如何管理协作任务（如通道创建和链代码实例化），以及测试应用程序和调用事务处理。您还可以邀请其他人在入门套餐网络中进行协作（与在企业套餐中一样）。
+    通过入门套餐，您可充当多个组织，来了解 IBM Blockchain Platform (IBP) 如何管理协作任务（如通道创建和链代码实例化），以及测试应用程序和调用事务处理。您还可以邀请其他人在入门套餐网络中进行协作（与在企业套餐中一样）。
 - **_在实时网络中构建演示解决方案。_**  
     入门套餐为测试网络定义（通过集成使用 {{site.data.keyword.blockchainfull_notm}} Platform: Develop 开发的 `.bna` 文件）和区块链应用程序提供了功能强大的环境。随时可用的区块链网络支持通过“网络监视器”提供的操作和管理工具来快速向同事、管理层和合作伙伴进行演示。
 - **_以迭代方式开发和测试区块链应用程序。_**  
@@ -42,7 +42,7 @@ lastupdated: "2018-03-16"
     通过入门套餐，只需单击几下即可使用 Toolchain 来部署样本应用程序。通过提供一组借助代码来修改和向前发展的不断增长的样本，这些样本将帮助开发者进行开发。
 
 
-## 入门套餐特点
+## 入门套餐规范
 
 入门套餐提供了管理认证中心 (CA) 的成员资格、执行事务处理支持、提供排序服务、构建专用通道、管理链代码生命周期以及与实时网络中的其他人进行协作的能力，就像在企业套餐中一样。
 
@@ -74,12 +74,28 @@ The monthly fees are prorated and billed daily. For example, a member with basic
 Network members can pay their bill with their own {{site.data.keyword.cloud_notm}} accounts that contain the space to create the network instance.  Alternatively, one network member can cover the bill for all members in the network.  For more details about how to pay for the blockchain networks, see [Paying for the network](howto/pay_for_the_network.html).
 -->
 
-## 使用须知
+## 入门套餐注意事项
+{: #considerations}
 
-- 入门套餐是 {{site.data.keyword.blockchainfull_notm}} Platform 的起点，与企业套餐有以下不同之处：
+入门套餐是 {{site.data.keyword.blockchainfull_notm}} Platform 的起点，用于开发和测试目的。在使用入门套餐之前，请检查以下各项。
+
+- **{{site.data.keyword.cloud_notm}} 帐户需求**  
+    入门套餐在 Beta 期间免费。但是，必须将 {{site.data.keyword.cloud_notm}} 帐户升级至付费帐户，例如，**现买现付**类型。{{site.data.keyword.blockchainfull_notm}} Platform 提供的所有成员资格套餐均需要 {{site.data.keyword.cloud_notm}} 付费帐户。要将帐户升级为“现买现付”类型，请转至 {{site.data.keyword.cloud_notm}} 控制台中的**管理** > **计费和使用情况** > **计费**，然后单击**添加信用卡**。
+- **与企业套餐的差异**
     - [CA](glossary.html#ca) 和[排序服务](glossary.html#orderer)不具有容错性，因为每个组织只有一个 CA，并且一个网络只有一个[排序者](glossary.html#orderer)。
     - 排序服务仅使用 [SOLO](glossary.html#SOLO) [共识](glossary.html#consensus)。入门套餐网络只包含一个[排序者](glossary.html#orderer)，此排序者对所有同级执行共识。
     - [硬件安全模块 (HSM)](glossary.html#hsm) 不可用于保护和管理用于高强度认证和加密处理的数字密钥。
-- 入门套餐维护和网络更新会定期执行。在维护期间，不能供应新网络，并且您可能会注意到有短暂的网络中断。
-- 入门套餐不保证在发布升级（包括从 Beta 移至 GA）时保留数据。
-- 目前不支持将数据从入门套餐网络迁移到其他成员资格选项。但是，可以迁移在入门套餐上经过测试的 `.bna` 文件、链代码和应用程序。有关更多信息，请参阅[从入门套餐迁移到企业套餐](get_start_starter_plan.html#migrate)。
+- **网络资源限制**  
+    入门套餐为每个 {{site.data.keyword.cloud_notm}} 服务实例分配具有 1 个 CPU、2 GB RAM 和 20 Gi 存储器的硬件。如果向相同网络添加更多网络资源，那么资源共享硬件分配。但是，在邀请成员加入网络时，成员会创建新的服务实例。因此，入门套餐为新成员分配另外一套具有 1 个 CPU、2 GB RAM 和 20 Gi 存储器的硬件。
+- **不活动网络删除**  
+    创建入门套餐 (Beta) 网络后，如果未在 15 天内访问网络或在网络中未发出任何事务，那么 {{site.data.keyword.blockchainfull_notm}} Platform 将删除此网络。
+    - 如果不再需要此网络，那么无需执行任何操作，将自动删除此网络。
+    - 如果仍需要使用此网络，那么可以通过在网络中发出事务来保持其处于活动状态。可以在 [{{site.data.keyword.cloud_notm}} 仪表板 ![外部链接图标](images/external_link.svg "外部链接图标")](https://console.bluemix.net/dashboard/apps/){:new_window} 中找到入门套餐 (Beta) 网络。如果没有要发出的常规事务，请遵循[指示信息](howto/prebuilt_samples.html#deploying-sample-applications-in-starter-plan)来试用样本应用程序。
+- **维护和升级**  
+入门套餐维护和网络更新会定期执行。在维护期间，不能供应新网络，并且您可能会注意到有短暂的网络中断。
+- **数据保留**  
+入门套餐不保证在发布升级（包括从 Beta 移至 GA）时保留数据。
+- **迁移注意事项**  
+目前不支持将数据从入门套餐网络迁移到其他成员资格套餐。但是，可以迁移在入门套餐上经过测试的 `.bna` 文件、链代码和应用程序。有关更多信息，请参阅[从入门套餐迁移到企业套餐](get_start_starter_plan.html#migrate)。
+<!--    - Starter Plan is built on Hyperledger Fabric V1.1.  If your chaincode is at Fabric V1.0 level, you need to upgrade your chaincode before you use it in Starter Plan. For more information, see [Updating chaincode for Hyperledger Fabric 1.1](knownissues.html/update-chaincode-fabric11).
+-->

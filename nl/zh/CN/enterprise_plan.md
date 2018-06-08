@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-03-16"
+lastupdated: "2018-05-24"
 
 ---
 
@@ -14,7 +14,7 @@ lastupdated: "2018-03-16"
 
 # 关于企业套餐
 
-{{site.data.keyword.blockchainfull}} Platform 企业套餐是一种生产就绪型产品，适用于希望创建或加入区块链网络以开展真实业务的组织。此套餐提供关键基础架构以及工具和支持，可轻松地开始使用高度安全的生产就绪型网络。
+{{site.data.keyword.blockchainfull}} Platform 企业套餐是一种生产就绪型产品，适用于希望创建或加入区块链网络以开展真实业务的组织。此套餐提供关键基础架构以及工具和支持，可轻松地开始使用高度安全的生产就绪型网络。将企业套餐从 Hyperledger Fabric V1.0 升级至 V1.1。所有新创建的网络都处于 Fabric V1.1 级别。但是，先前创建的网络将保持为 Fabric V1.0 级别。{:shortdesc}
 
 **注**：{{site.data.keyword.blockchainfull_notm}} Platform 企业套餐提供的是生产环境。如果您需要开发和测试环境，请参阅[关于入门套餐](starter_plan.html)。
 
