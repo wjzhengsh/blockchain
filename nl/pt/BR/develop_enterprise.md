@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-3-16"
+lastupdated: "2018-05-15"
 
 ---
 
@@ -14,6 +14,7 @@ lastupdated: "2018-3-16"
 {:tip: .tip}
 
 # Implementando uma rede de negócios no Enterprise Plan
+{: #deploying-a-business-network}
 
 Ferramentas de desenvolvedor do {{site.data.keyword.blockchainfull}} Platform: Develop ajudam a criar uma **Definição de rede de negócios** que pode ser empacotada em um archive de rede de negócios (`.bna`). O ambiente de desenvolvedor permite implementar arquivos `.bna` em um {{site.data.keyword.blockchain}} local ou de nuvem para desenvolvimento e compartilhamento.
 
@@ -68,13 +69,13 @@ Assegure-se de ter instalado o ambiente de desenvolvedor do {{site.data.keyword.
             "timeout": 300
         }
 
-    Você preencherá o arquivo recém-criado `connection.json` com atributos que são fornecidos por meio de seu painel do {{site.data.keyword.blockchainfull_notm}} Platform. No seu painel ativado, selecione **Visão geral** e, em seguida, o botão **Credenciais de serviço** para exibir o terminal e informações de certificado para os membros do canal.
+    Você preencherá o arquivo recém-criado `connection.json` com atributos que são fornecidos por meio de seu painel do {{site.data.keyword.blockchainfull_notm}} Platform. No seu painel, selecione **Visão geral** e, em seguida, clique no botão **Perfil de conexão** para exibir o terminal e as informações de certificado para os membros do canal.
 
 ## Etapa dois: Incluindo informações do solicitante
 
-1. Agora podemos começar a modificar o modelo com as informações que as Credenciais de serviço fornecem. Pode haver múltiplos solicitantes nas Credenciais de serviço, mas apenas um é necessário para um arquivo `connection.json`.
+1. Agora, podemos começar a modificar o modelo com as informações que o Perfil de conexão fornece. Pode haver múltiplos solicitantes no Perfil de conexão, mas apenas um é necessário para um arquivo `connection.json`.
 
-    Substitua os valores de URL do solicitante no modelo pelas informações relevantes de suas credenciais de serviço no formato a seguir:
+    Substitua os valores url do solicitante no modelo pelas informações relevantes de seu Perfil de conexão no formato a seguir:
 
         “url”: “grpcs://abca.4.secure.blockchain.ibm.com:12345”
 
@@ -84,7 +85,7 @@ Assegure-se de ter instalado o ambiente de desenvolvedor do {{site.data.keyword.
 
 ## Etapa quatro: Incluindo informações do peer
 
-1. A **requestURL** e a **eventURL** para cada peer devem ser configuradas. Substitua o atributo **url** pelo valor **url** que está localizado em suas credenciais de serviço. Substitua o atributo **eventURL** pela **eventUrl** localizada em suas Credenciais de serviço. Depois de fazer as mudanças, a seção peers de `connection.json` deve ter o formato a seguir:
+1. A **requestURL** e a **eventURL** para cada peer devem ser configuradas. Substitua o atributo **url** pelo valor **url** que está localizado em seu Perfil de conexão. Substitua o atributo **eventURL** pelo **eventUrl** localizado no seu Perfil de conexão. Depois de fazer as mudanças, a seção peers de `connection.json` deve ter o formato a seguir:
 
         "peers": [{
               "requestURL": "grpcs://abca.4.secure.blockchain.ibm.com:12345",
@@ -102,7 +103,7 @@ Assegure-se de ter instalado o ambiente de desenvolvedor do {{site.data.keyword.
 
 ## Etapa sete: Incluindo um mspID
 
-O valor **mspID** em seu arquivo `connection.json` deve ser configurado para o mspID ou a sua organização. As credenciais de serviço fornecem uma lista das organizações com seus valores de mspid associados. Você deve usar o valor do atributo **mspid** para a sua organização.
+O valor **mspID** em seu arquivo `connection.json` deve ser configurado para o mspID de sua organização. O Perfil de conexão fornece uma lista das organizações com os seus valores de mspid associados. É necessário usar o valor do atributo **mspid** de sua organização.
 
 ## Etapa oito: Incluindo o globalCert
 1. O {{site.data.keyword.blockchainfull_notm}} Platform usa um certificado TLS comum para os solicitantes e peers. Para cada solicitante e peer, há um atributo **tlsCACerts** que todos contêm o mesmo certificado. Substitua o valor simulado no arquivo `connection.json` pelo valor **tlsCACerts**. Ele deve tomar o formato a seguir:
@@ -113,7 +114,7 @@ O valor **mspID** em seu arquivo `connection.json` deve ser configurado para o m
 
 **Observe**: essa etapa **deve** ser executadas antes de você criar o canal no qual implementar uma rede de negócios. Se essa etapa for executada após a criação do canal, uma rede de negócios implementada **não será iniciada**.
 
-No documento credenciais de serviço em **certificateAuthorities** está um atributo **escrivão** contendo atributos para **enrollId** e **enrollSecret** no formato a seguir:
+No documento Perfil de conexão, em **certificateAuthorities**, está um atributo **registrar** que contém atributos para **enrollId** e **enrollSecret** no formato a seguir:
 
         "registrar": [
             {
@@ -157,7 +158,7 @@ No documento credenciais de serviço em **certificateAuthorities** está um atri
 
 ## Etapa onze: Importando uma nova identidade para administrar a sua rede de negócios
 
-Crie uma identidade no Composer usando os certificados que foram solicitados anteriormente. Essa nova identidade terá a autoridade para instalar o chaincode nos peers que tiverem os certificados públicos transferidos por upload e será um emissor para as autoridades de certificação.
+Crie uma identidade no Composer usando os certificados que foram solicitados anteriormente. Essa nova identidade terá a autoridade para instalar um chaincode nos peers que tiverem os seus certificados públicos transferidos por upload e será uma emissora para as autoridades de certificação.
 
 1. Para criar a nova identidade, execute o comando a seguir:
 

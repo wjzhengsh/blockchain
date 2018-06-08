@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-03-16"
+lastupdated: "2018-05-29"
 
 ---
 
@@ -25,52 +25,38 @@ Com aplicativos, é possível chamar o chaincode para consultar ou atualizar um 
 
 	Git é uma ferramenta de controle de versão com a qual se familiarizar, tanto para o desenvolvimento de chaincode como para o desenvolvimento de software em geral. Além disso, o Bash Git, que é instalado com Git no Windows, é uma alternativa excelente para o prompt de comandos do Windows.
 
-	Use o comando a seguir para verificar sua instalação do Git.  Você deverá ver uma saída semelhante à abaixo:
-	```
-	$ git --version
-	git version 2.11.1.windows.1
-	```
-	{:screen}
-
 *	GoLang ([Página de download do GoLang ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://golang.org/dl){:new_window})
 
-	A instalação do GoLang instala um conjunto de ferramentas de CLI Go, que são muito úteis para gravar o chaincode.  Por exemplo, o comando `go build` permite verificar se seu chaincode é realmente compilado antes de você tentar implementá-lo em uma rede.  No momento da gravação, sabe-se que esse chaincode é construído com êxito com a versão `1.8.3`.
-
-	Use o comando a seguir para verificar sua versão do GoLang.  Você deverá ver uma saída semelhante à abaixo:
-	```
-	$ go version
-	go version go1.8.3 windows/amd64
-	```
-	{:screen}
+	A instalação do GoLang instala um conjunto de ferramentas de CLI Go, que são muito úteis para gravar o chaincode. Por exemplo, o comando `go build` permite verificar se seu chaincode é realmente compilado antes de você tentar implementá-lo em uma rede.
 
 	Siga as [Instruções de Instalação ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://golang.org/doc/install){:new_window} para configurar corretamente as variáveis de ambiente. Verifique seu `GOPATH` usando o comando a seguir. Observe que o `GOPATH` não precisa corresponder ao exemplo; o importante é que você tenha essa variável configurada em um diretório válido em seu sistema de arquivos.
+
 	```
 	$ echo $GOPATH
 C:\gopath
 	```
-	{:screen}
 
 	É possível, então, verificar sua instalação do GoLang compilando o código GoLang com o exemplo do [hello world ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://golang.org/doc/install#testing){:new_window}.
 
-*	Node.js ([Página de download do Node.js![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://nodejs.org/en/download/){:new_window}).  Escolha uma versão entre 6.9.5 < 7. Versões do Nó maiores que 7 podem causar erros ao fazer download dos módulos SDK.
+* Java ([Página de download do Java ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://java.com/en/download/){:new_window}).
 
-	Use os comandos a seguir para verificar sua instalação do Node.js.  Você deverá ver uma saída semelhante à abaixo:
-	```
-	$ node -v
-	v6.10.1
+*	Node.js ([Página de download do Node.js![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://nodejs.org/en/download/){:new_window}).
 
-	$ npm -v
-	3.10.10
-	```
-	{:screen}
+  O desenvolvimento do chaincode é suportado atualmente em Node.js, Go e Java.
 
 ## Gerando os certificados do lado do cliente
-Não vamos nos aprofundar nas minúcias do x509 e da infraestrutura de chave pública; há muitos recursos externos para isso. Basta dizer que os fluxos de comunicação no Fabric usam operações de assinatura/verificação em cada ponto de contato. Desse modo, qualquer cliente que envie chamadas (ou seja, transações) para a rede precisará assinar cargas úteis (chave privada) e anexar um certificado x509 assinado corretamente para propósitos de verificação (certificado assinado). A chave privada e o certificado assinado, juntamente com um identificador MSP e o certificado raiz da Autoridade de certificação (CA) compõem o que é referido como o objeto de "contexto do usuário". Novamente, não há necessidade de detalhes extrínsecos. Nós simplesmente nos comunicaremos com a Autoridade de certificação apropriada e recuperaremos as chaves e os certificados que permitem que o objeto seja formado. Este processo é referido como "inscrição". Depois de formar o objeto de contexto do usuário, a "configuração" ou "obtenção" desse contexto do usuário é tão fácil quanto chamar uma API do seu aplicativo. Neste ponto, o aplicativo (ou seja, o cliente) é equipado com todos os artefatos necessários e está pronto para se comunicar com a rede. Veremos as duas abordagens para recuperar as chaves e os certificados.
+Não vamos nos aprofundar nas minúcias do x509 e da infraestrutura de chave pública; há muitos recursos externos para isso. Basta dizer que os fluxos de comunicação no Fabric usam operações de assinatura/verificação em cada ponto de contato. Desse modo, qualquer cliente que envie chamadas (ou seja, consultas ou atualizações contábeis) para a rede precisará assinar cargas úteis e anexar um certificado x509 assinado corretamente para propósitos de verificação. A chave privada e o certificado assinado, juntamente com um identificador do MSP e o certificado raiz da Autoridade de Certificação (CA), compõem o que é referido como o objeto "contexto do usuário".
+
+O importante aqui é o processo de "inscrição", no qual as chaves e os certificados que permitem que o objeto seja formado são recuperados por meio da autoridade de certificação apropriada. Depois de formar o objeto de contexto do usuário, será possível chamar uma API no seu aplicativo para "configurar" ou "obter" esse contexto de usuário. Neste ponto, o aplicativo (ou seja, o cliente) é equipado com todos os artefatos necessários e está pronto para se comunicar com a rede. Veremos as duas abordagens para recuperar as chaves e os certificados.
 
 ### Linha de comandos
 Esta é a mais simples das duas abordagens. Primeiro, siga as instruções para construir o [cliente Fabric CA ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](http://hyperledger-fabric-ca.readthedocs.io/en/latest/users-guide.html). Esta etapa permite se comunicar com um Servidor de CA e receber de volta certificados e chaves formatados adequadamente.
 
-Segundo, faça download dos certificados TLS em [seu {{site.data.keyword.Bluemix_notm}} ![Ícone de fazer download](images/external_link.svg "Ícone de link externo")](http://blockchain-certs.mybluemix.net/3.secure.blockchain.ibm.com.rootcert) e salve o conteúdo em uma pasta, por exemplo, ``$HOME/tls``.  Esta etapa permite que o fluxo de dados seja criptografado na conexão.
+Segundo, faça download dos certificados do TLS do IBM Cloud dependendo do plano de serviço que você estiver usando:
+- [Certificado de Raiz do TLS para o Starter Plan ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://blockchain-certs.mybluemix.net/us2.blockchain.ibm.com.cert)
+- [Certificado de Raiz do TLS para o Enterprise Plan ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://blockchain-certs.mybluemix.net/3.secure.blockchain.ibm.com.rootcert)
+
+Salve o conteúdo em uma pasta, por exemplo, ``$HOME/tls``. Esta etapa permite que o fluxo de dados seja criptografado na conexão.
 
 Finalmente, abra o arquivo JSON **Perfil de conexão** na sua tela **Visão geral** no Monitor de rede e localize as variáveis relevantes:
 * URL para CA: `url` sob `certificateAuthorities`
@@ -95,11 +81,11 @@ Também é possível localizar o certificado raiz da CA e a chave privada do adm
 * A chave privada do administrador: `$HOME/.fabric-ca-client/msp/keystore/<>_sk file`
 
 ### SDK
-Há dois repositórios do Hyperledger que contêm excelentes recursos e scripts para entender como interagir programaticamente com uma Autoridade de certificação. O repositório ``fabric-samples`` contém o exemplo de "transferência de saldo" e o repositório ``fabric-sdk-node`` possui uma série de testes de Serviços da CA. Se você pretende emitir as suas solicitações de inscrição no lado do aplicativo, então, precisará entender completamente as APIs que precisam ser expostas nos pacotes ``fabric-ca-client`` e ``fabric-client``.  Use esses scripts e repositórios como uma linha de base para estruturar seu aplicativo.
+Há alguns repositórios do Fabric que contêm excelentes recursos e scripts para entender como interagir programaticamente com uma Autoridade de Certificação. O repositório ``fabric-samples`` contém o exemplo ``balance transfer`` e o repositório ``fabric-sdk-node`` tem uma série de testes de Serviços da autoridade de certificação. Se você pretende emitir as suas solicitações de inscrição no lado do aplicativo, então, precisará entender completamente as APIs que precisam ser expostas nos pacotes ``fabric-ca-client`` e ``fabric-client``. Use esses scripts e repositórios como uma linha de base para estruturar seu aplicativo.
 
-Vamos dar uma olhada rápida em alguns trechos de código chave do exemplo de "transferência de saldo":
+Vamos dar uma olhada rápida em alguns trechos chaves do exemplo `balance transfer`:
 
-Primeiro, precisamos criar o nosso objeto do cliente e configurar uma instância de armazenamento de chave/valor na qual os nossos certificados e chaves serão estacionados. Podemos fazer isso com um factory method simples -- ``newCryptoSuite`` - que se estende até a classe ``Client`` do ``BaseClient``. Aqui está uma olhada rápida no código:
+Primeiro, precisamos criar o nosso objeto do cliente e configurar uma instância de armazenamento de valor da chave na qual os nossos certificados e chaves serão colocados. Podemos fazer isso com um factory method simples -- ``newCryptoSuite`` - que se estende até a classe ``Client`` do ``BaseClient``. Aqui está uma olhada rápida no código:
 
 ```
 # <PUBLIC_PRIVATE_KEY_PATH> denota o caminho em sua máquina local no qual você deseja armazenar sua chave e certificado
@@ -138,21 +124,83 @@ E a tarefa final é realmente configurar o conjunto de criptografia e construir 
 
 ## Desenvolvendo aplicativos
 {: #developing-applications}
-É possível desenvolver o seu aplicativo em JavaScript ou Java e alavancar as APIs disponíveis nos SDKs do Hyperledger Fabric Client para permitir a interação entre o seu aplicativo e a sua rede. Um aplicativo precisa incluir pelo menos as informações a seguir:
+
+Uma maneira fácil de começar a desenvolver aplicativos é usar o chaincode de amostra e aplicativos como um modelo para criar a sua própria solução de negócios. É possível localizar aplicativos de amostra para as redes de blockchain no {{site.data.keyword.cloud_notm}} em [Aplicativos de amostra](howto/prebuilt_samples.html). Também é possível começar a desenvolver aplicativos do zero com base em suas próprias necessidades de negócios. 
+
+É possível desenvolver o seu aplicativo em JavaScript ou Java e alavancar as APIs disponíveis nos SDKs do Hyperledger Fabric Client para permitir a interação entre o seu aplicativo e a sua rede.  Um aplicativo precisa incluir pelo menos as informações a seguir:
 * Nome e versão do chaincode a ser chamado.
 * Informações do terminal de API de seus recursos de rede, incluindo solicitantes, CA e peers.
 * Funções para consultar ou atualizar o livro-razão na rede.  Se você desejar alta disponibilidade, precisará considerar o failover de nó em seu aplicativo.
+<!--
+### Using Fabric SDKs
+{: #use-sdks}
+Fabric offers Node.js SDK and Java SDK currently and will support more programming languages, such as Python, REST, or GO, in future releases. For more information about Fabric SDKs and how to use them, see the following documentation:
+- [Hyperledger Fabric Node SDK documentation ![External link icon](images/external_link.svg "External link icon")](https://fabric-sdk-node.github.io/){:new_window}
+- [Hyperledger Fabric Java SDK documentation ![External link icon](images/external_link.svg "External link icon")](https://github.com/hyperledger/fabric-sdk-java){:new_window}
+-->
 
-É possível localizar aplicativos de amostra para o **Enterprise Plan** no {{site.data.keyword.Bluemix_short}} em [Aplicativos de amostra](howto/sample_applications.html).  Use esses chaincodes e aplicativos de amostra como um modelo para criar sua própria solução de negócios.
+### Configurando Valores de Tempo Limite de SDKs do Fabric
+{: #set-timeout-in-sdk}
+
+SDKs do Fabric configuram valores de tempo limite padrão em aplicativos clientes para eventos na rede de blockchain. Veja o exemplo a seguir sobre as configurações de tempo limite padrão no SDK do Fabric Java. O caminho de arquivo é `src\main\java\org\hyperledger\fabric\sdk\helper\Config.java`.
+
+```
+    /**
+     * Timeout settings
+     **/
+    public static final String PROPOSAL_WAIT_TIME = "org.hyperledger.fabric.sdk.proposal.wait.time";
+    public static final String CHANNEL_CONFIG_WAIT_TIME = "org.hyperledger.fabric.sdk.channelconfig.wait_time";
+    public static final String TRANSACTION_CLEANUP_UP_TIMEOUT_WAIT_TIME = "org.hyperledger.fabric.sdk.client.transaction_cleanup_up_timeout_wait_time";
+    public static final String ORDERER_RETRY_WAIT_TIME = "org.hyperledger.fabric.sdk.orderer_retry.wait_time";
+    public static final String ORDERER_WAIT_TIME = "org.hyperledger.fabric.sdk.orderer.ordererWaitTimeMilliSecs";
+    public static final String PEER_EVENT_REGISTRATION_WAIT_TIME = "org.hyperledger.fabric.sdk.peer.eventRegistration.wait_time";
+    public static final String PEER_EVENT_RETRY_WAIT_TIME = "org.hyperledger.fabric.sdk.peer.retry_wait_time";
+    public static final String EVENTHUB_CONNECTION_WAIT_TIME = "org.hyperledger.fabric.sdk.eventhub_connection.wait_time";
+    public static final String EVENTHUB_RECONNECTION_WARNING_RATE = "org.hyperledger.fabric.sdk.eventhub.reconnection_warning_rate";
+    public static final String PEER_EVENT_RECONNECTION_WARNING_RATE = "org.hyperledger.fabric.sdk.peer.reconnection_warning_rate";
+    public static final String GENESISBLOCK_WAIT_TIME = "org.hyperledger.fabric.sdk.channel.genesisblock_wait_time";
+    
+    ...
+    
+    // Default values
+    /**
+     * Timeout settings
+     **/
+    defaultProperty(PROPOSAL_WAIT_TIME, "20000");
+    defaultProperty(CHANNEL_CONFIG_WAIT_TIME, "15000");
+    defaultProperty(ORDERER_RETRY_WAIT_TIME, "200");
+    defaultProperty(ORDERER_WAIT_TIME, "10000");
+    defaultProperty(PEER_EVENT_REGISTRATION_WAIT_TIME, "5000");
+    defaultProperty(PEER_EVENT_RETRY_WAIT_TIME, "500");
+    defaultProperty(EVENTHUB_CONNECTION_WAIT_TIME, "5000");
+    defaultProperty(GENESISBLOCK_WAIT_TIME, "5000");
+    /**
+     * This will NOT complete any transaction futures time out and must be kept WELL above any expected future timeout
+     * for transactions sent to the Orderer. Para a limpeza interna apenas.
+     */
+    defaultProperty(TRANSACTION_CLEANUP_UP_TIMEOUT_WAIT_TIME, "600000"); //10 min.
+```
+{:codeblock}
+
+No entanto, você pode precisar mudar os valores de tempo limite padrão em seu próprio aplicativo. Por exemplo, quando o seu aplicativo chamar uma transação que precise de mais de 5.000 milissegundos, que é o valor de tempo limite padrão para a conexão de hub de evento, para resposta, você obterá um erro com falha porque o evento de chamada termina em 5.000 milissegundos antes de a transação ser concluída. É possível configurar a propriedade de sistema para sobrescrever os valores padrão de seu aplicativo cliente. Como os valores padrão são inicializados antes de você configurar a propriedade de sistema, a propriedade de sistema pode não entrar em vigor. Portanto, é necessário configurar a propriedade de sistema para tempo limite em uma construção estática em seu aplicativo cliente. Veja o exemplo a seguir sobre a mudança do valor de tempo limite para a conexão de hub de evento para 15000 milissegundos no SDK do Fabric Java. O caminho de arquivo é `src\main\java\org\hyperledger\fabric\sdk\helper\Config.java`.
+
+```
+ public static final String EVENTHUB_CONNECTION_WAIT_TIME = "org.hyperledger.fabric.sdk.eventhub_connection.wait_time";
+ private static final long EVENTHUB_CONNECTION_WAIT_TIME_VALUE = 15000;
+  
+ static {
+     System.setProperty (EVENTHUB_CONNECTION_WAIT_TIME, EVENTHUB_CONNECTION_WAIT_TIME_VALUE); }
+```
+{:codeblock}
 
 ## Incluindo terminais de API de rede em seu aplicativo
-É necessário incluir terminais de API de seus recursos de rede em seu aplicativo para que ele possa interagir com a sua rede do {{site.data.keyword.blockchain}} no {{site.data.keyword.Bluemix_short}}. Se você não tiver uma rede do {{site.data.keyword.blockchain}} no {{site.data.keyword.Bluemix_short}}, será possível criar uma com o Starter Plan ou o Enterprise Plan. Para obter mais informações, veja [Governar a rede do Starter Plan](get_start_starter_plan.html) e [Governar a rede do Enterprise Plan](get_start.html.
+É necessário incluir terminais de API de seus recursos de rede em seu aplicativo para que ele possa interagir com a sua rede do {{site.data.keyword.blockchain}} no {{site.data.keyword.Bluemix_short}}.  Se você não tiver uma rede do {{site.data.keyword.blockchain}} no {{site.data.keyword.Bluemix_short}}, será possível criar uma com o Starter Plan ou o Enterprise Plan. Para obter mais informações, veja [Governar a rede do Starter Plan](get_start_starter_plan.html) e [Governar a rede do Enterprise Plan](get_start.html).
 
 É possível localizar os terminais de API no perfil de conexão de sua rede. O perfil de conexão está no formato JSON e contêm as informações do terminal de API e enrollIDs/segredos para os seus recursos de rede, incluindo solicitante, autoridade de certificação e nós de peer. O seu aplicativo irá interagir com peers e outros recursos de rede por meio desses terminais de API.
 
 1. Recupere as informações do terminal de API de seus recursos de rede por meio de seu Monitor de rede com um dos métodos a seguir:
 	* Para obter as informações do terminal de API que são específicas para um chaincode, na tela do canal específico, na qual o chaincode está em execução, localize o chaincode e clique no botão **JSON**.
-	![Terminais de API por chaincode](images/channel_chaincode_detail.png "Terminais de API por chaincode")
+	![Terminais de API por chaincode](images/channel_chaincode.png "Terminais de API por chaincode")
 	* Para obter um conjunto completo de informações do terminal de API sobre todos os recursos de rede, clique no botão **Perfil de conexão** na tela "Visão geral".
 	![Perfil de conexão no Monitor de rede](images/service_credentials.png "Perfil de conexão no Monitor de rede")
 
@@ -164,13 +212,18 @@ E a tarefa final é realmente configurar o conjunto de criptografia e construir 
                 "eventUrl": "grpcs://tor-zbc06c.3.secure.blockchain.ibm.com:13547",
                 ...
 	```
-
 	**Nota**: se desejar ter como alvo peers adicionais na rede, por exemplo, requerer endosso de um peer que não pertence à sua organização, será necessário obter as informações de terminal de API corretas desses peers.  Também é necessário armazenar o certificado de CA para a outra organização para verificar respostas que retornam ao seu aplicativo. Essas informações não são expostas em seu perfil de conexão; portanto, deve-se contatar o administrador apropriado para a Organização do Cloud Foundry e adquirir essas informações em uma operação fora da banda. A URL de serviço de solicitação é comum na rede; não é necessária nenhuma informação específica do membro para solicitar o serviço.
 
 3. Vincule as informações do terminal de API a um arquivo de configuração de seu aplicativo, conforme mostrado no exemplo a seguir:
 	```
 	orderer_url: 'grpcs://fft-zbc01a.4.secure.blockchain.ibm.com:18603'
 	```
+
+## Usando Índices CouchDB
+
+Se a sua rede usar o CouchDB e você desejar aproveitar o recurso de indexação do CouchDB (que melhora o desempenho de CouchDB) os índices precisarão ser empacotados com o chaincode.
+
+Para saber mais sobre o CouchDB e como configurar índices, consulte a [Documentação do Fabric sobre o CouchDB ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/couchdb_as_state_database.html)
 
 ## Hospedando aplicativos
 É possível hospedar seu aplicativo em seu sistema de arquivos local ou enviá-lo por push para o {{site.data.keyword.Bluemix_notm}}. Para enviar seu aplicativo por push para o {{site.data.keyword.Bluemix_notm}}, conclua as etapas a seguir:
@@ -199,4 +252,4 @@ Conclua as etapas a seguir para remover a conexão entre seu aplicativo e a rede
 	1. Na tela "Canal" do Monitor de Rede, localize o canal no qual o chaincode está instalado.
 	2. Na tela do canal específico, localize o chaincode que deseja desativar.
 	3. Clique no botão **Excluir** e clique em **Enviar** no painel de exclusão do chaincode. O seu contêiner do chaincode será removido.
-	![Excluir um chaincode](images/channel_chaincode_detail.png "Excluir um chaincode")
+	![Excluir um chaincode](images/channel_chaincode.png "Excluir um chaincode")

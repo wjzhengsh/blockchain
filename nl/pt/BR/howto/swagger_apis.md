@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-03-16"
+lastupdated: "2018-05-15"
 
 ---
 
@@ -12,7 +12,7 @@ lastupdated: "2018-03-16"
 {:codeblock: .codeblock}
 {:pre: .pre}
 
-# Tentando APIs com o Swagger
+# Interagindo com a rede usando APIs do Swagger
 
 O {{site.data.keyword.blockchainfull}} Platform expõe uma série de APIs de REST para facilitar o seu desenvolvimento de aplicativo. É possível testar com relação às suas redes de blockchain usando uma UI do Swagger.
 {:shortdesc}
@@ -21,6 +21,8 @@ Antes de iniciar, é necessário criar uma instância de serviço do [{{site.dat
 
 
 ## Recuperando credenciais de rede
+
+{: #retrieving-network-credentials}
 
 Entre no Monitor de rede de sua rede de Blockchain e abra a tela "APIs" do navegador esquerdo. É possível ver as suas credenciais de rede para as APIs de REST. Posteriormente, você autorizará as APIs usando os valores da "chave" e do "segredo" exibidos aqui e executará as APIs com o "network_id" como um parâmetro. Clique em **Mostrar segredo** para revelar o valor do campo segredo. Copie os valores dos campos chave, segredo e network_id, que você poderá usar posteriormente na UI do Swagger.
 
@@ -37,13 +39,15 @@ Entre no Monitor de rede de sua rede de Blockchain e abra a tela "APIs" do naveg
 -->
 
 **Figura 1** mostra a tela "APIs":
-![Tela de Visão geral](../images/restAPI.png)
+
+![Tela de APIs](../images/API_screen_starter.png "Tela de APIs")
 *Figura 1. APIs*
 
 Se você estiver usando o Starter Plan, será possível alternar entre organizações no Monitor de rede. Com o Starter Plan, duas organizações são configuradas por padrão. Alternar entre organizações pode ser útil para testar as APIs de REST por meio da perspectiva de cada organização. Para obter as credenciais para outra organização em sua rede, clique em seu nome do usuário no canto superior direito do console do Monitor de rede. No menu que é aberto, clique na seta suspensa ao lado da Organização para visualizar todas as Organizações. Selecione a organização para a qual você gostaria de alternar e visualizar as credenciais de rede associadas.
 
 A **Figura 2** mostra como Alternar entre organizações:
-![Alternando entre organizações](../images/restAPIOrganization.png)
+
+![Switching between organizations](../images/switch_orgs_starter.gif "Switching between organizations")  
 *Figura 2. Alternando entre organizações*
 
 
@@ -58,17 +62,19 @@ Na UI do Swagger, clique no botão **Autorizar** e a janela de autorização apa
 
 Usando autenticação Aut. básica, quaisquer credenciais que você especificar na janela Autorizar serão armazenadas após você clicar nos botões **Autorizar** e, em seguida, **Concluído** e serão transmitidas em cada chamada de API de REST.
 
-A **Figura 3** mostra a janela pop-up "Autorizar":
-![Janela pop-up Autorizar](../images/swaggerUIAuthorize.png)
-*Figura 3. Janela pop-up Autorizar*
+A **Figura 3** mostra o processo para autorizar APIs do Swagger:
+
+![Authorize APIs](../images/swaggerUIAuthorize.gif "Authorize APIs")  
+*Figura 3. Autorizar APIs*
 
 
 ## Tentando APIs
 
 Clique na API de REST que você deseja executar e clique no botão **Tentar**. Insira os parâmetros necessários e clique em **Executar**. A chamada API de REST é executada com relação à sua rede.
 
-A **Figura 4** mostra a "UI do Swagger":
-![UI do Swagger](../images/swaggerUITryItOut.png)
+**Figura 4** mostra a "UI do Swagger":
+
+![Swagger UI](../images/swaggerUITryItOut.png "Swagger UI")  
 *Figura 4. UI do Swagger*
 
 
@@ -78,4 +84,4 @@ A **Figura 4** mostra a "UI do Swagger":
   Assegure-se de que você tenha autorizado a API de REST fornecendo as suas credenciais de rede. Para obter mais informações, veja [Autorizando APIs do Swagger](#authorizing-swagger-apis).
 
 ### 400 Erro: Solicitação inválida
-  Algumas APIs podem levar um argumento no Corpo da solicitação que age como um filtro para mostrar resultados somente para um período específico. Um fragmento de amostra é fornecido no Corpo, que se usado, precisará ser editado para especificar o peer ou a lista de peers na qual você gostaria de filtrar. Para evitar esse erro, edite o fragmento para especificar um peer em sua rede ou remova o fragmento inteiramente.
+  Algumas APIs podem levar um argumento no Corpo da solicitação que age como um filtro para mostrar resultados somente para um período específico. Um fragmento de amostra é fornecido no Corpo, que, se usado, precisa ser editado para especificar o peer ou a lista de peers nos quais você gostaria de filtrar. Para evitar esse erro, edite o fragmento para especificar um peer em sua rede ou remova o fragmento inteiramente.

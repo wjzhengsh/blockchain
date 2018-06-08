@@ -30,9 +30,16 @@ O Starter Plan fornece dois aplicativos de amostra com os quais você iniciará.
 
   A amostra Marbles permite que os usuários criem bolinhas virtuais com diferentes propriedades e as transfiram com outros usuários. Para obter mais informações sobre o Marbles, veja [Demo do Marbles ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://github.com/IBM-Blockchain/marbles).
 
+<!--
+* **Perishable Goods**
+
+  The Perishable Goods sample enables users to deploy legal contracts that purchase goods in a supply chain based on delivery and temperature readings. For more information about this sample, see [Perishable Goods ![External link icon](../images/external_link.svg "External link icon")](https://github.com/clauseHQ/demo-clause-ibm-perishable-goods).
+
+-->
+
 * **Fabricação de veículo**
 
-  A amostra de Fabricação de veículo permite que os usuários passem pelo ciclo de vida de um veículo virtual. Para obter mais informações sobre esta amostra, veja [Fabricação de veículo ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://github.com/IBM-Blockchain/vehicle-manufacture). 
+  A amostra de Fabricação de veículo permite que os usuários passem pelo ciclo de vida de um veículo virtual. Para obter mais informações sobre esta amostra, veja [Fabricação de veículo ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://github.com/IBM-Blockchain/vehicle-manufacture).
 
 Conclua as etapas a seguir para implementar um aplicativo de amostra:
 
@@ -90,6 +97,6 @@ Também é necessária uma rede de blockchain no {{site.data.keyword.cloud_notm}
 
 ## Excluindo um aplicativo de amostra
 
-Para excluir um aplicativo de amostra que foi adquirido através do processo de cadeia de ferramentas, navegue para o local em que a amostra vive na UI. Como os aplicativos de amostra são instanciados em um canal, é possível localizar a amostra em canais. Clique em **Canais** na navegação esquerda para abrir a tela "Canais". Clique no canal relevante no qual a amostra é instanciada e, em seguida, clique em **Chaincode**. Isso exibe chaincodes que são instanciados neste canal.
+Para excluir um aplicativo de amostra que foi adquirido através do processo de cadeia de ferramentas, navegue para o local em que a amostra vive na UI. Como os aplicativos de amostra são instanciados em um canal, é possível localizar a amostra em canais. Clique em **Canais** na navegação esquerda para abrir a tela "Canais". Clique no canal relevante no qual a amostra é instanciada e, em seguida, clique em **Chaincode**. Isso exibe chaincodes que são instanciados nesse canal.
 
-Se você clicar no chaincode de seu aplicativo, poderá ver uma guia **Excluir**. No entanto, clicar em **Excluir** sozinho não exclui o aplicativo de amostra, mas exclui apenas o contêiner de chaincode. Também é necessário navegar para o painel do {{site.data.keyword.cloud_notm}} e o painel da cadeia de ferramentas para excluir a amostra lá.
+Se você clicar no chaincode de seu aplicativo, poderá ver uma guia **Excluir**. No entanto, clicar em **Excluir** sozinho não exclui o aplicativo de amostra, mas exclui apenas o contêiner de chaincode.  Também é necessário navegar para o painel do {{site.data.keyword.cloud_notm}} e o painel da cadeia de ferramentas para excluir a amostra lá.
