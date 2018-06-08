@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-3-14"
+lastupdated: "2018-5-15"
 
 ---
 
@@ -16,10 +16,10 @@ lastupdated: "2018-3-14"
 # Sviluppare la rete
 {: #develop-the-network}
 
-Lo sviluppo di soluzioni blockchain utilizzando {{site.data.keyword.blockchainfull}} Platform si avvale del set di strumenti di sviluppo open source Hyperledger Composer. Hyperledger Composer utilizza un linguaggio di modellazione su misura, che è combinato con le transazioni JavaScript e le regole di controllo accessi per modellare completamente una rete di business blockchain _prima_ che tu esegua alcuna distribuzione a una rete blockchain reale.
+Lo sviluppo di soluzioni blockchain utilizzando {{site.data.keyword.blockchainfull}} Platform si avvale del set di strumento di sviluppo open source Hyperledger Composer. Hyperledger Composer utilizza un linguaggio di modellazione su misura, che è combinato con le transazioni JavaScript e le regole di controllo dell'accesso per modellare completamente una rete di business blockchain _prima_ che tu esegua alcuna distribuzione a una rete blockchain reale.
 {:shortdesc}
 
-**Nota**: Starter Plan fornisce applicazioni di esempio che puoi apprendere e provare. Puoi eseguire le applicazioni di esempio in Starter Plan prima di sviluppare la tua rete di business personalizzata. Per ulteriori informazioni, vedi [Informazioni su Starter Plan](starter_plan.html).
+**Nota**: piano Starter fornisce applicazioni di esempio che puoi apprendere e provare. Puoi eseguire le applicazioni di esempio in piano Starter prima di sviluppare la tua rete di business personalizzata. Per ulteriori informazioni, vedi [Informazioni su piano Starter](starter_plan.html).
 
 Questa esercitazione spiega lo sviluppo di una soluzione {{site.data.keyword.blockchain}} che inizia con la creazione e la modellazione di una rete di business e la distribuisce quindi a una rete blockchain in esecuzione.
 
@@ -43,15 +43,17 @@ Un concetto chiave per lo sviluppo di soluzioni {{site.data.keyword.blockchain}}
 
 Il modo più facile per iniziare consiste nell'utilizzare il generatore Yeoman per creare una rete di business di base. Il generatore Yeoman crea una directory che contiene tutti i componenti di una rete di business che possono essere modificati per il tuo specifico caso d'uso.
 
-1. Usa Yeoman per creare una rete di business di base. Il seguente comando richiede un nome di rete di business, una descrizione, un nome dell'autore, l'indirizzo email dell'autore, la selezione della licenza e lo spazio dei nomi:
+1. Crea una nuova directory del tuo progetto e passa ad essa nella riga di comando.
+
+2. Dalla tua nuova directory, utilizza Yeoman per creare una rete di business di base. Il seguente comando richiede un nome di rete di business, una descrizione, un nome dell'autore, l'indirizzo email dell'autore, la selezione della licenza e lo spazio dei nomi:
 
         yo hyperledger-composer:businessnetwork
 
-2. Immetti `tutorial-network` per il nome della rete e le informazioni desiderate per la descrizione, il nome dell'autore e l'indirizzo email dell'autore.
+3. Immetti `tutorial-network` per il nome della rete e le informazioni desiderate per la descrizione, il nome dell'autore e l'indirizzo email dell'autore.
 
-3. Seleziona `Apache-2.0` come licenza.
+4. Seleziona `Apache-2.0` come licenza.
 
-4. Seleziona `org.acme.biznet` come spazio dei nomi.
+5. Seleziona `org.acme.biznet` come spazio dei nomi.
 
 ## Passo due: Definizione della rete di business
 
@@ -59,9 +61,9 @@ Una rete di business è composta da asset, partecipanti, transazioni, regole di 
 
 ### Modellazione di asset, partecipanti e transazioni
 
-Il primo documento da aggiornare è il file modello (`.cto`). Il file viene scritto utilizzando il [linguaggio di modellazione Hyperledger Composer](https://hyperledger.github.io/composer/latest/reference/cto_language). Il file modello contiene le definizioni di ciascuna classe si asset, transazione, partecipante ed evento. Estende implicitamente il modello di sistema descritto nella documentazione del linguaggio di modellazione.
+Il primo documento da aggiornare è il file modello (`.cto`). Il file modello viene scritto utilizzando il [linguaggio di modellazione Hyperledger Composer](https://hyperledger.github.io/composer/latest/reference/cto_language). Il file modello contiene le definizioni di ciascuna classe si asset, transazione, partecipante ed evento. Estende implicitamente il modello di sistema descritto nella documentazione del linguaggio di modellazione.
 
-1. Apri il file modello `org.acme.biznet.cto`.
+1. Apri il file modello `org.acme.biznet.cto` in un editor di tua scelta. È ubicato nella cartella `models` della rete di business che hai creato nell'ultimo passo.
 
 2. Sostituisci il contenuto con queste informazioni:
 
@@ -112,11 +114,11 @@ La funzione prevista della transazione `Trade` è semplicemente quella di accett
                 });
         }
 
-3. Salva le tue modifiche a `logic.js`.
+3. Salvare le tue modifiche a `logic.js`.
 
 ### Aggiunta del controllo accessi
 
-Il controllo accessi è una parte chiave di una rete di business. Tutte le reti di business devono avere un file di controllo accessi denominato `permissions.acl`. Ogni volta che un processo viene richiamato in una rete di business distribuita, l'elenco di controllo accessi viene controllato per garantire che l'identità o il partecipante che sta eseguendo il richiamo possa richiamare l'operazione.
+Il controllo accessi è una parte chiave di una rete di business. Tutte le reti di business devono avere un file di controllo accessi denominato `permissions.acl`. Ogni volta che un processo viene richiamato in una rete di business distribuita, l'elenco del controllo dell'accesso viene verificato per garantire che il richiamo dell'identità o del partecipante possa richiamare l'operazione. 
 
 Ai fini di questa esercitazione, imposta un semplice elenco di controllo accessi (ACL, Access Control List). Nota che esso non deve essere distribuito a un ambiente di produzione.
 
@@ -143,7 +145,7 @@ Ai fini di questa esercitazione, imposta un semplice elenco di controllo accessi
           action: ALLOW
         }
 
-3. Salva le tue modifiche a `permissions.acl`.
+3. Salvare le tue modifiche a `permissions.acl`.
 
 ## Passo tre: Impacchettamento della rete di business
 
@@ -159,6 +161,6 @@ Dopo che hai eseguito il comando, viene creato un file di archivio di rete di bu
 
 ## Passo quattro: Distribuzione della rete di business e generazione di un server REST
 
-Distribuisci la rete di business sulla {{site.data.keyword.blockchainfull_notm}} Platform utilizzando [Starter Plan](./develop_starter.html) o [Enterprise Plan](./develop_enterprise.html).
+Distribuisci la rete di business sulla {{site.data.keyword.blockchainfull_notm}} Platform utilizzando [piano Starter](./develop_starter.html) o [piano Enterprise](./develop_enterprise.html).
 
 Dopo che la tua rete di business è stata distribuita a {{site.data.keyword.blockchainfull_notm}} Platform, è possibile generare un server REST personalizzato. Il server REST esamina il contenuto della rete di business e crea chiamate API RESTful per gli asset, le transazioni e i partecipanti della rete. Le istruzioni per generare un server REST sono incluse nella [documentazione di Hyperledger Composer](https://hyperledger.github.io/composer/latest/integrating/getting-started-rest-api).

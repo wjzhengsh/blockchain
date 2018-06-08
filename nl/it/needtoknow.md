@@ -26,7 +26,7 @@ L'architettura che sta dietro {{site.data.keyword.blockchainfull_notm}} è il pr
 
 ## Istruzione open source
 
-I piani di offerta {{site.data.keyword.blockchainfull_notm}} su {{site.data.keyword.Bluemix_notm}} sono sviluppati sullo stack Hyperledger Fabric della Linux Foundation.I membri del progetto Hyperledger, compresa IBM, continuano a contribuire ai vari progetti secondari che ricadono nell'ambito di Hyperledger. Tutti i contributi sono revisionati, controllati e testati dalla community.
+I piani di offerta {{site.data.keyword.blockchainfull_notm}} su {{site.data.keyword.Bluemix_notm}} sono sviluppati sullo stack Hyperledger Fabric della Linux Foundation. I membri del progetto Hyperledger, compresa IBM, continuano a contribuire ai vari progetti secondari che ricadono nell'ambito di Hyperledger.  Tutti i contributi sono revisionati, controllati e testati dalla community.
 
 ## Istruzione di supporto del chaincode
 
