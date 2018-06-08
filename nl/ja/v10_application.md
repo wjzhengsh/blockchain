@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-03-16"
+lastupdated: "2018-05-29"
 
 ---
 
@@ -25,52 +25,38 @@ lastupdated: "2018-03-16"
 
 	Git はバージョン管理ツールの 1 つで、簡単に言うと、チェーンコードの開発とソフトウェア開発の両方を把握するためのツールです。 また Git bash は、Git と一緒に Windows にインストールされ、Windows コマンド・プロンプトの代わりに使用できる優良なツールです。
 
-	Git のインストールを確認するには、以下のコマンドを使用します。  下記のような出力が表示されます。
-	```
-	$ git --version
-	git version 2.11.1.windows.1
-	```
-	{:screen}
-
 *	GoLang ([GoLang のダウンロード・ページ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://golang.org/dl){:new_window})
 
-	GoLang をインストールすると、Go の CLI ツールのセットがインストールされます。これらのツールは、チェーンコードの作成に非常に役立ちます。  例えば、`go build` コマンドを使用すると、チェーンコードをネットワークにデプロイしようとする前に、チェーンコードが実際にコンパイルされるかどうかを検査できます。  このドキュメントの執筆時点では、このチェーンコードはバージョン `1.8.3` で正常にビルドされることが確認されています。
-
-	GoLang のバージョンを確認するには、以下のコマンドを使用します。  下記のような出力が表示されます。
-	```
-	$ go version
-	go version go1.8.3 windows/amd64
-	```
-	{:screen}
+	GoLang をインストールすると、Go の CLI ツールのセットがインストールされます。これらのツールは、チェーンコードの作成に非常に役立ちます。 例えば、`go build` コマンドを使用すると、チェーンコードをネットワークにデプロイしようとする前に、チェーンコードが実際にコンパイルされるかどうかを検査できます。
 
 	[インストールの指示 ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://golang.org/doc/install){:new_window} に従って、環境変数を適切に設定します。 以下のコマンドを使用して、`GOPATH` を検査します。 `GOPATH` がこの例と一致している必要はないことに注意してください。ただ一つ重要なこととして、この変数はファイル・システム上の有効なディレクトリーに設定する必要があります。
+
 	```
 	$ echo $GOPATH
 C:\gopath
 	```
-	{:screen}
 
 	その後、[hello world ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://golang.org/doc/install#testing){:new_window} の例を使用して GoLang コードを構築し、GoLang のインストールを確認できます。
 
-*	Node.js ([Node.js のダウンロード・ページ ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://nodejs.org/en/download/){:new_window})。  6.9.5 から 7 までのバージョンを選択してください。ノードのバージョンが 7 より大きいと、SDK モジュールのダウンロード時にエラーが発生する可能性があります。
+* Java ([Java のダウンロード・ページ ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://java.com/en/download/){:new_window})。
 
-	Node.js のインストールを確認するには、以下のコマンドを使用します。  下記のような出力が表示されます。
-	```
-	$ node -v
-	v6.10.1
+*	Node.js ([Node.js のダウンロード・ページ ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://nodejs.org/en/download/){:new_window})。
 
-	$ npm -v
-	3.10.10
-	```
-	{:screen}
+  現在、Node.js、Go、Java によるチェーンコード開発がサポートされています。
 
 ## クライアント・サイドの証明書の生成
-x509 と Public Key Infrastructure の詳細についてはここでは扱いません。これらについての一般資料は多数存在します。 Fabric の通信フローではタッチポイントごとに署名/検証操作が使用されることを知っていれば十分です。したがって、ネットワークに呼び出し (つまりトランザクション) を送信するクライアントは、ペイロードに署名し (秘密鍵)、検証のために適切に署名された x509 証明書 (署名付き証明書) を付加する必要があります。秘密鍵と署名付き証明書は、MSP 識別子と認証局 (CA) ルート証明書とともに、「ユーザー・コンテキスト」オブジェクトと呼ばれるものを構成します。 これについても、過剰な詳細情報は不要です。 行うのは、該当する認証局と通信して、このオブジェクトを形成するために必要な鍵と証明書を取得することだけです。このプロセスのことを、「登録」と呼んでいます。 ユーザー・コンテキスト・オブジェクトを形成したら、その後の作業は、アプリケーションから API を呼び出してこのユーザー・コンテキスト・オブジェクトの「set」や「get」を行うという簡単なものです。 この時点で、アプリケーション (つまりクライアント) に必要な成果物がすべて装備され、ネットワークと通信する準備ができます。 鍵と証明書を取得する方法は 2 つあります。続く部分でそれらについて説明します。
+x509 と Public Key Infrastructure の詳細についてはここでは扱いません。これらについての一般資料は多数存在します。 Fabric の通信フローではタッチポイントごとに署名/検証操作が使用されることを知っていれば十分です。 したがって、ネットワークに呼び出し (つまり、台帳の照会または更新) を送信するクライアントは、ペイロードに署名し、適切に署名された x509 証明書を検証のために付加する必要があります。秘密鍵と署名付き証明書は、MSP 識別子と認証局 (CA) ルート証明書とともに、「ユーザー・コンテキスト」オブジェクトと呼ばれるものを構成します。
+
+ここで重要なのは「登録」のプロセスです。このプロセスで、このオブジェクトを形成するために必要な鍵と証明書が適切な CA から取得されます。ユーザー・コンテキスト・オブジェクトを形成した後、アプリケーションから API を呼び出して、このユーザー・コンテキストを「set」または「get」できます。この時点で、アプリケーション (つまりクライアント) に必要な成果物がすべて装備され、ネットワークと通信する準備ができます。 鍵と証明書を取得する方法は 2 つあります。続く部分でそれらについて説明します。
 
 ### コマンド・ライン
 これは 2 つのうち、より簡単な方法です。 まず、 [Fabric CA クライアント ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](http://hyperledger-fabric-ca.readthedocs.io/en/latest/users-guide.html)を指示に従って構築します。 このステップにより、CA サーバーと通信し、適切にフォーマットされた証明書と鍵を受け取ることができます。
 
-次に、TLS 証明書を [{{site.data.keyword.Bluemix_notm}} ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](http://blockchain-certs.mybluemix.net/3.secure.blockchain.ibm.com.rootcert) からダウンロードし、そのコンテンツを ``$HOME/tls`` などのフォルダーに保存します。  このステップにより、データの流れがワイヤー上で暗号化されます。
+次に、使用するサービス・プランに応じて、IBM Cloud から TLS 証明書をダウンロードします。
+- [Starter Plan 用のルート TLS 証明書 ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://blockchain-certs.mybluemix.net/us2.blockchain.ibm.com.cert)
+- [Enterprise Plan 用のルート TLS 証明書 ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://blockchain-certs.mybluemix.net/3.secure.blockchain.ibm.com.rootcert)
+
+コンテンツをフォルダー (例えば ``$ HOME/tls``) に保存します。このステップにより、データの流れがワイヤー上で暗号化されます。
 
 最後に、ネットワーク・モニターの**「概要」**画面から **Connection Profile** JSON ファイルを開き、関係のある以下の変数を見つけます。
 * CA の URL: ``certificateAuthorities`` の下の ``url``
@@ -95,11 +81,11 @@ $GOPATH/bin/fabric-ca-client enroll -u https://<enroll_id>:<enroll_password>@<ca
 * 管理者秘密鍵: `$HOME/.fabric-ca-client/msp/keystore/<>_sk file`
 
 ### SDK
-Hyperledger には、認証局とプログラム的に対話する方法を理解するのに役立つ優れたリソースとスクリプトが含まれている 2 つのリポジトリーがあります。 ``fabric-samples`` リポジトリーには「残高繰越」の例が含まれ、``fabric-sdk-node`` リポジトリーには一連の CA サービス・テストが含まれています。 アプリケーション・サイドで登録要求を発行しようとしている場合は、``fabric-ca-client`` と ``fabric-client`` のパッケージで公開されている必要のある API について完全に理解している必要があります。  アプリを構成するための基礎として、これらのスクリプトとリポジトリーを使用してください。
+いくつかの Fabric リポジトリーに、認証局とプログラマチックに対話する方法を理解するために役立つ優れたリソースとスクリプトが含まれています。``fabric-samples`` リポジトリーには``残高繰越``の例が含まれ、``fabric-sdk-node`` リポジトリーには一連の CA サービス・テストが含まれています。 アプリケーション・サイドで登録要求を発行しようとしている場合は、``fabric-ca-client`` と ``fabric-client`` のパッケージで公開されている必要のある API について完全に理解している必要があります。 アプリを構成するための基礎として、これらのスクリプトとリポジトリーを使用してください。
 
-「残高繰越」の例の鍵のスニペットをいくつか概観してみましょう。
+`残高繰越`の例の鍵のスニペットをいくつか概観してみましょう。
 
-最初に、クライアント・オブジェクトを作成し、証明書と鍵を保持する鍵/値ストアのインスタンスを設定する必要があります。 そのためには単純なファクトリー・メソッド ``newCryptoSuite`` を使用します。このファクトリー・メソッドは、``BaseClient`` から ``Client`` クラスに拡張します。 コードは次のようになっています。
+最初に、クライアント・オブジェクトを作成し、キーと値のストア・インスタンスを設定する必要があります。このインスタンスに証明書と鍵が保持されます。そのためには単純なファクトリー・メソッド ``newCryptoSuite`` を使用します。このファクトリー・メソッドは、``BaseClient`` から ``Client`` クラスに拡張します。 コードは次のようになっています。
 
 ```
 # <PUBLIC_PRIVATE_KEY_PATH> denotes the path on your local machine where you wish to store your key and cert
@@ -138,21 +124,84 @@ enrollmentSecret: password
 
 ## アプリケーションの開発
 {: #developing-applications}
+
+アプリケーションの開発を簡単に始める方法は、サンプルのチェーンコードとアプリケーションを、独自のビジネス・ソリューションを作成するためのテンプレートとして使用する方法です。[サンプル・アプリケーション](howto/prebuilt_samples.html)に、{{site.data.keyword.cloud_notm}} でのブロックチェーン・ネットワークのサンプル・アプリケーションがあります。 独自のビジネス・ニーズに基づいて、アプリケーションを最初から開発することもできます。 
+
 JavaScript または Java でアプリケーションを開発し、Hyperledger Fabric Client SDK 内の使用可能な API を利用して、アプリケーションとネットワークの間で対話できるようにすることができます。  少なくとも以下の情報がアプリケーションに含まれている必要があります。
 * 呼び出すチェーンコードの名前とバージョン。
 * 順序付けサービス、CA、ピアなどのネットワーク・リソースの API エンドポイント情報。
 * ネットワーク内で台帳を照会したり更新したりする関数。  高可用性が必要な場合は、アプリケーション内でノード・フェイルオーバーを考慮する必要があります。
+<!--
+### Using Fabric SDKs
+{: #use-sdks}
+Fabric offers Node.js SDK and Java SDK currently and will support more programming languages, such as Python, REST, or GO, in future releases. For more information about Fabric SDKs and how to use them, see the following documentation:
+- [Hyperledger Fabric Node SDK documentation ![External link icon](images/external_link.svg "External link icon")](https://fabric-sdk-node.github.io/){:new_window}
+- [Hyperledger Fabric Java SDK documentation ![External link icon](images/external_link.svg "External link icon")](https://github.com/hyperledger/fabric-sdk-java){:new_window}
+-->
 
-[サンプル・アプリケーション](howto/sample_applications.html)に、{{site.data.keyword.Bluemix_short}} での**エンタープライズ・プラン**のサンプル・アプリケーションがあります。  これらのサンプルのチェーンコードとアプリケーションをテンプレートとして使用して、独自のビジネス・ソリューションを作成できます。
+### Fabric SDK でのタイムアウト値の設定
+{: #set-timeout-in-sdk}
+
+Fabric SDK は、クライアント・アプリケーションにブロックチェーン・ネットワーク内のイベントについてのデフォルトのタイムアウト値を設定します。Fabric Java SDK でのデフォルトのタイムアウト設定については、次の例を参照してください。ファイル・パスは `src&#xa5;main&#xa5;java&#xa5;org&#xa5;hyperledger&#xa5;fabric&#xa5;sdk&#xa5;helper&#xa5;Config.java` です。
+
+```
+    /**
+     * Timeout settings
+     **/
+    public static final String PROPOSAL_WAIT_TIME = "org.hyperledger.fabric.sdk.proposal.wait.time";
+    public static final String CHANNEL_CONFIG_WAIT_TIME = "org.hyperledger.fabric.sdk.channelconfig.wait_time";
+    public static final String TRANSACTION_CLEANUP_UP_TIMEOUT_WAIT_TIME = "org.hyperledger.fabric.sdk.client.transaction_cleanup_up_timeout_wait_time";
+    public static final String ORDERER_RETRY_WAIT_TIME = "org.hyperledger.fabric.sdk.orderer_retry.wait_time";
+    public static final String ORDERER_WAIT_TIME = "org.hyperledger.fabric.sdk.orderer.ordererWaitTimeMilliSecs";
+    public static final String PEER_EVENT_REGISTRATION_WAIT_TIME = "org.hyperledger.fabric.sdk.peer.eventRegistration.wait_time";
+    public static final String PEER_EVENT_RETRY_WAIT_TIME = "org.hyperledger.fabric.sdk.peer.retry_wait_time";
+    public static final String EVENTHUB_CONNECTION_WAIT_TIME = "org.hyperledger.fabric.sdk.eventhub_connection.wait_time";
+    public static final String EVENTHUB_RECONNECTION_WARNING_RATE = "org.hyperledger.fabric.sdk.eventhub.reconnection_warning_rate";
+    public static final String PEER_EVENT_RECONNECTION_WARNING_RATE = "org.hyperledger.fabric.sdk.peer.reconnection_warning_rate";
+    public static final String GENESISBLOCK_WAIT_TIME = "org.hyperledger.fabric.sdk.channel.genesisblock_wait_time";
+    
+    ...
+    
+    // Default values
+    /**
+     * Timeout settings
+     **/
+    defaultProperty(PROPOSAL_WAIT_TIME, "20000");
+    defaultProperty(CHANNEL_CONFIG_WAIT_TIME, "15000");
+    defaultProperty(ORDERER_RETRY_WAIT_TIME, "200");
+    defaultProperty(ORDERER_WAIT_TIME, "10000");
+    defaultProperty(PEER_EVENT_REGISTRATION_WAIT_TIME, "5000");
+    defaultProperty(PEER_EVENT_RETRY_WAIT_TIME, "500");
+    defaultProperty(EVENTHUB_CONNECTION_WAIT_TIME, "5000");
+    defaultProperty(GENESISBLOCK_WAIT_TIME, "5000");
+    /**
+     * This will NOT complete any transaction futures time out and must be kept WELL above any expected future timeout
+     * for transactions sent to the Orderer. For internal cleanup only.
+     */
+    defaultProperty(TRANSACTION_CLEANUP_UP_TIMEOUT_WAIT_TIME, "600000"); //10 min.
+```
+{:codeblock}
+
+しかし、独自のアプリケーションでデフォルトのタイムアウト値を変更しなければならない場合があります。例えば、応答時間が 5000 ミリ秒 (イベント・ハブ接続のデフォルトのタイムアウト値) を超えるトランザクションをアプリケーションが呼び出すと、トランザクションが完了する前に 5000 ミリ秒で呼び出しイベントが終了するため、失敗エラーを受け取ります。システム・プロパティーを設定して、クライアント・アプリケーションのデフォルト値を上書きできます。システム・プロパティーを設定する前にデフォルト値が初期設定されるため、システム・プロパティーが有効にならない場合があります。したがって、クライアント・アプリケーション内の静的構造でタイムアウトのシステム・プロパティーを設定する必要があります。Fabric Java SDK でイベント・ハブ接続のタイムアウト値を 15000 ミリ秒に変更する場合の以下の例を参照してください。ファイル・パスは `src&#xa5;main&#xa5;java&#xa5;org&#xa5;hyperledger&#xa5;fabric&#xa5;sdk&#xa5;helper&#xa5;Config.java` です。
+
+```
+ public static final String EVENTHUB_CONNECTION_WAIT_TIME = "org.hyperledger.fabric.sdk.eventhub_connection.wait_time";
+ private static final long EVENTHUB_CONNECTION_WAIT_TIME_VALUE = 15000;
+  
+ static {
+     System.setProperty(EVENTHUB_CONNECTION_WAIT_TIME, EVENTHUB_CONNECTION_WAIT_TIME_VALUE);
+ }
+```
+{:codeblock}
 
 ## アプリケーションへのネットワーク API エンドポイントの追加
-ネットワーク・リソースの API エンドポイントをアプリケーションに追加して、{{site.data.keyword.Bluemix_short}} 上の{{site.data.keyword.blockchain}}・ネットワーク・リソースと対話できるようにする必要があります。  {{site.data.keyword.Bluemix_short}} 上に{{site.data.keyword.blockchain}}・ネットワークがない場合は、Starter Plan または Enterprise Plan のいずれかを使用して作成できます。詳しくは、[スターター・プラン・ネットワークの管理](get_start_starter_plan.html)および「Enterprise Plan ネットワークのガバナンス」(get_start.html) を参照してください。
+ネットワーク・リソースの API エンドポイントをアプリケーションに追加して、{{site.data.keyword.Bluemix_short}} 上の{{site.data.keyword.blockchain}}・ネットワーク・リソースと対話できるようにする必要があります。  {{site.data.keyword.Bluemix_short}} 上に{{site.data.keyword.blockchain}}・ネットワークがない場合は、Starter Plan または Enterprise Plan のいずれかを使用して作成できます。 詳しくは、[スターター・プラン・ネットワークの管理](get_start_starter_plan.html)および [Enterprise Plan ネットワークのガバナンス](get_start.html)を参照してください。
 
-API エンドポイントの情報は、ネットワークの接続プロファイルにあります。接続プロファイルは JSON 形式で記述されており、順序付けサービス、CA、ピア・ノードなどのネットワーク・リソースの API エンドポイント情報や登録 ID/機密事項が含まれています。アプリケーションはこれらの API エンドポイントを介してピアなどのネットワーク・リソースと対話します。
+API エンドポイントの情報は、ネットワークの接続プロファイルにあります。 接続プロファイルは JSON 形式で記述されており、順序付けサービス、CA、ピア・ノードなどのネットワーク・リソースの API エンドポイント情報や登録 ID/機密事項が含まれています。 アプリケーションはこれらの API エンドポイントを介してピアなどのネットワーク・リソースと対話します。
 
 1. 以下のいずれかの方式で、ネットワーク・モニターからネットワーク・リソースの API エンドポイント情報を取得します。
 	* チェーンコード固有の API エンドポイント情報を取得するには、チェーンコードを実行している特定のチャネル画面で、そのチェーンコードを見つけて、**「JSON」**ボタンをクリックします。
-	![チェーンコードごとの API エンドポイント](images/channel_chaincode_detail.png "チェーンコードごとの API エンドポイント")
+	![チェーンコードごとの API エンドポイント](images/channel_chaincode.png "チェーンコードごとの API エンドポイント")
 	* すべてのネットワーク・リソースに関する完全な API エンドポイント情報のセットを取得するには、「概要」画面で**「接続プロファイル」**ボタンをクリックします。
 	![ネットワーク・モニターの「接続プロファイル」](images/service_credentials.png "ネットワーク・モニターの「接続プロファイル」")
 
@@ -164,13 +213,18 @@ API エンドポイントの情報は、ネットワークの接続プロファ�
                 "eventUrl": "grpcs://tor-zbc06c.3.secure.blockchain.ibm.com:13547",
                 ...
 	```
-
 	**注**: 自分の組織に属していないピアからの承認を必要とするときなど、ネットワーク内の追加のピアをターゲットにする場合は、それらのピアの正しい API エンドポイントを取得する必要があります。  アプリケーションに返された応答を検証するために、他の組織の CA 証明書を保管する必要もあります。 この情報は、自分の接続プロファイルには表示されないため、CLoud Foundry 組織の該当する管理者に連絡して、この情報をアウト・オブ・バンドの操作で取得する必要があります。 順序付けサービス URL は、ネットワーク全体で共通であるため、順序付けサービスにはメンバー固有の情報は必要ありません。
 
 3. 次の例のように、API エンドポイント情報をアプリケーションの構成ファイルにプラグインします。
 	```
 	orderer_url: 'grpcs://fft-zbc01a.4.secure.blockchain.ibm.com:18603'
 	```
+
+## CouchDB 索引の使用
+
+ネットワークで CouchDB を使用している場合に (CouchDB のパフォーマンスを向上させる) CouchDB 索引作成機能を利用するには、チェーンコードと一緒に索引をパッケージ化する必要があります。
+
+CouchDB、および索引のセットアップ方法について詳しくは、[CouchDB に関する Fabric の資料 ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/couchdb_as_state_database.html) を参照してください。
 
 ## アプリケーションのホスティング
 アプリケーションをローカル・ファイル・システム上でホストするか、{{site.data.keyword.Bluemix_notm}} にプッシュすることができます。 アプリケーションを {{site.data.keyword.Bluemix_notm}} にプッシュするには、以下のステップを実行します。
@@ -199,4 +253,4 @@ API エンドポイントの情報は、ネットワークの接続プロファ�
 	1. ネットワーク・モニターの「チャネル」画面で、チェーンコードがインストールされているチャネルを見つけます。
 	2. 特定のチャネル画面で、無効にしようとしているチェーンコードを見つけます。
 	3. **「削除」**ボタンをクリックし、チェーンコード削除パネルで**「送信」**をクリックします。 チェーンコード・コンテナーが削除されます。
-	![チェーンコードの削除](images/channel_chaincode_detail.png "チェーンコードの削除")
+	![チェーンコードの削除](images/channel_chaincode.png "チェーンコードの削除")
