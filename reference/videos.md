@@ -21,6 +21,6 @@ lastupdated: "2018-06-14"
 {: #ibp-videos}
 
 
-Watch the video series below to learn more about the IBM Blockchain Platform and how you can get started developing a blockchain network.
+Watch the following video to learn more about the IBM Blockchain Platform and how you can get started to develop a blockchain network.
 
 <iframe class="embed-responsive-item" id="youtubeplayer" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/v7P80DCGUD0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
