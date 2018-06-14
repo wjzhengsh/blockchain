@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-05-15"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -14,7 +14,8 @@ lastupdated: "2018-05-15"
 
 # Interacting with the network using Swagger APIs
 
-{{site.data.keyword.blockchainfull}} Platform exposes a number of REST APIs to facilitate your application development. You can test against your blockchain networks by using a Swagger UI.
+{{site.data.keyword.blockchainfull_notm}} Platform exposes a number of REST APIs in Swagger that you can use to manage the nodes, channels, peers, and members of your network. Your applications can use these API's to control important network resources without using the network monitor.
+
 {:shortdesc}
 
 Before you begin, you need to create a [{{site.data.keyword.blockchain}} Platform service instance ![External link icon](../images/external_link.svg "External link icon")](https://console.bluemix.net/catalog/services/blockchain) on {{site.data.keyword.Bluemix_notm}} and create or join a Starter Plan <!--or Enterprise Plan -->blockchain network.
@@ -26,20 +27,7 @@ Before you begin, you need to create a [{{site.data.keyword.blockchain}} Platfor
 
 Enter the Network Monitor of your Blockchain network and open the "APIs" screen from the left navigator. You can see your network credentials for the REST APIs. You will later authorize the APIs by using the values of the "key" and "secret" displayed here, and run the APIs with the "network_id" as a parameter. Click **Show secret** to reveal the value of the secret field. Copy the values of the key, secret, and network_id fields, which you can used later in the Swagger UI.
 
-<!-- Removing this code snippet so people don't try to use these values
-```
-},
-   "x-api": {
-       "url": "https://ibmblockchain.bluemix.net",
-       "key": "PeerOrg1",
-       "network_id": "e1f5b3341b1d483bbaf829f601144023",
-       "secret": "71a329aabde9ff20de0aa4bfafd72a4466d78c87f637e7ff92c2534b5ce81cc0"
-   }
-```
--->
-
 **Figure 1** shows the "APIs" screen:
-
 ![APIs screen](../images/API_screen_starter.png "APIs screen")
 *Figure 1. APIs*
 
@@ -62,7 +50,7 @@ In the Swagger UI, click the **Authorize** button and the authorization window p
 
 Using Basic Auth authentication, any credentials that you specify in the Authorize window are stored after you click the **Authorize** and then **Done** buttons and are passed on each REST api call.
 
-**Figure 3** shows the the process to authorize Swagger APIs:
+**Figure 3** shows the process to authorize Swagger APIs:
 
 ![Authorize APIs](../images/swaggerUIAuthorize.gif "Authorize APIs")  
 *Figure 3. Authorize APIs*
@@ -70,13 +58,26 @@ Using Basic Auth authentication, any credentials that you specify in the Authori
 
 ## Trying out APIs
 
-Click the REST API you want to run and click the **Try it out** button. Enter the required parameters and click **Execute**. The REST API call runs against your network.
+Click the REST API you want to run and click the **Try it out** button.
 
-**Figure 4** shows the "Swagger UI":
+**Figure 4** shows the "Try it out" button in the "Swagger UI":
 
-![Swagger UI](../images/swaggerUITryItOut.png "Swagger UI")  
-*Figure 4. Swagger UI*
+![Try it out button in Swagger UI](../images/swaggerUITryItOut.png "Try it out button in Swagger UI")  
+*Figure 4. "Try it out" button in the "Swagger UI"*
 
+After you click the **Try it out** button, you can enter required parameters to use the API. You can finde `networkID` in your network credentials and find other parameters in your Network Monitor. After you enter the parameters, click t**Execute** to run the REST API call against your network.
+
+**Figure 5** shows parameters in the "Swagger UI":
+
+![Parameters in Swagger UI](../images/swaggerUIParams.png "Parameters in Swagger UI")  
+*Figure 5. Entering parameters*  
+
+After you click **Execute**, you can see the response of the API call against your network. You can also see a CURL command that can call the API directly from your command line.
+
+**Figure 6** shows the API response body, URL, and CURL command:
+
+![API response in Swagger UI](../images/swaggerUICurlResponse.png "API response in Swagger UI")  
+*Figure 6. API response*    
 
 ## Troubleshooting tips
 

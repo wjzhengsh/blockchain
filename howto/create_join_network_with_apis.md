@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-05-15"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -27,7 +27,10 @@ To use Swagger APIs to create or join a network, you need a basic authentication
 
 1. In your [{{site.data.keyword.cloud_notm}} dashboard ![External link icon](../images/external_link.svg "External link icon")](https://console.bluemix.net/dashboard/apps/), open the service instance that you created.
 2. Click **Service credentials** from the left navigator.
-3. Click the "New Credential" button on the **Service credentials** page to create a new credential. Give the credential a name, for example, *CreateJoin*, and click the **Add** button. You don't need to enter anything in the "Add inline configuration parameter" field.
+3. Click the "New Credential" button on the **Service credentials** page to create a new credential. 
+    1. Give the credential a name, for example, *CreateJoin*.
+    2. Enter **{"type": "service_instance_token"}** in the "Add inline configuration parameter" field.
+    3. Click the **Add** button. 
     ![Retrieve service credentials](../images/service_credentials.gif "Retreive service credentials")
 4. After the new credential is created, click **View credentials** under the **ACTIONS** header of this credential. The contents of the credential looks similar to the following example:
 
@@ -62,12 +65,44 @@ To use Swagger APIs to create or join a network, you need a basic authentication
 ## Checking available network locations
 {: #check-location}
 
-You can use APIs to create blockchain networks in only available network locations. Before you create a network, use the following API to check the available network locations.
+You can use APIs to create blockchain networks in only available network locations. Before you create a network, use the following API to get a current list of available network locations. No credentials are required to run this API.
 
 ```
-/network-locations/available
+https://ibmblockchain-v2.ng.bluemix.net/api/v1/network-locations/available
 ```
 {:codeblock}
+
+A list of available network locations is returned that is similar to:
+
+```
+{
+  "DAL": {
+    "location_id": "DAL",
+    "description": "Dallas",
+    "status": "available"
+    "swagger_url": "https://ibmblockchain-v2-dal.4.secure.blockchain.ibm.com/api-docs"
+  },
+  "FFT": {
+    "location_id": "FFT",
+    "description": "Frankfurt",
+    "status": "available"
+    "swagger_url": "https://ibmblockchain-v2-fft.2.secure.blockchain.ibm.com/api-docs"
+  },
+  "TOR": {
+    "location_id": "TOR",
+    "description": "Toronto",
+    "status": "available"
+    "swagger_url": "https://ibmblockchain-v2-tor.1.secure.blockchain.ibm.com/api-docs"
+  }
+}
+```
+{:codeblock}
+
+If you plan to create a network, select the location where you would like to create your network from the list returned by the API. Note the ``location_id`` and ``swagger_url`` are associated with that location.  
+
+If you plan to join a network, make a note of the ``swagger_url`` associated with the ``location_id`` specified in your invitation e-mail.
+
+The ``swagger_url`` represents the api endpoint that you will use when you create or join a network using the APIs below.
 
 
 ## Creating a network
@@ -78,15 +113,15 @@ If you use Enterprise Plan, you need to complete two steps to create a network w
 
 1. Create a blockchain service instance on {{site.data.keyword.cloud_notm}} with Enterprise Plan<!-- or Enterprise Plus Plan-->.  Retrieve your service instance ID and token as the basic auth username and password. For more information, see [Retrieving basic auth credential for API](#retrieve-id-token).
 
-2. Call the **Create network** API by using these service credentials.
+2. Call the **Create network** API using these service credentials. Issue this API against the api `swagger_url` retrieved from [Checking available network locations](#check-location). Navigate to the ``swagger_url link`` to use the Swagger UI to issue the Create Network API, or programmatically issue the command using the URL address without ``/api-docs``. For example,
 
-```
-/networks
-```
-{:codeblock}
+    ```
+    https://ibmblockchain-v2-tor.1.secure.blockchain.ibm.com/api/v1/networks
+    ```
+    {:codeblock}
 
 **Parameters**:
-- `location_id`: The ID of an available network location. For more information, see [Checking available network locations](check-location).
+- `location_id`: The ID of an available network location. Specify the value of the `loation_id` noted from [Checking available network locations](#check-location).
 - `company_name`: Your identifier as a member in the network.
 - `email`: Your email address to receive notifications.
 - `peers`: : Number of peers that you want to create for this member. Valid values are 0 - 6. You can also create peers for your member later in the Network Monitor UI.
@@ -111,17 +146,28 @@ The invited member will receive an email invitation with instructions on how to 
 
 ## Joining a network
 
-If you are invited to join a blockchain network, you will receive an email invitation.  You can follow the instructions in the email or use the following API to join the network.
+If you are invited to join a blockchain network, you will receive a network invitation email which includes the `location_id` and `network id`.
 
-**Note**: Before you join a network, you need to create an {{site.data.keyword.blockchainfull_notm}} Platform service instance and retrieve your service instance ID and token as the basic auth username and password. For more information, see [Retrieving basic auth information for API](#retrieve-id-token). You need to specify the ID of the network that you want to join.
+1. Before joining the network, you need to create an {{site.data.keyword.blockchainfull_notm}} Platform service instance and retrieve your service instance ID and token as the basic auth username and password. For more information, see [Retrieving basic auth information for API](#retrieve-id-token).
 
-```
-/networks/{networkID}/join
-```
-{:codeblock}
+2. [Check the available network locations](#check-location) to get the `swagger_url` for the `location_id` in your invitation e-mail. It will look something like:
+
+    ```
+    https://ibmblockchain-v2-tor.1.secure.blockchain.ibm.com/api-docs
+    ```
+    {:codeblock}
+
+3. Navigate to your `swagger_url` to use the Swagger UI to issue the Join API, or programmatically submit the Join request using the `swagger_url`. Replace `/api-docs` with  ``/api/v1/networks/[network_id]]/join``
+and fill in the `network_id` by using the value from your invitation email. The resulting url would look similar to:
+
+    ```
+    https://ibmblockchain-v2-tor.1.secure.blockchain.ibm.com/api/v1/networks/56102acee0e4487889ef09db681bada0/join
+    ```
+    {:codeblock}
+
+    **Note**: For the **Join** API, use the service instance ID and token that you retrieve in step 1 as the basic auth username and password.
 
 **Parameters**:
 - `company_name`: Your identifier as a member in the network. This will replace the name the inviter assigned.
 - `email`: Your email address to receive notifications.  This should match the email address in the invite notification.
 - `peers`: Number of peers that you want to create for this member. Valid values are 0 to 6. You can also create peers for your member later in the Network Monitor.
-

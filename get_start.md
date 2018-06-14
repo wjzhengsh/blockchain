@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-03-16"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -16,7 +16,7 @@ lastupdated: "2018-03-16"
 # Govern Enterprise Plan network
 {: #getting-started-with-blockchain}
 
-{{site.data.keyword.blockchainfull}} Platform Enterprise Plan provides a blockchain network with high security, integrity, scalability, and performance. You can quickly provision a fully functional network and use the Network Monitor, which is a GUI dashboard, to immediately run [chaincode](glossary.html#chaincode) and applications without having to design and configure a network for scratch.
+{{site.data.keyword.blockchainfull}} Platform Enterprise Plan provides a blockchain network with high security, integrity, scalability, and performance. You can quickly provision a fully functional network and use the Network Monitor, which is a GUI dashboard, to immediately run [chaincode](glossary.html#chaincode) and applications without having to design and configure a network from scratch.
 {:shortdesc}
 
 **Note**: {{site.data.keyword.blockchainfull_notm}} Platform Enterprise Plan provides a production environment. If you need a development and testing environment, see [About Starter Plan](starter_plan.html).
@@ -94,8 +94,7 @@ You are on the service instance page right after you create a service instance. 
 Retrieve your service credentials with the following steps:
 1. On the service instance page, click **Service credentials** in the left navigator to show the "Service credentials" screen.
 2. Click **New credential** in the "Service credentials" screen.
-3. In the "Add new credential" screen, Give the credential a name and click **Add**. The new credential is added in the table. You can click **View credentials** under the "ACTIONS" column to view the credential details. This credential contains the API key and secret, which you can use to authorize APIs.
-    If you want to see the connection profile of your network, enter **{"legacy": true}** as inline configuration parameter when you create new credentials. The connection profile contains API endpoints for your network resources, which you can use in your APIs and applications.
+3. In the "Add new credential" screen, give the credential a name and enter **{"type": "service_instance_token"}** in the "Add inline configuration parameter" field. Click **Add** and the new credential is added in the table. You can click **View credentials** under the "ACTIONS" column to view the credential details. This credential contains the API key and secret, which you can use to authorize APIs.
 
 ### Retrieving in the Network Monitor
 You can find the network credentials on the "APIs" screen in your Network Monitor. For more information about using APIs, see [Trying out APIs with Swagger](apis.html).

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-05-29"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -35,6 +35,7 @@ You need to install software prerequisites to develop applications that can inte
 	$ echo $GOPATH
 	C:\gopath
 	```
+	{:codeblock}
 
 	You can then verify your GoLang installation by building GoLang code with the [hello world ![External link icon](images/external_link.svg "External link icon")](https://golang.org/doc/install#testing){:new_window} example.
 
@@ -42,7 +43,7 @@ You need to install software prerequisites to develop applications that can inte
 
 *	Node.js ([Node.js download page ![External link icon](images/external_link.svg "External link icon")](https://nodejs.org/en/download/){:new_window}).
 
-  Chaincode development is currently supported in Node.js, Go, and Java.
+Chaincode development is currently supported in Node.js, Go, and Java.
 
 ## Generating the client-side certificates
 We won't delve into the minutiae of x509 and public key infrastructure; there are plenty of external resources for that. Suffice it to say that communication flows in Fabric use sign/verify operations at every touchpoint. As such, any client that sends calls (that is, ledger queries or updates) to the network will need to sign payloads and attach a properly signed x509 certificate for verification purposes. The private key and signed certificate, along with an MSP identifier and the Certificate Authority (CA) root certificate, make up what is referred to as the "user context" object.
@@ -68,11 +69,13 @@ Using the Fabric CA client, we can send an "enroll" call to our Certificate Auth
 ```
 $GOPATH/bin/fabric-ca-client enroll -u https://<enroll_id>:<enroll_password>@<ca_url_with_port> --caname <ca_name> --tls.certfiles <tls_cert_path>
 ```
+{:codeblock}
 
 The ``fabric-ca-client`` binary is placed in ``$GOPATH/bin``, so you will need to be in the proper location on your local machine when you run this command.  A real call might look similar to the following example command:
 ```
 ./fabric-ca-client enroll -u https://admin:B84F2C5436@tor-zbc01a.3.secure.blockchain.ibm.com:23042 --tls.certfiles /Users/XYZ/Downloads/3.secure.blockchain.ibm.com.rootcert --caname PeerOrg1CA
 ```
+{:codeblock}
 
 Find your admin certificate in `$HOME/.fabric-ca-client/msp/signcerts/cert.pem`. You can then upload the admin certificate to your blockchain network from the Network Monitor. For more information about adding certificates, see [the "Certificates" tab of "Member" screen](v10_dashboard.html#members) in the Network Monitor.
 
@@ -93,6 +96,7 @@ let cryptoSuite = hfc.newCryptoSuite();
 cryptoSuite.setCryptoKeyStore(hfc.newCryptoKeyStore({path: <PUBLIC_PRIVATE_KEY_PATH>)}));
 client.setCryptoSuite(cryptoSuite);
 ```
+{:codeblock}
 
 The common practice would be to export an environment variable that defines the key/value path on your machine and pass it to the above function. Now that we've defined our KVS, let's use a few methods from the ``FabricCAServices`` class. This class is an implementation of the Fabric CA client, and as such it will allow us to communicate with the CA Server. First, we need to pass some information to our CA client, namely the CA URL:
 
@@ -102,6 +106,7 @@ The common practice would be to export an environment variable that defines the 
 let caUrl = "https://XXX:7054";
 var caClient = new copService(caUrl, null, '' /* default CA */, cryptoSuite);
 ```
+{:codeblock}
 
 Next, we will actually send the "enroll" call to the CA Server. This will return to the client a private key and a public key that has been wrapped in an x509 cert and signed by the targeted CA -- we call this the signcert or enrollment certificate. This enrollment cert or "eCert" is the key piece, because it allows network entities to verify transactions and calls originating from the client:
 
@@ -110,6 +115,7 @@ return caClient.enroll({
 enrollmentID: username,
 enrollmentSecret: password
 ```
+{:codeblock}
 
 And the final task is actually setting the crypto suite and building the user context:
 
@@ -119,18 +125,27 @@ And the final task is actually setting the crypto suite and building the user co
 }).then(() => {
 	return client.setUserContext(member);
 ```
+{:codeblock}
 
 You can then upload the admin certificate to your blockchain network from the Network Monitor. For more information about adding certificates, see [the "Certificates" tab of "Member" screen](v10_dashboard.html#members) in the Network Monitor.
 
 ## Developing applications
 {: #developing-applications}
 
-An easy way to start to develop applications is to use sample chaincode and applications as a template for creating your own business solution. You can find sample applications for the blockchain networks on {{site.data.keyword.cloud_notm}} in [Sample applications](howto/prebuilt_samples.html). You can also start to develop applications from scratch based on your own business needs. 
+An easy way to start to develop applications is to use sample chaincode and applications as a template for creating your own business solution. You can find sample applications for the blockchain networks on {{site.data.keyword.cloud_notm}} in [Sample applications](howto/prebuilt_samples.html). You can also start to develop applications from scratch based on your own business needs.
 
 You can develop your application in JavaScript or Java, and leverage the available APIs in the Hyperledger Fabric Client SDKs to enable interaction between your application and your network.  An application needs to include at least the following information:
 * Name and version of the chaincode to invoke.
 * API endpoint information of your network resources, including orderers, CAs, and peers.
 * Functions to query or update the ledger in the network.  If you want high availability, you need to consider node failover in your application.
+
+### Using Fabric SDKs
+{: #use-sdks}
+
+Fabric offers Node.js SDK and Java SDK currently and will support more programming languages, such as Python, REST, or GO, in future releases. For more information about Fabric SDKs and how to use them, see the following documentation:
+
+- [Hyperledger Fabric Node SDK documentation ![External link icon](images/external_link.svg "External link icon")](https://fabric-sdk-node.github.io/){:new_window}
+- [Hyperledger Fabric Java SDK documentation ![External link icon](images/external_link.svg "External link icon")](https://github.com/hyperledger/fabric-sdk-java){:new_window}
 
 ### Setting timeout values in Fabric SDKs
 {: #set-timeout-in-sdk}
@@ -152,9 +167,9 @@ Fabric SDKs set default timeout values in client applications for events in the 
     public static final String EVENTHUB_RECONNECTION_WARNING_RATE = "org.hyperledger.fabric.sdk.eventhub.reconnection_warning_rate";
     public static final String PEER_EVENT_RECONNECTION_WARNING_RATE = "org.hyperledger.fabric.sdk.peer.reconnection_warning_rate";
     public static final String GENESISBLOCK_WAIT_TIME = "org.hyperledger.fabric.sdk.channel.genesisblock_wait_time";
-    
+
     ...
-    
+
     // Default values
     /**
      * Timeout settings
@@ -180,12 +195,13 @@ However, you might need to change the default timeout values in your own applica
 ```
  public static final String EVENTHUB_CONNECTION_WAIT_TIME = "org.hyperledger.fabric.sdk.eventhub_connection.wait_time";
  private static final long EVENTHUB_CONNECTION_WAIT_TIME_VALUE = 15000;
-  
+
  static {
      System.setProperty(EVENTHUB_CONNECTION_WAIT_TIME, EVENTHUB_CONNECTION_WAIT_TIME_VALUE);
  }
 ```
 {:codeblock}
+
 
 ## Adding network API endpoints to your application
 You need to add API endpoints of your network resources to your application so that it can interact with your {{site.data.keyword.blockchain}} network on {{site.data.keyword.Bluemix_short}}.  If you don't have a {{site.data.keyword.blockchain}} network on {{site.data.keyword.Bluemix_short}}, you can create one with either Starter Plan or Enterprise Plan. For more information, see [Govern Starter Plan network](get_start_starter_plan.html) and [Govern Enterprise Plan network](get_start.html).
@@ -206,12 +222,14 @@ You can find the API endpoints in the connection profile of your network. The co
                 "eventUrl": "grpcs://tor-zbc06c.3.secure.blockchain.ibm.com:13547",
                 ...
 	```
+	{:codeblock}
 	**Note**: If you want to target additional peers in the network, for example, you require endorsement from a peer that does not belong to your organization, then you need to obtain the correct API endpoint information of those peers.  You also need to store the CA cert for the other organization to verify responses that return to your application. This information is not exposed in your connection profile, therefore you must contact the appropriate admin for the CLoud Foundry Org and acquire this information in an out-of-band operation. The ordering service URL is common across the network; you don't need any member-specific information for ordering service.
 
 3. Plug the API endpoint information into a configuration file of your application as shown in the following example:
 	```
 	orderer_url: 'grpcs://fft-zbc01a.4.secure.blockchain.ibm.com:18603'
 	```
+	{:codeblock}
 
 ## Using CouchDB indices
 
@@ -229,10 +247,12 @@ You can host your application on your local file system or push it to {{site.dat
     > cf api https://api.ng.bluemix.net
     > cf login
     ```
+    {:codeblock}
 3. Browse to the directory of your application, and push your application by issuing the following command. This can take several minutes depending on your application size. You will see logs from {{site.data.keyword.Bluemix_notm}} in your terminal; they will cease once the application has successfully launched.
 	```
 	> cf push YOUR_APP_NAME_HERE
 	```
+	{:codeblock}
 	You can check your application logs by issuing one of the following commands:
 	* `> cf logs YOUR_APP_NAME_HERE`
 	* `> cf logs YOUR_APP_NAME_HERE --recent`

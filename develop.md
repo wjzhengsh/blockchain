@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-5-15"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -46,8 +46,10 @@ The easiest way to get started is to use the Yeoman generator to create a skelet
 1. Create a new directory for your project and navigate to it on the command line.
 
 2. From your new directory, use Yeoman to create a skeleton business network. The following command requires a business network name, description, author name, author email address, license selection, and namespace:
-
-        yo hyperledger-composer:businessnetwork
+    ```
+    yo hyperledger-composer:businessnetwork
+    ```
+    {:codeblock}
 
 3. Enter `tutorial-network` for the network name, and desired information for description, author name, and author email.
 
@@ -67,6 +69,7 @@ The first document to update is the model file (`.cto`). The model file is writt
 
 2. Replace the contents with the following information:
 
+    ```
         /**
          * My commodity trading network
          */
@@ -87,6 +90,8 @@ The first document to update is the model file (`.cto`). The model file is writt
             --> Commodity commodity
             --> Trader newOwner
         }
+    ```
+    {:codeblock}
 
 3. Save your changes to the `org.acme.biznet.cto` file.
 
@@ -101,6 +106,7 @@ The `Trade` transaction is intended to simply accept the identifier of the `Comm
 
 2. Replace the contents with the following information:
 
+    ```
         /**
          * Track the trade of a commodity from one trader to another
          * @param {org.acme.biznet.Trade} trade - the trade to be processed
@@ -113,6 +119,8 @@ The `Trade` transaction is intended to simply accept the identifier of the `Comm
                     return assetRegistry.update(trade.commodity);
                 });
         }
+    ```
+    {:codeblock}
 
 3. Save your changes to `logic.js`.
 
@@ -126,6 +134,7 @@ For the purposes of this tutorial, set up a simple ACL. Note that this should no
 
 2. Add the following access control rules to `permissions.acl`:
 
+    ```
         /**
          * Access control rules for tutorial-network
          */
@@ -144,6 +153,8 @@ For the purposes of this tutorial, set up a simple ACL. Note that this should no
           resource: "org.hyperledger.composer.system.**"
           action: ALLOW
         }
+    ```
+    {:codeblock}
 
 3. Save your changes to `permissions.acl`.
 
@@ -155,7 +166,10 @@ After the business network is defined, it must be packaged into a deployable bus
 
 2. From the `tutorial-network` directory, run the following command:
 
-        composer archive create -t dir -n .
+    ```
+    composer archive create -t dir -n .
+    ```
+    {:codeblock}
 
 After you run the command, a business network archive file (`tutorial-network@0.0.1.bna`) is created in the `tutorial-network` directory.
 

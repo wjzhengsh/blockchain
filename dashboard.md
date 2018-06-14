@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-05-15"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -158,7 +158,7 @@ Pending requests can be deleted by selecting the boxes in the front of them and 
 ## APIs
 {: #apis}
 
-To facilitate application development, {{site.data.keyword.blockchainfull_notm}} Platform exposes APIs that you can test against your network in a Swagger UI.
+{{site.data.keyword.blockchainfull_notm}} Platform exposes a number of REST APIs in Swagger that you can use to manage the nodes, channels, peers, and members of your network. Your applications can use these APIs to control important network resources without using the Network Monitor.
 
 **Figure 9** shows the "APIs" screen:
 
@@ -197,14 +197,16 @@ A chaincode is first installed on a peer's file system and then instantiated on 
 ## Try samples
 {: #samples}
 
-Sample applications help you to get a better understanding of a blockchain network and application development. Starter Plan enables you to deploy and launch sample applications in the Network Monitor.
+Sample applications help you to get a better understanding of a blockchain network and application development.  <!--Starter Plan enables you to deploy and launch sample applications in the Network Monitor. --> Follow the **View on GitHub** links to learn how to use the samples and deploy them to {{site.data.keyword.blockchainfull_notm}} Platform. For more information on how to develop and deploy your samples, see [Deploying Sample Applications](howto/prebuilt_samples.html).
 
 **Figure 12** shows the "Try samples" screen:
 
 ![Try samples](images/sample_overview_starter.png "Try samples")
 *Figure 12. Samples*
 
+<!--
 The sample deployment leverages the [DevOps Toolchain service ![External link icon](images/external_link.svg "External link icon")](https://console.bluemix.net/devops/toolchains) to automate your process of source control, delivery pipeline, and chaincode enablement. Choose a sample application, and click the **Deploy via Toolchain**. For more information, see [Deploying sample applications](howto/prebuilt_samples.html).
+-->
 
 
 ## Get help

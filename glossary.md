@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-05-15"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -26,7 +26,7 @@ Tangible or intangible goods, services, or property that are represented as an i
 An ordered set of transactions, which is cryptographically linked to the preceding block on a channel.
 
 ## Business network
-A definition of a blockchain network, which includes the data model, transaction logic, and access control rules for your blockchain solution. Business Network Definitions are created by using [Hyperledger Composer](#hyperledger-composer). Business network definitions are packaged into deployable **.bna** (business network archive) files.
+A definition of a blockchain network, which includes the data model, transaction logic, and access control rules for your blockchain solution. Business Network Definitions are created by using [Hyperledger Composer](#hyperledger-composer). Business Network Definitions are packaged into deployable **.bna** (business network archive) files.
 
 ## CA
 Certificate Authority. A blockchain network resource that issues certificates to all the participating members. These certificates represent a member’s identity. All entities in the network (peers, orderers, clients, etc.) must have an identity to communicate, authenticate, and ultimately transact. These identities are required for any direct participation in the blockchain network. You can create a business network card for the CA. The [CA Card](develop_starter.html#developing-business-networks-with-starter-plan) can then be imported and the card will be used to exchange the admin secret for valid certificates from the Starter Plan certificate authority.
@@ -49,8 +49,11 @@ The Connection profile is visible in the "Overview" screen of the Network Monito
 ## Consensus
 A collaborative process to keep the ledger transactions synchronized across the network. Consensus ensures that ledgers are updated only when the appropriate participants approve transactions, and that ledgers are updated with the same transactions in the same order. There are many different algorithmic ways of achieving consensus.
 
+## CouchDB
+A document store that is used for the ledger database in Starter Plan networks. CouchDB is also an option for Enterprise Plan networks, along with LevelDB. CouchDB supports the use of indexes and allows you to issue rich queries against the data on your peer.
+
 ## Current state
-The current state of the ledger represents the latest values for all keys that are ever included in its chain transaction log. Because current state represents all latest key values known to the channel, it is sometimes referred to as World State. Chaincode executes transaction proposals against current state data. The current state changes every time when the value of a key changes or a new key is added. The current state is critical to a transaction flow because the latest key-value pair must be known before it can be changed. Peers commit the latest values to the current state of the ledger for each valid transaction in a block.
+The current state of the ledger represents the latest values for all keys that are ever included in its chain transaction log. Because current state represents all latest key values known to the channel, it is sometimes referred to as World State. Chaincode executes transaction proposals against current state data. The current state changes every time when the value of a key changes or a new key is added. The current state is critical to a transaction flow because the latest key-value pair must be known before it can be changed. Peers commit the latest values to the current state of the ledger for each valid transaction in a block. The Current state is stored in a peers ledger database
 
 ## Dynamic membership
 A member can be dynamically added to the network by a user with **registrar** privilege. Members are also assigned roles and attributes, which control their access and authority on the network. Neither roles nor attributes can be assigned dynamically though. Hyperledger Fabric supports the addition or removal of members, peers, and ordering service nodes, without compromising the operations of the overall network. Dynamic membership is critical when business relationships adjust and entities need to be added or removed for various reasons.
@@ -84,6 +87,12 @@ A consensus plugin implementation for Hyperledger Fabric that results in a clust
 
 ## Ledger
 Comprised of a literal "chain of blocks" that store the immutable, sequenced record of transactions, as well as a state database to maintain current state. There is one ledger per channel, and updates to it are managed by the consensus process according to the policies of a particular channel.
+
+## Ledger database
+Current state data is stored in a database on the peers for efficient reads and queries from chaincode. Starter Plan networks use CouchDB as the ledger database. Enterprise Plan Networks can use either LevelDB or CouchDB.
+
+## LevelDB
+A key-value store that is an option for the ledger database for Enterprise Plan networks, along with CouchDB. LevelDB stores the current state as key-value pairs, and does not support the use of indexes or rich queries.
 
 ## Member
 Also known as "organizations", members in a blockchain network, similar to the members of any group, form the structure of the network. A member can be as large as a multi-national corporation or as small as an individual. Members are enrolled into the network with a certificate that grants them permissions to use the network as either a service provider (for example, issuing certificates, validating/ordering transactions) or as a consumer. The former provides foundational blockchain services that include transaction validation, transaction ordering, and certificate management services. Consumer members use the network to invoke transactions against the distributed ledger. Members can have multiple Peers.

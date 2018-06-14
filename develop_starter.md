@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-5-15"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -29,11 +29,11 @@ Ensure that you read the [About Starter Plan](./starter_plan.html) and [Getting 
 
 1. From the Starter Plan overview screen, click **Connection Profile** and then download. Rename this file to 'connection-profile.json'.
 
-2. Move this file to be in the same directory as your .bna file.
+2. Move this file to be in the same directory as your `.bna` file.
 
 3. Inside the connection profile, go all the way down until you see 'registrar'. Inside 'registrar', under 'enrollId' there is an **enrollSecret** property. Retrieve the secret and save a copy of it.
 
-![D8KBag](https://i.makeagif.com/media/4-12-2018/D8KBag.gif)
+    ![D8KBag](https://i.makeagif.com/media/4-12-2018/D8KBag.gif)
 
 
 ## Step Two: Creating a certificate authority card
@@ -42,17 +42,28 @@ The secret retrieved in the preceding step will be used to create a business net
 
 1. Using the **enrollSecret** noted from step one, run the following command to create the CA business network card:
 
-        composer card create -f ca.card -p connection-profile.json -u admin -s ${enrollSecret}
+   ```
+   composer card create -f ca.card -p connection-profile.json -u admin -s enrollSecret
+   ```
+   {:pre}
+
+Replace `enrollSecret` in the preceding command with the admin secret retrieved from the connection profile.
 
 2. Import the card using the following command:
 
-        composer card import -f ca.card -c ca
+   ```
+   composer card import -f ca.card -c ca
+   ```
+   {:codeblock}
 
 3. Now that the card is imported, it can be used to exchange the **enrollSecret** for valid certificates from the CA. Run the following command to request certificates from the certificate authority:
 
-        composer identity request --card ca --path ./credentials -u admin -s ${enrollSecret}
+   ```
+   composer identity request --card ca --path ./credentials -u admin -s enrollSecret
+   ```
+   {:codeblock}
 
-The `composer identity request` command creates a `credentials` directory that contains certificate `.pem` files.
+Replace `enrollSecret` in the preceding command with the admin secret retrieved from the connection profile. The `composer identity request` command creates a `credentials` directory that contains certificate `.pem` files.
 
 ## Step Three: Adding the certificates to the Starter Plan instance
 
@@ -64,7 +75,7 @@ The certificates must be added to the Starter Plan instance. For convenience, th
 
 2. Next, the certificates must be synced on the channel. Click the **Channels** tab, then the **Actions** button, then **Sync Certificate** and **Submit**.
 
-![E-sVV5](https://i.makeagif.com/media/4-12-2018/E-sVV5.gif)
+    ![E-sVV5](https://i.makeagif.com/media/4-12-2018/E-sVV5.gif)
 
 ## Step Four: Creating an admin business network card
 
@@ -72,13 +83,19 @@ Now that the correct certificates have been synced with the peers, business netw
 
 1. Create an admin card with the channel admin and peer admin roles by using the following command:
 
-        composer card create -f adminCard.card -p connection-profile.json -u admin -c ./credentials/admin-pub.pem -k ./credentials/admin-priv.pem --role PeerAdmin --role ChannelAdmin
+   ```
+   composer card create -f adminCard.card -p connection-profile.json -u admin -c ./credentials/admin-pub.pem -k ./credentials/admin-priv.pem --role PeerAdmin --role ChannelAdmin
+   ```
+   {:codeblock}
 
-    This card will be used to deploy a business network to Starter Plan.
+   This card will be used to deploy a business network to Starter Plan.
 
 2. Import the card created in the previous step using the following command:
 
-        composer card import -f adminCard.card -c adminCard
+   ```
+   composer card import -f adminCard.card -c adminCard
+   ```
+   {:codeblock}
 
 ## Step Five: Installing and starting the business network
 
@@ -86,23 +103,35 @@ Next, the card created in the previous step can be used to install and start a b
 
 1. Install the Hyperledger Composer runtime with the following command:
 
-        composer network install -c adminCard -a vehicle-manufacture-network.bna
+   ```
+   composer network install -c adminCard -a vehicle-manufacture-network.bna
+   ```
+   {:codeblock}
 
-    Note the business network version number which is returned when you run this command. It will be required in the next step.
+   Note the business network version number which is returned when you run this command. It will be required in the next step.
 
 2. Start the business network with the command below. If you get an error, wait a minute and try again. Use the version number from the last step after the `-V` option.
 
-        composer network start -c adminCard -n vehicle-manufacture-network -V 0.0.1 -A admin -C ./credentials/admin-pub.pem -f delete_me.card
+    ```
+    composer network start -c adminCard -n vehicle-manufacture-network -V 0.0.1 -A admin -C ./credentials/admin-pub.pem -f delete_me.card
+    ```
+    {:codeblock}
 
 3. Delete the business network card called `delete_me.card`.
 
 4. Create a new business network card and reference the certificates that are retrieved earlier with the following command:
 
-        composer card create -n vehicle-manufacture-network -p connection-profile.json -u admin -c ./credentials/admin-pub.pem -k ./credentials/admin-priv.pem
+   ```
+   composer card create -n vehicle-manufacture-network -p connection-profile.json -u admin -c ./credentials/admin-pub.pem -k ./credentials/admin-priv.pem
+   ```
+   {:codeblock}
 
 5. Import the business network card with the following command:
 
-        composer card import -f ./admin@vehicle-manufacture-network.card
+    ```
+    composer card import -f ./admin@vehicle-manufacture-network.card
+    ```
+    {:codeblock}
 
 The business network is now deployed to the Starter Plan instance.
 
@@ -110,7 +139,10 @@ The business network is now deployed to the Starter Plan instance.
 
 1. Run the following command to ping the business network:
 
-        composer network ping -c admin@vehicle-manufacture-network
+   ```
+   composer network ping -c admin@vehicle-manufacture-network
+   ```
+   {:codeblock}
 
 To view the chaincode logs, click **Channels**, and then select your channel. Click the dropdown arrow to view the logs, or the Actions symbol to view in more detail.
 
