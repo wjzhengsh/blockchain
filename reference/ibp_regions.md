@@ -34,7 +34,7 @@ Different {{site.data.keyword.blockchainfull_notm}} Platform offerings are avail
 | AP North |  | Y | api.au-syd.bluemix.net |
 | Germany |  | Y | api.eu-de.bluemix.net |
 
-Figure 1 shows the {{site.data.keyword.cloud_notm}} regions and locaitons that {{site.data.keyword.blockchainfull_notm}} Platform supports.
+Figure 1 shows the {{site.data.keyword.cloud_notm}} regions and locations that {{site.data.keyword.blockchainfull_notm}} Platform supports.
 
 ![{{site.data.keyword.blockchainfull_notm}} Platform regions and locations](../images/ibp_regions.png "{{site.data.keyword.blockchainfull_notm}} Platform regions and locations")  
 _Figure 1. {{site.data.keyword.blockchainfull_notm}} Platform regions and locations_
