@@ -79,7 +79,7 @@ Starter Plan networks are provisioned with a default configuration of two organi
 
 ### Example Starter Plan pricing
 
-#### Starter Plan trail
+#### Starter Plan trial
 The purpose of the Starter Plan is to allow anyone to get started and see the value add of {{site.data.keyword.blockchainfull_notm}} Platform. Therefore, {{site.data.keyword.blockchainfull_notm}} Platform offers a $500 credit system intended to cover all charges for new users that would be accrued over one month with the default network configuration that is outlined above. Your bill is reflected in Figure 4 if you create or join a Starter Plan network for the **first time** with the default configuration.
 
 | Pricing components | Cost per month |
