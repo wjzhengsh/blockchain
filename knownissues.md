@@ -22,8 +22,24 @@ The following issues are already reported:
   - If this happens, it is recommended as a first step to increase the default timeout values in the Fabric SDK. For more information about setting timeout values, see [Setting timeout values in Fabric SDKs](v10_application.html#set-timeout-in-sdk).
   - You can also retry your request at the application level.  
 - **Chaincode containers can sometimes be stopped** by a background network issue and may need to be rebuilt and restarted after being invoked by a user. If this happens it may take your chaincode a few minutes to respond.
-<!--
-- Because of the resource limitation in Starter Plan network, that is, 1 CPU and 2 Gi RAM for each peer, you might encounter a delay when you instantiate chaincode in the Network Monitor or **you might encounter a `REQUEST_TIMEOUT` error during chaincode instantiation with your application**. If this happens, retry the instantiation step. If the error continues, you can increase the chaincode instantiation event timeout. For example, change the timeout setting in the `sendInstantiateProposal(request, timeout)` method of Node SDK from the default value of 45 seconds to 130 seconds. -->
+- Because of the resource limitation in Starter Plan network, that is, 1 CPU and 2 Gi RAM for each peer, **you might encounter a `REQUEST_TIMEOUT` error during chaincode instantiation**. If this happens, retry the instantiation step. If the error continues, you can increase the chaincode instantiation timeout. In the connection profile, the chaincode instantiation timeout is set to 300 seconds.
+  - If you use the default timeout value in SDK, copy the **client** section in connection profile as shown below, which sets the timeout to 300 seconds, and ensure that your SDK reads it. Note that for Node SDK, this timeout setting in connection profile affects all calls, such as `invoke`, `queries`, and so on.
+    ```
+    "client": {
+       "organization": "Org1",
+       "connection": {
+           "timeout": {
+               "peer": {
+                   "endorser": "300"
+               }
+           }
+       }
+    },
+    ```
+    {:codeblock}
+  - If you overwrite the timeout setting of chaincode instantiation commands in your SDKs, either set it back to the default value or change it to 300 seconds or more.
+    - If you use Node SDK, you can change the timeout setting of the `sendInstantiateProposal(request, timeout)` method. For more information, see [sendInstantiateProposal(request, timeout) ![External link icon](images/external_link.svg "External link icon")](https://fabric-sdk-node.github.io/Channel.html#sendInstantiateProposal).
+    - If you use Java SDK, you can change the timeout setting of the `instantiateProposalRequest.setProposalWaitTime(DEPLOYWAITTIME)` command, which is in the `src/test/java/org/hyperledger/fabric/sdkintegration/End2endIT.java` file.
 
 For support and help with your {{site.data.keyword.blockchainfull_notm}} Platform network on {{site.data.keyword.cloud_notm}}, see [Getting support](ibmblockchain_support.html).
 
