@@ -227,7 +227,7 @@ The web inactivity timeout is set to **Off** by default. If you turn the web ina
 ### Mutual TLS
 {: #mutual-tls}
 
-Mutual TLS secures the communication between your application and your network, and ensures only you can communicate with your network.
+Mutual TLS secures the communication between your application and your network.
 
 **Note**: Only a **network initiator** can enable or disable the mutual TLS. This is a network level setting and will affect all network members.
 
