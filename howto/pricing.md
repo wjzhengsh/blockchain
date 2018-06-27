@@ -37,7 +37,7 @@ To understand pricing, we need to start with an introduction to basic components
 
 -	**Organizations** – Any entity who needs to maintain a copy of the blockchain ledger and needs to validate transactions. There can be multiple blockchain organizations for a single company.
 -	**Peers** – The node associated with an organization that contains the ledger and performs validates transactions. Peers are associated with an individual blockchain organization.
--	**Ordering service** – Composed or a single orderer (SOLO) or a collection of orderers, the ordering service sequences transactions, creates blocks, and sends blocks to peers for validation.
+-	**Ordering service** – Composed of a single orderer (SOLO) or a collection of orderers. The ordering service sequences transactions, creates blocks, and sends blocks to peers for validation.
 -	**Certificate Authority (CA)** –Issues digital certificates for identification purposes to any interactive network component.
 
 {{site.data.keyword.blockchainfull_notm}} Platform offers two membership plans, the **Starter Plan** and the **Enterprise Plan**, that you can choose in {{site.data.keyword.cloud_notm}}. Both plans allow you to create organizations and provide you with a certificate authority. The plans diverge around the peers, CAs, and the ordering service.
