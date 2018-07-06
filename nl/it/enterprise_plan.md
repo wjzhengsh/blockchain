@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-05-24"
+lastupdated: "2018-03-16"
 
 ---
 
@@ -14,7 +14,7 @@ lastupdated: "2018-05-24"
 
 # Informazioni su piano Enterprise
 
-{{site.data.keyword.blockchainfull}} Platform piano Enterprise è un'offerta pronta per la produzione per le organizzazioni che desiderano creare o aderire a una rete blockchain per attività aziendali reali. Questo piano fornisce l'infrastruttura chiave insieme agli strumenti e al supporto per avviare facilmente una rete blockchain pronta per la produzione e altamente sicura. Piano Enterprise viene aggiornato da Hyperledger Fabric V1.0 alla V1.1. Tutte le reti di nuova creazione sono al livello Fabric V1.1. Tuttavia, le reti che sono state creata precedentemente rimarranno al livello V1.0.
+{{site.data.keyword.blockchainfull}} Platform piano Enterprise è un'offerta pronta per la produzione per le organizzazioni che desiderano creare o aderire a una rete blockchain per attività aziendali reali. Questo piano fornisce l'infrastruttura chiave insieme agli strumenti e al supporto per avviare facilmente una rete blockchain pronta per la produzione e altamente sicura. In data 15 maggio 2018 viene eseguito l'upgrade del piano Enterprise da Hyperledger Fabric V1.0 alla V1.1. Tutte le reti create dopo il 15 maggio 2018 solo al livello Fabric V1.1. Tuttavia, le reti che sono state creata precedentemente rimarranno al livello V1.0.
 {:shortdesc}
 
 **Nota**: {{site.data.keyword.blockchainfull_notm}} Platform piano Enterprise fornisce un ambiente di produzione. Se hai bisogno di un ambiente di sviluppo e test, vedi [Informazioni su piano Starter](starter_plan.html).

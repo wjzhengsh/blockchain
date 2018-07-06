@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-05-15"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -72,15 +72,14 @@ La **Figure 3** illustre l'écran "Présentation" :
 
   **Remarque **: {{site.data.keyword.blockchainfull_notm}} Dans l'interface utilisateur du réseau de plan Starter, lorsque vous cliquez sur l'action Afficher les journaux sur les noeuds répertoriés dans le panneau Présentation, l'interface kibana d'IBM Cloud Logging est ouverte. Par défaut, kibana est préconfigurée pour afficher les journaux des 15 dernières minutes d'activité. S'il n'y a pas eu d'activité au cours des 15 dernières minutes, un message indique 'Aucun résultat trouvé'. Pour afficher tous les journaux, il vous suffit de cliquer sur l'icône temporisateur dans l'angle supérieur droit sous votre nom d'utilisateur et de définir un intervalle de temps plus large, comme 'cette semaine' ou 'ce mois'.
 
-  Pour comprendre les effets de démarrage et d'arrêt d'un homologue, vous pouvez par exemple les tester en arrêtant un homologue et en le ciblant avec une transaction ; vous verrez alors des erreurs de connectivité dans les journaux. Lorsque vous redémarrez l'homologue et relancez la transaction, vous verrez qu'une connexion est réussie. Vous
-pouvez aussi arrêter un homologue pendant une longue période alors que vos canaux continuent à effectuer des transactions. l'homologue est redémarré, vous remarquez une synchronisation du registre dès qu'il reçoit les blocs qui ont été validés alors qu'il était arrêté. Une fois que le registre est complètement synchronisé, vous pouvez procéder à des appels et des requêtes normaux.
+  Pour comprendre les effets de démarrage et d'arrêt d'un homologue, vous pouvez par exemple les tester en arrêtant un homologue et en le ciblant avec une transaction ; vous verrez alors des erreurs de connectivité dans les journaux. Lorsque vous redémarrez l'homologue et relancez la transaction, vous verrez qu'une connexion est réussie. Vous pouvez aussi arrêter un homologue pendant une longue période alors que vos canaux continuent à effectuer des transactions. l'homologue est redémarré, vous remarquez une synchronisation du registre dès qu'il reçoit les blocs qui ont été validés alors qu'il était arrêté. Une fois que le registre est complètement synchronisé, vous pouvez procéder à des appels et des requêtes normaux.
 
 ### Profil de connexion
-  Vous pouvez consulter le ficher JSON pour les informations réseau de faible niveau de chaque ressource en cliquant sur le bouton **Profil de connexion**. Le profil de connexion contient toutes les informations de configuration dont vous avez besoin pour une application. Cependant, ce fichier contient uniquement les adresses de vos composants spécifiques et du programme de tri ; si vous devez cibler des homologues supplémentaires, vous devez obtenir leurs noeuds finaux. L'en-tête "url" affiche le noeud final d'API pour chaque composant. Ces noeuds finaux sont requis pour cibler les composants réseau spécifiques d'une application côté client, et leurs définitions résident généralement dans un fichier de configuration modélisé JSON qui est fourni avec l'application. Si vous personnalisez une application qui nécessite l'adhésion d'homologues qui ne font pas partie de votre organisation, vous devrez obtenir ces adresses IP auprès des opérateurs concernés dans le cadre d'une opération externe. Les clients doivent pouvoir se connecter aux homologues dont ils attendent une réponse.
+  Vous pouvez consulter le ficher JSON pour les informations réseau de faible niveau de chaque ressource en cliquant sur le bouton **Profil de connexion**. Le profil de connexion contient toutes les informations de configuration dont vous avez besoin pour une application. Cependant, ce fichier contient uniquement les adresses de vos composants spécifiques et du programme de tri ; si vous devez cibler des homologues supplémentaires, vous devez obtenir leurs noeuds finaux. L'en-tête "url" affiche le noeud final d'API pour chaque composant. Ces noeuds finaux sont requis pour cibler les composants réseau spécifiques d'une application côté client, et leurs définitions résident généralement dans un fichier de configuration modélisé JSON qui est fourni avec l'application. Si vous personnalisez une application qui nécessite la validation d'homologues qui ne font pas partie de votre organisation, vous devrez obtenir ces adresses IP auprès des opérateurs concernés dans le cadre d'une opération externe. Les clients doivent pouvoir se connecter aux homologues dont ils attendent une réponse.
 
 ### Ajout d'homologues
 {: #peers}
-  Les membres du réseau doivent comporter des homologues qui stockent leurs copies de registre et exécutent du code blockchain pour interroger ou mettre à jour le registre. Si la règle d'adhésion définit un homologue en tant qu'homologue d'adhésion, l'homologue renvoie également les résultats d'adhésion aux applications.
+  Les membres du réseau doivent comporter des homologues qui stockent leurs copies de registre et exécutent du code blockchain pour interroger ou mettre à jour le registre. Si la règle de validation définit un homologue en tant qu'homologue d'adhésion, l'homologue renvoie également les résultats de la validation aux applications.
 
   Le plan Starter crée un homologue pour chacune des deux organisations par défaut. Vous pouvez ajouter d'autres homologues pour vos organisations en fonction de vos besoins. Vous pouvez vous trouver dans différents scénarios lorsque vous avez besoin d'homologues supplémentaires. Par exemple, vous pouvez souhaiter que plusieurs homologues rejoignent le même canal à des fins de redondance. Chaque homologue traite les transactions du canal et leurs copies respectives du registre. Dans le cas où l'un des homologues est défaillant, les autres peuvent poursuivre le traitement des transactions et des demandes d'application. Vous pouvez équilibrer de manière symétrique toutes les demandes d'applications entre homologues, ou vous pouvez cibler différents homologues pour différentes fonctions. Par exemple, vous pouvez utiliser un homologue pour interroger le registre et utiliser un autre homologue pour traiter les adhésions pour les mises à jour du registre.
 
@@ -159,7 +158,7 @@ Les demandes en attente peuvent être supprimées en sélectionnant la case en r
 ## API
 {: #apis}
 
-Pour faciliter le développement d'applications, la plateforme {{site.data.keyword.blockchainfull_notm}} expose les API que vous pouvez tester sur votre réseau dans une interface utilisateur Swagger.
+{{site.data.keyword.blockchainfull_notm}} Platform expose dans Swagger un certain nombre d'API REST que vous pouvez utiliser pour gérer les noeuds, les homologues et les membres de votre réseau. Vos applications peuvent recourir à ces API pour gérer d'importantes ressources réseau sans utiliser le Moniteur réseau.
 
 La **Figure 9** illustre l'écran "API" :
 
@@ -198,14 +197,16 @@ Un code blockchain est tout d'abord installé sur le système de fichiers d'un h
 ## Essayer les modèles
 {: #samples}
 
-Des modèles d'application vous permettent d'avoir une meilleure compréhension d'un réseau de blockchain et du développement d'application. Le plan Starter vous permet de déployer et de lancer des modèles d'application dans le Moniteur réseau.
+Des modèles d'application vous permettront une meilleure compréhension d'un réseau de blockchain et du développement d'application. <!--Starter Plan enables you to deploy and launch sample applications in the Network Monitor. --> Suivez les liens **Afficher sur GitHub** pour découvrir comment utiliser les modèles et les déployer sur {{site.data.keyword.blockchainfull_notm}} Platform. Pour plus d'informations sur le développement et le déploiement de vos modèles, voir [Déploiement de modèles d'application](howto/prebuilt_samples.html).
 
 La **Figure 12** illustre l'écran "Essayer les modèles" :
 
 ![Essayer les modèles](images/sample_overview_starter.png "Essayer les modèles")
 *Figure 12. Essayer les modèles*
 
-L'exemple de déploiement optimise le [service DevOps Toolchain![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://console.bluemix.net/devops/toolchains) pour automatiser votre processus de contrôle des sources, de delivery pipeline et d'activation du code blockchain. Sélectionnez un modèle d'application, puis cliquez sur **Deployer via Toolchain**. Pour plus d'informations, voir [Déploiement de modèles d'application](howto/prebuilt_samples.html).
+<!--
+The sample deployment leverages the [DevOps Toolchain service ![External link icon](images/external_link.svg "External link icon")](https://console.bluemix.net/devops/toolchains) to automate your process of source control, delivery pipeline, and chaincode enablement. Choose a sample application, and click the **Deploy via Toolchain**. For more information, see [Deploying sample applications](howto/prebuilt_samples.html).
+-->
 
 
 ## Obtenir de l'aide
@@ -262,7 +263,7 @@ Cliquez dans l'angle supérieur droit et ouvrez le menu déroulant, puis les **P
 
 **Remarque **: Seul l'**initiateur réseau** peut modifier le paramètre de délai d'attente d'inactivité Web. Il s'agit d'un paramètre de niveau réseau et il concerne tous les membres réseau.
 
-Le délai d'attente d'inactivité Web est défini sur **Désactivé** par défaut. Si vous définissez le délai d'attente d'inactivité Web sur **Activé**, tout membre du réseau sera déconnecté automatiquement au bout de 10 minutes d'inactivité. Lorsque le délai d'attente d'inactivité Web atteint 10 minutes, la fonction Délai d'inactivité Web met fin aux sessions Web inactives afin de garantir la sécurité du compte des membres du réseau. Si vous cliquez sur un lien ou si vous actualisez le Moniteur réseau, le délai d'inactivité Web est réinitialisé. Avant d'atteindre les 10 minutes, il est possible d'arrêter la session Web en fermant la fenêtre ou l'onglet du navigateur. 
+Le délai d'attente d'inactivité Web est défini sur **Désactivé** par défaut. Si vous définissez le délai d'attente d'inactivité Web sur **Activé**, tout membre du réseau sera déconnecté automatiquement au bout de 10 minutes d'inactivité. Lorsque le délai d'attente d'inactivité Web atteint 10 minutes, la fonction Délai d'inactivité Web met fin aux sessions Web inactives afin de garantir la sécurité du compte des membres du réseau. Si vous cliquez sur un lien ou si vous actualisez le Moniteur réseau, le délai d'inactivité Web est réinitialisé. Avant d'atteindre les 10 minutes, il est possible d'arrêter la session Web en fermant la fenêtre ou l'onglet du navigateur.
 
 La **Figure 17** affiche la fenêtre "Préférences réseau" :
 

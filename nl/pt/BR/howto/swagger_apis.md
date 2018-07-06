@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-05-15"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -14,7 +14,8 @@ lastupdated: "2018-05-15"
 
 # Interagindo com a rede usando APIs do Swagger
 
-O {{site.data.keyword.blockchainfull}} Platform expõe uma série de APIs de REST para facilitar o seu desenvolvimento de aplicativo. É possível testar com relação às suas redes de blockchain usando uma UI do Swagger.
+O {{site.data.keyword.blockchainfull_notm}} Platform expõe uma série de APIs de REST no Swagger que podem ser usadas para gerenciar os nós, os canais, os peers e os membros de sua rede. Os seus aplicativos podem usar essas APIs para controlar recursos de rede importantes sem usar o monitor de rede.
+
 {:shortdesc}
 
 Antes de iniciar, é necessário criar uma instância de serviço do [{{site.data.keyword.blockchain}} Platform ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://console.bluemix.net/catalog/services/blockchain) no {{site.data.keyword.Bluemix_notm}} e criar ou se associar a uma rede de blockchain do Starter Plan<!--or Enterprise Plan -->.
@@ -26,21 +27,8 @@ Antes de iniciar, é necessário criar uma instância de serviço do [{{site.dat
 
 Entre no Monitor de rede de sua rede de Blockchain e abra a tela "APIs" do navegador esquerdo. É possível ver as suas credenciais de rede para as APIs de REST. Posteriormente, você autorizará as APIs usando os valores da "chave" e do "segredo" exibidos aqui e executará as APIs com o "network_id" como um parâmetro. Clique em **Mostrar segredo** para revelar o valor do campo segredo. Copie os valores dos campos chave, segredo e network_id, que você poderá usar posteriormente na UI do Swagger.
 
-<!-- Removing this code snippet so people don't try to use these values
-```
-},
-   "x-api": {
-       "url": "https://ibmblockchain.bluemix.net",
-       "key": "PeerOrg1",
-       "network_id": "e1f5b3341b1d483bbaf829f601144023",
-       "secret": "71a329aabde9ff20de0aa4bfafd72a4466d78c87f637e7ff92c2534b5ce81cc0"
-   }
-```
--->
-
-**Figura 1** mostra a tela "APIs":
-
-![Tela de APIs](../images/API_screen_starter.png "Tela de APIs")
+A **Figura 1** mostra a tela "APIs":
+![Tela APIs](../images/API_screen_starter.png "Tela APIs")
 *Figura 1. APIs*
 
 Se você estiver usando o Starter Plan, será possível alternar entre organizações no Monitor de rede. Com o Starter Plan, duas organizações são configuradas por padrão. Alternar entre organizações pode ser útil para testar as APIs de REST por meio da perspectiva de cada organização. Para obter as credenciais para outra organização em sua rede, clique em seu nome do usuário no canto superior direito do console do Monitor de rede. No menu que é aberto, clique na seta suspensa ao lado da Organização para visualizar todas as Organizações. Selecione a organização para a qual você gostaria de alternar e visualizar as credenciais de rede associadas.
@@ -70,13 +58,26 @@ A **Figura 3** mostra o processo para autorizar APIs do Swagger:
 
 ## Tentando APIs
 
-Clique na API de REST que você deseja executar e clique no botão **Tentar**. Insira os parâmetros necessários e clique em **Executar**. A chamada API de REST é executada com relação à sua rede.
+Clique na API de REST que você deseja executar e clique no botão **Tentar**.
 
-**Figura 4** mostra a "UI do Swagger":
+A **Figura 4** mostra o botão "Experimente" na "UI do Swagger":
 
-![Swagger UI](../images/swaggerUITryItOut.png "Swagger UI")  
-*Figura 4. UI do Swagger*
+![Botão Experimente na UI do Swagger](../images/swaggerUITryItOut.png "Botão Experimente na UI do Swagger")  
+*Figura 4. Botão "Experimente" na "UI do Swagger"*
 
+Após você clicar no botão **Experimente**, será possível inserir parâmetros necessários para usar a API. É possível localizar `networkID` em suas credenciais de rede e localizar outros parâmetros em seu Monitor de rede. Após você inserir os parâmetros, clique em **Executar** para executar a chamada API de REST com relação à sua rede.
+
+A **Figura 5** mostra parâmetros na "UI do Swagger":
+
+![Parâmetros na UI do Swagger](../images/swaggerUIParams.png "Parâmetros na UI do Swagger")  
+*Figura 5. Inserindo parâmetros*  
+
+Após você clicar em **Executar**, será possível ver a resposta da chamada API com relação à sua rede. Também é possível ver um comando CURL que pode chamar a API diretamente de sua linha de comandos.
+
+A **Figura 6** mostra o corpo de resposta da API, a URL e o comando CURL:
+
+![Resposta da API na UI do Swagger](../images/swaggerUICurlResponse.png "Resposta da API na UI do Swagger")  
+*Figura 6. Resposta da API*    
 
 ## Dicas de resolução de problemas
 

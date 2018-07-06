@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-05-15"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -14,7 +14,8 @@ lastupdated: "2018-05-15"
 
 # Swagger API를 사용하여 네트워크와 상호작용
 
-{{site.data.keyword.blockchainfull}} Platform은 애플리케이션 개발이 용이하도록 다수의 REST API를 노출합니다. Swagger UI를 사용하여 블록체인 네트워크에 대해 테스트할 수 있습니다.
+{{site.data.keyword.blockchainfull_notm}} Platform은 네트워크의 노드, 채널, 피어 및 멤버를 관리하는 데 사용할 수 있는 Swagger의 여러 REST API를 노출합니다. 애플리케이션은 이러한 API를 사용하여 네트워크 모니터를 사용하지 않고 중요한 네트워크 리소스를 제어할 수 있습니다.
+
 {:shortdesc}
 
 시작하기 전에 {{site.data.keyword.Bluemix_notm}}에서 [{{site.data.keyword.blockchain}} Platform 서비스 인스턴스 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://console.bluemix.net/catalog/services/blockchain)를 작성하고 스타터 플랜 <!--or Enterprise Plan -->블록체인 네트워크를 작성하거나 가입해야 합니다.
@@ -26,20 +27,7 @@ lastupdated: "2018-05-15"
 
 Blockchain 네트워크의 네트워크 모니터에 들어가 왼쪽 네비게이터에서 "API" 화면을 여십시오. REST API에 대한 네트워크 신임 정보를 볼 수 있습니다. 나중에 여기에 표시된 "키" 및 "시크릿"의 값을 사용하여 API에 권한을 부여하고 "network_id"의 API를 매개변수로 실행하십시오. **시크릿 표시**를 클릭하여 시크릿 필드의 값을 표시하십시오. 키, 시크릿 및 network_id 필드의 값을 복사하십시오. 이러한 값은 나중에 Swagger UI에서 사용할 수 있습니다.
 
-<!-- Removing this code snippet so people don't try to use these values
-```
-},
-   "x-api": {
-       "url": "https://ibmblockchain.bluemix.net",
-       "key": "PeerOrg1",
-       "network_id": "e1f5b3341b1d483bbaf829f601144023",
-       "secret": "71a329aabde9ff20de0aa4bfafd72a4466d78c87f637e7ff92c2534b5ce81cc0"
-   }
-```
--->
-
 **그림 1**은 "API" 화면을 보여줍니다.
-
 ![API 화면](../images/API_screen_starter.png "API 화면")
 *그림 1. API*
 
@@ -70,13 +58,26 @@ Swagger UI에서 **권한 부여** 단추를 클릭하면 권한 부여 창이 �
 
 ## API 시험 사용
 
-실행할 REST API를 클릭하고 **시험 사용** 단추를 클릭하십시오. 필수 매개변수를 입력하고 **실행**을 클릭하십시오. REST API 호출은 네트워크에 대해 실행됩니다.
+실행할 REST API를 클릭하고 **시험 사용** 단추를 클릭하십시오.
 
-**그림 4**는 "Swagger UI"를 보여줍니다.
+**그림 4**는 "Swagger UI"의 "시험 사용" 단추를 보여줍니다.
 
-![Swagger UI](../images/swaggerUITryItOut.png "Swagger UI")  
-*그림 4. Swagger UI*
+![Swagger UI의 시험 사용 단추](../images/swaggerUITryItOut.png "Swagger UI의 시험 사용 단추")  
+*그림 4. "Swagger UI"의 "시험 사용" 단추*
 
+**시험 사용** 단추를 클릭한 후 필수 매개변수를 입력하여 API를 사용할 수 있습니다. 네트워크 신임 정보에서 `networkID`를 찾고 네트워크 모니터에서 다른 매개변수를 찾을 수 있습니다. 매개변수를 입력한 후 **실행**을 클릭하여 네트워크에 대해 REST API 호출을 실행하십시오.
+
+**그림 5**는 "Swagger UI"의 매개변수를 보여줍니다.
+
+![Swagger UI의 매개변수](../images/swaggerUIParams.png "Swagger UI의 매개변수")  
+*그림 5. 엔터프라이즈 매개변수*  
+
+**실행**을 클릭하면 네트워크에 대해 API 호출의 응답을 볼 수 있습니다. 또한 명령행에서 직접 API를 호출할 수 있는 CURL 명령을 볼 수 있습니다.
+
+**그림 6**은 API 응답 본문, URL 및 CURL 명령을 보여줍니다.
+
+![Swagger UI의 API 응답](../images/swaggerUICurlResponse.png "Swagger UI의 API 응답")  
+*그림 6. API 응답*    
 
 ## 문제점 해결 팁
 

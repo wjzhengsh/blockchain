@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-5-15"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -46,8 +46,10 @@ Le moyen le plus simple pour commencer consiste à utiliser le générateur Yeom
 1. Créez un nouveau répertoire pour votre projet et accédez à la ligne de commande.
 
 2. Depuis votre nouveau répertoire, utilisez le générateur Yeoman pour créer un squelette de réseau d'entreprise. La commande suivante requiert un nom de réseau d'entreprise, une description, un nom d'auteur, une adresse e-mail d'auteur, un choix de licence et un espace de nom :
-
-        yo hyperledger-composer:businessnetwork
+    ```
+    yo hyperledger-composer:businessnetwork
+    ```
+    {:codeblock}
 
 3. Entrez `tutorial-network` comme nom de réseau, ainsi que les informations de votre choix pour la description, le nom d'auteur et l'adresse e-mail d'auteur.
 
@@ -67,6 +69,7 @@ Le premier document à mettre à jour est le fichier de modèle (`.cto`). Le fic
 
 2. Remplacez le contenu par les informations suivantes :
 
+    ```
         /**
          * My commodity trading network
          */
@@ -87,6 +90,8 @@ Le premier document à mettre à jour est le fichier de modèle (`.cto`). Le fic
             --> Commodity commodity
             --> Trader newOwner
         }
+    ```
+    {:codeblock}
 
 3. Sauvegardez les modifications que vous avez apportées au fichier `org.acme.biznet.cto`.
 
@@ -101,6 +106,7 @@ La transaction `Trade` est simplement destinée à l'acceptation de l'identifica
 
 2. Remplacez le contenu par les informations suivantes :
 
+    ```
         /**
          * Track the trade of a commodity from one trader to another
          * @param {org.acme.biznet.Trade} trade - the trade to be processed
@@ -113,6 +119,8 @@ La transaction `Trade` est simplement destinée à l'acceptation de l'identifica
                     return assetRegistry.update(trade.commodity);
                 });
         }
+    ```
+    {:codeblock}
 
 3. Sauvegardez les modifications que vous avez apportées au fichier `logic.js`.
 
@@ -126,6 +134,7 @@ Pour les besoins de ce tutoriel, configurez une liste de contrôle d'accès (ACL
 
 2. Ajoutez les règles de contrôle d'accès suivantes pour `permissions.acl`:
 
+    ```
         /**
          * Access control rules for tutorial-network
          */
@@ -144,6 +153,8 @@ Pour les besoins de ce tutoriel, configurez une liste de contrôle d'accès (ACL
           resource: "org.hyperledger.composer.system.**"
           action: ALLOW
         }
+    ```
+    {:codeblock}
 
 3. Sauvegardez les modifications que vous avez apportées au fichier `permissions.acl`.
 
@@ -155,7 +166,10 @@ Une fois le réseau d'entreprise défini, il doit être packagé dans un fichier
 
 2. Depuis le répertoire `tutorial-network`, exécutez la commande suivante :
 
-        composer archive create -t dir -n .
+    ```
+    composer archive create -t dir -n .
+    ```
+    {:codeblock}
 
 Une fois la commande exécutée, un fichier archive de réseau d'entreprise (`tutorial-network@0.0.1.bna`) est créé dans le répertoire `tutorial-network`.
 

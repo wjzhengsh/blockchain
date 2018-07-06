@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-05-24"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -29,26 +29,20 @@ lastupdated: "2018-05-24"
 
 ## {{site.data.keyword.IBM_notm}} 成員資格供應項目
 
-「IBM Blockchain 平台」提供不同的成員資格方案，協助所有類型的使用者開始使用其區塊鏈行程，並將其應用程式移至正式作業。
+「{{site.data.keyword.blockchainfull_notm}} 平台」提供不同的成員資格方案，協助所有類型的使用者開始使用其區塊鏈行程，並將其應用程式移至正式作業。
 
 |       |[入門範本方案](starter_plan.html)      |[企業方案](enterprise_plan.html)  |企業加值方案 |自我管理方案
 | ------------------------- |--------------------------|-----|-----|------|
 |**包含的內容** | **基本服務水準、開發和測試環境** |**進階服務水準、企業正式作業備妥** | **效能和隔離的專用運算、企業正式作業備妥** |要安裝在您自己的基礎架構上的軟體堆疊、連接至此雲端服務上管理的網路 |
-|**計費原則** |**免費使用測試版<!--trial of 30 days, followed by monthly charge-->** |**每月訂閱** |**每月訂閱** |每月訂閱 |
-|**可用性** |**測試版** |**現在推出** | **購買時** |即將推出 |
+|**計費原則** | **[試用額度](howto/pricing.html#starter-plan-pricing)，後面接著每月費用** |**每月訂閱** |**每月訂閱** |每月訂閱 |
+|**可用性** |**現在推出** |**現在推出** | **購買時** |即將推出 |
 
+**警告：**不要將**入門範本方案**用於正式作業。它是開發和測試環境，不適用於正式作業工作負載。
 
-<!--
-- **The IBM Blockchain Starter Plan** is ideal for those who are learning or getting started developing their blockchain network.
-- **Enterprise Plan** is a production environment offering high levels of security and support.
-- **Enterprise Plus Plan** offers a dedicated production environment for additional performance and isolated compute and storage resources to protect critical data.
--->
-
-**警告：**不要將**入門範本方案**用於正式作業。它是開發和測試環境。
-
-{{site.data.keyword.blockchainfull_notm}} 供應項目以 [Hyperledger Fabric](./v10_fabric) 程式碼庫為建置基礎，運用模組架構來達到企業層級的安全性、資料完整性、可調整性及效能，以符合您的商業需求。
-- **入門範本方案**網路是以 Hyperledger Fabric 1.1 版為建置基礎。
-- **企業方案**會升級至 Hyperledger Fabric 1.1 版。所有新建的網路都是 Fabric 1.1 版層次。
+{{site.data.keyword.blockchainfull_notm}} 供應項目以 [Hyperledger Fabric](reference/v10_fabric.html) 1.1 版程式碼庫為建置基礎，運用模組架構來達到企業層級的安全性、資料完整性、可調整性及效能，以符合您的商業需求。
+- **IBM Blockchain 入門範本方案**是一個學習或開始開發區塊鏈網路的環境。
+- **企業方案**是一種提供高階安全及支援的正式作業環境。
+- **企業加值方案**提供一種專用的正式作業環境，以取得其他效能及隔離的運算和儲存空間資源來保護重要資料。
 
 立即註冊您的 [{{site.data.keyword.blockchainfull_notm}} 成員資格 ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps)！
 
@@ -73,8 +67,9 @@ lastupdated: "2018-05-24"
 
 ## **控管**網路
 有兩個選項可用來建立網路的後端環境。首先，您可以使用已發佈的 Hyperledger Docker 映像檔，讓您可以選擇實作 Composer 程式庫來建置應用程式，並與您的網路互動。或者，您可以撰寫原生鏈碼，並開發伺服器端程式碼來操控交易。在本端執行是修改網路配置、探索潛在使用案例，以及開始建立概念證明的絕佳機會。當您的 PoC 開始成形時，您就可以在雲端中管理您的網路，以擴展實作。
-
-透過雲端部署，您會獲得一組簡單好用的秘訣和 Script，可協助您部署在 Kubernetes 上執行的 Hyperledger Fabric 網路。利用這個階段來檢查您的 PoC 在託管環境中的行為和穩定性。[{{site.data.keyword.blockchainfull_notm}} 容器服務 ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](https://ibm-blockchain.github.io/) 最常被當作應用程式功能和備援的測試機制，以及「企業方案」的自然前導。
+<!--
+With a cloud deployment, you're provided with a collection of easy-to-use recipes and scripts to facilitate the deployment of a Hyperledger Fabric network that runs on Kubernetes. Use this phase to examine the behavior and stability of your PoC in a hosted environment. The [{{site.data.keyword.blockchainfull_notm}} Container Service ![External link icon](images/external_link.svg "External link icon")](https://ibm-blockchain.github.io/) can be best thought of as a testing mechanism for the functionality and resiliency of your application and as a natural precursor to the Enterprise Plan.
+-->
 
 在您有了網路之後，就已設計 {{site.data.keyword.blockchainfull_notm}} 來建立網路管理經驗，讓成員可以進行部分控制，但沒有單一成員可以獲得完全控制。「{{site.data.keyword.blockchainfull_notm}} 平台」具有第一套整合工具，讓團隊能透過可自訂的原則，強制施行網路的變更管理。
 

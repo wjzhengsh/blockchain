@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-03-16"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -18,85 +18,97 @@ lastupdated: "2018-03-16"
 「{{site.data.keyword.blockchainfull}} 平台」提供可部署及測試的範例應用程式，讓您能夠進一步瞭解區塊鏈網路和應用程式開發。
 {: shortdesc}
 
-佈建「入門範本方案」網路之後，您可以在「網路監視器」中部署範例應用程式，這會將步驟自動化，讓範例應用程式能夠在您的網路上執行。您也可以逐步啟用範例，以學習應用程式部署的整個處理程序，當您部署自己的應用程式時，需要遵循這個處理程序。
+|  範例        | 使用案例       | 樣本類型     | 建立者及支援         |
+| --------------|---------------------|----|-------|
+| [Marbles ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](https://github.com/IBM-Blockchain/marbles)| 多個使用者可以建立具有不同內容的彈珠，並將彈珠轉移給其他使用者。<br> <br> 遵循指示，在 {{site.data.keyword.cloud_notm}} 的「{{site.data.keyword.blockchainfull_notm}} 服務」上部署「彈珠」。請注意，畫面擷取會顯示「企業方案使用者介面」，而不是「入門範本方案」。此功能類似。| 具有 Javascript 應用程式的 GO 鏈碼| IBM<br> [取得協助 ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](https://github.com/IBM-Blockchain/marbles/issues) |
+|[Vehicle Manufacture ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](https://github.com/IBM-Blockchain/vehicle-manufacture) | 使用者可以體驗虛擬汽車的整個生命週期。<br> <br> 遵循指示，**手動將此展示部署至 IBM Cloud**，以取得將範例部署至網路的逐步指引。| 具有 Javascript 應用程式的「[Hyperledger Composer](../reference/hyperledger_composer.html) 商業網路定義」 | IBM<br> [取得協助 ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](https://github.com/IBM-Blockchain/vehicle-manufacture/issues) |
+|[Perishable Goods ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](https://github.com/clauseHQ/demo-clause-ibm-perishable-goods)| 使用者可以根據交貨和溫度讀數，部署可在供應鏈中採購貨品的法律合約。<br>  <br> <!-- This sample leverages the [Toolchain tool service![External link icon](../images/external_link.svg "External link icon")](../images/external_link.svg "External link icon")](https://console.bluemix.net/docs/services/ContinuousDelivery/index.html) to deploy the sample on your network automatically.--> | 具有 Javascript 應用程式的「[Hyperledger Composer](../reference/hyperledger_composer.html) 商業網路定義」 | [ClauseHQ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](http://clause.io/)<br> [取得協助 ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](https://github.com/clauseHQ/demo-clause-ibm-perishable-goods/issues) |
 
-## 在入門範本方案中部署範例應用程式
+範例應用程式由 IBM 及社群夥伴建立。透過對應的 Github 儲存庫提供對範例的支援。如果您遇到問題，請按一下發佈者名稱旁邊的**取得協助**鏈結，然後在 Github 儲存庫中開立問題，以通知相關團隊。
 
-「入門範本方案」提供簡單的方式來部署範例應用程式，其運用 {{site.data.keyword.cloud_notm}} 上的「工具鏈」服務，只要按幾下即可完成。範例應用程式在完成部署並啟動之後，會自動在您的區塊鏈網路上執行。
+若要部署範例，您在 {{site.data.keyword.cloud_notm}} 上需要有使用「入門範本方案」或「企業方案」的區塊鏈網路，並配置頻道及其對等節點。如需相關資訊，請參閱[控管入門範本方案網路](../get_start_starter_plan.html)和[控管企業方案網路](../get_start.html)。
 
-「入門範本方案」提供兩個範例應用程式來協助您入門。
+
+<!--
+
+After you provision a Starter Plan network, you can deploy the sample applications in the Network Monitor, which automates the steps to enable sample applications to run on your network. You can also enable the samples step-by-step to learn the entire process of application deployment, which you need to follow when you deploy your own applications.
+
+-->
+
+<!--
+## Deploying sample applications in Starter Plan
+
+Starter Plan provides a simple approach to deploy sample applications by leveraging the Toolchain service on {{site.data.keyword.cloud_notm}} with just a few clicks. After you deploy and launch a sample application, it will run on your blockchain network automatically.
+
+Starter Plan provides two sample applications for you to start with.
 
 * **Marbles**
 
-  Marbles 範例可讓使用者建立具有不同內容的虛擬彈珠，並與其他使用者互相轉移彈珠。如需 Marbles 的相關資訊，請參閱 [Marbles 示範 ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](https://github.com/IBM-Blockchain/marbles)。
+  The Marbles sample enables users to create virtual marbles with different properties and to transfer them with other users. For more information about Marbles, see [Marbles Demo ![External link icon](../images/external_link.svg "External link icon")](https://github.com/IBM-Blockchain/marbles).
 
-<!--
-* **Perishable Goods**
-
-  The Perishable Goods sample enables users to deploy legal contracts that purchase goods in a supply chain based on delivery and temperature readings. For more information about this sample, see [Perishable Goods ![External link icon](../images/external_link.svg "External link icon")](https://github.com/clauseHQ/demo-clause-ibm-perishable-goods).
-
--->
 
 * **Vehicle Manufacture**
 
-  Vehicle Manufacture 範例可讓使用者體驗虛擬汽車的整個生命週期。如需此範例的相關資訊，請參閱 [Vehicle Manufacture ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](https://github.com/IBM-Blockchain/vehicle-manufacture)。
+  The Vehicle Manufacture sample enables users to go through the lifecycle of a virtual vehicle. For more information about this sample, see [Vehicle Manufacture ![External link icon](../images/external_link.svg "External link icon")](https://github.com/IBM-Blockchain/vehicle-manufacture).
 
-請完成下列步驟來部署範例應用程式：
+Complete the following steps to deploy a sample application:
 
-1. 進入「入門範本方案」網路的**網路監視器**。如果您沒有該網路，請參閱[建立網路](../get_start_starter_plan.html#creating-a-network)。
+1. Enter the **Network Monitor** of your Starter Plan network. If you don't have one, see [Creating a network](../get_start_starter_plan.html#creating-a-network).
 
-2. 在「網路監視器」中開啟「嘗試範例」畫面。選擇您要部署的範例應用程式，然後按一下**透過工具鏈進行部署**按鈕。
-<!--
-    ![sampleappflow0](../images/sampleappflow0.png)
--->
-3. 「工具鏈」服務配置視窗隨即開啟。確定所有必要工具都已正確整合。請注意，如果您有多個組織，請確定輸入的組織名稱正確。組織名稱應該是您用來註冊網路的電子郵件位址。
-    **提示**：您必須停用蹦現封鎖程式，「工具鏈」服務配置頁面才能開啟。
-<!--
-    ![sampleappflow1](../images/sampleappflow1.png)
--->
-如果這是您透過「工具鏈」部署的第一個應用程式，您必須授權「工具鏈」存取 GitHub 儲存庫。
+2. Open the "Try samples" screen in your Network Monitor. Choose the sample application that you want to deploy and click the **Deploy via Toolchain** button.
+
+3. A Toolchain service configuration window opens. Ensure that all required tools are correctly integrated. Note that if you have more than one organizations, make sure that you enter the correct organization name. The organization name should be the email address that you use to sign up for the network.
+    **Tip**: You must disable pop-up blockers so that the Toolchain service configuration page can open.
+
+
+  If this is the first application that you deploy via Toolchain, you need to authorize Toolchain to access the GitHub repository.
 
   ![sampleappflow2](../images/sampleappflow2.png)
 
-  按一下「授權」按鈕之後，您就會進入 GitHub。如果您沒有 GitHub 帳戶，則需要建立該帳戶。輸入帳戶資訊，讓「工具鏈」能夠存取您的儲存庫。如果您不想提供此存取權給「工具鏈」，可以手動部署範例應用程式。如需相關資訊，請參閱[手動部署範例應用程式](#deploy_sample_applications_manually)。
+  After you click the "Authorize" button, you are taken to GitHub. If you don't have a GitHub account, you need to create one. Give Toolchain access to your repositories by entering your account information. If you don't want to give Toolchain this access, you can deploy the sample applications manually. For more information, see [Deploying sample applications manually](#deploy_sample_applications_manually).
 
-5. 按一下「工具鏈」頁面底端的**建立**按鈕。這樣應該會讓您回到「網路監視器」，其中應該正在進行 Marbles 部署。此處理程序應該需要 5 到 10 分鐘。
-<!--
-    ![sampleappflow3](../images/sampleappflow3.png)
+5. Click the **Create** button at the bottom of the Toolchain page. This should take you back to the Network Monitor, where the deployment of Marbles should be in process. This process should take five to 10 minutes.
+
+After the deployment completes, you can start to use the Marbles sample on your Starter Plan network.
+
+Because this process creates a forked GitHub repository that you have access to and control over, you can make changes to Marbles in the forked repository and commit them. These commits will trigger an automatic build of your Marbles application and allow you to demo it in {{site.data.keyword.cloud_notm}}.
 -->
-部署完成之後，您就可以開始在「入門範本方案」網路中使用 Marbles 範例。
 
-由於此處理程序會建立分出的 GitHub 儲存庫，而您擁有其存取權和控制權，因此您可以在分出的儲存庫中對 Marbles 進行變更，並加以確定。這些確定動作會觸發 Marbles 應用程式的自動建置處理程序，並可讓您在 {{site.data.keyword.cloud_notm}} 中示範操作。
-
-## 入門範本方案」或「手動部署範例應用程式
+<!--
+## Deploying sample applications manually
 {: #deploy_sample_applications_manually}
 
-如果您要部署範例應用程式，但不想使用「網路監視器」，請確定您已在本端檔案系統上安裝所有軟體必備項目。如需相關資訊，請參閱[設定應用程式開發環境](../v10_application.html#setting-up-application-development-environment)。
+If you want to deploy sample applications without using the Network Monitor, ensure that you install all software prerequisites on your local file system. For more information, see [Setting up application development environment](../v10_application.html#setting-up-application-development-environment).
 
-您在 {{site.data.keyword.cloud_notm}} 上也需要有使用「入門範本方案」或「企業方案」的區塊鏈網路，並配置頻道及其對等節點。如需相關資訊，請參閱[控管入門範本方案網路](../get_start_starter_plan.html)和[控管企業方案網路](../get_start.html)。在您佈建網路並可以在其上部署應用程式之後，請擷取應用程式將要存取之網路資源的 API 端點。如需相關資訊，請參閱[將網路 API 端點新增至應用程式](../v10_application.html#adding-network-api-endpoints-to-your-application)。
+You also need a blockchain network on {{site.data.keyword.cloud_notm}} with either Starter Plan or Enterprise Plan, and configure a channel and its peers. For more information, see [Govern Starter Plan network](../get_start_starter_plan.html) and [Govern Enterprise Plan network](../get_start.html). After you provision a network and can deploy applications on it, retrieve the API endpoints of your network resources that your application will access. For more information, see [Adding network API endpoints to your application](../v10_application.html#adding-network-api-endpoints-to-your-application).
 
-您可以將下列其中一個範例應用程式部署至您的網路：
+You can deploy one of the following sample applications to your network:
 
 - **Marbles**
 
-  在 Marbles 應用程式中，多個使用者可以建立具有不同內容的彈珠，並將彈珠轉移給其他使用者。Marbles 應用程式是以 JavaScript 撰寫，而鏈碼是以 Go 撰寫。
+  In the Marbles application, multiple users can create marbles with different properties and transfer them to others. The Marbles application is written in JavaScript and the chaincode is written in Go.
 
-  您可以在 [GitHub 中的 Marbles ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](https://github.com/IBM-Blockchain/marbles) 中找到範例程式碼和指示。
+  You can find the sample code and instructions in [Marbles in GitHub ![External link icon](../images/external_link.svg "External link icon")](https://github.com/IBM-Blockchain/marbles).
 
-  請使用 Bluemix 指示，而不是使用在本端管理 Marbles 的指示，並輸入來自網路的相關資訊。請注意，Marbles GitHub 中的畫面擷取是顯示「企業方案」使用者介面（因為「企業方案」僅支援手動部署 Marbles 的途徑），與「入門範本方案」使用者介面稍微不同。不過，這兩種使用者介面都有相同的基本部分，您可以在適當的畫面中找到對等節點的名稱、頻道及其他服務認證資訊。
+  Use the Bluemix instructions rather than the instructions for hosting Marbles locally and input the relevant information from your network. Note that the screen captures in the Marbles GitHub show the Enterprise Plan UI (since the Enterprise Plan supports only the manual path for deploying Marbles), which is a little different from the Starter Plan UI. Nevertheless both UIs have the same basic parts, and you can find the names of your peers, channels, and other service credential information in the appropriate screens.
 
 - **Fabcar**
 
-  在 Fabcar 中，您可以對分類帳中的汽車記錄執行**查詢**和**分類帳更新**。Fabcar 是以 JavaScript 撰寫，而鏈碼是以 Go 撰寫。
+  In Fabcar, you can perform **queries** and **ledger updates** on car records in the ledger. Fabcar is written in JavaScript and the chaincode is written in Go.
 
-  您可以在 [GitHub 中的 Fabric Car ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](https://github.com/hyperledger/fabric-samples/tree/release/fabcar) 中找到範例程式碼，並可在[撰寫您的第一個應用程式 ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](http://hyperledger-fabric.readthedocs.io/en/latest/write_first_app.html) 中找到指示。
+  You can find sample code in [Fabric car in GitHub ![External link icon](../images/external_link.svg "External link icon")](https://github.com/hyperledger/fabric-samples/tree/release/fabcar), and instruction in [Writing Your First Application ![External link icon](../images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/latest/write_first_app.html).
 
-- **其他應用程式**
+- **Other applications**
 
-  若要瞭解如何在 {{site.data.keyword.cloud_notm}} 中管理您自己的應用程式，請參閱[管理應用程式](../v10_application.html#hosting-applications)。
+  For more information about how to host your own applications inside {{site.data.keyword.cloud_notm}}, see [Hosting applications](../v10_application.html#hosting-applications).
 
-## 刪除範例應用程式
+-->
 
-若要刪除透過「工具鏈」處理程序取得的範例應用程式，請導覽至該範例在使用者介面中的位置。由於範例應用程式已在頻道上實例化，因此您可以在頻道中找到該範例。按一下左導覽中的**頻道**，以開啟「頻道」畫面。按一下範例實例化所在的相關頻道，然後按一下**鏈碼**。這樣會顯示在此頻道上實例化的鏈碼。
+<!--
+## Deleting a sample application
 
-如果您按一下應用程式的鏈碼，就可以看到**刪除**標籤。然而，只是按一下**刪除**並不會刪除範例應用程式，這只會刪除鏈碼容器。您還需要導覽至 {{site.data.keyword.cloud_notm}} 儀表板和「工具鏈」儀表板，在那裡才能刪除範例。
+To delete a sample application that was acquired through the Toolchain process, navigate to where the sample lives in the UI. Because sample applications are instantiated on a channel, you can find the sample in channels. Click **Channels** on the left navigation to open the "Channels" screen. Click the relevant channel on which the sample is instantiated, and then click **Chaincode**. This displays chaincode that are instantiated on this channel.
+
+If you click the chaincode of your application, you can see a **Delete** tab. However, clicking **Delete** alone does not delete the sample application, but delete only the chaincode container.  You also need to navigate to the {{site.data.keyword.cloud_notm}} dashboard and the Toolchain dashboard to delete the sample there.
+
+-->

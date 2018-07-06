@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-05-15"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -18,7 +18,7 @@ lastupdated: "2018-05-15"
 La plateforme {{site.data.keyword.blockchainfull}} comporte un Moniteur réseau qui fournit une vue d'ensemble de votre environnement de blockchain, notamment des composants réseau, des membres, des canaux rejoints, des données de performance et du code blockchain déployé. Le Moniteur réseau constitue également un point d'entrée pour l'exécution des API Swagger, le développement d'un réseau avec la plateforme {{site.data.keyword.blockchainfull_notm}} : Develop, et le test de modèles d'application.
 {:shortdesc}
 
-Vous pouvez [changer le nom du réseau de votre plan Enterprise](#ep-network-name) dans le Moniteur réseau. 
+Vous pouvez [changer le nom du réseau de votre plan Enterprise](#ep-network-name) dans le Moniteur réseau.
 
 Le Moniteur réseau présente les écrans suivants dans trois sections. Vous pouvez accéder à chaque écran dans le navigateur de gauche du Moniteur réseau.
 - La section **Mon réseau** contient les écrans "[Présentation](#overview)", "[Membres](#members)", "[Canaux](#channels)", "[Notifications](#notifications)" et "[API](#apis)".
@@ -62,7 +62,7 @@ pouvez aussi arrêter un homologue pendant une longue période alors que vos can
 
 ### Profil de connexion
 {: #enterprise-connection-profile}
-Vous pouvez consulter le ficher JSON pour les informations réseau de faible niveau de chaque ressource en cliquant sur le bouton **Profil de connexion**. Le profil de connexion contient toutes les informations de configuration dont vous avez besoin pour une application. Cependant, ce fichier contient uniquement les adresses de vos composants spécifiques et du programme de tri ; si vous devez cibler des homologues supplémentaires, vous devez obtenir leurs noeuds finaux. L'en-tête "url" affiche le noeud final d'API pour chaque composant. Ces noeuds finaux sont requis pour cibler les composants réseau spécifiques d'une application côté client, et leurs définitions résident généralement dans un fichier de configuration modélisé JSON qui est fourni avec l'application. Si vous personnalisez une application qui nécessite l'adhésion d'homologues qui ne font pas partie de votre organisation, vous devrez obtenir ces adresses IP auprès des opérateurs concernés dans le cadre d'une opération externe. Les clients doivent pouvoir se connecter aux
+Vous pouvez consulter le ficher JSON pour les informations réseau de faible niveau de chaque ressource en cliquant sur le bouton **Profil de connexion**. Le profil de connexion contient toutes les informations de configuration dont vous avez besoin pour une application. Cependant, ce fichier contient uniquement les adresses de vos composants spécifiques et du programme de tri ; si vous devez cibler des homologues supplémentaires, vous devez obtenir leurs noeuds finaux. L'en-tête "url" affiche le noeud final d'API pour chaque composant. Ces noeuds finaux sont requis pour cibler les composants réseau spécifiques d'une application côté client, et leurs définitions résident généralement dans un fichier de configuration modélisé JSON qui est fourni avec l'application. Si vous personnalisez une application qui nécessite une validation par des homologues qui ne font pas partie de votre organisation, vous devrez obtenir ces adresses IP auprès des opérateurs concernés dans le cadre d'une opération externe. Les clients doivent pouvoir se connecter aux
 homologues dont ils attendent une réponse.
 
 ### Ajout d'homologues
@@ -132,7 +132,7 @@ Les demandes en attente peuvent être supprimées en sélectionnant la case en r
 ## API
 {: #apis}
 
-Pour faciliter le développement d'applications, la plateforme {{site.data.keyword.blockchainfull_notm}} expose les API que vous pouvez tester sur votre réseau dans une interface utilisateur Swagger.
+{{site.data.keyword.blockchainfull_notm}} Platform expose dans Swagger un certain nombre d'API REST que vous pouvez utiliser pour gérer les noeuds, les homologues et les membres de votre réseau. Vos applications peuvent recourir à ces API pour gérer d'importantes ressources réseau sans utiliser le moniteur réseau.
 
 La **Figure 7** illustre l'écran "API" :
 
@@ -168,7 +168,7 @@ Un code blockchain est tout d'abord installé sur le système de fichiers d'un h
 ## Essayer les modèles
 {: #samples}
 
-Des modèles d'application vous permettent d'avoir une meilleure compréhension d'un réseau de blockchain et du développement d'application. Suivez le lien jusqu'au référentiel Billes dans le Moniteur réseau pour plus d'informations sur l'installation du modèle d'application Billes. Pour plus d'informations sur le développement et le déploiement de vos propres exemples, voir [Développement d'applications](v10_application.html).
+Des modèles d'application vous permettent d'avoir une meilleure compréhension d'un réseau de blockchain et du développement d'application. Suivez les liens **Afficher sur GitHub** pour découvrir comment utiliser les modèles et les déployer sur {{site.data.keyword.blockchainfull_notm}} Platform. Pour plus d'informations sur le développement et le déploiement de vos modèles, voir [Déploiement de modèles d'application](howto/prebuilt_samples.html).
 
 La **Figure 10** illustre l'écran "Essayer les modèles" :
 
@@ -211,10 +211,12 @@ Les Figures 12 et 13 affichent l'écran "Obtenir de l'aide" initial qui comporte
 
 Cliquez dans l'angle supérieur droit et ouvrez le menu déroulant, puis les **Préférences réseau**. La fenêtre Préférences réseau s'affiche. Elle affiche les informations de base de votre réseau, comme le nom réseau, la version Fabric, l'emplacement réseau dans {{site.data.keyword.cloud_notm}}, ainsi que le type de base de données du registre.
 
-Les réseaux du plan Enterprise seront prochainement mis à niveau vers Fabric v1.1 soon<!-- May 15th, 2018 will run on Hyperledger Fabric v1.1-->. Si vous créez des réseaux après la mise à niveau, vous pouvez également gérer les délai d'inactivité Web et le TLS mutuel pour votre réseau dans la fenêtre Préférences réseau. Ces paramètres peuvent être modifiés par l'initiateur du réseau uniquement.
+Les réseaux du plan Enterprise créés après le 15 mai 2048 opéreront avec Hyperledger Fabric v1.1. Si vous créez des réseaux après la mise à niveau, vous pouvez également gérer les délai d'inactivité Web et le TLS mutuel pour votre réseau dans la fenêtre Préférences réseau. Ces paramètres peuvent être modifiés par l'initiateur du réseau uniquement.
 
 <!--
+
 Enterprise Plan networks that are created after May 15th, 2018 will run on Hyperledger Fabric v1.1. If you create networks after the upgrade, you can also manage web inactivity timeout, mutual TLS, and switch your ledger to CouchDB for your network in the Network preferences window. These settings can be changed by the network initiator only.
+
 -->
 
 ### Délai d'inactivité Web
@@ -222,18 +224,18 @@ Enterprise Plan networks that are created after May 15th, 2018 will run on Hyper
 
 **Remarque **: Seul l'**initiateur réseau** peut modifier le paramètre de délai d'attente d'inactivité Web. Il s'agit d'un paramètre de niveau réseau et il concerne tous les membres réseau.
 
-Le délai d'attente d'inactivité Web est défini sur **Désactivé** par défaut. Si vous définissez le délai d'attente d'inactivité Web sur **Activé**, tout membre du réseau sera déconnecté automatiquement au bout de 10 minutes d'inactivité. Lorsque le délai d'attente d'inactivité Web atteint 10 minutes, la fonction Délai d'inactivité Web met fin aux sessions Web inactives afin de garantir la sécurité du compte des membres du réseau. Si vous cliquez sur un lien ou si vous actualisez le Moniteur réseau, le délai d'inactivité Web est réinitialisé. Avant d'atteindre les 10 minutes, il est possible d'arrêter la session Web en fermant la fenêtre ou l'onglet du navigateur. 
+Le délai d'attente d'inactivité Web est défini sur **Désactivé** par défaut. Si vous définissez le délai d'attente d'inactivité Web sur **Activé**, tout membre du réseau sera déconnecté automatiquement au bout de 10 minutes d'inactivité. Lorsque le délai d'attente d'inactivité Web atteint 10 minutes, la fonction Délai d'inactivité Web met fin aux sessions Web inactives afin de garantir la sécurité du compte des membres du réseau. Si vous cliquez sur un lien ou si vous actualisez le Moniteur réseau, le délai d'inactivité Web est réinitialisé. Avant d'atteindre les 10 minutes, il est possible d'arrêter la session Web en fermant la fenêtre ou l'onglet du navigateur.
 
 ### TLS mutuel
 {: #mutual-tls}
 
-TLS mutuel sécurise la communication entre votre application et votre réseau, et garantit uniquement que vous pouvez communiquer avec votre réseau.
+Le protocole TLS mutuel sécurise la communication entre votre application et votre réseau.
 
 **Remarque **: Seul un **initiateur réseau** peut activer ou désactiver le TLS mutuel. Il s'agit d'un paramètre de niveau réseau et il concerne tous les membres réseau.
 
 Le bouton TLS mutuel est défini sur **Désactivé** par défaut. Si vous activez TLS mutuel, vous devez mettre à jour vos applications afin de prendre en charge cette fonction. Sinon, vos applications ne pourront pas communiquer avec le réseau.
 
-Pour un réseau du plan Enterprise Fabric 1.1, chaque organisation a sa propre autorité de certification TLS mutuel. Les informations nécessaires pour la connexion  à l'autorité de certification TLS mutuel sont disponibles dans le [Profil de connexion](##enterprise-connection-profile) accessible depuis votre écran **Présentation** dans le Moniteur réseau en cliquant sur le bouton **Profil de connexion**. Le profil de connexion contient les informations nécessaires à la connexion à l'autorité de certification et à l'obtention des certificats dont vous avez besoin pour la connexion à votre réseau. 
+Pour un réseau du plan Enterprise Fabric 1.1, chaque organisation a sa propre autorité de certification TLS mutuel. Les informations nécessaires pour la connexion  à l'autorité de certification TLS mutuel sont disponibles dans le [Profil de connexion](##enterprise-connection-profile) accessible depuis votre écran **Présentation** dans le Moniteur réseau en cliquant sur le bouton **Profil de connexion**.  Le profil de connexion contient les informations nécessaires à la connexion à l'autorité de certification et à l'obtention des certificats dont vous avez besoin pour la connexion à votre réseau.
 
 Dans le profil de connexion, localisez la section `certificateAuthorities` où vous trouverez les attributs suivants qui sont nécessaires à l'inscription et à l'obtention des certificats pour communiquer avec votre réseau à l'aide de TLS mutuel.
 
@@ -245,16 +247,21 @@ Dans le profil de connexion, localisez la section `certificateAuthorities` où v
 Pour plus d'informations sur la mise à jour de vos applications pour la prise en charge de TLS mutuel, voir [How to configure mutual TLS![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://fabric-sdk-node.github.io/tutorial-mutual-tls.html)
 
 <!--
+
 ### CouchDB ledger type
 {: #couchdb}
+
 **Note**: Only the **network initiator** can switch the ledger database from LevelDB to CouchDB. This is a network level setting and will affect all network members. Switching to CouchDB is permanent. You cannot revert back to LevelDB.
+
 Before Enterprise Plan upgrades to Fabric v1.1, all network peers store data in the pure key-value LevelDB. With Fabric v1.1, you can choose to use CouchDB as your ledger database. CouchDB is a document datastore that permits indexing the contents of your data and allows you to issue rich queries against the data on your peer. Note that Hyperledger Fabric does not support peers running different databases. If CouchDB is used, it must be used by all of the peers.
+
 To use CouchDB, your data must be stored in a data format that can be modeled in chaincode, such as JSON. If the decision is made to migrate from LevelDB to CouchDB, the {{site.data.keyword.blockchainfull_notm}} Platform will migrate your data from key-value format to the CouchDB format automatically.
+
 If you switch to CouchDB, you need to update your chaincode to take advantage of indexes and rich queries. For more information about CouchDB and how to set up index, see [CouchDB as the State Database ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/latest/couchdb_as_state_database.html). For more information about updating chaincode in {{site.data.keyword.blockchainfull_notm}} Platform, see [Updating a chaincode](howto/install_instantiate_chaincode.html#updating-a-chaincode).
+
 -->
 
 La **Figure 14** affiche la fenêtre "Préférences réseau" :
 
-<!-- ![Network preferences](images/network_preferences_ep.gif "Network preferences") -->
-![Préférences réseau](images/network_preferences_ep_tmp.png "Préférences réseau")  
+![Préférences réseau](images/network_preferences_ep_tmp.png "Préférences réseau")
 *Figure 14. Préférences réseau*

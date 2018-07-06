@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-05-15"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -30,19 +30,29 @@ Devi accedere a un'istanza piano Enterprise di {{site.data.keyword.blockchainful
 
 1. Crea una directory per memorizzare i tuoi dettagli della connessione, ad esempio:
 
-        /Users/myUserId/.composer-connection-profiles/bmx-hlfv1
+    ```
+    /Users/myUserId/.composer-connection-profiles/bmx-hlfv1
+    ```
+    {:codeblock}
 
     Ogni profilo di connessione deve contenere un file `connection.json`. Crea una nuova directory in `.composer-connection-profiles`, in questo caso `bmx-hlfv1`. Questo sarà il nome del profilo che userai quando lavorerai con Hyperledger Composer e {{site.data.keyword.blockchainfull_notm}} Platform.
 
-        mkdir -p ~/.composer-connection-profiles/bmx-hlfv1
+    ```
+    mkdir -p ~/.composer-connection-profiles/bmx-hlfv1
         cd ~/.composer-connection-profiles/bmx-hlfv1
+    ```
+    {:codeblock}
 
 2. Dovresti avere ora la seguente struttura di directory:
 
-        /Users/myUserId/.composer-connection-profiles/bmx-hlfv1
+    ```
+    /Users/myUserId/.composer-connection-profiles/bmx-hlfv1
+    ```
+    {:codeblock}
 
     Crea un file nel nome directory appena creato e denominalo `connection.json`. Puoi utilizzare il seguente modello per il file `connection.json`:
 
+    ```
         {
             "name": "bmx-hlfv1",
             "description": "A description for a V1 Profile",
@@ -68,6 +78,8 @@ Devi accedere a un'istanza piano Enterprise di {{site.data.keyword.blockchainful
             "globalCert": "-----BEGIN CERTIFICATE-----\r\n...LotsOfStuff\r\n-----END CERTIFICATE-----\r\n-----BEGIN CERTIFICATE-----\r\nMorestuff\r\n-----END CERTIFICATE-----\r\n",
             "timeout": 300
         }
+    ```
+    {:codeblock}
 
     Compilerai il file `connection.json` appena creato con gli attributi forniti tramite il tuo dashboard {{site.data.keyword.blockchainfull_notm}} Platform. Dal tuo dashboard, seleziona **Panoramica**, quindi il pulsante **Profilo connessione** per visualizzare le informazioni su endpoint e certificato per i membri del canale.
 
@@ -77,7 +89,10 @@ Devi accedere a un'istanza piano Enterprise di {{site.data.keyword.blockchainful
 
     Sostituisci i valori dell'url dell'ordinante con le informazioni pertinenti del tuo Profilo connessione nel seguente formato:
 
-        “url”: “grpcs://abca.4.secure.blockchain.ibm.com:12345”
+    ```
+    "url": "grpcs://abca.4.secure.blockchain.ibm.com:12345"
+    ```
+    {:codeblock}
 
 ## Passo tre: Aggiunta delle informazioni dell'Autorità di certificazione
 
@@ -87,16 +102,22 @@ Devi accedere a un'istanza piano Enterprise di {{site.data.keyword.blockchainful
 
 1. È necessario impostare **requestURL** e **eventURL** per ogni peer. Sostituisci l'attributo **url** con il valore **url** disponibile nel tuo Profilo connessione. Sostituisci l'attributo **eventURL** con l'**eventUrl** presente nel tuo Profilo connessione. Dopo aver apportato le modifiche, la sezione peer di `connection.json` dovrebbe avere il seguente formato:
 
+    ```
         "peers": [
           {
               "requestURL": "grpcs://abca.4.secure.blockchain.ibm.com:12345",
               "eventURL": "grpcs://abca.4.secure.blockchain.ibm.com:12345"
+    ```
+    {:codeblock}
 
 ## Passo cinque: Aggiunta delle informazioni keyValStore
 
 1. Imposta l'attributo **keyValStore** in modo che punti alla directory appropriata. Crea una directory da utilizzare per il tuo **keyValStore**. Ad esempio, una nuova directory sotto la tua directory home denominata `.composer-credentials-mychannel`. Assicurati che l'attributo **keyValStore** punti alla tua directory appena creata nel seguente formato:
 
-        "keyValStore": "/Users/myUserId/.composer-credentials-mychannel",
+    ```
+    "keyValStore": "/Users/myUserId/.composer-credentials-mychannel",
+    ```
+    {:codeblock}
 
 ## Passo sei: Aggiunta delle informazioni del canale
 
@@ -104,12 +125,15 @@ Devi accedere a un'istanza piano Enterprise di {{site.data.keyword.blockchainful
 
 ## Passo sette: Aggiunta di un mspID
 
-Il valore **mspID** nel tuo file `connection.json` dovrebbe essere impostato sull'mspID della tua organizzazione. Profilo connessione fornisce un elenco delle organizzazioni con i loro valori mspid associati. Devi utilizzare il valore dall'attributo **mspid** della tua organizzazione. 
+Il valore **mspID** nel tuo file `connection.json` dovrebbe essere impostato sull'mspID della tua organizzazione. Profilo connessione fornisce un elenco delle organizzazioni con i loro valori mspid associati. Devi utilizzare il valore dall'attributo **mspid** della tua organizzazione.
 
 ## Passo otto: Aggiunta del globalCert
 1. {{site.data.keyword.blockchainfull_notm}} Platform utilizza un certificato TLS comune per gli ordinatori e i peer. Per ogni ordinante e peer, c'è un attributo **tlsCACerts** che contiene lo stesso certificato. Sostituisci il valore fittizio nel file `connection.json` con il valore **tlsCACerts**. Dovrebbe assumere il seguente formato:
 
-        "globalCert": "-----BEGIN CERTIFICATE-----\r\.......
+    ```
+    "globalCert": "-----BEGIN CERTIFICATE-----\r\.......
+    ```
+    {:codeblock}
 
 ## Passo nove: Preparazione dei tuoi peer
 
@@ -117,6 +141,7 @@ Il valore **mspID** nel tuo file `connection.json` dovrebbe essere impostato sul
 
 Nel documento Profilo connessione in **certificateAuthorities** c'è un attributo **registrar** che contiene gli attributi per **enrollId** e **enrollSecret** nel seguente formato:
 
+ ```
         "registrar": [
             {
                 "affiliation": "org1",
@@ -124,10 +149,15 @@ Nel documento Profilo connessione in **certificateAuthorities** c'è un attribut
                 "enrollSecret": "PA55W0RD12"
             }
         ],
+ ```
+ {:codeblock}
 
 1. Richiedi i certificati utilizzando il seguente comando:
 
-        composer identity request -p bmx-hlfv1 -i admin -s PA55W0RD12
+    ```
+    composer identity request -p bmx-hlfv1 -i admin -s PA55W0RD12
+    ```
+    {:codeblock}
 
     Questo scarica tre file nella directory `.identityCredentials` sotto la tua home directory. I file rilevanti sono basati su **enrollId**. Quindi, nell'esempio di cui sopra, ci saranno due file denominati **admin-pub.pem** e **admin-priv.pem**
 
@@ -159,11 +189,14 @@ Nel documento Profilo connessione in **certificateAuthorities** c'è un attribut
 
 ## Passo undici: Importazione di una nuova identità per amministrare la tua rete di business
 
-Crea un'identità in Composer utilizzando i certificati richiesti in precedenza. Questa nuova identità disporrà dell'autorizzazione necessaria per installare un chaincode nei peer che hanno il tuo certificato pubblico caricato e sarà un emittente per le autorità di certificazione. 
+Crea un'identità in Composer utilizzando i certificati richiesti in precedenza. Questa nuova identità disporrà dell'autorizzazione necessaria per installare un chaincode nei peer che hanno il tuo certificato pubblico caricato e sarà un emittente per le autorità di certificazione.
 
 1. Per creare la nuova identità, esegui questo comando:
 
-        composer identity import -p bmx-hlfv1 -u admin -c ~/.identityCredentials/admin-pub.pem -k ~/.identityCredentials/admin-priv.pem
+    ```
+    composer identity import -p bmx-hlfv1 -u admin -c ~/.identityCredentials/admin-pub.pem -k ~/.identityCredentials/admin-priv.pem
+    ```
+    {:codeblock}
 
     Dove `bmx-hlfv1` è il nome del profilo da te precedentemente creato. Ora siamo pronti a distribuire il tuo `.bna` a{{site.data.keyword.blockchainfull_notm}} Platform.
 
@@ -174,4 +207,7 @@ Ora puoi distribuire il tuo file `.bna` a {{site.data.keyword.blockchainfull_not
 
 1. Con l'identità da te creata nel passo precedente, distribuisci la rete di business utilizzando il seguente comando:
 
-        composer network deploy -a myNetwork.bna -p bmx-hlfv1 -i admin -s anyString
+   ```
+   composer network deploy -a myNetwork.bna -p bmx-hlfv1 -i admin -s anyString
+   ```
+   {:codeblock}

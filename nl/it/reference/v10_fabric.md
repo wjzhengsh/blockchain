@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-03-16"
+lastupdated: "2018-06-14"
 ---
 
 {:new_window: target="_blank"}
@@ -69,7 +69,7 @@ I nodi del servizio ordini forniscono anche i seguenti servizi:
 Per ulteriori informazioni sul servizio ordini Hyperledger Fabric, vedi *[Bringing up a Kafka-based Ordering Service ![Icona link esterno](../images/external_link.svg "Icona link esterno")](http://hyperledger-fabric.readthedocs.io/en/latest/kafka.html){:new_window}* nella  [documentazione di Hyperledger Fabric ![Icona link esterno](../images/external_link.svg "Icona link esterno")](http://hyperledger-fabric.readthedocs.io/en/latest/){:new_window}.
 
 ## SDK HFC
-Gli SDK HFC (Hyperledger Fabric Client) consentono agli sviluppatori di applicazioni di mettere a punto delle applicazioni che interagiscono con una rete blockchain. Gli SDK HFC facilitano la gestione del ciclo di canali e chaincode alle applicazioni. 
+Gli SDK HFC (Hyperledger Fabric Client) consentono agli sviluppatori di applicazioni di mettere a punto delle applicazioni che interagiscono con una rete blockchain. Gli SDK HFC facilitano la gestione del ciclo di canali e chaincode alle applicazioni.
 
 Hyperledger Fabric offre l'SDK Node.js SDK e l'SDK Java e fornisce le seguenti funzioni per interagire con la rete blockchain:
 * Registrare e iscrivere utenti
@@ -77,8 +77,8 @@ Hyperledger Fabric offre l'SDK Node.js SDK e l'SDK Java e fornisce le seguenti f
 * Unire i peer a un canale
 * Aggiornare la configurazione del canale sistemi o del canale applicazioni
 * Installare il chaincode sui peer
-* Istanziare il chaincode su un canale 
-* Eseguire l'upgrade del chaincode su un canale 
+* Istanziare il chaincode su un canale
+* Eseguire l'upgrade del chaincode su un canale
 * Richiamare le funzioni chaincode per aggiornare il libro mastro
 * Eseguire query del libro mastro per transazioni, blocchi o chiavi specifici
 * Monitorare gli eventi su un canale (ad esempio, la corretta esecuzione del commit di una transazione)

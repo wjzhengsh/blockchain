@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-03-16"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -16,8 +16,7 @@ lastupdated: "2018-03-16"
 # Gouvernance d'un réseau de plan Enterprise
 {: #getting-started-with-blockchain}
 
-Le plan Enterprise de la plateforme {{site.data.keyword.blockchainfull}} fournit un réseau de blockchain avec un haut niveau de sécurité, d'intégrité, d'évolutivité et de performance. Vous pouvez rapidement mettre à disposition un réseau pleinement opérationnel et utiliser le Moniteur réseau, tableau de bord d'interface graphique, pour exécuter immédiatement le [code blockchain](glossary.html#chaincode) et les applications sans avoir à concevoir et à configurer un réseau de blockchain privé.
-{:shortdesc}
+Le plan Enterprise de la plateforme {{site.data.keyword.blockchainfull}} fournit un réseau de blockchain avec un haut niveau de sécurité, d'intégrité, d'évolutivité et de performance. Vous pouvez mettre à disposition rapidement un réseau pleinement opérationnel et utiliser le Moniteur réseau, lequel se présente sous forme de tableau de bord dans l'interface graphique, pour exécuter immédiatement le [code blockchain](glossary.html#chaincode) et les applications sans avoir à concevoir et à configurer un réseau à partir de zéro {:shortdesc}
 
 **Remarque **: Le plan Enterprise de la plateforme {{site.data.keyword.blockchainfull_notm}} fournit un environnement de production. Si vous avez besoin d'un environnement de tests et de développement, voir [A propos du plan Starter](starter_plan.html).
 
@@ -94,8 +93,7 @@ Vous accédez à la page d'instance de service dès que vous créez une instance
 Pour extraire les données d'identification de votre service, procédez comme suit :
 1. Sur la page d'instance de service, cliquez sur **Données d'identification du service** dans le navigateur de gauche pour afficher l'écran "Données d'identification du service".
 2. Cliquez sur **Nouvelles données d'identification** dans l'écran "Données d'identification du service".
-3. Dans l'écran "Ajouter de nouvelles données d'identification", donnez un nom aux données d'identification et cliquez sur **Ajouter**. Les nouvelles données d'identification sont ajoutées dans le tableau. Vous pouvez cliquer sur **Afficher les données d'identification** sous la colonne "ACTIONS" pour afficher les détails des données d'identification. Ces données d'identification contiennent la clé d'API et la valeur confidentielle, que vous pouvez utiliser pour autoriser les API.
-    Si vous voulez voir le profil de connexion de votre connexion, entrez **{"legacy": true}** comme paramètre de configuration en ligne lors de la création de nouvelles données d'identification. Le profil de connexion contient des noeuds finaux d'API pour vos ressources réseau, que vous pouvez utiliser dans vos API et applications.
+3. Dans l'écran "Ajouter de nouvelles données d'identification", donnez un nom aux données d'identification et entrez **{"type": "service_instance_token"}** dans la zone "Ajouter des paramètres de configuration en ligne". Cliquez sur **Ajouter** afin d'ajouter au tableau les nouvelles données d'identification. Vous pouvez cliquer sur **Afficher les données d'identification** sous la colonne "ACTIONS" pour afficher les détails des données d'identification. Ces données d'identification contiennent la clé d'API et la valeur confidentielle, que vous pouvez utiliser pour autoriser les API.
 
 ### Extraction dans le Moniteur réseau
 Vous pouvez trouver les données d'identification réseau dans l'écran "API" de votre Moniteur réseau. Pour plus d'informations sur l'utilisation des API, voir [Test des API avec Swagger](apis.html).

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-05-15"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -104,7 +104,7 @@ Puoi suddividere la tua rete in canali, dove ogni canale rappresenta un sottoins
 La **Figura 5** mostra la schermata dashboard iniziale che visualizza una panoramica di tutti i canali nella tua rete:
 
 ![Canali](images/channels.png "Canali")
-*Figure 5. Canali*
+*Figura 5. Canali*
 
 La creazione di un canale comporta la generazione di un libro mastro specifico per il canale. Per ulteriori informazioni, vedi [Creazione di un canale](howto/create_channel.html).
 
@@ -134,7 +134,7 @@ Le richieste in sospeso possono essere eliminate selezionando le caselle davanti
 ## API
 {: #apis}
 
-Per facilitare lo sviluppo dell'applicazione, {{site.data.keyword.blockchainfull_notm}} Platform presenta delle API che puoi testare sulla tua rete in una IU Swagger.
+{{site.data.keyword.blockchainfull_notm}} Platform presenta diverse API REST in Swagger che puoi utilizzare per gestire i nodi, i canali, i peer e i membri della tua rete. Le tue applicazioni possono utilizzare queste API per controllare importanti risorse di rete senza usare il monitoraggio della rete.
 
 La **Figura 7** mostra la schermata "API":
 
@@ -170,7 +170,7 @@ Un chaincode viene prima installato sul file system di un peer e viene quindi is
 ## Prova gli esempi
 {: #samples}
 
-Le applicazioni di esempio ti aiutano ad ottenere una migliore comprensione della rete blockchain e dello sviluppo di applicazioni. Segui il link al repository Marbles nel monitoraggio della rete per informazioni su come installare l'applicazione di esempio Marbles. Per ulteriori informazioni su come sviluppare e distribuire i tuoi esempi, consulta [Sviluppo di applicazioni](v10_application.html).
+Le applicazioni di esempio ti aiutano ad ottenere una migliore comprensione della rete blockchain e dello sviluppo di applicazioni. Segui i link **Visualizza in GitHub** per apprendere in che modo usare gli esempi e distribuirli a {{site.data.keyword.blockchainfull_notm}} Platform. Per ulteriori informazioni su come sviluppare e distribuire i tuoi esempi, consulta [Distribuzione di applicazioni di esempio](howto/prebuilt_samples.html).
 
 La **Figura 10** mostra la schermata "Prova gli esempi":
 
@@ -199,13 +199,13 @@ Utilizza i link e le risorse in questa pagina per accedere ai forum di supporto 
 
 Se non riesci ad eseguire il debug del tuo problema o a individuare una risposta alla tua domanda, inoltra un caso di supporto al portale servizio di IBM Cloud. Per ulteriori informazioni, vedi [Richiesta di assistenza tecnica](ibmblockchain_support.html).
 
-Le figure 12 e 13 mostrano la schermata "Richiedi assistenza" iniziale che visualizza le funzioni nuove e modificate di ciascuna release nella scheda "Note sulla release": 
+Le figure 12 e 13 mostrano la schermata "Richiedi assistenza" iniziale che visualizza le funzioni nuove e modificate di ciascuna release nella scheda "Note sulla release":
 
 ![Note sulla release di Helios](images/releasenotes_helios.png "Note sulla release di Helios")
 *Figura 12. Note di release per Helios*
 
 ![Note di release di Fabric](images/releasenotes_Fabric.png "Note di release di Fabric")
-*Figure 13. Note di release per Fabric*
+*Figura 13. Note di release per Fabric*
 
 
 ## Preferenze della rete
@@ -213,10 +213,12 @@ Le figure 12 e 13 mostrano la schermata "Richiedi assistenza" iniziale che visua
 
 Fai clic sull'angolo superiore destro e apri il menu a discesa e poi **Preferenze della rete**. Viene aperta la finestra Preferenze della rete. La finestra Preferenze della rete mostra le informazioni di base della tua rete, come il nome della rete, la versione Fabric, l'ubicazione della rete in {{site.data.keyword.cloud_notm}} e il tipo di database libro mastro.
 
-Le reti piano Enterprise vengono aggiornate a Fabric v1.1 presto<!-- May 15th, 2018 will run on Hyperledger Fabric v1.1-->. Se crei le reti dopo l'upgrade, puoi inoltre gestire il timeout di inattività web e il TLS reciproco per la tua rete nella finestra delle preferenze di rete. Queste impostazioni possono essere modificate solo dall'iniziatore della rete.
+Le reti piano Enterprise create dopo il 15 maggio 2018 verranno eseguite su Hyperledger Fabric v1.1. Se crei le reti dopo l'upgrade, puoi inoltre gestire il timeout di inattività web e il TLS reciproco per la tua rete nella finestra delle preferenze di rete. Queste impostazioni possono essere modificate solo dall'iniziatore della rete.
 
 <!--
+
 Enterprise Plan networks that are created after May 15th, 2018 will run on Hyperledger Fabric v1.1. If you create networks after the upgrade, you can also manage web inactivity timeout, mutual TLS, and switch your ledger to CouchDB for your network in the Network preferences window. These settings can be changed by the network initiator only.
+
 -->
 
 ### Timeout di inattività web
@@ -229,7 +231,7 @@ Il timeout di inattività web è impostato su **Off** per impostazione predefini
 ### TLS reciproco
 {: #mutual-tls}
 
-Il TLS reciproco protegge la comunicazione tra la tua applicazione e la tua rete e assicura che soltanto tu puoi comunicare con la tua rete.
+Il TLS reciproco protegge le comunicazioni tra la tua applicazione e la tua rete.
 
 **Nota**: solo un **iniziatore della rete** può abilitare o disabilitare il TLS reciproco. Questa è un'impostazione al livello della rete e interesserà tutti i membri della rete.
 
@@ -247,16 +249,21 @@ Nel profilo di connessione, individua la sezione `certificateAuthorities` dove t
 Per ulteriori informazioni sull'aggiornamento delle tue applicazioni in modo che supportino il TLS reciproco, vedi [How to configure mutual TLS ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://fabric-sdk-node.github.io/tutorial-mutual-tls.html)
 
 <!--
+
 ### CouchDB ledger type
 {: #couchdb}
+
 **Note**: Only the **network initiator** can switch the ledger database from LevelDB to CouchDB. This is a network level setting and will affect all network members. Switching to CouchDB is permanent. You cannot revert back to LevelDB.
+
 Before Enterprise Plan upgrades to Fabric v1.1, all network peers store data in the pure key-value LevelDB. With Fabric v1.1, you can choose to use CouchDB as your ledger database. CouchDB is a document datastore that permits indexing the contents of your data and allows you to issue rich queries against the data on your peer. Note that Hyperledger Fabric does not support peers running different databases. If CouchDB is used, it must be used by all of the peers.
+
 To use CouchDB, your data must be stored in a data format that can be modeled in chaincode, such as JSON. If the decision is made to migrate from LevelDB to CouchDB, the {{site.data.keyword.blockchainfull_notm}} Platform will migrate your data from key-value format to the CouchDB format automatically.
+
 If you switch to CouchDB, you need to update your chaincode to take advantage of indexes and rich queries. For more information about CouchDB and how to set up index, see [CouchDB as the State Database ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/latest/couchdb_as_state_database.html). For more information about updating chaincode in {{site.data.keyword.blockchainfull_notm}} Platform, see [Updating a chaincode](howto/install_instantiate_chaincode.html#updating-a-chaincode).
+
 -->
 
 **Figura 14** mostra la finestra "Preferenze della rete":
 
-<!-- ![Network preferences](images/network_preferences_ep.gif "Network preferences") -->
-![Preferenze della rete](images/network_preferences_ep_tmp.png "Preferenze della rete")  
+![Preferenze della rete](images/network_preferences_ep_tmp.png "Preferenze della rete")
 *Figura 14. Preferenze della rete*

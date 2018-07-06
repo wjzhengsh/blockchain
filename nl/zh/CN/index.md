@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-05-24"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -29,26 +29,20 @@ lastupdated: "2018-05-24"
 
 ## {{site.data.keyword.IBM_notm}} 成员资格产品
 
-IBM Blockchain Platform 提供不同的成员资格套餐，帮助所有类型的用户开启其区块链之旅并将其应用程序移动到生产环境。
+{{site.data.keyword.blockchainfull_notm}} 提供不同的成员资格套餐，帮助所有类型的用户开启其区块链之旅并将其应用程序移动到生产环境。
 
 |       |[入门套餐](starter_plan.html)|[企业套餐](enterprise_plan.html)|企业增强版套餐|自我管理的套餐
 | ------------------------- |--------------------------|-----|-----|------|
 |**包含的内容**| **基本服务级别、开发和测试环境** |**高级服务级别、企业生产就绪**| **针对性能和隔离以及企业生产就绪的专用计算** |要在自己的基础架构上安装的软件堆栈，连接到此云服务上托管的网络|
-|**计费策略**|**Beta 免费<!--trial of 30 days, followed by monthly charge-->** |**每月预订**|**每月预订**|每月预订|
-|**可用性**|**Beta**|**可立即获取**| **追加采购** |即将推出|
+|**计费策略**|**[试用信用值](howto/pricing.html#starter-plan-pricing)，用完后按月收费** |**每月预订**|**每月预订**|每月预订|
+|**可用性**|**可立即获取**|**可立即获取**| **追加采购** |即将推出|
 
+**注意：**请勿将**入门套餐**用于生产。入门套餐是一个开发与测试环境，不适合生产工作负载。
 
-<!--
-- **The IBM Blockchain Starter Plan** is ideal for those who are learning or getting started developing their blockchain network.
-- **Enterprise Plan** is a production environment offering high levels of security and support.
-- **Enterprise Plus Plan** offers a dedicated production environment for additional performance and isolated compute and storage resources to protect critical data.
--->
-
-**注意：**请勿将**入门套餐**用于生产。这是一个开发与测试环境。
-
-{{site.data.keyword.blockchainfull_notm}} 产品基于 [Hyperledger Fabric](./v10_fabric) 代码库构建，该代码库利用模块化体系结构来实现企业级别的安全性、数据完整性、可扩展性和性能，以满足您的业务需要。
-- **入门套餐**网络是基于 Hyperledger Fabric V1.1 构建的。
-- **企业套餐**已升级至 Hyperledger Fabric V1.1。所有新创建的网络都处于 Fabric V1.1 级别。
+{{site.data.keyword.blockchainfull_notm}} 产品基于 [Hyperledger Fabric](reference/v10_fabric.html) V1.1 代码库构建，该代码库利用模块化体系结构来实现企业级别的安全性、数据完整性、可扩展性和性能，以满足您的业务需要。
+- **IBM Blockchain 入门套餐**是用于了解或开始开发区块链网络的环境。
+- **企业套餐**是提供高级别安全性和支持的生产环境。
+- **企业增强版套餐**提供专用的生产环境，以实现额外的性能和隔离的计算和存储资源，从而保护关键数据。
 
 立即注册以获取 [{{site.data.keyword.blockchainfull_notm}} 成员资格 ![外部链接图标](images/external_link.svg "外部链接图标")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps)！
 
@@ -73,8 +67,9 @@ IBM Blockchain Platform 提供不同的成员资格套餐，帮助所有类型�
 
 ## **管理**网络
 有两个选项可用于创建网络的后端环境。首先，您可以使用发布的 Hyperledger Docker 映像，为您提供实施 Composer 库以构建应用程序并与网络交互的选项。或者，您可以通过本机方式编写链代码，并开发服务器端代码以驱动事务处理。在本地运行是对网络配置进行修补、探索潜在用例并开始构建概念证明的绝佳机会。PoC 开始成形后，可以通过在云中托管网络来扩大实现。
-
-通过云部署，您可以获得易于使用的诀窍和脚本集合，以帮助部署在 Kubernetes 上运行的 Hyperledger Fabric 网络。使用此阶段可检查您的 PoC 在托管环境中的行为和稳定性。[{{site.data.keyword.blockchainfull_notm}}容器服务 ![外部链接图标](images/external_link.svg "外部链接图标")](https://ibm-blockchain.github.io/) 最容易让人想到是一种对应用程序功能和弹性的测试机制，以及企业套餐的自然前体。
+<!--
+With a cloud deployment, you're provided with a collection of easy-to-use recipes and scripts to facilitate the deployment of a Hyperledger Fabric network that runs on Kubernetes. Use this phase to examine the behavior and stability of your PoC in a hosted environment. The [{{site.data.keyword.blockchainfull_notm}} Container Service ![External link icon](images/external_link.svg "External link icon")](https://ibm-blockchain.github.io/) can be best thought of as a testing mechanism for the functionality and resiliency of your application and as a natural precursor to the Enterprise Plan.
+-->
 
 在您拥有网络后，{{site.data.keyword.blockchainfull_notm}} 旨在创建网络管理体验，为成员提供某种控制，而不是单个成员在完全控制中。{{site.data.keyword.blockchainfull_notm}} Platform 具有第一套集成工具，允许团队通过可定制策略来强制实施变更管理。
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-05-15"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -14,33 +14,21 @@ lastupdated: "2018-05-15"
 
 # Cómo interactuar con la red con las API de Swagger
 
-La plataforma {{site.data.keyword.blockchainfull}} ofrece varias API REST para facilitar el desarrollo de aplicaciones. Puede probarlas en las redes blockchain mediante la interfaz de usuario de Swagger.
+La plataforma {{site.data.keyword.blockchainfull_notm}} ofrece varias API REST en Swagger que puede utilizar para gestionar los nodos, canales, iguales y miembros de la red. Las aplicaciones pueden utilizar estas API para controlar los recursos de red importantes sin utilizar el supervisor de red.
+
 {:shortdesc}
 
-Antes de empezar, debe crear una [instancia de servicio de la plataforma {{site.data.keyword.blockchain}} ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://console.bluemix.net/catalog/services/blockchain) en {{site.data.keyword.Bluemix_notm}} y crear o unir una red de blockchain del Plan inicial<!--or Enterprise Plan -->.
+Antes de empezar, debe crear una [instancia de servicio de la plataforma {{site.data.keyword.blockchain}} ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://console.bluemix.net/catalog/services/blockchain) en {{site.data.keyword.Bluemix_notm}} y crear o unir una red blockchain del Plan inicial<!--or Enterprise Plan -->.
 
 
 ## Recuperación de credenciales de red
 
 {: #retrieving-network-credentials}
 
-Entre en el supervisor de red de la red de blockchain y abra la pantalla "API" desde el navegador izquierdo. Verá sus credenciales de red para la API REST. Luego autorizará a las API mediante los valores "key" y "secret" que se muestran aquí y ejecutará las API con el valor "network_id" como parámetro. Pulse **Mostrar secreto** para revelar el valor del campo de secreto. Copie los valores de los campos de clave, secreto e id de red, que podrá utilizar más tarde en la IU de Swagger.
+Entre en el supervisor de red de la red blockchain y abra la pantalla "API" desde el navegador izquierdo. Verá sus credenciales de red para la API REST. Luego autorizará a las API mediante los valores "key" y "secret" que se muestran aquí y ejecutará las API con el valor "network_id" como parámetro. Pulse **Mostrar secreto** para revelar el valor del campo de secreto. Copie los valores de los campos de clave, secreto e id de red, que podrá utilizar más tarde en la IU de Swagger.
 
-<!-- Removing this code snippet so people don't try to use these values
-```
-},
-   "x-api": {
-       "url": "https://ibmblockchain.bluemix.net",
-       "key": "PeerOrg1",
-       "network_id": "e1f5b3341b1d483bbaf829f601144023",
-       "secret": "71a329aabde9ff20de0aa4bfafd72a4466d78c87f637e7ff92c2534b5ce81cc0"
-   }
-```
--->
-
-**Figura 1** muestra la pantalla "API":
-
-![Pantalla de API](../images/API_screen_starter.png "Pantalla de API")
+La **Figura 1** muestra la pantalla "API":
+![Pantalla API](../images/API_screen_starter.png "Pantalla API")
 *Figura 1. API*
 
 Si utiliza el Plan inicial, puede cambiar de organización en el supervisor de red. Con el plan inicial, hay dos organizaciones configuradas de forma predeterminada. Cambiar de una organización a otra puede resultar útil para probar las API REST desde la perspectiva de cada organización. Para obtener las credenciales correspondientes a otra organización de la red, pulse su nombre en la esquina superior derecha de la consola del supervisor de red. En el menú que se abre, pulse la flecha desplegable que hay junto a la organización para ver todas las organizaciones. Seleccione la organización a la que desea cambiar y cuyas credenciales de red asociadas desea ver.
@@ -62,7 +50,7 @@ En la IU de Swagger, pulse el botón **Autorizar** y aparecerá la ventana emerg
 
 Con la autenticación Basic Auth, las credenciales que especifique en la ventana Autorizar se guardan después de que pulse los botones **Autorizar** y **Finalizado** y se pasan en cada llamada de la API REST.
 
-**Figura 3** muestra el proceso para autorizar las API de Swagger:
+La **Figura 3** muestra el proceso para autorizar las API de Swagger:
 
 ![Autorizar API](../images/swaggerUIAuthorize.gif "Autorizar API")  
 *Figura 3. Autorizar API*
@@ -70,13 +58,26 @@ Con la autenticación Basic Auth, las credenciales que especifique en la ventana
 
 ## Prueba de las API
 
-Pulse la API REST que desea ejecutar y pulse el botón **Pruébelo**. Especifique los parámetros necesarios y pulse **Ejecutar**. La llamada de API REST se ejecuta sobre la red.
+Pulse la API REST que desea ejecutar y pulse el botón **Pruébelo**.
 
-**Figura 4** muestra la "IU de Swagger":
+La **Figura 4** muestra el botón "Pruébelo" en la "IU de Swagger":
 
-![IU de Swagger](../images/swaggerUITryItOut.png "IU de Swagger")  
-*Figura 4. IU de Swagger*
+![Botón Pruébelo en la IU de Swagger](../images/swaggerUITryItOut.png "Botón Pruébelo en la IU de Swagger")  
+*Figura 4. Botón "Pruébelo" en la "IU de Swagger"*
 
+Después de pulsar el botón **Pruébelo**, puede especificar los parámetros necesarios para utilizar la API. Puede buscar `networkID` en las credenciales de red y buscar otros parámetros en el Supervisor de red. Después de especificar los parámetros, pulse **Ejecutar** para ejecutar la llamada de API REST en la red.
+
+La **Figura 5** muestra parámetros en la "IU de Swagger":
+
+![Parámetros de la IU de Swagger](../images/swaggerUIParams.png "Parámetros de la IU de Swagger")  
+*Figura 5. Especificar parámetros*  
+
+Después de pulsar **Ejecutar**, puede ver la respuesta de la llamada de API en la red. También puede ver un mandato CURL que puede invocar la API directamente desde la línea de mandatos.
+
+La **Figura 6** muestra el cuerpo de respuesta de la API, el URL y el mandato CURL:
+
+![Respuesta de API en la IU de Swagger](../images/swaggerUICurlResponse.png "Respuesta de API en la IU de Swagger")  
+*Figura 6. Respuesta de API*    
 
 ## Consejos para la resolución de problemas
 

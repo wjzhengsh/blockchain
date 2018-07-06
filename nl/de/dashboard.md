@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-05-15"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -60,7 +60,7 @@ Klicken Sie oben im linken Navigator im Network Monitor auf das Pfeilsymbol nebe
 
 Die Anzeige "Übersicht" zeigt Statusinformationen zu Ihren Blockchain-Ressourcen (einschließlich Anordnungsservice, Zertifizierungsstelle und Peers) in Echtzeit an. Jede Ressource wird unter vier unterschiedlichen Überschriften angezeigt: **Typ**, **Name**, **Status** und **Aktionen**. Wenn Ihr Netz gestartet wird, werden ein Anordnungsknoten, eine Zertifizierungsstelle (CA) und ein Peer ausgeführt. Die Zertifizierungsstelle ist für die Organisation spezifisch, während der Anordnungsknoten ein allgemeiner Endpunkt ist, der im gesamten Netz gemeinsam genutzt wird.
 
-**Abbildung 3** zeigt die Anzeige "Übersicht":
+In **Abbildung 3** ist die Anzeige "Übersicht" zu sehen:
 
 ![Anzeige 'Übersicht'](images/myresources_starter.png "Netzübersicht")
 *Abbildung 3. Netzübersicht*
@@ -79,9 +79,9 @@ Die Anzeige "Übersicht" zeigt Statusinformationen zu Ihren Blockchain-Ressource
 
 ### Peers hinzufügen
 {: #peers}
-  Netzmitglieder müssen Peers haben, um ihre Kopien des Netzhauptbuchs zu speichern und Chaincode zum Abfragen und Aktualisieren des Ledgers auszuführen. Wenn die Bewilligungsrichtlinie einen Peer als bewilligenden Peer definiert, gibt der Peer außerdem Bewilligungsergebnisse an Anwendungen zurück.
+  Netzmitglieder müssen Peers haben, um ihre Kopien des Ledgers zu speichern und Chaincode zum Abfragen und Aktualisieren des Ledgers auszuführen. Wenn die Bewilligungsrichtlinie einen Peer als bewilligenden Peer definiert, gibt der Peer außerdem Bewilligungsergebnisse an Anwendungen zurück.
 
-  Der Starter Plan erstellt standardmäßig einen Peer für jede der beiden Organisationen. Sie können weitere Peers für Ihre Organisationen Ihren Anforderungen entsprechend hinzufügen. In anderen Szenarios können auch mehr Peers erforderlich sein. Sie könnten mehrere Peers zum Beispiel zu Redundanzzwecken verwenden, um sie mit demselben Kanal zu verknüpfen. Jeder Peer verarbeitet die Transaktionen des Kanals und schreibt in seine jeweilige Kopie des Ledgers. Wenn einer der Peers ausfällt, kann der andere Peer (oder auch mehrere andere Peers) die Verarbeitung von Transaktionen und Anwendungsanforderungen fortsetzen. Sie können außerdem alle Anwendungsanforderungen symmetrisch auf die Peers verteilen oder Sie können verschiedene Peers für verschiedene Funktionen vorsehen. Sie können zum Beispiel einen Peer zum Abfragen des Ledgers und einen anderen Peer zur Verarbeitung von Bewilligungen für Ledgeraktualisierungen verwenden.
+  Der Starter Plan erstellt standardmäßig einen Peer für jede der beiden Organisationen. Sie können bei Bedarf weitere Peers für Ihre Organisationen hinzufügen. In anderen Szenarios kann eine höhere Anzahl an Peers erforderlich sein. Sie könnten z. B. mehrere Peers benötigen, um sie zu Redundanzzwecken mit demselben Kanal zu verknüpfen. Jeder Peer verarbeitet die Transaktionen des Kanals und schreibt in seine jeweilige Kopie des Ledgers. Wenn einer der Peers ausfällt, kann der andere Peer (oder auch mehrere andere Peers) die Verarbeitung von Transaktionen und Anwendungsanforderungen fortsetzen. Sie können außerdem alle Anwendungsanforderungen symmetrisch auf die Peers verteilen oder Sie können verschiedene Peers für verschiedene Funktionen vorsehen. Sie können zum Beispiel einen Peer zum Abfragen des Ledgers und einen anderen Peer zur Verarbeitung von Bewilligungen für Ledgeraktualisierungen verwenden.
 
   Klicken Sie auf die Schaltfläche **Peers hinzufügen** in der rechten oberen Ecke, um Ihrem Netz Peerknoten hinzuzufügen. Wählen Sie im Popup-Fenster "Peers hinzufügen" die Anzahl und Größe der Peerknoten aus, die Sie hinzufügen wollen.
 
@@ -138,7 +138,7 @@ Sie können auch einen vorhandenen Kanal auswählen, um genauere Details zu Kana
 
 In der Anzeige "Benachrichtigungen" können Sie anstehende Anforderungen bearbeiten und abgeschlossene Anforderungen anzeigen.
 
-**Abbildung 8** zeigt die Anzeige "Benachrichtigungen":
+In **Abbildung 8** ist die Anzeige "Benachrichtigungen" zu sehen:
 
 ![Benachrichtigungen](images/notifications_starter.png "Benachrichtigungen")
 *Abbildung 8. Benachrichtigungen*
@@ -158,9 +158,9 @@ Anstehende Anforderungen können gelöscht werden, indem Sie die davor befindlic
 ## APIs
 {: #apis}
 
-Zur Vereinfachung der Anwendungsentwicklung stellt {{site.data.keyword.blockchainfull_notm}} Platform APIs zur Verfügung, die Sie für Ihr Netz in einer Swagger-Benutzerschnittstelle (UI) testen können.
+{{site.data.keyword.blockchainfull_notm}} Platform stellt eine Reihe von REST-APIs in Swagger bereit, mit denen Sie die Knoten, Kanäle, Peers und Mitglieder Ihres Netzes verwalten können. Ihre Anwendungen können mithilfe dieser APIs wichtige Netzressourcen ohne den Network Monitor steuern. 
 
-**Abbildung 9** zeigt die Anzeige "APIs":
+In **Abbildung 9** ist die Anzeige "APIs" zu sehen:
 
 ![APIs](images/API_screen_starter.png "APIs")
 *Abbildung 9. APIs*
@@ -173,7 +173,7 @@ Klicken Sie auf den Link für die **Swagger-Benutzerschnittstelle (UI)**, um die
 
 Der Starter Plan integriert {{site.data.keyword.blockchainfull_notm}} Platform: Develop und stellt eine Entwicklungsumgebung mit Tools und Technologien bereit, die dem Industriestandard entsprechen. Sie können Ihr Unternehmensnetz in der Umgebung online oder lokal entwickeln. Wenn Sie ein Unternehmensnetz entwickelt haben, können Sie es wieder in Ihrem Starter Plan-Netz bereitstellen.
 
-**Abbildung 10** zeigt die Anzeige "Code entwickeln":
+In **Abbildung 10** ist die Anzeige "Code entwickeln" dargestellt:
 
 ![Code entwickeln](images/write_code_starter.png "Code entwickeln")
 *Abbildung 10. Code entwickeln*
@@ -186,7 +186,7 @@ Weitere Informationen zum Entwickeln von Unternehmensnetzen und zur Bereitstellu
 
 Bei Chaincode, der auch als "Smart Contract" bezeichnet wird, handelt es sich um Stücke von Software, die eine Gruppe von Funktionen zum Abfragen und Aktualisieren des Ledgers enthalten. Sie werden auf Peers installiert und auf einem Kanal instanziiert.
 
-**Abbildung 11** zeigt die Anzeige "Code installieren":
+In **Abbildung 11** ist die Anzeige "Code installieren" zu sehen:
 
 ![Code installieren](images/chaincode_install_overview_starter.png "Code installieren")
 *Abbildung 11. Chaincode*
@@ -197,14 +197,16 @@ Ein Chaincode wird zunächst im Dateisystem eines Peers installiert und anschlie
 ## Beispiele ausprobieren
 {: #samples}
 
-Beispielanwendungen helfen Ihnen, sich mit einem Blockchain-Netz und der Anwendungsentwicklung vertraut zu machen. Der Starter Plan bietet die Möglichkeit, Beispielanwendungen über den Network Monitor bereitzustellen und zu starten.
+Beispielanwendungen helfen Ihnen, sich mit Blockchain-Netzen und der Anwendungsentwicklung vertraut zu machen. <!--Starter Plan enables you to deploy and launch sample applications in the Network Monitor. --> Rufen Sie die Links für **Auf GitHub anzeigen** auf und informieren Sie sich, wie die Beispiele genutzt und in {{site.data.keyword.blockchainfull_notm}} Platform bereitgestellt werden können. Weitere Informationen zur Entwicklung und Bereitstellung eigener Beispiele finden Sie unter [Beispielanwendungen bereitstellen](howto/prebuilt_samples.html). 
 
-**Abbildung 12** zeigt die Anzeige "Beispiele ausprobieren":
+In **Abbildung 12** ist die Anzeige "Beispiele ausprobieren" dargestellt:
 
 ![Beispiele ausprobieren](images/sample_overview_starter.png "Beispiel ausprobieren")
 *Abbildung 12. Beispiele*
 
-Die Beispielbereitstellung nutzt den [DevOps Toolchain-Service ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://console.bluemix.net/devops/toolchains), um Ihren Prozess der Quellcodeverwaltung und Zustellungspipeline zu automatisieren und den Chaincode zu aktivieren. Wählen Sie eine Beispielanwendung aus und klicken Sie auf **Über Toolchain bereitstellen**. Weitere Informationen finden Sie unter [Beispielanwendungen bereitstellen](howto/prebuilt_samples.html).
+<!--
+The sample deployment leverages the [DevOps Toolchain service ![External link icon](images/external_link.svg "External link icon")](https://console.bluemix.net/devops/toolchains) to automate your process of source control, delivery pipeline, and chaincode enablement. Choose a sample application, and click the **Deploy via Toolchain**. For more information, see [Deploying sample applications](howto/prebuilt_samples.html).
+-->
 
 
 ## Hilfe anfordern
@@ -245,7 +247,7 @@ Wenn Sie ein Blockchain-Netz mit mehreren Organisationen in Ihrem eigenen Netz s
 
 Klicken Sie auf die rechte obere Ecke der Benutzerschnittstelle, in der Ihr Name angezeigt werden müsste. Wählen Sie im Dropdown-Menü unter **Organisation wechseln** (SWITCH ORGANIZATION) den Namen der Organisation aus, zu der Sie wechseln möchten. Organisation A ist standardmäßig ausgewählt. Nach der Auswahl einer Organisation, zu der gewechselt werden soll, wird die Anzeige des Network Monitor automatisch aktualisiert, sodass das Netz aus der Perspektive der ausgewählten Organisation angezeigt wird.
 
-**Abbildung 16** zeigt die Funktion "Netz zurücksetzen":
+In **Abbildung 16** ist die Funktion "Organisationen wechseln" zu sehen: 
 
 ![Organisationen wechseln](images/switch_orgs_starter.gif "Organisationen wechseln")   
 *Abbildung 16. Organisationen wechseln*
@@ -263,7 +265,7 @@ Klicken Sie auf die rechte obere Ecke, um das Dropdown-Menü zu öffnen, und dan
 
 Standardmäßig ist für das Web-Inaktivitätszeitlimit der Wert **Aus** festgelegt. Wenn Sie für das Web-Inaktivitätszeitlimit den Wert **Ein** festlegen, werden Mitglieder des Netzes nach 10 Minuten Inaktivität automatisch abgemeldet. Wenn der Web-Inaktivitätszeitgeber das Zeitlimit von 10 Minuten erreicht, beendet die Web-Inaktivitätszeitlimitfunktion die inaktiven Websitzungen, um die Sicherheit der Konten der Netzmitglieder zu gewährleisten. Wenn Sie auf einen Link klicken oder den Network Monitor aktualisieren, wird der Web-Inaktivitätszeitgeber zurückgesetzt. Vor dem Erreichen des Limits von 10 Minuten kann die Websitzung auch durch das Schließen des Browserfensters oder der Browserregisterkarte beendet werden.
 
-**Abbildung 17** zeigt das Fenster "Netzvorgaben":
+In **Abbildung 17** ist das Fenster "Netzvorgaben" dargestellt:
 
 ![Netzvorgaben](images/network_preferences.gif "Netzvorgaben")
 *Abbildung 17. Netzvorgaben*
@@ -278,7 +280,7 @@ Der Starter Plan bietet die Möglichkeit, die Netzkonfiguration zu bearbeiten, o
 
 Klicken Sie in der rechten oberen Ecke, um das Dropdown-Menü zu öffnen. Klicken Sie im Menü auf die Schaltfläche **Netz zurücksetzen**. Wenn Sie bereit sind, Ihr Netz zurückzusetzen, klicken Sie auf **OK**, um fortzufahren. Die Anzeige Ihres Network Monitor wird aktualisiert, um die neuen Einstellungen wiederzugeben.
 
-**Abbildung 18** zeigt die Funktion "Netz zurücksetzen":
+In **Abbildung 18** ist die Funktion "Netz zurücksetzen" zu sehen:
 
 ![Netz zurücksetzen](images/reset_network.png "Netz zurücksetzen")
 *Abbildung 18. Netz zurücksetzen*

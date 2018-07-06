@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-5-15"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -29,11 +29,11 @@ Leia [Sobre o Starter Plan](./starter_plan.html) e [Introdução ao Starter Plan
 
 1. Na tela de visão geral do Starter Plan, clique em **Perfil de conexão** e, em seguida, faça download. Renomeie esse arquivo para 'connection-profile.json'.
 
-2. Mova esse arquivo para estar no mesmo diretório que o seu arquivo .bna.
+2. Mova esse arquivo para estar no mesmo diretório que o seu arquivo `.bna`.
 
 3. Dentro do perfil de conexão, vá até o fim até você ver 'registrar'. Dentro de 'registrar', sob 'enrollId' há uma propriedade **enrollSecret**. Recupere o segredo e salve uma cópia dele.
 
-![D8KBag](https://i.makeagif.com/media/4-12-2018/D8KBag.gif)
+    ![D8KBag](https://i.makeagif.com/media/4-12-2018/D8KBag.gif)
 
 
 ## Etapa dois: Criando um cartão de autoridade de certificação
@@ -42,17 +42,28 @@ O segredo recuperado na etapa anterior será usado para criar uma placa de rede 
 
 1. Usando o **enrollSecret** observado da etapa um, execute o comando a seguir para criar o cartão de rede de negócios de autoridade de certificação:
 
-        composer card create -f ca.card -p connection-profile.json -u admin -s ${enrollSecret}
+   ```
+   composer card create -f ca.card -p connection-profile.json -u admin -s enrollSecret
+   ```
+   {:pre}
+
+Substitua `enrollSecret` no comando anterior pelo segredo do administrador recuperado do perfil de conexão.
 
 2. Importe o cartão usando o comando a seguir:
 
-        composer card import -f ca.card -c ca
+   ```
+   composer card import -f ca.card -c ca
+   ```
+   {:codeblock}
 
 3. Agora que o cartão foi importado, ele poderá ser usado para trocar o **enrollSecret** por certificados válidos da autoridade de certificação. Execute o comando a seguir para solicitar certificados da autoridade de certificação:
 
-        composer identity request --card ca --path ./credentials -u admin -s ${enrollSecret}
+   ```
+   composer identity request --card ca --path ./credentials -u admin -s enrollSecret
+   ```
+   {:codeblock}
 
-O comando `composer identity request` cria um diretório `credentials` que contém arquivos de certificado `.pem`.
+Substitua `enrollSecret` no comando anterior pelo segredo do administrador recuperado do perfil de conexão. O comando `composer identity request` cria um diretório `credentials` que contém arquivos de certificado `.pem`.
 
 ## Etapa três: Incluindo os certificados na instância do Starter Plan
 
@@ -64,7 +75,7 @@ Os certificados devem ser incluídos na instância do Starter Plan. Por conveni�
 
 2. Em seguida, os certificados devem ser sincronizados no canal. Clique na guia **Canais**, em seguida, no botão **Ações** e, em seguida, em **Sincronizar certificado** e **Enviar**.
 
-![E-sVV5](https://i.makeagif.com/media/4-12-2018/E-sVV5.gif)
+    ![E-sVV5](https://i.makeagif.com/media/4-12-2018/E-sVV5.gif)
 
 ## Etapa quatro: Criando uma placa de rede de negócios do administrador
 
@@ -72,13 +83,19 @@ Agora que os certificados corretos foram sincronizados com os peers, é possíve
 
 1. Crie um cartão do administrador com o administrador do canal e funções administrativas de peer usando o comando a seguir:
 
-        composer card create -f adminCard.card -p connection-profile.json -u admin -c ./credentials/admin-pub.pem -k ./credentials/admin-priv.pem --role PeerAdmin --role ChannelAdmin
+   ```
+   composer card create -f adminCard.card -p connection-profile.json -u admin -c ./credentials/admin-pub.pem -k ./credentials/admin-priv.pem --role PeerAdmin --role ChannelAdmin
+   ```
+   {:codeblock}
 
-    Este cartão será usado para implementar uma rede de negócios para o Starter Plan.
+   Este cartão será usado para implementar uma rede de negócios para o Starter Plan.
 
 2. Importe o cartão criado na etapa anterior usando o comando a seguir:
 
-        composer card import -f adminCard.card -c adminCard
+   ```
+   composer card import -f adminCard.card -c adminCard
+   ```
+   {:codeblock}
 
 ## Etapa cinco: Instalando e iniciando a rede de negócios
 
@@ -86,23 +103,35 @@ Em seguida, o cartão criado na etapa anterior pode ser usado para instalar e in
 
 1. Instale o tempo de execução do Hyperledger Composer com o comando a seguir:
 
-        composer network install -c adminCard -a vehicle-manufacture-network.bna
+   ```
+   composer network install -c adminCard -a vehicle-manufacture-network.bna
+   ```
+   {:codeblock}
 
-    Observe o número da versão de rede de negócios que é retornado quando você executa esse comando. Ele será necessário na próxima etapa.
+   Observe o número da versão de rede de negócios que é retornado quando você executa esse comando. Ele será necessário na próxima etapa.
 
 2. Inicie a rede de negócios com o comando abaixo. Se você receber um erro, espere um minuto e tente novamente. Use o número da versão da última etapa depois da opção `-V`.
 
-        composer network start -c adminCard -n vehicle-manufacture-network -V 0.0.1 -A admin -C ./credentials/admin-pub.pem -f delete_me.card
+    ```
+    composer network start -c adminCard -n vehicle-manufacture-network -V 0.0.1 -A admin -C ./credentials/admin-pub.pem -f delete_me.card
+    ```
+    {:codeblock}
 
 3. Exclua a placa de rede de negócios chamada `delete_me.card`.
 
 4. Crie uma nova placa de rede de negócios e referencie os certificados que foram recuperados anteriormente com o comando a seguir:
 
-        composer card create -n vehicle-manufacture-network -p connection-profile.json -u admin -c ./credentials/admin-pub.pem -k ./credentials/admin-priv.pem
+   ```
+   composer card create -n vehicle-manufacture-network -p connection-profile.json -u admin -c ./credentials/admin-pub.pem -k ./credentials/admin-priv.pem
+   ```
+   {:codeblock}
 
 5. Importe a placa de rede de negócios com o comando a seguir:
 
-        composer card import -f ./admin@vehicle-manufacture-network.card
+    ```
+    composer card import -f ./admin@vehicle-manufacture-network.card
+    ```
+    {:codeblock}
 
 A rede de negócios agora está implementada na instância do Starter Plan.
 
@@ -110,7 +139,10 @@ A rede de negócios agora está implementada na instância do Starter Plan.
 
 1. Execute o comando a seguir para executar ping na rede de negócios:
 
-        Composer network ping -c admin@vehicle-manufacture-rede
+   ```
+   Composer network ping -c admin@vehicle-manufacture-rede
+   ```
+   {:codeblock}
 
 Para visualizar os logs de chaincode, clique em **Canais** e, em seguida, selecione o seu canal. Clique na seta suspensa para visualizar os logs ou no símbolo Ações para visualizar em mais detalhes.
 

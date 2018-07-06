@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-03-16"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -16,7 +16,7 @@ lastupdated: "2018-03-16"
 # Governe a rede do Enterprise Plan
 {: #getting-started-with-blockchain}
 
-O {{site.data.keyword.blockchainfull}} Platform Enterprise Plan fornece uma rede de blockchain com alta segurança, integridade, escalabilidade e desempenho. É possível provisionar rapidamente uma rede totalmente funcional e usar o Monitor de rede, que é um painel da GUI, para executar imediatamente o [chaincode](glossary.html#chaincode) e aplicativos sem a necessidade de projetar e configurar uma rede para zero.
+O {{site.data.keyword.blockchainfull}} Platform Enterprise Plan fornece uma rede de blockchain com alta segurança, integridade, escalabilidade e desempenho. É possível provisionar rapidamente uma rede totalmente funcional e usar o Monitor de rede, que é um painel da GUI, para executar imediatamente o [chaincode](glossary.html#chaincode) e aplicativos sem a necessidade de projetar e configurar uma rede do zero.
 {:shortdesc}
 
 **Nota**: o {{site.data.keyword.blockchainfull_notm}} Platform Enterprise Plan fornece um ambiente de produção. Se você precisar de um ambiente de desenvolvimento e teste, veja [Sobre o Starter Plan](starter_plan.html).
@@ -94,8 +94,7 @@ Você estará na página da instância de serviço logo após criar uma instânc
 Recupere as suas credenciais de serviço com as etapas a seguir:
 1. Na página da instância de serviço, clique em **Credenciais de serviço** no navegador esquerdo para mostrar a tela "Credenciais de serviço".
 2. Clique em **Nova credencial** na tela "Credenciais de serviço".
-3. Na tela "Incluir nova credencial", dê à credencial um nome e clique em **Incluir**. A nova credencial é incluída na tabela. É possível clicar em **Visualizar credenciais** sob a coluna "AÇÕES" para visualizar os detalhes da credencial. Essa credencial contém a chave API e o segredo, que você pode usar para autorizar APIs.
-    Se você desejar ver o perfil de conexão de sua rede, insira **{"legacy": true}** como parâmetro de configuração sequencial ao criar novas credenciais. O perfil de conexão contém terminais de API para os seus recursos de rede, que podem ser usados em suas APIs e seus aplicativos.
+3. Na tela "Incluir nova credencial", dê à credencial um nome e insira **{"type": "service_instance_token"}** no campo "Incluir parâmetro de configuração sequencial". Clique em **Incluir** e a nova credencial será incluída na tabela. É possível clicar em **Visualizar credenciais** sob a coluna "AÇÕES" para visualizar os detalhes da credencial. Essa credencial contém a chave API e o segredo, que você pode usar para autorizar APIs.
 
 ### Recuperando no Monitor de rede
 É possível localizar as credenciais de rede na tela "APIs" em seu Monitor de rede. Para obter mais informações sobre como usar as APIs, veja [Experimentando as APIs com o Swagger](apis.html).

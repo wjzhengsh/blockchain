@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-5-15"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -46,8 +46,10 @@ lastupdated: "2018-5-15"
 1. 为项目创建新目录并在命令行上浏览至此目录。
 
 2. 从新目录，使用 Yeoman 创建框架业务网络。以下命令需要业务网络名称、描述、作者姓名、作者电子邮件地址、许可证选择和名称空间：
-
-        yo hyperledger-composer:businessnetwork
+    ```
+    yo hyperledger-composer:businessnetwork
+    ```
+    {:codeblock}
 
 3. 输入 `tutorial-network` 作为网络名称，然后输入描述、作者姓名和作者电子邮件的所需信息。
 
@@ -67,6 +69,7 @@ lastupdated: "2018-5-15"
 
 2. 将内容替换为以下信息；
 
+    ```
         /**
          * 我的商品交易网络
          */
@@ -87,6 +90,8 @@ lastupdated: "2018-5-15"
             --> Commodity commodity
             --> Trader newOwner
         }
+    ```
+    {:codeblock}
 
 3. 保存对 `org.acme.biznet.cto` 文件的更改。
 
@@ -101,6 +106,7 @@ lastupdated: "2018-5-15"
 
 2. 将内容替换为以下信息；
 
+    ```
         /**
          * 跟踪商品从一个交易商到另一个交易商的交易
          * @param {org.acme.biznet.Trade} trade - 要处理的交易
@@ -113,6 +119,8 @@ lastupdated: "2018-5-15"
                     return assetRegistry.update(trade.commodity);
                 });
         }
+    ```
+    {:codeblock}
 
 3. 保存对 `logic.js` 的更改。
 
@@ -126,6 +134,7 @@ lastupdated: "2018-5-15"
 
 2. 将以下访问控制规则添加到 `permissions.acl`：
 
+    ```
         /**
          * tutorial-network 的访问控制规则
          */
@@ -144,6 +153,8 @@ lastupdated: "2018-5-15"
           resource: "org.hyperledger.composer.system.**"
           action: ALLOW
         }
+    ```
+    {:codeblock}
 
 3. 保存对 `permissions.acl` 的更改。
 
@@ -155,7 +166,10 @@ lastupdated: "2018-5-15"
 
 2. 在 `tutorial-network` 目录中，运行以下命令：
 
-        composer archive create -t dir -n .
+    ```
+    composer archive create -t dir -n .
+    ```
+    {:codeblock}
 
 运行该命令后，将在 `tutorial-network` 目录中创建业务网络归档文件 (`tutorial-network@0.0.1.bna`)。
 

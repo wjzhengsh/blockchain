@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-05-15"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -30,19 +30,29 @@ lastupdated: "2018-05-15"
 
 1. 创建用于存储连接详细信息的目录，例如：
 
-        /Users/myUserId/.composer-connection-profiles/bmx-hlfv1
+    ```
+    /Users/myUserId/.composer-connection-profiles/bmx-hlfv1
+    ```
+    {:codeblock}
 
     每个连接概要文件都应该包含 `connection.json` 文件。在 `.composer-connection-profiles` 下创建一个新目录，在本例中为 `bmx-hlfv1`。这将是您在使用 Hyperledger Composer 和 {{site.data.keyword.blockchainfull_notm}} Platform 时要使用的概要文件的名称。
 
-        mkdir -p ~/.composer-connection-profiles/bmx-hlfv1
-        cd ~/.composer-connection-profiles/bmx-hlfv1
+    ```
+    mkdir -p ~/.composer-connection-profiles/bmx-hlfv1
+    cd ~/.composer-connection-profiles/bmx-hlfv1
+    ```
+    {:codeblock}
 
 2. 现在，您应该具有以下目录结构：
 
-        /Users/myUserId/.composer-connection-profiles/bmx-hlfv1
+    ```
+    /Users/myUserId/.composer-connection-profiles/bmx-hlfv1
+    ```
+    {:codeblock}
 
     在新创建的目录中创建名为 `connection.json` 的文件。可以将以下模板用于 `connection.json` 文件：
 
+    ```
         {
             "name": "bmx-hlfv1",
             "description": "A description for a V1 Profile",
@@ -68,6 +78,8 @@ lastupdated: "2018-05-15"
             "globalCert": "-----BEGIN CERTIFICATE-----\r\n...LotsOfStuff\r\n-----END CERTIFICATE-----\r\n-----BEGIN CERTIFICATE-----\r\nMorestuff\r\n-----END CERTIFICATE-----\r\n",
             "timeout": 300
         }
+    ```
+    {:codeblock}
 
     您将使用通过 {{site.data.keyword.blockchainfull_notm}} Platform 仪表板提供的属性来填充新创建的 `connection.json` 文件。在仪表板上，选择**概述**，然后选择**连接概要文件**按钮以显示通道成员的端点和证书信息。
 
@@ -77,7 +89,10 @@ lastupdated: "2018-05-15"
 
     将模板中的排序者 URL 值替换为“连接概要文件”中的相关信息，格式如下：
 
-        “url”: “grpcs://abca.4.secure.blockchain.ibm.com:12345”
+    ```
+    "url": "grpcs://abca.4.secure.blockchain.ibm.com:12345"
+    ```
+    {:codeblock}
 
 ## 步骤 3：添加认证中心信息
 
@@ -87,16 +102,22 @@ lastupdated: "2018-05-15"
 
 1. 必须设置每个同级的 **requestURL** 和 **eventURL**。将 **url** 属性替换为在“连接概要文件”中找到的 **url** 值。将 **eventURL** 属性替换为在“连接概要文件”中找到的 **eventUrl**。进行更改后，`connection.json` 的 peers 部分应该具有以下格式：
 
+    ```
         "peers": [
           {
               "requestURL": "grpcs://abca.4.secure.blockchain.ibm.com:12345",
               "eventURL": "grpcs://abca.4.secure.blockchain.ibm.com:12345"
+    ```
+    {:codeblock}
 
 ## 步骤 5：添加 keyValStore 信息
 
 1. 将 **keyValStore** 属性设置为指向相应的目录。创建要用于 **keyValStore** 的目录。例如，在主目录下创建名为 `.composer-credentials-mychannel` 的新目录。确保 **keyValStore** 属性指向新创建的目录，格式如下：
 
-        "keyValStore": "/Users/myUserId/.composer-credentials-mychannel",
+    ```
+    "keyValStore": "/Users/myUserId/.composer-credentials-mychannel",
+    ```
+    {:codeblock}
 
 ## 步骤 6：添加通道信息
 
@@ -109,7 +130,10 @@ lastupdated: "2018-05-15"
 ## 步骤 8：添加 globalCert
 1. {{site.data.keyword.blockchainfull_notm}} Platform 对排序者和同级使用一个公共 TLS 证书。对于每个排序者和同级，都有 **tlsCACerts** 属性，这些属性都包含相同的证书。将 `connection.json` 文件中的哑元值替换为 **tlsCACerts** 值。该值应该采用以下格式：
 
-        "globalCert": "-----BEGIN CERTIFICATE-----\r\.......
+    ```
+    "globalCert": "-----BEGIN CERTIFICATE-----\r\.......
+    ```
+    {:codeblock}
 
 ## 步骤 9：准备同级
 
@@ -117,17 +141,23 @@ lastupdated: "2018-05-15"
 
 在“连接概要文件”文档中，**certificateAuthorities** 下是 **registrar** 属性，包含 **enrollId** 和 **enrollSecret** 属性，格式如下：
 
-        "registrar": [
+ ```
+"registrar": [
             {
                 "affiliation": "org1",
                 "enrollId": "admin",
                 "enrollSecret": "PA55W0RD12"
             }
         ],
+ ```
+ {:codeblock}
 
 1. 使用以下命令来请求证书：
 
-        composer identity request -p bmx-hlfv1 -i admin -s PA55W0RD12
+    ```
+    composer identity request -p bmx-hlfv1 -i admin -s PA55W0RD12
+    ```
+    {:codeblock}
 
     这会将三个文件下载到主目录下的 `.identityCredentials` 目录中。相关的文件基于 **enrollId**。所以在上面的示例中会有两个文件，分别名为 **admin-pub.pem** 和 **admin-priv.pem**。
 
@@ -163,7 +193,10 @@ lastupdated: "2018-05-15"
 
 1. 要创建新身份，请运行以下命令：
 
-        composer identity import -p bmx-hlfv1 -u admin -c ~/.identityCredentials/admin-pub.pem -k ~/.identityCredentials/admin-priv.pem
+    ```
+    composer identity import -p bmx-hlfv1 -u admin -c ~/.identityCredentials/admin-pub.pem -k ~/.identityCredentials/admin-priv.pem
+    ```
+    {:codeblock}
 
     其中，`bmx-hlfv1` 是先前创建的概要文件的名称。现在我们已准备好将 `.bna` 文件部署到 {{site.data.keyword.blockchainfull_notm}} Platform。
 
@@ -174,4 +207,7 @@ lastupdated: "2018-05-15"
 
 1. 使用上一步中创建的身份，通过以下命令部署业务网络：
 
-        composer network deploy -a myNetwork.bna -p bmx-hlfv1 -i admin -s anyString
+   ```
+   composer network deploy -a myNetwork.bna -p bmx-hlfv1 -i admin -s anyString
+   ```
+   {:codeblock}

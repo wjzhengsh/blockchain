@@ -50,7 +50,7 @@ Cada miembro de la red debe tener una cuenta de {{site.data.keyword.cloud_notm}}
          - **Roles del espacio**: desarrollador.
       3. Pulse **Invitar a usuarios**.
    3. Repita los pasos para invitar a usuarios y asignar acceso de usuario a cada usuario.
-3. En el panel de control de la plataforma {{site.data.keyword.blockchainfull_notm}}, el pagador invita a los usuarios a la red de blockchain. Para obtener más información sobre cómo invitar a miembros de la red, consulte [Miembros](https://console.bluemix.net/docs/services/blockchain/v10_dashboard.html#members).
+3. En el panel de control de la plataforma {{site.data.keyword.blockchainfull_notm}}, el pagador invita a los usuarios a la red blockchain. Para obtener más información sobre cómo invitar a miembros de la red, consulte [Miembros](https://console.bluemix.net/docs/services/blockchain/v10_dashboard.html#members).
 4. Luego cada usuario recibe una notificación por correo electrónico que contiene una invitación a unirse a la red.  El usuario puede seguir los pasos siguientes para unirse a la red.
    1. Pulse el botón "Continuar" en la notificación por correo electrónico, lo que le llevará a la página del servicio blockchain de {{site.data.keyword.cloud_notm}}.
    2. Asegúrese de utilizar la organización y el espacio de {{site.data.keyword.cloud_notm}} correctos.

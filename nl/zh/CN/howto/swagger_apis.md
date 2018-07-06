@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-05-15"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -14,7 +14,8 @@ lastupdated: "2018-05-15"
 
 # 使用 Swagger API 与网络进行交互
 
-{{site.data.keyword.blockchainfull}} Platform 公开了多个 REST API，以协助应用程序开发。您可以使用 Swagger UI 对区块链网络进行测试。
+{{site.data.keyword.blockchainfull_notm}} Platform 公开了使用 Swagger 生成的若干 REST API，可用于管理网络中的节点、通道、同级和成员。应用程序可以使用这些 API 来控制重要的网络资源，而无需使用“网络监视器”。
+
 {:shortdesc}
 
 开始之前，需要在 {{site.data.keyword.Bluemix_notm}} 上创建 [{{site.data.keyword.blockchain}} Platform 服务实例 ![外部链接图标](../images/external_link.svg "外部链接图标")](https://console.bluemix.net/catalog/services/blockchain)，然后创建或加入入门套餐<!--or Enterprise Plan -->区块链网络。
@@ -26,20 +27,7 @@ lastupdated: "2018-05-15"
 
 进入区块链网络的“网络监视器”，然后在左侧导航器中打开“API”屏幕。您可以查看 REST API 的网络凭证。稍后将使用此处显示的“key”和“secret”的值对 API 进行授权，然后将“network_id”作为参数运行 API。单击**显示私钥**可显示 secret 字段的值。复制 key、secret 和 network_id 字段的值，稍后在 Swagger UI 中可以使用这些值。
 
-<!-- Removing this code snippet so people don't try to use these values
-```
-},
-   "x-api": {
-       "url": "https://ibmblockchain.bluemix.net",
-       "key": "PeerOrg1",
-       "network_id": "e1f5b3341b1d483bbaf829f601144023",
-       "secret": "71a329aabde9ff20de0aa4bfafd72a4466d78c87f637e7ff92c2534b5ce81cc0"
-   }
-```
--->
-
 **图 1** 显示“API”屏幕：
-
 ![API 屏幕](../images/API_screen_starter.png "API 屏幕")
 *图 1. API*
 
@@ -70,13 +58,26 @@ You can also open the Swagger UI with the URL in the connection profiles. For ex
 
 ## 试用 API
 
-单击要运行的 REST API，然后单击**试用**按钮。输入必需参数，然后单击**执行**。REST API 调用会针对您的网络运行。
+单击要运行的 REST API，然后单击**试用**按钮。
 
-**图 4** 显示“Swagger UI”：
+**图 4**显示“Swagger UI”中的“试用”按钮：
 
-![Swagger UI](../images/swaggerUITryItOut.png "Swagger UI")  
-*图 4. Swagger UI*
+![Swagger UI 中的“试用”按钮](../images/swaggerUITryItOut.png "Swagger UI 中的“试用”按钮")  
+*图 4.“Swagger UI”中的“试用”按钮*
 
+单击**试用**按钮后，可以输入必需参数来使用 API。可以在网络凭证中找到 `networkID`，并可在“网络监视器”中找到其他参数。输入参数后，单击**执行**以针对网络运行 REST API 调用。
+
+**图 5** 显示“Swagger UI”中的参数：
+
+![Swagger UI 中的参数](../images/swaggerUIParams.png "Swagger UI 中的参数")  
+*图 5. 输入参数*  
+
+单击**执行**后，可以看到针对网络发出的 API 调用的响应。还可以看到可直接从命令行调用该 API 的 CURL 命令。
+
+**图 6** 显示 API 响应主体、URL 和 CURL 命令：
+
+![Swagger UI 中的 API 响应](../images/swaggerUICurlResponse.png "Swagger UI 中的 API 响应")  
+*图 6. API 响应*    
 
 ## 故障诊断技巧
 

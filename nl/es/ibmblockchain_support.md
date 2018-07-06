@@ -41,7 +41,7 @@ Si no consigue solucionar su problema con ninguno de los métodos anteriores, si
     - Seleccione **Blockchain** en el campo **Servicio afectado**.
     - Seleccione **Servicios** en el campo **Categoría**.
     - En el campo **Proporcionar la organización** y **Proporcionar el espacio**, especifique la organización y el espacio de Cloud Foundry donde ha creado la instancia de servicio de blockchain.  Encontrará esta información en la consola de {{site.data.keyword.cloud_notm}}.
-    - En el campo **Proporcionar el recurso**, escriba el ID de la red de blockchain. Para encontrar el ID de red, pulse el botón **Perfil de conexión** en la parte superior derecha de la pantalla **Visión general** del supervisor de red.
+    - En el campo **Proporcionar el recurso**, escriba el ID de la red blockchain. Para encontrar el ID de red, pulse el botón **Perfil de conexión** en la parte superior derecha de la pantalla **Visión general** del supervisor de red.
     - En el campo **Resumen del caso**, escriba un breve resumen del problema.
     - En el campo **Descripción del caso**, describa el problema de la forma más detallada posible.  Por ejemplo, el centro de datos donde se ha creado la red y la secuencia de pasos que han conducido al problema.  Cuantos más detalles proporcione, más posibilidades habrá de que el problema se resuelva rápidamente.
 4. Pulse el botón **Enviar**.  Recibirá una notificación por correo electrónico en pocos minutos sobre el caso.

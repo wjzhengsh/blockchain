@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-5-15"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -46,8 +46,10 @@ lastupdated: "2018-5-15"
 1. 프로젝트에 대한 새 디렉토리를 작성하고 명령행에서 해당 디렉토리로 이동하십시오.
 
 2. 새 디렉토리에서 Yeoman을 사용하여 스켈레톤 비즈니스 네트워크를 작성하십시오. 다음 명령에는 비즈니스 네트워크 이름, 설명, 작성자 이름, 작성자 이메일 주소, 라이센스 선택사항 및 네임스페이스가 필요합니다.
-
-        yo hyperledger-composer:businessnetwork
+    ```
+yo hyperledger-composer:businessnetwork
+    ```
+    {:codeblock}
 
 3. 네트워크 이름에 대해 `tutorial-network`를 입력하고 설명, 작성자 이름 및 작성자 이메일에 대해 원하는 정보를 입력하십시오.
 
@@ -67,6 +69,7 @@ lastupdated: "2018-5-15"
 
 2. 컨텐츠를 다음 정보로 바꾸십시오.
 
+    ```
         /**
          * My commodity trading network
          */
@@ -87,6 +90,8 @@ lastupdated: "2018-5-15"
             --> Commodity commodity
             --> Trader newOwner
         }
+    ```
+    {:codeblock}
 
 3. `org.acme.biznet.cto` 파일에 변경사항을 저장하십시오.
 
@@ -101,6 +106,7 @@ lastupdated: "2018-5-15"
 
 2. 컨텐츠를 다음 정보로 바꾸십시오.
 
+    ```
         /**
          * Track the trade of a commodity from one trader to another
          * @param {org.acme.biznet.Trade} trade - the trade to be processed
@@ -113,6 +119,8 @@ lastupdated: "2018-5-15"
                     return assetRegistry.update(trade.commodity);
                 });
         }
+    ```
+    {:codeblock}
 
 3. `logic.js`에 변경사항을 저장하십시오.
 
@@ -126,6 +134,7 @@ lastupdated: "2018-5-15"
 
 2. 다음 액세스 제어 규칙을 `permissions.acl`에 추가하십시오.
 
+    ```
         /**
          * Access control rules for tutorial-network
          */
@@ -144,6 +153,8 @@ lastupdated: "2018-5-15"
           resource: "org.hyperledger.composer.system.**"
           action: ALLOW
         }
+    ```
+    {:codeblock}
 
 3. `permissions.acl`에 변경사항을 저장하십시오.
 
@@ -155,7 +166,10 @@ lastupdated: "2018-5-15"
 
 2. `tutorial-network` 디렉토리에서 다음 명령을 실행하십시오.
 
-        composer archive create -t dir -n .
+    ```
+    composer archive create -t dir -n .
+    ```
+    {:codeblock}
 
 명령을 실행한 후 비즈니스 네트워크 아카이브 파일(`tutorial-network@0.0.1.bna`)이 `tutorial-network` 디렉토리에 작성됩니다.
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-5-15"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -46,8 +46,10 @@ Il modo più facile per iniziare consiste nell'utilizzare il generatore Yeoman p
 1. Crea una nuova directory del tuo progetto e passa ad essa nella riga di comando.
 
 2. Dalla tua nuova directory, utilizza Yeoman per creare una rete di business di base. Il seguente comando richiede un nome di rete di business, una descrizione, un nome dell'autore, l'indirizzo email dell'autore, la selezione della licenza e lo spazio dei nomi:
-
-        yo hyperledger-composer:businessnetwork
+    ```
+    yo hyperledger-composer:businessnetwork
+    ```
+    {:codeblock}
 
 3. Immetti `tutorial-network` per il nome della rete e le informazioni desiderate per la descrizione, il nome dell'autore e l'indirizzo email dell'autore.
 
@@ -67,6 +69,7 @@ Il primo documento da aggiornare è il file modello (`.cto`). Il file modello vi
 
 2. Sostituisci il contenuto con queste informazioni:
 
+    ```
         /**
          * My commodity trading network
          */
@@ -87,6 +90,8 @@ Il primo documento da aggiornare è il file modello (`.cto`). Il file modello vi
             --> Commodity commodity
             --> Trader newOwner
         }
+    ```
+    {:codeblock}
 
 3. Salva le tue modifiche al file `org.acme.biznet.cto`.
 
@@ -101,6 +106,7 @@ La funzione prevista della transazione `Trade` è semplicemente quella di accett
 
 2. Sostituisci il contenuto con queste informazioni:
 
+    ```
         /**
          * Track the trade of a commodity from one trader to another
          * @param {org.acme.biznet.Trade} trade - the trade to be processed
@@ -113,12 +119,14 @@ La funzione prevista della transazione `Trade` è semplicemente quella di accett
                     return assetRegistry.update(trade.commodity);
                 });
         }
+    ```
+    {:codeblock}
 
 3. Salvare le tue modifiche a `logic.js`.
 
 ### Aggiunta del controllo accessi
 
-Il controllo accessi è una parte chiave di una rete di business. Tutte le reti di business devono avere un file di controllo accessi denominato `permissions.acl`. Ogni volta che un processo viene richiamato in una rete di business distribuita, l'elenco del controllo dell'accesso viene verificato per garantire che il richiamo dell'identità o del partecipante possa richiamare l'operazione. 
+Il controllo accessi è una parte chiave di una rete di business. Tutte le reti di business devono avere un file di controllo accessi denominato `permissions.acl`. Ogni volta che un processo viene richiamato in una rete di business distribuita, l'elenco del controllo dell'accesso viene verificato per garantire che il richiamo dell'identità o del partecipante possa richiamare l'operazione.
 
 Ai fini di questa esercitazione, imposta un semplice elenco di controllo accessi (ACL, Access Control List). Nota che esso non deve essere distribuito a un ambiente di produzione.
 
@@ -126,6 +134,7 @@ Ai fini di questa esercitazione, imposta un semplice elenco di controllo accessi
 
 2. Aggiungi le seguenti regole di controllo accessi a `permissions.acl`:
 
+    ```
         /**
          * Access control rules for tutorial-network
          */
@@ -144,6 +153,8 @@ Ai fini di questa esercitazione, imposta un semplice elenco di controllo accessi
           resource: "org.hyperledger.composer.system.**"
           action: ALLOW
         }
+    ```
+    {:codeblock}
 
 3. Salvare le tue modifiche a `permissions.acl`.
 
@@ -155,7 +166,10 @@ Dopo che la rete di business è stata definita, deve essere impacchettata in un 
 
 2. Dalla directory `tutorial-network`, esegui questo comando:
 
-        composer archive create -t dir -n .
+    ```
+    composer archive create -t dir -n .
+    ```
+    {:codeblock}
 
 Dopo che hai eseguito il comando, viene creato un file di archivio di rete di business (`tutorial-network@0.0.1.bna`) nella directory `tutorial-network`.
 

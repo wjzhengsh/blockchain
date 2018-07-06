@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-03-16"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -18,85 +18,97 @@ lastupdated: "2018-03-16"
 La plateforme {{site.data.keyword.blockchainfull}} fournit des modèles d'application que vous pouvez déployer et tester, de manière à avoir une meilleure compréhension des réseaux de blockchain et du développement d'application.
 {: shortdesc}
 
-Dès que vous avez mis à disposition un réseau de plan Starter, vous pouvez déployer les modèles d'applications dans le Moniteur réseau, ce qui automatise les étapes qui permettent l'exécution des modèles d'application sur votre réseau. Vous pouvez également activer les modèles étape par étape pour connaître l'intégralité du processus de déploiement d'application, qui vous devez suivre lorsque vous déployez vos propres applications.
+|  Exemples| Scénario d'utilisation       | Type d'exemple  | Créateur et support  |
+| --------------|---------------------|----|-------|
+| [Marbles ![External link icon](../images/external_link.svg "External link icon")](https://github.com/IBM-Blockchain/marbles)|Plusieurs utilisateurs peuvent créer des billes dotées de propriétés différentes et les transférer entre eux. <br> <br> Suivez les instructions de déploiement de billes sur le site {{site.data.keyword.blockchainfull_notm}} Service on {{site.data.keyword.cloud_notm}}. Notez que la capture d'écran affiche l'interface utilisateur du plan Enterprise et non pas du plan Starter. La fonctionnalité est similaire. | Code blockchain avec une application Javascript | IBM<br> [Aide![External link icon](../images/external_link.svg "External link icon")](https://github.com/IBM-Blockchain/marbles/issues) |
+|[Vehicle Manufacture ![External link icon](../images/external_link.svg "External link icon")](https://github.com/IBM-Blockchain/vehicle-manufacture) | Permet aux utilisateurs d'examiner tout le cycle de vie d'un véhicule virtuel. <br> <br> Suivez les instructions de **déploiement manuel de cet exemple de démonstration vers IBM Cloud** pour un guide pas à pas de déploiement de l'exemple sur cotre réseau.| Définition de réseau d'entreprise [Hyperledger Composer](../reference/hyperledger_composer.html) avec une application Javascript | IBM<br> [Aide![External link icon](../images/external_link.svg "External link icon")](https://github.com/IBM-Blockchain/vehicle-manufacture/issues) |
+|[Denrées périssables![External link icon](../images/external_link.svg "External link icon")](https://github.com/clauseHQ/demo-clause-ibm-perishable-goods)| Les utilisateurs peuvent déployer des contrats juridiques pour achat de produits dans une chaîne d'approvisionnement basés sur une livraison et des relevés de température. <br>  <br> <!-- This sample leverages the [Toolchain tool service![External link icon](../images/external_link.svg "External link icon")](../images/external_link.svg "External link icon")](https://console.bluemix.net/docs/services/ContinuousDelivery/index.html) to deploy the sample on your network automatically.--> | Définition de réseau d'entreprise [Hyperledger Composer](../reference/hyperledger_composer.html) avec une application Javascript | [ClauseHQ![External link icon](../images/external_link.svg "External link icon")](http://clause.io/)<br> [Aide ![External link icon](../images/external_link.svg "External link icon")](https://github.com/clauseHQ/demo-clause-ibm-perishable-goods/issues) |
 
-## Déploiement de modèles d'application dans le plan Starter
+Les exemples d'applications sont créés par IBM et des partenaires dans la communauté. Le support des exemples sera assuré via les référentiels Github correspondants. Si vous rencontre un problème, cliquez sur le lien **Aide** en regard de l'éditeur et ouvrez un problème dans le référentiel Github pour aviser l'équipe pertinente.
 
-Le plan Starter fournit une approche simple pour le déploiement de modèles d'applications par l'optimisation du service Toolchain sur {{site.data.keyword.cloud_notm}} en quelques clics seulement. Dès que vous avez déployé et lancé un modèle d'application, celui-ci s'exécute automatiquement sur votre réseau de blockchain.
+Pour déployer des modèles, vous avez besoin d'un réseau Blockchain sur {{site.data.keyword.cloud_notm}} avec un plan Starter ou Enterprise, et de configurer un canal avec ses homologues. Pour plus d'informations, voir [Gouvernance d'un réseau de plan Starter](../get_start_starter_plan.html) et [Gouvernance d'un réseau de plan Enterprise](../get_start.html).
 
-Le plan Starter fournit deux modèles d'application pour commencer.
-
-* **Billes**
-
-  Le modèle Billes permet aux utilisateurs de créer des billes virtuelles avec différentes propriétés et de les transférer à d'autres utilisateurs. Pour plus d'informations sur le modèle Billes, voir [Démo Billes ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://github.com/IBM-Blockchain/marbles).
 
 <!--
-* **Perishable Goods**
 
-  The Perishable Goods sample enables users to deploy legal contracts that purchase goods in a supply chain based on delivery and temperature readings. For more information about this sample, see [Perishable Goods ![External link icon](../images/external_link.svg "External link icon")](https://github.com/clauseHQ/demo-clause-ibm-perishable-goods).
+After you provision a Starter Plan network, you can deploy the sample applications in the Network Monitor, which automates the steps to enable sample applications to run on your network. You can also enable the samples step-by-step to learn the entire process of application deployment, which you need to follow when you deploy your own applications.
 
 -->
 
-* **Fabrication de véhicules**
-
-  Le modèle Fabrication de véhicules permet aux utilisateurs de parcourir tout le cycle de vie d'un véhicule virtuel. Pour plus d'informations sur ce modèle, voir [Fabrication de véhicules![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://github.com/IBM-Blockchain/vehicle-manufacture).
-
-Pour déployer un modèle d'application, procédez comme suit :
-
-1. Accédez au **Moniteur réseau** de votre réseau de plan Starter. Si vous n'en avez pas, consultez la section [Création d'un réseau](../get_start_starter_plan.html#creating-a-network).
-
-2. Affichez l'écran "Essayer les modèles" dans votre Moniteur réseau. Sélectionnez le modèle d'application que vous voulez déployer, puis cliquez sur **Deployer via Toolchain**.
 <!--
-    ![sampleappflow0](../images/sampleappflow0.png)
--->
-3. Une fenêtre de configuration du service Toolchain s'ouvre. Vérifiez que tous les outils requis sont correctement intégrés. Notez que si vous avez plusieurs organisations, vous devez vous assurer d'entrer le nom d'organisation correct. Le nom de l'organisation doit être l'adresse électronique que vous utilisez pour vous connecter au réseau.
-    **Conseil **: Vous devez désactiver les logiciels de blocage d'incrustation afin que la page configuration de service Toolchain puisse s'ouvrir.
-<!--
-    ![sampleappflow1](../images/sampleappflow1.png)
--->
-  S'il s'agit de la première application que vous déployez via Toolchain, vous devez autoriser Toolchain à accéder au référentiel GitHub.
+## Deploying sample applications in Starter Plan
+
+Starter Plan provides a simple approach to deploy sample applications by leveraging the Toolchain service on {{site.data.keyword.cloud_notm}} with just a few clicks. After you deploy and launch a sample application, it will run on your blockchain network automatically.
+
+Starter Plan provides two sample applications for you to start with.
+
+* **Marbles**
+
+  The Marbles sample enables users to create virtual marbles with different properties and to transfer them with other users. For more information about Marbles, see [Marbles Demo ![External link icon](../images/external_link.svg "External link icon")](https://github.com/IBM-Blockchain/marbles).
+
+
+* **Vehicle Manufacture**
+
+  The Vehicle Manufacture sample enables users to go through the lifecycle of a virtual vehicle. For more information about this sample, see [Vehicle Manufacture ![External link icon](../images/external_link.svg "External link icon")](https://github.com/IBM-Blockchain/vehicle-manufacture).
+
+Complete the following steps to deploy a sample application:
+
+1. Enter the **Network Monitor** of your Starter Plan network. If you don't have one, see [Creating a network](../get_start_starter_plan.html#creating-a-network).
+
+2. Open the "Try samples" screen in your Network Monitor. Choose the sample application that you want to deploy and click the **Deploy via Toolchain** button.
+
+3. A Toolchain service configuration window opens. Ensure that all required tools are correctly integrated. Note that if you have more than one organizations, make sure that you enter the correct organization name. The organization name should be the email address that you use to sign up for the network.
+    **Tip**: You must disable pop-up blockers so that the Toolchain service configuration page can open.
+
+
+  If this is the first application that you deploy via Toolchain, you need to authorize Toolchain to access the GitHub repository.
 
   ![sampleappflow2](../images/sampleappflow2.png)
 
-  Dès que vous cliquez sur le bouton "Autoriser", vous êtes redirigé vers GitHub. Si ne disposez pas d'un compte GitHub, vous devez en créer un. Entrez vos informations de compte afin d'accorder l'accès à vos référentiels à Toolchain. Si vous ne voulez pas accorder cet accès à Toolchain, vous pouvez déployer le modèle d'application manuellement. Pour plus d'informations, voir [Déploiement de modèles d'application manuellement](#deploy_sample_applications_manually).
+  After you click the "Authorize" button, you are taken to GitHub. If you don't have a GitHub account, you need to create one. Give Toolchain access to your repositories by entering your account information. If you don't want to give Toolchain this access, you can deploy the sample applications manually. For more information, see [Deploying sample applications manually](#deploy_sample_applications_manually).
 
-5. Cliquez sur le bouton **Créer** dans la partie inférieure de la page Toolchain. Cette opération doit vous ramener au Moniteur réseau, dans lequel le déploiement de l'application Billes doit être en cours. Ce processus doit prendre entre 5 et 10 minutes.
-<!--
-    ![sampleappflow3](../images/sampleappflow3.png)
+5. Click the **Create** button at the bottom of the Toolchain page. This should take you back to the Network Monitor, where the deployment of Marbles should be in process. This process should take five to 10 minutes.
+
+After the deployment completes, you can start to use the Marbles sample on your Starter Plan network.
+
+Because this process creates a forked GitHub repository that you have access to and control over, you can make changes to Marbles in the forked repository and commit them. These commits will trigger an automatic build of your Marbles application and allow you to demo it in {{site.data.keyword.cloud_notm}}.
 -->
-Une fois le déploiement terminé, vous pouvez commencer à utiliser le modèle Billes sur votre réseau de plan Starter.
 
-Etant donné que ce processus crée un référentiel GitHub dévié auquel vous avez accès et dont vous avez le contrôle, vous pouvez apporter des modifications au modèle Billes dans le référentiel dévié et les valider. Ces validations déclenchent une génération automatique de votre application Billes et vous permettent de lancer une démonstration dans {{site.data.keyword.cloud_notm}}.
-
-## Déploiement de modèles d'application manuellement
+<!--
+## Deploying sample applications manually
 {: #deploy_sample_applications_manually}
 
-Si vous souhaitez déployer des modèles d'application sans utiliser le Moniteur réseau, vérifiez que vous avez installé tous les logiciels prérequis sur votre système de fichiers local. Pour plus d'informations, voir [Configuration de l'environnement de développement d'une application](../v10_application.html#setting-up-application-development-environment).
+If you want to deploy sample applications without using the Network Monitor, ensure that you install all software prerequisites on your local file system. For more information, see [Setting up application development environment](../v10_application.html#setting-up-application-development-environment).
 
-Vous devez également avoir un réseau de blockchain sur {{site.data.keyword.cloud_notm}} avec un plan Starter ou un plan Enterprise, et vous devez configurer un canal et ses homologues. Pour plus d'informations, voir [Gouvernance d'un réseau de plan Starter](../get_start_starter_plan.html) et [Gouvernance d'un réseau de plan Enterprise](../get_start.html). Une fois que vous avez mis un réseau à disposition et que vous pouvez y déployer des applications, procédez à l'extraction des noeuds finaux d'API des ressources de votre réseau auxquelles votre application accédera. Pour plus d'informations, voir [Ajout de noeuds finaux d'API à votre application](../v10_application.html#adding-network-api-endpoints-to-your-application).
+You also need a blockchain network on {{site.data.keyword.cloud_notm}} with either Starter Plan or Enterprise Plan, and configure a channel and its peers. For more information, see [Govern Starter Plan network](../get_start_starter_plan.html) and [Govern Enterprise Plan network](../get_start.html). After you provision a network and can deploy applications on it, retrieve the API endpoints of your network resources that your application will access. For more information, see [Adding network API endpoints to your application](../v10_application.html#adding-network-api-endpoints-to-your-application).
 
-Vous pouvez déployer l'un des modèles d'applications suivants sur votre réseau :
+You can deploy one of the following sample applications to your network:
 
-- **Billes**
+- **Marbles**
 
-  Dans cette application, plusieurs utilisateurs peuvent créer des billes dotées de propriétés différentes et les transférer entre eux. L'application Billes est écrite en JavaScript et le code blockchain est écrit en Go.
+  In the Marbles application, multiple users can create marbles with different properties and transfer them to others. The Marbles application is written in JavaScript and the chaincode is written in Go.
 
-  Vous pouvez trouver un exemple de code et des instructions dans [Marbles in GitHub ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://github.com/IBM-Blockchain/marbles).
+  You can find the sample code and instructions in [Marbles in GitHub ![External link icon](../images/external_link.svg "External link icon")](https://github.com/IBM-Blockchain/marbles).
 
-  Utilisez les instructions Bluemix au lieu des instructions d'hébergement du modèle Billes en local et saisissez les informations appropriées de votre réseau. Notez que les captures d'écran dans le GitHub Marbles indiquent l'interface utilisateur du plan Enterprise (car le plan Enterprise prend uniquement en charge le chemin d'accès manuel pour le déploiement du modèle Billes), qui est un peu différente de l'interface utilisateur du plan Starter. Néanmoins les deux interfaces comportent les mêmes éléments de base et vous pouvez voir les noms de vos homologues, canaux et autres informations de données d'identification du service dans les écrans appropriés.
+  Use the Bluemix instructions rather than the instructions for hosting Marbles locally and input the relevant information from your network. Note that the screen captures in the Marbles GitHub show the Enterprise Plan UI (since the Enterprise Plan supports only the manual path for deploying Marbles), which is a little different from the Starter Plan UI. Nevertheless both UIs have the same basic parts, and you can find the names of your peers, channels, and other service credential information in the appropriate screens.
 
 - **Fabcar**
 
-  Dans Fabcar, vous pouvez exécuter des **requêtes** et des **mises à jour de registre** sur les enregistrements de véhicule dans le registre. L'application Fabcar est écrite en JavaScript et le code blockchain est écrit en Go.
+  In Fabcar, you can perform **queries** and **ledger updates** on car records in the ledger. Fabcar is written in JavaScript and the chaincode is written in Go.
 
-  Vous pouvez trouver un exemple de code dans [Fabric car in GitHub ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://github.com/hyperledger/fabric-samples/tree/release/fabcar) et des instructions dans [Writing Your First Application ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](http://hyperledger-fabric.readthedocs.io/en/latest/write_first_app.html).
+  You can find sample code in [Fabric car in GitHub ![External link icon](../images/external_link.svg "External link icon")](https://github.com/hyperledger/fabric-samples/tree/release/fabcar), and instruction in [Writing Your First Application ![External link icon](../images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/latest/write_first_app.html).
 
-- **Autres applications**
+- **Other applications**
 
-  Pour plus d'informations sur l'hébergement de vos applications dans {{site.data.keyword.cloud_notm}}, voir [Hébergement d'applications](../v10_application.html#hosting-applications).
+  For more information about how to host your own applications inside {{site.data.keyword.cloud_notm}}, see [Hosting applications](../v10_application.html#hosting-applications).
 
-## Suppression d'un modèle d'application
+-->
 
-Pour supprimer un modèle d'application qui a été acquis via le processus Toolchain, accédez à l'emplacement du modèle dans l'interface utilisateur. Etant donné que les modèles d'application sont instanciés sur un canal, vous pouvez trouver le modèle dans des canaux. Cliquez sur **Canaux** dans la navigation de gauche afin d'afficher l'écran "Canaux". Cliquez sur le canal dans lequel le modèle est instancié, puis sur **Code blockchain**. Le code blockchain instancié dans ce canal s'affiche.
+<!--
+## Deleting a sample application
 
-Si vous cliquez sur le code blockchain de votre application, vous pouvez voir un onglet **Supprimer**. Toutefois, le fait de cliquer seulement sur **Supprimer** ne permet pas de supprimer le modèle d'application, mais de supprimer uniquement le conteneur de code blockchain.  Vous devez également accéder au tableau de bord {{site.data.keyword.cloud_notm}} et au tableau de bord Toolchain pour supprimer le modèle à ces emplacements.
+To delete a sample application that was acquired through the Toolchain process, navigate to where the sample lives in the UI. Because sample applications are instantiated on a channel, you can find the sample in channels. Click **Channels** on the left navigation to open the "Channels" screen. Click the relevant channel on which the sample is instantiated, and then click **Chaincode**. This displays chaincode that are instantiated on this channel.
+
+If you click the chaincode of your application, you can see a **Delete** tab. However, clicking **Delete** alone does not delete the sample application, but delete only the chaincode container.  You also need to navigate to the {{site.data.keyword.cloud_notm}} dashboard and the Toolchain dashboard to delete the sample there.
+
+-->
