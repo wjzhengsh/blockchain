@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-5-15"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -45,9 +45,11 @@ lastupdated: "2018-5-15"
 
 1. プロジェクトの新規ディレクトリーを作成し、コマンド・ラインでそのディレクトリーに移動します。
 
-2. 新規ディレクトリーから、Yeoman を使用してスケルトン・ビジネス・ネットワークを作成します。以下のコマンドには、ビジネス・ネットワーク名、説明、作成者名、作成者 E メール・アドレス、ライセンス選択、名前空間が必要です。
-
-        yo hyperledger-composer:businessnetwork
+2. 新規ディレクトリーから、Yeoman を使用してスケルトン・ビジネス・ネットワークを作成します。 以下のコマンドには、ビジネス・ネットワーク名、説明、作成者名、作成者 E メール・アドレス、ライセンス選択、名前空間が必要です。
+    ```
+    yo hyperledger-composer:businessnetwork
+    ```
+    {:codeblock}
 
 3. ネットワーク名には `tutorial-network` と入力し、説明、作成者名、作成者 E メールには必要な情報を入力します。
 
@@ -61,12 +63,13 @@ lastupdated: "2018-5-15"
 
 ### 資産、参加者、トランザクションのモデル化
 
-更新する最初の文書は、モデル・ファイル (`.cto`) です。 モデル・ファイルは、[Hyperledger Composer モデリング言語](https://hyperledger.github.io/composer/latest/reference/cto_language)を使用して作成されます。モデル・ファイルには、資産、トランザクション、参加者、イベントの各クラスの定義が含まれています。 これは、モデリング言語文書に記載されているシステム・モデルを暗黙的に拡張します。
+更新する最初の文書は、モデル・ファイル (`.cto`) です。 モデル・ファイルは、[Hyperledger Composer モデリング言語](https://hyperledger.github.io/composer/latest/reference/cto_language)を使用して作成されます。 モデル・ファイルには、資産、トランザクション、参加者、イベントの各クラスの定義が含まれています。 これは、モデリング言語文書に記載されているシステム・モデルを暗黙的に拡張します。
 
-1. 任意のエディターで `org.acme.biznet.cto` モデル・ファイルを開きます。これは、前のステップで作成したビジネス・ネットワークの `models` フォルダーにあります。
+1. 任意のエディターで `org.acme.biznet.cto` モデル・ファイルを開きます。 これは、前のステップで作成したビジネス・ネットワークの `models` フォルダーにあります。
 
 2. 内容を以下の情報に置き換えます。
 
+    ```
         /**
          * My commodity trading network
          */
@@ -87,6 +90,8 @@ lastupdated: "2018-5-15"
             --> Commodity commodity
             --> Trader newOwner
         }
+    ```
+    {:codeblock}
 
 3. `org.acme.biznet.cto` ファイルへの変更を保存します。
 
@@ -101,6 +106,7 @@ lastupdated: "2018-5-15"
 
 2. 内容を以下の情報に置き換えます。
 
+    ```
         /**
          * Track the trade of a commodity from one trader to another
          * @param {org.acme.biznet.Trade} trade - the trade to be processed
@@ -113,6 +119,8 @@ lastupdated: "2018-5-15"
                     return assetRegistry.update(trade.commodity);
                 });
         }
+    ```
+    {:codeblock}
 
 3. `logic.js` への変更を保存します。
 
@@ -126,6 +134,7 @@ lastupdated: "2018-5-15"
 
 2. 以下のアクセス制御ルールを `permissions.acl` に追加します。
 
+    ```
         /**
          * Access control rules for tutorial-network
          */
@@ -144,6 +153,8 @@ lastupdated: "2018-5-15"
           resource: "org.hyperledger.composer.system.**"
           action: ALLOW
         }
+    ```
+    {:codeblock}
 
 3. `permissions.acl` への変更を保存します。
 
@@ -155,7 +166,10 @@ lastupdated: "2018-5-15"
 
 2. `tutorial-network` ディレクトリーから次のコマンドを実行します。
 
-        composer archive create -t dir -n .
+    ```
+    composer archive create -t dir -n .
+    ```
+    {:codeblock}
 
 コマンドを実行すると、`tutorial-network` ディレクトリーにビジネス・ネットワーク・アーカイブ・ファイル (`tutorial-network@0.0.1.bna`) が作成されます。
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-5-15"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -46,8 +46,10 @@ Die einfachste Möglichkeit für den Einstieg ist die Verwendung des Yeoman-Gene
 1. Erstellen Sie ein neues Verzeichnis für Ihr Projekt und navigieren Sie in der Befehlszeile in dieses Verzeichnis.
 
 2. Verwenden Sie in diesem neuen Verzeichnis Yeoman, um ein Unternehmensnetzgerüst zu erstellen. Der folgende Befehl erfordert einen Namen, eine Beschreibung, einen Autorennamen, eine E-Mail-Adresse des Autors, eine Lizenzauswahl und einen Namensbereich für das Unternehmensnetz:
-
-        yo hyperledger-composer:businessnetwork
+    ```
+    yo hyperledger-composer:businessnetwork
+    ```
+    {:codeblock}
 
 3. Geben Sie `tutorial-network` als Netznamen und die gewünschten Informationen für Beschreibung, Autorenname und E-Mail-Adresse des Autors ein.
 
@@ -63,10 +65,11 @@ Ein Unternehmensnetz besteht aus Assets, Teilnehmern, Transaktionen, Zugriffsste
 
 Das erste Dokument, das aktualisiert werden muss, ist die Modelldatei (`.cto`). Die Modelldatei wird mithilfe der [Hyperledger Composer-Modellierungssprache ](https://hyperledger.github.io/composer/latest/reference/cto_language) geschrieben. Die Modelldatei enthält die Definitionen der einzelnen Klassen von Assets, Transaktionen, Teilnehmern und Ereignissen. Sie erweitert implizit das Systemmodell, das in der Dokumentation zur Modellierungssprache beschrieben wird.
 
-1. Öffnen Sie die Modelldatei `org.acme.biznet.cto` in einem Editor Ihrer Wahl. Sie befindet sich im Ordner `models` des Unternehmensnetzes, das Sie im letzten Schritt erstellt haben. 
+1. Öffnen Sie die Modelldatei `org.acme.biznet.cto` in einem Editor Ihrer Wahl. Sie befindet sich im Ordner `models` des Unternehmensnetzes, das Sie im letzten Schritt erstellt haben.
 
 2. Ersetzen Sie den Inhalt durch die folgenden Informationen:
 
+    ```
         /**
          * Mein Warenhandelsnetz
          */
@@ -87,6 +90,8 @@ Das erste Dokument, das aktualisiert werden muss, ist die Modelldatei (`.cto`). 
             --> Commodity commodity
             --> Trader newOwner
         }
+    ```
+    {:codeblock}
 
 3. Speichern Sie die Änderungen an der Datei `org.acme.biznet.cto`.
 
@@ -101,6 +106,7 @@ Die Transaktion `Trade` ist nur dazu gedacht, die ID des Assets `Commodity`, das
 
 2. Ersetzen Sie den Inhalt durch die folgenden Informationen:
 
+    ```
         /**
          * Handel einer Ware (Commodity) von einem Händler (Trader) zum anderen verfolgen
          * @param {org.acme.biznet.Trade} trade - der zu verarbeitende Handel
@@ -113,6 +119,8 @@ Die Transaktion `Trade` ist nur dazu gedacht, die ID des Assets `Commodity`, das
                     return assetRegistry.update(trade.commodity);
                 });
         }
+    ```
+    {:codeblock}
 
 3. Speichern Sie die Änderungen an der Datei `logic.js`.
 
@@ -126,6 +134,7 @@ Richten Sie für die Zwecke dieses Lernprogramms eine einfache Zugriffssteuerung
 
 2. Fügen Sie der Datei `permissions.acl` die folgenden Zugriffssteuerungsregeln hinzu:
 
+    ```
         /**
          * Zugriffssteuerungsregeln für tutorial-network
          */
@@ -144,6 +153,8 @@ Richten Sie für die Zwecke dieses Lernprogramms eine einfache Zugriffssteuerung
           resource: "org.hyperledger.composer.system.**"
           action: ALLOW
         }
+    ```
+    {:codeblock}
 
 3. Speichern Sie die Änderungen an der Datei `permissions.acl`.
 
@@ -155,7 +166,10 @@ Wenn das Unternehmensnetz definiert ist, muss es in eine bereitstellbare Unterne
 
 2. Führen Sie im Verzeichnis `tutorial-network` den folgenden Befehl aus:
 
-        composer archive create -t dir -n .
+    ```
+    composer archive create -t dir -n .
+    ```
+    {:codeblock}
 
 Durch die Ausführung des Befehls wird eine Unternehmensnetzarchivdatei (`tutorial-network@0.0.1.bna`) im Verzeichnis `tutorial-network` erstellt.
 

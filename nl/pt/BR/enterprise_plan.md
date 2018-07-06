@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-05-24"
+lastupdated: "2018-03-16"
 
 ---
 
@@ -14,7 +14,7 @@ lastupdated: "2018-05-24"
 
 # Sobre o Enterprise Plan
 
-O {{site.data.keyword.blockchainfull}} Platform Enterprise Plan é uma oferta pronta para produção para organizações que gostariam de criar ou se associar a uma rede de blockchain para empresas reais. Esse plano fornece a infraestrutura chave juntamente com as ferramentas e suporte para iniciar facilmente uma rede altamente segura e pronta para produção. O Enterprise Plan é atualizado do Hyperledger Fabric V1.0 para a V1.1. Todas as redes recém-criadas estão no nível do Fabric V1.1. No entanto, redes que foram criadas anteriormente permanecerão no nível do Fabric V1.0.
+O {{site.data.keyword.blockchainfull}} Platform Enterprise Plan é uma oferta pronta para produção para organizações que gostariam de criar ou se associar a uma rede de blockchain para empresas reais. Esse plano fornece a infraestrutura chave juntamente com as ferramentas e suporte para iniciar facilmente uma rede altamente segura e pronta para produção. O Enterprise Plan foi atualizado do Hyperledger Fabric V1.0 para o V1.1 em 15 de maio de 2018. Todas as redes que foram criadas após 15 de maio de 2018 estão no nível do Fabric V1.1. No entanto, redes que foram criadas anteriormente permanecerão no nível do Fabric V1.0.
 {:shortdesc}
 
 **Nota**: o {{site.data.keyword.blockchainfull_notm}} Platform Enterprise Plan fornece um ambiente de produção. Se você precisar de um ambiente de desenvolvimento e teste, veja [Sobre o Starter Plan](starter_plan.html).

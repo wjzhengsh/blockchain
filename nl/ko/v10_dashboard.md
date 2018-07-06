@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-05-15"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -130,7 +130,7 @@ lastupdated: "2018-05-15"
 ## API
 {: #apis}
 
-{{site.data.keyword.blockchainfull_notm}} Platform은 애플리케이션 개발을 용이하게 하기 위해 Swagger UI에서 사용자 네트워크에 대해 테스트할 수 있는 API를 노출합니다.
+{{site.data.keyword.blockchainfull_notm}} Platform은 네트워크의 노드, 채널, 피어 및 멤버를 관리하는 데 사용할 수 있는 Swagger의 여러 REST API를 노출합니다. 애플리케이션은 이러한 API를 사용하여 네트워크 모니터를 사용하지 않고 중요한 네트워크 리소스를 제어할 수 있습니다.
 
 **그림 7**은 "API" 화면을 보여줍니다.
 
@@ -166,7 +166,7 @@ lastupdated: "2018-05-15"
 ## 샘플 시험 사용
 {: #samples}
 
-샘플 애플리케이션을 사용하면 블록체인 네트워크 및 애플리케이션 개발에 대해 이해하는 데 도움이 됩니다. Marbles 샘플 애플리케이션 설치 방법에 대한 정보는 네트워크 모니터에서 Marbles 저장소에 대한 링크를 참조하십시오. 고유 샘플 개발 및 배치 방법에 대한 자세한 정보는 [애플리케이션 개발](v10_application.html)을 확인하십시오.
+샘플 애플리케이션을 사용하면 블록체인 네트워크 및 애플리케이션 개발에 대해 이해하는 데 도움이 됩니다. **GitHub에서 보기** 링크를 따라 샘플을 사용하여 {{site.data.keyword.blockchainfull_notm}} Platform에 배치하는 방법을 학습하십시오. 샘플 개발 및 배치 방법에 대한 자세한 정보는 [샘플 애플리케이션 배치](howto/prebuilt_samples.html)를 참조하십시오.
 
 **그림 10**은 "샘플 시험 사용" 화면을 보여줍니다.
 
@@ -207,12 +207,14 @@ lastupdated: "2018-05-15"
 ## 네트워크 환경 설정
 {: #network-preferences}
 
-오른쪽 상단 모서리를 클릭하고 드롭 다운 메뉴가 열리면 **네트워크 환경 설정**을 클릭하십시오. 네트워크 환경 설정 창이 열립니다. 네트워크 환경 설정 창에는 네트워크 이름, Fabric 버전, {{site.data.keyword.cloud_notm}}의 네트워크 위치 및 원장 데이터베이스 유형과 같은 네트워크의 기본 정보가 표시됩니다. 
+오른쪽 상단 모서리를 클릭하고 드롭 다운 메뉴가 열리면 **네트워크 환경 설정**을 클릭하십시오. 네트워크 환경 설정 창이 열립니다. 네트워크 환경 설정 창에는 네트워크 이름, Fabric 버전, {{site.data.keyword.cloud_notm}}의 네트워크 위치 및 원장 데이터베이스 유형과 같은 네트워크의 기본 정보가 표시됩니다.
 
-엔터프라이즈 플랜 네트워크가 곧 Fabric v1.1로 업그레이드됩니다<!-- May 15th, 2018 will run on Hyperledger Fabric v1.1-->. 업그레이드 후 네트워크를 작성하는 경우 네트워크 환경 설정 창에서 네트워크에 대한 웹 비활성 제한시간 및 상호 TLS를 관리할 수도 있습니다. 네트워크 개시자만 이러한 설정을 변경할 수 있습니다.
+2018년 5월 15일 이후에 작성된 엔터프라이즈 플랜 네트워크는 Hyperledger Fabric v1.1에서 실행됩니다. 업그레이드 후 네트워크를 작성하는 경우 네트워크 환경 설정 창에서 네트워크에 대한 웹 비활성 제한시간 및 상호 TLS를 관리할 수도 있습니다. 네트워크 개시자만 이러한 설정을 변경할 수 있습니다.
 
 <!--
+
 Enterprise Plan networks that are created after May 15th, 2018 will run on Hyperledger Fabric v1.1. If you create networks after the upgrade, you can also manage web inactivity timeout, mutual TLS, and switch your ledger to CouchDB for your network in the Network preferences window. These settings can be changed by the network initiator only.
+
 -->
 
 ### 웹 비활성 제한시간
@@ -225,13 +227,13 @@ Enterprise Plan networks that are created after May 15th, 2018 will run on Hyper
 ### 상호 TLS
 {: #mutual-tls}
 
-상호 TLS는 애플리케이션과 네트워크 간 통신의 보안을 설정하고 사용자만 사용자 네트워크와 통신할 수 있도록 합니다.
+상호 TLS는 애플리케이션과 네트워크 간 통신을 보안합니다.
 
 **참고**: **네트워크 개시자**만 상호 TLS를 사용 또는 사용 안함으로 설정할 수 있습니다. 이는 네트워크 레벨 설정이며 모든 네트워크 구성원에 영향을 미칩니다.
 
 기본적으로 상호 TLS 단추는 **해제**로 설정됩니다. 상호 TLS를 사용으로 설정하는 경우 이 기능을 지원하도록 애플리케이션을 업데이트해야 합니다. 그렇지 않으면 애플리케이션이 사용자 네트워크와 통신할 수 없습니다.
 
-Fabric 1.1 엔터프라이즈 플랜 네트워크의 경우 각 조직에는 자체 상호 TLS 인증 기관(CA)이 있습니다. **연결 프로파일** 단추를 클릭하여 네트워크 모니터의 **개요** 화면에서 액세스할 수 있는 [연결 프로파일](##enterprise-connection-profile)에서 상호 TLS CA에 연결하는 데 필요한 정보를 볼 수 있습니다. 연결 프로파일에는 CA에 연결하고 네트워크 연결에 필요한 인증서를 가져오는 데 필요한 정보가 포함되어 있습니다. 
+Fabric 1.1 엔터프라이즈 플랜 네트워크의 경우 각 조직에는 자체 상호 TLS 인증 기관(CA)이 있습니다. **연결 프로파일** 단추를 클릭하여 네트워크 모니터의 **개요** 화면에서 액세스할 수 있는 [연결 프로파일](##enterprise-connection-profile)에서 상호 TLS CA에 연결하는 데 필요한 정보를 볼 수 있습니다.  연결 프로파일에는 CA에 연결하고 네트워크 연결에 필요한 인증서를 가져오는 데 필요한 정보가 포함되어 있습니다.
 
 연결 프로파일에서 `certificateAuthorities` 섹션을 찾으십시오. 이 섹션에는 상호 TLS를 사용하여 사용자 네트워크와 통신하기 위해 인증서를 등록접수하고 가져오는 데 필요한 다음 속성이 있습니다.
 
@@ -243,16 +245,21 @@ Fabric 1.1 엔터프라이즈 플랜 네트워크의 경우 각 조직에는 자
 상호 TLS를 지원하도록 애플리케이션을 업데이트하는 데 대한 자세한 정보는 [상호 TLS를 구성하는 방법 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://fabric-sdk-node.github.io/tutorial-mutual-tls.html)을 참조하십시오.
 
 <!--
+
 ### CouchDB ledger type
 {: #couchdb}
+
 **Note**: Only the **network initiator** can switch the ledger database from LevelDB to CouchDB. This is a network level setting and will affect all network members. Switching to CouchDB is permanent. You cannot revert back to LevelDB.
+
 Before Enterprise Plan upgrades to Fabric v1.1, all network peers store data in the pure key-value LevelDB. With Fabric v1.1, you can choose to use CouchDB as your ledger database. CouchDB is a document datastore that permits indexing the contents of your data and allows you to issue rich queries against the data on your peer. Note that Hyperledger Fabric does not support peers running different databases. If CouchDB is used, it must be used by all of the peers.
+
 To use CouchDB, your data must be stored in a data format that can be modeled in chaincode, such as JSON. If the decision is made to migrate from LevelDB to CouchDB, the {{site.data.keyword.blockchainfull_notm}} Platform will migrate your data from key-value format to the CouchDB format automatically.
+
 If you switch to CouchDB, you need to update your chaincode to take advantage of indexes and rich queries. For more information about CouchDB and how to set up index, see [CouchDB as the State Database ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/latest/couchdb_as_state_database.html). For more information about updating chaincode in {{site.data.keyword.blockchainfull_notm}} Platform, see [Updating a chaincode](howto/install_instantiate_chaincode.html#updating-a-chaincode).
+
 -->
 
 **그림 14**는 "네트워크 환경 설정" 창을 보여줍니다.
 
-<!-- ![Network preferences](images/network_preferences_ep.gif "Network preferences") -->
-![네트워크 환경 설정](images/network_preferences_ep_tmp.png "네트워크 환경 설정")  
+![네트워크 환경 설정](images/network_preferences_ep_tmp.png "네트워크 환경 설정")
 *그림 14. 네트워크 환경 설정*

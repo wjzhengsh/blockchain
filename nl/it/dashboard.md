@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-05-15"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -130,7 +130,7 @@ Formati da un sottoinsieme di membri della rete che vogliono eseguire transazion
 La **Figura 7** mostra la schermata dashboard iniziale che visualizza una panoramica di tutti i canali nella tua rete:
 
 ![Canali](images/channels_starter.png "Canali")
-*Figure 7. Canali*
+*Figura 7. Canali*
 
 La creazione di un canale comporta la generazione di un libro mastro specifico per il canale. Per ulteriori informazioni, vedi [Creazione di un canale](howto/create_channel.html).
 
@@ -162,7 +162,7 @@ Le richieste in sospeso possono essere eliminate selezionando le caselle davanti
 ## API
 {: #apis}
 
-Per facilitare lo sviluppo dell'applicazione, {{site.data.keyword.blockchainfull_notm}} Platform presenta delle API che puoi testare sulla tua rete in una IU Swagger.
+{{site.data.keyword.blockchainfull_notm}} Platform presenta diverse API REST in Swagger che puoi utilizzare per gestire i nodi, i canali, i peer e i membri della tua rete. Le tue applicazioni possono utilizzare queste API per controllare importanti risorse di rete senza usare il monitoraggio della rete.
 
 La **Figura 9** mostra la schermata "API":
 
@@ -175,7 +175,7 @@ Fai clic sul link **IU Swagger** per aprire l'IU Swagger. Nota: prima di eseguir
 ## Sviluppa il codice
 {: #write-code}
 
-piano Starter integra {{site.data.keyword.blockchainfull_notm}} Platform: Develop e fornisce un ambiente di sviluppo con strumenti e tecnologie standard del settore. Puoi sviluppare la tua rete di business in un ambiente online oppure in locale. Dopo che hai sviluppato una rete di business, puoi distribuirla nuovamente alla tua rete piano Starter. 
+piano Starter integra {{site.data.keyword.blockchainfull_notm}} Platform: Develop e fornisce un ambiente di sviluppo con strumenti e tecnologie standard del settore. Puoi sviluppare la tua rete di business in un ambiente online oppure in locale. Dopo che hai sviluppato una rete di business, puoi distribuirla nuovamente alla tua rete piano Starter.
 
 La **Figura 10** mostra la schermata "Sviluppa il codice":
 
@@ -201,14 +201,17 @@ Un chaincode viene prima installato sul file system di un peer e viene quindi is
 ## Prova gli esempi
 {: #samples}
 
-Le applicazioni di esempio ti aiutano ad ottenere una migliore comprensione della rete blockchain e dello sviluppo di applicazioni. piano Starter ti consente di distribuire e avviare applicazioni di esempio nel monitoraggio della rete.
+Le applicazioni di esempio ti aiutano ad ottenere una migliore comprensione della rete blockchain e dello sviluppo di applicazioni.
+<!--Starter Plan enables you to deploy and launch sample applications in the Network Monitor. --> Segui i link **Visualizza in GitHub** per apprendere in che modo usare gli esempi e distribuirli a {{site.data.keyword.blockchainfull_notm}} Platform. Per ulteriori informazioni su come sviluppare e distribuire i tuoi esempi, consulta [Distribuzione di applicazioni di esempio](howto/prebuilt_samples.html).
 
 La **Figura 12** mostra la schermata "Prova gli esempi":
 
 ![Prova gli esempi](images/sample_overview_starter.png "Prova gli esempi")
 *Figura 12. Esempi*
 
-La distribuzione di esempio si avvale del [servizio DevOps Toolchain ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://console.bluemix.net/devops/toolchains) per automatizzare il tuo processo di controllo origine, delivery pipeline, e abilitare il chaincode. Scegli un'applicazione di esempio e fai clic su **Distribuisci tramite toolchain**. Per ulteriori informazioni, vedi [Distribuzione di applicazioni di esempio](howto/prebuilt_samples.html).
+<!--
+The sample deployment leverages the [DevOps Toolchain service ![External link icon](images/external_link.svg "External link icon")](https://console.bluemix.net/devops/toolchains) to automate your process of source control, delivery pipeline, and chaincode enablement. Choose a sample application, and click the **Deploy via Toolchain**. For more information, see [Deploying sample applications](howto/prebuilt_samples.html).
+-->
 
 
 ## Richiedi assistenza

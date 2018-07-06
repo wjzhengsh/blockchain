@@ -30,7 +30,11 @@ IBM Blockchain Platform
 	{: .navgroup-end}
 
 	{: .navgroup id="howto"}
-	howto/pay_for_the_network.md
+	{: .topicgroup}
+	Pagamento per la rete
+		howto/pricing.md
+		howto/paying_mode.md
+
 	howto/create_channel.md
 	howto/install_instantiate_chaincode.md
 	howto/monitor_network.md
@@ -46,6 +50,8 @@ IBM Blockchain Platform
 
 	{: .navgroup id="reference"}
 	glossary.md
+	reference/ibp_regions.md
+	reference/videos.md
 	reference/v10_fabric.md
 	reference/hyperledger_composer.md
 	[IBM Blockchain Platform: Develop](https://ibm-blockchain.github.io/develop/)

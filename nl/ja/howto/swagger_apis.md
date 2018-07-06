@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-05-15"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -14,7 +14,8 @@ lastupdated: "2018-05-15"
 
 # Swagger API を使用したネットワークとの対話
 
-{{site.data.keyword.blockchainfull}} Platform では、アプリケーション開発を円滑に進めることができるように、さまざまな REST API が公開されています。 Swagger UI を使用して、ブロックチェーン・ネットワークに対してテストを行えます。
+{{site.data.keyword.blockchainfull_notm}} Platform では多数の REST API を Swagger で公開しており、これらを使用してノード、チャネル、ピア、およびネットワーク・メンバーを管理できます。アプリケーションではこれらの API を使用して、ネットワーク・モニターを使用せずに重要なネットワーク・リソースを管理できます。
+
 {:shortdesc}
 
 始める前に、{{site.data.keyword.Bluemix_notm}} 上に [{{site.data.keyword.blockchain}} Platform サービス・インスタンス ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://console.bluemix.net/catalog/services/blockchain) を作成し、Starter Plan <!--or Enterprise Plan -->ブロックチェーン・ネットワークを作成するか結合しておく必要があります。
@@ -26,21 +27,8 @@ lastupdated: "2018-05-15"
 
 ブロックチェーン・ネットワークのネットワーク・モニターに入り、左側のナビゲーターから「API」画面を開きます。 REST API のネットワーク資格情報が表示されます。 後で、ここに表示された「key」と「secret」の値を使用して API を許可し、「network_id」をパラメーターとして使用して API を実行します。 **「secret の表示 (Show secret)」**をクリックして secret フィールドの値を表示します。 key、secret、および network_id フィールドの値をコピーします。これらの値は、後で Swagger UI で使用できます。
 
-<!-- Removing this code snippet so people don't try to use these values
-```
-},
-   "x-api": {
-       "url": "https://ibmblockchain.bluemix.net",
-       "key": "PeerOrg1",
-       "network_id": "e1f5b3341b1d483bbaf829f601144023",
-       "secret": "71a329aabde9ff20de0aa4bfafd72a4466d78c87f637e7ff92c2534b5ce81cc0"
-   }
-```
--->
-
 **図 1** に「API」画面を示します。
-
-![API 画面](../images/API_screen_starter.png "API 画面")
+![「API」画面](../images/API_screen_starter.png "「API」画面")
 *図 1. API*
 
 Starter Plan を使用している場合は、ネットワーク・モニターで組織を切り替えることができます。 Starter Plan では、デフォルトで 2 つの組織が構成されています。 組織の切り替えは、各組織の観点から REST API を試す場合に役立ちます。 ネットワーク内の別の組織の資格情報を取得するには、ネットワーク・モニター・コンソールの右上隅に表示されるユーザー名をクリックします。 開いたメニューで、組織の横にあるドロップダウン矢印をクリックして、すべての組織を表示します。 切り替え先の組織を選択して、関連するネットワーク資格情報を表示します。
@@ -70,13 +58,26 @@ Swagger UI で、**「許可 (Authorize)」**ボタンをクリックします�
 
 ## API の試行
 
-実行する REST API をクリックして、**「試行する」**ボタンをクリックします。 必須パラメーターを入力して、**「実行」**をクリックします。 ネットワークに対して REST API 呼び出しが実行されます。
+実行する REST API をクリックして、**「試行する」**ボタンをクリックします。
 
-次の**図 4** は「Swagger UI」を示しています。
+**図 4** に、「Swagger UI」での「Try it out」ボタンを示します。
 
-![Swagger UI](../images/swaggerUITryItOut.png "Swagger UI")  
-*図 4. Swagger UI*
+![Swagger UI での「Try it out」ボタン](../images/swaggerUITryItOut.png "Swagger UI での「Try it out」ボタン")  
+*図 4. 「Swagger UI」での「Try it out」ボタン*
 
+**「Try it out」**ボタンをクリックした後、API を使用するための必須パラメーターを入力することができます。`networkID` はネットワーク資格情報で、その他のパラメーターはネットワーク・モニターで見つけることができます。パラメーターを入力したら、**「Execute」**をクリックしてネットワークに対して REST API 呼び出しを実行します。
+
+**図 5** に「Swagger UI」でのパラメーターを示します。
+
+![Swagger UI でのパラメーター](../images/swaggerUIParams.png "Swagger UI でのパラメーター")  
+*図 5. パラメーターの入力*  
+
+**「Execute」**をクリックすると、ネットワークに対する API 呼び出しの応答を確認することができます。また、コマンド・ラインから直接 API を呼び出すことができる CURL コマンドも確認することができます。
+
+**図 6** に、API 応答本文、URL、および CURL コマンドを示します。
+
+![Swagger UI での API 応答](../images/swaggerUICurlResponse.png "Swagger UI での API 応答")  
+*図 6. API 応答*    
 
 ## トラブルシューティングのヒント
 

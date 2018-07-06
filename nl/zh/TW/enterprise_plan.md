@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-05-24"
+lastupdated: "2018-03-16"
 
 ---
 
@@ -14,7 +14,7 @@ lastupdated: "2018-05-24"
 
 # 關於企業方案
 
-針對想要建立或加入區塊鏈網路以從事實際商業活動的組織，「{{site.data.keyword.blockchainfull}} 平台企業方案」是可用於正式作業的供應項目。此方案提供金鑰基礎架構，附有工具和支援，可輕鬆啟動高度安全且可用於正式作業的網路。「企業方案」會從 Hyperledger Fabric 1.0 版升級至 1.1 版。所有新建的網路都是 Fabric 1.1 版層次。不過，先前建立的網路將會保留為 Fabric 1.0 版層次。
+針對想要建立或加入區塊鏈網路以從事實際商業活動的組織，「{{site.data.keyword.blockchainfull}} 平台企業方案」是可用於正式作業的供應項目。此方案提供金鑰基礎架構，附有工具和支援，可輕鬆啟動高度安全且可用於正式作業的網路。2018 年 5 月 15 日，「企業方案」會從 Hyperledger Fabric 1.0 版升級至 1.1 版。在 2018 年 5 月 15 日之後建立的所有網路都是 Fabric 1.1 版層次。不過，先前建立的網路將會保留為 Fabric 1.0 版層次。
 {:shortdesc}
 
 **附註**：「{{site.data.keyword.blockchainfull_notm}} 平台企業方案」提供正式作業環境。如果您需要開發及測試環境，請參閱[關於入門範本方案](starter_plan.html)。

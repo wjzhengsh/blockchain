@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-05-24"
+lastupdated: "2018-03-16"
 
 ---
 
@@ -14,7 +14,7 @@ lastupdated: "2018-05-24"
 
 # 엔터프라이즈 플랜 정보
 
-{{site.data.keyword.blockchainfull}} Platform 엔터프라이즈 플랜은 실제 비즈니스용 블록체인 네트워크를 작성하거나 가입할 조직을 위한 프로덕션 준비가 된 오퍼링입니다. 이 플랜은 보안성이 높고 프로덕션 준비가 된 네트워크를 쉽게 시작하기 위한 도구 및 지원과 함께 핵심 인프라를 제공합니다. 엔터프라이즈 플랜은 Hyperledger Fabric V1.0에서 V1.1로 업그레이드되었습니다. 새로 작성된 모든 네트워크는 Fabric V1.1 레벨입니다. 그러나 이전에 작성된 네트워크는 Fabric V1.0 레벨로 유지됩니다.
+{{site.data.keyword.blockchainfull}} Platform 엔터프라이즈 플랜은 실제 비즈니스용 블록체인 네트워크를 작성하거나 가입할 조직을 위한 프로덕션 준비가 된 오퍼링입니다. 이 플랜은 보안성이 높고 프로덕션 준비가 된 네트워크를 쉽게 시작하기 위한 도구 및 지원과 함께 핵심 인프라를 제공합니다. 엔터프라이즈 플랜은 2018년 5월 15일에 Hyperledger Fabric V1.0에서 V1.1로 업그레이드되었습니다. 2018년 5월 15일 이후에 작성된 모든 네트워크는 Fabric V1.1 레벨입니다. 그러나 이전에 작성된 네트워크는 Fabric V1.0 레벨로 유지됩니다.
 {:shortdesc}
 
 **참고**: {{site.data.keyword.blockchainfull_notm}} Platform 엔터프라이즈 플랜은 프로덕션 환경을 제공합니다. 개발 및 테스트 환경이 필요한 경우 [스타터 플랜 정보](starter_plan.html)를 참조하십시오.

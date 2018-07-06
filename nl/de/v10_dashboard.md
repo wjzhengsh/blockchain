@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-05-15"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -27,7 +27,6 @@ Der Network Monitor präsentiert die folgenden Anzeigen in drei Abschnitten. Sie
 
 Über das Dropdown-Menü in der rechten oberen Ecke im Network Monitor können Sie die [Netzvorgaben überprüfen und konfigurieren](#network-preferences).
 
-
 In diesem Lernprogramm werden die oben aufgeführten Anzeigen und Funktionen beschrieben.
 
 ## Netznamen aktualisieren
@@ -48,7 +47,7 @@ Klicken Sie oben im linken Navigator im Network Monitor auf den Netznamen. Damit
 
 Die Anzeige "Übersicht" zeigt Statusinformationen zu Blockchain-Ressourcen (einschließlich Anordnungs-, CA- und Peerknoten) in Echtzeit an. Jede Ressource wird unter vier unterschiedlichen Überschriften angezeigt: **Typ**, **Name**, **Status** und **Aktionen**. Bei der Erstellung des Blockchain-Netzes werden automatisch drei Anordnungsknoten und zwei Zertifizierungsstellenknoten (CA-Knoten) erstellt. Die Zertifizierungsstellen gehören zu einem bestimmten Mitglied, während die Anordnungsknoten allgemeine Endpunkte sind, die im gesamten Netz genutzt werden.
 
-**Abbildung 2** zeigt die Anzeige "Übersicht":
+In **Abbildung 2** ist die Anzeige "Übersicht" zu sehen:
 
 ![Anzeige 'Übersicht'](images/myresources.png "Netzübersicht")
 *Abbildung 2. Netzübersicht*
@@ -66,7 +65,7 @@ Sie können die JSON-Datei zu Low-Level-Netzinformationen zu den einzelnen Resso
 
 ### Peers hinzufügen
 {: #peers}
-Klicken Sie auf die Schaltfläche **Peers hinzufügen**, um Ihrem Netz Peerknoten hinzuzufügen. Im Starter Plan werden für Sie automatisch zwei Peers hinzugefügt, wenn Sie das Netz erstellen. Im Enterprise Plan können Sie Peerknoten hinzufügen, wenn Sie ein Netz zum ersten Mal erstellen oder einem Netz beitreten - oder später im Network Monitor. In anderen Szenarios können auch mehr Peers erforderlich sein.  Sie könnten mehrere Peers zum Beispiel zu Redundanzzwecken verwenden, um sie mit demselben Kanal zu verknüpfen. Jeder Peer verarbeitet die Transaktionen des Kanals und schreibt in seine jeweilige Kopie des Ledgers. Wenn einer der Peers ausfällt, können andere Peers die Verarbeitung von Transaktionen und Anwendungsanforderungen fortsetzen.  Sie können alle Anwendungsanforderungen symmetrisch auf die Peers verteilen oder Sie können verschiedene Peers für verschiedene Funktionen vorsehen. Sie können zum Beispiel einen Peer zum Abfragen des Ledgers und einen anderen Peer zur Verarbeitung von Bewilligungen für Ledgeraktualisierungen verwenden.
+Klicken Sie auf die Schaltfläche **Peers hinzufügen**, um Ihrem Netz Peerknoten hinzuzufügen. Im Starter Plan werden für Sie automatisch zwei Peers hinzugefügt, wenn Sie das Netz erstellen. Im Enterprise Plan können Sie Peerknoten hinzufügen, wenn Sie ein Netz zum ersten Mal erstellen oder einem Netz beitreten - oder später im Network Monitor. In anderen Szenarios kann eine höhere Anzahl an Peers erforderlich sein. Sie könnten z. B. mehrere Peers benötigen, um sie zu Redundanzzwecken mit demselben Kanal zu verknüpfen. Jeder Peer verarbeitet die Transaktionen des Kanals und schreibt in seine jeweilige Kopie des Ledgers. Wenn einer der Peers ausfällt, können andere Peers die Verarbeitung von Transaktionen und Anwendungsanforderungen fortsetzen.  Sie können alle Anwendungsanforderungen symmetrisch auf die Peers verteilen oder Sie können verschiedene Peers für verschiedene Funktionen vorsehen. Sie können zum Beispiel einen Peer zum Abfragen des Ledgers und einen anderen Peer zur Verarbeitung von Bewilligungen für Ledgeraktualisierungen verwenden.
 
   Wählen Sie im Popup-Fenster "Peers hinzufügen" die Anzahl der Peerknoten aus, die Sie hinzufügen wollen. <!--Currently only "small" peers are available for purchase, however there will eventually be "medium" and "large" to help accommodate larger workloads and higher transaction throughput.-->
 
@@ -76,7 +75,7 @@ Die Anzeige "Mitglieder" enthält zwei Registerkarten. Auf der Registerkarte "Mi
 
 ### Mitglieder
 {: #members_tab}
-**Abbildung 3** zeigt die erste Anzeige "Mitglieder", die Ihre Netzmitglieder im Netz auf der Registerkarte "Mitglieder" anzeigt:
+In **Abbildung 3** ist die erste Anzeige "Mitglieder" zu sehen, die Ihre Netzmitglieder im Netz auf der Registerkarte "Mitglieder" anzeigt:
 
 ![Registerkarte 'Mitglieder' in der Anzeige 'Mitglieder'](images/monitor_members.png "Netzmitglieder")
 *Abbildung 3. Netzmitglieder*
@@ -84,7 +83,7 @@ Die Anzeige "Mitglieder" enthält zwei Registerkarten. Auf der Registerkarte "Mi
 Neben den Mitgliedern, die Sie einladen, wenn Sie das Netz erstellen, können Sie weitere Mitglieder auf der Registerkarte "Mitglieder" einladen. Um ein Mitglied in Ihr Netz einzuladen, geben Sie den Namen der Institution und die E-Mail-Adresse des Operators ein und klicken Sie auf **Mitglied hinzufügen**. Ein Netz kann insgesamt 15 Mitglieder haben (einschließlich des Netzinitiators). Um ein Mitglied aus Ihrem Netz zu entfernen, klicken Sie auf das Symbol "Entfernen" am Ende der Zeile des Mitglieds.
 
 ### Zertifikate
-**Abbildung 4** zeigt die erste Anzeige "Mitglieder", die Mitgliedszertifikate auf der Registerkarte "Zertifikate" anzeigt:
+In **Abbildung 4** ist die erste Anzeige "Mitglieder" dargestellt, die Mitgliedszertifikate auf der Registerkarte "Zertifikate" anzeigt:
 
 ![Registerkarte 'Zertifikate' in der Anzeige 'Mitglieder'](images/monitor_certificates.png "Zertifikate")
 *Abbildung 4. Zertifikate*
@@ -98,7 +97,7 @@ Weitere Informationen zur Generierung Ihres Zertifikatsschlüssels finden Sie un
 
 Sie können Ihr Netz in Kanäle aufteilen, wobei jeder Kanal eine Untergruppe von Mitgliedern darstellt, die die Daten für den Chaincode anzeigen dürfen, der für diesen Kanal instanziiert ist. Jedes Netz muss mindestens einen Kanal aufweisen, damit Transaktionen durchgeführt werden können. Jeder Kanal verfügt über ein eindeutiges Ledger und Benutzer müssen ordnungsgemäß authentifiziert sein, um Lese-/Schreiboperationen für dieses Ledger durchführen zu können. Befinden Sie sich nicht auf diesem Kanal, können Sie die Daten nicht sehen.
 
-**Abbildung 5** zeigt die Anfangsanzeige des Dashboards mit einer Übersicht aller Kanäle in Ihrem Netz:
+In **Abbildung 5** ist die Anfangsanzeige des Dashboards mit einer Übersicht aller Kanäle in Ihrem Netz zu sehen:
 
 ![Kanäle](images/channels.png "Kanäle")
 *Abbildung 5. Kanäle*
@@ -112,7 +111,7 @@ Sie können auch einen vorhandenen Kanal auswählen, um genauere Details zu Kana
 
 In der Anzeige "Benachrichtigungen" können Sie anstehende Anforderungen bearbeiten und abgeschlossene Anforderungen anzeigen.
 
-**Abbildung 6** zeigt die Anzeige "Benachrichtigungen":
+In **Abbildung 6** ist die Anzeige "Benachrichtigungen" dargestellt:
 
 ![Benachrichtigungen](images/notifications.png "Benachrichtigungen")
 *Abbildung 6. Benachrichtigungen*
@@ -131,9 +130,9 @@ Anstehende Anforderungen können gelöscht werden, indem Sie die davor befindlic
 ## APIs
 {: #apis}
 
-Zur Vereinfachung der Anwendungsentwicklung stellt {{site.data.keyword.blockchainfull_notm}} Platform APIs zur Verfügung, die Sie für Ihr Netz in einer Swagger-Benutzerschnittstelle (UI) testen können.
+{{site.data.keyword.blockchainfull_notm}} Platform stellt eine Reihe von REST-APIs in Swagger bereit, mit denen Sie die Knoten, Kanäle, Peers und Mitglieder Ihres Netzes verwalten können. Ihre Anwendungen können mithilfe dieser APIs wichtige Netzressourcen ohne den Network Monitor steuern. 
 
-**Abbildung 7** zeigt die Anzeige "APIs":
+In **Abbildung 7** ist die Anzeige "APIs" zu sehen:
 
 ![APIs](images/API_screen.png "APIs")
 *Abbildung 7. APIs*
@@ -145,7 +144,7 @@ Klicken Sie auf den Link für die **Swagger-Benutzerschnittstelle (UI)**, um die
 
 Der Enterprise Plan integriert {{site.data.keyword.blockchainfull_notm}} Platform: Develop und stellt eine Entwicklungsumgebung mit Tools und Technologien bereit, die dem Industriestandard entsprechen. Sie können Ihr Netz in der Umgebung online oder lokal entwickeln. Wenn Sie ein Netz entwickelt haben, können Sie es wieder in Ihrem Enterprise Plan-Netz bereitstellen.
 
-**Abbildung 8** zeigt die Anzeige "Code entwickeln":
+In **Abbildung 8** ist die Anzeige "Code entwickeln" dargestellt:
 
 ![Code entwickeln](images/write_code.png "Code entwickeln")
 *Abbildung 8. Code entwickeln*
@@ -157,7 +156,7 @@ Weitere Informationen zur Entwicklung und Bereitstellung Ihres Codes mit dem Ent
 
 Bei Chaincode, der auch als "Smart Contract" bezeichnet wird, handelt es sich um Stücke von Software, die eine Gruppe von Funktionen zum Abfragen und Aktualisieren des Ledgers enthalten. Sie werden auf Peers installiert und auf einem Kanal instanziiert.
 
-**Abbildung 9** zeigt die Anzeige "Code installieren":
+In **Abbildung 9** ist die Anzeige "Code installieren" zu sehen:
 
 ![Code installieren](images/chaincode_install_overview.png "Code installieren")
 *Abbildung 9. Code installieren*
@@ -167,9 +166,9 @@ Ein Chaincode wird zunächst im Dateisystem eines Peers installiert und anschlie
 ## Beispiele ausprobieren
 {: #samples}
 
-Mithilfe von Beispielanwendungen können Sie ein Blockchain-Netz und die Anwendungsentwicklung besser kennenlernen. Folgen Sie dem Link zum Marbles-Repository im Network Monitor, um Informationen zur Installation der Beispielanwendung "Marbles" zu erhalten. Weitere Informationen zur Entwicklung und Bereitstellung eigener Beispiele finden Sie unter [Anwendungen entwickeln](v10_application.html).
+eispielanwendungen helfen Ihnen, sich mit Blockchain-Netzen und der Anwendungsentwicklung vertraut zu machen. Rufen Sie die Links für **Auf GitHub anzeigen** auf und informieren Sie sich, wie die Beispiele genutzt und in {{site.data.keyword.blockchainfull_notm}} Platform bereitgestellt werden können. Weitere Informationen zur Entwicklung und Bereitstellung eigener Beispiele finden Sie unter [Beispielanwendungen bereitstellen](howto/prebuilt_samples.html). 
 
-**Abbildung 10** zeigt die Anzeige "Beispiele ausprobieren":
+In **Abbildung 10** ist die Anzeige "Beispiele ausprobieren" zu sehen:
 
 ![Beispiele ausprobieren](images/sample_overview_ep.png "Beispiel ausprobieren")
 *Abbildung 10. Beispiele*
@@ -179,7 +178,7 @@ Mithilfe von Beispielanwendungen können Sie ein Blockchain-Netz und die Anwendu
 
 Die Anzeige "Hilfe anfordern" enthält zwei Registerkarten. Auf der Registerkarte "Support" werden Support-Informationen bereitgestellt und auf der Registerkarte "Releaseinformationen" werden neue und geänderte Funktionen für jedes Release beschrieben.
 
-**Abbildung 11** zeigt die erste Anzeige "Hilfe anfordern" mit Unterstützungsinformationen auf der Registerkarte "Support":
+In **Abbildung 11** ist die erste Anzeige "Hilfe anfordern" mit Unterstützungsinformationen auf der Registerkarte "Support" zu sehen:
 
 ![Support](images/support.png "Support")
 *Abbildung 11. Blockchain-Support*
@@ -208,12 +207,14 @@ Abbildung 12 und Abbildung 13 zeigen die Eingangsanzeige für "Hilfe anfordern",
 ## Netzvorgaben
 {: #network-preferences}
 
-Klicken Sie auf die rechte obere Ecke, um das Dropdown-Menü zu öffnen, und dann auf **Netzvorgaben**. Das Fenster mit den Netzvorgaben wird geöffnet. Das Fenster mit den Netzvorgaben enthält die Basisinformatinen Ihres Netzes, wie z. B. den Netznamen, die Fabric-Version, die Netzadresse in {{site.data.keyword.cloud_notm}} und den Ledgerdatenbanktyp. 
+Klicken Sie auf die rechte obere Ecke, um das Dropdown-Menü zu öffnen, und dann auf **Netzvorgaben**. Das Fenster mit den Netzvorgaben wird geöffnet. Das Fenster mit den Netzvorgaben enthält die Basisinformatinen Ihres Netzes, wie z. B. den Netznamen, die Fabric-Version, die Netzadresse in {{site.data.keyword.cloud_notm}} und den Ledgerdatenbanktyp.
 
-Für Enterprise Plan-Netze wird demnächst ein Upgrade auf Fabric v1.1 durchgeführt. <!-- May 15th, 2018 will run on Hyperledger Fabric v1.1-->Wenn Sie nach dem Upgrade Netze erstellen, können Sie auch Web-Inaktivitätszeitlimits und die gegenseitige TLS-Authentifizierung (Mutual TLS, MTLS) für Ihr Netz im Fenster mit den Netzvorgaben verwalten. Diese Einstellungen können nur vom Netzinitiator geändert werden.
+Nach dem 15. Mai 2018 erstellte Enterprise Plan-Netze werden unter Hyperledger Fabric Version 1.1 ausgeführt. Wenn Sie nach dem Upgrade Netze erstellen, können Sie auch Web-Inaktivitätszeitlimits und die gegenseitige TLS-Authentifizierung (Mutual TLS, MTLS) für Ihr Netz im Fenster mit den Netzvorgaben verwalten. Diese Einstellungen können nur vom Netzinitiator geändert werden.
 
 <!--
+
 Enterprise Plan networks that are created after May 15th, 2018 will run on Hyperledger Fabric v1.1. If you create networks after the upgrade, you can also manage web inactivity timeout, mutual TLS, and switch your ledger to CouchDB for your network in the Network preferences window. These settings can be changed by the network initiator only.
+
 -->
 
 ### Web-Inaktivitätszeitlimit
@@ -226,13 +227,13 @@ Standardmäßig ist für das Web-Inaktivitätszeitlimit der Wert **Aus** festgel
 ### Gegenseitige TLS-Authentifizierung (Mutual TLS, MTLS)
 {: #mutual-tls}
 
-Die gegenseitige TLS-Authentifizierung (Mutual TLS, MTLS) schützt die Kommunikation zwischen den Anwendungen und dem Netz und stellt sicher, dass nur Sie mit Ihrem Netz kommunizieren können.
+Die gegenseitige TLS-Authentifizierung (Mutual TLS, MTLS) schützt die Kommunikation zwischen den Anwendungen und dem Netz. 
 
 **Hinweis**: Nur ein **Netzinitiator** kann MTLS aktivieren oder inaktivieren. Hierbei handelt es sich um eine Einstellung auf Netzebene, die sich auf alle Netzmitglieder auswirkt.
 
 Standardmäßig ist für die TLS-Schaltfläche die Einstellung **Aus** festgelegt. Wenn Sie MTLS aktivieren, müssen Sie die Anwendungen so aktualisieren, dass sie diese Funktion unterstützen. Andernfalls können die Anwendungen nicht mit dem Netz kommunizieren.
 
-Bei einem Enterprise Plan-Netz in Fabric 1.1 verfügt jede Organisation über eine eigene MTLS-Zertifizierungsstelle. Die Informationen, die für die Herstellung einer Verbindung zur MTLS-Zertifizierungsstelle erforderlich sind, stehen im [Verbindungsprofil](##enterprise-connection-profile) zur Verfügung, auf das Sie über die Anzeige **Übersicht** im Network Monitor zugreifen können, indem Sie auf die Schaltfläche **Verbindungsprofil** klicken. Das Verbindungsprofil enthält die Informationen, die erforderlich sind, um eine Verbindung zur Zertifizierungsstelle herzustellen und die Zertifikate abzurufen, die Sie für die Verbindung zu Ihrem Netz benötigen.
+Bei einem Enterprise Plan-Netz in Fabric 1.1 verfügt jede Organisation über eine eigene MTLS-Zertifizierungsstelle. Die Informationen, die für die Herstellung einer Verbindung zur MTLS-Zertifizierungsstelle erforderlich sind, stehen im [Verbindungsprofil](##enterprise-connection-profile) zur Verfügung, auf das Sie über die Anzeige **Übersicht** im Network Monitor zugreifen können, indem Sie auf die Schaltfläche **Verbindungsprofil** klicken.  Das Verbindungsprofil enthält die Informationen, die erforderlich sind, um eine Verbindung zur Zertifizierungsstelle herzustellen und die Zertifikate abzurufen, die Sie für die Verbindung zu Ihrem Netz benötigen.
 
 Suchen Sie im Verbindungsprofil nach dem Abschnitt `certificateAuthorities`. Hier finden Sie die folgenden Attribute, die für die Eintragung und das Abrufen der Zertifikate für die Kommunikation mit dem Netz über MTLS erforderlich sind.
 
@@ -244,16 +245,21 @@ Suchen Sie im Verbindungsprofil nach dem Abschnitt `certificateAuthorities`. Hie
 Weitere Informationen zum Aktualisieren der Anwendungen für die Unterstützung von MTLS finden Sie in [MTLS konfigurieren![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://fabric-sdk-node.github.io/tutorial-mutual-tls.html).
 
 <!--
+
 ### CouchDB ledger type
 {: #couchdb}
+
 **Note**: Only the **network initiator** can switch the ledger database from LevelDB to CouchDB. This is a network level setting and will affect all network members. Switching to CouchDB is permanent. You cannot revert back to LevelDB.
+
 Before Enterprise Plan upgrades to Fabric v1.1, all network peers store data in the pure key-value LevelDB. With Fabric v1.1, you can choose to use CouchDB as your ledger database. CouchDB is a document datastore that permits indexing the contents of your data and allows you to issue rich queries against the data on your peer. Note that Hyperledger Fabric does not support peers running different databases. If CouchDB is used, it must be used by all of the peers.
+
 To use CouchDB, your data must be stored in a data format that can be modeled in chaincode, such as JSON. If the decision is made to migrate from LevelDB to CouchDB, the {{site.data.keyword.blockchainfull_notm}} Platform will migrate your data from key-value format to the CouchDB format automatically.
+
 If you switch to CouchDB, you need to update your chaincode to take advantage of indexes and rich queries. For more information about CouchDB and how to set up index, see [CouchDB as the State Database ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/latest/couchdb_as_state_database.html). For more information about updating chaincode in {{site.data.keyword.blockchainfull_notm}} Platform, see [Updating a chaincode](howto/install_instantiate_chaincode.html#updating-a-chaincode).
+
 -->
 
 **Abbildung 14** zeigt das Fenster "Netzvorgaben":
 
-<!-- ![Network preferences](images/network_preferences_ep.gif "Network preferences") -->
-![Netzvorgaben](images/network_preferences_ep_tmp.png "Netzvorgaben")  
+![Netzvorgaben](images/network_preferences_ep_tmp.png "Netzvorgaben")
 *Abbildung 14. Netzvorgaben*

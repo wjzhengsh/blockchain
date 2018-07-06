@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-05-15"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -133,7 +133,7 @@ lastupdated: "2018-05-15"
 ## API
 {: #apis}
 
-为了帮助进行应用程序开发，{{site.data.keyword.blockchainfull_notm}} Platform 公开了 API，您可以在 Swagger UI 中针对自己的网络来测试这些 API。
+{{site.data.keyword.blockchainfull_notm}} Platform 公开了使用 Swagger 生成的若干 REST API，可用于管理网络中的节点、通道、同级和成员。应用程序可以使用这些 API 来控制重要的网络资源，而无需使用“网络监视器”。
 
 **图 7** 显示“API”屏幕：
 
@@ -169,7 +169,7 @@ lastupdated: "2018-05-15"
 ## 试用样本
 {: #samples}
 
-样本应用程序可帮助您更好地了解区块链网络和应用程序开发。请访问“网络监视器”中 Marbles 存储库的链接，以获取有关如何安装 Marbles 样本应用程序的信息。有关如何开发和部署自己样本的更多信息，请查看[部署应用程序](v10_application.html)。
+样本应用程序可帮助您更好地了解区块链网络和应用程序开发。请访问**在 GitHub 上查看**链接，以了解如何使用样本并将其部署到 {{site.data.keyword.blockchainfull_notm}} Platform。有关如何开发和部署样本的更多信息，请参阅[部署样本应用程序](howto/prebuilt_samples.html)。
 
 **图 10** 显示“试用样本”屏幕：
 
@@ -210,10 +210,12 @@ lastupdated: "2018-05-15"
 
 单击右上角并打开下拉菜单，然后选择**网络首选项**。这将打开“网络首选项”窗口。“网络首选项”窗口显示网络的基本信息，例如，网络名称、Fabric 版本、{{site.data.keyword.cloud_notm}} 中的网络位置以及分类帐数据库类型。
 
-企业套餐网络即将升级为 Fabric v1.1<!-- May 15th, 2018 will run on Hyperledger Fabric v1.1-->。如果在升级后创建网络，那么还可以在“网络首选项”窗口中管理网络的 Web 不活动超时和双向 TLS。只有网络发起方可更改这些设置。
+2018 年 5 月 15 日后创建的企业套餐网络将在 Hyperledger Fabric V1.1 上运行。如果在升级后创建网络，那么还可以在“网络首选项”窗口中管理网络的 Web 不活动超时和双向 TLS。只有网络发起方可更改这些设置。
 
 <!--
+
 Enterprise Plan networks that are created after May 15th, 2018 will run on Hyperledger Fabric v1.1. If you create networks after the upgrade, you can also manage web inactivity timeout, mutual TLS, and switch your ledger to CouchDB for your network in the Network preferences window. These settings can be changed by the network initiator only.
+
 -->
 
 ### Web 不活动超时
@@ -226,7 +228,7 @@ Enterprise Plan networks that are created after May 15th, 2018 will run on Hyper
 ### 双向 TLS
 {: #mutual-tls}
 
-双向 TLS 保护应用程序与网络之间的通信，并且确保只有您可与网络通信。
+双向 TLS 保护应用程序与网络之间的通信。
 
 **注**：仅**网络发起方**可启用或禁用双向 TLS。这是网络级别设置，将影响所有网络成员。
 
@@ -244,16 +246,21 @@ Enterprise Plan networks that are created after May 15th, 2018 will run on Hyper
 有关更新应用程序以支持双向 TLS 的更多信息，请参阅[如何配置双向 TLS ![外部链接图标](images/external_link.svg "外部链接图标")](https://fabric-sdk-node.github.io/tutorial-mutual-tls.html)
 
 <!--
+
 ### CouchDB ledger type
 {: #couchdb}
+
 **Note**: Only the **network initiator** can switch the ledger database from LevelDB to CouchDB. This is a network level setting and will affect all network members. Switching to CouchDB is permanent. You cannot revert back to LevelDB.
+
 Before Enterprise Plan upgrades to Fabric v1.1, all network peers store data in the pure key-value LevelDB. With Fabric v1.1, you can choose to use CouchDB as your ledger database. CouchDB is a document datastore that permits indexing the contents of your data and allows you to issue rich queries against the data on your peer. Note that Hyperledger Fabric does not support peers running different databases. If CouchDB is used, it must be used by all of the peers.
+
 To use CouchDB, your data must be stored in a data format that can be modeled in chaincode, such as JSON. If the decision is made to migrate from LevelDB to CouchDB, the {{site.data.keyword.blockchainfull_notm}} Platform will migrate your data from key-value format to the CouchDB format automatically.
+
 If you switch to CouchDB, you need to update your chaincode to take advantage of indexes and rich queries. For more information about CouchDB and how to set up index, see [CouchDB as the State Database ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/latest/couchdb_as_state_database.html). For more information about updating chaincode in {{site.data.keyword.blockchainfull_notm}} Platform, see [Updating a chaincode](howto/install_instantiate_chaincode.html#updating-a-chaincode).
+
 -->
 
 **图 14** 显示“网络首选项”窗口：
 
-<!-- ![Network preferences](images/network_preferences_ep.gif "Network preferences") -->
-![网络首选项](images/network_preferences_ep_tmp.png "网络首选项")  
+![网络首选项](images/network_preferences_ep_tmp.png "网络首选项")
 *图 14. 网络首选项*

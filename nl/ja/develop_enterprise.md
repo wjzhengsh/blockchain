@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-05-15"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -30,19 +30,29 @@ lastupdated: "2018-05-15"
 
 1. 接続の詳細を保管するディレクトリーを作成します。以下に例を示します。
 
-        /Users/myUserId/.composer-connection-profiles/bmx-hlfv1
+    ```
+    /Users/myUserId/.composer-connection-profiles/bmx-hlfv1
+    ```
+    {:codeblock}
 
     各接続プロファイルには、`connection.json` ファイルが含まれている必要があります。 `.composer-connection-profiles` の下に新しいディレクトリーを作成します。この例では `bmx-hlfv1` です。 これは、Hyperledger Composer と {{site.data.keyword.blockchainfull_notm}} Platform で作業するときに使用するプロファイルの名前になります。
 
-        mkdir -p ~/.composer-connection-profiles/bmx-hlfv1
+    ```
+    mkdir -p ~/.composer-connection-profiles/bmx-hlfv1
         cd ~/.composer-connection-profiles/bmx-hlfv1
+    ```
+    {:codeblock}
 
 2. これで、次のディレクトリー構造が作成されたはずです。
 
-        /Users/myUserId/.composer-connection-profiles/bmx-hlfv1
+    ```
+    /Users/myUserId/.composer-connection-profiles/bmx-hlfv1
+    ```
+    {:codeblock}
 
     新しく作成されたディレクトリーに `connection.json` という名前のファイルを作成します。 次のテンプレートを使用して `connection.json` ファイルを作成できます。
 
+    ```
         {
             "name": "bmx-hlfv1",
             "description": "A description for a V1 Profile",
@@ -68,6 +78,8 @@ lastupdated: "2018-05-15"
             "globalCert": "-----BEGIN CERTIFICATE-----\r\n...LotsOfStuff\r\n-----END CERTIFICATE-----\r\n-----BEGIN CERTIFICATE-----\r\nMorestuff\r\n-----END CERTIFICATE-----\r\n",
             "timeout": 300
         }
+    ```
+    {:codeblock}
 
     新しく作成された `connection.json` ファイルに、{{site.data.keyword.blockchainfull_notm}} Platform ダッシュボードで提供されている属性を設定します。 ダッシュボードから**「概説」**を選択し、次に**「接続プロファイル」**ボタンを選択して、チャネルのメンバーのエンドポイントと証明書情報を表示します。
 
@@ -77,7 +89,10 @@ lastupdated: "2018-05-15"
 
     テンプレート内の順序付けプログラム URL 値を、次の形式で、接続プロファイルにある関連情報に置き換えます。
 
-        “url”: “grpcs://abca.4.secure.blockchain.ibm.com:12345”
+    ```
+    "url": "grpcs://abca.4.secure.blockchain.ibm.com:12345"
+    ```
+    {:codeblock}
 
 ## ステップ 3: 認証局情報の追加
 
@@ -87,16 +102,22 @@ lastupdated: "2018-05-15"
 
 1. 各ピアの **requestURL** と **eventURL** を設定する必要があります。 **url** 属性を、接続プロファイルにある **url** 値に置き換えます。 **eventURL** 属性を、接続プロファイルにある **eventUrl** に置き換えます。 変更を行った後、`connection.json` の peers セクションの形式は次のようになります。
 
+    ```
         "peers": [
           {
               "requestURL": "grpcs://abca.4.secure.blockchain.ibm.com:12345",
               "eventURL": "grpcs://abca.4.secure.blockchain.ibm.com:12345"
+    ```
+    {:codeblock}
 
 ## ステップ 5: keyValStore 情報の追加
 
 1. 適切なディレクトリーを位置指定するように **keyValStore** 属性を設定します。 **keyValStore** に使用するディレクトリーを作成します。 例えば、ホーム・ディレクトリーの下に `.composer-credentials-mychannel` という新しいディレクトリーを作成します。 **keyValStore** 属性が、以下の形式で、新しく作成されたディレクトリーを位置指定していることを確認します。
 
-        "keyValStore": "/Users/myUserId/.composer-credentials-mychannel",
+    ```
+    "keyValStore": "/Users/myUserId/.composer-credentials-mychannel",
+    ```
+    {:codeblock}
 
 ## ステップ 6: チャネル情報の追加
 
@@ -109,7 +130,10 @@ lastupdated: "2018-05-15"
 ## ステップ 8: globalCert の追加
 1. {{site.data.keyword.blockchainfull_notm}} Platform は、順序付けプログラムとピアに共通した TLS 証明書を使用します。 順序付けプログラムとピアごとに **tlsCACerts** 属性があり、すべてが同じ証明書に設定されます。 `connection.json` ファイル内のダミー値を **tlsCACerts** 値に置き換えます。 次の形式にする必要があります。
 
-        "globalCert": "-----BEGIN CERTIFICATE-----\r\.......
+    ```
+    "globalCert": "-----BEGIN CERTIFICATE-----\r\.......
+    ```
+    {:codeblock}
 
 ## ステップ 9: ピアの準備
 
@@ -117,6 +141,7 @@ lastupdated: "2018-05-15"
 
 **certificateAuthorities** の下の接続プロファイル文書には属性 **registrar** があり、**enrollId** と **enrollSecret** の属性が次の形式で設定されています。
 
+ ```
         "registrar": [
             {
                 "affiliation": "org1",
@@ -124,10 +149,15 @@ lastupdated: "2018-05-15"
                 "enrollSecret": "PA55W0RD12"
             }
         ],
+ ```
+ {:codeblock}
 
 1. 次のコマンドを使用して証明書を要求します。
 
-        composer identity request -p bmx-hlfv1 -i admin -s PA55W0RD12
+    ```
+    composer identity request -p bmx-hlfv1 -i admin -s PA55W0RD12
+    ```
+    {:codeblock}
 
     これにより、ホーム・ディレクトリーの下の `.identityCredentials` ディレクトリーに 3 つのファイルがダウンロードされます。 対象となるファイルは、**enrollId** に基づいています。 上記の例では、**admin-pub.pem** と **admin-priv.pem** という 2 つのファイルがあります。
 
@@ -163,7 +193,10 @@ lastupdated: "2018-05-15"
 
 1. 新しい ID を作成するには、次のコマンドを実行します。
 
-        composer identity import -p bmx-hlfv1 -u admin -c ~/.identityCredentials/admin-pub.pem -k ~/.identityCredentials/admin-priv.pem
+    ```
+    composer identity import -p bmx-hlfv1 -u admin -c ~/.identityCredentials/admin-pub.pem -k ~/.identityCredentials/admin-priv.pem
+    ```
+    {:codeblock}
 
     `bmx-hlfv1` は、以前に作成したプロファイルの名前です。 これで、`.bna` ファイルを {{site.data.keyword.blockchainfull_notm}} Platform にデプロイする準備ができました。
 
@@ -174,4 +207,7 @@ lastupdated: "2018-05-15"
 
 1. 前のステップで作成した ID を使用して、次のコマンドを使用することにより、ビジネス・ネットワークをデプロイします。
 
-        composer network deploy -a myNetwork.bna -p bmx-hlfv1 -i admin -s anyString
+   ```
+   composer network deploy -a myNetwork.bna -p bmx-hlfv1 -i admin -s anyString
+   ```
+   {:codeblock}

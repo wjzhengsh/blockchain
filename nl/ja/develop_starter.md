@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-5-15"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -27,13 +27,13 @@ lastupdated: "2018-5-15"
 
 ## ステップ 1: 管理シークレットの取得
 
-1. スターター・プランの概要画面で、**「接続プロファイル」**をクリックしてダウンロードします。このファイルの名前を「connection-profile.json」に変更します。
+1. スターター・プランの概要画面で、**「接続プロファイル」**をクリックしてダウンロードします。 このファイルの名前を「connection-profile.json」に変更します。
 
-2. このファイルを .bna ファイルと同じディレクトリーに移動します。
+2. このファイルを `.bna` ファイルと同じディレクトリーに移動します。
 
-3. 接続プロファイル内で、「registrar」が表示されるまで下方向に移動します。「registrar」内の「enrollId」の下に、**enrollSecret** というプロパティーがあります。このシークレットを取得して、そのコピーを保存します。
+3. 接続プロファイル内で、「registrar」が表示されるまで下方向に移動します。 「registrar」内の「enrollId」の下に、**enrollSecret** というプロパティーがあります。 このシークレットを取得して、そのコピーを保存します。
 
-![D8KBag](https://i.makeagif.com/media/4-12-2018/D8KBag.gif)
+    ![D8KBag](https://i.makeagif.com/media/4-12-2018/D8KBag.gif)
 
 
 ## ステップ 2: 認証局カードの作成
@@ -42,29 +42,40 @@ lastupdated: "2018-5-15"
 
 1. ステップ 1 で記録した **enrollSecret** を使用して以下のコマンドを実行することによって、CA ビジネス・ネットワーク・カードを作成します。
 
-        composer card create -f ca.card -p connection-profile.json -u admin -s ${enrollSecret}
+   ```
+   composer card create -f ca.card -p connection-profile.json -u admin -s enrollSecret
+   ```
+   {:pre}
+
+上記のコマンドの `enrollSecret` を、接続プロファイルから取得した管理シークレットに置き換えます。
 
 2. 次のコマンドを使用してカードをインポートします。
 
-        composer card import -f ca.card -c ca
+   ```
+   composer card import -f ca.card -c ca
+   ```
+   {:codeblock}
 
 3. カードがインポートされると、それを使用して CA からの有効な証明書用の **enrollSecret** を交換できます。 次のコマンドを実行して、認証局の証明書を要求します。
 
-        composer identity request --card ca --path ./credentials -u admin -s ${enrollSecret}
+   ```
+   composer identity request --card ca --path ./credentials -u admin -s enrollSecret
+   ```
+   {:codeblock}
 
-`composer identity request` コマンドにより、証明書 `.pem` ファイルを格納する `credentials` ディレクトリーが作成されます。
+上記のコマンドの `enrollSecret` を、接続プロファイルから取得した管理シークレットに置き換えます。`composer identity request` コマンドにより、証明書 `.pem` ファイルを格納する `credentials` ディレクトリーが作成されます。
 
 ## ステップ 3: スターター・プラン・インスタンスへの証明書の追加
 
-証明書をスターター・プラン・インスタンスに追加する必要があります。 追加するには、{{site.data.keyword.blockchainfull_notm}} Platform UI を使用すると便利です。 証明書を追加し、ピアを再始動してから、証明書をチャネル上で同期させる必要があります。必要な証明書は、前のコマンドで生成された `admin-pub.pem` ファイルです。これは、`credentials` ディレクトリーにあります。
+証明書をスターター・プラン・インスタンスに追加する必要があります。 追加するには、{{site.data.keyword.blockchainfull_notm}} Platform UI を使用すると便利です。 証明書を追加し、ピアを再始動してから、証明書をチャネル上で同期させる必要があります。 必要な証明書は、前のコマンドで生成された `admin-pub.pem` ファイルです。これは、`credentials` ディレクトリーにあります。
 
-1. スターター・プランの UI で、**「メンバー」**タブ、**「証明書」**、**「証明書の追加」**の順にクリックします。`credentials` ディレクトリーに移動し、証明書ボックス内の `admin-pub.pem` ファイルの内容をコピー・アンド・ペーストします。証明書を送信し、ピアを再始動します。注: ピアの再始動には 1 分ほどかかります。
+1. スターター・プランの UI で、**「メンバー」**タブ、**「証明書」**、**「証明書の追加」**の順にクリックします。 `credentials` ディレクトリーに移動し、証明書ボックス内の `admin-pub.pem` ファイルの内容をコピー・アンド・ペーストします。 証明書を送信し、ピアを再始動します。 注: ピアの再始動には 1 分ほどかかります。
 
     ![jlEb2y](https://i.makeagif.com/media/4-12-2018/jlEb2y.gif)
 
-2. 次に、証明書をチャネル上で同期させる必要があります。**「チャネル」**タブ、**「アクション」**ボタン、**「証明書の同期 (Sync Certificate)」**、および **「送信」**の順にクリックします。
+2. 次に、証明書をチャネル上で同期させる必要があります。 **「チャネル」**タブ、**「アクション」**ボタン、**「証明書の同期 (Sync Certificate)」**、および **「送信」**の順にクリックします。
 
-![E-sVV5](https://i.makeagif.com/media/4-12-2018/E-sVV5.gif)
+    ![E-sVV5](https://i.makeagif.com/media/4-12-2018/E-sVV5.gif)
 
 ## ステップ 4: 管理ビジネス・ネットワーク・カードの作成
 
@@ -72,37 +83,55 @@ lastupdated: "2018-5-15"
 
 1. 次のコマンドを使用して、チャネル管理者とピア管理者の役割を持つ管理カードを作成します。
 
-        composer card create -f adminCard.card -p connection-profile.json -u admin -c ./credentials/admin-pub.pem -k ./credentials/admin-priv.pem --role PeerAdmin --role ChannelAdmin
+   ```
+   composer card create -f adminCard.card -p connection-profile.json -u admin -c ./credentials/admin-pub.pem -k ./credentials/admin-priv.pem --role PeerAdmin --role ChannelAdmin
+   ```
+   {:codeblock}
 
-    このカードは、ビジネス・ネットワークをスターター・プランにデプロイするために使用されます。
+   このカードは、ビジネス・ネットワークをスターター・プランにデプロイするために使用されます。
 
 2. 次のコマンドを使用して、前のステップで作成したカードをインポートします。
 
-        composer card import -f adminCard.card -c adminCard
+   ```
+   composer card import -f adminCard.card -c adminCard
+   ```
+   {:codeblock}
 
 ## ステップ 5: ビジネス・ネットワークのインストールと開始
 
-次に、前のステップで作成したカードを使用して、ビジネス・ネットワークをインストールして開始できます。 このガイドでは、車両製造ネットワークのサンプルをインストールし、車両製造サンプルを使用するか、ユーザー独自のビジネス・ネットワークをインストールします。ただし、コマンドに指定されているビジネス・ネットワーク名は必ず変更してください。ビジネス・ネットワークを開始するコマンドによってカードも作成されます。 スターター・プランの場合、このカードを削除する必要があります。コマンド例ではこのカードに `delete_me.card` という名前を付けて、識別しやすくしています。
+次に、前のステップで作成したカードを使用して、ビジネス・ネットワークをインストールして開始できます。 このガイドでは、車両製造ネットワークのサンプルをインストールし、車両製造サンプルを使用するか、ユーザー独自のビジネス・ネットワークをインストールします。ただし、コマンドに指定されているビジネス・ネットワーク名は必ず変更してください。 ビジネス・ネットワークを開始するコマンドによってカードも作成されます。 スターター・プランの場合、このカードを削除する必要があります。コマンド例ではこのカードに `delete_me.card` という名前を付けて、識別しやすくしています。
 
 1. 次のコマンドを使用して Hyperledger Composer ランタイムをインストールします。
 
-        composer network install -c adminCard -a vehicle-manufacture-network.bna
+   ```
+   composer network install -c adminCard -a vehicle-manufacture-network.bna
+   ```
+   {:codeblock}
 
-    このコマンドの実行時に返されるビジネス・ネットワークのバージョン番号をメモします。これは、次のステップで必要になります。
+   このコマンドの実行時に返されるビジネス・ネットワークのバージョン番号をメモします。 これは、次のステップで必要になります。
 
-2. 以下のコマンドを使用して、ビジネス・ネットワークを開始します。エラーが返された場合は、しばらく待ってから再試行してください。直前のステップでメモしたバージョン番号を `-V` オプションの後に指定します。
+2. 以下のコマンドを使用して、ビジネス・ネットワークを開始します。 エラーが返された場合は、しばらく待ってから再試行してください。 直前のステップでメモしたバージョン番号を `-V` オプションの後に指定します。
 
-        composer network start -c adminCard -n vehicle-manufacture-network -V 0.0.1 -A admin -C ./credentials/admin-pub.pem -f delete_me.card
+    ```
+    composer network start -c adminCard -n vehicle-manufacture-network -V 0.0.1 -A admin -C ./credentials/admin-pub.pem -f delete_me.card
+    ```
+    {:codeblock}
 
 3. `delete_me.card` というビジネス・ネットワーク・カードを削除します。
 
 4. 次のコマンドを使用して、新しいビジネス・ネットワーク・カードを作成し、以前に取得した証明書を参照します。
 
-        composer card create -n vehicle-manufacture-network -p connection-profile.json -u admin -c ./credentials/admin-pub.pem -k ./credentials/admin-priv.pem
+   ```
+   composer card create -n vehicle-manufacture-network -p connection-profile.json -u admin -c ./credentials/admin-pub.pem -k ./credentials/admin-priv.pem
+   ```
+   {:codeblock}
 
 5. 次のコマンドを使用して、ビジネス・ネットワーク・カードをインポートします。
 
-        composer card import -f ./admin@vehicle-manufacture-network.card
+    ```
+    composer card import -f ./admin@vehicle-manufacture-network.card
+    ```
+    {:codeblock}
 
 これで、ビジネス・ネットワークがスターター・プラン・インスタンスにデプロイされました。
 
@@ -110,8 +139,11 @@ lastupdated: "2018-5-15"
 
 1. 以下のコマンドを実行して、ビジネス・ネットワークを ping します。
 
-        composer network ping -c admin@vehicle-manufacture-network
+   ```
+   composer network ping -c admin@vehicle-manufacture-network
+   ```
+   {:codeblock}
 
-チェーンコード・ログを表示するには、**「チャネル」**をクリックしてから、対象のチャネルを選択します。ドロップダウン矢印をクリックしてログを表示するか、「アクション」記号をクリックして詳細を表示します。
+チェーンコード・ログを表示するには、**「チャネル」**をクリックしてから、対象のチャネルを選択します。 ドロップダウン矢印をクリックしてログを表示するか、「アクション」記号をクリックして詳細を表示します。
 
 ![fN-Yuj](https://i.makeagif.com/media/4-13-2018/fN-Yuj.gif)

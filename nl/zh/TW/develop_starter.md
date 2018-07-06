@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-5-15"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -29,11 +29,11 @@ lastupdated: "2018-5-15"
 
 1. 從「入門範本方案」概觀畫面中，按一下**連線設定檔**，然後下載。將此檔案重新命名為 'connection-profile.json'。
 
-2. 將此檔案移至與 .bna 檔案相同的目錄中。
+2. 將此檔案移至與 `.bna` 檔案相同的目錄中。
 
 3. 在連線設定檔內，一直往下，直到您看到 'registrar'。在 'registrar' 的 'enrollId' 下，有 **enrollSecret** 內容。請擷取該密碼，並儲存一份副本。
 
-![D8KBag](https://i.makeagif.com/media/4-12-2018/D8KBag.gif)
+    ![D8KBag](https://i.makeagif.com/media/4-12-2018/D8KBag.gif)
 
 
 ## 步驟 2：建立憑證管理中心卡
@@ -42,17 +42,28 @@ lastupdated: "2018-5-15"
 
 1. 使用在步驟 1 中記下的 **enrollSecret**，執行下列指令來建立 CA 商業網路卡：
 
-        composer card create -f ca.card -p connection-profile.json -u admin -s ${enrollSecret}
+   ```
+   composer card create -f ca.card -p connection-profile.json -u admin -s enrollSecret
+   ```
+   {:pre}
+
+將前述指令中的 `enrollSecret` 取代為從連線設定檔中擷取的管理者密碼。
 
 2. 使用下列指令來匯入該卡：
 
-        composer card import -f ca.card -c ca
+   ```
+   composer card import -f ca.card -c ca
+   ```
+   {:codeblock}
 
 3. 現在已匯入該卡，接著就可以使用它來將 **enrollSecret** 交換成 CA 提供的有效憑證。請執行下列指令，以向憑證管理中心要求憑證：
 
-        composer identity request --card ca --path ./credentials -u admin -s ${enrollSecret}
+   ```
+   composer identity request --card ca --path ./credentials -u admin -s enrollSecret
+   ```
+   {:codeblock}
 
-`composer identity request` 指令會建立 `credentials` 目錄，其中包含憑證的 `.pem` 檔案。
+將前述指令中的 `enrollSecret` 取代為從連線設定檔中擷取的管理者密碼。`composer identity request` 指令會建立 `credentials` 目錄，其中包含憑證的 `.pem` 檔案。
 
 ## 步驟 3：將憑證新增至入門範本方案實例
 
@@ -64,7 +75,7 @@ lastupdated: "2018-5-15"
 
 2. 接下來，必須將頻道上的憑證同步化。按一下**頻道**標籤，並按一下**動作**按鈕，然後按一下**同步化憑證**及**提交**。
 
-![E-sVV5](https://i.makeagif.com/media/4-12-2018/E-sVV5.gif)
+    ![E-sVV5](https://i.makeagif.com/media/4-12-2018/E-sVV5.gif)
 
 ## 步驟 4：建立管理者商業網路卡
 
@@ -72,13 +83,19 @@ lastupdated: "2018-5-15"
 
 1. 使用下列指令，以頻道管理者角色和對等節點管理者角色來建立管理卡：
 
-        composer card create -f adminCard.card -p connection-profile.json -u admin -c ./credentials/admin-pub.pem -k ./credentials/admin-priv.pem --role PeerAdmin --role ChannelAdmin
+   ```
+   composer card create -f adminCard.card -p connection-profile.json -u admin -c ./credentials/admin-pub.pem -k ./credentials/admin-priv.pem --role PeerAdmin --role ChannelAdmin
+   ```
+   {:codeblock}
 
-    此卡會用來將商業網路部署至「入門範本方案」。
+   此卡會用來將商業網路部署至「入門範本方案」。
 
 2. 使用下列指令，匯入在前一個步驟中建立的管理卡：
 
-        composer card import -f adminCard.card -c adminCard
+   ```
+   composer card import -f adminCard.card -c adminCard
+   ```
+   {:codeblock}
 
 ## 步驟 5：安裝及啟動商業網路
 
@@ -86,23 +103,35 @@ lastupdated: "2018-5-15"
 
 1. 使用下列指令來安裝 Hyperledger Composer 運行環境：
 
-        composer network install -c adminCard -a vehicle-manufacture-network.bna
+   ```
+   composer network install -c adminCard -a vehicle-manufacture-network.bna
+   ```
+   {:codeblock}
 
-    請記下執行此指令時所傳回的商業網路版本號碼。下一步驟中，將需要它。
+   請記下執行此指令時所傳回的商業網路版本號碼。下一步驟中，將需要它。
 
 2. 使用下面的指令來啟動商業網路。如果您收到錯誤，請稍候，然後再試一次。在 `-V` 選項之後，使用最後一個步驟中的版本號碼。
 
-        composer network start -c adminCard -n vehicle-manufacture-network -V 0.0.1 -A admin -C ./credentials/admin-pub.pem -f delete_me.card
+    ```
+    composer network start -c adminCard -n vehicle-manufacture-network -V 0.0.1 -A admin -C ./credentials/admin-pub.pem -f delete_me.card
+    ```
+    {:codeblock}
 
 3. 刪除名為 `delete_me.card` 的商業網路卡。
 
 4. 使用下列指令來建立新的商業網路卡，並參照先前擷取的憑證：
 
-        composer card create -n vehicle-manufacture-network -p connection-profile.json -u admin -c ./credentials/admin-pub.pem -k ./credentials/admin-priv.pem
+   ```
+   composer card create -n vehicle-manufacture-network -p connection-profile.json -u admin -c ./credentials/admin-pub.pem -k ./credentials/admin-priv.pem
+   ```
+   {:codeblock}
 
 5. 使用下列指令來匯入商業網路卡：
 
-        composer card import -f ./admin@vehicle-manufacture-network.card
+    ```
+    composer card import -f ./admin@vehicle-manufacture-network.card
+    ```
+    {:codeblock}
 
 商業網路現在已部署至「入門範本方案」實例。
 
@@ -110,7 +139,10 @@ lastupdated: "2018-5-15"
 
 1. 執行下列指令，以對商業網路進行連線測試：
 
-        composer network ping -c admin@vehicle-manufacture-network
+   ```
+   composer network ping -c admin@vehicle-manufacture-network
+   ```
+   {:codeblock}
 
 若要檢視鏈碼日誌，請按一下**頻道**，然後選取您的頻道。按一下下拉箭頭以檢視日誌，或按一下「動作」符號更詳細地進行檢視。
 

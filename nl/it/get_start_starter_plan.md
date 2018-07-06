@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-05-23"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -20,9 +20,7 @@ lastupdated: "2018-05-23"
 <!--Note that it might cause extra cost if you exceed the default resource limits of two organizations and two peers.-->
 {:shortdesc}
 
-**Note**:
-1. {{site.data.keyword.blockchainfull}} Platform piano Starter è un ambiente di sviluppo e test  non è adatto per i carichi di lavoro di produzione. Se ti serve un ambiente di produzione, vedi [Informazioni su piano Enterprise](enterprise_plan.html).
-2. Piano Starter è attualmente alla fase beta ed è disponibile solo nella regione **Stati Uniti Sud** in {{site.data.keyword.cloud_notm}}.
+**Nota**: {{site.data.keyword.blockchainfull}} Platform piano Starter è un ambiente di sviluppo e test  non è adatto per i carichi di lavoro di produzione. Se ti serve un ambiente di produzione, vedi [Informazioni su piano Enterprise](enterprise_plan.html).
 
 Piano Starter ti consente di acquisire e sviluppare competenze con {{site.data.keyword.blockchainfull_notm}} Platform, eseguire applicazioni di esempio, testare le tue applicazioni e simulare uno scenario con più organizzazioni.  Questa esercitazione introduttiva presenta i prerequisiti e i passi a cui devi attenerti per creare e utilizzare una rete piano Starter.
 
@@ -34,9 +32,9 @@ Puoi ottenere una [rete](glossary.html#network) piano Starter con la configurazi
 
 1. Individua il [servizio blockchain ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://console.bluemix.net/catalog/services/blockchain) nel catalogo {{site.data.keyword.cloud_notm}}.   
     **Nota**: devi accedere con il tuo account a pagamento {{site.data.keyword.cloud_notm}}. Se non hai un account, fai clic sul pulsante **Registrati per creare**. Dopo aver creato un account gratuito, aggiornalo a un tipo **Pagamento a consumo** andando in **Gestisci** > **Fatturazione e utilizzo** > **Fatturazione** nella console {{site.data.keyword.cloud_notm}} e facendo clic su **Aggiungi carta di credito**.
-2. Assicurati di scegliere **Stati Uniti Sud** come regione in {{site.data.keyword.cloud_notm}}.
-3. Seleziona la tua organizzazione e il tuo spazio Cloud Foundry, dove creerai la tua rete.
-4. Scegli **Piano di appartenenza Starter** dalla tabella dei piani di prezzi.
+2. Scegli la regione in {{site.data.keyword.cloud_notm}} per creare la rete.
+3. Seleziona la tua organizzazione e il tuo spazio Cloud Foundry per creare la rete.
+4. Scegli **Piano di adesione Starter** dalla tabella dei piani di prezzi.
 5. Fai clic sul pulsante **Crea**. Nota: se sei invitato ad aderire a una rete, puoi vedere un pannello di benvenuto a comparsa. Per creare una rete, scegli **Procedi alla tua rete** e fai clic su **Continua**. Per aderire a una rete, vedi il passo 5 in [Adesione a una rete](#joining-a-network).
   Ora sei pronti a usare la tua rete piano Starter con la configurazione predefinita. La rete è in esecuzione con una ordinante (noto come un servizio ordini "SOLO"), due organizzazioni, una CA e un peer per ogni organizzazione. Viene anche creato un canale predefinito.
 6. Fai clic sul pulsante **Avvia**.
@@ -60,7 +58,7 @@ Devi creare un'istanza del servizio [{{site.data.keyword.blockchain}} Platform !
 
 1. Accedi con il tuo account {{site.data.keyword.cloud_notm}}. Se non hai un account, fai clic sul pulsante **Registrati per creare**.
 2. Seleziona l'organizzazione Cloud Foundry dove vuoi memorizzare la tua rete {{site.data.keyword.blockchain}}.
-3. Seleziona **Piano di appartenenza Starter** dalla tabella dei piani di prezzi.
+3. Seleziona **Piano di adesione Starter** dalla tabella dei piani di prezzi.
 4. Fai clic sul pulsante **Crea**. La pagina dell'istanza del servizio si apre con un pannello di benvenuto a comparsa. Nota: puoi scegliere di aderire a una rete o continuare a crearne una tua. Per creare una rete, vedi il passo 4 in [Creazione di una rete](#creating-a-network).
 5. Nel pannello di benvenuto, scegli **Unisciti a una rete esistente**, seleziona la rete a cui aderire dall'elenco a discesa e fai clic su **Continua**.
 
@@ -85,19 +83,18 @@ Sei nella pagina dell'istanza del servizio subito dopo aver creato un'istanza de
 Richiama le tue credenziali del servizio attenendoti alla seguente procedura:
 1. Nella pagina dell'istanza del servizio, fai clic su **Credenziali del servizio** nel navigator a sinistra per visualizzare la schermata "Credenziali del servizio".
 2. Fai clic su **Nuova credenziale** nella schermata "Credenziali del servizio".
-3. Nella schermata "Aggiungi nuova credenziale", dai un nome alla credenziale e fai clic su **Aggiungi**. La nuova credenziale viene aggiunta nella tabella. Puoi fare clic su **Visualizza credenziali** nella colonna "AZIONI" per visualizzare i dettagli della credenziale. Questa credenziale contiene la chiave API e il segreto, che puoi utilizzare per autorizzare le API.  
-    Se vuoi vedere il profilo di connessione della tua rete, immetti **{"legacy": true}** come parametro di configurazione in linea quando crei le nuove credenziali. Il profilo di connessione contiene gli endpoint API per le tue risorse di rete, che puoi usare nelle tue API e nelle tue applicazioni.
+3. Nella schermata "Aggiungi nuova credenziale", dai un nome alla credenziale e immetti **{"type": "service_instance_token"}** nel campo "Aggiungi parametro di configurazione inline". Fai clic su **Aggiungi**. La nuova credenziale viene aggiunta nella tabella. Puoi fare clic su **Visualizza credenziali** nella colonna "AZIONI" per visualizzare i dettagli della credenziale. Questa credenziale contiene la chiave API e il segreto, che puoi utilizzare per autorizzare le API.  
 
 ![Richiamo delle credenziali della rete](images/service_credentials.gif "Richiamo delle credenziali della rete")
 
 ### Richiamo nel monitoraggio della rete
 Puoi trovare le credenziali di rete sulla schermata "API" nel tuo monitoraggio della rete. Per ulteriori informazioni sull'utilizzo delle API, vedi [Interazione con la rete utilizzando le API Swagger](howto/swagger_apis.html).
 
-Puoi richiamare il profilo di connessione nella schermata "Panoramica" nel tuo monitoraggio della rete. Fai clic sul pulsante **Profilo connessione** nella schermata "Panoramica"; il profilo di connessione viene visualizzato in una nuova pagina.
+Puoi richiamare il profilo di connessione nella schermata "Overview" nel tuo monitoraggio della rete. Fai clic sul pulsante **Connection Profile** nella schermata "Overview"; il profilo di connessione viene visualizzato in una nuova pagina.
 
 
 ## Distribuzione di applicazioni di esempio
-Piano Starter ti consente di distribuire delle applicazioni di esempio alla tua rete con solo pochi clic. Con gli esempi, puoi facilmente imparare la modalità di funzionamento di chaincode e applicazioni in una rete. 
+Piano Starter ti consente di distribuire delle applicazioni di esempio alla tua rete con solo pochi clic. Con gli esempi, puoi facilmente imparare la modalità di funzionamento di chaincode e applicazioni in una rete.
 
 Per ulteriori informazioni, vedi [Distribuzione di applicazioni di esempio](howto/prebuilt_samples.html).
 
@@ -113,19 +110,23 @@ Se la tua applicazione richiede una transazione, puoi visualizzare le informazio
 
 
 ## Reimpostazione di una rete
-Se vuoi cancellare le tue configurazioni personalizzate, la tua chaincode in esecuzione o le tue applicazioni distribuite, puoi impostare nuovamente la tua rete sulla configurazione predefinita iniziale. Per ulteriori informazioni, vedi [Reimpostare la rete](dashboard.html#reset-network).
+Se vuoi cancellare le tue configurazioni personalizzate, la tua chaincode in esecuzione o le tue applicazioni distribuite, puoi impostare nuovamente la tua rete sulla configurazione predefinita iniziale.  Per ulteriori informazioni, vedi [Reimpostare la rete](dashboard.html#reset-network).
 
 
-## Migrazione da piano Starter a piano Enterprise
+## Migrazione dal piano Starter al piano Enterprise
 {: #migrate}
 
 Puoi distribuire in una rete piano Enterprise un `.bna`, chaincode e applicazioni di cui esegui il test su una rete piano Starter.
 
-Se hai un tuo file di archivio di rete di business (`.bna`), attieniti alle istruzioni per la [distribuzione di una rete di business a piano Enterprise](./develop_enterprise.html). Se non hai un tuo file `.bna`, usa il comando `composer network download` per richiamarlo dall'istanza piano Starter. Per ulteriori informazioni sul comando `composer network download`, vedi la [documentazione della riga di comando Hyperledger Composer ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://hyperledger.github.io/composer/reference/commands){:new_window}.
+Se hai un tuo file di archivio di rete di business (`.bna`), attieniti alle istruzioni per la [distribuzione di una rete di business al piano Enterprise](./develop_enterprise.html). Se non hai un tuo file `.bna`, usa il comando `composer network download` per richiamarlo dall'istanza del piano Starter. Per ulteriori informazioni sul comando `composer network download`, vedi la [documentazione della riga di comando Hyperledger Composer ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://hyperledger.github.io/composer/latest/reference/commands){:new_window}.
 
 Il chaincode, che è simile ai file `.bna`, è sviluppato esternamente. Per distribuire in Enterprise un chaincode di cui esegui il test su una rete piano Starter, attieniti alle istruzioni in [Installazione, istanziazione e aggiornamento di un chaincode](howto/install_instantiate_chaincode.html#installchaincode).
 
-Come puoi vedere in [Distribuzione di applicazioni di esempio](howto/prebuilt_samples.html), piano Starter rende semplice integrare un'applicazione di esempio con la tua rete utilizzando Toolchain. Questa impostazione consente anche l'integrazione continua aggiornando automaticamente la tua applicazione di esempio ogni volta che il tuo repository di applicazioni duplicato viene modificato. Se vuoi distribuire questa applicazione in una rete piano Enterprise, puoi copiare il tuo repository di applicazioni duplicato in un nuovo repository e attenerti quindi alle istruzioni in [Distribuzione di applicazioni di esempio in modo manuale](howto/prebuilt_samples.html#deploy_sample_applications_manually).
+<!--
+As you can see in [Deploying sample applications](howto/prebuilt_samples.html), Starter Plan makes it easy to get a sample application integrated with your network by using Toolchain. This setup also allows for continuous integration by automatically updating your sample application whenever your forked application repo is changed. If you want to deploy this application into an Enterprise Plan network, you can copy your forked application repo into a new repo and then follow the instructions in [Deploying sample applications manually](howto/prebuilt_samples.html#deploy_sample_applications_manually).
+-->
+
+Se distribuisci una qualche applicazione di esempio nella tua rete piano Starter e vuoi distribuire questa applicazione in una rete piano Enterprise, puoi copiare il tuo repository di applicazioni duplicato in un nuovo repository e attenerti quindi alle istruzioni in [Distribuzione di applicazioni di esempio in modo manuale](howto/prebuilt_samples.html#deploy_sample_applications_manually).
 
 
 ## Eliminazione, o uscita da, una rete

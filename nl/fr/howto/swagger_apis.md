@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-05-15"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -14,7 +14,8 @@ lastupdated: "2018-05-15"
 
 # Interaction avec le réseau à l'aide d'API Swagger
 
-La plateforme {{site.data.keyword.blockchainfull}} expose un certain nombre d'API REST pour simplifier le développement de vos applications. Vous pouvez les tester sur vos réseaux de blockchain à l'aide d'une interface utilisateur Swagger.
+{{site.data.keyword.blockchainfull_notm}} Platform expose dans Swagger un certain nombre d'API REST que vous pouvez utiliser pour gérer les noeuds, les homologues et les membres de votre réseau. Vos applications peuvent recourir à ces API pour gérer d'importantes ressources réseau sans utiliser le moniteur réseau.
+
 {:shortdesc}
 
 Avant de commencer, vous devez créer une instance de service de plateforme [{{site.data.keyword.blockchain}} ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://console.bluemix.net/catalog/services/blockchain) on {{site.data.keyword.Bluemix_notm}} et créer ou rejoindre le réseau de <!--or Enterprise Plan -->blockchain d'un plan Starter.
@@ -26,20 +27,7 @@ Avant de commencer, vous devez créer une instance de service de plateforme [{{s
 
 Accédez au Moniteur réseau de votre réseau de blockchain et ouvrez l'écran "API" dans le navigateur de gauche. Vous pouvez voir vos données d'identification réseau pour les API REST. Vous pourrez autoriser ultérieurement les API à l'aide des valeurs de "key" et "secret" affichées ici, puis exécuter les API avec "network_id" comme paramètre. Cliquez sur **Afficher le secret** pour afficher la valeur de la zone de valeur confidentielle. Copiez les valeurs des zones key, secret et network_id, que vous pouvez utiliser plus tard dans l'interface utilisateur Swagger.
 
-<!-- Removing this code snippet so people don't try to use these values
-```
-},
-   "x-api": {
-       "url": "https://ibmblockchain.bluemix.net",
-       "key": "PeerOrg1",
-       "network_id": "e1f5b3341b1d483bbaf829f601144023",
-       "secret": "71a329aabde9ff20de0aa4bfafd72a4466d78c87f637e7ff92c2534b5ce81cc0"
-   }
-```
--->
-
 La **Figure 1** illustre l'écran "API" :
-
 ![Ecran API](../images/API_screen_starter.png "Ecran API")
 *Figure 1. API*
 
@@ -62,7 +50,7 @@ Dans l'interface utilisateur swagger, cliquez sur le bouton **Autoriser** afin d
 
 Avec l'authentification de base, les données d'identification que vous indiquez dans la fenêtre Autoriser sont stockées dès que vous cliquez sur les boutons **Autoriser** et **Terminé** et elles sont transmises sur chaque appel d'API REST.
 
-La **Figure 3** illustre le processus d'autorisation des API Swagger :
+La **Figure 3** illustre la procédure d'autorisation d'API Swagger :
 
 ![Autorisation des API](../images/swaggerUIAuthorize.gif "Autorisation des API")  
 *Figure 3. Autorisation des API*
@@ -70,13 +58,26 @@ La **Figure 3** illustre le processus d'autorisation des API Swagger :
 
 ## Test des API
 
-Cliquez sur l'API REST que vous voulez exécuter puis sur le bouton **Essayez**. Entrez les paramètres obligatoires et cliquez sur **Exécuter**. L'appel API REST s'exécute sur votre réseau.
+Cliquez sur l'API REST que vous voulez exécuter puis sur le bouton **Essayez**.
 
-La **Figure 4** illustre l'"interface utilisateur Swagger":
+La **Figure 4** illustre le bouton "Essayez" dans l'interface utilisateur Swagger :
 
-![Interface utilisateur Swagger](../images/swaggerUITryItOut.png "Interface utilisateur Swagger")  
-*Figure 4. Interface utilisateur Swagger*
+![Bouton Essayez dans l'interface utilisateur Swagger](../images/swaggerUITryItOut.png "Bouton Essayez dans l'interface utilisateur Swagger")  
+*Figure 4. Bouton "Essayez" dans l'interface utilisateur Swagger*
 
+Après avoir cliqué sur le bouton **Essayez**, vous pouvez entrer les paramètres requis pour utiliser l'API. Vous pouvez trouver la valeur `networkID` dans vos données d'identification réseau et les autres paramètres dans votre Moniteur réseau. Après voir entré les paramètres, cliquez sur **Exécuter** pour lancer l'appel d'API REST sur votre réseau.
+
+La **Figure 5** illustre les paramètres dans l'interface utilisateur Swagger :
+
+![Paramètres dans l'interface utilisateur Swagger](../images/swaggerUIParams.png "Paramètres dans l'interface utilisateur Swagger")  
+*Figure 5. Saisie des paramètres*  
+
+Après avoir cliqué sur **Exécuter**, vous pouvez observer la réponse de l'appel d'API sur votre réseau. Vous pouvez aussi voir une commande CURL permettant d'appeler directement l'API depuis votre ligne de commande.
+
+La **Figure 6** illustre le corps de la réponse de l'API, l'URL, et la commande CURL :
+
+![Réponse d'API dans l'interface utilisateur Swagger](../images/swaggerUICurlResponse.png "Réponse d'API dans l'interface utilisateur Swagger")  
+*Figure 6. Réponse d'API*    
 
 ## Conseils pour l'identification et la résolution des problèmes
 

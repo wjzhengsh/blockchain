@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-05-15"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -27,8 +27,11 @@ Para usar APIs do Swagger para criar ou se associar a uma rede, é necessária u
 
 1. Em seu [ painel do {{site.data.keyword.cloud_notm}} ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://console.bluemix.net/dashboard/apps/), abra a instância de serviço que você criou.
 2. Clique em **Credenciais de serviço** no navegador esquerdo.
-3. Clique no botão "Nova credencial" na página **Credenciais de serviço** para criar uma nova credencial. Dê à credencial um nome, por exemplo, *CreateJoin* e clique no botão **Incluir**. Você não precisa inserir nada no campo "Incluir parâmetro de configuração sequencial".
-    ![Retrieve service credentials](../images/service_credentials.gif "Retreive service credentials")
+3. Clique no botão "Nova credencial" na página **Credenciais de serviço** para criar uma nova credencial. 
+    1. Dê à credencial um nome, por exemplo, *CreateJoin*.
+    2. Insira **{"type": "service_instance_token"}** no campo "Incluir parâmetro de configuração sequencial".
+    3. Clique no botão **Incluir**.
+    ![Recuperar credenciais de serviço](../images/service_credentials.gif "Recuperar credenciais de serviço")
 4. Após a nova credencial ser criada, clique em **Visualizar credenciais** sob o cabeçalho **AÇÕES** dessa credencial. O conteúdo da credencial é semelhante a este exemplo:
 
     ```
@@ -62,12 +65,44 @@ Para usar APIs do Swagger para criar ou se associar a uma rede, é necessária u
 ## Verificando locais de rede disponíveis
 {: #check-location}
 
-É possível usar APIs para criar redes de blockchain apenas em locais de rede disponíveis. Antes de criar uma rede, use a API a seguir para verificar os locais de rede disponíveis.
+É possível usar APIs para criar redes de blockchain apenas em locais de rede disponíveis. Antes de criar uma rede, use a API a seguir para obter uma lista atual de locais de rede disponíveis. Nenhuma credencial é necessária para executar esta API.
 
 ```
-/network-locations/available
+https://ibmblockchain-v2.ng.bluemix.net/api/v1/network-locations/available
 ```
 {:codeblock}
+
+É retornada uma lista de locais de rede disponíveis que é semelhante a:
+
+```
+{
+  "DAL": {
+    "location_id": "DAL",
+    "description": "Dallas",
+    "status": "disponível"
+    "swagger_url": "https://ibmblockchain-v2-dal.4.secure.blockchain.ibm.com/api-docs"
+  },
+  "FFT": {
+    "location_id": "FFT",
+    "description": "Frankfurt",
+    "status": "disponível"
+    "swagger_url": "https://ibmblockchain-v2-fft.2.secure.blockchain.ibm.com/api-docs"
+  },
+  "TOR": {
+    "location_id": "TOR",
+    "description": "Toronto",
+    "status": "disponível"
+    "swagger_url": "https://ibmblockchain-v2-tor.1.secure.blockchain.ibm.com/api-docs"
+  }
+}
+```
+{:codeblock}
+
+Se você planeja criar uma rede, selecione o local no qual gostaria de criar a sua rede por meio da lista retornada pela API. Observe que o ``location_id`` e a ``swagger_url`` estão associados a esse local.  
+
+Se você planeja se associar à rede, tome nota da ``swagger_url`` associada com o ``location_id`` especificado em seu e-mail de convite.
+
+A ``swagger_url`` representa o terminal de API que você usará ao criar ou se associar a uma rede usando as APIs abaixo.
 
 
 ## Criando uma rede
@@ -76,21 +111,21 @@ Para usar APIs do Swagger para criar ou se associar a uma rede, é necessária u
 
 Se você usar o Enterprise Plan, precisará concluir duas etapas para criar uma rede com APIs.
 
-1. Crie uma instância de serviço do blockchain no {{site.data.keyword.cloud_notm}} com o Enterprise Plan<!-- or Enterprise Plus Plan-->. Recupere o seu ID da instância de serviço e o token como o nome do usuário de autenticação básica e a senha. Para obter mais informações, veja [Recuperando a credencial de autenticação básica para a API](#retrieve-id-token).
+1. Crie uma instância de serviço do blockchain no {{site.data.keyword.cloud_notm}} com o Enterprise Plan<!-- or Enterprise Plus Plan-->.  Recupere o seu ID da instância de serviço e o token como o nome do usuário de autenticação básica e a senha. Para obter mais informações, veja [Recuperando a credencial de autenticação básica para a API](#retrieve-id-token).
 
-2. Chame a API **Criar rede** usando essas credenciais de serviço.
+2. Chame a API **Criar rede** usando essas credenciais de serviço. Emita essa API com relação à api ``swagger_url`` recuperada de [Verificando locais de rede disponíveis](#check-location). Navegue para o ``swagger_url link`` para usar a UI do Swagger para emitir a API Criar rede ou emitir programaticamente o comando usando o endereço da URL sem ``/api-docs``. Por exemplo,
 
-```
-/networks
-```
-{:codeblock}
+    ```
+    https://ibmblockchain-v2-tor.1.secure.blockchain.ibm.com/api/v1/networks
+    ```
+    {:codeblock}
 
 **Parâmetros**:
-- `location_id`: o ID de um local de rede disponível. Para obter mais informações, veja [Verificando locais de rede disponíveis](check-location).
+- `location_id`: o ID de um local de rede disponível. Especifique o valor do `loation_id` anotado de [Verificando locais de rede disponíveis](#check-location).
 - `company_name`: seu identificador como um membro na rede.
 - `email`: seu endereço de e-mail para receber notificações.
 - `peers`: número de peers que você deseja criar para esse membro. Os valores válidos são 0-6. Também será possível criar peers para o membro, posteriormente, na IU do Monitor de rede.
-- `ledger_type`: o tipo de livro razão dessa rede. Os valores válidos são levelDB e couchDB. **levelDB** é o valor padrão.
+- `ledger_type`: o tipo de livro-razão dessa rede. Os valores válidos são levelDB e couchDB. **levelDB** é o valor padrão.
 
 
 ## Convidar novos membros a uma rede
@@ -111,17 +146,28 @@ Os membros convidados receberão um convite por e-mail com instruções sobre co
 
 ## Participando de uma rede
 
-Se você for convidado a se associar a uma rede de blockchain, receberá um convite por e-mail.  É possível seguir as instruções no e-mail ou usar a API a seguir para se associar à rede.
+Se você for convidado para se associar a uma rede de blockchain, receberá um e-mail de convite de rede que incluirá o `location_id` e o `network id`.
 
-**Nota**: antes de se associar a uma rede, é necessário criar uma instância de serviço do {{site.data.keyword.blockchainfull_notm}} Platform e recuperar o seu ID da instância de serviço e o token como o nome do usuário de autenticação básica e a senha. Para obter mais informações, veja [Recuperando informações de autenticação básica para a API](#retrieve-id-token). É necessário especificar o ID da rede à qual você deseja se associar.
+1. Antes de se associar à rede, você precisa criar uma instância de serviço do {{site.data.keyword.blockchainfull_notm}} Platform e recuperar o seu ID da instância de serviço e o token como o nome do usuário de autenticação básica e a senha. Para obter mais informações, veja [Recuperando informações de autenticação básica para a API](#retrieve-id-token).
 
-```
-/unir /networks/ {
-```
-{:codeblock}
+2. [Verifique os locais de rede disponíveis](#check-location) para obter a `swagger_url` para o `location_id` em seu e-mail de convite. Será algo parecido com:
+
+    ```
+    https://ibmblockchain-v2-tor.1.secure.blockchain.ibm.com/api-docs
+    ```
+    {:codeblock}
+
+3. Navegue para a sua ``swagger_url`` para usar a UI do Swagger para emitir a API de Junção ou enviar programaticamente a Solicitação de junção usando a ``swagger_url``. Substitua ``/api-docs`` por ``/api/v1/networks/[network_id]]/join``
+e preencha o `network_id` usando o valor de seu e-mail de convite. A URL resultante seria semelhante a:
+
+    ```
+    https://ibmblockchain-v2-tor.1.secure.blockchain.ibm.com/api/v1/networks/56102acee0e4487889ef09db681bada0/join
+    ```
+    {:codeblock}
+
+    **Nota**: para a API **Junção**, use o ID e token da instância de serviço que você recuperar na etapa 1 como o nome do usuário de autenticação básica e a senha.
 
 **Parâmetros**:
 - `company_name`: seu identificador como um membro na rede. Isso substituirá o nome designado pelo anfitrião.
 - `email`: seu endereço de e-mail para receber notificações.  Isso deverá corresponder ao endereço de e-mail na notificação de convite.
 - `peers`: número de peers que você deseja criar para esse membro. Os valores válidos são 0 e 6. Também é possível criar mais peers para o seu membro, posteriormente, no Monitor de rede.
-

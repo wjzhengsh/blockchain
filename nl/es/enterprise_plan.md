@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-05-24"
+lastupdated: "2018-03-16"
 
 ---
 
@@ -14,7 +14,7 @@ lastupdated: "2018-05-24"
 
 # Acerca del Plan empresarial
 
-El Plan empresarial de la plataforma {{site.data.keyword.blockchainfull}} es una oferta lista para producción disponible para las organizaciones que quieran crear una red empresarial blockchain o unirse a una. Este plan proporciona la infraestructura clave junto con las herramientas y el soporte necesarios para iniciar con facilidad una red muy segura y lista para producción. El Plan empresarial se actualiza de Hyperledger Fabric V1.0 a V1.1. Todas las redes recién creadas están en el nivel V1.1 de fábrica. Sin embargo, las redes creadas anteriormente permanecerán en el nivel V1.0 de fábrica.
+El Plan empresarial de la plataforma {{site.data.keyword.blockchainfull}} es una oferta lista para producción disponible para las organizaciones que quieran crear una red empresarial blockchain o unirse a una. Este plan proporciona la infraestructura clave junto con las herramientas y el soporte necesarios para iniciar con facilidad una red muy segura y lista para producción. El Plan empresarial se ha actualizado de Hyperledger Fabric V1.0 a V1.1 el 15 de mayo de 2018. Todas las redes creadas después del 15 de mayo de 2018 están en el nivel de Fabric V1.1. Sin embargo, las redes creadas anteriormente permanecerán en el nivel V1.0 de fábrica.
 {:shortdesc}
 
 **Nota**: el Plan empresarial de la plataforma {{site.data.keyword.blockchainfull_notm}} proporciona un entorno de producción. Si necesita un entorno de desarrollo y pruebas, consulte [Acerca del Plan inicial](starter_plan.html).

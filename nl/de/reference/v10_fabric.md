@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-03-16"
+lastupdated: "2018-06-14"
 ---
 
 {:new_window: target="_blank"}
@@ -42,8 +42,8 @@ Zur Sicherstellung der Datenkonsistenz und -integrität implementiert Hyperledge
 
 In einem Hyperledger Fabric-Netz wird der Datenfluss für Abfragen und Transaktionen von einer clientseitigen Anwendung initiiert, die eine Transaktionsanforderung an einen Peer auf einem Kanal übergibt. Der erste Datenfluss über das Netz gilt für Abfragen und Transaktionen gemeinsam:
 
-1. Mit der im SDK enthaltenen API `channel.SendTransactionProposal` signiert und übergibt eine Clientanwendung einen Transaktionsvorschlag an die entsprechenden bewilligenden Peers auf dem angegebenen Kanal.  Dieser erste Transaktionsvorschlag ist eine **Anforderung** zur Bestätigung.  
-2. Jeder Peer auf dem Kanal überprüft die Identität und Berechtigung des übergebenden Clients und (falls gültig) führt den angegebenen Chaincode für die angegebenen Eingaben (Schlüssel/Werte) aus.  Auf der Grundlage der Transaktionsergebnisse und der Bewilligungsrichtlinie für den aufgerufenen Chaincode gibt jeder Peer eine signierte Antwort YES oder NO an die Anwendung zurück.  Jede signierte Antwort YES ist eine **Bewilligung** der Transaktion.
+1. Mit der im SDK enthaltenen API `channel.SendTransactionProposal` signiert und übergibt eine Clientanwendung einen Transaktionsvorschlag an die entsprechenden bewilligenden Peers auf dem angegebenen Kanal.  Dieser erste Transaktionsvorschlag ist eine **Anforderung** für eine Bewilligung.   
+2. Jeder Peer auf dem Kanal überprüft die Identität und Berechtigung des übergebenden Clients und (falls gültig) führt den angegebenen Chaincode für die übergebenen Eingaben (Schlüssel/Werte) aus. Auf der Grundlage der Transaktionsergebnisse und der Bewilligungsrichtlinie für den aufgerufenen Chaincode gibt jeder Peer eine signierte Antwort YES oder NO an die Anwendung zurück. Jede signierte Antwort YES ist eine **Bewilligung** der Transaktion.
 
 	An diesem Punkt im Transaktionsfluss verzweigt sich der Prozess für Abfragen und Transaktionen.  Wenn der Vorschlag eine Abfragefunktion im Chaincode aufgerufen hat, gibt die Anwendung die Daten an den Client zurück.  Wenn der Vorschlag eine Funktion im Chaincode zum Aktualisieren des Ledgers aufgerufen hat, wird die Anwendung mit den folgenden Schritten fortgesetzt:  
 3. Die Anwendung leitet die Transaktion (Lesen/Schreiben und Bewilligungen) an den **Anordnungsservice** des Netzes weiter.  

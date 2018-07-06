@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-05-15"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -22,7 +22,7 @@ lastupdated: "2018-05-15"
 
 ## 시작하기 전에
 
-{{site.data.keyword.blockchainfull}}: Develop 개발자 환경을 설치했고 비즈니스 네트워크 개발 및 배치에 익숙한지 확인하십시오. 비즈니스 네트워크 작성에 대한 안내는 [Hyperledger Composer 문서](https://hyperledger.github.io/composer/latest/business-network/business-network-index)에 있습니다.
+{{site.data.keyword.blockchainfull}} Platform: Develop 개발자 환경을 설치했고 비즈니스 네트워크 개발 및 배치에 익숙한지 확인하십시오. 비즈니스 네트워크 작성에 대한 안내는 [Hyperledger Composer 문서](https://hyperledger.github.io/composer/latest/business-network/business-network-index)에 있습니다.
 
 {{site.data.keyword.blockchainfull_notm}} Platform의 엔터프라이즈 플랜 인스턴스에 대한 액세스 권한이 있어야 합니다. {{site.data.keyword.blockchainfull_notm}} Platform 엔터프라이즈 플랜에 대한 자세한 정보는 [엔터프라이즈 플랜 개요](./enterprise_plan.html)를 참조하십시오.
 
@@ -30,19 +30,29 @@ lastupdated: "2018-05-15"
 
 1. 연결 세부사항을 저장할 디렉토리를 작성하십시오. 예를 들어, 다음과 같습니다.
 
-        /Users/myUserId/.composer-connection-profiles/bmx-hlfv1
+    ```
+    /Users/myUserId/.composer-connection-profiles/bmx-hlfv1
+    ```
+    {:codeblock}
 
     각 연결 프로파일에 `connection.json` 파일이 있어야 합니다. 이 인스턴스 `bmx-hlfv1`에서 `.composer-connection-profiles` 아래에 새 디렉토리를 작성하십시오. 이는 Hyperledger Composer 및 {{site.data.keyword.blockchainfull_notm}} Platform에 대한 작업을 수행할 때 사용할 프로파일의 이름이 됩니다.
 
-        mkdir -p ~/.composer-connection-profiles/bmx-hlfv1
+    ```
+    mkdir -p ~/.composer-connection-profiles/bmx-hlfv1
         cd ~/.composer-connection-profiles/bmx-hlfv1
+    ```
+    {:codeblock}
 
 2. 이제 다음 디렉토리 구조를 사용합니다.
 
-        /Users/myUserId/.composer-connection-profiles/bmx-hlfv1
+    ```
+    /Users/myUserId/.composer-connection-profiles/bmx-hlfv1
+    ```
+    {:codeblock}
 
     새로 작성된 디렉토리에 파일을 작성하고 이름을 `connection.json`으로 지정하십시오. `connection.json` 파일에 다음 템플리트를 사용할 수 있습니다.
 
+    ```
         {
             "name": "bmx-hlfv1",
             "description": "A description for a V1 Profile",
@@ -68,6 +78,8 @@ lastupdated: "2018-05-15"
             "globalCert": "-----BEGIN CERTIFICATE-----\r\n...LotsOfStuff\r\n-----END CERTIFICATE-----\r\n-----BEGIN CERTIFICATE-----\r\nMorestuff\r\n-----END CERTIFICATE-----\r\n",
             "timeout": 300
         }
+    ```
+    {:codeblock}
 
     새로 작성된 `connection.json` 파일에 {{site.data.keyword.blockchainfull_notm}} Platform 대시보드를 통해 제공된 속성을 입력합니다. 대시보드에서 **개요**를 선택한 다음 **연결 프로파일** 단추를 클릭하여 채널 구성원에 대한 엔드포인트 및 인증서 정보를 표시하십시오.
 
@@ -77,7 +89,10 @@ lastupdated: "2018-05-15"
 
     템플리트의 순서 지정자 URL 값을 연결 프로파일의 관련 정보(다음 형식 사용)로 바꾸십시오.
 
-        “url”: “grpcs://abca.4.secure.blockchain.ibm.com:12345”
+    ```
+    "url": "grpcs://abca.4.secure.blockchain.ibm.com:12345"
+    ```
+    {:codeblock}
 
 ## 3단계: 인증 기관 정보 추가
 
@@ -87,15 +102,21 @@ lastupdated: "2018-05-15"
 
 1. 각 피어에 대해 **requestURL** 및 **eventURL**을 설정해야 합니다. **url** 속성을 연결 프로파일에 있는 **url** 값으로 바꾸십시오. **eventURL** 속성을 연결 프로파일에 있는 **eventUrl**로 바꾸십시오. 변경 후 `connection.json`의 피어 섹션 형식은 다음과 같습니다.
 
+    ```
         "peers": [{
               "requestURL": "grpcs://abca.4.secure.blockchain.ibm.com:12345",
               "eventURL": "grpcs://abca.4.secure.blockchain.ibm.com:12345"
+    ```
+    {:codeblock}
 
 ## 5단계: keyValStore 정보 추가
 
 1. 적절한 디렉토리를 가리키도록 **keyValStore** 속성을 설정하십시오. **keyValStore**에 사용할 디렉토리를 작성하십시오. 예를 들어, `.composer-credentials-mychannel`라는 홈 디렉토리 아래의 새 디렉토리입니다. **keyValStore** 속성이 다음 형식으로 새로 작성된 디렉토리를 가리키는지 확인하십시오.
 
-        "keyValStore": "/Users/myUserId/.composer-credentials-mychannel",
+    ```
+    "keyValStore": "/Users/myUserId/.composer-credentials-mychannel",
+    ```
+    {:codeblock}
 
 ## 6단계: 채널 정보 추가
 
@@ -108,7 +129,10 @@ lastupdated: "2018-05-15"
 ## 8단계: globalCert 추가
 1. {{site.data.keyword.blockchainfull_notm}} Platform은 순서 지정자 및 피어에 공통 TLS 인증서를 사용합니다. 각 순서 지정자 및 피어에 대해 모두 동일한 인증서를 포함하는 **tlsCACerts** 속성이 있습니다. `connection.json` 파일의 더미 값을 **tlsCACerts** 값으로 바꾸십시오. 다음 형식을 사용해야 합니다.
 
-        "globalCert": "-----BEGIN CERTIFICATE-----\r\.......
+    ```
+    "globalCert": "-----BEGIN CERTIFICATE-----\r\.......
+    ```
+    {:codeblock}
 
 ## 9단계: 피어 준비
 
@@ -116,17 +140,23 @@ lastupdated: "2018-05-15"
 
 **certificateAuthorities** 아래 연결 프로파일 문서에 **enrollId** 및 **enrollSecret**의 속성이 포함된 다음 형식의 **registrar** 속성이 있습니다.
 
-        "registrar": [
+ ```
+"registrar": [
             {
                 "affiliation": "org1",
                 "enrollId": "admin",
                 "enrollSecret": "PA55W0RD12"
             }
         ],
+ ```
+ {:codeblock}
 
 1. 다음 명령을 사용하여 인증서를 요청하십시오.
 
-        composer identity request -p bmx-hlfv1 -i admin -s PA55W0RD12
+    ```
+    composer identity request -p bmx-hlfv1 -i admin -s PA55W0RD12
+    ```
+    {:codeblock}
 
     이렇게 하면 홈 디렉토리 아래 `.identityCredentials` 디렉토리에 세 개의 파일이 다운로드됩니다. 원하는 파일은 **enrollId**를 기준으로 합니다. 따라서 위의 예제에 **admin-pub.pem** 및 **admin-priv.pem**이라는 두 개의 파일이 있습니다.
 
@@ -162,7 +192,10 @@ lastupdated: "2018-05-15"
 
 1. 새 ID를 작성하려면 다음 명령을 실행하십시오.
 
-        composer identity import -p bmx-hlfv1 -u admin -c ~/.identityCredentials/admin-pub.pem -k ~/.identityCredentials/admin-priv.pem
+    ```
+    composer identity import -p bmx-hlfv1 -u admin -c ~/.identityCredentials/admin-pub.pem -k ~/.identityCredentials/admin-priv.pem
+    ```
+    {:codeblock}
 
     여기서 `bmx-hlfv1`은 이전에 작성한 프로파일의 이름입니다. 이제 `.bna` 파일을 {{site.data.keyword.blockchainfull_notm}} Platform에 배치할 준비가 되었습니다.
 
@@ -173,4 +206,7 @@ lastupdated: "2018-05-15"
 
 1. 이전 단계에서 작성된 ID로 다음 명령을 사용하여 비즈니스 네트워크를 배치하십시오.
 
-        composer network deploy -a myNetwork.bna -p bmx-hlfv1 -i admin -s anyString
+   ```
+composer network deploy -a myNetwork.bna -p bmx-hlfv1 -i admin -s anyString
+   ```
+   {:codeblock}

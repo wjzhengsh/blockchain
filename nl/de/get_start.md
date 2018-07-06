@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-03-16"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -32,14 +32,14 @@ Die folgenden Schritte beschreiben den grundlegenden Ablauf zum Starten eines En
 
 
 ## Netz erstellen
-Bevor Sie beginnen, müssen Sie eine [{{site.data.keyword.blockchain}} Platform-Serviceinstanz ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://console.bluemix.net/catalog/services/blockchain) unter {{site.data.keyword.Bluemix_notm}} erstellen. Sie müssen sich mit Ihrer {{site.data.keyword.Bluemix_notm}}-ID anmelden. Wenn Sie nicht über eine ID verfügen, klicken Sie auf die Schaltfläche **Für Erstellung registrieren**.  Benennen Sie den Service und die Berechtigungsnachweise für Ihre Instanz um, sodass Sie sie in Zukunft leichter erkennen können. Wählen Sie unter {{site.data.keyword.Bluemix_notm}} die Region, die Organisation und den Bereich für die Bereitstellung Ihres {{site.data.keyword.blockchain}}-Netzes aus. Wählen Sie dann **Enterprise-Mitgliedschaftsplan** aus der Tabelle mit der Preisstruktur aus und klicken Sie auf die Schaltfläche **Erstellen**.  
+Bevor Sie beginnen, müssen Sie eine [{{site.data.keyword.blockchain}} Platform-Serviceinstanz ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://console.bluemix.net/catalog/services/blockchain) unter {{site.data.keyword.Bluemix_notm}} erstellen. Sie müssen sich mit Ihrer {{site.data.keyword.Bluemix_notm}}-ID anmelden. Wenn Sie nicht über eine ID verfügen, klicken Sie auf die Schaltfläche **Für Erstellung registrieren**.  Benennen Sie den Service und die Berechtigungsnachweise für Ihre Instanz um, sodass Sie sie in Zukunft leichter erkennen können. Wählen Sie unter {{site.data.keyword.Bluemix_notm}} die Region, die Organisation und den Bereich für die Bereitstellung Ihres {{site.data.keyword.blockchain}}-Netzes aus. Wählen Sie dann **Enterprise-Mitgliedschaftsplan** aus der Tabelle mit den Preisstrukturplänen aus und klicken Sie auf die Schaltfläche **Erstellen**.  
 
 Sie finden Ihre {{site.data.keyword.blockchain}} Platform-Serviceinstanz im [{{site.data.keyword.Bluemix_notm}}-Service-Dashboard ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://console.bluemix.net/dashboard/services "{{site.data.keyword.Bluemix_notm}}-Service-Dashboard").  
 
 Wenn Sie ein Netzinitiator sind, klicken Sie auf die Schaltfläche **Netz erstellen**, um ein {{site.data.keyword.blockchain}}-Netz zu initiieren.  Folgen Sie den Anweisungen im Assistenten, um die grundlegende Konfiguration für Ihr Netz und Ihre Ressourcen ausführen.  
 ![Assistent 'Netz erstellen'](images/create_network_name.png "Assistent 'Netz erstellen'")  
 
-1. Geben Sie auf der Anzeige "Beginnen" einen Namen für Ihr Netz ein, wählen Sie die Position Ihrer {{site.data.keyword.Bluemix_notm}}-Organisation und fügen Sie den Namen Ihrer Institution hinzu. Wenn Sie andere Netzmitglieder einladen, werden diese nach dem Namen des Netzes suchen, um ihm beizutreten. Klicken Sie auf **Weiter**.
+1. Geben Sie in der Anzeige "Beginnen" einen Namen für Ihr Netz ein, wählen Sie die Position Ihrer {{site.data.keyword.Bluemix_notm}}-Organisation und fügen Sie den Namen Ihrer Institution hinzu. Wenn Sie andere Netzmitglieder einladen, werden diese nach dem Namen des Netzes suchen, um ihm beizutreten. Klicken Sie auf **Weiter**.
 2. (Optional) Geben Sie in der Anzeige "Mitglieder einladen" den Namen der Institution und die E-Mail-Adresse des Mitglieds ein, das Sie in Ihr Netz einladen wollen. Der von Ihnen angegebene Institutionsname ist kein offizieller Titel. Er dient einfach dazu, die Institution schnell zu erkennen, und kann beim Netzbeitritt geändert werden. Beachten Sie, dass ein Netz bis zu 15 Mitglieder einschließlich Ihrer selbst enthalten kann. Dieser Schritt ist optional und Sie können im Network Monitor auch später Mitglieder in Ihr Netz einladen.  Klicken Sie auf **Weiter**.
 	Die Mitglieder, die Sie einladen, erhalten eine E-Mail-Benachrichtigung über Ihre Einladung, nachdem Sie alle Schritte zur Erstellung des Netzes ausgeführt haben.
 3. Richten Sie in der Anzeige "Governance-Regeln definieren" die Richtlinien für die Mitgliedschaft, die Kanalerstellung und den Chaincode ein. Standardmäßig können alle Mitglieder des Netzes andere Mitglieder einladen, dem Netz beizutreten, sie können Kanäle erstellen und Chaincode instanziieren. Gegenwärtig verwendet Ihr Netz die Standard-Governance-Richtlinien.  Klicken Sie auf **Weiter**.
@@ -58,7 +58,7 @@ Sie können jetzt erfolgreich ein {{site.data.keyword.blockchain}}-Netz bereitst
 
 
 ## Am Netz teilnehmen
-Wie beim Erstellen eines Netzes müssen Sie eine [{{site.data.keyword.blockchain}} Platform-Serviceinstanz ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://console.bluemix.net/catalog/services/blockchain) unter {{site.data.keyword.Bluemix_notm}} erstellen. Sie müssen sich mit Ihrer {{site.data.keyword.Bluemix_notm}}-ID anmelden. Wenn Sie nicht über eine ID verfügen, klicken Sie auf die Schaltfläche **Für Erstellung registrieren**.  Benennen Sie den Service und die Berechtigungsnachweise für Ihre Instanz um, sodass Sie sie in Zukunft leichter erkennen können. Wählen Sie unter {{site.data.keyword.Bluemix_notm}} die Region, die Organisation und den Bereich für die Bereitstellung Ihres {{site.data.keyword.blockchain}}-Netzes aus. Wählen Sie dann **Enterprise-Mitgliedschaftsplan** aus der Tabelle mit der Preisstruktur aus und klicken Sie auf die Schaltfläche **Erstellen**.
+Wie beim Erstellen eines Netzes müssen Sie eine [{{site.data.keyword.blockchain}} Platform-Serviceinstanz ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://console.bluemix.net/catalog/services/blockchain) unter {{site.data.keyword.Bluemix_notm}} erstellen. Sie müssen sich mit Ihrer {{site.data.keyword.Bluemix_notm}}-ID anmelden. Wenn Sie nicht über eine ID verfügen, klicken Sie auf die Schaltfläche **Für Erstellung registrieren**.  Benennen Sie den Service und die Berechtigungsnachweise für Ihre Instanz um, sodass Sie sie in Zukunft leichter erkennen können. Wählen Sie unter {{site.data.keyword.Bluemix_notm}} die Region, die Organisation und den Bereich für die Bereitstellung Ihres {{site.data.keyword.blockchain}}-Netzes aus. Wählen Sie dann **Enterprise-Mitgliedschaftsplan** aus der Tabelle mit den Preisstrukturplänen aus und klicken Sie auf die Schaltfläche **Erstellen**.
 
 Sie finden Ihre {{site.data.keyword.blockchain}} Platform-Serviceinstanz im [{{site.data.keyword.Bluemix_notm}}-Service-Dashboard ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://console.bluemix.net/dashboard/services "{{site.data.keyword.Bluemix_notm}}-Service-Dashboard").
 
@@ -94,13 +94,12 @@ Sie befinden sich auf der Serviceinstanzseite gleich, nachdem Sie eine Servicein
 Führen Sie die folgenden Schritte aus, um Ihre Serviceberechtigungsnachweise abzurufen:
 1. Klicken Sie auf der Serviceinstanzseite auf **Serviceberechtigungsnachweise** im Navigator auf der linken Seite, um die Anzeige "Serviceberechtigungsnachweise" anzuzeigen.
 2. Klicken Sie auf **Neuer Berechtigungsnachweis** in der Anzeige "Serviceberechtigungsnachweise".
-3. Geben Sie auf der Anzeige "Neuen Berechtigungsnachweis hinzufügen" dem Berechtigungsnachweis einen Namen und klicken Sie auf **Hinzufügen**. Der neue Berechtigungsnachweis wird in der Tabelle hinzugefügt. Sie können auf **Berechtigungsnachweise anzeigen** in der Spalte "AKTIONEN" klicken, um die Berechtigungsnachweisdetails anzuzeigen. Dieser Berechtigungsnachweis enthält den API-Schlüssel und den geheimen Schlüssel ('secret'), mit denen Sie APIs berechtigen können.
-    Wenn Sie das Verbindungsprofil Ihres Netzes anzeigen wollen, geben Sie **{"legacy": true}** als Inline-Konfigurationsparameter an, wenn Sie neue Berechtigungsnachweise erstellen. Das Verbindungsprofil enthält die API-Endpunkte für Ihre Netzressourcen, die Sie in Ihren APIs und Anwendungen verwenden können.
+3. Geben Sie in der Anzeige "Neuen Berechtigungsnachweis hinzufügen" dem Berechtigungsnachweis einen Namen und geben Sie im Feld "Inline-Konfigurationsparameter hinzufügen' **{"type": "service_instance_token"}** ein. Klicken Sie auf **Hinzufügen**. Der neue Berechtigungsnachweis wird in der Tabelle hinzugefügt. Sie können auf **Berechtigungsnachweise anzeigen** in der Spalte "AKTIONEN" klicken, um die Berechtigungsnachweisdetails anzuzeigen. Dieser Berechtigungsnachweis enthält den API-Schlüssel und den geheimen Schlüssel ('secret'), mit denen Sie APIs berechtigen können.
 
 ### Im Network Monitor abrufen
-Sie finden die Netzberechtigungsnachweise auf der Anzeige "APIs" in Ihrem Network Monitor. Weitere Informationen zur Verwendung von APIs finden Sie unter [APIs mit Swagger ausprobieren](apis.html).
+Sie finden die Netzberechtigungsnachweise in der Anzeige "APIs" in Ihrem Network Monitor. Weitere Informationen zur Verwendung von APIs finden Sie unter [APIs mit Swagger ausprobieren](apis.html).
 
-Sie können das Verbindungsprofil auf der Anzeige "Übersicht" im Network Monitor abrufen. Klicken Sie auf die Schaltfläche **Verbindungsprofil** auf der Anzeige "Übersicht". Das Verbindungsprofil wird auf einer neuen Seite angezeigt.
+Sie können das Verbindungsprofil in der Anzeige "Übersicht" im Network Monitor abrufen. Klicken Sie auf die Schaltfläche **Verbindungsprofil** in der Anzeige "Übersicht". Das Verbindungsprofil wird auf einer neuen Seite angezeigt.
 
 
 ## Angepasste Unternehmensnetze entwickeln und bereitstellen
