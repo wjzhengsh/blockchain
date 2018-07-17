@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-03-16"
+lastupdated: "2018-06-14"
 ---
 
 {:new_window: target="_blank"}
@@ -37,7 +37,7 @@ Para obtener más información sobre el componente Proveedor de servicios de per
 ## Flujo de transacciones  
 Para garantizar la coherencia e integridad de los datos, Hyperledger Fabric implementa varios puntos de comprobación en todo el flujo de transacciones, incluidas la autenticación de cliente, aprobación, ordenación y confirmación en el libro mayor.
 
-En la **Figura 1** se describe el flujo de transacciones de una red de blockchain de Hyperledger Fabric: ![Flujo de transacciones](../images/v10_txflow.png "Flujo de transacciones de una red Hyperledger Fabric")
+En la **Figura 1** se describe el flujo de transacciones de una red blockchain de Hyperledger Fabric: ![Flujo de transacciones](../images/v10_txflow.png "Flujo de transacciones de una red Hyperledger Fabric")
 *Figura 1. Flujo de transacciones de una red Hyperledger Fabric*
 
 En una red de Hyperledger Fabric, el flujo de datos para consultas y transacciones se inicia desde una aplicación del lado de cliente mediante el envío de una solicitud de transacción a un igual de un canal. El flujo de datos inicial a través de la red es común para consultas y transacciones:
@@ -68,9 +68,9 @@ Los nodos del servicio de ordenación también prestan los servicios siguientes:
 Para obtener más información sobre el servicio de ordenación de Hyperledger Fabric, consulte la información acerca de la *[puesta en marcha de un servicio de ordenación basado en Kafka ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](http://hyperledger-fabric.readthedocs.io/en/latest/kafka.html){:new_window}* en la [documentación de Hyperledger Fabric ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](http://hyperledger-fabric.readthedocs.io/en/latest/){:new_window}.
 
 ## SDK de HFC
-Los SDK de Hyperledger Fabric Client (HFC) permiten a los desarrolladores de aplicaciones crear aplicaciones que interactúan con una red de blockchain. El SDK de HFC facilita la gestión en las aplicaciones del ciclo de vida de los canales y del código de encadenamiento.
+Los SDK de Hyperledger Fabric Client (HFC) permiten a los desarrolladores de aplicaciones crear aplicaciones que interactúan con una red blockchain. El SDK de HFC facilita la gestión en las aplicaciones del ciclo de vida de los canales y del código de encadenamiento.
 
-Hyperledger Fabric proporciona SDK de Node.js y Java y ofrece las funciones siguientes para la interacción con la red de blockchain:
+Hyperledger Fabric proporciona SDK de Node.js y Java y ofrece las funciones siguientes para la interacción con la red blockchain:
 * Registrar e inscribir usuarios
 * Crear canales
 * Unir iguales a un canal

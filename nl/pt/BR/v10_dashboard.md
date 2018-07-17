@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-05-15"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -131,7 +131,7 @@ Solicitações pendentes podem ser excluídas selecionando as caixas na frente d
 ## APIs
 {: #apis}
 
-Para facilitar o desenvolvimento de aplicativos, o {{site.data.keyword.blockchainfull_notm}} Platform expõe APIs que você pode testar com relação à sua rede em uma UI do Swagger.
+O {{site.data.keyword.blockchainfull_notm}} Platform expõe uma série de APIs de REST no Swagger que podem ser usadas para gerenciar os nós, os canais, os peers e os membros de sua rede. Os seus aplicativos podem usar essas APIs para controlar recursos de rede importantes sem usar o monitor de rede.
 
 **Figura 7** mostra a tela "APIs":
 
@@ -167,7 +167,7 @@ Um chaincode é o primeiro instalado em um sistema de arquivos de um peer e, em 
 ## Tentar amostras
 {: #samples}
 
-Os aplicativos de amostra ajudam você a entender melhor uma rede de blockchain e desenvolvimento de aplicativo. Siga o link para o repositório Marbles no Monitor de rede para obter informações sobre como instalar o aplicativo de amostra Marbles. Para obter mais informações sobre como desenvolver e implementar as suas próprias amostras, verifique [Desenvolvendo aplicativos](v10_application.html).
+Os aplicativos de amostra ajudam você a entender melhor uma rede de blockchain e desenvolvimento de aplicativo. Siga os links **Visualizar no GitHub** para aprender como usar as amostras e implementá-las no {{site.data.keyword.blockchainfull_notm}} Platform. Para obter mais informações sobre como desenvolver e implementar as suas amostras, veja [Implementando aplicativos de amostra](howto/prebuilt_samples.html).
 
 A **Figura 10** mostra a tela "Tentar amostras":
 
@@ -182,7 +182,7 @@ A tela "Obter ajuda" contém duas guias para fornecer informações de suporte n
 **Figura 11** mostra a tela inicial "Suporte" que exibe informações de suporte na guia "Suporte":
 
 ![Suporte](images/support.png "Suporte")
-*Figura 11. Suporte do blockchain*
+*Figura 11. Suporte do Blockchain*
 
 Use os links e recursos nesta página para acessar fóruns de resolução de problemas e suporte.
 
@@ -190,7 +190,7 @@ Use os links e recursos nesta página para acessar fóruns de resolução de pro
 * [IBM Developer Works ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://developer.ibm.com/blockchain/) em **Ajuda da Comunidade** contém recursos e informações para desenvolvedores.
 * [IBM dWAnswers ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://developer.ibm.com/answers/smartspace/blockchain/) em **Chamado de Suporte** serve como uma plataforma para perguntas e respostas. É possível procurar respostas de perguntas feitas anteriormente ou enviar uma nova pergunta. Certifique-se de incluir a palavra-chave **blockchain** em sua pergunta.
   Também é possível enviar um chamado para a equipe de suporte do {{site.data.keyword.blockchainfull_notm}} com a opção **Abrir um chamado de suporte do {{site.data.keyword.Bluemix_notm}}**.  Compartilhe detalhes e fragmentos de código de sua instância específica do {{site.data.keyword.Bluemix_notm}}.
-* [Aplicativos de amostra ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://github.com/ibm-blockchain) sob **Aplicativos de amostra do blockchain** fornecem fragmentos de código de orientação e de amostra para ajudar no desenvolvimento de aplicativos.
+* [Aplicativos de amostra ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://github.com/ibm-blockchain) sob **Aplicativos de amostra do Blockchain** fornecem fragmentos de código de orientação e de amostra para ajudar no desenvolvimento de aplicativos.
 * [Hyperledger Fabric ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](http://hyperledger-fabric.readthedocs.io/) e [Comunidade do Hyperledger Fabric ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](http://jira.hyperledger.org/secure/Dashboard.jspa) em **Hyperledger Fabric** fornecem mais detalhes sobre a pilha do Hyperledger Fabric.
   Fale com um [Especialista do Hyperledger ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://chat.hyperledger.org/channel/general) com perguntas sobre o código do Hyperledger Fabric.
 
@@ -210,10 +210,12 @@ A Figura 12 e a Figura 13 mostram a tela inicial "Obter ajuda", que exibe funç�
 
 Clique no canto superior direito e abra o menu suspenso e, em seguida, **Preferências de rede**. A janela Preferências de Rede é aberta. A janela Preferências de rede mostra informações básicas sobre sua rede, como nome da rede, versão do Fabric, local de rede no {{site.data.keyword.cloud_notm}} e tipo de banco de dados do livro-razão.
 
-Redes do Enterprise Plan foram atualizadas para o Fabric v1.1 em<!-- May 15th, 2018 will run on Hyperledger Fabric v1.1-->. Se você criar redes após o upgrade, também poderá gerenciar o tempo limite de inatividade da web e o TLS mútuo para a sua rede na janela Preferências de rede. Essas configurações podem ser mudadas apenas pelo inicializador de rede.
+Redes do Enterprise Plan que foram criadas após 15 de maio de 2018 serão executadas no Hyperledger Fabric v1.1. Se você criar redes após o upgrade, também poderá gerenciar o tempo limite de inatividade da web e o TLS mútuo para a sua rede na janela Preferências de rede. Essas configurações podem ser mudadas apenas pelo inicializador de rede.
 
 <!--
+
 Enterprise Plan networks that are created after May 15th, 2018 will run on Hyperledger Fabric v1.1. If you create networks after the upgrade, you can also manage web inactivity timeout, mutual TLS, and switch your ledger to CouchDB for your network in the Network preferences window. These settings can be changed by the network initiator only.
+
 -->
 
 ### Tempo limite de inatividade da web
@@ -226,13 +228,13 @@ O tempo limite de inatividade da web é configurado para **Desligado** por padr�
 ### TLS mútuo
 {: #mutual-tls}
 
-O TLS mútuo assegura a comunicação entre o seu aplicativo e a sua rede e garante que só você pode se comunicar com a sua rede.
+O TLS mútuo assegura a comunicação entre o seu aplicativo e a sua rede.
 
 **Nota**: apenas um **inicializador de rede** pode ativar ou desativar o TLS mútuo. Esta é uma configuração de nível de rede e afetará todos os membros da rede.
 
 O botão do TLS mútuo é configurado como **Desativado** por padrão. Se você ativar o TLS mútuo, será necessário atualizar os seus aplicativos para suportarem essa função. Caso contrário, os seus aplicativos não poderão se comunicar com a sua rede.
 
-Para uma rede do plano do Fabric 1.1 Enterprise, cada organização tem a sua própria autoridade de certificação (CA) do TLS mútuo. As informações necessárias para se conectar à autoridade de certificação do TLS mútuo estão disponíveis no [Perfil de conexão](##enterprise-connection-profile) acessível por meio de sua tela **Visão geral** no Monitor de Rede clicando no botão **Perfil de conexão**. O perfil de conexão contém as informações necessárias para se conectar à autoridade de certificação e obter os certificados que você precisa para se conectar à sua rede.
+Para uma rede do plano do Fabric 1.1 Enterprise, cada organização tem a sua própria autoridade de certificação (CA) do TLS mútuo. As informações necessárias para se conectar à autoridade de certificação do TLS mútuo estão disponíveis no [Perfil de conexão](##enterprise-connection-profile) acessível por meio de sua tela **Visão geral** no Monitor de Rede clicando no botão **Perfil de conexão**.  O perfil de conexão contém as informações necessárias para se conectar à autoridade de certificação e obter os certificados que você precisa para se conectar à sua rede.
 
 No campo Perfil de conexão, localize a seção `certificateAuthorities` na qual você encontrará os atributos a seguir que são necessários para se inscrever e obter os certificados para se comunicar com a sua rede usando o TLS mútuo.
 
@@ -244,15 +246,21 @@ No campo Perfil de conexão, localize a seção `certificateAuthorities` na qual
 Para obter mais informações sobre como atualizar os seus aplicativos para suportar o TLS mútuo, veja [Como configurar o TLS mútuo ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://fabric-sdk-node.github.io/tutorial-mutual-tls.html)
 
 <!--
+
 ### CouchDB ledger type
 {: #couchdb}
+
 **Note**: Only the **network initiator** can switch the ledger database from LevelDB to CouchDB. This is a network level setting and will affect all network members. Switching to CouchDB is permanent. You cannot revert back to LevelDB.
+
 Before Enterprise Plan upgrades to Fabric v1.1, all network peers store data in the pure key-value LevelDB. With Fabric v1.1, you can choose to use CouchDB as your ledger database. CouchDB is a document datastore that permits indexing the contents of your data and allows you to issue rich queries against the data on your peer. Note that Hyperledger Fabric does not support peers running different databases. If CouchDB is used, it must be used by all of the peers.
+
 To use CouchDB, your data must be stored in a data format that can be modeled in chaincode, such as JSON. If the decision is made to migrate from LevelDB to CouchDB, the {{site.data.keyword.blockchainfull_notm}} Platform will migrate your data from key-value format to the CouchDB format automatically.
+
 If you switch to CouchDB, you need to update your chaincode to take advantage of indexes and rich queries. For more information about CouchDB and how to set up index, see [CouchDB as the State Database ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/latest/couchdb_as_state_database.html). For more information about updating chaincode in {{site.data.keyword.blockchainfull_notm}} Platform, see [Updating a chaincode](howto/install_instantiate_chaincode.html#updating-a-chaincode).
+
 -->
 
 A **Figura 14** mostra a janela "Preferências de rede":
 
-<! -- ![Network preferences](images/network_preferences_ep.gif "Network preferences") -- > ![Network preferences](images/network_preferences_ep_tmp.png "Network preferences")  
+![Preferências de rede](images/network_preferences_ep_tmp.png "Preferências de rede")
 *Figura 14. Preferências de Rede*

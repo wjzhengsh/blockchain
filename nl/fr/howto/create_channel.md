@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-03-16"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -14,8 +14,7 @@ lastupdated: "2018-03-16"
 
 # Création ou mise à jour d'un canal
 
-Les canaux offrent un mécanisme incroyablement puissant pour le partitionnement et l'isolement des données, et ils constituent la base essentielle
-pour la confidentialité des données. Seuls les membres du même canal peuvent accéder aux données de ce canal.
+Les canaux offrent un mécanisme incroyablement puissant pour le partitionnement et l'isolement des données, et ils constituent la base essentielle pour la confidentialité des données. Seuls les membres du même canal peuvent accéder aux données de ce canal.
 {:shortdesc}
 
 Pour garantir la sécurité du canal, les règles de mise à jour du canal sont configurées pour définir le nombre d'opérateurs de canal qui doivent s'accorder sur une demande de création ou de mise à jour des canaux afin que l'opération ne soit effectuée.

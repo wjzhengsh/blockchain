@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-05-24"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -29,26 +29,20 @@ lastupdated: "2018-05-24"
 
 ## {{site.data.keyword.IBM_notm}} 멤버십 오퍼링
 
-IBM Blockchain Platform은 모든 유형의 사용자가 블록체인 과정을 시작하고 애플리케이션을 프로덕션으로 이동하는 데 도움이 되는 여러 멤버십 플랜을 제공합니다.
+{{site.data.keyword.blockchainfull_notm}} Platform은 모든 유형의 사용자가 블록체인 과정을 시작하고 애플리케이션을 프로덕션으로 이동하는 데 도움이 되는 여러 멤버십 플랜을 제공합니다.
 
 |       |[스타터 플랜](starter_plan.html)      |[엔터프라이즈 플랜](enterprise_plan.html)  |엔터프라이즈 플러스 플랜 |자체 관리 플랜
 | ------------------------- |--------------------------|-----|-----|------|
 |**포함되는 내용** | **기본 서비스 레벨, 개발 및 테스트 환경** |**고급 서비스 레벨, 엔터프라이즈 프로덕션 준비** | **성능 및 격리를 위한 전용 컴퓨팅, 엔터프라이즈 프로덕션 준비** |사용자 자신의 인프라에 설치할 소프트웨어 스택, 이 클라우드 서비스에 호스팅하는 네트워크에 연결 |
-|**청구 정책** |**베타의 경우 무료<!--trial of 30 days, followed by monthly charge-->** |**월별 구독** |**월별 구독** |월별 구독 |
-|**가용성** |**베타** |**지금 사용 가능** | **구매 시** |출시 예정 |
+|**청구 정책** | **[평가판 크레딧](howto/pricing.html#starter-plan-pricing) 후 월별 청구** |**월별 구독** |**월별 구독** |월별 구독 |
+|**가용성** |**지금 사용 가능** |**지금 사용 가능** | **구매 시** |출시 예정 |
 
+**주의:** **스타터 플랜**을 프로덕션에 사용하지 마십시오. 이는 개발 및 테스트 환경이며 프로덕션 워크로드에 적합하지 않습니다.
 
-<!--
-- **The IBM Blockchain Starter Plan** is ideal for those who are learning or getting started developing their blockchain network.
-- **Enterprise Plan** is a production environment offering high levels of security and support.
-- **Enterprise Plus Plan** offers a dedicated production environment for additional performance and isolated compute and storage resources to protect critical data.
--->
-
-**주의:** **스타터 플랜**을 프로덕션에 사용하지 마십시오. 스타터 플랜은 개발 및 테스트 환경입니다.
-
-{{site.data.keyword.blockchainfull_notm}} 오퍼링은 사용자의 비즈니스 요구사항을 충족하기 위한 엔터프라이즈 레벨의 보안, 데이터 무결성, 확장성 및 성능을 얻기 위해 모듈식 아키텍처를 활용하는 [Hyperledger Fabric](./v10_fabric) 코드 베이스에서 빌드되었습니다.
-- **스타터 플랜** 네트워크는 Hyperledger Fabric V1.1을 기반으로 빌드됩니다.
-- **엔터프라이즈 플랜**은 Hyperledger Fabric V1.1로 업그레이드되었습니다. 새로 작성된 모든 네트워크는 Fabric V1.1 레벨입니다.
+{{site.data.keyword.blockchainfull_notm}} 오퍼링은 사용자의 비즈니스 요구사항을 충족하기 위한 엔터프라이즈 레벨의 보안, 데이터 무결성, 확장성 및 성능을 얻기 위해 모듈식 아키텍처를 활용하는 [Hyperledger Fabric](reference/v10_fabric.html) V1.1 코드 베이스에서 빌드되었습니다.
+- **IBM Blockchain 스타터 플랜**은 블록체인 네트워크 개발을 학습하거나 시작하기 위한 환경입니다.
+- **엔터프라이즈 플랜**은 상위 레벨의 보안 및 지원을 제공하는 프로덕션 환경입니다.
+- **엔터프라이즈 플러스 플랜**은 추가 성능 및 격리된 컴퓨팅 및 스토리지 리소스에 대한 전용 프로덕션 환경을 제공하여 중요한 데이터를 보호합니다.
 
 [{{site.data.keyword.blockchainfull_notm}} 멤버십 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps)에 지금 가입하십시오!
 
@@ -73,8 +67,9 @@ IBM Blockchain Platform은 모든 유형의 사용자가 블록체인 과정을 
 
 ## 네트워크 **통제**
 네트워크의 백엔드 환경을 작성하기 위한 두 가지 옵션이 있습니다. 첫 번째로, Composer 라이브러리 구현 옵션을 제공하는 공개된 Hyperledger Docker 이미지를 사용하여 애플리케이션을 빌드하고 네트워크와 상호작용할 수 있습니다. 또는 기본적으로 체인코드를 작성하고 서버 측 코드를 개발하여 트랜잭션을 구동할 수 있습니다. 로컬에서 실행하는 것이 네트워크 구성을 고치고, 잠재적 유스 케이스를 탐색하며 개념 증명 빌드를 시작할 수 있는 완벽한 기회입니다. PoC가 구체화되기 시작하면 클라우드에서 네트워크를 호스팅하여 구현을 확장할 수 있습니다.
-
-클라우드 배치를 사용하면 Kubernetes에서 실행되는 Hyperledger Fabric 네트워크의 배치를 용이하게 하고 사용하기 쉬운 레시피 및 스크립트의 콜렉션이 제공됩니다. 이 단계를 사용하여 호스팅하는 환경에서 PoC의 동작 및 안정성을 조사하십시오. [{{site.data.keyword.blockchainfull_notm}} 컨테이너 서비스 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://ibm-blockchain.github.io/)는 애플리케이션의 기능성 및 복원성을 위한 테스트 메커니즘 및 엔터프라이즈 플랜에 대한 자연스러운 전조로서 대부분 간주될 수 있습니다.
+<!--
+With a cloud deployment, you're provided with a collection of easy-to-use recipes and scripts to facilitate the deployment of a Hyperledger Fabric network that runs on Kubernetes. Use this phase to examine the behavior and stability of your PoC in a hosted environment. The [{{site.data.keyword.blockchainfull_notm}} Container Service ![External link icon](images/external_link.svg "External link icon")](https://ibm-blockchain.github.io/) can be best thought of as a testing mechanism for the functionality and resiliency of your application and as a natural precursor to the Enterprise Plan.
+-->
 
 네트워크가 생긴 후에 {{site.data.keyword.blockchainfull_notm}}은 구성원에게 일부 제어를 제공하는 네트워크 관리 경험을 생성하도록 설계되었으나, 반면에 완전한 제어 하에 있는 구성원은 하나도 없습니다. {{site.data.keyword.blockchainfull_notm}} Platform에는 사용자 정의할 수있는 정책을 통해 팀이 네트워크의 변경 관리를 적용하도록 허용하는 통합 도구의 첫 번째 세트가 있습니다.
 

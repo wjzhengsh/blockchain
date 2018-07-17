@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-05-24"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -29,26 +29,20 @@ lastupdated: "2018-05-24"
 
 ## {{site.data.keyword.IBM_notm}} Mitgliedschaftsangebote
 
-IBM Blockchain Platform bietet unterschiedliche Mitgliedschaftspläne, die verschiedene Benutzertypen beim Einstieg in die Arbeit mit Blockchains unterstützen und ihnen helfen, ihre Anwendungen in die Produktionsphase zu bringen.
+{{site.data.keyword.blockchainfull_notm}} Platform bietet unterschiedliche Mitgliedschaftspläne, die die verschiedenen Benutzertypen beim Einstieg in die Arbeit mit Blockchains unterstützen und den Benutzern helfen, ihre Anwendungen in die Produktionsphase zu bringen. 
 
 |       | [Starter Plan](starter_plan.html)      | [Enterprise Plan](enterprise_plan.html)  | Enterprise Plus Plan | Self Managed Plan
 | ------------------------- |--------------------------|-----|-----|------|
-| **Inhalt** | **Service-Levels (Basis), Entwicklungs- und Testumgebung** | **Service-Levels (Erweitert), bereit für Produktionseinsatz auf Unternehmensebene** | **Dedizierte Rechenressourcen für Leistung und Isolation, bereit für Produktionseinsatz auf Unternehmensebene** |Software-Stack zur Installation in Ihrer Infrastruktur, Verbindung zu einem Netz (auf diesem Cloud-Service gehostet) |
-| **Abrechnungsmodell** | **Für Beta kostenlos<!--trial of 30 days, followed by monthly charge-->** | **Monatliche Subskription** | **Monatliche Subskription** | Monatliche Subskription |
-| **Verfügbarkeit** | **Beta** | **Bereits verfügbar** | **Beim Kauf** | In Kürze verfügbar |
+| **Inhalt** | **Service-Levels (Basis), Entwicklungs- und Testumgebung** | **Service-Levels (Erweitert), bereit für Produktionseinsatz auf Unternehmensebene** | **Dedizierte Rechenressourcen für Leistung und Isolation, bereit für Produktionseinsatz auf Unternehmensebene** | Software-Stack zur Installation in Ihrer Infrastruktur, Verbindung zu einem Netz (auf diesem Cloud-Service gehostet) |
+| **Abrechnungsmodell** | **[Testguthaben](howto/pricing.html#starter-plan-pricing) mit monatlichen Folgegebühren ** | **Monatliche Subskription** | **Monatliche Subskription** | Monatliche Subskription |
+| **Verfügbarkeit** | **Bereits verfügbar** | **Bereits verfügbar** | **Beim Kauf** | In Kürze verfügbar |
 
+**Vorsicht:** Der **Starter Plan** darf nicht für die Produktion verwendet werden. Es handelt sich um eine Entwicklungs- und Testumgebung, die für Produktionsworkloads nicht geeignet ist. 
 
-<!--
-- **The IBM Blockchain Starter Plan** is ideal for those who are learning or getting started developing their blockchain network.
-- **Enterprise Plan** is a production environment offering high levels of security and support.
-- **Enterprise Plus Plan** offers a dedicated production environment for additional performance and isolated compute and storage resources to protect critical data.
--->
-
-**Vorsicht:** Der **Starter Plan** darf nicht für die Produktion verwendet werden. Es handelt sich hierbei um eine Entwicklungs- und Testumgebung. 
-
-Die {{site.data.keyword.blockchainfull_notm}}-Angebote basieren auf der [Hyperledger Fabric](./v10_fabric)-Codebasis und bieten aufgrund ihrer modularen Architektur die für die Anforderungen Ihres Unternehmens erforderliche Sicherheit, Datenintegrität, Skalierbarkeit und Leistung.
-- **Starter Plan**-Netze basieren auf Hyperledger Fabric V1.1.
-- Der **Enterprise Plan** umfasst ein Upgrade auf Hyperledger Fabric V1.1. Alle neu erstellten Netze weisen die Version Fabric 1.1 auf.
+Die {{site.data.keyword.blockchainfull_notm}}-Angebote basieren auf der [Hyperledger Fabric](reference/v10_fabric.html)-Codebasis von Version 1.1 und bieten aufgrund ihrer modularen Architektur die für die Anforderungen Ihres Unternehmens erforderliche Sicherheit, Datenintegrität, Skalierbarkeit und Leistung. 
+- Bei dem **IBM Blockchain Starter Plan** handelt es sich um eine Lern- und Einstiegsumgebung für die Entwicklung von Blockchain-Netzen. 
+- Der **Enterprise Plan** stellt eine Produktionsumgebung mit hohem Sicherheits- und Unterstützungsniveau dar. 
+- Der **Enterprise Plus Plan** bietet eine dedizierte Produktionsumgebung für zusätzliche Leistungsanforderungen sowie isolierte Rechen- und Speicherressourcen zum Schutz kritischer Daten. 
 
 Melden Sie sich jetzt für die [{{site.data.keyword.blockchainfull_notm}}-Mitgliedschaft ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps) an!
 
@@ -73,8 +67,9 @@ Als Entwickler können Sie Geschäftsanforderungen schnell und einfach umsetzen 
 
 ## **Steuerung** des Netzes
 Es gibt zwei Optionen für das Erstellen der Back-End-Umgebung Ihres Netzes. Entweder Sie können die veröffentlichten Hyperledger Docker-Images verwenden, wodurch Sie die Möglichkeit haben, die Composer-Bibliothek zu verwenden, um Ihre Anwendungen zu erstellen und mit dem Netz zu interagieren. Oder Sie können Chaincode nativ schreiben und den serverseitigen Code entwickeln, um Transaktionen auszuführen. Die lokale Ausführung eignet sich gut, verschiedene Netzkonfigurationen auszuprobieren, potenzielle Anwendungsfälle zu untersuchen und mit der Erarbeitung von Machbarkeitsnachweisen (Proof of Concept, PoC) zu beginnen. Wenn Ihr Machbarkeitsnachweis Gestalt gewinnt, können Sie die Implementierung durch das Hosting Ihres Netzes in der Cloud erweitern.
-
-Bei einer Cloudbereitstellung erhalten Sie eine Reihe benutzerfreundlicher Anleitungen und Scripts, die die Bereitstellung eines Hyperledger Fabric-Netzes erleichtern, das auf Kubernetes ausgeführt wird. Verwenden Sie diese Phase, um das Verhalten und die Stabilität Ihres Machbarkeitsnachweises in einer gehosteten Umgebung zu prüfen. Der [{{site.data.keyword.blockchainfull_notm}}Container-Service![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://ibm-blockchain.github.io/) ist ein Testmechanismus für die Funktionalität und Ausfallsicherheit Ihrer Anwendung und somit ein natürlicher Vorläufer für den Enterprise Plan.
+<!--
+With a cloud deployment, you're provided with a collection of easy-to-use recipes and scripts to facilitate the deployment of a Hyperledger Fabric network that runs on Kubernetes. Use this phase to examine the behavior and stability of your PoC in a hosted environment. The [{{site.data.keyword.blockchainfull_notm}} Container Service ![External link icon](images/external_link.svg "External link icon")](https://ibm-blockchain.github.io/) can be best thought of as a testing mechanism for the functionality and resiliency of your application and as a natural precursor to the Enterprise Plan.
+-->
 
 Wenn ein Netz eingerichtet wurde, bietet {{site.data.keyword.blockchainfull_notm}} einen Ansatz für das Netzmanagement, bei dem die Mitglieder eine gewisse Kontrolle erhalten, aber kein Mitglied die vollständige Kontrolle erhält. Die {{site.data.keyword.blockchainfull_notm}} Platform bietet das erste Set integrierter Tools, mit denen Teams das Änderungsmanagement des Netzes über anpassbare Richtlinien umsetzen können.
 

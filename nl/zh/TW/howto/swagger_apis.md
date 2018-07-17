@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-05-15"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -14,7 +14,8 @@ lastupdated: "2018-05-15"
 
 # 使用 Swagger API 與網路互動
 
-「{{site.data.keyword.blockchainfull}} 平台」公開多種 REST API，可協助您開發應用程式。您可以使用 Swagger 使用者介面來測試您的區塊鏈網路。
+「{{site.data.keyword.blockchainfull_notm}} 平台」會公開 Swagger 中的多種 REST API，可讓您用來管理網路的節點、頻道、對等節點及成員。您的應用程式可以使用這些 API 來控制重要網路資源，而不需要使用網路監視器。
+
 {:shortdesc}
 
 開始之前，您需要在 {{site.data.keyword.Bluemix_notm}} 上建立 [{{site.data.keyword.blockchain}} 平台服務實例 ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](https://console.bluemix.net/catalog/services/blockchain)，以及建立或加入「入門範本方案」<!--or Enterprise Plan -->區塊鏈網路。
@@ -26,20 +27,7 @@ lastupdated: "2018-05-15"
 
 進入您的區塊鏈網路的「網路監視器」，並從左導覽器開啟「API」畫面。您可以看到您的 REST API 網路認證。稍後您將會使用這裡顯示的 "key" 和 "secret" 值來授權 API，並使用 "network_id" 作為參數來執行 API。按一下**顯示密碼**，以顯示 secret 欄位的值。複製 key、secret 及 network_id 欄位的值，稍後可以在 Swagger 使用者介面中使用這些值。
 
-<!-- Removing this code snippet so people don't try to use these values
-```
-},
-   "x-api": {
-       "url": "https://ibmblockchain.bluemix.net",
-       "key": "PeerOrg1",
-       "network_id": "e1f5b3341b1d483bbaf829f601144023",
-       "secret": "71a329aabde9ff20de0aa4bfafd72a4466d78c87f637e7ff92c2534b5ce81cc0"
-   }
-```
--->
-
 **圖 1** 顯示「API」畫面：
-
 ![API 畫面](../images/API_screen_starter.png "API 畫面")
 *圖 1. API*
 
@@ -70,13 +58,26 @@ You can also open the Swagger UI with the URL in the connection profiles. For ex
 
 ## 試用 API
 
-按一下您要執行的 REST API，然後按一下**試用**按鈕。輸入必要的參數，然後按一下**執行**。REST API 呼叫即會針對您的網路執行。
+按一下您要執行的 REST API，然後按一下**試用**按鈕。
 
-**圖 4** 顯示「Swagger 使用者介面」：
+**圖 4** 顯示「Swagger 使用者介面」中的「試用」按鈕：
 
-![Swagger 使用者介面](../images/swaggerUITryItOut.png "Swagger 使用者介面")  
-*圖 4. Swagger 使用者介面*
+![「Swagger 使用者介面」中的「試用」按鈕](../images/swaggerUITryItOut.png "「Swagger 使用者介面」中的「試用」按鈕")  
+*圖 4. 「Swagger 使用者介面」中的「試用」按鈕*
 
+在按一下**試用**按鈕之後，您可以輸入使用 API 的必要參數。您可以在網路認證中找到 `networkID`，並且在「網路監視器」中找到其他參數。在您輸入參數之後，請按一下**執行**，以對網路執行 REST API 呼叫。
+
+**圖 5** 顯示「Swagger 使用者介面」中的參數：
+
+![「Swagger 使用者介面」中的參數](../images/swaggerUIParams.png "「Swagger 使用者介面」中的參數")  
+*圖 5. 輸入參數*  
+
+在按一下**執行**之後，您可以看到針對網路之 API 呼叫的回應。您也可以看到可從指令行直接呼叫 API 的 CURL 指令。
+
+**圖 6** 顯示 API 回應內文、URL 及 CURL 指令：
+
+![「Swagger 使用者介面」中的 API 回應](../images/swaggerUICurlResponse.png "「Swagger 使用者介面」中的 API 回應")  
+*圖 6. API 回應*    
 
 ## 疑難排解提示
 

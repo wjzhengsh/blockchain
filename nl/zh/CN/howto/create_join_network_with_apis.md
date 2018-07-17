@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-05-15"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -27,7 +27,10 @@ lastupdated: "2018-05-15"
 
 1. 在 [{{site.data.keyword.cloud_notm}} 仪表板 ![外部链接图标](../images/external_link.svg "外部链接图标")](https://console.bluemix.net/dashboard/apps/) 中，打开创建的服务实例。
 2. 单击左侧导航器中的**服务凭证**。
-3. 单击**服务凭证**页面上的“新建凭证”按钮以创建新凭证。为凭证提供名称，例如，*CreateJoin*，然后单击**添加**按钮。无需在“添加内联配置参数”字段中输入任何内容。
+3. 单击**服务凭证**页面上的“新建凭证”按钮以创建新凭证。 
+    1. 为凭证提供名称，例如 *CreateJoin*。
+    2. 在“添加内联配置参数”字段中，输入 **{"type": "service_instance_token"}**。
+    3. 单击**添加**按钮。
     ![检索服务凭证](../images/service_credentials.gif "检索服务凭证")
 4. 创建新凭证后，单击此凭证的**操作**标题下方的**查看凭证**。凭证的内容类似于以下示例：
 
@@ -62,12 +65,44 @@ lastupdated: "2018-05-15"
 ## 检查可用网络位置
 {: #check-location}
 
-您可以使用 API 以仅在可用网络位置中创建区块链网络。在创建网络之前，请使用以下 API 来检查可用网络位置。
+您可以使用 API 以仅在可用网络位置中创建区块链网络。在创建网络之前，请使用以下 API 来检查当前可用网络位置列表。运行此 API 不需要凭证。
 
 ```
-/network-locations/available
+https://ibmblockchain-v2.ng.bluemix.net/api/v1/network-locations/available
 ```
 {:codeblock}
+
+返回的可用网络位置列表类似于以下内容：
+
+```
+{
+  "DAL": {
+    "location_id": "DAL",
+    "description": "Dallas",
+    "status": "available"
+    "swagger_url": "https://ibmblockchain-v2-dal.4.secure.blockchain.ibm.com/api-docs"
+  },
+  "FFT": {
+    "location_id": "FFT",
+    "description": "Frankfurt",
+    "status": "available"
+    "swagger_url": "https://ibmblockchain-v2-fft.2.secure.blockchain.ibm.com/api-docs"
+  },
+  "TOR": {
+    "location_id": "TOR",
+    "description": "Toronto",
+    "status": "available"
+    "swagger_url": "https://ibmblockchain-v2-tor.1.secure.blockchain.ibm.com/api-docs"
+  }
+}
+```
+{:codeblock}
+
+如果打算创建网络，请从 API 返回的列表中选择要在其中创建网络的位置。请注意，``location_id`` 和 ``swagger_url`` 与该位置相关联。  
+
+如果打算加入网络，请记录与邀请电子邮件中指定的 ``location_id`` 关联的 ``swagger_url``。
+
+``swagger_url`` 表示在使用以下 API 创建或加入网络时将使用的 API 端点。
 
 
 ## 创建网络
@@ -78,15 +113,15 @@ lastupdated: "2018-05-15"
 
 1. 在 {{site.data.keyword.cloud_notm}} 上使用企业套餐创建区块链服务实例<!-- or Enterprise Plus Plan-->。检索服务实例标识和令牌作为基本认证用户名和密码。有关更多信息，请参阅[检索 API 的基本认证凭证](#retrieve-id-token)。
 
-2. 通过使用这些服务凭证来调用**创建网络** API。
+2. 使用这些服务凭证来调用**创建网络** API。针对从[检查可用网络位置](#check-location)中检索到的 API ``swagger_url`` 发出此 API。浏览至 ``swagger_url`` 链接以使用 Swagger UI 发出“创建网络 API”，或者通过编程方式使用不含 ``/api-docs`` 的 URL 地址来发出该命令。例如，
 
-```
-/networks
-```
-{:codeblock}
+    ```
+    https://ibmblockchain-v2-tor.1.secure.blockchain.ibm.com/api/v1/networks
+    ```
+    {:codeblock}
 
 **参数**：
-- `location_id`：可用网络位置的标识。有关更多信息，请参阅[检查可用网络位置](check-location)。
+- `location_id`：可用网络位置的标识。指定在[检查可用网络位置](#check-location)中记下的 `location_id` 的值。
 - `company_name`：作为网络中成员的标识。
 - `email`：用于接收通知的电子邮件地址。
 - `peers`：要针对此成员创建的同级的数量。有效值为 0 - 6。您还可以稍后在“网络监视器”UI 中为成员创建同级。
@@ -111,17 +146,27 @@ lastupdated: "2018-05-15"
 
 ## 加入网络
 
-如果您获邀加入区块链网络，将收到电子邮件邀请。可以遵循电子邮件中的指示信息或使用以下 API 以加入网络。
+如果您获邀加入区块链网络，那么您将收到包含 `location_id` 和 `network id` 的网络邀请电子邮件。
 
-**注**：在加入网络之前，需要创建 {{site.data.keyword.blockchainfull_notm}} Platform 服务实例，并检索服务实例标识和令牌作为基本认证用户名和密码。有关更多信息，请参阅[检索 API 的基本认证信息](#retrieve-id-token)。需要指定要加入的网络的标识。
+1. 在加入网络之前，您需要创建 {{site.data.keyword.blockchainfull_notm}} Platform 服务实例，并检索服务实例标识和令牌作为基本认证用户名和密码。有关更多信息，请参阅[检索 API 的基本认证信息](#retrieve-id-token)。
 
-```
-/networks/{networkID}/join
-```
-{:codeblock}
+2. [检查可用网络位置](#check-location)以获取邀请电子邮件中 `location_id` 的 `swagger_url`。此 URL 将类似于以下内容：
+
+    ```
+    https://ibmblockchain-v2-tor.1.secure.blockchain.ibm.com/api-docs
+    ```
+    {:codeblock}
+
+3. 浏览至 `swagger_url` 以使用 Swagger UI 发出“加入 API”，或者通过编程方式使用 `swagger_url` 来提交“加入”请求。将 `/api-docs` 替换为 `/api/v1/networks/[network_id]]/join`，并使用邀请电子邮件中的值填写 `network_id`。生成的 URL 将类似于以下内容：
+
+    ```
+    https://ibmblockchain-v2-tor.1.secure.blockchain.ibm.com/api/v1/networks/56102acee0e4487889ef09db681bada0/join
+    ```
+    {:codeblock}
+
+    **注**：对于**加入** API，请使用在步骤 1 中检索到的服务实例标识和令牌作为基本认证用户名和密码。
 
 **参数**：
 - `company_name`：作为网络中成员的标识。这将替换邀请者指定的名称。
 - `email`：用于接收通知的电子邮件地址。应该与邀请通知中的电子邮件地址相匹配。
 - `peers`：要针对此成员创建的同级的数量。有效值为 0 到 6。您还可以稍后在“网络监视器”中为成员创建同级。
-

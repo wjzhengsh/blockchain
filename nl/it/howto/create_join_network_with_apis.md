@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-05-15"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -18,7 +18,7 @@ lastupdated: "2018-05-15"
 {:shortdesc}
 
 
-## Richiamo delle credenziali di autenticazione di base dell'API
+## Richiamo delle credenziali di autenticazione di base della API
 {: #retrieve-id-token}
 
 Prima di iniziare, devi creare un'istanza del servizio [{{site.data.keyword.blockchainfull_notm}} Platform ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://console.bluemix.net/catalog/services/blockchain) con piano Starter o piano Enterprise in {{site.data.keyword.cloud_notm}}.
@@ -27,8 +27,11 @@ Per utilizzare le API Swagger per creare o unire una rete, hai bisogno delle cre
 
 1. Nel tuo [dashboard {{site.data.keyword.cloud_notm}} ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://console.bluemix.net/dashboard/apps/), apri l'istanza del servizio che hai creato.
 2. Fai clic su **Credenziali del servizio** dal navigator di sinistra.
-3. Fai clic sul pulsante "Nuova credenziale" nella pagina **Credenziali del servizio** per creare una nuova credenziale. Fornisci un nome alla credenziale, ad esempio *CreateJoin* e fai clic sul pulsante **Aggiungi**. Non devi immettere nulla nel campo "Aggiungi parametro di configurazione inline".
-    ![Richiama credenziali del servizio](../images/service_credentials.gif "Richiama le credenziali del servizio")
+3. Fai clic sul pulsante "Nuova credenziale" nella pagina **Credenziali del servizio** per creare una nuova credenziale. 
+    1. Fornisci un nome alla credenziale, ad esempio *CreateJoin*.
+    2. Immetti **{"type": "service_instance_token"}** nel campo "Aggiungi parametro di configurazione inline".
+    3. Fai clic sul pulsante **Aggiungi**.
+    ![Richiama credenziali del servizio](../images/service_credentials.gif "Richiama credenziali del servizio")
 4. Dopo avere creato la nuova credenziale, fai clic su **Visualizza credenziali** nell'intestazione **AZIONI** di tale credenziale. I contenuti della credenziale sono simili al seguente esempio:
 
     ```
@@ -56,18 +59,50 @@ Per utilizzare le API Swagger per creare o unire una rete, hai bisogno delle cre
     ```
     {:codeblock}
 
-    **Nota**: per l'API **Invita**, `key` viene utilizzato come ID utente di autenticazione di base e `secret` come password.
+    **Nota**: per la API **Invita**, `key` viene utilizzato come ID utente di autenticazione di base e `secret` come password.
 
 
 ## Controllo delle ubicazioni della rete disponibili
 {: #check-location}
 
-Puoi utilizzare le API per creare le reti blockchain solo nelle ubicazioni della rete disponibili. Prima di creare una rete, utilizza la seguente API per controllare le ubicazioni della rete disponibili.
+Puoi utilizzare le API per creare le reti blockchain solo nelle ubicazioni della rete disponibili. Prima di creare una rete, usa la seguente API per ottenere un elenco corrente delle ubicazioni di rete disponibili. Non sono richieste delle credenziali per eseguire questa API:
 
 ```
-/network-locations/available
+https://ibmblockchain-v2.ng.bluemix.net/api/v1/network-locations/available
 ```
 {:codeblock}
+
+Viene restituito un elenco delle ubicazioni di rete disponibili simile a:
+
+```
+{
+  "DAL": {
+    "location_id": "DAL",
+    "description": "Dallas",
+    "status": "available"
+    "swagger_url": "https://ibmblockchain-v2-dal.4.secure.blockchain.ibm.com/api-docs"
+  },
+  "FFT": {
+    "location_id": "FFT",
+    "description": "Frankfurt",
+    "status": "available"
+    "swagger_url": "https://ibmblockchain-v2-fft.2.secure.blockchain.ibm.com/api-docs"
+  },
+  "TOR": {
+    "location_id": "TOR",
+    "description": "Toronto",
+    "status": "available"
+    "swagger_url": "https://ibmblockchain-v2-tor.1.secure.blockchain.ibm.com/api-docs"
+  }
+}
+```
+{:codeblock}
+
+Se intendi creare una rete, seleziona l'ubicazione dove vuoi crearla dall'elenco restituito dalla API. Nota: ``location_id`` e ``swagger_url`` sono associati a tale ubicazione.  
+
+Se intendi aderire a una rete, annota lo ``swagger_url`` associato al ``location_id`` specificato nella tua email di invito.
+
+Lo ``swagger_url`` rappresenta l'endpoint api che utilizzerai quando crei una rete, o aderisci a essa, utilizzando le API di seguito indicate.
 
 
 ## Creazione di una rete
@@ -76,17 +111,17 @@ Puoi utilizzare le API per creare le reti blockchain solo nelle ubicazioni della
 
 Se utilizzi piano Enterprise, devi completare due passi per creare una rete con le API.
 
-1. Crea un'istanza del servizio blockchain in {{site.data.keyword.cloud_notm}} con piano Enterprise<!-- or Enterprise Plus Plan-->.  Richiama i tuoi token e ID istanza del servizio come password e nome utente di autenticazione di base. Per ulteriori informazioni, vedi [Richiamo delle credenziali di autenticazione di base dell'API](#retrieve-id-token).
+1. Crea un'istanza del servizio blockchain in {{site.data.keyword.cloud_notm}} con piano Enterprise<!-- or Enterprise Plus Plan-->.  Richiama i tuoi token e ID istanza del servizio come password e nome utente di autenticazione di base. Per ulteriori informazioni, vedi [Richiamo delle credenziali di autenticazione di base della API](#retrieve-id-token).
 
-2. Richiama l'API **Crea rete** utilizzando queste credenziali del servizio.
+2. Richiama la API **Crea rete** utilizzando queste credenziali del servizio. Immetti questa API sullo ``swagger_url`` api richiamato da [Controllo delle ubicazioni della rete disponibili](#check-location). Vai allo ``swagger_url link`` per utilizzare l'IU Swagger per immettere la API di creazione della rete oppure immetti a livello programmatico il comando utilizzando l'indirizzo URL senza ``/api-docs``. Ad esempio,
 
-```
-/networks
-```
-{:codeblock}
+    ```
+    https://ibmblockchain-v2-tor.1.secure.blockchain.ibm.com/api/v1/networks
+    ```
+    {:codeblock}
 
 **Parametri**:
-- `location_id`: l'ID di un'ubicazione della rete disponibile. Per ulteriori informazioni, vedi [Controllo delle ubicazioni della rete disponibili](check-location).
+- `location_id`: l'ID di un'ubicazione della rete disponibile. Specifica il valore del `location_id` annotato da [Controllo delle ubicazioni della rete disponibili](#check-location).
 - `company_name`: il tuo identificativo come membro della rete.
 - `email`: il tuo indirizzo email per ricevere le notifiche.
 - `peers`: il numero di peer che vuoi creare per questo membro. I valori validi sono 0 - 6. Puoi inoltre creare i peer per il tuo membro successivamente nella IU monitoraggio della rete.
@@ -95,7 +130,7 @@ Se utilizzi piano Enterprise, devi completare due passi per creare una rete con 
 
 ## Invito di nuovi membri in una rete.
 
-Dopo aver creato una rete blockchain, puoi invitare altri membri ad unirsi alla tua rete. Devi specificare l'ID della rete a cui vuoi invitare i nuovi membri ad unirsi. Le credenziali di autenticazione di base necessarie per invitare un membro sono diverse da quelle utilizzate nell'API **Crea rete** API. <!--In order to get the basic auth information you will need to follow the same steps in "Retrieving basic auth information for API". --> Puoi ottenere le credenziali per invitare un membro con l'API **Richiama credenziali rete** nella [IU Swagger ](swagger_apis##retrieving-network-credentials) o [richiamare le informazioni di autenticazione di base per l'API](#retrieve-id-token) dalla tua istanza del servizio in {{site.data.keyword.cloud_notm}}.
+Dopo aver creato una rete blockchain, puoi invitare altri membri ad unirsi alla tua rete. Devi specificare l'ID della rete a cui vuoi invitare i nuovi membri ad unirsi. Le credenziali di autenticazione di base necessarie per invitare un membro sono diverse da quelle utilizzate nella API **Crea rete** API. <!--In order to get the basic auth information you will need to follow the same steps in "Retrieving basic auth information for API". --> Puoi ottenere le credenziali per invitare un membro con la API **Richiama credenziali rete** nella [IU Swagger ](swagger_apis##retrieving-network-credentials) o [richiamare le informazioni di autenticazione di base per la API](#retrieve-id-token) dalla tua istanza del servizio in {{site.data.keyword.cloud_notm}}.
 
 ```
 /networks/{networkID}/invite
@@ -111,17 +146,28 @@ Il membro invitato riceverà un invito email con le istruzioni su come unirsi al
 
 ## Adesione a una rete
 
-Se vieni invitato ad unirti a una rete blockchain, riceverai un invito email.  Puoi seguire le istruzioni nell'email o utilizzare la seguente API per unirti alla rete.
+Se vieni invitato ad aderire a una rete blockchain, riceverai una email di invito alla rete che include `location_id` e `network id`.
 
-**Nota**: prima di unirti a una rete devi creare un'istanza del servizio {{site.data.keyword.blockchainfull_notm}} Platform e richiamare i tuoi token e ID istanza del servizio come password e nome utente di autenticazione di base. Per ulteriori informazioni, vedi [Richiamo delle informazioni di autenticazione di base per l'API](#retrieve-id-token). Devi specificare l'ID della rete a cui vuoi unirti. 
+1. Prima di aderire a una rete devi creare un'istanza del servizio {{site.data.keyword.blockchainfull_notm}} Platform e richiamare i tuoi token e ID istanza del servizio come password e nome utente di autenticazione di base. Per ulteriori informazioni, vedi [Richiamo delle informazioni di autenticazione di base per la API](#retrieve-id-token).
 
-```
-/networks/{networkID}/join
-```
-{:codeblock}
+2. [Controlla le ubicazioni di rete disponibili](#check-location) per ottenere lo `swagger_url` per il `location_id` nella tua email di invito. Sarà qualcosa di simile a:
+
+    ```
+    https://ibmblockchain-v2-tor.1.secure.blockchain.ibm.com/api-docs
+    ```
+    {:codeblock}
+
+3. Passa al tuo ``swagger_url`` per utilizzare l'IU Swagger per immettere la API di adesione oppure inoltra a livello programmatico la richiesta di adesione utilizzando lo ``swagger_url``. Sostituisci ``/api-docs`` con ``/api/v1/networks/[network_id]]/join``
+e compila il `network_id` utilizzando il valore dalla tua email di invito. L'URL risultante sarà simile al seguente:
+
+    ```
+    https://ibmblockchain-v2-tor.1.secure.blockchain.ibm.com/api/v1/networks/56102acee0e4487889ef09db681bada0/join
+    ```
+    {:codeblock}
+
+    **Nota**: per la API **Unisciti**, utilizza l'ID istanza del servizio e il token che hai richiamato al passo 1 come nome utente e password di autenticazione di base.
 
 **Parametri**:
 - `company_name`: il tuo identificativo come membro della rete. Questo sostituirà il nome assegnato dal mittente dell'invito.
-- `email`: il tuo indirizzo email per ricevere le notifiche. Questo dovrebbe corrispondere all'indirizzo email nella notifica di invito.
+- `email`: il tuo indirizzo email per ricevere le notifiche.  Questo dovrebbe corrispondere all'indirizzo email nella notifica di invito.
 - `peers`: il numero di peer che vuoi creare per questo membro. I valori validi sono da 0 a 6. Puoi inoltre creare i peer per il tuo membro successivamente nel monitoraggio della rete.
-

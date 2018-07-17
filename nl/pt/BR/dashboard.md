@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-05-15"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -159,7 +159,7 @@ Solicitações pendentes podem ser excluídas selecionando as caixas na frente d
 ## APIs
 {: #apis}
 
-Para facilitar o desenvolvimento de aplicativos, o {{site.data.keyword.blockchainfull_notm}} Platform expõe APIs que você pode testar com relação à sua rede em uma UI do Swagger.
+O {{site.data.keyword.blockchainfull_notm}} Platform expõe uma série de APIs de REST no Swagger que podem ser usadas para gerenciar os nós, os canais, os peers e os membros de sua rede. Os seus aplicativos podem usar essas APIs para controlar recursos de rede importantes sem usar o Monitor de rede.
 
 A **Figura 9** mostra a tela "APIs":
 
@@ -198,14 +198,16 @@ Um chaincode é o primeiro instalado em um sistema de arquivos de um peer e, em 
 ## Tentar amostras
 {: #samples}
 
-Os aplicativos de amostra ajudam você a entender melhor uma rede de blockchain e desenvolvimento de aplicativo. O Starter Plan permite implementar e ativar aplicativos de amostra no Monitor de rede.
+Os aplicativos de amostra ajudam você a entender melhor uma rede de blockchain e o desenvolvimento de aplicativos.  <!--Starter Plan enables you to deploy and launch sample applications in the Network Monitor. --> Siga os links **Visualizar no GitHub** para aprender como usar as amostras e implementá-las no {{site.data.keyword.blockchainfull_notm}} Platform. Para obter mais informações sobre como desenvolver e implementar as suas amostras, veja [Implementando aplicativos de amostra](howto/prebuilt_samples.html).
 
 A **Figura 12** mostra a tela "Tentar amostras":
 
 ![Tentar amostras](images/sample_overview_starter.png "Tentar amostras")
 *Figura 12. Amostras*
 
-A implementação de amostra usa o [Serviço de Cadeia de ferramentas do DevOps ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://console.bluemix.net/devops/toolchains) para automatizar o seu processo de controle de origem, delivery pipeline e ativação de chaincode. Escolha um aplicativo de amostra e clique em **Implementar por meio da cadeia de ferramentas**. Para obter mais informações, veja [Implementando aplicativos de amostra](howto/prebuilt_samples.html).
+<!--
+The sample deployment leverages the [DevOps Toolchain service ![External link icon](images/external_link.svg "External link icon")](https://console.bluemix.net/devops/toolchains) to automate your process of source control, delivery pipeline, and chaincode enablement. Choose a sample application, and click the **Deploy via Toolchain**. For more information, see [Deploying sample applications](howto/prebuilt_samples.html).
+-->
 
 
 ## Obtenha ajuda
@@ -216,7 +218,7 @@ A tela "Obter ajuda" contém duas guias para fornecer informações de suporte n
 A **Figura 13** mostra a tela inicial "Suporte", que exibe informações de suporte na guia "Suporte":
 
 ![Suporte](images/support_starter.png "Suporte")
-*Figura 13. Suporte do blockchain*
+*Figura 13. Suporte do Blockchain*
 
 Use os links e recursos nessa tela para acessar fóruns de resolução de problemas e suporte.
 
@@ -224,7 +226,7 @@ Use os links e recursos nessa tela para acessar fóruns de resolução de proble
 * [IBM Developer Works ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://developer.ibm.com/blockchain/) em **Ajuda da Comunidade** contém recursos e informações para desenvolvedores.
 * [IBM dWAnswers ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://developer.ibm.com/answers/smartspace/blockchain/) em **Chamado de Suporte** serve como uma plataforma para perguntas e respostas. É possível procurar respostas de perguntas feitas anteriormente ou enviar uma nova pergunta. Certifique-se de incluir a palavra-chave **blockchain** em sua pergunta.
   Também é possível enviar um chamado para a equipe de suporte do {{site.data.keyword.blockchainfull_notm}} com a opção **Abrir um chamado de suporte do {{site.data.keyword.Bluemix_notm}}**.  Compartilhe detalhes e fragmentos de código de sua instância específica do {{site.data.keyword.Bluemix_notm}}.
-* [Aplicativos de amostra ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://github.com/ibm-blockchain) sob **Aplicativos de amostra do blockchain** fornecem fragmentos de código de orientação e de amostra para ajudar no desenvolvimento de aplicativos.
+* [Aplicativos de amostra ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://github.com/ibm-blockchain) sob **Aplicativos de amostra do Blockchain** fornecem fragmentos de código de orientação e de amostra para ajudar no desenvolvimento de aplicativos.
 * [Hyperledger Fabric ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](http://hyperledger-fabric.readthedocs.io/) e [Comunidade do Hyperledger Fabric ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](http://jira.hyperledger.org/secure/Dashboard.jspa) em **Hyperledger Fabric** fornecem mais detalhes sobre a pilha do Hyperledger Fabric.
   Fale com um [Especialista do Hyperledger ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://chat.hyperledger.org/channel/general) com perguntas sobre o código do Hyperledger Fabric.
 

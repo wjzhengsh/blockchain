@@ -17,7 +17,7 @@ lastupdated: "2018-06-14"
 This guide helps you understand pricing for {{site.data.keyword.blockchainfull}} Platform membership plans, and how much you will pay as you develop and grow your blockchain network.  
 {:shortdesc}
 
-{{site.data.keyword.blockchainfull}} Platform charges monthly membership and peer fees to organizations who build blockchain networks. The fees are different depending on the membership plan that you choose and the network resources that your network uses. The following table shows the overview pricing of {{site.data.keyword.blockchainfull_notm}} Platform.
+{{site.data.keyword.blockchainfull}} Platform charges monthly membership and peer fees to organizations who build blockchain networks. The fees are different depending on the membership plan that you choose and the network resources that your network uses. The following table shows the pricing overview of {{site.data.keyword.blockchainfull_notm}} Platform.
 
 | Pricing elements | Starter Plan cost per month | Enterprise Plan cost per month |
 |-----|-----|-----|
@@ -37,7 +37,7 @@ To understand pricing, we need to start with an introduction to basic components
 
 -	**Organizations** – Any entity who needs to maintain a copy of the blockchain ledger and needs to validate transactions. There can be multiple blockchain organizations for a single company.
 -	**Peers** – The node associated with an organization that contains the ledger and performs validates transactions. Peers are associated with an individual blockchain organization.
--	**Ordering service** – Composed or a single orderer (SOLO) or a collection of orderers, the ordering service sequences transactions, creates blocks, and sends blocks to peers for validation.
+-	**Ordering service** – Composed of a single orderer (SOLO) or a collection of orderers. The ordering service sequences transactions, creates blocks, and sends blocks to peers for validation.
 -	**Certificate Authority (CA)** –Issues digital certificates for identification purposes to any interactive network component.
 
 {{site.data.keyword.blockchainfull_notm}} Platform offers two membership plans, the **Starter Plan** and the **Enterprise Plan**, that you can choose in {{site.data.keyword.cloud_notm}}. Both plans allow you to create organizations and provide you with a certificate authority. The plans diverge around the peers, CAs, and the ordering service.
@@ -79,7 +79,7 @@ Starter Plan networks are provisioned with a default configuration of two organi
 
 ### Example Starter Plan pricing
 
-#### Starter Plan trail
+#### Starter Plan trial
 The purpose of the Starter Plan is to allow anyone to get started and see the value add of {{site.data.keyword.blockchainfull_notm}} Platform. Therefore, {{site.data.keyword.blockchainfull_notm}} Platform offers a $500 credit system intended to cover all charges for new users that would be accrued over one month with the default network configuration that is outlined above. Your bill is reflected in Figure 4 if you create or join a Starter Plan network for the **first time** with the default configuration.
 
 | Pricing components | Cost per month |
@@ -110,7 +110,7 @@ Starter Plan does not restrict the number of peers that you can add to your netw
 *Figure 5. Charge of a default Starter Plan network with additional two peers*
 
 #### Additional networks
-Starter Plan also does not restrict the number to network instances that you can provision. If you provision a second network instance of Starter Plan, you need to pay a second membership fee and a second set of peer fees associated with the second network. Therefore, you increase your bill by $500 per month to use the default network configuration. You might find yourself in the scenario where you require additional Starter networks for you development, test, and proof-of-concept environments isolated from each other. An example would be when you want to provide your quality engineers to perform significant functional testing away from your development environment.
+Starter Plan also does not restrict the number to network instances that you can provision. If you provision a second network instance of Starter Plan, you need to pay a second membership fee and a second set of peer fees associated with the second network. Therefore, you increase your bill by $500 per month to use the default network configuration. You might find yourself in the scenario where you require additional Starter networks for your development, test, and proof-of-concept environments isolated from each other. An example would be when you want to provide your quality engineers to perform significant functional testing away from your development environment.
 
 Your bill is reflected in Figure 6 if you add an additional network at the beginning of the first month when you create or join a Starter Plan network and consume the trial credits.
 

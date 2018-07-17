@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-05-15"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -32,9 +32,9 @@ lastupdated: "2018-05-15"
 ## ネットワーク名の更新
 {: #ep-network-name}
 
-Enterprise Plan ネットワークを作成すると、{{site.data.keyword.blockchainfull_notm}} Platform がそのネットワークに名前を割り当てます。ただし、このネットワーク名はネットワーク・モニターでいつでも更新できます。
+Enterprise Plan ネットワークを作成すると、{{site.data.keyword.blockchainfull_notm}} Platform がそのネットワークに名前を割り当てます。 ただし、このネットワーク名はネットワーク・モニターでいつでも更新できます。
 
-ネットワーク・モニターの左側にあるナビゲーターの上部でネットワーク名をクリックすると、フィールドが編集可能になります。使用する新規ネットワーク名を入力し、**Enter** キーを押します。ネットワーク名は数秒で更新されます。
+ネットワーク・モニターの左側にあるナビゲーターの上部でネットワーク名をクリックすると、フィールドが編集可能になります。 使用する新規ネットワーク名を入力し、**Enter** キーを押します。 ネットワーク名は数秒で更新されます。
 
 **図 1** に、スターター・プランのネットワーク名を、割り当てられた名前から「Starter Plan Network」に更新する手順を示します。
 
@@ -130,7 +130,7 @@ Enterprise Plan ネットワークを作成すると、{{site.data.keyword.block
 ## API
 {: #apis}
 
-アプリケーション開発を容易にするために、{{site.data.keyword.blockchainfull_notm}} Platform は、Swagger UI でネットワークに対してテストできる API を公開しています。
+{{site.data.keyword.blockchainfull_notm}} Platform では多数の REST API を Swagger で公開しており、これらを使用してノード、チャネル、ピア、およびネットワーク・メンバーを管理できます。アプリケーションではこれらの API を使用して、ネットワーク・モニターを使用せずに重要なネットワーク・リソースを管理できます。
 
 **図 7** に「API」画面を示します。
 
@@ -166,7 +166,7 @@ Enterprise Plan でコードを開発してデプロイする方法について�
 ## サンプルの試行
 {: #samples}
 
-サンプル・アプリケーションは、ブロックチェーン・ネットワークとアプリケーション開発についての理解を深めるのに役立ちます。 Marbles サンプル・アプリケーションをインストールする方法については、ネットワーク・モニターで Marbles リポジトリーへのリンクをたどってください。 独自のサンプルを開発してデプロイする方法について詳しくは、[アプリケーションの開発](v10_application.html)を確認してください。
+サンプル・アプリケーションは、ブロックチェーン・ネットワークとアプリケーション開発についての理解を深めるのに役立ちます。 サンプルの使用方法、およびサンプルの {{site.data.keyword.blockchainfull_notm}} Platform へのデプロイ方法を学習するには、**「GitHub の表示」**リンクに従ってください。サンプルの開発およびデプロイ方法について詳しくは、[サンプル・アプリケーションのデプロイ](howto/prebuilt_samples.html)を参照してください。
 
 **図 10** に「サンプルの試行」画面を示します。
 
@@ -207,52 +207,59 @@ Enterprise Plan でコードを開発してデプロイする方法について�
 ## ネットワーク設定 (Network preferences)
 {: #network-preferences}
 
-右上隅をクリックし、ドロップダウン・メニューを開いて、**「ネットワーク設定 (Network preferences)」**を開きます。「ネットワーク設定 (Network preferences)」ウィンドウが開きます。「ネットワーク設定 (Network preferences)」ウィンドウには、ネットワーク名、Fabric のバージョン、{{site.data.keyword.cloud_notm}} 内のネットワーク・ロケーション、台帳データベース・タイプなど、ネットワークの基本情報が表示されます。
+右上隅をクリックし、ドロップダウン・メニューを開いて、**「ネットワーク設定 (Network preferences)」**を開きます。 「ネットワーク設定 (Network preferences)」ウィンドウが開きます。 「ネットワーク設定 (Network preferences)」ウィンドウには、ネットワーク名、Fabric のバージョン、{{site.data.keyword.cloud_notm}} 内のネットワーク・ロケーション、台帳データベース・タイプなど、ネットワークの基本情報が表示されます。
 
-Enterprise Plan ネットワークは近々 Fabric v1.1 にアップグレードされます。<!-- May 15th, 2018 will run on Hyperledger Fabric v1.1-->アップグレード後にネットワークを作成した場合は、「ネットワーク設定 (Network preferences)」ウィンドウでネットワークの Web 非アクティブ・タイムアウトと相互 TLS も管理することができます。これらの設定を変更できるのは、ネットワーク・イニシエーターのみです。
+2018 年 5 月 15 日より後に作成したエンタープライズ・プラン・ネットワークは、Hyperledger Fabric v1.1 で実行されます。アップグレード後にネットワークを作成した場合は、「ネットワーク設定 (Network preferences)」ウィンドウでネットワークの Web 非アクティブ・タイムアウトと相互 TLS も管理することができます。 これらの設定を変更できるのは、ネットワーク・イニシエーターのみです。
 
 <!--
+
 Enterprise Plan networks that are created after May 15th, 2018 will run on Hyperledger Fabric v1.1. If you create networks after the upgrade, you can also manage web inactivity timeout, mutual TLS, and switch your ledger to CouchDB for your network in the Network preferences window. These settings can be changed by the network initiator only.
+
 -->
 
 ### Web 非アクティブ・タイムアウト (Web inactivity timeout)
 {: #web-inactivity-timeout}
 
-**注**: Web 非アクティブ・タイムアウト設定を変更できるのは、**ネットワーク・イニシエーター**のみです。これはネットワーク・レベルの設定であり、すべてのネットワーク・メンバーに影響します。
+**注**: Web 非アクティブ・タイムアウト設定を変更できるのは、**ネットワーク・イニシエーター**のみです。 これはネットワーク・レベルの設定であり、すべてのネットワーク・メンバーに影響します。
 
-デフォルトでは、Web 非アクティブ・タイムアウトは**「オフ」**に設定されます。Web 非アクティブ・タイムアウトを**オン**にした場合、非アクティブ状態が 10 分続いたネットワーク・メンバーはすべて自動的にログアウトされます。Web 非アクティブ・タイマーが 10 分に達すると、ネットワーク・メンバーのアカウントのセキュリティーを確保するために、Web 非アクティブ・タイムアウト機能によって非アクティブな Web セッションが終了させられます。リンクをクリックするか、ネットワーク・モニターを更新すると、Web 非アクティブ・タイマーはリセットされます。10 分に達する前にブラウザーのウィンドウまたはタブを閉じた場合も、Web セッションは終了します。
+デフォルトでは、Web 非アクティブ・タイムアウトは**「オフ」**に設定されます。 Web 非アクティブ・タイムアウトを**オン**にした場合、非アクティブ状態が 10 分続いたネットワーク・メンバーはすべて自動的にログアウトされます。 Web 非アクティブ・タイマーが 10 分に達すると、ネットワーク・メンバーのアカウントのセキュリティーを確保するために、Web 非アクティブ・タイムアウト機能によって非アクティブな Web セッションが終了させられます。 リンクをクリックするか、ネットワーク・モニターを更新すると、Web 非アクティブ・タイマーはリセットされます。 10 分に達する前にブラウザーのウィンドウまたはタブを閉じた場合も、Web セッションは終了します。
 
 ### 相互 TLS (Mutual TLS)
 {: #mutual-tls}
 
-相互 TLS により、アプリケーションとネットワークの間の通信を保護し、ネットワークと通信できるユーザーを限定できます。
+相互 TLS により、アプリケーションとネットワークとの間の通信が保護されます。
 
-**注**: 相互 TLS を有効または無効にできるのは、**ネットワーク・イニシエーター**のみです。これはネットワーク・レベルの設定であり、すべてのネットワーク・メンバーに影響します。
+**注**: 相互 TLS を有効または無効にできるのは、**ネットワーク・イニシエーター**のみです。 これはネットワーク・レベルの設定であり、すべてのネットワーク・メンバーに影響します。
 
-デフォルトでは、「相互 TLS (mutual TLS)」ボタンは**「オフ」**に設定されています。相互 TLS を有効にする場合は、この機能をサポートするようにアプリケーションを更新する必要があります。そうしないと、アプリケーションはネットワークと通信できません。
+デフォルトでは、「相互 TLS (mutual TLS)」ボタンは**「オフ」**に設定されています。 相互 TLS を有効にする場合は、この機能をサポートするようにアプリケーションを更新する必要があります。 そうしないと、アプリケーションはネットワークと通信できません。
 
-Fabric 1.1 Enterprise Plan ネットワークの場合は、組織ごとに独自の相互 TLS 認証局 (CA) が使用されます。相互 TLS の CA に接続するために必要な情報は、ネットワーク・モニターの**「概要」**画面で**「接続プロファイル (Connection Profile)」**ボタンをクリックしてアクセスできる[接続プロファイル](##enterprise-connection-profile)で確認できます。接続プロファイルには、CA に接続し、ネットワークに接続するために必要な証明書を取得するための必須情報が含まれています。
+Fabric 1.1 Enterprise Plan ネットワークの場合は、組織ごとに独自の相互 TLS 認証局 (CA) があります。 相互 TLS の CA に接続するために必要な情報は、ネットワーク・モニターの**「概要」**画面で**「接続プロファイル (Connection Profile)」**ボタンをクリックしてアクセスできる[接続プロファイル](##enterprise-connection-profile)で確認できます。  接続プロファイルには、CA に接続し、ネットワークに接続するために必要な証明書を取得するための必須情報が含まれています。
 
 接続プロファイルで `certificateAuthorities` セクションを見つけます。このセクションには、相互 TLS を使用してネットワークと通信するための証明書を登録および取得するために必要な以下の属性があります。
 
 - `url`: 相互 TLS 証明書を提供できる CA に接続するための URL
 - `enrollId`: 証明書を取得するために使用する登録 ID
 - `enrollSecret`: 証明書を取得するために使用する登録シークレット
-- `x-tlsCAName`: アプリケーションが相互 TLS を使用して通信できるようにする証明書を取得するために使用する CA 名。
+- `x-tlsCAName`: アプリケーションでの相互 TLS を使用した通信を可能にするための証明書を取得する際に使用する CA 名。
 
 相互 TLS をサポートするようにアプリケーションを更新する方法について詳しくは、[How to configure mutual TLS ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://fabric-sdk-node.github.io/tutorial-mutual-tls.html) を参照してください。
 
 <!--
+
 ### CouchDB ledger type
 {: #couchdb}
+
 **Note**: Only the **network initiator** can switch the ledger database from LevelDB to CouchDB. This is a network level setting and will affect all network members. Switching to CouchDB is permanent. You cannot revert back to LevelDB.
+
 Before Enterprise Plan upgrades to Fabric v1.1, all network peers store data in the pure key-value LevelDB. With Fabric v1.1, you can choose to use CouchDB as your ledger database. CouchDB is a document datastore that permits indexing the contents of your data and allows you to issue rich queries against the data on your peer. Note that Hyperledger Fabric does not support peers running different databases. If CouchDB is used, it must be used by all of the peers.
+
 To use CouchDB, your data must be stored in a data format that can be modeled in chaincode, such as JSON. If the decision is made to migrate from LevelDB to CouchDB, the {{site.data.keyword.blockchainfull_notm}} Platform will migrate your data from key-value format to the CouchDB format automatically.
+
 If you switch to CouchDB, you need to update your chaincode to take advantage of indexes and rich queries. For more information about CouchDB and how to set up index, see [CouchDB as the State Database ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/latest/couchdb_as_state_database.html). For more information about updating chaincode in {{site.data.keyword.blockchainfull_notm}} Platform, see [Updating a chaincode](howto/install_instantiate_chaincode.html#updating-a-chaincode).
+
 -->
 
 次の**図 14** は、「ネットワーク設定 (Network preferences)」ウィンドウを示しています。
 
-<!-- ![Network preferences](images/network_preferences_ep.gif "Network preferences") -->
-![ネットワーク設定 (Network preferences)](images/network_preferences_ep_tmp.png "ネットワーク設定 (Network preferences)")  
+![ネットワーク設定 (Network preferences)](images/network_preferences_ep_tmp.png "ネットワーク設定 (Network preferences)")
 *図 14. ネットワーク設定 (Network preferences)*

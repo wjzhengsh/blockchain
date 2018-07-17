@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-05-23"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -19,9 +19,7 @@ lastupdated: "2018-05-23"
 {{site.data.keyword.blockchainfull}} Platform Starter Plan は、構成済みのブロックチェーン・ネットワークをクリック 1 回でユーザーに提供します。 <!--offers you a free trial of 30 days and --> デフォルトでは 2 つの[組織](glossary.html#organization)、それぞれの組織ごとに 1 つの [ピア](glossary.html#peer)、そして 1 つの[チャネル](glossary.html#channel)で構成される許可制ネットワークをプロビジョンします。 ネットワークが作成されたら、これを拡張してさらに組織やピアをネットワークに追加できます。 <!--Note that it might cause extra cost if you exceed the default resource limits of two organizations and two peers.-->
 {:shortdesc}
 
-**注意**:
-1. {{site.data.keyword.blockchainfull}} Platform スターター・プランは、開発/テスト環境であり、実動ワークロードには適していません。実稼働環境が必要な場合は、[エンタープライズ・プランについて](enterprise_plan.html)を参照してください。
-2. このスターター・プランは現在ベータ段階であり、{{site.data.keyword.cloud_notm}} の**米国南部**地域でのみ使用可能です。
+**注**: {{site.data.keyword.blockchainfull}} Platform Starter Plan は開発/テスト環境であり、実動ワークロードには適していません。 実稼働環境が必要な場合は、[エンタープライズ・プランについて](enterprise_plan.html)を参照してください。
 
 スターター・プランを使用すると、{{site.data.keyword.blockchainfull_notm}} プラットフォームのスキルを習得し、サンプル・アプリケーションを実行し、独自のアプリケーションをテストし、複数組織のシナリオをシミュレートできます。  この入門チュートリアルでは、スターター・プラン・ネットワークを作成して使用するために従う必要のある前提条件と手順を紹介します。
 
@@ -32,9 +30,9 @@ lastupdated: "2018-05-23"
 {{site.data.keyword.blockchainfull_notm}} プラットフォーム・サービス・インスタンスを作成するとすぐに、デフォルト構成のスターター・プラン・[ネットワーク](glossary.html#network)を取得できます。
 
 1. {{site.data.keyword.cloud_notm}} カタログで [ブロックチェーン・サービス![「外部リンク」アイコン](images/external_link.svg "「外部リンク」アイコン")](https://console.bluemix.net/catalog/services/blockchain) を探します。   
-    **注**: {{site.data.keyword.cloud_notm}} の有料アカウントを使用してログインする必要があります。アカウントがない場合は、**「登録して作成」**ボタンをクリックします。 無料トライアル・アカウントを作成した後、{{site.data.keyword.cloud_notm}} コンソールで**「管理」** > **「請求および使用量」** > **「請求処理」**に移動し、**「クレジット・カードの追加」**をクリックして、**「従量課金 (PAYG)」**タイプにアップグレードします。
-2. 必ず、{{site.data.keyword.cloud_notm}} の **US South** を地域として選択してください。
-3. ネットワークを作成する Cloud Foundry 組織およびスペースを選択します。
+    **注**: {{site.data.keyword.cloud_notm}} の有料アカウントを使用してログインする必要があります。 アカウントがない場合は、**「登録して作成」**ボタンをクリックします。 無料トライアル・アカウントを作成した後、{{site.data.keyword.cloud_notm}} コンソールで**「管理」** > **「請求および使用量」** > **「請求処理」**に移動し、**「クレジット・カードの追加」**をクリックして、**「従量課金 (PAYG)」**タイプにアップグレードします。
+2. {{site.data.keyword.cloud_notm}} の地域を選択し、ネットワークを作成します。
+3. Cloud Foundry 組織とスペースを選択し、ネットワークを作成します。
 4. 価格プランの表から**「スターター・メンバーシップ・プラン (Starter Membership Plan)」**を選択します。
 5. **「作成」**ボタンをクリックします。 ネットワークに参加するよう招待されている場合は、ポップアップの「ようこそ」パネルが表示されます。 ネットワークを作成するには、**「ネットワークに進む (Proceed to your network)」**を選択し、**「続行」**をクリックします。 ネットワークに参加するには、[ネットワークへの参加](#joining-a-network)のステップ 5 を参照してください。
   これで、デフォルト構成でスターター・プラン・ネットワークを使用する準備ができました。 ネットワークは 1 つの順序付けプログラム (「SOLO」順序付けサービスと呼ばれる)、2 つの組織、1 つの CA、および組織ごとに 1 つのピアによって実行されます。 デフォルト・チャネルも作成されます。
@@ -84,8 +82,7 @@ You can run [chaincode](glossary.html#chaincode) on your peers in the network.  
 以下の手順でサービス資格情報を取得します。
 1. サービス・インスタンス・ページで、左側のナビゲーターの**「サービス資格情報」**をクリックして、「サービス資格情報」画面を表示します。
 2. 「サービス資格情報」画面で**「新規資格情報」**をクリックします。
-3. 「新規資格情報の追加」画面で、資格情報に名前を付けて、**「追加」**をクリックします。 新しい資格情報がテーブルに追加されます。 「アクション」列の下の**「資格情報の表示」**をクリックすると、資格情報の詳細を表示できます。 この資格情報には、API に権限を与えるために使用できる API キーとシークレットが含まれています。  
-    ネットワークの接続プロファイルを表示する場合は、新規資格情報の作成時にインライン構成パラメーターとして **{"legacy": true}** と入力します。 接続プロファイルにはネットワーク・リソースの API エンドポイントが含まれ、それらを API およびアプリケーションで使用できます。
+3. 「新規資格情報の追加」画面で、資格情報に名前を付けて、「インラインの構成パラメーターの追加」フィールドに **{"type": "service_instance_token"}** と入力します。**「追加」**をクリックします。 新しい資格情報がテーブルに追加されます。 「アクション」列の下の**「資格情報の表示」**をクリックすると、資格情報の詳細を表示できます。 この資格情報には、API に権限を与えるために使用できる API キーとシークレットが含まれています。  
 
 ![ネットワーク資格情報の取得](images/service_credentials.gif "ネットワーク資格情報の取得")
 
@@ -121,11 +118,15 @@ You can run [chaincode](glossary.html#chaincode) on your peers in the network.  
 
 スターター・プラン・ネットワークに対してテストする `.bna`、チェーンコード、およびアプリケーションを、エンタープライズ・プラン・ネットワークにデプロイできます。
 
-ビジネス・ネットワーク・アーカイブ・ファイル (`.bna`) がある場合は、[エンタープライズ・プランへのビジネス・ネットワークのデプロイ](./develop_enterprise.html)の説明に従ってください。 `.bna` ファイルがない場合は、`composer network download` コマンドを使用してスターター・プラン・インスタンスから取得します。 `composer network download` コマンドについて詳しくは、[Hyperledger Composer コマンド・ラインの資料![「外部リンク」アイコン](images/external_link.svg "「外部リンク」アイコン")](https://hyperledger.github.io/composer/reference/commands){:new_window} を参照してください。
+ビジネス・ネットワーク・アーカイブ・ファイル (`.bna`) がある場合は、[エンタープライズ・プランへのビジネス・ネットワークのデプロイ](./develop_enterprise.html)の説明に従ってください。 `.bna` ファイルがない場合は、`composer network download` コマンドを使用してスターター・プラン・インスタンスから取得します。 `composer network download` コマンドについて詳しくは、[Hyperledger Composer コマンド・ラインの資料![「外部リンク」アイコン](images/external_link.svg "「外部リンク」アイコン")](https://hyperledger.github.io/composer/latest/reference/commands){:new_window} を参照してください。
 
 チェーンコードは `.bna` ファイルに似ていますが、外部で開発されます。 スターター・プラン・ネットワークでテストするチェーンコードをエンタープライズにデプロイするには、[チェーンコードのインストール、インスタンス化、および更新](howto/install_instantiate_chaincode.html#installchaincode)の説明に従ってください。
 
-[サンプル・アプリケーションのデプロイ](howto/prebuilt_samples.html)に示すように、スターター・プランを使用すると、ツールチェーンを使用してネットワークに統合されたサンプル・アプリケーションを簡単に入手できます。 このセットアップでは、fork されたアプリケーション・リポジトリーが変更されるたびにサンプル・アプリケーションを自動的に更新することで、継続的な統合も可能になります。 このアプリケーションをエンタープライズ・プラン・ネットワークにデプロイする場合は、fork されたアプリケーション・リポジトリーを新規リポジトリーにコピーし、[サンプル・アプリケーションの手動デプロイ](howto/prebuilt_samples.html#deploy_sample_applications_manually)の説明に従ってください。
+<!--
+As you can see in [Deploying sample applications](howto/prebuilt_samples.html), Starter Plan makes it easy to get a sample application integrated with your network by using Toolchain. This setup also allows for continuous integration by automatically updating your sample application whenever your forked application repo is changed. If you want to deploy this application into an Enterprise Plan network, you can copy your forked application repo into a new repo and then follow the instructions in [Deploying sample applications manually](howto/prebuilt_samples.html#deploy_sample_applications_manually).
+-->
+
+スターター・プラン・ネットワークにサンプル・アプリケーションをデプロイし、このアプリケーションをエンタープライズ・プラン・ネットワークにデプロイする場合は、fork されたアプリケーション・リポジトリーを新規リポジトリーにコピーしてから、[アンプル・アプリケーションの手動デプロイ](howto/prebuilt_samples.html#deploy_sample_applications_manually)の手順に従うことができます。
 
 
 ## ネットワークの削除または離脱

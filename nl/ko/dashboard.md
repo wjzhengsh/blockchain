@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-05-15"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -158,7 +158,7 @@ lastupdated: "2018-05-15"
 ## API
 {: #apis}
 
-{{site.data.keyword.blockchainfull_notm}} Platform은 애플리케이션 개발을 용이하게 하기 위해 Swagger UI에서 사용자 네트워크에 대해 테스트할 수 있는 API를 노출합니다.
+{{site.data.keyword.blockchainfull_notm}} Platform은 네트워크의 노드, 채널, 피어 및 멤버를 관리하는 데 사용할 수 있는 Swagger의 여러 REST API를 노출합니다. 애플리케이션은 이러한 API를 사용하여 네트워크 모니터를 사용하지 않고 중요한 네트워크 리소스를 제어할 수 있습니다.
 
 **그림 9**는 "API" 화면을 보여줍니다.
 
@@ -197,14 +197,16 @@ lastupdated: "2018-05-15"
 ## 샘플 시험 사용
 {: #samples}
 
-샘플 애플리케이션을 사용하면 블록체인 네트워크 및 애플리케이션 개발에 대해 이해하는 데 도움이 됩니다. 스타터 플랜에서는 네트워크 모니터에 샘플 애플리케이션을 배치하고 실행할 수 있습니다.
+샘플 애플리케이션을 사용하면 블록체인 네트워크 및 애플리케이션 개발에 대해 이해하는 데 도움이 됩니다. <!--Starter Plan enables you to deploy and launch sample applications in the Network Monitor. --> **GitHub에서 보기** 링크를 따라 샘플을 사용하여 {{site.data.keyword.blockchainfull_notm}} Platform에 배치하는 방법을 학습하십시오. 샘플 개발 및 배치 방법에 대한 자세한 정보는 [샘플 애플리케이션 배치](howto/prebuilt_samples.html)를 참조하십시오.
 
 **그림 12**는 "샘플 시험 사용" 화면을 보여줍니다.
 
 ![샘플 시험 사용](images/sample_overview_starter.png "샘플 시험 사용")
 *그림 12. 샘플*
 
-샘플 배치는 [DevOps 도구 체인 서비스 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://console.bluemix.net/devops/toolchains)를 통해 소스 제어 프로세스, Delivery Pipeline 및 체인코드 인에이블먼트를 자동화합니다. 샘플 애플리케이션을 선택하고 **도구 체인을 통한 배치**를 클릭하십시오. 자세한 정보는 [샘플 애플리케이션 배치](howto/prebuilt_samples.html)를 참조하십시오.
+<!--
+The sample deployment leverages the [DevOps Toolchain service ![External link icon](images/external_link.svg "External link icon")](https://console.bluemix.net/devops/toolchains) to automate your process of source control, delivery pipeline, and chaincode enablement. Choose a sample application, and click the **Deploy via Toolchain**. For more information, see [Deploying sample applications](howto/prebuilt_samples.html).
+-->
 
 
 ## 도움 받기

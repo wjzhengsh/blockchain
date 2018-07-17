@@ -14,11 +14,11 @@ lastupdated: "2018-06-14"
 
 # Monitoring a blockchain network
 
-This tutorial shows how to view and monitor the status information of your {{site.data.keyword.blockchain}} network on {{site.data.keyword.cloud_short}}.
+This tutorial shows how to view and monitor the status information of your {{site.data.keyword.blockchain}} network on {{site.data.keyword.cloud_notm}}.
 {:shortdesc}
 
 
-## Monitoring peers, orders, and CAs
+## Monitoring peers, orderers, and CAs
 {: #monitor-nodes}
 
 You can issue an HTTP **HEAD** request against one of your network nodes to check the node status. A network node can be a peer, an orderer, or a CA in your blockchain network. A **HEAD** request is similar to a GET request and sends just the headers without bodies. You can get a 200 response if the node works normally.

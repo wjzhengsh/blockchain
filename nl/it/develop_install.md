@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-5-15"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -44,45 +44,74 @@ Gli strumenti di riga di comando includono **composer-cli**, il modulo di riga d
 
 1. Per l'utilizzo con piano Starter, installa **composer-cli** utilizzando il seguente comando:
 
-        npm install -g composer-cli@0.19.x
+    ```
+    npm install -g composer-cli@0.19.x
+    ```
+    {:codeblock}
 
     Per l'utilizzo con piano Enterprise, installa **composer-cli** utilizzando il seguente comando:
 
-        npm install -g composer-cli@0.16.x
+    ```
+    npm install -g composer-cli@0.16.x
+    ```
+    {:codeblock}
 
 2. Per l'utilizzo con piano Starter, installa **composer-rest-server** utilizzando il seguente comando:
 
-        npm install -g composer-rest-server@0.19.x
+    ```
+    npm install -g composer-rest-server@0.19.x
+    ```
+    {:codeblock}
 
     Per l'utilizzo con piano Enterprise, installa **composer-rest-server** utilizzando il seguente comando:
 
-        npm install -g composer-rest-server@0.16.x
+    ```
+    npm install -g composer-rest-server@0.16.x
+    ```
+    {:codeblock}
 
     Usa il modulo **composer-rest-server** per creare un server REST sulla tua macchina per presentare le tue reti di business come API RESTful.
 
 3. Per l'utilizzo con piano Starter, installa **generator-hyperledger-composer** utilizzando il seguente comando:
 
-        npm install -g generator-hyperledger-composer@0.19.x
+    ```
+    npm install -g generator-hyperledger-composer@0.19.x
+    ```
+    {:codeblock}
 
     Per l'utilizzo con piano Enterprise, installa **generator-hyperledger-composer** utilizzando il seguente comando:
 
-        npm install -g generator-hyperledger-composer@0.16.x
+    ```
+    npm install -g generator-hyperledger-composer@0.16.x
+    ```
+    {:codeblock}
 
     Usa **generator-hyperledger-composer** per generare le strutture di rete di business di base, i modelli e un'applicazione Angular.
 
 4. Yeoman è uno strumento per generare le applicazioni che utilizza `generator-hyperledger-composer`:
 
-        npm install -g yo
+    ```
+    npm install -g yo
+    ```
+    {:codeblock}
 
 ## Passo due: Installazione di un playground locale
 
 Il playground Hyperledger Composer è un'interfaccia utente che può essere connessa a un vero {{site.data.keyword.blockchain}} o utilizzata come un ambiente simulato per testare una rete di business. Per l'utilizzo con piano Starter, installa il playground utilizzando il seguente comando:
 
-        npm install -g composer-playground@0.19.x
+```
+npm install -g composer-playground@0.19.x
+```
+{:codeblock}
 
-    Per l'utilizzo con piano Enterprise, installa l'area di esercitazione utilizzando il seguente comando:
 
-        npm install -g composer-playground@0.16.x
+Per l'utilizzo con piano Enterprise, installa l'area di esercitazione utilizzando il seguente comando:
+
+
+```
+npm install -g composer-playground@0.16.x
+```
+{:codeblock}
 
 ## Facoltativo: Configura il tuo IDE
 
@@ -92,48 +121,64 @@ Puoi utilizzare il playground per sviluppare, modificare e testare reti di busin
 
 2. Apri VSCode, vai a Estensioni, quindi cerca e installa l'estensione Hyperledger Composer dal marketplace.
 
+
 ## Solo per piano Enterprise: installa un Hyperledger Fabric locale e collegati ad esso con il playground
 
-Distribuendo un'istanza Hyperledger Fabric locale, puoi testare appieno le regole di controllo accessi e le reti di business.
+Distribuendo un'istanza Hyperledger Fabric locale, puoi testare appieno le regole di controllo accessi e le reti di business. Prima di attenerti a questa procedura, assicurati di avere avviato Docker.
 
 1. Crea la directory `fabric-tools` utilizzando il seguente comando:
 
-        mkdir ~/fabric-tools && cd ~/fabric-tools
+   ```
+   mkdir ~/fabric-tools &&  cd ~/fabric-tools
+   ```
+   {:codeblock}
 
 In una directory a tua scelta, ad esempio `~/fabric-tools`, ottieni il file `.tar.gz` che contiene gli strumenti per installare Hyperledger Fabric:
 
 2. Scarica il file `tar.gz` che contiene gli strumenti per installare Hyperledger Fabric in un ambiente Docker.
 
-        curl -O https://raw.githubusercontent.com/hyperledger/composer-tools/master/packages/fabric-dev-servers/fabric-dev-servers.tar.gz
+   ```
+   curl -O https://raw.githubusercontent.com/hyperledger/composer-tools/master/packages/fabric-dev-servers/fabric-dev-servers.tar.gz
         tar -xvf fabric-dev-servers.tar.gz
+   ```
+   {:codeblock}
 
     È anche disponibile un `.zip`. Sostituisci il file `.tar.gz` con `fabric-dev-servers.zip` e il comando `tar -xvf` con un comando `unzip` nel frammento precedente.
 
-3. Utilizza i seguenti comandi per scaricare un runtime locale Hyperledger Fabric v1.1:
+3. Utilizza i seguenti comandi per scaricare un runtime Hyperledger Fabric v1 locale.:
 
-        cd ~/fabric-tools
-        export FABRIC_VERSION=hlfv11
-        ./downloadFabric.sh
+   ```
+   cd ~/fabric-tools
+   export FABRIC_VERSION=hlfv1
+   ./downloadFabric.sh
+   ```
+   {:codeblock}
 
-    La directory `fabric-tools` contiene una serie di script che controllano l'istanza Hyperledger Fabric scaricata. Devi eseguire il comando `./createPeerAdminCard.sh` per generare una scheda di rete di business, che puoi utilizzare per distribuire la rete di business al Docker che ospita l'istanza Hyperledger Fabric.
+   La directory `fabric-tools` contiene una serie di script che controllano l'istanza Hyperledger Fabric scaricata. Devi eseguire il comando `./createPeerAdminCard.sh` per generare una scheda di rete di business, che puoi utilizzare per distribuire la rete di business al Docker che ospita l'istanza Hyperledger Fabric.
 
-4. Esegui questi comandi per avviare l'istanza Hyperledger Fabric v1.1:
+4. Esegui questi comandi per avviare l'istanza Hyperledger Fabric v1:
 
-        cd ~/fabric-tools
-        export FABRIC_VERSION=hlfv11
-        ./startFabric.sh
-        ./createPeerAdminCard.sh
+   ```
+   cd ~/fabric-tools
+   export FABRIC_VERSION=hlfv1
+   ./startFabric.sh
+   ./createPeerAdminCard.sh
+   ```
+   {:codeblock}
 
-    Per iniziare a sviluppare una rete di business, utilizza il playground di Hyperledger Composer o il tuo IDE.
+   Per iniziare a sviluppare una rete di business, utilizza il playground di Hyperledger Composer o il tuo IDE.
 
 5. Per avviare il playground, esegui questo comando:
 
-        composer-playground
+    ```
+    composer-playground
+    ```
+    {:codeblock}
 
     Il playground si apre al seguente URL: http://localhost:8080/login. La scheda **PeerAdmin@hlfv1** creata nel passo precedente può essere utilizzata per distribuire una rete di business.
 
 
-## Avvio e arresto di Hyperledger Fabric
+### Avvio e arresto di Hyperledger Fabric
 
 La directory `fabric-tools` contiene una serie di script che controllano l'istanza Hyperledger Fabric. Puoi arrestare e avviare il runtime utilizzando `~/fabric-tools/stopFabric.sh` e `~/fabric-tools/startFabric.sh`.
 

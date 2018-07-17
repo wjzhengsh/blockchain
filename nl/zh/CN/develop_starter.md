@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-5-15"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -29,11 +29,11 @@ lastupdated: "2018-5-15"
 
 1. 在入门套餐的“概述”屏幕中，单击**连接概要文件**，然后进行下载。将此文件重命名为“connection-profile.json”。
 
-2. 将此文件移至与 .bna 文件相同的目录中。
+2. 将此文件移至与 `.bna` 文件相同的目录中。
 
 3. 在连接概要文件中，一直向下直至看到“registrar”。在“registrar”中的“enrollId”下方，有一个 **enrollSecret** 属性。检索到该私钥并保存其副本。
 
-![D8KBag](https://i.makeagif.com/media/4-12-2018/D8KBag.gif)
+    ![D8KBag](https://i.makeagif.com/media/4-12-2018/D8KBag.gif)
 
 
 ## 步骤 2：创建证书授权卡
@@ -42,17 +42,28 @@ lastupdated: "2018-5-15"
 
 1. 使用第一步中记录的 **enrollSecret**，运行以下命令来创建 CA 业务网络卡：
 
-        composer card create -f ca.card -p connection-profile.json -u admin -s ${enrollSecret}
+   ```
+   composer card create -f ca.card -p connection-profile.json -u admin -s enrollSecret
+   ```
+   {:pre}
+
+将以上命令中的 `enrollSecret` 替换为从连接概要文件检索到的管理私钥。
 
 2. 使用以下命令来导入该卡：
 
-        composer card import -f ca.card -c ca
+   ```
+   composer card import -f ca.card -c ca
+   ```
+   {:codeblock}
 
 3. 现在，该卡已导入，可以用于将 **enrollSecret** 交换为 CA 的有效证书。运行以下命令向认证中心请求证书：
 
-        composer identity request --card ca --path ./credentials -u admin -s ${enrollSecret}
+   ```
+   composer identity request --card ca --path ./credentials -u admin -s enrollSecret
+   ```
+   {:codeblock}
 
-`composer identity request` 命令会创建包含证书 `.pem` 文件的 `credentials` 目录。
+将以上命令中的 `enrollSecret` 替换为从连接概要文件检索到的管理私钥。`composer identity request` 命令会创建包含证书 `.pem` 文件的 `credentials` 目录。
 
 ## 步骤 3：向入门套餐实例添加证书
 
@@ -64,7 +75,7 @@ lastupdated: "2018-5-15"
 
 2. 接下来，必须在通道上同步证书。单击**通道**选项卡，随后单击**操作**按钮，然后是**同步证书**和**提交**。
 
-![E-sVV5](https://i.makeagif.com/media/4-12-2018/E-sVV5.gif)
+    ![E-sVV5](https://i.makeagif.com/media/4-12-2018/E-sVV5.gif)
 
 ## 步骤 4：创建管理业务网络卡
 
@@ -72,13 +83,19 @@ lastupdated: "2018-5-15"
 
 1. 使用以下命令来创建具有通道管理和同级管理角色的管理卡：
 
-        composer card create -f adminCard.card -p connection-profile.json -u admin -c ./credentials/admin-pub.pem -k ./credentials/admin-priv.pem --role PeerAdmin --role ChannelAdmin
+   ```
+   composer card create -f adminCard.card -p connection-profile.json -u admin -c ./credentials/admin-pub.pem -k ./credentials/admin-priv.pem --role PeerAdmin --role ChannelAdmin
+   ```
+   {:codeblock}
 
-    此卡用于将业务网络部署到入门套餐。
+   此卡用于将业务网络部署到入门套餐。
 
 2. 使用以下命令导入在上一步中创建的卡：
 
-        composer card import -f adminCard.card -c adminCard
+   ```
+   composer card import -f adminCard.card -c adminCard
+   ```
+   {:codeblock}
 
 ## 步骤 5：安装并启动业务网络
 
@@ -86,23 +103,35 @@ lastupdated: "2018-5-15"
 
 1. 使用以下命令来安装 Hyperledger Composer 运行时：
 
-        composer network install -c adminCard -a vehicle-manufacture-network.bna
+   ```
+   composer network install -c adminCard -a vehicle-manufacture-network.bna
+   ```
+   {:codeblock}
 
-    请记录运行此命令时返回的业务网络版本号。在下一步中将需要此项。
+   请记录运行此命令时返回的业务网络版本号。在下一步中将需要此项。
 
 2. 使用以下命令启动业务网络。如果发生错误，请等待一分钟，然后重试。在 `-V` 选项后使用来自上一步的版本号。
 
-        composer network start -c adminCard -n vehicle-manufacture-network -V 0.0.1 -A admin -C ./credentials/admin-pub.pem -f delete_me.card
+    ```
+    composer network start -c adminCard -n vehicle-manufacture-network -V 0.0.1 -A admin -C ./credentials/admin-pub.pem -f delete_me.card
+    ```
+    {:codeblock}
 
 3. 删除名为 `delete_me.card` 的业务网络卡。
 
 4. 使用以下命令来创建新的业务网络卡，并引用早先时候检索到的证书：
 
-        composer card create -n vehicle-manufacture-network -p connection-profile.json -u admin -c ./credentials/admin-pub.pem -k ./credentials/admin-priv.pem
+   ```
+   composer card create -n vehicle-manufacture-network -p connection-profile.json -u admin -c ./credentials/admin-pub.pem -k ./credentials/admin-priv.pem
+   ```
+   {:codeblock}
 
 5. 使用以下命令来导入业务网络卡：
 
-        composer card import -f ./admin@vehicle-manufacture-network.card
+    ```
+    composer card import -f ./admin@vehicle-manufacture-network.card
+    ```
+    {:codeblock}
 
 现在，业务网络已部署到入门套餐实例。
 
@@ -110,7 +139,10 @@ lastupdated: "2018-5-15"
 
 1. 运行以下命令以对业务网络执行 ping 操作：
 
-        composer network ping -c admin@vehicle-manufacture-network
+   ```
+   composer network ping -c admin@vehicle-manufacture-network
+   ```
+   {:codeblock}
 
 要查看链代码日志，请单击**通道**，然后选择通道。单击下拉箭头以查看日志，或者单击“操作”符号以更详细地进行查看。
 

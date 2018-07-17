@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-05-15"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -158,7 +158,7 @@ Para suprimir solicitudes pendientes, seleccione los recuadros situados delante 
 ## API
 {: #apis}
 
-Para facilitar el desarrollo de aplicaciones, la plataforma {{site.data.keyword.blockchainfull_notm}} expone las API que puede probar en la red en una IU de Swagger.
+La plataforma {{site.data.keyword.blockchainfull_notm}} ofrece varias API REST en Swagger que puede utilizar para gestionar los nodos, canales, iguales y miembros de la red. Las aplicaciones pueden utilizar estas API para controlar los recursos de red importantes sin utilizar el Supervisor de red.
 
 **Figura 9** muestra la pantalla "API":
 
@@ -197,14 +197,16 @@ El código de encadenamiento se instala en primer lugar en el sistema de archivo
 ## Probar ejemplos
 {: #samples}
 
-Las aplicaciones de ejemplo le ayudan a comprender mejor una red de blockchain y el desarrollo de aplicaciones. El Plan inicial le permite desplegar e iniciar las aplicaciones de ejemplo en el supervisor de red.
+Las aplicaciones de ejemplo le ayudan a comprender mejor una red blockchain y el desarrollo de aplicaciones.  <!--Starter Plan enables you to deploy and launch sample applications in the Network Monitor. --> Siga los enlaces **Ver en GitHub** para obtener más información sobre cómo utilizar las muestras y desplegarlas en la plataforma de {{site.data.keyword.blockchainfull_notm}}. Para obtener más información sobre cómo desarrollar y desplegar los ejemplos, consulte [Despliegue de aplicaciones de ejemplo](howto/prebuilt_samples.html).
 
 **Figura 12** muestra la pantalla "Probar ejemplos":
 
 ![Probar ejemplos](images/sample_overview_starter.png "Probar ejemplos")
 *Figura 12. Ejemplos*
 
-El despliegue de ejemplo utiliza el [servicio DevOps Toolchain ![icono de enlace externo](images/external_link.svg "icono de enlace externo")](https://console.bluemix.net/devops/toolchains) para automatizar el proceso de control de origen, conducto de entrega y habilitación del código de encadenamiento. Elija una aplicación de ejemplo y pulse **Desplegar mediante Toolchain**. Para obtener más información, consulte [Despliegue de aplicaciones de ejemplo](howto/prebuilt_samples.html).
+<!--
+The sample deployment leverages the [DevOps Toolchain service ![External link icon](images/external_link.svg "External link icon")](https://console.bluemix.net/devops/toolchains) to automate your process of source control, delivery pipeline, and chaincode enablement. Choose a sample application, and click the **Deploy via Toolchain**. For more information, see [Deploying sample applications](howto/prebuilt_samples.html).
+-->
 
 
 ## Obtener ayuda
@@ -241,7 +243,7 @@ Si no consigue depurar el problema ni determinar una respuesta a su pregunta, en
 ## Cambiar de organización
 {: #switch-organizations}
 
-Si decide simular una red de blockchain de varias organizaciones, puede cambiar a cualquiera de las organizaciones que posee, por ejemplo a la Organización A. A continuación, puede ver y gestionar los recursos de red de la Organización A, como los iguales, canales y códigos de encadenamiento, en el supervisor de red. Esta característica le permite crear un canal siguiendo las políticas del canal y añadir al canal iguales procedentes de varias organizaciones.
+Si decide simular una red blockchain de varias organizaciones, puede cambiar a cualquiera de las organizaciones que posee, por ejemplo a la Organización A. A continuación, puede ver y gestionar los recursos de red de la Organización A, como los iguales, canales y códigos de encadenamiento, en el supervisor de red. Esta característica le permite crear un canal siguiendo las políticas del canal y añadir al canal iguales procedentes de varias organizaciones.
 
 Pulse la esquina superior derecha de la IU, donde debería ver su nombre. En el menú desplegable que hay bajo **CAMBIAR DE ORGANIZACIÓN**, elija el nombre de la organización a la que desea cambiar. La Organización A está seleccionada de forma predeterminada. Después de seleccionar una organización a la que cambiar, el supervisor de red se renueva automáticamente y puede ver la red como dicha organización.
 
@@ -272,7 +274,7 @@ El tiempo de espera de inactividad web está establecido en **Desactivado** de f
 ## Restablecer la red
 {: #reset-network}
 
-El Plan inicial ofrece la posibilidad de editar la configuración de la red sin suprimir ni volver a crear la red. Se restablece la configuración inicial de la red, que incluye dos organizaciones, un igual por cada organización y un canal predeterminado. Esto resulta útil, por ejemplo, cuando se ejecutan rondas de pruebas en la red de blockchain, ya que le permite volver a empezar desde una red relativamente limpia.
+El Plan inicial ofrece la posibilidad de editar la configuración de la red sin suprimir ni volver a crear la red. Se restablece la configuración inicial de la red, que incluye dos organizaciones, un igual por cada organización y un canal predeterminado. Esto resulta útil, por ejemplo, cuando se ejecutan rondas de pruebas en la red blockchain, ya que le permite volver a empezar desde una red relativamente limpia.
 
 **Atención**: después de restablecer la red, los puntos finales de API de los iguales, el clasificador y la CA se modifican. Debe ajustar la información sobre puntos finales de API en las aplicaciones.
 

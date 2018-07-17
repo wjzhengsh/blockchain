@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-03-16"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -32,7 +32,7 @@ La seguente procedura indica il flusso di base per avviare una rete piano Enterp
 
 
 ## Creazione di una rete
-Prima di iniziare, devi creare un'istanza del servizio di [{{site.data.keyword.blockchain}} Platform ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://console.bluemix.net/catalog/services/blockchain) su {{site.data.keyword.Bluemix_notm}}. Devi eseguire l'accesso con il tuo ID {{site.data.keyword.Bluemix_notm}}. Se non hai un ID, fai clic sul pulsante **Registrati per creare**.  Rinomina i nomi di servizio e credenziali per la tua istanza in modo che tu possa riconoscerli facilmente in futuro. Seleziona la regione, l'organizzazione e lo spazio {{site.data.keyword.Bluemix_notm}} dove puoi distribuire la tua rete {{site.data.keyword.blockchain}}. Seleziona quindi **Piano di appartenenza Enterprise** dalla tabella dei piani di determinazione del prezzo e fai clic sul pulsante **Crea**.  
+Prima di iniziare, devi creare un'istanza del servizio di [{{site.data.keyword.blockchain}} Platform ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://console.bluemix.net/catalog/services/blockchain) su {{site.data.keyword.Bluemix_notm}}. Devi eseguire l'accesso con il tuo ID {{site.data.keyword.Bluemix_notm}}. Se non hai un ID, fai clic sul pulsante **Registrati per creare**.  Rinomina i nomi di servizio e credenziali per la tua istanza in modo che tu possa riconoscerli facilmente in futuro. Seleziona la regione, l'organizzazione e lo spazio {{site.data.keyword.Bluemix_notm}} dove puoi distribuire la tua rete {{site.data.keyword.blockchain}}. Seleziona quindi **Piano di adesione Enterprise** dalla tabella dei piani di determinazione del prezzo e fai clic sul pulsante **Crea**.  
 
 Puoi trovare la tua istanza del servizio {{site.data.keyword.blockchain}} Platform nel tuo [Dashboard servizio {{site.data.keyword.Bluemix_notm}} ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://console.bluemix.net/dashboard/services "{{site.data.keyword.Bluemix_notm}} dashboard servizio").  
 
@@ -58,7 +58,7 @@ Ora hai correttamente distribuito una rete {{site.data.keyword.blockchain}} che 
 
 
 ## Adesione a una rete
-Analogamente alla creazione di una rete, devi creare un'istanza del servizio di [{{site.data.keyword.blockchain}} Platform ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://console.bluemix.net/catalog/services/blockchain) su {{site.data.keyword.Bluemix_notm}}. Devi eseguire l'accesso con il tuo ID {{site.data.keyword.Bluemix_notm}}. Se non hai un ID, fai clic sul pulsante **Registrati per creare**.  Rinomina i nomi di servizio e credenziali per la tua istanza in modo che tu possa riconoscerli facilmente in futuro. Seleziona la regione, l'organizzazione e lo spazio {{site.data.keyword.Bluemix_notm}} dove puoi distribuire la tua rete {{site.data.keyword.blockchain}}. Seleziona quindi **Piano di appartenenza Enterprise** dalla tabella dei piani di determinazione del prezzo e fai clic sul pulsante **Crea**.
+Analogamente alla creazione di una rete, devi creare un'istanza del servizio di [{{site.data.keyword.blockchain}} Platform ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://console.bluemix.net/catalog/services/blockchain) su {{site.data.keyword.Bluemix_notm}}. Devi eseguire l'accesso con il tuo ID {{site.data.keyword.Bluemix_notm}}. Se non hai un ID, fai clic sul pulsante **Registrati per creare**.  Rinomina i nomi di servizio e credenziali per la tua istanza in modo che tu possa riconoscerli facilmente in futuro. Seleziona la regione, l'organizzazione e lo spazio {{site.data.keyword.Bluemix_notm}} dove puoi distribuire la tua rete {{site.data.keyword.blockchain}}. Seleziona quindi **Piano di adesione Enterprise** dalla tabella dei piani di determinazione del prezzo e fai clic sul pulsante **Crea**.
 
 Puoi trovare la tua istanza del servizio {{site.data.keyword.blockchain}} Platform nel [Dashboard del servizio {{site.data.keyword.Bluemix_notm}} ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://console.bluemix.net/dashboard/services "{{site.data.keyword.Bluemix_notm}} - dashboard del servizio").
 
@@ -94,8 +94,7 @@ Sei nella pagina dell'istanza del servizio subito dopo aver creato un'istanza de
 Richiama le tue credenziali del servizio attenendoti alla seguente procedura:
 1. Nella pagina dell'istanza del servizio, fai clic su **Credenziali del servizio** nel navigator a sinistra per visualizzare la schermata "Credenziali del servizio".
 2. Fai clic su **Nuova credenziale** nella schermata "Credenziali del servizio".
-3. Nella schermata "Aggiungi nuova credenziale", dai un nome alla credenziale e fai clic su **Aggiungi**. La nuova credenziale viene aggiunta nella tabella. Puoi fare clic su **Visualizza credenziali** nella colonna "AZIONI" per visualizzare i dettagli della credenziale. Questa credenziale contiene la chiave API e il segreto, che puoi utilizzare per autorizzare le API.
-    Se vuoi vedere il profilo di connessione della tua rete, immetti **{"legacy": true}** come parametro di configurazione in linea quando crei le nuove credenziali. Il profilo di connessione contiene gli endpoint API per le tue risorse di rete, che puoi usare nelle tue API e nelle tue applicazioni.
+3. Nella schermata "Aggiungi nuova credenziale", dai un nome alla credenziale e immetti **{"type": "service_instance_token"}** nel campo "Aggiungi parametro di configurazione inline". Fai clic su **Aggiungi**; la nuova credenziale viene aggiunta nella tabella. Puoi fare clic su **Visualizza credenziali** nella colonna "AZIONI" per visualizzare i dettagli della credenziale. Questa credenziale contiene la chiave API e il segreto, che puoi utilizzare per autorizzare le API.
 
 ### Richiamo nel monitoraggio della rete
 Puoi trovare le credenziali di rete sulla schermata "API" nel tuo monitoraggio della rete. Per ulteriori informazioni sull'utilizzo delle API, vedi [Prova delle API con Swagger](apis.html).

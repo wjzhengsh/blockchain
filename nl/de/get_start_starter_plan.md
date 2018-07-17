@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-05-23"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -19,9 +19,7 @@ lastupdated: "2018-05-23"
 Der {{site.data.keyword.blockchainfull}} Platform Starter Plan stellt durch einen Klick ein vorkonfiguriertes Blockchain-Netz bereit. Das Angebot <!--offers you a free trial of 30 days and -->stellt standardmäßig ein genehmigtes Netz mit Konfiguration von zwei [Organisationen](glossary.html#organization), einem [Peer](glossary.html#peer) pro Organisation und einem [Kanal](glossary.html#channel) bereit. Wenn das Netz erstellt ist, können Sie Ihr Netz skalieren und ihm weitere Organisationen und Peers hinzufügen. <!--Note that it might cause extra cost if you exceed the default resource limits of two organizations and two peers.-->
 {:shortdesc}
 
-**Hinweise:**
-1. Beim {{site.data.keyword.blockchainfull}} Platform Starter Plan handelt es sich um eine Entwicklungs- und Testumgebung, die für Produktionsworkloads nicht geeignet ist. Wenn Sie eine Produktionsumgebung benötigen, lesen Sie die [Informationen zum Enterprise Plan](enterprise_plan.html).
-2. Der Starter Plan befindet sich zurzeit im Betastadium und ist nur in der Region **Vereinigte Staaten (Süden)** in {{site.data.keyword.cloud_notm}} verfügbar.
+**Hinweis**: Beim {{site.data.keyword.blockchainfull}} Platform Starter Plan handelt es sich um eine Entwicklungs- und Testumgebung, die für Produktionsworkloads nicht geeignet ist. Wenn Sie eine Produktionsumgebung benötigen, lesen Sie die [Informationen zum Enterprise Plan](enterprise_plan.html).
 
 Mit dem Starter Plan können Sie sich mit {{site.data.keyword.blockchainfull_notm}} Platform vertraut machen und sich Kenntnisse aneignen, Beispielanwendungen ausführen, eigene Anwendungen testen und ein Szenario mit mehreren Organisationen simulieren.  Dieses Einführungslernprogramm erläutert die Voraussetzungen und beschreibt die Schritte, die Sie ausführen müssen um ein Starter Plan-Netz zu erstellen und zu verwenden.
 
@@ -33,9 +31,9 @@ Sie können ein Starter Plan-[Netz](glossary.html#network) mit der Standardkonfi
 
 1. Lokalisieren Sie den [Blockchain-Service ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://console.bluemix.net/catalog/services/blockchain) im {{site.data.keyword.cloud_notm}}-Katalog.   
     **Hinweis**: Sie müssen sich mit Ihrem gebührenpflichtigen {{site.data.keyword.cloud_notm}}-Konto anmelden. Wenn Sie kein Konto haben, klicken Sie auf die Schaltfläche **Für Erstellung registrieren**. Nach der Erstellung eines kostenfreien Testkontos führen Sie ein Upgrade auf ein **nutzungsabhängig Konto** durch, indem Sie **Verwalten** > **Abrechnung und Nutzung** > **Abrechnung** in der {{site.data.keyword.cloud_notm}}-Konsole aufrufen und auf **Kreditkarte hinzufügen** klicken.
-2. Stellen Sie sicher, dass Sie die Region **Vereinigte Staaten (Süden)** in {{site.data.keyword.cloud_notm}} auswählen.
-3. Wählen Sie Ihre Cloud Foundry-Organisation und den Bereich aus, in dem Sie Ihr Netz erstellen wollen.
-4. Wählen Sie **Starter-Mitgliedschaftsplan** in der Preisstrukturtabelle aus.
+2. Wählen Sie die Region in {{site.data.keyword.cloud_notm}} zum Erstellen des Netzes aus. 
+3. Wählen Sie Ihre Cloud Foundry-Organisation und den Bereich zum Erstellen des Netzes aus. 
+4. Wählen Sie **Starter-Mitgliedschaftsplan** in der Tabelle mit den Preisstrukturplänen aus.
 5. Klicken Sie auf die Schaltfläche **Erstellen**. Beachten Sie, dass ein Popup-Eingangsfenster angezeigt wird, wenn Sie zur Teilnahme an einem Netz eingeladen wurden. Zum Erstellen eines Netzes wählen Sie **Mit Ihrem Netz fortfahren** aus und klicken auf **Weiter**. Informationen zum Teilnehmen an einem Netz finden Sie in Schritt 5 unter [Am Netz teilnehmen](#joining-a-network).
   Jetzt sind Sie bereit, Ihr Starter Plan-Netz mit der Standardkonfiguration zu verwenden. Das Netz wird mit einem Anordnungsknoten ("orderer"), der als "SOLO"-Anordnungsservice bezeichnet wird, zwei Organisationen, einer Zertifizierungsstelle (CA) und einem Peer pro Organisation ausgeführt. Darüber hinaus wird ein Standardkanal erstellt.
 6. Klicken Sie auf die Schaltfläche **Starten**.
@@ -59,7 +57,7 @@ Sie müssen eine [{{site.data.keyword.blockchain}} Platform-Serviceinstanz ![Sym
 
 1. Melden Sie sich mit Ihrem {{site.data.keyword.cloud_notm}}-Konto an. Wenn Sie kein Konto haben, klicken Sie auf die Schaltfläche **Für Erstellung registrieren**.
 2. Wählen Sie die Cloud Foundry-Organisation aus, in der Sie Ihr {{site.data.keyword.blockchain}}-Netz speichern wollen.
-3. Wählen Sie **Starter-Mitgliedschaftsplan** in der Preisstrukturtabelle aus.
+3. Wählen Sie **Starter-Mitgliedschaftsplan** in der Tabelle mit den Preisstrukturplänen aus. 
 4. Klicken Sie auf die Schaltfläche **Erstellen**. Die Seite der Serviceinstanz wird mit einer Popup-Eingangsanzeige geöffnet. Beachten Sie, dass Sie auswählen können, an einem Netz teilzunehmen oder mit dem Erstellen eines eigenen Netzes fortzufahren. Informationen zum Erstellen eines Netzes finden Sie in Schritt 4 unter [Netz erstellen](#creating-a-network).
 5. Wählen Sie in der Eingangsanzeige die Option **An vorhandenem Netz teilnehmen** aus, wählen Sie das Netz, an dem Sie teilnehmen wollen, in der Dropdown-Liste aus, und klicken Sie auf **Weiter**.
 
@@ -84,15 +82,14 @@ Sie befinden sich auf der Serviceinstanzseite gleich, nachdem Sie eine Servicein
 Führen Sie die folgenden Schritte aus, um Ihre Serviceberechtigungsnachweise abzurufen:
 1. Klicken Sie auf der Serviceinstanzseite auf **Serviceberechtigungsnachweise** im Navigator auf der linken Seite, um die Anzeige "Serviceberechtigungsnachweise" anzuzeigen.
 2. Klicken Sie auf **Neuer Berechtigungsnachweis** in der Anzeige "Serviceberechtigungsnachweise".
-3. Geben Sie auf der Anzeige "Neuen Berechtigungsnachweis hinzufügen" dem Berechtigungsnachweis einen Namen und klicken Sie auf **Hinzufügen**. Der neue Berechtigungsnachweis wird in der Tabelle hinzugefügt. Sie können auf **Berechtigungsnachweise anzeigen** in der Spalte "AKTIONEN" klicken, um die Berechtigungsnachweisdetails anzuzeigen. Dieser Berechtigungsnachweis enthält den API-Schlüssel und den geheimen Schlüssel ('secret'), mit denen Sie APIs berechtigen können.  
-    Wenn Sie das Verbindungsprofil Ihres Netzes anzeigen wollen, geben Sie **{"legacy": true}** als Inline-Konfigurationsparameter an, wenn Sie neue Berechtigungsnachweise erstellen. Das Verbindungsprofil enthält die API-Endpunkte für Ihre Netzressourcen, die Sie in Ihren APIs und Anwendungen verwenden können.
+3. Geben Sie in der Anzeige "Neuen Berechtigungsnachweis hinzufügen" dem Berechtigungsnachweis einen Namen und geben Sie im Feld "Inline-Konfigurationsparameter hinzufügen' **{"type": "service_instance_token"}** ein. Klicken Sie auf **Hinzufügen**. Der neue Berechtigungsnachweis wird in der Tabelle hinzugefügt. Sie können auf **Berechtigungsnachweise anzeigen** in der Spalte "AKTIONEN" klicken, um die Berechtigungsnachweisdetails anzuzeigen. Dieser Berechtigungsnachweis enthält den API-Schlüssel und den geheimen Schlüssel ('secret'), mit denen Sie APIs berechtigen können.  
 
 ![Netzberechtigungsnachweise abrufen](images/service_credentials.gif "Netzberechtigungsnachweise abrufen")
 
 ### Im Network Monitor abrufen
-Sie finden die Netzberechtigungsnachweise auf der Anzeige "APIs" in Ihrem Network Monitor. Weitere Informationen zur Verwendung von APIs finden Sie in [Swagger-APIs verwenden, um mit dem Netz zu interagieren](howto/swagger_apis.html).
+Sie finden die Netzberechtigungsnachweise in der Anzeige "APIs" in Ihrem Network Monitor. Weitere Informationen zur Verwendung von APIs finden Sie in [Swagger-APIs verwenden, um mit dem Netz zu interagieren](howto/swagger_apis.html).
 
-Sie können das Verbindungsprofil auf der Anzeige "Übersicht" im Network Monitor abrufen. Klicken Sie auf die Schaltfläche **Verbindungsprofil** auf der Anzeige "Übersicht". Das Verbindungsprofil wird auf einer neuen Seite angezeigt.
+Sie können das Verbindungsprofil in der Anzeige "Übersicht" im Network Monitor abrufen. Klicken Sie auf die Schaltfläche **Verbindungsprofil** in der Anzeige "Übersicht". Das Verbindungsprofil wird auf einer neuen Seite angezeigt.
 
 
 ## Beispielanwendungen bereitstellen
@@ -112,7 +109,7 @@ Wenn Ihre Anwendung eine Transaktion anfordert, können Sie Informationen zum Tr
 
 
 ## Netz zurücksetzen
-Wenn Sie angepasste Konfigurationen, aktiven Chaincode oder bereitgestellte Anwendungen bereinigen wollen, können Sie Ihr Netz auf die Standarderstkonfiguration zurücksetzen. Weitere Informationen finden Sie unter [Netz zurücksetzen](dashboard.html#reset-network).
+Wenn Sie angepasste Konfigurationen, aktiven Chaincode oder bereitgestellte Anwendungen bereinigen wollen, können Sie Ihr Netz auf die Standarderstkonfiguration zurücksetzen.  Weitere Informationen finden Sie unter [Netz zurücksetzen](dashboard.html#reset-network).
 
 
 ## Von Starter Plan auf Enterprise Plan migrieren
@@ -120,11 +117,15 @@ Wenn Sie angepasste Konfigurationen, aktiven Chaincode oder bereitgestellte Anwe
 
 Sie können eine BNA-Datei (`.bna`), Chaincode und Anwendungen, die Sie in einem Starter Plan-Netz testen, in einem Enterprise Plan-Netz bereitstellen.
 
-Wenn Sie Ihre Unternehmensnetzarchivdatei (`.bna`) zur Hand haben, befolgen Sie die Anweisungen zur [Bereitstellung eines Unternehmensnetzes im Enterprise Plan](./develop_enterprise.html). Wenn Ihre `.bna`-Datei noch nicht vorliegt, rufen Sie sie aus der Starter Plan-Instanz mit dem Befehl `composer network download` ab. Weitere Informationen zum Befehl `composer network download` finden Sie in der [Hyperledger Composer-Befehlszeilendokumentation ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://hyperledger.github.io/composer/reference/commands){:new_window}.
+Wenn Sie Ihre Unternehmensnetzarchivdatei (`.bna`) zur Hand haben, befolgen Sie die Anweisungen zur [Bereitstellung eines Unternehmensnetzes im Enterprise Plan](./develop_enterprise.html). Wenn Ihre `.bna`-Datei noch nicht vorliegt, rufen Sie sie aus der Starter Plan-Instanz mit dem Befehl `composer network download` ab. Weitere Informationen zum Befehl `composer network download` finden Sie in der [Hyperledger Composer-Befehlszeilendokumentation ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://hyperledger.github.io/composer/latest/reference/commands){:new_window}.
 
 Chaincode, der `.bna`-Dateien ähnlich ist, wird extern entwickelt. Wenn Sie Chaincode, den Sie in einem Starter Plan-Netz testen, im Enterprise Plan bereitstellen wollen, führen Sie die Anweisungen unter [Chaincode installieren, instanziieren und aktualisieren](howto/install_instantiate_chaincode.html#installchaincode) aus.
 
-Wie Sie im Abschnitt [Beispielanwendungen bereitstellen](howto/prebuilt_samples.html) sehen können, vereinfacht der Starter Plan die Integration einer Beispielanwendung in Ihr Netz durch die Verwendung von Toolchain. Diese Einrichtung ermöglicht weiterhin eine kontinuierliche Integration, indem sie Ihre Beispielanwendung automatisch aktualisiert, wenn Ihr durch die Forkfunktion kopiertes Anwendungsrepository geändert wird. Wenn Sie diese Anwendung in einem Enterprise Plan-Netz bereitstellen wollen, können Sie Ihr kopiertes Anwendungsrepository in ein neues Repository kopieren und anschließend die Anweisungen ausführen, die unter [Beispielanwendungen manuell bereitstellen](howto/prebuilt_samples.html#deploy_sample_applications_manually) beschrieben sind.
+<!--
+As you can see in [Deploying sample applications](howto/prebuilt_samples.html), Starter Plan makes it easy to get a sample application integrated with your network by using Toolchain. This setup also allows for continuous integration by automatically updating your sample application whenever your forked application repo is changed. If you want to deploy this application into an Enterprise Plan network, you can copy your forked application repo into a new repo and then follow the instructions in [Deploying sample applications manually](howto/prebuilt_samples.html#deploy_sample_applications_manually).
+-->
+
+Wenn Sie eine Beispielanwendung in Ihrem Starter Plan-Netz bereitstellen und diese Anwendung in einem Enterprise Plan-Netz bereitgestellt werden soll, können Sie Ihr Anwendungsrepository mit Verzweigungen in ein neues Repository kopieren und anschließend die Anweisungen ausführen, die unter [Beispielanwendungen manuell bereitstellen](howto/prebuilt_samples.html#deploy_sample_applications_manually) beschrieben sind. 
 
 
 ## Netz löschen oder verlassen

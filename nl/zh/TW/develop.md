@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-5-15"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -46,8 +46,10 @@ lastupdated: "2018-5-15"
 1. 為您的專案建立一個新目錄，並在指令行上導覽至該目錄。
 
 2. 從新的目錄中，使用 Yeoman 來建立架構商業網路。下列指令需要商業網路名稱、說明、作者名稱、作者電子郵件位址、授權選項及名稱空間：
-
-        yo hyperledger-composer:businessnetwork
+    ```
+    yo hyperledger-composer:businessnetwork
+    ```
+    {:codeblock}
 
 3. 在網路名稱部分輸入 `tutorial-network`，並且在說明、作者名稱、作者電子郵件部分輸入所需的資訊。
 
@@ -67,6 +69,7 @@ lastupdated: "2018-5-15"
 
 2. 以下列資訊來取代這些內容：
 
+    ```
         /**
          * My commodity trading network
          */
@@ -87,6 +90,8 @@ lastupdated: "2018-5-15"
             --> Commodity commodity
             --> Trader newOwner
         }
+    ```
+    {:codeblock}
 
 3. 儲存您對 `org.acme.biznet.cto` 檔案的變更。
 
@@ -101,6 +106,7 @@ lastupdated: "2018-5-15"
 
 2. 以下列資訊來取代這些內容：
 
+    ```
         /**
          * Track the trade of a commodity from one trader to another
          * @param {org.acme.biznet.Trade} trade - the trade to be processed
@@ -113,6 +119,8 @@ lastupdated: "2018-5-15"
                     return assetRegistry.update(trade.commodity);
                 });
         }
+    ```
+    {:codeblock}
 
 3. 儲存您對 `logic.js` 的變更。
 
@@ -126,6 +134,7 @@ lastupdated: "2018-5-15"
 
 2. 將下列存取控制規則新增至 `permissions.acl`：
 
+    ```
         /**
          * Access control rules for tutorial-network
          */
@@ -144,6 +153,8 @@ lastupdated: "2018-5-15"
           resource: "org.hyperledger.composer.system.**"
           action: ALLOW
         }
+    ```
+    {:codeblock}
 
 3. 儲存您對 `permissions.acl` 的變更。
 
@@ -155,7 +166,10 @@ lastupdated: "2018-5-15"
 
 2. 從 `tutorial-network` 目錄執行下列指令：
 
-        composer archive create -t dir -n .
+    ```
+    composer archive create -t dir -n .
+    ```
+    {:codeblock}
 
 執行指令之後，`tutorial-network` 目錄中會建立一個商業網路保存檔 (`tutorial-network@0.0.1.bna`)。
 

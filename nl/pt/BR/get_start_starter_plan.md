@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-05-23"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -19,9 +19,7 @@ lastupdated: "2018-05-23"
 O {{site.data.keyword.blockchainfull}} Platform Starter Plan oferece uma rede de blockchain pré-configurada com um único clique. Ele <!--offers you a free trial of 30 days and -->provisiona uma rede com permissão com a configuração de duas [organizações](glossary.html#organization), um [peer](glossary.html#peer) para cada organização e um [canal](glossary.html#channel) por padrão. Após a rede ser criada, será possível escalar e incluir mais organizações e peers em sua rede. <!--Note that it might cause extra cost if you exceed the default resource limits of two organizations and two peers.-->
 {:shortdesc}
 
-**Notas**:
-1. O {{site.data.keyword.blockchainfull}} Platform Starter Plan é um ambiente de desenvolvimento e teste e não é adequado para cargas de trabalho de produção. Se você precisar de um ambiente de produção, veja [Sobre o Enterprise Plan](enterprise_plan.html).
-2. O Starter Plan está em fase beta agora e está disponível apenas na região **Sul dos EUA** no {{site.data.keyword.cloud_notm}}.
+**Nota**: o {{site.data.keyword.blockchainfull}} Platform Starter Plan é um ambiente de desenvolvimento e teste e não é adequado para cargas de trabalho de produção. Se você precisar de um ambiente de produção, veja [Sobre o Enterprise Plan](enterprise_plan.html).
 
 O Starter Plan permite aprender e desenvolver habilidades com o {{site.data.keyword.blockchainfull_notm}} Platform, executar aplicativos de amostra, testar os seus próprios aplicativos e simular um cenário de múltiplas organizações.  Este tutorial de introdução apresenta os pré-requisitos e as etapas que você precisa seguir para criar e usar uma rede do Starter Plan.
 
@@ -33,8 +31,8 @@ Você pode ter uma [rede](glossary.html#network) do Starter Plan com a configura
 
 1. Localize o serviço do Blockchain do [ ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://console.bluemix.net/catalog/services/blockchain) no Catálogo do {{site.data.keyword.cloud_notm}}.   
     **Nota**: é necessário efetuar login com a sua conta paga do {{site.data.keyword.cloud_notm}}. Se você não tiver uma conta, clique no botão **Inscreva-se para criar**. Após você criar uma conta de avaliação grátis, faça upgrade dela para um tipo **Pré-pago** acessando **Gerenciar** > **Faturamento e uso** > **Faturamento** no console do {{site.data.keyword.cloud_notm}} e clicando em **Incluir cartão de crédito**.
-2. Assegure-se de escolher **Sul dos EUA** como a região no {{site.data.keyword.cloud_notm}}.
-3. Selecione a sua organização e o espaço do Cloud Foundry, no local em que você criará a sua rede.
+2. Escolha a região em {{site.data.keyword.cloud_notm}} para criar a rede.
+3. Selecione a sua organização e o espaço do Cloud Foundry para criar a rede.
 4. Escolha **Plano de associação do iniciador** na tabela de planos de precificação.
 5. Clique no botão **Criar**. Observe que se você for convidado a se associar a uma rede, poderá ver um painel pop-up de boas-vindas. Para criar uma rede, escolha **Continuar até a sua rede** e clique em **Continuar**. Para se associar a uma rede, veja a etapa 5 em [Se associando a uma rede](#joining-a-network).
   Agora você está pronto para usar a rede do Starter Plan com a configuração padrão. A rede está em execução com um solicitante (conhecido como serviço de solicitação "SOLO"), duas organizações, uma autoridade de certificação e um peer para cada organização. Um canal padrão também é criado.
@@ -84,8 +82,7 @@ Você estará na página da instância de serviço logo após criar uma instânc
 Recupere as suas credenciais de serviço com as etapas a seguir:
 1. Na página da instância de serviço, clique em **Credenciais de serviço** no navegador esquerdo para mostrar a tela "Credenciais de serviço".
 2. Clique em **Nova credencial** na tela "Credenciais de serviço".
-3. Na tela "Incluir nova credencial", dê à credencial um nome e clique em **Incluir**. A nova credencial é incluída na tabela. É possível clicar em **Visualizar credenciais** sob a coluna "AÇÕES" para visualizar os detalhes da credencial. Essa credencial contém a chave API e o segredo, que você pode usar para autorizar APIs.  
-    Se você desejar ver o perfil de conexão de sua rede, insira **{"legacy": true}** como parâmetro de configuração sequencial ao criar novas credenciais. O perfil de conexão contém terminais de API para os seus recursos de rede, que podem ser usados em suas APIs e seus aplicativos.
+3. Na tela "Incluir nova credencial", dê à credencial um nome e insira **{"type": "service_instance_token"}** no campo "Incluir parâmetro de configuração sequencial". Clique em **Incluir**. A nova credencial é incluída na tabela. É possível clicar em **Visualizar credenciais** sob a coluna "AÇÕES" para visualizar os detalhes da credencial. Essa credencial contém a chave API e o segredo, que você pode usar para autorizar APIs.  
 
 ![Retrieving network credentials](images/service_credentials.gif "Retrieving network credentials")
 
@@ -112,7 +109,7 @@ Se o seu aplicativo solicita uma transação, será possível visualizar informa
 
 
 ## Reconfigurando uma rede
-Se você desejar limpar as suas configurações customizadas, executando o chaincode ou os aplicativos implementados, poderá configurar a sua rede de volta para a configuração padrão inicial. Para obter mais informações, veja [Reconfigurar rede](dashboard.html#reset-network).
+Se você desejar limpar as suas configurações customizadas, executando o chaincode ou os aplicativos implementados, poderá configurar a sua rede de volta para a configuração padrão inicial.  Para obter mais informações, veja [Reconfigurar rede](dashboard.html#reset-network).
 
 
 ## Migrando do Starter Plan para o Enterprise Plan
@@ -120,11 +117,15 @@ Se você desejar limpar as suas configurações customizadas, executando o chain
 
 É possível implementar um `.bna`, chaincode e aplicativos que você testa com relação a uma rede do Starter Plan em uma rede do Enterprise Plan.
 
-Se você tiver o seu archive de rede de negócios (`.bna`), siga as instruções para [implementar uma rede de negócios para Enterprise Plan](./develop_enterprise.html). Se você não tiver o seu arquivo `.bna`, use o comando `composer network download` para recuperá-lo da instância do Starter Plan. Para obter mais informações sobre o comando `composer network download`, veja [documentação da linha de comandos do Hyperledger Composer![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://hyperledger.github.io/composer/reference/commands){:new_window}.
+Se você tiver o seu archive de rede de negócios (`.bna`), siga as instruções para [implementar uma rede de negócios para Enterprise Plan](./develop_enterprise.html). Se você não tiver o seu arquivo `.bna`, use o comando `composer network download` para recuperá-lo da instância do Starter Plan. Para obter mais informações sobre o comando `composer network download`, veja [documentação da linha de comandos do Hyperledger Composer![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://hyperledger.github.io/composer/latest/reference/commands){:new_window}.
 
 O chaincode, que é semelhante a arquivos `.bna`, é desenvolvido externamente. Para implementar um chaincode que você testa em uma rede do Starter Plan no Enterprise, siga as instruções em [Instalando, instanciando e atualizando um chaincode](howto/install_instantiate_chaincode.html#installchaincode).
 
-Como você pode ver em [Implementando aplicativos de amostra](howto/prebuilt_samples.html), o Starter Plan facilita obter um aplicativo de amostra integrado com sua rede usando a cadeia de ferramentas. Esta configuração também permite a integração contínua atualizando automaticamente o seu aplicativo de amostra quando o seu repositório de aplicativo bifurcado muda. Se você desejar implementar esse aplicativo em uma rede do Enterprise Plan, poderá copiar o seu repositório de aplicativo bifurcado em um novo repositório e, em seguida, seguir as instruções em [Implementando aplicativos de amostra manualmente](howto/prebuilt_samples.html#deploy_sample_applications_manually).
+<!--
+As you can see in [Deploying sample applications](howto/prebuilt_samples.html), Starter Plan makes it easy to get a sample application integrated with your network by using Toolchain. This setup also allows for continuous integration by automatically updating your sample application whenever your forked application repo is changed. If you want to deploy this application into an Enterprise Plan network, you can copy your forked application repo into a new repo and then follow the instructions in [Deploying sample applications manually](howto/prebuilt_samples.html#deploy_sample_applications_manually).
+-->
+
+Se você implementar qualquer aplicativo de amostra em sua rede do Starter Plan e desejar implementar esse aplicativo em uma rede do Enterprise Plan, poderá copiar o seu repositório de aplicativo bifurcado em um novo repositório e, em seguida, seguir as instruções em [Implementando aplicativos de amostra manualmente](howto/prebuilt_samples.html#deploy_sample_applications_manually).
 
 
 ## Excluindo ou saindo de uma rede

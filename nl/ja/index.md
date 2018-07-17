@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-05-24"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -29,26 +29,20 @@ lastupdated: "2018-05-24"
 
 ## {{site.data.keyword.IBM_notm}} メンバーシップ・オファリング
 
-あらゆるタイプのユーザーがブロックチェーンの利用を開始してアプリケーションを実稼働環境に移行できるように、IBM Blockchain Platform にはさまざまなメンバーシップ・プランが用意されています。
+あらゆるタイプのユーザーがブロックチェーンの利用を開始してアプリケーションを実稼働環境に移行できるように、{{site.data.keyword.blockchainfull_notm}} Platform にはさまざまなメンバーシップ・プランが用意されています。
 
 |       | [Starter Plan](starter_plan.html)      | [Enterprise Plan](enterprise_plan.html)  | Enterprise Plus Plan | Self Managed Plan
 | ------------------------- |--------------------------|-----|-----|------|
-| **組み込まれている機能** | **基本サービス・レベル、開発/テスト環境** | **拡張サービス・レベル、エンタープライズ実稼働環境への対応** | **パフォーマンスと分離のための専用計算処理、エンタープライズ実稼働環境への対応** |独自のインフラストラクチャーにインストールし、このクラウド・サービスでホストされているネットワークに接続するソフトウェア・スタック|
-| **請求ポリシー** | **ベータ版は無料<!--trial of 30 days, followed by monthly charge-->** | **月単位のサブスクリプション** | **月単位のサブスクリプション** | 月単位のサブスクリプション |
-| **利用できる時期** | **ベータ版** | **現時点で利用可能** | **購入時** | 近日中 |
+| **組み込まれている機能** | **基本サービス・レベル、開発/テスト環境** | **拡張サービス・レベル、エンタープライズ実稼働環境への対応** | **パフォーマンスと分離のための専用計算処理、エンタープライズ実稼働環境への対応** | 独自のインフラストラクチャーにインストールし、このクラウド・サービスでホストされているネットワークに接続するソフトウェア・スタック |
+| **請求ポリシー** | **[トライアル・クレジット](howto/pricing.html#starter-plan-pricing)、その後、月額料金** | **月単位のサブスクリプション** | **月単位のサブスクリプション** | 月単位のサブスクリプション |
+| **利用できる時期** | **現時点で利用可能** | **現時点で利用可能** | **購入時** | 近日中 |
 
+**注意:** 実動環境に **Starter Plan** を使用しないでください。 これは、開発/テスト環境であり、実動ワークロードには適していません。
 
-<!--
-- **The IBM Blockchain Starter Plan** is ideal for those who are learning or getting started developing their blockchain network.
-- **Enterprise Plan** is a production environment offering high levels of security and support.
-- **Enterprise Plus Plan** offers a dedicated production environment for additional performance and isolated compute and storage resources to protect critical data.
--->
-
-**注意:** 実動環境に **Starter Plan** を使用しないでください。これは開発/テスト環境です。
-
-{{site.data.keyword.blockchainfull_notm}} オファリングの構築基盤は、[Hyperledger Fabric](./v10_fabric) のコード・ベースです。このコード・ベースでは、ビジネス・ニーズに対応したエンタープライズ・レベルのセキュリティー、データ保全性、スケーラビリティー、パフォーマンスを実現するために、モジュラー・アーキテクチャーを採用しています。
-- **Starter Plan** ネットワークは Hyperledger Fabric V1.1 上に構築されています。
-- **Enterprise Plan** は Hyperledger Fabric V1.1 にアップグレードされています。新しく作成されたネットワークはすべて、Fabric V1.1 レベルになります。
+{{site.data.keyword.blockchainfull_notm}} オファリングの構築基盤は、[Hyperledger Fabric](reference/v10_fabric.html) V1.1 のコード・ベースです。このコード・ベースでは、ビジネス・ニーズに対応したエンタープライズ・レベルのセキュリティー、データ保全性、スケーラビリティー、パフォーマンスを実現するために、モジュラー・アーキテクチャーを採用しています。
+- **IBM Blockchain スターター・プラン**はブロックチェーン・ネットワークの開発を学習または開始するための環境です。
+- **エンタープライズ・プラン**は高水準のセキュリティーとサポートを提供する実稼働環境です。
+- **エンタープライズ・プラス・プラン**は重要なデータを保護するために、追加のパフォーマンスと分離されたコンピュートおよびストレージ・リソース専用の実稼働環境を提供します。
 
 [{{site.data.keyword.blockchainfull_notm}} メンバーシップ ![外部リンクのアイコン](images/external_link.svg "外部リンクのアイコン")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps)を今すぐお申し込みください。
 
@@ -73,8 +67,9 @@ lastupdated: "2018-05-24"
 
 ## ネットワークの**ガバナンス**
 ネットワークのバックエンド環境を作成するためのオプションが 2 つあります。 1 つは、公開した Hyperledger Docker イメージを使用するという方法です。その場合は、アプリケーションを作成したり、ネットワークと対話したりするために、Composer ライブラリーを実装できます。 2 つ目は、ネイティブのチェーンコードを作成し、トランザクションを駆動するためのサーバー・サイド・コードを開発する、という方法です。 ローカル環境での実行は、ネットワーク構成を調整したり、可能性のあるユース・ケースを検討したり、PoC (概念検証) を開始したりするための理想的な機会になります。 PoC が具体化したら、ネットワークをクラウドでホストすることによって実装を広げることができます。
-
-クラウド・デプロイメントの場合は、使いやすいレシピやスクリプトのコレクションを利用して、Kubernetes で稼働する Hyperledger Fabric ネットワークのデプロイメントを簡略化できます。 このフェーズで、ホスト環境での PoC の動作や安定性をテストしてください。 アプリケーションの機能や回復力をテストするためのメカニズムや、エンタープライズ・プランの先行版として、[{{site.data.keyword.blockchainfull_notm}} Container Service ![外部リンクのアイコン](images/external_link.svg "外部リンクのアイコン")](https://ibm-blockchain.github.io/)を利用できます。
+<!--
+With a cloud deployment, you're provided with a collection of easy-to-use recipes and scripts to facilitate the deployment of a Hyperledger Fabric network that runs on Kubernetes. Use this phase to examine the behavior and stability of your PoC in a hosted environment. The [{{site.data.keyword.blockchainfull_notm}} Container Service ![External link icon](images/external_link.svg "External link icon")](https://ibm-blockchain.github.io/) can be best thought of as a testing mechanism for the functionality and resiliency of your application and as a natural precursor to the Enterprise Plan.
+-->
 
 ネットワーク管理について言えば、1 人のメンバーがすべてを制御するのではなく各メンバーに一定の制御能力を与える形でネットワーク管理の環境を作成すること。これが、{{site.data.keyword.blockchainfull_notm}} の設計思想です。 {{site.data.keyword.blockchainfull_notm}} プラットフォームには、カスタマイズ可能なポリシーによってネットワークの変更管理をチームとして実行するための統合ツールの初期セットが用意されています。
 

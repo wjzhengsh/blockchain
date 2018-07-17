@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-03-16"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -21,7 +21,7 @@ Para garantizar la seguridad, su política de actualización se ha configurado d
 
 ## Creación de un canal
 Pulse el botón **Nuevo canal** en la pantalla "Canales" del Supervisor de red y realice los pasos siguientes para enviar una solicitud de creación de canal:
-1. Elija un nombre que refleje el objetivo empresarial del canal, añada una descripción si lo desea y pulse **Siguiente**. El nombre del canal debe ser exclusivo en una red de Blockchain. Debe empezar por una letra y solo puede contener caracteres en minúsculas, números o guiones.
+1. Elija un nombre que refleje el objetivo empresarial del canal, añada una descripción si lo desea y pulse **Siguiente**. El nombre del canal debe ser exclusivo en una red blockchain. Debe empezar por una letra y solo puede contener caracteres en minúsculas, números o guiones.
 ![Crear canal 1](../images/create_channel.png "Crear un canal panel 1")
 
 2. Invite a una combinación de los miembros de la red seleccionando los miembros de la red y pulsando el botón **Añadir miembro**. Personalice los permisos mediante la asignación de roles a cada miembro invitado y pulse **Siguiente**.

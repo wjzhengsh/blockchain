@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-5-15"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -44,45 +44,74 @@ lastupdated: "2018-5-15"
 
 1. 要与入门套餐配合使用，请使用以下命令来安装 **composer-cli**：
 
-        npm install -g composer-cli@0.19.x
+    ```
+    npm install -g composer-cli@0.19.x
+    ```
+    {:codeblock}
 
     要与企业套餐配合使用，请使用以下命令来安装 **composer-cli**：
 
-        npm install -g composer-cli@0.16.x
+    ```
+    npm install -g composer-cli@0.16.x
+    ```
+    {:codeblock}
 
 2. 要与入门套餐配合使用，请使用以下命令来安装 **composer-rest-server**：
 
-        npm install -g composer-rest-server@0.19.x
+    ```
+    npm install -g composer-rest-server@0.19.x
+    ```
+    {:codeblock}
 
     要与企业套餐配合使用，请使用以下命令来安装 **composer-rest-server**：
 
-        npm install -g composer-rest-server@0.16.x
+    ```
+    npm install -g composer-rest-server@0.16.x
+    ```
+    {:codeblock}
 
     使用 **composer-rest-server** 模块在机器上创建 REST 服务器，以将业务网络公开为 RESTful API。
 
 3. 要与入门套餐配合使用，请使用以下命令来安装 **generator-hyperledger-composer**：
 
-        npm install -g generator-hyperledger-composer@0.19.x
+    ```
+    npm install -g generator-hyperledger-composer@0.19.x
+    ```
+    {:codeblock}
 
     要与企业套餐配合使用，请使用以下命令来安装 **generator-hyperledger-composer**：
 
-        npm install -g generator-hyperledger-composer@0.16.x
+    ```
+    npm install -g generator-hyperledger-composer@0.16.x
+    ```
+    {:codeblock}
 
     使用 **generator-hyperledger-composer** 生成框架业务网络结构、模型和 Angular 应用程序。
 
 4. Yeoman 是一个用于生成应用程序的工具，它利用的是 `generator-hyperledger-composer`：
 
-        npm install -g yo
+    ```
+    npm install -g yo
+    ```
+    {:codeblock}
 
 ## 步骤 2：安装本地 Playground
 
 Hyperledger Composer Playground 是一个用户界面，可以连接到真正的 {{site.data.keyword.blockchain}}，或用作模拟环境来测试业务网络。要与入门套餐配合使用，请使用以下命令来安装 Playground：
 
-        npm install -g composer-playground@0.19.x
+```
+npm install -g composer-playground@0.19.x
+```
+{:codeblock}
 
-    要与企业套餐配合使用，请使用以下命令来安装 Playground：
 
-        npm install -g composer-playground@0.16.x
+要与企业套餐配合使用，请使用以下命令来安装 Playground：
+
+
+```
+npm install -g composer-playground@0.16.x
+```
+{:codeblock}
 
 ## 可选：设置 IDE
 
@@ -92,48 +121,64 @@ Hyperledger Composer Playground 是一个用户界面，可以连接到真正的
 
 2. 打开 VSCode，转至“扩展”，然后在市场中搜索并安装 Hyperledger Composer 扩展。
 
+
 ## 仅限企业套餐：安装本地 Hyperledger Fabric 并使用 Playground 与其连接
 
-通过部署本地 Hyperledger Fabric 实例，可以充分测试访问控制规则和业务网络。
+通过部署本地 Hyperledger Fabric 实例，可以充分测试访问控制规则和业务网络。在执行以下步骤之前，请确保已启动 Docker。
 
 1. 使用以下命令来创建 `fabric-tools` 目录：
 
-        mkdir ~/fabric-tools && cd ~/fabric-tools
+   ```
+   mkdir ~/fabric-tools && cd ~/fabric-tools
+   ```
+   {:codeblock}
 
 在所选目录（例如 `~/fabric-tools`）中，获取包含要安装 Hyperledger Fabric 的工具的 `.tar.gz` 文件：
 
 2. 下载包含工具的 `tar.gz` 文件，以在 Docker 环境中安装 Hyperledger Fabric。
 
-        curl -O https://raw.githubusercontent.com/hyperledger/composer-tools/master/packages/fabric-dev-servers/fabric-dev-servers.tar.gz
-        tar -xvf fabric-dev-servers.tar.gz
+   ```
+   curl -O https://raw.githubusercontent.com/hyperledger/composer-tools/master/packages/fabric-dev-servers/fabric-dev-servers.tar.gz
+   tar -xvf fabric-dev-servers.tar.gz
+   ```
+   {:codeblock}
 
     另外还提供了 `.zip`。将上一个片段中的 `.tar.gz` 文件替换为 `fabric-dev-servers.zip`，并将 `tar -xvf` 命令替换为 `unzip` 命令。
 
-3. 使用以下命令下载本地 Hyperledger Fabric V1.1 运行时：
+3. 使用以下命令来下载本地 Hyperledger Fabric V1 运行时：
 
-        cd ~/fabric-tools
-        export FABRIC_VERSION=hlfv11
-        ./downloadFabric.sh
+   ```
+   cd ~/fabric-tools
+   export FABRIC_VERSION=hlfv1
+   ./downloadFabric.sh
+   ```
+   {:codeblock}
 
-    `fabric-tools` 目录包含一组用于控制已下载 Hyperledger Fabric 实例的脚本。您必须运行 `./createPeerAdminCard.sh` 命令来生成业务网络卡，您可以使用该卡将业务网络部署到托管 Hyperledger Fabric 实例的 Docker。
+   `fabric-tools` 目录包含一组用于控制已下载 Hyperledger Fabric 实例的脚本。您必须运行 `./createPeerAdminCard.sh` 命令来生成业务网络卡，您可以使用该卡将业务网络部署到托管 Hyperledger Fabric 实例的 Docker。
 
-4. 运行以下命令来启动 Hyperledger Fabric V1.1 实例：
+4. 运行以下命令来启动 Hyperledger Fabric V1 实例：
 
-        cd ~/fabric-tools
-        export FABRIC_VERSION=hlfv11
-        ./startFabric.sh
-        ./createPeerAdminCard.sh
+   ```
+   cd ~/fabric-tools
+   export FABRIC_VERSION=hlfv1
+   ./startFabric.sh
+   ./createPeerAdminCard.sh
+   ```
+   {:codeblock}
 
-    要开始开发业务网络，请使用 Hyperledger Composer Playground 或您的 IDE。
+   要开始开发业务网络，请使用 Hyperledger Composer Playground 或您的 IDE。
 
 5. 要启动 Playground，请运行以下命令：
 
-        composer-playground
+    ```
+    composer-playground
+    ```
+    {:codeblock}
 
     Playground 通过以下 URL 打开：http://localhost:8080/login。在上一步中创建的 **PeerAdmin@hlfv1** 卡可用于部署业务网络。
 
 
-## 启动和停止 Hyperledger Fabric
+### 启动和停止 Hyperledger Fabric
 
 在 `fabric-tools` 目录中有一组脚本用于控制 Hyperledger Fabric 实例。可以使用 `~/fabric-tools/stopFabric.sh` 和 `~/fabric-tools/startFabric.sh` 来停止和启动该运行时。
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-05-24"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -29,26 +29,20 @@ O {{site.data.keyword.blockchainfull_notm}} Platform é a única plataforma pron
 
 ## Ofertas de Associação da {{site.data.keyword.IBM_notm}}
 
-O IBM Blockchain Platform fornece planos de associação diferentes para ajudar todos os tipos de usuários a começarem a sua jornada de blockchain e moverem os seus aplicativos para a produção.
+O {{site.data.keyword.blockchainfull_notm}} Platform fornece diferentes planos de associação para ajudar todos os tipos de usuários a iniciarem em sua jornada de blockchain e mover os seus aplicativos para produção.
 
 |       | [Starter Plan](starter_plan.html)      | [Enterprise Plan](enterprise_plan.html)  | Plano corporativo plus | Plano autogerenciado
 | ------------------------- |--------------------------|-----|-----|------|
 | **O que está incluído** | **Níveis de serviço básico, ambiente de desenvolvimento e teste** | **Níveis de serviço avançados, prontos para produção corporativa** | **Cálculo dedicado para desempenho e isolamento, pronto para a produção corporativa** | Pilha de software para instalar em sua própria infraestrutura, conecte-se a uma rede hospedada nesse serviço de nuvem |
-| **Política de faturamento** | **Grátis para beta<!--trial of 30 days, followed by monthly charge-->** | **Assinatura mensal** | **Assinatura mensal** | Assinatura mensal |
-| **Disponibilidade** | **Beta** | **Disponível agora** | **Após a compra** | Em breve |
+| **Política de faturamento** | **[Créditos de avaliação](howto/pricing.html#starter-plan-pricing) seguidos por encargo mensal** | **Assinatura mensal** | **Assinatura mensal** | Assinatura mensal |
+| **Disponibilidade** | **Disponível agora** | **Disponível agora** | **Após a compra** | Em breve |
 
+**Cuidado:** não use o **Starter Plan** para a produção. Ele é um ambiente de desenvolvimento e teste e não é adequado para cargas de trabalho de produção.
 
-<!--
-- **The IBM Blockchain Starter Plan** is ideal for those who are learning or getting started developing their blockchain network.
-- **Enterprise Plan** is a production environment offering high levels of security and support.
-- **Enterprise Plus Plan** offers a dedicated production environment for additional performance and isolated compute and storage resources to protect critical data.
--->
-
-**Cuidado:** não use o **Starter Plan** para a produção. Ele é um ambiente de desenvolvimento e teste.
-
-As ofertas do {{site.data.keyword.blockchainfull_notm}} são construídas no código base do [Hyperledger Fabric](./v10_fabric) que alavanca uma arquitetura modular para atingir níveis corporativos de segurança, integridade de dados, escalabilidade e desempenho para atender às suas necessidades de negócios.
-- As redes do **Starter Plan** são construídas no Hyperledger Fabric V1.1.
-- O **Enterprise Plan** é atualizado para o Hyperledger Fabric V1.1. Todas as redes recém-criadas estão no nível do Fabric V1.1.
+As ofertas do {{site.data.keyword.blockchainfull_notm}} são construídas no código base do [Hyperledger Fabric](reference/v10_fabric.html) V1.1 que alavanca uma arquitetura modular para atingir níveis corporativos de segurança, integridade de dados, escalabilidade e desempenho para atender às suas necessidades de negócios.
+- **O IBM Blockchain Starter Plan** é um ambiente para aprender ou começar a desenvolver redes de blockchain.
+- O **Enterprise Plan** é um ambiente de produção que oferece altos níveis de segurança e suporte.
+- O **Enterprise Plus Plan** oferece um ambiente de produção dedicado para desempenho adicional e recursos de cálculo e armazenamento isolados para proteger dados críticos.
 
 Inscreva-se agora para participação no [{{site.data.keyword.blockchainfull_notm}}
 ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps)!
@@ -74,8 +68,9 @@ Como um desenvolvedor, é possível alinhar os requisitos de negócios de maneir
 
 ## **Controle** a rede
 Há duas opções para criar o ambiente de backend de sua rede. Primeiro, é possível usar as imagens do Hyperledger Docker publicadas, fornecendo a opção de implementar a biblioteca do Composer para construir seus aplicativos e interagir com sua rede. Ou é possível gravar o chaincode nativamente e desenvolver o código do lado do servidor para conduzir as transações. A execução local é a oportunidade perfeita para mexer com as configurações de rede, explorar casos de uso potenciais e começar a construir a provas de conceito. Quando o seu PoC começar a tomar forma, será possível ampliar a implementação hospedando a sua rede na nuvem.
-
-Com uma implementação de nuvem, é fornecida a você uma coleção de receitas e scripts fáceis de usar para facilitar a implementação de uma rede do Hyperledger Fabric que é executado no Kubernetes. Use esta fase para examinar o comportamento e a estabilidade de sua PoC em um ambiente hospedado. O [{{site.data.keyword.blockchainfull_notm}} Container Service ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://ibm-blockchain.github.io/) pode ser considerado um mecanismo de teste para a funcionalidade e a resiliência de seu aplicativo e como um precursor natural para o Enterprise Plan.
+<!--
+With a cloud deployment, you're provided with a collection of easy-to-use recipes and scripts to facilitate the deployment of a Hyperledger Fabric network that runs on Kubernetes. Use this phase to examine the behavior and stability of your PoC in a hosted environment. The [{{site.data.keyword.blockchainfull_notm}} Container Service ![External link icon](images/external_link.svg "External link icon")](https://ibm-blockchain.github.io/) can be best thought of as a testing mechanism for the functionality and resiliency of your application and as a natural precursor to the Enterprise Plan.
+-->
 
 Assim que você tiver uma rede, o {{site.data.keyword.blockchainfull_notm}} foi projetado para criar uma experiência de gerenciamento de rede que oferece algum controle aos membros, embora nenhum membro único esteja no controle total. O {{site.data.keyword.blockchainfull_notm}} Platform tem o primeiro conjunto de ferramentas integradas para permitir que as equipes impinjam o gerenciamento de mudanças da rede por meio de políticas customizáveis.
 

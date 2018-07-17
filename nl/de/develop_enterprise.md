@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-05-15"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -30,19 +30,29 @@ Sie benötigen Zugriff auf eine Enterprise Plan-Instanz von {{site.data.keyword.
 
 1. Erstellen Sie ein Verzeichnis zum Speichern Ihrer Verbindungsdetails. Beispiel:
 
-        /Users/myUserId/.composer-connection-profiles/bmx-hlfv1
+    ```
+    /Users/myUserId/.composer-connection-profiles/bmx-hlfv1
+    ```
+    {:codeblock}
 
     Jedes Verbindungsprofil muss eine Datei `connection.json` enthalten. Erstellen Sie ein neues Verzeichnis unter `.composer-connection-profiles`, in dieser Beispielinstanz `bmx-hlfv1`. Dies ist der Name des Profils, das Sie beim Arbeiten mit Hyperledger Composer und {{site.data.keyword.blockchainfull_notm}} Platform verwenden.
 
-        mkdir -p ~/.composer-connection-profiles/bmx-hlfv1
+    ```
+    mkdir -p ~/.composer-connection-profiles/bmx-hlfv1
         cd ~/.composer-connection-profiles/bmx-hlfv1
+    ```
+    {:codeblock}
 
 2. Sie sollten jetzt über die folgende Verzeichnisstruktur verfügen:
 
-        /Users/myUserId/.composer-connection-profiles/bmx-hlfv1
+    ```
+    /Users/myUserId/.composer-connection-profiles/bmx-hlfv1
+    ```
+    {:codeblock}
 
     Erstellen Sie eine Datei in dem neu erstellten Verzeichnis und geben Sie ihr den Namen `connection.json`. Sie können die folgende Vorlage für Ihre Datei `connection.json` verwenden:
 
+    ```
         {
             "name": "bmx-hlfv1",
             "description": "A description for a V1 Profile",
@@ -68,6 +78,8 @@ Sie benötigen Zugriff auf eine Enterprise Plan-Instanz von {{site.data.keyword.
             "globalCert": "-----BEGIN CERTIFICATE-----\r\n...LotsOfStuff\r\n-----END CERTIFICATE-----\r\n-----BEGIN CERTIFICATE-----\r\nMorestuff\r\n-----END CERTIFICATE-----\r\n",
             "timeout": 300
         }
+    ```
+    {:codeblock}
 
     Sie füllen die neu erstellte Datei `connection.json` mit Attributen, die über Ihr {{site.data.keyword.blockchainfull_notm}} Platform-Dashboard bereitgestellt werden. Wählen Sie in Ihrem Dashboard die Option **Übersicht** aus, klicken Sie auf die Schaltfläche **Verbindungsprofil**, um die Endpunkt- und Zertifikatsinformationen für die Mitglieder des Kanals anzuzeigen.
 
@@ -77,7 +89,10 @@ Sie benötigen Zugriff auf eine Enterprise Plan-Instanz von {{site.data.keyword.
 
     Ersetzen Sie die URL-Werte für die Anordnungsknoten in der Vorlage durch die relevanten Informationen aus Ihrem Verbindungsprofil im folgenden Format:
 
-        “url”: “grpcs://abca.4.secure.blockchain.ibm.com:12345”
+    ```
+    "url": "grpcs://abca.4.secure.blockchain.ibm.com:12345"
+    ```
+    {:codeblock}
 
 ## Schritt 3: Informationen der Zertifizierungsstelle hinzufügen
 
@@ -87,16 +102,22 @@ Sie benötigen Zugriff auf eine Enterprise Plan-Instanz von {{site.data.keyword.
 
 1. Die Anforderungs-URL (**requestURL**) und die Ereignis-URL (**eventURL**) müssen für jeden Peer festgelegt werden. Ersetzen Sie das Attribut **url** durch den Wert für **url**, der sich in Ihrem Verbindungsprofil befindet. Ersetzen Sie das Attribut **eventURL** durch die Ereignis-URL (**eventUrl**), die sich in Ihrem Verbindungsprofil befindet. Nach diesen Änderungen sollte der Abschnitt "peers" in der Datei `connection.json` das folgende Format haben:
 
+    ```
         "peers": [
           {
               "requestURL": "grpcs://abca.4.secure.blockchain.ibm.com:12345",
               "eventURL": "grpcs://abca.4.secure.blockchain.ibm.com:12345"
+    ```
+    {:codeblock}
 
 ## Schritt 5: keyValStore-Informationen hinzufügen
 
 1. Legen Sie das Attribut **keyValStore** so fest, dass es auf das richtige Verzeichnis verweist. Erstellen Sie ein Verzeichnis, das als Schlüsselwertspeicher (**keyValStore**) verwendet werden soll. Erstellen Sie zum Beispiel ein neues Verzeichnis unter Ihrem Ausgangsverzeichnis mit dem Namen `.composer-credentials-mychannel`. Stellen Sie sicher, dass das Attribut **keyValStore** auf Ihr neu erstelltes Verzeichnis im folgenden Format verweist:
 
-        "keyValStore": "/Users/myUserId/.composer-credentials-mychannel",
+    ```
+    "keyValStore": "/Users/myUserId/.composer-credentials-mychannel",
+    ```
+    {:codeblock}
 
 ## Schritt 6: Kanalinformationen hinzufügen
 
@@ -109,7 +130,10 @@ Der Wert **mspID** in Ihrer Datei `connection.json` muss auf den mspID-Wert Ihre
 ## Schritt 8: globalCert-Wert hinzufügen
 1. {{site.data.keyword.blockchainfull_notm}} Platform verwendet ein allgemeines TLS-Zertifikat für die Anordnungsknoten und Peers. Für jeden Anordnungsknoten und jeden Peer gibt es ein Attribut **tlsCACerts**, das jeweils dasselbe Zertifikat enthält. Ersetzen Sie den Pseudowert in der Datei `connection.json` durch den Wert aus **tlsCACerts**. Der Wert sollte das folgende Format haben:
 
-        "globalCert": "-----BEGIN CERTIFICATE-----\r\.......
+    ```
+    "globalCert": "-----BEGIN CERTIFICATE-----\r\.......
+    ```
+    {:codeblock}
 
 ## Schritt 9: Peers vorbereiten
 
@@ -117,6 +141,7 @@ Der Wert **mspID** in Ihrer Datei `connection.json` muss auf den mspID-Wert Ihre
 
 Im Verbindungsprofildokument befindet sich unter **certificateAuthorities** ein Attribut **registrar**, das Attribute für **enrollId** und **enrollSecret** im folgenden Format enthält:
 
+ ```
         "registrar": [
             {
                 "affiliation": "org1",
@@ -124,10 +149,15 @@ Im Verbindungsprofildokument befindet sich unter **certificateAuthorities** ein 
                 "enrollSecret": "PA55W0RD12"
             }
         ],
+ ```
+ {:codeblock}
 
 1. Fordern Sie Zertifikate mit dem folgenden Befehl an:
 
-        composer identity request -p bmx-hlfv1 -i admin -s PA55W0RD12
+    ```
+    composer identity request -p bmx-hlfv1 -i admin -s PA55W0RD12
+    ```
+    {:codeblock}
 
     Durch diesen Befehl werden drei Dateien in das Verzeichnis `.identityCredentials` unter Ihrem Ausgangsverzeichnis heruntergeladen. Die interessanten Dateien basieren auf dem Wert für **enrollId**. Im obigen Beispiel sind daher zwei Dateien mit den Namen **admin-pub.pem** und **admin-priv.pem** vorhanden.
 
@@ -163,7 +193,10 @@ Erstellen Sie eine Identität in Composer, indem Sie die Zertifikate verwenden, 
 
 1. Führen Sie den folgenden Befehl aus, um eine neue Identität zu erstellen:
 
-        composer identity import -p bmx-hlfv1 -u admin -c ~/.identityCredentials/admin-pub.pem -k ~/.identityCredentials/admin-priv.pem
+    ```
+    composer identity import -p bmx-hlfv1 -u admin -c ~/.identityCredentials/admin-pub.pem -k ~/.identityCredentials/admin-priv.pem
+    ```
+    {:codeblock}
 
     Dabei ist `bmx-hlfv1` der Name des Profils, das Sie zuvor erstellt haben. Jetzt können Sie Ihre `.bna`-Datei auf der {{site.data.keyword.blockchainfull_notm}} Platform bereitstellen.
 
@@ -174,4 +207,7 @@ Jetzt können Sie Ihre `.bna`-Datei auf der {{site.data.keyword.blockchainfull_n
 
 1. Führen Sie den folgenden Befehl mit der im vorherigen Schritt erstellten Identität aus, um das Unternehmensnetz bereitzustellen:
 
-        composer network deploy -a myNetwork.bna -p bmx-hlfv1 -i admin -s anyString
+   ```
+   composer network deploy -a myNetwork.bna -p bmx-hlfv1 -i admin -s anyString
+   ```
+   {:codeblock}

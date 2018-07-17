@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-05-23"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -19,9 +19,7 @@ lastupdated: "2018-05-23"
 Le plan Starter de la plateforme {{site.data.keyword.blockchainfull}} vous permet d'accéder d'un simple clic à un réseau de blockchain préconfiguré. Il <!--offers you a free trial of 30 days and -->met à disposition un réseau privé avec la configuration de deux [organisations](glossary.html#organization), un [homologue](glossary.html#peer) par organisation, et un [canal](glossary.html#channel) par défaut. Une fois le réseau créé, vous pouvez le dimensionner et lui ajouter d'autres organisations et homologues. <!--Note that it might cause extra cost if you exceed the default resource limits of two organizations and two peers.-->
 {:shortdesc}
 
-**Remarques **:
-1. Le plan Starter de la plateforme {{site.data.keyword.blockchainfull}} est un environnement de tests et de développement, et il ne convient pas pour des charges de travail de production. Si vous avez besoin d'un environnement de production, consultez la section [A propos du plan Enterprise](enterprise_plan.html).
-2. Le plan Starter en est à sa version bêta et il n'est disponible que dans la région **Sud des Etats-Unis** de {{site.data.keyword.cloud_notm}}.
+**Remarque **: le plan Starter de la plateforme {{site.data.keyword.blockchainfull}} est un environnement de tests et de développement, et il ne convient pas pour des charges de travail de production. Si vous avez besoin d'un environnement de production, consultez la section [A propos du plan Enterprise](enterprise_plan.html).
 
 Le plan Starter vous permet d'apprendre et de développer des compétences avec la plateforme {{site.data.keyword.blockchainfull_notm}}, d'exécuter des modèles d'application, de tester vos propres applications, et de simuler un scénario composé de plusieurs organisations.  Ce tutoriel de mise en route présente les prérequis et les étapes que vous devrez suivre pour créer et utiliser un réseau de plan Starter.
 
@@ -33,20 +31,20 @@ Vous pouvez disposer d'un [réseau](glossary.html#network) de plan Starter avec 
 
 1. Localisez le [service blockchain![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://console.bluemix.net/catalog/services/blockchain) dans le catalogue {{site.data.keyword.cloud_notm}}.   
     **Remarque **: Vous devez vous connecter avec votre compte payant {{site.data.keyword.cloud_notm}}. Si vous n'avez pas de compte, cliquez sur le bouton **Inscrivez-vous pour créer**. Après que vous avez créé un compte d'essai gratuit, effectuez une mise à niveau vers un type **Paiement à la carte** en accédant à **Gérer** > **Facturation et utilisation** > **Facturation** dans la console {{site.data.keyword.cloud_notm}}, et en cliquant sur **Ajouter carte de crédit**.
-2. Assurez-vous de choisir la région **Sud des Etats-Unis** dans {{site.data.keyword.cloud_notm}}.
-3. Sélectionnez votre organisation et votre espace Cloud Foundry, où vous allez créer votre réseau.
+2. Sélectionnez la région dans {{site.data.keyword.cloud_notm}} dans laquelle créer le réseau.
+3. Sélectionnez votre organisation et espace Cloud Foundry pour créer le réseau.
 4. Choisissez **Plan d'appartenance Starter** dans le tableau des plans de tarification.
 5. Cliquez sur le bouton **Créer**. Notez que si vous êtes invité à rejoindre un réseau, vous pouvez voir une fenêtre de bienvenue. Pour créer un réseau, choisissez **Poursuivez avec votre réseau** et cliquez sur **Continuer**. Pour rejoindre un réseau, reportez-vous à l'étape 5 de la section [Rejoindre un réseau](#joining-a-network).
   Vous êtes maintenant prêt à utiliser votre plan Starter avec la configuration par défaut. Le réseau se lance avec un programme de tri (appelé service de tri "SOLO"), deux organisations, une AC et un homologue par organisation. Un canal par défaut est également créé.
 6. Cliquez sur le bouton **Lancer**.
 
-Vous pouvez trouver votre instance de service de blockchain dans votre tableau de bord du serviceservice instance in your [tableau de bord du service {{site.data.keyword.Bluemix_notm}}![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://console.bluemix.net/dashboard/services "{{site.data.keyword.Bluemix_notm}}").
+Vous pouvez trouver votre instance de service de blockchain dans votre [tableau de bord du service {{site.data.keyword.Bluemix_notm}} ![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://console.bluemix.net/dashboard/services "tableau de bord du service {{site.data.keyword.Bluemix_notm}}").
 
 
 ## Invitation de membres
 Vous pouvez inviter d'autres [organisations](glossary.html#organization) à rejoindre votre réseau de plan Starter en tant que [membres](glossary.html#member), de manière à pouvoir [effectuer des transactions](glossary.html#transaction). En outre, si vous souhaitez utiliser le plan Starter Plan à des fins de formation et de tests, vous pouvez simuler un réseau composé de plusieurs organisations en ajoutant vous-même des membres au réseau.
 
-1. A l'écran "Membres' de votre Moniteur réseau, cliquez sur le bouton **Inviter des membres**.
+1. A l'écran "Membres" de votre Moniteur réseau, cliquez sur le bouton **Inviter des membres**.
 2. La fenêtre "Inviter un membre" s'affiche.
     - Si vous voulez inviter une autre organisation, choisissez "Inviter un membre".  Indiquez le nom et l'adresse e-mail opérateur de l'organisation à inviter.  Vous pouvez également entrer des informations supplémentaires à inclure dans votre invitation dans la zone "Ajouter une note".  Cliquez sur le bouton **Envoyer une invitation**.  L'organisation invitée recevra un e-mail d'invitation et elle pourra suivre les instructions qui y figurent pour rejoindre votre réseau.
     - Si vous souhaitez ajouter d'autres organisations pouvant être ajoutés à un canal, choisissez "Ajouter un membre".  Entrez un nom pour votre nouvelle organisation. Vous pouvez éventuellement ajouter des homologues à votre nouvelle organisation ou le faire ultérieurement dans le Moniteur réseau.  Cliquez sur le bouton **Créer**. Notez que si vous ajoutez des homologues pour votre nouvelle organisation, vous devez basculer vers cette nouvelle organisation pour voir vos homologues. Pour plus d'informations sur le basculement entre les organisations, voir [Basculement entre les organisations](dashboard.html#switch-organizations).
@@ -84,8 +82,7 @@ Vous accédez à la page d'instance de service dès que vous créez une instance
 Pour extraire les données d'identification de votre service, procédez comme suit :
 1. Sur la page d'instance de service, cliquez sur **Données d'identification du service** dans le navigateur de gauche pour afficher l'écran "Données d'identification du service".
 2. Cliquez sur **Nouvelles données d'identification** dans l'écran "Données d'identification du service".
-3. Dans l'écran "Ajouter de nouvelles données d'identification", donnez un nom aux données d'identification et cliquez sur **Ajouter**. Les nouvelles données d'identification sont ajoutées dans le tableau. Vous pouvez cliquer sur **Afficher les données d'identification** sous la colonne "ACTIONS" pour afficher les détails des données d'identification. Ces données d'identification contiennent la clé d'API et la valeur confidentielle, que vous pouvez utiliser pour autoriser les API.  
-    Si vous voulez voir le profil de connexion de votre connexion, entrez **{"legacy": true}** comme paramètre de configuration en ligne lors de la création de nouvelles données d'identification. Le profil de connexion contient des noeuds finaux d'API pour vos ressources réseau, que vous pouvez utiliser dans vos API et applications.
+3. Dans l'écran "Ajouter de nouvelles données d'identification", donnez un nom aux données d'identification et entrez **{"type": "service_instance_token"}** dans la zone "Ajouter des paramètres de configuration en ligne". Cliquez sur **Ajouter**. Les nouvelles données d'identification sont ajoutées dans le tableau. Vous pouvez cliquer sur **Afficher les données d'identification** sous la colonne "ACTIONS" pour afficher les détails des données d'identification. Ces données d'identification contiennent la clé d'API et la valeur confidentielle, que vous pouvez utiliser pour autoriser les API.  
 
 ![Extraction des données d'identification réseau](images/service_credentials.gif "Extraction des données d'identification réseau")
 
@@ -120,11 +117,15 @@ Si vous souhaitez nettoyer vos configurations personnalisées, les exécutions d
 
 Vous pouvez déployer un fichier `.bna`, du code blockchain, ainsi que des applications que vous testez sur un réseau de plan Starter dans un réseau de plan Enterprise.
 
-Si vous disposez d'un fichier archive de réseau d'entreprise (`.bna`), suivez les instructions relatives au [déploiement d'un réseau d'entreprise dans un plan Enterprise](./develop_enterprise.html). Si vous n'avez pas de fichier `.bna`, utilisez la commande `composer network download` pour l'extraire de l'instance de plan Starter. Pour plus d'informations sur la commande `composer network download`, consultez la [documentation relative à la ligne de commande Hyperledger Composer![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://hyperledger.github.io/composer/reference/commands){:new_window}.
+Si vous disposez d'un fichier archive de réseau d'entreprise (`.bna`), suivez les instructions relatives au [déploiement d'un réseau d'entreprise dans un plan Enterprise](./develop_enterprise.html). Si vous n'avez pas de fichier `.bna`, utilisez la commande `composer network download` pour l'extraire de l'instance de plan Starter. Pour plus d'informations sur la commande `composer network download`, consultez la [documentation relative à la ligne de commande Hyperledger Composer![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://hyperledger.github.io/composer/latest/reference/commands){:new_window}.
 
 Le code blockchain, qui est semblable aux fichiers `.bna`, est développé en externe. Pour déployer un code blockchain que vous testez depuis un réseau de plan Starter dans un réseau de plan Enterprise, suivez les instructions de la section [Installation, instanciation et mise à jour d'un code blockchain](howto/install_instantiate_chaincode.html#installchaincode).
 
-Comme vous pouvez le voir dans la section [Déploiement de modèles d'application](howto/prebuilt_samples.html), le plan Starter simplifie l'obtention d'un modèle d'application intégré à votre réseau à l'aide de Toolchain. Cette configuration permet également une intégration continue par la mise à jour automatique de votre modèle d'application chaque fois que votre référentiel d'application dévié est modifié. Si vous voulez déployer cette application dans un réseau de plan Enterprise, vous pouvez copier votre référentiel d'application dévié dans un nouveau référentiel, puis suivre les instructions de la section [Déploiement de modèles d'application manuellement](howto/prebuilt_samples.html#deploy_sample_applications_manually).
+<!--
+As you can see in [Deploying sample applications](howto/prebuilt_samples.html), Starter Plan makes it easy to get a sample application integrated with your network by using Toolchain. This setup also allows for continuous integration by automatically updating your sample application whenever your forked application repo is changed. If you want to deploy this application into an Enterprise Plan network, you can copy your forked application repo into a new repo and then follow the instructions in [Deploying sample applications manually](howto/prebuilt_samples.html#deploy_sample_applications_manually).
+-->
+
+Si vous déployez un modèle d'application quelconque sur votre réseau du plan Starter et désirez déployer cette application sur un réseau du plan Enterprise, vous pouvez copier votre référentiel d'application dévié dans un autre référentiel, puis suivre les instructions de la rubrique [Déploiement de modèles d'application manuellement](howto/prebuilt_samples.html#deploy_sample_applications_manually).
 
 
 ## Suppression ou sortie d'un réseau

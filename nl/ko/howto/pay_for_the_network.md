@@ -64,6 +64,6 @@ lastupdated: "2018-03-16"
    5. 블록체인 서비스 인스턴스를 작성한 후 마법사에 따라 네트워크에 가입하십시오.  자세한 정보는 [네트워크 가입](https://console.bluemix.net/docs/services/blockchain/get_start.html#joining-a-network)을 참조하십시오.
 
 ### 알려진 제한사항
-- 모든 구성원이 지급인의 {{site.data.keyword.cloud_notm}} 계정 내에 있으므로 지급인은 모든 구성원의 블록체인 인스턴스에 액세스할 수 있으며 이를 위장할 수 있습니다.  따라서 이 지급 모드는 POC 환경의 경우 또는 지급인이 {{site.data.keyword.blockchainfull_notm}} Platform의 모든 관리를 처리하고 구성원에게 애플리케이션만 제공되는 경우에 가장 적합합니다.  
+- 모든 구성원이 지급인의 {{site.data.keyword.cloud_notm}} 계정 내에 있으므로 지급인은 모든 구성원의 블록체인 인스턴스에 액세스할 수 있으며 이를 위장할 수 있습니다.  따라서 이 지불 모드는 POC 환경의 경우 또는 지급인이 {{site.data.keyword.blockchainfull_notm}} Platform의 모든 관리를 처리하고 구성원에게 애플리케이션만 제공되는 경우에 가장 적합합니다.  
 - 지급인의 {{site.data.keyword.cloud_notm}} 계정에 모든 구성원을 추가하고 블록체인 인스턴스를 프로비저닝하고 네트워크에 가입하는 액세스 권한을 지정하면, 지급인은 다른 서비스를 작성하는 액세스 권한을 구성원에게 제공하며 이로 인해 추가 요금이 발생할 수 있습니다.  
 - 지급인의 Cloud Foundry 조직에 있는 모든 구성원은 조직의 모든 영역을 볼 수 있습니다.  하지만 액세스 권한이 없으므로 조직을 편집하거나 수정할 수 없습니다.

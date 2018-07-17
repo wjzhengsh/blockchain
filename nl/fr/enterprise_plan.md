@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-05-24"
+lastupdated: "2018-03-16"
 
 ---
 
@@ -14,7 +14,8 @@ lastupdated: "2018-05-24"
 
 # A propos du plan Enterprise
 
-Le plan Enterprise de la plateforme {{site.data.keyword.blockchainfull}} est une offre prête pour la production pour les organisations qui souhaitent trouver ou rejoindre un réseau d'entreprise de type Blockchain pour de vraies activités. Ce plan fournit l'infrastructure de base ainsi que les outils et le support nécessaires à un démarrage d'un réseau hautement sécurisé et prêt pour la production. Le plan Enterprise est mis à niveau de Hyperledger Fabric V1.0 vers la V1.1. Tous les réseaux nouvellement créés sont au niveau Fabric V1.1.Toutefois, les réseaux qui ont été créés précédemment resteront au niveau Fabric V1.0.{:shortdesc}
+Le plan Enterprise de la plateforme {{site.data.keyword.blockchainfull}} est une offre prête pour la production pour les organisations qui souhaitent trouver ou rejoindre un réseau d'entreprise de type Blockchain pour de vraies activités. Ce plan fournit l'infrastructure de base ainsi que les outils et le support nécessaires à un démarrage d'un réseau hautement sécurisé et prêt pour la production. Le plan Enterprise a été mis à niveau de Hyperledger Fabric V1.0 vers la version V1.1 le 15 mai 2018. Tous les réseaux créés après le 15 mai 208 sont au niveau Fabric V1.1. Toutefois, les réseaux qui ont été créés précédemment resteront au niveau Fabric V1.0.
+{:shortdesc}
 
 **Remarque **: Le plan Enterprise de la plateforme {{site.data.keyword.blockchainfull_notm}} fournit un environnement de production. Si vous avez besoin d'un environnement de tests et de développement, voir [A propos du plan Starter](starter_plan.html).
 
@@ -22,16 +23,16 @@ IBM met à disposition des membres qui vont démarrer le réseau une interface g
 
 Inscrivez-vous dès maintenant en tant que [{{site.data.keyword.blockchainfull_notm}} membre ![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps).
 
-La plateforme {{site.data.keyword.blockchainfull_notm}} est créée à l'aide de composants Hyperledger Fabric importants, dont une Autorité de certification et au moins 1 homologue (6 max).  Le plan Enterprise fournit également un service de commande Kafka (CFT) tolérant aux pannes pour les membres réseau.
+La plateforme {{site.data.keyword.blockchainfull_notm}} est créée à l'aide de composants Hyperledger Fabric importants, dont une Autorité de certification et au moins 1 homologue (6 max).  Le plan Enterprise fournit également un service de tri Kafka (CFT) tolérant aux pannes pour les membres réseau.
 
 Fabric CA est l'autorité de certification fournie avec le plan d'entreprise. Deux autorités de certification intermédiaire sont fournies par membre, qui permettent d'accorder l'appartenance au réseau. Grâce à l'autorité de certification, le membre peut également accorder l'appartenance (certificats) à des utilisateurs du réseau.
 
 Il est important de comprendre que l'ajout d'une transaction au registre s'effectue en plusieurs étapes :  
-1. Simulation de transaction et adhésion (homologue)
+1. Simulation de transaction et validation (homologue)
 2. Tri (service de tri)
 3. Validation et confirmation (homologue)
 
-Les homologues Fabric dont les membres sont propriétaires constituent l'interface ou la passerelle pour les applications qui exécutent du code blockchain ; ils fournissent la logique métier nécessaire à l'exécution des transactions dans le registre.  Toutes les transactions doivent être validées. Les autres membres du réseau effectuent cette adhésion. Ensuite, les transactions sont envoyées à un service de tri (Kafka) fourni par IBM.
+Les homologues Fabric dont les membres sont propriétaires constituent l'interface ou la passerelle pour les applications qui exécutent du code blockchain ; ils fournissent la logique métier nécessaire à l'exécution des transactions dans le registre.  Toutes les transactions doivent être validées. Les autres membres du réseau effectuent cette validation. Ensuite, les transactions sont envoyées à un service de tri (Kafka) fourni par IBM.
 
 Outre les principaux composants blockchain, l'option Plan d'appartenance d'entreprise
 fournit une infrastructure avec un stockage de données et des communications sécurisées (TLS) ainsi qu'une haute disponibilité.  Alors que les réseaux Fabric partagent ces ressources d'infrastructure, l'isolement est fourni pour les noeuds de composant Fabric au sein d'un réseau, et chaque noeud s'exécute dans un conteneur docker sécurisé qui protège l'environnement d'exécution.

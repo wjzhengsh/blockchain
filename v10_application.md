@@ -14,19 +14,17 @@ lastupdated: "2018-06-14"
 
 # Developing applications
 {: #dev_app}
-With applications, you can invoke the chaincode to query or update a channel-specific ledger in your {{site.data.keyword.blockchain}} network.
+With applications, you can invoke the chaincode to query or update a channel-specific ledger in your blockchain network.
 {:shortdesc}
 
 ## Setting up application development environment
-You need to install software prerequisites to develop applications that can interact with the {{site.data.keyword.blockchain}} network on {{site.data.keyword.Bluemix}}.
+You need to install software prerequisites to develop applications that can interact with the blockchain network on {{site.data.keyword.cloud}}.
 {:shortdesc}
 
-*	Git ([Git download page ![External link icon](images/external_link.svg "External link icon")](https://git-scm.com/downloads){:new_window})
-
+*	Git ([Git download page ![External link icon](images/external_link.svg "External link icon")](https://git-scm.com/downloads){:new_window})  
 	Git is a version control tool to familiarize yourself with, both for chaincode development and software development in general. Also, git bash, which is installed with git on Windows, is an excellent alternative to the the Windows command prompt.
 
-*	GoLang ([GoLang download page ![External link icon](images/external_link.svg "External link icon")](https://golang.org/dl){:new_window})
-
+*	GoLang ([GoLang download page ![External link icon](images/external_link.svg "External link icon")](https://golang.org/dl){:new_window})  
 	The GoLang installation installs a set of Go CLI tools, which are very useful to write chaincode. For example, the `go build` command allows you to check that your chaincode actually compiles before you attempt to deploy it to a network.
 
 	Follow the [Installation instructions ![External link icon](images/external_link.svg "External link icon")](https://golang.org/doc/install){:new_window} to properly set the environment variables. Check your `GOPATH` using the below command. Note that your `GOPATH` does not need to match the example, it only matters that you have this variable set to a valid directory on your file system.
@@ -40,7 +38,6 @@ You need to install software prerequisites to develop applications that can inte
 	You can then verify your GoLang installation by building GoLang code with the [hello world ![External link icon](images/external_link.svg "External link icon")](https://golang.org/doc/install#testing){:new_window} example.
 
 * Java ([Java download page ![External link icon](images/external_link.svg "External link icon")](https://java.com/en/download/){:new_window}).
-
 *	Node.js ([Node.js download page ![External link icon](images/external_link.svg "External link icon")](https://nodejs.org/en/download/){:new_window}).
 
 Chaincode development is currently supported in Node.js, Go, and Java.
@@ -48,40 +45,45 @@ Chaincode development is currently supported in Node.js, Go, and Java.
 ## Generating the client-side certificates
 We won't delve into the minutiae of x509 and public key infrastructure; there are plenty of external resources for that. Suffice it to say that communication flows in Fabric use sign/verify operations at every touchpoint. As such, any client that sends calls (that is, ledger queries or updates) to the network will need to sign payloads and attach a properly signed x509 certificate for verification purposes. The private key and signed certificate, along with an MSP identifier and the Certificate Authority (CA) root certificate, make up what is referred to as the "user context" object.
 
-What's important here is the process of "enrollment", in which the keys and certs that allow for the object to be formed are retrieved from the appropriate CA. After you form the user context object, you can call an API from your application to "set" or "get" this user context. At this point, the application (i.e. client) is equipped with all the necessary artifacts and is ready to communicate with the network. We'll look at two approaches for retrieving the keys and certs.
+What's important here is the process of "enrollment", in which the keys and certs that allow for the object to be formed are retrieved from the appropriate CA. After you form the user context object, you can call an API from your application to "set" or "get" this user context. At this point, the application (i.e. client) is equipped with all the necessary artifacts and is ready to communicate with the network. We'll look at two approaches for retrieving the keys and certs: commande line and SDK.
 
 ### Command line
-This is the simpler of the two approaches. First, follow the instructions to build the [Fabric CA client ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric-ca.readthedocs.io/en/latest/users-guide.html). This step allows you to communicate with a CA Server and receive back properly formatted certificates and keys.
+Using command line is the simpler of the two approaches.
 
-Second, download the TLS certs from IBM Cloud depending on the service plan that you are using:
-- [Root TLS Cert for Starter Plan ![External link icon](images/external_link.svg "External link icon")](https://blockchain-certs.mybluemix.net/us2.blockchain.ibm.com.cert)
-- [Root TLS Cert for Enterprise Plan ![External link icon](images/external_link.svg "External link icon")](https://blockchain-certs.mybluemix.net/3.secure.blockchain.ibm.com.rootcert)
+1. Follow the instructions to build the [Fabric CA client ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric-ca.readthedocs.io/en/latest/users-guide.html). This step allows you to communicate with a CA Server and receive properly-formatted certificates and keys.
 
-Save the contents to a folder, for example ``$HOME/tls``. This step allows the data flowing to be encrypted on the wire.
+2. Download the TLS certs from {{site.data.keyword.cloud_notm}} depending on the service plan, location, and cluster that you use.
+  - Root TLS Cert for Starter Plan  
+    - US: [us01.blockchain.ibm.com.cert ![External link icon](images/external_link.svg "External link icon")](http://blockchain-certs.mybluemix.net/us01.blockchain.ibm.com.cert "us01.blockchain.ibm.com.cert"); [us02.blockchain.ibm.com.cert ![External link icon](images/external_link.svg "External link icon")](http://blockchain-certs.mybluemix.net/us02.blockchain.ibm.com.cert "us02.blockchain.ibm.com.cert")
+    - UK: [uk01.blockchain.ibm.com.cert ![External link icon](images/external_link.svg "External link icon")](http://blockchain-certs.mybluemix.net/uk01.blockchain.ibm.com.cert "uk01.blockchain.ibm.com.cert"); [uk02.blockchain.ibm.com.cert ![External link icon](images/external_link.svg "External link icon")](http://blockchain-certs.mybluemix.net/uk02.blockchain.ibm.com.cert "uk02.blockchain.ibm.com.cert")
+    - Sydney: [aus01.blockchain.ibm.com.cert ![External link icon](images/external_link.svg "External link icon")](http://blockchain-certs.mybluemix.net/aus01.blockchain.ibm.com.cert "aus01.blockchain.ibm.com.cert"); [aus02.blockchain.ibm.com.cert ![External link icon](images/external_link.svg "External link icon")](http://blockchain-certs.mybluemix.net/aus02.blockchain.ibm.com.cert "aus02.blockchain.ibm.com.cert")
+  - [Root TLS Cert for Enterprise Plan ![External link icon](images/external_link.svg "External link icon")](https://blockchain-certs.mybluemix.net/3.secure.blockchain.ibm.com.rootcert)
 
-Finally, open the **Connection Profile** JSON file from your **Overview** screen in the Network Monitor, and find the relevant variables:
-* URL for CA: ``url`` under `certificateAuthorities`
-* Admin user ID: ``enrollId``
-* Admin password: ``enrollSecret``
-* CA Name: ``caName``
+  Save the contents to a folder, for example ``$HOME/tls``. This step allows the data flowing to be encrypted on the wire.
 
-Using the Fabric CA client, we can send an "enroll" call to our Certificate Authority by passing in the TLS certs path and the four strings above with the following command:
-```
-$GOPATH/bin/fabric-ca-client enroll -u https://<enroll_id>:<enroll_password>@<ca_url_with_port> --caname <ca_name> --tls.certfiles <tls_cert_path>
-```
-{:codeblock}
+3. Open the **Connection Profile** JSON file from your **Overview** screen in the Network Monitor, and find the following variables:
+  * URL for CA: ``url`` under `certificateAuthorities`
+  * Admin user ID: ``enrollId``
+  * Admin password: ``enrollSecret``
+  * CA Name: ``caName``
 
-The ``fabric-ca-client`` binary is placed in ``$GOPATH/bin``, so you will need to be in the proper location on your local machine when you run this command.  A real call might look similar to the following example command:
-```
-./fabric-ca-client enroll -u https://admin:B84F2C5436@tor-zbc01a.3.secure.blockchain.ibm.com:23042 --tls.certfiles /Users/XYZ/Downloads/3.secure.blockchain.ibm.com.rootcert --caname PeerOrg1CA
-```
-{:codeblock}
+4. Using the Fabric CA client, we can send an "enroll" call to our Certificate Authority by passing in the TLS certs path and the four strings above with the following command:
+  ```
+  $GOPATH/bin/fabric-ca-client enroll -u https://<enroll_id>:<enroll_password>@<ca_url_with_port> --caname <ca_name> --tls.certfiles <tls_cert_path>
+  ```
+  {:codeblock}
 
-Find your admin certificate in `$HOME/.fabric-ca-client/msp/signcerts/cert.pem`. You can then upload the admin certificate to your blockchain network from the Network Monitor. For more information about adding certificates, see [the "Certificates" tab of "Member" screen](v10_dashboard.html#members) in the Network Monitor.
+  The ``fabric-ca-client`` binary is placed in ``$GOPATH/bin``, so you will need to be in the proper location on your local machine when you run this command.  A real call might look similar to the following example command:
+  ```
+  ./fabric-ca-client enroll -u https://admin:B84F2C5436@tor-zbc01a.3.secure.blockchain.ibm.com:23042 --tls.certfiles /Users/XYZ/Downloads/3.secure.blockchain.ibm.com.rootcert --caname PeerOrg1CA
+  ```
+  {:codeblock}
 
-You can also find CA root certificate and admin private key in the following directories:
-* CA root certificate: `$HOME/.fabric-ca-client/msp/cacerts/--<ca_name>.pem`
-* The admin private key: `$HOME/.fabric-ca-client/msp/keystore/<>_sk file`
+5. Find your admin certificate in `$HOME/.fabric-ca-client/msp/signcerts/cert.pem`. You can then upload the admin certificate to your blockchain network from the Network Monitor. For more information about adding certificates, see [the "Certificates" tab of "Member" screen](v10_dashboard.html#members) in the Network Monitor.
+
+  You can also find CA root certificate and admin private key in the following directories:
+  * CA root certificate: `$HOME/.fabric-ca-client/msp/cacerts/--<ca_name>.pem`
+  * The admin private key: `$HOME/.fabric-ca-client/msp/keystore/<>_sk file`
 
 ### SDK
 There are a few Fabric repositories that contain excellent resources and scripts for understanding how to programmatically interact with a Certificate Authority. The ``fabric-samples`` repo contains the `balance transfer` example and the ``fabric-sdk-node`` repo has a series of CA Services tests. If you intend to issue your enrollment requests on the application side, then you need to fully understand the APIs that need to be exposed within the ``fabric-ca-client`` and ``fabric-client`` packages. Use these scripts and repos as a baseline for structuring your app.

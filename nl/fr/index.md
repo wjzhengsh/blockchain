@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-05-24"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -29,26 +29,20 @@ La plateforme {{site.data.keyword.blockchainfull_notm}} est la seule plateforme 
 
 ## Offres d'appartenance de membre {{site.data.keyword.IBM_notm}}
 
-La plateforme IBM Blockchain fournit différents plans d'appartenance pour aider tous les types d'utilisateurs à démarrer leur parcours sur la blockchain et à placer leurs applications en production.
+{{site.data.keyword.blockchainfull_notm}} Platform propose différents plans d'appartenance pour aider tous les types d'utilisateurs à démarrer leurs parcours sur le blockchain et transférer leurs applications en production.
 
 |       | [Plan Starter](starter_plan.html)      | [Plan Enterprise](enterprise_plan.html)  | Plan Enterprise Plus | Plan Self Managed
 | ------------------------- |--------------------------|-----|-----|------|
-| **Inclus         ** | **Niveaux de service de base, environnement de développement et de tests** | **Services avancés, prêts pour prod entreprise** | **Calcul dédié aux performances et à l'isolement, prêt pour production en entreprise** |Pile de logiciels à installer dans votre infrastructure, connexion à un réseau hébergé sur ce service cloud |
-| **Règle facturat** | **Gratuit pour bêta<!--trial of 30 days, followed by monthly charge-->** | **Abonnement mensuel** | **Abonnement mensuel** | Abonnement mensuel |
-| **Disponibilité** | **Bêta** | **Immédiate    ** | **Lors de l'achat** | Prochaine |
+| **Inclus         ** | **Niveaux de service de base, environnement de développement et de tests** | **Services avancés, prêts pour prod entreprise** | **Calcul dédié aux performances et à l'isolement, prêt pour production en entreprise** | Pile de logiciels à installer dans votre infrastructure, connexion à un réseau hébergé sur ce service cloud |
+| **Règle facturation** | **[Crédits d'essai](howto/pricing.html#starter-plan-pricing) suivis par une redevance mensuelle** | **Abonnement mensuel** | **Abonnement mensuel** | Abonnement mensuel |
+| **Disponibilité** | **Immédiate    ** | **Immédiate    ** | **Lors de l'achat** | Prochaine |
 
+**Attention :** N'utilisez pas le **plan Starter** en production. Il s'agit d'un environnement de développement et de test qui ne convient pas aux charges de travail en production.
 
-<!--
-- **The IBM Blockchain Starter Plan** is ideal for those who are learning or getting started developing their blockchain network.
-- **Enterprise Plan** is a production environment offering high levels of security and support.
-- **Enterprise Plus Plan** offers a dedicated production environment for additional performance and isolated compute and storage resources to protect critical data.
--->
-
-**Attention :** N'utilisez pas le **plan Starter** en production. Il s'agit d'un environnement de tests et de développement. 
-
-Les offres de solution {{site.data.keyword.blockchainfull_notm}} reposent sur une base de code [Hyperledger Fabric](./v10_fabric) qui optimise une architecture modulaire pour parvenir aux niveaux de sécurité, d'intégrité des données, d'évolutivité et de performance nécessaires pour répondre aux besoins de votre entreprise.
-- Les réseaux du **plan Starter** reposent sur Hyperledger Fabric V1.1.
-- Le **plan Enterprise** est mise à niveau vers Hyperledger Fabric V1.1. Tous les réseaux nouvellement créés sont au niveau Fabric V1.1.
+Les offres {{site.data.keyword.blockchainfull_notm}} reposent sur une base de code [Hyperledger Fabric](reference/v10_fabric.html) V1.1 qui exploite une architecture modulaire pour atteindre des niveaux de sécurité, d'intégrité des données, d'extensibilité et de performance répondant aux besoins de votre entreprise.
+- **Le plan IBM Blockchain Starter** constitue un environnement d'apprentissage ou pour commencer à développer des réseaux de blockchain.
+- Le plan **Enterprise** constitue un environnement de production offrant de hauts niveaux de sécurité et de support.
+- **Le plan Enterprise Plus** offre un environnement de production dédié pour performances supplémentaires et des ressources de calcul et de stockage isolées afin de protéger les données critiques.
 
 Inscrivez-vous dès maintenant en tant que [{{site.data.keyword.blockchainfull_notm}} membre ![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps)!
 
@@ -73,8 +67,9 @@ En tant que développeur, vous pouvez mettre rapidement et facilement en concord
 
 ## **Gouvernance** du réseau
 Vous disposez de deux options pour créer l'environnement de back end de votre réseau. Tout d'abord, vous pouvez utiliser les images Hyperledger Docker publiées, ce qui vous permet d'implémenter la bibliothèque Composer pour générer vos applications et interagir avec votre réseau. Ou bien, vous pouvez écrire du code blockchain en mode natif et développer du code côté serveur pour gérer les transactions. Une exécution en local est l'occasion parfaite pour adapter des configurations réseau, explorer de possibles scénarios d'utilisation, et démarrer la mise en place de démonstrations de faisabilité. Dès que votre démonstration de faisabilité commence à prendre forme, vous pouvez commencer à élargir sa mise en oeuvre en hébergeant votre réseau dans le cloud.
-
-Avec un déploiement dans le cloud, vous disposez d'un ensemble simple de recettes et de scripts qui facilitent le déploiement d'un réseau Hyperledger Fabric sous Kubernetes. A ce stade, vous pouvez étudier le comportement et la stabilité de votre démonstration de faisabilité dans un environnement hébergé. Le service de conteneur [{{site.data.keyword.blockchainfull_notm}} ![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://ibm-blockchain.github.io/) peut au mieux être considéré comme une méthode de test du fonctionnement et de la résilience de votre application et comme un précurseur naturel du plan d'entreprise.
+<!--
+With a cloud deployment, you're provided with a collection of easy-to-use recipes and scripts to facilitate the deployment of a Hyperledger Fabric network that runs on Kubernetes. Use this phase to examine the behavior and stability of your PoC in a hosted environment. The [{{site.data.keyword.blockchainfull_notm}} Container Service ![External link icon](images/external_link.svg "External link icon")](https://ibm-blockchain.github.io/) can be best thought of as a testing mechanism for the functionality and resiliency of your application and as a natural precursor to the Enterprise Plan.
+-->
 
 Dès lors que vous disposez d'un réseau, {{site.data.keyword.blockchainfull_notm}} a été conçu pour vous offrir une expérience de gestion du réseau dans laquelle les membres disposent d'un certain contrôle, et où le contrôle complet n'est pas confié à un seul membre. La plateforme {{site.data.keyword.blockchainfull_notm}} dispose du premier ensemble d'outils intégrés qui permet aux équipes de gérer les changements du réseau à l'aide de règles personnalisables.
 
@@ -152,17 +147,17 @@ Alors qu'un réseau de blockchain peut comporter des centaines de membres, ses u
 La plateforme {{site.data.keyword.blockchainfull_notm}} fournit un réseau de blockchain hautement sécurisé et privé sur lequel des membres authentifiés peuvent aisément définir des actifs et créer les solutions métier permettant de les modifier et de les échanger.  Il n'est plus question désormais d'un processus complexe et fastidieux pour amorcer un réseau de blockchain en production. Grâce à la plateforme {{site.data.keyword.blockchainfull_notm}}, vous pouvez tirer parti d'une infrastructure d'orchestration qui vous permet d'**organiser votre consortium en un réseau de blockchain actif en un temps record**. La plateforme {{site.data.keyword.blockchainfull_notm}} met ainsi à disposition des consortium des outils conviviaux pour encourager plusieurs institutions à s'associer et créer un réseau régi de manière démocratique. Les tâches de création, de gouvernance et de gestion du réseau deviennent intuitives et transparentes grâce au moniteur de tableau de bord intégré et aux utilitaires mis à disposition. En évitant le processus laborieux de création d'un réseau et d'implémentation d'une gouvernance, les membres du consortium peuvent ainsi **se concentrer sur le déploiement de contrats intelligents et le transfert d'actifs et d'informations**.      
 {:shortdesc}
 
-La **haute disponibilité** pour les ressources intégrales du réseau (homologue, service de commande, autorité de certification, code blockchain) élimine les effets désastreux qui pourraient naître de points de défaillance uniques. Un moniteur de tableau de bord intégré permet de gérer facilement ces ressources et constitue un puissant mécanisme pour la visualisation des actifs et des contrats intelligents.
+La **haute disponibilité** pour les ressources intégrales du réseau (homologue, service de tri, autorité de certification, code blockchain) élimine les effets désastreux qui pourraient naître de points de défaillance uniques. Un moniteur de tableau de bord intégré permet de gérer facilement ces ressources et constitue un puissant mécanisme pour la visualisation des actifs et des contrats intelligents.
 
 La **modularité** de l'architecture Hyperledger Fabric et la nette séparation des rôles réseau fournit une infrastructure qui permet l'évolutivité et l'adaptabilité à un large éventail de scénarios d'utilisation.
 
 Les freins et contrepoids qui opèrent tout au long du cycle de vie d'une transaction garantissent des résultats homogènes et approfondis, les registres demeurent constamment synchronisés grâce à la mise en oeuvre du protocole gossip bien connu. Le contrôle d'identité et d'accès sont aisément appliqués via les opérations de **signature/vérification** qui se produisent perpétuellement via le réseau.  
 
-Des **outils de gouvernance** sont fournis pour permettre aux membres d'administrer et de gérer les règles métier essentielles au réseau. Vous pouvez, par exemple, implémenter des règles qui définissent le nombre de membres d'un réseau qui doivent accepter l'adhésion d'un nouveau membre. Ou peut-être un actif nécessite-t-il l'adhésion de chaque participant pour qu'une modification puisse être effectuée. Les règles de gouvernance sont une absolue nécessité pour tous les types de réseau métier et elles peuvent souvent être extrêmement élaborées. Les outils de gouvernance (éditeurs de règle, par exemple) simplifient énormément ce processus.
+Des **outils de gouvernance** sont fournis pour permettre aux membres d'administrer et de gérer les règles métier essentielles au réseau. Vous pouvez, par exemple, implémenter des règles qui définissent le nombre de membres d'un réseau qui doivent accepter l'adhésion d'un nouveau membre. Ou peut-être un actif nécessite-t-il une validation par chaque participant pour qu'une modification puisse être effectuée. Les règles de gouvernance sont une absolue nécessité pour tous les types de réseau métier et elles peuvent souvent être extrêmement élaborées. Les outils de gouvernance (éditeurs de règle, par exemple) simplifient énormément ce processus.
 
 Le service s'exécute dans un environnement **hautement sécurisé et isolé** sans accès externe (y compris un accès utilisateur root) aux ressources réseau. Les données sont chiffrées durant leur transfert et leur stockage, et le support disponible pour les modules de sécurité matériels permet de protéger les clés numériques conformément à la réglementation du secteur. La virtualisation matérielle permet d'exécuter chaque noeud dans un environnement isolé, ce qui protège ainsi les autres noeuds du réseau des homologues susceptibles de contenir du code malintentionné ou malveillant. Le hachage, les opérations de signature/vérification, ainsi que les communications entre noeuds sont accélérés par l'implémentation de systèmes de chiffrement évolués.
 
-Avant de poursuivre, examinons une configuration simple au sein de la plateforme {{site.data.keyword.blockchainfull_notm}}.  La **Figure 1** illustre un exemple de réseau de blockchain déployé composé de quatre membres (chacun propriétaire de deux homologues), une autorité de certification responsable de la distribution du matériel cryptographique de vérification d'identité et d'un service de commande définissant les règles et les participants du réseau. Le canal bleu comporte l'ensemble des quatre membres du réseau, tandis que le canal jaune est limité à trois membres seulement : Les banques B, C et D. On peut voir également que la banque A a joué le rôle d'initiateur réseau et que la banque D existe seulement en tant que membre dans le contexte du canal jaune. Enfin, un utilisateur final ou une application en possession d'un certificat x509 correctement signé est en mesure d'effectuer des appels vers les homologues du réseau. Comme mentionné plus haut, il est tout a fait probable qu'un utilisateur final ne connaisse même pas l'existence du réseau de blockchain.
+Avant de poursuivre, examinons une configuration simple au sein de la plateforme {{site.data.keyword.blockchainfull_notm}}.  La **Figure 1** illustre un exemple de réseau de blockchain déployé composé de quatre membres (chacun propriétaire de deux homologues), une autorité de certification responsable de la distribution du matériel cryptographique de vérification d'identité et d'un service de tri définissant les règles et les participants du réseau. Le canal bleu comporte l'ensemble des quatre membres du réseau, tandis que le canal jaune est limité à trois membres seulement : Les banques B, C et D. On peut voir également que la banque A a joué le rôle d'initiateur réseau et que la banque D existe seulement en tant que membre dans le contexte du canal jaune. Enfin, un utilisateur final ou une application en possession d'un certificat x509 correctement signé est en mesure d'effectuer des appels vers les homologues du réseau. Comme mentionné plus haut, il est tout a fait probable qu'un utilisateur final ne connaisse même pas l'existence du réseau de blockchain.
 
 ![Réseau de blockchain](images/blockchain_network_2-01.png "Exemple de réseau de blockchain")
 

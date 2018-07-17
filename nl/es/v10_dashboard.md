@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-05-15"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -45,7 +45,7 @@ En la parte superior izquierda del navegador del Supervisor de red, pulse en el 
 ## Visión general
 {: #overview}
 
-En la pantalla "Visión general" se muestra información de estado en tiempo real sobre los recursos de blockchain, como el clasificador, la CA y los nodos iguales. Cada recurso se muestra bajo cuatro cabeceras distintas: **Tipo**, **Nombre**, **Estado** y **Acciones**. Durante la creación de la red de blockchain, se crean automáticamente tres nodos clasificadores y dos nodos de CA. Las CA son específicas del miembro y los nodos de ordenación son puntos finales comunes compartidos en la red.
+En la pantalla "Visión general" se muestra información de estado en tiempo real sobre los recursos de blockchain, como el clasificador, la CA y los nodos iguales. Cada recurso se muestra bajo cuatro cabeceras distintas: **Tipo**, **Nombre**, **Estado** y **Acciones**. Durante la creación de la red blockchain, se crean automáticamente tres nodos clasificadores y dos nodos de CA. Las CA son específicas del miembro y los nodos de ordenación son puntos finales comunes compartidos en la red.
 
 **Figura 2** muestra la pantalla "Visión general":
 
@@ -131,7 +131,7 @@ Para suprimir solicitudes pendientes, seleccione los recuadros situados delante 
 ## API
 {: #apis}
 
-Para facilitar el desarrollo de aplicaciones, la plataforma {{site.data.keyword.blockchainfull_notm}} expone las API que puede probar en la red en una IU de Swagger.
+La plataforma {{site.data.keyword.blockchainfull_notm}} ofrece varias API REST en Swagger que puede utilizar para gestionar los nodos, canales, iguales y miembros de la red. Las aplicaciones pueden utilizar estas API para controlar los recursos de red importantes sin utilizar el supervisor de red.
 
 En la **Figura 7** se muestra la pantalla "API":
 
@@ -167,7 +167,7 @@ El código de encadenamiento se instala en primer lugar en el sistema de archivo
 ## Probar ejemplos
 {: #samples}
 
-Las aplicaciones de ejemplo le ayudan a comprender mejor una red de blockchain y el desarrollo de aplicaciones. Siga el enlace al repositorio de Canicas del supervisor de red para obtener información sobre cómo instalar la aplicación de ejemplo Canicas. Para obtener más información sobre cómo desarrollar y desplegar sus propios ejemplos, consulte el apartado [Desarrollo de aplicaciones](v10_application.html).
+Las aplicaciones de ejemplo le ayudan a comprender mejor una red blockchain y el desarrollo de aplicaciones. Siga los enlaces **Ver en GitHub** para obtener más información sobre cómo utilizar las muestras y desplegarlas en la plataforma de {{site.data.keyword.blockchainfull_notm}}. Para obtener más información sobre cómo desarrollar y desplegar los ejemplos, consulte [Despliegue de aplicaciones de ejemplo](howto/prebuilt_samples.html).
 
 **Figura 10** muestra la pantalla "Probar ejemplos":
 
@@ -210,10 +210,12 @@ En las figuras 12 y 13 se muestra la pantalla "Obtener ayuda" inicial con las fu
 
 Pulse la esquina superior derecha y abra el menú desplegable y luego las **Preferencias de red**. Se abre la ventana Preferencias de red. La ventana Preferencias de red muestra la información básica de la red, como el nombre de la red, la versión de Fabric, la ubicación de la red en {{site.data.keyword.cloud_notm}}, y el tipo de base de datos del libro mayor.
 
-Las redes del Plan empresarial se actualizan en Fabric v1.1 pronto<!-- May 15th, 2018 will run on Hyperledger Fabric v1.1-->. Si crea redes después de la actualización, también puede gestionar el tiempo de espera de inactividad web y TLS mutuo para la red en la ventana Preferencias de red. Estos valores puede cambiarlos solo el iniciador de la red.
+Las redes del Plan empresarial que se creen después del 15 de mayo de 2018 se ejecutarán en Hyperledger Fabric v1.1. Si crea redes después de la actualización, también puede gestionar el tiempo de espera de inactividad web y TLS mutuo para la red en la ventana Preferencias de red. Estos valores puede cambiarlos solo el iniciador de la red.
 
 <!--
+
 Enterprise Plan networks that are created after May 15th, 2018 will run on Hyperledger Fabric v1.1. If you create networks after the upgrade, you can also manage web inactivity timeout, mutual TLS, and switch your ledger to CouchDB for your network in the Network preferences window. These settings can be changed by the network initiator only.
+
 -->
 
 ### Tiempo de espera de inactividad web
@@ -226,7 +228,7 @@ El tiempo de espera de inactividad web está establecido en **Desactivado** de f
 ### TLS mutuo
 {: #mutual-tls}
 
-TLS mutuo protege la comunicación entre la aplicación y la red, y solo garantiza que pueda comunicarse con la red.
+TLS mutuo protege la comunicación entre la aplicación y la red.
 
 **Nota**: Solo un **iniciador de red** puede habilitar o inhabilitar TLS mutuo. Este es un valor de nivel de red y afectará a todos los miembros de la red.
 
@@ -244,16 +246,21 @@ En el Perfil de conexión, localice la sección `certificateAuthorities` donde e
 Para obtener más información sobre cómo actualizar las aplicaciones para dar soporte a TLS mutuo, consulte [Cómo configurar TLS mutuo ![icono de enlace externo](images/external_link.svg "icono de enlace externo")](https://fabric-sdk-node.github.io/tutorial-mutual-tls.html)
 
 <!--
+
 ### CouchDB ledger type
 {: #couchdb}
+
 **Note**: Only the **network initiator** can switch the ledger database from LevelDB to CouchDB. This is a network level setting and will affect all network members. Switching to CouchDB is permanent. You cannot revert back to LevelDB.
+
 Before Enterprise Plan upgrades to Fabric v1.1, all network peers store data in the pure key-value LevelDB. With Fabric v1.1, you can choose to use CouchDB as your ledger database. CouchDB is a document datastore that permits indexing the contents of your data and allows you to issue rich queries against the data on your peer. Note that Hyperledger Fabric does not support peers running different databases. If CouchDB is used, it must be used by all of the peers.
+
 To use CouchDB, your data must be stored in a data format that can be modeled in chaincode, such as JSON. If the decision is made to migrate from LevelDB to CouchDB, the {{site.data.keyword.blockchainfull_notm}} Platform will migrate your data from key-value format to the CouchDB format automatically.
+
 If you switch to CouchDB, you need to update your chaincode to take advantage of indexes and rich queries. For more information about CouchDB and how to set up index, see [CouchDB as the State Database ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/latest/couchdb_as_state_database.html). For more information about updating chaincode in {{site.data.keyword.blockchainfull_notm}} Platform, see [Updating a chaincode](howto/install_instantiate_chaincode.html#updating-a-chaincode).
+
 -->
 
 **Figura 14** muestra la ventana "Preferencias de la red":
 
-<!-- ![Network preferences](images/network_preferences_ep.gif "Network preferences") -->
-![Preferencias de la red](images/network_preferences_ep_tmp.png "Preferencias de la red")  
+![Preferencias de la red](images/network_preferences_ep_tmp.png "Preferencias de la red")
 *Figura 14. Preferencias de la red*

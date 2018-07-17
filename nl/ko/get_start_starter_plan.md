@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-05-23"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -19,9 +19,7 @@ lastupdated: "2018-05-23"
 {{site.data.keyword.blockchainfull}} Platform 스타터 플랜은 한 번의 클릭으로 사전 구성된 블록체인 네트워크를 제공합니다. 기본적으로 권한 부여된 네트워크에 두 개의 [조직](glossary.html#organization), 각 조직당 하나의 [피어](glossary.html#peer) 및 하나의 [채널](glossary.html#channel)의 구성을 <!--offers you a free trial of 30 days and -->프로비저닝합니다. 네트워크를 작성한 후 네트워크에 조직 및 피어를 스케일링하고 추가할 수 있습니다. <!--Note that it might cause extra cost if you exceed the default resource limits of two organizations and two peers.-->
 {:shortdesc}
 
-**참고**:
-1. {{site.data.keyword.blockchainfull}} Platform 스타터 플랜은 개발 및 테스트 환경이며 프로덕션 워크로드에는 적합하지 않습니다. 프로덕션 환경이 필요한 경우 [엔터프라이즈 플랜 정보](enterprise_plan.html)를 참조하십시오.
-2. 스타터 플랜은 베타 단계에 있으며 {{site.data.keyword.cloud_notm}}의 **미국** 지역에서만 사용 가능합니다.
+**참고**: {{site.data.keyword.blockchainfull}} Platform 스타터 플랜은 개발 및 테스트 환경이며 프로덕션 워크로드에는 적합하지 않습니다. 프로덕션 환경이 필요한 경우 [엔터프라이즈 플랜 정보](enterprise_plan.html)를 참조하십시오.
 
 스타터 플랜을 사용하면 {{site.data.keyword.blockchainfull_notm}} Platform에 대한 기술을 학습하고 개발하며 샘플 애플리케이션을 실행하고 고유 애플리케이션을 테스트하고 다중 조직 시나리오를 시뮬레이션할 수 있습니다.  이 시작하기 튜토리얼에서는 스타터 플랜 네트워크를 작성하고 사용하기 위해 따라야 하는 전제조건 및 단계를 소개합니다.
 
@@ -33,8 +31,8 @@ lastupdated: "2018-05-23"
 
 1. {{site.data.keyword.cloud_notm}} 카탈로그에서 [Blockchain 서비스 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://console.bluemix.net/catalog/services/blockchain)를 찾으십시오.   
     **참고**: {{site.data.keyword.cloud_notm}} 유료 계정으로 로그인해야 합니다. 계정이 없는 경우, **작성을 위해 등록** 단추를 클릭하십시오. 무료 평가판 계정을 작성한 후 {{site.data.keyword.cloud_notm}} 콘솔에서 **관리** > **청구 및 사용량** > **청구**로 이동하고 **신용카드 추가**를 클릭하여 **종량과금제** 유형으로 업그레이드하십시오.
-2. {{site.data.keyword.cloud_notm}}에서 **미국**을 지역으로 선택했는지 확인하십시오.
-3. Cloud Foundry 조직 및 영역을 선택하십시오. 여기서 네트워크를 작성합니다.
+2. 네트워크를 작성할 {{site.data.keyword.cloud_notm}}의 지역을 선택하십시오.
+3. 네트워크를 작성할 Cloud Foundry 조직 및 영역을 선택하십시오.
 4. 가격 책정 플랜 테이블에서 **스타터 멤버십 플랜**을 선택하십시오.
 5. **작성** 단추를 클릭하십시오. 네트워크에 가입하도록 초대되면 팝업 환영 패널을 볼 수 있습니다. 네트워크를 작성하려면 **네트워크 진행**을 선택하고 **계속**을 클릭하십시오. 네트워크에 가입하려면 [네트워크 가입](#joining-a-network)의 5단계를 참조하십시오.
   이제 기본 구성의 스타터 플랜 네트워크를 사용할 준비가 되었습니다. 네트워크는 하나의 순서 지정자("SOLO" 순서 지정 서비스로 알려짐), 두 개의 조직, 하나의 CA 및 각 조직당 하나의 피어와 함께 실행됩니다. 기본 채널도 작성됩니다.
@@ -84,8 +82,7 @@ You can run [chaincode](glossary.html#chaincode) on your peers in the network.  
 다음 단계에 따라 서비스 신임 정보를 검색하십시오.
 1. 서비스 인스턴스 페이지의 왼쪽 네비게이터에서 **서비스 신임 정보**를 클릭하여 "서비스 신임 정보" 화면을 표시하십시오.
 2. "서비스 신임 정보" 화면에서 **새 신임 정보**를 클릭하십시오.
-3. "신임 정보 새로 추가" 화면에서 신임 정보에 이름을 지정하고 **추가**를 클릭하십시오. 새 신임 정보가 테이블에 추가됩니다. "조치" 열 아래의 **신임 정보 보기**를 클릭하여 신임 정보 세부사항을 볼 수 있습니다. 이 신임 정보에는 API에 권한을 부여하는 데 사용할 수 있는 API 키 및 시크릿이 포함됩니다.  
-네트워크의 연결 프로파일을 보려면 신임 정보를 새로 작성할 때 **{"legacy": true}**를 인라인 구성 매개변수로 입력하십시오. 연결 프로파일에는 네트워크 리소스에 대한 API 엔드포인트가 포함되며, 이 API 엔드포인트를 API 및 애플리케이션에서 사용할 수 있습니다.
+3. "새 신임 정보 추가" 화면에서 신임 정보에 이름을 지정하고 "인라인 구성 매개변수 추가" 필드에 **{"type": "service_instance_token"}**을 입력하십시오. **추가**를 클릭하십시오. 새 신임 정보가 테이블에 추가됩니다. "조치" 열 아래의 **신임 정보 보기**를 클릭하여 신임 정보 세부사항을 볼 수 있습니다. 이 신임 정보에는 API에 권한을 부여하는 데 사용할 수 있는 API 키 및 시크릿이 포함됩니다.  
 
 ![네트워크 신임 정보 검색](images/service_credentials.gif "네트워크 신임 정보 검색")
 
@@ -112,7 +109,7 @@ You can run [chaincode](glossary.html#chaincode) on your peers in the network.  
 
 
 ## 네트워크 재설정
-사용자 정의된 구성, 실행 중인 체인코드 또는 배치된 애플리케이션을 정리하려는 경우 네트워크를 초기 기본 구성으로 다시 설정할 수 있습니다. 자세한 정보는 [네트워크 재설정](dashboard.html#reset-network)을 참조하십시오.
+사용자 정의된 구성, 실행 중인 체인코드 또는 배치된 애플리케이션을 정리하려는 경우 네트워크를 초기 기본 구성으로 다시 설정할 수 있습니다.  자세한 정보는 [네트워크 재설정](dashboard.html#reset-network)을 참조하십시오.
 
 
 ## 스타터 플랜에서 엔터프라이즈 플랜으로 마이그레이션
@@ -120,11 +117,15 @@ You can run [chaincode](glossary.html#chaincode) on your peers in the network.  
 
 스타터 플랜 네트워크에 대해 테스트한 `.bna`, 체인코드 및 애플리케이션을 엔터프라이즈 플랜 네트워크에 배치할 수 있습니다.
 
-비즈니스 네트워크 아카이브 파일(`.bna`)이 있는 경우 [엔터프라이즈 플랜에 비즈니스 네트워크 배치](./develop_enterprise.html)에 대한 지시사항을 따르십시오. `.bna` 파일이 없으면 `composer network download` 명령을 사용하여 스타터 플랜 인스턴스에서 검색하십시오. `composer network download` 명령에 대한 자세한 정보는 [Hyperledger Composer 명령행 문서 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://hyperledger.github.io/composer/reference/commands){:new_window}를 참조하십시오.
+비즈니스 네트워크 아카이브 파일(`.bna`)이 있는 경우 [엔터프라이즈 플랜에 비즈니스 네트워크 배치](./develop_enterprise.html)에 대한 지시사항을 따르십시오. `.bna` 파일이 없으면 `composer network download` 명령을 사용하여 스타터 플랜 인스턴스에서 검색하십시오. `composer network download` 명령에 대한 자세한 정보는 [Hyperledger Composer 명령행 문서 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://hyperledger.github.io/composer/latest/reference/commands){:new_window}를 참조하십시오.
 
 `.bna` 파일과 유사한 체인코드가 외부에서 개발되었습니다. 스타터 플랜 네트워크에 대해 테스트하는 체인코드를 엔터프라이즈에 배치하려면 [체인코드 설치, 인스턴스화 및 업데이트](howto/install_instantiate_chaincode.html#installchaincode)의 지시사항을 따르십시오.
 
-[샘플 애플리케이션 배치](howto/prebuilt_samples.html)에서 볼 수 있는 것처럼 스타터 플랜에서는 도구 체인을 사용하여 샘플 애플리케이션을 네트워크에 쉽게 통합할 수 있습니다. 또한 이 설정에서는 복제(fork)된 애플리케이션 저장소를 변경할 때마다 샘플 애플리케이션을 자동으로 업데이트하여 지속적 통합을 허용합니다. 이 애플리케이션을 엔터프라이즈 플랜 네트워크에 배치하려는 경우, 새 저장소에 복제(fork)된 애플리케이션 저장소를 복사한 다음 [샘플 애플리케이션 수동 배치](howto/prebuilt_samples.html#deploy_sample_applications_manually)의 지시사항을 따를 수 있습니다.
+<!--
+As you can see in [Deploying sample applications](howto/prebuilt_samples.html), Starter Plan makes it easy to get a sample application integrated with your network by using Toolchain. This setup also allows for continuous integration by automatically updating your sample application whenever your forked application repo is changed. If you want to deploy this application into an Enterprise Plan network, you can copy your forked application repo into a new repo and then follow the instructions in [Deploying sample applications manually](howto/prebuilt_samples.html#deploy_sample_applications_manually).
+-->
+
+스타터 플랜 네트워크에 샘플 애플리케이션을 배치하고 이 애플리케이션을 엔터프라이즈 플랜 네트워크에 배치하려는 경우, 새 저장소에 분기(fork)된 애플리케이션 저장소를 복사한 다음 [샘플 애플리케이션 수동 배치](howto/prebuilt_samples.html#deploy_sample_applications_manually)의 지시사항을 따를 수 있습니다.
 
 
 ## 네트워크 삭제 또는 나가기

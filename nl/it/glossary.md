@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-05-15"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -29,13 +29,13 @@ Un set ordinato di transazioni, che è crittograficamente collegato al precedent
 Una definizione di una rete blockchain che include il modello di dati, la logica di transazione e le regole di controllo dell'accesso per la tua soluzione blockchain. Le BND (Business Network Definition) vengono create utilizzando [Hyperledger Composer](#hyperledger-composer). Le BND (Business Network Definition) sono assemblate in file **.bna** (business network archive) distribuibili.
 
 ## CA
-Acronimo di Certificate Authority, ossia Autorità di certificazione. Una risorsa di rete blockchain che emette i certificati per tutti i membri partecipanti. Questi certificati rappresentano l'identità di un membro. Tutte le entità nella rete (peer, ordinatori, client ecc.) devono avere un'identità per comunicare, autenticare e, alla fine, interagire con il libro mastro. Queste identità sono richieste per qualsiasi partecipazione diretta nella rete blockchain. Puoi creare una scheda di rete di business per la CA. La [scheda CA](develop_starter.html#developing-business-networks-with-starter-plan) può quindi essere importata e verrà utilizzata per scambiare il segreto di gestione (admin secret) per i certificati validi dall'Autorità di certificazione di piano Starter.
+Acronimo di Certificate Authority, ossia Autorità di certificazione. Una risorsa di rete blockchain che emette i certificati per tutti i membri partecipanti. Questi certificati rappresentano l'identità di un membro. Tutte le entità nella rete (peer, ordinatori, client ecc.) devono avere un'identità per comunicare, autenticare e, alla fine, interagire con il libro mastro. Queste identità sono richieste per qualsiasi partecipazione diretta nella rete blockchain. Puoi creare una scheda di rete di business per la CA. La [scheda CA](develop_starter.html#developing-business-networks-with-starter-plan) può quindi essere importata e verrà utilizzata per scambiare il segreto di amministrazione (admin secret) per i certificati validi dall'Autorità di certificazione di piano Starter.
 
 ## Catena
 La catena del libro mastro è un log di transazioni strutturato come blocchi di transazioni collegati da hash. I peer ricevono i blocchi di transazioni dal servizio ordini, contrassegnano le transazioni del blocco come valide o non valide, in base alle politiche di approvazione e alle violazioni della concorrenza, e accodano il blocco alla catena hash sul file system del peer.
 
 ## Chaincode
-Noto anche come "smart contract", il chaincode è un elemento software che contiene una serie di funzioni per eseguire query o aggiornamenti del libro mastro. 
+Noto anche come "smart contract", il chaincode è un elemento software che contiene una serie di funzioni per eseguire query o aggiornamenti del libro mastro.
 
 ## Canale
 Consiste in un sottoinsieme di membri della rete che vogliono eseguire transazioni in privato. I canali forniscono l'isolamento e la confidenzialità dei dati consentendo ai membri di un canale di stabilire delle specifiche regole e un libro mastro separato a cui possono accedere solo i membri del canale. I peer, che sono i nodi che fungono da endpoint delle transazioni per le organizzazioni, vengono uniti ai canali.
@@ -49,8 +49,11 @@ Il profilo di connessione è visibile nella schermata "Panoramica" del monitorag
 ## Consenso
 Un processo collaborativo per mantenere le transazioni del libro mastro sincronizzate nella rete. Il consenso garantisce che i libri mastro vengano aggiornati solo quando gli appropriati partecipanti approvano le transazioni e che i libri mastro vengano aggiornati con le stesse transazioni nello stesso ordine. Ci sono molti modi algoritmici differenti per raggiungere il consenso.
 
+## CouchDB
+Un archivio documenti utilizzato per il database libro mastro nelle reti piano Starter. CouchDB è anche un'opzione per le reti piano Enterprise, insieme a LevelDB. CouchDB supporta l'utilizzo di indici e consente di emettere query avanzate sui dati sul tuo peer.
+
 ## Stato corrente
-Lo stato corrente del libro mastro rappresenta gli ultimi valori di tutte le chiavi che sono mai state incluse nel suo log di transazione a catena. Poiché lo stato corrente rappresenta tutte le ultime chiavi conosciute del canale, gli viene a volte fatto riferimento come a stato globale. Il chaincode esegue le proposte di transazione nei dati dello stato corrente. Lo stato corrente viene modificato ogni volta che cambia il valore di una chiave o viene aggiunta una nuova chiave. Lo stato corrente è fondamentale per un flusso di transazione perché l'ultima coppia chiave-valore deve essere nota prima di poter essere modificata. I peer eseguono il commit degli ultimi valori allo stato corrente del libro mastro di ogni transazione valida in un blocco.
+Lo stato corrente del libro mastro rappresenta gli ultimi valori di tutte le chiavi che sono mai state incluse nel suo log di transazione a catena. Poiché lo stato corrente rappresenta tutte le ultime chiavi conosciute del canale, gli viene a volte fatto riferimento come a stato globale. Il chaincode esegue le proposte di transazione nei dati dello stato corrente. Lo stato corrente viene modificato ogni volta che cambia il valore di una chiave o viene aggiunta una nuova chiave. Lo stato corrente è fondamentale per un flusso di transazione perché l'ultima coppia chiave-valore deve essere nota prima di poter essere modificata. I peer eseguono il commit degli ultimi valori allo stato corrente del libro mastro di ogni transazione valida in un blocco. Lo stato corrente viene archiviato in un database libro mastro dei peer.
 
 ## Adesione dinamica
 Un membro può essere aggiunto dinamicamente alla rete da un utente con il privilegio di **registrar** (conservatore del registro). Ai membri vengono anche assegnati ruoli e attributi che controllano il loro accesso e la loro autorizzazione sulla rete. Né i ruoli né gli attributi possono essere però assegnati dinamicamente. Hyperledger Fabric supporta l'aggiunta o la rimozione di membri, peer e nodi di servizio ordini, senza compromettere il funzionamento della rete complessiva. L'adesione dinamica è critica quando le relazioni di business vengono regolate ed è necessario, per vari motivi, aggiungere o rimuovere entità.
@@ -80,10 +83,16 @@ Il processo di inserire un chaincode nel file system di un peer. Devi installare
 Il processo di avviare e istanziare un contenitore chaincode su uno specifico canale. Dopo che il chaincode è stato installato sui peer e ogni peer ha aderito al canale, il chaincode deve essere istanziato sul canale. L'istanziazione esegue tutta l'inizializzazione necessario del chaincode, che include l'impostazione di coppie chiave-valore che formano lo stato globale iniziale di un chaincode. Dopo l'istanziazione i peer che hanno il chaincode installato possono accettare richiami del chaincode.
 
 ## Kafka
-L'implementazione di un plugin di consenso per Hyperledger Fabric che dà come risultato un cluster di nodi del servizio ordini nella rete blockchain. Un'implementazione kafka è concepita per una rete di produzione. 
+L'implementazione di un plugin di consenso per Hyperledger Fabric che dà come risultato un cluster di nodi del servizio ordini nella rete blockchain. Un'implementazione kafka è concepita per una rete di produzione.
 
 ## Libro mastro
 Formato da una vera e propria "catena di blocchi" che memorizzano i record di transazioni immutabili e in sequenza, e un database dello stato per conservare lo stato corrente. C'è un libro mastro per canale e gli aggiornamenti ad esso vengono gestiti dal processo di consenso in base alle politiche di uno specifico canale.
+
+## Database libro mastro
+I dati dello stato corrente vengono archiviati in un database sui peer per letture e query efficienti dal chaincode. Le reti piano Starter utilizzano CouchDB come database libro mastro. Le reti piano Enterprise possono utilizzare LevelDB o CouchDB.
+
+## LevelDB
+Un archivio chiave-valore che è un'opzione per il database libro mastro per le reti piano Enterprise, insieme a CouchDB. LevelDB archivia lo stato corrente come coppie chiave-valore e non supporta l'uso di indici o query avanzate.
 
 ## Membro
 Noti anche come "organizzazioni", i membri in una rete blockchain, analogamente ai membri di qualsiasi gruppo, formano la struttura della rete. Un membro può essere grande quanto una società multinazionale o piccolo come una singola persona. I membri sono registrati nella rete con un certificato che concede loro le autorizzazioni a utilizzare la rete come un fornitore di servizi (ad esempio l'emissione di certificati e la convalida/ordinazione di transazioni) oppure come un consumatore. Nel primo caso fornisce servizi blockchain di base che includono la convalida di transazioni, gli ordini di transazioni e i servizi di gestione dei certificati. I membri consumatore utilizzano la rete per richiamare le transazioni sul libro mastro distribuito. I membri possono avere più peer.
@@ -116,7 +125,7 @@ Ogni rete blockchain richiede un servizio ordini. Il servizio ordini raccoglie l
 Qualsiasi organizzazione, individuo, applicazione o dispositivo che interagisce con la rete blockchain. Nell'ambito del termine 'partecipante' rientrano due raggruppamenti distinti, ossia membri e utenti.
 
 ## Peer
-Una risorsa di rete blockchain che fornisce i servizi per eseguire e convalidare le transazioni e mantenere i libri mastro. Il peer esegue la chaincode ed è il detentore della cronologia delle transazioni e dello stato corrente degli asset sui canali della rete, ossia il libro mastro. Appartengono e sono gestiti dalle organizzazioni e vengono uniti ai canali.
+Una risorsa di rete blockchain che fornisce i servizi per eseguire e convalidare le transazioni e mantenere i libri mastro. Il peer esegue il chaincode ed è il detentore della cronologia delle transazioni e dello stato corrente degli asset sui canali della rete, ossia il libro mastro. Appartengono e sono gestiti dalle organizzazioni e vengono uniti ai canali.
 
 ## Credenziali del servizio
 Le credenziali del servizio sono in formato JSON e contengono le informazioni sull'endpoint API e gli ID registrazione(enrollID)/segreti per le tue risorse di rete, ossia i peer, i nodi di ordine e le CA. La tua applicazione interagisce con le risorse di rete tramite questi endpoint API.

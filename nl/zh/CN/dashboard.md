@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-05-15"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -159,7 +159,7 @@ lastupdated: "2018-05-15"
 ## API
 {: #apis}
 
-为了帮助进行应用程序开发，{{site.data.keyword.blockchainfull_notm}} Platform 公开了 API，您可以在 Swagger UI 中针对自己的网络来测试这些 API。
+{{site.data.keyword.blockchainfull_notm}} Platform 公开了使用 Swagger 生成的若干 REST API，可用于管理网络中的节点、通道、同级和成员。应用程序可以使用这些 API 来控制重要的网络资源，而无需使用“网络监视器”。
 
 **图 9** 显示“API”屏幕：
 
@@ -198,14 +198,16 @@ lastupdated: "2018-05-15"
 ## 试用样本
 {: #samples}
 
-样本应用程序可帮助您更好地了解区块链网络和应用程序开发。通过入门套餐，可以在“网络监视器”中部署和启动样本应用程序。
+样本应用程序可帮助您更好地了解区块链网络和应用程序开发。<!--Starter Plan enables you to deploy and launch sample applications in the Network Monitor. -->请访问**在 GitHub 上查看**链接，以了解如何使用样本并将其部署到 {{site.data.keyword.blockchainfull_notm}} Platform。有关如何开发和部署样本的更多信息，请参阅[部署样本应用程序](howto/prebuilt_samples.html)。
 
 **图 12** 显示“试用样本”屏幕：
 
 ![试用样本](images/sample_overview_starter.png "试用样本")
 *图 12. 样本*
 
-样本部署利用 [DevOps Toolchain 服务 ![外部链接图标](images/external_link.svg "外部链接图标")](https://console.bluemix.net/devops/toolchains) 来自动执行源代码控制、交付管道和链代码启用过程。选择样本应用程序，然后单击**通过 Toolchain 部署**。有关更多信息，请参阅[部署样本应用程序](howto/prebuilt_samples.html)。
+<!--
+The sample deployment leverages the [DevOps Toolchain service ![External link icon](images/external_link.svg "External link icon")](https://console.bluemix.net/devops/toolchains) to automate your process of source control, delivery pipeline, and chaincode enablement. Choose a sample application, and click the **Deploy via Toolchain**. For more information, see [Deploying sample applications](howto/prebuilt_samples.html).
+-->
 
 
 ## 获取帮助
