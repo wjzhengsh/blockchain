@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-07-17"
 
 ---
 
@@ -18,11 +18,7 @@ lastupdated: "2018-06-14"
 {{site.data.keyword.blockchainfull}} Platform Starter Plan is an entry level option that enables organizations to simulate multi-organization blockchain networks, quickly develop applications, and work with sample smart contracts and business networks. It also boasts the same UI experience as other membership options, helping to eliminate any learning curve. Starter Plan networks are built on Hyperledger Fabric V1.1.
 {:shortdesc}
 
-**Notes**:
-1. {{site.data.keyword.blockchainfull_notm}} Platform Starter Plan is a development and testing environment, and is not suitable for production workloads. If you need a production environment, see [About Enterprise Plan](enterprise_plan.html). You might check [Starter Plan considerations](#considerations) before you use Starter Plan.
-2. Starter Plan moves from Beta to GA on June 14, 2018. If you have Beta networks, you might read the [migration considerations](#beta-to-ga).
-
-Sign up for your [{{site.data.keyword.blockchainfull_notm}} membership ![External link icon](images/external_link.svg "External link icon")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps) and try the Starter Plan with [trial credits](howto/pricing.html#starter-plan-pricing) now! <!--Note that you must choose **US South** as the region in {{site.data.keyword.cloud_notm}} to create blockchain networks with Starter Plan.-->
+**Note**: {{site.data.keyword.blockchainfull_notm}} Platform Starter Plan is a development and testing environment, and is not suitable for production workloads. If you need a production environment, see [About Enterprise Plan](enterprise_plan.html). You might check [Starter Plan considerations](#considerations) before you use Starter Plan.
 
 ## What Stater Plan offers
 
@@ -31,7 +27,7 @@ Sign up for your [{{site.data.keyword.blockchainfull_notm}} membership ![Externa
 - **_Cost efficiency_**  
     The Starter Plan membership option provides many of the same blockchain capabilities as Enterprise Plan membership options, but at a lower cost. During a trial period of Starter Plan, you can provision a blockchain network with basic network resources for free.
 - **_Multi-organization network simulation_**  
-    You can use Starter Plan to simulate building a network with multiple organizations. You do not need to actually invite other organizations to your network, but can act as other organizations yourself. This mechanism enables you to learn how a new organization can join the network, how multiple organizations work together in the network, and so on. You can switch between your organizations from the Network Monitor to view and manage the network from different organizations' view.
+    You can use Starter Plan to simulate building a network with multiple organizations. You do not need to actually invite other organizations to your network, but can act as other organizations yourself. This mechanism enables you to learn how a new organization can join the network, how multiple organizations work together in the network, and so on. You can switch between your organizations from the Network Monitor to view and manage the network from different organizations' view.  
     **Note**: It might cause extra cost if you add more resources than the free trial basic resources of two organizations and two peers.
 <!-- - **_Easy to deploy sample applications_**  
     Starter Plan uses the Toolchain service in {{site.data.keyword.cloud_notm}} to deploy samples with simple clicks. After you deploy and launch a sample, the chaincode and applications automatically run for your blockchain network. For more information about sample applications, see [Deploying sample applications](howto/prebuilt_samples.html). -->
@@ -63,21 +59,18 @@ Starter Plan is an entry point to {{site.data.keyword.blockchainfull_notm}} Plat
     - Ordering service uses only [SOLO](glossary.html#SOLO) [consensus](glossary.html#consensus). A Starter Plan network consists of only one [orderer](glossary.html#orderer) that performs consensus for all peers.
     - [Hardware Security Module (HSM)](glossary.html#hsm) is not available to safeguard and manage digital keys for strong authentication and crypto processing.
 - **Network resource limitation**  
-    Starter Plan assigns 1 CPU and 2 Gi RAM for each peer, and 20 Gi storage for each {{site.data.keyword.cloud_notm}} service instance. 
-- **Inactive network deletion**  
-    After you create a Starter Plan network, if you don't visit the network or issue any transaction on it for 15 days, {{site.data.keyword.blockchainfull_notm}} Platform will delete the network.
-    - If you don't need the network any more, you don't need to take any action and your network will be deleted automatically.
-    - If you still need to use the network, you can keep it active by issuing transactions on it. You can find your Starter Plan  network in your [{{site.data.keyword.cloud_notm}} Dashboard ![External link icon](images/external_link.svg "External link icon")](https://console.bluemix.net/dashboard/apps/){:new_window}. If you don't have regular trasanctions to issue, follow the [instructions](howto/prebuilt_samples.html#deploying-sample-applications-in-starter-plan) to try the sample applications.
-- **Maintenance and upgrade**
+    Starter Plan assigns 1 CPU and 4 Gi RAM for each peer, and 20 Gi storage for each {{site.data.keyword.cloud_notm}} service instance, including peers. Chaincode containers and ledger blocks are the most resource intensive network components. Users that have many peers on their network, generate a lot of blocks, or use large chaincode files may experience the effect of resource limitations on performance.
+- **Maintenance and upgrade**  
     Starter Plan maintenance and network updates are performed on a fixed schedule. During the maintenance period, you cannot provision new networks and might notice brief periods of network interruption.
-- **Data retention**
-    Starter Plan does not guarantee data retention with release upgrades, including moving from Beta to GA.
-- **Migration considerations**
-    - Migrating the data from a Starter Plan network to other membership plans is not currently supported. However, it is possible to migrate `.bna` files, chaincode, and applications that were tested on Starter Plan. For more information, see [Migrating from Starter Plan to Enterprise Plan](get_start_starter_plan.html#migrate).
+- **Data retention**  
+    Starter Plan does not guarantee data retention with release upgrades.
+- **Migration considerations**  
+    Migrating the data from a Starter Plan network to other membership plans is not currently supported. However, it is possible to migrate `.bna` files, chaincode, and applications that were tested on Starter Plan. For more information, see [Migrating from Starter Plan to Enterprise Plan](get_start_starter_plan.html#migrate).
 
 <!--    - Starter Plan is built on Hyperledger Fabric V1.1.  If your chaincode is at Fabric V1.0 level, you need to upgrade your chaincode before you use it in Starter Plan. For more information, see [Updating chaincode for Hyperledger Fabric 1.1](knownissues.html/update-chaincode-fabric11).
 -->
 
+<!--
 ## Migrating from Beta to GA
 {: #beta-to-ga}
 
@@ -87,3 +80,4 @@ Any blockchain networks that are created with Starter Plan Beta remains **free**
 - If you have running chaincode in Beta networks, install and instantiate the chaincode in GA networks. For more information, see [Installing, instantiating, and updating a chaincode](howto/install_instantiate_chaincode.html).
 - If you deployed a business network on Beta networks, deploy the business network with the `.bna` file on GA networks. For more information, see [Deploying a business network on Starter Plan](develop_starter.html).
 - If you ran self-developed applications against Beta networks, update the API endpoints in your applications to point to GA network nodes. For more information, see [Adding network API endpoints to your application](v10_application.html#adding-network-api-endpoints-to-your-application).
+-->
