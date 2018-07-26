@@ -74,7 +74,7 @@ You might recreate the configuration of organizations (members), channels, and p
 ### Migrate chaincode
 {: #migrate_starter_to_enterprise_cc}
 
-Chaincode is developed externally in your local environment and is invoked by your client applications. To install and instantiate chaincode, which was tested in your Starter Plan network, onto selected peers on your Enterprise Plan network, follow the instructions in [Installing, instantiating, and updating a chaincode](howto/install_instantiate_chaincode.html#installchaincode).
+Chaincode is developed externally in your local environment and is invoked by your client applications. To install and instantiate chaincode, which was tested in your Starter Plan network, onto selected peers on your Enterprise Plan network, follow the instructions in [Installing, instantiating, and updating a chaincode](./install_instantiate_chaincode.html#installchaincode).
 
 ### Migrate a `.bna` file
 {: #migrate_starter_to_enterprise_bna}
