@@ -46,6 +46,7 @@ IBM Blockchain Platform
 		howto/create_join_network_with_apis.md
 
 	v10_application.md
+	howto/migrate_sp_ep.md
 	{: .navgroup-end}
 
 	{: .navgroup id="reference"}

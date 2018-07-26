@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-07-17"
+lastupdated: "2018-07-26"
 
 ---
 
@@ -65,7 +65,8 @@ Starter Plan is an entry point to {{site.data.keyword.blockchainfull_notm}} Plat
 - **Data retention**  
     Starter Plan does not guarantee data retention with release upgrades.
 - **Migration considerations**  
-    Migrating the data from a Starter Plan network to other membership plans is not currently supported. However, it is possible to migrate `.bna` files, chaincode, and applications that were tested on Starter Plan. For more information, see [Migrating from Starter Plan to Enterprise Plan](get_start_starter_plan.html#migrate).
+    Migrating the data from a Starter Plan network to other membership plans is not currently supported. However, it is possible to migrate `.bna` files, chaincode, and applications that were tested on Starter Plan. For more information, see [Migrating from Starter Plan to Enterprise Plan](howto/migrate_sp_ep.html).
+
 
 <!--    - Starter Plan is built on Hyperledger Fabric V1.1.  If your chaincode is at Fabric V1.0 level, you need to upgrade your chaincode before you use it in Starter Plan. For more information, see [Updating chaincode for Hyperledger Fabric 1.1](knownissues.html/update-chaincode-fabric11).
 -->
