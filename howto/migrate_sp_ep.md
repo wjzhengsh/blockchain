@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-07-26"
+lastupdated: "2018-07-27"
 
 ---
 
@@ -50,15 +50,25 @@ Before you migrate from your Starter Plan network to an Enterprise Plan network,
 There are a number of tasks required for preparing to move to an Enterprise Plan network from a Starter network. You can find detailed instructions in later sections, but here is a summary:
 
 - Create an Enterprise Plan network.
+- If you developed a `.bna` using Hyperledger Composer, locate and migrate the `.bna` file.
 - Recreate the desired configuration of organizations and peers from your test Starter Plan network.
 - Identify which chaincode, written in Go or Node, that will run in the Enterprise Plan network.
-- If you developed a `.bna` using Hyperledger Composer, locate and migrate it.
 - Update client applications with new API endpoint information for the Enterprise Plan network.
 
 ### Create an Enterprise Plan network
 {: #migrate_starter_to_enterprise_create_network}
 
 You need to create an Enterprise Plan network before you migrate. For more information, see [Creating an Enterprise Plan network](../get_start.html#creating-a-network).
+
+### Migrate a `.bna` file
+{: #migrate_starter_to_enterprise_bna}
+
+**Note:** You can skip this step if you don't use a `.bna` file in your Starter Plan network.
+
+If you used Hyperleger Composer to define a business network and deployed a `.bna` file to your Starter Plan network, you can deploy the same `.bna` file to your Enterprise Plan network.
+
+- If you have your business network archive file (`.bna`), follow the instructions in [Deploying a business network on Enterprise Plan](../develop_enterprise.html).
+- If you do not have your `.bna` file, use the `composer network download` command to retrieve it from the Starter Plan instance. For more information about the `composer network download` command, see [Hyperledger Composer command line documentation ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger.github.io/composer/latest/reference/commands){:new_window}. Then, you can follow the instructions in [Deploying a business network on Enterprise Plan](../develop_enterprise.html).
 
 ### Recreate network configuration
 {: #migrate_starter_to_enterprise_config_network}
@@ -75,16 +85,6 @@ You might recreate the configuration of organizations (members), channels, and p
 {: #migrate_starter_to_enterprise_cc}
 
 Chaincode is developed externally in your local environment and is invoked by your client applications. To install and instantiate chaincode, which was tested in your Starter Plan network, onto selected peers on your Enterprise Plan network, follow the instructions in [Installing, instantiating, and updating a chaincode](./install_instantiate_chaincode.html#installchaincode).
-
-### Migrate a `.bna` file
-{: #migrate_starter_to_enterprise_bna}
-
-**Note:** You can skip this step if you don't use a `.bna` file in your Starter Plan network.
-
-If you used Hyperleger Composer to define a business network and deployed a `.bna` file to your Starter Plan network, you can deploy the same `.bna` file to your Enterprise Plan network.
-
-- If you have your business network archive file (`.bna`), follow the instructions in [Deploying a business network on Enterprise Plan](../develop_enterprise.html).
-- If you do not have your `.bna` file, use the `composer network download` command to retrieve it from the Starter Plan instance. For more information about the `composer network download` command, see [Hyperledger Composer command line documentation ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger.github.io/composer/latest/reference/commands){:new_window}. Then, you can follow the instructions in [Deploying a business network on Enterprise Plan](../develop_enterprise.html).
 
 ### Update client applications
 {: #migrate_starter_to_enterprise_app}
