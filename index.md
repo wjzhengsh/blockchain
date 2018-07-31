@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-07-31"
 
 ---
 
@@ -27,22 +27,24 @@ lastupdated: "2018-06-14"
 
 **Note**: The table is not meant to represent a linear progression. Tasks such as development and network management will occur repeatedly as applications and membership evolve.
 
-## {{site.data.keyword.IBM_notm}} Membership Offerings
+## {{site.data.keyword.blockchainfull_notm}} Membership Offerings
 
 {{site.data.keyword.blockchainfull_notm}} Platform provides different membership plans to help all types of users get started on their blockchain journey and move their applications into production.
 
 |       | [Starter Plan](starter_plan.html)      | [Enterprise Plan](enterprise_plan.html)  | Enterprise Plus Plan | Self Managed Plan
 | ------------------------- |--------------------------|-----|-----|------|
 | **What's Included** | **Basic service levels, development and testing environment** | **Advanced service levels, enterprise production ready** | **Dedicated compute for performance and isolation, enterprise production ready** | Software stack to install on your own infrastructure, connect to a network hosted on this cloud service |
-| **Billing Policy** | **[Trial credits](howto/pricing.html#starter-plan-pricing) followed by monthly charge** | **Monthly subscription** | **Monthly subscription** | Monthly subscription |
+| **Billing Policy** | **Monthly subscription with [available cloud credits](howto/pricing.html#starter-plan-pricing)** | **Monthly subscription** | **Monthly subscription** | Monthly subscription |
 | **Availability** | **Available now** | **Available now** | **Upon purchase** | Coming soon |
 
 **Caution:** Do not use **Starter Plan** for production. It is a development and testing environment, and is not suitable for production workloads.
 
 {{site.data.keyword.blockchainfull_notm}} offerings are built on the [Hyperledger Fabric](reference/v10_fabric.html) V1.1 code base that leverages a modular architecture to achieve enterprise levels of security, data integrity, scalability, and performance to meet your business needs.
-- **The IBM Blockchain Starter Plan** is an environment to learn or get started developing blockchain networks.
+- **Starter Plan** is an environment to learn or get started developing blockchain networks.
 - **Enterprise Plan** is a production environment that offers high levels of security and support.
 - **Enterprise Plus Plan** offers a dedicated production environment for additional performance and isolated compute and storage resources to protect critical data.
+
+{{site.data.keyword.blockchainfull_notm}} Platform is a platform service on {{site.data.keyword.cloud_notm}} and all membership offerings follow the [{{site.data.keyword.cloud_notm}} Services terms ![External link icon](images/external_link.svg "External link icon")](https://www-03.ibm.com/software/sla/sladb.nsf/sla/bm-6605-13 "{{site.data.keyword.cloud_notm}} Services terms") on service level agreements (SLAs). Note that both Starter Plan and Enterprise Plan networks are provisioned across **multiple environments** in geographically separated data-centers.
 
 Sign up now for your [{{site.data.keyword.blockchainfull_notm}} membership ![External link icon](images/external_link.svg "External link icon")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps)!
 
@@ -60,7 +62,7 @@ As a developer, you can quickly and easily align business requirements and accel
   Leverage [{{site.data.keyword.blockchainfull_notm}} Platform: Develop](./develop.html)<!--, which is powered by an open source development tool--> to learn key blockchain concepts, create network definitions, and leverage reusable industry models and smart contract libraries.  
   After you developed your business network, you can deploy it to a live network that runs on the IBM Blockchain Platform. For more information, see [Deploying business networks with Starter Plan](./develop_starter.html) and [Deploying business networks with Enterprise Plan](./develop_enterprise.html).
 * **Install locally**  
-  Leverage IBM certified images of Hyperledger Fabric and Composer, which are open source framework and tool for building a business network, to develop and test directly on your laptop. For more information, see [Building Your First Network](http://hyperledger-fabric.readthedocs.io/en/latest/build_network.html).
+  Leverage IBM certified images of Hyperledger Fabric and Composer, which are open source framework and tool for building a business network, to develop and test directly on your laptop. For more information, see [Building Your First Network](http://hyperledger-fabric.readthedocs.io/en/release-1.1/build_network.html).
 * **Collaborate in a cloud environment**  
   Use ready-to-use live networks with Starter Plan and Enterprise Plan options to develop and share your code with others. For more information, see [About Starter Plan](starter_plan.html) and [About Enterprise Plan](enterprise_plan.html).
 
@@ -168,4 +170,4 @@ Before continue, let's take a look at a simple configuration within the The {{si
 {{site.data.keyword.IBM_notm}} offers support on {{site.data.keyword.IBM_notm}} implemented {{site.data.keyword.blockchain}} solutions. For more information about {{site.data.keyword.blockchainfull_notm}} Support, see [Getting support](ibmblockchain_support.html).
 
 For more details about all Hyperledger Fabric features and functionality,
-see [Hyperledger Fabric documentation ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/latest/).
+see [Hyperledger Fabric documentation ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/).

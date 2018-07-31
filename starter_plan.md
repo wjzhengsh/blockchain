@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-07-26"
+lastupdated: "2018-07-31"
 
 ---
 
@@ -18,14 +18,16 @@ lastupdated: "2018-07-26"
 {{site.data.keyword.blockchainfull}} Platform Starter Plan is an entry level option that enables organizations to simulate multi-organization blockchain networks, quickly develop applications, and work with sample smart contracts and business networks. It also boasts the same UI experience as other membership options, helping to eliminate any learning curve. Starter Plan networks are built on Hyperledger Fabric V1.1.
 {:shortdesc}
 
-**Note**: {{site.data.keyword.blockchainfull_notm}} Platform Starter Plan is a development and testing environment, and is not suitable for production workloads. If you need a production environment, see [About Enterprise Plan](enterprise_plan.html). You might check [Starter Plan considerations](#considerations) before you use Starter Plan.
+**Notes:**
+- {{site.data.keyword.blockchainfull_notm}} Platform Starter Plan is a development and testing environment, and is not suitable for production workloads. If you need a production environment, see [About Enterprise Plan](enterprise_plan.html). You might check [Starter Plan considerations](#considerations) before you use Starter Plan.  
+- {{site.data.keyword.blockchainfull_notm}} Platform is a platform service on {{site.data.keyword.cloud_notm}} and all membership offerings follow the [{{site.data.keyword.cloud_notm}} Services terms ![External link icon](images/external_link.svg "External link icon")](https://www-03.ibm.com/software/sla/sladb.nsf/sla/bm-6605-13 "{{site.data.keyword.cloud_notm}} Services terms") on service level agreements (SLAs). Starter Plan networks are provisioned across **multiple environments** in geographically separated data-centers.
 
 ## What Stater Plan offers
 
 - **_One-click-ready network_**  
     Starter Plan provisions you a live blockchain network with a single click. Each network comes with an ordering service, CA's, two organizations (with one peer per organization), and a default channel on which to transact and deploy chaincode. {{site.data.keyword.blockchainfull_notm}} Platform handles the creation and configuration of this network (you'll be able to update it after it goes live), letting you focus on development. Starter Plan networks are built on Hyperledger Fabric V1.1, and use CouchDB as the ledger database. <!--The free trial provides you up to two organizations and two peers.-->
 - **_Cost efficiency_**  
-    The Starter Plan membership option provides many of the same blockchain capabilities as Enterprise Plan membership options, but at a lower cost. During a trial period of Starter Plan, you can provision a blockchain network with basic network resources for free.
+    The Starter Plan membership option provides many of the same blockchain capabilities as Enterprise Plan membership options, but at a lower cost. {{site.data.keyword.blockchainfull}} Platform offers $500 of cloud credits to new users of Starter Plan. These credits allow you to provision a blockchain network with basic network resources for free for one month. See [Starter Plan considerations](#starter-plan-considerations) for more details.
 - **_Multi-organization network simulation_**  
     You can use Starter Plan to simulate building a network with multiple organizations. You do not need to actually invite other organizations to your network, but can act as other organizations yourself. This mechanism enables you to learn how a new organization can join the network, how multiple organizations work together in the network, and so on. You can switch between your organizations from the Network Monitor to view and manage the network from different organizations' view.  
     **Note**: It might cause extra cost if you add more resources than the free trial basic resources of two organizations and two peers.
@@ -34,7 +36,7 @@ lastupdated: "2018-07-26"
 - **_{{site.data.keyword.blockchainfull_notm}} Platform: Develop application Integration_**  
     Starter Plan enables you to deploy business networks that you have developed on [{{site.data.keyword.blockchainfull_notm}} Platform: Develop](https://blockchaindevelop.mybluemix.net/login). For more information, see [Importing IBP: Develop applications](link).
 
-## Target audiences
+## Is Starter Plan suitable for you
 
 If you fit into one of the following situations, the Starter Plan is suitable for you to start your blockchain journey.
 - **_Learning {{site.data.keyword.blockchainfull_notm}} Platform._**  
@@ -54,6 +56,12 @@ Starter Plan is an entry point to {{site.data.keyword.blockchainfull_notm}} Plat
 
 - **{{site.data.keyword.cloud_notm}} account requirement**  	
     You must have a paid {{site.data.keyword.cloud_notm}} account, for example, a **Pay-As-You-Go** type. All membership plans that {{site.data.keyword.blockchainfull_notm}} Platform offers require an  {{site.data.keyword.cloud_notm}} paid account. To upgrade your account to a Pay-As-You-Go type, go to **Manage** > **Billing and Usage** > **Billing** in the {{site.data.keyword.cloud_notm}} console, and click **Add Credit Card**.  
+- **{{site.data.keyword.blockchainfull}} Platform Cloud Credits**
+    {{site.data.keyword.blockchainfull}} Platform offers $500 of cloud credits to new users of Starter Plan. These credits help users get started by covering the cost a default network configuration for one month.
+    - New users have to sign up for cloud credits. They are not applied automatically. Please [sign up ![External link icon](images/external_link.svg "External link icon")](https://www.ibm.com/account/reg/us-en/signup?formid=urx-32798 "sign up") to claim the credits if you have not already. Wait 24 hours to make sure that the credits are in your [account ![External link icon](images/external_link.svg "External link icon")](https://console.bluemix.net/docs/billing-usage/viewing_usage.html#credits "account") before you access Starter Plan. Otherwise, you might get charged before the credits apply.
+    - The cloud credits apply to all of {{site.data.keyword.cloud_notm}} services. They can be consumed by products other than the {{site.data.keyword.blockchainfull}} Platform that you use on {{site.data.keyword.cloud_notm}}.
+    - The offer provides lifetime credits. You can keep your credits as long as you maintain your IBM Cloud account. You do not have to use them in the first month.
+    Learn more about using trail credits using the [pricing guide](howto/pricing.html#starter-plan-pricing).
 - **Differences from Enterprise Plan**
     - [CA](glossary.html#ca) and [ordering service](glossary.html#orderer) are not fault tolerant because each organization has only one CA and a network has only one [orderer](glossary.html#orderer).
     - Ordering service uses only [SOLO](glossary.html#SOLO) [consensus](glossary.html#consensus). A Starter Plan network consists of only one [orderer](glossary.html#orderer) that performs consensus for all peers.
@@ -66,7 +74,6 @@ Starter Plan is an entry point to {{site.data.keyword.blockchainfull_notm}} Plat
     Starter Plan does not guarantee data retention with release upgrades.
 - **Migration considerations**  
     Migrating the data from a Starter Plan network to other membership plans is not currently supported. However, it is possible to migrate `.bna` files, chaincode, and applications that were tested on Starter Plan. For more information, see [Migrating from Starter Plan to Enterprise Plan](howto/migrate_sp_ep.html).
-
 
 <!--    - Starter Plan is built on Hyperledger Fabric V1.1.  If your chaincode is at Fabric V1.0 level, you need to upgrade your chaincode before you use it in Starter Plan. For more information, see [Updating chaincode for Hyperledger Fabric 1.1](knownissues.html/update-chaincode-fabric11).
 -->
