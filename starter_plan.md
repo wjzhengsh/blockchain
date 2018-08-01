@@ -56,10 +56,10 @@ Starter Plan is an entry point to {{site.data.keyword.blockchainfull_notm}} Plat
 
 - **{{site.data.keyword.cloud_notm}} account requirement**  	
     You must have a paid {{site.data.keyword.cloud_notm}} account, for example, a **Pay-As-You-Go** type. All membership plans that {{site.data.keyword.blockchainfull_notm}} Platform offers require an  {{site.data.keyword.cloud_notm}} paid account. To upgrade your account to a Pay-As-You-Go type, go to **Manage** > **Billing and Usage** > **Billing** in the {{site.data.keyword.cloud_notm}} console, and click **Add Credit Card**.  
-- **{{site.data.keyword.blockchainfull}} Platform Cloud Credits**
-    {{site.data.keyword.blockchainfull}} Platform offers $500 of cloud credits to new users of Starter Plan. These credits help users get started by covering the cost a default network configuration for one month.
+- **{{site.data.keyword.blockchainfull_notm}} Platform Cloud Credits**  
+    {{site.data.keyword.blockchainfull_notm}} Platform offers $500 of cloud credits to new users of Starter Plan. These credits help users get started by covering the cost a default network configuration for one month.
     - New users have to sign up for cloud credits. They are not applied automatically. Please [sign up ![External link icon](images/external_link.svg "External link icon")](https://www.ibm.com/account/reg/us-en/signup?formid=urx-32798 "sign up") to claim the credits if you have not already. Wait 24 hours to make sure that the credits are in your [account ![External link icon](images/external_link.svg "External link icon")](https://console.bluemix.net/docs/billing-usage/viewing_usage.html#credits "account") before you access Starter Plan. Otherwise, you might get charged before the credits apply.
-    - The cloud credits apply to all of {{site.data.keyword.cloud_notm}} services. They can be consumed by products other than the {{site.data.keyword.blockchainfull}} Platform that you use on {{site.data.keyword.cloud_notm}}.
+    - The cloud credits apply to all of {{site.data.keyword.cloud_notm}} services. They can be consumed by products other than the {{site.data.keyword.blockchainfull_notm}} Platform that you use on {{site.data.keyword.cloud_notm}}.
     - The offer provides lifetime credits. You can keep your credits as long as you maintain your IBM Cloud account. You do not have to use them in the first month.
     Learn more about using trail credits using the [pricing guide](howto/pricing.html#starter-plan-pricing).
 - **Differences from Enterprise Plan**
@@ -82,7 +82,7 @@ Starter Plan is an entry point to {{site.data.keyword.blockchainfull_notm}} Plat
 ## Migrating from Beta to GA
 {: #beta-to-ga}
 
-Starter Plan moves to the GA stage on June 14, 2018. Upon GA, {{site.data.keyword.blockchainfull}} Platform offers $500 trial credits for each {{site.data.keyword.cloud_notm}} account to create blockchain networks with Starter Plan. For more information about the trial credits, see the *Starter Plan trial* section in [Starter Plan pricing](howto/pricing.html#starter-plan-pricing). Ensure that you have a paid {{site.data.keyword.cloud_notm}} account, for example, a **Pay-As-You-Go** type.
+Starter Plan moves to the GA stage on June 14, 2018. Upon GA, {{site.data.keyword.blockchainfull_notm}} Platform offers $500 trial credits for each {{site.data.keyword.cloud_notm}} account to create blockchain networks with Starter Plan. For more information about the trial credits, see the *Starter Plan trial* section in [Starter Plan pricing](howto/pricing.html#starter-plan-pricing). Ensure that you have a paid {{site.data.keyword.cloud_notm}} account, for example, a **Pay-As-You-Go** type.
 
 Any blockchain networks that are created with Starter Plan Beta remains **free** until they are deleted **30 days** after the Starter Plan GA. Data migration is not supported from Starter Plan Beta networks to GA networks. **Your data in Beta networks will be lost.**  However, you can migrate your chaincode, business networks, and applications manually.
 - If you have running chaincode in Beta networks, install and instantiate the chaincode in GA networks. For more information, see [Installing, instantiating, and updating a chaincode](howto/install_instantiate_chaincode.html).
