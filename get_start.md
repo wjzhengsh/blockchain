@@ -44,7 +44,7 @@ If you are a network initiator, click the **Create Network** button to initiate 
 	Members that you invite will receive an email notification about your invitation after you complete all of the steps to create the network.
 3. In the "Define Governance Rules" screen, establish the policies for membership, channel creation, and chaincode. By default, all network members can invite other members to join the network, create channels, and instantiate chaincode. Currently, your network uses the default governance policies.  Click **Next**.
 4. In the "Review Summary" screen, verify your network configuration. If you want to make modifications, click **Edit** beside the section header or click the **Previous** button to go back to previous screens. When you complete the network configuration, click **Done**.  
-5. In the "Network Created" screen, you will be notified that your network has been successfully created. You can click **Add [Peers](glossary.html#peer)** to configure your network resources or click **Enter Monitor** directly to open the Network Monitor. You can also add peers later in the Network Monitor.  For more information about peers, see [Add peers](v10_dashboard.md#add_peers).
+5. In the "Network Created" screen, you will be notified that your network has been successfully created. You can click **Add [Peers](glossary.html#peer)** to configure your network resources or click **Enter Monitor** directly to open the Network Monitor. You can also add peers later in the Network Monitor.  For more information about peers, see [Add peers](v10_dashboard.md#peers).
 
 Now you successfully deploy a {{site.data.keyword.blockchain}} network that can support the following network resources:  
 * A member-specific certificate authority (CA)
@@ -76,7 +76,7 @@ If you are an invited network member, click the **Pending Invite ->** button, se
 ## Configuring network resources and environment
 
 1. Enter your Network Monitor after you create or join a {{site.data.keyword.blockchain}} network. The Network Monitor is a GUI dashboard where you can manage and track network status information. For more information, see [Network monitor](v10_dashboard.html).
-2. Add your own peers to the network. If you have already added enough peers, skip this step. Peers run chaincode and they are the endpoint to interact with your applications. Click **Add Peers** in the "Overview" screen, and select the quantity and size of your peers. For more information, see [Overview](v10_dashboard.html#resources).
+2. Add your own peers to the network. If you have already added enough peers, skip this step. Peers run chaincode and they are the endpoint to interact with your applications. Click **Add Peers** in the "Overview" screen, and select the quantity and size of your peers. For more information, see [Overview](v10_dashboard.html#overview).
 3. Set up a channel. All members in the same channel are provisioned a channel-specific ledger, which delivers data isolation and confidentiality. For more information about how to create a channel, see [Creating a channel](howto/create_channel.html#creating-a-channel).  
     If you are a channel member who are invited to join a channel, you will receive an email notification with a link to the wizard that allows you to join the channel.
 4. Join peers to the channel.  Only peers that are associated with the channel can access its ledger. For more information, see [Channels](v10_dashboard.html#channels).
@@ -97,7 +97,7 @@ Retrieve your service credentials with the following steps:
 3. In the "Add new credential" screen, give the credential a name and enter **{"type": "service_instance_token"}** in the "Add inline configuration parameter" field. Click **Add** and the new credential is added in the table. You can click **View credentials** under the "ACTIONS" column to view the credential details. This credential contains the API key and secret, which you can use to authorize APIs.
 
 ### Retrieving in the Network Monitor
-You can find the network credentials on the "APIs" screen in your Network Monitor. For more information about using APIs, see [Trying out APIs with Swagger](apis.html).
+You can find the network credentials on the "APIs" screen in your Network Monitor. For more information about using APIs, see [Trying out APIs with Swagger](howto/swagger_apis.html).
 
 You can retrieve the connection profile on the "Overview" screen in your Network Monitor. Click the **Connection Profile** button on the "Overview" screen and the connection profile shows in a new page.
 

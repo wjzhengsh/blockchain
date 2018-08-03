@@ -64,7 +64,7 @@ Starter Plan is an entry point to {{site.data.keyword.blockchainfull_notm}} Plat
     Learn more about using trail credits using the [pricing guide](howto/pricing.html#starter-plan-pricing).
 - **Differences from Enterprise Plan**
     - [CA](glossary.html#ca) and [ordering service](glossary.html#orderer) are not fault tolerant because each organization has only one CA and a network has only one [orderer](glossary.html#orderer).
-    - Ordering service uses only [SOLO](glossary.html#SOLO) [consensus](glossary.html#consensus). A Starter Plan network consists of only one [orderer](glossary.html#orderer) that performs consensus for all peers.
+    - Ordering service uses only [SOLO](glossary.html#solo) [consensus](glossary.html#consensus). A Starter Plan network consists of only one [orderer](glossary.html#orderer) that performs consensus for all peers.
     - [Hardware Security Module (HSM)](glossary.html#hsm) is not available to safeguard and manage digital keys for strong authentication and crypto processing.
 - **Network resource limitation**  
     Starter Plan assigns 1 CPU and 4 Gi RAM for each peer, and 20 Gi storage for each {{site.data.keyword.cloud_notm}} service instance, including peers. Chaincode containers and ledger blocks are the most resource intensive network components. Users that have many peers on their network, generate a lot of blocks, or use large chaincode files may experience the effect of resource limitations on performance.
