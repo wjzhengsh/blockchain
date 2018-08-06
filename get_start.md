@@ -44,7 +44,7 @@ If you are a network initiator, click the **Create Network** button to initiate 
 	Members that you invite will receive an email notification about your invitation after you complete all of the steps to create the network.
 3. In the "Define Governance Rules" screen, establish the policies for membership, channel creation, and chaincode. By default, all network members can invite other members to join the network, create channels, and instantiate chaincode. Currently, your network uses the default governance policies.  Click **Next**.
 4. In the "Review Summary" screen, verify your network configuration. If you want to make modifications, click **Edit** beside the section header or click the **Previous** button to go back to previous screens. When you complete the network configuration, click **Done**.  
-5. In the "Network Created" screen, you will be notified that your network has been successfully created. You can click **Add [Peers](glossary.html#peer)** to configure your network resources or click **Enter Monitor** directly to open the Network Monitor. You can also add peers later in the Network Monitor.  For more information about peers, see [Add peers](v10_dashboard.md#peers).
+5. In the "Network Created" screen, you will be notified that your network has been successfully created. You can click **Add [Peers](glossary.html#peer)** to configure your network resources or click **Enter Monitor** directly to open the Network Monitor. You can also add peers later in the Network Monitor.  For more information about peers, see [Add peers](v10_dashboard.html#peers).
 
 Now you successfully deploy a {{site.data.keyword.blockchain}} network that can support the following network resources:  
 * A member-specific certificate authority (CA)
