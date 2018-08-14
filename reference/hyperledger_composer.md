@@ -25,22 +25,22 @@ Hyperledger Composer is composed of a runtime, a command line interface, a REST 
 
 Hyperledger Composer allows you to quickly model your current business network, which contains your existing assets and the transactions related to them; assets are tangible or intangible goods, services, or property. As part of your business network model, you define the transactions which can interact with assets. Business networks also include the participants who interact with them, each of which can be associated with a unique identity, across multiple business networks.
 
-For more information on building business networks see [Developing business networks](./develop.html) or the [Hyperledger Composer documentation ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger.github.io/composer/latest/introduction/introduction.html).
+For more information on building business networks see [Developing business networks](../develop.html) or the [Hyperledger Composer documentation ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger.github.io/composer/latest/introduction/introduction.html).
 
 ## Queries
 
 Queries are used to return data about the blockchain world-state. Queries are defined within a business network, and can include variable parameters for simple customization. By using queries, data can be easily extracted from your {{site.data.keyword.blockchain}} network. Queries are sent by using the [Hyperledger Composer API ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger.github.io/composer/latest/api/api-doc-index).
 
-For more information about using queries in your business network, see [Querying and filtering business network data ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger.github.io/composer/business-network/query).
+For more information about using queries in your business network, see [Querying and filtering business network data ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger.github.io/composer/latest/business-network/query).
 
 ## Identities and business network cards
 
 Within a business network, participants are associated with an identity. Business network cards are a combination of an identity, a connection profile, and metadata; and are used to connect to a business network and demonstrate identity for transactions. Business network cards simplify the process of connecting to a business network, and extend the concept of an identity outside the business network to a 'wallet' of identities, each associated with a specific business network and connection profile.
 
-For more information about identities and business network cards, see [Participants and identities ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger.github.io/composer/managing/participantsandidentities).
+For more information about identities and business network cards, see [Participants and identities ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger.github.io/composer/latest/managing/participantsandidentities).
 
 ## Hyperledger Composer REST server
 
 The Hyperledger Composer REST server automatically generates a Swagger REST API for a business network. The REST server is based on LoopBack and converts the business network model into an Open API definition. At runtime the REST server implements Create, Read, Update, and Delete support for assets and participants and allows transactions to be submitted for processing or retrieved with queries.
 
-For more information about the Hyperledger Composer REST server, see [Generating a REST API ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger.github.io/composer/integrating/getting-started-rest-api).
+For more information about the Hyperledger Composer REST server, see [Generating a REST API ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger.github.io/composer/latest/integrating/getting-started-rest-api).
