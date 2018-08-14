@@ -34,7 +34,7 @@ lastupdated: "2018-07-31"
 <!-- - **_Easy to deploy sample applications_**  
     Starter Plan uses the Toolchain service in {{site.data.keyword.cloud_notm}} to deploy samples with simple clicks. After you deploy and launch a sample, the chaincode and applications automatically run for your blockchain network. For more information about sample applications, see [Deploying sample applications](howto/prebuilt_samples.html). -->
 - **_{{site.data.keyword.blockchainfull_notm}} Platform: Develop application Integration_**  
-    Starter Plan enables you to deploy business networks that you have developed on [{{site.data.keyword.blockchainfull_notm}} Platform: Develop](https://blockchaindevelop.mybluemix.net/login). For more information, see [Importing IBP: Develop applications](link).
+    Starter Plan enables you to deploy business networks that you have developed on [{{site.data.keyword.blockchainfull_notm}} Platform: Develop](https://blockchaindevelop.mybluemix.net/login). For more information, see [Deploying a business network on Starter Plan](develop_starter.html).
 
 ## Is Starter Plan suitable for you
 
