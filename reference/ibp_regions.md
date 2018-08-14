@@ -19,6 +19,10 @@ lastupdated: "2018-06-14"
 # {{site.data.keyword.blockchainfull_notm}} Platform regions and locations
 {: #ibp-regions-locations}
 
+
+***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
 {{site.data.keyword.cloud}} is hosted worldwide. A region is a geographic area that is accessed by an endpoint, and locations are data centers within the region. {{site.data.keyword.blockchainfull_notm}} Platform offers membership plans within {{site.data.keyword.cloud_notm}} globally in different regions. When you create {{site.data.keyword.blockchainfull_notm}} Platform service instance in {{site.data.keyword.cloud_notm}}, your blockchain network and network resources are created and stored in the {{site.data.keyword.cloud_notm}} region where you create the service instance in.
 {:shortdesc}
 

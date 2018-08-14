@@ -16,6 +16,10 @@ lastupdated: "2018-06-14"
 # Glossary
 {: #glossary}
 
+
+***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
 {{site.data.keyword.blockchainfull}} Platform simplifies your journey on blockchain. This topic defines terms that appear in this documentation and is meant to introduce you to blockchain concepts. For a deeper understanding of terms, you can refer to  [Hyperledger Fabric ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/master/glossary.html).
 {:shortdesc}
 

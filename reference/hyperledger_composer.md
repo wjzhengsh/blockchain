@@ -15,6 +15,10 @@ lastupdated: "2018-06-14"
 # Hyperledger Composer
 {: #hyperledger-composer}
 
+
+***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
 {{site.data.keyword.blockchainfull}} Platform: Develop is built on the open-source Hyperledger Composer toolset, one of the projects within the Linux Foundation's Hyperledger Project. Hyperledger Composer enables architects and developers to quickly create {{site.data.keyword.blockchain}} solutions with REST APIs that expose the business logic to web or mobile applications, as well as integrating blockchain with existing enterprise systems of record.
 {:shortdesc}
 

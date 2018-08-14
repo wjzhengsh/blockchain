@@ -16,6 +16,10 @@ lastupdated: "2018-06-14"
 # Deploying a business network on Starter Plan
 {: #deploying-a-business-network}
 
+
+***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
 Business networks can be developed and deployed to a Starter Plan environment by using the {{site.data.keyword.blockchainfull}} Platform developer environment and Hyperledger Composer developer toolset.
 
 By using the developer environment, you can quickly model and test {{site.data.keyword.blockchain}} business networks and deploy them to an instance of the {{site.data.keyword.blockchainfull_notm}} Platform.

@@ -14,6 +14,10 @@ lastupdated: "2018-06-14"
 
 # Paying mode
 
+
+***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
 {{site.data.keyword.blockchainfull}} Platform charges monthly with membership fees and peer fees. Network members can pay their bill with their IBM Cloud accounts that contain the space to create the network instance. Alternatively, one network member can cover the bill for all members in the network and pay for the entire network.
 {:shortdesc}
 
@@ -24,7 +28,7 @@ Every network member must have a paid {{site.data.keyword.cloud_notm}} account, 
 
 
 ## Paying your own fees
-After you create any blockchain networks with {{site.data.keyword.blockchainfull_notm}} Platform, your {{site.data.keyword.cloud_notm}} accounts will be charged daily for your membership fee and peer fees. 
+After you create any blockchain networks with {{site.data.keyword.blockchainfull_notm}} Platform, your {{site.data.keyword.cloud_notm}} accounts will be charged daily for your membership fee and peer fees.
 
 
 ## Paying for the entire network

@@ -16,6 +16,10 @@ lastupdated: "2018-06-14"
 # Installing a development environment
 {: #installing-a-development-environment}
 
+
+***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
 Follow these instructions to obtain the {{site.data.keyword.blockchainfull}} Platform: Develop development tools for creating and testing business networks. To provide flexibility and to enable the maximum number of dev, test, and deployment scenarios, the development tools are delivered as npm modules, which are controlled from the command line.
 
 Different versions of some components are required for use with Starter Plan and Enterprise Plan. To use the development environment with Starter Plan, the modules must be installed at version `0.19.x`. To use the development environment with Enterprise Plan, the modules must be installed at version `0.16.x`

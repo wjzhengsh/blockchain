@@ -16,6 +16,9 @@ lastupdated: "2018-05-15"
 {: #ibmblockchain_support}
 
 
+***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
 There are several mechanisms available to obtain support and troubleshoot problems that are associated with your blockchain instance on {{site.data.keyword.Bluemix}}.
 {:shortdesc}
 

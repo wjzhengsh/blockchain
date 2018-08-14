@@ -14,6 +14,10 @@ lastupdated: "2018-06-14"
 
 # Creating or joining a network with Swagger APIs
 
+
+***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
 {{site.data.keyword.blockchainfull}} Platform exposes a number of REST APIs that you can use to create or join a blockchain network on {{site.data.keyword.cloud_notm}}. You can try these APIs by using the [Swagger UI](swagger_apis.html) that is associated with your network.
 {:shortdesc}
 

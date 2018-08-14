@@ -21,6 +21,9 @@ lastupdated: "2018-07-17"
 {: #ibp-videos}
 
 
+***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
 Watch the following video to learn more about the IBM Blockchain Platform and how you can get started to develop a blockchain network.
 
 **Note**: The video seires are in a playlist and play continuously in the video frame below. You can also click the menu icon in the upper left corner of the video to open the playlist and switch to another video.

@@ -16,6 +16,10 @@ lastupdated: "2018-08-06"
 # Govern Enterprise Plan network
 {: #getting-started-with-blockchain}
 
+
+***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
 {{site.data.keyword.blockchainfull}} Platform Enterprise Plan provides a blockchain network with high security, integrity, scalability, and performance. You can quickly provision a fully functional network and use the Network Monitor, which is a GUI dashboard, to immediately run [chaincode](glossary.html#chaincode) and applications without having to design and configure a network from scratch.
 {:shortdesc}
 

@@ -13,6 +13,10 @@ lastupdated: "2018-06-14"
 
 # Installing, instantiating, and updating a chaincode
 
+
+***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
 Chaincode is software, which is written in Go, Java, or Node.js, that encapsulates the business logic and transactional instructions
 for creating and modifying assets in the ledger. A chaincode runs in a docker container that is associated with any peer that needs to interact with it.  For more information about developing chaincode, see [Chaincode Tutorials ![External link icon](../images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/latest/chaincode.html).
 {:shortdesc}

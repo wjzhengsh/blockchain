@@ -14,6 +14,10 @@ lastupdated: "2018-07-31"
 
 # {{site.data.keyword.blockchainfull_notm}} Platform
 
+
+***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
 **ATTENTION:** Before you use an {{site.data.keyword.blockchainfull}} Platform offering, read the technical and support information in the [Disclaimer](needtoknow.html) section.  
 {:shortdesc}
 

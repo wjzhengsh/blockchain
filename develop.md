@@ -16,6 +16,10 @@ lastupdated: "2018-06-14"
 # Develop the network
 {: #develop-the-network}
 
+
+***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
 Developing blockchain solutions by using the {{site.data.keyword.blockchainfull}} Platform leverages the Hyperledger Composer open source development toolset. Hyperledger Composer uses a bespoke modelling language, which is combined with JavaScript transactions and access control rules to model a blockchain business network in full _before_ you deploy anything to a real blockchain network.
 {:shortdesc}
 

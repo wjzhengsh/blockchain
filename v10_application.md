@@ -16,6 +16,10 @@ lastupdated: "2018-08-03"
 # Developing applications
 {: #dev_app}
 
+
+***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
 {{site.data.keyword.blockchainfull}} Platform provides APIs that you can use to connect applications to your blockchain network. You can use the network API endpoints in the connection profile to invoke your chaincode and update or query the channel-specific ledger on your peers. You can also use APIs in [the Swagger UI](howto/swagger_apis.html) to manage nodes, channels, and members of your network.
 {:shortdesc}
 
