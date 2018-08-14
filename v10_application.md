@@ -40,7 +40,7 @@ You need the following prerequisites before you can use the **Writing Your First
 
   In the `fabcar` directory, run the `npm install` command to install the necessary packages to use the Fabric SDK, which include `fabric-client` and `fabric-ca-client`.
 
-- Install and Instantiate the fabcar chaincode on your channel using the [Network Monitor](howto/install_instatiate_chaincode.html#installing-a-chaincode). You can find the fabcar chaincode in the `fabric-samples` folder under `fabric-samples > chaincode > fabcar > go`.
+- Install and Instantiate the fabcar chaincode on your channel using the [Network Monitor](howto/install_instantiate_chaincode.html#installchaincode). You can find the fabcar chaincode in the `fabric-samples` folder under `fabric-samples > chaincode > fabcar > go`.
 
 - Retrieve the Connection Profile of your network on the "Overview" screen of the Network Monitor. Save the Connection Profile into your `fabcar` directory and rename it to `creds.json`.
 
@@ -73,7 +73,7 @@ You need to provide your application with the API endpoints of specific network 
   ```
   {:codeblock}
 
-  **Note**: You might want to target network resources outside of your organization with your application. For example, if a chaincode [endorsement policy](howto/install_instatiate_chaincode.html#specifying-chaincode-endorsement-policies) requires endorsements from other organizations on the channel, then you need to obtain the endpoint information of their peers and the accompanying TLS certificates. You can find this information in the peers section of Connection Profile. However, you need to contact the admin of the other orgs about which peers they have joined to particular channels.
+  **Note**: You might want to target network resources outside of your organization with your application. For example, if a chaincode [endorsement policy](howto/install_instantiate_chaincode.html#specifying-chaincode-endorsement-policies) requires endorsements from other organizations on the channel, then you need to obtain the endpoint information of their peers and the accompanying TLS certificates. You can find this information in the peers section of Connection Profile. However, you need to contact the admin of the other orgs about which peers they have joined to particular channels.
 
 3. Plug the API endpoint information into a configuration file of your application as shown in the following example:
   ```
