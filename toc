@@ -1,7 +1,7 @@
 {:navgroup: .navgroup}
 {:topicgroup: .topicgroup}
 
-{: .toc subcollection="blockchain" audience="service" href="/docs/services/blockchain/index.html"}
+{: .toc subcollection="blockchain" audience="service" arm="339" href="/docs/services/blockchain/index.html"}
 IBM Blockchain Platform
 
 	{: .navgroup id="learn"}
