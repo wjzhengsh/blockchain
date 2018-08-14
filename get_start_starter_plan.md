@@ -16,6 +16,10 @@ lastupdated: "2018-06-14"
 # Govern Starter Plan network
 {: #getting-started-with-starter-plan}
 
+
+***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
 {{site.data.keyword.blockchainfull}} Platform Starter Plan offers you a pre-configured blockchain network with a single click. It <!--offers you a free trial of 30 days and -->provisions a permissioned network with the configuration of two [organizations](glossary.html#organization), one [peer](glossary.html#peer) per each organization, and one [channel](glossary.html#channel) by default. After the network is created, you can scale and add more organizations and peers to your network. <!--Note that it might cause extra cost if you exceed the default resource limits of two organizations and two peers.-->
 {:shortdesc}
 

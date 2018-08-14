@@ -14,6 +14,10 @@ lastupdated: "2018-06-14"
 
 # Monitoring a blockchain network
 
+
+***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
 This tutorial shows how to view and monitor the status information of your {{site.data.keyword.blockchain}} network on {{site.data.keyword.cloud_notm}}.
 {:shortdesc}
 

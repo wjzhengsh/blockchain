@@ -14,7 +14,9 @@ lastupdated: "2018-03-16"
 
 # Paying for the network
 
-**Note**: {{site.data.keyword.blockchainfull}} Platform Starter Plan is free for Beta.
+
+***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
 
 {{site.data.keyword.blockchainfull_notm}} Platform charges monthly with membership fees and peer fees. Depending on the network plan that you choose and the amount of resources that you use, your payments are different.  Taking Enterprise Plan as an example, network members must pay $1,000 per month as the membership fee, and additionally $1,000 per month for each of their peers in the network. The monthly fee is billed daily prorated. For example, a member (associated membership fee of $1,000) of two peers (per peer fee of $1,000 X 2 peers) needs to pay $3,000 every month. If the month has 30 days, the member pays $100 ($3,000/30) every day.
 

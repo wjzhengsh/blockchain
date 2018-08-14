@@ -15,6 +15,10 @@ lastupdated: "2018-07-31"
 # About Starter Plan
 {: #overview}
 
+
+***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
 {{site.data.keyword.blockchainfull}} Platform Starter Plan is an entry level option that enables organizations to simulate multi-organization blockchain networks, quickly develop applications, and work with sample smart contracts and business networks. It also boasts the same UI experience as other membership options, helping to eliminate any learning curve. Starter Plan networks are built on Hyperledger Fabric V1.1.
 {:shortdesc}
 

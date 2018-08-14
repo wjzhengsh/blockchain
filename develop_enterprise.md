@@ -16,6 +16,10 @@ lastupdated: "2018-06-14"
 # Deploying a business network on Enterprise Plan
 {: #deploying-a-business-network}
 
+
+***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
 {{site.data.keyword.blockchainfull}} Platform: Develop's developer tools help you create a **Business Network Definition** which can then be packaged up into a business network archive (`.bna`). The developer environment allows you to deploy `.bna` files to a local or cloud {{site.data.keyword.blockchain}} for development and sharing.
 
 This tutorial deals with the next step of a business network lifecycle, that is, to activate your business network by deploying the `.bna` to {{site.data.keyword.blockchainfull_notm}} Platform Enterprise Plan.

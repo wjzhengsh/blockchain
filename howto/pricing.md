@@ -14,6 +14,10 @@ lastupdated: "2018-07-31"
 
 # Pricing
 
+
+***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
 This guide helps you understand pricing for {{site.data.keyword.blockchainfull}} Platform membership plans, and how much you will pay as you develop and grow your blockchain network.  
 {:shortdesc}
 

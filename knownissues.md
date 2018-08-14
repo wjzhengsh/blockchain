@@ -14,6 +14,10 @@ lastupdated: "2018-06-14"
 
 # Known issues
 
+
+***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
 The following issues are already reported:
 - **Configuring an external CA in not supported yet**. As an alternative, you can generate and upload admin certificates via the Network Monitor. For more information, see [Generating the client-side certificates](v10_application.html#enroll-app) and the description on the ["Certificates" tab of "Member" screen](v10_dashboard.html#members) in the Network Monitor.  
 - In the Network Monitor of a Starter Plan network, when you click **View Logs** on the nodes that are listed on the "Overview" screen, the {{site.data.keyword.cloud}} Logging Kibana interface opens. **By default, Kibana is preconfigured to show logs from the last 15 minutes of activity**. If there is no activity in the last 15 minutes, you will see a message that says *No results found*. To view other logs, you can click the timer icon in the upper right corner under your user name and set a broader time range, such as *This week* or *This month*.  
