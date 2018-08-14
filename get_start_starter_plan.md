@@ -125,7 +125,7 @@ Chaincode, which is similar to `.bna` files, is developed externally. To deploy 
 As you can see in [Deploying sample applications](howto/prebuilt_samples.html), Starter Plan makes it easy to get a sample application integrated with your network by using Toolchain. This setup also allows for continuous integration by automatically updating your sample application whenever your forked application repo is changed. If you want to deploy this application into an Enterprise Plan network, you can copy your forked application repo into a new repo and then follow the instructions in [Deploying sample applications manually](howto/prebuilt_samples.html#deploy_sample_applications_manually).
 -->
 
-If you deploy any sample application on your Starter Plan network and you want to deploy this application on an Enterprise Plan network, you can copy your forked application repo into a new repo and then follow the instructions in [Deploying sample applications manually](howto/prebuilt_samples.html#deploy_sample_applications_manually).
+If you deploy any sample application on your Starter Plan network and you want to deploy this application on an Enterprise Plan network, you can copy your forked application repo into a new repo and then follow the instructions in the sample applications to deploy them on your Enterprise Plan network.
 
 
 ## Deleting or leaving a network
