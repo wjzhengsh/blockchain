@@ -78,7 +78,7 @@ When you use the Network Monitor to set your endorsement policy, you can either 
 
 You can update a chaincode to change the chaincode's programming while maintaining its relationship to the assets on the ledger. Because of the installation and instantiation combination, you need to update the chaincode on all peers that are on the channel with this chaincode. Complete the following steps to update your chaincode.
 
-1. Install a chaincode with the same name as your old chaincode, but with a different version. You can follow the same steps as [Installing a chaincode](install_instatiate_chaincode.html#installchaincode). Make sure that you select the same channel as your original chaincode.
+1. Install a chaincode with the same name as your old chaincode, but with a different version. You can follow the same steps as [Installing a chaincode](#installchaincode). Make sure that you select the same channel as your original chaincode.
 
   ![Update Chaincode](../images/upgrade_chaincode.png "Update Chaincode")
 
