@@ -130,7 +130,7 @@ If you use Enterprise Plan, you need to complete two steps to create a network w
 
 ## Inviting new members to a network
 
-After you create a blockchain network, you can invite other members to join your network. You need to specify the ID of the network that you want to invite new members to join. The basic auth credential that is required to invite a member is different than the one that is used in the **Create network** API. <!--In order to get the basic auth information you will need to follow the same steps in "Retrieving basic auth information for API". --> You can get the credential to invite a member with the **Retrieve network credentials** API on the [Swagger UI ](swagger_apis#retrieving-network-credentials) or [retrieve basic auth information for API](#retrieve-id-token) from your service instance in {{site.data.keyword.cloud_notm}}.
+After you create a blockchain network, you can invite other members to join your network. You need to specify the ID of the network that you want to invite new members to join. The basic auth credential that is required to invite a member is different than the one that is used in the **Create network** API. <!--In order to get the basic auth information you will need to follow the same steps in "Retrieving basic auth information for API". --> You can get the credential to invite a member with the **Retrieve network credentials** API on the [Swagger UI ](swagger_apis.html#retrieving-network-credentials) or [retrieve basic auth information for API](#retrieve-id-token) from your service instance in {{site.data.keyword.cloud_notm}}.
 
 ```
 /networks/{networkID}/invite
