@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -35,7 +35,7 @@ To use Swagger APIs to create or join a network, you need a basic authentication
     1. Give the credential a name, for example, *CreateJoin*.
     2. Enter **{"type": "service_instance_token"}** in the "Add inline configuration parameter" field.
     3. Click the **Add** button.
-    ![Retrieve service credentials](../images/service_credentials.gif "Retrieve service credentials")
+    ![Retrieve service credentials](../images/service_credentials.gif "Retreive service credentials")
 4. After the new credential is created, click **View credentials** under the **ACTIONS** header of this credential. The contents of the credential looks similar to the following example:
 
     ```
@@ -134,7 +134,7 @@ If you use Enterprise Plan, you need to complete two steps to create a network w
 
 ## Inviting new members to a network
 
-After you create a blockchain network, you can invite other members to join your network. You need to specify the ID of the network that you want to invite new members to join. The basic auth credential that is required to invite a member is different than the one that is used in the **Create network** API. <!--In order to get the basic auth information you will need to follow the same steps in "Retrieving basic auth information for API". --> You can get the credential to invite a member with the **Retrieve network credentials** API on the [Swagger UI ](swagger_apis.html#retrieving-network-credentials) or [retrieve basic auth information for API](#retrieve-id-token) from your service instance in {{site.data.keyword.cloud_notm}}.
+After you create a blockchain network, you can invite other members to join your network. You need to specify the ID of the network that you want to invite new members to join. The basic auth credential that is required to invite a member is different than the one that is used in the **Create network** API. <!--In order to get the basic auth information you will need to follow the same steps in "Retrieving basic auth information for API". --> You can get the credential to invite a member with the **Retrieve network credentials** API on the [Swagger UI](swagger_apis.html#retrieving-network-credentials) or [retrieve basic auth information for API](#retrieve-id-token) from your service instance in {{site.data.keyword.cloud_notm}}.
 
 ```
 /networks/{networkID}/invite
