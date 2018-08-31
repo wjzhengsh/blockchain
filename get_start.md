@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-06"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -107,7 +107,7 @@ You can retrieve the connection profile on the "Overview" screen in your Network
 
 
 ## Developing and deploying customized business networks
-You can develop business networks based on your business needs with IBM Blockchain Platform: Develop developer environment and Hyperledger Composer developer toolset. After you develop a network for your business, you can deploy your business network to Enterprise Plan network.
+You can develop business networks based on your business needs with {{site.data.keyword.blockchainfull_notm}} Platform: Develop developer environment and Hyperledger Composer developer toolset. After you develop a network for your business, you can deploy your business network to Enterprise Plan network.
 
 For more information, see [Develop the network](develop.html) and [Deploying a business network on Enterprise Plan](develop_enterprise.html).
 
@@ -127,5 +127,5 @@ If you want to leave a network, delete the blockchain service instance from your
 <!--
 ## References
 * For more information about {{site.data.keyword.blockchainfull_notm}} offerings, see [Blockchain offerings](index.html).
-* For more information about Hyperledger Fabric, see [Hyperledger Fabric documentation ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/latest/){:new_window}.
+* For more information about Hyperledger Fabric, see [Hyperledger Fabric documentation ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/){:new_window}.
 -->

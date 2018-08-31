@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-03"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -10,7 +10,6 @@ lastupdated: "2018-08-03"
 {:shortdesc: .shortdesc}
 {:codeblock: .codeblock}
 {:screen: .screen}
-
 {:pre: .pre}
 
 # Developing applications
@@ -96,6 +95,8 @@ Before you connect an application to your network on {{site.data.keyword.blockch
 
 This section explains how to retrieve the keys and certs by using the Fabric SDK as part of the **Writing Your First Application** tutorial. You can also learn how to use the Fabric CA Client from the command line to enroll your application.
 
+<!-- this last sentance when the certificates article goes live --->
+
 ### Enrollment using the Fabric SDK
 {: #enroll-app-sdk}
 
@@ -177,6 +178,8 @@ The enrollment command generates the signCert and exports it into a folder named
 
 If you want to [operate your network using the SDK](#operate-sdk), you need to upload your admin signCert to the {{site.data.keyword.blockchainfull}} Platform. You can find your admin signCert in the `hfc-key-store` folder. Open the `admin` file, and copy the certificate inside the quotation marks after the `certificate` field. Use to a tool or text editor to convert the certificate into PEM format. You can then upload the admin certificate to your blockchain network from the Network Monitor. For more information about adding certificates, see [the "Certificates" tab of "Member" screen](v10_dashboard.html#members) in the Network Monitor. This is not necessary if you are only using the SDK to invoke or query chaincode.
 
+<!-- you can eliminate this section when the certificates article goes live --->
+
 ### Enrollment using the Fabric CA Client
 {: #enroll-app-caclient}
 
@@ -214,6 +217,7 @@ If you want to [operate your network using the SDK](#operate-sdk), you need to u
   You can also find CA root certificate and admin private key in the following directories:
   * CA root certificate: `$HOME/.fabric-ca-client/msp/cacerts/--<ca_name>.pem`
   * The admin private key: `$HOME/.fabric-ca-client/msp/keystore/<>_sk file`
+
 
 ## Registering your application
 {: #register-app}
@@ -263,6 +267,8 @@ You can use the `registerUser.js` file to register and enroll the application as
 
 Run the `node registerUser.js` command to register and enroll `user1`. If you can find the `user1` certificates in the `hfc-key-store` folder, the command works. You can only register an identity once. If you experience a problem, try running `registerUser.js` with a new user name.
 
+<!-- you can eliminate this section when the certificates article goes live --->
+
 ### Registering using the Fabric CA Client
 {: #register-app-caclient}
 
@@ -304,16 +310,20 @@ Run the `node registerUser.js` command to register and enroll `user1`. If you ca
   ```
   {:codeblock}
 
+### Registering using the Network Monitor
+
+Alternatively, you can register and enroll your client application using the Network Monitor **Certificate Authority** tab. Refer to this [information](v10_dashboard.html#ca) for more instructions.
+
 ## Issuing transactions by invoking and querying chaincode
 {: #invoke-query}
 
 Your application needs to interact with the full blockchain network to submit a transaction.
 
 1. The application sends a transaction proposal to be endorsed by peers on the channel.
-2. Endorsement peers return endorsed transaction to the application.
+2. Endorsing peers return endorsed transaction to the application.
 3. The application sends the endorsed transaction to the ordering service to add the transaction to the ledger.
 
-For more information about the complete transaction flow, see [Transaction Flow ![External link icon](images/external_link.svg "External link icon")]( https://hyperledger-fabric.readthedocs.io/en/release-1.1/txflow.html "Transaction Flow"){:new_window} in the Hyperledger Fabric documentation.
+For more information about the complete transaction flow, see [Transaction Flow ![External link icon](images/external_link.svg "External link icon")]( https://hyperledger-fabric.readthedocs.io/en/release-1.1/txflow.html "Transaction Flow"){:new_window} in the Hyperledger Fabric documentation. After you getting started with this tutorial, visit the [application connectivity and availability](#app-connectivity-availability) section for tips on managing how your SDK interacts with the network.
 
 The following samples demonstrates how the Node SDK sets up the network topology, defines the transaction proposal, and then submits the transaction to the network. You can use the `invoke.js` file to invoke functions within the `fabcar` chaincode. These functions allow you to create and transfer assets on the blockchain ledger. This tutorial uses the `initLedger` function to add new data to your channel, and then uses the `query.js` file to query the data.
 
@@ -360,14 +370,14 @@ Open the `invoke.js` file in a text editor.
 
   After defining the request, you can send a [transaction proposal ![External link icon](images/external_link.svg "External link icon")](https://fabric-sdk-node.github.io/Channel.html#sendTransactionProposal "sendTransactionProposal") to the peers on the channel. After the proposal is returned from the peers, you can [send the transaction ![External link icon](images/external_link.svg "External link icon")](https://fabric-sdk-node.github.io/Channel.html#sendTransaction "sendTransaction") to the ordering service.
 
-4. You can add a listener service on the peer in your application by using an eventhub to make the transaction flow more efficient. **Edit** the following section:
+4. You can add an event service to make the transaction flow more efficient. **Edit** the following section:
   ```
   let event_hub = fabric_client.newEventHub();
   event_hub.setPeerAddr(creds.peers["org1-peer1"].eventUrl, { pem: creds.peers["org1-peer1"].tlsCACerts.pem , 'ssl-target-name-override': null});
   ```
   {:codeblock}
 
-  The sample uses a peer based event service, but we recommend using a channel based listener to distinguish between traffic from different channels on your peer. You can learn how to set up a [channel based event service ![External link icon](images/external_link.svg "External link icon")](https://fabric-sdk-node.github.io/tutorial-channel-events.html "channel based event service"){:new_window} using the Node SDK Documentation.
+  Although the sample uses a peer based event service, you should use a channel based listener. You can learn more in the [managing transactions](#managing-transactions) section and the [Node SDK documentation ![External link icon](images/external_link.svg "External link icon")](https://fabric-sdk-node.github.io/tutorial-channel-events.html "channel based event service"){:new_window}.
 
 5. By default, `invoke.js` submits the transaction as `user1`. You can edit the `invoke.js` file if you registered a different name.
 
@@ -426,10 +436,32 @@ The SDK then adds the peers and ordering service that are defined on the channel
 
 You can send transactions to peers that are outside of your organization for endorsement by editing your Connection Profile. The Connection Profile already contains the endpoint information and TLS certificates of peers from other organizations on your {{site.data.keyword.blockchainfull}} Platform network. Add the name of the peer to the relevant channel in the `channels` section of the profile to add the peer to the channel.
 
-## Highly available applications
+## Application connectivity and availability
+{: #app-connectivity-availability}
+
+The Hyperledger Fabric [Transaction Flow ![External link icon](images/external_link.svg "External link icon")]( https://hyperledger-fabric.readthedocs.io/en/release-1.1/txflow.html "Transaction Flow"){:new_window} spans multiple components, with the client applications playing a unique role. The SDK submits transaction proposals to the peers for endorsement. It then collects the endorsed proposals to be sent to the ordering service, which then sends blocks of transactions to the peers to be added to channel ledgers. Developers of production applications should be prepared to manage their interactions between the SDK and their networks for efficiency and availability.
+
+### Managing transactions
+{: #managing-transactions}
+
+Application clients should ensure that their transaction proposals are validated and that the proposals complete successfully. A proposal can be delayed or lost for multiple reasons, such as a network outage or a component failure. You should prepare your application for [high availability](#ha-app) to handle component failure. You can also [increase the timeout values](#set-timeout-in-sdk) in your application to prevent proposals from timing out before the network can respond.
+
+If a chaincode is not running, the first transaction proposal that is sent to this chaincode will start the chaincode. While the chaincode is starting, all other proposals are rejected with an error that indicates that the chaincode is currently starting. This is different from transaction invalidation. If any proposal is rejected while the chaincode is starting, application clients need to send the rejected proposals again after the chaincode starts. Application clients can use a message queue to avoid losing transaction proposals.
+
+You can use a channel based event service to monitor transactions and build message queues. Channel based listeners should be used rather than peer based services because of their ability to scale to multiple channels and distinguish between traffic on different channels. The [channelEventHub ![External link icon](images/external_link.svg "External link icon")](https://fabric-sdk-node.github.io/ChannelEventHub.html "channelEventHub"){:new_window} class can register listeners based on transaction, block, and chaincode events. You can learn how to set up a [channel based event service ![External link icon](images/external_link.svg "External link icon")](https://fabric-sdk-node.github.io/tutorial-channel-events.html "channel based event service"){:new_window} using the Node SDK Documentation.
+
+### Closing network connections
+
+When you add peers and orderers to your SDK before submitting a transaction proposal, you are opening a grpc streaming connection to the network component. For example, the command
+```
+var peer = fabric_client.newPeer(creds.peers["org1-peer1"].url, { pem: creds.peers["org1-peer1"].tlsCACerts.pem , 'ssl-target-name-override': null});
+```
+will open a connection to `org1-peer1`. If you have a continuously running application, you should close connections when they are not needed using the `peer.close()` and `orderer.close()` commands to free up resources and prevent performance degradation. You can find more detail in the [peer](https://fabric-sdk-node.github.io/Peer.html#close__anchor) and [orderer](https://fabric-sdk-node.github.io/Orderer.html#close__anchor) classes of the Node SDK documentation.
+
+### Highly available applications
 {: #ha-app}
 
-As a high availability best practice, it is strongly recommended to deploy a minimum of two peers per organization for failover. To ensure high availability for your applications, install chaincode on both peers and add them to your channels. Then add both peer endpoints to the SDK using the newPeer method of the [Fabric Client ![External link icon](images/external_link.svg "External link icon")](https://fabric-sdk-node.github.io/Client.html "Fabric Client"){:new_window} class when setting up your blockchain network before [submitting transactions](#invoke-query). If you have an Enterprise Plan network, you can also add another orderer to the channel using the newOrderer method. If you are using your [Connection Profile](#using-your-connection-profile-with-the-sdk) instead of adding network endpoints manually, ensure that your profile is up to date and that the additional peers and orderers have been added relevant channel in the `channels` section of the profile. The SDK will then add the components joined on the channel using the Connection Profile.
+As a high availability best practice, it is strongly recommended that you deploy a minimum of two peers per organization for failover. You will need to adapt your applications for high availability as well. Install chaincode on both peers and add them to your channels. Then be prepared to [submit transaction proposals](#invoke) to both peer endpoints when setting up your network and building your peer target list. If you have an Enterprise Plan network, you can also add another orderer to your network as well. If you are using your [Connection Profile](#using-your-connection-profile-with-the-sdk) instead of adding network endpoints manually, ensure that your profile is up to date and that the additional peers and orderers have been added relevant channel in the `channels` section of the profile. The SDK will then add the components joined on the channel using the Connection Profile.
 
 ## Enabling mutual TLS
 {: #mutual-tls}
