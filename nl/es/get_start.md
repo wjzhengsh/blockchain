@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-03-16"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -16,7 +16,7 @@ lastupdated: "2018-03-16"
 # Gobierno de la red del Plan empresarial
 {: #getting-started-with-blockchain}
 
-El Plan empresarial de la plataforma {{site.data.keyword.blockchainfull}} proporciona una red de blockchain con alta seguridad, integridad, escalabilidad y rendimiento. Puede suministrar rápidamente una red plenamente funcional y utilizar el supervisor de red, que es un panel de control de la GUI, para ejecutar con inmediatez [código de encadenamiento](glossary.html#chaincode) y aplicaciones sin tener que diseñar y configurar una red partiendo de cero.
+El Plan empresarial de la plataforma {{site.data.keyword.blockchainfull}} proporciona una red blockchain con alta seguridad, integridad, escalabilidad y rendimiento. Puede suministrar rápidamente una red plenamente funcional y utilizar el supervisor de red, que es un panel de control de la GUI, para ejecutar con inmediatez [código de encadenamiento](glossary.html#chaincode) y aplicaciones sin tener que diseñar ni configurar una red partiendo de cero.
 {:shortdesc}
 
 **Nota**: el Plan empresarial de la plataforma {{site.data.keyword.blockchainfull_notm}} proporciona un entorno de producción. Si necesita un entorno de desarrollo y pruebas, consulte [Acerca del Plan inicial](starter_plan.html).
@@ -54,7 +54,7 @@ Ahora ha desplegado correctamente una red de {{site.data.keyword.blockchain}} qu
 * Hasta tres iguales pequeños en cada miembro  
 * Un servicio de ordenación tolerante a errores de caída
 * Hasta 150 canales
-* Hasta 10 creaciones de instancias de código de encadenamiento
+* Hasta 10 instanciaciones de código de encadenamiento por miembro en el Supervisor de red
 
 
 ## Cómo unirse a una red
@@ -80,13 +80,13 @@ Si es un miembro de red invitado, pulse el botón **Invitación pendiente->**, s
 3. Configure un canal. Se suministra un libro mayor específico del canal a todos los miembros de un mismo canal; este libro mayor presenta datos de aislamiento y confidencialidad. Para obtener información sobre cómo crear un canal, consulte [Creación de un canal](howto/create_channel.html#creating-a-channel).  
     Si es un miembro del canal a quien se ha invitado a unirse a un canal, recibirá una notificación por correo electrónico con un enlace al asistente que le permitirá unirse al canal.
 4. Una iguales al canal.  Solo los iguales que estén asociados con el canal podrán acceder a su libro mayor. Para obtener más información, consulte [Canales](v10_dashboard.html#channels).
-5. Instale y cree una instancia de código de encadenamiento. Todos los miembros del canal deben instalar el mismo código de encadenamiento con el mismo nombre y versión en cada igual que ejecutará dicho código de encadenamiento. Después de instalar el código de encadenamiento, debe crear una instancia del mismo en el canal para poder utilizarlo. Para obtener más información, consulte [Instalación y creación de una instancia de código de encadenamiento](howto/install_instantiate_chaincode.html).  
+5. Instale y cree una instancia de código de encadenamiento. Todos los miembros del canal deben instalar el mismo código de encadenamiento con el mismo nombre y versión en cada igual que ejecutará dicho código de encadenamiento. Después de instalar el código de encadenamiento, debe crear una instancia del mismo en el canal para poder utilizarlo. Para obtener más información, consulte [Instalación, creación de instancias y actualización de un código de encadenamiento](howto/install_instantiate_chaincode.html).  
 
 **Nota**: para conseguir una alta disponibilidad, cada organización debe adquirir como mínimo dos iguales, y, dentro de un canal, cada miembro participante debe unir al menos a dos iguales.
 
 
 ## Recuperación de credenciales de red y del perfil de conexión
-Después de crear una red del Plan empresarial en {{site.data.keyword.cloud_notm}}, puede recuperar las credenciales de red y el perfil de conexión desde la página de la instancia del servicio o en el supervisor de red. 
+Después de crear una red del Plan empresarial en {{site.data.keyword.cloud_notm}}, puede recuperar las credenciales de red y el perfil de conexión desde la página de la instancia del servicio o en el supervisor de red.
 
 ### Recuperación desde la página de la instancia del servicio
 Se encontrará en la página de la instancia del servicio justo después de crear una instancia del servicio. También puede pulsar el servicio en el [panel de control del servicio {{site.data.keyword.cloud_notm}} ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://console.bluemix.net/dashboard/services "panel de control del servicio {{site.data.keyword.cloud_notm}}") para abrir la página de su instancia del servicio.
@@ -94,8 +94,7 @@ Se encontrará en la página de la instancia del servicio justo después de crea
 Para recuperar sus credenciales de servicio, siga los pasos siguientes:
 1. En la página de la instancia del servicio, pulse **Credenciales de servicio** en el navegador izquierdo para ver la pantalla "Credenciales de servicio".
 2. Pulse **Nueva credencial** en la pantalla "Credenciales de servicio".
-3. En la pantalla "Añadir nueva credencial", asigne un nombre a la credencial y pulse **Añadir**. La nueva credencial se añade a la tabla. Puede pulsar **Ver credenciales** en la columna "Acciones" para ver los detalles de la credencial. Esta credencial contiene la clave y el secreto de API, que puede utilizar para autorizar las API.
-    Si desea ver el perfil de conexión de la red, escriba **{"legacy": true}** como parámetro de configuración en línea cuando cree nuevas credenciales. El perfil de conexión contiene puntos finales de API para los recursos de red, que puede utilizar en sus API y en sus aplicaciones.
+3. En la pantalla "Añadir nueva credencial", asigne un nombre a la credencial y especifique **{"type": "service_instance_token"}** en el campo "Añadir parámetro de configuración en línea". Pulse **Añadir** y la nueva credencial se añade a la tabla. Puede pulsar **Ver credenciales** en la columna "Acciones" para ver los detalles de la credencial. Esta credencial contiene la clave y el secreto de API, que puede utilizar para autorizar las API.
 
 ### Recuperación en el supervisor de red
 Encontrará las credenciales de red en la pantalla "API" del supervisor de red. Para obtener más información sobre cómo utilizar las API, consulte [Cómo probar API con Swagger](apis.html).

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-03-16"
+lastupdated: "2018-07-31"
 
 ---
 
@@ -14,14 +14,14 @@ lastupdated: "2018-03-16"
 
 # {{site.data.keyword.blockchainfull_notm}} Platform
 
+
+***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
 **ATTENTION:** Before you use an {{site.data.keyword.blockchainfull}} Platform offering, read the technical and support information in the [Disclaimer](needtoknow.html) section.  
 {:shortdesc}
 
-{{site.data.keyword.blockchainfull_notm}} Platform is the only integrated business-ready platform that addresses the full lifecycle (**develop**, **govern**, and **operate**) of a multi-organization blockchain network. It is designed to accelerate, through collaboration in each phase, the creation of "built for business" global blockchain networks with the performance and security for even the most demanding use cases and regulated industries. {{site.data.keyword.blockchainfull_notm}} offerings are built on the Hyperledger Fabric code base that leverages a modular architecture to achieve enterprise levels of security, data integrity, scalability, and performance to meet your business needs.  
-
-Let's look at the primary activities and roles in an {{site.data.keyword.blockchainfull_notm}} network, and see how they fit into a network's lifecycle.
-
-**Note**: The table below is not meant to represent a linear progression. Tasks such as development and network management will occur repeatedly as applications and membership evolve.
+{{site.data.keyword.blockchainfull_notm}} Platform is the only integrated business-ready platform that addresses the full lifecycle (**develop**, **govern**, and **operate**) of a multi-organization blockchain network. It is designed to accelerate, through collaboration in each phase, the creation of "built for business" global blockchain networks with the performance and security for even the most demanding use cases and regulated industries.
 
 |  Function     | Activities       | [Roles](#participating-in-a-blockchain-network)  |
 | ------------------------- |--------------------------|-----|
@@ -29,7 +29,29 @@ Let's look at the primary activities and roles in an {{site.data.keyword.blockch
 | [Govern](get_start.html)| Invite members, generate credentials, propose governance models, disseminate certs and endpoint information | Network operators, network members |
 | [Operate](v10_dashboard.html)| Monitor health and activity, manage new deployments, add or remove members, manage chaincode lifecycle,  manage channels, support | Network operators, network participants |
 
-Now let's take a closer look at these activities and roles.
+**Note**: The table is not meant to represent a linear progression. Tasks such as development and network management will occur repeatedly as applications and membership evolve.
+
+## {{site.data.keyword.blockchainfull_notm}} Membership Offerings
+
+{{site.data.keyword.blockchainfull_notm}} Platform provides different membership plans to help all types of users get started on their blockchain journey and move their applications into production.
+
+|       | [Starter Plan](starter_plan.html)      | [Enterprise Plan](enterprise_plan.html)  | Enterprise Plus Plan | Self Managed Plan
+| ------------------------- |--------------------------|-----|-----|------|
+| **What's Included** | **Basic service levels, development and testing environment** | **Advanced service levels, enterprise production ready** | **Dedicated compute for performance and isolation, enterprise production ready** | Software stack to install on your own infrastructure, connect to a network hosted on this cloud service |
+| **Billing Policy** | **Monthly subscription with [available cloud credits](howto/pricing.html#starter-plan-pricing)** | **Monthly subscription** | **Monthly subscription** | Monthly subscription |
+| **Availability** | **Available now** | **Available now** | **Upon purchase** | Coming soon |
+
+**Caution:** Do not use **Starter Plan** for production. It is a development and testing environment, and is not suitable for production workloads.
+
+{{site.data.keyword.blockchainfull_notm}} offerings are built on the [Hyperledger Fabric](reference/v10_fabric.html) V1.1 code base that leverages a modular architecture to achieve enterprise levels of security, data integrity, scalability, and performance to meet your business needs.
+- **Starter Plan** is an environment to learn or get started developing blockchain networks.
+- **Enterprise Plan** is a production environment that offers high levels of security and support.
+- **Enterprise Plus Plan** offers a dedicated production environment for additional performance and isolated compute and storage resources to protect critical data.
+
+{{site.data.keyword.blockchainfull_notm}} Platform is a platform service on {{site.data.keyword.cloud_notm}} and all membership offerings follow the [{{site.data.keyword.cloud_notm}} Services terms ![External link icon](images/external_link.svg "External link icon")](https://www-03.ibm.com/software/sla/sladb.nsf/sla/bm-6605-13 "{{site.data.keyword.cloud_notm}} Services terms") on service level agreements (SLAs). Note that both Starter Plan and Enterprise Plan networks are provisioned across **multiple environments** in geographically separated data-centers.
+
+Sign up now for your [{{site.data.keyword.blockchainfull_notm}} membership ![External link icon](images/external_link.svg "External link icon")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps)!
+
 
 ## **Develop** the network
 Explore and accelerate blockchain development by leveraging best practices that are honed across 400+ client engagements to:
@@ -44,15 +66,16 @@ As a developer, you can quickly and easily align business requirements and accel
   Leverage [{{site.data.keyword.blockchainfull_notm}} Platform: Develop](./develop.html)<!--, which is powered by an open source development tool--> to learn key blockchain concepts, create network definitions, and leverage reusable industry models and smart contract libraries.  
   After you developed your business network, you can deploy it to a live network that runs on the IBM Blockchain Platform. For more information, see [Deploying business networks with Starter Plan](./develop_starter.html) and [Deploying business networks with Enterprise Plan](./develop_enterprise.html).
 * **Install locally**  
-  Leverage IBM certified images of Hyperledger Fabric and Composer, which are open source framework and tool for building a business network, to develop and test directly on your laptop. For more information, see [Building Your First Network](http://hyperledger-fabric.readthedocs.io/en/latest/build_network.html).
+  Leverage IBM certified images of Hyperledger Fabric and Composer, which are open source framework and tool for building a business network, to develop and test directly on your laptop. For more information, see [Building Your First Network](http://hyperledger-fabric.readthedocs.io/en/release-1.1/build_network.html).
 * **Collaborate in a cloud environment**  
   Use ready-to-use live networks with Starter Plan and Enterprise Plan options to develop and share your code with others. For more information, see [About Starter Plan](starter_plan.html) and [About Enterprise Plan](enterprise_plan.html).
 
 
 ## **Govern** the network
 There are two options for creating the backend environment of your network. First, you can use the published Hyperledger Docker images, giving you the option of implementing the Composer library to build your applications and interact with your network. Or, you can write chaincode natively and develop the server-side code to drive transactions. Running locally is the perfect opportunity to tinker with network configurations, explore potential use cases, and start building out proofs of concept. When your PoC begins to take shape, you can broaden the implementation by hosting your network in the cloud.
-
+<!--
 With a cloud deployment, you're provided with a collection of easy-to-use recipes and scripts to facilitate the deployment of a Hyperledger Fabric network that runs on Kubernetes. Use this phase to examine the behavior and stability of your PoC in a hosted environment. The [{{site.data.keyword.blockchainfull_notm}} Container Service ![External link icon](images/external_link.svg "External link icon")](https://ibm-blockchain.github.io/) can be best thought of as a testing mechanism for the functionality and resiliency of your application and as a natural precursor to the Enterprise Plan.
+-->
 
 After you have a network, {{site.data.keyword.blockchainfull_notm}} has been designed to create a network management experience that offers members some control, while no single member is in complete control. The {{site.data.keyword.blockchainfull_notm}} Platform has the first set of integrated tools to allow teams to enforce change management of the network via customizable policies.
 
@@ -104,7 +127,7 @@ Simply put, a member possesses a valid digital certificate, which permits the me
 
 {{site.data.keyword.blockchainfull_notm}} Platform is underpinned by the Hyperledger Fabric, which is a “permissioned blockchain” technology.  Hence, all members are enrolled into the network with a certificate that grants them permissions to use the network as a service **provider** (that is, issue certificates, validate/order transactions) or **consumer** (that is, issue transactions).   
 
-- **Providers - In members, we trust** - A blockchain network is powered by its members.   To make a blockchain network operational, there needs to be a minimum set of members that *provides* foundational blockchain services, including transaction validation, transaction ordering, and certificate management services.  By running such services these members become maintainers of integrity of the shared ledger at the epicenter of the blockchain network.  So you ask, how many members do you need to make a blockchain operational? The answer is it depends on the network's trust requirement. Some networks tolerate a more centralized trust model that requires fewer members to serve as providers.  Other networks require a more diverse members set (that is,  legally separate entities) and maintain a more decentralized trust model.  An example of a more centralized trust model would be a supply chain visibility network whose providing members  are a global retailer, a global shipping company, and IBM.  In this case, these three members would act as the “foundation of trust” for the network, providing the foundational services of the blockchain network.   These members can issue certificates to importers, exporters, customs agents, retailers, such that they can participate (issue transactions) in the network. This network can decentralize trust by enabling more members to participate in providing foundational services, and therefore ensuring all members have control but no single member has exclusive control. A typical network has around 10 members who provide foundation blockchain services.
+- **Providers - In members, we trust** - A blockchain network is powered by its members.   To make a blockchain network operational, there needs to be a minimum set of members that *provides* foundational blockchain services, including transaction validation, transaction ordering, and certificate management services. By running such services these members become maintainers of integrity of the shared ledger at the epicenter of the blockchain network. So you ask, how many members do you need to make a blockchain operational? The answer is it depends on the network's trust requirement. Some networks tolerate a more centralized trust model that requires fewer members to serve as providers.  Other networks require a more diverse members set (that is,  legally separate entities) and maintain a more decentralized trust model.  An example of a more centralized trust model would be a supply chain visibility network whose providing members  are a global retailer, a global shipping company, and IBM.  In this case, these three members would act as the “foundation of trust” for the network, providing the foundational services of the blockchain network. These members can issue certificates to importers, exporters, customs agents, retailers, such that they can participate (issue transactions) in the network. This network can decentralize trust by enabling more members to participate in providing foundational services, and therefore ensuring all members have control but no single member has exclusive control. A typical network has around 10 members who provide foundation blockchain services.
 
 - **Consumers - Trust is established, now invoke away** – When a foundation of trust is established, the network is ready to grow.  It is common that the majority of the members in your network are simply using the network to invoke transactions against the distributed ledger.  These members are simply *consumers* and are not participating in providing foundational services to the network.  A typical network has around 10 to 100 members with the permission to issue transactions within a given blockchain network.
 
@@ -136,7 +159,7 @@ The **modularity** of the Hyperledger Fabric architecture and the distinct separ
 
 The checks and balances that occur throughout the lifecycle of a transaction ensure consistent and fully vetted results, and ledgers constantly stay synchronized through an implementation of the well-known gossip protocol. Identity and access control are easily enforced through **sign/verify** operations that occur perpetually throughout the network.  
 
-**Governance tooling** is provided to allow members to administer and manage the critical business rules for their network. For example, you might want to implement a policy that defines how many members of a network must agree in order for a new member to join. Or perhaps there is an asset that requires endorsement from every participant in order for a modification to take place. Rules of governance are fundamental for any type of business network and are often extremely elaborate. Governance tooling (for example, policy editors) greatly simplifies this process.
+**Governance tooling** is provided to allow members to administer and manage the critical business rules for their network. For example, you might want to implement a policy that defines how many members of a network must agree in order for a new member to join. Or perhaps there is an asset that requires endorsement from every participant in order for a modification to take place. Rules of governance are fundamental for any type of business network and are often extremely elaborate. Governance tooling (e.g. policy editors) greatly simplifies this process.
 
 The service runs in a **highly secure and isolated** environment with no external access (including root access) to network resources. Data is encrypted in flight and at rest, and hardware security support modules allow digital keys to be protected in accordance with industry regulations. Hardware virtualization is used to run each node in an isolated environment, and therefore protecting other nodes in the network from peers with potentially misbehaving or malicious chaincode. Hashing, sign/verify operations, and node-to-node communications are accelerated thanks to advanced cryptography implementations.
 
@@ -146,21 +169,9 @@ Before continue, let's take a look at a simple configuration within the The {{si
 
 *Figure 1. An example blockchain network consisting of four members leveraging channels to isolate data*
 
-## {{site.data.keyword.IBM_notm}} Membership Offerings
-
-The following table summarizes the current and future membership options.  
-
-|       | [Starter Plan](starter_plan.html)      | [Enterprise Plan](enterprise_plan.html)  | Enterprise Plus Plan | Self Managed Plan
-| ------------------------- |--------------------------|-----|-----|------|
-| **What's Included** | **Basic service levels** | **Advanced service levels, enterprise production ready** | Dedicated compute for performance and isolation | Software stack to install on your own infrastructure + connect to a network hosted on this cloud service |
-| **Billing Policy** | **Free for beta<!--trial of 30 days, followed by monthly charge-->** | **Monthly subscription** | Monthly subscription | Monthly subscription |
-| **Availability** | **Beta** | **Available now** | Upon purchase | Coming soon |
-
-Sign up now for your [{{site.data.keyword.blockchainfull_notm}} membership ![External link icon](images/external_link.svg "External link icon")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps)!
-
 ## {{site.data.keyword.IBM_notm}} Support
 
 {{site.data.keyword.IBM_notm}} offers support on {{site.data.keyword.IBM_notm}} implemented {{site.data.keyword.blockchain}} solutions. For more information about {{site.data.keyword.blockchainfull_notm}} Support, see [Getting support](ibmblockchain_support.html).
 
 For more details about all Hyperledger Fabric features and functionality,
-see [Hyperledger Fabric documentation ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/latest/).
+see [Hyperledger Fabric documentation ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/).

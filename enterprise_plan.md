@@ -14,7 +14,12 @@ lastupdated: "2018-03-16"
 
 # About Enterprise Plan
 
-{{site.data.keyword.blockchainfull}} Platform Enterprise Plan is a production-ready offering for organizations who would like to create or join a blockchain network for real businesses. This plan provides the key infrastructure along with tools and support to easily start a highly secure and production-ready network.
+
+***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
+{{site.data.keyword.blockchainfull}} Platform Enterprise Plan is a production-ready offering for organizations who would like to create or join a blockchain network for real businesses. This plan provides the key infrastructure along with tools and support to easily start a highly secure and production-ready network. Enterprise Plan is upgraded from Hyperledger Fabric V1.0 to V1.1 on May 15, 2018. All networks that are created after May 15, 2018 are at Fabric V1.1 level. However, networks that were created earlier will remain at Fabric V1.0 level.
+{:shortdesc}
 
 **Note**: {{site.data.keyword.blockchainfull_notm}} Platform Enterprise Plan provides a production environment. If you need a development and testing environment, see [About Starter Plan](starter_plan.html).
 
@@ -44,4 +49,4 @@ You should use Enterprise Plan for more stable, production, or almost production
 ## Pricing  
 To use the Enterprise plan, network members must pay $1,000 per month as the membership fee and additionally $1,000 per month for each of their peers in the network.  The monthly fees are billed daily prorated.  For example, a member (associated membership fee of $1,000) of two peers (per peer fee of $1,000 X 2 peers) needs to pay $3,000 every month.  If the month has 30 days, the member pays $100 ($3,000/30) every day.  Note that if you need high availability (HA), you must double your required peer numbers to provide the HA capabilities.
 
-Network members can pay their bill with their own {{site.data.keyword.cloud_notm}} accounts that contain the space to create the network instance.  Alternatively, one network member can cover the bill for all members in the network.  For more information about how to pay for the blockchain networks, see [Paying for the network](howto/pay_for_the_network.html).
+Network members can pay their bill with their own {{site.data.keyword.cloud_notm}} accounts that contain the space to create the network instance.  Alternatively, one network member can cover the bill for all members in the network.  For more information about how to pay for the blockchain networks, see [Paying for the network](howto/paying_mode.html).

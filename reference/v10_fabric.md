@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-03-16"
+lastupdated: "2018-06-14"
 ---
 
 {:new_window: target="_blank"}
@@ -13,6 +13,11 @@ lastupdated: "2018-03-16"
 
 
 # Hyperledger Fabric
+
+
+***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
 {{site.data.keyword.blockchainfull}} network is built on the Hyperledger Fabric stack, one of the blockchain projects within the Linux Foundation's Hyperledger Project.  It is a "permissioned" network where all users and components have known identities.  Sign/verify logic is implemented at every communication touchpoint, and transactions are consented upon through a series of endorsement and validation checks.  In this sense, it differs greatly from traditional blockchain implementations that promote anonymity and are forced to rely on cryptocurrencies and heavy compute obligations to validate transactions.  
 {:shortdesc}
 
@@ -69,16 +74,16 @@ Ordering service nodes also provide the following services:
 For more information about Hyperledger Fabric ordering service, see *[Bringing up a Kafka-based Ordering Service ![External link icon](../images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/latest/kafka.html){:new_window}* in  [Hyperledger Fabric documentation ![External link icon](../images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/latest/){:new_window}.
 
 ## HFC SDKs
-The Hyperledger Fabric Client (HFC) SDKs enable application developers to build applications that interact with a blockchain network. The HFC SDK helps facilitate applications to manage the lifecycle of channels and chaincodes.
+The Hyperledger Fabric Client (HFC) SDKs enable application developers to build applications that interact with a blockchain network. The HFC SDK helps facilitate applications to manage the lifecycle of channels and chaincode.
 
 Hyperledger Fabric delivers Node.js SDK and Java SDK, and provides the following functions to interact with the blockchain network:
 * Register and enroll users
 * Create channels
 * Join peers to a channel
 * Update system channel or application channel configuration
-* Install chaincodes on peers
-* Instantiate chaincodes on a channel
-* Upgrade chaincodes on a channel
+* Install chaincode on peers
+* Instantiate chaincode on a channel
+* Upgrade chaincode on a channel
 * Call chaincode functions to update the ledger
 * Query the ledger for specific transactions, blocks or keys
 * Monitor events on a channel (for example, successful commitment of a transaction)

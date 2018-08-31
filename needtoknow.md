@@ -15,6 +15,10 @@ lastupdated: "2018-03-16"
 # Disclaimer
 {: #disclainer}
 
+
+***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
 **ATTENTION:** You must review the following information before you use any {{site.data.keyword.blockchainfull}} plans.
 
 ## IBM support statement

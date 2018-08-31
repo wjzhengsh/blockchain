@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-3-14"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -43,15 +43,19 @@ lastupdated: "2018-3-14"
 
 最简单的入门方法是使用 Yeoman 生成器来创建框架业务网络。Yeoman 生成器会创建一个目录，其中包含业务网络的所有组件，可修改此目录以适合您的特定用例。
 
-1. 使用 Yeoman 创建框架业务网络。以下命令需要业务网络名称、描述、作者姓名、作者电子邮件地址、许可证选择和名称空间：
+1. 为项目创建新目录并在命令行上浏览至此目录。
 
-        yo hyperledger-composer:businessnetwork
+2. 从新目录，使用 Yeoman 创建框架业务网络。以下命令需要业务网络名称、描述、作者姓名、作者电子邮件地址、许可证选择和名称空间：
+    ```
+    yo hyperledger-composer:businessnetwork
+    ```
+    {:codeblock}
 
-2. 输入 `tutorial-network` 作为网络名称，然后输入描述、作者姓名和作者电子邮件的所需信息。
+3. 输入 `tutorial-network` 作为网络名称，然后输入描述、作者姓名和作者电子邮件的所需信息。
 
-3. 选择 `Apache-2.0` 作为许可证。
+4. 选择 `Apache-2.0` 作为许可证。
 
-4. 选择 `org.acme.biznet` 作为名称空间。
+5. 选择 `org.acme.biznet` 作为名称空间。
 
 ## 步骤 2：定义业务网络
 
@@ -59,12 +63,13 @@ lastupdated: "2018-3-14"
 
 ### 对资产、参与者和事务建模
 
-第一个要更新的文档是模型文件 (`.cto`)。此文件是使用 [Hyperledger Composer 建模语言](https://hyperledger.github.io/composer/latest/reference/cto_language)编写的。模型文件包含对每类资产、事务、参与者和事件的定义。它隐式扩展了建模语言文档中描述的系统模型。
+第一个要更新的文档是模型文件 (`.cto`)。此模型文件是使用 [Hyperledger Composer 建模语言](https://hyperledger.github.io/composer/latest/reference/cto_language)编写的。模型文件包含对每类资产、事务、参与者和事件的定义。它隐式扩展了建模语言文档中描述的系统模型。
 
-1. 打开 `org.acme.biznet.cto` 模型文件。
+1. 在选择的编辑器中打开 `org.acme.biznet.cto` 模型文件。其位于在上一步中创建的业务网络的 `models` 文件夹中。
 
 2. 将内容替换为以下信息；
 
+    ```
         /**
          * 我的商品交易网络
          */
@@ -85,6 +90,8 @@ lastupdated: "2018-3-14"
             --> Commodity commodity
             --> Trader newOwner
         }
+    ```
+    {:codeblock}
 
 3. 保存对 `org.acme.biznet.cto` 文件的更改。
 
@@ -99,6 +106,7 @@ lastupdated: "2018-3-14"
 
 2. 将内容替换为以下信息；
 
+    ```
         /**
          * 跟踪商品从一个交易商到另一个交易商的交易
          * @param {org.acme.biznet.Trade} trade - 要处理的交易
@@ -111,6 +119,8 @@ lastupdated: "2018-3-14"
                     return assetRegistry.update(trade.commodity);
                 });
         }
+    ```
+    {:codeblock}
 
 3. 保存对 `logic.js` 的更改。
 
@@ -124,6 +134,7 @@ lastupdated: "2018-3-14"
 
 2. 将以下访问控制规则添加到 `permissions.acl`：
 
+    ```
         /**
          * tutorial-network 的访问控制规则
          */
@@ -142,6 +153,8 @@ lastupdated: "2018-3-14"
           resource: "org.hyperledger.composer.system.**"
           action: ALLOW
         }
+    ```
+    {:codeblock}
 
 3. 保存对 `permissions.acl` 的更改。
 
@@ -153,7 +166,10 @@ lastupdated: "2018-3-14"
 
 2. 在 `tutorial-network` 目录中，运行以下命令：
 
-        composer archive create -t dir -n .
+    ```
+    composer archive create -t dir -n .
+    ```
+    {:codeblock}
 
 运行该命令后，将在 `tutorial-network` 目录中创建业务网络归档文件 (`tutorial-network@0.0.1.bna`)。
 

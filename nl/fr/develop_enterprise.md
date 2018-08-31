@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-3-16"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -14,6 +14,7 @@ lastupdated: "2018-3-16"
 {:tip: .tip}
 
 # Déploiement d'un réseau d'entreprise dans un plan Enterprise
+{: #deploying-a-business-network}
 
 Les outils de développeur de la plateforme {{site.data.keyword.blockchainfull}} : Develop vous permettent de créer une**définition de réseau d'entreprise** qui peut ensuite être packagée dans une archive de réseau d'entreprise (fichier `.bna`). L'environnement de développeur vous permet de déployer des fichiers `.bna` dans une {{site.data.keyword.blockchain}} locale ou cloud à des fins de développement et de partage.
 
@@ -29,19 +30,29 @@ Vous devez accéder à une instance du plan Enterprise de la plateforme {{site.d
 
 1. Créez un répertoire dans lequel stocker vos détails de connexion, par exemple :
 
-        /Users/myUserId/.composer-connection-profiles/bmx-hlfv1
+    ```
+    /Users/myUserId/.composer-connection-profiles/bmx-hlfv1
+    ```
+    {:codeblock}
 
     Chaque profil de connexion doit contenir un fichier `connection.json`. Créez un nouveau répertoire sous `.composer-connection-profiles`, dans cet exemple `bmx-hlfv1`. Il s'agira du nom du profil que vous allez utiliser lors de l'utilisation de Hyperledger Composer et de la plateforme {{site.data.keyword.blockchainfull_notm}}.
 
-        mkdir -p ~/.composer-connection-profiles/bmx-hlfv1
+    ```
+    mkdir -p ~/.composer-connection-profiles/bmx-hlfv1
         cd ~/.composer-connection-profiles/bmx-hlfv1
+    ```
+    {:codeblock}
 
 2. Vous devez avoir maintenant la structure de répertoire suivante :
 
-        /Users/myUserId/.composer-connection-profiles/bmx-hlfv1
+    ```
+    /Users/myUserId/.composer-connection-profiles/bmx-hlfv1
+    ```
+    {:codeblock}
 
     Créez un fichier dans le répertoire tout juste créé et nommez-le `connection.json`. Vous pouvez vous inspirer du modèle ci-dessous pour votre fichier `connection.json` :
 
+    ```
         {
             "name": "bmx-hlfv1",
             "description": "A description for a V1 Profile",
@@ -67,16 +78,21 @@ Vous devez accéder à une instance du plan Enterprise de la plateforme {{site.d
             "globalCert": "-----BEGIN CERTIFICATE-----\r\n...LotsOfStuff\r\n-----END CERTIFICATE-----\r\n-----BEGIN CERTIFICATE-----\r\nMorestuff\r\n-----END CERTIFICATE-----\r\n",
             "timeout": 300
         }
+    ```
+    {:codeblock}
 
-    Vous devez remplir le fichier `connection.json` que vous venez de créer à l'aide des attributs fournis via le tableau de bord de la plateforme {{site.data.keyword.blockchainfull_notm}}. Depuis le tableau de bord, sélectionnez **Présentation**, puis le bouton **Données d'identification pour le service** afin d'afficher les informations de noeud final et de certificat pour les membres du canal.
+    Vous devez remplir le fichier `connection.json` que vous venez de créer à l'aide des attributs fournis via le tableau de bord de la plateforme {{site.data.keyword.blockchainfull_notm}}. Depuis le tableau de bord, sélectionnez **Présentation**, puis le bouton **Profil de connexion** afin d'afficher les informations de noeud final et de certificat pour les membres du canal.
 
 ## Etape 2 : Ajouter les informations de programme de tri
 
-1. Nous pouvons maintenant commencer à modifier le modèle à l'aide des informations fournies par les données d'identification du service. Il peut y avoir plusieurs programmes de tri dans les données d'identification du service, mais un seul est nécessaire pour un fichier `connection.json`.
+1. Nous pouvons maintenant commencer à modifier le modèle à l'aide des informations fournies par le profil de connexion. Il peut y avoir plusieurs programmes de tri dans le profil de connexion, mais un seul est nécessaire pour un fichier `connection.json`.
 
-    Remplacez les valeurs url du programme de tri dans le modèle à l'aide des informations appropriées de vos données d'identification du service en utilisant le format suivant :
+    Remplacez les valeurs url du programme de tri dans le modèle à l'aide des informations appropriées de votre profil de connexion en utilisant le format suivant :
 
-        “url”: “grpcs://abca.4.secure.blockchain.ibm.com:12345”
+    ```
+    "url": "grpcs://abca.4.secure.blockchain.ibm.com:12345"
+    ```
+    {:codeblock}
 
 ## Etape 3 : Ajouter les informations relatives à l'autorité de certification
 
@@ -84,18 +100,24 @@ Vous devez accéder à une instance du plan Enterprise de la plateforme {{site.d
 
 ## Etape 4 : Ajouter les informations relatives à l'homologue
 
-1. Il est obligatoire de définir les valeurs **requestURL** et **eventURL** de chaque homologue. Remplacez l'attribut **url** par la valeur **url** qui figure dans vos données d'identification du service. Remplacez l'attribut **eventURL** par la valeur **eventUrl** qui figure dans vos données d'identification du service. Une fois les modifications effectuées, la section peers du fichier `connection.json` doit se présenter comme suit :
+1. Il est obligatoire de définir les valeurs **requestURL** et **eventURL** de chaque homologue. Remplacez l'attribut **url** par la valeur **url** qui figure dans votre profil de connexion. Remplacez l'attribut **eventURL** par la valeur **eventUrl** qui figure dans votre profil de connexion. Une fois les modifications effectuées, la section peers du fichier `connection.json` doit se présenter comme suit :
 
+    ```
         "peers": [
       {
               "requestURL": "grpcs://abca.4.secure.blockchain.ibm.com:12345",
               "eventURL": "grpcs://abca.4.secure.blockchain.ibm.com:12345"
+    ```
+    {:codeblock}
 
 ## Etape 5 : Ajouter les informations keyValStore
 
 1. Définissez l'attribut **keyValStore** afin qu'il pointe sur le répertoire approprié. Créez un répertoire à utiliser pour votre valeur **keyValStore**. Par exemple, créez un répertoire sous votre répertoire de base intitulé `.composer-credentials-mychannel`. Assurez-vous que l'attribut **keyValStore** pointe sur le répertoire que vous venez de créer avec le format suivant :
 
-        "keyValStore": "/Users/myUserId/.composer-credentials-mychannel",
+    ```
+    "keyValStore": "/Users/myUserId/.composer-credentials-mychannel",
+    ```
+    {:codeblock}
 
 ## Etape 6 : Ajouter les informations de canal
 
@@ -103,19 +125,23 @@ Vous devez accéder à une instance du plan Enterprise de la plateforme {{site.d
 
 ## Etape 7 : Ajouter une valeur mspID
 
-La valeur **mspID** de votre fichier `connection.json` doit être définie sur la valeur mspID de votre organisation. Les données d'identification du service fournissent une liste des organisations avec les valeurs mspid qui leur sont associées. Vous devez utiliser la valeur de l'attribut **mspid** pour votre organisation.
+La valeur **mspID** de votre fichier `connection.json` doit être définie sur la valeur mspID de votre organisation. Le profil de connexion fournit une liste des organisations avec les valeurs mspid qui leur sont associées. Vous devez utiliser la valeur de l'attribut **mspid** pour votre organisation.
 
 ## Etape 8 : Ajouter la valeur globalCert
 1. La plateforme {{site.data.keyword.blockchainfull_notm}} utilise un certificat TLS commun pour les programmes de tri et les homologues. Pour chaque programme de tri et homologue, il existe un attribut **tlsCACerts** qui contient le même certificat. Remplacez la valeur factice du fichier `connection.json` par la valeur **tlsCACerts**. Le format doit ressembler à ce qui suit :
 
-        "globalCert": "-----BEGIN CERTIFICATE-----\r\.......
+    ```
+    "globalCert": "-----BEGIN CERTIFICATE-----\r\.......
+    ```
+    {:codeblock}
 
 ## Etape 9 : Préparer vos homologues
 
 **Remarque **: Cette étape **doit** être accomplie avant la création du canal pour le déploiement d'un réseau d'entreprise. Dans le cas contraire, un réseau d'entreprise déployé **ne démarrera pas**.
 
-Dans le détail des données d'identification sous **certificateAuthorities** figure un attribut **registrar** qui contient les attributs des valeurs **enrollId** et **enrollSecret** au format suivant :
+Dans le profil de connexion sous **certificateAuthorities** figure un attribut **registrar** qui contient les attributs des valeurs **enrollId** et **enrollSecret** au format suivant :
 
+ ```
         "registrar": [
             {
                 "affiliation": "org1",
@@ -123,10 +149,15 @@ Dans le détail des données d'identification sous **certificateAuthorities** fi
                 "enrollSecret": "PA55W0RD12"
             }
         ],
+ ```
+ {:codeblock}
 
 1. Demandez les certificats à l'aide de la commande suivante :
 
-        composer identity request -p bmx-hlfv1 -i admin -s PA55W0RD12
+    ```
+    composer identity request -p bmx-hlfv1 -i admin -s PA55W0RD12
+    ```
+    {:codeblock}
 
     Cette commande télécharge trois fichiers dans le répertoire `.identityCredentials` sous votre répertoire de base. Les fichiers d'intérêt reposent sur la valeur **enrollId**. Par conséquent, dans l'exemple ci-dessus nous avons deux fichiers nommés **admin-pub.pem** et **admin-priv.pem**
 
@@ -158,11 +189,14 @@ Dans le détail des données d'identification sous **certificateAuthorities** fi
 
 ## Etape 11 : Importer une nouvelle identité pour administrer votre réseau d'entreprise
 
-Créez une identité dans Composer en utilisant les certificats qui sont préalablement demandés. Cette nouvelle identité doit avoir le droit d'installer du code blockchain sur les homologues qui comportent votre certificat public chargé et il s'agira d'un émetteur pour les autorités de certification.
+Créez une identité dans Composer en utilisant les certificats qui sont préalablement demandés. Cette nouvelle identité doit avoir le droit d'installer un code blockchain sur les homologues qui comportent votre certificat public chargé et il s'agira d'un émetteur pour les autorités de certification.
 
 1. Pour créer une nouvelle identité, exécutez la commande suivante :
 
-        composer identity import -p bmx-hlfv1 -u admin -c ~/.identityCredentials/admin-pub.pem -k ~/.identityCredentials/admin-priv.pem
+    ```
+    composer identity import -p bmx-hlfv1 -u admin -c ~/.identityCredentials/admin-pub.pem -k ~/.identityCredentials/admin-priv.pem
+    ```
+    {:codeblock}
 
     Où `bmx-hlfv1` est le nom du profil que vous avez préalablement créé. Tout est maintenant prêt pour le déploiement de votre fichier `.bna` sur la plateforme {{site.data.keyword.blockchainfull_notm}}.
 
@@ -173,4 +207,7 @@ Vous pouvez maintenant déployer votre fichier `.bna` sur la plateforme {{site.d
 
 1. A l'aide de l'identité créée à l'étape précédente, déployez le réseau d'entreprise à l'aide de la commande suivante :
 
-        composer network deploy -a myNetwork.bna -p bmx-hlfv1 -i admin -s anyString
+   ```
+   composer network deploy -a myNetwork.bna -p bmx-hlfv1 -i admin -s anyString
+   ```
+   {:codeblock}

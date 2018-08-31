@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-3-14"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -19,7 +19,7 @@ lastupdated: "2018-3-14"
 Bei der Entwicklung von Blockchain-Lösungen mithilfe von {{site.data.keyword.blockchainfull}} Platform kann das quelloffene Hyperledger Composer-Entwicklungstoolset genutzt werden. Hyperledger Composer verwendet eine speziell entwickelte Modellierungssprache, die in Kombination mit JavaScript-Transaktionen und Zugriffssteuerungsregeln zum Modellieren eines vollständigen Blockchain-Unternehmensnetzes _vor_ der Bereitstellung in einem realen Blockchain-Netz verwendet wird.
 {:shortdesc}
 
-**Anmerkung:** Starter Plan stellt Beispielanwendungen bereit, die Sie ausprobieren und zum Lernen verwenden können. Sie können Beispielanwendungen in Starter Plan ausführen, bevor Sie ein angepasstes Unternehmensnetz entwickeln. Weitere Informationen finden Sie unter [Informationen zu Starter Plan](starter_plan.html).
+**Anmerkung:** Mit dem Starter Plan werden Beispielanwendungen bereitgestellt, die Sie ausprobieren und zum Lernen verwenden können. Sie können Beispielanwendungen im Starter Plan ausführen, bevor Sie ein angepasstes Unternehmensnetz entwickeln. Weitere Informationen finden Sie unter [Informationen zum Starter Plan](starter_plan.html).
 
 Dieses Lernprogramm führt Sie durch die Entwicklung einer {{site.data.keyword.blockchain}}-Lösung, bei der zu Beginn ein Unternehmensnetz erstellt und modelliert und anschließend diese Lösung in einem aktiven Blockchain-Netz bereitgestellt wird.
 
@@ -43,15 +43,19 @@ Ein wichtiges Konzept für die Entwicklung von {{site.data.keyword.blockchain}}-
 
 Die einfachste Möglichkeit für den Einstieg ist die Verwendung des Yeoman-Generators, um ein Gerüst für das Unternehmensnetz zu erstellen. Der Yeoman-Generator erstellt ein Verzeichnis, das alle Komponenten eines Unternehmensnetzes enthält und für den jeweiligen Anwendungsfall geändert werden kann.
 
-1. Verwenden Sie Yeoman, um ein Gerüst für das Unternehmensnetz zu erstellen. Der folgende Befehl erfordert einen Namen, eine Beschreibung, einen Autorennamen, eine E-Mail-Adresse des Autors, eine Lizenzauswahl und einen Namensbereich für das Unternehmensnetz:
+1. Erstellen Sie ein neues Verzeichnis für Ihr Projekt und navigieren Sie in der Befehlszeile in dieses Verzeichnis.
 
-        yo hyperledger-composer:businessnetwork
+2. Verwenden Sie in diesem neuen Verzeichnis Yeoman, um ein Unternehmensnetzgerüst zu erstellen. Der folgende Befehl erfordert einen Namen, eine Beschreibung, einen Autorennamen, eine E-Mail-Adresse des Autors, eine Lizenzauswahl und einen Namensbereich für das Unternehmensnetz:
+    ```
+    yo hyperledger-composer:businessnetwork
+    ```
+    {:codeblock}
 
-2. Geben Sie `tutorial-network` als Netznamen und die gewünschten Informationen für Beschreibung, Autorenname und E-Mail-Adresse des Autors ein.
+3. Geben Sie `tutorial-network` als Netznamen und die gewünschten Informationen für Beschreibung, Autorenname und E-Mail-Adresse des Autors ein.
 
-3. Wählen Sie `Apache-2.0` als Lizenz aus.
+4. Wählen Sie `Apache-2.0` als Lizenz aus.
 
-4. Wählen Sie `org.acme.biznet` als Namensbereich aus.
+5. Wählen Sie `org.acme.biznet` als Namensbereich aus.
 
 ## Schritt 2: Unternehmensnetz definieren
 
@@ -59,12 +63,13 @@ Ein Unternehmensnetz besteht aus Assets, Teilnehmern, Transaktionen, Zugriffsste
 
 ### Assets, Teilnehmer und Transaktionen modellieren
 
-Das erste Dokument, das aktualisiert werden muss, ist die Modelldatei (`.cto`). Diese Datei wird mithilfe der [Hyperledger Composer-Modellierungssprache ](https://hyperledger.github.io/composer/latest/reference/cto_language) geschrieben. Die Modelldatei enthält die Definitionen der einzelnen Klassen von Assets, Transaktionen, Teilnehmern und Ereignissen. Sie erweitert implizit das Systemmodell, das in der Dokumentation zur Modellierungssprache beschrieben wird.
+Das erste Dokument, das aktualisiert werden muss, ist die Modelldatei (`.cto`). Die Modelldatei wird mithilfe der [Hyperledger Composer-Modellierungssprache ](https://hyperledger.github.io/composer/latest/reference/cto_language) geschrieben. Die Modelldatei enthält die Definitionen der einzelnen Klassen von Assets, Transaktionen, Teilnehmern und Ereignissen. Sie erweitert implizit das Systemmodell, das in der Dokumentation zur Modellierungssprache beschrieben wird.
 
-1. Öffnen Sie die Modelldatei `org.acme.biznet.cto`.
+1. Öffnen Sie die Modelldatei `org.acme.biznet.cto` in einem Editor Ihrer Wahl. Sie befindet sich im Ordner `models` des Unternehmensnetzes, das Sie im letzten Schritt erstellt haben.
 
 2. Ersetzen Sie den Inhalt durch die folgenden Informationen:
 
+    ```
         /**
          * Mein Warenhandelsnetz
          */
@@ -85,6 +90,8 @@ Das erste Dokument, das aktualisiert werden muss, ist die Modelldatei (`.cto`). 
             --> Commodity commodity
             --> Trader newOwner
         }
+    ```
+    {:codeblock}
 
 3. Speichern Sie die Änderungen an der Datei `org.acme.biznet.cto`.
 
@@ -99,6 +106,7 @@ Die Transaktion `Trade` ist nur dazu gedacht, die ID des Assets `Commodity`, das
 
 2. Ersetzen Sie den Inhalt durch die folgenden Informationen:
 
+    ```
         /**
          * Handel einer Ware (Commodity) von einem Händler (Trader) zum anderen verfolgen
          * @param {org.acme.biznet.Trade} trade - der zu verarbeitende Handel
@@ -111,6 +119,8 @@ Die Transaktion `Trade` ist nur dazu gedacht, die ID des Assets `Commodity`, das
                     return assetRegistry.update(trade.commodity);
                 });
         }
+    ```
+    {:codeblock}
 
 3. Speichern Sie die Änderungen an der Datei `logic.js`.
 
@@ -124,6 +134,7 @@ Richten Sie für die Zwecke dieses Lernprogramms eine einfache Zugriffssteuerung
 
 2. Fügen Sie der Datei `permissions.acl` die folgenden Zugriffssteuerungsregeln hinzu:
 
+    ```
         /**
          * Zugriffssteuerungsregeln für tutorial-network
          */
@@ -142,6 +153,8 @@ Richten Sie für die Zwecke dieses Lernprogramms eine einfache Zugriffssteuerung
           resource: "org.hyperledger.composer.system.**"
           action: ALLOW
         }
+    ```
+    {:codeblock}
 
 3. Speichern Sie die Änderungen an der Datei `permissions.acl`.
 
@@ -153,12 +166,15 @@ Wenn das Unternehmensnetz definiert ist, muss es in eine bereitstellbare Unterne
 
 2. Führen Sie im Verzeichnis `tutorial-network` den folgenden Befehl aus:
 
-        composer archive create -t dir -n .
+    ```
+    composer archive create -t dir -n .
+    ```
+    {:codeblock}
 
 Durch die Ausführung des Befehls wird eine Unternehmensnetzarchivdatei (`tutorial-network@0.0.1.bna`) im Verzeichnis `tutorial-network` erstellt.
 
 ## Schritt 4: Unternehmensnetz bereitstellen und REST-Server generieren
 
-Stellen Sie das Unternehmensnetz auf der {{site.data.keyword.blockchainfull_notm}} Platform bereit, indem Sie [Starter Plan](./develop_starter.html) oder [Enterprise Plan](./develop_enterprise.html) verwenden.
+Stellen Sie das Unternehmensnetz auf der {{site.data.keyword.blockchainfull_notm}} Platform bereit, indem Sie den [Starter Plan](./develop_starter.html) oder den [Enterprise Plan](./develop_enterprise.html) verwenden.
 
 Nach der Bereitstellung des Unternehmensnetzes auf der {{site.data.keyword.blockchainfull_notm}} Platform kann ein spezieller REST-Server generiert werden. Der REST-Server untersucht den Inhalt des Unternehmensnetzes und erstellt REST-konforme API-Aufrufe, Transaktionen und Teilnehmer des Netzes. Die Anweisungen zum Generieren eines REST-Servers sind in der [Hyperledger Composer-Dokumentation](https://hyperledger.github.io/composer/latest/integrating/getting-started-rest-api) enthalten.

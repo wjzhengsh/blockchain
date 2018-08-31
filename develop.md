@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-3-14"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -15,6 +15,10 @@ lastupdated: "2018-3-14"
 
 # Develop the network
 {: #develop-the-network}
+
+
+***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
 
 Developing blockchain solutions by using the {{site.data.keyword.blockchainfull}} Platform leverages the Hyperledger Composer open source development toolset. Hyperledger Composer uses a bespoke modelling language, which is combined with JavaScript transactions and access control rules to model a blockchain business network in full _before_ you deploy anything to a real blockchain network.
 {:shortdesc}
@@ -43,15 +47,19 @@ A key concept for developing {{site.data.keyword.blockchain}} solutions is the *
 
 The easiest way to get started is to use the Yeoman generator to create a skeleton business network. The Yeoman generator creates a directory that contains all of the components of a business network, which can be modified for your specific use-case.
 
-1. Use Yeoman to create a skeleton business network. The following command requires a business network name, description, author name, author email address, license selection, and namespace:
+1. Create a new directory for your project and navigate to it on the command line.
 
-        yo hyperledger-composer:businessnetwork
+2. From your new directory, use Yeoman to create a skeleton business network. The following command requires a business network name, description, author name, author email address, license selection, and namespace:
+    ```
+    yo hyperledger-composer:businessnetwork
+    ```
+    {:codeblock}
 
-2. Enter `tutorial-network` for the network name, and desired information for description, author name, and author email.
+3. Enter `tutorial-network` for the network name, and desired information for description, author name, and author email.
 
-3. Select `Apache-2.0` as the license.
+4. Select `Apache-2.0` as the license.
 
-4. Select `org.acme.biznet` as the namespace.
+5. Select `org.acme.biznet` as the namespace.
 
 ## Step Two: Defining the business network
 
@@ -59,12 +67,13 @@ A business network is made up of assets, participants, transactions, access cont
 
 ### Modelling assets, participants, and transactions
 
-The first document to update is the model file (`.cto`). This file is written by using the [Hyperledger Composer Modelling Language](https://hyperledger.github.io/composer/latest/reference/cto_language). The model file contains the definitions of each class of asset, transaction, participant, and event. It implicitly extends the system model that is described in the modelling language documentation.
+The first document to update is the model file (`.cto`). The model file is written using the [Hyperledger Composer Modelling Language](https://hyperledger.github.io/composer/latest/reference/cto_language). The model file contains the definitions of each class of asset, transaction, participant, and event. It implicitly extends the system model that is described in the modelling language documentation.
 
-1. Open the `org.acme.biznet.cto` model file.
+1. Open the `org.acme.biznet.cto` model file in an editor of your choice. It is located in the `models` folder of the business network you created in the last step.
 
 2. Replace the contents with the following information:
 
+    ```
         /**
          * My commodity trading network
          */
@@ -85,6 +94,8 @@ The first document to update is the model file (`.cto`). This file is written by
             --> Commodity commodity
             --> Trader newOwner
         }
+    ```
+    {:codeblock}
 
 3. Save your changes to the `org.acme.biznet.cto` file.
 
@@ -99,6 +110,7 @@ The `Trade` transaction is intended to simply accept the identifier of the `Comm
 
 2. Replace the contents with the following information:
 
+    ```
         /**
          * Track the trade of a commodity from one trader to another
          * @param {org.acme.biznet.Trade} trade - the trade to be processed
@@ -111,6 +123,8 @@ The `Trade` transaction is intended to simply accept the identifier of the `Comm
                     return assetRegistry.update(trade.commodity);
                 });
         }
+    ```
+    {:codeblock}
 
 3. Save your changes to `logic.js`.
 
@@ -124,6 +138,7 @@ For the purposes of this tutorial, set up a simple ACL. Note that this should no
 
 2. Add the following access control rules to `permissions.acl`:
 
+    ```
         /**
          * Access control rules for tutorial-network
          */
@@ -142,6 +157,8 @@ For the purposes of this tutorial, set up a simple ACL. Note that this should no
           resource: "org.hyperledger.composer.system.**"
           action: ALLOW
         }
+    ```
+    {:codeblock}
 
 3. Save your changes to `permissions.acl`.
 
@@ -153,7 +170,10 @@ After the business network is defined, it must be packaged into a deployable bus
 
 2. From the `tutorial-network` directory, run the following command:
 
-        composer archive create -t dir -n .
+    ```
+    composer archive create -t dir -n .
+    ```
+    {:codeblock}
 
 After you run the command, a business network archive file (`tutorial-network@0.0.1.bna`) is created in the `tutorial-network` directory.
 

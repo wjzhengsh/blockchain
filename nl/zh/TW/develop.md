@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-3-14"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -43,15 +43,19 @@ lastupdated: "2018-3-14"
 
 最簡單的開始方法就是使用 Yeoman 產生器來建立架構商業網路。Yeoman 產生器會建立一個包含商業網路所有元件的目錄，可依據您的特定使用案例加以修改。
 
-1. 使用 Yeoman 來建立架構商業網路。下列指令需要商業網路名稱、說明、作者名稱、作者電子郵件位址、授權選項及名稱空間：
+1. 為您的專案建立一個新目錄，並在指令行上導覽至該目錄。
 
-        yo hyperledger-composer:businessnetwork
+2. 從新的目錄中，使用 Yeoman 來建立架構商業網路。下列指令需要商業網路名稱、說明、作者名稱、作者電子郵件位址、授權選項及名稱空間：
+    ```
+    yo hyperledger-composer:businessnetwork
+    ```
+    {:codeblock}
 
-2. 在網路名稱部分輸入 `tutorial-network`，並且在說明、作者名稱、作者電子郵件部分輸入所需的資訊。
+3. 在網路名稱部分輸入 `tutorial-network`，並且在說明、作者名稱、作者電子郵件部分輸入所需的資訊。
 
-3. 選取 `Apache-2.0` 作為授權。
+4. 選取 `Apache-2.0` 作為授權。
 
-4. 選取 `org.acme.biznet` 作為名稱空間。
+5. 選取 `org.acme.biznet` 作為名稱空間。
 
 ## 步驟 2：定義商業網路
 
@@ -59,12 +63,13 @@ lastupdated: "2018-3-14"
 
 ### 將資產、參與者及交易模型化
 
-所要更新的首份文件是模型檔 (`.cto`)。此檔案是使用 [Hyperledger Composer 模型化語言](https://hyperledger.github.io/composer/latest/reference/cto_language)撰寫而成。模型檔包含每個資產、交易、參與者及事件類別的定義。其隱含地延伸模型化語言文件中所說明的系統模型。
+所要更新的首份文件是模型檔 (`.cto`)。模型檔是使用 [Hyperledger Composer 模型化語言](https://hyperledger.github.io/composer/latest/reference/cto_language)撰寫而成。模型檔包含每個資產、交易、參與者及事件類別的定義。其隱含地延伸模型化語言文件中所說明的系統模型。
 
-1. 開啟 `org.acme.biznet.cto` 模型檔。
+1. 使用您選擇的編輯器，開啟 `org.acme.biznet.cto` 模型檔。它位於您在最後一個步驟中建立之商業網路的 `models` 資料夾。
 
 2. 以下列資訊來取代這些內容：
 
+    ```
         /**
          * My commodity trading network
          */
@@ -85,6 +90,8 @@ lastupdated: "2018-3-14"
             --> Commodity commodity
             --> Trader newOwner
         }
+    ```
+    {:codeblock}
 
 3. 儲存您對 `org.acme.biznet.cto` 檔案的變更。
 
@@ -99,6 +106,7 @@ lastupdated: "2018-3-14"
 
 2. 以下列資訊來取代這些內容：
 
+    ```
         /**
          * Track the trade of a commodity from one trader to another
          * @param {org.acme.biznet.Trade} trade - the trade to be processed
@@ -111,6 +119,8 @@ lastupdated: "2018-3-14"
                     return assetRegistry.update(trade.commodity);
                 });
         }
+    ```
+    {:codeblock}
 
 3. 儲存您對 `logic.js` 的變更。
 
@@ -124,6 +134,7 @@ lastupdated: "2018-3-14"
 
 2. 將下列存取控制規則新增至 `permissions.acl`：
 
+    ```
         /**
          * Access control rules for tutorial-network
          */
@@ -142,6 +153,8 @@ lastupdated: "2018-3-14"
           resource: "org.hyperledger.composer.system.**"
           action: ALLOW
         }
+    ```
+    {:codeblock}
 
 3. 儲存您對 `permissions.acl` 的變更。
 
@@ -153,7 +166,10 @@ lastupdated: "2018-3-14"
 
 2. 從 `tutorial-network` 目錄執行下列指令：
 
-        composer archive create -t dir -n .
+    ```
+    composer archive create -t dir -n .
+    ```
+    {:codeblock}
 
 執行指令之後，`tutorial-network` 目錄中會建立一個商業網路保存檔 (`tutorial-network@0.0.1.bna`)。
 

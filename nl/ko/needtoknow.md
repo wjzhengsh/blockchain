@@ -26,7 +26,7 @@ IBM은 오랜 시간 혁신의 선두 자리를 지켜왔으며 {{site.data.keyw
 
 ## 오픈 소스 설명
 
-{{site.data.keyword.Bluemix_notm}}의 {{site.data.keyword.blockchainfull_notm}} 오퍼링 플랜은 Linux Foundation의 Hyperledger Fabric 스택의 맨 위에 빌드됩니다. IBM을 포함한 Hyperledger 프로젝트 구성원은 Hyperledger에 속하는 다양한 하위 프로젝트에 계속 기여합니다. 모든 컨트리뷰션은 커뮤니티에서 검토, 조사하고 테스트합니다.
+{{site.data.keyword.Bluemix_notm}}의 {{site.data.keyword.blockchainfull_notm}} 오퍼링 플랜은 Linux Foundation의 Hyperledger Fabric 스택의 맨 위에 빌드됩니다. IBM을 포함한 Hyperledger 프로젝트 구성원은 Hyperledger에 속하는 다양한 하위 프로젝트에 계속 기여합니다.  모든 컨트리뷰션은 커뮤니티에서 검토, 조사하고 테스트합니다.
 
 ## 체인코드 지원 설명
 

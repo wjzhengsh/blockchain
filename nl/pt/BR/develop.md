@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-3-14"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -43,15 +43,19 @@ Um conceito chave para desenvolver soluções do {{site.data.keyword.blockchain}
 
 A maneira mais fácil para a introdução é usar o gerador do Yeoman para criar uma rede de negócios de estrutura básica. O gerador do Yeoman cria um diretório que contém todos os componentes de uma rede de negócios, que podem ser modificados para o seu caso de uso específico.
 
-1. Use o Yeoman para criar uma rede de negócios de estrutura básica. O comando a seguir requer um nome de rede de negócios, uma descrição, um nome do autor, um endereço de e-mail do autor, uma seleção de licença e um namespace:
+1. Crie um novo diretório para o seu projeto e navegue até ele na linha de comandos.
 
-        yo hyperledger-composer:businessnetwork
+2. No seu novo diretório, use o Yeoman para criar uma rede de negócios de estrutura básica. O comando a seguir requer um nome de rede de negócios, uma descrição, um nome do autor, um endereço de e-mail do autor, uma seleção de licença e um namespace:
+    ```
+    yo hyperledger-composer:businessnetwork
+    ```
+    {:codeblock}
 
-2. Insira `tutorial-network` para o nome da rede e as informações desejadas para descrição, nome do autor e e-mail do autor.
+3. Insira `tutorial-network` para o nome da rede e as informações desejadas para descrição, nome do autor e e-mail do autor.
 
-3. Selecione `Apache-2.0` como a licença.
+4. Selecione `Apache-2.0` como a licença.
 
-4. Selecione `org.acme.biznet` como o namespace.
+5. Selecione `org.acme.biznet` como o namespace.
 
 ## Etapa dois: Definindo a rede de negócios
 
@@ -59,12 +63,13 @@ Uma rede de negócios é composta de ativos, participantes, transações, regras
 
 ### Modelando ativos, participantes e transações
 
-O primeiro documento para atualização é o arquivo de modelo (`.cto`). Esse arquivo é gravado usando a [Linguagem de modelagem do Hyperledger Composer](https://hyperledger.github.io/composer/latest/reference/cto_language). O arquivo de modelo contém as definições de cada classe de ativo, transação, participante e evento. Ele implicitamente estende o modelo do sistema que é descrito na documentação de linguagem de modelagem.
+O primeiro documento para atualização é o arquivo de modelo (`.cto`). O arquivo de modelo é gravado usando a [Linguagem de modelagem Hyperledger Composer](https://hyperledger.github.io/composer/latest/reference/cto_language). O arquivo de modelo contém as definições de cada classe de ativo, transação, participante e evento. Ele implicitamente estende o modelo do sistema que é descrito na documentação de linguagem de modelagem.
 
-1. Abra o arquivo de modelo `org.acme.biznet.cto`.
+1. Abra o arquivo de modelo `org.acme.biznet.cto` em um editor de sua escolha. Ele está localizado na pasta `models` da rede de negócios que você criou na última etapa.
 
 2. Substitua os conteúdos pelas informações a seguir:
 
+    ```
         /**
          * Minha rede de negócios de mercadoria
          */
@@ -85,6 +90,8 @@ O primeiro documento para atualização é o arquivo de modelo (`.cto`). Esse ar
             --> mercadoria de Commodity
             --> newOwner do operador
         }
+    ```
+    {:codeblock}
 
 3. Salve as suas mudanças no arquivo `org.acme.biznet.cto`.
 
@@ -99,6 +106,7 @@ A transação `Trade` destina-se a simplesmente aceitar o identificador do ativo
 
 2. Substitua os conteúdos pelas informações a seguir:
 
+    ```
         /**
          * Rastreie o comércio de uma mercadoria de um operador para outro
          * @param {org.acme.biznet.Trade} trade - o comércio a ser processado
@@ -111,12 +119,14 @@ A transação `Trade` destina-se a simplesmente aceitar o identificador do ativo
                     return assetRegistry.update(trade.commodity);
                 });
         }
+    ```
+    {:codeblock}
 
 3. Salve as suas mudanças em `logic.js`.
 
 ### Incluindo o controle de acesso
 
-O controle de acesso é uma parte de chave de uma rede de negócios. Todas as redes de negócios devem ter um arquivo de controle de acesso que é chamado `permissions.acl`. Sempre que qualquer processo for chamado em uma rede de negócios implementada, a lista de controle de acesso será verificada para assegurar que a identidade de chamada ou participante poderá chamar a operação.
+O controle de acesso é uma parte de chave de uma rede de negócios. Todas as redes de negócios devem ter um arquivo de controle de acesso que é chamado `permissions.acl`. Sempre que qualquer processo for chamado em uma rede de negócios implementada, a lista de controle de acesso será verificada para assegurar que a identidade de chamada ou o participante pode chamar a operação.
 
 Para os propósitos deste tutorial, configure uma ACL simples. Observe que isso não deve ser implementado em um ambiente de produção.
 
@@ -124,6 +134,7 @@ Para os propósitos deste tutorial, configure uma ACL simples. Observe que isso 
 
 2. Inclua as regras de controle de acesso a seguir em `permissions.acl`:
 
+    ```
         /**
          * Regras de controle de acesso para rede de tutorial
          */
@@ -140,6 +151,8 @@ Para os propósitos deste tutorial, configure uma ACL simples. Observe que isso 
           operation: ALL
           resource: "org.hyperledger.composer.system.**"
           ação: ALLOW }
+    ```
+    {:codeblock}
 
 3. Salve as suas mudanças em `permissions.acl`.
 
@@ -151,7 +164,10 @@ Após a rede de negócios ser definida, ela deverá ser empacotada em um archive
 
 2. No diretório `tutorial-network`, execute o comando a seguir:
 
-        composer archive create -t dir -n .
+    ```
+    composer archive create -t dir -n .
+    ```
+    {:codeblock}
 
 Após a execução do comando, um archive de rede de negócios (`tutorial-network@0.0.1.bna`) será criado no diretório `tutorial-network`.
 

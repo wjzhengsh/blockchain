@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-3-14"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -16,12 +16,12 @@ lastupdated: "2018-3-14"
 # Desarrollar la red
 {: #develop-the-network}
 
-El desarrollo de soluciones de blockchain mediante la plataforma {{site.data.keyword.blockchainfull}} aprovecha el conjunto de herramientas de desarrollo de código abierto de Hyperledger Composer. Hyperledger Composer utiliza un lenguaje de modelado adaptado, que se combina con transacciones JavaScript y reglas de control de acceso para modelar una red empresarial de blockchain por completo _antes_ de desplegar nada en una red de blockchain real.
+El desarrollo de soluciones de blockchain mediante la plataforma {{site.data.keyword.blockchainfull}} aprovecha el conjunto de herramientas de desarrollo de código abierto de Hyperledger Composer. Hyperledger Composer utiliza un lenguaje de modelado adaptado, que se combina con transacciones JavaScript y reglas de control de acceso para modelar una red empresarial de blockchain por completo _antes_ de desplegar nada en una red blockchain real.
 {:shortdesc}
 
 **Nota**: el Plan inicial proporciona aplicaciones de ejemplo que puede probar y de las que puede aprender. Puede ejecutar aplicaciones de ejemplo en el Plan inicial antes de desarrollar su red empresarial personalizada. Para obtener más información, consulte [Acerca del Plan inicial](starter_plan.html).
 
-Este documento le guía por el proceso de desarrollo de una solución {{site.data.keyword.blockchain}} que empieza por crear y modelar una red empresarial y la despliega en una red de blockchain en ejecución.
+Este documento le guía por el proceso de desarrollo de una solución {{site.data.keyword.blockchain}} que empieza por crear y modelar una red empresarial y la despliega en una red blockchain en ejecución.
 
 En los siguientes pasos se describe el desarrollo básico de una solución {{site.data.keyword.blockchain}}  alojada en la plataforma {{site.data.keyword.blockchainfull_notm}}:
 
@@ -43,15 +43,19 @@ Un concepto clave para desarrollar soluciones {{site.data.keyword.blockchain}} e
 
 El modo más fácil de empezar es utilizar el generador Yeoman para crear el esqueleto de la red empresarial. El generador Yeoman crea un directorio que contiene todos los componentes de una red empresarial, que se puede modificar para adaptarla a su caso de uso específico.
 
-1. Utilice Yeoman para crear el esqueleto de una red empresarial. El siguiente mandato requiere un nombre de red empresarial, una descripción, un nombre de autor, la dirección de correo electrónico del autor, una selección de licencia y un espacio de nombres:
+1. Cree un directorio nuevo para el proyecto y vaya al mismo en la línea de mandatos.
 
-        yo hyperledger-composer:businessnetwork
+2. En el nuevo directorio, utilice Yeoman para crear el esqueleto de una red empresarial. El siguiente mandato requiere un nombre de red empresarial, una descripción, un nombre de autor, la dirección de correo electrónico del autor, una selección de licencia y un espacio de nombres:
+    ```
+    yo hyperledger-composer:businessnetwork
+    ```
+    {:codeblock}
 
-2. Escriba `tutorial-network` como nombre de red y la información que desee para la descripción, el nombre del autor y la dirección de correo electrónico del autor.
+3. Escriba `tutorial-network` como nombre de red y la información que desee para la descripción, el nombre del autor y la dirección de correo electrónico del autor.
 
-3. Seleccione `Apache-2.0` como licencia.
+4. Seleccione `Apache-2.0` como licencia.
 
-4. Seleccione `org.acme.biznet` como espacio de nombres.
+5. Seleccione `org.acme.biznet` como espacio de nombres.
 
 ## Paso dos: Definición de la red empresarial
 
@@ -59,12 +63,13 @@ Una red empresarial se compone de activos, participantes, transacciones, reglas 
 
 ### Modelado de activos, participantes y transacciones
 
-El primer documento que se debe actualizar es el archivo modelo (`.cto`). Este archivo está escrito con el [lenguaje de modelado de Hyperledger Composer](https://hyperledger.github.io/composer/latest/reference/cto_language). El archivo modelo contiene las definiciones de cada clase de activo, transacción, participante y suceso. Extiende de forma implícita el modelo de sistema que se describe en la documentación del lenguaje de modelado.
+El primer documento que se debe actualizar es el archivo modelo (`.cto`). El archivo de modelo se escribe utilizando el [lenguaje de modelado de Hyperledger Composer](https://hyperledger.github.io/composer/latest/reference/cto_language). El archivo modelo contiene las definiciones de cada clase de activo, transacción, participante y suceso. Extiende de forma implícita el modelo de sistema que se describe en la documentación del lenguaje de modelado.
 
-1. Abra el archivo modelo `org.acme.biznet.cto`.
+1. Abra el archivo de modelo `org.acme.biznet.cto` en un editor de su elección. Se encuentra en la carpeta `models` de la red empresarial que ha creado en el último paso.
 
 2. Sustituya el contenido por la información siguiente:
 
+    ```
         /**
          * My commodity trading network
          */
@@ -85,6 +90,8 @@ El primer documento que se debe actualizar es el archivo modelo (`.cto`). Este a
             --> Commodity commodity
             --> Trader newOwner
         }
+    ```
+    {:codeblock}
 
 3. Guarde los cambios en el archivo `org.acme.biznet.cto`.
 
@@ -99,6 +106,7 @@ El objetivo de la transacción `Trade` es simplemente aceptar el identificador d
 
 2. Sustituya el contenido por la información siguiente:
 
+    ```
         /**
          * Track the trade of a commodity from one trader to another
          * @param {org.acme.biznet.Trade} trade - the trade to be processed
@@ -111,6 +119,8 @@ El objetivo de la transacción `Trade` es simplemente aceptar el identificador d
                     return assetRegistry.update(trade.commodity);
                 });
         }
+    ```
+    {:codeblock}
 
 3. Guarde los cambios en `logic.js`.
 
@@ -124,6 +134,7 @@ En esta guía de aprendizaje se configurará una ACL sencilla. Tenga en cuenta q
 
 2. Añada las siguientes reglas de control de acceso a `permissions.acl`:
 
+    ```
         /**
          * Access control rules for tutorial-network
          */
@@ -142,6 +153,8 @@ En esta guía de aprendizaje se configurará una ACL sencilla. Tenga en cuenta q
           resource: "org.hyperledger.composer.system.**"
           action: ALLOW
         }
+    ```
+    {:codeblock}
 
 3. Guarde los cambios en `permissions.acl`.
 
@@ -153,7 +166,10 @@ Una vez definida la red empresarial, se debe empaquetar en un archivo de archiva
 
 2. Desde el directorio `tutorial-network`, ejecute el siguiente mandato:
 
-        composer archive create -t dir -n .
+    ```
+    composer archive create -t dir -n .
+    ```
+    {:codeblock}
 
 Después de ejecutar el mandato, se crea un archivo de archivado de red empresarial (`tutorial-network@0.0.1.bna`) en el directorio `tutorial-network`.
 

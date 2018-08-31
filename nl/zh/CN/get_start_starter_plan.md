@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-03-16"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -19,9 +19,7 @@ lastupdated: "2018-03-16"
 {{site.data.keyword.blockchainfull}} Platform 入门套餐提供了一个预先配置的区块链网络，只需单击一下就可使用。入门套餐<!--offers you a free trial of 30 days and -->供应一个许可的网络，缺省情况下配置有两个[组织](glossary.html#organization)、每个组织一个[同级](glossary.html#peer)以及一个[通道](glossary.html#channel)。创建网络后，可以向网络扩展和添加更多组织和同级。<!--Note that it might cause extra cost if you exceed the default resource limits of two organizations and two peers.-->
 {:shortdesc}
 
-**注**：
-1. {{site.data.keyword.blockchainfull}} Platform 入门套餐是一个开发与测试环境。如果需要生产环境，请参阅[关于企业套餐](enterprise_plan.html)。
-2. 现在，入门套餐处于 Beta 阶段，仅在 {{site.data.keyword.cloud_notm}} 中的**美国南部**区域中可用。
+**注**：{{site.data.keyword.blockchainfull}} Platform 入门套餐是一个开发与测试环境，不适合生产工作负载。如果需要生产环境，请参阅[关于企业套餐](enterprise_plan.html)。
 
 入门套餐支持您学习和培养使用 {{site.data.keyword.blockchainfull_notm}} Platform 的技能，运行样本应用程序，测试您自己的应用程序以及模拟多组织场景。本入门教程介绍了创建和使用入门套餐网络时需要遵循的先决条件和步骤。
 
@@ -31,12 +29,14 @@ lastupdated: "2018-03-16"
 ## 创建网络
 创建 {{site.data.keyword.blockchainfull_notm}} Platform 服务实例后，可以立即获取使用缺省配置的入门套餐[网络](glossary.html#network)。
 
-1. 在 {{site.data.keyword.cloud_notm}}“目录”中，找到 [Blockchain 服务 ![外部链接图标](images/external_link.svg "外部链接图标")](https://console.bluemix.net/catalog/services/blockchain)。您需要使用 {{site.data.keyword.cloud_notm}} 帐户登录。如果您没有帐户，请单击**注册以创建**按钮。确保在 {{site.data.keyword.cloud_notm}} 中选择**美国南部**作为区域。
-2. 选择要在其中创建网络的 Cloud Foundry 组织和空间。
-3. 从价格套餐表中选择**入门成员资格套餐**。
-4. 单击**创建**按钮。请注意，如果您受邀加入网络，那么会看到一个弹出式欢迎面板。要创建网络，请选择**继续至网络**，然后单击**继续**。要加入网络，请参阅[加入网络](#joining-a-network)中的步骤 5。
+1. 在 {{site.data.keyword.cloud_notm}}“目录”中，找到 [Blockchain 服务 ![外部链接图标](images/external_link.svg "外部链接图标")](https://console.bluemix.net/catalog/services/blockchain)。   
+    **注**：您需要使用 {{site.data.keyword.cloud_notm}} 付费帐户登录。如果您没有帐户，请单击**注册以创建**按钮。在创建免费试用帐户后，通过转至 {{site.data.keyword.cloud_notm}} 控制台中的**管理** > **计费和使用情况** > **计费**，然后单击**添加信用卡**，将其升级为**现买现付**类型。
+2. 选择 {{site.data.keyword.cloud_notm}} 中的区域以创建网络。
+3. 选择 Cloud Foundry 组织和空间以创建网络。
+4. 从价格套餐表中选择**入门成员资格套餐**。
+5. 单击**创建**按钮。请注意，如果您受邀加入网络，那么会看到一个弹出式欢迎面板。要创建网络，请选择**继续至网络**，然后单击**继续**。要加入网络，请参阅[加入网络](#joining-a-network)中的步骤 5。
   现在您已准备好使用具有缺省配置的入门套餐网络。网络运行时，会有一个排序者（称为“SOLO”排序服务）、两个组织、一个 CA 以及每个组织一个同级。此外还会创建一个缺省通道。
-5. 单击**启动**按钮。
+6. 单击**启动**按钮。
 
 您可以在 [{{site.data.keyword.Bluemix_notm}} 服务仪表板 ![外部链接图标](images/external_link.svg "外部链接图标")](https://console.bluemix.net/dashboard/services "{{site.data.keyword.Bluemix_notm}} 服务仪表板") 中找到区块链服务实例。
 
@@ -69,7 +69,7 @@ You can create a [channel](glossary.html#channel) in your network and invite oth
 -->
 <!--
 ## Installing and instantiating your chaincode
-You can run [chaincode](glossary.html#chaincode) on your peers in the network.  For more information about deploying pre-built samples, see [Installing and instantiating a chaincode](howto/install_instantiate_chaincode.html).
+You can run [chaincode](glossary.html#chaincode) on your peers in the network.  For more information about deploying pre-built samples, see [Installing, instantiating, and updating a chaincode](howto/install_instantiate_chaincode.html).
 -->
 
 
@@ -82,11 +82,13 @@ You can run [chaincode](glossary.html#chaincode) on your peers in the network.  
 使用以下步骤来检索服务凭证：
 1. 在服务实例页面上，单击左侧导航器中的**服务凭证**，以显示“服务凭证”屏幕。
 2. 单击“服务凭证”屏幕中的**新建凭证**。
-3. 在“添加新凭证”屏幕中，为凭证提供名称，然后单击**添加**。新的凭证会添加到表中。您可以单击“操作”列下的**查看凭证**以查看凭证详细信息。此凭证包含 API 密钥和私钥，可用于授权 API。
-    如果要查看网络的连接概要文件，请在创建新凭证时，输入 **{"legacy": true}** 作为内联配置参数。连接概要文件包含网络资源的 API 端点，可以在 API 和应用程序中使用。
+3. 在“添加新凭证”屏幕中，为凭证提供名称，然后在“添加内联配置参数”字段中，输入 **{"type": "service_instance_token"}**。单击**添加**。新的凭证会添加到表中。您可以单击“操作”列下的**查看凭证**以查看凭证详细信息。此凭证包含 API 密钥和私钥，可用于授权 API。
+      
+
+![检索网络凭证](images/service_credentials.gif "检索网络凭证")
 
 ### 在网络监视器中进行检索
-可以在“网络监视器”的“API”屏幕上找到网络凭证。有关使用 API 的更多信息，请参阅[使用 Swagger 试用 API](apis.html)。
+可以在“网络监视器”的“API”屏幕上找到网络凭证。有关使用 API 的更多信息，请参阅[使用 Swagger API 与网络进行交互](howto/swagger_apis.html)。
 
 可以在“网络监视器”的“概述”屏幕上检索连接概要文件。单击“概述”屏幕上的**连接概要文件**按钮，连接概要文件会显示在新页面中。
 
@@ -116,11 +118,15 @@ You can run [chaincode](glossary.html#chaincode) on your peers in the network.  
 
 可以将针对入门套餐网络测试的 `.bna`、链代码和应用程序部署到企业套餐网络中。
 
-如果您有自己的业务网络归档文件 (`.bna`)，请遵循[将业务网络部署到企业套餐](./develop_enterprise.html)的指示信息。如果您没有 `.bna` 文件，请使用 `composer network download` 命令在入门套餐实例中检索该文件。有关 `composer network download` 命令的更多信息，请参阅 [Hyperledger Composer 命令行文档 ![外部链接图标](images/external_link.svg "外部链接图标")](https://hyperledger.github.io/composer/reference/commands){:new_window}。
+如果您有自己的业务网络归档文件 (`.bna`)，请遵循[将业务网络部署到企业套餐](./develop_enterprise.html)的指示信息。如果您没有 `.bna` 文件，请使用 `composer network download` 命令在入门套餐实例中检索该文件。有关 `composer network download` 命令的更多信息，请参阅 [Hyperledger Composer 命令行文档 ![外部链接图标](images/external_link.svg "外部链接图标")](https://hyperledger.github.io/composer/latest/reference/commands){:new_window}。
 
-链代码与 `.bna` 文件类似，也是在外部开发的。要将针对入门套餐网络测试的链代码部署到企业套餐中，请遵循[安装和实例化链代码](howto/install_instantiate_chaincode.html#installchaincode)中的指示信息进行操作。
+链代码与 `.bna` 文件类似，也是在外部开发的。要将针对入门套餐网络测试的链代码部署到企业套餐中，请遵循[安装、实例化和更新链代码](howto/install_instantiate_chaincode.html#installchaincode)中的指示信息进行操作。
 
-正如您在[部署样本应用程序](howto/prebuilt_samples.html)中所见，通过入门套餐，可以使用工具链轻松获得与网络集成的样本应用程序。此设置还支持每当派生的应用程序存储库更改时，都通过自动更新样本应用程序进行持续集成。如果要将此应用程序部署到企业套餐网络中，可以将派生的应用程序存储库复制到新的存储库中，然后遵循[手动部署样本应用程序](howto/prebuilt_samples.html#deploy_sample_applications_manually)中的指示信息进行操作。
+<!--
+As you can see in [Deploying sample applications](howto/prebuilt_samples.html), Starter Plan makes it easy to get a sample application integrated with your network by using Toolchain. This setup also allows for continuous integration by automatically updating your sample application whenever your forked application repo is changed. If you want to deploy this application into an Enterprise Plan network, you can copy your forked application repo into a new repo and then follow the instructions in [Deploying sample applications manually](howto/prebuilt_samples.html#deploy_sample_applications_manually).
+-->
+
+如果在入门套餐网络中部署了任何样本应用程序，但现在希望将此应用程序部署到企业套餐网络中，那么可以将派生的应用程序存储库复制到新的存储库中，然后遵循[手动部署样本应用程序](howto/prebuilt_samples.html#deploy_sample_applications_manually)中的指示信息进行操作。
 
 
 ## 删除或离开网络

@@ -35,7 +35,7 @@
                 <tspan x="776.15" y="823">service</tspan>
             </text>
             <text id="Ledger" font-family="HelveticaNeue-Light, Helvetica Neue" font-size="18" font-weight="300" fill="#6E5F5F">
-                <tspan x="979.32" y="802">Hauptbuch</tspan>
+                <tspan x="979.32" y="802">Ledger</tspan>
             </text>
             <g id="v" transform="translate(161.000000, 856.000000)">
                 <rect id="Rectangle" fill="#CEE07F" x="1.67857143" y="11.1111111" width="15.1071429" height="37.7777778"></rect>

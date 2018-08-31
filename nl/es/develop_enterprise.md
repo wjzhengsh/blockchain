@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-3-16"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -14,6 +14,7 @@ lastupdated: "2018-3-16"
 {:tip: .tip}
 
 # Despliegue de una red empresarial en el Plan empresarial
+{: #deploying-a-business-network}
 
 Las herramientas del desarrollador de {{site.data.keyword.blockchainfull}} Platform: Develop le ayudan a crear una **Definición de red empresarial**, que se puede empaquetar en un archivo de red empresarial (`.bna`). El entorno del desarrollador le permite desplegar archivos `.bna` en un {{site.data.keyword.blockchain}} local o de nube para su desarrollo y compartición.
 
@@ -29,19 +30,29 @@ Necesita acceso a una instancia del Plan empresarial de la plataforma {{site.dat
 
 1. Cree un directorio en el que almacenará los detalles de conexión, por ejemplo:
 
-        /Users/myUserId/.composer-connection-profiles/bmx-hlfv1
+    ```
+    /Users/myUserId/.composer-connection-profiles/bmx-hlfv1
+    ```
+    {:codeblock}
 
     Cada perfil de conexión debe contener un archivo `connection.json`. Cree un directorio nuevo bajo `.composer-connection-profiles`, en este caso `bmx-hlfv1`. Este será el nombre del perfil que utilizará cuando trabaje con Hyperledger Composer y con la plataforma {{site.data.keyword.blockchainfull_notm}}.
 
-        mkdir -p ~/.composer-connection-profiles/bmx-hlfv1
+    ```
+    mkdir -p ~/.composer-connection-profiles/bmx-hlfv1
         cd ~/.composer-connection-profiles/bmx-hlfv1
+    ```
+    {:codeblock}
 
 2. Ahora debería tener la siguiente estructura de directorios:
 
-        /Users/myUserId/.composer-connection-profiles/bmx-hlfv1
+    ```
+    /Users/myUserId/.composer-connection-profiles/bmx-hlfv1
+    ```
+    {:codeblock}
 
     Cree un archivo en el directorio recién creado y llámelo `connection.json`. Puede utilizar la siguiente plantilla para el archivo `connection.json`:
 
+    ```
         {
             "name": "bmx-hlfv1",
             "description": "A description for a V1 Profile",
@@ -67,16 +78,21 @@ Necesita acceso a una instancia del Plan empresarial de la plataforma {{site.dat
             "globalCert": "-----BEGIN CERTIFICATE-----\r\n...LotsOfStuff\r\n-----END CERTIFICATE-----\r\n-----BEGIN CERTIFICATE-----\r\nMorestuff\r\n-----END CERTIFICATE-----\r\n",
             "timeout": 300
         }
+    ```
+    {:codeblock}
 
-    Deberá llenar el archivo `connection.json` recién creado con los atributos que se proporcionan mediante el panel de control de la plataforma {{site.data.keyword.blockchainfull_notm}}. Desde el panel de control, seleccione **Visión general** y luego el botón **Credenciales de servicio** para visualizar el punto final y la información de certificado para los miembros del canal.
+    Deberá llenar el archivo `connection.json` recién creado con los atributos que se proporcionan mediante el panel de control de la plataforma {{site.data.keyword.blockchainfull_notm}}. Desde el panel de control, seleccione **Visión general** y luego el botón **Perfil de conexión** para visualizar el punto final y la información de certificado para los miembros del canal.
 
 ## Paso dos: Adición de información del clasificador
 
-1. Ahora podemos empezar a modificar la plantilla con la información que proporcionan las credenciales de servicio. Podría haber varios clasificadores en las credenciales de servicio, pero solo se necesita uno para el archivo `connection.json`.
+1. Ahora podemos empezar a modificar la plantilla con la información que proporciona el perfil de conexión. Podría haber varios clasificadores en el perfil de conexión, pero solo se necesita uno para un archivo `connection.json`.
 
-    Sustituya los valores de url del clasificador de la plantilla por la información pertinente de las credenciales de servicio en el formato siguiente:
+    Sustituya los valores url del clasificador de la plantilla por la información relevante del perfil de conexión en el formato siguiente:
 
-        “url”: “grpcs://abca.4.secure.blockchain.ibm.com:12345”
+    ```
+    "url": "grpcs://abca.4.secure.blockchain.ibm.com:12345"
+    ```
+    {:codeblock}
 
 ## Paso tres: Adición de información sobre la autoridad emisora de certificados
 
@@ -84,17 +100,23 @@ Necesita acceso a una instancia del Plan empresarial de la plataforma {{site.dat
 
 ## Paso cuatro: Adición de información de iguales
 
-1. Se deben establecer los valores de **requestURL** y **eventURL** para cada igual. Sustituya el atributo **url** por el valor de **url** que se encuentra en las credenciales de servicio. Sustituya el atributo **eventURL** por el valor **eventUrl** que se encuentra en las credenciales de servicio. Después de realizar los cambios, la sección peers del archivo `connection.json` debería tener el siguiente formato:
+1. Se deben establecer los valores de **requestURL** y **eventURL** para cada igual. Sustituya el atributo **url** por el valor **url** que se encuentra en el perfil de conexión. Sustituya el atributo **eventURL** por el valor **eventUrl** que se encuentra en el perfil de conexión. Después de realizar los cambios, la sección peers del archivo `connection.json` debería tener el siguiente formato:
 
+    ```
         "peers": [{
               "requestURL": "grpcs://abca.4.secure.blockchain.ibm.com:12345",
               "eventURL": "grpcs://abca.4.secure.blockchain.ibm.com:12345"
+    ```
+    {:codeblock}
 
 ## Paso cinco: Adición de información de keyValStore
 
 1. Establezca el atributo **keyValStore** de modo que apunte al directorio adecuado. Cree un directorio para utilizarlo para **keyValStore**. Por ejemplo, un directorio nuevo bajo el directorio inicial llamado `.composer-credentials-mychannel`. Asegúrese de que el atributo **keyValStore** apunte al directorio recién creado en el siguiente formato:
 
-        "keyValStore": "/Users/myUserId/.composer-credentials-mychannel",
+    ```
+    "keyValStore": "/Users/myUserId/.composer-credentials-mychannel",
+    ```
+    {:codeblock}
 
 ## Paso seis: Adición de información de canal
 
@@ -102,19 +124,23 @@ Necesita acceso a una instancia del Plan empresarial de la plataforma {{site.dat
 
 ## Paso siete: Adición de un mspID
 
-El valor de **mspID** del archivo `connection.json` se debe establecer en el mspID o la organización. Las credenciales de servicio proporcionan una lista de organizaciones con sus valores de mspid asociados. Debe utilizar el valor del atributo **mspid** correspondiente a su organización.
+El valor de **mspID** del archivo `connection.json` debe establecerse en el mspID de la organización. El perfil de conexión proporciona una lista de las organizaciones con sus valores mspid asociados. Debe utilizar el valor del atributo **mspid** de su organización.
 
 ## Paso ocho: Adición de globalCert
 1. La plataforma {{site.data.keyword.blockchainfull_notm}} utiliza un certificado TLS común para clasificadores e iguales. Para cada clasificador e igual, hay un atributo **tlsCACerts**; todos contienen el mismo certificado. Sustituya el valor ficticio del archivo `connection.json` por el valor de **tlsCACerts**. Debe tener el siguiente formato:
 
-        "globalCert": "-----BEGIN CERTIFICATE-----\r\.......
+    ```
+    "globalCert": "-----BEGIN CERTIFICATE-----\r\.......
+    ```
+    {:codeblock}
 
 ## Paso nueve: Preparación de los iguales
 
 **Nota**: este paso se **debe** realizar antes de crear el canal en el que se va a desplegar una red empresarial. Si este paso se realiza después de crear el canal, la red empresarial desplegada **no se iniciará**.
 
-En el documento de credenciales de servicio, bajo **certificateAuthorities**, hay un atributo **registrar** que contiene atributos correspondientes a **enrollId** y **enrollSecret** en el formato siguiente:
+En el documento de perfil de conexión, bajo **certificateAuthorities**, hay un atributo **registrar** que contiene atributos correspondientes a **enrollId** y **enrollSecret** en el formato siguiente:
 
+ ```
         "registrar": [
             {
                 "affiliation": "org1",
@@ -122,10 +148,15 @@ En el documento de credenciales de servicio, bajo **certificateAuthorities**, ha
                 "enrollSecret": "PA55W0RD12"
             }
         ],
+ ```
+ {:codeblock}
 
 1. Solicite los certificados con el mandato siguiente:
 
-        composer identity request -p bmx-hlfv1 -i admin -s PA55W0RD12
+    ```
+    composer identity request -p bmx-hlfv1 -i admin -s PA55W0RD12
+    ```
+    {:codeblock}
 
     Esto descarga tres archivos en el directorio `.identityCredentials` bajo el directorio de inicio. Los archivos que le interesan se basan en **enrollId**. Así, en el ejemplo anterior habrá dos archivos llamados **admin-pub.pem** y **admin-priv.pem**
 
@@ -157,11 +188,14 @@ En el documento de credenciales de servicio, bajo **certificateAuthorities**, ha
 
 ## Paso once: Importación de una nueva identidad para administrar la red empresarial
 
-Cree una identidad en Composer utilizando los certificados solicitados con anterioridad. Esta nueva identidad tendrá autoridad para instalar código de encadenamiento en los iguales que tienen el certificado público cargado y será un emisor para las entidades emisoras de certificados.
+Cree una identidad en Composer utilizando los certificados solicitados con anterioridad. Esta nueva identidad tendrá autoridad para instalar un código de encadenamiento en los iguales que tienen el certificado público cargado y será un emisor para las entidades emisoras de certificados.
 
 1. Para crear la nueva identidad, ejecute el mandato siguiente:
 
-        composer identity import -p bmx-hlfv1 -u admin -c ~/.identityCredentials/admin-pub.pem -k ~/.identityCredentials/admin-priv.pem
+    ```
+    composer identity import -p bmx-hlfv1 -u admin -c ~/.identityCredentials/admin-pub.pem -k ~/.identityCredentials/admin-priv.pem
+    ```
+    {:codeblock}
 
     Donde `bmx-hlfv1` es el nombre del perfil que ha creado anteriormente. Ahora esté preparado para desplegar su archivo `.bna` en la plataforma {{site.data.keyword.blockchainfull_notm}}.
 
@@ -172,4 +206,7 @@ Ahora puede desplegar el archivo `.bna` en la plataforma {{site.data.keyword.blo
 
 1. Con la identidad creada en el paso anterior, despliegue la red empresarial con el siguiente mandato:
 
-        composer network deploy -a myNetwork.bna -p bmx-hlfv1 -i admin -s anyString
+   ```
+   composer network deploy -a myNetwork.bna -p bmx-hlfv1 -i admin -s anyString
+   ```
+   {:codeblock}

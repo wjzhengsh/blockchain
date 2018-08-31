@@ -26,7 +26,7 @@ L'architecture d'{{site.data.keyword.blockchainfull_notm}} repose sur le projet 
 
 ## Déclaration Open source
 
-Les plans de l'offre {{site.data.keyword.blockchainfull_notm}} on {{site.data.keyword.Bluemix_notm}} reposent sur la pile Hyperledger Fabric de Linux Foundation. Les membres du projet Hyperledger, y compris IBM, continuent à contribuer aux différents sous-projets sous l'égide de Hyperledger. Toutes les contributions sont passées en revue, certifiées et testées par la communauté.
+Les plans de l'offre {{site.data.keyword.blockchainfull_notm}} on {{site.data.keyword.Bluemix_notm}} reposent sur la pile Hyperledger Fabric de Linux Foundation. Les membres du projet Hyperledger, y compris IBM, continuent à contribuer aux différents sous-projets sous l'égide de Hyperledger.  Toutes les contributions sont passées en revue, certifiées et testées par la communauté.
 
 ## Déclaration du support du code blockchain
 
@@ -37,8 +37,6 @@ Les pratiques de codage suivantes NE sont PAS prises en charge sur les réseaux 
 3. Ecriture de code blockchain dangereux (query et invoke peuvent être appelés en parallèle).
 4. Substitution de mémoire globale ou de mémoire cache pour les variables d'état de registre dans le code blockchain.
 5. Accès à des services externes, comme les bases de données, directement depuis le code blockchain.
-6. Utilisation de bibliothèques ou de variables globales qui
-pourraient introduire du non déterminisme (utilisation de "random" ou
-"time", par exemple).  
+6. Utilisation de bibliothèques ou de variables globales qui pourraient introduire du non déterminisme (utilisation de "random" ou "time", par exemple).  
 
 En outre, il n'est pas recommandé d'écrire du code blockchain non déterministe, car cela présente un risque pour la cohérence et l'intégrité des données.  Il est à noter que l'architecture Hyperledger Fabric est conçue pour contrer le code blockchain non déterministe via une série de vérifications d'adhésion et de validation. Cependant, vous êtes quand même fortement encouragé à coder des fonctions déterministes qui ne reposent pas sur des variables globales non statiques (par exemple, le temps).  

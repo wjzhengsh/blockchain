@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-3-16"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -14,6 +14,7 @@ lastupdated: "2018-3-16"
 {:tip: .tip}
 
 # 在企業方案上部署商業網路
+{: #deploying-a-business-network}
 
 「{{site.data.keyword.blockchainfull}} 平台：開發」的開發人員工具可協助您建立**商業網路定義**，然後再將其包裝在商業網路保存檔 (`.bna`) 中。開發人員環境可讓您將 `.bna` 檔案部署至本端或雲端 {{site.data.keyword.blockchain}}，以供開發及共用。
 
@@ -29,19 +30,29 @@ lastupdated: "2018-3-16"
 
 1. 建立一個目錄來儲存您的連線詳細資料，例如：
 
-        /Users/myUserId/.composer-connection-profiles/bmx-hlfv1
+    ```
+    /Users/myUserId/.composer-connection-profiles/bmx-hlfv1
+    ```
+    {:codeblock}
 
     每個連線設定檔都應該包含 `connection.json` 檔案。請在 `.composer-connection-profiles` 之下建立新的目錄，在此實例中為 `bmx-hlfv1`。這將會是您在使用 Hyperledger Composer 和「{{site.data.keyword.blockchainfull_notm}} 平台」時，所要使用的設定檔名稱。
 
-        mkdir -p ~/.composer-connection-profiles/bmx-hlfv1
-        cd ~/.composer-connection-profiles/bmx-hlfv1
+    ```
+    mkdir -p ~/.composer-connection-profiles/bmx-hlfv1
+    cd ~/.composer-connection-profiles/bmx-hlfv1
+    ```
+    {:codeblock}
 
 2. 您現在應該有下列目錄結構：
 
-        /Users/myUserId/.composer-connection-profiles/bmx-hlfv1
+    ```
+    /Users/myUserId/.composer-connection-profiles/bmx-hlfv1
+    ```
+    {:codeblock}
 
     在新建的目錄中，建立一個名為 `connection.json` 的檔案。您可以使用下列範本來建立您的 `connection.json` 檔案：
 
+    ```
         {
             "name": "bmx-hlfv1",
             "description": "A description for a V1 Profile",
@@ -67,16 +78,21 @@ lastupdated: "2018-3-16"
             "globalCert": "-----BEGIN CERTIFICATE-----\r\n...LotsOfStuff\r\n-----END CERTIFICATE-----\r\n-----BEGIN CERTIFICATE-----\r\nMorestuff\r\n-----END CERTIFICATE-----\r\n",
             "timeout": 300
         }
+    ```
+    {:codeblock}
 
-    您要在新建的 `connection.json` 檔案中移入透過「{{site.data.keyword.blockchainfull_notm}} 平台」儀表板提供的屬性。從您的儀表板中選取**概觀**，然後按一下**服務認證**按鈕，以顯示通道成員的端點及憑證資訊。
+    您要在新建的 `connection.json` 檔案中移入透過「{{site.data.keyword.blockchainfull_notm}} 平台」儀表板提供的屬性。從您的儀表板中選取**概觀**，然後選取**連線設定檔**按鈕，以顯示頻道成員的端點及憑證資訊。
 
 ## 步驟 2：新增排序節點資訊
 
-1. 現在我們可以開始使用「服務認證」提供的資訊來修改範本。「服務認證」中可能有多個排序節點，但只需要將一個排序節點用於 `connection.json` 檔案。
+1. 現在我們可以開始使用「連線設定檔」提供的資訊來修改範本。「連線設定檔」中可能有多個排序節點，但只需要將一個排序節點用於 `connection.json` 檔案。
 
-    使用服務認證提供的相關資訊來取代範本中的排序節點 URL 值，格式如下：
+    使用「連線設定檔」中的相關資訊來取代範本中的排序節點 URL 值，格式如下：
 
-        “url”: “grpcs://abca.4.secure.blockchain.ibm.com:12345”
+    ```
+    "url": "grpcs://abca.4.secure.blockchain.ibm.com:12345"
+    ```
+    {:codeblock}
 
 ## 步驟 3：新增憑證管理中心資訊
 
@@ -84,38 +100,48 @@ lastupdated: "2018-3-16"
 
 ## 步驟 4：新增對等節點資訊
 
-1. 每個對等節點的 **requestURL** 和 **eventURL** 都必須設定。請使用在「服務認證」中找到的 **url** 值來取代 **url** 屬性。使用在「服務認證」中找到的 **eventUrl** 來取代 **eventURL** 屬性。進行變更之後，`connection.json` 的 peers 區段格式應如下所示：
+1. 每個對等節點的 **requestURL** 和 **eventURL** 都必須設定。使用在「連線設定檔」中找到的 **url** 值來取代 **url** 屬性。使用在「連線設定檔」中找到的 **eventUrl** 來取代 **eventURL** 屬性。進行變更之後，`connection.json` 的 peers 區段格式應如下所示：
 
+    ```
         "peers": [
           {
               "requestURL": "grpcs://abca.4.secure.blockchain.ibm.com:12345",
               "eventURL": "grpcs://abca.4.secure.blockchain.ibm.com:12345"
+    ```
+    {:codeblock}
 
 ## 步驟 5：新增 keyValStore 資訊
 
 1. 將 **keyValStore** 屬性設定為指向適當的目錄。建立一個要用於 **keyValStore** 的目錄。例如，在起始目錄之下建立一個名為 `.composer-credentials-mychannel` 的新目錄。確定 **keyValStore** 屬性指向新建的目錄，格式如下：
 
-        "keyValStore": "/Users/myUserId/.composer-credentials-mychannel",
+    ```
+    "keyValStore": "/Users/myUserId/.composer-credentials-mychannel",
+    ```
+    {:codeblock}
 
-## 步驟 6：新增通道資訊
+## 步驟 6：新增頻道資訊
 
-1. 取代 `connection.json` 中的 channel 值，以符合您計劃要建立並將商業網路部署至其中的通道名稱。
+1. 取代 `connection.json` 中的 channel 值，以符合您計劃要建立並將商業網路部署至其中的頻道名稱。
 
 ## 步驟 7：新增 mspID
 
-`connection.json` 檔案中的 **mspID** 值應該設為 mspID 或您的組織。服務認證提供組織及其相關聯 mspid 值的清單。您應該要為您的組織使用 **mspid** 屬性中的值。
+`connection.json` 檔案中的 **mspID** 值應該設為組織的 mspID。「連線設定檔」提供組織與其相關聯 mspid 值的清單。您應該使用您組織之 **mspid** 屬性中的值。
 
 ## 步驟 8：新增 globalCert
 1. 「{{site.data.keyword.blockchainfull_notm}} 平台」為排序節點和對等節點使用一般 TLS 憑證。每個排序節點和對等節點各有一個 **tlsCACerts** 屬性，全都包含相同的憑證。請將 `connection.json` 檔案中的 dummy 值取代為 **tlsCACerts** 值。其應採用下列格式：
 
-        "globalCert": "-----BEGIN CERTIFICATE-----\r\.......
+    ```
+    "globalCert": "-----BEGIN CERTIFICATE-----\r\.......
+    ```
+    {:codeblock}
 
 ## 步驟 9：準備您的對等節點
 
-**請注意**：在您建立要用來部署商業網路的通道之前，**必須**先執行此步驟。如果在建立通道之後才執行此步驟，所部署的商業網路**將不會啟動**。
+**請注意**：在您建立要用來部署商業網路的頻道之前，**必須**先執行此步驟。如果在建立頻道之後才執行此步驟，所部署的商業網路**將不會啟動**。
 
-在服務認證文件中的 **certificateAuthorities** 之下，有一個 **registrar** 屬性包含 **enrollId** 和 **enrollSecret** 的屬性，格式如下：
+在「連線設定檔」文件的 **certificateAuthorities** 下方，有一個 **registrar** 屬性包含 **enrollId** 和 **enrollSecret** 的屬性，格式如下：
 
+ ```
         "registrar": [
             {
                 "affiliation": "org1",
@@ -123,10 +149,15 @@ lastupdated: "2018-3-16"
                 "enrollSecret": "PA55W0RD12"
             }
         ],
+ ```
+ {:codeblock}
 
 1. 使用下列指令來要求憑證：
 
-        composer identity request -p bmx-hlfv1 -i admin -s PA55W0RD12
+    ```
+    composer identity request -p bmx-hlfv1 -i admin -s PA55W0RD12
+    ```
+    {:codeblock}
 
     這會將三個檔案下載至起始目錄下的 `.identityCredentials` 目錄中。所需的檔案是以 **enrollId** 為基礎。因此在上述範例中，會有名為 **admin-pub.pem** 和 **admin-priv.pem** 的兩個檔案。
 
@@ -140,21 +171,21 @@ lastupdated: "2018-3-16"
 
 7. 現在，該憑證應該會出現在憑證清單中。
 
-## 步驟 10：建立您的通道
+## 步驟 10：建立您的頻道
 
-1. 從左畫面的導覽功能表中選取**通道**，然後按一下**新建通道**按鈕。
+1. 從左畫面的導覽功能表中選取**頻道**，然後按一下**新建頻道**按鈕。
 
-2. 輸入「通道名稱」和選擇性說明，並按**下一步**。請注意，「通道名稱」必須符合您在連線設定檔中為通道屬性指定的名稱。
+2. 輸入「頻道名稱」和選擇性說明，並按**下一步**。請注意，「頻道名稱」必須符合您在連線設定檔中為頻道屬性指定的名稱。
 
 3. 依需要提供許可權，並按**下一步**。
 
-4. 選取需要接受通道更新項目的操作員數目原則，並提交要求。
+4. 選取需要接受頻道更新項目的操作員數目原則，並提交要求。
 
 5. 您現在應該會進入**通知**區段，其中應該會有一個需要檢閱的新要求。按一下**檢閱要求**按鈕。
 
-6. 按一下**接受**按鈕，您會再回到**通知**區段，在其中將看到現在可以提交要求了。按一下**提交要求**按鈕，以開啟提交對話框，然後按一下**提交**按鈕。新通道即已建立。
+6. 按一下**接受**按鈕，您會再回到**通知**區段，在其中將看到現在可以提交要求了。按一下**提交要求**按鈕，以開啟提交對話框，然後按一下**提交**按鈕。新頻道即已建立。
 
-7. 從導覽功能表中選取**通道**。新通道會出現在通道清單中，並且應該會有「尚未新增對等節點」。按一下它旁邊的動作功能表，然後選取**加入對等節點**。勾選您要新增之「對等節點」旁邊的勾選框，然後按**新增選定項目**。
+7. 從導覽功能表中選取**頻道**。新頻道會出現在頻道清單中，並且應該會有「尚未新增對等節點」。按一下它旁邊的動作功能表，然後選取**加入對等節點**。勾選您要新增之「對等節點」旁邊的勾選框，然後按**新增選定項目**。
 
 ## 步驟 11：匯入新身分來管理您的商業網路
 
@@ -162,7 +193,10 @@ lastupdated: "2018-3-16"
 
 1. 若要建立新身分，請執行下列指令：
 
-        composer identity import -p bmx-hlfv1 -u admin -c ~/.identityCredentials/admin-pub.pem -k ~/.identityCredentials/admin-priv.pem
+    ```
+    composer identity import -p bmx-hlfv1 -u admin -c ~/.identityCredentials/admin-pub.pem -k ~/.identityCredentials/admin-priv.pem
+    ```
+    {:codeblock}
 
     其中 `bmx-hlfv1` 是您先前建立的設定檔名稱。現在我們已準備好將 `.bna` 檔案部署至「{{site.data.keyword.blockchainfull_notm}} 平台」。
 
@@ -173,4 +207,7 @@ lastupdated: "2018-3-16"
 
 1. 以在前一個步驟中建立的身分，使用下列指令來部署商業網路：
 
-        composer network deploy -a myNetwork.bna -p bmx-hlfv1 -i admin -s anyString
+   ```
+   composer network deploy -a myNetwork.bna -p bmx-hlfv1 -i admin -s anyString
+   ```
+   {:codeblock}

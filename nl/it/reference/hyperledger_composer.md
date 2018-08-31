@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-3-16"
+lastupdated: "2018-06-14"
 ---
 
 {:new_window: target="_blank"}
@@ -15,7 +15,8 @@ lastupdated: "2018-3-16"
 # Hyperledger Composer
 {: #hyperledger-composer}
 
-{{site.data.keyword.blockchainfull}} Platform: Develop è sviluppato sul set di strumenti Hyperledger Composer open-source, uno dei progetti nell'Hyperledger Project della Linux Foundation. Hyperledger Composer consente agli architetti e agli sviluppatori di creare rapidamente soluzioni {{site.data.keyword.blockchain}} con le API REST che presentano la logica di business ad applicazioni web o mobili, nonché l'integrazione blockchain con i SOR (systems of record) aziendali esistenti.{:shortdesc}
+{{site.data.keyword.blockchainfull}} Platform: Develop è sviluppato sul set di strumenti Hyperledger Composer open-source, uno dei progetti nell'Hyperledger Project della Linux Foundation. Hyperledger Composer consente agli architetti e agli sviluppatori di creare rapidamente soluzioni {{site.data.keyword.blockchain}} con le API REST che presentano la logica di business ad applicazioni web o mobili, nonché l'integrazione blockchain con i SOR (systems of record) aziendali esistenti.
+{:shortdesc}
 
 Hyperledger Composer è composto da un runtime, un'interfaccia riga di comando, un server REST, un connettore LoopBack, un'interfaccia utente Playground, un generatore di codice Yeoman e i plugin editor VSCode e Atom. Per ulteriori informazioni su Hyperledger Composer, vedi la [documentazione di Hyperledger![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger.github.io/composer/latest/introduction/introduction.html)
 
@@ -28,7 +29,7 @@ Per ulteriori informazioni sulla creazione di reti di business, vedi [Sviluppo d
 
 ## Query
 
-Le query vengono utilizzate per restituire i dati sullo stato globale della blockchain. Le query vengono definite in una rete di business e possono includere parametri variabili per una semplice personalizzazione. Utilizzando le query, i dati possono essere facilmente estratti dalla tua rete {{site.data.keyword.blockchain}}. Le query vengono inviate utilizzando la [API Hyperledger Composer![Icona link esterno](../images/external_link.svg "Icona link eserno")](https://hyperledger.github.io/composer/latest/api/api-doc-index).
+Le query vengono utilizzate per restituire i dati sullo stato globale della blockchain. Le query vengono definite in una rete di business e possono includere parametri variabili per una semplice personalizzazione. Utilizzando le query, i dati possono essere facilmente estratti dalla tua rete {{site.data.keyword.blockchain}}. Le query vengono inviate utilizzando la [API Hyperledger Composer![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger.github.io/composer/latest/api/api-doc-index).
 
 Per ulteriori informazioni sull'utilizzo delle query nella tua rete di business, consulta il documento relativo a [query e filtro dei dati di rete di business ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger.github.io/composer/business-network/query).
 

@@ -14,7 +14,8 @@ lastupdated: "2018-03-16"
 
 # 엔터프라이즈 플랜 정보
 
-{{site.data.keyword.blockchainfull}} Platform 엔터프라이즈 플랜은 실제 비즈니스용 블록체인 네트워크를 작성하거나 가입할 조직을 위한 프로덕션 준비가 된 오퍼링입니다. 이 플랜은 보안성이 높고 프로덕션 준비가 된 네트워크를 쉽게 시작하기 위한 도구 및 지원과 함께 핵심 인프라를 제공합니다.
+{{site.data.keyword.blockchainfull}} Platform 엔터프라이즈 플랜은 실제 비즈니스용 블록체인 네트워크를 작성하거나 가입할 조직을 위한 프로덕션 준비가 된 오퍼링입니다. 이 플랜은 보안성이 높고 프로덕션 준비가 된 네트워크를 쉽게 시작하기 위한 도구 및 지원과 함께 핵심 인프라를 제공합니다. 엔터프라이즈 플랜은 2018년 5월 15일에 Hyperledger Fabric V1.0에서 V1.1로 업그레이드되었습니다. 2018년 5월 15일 이후에 작성된 모든 네트워크는 Fabric V1.1 레벨입니다. 그러나 이전에 작성된 네트워크는 Fabric V1.0 레벨로 유지됩니다.
+{:shortdesc}
 
 **참고**: {{site.data.keyword.blockchainfull_notm}} Platform 엔터프라이즈 플랜은 프로덕션 환경을 제공합니다. 개발 및 테스트 환경이 필요한 경우 [스타터 플랜 정보](starter_plan.html)를 참조하십시오.
 
@@ -22,7 +23,7 @@ lastupdated: "2018-03-16"
 
 [{{site.data.keyword.blockchainfull_notm}} 멤버십 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps)에 지금 가입하십시오.
 
-{{site.data.keyword.blockchainfull_notm}} Platform은 인증 기관(CA) 및 1개 이상의 피어(최대 6개)를 포함하는 주요 Hyperledger Fabric 컴포넌트와 함께 빌드됩니다. 또한 엔터프라이즈 플랜은 네트워크 구성원에게 충돌 결함 허용(CFT) Kafka 순서 지정 서비스를 제공합니다.
+{{site.data.keyword.blockchainfull_notm}} Platform은 인증 기관(CA) 및 1개 이상의 피어(최대 6개)를 포함하는 주요 Hyperledger Fabric 컴포넌트와 함께 빌드됩니다.  또한 엔터프라이즈 플랜은 네트워크 구성원에게 충돌 결함 허용(CFT) Kafka 순서 지정 서비스를 제공합니다.
 
 Fabric CA는 엔터프라이즈 플랜이 제공되는 인증 기관입니다. 구성원당 두 개의 중간 CA가 제공되며, 이는 네트워크에 멤버십 권한을 부여합니다. 또한 구성원은 CA를 사용하여 네트워크의 사용자에게 멤버십(인증서)을 제공할 수 있습니다.
 
@@ -42,6 +43,6 @@ Fabric CA는 엔터프라이즈 플랜이 제공되는 인증 기관입니다. �
 <!--- The Enterprise plan provides the ordering service and CA. The membership fee is $1,000, and a per peer fee of $1,000 that is associated with the network. If you want to have high availability (HA), you must purchase an additional peer to provide the HA capabilities. For example, one organization (associated membership fee of $1,000) of two peers ($1,000 X 2 peers) with HA ($1,000 X 2 HA peers) requires a monthly charge of $5,000.  --->
 
 ## 가격 책정  
-네트워크 구성원은 엔터프라이즈 플랜을 사용하기 위해 멤버십 요금으로 매월 1,000달러와 네트워크의 각 피어에 대해 매월 1,000달러를 지불해야 합니다. 월별 요금은 매일 일할 계산되어 청구됩니다. 예를 들어, 두 피어(피어당 요금 1,000달러 X 2피어)의 구성원(연관된 멤버십 요금 1,000달러)은 매월 3,000달러를 지불해야 합니다. 한 달이 30일인 경우 구성원은 매일 100달러(3,000달러/30)를 지불하는 것입니다. 고가용성(HA)이 필요한 경우 필수 피어 수를 두 배로 늘려 HA 기능을 제공해야 합니다.
+네트워크 구성원은 엔터프라이즈 플랜을 사용하기 위해 멤버십 요금으로 매월 1,000달러와 네트워크의 각 피어에 대해 매월 1,000달러를 지불해야 합니다.  월별 요금은 매일 일할 계산되어 청구됩니다.  예를 들어, 두 피어(피어당 요금 1,000달러 X 2피어)의 구성원(연관된 멤버십 요금 1,000달러)은 매월 3,000달러를 지불해야 합니다.  한 달이 30일인 경우 구성원은 매일 100달러(3,000달러/30)를 지불하는 것입니다.  고가용성(HA)이 필요한 경우 필수 피어 수를 두 배로 늘려 HA 기능을 제공해야 합니다.
 
-네트워크 구성원은 네트워크 인스턴스를 작성하기 위한 영역이 포함된 고유 {{site.data.keyword.cloud_notm}} 계정으로 요금을 지불할 수 있습니다. 또는 하나의 네트워크 구성원이 네트워크에 있는 모든 구성원의 요금을 지불할 수 있습니다. 블록체인 네트워크 비용을 지불하는 방법에 대한 자세한 정보는 [네트워크 비용 지불](howto/pay_for_the_network.html)을 참조하십시오.
+네트워크 구성원은 네트워크 인스턴스를 작성하기 위한 영역이 포함된 고유 {{site.data.keyword.cloud_notm}} 계정으로 요금을 지불할 수 있습니다.  또는 하나의 네트워크 구성원이 네트워크에 있는 모든 구성원의 요금을 지불할 수 있습니다.  블록체인 네트워크 비용을 지불하는 방법에 대한 자세한 정보는 [네트워크 비용 지불](howto/pay_for_the_network.html)을 참조하십시오.

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-03-16"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -13,6 +13,10 @@ lastupdated: "2018-03-16"
 {:pre: .pre}
 
 # Creating or updating a channel
+
+
+***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
 
 Channels are an incredibly powerful mechanism for partitioning and isolating data, and they provide the primary foundation for data privacy. Only members of the same channel can access the data of this channel.
 {:shortdesc}

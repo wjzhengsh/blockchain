@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-3-16"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -14,6 +14,11 @@ lastupdated: "2018-3-16"
 {:tip: .tip}
 
 # Deploying a business network on Enterprise Plan
+{: #deploying-a-business-network}
+
+
+***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
 
 {{site.data.keyword.blockchainfull}} Platform: Develop's developer tools help you create a **Business Network Definition** which can then be packaged up into a business network archive (`.bna`). The developer environment allows you to deploy `.bna` files to a local or cloud {{site.data.keyword.blockchain}} for development and sharing.
 
@@ -29,19 +34,29 @@ You need access to an Enterprise Plan instance of {{site.data.keyword.blockchain
 
 1. Create a directory to store your connection details, for example:
 
-        /Users/myUserId/.composer-connection-profiles/bmx-hlfv1
+    ```
+    /Users/myUserId/.composer-connection-profiles/bmx-hlfv1
+    ```
+    {:codeblock}
 
     Each connection profile should contain a `connection.json` file. Create a new directory under the `.composer-connection-profiles`, in this instance `bmx-hlfv1`. This will be the name of the profile that you will use when working with Hyperledger Composer and {{site.data.keyword.blockchainfull_notm}} Platform.
 
-        mkdir -p ~/.composer-connection-profiles/bmx-hlfv1
-        cd ~/.composer-connection-profiles/bmx-hlfv1
+    ```
+    mkdir -p ~/.composer-connection-profiles/bmx-hlfv1
+    cd ~/.composer-connection-profiles/bmx-hlfv1
+    ```
+    {:codeblock}
 
 2. You should now have the following directory structure:
 
-        /Users/myUserId/.composer-connection-profiles/bmx-hlfv1
+    ```
+    /Users/myUserId/.composer-connection-profiles/bmx-hlfv1
+    ```
+    {:codeblock}
 
     Create a file in the newly created directory name it `connection.json`. You can use the following template for your `connection.json` file:
 
+    ```
         {
             "name": "bmx-hlfv1",
             "description": "A description for a V1 Profile",
@@ -67,16 +82,21 @@ You need access to an Enterprise Plan instance of {{site.data.keyword.blockchain
             "globalCert": "-----BEGIN CERTIFICATE-----\r\n...LotsOfStuff\r\n-----END CERTIFICATE-----\r\n-----BEGIN CERTIFICATE-----\r\nMorestuff\r\n-----END CERTIFICATE-----\r\n",
             "timeout": 300
         }
+    ```
+    {:codeblock}
 
-    You will populate the newly created `connection.json` file with attributes that are provided via your {{site.data.keyword.blockchainfull_notm}} Platform dashboard. From your dashboard on, select **Overview**, then  **Service Credentials** button to display the endpoint and certificate information for the members of the channel.
+    You will populate the newly created `connection.json` file with attributes that are provided via your {{site.data.keyword.blockchainfull_notm}} Platform dashboard. From your dashboard on, select **Overview**, then **Connection Profile** button to display the endpoint and certificate information for the members of the channel.
 
 ## Step Two: Adding orderer information
 
-1. Now we can start to modify the template with the information that the Service Credentials provides. There might be multiple orderers in the Service Credentials, but only one is required for a `connection.json` file.
+1. Now we can start to modify the template with the information that the Connection Profile provides. There might be multiple orderers in the Connection Profile, but only one is required for a `connection.json` file.
 
-    Replace the orderer url values in the template with the relevant information from your service credentials in the following format:
+    Replace the orderer url values in the template with the relevant information from your Connection Profile in the following format:
 
-        “url”: “grpcs://abca.4.secure.blockchain.ibm.com:12345”
+    ```
+    "url": "grpcs://abca.4.secure.blockchain.ibm.com:12345"
+    ```
+    {:codeblock}
 
 ## Step Three: Adding certificate authority information
 
@@ -84,18 +104,24 @@ You need access to an Enterprise Plan instance of {{site.data.keyword.blockchain
 
 ## Step Four: Adding peer information
 
-1. The **requestURL** and **eventURL** for each peer must be set. Replace the **url** attribute with the **url** value that is found in your service credentials. Replace the **eventURL** attribute with the **eventUrl** found in your Service Credentials. After making the changes, the peers section of `connection.json` should have the following format:
+1. The **requestURL** and **eventURL** for each peer must be set. Replace the **url** attribute with the **url** value that is found in your Connection Profile. Replace the **eventURL** attribute with the **eventUrl** found in your Connection Profile. After making the changes, the peers section of `connection.json` should have the following format:
 
+    ```
         "peers": [
           {
               "requestURL": "grpcs://abca.4.secure.blockchain.ibm.com:12345",
               "eventURL": "grpcs://abca.4.secure.blockchain.ibm.com:12345"
+    ```
+    {:codeblock}
 
 ## Step Five: Adding keyValStore information
 
 1. Set the **keyValStore** attribute to point to the appropriate directory. Create a directory to use for your **keyValStore**. For example, a new directory under your home directory called `.composer-credentials-mychannel`. Make sure the **keyValStore** attribute points to your newly created directory in the following format:
 
-        "keyValStore": "/Users/myUserId/.composer-credentials-mychannel",
+    ```
+    "keyValStore": "/Users/myUserId/.composer-credentials-mychannel",
+    ```
+    {:codeblock}
 
 ## Step Six: Adding channel information
 
@@ -103,19 +129,23 @@ You need access to an Enterprise Plan instance of {{site.data.keyword.blockchain
 
 ## Step Seven: Adding an mspID
 
-The **mspID** value in your `connection.json` file should be set to the mspID or your organization. The service credentials provide a list of the organizations with their associated mspid values. You should use the value from the **mspid** attribute for your organization.
+The **mspID** value in your `connection.json` file should be set to the mspID of your organization. The Connection Profile provides a list of the organizations with their associated mspid values. You should use the value from the **mspid** attribute of your organization.
 
 ## Step Eight: Adding the globalCert
 1. {{site.data.keyword.blockchainfull_notm}} Platform uses a common TLS certificate for the orderers and peers. For each orderer and peer, there is a **tlsCACerts** attribute that all contain the same certificate. Replace the dummy value in the `connection.json` file with the **tlsCACerts** value. It should take the following format:
 
-        "globalCert": "-----BEGIN CERTIFICATE-----\r\.......
+    ```
+    "globalCert": "-----BEGIN CERTIFICATE-----\r\.......
+    ```
+    {:codeblock}
 
 ## Step Nine: Preparing your peers
 
 **Please Note**: This step **must** be performed before you create the channel to deploy a business network to. If this step is performed after channel creation, a deployed business network **will not start**.
 
-In the service credentials document under **certificateAuthorities** is an attribute **registrar** containing attributes for **enrollId** and **enrollSecret** in the following format:
+In the Connection Profile document under **certificateAuthorities** is an attribute **registrar** containing attributes for **enrollId** and **enrollSecret** in the following format:
 
+ ```
         "registrar": [
             {
                 "affiliation": "org1",
@@ -123,10 +153,15 @@ In the service credentials document under **certificateAuthorities** is an attri
                 "enrollSecret": "PA55W0RD12"
             }
         ],
+ ```
+ {:codeblock}
 
 1. Request the certificates by using the following command:
 
-        composer identity request -p bmx-hlfv1 -i admin -s PA55W0RD12
+    ```
+    composer identity request -p bmx-hlfv1 -i admin -s PA55W0RD12
+    ```
+    {:codeblock}
 
     This downloads three files into the `.identityCredentials` directory under your home directory. The files of interest are based on the **enrollId**. So in the above example there will be two files that are called **admin-pub.pem** and **admin-priv.pem**
 
@@ -158,11 +193,14 @@ In the service credentials document under **certificateAuthorities** is an attri
 
 ## Step Eleven: Importing a new identity to administer your business network
 
-Create an identity in Composer by using the certificates that are requested previously. This new identity will have the authority to install chaincode onto the peers that have your uploaded public certificate and will be an issuer for the certificate authorities.
+Create an identity in Composer by using the certificates that are requested previously. This new identity will have the authority to install a chaincode onto the peers that have your uploaded public certificate and will be an issuer for the certificate authorities.
 
 1. To create the new identity, run the following command:
 
-        composer identity import -p bmx-hlfv1 -u admin -c ~/.identityCredentials/admin-pub.pem -k ~/.identityCredentials/admin-priv.pem
+    ```
+    composer identity import -p bmx-hlfv1 -u admin -c ~/.identityCredentials/admin-pub.pem -k ~/.identityCredentials/admin-priv.pem
+    ```
+    {:codeblock}
 
     Where `bmx-hlfv1` is the name of the profile that you previously created. Now we are ready to deploy your `.bna` file to the {{site.data.keyword.blockchainfull_notm}} Platform.
 
@@ -173,4 +211,7 @@ Now you can deploy your `.bna` file to the {{site.data.keyword.blockchainfull_no
 
 1. With the identity that is created in the previous step, deploy the business network by using the following command:
 
-        composer network deploy -a myNetwork.bna -p bmx-hlfv1 -i admin -s anyString
+   ```
+   composer network deploy -a myNetwork.bna -p bmx-hlfv1 -i admin -s anyString
+   ```
+   {:codeblock}

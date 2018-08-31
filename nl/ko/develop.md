@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-3-14"
+lastupdated: "2018-06-14"
 
 ---
 
@@ -43,15 +43,19 @@ lastupdated: "2018-3-14"
 
 시작하는 가장 쉬운 방법은 Yeoman 생성기를 사용하여 스켈레톤 비즈니스 네트워크를 작성하는 것입니다. Yeoman 생성기는 비즈니스 네트워크의 모든 컴포넌트가 포함된 디렉토리를 작성하며, 이 디렉토리는 특정 유스 케이스에 맞게 수정할 수 있습니다.
 
-1. Yeoman을 사용하여 스켈레톤 비즈니스 네트워크를 작성하십시오. 다음 명령에는 비즈니스 네트워크 이름, 설명, 작성자 이름, 작성자 이메일 주소, 라이센스 선택사항 및 네임스페이스가 필요합니다.
+1. 프로젝트에 대한 새 디렉토리를 작성하고 명령행에서 해당 디렉토리로 이동하십시오.
 
-        yo hyperledger-composer:businessnetwork
+2. 새 디렉토리에서 Yeoman을 사용하여 스켈레톤 비즈니스 네트워크를 작성하십시오. 다음 명령에는 비즈니스 네트워크 이름, 설명, 작성자 이름, 작성자 이메일 주소, 라이센스 선택사항 및 네임스페이스가 필요합니다.
+    ```
+yo hyperledger-composer:businessnetwork
+    ```
+    {:codeblock}
 
-2. 네트워크 이름에 대해 `tutorial-network`를 입력하고 설명, 작성자 이름 및 작성자 이메일에 대해 원하는 정보를 입력하십시오.
+3. 네트워크 이름에 대해 `tutorial-network`를 입력하고 설명, 작성자 이름 및 작성자 이메일에 대해 원하는 정보를 입력하십시오.
 
-3. `Apache-2.0`을 라이센스로 선택하십시오.
+4. `Apache-2.0`을 라이센스로 선택하십시오.
 
-4. `org.acme.biznet`을 네임스페이스로 선택하십시오.
+5. `org.acme.biznet`을 네임스페이스로 선택하십시오.
 
 ## 2단계: 비즈니스 네트워크 정의
 
@@ -59,12 +63,13 @@ lastupdated: "2018-3-14"
 
 ### 자산, 참가자 및 트랜잭션 모델링
 
-업데이트할 첫 번째 문서는 모델 파일(`.cto`)입니다. 이 파일은 [Hyperledger Composer 모델링 언어](https://hyperledger.github.io/composer/latest/reference/cto_language)를 사용하여 작성합니다. 모델 파일에는 자산, 트랜잭션, 참가자 및 이벤트의 각 클래스에 대한 정의가 포함됩니다. 이 파일은 모델링 언어 문서에 설명된 시스템 모델을 내재적으로 확장합니다.
+업데이트할 첫 번째 문서는 모델 파일(`.cto`)입니다. 모델 파일은 [Hyperledger Composer 모델링 언어](https://hyperledger.github.io/composer/latest/reference/cto_language)를 사용하여 작성됩니다. 모델 파일에는 자산, 트랜잭션, 참가자 및 이벤트의 각 클래스에 대한 정의가 포함됩니다. 이 파일은 모델링 언어 문서에 설명된 시스템 모델을 내재적으로 확장합니다.
 
-1. `org.acme.biznet.cto` 모델 파일을 여십시오.
+1. 선택한 편집기에서 `org.acme.biznet.cto` 모델 파일을 여십시오. 이 모델 파일은 이전 단계에서 작성한 비즈니스 네트워크의 `models` 폴더에 있습니다.
 
 2. 컨텐츠를 다음 정보로 바꾸십시오.
 
+    ```
         /**
          * My commodity trading network
          */
@@ -85,6 +90,8 @@ lastupdated: "2018-3-14"
             --> Commodity commodity
             --> Trader newOwner
         }
+    ```
+    {:codeblock}
 
 3. `org.acme.biznet.cto` 파일에 변경사항을 저장하십시오.
 
@@ -99,6 +106,7 @@ lastupdated: "2018-3-14"
 
 2. 컨텐츠를 다음 정보로 바꾸십시오.
 
+    ```
         /**
          * Track the trade of a commodity from one trader to another
          * @param {org.acme.biznet.Trade} trade - the trade to be processed
@@ -111,6 +119,8 @@ lastupdated: "2018-3-14"
                     return assetRegistry.update(trade.commodity);
                 });
         }
+    ```
+    {:codeblock}
 
 3. `logic.js`에 변경사항을 저장하십시오.
 
@@ -124,6 +134,7 @@ lastupdated: "2018-3-14"
 
 2. 다음 액세스 제어 규칙을 `permissions.acl`에 추가하십시오.
 
+    ```
         /**
          * Access control rules for tutorial-network
          */
@@ -142,6 +153,8 @@ lastupdated: "2018-3-14"
           resource: "org.hyperledger.composer.system.**"
           action: ALLOW
         }
+    ```
+    {:codeblock}
 
 3. `permissions.acl`에 변경사항을 저장하십시오.
 
@@ -153,7 +166,10 @@ lastupdated: "2018-3-14"
 
 2. `tutorial-network` 디렉토리에서 다음 명령을 실행하십시오.
 
-        composer archive create -t dir -n .
+    ```
+    composer archive create -t dir -n .
+    ```
+    {:codeblock}
 
 명령을 실행한 후 비즈니스 네트워크 아카이브 파일(`tutorial-network@0.0.1.bna`)이 `tutorial-network` 디렉토리에 작성됩니다.
 
