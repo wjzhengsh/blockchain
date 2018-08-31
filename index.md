@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-07-31"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -18,8 +18,9 @@ lastupdated: "2018-07-31"
 ***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 
-**ATTENTION:** Before you use an {{site.data.keyword.blockchainfull}} Platform offering, read the technical and support information in the [Disclaimer](needtoknow.html) section.  
+**ATTENTION:** Before you use an {{site.data.keyword.blockchainfull}} Platform offering, read the technical and support information in the [Disclaimer](needtoknow.html) section.
 {:shortdesc}
+
 
 {{site.data.keyword.blockchainfull_notm}} Platform is the only integrated business-ready platform that addresses the full lifecycle (**develop**, **govern**, and **operate**) of a multi-organization blockchain network. It is designed to accelerate, through collaboration in each phase, the creation of "built for business" global blockchain networks with the performance and security for even the most demanding use cases and regulated industries.
 
@@ -35,18 +36,19 @@ lastupdated: "2018-07-31"
 
 {{site.data.keyword.blockchainfull_notm}} Platform provides different membership plans to help all types of users get started on their blockchain journey and move their applications into production.
 
-|       | [Starter Plan](starter_plan.html)      | [Enterprise Plan](enterprise_plan.html)  | Enterprise Plus Plan | Self Managed Plan
+|       | [Starter Plan](starter_plan.html) | [Enterprise Plan](enterprise_plan.html)  | Enterprise Plus Plan | [Remote Peer](howto/remote_peer.html) |
 | ------------------------- |--------------------------|-----|-----|------|
-| **What's Included** | **Basic service levels, development and testing environment** | **Advanced service levels, enterprise production ready** | **Dedicated compute for performance and isolation, enterprise production ready** | Software stack to install on your own infrastructure, connect to a network hosted on this cloud service |
-| **Billing Policy** | **Monthly subscription with [available cloud credits](howto/pricing.html#starter-plan-pricing)** | **Monthly subscription** | **Monthly subscription** | Monthly subscription |
-| **Availability** | **Available now** | **Available now** | **Upon purchase** | Coming soon |
+| **What's Included** | **Basic service levels, development and testing environment** | **Advanced service levels, enterprise production ready** | **Dedicated compute for performance and isolation, enterprise production ready** | **Deployable Remote Peer Helm Chart** |
+| **Billing Policy** | **Monthly subscription with [available cloud credits](howto/pricing.html#starter-plan-pricing)** | **Monthly subscription** | **Monthly subscription** | **Free for Beta** |
+| **Availability** | **General Available** | **General Available** | **Upon purchase** | **Beta** |
 
-**Caution:** Do not use **Starter Plan** for production. It is a development and testing environment, and is not suitable for production workloads.
+**Caution:** Do not use **Starter Plan** for production usage. It is a development and testing environment, and is not suitable for production workloads.
 
 {{site.data.keyword.blockchainfull_notm}} offerings are built on the [Hyperledger Fabric](reference/v10_fabric.html) V1.1 code base that leverages a modular architecture to achieve enterprise levels of security, data integrity, scalability, and performance to meet your business needs.
 - **Starter Plan** is an environment to learn or get started developing blockchain networks.
 - **Enterprise Plan** is a production environment that offers high levels of security and support.
 - **Enterprise Plus Plan** offers a dedicated production environment for additional performance and isolated compute and storage resources to protect critical data.
+- **Remote Peer** enables you to run peers outside {{site.data.keyword.cloud_notm}} so that you can grow your blockchain network with more flexibility while taking advantage of an existing {{site.data.keyword.blockchainfull_notm}} network inside {{site.data.keyword.cloud_notm}}.
 
 {{site.data.keyword.blockchainfull_notm}} Platform is a platform service on {{site.data.keyword.cloud_notm}} and all membership offerings follow the [{{site.data.keyword.cloud_notm}} Services terms ![External link icon](images/external_link.svg "External link icon")](https://www-03.ibm.com/software/sla/sladb.nsf/sla/bm-6605-13 "{{site.data.keyword.cloud_notm}} Services terms") on service level agreements (SLAs). Note that both Starter Plan and Enterprise Plan networks are provisioned across **multiple environments** in geographically separated data-centers.
 
@@ -64,7 +66,7 @@ As a business owner, you can develop your use case with help from IBM's deep ben
 As a developer, you can quickly and easily align business requirements and accelerate blockchain application development in  {{site.data.keyword.blockchainfull_notm}} Platform network environment by using an interactive playground to develop, iterate, and test business networks. These tools are designed to turn business rules into business network code in your preferred environment:
 * **Explore online**  
   Leverage [{{site.data.keyword.blockchainfull_notm}} Platform: Develop](./develop.html)<!--, which is powered by an open source development tool--> to learn key blockchain concepts, create network definitions, and leverage reusable industry models and smart contract libraries.  
-  After you developed your business network, you can deploy it to a live network that runs on the IBM Blockchain Platform. For more information, see [Deploying business networks with Starter Plan](./develop_starter.html) and [Deploying business networks with Enterprise Plan](./develop_enterprise.html).
+  After you developed your business network, you can deploy it to a live network that runs on the {{site.data.keyword.blockchainfull_notm}} Platform. For more information, see [Deploying business networks with Starter Plan](./develop_starter.html) and [Deploying business networks with Enterprise Plan](./develop_enterprise.html).
 * **Install locally**  
   Leverage IBM certified images of Hyperledger Fabric and Composer, which are open source framework and tool for building a business network, to develop and test directly on your laptop. For more information, see [Building Your First Network](http://hyperledger-fabric.readthedocs.io/en/release-1.1/build_network.html).
 * **Collaborate in a cloud environment**  
@@ -107,7 +109,7 @@ Operating your network on the {{site.data.keyword.blockchainfull_notm}} Platform
 To make a blockchain operational, members form a foundation of trust by running one or more foundational network services:
 
 - **Ordering Service** – Ordering and synchronizing transactions  
-  In essence, the ordering service is the definition of the network.  It contains identity information for each member, information on channels and a set of policies dictating which members are permitted to perform certain tasks (for example, invite other members, create channels, etc.). Every transaction and configuration operation will flow through the ordering service, so it’s a beyond critical piece in the overall scheme of things.  Given the fundamental importance of the ordering service, it’s easy to see the pitfalls of an authoritarian orchestration where perhaps only one member pulled the strings.  To counter this, the ordering service is communally managed by members of the network and governance implementations are acted upon jointly.  Put another way, decisions are made collectively, NOT unilaterally. All members have a stake in the network, and by extension, have a vote in any operations that configure and customize their stance in the network.  These notions of “democracy” and jointly made decisions are the inherent building blocks for a trusted and decentralized network.  IBM serves as the "operator" of the ordering service for any networks that are deployed on the IBM Blockchain Platform.
+  In essence, the ordering service is the definition of the network.  It contains identity information for each member, information on channels and a set of policies dictating which members are permitted to perform certain tasks (for example, invite other members, create channels, etc.). Every transaction and configuration operation will flow through the ordering service, so it’s a beyond critical piece in the overall scheme of things.  Given the fundamental importance of the ordering service, it’s easy to see the pitfalls of an authoritarian orchestration where perhaps only one member pulled the strings.  To counter this, the ordering service is communally managed by members of the network and governance implementations are acted upon jointly.  Put another way, decisions are made collectively, NOT unilaterally. All members have a stake in the network, and by extension, have a vote in any operations that configure and customize their stance in the network.  These notions of “democracy” and jointly made decisions are the inherent building blocks for a trusted and decentralized network.  IBM serves as the "operator" of the ordering service for any networks that are deployed on the {{site.data.keyword.blockchainfull_notm}} Platform.
 
 - **Certificate Authority** – Issuing certificates to participants  
   To put it simply, the Certificate Authority (CA) provides membership.  All entities in the network (peers, orderers, clients, etc.) must have an identity to communicate, authenticate, and ultimately transact. These “identities” exist in the form of x509 certificates (i.e. enrollment certificates), which are required for any direct participation in the blockchain network.  There are also ways of indirect participation, but we’ll get to that later.  The CA can best be thought of as the rubber stamp that gives identities attestation and credibility.  Each member possesses their own CA, and through this CA they can sign certificates for not only their wholly owned resources (peers), but also third-party clients and applications.  You can liken a member’s CA to a special pen or a notary stamp.  A certificate that this CA signs is a prerequisite to access the network.
@@ -136,11 +138,11 @@ Simply put, a member possesses a valid digital certificate, which permits the me
 
 It is sometimes useful to think about members via a persona that outlines the role of the member in the business network.  Here are a few that we often see used.
 
-- **Initiator** – A member that other members select to bootstrap the Blockchain network.    The IBM Blockchain Platform requires a single member to sign in to the IBM Blockchain Platform and perform tasks to initiate the network.  These include naming the network, inviting the initial set of members, and setting the default set of network operation policies.  This is a transient role.  After the network is bootstrapped, the initiator does not retain special privileges and simply resumes the role of member.  
+- **Initiator** – A member that other members select to bootstrap the Blockchain network.    The {{site.data.keyword.blockchainfull_notm}} Platform requires a single member to sign in to the {{site.data.keyword.blockchainfull_notm}} Platform and perform tasks to initiate the network.  These include naming the network, inviting the initial set of members, and setting the default set of network operation policies.  This is a transient role.  After the network is bootstrapped, the initiator does not retain special privileges and simply resumes the role of member.  
 
 - **Maintainer** – A member that is running one or more network peers and CAs.   These members are maintaining the integrity of the distributed ledger by participating in the consensus process, which is how transactions are validated on a blockchain network.   The maintainer, through ownership of a CA, can also issue certificates to participants and grant them access to the network.
 
-- **Operator** – A member that is running services on behalf of other network members, including the transaction ordering service, certificate authorities, transaction gateways, and other foundational network services.  By default, IBM is the network operator of networks that are deployed on the IBM Blockchain Platform.
+- **Operator** – A member that is running services on behalf of other network members, including the transaction ordering service, certificate authorities, transaction gateways, and other foundational network services.  By default, IBM is the network operator of networks that are deployed on the {{site.data.keyword.blockchainfull_notm}} Platform.
 
 - **Auditor** – A member that is granted permissions by the network to perform audit functions on the network.  Examples of audit functions include billing, compliance tracking, or analytics.  The auditor role typically translates to the member that has access to a broader view of transactions on the ledger, and/or a broader enrollment in transaction channels.
 
