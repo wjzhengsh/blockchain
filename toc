@@ -26,7 +26,6 @@ IBM Blockchain Platform
 		develop_enterprise.md
 		v10_dashboard.md
 
-	howto/remote_peer.md
 	needtoknow.md
 	{: .navgroup-end}
 
@@ -49,11 +48,6 @@ IBM Blockchain Platform
 	howto/prebuilt_samples.md
 	v10_application.md
 	howto/migrate_sp_ep.md
-
-	{: .topicgroup}
-	Running remote peers on IBM Cloud Private
-		howto/remote_peer_icp.md
-		howto/remote_peer_operate_icp.md
 	{: .navgroup-end}
 
 	{: .navgroup id="reference"}

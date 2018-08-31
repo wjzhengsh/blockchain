@@ -36,11 +36,20 @@ lastupdated: "2018-08-31"
 
 {{site.data.keyword.blockchainfull_notm}} Platform provides different membership plans to help all types of users get started on their blockchain journey and move their applications into production.
 
+
+|       | [Starter Plan](starter_plan.html) | [Enterprise Plan](enterprise_plan.html)  | Enterprise Plus Plan |
+| ------------------------- |--------------------------|-----|-----|
+| **What's Included** | **Basic service levels, development and testing environment** | **Advanced service levels, enterprise production ready** | **Dedicated compute for performance and isolation, enterprise production ready** |
+| **Billing Policy** | **Monthly subscription with [available cloud credits](howto/pricing.html#starter-plan-pricing)** | **Monthly subscription** | **Monthly subscription** |
+| **Availability** | **General Available** | **General Available** | **Upon purchase** |
+
+<!----
 |       | [Starter Plan](starter_plan.html) | [Enterprise Plan](enterprise_plan.html)  | Enterprise Plus Plan | [Remote Peer](howto/remote_peer.html) |
 | ------------------------- |--------------------------|-----|-----|------|
 | **What's Included** | **Basic service levels, development and testing environment** | **Advanced service levels, enterprise production ready** | **Dedicated compute for performance and isolation, enterprise production ready** | **Deployable Remote Peer Helm Chart** |
 | **Billing Policy** | **Monthly subscription with [available cloud credits](howto/pricing.html#starter-plan-pricing)** | **Monthly subscription** | **Monthly subscription** | **Free for Beta** |
 | **Availability** | **General Available** | **General Available** | **Upon purchase** | **Beta** |
+---->
 
 **Caution:** Do not use **Starter Plan** for production usage. It is a development and testing environment, and is not suitable for production workloads.
 
@@ -48,7 +57,10 @@ lastupdated: "2018-08-31"
 - **Starter Plan** is an environment to learn or get started developing blockchain networks.
 - **Enterprise Plan** is a production environment that offers high levels of security and support.
 - **Enterprise Plus Plan** offers a dedicated production environment for additional performance and isolated compute and storage resources to protect critical data.
+
+<!---
 - **Remote Peer** enables you to run peers outside {{site.data.keyword.cloud_notm}} so that you can grow your blockchain network with more flexibility while taking advantage of an existing {{site.data.keyword.blockchainfull_notm}} network inside {{site.data.keyword.cloud_notm}}.
+--->
 
 {{site.data.keyword.blockchainfull_notm}} Platform is a platform service on {{site.data.keyword.cloud_notm}} and all membership offerings follow the [{{site.data.keyword.cloud_notm}} Services terms ![External link icon](images/external_link.svg "External link icon")](https://www-03.ibm.com/software/sla/sladb.nsf/sla/bm-6605-13 "{{site.data.keyword.cloud_notm}} Services terms") on service level agreements (SLAs). Note that both Starter Plan and Enterprise Plan networks are provisioned across **multiple environments** in geographically separated data-centers.
 
