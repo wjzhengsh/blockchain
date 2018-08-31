@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 ---
 
 {:new_window: target="_blank"}
@@ -35,7 +35,7 @@ For more information on building business networks see [Developing business netw
 
 Queries are used to return data about the blockchain world-state. Queries are defined within a business network, and can include variable parameters for simple customization. By using queries, data can be easily extracted from your {{site.data.keyword.blockchain}} network. Queries are sent by using the [Hyperledger Composer API ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger.github.io/composer/latest/api/api-doc-index).
 
-For more information about using queries in your business network, see [Querying and filtering business network data ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger.github.io/composer/latest/business-network/query).
+For more information about using queries in your business network, see [Querying and filtering business network data ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger.github.io/composer/latest/tutorials/queries).
 
 ## Identities and business network cards
 
