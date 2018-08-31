@@ -1,7 +1,7 @@
 {:navgroup: .navgroup}
 {:topicgroup: .topicgroup}
 
-{: .toc subcollection="blockchain" audience="service" href="/docs/services/blockchain/index.html"}
+{: .toc subcollection="blockchain" audience="service" arm="339" href="/docs/services/blockchain/index.html"}
 IBM Blockchain Platform
 
 	{: .navgroup id="learn"}
@@ -26,26 +26,45 @@ IBM Blockchain Platform
 		develop_enterprise.md
 		v10_dashboard.md
 
+	howto/remote_peer.md
 	needtoknow.md
 	{: .navgroup-end}
 
 	{: .navgroup id="howto"}
-	howto/pay_for_the_network.md
+	{: .topicgroup}
+	Paying for the network
+		howto/pricing.md
+		howto/paying_mode.md
+
+	certificates.md
 	howto/create_channel.md
 	howto/install_instantiate_chaincode.md
+
+	{: .topicgroup}
+	Trying out APIs with Swagger
+		howto/swagger_apis.md
+		howto/create_join_network_with_apis.md
+
 	howto/monitor_network.md
 	howto/prebuilt_samples.md
-	howto/swagger_apis.md
 	v10_application.md
+	howto/migrate_sp_ep.md
+
+	{: .topicgroup}
+	Running remote peers on IBM Cloud Private
+		howto/remote_peer_icp.md
+		howto/remote_peer_operate_icp.md
 	{: .navgroup-end}
 
 	{: .navgroup id="reference"}
 	glossary.md
+	reference/ibp_regions.md
+	reference/videos.md
 	reference/v10_fabric.md
 	reference/hyperledger_composer.md
 	[IBM Blockchain Platform: Develop](https://ibm-blockchain.github.io/develop/)
 	{: .navgroup-end}
-	
+
 	{: .navgroup id="help"}
 	ibmblockchain_support.md
 	knownissues.md
