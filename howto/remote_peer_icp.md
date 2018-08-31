@@ -80,10 +80,10 @@ The {{site.data.keyword.blockchainfull_notm}} Platform Remote Peer package is av
   In the code, `<cluster_CA_domain>` is the certificate authority (CA) domain. If you did not specify a CA domain, the default
 value is `mycluster.icp`.
 
-3. From the directory where you stored the downloaded Helm Chart, run the following command in the ICP CLI to import the Helm Chart into your ICP cluster. Replace `<helm_chart_from_github>` with the name of the `.tgz` file you downloaded from Github.
+3. From the directory where you stored the downloaded Helm Chart, run the following command in the ICP CLI to import the Helm Chart into your ICP cluster. Replace `<helm_chart_from_github>` with the name of the `.tgz` file you downloaded from GitHub.
 
   ```
-  bx pr load-helm-chart --archive <helm_chart_from_github> --clustername <cluster_name>
+  bx pr load-helm-chart --archive <helm_chart_from_github> --clustername <cluster_CA_domain>
   ```
   {:codeblock}
 
