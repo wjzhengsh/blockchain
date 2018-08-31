@@ -80,57 +80,23 @@ The {{site.data.keyword.blockchainfull_notm}} Platform Remote Peer package is av
   In the code, `<cluster_CA_domain>` is the certificate authority (CA) domain. If you did not specify a CA domain, the default
 value is `mycluster.icp`.
 
-3. From the directory where you stored the downloaded Helm Chart, run the following command in the ICP CLI to import the Helm Chart into your ICP cluster. Replace `<archive_file_name>` with the name of the `.tgz` file you downloaded from Github.
+3. From the directory where you stored the downloaded Helm Chart, run the following command in the ICP CLI to import the Helm Chart into your ICP cluster. Replace `<helm_chart_from_github>` with the name of the `.tgz` file you downloaded from GitHub.
 
   ```
-  bx pr load-ppa-archive --archive <archive_file_name> --clustername <cluster_CA_domain>
+  bx pr load-helm-chart --archive <helm_chart_from_github> --clustername <cluster_CA_domain>
   ```
   {:codeblock}
 
-  **Tip:** The `--namespace <namespace>` flag can be specified to upload the Helm Chart directly into the given namespace rather the
-  `default` namespace.
-
   When this command completes successfully, you can see something similar to the following information:
 
-  ```
-  Expanding archive
-  OK
-
-  Importing docker images
-  Processing image: fabric-remote-peer:1.1.8-amd64
-  Loading Image
-  Tagging Image
-  Pushing image as: condev2.icp:8500/default/fabric-remote-peer:1.1.8-amd64
-  Pushing image condev2.icp:8500/default/fabric-remote-peer:1.1.8-amd64
-  Processing image: fabric-remote-peer:1.1.8-s390x
-  Loading Image
-  Tagging Image
-  Pushing image as: condev2.icp:8500/default/fabric-remote-peer:1.1.8-s390x
-  Pushing image condev2.icp:8500/default/fabric-remote-peer:1.1.8-s390x
-  Processing image: fabric-couchdb:0.4.6-amd64
-  Tagging Image
-  Pushing image as: condev2.icp:8500/default/fabric-couchdb:0.4.6-amd64
-  Pushing image condev2.icp:8500/default/fabric-couchdb:0.4.6-amd64
-  Processing image: fabric-couchdb:0.4.6-s390x
-  Loading Image
-  Tagging Image
-  Pushing image as: condev2.icp:8500/default/fabric-couchdb:0.4.6-s390x
-  Pushing image condev2.icp:8500/default/fabric-couchdb:0.4.6-s390x
-  OK
-
-  Uploading helm charts
-  Processing chart: charts/ibm-blockchain-platform-remote-peer-prod-1.0.0-1.1.8.tgz
-  Updating chart values.yaml
-  Uploading chart
+  ```  
+  Loading helm chart
   Loaded helm chart
-  OK
 
   Synch charts
   Synch started
   OK
-
-  Archive finished processing
-  ```
+  ```  
 
   The {{site.data.keyword.blockchainfull_notm}} Platform Remote Peer Helm Chart tile should now be visible on the ICP Catalog page. Click the **Catalog** button in the ICP console to verify the import was successful.
 
