@@ -163,29 +163,29 @@ The following table lists the configurable parameters of the {{site.data.keyword
 |**Configuration** | **Configure Release name and Target namespace for your remote peer** |  ||
 | `Release name`| The name of your helm release. | none | yes |
 | `Target namespace`| The Kubernetes namespace. | default | yes |
-| | | |
+| | | | |
 |**Cluster configuration** |**Cluster configuration information** | ||
 | `Worker node architecture`| Select your cloud platform architecture (amd64 or S390x).| Autodetected architecture based on your master node | yes |
 | `Image`| Path to the Helm Chart. | Autofilled to the installed path, do not change this value | yes |
-| | | |
+| | | | |
 |**Blockchain network** | **The network configuration information that is required for the remote peer**| | |
 | `Network ID`| Value of the network id found in your {{site.data.keyword.blockchainfull_notm}} Platform Network Monitor. Click the `Remote Peer Configuration` button on the "Overview" screen, then copy and paste that information here.| none | yes |
 | `Organization MSP`| Value of the organization MSP id found in your {{site.data.keyword.blockchainfull_notm}} Platform Network Monitor. Click the `Remote Peer Configuration` button on the "Overview" screen, then copy and paste that information here.|none|yes|
 | `Certificate Authority (CA) Name`| Value of the CA Name found in your {{site.data.keyword.blockchainfull_notm}} Platform Network Monitor. Click the `Remote Peer Configuration` button on the "Overview" screen and  copy and paste that information here.|none|yes|
 | `Certificate Authority (CA) URL`| Value of the CA URL found in your {{site.data.keyword.blockchainfull_notm}} Platform Network Monitor. Click the `Remote Peer Configuration` button on the "Overview" screen and  copy and paste that information here. | none | yes |
 | `Certificate Authority (CA) TLS Certificate` | CA TLS certificate string in your {{site.data.keyword.blockchainfull_notm}} Platform Network Monitor. Click the `Remote Peer Configuration` button on the "Overview" screen and  copy and paste that information here. | none | yes |
-| | | |
+| | | | |
 |**Remote peer identity** | **The enroll id and secret that are used to register your remote peer**| | |
 | `Peer enroll ID`| This in the Enroll ID that you entered on the "Certificate Authority" screen of your {{site.data.keyword.blockchainfull_notm}} Platform Network Monitor. | none | yes |
 | `Peer enroll secret`| This in the Enroll Secret that you entered on the "Certificate Authority" screen of your {{site.data.keyword.blockchainfull_notm}} Platform Network Monitor.| none | yes |
-| | | |
+| | | | |
 |**Remote peer database** | **Ledger database type**| | |
 | `Ledger database`| The [state database](../glossary.html#state-database) used to store your channel ledger. The remote peer needs to use the same database as your [blockchain network](../v10_dashboard.html#network-preferences). | none | yes |
-| `CouchDB image`| Only applies if CouchDB was selected as the ledger database. Autofilled to the installed path, do not change.  | yes |
+| `CouchDB image`| Only applies if CouchDB was selected as the ledger database. | Autofilled to the installed path, do not change this value. | yes |
 |**Data persistence** | Enable the ability to persist data after cluster restarts or fails. See [storage in Kubernetes ![External link icon](../images/external_link.svg "External link icon")](https://kubernetes.io/docs/concepts/storage/ "Volumes") for more information. | | |
 | `Data persistence enabled`| State data will be available when the container restarts. *If unchecked, all data will be lost in the event of a failover or pod restart.* | checked | no |
 | `Use dynamic provisioning`| Use Kubernetes dynamic storage. | checked | no |
-| | | |
+| | | | |
 |**Persistent volume configuration** | **Persistent Volume Claim to be used by your peer** |  |  |
 | `Persistent volume claim`| Enter a name for your new Persistent Volume Claim (PVC) which will be created. | my-data-pvc | no |
 | `Storage class name`| Chose storage class name. | Blank if creating a new PVC; otherwise, specify the storage class that is associated with the existing PVC. | no |
@@ -194,7 +194,7 @@ The following table lists the configurable parameters of the {{site.data.keyword
 | `Selector label`| [Selector label ![External link icon](../images/external_link.svg "External link icon") ](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/ "Labels and Selectors") for your PVC.| default | no |
 | `Selector value`| [Selector value ![External link icon](../images/external_link.svg "External link icon")](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/ "Labels and Selectors") for your PVC. | default | no |
 | `Volume claim size`| Size of the Volume Claim, must be larger than 2Gi. | 8Gi  | yes |
-| | | |
+| | | | |
 |**State database data persistence** | **Persist data after your container is restarted or fails. See [storage in Kubernetes ![External link icon](../images/external_link.svg "External link icon")](https://kubernetes.io/docs/concepts/storage/ "Volumes") for more information** | | |
 | `Data persistence enabled`| Ledger data will be available when the container restarts. *If unchecked, all data will be lost in the event of a failover or pod restart.*| checked | no |
 | `Use dynamic provisioning`| Use Kubernetes dynamic storage.| checked | no |
@@ -207,13 +207,13 @@ The following table lists the configurable parameters of the {{site.data.keyword
 | `Selector label`| [Selector label ![External link icon](../images/external_link.svg "External link icon")](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/ "Labels and Selectors") of your PVC.| default | no |
 | `Selector value`| [Selector value ![External link icon](../images/external_link.svg "External link icon")](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/ "Labels and Selectors") of your PVC.| default | no |
 | `State database volume claim size`| Size of the Persistent Volume Claim. | 8Gi | no |
-| | | |
+| | | | |
 | **Peer resources** | **Min and Max CPU and Memory for the peer container** | | |
 | `Peer CPU request` | Minimum number of CPUs to allocate to the peer. | 2 | yes |
 | `Peer CPU limit` | Maximum number of CPUs to allocate to the peer.| 2 | yes |
 | `Peer Memory request` | Minimum amount of memory to allocate to the peer. | 4Gi | yes |
 | `Peer Memory limit` | Maximum amount of memory to allocate to the peer. | 4Gi | yes |
-| | | |
+| | | | |
 |**CouchDB Resources** | **Min and Max CPU and Memory that are allocated to CouchDB container. This section applies only if CouchDB was selected as the state database**| | | |
 | `CouchDB CPU request` | Minimum number of CPUs to allocate to CouchDB.| 2 | yes |
 | `CouchDB CPU limit` | Maximum number of CPUs to allocate to CouchDB. | 2 | yes |
