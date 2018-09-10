@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -25,7 +25,7 @@ lastupdated: "2018-06-14"
 You can [change the name of your Enterprise Plan network](#ep-network-name) in the Network Monitor.
 
 The Network Monitor exposes the following screens in three sections. You can navigate to each screen from the left navigator in the Network Monitor.
-- The **My network** section contains the "[Overview](#overview)", "[Members](#members)", "[Channels](#channels)", "[Notifications](#notifications)", and "[APIs](#apis)" screens.
+- The **My network** section contains the "[Overview](#overview)", "[Members](#members)", "[Channels](#channels)", "[Notifications](#notifications)", "[Certificate Authority](#ca)", and "[APIs](#apis)" screens.
 - The **My code** section contains the "[Develop code](#write_code)", "[Install code](#chaincode)", and "[Try samples](#samples)" screens.
 - The "[Get help](#support)" screen shows support information as well as release notes for helios and Hyperledger Fabric (the code base the {{site.data.keyword.blockchainfull_notm}} Platform is based on).
 
@@ -63,6 +63,10 @@ Note that the Stop and Start actions are not available for an Orderer node. In g
 
 You can also check component logs by clicking **View Logs** from the drop-down list under the **Actions** header. The logs expose the calls between the various network resources and are useful for debugging and troubleshooting. For example, experiment by stopping a peer and attempting to target it with a transaction, and you will see connectivity errors. When you restart the peer and attempt the transaction again, you will see a successful connection. You can also leave a peer down for an extended period of time as your channels continue to transact. When the peer is brought back up, you will notice a synchronization of the ledger as it receives the blocks that were committed when it was down. After the ledger is fully synchronized, you can perform normal invokes and queries against it.
 
+### Remote Peer Configuration  
+
+If you deploy a remote peer outside {{site.data.keyword.cloud_notm}}, you need to provide the API endpoint informaiton of your network to the remote peer during configuration. Click the **Remote Peer Configuration** button to retreive the API endpoint information of the network to configure your remote peer. The pop-up window provides the API endpoint information of network ID, organization MSP, CA name, CA URL, and CA TLS certificate. You can either click the copy icon at the end of each field to copy the value of that field, or click the **Download** button to save values of all fields in a JSON file. For more information about remote peers, see [About remote peers](howto/remote_peer.html).
+
 ### Connection Profile
 {: #enterprise-connection-profile}
 You can view the JSON file about low-level network information of each resource by clicking the **Connection Profile** button. The connection profile contains all the configuration information that you need for an application. However, because this file contains only the addresses for your specific components and the orderer, if you need to target additional peers, you need to obtain their endpoints. The header that contains "url" displays the API endpoint of each component. These endpoints are required in order to target specific network components from a client-side application and their definitions will typically live in a JSON-modeled configuration file that accompanies the app. If you are customizing an application that requires endorsement from peers that are not part of your organization, you need to retrieve the IP addresses of those peers from the relevant operators in an out-of-band operation. Clients must be able to connect to any peers from which they need a response.
@@ -93,7 +97,6 @@ Besides the members that you invite when you create the network, you can invite 
 *Figure 4. Certificates*
 
 Operators can manage the certificates for the members in the same institution in the "Certificates" tab. Click **Add Certificate** to open the "Add Certificate" panel. Give a name to your certificate, paste your client-side certificates in PEM format to the "Key" field, and click **Submit**. You need to restart your peers before the client-side certificates can take effect.
-
 <!--
 For more information about generating your certificate key, see [Generating the client-side certificates](v10_application.html#generating-the-client-side-certificates).-->
 
@@ -132,15 +135,36 @@ When you have a long list of requests, you can search for a request in the searc
 
 Pending requests can be deleted by selecting the boxes in the front of them and clicking **Delete Request**. Note that a completed request cannot be deleted.
 
+## Certificate Authority
+{: #ca}
+
+The table on "Certificate Authority" (CA) screen displays all of the identities that have been registered with your organization, including your admin, peers, and client applications. You can also use this screen to register a new identity.
+
+**Figure 7** shows the "Certificate Authority" screen:
+
+![Certificate Authority](images/CA_screen.png "Certificate Authority")
+*Figure 7. Certificate Authority*
+
+Click the **Generate Certificate** button to get a new public certificate and private key from your CA. This panel can be used an an alternative way to [generate a public and private key pair](v10_application.html#register-app) for a client application which uses the Fabric SDK. The **Certificate** field contains your public certificate, also referred to as your signCert or enrollment cert, just above your **Private key**. You can click the copy icon at the end of each field to copy the value. **Note** that {{site.data.keyword.blockchainfull_notm}} Platform doesn't store these certificates. You need to safely save and store them. Refer to the [MSP information](certificates.html#msp) for more details.
+
+Click the **Add User** button to register a new identity to your organization. In the **Add User** pop-up window, fill in the following fields and then click **Submit**.
+  - **ID:** This will the name of your new identity, sometimes referred to as your `enroll ID`. **Save this Value** for when you configure a remote peer or enroll a new application.
+  - **Secret:** This will be the password to your identity, sometimes referred to as your `enroll Secret`  **Save this Value.** for when you configure a remote peer or enroll a new application.  
+  - **Type:** Select the type of identity the you want to register, either peer or client application.
+  - **Affiliation:** This will be the affiliation within your organization, such as `org1` for example, that the identity will belong to.
+  - **Maximum Enrollments:** You can use this field to limit the number of times your can enroll or generate certificates using this identity. If you leave the field blank, the value defaults to an unlimited number of enrollments.
+
+You can learn more about your CA by visiting the [Managing certificates on {{site.data.keyword.blockchainfull_notm}} Platform](certificates.html) tutorial.
+
 ## APIs
 {: #apis}
 
 {{site.data.keyword.blockchainfull_notm}} Platform exposes a number of REST APIs in Swagger that you can use to manage the nodes, channels, peers, and members of your network. Your applications can use these API's to control important network resources without using the network monitor.
 
-**Figure 7** shows the "APIs" screen:
+**Figure 8** shows the "APIs" screen:
 
 ![APIs](images/API_screen.png "APIs")
-*Figure 7. APIs*
+*Figure 8. APIs*
 
 Click the **Swagger UI** link to open the Swagger UI. Note that you need to authorize the Swagger UI with your network credentials (which can be found on this APIs page) before you can run the APIs. For more information, see [Interacting with the network using Swagger APIs](howto/swagger_apis.html).
 
@@ -149,10 +173,10 @@ Click the **Swagger UI** link to open the Swagger UI. Note that you need to auth
 
 The Enterprise Plan integrates {{site.data.keyword.blockchainfull_notm}} Platform: Develop and provides a development environment with industry standard tools and technologies. You can develop your network in the environment online or locally. After you develop a network, you can deploy it back to your Enterprise Plan network.
 
-**Figure 8** shows the "Develop code" screen:
+**Figure 9** shows the "Develop code" screen:
 
 ![Develop code](images/write_code.png "Develop code")
-*Figure 8. Develop code*
+*Figure 9. Develop code*
 
 For more information about developing and deploying your code with the Enterprise Plan, see [Developing business networks on Enterprise Plan](develop_enterprise.html).
 
@@ -161,10 +185,10 @@ For more information about developing and deploying your code with the Enterpris
 
 Chaincode, which is also known as "smart contract", is pieces of software that contains a set of functions to query and update the ledger. They are installed on peers and instantiated on a channel.
 
-**Figure 9** shows the "Install code" screen:
+**Figure 10** shows the "Install code" screen:
 
 ![Install code](images/chaincode_install_overview.png "Install code")
-*Figure 9. Install code*
+*Figure 10. Install code*
 
 A chaincode is first installed on a peer's file system and then instantiated on a channel. For more information, see [Installing, instantiating, and updating a chaincode](howto/install_instantiate_chaincode.html).
 
@@ -173,54 +197,51 @@ A chaincode is first installed on a peer's file system and then instantiated on 
 
 Sample applications help you to get a better understanding of a blockchain network and application development. Follow the **View on GitHub** links to learn how to use the samples and deploy them to {{site.data.keyword.blockchainfull_notm}} Platform. For more information on how to develop and deploy your samples, see [Deploying Sample Applications](howto/prebuilt_samples.html).
 
-**Figure 10** shows the "Try samples" screen:
+**Figure 11** shows the "Try samples" screen:
 
 ![Try samples](images/sample_overview_ep.png "Try samples")
-*Figure 10. Samples*
+*Figure 11. Samples*
 
 ## Get help
 {: #support}
 
 The "Get help" screen contains two tabs to provide support information in the "Support" tab and to describe new and changed functions of each release in the "Release Notes" tab.
 
-**Figure 11** shows the initial "Support" screen that displays support information in the "Support" tab:
+**Figure 12** shows the initial "Support" screen that displays support information in the "Support" tab:
 
 ![Support](images/support.png "Support")
-*Figure 11. Blockchain support*
+*Figure 12. Blockchain support*
+
+### Blockchain resources and support forums
+{: #support-forums}
 
 Use the links and resources on this page to access troubleshooting and support forums.
 
 * [{{site.data.keyword.blockchainfull_notm}} Service docs](index.html) under **Getting started**, which is this doc site, provides guidance on how to start with {{site.data.keyword.blockchainfull}} Platform on {{site.data.keyword.Bluemix_notm}}. You can find corresponding topics from the left navigator or search any term with the search function on the top.
-* [IBM Developer Works ![External link icon](images/external_link.svg "External link icon")](https://developer.ibm.com/blockchain/) under **Community help** contains resources and information for developers.
+* [IBM Code ![External link icon](images/external_link.svg "External link icon")](https://developer.ibm.com/code/technologies/blockchain/) contains code patterns and information for developers.
 * [IBM dWAnswers ![External link icon](images/external_link.svg "External link icon")](https://developer.ibm.com/answers/smartspace/blockchain/) under **Support ticket** serves as a platform for questions and responses. You can search for responses from previously posed questions or submit a new question. Be sure to include the keyword **blockchain** in your question.
   You can also submit a ticket to {{site.data.keyword.blockchainfull_notm}} support team with the **Open an {{site.data.keyword.Bluemix_notm}} support ticket** option.  Share details and code snippets from your specific {{site.data.keyword.Bluemix_notm}} instance.
 * [Sample applications ![External link icon](images/external_link.svg "External link icon")](https://github.com/ibm-blockchain) under **Blockchain sample applications** provides guidance and sample code snippets to assist in the development of applications.
-* [Hyperledger Fabric ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/) and [Hyperledger Fabric community ![External link icon](images/external_link.svg "External link icon")](http://jira.hyperledger.org/secure/Dashboard.jspa) under **Hyperledger Fabric** provide more details about the Hyperledger Fabric stack.
-  Talk to a [Hyperledger Expert ![External link icon](images/external_link.svg "External link icon")](https://chat.hyperledger.org/channel/general) with questions about the Hyperledger Fabric code.
+* [Hyperledger Fabric ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.1/) and [Hyperledger Fabric community ![External link icon](images/external_link.svg "External link icon")](http://jira.hyperledger.org/secure/Dashboard.jspa) under **Hyperledger Fabric** provide more details about the Hyperledger Fabric stack. Talk to a [Hyperledger Expert ![External link icon](images/external_link.svg "External link icon")](https://chat.hyperledger.org/channel/general) with questions about the Hyperledger Fabric code.
+* [{{site.data.keyword.blockchainfull_notm}} Platform: Develop ![External link icon](images/external_link.svg "External link icon")](https://ibm-blockchain.github.io/develop/) under **Hyperledger Composer** provides more details about the Hyperledger Composer, that is, {{site.data.keyword.blockchainfull_notm}} Platform: Develop. You can also find answers or raise questions in [Hyperledger Composer community ![External link icon](images/external_link.svg "External link icon")](https://chat.hyperledger.org/channel/general) and [StackOverflow ![External link icon](images/external_link.svg "External link icon")](https://stackoverflow.com/questions/tagged/hyperledger-composer).
 
-If you cannot debug your issue or ascertain an answer to your question, submit a support case in the IBM Cloud Service Portal. For more information, see [Getting support](ibmblockchain_support.html).
+If you cannot debug your issue or ascertain an answer to your question, submit a support case in the {{site.data.keyword.cloud_notm}} Service Portal. For more information, see [Getting support](ibmblockchain_support.html).
 
-Figure 12 and Figure 13 show the initial "Get Help" screen that displays new and changed functions of each release in the "Release Notes" tab:
+**Figure 13** and **Figure 14** show the initial "Get Help" screen that displays new and changed functions of each release in the "Release Notes" tab:
 
-![Release notes helios](images/releasenotes_helios.png "Release notes helios")
-*Figures 12. Release notes for Helios*
+![Release notes helios](images/releasenotes_helios.png "Release notes of Network Monitor UI")
+*Figures 13. Release notes for Network Monitor UI*
 
-![Release notes Fabric](images/releasenotes_Fabric.png "Release notes Fabric")
-*Figures 13. Release notes for Fabric*
+![Release notes Fabric](images/releasenotes_Fabric.png "Release notes of Fabric")
+*Figures 14. Release notes for Fabric*
 
 
 ## Network preferences
 {: #network-preferences}
 
-Click the upper right corner and open the drop-down menu and then the **Network preferences**. The Network preferences window opens. The Network preferences window shows the basic information of your network, such as network name, Fabric version, network location in {{site.data.keyword.cloud_notm}}, and ledger database type.
+Click the upper right corner and open the drop-down menu and then the **Network preferences**. The Network preferences window opens. The Network preferences window shows the basic information of your network, such as network name, Fabric version, network location in {{site.data.keyword.cloud_notm}}, and state database type.
 
 Enterprise Plan networks that are created after May 15th, 2018 will run on Hyperledger Fabric v1.1. If you create networks after the upgrade, you can also manage web inactivity timeout and mutual TLS for your network in the Network preferences window. These settings can be changed by the network initiator only.
-
-<!--
-
-Enterprise Plan networks that are created after May 15th, 2018 will run on Hyperledger Fabric v1.1. If you create networks after the upgrade, you can also manage web inactivity timeout, mutual TLS, and switch your ledger to CouchDB for your network in the Network preferences window. These settings can be changed by the network initiator only.
-
--->
 
 ### Web inactivity timeout
 {: #web-inactivity-timeout}
@@ -251,20 +272,20 @@ For more information about updating your applications to support mutual TLS, see
 
 <!--
 
-### CouchDB ledger type
+### CouchDB state database
 {: #couchdb}
 
-**Note**: Only the **network initiator** can switch the ledger database from LevelDB to CouchDB. This is a network level setting and will affect all network members. Switching to CouchDB is permanent. You cannot revert back to LevelDB.
+**Note**: Only the **network initiator** can switch the state database from LevelDB to CouchDB. This is a network level setting and will affect all network members. Switching to CouchDB is permanent. You cannot revert back to LevelDB.
 
-Before Enterprise Plan upgrades to Fabric v1.1, all network peers store data in the pure key-value LevelDB. With Fabric v1.1, you can choose to use CouchDB as your ledger database. CouchDB is a document datastore that permits indexing the contents of your data and allows you to issue rich queries against the data on your peer. Note that Hyperledger Fabric does not support peers running different databases. If CouchDB is used, it must be used by all of the peers.
+Before Enterprise Plan upgrades to Fabric v1.1, all network peers store data in the pure key-value LevelDB. With Fabric v1.1, you can choose to use CouchDB as your state database. CouchDB is a document datastore that permits indexing the contents of your data and allows you to issue rich queries against the data on your peer. Note that Hyperledger Fabric does not support peers running different databases. If CouchDB is used, it must be used by all of the peers.
 
 To use CouchDB, your data must be stored in a data format that can be modeled in chaincode, such as JSON. If the decision is made to migrate from LevelDB to CouchDB, the {{site.data.keyword.blockchainfull_notm}} Platform will migrate your data from key-value format to the CouchDB format automatically.
 
-If you switch to CouchDB, you need to update your chaincode to take advantage of indexes and rich queries. For more information about CouchDB and how to set up index, see [CouchDB as the State Database ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/latest/couchdb_as_state_database.html). For more information about updating chaincode in {{site.data.keyword.blockchainfull_notm}} Platform, see [Updating a chaincode](howto/install_instantiate_chaincode.html#updating-a-chaincode).
+If you switch to CouchDB, you need to update your chaincode to take advantage of indexes and rich queries. For more information about CouchDB and how to set up index, see [CouchDB as the State Database ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/latest/couchdb_as_state_database.html) in the Hyperledger Fabric documentation. You can also find an example that uses an index with chaincode in this [Fabric tutorial![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/couchdb_tutorial.html){:new_window}. For more information about updating chaincode in {{site.data.keyword.blockchainfull_notm}} Platform, see [Updating a chaincode](howto/install_instantiate_chaincode.html#updating-a-chaincode).
 
 -->
 
-**Figure 14** shows the "Network preferences" window:
+**Figure 15** shows the "Network preferences" window:
 
 ![Network preferences](images/network_preferences_ep_tmp.png "Network preferences")
-*Figure 14. Network preferences*
+*Figure 15. Network preferences*

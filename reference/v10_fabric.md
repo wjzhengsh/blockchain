@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 ---
 
 {:new_window: target="_blank"}
@@ -21,7 +21,7 @@ lastupdated: "2018-06-14"
 {{site.data.keyword.blockchainfull}} network is built on the Hyperledger Fabric stack, one of the blockchain projects within the Linux Foundation's Hyperledger Project.  It is a "permissioned" network where all users and components have known identities.  Sign/verify logic is implemented at every communication touchpoint, and transactions are consented upon through a series of endorsement and validation checks.  In this sense, it differs greatly from traditional blockchain implementations that promote anonymity and are forced to rely on cryptocurrencies and heavy compute obligations to validate transactions.  
 {:shortdesc}
 
-Hyperledger Fabric offers a modular architecture to extend the scalability and performance.  This topic introduces some key components in Hyperledger Fabric.  For a complete introduction on Hyperledger Fabric, see [Hyperledger Fabric documentation ![External link icon](../images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/latest/){:new_window}.  
+Hyperledger Fabric offers a modular architecture to extend the scalability and performance.  This topic introduces some key components in Hyperledger Fabric.  For a complete introduction on Hyperledger Fabric, see [Hyperledger Fabric documentation ![External link icon](../images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/){:new_window}.  
 
 ## Certificate Authority  
 As a platform for **permissioned** blockchain networks, Hyperledger Fabric includes a modular **Certificate Authority (CA)** component for managing the network identities of all member organizations and their users. The requirement for a permissioned identity for every user enables ACL-based control over network activity, and guarantees that every transaction is ultimately traceable to a registered user.  
@@ -31,12 +31,12 @@ As a platform for **permissioned** blockchain networks, Hyperledger Fabric inclu
 
 This certificate-based control over network membership and actions enables members to restrict access to private and confidential channels, applications, and data, by specific user identities.
 
-For more information about the Hyperledger Fabric Certificate Authority component, see [Fabric CA User’s Guide ![External link icon](../images/external_link.svg "External link icon")](http://hyperledger-fabric-ca.readthedocs.io/en/latest/){:new_window}.
+For more information about the Hyperledger Fabric Certificate Authority component, see [Fabric CA User’s Guide ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric-ca.readthedocs.io/en/release-1.1/){:new_window}.
 
 ## Membership Service Provider  
 Hyperledger Fabric includes a **Membership Service Provider (MSP)** component to offer an abstraction of all cryptographic mechanisms and protocols behind issuing and validating certificates, and user authentication.  The MSP is installed on each channel peer to ensure that transaction requests that are issued to the peer originate from an authenticated and authorized user identity.
 
-For more information about the Hyperledger Fabric Membership Services Provider component, see *[Membership Service Providers (MSP) ![External link icon](../images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/latest/msp.html){:new_window}* in the [Hyperledger Fabric documentation ![External link icon](../images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/latest/){:new_window}.
+For more information about the Hyperledger Fabric Membership Services Provider component, see *[Membership Service Providers (MSP) ![External link icon](../images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/msp.html){:new_window}* in the [Hyperledger Fabric documentation ![External link icon](../images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/){:new_window}.
 
 ## Transaction flow  
 To ensure data consistency and integrity, Hyperledger Fabric implements multiple checkpoints throughout the transaction flow, including client authentication, endorsement, ordering, and commitment to the ledger.
@@ -56,10 +56,10 @@ On a Hyperledger Fabric network, the flow of data for queries and transactions i
 	* Any transactions that fail the validation process are marked as invalid in the block, and the block is appended to the channel's hashchain.  
 	* All valid transactions update the state database accordingly with the modified key/value pairs.  
 
-The **gossip data dissemination protocol** continually broadcasts ledger data across the channel to ensure synchronized ledgers among peers.  For more information, see *[Gossip data dissemination protocol ![External link icon](../images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/latest/gossip.html){:new_window}* in
-[Hyperledger Fabric documentation ![External link icon](../images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/latest/){:new_window}.
+The **gossip data dissemination protocol** continually broadcasts ledger data across the channel to ensure synchronized ledgers among peers.  For more information, see *[Gossip data dissemination protocol ![External link icon](../images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/gossip.html){:new_window}* in
+[Hyperledger Fabric documentation ![External link icon](../images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/){:new_window}.
 
-For a step-by-step introduction on transaction flow, see *[Transaction Flow ![External link icon](../images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/latest/txflow.html){:new_window}* in [Hyperledger Fabric documentation ![External link icon](../images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/latest/){:new_window}.  
+For a step-by-step introduction on transaction flow, see *[Transaction Flow ![External link icon](../images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/txflow.html){:new_window}* in [Hyperledger Fabric documentation ![External link icon](../images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/){:new_window}.  
 
 ## Ordering Service
 Hyperledger Fabric includes a Kafka-based service for ordering and broadcasting network transactions. Kafka also provides crash fault tolerance to your network; meaning that if an accepted number of ordering service nodes are unavailable, the service continues to order and distribute blocks of transactions to channel peers.
@@ -71,7 +71,7 @@ Ordering service nodes also provide the following services:
 2. Maintenance of a system chain that defines ordering service configurations, root certs, and MSP IDs for authenticated organizations and a grouping of profiles containing the various consortia within the network.
 3. Filtering and validation for configuration transactions that reconfigure or create a channel.  
 
-For more information about Hyperledger Fabric ordering service, see *[Bringing up a Kafka-based Ordering Service ![External link icon](../images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/latest/kafka.html){:new_window}* in  [Hyperledger Fabric documentation ![External link icon](../images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/latest/){:new_window}.
+For more information about Hyperledger Fabric ordering service, see *[Bringing up a Kafka-based Ordering Service ![External link icon](../images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/kafka.html){:new_window}* in  [Hyperledger Fabric documentation ![External link icon](../images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/){:new_window}.
 
 ## HFC SDKs
 The Hyperledger Fabric Client (HFC) SDKs enable application developers to build applications that interact with a blockchain network. The HFC SDK helps facilitate applications to manage the lifecycle of channels and chaincode.
@@ -88,4 +88,4 @@ Hyperledger Fabric delivers Node.js SDK and Java SDK, and provides the following
 * Query the ledger for specific transactions, blocks or keys
 * Monitor events on a channel (for example, successful commitment of a transaction)
 
-For more information about HFC SDKs, see *[Hyperledger Fabric SDKs ![External link icon](../images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/latest/fabric-sdks.html){:new_window}* in [Hyperledger Fabric documentation ![External link icon](../images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/latest/){:new_window}.
+For more information about HFC SDKs, see *[Hyperledger Fabric SDKs ![External link icon](../images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/fabric-sdks.html){:new_window}* in [Hyperledger Fabric documentation ![External link icon](../images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/){:new_window}.

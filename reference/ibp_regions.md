@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -28,17 +28,20 @@ lastupdated: "2018-06-14"
 
 Different {{site.data.keyword.blockchainfull_notm}} Platform offerings are available in different {{site.data.keyword.cloud_notm}} regions. You can create blockchain networks in only {{site.data.keyword.cloud_notm}} regions that {{site.data.keyword.blockchainfull_notm}} Platform plans are available.
 
-{{site.data.keyword.blockchainfull_notm}} Platform supports the following {{site.data.keyword.cloud_notm}} regions:
+Table 1 and Figure 1 show the {{site.data.keyword.cloud_notm}} regions and locations that {{site.data.keyword.blockchainfull_notm}} Platform supports.
 
-| Region/location | Starter Plan | Enterprise Plan | Region API endpoint |
-|--------|----------|----------|-------------|
-| US South | Y | Y | api.ng.bluemix.net |
-| United Kingdom | Y | Y | api.eu-gb.bluemix.net |
-| Sydney | Y | Y | api.au-syd.bluemix.net |
-| AP North |  | Y | api.au-syd.bluemix.net |
-| Germany |  | Y | api.eu-de.bluemix.net |
+| Region/location | Starter Plan | Enterprise Plan |
+|--------|----------|----------|
+| US South/Dallas | Y | Y |
+| United Kingdom/London | Y | Y |
+| AP North/Tokyo |  | Y |
+| Germany/Frankfurt |  | Y |
+| Sydney | Y |  |
+| São Paulo |  | Y |
+| Toronto |  | Y |
 
-Figure 1 shows the {{site.data.keyword.cloud_notm}} regions and locations that {{site.data.keyword.blockchainfull_notm}} Platform supports.
+_Table 1. {{site.data.keyword.blockchainfull_notm}} Platform regions and locations_
+
 
 ![{{site.data.keyword.blockchainfull_notm}} Platform regions and locations](../images/ibp_regions.png "{{site.data.keyword.blockchainfull_notm}} Platform regions and locations")  
 _Figure 1. {{site.data.keyword.blockchainfull_notm}} Platform regions and locations_
