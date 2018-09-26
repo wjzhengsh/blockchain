@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-31"
+lastupdated: "2018-09-27"
 ---
 
 {:new_window: target="_blank"}
@@ -59,6 +59,7 @@ You need to have **Operator** or **Writer** authority on the channel to instanti
 3. Specify your chaincode's [endorsement policy](../glossary.html#endorsement-policy). You can learn more about how to set endorsement policies in the [next section](#specifying-chaincode-endorsement-policies).
 
 ## Specifying chaincode endorsement policies
+{: #endorsement-policy}
 
 You can use endorsement policies to specify which set of peers need to validate a new transaction. For example, an endorsement policy can specify that a transaction will be added to the ledger only if a majority of the members on the channel endorse the transaction.
 
@@ -76,6 +77,8 @@ When you use the Network Monitor to set your endorsement policy, you can either 
 
   ![Advanced endorsement policy](../images/advanced_endorsement.png "Advanced endorsement policy")
 
+Endorsement policies are not updated automatically when new organizations join the channel and install the chaincode. For example, if the policy requires two of five organizations to endorse a transaction, the policy will not be updated to require two out of six organizations when a new organization joins the channel. Instead, the new organization will not be listed on the policy, and they will not be able to endorse transactions.You can add a new organization to an endorsement policy by updating the relevant chaincode.
+
 ## Updating a chaincode
 
 You can update a chaincode to change the chaincode's programming while maintaining its relationship to the assets on the ledger. Because of the installation and instantiation combination, you need to update the chaincode on all peers that are on the channel with this chaincode. Complete the following steps to update your chaincode.
@@ -84,6 +87,7 @@ You can update a chaincode to change the chaincode's programming while maintaini
 
   ![Update Chaincode](../images/upgrade_chaincode.png "Update Chaincode")
 
-2. Find your new chaincode in the table and click the **Update** button under the **Action** header. This action reinstantiates your chaincode and replaces the chaincode container with a new one. Note that you do not need to enter any new arguments as part of the update function. This upgrade action takes place on the channel, and only needs to be performed by one organization.
+2. Find your new chaincode in the table and click the **Update** button under the **Action** header. This action reinstantiates your chaincode and replaces the chaincode container with a new one. When you click the **Update** button, you have the opportunity to update the chaincode
+endorsement policy, which is important to do if an organization was recently added to the channel. Note that you do not need to enter any new arguments as part of the update function. This upgrade action takes place on the channel, and only needs to be performed by one organization.
 
   ![Update button](../images/upgrade_button.png "Update button")
