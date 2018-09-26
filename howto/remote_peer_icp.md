@@ -132,7 +132,7 @@ You need to add a new peer identity to your organization on the {{site.data.keyw
   *Figure 2. CA screen*
 
 2. Click the **Add User** button at the top of the screen. A pop-up screen opens and allows you to register your remote peer after you fill out the following fields. Save the values of the ID and Secret and you need to use them when you configure your peer.
-  - **ID:** The use name of your peer, which is referred to as your `enroll ID` when you configure your peer. **Save this value** for future usage when you deploy the remote peer.
+  - **ID:** The user name of your peer, which is referred to as your `enroll ID` when you configure your peer. **Save this value** for future usage when you deploy the remote peer.
   - **Secret:** The password of your peer, which is referred to as your `enroll Secret` when you configure your peer. **Save this Value** for future usage when you deploy the remote peer.
   - **Type:** Select `peer` for this field.
   - **Affiliation:** This is the affiliation under your organization, `org1` for example, that your remote peer will belong to. Select an existing affiliation from the drop-down list or type in a new one.

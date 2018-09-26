@@ -111,7 +111,7 @@ The offer provides lifetime credits. The credits last as long as you maintain yo
 | Credits used | -$450 |
 | Credits remaining after first month | $50 |
 
-*Figure 5. Using trail credits with other {{site.data.keyword.cloud_notm}} Services*
+*Figure 5. Using trial credits with other {{site.data.keyword.cloud_notm}} Services*
 
 #### Additional peers
 Starter Plan does not restrict the number of peers that you can add to your network. If you add, for example, two peers to the default Starter Plan network, one for each of your organizations, you increase your bill by $250 per month. Your bill is reflected in Figure 6 if you add two additional peers at the beginning of the first month when you create or join a Starter Plan network and consume the trial credits.
