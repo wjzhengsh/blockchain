@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-09-05"
+lastupdated: "2018-09-28"
 
 ---
 
@@ -10,7 +10,7 @@ lastupdated: "2018-09-05"
 {:shortdesc: .shortdesc}
 {:screen: .screen}
 {:codeblock: .codeblock}
-{:pre: .pre}
+{:pre: .pre}_
 
 # About remote peers
 {: #remote-peer-overview}
@@ -18,6 +18,9 @@ lastupdated: "2018-09-05"
 
 ***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
+**Update:**
+As of September 28, 2018 all new {{site.data.keyword.blockchainfull_notm}} Platform Starter networks will be provisioned using Hyperledger Fabric v1.2. This version of Fabric is currently not compatible with this Remote Peer offering (which uses a v1.1 peer).  Existing Starter Plan networks, which are based on Fabric v1.1, are not impacted and will continue to function with the Remote Peer offering. We are working to update the Remote Peer offering to use the v1.2 peer, which will be compatible with new Starter networks (using v1.2) and Enterprise networks (which still use v1.1). Until this remote peer offering has been updated to Fabric v1.2, do not attempt to deploy
+a remote peer with a Starter v1.2 network. 
 
 You can run {{site.data.keyword.blockchainfull}} Platform remote peers on {{site.data.keyword.cloud_notm}} Private (ICP) <!--[AWS]or on AWS Cloud --> after you connect them to an existing blockchain network. Running peers outside {{site.data.keyword.cloud_notm}} provides more flexibility to grow or join a blockchain network while taking advantage of an existing network inside {{site.data.keyword.cloud_notm}}. Remote peers leverage the Certificate Authorities (CAs) and Ordering Service on the platform, but allow you to colocate your peer with other applications outside {{site.data.keyword.cloud_notm}}.
 {:shortdesc}
@@ -25,6 +28,7 @@ You can run {{site.data.keyword.blockchainfull}} Platform remote peers on {{site
 <!--[AWS]Move ICP description here.-->{{site.data.keyword.cloud_notm}} Private (ICP) is a Kubernetes-based platform for building a private cloud in an on-premises environment. You can use ICP to run a remote peer and connect the remote peer to a blockchain network on {{site.data.keyword.blockchainfull_notm}} Platform. {{site.data.keyword.blockchainfull_notm}} Platform Remote Peer for ICP leverages the storage, security, logging, and support services of ICP so that you can manage your remote peers in your on-premises environment. For more information about ICP, see [{{site.data.keyword.cloud_notm}} Private documentation ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0.3/kc_welcome_containers.html "{{site.data.keyword.cloud_notm}} Private documentation").  
 
 **Note:** {{site.data.keyword.blockchainfull_notm}} Platform Remote Peer is currently a Beta offering that is suitable for evaluation and experimentation. **This Beta edition is not intended for production usage.** For access and more information, see [license and pricing](#remote-peer-license-pricing).
+
 
 <!--[AWS]The following cloud platforms are supported:-->
 <!--[AWS]

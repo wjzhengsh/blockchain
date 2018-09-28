@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-09-05"
+lastupdated: "2018-09-28"
 
 ---
 
@@ -18,6 +18,9 @@ lastupdated: "2018-09-05"
 
 ***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
+**Update:**
+As of September 28, 2018 all new {{site.data.keyword.blockchainfull_notm}} Platform Starter networks will be provisioned using Hyperledger Fabric v1.2. This version of Fabric is currently not compatible with this Remote Peer offering (which uses a v1.1 peer).  Existing Starter Plan networks, which are based on Fabric v1.1, are not impacted and will continue to function with the Remote Peer offering. We are working to update the Remote Peer offering to use the v1.2 peer, which will be compatible with new Starter networks (using v1.2) and Enterprise networks (which still use v1.1). Until this remote peer offering has been updated to Fabric v1.2, do not attempt to deploy
+a remote peer with a Starter v1.2 network. 
 
 The following instructions describe how to install an {{site.data.keyword.blockchainfull}} Platform remote peer on {{site.data.keyword.cloud_notm}} Private (ICP) and connect it to a network on {{site.data.keyword.blockchainfull_notm}} Platform.
 {:shortdesc}
