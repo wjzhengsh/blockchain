@@ -37,7 +37,7 @@ You need the following prerequisites before you can use the **Writing Your First
   * [Curl ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/prereqs.html#install-curl "Curl") or [Git ![External link icon](images/external_link.svg "External link icon")](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git "Git"){:new_window}
   * [Node.js ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/latest/prereqs.html#node-js-runtime-and-npm "Node.js"){:new_window}
 
-- Install Hyperledger Fabric samples by downloading the `fabric-samples` directory. You can follow the [getting started guide ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/samples.html "getting started guide"){:new_window} in the Hyperledger Fabric documentation.
+- Install Hyperledger Fabric samples by downloading the `fabric-samples` directory. You can follow the [getting started guide ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/install.html "getting started guide"){:new_window} in the Hyperledger Fabric documentation.
 
 - Navigate to the `fabric-samples` directory on your local machine.
   * Use the `git checkout` command to use the branch that matches your networks Hyperledger Fabric version. You can find your Fabric version by opening the [Network Preferences window](../v10_dashboard.html#network-preferences) in your Network Monitor.
@@ -82,7 +82,7 @@ You need to provide your application with the API endpoints of specific network 
   ```
   {:codeblock}
 
-  **Note**: You might want to target network resources outside of your organization with your application. For example, if a chaincode [endorsement policy](howto/install_instantiate_chaincode.html#specifying-chaincode-endorsement-policies) requires endorsements from other organizations on the channel, then you need to obtain the endpoint information of their peers and the accompanying TLS certificates. You can find this information in the peers section of Connection Profile. However, you need to contact the admin of the other orgs about which peers they have joined to particular channels.
+  **Note**: You might want to target network resources outside of your organization with your application. For example, if a chaincode [endorsement policy](howto/install_instantiate_chaincode.html#endorsement-policy) requires endorsements from other organizations on the channel, then you need to obtain the endpoint information of their peers and the accompanying TLS certificates. You can find this information in the peers section of Connection Profile. However, you need to contact the admin of the other orgs about which peers they have joined to particular channels.
 
 3. Plug the API endpoint information into a configuration file of your application as shown in the following example:
   ```
