@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -13,6 +13,10 @@ lastupdated: "2018-06-14"
 {:pre: .pre}
 
 # Kanal erstellen oder aktualisieren
+
+
+***[Ist diese Seite hilfreich? Teilen Sie uns Ihre Meinung mit.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
 
 Kanäle sind ein äußerst leistungsfähiger Mechanismus für die Partitionierung und Isolierung von Daten zum Datenschutz. Nur Mitglieder desselben Kanals können auf die Daten dieses Kanals zugreifen.
 {:shortdesc}

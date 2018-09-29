@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -13,6 +13,10 @@ lastupdated: "2018-06-14"
 {:pre: .pre}
 
 # Criando ou atualizando um canal
+
+
+***[Esta página é útil? Diga-nos.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
 
 Os canais são um mecanismo muito poderoso para particionamento e isolamento de dados e eles fornecem a base principal
 para privacidade de dados. Apenas membros do mesmo canal podem acessar os dados desse canal.

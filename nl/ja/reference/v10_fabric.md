@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 ---
 
 {:new_window: target="_blank"}
@@ -13,10 +13,15 @@ lastupdated: "2018-06-14"
 
 
 # Hyperledger Fabric
+
+
+***[このページは参考になりましたか。ご意見をお聞かせください。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
 {{site.data.keyword.blockchainfull}} ネットワークは、Linux Foundation の Hyperledger Project 内のブロックチェーン・プロジェクトの 1 つである Hyperledger Fabric スタック上に構築されています。  これは「許可制」のネットワークで、すべてのユーザーとコンポーネントには既知のアイデンティティーがあります。  すべてのコミュニケーション・タッチポイントに署名/検証ロジックが実装されており、一連のエンドースメントと検証の検査によってトランザクションが承認されます。  この点は匿名性を重視する従来型のブロックチェーンとは大きく異なります。従来型の実装は暗号通貨に依存し、トランザクションの検証を行うために高度な計算負荷がかかります。  
 {:shortdesc}
 
-Hyperledger Fabric は、スケーラビリティーとパフォーマンスを拡張するためのモジュラー・アーキテクチャーを提供します。  このトピックでは、Hyperledger Fabric のいくつかのキー・コンポーネントを説明します。  Hyperledger Fabric の概要全体については、[Hyperledger Fabric の資料 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](http://hyperledger-fabric.readthedocs.io/en/latest/){:new_window} を参照してください。  
+Hyperledger Fabric は、スケーラビリティーとパフォーマンスを拡張するためのモジュラー・アーキテクチャーを提供します。  このトピックでは、Hyperledger Fabric のいくつかのキー・コンポーネントを説明します。  Hyperledger Fabric の概要全体については、[Hyperledger Fabric の資料 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/){:new_window} を参照してください。  
 
 ## 認証局  
 Hyperledger Fabric には、**許可制**ブロックチェーン・ネットワークのプラットフォームとして、すべてのメンバー組織とそのユーザーのネットワーク・アイデンティティーを管理するためのモジュラー**認証局 (CA)** コンポーネントが組み込まれています。 すべてのユーザーに対して許可アイデンティティーが求められているため、ネットワーク・アクティビティーに対する ACL ベースの制御が可能になり、すべてのトランザクションに関して、それが最終的に帰属する登録済みユーザーを明確にすることができます。  
@@ -26,12 +31,12 @@ Hyperledger Fabric には、**許可制**ブロックチェーン・ネットワ
 
 このような、ネットワーク・メンバーシップとアクションに対する証明書ベースの制御を使用すると、メンバーは、特定のユーザー・アイデンティティーによって、専用かつ機密のチャネル、アプリケーション、データへのアクセスを制限できます。
 
-Hyperledger Fabric の認証局コンポーネントについて詳しくは、[Fabric CA User’s Guide![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](http://hyperledger-fabric-ca.readthedocs.io/en/latest/){:new_window} を参照してください。
+Hyperledger Fabric の認証局コンポーネントについて詳しくは、[Fabric CA User’s Guide![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric-ca.readthedocs.io/en/release-1.1/){:new_window} を参照してください。
 
 ## メンバーシップ・サービス・プロバイダー  
 Hyperledger Fabric には**メンバーシップ・サービス・プロバイダー (MSP)** コンポーネントが含まれています。このコンポーネントは、証明書の発行と検証に使用されるすべての暗号メカニズムとプロトコルの抽象化に加え、ユーザー認証を提供します。  MSP は各チャネル・ピアにインストールされ、ピアに対して発行されるトランザクション要求が、必ず認証済みの許可ユーザー・アイデンティティーから発信されるようにします。
 
-Hyperledger Fabric メンバーシップ・サービス・プロバイダー・コンポーネントについて詳しくは、[Hyperledger Fabric 資料 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](http://hyperledger-fabric.readthedocs.io/en/latest/){:new_window} の *[Membership Service Providers (MSP) ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](http://hyperledger-fabric.readthedocs.io/en/latest/msp.html){:new_window}* を参照してください。
+Hyperledger Fabric メンバーシップ・サービス・プロバイダー・コンポーネントについて詳しくは、[Hyperledger Fabric 資料 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/){:new_window} の *[Membership Service Providers (MSP) ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/msp.html){:new_window}* を参照してください。
 
 ## トランザクション・フロー  
 データの一貫性と整合性を確保するため、Hyperledger Fabric は、クライアント認証、エンドースメント、順序付け、台帳へのコミットメントなどのトランザクション・フロー全体にわたり、複数のチェックポイントを実装しています。
@@ -51,9 +56,9 @@ Hyperledger Fabric ネットワークでは、照会とトランザクション�
 	* 検証プロセスで不合格になったトランザクションはブロック内で無効のマークが付き、そのブロックはチャネルのハッシュ・チェーンに追加されます。  
 	* すべての有効なトランザクションは、変更されたキー/値のペアに従って状態データベースを更新します。  
 
-**gossip データ配布プロトコル**は、チャネル全体に台帳データを継続的にブロードキャストして、ピア間で台帳が同期しているようにします。  詳しくは、[Hyperledger Fabric 資料 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](http://hyperledger-fabric.readthedocs.io/en/latest/){:new_window} の *[Gossip data dissemination protocol ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](http://hyperledger-fabric.readthedocs.io/en/latest/gossip.html){:new_window}* を参照してください。
+**gossip データ配布プロトコル**は、チャネル全体に台帳データを継続的にブロードキャストして、ピア間で台帳が同期しているようにします。  詳しくは、[Hyperledger Fabric 資料 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/){:new_window} の *[Gossip data dissemination protocol ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/gossip.html){:new_window}* を参照してください。
 
-トランザクション・フローの詳しい紹介については、[Hyperledger Fabric 資料 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](http://hyperledger-fabric.readthedocs.io/en/latest/){:new_window} の *[Transaction Flow![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](http://hyperledger-fabric.readthedocs.io/en/latest/txflow.html){:new_window}* を参照してください。  
+トランザクション・フローの詳しい紹介については、[Hyperledger Fabric 資料 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/){:new_window} の *[Transaction Flow![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/txflow.html){:new_window}* を参照してください。  
 
 ## 順序付けサービス
 Hyperledger Fabric には、ネットワーク・トランザクションの順序付けとブロードキャストに使用する Kafka ベースのサービスが組み込まれています。 Kafka は、ネットワークの異常終了耐障害機能も提供します。つまり、受け入れた数の順序付けサービス・ノードを使用できない場合でも、サービスはトランザクションのブロックの順序付けとチャネル・ピアへの配布を継続します。
@@ -65,7 +70,7 @@ Hyperledger Fabric には、ネットワーク・トランザクションの順�
 2. 順序付けサービス構成を定義するシステム・チェーン、認証済み組織のルート証明書と MSP ID、ネットワーク内のさまざまなコンソーシアムを格納するプロファイル・グループの保守。
 3. チャネルを再構成または作成する構成トランザクションのフィルター操作と検証。  
 
-Hyperledger Fabric の順序付けサービスについて詳しくは、[Hyperledger Fabric 資料 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](http://hyperledger-fabric.readthedocs.io/en/latest/){:new_window} の *[Bringing up a Kafka-based Ordering Service ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](http://hyperledger-fabric.readthedocs.io/en/latest/kafka.html){:new_window}* を参照してください。
+Hyperledger Fabric の順序付けサービスについて詳しくは、[Hyperledger Fabric 資料 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/){:new_window} の *[Bringing up a Kafka-based Ordering Service ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/kafka.html){:new_window}* を参照してください。
 
 ## HFC SDK
 Hyperledger Fabric Client (HFC) SDK を使用することにより、アプリケーション開発者は、ブロックチェーン・ネットワークとやり取りするアプリケーションを作成することができます。 HFC SDK は、アプリケーションでチャネルとチェーンコードのライフサイクルを管理する上で役立ちます。
@@ -82,4 +87,4 @@ Hyperledger Fabric は Node.js SDK と Java SDK を提供し、ブロックチ�
 * 台帳にある特定のトランザクション、ブロック、またはキーを照会する
 * チャネル上のイベントをモニターする (例えば、トランザクションのコミットメントの成功)
 
-HFC SDK について詳しくは、[Hyperledger Fabric 資料 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](http://hyperledger-fabric.readthedocs.io/en/latest/){:new_window} の *[Hyperledger Fabric SDKs ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](http://hyperledger-fabric.readthedocs.io/en/latest/fabric-sdks.html){:new_window}* を参照してください。
+HFC SDK について詳しくは、[Hyperledger Fabric 資料 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/){:new_window} の *[Hyperledger Fabric SDKs ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/fabric-sdks.html){:new_window}* を参照してください。

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -15,6 +15,10 @@ lastupdated: "2018-06-14"
 
 # 開發網路
 {: #develop-the-network}
+
+
+***[此頁面有幫助嗎？請告訴我們。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
 
 使用「{{site.data.keyword.blockchainfull}} 平台」來開發區塊鏈解決方案時，會運用 Hyperledger Composer 開放程式碼開發工具集。在您將任何項目部署至實際區塊鏈網路_之前_，Hyperledger Composer 會使用定製的模型化語言，結合 JavaScript 交易和存取控制規則來建立完整的區塊鏈商業網路模型。
 {:shortdesc}
@@ -167,7 +171,7 @@ lastupdated: "2018-06-14"
 2. 從 `tutorial-network` 目錄執行下列指令：
 
     ```
-    composer archive create -t dir -n .
+composer archive create -t dir -n .
     ```
     {:codeblock}
 

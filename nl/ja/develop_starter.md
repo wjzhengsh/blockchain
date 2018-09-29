@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -16,7 +16,12 @@ lastupdated: "2018-06-14"
 # スターター・プランでのビジネス・ネットワークのデプロイ
 {: #deploying-a-business-network}
 
+
+*[このページは参考になりましたか。 ご意見をお聞かせください。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)*
+
+
 {{site.data.keyword.blockchainfull}} Platform 開発者環境と Hyperledger Composer 開発者ツール・セットを使用すると、ビジネス・ネットワークを開発し、スターター・プラン環境にそれをデプロイすることができます。
+{:shortdesc}
 
 開発者環境を使用することで、{{site.data.keyword.blockchain}} ビジネス・ネットワークを迅速にモデル化してテストし、それらを {{site.data.keyword.blockchainfull_notm}} Platform のインスタンスにデプロイできます。
 
@@ -33,7 +38,7 @@ lastupdated: "2018-06-14"
 
 3. 接続プロファイル内で、「registrar」が表示されるまで下方向に移動します。 「registrar」内の「enrollId」の下に、**enrollSecret** というプロパティーがあります。 このシークレットを取得して、そのコピーを保存します。
 
-    ![D8KBag](https://i.makeagif.com/media/4-12-2018/D8KBag.gif)
+    ![管理シークレットの取得](images/get_enroll_secret.gif "管理シークレットの取得")
 
 
 ## ステップ 2: 認証局カードの作成
@@ -63,7 +68,7 @@ lastupdated: "2018-06-14"
    ```
    {:codeblock}
 
-上記のコマンドの `enrollSecret` を、接続プロファイルから取得した管理シークレットに置き換えます。`composer identity request` コマンドにより、証明書 `.pem` ファイルを格納する `credentials` ディレクトリーが作成されます。
+上記のコマンドの `enrollSecret` を、接続プロファイルから取得した管理シークレットに置き換えます。 `composer identity request` コマンドにより、証明書 `.pem` ファイルを格納する `credentials` ディレクトリーが作成されます。
 
 ## ステップ 3: スターター・プラン・インスタンスへの証明書の追加
 
@@ -71,11 +76,11 @@ lastupdated: "2018-06-14"
 
 1. スターター・プランの UI で、**「メンバー」**タブ、**「証明書」**、**「証明書の追加」**の順にクリックします。 `credentials` ディレクトリーに移動し、証明書ボックス内の `admin-pub.pem` ファイルの内容をコピー・アンド・ペーストします。 証明書を送信し、ピアを再始動します。 注: ピアの再始動には 1 分ほどかかります。
 
-    ![jlEb2y](https://i.makeagif.com/media/4-12-2018/jlEb2y.gif)
+    ![証明書の追加](images/add_cert.gif "証明書の追加")
 
 2. 次に、証明書をチャネル上で同期させる必要があります。 **「チャネル」**タブ、**「アクション」**ボタン、**「証明書の同期 (Sync Certificate)」**、および **「送信」**の順にクリックします。
 
-    ![E-sVV5](https://i.makeagif.com/media/4-12-2018/E-sVV5.gif)
+    ![証明書の同期](images/sync_cert.gif "証明書の同期")
 
 ## ステップ 4: 管理ビジネス・ネットワーク・カードの作成
 
@@ -137,13 +142,13 @@ lastupdated: "2018-06-14"
 
 ## ステップ 6: ビジネス・ネットワークを ping して、正しく稼働していることを確認する
 
-1. 以下のコマンドを実行して、ビジネス・ネットワークを ping します。
+以下のコマンドを実行して、ビジネス・ネットワークを ping します。
 
    ```
    composer network ping -c admin@vehicle-manufacture-network
    ```
    {:codeblock}
 
-チェーンコード・ログを表示するには、**「チャネル」**をクリックしてから、対象のチャネルを選択します。 ドロップダウン矢印をクリックしてログを表示するか、「アクション」記号をクリックして詳細を表示します。
+チェーンコード・ログを表示するには、**「チャネル」**をクリックしてから、対象のチャネルを選択します。<!-- Click the dropdown arrow to view the logs, or the Actions symbol to view in more detail. --> **「チェーンコード」**タブをクリックします。 チェーンコードの行を展開し、**「JSON」**または**「ログ」**ボタンをクリックします。
 
-![fN-Yuj](https://i.makeagif.com/media/4-13-2018/fN-Yuj.gif)
+<!-- [fN-Yuj](https://i.makeagif.com/media/4-13-2018/fN-Yuj.gif) -->

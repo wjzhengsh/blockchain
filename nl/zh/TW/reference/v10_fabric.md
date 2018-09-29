@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 ---
 
 {:new_window: target="_blank"}
@@ -13,10 +13,15 @@ lastupdated: "2018-06-14"
 
 
 # Hyperledger Fabric
+
+
+***[此頁面有幫助嗎？請告訴我們。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
 {{site.data.keyword.blockchainfull}} 網路以 Hyperledger Fabric 堆疊為建置基礎，為 Linux Foundation 的 Hyperledger Project 中的區塊鏈專案之一。它是一種「具有許可權」的網路，其中所有使用者和元件都有已知的身分。每個通訊接觸點都已實作簽署/驗證邏輯，而交易會透過一系列的背書和驗證檢查來取得共識。在這個意義上，它與傳統的區塊鏈實作大不相同，後者提倡匿名，且被迫依賴加密貨幣和大量運算義務來驗證交易。  
 {:shortdesc}
 
-Hyperledger Fabric 提供模組架構，以延伸可調整性和效能。本主題介紹 Hyperledger Fabric 中的部分重要元件。如需 Hyperledger Fabric 的完整介紹，請參閱 [Hyperledger Fabric 文件 ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](http://hyperledger-fabric.readthedocs.io/en/latest/){:new_window}。  
+Hyperledger Fabric 提供模組架構，以延伸可調整性和效能。本主題介紹 Hyperledger Fabric 中的部分重要元件。如需 Hyperledger Fabric 的完整介紹，請參閱 [Hyperledger Fabric 文件 ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/){:new_window}。  
 
 ## 憑證管理中心  
 Hyperledger Fabric 是**具有許可權**的區塊鏈網路，其包含模組化的**憑證管理中心 (CA)** 元件，可用來管理所有成員組織及其使用者的網路身分。由於每個使用者都需要具有許可權的身分，因此可以對網路活動進行 ACL 型控制，並保證每一筆交易最後都能夠追蹤至已登錄的使用者。  
@@ -26,12 +31,12 @@ Hyperledger Fabric 是**具有許可權**的區塊鏈網路，其包含模組化
 
 這種對網路成員資格和動作進行的憑證型控制，讓成員能夠依特定使用者身分，限制存取專用和機密頻道、應用程式和資料。
 
-如需「Hyperledger Fabric 憑證管理中心」元件的相關資訊，請參閱 [Fabric CA 使用手冊 ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](http://hyperledger-fabric-ca.readthedocs.io/en/latest/){:new_window}。
+如需「Hyperledger Fabric 憑證管理中心」元件的相關資訊，請參閱 [Fabric CA 使用手冊 ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](https://hyperledger-fabric-ca.readthedocs.io/en/release-1.1/){:new_window}。
 
 ## 成員資格服務提供者  
 Hyperledger Fabric 包含**成員資格服務提供者 (MSP)** 元件，可提供發出及驗證憑證背後的所有加密機制和通訊協定摘要，以及使用者鑑別。MSP 安裝在每一個頻道對等節點上，以確保發出給對等節點的交易要求是來自經鑑別及授權的使用者身分。
 
-如需「Hyperledger Fabric 成員資格服務提供者」元件的相關資訊，請參閱 [Hyperledger Fabric 文件 ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](http://hyperledger-fabric.readthedocs.io/en/latest/){:new_window} 中的*[成員資格服務提供者 (MSP) ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](http://hyperledger-fabric.readthedocs.io/en/latest/msp.html){:new_window}*。
+如需「Hyperledger Fabric 成員資格服務提供者」元件的相關資訊，請參閱 [Hyperledger Fabric 文件 ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/){:new_window} 中的*[成員資格服務提供者 (MSP) ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/msp.html){:new_window}*。
 
 ## 交易流程  
 為確保資料一致性和完整性，Hyperledger Fabric 在整個交易流程中實作多個檢查點，包括用戶端鑑別、背書、排序，以及向分類帳確定。
@@ -51,9 +56,9 @@ Hyperledger Fabric 包含**成員資格服務提供者 (MSP)** 元件，可提�
 	* 無法通過驗證處理程序的任何交易，都會在區塊中標示為無效，而且該區塊會附加至頻道的雜湊鏈。  
 	* 所有有效的交易都會依據已修改的鍵值組來更新狀態資料庫。  
 
-**聊天資料散佈通訊協定**會持續在整個頻道中播送分類帳資料，以確保對等節點之間的分類帳已同步。如需相關資訊，請參閱 [Hyperledger Fabric 文件 ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](http://hyperledger-fabric.readthedocs.io/en/latest/){:new_window} 中的*[聊天資料散佈通訊協定 ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](http://hyperledger-fabric.readthedocs.io/en/latest/gossip.html){:new_window}*。
+**聊天資料散佈通訊協定**會持續在整個頻道中播送分類帳資料，以確保對等節點之間的分類帳已同步。如需相關資訊，請參閱 [Hyperledger Fabric 文件 ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/){:new_window} 中的*[聊天資料散佈通訊協定 ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/gossip.html){:new_window}*。
 
-如需交易流程的逐步簡介，請參閱 [Hyperledger Fabric 文件 ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](http://hyperledger-fabric.readthedocs.io/en/latest/){:new_window} 中的*[交易流程 ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](http://hyperledger-fabric.readthedocs.io/en/latest/txflow.html){:new_window}*。  
+如需交易流程的逐步簡介，請參閱 [Hyperledger Fabric 文件 ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/){:new_window} 中的*[交易流程 ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/txflow.html){:new_window}*。  
 
 ## 排序服務
 Hyperledger Fabric 包含 Kafka 型服務，可用來排序及播送網路交易。Kafka 也為您的網路提供損毀容錯；意即，如果已接受數目的排序服務節點無法使用，該服務就會繼續將交易區塊排序，並將其配送至頻道對等節點。
@@ -65,7 +70,7 @@ Hyperledger Fabric 包含 Kafka 型服務，可用來排序及播送網路交易
 2. 維護系統鏈，為已鑑別的組織以及包含網路內各種聯盟的設定檔群組，定義排序服務配置、主要憑證及 MSP ID。
 3. 過濾及驗證重新配置或建立頻道的配置交易。  
 
-如需 Hyperledger Fabric 排序服務的相關資訊，請參閱 [Hyperledger Fabric 文件 ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](http://hyperledger-fabric.readthedocs.io/en/latest/){:new_window} 中的*[啟動 Kafka 型排序服務 ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](http://hyperledger-fabric.readthedocs.io/en/latest/kafka.html){:new_window}*。
+如需 Hyperledger Fabric 排序服務的相關資訊，請參閱 [Hyperledger Fabric 文件 ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/){:new_window} 中的*[啟動 Kafka 型排序服務 ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/kafka.html){:new_window}*。
 
 ## HFC SDK
 Hyperledger Fabric Client (HFC) SDK 可讓應用程式開發人員建置與區塊鏈網路互動的應用程式。HFC SDK 可協助應用程式管理頻道和鏈碼的生命週期。
@@ -82,4 +87,4 @@ Hyperledger Fabric 提供 Node.js SDK 和 Java SDK，並提供下列功能來與
 * 在分類帳中查詢特定交易、區塊或金鑰
 * 監視頻道上的事件（例如，成功確定交易）
 
-如需 HFC SDK 的相關資訊，請參閱 [Hyperledger Fabric 文件 ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](http://hyperledger-fabric.readthedocs.io/en/latest/){:new_window} 中的 *[Hyperledger Fabric SDK ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](http://hyperledger-fabric.readthedocs.io/en/latest/fabric-sdks.html){:new_window}*。
+如需 HFC SDK 的相關資訊，請參閱 [Hyperledger Fabric 文件 ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/){:new_window} 中的 *[Hyperledger Fabric SDK ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/fabric-sdks.html){:new_window}*。

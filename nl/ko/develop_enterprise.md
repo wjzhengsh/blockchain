@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -15,6 +15,10 @@ lastupdated: "2018-06-14"
 
 # 엔터프라이즈 플랜에 비즈니스 네트워크 배치
 {: #deploying-a-business-network}
+
+
+***[이 페이지가 도움이 되었습니까? 알려주십시오.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
 
 {{site.data.keyword.blockchainfull}} Platform: Develop의 개발자 도구를 사용하면 비즈니스 네트워크 아카이브(`.bna`)에 패키지할 수 있는 **비즈니스 네트워크 정의**를 작성할 수 있습니다. 개발자 환경에서는 `.bna` 파일을 개발 및 공유를 위한 로컬 또는 클라우드 {{site.data.keyword.blockchain}}에 배치할 수 있습니다.
 
@@ -31,14 +35,14 @@ lastupdated: "2018-06-14"
 1. 연결 세부사항을 저장할 디렉토리를 작성하십시오. 예를 들어, 다음과 같습니다.
 
     ```
-    /Users/myUserId/.composer-connection-profiles/bmx-hlfv1
+/Users/myUserId/.composer-connection-profiles/bmx-hlfv1
     ```
     {:codeblock}
 
     각 연결 프로파일에 `connection.json` 파일이 있어야 합니다. 이 인스턴스 `bmx-hlfv1`에서 `.composer-connection-profiles` 아래에 새 디렉토리를 작성하십시오. 이는 Hyperledger Composer 및 {{site.data.keyword.blockchainfull_notm}} Platform에 대한 작업을 수행할 때 사용할 프로파일의 이름이 됩니다.
 
     ```
-    mkdir -p ~/.composer-connection-profiles/bmx-hlfv1
+mkdir -p ~/.composer-connection-profiles/bmx-hlfv1
         cd ~/.composer-connection-profiles/bmx-hlfv1
     ```
     {:codeblock}
@@ -46,7 +50,7 @@ lastupdated: "2018-06-14"
 2. 이제 다음 디렉토리 구조를 사용합니다.
 
     ```
-    /Users/myUserId/.composer-connection-profiles/bmx-hlfv1
+/Users/myUserId/.composer-connection-profiles/bmx-hlfv1
     ```
     {:codeblock}
 
@@ -90,7 +94,7 @@ lastupdated: "2018-06-14"
     템플리트의 순서 지정자 URL 값을 연결 프로파일의 관련 정보(다음 형식 사용)로 바꾸십시오.
 
     ```
-    "url": "grpcs://abca.4.secure.blockchain.ibm.com:12345"
+"url": "grpcs://abca.4.secure.blockchain.ibm.com:12345"
     ```
     {:codeblock}
 
@@ -103,7 +107,7 @@ lastupdated: "2018-06-14"
 1. 각 피어에 대해 **requestURL** 및 **eventURL**을 설정해야 합니다. **url** 속성을 연결 프로파일에 있는 **url** 값으로 바꾸십시오. **eventURL** 속성을 연결 프로파일에 있는 **eventUrl**로 바꾸십시오. 변경 후 `connection.json`의 피어 섹션 형식은 다음과 같습니다.
 
     ```
-        "peers": [{
+"peers": [{
               "requestURL": "grpcs://abca.4.secure.blockchain.ibm.com:12345",
               "eventURL": "grpcs://abca.4.secure.blockchain.ibm.com:12345"
     ```
@@ -114,7 +118,7 @@ lastupdated: "2018-06-14"
 1. 적절한 디렉토리를 가리키도록 **keyValStore** 속성을 설정하십시오. **keyValStore**에 사용할 디렉토리를 작성하십시오. 예를 들어, `.composer-credentials-mychannel`라는 홈 디렉토리 아래의 새 디렉토리입니다. **keyValStore** 속성이 다음 형식으로 새로 작성된 디렉토리를 가리키는지 확인하십시오.
 
     ```
-    "keyValStore": "/Users/myUserId/.composer-credentials-mychannel",
+"keyValStore": "/Users/myUserId/.composer-credentials-mychannel",
     ```
     {:codeblock}
 
@@ -130,7 +134,7 @@ lastupdated: "2018-06-14"
 1. {{site.data.keyword.blockchainfull_notm}} Platform은 순서 지정자 및 피어에 공통 TLS 인증서를 사용합니다. 각 순서 지정자 및 피어에 대해 모두 동일한 인증서를 포함하는 **tlsCACerts** 속성이 있습니다. `connection.json` 파일의 더미 값을 **tlsCACerts** 값으로 바꾸십시오. 다음 형식을 사용해야 합니다.
 
     ```
-    "globalCert": "-----BEGIN CERTIFICATE-----\r\.......
+"globalCert": "-----BEGIN CERTIFICATE-----\r\.......
     ```
     {:codeblock}
 
@@ -154,7 +158,7 @@ lastupdated: "2018-06-14"
 1. 다음 명령을 사용하여 인증서를 요청하십시오.
 
     ```
-    composer identity request -p bmx-hlfv1 -i admin -s PA55W0RD12
+composer identity request -p bmx-hlfv1 -i admin -s PA55W0RD12
     ```
     {:codeblock}
 
@@ -193,7 +197,7 @@ lastupdated: "2018-06-14"
 1. 새 ID를 작성하려면 다음 명령을 실행하십시오.
 
     ```
-    composer identity import -p bmx-hlfv1 -u admin -c ~/.identityCredentials/admin-pub.pem -k ~/.identityCredentials/admin-priv.pem
+composer identity import -p bmx-hlfv1 -u admin -c ~/.identityCredentials/admin-pub.pem -k ~/.identityCredentials/admin-priv.pem
     ```
     {:codeblock}
 

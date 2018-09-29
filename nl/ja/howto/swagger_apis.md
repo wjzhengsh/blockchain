@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -14,7 +14,11 @@ lastupdated: "2018-06-14"
 
 # Swagger API を使用したネットワークとの対話
 
-{{site.data.keyword.blockchainfull_notm}} Platform では多数の REST API を Swagger で公開しており、これらを使用してノード、チャネル、ピア、およびネットワーク・メンバーを管理できます。アプリケーションではこれらの API を使用して、ネットワーク・モニターを使用せずに重要なネットワーク・リソースを管理できます。
+
+***[このページは参考になりましたか。ご意見をお聞かせください。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
+{{site.data.keyword.blockchainfull_notm}} Platform では多数の REST API を Swagger で公開しており、これらを使用してノード、チャネル、ピア、およびネットワーク・メンバーを管理できます。 アプリケーションではこれらの API を使用して、ネットワーク・モニターを使用せずに重要なネットワーク・リソースを管理できます。
 
 {:shortdesc}
 
@@ -65,14 +69,14 @@ Swagger UI で、**「許可 (Authorize)」**ボタンをクリックします�
 ![Swagger UI での「Try it out」ボタン](../images/swaggerUITryItOut.png "Swagger UI での「Try it out」ボタン")  
 *図 4. 「Swagger UI」での「Try it out」ボタン*
 
-**「Try it out」**ボタンをクリックした後、API を使用するための必須パラメーターを入力することができます。`networkID` はネットワーク資格情報で、その他のパラメーターはネットワーク・モニターで見つけることができます。パラメーターを入力したら、**「Execute」**をクリックしてネットワークに対して REST API 呼び出しを実行します。
+**「Try it out」**ボタンをクリックした後、API を使用するための必須パラメーターを入力することができます。 `networkID` はネットワーク資格情報で、その他のパラメーターはネットワーク・モニターで見つけることができます。 パラメーターを入力したら、**「Execute」**をクリックしてネットワークに対して REST API 呼び出しを実行します。
 
 **図 5** に「Swagger UI」でのパラメーターを示します。
 
 ![Swagger UI でのパラメーター](../images/swaggerUIParams.png "Swagger UI でのパラメーター")  
 *図 5. パラメーターの入力*  
 
-**「Execute」**をクリックすると、ネットワークに対する API 呼び出しの応答を確認することができます。また、コマンド・ラインから直接 API を呼び出すことができる CURL コマンドも確認することができます。
+**「Execute」**をクリックすると、ネットワークに対する API 呼び出しの応答を確認することができます。 また、コマンド・ラインから直接 API を呼び出すことができる CURL コマンドも確認することができます。
 
 **図 6** に、API 応答本文、URL、および CURL コマンドを示します。
 

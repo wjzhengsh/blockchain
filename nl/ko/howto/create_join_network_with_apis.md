@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -14,25 +14,29 @@ lastupdated: "2018-06-14"
 
 # Swagger API를 사용하여 네트워크 작성 또는 가입
 
+
+***[이 페이지가 도움이 되었습니까? 알려주십시오.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
 {{site.data.keyword.blockchainfull}} Platform은 {{site.data.keyword.cloud_notm}}에서 블록체인 네트워크를 작성하거나 가입하는 데 사용할 수 있는 다수의 REST API를 노출합니다. 네트워크와 연관된 [Swagger UI](swagger_apis.html)를 사용하여 이러한 API를 사용해 볼 수 있습니다.
 {:shortdesc}
 
 
-## API에 대한 기본 인증 신임 정보 검색
+## API에 대한 기본 인증 정보 검색
 {: #retrieve-id-token}
 
 시작하기 전에 {{site.data.keyword.cloud_notm}}에서 스타터 플랜 또는 엔터프라이즈 플랜을 사용하여 [{{site.data.keyword.blockchainfull_notm}} Platform 서비스 인스턴스 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://console.bluemix.net/catalog/services/blockchain)를 작성해야 합니다.
 
-Swagger API를 사용하여 네트워크를 작성하거나 가입하려면 {{site.data.keyword.cloud_notm}}의 서비스 인스턴스에 액세스할 수 있도록 하는 기본 인증 신임 정보가 필요합니다.
+Swagger API를 사용하여 네트워크를 작성하거나 가입하려면 {{site.data.keyword.cloud_notm}}의 서비스 인스턴스에 액세스할 수 있도록 하는 기본 인증 정보가 필요합니다.
 
 1. [{{site.data.keyword.cloud_notm}} 대시보드 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://console.bluemix.net/dashboard/apps/)에서 작성한 서비스 인스턴스를 여십시오.
-2. 왼쪽 네비게이터에서 **서비스 신임 정보**를 클릭하십시오.
-3. **서비스 신임 정보** 페이지에서 "새 신임 정보" 단추를 클릭하여 새 신임 정보를 작성하십시오. 
-    1. 신임 정보에 이름을 지정하십시오(예: *CreateJoin*).
+2. 왼쪽 네비게이터에서 **서비스 인증 정보**를 클릭하십시오.
+3. **서비스 인증 정보** 페이지에서 "새 인증 정보" 단추를 클릭하여 새 인증 정보를 작성하십시오.
+    1. 인증 정보에 이름을 지정하십시오(예: *CreateJoin*).
     2. "인라인 구성 매개변수 추가" 필드에 **{"type": "service_instance_token"}**을 입력하십시오.
     3. **추가** 단추를 클릭하십시오.
-    ![서비스 신임 정보 검색](../images/service_credentials.gif "서비스 신임 정보 검색")
-4. 새 신임 정보가 작성된 후 이 신임 정보의 **조치** 헤더 아래에서 **신임 정보 보기**를 클릭하십시오. 신임 정보의 컨텐츠는 다음 예제와 유사합니다.
+    ![서비스 인증 정보 검색](../images/service_credentials.gif "서비스 인증 정보 검색")
+4. 새 인증 정보가 작성된 후 이 인증 정보의 **조치** 헤더 아래에서 **인증 정보 보기**를 클릭하십시오. 인증 정보의 컨텐츠는 다음 예제와 유사합니다.
 
     ```
     {
@@ -43,9 +47,9 @@ Swagger API를 사용하여 네트워크를 작성하거나 가입하려면 {{si
     ```
     {:codeblock}
 
-    `service_instance_id`는 기본 인증 사용자 ID 역할을 하고 `service_instance_token`은 기본 인증 비밀번호 역할을 합니다. **네트워크 작성** 또는 **네트워크 가입** API를 호출할 때 이러한 값을 기본 인증 신임 정보로 사용하십시오.
+    `service_instance_id`는 기본 인증 사용자 ID 역할을 하고 `service_instance_token`은 기본 인증 비밀번호 역할을 합니다. **네트워크 작성** 또는 **네트워크 가입** API를 호출할 때 이러한 값을 기본 인증 정보로 사용하십시오.
 
-    이전 단계에 따라 서비스 신임 정보를 작성하기 전에 블록체인 네트워크를 작성하는 경우 신임 정보의 컨텐츠에 네트워크 정보도 포함되며 다음 예제와 유사하게 보입니다.
+    이전 단계에 따라 서비스 인증 정보를 작성하기 전에 블록체인 네트워크를 작성하는 경우 인증 정보의 컨텐츠에 네트워크 정보도 포함되며 다음 예제와 유사하게 보입니다.
 
     ```
     {
@@ -65,7 +69,7 @@ Swagger API를 사용하여 네트워크를 작성하거나 가입하려면 {{si
 ## 사용 가능한 네트워크 위치 확인
 {: #check-location}
 
-사용 가능한 네트워크 위치에서만 API를 사용하여 블록체인 네트워크를 작성할 수 있습니다. 네트워크를 작성하기 전에 다음 API를 사용하여 사용 가능한 네트워크 위치의 현재 목록을 가져오십시오. 이 API 실행에는 신임 정보가 필요하지 않습니다.
+사용 가능한 네트워크 위치에서만 API를 사용하여 블록체인 네트워크를 작성할 수 있습니다. 네트워크를 작성하기 전에 다음 API를 사용하여 사용 가능한 네트워크 위치의 현재 목록을 가져오십시오. 이 API 실행에는 인증 정보가 필요하지 않습니다.
 
 ```
 https://ibmblockchain-v2.ng.bluemix.net/api/v1/network-locations/available
@@ -111,12 +115,12 @@ https://ibmblockchain-v2.ng.bluemix.net/api/v1/network-locations/available
 
 엔터프라이즈 플랜을 사용하는 경우 두 가지 단계를 완료하여 API로 네트워크를 작성해야 합니다.
 
-1. 엔터프라이즈 플랜<!-- or Enterprise Plus Plan-->을 사용하여 {{site.data.keyword.cloud_notm}}에 블록체인 서비스 인스턴스를 작성하십시오.  기본 인증 사용자 이름 및 비밀번호로 서비스 인스턴스 ID 및 토큰을 검색하십시오. 자세한 정보는 [API에 대한 기본 인증 신임 정보 검색](#retrieve-id-token)을 참조하십시오.
+1. 엔터프라이즈 플랜<!-- or Enterprise Plus Plan-->을 사용하여 {{site.data.keyword.cloud_notm}}에 블록체인 서비스 인스턴스를 작성하십시오.  기본 인증 사용자 이름 및 비밀번호로 서비스 인스턴스 ID 및 토큰을 검색하십시오. 자세한 정보는 [API에 대한 기본 인증 정보 검색](#retrieve-id-token)을 참조하십시오.
 
-2. 이러한 서비스 신임 정보를 사용하여 **네트워크 작성** API를 호출하십시오. [사용 가능한 네트워크 위치 확인](#check-location)에서 검색된 api ``swagger_url``에 대해 이 API를 발행하십시오. ``swagger_url link``로 이동하여 Swagger UI로 네트워크 작성 API를 발행하거나 ``/api-docs`` 없이 URL 주소를 사용하여 명령을 프로그래밍 방식으로 실행하십시오.
+2. 이러한 서비스 인증 정보를 사용하여 **네트워크 작성** API를 호출하십시오. [사용 가능한 네트워크 위치 확인](#check-location)에서 검색된 api ``swagger_url``에 대해 이 API를 발행하십시오. ``swagger_url link``로 이동하여 Swagger UI로 네트워크 작성 API를 발행하거나 ``/api-docs`` 없이 URL 주소를 사용하여 명령을 프로그래밍 방식으로 실행하십시오.
 
     ```
-    https://ibmblockchain-v2-tor.1.secure.blockchain.ibm.com/api/v1/networks
+https://ibmblockchain-v2-tor.1.secure.blockchain.ibm.com/api/v1/networks
     ```
     {:codeblock}
 
@@ -130,7 +134,7 @@ https://ibmblockchain-v2.ng.bluemix.net/api/v1/network-locations/available
 
 ## 새 구성원을 네트워크에 초대
 
-블록체인 네트워크를 작성한 후 네트워크에 가입하도록 다른 구성원을 초대할 수 있습니다. 가입하도록 새 구성원을 초대할 네트워크의 ID를 지정해야 합니다. 구성원을 초대하는 데 필요한 기본 인증 신임 정보는 **네트워크 작성** API에서 사용되는 신임 정보와 다릅니다. <!--In order to get the basic auth information you will need to follow the same steps in "Retrieving basic auth information for API". --> [Swagger UI](swagger_apis##retrieving-network-credentials)에서 **네트워크 신임 정보 검색** API를 사용하거나 {{site.data.keyword.cloud_notm}}의 서비스 인스턴스에서 [API에 대한 기본 인증 정보를 검색](#retrieve-id-token)하여 구성원을 초대하기 위한 신임 정보를 가져올 수 있습니다.
+블록체인 네트워크를 작성한 후 네트워크에 가입하도록 다른 구성원을 초대할 수 있습니다. 가입하도록 새 구성원을 초대할 네트워크의 ID를 지정해야 합니다. 구성원을 초대하는 데 필요한 기본 인증 인증 정보는 **네트워크 작성** API에서 사용되는 인증 정보와 다릅니다. <!--In order to get the basic auth information you will need to follow the same steps in "Retrieving basic auth information for API". --> [Swagger UI](swagger_apis.html#retrieving-network-credentials)에서 **네트워크 인증 정보 검색** API를 사용하거나 {{site.data.keyword.cloud_notm}}의 서비스 인스턴스에서 [API에 대한 기본 인증 정보를 검색](#retrieve-id-token)하여 구성원을 초대하기 위한 인증 정보를 가져올 수 있습니다.
 
 ```
 /networks/{networkID}/invite
@@ -153,7 +157,7 @@ https://ibmblockchain-v2.ng.bluemix.net/api/v1/network-locations/available
 2. [사용 가능한 네트워크 위치를 확인](#check-location)하여 초대 이메일에서 `location_id`에 대한 `swagger_url`을 가져오십시오. 다음과 같이 표시됩니다.
 
     ```
-    https://ibmblockchain-v2-tor.1.secure.blockchain.ibm.com/api-docs
+https://ibmblockchain-v2-tor.1.secure.blockchain.ibm.com/api-docs
     ```
     {:codeblock}
 
@@ -161,7 +165,7 @@ https://ibmblockchain-v2.ng.bluemix.net/api/v1/network-locations/available
 초대 이메일의 값을 사용하여 `network_id`를 채우십시오. 결과 URL은 다음과 유사합니다.
 
     ```
-    https://ibmblockchain-v2-tor.1.secure.blockchain.ibm.com/api/v1/networks/56102acee0e4487889ef09db681bada0/join
+https://ibmblockchain-v2-tor.1.secure.blockchain.ibm.com/api/v1/networks/56102acee0e4487889ef09db681bada0/join
     ```
     {:codeblock}
 

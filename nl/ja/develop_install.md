@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -16,9 +16,13 @@ lastupdated: "2018-06-14"
 # 開発環境のインストール
 {: #installing-a-development-environment}
 
+
+***[このページは参考になりましたか。 ご意見をお聞かせください。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
 ビジネス・ネットワークの作成とテストを行うための {{site.data.keyword.blockchainfull}} Platform: Develop 開発ツールを入手するには、以下の手順に従います。 開発、テスト、デプロイメントにおけるできるだけ多くのシナリオに柔軟に対応するため、開発ツールは、コマンド・ラインで制御する npm モジュールとして提供されます。
 
-Starter Plan と Enterprise Plan で異なるバージョンを使用しなければならないコンポーネントがあります。 Starter Plan で開発環境を使用するには、バージョン `0.19.x` のモジュールをインストールする必要があります。 Enterprise Plan で開発環境を使用するには、バージョン `0.16.x` のモジュールをインストールする必要があります。
+Starter Plan とエンタープライズ・プランで異なるバージョンを使用しなければならないコンポーネントがあります。 Starter Plan で開発環境を使用するには、バージョン `0.19.x` のモジュールをインストールする必要があります。 エンタープライズ・プランで開発環境を使用するには、バージョン `0.16.x` のモジュールをインストールする必要があります。
 
 ## 始めに
 
@@ -31,7 +35,7 @@ Starter Plan と Enterprise Plan で異なるバージョンを使用しなけ�
 - Python v2.7.x
 - 任意のコード・エディター (VSCode など)
 
-Enterprise Plan を使用する場合は、以下の追加の前提条件をインストールします。
+エンタープライズ・プランを使用する場合は、以下の追加の前提条件をインストールします。
 
 - Docker Engine v17.03 以上
 - Docker-Compose v1.8 以上
@@ -49,7 +53,7 @@ VSCode を使用している場合は、Hyperledger Composer VSCode 拡張機能
     ```
     {:codeblock}
 
-    Enterprise Plan で使用するには、次のコマンドを使用して **composer-cli** をインストールします。
+    エンタープライズ・プランで使用するには、次のコマンドを使用して **composer-cli** をインストールします。
 
     ```
     npm install -g composer-cli@0.16.x
@@ -63,7 +67,7 @@ VSCode を使用している場合は、Hyperledger Composer VSCode 拡張機能
     ```
     {:codeblock}
 
-    Enterprise Plan で使用するには、次のコマンドを使用して **composer-rest-server** をインストールします。
+    エンタープライズ・プランで使用するには、次のコマンドを使用して **composer-rest-server** をインストールします。
 
     ```
     npm install -g composer-rest-server@0.16.x
@@ -79,7 +83,7 @@ VSCode を使用している場合は、Hyperledger Composer VSCode 拡張機能
     ```
     {:codeblock}
 
-    Enterprise Plan で使用するには、次のコマンドを使用して **generator-hyperledger-composer** をインストールします。
+    エンタープライズ・プランで使用するには、次のコマンドを使用して **generator-hyperledger-composer** をインストールします。
 
     ```
     npm install -g generator-hyperledger-composer@0.16.x
@@ -105,7 +109,7 @@ npm install -g composer-playground@0.19.x
 {:codeblock}
 
 
-Enterprise Plan で使用するには、次のコマンドを使用してプレイグラウンドをインストールします。
+エンタープライズ・プランで使用するには、次のコマンドを使用してプレイグラウンドをインストールします。
 
 
 ```
@@ -122,7 +126,7 @@ npm install -g composer-playground@0.16.x
 2. VSCode を開き、「Extensions」に移動し、マーケットプレイスから Hyperledger Composer 拡張機能を検索してインストールします。
 
 
-## Enterprise Plan のみ: ローカル Hyperledger Fabric のインストールおよびプレイグラウンドを使用した接続
+## エンタープライズ・プランのみ: ローカル Hyperledger Fabric のインストールおよびプレイグラウンドを使用した接続
 
 ローカル Hyperledger Fabric インスタンスをデプロイすることにより、アクセス制御ルールとビジネス・ネットワークを十分にテストできます。 以下のステップを実行する前に、Docker を開始していることを確認してください。
 

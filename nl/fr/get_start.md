@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -16,9 +16,14 @@ lastupdated: "2018-06-14"
 # Gouvernance d'un réseau de plan Enterprise
 {: #getting-started-with-blockchain}
 
-Le plan Enterprise de la plateforme {{site.data.keyword.blockchainfull}} fournit un réseau de blockchain avec un haut niveau de sécurité, d'intégrité, d'évolutivité et de performance. Vous pouvez mettre à disposition rapidement un réseau pleinement opérationnel et utiliser le Moniteur réseau, lequel se présente sous forme de tableau de bord dans l'interface graphique, pour exécuter immédiatement le [code blockchain](glossary.html#chaincode) et les applications sans avoir à concevoir et à configurer un réseau à partir de zéro {:shortdesc}
 
-**Remarque **: Le plan Enterprise de la plateforme {{site.data.keyword.blockchainfull_notm}} fournit un environnement de production. Si vous avez besoin d'un environnement de tests et de développement, voir [A propos du plan Starter](starter_plan.html).
+***[Cette page est-elle utile ? Dites-nous.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
+Le plan Enterprise d'{{site.data.keyword.blockchainfull}} Platform fournit un réseau de blockchain avec un haut niveau de sécurité, d'intégrité, d'évolutivité et de performance. Vous pouvez mettre à disposition rapidement un réseau pleinement opérationnel et utiliser le Moniteur réseau, lequel se présente sous forme de tableau de bord dans l'interface graphique, pour exécuter immédiatement le [code blockchain](glossary.html#chaincode) et les applications sans avoir à concevoir et à configurer un réseau à partir de zéro
+{:shortdesc}
+
+**Remarque **: Le plan Enterprise d'{{site.data.keyword.blockchainfull_notm}} Platform fournit un environnement de production. Si vous avez besoin d'un environnement de tests et de développement, voir [A propos du plan Starter](starter_plan.html).
 
 Ce tutoriel présente les prérequis et les étapes que vous devez suivre pour obtenir un réseau de plan Enterprise hébergé dans un environnement hautement disponible et sécurisé d'IBM.  
 
@@ -31,9 +36,9 @@ Les étapes suivantes indiquent le flux de base permettant de lancer un réseau 
 
 
 ## Création d'un réseau
-Avant de commencer, vous devez créer une [instance de service de plateforme {{site.data.keyword.blockchain}}![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://console.bluemix.net/catalog/services/blockchain) sur {{site.data.keyword.Bluemix_notm}}. Vous devez vous connecter avec votre ID {{site.data.keyword.Bluemix_notm}}. Si vous n'avez pas d'ID, cliquez sur le bouton **Inscrivez-vous pour créer**.  Renommez le service et les noms des données d'identification pour votre instance afin de pouvoir la reconnaître facilement dans le futur. Sélectionnez la région, l'organisation et l'espace {{site.data.keyword.Bluemix_notm}}, où vous pouvez déployer votre réseau {{site.data.keyword.blockchain}}. Ensuite, sélectionnez un **Plan d'appartenance d'entreprise** dans le tableau Plans de tarification et cliquez sur le bouton **Créer**.  
+Avant de commencer, vous devez créer une [instance de service d'{{site.data.keyword.blockchain}} Platform ![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://console.bluemix.net/catalog/services/blockchain) sur {{site.data.keyword.Bluemix_notm}}. Vous devez vous connecter avec votre ID {{site.data.keyword.Bluemix_notm}}. Si vous n'avez pas d'ID, cliquez sur le bouton **Inscrivez-vous pour créer**.  Renommez le service et les noms des données d'identification pour votre instance afin de pouvoir la reconnaître facilement dans le futur. Sélectionnez la région, l'organisation et l'espace {{site.data.keyword.Bluemix_notm}}, où vous pouvez déployer votre réseau {{site.data.keyword.blockchain}}. Ensuite, sélectionnez un **Plan d'appartenance d'entreprise** dans le tableau Plans de tarification et cliquez sur le bouton **Créer**.  
 
-Vous pouvez trouver votre instance de service de plateforme {{site.data.keyword.blockchain}} dans votre tableau de bord du service [tableau de bord du service {{site.data.keyword.Bluemix_notm}}![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://console.bluemix.net/dashboard/services "{{site.data.keyword.Bluemix_notm}}").  
+Vous pouvez trouver votre instance de service d'{{site.data.keyword.blockchain}} Platform dans votre [tableau de bord du service {{site.data.keyword.Bluemix_notm}} ![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://console.bluemix.net/dashboard/services "Tableau de bord du service {{site.data.keyword.Bluemix_notm}}").  
 
 Si vous êtes un initiateur du réseau, cliquez sur le bouton **Créer un réseau** pour initier un réseau {{site.data.keyword.blockchain}}.  Suivez les instructions de l'assistant pour effectuer la configuration de base de votre réseau et de vos ressources.  
 ![Assistant de création de réseau](images/create_network_name.png "Assistant de création de réseau")  
@@ -43,7 +48,7 @@ Si vous êtes un initiateur du réseau, cliquez sur le bouton **Créer un résea
 	Les membres que vous invitez vont recevoir une notification par courrier électronique relative à votre invitation une fois que vous avez effectué toutes les étapes de création du réseau.
 3. Dans l'écran "Définir des règles de gouvernance", définissez des règles pour l'appartenance, la création de canal et le code blockchain. Par défaut, tous les membres du réseau peuvent inviter d'autres membres à rejoindre le réseau, créer des canaux et instancier du code blockchain. Actuellement, votre réseau utilise les règles de gouvernance par défaut.  Cliquez sur **Suivant**.
 4. Dans l'écran "Vérifier le récapitulatif", vérifiez la configuration de votre réseau. Si vous voulez apporter des modifications, cliquez sur **Editer** en regard de l'en-tête de section ou cliquez sur le bouton **Précédent** pour revenir aux écrans précédents. Une fois la configuration réseau terminée, cliquez sur **Terminé**.  
-5. Dans l'écran "Le réseau a été créé", vous êtes informé que la création de votre réseau a abouti. Vous pouvez cliquer sur **Ajouter [des homologues](glossary.html#peer)** pour configurer vos ressources réseau ou cliquer directement sur **Afficher le moniteur** pour ouvrir le moniteur réseau. Vous pourrez aussi ajouter des homologues plus tard dans le Moniteur réseau.  Pour plus d'informations sur les homologues, voir [Ajout d'homologues](v10_dashboard.md#add_peers).
+5. Dans l'écran "Le réseau a été créé", vous êtes informé que la création de votre réseau a abouti. Vous pouvez cliquer sur **Ajouter [des homologues](glossary.html#peer)** pour configurer vos ressources réseau ou cliquer directement sur **Afficher le moniteur** pour ouvrir le moniteur réseau. Vous pourrez aussi ajouter des homologues plus tard dans le Moniteur réseau.  Pour plus d'informations sur les homologues, voir [Ajout d'homologues](v10_dashboard.html#peers).
 
 Vous avez maintenant déployé un réseau {{site.data.keyword.blockchain}} qui peut prendre en charge les ressources réseau suivantes :  
 * Une autorité de certification spécifique aux membres
@@ -57,9 +62,9 @@ Vous avez maintenant déployé un réseau {{site.data.keyword.blockchain}} qui p
 
 
 ## Rejoindre un réseau
-Comme pour la création d'un réseau, vous devez créer une instance de service de plateforme [{{site.data.keyword.blockchain}}![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://console.bluemix.net/catalog/services/blockchain) sur {{site.data.keyword.Bluemix_notm}}. Vous devez vous connecter avec votre ID {{site.data.keyword.Bluemix_notm}}. Si vous n'avez pas d'ID, cliquez sur le bouton **Inscrivez-vous pour créer**.  Renommez le service et les noms des données d'identification pour votre instance afin de pouvoir la reconnaître facilement dans le futur. Sélectionnez la région, l'organisation et l'espace {{site.data.keyword.Bluemix_notm}}, où vous pouvez déployer votre réseau {{site.data.keyword.blockchain}}. Ensuite, sélectionnez un **Plan d'appartenance d'entreprise** dans le tableau Plans de tarification et cliquez sur le bouton **Créer**.
+Comme pour la création d'un réseau, vous devez créer une [instance de service d'{{site.data.keyword.blockchain}} Platform ![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://console.bluemix.net/catalog/services/blockchain) sur {{site.data.keyword.Bluemix_notm}}. Vous devez vous connecter avec votre ID {{site.data.keyword.Bluemix_notm}}. Si vous n'avez pas d'ID, cliquez sur le bouton **Inscrivez-vous pour créer**.  Renommez le service et les noms des données d'identification pour votre instance afin de pouvoir la reconnaître facilement dans le futur. Sélectionnez la région, l'organisation et l'espace {{site.data.keyword.Bluemix_notm}}, où vous pouvez déployer votre réseau {{site.data.keyword.blockchain}}. Ensuite, sélectionnez un **Plan d'appartenance d'entreprise** dans le tableau Plans de tarification et cliquez sur le bouton **Créer**.
 
-Vous pouvez trouver votre instance de service de plateforme {{site.data.keyword.blockchain}} dans le tableau de bord du service [tableau de bord du service {{site.data.keyword.Bluemix_notm}}![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://console.bluemix.net/dashboard/services "{{site.data.keyword.Bluemix_notm}}").
+Vous pouvez trouver votre instance de service d'{{site.data.keyword.blockchain}} Platform dans le [tableau de bord du service {{site.data.keyword.Bluemix_notm}} ![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://console.bluemix.net/dashboard/services "tableau de bord du service {{site.data.keyword.Bluemix_notm}}").
 
 Si vous êtes un membre de réseau invité, cliquez sur le bouton **Invitation en attente ->**, sélectionnez le réseau que vous voulez rejoindre dans la liste déroulante, puis cliquez sur le bouton **Rejoindre le réseau** . Suivez les instructions de l'assistant pour afficher la configuration de base de votre réseau et configurer vos propres ressources réseau.  
 ![Assistant pour rejoindre le réseau](images/join_network_name.png "Assistant pour rejoindre le réseau")  
@@ -75,7 +80,7 @@ Si vous êtes un membre de réseau invité, cliquez sur le bouton **Invitation e
 ## Configuration des ressources réseau et de l'environnement
 
 1. Accédez au moniteur réseau une fois que vous avez créé ou rejoint un réseau {{site.data.keyword.blockchain}}. Le moniteur réseau est un tableau de bord doté d'une interface graphique depuis lequel vous pouvez gérer et conserver un suivi des informations de statut réseau. Pour plus d'informations, voir [Moniteur réseau](v10_dashboard.html).
-2. Ajoutez vos propres homologues au réseau. Si vous avez déjà ajouté suffisamment d'homologues, vous pouvez omettre cette étape. Les homologues exécutent du code blockchain et ils constituent le noeud final pour interagir avec vos applications. Cliquez sur **Ajouter des homologues** dans l'écran "Présentation", puis sélectionnez le nombre et la taille de vos homologues. Pour plus d'informations, voir [Présentation générale](v10_dashboard.html#resources).
+2. Ajoutez vos propres homologues au réseau. Si vous avez déjà ajouté suffisamment d'homologues, vous pouvez omettre cette étape. Les homologues exécutent du code blockchain et ils constituent le noeud final pour interagir avec vos applications. Cliquez sur **Ajouter des homologues** dans l'écran "Présentation", puis sélectionnez le nombre et la taille de vos homologues. Pour plus d'informations, voir [Présentation générale](v10_dashboard.html#overview).
 3. Configurez un canal. Tous les membres du même canal sont mis à disposition avec un registre spécifique à un canal, lequel fournit l'isolement de données et la confidentialité. Pour plus d'informations sur la création d'un canal, voir [Création d'un canal](howto/create_channel.html#creating-a-channel).  
     Si vous êtes un membre de canal qui a été invité à rejoindre un canal, vous allez recevoir une notification par courrier électronique avec un lien vers l'assistant qui va vous autoriser à rejoindre ce canal.
 4. Joignez les homologues au canal.  Seuls les homologues qui sont associés au canal peuvent accéder à son registre. Pour plus d'informations, voir [Canaux](v10_dashboard.html#channels).
@@ -88,7 +93,7 @@ Si vous êtes un membre de réseau invité, cliquez sur le bouton **Invitation e
 Dès que vous avez créé un réseau de plan Enterprise dans {{site.data.keyword.cloud_notm}}, vous pouvez obtenir les données d'identification réseau et le profil de connexion depuis la page d'instance de service ou le Moniteur réseau.
 
 ### Extraction à partir de la page d'instance de service
-Vous accédez à la page d'instance de service dès que vous créez une instance de service. Vous pouvez également cliquer sur votre service dans le tableau de bord de service[{{site.data.keyword.cloud_notm}} - tableau de bord de service![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://console.bluemix.net/dashboard/services "{{site.data.keyword.cloud_notm}}") pour ouvrir votre page d'instance de service.
+Vous accédez à la page d'instance de service dès que vous créez une instance de service. Vous pouvez également cliquer sur votre service dans le [tableau de bord du service {{site.data.keyword.cloud_notm}} ![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://console.bluemix.net/dashboard/services "tableau de bord du service {{site.data.keyword.cloud_notm}}") pour ouvrir votre page d'instance de service.
 
 Pour extraire les données d'identification de votre service, procédez comme suit :
 1. Sur la page d'instance de service, cliquez sur **Données d'identification du service** dans le navigateur de gauche pour afficher l'écran "Données d'identification du service".
@@ -96,13 +101,13 @@ Pour extraire les données d'identification de votre service, procédez comme su
 3. Dans l'écran "Ajouter de nouvelles données d'identification", donnez un nom aux données d'identification et entrez **{"type": "service_instance_token"}** dans la zone "Ajouter des paramètres de configuration en ligne". Cliquez sur **Ajouter** afin d'ajouter au tableau les nouvelles données d'identification. Vous pouvez cliquer sur **Afficher les données d'identification** sous la colonne "ACTIONS" pour afficher les détails des données d'identification. Ces données d'identification contiennent la clé d'API et la valeur confidentielle, que vous pouvez utiliser pour autoriser les API.
 
 ### Extraction dans le Moniteur réseau
-Vous pouvez trouver les données d'identification réseau dans l'écran "API" de votre Moniteur réseau. Pour plus d'informations sur l'utilisation des API, voir [Test des API avec Swagger](apis.html).
+Vous pouvez trouver les données d'identification réseau dans l'écran "API" de votre Moniteur réseau. Pour plus d'informations sur l'utilisation des API, voir [Test des API avec Swagger](howto/swagger_apis.html).
 
 Vous pouvez extraire le profil de connexion dans l'écran "Présentation" de votre Moniteur réseau. Cliquez sur le bouton **Profil de connexion** dans l'écran "Présentation" et le profil de connexion s'affiche dans une nouvelle page.
 
 
 ## Développement et déploiement de réseaux d'entreprise personnalisés
-Vous pouvez développer des réseaux d'entreprise en fonction des besoins de votre activité à l'aide de l'environnement de développeur d'IBM Blockchain Platform: Develop et des outils de développeur Hyperledger Composer. Dès que vous avez développé un réseau pour votre activité, vous pouvez déployer votre réseau d'entreprise dans un réseau de plan Enterprise.
+Vous pouvez développer des réseaux d'entreprise en fonction des besoins de votre activité à l'aide de l'environnement de développeur d'{{site.data.keyword.blockchainfull_notm}} Platform: Develop et des outils de développeur Hyperledger Composer. Dès que vous avez développé un réseau pour votre activité, vous pouvez déployer votre réseau d'entreprise dans un réseau de plan Enterprise.
 
 Pour plus d'informations, voir [Développement du réseau](develop.html) et [Déploiement d'un réseau d'entreprise dans un plan Enterprise](develop_enterprise.html).
 
@@ -122,5 +127,5 @@ Si vous voulez quitter un réseau, supprimez l'instance de service de blockchain
 <!--
 ## References
 * For more information about {{site.data.keyword.blockchainfull_notm}} offerings, see [Blockchain offerings](index.html).
-* For more information about Hyperledger Fabric, see [Hyperledger Fabric documentation ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/latest/){:new_window}.
+* For more information about Hyperledger Fabric, see [Hyperledger Fabric documentation ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/){:new_window}.
 -->

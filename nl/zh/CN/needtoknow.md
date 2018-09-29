@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-03-16"
+lastupdated: "2018-08-31"
 ---
 
 {:new_window: target="_blank"}
@@ -15,6 +15,10 @@ lastupdated: "2018-03-16"
 # 免责声明
 {: #disclainer}
 
+
+***[此页面是否有用？请告诉我们。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
 **注意：**在使用任何 {{site.data.keyword.blockchainfull}} 套餐之前，必须先查看以下信息。
 
 ## IBM 支持声明
@@ -22,7 +26,7 @@ lastupdated: "2018-03-16"
 IBM 一直以来都在创新方面颇具领导能力，在 {{site.data.keyword.Bluemix_notm}} 上的 {{site.data.keyword.blockchainfull_notm}} 产品套餐中亦是如此。{{site.data.keyword.blockchain}} 是一项快速发展的技术，预计将颠覆金融行业、本地和全球供应链，以及任意数量的业务空间的物流支持。IBM 客户和业务合作伙伴通过各种早期采用程序，一直积极推动区块链作为业界的解决方案。{{site.data.keyword.Bluemix_notm}} 上的 {{site.data.keyword.blockchainfull_notm}} 就是这样一种程序。**就像任何新技术一样，{{site.data.keyword.Bluemix_notm}} 上的 {{site.data.keyword.blockchainfull_notm}} 用户应该意识到可能发生的快速而基本的更改**。  
 {:shortdesc}
 
-{{site.data.keyword.blockchainfull_notm}} 背后的体系结构是 Linux Foundation 的 Hyperledger 项目。每一个开放式源代码社区贡献都会改进 Hyperledger Fabric，但是会带来采用挑战。**IBM 提醒不要直接在任何 Hyperledger Fabric 区块链网络上定义或交换金融资产或任何有价值的资产**。  
+{{site.data.keyword.blockchainfull_notm}} 背后的体系结构是 Linux Foundation 的 Hyperledger 项目。每一个开放式源代码社区贡献都会改进 Hyperledger Fabric，但是会带来采用挑战。**IBM 提醒不要直接在任何 Hyperledger Fabric 区块链网络上定义或交换金融资产<!--, or any assets of value,-->**。  
 
 ## 开放式源代码声明
 
@@ -40,3 +44,7 @@ IBM 一直以来都在创新方面颇具领导能力，在 {{site.data.keyword.B
 6. 使用可能引入非确定性的库或全局变量（如使用“random”或“time”）。  
 
 此外，建议不要编写不确定的链代码，这会导致发生数据一致性和完整性风险。值得注意的是，Hyperledger Fabric 体系结构旨在通过一系列支持和验证检查来反对不确定的链代码。然而，对于不依赖于非静态全局变量（例如时间）的确定性函数，仍然强烈建议您进行编码。  
+
+---
+
+*[此页面是否有用？请告诉我们。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)*

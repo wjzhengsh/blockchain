@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -15,6 +15,10 @@ lastupdated: "2018-06-14"
 
 # Enterprise Plan-Netz steuern
 {: #getting-started-with-blockchain}
+
+
+***[Ist diese Seite hilfreich? Teilen Sie uns Ihre Meinung mit.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
 
 Mit dem {{site.data.keyword.blockchainfull}} Platform Enterprise Plan wird ein Blockchain-Netz mit hoher Sicherheit, Integrität, Skalierbarkeit und Leistung bereitgestellt. Sie können schnell ein voll funktionsfähiges Netz einrichten und den Network Monitor (ein GUI-Dashboard) verwenden, um sofort [Chaincode](glossary.html#chaincode) und Anwendungen auszuführen, ohne ein Netz völlig neu entwerfen und konfigurieren zu müssen.
 {:shortdesc}
@@ -44,7 +48,7 @@ Wenn Sie ein Netzinitiator sind, klicken Sie auf die Schaltfläche **Netz erstel
 	Die Mitglieder, die Sie einladen, erhalten eine E-Mail-Benachrichtigung über Ihre Einladung, nachdem Sie alle Schritte zur Erstellung des Netzes ausgeführt haben.
 3. Richten Sie in der Anzeige "Governance-Regeln definieren" die Richtlinien für die Mitgliedschaft, die Kanalerstellung und den Chaincode ein. Standardmäßig können alle Mitglieder des Netzes andere Mitglieder einladen, dem Netz beizutreten, sie können Kanäle erstellen und Chaincode instanziieren. Gegenwärtig verwendet Ihr Netz die Standard-Governance-Richtlinien.  Klicken Sie auf **Weiter**.
 4. Überprüfen Sie in der Anzeige "Zusammenfassung prüfen" Ihre Netzkonfiguration. Wenn Sie Änderungen vornehmen möchten, klicken Sie auf **Bearbeiten** neben der Abschnittsüberschrift oder klicken Sie auf die Schaltfläche **Zurück**, um zu den vorherigen Anzeigen zurückzukehren. Wenn Sie die Netzkonfiguration abgeschlossen haben, klicken Sie auf **Fertig**.  
-5. In der Anzeige "Netz erstellt" werden Sie benachrichtigt, dass Ihr Netz erfolgreich erstellt worden ist. Sie können auf **[Peers](glossary.html#peer) hinzufügen** klicken, um Ihre Netzressourcen zu konfigurieren, oder Sie können direkt auf **Monitor aufrufen** klicken, um den Network Monitor zu öffnen. Sie können Peers auch später im Network Monitor hinzufügen.  Weitere Informationen zu Peers finden Sie unter [Peers hinzufügen](v10_dashboard.md#add_peers).
+5. In der Anzeige "Netz erstellt" werden Sie benachrichtigt, dass Ihr Netz erfolgreich erstellt worden ist. Sie können auf **[Peers](glossary.html#peer) hinzufügen** klicken, um Ihre Netzressourcen zu konfigurieren, oder Sie können direkt auf **Monitor aufrufen** klicken, um den Network Monitor zu öffnen. Sie können Peers auch später im Network Monitor hinzufügen.  Weitere Informationen zu Peers finden Sie unter [Peers hinzufügen](v10_dashboard.html#peers).
 
 Sie können jetzt erfolgreich ein {{site.data.keyword.blockchain}}-Netz bereitstellen, das die folgenden Ressourcen unterstützt:  
 * Eine mitgliedsspezifische Zertifizierungsstelle (CA, Certificate Authority)
@@ -76,7 +80,7 @@ Wenn Sie ein eingeladenes Netzmitglied sind, klicken Sie auf die Schaltfläche *
 ## Netzressourcen und Umgebung konfigurieren
 
 1. Rufen Sie Ihren Network Monitor auf, nachdem Sie ein {{site.data.keyword.blockchain}}-Netz erstellt haben oder ihm beigetreten sind. Der Network Monitor ist ein GUI-Dashboard, in dem Sie Netzstatusinformationen verwalten und verfolgen können. Weitere Informationen finden Sie unter [Network Monitor](v10_dashboard.html).
-2. Fügen Sie Ihre eigenen Peers zu dem Netz hinzu. Wenn Sie bereits genügend Peers hinzugefügt haben, überspringen Sie diesen Schritt. Peers führen Chaincode aus und sie sind der Endpunkt für die Interaktion mit Ihren Anwendungen. Klicken Sie in der Anzeige "Übersicht" auf **Peers hinzufügen** und wählen Sie die Anzahl und Größe der Peers aus. Weitere Informationen finden Sie unter [Übersicht](v10_dashboard.html#resources).
+2. Fügen Sie Ihre eigenen Peers zu dem Netz hinzu. Wenn Sie bereits genügend Peers hinzugefügt haben, überspringen Sie diesen Schritt. Peers führen Chaincode aus und sie sind der Endpunkt für die Interaktion mit Ihren Anwendungen. Klicken Sie in der Anzeige "Übersicht" auf **Peers hinzufügen** und wählen Sie die Anzahl und Größe der Peers aus. Weitere Informationen finden Sie unter [Übersicht](v10_dashboard.html#overview).
 3. Richten Sie einen Kanal ein. Für alle Mitglieder im selben Kanal wird ein kanalspezifisches Ledger eingerichtet, das Datenisolierung und Datenschutz ermöglicht. Weitere Informationen zum Erstellen eines Kanals finden Sie unter [Kanal erstellen](howto/create_channel.html#creating-a-channel).  
     Wenn Sie ein Kanalmitglied sind, das eingeladen wurde, einem Kanal beizutreten, erhalten Sie eine E-Mail-Benachrichtigung mit einem Link zu dem Assistenten, der Ihnen ermöglicht, dem Kanal beizutreten.
 4. Ordnen Sie Peers einem Kanal hinzu.  Nur Peers, die einem Kanal zugeordnet sind, können auf das zugehörige Ledger zugreifen. Weitere Informationen finden Sie unter [Kanäle](v10_dashboard.html#channels).
@@ -97,13 +101,13 @@ Führen Sie die folgenden Schritte aus, um Ihre Serviceberechtigungsnachweise ab
 3. Geben Sie in der Anzeige "Neuen Berechtigungsnachweis hinzufügen" dem Berechtigungsnachweis einen Namen und geben Sie im Feld "Inline-Konfigurationsparameter hinzufügen' **{"type": "service_instance_token"}** ein. Klicken Sie auf **Hinzufügen**. Der neue Berechtigungsnachweis wird in der Tabelle hinzugefügt. Sie können auf **Berechtigungsnachweise anzeigen** in der Spalte "AKTIONEN" klicken, um die Berechtigungsnachweisdetails anzuzeigen. Dieser Berechtigungsnachweis enthält den API-Schlüssel und den geheimen Schlüssel ('secret'), mit denen Sie APIs berechtigen können.
 
 ### Im Network Monitor abrufen
-Sie finden die Netzberechtigungsnachweise in der Anzeige "APIs" in Ihrem Network Monitor. Weitere Informationen zur Verwendung von APIs finden Sie unter [APIs mit Swagger ausprobieren](apis.html).
+Sie finden die Netzberechtigungsnachweise in der Anzeige "APIs" in Ihrem Network Monitor. Weitere Informationen zur Verwendung von APIs finden Sie unter [APIs mit Swagger ausprobieren](howto/swagger_apis.html).
 
 Sie können das Verbindungsprofil in der Anzeige "Übersicht" im Network Monitor abrufen. Klicken Sie auf die Schaltfläche **Verbindungsprofil** in der Anzeige "Übersicht". Das Verbindungsprofil wird auf einer neuen Seite angezeigt.
 
 
 ## Angepasste Unternehmensnetze entwickeln und bereitstellen
-Sie können Unternehmensnetze auf der Basis Ihrer Geschäftsanforderungen in der IBM Blockchain Platform: Develop-Entwicklerumgebung und mithilfe des Hyperledger Composer-Entwicklertoolsets entwickeln. Wenn Sie ein Netz für Ihr Unternehmen entwickelt haben, können Sie Ihr Unternehmensnetz im Enterprise Plan-Netz bereitstellen.
+Sie können Unternehmensnetze auf Basis Ihrer Geschäftsanforderungen in der {{site.data.keyword.blockchainfull_notm}} Platform: Develop-Entwicklerumgebung und mithilfe des Hyperledger Composer-Entwicklertoolsets entwickeln. Wenn Sie ein Netz für Ihr Unternehmen entwickelt haben, können Sie Ihr Unternehmensnetz im Enterprise Plan-Netz bereitstellen.
 
 Weitere Informationen finden Sie unter [Netz entwickeln](develop.html) und [Unternehmensnetz im Enterprise Plan bereitstellen](develop_enterprise.html).
 
@@ -123,5 +127,5 @@ Wenn Sie ein Netz verlassen möchten, löschen Sie die Blockchain-Serviceinstanz
 <!--
 ## References
 * For more information about {{site.data.keyword.blockchainfull_notm}} offerings, see [Blockchain offerings](index.html).
-* For more information about Hyperledger Fabric, see [Hyperledger Fabric documentation ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/latest/){:new_window}.
+* For more information about Hyperledger Fabric, see [Hyperledger Fabric documentation ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/){:new_window}.
 -->

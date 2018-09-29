@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -15,6 +15,10 @@ lastupdated: "2018-06-14"
 
 # 管理企业套餐网络
 {: #getting-started-with-blockchain}
+
+
+***[此页面是否有用？请告诉我们。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
 
 {{site.data.keyword.blockchainfull}} Platform 企业套餐提供具有很高的安全性、完整性、可扩展性和性能的区块链网络。您可以快速供应功能完整的网络，并使用“网络监视器”（一种 GUI 仪表板）立即运行[链代码](glossary.html#chaincode)和应用程序，而无需从头开始设计和配置网络。
 {:shortdesc}
@@ -43,7 +47,7 @@ lastupdated: "2018-06-14"
 2. （可选）在“邀请成员”屏幕中，输入要邀请其加入网络的成员的机构名称和电子邮件地址。您指定的机构名称不是正式名称。只要机构易于识别，且在加入网络时可进行更改即可。请注意，一个网络最多可以有 15 个成员，包括您自己。此步骤是可选的，您可以稍后在“网络监视器”中邀请成员加入您的网络。单击**下一步**。在完成创建网络的所有步骤后，您邀请的成员将收到有关邀请的电子邮件通知。
 3. 在“定义管控规则”屏幕中，为成员资格、通道创建和链代码建立策略。缺省情况下，所有网络成员都可以邀请其他成员加入网络、创建通道和实例化链代码。当前，网络使用的是缺省管控策略。单击**下一步**。
 4. 在“复查摘要”屏幕中，验证网络配置。如果要进行修改，请单击该部分标题旁边的**编辑**，或者单击**上一步**按钮以返回到先前屏幕。完成网络配置后，单击**完成**。  
-5. 在“已创建网络”屏幕中，您将收到您的网络已成功创建的通知。可以单击**添加[同级](glossary.html#peer)**来配置网络资源，或者直接单击**进入监视器**以打开“网络监视器”。您还可以日后在“网络监视器”中添加同级。有关同级的更多信息，请参阅[添加同级](v10_dashboard.md#add_peers)。
+5. 在“已创建网络”屏幕中，您将收到您的网络已成功创建的通知。可以单击**添加[同级](glossary.html#peer)**来配置网络资源，或者直接单击**进入监视器**以打开“网络监视器”。您还可以日后在“网络监视器”中添加同级。有关同级的更多信息，请参阅[添加同级](v10_dashboard.html#peers)。
 
 现在，您已成功部署能够支持以下网络资源的 {{site.data.keyword.blockchain}} 网络：  
 * 成员特定认证中心 (CA)
@@ -75,7 +79,7 @@ lastupdated: "2018-06-14"
 ## 配置网络资源和环境
 
 1. 创建或加入 {{site.data.keyword.blockchain}} 网络后进入“网络监视器”。“网络监视器”是一种 GUI 仪表板，您可以在其中管理和跟踪网络状态信息。有关更多信息，请参阅[网络监视器](v10_dashboard.html)。
-2. 将自己的同级添加到网络中。如果已添加足够多的同级，请跳过此步骤。同级运行链代码，它们是与应用程序交互的端点。单击“概述”屏幕中的**添加同级**，然后选择同级的数量和大小。有关更多信息，请参阅[概述](v10_dashboard.html#resources)。
+2. 将自己的同级添加到网络中。如果已添加足够多的同级，请跳过此步骤。同级运行链代码，它们是与应用程序交互的端点。单击“概述”屏幕中的**添加同级**，然后选择同级的数量和大小。有关更多信息，请参阅[概述](v10_dashboard.html#overview)。
 3. 设置通道。同一通道中的所有成员都将供应通道特定的分类帐，该分类帐可提供数据隔离和机密性。有关如何创建通道的更多信息，请参阅[创建通道](howto/create_channel.html#creating-a-channel)。  
     如果您是已受邀加入某个通道的通道成员，那么您将收到电子邮件通知，其中包含指向向导的链接，该向导将允许您加入该通道。
 4. 将同级加入通道。只有与该通道相关联的同级才能访问其分类帐。有关更多信息，请参阅[通道](v10_dashboard.html#channels)。
@@ -97,13 +101,13 @@ lastupdated: "2018-06-14"
     
 
 ### 在网络监视器中进行检索
-可以在“网络监视器”的“API”屏幕上找到网络凭证。有关使用 API 的更多信息，请参阅[使用 Swagger 试用 API](apis.html)。
+可以在“网络监视器”的“API”屏幕上找到网络凭证。有关使用 API 的更多信息，请参阅[使用 Swagger 试用 API](howto/swagger_apis.html)。
 
 可以在“网络监视器”的“概述”屏幕上检索连接概要文件。单击“概述”屏幕上的**连接概要文件**按钮，连接概要文件会显示在新页面中。
 
 
 ## 开发并部署定制业务网络
-可以使用 IBM Blockchain Platform: Develop 开发者环境和 Hyperledger Composer 开发者工具集，基于业务需求来开发业务网络。开发业务网络后，可以将其部署到企业套餐网络。
+可以使用 {{site.data.keyword.blockchainfull_notm}} Platform: Develop 开发者环境和 Hyperledger Composer 开发者工具集，基于业务需求来开发业务网络。开发业务网络后，可以将其部署到企业套餐网络。
 
 有关更多信息，请参阅[开发网络](develop.html)和[在企业套餐上部署业务网络](develop_enterprise.html)。
 
@@ -123,5 +127,5 @@ lastupdated: "2018-06-14"
 <!--
 ## References
 * For more information about {{site.data.keyword.blockchainfull_notm}} offerings, see [Blockchain offerings](index.html).
-* For more information about Hyperledger Fabric, see [Hyperledger Fabric documentation ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/latest/){:new_window}.
+* For more information about Hyperledger Fabric, see [Hyperledger Fabric documentation ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/){:new_window}.
 -->

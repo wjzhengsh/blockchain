@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -16,7 +16,11 @@ lastupdated: "2018-06-14"
 # Unternehmensnetz im Enterprise Plan bereitstellen
 {: #deploying-a-business-network}
 
-Mithilfe der Entwicklertools von {{site.data.keyword.blockchainfull}} Platform: Develop können Sie eine **Unternehmensnetzdefinition** erstellen, die anschließend in ein Unternehmensnetzarchiv (Dateierweiterung `.bna`) gepackt werden kann. In der Entwicklerumgebung können Sie BNA-Dateien (`.bna`) in einer lokalen Blockchain oder in einer Cloud-{{site.data.keyword.blockchain}} zu Entwicklungszwecken und zur gemeinsamen Nutzung dieser Dateien bereitstellen.
+
+***[Ist diese Seite hilfreich? Teilen Sie uns Ihre Meinung mit.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
+Mithilfe der Entwicklertools von {{site.data.keyword.blockchainfull}} Platform: Develop können Sie eine **Unternehmensnetzdefinition** erstellen, die anschließend in ein Unternehmensnetzarchiv (Dateierweiterung `.bna`) gepackt werden kann. In der Entwicklerumgebung können Sie BNA-Dateien (`.bna`) in einer lokalen Blockchain-Instanz oder in einer Cloud-{{site.data.keyword.blockchain}}-Instanz zu Entwicklungszwecken und zur gemeinsamen Nutzung dieser Dateien bereitstellen.
 
 Dieses Lernprogramm erläutert den nächsten Schritt des Lebenszyklus eines Unternehmensnetzes, das heißt, die Aktivierung Ihres Unternehmensnetzes durch Bereitstellen der BNA-Dateien (`.bna`) im {{site.data.keyword.blockchainfull_notm}} Platform Enterprise Plan.
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -15,13 +15,17 @@ lastupdated: "2018-06-14"
 # Enterprise Plan-Netz betreiben
 {: #v10_dashboard}
 
+
+***[Ist diese Seite hilfreich? Teilen Sie uns Ihre Meinung mit.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
 {{site.data.keyword.blockchainfull}} Platform enthält einen Network Monitor, der eine Übersicht über Ihre Blockchain-Umgebung, einschließlich Netzressourcen, Mitgliedern, zugeordneter Kanäle, Transaktionsleistungsdaten und bereitgestelltem Chaincode, zur Verfügung stellt. Der Network Monitor stellt auch den Eingangspunkt zur Ausführung von Swagger-APIs dar. Sie können ein Netz mit {{site.data.keyword.blockchainfull_notm}} Platform: Develop entwickeln und Beispielanwendungen ausprobieren.
 {:shortdesc}
 
 Sie können im Network Monitor [den Namen des Enterprise Plan-Netzes ändern](#ep-network-name).
 
 Der Network Monitor präsentiert die folgenden Anzeigen in drei Abschnitten. Sie können über den Navigator auf der linken Seite zu jeder Anzeige im Network Monitor navigieren.
-- Der Abschnitt **Eigenes Netz** enthält die Anzeigen "[Übersicht](#overview)", "[Mitglieder](#members)", "[Kanäle](#channels)", "[Benachrichtigungen](#notifications)" und "[APIs](#apis)".
+- Der Abschnitt **Eigenes Netz** enthält die Anzeigen "[Übersicht](#overview)", "[Mitglieder](#members)", "[Kanäle](#channels)", "[Benachrichtigungen](#notifications)", "[Zertifizierungsstelle](#ca)" und "[APIs](#apis)".
 - Der Abschnitt **Eigener Code** enthält die Anzeigen "[Code entwickeln](#write_code)", "[Code installieren](#chaincode)" und "[Beispiele ausprobieren](#samples)".
 - Die Anzeige "[Hilfe anfordern](#support)" zeigt Unterstützungsinformationen und Releaseinformationen für Helios und Hyperledger Fabric (die Codebasis von {{site.data.keyword.blockchainfull_notm}} Platform) an.
 
@@ -59,13 +63,17 @@ Beachten Sie, dass die Stopp- und die Startaktion für einen Anordnungsknoten ni
 
 Sie können auch Komponentenprotokolle prüfen, indem Sie in der Dropdown-Liste unter der Überschrift **Aktionen** auf **Protokolle anzeigen** klicken. Die Protokolle zeigen die Aufrufe zwischen den verschiedenen Netzressourcen und sind für die Fehlersuche und -behebung von Nutzen. Probieren Sie dies zum Beispiel aus, indem Sie einen Peer stoppen und ihn als Ziel einer Transaktion auswählen. Dies führt zu Verbindungsfehlern in den Protokollen. Wenn Sie den Peer erneut starten und die Transaktion erneut versuchen, wird eine erfolgreiche Verbindung angezeigt. Sie können einen Peer auch für einen längeren Zeitraum inaktiv lassen, während über Ihre Kanäle weiterhin Transaktionen durchgeführt werden. Wenn der Peer wieder aktiviert wird, werden Sie eine Synchronisation des Ledgers bemerken, da der Peer die Blöcke empfängt, die festgeschrieben wurden, als er inaktiv war. Wenn das Ledger vollständig synchronisiert wurde, können Sie normale Aufrufe und Abfragen für das Ledger ausführen.
 
+### Ferne Peers konfigurieren  
+
+Wenn Sie einen fernen Peer außerhalb von {{site.data.keyword.cloud_notm}} bereitstellen, dann müssen Sie die Informationen zum API-Endpunkt Ihres Netzes für den fernen Peer während der Konfiguration angeben. Klicken Sie auf die Schaltfläche **Konfiguration ferner Peers**, um die Informationen zum API-Endpunkt des Netzes abzurufen und den fernen Peer zu konfigurieren. Das Popup-Fenster enthält die Informationen zum API-Endpunkt mit der Netz-ID, dem MSP der Organisation, dem CA-Namen, der CA-URL sowie dem CA-TLS-Zertifikat. Sie können entweder auf das Kopiersymbol klicken, das sich am Ende aller Felder befindet, um den Wert dieses Felds zu kopieren, oder auf die Schaltfläche **Download**, um die Werte aller Felder in einer JSON-Datei zu speichern. Weitere Informationen zu fernen Peers finden Sie im Abschnitt mit den [Informationen zu fernen Peers](howto/remote_peer.html).
+
 ### Verbindungsprofil
 {: #enterprise-connection-profile}
 Sie können die JSON-Datei zu Low-Level-Netzinformationen zu den einzelnen Ressourcen anzeigen, indem Sie auf die Schaltfläche **Verbindungsprofil** klicken. Das Verbindungsprofil enthält sämtliche Konfigurationsinformationen, die Sie für eine Anwendung benötigen. Da diese Datei jedoch nur die Adressen für Ihre bestimmten Komponenten und den Anordnungsknoten enthält, müssen Sie, wenn weitere Peers als Ziele hinzugefügt werden sollen, deren Endpunkte ermitteln. Der Header, der "url" enthält, zeigt den API-Endpunkt jeder Komponente an. Diese Endpunkte sind für die zielgerichtete Verwendung bestimmter Netzkomponenten von einer clientseitigen Anwendung erforderlich und ihre Definitionen befinden sich üblicherweise in einer JSON-modellierten Konfigurationsdatei, die die App begleitet. Wenn Sie eine Anwendung anpassen, für die eine Bewilligung durch Peers erforderlich ist, die nicht Teil Ihrer Organisation sind, dann müssen Sie die IP-Adressen dieser Peers von den entsprechenden Operatoren mit einer Out-of-band-Operation abrufen. Clients müssen eine Verbindung zu allen Peers herstellen können, von denen sie eine Antwort benötigen.
 
 ### Peers hinzufügen
 {: #peers}
-Klicken Sie auf die Schaltfläche **Peers hinzufügen**, um Ihrem Netz Peerknoten hinzuzufügen. Im Starter Plan werden für Sie automatisch zwei Peers hinzugefügt, wenn Sie das Netz erstellen. Im Enterprise Plan können Sie Peerknoten hinzufügen, wenn Sie ein Netz zum ersten Mal erstellen oder einem Netz beitreten - oder später im Network Monitor. In anderen Szenarios kann eine höhere Anzahl an Peers erforderlich sein. Sie könnten z. B. mehrere Peers benötigen, um sie zu Redundanzzwecken mit demselben Kanal zu verknüpfen. Jeder Peer verarbeitet die Transaktionen des Kanals und schreibt in seine jeweilige Kopie des Ledgers. Wenn einer der Peers ausfällt, können andere Peers die Verarbeitung von Transaktionen und Anwendungsanforderungen fortsetzen.  Sie können alle Anwendungsanforderungen symmetrisch auf die Peers verteilen oder Sie können verschiedene Peers für verschiedene Funktionen vorsehen. Sie können zum Beispiel einen Peer zum Abfragen des Ledgers und einen anderen Peer zur Verarbeitung von Bewilligungen für Ledgeraktualisierungen verwenden.
+Klicken Sie auf die Schaltfläche **Peers hinzufügen**, um Ihrem Netz Peerknoten hinzuzufügen. Im Starter Plan werden für Sie automatisch zwei Peers hinzugefügt, wenn Sie das Netz erstellen. Im Enterprise Plan können Sie Peerknoten hinzufügen, wenn Sie ein Netz zum ersten Mal erstellen oder einem Netz beitreten - oder später im Network Monitor. In anderen Szenarios kann eine höhere Anzahl an Peers erforderlich sein.  Sie könnten z. B. mehrere Peers benötigen, um sie zu Redundanzzwecken mit demselben Kanal zu verknüpfen. Jeder Peer verarbeitet die Transaktionen des Kanals und schreibt in seine jeweilige Kopie des Ledgers. Wenn einer der Peers ausfällt, können andere Peers die Verarbeitung von Transaktionen und Anwendungsanforderungen fortsetzen.  Sie können alle Anwendungsanforderungen symmetrisch auf die Peers verteilen oder Sie können verschiedene Peers für verschiedene Funktionen vorsehen. Sie können zum Beispiel einen Peer zum Abfragen des Ledgers und einen anderen Peer zur Verarbeitung von Bewilligungen für Ledgeraktualisierungen verwenden.
 
   Wählen Sie im Popup-Fenster "Peers hinzufügen" die Anzahl der Peerknoten aus, die Sie hinzufügen wollen. <!--Currently only "small" peers are available for purchase, however there will eventually be "medium" and "large" to help accommodate larger workloads and higher transaction throughput.-->
 
@@ -89,8 +97,8 @@ In **Abbildung 4** ist die erste Anzeige "Mitglieder" dargestellt, die Mitglieds
 *Abbildung 4. Zertifikate*
 
 Operatoren können die Zertifikate für die Mitglieder in derselben Institution auf der Registerkarte "Zertifikate" verwalten. Klicken Sie auf **Zertifikat hinzufügen**, um die Anzeige "Zertifikat hinzufügen" zu öffnen. Geben Sie Ihrem Zertifikat einen Namen, fügen Sie die clientseitigen Zertifikate im PEM-Format in das Feld "Schlüssel" ein und klicken Sie auf **Übergeben**. Sie müssen die Peers erneut starten, damit die clientseitigen Zertifikate wirksam werden.
-
-Weitere Informationen zur Generierung Ihres Zertifikatsschlüssels finden Sie unter [Clientseitige Zertifikate generieren](v10_application.html#generating-the-client-side-certificates).
+<!--
+For more information about generating your certificate key, see [Generating the client-side certificates](v10_application.html#generating-the-client-side-certificates).-->
 
 ## Kanäle
 {: #channels}
@@ -127,15 +135,36 @@ Wenn Sie eine lange Liste von Anforderungen haben, können Sie im Suchfeld oben 
 
 Anstehende Anforderungen können gelöscht werden, indem Sie die davor befindlichen Felder auswählen und auf **Anforderung löschen** klicken. Beachten Sie, dass eine abgeschlossene Anforderung nicht gelöscht werden kann.
 
+## Zertifizierungsstelle (CA)
+{: #ca}
+
+Die Tabelle in der Anzeige "Zertifizierungsstelle (CA)" enthält alle Identitäten, die bei Ihrer Organisation registriert wurden (einschließlich des Administrators, der Peers und der Clientanwendungen). Sie können diese Anzeige auch zum Registrieren neuer Identitäten verwenden.
+
+In **Abbildung 7** ist die Anzeige "Zertifizierungsstelle" dargestellt:
+
+![Zertifizierungsstelle](images/CA_screen.png "Zertifizierungsstelle")
+*Abbildung 7. Zertifizierungsstelle*
+
+Klicken Sie auf die Schaltfläche **Zertifikat generieren**, um ein neues öffentliches Zertifikat sowie einen privaten Schlüssel von Ihrer CA abzurufen. Diese Anzeige bietet eine alternative Möglichkeit zum [Generieren eines Paars aus öffentlichem und privatem Schlüssel](v10_application.html#register-app) für eine Clientanwendung, die mit dem Fabric-SDK arbeitet. Das Feld **Zertifikat** enthält Ihr öffentliches Zertifikat, das auch als signCert-Zertifikat oder Eintragungszertifikat bezeichnet wird. Es befindet sich direkt über dem Feld **Privater Schlüssel**. Sie können auf das Kopiersymbol klicken, das sich am Ende aller Felder befindet, um den Wert zu kopieren. **Beachten Sie hierbei**, dass diese Zertifikate unter {{site.data.keyword.blockchainfull_notm}} Platform nicht gespeichert werden. Sie müssen sie an einem sicheren Ort aufbewahren und speichern. Weitere Einzelheiten zu diesem Thema finden Sie im Abschnitt mit den [MSP-Informationen](certificates.html#msp).
+
+Klicken Sie auf die Schaltfläche **Benutzer hinzufügen**, um eine neue Identität bei Ihrer Organisation zu registrieren. Füllen Sie im Popup-Fenster  **Benutzer hinzufügen** die folgenden Felder aus und klicken Sie anschließend auf **Abschicken**.
+  - **ID:** Dies ist der Name Ihrer neuen Identität, der auch als `Eintragungs-ID` bezeichnet wird. **Speichern Sie diesen Wert** zur Konfiguration eines fernen Peers oder zur Eintragung einer neuen Anwendung.
+  - **Geheimer Schlüssel:** Dies ist das Kennwort für Ihre Identität, das auch als `geheimer Eintragungsschlüssel` bezeichnet wird. **Speichern Sie diesen Wert** zur Konfiguration eines fernen Peers oder zur Eintragung einer neuen Anwendung.  
+  - **Typ:** Wählen Sie den Typ der Identität aus, die registriert werden soll (Peer oder Clientanwendung).
+  - **Zugehörigkeit:** Dies ist die Zugehörigkeit innerhalb Ihrer Organisation, z. B. `org1`, zu der die Identität gehören wird.
+  - **Maximale Anzahl der Eintragungen:** In diesem Feld können Sie die Anzahl der Wiederholungen für die Eintragung oder die Generierung von Zertifikaten mit einer bestimmten Identität einschränken. Erfolgt in dem Feld keine Angabe, dann wird standardmäßig der Wert für eine unbeschränkte Anzahl von Eintragungen verwendet.
+
+Weitere Informationen zu Ihrer Zertifizierungsstelle (CA) erhalten Sie, wenn Sie das Lernprogramm [Zertifikate in {{site.data.keyword.blockchainfull_notm}} Platform verwalten](certificates.html) aufrufen.
+
 ## APIs
 {: #apis}
 
-{{site.data.keyword.blockchainfull_notm}} Platform stellt eine Reihe von REST-APIs in Swagger bereit, mit denen Sie die Knoten, Kanäle, Peers und Mitglieder Ihres Netzes verwalten können. Ihre Anwendungen können mithilfe dieser APIs wichtige Netzressourcen ohne den Network Monitor steuern. 
+{{site.data.keyword.blockchainfull_notm}} Platform stellt eine Reihe von REST-APIs in Swagger bereit, mit denen Sie die Knoten, Kanäle, Peers und Mitglieder Ihres Netzes verwalten können. Ihre Anwendungen können mithilfe dieser APIs wichtige Netzressourcen ohne den Network Monitor steuern.
 
-In **Abbildung 7** ist die Anzeige "APIs" zu sehen:
+In **Abbildung 8** ist die Anzeige "APIs" zu sehen:
 
 ![APIs](images/API_screen.png "APIs")
-*Abbildung 7. APIs*
+*Abbildung 8. APIs*
 
 Klicken Sie auf den Link für die **Swagger-Benutzerschnittstelle (UI)**, um die Swagger-Benutzerschnittstelle zu öffnen. Beachten Sie, dass Sie die Swagger-Benutzerschnittstelle mit Ihren Netzberechtigungsnachweisen (die auf dieser Seite "APIs" zu finden sind) berechtigen müssen, bevor Sie die APIs ausführen können. Weitere Informationen finden Sie in [Swagger-APIs verwenden, um mit dem Netz zu interagieren](howto/swagger_apis.html).
 
@@ -144,10 +173,10 @@ Klicken Sie auf den Link für die **Swagger-Benutzerschnittstelle (UI)**, um die
 
 Der Enterprise Plan integriert {{site.data.keyword.blockchainfull_notm}} Platform: Develop und stellt eine Entwicklungsumgebung mit Tools und Technologien bereit, die dem Industriestandard entsprechen. Sie können Ihr Netz in der Umgebung online oder lokal entwickeln. Wenn Sie ein Netz entwickelt haben, können Sie es wieder in Ihrem Enterprise Plan-Netz bereitstellen.
 
-In **Abbildung 8** ist die Anzeige "Code entwickeln" dargestellt:
+In **Abbildung 9** ist die Anzeige "Code entwickeln" dargestellt:
 
 ![Code entwickeln](images/write_code.png "Code entwickeln")
-*Abbildung 8. Code entwickeln*
+*Abbildung 9. Code entwickeln*
 
 Weitere Informationen zur Entwicklung und Bereitstellung Ihres Codes mit dem Enterprise Plan finden Sie unter [Unternehmensnetze im Enterprise Plan entwickeln](develop_enterprise.html).
 
@@ -156,66 +185,63 @@ Weitere Informationen zur Entwicklung und Bereitstellung Ihres Codes mit dem Ent
 
 Bei Chaincode, der auch als "Smart Contract" bezeichnet wird, handelt es sich um Stücke von Software, die eine Gruppe von Funktionen zum Abfragen und Aktualisieren des Ledgers enthalten. Sie werden auf Peers installiert und auf einem Kanal instanziiert.
 
-In **Abbildung 9** ist die Anzeige "Code installieren" zu sehen:
+In **Abbildung 10** ist die Anzeige "Code installieren" zu sehen:
 
 ![Code installieren](images/chaincode_install_overview.png "Code installieren")
-*Abbildung 9. Code installieren*
+*Abbildung 10. Code installieren*
 
 Ein Chaincode wird zunächst im Dateisystem eines Peers installiert und anschließend auf einem Kanal instanziiert. Weitere Informationen finden Sie in [Chaincode installieren, instanziieren und aktualisieren](howto/install_instantiate_chaincode.html).
 
 ## Beispiele ausprobieren
 {: #samples}
 
-eispielanwendungen helfen Ihnen, sich mit Blockchain-Netzen und der Anwendungsentwicklung vertraut zu machen. Rufen Sie die Links für **Auf GitHub anzeigen** auf und informieren Sie sich, wie die Beispiele genutzt und in {{site.data.keyword.blockchainfull_notm}} Platform bereitgestellt werden können. Weitere Informationen zur Entwicklung und Bereitstellung eigener Beispiele finden Sie unter [Beispielanwendungen bereitstellen](howto/prebuilt_samples.html). 
+eispielanwendungen helfen Ihnen, sich mit Blockchain-Netzen und der Anwendungsentwicklung vertraut zu machen. Rufen Sie die Links für **Auf GitHub anzeigen** auf und informieren Sie sich, wie die Beispiele genutzt und in {{site.data.keyword.blockchainfull_notm}} Platform bereitgestellt werden können. Weitere Informationen zur Entwicklung und Bereitstellung eigener Beispiele finden Sie unter [Beispielanwendungen bereitstellen](howto/prebuilt_samples.html).
 
-In **Abbildung 10** ist die Anzeige "Beispiele ausprobieren" zu sehen:
+In **Abbildung 11** ist die Anzeige "Beispiele ausprobieren" dargestellt:
 
 ![Beispiele ausprobieren](images/sample_overview_ep.png "Beispiel ausprobieren")
-*Abbildung 10. Beispiele*
+*Abbildung 11. Beispiele*
 
 ## Hilfe anfordern
 {: #support}
 
 Die Anzeige "Hilfe anfordern" enthält zwei Registerkarten. Auf der Registerkarte "Support" werden Support-Informationen bereitgestellt und auf der Registerkarte "Releaseinformationen" werden neue und geänderte Funktionen für jedes Release beschrieben.
 
-In **Abbildung 11** ist die erste Anzeige "Hilfe anfordern" mit Unterstützungsinformationen auf der Registerkarte "Support" zu sehen:
+**Abbildung 12** zeigt die erste Anzeige "Support" mit Unterstützungsinformationen auf der Registerkarte "Support":
 
 ![Support](images/support.png "Support")
-*Abbildung 11. Blockchain-Support*
+*Abbildung 12. Blockchain-Support*
+
+### Blockchain-Ressourcen und Unterstützungsforen
+{: #support-forums}
 
 Über die Links und Ressourcen auf dieser Seite können Sie auf Fehlerbehebungs- und Unterstützungsforen zugreifen.
 
 * [{{site.data.keyword.blockchainfull_notm}}-Servicedokumente](index.html) unter **Einführung** (d. h. diese Dokumentationssite) mit Anleitungen zum Einstieg in {{site.data.keyword.blockchainfull}} Platform on {{site.data.keyword.Bluemix_notm}}. Die entsprechenden Themen können Sie über den Navigator auf der linken Seite aufrufen oder Sie können in der Suchfunktion im oberen Bereich einen Suchbegriff eingeben.
-* [IBM Developer Works ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://developer.ibm.com/blockchain/) unter **Community-Hilfe** enthält Ressourcen und Informationen für Entwickler.
+* [IBM Code ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://developer.ibm.com/code/technologies/blockchain/) enthält Codemuster und Informationen für Entwickler.
 * [IBM dWAnswers ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://developer.ibm.com/answers/smartspace/blockchain/) unter **Support-Ticket** dient als Plattform für Fragen und Antworten. Sie können nach Antworten auf bereits gestellte Fragen suchen oder eine neue Frage stellen. Achten Sie darauf, das Stichwort **blockchain** in Ihrer Frage zu verwenden.
   Sie können außerdem ein Ticket über die Option **{{site.data.keyword.Bluemix_notm}}-Support-Ticket öffnen** an das {{site.data.keyword.blockchainfull_notm}}-Support-Team senden.  Hier können Sie Details und Code-Snippets aus Ihrer jeweiligen {{site.data.keyword.Bluemix_notm}}-Instanz mit anderen teilen.
 * Über [Beispielanwendungen ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://github.com/ibm-blockchain) unter **Blockchain-Beispielanwendungen** finden Sie Anleitungen und Beispielcodeausschnitte zur Unterstützung bei der Anwendungsentwicklung.
-* Über [Hyperledger Fabric ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](http://hyperledger-fabric.readthedocs.io/) und [Hyperledger Fabric-Community ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](http://jira.hyperledger.org/secure/Dashboard.jspa) unter **Hyperledger Fabric** finden Sie nähere Details zum Hyperledger Fabric-Stack.
-  Wenden Sie sich an einen [Hyperledger-Experten ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://chat.hyperledger.org/channel/general) mit Fragen zum Hyperledger Fabric-Code.
+* Über [Hyperledger Fabric ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric.readthedocs.io/en/release-1.1/) und [Hyperledger Fabric-Community ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](http://jira.hyperledger.org/secure/Dashboard.jspa) unter **Hyperledger Fabric** finden Sie nähere Details zum Hyperledger Fabric-Stack. Wenden Sie sich an einen [Hyperledger-Experten ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://chat.hyperledger.org/channel/general) mit Fragen zum Hyperledger Fabric-Code.
+* [{{site.data.keyword.blockchainfull_notm}} Platform: Develop ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://ibm-blockchain.github.io/develop/) unter **Hyperledger Composer** enthält weitere Einzelheiten zu Hyperledger Composer, d. h. {{site.data.keyword.blockchainfull_notm}} Platform: Develop. In der [Hyperledger Composer-Community ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://chat.hyperledger.org/channel/general) und unter [StackOverflow ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://stackoverflow.com/questions/tagged/hyperledger-composer) können Sie außerdem Antworten suchen oder selbst Fragen stellen.
 
-Wenn Sie Ihr Problem nicht beheben können oder keine Antwort auf Ihre Frage finden, reichen Sie einen Supportfall im IBM Cloud Service Portal ein. Weitere Informationen finden Sie unter [Support anfordern](ibmblockchain_support.html).
+Wenn Sie Ihr Problem nicht beheben können oder keine Antwort auf Ihre Frage finden, reichen Sie einen Supportfall im {{site.data.keyword.cloud_notm}} Service Portal ein. Weitere Informationen finden Sie unter [Support anfordern](ibmblockchain_support.html).
 
-Abbildung 12 und Abbildung 13 zeigen die Eingangsanzeige für "Hilfe anfordern", die neue und geänderte Funktionen der jeweiligen Releases auf der Registerkarte "Releaseinformationen" enthält.
+**Abbildung 13** und **Abbildung 14** zeigen die Eingangsanzeige "Hilfe anfordern". Diese enthält neue und geänderte Funktionen der jeweiligen Releases auf der Registerkarte "Releaseinformationen":
 
-![Releaseinformationen für Helios](images/releasenotes_helios.png "Releaseinformationen für Helios")
-*Abbildung 12. Releaseinformationen für Helios*
+![Releaseinformationen für Helios](images/releasenotes_helios.png "Releaseinformationen zur Network Monitor-Benutzerschnittstelle")
+*Abbildung 13. Releaseinformationen zur Network Monitor-Benutzerschnittstelle*
 
-![Releaseinformationen für Fabric](images/releasenotes_Fabric.png "Releaseinformationen für Fabric")
-*Abbildung 13. Releaseinformationen für Fabric*
+![Releaseinformationen für Fabric](images/releasenotes_Fabric.png "Releaseinformationen zu Fabric")
+*Abbildung 14. Releaseinformationen für Fabric*
 
 
 ## Netzvorgaben
 {: #network-preferences}
 
-Klicken Sie auf die rechte obere Ecke, um das Dropdown-Menü zu öffnen, und dann auf **Netzvorgaben**. Das Fenster mit den Netzvorgaben wird geöffnet. Das Fenster mit den Netzvorgaben enthält die Basisinformatinen Ihres Netzes, wie z. B. den Netznamen, die Fabric-Version, die Netzadresse in {{site.data.keyword.cloud_notm}} und den Ledgerdatenbanktyp.
+Klicken Sie auf die rechte obere Ecke, um das Dropdown-Menü zu öffnen, und dann auf **Netzvorgaben**. Das Fenster mit den Netzvorgaben wird geöffnet. Das Fenster mit den Netzvorgaben enthält die Basisinformationen Ihres Netzes, wie z. B. den Netznamen, die Fabric-Version, die Netzadresse in {{site.data.keyword.cloud_notm}} und den Statusdatenbanktyp.
 
 Nach dem 15. Mai 2018 erstellte Enterprise Plan-Netze werden unter Hyperledger Fabric Version 1.1 ausgeführt. Wenn Sie nach dem Upgrade Netze erstellen, können Sie auch Web-Inaktivitätszeitlimits und die gegenseitige TLS-Authentifizierung (Mutual TLS, MTLS) für Ihr Netz im Fenster mit den Netzvorgaben verwalten. Diese Einstellungen können nur vom Netzinitiator geändert werden.
-
-<!--
-
-Enterprise Plan networks that are created after May 15th, 2018 will run on Hyperledger Fabric v1.1. If you create networks after the upgrade, you can also manage web inactivity timeout, mutual TLS, and switch your ledger to CouchDB for your network in the Network preferences window. These settings can be changed by the network initiator only.
-
--->
 
 ### Web-Inaktivitätszeitlimit
 {: #web-inactivity-timeout}
@@ -227,7 +253,7 @@ Standardmäßig ist für das Web-Inaktivitätszeitlimit der Wert **Aus** festgel
 ### Gegenseitige TLS-Authentifizierung (Mutual TLS, MTLS)
 {: #mutual-tls}
 
-Die gegenseitige TLS-Authentifizierung (Mutual TLS, MTLS) schützt die Kommunikation zwischen den Anwendungen und dem Netz. 
+Die gegenseitige TLS-Authentifizierung (Mutual TLS, MTLS) schützt die Kommunikation zwischen den Anwendungen und dem Netz.
 
 **Hinweis**: Nur ein **Netzinitiator** kann MTLS aktivieren oder inaktivieren. Hierbei handelt es sich um eine Einstellung auf Netzebene, die sich auf alle Netzmitglieder auswirkt.
 
@@ -246,20 +272,20 @@ Weitere Informationen zum Aktualisieren der Anwendungen für die Unterstützung 
 
 <!--
 
-### CouchDB ledger type
+### CouchDB state database
 {: #couchdb}
 
-**Note**: Only the **network initiator** can switch the ledger database from LevelDB to CouchDB. This is a network level setting and will affect all network members. Switching to CouchDB is permanent. You cannot revert back to LevelDB.
+**Note**: Only the **network initiator** can switch the state database from LevelDB to CouchDB. This is a network level setting and will affect all network members. Switching to CouchDB is permanent. You cannot revert back to LevelDB.
 
-Before Enterprise Plan upgrades to Fabric v1.1, all network peers store data in the pure key-value LevelDB. With Fabric v1.1, you can choose to use CouchDB as your ledger database. CouchDB is a document datastore that permits indexing the contents of your data and allows you to issue rich queries against the data on your peer. Note that Hyperledger Fabric does not support peers running different databases. If CouchDB is used, it must be used by all of the peers.
+Before Enterprise Plan upgrades to Fabric v1.1, all network peers store data in the pure key-value LevelDB. With Fabric v1.1, you can choose to use CouchDB as your state database. CouchDB is a document datastore that permits indexing the contents of your data and allows you to issue rich queries against the data on your peer. Note that Hyperledger Fabric does not support peers running different databases. If CouchDB is used, it must be used by all of the peers.
 
 To use CouchDB, your data must be stored in a data format that can be modeled in chaincode, such as JSON. If the decision is made to migrate from LevelDB to CouchDB, the {{site.data.keyword.blockchainfull_notm}} Platform will migrate your data from key-value format to the CouchDB format automatically.
 
-If you switch to CouchDB, you need to update your chaincode to take advantage of indexes and rich queries. For more information about CouchDB and how to set up index, see [CouchDB as the State Database ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/latest/couchdb_as_state_database.html). For more information about updating chaincode in {{site.data.keyword.blockchainfull_notm}} Platform, see [Updating a chaincode](howto/install_instantiate_chaincode.html#updating-a-chaincode).
+If you switch to CouchDB, you need to update your chaincode to take advantage of indexes and rich queries. For more information about CouchDB and how to set up index, see [CouchDB as the State Database ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/latest/couchdb_as_state_database.html) in the Hyperledger Fabric documentation. You can also find an example that uses an index with chaincode in this [Fabric tutorial![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/couchdb_tutorial.html){:new_window}. For more information about updating chaincode in {{site.data.keyword.blockchainfull_notm}} Platform, see [Updating a chaincode](howto/install_instantiate_chaincode.html#updating-a-chaincode).
 
 -->
 
-**Abbildung 14** zeigt das Fenster "Netzvorgaben":
+In **Abbildung 15** ist das Fenster "Netzvorgaben" dargestellt:
 
 ![Netzvorgaben](images/network_preferences_ep_tmp.png "Netzvorgaben")
-*Abbildung 14. Netzvorgaben*
+*Abbildung 15. Netzvorgaben*

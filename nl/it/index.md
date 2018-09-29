@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -14,8 +14,13 @@ lastupdated: "2018-06-14"
 
 # {{site.data.keyword.blockchainfull_notm}} Platform
 
-**ATTENZIONE:** prima di utilizzare un'offerta {{site.data.keyword.blockchainfull}} Platform, leggi le informazioni tecniche e di supporto nella sezione [Dichiarazione di non responsabilità](needtoknow.html).  
+
+***[Questa pagina è utile? Faccelo sapere.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
+**ATTENZIONE:** prima di utilizzare un'offerta {{site.data.keyword.blockchainfull}} Platform, leggi le informazioni tecniche e di supporto nella sezione [Dichiarazione di non responsabilità](needtoknow.html).
 {:shortdesc}
+
 
 {{site.data.keyword.blockchainfull_notm}} Platform è la sola piattaforma pronta per il business integrata che si occupa dell'intero ciclo di vita (**sviluppo**, **governance** e **funzionamento**) di una rete blockchain di più organizzazioni. È progettata per accelerare, mediante collaborazione in ciascuna fase, la creazione delle reti blockchain globali "sviluppate per il business" con le prestazioni e la sicurezza anche per i casi d'uso e i settori regolamentati più esigenti.
 
@@ -23,26 +28,29 @@ lastupdated: "2018-06-14"
 | ------------------------- |--------------------------|-----|
 | [Sviluppo](develop.html) | Sviluppare reti di business, applicazioni e chaincode | Sviluppatori di rete, sviluppatori di applicazioni |
 | [Governance](get_start.html)| Invitare membri, generare credenziali, proporre modelli di governance, diffondere i certificati e le informazioni sugli endpoint | Operatori di rete, membri della rete |
-| [Funzionamento](v10_dashboard.html)| Monitorare lo stato e l'attività, gestire le nuove distribuzioni, aggiungere e rimuovere membri, gestire il ciclo di vita del chaincode, gestire i canali, supporto | Operatori di rete, partecipanti alla rete |
+| [Gestione](v10_dashboard.html)| Monitorare lo stato e l'attività, gestire le nuove distribuzioni, aggiungere e rimuovere membri, gestire il ciclo di vita del chaincode, gestire i canali, supporto | Operatori di rete, partecipanti alla rete |
 
 **Nota**: la tabella non intende rappresentare una progressione lineare. Le attività quali lo sviluppo e la gestione di rete si verificheranno ripetutamente man mano che le applicazioni e le adesioni si evolvono.
 
-## Offerte di adesione {{site.data.keyword.IBM_notm}}
+## Offerte di adesione {{site.data.keyword.blockchainfull_notm}}
 
 {{site.data.keyword.blockchainfull_notm}} Platform fornisce differenti piani di adesione per aiutare tutti i tipi di utenti ad iniziare il loro percorso blockchain e spostare le proprie applicazioni in produzione.
 
-|       | [piano Starter](starter_plan.html)      | [piano Enterprise](enterprise_plan.html)  |piano Enterprise Plus| piano Self Managed
+|       | [piano Starter](starter_plan.html) | [piano Enterprise](enterprise_plan.html)  | piano Enterprise Plus | [Peer remoto](howto/remote_peer.html) |
 | ------------------------- |--------------------------|-----|-----|------|
-| **Cos'è incluso** | **Livelli di servizio di base, ambiente di test e sviluppo** | **Livelli di servizio avanzati, pronto per la produzione enterprise** | **Calcolo dedicato per le prestazioni e l'isolamento, pronto per la produzione enterprise** | Stack software per installare sulla tua infrastruttura e stabilire una connessione a una rete ospitata su questo servizio cloud. |
-| **Politica di fatturazione** | **[Crediti di prova](howto/pricing.html#starter-plan-pricing) seguiti da addebito mensile** | **Sottoscrizione mensile** | **Sottoscrizione mensile** | Sottoscrizione mensile |
-| **Disponibilità** | **Disponibile ora** | **Disponibile ora** | **All'acquisto** | Prossimamente |
+| **Cos'è incluso** | **Livelli di servizio di base, ambiente di test e sviluppo** | **Livelli di servizio avanzati, pronto per la produzione enterprise** | **Calcolo dedicato per le prestazioni e l'isolamento, pronto per la produzione enterprise** | **Grafico Helm del peer remoto distribuibile** |
+| **Politica di fatturazione** | **Sottoscrizione mensile con [crediti cloud disponibili](howto/pricing.html#starter-plan-pricing)** | **Sottoscrizione mensile** | **Sottoscrizione mensile** | **Gratuito per Beta** |
+| **Disponibilità** | **Generalmente disponibile** | **Generalmente disponibile** | **All'acquisto** | **Beta** |
 
-**Attenzione:** non utilizzare **piano Starter** per la produzione. È un ambiente di sviluppo e test e non è adatto per i carichi di lavoro di produzione.
+**Attenzione:** non utilizzare il **piano Starter** per uso di produzione. È un ambiente di sviluppo e test e non è adatto per i carichi di lavoro di produzione.
 
 Le offerte {{site.data.keyword.blockchainfull_notm}} vengono sviluppate sulla base di codice [Hyperledger Fabric](reference/v10_fabric.html) V1.1 che si avvale di un'architettura modulare per ottenere livelli di categoria aziendale di sicurezza, integrità dei dati, scalabilità e prestazioni per soddisfare le tue esigenze di business.
-- **Il piano Starter di IBM Blockchain** è un ambiente per imparare o cominciare a sviluppare reti blockchain.
+- **Il piano Starter** è un ambiente per conoscere o cominciare a sviluppare le reti blockchain.
 - **Il piano Enterprise** è un ambiente di produzione che offre elevati livelli di sicurezza e supporto.
 - **Il piano Enterprise Plus** offre un ambiente di produzione dedicato per prestazioni aggiuntive e risorse di elaborazione e archiviazione isolate per proteggere i dati critici.
+- **Il peer remoto** ti consente di eseguire i peer al di fuori di {{site.data.keyword.cloud_notm}} in modo da poter espandere la tua rete blockchain con maggiore flessibilità sfruttando al contempo una rete {{site.data.keyword.blockchainfull_notm}} all'interno di {{site.data.keyword.cloud_notm}}.
+
+{{site.data.keyword.blockchainfull_notm}} Platform è un servizio di piattaforma su {{site.data.keyword.cloud_notm}} e tutte le offerte di adesione seguono i [termini dei servizi {{site.data.keyword.cloud_notm}} ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://www-03.ibm.com/software/sla/sladb.nsf/sla/bm-6605-13 "{{site.data.keyword.cloud_notm}} - Termini dei servizi") sugli SLA (service level agreement). Nota che le reti di piano Starter e piano Enterprise vengono fornite in **più ambienti** in data center geograficamente separati.
 
 Registrati ora per l'[adesione a {{site.data.keyword.blockchainfull_notm}} ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps)!
 
@@ -58,9 +66,9 @@ In quanto proprietario del business, puoi sviluppare il tuo caso d'uso con l'aiu
 In quanto sviluppatore, puoi allineare rapidamente e facilmente i requisiti di business e accelerare lo sviluppo di applicazioni blockchain nell'ambiente di rete {{site.data.keyword.blockchainfull_notm}} Platform utilizzando un playground interattivo per sviluppare, iterare e testare le reti di business. Questi strumenti sono progettati per trasformare le regole di business in codice di rete di business nel tuo ambiente preferito:
 * **Esplora online**  
   Avvaliti di [{{site.data.keyword.blockchainfull_notm}} Platform: Develop](./develop.html)<!--, which is powered by an open source development tool--> per apprendere i concetti chiave della blockchain, creare definizioni di rete e avvalerti di modelli del settore riutilizzabili e di librerie di smart contract.  
-  Dopo che hai sviluppato la tua rete di business, puoi distribuirla a una rete attiva in esecuzione su IBM Blockchain Platform. Per ulteriori informazioni, vedi [Distribuzione di reti di business con piano Starter](./develop_starter.html) e [Distribuzione di reti di business con piano Enterprise](./develop_enterprise.html).
+  Dopo aver sviluppato la tua rete di business, puoi distribuirla a una rete attiva in esecuzione su {{site.data.keyword.blockchainfull_notm}} Platform. Per ulteriori informazioni, vedi [Distribuzione di reti di business con piano Starter](./develop_starter.html) e [Distribuzione di reti di business con piano Enterprise](./develop_enterprise.html).
 * **Installa in locale**  
-  Avvaliti delle immagini certificate da IBM di Hyperledger Fabric e Composer, che sono un framework e uno strumento open source per creare una rete di business da sviluppare e testare direttamente sul tuo laptop. Per ulteriori informazioni, vedi il documento relativo alla [creazione della tua prima rete](http://hyperledger-fabric.readthedocs.io/en/latest/build_network.html).
+  Avvaliti delle immagini certificate da IBM di Hyperledger Fabric e Composer, che sono un framework e uno strumento open source per creare una rete di business da sviluppare e testare direttamente sul tuo laptop. Per ulteriori informazioni, vedi il documento relativo alla [creazione della tua prima rete](http://hyperledger-fabric.readthedocs.io/en/release-1.1/build_network.html).
 * **Collabora in un ambiente cloud**  
   Utilizza reti attive pronte per l'uso con le opzioni piano Starter ed piano Enterprise per sviluppare e condividere il tuo codice con altri. Per ulteriori informazioni, vedi [Informazioni su piano Starter](starter_plan.html) e [Informazioni su piano Enterprise](enterprise_plan.html).
 
@@ -89,7 +97,7 @@ Distribuisci e gestisci reti decentralizzate con un servizio sicuro pronto per l
 * Ottimizzato per le prestazioni e in esecuzione sul calcolo Linux più veloce del mondo.
 
 
-Operare la tua rete su {{site.data.keyword.blockchainfull_notm}} Platform include strumenti e funzionalità per semplificare le attività amministrative:
+La gestione della tua rete su {{site.data.keyword.blockchainfull_notm}} Platform include strumenti e funzionalità per semplificare le attività amministrative:
 
 * Dashboard per il monitoraggio e la gestione delle risorse sulla rete.
 * Upgrade senza problemi di tutto lo stack di codice.
@@ -101,10 +109,10 @@ Operare la tua rete su {{site.data.keyword.blockchainfull_notm}} Platform includ
 Per rendere operativo una blockchain, i membri formano una base di attendibilità eseguendo uno o più servizi di rete fondamentali:
 
 - **Servizio ordini** – ordini e sincronizzazione di transazioni  
-  Essenzialmente, il servizio ordini è la definizione della rete.  Contiene le informazioni sull'identità per ciascun membro, le informazioni sui canali e una serie di politiche che dettano quali sono i membri a cui è consentito eseguire delle specifiche attività (ad esempio invitare altri membri, creare canali ecc). Ogni operazione di transazione e configurazione transiterà per il servizio ordini quindi si tratta di una parte di importanza essenziale nello schema globale delle cose.  Data l'importanza fondamentale del servizio ordini, è facile vedere le insidie che riserverebbe un'organizzazione autoritaria dove magari un solo membro controllasse tutto.  Per evitare ciò, il servizio ordini è gestito in comune dai membri della rete e le misure sulle implementazioni di governance vengono adottate in modo congiunto.  In altre parole, le decisioni sono prese collettivamente, NON unilateralmente. Tutti i membri hanno una quota nella rete e, per estensione, hanno un voto in qualsiasi operazione che configura e personalizza il posto da loro occupato nella rete.  Queste nozioni di "democrazia" e decisioni prese congiuntamente sono gli elementi fondamentali inerenti per una rete affidabile e decentralizzata.  IBM funge da "operatore" del servizio ordini per qualsiasi rete distribuita su IBM Blockchain Platform.
+  Essenzialmente, il servizio ordini è la definizione della rete.  Contiene le informazioni sull'identità per ciascun membro, le informazioni sui canali e una serie di politiche che dettano quali sono i membri a cui è consentito eseguire delle specifiche attività (ad esempio invitare altri membri, creare canali ecc). Ogni operazione di transazione e configurazione transiterà per il servizio ordini quindi si tratta di una parte di importanza essenziale nello schema globale delle cose.  Data l'importanza fondamentale del servizio ordini, è facile vedere le insidie che riserverebbe un'organizzazione autoritaria dove magari un solo membro controllasse tutto.  Per evitare ciò, il servizio ordini è gestito in comune dai membri della rete e le misure sulle implementazioni di governance vengono adottate in modo congiunto.  In altre parole, le decisioni sono prese collettivamente, NON unilateralmente. Tutti i membri hanno una quota nella rete e, per estensione, hanno un voto in qualsiasi operazione che configura e personalizza il posto da loro occupato nella rete.  Queste nozioni di "democrazia" e decisioni prese congiuntamente sono gli elementi fondamentali inerenti per una rete affidabile e decentralizzata.  IBM funge da "operatore" del servizio ordini per qualsiasi rete distribuita su {{site.data.keyword.blockchainfull_notm}} Platform.
 
 - **Autorità di certificazione (CA, Certificate Authority)** – emette i certificati per i partecipanti  
-  Per dirla semplicemente, la CA fornisce l'adesione.  Tutte le entità nella rete (peer, ordinatori, client ecc.) devono avere un'identità per comunicare, autenticare e, alla fine, interagire con il libro mastro. Queste "identità" esistono sotto forma di certificati x509 (ossia certificati di registrazione), che sono richiesti per qualsiasi partecipazione diretta nella rete blockchain.  Ci sono anche modi di partecipazione indiretta, ma ci arriveremo dopo.  Si può pensare alla CA come a un timbro che dà alle identità autenticazione e credibilità.  Ciascun membro possiede una sua CA, mediante la quale può firmare i certificati non solo per le risorse completamente di sua proprietà (peer) ma anche per applicazioni e client terzi.  Puoi paragonare la CA di un membro a una penna speciale o a un timbro notarile.  Un certificato firmato da questa CA è un prerequisito per accedere alla rete.
+  Per dirla semplicemente, la CA fornisce l'adesione.  Tutte le entità nella rete (peer, ordinanti, client ecc.) devono avere un'identità per comunicare, autenticare e, alla fine, interagire con il libro mastro. Queste "identità" esistono sotto forma di certificati x509 (ossia certificati di registrazione), che sono richiesti per qualsiasi partecipazione diretta nella rete blockchain.  Ci sono anche modi di partecipazione indiretta, ma ci arriveremo dopo.  Si può pensare alla CA come a un timbro che dà alle identità autenticazione e credibilità.  Ciascun membro possiede una sua CA, mediante la quale può firmare i certificati non solo per le risorse completamente di sua proprietà (peer) ma anche per applicazioni e client terzi.  Puoi paragonare la CA di un membro a una penna speciale o a un timbro notarile.  Un certificato firmato da questa CA è un prerequisito per accedere alla rete.
 
 - **Peer** – convalida/approvazione di transazioni  
   Il peer esiste per eseguire due funzioni principali: eseguire/convalidare transazioni e mantenere i libri mastro.  Il peer esegue degli smart contract ed è il detentore della cronologia delle transazioni e dello stato corrente degli asset sui canali della rete.  In fin dei conti, tutto si riduce ad accedere al peer (direttamente o indirettamente) ed eseguire letture e scritture sul libro mastro. Quando un membro fornisce a un utente l'accesso alla rete, sta in effetti fornendo l'accesso alla funzionalità del peer.
@@ -130,11 +138,11 @@ Detto semplicemente, un membro possiede un certificato digitale valido, che cons
 
 È a volte utile pensare ai membri ricorrendo a un utente tipo (persona) che delinea il ruolo del membro nella rete di business.  Ne sono qui di seguito riportati alcuni che vediamo usare di frequente.
 
-- **Iniziatore** – Un membro selezionato da altri membri per eseguire il bootstrap della rete blockchain.    IBM Blockchain Platform richiede che un singolo membro acceda a IBM Blockchain Platform ed esegua le attività per iniziare la rete.  Includono la denominazione della rete, l'invito del gruppo iniziale di membri e l'impostazione della serie predefinita di politiche operative della rete.  Questo è un ruolo temporaneo.  Dopo che è stato eseguito il bootstrap della rete, l'iniziatore non conserva privilegi speciali e riprende semplicemente il ruolo di membro.  
+- **Iniziatore** – Un membro selezionato da altri membri per eseguire il bootstrap della rete blockchain.    {{site.data.keyword.blockchainfull_notm}} Platform richiede che un singolo membro acceda a {{site.data.keyword.blockchainfull_notm}} Platform ed esegua le attività per iniziare la rete.  Includono la denominazione della rete, l'invito del gruppo iniziale di membri e l'impostazione della serie predefinita di politiche operative della rete.  Questo è un ruolo temporaneo.  Dopo che è stato eseguito il bootstrap della rete, l'iniziatore non conserva privilegi speciali e riprende semplicemente il ruolo di membro.  
 
 - **Mantenitore** – Un membro che sta eseguendo una o più peer e CA di rete.   Questi membri mantengono l'integrità del libro mastro distribuito partecipando al processo di consenso, che è il modo in cui le transazioni sono convalidate su una rete blockchain.   Il mantenitore, mediante la proprietà di una CA, può anche emettere certificati ai partecipanti e concedere loro l'accesso alla rete.
 
-- **Operatore** – Un membro che sta eseguendo dei servizi per conto di altri membri della rete, compresi il servizio ordini di transazioni, le Autorità di certificazione (CA, Certificate Authority), i gateway di transazioni e altri servizi di rete fondamentali.  Per impostazione predefinita, IBM è l'operatore di rete delle reti distribuite sulla IBM Blockchain Platform.
+- **Operatore** – Un membro che sta eseguendo dei servizi per conto di altri membri della rete, compresi il servizio ordini di transazioni, le Autorità di certificazione (CA, Certificate Authority), i gateway di transazioni e altri servizi di rete fondamentali.  Per impostazione predefinita, IBM è l'operatore di rete delle reti distribuite sulla {{site.data.keyword.blockchainfull_notm}} Platform.
 
 - **Revisore** – Un membro a cui vengono concesse le autorizzazioni dalla rete per eseguire funzioni di revisione della rete.  Degli esempi delle funzioni di revisione includono la fatturazione, l'analisi o il tracciamento della conformità.  Il ruolo di revisore di norma si traduce in una più ampia visione che il membro ha delle transazioni nel libro mastro e/o in una più ampia registrazione ai canali delle transazioni.
 
@@ -149,7 +157,7 @@ Mentre potrebbero esserci centinaia di membri in una rete blockchain, gli utenti
 
 L'**Elevata disponibilità** per le risorse integrali della rete (peer, servizio ordini, Autorità di certificazione, chaincode) elimina gli effetti paralizzanti che possono derivare dai singoli punti di errore. Un monitor dashboard integrato consente una facile gestione di queste risorse e fornisce un potente meccanismo per visualizzare asset e smart contract.
 
-La **modularità** dell'architettura di Hyperledger Fabric e la chiara separazione dei ruoli di rete (approvatore, esecutore del commit, ordinatore) fornisce un'infrastruttura che abilita la scalabilità e l'adattabilità a un'ampia gamma di casi d'uso.
+La **modularità** dell'architettura di Hyperledger Fabric e la chiara separazione dei ruoli di rete (approvatore, esecutore del commit, ordinante) fornisce un'infrastruttura che abilita la scalabilità e l'adattabilità a un'ampia gamma di casi d'uso.
 
 I controlli e bilanciamenti che si verificano durante tutto il ciclo di vita di una transazione garantiscono risultati uniformi e totalmente controllati; inoltre, i libri mastro vengono mantenuti costantemente sincronizzati attraverso un'implementazione del noto protocollo gossip. L'identità e il controllo degli accessi vengono applicati facilmente attraverso le operazioni di **firma/verifica** che avvengono continuamente in tutta la rete.  
 
@@ -167,4 +175,4 @@ Prima di continuare, diamo un'occhiata a una semplice configurazione in {{site.d
 
 {{site.data.keyword.IBM_notm}} offre un supporto sulle soluzioni {{site.data.keyword.blockchain}} implementate da {{site.data.keyword.IBM_notm}}. Per ulteriori informazioni sul supporto {{site.data.keyword.blockchainfull_notm}}, vedi [Richiesta di assistenza tecnica](ibmblockchain_support.html).
 
-Per maggiori dettagli su tutte le funzioni e la funzionalità di Hyperledger Fabric, consulta [la documentazione di Hyperledger Fabric ![Icona link esterno](images/external_link.svg "Icona link esterno")](http://hyperledger-fabric.readthedocs.io/en/latest/).
+Per maggiori dettagli su tutte le funzioni e la funzionalità di Hyperledger Fabric, consulta [la documentazione di Hyperledger Fabric ![Icona link esterno](images/external_link.svg "Icona link esterno")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/).

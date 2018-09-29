@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -15,6 +15,10 @@ lastupdated: "2018-06-14"
 
 # 安装开发环境
 {: #installing-a-development-environment}
+
+
+***[此页面是否有用？请告诉我们。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
 
 按照以下指示信息来获取用于创建和测试业务网络的 {{site.data.keyword.blockchainfull}} Platform: Develop 开发工具。为了提供灵活性并支持最大数量的开发、测试和部署场景，开发工具以 npm 模块的形式提供，这些模块通过命令行进行控制。
 
@@ -45,28 +49,28 @@ lastupdated: "2018-06-14"
 1. 要与入门套餐配合使用，请使用以下命令来安装 **composer-cli**：
 
     ```
-    npm install -g composer-cli@0.19.x
+npm install -g composer-cli@0.19.x
     ```
     {:codeblock}
 
     要与企业套餐配合使用，请使用以下命令来安装 **composer-cli**：
 
     ```
-    npm install -g composer-cli@0.16.x
+npm install -g composer-cli@0.16.x
     ```
     {:codeblock}
 
 2. 要与入门套餐配合使用，请使用以下命令来安装 **composer-rest-server**：
 
     ```
-    npm install -g composer-rest-server@0.19.x
+npm install -g composer-rest-server@0.19.x
     ```
     {:codeblock}
 
     要与企业套餐配合使用，请使用以下命令来安装 **composer-rest-server**：
 
     ```
-    npm install -g composer-rest-server@0.16.x
+npm install -g composer-rest-server@0.16.x
     ```
     {:codeblock}
 
@@ -75,14 +79,14 @@ lastupdated: "2018-06-14"
 3. 要与入门套餐配合使用，请使用以下命令来安装 **generator-hyperledger-composer**：
 
     ```
-    npm install -g generator-hyperledger-composer@0.19.x
+npm install -g generator-hyperledger-composer@0.19.x
     ```
     {:codeblock}
 
     要与企业套餐配合使用，请使用以下命令来安装 **generator-hyperledger-composer**：
 
     ```
-    npm install -g generator-hyperledger-composer@0.16.x
+npm install -g generator-hyperledger-composer@0.16.x
     ```
     {:codeblock}
 
@@ -91,7 +95,7 @@ lastupdated: "2018-06-14"
 4. Yeoman 是一个用于生成应用程序的工具，它利用的是 `generator-hyperledger-composer`：
 
     ```
-    npm install -g yo
+npm install -g yo
     ```
     {:codeblock}
 
@@ -171,7 +175,7 @@ npm install -g composer-playground@0.16.x
 5. 要启动 Playground，请运行以下命令：
 
     ```
-    composer-playground
+composer-playground
     ```
     {:codeblock}
 

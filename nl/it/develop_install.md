@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -15,6 +15,10 @@ lastupdated: "2018-06-14"
 
 # Installazione di un ambiente di sviluppo
 {: #installing-a-development-environment}
+
+
+***[Questa pagina è utile? Faccelo sapere.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
 
 Attieniti alle seguenti istruzioni per ottenere gli strumenti di sviluppo {{site.data.keyword.blockchainfull}} Platform: Develop per creare e testare reti di business. Per fornire flessibilità e per abilitare il numero massimo di scenari di sviluppo, test e distribuzione, gli strumenti di sviluppo vengono forniti come moduli npm, che sono controllati dalla riga di comando.
 

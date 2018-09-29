@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -16,6 +16,10 @@ lastupdated: "2018-06-14"
 # Gobierno de la red del Plan inicial
 {: #getting-started-with-starter-plan}
 
+
+***[¿Le resulta útil esta página? Indíquenos su opinión.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
 El Plan inicial (Starter Plan) de la plataforma {{site.data.keyword.blockchainfull}} le ofrece una red blockchain preconfigurada con una simple pulsación. Proporciona <!--offers you a free trial of 30 days and -->una red autorizada con la configuración de dos [organizaciones](glossary.html#organization), un [igual](glossary.html#peer) por cada organización y un [canal](glossary.html#channel) de forma predeterminada. Una vez creada la red, puede extenderla y añadir más organizaciones e iguales a la red. <!--Note that it might cause extra cost if you exceed the default resource limits of two organizations and two peers.-->
 {:shortdesc}
 
@@ -23,7 +27,7 @@ El Plan inicial (Starter Plan) de la plataforma {{site.data.keyword.blockchainfu
 
 El Plan inicial le permite aprender y desarrollar habilidades con la plataforma {{site.data.keyword.blockchainfull_notm}}, ejecutar aplicaciones de ejemplo, probar sus propias aplicaciones y simular un escenario de varias organizaciones.  Esta guía de aprendizaje de iniciación contiene una introducción a los requisitos previos y a los pasos que hay que seguir para crear y utilizar una red del Plan inicial.
 
-Si es la primera vez que utiliza la plataforma {{site.data.keyword.blockchainfull_notm}} y blockchain, puede leer el [Glosario](glossary.html) para familiarizarse con los términos de esta documentación y la [documentación de Hyperledger Fabric ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](http://hyperledger-fabric.readthedocs.io/en/latest/blockchain.html) para obtener más información sobre blockchain.
+Si es la primera vez que utiliza la plataforma {{site.data.keyword.blockchainfull_notm}} y blockchain, puede leer el [Glosario](glossary.html) para familiarizarse con los términos de esta documentación y la [documentación de Hyperledger Fabric ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/blockchain.html) para obtener más información sobre blockchain.
 
 
 ## Creación de una red
@@ -99,7 +103,7 @@ Para obtener más información, consulte [Despliegue de aplicaciones de ejemplo]
 
 
 ## Desarrollo y despliegue de redes empresariales personalizadas
-El Plan inicial integra el entorno para el desarrollador IBM Blockchain Platform: Develop y el conjunto de herramientas para el desarrollador Hyperledger Composer. Puede desarrollar su red blockchain en función de los requisitos de su empresa.  Después de desarrollar una red para su empresa, puede desplegar su red empresarial en la red del Plan inicial.
+El Plan inicial integra el entorno para el desarrollador IBM {{site.data.keyword.blockchainfull_notm}} Platform: Develop y el conjunto de herramientas para el desarrollador Hyperledger Composer. Puede desarrollar su red blockchain en función de los requisitos de su empresa.  Después de desarrollar una red para su empresa, puede desplegar su red empresarial en la red del Plan inicial.
 
 Para obtener más información, consulte [Desarrollar la red](develop.html) y [Despliegue de una red empresarial con el Plan inicial](develop_starter.html).
 
@@ -125,7 +129,7 @@ El código de encadenamiento, que es similar a los archivos `.bna`, se desarroll
 As you can see in [Deploying sample applications](howto/prebuilt_samples.html), Starter Plan makes it easy to get a sample application integrated with your network by using Toolchain. This setup also allows for continuous integration by automatically updating your sample application whenever your forked application repo is changed. If you want to deploy this application into an Enterprise Plan network, you can copy your forked application repo into a new repo and then follow the instructions in [Deploying sample applications manually](howto/prebuilt_samples.html#deploy_sample_applications_manually).
 -->
 
-Si despliega cualquier aplicación de ejemplo en la red del Plan inicial y desea desplegar esta aplicación en una red del Plan empresarial, puede copiar el repositorio bifurcado de aplicaciones en un nuevo repositorio y luego seguir las instrucciones del apartado [Despliegue manual de aplicaciones de ejemplo](howto/prebuilt_samples.html#deploy_sample_applications_manually).
+Si despliega cualquier aplicación de ejemplo en la red del Plan inicial y desea desplegar esta aplicación en una red del Plan empresarial, puede copiar el repositorio bifurcado de aplicaciones en un nuevo repositorio y luego seguir las instrucciones de las aplicaciones de ejemplo para desplegarla en la red del Plan empresarial.
 
 
 ## Supresión o abandono de una red
@@ -137,5 +141,5 @@ Si desea suprimir o abandonar una red, puede suprimir la instancia de servicio d
 <!--
 ## References
 * For more information about {{site.data.keyword.blockchainfull_notm}} offerings, see [Blockchain offerings](index.html).
-* For more information about Hyperledger Fabric V1.1, see [Hyperledger Fabric documentation ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/latest/){:new_window}.
+* For more information about Hyperledger Fabric V1.1, see [Hyperledger Fabric documentation ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/){:new_window}.
 -->

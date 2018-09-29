@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -15,6 +15,10 @@ lastupdated: "2018-06-14"
 
 # 在企業方案上部署商業網路
 {: #deploying-a-business-network}
+
+
+***[此頁面有幫助嗎？請告訴我們。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
 
 「{{site.data.keyword.blockchainfull}} 平台：開發」的開發人員工具可協助您建立**商業網路定義**，然後再將其包裝在商業網路保存檔 (`.bna`) 中。開發人員環境可讓您將 `.bna` 檔案部署至本端或雲端 {{site.data.keyword.blockchain}}，以供開發及共用。
 
@@ -31,14 +35,14 @@ lastupdated: "2018-06-14"
 1. 建立一個目錄來儲存您的連線詳細資料，例如：
 
     ```
-    /Users/myUserId/.composer-connection-profiles/bmx-hlfv1
+/Users/myUserId/.composer-connection-profiles/bmx-hlfv1
     ```
     {:codeblock}
 
     每個連線設定檔都應該包含 `connection.json` 檔案。請在 `.composer-connection-profiles` 之下建立新的目錄，在此實例中為 `bmx-hlfv1`。這將會是您在使用 Hyperledger Composer 和「{{site.data.keyword.blockchainfull_notm}} 平台」時，所要使用的設定檔名稱。
 
     ```
-    mkdir -p ~/.composer-connection-profiles/bmx-hlfv1
+mkdir -p ~/.composer-connection-profiles/bmx-hlfv1
     cd ~/.composer-connection-profiles/bmx-hlfv1
     ```
     {:codeblock}
@@ -46,7 +50,7 @@ lastupdated: "2018-06-14"
 2. 您現在應該有下列目錄結構：
 
     ```
-    /Users/myUserId/.composer-connection-profiles/bmx-hlfv1
+/Users/myUserId/.composer-connection-profiles/bmx-hlfv1
     ```
     {:codeblock}
 
@@ -90,7 +94,7 @@ lastupdated: "2018-06-14"
     使用「連線設定檔」中的相關資訊來取代範本中的排序節點 URL 值，格式如下：
 
     ```
-    "url": "grpcs://abca.4.secure.blockchain.ibm.com:12345"
+"url": "grpcs://abca.4.secure.blockchain.ibm.com:12345"
     ```
     {:codeblock}
 
@@ -103,7 +107,7 @@ lastupdated: "2018-06-14"
 1. 每個對等節點的 **requestURL** 和 **eventURL** 都必須設定。使用在「連線設定檔」中找到的 **url** 值來取代 **url** 屬性。使用在「連線設定檔」中找到的 **eventUrl** 來取代 **eventURL** 屬性。進行變更之後，`connection.json` 的 peers 區段格式應如下所示：
 
     ```
-        "peers": [
+"peers": [
           {
               "requestURL": "grpcs://abca.4.secure.blockchain.ibm.com:12345",
               "eventURL": "grpcs://abca.4.secure.blockchain.ibm.com:12345"
@@ -115,7 +119,7 @@ lastupdated: "2018-06-14"
 1. 將 **keyValStore** 屬性設定為指向適當的目錄。建立一個要用於 **keyValStore** 的目錄。例如，在起始目錄之下建立一個名為 `.composer-credentials-mychannel` 的新目錄。確定 **keyValStore** 屬性指向新建的目錄，格式如下：
 
     ```
-    "keyValStore": "/Users/myUserId/.composer-credentials-mychannel",
+"keyValStore": "/Users/myUserId/.composer-credentials-mychannel",
     ```
     {:codeblock}
 
@@ -131,7 +135,7 @@ lastupdated: "2018-06-14"
 1. 「{{site.data.keyword.blockchainfull_notm}} 平台」為排序節點和對等節點使用一般 TLS 憑證。每個排序節點和對等節點各有一個 **tlsCACerts** 屬性，全都包含相同的憑證。請將 `connection.json` 檔案中的 dummy 值取代為 **tlsCACerts** 值。其應採用下列格式：
 
     ```
-    "globalCert": "-----BEGIN CERTIFICATE-----\r\.......
+"globalCert": "-----BEGIN CERTIFICATE-----\r\.......
     ```
     {:codeblock}
 
@@ -155,7 +159,7 @@ lastupdated: "2018-06-14"
 1. 使用下列指令來要求憑證：
 
     ```
-    composer identity request -p bmx-hlfv1 -i admin -s PA55W0RD12
+composer identity request -p bmx-hlfv1 -i admin -s PA55W0RD12
     ```
     {:codeblock}
 
@@ -194,7 +198,7 @@ lastupdated: "2018-06-14"
 1. 若要建立新身分，請執行下列指令：
 
     ```
-    composer identity import -p bmx-hlfv1 -u admin -c ~/.identityCredentials/admin-pub.pem -k ~/.identityCredentials/admin-priv.pem
+composer identity import -p bmx-hlfv1 -u admin -c ~/.identityCredentials/admin-pub.pem -k ~/.identityCredentials/admin-priv.pem
     ```
     {:codeblock}
 

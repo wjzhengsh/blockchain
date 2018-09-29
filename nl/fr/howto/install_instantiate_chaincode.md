@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 ---
 
 {:new_window: target="_blank"}
@@ -13,17 +13,19 @@ lastupdated: "2018-06-14"
 
 # Installation, instanciation et mise à jour d'un code blockchain
 
-Le code blockchain est un logiciel, écrit en Go, Java ou Node.js, qui encapsule la logique métier et les instructions transactionnelles
-pour la création et la modification des actifs. Il s'exécute dans un conteneur Docker associé à un homologue qui doit interagir avec lui.  Pour plus d'informations sur le développement du code blockchain, voir [Chaincode Tutorials ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](http://hyperledger-fabric.readthedocs.io/en/latest/chaincode.html).
+
+***[Cette page est-elle utile ? Dites-nous.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
+Le code blockchain est un logiciel qui encapsule la logique métier et les instructions transactionnelles
+pour la création et la modification des actifs.  Le code blockchain peut être écrit dans différents langages, et {{site.data.keyword.blockchainfull}} Platform prend en charge le code blockchain Go et Node.js. Il s'exécute dans un conteneur Docker associé à un homologue qui doit interagir avec lui. Pour plus d'informations sur le développement du code blockchain, voir [Chaincode Tutorials ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](http://hyperledger-fabric.readthedocs.io/en/latest/chaincode.html).
 {:shortdesc}
 
-Le code blockchain est installé sur le système de fichiers d'un homologue, puis il est instancié sur un canal. **Tous les membres de canal doivent installer le code blockchain sur chaque homologue qui va exécuter le code blockchain.** Pour utiliser le même code blockchain, les membres du canal doivent lui donner le même nom et la même version lors de l'installation de ce code blockchain. Ensuite, l'étape d'instanciation implique
-l'initialisation des paires clé-valeur et le déploiement du conteneur de code blockchain. Tout homologue, via lequel les applications vont interagir avec un code blockchain, doit comporter le code blockchain installé sur son système de fichiers et disposer d'un conteneur de code blockchain opérationnel. **Toutefois, si un homologue utilise le même code blockchain sur plusieurs canaux, il n'a besoin que d'une seule instance du conteneur**.
+Le code blockchain est installé sur un homologue, puis il est instancié sur un canal. **Tous les membres qui souhaitent soumettre des transactions ou lire des données à l'aide d'un code blockchain doivent installer ce code blockchain sur leurs homologues.** Un code blockchain est défini par son nom et sa version. Le nom et la version du code blockchain installé doivent être cohérents entre les homologues sur un canal.
 
-La **combinaison installation/instanciation** est une fonction puissante car elle permet à un homologue d'interagir avec le même conteneur de code blockchain sur plusieurs canaux. Le seul prérequis est que les fichiers source de code blockchain réel soient installés sur le système de fichiers de l'homologue. De cette façon, si un élément de code blockchain est utilisé sur des douzaines de canaux, un homologue n'aura besoin que d'un seul conteneur de code blockchain pour exécuter des opérations de lecture/écriture sur tous les registres de canal. Cette approche souple se révèle bénéfique pour les performances et le débit de calcul dès lors que l'échelle des réseaux et les applications de code blockchain deviennent plus élaborés.
+Une fois le code blockchain installé sur les homologues, un seul membre réseau instancie le code blockchain sur le canal. Ce membre réseau doit avoir rejoint le canal pour pouvoir effectuer cette action. L'instanciation entre les données initiales utilisées par le code blockchain, puis elle démarre les conteneurs de code blockchain sur les homologues joints au canal avec le code blockchain installé. Les homologues peuvent ensuite utiliser les conteneurs en cours d'exécution pour effectuer des transactions. **Notez qu'un seul membre réseau doit instancier un code blockchain.** Si un homologue avec un code blockchain installé rejoint un canal où il a déjà été instancié, le conteneur de code blockchain démarre automatiquement.
 
-**Remarque** : Si vous développez votre code blockchain de manière interactive et devez mettre à jour un code blockchain, vous devez répéter les étapes d'installation et d'instanciation pour le code blockchain.
-
+La combinaison **installation/instanciation** est une fonction puissante car elle permet à un homologue d'utiliser un seul code blockchain sur de nombreux canaux. Les homologues peuvent souhaiter rejoindre plusieurs canaux qui utilisent le même code blockchain, mais avec différents jeux de membres réseau capables d'accéder aux données. Un homologue peut installer le code blockchain une fois, puis utiliser le même conteneur de code blockchain sur un canal où il a été instancié. Cette approche permet d'éviter d'avoir à calculer l'espace de stockage, et ainsi de faire évoluer votre réseau.
 
 ## Installation d'un code blockchain
 {: #installchaincode}
@@ -37,7 +39,7 @@ Vous devez installer le code blockchain sur chaque homologue qui va exécuter le
 2. Dans la fenêtre contextuelle **Installer le code blockchain**, entrez le nom et la version de votre code blockchain. **Notez** que les chaînes de nom et de version seront utilisées dans les applications pour interagir avec le code blockchain installé. Cliquez sur le bouton **Parcourir** et parcourez votre code système de fichiers local jusqu'à l'emplacement de stockage de la source de votre code blockchain. Sélectionnez un ou plusieurs fichiers source de code blockchain à installer sur votre homologue. Sélectionnez ensuite votre langage de code blockchain dans le menu déroulant **Type de code blockchain**.
 
 Vous pouvez installer le code blockchain en téléchargeant un ou plusieurs fichiers GO ou NODE , ou encore télécharger le code blockchain dans un fichier .zip. L'utilisation d'un fichier .zip préserve votre code blockchain avec la structure de répertoire complète. Ceci s'avère utile si vous désirez inclure des modules de dépendances, ou utiliser les index avec CouchDB. Pour consulter un exemple d'inclusion d'index avec votre code blockchain, voir
-[Using CouchDB from Chaincode![External link icon](../images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/couchdb_as_state_database.html#using-couchdb-from-chaincode){:new_window} dans la documentation Fabric. Vous pouvez également trouver des informations sur la [gestion de dépendances externes pour code blockchain rédigé dans GO![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/latest/chaincode4ade.html#managing-external-dependencies-for-chaincode-written-in-go){:new_window}
+[Using CouchDB from Chaincode ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/couchdb_as_state_database.html#using-couchdb-from-chaincode){:new_window} ou suivez ce [tutoriel ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/couchdb_tutorial.html){:new_window} dans la documentation Hypereldger Fabric. Vous pouvez également trouver des informations sur la [gestion de dépendances externes pour code blockchain rédigé dans GO![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/latest/chaincode4ade.html#managing-external-dependencies-for-chaincode-written-in-go){:new_window}
 
   ![Installer le code blockchain](../images/chaincode_install.png "Installer le code blockchain")
 
@@ -71,7 +73,7 @@ Lorsque vous utilisez le Moniteur réseau pour définir votre règle de validati
 
 * **Utilisation de JSON pour spécifier une Règle avancée :** Utilisez des règles avancées pour imposer des validations par des membres importants ou des administrateurs, ou pour affecter à certains membres plus de poids.
 
-  La méthode la plus simple pour définir une règle avancée consiste à générer tout d'abord une règle simple depuis l'écran de l'interface utilisateur. Cliquez ensuite sur le bouton **Règle avancée**, lequel renseigne automatiquement une version JSON de la règle avec les mêmes membres et règles que ceux que vous avez définis dans la règle simple. Vous pouvez ensuite éditer le code JSON pour composer une version plus avancée. Pour plus d'informations sur la composition de règles de validation dans JSON, reportez-vous à la [documentation du SDK Hyperledger Fabric Node![External link icon](../images/external_link.svg "External link icon")](https://fabric-sdk-node.github.io/global.html#ChaincodeInstantiateUpgradeRequest). <!--You can also find examples of advanced endorsement policies in the main [Hyperledger Fabric documentation![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/latest/arch-deep-dive.html#example-endorsement-policies)-->
+  La méthode la plus simple pour définir une règle avancée consiste à générer tout d'abord une règle simple depuis l'écran de l'interface utilisateur. Cliquez ensuite sur le bouton **Règle avancée**, lequel renseigne automatiquement une version JSON de la règle avec les mêmes membres et règles que ceux que vous avez définis dans la règle simple. Vous pouvez ensuite éditer le code JSON pour composer une version plus avancée. Pour plus d'informations sur la composition de règles de validation dans JSON, reportez-vous à la [documentation du SDK Hyperledger Fabric Node![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://fabric-sdk-node.github.io/global.html#ChaincodeInstantiateUpgradeRequest). <!--You can also find examples of advanced endorsement policies in the main [Hyperledger Fabric documentation![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/latest/arch-deep-dive.html#example-endorsement-policies)-->
 
   ![Règle de validation avancée](../images/advanced_endorsement.png "Règle de validation avancée")
 
@@ -79,10 +81,10 @@ Lorsque vous utilisez le Moniteur réseau pour définir votre règle de validati
 
 Vous pouvez mettre à jour un code blockchain afin de modifier la programmation du code blockchain tout en conservant sa relation aux actifs dans le registre. En raison de la combinaison installation et instanciation, vous devez mettre à jour le code blockchain sur tous les homologues qui se trouvent sur le canal avec ce code blockchain. Pour mettre à jour un code blockchain, procédez comme suit.
 
-1. Installez un code blockchain portant le même nom que votre ancien code blockchain, mais avec une version différente. Vous pouvez suivre les mêmes étapes que celles de la section [Installation d'un code blockchain](install_instatiate_chaincode.html#Installing a chaincode). Vérifiez que vous sélectionnez le même canal que votre code blockchain d'origine.
+1. Installez un code blockchain portant le même nom que votre ancien code blockchain, mais avec une version différente. Vous pouvez suivre les mêmes étapes que celles de la section [Installation d'un code blockchain](#installchaincode). Vérifiez que vous sélectionnez le même canal que votre code blockchain d'origine.
 
   ![Mettre à jour le code blockchain](../images/upgrade_chaincode.png "Mettre à jour le code blockchain")
 
-2. Localisez votre nouveau code blockchain dans le tableau et cliquez sur le bouton **Mettre à jour** sous l'en-tête **Action**. Cette action réinstancie votre code blockchain et remplace son conteneur par un nouveau. Notez que vous n'avez pas besoin d'entrer de nouveaux arguments dans le cadre de la fonction de mise à jour.
+2. Localisez votre nouveau code blockchain dans le tableau et cliquez sur le bouton **Mettre à jour** sous l'en-tête **Action**. Cette action réinstancie votre code blockchain et remplace son conteneur par un nouveau. Notez que vous n'avez pas besoin d'entrer de nouveaux arguments dans le cadre de la fonction de mise à jour. Cette action de mise à niveau s'effectue sur le canal, et doit être effectuée uniquement par une organisation.
 
   ![Bouton Mettre à jour](../images/upgrade_button.png "Bouton Mettre à jour")

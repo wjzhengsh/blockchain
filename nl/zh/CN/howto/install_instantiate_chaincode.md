@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 ---
 
 {:new_window: target="_blank"}
@@ -13,15 +13,19 @@ lastupdated: "2018-06-14"
 
 # 安装、实例化和更新链代码
 
-链代码是以 Go、Java 或 Node.js 编写的软件，其中封装了用于在分类帐中创建和修改资产的业务逻辑和事务处理指令。链代码在 Docker 容器中运行，该容器与需要与之交互的任何同级相关联。有关开发链代码的更多信息，请参阅[链代码教程 ![外部链接图标](../images/external_link.svg "外部链接图标")](http://hyperledger-fabric.readthedocs.io/en/latest/chaincode.html)。
+
+***[此页面是否有用？请告诉我们。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
+链代码是一款软件，可封装用于在分类帐中创建和修改资产的业务逻辑和事务处理指示信息。
+链代码可使用不同语言编写，并且 {{site.data.keyword.blockchainfull}} Platform 支持 Go 和 Node.js 链代码。链代码在 Docker 容器中运行，该容器与需要与之交互的任何同级相关联。有关开发链代码的更多信息，请参阅[链代码教程 ![外部链接图标](../images/external_link.svg "外部链接图标")](http://hyperledger-fabric.readthedocs.io/en/latest/chaincode.html)。
 {:shortdesc}
 
-链代码安装在同级文件系统上，然后在通道上进行实例化。**所有通道成员都需要在将运行此链代码的每个同级上安装此链代码。**要使用相同的链代码，通道成员必须在安装链代码时为链代码提供相同的名称和版本。然后，实例化步骤涉及初始化键值对和部署链代码容器。应用程序与链代码进行交互所经由的任何同级都必须将该链代码安装在该同级的文件系统上，并且具有正在运行的链代码容器。**但是，如果同级在多个通道上使用相同的链代码，那么它仅需要链代码容器的单个实例**。
+链代码安装在同级上，然后在通道上进行实例化。**想要使用链代码提交事务或读取数据的所有成员都需要在其同级上安装链代码。**链代码通过其名称和版本进行定义。在一个通道中，各个同级上已安装的链代码的名称和版本需要保持一致。
 
-**安装和实例化组合**是一项强大的功能，因为它允许同级跨多个通道与相同的链代码容器进行交互。唯一的先决条件是要在同级的文件系统上安装实际的链代码源文件。因此，如果一部分常用链代码跨多个通道使用，那么同级仅需要单个链代码容器即可在所有通道分类帐上执行读/写操作。随着网络规模和链代码变得更为复杂，这种轻量型方法证明对计算性能和吞吐量大有益处。
+在同级上安装链代码后，单个网络成员实例化通道上的链代码。网络成员需要加入通道才能执行此操作。实例化将输入链代码所用的初始数据，然后在已加入到通道的且安装了链代码的同级上启动链代码容器。然后，同级可使用正在运行的容器以进行交易。**请注意，只需要由一个网络成员来实例化链代码。**如果已安装链代码的同级加入已实例化的通道，那么链代码容器将自动启动。
 
-**注**：如果以迭代方式开发链代码并需要更新链代码，那么需要对链代码重复执行安装和实例化步骤。
-
+**安装和实例化**组合是一个强大的功能，因为它让同级可以在多个通道上使用单个链代码。同级可能要加入使用相同链代码但具有不同网络成员组的多个通道以访问数据。同级可安装链代码一次，然后在已实例化的任何通道上使用相同的链代码容器。此轻量级方法节省计算和存储空间，并帮助扩展网络。
 
 ## 安装链代码
 {: #installchaincode}
@@ -34,7 +38,7 @@ lastupdated: "2018-06-14"
 
 2. 在**安装链代码**弹出面板中，输入链代码的名称和版本。**注**：将在应用程序中使用名称和版本字符串以与已安装的链代码进行交互。单击**浏览**按钮并在本地文件系统中浏览到存储链代码源文件的任何位置。选择要安装在同级上的一个或多个链代码源文件。然后，从**链代码类型**下拉列表中选择链代码语言。
 
-可以通过上传一个或多个 GO 或 NODE 文件来安装链代码，也可以上传打包在 .zip 文件内的链代码。使用 .zip 文件将使链代码保持完整的目录结构。如果要包含依赖关系的包，或者要将索引用于 CouchDB，那么使用 .zip 文件会非常有用。要查找如何在链代码中包含索引的示例，请参阅 Fabric 文档中的[通过链代码使用 CouchDB ![外部链接图标](../images/external_link.svg "外部链接图标")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/couchdb_as_state_database.html#using-couchdb-from-chaincode){:new_window}。您还可以找到有关[管理使用 GO 编写的链代码的外部依赖性 ![外部链接图标](../images/external_link.svg "外部链接图标")](https://hyperledger-fabric.readthedocs.io/en/latest/chaincode4ade.html#managing-external-dependencies-for-chaincode-written-in-go){:new_window} 的信息。
+可以通过上传一个或多个 GO 或 NODE 文件来安装链代码，也可以上传打包在 .zip 文件内的链代码。使用 .zip 文件将使链代码保持完整的目录结构。如果要包含依赖关系的包，或者要将索引用于 CouchDB，那么使用 .zip 文件会非常有用。有关如何在链代码中包含索引的示例，请参阅[通过链代码使用 CouchDB ![外部链接图标](../images/external_link.svg "外部链接图标")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/couchdb_as_state_database.html#using-couchdb-from-chaincode){:new_window}，或者遵循 Hypereldger Fabric 文档中的此[教程 ![外部链接图标](../images/external_link.svg "外部链接图标")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/couchdb_tutorial.html){:new_window}。您还可以找到有关[管理使用 GO 编写的链代码的外部依赖性 ![外部链接图标](../images/external_link.svg "外部链接图标")](https://hyperledger-fabric.readthedocs.io/en/latest/chaincode4ade.html#managing-external-dependencies-for-chaincode-written-in-go){:new_window} 的信息。
 
   ![安装链代码](../images/chaincode_install.png "安装链代码")
 
@@ -76,10 +80,10 @@ lastupdated: "2018-06-14"
 
 您可以更新链代码以更改链代码的编程，同时维护其与分类帐上资产的关系。由于安装和实例化组合，需要使用此链代码更新通道上所有同级的链代码。请完成以下步骤以更新链代码。
 
-1. 安装与旧链代码同名但版本不同的链代码。您可以执行与[安装链代码](install_instatiate_chaincode.html#Installing a chaincode)相同的步骤。确保选择与原始链代码相同的通道。
+1. 安装与旧链代码同名但版本不同的链代码。您可以执行与[安装链代码](#installchaincode)相同的步骤。确保选择与原始链代码相同的通道。
 
   ![更新链代码](../images/upgrade_chaincode.png "更新链代码")
 
-2. 在表中找到新的链代码，然后单击**操作**标题下的**更新**按钮。此操作将重新实例化链代码并将链代码容器替换为新容器。请注意，无需输入任何新的自变量作为更新函数的一部分。
+2. 在表中找到新的链代码，然后单击**操作**标题下的**更新**按钮。此操作将重新实例化链代码并将链代码容器替换为新容器。请注意，无需输入任何新的自变量作为更新函数的一部分。此升级操作在通道上发生，并且只需由一个组织执行。
 
   ![更新按钮](../images/upgrade_button.png "更新按钮")

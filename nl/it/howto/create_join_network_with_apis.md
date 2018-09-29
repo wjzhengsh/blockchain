@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -13,6 +13,10 @@ lastupdated: "2018-06-14"
 {:pre: .pre}
 
 # Creazione o unione di una rete con le API Swagger
+
+
+***[Questa pagina è utile? Faccelo sapere.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
 
 {{site.data.keyword.blockchainfull}} Platform presenta diverse API REST che puoi utilizzare per creare o unire una rete blockchain in {{site.data.keyword.cloud_notm}}. Puoi provare queste API utilizzando la [IU Swagger](swagger_apis.html) associata alla tua rete.
 {:shortdesc}
@@ -27,7 +31,7 @@ Per utilizzare le API Swagger per creare o unire una rete, hai bisogno delle cre
 
 1. Nel tuo [dashboard {{site.data.keyword.cloud_notm}} ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://console.bluemix.net/dashboard/apps/), apri l'istanza del servizio che hai creato.
 2. Fai clic su **Credenziali del servizio** dal navigator di sinistra.
-3. Fai clic sul pulsante "Nuova credenziale" nella pagina **Credenziali del servizio** per creare una nuova credenziale. 
+3. Fai clic sul pulsante "Nuova credenziale" nella pagina **Credenziali del servizio** per creare una nuova credenziale.
     1. Fornisci un nome alla credenziale, ad esempio *CreateJoin*.
     2. Immetti **{"type": "service_instance_token"}** nel campo "Aggiungi parametro di configurazione inline".
     3. Fai clic sul pulsante **Aggiungi**.
@@ -124,13 +128,13 @@ Se utilizzi piano Enterprise, devi completare due passi per creare una rete con 
 - `location_id`: l'ID di un'ubicazione della rete disponibile. Specifica il valore del `location_id` annotato da [Controllo delle ubicazioni della rete disponibili](#check-location).
 - `company_name`: il tuo identificativo come membro della rete.
 - `email`: il tuo indirizzo email per ricevere le notifiche.
-- `peers`: il numero di peer che vuoi creare per questo membro. I valori validi sono 0 - 6. Puoi inoltre creare i peer per il tuo membro successivamente nella IU monitoraggio della rete.
+- `peers`: il numero di peer che vuoi creare per questo membro. I valori validi sono 0 - 6. Puoi inoltre creare i peer per il tuo membro successivamente nella IU Monitoraggio della rete.
 - `ledger_type`: il tipo di libro mastro di questa rete. I valori validi sono levelDB e couchDB. **levelDB** è il valore predefinito.
 
 
 ## Invito di nuovi membri in una rete.
 
-Dopo aver creato una rete blockchain, puoi invitare altri membri ad unirsi alla tua rete. Devi specificare l'ID della rete a cui vuoi invitare i nuovi membri ad unirsi. Le credenziali di autenticazione di base necessarie per invitare un membro sono diverse da quelle utilizzate nella API **Crea rete** API. <!--In order to get the basic auth information you will need to follow the same steps in "Retrieving basic auth information for API". --> Puoi ottenere le credenziali per invitare un membro con la API **Richiama credenziali rete** nella [IU Swagger ](swagger_apis##retrieving-network-credentials) o [richiamare le informazioni di autenticazione di base per la API](#retrieve-id-token) dalla tua istanza del servizio in {{site.data.keyword.cloud_notm}}.
+Dopo aver creato una rete blockchain, puoi invitare altri membri ad unirsi alla tua rete. Devi specificare l'ID della rete a cui vuoi invitare i nuovi membri ad unirsi. Le credenziali di autenticazione di base necessarie per invitare un membro sono diverse da quelle utilizzate nella API **Crea rete** API. <!--In order to get the basic auth information you will need to follow the same steps in "Retrieving basic auth information for API". --> Puoi ottenere le credenziali per invitare un membro con la API **Richiama credenziali rete** nella [IU Swagger ](swagger_apis.html#retrieving-network-credentials) o [richiamare le informazioni di autenticazione di base per la API](#retrieve-id-token) dalla tua istanza del servizio in {{site.data.keyword.cloud_notm}}.
 
 ```
 /networks/{networkID}/invite
@@ -170,4 +174,4 @@ e compila il `network_id` utilizzando il valore dalla tua email di invito. L'URL
 **Parametri**:
 - `company_name`: il tuo identificativo come membro della rete. Questo sostituirà il nome assegnato dal mittente dell'invito.
 - `email`: il tuo indirizzo email per ricevere le notifiche.  Questo dovrebbe corrispondere all'indirizzo email nella notifica di invito.
-- `peers`: il numero di peer che vuoi creare per questo membro. I valori validi sono da 0 a 6. Puoi inoltre creare i peer per il tuo membro successivamente nel monitoraggio della rete.
+- `peers`: il numero di peer che vuoi creare per questo membro. I valori validi sono da 0 a 6. Puoi inoltre creare i peer per il tuo membro successivamente nel Monitoraggio della rete.

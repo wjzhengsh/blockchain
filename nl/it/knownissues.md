@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 ---
 
 {:new_window: target="_blank"}
@@ -14,15 +14,19 @@ lastupdated: "2018-06-14"
 
 # Problemi noti
 
+
+***[Questa pagina è utile? Faccelo sapere.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
 I seguenti problemi sono già stati segnalati:
-- **La configurazione di una CA esterna non è ancora supportata**. In alternativa, puoi generare e caricare i certificati di gestione tramite il monitoraggio della rete. Per ulteriori informazioni, vedi [Generazione dei certificati lato client](v10_application.html#generating-the-client-side-certificates) e la descrizione nella [scheda "Certificati" della schermata "Membro"](v10_dashboard.html#members) nel monitoraggio della rete.  
-- Nel monitoraggio della rete di una rete piano Starter, quando fai clic su **Visualizza log** nei nodi elencati nella schermata "Panoramica", viene aperta l'interfaccia Kibana di registrazione nei log {{site.data.keyword.cloud}}. **Per impostazione predefinita, Kibana è preconfigurato per mostrare i log degli ultimi 15 minuti di attività**. Se non c'è stata attività negli ultimi 15 minuti, vedrai un messaggio *Nessun risultato trovato*. Per visualizzare altri log, puoi semplicemente fare clic sull'icona timer nell'angolo in alto a destra sotto il tuo nome utente e impostare un intervallo di tempo più ampio, come *Questa settimana* o *Questo mese*.  
+- **La configurazione di una CA esterna non è ancora supportata**. In alternativa, puoi generare e caricare i certificati amministratore tramite il Monitoraggio della rete. Per ulteriori informazioni, vedi [Generazione dei certificati lato client](v10_application.html#enroll-app) e la descrizione nella [scheda "Certificati" della schermata "Membro"](v10_dashboard.html#members) nel Monitoraggio della rete.  
+- Nel Monitoraggio della rete di una rete piano Starter, quando fai clic su **Visualizza log** nei nodi elencati nella schermata "Panoramica", viene aperta l'interfaccia Kibana di registrazione nei log {{site.data.keyword.cloud}}. **Per impostazione predefinita, Kibana è preconfigurato per mostrare i log degli ultimi 30 giorni di attività**. Se non c'è stata attività negli ultimi 30 giorni, vedrai un messaggio che indica *Nessun risultato trovato*. Per visualizzare altri log, puoi fare clic sull'icona del timer nell'angolo superiore destro sotto il tuo nome utente e impostare un intervallo di tempo più ampio, ad esempio *Da inizio anno*  
 - I log della tua rete piano Starter vengono raccolti dal servizio Log Analysis di[{{site.data.keyword.cloud_notm}} ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://console.bluemix.net/catalog/services/log-analysis). Per impostazione predefinita, i tuoi log sono raccolti dal piano Lite del servizio Log Analysis. Questo piano è gratuito e **consente solo di cercare nei primi 500 MB dei tuoi log al giorno**. Se i log della tua rete superano i 500 MB, non puoi visualizzare i nuovi log in Kibana. Se la tua rete genera più di 500 MB di log, puoi eseguire l'upgrade a una versione a pagamento del servizio Log Analysis.  
 - Poiché il piano Starter non è un ambiente di produzione, **le applicazioni potrebbero non essere in grado di raggiungere immediatamente una risorsa di rete**.
-  - Se ciò si verifica, si consiglia come primo passo di aumentare i valori di timeout predefiniti nell'SDK Fabric. Per ulteriori informazioni sull'impostazione dei valori di timeout, vedi [Configurazione dei valori di timeout nelle SDK Fabric](v10_application.html#set-timeout-in-sdk).
+  - Se ciò si verifica, si consiglia come primo passo di aumentare i valori di timeout predefiniti nell'SDK Fabric. Per ulteriori informazioni sull'impostazione dei valori di timeout, vedi [Impostazione dei valori di timeout negli SDK Fabric](v10_application.html#set-timeout-in-sdk).
   - Puoi anche riprovare la tua richiesta a livello delle applicazioni.  
 - **I contenitori chaincode possono a volte essere arrestati** da un problema di rete di background e potrebbe essere necessario crearli nuovamente e riavviarli dopo essere stati richiamati da un utente. Se ciò si verifica, potrebbe volerci qualche minuto perché il tuo chaincode risponda.
-- A causa della limitazione delle risorse nella rete piano Starter, ossia 1 CPU e 2 Gi di RAM per ogni peer, **potresti riscontrare un errore `REQUEST_TIMEOUT` durante l'istanziazione del chaincode**. Se ciò si verifica, riprova il passo di istanziazione. Se l'errore persiste, puoi aumentare il timeout di istanziazione del chaincode. Nel profilo di connessione, il timeout di istanziazione del chaincode è impostato su 300 secondi.
+- A causa della limitazione delle risorse nella rete piano Starter, ossia 1 CPU e 4 Gi di RAM per ogni peer, **potresti riscontrare un errore `REQUEST_TIMEOUT` durante l'istanziazione del chaincode**. Se ciò si verifica, riprova il passo di istanziazione. Se l'errore persiste, puoi aumentare il timeout di istanziazione del chaincode. Nel profilo di connessione, il timeout di istanziazione del chaincode è impostato su 300 secondi.
   - Se utilizzi il valore di timeout predefinito in SDK, copia la sezione **client** nel profilo di connessione come mostrato di seguito, che imposta il timeout su 300 secondi, e assicurati che il tuo SDK la legga. Nota che, per l'SDK Node, questa impostazione di timeout nel profilo di connessione influenza tutte le chiamate, come `invoke`, `queries` e così via.
     ```
     "client": {
@@ -63,4 +67,4 @@ Attieniti alla seguente procedura per aggiornare il tuo chaincode:
 
     Puoi quindi utilizzare `go build` per controllare se il nuovo codice è conforme e se l'aggiornamento del chaincode funziona.
 
-2. Dopo il tuo upgrade della rete, puoi [aggiornare il tuo chaincode](howto/install_instantiate_chaincode.html#updating-a-chaincode) nel monitoraggio della rete.
+2. Dopo il tuo upgrade della rete, puoi [aggiornare il tuo chaincode](howto/install_instantiate_chaincode.html#updating-a-chaincode) nel Monitoraggio della rete.

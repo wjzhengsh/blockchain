@@ -1,7 +1,7 @@
 {:navgroup: .navgroup}
 {:topicgroup: .topicgroup}
 
-{: .toc subcollection="blockchain" audience="service" href="/docs/services/blockchain/index.html"}
+{: .toc subcollection="blockchain" audience="service" arm="339" href="/docs/services/blockchain/index.html"}
 IBM Blockchain Platform
 
 	{: .navgroup id="learn"}
@@ -20,12 +20,12 @@ IBM Blockchain Platform
 		dashboard.md
 
 	{: .topicgroup}
-	Enterprise Plan
-		enterprise_plan.md
+	エンタープライズ・プラン		enterprise_plan.md
 		get_start.md
 		develop_enterprise.md
 		v10_dashboard.md
 
+	方法/remote_peer.md
 	needtoknow.md
 	{: .navgroup-end}
 
@@ -35,17 +35,24 @@ IBM Blockchain Platform
 		howto/pricing.md
 		howto/paying_mode.md
 
+	certificates.md
 	howto/create_channel.md
 	howto/install_instantiate_chaincode.md
-	howto/monitor_network.md
-	howto/prebuilt_samples.md
 
 	{: .topicgroup}
 	Swagger を使用した API の試行
 		howto/swagger_apis.md
 		howto/create_join_network_with_apis.md
 
+	howto/monitor_network.md
+	howto/prebuilt_samples.md
 	v10_application.md
+	howto/migrate_sp_ep.md
+
+	{: .topicgroup}
+	IBM Cloud Private でのリモート・ピアの実行
+		howto/remote_peer_icp.md
+		howto/remote_peer_operate_icp.md
 	{: .navgroup-end}
 
 	{: .navgroup id="reference"}
