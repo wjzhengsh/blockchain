@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -15,6 +15,10 @@ lastupdated: "2018-06-14"
 
 # Governe a rede do Enterprise Plan
 {: #getting-started-with-blockchain}
+
+
+***[Esta página é útil? Diga-nos.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
 
 O {{site.data.keyword.blockchainfull}} Platform Enterprise Plan fornece uma rede de blockchain com alta segurança, integridade, escalabilidade e desempenho. É possível provisionar rapidamente uma rede totalmente funcional e usar o Monitor de rede, que é um painel da GUI, para executar imediatamente o [chaincode](glossary.html#chaincode) e aplicativos sem a necessidade de projetar e configurar uma rede do zero.
 {:shortdesc}
@@ -44,7 +48,7 @@ Se você for um inicializador de rede, clique no botão **Criar rede** para inic
 	Os membros que você convidar receberão uma notificação por e-mail sobre seu convite após você concluir todas as etapas para criar a rede.
 3. Na tela "Definir Regras de Controle", estabeleça as políticas para associação, criação de canal e chaincode. Por padrão, todos os membros de rede podem convidar outros membros para participarem da rede, criar canais e instanciar chaincode. Atualmente, a sua rede usa as políticas de controle padrão.  Clique em **Avançar**.
 4. Na tela "Resumo da Revisão", verifique sua configuração de rede. Se você desejar fazer modificações, clique em **Editar** ao lado do cabeçalho da seção ou clique no botão **Anterior** para voltar para as telas anteriores. Ao concluir a configuração de rede, clique em **Pronto**.  
-5. Na tela "Rede Criada", você será notificado de que sua rede foi criada com êxito. É possível clicar em **Incluir [Peers](glossary.html#peer)** para configurar os recursos de sua rede ou clicar em **Entrar no monitor** diretamente para abrir o Monitor de rede. Também é possível incluir peers posteriormente no Monitor de rede.  Para obter mais informações sobre peers, veja [Incluir peers](v10_dashboard.md#add_peers).
+5. Na tela "Rede Criada", você será notificado de que sua rede foi criada com êxito. É possível clicar em **Incluir [Peers](glossary.html#peer)** para configurar os recursos de sua rede ou clicar em **Entrar no monitor** diretamente para abrir o Monitor de rede. Também é possível incluir peers posteriormente no Monitor de rede.  Para obter mais informações sobre peers, veja [Incluir peers](v10_dashboard.html#peers).
 
 Agora você implementar com êxito uma rede do {{site.data.keyword.blockchain}} que possa suportar os recursos de rede a seguir:  
 * Uma autoridade de certificação (CA) específica do membro
@@ -76,7 +80,7 @@ Se você for um membro de rede convidado, clique no botão **Convite pendente ->
 ## Configurando recursos de rede e ambiente
 
 1. Entre em seu Monitor de Rede após criar ou participar de uma rede do {{site.data.keyword.blockchain}}. O Monitor de rede é um painel da GUI no qual é possível gerenciar e controlar informações de status da rede. Para obter mais informações, consulte [Monitor de Rede](v10_dashboard.html).
-2. Inclua seus próprios peers na rede. Se você já incluiu peers suficientes, ignore esta etapa. Os peers executam chaincode e eles são o terminal para interagir com seus aplicativos. Clique em **Incluir peers** na tela "Visão Geral" e selecione a quantidade e o tamanho de seus peers. Para obter mais informações, consulte [Visão Geral](v10_dashboard.html#resources).
+2. Inclua seus próprios peers na rede. Se você já incluiu peers suficientes, ignore esta etapa. Os peers executam chaincode e eles são o terminal para interagir com seus aplicativos. Clique em **Incluir peers** na tela "Visão Geral" e selecione a quantidade e o tamanho de seus peers. Para obter mais informações, consulte  [ Visão Geral ](v10_dashboard.html#overview).
 3. Configure um canal. Todos os membros no mesmo canal recebem um livro-razão específico do canal, o que fornece isolamento e confidencialidade dos dados. Para obter mais informações sobre como criar um canal, veja [Criando um canal](howto/create_channel.html#creating-a-channel).  
     Se você for um membro do canal convidado a se associar a um canal, receberá uma notificação por e-mail com um link para o assistente que permite que se associe ao canal.
 4. Associe peers ao canal.  Apenas peers que estão associados ao canal podem acessar seu livro-razão. Para obter mais informações, consulte [Canais](v10_dashboard.html#channels).
@@ -97,13 +101,13 @@ Recupere as suas credenciais de serviço com as etapas a seguir:
 3. Na tela "Incluir nova credencial", dê à credencial um nome e insira **{"type": "service_instance_token"}** no campo "Incluir parâmetro de configuração sequencial". Clique em **Incluir** e a nova credencial será incluída na tabela. É possível clicar em **Visualizar credenciais** sob a coluna "AÇÕES" para visualizar os detalhes da credencial. Essa credencial contém a chave API e o segredo, que você pode usar para autorizar APIs.
 
 ### Recuperando no Monitor de rede
-É possível localizar as credenciais de rede na tela "APIs" em seu Monitor de rede. Para obter mais informações sobre como usar as APIs, veja [Experimentando as APIs com o Swagger](apis.html).
+É possível localizar as credenciais de rede na tela "APIs" em seu Monitor de rede. Para obter mais informações sobre como usar as APIs, veja [Experimentando as APIs com o Swagger](howto/swagger_apis.html).
 
 É possível recuperar o perfil de conexão na tela "Visão geral" em seu Monitor de rede. Clique no botão **Perfil de conexão** na tela "Visão geral" e o perfil de conexão será mostrado em uma nova página.
 
 
 ## Desenvolvendo e Implementando redes de negócios customizadas
-É possível desenvolver redes de negócios com base em suas necessidades de negócios com o ambiente de desenvolverdor do IBM Blockchain Platform: Develop e as ferramentas do desenvolvedor do Hyperledger Composer. Após você desenvolver uma rede para os seus negócios, será possível implementar a sua rede de negócios para a rede de Enterprise Plan.
+É possível desenvolver redes de negócios com base em suas necessidades de negócios com o {{site.data.keyword.blockchainfull_notm}} Platform: desenvolver o ambiente de desenvolvedor e o conjunto de ferramentas do desenvolvedor do Hyperledger Composer. Após você desenvolver uma rede para os seus negócios, será possível implementar a sua rede de negócios para a rede de Enterprise Plan.
 
 Para obter mais informações, veja [Desenvolver a rede](develop.html) e [Implementando uma rede de negócios no Enterprise Plan](develop_enterprise.html).
 
@@ -123,5 +127,5 @@ Se você desejar sair de uma rede, exclua a instância de serviço de blockchain
 <!--
 ## References
 * For more information about {{site.data.keyword.blockchainfull_notm}} offerings, see [Blockchain offerings](index.html).
-* For more information about Hyperledger Fabric, see [Hyperledger Fabric documentation ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/latest/){:new_window}.
+* For more information about Hyperledger Fabric, see [Hyperledger Fabric documentation ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/){:new_window}.
 -->

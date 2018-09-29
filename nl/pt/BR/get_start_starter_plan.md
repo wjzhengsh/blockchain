@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -16,6 +16,10 @@ lastupdated: "2018-06-14"
 # Governar a rede do Starter Plan
 {: #getting-started-with-starter-plan}
 
+
+***[Esta página é útil? Diga-nos.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
 O {{site.data.keyword.blockchainfull}} Platform Starter Plan oferece uma rede de blockchain pré-configurada com um único clique. Ele <!--offers you a free trial of 30 days and -->provisiona uma rede com permissão com a configuração de duas [organizações](glossary.html#organization), um [peer](glossary.html#peer) para cada organização e um [canal](glossary.html#channel) por padrão. Após a rede ser criada, será possível escalar e incluir mais organizações e peers em sua rede. <!--Note that it might cause extra cost if you exceed the default resource limits of two organizations and two peers.-->
 {:shortdesc}
 
@@ -23,7 +27,7 @@ O {{site.data.keyword.blockchainfull}} Platform Starter Plan oferece uma rede de
 
 O Starter Plan permite aprender e desenvolver habilidades com o {{site.data.keyword.blockchainfull_notm}} Platform, executar aplicativos de amostra, testar os seus próprios aplicativos e simular um cenário de múltiplas organizações.  Este tutorial de introdução apresenta os pré-requisitos e as etapas que você precisa seguir para criar e usar uma rede do Starter Plan.
 
-Se você é novo no {{site.data.keyword.blockchainfull_notm}} Platform e o blockchain, leia o [Glossário](glossary.html) para familiarizar-se com os termos nesta documentação e a [Documentação do Hyperledger Fabric ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](http://hyperledger-fabric.readthedocs.io/en/latest/blockchain.html) para saber mais sobre o blockchain.
+Se você é novo no {{site.data.keyword.blockchainfull_notm}} Platform e o blockchain, leia o [Glossário](glossary.html) para familiarizar-se com os termos nesta documentação e a [Documentação do Hyperledger Fabric ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/blockchain.html) para saber mais sobre o blockchain.
 
 
 ## Criando uma rede
@@ -99,7 +103,7 @@ Para obter mais informações, veja [Implementando aplicativos de amostra](howto
 
 
 ## Desenvolvendo e Implementando redes de negócios customizadas
-O Starter Plan integra o ambiente de desenvolvedor do IBM Blockchain Platform: Develop e o conjunto de ferramentas de desenvolvedor do Hyperledger Composer. É possível desenvolver a sua rede de blockchain com base em suas necessidades de negócios.  Após você desenvolver uma rede para os seus negócios, será possível implementar a sua rede de negócios na rede do Starter Plan.
+O Starter Plan integra o {{site.data.keyword.blockchainfull_notm}} Platform: desenvolver o ambiente de desenvolvedor e o conjunto de ferramentas do desenvolvedor do Hyperledger Composer. É possível desenvolver a sua rede de blockchain com base em suas necessidades de negócios.  Após você desenvolver uma rede para os seus negócios, será possível implementar a sua rede de negócios na rede do Starter Plan.
 
 Para obter mais informações, veja [Desenvolver a rede](develop.html) e [Implementando redes de negócios com o Starter Plan](develop_starter.html).
 
@@ -125,7 +129,7 @@ O chaincode, que é semelhante a arquivos `.bna`, é desenvolvido externamente. 
 As you can see in [Deploying sample applications](howto/prebuilt_samples.html), Starter Plan makes it easy to get a sample application integrated with your network by using Toolchain. This setup also allows for continuous integration by automatically updating your sample application whenever your forked application repo is changed. If you want to deploy this application into an Enterprise Plan network, you can copy your forked application repo into a new repo and then follow the instructions in [Deploying sample applications manually](howto/prebuilt_samples.html#deploy_sample_applications_manually).
 -->
 
-Se você implementar qualquer aplicativo de amostra em sua rede do Starter Plan e desejar implementar esse aplicativo em uma rede do Enterprise Plan, poderá copiar o seu repositório de aplicativo bifurcado em um novo repositório e, em seguida, seguir as instruções em [Implementando aplicativos de amostra manualmente](howto/prebuilt_samples.html#deploy_sample_applications_manually).
+Se você implementar qualquer aplicativo de amostra na rede do Starter Plan e desejar implementar esse aplicativo em uma rede do Enterprise Plan, será possível copiar o repositório do aplicativo bifurcado para um novo repositório e depois seguir as instruções nos aplicativos de amostra para implementá-las na rede do Enterprise Plan.
 
 
 ## Excluindo ou saindo de uma rede
@@ -137,5 +141,5 @@ Se você desejar excluir ou deixar uma rede, poderá excluir a instância de ser
 <!--
 ## References
 * For more information about {{site.data.keyword.blockchainfull_notm}} offerings, see [Blockchain offerings](index.html).
-* For more information about Hyperledger Fabric V1.1, see [Hyperledger Fabric documentation ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/latest/){:new_window}.
+* For more information about Hyperledger Fabric V1.1, see [Hyperledger Fabric documentation ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/){:new_window}.
 -->

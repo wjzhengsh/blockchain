@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -16,6 +16,10 @@ lastupdated: "2018-06-14"
 # 管理入门套餐网络
 {: #getting-started-with-starter-plan}
 
+
+***[此页面是否有用？请告诉我们。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
 {{site.data.keyword.blockchainfull}} Platform 入门套餐提供了一个预先配置的区块链网络，只需单击一下就可使用。入门套餐<!--offers you a free trial of 30 days and -->供应一个许可的网络，缺省情况下配置有两个[组织](glossary.html#organization)、每个组织一个[同级](glossary.html#peer)以及一个[通道](glossary.html#channel)。创建网络后，可以向网络扩展和添加更多组织和同级。<!--Note that it might cause extra cost if you exceed the default resource limits of two organizations and two peers.-->
 {:shortdesc}
 
@@ -23,7 +27,7 @@ lastupdated: "2018-06-14"
 
 入门套餐支持您学习和培养使用 {{site.data.keyword.blockchainfull_notm}} Platform 的技能，运行样本应用程序，测试您自己的应用程序以及模拟多组织场景。本入门教程介绍了创建和使用入门套餐网络时需要遵循的先决条件和步骤。
 
-如果您是 {{site.data.keyword.blockchainfull_notm}} Platform 和区块链新手，那么可以阅读[词汇表](glossary.html)来熟悉本文档中使用的术语，还可以阅读 [Hyperledger Fabric 文档 ![外部链接图标](images/external_link.svg "外部链接图标")](http://hyperledger-fabric.readthedocs.io/en/latest/blockchain.html) 以了解有关区块链的更多信息。
+如果您是 {{site.data.keyword.blockchainfull_notm}} Platform 和区块链新手，那么可以阅读[词汇表](glossary.html)来熟悉本文档中使用的术语，还可以阅读 [Hyperledger Fabric 文档 ![外部链接图标](images/external_link.svg "外部链接图标")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/blockchain.html) 以了解有关区块链的更多信息。
 
 
 ## 创建网络
@@ -100,7 +104,7 @@ You can run [chaincode](glossary.html#chaincode) on your peers in the network.  
 
 
 ## 开发并部署定制业务网络
-入门套餐可以将 IBM Blockchain Platform: Develop 开发者环境和 Hyperledger Composer 开发者工具集相集成。可以基于您的业务需求来开发区块链网络。开发业务网络后，可以将其部署到入门套餐网络。
+入门套餐可以将 {{site.data.keyword.blockchainfull_notm}} Platform: Develop 开发者环境和 Hyperledger Composer 开发者工具集相集成。可以基于您的业务需求来开发区块链网络。开发业务网络后，可以将其部署到入门套餐网络。
 
 有关更多信息，请参阅[开发网络](develop.html)和[使用入门套餐部署业务网络](develop_starter.html)。
 
@@ -126,7 +130,7 @@ You can run [chaincode](glossary.html#chaincode) on your peers in the network.  
 As you can see in [Deploying sample applications](howto/prebuilt_samples.html), Starter Plan makes it easy to get a sample application integrated with your network by using Toolchain. This setup also allows for continuous integration by automatically updating your sample application whenever your forked application repo is changed. If you want to deploy this application into an Enterprise Plan network, you can copy your forked application repo into a new repo and then follow the instructions in [Deploying sample applications manually](howto/prebuilt_samples.html#deploy_sample_applications_manually).
 -->
 
-如果在入门套餐网络中部署了任何样本应用程序，但现在希望将此应用程序部署到企业套餐网络中，那么可以将派生的应用程序存储库复制到新的存储库中，然后遵循[手动部署样本应用程序](howto/prebuilt_samples.html#deploy_sample_applications_manually)中的指示信息进行操作。
+如果在入门套餐网络中部署了任何样本应用程序，但现在希望将此应用程序部署到企业套餐网络中，那么可以将派生的应用程序存储库复制到新的存储库中，然后遵循样本应用程序中的指示信息以在企业套餐网络上进行部署。
 
 
 ## 删除或离开网络
@@ -138,5 +142,5 @@ As you can see in [Deploying sample applications](howto/prebuilt_samples.html), 
 <!--
 ## References
 * For more information about {{site.data.keyword.blockchainfull_notm}} offerings, see [Blockchain offerings](index.html).
-* For more information about Hyperledger Fabric V1.1, see [Hyperledger Fabric documentation ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/latest/){:new_window}.
+* For more information about Hyperledger Fabric V1.1, see [Hyperledger Fabric documentation ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/){:new_window}.
 -->

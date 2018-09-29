@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 ---
 
 {:new_window: target="_blank"}
@@ -13,10 +13,15 @@ lastupdated: "2018-06-14"
 
 
 # Hyperledger Fabric
+
+
+***[Cette page est-elle utile ? Dites-nous.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
 Le réseau {{site.data.keyword.blockchainfull}} repose sur la pile Hyperledger Fabric V1.0, projet de blockchain au sein du projet Hyperledger de Linux Foundation.  Il s'agit d'un réseau "privé" dans lequel l'ensemble des utilisateurs et des composants ont des identités connues.  Une logique de signature/vérification est mise en oeuvre à chaque point de contact de communication, et les transactions sont accordées par le biais d'une série de contrôles d'adhésion et de validation.  En ce sens, il diffère grandement des implémentations de blockchain traditionnelles qui encouragent l'anonymat et sont forcées de s'appuyer sur des crypto-monnaies et de lourdes contraintes de calcul pour valider les transactions.  
 {:shortdesc}
 
-Hyperledger Fabric propose une architecture modulaire qui permet d'étendre l'évolutivité et les performances.  Cette rubrique présente certains des principaux composants dans Hyperledger Fabric.  Pour une présentation complète de Hyperledger Fabric, consultez la [documentation Hyperledger Fabric ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](http://hyperledger-fabric.readthedocs.io/en/latest/){:new_window}.  
+Hyperledger Fabric propose une architecture modulaire qui permet d'étendre l'évolutivité et les performances.  Cette rubrique présente certains des principaux composants dans Hyperledger Fabric.  Pour une présentation complète de Hyperledger Fabric, consultez la [documentation Hyperledger Fabric ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/){:new_window}.  
 
 ## Autorité de certification  
 En tant que plateforme pour les réseaux de blockchain **privés**, Hyperledger Fabric inclut un composant **Autorité de certification (CA)** modulaire pour la gestion des identités réseau de l'ensemble des organisations membres et leurs utilisateurs. L'exigence d'une identité privée pour chaque utilisateur permet un contrôle ACL sur l'activité réseau et garantit que chaque transaction est finalement traçable jusqu'à un utilisateur inscrit.  
@@ -26,12 +31,12 @@ En tant que plateforme pour les réseaux de blockchain **privés**, Hyperledger 
 
 Ce contrôle basé sur des certificats au niveau de l'appartenance réseau et des actions permet aux membres de restreindre l'accès des canaux privés et confidentiels, des applications et des données, à des identités utilisateurs spécifiques.
 
-Pour plus d'informations sur le composant Autorité de certification d'Hyperledger Fabric, consultez le document [Fabric CA User’s Guide ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](http://hyperledger-fabric-ca.readthedocs.io/en/latest/){:new_window}.
+Pour plus d'informations sur le composant Autorité de certification d'Hyperledger Fabric, consultez le document [Fabric CA User’s Guide ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric-ca.readthedocs.io/en/release-1.1/){:new_window}.
 
 ## Membership Service Provider (Fournisseur de services aux membres)  
 Hyperledger Fabric inclut un composant **Membership Service Provider (MSP)** qui offre une abstraction de tous les mécanismes cryptographiques et protocoles sous-jacents à l'émission et la validation de certificats, et à l'authentification utilisateur.  Le fournisseur MSP est installé sur chaque homologue de canal afin de garantir que les demandes de transaction qui sont émises pour l'homologue proviennent d'une identité utilisateur authentifiée et autorisée.
 
-Pour plus d'informations sur le composant Hyperledger Fabric Membership Services, consultez la rubrique [Membership Service Providers (MSP) ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](http://hyperledger-fabric.readthedocs.io/en/latest/msp.html){:new_window} dans la [documentation Hyperledger Fabric![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](http://hyperledger-fabric.readthedocs.io/en/latest/){:new_window}.
+Pour plus d'informations sur le composant Hyperledger Fabric Membership Services, consultez la rubrique [Membership Service Providers (MSP) ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/msp.html){:new_window} dans la [documentation Hyperledger Fabric![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/){:new_window}.
 
 ## Flux de transactions  
 Pour garantir la cohérence et l'intégrité des données, Hyperledger Fabric met en oeuvre plusieurs points de contrôle via le flux de transactions, notamment l'authentification de client, l'adhésion, le tri et l'engagement dans le registre.
@@ -51,9 +56,9 @@ Sur un réseau Hyperledger Fabric V1.0, le flux de données pour les requêtes e
 	* Les transactions qui échouent au processus de validation sont marquées comme étant non valides dans le bloc, et ce dernier est ajouté à la chaîne de hachage du canal.  
 	* Les transactions valides mettent à jour la base de données d'état en fonction des paires clé/valeur modifiées.  
 
-Le **protocole de dissémination des données gossip** diffuse en continu les données du registre sur le canal afin de garantir des registres synchronisés entre les homologues.  Pour plus d'informations, consultez la rubrique *[Gossip data dissemination protocol![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](http://hyperledger-fabric.readthedocs.io/en/latest/gossip.html){:new_window}* dans la [documentation Hyperledger Fabric![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](http://hyperledger-fabric.readthedocs.io/en/latest/){:new_window}.
+Le **protocole de dissémination des données gossip** diffuse en continu les données du registre sur le canal afin de garantir des registres synchronisés entre les homologues.  Pour plus d'informations, consultez la rubrique *[Gossip data dissemination protocol![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/gossip.html){:new_window}* dans la [documentation Hyperledger Fabric![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/){:new_window}.
 
-Pour une présentation étape par étape du flux de transactions, voir *[Transaction Flow![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](http://hyperledger-fabric.readthedocs.io/en/latest/txflow.html){:new_window}* dans la [documentation Hyperledger Fabric![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](http://hyperledger-fabric.readthedocs.io/en/latest/){:new_window}.  
+Pour une présentation étape par étape du flux de transactions, voir *[Transaction Flow![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/txflow.html){:new_window}* dans la [documentation Hyperledger Fabric![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/){:new_window}.  
 
 ## Service de tri
 Hyperledger Fabric inclut un service basé sur Kafka pour le tri et la diffusion des transactions réseau. Kafka fournit également une tolérance aux pannes pour votre réseau, ce qui signifie que si un nombre accepté de noeuds de service de tri sont indisponibles, le service continue de trier et de distribuer des blocs de transactions aux homologues de canal.
@@ -65,7 +70,7 @@ Les noeuds du service de tri fournissent également les services suivants :
 2. Maintenance d'une chaîne système qui définit les configurations de service de tri, les certificats racine et les ID MSP pour les organisations authentifiées et un regroupement de profils contenant les différents consortiums au sein du réseau.
 3. Filtrage et validation pour les transactions de configuration qui reconfigurent ou créent un canal.  
 
-Pour plus d'informations sur le service de tri Hyperledger Fabric, consultez la rubrique *[Bringing up a Kafka-based Ordering Service ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](http://hyperledger-fabric.readthedocs.io/en/latest/kafka.html){:new_window}* dans la [documentation Hyperledger Fabric![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](http://hyperledger-fabric.readthedocs.io/en/latest/){:new_window}.
+Pour plus d'informations sur le service de tri Hyperledger Fabric, consultez la rubrique *[Bringing up a Kafka-based Ordering Service ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/kafka.html){:new_window}* dans la [documentation Hyperledger Fabric![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/){:new_window}.
 
 ## Kits de développement de logiciels HFC
 Les kits de développement de logiciels Hyperledger Fabric Client (HFC) permettent aux développeurs d'applications de générer des applications qui interagissent avec un réseau de blockchain. Le kit de développement HFC SDK aide les applications à gérer le cycle de vie des canaux et du code blockchain.
@@ -82,4 +87,4 @@ Hyperledger Fabric offre les kits Node.js et Java, ainsi que les fonctions suiva
 * Interroger le registre au sujet de transactions, blocs ou clés spécifiques
 * Surveiller les événements sur un canal (validation d'une transaction, par exemple)
 
-Pour plus d'informations sur les kits de développement de logiciels HFC, consultez la rubrique *[Hyperledger Fabric SDKs![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](http://hyperledger-fabric.readthedocs.io/en/latest/fabric-sdks.html){:new_window}* dans la [documentation Hyperledger Fabric![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](http://hyperledger-fabric.readthedocs.io/en/latest/){:new_window}.
+Pour plus d'informations sur les kits de développement de logiciels HFC, consultez la rubrique *[Hyperledger Fabric SDKs![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/fabric-sdks.html){:new_window}* dans la [documentation Hyperledger Fabric![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/){:new_window}.

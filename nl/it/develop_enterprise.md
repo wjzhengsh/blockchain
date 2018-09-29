@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -15,6 +15,10 @@ lastupdated: "2018-06-14"
 
 # Distribuzione di una rete di business su piano Enterprise
 {: #deploying-a-business-network}
+
+
+***[Questa pagina è utile? Faccelo sapere.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
 
 Gli strumenti per gli sviluppatori di {{site.data.keyword.blockchainfull}} Platform: Develop ti aiutano a creare una BND (**Business Network Definition**) che può quindi essere impacchettata in un archivio di rete di business (`.bna`). L'ambiente per gli sviluppatori ti consente di distribuire i file `.bna` a una {{site.data.keyword.blockchain}} locale o cloud per lo sviluppo e la condivisione.
 
@@ -128,7 +132,7 @@ Devi accedere a un'istanza piano Enterprise di {{site.data.keyword.blockchainful
 Il valore **mspID** nel tuo file `connection.json` dovrebbe essere impostato sull'mspID della tua organizzazione. Profilo connessione fornisce un elenco delle organizzazioni con i loro valori mspid associati. Devi utilizzare il valore dall'attributo **mspid** della tua organizzazione.
 
 ## Passo otto: Aggiunta del globalCert
-1. {{site.data.keyword.blockchainfull_notm}} Platform utilizza un certificato TLS comune per gli ordinatori e i peer. Per ogni ordinante e peer, c'è un attributo **tlsCACerts** che contiene lo stesso certificato. Sostituisci il valore fittizio nel file `connection.json` con il valore **tlsCACerts**. Dovrebbe assumere il seguente formato:
+1. {{site.data.keyword.blockchainfull_notm}} Platform utilizza un certificato TLS comune per gli ordinanti e i peer. Per ogni ordinante e peer, c'è un attributo **tlsCACerts** che contiene lo stesso certificato. Sostituisci il valore fittizio nel file `connection.json` con il valore **tlsCACerts**. Dovrebbe assumere il seguente formato:
 
     ```
     "globalCert": "-----BEGIN CERTIFICATE-----\r\.......

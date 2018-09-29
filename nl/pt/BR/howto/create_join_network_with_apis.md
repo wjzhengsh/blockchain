@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -13,6 +13,10 @@ lastupdated: "2018-06-14"
 {:pre: .pre}
 
 # Criando ou se associando a uma rede com APIs do Swagger
+
+
+***[Esta página é útil? Diga-nos.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
 
 O {{site.data.keyword.blockchainfull}} Platform expõe uma série de APIs de REST que você pode usar para criar ou se associar a uma rede de blockchain no {{site.data.keyword.cloud_notm}}. É possível experimentar essas APIs usando a [IU do Swagger](swagger_apis.html) que está associada à sua rede.
 {:shortdesc}
@@ -27,7 +31,7 @@ Para usar APIs do Swagger para criar ou se associar a uma rede, é necessária u
 
 1. Em seu [ painel do {{site.data.keyword.cloud_notm}} ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://console.bluemix.net/dashboard/apps/), abra a instância de serviço que você criou.
 2. Clique em **Credenciais de serviço** no navegador esquerdo.
-3. Clique no botão "Nova credencial" na página **Credenciais de serviço** para criar uma nova credencial. 
+3. Clique no botão "Nova credencial" na página **Credenciais de serviço** para criar uma nova credencial.
     1. Dê à credencial um nome, por exemplo, *CreateJoin*.
     2. Insira **{"type": "service_instance_token"}** no campo "Incluir parâmetro de configuração sequencial".
     3. Clique no botão **Incluir**.
@@ -130,7 +134,7 @@ Se você usar o Enterprise Plan, precisará concluir duas etapas para criar uma 
 
 ## Convidar novos membros a uma rede
 
-Após você criar uma rede de blockchain, será possível convidar outros membros para se associarem à sua rede. É necessário especificar o ID da rede à qual você deseja convidar novos membros a se associarem. A credencial de autenticação básica que é necessária para convidar um membro é diferente daquela que é usada na API **Criar rede**. <!--In order to get the basic auth information you will need to follow the same steps in "Retrieving basic auth information for API". --> É possível obter a credencial para convidar um membro com a API **Recuperar credenciais de rede** na [IU do Swagger](swagger_apis##retrieving-network-credentials) ou [recuperar informações de autenticação básica para a API](#retrieve-id-token) de sua instância de serviço no {{site.data.keyword.cloud_notm}}.
+Após você criar uma rede de blockchain, será possível convidar outros membros para se associarem à sua rede. É necessário especificar o ID da rede à qual você deseja convidar novos membros a se associarem. A credencial de autenticação básica que é necessária para convidar um membro é diferente daquela que é usada na API **Criar rede**. <!--In order to get the basic auth information you will need to follow the same steps in "Retrieving basic auth information for API". --> É possível obter a credencial para convidar um membro com a API **Recuperar credenciais de rede** na [IU do Swagger](swagger_apis.html#retrieving-network-credentials) ou [recuperar informações de autenticação básica para a API](#retrieve-id-token) de sua instância de serviço no {{site.data.keyword.cloud_notm}}.
 
 ```
 /invite /networks/ {

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -15,6 +15,10 @@ lastupdated: "2018-06-14"
 
 # Implementando uma rede de negócios no Enterprise Plan
 {: #deploying-a-business-network}
+
+
+***[Esta página é útil? Diga-nos.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
 
 Ferramentas de desenvolvedor do {{site.data.keyword.blockchainfull}} Platform: Develop ajudam a criar uma **Definição de rede de negócios** que pode ser empacotada em um archive de rede de negócios (`.bna`). O ambiente de desenvolvedor permite implementar arquivos `.bna` em um {{site.data.keyword.blockchain}} local ou de nuvem para desenvolvimento e compartilhamento.
 

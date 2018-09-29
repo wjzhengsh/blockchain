@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -15,13 +15,17 @@ lastupdated: "2018-06-14"
 # 操作企業方案網路
 {: #v10_dashboard}
 
+
+***[此頁面有幫助嗎？請告訴我們。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
 「{{site.data.keyword.blockchainfull}} 平台」附有「網路監視器」，可提供區塊鏈環境的概觀，包括網路資源、成員、加入的頻道、交易效能資料及已部署的鏈碼。「網路監視器」亦提供一個進入點，可讓您執行 Swagger API、使用「{{site.data.keyword.blockchainfull_notm}} 平台：開發」來開發網路，以及試用範例應用程式。
 {:shortdesc}
 
 您可以在「網路監視器」中[變更企業方案網路的名稱](#ep-network-name)。
 
 「網路監視器」分為三個區段來顯示下列畫面。您可以從「網路監視器」中的左導覽器來導覽至每個畫面。
-- **我的網路**區段包含「[概觀](#overview)」、「[成員](#members)」、「[頻道](#channels)」、「[通知](#notifications)」及「[API](#apis)」畫面。
+- **我的網路**區段包含「[概觀](#overview)」、「[成員](#members)」、「[頻道](#channels)」、「[通知](#notifications)」、「[憑證管理中心](#ca)」，以及「[API](#apis)」畫面。
 - **我的程式碼**區段包含「[開發程式碼](#write_code)」、「[安裝程式碼](#chaincode)」及「[嘗試範例](#samples)」畫面。
 - 「[取得協助](#support)」畫面會顯示支援資訊，以及 Helios 和 Hyperledger Fabric（「{{site.data.keyword.blockchainfull_notm}} 平台」所根據的程式碼庫）的版本注意事項。
 
@@ -59,6 +63,10 @@ lastupdated: "2018-06-14"
 
 您也可以從**動作**標頭下的下拉清單中，按一下**檢視日誌**，以查看元件日誌。這些日誌會顯示各種網路資源之間的呼叫，有助於進行除錯及疑難排解。例如，實驗停止對等節點，並嘗試將其設為交易的目標，您將會看到連線錯誤。當您重新啟動對等節點，並嘗試再次進行交易時，就會看到連線成功。您也可以將對等節點關閉一段延伸時間，因為頻道會繼續交易。對等節點再度恢復時，您會注意到，隨著它接收在關閉時確定的區塊，分類帳會進行同步化。分類帳完全同步化之後，您就可以對其執行一般呼叫及查詢。
 
+### 遠端對等節點配置  
+
+如果您在 {{site.data.keyword.cloud_notm}} 之外部署遠端對等節點，則在配置期間需要將網路的 API 端點資訊提供給遠端對等節點。按一下**遠端對等節點配置**按鈕，來擷取網路的 API 端點資訊，以配置您的遠端對等節點。蹦現視窗會提供網路 ID、組織 MSP、CA 名稱、CA URL 及 CA TLS 憑證的 API 端點資訊。您可以按一下每一個欄位結尾的複製圖示，來複製該欄位的值，或按一下**下載**按鈕，以將所有欄位的值儲存在 JSON 檔中。如需遠端對等節點的相關資訊，請參閱[關於遠端對等節點](howto/remote_peer.html)。
+
 ### 連線設定檔
 {: #enterprise-connection-profile}
 按一下**連線設定檔**按鈕，即可檢視 JSON 檔案，以查看每項資源的低層次網路資訊。連線設定檔包含您需要用於應用程式的所有配置資訊。然而，因為此檔案只包含您的特定元件和排序節點的位址，所以如果您需要將目標設為其他對等節點，則需要取得其端點。包含 "url" 的標頭會顯示每個元件的 API 端點。必須要有這些端點，才能將目標設為用戶端應用程式中的特定網路元件，且其定義通常會存放在隨附於此應用程式的 JSON 模型化配置檔中。如果您要自訂的應用程式需要組織外的對等節點背書，則您需要從頻外作業中的相關操作員擷取這些對等節點的 IP 位址。用戶端必須可以連接至任何需要其回應的對等節點。
@@ -89,8 +97,8 @@ lastupdated: "2018-06-14"
 *圖 4. 憑證*
 
 操作員可以在「憑證」標籤中為同一機構的成員管理憑證。按一下**新增憑證**，以開啟「新增憑證」畫面。為憑證命名，將 PEM 格式的用戶端憑證貼在「金鑰」欄位中，然後按一下**提交**。您需要重新啟動對等節點，用戶端憑證才會生效。
-
-如需產生憑證金鑰的相關資訊，請參閱[產生用戶端憑證](v10_application.html#generating-the-client-side-certificates)。
+<!--
+For more information about generating your certificate key, see [Generating the client-side certificates](v10_application.html#generating-the-client-side-certificates).-->
 
 ## 頻道
 {: #channels}
@@ -127,15 +135,36 @@ lastupdated: "2018-06-14"
 
 若要刪除擱置中要求，請選取要求前面的方框，然後按一下**刪除要求**。請注意，無法刪除已完成的要求。
 
+## 憑證管理中心
+{: #ca}
+
+「憑證管理中心 (CA) 」畫面上的表格顯示已向您組織登錄的所有身分，其中包括您的管理者、對等節點及用戶端應用程式。您也可以使用此畫面來登錄新的身分。
+
+**圖 7** 顯示「憑證管理中心」畫面：
+
+![憑證管理中心憑證](images/CA_screen.png "憑證管理中心憑證")
+*圖 7. 憑證管理中心*
+
+按一下**產生憑證**按鈕，以從您的 CA 取得新的公用憑證及私密金鑰。對於使用 Fabric SDK 的用戶端應用程式，可以使用此畫面，作為[產生公開及私密金鑰組](v10_application.html#register-app)的替代方式。**憑證**欄位包含您的公用憑證，也稱為 signCert 或登記憑證（僅在**私密金鑰**之上）。您可以按一下每一個欄位結尾的複製圖示來複製值。**請注意**，「{{site.data.keyword.blockchainfull_notm}} 平台」不會儲存這些憑證。您需要安全地儲存它們。如需詳細資料，請參閱 [MSP 資訊](certificates.html#msp)。
+
+按一下**新增使用者**按鈕，以向您的組織登錄新的身分。在**新增使用者**蹦現視窗中，填寫下列欄位，然後按一下**提交**。
+  - **ID：**這將是新身分的名稱，有時稱為 `enroll ID`。請**儲存此值**，以供您配置遠端對等節點或登記新的應用程式時使用。
+  - **密碼：**這將是新身分的密碼，有時稱為 `enroll Secret`。請**儲存此值**，以供您配置遠端對等節點或登記新的應用程式時使用。  
+  - **類型：**選取要登錄的身分類型：對等節點或用戶端應用程式。
+  - **連結：**這將是組織（例如 `org1`）內身分所屬的連結。
+  - **登記數上限：**您可以使用此欄位，限制您可以使用此身分來登記或產生憑證的次數。如果將此欄位留白，則該值預設為數目無限制的登記。
+
+您可以造訪[在 {{site.data.keyword.blockchainfull_notm}} 平台上管理憑證](certificates.html)指導教學，來進一步瞭解 CA。
+
 ## API
 {: #apis}
 
 「{{site.data.keyword.blockchainfull_notm}} 平台」會公開 Swagger 中的多種 REST API，可讓您用來管理網路的節點、頻道、對等節點及成員。您的應用程式可以使用這些 API 來控制重要網路資源，而不需要使用網路監視器。
 
-**圖 7** 顯示「API」畫面：
+**圖 8** 顯示「API」畫面：
 
 ![API](images/API_screen.png "API")
-*圖 7. API*
+*圖 8. API*
 
 按一下 **Swagger 使用者介面**鏈結，以開啟 Swagger 使用者介面。請注意，您必須先將網路認證（可以在此 API 頁面中找到）授權給 Swagger 使用者介面，才能執行 API。如需相關資訊，請參閱[使用 Swagger API 與網路互動](howto/swagger_apis.html)。
 
@@ -144,10 +173,10 @@ lastupdated: "2018-06-14"
 
 「企業方案」整合了「{{site.data.keyword.blockchainfull_notm}} 平台：開發」，並提供具備業界標準工具和技術的開發環境。您可以在線上環境或在本端環境中開發您的網路。開發網路之後，可以將其部署回您的「企業方案」網路。
 
-**圖 8** 顯示「開發程式碼」畫面：
+**圖 9** 顯示「開發程式碼」畫面：
 
 ![開發程式碼](images/write_code.png "開發程式碼")
-*圖 8. 開發程式碼*
+*圖 9. 開發程式碼*
 
 如需使用「企業方案」來開發及部署程式碼的相關資訊，請參閱[在企業方案上開發商業網路](develop_enterprise.html)。
 
@@ -156,10 +185,10 @@ lastupdated: "2018-06-14"
 
 鏈碼又稱為「智慧型合約」，是構成軟體的組件，其中包含用來查詢及更新分類帳的一組函數。鏈碼安裝在對等節點上，並在頻道上實例化。
 
-**圖 9** 顯示「安裝程式碼」畫面：
+**圖 10** 顯示「安裝程式碼」畫面：
 
 ![安裝程式碼](images/chaincode_install_overview.png "安裝程式碼")
-*圖 9. 安裝程式碼*
+*圖 10. 安裝程式碼*
 
 鏈碼是先安裝在對等節點的檔案系統上，然後在頻道上實例化。如需相關資訊，請參閱[安裝、實例化及更新鏈碼](howto/install_instantiate_chaincode.html)。
 
@@ -168,52 +197,50 @@ lastupdated: "2018-06-14"
 
 範例應用程式可協助您進一步瞭解區塊鏈網路和應用程式開發。請遵循**在 GitHub 上檢視**鏈結來瞭解如何使用範例，並且將它們部署至「{{site.data.keyword.blockchainfull_notm}} 平台」。如需如何開發及部署範例的相關資訊，請參閱[部署範例應用程式](howto/prebuilt_samples.html)。
 
-**圖 10** 顯示「嘗試範例」畫面：
+**圖 11** 顯示「嘗試範例」畫面：
 
 ![嘗試範例](images/sample_overview_ep.png "嘗試範例")
-*圖 10. 範例*
+*圖 11. 範例*
 
 ## 取得協助
 {: #support}
 
 「取得協助」畫面包含兩個標籤，其中「支援」標籤會提供支援資訊，而「版本注意事項」標籤會說明各版本的新功能和已變更的功能。
 
-**圖 11** 顯示起始「支援」畫面，其中的「支援」標籤顯示支援資訊：
+**圖 12** 顯示起始「支援」畫面，其中的「支援」標籤顯示支援資訊：
 
 ![支援](images/support.png "支援")
-*圖 11. 區塊鏈支援*
+*圖 12. 區塊鏈支援*
+
+### 區塊鏈資源與支援討論區
+{: #support-forums}
 
 使用此頁面上的鏈結及資源，以存取疑難排解及支援討論區。
 
 * **開始使用**之下的 [{{site.data.keyword.blockchainfull_notm}} 服務文件](index.html)（就是這個文件網站），提供如何在 {{site.data.keyword.Bluemix_notm}} 上開始使用「{{site.data.keyword.blockchainfull}} 平台」的指引。您可以從左導覽器中尋找對應的主題，或是使用頂端的搜尋功能來搜尋任何術語。
-* **社群協助**之下的 [IBM DeveloperWorks ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](https://developer.ibm.com/blockchain/) 包含開發人員適用的資源和資訊。
+* [IBM Code ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](https://developer.ibm.com/code/technologies/blockchain/) 包含開發人員適用的程式碼型樣和資訊。
 * **支援問題單**之下的 [IBM dWAnswers ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](https://developer.ibm.com/answers/smartspace/blockchain/) 提供問題和回應的平台。您可以從先前張貼的問題搜尋回應，或是提交新的問題。請務必要將 **blockchain** 關鍵字併入問題中。您也可以使用**開立 {{site.data.keyword.Bluemix_notm}} 支援問題單**選項，將問題單提交給 {{site.data.keyword.blockchainfull_notm}} 支援團隊。請從特定的 {{site.data.keyword.Bluemix_notm}} 實例中共用詳細資料及程式碼 Snippet。
 * **區塊鏈範例應用程式**之下的[範例應用程式 ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](https://github.com/ibm-blockchain) 提供指引和範例程式碼 Snippet，以協助開發應用程式。
-* **Hyperledger Fabric** 之下的 [Hyperledger Fabric ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](http://hyperledger-fabric.readthedocs.io/) 和 [Hyperledger Fabric 社群 ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](http://jira.hyperledger.org/secure/Dashboard.jspa) 提供更多有關 Hyperledger Fabric 堆疊的詳細資料。您可以就 Hyperledger Fabric 程式碼的相關問題，與 [Hyperledger 專家 ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](https://chat.hyperledger.org/channel/general) 討論。
+* **Hyperledger Fabric** 之下的 [Hyperledger Fabric ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](https://hyperledger-fabric.readthedocs.io/en/release-1.1/) 和 [Hyperledger Fabric 社群 ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](http://jira.hyperledger.org/secure/Dashboard.jspa) 提供更多有關 Hyperledger Fabric 堆疊的詳細資料。您可以就 Hyperledger Fabric 程式碼的相關問題，與 [Hyperledger 專家 ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](https://chat.hyperledger.org/channel/general) 討論。
+* [{{site.data.keyword.blockchainfull_notm}} 平台：開發 ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](https://ibm-blockchain.github.io/develop/)（位於 **Hyperledger Composer** 之下）提供 Hyperledger Composer 的詳細資料，亦即「{{site.data.keyword.blockchainfull_notm}} 平台：開發」。您也可以在 [Hyperledger Composer 社群 ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](https://chat.hyperledger.org/channel/general) 及 [StackOverflow ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](https://stackoverflow.com/questions/tagged/hyperledger-composer) 中尋找答案及提出問題。
 
-如果您無法將問題除錯或查明問題的解答，請在「IBM Cloud 服務入口網站」中提交支援案例。如需相關資訊，請參閱[取得支援](ibmblockchain_support.html)。
+如果您無法將問題除錯或查明問題的解答，請在「{{site.data.keyword.cloud_notm}} 服務入口網站」中提交支援案例。如需相關資訊，請參閱[取得支援](ibmblockchain_support.html)。
 
-圖 12 及圖 13 顯示起始「取得協助」畫面，其中的「版本注意事項」標籤顯示各版本的新功能和已變更的功能：
+**圖 13** 及**圖 14** 顯示起始「取得協助」畫面，其中的「版本注意事項」標籤顯示各版本的新功能和已變更的功能：
 
-![Helios 版本注意事項](images/releasenotes_helios.png "Helios 版本注意事項")
-*圖 12. Helios 版本注意事項*
+![版本注意事項 Helios](images/releasenotes_helios.png "網路監視器使用者介面的版本注意事項")
+*圖 13. 網路監視器使用者介面的版本注意事項*
 
-![Fabric 版本注意事項](images/releasenotes_Fabric.png "Fabric 版本注意事項")
-*圖 13. Fabric 版本注意事項*
+![版本注意事項 Fabric](images/releasenotes_Fabric.png "Fabric 的版本注意事項")
+*圖 14. Fabric 的版本注意事項*
 
 
 ## 網路喜好設定
 {: #network-preferences}
 
-按一下右上角，並開啟下拉功能表，然後開啟**網路喜好設定**。即會開啟「網路喜好設定」視窗。「網路喜好設定」視窗會顯示網路的基本資訊，例如網路名稱、Fabric 版本、{{site.data.keyword.cloud_notm}} 中的網路位置，以及分類帳資料庫類型。
+按一下右上角，並開啟下拉功能表，然後開啟**網路喜好設定**。即會開啟「網路喜好設定」視窗。「網路喜好設定」視窗會顯示網路的基本資訊，例如網路名稱、Fabric 版本、{{site.data.keyword.cloud_notm}} 中的網路位置，以及狀態資料庫類型。
 
 在 2018 年 5 月 15 日之後建立的「企業方案」網路將會在 Hyperledger Fabric 1.1 版上執行。如果您在升級之後建立網路，則也可以在「網路喜好設定」視窗中管理網路的 Web 閒置逾時及相互 TLS。只有網路起始者才能變更這些設定。
-
-<!--
-
-Enterprise Plan networks that are created after May 15th, 2018 will run on Hyperledger Fabric v1.1. If you create networks after the upgrade, you can also manage web inactivity timeout, mutual TLS, and switch your ledger to CouchDB for your network in the Network preferences window. These settings can be changed by the network initiator only.
-
--->
 
 ### Web 閒置逾時
 {: #web-inactivity-timeout}
@@ -244,20 +271,20 @@ Enterprise Plan networks that are created after May 15th, 2018 will run on Hyper
 
 <!--
 
-### CouchDB ledger type
+### CouchDB state database
 {: #couchdb}
 
-**Note**: Only the **network initiator** can switch the ledger database from LevelDB to CouchDB. This is a network level setting and will affect all network members. Switching to CouchDB is permanent. You cannot revert back to LevelDB.
+**Note**: Only the **network initiator** can switch the state database from LevelDB to CouchDB. This is a network level setting and will affect all network members. Switching to CouchDB is permanent. You cannot revert back to LevelDB.
 
-Before Enterprise Plan upgrades to Fabric v1.1, all network peers store data in the pure key-value LevelDB. With Fabric v1.1, you can choose to use CouchDB as your ledger database. CouchDB is a document datastore that permits indexing the contents of your data and allows you to issue rich queries against the data on your peer. Note that Hyperledger Fabric does not support peers running different databases. If CouchDB is used, it must be used by all of the peers.
+Before Enterprise Plan upgrades to Fabric v1.1, all network peers store data in the pure key-value LevelDB. With Fabric v1.1, you can choose to use CouchDB as your state database. CouchDB is a document datastore that permits indexing the contents of your data and allows you to issue rich queries against the data on your peer. Note that Hyperledger Fabric does not support peers running different databases. If CouchDB is used, it must be used by all of the peers.
 
 To use CouchDB, your data must be stored in a data format that can be modeled in chaincode, such as JSON. If the decision is made to migrate from LevelDB to CouchDB, the {{site.data.keyword.blockchainfull_notm}} Platform will migrate your data from key-value format to the CouchDB format automatically.
 
-If you switch to CouchDB, you need to update your chaincode to take advantage of indexes and rich queries. For more information about CouchDB and how to set up index, see [CouchDB as the State Database ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/latest/couchdb_as_state_database.html). For more information about updating chaincode in {{site.data.keyword.blockchainfull_notm}} Platform, see [Updating a chaincode](howto/install_instantiate_chaincode.html#updating-a-chaincode).
+If you switch to CouchDB, you need to update your chaincode to take advantage of indexes and rich queries. For more information about CouchDB and how to set up index, see [CouchDB as the State Database ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/latest/couchdb_as_state_database.html) in the Hyperledger Fabric documentation. You can also find an example that uses an index with chaincode in this [Fabric tutorial![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/couchdb_tutorial.html){:new_window}. For more information about updating chaincode in {{site.data.keyword.blockchainfull_notm}} Platform, see [Updating a chaincode](howto/install_instantiate_chaincode.html#updating-a-chaincode).
 
 -->
 
-**圖 14** 顯示「網路喜好設定」視窗：
+**圖 15** 顯示「網路喜好設定」視窗：
 
 ![網路喜好設定](images/network_preferences_ep_tmp.png "網路喜好設定")
-*圖 14. 網路喜好設定*
+*圖 15. 網路喜好設定*

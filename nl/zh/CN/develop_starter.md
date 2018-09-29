@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -16,7 +16,12 @@ lastupdated: "2018-06-14"
 # 在入门套餐上部署业务网络
 {: #deploying-a-business-network}
 
+
+*[此页面是否有用？请告诉我们。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)*
+
+
 可以使用 {{site.data.keyword.blockchainfull}} Platform 开发者环境和 Hyperledger Composer 开发者工具集来开发业务网络，并将其部署到入门套餐环境。
+{:shortdesc}
 
 通过使用开发者环境，可以快速对 {{site.data.keyword.blockchain}} 业务网络进行建模和测试，然后将其部署到 {{site.data.keyword.blockchainfull_notm}} Platform 的实例。
 
@@ -33,7 +38,7 @@ lastupdated: "2018-06-14"
 
 3. 在连接概要文件中，一直向下直至看到“registrar”。在“registrar”中的“enrollId”下方，有一个 **enrollSecret** 属性。检索到该私钥并保存其副本。
 
-    ![D8KBag](https://i.makeagif.com/media/4-12-2018/D8KBag.gif)
+    ![检索管理密钥](images/get_enroll_secret.gif "检索管理密钥")
 
 
 ## 步骤 2：创建证书授权卡
@@ -71,11 +76,11 @@ lastupdated: "2018-06-14"
 
 1. 在入门套餐 UI 中，依次单击**成员**选项卡、**证书**和**添加证书**。转至 `credentials` 目录，复制 `admin-pub.pem` 文件的内容并粘贴到证书框中。提交证书，然后重新启动同级。注：重新启动同级需要 1 分钟。
 
-    ![jlEb2y](https://i.makeagif.com/media/4-12-2018/jlEb2y.gif)
+    ![添加证书](images/add_cert.gif "添加证书")
 
 2. 接下来，必须在通道上同步证书。单击**通道**选项卡，随后单击**操作**按钮，然后是**同步证书**和**提交**。
 
-    ![E-sVV5](https://i.makeagif.com/media/4-12-2018/E-sVV5.gif)
+    ![同步证书](images/sync_cert.gif "同步证书")
 
 ## 步骤 4：创建管理业务网络卡
 
@@ -113,7 +118,7 @@ lastupdated: "2018-06-14"
 2. 使用以下命令启动业务网络。如果发生错误，请等待一分钟，然后重试。在 `-V` 选项后使用来自上一步的版本号。
 
     ```
-    composer network start -c adminCard -n vehicle-manufacture-network -V 0.0.1 -A admin -C ./credentials/admin-pub.pem -f delete_me.card
+composer network start -c adminCard -n vehicle-manufacture-network -V 0.0.1 -A admin -C ./credentials/admin-pub.pem -f delete_me.card
     ```
     {:codeblock}
 
@@ -129,7 +134,7 @@ lastupdated: "2018-06-14"
 5. 使用以下命令来导入业务网络卡：
 
     ```
-    composer card import -f ./admin@vehicle-manufacture-network.card
+composer card import -f ./admin@vehicle-manufacture-network.card
     ```
     {:codeblock}
 
@@ -137,13 +142,13 @@ lastupdated: "2018-06-14"
 
 ## 第 6 步：对业务网络执行 ping 操作以确保其正确运行
 
-1. 运行以下命令以对业务网络执行 ping 操作：
+运行以下命令以对业务网络执行 ping 操作：
 
    ```
    composer network ping -c admin@vehicle-manufacture-network
    ```
    {:codeblock}
 
-要查看链代码日志，请单击**通道**，然后选择通道。单击下拉箭头以查看日志，或者单击“操作”符号以更详细地进行查看。
+要查看链代码日志，请单击**通道**，然后选择通道。<!-- Click the dropdown arrow to view the logs, or the Actions symbol to view in more detail. -->单击**链代码**选项卡。展开链代码行，然后单击 **JSON** 或**日志**按钮。
 
-![fN-Yuj](https://i.makeagif.com/media/4-13-2018/fN-Yuj.gif)
+<!-- [fN-Yuj](https://i.makeagif.com/media/4-13-2018/fN-Yuj.gif) -->

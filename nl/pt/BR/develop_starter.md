@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -16,7 +16,12 @@ lastupdated: "2018-06-14"
 # Implementando uma rede de negócios no Starter Plan
 {: #deploying-a-business-network}
 
+
+*[Esta página é útil? Diga-nos.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)*
+
+
 As redes de negócios podem ser desenvolvidas e implementadas em um ambiente do Starter Plan usando o ambiente do desenvolvedor do {{site.data.keyword.blockchainfull}} Platform e o conjunto de ferramentas do desenvolvedor do Hyperledger Composer.
+{:shortdesc}
 
 Usando o ambiente de desenvolvedor, é possível rapidamente modelar e testar redes de negócios do {{site.data.keyword.blockchain}} e implementá-las em uma instância do {{site.data.keyword.blockchainfull_notm}} Platform.
 
@@ -33,7 +38,7 @@ Leia [Sobre o Starter Plan](./starter_plan.html) e [Introdução ao Starter Plan
 
 3. Dentro do perfil de conexão, vá até o fim até você ver 'registrar'. Dentro de 'registrar', sob 'enrollId' há uma propriedade **enrollSecret**. Recupere o segredo e salve uma cópia dele.
 
-    ![D8KBag](https://i.makeagif.com/media/4-12-2018/D8KBag.gif)
+    ![Retrieve admin secret](images/get_enroll_secret.gif "Retrieve admin secret")
 
 
 ## Etapa dois: Criando um cartão de autoridade de certificação
@@ -71,11 +76,11 @@ Os certificados devem ser incluídos na instância do Starter Plan. Por conveni�
 
 1. Na IU do Starter Plan, clique na guia **Membros**, em seguida, em **Certificados**, em seguida, em **Incluir certificado**. Acesse o seu diretório `credentials` e copie e cole o conteúdo do arquivo `admin-pub.pem` na caixa de certificado. Envie o certificado e reinicie os peers. Nota: reiniciar os peers leva um minuto.
 
-    ![jlEb2y](https://i.makeagif.com/media/4-12-2018/jlEb2y.gif)
+    ![Incluir certificados](images/add_cert.gif "Incluir certificados")
 
 2. Em seguida, os certificados devem ser sincronizados no canal. Clique na guia **Canais**, em seguida, no botão **Ações** e, em seguida, em **Sincronizar certificado** e **Enviar**.
 
-    ![E-sVV5](https://i.makeagif.com/media/4-12-2018/E-sVV5.gif)
+    ![Sync certificates](images/sync_cert.gif "Sync certificates")
 
 ## Etapa quatro: Criando uma placa de rede de negócios do administrador
 
@@ -137,13 +142,13 @@ A rede de negócios agora está implementada na instância do Starter Plan.
 
 ## Etapa seis: execute ping na rede de negócios para assegurar que ela esteja sendo executada corretamente
 
-1. Execute o comando a seguir para executar ping na rede de negócios:
+Execute o comando a seguir para executar ping na rede de negócios:
 
    ```
    Composer network ping -c admin@vehicle-manufacture-rede
    ```
    {:codeblock}
 
-Para visualizar os logs de chaincode, clique em **Canais** e, em seguida, selecione o seu canal. Clique na seta suspensa para visualizar os logs ou no símbolo Ações para visualizar em mais detalhes.
+Para visualizar os logs de chaincode, clique em **Canais** e, em seguida, selecione seu canal. <!-- Click the dropdown arrow to view the logs, or the Actions symbol to view in more detail. --> Clique na guia  ** Chaincode ** . Expenda a linha do chaincode e, em seguida, clique no botão **JSON** ou **Logs**.
 
-![fN-Yuj](https://i.makeagif.com/media/4-13-2018/fN-Yuj.gif)
+<!-- [fN-Yuj](https://i.makeagif.com/media/4-13-2018/fN-Yuj.gif) -->

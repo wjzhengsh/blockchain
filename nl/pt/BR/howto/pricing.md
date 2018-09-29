@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -14,10 +14,14 @@ lastupdated: "2018-06-14"
 
 # Precificação
 
+
+***[Esta página é útil? Diga-nos.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
 Este guia ajuda a entender a precificação para os planos de associação do {{site.data.keyword.blockchainfull}} Platform e quanto você pagará à medida em que desenvolver e aumentar a sua rede de blockchain.  
 {:shortdesc}
 
-O {{site.data.keyword.blockchainfull}} Platform cobra mensalmente a associação e taxas de peer para organizações que constroem redes de blockchain. As taxas são diferentes dependendo do plano de associação que você escolher e dos recursos de rede que a sua rede usar. A tabela a seguir mostra a precificação de visão geral do {{site.data.keyword.blockchainfull_notm}} Platform.
+O {{site.data.keyword.blockchainfull}} Platform cobra mensalmente a associação e taxas de peer para organizações que constroem redes de blockchain. As taxas são diferentes dependendo do plano de associação que você escolher e dos recursos de rede que a sua rede usar. A tabela a seguir mostra a visão geral de precificação do {{site.data.keyword.blockchainfull_notm}} Platform.
 
 | Elementos de precificação | Custo por mês do Starter Plan | Custo por mês do Enterprise Plan |
 |-----|-----|-----|
@@ -29,15 +33,15 @@ O {{site.data.keyword.blockchainfull}} Platform cobra mensalmente a associação
 A taxa mensal é cobrada diariamente rateada. Por exemplo, um membro (taxa de participação associada de U$ 1.000) de dois peers (por taxa peer de U$ 1.000 × 2 peers) precisa pagar U$ 3.000 por mês. Se o mês tiver 30 dias, o membro pagará U$ 100 (U$ 3.000/30) todos os dias. Para obter mais informações sobre como pagar por suas redes, veja [Modo de pagamento](paying_mode.html).
 
 O **{{site.data.keyword.blockchainfull_notm}} Platform Starter Plan oferece a você créditos de avaliação de US$ 500** antes de você ser cobrado. Para obter mais informações, veja [Precificação do Starter Plan](#starter-plan-pricing).
-  
+
 
 ## Componentes básicos de rede
 
 Para entender a precificação, precisamos iniciar com uma introdução aos componentes básicos de uma rede. O {{site.data.keyword.blockchainfull_notm}} Platform permite a criação de uma rede de blockchain que é baseada no Hyperledger Fabric. Em um alto nível, uma rede de blockchain do Fabric consiste nos componentes básicos a seguir:
 
 -	**Organizações** - qualquer entidade que precisa manter uma cópia do livro-razão de blockchain e precisa validar transações. Pode haver múltiplas organizações de blockchain para uma única empresa.
--	**Peers** - o nó associado a uma organização que contém o livro-razão e valida transações. Os peers são associados a uma organização de blockchain individual.
--	**Serviço de pedido** – composto de um solicitador único (SOLO) ou uma coleção de solicitadores, das transações de sequências de serviço de pedido, cria blocos e envia blocos para peers para validação.
+-	**Peers** - O nó associado a uma organização que contém o livro-razão de blockchain e valida transações. Os peers são associados a uma organização de blockchain individual.
+-	**Serviço de solicitação** - Composto por um único solicitador (SOLO) ou uma coleção de solicitadores. O serviço de solicitação sequencia transações, cria blocos e envia blocos para os peers para validação.
 -	**Autoridade de certificação (CA)** – emite certificados digitais para propósitos de identificação para qualquer componente de rede interativa.
 
 O {{site.data.keyword.blockchainfull_notm}} Platform oferece dois planos de associação, o **Starter Plan** e o **Enterprise Plan**, que é possível escolher no {{site.data.keyword.cloud_notm}}. Ambos os planos permitem criar organizações e fornecem uma autoridade de certificação. Os planos divergem em torno dos peers, das autoridades de certificação e do serviço de pedido.
@@ -70,7 +74,7 @@ As redes do Starter Plan são provisionadas com uma configuração padrão de du
 
 | Componentes de precificação | Custo por mês |
 |-----|----------------|
-| Taxa de associação |US$ 250 |
+| Taxa de associação | US$ 250 |
 | Taxa de peer | US$ 125 |
 | Taxa de peer | US$ 125 |
 | Fim do encargo do mês | US$ 500 |
@@ -80,69 +84,85 @@ As redes do Starter Plan são provisionadas com uma configuração padrão de du
 ### Precificação do Starter Plan de exemplo
 
 #### Avaliação do Starter Plan
-O propósito do Starter Plan é permitir que qualquer pessoa inicie e veja o valor agregado do {{site.data.keyword.blockchainfull_notm}} Platform. Portanto, o {{site.data.keyword.blockchainfull_notm}} Platform oferece um sistema de crédito de US$ 500 destinado a cobrir todos os encargos para novos usuários que serão acumulados durante um mês com a configuração de rede padrão que está descrita acima. A sua conta será refletida na Figura 4 se você criar ou se associar a uma rede do Starter Plan pela **primeira vez** com a configuração padrão.
+O propósito do Starter Plan é permitir que qualquer pessoa inicie e veja o valor agregado do {{site.data.keyword.blockchainfull_notm}} Platform. Portanto, o {{site.data.keyword.blockchainfull_notm}} Platform oferece US$ 500 em créditos de nuvem destinados a cobrir todos os encargos de novos usuários que seriam acumulados durante um mês com a configuração de rede padrão descrita acima. A sua conta será refletida na Figura 4 se você criar ou se associar a uma rede do Starter Plan pela **primeira vez** com a configuração padrão.
 
 | Componentes de precificação | Custo por mês |
 | ----- | ---------------- |
-| Rede de taxa de associação 1 |US$ 250 |
+| Rede de taxa de associação 1 | US$ 250 |
 | Taxa de peer | US$ 125 |
 | Taxa de peer | US$ 125 |
 | Total | US$ 500 |
 | Créditos | -US$ 500 |
-| Fim do primeiro encargo do mês |US$ 0 |
+| Fim do primeiro encargo do mês | US$ 0 |
 
-*Figura 4. Encargo de uma rede padrão do Starter Plan com créditos de avaliação aplicados*
+*Figura 4. Encargo de uma rede padrão do Starter Plan com créditos de nuvem*
+
+**Novos usuários precisam inscrever-se para obter créditos de nuvem.** Eles não são aplicados automaticamente. [Inscreva-se ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://www.ibm.com/account/reg/us-en/signup?formid=urx-32798 "Inscreva-se") para solicitar os créditos se ainda não tiver feito isso. Aguarde 24 horas para se certificar de que os créditos estão em sua [conta ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://console.bluemix.net/docs/billing-usage/viewing_usage.html#credits "conta") antes de acessar o Starter Plan. Caso contrário, você poderá ser cobrado antes que os créditos se apliquem.
+
+A oferta fornece créditos vitalício. Os créditos duram desde que você mantenha sua conta do {{site.data.keyword.cloud_notm}}, portanto, não é necessário usá-los no primeiro mês. Os créditos aplicam-se a todos os serviços do {{site.data.keyword.cloud_notm}}. Eles podem ser consumidos por produtos diferentes do {{site.data.keyword.blockchainfull}} Platform usados no {{site.data.keyword.cloud_notm}}.
+
+| Componentes de precificação | Custo por mês |
+| ----- | ---------------- |
+| Rede de taxa de associação 1 | US$ 250 |
+| Taxa de peer | US$ 125 |
+| Total | US$ 375 |
+| Serviços  {{site.data.keyword.cloud_notm}}  Adicionais | $75 |
+| Fim do primeiro encargo do mês | US$ 0 |
+| Créditos utilizados | -$450. |
+| Créditos remanescentes após o primeiro mês | $50 |
+
+*Figura 5. Usando créditos de avaliação com outros {{site.data.keyword.cloud_notm}} Services*
 
 #### Peers adicionais
-O Starter Plan não restringe o número de peers que é possível incluir em sua rede. Se você incluir, por exemplo, dois peers na rede padrão do Starter Plan, um para cada uma das suas organizações, aumentará a sua conta em US$ 250 por mês. A sua conta será refletida na Figura 5 se você incluir dois peers adicionais no início do primeiro mês ao criar ou se associar a uma rede do Starter Plan e consumir os créditos de avaliação.
+O Starter Plan não restringe o número de peers que é possível incluir em sua rede. Se você incluir, por exemplo, dois peers na rede padrão do Starter Plan, um para cada uma das suas organizações, aumentará a sua conta em US$ 250 por mês. A sua conta será refletida na Figura 6 se você incluir dois peers adicionais no início do primeiro mês ao criar ou se associar a uma rede do Starter Plan e consumir os créditos de avaliação.
 
 | Componentes de precificação | Custo por mês |
 |-----|----------------|
-| Rede de taxa de associação 1 |US$ 250 |
+| Rede de taxa de associação 1 | US$ 250 |
 | Taxa de peer | US$ 125 |
 | Taxa de peer | US$ 125 |
 | Taxa de peer | US$ 125 |
 | Taxa de peer | US$ 125 |
-| Total |US$ 750 |
+| Total | US$ 750 |
 | Créditos | -US$ 500 |
-| Fim do primeiro encargo do mês |US$ 250 |
+| Fim do primeiro encargo do mês | US$ 250 |
 
-*Figura 5. Encargo de uma rede padrão do Starter Plan com dois peers adicionais*
+*Figura 6. Encargo de uma rede padrão do Starter Plan com dois peers adicionais*
 
 #### Redes adicionais
-O Starter Plan também não restringe o número de instâncias de rede que é possível provisionar. Se você provisionar uma segunda instância de rede do Starter Plan, será necessário pagar uma segunda taxa de associação e um segundo conjunto de taxas de peer associados à segunda rede. Portanto, você aumenta a sua conta em US$ 500 por mês para usar a configuração de rede padrão. Você pode se deparar com um cenário em que requer redes adicionais do Starter para os seus ambientes de desenvolvimento, de teste e de prova de conceito isolados uns dos outros. Um exemplo seria quando você desejar fornecer a seus engenheiros de qualidade para executarem testes funcionais significativos longe de seu ambiente de desenvolvimento.
+O Starter Plan também não restringe o número de instâncias de rede que é possível provisionar. Se você provisionar uma segunda instância de rede do Starter Plan, será necessário pagar uma segunda taxa de associação e um segundo conjunto de taxas de peer associados à segunda rede. Portanto, você aumenta a sua conta em US$ 500 por mês para usar a configuração de rede padrão. Talvez você se encontre no cenário em que requeira redes Starter adicionais para seus ambientes de desenvolvimento, teste e prova de conceito isolados uns dos outros. Um exemplo seria quando você desejar fornecer a seus engenheiros de qualidade para executarem testes funcionais significativos longe de seu ambiente de desenvolvimento.
 
 A sua conta será refletida na Figura 6 se você incluir uma rede adicional no início do primeiro mês ao criar ou se associar a uma rede do Starter Plan e consumir os créditos de avaliação.
 
 | Componentes de precificação | Custo por mês |
 |-----|----------------|
-| Rede de taxa de associação 1 |US$ 250 |
+| Rede de taxa de associação 1 | US$ 250 |
 | Taxa de peer | US$ 125 |
 | Taxa de peer | US$ 125 |
-| Rede de taxa de associação 2 |US$ 250 |
+| Rede de taxa de associação 2 | US$ 250 |
 | Taxa de peer | US$ 125 |
 | Taxa de peer | US$ 125 |
 | Total | US$ 1.000 |
 | Créditos | -US$ 500 |
 | Fim do primeiro encargo do mês | US$ 500 |
 
-*Figura 6. Encargo de duas redes padrão do Starter Plan*
+*Figura 7. Encargo de duas redes padrão do Starter Plan*
 
 #### Removendo peers
-Também é possível remover um peer da configuração de rede padrão do Starter Plan. Nessa situação, o {{site.data.keyword.blockchainfull_notm}} Platform ainda oferece a você créditos de avaliação de Nuvem de US$ 500, mas a sua conta será reduzida em US$ 125 por mês. O resultado são créditos de peer de US$ 125 restantes no final do mês. Você poderá se encontrar nesse cenário quando estiver colaborando com outro membro em seu ambiente do Starter Plan, em que cada um de vocês precisa apenas de um único peer. A sua conta será refletida na Figura 7 se você remover um peer de sua rede do Starter Plan e consumir os créditos de avaliação.
+Também é possível remover um peer da configuração de rede padrão do Starter Plan. Nessa situação, o {{site.data.keyword.blockchainfull_notm}} Platform ainda oferece a você créditos de avaliação de Nuvem de US$ 500, mas a sua conta será reduzida em US$ 125 por mês. O resultado são créditos de peer de US$ 125 restantes no final do mês. Você poderá se encontrar nesse cenário quando estiver colaborando com outro membro em seu ambiente do Starter Plan, em que cada um de vocês precisa apenas de um único peer. A sua conta será refletida na Figura 8 se você remover um peer de sua rede do Starter Plan e consumir os créditos de avaliação.
 
 | Componentes de precificação | Custo por mês |
 | ----- | ---------------- |
-| Rede de taxa de associação 1 |US$ 250 |
+| Rede de taxa de associação 1 | US$ 250 |
 | Taxa de peer | US$ 125 |
 | Taxa de peer | N/A |
-| Total |US$ 375 |
+| Total | US$ 375 |
 | Créditos | -US$ 500 |
-| Fim do primeiro encargo do mês |US$ 0 |
-| Créditos de associação restantes|US$ 0 |
+| Fim do primeiro encargo do mês | US$ 0 |
+| Créditos de associação restantes | US$ 0 |
 | Créditos de peer restantes | US$ 125 |
 
-*Figura 7. Encargo de uma rede padrão do Starter Plan com créditos estendidos*
+*Figura 8. Encargo de uma rede padrão do Starter Plan com créditos ampliados*
 
 
 ## Precificação do Enterprise Plan
@@ -156,14 +176,16 @@ Se você estiver em uma rede do Enterprise Plan com o outro membro de rede e cad
 | Taxa de associação | US$ 1.000 |
 | Taxa de peer | US$ 1.000 |
 | Taxa de peer | US$ 1.000 |
-| Fim do encargo do mês |US$ 3.000 |
+| Fim do encargo do mês | US$ 3.000 |
 
-*Figura 8. Encargo de uma rede básica do Enterprise Plan*
+*Figura 9. Encargo de uma rede básica do Enterprise Plan*
 
 ### Precificação do Enterprise Plan de exemplo
 
 #### Peers adicionais
-Continue com o exemplo acima, se você incluir outros dois peers em sua organização. A sua conta aumenta em US$ 2.000 por mês. A sua conta será refletida na Figura 9:
+{: #additional-peers}
+
+Continue com o exemplo acima, se você incluir outros dois peers em sua organização. A sua conta aumenta em US$ 2.000 por mês. Sua conta está refletida na Figura 10:
 
 | Componentes de precificação | Custo por mês |
 |-----|----------------|
@@ -172,14 +194,16 @@ Continue com o exemplo acima, se você incluir outros dois peers em sua organiza
 | Taxa de peer | US$ 1.000 |
 | Taxa de peer | US$ 1.000 |
 | Taxa de peer | US$ 1.000 |
-| Fim do primeiro encargo do mês |US$ 5.000 |
+| Fim do primeiro encargo do mês | US$ 5.000 |
 
-*Figura 9. Encargo de uma rede do Enterprise Plan com quatro peers*
+*Figura 10. Encargo de uma rede do Enterprise Plan com quatro peers*
 
 Se o outro membro mantiver a mesma configuração de rede, a conta do membro será a mesma que antes, que será refletida na Figura 8.
 
 #### Redes adicionais
-O Enterprise Plan também não restringe o número de instâncias de rede que é possível provisionar ou se associar. Se você criar uma segunda rede do Enterprise Plan com a mesma configuração de rede básica, ou seja, uma única organização com dois peers, a sua conta será refletida na Figura 10. Você poderá se encontrar nesse cenário quando tiver se associado a múltiplas redes, criado múltiplas redes ou uma combinação dos dois.
+{: #additional-networks}
+
+O Enterprise Plan também não restringe o número de instâncias de rede que é possível provisionar ou se associar. Se você criar uma segunda rede do Enterprise Plan com a mesma configuração básica de rede, ou seja, uma única organização com dois peers, sua conta será refletida na Figura 11. Você poderá se encontrar nesse cenário quando tiver se associado a múltiplas redes, criado múltiplas redes ou uma combinação dos dois.
 
 | Componentes de precificação | Custo por mês |
 |-----|----------------|
@@ -189,9 +213,8 @@ O Enterprise Plan também não restringe o número de instâncias de rede que é
 | Rede de taxa de associação 2 | US$ 1.000 |
 | Taxa de peer | US$ 1.000 |
 | Taxa de peer | US$ 1.000|
-| Total |US$ 6.000 |
+| Total | US$ 6.000 |
 
-*Figura 10: Encargo de duas redes do Enterprise Plan, ambas com a configuração básica de rede*
+*Figura 11. Encargo de duas redes do Enterprise Plan com a configuração básica de rede*
 
-Se o outro membro usar apenas uma rede do Enterprise Plan e mantiver a mesma configuração de rede, a conta do membro será a mesma que antes, que será refletida na Figura 8.
-
+Se o outro membro usar apenas uma rede do Enterprise Plan e mantiver a mesma configuração de rede, a conta do membro parecerá igual à anterior, o que é refletido na Figura 9.

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-05-15"
+lastupdated: "2018-08-31"
 ---
 
 {:new_window: target="_blank"}
@@ -16,21 +16,25 @@ lastupdated: "2018-05-15"
 {: #ibmblockchain_support}
 
 
+***[이 페이지가 도움이 되었습니까? 알려주십시오.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
 지원을 얻고 {{site.data.keyword.Bluemix}}의 블록체인 인스턴스와 연관된 문제점을 해결하는 데 사용할 수 있는 몇 가지 메커니즘이 있습니다.
 {:shortdesc}
 
 
 ## 기존 리소스에서 솔루션 찾기
 
-**그림 1**에 표시된 대로 **네트워크 모니터**에서 "지원" 화면으로 이동하십시오.  기술 및 지원 정보를 제공하는 리소스에 대한 링크를 찾을 수 있습니다.  "지원" 화면에 대한 자세한 설명은 [네트워크 모니터](v10_dashboard.html)에서 *지원* 섹션을 참조하십시오.
+**그림 1**에 표시된 대로 **네트워크 모니터**의 "지원" 화면으로 이동하십시오. 기술 및 지원 정보를 제공하는 리소스의 링크가 있습니다. "지원" 화면에 관한 자세한 설명은 [도움말](v10_dashboard.html#support)을 참조하십시오.
 
 ![지원 화면](images/support.png "지원 화면")
 *그림 1. 지원 화면*
 
 
 ## 지원 케이스 제출
+{: #support-cases}
 
-위의 방식으로 문제점을 해결할 수 없는 경우 다음 단계에 따라 {{site.data.keyword.cloud_notm}} 서비스 포털에 지원 케이스를 제출하십시오.
+위의 방식으로 문제점을 해결할 수 없는 경우 다음 단계에 따라 {{site.data.keyword.cloud_notm}} 서비스 포털에 지원 케이스를 제출하십시오. 사용자는 [{{site.data.keyword.cloud_notm}} 지원 플랜](https://console.bluemix.net/docs/get-support/index.html#support-plans)에 따라 기본 {site.data.keyword.blockchainfull_notm}} Platform과 연관된 모든 문제에 대한 지원을 받을 수 있습니다. Hyperledger Fabric 체인코드, Hyperledger Composer 또는 애플리케이션에 관한 도움말이 필요하면 위의 커뮤니티 리소스를 사용하거나 [{{site.data.keyword.blockchainfull_notm}} 서비스 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/blockchain/services)를 이용하십시오.
 
 1. {{site.data.keyword.IBM_notm}} ID로 [{{site.data.keyword.cloud_notm}} 서비스 포털 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://ibm.biz/ibmcloudsupport)에 로그인하십시오.
 2. 중간에 있는 **도움 받기** 아바타를 클릭하거나 오른쪽 상단에 있는 **케이스 작성** 단추를 클릭하십시오.

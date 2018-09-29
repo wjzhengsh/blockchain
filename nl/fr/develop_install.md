@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -16,7 +16,11 @@ lastupdated: "2018-06-14"
 # Installation d'un environnement de développement
 {: #installing-a-development-environment}
 
-Suivez ces instructions pour obtenir les outils de développement de la plateforme {{site.data.keyword.blockchainfull}} : Develop pour créer et tester des réseaux d'entreprise. Pour une plus grande souplesse et un nombre maximum de scénarios de développement, test et déploiement, les outils de développement sont fournis sous la forme de modules npm, qui peuvent être contrôlés depuis la ligne de commande.
+
+***[Cette page est-elle utile ? Dites-nous.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
+Suivez ces instructions pour obtenir les outils de développement d'{{site.data.keyword.blockchainfull}} Platform: Develop pour créer et tester des réseaux d'entreprise. Pour une plus grande souplesse et un nombre maximum de scénarios de développement, test et déploiement, les outils de développement sont fournis sous la forme de modules npm, qui peuvent être contrôlés depuis la ligne de commande.
 
 Différentes de certains composants sont nécessaires pour une utilisation avec le plan Starter et le plan Enterprise. Pour utiliser l'environnement de développement avec le plan Starter, les modules doivent être installés en version `0.19.x 19.`. Pour utiliser l'environnement de développement avec le plan Enterprise, les modules doivent être installés en version `0.16.x`.
 
@@ -40,7 +44,7 @@ Si vous utilisez VSCode, une extension VSCode Hyperledger Composer est disponibl
 
 ## Etape 1 : Installer les outils de ligne de commande
 
-Les outils de ligne de commande incluent **composer-cli**, module de ligne de commande principal de la plateforme {{site.data.keyword.blockchainfull_notm}} : Develop. Les modules **generator-hyperledger-composer**, **composer-rest-server** et **Yeoman** sont utilisés pour générer des réseaux d'entreprise, des serveur REST spécifiques et des applications Angular.
+Les outils de ligne de commande incluent **composer-cli**, module de ligne de commande principal d'{{site.data.keyword.blockchainfull_notm}} Platform: Develop. Les modules **generator-hyperledger-composer**, **composer-rest-server** et **Yeoman** sont utilisés pour générer des réseaux d'entreprise, des serveur REST spécifiques et des applications Angular.
 
 1. Pour une utilisation avec le plan Starter, installez **composer-cli** à l'aide de la commande suivante :
 
@@ -97,7 +101,7 @@ Les outils de ligne de commande incluent **composer-cli**, module de ligne de co
 
 ## Etape 2 : Installer une interface Playground
 
-L'interface Playground d'Hyperledger Composer est une interface utilisateur qui peut être connectée à une {{site.data.keyword.blockchain}} réelle ou utilisée en tant qu'environnement simulé pour tester un réseau d'entreprise. Pour une utilisation avec le plan Starter, installez l'interface Playground à l'aide de la commande suivante :
+L'interface Playground d'Hyperledger Composer est une interface utilisateur qui peut être connectée à un {{site.data.keyword.blockchain}} réel ou utilisé en tant qu'environnement simulé pour tester un réseau d'entreprise. Pour une utilisation avec le plan Starter, installez l'interface Playground à l'aide de la commande suivante :
 
 ```
 npm install -g composer-playground@0.19.x
@@ -129,7 +133,7 @@ Le déploiement d'une instance locale d'Hyperledger Fabric vous permet de tester
 1. Créez le répertoire `fabric-tools` à l'aide de la commande suivante :
 
    ```
-   mkdir ~/fabric-tools &&  cd ~/fabric-tools
+   mkdir ~/fabric-tools && cd ~/fabric-tools
    ```
    {:codeblock}
 

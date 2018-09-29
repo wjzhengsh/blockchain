@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -15,6 +15,10 @@ lastupdated: "2018-06-14"
 
 # Entwicklungsumgebung installieren
 {: #installing-a-development-environment}
+
+
+***[Ist diese Seite hilfreich? Teilen Sie uns Ihre Meinung mit.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
 
 Führen Sie die nachfolgenden Anweisungen aus, um die Entwicklungstools von {{site.data.keyword.blockchainfull}} Platform: Develop zum Erstellen und Testen von Unternehmensnetzen abzurufen. Zur Bereitstellung hoher Flexibilität und der maximalen Anzahl von Entwicklungs-, Test- und Bereitstellungsszenarios werden die Entwicklungstools in Form von NPM-Modulen geliefert, die über die Befehlszeile gesteuert werden.
 
@@ -124,7 +128,7 @@ Sie können die Playground-Umgebung zum Entwickeln, Bearbeiten und Testen von Un
 
 ## Nur Enterprise Plan: Installieren Sie eine lokale Hyperledger Fabric-Instanz und stellen Sie über Playground eine Verbindung dazu her.
 
-Durch Bereitstellen einer lokalen Hyperledger Fabric-Instanz können Sie Zugriffssteuerungsregeln und Unternehmensnetze vollständig testen. Stellen Sie vor den nachfolgenden Schritten sicher, dass Docker gestartet ist. 
+Durch Bereitstellen einer lokalen Hyperledger Fabric-Instanz können Sie Zugriffssteuerungsregeln und Unternehmensnetze vollständig testen. Stellen Sie vor den nachfolgenden Schritten sicher, dass Docker gestartet ist.
 
 1. Erstellen Sie das Verzeichnis `fabric-tools` mit dem folgenden Befehl:
 
@@ -156,7 +160,7 @@ Rufen Sie in ein Verzeichnis Ihrer Wahl, zum Beispiel `~/fabric-tools` die `.tar
 
    Das Verzeichnis `fabric-tools` enthält eine Gruppe von Scripts, durch die die heruntergeladene Hyperledger Fabric-Instanz gesteuert wird. Sie müssen den Befehl `./createPeerAdminCard.sh` ausführen, um eine Unternehmensnetzkarte zu generieren, die Sie zum Bereitstellen des Unternehmensnetzes in dem Docker-Container verwenden können, der die Hyperledger Fabric-Instanz enthält.
 
-4. Führen Sie die folgenden Befehle aus, um die Hyperledger Fabric-Instanz der Version 1 zu starten: 
+4. Führen Sie die folgenden Befehle aus, um die Hyperledger Fabric-Instanz der Version 1 zu starten:
 
    ```
    cd ~/fabric-tools

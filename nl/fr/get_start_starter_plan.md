@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -16,20 +16,24 @@ lastupdated: "2018-06-14"
 # Gouvernance d'un réseau de plan Starter
 {: #getting-started-with-starter-plan}
 
-Le plan Starter de la plateforme {{site.data.keyword.blockchainfull}} vous permet d'accéder d'un simple clic à un réseau de blockchain préconfiguré. Il <!--offers you a free trial of 30 days and -->met à disposition un réseau privé avec la configuration de deux [organisations](glossary.html#organization), un [homologue](glossary.html#peer) par organisation, et un [canal](glossary.html#channel) par défaut. Une fois le réseau créé, vous pouvez le dimensionner et lui ajouter d'autres organisations et homologues. <!--Note that it might cause extra cost if you exceed the default resource limits of two organizations and two peers.-->
+
+***[Cette page est-elle utile ? Dites-nous.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
+Le plan Starter d'{{site.data.keyword.blockchainfull}} Platform vous permet d'accéder d'un simple clic à un réseau de blockchain préconfiguré. Il <!--offers you a free trial of 30 days and -->met à disposition un réseau privé avec la configuration de deux [organisations](glossary.html#organization), un [homologue](glossary.html#peer) par organisation, et un [canal](glossary.html#channel) par défaut. Une fois le réseau créé, vous pouvez le dimensionner et lui ajouter d'autres organisations et homologues. <!--Note that it might cause extra cost if you exceed the default resource limits of two organizations and two peers.-->
 {:shortdesc}
 
-**Remarque **: le plan Starter de la plateforme {{site.data.keyword.blockchainfull}} est un environnement de tests et de développement, et il ne convient pas pour des charges de travail de production. Si vous avez besoin d'un environnement de production, consultez la section [A propos du plan Enterprise](enterprise_plan.html).
+**Remarque **: le plan Starter d'{{site.data.keyword.blockchainfull}} Platform est un environnement de tests et de développement, et il ne convient pas pour des charges de travail de production. Si vous avez besoin d'un environnement de production, consultez la section [A propos du plan Enterprise](enterprise_plan.html).
 
-Le plan Starter vous permet d'apprendre et de développer des compétences avec la plateforme {{site.data.keyword.blockchainfull_notm}}, d'exécuter des modèles d'application, de tester vos propres applications, et de simuler un scénario composé de plusieurs organisations.  Ce tutoriel de mise en route présente les prérequis et les étapes que vous devrez suivre pour créer et utiliser un réseau de plan Starter.
+Le plan Starter vous permet d'apprendre et de développer des compétences avec {{site.data.keyword.blockchainfull_notm}} Platform, d'exécuter des modèles d'application, de tester vos propres applications, et de simuler un scénario composé de plusieurs organisations.  Ce tutoriel de mise en route présente les prérequis et les étapes que vous devrez suivre pour créer et utiliser un réseau de plan Starter.
 
-Si vous êtes un nouvel utilisateur de la plateforme {{site.data.keyword.blockchainfull_notm}} et de la technologie blockchain, vous pouvez consulter le [Glossaire](glossary.html) afin de vous familiariser avec les termes utilisés dans la présente documentation et la [documentation Hyperledger Fabric![Icône de lien externe](images/external_link.svg "Icône de lien externe")](http://hyperledger-fabric.readthedocs.io/en/latest/blockchain.html) pour en savoir plus sur la blockchain.
+Si vous êtes un nouvel utilisateur d'{{site.data.keyword.blockchainfull_notm}} Platform et de la technologie blockchain, vous pouvez consulter le [Glossaire](glossary.html) afin de vous familiariser avec les termes utilisés dans la présente documentation et la [documentation Hyperledger Fabric![Icône de lien externe](images/external_link.svg "Icône de lien externe")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/blockchain.html) pour en savoir plus sur la blockchain.
 
 
 ## Création d'un réseau
-Vous pouvez disposer d'un [réseau](glossary.html#network) de plan Starter avec la configuration par défaut dès que vous avez créé une instance de service de plateforme {{site.data.keyword.blockchainfull_notm}}.
+Vous pouvez disposer d'un [réseau](glossary.html#network) de plan Starter avec la configuration par défaut dès que vous avez créé une instance de service d'{{site.data.keyword.blockchainfull_notm}} Platform.
 
-1. Localisez le [service blockchain![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://console.bluemix.net/catalog/services/blockchain) dans le catalogue {{site.data.keyword.cloud_notm}}.   
+1. Localisez le [service blockchain ![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://console.bluemix.net/catalog/services/blockchain) dans le catalogue {{site.data.keyword.cloud_notm}}.   
     **Remarque **: Vous devez vous connecter avec votre compte payant {{site.data.keyword.cloud_notm}}. Si vous n'avez pas de compte, cliquez sur le bouton **Inscrivez-vous pour créer**. Après que vous avez créé un compte d'essai gratuit, effectuez une mise à niveau vers un type **Paiement à la carte** en accédant à **Gérer** > **Facturation et utilisation** > **Facturation** dans la console {{site.data.keyword.cloud_notm}}, et en cliquant sur **Ajouter carte de crédit**.
 2. Sélectionnez la région dans {{site.data.keyword.cloud_notm}} dans laquelle créer le réseau.
 3. Sélectionnez votre organisation et espace Cloud Foundry pour créer le réseau.
@@ -53,7 +57,7 @@ Vous pouvez inviter d'autres [organisations](glossary.html#organization) à rejo
 ## Rejoindre un réseau
 Si vous êtes invité par un initiateur du réseau, vous recevrez une notification par courrier électronique avec des instructions sur la manière de se connecter au réseau. Suivez les instructions fournies dans le courrier électronique afin de devenir l'un des membres du réseau.
 
-Vous devez créer une [ instance de service de plateforme {{site.data.keyword.blockchain}} ![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://console.bluemix.net/catalog/services/blockchain) avec l'option d'appartenance du plan Starter dans {{site.data.keyword.cloud_notm}}.
+Vous devez créer une [ instance de service d'{{site.data.keyword.blockchain}} Platform ![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://console.bluemix.net/catalog/services/blockchain) avec l'option d'appartenance du plan Starter dans {{site.data.keyword.cloud_notm}}.
 
 1. Connectez-vous avec votre compte {{site.data.keyword.cloud_notm}}. Si vous n'avez pas de compte, cliquez sur le bouton **Inscrivez-vous pour créer**.
 2. Sélectionnez l'organisation Cloud Foundry où vous voulez stocker votre réseau {{site.data.keyword.blockchain}}.
@@ -77,7 +81,7 @@ You can run [chaincode](glossary.html#chaincode) on your peers in the network.  
 Dès que vous avez créé un réseau de plan Starter dans {{site.data.keyword.cloud_notm}}, vous pouvez obtenir les données d'identification réseau et le profil de connexion depuis la page d'instance de service ou le Moniteur réseau.
 
 ### Extraction à partir de la page d'instance de service
-Vous accédez à la page d'instance de service dès que vous créez une instance de service. Vous pouvez également cliquer sur votre service dans le tableau de bord de service [{{site.data.keyword.cloud_notm}} - tableau de bord de service![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://console.bluemix.net/dashboard/services "{{site.data.keyword.cloud_notm}}") pour ouvrir votre page d'instance de service.
+Vous accédez à la page d'instance de service dès que vous créez une instance de service. Vous pouvez également cliquer sur votre service dans le [tableau de bord du service {{site.data.keyword.cloud_notm}} ![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://console.bluemix.net/dashboard/services "tableau de bord du service {{site.data.keyword.cloud_notm}}") pour ouvrir votre page d'instance de service.
 
 Pour extraire les données d'identification de votre service, procédez comme suit :
 1. Sur la page d'instance de service, cliquez sur **Données d'identification du service** dans le navigateur de gauche pour afficher l'écran "Données d'identification du service".
@@ -99,7 +103,7 @@ Pour plus d'informations, voir [Déploiement de modèles d'application](howto/pr
 
 
 ## Développement et déploiement de réseaux d'entreprise personnalisés
-Le plan Starter intègre l'environnement développeur IBM Blockchain Platform: Develop et le jeu d'outils de développeur Hyperledger Composer . Vous pouvez développer votre réseau de blockchain en fonction des besoins de votre entreprise.  Dès que vous avez développé un réseau pour votre activité, vous pouvez déployer votre réseau d'entreprise dans un réseau de plan Starter.
+Le plan Starter intègre l'environnement développeur {{site.data.keyword.blockchainfull_notm}} Platform: Develop et le jeu d'outils de développeur Hyperledger Composer . Vous pouvez développer votre réseau de blockchain en fonction des besoins de votre entreprise.  Dès que vous avez développé un réseau pour votre activité, vous pouvez déployer votre réseau d'entreprise dans un réseau de plan Starter.
 
 Pour plus d'informations, voir [Développement du réseau](develop.html) et [Déploiement de réseaux d'entreprise avec le plan Starter](develop_starter.html).
 
@@ -125,7 +129,7 @@ Le code blockchain, qui est semblable aux fichiers `.bna`, est développé en ex
 As you can see in [Deploying sample applications](howto/prebuilt_samples.html), Starter Plan makes it easy to get a sample application integrated with your network by using Toolchain. This setup also allows for continuous integration by automatically updating your sample application whenever your forked application repo is changed. If you want to deploy this application into an Enterprise Plan network, you can copy your forked application repo into a new repo and then follow the instructions in [Deploying sample applications manually](howto/prebuilt_samples.html#deploy_sample_applications_manually).
 -->
 
-Si vous déployez un modèle d'application quelconque sur votre réseau du plan Starter et désirez déployer cette application sur un réseau du plan Enterprise, vous pouvez copier votre référentiel d'application dévié dans un autre référentiel, puis suivre les instructions de la rubrique [Déploiement de modèles d'application manuellement](howto/prebuilt_samples.html#deploy_sample_applications_manually).
+Si vous déployez un modèle d'application dans votre réseau de plan Starter et voulez déployer cette application dans un réseau de plan Enterprise, vous pouvez copier votre référentiel d'application dévié dans un nouveau référentiel, puis suivre les instructions des modèles d'application pour les déployer dans votre réseau de plan Enterprise.
 
 
 ## Suppression ou sortie d'un réseau
@@ -137,5 +141,5 @@ Si vous voulez supprimer un réseau ou le quitter, vous pouvez supprimer l'insta
 <!--
 ## References
 * For more information about {{site.data.keyword.blockchainfull_notm}} offerings, see [Blockchain offerings](index.html).
-* For more information about Hyperledger Fabric V1.1, see [Hyperledger Fabric documentation ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/latest/){:new_window}.
+* For more information about Hyperledger Fabric V1.1, see [Hyperledger Fabric documentation ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/){:new_window}.
 -->

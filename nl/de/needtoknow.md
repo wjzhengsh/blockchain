@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-03-16"
+lastupdated: "2018-08-31"
 ---
 
 {:new_window: target="_blank"}
@@ -15,6 +15,10 @@ lastupdated: "2018-03-16"
 # Haftungsausschluss
 {: #disclainer}
 
+
+***[Ist diese Seite hilfreich? Teilen Sie uns Ihre Meinung mit.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
 **ACHTUNG:** Sie müssen die folgenden Informationen überprüfen, bevor Sie {{site.data.keyword.blockchainfull}}-Pläne verwenden können.
 
 ## IBM Support-Aussage
@@ -22,7 +26,7 @@ lastupdated: "2018-03-16"
 Mit den Plänen des {{site.data.keyword.blockchainfull_notm}}-Angebots für {{site.data.keyword.Bluemix_notm}} setzt IBM seine langjährige Tradition der Bereitstellung innovativer Lösungen fort. {{site.data.keyword.blockchain}} ist eine rasch fortschreitende Technologie, die das Ziel verfolgt, die Finanzwirtschaft, lokale und weltweite Supply-Chains sowie die logistische Unterstützung zahlreicher Geschäftsfelder neu zu gestalten. Durch verschiedene Early-Adoption-Programme haben IBM Kunden und Business Partner Blockchain als Branchenlösung aktiv vorangetrieben. {{site.data.keyword.blockchainfull_notm}} on {{site.data.keyword.Bluemix_notm}} ist eines dieser Programme. **Wie bei jeder neuen Technologie sollten sich Benutzer von {{site.data.keyword.blockchainfull_notm}} on {{site.data.keyword.Bluemix_notm}} darüber im Klaren sein, dass schnelle und grundlegende Änderungen möglich sind**.  
 {:shortdesc}
 
-{{site.data.keyword.blockchainfull_notm}} baut auf der Architektur des Hyperledger Fabric Projects der Linux Foundation auf. Jeder Beitrag der Open-Source-Community verbessert Hyperledger Fabric, kann jedoch im Hinblick auf die Akzeptanz eine Herausforderung darstellen. **IBM warnt vor dem direkten Definieren oder Austauschen von Finanzanlagen oder anderen Assets von Wert in einem auf Hyperledger Fabric basierenden Blockchain-Netz**.  
+{{site.data.keyword.blockchainfull_notm}} baut auf der Architektur des Hyperledger Fabric-Projekts der Linux Foundation auf. Jeder Beitrag der Open-Source-Community verbessert Hyperledger Fabric, kann jedoch im Hinblick auf die Akzeptanz eine Herausforderung darstellen. **IBM warnt vor dem direkten Definieren oder Austauschen von Finanzanlagen <!--, or any assets of value,--> in einem auf Hyperledger Fabric basierenden Blockchain-Netz**.  
 
 ## Open-Source-Aussage
 
@@ -40,3 +44,7 @@ Die folgenden Programmierverfahren werden in {{site.data.keyword.blockchainfull_
 6. Verwendung von Bibliotheken oder globalen Variablen, die zu Nichtdeterminismus führen könnten (z. B. "random" oder "time").  
 
 Das Schreiben von nicht deterministischem Chaincode wird nicht empfohlen, da sich dadurch Risiken für die Datenkonsistenz und -integrität ergeben.  Beachten Sie, dass die Hyperledger Fabric-Architektur mit einer Reihe von Bewilligungs- und Validierungsprüfungen entwickelt wurde, um der Erstellung von nicht deterministischem Chaincode entgegenzuwirken. Es wird jedoch weiterhin dringend empfohlen, deterministische Funktionen zu codieren, die nicht auf nicht statischen globalen Variablen (z. B. Zeit) basieren.  
+
+---
+
+*[Ist diese Seite hilfreich? Teilen Sie uns Ihre Meinung mit.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)*

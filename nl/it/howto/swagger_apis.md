@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -14,7 +14,11 @@ lastupdated: "2018-06-14"
 
 # Interazione con la rete utilizzando le API Swagger
 
-{{site.data.keyword.blockchainfull_notm}} Platform presenta diverse API REST in Swagger che puoi utilizzare per gestire i nodi, i canali, i peer e i membri della tua rete. Le tue applicazioni possono utilizzare queste API per controllare importanti risorse di rete senza usare il monitoraggio della rete.
+
+***[Questa pagina è utile? Faccelo sapere.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
+{{site.data.keyword.blockchainfull_notm}} Platform presenta diverse API REST in Swagger che puoi utilizzare per gestire i nodi, i canali, i peer e i membri della tua rete. Le tue applicazioni possono utilizzare queste API per controllare importanti risorse di rete senza usare il Monitoraggio della rete.
 
 {:shortdesc}
 
@@ -25,18 +29,18 @@ Prima di iniziare, devi creare un'istanza del servizio [{{site.data.keyword.bloc
 
 {: #retrieving-network-credentials}
 
-Accedi al monitoraggio della rete della tua rete Blockchain e apri la schermata "API" dal navigatore a sinistra. Puoi visualizzare le tue credenziali di rete per le API REST. Autorizzerai successivamente le API utilizzando i valori di "key" e "secret" qui visualizzati ed eseguirai le API con il "network_id" come parametro. Fai clic su **Show secret** per visualizzare il valore del campo segreto. Copia i valori dei campi key, secret e network_id, che puoi utilizzare successivamente nell'IU Swagger.
+Accedi al Monitoraggio della rete della tua rete Blockchain e apri la schermata "API" dal navigatore a sinistra. Puoi visualizzare le tue credenziali di rete per le API REST. Autorizzerai successivamente le API utilizzando i valori di "key" e "secret" qui visualizzati ed eseguirai le API con il "network_id" come parametro. Fai clic su **Show secret** per visualizzare il valore del campo segreto. Copia i valori dei campi key, secret e network_id, che puoi utilizzare successivamente nell'IU Swagger.
 
 La **Figura 1** mostra la schermata "API":
 ![Schermata API](../images/API_screen_starter.png "Schermata API")
 *Figura 1. API*
 
-Se stai utilizzando piano Starter, è possibile passare da un'organizzazione all'altra nel monitoraggio della rete. Con piano Starter, le due organizzazioni sono configurate per impostazione predefinita. Passare da un'organizzazione all'altra può essere utile per provare le API REST dalla prospettiva di ciascuna organizzazione. Per ottenere le credenziali per un'altra organizzazione nella tua rete, fai clic sul tuo nome utente nell'angolo superiore destro della console monitoraggio della rete. Nel menu che si apre, fai clic sulla freccia a discesa accanto all'organizzazione per visualizzare tutte le organizzazioni. Seleziona l'organizzazione a cui desideri passare e visualizza le credenziali di rete associate.
+Se stai utilizzando piano Starter, è possibile passare da un'organizzazione all'altra nel Monitoraggio della rete. Con piano Starter, le due organizzazioni sono configurate per impostazione predefinita. Passare da un'organizzazione all'altra può essere utile per provare le API REST dalla prospettiva di ciascuna organizzazione. Per ottenere le credenziali per un'altra organizzazione nella tua rete, fai clic sul tuo nome utente nell'angolo superiore destro della console Monitoraggio della rete. Nel menu che si apre, fai clic sulla freccia a discesa accanto all'organizzazione per visualizzare tutte le organizzazioni. Seleziona l'organizzazione a cui desideri passare e visualizza le credenziali di rete associate.
 
 La **Figura 2** mostra come passare da un'organizzazione all'altra:
 
-![Passaggio da un'organizzazione all'altra](../images/switch_orgs_starter.gif "Passaggio da un'organizzazione all'altra")  
-*Figura 2. Passaggio da un'organizzazione all'altra*
+![Switch tra le organizzazioni](../images/switch_orgs_starter.gif "Switch tra le organizzazioni")  
+*Figura 2. Switch tra le organizzazioni*
 
 
 ## Autorizzazione delle API Swagger
@@ -46,11 +50,11 @@ Fai clic sul link **IU Swagger** nella schermata "API" per aprire l'IU Swagger.
 You can also open the Swagger UI with the URL in the connection profiles. For example, `http://blockchain-swagger-dev.stage1.mybluemix.net`.
 -->
 
-Nell'IU Swagger, fai clic sul pulsante **Autorizza**; viene visualizzata la finestra di autorizzazione. Immetti il valore di chiave (key) e segreto (secret) nelle tue credenziali di rete come nome utente e password e fai clic su **Autorizza** e quindi su **Fatto**. Ore sei pronto ad eseguire le API. Nota: se aggiorni il tuo browser, devi eseguire nuovamente l'autorizzazione con le tue credenziali.
+Nell'IU Swagger, fai clic sul pulsante **Autorizza**; viene visualizzata la finestra di autorizzazione. Immetti il valore di chiave (key) e segreto (secret) nelle tue credenziali di rete come nome utente e password e fai clic su **Autorizza** e quindi su **Fatto**. Ora sei pronto ad eseguire le API. Nota: se aggiorni il tuo browser, devi eseguire nuovamente l'autorizzazione con le tue credenziali.
 
 Utilizzando l'autenticazione di tipo Autenticazione di base, qualsiasi credenziale da te specificata nella finestra Autorizza viene memorizzata dopo che fai clic sui pulsanti **Autorizza** e quindi **Fatto** e viene passata in ciascuna chiamata API REST.
 
-La **Figura 3** mostra il processo per autorizzare le API Swagger: 
+La **Figura 3** mostra il processo per autorizzare le API Swagger:
 
 ![Autorizza API](../images/swaggerUIAuthorize.gif "Autorizza API")  
 *Figura 3. Autorizza API*
@@ -65,7 +69,7 @@ La **Figura 4** mostra il pulsante "Try it out" nella "IU Swagger":
 ![Pulsante Try it out nella IU Swagger](../images/swaggerUITryItOut.png "Pulsante Try it out nella IU Swagger")  
 *Figura 4. Pulsante "Try it out" nella "IU Swagger"*
 
-Dopo che hai fatto clic sul pulsante **Try it out**, puoi immettere i parametri obbligatori per utilizzare la API. Puoi trovare `networkID` nelle tue credenziali di rete e trovare gli altri parametri nel tuo monitoraggio della rete. Dopo che hai immesso i parametri, fai clic su **Esegui** per eseguire la chiamata API REST sulla tua rete.
+Dopo che hai fatto clic sul pulsante **Try it out**, puoi immettere i parametri obbligatori per utilizzare la API. Puoi trovare `networkID` nelle tue credenziali di rete e trovare gli altri parametri nel tuo Monitoraggio della rete. Dopo che hai immesso i parametri, fai clic su **Esegui** per eseguire la chiamata API REST sulla tua rete.
 
 La **Figura 5** mostra i parametri nella "IU Swagger":
 

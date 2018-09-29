@@ -14,7 +14,9 @@ lastupdated: "2018-03-16"
 
 # Pagando pela rede
 
-**Nota**: o {{site.data.keyword.blockchainfull}} Platform Starter Plan é grátis para Beta.
+
+***[Esta página é útil? Diga-nos.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
 
 O {{site.data.keyword.blockchainfull_notm}} Platform cobra mensalmente com taxas de associação e taxas de peer. Dependendo do plano de rede que você escolher e da quantia de recursos que usar, os seus pagamentos serão diferentes.  Tomando o Enterprise Plan como exemplo, os membros de rede devem pagar US$ 1.000 por mês como a taxa de associação, além de US$ 1.000 por mês para cada um de seus peers na rede. A taxa mensal é cobrada diariamente rateada. Por exemplo, um membro (taxa de participação associada de U$ 1.000) de dois peers (por taxa peer de U$ 1.000 × 2 peers) precisa pagar U$ 3.000 por mês. Se o mês tiver 30 dias, o membro pagará U$ 100 (U$ 3.000/30) todos os dias.
 
@@ -41,7 +43,7 @@ Todo membro de rede deve ter uma conta do {{site.data.keyword.cloud_notm}}. [Reg
 2. O pagador convida outros usuários para a conta do {{site.data.keyword.cloud_notm}} do pagador e dá a eles acesso ao espaço específico.  Cada usuário tem acesso a apenas um espaço.
    1. Na barra de menus, clique em **Gerenciar** > **Conta** > **Usuários**.  
    2. Clique em **Convidar usuários** e designe acesso de usuário:
-      1. Especifique o endereço de email de um único usuário que você convidará para a sua Organização do Cloud Foundry.
+      1. Especifique o endereço de e-mail de um único usuário que você convidará para a sua Organização do Cloud Foundry.
       2. Na seção **Acesso do Cloud Foundry**, faça as seleções a seguir:
          - **Organização**: a Organização do Cloud Foundry para criar a rede.
          - **Funções da organização**: auditor.
@@ -64,6 +66,6 @@ Todo membro de rede deve ter uma conta do {{site.data.keyword.cloud_notm}}. [Reg
    5. Após você criar a instância de serviço de blockchain, siga o assistente para se associar à rede.  Para obter mais informações, veja [Associando-se a uma rede](https://console.bluemix.net/docs/services/blockchain/get_start.html#joining-a-network).
 
 ### Limitações Conhecidas
-- Como todos os membros estão dentro da conta do {{site.data.keyword.cloud_notm}} de pagadores, o pagador tem acesso a instâncias de blockchain de todos os membros e pode personificá-los.  Portanto, esse modo de pagamento é melhor utilizado para ambientes POC ou em casos em que o pagador estiver manipulando todo o gerenciamento do {{site.data.keyword.blockchainfull_notm}} Platform e os membros estiverem sendo fornecidos com apenas um aplicativo.  
+- Como todos os membros estão dentro da conta do {{site.data.keyword.cloud_notm}} de pagadores, o pagador tem acesso a instâncias de blockchain de todos os membros e pode personificá-los.  Portanto, esse modo de pagamento é usado melhor em ambientes PoC ou nos casos em que o pagador está manipulando todo o gerenciamento do {{site.data.keyword.blockchainfull_notm}} Platform e os membros estão recendo apenas um aplicativo.  
 - Após incluir todos os membros na conta do {{site.data.keyword.cloud_notm}} do pagador e designar a eles acesso para provisionarem instâncias de blockchain e se associarem à rede, o pagador também estará dando aos membros acesso para criarem outros serviços, o que pode causar encargos adicionais.  
 - Qualquer membro na Organização do Cloud Foundry do pagador pode ver todos os espaços na organização.  No entanto, eles não podem editar ou modificar as organizações porque eles não têm acessos.

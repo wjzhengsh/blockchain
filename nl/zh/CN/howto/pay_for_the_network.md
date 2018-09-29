@@ -14,7 +14,9 @@ lastupdated: "2018-03-16"
 
 # 为网络付费
 
-**注**：{{site.data.keyword.blockchainfull}} Platform 入门套餐 Beta 是免费的。
+
+***[此页面是否有用？请告诉我们。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
 
 {{site.data.keyword.blockchainfull_notm}} Platform 按月收取成员资格费用和同级费用。根据您选择的网络套餐和使用的资源量，所付费用各不相同。以企业套餐为例，网络成员必须每月支付 1,000 美元的成员资格费用，并且每月为网络中的每个同级额外支付 1000 美元。每月费用按日分派计费。例如，如果一个成员（关联的成员资格费用为 1,000 美元）有两个同级（每个同级的费用 1,000 美元 X 2 个同级），该成员每月需要支付 3,000 美元。如果该月有 30 天，那么该成员每天支付 100 美元（3,000 美元/30）。
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -15,14 +15,18 @@ lastupdated: "2018-06-14"
 # 샘플 애플리케이션 배치
 {: #overview}
 
+
+***[이 페이지가 도움이 되었습니까? 알려주십시오.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
 사용자가 블록체인 네트워크 및 애플리케이션 개발을 이해할 수 있도록 {{site.data.keyword.blockchainfull}} Platform은 사용자가 배치하고 테스트할 수 있는 샘플 애플리케이션을 제공합니다.
 {: shortdesc}
 
-| 샘플         | 유스 케이스    | 샘플 유형    | 작성자 및 지원       |
+| 샘플     | 유스 케이스       | 샘플 유형  | 작성자 및 지원  |
 | --------------|---------------------|----|-------|
-| [Marbles ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://github.com/IBM-Blockchain/marbles)| 여러 사용자가 서로 다른 특성으로 Marbles를 작성하고 다른 사용자에게 전송할 수 있습니다. <br> <br> 지시사항에 따라 {{site.data.keyword.cloud_notm}}의 {{site.data.keyword.blockchainfull_notm}} 서비스에 Marbles를 배치하십시오. 화면 캡처는 스타터 플랜이 아닌 엔터프라이즈 플랜 UI를 보여줍니다. 기능은 유사합니다. | Javascript 애플리케이션의 GO 체인코드|IBM<br> [도움 받기![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://github.com/IBM-Blockchain/marbles/issues) |
-|[차량 제조업체 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://github.com/IBM-Blockchain/vehicle-manufacture) | 사용자는 가상 차량의 라이프사이클을 살펴볼 수 있습니다. <br> <br> 네트워크에 샘플 배치에 대한 단계별 안내서의 지시사항에 따라 **IBM Cloud에 이 데모를 수동으로 배치**하십시오. | Javascript 애플리케이션의 [Hyperledger Composer](../reference/hyperledger_composer.html) 비즈니스 네트워크 정의 |IBM<br> [도움 받기![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://github.com/IBM-Blockchain/vehicle-manufacture/issues) |
-|[변질성 제품 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://github.com/clauseHQ/demo-clause-ibm-perishable-goods)| 사용자는 배송과 온도를 기준으로 공급 체인에 상품을 구매하는 합법적인 계약을 배치할 수 있습니다. <br>  <br> <!-- This sample leverages the [Toolchain tool service![External link icon](../images/external_link.svg "External link icon")](../images/external_link.svg "External link icon")](https://console.bluemix.net/docs/services/ContinuousDelivery/index.html) to deploy the sample on your network automatically.--> | Javascript 애플리케이션의 [Hyperledger Composer](../reference/hyperledger_composer.html) 비즈니스 네트워크 정의 | [ClauseHQ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](http://clause.io/)<br> [도움 받기![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://github.com/clauseHQ/demo-clause-ibm-perishable-goods/issues) |
+| [Marbles ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://github.com/IBM-Blockchain/marbles "Marbles")| 여러 사용자가 서로 다른 특성으로 Marbles를 작성하고 다른 사용자에게 전송할 수 있습니다. <br> <br> 지시사항에 따라 {{site.data.keyword.cloud_notm}}의 {{site.data.keyword.blockchainfull_notm}} 서비스에 Marbles를 배치하십시오. 화면 캡처는 스타터 플랜이 아닌 엔터프라이즈 플랜 UI를 보여줍니다. 기능은 유사합니다. | Javascript 애플리케이션의 GO 체인코드|IBM<br> [도움말 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://github.com/IBM-Blockchain/marbles/issues "도움말") |
+|[자동차 제조업체 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://github.com/IBM-Blockchain/vehicle-manufacture "자동차 제조업체") | 사용자는 가상 차량의 라이프사이클을 살펴볼 수 있습니다.  <br> <br> 네트워크에 샘플 배치에 대한 단계별 안내서의 지시사항에 따라 **{{site.data.keyword.cloud_notm}}에 이 데모를 수동으로 배치**하십시오. |Javascript 애플리케이션의 [Hyperledger Composer](../references/hyperledger_composer.html) 비즈니스 네트워크 정의 |IBM<br> [도움말 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://github.com/IBM-Blockchain/vehicle-manufacture/issues "도움말") |
+|[부패 상품![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://github.com/clauseHQ/demo-clause-ibm-perishable-goods "부패 상품")| 사용자는 배송과 온도를 기준으로 공급 체인에 상품을 구매하는 합법적인 계약을 배치할 수 있습니다. <br>  <br> <!-- This sample leverages the [Toolchain tool service![External link icon](../images/external_link.svg "External link icon")](../images/external_link.svg "External link icon")](https://console.bluemix.net/docs/services/ContinuousDelivery/index.html) to deploy the sample on your network automatically.--> |Javascript 애플리케이션의 [Hyperledger Composer](../references/hyperledger_composer.html) 비즈니스 네트워크 정의 | [절 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](http://clause.io/ "절")<br> [도움말 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://github.com/clauseHQ/demo-clause-ibm-perishable-goods/issues "도움말") |
 
 IBM 및 커뮤니티 파트너가 샘플 애플리케이션을 작성합니다. 샘플에 대한 지원은 해당 Github 저장소를 통해 제공됩니다. 문제점이 발생하면 공개자 이름 옆에 있는 **도움 받기** 링크를 클릭하고 Github 저장소에서 문제를 열어 관련 팀에게 알리십시오.
 

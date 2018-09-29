@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-05-15"
+lastupdated: "2018-08-31"
 ---
 
 {:new_window: target="_blank"}
@@ -16,21 +16,25 @@ lastupdated: "2018-05-15"
 {: #ibmblockchain_support}
 
 
+***[此頁面有幫助嗎？請告訴我們。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
 有數種機制可用來取得支援，以及疑難排解與 {{site.data.keyword.Bluemix}} 上區塊鏈實例相關聯的問題。
 {:shortdesc}
 
 
 ## 在現有的資源中尋找解決方案
 
-導覽至**網路監視器**中的「支援」畫面，如**圖 1** 所示。您可以找到提供技術和支援資訊的資源鏈結。如需「支援」畫面上的詳細說明，請參閱[網路監視器](v10_dashboard.html)中的*支援*一節。
+導覽至**網路監視器**中的「支援」畫面，如**圖 1** 所示。您可以找到提供技術和支援資訊的資源鏈結。如需「支援」畫面上的詳細說明，請參閱[取得協助](v10_dashboard.html#support)。
 
 ![支援畫面](images/support.png "支援畫面")
 *圖 1. 支援畫面*
 
 
 ## 提交支援案例
+{: #support-cases}
 
-如果上述任一途徑都無法解決您的問題，請遵循下列步驟，在「{{site.data.keyword.cloud_notm}} 服務入口網站」中提交支援案例。
+如果上述任一途徑都無法解決您的問題，請遵循下列步驟，在「{{site.data.keyword.cloud_notm}} 服務入口網站」中提交支援案例。使用者可在所有與基礎「{site.data.keyword.blockchainfull_notm}} 平台」相關的問題上，根據其[{{site.data.keyword.cloud_notm}}支援方案](https://console.bluemix.net/docs/get-support/index.html#support-plans)來接收支援。如果您需要 Hyperledger Fabric 鏈碼、Hyperledger Composer 或應用程式方面的協助，請使用上述的社群資源，或參與 [{{site.data.keyword.blockchainfull_notm}} 服務 ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](https://www.ibm.com/blockchain/services)。
 
 1. 使用您的 {{site.data.keyword.IBM_notm}} ID 登入 [{{site.data.keyword.cloud_notm}} 服務入口網站 ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](https://ibm.biz/ibmcloudsupport)。
 2. 按一下中間的**取得協助**虛擬人像，或右上角的**建立案例**按鈕。

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -15,6 +15,10 @@ lastupdated: "2018-06-14"
 
 # 控管企業方案網路
 {: #getting-started-with-blockchain}
+
+
+***[此頁面有幫助嗎？請告訴我們。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
 
 「{{site.data.keyword.blockchainfull}} 平台企業方案」提供具有高度安全性、完整性、可調整性及效能的區塊鏈網路。您可以快速佈建全功能的網路，並使用「網路監視器」（這是一個 GUI 儀表板）來立即執行[鏈碼](glossary.html#chaincode)和應用程式，而不需要從頭開始設計及配置網路。
 {:shortdesc}
@@ -43,7 +47,7 @@ lastupdated: "2018-06-14"
 2. （選用）在「邀請成員」畫面中，輸入您想要邀請加入網路之成員的機構名稱和電子郵件位址。您指定的機構名稱並不是正式稱號。它只是用來讓您輕易地辨識該機構，在成員加入網路之後，可再加以變更。請注意，一個網路最多可以有 15 個成員（包括您自己）。此為選用步驟，您之後可以在「網路監視器」中，邀請成員加入您的網路。按**下一步**。在您完成建立網路的所有步驟之後，您邀請的成員將會收到關於邀請的電子郵件通知。
 3. 在「定義控管規則」畫面中，建立成員資格、頻道建立和鏈碼的原則。依預設，所有網路成員都可以邀請其他成員加入網路、建立頻道及實例化鏈碼。您的網路目前是使用預設控管原則。按**下一步**。
 4. 在「檢閱摘要」畫面中，驗證您的網路配置。如果您要進行修改，請按一下區段標頭旁邊的**編輯**，或按**上一步**按鈕，回到前一個畫面。完成網路配置後，請按一下**完成**。  
-5. 您會在「已建立網路」畫面上收到通知，指出已順利建立您的網路。您可以按一下**新增[對等節點](glossary.html#peer)**，以配置網路資源，或直接按一下**進入監視器**，以開啟「網路監視器」。您也可以之後再於「網路監視器」中新增對等節點。如需對等節點的相關資訊，請參閱[新增對等節點](v10_dashboard.md#add_peers)。
+5. 您會在「已建立網路」畫面上收到通知，指出已順利建立您的網路。您可以按一下**新增[對等節點](glossary.html#peer)**，以配置網路資源，或直接按一下**進入監視器**，以開啟「網路監視器」。您也可以之後再於「網路監視器」中新增對等節點。如需對等節點的相關資訊，請參閱[新增對等節點](v10_dashboard.html#peers)。
 
 現在您已成功部署能夠支援下列網路資源的 {{site.data.keyword.blockchain}} 網路：  
 * 成員特定的憑證管理中心 (CA)
@@ -75,7 +79,7 @@ lastupdated: "2018-06-14"
 ## 配置網路資源和環境
 
 1. 在建立或加入 {{site.data.keyword.blockchain}} 網路之後，進入您的「網路監視器」。「網路監視器」是一種 GUI 儀表板，您可以在其中管理及追蹤網路狀態資訊。如需相關資訊，請參閱[網路監視器](v10_dashboard.html)。
-2. 將您自己的對等節點新增至網路。如果您已新增足夠的對等節點，請跳過此步驟。對等節點會執行鏈碼，且其為與應用程式互動的端點。在「概觀」畫面中按一下**新增對等節點**，然後選取對等節點的數量和大小。如需相關資訊，請參閱[概觀](v10_dashboard.html#resources)。
+2. 將您自己的對等節點新增至網路。如果您已新增足夠的對等節點，請跳過此步驟。對等節點會執行鏈碼，且其為與應用程式互動的端點。在「概觀」畫面中按一下**新增對等節點**，然後選取對等節點的數量和大小。如需相關資訊，請參閱[概觀](v10_dashboard.html#overview)。
 3. 設定頻道。相同頻道中的所有成員都會佈建頻道特定的分類帳，其可提供資料隔離和機密性。如需如何建立頻道的相關資訊，請參閱[建立頻道](howto/create_channel.html#creating-a-channel)。  
 如果您是受邀加入頻道的頻道成員，您會收到電子郵件通知，其中的鏈結會連接至可讓您加入頻道的精靈。
 4. 將對等節點加入頻道。唯有與頻道相關聯的對等節點可以存取其分類帳。如需相關資訊，請參閱[頻道](v10_dashboard.html#channels)。
@@ -96,13 +100,13 @@ lastupdated: "2018-06-14"
 3. 在「新增認證」畫面中，為認證命名，並在「新增線型配置參數」欄位中輸入 **{"type": "service_instance_token"}**。按一下**新增**，而且新建的認證會新增在表格中。您可以按一下「動作」直欄下的**檢視認證**，以檢視認證詳細資料。此認證包含 API 金鑰和密碼，可用來授權 API。
 
 ### 在網路監視器中擷取
-您可以在「網路監視器」的「API」畫面中找到網路認證。如需使用 API 的相關資訊，請參閱[以 Swagger 來試用 API](apis.html)。
+您可以在「網路監視器」的「API」畫面中找到網路認證。如需使用 API 的相關資訊，請參閱[以 Swagger 來試用 API](howto/swagger_apis.html)。
 
 您可以在「網路監視器」的「概觀」畫面中擷取連線設定檔。按一下「概觀」畫面上的**連線設定檔**按鈕，連線設定檔就會顯示在新頁面中。
 
 
 ## 開發及部署自訂商業網路
-您可以使用「IBM Blockchain 平台：開發」開發人員環境和 Hyperledger Composer 開發人員工具集，根據您的商業需求來開發商業網路。針對您的業務來開發網路之後，可以將您的商業網路部署至「企業方案」網路。
+您可以使用「{{site.data.keyword.blockchainfull_notm}} 平台：開發」開發人員環境和 Hyperledger Composer 開發人員工具集，根據您的商業需求來開發商業網路。針對您的業務來開發網路之後，可以將您的商業網路部署至「企業方案」網路。
 
 如需相關資訊，請參閱[開發網路](develop.html)和[在企業方案上部署商業網路](develop_enterprise.html)。
 
@@ -122,5 +126,5 @@ lastupdated: "2018-06-14"
 <!--
 ## References
 * For more information about {{site.data.keyword.blockchainfull_notm}} offerings, see [Blockchain offerings](index.html).
-* For more information about Hyperledger Fabric, see [Hyperledger Fabric documentation ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/latest/){:new_window}.
+* For more information about Hyperledger Fabric, see [Hyperledger Fabric documentation ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/){:new_window}.
 -->

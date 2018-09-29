@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -15,14 +15,18 @@ lastupdated: "2018-06-14"
 # Déploiement de modèles d'application
 {: #overview}
 
-La plateforme {{site.data.keyword.blockchainfull}} fournit des modèles d'application que vous pouvez déployer et tester, de manière à avoir une meilleure compréhension des réseaux de blockchain et du développement d'application.
+
+***[Cette page est-elle utile ? Dites-nous.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
+{{site.data.keyword.blockchainfull}} Platform fournit des modèles d'application que vous pouvez déployer et tester, de manière à avoir une meilleure compréhension des réseaux de blockchain et du développement d'application.
 {: shortdesc}
 
-|  Exemples| Scénario d'utilisation       | Type d'exemple  | Créateur et support  |
+|  Exemples     | Scénario d'utilisation       | Type d'exemple  | Créateur et support  |
 | --------------|---------------------|----|-------|
-| [Marbles ![External link icon](../images/external_link.svg "External link icon")](https://github.com/IBM-Blockchain/marbles)|Plusieurs utilisateurs peuvent créer des billes dotées de propriétés différentes et les transférer entre eux. <br> <br> Suivez les instructions de déploiement de billes sur le site {{site.data.keyword.blockchainfull_notm}} Service on {{site.data.keyword.cloud_notm}}. Notez que la capture d'écran affiche l'interface utilisateur du plan Enterprise et non pas du plan Starter. La fonctionnalité est similaire. | Code blockchain avec une application Javascript | IBM<br> [Aide![External link icon](../images/external_link.svg "External link icon")](https://github.com/IBM-Blockchain/marbles/issues) |
-|[Vehicle Manufacture ![External link icon](../images/external_link.svg "External link icon")](https://github.com/IBM-Blockchain/vehicle-manufacture) | Permet aux utilisateurs d'examiner tout le cycle de vie d'un véhicule virtuel. <br> <br> Suivez les instructions de **déploiement manuel de cet exemple de démonstration vers IBM Cloud** pour un guide pas à pas de déploiement de l'exemple sur cotre réseau.| Définition de réseau d'entreprise [Hyperledger Composer](../reference/hyperledger_composer.html) avec une application Javascript | IBM<br> [Aide![External link icon](../images/external_link.svg "External link icon")](https://github.com/IBM-Blockchain/vehicle-manufacture/issues) |
-|[Denrées périssables![External link icon](../images/external_link.svg "External link icon")](https://github.com/clauseHQ/demo-clause-ibm-perishable-goods)| Les utilisateurs peuvent déployer des contrats juridiques pour achat de produits dans une chaîne d'approvisionnement basés sur une livraison et des relevés de température. <br>  <br> <!-- This sample leverages the [Toolchain tool service![External link icon](../images/external_link.svg "External link icon")](../images/external_link.svg "External link icon")](https://console.bluemix.net/docs/services/ContinuousDelivery/index.html) to deploy the sample on your network automatically.--> | Définition de réseau d'entreprise [Hyperledger Composer](../reference/hyperledger_composer.html) avec une application Javascript | [ClauseHQ![External link icon](../images/external_link.svg "External link icon")](http://clause.io/)<br> [Aide ![External link icon](../images/external_link.svg "External link icon")](https://github.com/clauseHQ/demo-clause-ibm-perishable-goods/issues) |
+| [Billes ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://github.com/IBM-Blockchain/marbles "Billes")| Plusieurs utilisateurs peuvent créer des billes dotées de propriétés différentes et les transférer entre eux. <br> <br> Suivez les instructions de déploiement de billes sur le site {{site.data.keyword.blockchainfull_notm}} Service on {{site.data.keyword.cloud_notm}}. Notez que la capture d'écran affiche l'interface utilisateur du plan Enterprise et non pas du plan Starter. La fonctionnalité est similaire. | Code blockchain avec une application Javascript| IBM<br> [Obtenir de l'aide ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://github.com/IBM-Blockchain/marbles/issues "Obtenir de l'aide") |
+| [Fabrication de véhicules ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://github.com/IBM-Blockchain/vehicle-manufacture "Fabrication de véhicules") | Permet aux utilisateurs d'examiner tout le cycle de vie d'un véhicule virtuel.  <br> <br> Suivez les instructions de **déploiement manuel de cet exemple de démonstration vers {{site.data.keyword.cloud_notm}}** pour un guide pas à pas de déploiement de l'exemple sur cotre réseau.| Définition de réseau d'entreprise [Hyperledger Composer](../references/hyperledger_composer.html) avec une application Javascript | IBM<br> [Obtenir de l'aide![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://github.com/IBM-Blockchain/vehicle-manufacture/issues "Obtenir de l'aide") |
+| [Produits périssables ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://github.com/clauseHQ/demo-clause-ibm-perishable-goods "Produits périssables")| Les utilisateurs peuvent déployer des contrats juridiques pour achat de produits dans une chaîne d'approvisionnement basés sur une livraison et des relevés de température. <br>  <br> <!-- This sample leverages the [Toolchain tool service![External link icon](../images/external_link.svg "External link icon")](../images/external_link.svg "External link icon")](https://console.bluemix.net/docs/services/ContinuousDelivery/index.html) to deploy the sample on your network automatically.--> | Définition de réseau d'entreprise [Hyperledger Composer](../references/hyperledger_composer.html) avec une application Javascript | [Clause ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](http://clause.io/ "Clause")<br> [Obtenir de l'aide ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://github.com/clauseHQ/demo-clause-ibm-perishable-goods/issues "Obtenir de l'aide") |
 
 Les exemples d'applications sont créés par IBM et des partenaires dans la communauté. Le support des exemples sera assuré via les référentiels Github correspondants. Si vous rencontre un problème, cliquez sur le lien **Aide** en regard de l'éditeur et ouvrez un problème dans le référentiel Github pour aviser l'équipe pertinente.
 

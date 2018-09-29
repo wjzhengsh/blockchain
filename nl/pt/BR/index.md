@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -14,8 +14,13 @@ lastupdated: "2018-06-14"
 
 # {{site.data.keyword.blockchainfull_notm}} Platform
 
-**ATENÇÃO:** antes de usar uma oferta do {{site.data.keyword.blockchainfull}} Platform, leia as informações técnicas e de suporte na seção [Renúncia de responsabilidade](needtoknow.html).  
+
+***[Esta página é útil? Diga-nos.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
+**ATENÇÃO:** antes de usar uma oferta do {{site.data.keyword.blockchainfull}} Platform, leia as informações técnicas e de suporte na seção [Renúncia de responsabilidade](needtoknow.html).
 {:shortdesc}
+
 
 O {{site.data.keyword.blockchainfull_notm}} Platform é a única plataforma pronta para negócios integrada que aborda o ciclo de vida completo (**desenvolver**, **governar** e **operar**) de uma rede de blockchain de múltiplas organizações. Ele foi projetado para acelerar, por meio da colaboração em cada fase, a criação de redes de blockchain globais "construídas para os negócios" com o desempenho e a segurança até mesmo para os casos de uso e os setores regulamentados mais exigentes.
 
@@ -27,22 +32,25 @@ O {{site.data.keyword.blockchainfull_notm}} Platform é a única plataforma pron
 
 **Nota**: a tabela não se destina a representar uma progressão linear. Tarefas como desenvolvimento e gerenciamento de rede ocorrerão repetidamente à medida que os aplicativos e a associação evoluírem.
 
-## Ofertas de Associação da {{site.data.keyword.IBM_notm}}
+## Ofertas de Associação da {{site.data.keyword.blockchainfull_notm}}
 
 O {{site.data.keyword.blockchainfull_notm}} Platform fornece diferentes planos de associação para ajudar todos os tipos de usuários a iniciarem em sua jornada de blockchain e mover os seus aplicativos para produção.
 
-|       | [Starter Plan](starter_plan.html)      | [Enterprise Plan](enterprise_plan.html)  | Plano corporativo plus | Plano autogerenciado
+|       | [Starter Plan](starter_plan.html) | [Enterprise Plan](enterprise_plan.html)  | Plano corporativo plus | [Peer remoto](howto/remote_peer.html) |
 | ------------------------- |--------------------------|-----|-----|------|
-| **O que está incluído** | **Níveis de serviço básico, ambiente de desenvolvimento e teste** | **Níveis de serviço avançados, prontos para produção corporativa** | **Cálculo dedicado para desempenho e isolamento, pronto para a produção corporativa** | Pilha de software para instalar em sua própria infraestrutura, conecte-se a uma rede hospedada nesse serviço de nuvem |
-| **Política de faturamento** | **[Créditos de avaliação](howto/pricing.html#starter-plan-pricing) seguidos por encargo mensal** | **Assinatura mensal** | **Assinatura mensal** | Assinatura mensal |
-| **Disponibilidade** | **Disponível agora** | **Disponível agora** | **Após a compra** | Em breve |
+| **O que está incluído** | **Níveis de serviço básico, ambiente de desenvolvimento e teste** | **Níveis de serviço avançados, prontos para produção corporativa** | **Cálculo dedicado para desempenho e isolamento, pronto para a produção corporativa** | **Gráfico de Helm implementável do peer remoto** |
+| **Política de faturamento** | **Assinatura mensal com [créditos de nuvem disponíveis](howto/pricing.html#starter-plan-pricing)** | **Assinatura mensal** | **Assinatura mensal** | **Grátis para beta** |
+| **Disponibilidade** | **Disponível em geral** | **Disponível em geral** | **Após a compra** | **Beta** |
 
-**Cuidado:** não use o **Starter Plan** para a produção. Ele é um ambiente de desenvolvimento e teste e não é adequado para cargas de trabalho de produção.
+**Cuidado:** não use o **Starter Plan** para uso na produção. Ele é um ambiente de desenvolvimento e teste e não é adequado para cargas de trabalho de produção.
 
 As ofertas do {{site.data.keyword.blockchainfull_notm}} são construídas no código base do [Hyperledger Fabric](reference/v10_fabric.html) V1.1 que alavanca uma arquitetura modular para atingir níveis corporativos de segurança, integridade de dados, escalabilidade e desempenho para atender às suas necessidades de negócios.
-- **O IBM Blockchain Starter Plan** é um ambiente para aprender ou começar a desenvolver redes de blockchain.
+- O **Starter Plan** é um ambiente para aprender ou iniciar o desenvolvimento de redes de blockchain.
 - O **Enterprise Plan** é um ambiente de produção que oferece altos níveis de segurança e suporte.
 - O **Enterprise Plus Plan** oferece um ambiente de produção dedicado para desempenho adicional e recursos de cálculo e armazenamento isolados para proteger dados críticos.
+- O **Peer remoto** permite executar peers fora do {{site.data.keyword.cloud_notm}} para que você possa aumentar sua rede de blockchain com mais flexibilidade enquanto aproveita uma rede existente do {{site.data.keyword.blockchainfull_notm}} dentro do {{site.data.keyword.cloud_notm}}.
+
+O {{site.data.keyword.blockchainfull_notm}} Platform é um serviço de plataforma no {{site.data.keyword.cloud_notm}} e todas as ofertas de associação seguem os [termos de Serviços do {{site.data.keyword.cloud_notm}} ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://www-03.ibm.com/software/sla/sladb.nsf/sla/bm-6605-13 "{{site.data.keyword.cloud_notm}} termos de Serviços") sobre os acordos de nível de serviço (SLAs). Observe que as redes do Starter Plan e do Enterprise Plan são provisionadas em **diversos ambientes** em data centers separados geograficamente.
 
 Inscreva-se agora para participação no [{{site.data.keyword.blockchainfull_notm}}
 ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps)!
@@ -59,9 +67,9 @@ Como um proprietário de negócios, é possível desenvolver o seu caso de uso c
 Como um desenvolvedor, é possível alinhar os requisitos de negócios de maneira rápida e fácil e acelerar o desenvolvimento de aplicativos de blockchain no ambiente de rede do {{site.data.keyword.blockchainfull_notm}} Platform usando um playground interativo para desenvolver, iterar e testar redes de negócios. Essas ferramentas foram projetadas para transformar regras de negócios em código de rede de negócios em seu ambiente preferencial:
 * **Explorar on-line**  
   Alavanque o [{{site.data.keyword.blockchainfull_notm}} Platform: Develop](./develop.html)<!--, which is powered by an open source development tool--> para aprender conceitos chaves de blockchain, criar definições de rede e alavancar modelos do segmento de mercado reutilizáveis e bibliotecas de contrato inteligentes.  
-  Após você ter desenvolvido a sua rede de negócios, será possível implementá-la em uma rede em tempo real em execução no IBM Blockchain Platform. Para obter mais informações, veja [Implementando redes de negócios com o Starter Plan](./develop_starter.html) e [Implementando redes de negócios com o Enterprise Plan](./develop_enterprise.html).
+  Após o desenvolvimento de sua rede de negócios, será possível implementá-la em uma rede em tempo real executada no {{site.data.keyword.blockchainfull_notm}} Platform. Para obter mais informações, veja [Implementando redes de negócios com o Starter Plan](./develop_starter.html) e [Implementando redes de negócios com o Enterprise Plan](./develop_enterprise.html).
 * **Instale localmente**  
-  Alavanque as imagens certificadas da IBM do Hyperledger Fabric e Composer, que são estrutura de software livre e ferramenta para construir uma rede de negócios, para desenvolver e testar diretamente em seu laptop. Para obter mais informações, veja [Construindo a sua primeira rede](http://hyperledger-fabric.readthedocs.io/en/latest/build_network.html).
+  Alavanque as imagens certificadas da IBM do Hyperledger Fabric e Composer, que são estrutura de software livre e ferramenta para construir uma rede de negócios, para desenvolver e testar diretamente em seu laptop. Para obter mais informações, consulte [Construindo sua primeira rede](http://hyperledger-fabric.readthedocs.io/en/release-1.1/build_network.html).
 * **Colabore em um ambiente de nuvem**  
   Use redes em tempo real prontas para uso com opções do Starter Plan e Enterprise Plan para desenvolver e compartilhar o seu código com outros. Para obter mais informações, veja [Sobre o Starter Plan](starter_plan.html) e [Sobre o Enterprise Plan](enterprise_plan.html).
 
@@ -102,7 +110,7 @@ A operação de sua rede no {{site.data.keyword.blockchainfull_notm}} Platform i
 Para tornar um blockchain operacional, os membros formam uma base de confiança, executando um ou mais serviços de rede básicos:
 
 - **Serviço de solicitação** – Solicitando e sincronizando transações  
-  Essencialmente, o serviço de solicitação é a definição da rede.  Ele contém informações de identidade para cada membro, informações sobre canais e um conjunto de políticas que ditam quais membros têm permissão para executar determinadas tarefas (por exemplo, convidar outros membros, criar canais etc.). Cada operação de transação e configuração fluirá por meio do serviço de solicitação, portanto, ele é uma parte mais do que crítica no esquema geral das coisas.  Dada a importância fundamental do serviço de solicitação, é fácil ver os perigos de uma orquestração autoritária na qual, talvez, apenas um membro dite as regras.  Para combater isso, o serviço de solicitação é gerenciado comunitariamente pelos membros da rede e as implementações de governança são aplicadas em conjunto.  Por outras palavras, as decisões são tomadas coletivamente, NÃO unilateralmente. Todos os membros têm uma participação na rede e, por extensão, têm um voto em quaisquer operações que configurem e customizem sua posição na rede.  Essas noções de "democracia" e decisões tomadas em conjunto são os blocos de construção inerentes para uma rede confiável e descentralizada.  A IBM serve como o "operador" do serviço de solicitação para quaisquer redes que são implementadas no IBM Blockchain Platform.
+  Essencialmente, o serviço de solicitação é a definição da rede.  Ele contém informações de identidade para cada membro, informações sobre canais e um conjunto de políticas que ditam quais membros têm permissão para executar determinadas tarefas (por exemplo, convidar outros membros, criar canais etc.). Cada operação de transação e configuração fluirá por meio do serviço de solicitação, portanto, ele é uma parte mais do que crítica no esquema geral das coisas.  Dada a importância fundamental do serviço de solicitação, é fácil ver os perigos de uma orquestração autoritária na qual, talvez, apenas um membro dite as regras.  Para combater isso, o serviço de solicitação é gerenciado comunitariamente pelos membros da rede e as implementações de governança são aplicadas em conjunto.  Por outras palavras, as decisões são tomadas coletivamente, NÃO unilateralmente. Todos os membros têm uma participação na rede e, por extensão, têm um voto em quaisquer operações que configurem e customizem sua posição na rede.  Essas noções de "democracia" e decisões tomadas em conjunto são os blocos de construção inerentes para uma rede confiável e descentralizada.  A IBM serve como a "operadora" do serviço de solicitação de quaisquer redes implementadas no {{site.data.keyword.blockchainfull_notm}} Platform.
 
 - **Autoridade de certificação** – Emitindo certificados para os participantes  
   Simplificando, a Autoridade de Certificação (CA) fornece a associação.  Todas as entidades na rede (peers, solicitantes, clientes etc.) deve ter uma identidade para se comunicar, autenticar e, finalmente, transacionar. Essas “identidades“ existem na forma de certificados x509 (ou seja, certificados de inscrição), que são necessários para qualquer participação direta na rede de blockchain.  Também há formas de participação indireta, mas vamos falar sobre isso mais tarde.  A CA pode ser mais bem entendida como o carimbo que fornece atestado e credibilidade às identidades.  Cada membro possui sua própria autoridade de certificação e, por meio dela, ele pode assinar certificados não apenas para os seus recursos de propriedade total (peers), mas também para clientes e aplicativos de terceiros.  Você pode comparar a CA de um membro a uma caneta especial ou a um carimbo do tabelião.  Um certificado de que essas assinaturas de autoridade de certificação são um pré-requisito para acessar a rede.
@@ -131,11 +139,11 @@ O {{site.data.keyword.blockchainfull_notm}} Platform é suportado pelo Hyperledg
 
 Às vezes é útil pensar nos membros como uma persona que descreve a função do membro na rede de negócios.  Aqui estão alguns que são frequentemente usados.
 
-- **Iniciador** - Um membro que outros membros selecionam para autoinicializar a rede de Blockchain.    O IBM Blockchain Platform requer que um único membro se conecte a ele e execute tarefas para iniciar a rede.  Elas incluem nomenclatura da rede, convite do conjunto de membros inicial e configuração do conjunto padrão de políticas de operação de rede.  Esta é uma função temporária.  Após a rede ser reinicializada, o inicializador não reterá privilégios especiais e simplesmente continuará a função de membro.  
+- **Iniciador** - Um membro que outros membros selecionam para autoinicializar a rede de Blockchain.    O {{site.data.keyword.blockchainfull_notm}} Platform requer que um único membro se conecte ao {{site.data.keyword.blockchainfull_notm}} Platform e execute tarefas para iniciar a rede. Elas incluem nomenclatura da rede, convite do conjunto de membros inicial e configuração do conjunto padrão de políticas de operação de rede.  Esta é uma função temporária.  Após a rede ser reinicializada, o inicializador não reterá privilégios especiais e simplesmente continuará a função de membro.  
 
 - **Mantenedor** - Um membro que está executando um ou mais peers e autoridades de certificação de rede.   Esses membros estão mantendo a integridade do livro-razão distribuído pela participação no processo de consenso, que é como as transações são validadas em uma rede de blockchain.   O mantenedor, por meio da propriedade de uma autoridade de certificação, também pode emitir certificados aos participantes e conceder-lhes acesso à rede.
 
-- **Operador** - Um membro que está executando serviços em nome de outros membros de rede, incluindo o serviço de solicitação de transação, as autoridades de certificação, os gateways de transação e outros serviços de rede básicos.  Por padrão, a IBM é o operador de redes que são implementadas no IBM Blockchain Platform.
+- **Operador** - Um membro que está executando serviços em nome de outros membros de rede, incluindo o serviço de solicitação de transação, as autoridades de certificação, os gateways de transação e outros serviços de rede básicos.  Por padrão, a IBM é a operadora de redes que são implementadas no {{site.data.keyword.blockchainfull_notm}} Platform.
 
 - **Auditor** - Um membro que tem permissões concedidas pela rede para executar funções de auditoria na rede.  Exemplos de funções de auditoria incluem faturamento, rastreamento de conformidade ou analítica.  A função de auditor geralmente se traduz no membro que tem acesso a uma visualização mais ampla das transações no livro-razão e/ou uma inscrição mais ampla em canais de transação.
 
@@ -169,4 +177,4 @@ Antes de continuar, vamos dar uma olhada em uma configuração simples dentro do
 A {{site.data.keyword.IBM_notm}} oferece suporte para as soluções {{site.data.keyword.blockchain}} implementadas pela {{site.data.keyword.IBM_notm}}. Para obter mais informações sobre o Suporte {{site.data.keyword.blockchainfull_notm}}, consulte [Obtendo suporte](ibmblockchain_support.html).
 
 Para obter mais detalhes sobre todos os recursos e a funcionalidade do Hyperledger Fabric,
-veja [Documentação do Hyperledger Fabric ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](http://hyperledger-fabric.readthedocs.io/en/latest/).
+veja [Documentação do Hyperledger Fabric ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/).
