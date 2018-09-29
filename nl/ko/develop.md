@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -15,6 +15,10 @@ lastupdated: "2018-06-14"
 
 # 네트워크 개발
 {: #develop-the-network}
+
+
+***[이 페이지가 도움이 되었습니까? 알려주십시오.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
 
 {{site.data.keyword.blockchainfull}} Platform을 사용하여 블록체인 솔루션을 개발할 때 Hyperledger Composer 오픈 소스 개발 도구 세트를 활용합니다. Hyperledger Composer는 맞춤형 모델링 언어를 사용하며, 이 언어는 사용자가 실제 블록체인 네트워크에 무언가를 배치하기 _전에_ JavaScript 트랜잭션 및 액세스 제어 규칙에 결합되어 블록체인 비즈니스 네트워크 전체를 모델링합니다.
 {:shortdesc}
@@ -167,7 +171,7 @@ yo hyperledger-composer:businessnetwork
 2. `tutorial-network` 디렉토리에서 다음 명령을 실행하십시오.
 
     ```
-    composer archive create -t dir -n .
+composer archive create -t dir -n .
     ```
     {:codeblock}
 

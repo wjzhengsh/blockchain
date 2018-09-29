@@ -14,7 +14,9 @@ lastupdated: "2018-03-16"
 
 # Pagamento per la rete
 
-**Nota**: {{site.data.keyword.blockchainfull}} Platform piano Starter è gratuito per Beta.
+
+***[Questa pagina è utile? Faccelo sapere.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
 
 {{site.data.keyword.blockchainfull_notm}} Platform prevede un addebito mensile con costi per le adesioni e costi per i peer. A seconda del piano di rete da te scelto e dalla quantità di risorse da te utilizzata, i tuoi pagamenti sono differenti.  Prendendo ad esempio piano Enterprise, i membri della rete devono pagare $1.000 al mese come costo di adesione e altri $1.000 al mese per ciascuno dei loro peer nella rete. Il costo mensile viene addebitato ogni giorno su base proporzionale. Ad esempio, un membro (costo di adesione associato di $1.000) di due peer (costo per ogni peer di $1.000 X 2 peer) deve pagare $3.000 ogni mese. Se il mese ha 30 giorni, il membro paga $ 100 ($3.000/30) ogni giorno.
 

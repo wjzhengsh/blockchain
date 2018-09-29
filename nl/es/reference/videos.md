@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -16,11 +16,15 @@ lastupdated: "2018-06-14"
 {:download: .download}
 
 
-
 # Vídeos de inicio de la plataforma de {{site.data.keyword.blockchainfull_notm}}
 {: #ibp-videos}
 
 
-Vea el vídeo siguiente para obtener más información sobre la IBM Blockchain Platform y cómo empezar a desarrollar una red blockchain.
+***[¿Le resulta útil esta página? Indíquenos su opinión.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
-<iframe class="embed-responsive-item" id="youtubeplayer" type="text/html" width="640" height="390" src="https://www.youtube.com/embed?listType=playlist&list=PL7LSy0eQMvjvBdal2mm74JlcNGMXYSGOe" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
+
+Vea la siguiente serie de vídeos para obtener más información sobre la plataforma {{site.data.keyword.blockchainfull}} y sobre cómo empezar a desarrollar una red blockchain.
+
+**Nota**: la serie de vídeos está en una lista de reproducción y los vídeos se reproducen continuamente en el marco de vídeo de abajo. También puede pulsar el icono de menú en la esquina superior izquierda del vídeo para abrir la lista de reproducción y cambiar a otro vídeo.
+
+<iframe class="embed-responsive-item" id="youtubeplayer" title="Vídeos del plan inicial" type="text/html" width="640" height="390" src="https://www.youtube.com/embed?listType=playlist&list=PL7LSy0eQMvjvBdal2mm74JlcNGMXYSGOe" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>

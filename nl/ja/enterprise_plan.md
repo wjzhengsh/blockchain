@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-03-16"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -14,10 +14,16 @@ lastupdated: "2018-03-16"
 
 # エンタープライズ・プランについて
 
-{{site.data.keyword.blockchainfull}} Platform エンタープライズ・プランは、実際の業務でブロックチェーン・ネットワークを作成する (またはそれに参加する) ことを考慮している組織向けの、実動環境に対応したオファリングです。 このプランには主要なインフラストラクチャーおよびツールとサポートが含まれているため、セキュリティーが高く、実働環境に対応したネットワークを簡単に開始できます。 エンタープライズ・プランは、2018 年 5 月 15 日に Hyperledger Fabric V1.0 から V1.1 にアップグレードされました。2018 年 5 月 15 日より後に作成したすべてのネットワークが Fabric V1.1 レベルになります。ただし、以前に作成されたネットワークは、Fabric V1.0 レベルのままです。
+
+***[このページは参考になりましたか。 ご意見をお聞かせください。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
+{{site.data.keyword.blockchainfull}} Platform エンタープライズ・プランは、実際の業務でブロックチェーン・ネットワークを作成する (またはそれに参加する) ことを考慮している組織向けの、実動環境に対応したオファリングです。 このプランには主要なインフラストラクチャーおよびツールとサポートが含まれているため、セキュリティーが高く、実働環境に対応したネットワークを簡単に開始できます。 エンタープライズ・プランは、2018 年 5 月 15 日に Hyperledger Fabric V1.0 から V1.1 にアップグレードされました。 2018 年 5 月 15 日より後に作成したすべてのネットワークが Fabric V1.1 レベルになります。 ただし、以前に作成されたネットワークは、Fabric V1.0 レベルのままです。
 {:shortdesc}
 
-**注**: {{site.data.keyword.blockchainfull_notm}} Platform エンタープライズ・プランは実稼働環境を提供します。 開発/テスト用の環境が必要な場合は、[スターター・プランについて](starter_plan.html)を参照してください。
+**注:**
+- {{site.data.keyword.blockchainfull_notm}} Platform エンタープライズ・プランは実稼働環境を提供します。 開発/テスト用の環境が必要な場合は、[スターター・プランについて](starter_plan.html)を参照してください。
+- {{site.data.keyword.blockchainfull_notm}} Platform は {{site.data.keyword.cloud_notm}} のプラットフォーム・サービスであり、すべてのメンバーシップ・オファリングはサービス・レベル・アグリーメント (SLA) に関する [{{site.data.keyword.cloud_notm}} サービスのご利用条件 ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://www-03.ibm.com/software/sla/sladb.nsf/sla/bm-6605-13 "{{site.data.keyword.cloud_notm}} サービスのご利用条件") に従っています。エンタープライズ・プラン・ネットワークは、**複数の環境**にまたがり、地理的に別々のデータ・センターにプロビジョンされます。
 
 ネットワークを始めようとしているメンバーのために、IBM は、ネットワークをセットアップしてプロビジョンするための重要な手順をネットワーク・イニシエーターに案内するグラフィカル・ユーザー・インターフェースを用意しています。 例えば、他のメンバーを招待したり、ガバナンス・ルールを設定したりする手順を案内します。 詳しくは、[エンタープライズ・プラン・ネットワークの管理](get_start.html)を参照してください。 ネットワークをデプロイした後、ネットワーク・モニターという対話式グラフィカル・ユーザー・インターフェースを使用すると、ネットワークの正常性とアクティビティーをモニターしたり、主要なネットワーク・アクティビティー (新規デプロイメント、メンバーの追加/削除、チェーンコードのライフサイクル、チャネル管理などの作業) を管理したり、技術サポートを利用したりできます。 ネットワーク・モニターについて詳しくは、[エンタープライズ・プラン・ネットワークの操作](v10_dashboard.html)を参照してください。
 
@@ -38,11 +44,11 @@ Fabric CA は、エンタープライズ・プランで提供される認証局�
 
 決定する必要がある唯一の点は、ネットワークに必要なピアのサイズです。 これは、必要なチャネルの数、1 チャネルあたりのワークロード、メモリー使用量、ディスク・スペース (ストレージ) に基づいて決定します。
 
-より安定した実動レベルまたは実動に近いレベルのデプロイメントには、エンタープライズ・プランを使用してください。 テストを目的とする場合は、[スターター・プラン](starter_plan.html)を使用するか、[IBM Container Service](https://ibm-blockchain.github.io/) で開発するか、または [Docker イメージをローカルにインストール](http://hyperledger-fabric.readthedocs.io/en/latest/build_network.html)します。
+より安定した実動レベルまたは実動に近いレベルのデプロイメントには、エンタープライズ・プランを使用してください。 テストを目的とする場合は、[スターター・プラン](starter_plan.html)を使用するか、[IBM Container Service](https://ibm-blockchain.github.io/) で開発するか、または [Docker イメージをローカルにインストール](http://hyperledger-fabric.readthedocs.io/en/release-1.1/build_network.html)します。
 
 <!--- The Enterprise plan provides the ordering service and CA. The membership fee is $1,000, and a per peer fee of $1,000 that is associated with the network. If you want to have high availability (HA), you must purchase an additional peer to provide the HA capabilities. For example, one organization (associated membership fee of $1,000) of two peers ($1,000 X 2 peers) with HA ($1,000 X 2 HA peers) requires a monthly charge of $5,000.  --->
 
 ## 料金  
 エンタープライズ・プランのご利用料金は、ネットワーク・メンバーのメンバーシップ料金が 1 カ月あたり $1,000、それに加えてネットワーク内のピアごとに 1 カ月あたり $1,000 です。  毎月の料金は、日割りで請求されます。  例えば、2 つのピアを使用するメンバーは、該当するメンバーシップ料金 $1,000 と、ピアごとの料金 $1,000 X 2 ピアを合わせて、毎月 $3,000 をお支払いいただく必要があります。  その月の日数が 30 日の場合、そのメンバーは毎日 $100 ($3,000/30) を支払います。  高可用性 (HA) が必要な場合、HA 機能を提供するために、必要なピア数を 2 倍にする必要があることに注意してください。
 
-各ネットワーク・メンバーは、ネットワーク・インスタンスを作成するスペースを所有する自分の {{site.data.keyword.cloud_notm}} アカウントで請求料金を支払うことができます。  それ以外にも、1 つのネットワーク・メンバーがネットワーク内のすべてのメンバーの請求料金を負担することもできます。  ブロックチェーン・ネットワークの支払い方法について詳しくは、[ネットワークの支払い](howto/pay_for_the_network.html)を参照してください。
+各ネットワーク・メンバーは、ネットワーク・インスタンスを作成するスペースを所有する自分の {{site.data.keyword.cloud_notm}} アカウントで請求料金を支払うことができます。 それ以外にも、1 つのネットワーク・メンバーがネットワーク内のすべてのメンバーの請求料金を負担することもできます。 ブロックチェーン・ネットワークの支払い方法について詳しくは、[ネットワークの支払い](howto/paying_mode.html)を参照してください。

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -15,6 +15,10 @@ lastupdated: "2018-06-14"
 
 # Instalación de un entorno de desarrollo
 {: #installing-a-development-environment}
+
+
+***[¿Le resulta útil esta página? Indíquenos su opinión.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
 
 Siga estas instrucciones para obtener las herramientas de despliegue {{site.data.keyword.blockchainfull}} Platform: Develop para crear y probar redes empresariales. Para proporcionar flexibilidad y permitir el número máximo de escenarios de desarrollo, prueba y despliegue, las herramientas de desarrollo se entregan como módulos npm, que se controlan desde la línea de mandatos.
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -16,7 +16,12 @@ lastupdated: "2018-06-14"
 # 스타터 플랜에 비즈니스 네트워크 배치
 {: #deploying-a-business-network}
 
+
+*[이 페이지가 도움이 되었습니까? 알려주십시오.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)*
+
+
 {{site.data.keyword.blockchainfull}} Platform 개발자 환경 및 Hyperledger Composer 개발자 도구 세트를 사용하여 비즈니스 네트워크를 개발하고 스타터 플랜 환경에 배치할 수 있습니다.
+{:shortdesc}
 
 개발자 환경을 사용하여 {{site.data.keyword.blockchain}} 비즈니스 네트워크를 신속하게 모델링하고 테스트하며 {{site.data.keyword.blockchainfull_notm}} Platform의 인스턴스에 배치할 수 있습니다.
 
@@ -33,7 +38,7 @@ lastupdated: "2018-06-14"
 
 3. 연결 프로파일 내부에서 'registrar'가 표시될 때까지 아래로 이동하십시오. 'registrar' 내부의 'enrollId' 아래에 **enrollSecret** 특성이 있습니다. 시크릿을 검색하고 사본을 저장하십시오.
 
-    ![D8KBag](https://i.makeagif.com/media/4-12-2018/D8KBag.gif)
+    ![관리 시크릿 검색](images/get_enroll_secret.gif "관리 시크릿 검색")
 
 
 ## 2단계: 인증 기관 카드 작성
@@ -71,11 +76,11 @@ composer card import -f ca.card -c ca
 
 1. 스타터 플랜 UI에서 **구성원** 탭을 클릭한 후 **인증서** 및 **인증서 추가**를 차례로 클릭하십시오. `credentials` 디렉토리로 이동한 후 `admin-pub.pem` 파일의 컨텐츠를 복사하여 인증서 상자에 붙여넣으십시오. 인증서를 제출하고 피어를 다시 시작하십시오. 참고: 피어를 다시 시작하는 데 몇 분이 걸립니다.
 
-    ![jlEb2y](https://i.makeagif.com/media/4-12-2018/jlEb2y.gif)
+    ![인증서 추가](images/add_cert.gif "인증서 추가")
 
 2. 그런 다음 인증서가 채널에서 동기화되어야 합니다. **채널** 탭을 클릭한 후 **조치** 단추, **인증서 동기화** 및 **제출**을 차례로 클릭하십시오.
 
-    ![E-sVV5](https://i.makeagif.com/media/4-12-2018/E-sVV5.gif)
+    ![인증서 동기화](images/sync_cert.gif "인증서 동기화")
 
 ## 4단계: 관리 비즈니스 네트워크 카드 작성
 
@@ -113,7 +118,7 @@ composer network install -c adminCard -a vehicle-manufacture-network.bna
 2. 아래 명령을 사용하여 비즈니스 네트워크를 시작하십시오. 오류가 발생하는 경우 몇 분 기다린 후 다시 시도하십시오. `-V` 옵션 다음에 지난 단계에서 얻은 버전 번호를 사용하십시오.
 
     ```
-    composer network start -c adminCard -n vehicle-manufacture-network -V 0.0.1 -A admin -C ./credentials/admin-pub.pem -f delete_me.card
+composer network start -c adminCard -n vehicle-manufacture-network -V 0.0.1 -A admin -C ./credentials/admin-pub.pem -f delete_me.card
     ```
     {:codeblock}
 
@@ -129,7 +134,7 @@ composer card create -n vehicle-manufacture-network -p connection-profile.json -
 5. 다음 명령을 사용하여 비즈니스 네트워크 카드를 가져오십시오.
 
     ```
-    composer card import -f ./admin@vehicle-manufacture-network.card
+composer card import -f ./admin@vehicle-manufacture-network.card
     ```
     {:codeblock}
 
@@ -137,13 +142,13 @@ composer card create -n vehicle-manufacture-network -p connection-profile.json -
 
 ## 6단계: 비즈니스 네트워크에 ping을 실행하여 올바르게 실행 중인지 확인
 
-1. 다음 명령을 실행하여 비즈니스 네트워크에 ping을 실행하십시오.
+다음 명령을 실행하여 비즈니스 네트워크에 ping을 실행하십시오.
 
    ```
 composer network ping -c admin@vehicle-manufacture-network
    ```
    {:codeblock}
 
-체인코드 로그를 보려면 **채널**을 클릭한 후 사용자 채널을 선택하십시오. 로그를 보려면 드롭 다운 화살표를 클릭하고 자세히 보려면 조치 기호를 클릭하십시오.
+체인코드 로그를 보려면 **채널**을 클릭한 다음 채널을 선택하십시오. <!-- Click the dropdown arrow to view the logs, or the Actions symbol to view in more detail. --> **체인코드** 탭을 클릭하십시오. 체인코드 행을 펼친 다음 **JSON** 또는 **로그** 단추를 클릭하십시오.
 
-![fN-Yuj](https://i.makeagif.com/media/4-13-2018/fN-Yuj.gif)
+<!-- [fN-Yuj](https://i.makeagif.com/media/4-13-2018/fN-Yuj.gif) -->

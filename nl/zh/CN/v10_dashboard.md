@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -15,13 +15,17 @@ lastupdated: "2018-06-14"
 # 运行企业套餐网络
 {: #v10_dashboard}
 
+
+***[此页面是否有用？请告诉我们。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
 {{site.data.keyword.blockchainfull}} Platform 中的“网络监视器”提供区块链环境的概述，包括网络资源、成员、加入的通道、事务处理性能数据和已部署的链代码。“网络监视器”还提供了入口点来运行 Swagger API，使用 {{site.data.keyword.blockchainfull_notm}} Platform: Develop 来开发网络以及试用样本应用程序。
 {:shortdesc}
 
 您可以在“网络监视器”中[更改企业套餐网络的名称](#ep-network-name)。
 
 “网络监视器”分三个部分显示以下屏幕。您可以在“网络监视器”左侧导航器中导航至各个屏幕。
-- **我的网络**部分包含“[概述](#overview)”、“[成员](#members)”、“[通道](#channels)”、“[通知](#notifications)”和“[API](#apis)”屏幕。
+- **我的网络**部分包含“[概述](#overview)”、“[成员](#members)”、“[通道](#channels)”、“[通知](#notifications)”、“[认证中心](#ca)”和“[API](#apis)”屏幕。
 - **我的代码**部分包含“[开发代码](#write_code)”、“[安装代码](#chaincode)”和“[试用样本](#samples)”屏幕。
 - “[获取帮助](#support)”屏幕显示支持信息以及 Helios 和 Hyperledger Fabric（{{site.data.keyword.blockchainfull_notm}} Platform 基于的代码库）的发行说明。
 
@@ -59,6 +63,10 @@ lastupdated: "2018-06-14"
 
 您还可以通过单击**操作**标头下的下拉列表中的**查看日志**来检查组件日志。日志会公开在各种网络资源之间的调用，且在进行调试和故障诊断时非常有用。例如，通过停止同级并尝试将其设定为某个事务处理的目标来进行试验；您将看到连接错误。重新启动该同级并重试该事务处理时，您将看到连接成功。您还可以在通道继续进行事务处理时，使某个同级停止运行较长的一段时间。该同级再次启动后，您将注意到分类帐同步，因为该同级会收到在它停止运行期间提交的块。在分类帐完全同步后，您可以对其执行正常的调用和查询。
 
+### 远程同级配置  
+
+如果在 {{site.data.keyword.cloud_notm}} 之外部署远程同级，需要在配置期间针对远程同级提供网络的 API 端点信息。单击**远程同级配置**按钮以检索网络的 API 端点信息来配置远程同级。弹出窗口提供网络标识、组织 MSP、CA 名称、CA URL 和 CA TLS 证书的 API 端点信息。您可以单击每个字段末尾的复制图标以复制此字段的值，或者单击**下载**按钮以在 JSON 文件中保存所有字段的值。有关远程同级的更多信息，请参阅[关于远程同级](howto/remote_peer.html)。
+
 ### 连接概要文件
 {: #enterprise-connection-profile}
 您可以通过单击**连接概要文件**按钮来查看有关每个资源的低级别网络信息的 JSON 文件。连接概要文件包含应用程序所需的所有配置信息。但是，由于此文件仅包含特定组件和排序者的地址，因此如果需要将更多同级设定为目标，您需要获取这些同级的端点。包含“url”的标头显示每个组件的 API 端点。需要这些端点才能以客户端应用程序的特定网络组件为目标，而其定义通常存在于应用程序随附的 JSON 模型化配置文件中。如果您要定制的应用程序需要不属于您组织的同级支持，那么您需要在带外操作中从相关操作员处检索这些同级的 IP 地址。客户端必须能够连接到它们需要从中获取响应的任何同级。
@@ -92,8 +100,8 @@ lastupdated: "2018-06-14"
 *图 4. 证书*
 
 操作员可以在“证书”选项卡中管理同一机构的成员的证书。单击**添加证书**以打开“添加证书”面板。向证书提供名称、将 PEM 格式的客户机端证书粘贴到“密钥”字段，然后单击**提交**。您需要在客户机端证书生效之前重新启动同级。
-
-有关生成证书密钥的更多信息，请参阅[生成客户机端证书](v10_application.html#generating-the-client-side-certificates)。
+<!--
+For more information about generating your certificate key, see [Generating the client-side certificates](v10_application.html#generating-the-client-side-certificates).-->
 
 ## 通道
 {: #channels}
@@ -130,15 +138,37 @@ lastupdated: "2018-06-14"
 
 通过选择暂挂请求前面的框并单击**删除请求**，可以删除暂挂请求。请注意，无法删除已完成的请求。
 
+## 认证中心
+
+{: #ca}
+
+“认证中心”(CA) 屏幕上的表显示向组织注册的所有标识，包括管理员、同级和客户机应用程序。您还可以使用此屏幕来注册新身份。
+
+**图 7** 显示“认证中心”屏幕：
+
+![认证中心](images/CA_screen.png "认证中心")
+*图 7. 认证中心*
+
+单击**生成证书**按钮以从 CA 获取新的公用证书和专用密钥。此面板也可用作替代方法来针对使用 Fabric SDK 的客户机应用程序[生成公用和专用密钥对](v10_application.html#register-app)。**证书**字段包含公用证书，也称为 signCert 或注册证书，位于**专用密钥**正上方。您可以单击每个字段末尾的复制图标以复制值。**请注意**，{{site.data.keyword.blockchainfull_notm}} Platform 不存储这些证书。您需要安全地保存并存储它们。请参阅 [MSP 信息](certificates.html#msp)以获取更多详细信息。
+
+单击**添加用户**按钮以向组织注册新身份。在**添加用户**弹出窗口中，填写以下字段，然后单击**提交**。
+  - **标识：**这将是新身份的名称，有时也称为 `enroll ID`。**保存此值**以供在配置远程同级或注册新应用程序时使用。
+  - **私钥：**这将是身份的密码，有时也称为 `enroll Secret`。**保存此值**以供在配置远程同级或注册新应用程序时使用。  
+  - **类型：**选择想要注册的身份的类型：同级或客户机应用程序。
+  - **亲缘关系：**这将是身份所属的组织（如 `org1`）内的亲缘关系。
+  - **最大注册数：**您可以使用此字段来限制可使用此身份注册或生成证书的次数。如果保留此字段为空，那么值缺省为不限制注册数。
+
+您可以通过访问[管理 {{site.data.keyword.blockchainfull_notm}} Platform 上的证书](certificates.html)教程来了解有关 CA 的更多信息。
+
 ## API
 {: #apis}
 
 {{site.data.keyword.blockchainfull_notm}} Platform 公开了使用 Swagger 生成的若干 REST API，可用于管理网络中的节点、通道、同级和成员。应用程序可以使用这些 API 来控制重要的网络资源，而无需使用“网络监视器”。
 
-**图 7** 显示“API”屏幕：
+**图 8** 显示“API”屏幕：
 
 ![API](images/API_screen.png "API")
-*图 7. API*
+*图 8. API*
 
 单击 **Swagger UI** 链接以打开 Swagger UI。请注意，您需要先使用自己的网络凭证（可以在此 API 页面上找到）来授权 Swagger UI，然后才能运行 API。有关更多信息，请参阅[使用 Swagger API 与网络进行交互](howto/swagger_apis.html)。
 
@@ -147,10 +177,10 @@ lastupdated: "2018-06-14"
 
 企业套餐集成了 {{site.data.keyword.blockchainfull_notm}} Platform: Develop，并提供了具有业界标准工具和技术的开发环境。您可以在该环境中以联机或本地方式开发网络。开发网络后，可以将其部署回企业套餐网络。
 
-**图 8** 显示“开发代码”屏幕：
+**图 9** 显示“开发代码”屏幕：
 
 ![开发代码](images/write_code.png "开发代码")
-*图 8. 开发代码*
+*图 9. 开发代码*
 
 有关使用企业套餐来开发和部署代码的更多信息，请参阅[使用企业套餐开发业务网络](develop_enterprise.html)。
 
@@ -159,10 +189,10 @@ lastupdated: "2018-06-14"
 
 链代码（也称为“智能合同”）是包含一组对分类帐进行查询和更新的函数的软件片段。链代码安装在同级上并在通道上进行实例化。
 
-**图 9** 显示“安装代码”屏幕：
+**图 10** 显示“安装代码”屏幕：
 
 ![安装代码](images/chaincode_install_overview.png "安装代码")
-*图 9. 安装代码*
+*图 10. 安装代码*
 
 链代码首先安装在同级的文件系统上，然后在通道上进行实例化。有关更多信息，请参阅[安装、实例化和更新链代码](howto/install_instantiate_chaincode.html)。
 
@@ -171,52 +201,50 @@ lastupdated: "2018-06-14"
 
 样本应用程序可帮助您更好地了解区块链网络和应用程序开发。请访问**在 GitHub 上查看**链接，以了解如何使用样本并将其部署到 {{site.data.keyword.blockchainfull_notm}} Platform。有关如何开发和部署样本的更多信息，请参阅[部署样本应用程序](howto/prebuilt_samples.html)。
 
-**图 10** 显示“试用样本”屏幕：
+**图 11** 显示“试用样本”屏幕：
 
 ![试用样本](images/sample_overview_ep.png "试用样本")
-*图 10. 样本*
+*图 11. 样本*
 
 ## 获取帮助
 {: #support}
 
 “获取帮助”屏幕包含两个选项卡，在“支持”选项卡中提供支持信息，在“发行说明”选项卡中描述每个发行版的新增功能和已更改功能。
 
-**图 11** 显示初始“支持”屏幕，其中在“支持”选项卡中显示支持信息：
+**图 12** 显示初始“支持”屏幕，其中在“支持”选项卡中显示支持信息：
 
 ![支持](images/support.png "支持")
-*图 11. 区块链支持*
+*图 12. 区块链支持*
+
+### 区块链资源和支持论坛
+{: #support-forums}
 
 使用此页面上的链接和资源，可访问故障诊断和支持论坛。
 
 * **入门**下的 [{{site.data.keyword.blockchainfull_notm}} 服务文档](index.html)是此文档的站点，提供有关如何在 {{site.data.keyword.Bluemix_notm}} 上开始使用 {{site.data.keyword.blockchainfull}} Platform 的指导信息。您可以在左侧导航器中查找相应主题，也可以使用顶部的搜索功能搜索任何项。
-* **社区帮助** 下的 [IBM DeveloperWorks ![外部链接图标](images/external_link.svg "外部链接图标")](https://developer.ibm.com/blockchain/) 包含适用于开发者的资源和信息。
+* [IBM 代码 ![外部链接图标](images/external_link.svg "外部链接图标")](https://developer.ibm.com/code/technologies/blockchain/) 包含适用于开发者的代码模式和信息。
 * **支持凭单**下的 [IBM dWAnswers ![外部链接图标](images/external_link.svg "外部链接图标")](https://developer.ibm.com/answers/smartspace/blockchain/) 充当问题和响应的平台。您可以搜索先前发布的问题的响应，也可以提交新问题。请确保在问题中包含关键字**区块链**。您还可以通过**开具 {{site.data.keyword.Bluemix_notm}} 支持凭单**选项，向 {{site.data.keyword.blockchainfull_notm}} 支持团队提交凭单。从特定 {{site.data.keyword.Bluemix_notm}} 实例共享详细信息和代码片段。
 * **区块链样本应用程序**下的[样本应用程序 ![外部链接图标](images/external_link.svg "外部链接图标")](https://github.com/ibm-blockchain) 提供了指导信息和样本代码片段，以帮助开发应用程序。
-* **Hyperledger Fabric** 下的 [Hyperledger Fabric ![外部链接图标](images/external_link.svg "外部链接图标")](http://hyperledger-fabric.readthedocs.io/) 和 [Hyperledger Fabric 社区 ![外部链接图标](images/external_link.svg "外部链接图标")](http://jira.hyperledger.org/secure/Dashboard.jspa) 提供有关 Hyperledger Fabric 堆栈的更多详细信息。请与 [Hyperledger 专家 ![外部链接图标](images/external_link.svg "外部链接图标")](https://chat.hyperledger.org/channel/general) 讨论有关 Hyperledger Fabric 代码的问题。
+* **Hyperledger Fabric** 下的 [Hyperledger Fabric ![外部链接图标](images/external_link.svg "外部链接图标")](https://hyperledger-fabric.readthedocs.io/en/release-1.1/) 和 [Hyperledger Fabric 社区 ![外部链接图标](images/external_link.svg "外部链接图标")](http://jira.hyperledger.org/secure/Dashboard.jspa) 提供有关 Hyperledger Fabric 堆栈的更多详细信息。请与 [Hyperledger 专家 ![外部链接图标](images/external_link.svg "外部链接图标")](https://chat.hyperledger.org/channel/general) 讨论有关 Hyperledger Fabric 代码的问题。
+* **Hyperledger Composer** 下的 [{{site.data.keyword.blockchainfull_notm}} Platform: Develop ![外部链接图标](images/external_link.svg "外部链接图标")](https://ibm-blockchain.github.io/develop/) 提供有关 Hyperledger Composer 的更多详细信息（也就是，{{site.data.keyword.blockchainfull_notm}} Platform: Develop）。您还可以在 [Hyperledger Composer 社区 ![外部链接图标](images/external_link.svg "外部链接图标")](https://chat.hyperledger.org/channel/general) 和 [StackOverflow ![外部链接图标](images/external_link.svg "外部链接图标")](https://stackoverflow.com/questions/tagged/hyperledger-composer) 中查找答案或提出问题。
 
-如果您无法调试问题或确定问题的答案，请在 IBM Cloud 服务门户网站中提交支持案例。有关更多信息，请参阅[获取支持](ibmblockchain_support.html)。
+如果您无法调试问题或确定问题的答案，请在 {{site.data.keyword.cloud_notm}} 服务门户网站中提交支持案例。有关更多信息，请参阅[获取支持](ibmblockchain_support.html)。
 
-图 12 和图 13 显示初始“获取帮助”屏幕，其中在“发行说明”选项卡中显示每个发行版的新增功能和已更改功能：
+**图 13** 和**图 14** 显示初始“获取帮助”屏幕，其中在“发行说明”选项卡中显示每个发行版的新增功能和已更改功能：
 
-![Helios 发行说明](images/releasenotes_helios.png "Helios 发行说明")
-*图 12. Helios 发行说明*
+![Helios 发行说明](images/releasenotes_helios.png "“网络监视器”UI 的发行说明")
+*图 13. “网络监视器”UI 的发行说明*
 
 ![Fabric 发行说明](images/releasenotes_Fabric.png "Fabric 发行说明")
-*图 13. Fabric 发行说明*
+*图 14. Fabric 发行说明*
 
 
 ## 网络首选项
 {: #network-preferences}
 
-单击右上角并打开下拉菜单，然后选择**网络首选项**。这将打开“网络首选项”窗口。“网络首选项”窗口显示网络的基本信息，例如，网络名称、Fabric 版本、{{site.data.keyword.cloud_notm}} 中的网络位置以及分类帐数据库类型。
+单击右上角并打开下拉菜单，然后选择**网络首选项**。这将打开“网络首选项”窗口。“网络首选项”窗口显示网络的基本信息，例如，网络名称、Fabric 版本、{{site.data.keyword.cloud_notm}} 中的网络位置以及状态数据库类型。
 
 2018 年 5 月 15 日后创建的企业套餐网络将在 Hyperledger Fabric V1.1 上运行。如果在升级后创建网络，那么还可以在“网络首选项”窗口中管理网络的 Web 不活动超时和双向 TLS。只有网络发起方可更改这些设置。
-
-<!--
-
-Enterprise Plan networks that are created after May 15th, 2018 will run on Hyperledger Fabric v1.1. If you create networks after the upgrade, you can also manage web inactivity timeout, mutual TLS, and switch your ledger to CouchDB for your network in the Network preferences window. These settings can be changed by the network initiator only.
-
--->
 
 ### Web 不活动超时
 {: #web-inactivity-timeout}
@@ -247,20 +275,20 @@ Enterprise Plan networks that are created after May 15th, 2018 will run on Hyper
 
 <!--
 
-### CouchDB ledger type
+### CouchDB state database
 {: #couchdb}
 
-**Note**: Only the **network initiator** can switch the ledger database from LevelDB to CouchDB. This is a network level setting and will affect all network members. Switching to CouchDB is permanent. You cannot revert back to LevelDB.
+**Note**: Only the **network initiator** can switch the state database from LevelDB to CouchDB. This is a network level setting and will affect all network members. Switching to CouchDB is permanent. You cannot revert back to LevelDB.
 
-Before Enterprise Plan upgrades to Fabric v1.1, all network peers store data in the pure key-value LevelDB. With Fabric v1.1, you can choose to use CouchDB as your ledger database. CouchDB is a document datastore that permits indexing the contents of your data and allows you to issue rich queries against the data on your peer. Note that Hyperledger Fabric does not support peers running different databases. If CouchDB is used, it must be used by all of the peers.
+Before Enterprise Plan upgrades to Fabric v1.1, all network peers store data in the pure key-value LevelDB. With Fabric v1.1, you can choose to use CouchDB as your state database. CouchDB is a document datastore that permits indexing the contents of your data and allows you to issue rich queries against the data on your peer. Note that Hyperledger Fabric does not support peers running different databases. If CouchDB is used, it must be used by all of the peers.
 
 To use CouchDB, your data must be stored in a data format that can be modeled in chaincode, such as JSON. If the decision is made to migrate from LevelDB to CouchDB, the {{site.data.keyword.blockchainfull_notm}} Platform will migrate your data from key-value format to the CouchDB format automatically.
 
-If you switch to CouchDB, you need to update your chaincode to take advantage of indexes and rich queries. For more information about CouchDB and how to set up index, see [CouchDB as the State Database ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/latest/couchdb_as_state_database.html). For more information about updating chaincode in {{site.data.keyword.blockchainfull_notm}} Platform, see [Updating a chaincode](howto/install_instantiate_chaincode.html#updating-a-chaincode).
+If you switch to CouchDB, you need to update your chaincode to take advantage of indexes and rich queries. For more information about CouchDB and how to set up index, see [CouchDB as the State Database ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/latest/couchdb_as_state_database.html) in the Hyperledger Fabric documentation. You can also find an example that uses an index with chaincode in this [Fabric tutorial![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/couchdb_tutorial.html){:new_window}. For more information about updating chaincode in {{site.data.keyword.blockchainfull_notm}} Platform, see [Updating a chaincode](howto/install_instantiate_chaincode.html#updating-a-chaincode).
 
 -->
 
-**图 14** 显示“网络首选项”窗口：
+**图 15** 显示“网络首选项”窗口：
 
 ![网络首选项](images/network_preferences_ep_tmp.png "网络首选项")
-*图 14. 网络首选项*
+*图 15. 网络首选项*

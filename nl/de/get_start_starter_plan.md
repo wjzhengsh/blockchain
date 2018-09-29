@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -16,6 +16,10 @@ lastupdated: "2018-06-14"
 # Starter Plan-Netz steuern
 {: #getting-started-with-starter-plan}
 
+
+***[Ist diese Seite hilfreich? Teilen Sie uns Ihre Meinung mit.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
 Der {{site.data.keyword.blockchainfull}} Platform Starter Plan stellt durch einen Klick ein vorkonfiguriertes Blockchain-Netz bereit. Das Angebot <!--offers you a free trial of 30 days and -->stellt standardmäßig ein genehmigtes Netz mit Konfiguration von zwei [Organisationen](glossary.html#organization), einem [Peer](glossary.html#peer) pro Organisation und einem [Kanal](glossary.html#channel) bereit. Wenn das Netz erstellt ist, können Sie Ihr Netz skalieren und ihm weitere Organisationen und Peers hinzufügen. <!--Note that it might cause extra cost if you exceed the default resource limits of two organizations and two peers.-->
 {:shortdesc}
 
@@ -23,7 +27,7 @@ Der {{site.data.keyword.blockchainfull}} Platform Starter Plan stellt durch eine
 
 Mit dem Starter Plan können Sie sich mit {{site.data.keyword.blockchainfull_notm}} Platform vertraut machen und sich Kenntnisse aneignen, Beispielanwendungen ausführen, eigene Anwendungen testen und ein Szenario mit mehreren Organisationen simulieren.  Dieses Einführungslernprogramm erläutert die Voraussetzungen und beschreibt die Schritte, die Sie ausführen müssen um ein Starter Plan-Netz zu erstellen und zu verwenden.
 
-Wenn Sie {{site.data.keyword.blockchainfull_notm}} Platform und Blockchain noch nicht kennen, können Sie das [Glossar](glossary.html) lesen, um sich mit den in dieser Dokumentation verwendeten Begriffen vertraut zu machen. Weitere Informationen zu Blockchain finden Sie in der [Hyperledger Fabric-Dokumentation ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](http://hyperledger-fabric.readthedocs.io/en/latest/blockchain.html).
+Wenn Sie {{site.data.keyword.blockchainfull_notm}} Platform und Blockchain noch nicht kennen, können Sie das [Glossar](glossary.html) lesen, um sich mit den in dieser Dokumentation verwendeten Begriffen vertraut zu machen. Weitere Informationen zu Blockchain finden Sie in der [Hyperledger Fabric-Dokumentation ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/blockchain.html).
 
 
 ## Netz erstellen
@@ -31,8 +35,8 @@ Sie können ein Starter Plan-[Netz](glossary.html#network) mit der Standardkonfi
 
 1. Lokalisieren Sie den [Blockchain-Service ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://console.bluemix.net/catalog/services/blockchain) im {{site.data.keyword.cloud_notm}}-Katalog.   
     **Hinweis**: Sie müssen sich mit Ihrem gebührenpflichtigen {{site.data.keyword.cloud_notm}}-Konto anmelden. Wenn Sie kein Konto haben, klicken Sie auf die Schaltfläche **Für Erstellung registrieren**. Nach der Erstellung eines kostenfreien Testkontos führen Sie ein Upgrade auf ein **nutzungsabhängig Konto** durch, indem Sie **Verwalten** > **Abrechnung und Nutzung** > **Abrechnung** in der {{site.data.keyword.cloud_notm}}-Konsole aufrufen und auf **Kreditkarte hinzufügen** klicken.
-2. Wählen Sie die Region in {{site.data.keyword.cloud_notm}} zum Erstellen des Netzes aus. 
-3. Wählen Sie Ihre Cloud Foundry-Organisation und den Bereich zum Erstellen des Netzes aus. 
+2. Wählen Sie die Region in {{site.data.keyword.cloud_notm}} zum Erstellen des Netzes aus.
+3. Wählen Sie Ihre Cloud Foundry-Organisation und den Bereich zum Erstellen des Netzes aus.
 4. Wählen Sie **Starter-Mitgliedschaftsplan** in der Tabelle mit den Preisstrukturplänen aus.
 5. Klicken Sie auf die Schaltfläche **Erstellen**. Beachten Sie, dass ein Popup-Eingangsfenster angezeigt wird, wenn Sie zur Teilnahme an einem Netz eingeladen wurden. Zum Erstellen eines Netzes wählen Sie **Mit Ihrem Netz fortfahren** aus und klicken auf **Weiter**. Informationen zum Teilnehmen an einem Netz finden Sie in Schritt 5 unter [Am Netz teilnehmen](#joining-a-network).
   Jetzt sind Sie bereit, Ihr Starter Plan-Netz mit der Standardkonfiguration zu verwenden. Das Netz wird mit einem Anordnungsknoten ("orderer"), der als "SOLO"-Anordnungsservice bezeichnet wird, zwei Organisationen, einer Zertifizierungsstelle (CA) und einem Peer pro Organisation ausgeführt. Darüber hinaus wird ein Standardkanal erstellt.
@@ -57,7 +61,7 @@ Sie müssen eine [{{site.data.keyword.blockchain}} Platform-Serviceinstanz ![Sym
 
 1. Melden Sie sich mit Ihrem {{site.data.keyword.cloud_notm}}-Konto an. Wenn Sie kein Konto haben, klicken Sie auf die Schaltfläche **Für Erstellung registrieren**.
 2. Wählen Sie die Cloud Foundry-Organisation aus, in der Sie Ihr {{site.data.keyword.blockchain}}-Netz speichern wollen.
-3. Wählen Sie **Starter-Mitgliedschaftsplan** in der Tabelle mit den Preisstrukturplänen aus. 
+3. Wählen Sie **Starter-Mitgliedschaftsplan** in der Tabelle mit den Preisstrukturplänen aus.
 4. Klicken Sie auf die Schaltfläche **Erstellen**. Die Seite der Serviceinstanz wird mit einer Popup-Eingangsanzeige geöffnet. Beachten Sie, dass Sie auswählen können, an einem Netz teilzunehmen oder mit dem Erstellen eines eigenen Netzes fortzufahren. Informationen zum Erstellen eines Netzes finden Sie in Schritt 4 unter [Netz erstellen](#creating-a-network).
 5. Wählen Sie in der Eingangsanzeige die Option **An vorhandenem Netz teilnehmen** aus, wählen Sie das Netz, an dem Sie teilnehmen wollen, in der Dropdown-Liste aus, und klicken Sie auf **Weiter**.
 
@@ -99,7 +103,7 @@ Weitere Informationen finden Sie unter [Beispielanwendungen bereitstellen](howto
 
 
 ## Angepasste Unternehmensnetze entwickeln und bereitstellen
-Der Starter Plan integriert die Entwicklerumgebung von IBM Blockchain Platform: Develop und das Hyperledger Composer-Entwicklertoolset. Sie können Ihr Blockchain-Netz Ihren Geschäftsanforderungen entsprechend entwickeln.  Wenn Sie ein Netz für Ihr Unternehmen entwickelt haben, können Sie Ihr Unternehmensnetz im Starter Plan-Netz bereitstellen.
+Der Starter Plan integriert die Entwicklerumgebung von {{site.data.keyword.blockchainfull_notm}} Platform: Develop und das Hyperledger Composer-Entwicklertoolset. Sie können Ihr Blockchain-Netz Ihren Geschäftsanforderungen entsprechend entwickeln.  Wenn Sie ein Netz für Ihr Unternehmen entwickelt haben, können Sie Ihr Unternehmensnetz im Starter Plan-Netz bereitstellen.
 
 Weitere Informationen finden Sie unter [Netz entwickeln](develop.html) und [Unternehmensnetze mit dem Starter Plan bereitstellen](develop_starter.html).
 
@@ -125,7 +129,7 @@ Chaincode, der `.bna`-Dateien ähnlich ist, wird extern entwickelt. Wenn Sie Cha
 As you can see in [Deploying sample applications](howto/prebuilt_samples.html), Starter Plan makes it easy to get a sample application integrated with your network by using Toolchain. This setup also allows for continuous integration by automatically updating your sample application whenever your forked application repo is changed. If you want to deploy this application into an Enterprise Plan network, you can copy your forked application repo into a new repo and then follow the instructions in [Deploying sample applications manually](howto/prebuilt_samples.html#deploy_sample_applications_manually).
 -->
 
-Wenn Sie eine Beispielanwendung in Ihrem Starter Plan-Netz bereitstellen und diese Anwendung in einem Enterprise Plan-Netz bereitgestellt werden soll, können Sie Ihr Anwendungsrepository mit Verzweigungen in ein neues Repository kopieren und anschließend die Anweisungen ausführen, die unter [Beispielanwendungen manuell bereitstellen](howto/prebuilt_samples.html#deploy_sample_applications_manually) beschrieben sind. 
+Wenn Sie eine Beispielanwendung in Ihrem Starter Plan-Netz bereitstellen und diese Anwendung in einem Enterprise Plan-Netz bereitgestellt werden soll, können Sie Ihr Anwendungsrepository mit Verzweigungen in ein neues Repository kopieren und anschließend die Anweisungen ausführen, die in den Beispielanwendungen beschrieben sind, um diese im Enterprise Plan-Netz bereitzustellen.
 
 
 ## Netz löschen oder verlassen
@@ -137,5 +141,5 @@ Wenn Sie ein Netz löschen oder verlassen möchten, können Sie die Blockchain-S
 <!--
 ## References
 * For more information about {{site.data.keyword.blockchainfull_notm}} offerings, see [Blockchain offerings](index.html).
-* For more information about Hyperledger Fabric V1.1, see [Hyperledger Fabric documentation ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/latest/){:new_window}.
+* For more information about Hyperledger Fabric V1.1, see [Hyperledger Fabric documentation ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/){:new_window}.
 -->

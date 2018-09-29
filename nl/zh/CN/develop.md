@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -15,6 +15,10 @@ lastupdated: "2018-06-14"
 
 # 开发网络
 {: #develop-the-network}
+
+
+***[此页面是否有用？请告诉我们。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
 
 通过使用 {{site.data.keyword.blockchainfull}} Platform 开发区块链解决方案，可利用 Hyperledger Composer 开放式源代码开发工具集。Hyperledger Composer 使用定制建模语言，该语言与 JavaScript 事务处理和访问控制规则组合使用，可在将任何内容部署到真正的区块链网络_之前_，对区块链业务网络进行完全建模。
 {:shortdesc}
@@ -167,7 +171,7 @@ lastupdated: "2018-06-14"
 2. 在 `tutorial-network` 目录中，运行以下命令：
 
     ```
-    composer archive create -t dir -n .
+composer archive create -t dir -n .
     ```
     {:codeblock}
 

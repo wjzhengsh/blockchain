@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -15,6 +15,10 @@ lastupdated: "2018-06-14"
 
 # ネットワークの開発
 {: #develop-the-network}
+
+
+***[このページは参考になりましたか。 ご意見をお聞かせください。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
 
 {{site.data.keyword.blockchainfull}} Platform を使用したブロックチェーン・ソリューションの開発では、Hyperledger Composer のオープン・ソース開発ツール・セットを利用します。 JavaScript トランザクションとアクセス制御ルールを組み合わせたカスタム・モデリング言語を Hyperledger Composer で使用すると、実際のブロックチェーン・ネットワークに何かをデプロイする_前 _ に、ブロックチェーン・ビジネス・ネットワーク全体をモデル化できます。
 {:shortdesc}

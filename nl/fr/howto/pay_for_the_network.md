@@ -14,9 +14,11 @@ lastupdated: "2018-03-16"
 
 # Paiement des frais du réseau
 
-**Remarque **: Le plan Starter de la plateforme {{site.data.keyword.blockchainfull}} est gratuit dans sa version bêta.
 
-Les frais de la plateforme {{site.data.keyword.blockchainfull_notm}} sont mensuels avec des frais d'appartenance et des frais d'homologue. Selon le plan de réseau que vous choisissez et la quantité de ressources que vous utilisez, vos paiements peuvent varier.  Si l'on prend l'exemple du plan Enterprise, les membres réseau doivent régler 1 000 dollars par mois de frais d'appartenance et 1 000 euros mensuels supplémentaires pour chacun des homologues du réseau. Les frais mensuels sont facturés par jour au prorata. Par exemple, une organisation (avec des frais d'appartenance de 1 000 dollars) ayant deux homologues (frais par homologue de 1 000 dollars X 2 homologues) doit payer 3 000 dollars par mois. Si le mois comporte 30 jours, le membre paie 100 dollars (3 000/30) par jour.
+***[Cette page est-elle utile ? Dites-nous.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
+Les frais d'{{site.data.keyword.blockchainfull_notm}} Platform sont mensuels avec des frais d'appartenance et des frais d'homologue. Selon le plan de réseau que vous choisissez et la quantité de ressources que vous utilisez, vos paiements peuvent varier.  Si l'on prend l'exemple du plan Enterprise, les membres réseau doivent régler 1 000 dollars par mois de frais d'appartenance et 1 000 euros mensuels supplémentaires pour chacun des homologues du réseau. Les frais mensuels sont facturés par jour au prorata. Par exemple, une organisation (avec des frais d'appartenance de 1 000 dollars) ayant deux homologues (frais par homologue de 1 000 dollars X 2 homologues) doit payer 3 000 dollars par mois. Si le mois comporte 30 jours, le membre paie 100 dollars (3 000/30) par jour.
 
 Les membres réseau peuvent régler leur facture avec leurs comptes IBM Cloud qui contiennent l'espace nécessaire à la création de l'instance de réseau. Un membre réseau peut aussi couvrir les factures de tous les membres du réseau et payer pour l'intégralité du réseau.
 
@@ -50,7 +52,7 @@ Chaque membre réseau doit disposer d'un compte {{site.data.keyword.cloud_notm}}
          - **Rôles d'espace** : Développeur.
       3. Cliquez sur **Inviter des utilisateurs**.
    3. Répétez les étapes pour inviter des utilisateurs et attribuer des droits d'accès à chaque utilisateur.
-3. Dans le tableau de bord de la plateforme {{site.data.keyword.blockchainfull_notm}}, le débiteur invite les utilisateurs à rejoindre le réseau de blockchain. Pour plus d'informations sur les membres réseau, voir [Membres](https://console.bluemix.net/docs/services/blockchain/v10_dashboard.html#members).
+3. Dans le tableau de bord d'{{site.data.keyword.blockchainfull_notm}} Platform, le débiteur invite les utilisateurs à rejoindre le réseau de blockchain. Pour plus d'informations sur les membres réseau, voir [Membres](https://console.bluemix.net/docs/services/blockchain/v10_dashboard.html#members).
 4. Chaque utilisateur reçoit ensuite une courrier électronique de notification contenant une invitation à rejoindre le réseau.  Vous pouvez procéder comme suit pour rejoindre le réseau.
    1. Cliquez sur le bouton "Poursuivre" dans le courrier électronique de notification. Vous êtes alors redirigé vers la page de service blockchain dans {{site.data.keyword.cloud_notm}}.
    2. Vérifiez que vous utilisez une organisation et un espace {{site.data.keyword.cloud_notm}} corrects.
@@ -64,6 +66,6 @@ Chaque membre réseau doit disposer d'un compte {{site.data.keyword.cloud_notm}}
    5. Dès que vous avez créé l'instance de service blockchain, suivez les instructions de l'assistant pour rejoindre le réseau.  Pour plus d'informations, voir [Rejoindre un réseau](https://console.bluemix.net/docs/services/blockchain/get_start.html#joining-a-network).
 
 ### Limitations connues
-- Etant donné que tous les membres figurent dans le compte {{site.data.keyword.cloud_notm}} des débiteurs, le débiteur a accès à toutes les instances de blockchain des membres et il peut en emprunter l'identité.  Par conséquent, ce mode de paiement est le mieux adapté pour les environnements POC, ou dans le cas où le débiteur traite toutes les opérations de gestion de la plateforme {{site.data.keyword.blockchainfull_notm}} et lorsque les membres sont fournis avec une seule application.  
+- Etant donné que tous les membres figurent dans le compte {{site.data.keyword.cloud_notm}} des débiteurs, le débiteur a accès à toutes les instances de blockchain des membres et il peut en emprunter l'identité.  Par conséquent, ce mode de paiement est le mieux adapté pour les environnements POC, ou dans le cas où le débiteur traite toutes les opérations de gestion d'{{site.data.keyword.blockchainfull_notm}} Platform et lorsque les membres sont fournis avec une seule application.  
 - Une fois que tous les membres ont été ajoutés au compte {{site.data.keyword.cloud_notm}} du débiteur et que l'accès leur est accordé pour mettre à disposition les instances de blockchain et rejoindre le réseau, le débiteur accorde également aux membres l'accès à la création d'autres services, ce qui peut entraîner des frais supplémentaires.  
 - Tous les membres de l'organisation Cloud Foundry du débiteur peuvent voir tous les espaces au sein de l'organisation.  Toutefois, ils ne peuvent pas éditer ou modifier les organisations car ils ne disposent pas des accès.

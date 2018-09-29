@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -16,7 +16,12 @@ lastupdated: "2018-06-14"
 # Despliegue de una red empresarial en el Plan inicial
 {: #deploying-a-business-network}
 
+
+*[¿Le resulta útil esta página? Indíquenos su opinión.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)*
+
+
 Las redes empresariales se pueden desarrollar y desplegar en un entorno de Plan inicial mediante el entorno de desarrollo {{site.data.keyword.blockchainfull}} Platform y el conjunto de herramientas del desarrollador Hyperledger Composer.
+{:shortdesc}
 
 Mediante el entorno del desarrollador, puede modelar rápidamente y probar redes empresariales de {{site.data.keyword.blockchain}} y desplegarlas en una instancia de la plataforma {{site.data.keyword.blockchainfull_notm}}.
 
@@ -33,12 +38,12 @@ Asegúrese de leer los apartados [Acerca del Plan inicial](./starter_plan.html) 
 
 3. Dentro del perfil de conexión, vaya hacia abajo hasta que vea 'registrar'. Dentro de 'registrar', bajo 'enrollId', hay una propiedad **enrollSecret**. Recupere el secreto y guarde una copia del mismo.
 
-    ![D8KBag](https://i.makeagif.com/media/4-12-2018/D8KBag.gif)
+    ![Recuperar secreto de administración](images/get_enroll_secret.gif "Recuperar secreto de administración")
 
 
 ## Paso dos: Crear una tarjeta de la entidad emisora de certificados
 
-El secreto recuperado en el paso anterior se utilizará para crear una tarjeta de red empresarial para la autoridad emisora de certificados (CA). La tarjeta de CA se importará y se utilizará para intercambiar el **enrollSecret** por certificados válidos de la entidad emisora de certificados desde la autoridad de certificados del Plan inicial.
+El secreto recuperado en el paso anterior se utilizará para crear una tarjeta de red empresarial para la entidad emisora de certificados (CA). La tarjeta de CA se importará y se utilizará para intercambiar el **enrollSecret** por certificados válidos de la entidad emisora de certificados del Plan inicial.
 
 1. Mediante el **enrollSecret** anotado en el paso uno, ejecute el siguiente mandato para crear la tarjeta de red de visita de la entidad emisora de certificados:
 
@@ -56,7 +61,7 @@ Sustituya `enrollSecret` en el mandato anterior con el secreto de administrador 
    ```
    {:codeblock}
 
-3. Ahora que la tarjeta está importada, se podrá utilizar para intercambiar el **enrollSecret** para certificados válidos de la CA. Ejecute el siguiente mandato para solicitar certificados de la autoridad emisora de certificados:
+3. Ahora que la tarjeta está importada, se podrá utilizar para intercambiar el **enrollSecret** para certificados válidos de la CA. Ejecute el siguiente mandato para solicitar certificados de la entidad emisora de certificados:
 
    ```
    composer identity request --card ca --path ./credentials -u admin -s enrollSecret
@@ -71,11 +76,11 @@ Los certificados se deben añadir a la instancia del Plan inicial. Para su comod
 
 1. En la IU del Plan inicial, pulse el separador **Miembros**, luego **Certificados** y, a continuación, **Añadir certificado**. Vaya al directorio `credentials`, y copie y pegue el contenido del archivo `admin-pub.pem` en el recuadro de certificado. Envíe el certificado y reinicie los iguales. Nota: reiniciar los iguales lleva un minuto.
 
-    ![jlEb2y](https://i.makeagif.com/media/4-12-2018/jlEb2y.gif)
+    ![Añadir certificados](images/add_cert.gif "Añadir certificados")
 
 2. A continuación, los certificados se deben sincronizar en el canal. Pulse el separador **Canales**, luego el botón **Acciones**, y luego **Sincronizar certificado** y **Enviar**.
 
-    ![E-sVV5](https://i.makeagif.com/media/4-12-2018/E-sVV5.gif)
+    ![Sincronizar certificados](images/sync_cert.gif "Sincronizar certificados")
 
 ## Paso cuatro: Creación de una tarjeta de red empresarial de administración
 
@@ -137,13 +142,13 @@ Ahora la red empresarial se ha desplegado en la instancia del Plan inicial.
 
 ## Paso seis: Hacer ping en la red empresarial para asegurarse de que se está ejecutando correctamente
 
-1. Ejecute el mandato siguiente para hacer ping en la red empresarial:
+Ejecute el mandato siguiente para hacer ping en la red empresarial:
 
    ```
    composer network ping -c admin@vehicle-manufacture-network
    ```
    {:codeblock}
 
-Para ver los registros de código de encadenamiento, pulse **Canales**, y luego seleccione el canal. Pulse la flecha desplegable para ver los registros, o el símbolo Acciones para ver con más detalle.
+Para ver los registros del código de encadenamiento, pulse **Canales** y seleccione su canal. <!-- Click the dropdown arrow to view the logs, or the Actions symbol to view in more detail. --> Pulse el separador **Código de encadenamiento**. Amplíe la fina del código de encadenamiento y pulse el botón **JSON** o **Registros**.
 
-![fN-Yuj](https://i.makeagif.com/media/4-13-2018/fN-Yuj.gif)
+<!-- [fN-Yuj](https://i.makeagif.com/media/4-13-2018/fN-Yuj.gif) -->

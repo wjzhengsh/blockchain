@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -16,17 +16,21 @@ lastupdated: "2018-06-14"
 # Déploiement d'un réseau d'entreprise dans un plan Enterprise
 {: #deploying-a-business-network}
 
-Les outils de développeur de la plateforme {{site.data.keyword.blockchainfull}} : Develop vous permettent de créer une**définition de réseau d'entreprise** qui peut ensuite être packagée dans une archive de réseau d'entreprise (fichier `.bna`). L'environnement de développeur vous permet de déployer des fichiers `.bna` dans une {{site.data.keyword.blockchain}} locale ou cloud à des fins de développement et de partage.
 
-Ce tutoriel concerne l'étape suivante du cycle de vie d'un réseau d'entreprise, qui consiste à activer votre réseau d'entreprise en déployant le fichier `.bna` dans le plan Enterprise de la plateforme {{site.data.keyword.blockchainfull_notm}}.
+***[Cette page est-elle utile ? Dites-nous.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
+Les outils de développeur d'{{site.data.keyword.blockchainfull}} Platform: Develop vous permettent de créer une **définition de réseau d'entreprise** qui peut ensuite être packagée dans une archive de réseau d'entreprise (fichier `.bna`). L'environnement de développeur vous permet de déployer des fichiers `.bna` dans un {{site.data.keyword.blockchain}} local ou cloud à des fins de développement et de partage.
+
+Ce tutoriel concerne l'étape suivante du cycle de vie d'un réseau d'entreprise, qui consiste à activer votre réseau d'entreprise en déployant le fichier `.bna` dans le plan Enterprise d'{{site.data.keyword.blockchainfull_notm}} Platform.
 
 ## Avant de commencer
 
 Vous devez vérifier que vous avez installé l'environnement de développeur de {{site.data.keyword.blockchainfull}}: Develop. Vous devez aussi savoir comment développer et déployer des réseaux d'entreprise. Pour plus de détails sur la création de réseaux d'entreprise, vous pouvez consulter la [documentation Hyperledger Composer](https://hyperledger.github.io/composer/latest/business-network/business-network-index).
 
-Vous devez accéder à une instance du plan Enterprise de la plateforme {{site.data.keyword.blockchainfull_notm}}. Pour plus d'informations sur le plan Enterprise de la plateforme {{site.data.keyword.blockchainfull_notm}}, voir [Présentation du plan Enterprise](./enterprise_plan.html).
+Vous devez accéder à une instance du plan Enterprise d'{{site.data.keyword.blockchainfull_notm}} Platform. Pour plus d'informations sur le plan Enterprise d'{{site.data.keyword.blockchainfull_notm}} Platform, voir [Présentation du plan Enterprise](./enterprise_plan.html).
 
-## Etape 1 : Créer un profil de connexion pour la plateforme {{site.data.keyword.blockchainfull_notm}}
+## Etape 1 : Créer un profil de connexion pour {{site.data.keyword.blockchainfull_notm}} Platform
 
 1. Créez un répertoire dans lequel stocker vos détails de connexion, par exemple :
 
@@ -35,7 +39,7 @@ Vous devez accéder à une instance du plan Enterprise de la plateforme {{site.d
     ```
     {:codeblock}
 
-    Chaque profil de connexion doit contenir un fichier `connection.json`. Créez un nouveau répertoire sous `.composer-connection-profiles`, dans cet exemple `bmx-hlfv1`. Il s'agira du nom du profil que vous allez utiliser lors de l'utilisation de Hyperledger Composer et de la plateforme {{site.data.keyword.blockchainfull_notm}}.
+    Chaque profil de connexion doit contenir un fichier `connection.json`. Créez un nouveau répertoire sous `.composer-connection-profiles`, dans cet exemple `bmx-hlfv1`. Il s'agira du nom du profil que vous allez utiliser lors de l'utilisation de Hyperledger Composer et d'{{site.data.keyword.blockchainfull_notm}}. Platform
 
     ```
     mkdir -p ~/.composer-connection-profiles/bmx-hlfv1
@@ -81,7 +85,7 @@ Vous devez accéder à une instance du plan Enterprise de la plateforme {{site.d
     ```
     {:codeblock}
 
-    Vous devez remplir le fichier `connection.json` que vous venez de créer à l'aide des attributs fournis via le tableau de bord de la plateforme {{site.data.keyword.blockchainfull_notm}}. Depuis le tableau de bord, sélectionnez **Présentation**, puis le bouton **Profil de connexion** afin d'afficher les informations de noeud final et de certificat pour les membres du canal.
+    Vous devez remplir le fichier `connection.json` que vous venez de créer à l'aide des attributs fournis via le tableau de bord d'{{site.data.keyword.blockchainfull_notm}} Platform. Depuis le tableau de bord, sélectionnez **Présentation**, puis le bouton **Profil de connexion** afin d'afficher les informations de noeud final et de certificat pour les membres du canal.
 
 ## Etape 2 : Ajouter les informations de programme de tri
 
@@ -128,7 +132,7 @@ Vous devez accéder à une instance du plan Enterprise de la plateforme {{site.d
 La valeur **mspID** de votre fichier `connection.json` doit être définie sur la valeur mspID de votre organisation. Le profil de connexion fournit une liste des organisations avec les valeurs mspid qui leur sont associées. Vous devez utiliser la valeur de l'attribut **mspid** pour votre organisation.
 
 ## Etape 8 : Ajouter la valeur globalCert
-1. La plateforme {{site.data.keyword.blockchainfull_notm}} utilise un certificat TLS commun pour les programmes de tri et les homologues. Pour chaque programme de tri et homologue, il existe un attribut **tlsCACerts** qui contient le même certificat. Remplacez la valeur factice du fichier `connection.json` par la valeur **tlsCACerts**. Le format doit ressembler à ce qui suit :
+1. {{site.data.keyword.blockchainfull_notm}} Platform utilise un certificat TLS commun pour les programmes de tri et les homologues. Pour chaque programme de tri et homologue, il existe un attribut **tlsCACerts** qui contient le même certificat. Remplacez la valeur factice du fichier `connection.json` par la valeur **tlsCACerts**. Le format doit ressembler à ce qui suit :
 
     ```
     "globalCert": "-----BEGIN CERTIFICATE-----\r\.......
@@ -198,12 +202,12 @@ Créez une identité dans Composer en utilisant les certificats qui sont préala
     ```
     {:codeblock}
 
-    Où `bmx-hlfv1` est le nom du profil que vous avez préalablement créé. Tout est maintenant prêt pour le déploiement de votre fichier `.bna` sur la plateforme {{site.data.keyword.blockchainfull_notm}}.
+    Où `bmx-hlfv1` est le nom du profil que vous avez préalablement créé. Tout est maintenant prêt pour le déploiement de votre fichier `.bna` sur {{site.data.keyword.blockchainfull_notm}}. Platform
 
 
 ## Etape 12 : Déployer le réseau d'entreprise
 
-Vous pouvez maintenant déployer votre fichier `.bna` sur la plateforme {{site.data.keyword.blockchainfull_notm}}.
+Vous pouvez maintenant déployer votre fichier `.bna` sur {{site.data.keyword.blockchainfull_notm}} Platform.
 
 1. A l'aide de l'identité créée à l'étape précédente, déployez le réseau d'entreprise à l'aide de la commande suivante :
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-05-15"
+lastupdated: "2018-08-31"
 ---
 
 {:new_window: target="_blank"}
@@ -16,21 +16,25 @@ lastupdated: "2018-05-15"
 {: #ibmblockchain_support}
 
 
+***[Ist diese Seite hilfreich? Teilen Sie uns Ihre Meinung mit.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
 Es gibt mehrere Verfahren, mit denen Sie Unterstützung anfordern und Fehler im Zusammenhang mit Ihrer Blockchain-Instanz unter {{site.data.keyword.Bluemix}} beheben können.
 {:shortdesc}
 
 
 ## Lösungen in vorhandenen Ressourcen finden
 
-Navigieren Sie zur Anzeige "Support" in Ihrem **Network Monitor**, wie aus **Abbildung 1** hervorgeht.  So finden Sie Links zu Ressourcen mit technischen Daten und Unterstützungsinformationen.  Eine detaillierte Beschreibung der Anzeige "Support" finden Sie im Abschnitt *Support* im [Network Monitor](v10_dashboard.html).
+Navigieren Sie zur Anzeige "Support" in Ihrem **Network Monitor** (siehe **Abbildung 1**). So finden Sie Links zu Ressourcen mit technischen Daten und Unterstützungsinformationen. Eine detaillierte Beschreibung der Anzeige "Support" finden Sie im Abschnitt [Hilfe anfordern](v10_dashboard.html#support).
 
 ![Anzeige 'Support'](images/support.png "Anzeige 'Support'")
 *Abbildung 1. Anzeige 'Support'*
 
 
 ## Supportfälle einreichen
+{: #support-cases}
 
-Wenn sich Ihr Problem nicht durch einen der oben genannten Wege lösen lässt, führen Sie die folgenden Schritte aus, um einen Supportfall im {{site.data.keyword.cloud_notm}} Service Portal einzureichen.
+Wenn sich Ihr Problem nicht durch einen der oben genannten Wege lösen lässt, führen Sie die folgenden Schritte aus, um einen Supportfall im {{site.data.keyword.cloud_notm}} Service Portal einzureichen. Benutzer können Support entsprechend ihrem [{{site.data.keyword.cloud_notm}}-Supportplan](https://console.bluemix.net/docs/get-support/index.html#support-plans) bei allen Problemen anfordern, die in Zusammenhang mit dem zugrunde liegenden {site.data.keyword.blockchainfull_notm}} Platform-System auftreten. Wenn Sie Hilfe zum Hyperledger Fabric-Chaincode, zu Hyperledger Composer oder Ihren Anwendungen benötigen, dann nutzen Sie die Community-Ressourcen oder verwenden Sie die [{{site.data.keyword.blockchainfull_notm}}-Services ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://www.ibm.com/blockchain/services).
 
 1. Melden Sie sich beim [{{site.data.keyword.cloud_notm}} Service Portal ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://ibm.biz/ibmcloudsupport) mit Ihrer {{site.data.keyword.IBM_notm}}-ID an.
 2. Klicken Sie auf den Avatar **Hilfe anfordern** in der Mitte oder auf die Schaltfläche **Fall erstellen** rechts oben.
@@ -47,4 +51,4 @@ Wenn sich Ihr Problem nicht durch einen der oben genannten Wege lösen lässt, f
 4. Klicken Sie auf die Schaltfläche **Abschicken**.  Nach ein paar Minuten empfangen Sie eine E-Mail-Benachrichtigung für diesen Fall.
 
 
-Sie finden Ihre zuvor eingereichten Fälle, indem Sie auf **Eigene Fälle** in der rechten oberen Ecke im {{site.data.keyword.cloud_notm}} Service Portal klicken.  Klicken Sie auf einen Fall, um ihn zu öffnen und seinen Status zu prüfen oder um weitere Informationen bereitzustellen.
+Sie finden Ihre zuvor eingereichten Fälle, indem Sie auf **Eigene Fälle** in der rechten oberen Ecke im {{site.data.keyword.cloud_notm}} Service Portal klicken. Klicken Sie auf einen Fall, um ihn zu öffnen und seinen Status zu prüfen oder um weitere Informationen bereitzustellen.

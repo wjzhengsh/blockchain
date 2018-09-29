@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -16,6 +16,10 @@ lastupdated: "2018-06-14"
 # 스타터 플랜 네트워크 통제
 {: #getting-started-with-starter-plan}
 
+
+***[이 페이지가 도움이 되었습니까? 알려주십시오.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
 {{site.data.keyword.blockchainfull}} Platform 스타터 플랜은 한 번의 클릭으로 사전 구성된 블록체인 네트워크를 제공합니다. 기본적으로 권한 부여된 네트워크에 두 개의 [조직](glossary.html#organization), 각 조직당 하나의 [피어](glossary.html#peer) 및 하나의 [채널](glossary.html#channel)의 구성을 <!--offers you a free trial of 30 days and -->프로비저닝합니다. 네트워크를 작성한 후 네트워크에 조직 및 피어를 스케일링하고 추가할 수 있습니다. <!--Note that it might cause extra cost if you exceed the default resource limits of two organizations and two peers.-->
 {:shortdesc}
 
@@ -23,17 +27,17 @@ lastupdated: "2018-06-14"
 
 스타터 플랜을 사용하면 {{site.data.keyword.blockchainfull_notm}} Platform에 대한 기술을 학습하고 개발하며 샘플 애플리케이션을 실행하고 고유 애플리케이션을 테스트하고 다중 조직 시나리오를 시뮬레이션할 수 있습니다.  이 시작하기 튜토리얼에서는 스타터 플랜 네트워크를 작성하고 사용하기 위해 따라야 하는 전제조건 및 단계를 소개합니다.
 
-{{site.data.keyword.blockchainfull_notm}} Platform 및 블록체인을 처음 사용하는 경우, [용어집](glossary.html)을 통해 이 문서의 용어를 익히고 [Hyperledger Fabric 문서 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](http://hyperledger-fabric.readthedocs.io/en/latest/blockchain.html)를 통해 블록체인에 대해 자세히 알아볼 수 있습니다.
+{{site.data.keyword.blockchainfull_notm}} Platform 및 블록체인을 처음 사용하는 경우, [용어집](glossary.html)을 통해 이 문서의 용어를 익히고 [Hyperledger Fabric 문서 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/blockchain.html)를 통해 블록체인에 대해 자세히 알아볼 수 있습니다.
 
 
 ## 네트워크 작성
 {{site.data.keyword.blockchainfull_notm}} Platform 서비스 인스턴스를 작성한 후 즉시 기본 구성의 스타터 플랜 [네트워크](glossary.html#network)를 가져올 수 있습니다.
 
 1. {{site.data.keyword.cloud_notm}} 카탈로그에서 [Blockchain 서비스 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://console.bluemix.net/catalog/services/blockchain)를 찾으십시오.   
-    **참고**: {{site.data.keyword.cloud_notm}} 유료 계정으로 로그인해야 합니다. 계정이 없는 경우, **작성을 위해 등록** 단추를 클릭하십시오. 무료 평가판 계정을 작성한 후 {{site.data.keyword.cloud_notm}} 콘솔에서 **관리** > **청구 및 사용량** > **청구**로 이동하고 **신용카드 추가**를 클릭하여 **종량과금제** 유형으로 업그레이드하십시오.
+    **참고**: {{site.data.keyword.cloud_notm}} 유료 계정으로 로그인해야 합니다. 계정이 없는 경우, **회원가입하기** 단추를 클릭하십시오. 무료 평가판 계정을 작성한 후 {{site.data.keyword.cloud_notm}} 콘솔에서 **관리** > **청구 및 사용량** > **청구**로 이동하고 **신용카드 추가**를 클릭하여 **종량과금제** 유형으로 업그레이드하십시오.
 2. 네트워크를 작성할 {{site.data.keyword.cloud_notm}}의 지역을 선택하십시오.
 3. 네트워크를 작성할 Cloud Foundry 조직 및 영역을 선택하십시오.
-4. 가격 책정 플랜 테이블에서 **스타터 멤버십 플랜**을 선택하십시오.
+4. 가격 플랜 테이블에서 **스타터 멤버십 플랜**을 선택하십시오.
 5. **작성** 단추를 클릭하십시오. 네트워크에 가입하도록 초대되면 팝업 환영 패널을 볼 수 있습니다. 네트워크를 작성하려면 **네트워크 진행**을 선택하고 **계속**을 클릭하십시오. 네트워크에 가입하려면 [네트워크 가입](#joining-a-network)의 5단계를 참조하십시오.
   이제 기본 구성의 스타터 플랜 네트워크를 사용할 준비가 되었습니다. 네트워크는 하나의 순서 지정자("SOLO" 순서 지정 서비스로 알려짐), 두 개의 조직, 하나의 CA 및 각 조직당 하나의 피어와 함께 실행됩니다. 기본 채널도 작성됩니다.
 6. **실행** 단추를 클릭하십시오.
@@ -55,9 +59,9 @@ lastupdated: "2018-06-14"
 
 {{site.data.keyword.cloud_notm}}의 스타터 플랜 멤버십 옵션을 사용하여 [{{site.data.keyword.blockchain}} Platform 서비스 인스턴스 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://console.bluemix.net/catalog/services/blockchain)를 작성해야 합니다.
 
-1. {{site.data.keyword.cloud_notm}} 계정으로 로그인하십시오. 계정이 없는 경우, **작성을 위해 등록** 단추를 클릭하십시오.
+1. {{site.data.keyword.cloud_notm}} 계정으로 로그인하십시오. 계정이 없는 경우, **회원가입하기** 단추를 클릭하십시오.
 2. {{site.data.keyword.blockchain}} 네트워크를 저장할 Cloud Foundry 조직을 선택하십시오.
-3. 가격 책정 플랜 테이블에서 **스타터 멤버십 플랜**을 선택하십시오.
+3. 가격 플랜 테이블에서 **스타터 멤버십 플랜**을 선택하십시오.
 4. **작성** 단추를 클릭하십시오. 서비스 인스턴스 페이지는 팝업 환영 패널에서 열립니다. 네트워크에 가입하거나 계속 고유 네트워크를 작성하도록 선택할 수 있습니다. 네트워크를 작성하려면 [네트워크 작성](#creating-a-network)의 4단계를 참조하십시오.
 5. 환영 패널에서 **기존 네트워크 가입**을 선택하고 드롭 다운 목록에서 가입할 네트워크를 선택한 다음 **계속**을 클릭하십시오.
 
@@ -73,21 +77,21 @@ You can run [chaincode](glossary.html#chaincode) on your peers in the network.  
 -->
 
 
-## 네트워크 신임 정보 및 연결 프로파일 검색
-{{site.data.keyword.cloud_notm}}에서 스타터 플랜 네트워크를 작성한 후 서비스 인스턴스 페이지 또는 네트워크 모니터에서 네트워크 신임 정보 및 연결 프로파일을 검색할 수 있습니다.
+## 네트워크 인증 정보 및 연결 프로파일 검색
+{{site.data.keyword.cloud_notm}}에서 스타터 플랜 네트워크를 작성한 후 서비스 인스턴스 페이지 또는 네트워크 모니터에서 네트워크 인증 정보 및 연결 프로파일을 검색할 수 있습니다.
 
 ### 서비스 인스턴스 페이지에서 검색
 서비스 인스턴스를 작성하면 바로 서비스 인스턴스 페이지가 나타납니다. 또한 [{{site.data.keyword.cloud_notm}} 서비스 대시보드 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://console.bluemix.net/dashboard/services "{{site.data.keyword.cloud_notm}} 서비스 대시보드")에서 서비스를 클릭하여 서비스 인스턴스 페이지를 열 수 있습니다.
 
-다음 단계에 따라 서비스 신임 정보를 검색하십시오.
-1. 서비스 인스턴스 페이지의 왼쪽 네비게이터에서 **서비스 신임 정보**를 클릭하여 "서비스 신임 정보" 화면을 표시하십시오.
-2. "서비스 신임 정보" 화면에서 **새 신임 정보**를 클릭하십시오.
-3. "새 신임 정보 추가" 화면에서 신임 정보에 이름을 지정하고 "인라인 구성 매개변수 추가" 필드에 **{"type": "service_instance_token"}**을 입력하십시오. **추가**를 클릭하십시오. 새 신임 정보가 테이블에 추가됩니다. "조치" 열 아래의 **신임 정보 보기**를 클릭하여 신임 정보 세부사항을 볼 수 있습니다. 이 신임 정보에는 API에 권한을 부여하는 데 사용할 수 있는 API 키 및 시크릿이 포함됩니다.  
+다음 단계에 따라 서비스 인증 정보를 검색하십시오.
+1. 서비스 인스턴스 페이지의 왼쪽 네비게이터에서 **서비스 인증 정보**를 클릭하여 "서비스 인증 정보" 화면을 표시하십시오.
+2. "서비스 인증 정보" 화면에서 **새 인증 정보**를 클릭하십시오.
+3. "새 인증 정보 추가" 화면에서 인증 정보에 이름을 지정하고 "인라인 구성 매개변수 추가" 필드에 **{"type": "service_instance_token"}**을 입력하십시오. **추가**를 클릭하십시오. 새 인증 정보가 테이블에 추가됩니다. "조치" 열 아래의 **인증 정보 보기**를 클릭하여 인증 정보 세부사항을 볼 수 있습니다. 이 인증 정보에는 API에 권한을 부여하는 데 사용할 수 있는 API 키 및 시크릿이 포함됩니다.  
 
-![네트워크 신임 정보 검색](images/service_credentials.gif "네트워크 신임 정보 검색")
+![네트워크 인증 정보 검색](images/service_credentials.gif "네트워크 인증 정보 검색")
 
 ### 네트워크 모니터에서 검색
-네트워크 모니터의 "API" 화면에서 네트워크 신임 정보를 찾을 수 있습니다. API 사용에 대한 자세한 정보는 [Swagger API를 사용하여 네트워크와 상호작용](howto/swagger_apis.html)을 참조하십시오.
+네트워크 모니터의 "API" 화면에서 네트워크 인증 정보를 찾을 수 있습니다. API 사용에 대한 자세한 정보는 [Swagger API를 사용하여 네트워크와 상호작용](howto/swagger_apis.html)을 참조하십시오.
 
 네트워크 모니터의 "개요" 화면에서 연결 프로파일을 검색할 수 있습니다. "개요" 화면의 **연결 프로파일** 단추를 클릭하면 연결 프로파일이 새 페이지에 표시됩니다.
 
@@ -99,7 +103,7 @@ You can run [chaincode](glossary.html#chaincode) on your peers in the network.  
 
 
 ## 사용자 정의 비즈니스 네트워크 개발 및 전개
-스타터 플랜은 IBM Blockchain Platform: Develop 개발자 환경 및 Hyperledger Composer 개발자 도구 세트를 통합합니다. 비즈니스 요구에 따라 블록체인 네트워크를 개발할 수 있습니다.  비즈니스에 맞는 네트워크를 개발하면 비즈니스 네트워크를 스타터 플랜 네트워크에 배치할 수 있습니다.
+스타터 플랜은 {{site.data.keyword.blockchainfull_notm}} Platform: Develop 개발자 환경 및 Hyperledger Composer 개발자 도구 세트를 통합합니다. 비즈니스 요구에 따라 블록체인 네트워크를 개발할 수 있습니다.  비즈니스에 맞는 네트워크를 개발하면 비즈니스 네트워크를 스타터 플랜 네트워크에 배치할 수 있습니다.
 
 자세한 정보는 [네트워크 개발](develop.html) 및 [스타터 플랜에서 비즈니스 네트워크 배치](develop_starter.html)를 참조하십시오.
 
@@ -125,7 +129,7 @@ You can run [chaincode](glossary.html#chaincode) on your peers in the network.  
 As you can see in [Deploying sample applications](howto/prebuilt_samples.html), Starter Plan makes it easy to get a sample application integrated with your network by using Toolchain. This setup also allows for continuous integration by automatically updating your sample application whenever your forked application repo is changed. If you want to deploy this application into an Enterprise Plan network, you can copy your forked application repo into a new repo and then follow the instructions in [Deploying sample applications manually](howto/prebuilt_samples.html#deploy_sample_applications_manually).
 -->
 
-스타터 플랜 네트워크에 샘플 애플리케이션을 배치하고 이 애플리케이션을 엔터프라이즈 플랜 네트워크에 배치하려는 경우, 새 저장소에 분기(fork)된 애플리케이션 저장소를 복사한 다음 [샘플 애플리케이션 수동 배치](howto/prebuilt_samples.html#deploy_sample_applications_manually)의 지시사항을 따를 수 있습니다.
+스타터 플랜 네트워크에 샘플 애플리케이션을 배치하고 이 애플리케이션을 엔터프라이즈 플랜 네트워크에 배치하려는 경우, 새 저장소에 분기(fork)된 애플리케이션 저장소를 복사한 다음 샘플 애플리케이션의 지시사항을 따라 엔터프라이즈 플랜 네트워크에 배치합니다.
 
 
 ## 네트워크 삭제 또는 나가기
@@ -137,5 +141,5 @@ As you can see in [Deploying sample applications](howto/prebuilt_samples.html), 
 <!--
 ## References
 * For more information about {{site.data.keyword.blockchainfull_notm}} offerings, see [Blockchain offerings](index.html).
-* For more information about Hyperledger Fabric V1.1, see [Hyperledger Fabric documentation ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/latest/){:new_window}.
+* For more information about Hyperledger Fabric V1.1, see [Hyperledger Fabric documentation ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/){:new_window}.
 -->

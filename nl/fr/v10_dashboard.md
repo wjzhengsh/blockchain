@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -15,15 +15,19 @@ lastupdated: "2018-06-14"
 # Exploitation d'un réseau de plan Enterprise
 {: #v10_dashboard}
 
-La plateforme {{site.data.keyword.blockchainfull}} comporte un Moniteur réseau qui fournit une vue d'ensemble de votre environnement de blockchain, notamment des composants réseau, des membres, des canaux rejoints, des données de performance et du code blockchain déployé. Le Moniteur réseau constitue également un point d'entrée pour l'exécution des API Swagger, le développement d'un réseau avec la plateforme {{site.data.keyword.blockchainfull_notm}} : Develop, et le test de modèles d'application.
+
+***[Cette page est-elle utile ? Dites-nous.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
+{{site.data.keyword.blockchainfull}} Platform comporte un Moniteur réseau qui fournit une vue d'ensemble de votre environnement de blockchain, notamment des composants réseau, des membres, des canaux rejoints, des données de performance et du code blockchain déployé. Le Moniteur réseau constitue également un point d'entrée pour l'exécution des API Swagger, le développement d'un réseau avec {{site.data.keyword.blockchainfull_notm}} Platform: Develop, et le test de modèles d'application.
 {:shortdesc}
 
 Vous pouvez [changer le nom du réseau de votre plan Enterprise](#ep-network-name) dans le Moniteur réseau.
 
 Le Moniteur réseau présente les écrans suivants dans trois sections. Vous pouvez accéder à chaque écran dans le navigateur de gauche du Moniteur réseau.
-- La section **Mon réseau** contient les écrans "[Présentation](#overview)", "[Membres](#members)", "[Canaux](#channels)", "[Notifications](#notifications)" et "[API](#apis)".
+- La section **Mon réseau** contient les écrans "[Présentation](#overview)", "[Membres](#members)", "[Canaux](#channels)", "[Notifications](#notifications)", "[Autorité de certification](#ca)" et "[API](#apis)".
 - La section **Mon code** contient les écrans "[Ecriture de code](#write_code)", "[Installer le code](#chaincode)" et "[Essayer les modèles](#samples)".
-- L'écran "[Obtenir de l'aide](#support)" affiche des informations de support ainsi que les notes sur l'édition pour Helios et Hyperledger Fabric (codebase sur lequel repose la plateforme {{site.data.keyword.blockchainfull_notm}}).
+- L'écran "[Obtenir de l'aide](#support)" affiche des informations de support ainsi que les notes sur l'édition pour Helios et Hyperledger Fabric (codebase sur lequel repose {{site.data.keyword.blockchainfull_notm}} Platform).
 
 Vous pouvez [vérifier et configurer les préférences réseau](#network-preferences) dans le menu déroulant dans l'angle supérieur droit du Moniteur réseau.
 
@@ -32,7 +36,7 @@ Ce tutoriel décrit chacun des écrans et fonctions ci-dessus.
 ## Mettre à jour le nom de réseau
 {: #ep-network-name}
 
-Lorsque vous créez un réseau du plan Enterprise, la plateforme {{site.data.keyword.blockchainfull_notm}} affecte un nom à votre réseau. Toutefois, vous pouvez à tout moment mettre à jour ce nom réseau dans votre Moniteur réseau.
+Lorsque vous créez un réseau du plan Enterprise, {{site.data.keyword.blockchainfull_notm}} Platform affecte un nom à votre réseau. Toutefois, vous pouvez à tout moment mettre à jour ce nom réseau dans votre Moniteur réseau.
 
 Dans la partie supérieure gauche du Moniteur réseau, cliquez sur le nom de réseau et la zone devient éditable. Entrez le nouveau nom que vous voulez utiliser et appuyez sur **Entrée**. Le nom de votre réseau est mis à jour en quelques secondes.
 
@@ -59,6 +63,10 @@ Notez que les actions Arrêter et Démarrer ne sont pas disponibles pour un noeu
 
 Vous pouvez également consulter les journaux de composant en cliquant sur **Afficher les journaux** dans la liste déroulante sous l'en-tête **Actions**. Ces journaux présentent les appels de procédure entre les différentes ressources réseau et ils sont utiles pour le débogage et le traitement des incidents. Vous pouvez par exemple les tester en arrêtant un homologue et en le ciblant avec une transaction ; vous verrez alors des erreurs de connectivité. Lorsque vous redémarrez l'homologue et relancez la transaction, vous verrez qu'une connexion est réussie. Vous
 pouvez aussi arrêter un homologue pendant une longue période alors que vos canaux continuent à effectuer des transactions. l'homologue est redémarré, vous remarquez une synchronisation du registre dès qu'il reçoit les blocs qui ont été validés alors qu'il était arrêté. Une fois que le registre est complètement synchronisé, vous pouvez procéder à des appels et des requêtes normaux.
+
+### Configuration de l'homologue distant  
+
+Si vous déployez un homologue distant en dehors de {{site.data.keyword.cloud_notm}}, vous devez indiquer les informations de noeud final d'API de votre réseau à l'homologue distant pendant la configuration. Cliquez sur le bouton **Configuration de l'homologue distant** pour extraire les informations de noeud final d'API du réseau afin de configurer votre homologue distant. La fenêtre en incrustation fournit les informations de noeud final d'API : ID réseau, MSP de l'organisation, Nom de l'autorité de certification, URL de l'autorité de certification et certificat TLS de l'autorité de certification. Vous pouvez cliquer sur l'icône copier à la fin de chaque zone pour copier la valeur de la zone, ou cliquer sur le bouton **Télécharger** pour sauvegarder les valeurs de toutes les zones dans un fichier JSON. Pour plus d'informations sur les homologues distants, voir [A propos des homologues distants](howto/remote_peer.html).
 
 ### Profil de connexion
 {: #enterprise-connection-profile}
@@ -91,8 +99,8 @@ La **Figure 4** présente l'écran "Membres" initial qui affiche les certificats
 *Figure 4. Certificats*
 
 Les opérateurs peuvent gérer les certificats des membres d'une même institution sous l'onglet "Certificats". Cliquez sur **Ajouter le certificat** pour afficher l'écran "Ajouter le certificat". Donnez un nom à votre certificat, collez vos certificats côté client au format PEM dans la zone "Clé", puis cliquez sur **Soumettre**. Vous devez redémarrer vos homologues pour que les certificats côté client puissent être pris en compte.
-
-Pour plus d'informations sur la génération de votre clé de certificat, voir [Génération de certificats côté client](v10_application.html#generating-the-client-side-certificates).
+<!--
+For more information about generating your certificate key, see [Generating the client-side certificates](v10_application.html#generating-the-client-side-certificates).-->
 
 ## Canaux
 {: #channels}
@@ -129,27 +137,48 @@ Si vous avez une longue liste de demandes, vous pouvez rechercher dans la zone d
 
 Les demandes en attente peuvent être supprimées en sélectionnant la case en regard et en cliquant sur **Supprimer la demande**. Notez qu'une demande terminée ne peut pas être supprimée.
 
+## Autorité de certification
+{: #ca}
+
+Le tableau à l'écran "Autorité de certification" panneau affiche toutes les identités qui ont été enregistrés auprès de votre autorité de certification, y compris l'admin, les homologues et les applications client de votre organisation. Vous pouvez également utiliser cet écran pour enregistrer une nouvelle identité.
+
+La **Figure 7** illustre l'écran "Autorité de certification" :
+
+![Autorité de certification](images/CA_screen.png "Autorité de certification")
+*Figure 7. Autorité de certification*
+
+Cliquez sur le bouton **Générer le certificat** pour obtenir un nouveau certificat public et une clé privée auprès de votre autorité de certification. Ce panneau peut être utilisé comme alternative à la [génération d'une paire de clés publique et privée](v10_application.html#register-app) pour une application client qui utilise le logiciel SDK Fabric. La zone **Certificat** contient votre certificat public, également appelé signCert ou certificat d'inscription, juste au-dessus de votre **clé privée**. Vous pouvez cliquer sur l'icône copier à la fin de chaque champ pour copier la valeur. **Notez** qu'{{site.data.keyword.blockchainfull_notm}} Platform ne stocke pas ces certificats. Vous devez les enregistrer et les stocker en lieu sûr. Consultez les [informations MSP](certificates.html#msp) pour plus de détails.
+
+Cliquez sur le bouton **Ajouter un utilisateur** pour enregistrer une nouvelle identité à votre organisation. Dans la fenêtre en incrustation **Ajouter un utilisateur**, renseignez les zones suivantes, puis cliquez sur **Soumettre**.
+  - **ID :** Il s'agit du nom de votre nouvelle identité, parfois appelée `ID inscription`. **Sauvegardez cette valeur** à des fins de configuration d'un homologue distant ou d'inscription d'une nouvelle application.
+  - **Valeur confidentielle :** Il s'agit du mot de passe de votre identité, parfois appelé `Valeur confidentielle d'inscription`  **Sauvegardez cette valeur**  à des fins de configuration d'un homologue distant ou d'inscription d'une nouvelle application.  
+  - **Type :** Sélectionnez le type d'identité que vous voulez enregistrer, qu'il s'agisse d'un homologue ou d'une application client.
+  - **Affiliation :** Il doit s'agir de l'affiliation au sein de votre organisation, par exemple `org1`, à laquelle l'identité va appartenir.
+  - **Nombre d'inscriptions maximum :** Vous pouvez utiliser cette zone pour limiter le nombre de fois où vous pouvez inscrire ou générer des certificats à l'aide de cette identité. Si vous laissez cette zone vide, la valeur par défaut est un nombre illimité d'inscriptions.
+
+Vous pouvez en savoir plus sur l'autorité de certification en consultant le tutoriel relatif à la [Gestion des certificats sur {{site.data.keyword.blockchainfull_notm}} Platform](certificates.html).
+
 ## API
 {: #apis}
 
 {{site.data.keyword.blockchainfull_notm}} Platform expose dans Swagger un certain nombre d'API REST que vous pouvez utiliser pour gérer les noeuds, les homologues et les membres de votre réseau. Vos applications peuvent recourir à ces API pour gérer d'importantes ressources réseau sans utiliser le moniteur réseau.
 
-La **Figure 7** illustre l'écran "API" :
+La **Figure 8** illustre l'écran "API" :
 
 ![API](images/API_screen.png "API")
-*Figure 7. API*
+*Figure 8. API*
 
 Cliquez sur le lien **Interface utilisateur swagger** pour ouvrir l'identificateur Swagger. Notez que vous devez autoriser l'interface utilisateur swagger à l'aide de vos données d'identification réseau (qui se trouvent sur la page d'API) avant d'exécuter les API. Pour plus de détails, voir [Interaction avec le réseau à l'aide d'API Swagger](howto/swagger_apis.html).
 
 ## Développement de Code
 {: #write-code}
 
-Le plan Enterprise intègre la plateforme {{site.data.keyword.blockchainfull_notm}} : Develop et fournit un environnement de développement avec des outils et des technologies standard du secteur. Vous pouvez développer votre réseau dans l'environnement en ligne ou en local. Dès que vous avez développé un réseau, vous pouvez le redéployer dans votre réseau de plan Enterprise.
+Le plan Enterprise intègre {{site.data.keyword.blockchainfull_notm}} Platform: Develop et fournit un environnement de développement avec des outils et des technologies standard du secteur. Vous pouvez développer votre réseau dans l'environnement en ligne ou en local. Dès que vous avez développé un réseau, vous pouvez le redéployer dans votre réseau de plan Enterprise.
 
-La **Figure 8** illustre l'écran "Développement de code" :
+La **Figure 9** illustre l'écran "Développement de code" :
 
 ![Développement de code](images/write_code.png "Développement de code")
-*Figure 8. Développement de code*
+*Figure 9. Développement de code*
 
 Pour plus d'informations sur le développement et le déploiement de votre code avec le plan Enterprise, voir [Déploiement d'un réseau d'entreprise dans un plan Starter](develop_enterprise.html).
 
@@ -158,10 +187,10 @@ Pour plus d'informations sur le développement et le déploiement de votre code 
 
 Le code blockchain, également appelé "contrat intelligent", est l'élément logiciel qui contient un ensemble de fonctions permettant d'interroger et de mettre à jour le registre. Ils sont installés sur des homologues et instanciés sur un canal.
 
-La **Figure 9** illustre l'écran "Installer le code" :
+La **Figure 10** illustre l'écran "Installer le code" :
 
 ![Installer le code](images/chaincode_install_overview.png "Installer le code")
-*Figure 9. Installer le code*
+*Figure 10. Installer le code*
 
 Un code blockchain est tout d'abord installé sur le système de fichiers d'un homologue, puis il est instancié sur un canal. Pour plus d'informations, voir [Installation, instanciation et mise à jour d'un code blockchain](howto/install_instantiate_chaincode.html).
 
@@ -170,54 +199,51 @@ Un code blockchain est tout d'abord installé sur le système de fichiers d'un h
 
 Des modèles d'application vous permettent d'avoir une meilleure compréhension d'un réseau de blockchain et du développement d'application. Suivez les liens **Afficher sur GitHub** pour découvrir comment utiliser les modèles et les déployer sur {{site.data.keyword.blockchainfull_notm}} Platform. Pour plus d'informations sur le développement et le déploiement de vos modèles, voir [Déploiement de modèles d'application](howto/prebuilt_samples.html).
 
-La **Figure 10** illustre l'écran "Essayer les modèles" :
+La **Figure 11** illustre l'écran "Essayer les modèles" :
 
 ![Essayer les modèles](images/sample_overview_ep.png "Essayer les modèles")
-*Figure 10. Essayer les modèles*
+*Figure 11. Essayer les modèles*
 
 ## Obtenir de l'aide
 {: #support}
 
 L'écran "Obtenir de l'aide" comporte deux onglets qui fournissent des informations de support sous l'onglet "Support" et une description des fonctions nouvelles et modifiées de chaque édition sous l'onglet "Notes sur l'édition".
 
-La **Figure 11** illustre l'écran "Support" initial qui comporte des informations de support sous l'onglet "Support" :
+La **Figure 12** illustre l'écran "Support" initial qui comporte des informations de support sous l'onglet "Support" :
 
 ![Support](images/support.png "Support")
-*Figure 11. Support Blockchain*
+*Figure 12. Support Blockchain*
+
+### Ressources de blockchain et forums de support
+{: #support-forums}
 
 Utilisez les liens et les ressources de cette page pour accéder à des forums de dépannage et de support.
 
-* [Docs de service {{site.data.keyword.blockchainfull_notm}}](index.html), qui est le présent site de documentation, fournit une aide sur la mise en route de la plateforme {{site.data.keyword.blockchainfull}} sur {{site.data.keyword.Bluemix_notm}}. Vous pouvez accéder aux rubriques correspondantes depuis le navigateur de gauche ou rechercher un terme à l'aide de la fonction de recherche située en haut de l'écran.
-* [IBM Developer Works ![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://developer.ibm.com/blockchain/) sous **Aide communautaire** comporte des ressources et des informations pour les développeurs.
+* [Docs de service {{site.data.keyword.blockchainfull_notm}}](index.html), qui est le présent site de documentation, fournit une aide sur la mise en route d'{{site.data.keyword.blockchainfull}} Platform sur {{site.data.keyword.Bluemix_notm}}. Vous pouvez accéder aux rubriques correspondantes depuis le navigateur de gauche ou rechercher un terme à l'aide de la fonction de recherche située en haut de l'écran.
+* [IBM Code ![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://developer.ibm.com/code/technologies/blockchain/) contient des modèles de code et des informations pour les développeurs.
 * [IBM dWAnswers ![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://developer.ibm.com/answers/smartspace/blockchain/) sous **Ticket de demande de service** fait office de plateforme pour les questions et les réponses. Vous pouvez rechercher des réponses à des questions préalablement posées ou soumettre une nouvelle question. Assurez-vous d'inclure le mot clé **blockchain** dans votre question.
   Vous pouvez également soumettre un ticket pour l'équipe de support {{site.data.keyword.blockchainfull_notm}} à l'aide de l'option **Ouvrir un ticket de demande de service {{site.data.keyword.Bluemix_notm}}**.  Partagez les détails et les fragments de code de votre instance {{site.data.keyword.Bluemix_notm}} spécifique.
 * [Modèles d'application![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://github.com/ibm-blockchain) sous **Modèles d'application blockchain** fournit une aide et des exemples de fragment de code pour vous aider dans le développement d'applications.
-* [Hyperledger Fabric ![Icône de lien externe](images/external_link.svg "Icône de lien externe")](http://hyperledger-fabric.readthedocs.io/) et [Communauté Hyperledger Fabric![Icône de lien externe](images/external_link.svg "Icône de lien externe")](http://jira.hyperledger.org/secure/Dashboard.jspa) sous **Hyperledger Fabric** fournissent des données plus détaillées sur la pile Hyperledger Fabric.
-  Dialoguez avec un [expert Hyperledger![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://chat.hyperledger.org/channel/general) si vous avez des questions sur le code Hyperledger Fabric.
+* [Hyperledger Fabric ![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-1.1/) et [Communauté Hyperledger Fabric![Icône de lien externe](images/external_link.svg "Icône de lien externe")](http://jira.hyperledger.org/secure/Dashboard.jspa) sous **Hyperledger Fabric** fournissent des données plus détaillées sur la pile Hyperledger Fabric.Dialoguez avec un [expert Hyperledger![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://chat.hyperledger.org/channel/general) si vous avez des questions sur le code Hyperledger Fabric.
+* [{{site.data.keyword.blockchainfull_notm}} Platform: Develop ![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://ibm-blockchain.github.io/develop/) sous **Hyperledger Composer** fournit davantage de détails sur Hyperledger Composer, c'est-à-dire {{site.data.keyword.blockchainfull_notm}} Platform: Develop. Vous pouvez trouver des réponses ou poser des questions dans la [communauté Hyperledger Composer![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://chat.hyperledger.org/channel/general) et [StackOverflow ![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://stackoverflow.com/questions/tagged/hyperledger-composer).
 
-Si vous ne parvenez pas à déboguer votre problème ou à obtenir une réponse à votre question, soumettez un cas sur le portail IBM Cloud Service Portal. Pour plus d'informations, voir [Support](ibmblockchain_support.html).
+Si vous ne parvenez pas à déboguer votre problème ou à obtenir une réponse à votre question, soumettez un cas sur le portail de service {{site.data.keyword.cloud_notm}}. Pour plus d'informations, voir [Support](ibmblockchain_support.html).
 
-Les Figures 12 et 13 affichent l'écran "Obtenir de l'aide" initial qui comporte les fonctions nouvelles et modifiées de chaque édition sous l'onglet "Notes sur l'édition" :
+La **Figure 13** et la **Figure 14** illustrent l'écran "Obtenir de l'aide" initial qui comporte les fonctions nouvelles et modifiées de chaque édition sous l'onglet "Notes sur l'édition" :
 
-![Notes sur l'édition Helios](images/releasenotes_helios.png "Notes sur l'édition Helios")
-*Figures 12. Notes sur l'édition pour Helios*
+![Notes sur l'édition helios](images/releasenotes_helios.png "Notes sur l'édition de l'interface utilisateur du Moniteur réseau")
+*Figures 13. Notes sur l'édition pour Helios*
 
-![Notes sur l'édition pour Fabric](images/releasenotes_Fabric.png "Notes sur l'édition pour Fabric")
-*Figures 13. Notes sur l'édition pour Fabric*
+![Notes sur l'édition Fabric](images/releasenotes_Fabric.png "Notes sur l'édition de Fabric")
+*Figures 14. Notes sur l'édition pour Fabric*
 
 
 ## Préférences réseau
 {: #network-preferences}
 
-Cliquez dans l'angle supérieur droit et ouvrez le menu déroulant, puis les **Préférences réseau**. La fenêtre Préférences réseau s'affiche. Elle affiche les informations de base de votre réseau, comme le nom réseau, la version Fabric, l'emplacement réseau dans {{site.data.keyword.cloud_notm}}, ainsi que le type de base de données du registre.
+Cliquez dans l'angle supérieur droit et ouvrez le menu déroulant, puis les **Préférences réseau**. La fenêtre Préférences réseau s'affiche. Elle affiche les informations de base de votre réseau, comme le nom réseau, la version Fabric, l'emplacement réseau dans {{site.data.keyword.cloud_notm}}, ainsi que le type de base de données d'état. 
 
 Les réseaux du plan Enterprise créés après le 15 mai 2048 opéreront avec Hyperledger Fabric v1.1. Si vous créez des réseaux après la mise à niveau, vous pouvez également gérer les délai d'inactivité Web et le TLS mutuel pour votre réseau dans la fenêtre Préférences réseau. Ces paramètres peuvent être modifiés par l'initiateur du réseau uniquement.
-
-<!--
-
-Enterprise Plan networks that are created after May 15th, 2018 will run on Hyperledger Fabric v1.1. If you create networks after the upgrade, you can also manage web inactivity timeout, mutual TLS, and switch your ledger to CouchDB for your network in the Network preferences window. These settings can be changed by the network initiator only.
-
--->
 
 ### Délai d'inactivité Web
 {: #web-inactivity-timeout}
@@ -248,20 +274,20 @@ Pour plus d'informations sur la mise à jour de vos applications pour la prise e
 
 <!--
 
-### CouchDB ledger type
+### CouchDB state database
 {: #couchdb}
 
-**Note**: Only the **network initiator** can switch the ledger database from LevelDB to CouchDB. This is a network level setting and will affect all network members. Switching to CouchDB is permanent. You cannot revert back to LevelDB.
+**Note**: Only the **network initiator** can switch the state database from LevelDB to CouchDB. This is a network level setting and will affect all network members. Switching to CouchDB is permanent. You cannot revert back to LevelDB.
 
-Before Enterprise Plan upgrades to Fabric v1.1, all network peers store data in the pure key-value LevelDB. With Fabric v1.1, you can choose to use CouchDB as your ledger database. CouchDB is a document datastore that permits indexing the contents of your data and allows you to issue rich queries against the data on your peer. Note that Hyperledger Fabric does not support peers running different databases. If CouchDB is used, it must be used by all of the peers.
+Before Enterprise Plan upgrades to Fabric v1.1, all network peers store data in the pure key-value LevelDB. With Fabric v1.1, you can choose to use CouchDB as your state database. CouchDB is a document datastore that permits indexing the contents of your data and allows you to issue rich queries against the data on your peer. Note that Hyperledger Fabric does not support peers running different databases. If CouchDB is used, it must be used by all of the peers.
 
 To use CouchDB, your data must be stored in a data format that can be modeled in chaincode, such as JSON. If the decision is made to migrate from LevelDB to CouchDB, the {{site.data.keyword.blockchainfull_notm}} Platform will migrate your data from key-value format to the CouchDB format automatically.
 
-If you switch to CouchDB, you need to update your chaincode to take advantage of indexes and rich queries. For more information about CouchDB and how to set up index, see [CouchDB as the State Database ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/latest/couchdb_as_state_database.html). For more information about updating chaincode in {{site.data.keyword.blockchainfull_notm}} Platform, see [Updating a chaincode](howto/install_instantiate_chaincode.html#updating-a-chaincode).
+If you switch to CouchDB, you need to update your chaincode to take advantage of indexes and rich queries. For more information about CouchDB and how to set up index, see [CouchDB as the State Database ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/latest/couchdb_as_state_database.html) in the Hyperledger Fabric documentation. You can also find an example that uses an index with chaincode in this [Fabric tutorial![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/couchdb_tutorial.html){:new_window}. For more information about updating chaincode in {{site.data.keyword.blockchainfull_notm}} Platform, see [Updating a chaincode](howto/install_instantiate_chaincode.html#updating-a-chaincode).
 
 -->
 
-La **Figure 14** affiche la fenêtre "Préférences réseau" :
+La **Figure 15** affiche la fenêtre "Préférences réseau" :
 
 ![Préférences réseau](images/network_preferences_ep_tmp.png "Préférences réseau")
-*Figure 14. Préférences réseau*
+*Figure 15. Préférences réseau*

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -16,7 +16,12 @@ lastupdated: "2018-06-14"
 # Unternehmensnetz im Starter Plan bereitstellen
 {: #deploying-a-business-network}
 
+
+*[Ist diese Seite hilfreich? Teilen Sie uns Ihre Meinung mit.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)*
+
+
 Unternehmensnetze können unter Verwendung der Entwicklerumgebung von {{site.data.keyword.blockchainfull}} Platform und mithilfe des Hyperledger Composer-Toolsets entwickelt und in einer Starter Plan-Umgebung bereitgestellt werden.
+{:shortdesc}
 
 In der Entwicklerumgebung können Sie {{site.data.keyword.blockchain}}-Unternehmensnetze schnell entwickeln und in einer Instanz von {{site.data.keyword.blockchainfull_notm}} Platform bereitstellen.
 
@@ -33,7 +38,7 @@ Stellen Sie sicher, dass Sie die [Informationen zum Starter Plan](./starter_plan
 
 3. Blättern Sie im Verbindungsprofil nach unten bis zum Eintrag 'registrar'. In 'registrar' ist unter 'enrollId' die Eigenschaft **enrollSecret** (geheimer Eintragungsschlüssel) aufgeführt. Rufen Sie den geheimen Schlüssel ab und speichern Sie eine Kopie davon.
 
-    ![D8KBag](https://i.makeagif.com/media/4-12-2018/D8KBag.gif)
+    ![Geheimen Administratorschlüssel abrufen](images/get_enroll_secret.gif "Geheimen Administratorschlüssel abrufen")
 
 
 ## Schritt 2: Zertifizierungsstellenkarte erstellen
@@ -47,7 +52,7 @@ Der im vorherigen Schritt abgerufene geheime Schlüssel wird zum Erstellen einer
    ```
    {:pre}
 
-Ersetzen Sie im vorangehenden Befehl `enrollSecret` durch den geheimen Administratorschlüssel, der im Verbindungsprofil abgerufen wurde. 
+Ersetzen Sie im vorangehenden Befehl `enrollSecret` durch den geheimen Administratorschlüssel, der im Verbindungsprofil abgerufen wurde.
 
 2. Importieren Sie die Karte mit dem folgenden Befehl:
 
@@ -71,11 +76,11 @@ Die Zertifikate müssen der Starter Plan-Instanz hinzugefügt werden. Aus Gründ
 
 1. Klicken Sie in der Starter Plan-Benutzerschnittstelle auf die Registerkarte **Mitglieder**, dann auf **Zertifikate** und dann auf **Zertifikat hinzufügen**. Rufen Sie das Verzeichnis `credentials` auf. Kopieren Sie den Inhalt der Datei `admin-pub.pem` und fügen Sie ihn in das Zertifikatsfeld ein. Übergeben Sie das Zertifikat und starten Sie die Peers erneut. Hinweis: Der Neustart der Peers nimmt eine Minute in Anspruch.
 
-    ![jlEb2y](https://i.makeagif.com/media/4-12-2018/jlEb2y.gif)
+    ![Zertifikate hinzufügen](images/add_cert.gif "Zertifikate hinzufügen")
 
 2. Als nächstes müssen die Zertifikate im Kanal synchronisiert werden. Klicken Sie auf die Registerkarte **Kanäle**, dann auf die Schaltfläche **Aktionen** und dann auf **Zertifikat synchronisieren** und auf **Übergeben**.
 
-    ![E-sVV5](https://i.makeagif.com/media/4-12-2018/E-sVV5.gif)
+    ![Zertifikate synchronisieren](images/sync_cert.gif "Zertifikate synchronisieren")
 
 ## Schritt 4: Unternehmensnetzkarte für den Administrator erstellen
 
@@ -137,13 +142,13 @@ Das Unternehmensnetz ist jetzt in der Starter Plan-Instanz bereitgestellt.
 
 ## Schritt 6: Überprüfen Sie das Unternehmensnetz mit einem Pingbefehl, um sicherzustellen, dass es korrekt ausgeführt wird.
 
-1. Führen Sie den folgenden Befehl aus, um das Unternehmensnetz mit einem Pingbefehl zu überprüfen:
+Führen Sie den folgenden Befehl aus, um das Unternehmensnetz mit einem Pingbefehl zu überprüfen:
 
    ```
    composer network ping -c admin@vehicle-manufacture-network
    ```
    {:codeblock}
 
-Wenn Sie die Chaincodeprotokolle anzeigen möchten, klicken Sie auf **Kanäle** und wählen Sie dann den gewünschten Kanal aus. Klicken Sie auf den Dropdown-Pfeil, um die Protokolle anzuzeigen, oder auf das Aktionssymbol, um zusätzliche Details aufzurufen.
+Wenn Sie die Chaincode-Protokolle anzeigen möchten, klicken Sie auf **Kanäle** und wählen Sie dann den gewünschten Kanal aus. <!-- Click the dropdown arrow to view the logs, or the Actions symbol to view in more detail. --> Klicken Sie auf die Schaltfläche **Chaincode**. Erweitern Sie die Ansicht der Chaincode-Zeile und klicken Sie dann auf die Schaltfläche **JSON** oder **Protokolle**.
 
-![fN-Yuj](https://i.makeagif.com/media/4-13-2018/fN-Yuj.gif)
+<!-- [fN-Yuj](https://i.makeagif.com/media/4-13-2018/fN-Yuj.gif) -->

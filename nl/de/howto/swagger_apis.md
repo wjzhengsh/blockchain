@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -12,9 +12,13 @@ lastupdated: "2018-06-14"
 {:codeblock: .codeblock}
 {:pre: .pre}
 
-# Swagger-APIs verwenden, um mit dem Netz zu interagieren
+# Über Swagger-APIs mit dem Netz interagieren
 
-{{site.data.keyword.blockchainfull_notm}} Platform stellt eine Reihe von REST-APIs in Swagger bereit, mit denen Sie die Knoten, Kanäle, Peers und Mitglieder Ihres Netzes verwalten können. Ihre Anwendungen können mithilfe dieser APIs wichtige Netzressourcen ohne den Network Monitor steuern. 
+
+***[Ist diese Seite hilfreich? Teilen Sie uns Ihre Meinung mit.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
+{{site.data.keyword.blockchainfull_notm}} Platform stellt eine Reihe von REST-APIs in Swagger bereit, mit denen Sie die Knoten, Kanäle, Peers und Mitglieder Ihres Netzes verwalten können. Ihre Anwendungen können mithilfe dieser APIs wichtige Netzressourcen ohne den Network Monitor steuern.
 
 {:shortdesc}
 
@@ -58,23 +62,23 @@ In **Abbildung 3** wird die Autorisierung von Swagger-APIs dargestellt:
 
 ## APIs ausprobieren
 
-Klicken Sie auf die REST-API, die Sie ausführen möchten, und klicken Sie auf die Schaltfläche für das **Ausprobieren**. 
+Klicken Sie auf die REST-API, die Sie ausführen möchten, und klicken Sie auf die Schaltfläche für das **Ausprobieren**.
 
-In **Abbildung 4** ist die Schaltfläche für das Ausprobieren in der Swagger-Benutzerschnittstelle zu sehen: 
+In **Abbildung 4** ist die Schaltfläche für das Ausprobieren in der Swagger-Benutzerschnittstelle zu sehen:
 
 ![Schaltfläche für das Ausprobieren in der Swagger-Benutzerschnittstelle](../images/swaggerUITryItOut.png "Schaltfläche für das Ausprobieren in der Swagger-Benutzerschnittstelle")  
 *Abbildung 4. Schaltfläche für das Ausprobieren in der Swagger-Benutzerschnittstelle*
 
-Nach einem Klick auf die Schaltfläche für das **Ausprobieren** können Sie für die API erforderliche Parameter eingeben. Die `Netz-ID` finden Sie in Ihren Netzberechtigungsnachweisen, sonstige Parameter im Network Monitor. Klicken Sie nach der Parametereingabe auf die Schaltfläche für das **Ausführen**, um den REST-API-Aufruf für das gesamte Netz auszuführen. 
+Nach einem Klick auf die Schaltfläche für das **Ausprobieren** können Sie für die API erforderliche Parameter eingeben. Die `Netz-ID` finden Sie in Ihren Netzberechtigungsnachweisen, sonstige Parameter im Network Monitor. Klicken Sie nach der Parametereingabe auf die Schaltfläche für das **Ausführen**, um den REST-API-Aufruf für das gesamte Netz auszuführen.
 
-**Abbildung 5** zeigt Parameter in der Swagger-Benutzerschnittstelle: 
+**Abbildung 5** zeigt Parameter in der Swagger-Benutzerschnittstelle:
 
 ![Parameter in der Swagger-Benutzerschnittstelle](../images/swaggerUIParams.png "Parameter in der Swagger-Benutzerschnittstelle")  
 *Abbildung 5. Parameter eingeben*  
 
-Nach einem Klick auf die Schaltfläche für das **Ausführen** werden die Antworten zu dem API-Aufruf für das Netz angezeigt. Ihnen wird auch ein cURL-Befehl angezeigt, mit dem die API direkt über die Befehlszeile aufgerufen werden kann. 
+Nach einem Klick auf die Schaltfläche für das **Ausführen** werden die Antworten zu dem API-Aufruf für das Netz angezeigt. Ihnen wird auch ein cURL-Befehl angezeigt, mit dem die API direkt über die Befehlszeile aufgerufen werden kann.
 
-In **Abbildung 6** sind der Hauptteil der API-Antwort, die URL und der cURL-Befehl zu sehen: 
+In **Abbildung 6** sind der Hauptteil der API-Antwort, die URL und der cURL-Befehl zu sehen:
 
 ![API-Antwort in der Swagger-Benutzerschnittstelle](../images/swaggerUICurlResponse.png "API-Antwort in der Swagger-Benutzerschnittstelle")  
 *Abbildung 6. API-Antwort*    

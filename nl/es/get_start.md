@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -15,6 +15,10 @@ lastupdated: "2018-06-14"
 
 # Gobierno de la red del Plan empresarial
 {: #getting-started-with-blockchain}
+
+
+***[¿Le resulta útil esta página? Indíquenos su opinión.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
 
 El Plan empresarial de la plataforma {{site.data.keyword.blockchainfull}} proporciona una red blockchain con alta seguridad, integridad, escalabilidad y rendimiento. Puede suministrar rápidamente una red plenamente funcional y utilizar el supervisor de red, que es un panel de control de la GUI, para ejecutar con inmediatez [código de encadenamiento](glossary.html#chaincode) y aplicaciones sin tener que diseñar ni configurar una red partiendo de cero.
 {:shortdesc}
@@ -44,7 +48,7 @@ Si es un iniciador de red, pulse el botón **Crear red** para iniciar una red de
 	Los miembros que invite recibirán una notificación por correo electrónico sobre la invitación después de completar todos los pasos necesarios para crear la red.
 3. En la pantalla "Definir reglas de gobierno", establezca las políticas de pertenencia, creación de canal y código de encadenamiento. De forma predeterminada, todos los miembros de red pueden invitar a otros miembros a unirse a la red, crear canales y crear instancias de código de encadenamiento. Actualmente, su red utiliza las políticas de gobierno predeterminadas.  Pulse **Siguiente**.
 4. En la pantalla "Revise el resumen", verifique la configuración de red. Si desea realizar modificaciones, pulse **Editar** junto a la cabecera de sección o pulse el botón **Anterior** para volver a las pantallas anteriores. Cuando haya completado la configuración de red, pulse **Finalizado**.  
-5. En la pantalla "Red creada", se le notificará que la red se ha creado satisfactoriamente. Puede pulsar **Añadir [iguales](glossary.html#peer)** para configurar los recursos de red o puede pulsar **Entrar en el supervisor** directamente para abrir el supervisor de red. También puede añadir iguales en el supervisor de red más adelante.  Para obtener más información sobre los iguales, consulte [Añadir iguales](v10_dashboard.md#add_peers).
+5. En la pantalla "Red creada", se le notificará que la red se ha creado satisfactoriamente. Puede pulsar **Añadir [iguales](glossary.html#peer)** para configurar los recursos de red o puede pulsar **Entrar en el supervisor** directamente para abrir el supervisor de red. También puede añadir iguales en el supervisor de red más adelante.  Para obtener más información sobre los iguales, consulte [Añadir iguales](v10_dashboard.html#peers).
 
 Ahora ha desplegado correctamente una red de {{site.data.keyword.blockchain}} que puede dar soporte a los recursos de red siguientes:  
 * Una entidad emisora de certificados (CA) específica de un miembro
@@ -76,7 +80,7 @@ Si es un miembro de red invitado, pulse el botón **Invitación pendiente->**, s
 ## Configuración de recursos de red y de entorno
 
 1. Especifique el Supervisor de red después de crear la red de {{site.data.keyword.blockchain}} o unirse a una. El supervisor de red es un panel de control de la GUI donde se puede gestionar la información de estado de red y realizar un seguimiento de la misma. Para obtener más información, consulte [Supervisor de red](v10_dashboard.html).
-2. Añada sus iguales a la red. Si ya ha agregado suficientes iguales, sáltese este paso. Los iguales ejecutan código de encadenamiento y son el punto final para interactuar con las aplicaciones. Pulse **Añadir iguales** en la pantalla "Visión general" y seleccione la cantidad y el tamaño de los iguales. Para obtener más información, consulte [Visión general](v10_dashboard.html#resources).
+2. Añada sus iguales a la red. Si ya ha agregado suficientes iguales, sáltese este paso. Los iguales ejecutan código de encadenamiento y son el punto final para interactuar con las aplicaciones. Pulse **Añadir iguales** en la pantalla "Visión general" y seleccione la cantidad y el tamaño de los iguales. Para obtener más información, consulte [Visión general](v10_dashboard.html#overview).
 3. Configure un canal. Se suministra un libro mayor específico del canal a todos los miembros de un mismo canal; este libro mayor presenta datos de aislamiento y confidencialidad. Para obtener información sobre cómo crear un canal, consulte [Creación de un canal](howto/create_channel.html#creating-a-channel).  
     Si es un miembro del canal a quien se ha invitado a unirse a un canal, recibirá una notificación por correo electrónico con un enlace al asistente que le permitirá unirse al canal.
 4. Una iguales al canal.  Solo los iguales que estén asociados con el canal podrán acceder a su libro mayor. Para obtener más información, consulte [Canales](v10_dashboard.html#channels).
@@ -97,13 +101,13 @@ Para recuperar sus credenciales de servicio, siga los pasos siguientes:
 3. En la pantalla "Añadir nueva credencial", asigne un nombre a la credencial y especifique **{"type": "service_instance_token"}** en el campo "Añadir parámetro de configuración en línea". Pulse **Añadir** y la nueva credencial se añade a la tabla. Puede pulsar **Ver credenciales** en la columna "Acciones" para ver los detalles de la credencial. Esta credencial contiene la clave y el secreto de API, que puede utilizar para autorizar las API.
 
 ### Recuperación en el supervisor de red
-Encontrará las credenciales de red en la pantalla "API" del supervisor de red. Para obtener más información sobre cómo utilizar las API, consulte [Cómo probar API con Swagger](apis.html).
+Encontrará las credenciales de red en la pantalla "API" del supervisor de red. Para obtener más información sobre cómo utilizar las API, consulte [Cómo probar API con Swagger](howto/swagger_apis.html).
 
 Puede recuperar el perfil de conexión en la pantalla "Visión general" del supervisor de red. Pulse el botón **Perfil de conexión** en la pantalla "Visión general" y aparecerá el perfil de conexión en una página nueva.
 
 
 ## Desarrollo y despliegue de redes empresariales personalizadas
-Puede desarrollar redes empresariales en función de las necesidades de su empresa con el entorno para el desarrollador IBM Blockchain Platform: Develop y con el conjunto de herramientas para el desarrollador Hyperledger Composer. Después de desarrollar una red para su empresa, puede desplegar su red empresarial en la red del Plan empresarial.
+Puede desarrollar redes empresariales en función de las necesidades de su empresa con el entorno para el desarrollador IBM {{site.data.keyword.blockchainfull_notm}} Platform: Develop y con el conjunto de herramientas para el desarrollador Hyperledger Composer. Después de desarrollar una red para su empresa, puede desplegar su red empresarial en la red del Plan empresarial.
 
 Para obtener más información, consulte [Desarrollar la red](develop.html) y [Despliegue de una red empresarial en el Plan empresarial](develop_enterprise.html).
 
@@ -123,5 +127,5 @@ Si desea abandonar una red, suprima la instancia del servicio blockchain del pan
 <!--
 ## References
 * For more information about {{site.data.keyword.blockchainfull_notm}} offerings, see [Blockchain offerings](index.html).
-* For more information about Hyperledger Fabric, see [Hyperledger Fabric documentation ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/latest/){:new_window}.
+* For more information about Hyperledger Fabric, see [Hyperledger Fabric documentation ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/){:new_window}.
 -->

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-09-27"
 ---
 
 {:new_window: target="_blank"}
@@ -13,16 +13,18 @@ lastupdated: "2018-06-14"
 
 # Installing, instantiating, and updating a chaincode
 
-Chaincode is software, which is written in Go, Java, or Node.js, that encapsulates the business logic and transactional instructions
-for creating and modifying assets in the ledger. A chaincode runs in a docker container that is associated with any peer that needs to interact with it.  For more information about developing chaincode, see [Chaincode Tutorials ![External link icon](../images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/latest/chaincode.html).
+
+***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
+Chaincode is software that encapsulates the business logic and transactional instructions for creating and modifying assets in the ledger. Chaincode can be written in different languages, and {{site.data.keyword.blockchainfull}} Platform supports Go and Node.js chaincode. A chaincode runs in a docker container that is associated with any peer that needs to interact with it. For more information about developing chaincode, see [Chaincode Tutorials ![External link icon](../images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/latest/chaincode.html).
 {:shortdesc}
 
-Chaincode is installed on a peer's file system and then instantiated on a channel. **All channel members need to install the chaincode on every peer that will run this chaincode.** To use the same chaincode, channel members must give the chaincode the same name and version when they install the chaincode. Then, the instantiation step involves the initialization of key value pairs and the deployment of the chaincode container. Any peer, via which applications will interact with a chaincode, must have the chaincode that is installed on the peer's file system and have a running chaincode container. **However, if a peer uses the same chaincode on multiple channels, it needs only a single instance of the chaincode container**.
+Chaincode is installed on a peer, then instantiated on a channel. **All members that want to submit transactions or read data by using a chaincode need to install the chaincode on their peer.** A chaincode is defined by its name and version. Both the name and version of the installed chaincode need to be consistent across the peers on a channel.
 
-The **installation and instantiation combination** is a powerful feature because it allows for a peer to interact with the same chaincode container across multiple channels. The only prerequisite is for the actual chaincode source files to be installed on the peer's file system. As such, if a piece of common chaincode is being used across dozens of channels, a peer would need only a single chaincode container to perform read/writes on all the channel ledgers. This lightweight approach proves beneficial to computational performance and throughput as networks scale and chaincode become more elaborate.
+After chaincode is installed on the peers, a single network member instantiates the chaincode on the channel. The network member needs to have joined the channel in order to perform this action. Instantiation will input the initial data used by the chaincode, and then start the chaincode containers on peers joined to the channel with the chaincode installed. The peers can then use the running containers to transact. **Note that only one network member needs to instantiate a chaincode.** If a peer with a chaincode installed joins a channel where it has already been instantiated, the chaincode container will start automatically.
 
-**Note**: If you develop your chaincode in an iterative way and need to update a chaincode, you need to repeat both installation and instantiation steps for the chaincode.
-
+The combination of **installation and instantiation** is a powerful feature because it allows for a peer to use a single chaincode across many channels. Peers may want to join multiple channels that use the same chaincode, but with different sets of network members able to access the data. A peer can the install the chaincode once, and then use the same chaincode container on any channel where it has been instantiated. This lightweight approach saves compute and storage space, and helps you scale your network.
 
 ## Installing a chaincode
 {: #installchaincode}
@@ -35,8 +37,8 @@ You must install the chaincode on every peer that will run this chaincode. Compl
 
 2. In the **Install Chaincode** pop-up panel, enter the name and version of your chaincode. **Note** that the name and version strings will be used in applications to interact with the installed chaincode. Click the **Browse** button and navigate through your local file system to wherever your chaincode source files are stored. Select one or more chaincode source files to install on the peer. Then select your chaincode language from the **Chaincode Type** dropdown.
 
-You can install chaincode by uploading a single or multiple GO or NODE files, or you can upload chaincode inside a .zip file. Using a .zip file will maintain your chaincode with a complete directory structure. This will be helpful if you want include packages of dependencies, or use indexes with CouchDB. To find an example of how to include indexes with your chaincode, see
-[Using CouchDB from Chaincode![External link icon](../images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/couchdb_as_state_database.html#using-couchdb-from-chaincode){:new_window} in the Fabric documentation. You can also find information on [managing external dependencies for chaincode written in GO![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/latest/chaincode4ade.html#managing-external-dependencies-for-chaincode-written-in-go){:new_window}
+You can install chaincode by uploading a single or multiple GO or NODE files, or you can upload chaincode inside a .zip file. Using a .zip file will maintain your chaincode with a complete directory structure. This will be helpful if you want include packages of dependencies, or use indexes with CouchDB. For an example of how to include indexes with your chaincode, see
+[Using CouchDB from Chaincode ![External link icon](../images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/couchdb_as_state_database.html#using-couchdb-from-chaincode){:new_window} or follow this [tutorial ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/couchdb_tutorial.html){:new_window} in the Hypereldger Fabric documentation. You can also find information on [managing external dependencies for chaincode written in GO ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/latest/chaincode4ade.html#managing-external-dependencies-for-chaincode-written-in-go){:new_window}
 
   ![Install Chaincode](../images/chaincode_install.png "Install Chaincode")
 
@@ -57,6 +59,7 @@ You need to have **Operator** or **Writer** authority on the channel to instanti
 3. Specify your chaincode's [endorsement policy](../glossary.html#endorsement-policy). You can learn more about how to set endorsement policies in the [next section](#specifying-chaincode-endorsement-policies).
 
 ## Specifying chaincode endorsement policies
+{: #endorsement-policy}
 
 You can use endorsement policies to specify which set of peers need to validate a new transaction. For example, an endorsement policy can specify that a transaction will be added to the ledger only if a majority of the members on the channel endorse the transaction.
 
@@ -70,9 +73,11 @@ When you use the Network Monitor to set your endorsement policy, you can either 
 
 * **Use JSON to specify an Advanced Policy:** Use advanced policies to require endorsements from important members or administrators, or to give the endorsements of certain members more weight.
 
-  The easiest way to specify an advanced policy is to start by building a simple policy by using the UI screen. Then, click the **Advanced Policy** button, which autofills a JSON version of the policy with the same members and rules as you set in the simple policy. You can then edit the JSON to write a more advanced version. For more information about writing endorsement policies in JSON, see [Hyperledger Fabric Node SDK documentation![External link icon](../images/external_link.svg "External link icon")](https://fabric-sdk-node.github.io/global.html#ChaincodeInstantiateUpgradeRequest). <!--You can also find examples of advanced endorsement policies in the main [Hyperledger Fabric documentation![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/latest/arch-deep-dive.html#example-endorsement-policies)-->
+  The easiest way to specify an advanced policy is to start by building a simple policy by using the UI screen. Then, click the **Advanced Policy** button, which autofills a JSON version of the policy with the same members and rules as you set in the simple policy. You can then edit the JSON to write a more advanced version. For more information about writing endorsement policies in JSON, see [Hyperledger Fabric Node SDK documentation ![External link icon](../images/external_link.svg "External link icon")](https://fabric-sdk-node.github.io/global.html#ChaincodeInstantiateUpgradeRequest). <!--You can also find examples of advanced endorsement policies in the main [Hyperledger Fabric documentation![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/latest/arch-deep-dive.html#example-endorsement-policies)-->
 
   ![Advanced endorsement policy](../images/advanced_endorsement.png "Advanced endorsement policy")
+
+Endorsement policies are not updated automatically when new organizations join the channel and install the chaincode. For example, if the policy requires two of five organizations to endorse a transaction, the policy will not be updated to require two out of six organizations when a new organization joins the channel. Instead, the new organization will not be listed on the policy, and they will not be able to endorse transactions.You can add a new organization to an endorsement policy by updating the relevant chaincode.
 
 ## Updating a chaincode
 
@@ -82,6 +87,6 @@ You can update a chaincode to change the chaincode's programming while maintaini
 
   ![Update Chaincode](../images/upgrade_chaincode.png "Update Chaincode")
 
-2. Find your new chaincode in the table and click the **Update** button under the **Action** header. This action reinstantiates your chaincode and replaces the chaincode container with a new one. Note that you do not need to enter any new arguments as part of the update function.
+2. Find your new chaincode in the table and click the **Update** button under the **Action** header. This action reinstantiates your chaincode and replaces the chaincode container with a new one. When you click the **Update** button, you have the opportunity to update the chaincode endorsement policy, which is important to do if an organization was recently added to the channel. Note that you do not need to enter any new arguments as part of the update function. This upgrade action takes place on the channel, and only needs to be performed by one organization.
 
   ![Update button](../images/upgrade_button.png "Update button")

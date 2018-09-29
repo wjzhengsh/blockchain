@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -15,6 +15,10 @@ lastupdated: "2018-06-14"
 
 # 개발 환경 설치
 {: #installing-a-development-environment}
+
+
+***[이 페이지가 도움이 되었습니까? 알려주십시오.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
 
 다음 지시사항에 따라 비즈니스 네트워크 작성 및 테스트를 위한 {{site.data.keyword.blockchainfull}} Platform: Develop 개발 도구를 확보하십시오. 유연성을 제공하고 최대 수의 개발, 테스트 및 배치 시나리오를 사용할 수 있도록 개발 도구가 명령행에서 제어되는 npm 모듈로서 제공됩니다.
 
@@ -45,28 +49,28 @@ VSCode를 사용하는 경우 [여기](https://marketplace.visualstudio.com/item
 1. 스타터 플랜에 사용하려면 다음 명령을 사용하여 **composer-cli**를 설치하십시오.
 
     ```
-    npm install -g composer-cli@0.19.x
+npm install -g composer-cli@0.19.x
     ```
     {:codeblock}
 
     엔터프라이즈 플랜에 사용하려면 다음 명령을 사용하여 **composer-cli**를 설치하십시오.
 
     ```
-    npm install -g composer-cli@0.16.x
+npm install -g composer-cli@0.16.x
     ```
     {:codeblock}
 
 2. 스타터 플랜에 사용하려면 다음 명령을 사용하여 **composer-rest-server**를 설치하십시오.
 
     ```
-    npm install -g composer-rest-server@0.19.x
+npm install -g composer-rest-server@0.19.x
     ```
     {:codeblock}
 
     엔터프라이즈 플랜에 사용하려면 다음 명령을 사용하여 **composer-rest-server**를 설치하십시오.
 
     ```
-    npm install -g composer-rest-server@0.16.x
+npm install -g composer-rest-server@0.16.x
     ```
     {:codeblock}
 
@@ -75,14 +79,14 @@ VSCode를 사용하는 경우 [여기](https://marketplace.visualstudio.com/item
 3. 스타터 플랜에 사용하려면 다음 명령을 사용하여 **generator-hyperledger-composer**를 설치하십시오.
 
     ```
-    npm install -g generator-hyperledger-composer@0.19.x
+npm install -g generator-hyperledger-composer@0.19.x
     ```
     {:codeblock}
 
     엔터프라이즈 플랜에 사용하려면 다음 명령을 사용하여 **generator-hyperledger-composer**를 설치하십시오.
 
     ```
-    npm install -g generator-hyperledger-composer@0.16.x
+npm install -g generator-hyperledger-composer@0.16.x
     ```
     {:codeblock}
 
@@ -91,7 +95,7 @@ VSCode를 사용하는 경우 [여기](https://marketplace.visualstudio.com/item
 4. Yeoman은 애플리케이션 생성을 위한 도구이며 `generator-hyperledger-composer`를 이용합니다.
 
     ```
-    npm install -g yo
+npm install -g yo
     ```
     {:codeblock}
 
@@ -129,7 +133,7 @@ Playground를 사용하여 비즈니스 네트워크를 개발하고 편집하�
 1. 다음 명령을 사용하여 `fabric-tools` 디렉토리를 작성하십시오.
 
    ```
-mkdir ~/fabric-tools &&  cd ~/fabric-tools
+   mkdir ~/fabric-tools && cd ~/fabric-tools
    ```
    {:codeblock}
 
@@ -171,7 +175,7 @@ curl -O https://raw.githubusercontent.com/hyperledger/composer-tools/master/pack
 5. Playground를 시작하려면 다음 명령을 실행하십시오.
 
     ```
-    composer-playground
+composer-playground
     ```
     {:codeblock}
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -16,7 +16,12 @@ lastupdated: "2018-06-14"
 # Deploying a business network on Starter Plan
 {: #deploying-a-business-network}
 
+
+*[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)*
+
+
 Business networks can be developed and deployed to a Starter Plan environment by using the {{site.data.keyword.blockchainfull}} Platform developer environment and Hyperledger Composer developer toolset.
+{:shortdesc}
 
 By using the developer environment, you can quickly model and test {{site.data.keyword.blockchain}} business networks and deploy them to an instance of the {{site.data.keyword.blockchainfull_notm}} Platform.
 
@@ -33,7 +38,7 @@ Ensure that you read the [About Starter Plan](./starter_plan.html) and [Getting 
 
 3. Inside the connection profile, go all the way down until you see 'registrar'. Inside 'registrar', under 'enrollId' there is an **enrollSecret** property. Retrieve the secret and save a copy of it.
 
-    ![D8KBag](https://i.makeagif.com/media/4-12-2018/D8KBag.gif)
+    ![Retrieve admin secret](images/get_enroll_secret.gif "Retrieve admin secret")
 
 
 ## Step Two: Creating a certificate authority card
@@ -71,11 +76,11 @@ The certificates must be added to the Starter Plan instance. For convenience, th
 
 1. In the Starter Plan UI, click on the **Members** tab, then **Certificates**, then **Add Certificate**. Go to your `credentials` directory, and copy and paste the contents of the `admin-pub.pem` file in the certificate box. Submit the certificate and restart the peers. Note: restarting the peers takes a minute.
 
-    ![jlEb2y](https://i.makeagif.com/media/4-12-2018/jlEb2y.gif)
+    ![Add certificates](images/add_cert.gif "Add certificates")
 
 2. Next, the certificates must be synced on the channel. Click the **Channels** tab, then the **Actions** button, then **Sync Certificate** and **Submit**.
 
-    ![E-sVV5](https://i.makeagif.com/media/4-12-2018/E-sVV5.gif)
+    ![Sync certificates](images/sync_cert.gif "Sync certificates")
 
 ## Step Four: Creating an admin business network card
 
@@ -137,13 +142,13 @@ The business network is now deployed to the Starter Plan instance.
 
 ## Step Six: Ping the business network to ensure it is running correctly
 
-1. Run the following command to ping the business network:
+Run the following command to ping the business network:
 
    ```
    composer network ping -c admin@vehicle-manufacture-network
    ```
    {:codeblock}
 
-To view the chaincode logs, click **Channels**, and then select your channel. Click the dropdown arrow to view the logs, or the Actions symbol to view in more detail.
+To view the chaincode logs, click **Channels**, and then select your channel. <!-- Click the dropdown arrow to view the logs, or the Actions symbol to view in more detail. --> Click the **Chaincode** tab. Expend the chaincode row and then click the **JSON** or **Logs** button.
 
-![fN-Yuj](https://i.makeagif.com/media/4-13-2018/fN-Yuj.gif)
+<!-- [fN-Yuj](https://i.makeagif.com/media/4-13-2018/fN-Yuj.gif) -->

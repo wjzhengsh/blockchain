@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-05-15"
+lastupdated: "2018-08-31"
 ---
 
 {:new_window: target="_blank"}
@@ -16,21 +16,25 @@ lastupdated: "2018-05-15"
 {: #ibmblockchain_support}
 
 
+***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
 There are several mechanisms available to obtain support and troubleshoot problems that are associated with your blockchain instance on {{site.data.keyword.Bluemix}}.
 {:shortdesc}
 
 
 ## Finding solutions in existing resources
 
-Navigate to the "Support" screen in your **Network Monitor** as shown in **Figure 1**.  You can find links to resources that provide technical and supporting information.  For detailed description on the "Support" screen, see the *Support* section in [Network Monitor](v10_dashboard.html).
+Navigate to the "Support" screen in your **Network Monitor** as shown in **Figure 1**. You can find links to resources that provide technical and supporting information. For detailed description about the "Support" screen, see [Get help](v10_dashboard.html#support).
 
 ![Support screen](images/support.png "Support screen")
 *Figure 1. Support screen*
 
 
 ## Submitting support cases
+{: #support-cases}
 
-If your problem cannot be solved by any of the above routes, follow these steps to submit a support case in the {{site.data.keyword.cloud_notm}} Service Portal.
+If your problem cannot be solved by any of the above routes, follow these steps to submit a support case in the {{site.data.keyword.cloud_notm}} Service Portal. Users can receive support according to their [{{site.data.keyword.cloud_notm}} support plan](https://console.bluemix.net/docs/get-support/index.html#support-plans) on all issues that are related to the underlying {site.data.keyword.blockchainfull_notm}} Platform. If you need help with Hyperledger Fabric chaincode, Hyperledger Composer, or your applications, please make use of the community resources above or engage [{{site.data.keyword.blockchainfull_notm}} Services ![External link icon](images/external_link.svg "External link icon")](https://www.ibm.com/blockchain/services).
 
 1. Log in to [{{site.data.keyword.cloud_notm}} Service Portal ![External link icon](images/external_link.svg "External link icon")](https://ibm.biz/ibmcloudsupport) with your {{site.data.keyword.IBM_notm}} ID.
 2. Click the **Get help** avatar in the middle or the **Create a Case** button on the upper right.

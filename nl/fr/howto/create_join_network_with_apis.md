@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -12,22 +12,26 @@ lastupdated: "2018-06-14"
 {:codeblock: .codeblock}
 {:pre: .pre}
 
-# Création ou association à un réseau à l'aide d'API Swagger APIs
+# Création ou association à un réseau à l'aide d'API Swagger
 
-La plateforme {{site.data.keyword.blockchainfull}} expose un certain nombre d'API REST que vous pouvez utiliser pour créer ou rejoindre un réseau de blockchain sur {{site.data.keyword.cloud_notm}}. Vous pouvez essayer ces API à l'aide de l'[Interface utilisateur swagger](swagger_apis.html) qui est associée à votre réseau.
+
+***[Cette page est-elle utile ? Dites-nous.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
+{{site.data.keyword.blockchainfull}} Platform expose un certain nombre d'API REST que vous pouvez utiliser pour créer ou rejoindre un réseau de blockchain sur {{site.data.keyword.cloud_notm}}. Vous pouvez essayer ces API à l'aide de l'[Interface utilisateur swagger](swagger_apis.html) qui est associée à votre réseau.
 {:shortdesc}
 
 
 ## Extraction de données d'identification de base pour l'API
 {: #retrieve-id-token}
 
-Avant de commencer, vous devez créer une instance de service de plateforme [{{site.data.keyword.blockchainfull_notm}} ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://console.bluemix.net/catalog/services/blockchain) avec un plan Starter ou un plan Enterprise dans {{site.data.keyword.cloud_notm}}.
+Avant de commencer, vous devez créer une [instance de service {{site.data.keyword.blockchainfull_notm}} Platform ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://console.bluemix.net/catalog/services/blockchain) avec un plan Starter ou un plan Enterprise dans {{site.data.keyword.cloud_notm}}.
 
 Pour utiliser des API Swagger afin de créer ou de rejoindre un réseau, vous avez besoin de données d'identification de base afin de garantir que vous avez accès à l'instance de service dans {{site.data.keyword.cloud_notm}}.
 
 1. Dans votre tableau de bord [{{site.data.keyword.cloud_notm}} ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://console.bluemix.net/dashboard/apps/), ouvrez l'instance de service que vous avez créée.
 2. Cliquez sur **Données d'identification du service** dans le navigateur de gauche.
-3. Cliquez sur le bouton "Nouvelles données d'identification" dans la page **Données d'identification du service** pour créer de nouvelles données d'identification. 
+3. Cliquez sur le bouton "Nouvelles données d'identification" dans la page **Données d'identification du service** pour créer de nouvelles données d'identification.
     1. Attribuez un nom à ces données d'identification, par exemple *CreateJoin*.
     2. Entrez **{"type": "service_instance_token"}** dans la zone "Ajouter des paramètres de configuration en ligne".
     3. Cliquez sur le bouton **Ajouter**.
@@ -130,7 +134,7 @@ Si vous utilisez un plan Enterprise, vous devez suivre deux étapes pour créer 
 
 ## Invitation de nouveaux membres sur un réseau
 
-Après avoir créé un réseau de blockchain, vous pouvez inviter d'autres membres à rejoindre votre réseau. Vous devez spécifier l'ID du réseau que vous voulez inviter des membres à rejoindre. Les données d'identification d'authentification de base qui sont nécessaires pour inviter un membre sont différentes de celles qui sont utilisées dans l'API **Créer un réseau**. <!--In order to get the basic auth information you will need to follow the same steps in "Retrieving basic auth information for API". --> Vous pouvez obtenir les données d'identification pour inviter un membre à l'aide de l'API d'**extraction des données d'identification réseau** dans l'[interface utilisateur Swagger](swagger_apis##retrieving-network-credentials) ou [extraire les informations d'authentification de base pour l'API](#retrieve-id-token) à partir de votre instance de service dans {{site.data.keyword.cloud_notm}}.
+Après avoir créé un réseau de blockchain, vous pouvez inviter d'autres membres à rejoindre votre réseau. Vous devez spécifier l'ID du réseau que vous voulez inviter des membres à rejoindre. Les données d'identification d'authentification de base qui sont nécessaires pour inviter un membre sont différentes de celles qui sont utilisées dans l'API **Créer un réseau**. <!--In order to get the basic auth information you will need to follow the same steps in "Retrieving basic auth information for API". --> Vous pouvez obtenir les données d'identification pour inviter un membre à l'aide de l'API d'**extraction des données d'identification réseau** dans l'[interface utilisateur Swagger](swagger_apis.html#retrieving-network-credentials) ou [extraire les informations d'authentification de base pour l'API](#retrieve-id-token) à partir de votre instance de service dans {{site.data.keyword.cloud_notm}}.
 
 ```
 /networks/{networkID}/invite

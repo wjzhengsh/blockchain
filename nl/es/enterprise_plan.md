@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-03-16"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -14,10 +14,17 @@ lastupdated: "2018-03-16"
 
 # Acerca del Plan empresarial
 
+
+***[¿Le resulta útil esta página? Indíquenos su opinión.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
 El Plan empresarial de la plataforma {{site.data.keyword.blockchainfull}} es una oferta lista para producción disponible para las organizaciones que quieran crear una red empresarial blockchain o unirse a una. Este plan proporciona la infraestructura clave junto con las herramientas y el soporte necesarios para iniciar con facilidad una red muy segura y lista para producción. El Plan empresarial se ha actualizado de Hyperledger Fabric V1.0 a V1.1 el 15 de mayo de 2018. Todas las redes creadas después del 15 de mayo de 2018 están en el nivel de Fabric V1.1. Sin embargo, las redes creadas anteriormente permanecerán en el nivel V1.0 de fábrica.
 {:shortdesc}
 
-**Nota**: el Plan empresarial de la plataforma {{site.data.keyword.blockchainfull_notm}} proporciona un entorno de producción. Si necesita un entorno de desarrollo y pruebas, consulte [Acerca del Plan inicial](starter_plan.html).
+**Notas:**
+- El Plan empresarial de la plataforma {{site.data.keyword.blockchainfull_notm}} proporciona un entorno de producción. Si necesita un entorno de desarrollo y pruebas, consulte [Acerca del Plan inicial](starter_plan.html).
+- La plataforma {{site.data.keyword.blockchainfull_notm}} es un servicio de plataforma de {{site.data.keyword.cloud_notm}} y todas las ofertas pertenecientes siguen
+los [{{site.data.keyword.cloud_notm}}![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://www-03.ibm.com/software/sla/sladb.nsf/sla/bm-6605-13 "términos de servicio de {{site.data.keyword.cloud_notm}}") de los contratos de nivel de servicio (SLA). Las redes del plan de empresa se suministran en **varios entornos** en centros de datos separados geográficamente.
 
 Para los miembros que van a iniciar la red, IBM proporciona una interfaz gráfica de usuario para guiar al iniciador de la red a través de los pasos clave para establecer y suministrar la red. Ello incluye invitar a otros miembros y definir las reglas de gobierno. Para obtener más información, consulte [Gobierno de la red del Plan empresarial](get_start.html). Una vez desplegada la red, dispondrá de una interfaz gráfica de usuario, el supervisor de red, para supervisar la actividad y el estado de la red, gestionar las actividades de red clave (que incluyen nuevos despliegues, adición o eliminación de miembros, ciclo de vida del código de encadenamiento y gestión de canales) y buscar soporte técnico. Para obtener más información sobre el supervisor de red, consulte [Operación de la red del Plan empresarial](v10_dashboard.html).
 
@@ -38,11 +45,11 @@ Además de los componentes principales de blockchain, la opción de pertenencia 
 
 El único aspecto que se debe determinar es el tamaño de los iguales que necesita la red. Esta decisión se basa en el número de canales necesarios, además de la carga por canal, el uso de memoria y el espacio en disco (almacenamiento).
 
-Debe utilizar el Plan empresarial para despliegues más estables, de producción o casi de nivel de producción. Para realizar pruebas, utilice el [Plan inicial](starter_plan.html), [realice el desarrollo en IBM Container Service](https://ibm-blockchain.github.io/) o [instale imágenes de Docker localmente](http://hyperledger-fabric.readthedocs.io/en/latest/build_network.html).
+Debe utilizar el Plan empresarial para despliegues más estables, de producción o casi de nivel de producción. Para realizar pruebas, utilice el [Plan inicial](starter_plan.html), [realice el desarrollo en IBM Container Service](https://ibm-blockchain.github.io/) o [instale imágenes de Docker localmente](http://hyperledger-fabric.readthedocs.io/en/release-1.1/build_network.html).
 
 <!--- The Enterprise plan provides the ordering service and CA. The membership fee is $1,000, and a per peer fee of $1,000 that is associated with the network. If you want to have high availability (HA), you must purchase an additional peer to provide the HA capabilities. For example, one organization (associated membership fee of $1,000) of two peers ($1,000 X 2 peers) with HA ($1,000 X 2 HA peers) requires a monthly charge of $5,000.  --->
 
 ## Precios  
 Para utilizar el Plan empresarial, los miembros de la red deben pagar 1.000 $ al mes como cuota de suscripción y otros 1.000 $ al mes por cada uno de los iguales de la red.  Las cuotas mensuales se facturan prorrateadas por día.  Por ejemplo, un miembro (cuota de suscripción asociada de 1.000 $) con dos iguales (la cuota por igual es de 1.000 $ X 2 iguales) pagaría 3.000 $ al mes.  Si el mes tiene 30 días, el miembro paga 100 $ (3.000 $/30) al día.  Tenga en cuenta que, si necesita alta disponibilidad (HA), debe doblar el número de iguales necesarios para disponer de las funciones de HA.
 
-Los miembros de la red pueden abonar su factura con sus propias cuentas de {{site.data.keyword.cloud_notm}} que contienen el espacio para crear la instancia de la red.  Si lo desea, un miembro de la red puede hacerse cargo de la factura de todos los miembros de la red.  Para obtener más información sobre cómo abonar las redes blockchain, consulte el apartado [Pago de la red](howto/pay_for_the_network.html).
+Los miembros de la red pueden abonar su factura con sus propias cuentas de {{site.data.keyword.cloud_notm}} que contienen el espacio para crear la instancia de la red. Si lo desea, un miembro de la red puede hacerse cargo de la factura de todos los miembros de la red. Para obtener más información sobre cómo abonar las redes blockchain, consulte el apartado [Pago de la red](howto/paying_mode.html).

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -15,6 +15,10 @@ lastupdated: "2018-06-14"
 
 # Netz entwickeln
 {: #develop-the-network}
+
+
+***[Ist diese Seite hilfreich? Teilen Sie uns Ihre Meinung mit.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
 
 Bei der Entwicklung von Blockchain-Lösungen mithilfe von {{site.data.keyword.blockchainfull}} Platform kann das quelloffene Hyperledger Composer-Entwicklungstoolset genutzt werden. Hyperledger Composer verwendet eine speziell entwickelte Modellierungssprache, die in Kombination mit JavaScript-Transaktionen und Zugriffssteuerungsregeln zum Modellieren eines vollständigen Blockchain-Unternehmensnetzes _vor_ der Bereitstellung in einem realen Blockchain-Netz verwendet wird.
 {:shortdesc}

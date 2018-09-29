@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-07-31"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -13,6 +13,10 @@ lastupdated: "2018-07-31"
 {:pre: .pre}
 
 # Pricing
+
+
+***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
 
 This guide helps you understand pricing for {{site.data.keyword.blockchainfull}} Platform membership plans, and how much you will pay as you develop and grow your blockchain network.  
 {:shortdesc}
@@ -102,12 +106,12 @@ The offer provides lifetime credits. The credits last as long as you maintain yo
 | Membership fee network 1 | $250 |
 | Peer fee | $125 |
 | Total | $375 |
-| Additional IBM Cloud Services | $75 |
+| Additional {{site.data.keyword.cloud_notm}} Services | $75 |
 | End of first month charge | $0 |
 | Credits used | -$450 |
 | Credits remaining after first month | $50 |
 
-*Figure 5. Using trail credits with other IBM Cloud Services*
+*Figure 5. Using trial credits with other {{site.data.keyword.cloud_notm}} Services*
 
 #### Additional peers
 Starter Plan does not restrict the number of peers that you can add to your network. If you add, for example, two peers to the default Starter Plan network, one for each of your organizations, you increase your bill by $250 per month. Your bill is reflected in Figure 6 if you add two additional peers at the beginning of the first month when you create or join a Starter Plan network and consume the trial credits.
@@ -179,6 +183,8 @@ If you are in an Enterprise Plan network with the other network member, and each
 ### Example Enterprise Plan pricing
 
 #### Additional peers
+{: #additional-peers}
+
 Continue with the example above, if you add another two peers to your organization. You bill increases by $2000 per month. Your bill is reflected in Figure 10:
 
 | Pricing components | Cost per month |
@@ -195,6 +201,8 @@ Continue with the example above, if you add another two peers to your organizati
 If the other member keeps the same network configuration, the member’s bill looks the same as before, which is reflected in Figure 8.
 
 #### Additional networks
+{: #additional-networks}
+
 Enterprise Plan also does not restrict the number to network instances that you can provision or join. If you create a second Enterprise Plan network with the same basic network configuration, that is, one single organization with two peers, your bill is reflected in Figure 11. You might find yourself in this scenario when you have created multiple networks, joined multiple networks, or a combination of the two.
 
 | Pricing components | Cost per month |

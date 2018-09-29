@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -15,18 +15,22 @@ lastupdated: "2018-06-14"
 # Distribuzione di applicazioni di esempio
 {: #overview}
 
+
+***[Questa pagina è utile? Faccelo sapere.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
 {{site.data.keyword.blockchainfull}} Platform fornisce applicazioni di esempio che puoi distribuire e testare in modo da poter comprendere meglio le reti blockchain e lo sviluppo delle applicazioni.
 {: shortdesc}
 
 |  Esempi     | Caso d'uso       | Tipo di esempio  | Creatore e supporto  |
 | --------------|---------------------|----|-------|
-| [Marble ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://github.com/IBM-Blockchain/marbles)| Più utenti possono creare delle biglie con proprietà differenti e trasferirle ad altri. <br> <br> Attieniti alle istruzioni per distribuire Marble sul servizio{{site.data.keyword.blockchainfull_notm}} su {{site.data.keyword.cloud_notm}}. Nota: le acquisizioni di schermo visualizzano l'IU del piano Enterprise piuttosto che il piano Starter. La funzionalità è simile. | Chaincode GO con un'applicazione Javascript| IBM<br> [Richiedi assistenza![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://github.com/IBM-Blockchain/marbles/issues) |
-|[Produzione di veicoli![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://github.com/IBM-Blockchain/vehicle-manufacture) |Gli utenti possono esplorare le varie fasi del ciclo di vita di un veicolo virtuale. <br> <br> Attieniti alle istruzioni per **distribuire manualmente questa demo a IBM Cloud** per una guida dettagliata alla distribuzione dell'esempio nella tua rete. | BND (Business Network Definition) [Hyperledger Composer](../reference/hyperledger_composer.html) con un'applicazione Javascript | IBM<br> [Richiedi assistenza![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://github.com/IBM-Blockchain/vehicle-manufacture/issues) |
-|[Merci deperibili ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://github.com/clauseHQ/demo-clause-ibm-perishable-goods)|Gli utenti possono distribuire contratti legali che acquistano merci in una catena di approvvigionamento in base alla consegna e alle letture della temperatura. <br>  <br> <!-- This sample leverages the [Toolchain tool service![External link icon](../images/external_link.svg "External link icon")](../images/external_link.svg "External link icon")](https://console.bluemix.net/docs/services/ContinuousDelivery/index.html) to deploy the sample on your network automatically.--> | BND (Business Network Definition) [Hyperledger Composer](../reference/hyperledger_composer.html) con un'applicazione Javascript | [ClauseHQ![Icona link esterno](../images/external_link.svg "Icona link esterno")](http://clause.io/)<br> [Richiedi assistenza![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://github.com/clauseHQ/demo-clause-ibm-perishable-goods/issues) |
+| [Marble ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://github.com/IBM-Blockchain/marbles "Marble")| Più utenti possono creare delle biglie con proprietà differenti e trasferirle ad altri. <br> <br> Attieniti alle istruzioni per distribuire Marble sul servizio{{site.data.keyword.blockchainfull_notm}} su {{site.data.keyword.cloud_notm}}. Nota: le acquisizioni di schermo visualizzano l'IU del piano Enterprise piuttosto che il piano Starter. La funzionalità è simile. | Chaincode GO con un'applicazione Javascript| IBM<br> [Richiedi assistenza ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://github.com/IBM-Blockchain/marbles/issues "Richiedi assistenza") |
+|[Produzione di veicoli ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://github.com/IBM-Blockchain/vehicle-manufacture "Produzione di veicoli") | Gli utenti possono esplorare le varie fasi del ciclo di vita di un veicolo virtuale.  <br> <br> Attieniti alle istruzioni per **distribuire manualmente questa demo a {{site.data.keyword.cloud_notm}}** per una guida dettagliata alla distribuzione dell'esempio nella tua rete. | BND (Business Network Definition) [Hyperledger Composer](../references/hyperledger_composer.html) con un'applicazione Javascript | IBM<br> [Richiedi assistenza ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://github.com/IBM-Blockchain/vehicle-manufacture/issues "Richiedi assistenza") |
+|[Beni deperibili ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://github.com/clauseHQ/demo-clause-ibm-perishable-goods "Beni deperibili")| Gli utenti possono distribuire contratti legali che acquistano merci in una catena di approvvigionamento in base alla consegna e alle letture della temperatura. <br>  <br> <!-- This sample leverages the [Toolchain tool service![External link icon](../images/external_link.svg "External link icon")](../images/external_link.svg "External link icon")](https://console.bluemix.net/docs/services/ContinuousDelivery/index.html) to deploy the sample on your network automatically.--> | BND (Business Network Definition) [Hyperledger Composer](../references/hyperledger_composer.html) con un'applicazione Javascript | [Clausola ![Icona link esterno](../images/external_link.svg "Icona link esterno")](http://clause.io/ "Clausola")<br> [Richiedi assistenza ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://github.com/clauseHQ/demo-clause-ibm-perishable-goods/issues "Richiedi assistenza") |
 
 Le applicazioni di esempio sono create da IBM e dai partner della community. Il supporto per gli esempi verrà fornito tramite i repository GitHub corrispondenti. Se riscontri un problema, fai clic sul link **Richiedi assistenza** accanto al nome dell'editore e apri un problema nel repository Github per informare il team pertinente.
 
-Per distribuire gli esempi, hai bisogno di una rete blockchain su {{site.data.keyword.cloud_notm}} con il piano Starter o quello Enterprise e devi configurare un canale e i suoi peer. Per ulteriori informazioni, vedi [Governance della rete piano Starter](../get_start_starter_plan.html) e [Governance della rete piano Enterprise](../get_start.html).
+Per distribuire gli esempi, hai bisogno di una rete blockchain su {{site.data.keyword.cloud_notm}} con il piano Starter o il piano Enterprise e devi configurare un canale e i peer. Per ulteriori informazioni, vedi [Governance della rete piano Starter](../get_start_starter_plan.html) e [Governance della rete piano Enterprise](../get_start.html).
 
 
 <!--

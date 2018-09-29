@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -14,8 +14,13 @@ lastupdated: "2018-06-14"
 
 # {{site.data.keyword.blockchainfull_notm}} 平台
 
-**注意：**在使用「{{site.data.keyword.blockchainfull}} 平台」供應項目之前，請先閱讀[免責聲明](needtoknow.html)一節中的技術和支援資訊。  
+
+***[此頁面有幫助嗎？請告訴我們。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
+**注意：**在使用「{{site.data.keyword.blockchainfull}} 平台」供應項目之前，請先閱讀[免責聲明](needtoknow.html)一節中的技術和支援資訊。
 {:shortdesc}
+
 
 「{{site.data.keyword.blockchainfull_notm}} 平台」是唯一整合式商業即用平台，可處理多組織區塊鏈網路的整個生命週期（**開發**、**控管**及**操作**）。其設計是要透過每個階段的協同作業，加速建立「專為商務建置」的廣域區塊鏈網路，即使是要求最嚴苛的使用案例和受監管行業，都能提供其所需的效能和安全性。
 
@@ -27,22 +32,25 @@ lastupdated: "2018-06-14"
 
 **附註**：此表格不是要呈現線性進度。在應用程式和成員資格演進的過程中，像開發和網路管理之類的作業都會反覆發生。
 
-## {{site.data.keyword.IBM_notm}} 成員資格供應項目
+## {{site.data.keyword.blockchainfull_notm}} 成員資格供應項目
 
 「{{site.data.keyword.blockchainfull_notm}} 平台」提供不同的成員資格方案，協助所有類型的使用者開始使用其區塊鏈行程，並將其應用程式移至正式作業。
 
-|       |[入門範本方案](starter_plan.html)      |[企業方案](enterprise_plan.html)  |企業加值方案 |自我管理方案
+|       |[入門範本方案](starter_plan.html)      |[企業方案](enterprise_plan.html)  |企業加值方案 | [遠端對等節點](howto/remote_peer.html) |
 | ------------------------- |--------------------------|-----|-----|------|
-|**包含的內容** | **基本服務水準、開發和測試環境** |**進階服務水準、企業正式作業備妥** | **效能和隔離的專用運算、企業正式作業備妥** |要安裝在您自己的基礎架構上的軟體堆疊、連接至此雲端服務上管理的網路 |
-|**計費原則** | **[試用額度](howto/pricing.html#starter-plan-pricing)，後面接著每月費用** |**每月訂閱** |**每月訂閱** |每月訂閱 |
-|**可用性** |**現在推出** |**現在推出** | **購買時** |即將推出 |
+|**包含的內容** | **基本服務水準、開發和測試環境** |**進階服務水準、企業正式作業備妥** | **效能和隔離的專用運算、企業正式作業備妥** | **可部署的遠端對等節點 Helm 圖表** |
+|**計費原則** | 可以使用雲端額度的**每月訂閱[](howto/pricing.html#starter-plan-pricing)** |**每月訂閱** |**每月訂閱** | **免費測試版** |
+|**可用性** | **正式發行版** | **正式發行版** | **購買時** |**測試版** |
 
 **警告：**不要將**入門範本方案**用於正式作業。它是開發和測試環境，不適用於正式作業工作負載。
 
 {{site.data.keyword.blockchainfull_notm}} 供應項目以 [Hyperledger Fabric](reference/v10_fabric.html) 1.1 版程式碼庫為建置基礎，運用模組架構來達到企業層級的安全性、資料完整性、可調整性及效能，以符合您的商業需求。
-- **IBM Blockchain 入門範本方案**是一個學習或開始開發區塊鏈網路的環境。
+- **入門範本方案**是一個學習或開始開發區塊鏈網路的環境。
 - **企業方案**是一種提供高階安全及支援的正式作業環境。
 - **企業加值方案**提供一種專用的正式作業環境，以取得其他效能及隔離的運算和儲存空間資源來保護重要資料。
+- **遠端對等節點**可讓您在 {{site.data.keyword.cloud_notm}} 之外執行對等節點，這樣您就可以在 {{site.data.keyword.cloud_notm}} 內利用現有 {{site.data.keyword.blockchainfull_notm}} 網路的同時，擴增區塊鏈網路並提供更大的彈性。
+
+「{{site.data.keyword.blockchainfull_notm}} 平台」是 {{site.data.keyword.cloud_notm}} 上的平台服務，而且所有成員資格供應項目都遵循服務水準合約 (SLA) 上的 [{{site.data.keyword.cloud_notm}} 服務條款 ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](https://www-03.ibm.com/software/sla/sladb.nsf/sla/bm-6605-13 "{{site.data.keyword.cloud_notm}} 服務條款")。請注意，「企業方案」網路跨**多個環境**在不同地理位置的資料中心進行佈建。
 
 立即註冊您的 [{{site.data.keyword.blockchainfull_notm}} 成員資格 ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps)！
 
@@ -58,9 +66,9 @@ lastupdated: "2018-06-14"
 身為開發人員，您可以利用互動式遊樂場來開發、反覆運算及測試商業網路，以在「{{site.data.keyword.blockchainfull_notm}} 平台」網路環境中，快速且輕鬆地達到商業需求，並加速區塊鏈應用程式開發。這些工具的設計，是要將商業規則轉變成您偏好環境中的商業網路程式碼：
 * **線上探索**  
 運用 [{{site.data.keyword.blockchainfull_notm}} 平台：開發](./develop.html)<!--, which is powered by an open source development tool-->來學習重要的區塊鏈概念、建立網路定義，以及運用可重複使用的產業模型和智慧型合約檔案庫。  
-開發商業網路之後，您可以將其部署至在「IBM Blockchain 平台」上執行的即時網路。如需相關資訊，請參閱[使用入門範本方案來部署商業網路](./develop_starter.html)和[使用企業方案來部署商業網路](./develop_enterprise.html)。
+開發商業網路之後，您可以將其部署至在「{{site.data.keyword.blockchainfull_notm}} 平台」上執行的即時網路。如需相關資訊，請參閱[使用入門範本方案來部署商業網路](./develop_starter.html)和[使用企業方案來部署商業網路](./develop_enterprise.html)。
 * **在本端安裝**  
-運用 Hyperledger Fabric 和 Composer（用來建置商業網路的開放程式碼架構和工具）的 IBM 認證映像檔，直接在您的筆記型電腦上開發及測試。如需相關資訊，請參閱[建置您的第一個網路](http://hyperledger-fabric.readthedocs.io/en/latest/build_network.html)。
+運用 Hyperledger Fabric 和 Composer（用來建置商業網路的開放程式碼架構和工具）的 IBM 認證映像檔，直接在您的筆記型電腦上開發及測試。如需相關資訊，請參閱[建置您的第一個網路](http://hyperledger-fabric.readthedocs.io/en/release-1.1/build_network.html)。
 * **在雲端環境中協同作業**  
 使用立即可用的即時網路搭配「入門範本方案」和「企業方案」選項，與其他人一起開發及共用您的程式碼。如需相關資訊，請參閱[關於入門範本方案](starter_plan.html)和[關於企業方案](enterprise_plan.html)。
 
@@ -101,7 +109,7 @@ With a cloud deployment, you're provided with a collection of easy-to-use recipe
 為了使區塊鏈能夠運作，成員會執行一個以上基礎網路服務，以構成信任基礎：
 
 - **排序服務** - 排序及同步化交易  
-在本質上，排序服務是網路的定義。其包含每個成員的識別資訊、頻道的相關資訊，以及一組原則，指定哪些成員可以執行特定作業（例如，邀請其他成員、建立頻道等等）。每一項交易和配置作業都會經歷排序服務，因此，在整個事物架構中，它是超級重要的一環。在瞭解排序服務的基礎重要性之後，就很容易看出專制編排（可能只能有一個成員在幕後主導）的潛在危險。為了抗衡這個問題，排序服務是由網路成員共同管理，而控管實作則是要聯合採取行動。換句話說，決策是由群體，而不是由單方面制定的。所有成員在網路中都有利害關係，延伸來說，針對在網路中配置及自訂其立場的任何作業，他們都有投票權。這些「民主」和共同決策的概念，是受信任且非集中式網路的固有建置區塊。針對部署在「IBM Blockchain 平台」上的任何網路，IBM 都是擔任排序服務的「操作員」。
+在本質上，排序服務是網路的定義。其包含每個成員的識別資訊、頻道的相關資訊，以及一組原則，指定哪些成員可以執行特定作業（例如，邀請其他成員、建立頻道等等）。每一項交易和配置作業都會經歷排序服務，因此，在整個事物架構中，它是超級重要的一環。在瞭解排序服務的基礎重要性之後，就很容易看出專制編排（可能只能有一個成員在幕後主導）的潛在危險。為了抗衡這個問題，排序服務是由網路成員共同管理，而控管實作則是要聯合採取行動。換句話說，決策是由群體，而不是由單方面制定的。所有成員在網路中都有利害關係，延伸來說，針對在網路中配置及自訂其立場的任何作業，他們都有投票權。這些「民主」和共同決策的概念，是受信任且非集中式網路的固有建置區塊。針對部署在「{{site.data.keyword.blockchainfull_notm}} 平台」上的任何網路，IBM 都是擔任排序服務的「操作員」。
 
 - **憑證管理中心** – 發出憑證給參與者  
 簡單說，就是「憑證管理中心 (CA)」提供成員資格。網路中的所有實體（對等節點、排序節點、用戶端等等）都必須要有身分，才能進行通訊、鑑別，最後進行交易。這些「身分」以 x509 憑證（亦即，登記憑證）的形式存在，只要是直接參與區塊鏈網路，都需要此憑證。另外也有間接參與的方法，但我們稍後才會討論。對 CA 的最佳想像，就是把它當成橡皮印章，為身分提供驗證和可靠性。每個成員都擁有自己的 CA，而透過此 CA，不僅是他們獨有的資源（對等節點），還有協力廠商用戶端和應用程式，他們都可以為其簽署憑證。您可以將成員的 CA 比作特殊的筆或公證人印章。必須要有此 CA 簽署的憑證，才能存取網路。
@@ -130,11 +138,11 @@ With a cloud deployment, you're provided with a collection of easy-to-use recipe
 
 透過概述商業網路中成員角色的人物表來考慮成員，有時候會很有幫助。以下是我們經常看到的一些使用角色。
 
-- **起始者** – 由其他成員選擇來引導「區塊鏈網路」的成員。「IBM Blockchain 平台」需要單一成員登入「IBM Blockchain 平台」，並執行起始網路的作業，其中包括為網路命名、邀請一組起始成員，以及設定一組預設的網路作業原則。這是暫時性的角色。在引導網路之後，起始者就不再保有特殊專用權，只會繼續成員的角色。  
+- **起始者** – 由其他成員選擇來引導「區塊鏈網路」的成員。「{{site.data.keyword.blockchainfull_notm}} 平台」需要單一成員登入「{{site.data.keyword.blockchainfull_notm}} 平台」，並執行起始網路的作業，其中包括為網路命名、邀請一組起始成員，以及設定一組預設的網路作業原則。這是暫時性的角色。在引導網路之後，起始者就不再保有特殊專用權，只會繼續成員的角色。  
 
 - **維護者** – 執行一個以上網路對等節點和 CA 的成員。這些成員負責維護分散式分類帳的完整性，他們要參與共識程序，這是在區塊鏈網路上驗證交易的方式。維護者透過 CA 的所有權，也可以發出憑證給參與者，並授與他們網路存取權。
 
-- **操作員** – 代表其他網路成員執行服務的成員，包括交易排序服務、憑證管理中心、交易閘道，以及其他基礎網路服務。依預設，IBM 是部署在「IBM Blockchain 平台」上之網路的網路操作員。
+- **操作員** – 代表其他網路成員執行服務的成員，包括交易排序服務、憑證管理中心、交易閘道，以及其他基礎網路服務。依預設，IBM 是部署在「{{site.data.keyword.blockchainfull_notm}} 平台」上之網路的網路操作員。
 
 - **審核員** – 由網路授權其在網路上執行審核功能的成員。審核功能的範例包括計費、相符性追蹤或分析。審核員角色通常會轉變成可在分類帳上檢視較多交易，及/或可在交易頻道中存取較多登記的成員。
 
@@ -167,4 +175,4 @@ Hyperledger Fabric 架構的**模組性**，以及網路角色的明確區分（
 
 {{site.data.keyword.IBM_notm}} 支援 {{site.data.keyword.IBM_notm}} 實作的 {{site.data.keyword.blockchain}} 解決方案。如需「{{site.data.keyword.blockchainfull_notm}} 支援」的相關資訊，請參閱[取得支援](ibmblockchain_support.html)。
 
-如需所有 Hyperledger Fabric 特性及功能的詳細資料，請參閱 [Hyperledger Fabric 文件 ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](http://hyperledger-fabric.readthedocs.io/en/latest/)。
+如需所有 Hyperledger Fabric 特性及功能的詳細資料，請參閱 [Hyperledger Fabric 文件 ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/)。

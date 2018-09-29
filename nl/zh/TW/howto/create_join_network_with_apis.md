@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -13,6 +13,10 @@ lastupdated: "2018-06-14"
 {:pre: .pre}
 
 # 使用 Swagger API 來建立或加入網路
+
+
+***[此頁面有幫助嗎？請告訴我們。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
 
 「{{site.data.keyword.blockchainfull}} 平台」公開若干 REST API，可讓您用來在 {{site.data.keyword.cloud_notm}} 上建立或加入區塊鏈網路。您可以使用與您的網路相關聯的 [Swagger 使用者介面](swagger_apis.html)來嘗試這些 API。
 {:shortdesc}
@@ -27,7 +31,7 @@ lastupdated: "2018-06-14"
 
 1. 在 [{{site.data.keyword.cloud_notm}} 儀表板 ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](https://console.bluemix.net/dashboard/apps/) 中，開啟您所建立的服務實例。
 2. 從左導覽器中，按一下**服務認證**。
-3. 按一下**服務認證**頁面上的「新建認證」按鈕來建立新認證。 
+3. 按一下**服務認證**頁面上的「新建認證」按鈕來建立新認證。
     1. 提供認證名稱（例如，*CreateJoin*）。
     2. 在「新增線型配置參數」欄位中，輸入 **{"type": "service_instance_token"}**。
     3. 按一下**新增**按鈕。
@@ -116,7 +120,7 @@ https://ibmblockchain-v2.ng.bluemix.net/api/v1/network-locations/available
 2. 使用這些服務認證來呼叫**建立網路** API。針對從[檢查可用的網路位置](#check-location)所擷取的 API ``swagger_url`` 發出此 API。導覽至 ``swagger_url link`` 以使用 Swagger 使用者介面發出「建立網路 API」，或以程式設計方式使用沒有 ``/api-docs`` 的 URL 位址來發出指令。例如，
 
     ```
-    https://ibmblockchain-v2-tor.1.secure.blockchain.ibm.com/api/v1/networks
+https://ibmblockchain-v2-tor.1.secure.blockchain.ibm.com/api/v1/networks
     ```
     {:codeblock}
 
@@ -130,7 +134,7 @@ https://ibmblockchain-v2.ng.bluemix.net/api/v1/network-locations/available
 
 ## 邀請新成員加入網路
 
-建立區塊鏈網路之後，您可以邀請其他成員加入您的網路。您需要指定要邀請新成員加入的網路 ID。邀請成員所需的基本鑑別認證與**建立網路** API 中所使用的基本鑑別認證不同。<!--In order to get the basic auth information you will need to follow the same steps in "Retrieving basic auth information for API". -->您可以透過 [Swagger 使用者介面](swagger_apis##retrieving-network-credentials)上的**擷取網路認證** API 或 {{site.data.keyword.cloud_notm}} 之服務實例中的[擷取 API 的基本鑑別資訊](#retrieve-id-token)，以取得認證來邀請成員。
+建立區塊鏈網路之後，您可以邀請其他成員加入您的網路。您需要指定要邀請新成員加入的網路 ID。邀請成員所需的基本鑑別認證與**建立網路** API 中所使用的基本鑑別認證不同。<!--In order to get the basic auth information you will need to follow the same steps in "Retrieving basic auth information for API". -->您可以透過 [Swagger 使用者介面](swagger_apis.html#retrieving-network-credentials)上的**擷取網路認證** API 或 {{site.data.keyword.cloud_notm}} 之服務實例中的[擷取 API 的基本鑑別資訊](#retrieve-id-token)，以取得認證來邀請成員。
 
 ```
 /networks/{networkID}/invite
@@ -153,14 +157,14 @@ https://ibmblockchain-v2.ng.bluemix.net/api/v1/network-locations/available
 2. [檢查可用的網路位置](#check-location)，以取得邀請電子郵件中 `location_id` 的 `swagger_url`。它看起來如下：
 
     ```
-    https://ibmblockchain-v2-tor.1.secure.blockchain.ibm.com/api-docs
+https://ibmblockchain-v2-tor.1.secure.blockchain.ibm.com/api-docs
     ```
     {:codeblock}
 
 3. 導覽至 `swagger_url` 以使用 Swagger 使用者介面發出「加入 API」，或以程式設計方式使用 `swagger_url` 提交「加入」要求。將 `/api-docs` 取代為 `/api/v1/networks/[network_id]]/join`，並使用邀請電子郵件中的值來填寫 `network_id`。產生的 URL 看起來如下：
 
     ```
-    https://ibmblockchain-v2-tor.1.secure.blockchain.ibm.com/api/v1/networks/56102acee0e4487889ef09db681bada0/join
+https://ibmblockchain-v2-tor.1.secure.blockchain.ibm.com/api/v1/networks/56102acee0e4487889ef09db681bada0/join
     ```
     {:codeblock}
 

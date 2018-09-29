@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-09-27"
 
 ---
 
@@ -13,6 +13,10 @@ lastupdated: "2018-06-14"
 {:pre: .pre}
 
 # Creating or updating a channel
+
+
+***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
 
 Channels are an incredibly powerful mechanism for partitioning and isolating data, and they provide the primary foundation for data privacy. Only members of the same channel can access the data of this channel.
 {:shortdesc}
@@ -27,9 +31,9 @@ Click the **New Channel** button in the "Channels" screen of your Network Monito
 2. Invite any combination of your network members by selecting network members and clicking the **Add Member** button. Customize permissions by assigning roles for each of the invited members, and click **Next**.
   ![Create channel 2](../images/create_channel_2.png "Create a channel panel 2")
 
-    * A channel operator can query or update the channel ledger. Channel operator has the authority to **Accept** or **Decline** a channel create request, and to submit a channel update request. There must be at least one **Operator** in each a channel.
-    * A channel writer can update the channel ledger.
-    * A channel reader can only query the channel ledger.
+    * A channel operator can query or update the channel ledger. A channel operator has the authority to **Accept** or **Decline** a channel create request, and to submit a channel update request. There must be at least one **Operator** in each a channel.
+    * A channel writer can update the channel ledger, by invoking a chaincode function for example. A channel writer can also instantiate a chaincode on a channel.
+    * A channel reader can only query the channel ledger, by invoking a read only chaincode function for example.
 
 3. Configure the channel update policy by selecting the number of channel operators to approve channel update request, and click **Submit Request**.
   ![Create channel 3](../images/create_channel_3.png "Create a channel panel 3")
@@ -66,3 +70,6 @@ All channel members will receive email notifications on the channel update reque
 * Existing channel writers or readers also receive email notifications on channel update. They can find the request with _Not Required_ status in the **Notifications** screen of the Network Monitor.
 
 When enough channel operators agree on the request, any channel member can click the **Submit Request** button and the channel is updated. All channel members can find the updated channel in the "Channels" screen of the Network Monitor.
+
+**Important:**
+Endorsement policies are not updated automatically when new organizations join the channel and install the chaincode. For example, if the policy requires two of five organizations to endorse a transaction, the policy will not be updated to require two out of six organizations when a new organization joins the channel. Instead, the new organization will not be listed on the policy, and they will not be able to endorse transactions. You can add a new organization to an endorsement policy by [updating the relevant chaincode](install_instantiate_chaincode.html#updating-a-chaincode). For more information, see [Specifying chaincode endorsement policies](install_instantiate_chaincode.html#endorsement-policy).

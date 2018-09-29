@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-09-28"
 
 ---
 
@@ -16,135 +16,65 @@ lastupdated: "2018-06-14"
 # Deploying a business network on Enterprise Plan
 {: #deploying-a-business-network}
 
+
+***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
 {{site.data.keyword.blockchainfull}} Platform: Develop's developer tools help you create a **Business Network Definition** which can then be packaged up into a business network archive (`.bna`). The developer environment allows you to deploy `.bna` files to a local or cloud {{site.data.keyword.blockchain}} for development and sharing.
 
 This tutorial deals with the next step of a business network lifecycle, that is, to activate your business network by deploying the `.bna` to {{site.data.keyword.blockchainfull_notm}} Platform Enterprise Plan.
 
 ## Before you begin
 
-Ensure that you have installed the {{site.data.keyword.blockchainfull}}: Develop developer environment and are comfortable with developing and deploying business networks. Guidance on writing business networks is available in the [Hyperledger Composer documentation](https://hyperledger.github.io/composer/latest/business-network/business-network-index).
+Ensure that you have installed the {{site.data.keyword.blockchainfull}} developer environment and are comfortable with developing and deploying business networks. Guidance on writing business networks is available in the [Hyperledger Composer documentation](https://hyperledger.github.io/composer/latest/business-network/business-network-index).
 
-You need access to an Enterprise Plan instance of {{site.data.keyword.blockchainfull_notm}} Platform. For more information about {{site.data.keyword.blockchainfull_notm}} Platform Enterprise Plan, see the [Enterprise Plan overview](./enterprise_plan.html).
+You need access to an Enterprise Plan instance of {{site.data.keyword.blockchainfull_notm}} Platform and create your peers in the Enterprise Plan network. For more information about {{site.data.keyword.blockchainfull_notm}} Platform Enterprise Plan, see [Enterprise Plan overview](./enterprise_plan.html).
 
 ## Step One: Create a connection profile for {{site.data.keyword.blockchainfull_notm}} Platform
 
-1. Create a directory to store your connection details, for example:
+Create a directory to store your connection details, for example:
 
-    ```
-    /Users/myUserId/.composer-connection-profiles/bmx-hlfv1
-    ```
-    {:codeblock}
+  ```
+  /Users/myUserId/.composer-connection-profiles/bmx-hlfv11
+  ```
+  {:codeblock}
 
-    Each connection profile should contain a `connection.json` file. Create a new directory under the `.composer-connection-profiles`, in this instance `bmx-hlfv1`. This will be the name of the profile that you will use when working with Hyperledger Composer and {{site.data.keyword.blockchainfull_notm}} Platform.
+  Each connection profile should contain a `connection.json` file. Create a new directory under the `.composer-connection-profiles`, in this instance `bmx-hlfv11`. This will be the name of the profile that you will use when working with Hyperledger Composer and {{site.data.keyword.blockchainfull_notm}} Platform.
 
-    ```
-    mkdir -p ~/.composer-connection-profiles/bmx-hlfv1
-    cd ~/.composer-connection-profiles/bmx-hlfv1
-    ```
-    {:codeblock}
+  ```
+  mkdir -p ~/.composer-connection-profiles/bmx-hlfv11
+  cd ~/.composer-connection-profiles/bmx-hlfv11
+  ```
+  {:codeblock}
 
-2. You should now have the following directory structure:
+  You should now have the following directory structure:
 
-    ```
-    /Users/myUserId/.composer-connection-profiles/bmx-hlfv1
-    ```
-    {:codeblock}
+  ```
+  /Users/myUserId/.composer-connection-profiles/bmx-hlfv11
+  ```
+  {:codeblock}
 
-    Create a file in the newly created directory name it `connection.json`. You can use the following template for your `connection.json` file:
+## Step Two: Retrieve your connection profile
 
-    ```
-        {
-            "name": "bmx-hlfv1",
-            "description": "A description for a V1 Profile",
-            "type": "hlfv1",
-            "orderers": [
-                {
-                    "url": "grpcs://abca.4.secure.blockchain.ibm.com:12345"
-                }
-            ],
-            "ca": {
-                "url": "https://abc.4.secure.blockchain.ibm.com:98765",
-                "name": "PeerOrg1CA"
-            },
-            "peers": [
-                {
-                    "requestURL": "grpcs://abcd.4.secure.blockchain.ibm.com:22222",
-                    "eventURL": "grpcs://abcd.4.secure.blockchain.ibm.com:33333"
-                }
-            ],
-            "keyValStore": "/Users/jeff/.composer-credentials-mychannel-hsbn",
-            "channel": "mychannel",
-            "mspID": "PeerOrg1",
-            "globalCert": "-----BEGIN CERTIFICATE-----\r\n...LotsOfStuff\r\n-----END CERTIFICATE-----\r\n-----BEGIN CERTIFICATE-----\r\nMorestuff\r\n-----END CERTIFICATE-----\r\n",
-            "timeout": 300
-        }
-    ```
-    {:codeblock}
+1. In your {{site.data.keyword.blockchainfull_notm}} Platform Network Monitor, select **Overview** from the left navigation menu. 
 
-    You will populate the newly created `connection.json` file with attributes that are provided via your {{site.data.keyword.blockchainfull_notm}} Platform dashboard. From your dashboard on, select **Overview**, then **Connection Profile** button to display the endpoint and certificate information for the members of the channel.
+2. In the "Overview" screen, cick the **Connection Profile** button and then the **Download** button to retrieve your connection profile.
 
-## Step Two: Adding orderer information
+3. Save the connection profile in the directory structure that you create in Step One. You can name it as **connection.json**.
 
-1. Now we can start to modify the template with the information that the Connection Profile provides. There might be multiple orderers in the Connection Profile, but only one is required for a `connection.json` file.
+## Step Three: Adding channel information
 
-    Replace the orderer url values in the template with the relevant information from your Connection Profile in the following format:
+Add the channel value in the `connection.json` to match the name of the channel, which you will create in the Enterprise Plan network and deploy your business network to. In the provided example template of connection profile, the channels element is `"channels": {},`.
 
-    ```
-    "url": "grpcs://abca.4.secure.blockchain.ibm.com:12345"
-    ```
-    {:codeblock}
+## Step Four: Preparing your peers
 
-## Step Three: Adding certificate authority information
+**Note**: This step **must** be performed before you create the channel to deploy a business network to. If this step is performed after channel creation, a deployed business network **may not start**.
 
-1. Replace the ca value in the `connection.json` with both the **url** and the **caName** from either of the entries in the **certificateAuthorities** section.
-
-## Step Four: Adding peer information
-
-1. The **requestURL** and **eventURL** for each peer must be set. Replace the **url** attribute with the **url** value that is found in your Connection Profile. Replace the **eventURL** attribute with the **eventUrl** found in your Connection Profile. After making the changes, the peers section of `connection.json` should have the following format:
-
-    ```
-        "peers": [
-          {
-              "requestURL": "grpcs://abca.4.secure.blockchain.ibm.com:12345",
-              "eventURL": "grpcs://abca.4.secure.blockchain.ibm.com:12345"
-    ```
-    {:codeblock}
-
-## Step Five: Adding keyValStore information
-
-1. Set the **keyValStore** attribute to point to the appropriate directory. Create a directory to use for your **keyValStore**. For example, a new directory under your home directory called `.composer-credentials-mychannel`. Make sure the **keyValStore** attribute points to your newly created directory in the following format:
-
-    ```
-    "keyValStore": "/Users/myUserId/.composer-credentials-mychannel",
-    ```
-    {:codeblock}
-
-## Step Six: Adding channel information
-
-1. Replace the channel value in the `connection.json` to match the name of the channel that you plan to create and deploy your business network to.
-
-## Step Seven: Adding an mspID
-
-The **mspID** value in your `connection.json` file should be set to the mspID of your organization. The Connection Profile provides a list of the organizations with their associated mspid values. You should use the value from the **mspid** attribute of your organization.
-
-## Step Eight: Adding the globalCert
-1. {{site.data.keyword.blockchainfull_notm}} Platform uses a common TLS certificate for the orderers and peers. For each orderer and peer, there is a **tlsCACerts** attribute that all contain the same certificate. Replace the dummy value in the `connection.json` file with the **tlsCACerts** value. It should take the following format:
-
-    ```
-    "globalCert": "-----BEGIN CERTIFICATE-----\r\.......
-    ```
-    {:codeblock}
-
-## Step Nine: Preparing your peers
-
-**Please Note**: This step **must** be performed before you create the channel to deploy a business network to. If this step is performed after channel creation, a deployed business network **will not start**.
-
-In the Connection Profile document under **certificateAuthorities** is an attribute **registrar** containing attributes for **enrollId** and **enrollSecret** in the following format:
+In the Connection Profile document under **certificateAuthorities**, an attribute **registrar** contains attributes for **enrollId** and **enrollSecret** in the following format:
 
  ```
         "registrar": [
             {
-                "affiliation": "org1",
                 "enrollId": "admin",
                 "enrollSecret": "PA55W0RD12"
             }
@@ -152,26 +82,42 @@ In the Connection Profile document under **certificateAuthorities** is an attrib
  ```
  {:codeblock}
 
-1. Request the certificates by using the following command:
+1. Create a business network card for the certificate authority by using the following command:
 
     ```
-    composer identity request -p bmx-hlfv1 -i admin -s PA55W0RD12
+    composer card create -f ca.card -p bmx-hlfv11 -u admin -s PA55W0RD12
     ```
     {:codeblock}
 
-    This downloads three files into the `.identityCredentials` directory under your home directory. The files of interest are based on the **enrollId**. So in the above example there will be two files that are called **admin-pub.pem** and **admin-priv.pem**
+  Ensure that you run the command in the same directory as your connection profile.
 
-3. Select **Members** from the navigation menu, then select the **Certificates** menu option and click the **Add Certificate** button.
+2. Import the business network card using the following command:
 
-4. Enter a unique name for this certificate in the **Name** field, this name cannot include dashes or hyphens.
+    ```
+    composer card import -f ca.card -c ca
+    ```
+    {:codeblock}
 
-5. Open the `admin-pub.pem` file created earlier and copy the contents of this file into the **Key** field and press the **Submit** button.
+3. After the card has been imported, it can be used to acquire the certificates from the certificate authority using the following command:
 
-6. Use the user interface stop the peers, then start the peers.
+    ```
+    composer identity request --card ca --path ./credentials -u admin -s PA55W0RD12
+    ```
+    {:codeblock}
 
-7. The certificate should now appear in the list of certificates.
+    The `composer identity request` command creates creates a credentials directory that contains the relevant certificate files.
 
-## Step Ten: Creating your channel
+4. In your Network Monitor, select **Members** from the left navigation menu. In the "Members" screen, select the **Certificates** tab and then click the **Add Certificate** button.
+
+5. Enter a unique name for this certificate in the **Name** field. This name cannot include dashes or hyphens.
+
+6. Open the `admin-pub.pem` file that is created earlier and copy the contents of this file into the **Key** field. Press the **Submit** button.
+
+7. In the "Overview" screen of your Network Monitor, restart the peers.
+
+8. The certificate should then appear in the list of certificates.
+
+## Step Five: Creating your channel
 
 1. Select **Channels** from the navigation menu on the left panel and click the **New Channel** button.
 
@@ -187,27 +133,43 @@ In the Connection Profile document under **certificateAuthorities** is an attrib
 
 7. Select **Channels** from the navigation menu. The new channel in the list of channels and should have “No peers added yet”. Click the actions menu next to it and select **Join Peers**. Check the check boxes next to the Peers you want to add and press **Add Selected**.
 
-## Step Eleven: Importing a new identity to administer your business network
+## Step Six: Creating a new identity to administer your business network
 
-Create an identity in Composer by using the certificates that are requested previously. This new identity will have the authority to install a chaincode onto the peers that have your uploaded public certificate and will be an issuer for the certificate authorities.
+Create business network card by using the requested certificates. This business network card has the authority to install chaincode onto the peers that your uploaded public certificate and will be an issuer for the certificate authorities.
 
-1. To create the new identity, run the following command:
+1. To create the card, run the following command:
 
     ```
-    composer identity import -p bmx-hlfv1 -u admin -c ~/.identityCredentials/admin-pub.pem -k ~/.identityCredentials/admin-priv.pem
+    composer card create -f adminCard.card -p bmx-hlfv11 -u admin -c ./credentials/admin-pub.pem -k ./credentials/admin-priv.pem --role PeerAdmin --role ChannelAdmin
     ```
     {:codeblock}
 
-    Where `bmx-hlfv1` is the name of the profile that you previously created. Now we are ready to deploy your `.bna` file to the {{site.data.keyword.blockchainfull_notm}} Platform.
+    Where `bmx-hlfv11` is the name of the profile that you previously created.
+
+2. After creating the card, import it by using the following command:
+
+    ```
+    composer card import -f adminCard.card -c adminCard
+    ```
+    {:codeblock}
+
+    Now we are ready to deploy your `.bna` file to the {{site.data.keyword.blockchainfull_notm}} Platform network.
 
 
-## Step Twelve: Deploying the business network
+## Step Seven: Deploying the business network
 
 Now you can deploy your `.bna` file to the {{site.data.keyword.blockchainfull_notm}} Platform.
 
-1. With the identity that is created in the previous step, deploy the business network by using the following command:
+1. Using the card that is created in the previous step, we must first install, and then start the business network. Install the business network using the following command:
 
    ```
-   composer network deploy -a myNetwork.bna -p bmx-hlfv1 -i admin -s anyString
+   composer network install -c adminCard -a myNetwork.bna
    ```
    {:codeblock}
+
+2. After installing the business network, start the business network using the following command:
+
+    ```
+    composer network start -c adminCard -n myNetwork -V networkVersion -A admin -C ./credentials/admin-pub.pem -f delete_me.card
+    ```
+    {:codeblock}

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -15,18 +15,22 @@ lastupdated: "2018-06-14"
 # Despliegue de aplicaciones de ejemplo
 {: #overview}
 
+
+***[¿Le resulta útil esta página? Indíquenos su opinión.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
 La plataforma {{site.data.keyword.blockchainfull}} proporciona aplicaciones de ejemplo que puede desplegar y probar, a fin de comprender mejor las redes de blockchain y el proceso de desarrollo de aplicaciones.
 {: shortdesc}
 
 |  Ejemplos     | Caso de uso       | Tipo de muestra  | Creador y soporte  |
 | --------------|---------------------|----|-------|
-| [Marbles ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://github.com/IBM-Blockchain/marbles)| Varios usuarios pueden crear canicas con diferentes propiedades y transferirlas a otros. <br> <br> Siga las instrucciones para desplegar Marbles en el servicio de {{site.data.keyword.blockchainfull_notm}} en {{site.data.keyword.cloud_notm}}. Tenga en cuenta que las capturas de pantalla muestran la IU del Plan empresarial, en lugar del Plan de iniciador. La funcionalidad es similar. | Código de encadenamiento de GO con una aplicación Javascript| IBM<br> [Obtener ayuda![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://github.com/IBM-Blockchain/marbles/issues) |
-|[Fabricación de vehículos ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://github.com/IBM-Blockchain/vehicle-manufacture) | Los usuarios pueden pasar por el ciclo de vida de un vehículo virtual.  <br> <br> Siga las instrucciones para **Desplegar manualmente esta demostración en IBM Cloud** para obtener una guía paso a paso para desplegar el ejemplo en la red.| Definición de la red empresarial de [Hyperledger Composer](../reference/hyperledger_composer.html) con una aplicación Javascript | IBM<br> [Obtener ayuda![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://github.com/IBM-Blockchain/vehicle-manufacture/issues) |
-|[Mercancías perecederas ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://github.com/clauseHQ/demo-clause-ibm-perishable-goods)| Los usuarios puede desplegar contratos legales que adquieren mercancías en una cadena de suministro basada en la entrega y en lecturas de temperaturas. <br>  <br> <!-- This sample leverages the [Toolchain tool service![External link icon](../images/external_link.svg "External link icon")](../images/external_link.svg "External link icon")](https://console.bluemix.net/docs/services/ContinuousDelivery/index.html) to deploy the sample on your network automatically.--> | Definición de la red empresarial de [Hyperledger Composer](../reference/hyperledger_composer.html) con una aplicación Javascript | [ClauseHQ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](http://clause.io/)<br> [Obtener ayuda![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://github.com/clauseHQ/demo-clause-ibm-perishable-goods/issues) |
+| [Marbles ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://github.com/IBM-Blockchain/marbles "Marbles")| Varios usuarios pueden crear canicas con diferentes propiedades y transferirlas a otros. <br> <br> Siga las instrucciones para desplegar Marbles en el servicio de {{site.data.keyword.blockchainfull_notm}} en {{site.data.keyword.cloud_notm}}. Tenga en cuenta que las capturas de pantalla muestran la IU del Plan empresarial, en lugar del Plan de iniciador. La funcionalidad es similar. | Código de encadenamiento de GO con una aplicación Javascript| IBM<br> [Obtener ayuda ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://github.com/IBM-Blockchain/marbles/issues "Obtener ayuda") |
+|[Fabricación de vehículos ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://github.com/IBM-Blockchain/vehicle-manufacture "Fabricación de vehículos") | Los usuarios pueden pasar por el ciclo de vida de un vehículo virtual.  <br> <br> Siga las instrucciones para **Desplegar manualmente esta demostración en {{site.data.keyword.cloud_notm}}** para obtener una guía paso a paso para desplegar el ejemplo en la red.| Definición de la red empresarial de [Hyperledger Composer](../references/hyperledger_composer.html) con una aplicación Javascript | IBM<br> [Obtener ayuda ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://github.com/IBM-Blockchain/vehicle-manufacture/issues "Obtener ayuda") |
+|[Bienes perecederos ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://github.com/clauseHQ/demo-clause-ibm-perishable-goods "Bienes perecederos")| Los usuarios puede desplegar contratos legales que adquieren mercancías en una cadena de suministro basada en la entrega y en lecturas de temperaturas. <br>  <br> <!-- This sample leverages the [Toolchain tool service![External link icon](../images/external_link.svg "External link icon")](../images/external_link.svg "External link icon")](https://console.bluemix.net/docs/services/ContinuousDelivery/index.html) to deploy the sample on your network automatically.--> | Definición de la red empresarial de [Hyperledger Composer](../references/hyperledger_composer.html) con una aplicación Javascript | [Cláusula ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](http://clause.io/ "Clause")<br> [Obtener ayuda ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://github.com/clauseHQ/demo-clause-ibm-perishable-goods/issues "Obtener ayuda") |
 
 Las aplicaciones de ejemplo las crean los partners de IBM y de la comunidad. El soporte para muestras se proporcionará a través de los repositorios correspondientes de Github. Si tiene un problema, pulse el enlace **Obtener ayuda** junto al nombre del publicador y abra un problema en el repositorio Github para notificar al equipo relevante.
 
-Para desplegar ejemplos, necesita una red blockchain en {{site.data.keyword.cloud_notm}} con el Plan inicial o el Plan empresarial, y configurar un canal y sus iguales. Para obtener más información, consulte [Gobierno de la red del Plan inicial](../get_start_starter_plan.html) y [Gobierno de la red del Plan empresarial](../get_start.html).
+Para desplegar ejemplos, necesita una red blockchain en {{site.data.keyword.cloud_notm}} con el Plan inicial o el Plan empresarial, y configurar un canal e iguales. Para obtener más información, consulte [Gobierno de la red del Plan inicial](../get_start_starter_plan.html) y [Gobierno de la red del Plan empresarial](../get_start.html).
 
 
 <!--

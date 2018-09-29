@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -16,6 +16,10 @@ lastupdated: "2018-06-14"
 # スターター・プラン・ネットワークの管理
 {: #getting-started-with-starter-plan}
 
+
+***[このページは参考になりましたか。 ご意見をお聞かせください。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
 {{site.data.keyword.blockchainfull}} Platform Starter Plan は、構成済みのブロックチェーン・ネットワークをクリック 1 回でユーザーに提供します。 <!--offers you a free trial of 30 days and --> デフォルトでは 2 つの[組織](glossary.html#organization)、それぞれの組織ごとに 1 つの [ピア](glossary.html#peer)、そして 1 つの[チャネル](glossary.html#channel)で構成される許可制ネットワークをプロビジョンします。 ネットワークが作成されたら、これを拡張してさらに組織やピアをネットワークに追加できます。 <!--Note that it might cause extra cost if you exceed the default resource limits of two organizations and two peers.-->
 {:shortdesc}
 
@@ -23,7 +27,7 @@ lastupdated: "2018-06-14"
 
 スターター・プランを使用すると、{{site.data.keyword.blockchainfull_notm}} プラットフォームのスキルを習得し、サンプル・アプリケーションを実行し、独自のアプリケーションをテストし、複数組織のシナリオをシミュレートできます。  この入門チュートリアルでは、スターター・プラン・ネットワークを作成して使用するために従う必要のある前提条件と手順を紹介します。
 
-{{site.data.keyword.blockchainfull_notm}} プラットフォームおよびブロックチェーンが初めてという方は、[用語集](glossary.html)を参照してこの資料の用語をよく理解し、[Hyperledger Fabric の資料 ![「外部リンク」アイコン](images/external_link.svg "「外部リンク」アイコン")](http://hyperledger-fabric.readthedocs.io/en/latest/blockchain.html) を参照してブロックチェーンについて理解してください。
+{{site.data.keyword.blockchainfull_notm}} プラットフォームおよびブロックチェーンが初めてという方は、[用語集](glossary.html)を参照してこの資料の用語をよく理解し、[Hyperledger Fabric の資料 ![「外部リンク」アイコン](images/external_link.svg "「外部リンク」アイコン")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/blockchain.html) を参照してブロックチェーンについて理解してください。
 
 
 ## ネットワークの作成
@@ -82,7 +86,7 @@ You can run [chaincode](glossary.html#chaincode) on your peers in the network.  
 以下の手順でサービス資格情報を取得します。
 1. サービス・インスタンス・ページで、左側のナビゲーターの**「サービス資格情報」**をクリックして、「サービス資格情報」画面を表示します。
 2. 「サービス資格情報」画面で**「新規資格情報」**をクリックします。
-3. 「新規資格情報の追加」画面で、資格情報に名前を付けて、「インラインの構成パラメーターの追加」フィールドに **{"type": "service_instance_token"}** と入力します。**「追加」**をクリックします。 新しい資格情報がテーブルに追加されます。 「アクション」列の下の**「資格情報の表示」**をクリックすると、資格情報の詳細を表示できます。 この資格情報には、API に権限を与えるために使用できる API キーとシークレットが含まれています。  
+3. 「新規資格情報の追加」画面で、資格情報に名前を付けて、「インラインの構成パラメーターの追加」フィールドに **{"type": "service_instance_token"}** と入力します。 **「追加」**をクリックします。 新しい資格情報がテーブルに追加されます。 「アクション」列の下の**「資格情報の表示」**をクリックすると、資格情報の詳細を表示できます。 この資格情報には、API に権限を与えるために使用できる API キーとシークレットが含まれています。  
 
 ![ネットワーク資格情報の取得](images/service_credentials.gif "ネットワーク資格情報の取得")
 
@@ -100,7 +104,7 @@ You can run [chaincode](glossary.html#chaincode) on your peers in the network.  
 
 
 ## カスタマイズされたビジネス・ネットワークの開発とデプロイ
-スターター・プランは、開発者環境と Hyperledger Composer 開発者ツール・セットを開発する IBM Blockchain プラットフォームを統合します。 ユーザーのビジネス・ニーズに基づいて、独自のブロックチェーン・ネットワークを開発できます。  ビジネス用のネットワークを開発した後に、そのビジネス・ネットワークをスターター・プラン・ネットワークにデプロイできます。
+スターター・プランは、開発者環境と Hyperledger Composer 開発者ツール・セットを開発する {{site.data.keyword.blockchainfull_notm}} プラットフォームを統合します。 ユーザーのビジネス・ニーズに基づいて、独自のブロックチェーン・ネットワークを開発できます。  ビジネス用のネットワークを開発した後に、そのビジネス・ネットワークをスターター・プラン・ネットワークにデプロイできます。
 
 詳しくは、[ネットワークの開発](develop.html)および[スターター・プランによるビジネス・ネットワークのデプロイ](develop_starter.html)を参照してください。
 
@@ -126,7 +130,7 @@ You can run [chaincode](glossary.html#chaincode) on your peers in the network.  
 As you can see in [Deploying sample applications](howto/prebuilt_samples.html), Starter Plan makes it easy to get a sample application integrated with your network by using Toolchain. This setup also allows for continuous integration by automatically updating your sample application whenever your forked application repo is changed. If you want to deploy this application into an Enterprise Plan network, you can copy your forked application repo into a new repo and then follow the instructions in [Deploying sample applications manually](howto/prebuilt_samples.html#deploy_sample_applications_manually).
 -->
 
-スターター・プラン・ネットワークにサンプル・アプリケーションをデプロイし、このアプリケーションをエンタープライズ・プラン・ネットワークにデプロイする場合は、fork されたアプリケーション・リポジトリーを新規リポジトリーにコピーしてから、[アンプル・アプリケーションの手動デプロイ](howto/prebuilt_samples.html#deploy_sample_applications_manually)の手順に従うことができます。
+スターター・プラン・ネットワークにサンプル・アプリケーションをデプロイし、そのアプリケーションをエンタープライズ・プラン・ネットワークにデプロイする場合は、fork したアプリケーション・リポジトリーを新規リポジトリーにコピーしてから、サンプル・アプリケーションの説明に従ってエンタープライズ・プラン・ネットワークにデプロイすることができます。
 
 
 ## ネットワークの削除または離脱
@@ -138,5 +142,5 @@ As you can see in [Deploying sample applications](howto/prebuilt_samples.html), 
 <!--
 ## References
 * For more information about {{site.data.keyword.blockchainfull_notm}} offerings, see [Blockchain offerings](index.html).
-* For more information about Hyperledger Fabric V1.1, see [Hyperledger Fabric documentation ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/latest/){:new_window}.
+* For more information about Hyperledger Fabric V1.1, see [Hyperledger Fabric documentation ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/){:new_window}.
 -->

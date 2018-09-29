@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -16,6 +16,10 @@ lastupdated: "2018-06-14"
 # Govern Starter Plan network
 {: #getting-started-with-starter-plan}
 
+
+***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
 {{site.data.keyword.blockchainfull}} Platform Starter Plan offers you a pre-configured blockchain network with a single click. It <!--offers you a free trial of 30 days and -->provisions a permissioned network with the configuration of two [organizations](glossary.html#organization), one [peer](glossary.html#peer) per each organization, and one [channel](glossary.html#channel) by default. After the network is created, you can scale and add more organizations and peers to your network. <!--Note that it might cause extra cost if you exceed the default resource limits of two organizations and two peers.-->
 {:shortdesc}
 
@@ -23,7 +27,7 @@ lastupdated: "2018-06-14"
 
 Starter Plan enables you to learn and develop skills with {{site.data.keyword.blockchainfull_notm}} Platform, run sample applications, test your own applications, and simulate a multi-organization scenario.  This getting started tutorial introduces the prerequisites and steps you need to follow to create and use a Starter Plan network.
 
-If you are new to {{site.data.keyword.blockchainfull_notm}} Platform and blockchain, you can read the [Glossary](glossary.html) to get familiar with the terms in this documentation and the [Hyperledger Fabric documentation ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/latest/blockchain.html) to learn more about blockchain.
+If you are new to {{site.data.keyword.blockchainfull_notm}} Platform and blockchain, you can read the [Glossary](glossary.html) to get familiar with the terms in this documentation and the [Hyperledger Fabric documentation ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/blockchain.html) to learn more about blockchain.
 
 
 ## Creating a network
@@ -99,7 +103,7 @@ For more information, see [Deploying sample applications](howto/prebuilt_samples
 
 
 ## Developing and deploying customized business networks
-Starter Plan integrates IBM Blockchain Platform: Develop developer environment and Hyperledger Composer developer toolset. You can develop your blockchain network based on your business needs.  After you develop a network for your business, you can deploy your business network to Starter Plan network.
+Starter Plan integrates {{site.data.keyword.blockchainfull_notm}} Platform: Develop developer environment and Hyperledger Composer developer toolset. You can develop your blockchain network based on your business needs.  After you develop a network for your business, you can deploy your business network to Starter Plan network.
 
 For more information, see [Develop the network](develop.html) and [Deploying business networks with Starter Plan](develop_starter.html).
 
@@ -137,5 +141,5 @@ If you want to delete or leave a network, you can delete the blockchain service 
 <!--
 ## References
 * For more information about {{site.data.keyword.blockchainfull_notm}} offerings, see [Blockchain offerings](index.html).
-* For more information about Hyperledger Fabric V1.1, see [Hyperledger Fabric documentation ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/latest/){:new_window}.
+* For more information about Hyperledger Fabric V1.1, see [Hyperledger Fabric documentation ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/){:new_window}.
 -->

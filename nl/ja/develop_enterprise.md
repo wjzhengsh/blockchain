@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -15,6 +15,10 @@ lastupdated: "2018-06-14"
 
 # エンタープライズ・プランへのビジネス・ネットワークのデプロイ
 {: #deploying-a-business-network}
+
+
+***[このページは参考になりましたか。 ご意見をお聞かせください。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
 
 {{site.data.keyword.blockchainfull}} Platform: Develop の開発者ツールは、**ビジネス・ネットワーク定義**の作成に役立ちます。この定義は、その後の手順でビジネス・ネットワーク・アーカイブ (`.bna`) にパッケージすることができます。 開発者環境では、開発と共有のために、`.bna` ファイルをローカルまたはクラウドの {{site.data.keyword.blockchain}} にデプロイできます。
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -14,8 +14,13 @@ lastupdated: "2018-06-14"
 
 # {{site.data.keyword.blockchainfull_notm}} Platform
 
-**注意：**在使用 {{site.data.keyword.blockchainfull}} Platform 产品之前，请阅读[免责声明](needtoknow.html)一节中的技术和支持信息。  
+
+***[此页面是否有用？请告诉我们。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
+**注意：**在使用 {{site.data.keyword.blockchainfull}} Platform 产品之前，请阅读[免责声明](needtoknow.html)一节中的技术和支持信息。
 {:shortdesc}
+
 
 {{site.data.keyword.blockchainfull_notm}} Platform 是唯一能够处理多组织区块链网络完整生命周期（**开发**、**管理**和**操作**）的集成业务就绪型平台。它旨在通过每个阶段的协作来加速创建“为业务构建”全球区块链网络，该网络具有适用于最严苛用例和受监管行业的性能和安全性。
 
@@ -27,22 +32,25 @@ lastupdated: "2018-06-14"
 
 **注**：该表不显示线性发展。随着应用程序和成员资格的演进，诸如开发和网络管理之类的任务将重复出现。
 
-## {{site.data.keyword.IBM_notm}} 成员资格产品
+## {{site.data.keyword.blockchainfull_notm}} 成员资格产品
 
 {{site.data.keyword.blockchainfull_notm}} 提供不同的成员资格套餐，帮助所有类型的用户开启其区块链之旅并将其应用程序移动到生产环境。
 
-|       |[入门套餐](starter_plan.html)|[企业套餐](enterprise_plan.html)|企业增强版套餐|自我管理的套餐
+|       |[入门套餐](starter_plan.html)|[企业套餐](enterprise_plan.html)|企业增强版套餐| [远程同级](howto/remote_peer.html) |
 | ------------------------- |--------------------------|-----|-----|------|
-|**包含的内容**| **基本服务级别、开发和测试环境** |**高级服务级别、企业生产就绪**| **针对性能和隔离以及企业生产就绪的专用计算** |要在自己的基础架构上安装的软件堆栈，连接到此云服务上托管的网络|
-|**计费策略**|**[试用信用值](howto/pricing.html#starter-plan-pricing)，用完后按月收费** |**每月预订**|**每月预订**|每月预订|
-|**可用性**|**可立即获取**|**可立即获取**| **追加采购** |即将推出|
+|**包含的内容**| **基本服务级别、开发和测试环境** |**高级服务级别、企业生产就绪**| **针对性能和隔离以及企业生产就绪的专用计算** | **可部署远程同级 Helm 图表** |
+|**计费策略**| **每月预订与[可用云信用值](howto/pricing.html#starter-plan-pricing)** |**每月预订**|**每月预订**| **免费试用 Beta** |
+|**可用性**| **一般可用** | **一般可用** | **追加采购** | **Beta** |
 
-**注意：**请勿将**入门套餐**用于生产。入门套餐是一个开发与测试环境，不适合生产工作负载。
+**注意：**请勿将**入门套餐**用于生产用途。入门套餐是一个开发与测试环境，不适合生产工作负载。
 
 {{site.data.keyword.blockchainfull_notm}} 产品基于 [Hyperledger Fabric](reference/v10_fabric.html) V1.1 代码库构建，该代码库利用模块化体系结构来实现企业级别的安全性、数据完整性、可扩展性和性能，以满足您的业务需要。
-- **IBM Blockchain 入门套餐**是用于了解或开始开发区块链网络的环境。
+- **入门套餐**是用于了解或开始开发区块链网络的环境。
 - **企业套餐**是提供高级别安全性和支持的生产环境。
 - **企业增强版套餐**提供专用的生产环境，以实现额外的性能和隔离的计算和存储资源，从而保护关键数据。
+- **远程同级**支持在 {{site.data.keyword.cloud_notm}} 之外运行同级，因此可更加灵活地发展区块链网络，同时在{{site.data.keyword.cloud_notm}} 中利用现有 {{site.data.keyword.blockchainfull_notm}} 网络。
+
+{{site.data.keyword.blockchainfull_notm}} Platform 是 {{site.data.keyword.cloud_notm}} 上的平台服务，所有成员资格产品均遵循服务级别协议 (SLA) 上的 [{{site.data.keyword.cloud_notm}} 服务条款 ![外部链接图标](images/external_link.svg "外部链接图标")](https://www-03.ibm.com/software/sla/sladb.nsf/sla/bm-6605-13 "{{site.data.keyword.cloud_notm}} 服务条款")。请注意，入门套餐和企业套餐网络是跨**多个环境**进行供应的，这些环境分布在不同地理位置的多个数据中心。
 
 立即注册以获取 [{{site.data.keyword.blockchainfull_notm}} 成员资格 ![外部链接图标](images/external_link.svg "外部链接图标")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps)！
 
@@ -58,9 +66,9 @@ lastupdated: "2018-06-14"
 作为开发者，您可以在 {{site.data.keyword.blockchainfull_notm}} Platform 网络环境中使用交互式环境来开发、迭代和测试业务网络，从而快速轻松满足业务需求并加快区块链应用程序开发。这些工具旨在将业务规则转变为您首选环境中的业务网络代码：
 * **在线探索**  
   利用 [{{site.data.keyword.blockchainfull_notm}} Platform: Develop](./develop.html)<!--, which is powered by an open source development tool--> 来了解关键区块链概念，创建网络定义以及利用可复用的行业模型和智能合同库。  
-  开发了业务网络后，可以将其部署到在 IBM Blockchain Platform 上运行的实时网络。有关更多信息，请参阅[使用入门套餐部署业务网络](./develop_starter.html)和[使用企业套餐部署业务网络](./develop_enterprise.html)。
+开发了业务网络后，可以将其部署到在 {{site.data.keyword.blockchainfull_notm}} Platform 上运行的实时网络。有关更多信息，请参阅[使用入门套餐部署业务网络](./develop_starter.html)和[使用企业套餐部署业务网络](./develop_enterprise.html)。
 * **本地安装**  
-  利用 IBM 认证的 Hyperledger Fabric 和 Composer 映像（这些是用于构建业务网络的开放式源代码框架和工具），直接在笔记本电脑上进行开发和测试。有关更多信息，请参阅[构建第一个网络](http://hyperledger-fabric.readthedocs.io/en/latest/build_network.html)。
+  利用 IBM 认证的 Hyperledger Fabric 和 Composer 映像（这些是用于构建业务网络的开放式源代码框架和工具），直接在笔记本电脑上进行开发和测试。有关更多信息，请参阅[构建第一个网络](http://hyperledger-fabric.readthedocs.io/en/release-1.1/build_network.html)。
 * **在云环境中协作**  
   通过入门套餐和企业套餐选项，使用随时可用型实时网络来开发代码并与他人共享。有关更多信息，请参阅[关于入门套餐](starter_plan.html)和[关于企业套餐](enterprise_plan.html)。
 
@@ -101,7 +109,7 @@ With a cloud deployment, you're provided with a collection of easy-to-use recipe
 要使区块链可操作，成员可以通过运行一个或多个基础网络服务，建立信任的基础：
 
 - **订购服务**：订购和同步化事务处理  
-本质上，订购服务是网络的定义。它包含每个成员的身份信息、有关通道的信息和一组策略，策略指示允许哪些成员执行特定任务（例如，邀请其他成员、创建通道等）. 每个事务处理和配置操作都将流经订购服务，因此它是事物总体方案中的一个非常关键的部分。鉴于订购服务非常重要，因此很容易看到独裁编排的缺陷，可能只有一个成员拉出了这些字符串。为了应对此问题，排序服务由网络成员共同管理，而管控实现会进行联合管理。换句话说，是集体而不是单方面作出决定。所有成员在网络中拥有股权，并且通过扩展，在任何配置和定制其在网络中的立场的任何操作中都有投票权。这些“民主”概念和共同做出的决定是可信分散网络的固有构建块。IBM 充当 IBM Blockchain Platform 上部署的任何网络的排序服务的“操作员”。
+本质上，订购服务是网络的定义。它包含每个成员的身份信息、有关通道的信息和一组策略，策略指示允许哪些成员执行特定任务（例如，邀请其他成员、创建通道等）. 每个事务处理和配置操作都将流经订购服务，因此它是事物总体方案中的一个非常关键的部分。鉴于订购服务非常重要，因此很容易看到独裁编排的缺陷，可能只有一个成员拉出了这些字符串。为了应对此问题，排序服务由网络成员共同管理，而管控实现会进行联合管理。换句话说，是集体而不是单方面作出决定。所有成员在网络中拥有股权，并且通过扩展，在任何配置和定制其在网络中的立场的任何操作中都有投票权。这些“民主”概念和共同做出的决定是可信分散网络的固有构建块。IBM 充当 {{site.data.keyword.blockchainfull_notm}} Platform 上部署的任何网络的排序服务的“操作员”。
 
 - **认证中心**：向参与者发出证书  
 简单地说，“认证中心”(CA) 提供成员资格。网络中的所有实体（同级、排序者、客户机等）必须具有通信、认证和最终进行事务处理的身份。这些“身份”以 x509 证书（即注册证书）形式存在，要想直接参与区块链网络必须要有这些证书。还有间接参与的方法，但稍后我们会进行讨论。CA 最容易让人想到是一个“橡皮图章”，为身份提供认证和可信性。每个成员都拥有自己的 CA，通过此 CA，他们不仅可以对自己完全拥有的资源（同级）的证书签名，还可以对第三方客户机和应用程序签名。您可以将成员的 CA 看做特殊的笔或公证人印章。此 CA 签名的证书是访问网络的先决条件。
@@ -130,11 +138,11 @@ With a cloud deployment, you're provided with a collection of easy-to-use recipe
 
 有时，将成员理解为可体现成员在业务网络中的作用的角色会很有用。以下是我们经常看到的一些应用。
 
-- **发起者**：其他成员选择用于引导区块链网络的成员。IBM Blockchain Platform 需要单个成员登录到 IBM Blockchain Platform 并执行任务以启动网络。这些操作包括命名网络、邀请初始成员集，以及设置缺省网络操作策略集。这是瞬态角色。引导网络后，发起者不保留特权，而只是恢复成员角色。  
+- **发起者**：其他成员选择用于引导区块链网络的成员。{{site.data.keyword.blockchainfull_notm}} Platform 需要单个成员登录到 {{site.data.keyword.blockchainfull_notm}} Platform 并执行任务以启动网络。这些操作包括命名网络、邀请初始成员集，以及设置缺省网络操作策略集。这是瞬态角色。引导网络后，发起者不保留特权，而只是恢复成员角色。  
 
 - **维护者**：运行一个或多个网络同级和 CA 的成员。这些成员通过参与共识过程来维护分布式分类帐的完整性，这是在区块链网络上验证事务处理的方式。维护者通过 CA 的所有权，还能够向参与者发放证书并授予他们对网络的访问权。
 
-- **操作员**：代表其他网络成员运行服务（包括事务处理排序服务、认证中心、事务处理网关和其他基础网络服务）的成员。缺省情况下，IBM 是在 IBM Blockchain Platform 上部署的网络的网络操作员。
+- **操作员**：代表其他网络成员运行服务（包括事务处理排序服务、认证中心、事务处理网关和其他基础网络服务）的成员。缺省情况下，IBM 是在 {{site.data.keyword.blockchainfull_notm}} Platform 上部署的网络的网络操作员。
 
 - **审计员**：由网络授予许可权以在网络上执行审计功能的成员。审计功能的示例包括记帐、合规性跟踪或分析。审计员角色通常表示有权查看更多分类帐事务和/或注册更多事务通道的成员。
 
@@ -167,4 +175,4 @@ Hyperledger Fabric 体系结构的**模块性**和网络角色（支持者、提
 
 {{site.data.keyword.IBM_notm}} 提供 {{site.data.keyword.IBM_notm}} 实施的 {{site.data.keyword.blockchain}} 解决方案的支持。有关 {{site.data.keyword.blockchainfull_notm}} 支持的更多信息，请参阅[获取支持](ibmblockchain_support.html)。
 
-有关所有 Hyperledger Fabric 特性和功能的更多详细信息，请参阅 [Hyperledger Fabric 文档 ![外部链接图标](images/external_link.svg "外部链接图标")](http://hyperledger-fabric.readthedocs.io/en/latest/)。
+有关所有 Hyperledger Fabric 特性和功能的更多详细信息，请参阅 [Hyperledger Fabric 文档 ![外部链接图标](images/external_link.svg "外部链接图标")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/)。

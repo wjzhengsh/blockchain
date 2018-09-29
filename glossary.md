@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -16,7 +16,11 @@ lastupdated: "2018-06-14"
 # Glossary
 {: #glossary}
 
-{{site.data.keyword.blockchainfull}} Platform simplifies your journey on blockchain. This topic defines terms that appear in this documentation and is meant to introduce you to blockchain concepts. For a deeper understanding of terms, you can refer to  [Hyperledger Fabric ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/master/glossary.html).
+
+***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
+{{site.data.keyword.blockchainfull}} Platform simplifies your journey on blockchain. This topic defines terms that appear in this documentation and is meant to introduce you to blockchain concepts. For a deeper understanding of terms, you can refer to  [Hyperledger Fabric ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/glossary.html).
 {:shortdesc}
 
 ## Asset
@@ -50,10 +54,10 @@ The Connection profile is visible in the "Overview" screen of the Network Monito
 A collaborative process to keep the ledger transactions synchronized across the network. Consensus ensures that ledgers are updated only when the appropriate participants approve transactions, and that ledgers are updated with the same transactions in the same order. There are many different algorithmic ways of achieving consensus.
 
 ## CouchDB
-A document store that is used for the ledger database in Starter Plan networks. CouchDB is also an option for Enterprise Plan networks, along with LevelDB. CouchDB supports the use of indexes and allows you to issue rich queries against the data on your peer.
+A document store that is used for the state database in Starter Plan networks. CouchDB is also an option for Enterprise Plan networks, along with LevelDB. CouchDB supports the use of indexes and allows you to issue rich queries against the data on your peer.
 
 ## Current state
-The current state of the ledger represents the latest values for all keys that are ever included in its chain transaction log. Because current state represents all latest key values known to the channel, it is sometimes referred to as World State. Chaincode executes transaction proposals against current state data. The current state changes every time when the value of a key changes or a new key is added. The current state is critical to a transaction flow because the latest key-value pair must be known before it can be changed. Peers commit the latest values to the current state of the ledger for each valid transaction in a block. The Current state is stored in a peers ledger database
+The current state of the ledger represents the latest values for all keys that are ever included in its chain transaction log. Because current state represents all latest key values known to the channel, it is sometimes referred to as World State. Chaincode executes transaction proposals against current state data. The current state changes every time when the value of a key changes or a new key is added. The current state is critical to a transaction flow because the latest key-value pair must be known before it can be changed. Peers commit the latest values to the current state of the ledger for each valid transaction in a block. The Current state is stored in a peer's state database
 
 ## Dynamic membership
 A member can be dynamically added to the network by a user with **registrar** privilege. Members are also assigned roles and attributes, which control their access and authority on the network. Neither roles nor attributes can be assigned dynamically though. Hyperledger Fabric supports the addition or removal of members, peers, and ordering service nodes, without compromising the operations of the overall network. Dynamic membership is critical when business relationships adjust and entities need to be added or removed for various reasons.
@@ -67,6 +71,9 @@ Defines the peer nodes on a channel that must execute transactions that are atta
 ## Genesis Block
 The configuration block that initializes a blockchain network or channel, and also serves as the first block on a chain.
 
+## Gossip
+Hyperledger Fabric allows peers to gather important network information from each other without having to rely on the ordering service. The [gossip data dissemination protocol ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.1/gossip.html) provides a secure, reliable, and scalable way for peers to exchange messages between each other. For example, if peers miss some blocks because of delays, network outages, or other reasons, they can sync up to the current ledger state by using gossip messaging to contact other peers in possession of these missing blocks.
+
 ## HSM
 Hardware Security Module. Provides on-demand encryption, key management, and key storage as a managed service. HSM is a physical appliance that handles the resource-intensive tasks of cryptography processing and reduce latency to applications. For more information, see [Hardware Security Module ![External link icon](images/external_link.svg "External link icon")](https://www.ibm.com/cloud/hardware-security-module)
 
@@ -74,7 +81,7 @@ Hardware Security Module. Provides on-demand encryption, key management, and key
 [Hyperledger Composer ![External link icon](images/external_link.svg "External link icon")](https://hyperledger.github.io/composer/latest/introduction/introduction.html) is an open source development toolset. It uses a bespoke modeling language, which is combined with JavaScript transactions, and access control rules to model a blockchain business network in full. You can use Hyperledger Composer to integrate existing systems and data with your blockchain application before you deploy anything to a real blockchain.
 
 ## Hyperledger Fabric
-[Hyperledger Fabric ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/master/) is a business blockchain framework that the Linux Foundation hosts to serve as a foundation for developing blockchain applications or solutions with a modular architecture. Hyperledger Fabric components such as consensus and membership services are plug-and-play.
+[Hyperledger Fabric ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/) is a business blockchain framework that the Linux Foundation hosts to serve as a foundation for developing blockchain applications or solutions with a modular architecture. Hyperledger Fabric components such as consensus and membership services are plug-and-play.
 
 ## Install
 The process of placing a chaincode on a peer’s file system. You must install the chaincode on every peer that will run this chaincode.
@@ -88,11 +95,8 @@ A consensus plugin implementation for Hyperledger Fabric that results in a clust
 ## Ledger
 Comprised of a literal "chain of blocks" that store the immutable, sequenced record of transactions, as well as a state database to maintain current state. There is one ledger per channel, and updates to it are managed by the consensus process according to the policies of a particular channel.
 
-## Ledger database
-Current state data is stored in a database on the peers for efficient reads and queries from chaincode. Starter Plan networks use CouchDB as the ledger database. Enterprise Plan Networks can use either LevelDB or CouchDB.
-
 ## LevelDB
-A key-value store that is an option for the ledger database for Enterprise Plan networks, along with CouchDB. LevelDB stores the current state as key-value pairs, and does not support the use of indexes or rich queries.
+A key-value store that is an option for the state database for Enterprise Plan networks, along with CouchDB. LevelDB stores the current state as key-value pairs, and does not support the use of indexes or rich queries.
 
 ## Member
 Also known as "organizations", members in a blockchain network, similar to the members of any group, form the structure of the network. A member can be as large as a multi-national corporation or as small as an individual. Members are enrolled into the network with a certificate that grants them permissions to use the network as either a service provider (for example, issuing certificates, validating/ordering transactions) or as a consumer. The former provides foundational blockchain services that include transaction validation, transaction ordering, and certificate management services. Consumer members use the network to invoke transactions against the distributed ledger. Members can have multiple Peers.
@@ -135,6 +139,9 @@ The Hyperledger Fabric supports two Software Development Kits (SDKs). A Node SDK
 
 ## SOLO
 A consensus plugin implementation for Hyperledger Fabric that results in a single ordering service node in the blockchain network. The Starter Plan network uses the SOLO implementation. A SOLO implementation is not intended for a production network. The alternative to SOLO is a Kafka cluster.
+
+## State database
+Current state data is stored in a database on the peers for efficient reads and queries from chaincode. Starter Plan networks use CouchDB as the state database. Enterprise Plan Networks can use either LevelDB or CouchDB.
 
 ## Transaction
 The mechanism that participants on the blockchain network use to interact with assets. A transaction either creates new chaincode or invokes an operation in an existing chaincode.

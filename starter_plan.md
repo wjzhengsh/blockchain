@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-07-31"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -15,6 +15,10 @@ lastupdated: "2018-07-31"
 # About Starter Plan
 {: #overview}
 
+
+***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
 {{site.data.keyword.blockchainfull}} Platform Starter Plan is an entry level option that enables organizations to simulate multi-organization blockchain networks, quickly develop applications, and work with sample smart contracts and business networks. It also boasts the same UI experience as other membership options, helping to eliminate any learning curve. Starter Plan networks are built on Hyperledger Fabric V1.1.
 {:shortdesc}
 
@@ -25,9 +29,9 @@ lastupdated: "2018-07-31"
 ## What Stater Plan offers
 
 - **_One-click-ready network_**  
-    Starter Plan provisions you a live blockchain network with a single click. Each network comes with an ordering service, CA's, two organizations (with one peer per organization), and a default channel on which to transact and deploy chaincode. {{site.data.keyword.blockchainfull_notm}} Platform handles the creation and configuration of this network (you'll be able to update it after it goes live), letting you focus on development. Starter Plan networks are built on Hyperledger Fabric V1.1, and use CouchDB as the ledger database. <!--The free trial provides you up to two organizations and two peers.-->
+    Starter Plan provisions you a live blockchain network with a single click. Each network comes with an ordering service, CA's, two organizations (with one peer per organization), and a default channel on which to transact and deploy chaincode. {{site.data.keyword.blockchainfull_notm}} Platform handles the creation and configuration of this network (you'll be able to update it after it goes live), letting you focus on development. Starter Plan networks are built on Hyperledger Fabric V1.1, and use CouchDB as the state database. <!--The free trial provides you up to two organizations and two peers.-->
 - **_Cost efficiency_**  
-    The Starter Plan membership option provides many of the same blockchain capabilities as Enterprise Plan membership options, but at a lower cost. {{site.data.keyword.blockchainfull}} Platform offers $500 of cloud credits to new users of Starter Plan. These credits allow you to provision a blockchain network with basic network resources for free for one month. See [Starter Plan considerations](#starter-plan-considerations) for more details.
+    The Starter Plan membership option provides many of the same blockchain capabilities as Enterprise Plan membership options, but at a lower cost. {{site.data.keyword.blockchainfull_notm}} Platform offers $500 of cloud credits to new users of Starter Plan. These credits allow you to provision a blockchain network with basic network resources for free for one month. See [Starter Plan considerations](#starter-plan-considerations) for more details.
 - **_Multi-organization network simulation_**  
     You can use Starter Plan to simulate building a network with multiple organizations. You do not need to actually invite other organizations to your network, but can act as other organizations yourself. This mechanism enables you to learn how a new organization can join the network, how multiple organizations work together in the network, and so on. You can switch between your organizations from the Network Monitor to view and manage the network from different organizations' view.  
     **Note**: It might cause extra cost if you add more resources than the free trial basic resources of two organizations and two peers.
@@ -44,7 +48,7 @@ If you fit into one of the following situations, the Starter Plan is suitable fo
 - **_Building demo solutions on a live network._**  
     Starter Plan provides a powerful environment for demonstrating blockchain applications. The ready-to-use blockchain network enables quick presentations to colleagues, management, and partners through the operational and management tools that the Network Monitor provides.
 - **_Moving beyond single organization development._**  
-    Starter Plan enables you to act as multiple organizations, which allows you to see how the IBM Blockchain Platform manages collaborative tasks like channel creation and chaincode instantiation, as well as testing applications and invoking transactions. You can also invite others to collaborate in a Starter Plan network (as in Enterprise plans). This helps you you to build in a more realistic environment, with multiple parties endorsing chaincode and transactions.
+    Starter Plan enables you to act as multiple organizations, which allows you to see how the {{site.data.keyword.blockchainfull_notm}} Platform manages collaborative tasks like channel creation and chaincode instantiation, as well as testing applications and invoking transactions. You can also invite others to collaborate in a Starter Plan network (as in Enterprise plans). This helps you you to build in a more realistic environment, with multiple parties endorsing chaincode and transactions.
 - **_Iteratively develop and test blockchain applications._**  
     Starter Plan offers you a staging area to continuously develop and test your code on a blockchain network. Moving to cloud allows developers and testers to focus on functionalities and to easily move from unit test to functional test. Starter Plan provides the same blockchain network functionalities as well as operational and management tooling as the Enterprise Plan. After you are ready to push your project to one of the Enterprise plans, you can operate the same way as in Starter Plan, but with more opportunities to grow your network.
 
@@ -60,7 +64,7 @@ Starter Plan is an entry point to {{site.data.keyword.blockchainfull_notm}} Plat
     {{site.data.keyword.blockchainfull_notm}} Platform offers $500 of cloud credits to new users of Starter Plan. These credits help users get started by covering the cost a default network configuration for one month.
     - New users have to sign up for cloud credits. They are not applied automatically. Please [sign up ![External link icon](images/external_link.svg "External link icon")](https://www.ibm.com/account/reg/us-en/signup?formid=urx-32798 "sign up") to claim the credits if you have not already. Wait 24 hours to make sure that the credits are in your [account ![External link icon](images/external_link.svg "External link icon")](https://console.bluemix.net/docs/billing-usage/viewing_usage.html#credits "account") before you access Starter Plan. Otherwise, you might get charged before the credits apply.
     - The cloud credits apply to all of {{site.data.keyword.cloud_notm}} services. They can be consumed by products other than the {{site.data.keyword.blockchainfull_notm}} Platform that you use on {{site.data.keyword.cloud_notm}}.
-    - The offer provides lifetime credits. You can keep your credits as long as you maintain your IBM Cloud account. You do not have to use them in the first month.
+    - The offer provides lifetime credits. You can keep your credits as long as you maintain your {{site.data.keyword.cloud_notm}} account. You do not have to use them in the first month.
     Learn more about using trail credits using the [pricing guide](howto/pricing.html#starter-plan-pricing).
 - **Differences from Enterprise Plan**
     - [CA](glossary.html#ca) and [ordering service](glossary.html#orderer) are not fault tolerant because each organization has only one CA and a network has only one [orderer](glossary.html#orderer).

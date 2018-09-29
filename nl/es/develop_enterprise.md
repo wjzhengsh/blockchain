@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -15,6 +15,10 @@ lastupdated: "2018-06-14"
 
 # Despliegue de una red empresarial en el Plan empresarial
 {: #deploying-a-business-network}
+
+
+***[¿Le resulta útil esta página? Indíquenos su opinión.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
 
 Las herramientas del desarrollador de {{site.data.keyword.blockchainfull}} Platform: Develop le ayudan a crear una **Definición de red empresarial**, que se puede empaquetar en un archivo de red empresarial (`.bna`). El entorno del desarrollador le permite desplegar archivos `.bna` en un {{site.data.keyword.blockchain}} local o de nube para su desarrollo y compartición.
 
@@ -94,7 +98,7 @@ Necesita acceso a una instancia del Plan empresarial de la plataforma {{site.dat
     ```
     {:codeblock}
 
-## Paso tres: Adición de información sobre la autoridad emisora de certificados
+## Paso tres: Adición de información sobre la entidad emisora de certificados
 
 1. Sustituya el valor ca del archivo `connection.json` por el **url** y el **caName** de las entradas de la sección **certificateAuthorities**.
 
