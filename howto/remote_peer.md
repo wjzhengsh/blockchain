@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-10-02"
+lastupdated: "2018-10-04"
 
 ---
 
@@ -18,10 +18,9 @@ lastupdated: "2018-10-02"
 
 ***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
-<!---
+
 **Important:**
-Starting from September 28, 2018, all new {{site.data.keyword.blockchainfull_notm}} Platform Starter networks will be provisioned by using Hyperledger Fabric v1.2. Fabric v1.2 is currently not compatible with the Remote Peer offering, which uses a v1.1 peer. Existing Starter Plan networks, which are based on Fabric v1.1, are not impacted and can still be used with the Remote Peer offering. {{site.data.keyword.blockchainfull}} Platform will update the Remote Peer offering to use the v1.2 peer, which will be compatible with new Starter networks, which uses Fabric v1.2, and Enterprise networks, which still use Fabric v1.1. Until the Remote Peer offering is updated to Fabric v1.2, **do not** attempt to deploy a v1.1 remote peer with a new v1.2 Starter network.
---->
+Starting from October 04, 2018, all new {{site.data.keyword.blockchainfull_notm}} Platform Starter networks will be provisioned by using Hyperledger Fabric v1.2.1. Fabric v1.2.1 is currently not compatible with the Remote Peer offering, which uses a v1.1.0 peer. Existing Starter Plan networks, which are based on Fabric v1.1.0, are not impacted and can still be used with the Remote Peer offering. {{site.data.keyword.blockchainfull}} Platform will update the Remote Peer offering to use the v1.2.1 peer, which will be compatible with new Starter networks, which uses Fabric v1.2.1, and Enterprise networks, which still use Fabric v1.1.0. Until the Remote Peer offering is updated to Fabric v1.2.1, **do not** attempt to deploy a v1.1.0 remote peer with a new v1.2.1 Starter network.
 
 You can run {{site.data.keyword.blockchainfull_notm}} Platform remote peers on {{site.data.keyword.cloud_notm}} Private (ICP) <!--[AWS]or on AWS Cloud --> after you connect them to an existing blockchain network. Running peers outside {{site.data.keyword.cloud_notm}} provides more flexibility to grow or join a blockchain network while taking advantage of an existing network inside {{site.data.keyword.cloud_notm}}. Remote peers leverage the Certificate Authorities (CAs) and Ordering Service on the platform, but allow you to colocate your peer with other applications outside {{site.data.keyword.cloud_notm}}.
 {:shortdesc}
