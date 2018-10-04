@@ -10,7 +10,7 @@ lastupdated: "2018-10-04"
 {:shortdesc: .shortdesc}
 {:screen: .screen}
 {:codeblock: .codeblock}
-{:pre: .pre}_
+{:pre: .pre}
 
 # {{site.data.keyword.blockchainfull_notm}} Platform
 
