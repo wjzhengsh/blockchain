@@ -19,7 +19,7 @@ lastupdated: "2018-10-04"
 ***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 
-{{site.data.keyword.blockchainfull}} Platform Starter Plan is an entry level option that enables organizations to simulate multi-organization blockchain networks, quickly develop applications, and work with sample smart contracts and business networks. It also boasts the same UI experience as other membership options, helping to eliminate any learning curve. New Starter Plan networks are built on Hyperledger Fabric V1.2. Older Starter Plan networks will remain at Fabric V1.1.
+{{site.data.keyword.blockchainfull}} Platform Starter Plan is an entry level option that enables organizations to simulate multi-organization blockchain networks, quickly develop applications, and work with sample smart contracts and business networks. It also boasts the same UI experience as other membership options, helping to eliminate any learning curve. New Starter Plan networks created after October 04, 2018 are built on Hyperledger Fabric V1.2.1. Older Starter Plan networks will remain at Fabric V1.1.0.
 {:shortdesc}
 
 **Notes:**
@@ -29,7 +29,7 @@ lastupdated: "2018-10-04"
 ## What Starter Plan offers
 
 - **_One-click-ready network_**  
-    Starter Plan provisions you a live blockchain network with a single click. Each network comes with an ordering service, CA's, two organizations (with one peer per organization), and a default channel on which to transact and deploy chaincode. {{site.data.keyword.blockchainfull_notm}} Platform handles the creation and configuration of this network (you'll be able to update it after it goes live), letting you focus on development. Starter Plan networks are built on Hyperledger Fabric V1.1, and use CouchDB as the state database. <!--The free trial provides you up to two organizations and two peers.-->
+    Starter Plan provisions you a live blockchain network with a single click. Each network comes with an ordering service, CA's, two organizations (with one peer per organization), and a default channel on which to transact and deploy chaincode. {{site.data.keyword.blockchainfull_notm}} Platform handles the creation and configuration of this network (you'll be able to update it after it goes live), letting you focus on development. Starter Plan networks are built on Hyperledger Fabric V1.2.1, and use CouchDB as the state database. <!--The free trial provides you up to two organizations and two peers.-->
 - **_Cost efficiency_**  
     The Starter Plan membership option provides many of the same blockchain capabilities as Enterprise Plan membership options, but at a lower cost. {{site.data.keyword.blockchainfull_notm}} Platform offers $500 of cloud credits to new users of Starter Plan. These credits allow you to provision a blockchain network with basic network resources for free for one month. See [Starter Plan considerations](#starter-plan-considerations) for more details.
 - **_Multi-organization network simulation_**  
