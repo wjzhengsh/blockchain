@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-31"
+lastupdated: "2018-10-04"
 
 ---
 
@@ -78,7 +78,7 @@ You can also check component logs by clicking **View Logs** from the drop-down l
 
 To understand the effects of starting and stopping a peer, you can experiment by stopping a peer and attempting to target it with a transaction, and you will see connectivity errors in the logs. When you restart the peer and attempt the transaction again, you will see a successful connection. You can also leave a peer down for an extended period of time as your channels continue to transact. When the peer is brought back up, you will notice a synchronization of the ledger as it receives the blocks that were committed when it was down. After the ledger is fully synchronized, you can perform normal invokes and queries against it.
 
-### Remote Peer Configuration  
+### Remote Peer Configuration
 
 If you deploy a remote peer outside {{site.data.keyword.cloud_notm}}, you need to provide the API endpoint informaiton of your network to the remote peer during configuration. Click the **Remote Peer Configuration** button to retreive the API endpoint information of the network to configure your remote peer. The pop-up window provides the API endpoint information of network ID, organization MSP, CA name, CA URL, and CA TLS certificate. You can either click the copy icon at the end of each field to copy the value of that field, or click the **Download** link to save values of all fields in a JSON file. For more information about remote peers, see [About remote peers](howto/remote_peer.html).
 
@@ -96,11 +96,16 @@ Starter Plan creates one peer for each of the two organizations by default. You 
 Click the **Add Peers** button at the upper right to add peer nodes to your network. In the pop-up "Add Peers" panel, select the number and size of peer nodes you want to add.
 
 ### Storage
+{: #storage}
 
-**Figure 4** shows the "Storage" tab that displays the storage usage status:
+**Figure 4** shows the "Storage" tab that displays your network's storage consumption.
 
 ![Storage tab in Overview screen](images/monitor_storage_starter.png "Storage")
 *Figure 4. Storage*
+
+The "Resources" diagram displays the storage space that peers and certificate authorities use. All the organizations that you create or invite to your network are included in this pool. The organizations that consume resources are listed on the screen in the second bullet.
+
+The ordering service consumes storage from a separate resource pool. Your ordering service might consume more resources when members of the network create new channels and generate new blocks of transactions.
 
 ## Members
 {: #members}
@@ -124,6 +129,8 @@ Click **Add Member** to invite more members to your network. In Starter Plan, yo
 *Figure 6. Add member*
 
 ### Certificates
+{: #certificates_tab}
+
 **Figure 7** shows the initial "Members" screen that displays member certificates in the "Certificates" tab:
 
 ![Certificates tab in Members screen](images/monitor_certificates_starter.png "Certificates")
@@ -131,7 +138,7 @@ Click **Add Member** to invite more members to your network. In Starter Plan, yo
 
 Operators can manage the certificates for the members in the same institution in the "Certificates" tab. Click **Add Certificate** to open the "Add Certificate" panel. Give a name to your certificate, paste your client-side certificates in PEM format to the "Key" field, and click **Submit**. You need to restart your peers before the client-side certificates can take effect.
 
-For more information about generating your certificate key, see [Generating the client-side certificates](v10_application.html#enroll-app).
+For more information about generating your certificate key, see [Enrolling your application](v10_application.html#enroll-app).
 
 
 ## Channels
@@ -148,6 +155,7 @@ Creating a channel results in the generation of a channel-specific ledger. For m
 
 You can also select an existing channel to view more precise details about the channel, membership, and active chaincode. For more information, see [Monitoring a network](howto/monitor_network.html).
 
+If you have uploaded a new certificate to the platform by using the ["Certificates" tab](#certificates_tab) of the "Members" screen, you can use this panel to add the certificate to a channel. Click **Sync Certificate** from the drop-down list under the **Actions** header next to the relevant channel. This allows you to operate the channel from a remote client, including being able to instantiate a chaincode on the channel. For more information, see [Uploading signing certificates to {{site.data.keyword.blockchainfull_notm}} Platform](certificates.html#upload-certs) in the [Managing certificates](certificates.html) tutorial.
 
 ## Notifications
 {: #notifications}
@@ -181,11 +189,11 @@ The table on "Certificate Authority" (CA) screen displays all of the identities 
 ![Certificate Authority](images/CA_screen_starter.png "Certificate Authority")
 *Figure 10. Certificate Authority*
 
-Click the **Generate Certificate** button to get a new public certificate and private key from your CA. This panel can be used an an alternative way to [generate a public and private key pair](v10_application.html#register-app) for a client application which uses the Fabric SDK. The **Certificate** field contains your public certificate, also referred to as your signCert or enrollment cert, just above your **Private key**. You can click the copy icon at the end of each field to copy the value. **Note** that {{site.data.keyword.blockchainfull_notm}} Platform doesn't store these certificates. You need to safely save and store them. Refer to the [MSP information](certificates.html#msp) for more details.
+Click the **Generate Certificate** button next to your admin identity to get a new public certificate and private key from your CA. The **Certificate** field contains the public certificate, also referred to as the signCert or enrollment cert, just above the **Private Key**. You can click the copy icon at the end of each field to copy the value. This panel can be used an alternative way to generate a public and private key pair for a client application which uses the Fabric SDK. To learn more, visit the [developing applications tutorial](v10_application.html#enroll-panel). **Note** that {{site.data.keyword.blockchainfull_notm}} Platform doesn't store these certificates. You need to safely save and store them.
 
 Click the **Add User** button to register a new identity to your organization. In the **Add User** pop-up window, fill in the following fields and then click **Submit**.
   - **ID:** This will the name of your new identity, sometimes referred to as your `enroll ID`. **Save this Value** for when you configure a remote peer or enroll a new application.
-  - **Secret:** This will be the password to your identity, sometimes referred to as your `enroll Secret`  **Save this Value.** for when you configure a remote peer or enroll a new application.  
+  - **Secret:** This will be the password to your identity, sometimes referred to as your `enroll Secret`  **Save this Value.** for when you configure a remote peer or enroll a new application.
   - **Type:** Select the type of identity the you want to register, either peer or client application.
   - **Affiliation:** This will be the affiliation within your organization, such as `org1` for example, that the identity will belong to.
   - **Maximum Enrollments:** You can use this field to limit the number of times your can enroll or generate certificates using this identity. If you leave the field blank, the value defaults to an unlimited number of enrollments.
@@ -249,9 +257,9 @@ The sample deployment leverages the [DevOps Toolchain service ![External link ic
 ## Get help
 {: #support}
 
-The "Get help" screen contains two tabs to provide support information in the "Support" tab and to describe new and changed functions of each release in the "Release Notes" tab.
+The "Get help" screen contains a "Support" tab that provides a list of resources for developers and a "Release Notes" tab that describes new functions on {{site.data.keyword.blockchainfull_notm}} Platform.
 
-**Figure 15** shows the initial "Support" screen that displays support information in the "Support" tab:
+**Figure 15** displays the information in the initial "Support" tab:
 
 ![Support](images/support_starter.png "Support")
 *Figure 15. Blockchain support*
@@ -259,22 +267,21 @@ The "Get help" screen contains two tabs to provide support information in the "S
 ### Blockchain resources and support forums
 {: #support-forums}
 
-Use the links and resources on this screen to access troubleshooting and support forums.
+Use the resources in the "Support" tab to troubleshoot problems and get help from {{site.data.keyword.IBM_notm}} and the Fabric community. For more information about the links on the "Support" tab, see [Resources and support forums](ibmblockchain_support.html#resources) in [Getting support](ibmblockchain_support.html).
 
-* [{{site.data.keyword.blockchainfull_notm}} Service docs](index.html) under **Getting started**, which is this doc site, provides guidance on how to start with {{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.Bluemix_notm}}. You can find corresponding topics from the left navigator or search any term with the search function on the top.
-* [IBM Code ![External link icon](images/external_link.svg "External link icon")](https://developer.ibm.com/code/technologies/blockchain/) contains code patterns and information for developers.
-* [IBM dWAnswers ![External link icon](images/external_link.svg "External link icon")](https://developer.ibm.com/answers/smartspace/blockchain/) under **Support ticket** serves as a platform for questions and responses. You can search for responses from previously posed questions or submit a new question. Be sure to include the keyword **blockchain** in your question.
-  You can also submit a ticket to {{site.data.keyword.blockchainfull_notm}} support team with the **Open an {{site.data.keyword.Bluemix_notm}} support ticket** option.  Share details and code snippets from your specific {{site.data.keyword.Bluemix_notm}} instance.
-* [Sample applications ![External link icon](images/external_link.svg "External link icon")](https://github.com/ibm-blockchain) under **Blockchain sample applications** provides guidance and sample code snippets to assist in the development of applications.
-* [Hyperledger Fabric ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.1/) and [Hyperledger Fabric community ![External link icon](images/external_link.svg "External link icon")](http://jira.hyperledger.org/secure/Dashboard.jspa) under **Hyperledger Fabric** provide more details about the Hyperledger Fabric stack. Talk to a [Hyperledger Expert ![External link icon](images/external_link.svg "External link icon")](https://chat.hyperledger.org/channel/general) with questions about the Hyperledger Fabric code.
-* [{{site.data.keyword.blockchainfull_notm}} Platform: Develop ![External link icon](images/external_link.svg "External link icon")](https://ibm-blockchain.github.io/develop/) under **Hyperledger Composer** provides more details about the Hyperledger Composer, that is, {{site.data.keyword.blockchainfull_notm}} Platform: Develop. You can also find answers or raise questions in [Hyperledger Composer community ![External link icon](images/external_link.svg "External link icon")](https://chat.hyperledger.org/channel/general) and [StackOverflow ![External link icon](images/external_link.svg "External link icon")](https://stackoverflow.com/questions/tagged/hyperledger-composer).
+[IBM dWAnswers ![External link icon](images/external_link.svg "External link icon")](https://developer.ibm.com/answers/smartspace/blockchain/) is a community forum for users of {{site.data.keyword.blockchainfull_notm}} Platform and Hyperledger Fabric and is monitored by IBM experts. You can search for answers to previously posed questions or submit a new question. If you cannot debug your issue or ascertain an answer to your question, submit a support case in the {{site.data.keyword.cloud_notm}} Service Portal. For more information, see [Submitting support cases](ibmblockchain_support.html#support-cases).
 
-If you are unable to debug your issue or ascertain an answer to your question, submit a support case in the {{site.data.keyword.cloud_notm}} Service Portal. For more information, see [Getting support](ibmblockchain_support.html).
+### Fabric release notes
+{: #release-notes}
 
-**Figure 16** and **Figure 17** show the initial "Support" screen that displays new and changed functions of each release in the "Release Notes" tab:
+The "Release Notes" tab displays the latest features of your network. The "Network Monitor UI" button lists new functions and bug fixes for the {{site.data.keyword.blockchainfull}} Platform user experience. The "Hyperledger Fabric" button will direct you to the release notes for your network's version of Hyperledger Fabric and the Fabric Certificate Authority.
+
+**Figure 16** displays the release notes for the Network Monitor UI.
 
 ![Release notes helios](images/releasenotes_helios_starter.png "Release notes helios")
-*Figure 16. Release notes of Helios
+*Figure 16. Release notes of Helios*
+
+**Figure 17** displays the release notes for your networks version of Hyperledger Fabric and the Fabric Certificate Authority.
 
 ![Release notes Fabric](images/releasenotes_Fabric_starter.png "Release notes Fabric")
 *Figure 17. Release notes of Fabric*
@@ -307,7 +314,7 @@ Click the upper right corner of the UI, where you should see your name. From the
 
 **Figure 19** shows the "Switch organizations" function:
 
-![Switch organizations](images/switch_orgs_starter.gif "Switch organizations")   
+![Switch organizations](images/switch_orgs_starter.gif "Switch organizations")
 *Figure 19. Switch organizations*
 
 

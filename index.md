@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-31"
+lastupdated: "2018-10-04"
 
 ---
 
@@ -10,7 +10,7 @@ lastupdated: "2018-08-31"
 {:shortdesc: .shortdesc}
 {:screen: .screen}
 {:codeblock: .codeblock}
-{:pre: .pre}
+{:pre: .pre}_
 
 # {{site.data.keyword.blockchainfull_notm}} Platform
 
@@ -44,7 +44,7 @@ lastupdated: "2018-08-31"
 
 **Caution:** Do not use **Starter Plan** for production usage. It is a development and testing environment, and is not suitable for production workloads.
 
-{{site.data.keyword.blockchainfull_notm}} offerings are built on the [Hyperledger Fabric](reference/v10_fabric.html) V1.1 code base that leverages a modular architecture to achieve enterprise levels of security, data integrity, scalability, and performance to meet your business needs.
+{{site.data.keyword.blockchainfull_notm}} offerings are built on the [Hyperledger Fabric](reference/v10_fabric.html) code base that leverages a modular architecture to achieve enterprise levels of security, data integrity, scalability, and performance to meet your business needs.
 - **Starter Plan** is an environment to learn or get started developing blockchain networks.
 - **Enterprise Plan** is a production environment that offers high levels of security and support.
 - **Enterprise Plus Plan** offers a dedicated production environment for additional performance and isolated compute and storage resources to protect critical data.
