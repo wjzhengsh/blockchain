@@ -42,9 +42,9 @@ If you are using VSCode, there is a Hyperledger Composer VSCode extension availa
 
 ## Step One: Install the command line tools
 
-The command line tools include **composer-cli**, the main {{site.data.keyword.blockchainfull_notm}} Platform: Develop command line module; **generator-hyperledger-composer**, **composer-rest-server**, and **Yeoman**, these modules are used to generate business networks, bespoke REST servers, and Angular applications.
+The command line tools include **composer-cli**, the main {{site.data.keyword.blockchainfull_notm}} Platform: Develop command line module; **generator-hyperledger-composer**, **composer-rest-server**, and **Yeoman**, these modules are used to generate business networks, bespoke REST servers, and Angular applications. The version you install depends on the version of Hyperledger Fabric that your Starter or Enterprise plan is running. You can find your Fabric version by opening the [Network Preferences window](../v10_dashboard.html#network-preferences) in your Network Monitor.
 
-1. For use with new instances of Starter Plan, install **composer-cli** by using the following command:
+1. For use with new instances of Starter Plan running Hyperledger Fabric v1.2.1, install **composer-cli** by using the following command:
 
     ```
     npm install -g composer-cli@0.20.x
@@ -58,7 +58,7 @@ The command line tools include **composer-cli**, the main {{site.data.keyword.bl
     ```
     {:codeblock}
 
-2. For use with new instances of Starter Plan, install **composer-rest-server** by using the following command:
+2. For use with new instances of Starter Plan running Hyperledger Fabric v1.2.1, install **composer-rest-server** by using the following command:
 
     ```
     npm install -g composer-rest-server@0.20.x
@@ -74,7 +74,7 @@ The command line tools include **composer-cli**, the main {{site.data.keyword.bl
 
  Use the **composer-rest-server** module to create a REST Server on your machine to expose your business networks as RESTful APIs.
 
-3. For use with new instances of Starter Plan, install **generator-hyperledger-composer** by using the following command:
+3. For use with new instances of Starter Plan running Hyperledger Fabric v1.2.1, install **generator-hyperledger-composer** by using the following command:
 
     ```
     npm install -g generator-hyperledger-composer@0.20.x
