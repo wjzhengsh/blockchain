@@ -31,8 +31,8 @@ Ensure that you read the [About Starter Plan](./starter_plan.html) and [Getting 
 
 Ensure you have Node v8.9 or higher, npm v5.x, and Hyperledger Composer:
 
-- If your network is on Fabric version 1.2, use Hyperledger composer v0.20.x.
-- If your network is on Fabric version 1.1, use Hyperledger composer v0.19.x.  
+- If your network is on Fabric version 1.2, use Hyperledger Composer v0.20.x.
+- If your network is on Fabric version 1.1, use Hyperledger Composer v0.19.x.  
 
 You can find your Fabric version by opening the [Network Preferences window](../v10_dashboard.html#network-preferences) in your Network Monitor.
 
