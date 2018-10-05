@@ -72,8 +72,7 @@ The command line tools include **composer-cli**, the main {{site.data.keyword.bl
     ```
     {:codeblock}
 
-
-    Use the **composer-rest-server** module to create a REST Server on your machine to expose your business networks as RESTful APIs.
+ Use the **composer-rest-server** module to create a REST Server on your machine to expose your business networks as RESTful APIs.
 
 3. For use with new instances of Starter Plan, install **generator-hyperledger-composer** by using the following command:
 
