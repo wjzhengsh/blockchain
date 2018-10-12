@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-09-29"
+lastupdated: "2018-10-12"
 
 ---
 
@@ -485,7 +485,7 @@ To use the `fabcar` sample to join a channel, use the `invoke.js` file as your s
     let j_request = {
       targets : targets,
       block : genesis_block,
-      txId :     tx_id
+      txId : tx_id
     };
     // send genesis block to the peer
     return channel.joinChannel(j_request);
@@ -534,6 +534,7 @@ var request = {
     chaincodeType: 'golang',
     chaincodeVersion: 'v1',
 		channelNames: 'mychannel'
+    txId : tx_id
 		};
 ```
 {:codeblock}
