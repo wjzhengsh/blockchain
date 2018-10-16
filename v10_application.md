@@ -528,14 +528,14 @@ To instantiate the chaincode, you need to send an [instantiate proposal ![Extern
 To use the `fabcar` sample to instantiate your chaincode, use the `invoke.js` file as your starting point. You need to send this request as the admin rather than the application, so replace `user1` with `admin` in the `getUserContext` method. Replace the transaction proposal object with an install chaincode request using the example below:
 ```
 var request = {
-		targets: peer,
+    targets: peer,
     chaincodePath: chaincode_path,
     chaincodeId: 'fabcar',
     chaincodeType: 'golang',
     chaincodeVersion: 'v1',
-		channelNames: 'mychannel',
+    channelNames: 'mychannel',
     txId : tx_id
-		};
+};
 ```
 {:codeblock}
 
