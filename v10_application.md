@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-10-12"
+lastupdated: "2018-10-16"
 
 ---
 
@@ -533,7 +533,7 @@ var request = {
     chaincodeId: 'fabcar',
     chaincodeType: 'golang',
     chaincodeVersion: 'v1',
-		channelNames: 'mychannel'
+		channelNames: 'mychannel',
     txId : tx_id
 		};
 ```
