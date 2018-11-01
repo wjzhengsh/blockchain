@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-31"
+lastupdated: "2018-10-30"
 ---
 
 {:new_window: target="_blank"}
@@ -27,6 +27,8 @@ IBM's long history of leadership in innovation continues with the {{site.data.ke
 {:shortdesc}
 
 The architecture behind {{site.data.keyword.blockchainfull_notm}} is the Linux Foundation's Hyperledger Fabric project. Each open source community contribution improves Hyperledger Fabric but can present adoption challenges. **IBM cautions against defining or exchanging financial assets<!--, or any assets of value,--> directly on any Hyperledger Fabric blockchain network**.  
+
+IBM recommends using Hyperledger Composer solely for demos and proof-of-concepts. **IBM does not provide support for networks using Hyperledger Composer in production, including the Composer CLI, JavaScript APIs, REST server, and Web Playground**.
 
 ## Open source statement
 
