@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-10-04"
+lastupdated: "2018-11-09"
 
 ---
 
@@ -22,15 +22,21 @@ lastupdated: "2018-10-04"
 **Important:**
 Starting from October 04, 2018, all new {{site.data.keyword.blockchainfull_notm}} Platform Starter networks will be provisioned by using Hyperledger Fabric v1.2.1. Fabric v1.2.1 is currently not compatible with the Remote Peer offering, which uses a v1.1.0 peer. Existing Starter Plan networks, which are based on Fabric v1.1.0, are not impacted and can still be used with the Remote Peer offering. {{site.data.keyword.blockchainfull}} Platform will update the Remote Peer offering to use the v1.2.1 peer, which will be compatible with new Starter networks, which uses Fabric v1.2.1, and Enterprise networks, which still use Fabric v1.1.0. Until the Remote Peer offering is updated to Fabric v1.2.1, **do not** attempt to deploy a v1.1.0 remote peer with a new v1.2.1 Starter network.
 
-You can run {{site.data.keyword.blockchainfull_notm}} Platform remote peers on {{site.data.keyword.cloud_notm}} Private (ICP) after you connect them to an existing blockchain network. Running peers outside {{site.data.keyword.cloud_notm}} provides more flexibility to grow or join a blockchain network while taking advantage of an existing network inside {{site.data.keyword.cloud_notm}}. Remote peers leverage the Certificate Authorities (CAs) and Ordering Service on the platform, but allow you to colocate your peer with other applications outside {{site.data.keyword.cloud_notm}}.
+You can run {{site.data.keyword.blockchainfull_notm}} Platform remote peers on {{site.data.keyword.cloud_notm}} Private (ICP) or on AWS Cloud after you connect them to an existing blockchain network. Running peers outside {{site.data.keyword.cloud_notm}} provides more flexibility to grow or join a blockchain network while taking advantage of an existing network inside {{site.data.keyword.cloud_notm}}. Remote peers leverage the Certificate Authorities (CAs) and Ordering Service on the platform, but allow you to colocate your peer with other applications outside {{site.data.keyword.cloud_notm}}.
 {:shortdesc}
-
-{{site.data.keyword.cloud_notm}} Private (ICP) is a Kubernetes-based platform for building a private cloud in an on-premises environment. You can use ICP to run a remote peer and connect the remote peer to a blockchain network on {{site.data.keyword.blockchainfull_notm}} Platform. {{site.data.keyword.blockchainfull_notm}} Platform Remote Peer for ICP leverages the storage, security, logging, and support services of ICP so that you can manage your remote peers in your on-premises environment. For more information about ICP, see [{{site.data.keyword.cloud_notm}} Private documentation ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0.3/kc_welcome_containers.html "{{site.data.keyword.cloud_notm}} Private documentation").  
 
 **Note:** {{site.data.keyword.blockchainfull_notm}} Platform Remote Peer is currently a Beta offering that is suitable for evaluation and experimentation. **This Beta edition is not intended for production usage.** For access and more information, see [license and pricing](#remote-peer-license-pricing).
 
 
-The Beta edition supports the cloud platform of {{site.data.keyword.cloud_notm}} Private (ICP), v2.1.0.3. Note that the network on {{site.data.keyword.blockchainfull_notm}} Platform and the remote peer nodes in ICP must run at the same **Fabric version 1.1**.
+The following cloud platforms are supported:
+|  Cloud Platform | Supported Versions |
+| ----------------|--------------------|
+| {{site.data.keyword.cloud_notm}} Private (ICP) | 2.1.0.3 |
+| Amazon Web Services (AWS) | Choose from the list of available types. The minimum size is `t2.medium`, the default is `m4.xlarge`|
+
+
+In all cases, the network on {{site.data.keyword.blockchainfull_notm}} Platform and the remote peer nodes must be running at the same **Fabric version 1.1**.
+
 
 ## Considerations
 {: #remote-peer-limitations}
@@ -54,7 +60,7 @@ To use a remote peer, you must have an organization that is a member of a Starte
 ## License and pricing
 {: #remote-peer-license-pricing}
 
-To access remote peers to run on ICP, see [License and pricing for remote peers on ICP](remote_peer_icp.html#license-pricing-icp "License and pricing for remote peers on ICP"). The licenses for the Beta edition of remote peers are free. Afterward, a generally available (GA) offering will replace the beta edition.
+To access remote peers on AWS Cloud, see [License and pricing in AWS](remote_peer_aws.html#license-pricing-icp "License and pricing in AWS"). To access remote peers to run on ICP, see [License and pricing for remote peers on ICP](remote_peer_icp.html#license-pricing-icp "License and pricing for remote peers on ICP"). The licenses for the Beta edition of remote peers are free for both platforms. Afterward, a generally available (GA) offering will replace the beta edition.
 
 Migration from Beta to GA is not supported. You need to download and install new remote peers to use the GA offering, when it is released. You can then join new remotes peers to the same channels of the same network as your Beta remote peers.
 
@@ -62,19 +68,38 @@ Migration from Beta to GA is not supported. You need to download and install new
 
 
 ## Deploying a remote peer
+{: #deploy-remote-peer}
+
+{{site.data.keyword.blockchainfull_notm}} Platform Remote Peer currently supports two cloud environments to run remote peers: Amazon Web Services (AWS) and {{site.data.keyword.cloud_notm}} Private (ICP).
+
+### Amazon Web Services
+{: #aws}
+
+*Note: Need to replace the following links with real links to AWS remote peer once they are published by AWS*
+You can use the [Quick Starts ![External link icon](../images/external_link.svg "External link icon")](https://amazonaws-china.com/quickstart/architecture/mongodb/ "Quick Start Template") to easily deploy {{site.data.keyword.blockchainfull_notm}} Platform Remote Peers on AWS. For more information about deploying a remote peer on AWS, see the [AWS Remote Peer Deployment Guide ![External link icon](../images/external_link.svg "External link icon")](https://docs.aws.amazon.com/quickstart/latest/mongodb/welcome.html "Deployment Guide").
+
+For more information about deploying remote peers in AWS, see [Deploying remote peers in Amazon Web Services](remote_peer_aws.html "Deploying remote peers in "Amazon Web Services).
+
+The following diagram describes the process to deploy an {{site.data.keyword.blockchainfull_notm}} Platform remote peer on AWS.
+
+![Remote Peer deployment flow on AWS](../images/remote_peer_AWS_flow.png "Remote Peer deployment flow on AWS")  
+*Figure 1. Remote Peer deployment flow on AWS*
+
+### {{site.data.keyword.cloud_notm}} Private
 {: #icp}
+
+{{site.data.keyword.cloud_notm}} Private (ICP) is a Kubernetes-based platform for building a private cloud in an on-premises environment. You can use ICP to run a remote peer and connect the remote peer to a blockchain network on {{site.data.keyword.blockchainfull_notm}} Platform. {{site.data.keyword.blockchainfull_notm}} Platform Remote Peer for ICP leverages the storage, security, logging, and support services of ICP so that you can manage your remote peers in your on-premises environment. For more information about ICP, see [{{site.data.keyword.cloud_notm}} Private documentation ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0.3/kc_welcome_containers.html "{{site.data.keyword.cloud_notm}} Private documentation").
 
 The following diagram describes the steps to deploy an {{site.data.keyword.blockchainfull_notm}} Platform remote peer on ICP. For more information about how to deploy remote peers on ICP, see [Deploying remote peers in {{site.data.keyword.cloud_notm}} Private](remote_peer_icp.html "Deploying remote peers in {{site.data.keyword.cloud_notm}} Private").
 
 ![Remote Peer deployment flow on ICP](../images/remote_peer_ICP_flow.png "Remote Peer deployment flow on ICP")  
-
-*Figure 1. Remote Peer deployment flow on ICP*
+*Figure 2. Remote Peer deployment flow on ICP*
 
 
 ## Operating a remote peer
 {: #operate-remote-peer}
 
-After you deploy the remote peer, you need to complete several operational steps before your peer can submit transactions to the network. The operational steps include adding your organization to a channel, joining your remote peer to the channel, installing chaincode on your remote peer, instantiating chaincode on the channel, and connecting applications to your remote peer. For more information, see [Operating remote peers in {{site.data.keyword.cloud_notm}} Private](remote_peer_operate_icp.html#remote-peer-operate).
+After you deploy the remote peer, you need to complete several operational steps before your peer can submit transactions to the network. The operational steps include adding your organization to a channel, joining your remote peer to the channel, installing chaincode on your remote peer, instantiating chaincode on the channel, and connecting applications to your remote peer. For more information, see <!--[AWS][Operating remote peers in Amazon Web Service](remote_peer_operate_aws.html#remote-peer-operate-aws) or -->[Operating remote peers in {{site.data.keyword.cloud_notm}} Private](remote_peer_operate_icp.html#remote-peer-operate).
 
 ## Data residency
 {: #data-residency}
@@ -102,4 +127,6 @@ For more information about these technologies, see the white paper about [Privat
 
 The Beta edition of the {{site.data.keyword.blockchainfull_notm}} Remote Peer offering is meant for exploration, development, and testing. **Do not use this edition for production.** {{site.data.keyword.blockchainfull_notm}} Platform does not provide support for this edition. If you encounter any issues that are related to your remote peer, see [blockchain resources and support forums](../v10_dashboard.html#support-forums). You can also view the support resources on the **Get Help** screen of the Network Monitor.  
 
-For issues that are related to {{site.data.keyword.cloud_notm}} Private, ICP offers [free digital support and Community Edition support ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/developerworks/community/blogs/fe25b4ef-ea6a-4d86-a629-6f87ccf4649e/entry/Learn_more_about_IBM_Cloud_Private_Support?lang=en_us "ICP free digital support and Community Edition support").
+- For issues that are related to AWS, you can use both [community support forums ![External link icon](../images/external_link.svg "External link icon")](https://forums.aws.amazon.com/index.jspa "AWS community support forums") and [AWS premium support ![External link icon](../images/external_link.svg "External link icon")](https://aws.amazon.com/premiumsupport/ "AWS premium support").
+
+- For issues that are related to {{site.data.keyword.cloud_notm}} Private, ICP offers [free digital support and Community Edition support ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/developerworks/community/blogs/fe25b4ef-ea6a-4d86-a629-6f87ccf4649e/entry/Learn_more_about_IBM_Cloud_Private_Support?lang=en_us "ICP free digital support and Community Edition support").
