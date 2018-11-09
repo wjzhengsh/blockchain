@@ -54,6 +54,11 @@ IBM Blockchain Platform
 	Running remote peers on IBM Cloud Private
 		howto/remote_peer_icp.md
 		howto/remote_peer_operate_icp.md
+
+	{: .topicgroup}
+	Running remote peers on Amazon Web Services
+		howto/remote_peer_aws.md
+		howto/remote_peer_operate_aws.md
 	{: .navgroup-end}
 
 	{: .navgroup id="reference"}
