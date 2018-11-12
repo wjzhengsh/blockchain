@@ -6,6 +6,7 @@ IBM Blockchain Platform
 
 	{: .navgroup id="learn"}
 	index.md
+	whats_new.md
 
 	{: .topicgroup}
 	Develop the network
