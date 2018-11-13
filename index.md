@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-10-04"
+lastupdated: "2018-11-13"
 
 ---
 
@@ -22,33 +22,25 @@ lastupdated: "2018-10-04"
 {:shortdesc}
 
 
-{{site.data.keyword.blockchainfull_notm}} Platform is the only integrated business-ready platform that addresses the full lifecycle (**develop**, **govern**, and **operate**) of a multi-organization blockchain network. It is designed to accelerate, through collaboration in each phase, the creation of "built for business" global blockchain networks with the performance and security for even the most demanding use cases and regulated industries.
+{{site.data.keyword.blockchainfull_notm}} Platform is the only integrated business-ready platform that addresses the full lifecycle of a multi-organization blockchain network. It is designed to accelerate, through collaboration in each phase, the creation of "built for business" global blockchain networks with the performance and security for even the most demanding use cases and regulated industries. 
 
-|  Function     | Activities       | [Roles](#participating-in-a-blockchain-network)  |
-| ------------------------- |--------------------------|-----|
-| [Develop](develop.html) | Develop business networks, develop applications, develop chaincode | Network developers, application developers |
-| [Govern](get_start.html)| Invite members, generate credentials, propose governance models, disseminate certs and endpoint information | Network operators, network members |
-| [Operate](v10_dashboard.html)| Monitor health and activity, manage new deployments, add or remove members, manage chaincode lifecycle,  manage channels, support | Network operators, network participants |
+## {{site.data.keyword.blockchainfull_notm}} Platform Offerings
 
-**Note**: The table is not meant to represent a linear progression. Tasks such as development and network management will occur repeatedly as applications and membership evolve.
+{{site.data.keyword.blockchainfull_notm}} Platform provides different offerings to help all types of users get started on their blockchain journey and move their applications into production.
 
-## {{site.data.keyword.blockchainfull_notm}} Membership Offerings
-
-{{site.data.keyword.blockchainfull_notm}} Platform provides different membership plans to help all types of users get started on their blockchain journey and move their applications into production.
-
-|       | [Starter Plan](starter_plan.html) | [Enterprise Plan](enterprise_plan.html)  | Enterprise Plus Plan | [Remote Peer](howto/remote_peer.html) |
+|       | [Starter Plan](starter_plan.html) | [Enterprise Plan](enterprise_plan.html)  | [Remote Peer on ICP](howto/remote_peer.html) | [{{site.data.keyword.blockchainfull_notm}} Platform for AWS](howto/remote_peer.html) |
 | ------------------------- |--------------------------|-----|-----|------|
-| **What's Included** | **Basic service levels, development and testing environment** | **Advanced service levels, enterprise production ready** | **Dedicated compute for performance and isolation, enterprise production ready** | **Deployable Remote Peer Helm Chart** |
-| **Billing Policy** | **Monthly subscription with [available cloud credits](howto/pricing.html#starter-plan-pricing)** | **Monthly subscription** | **Monthly subscription** | **Free for Beta** |
-| **Availability** | **General Available** | **General Available** | **Upon purchase** | **Beta** |
+| **What's Included** | Basic service levels, development and testing environment | Advanced service levels, enterprise production ready | Deployable Remote Peer Helm Chart | AWS Quick Start Peer |
+| **Billing Policy** | Monthly subscription with [available cloud credits](howto/pricing.html#starter-plan-pricing) | Monthly subscription | Free for Beta | Free |
+| **Availability** | General Available | General Available | Beta | General Available |
 
 **Caution:** Do not use **Starter Plan** for production usage. It is a development and testing environment, and is not suitable for production workloads.
 
 {{site.data.keyword.blockchainfull_notm}} offerings are built on the [Hyperledger Fabric](reference/v10_fabric.html) code base that leverages a modular architecture to achieve enterprise levels of security, data integrity, scalability, and performance to meet your business needs.
 - **Starter Plan** is an environment to learn or get started developing blockchain networks.
 - **Enterprise Plan** is a production environment that offers high levels of security and support.
-- **Enterprise Plus Plan** offers a dedicated production environment for additional performance and isolated compute and storage resources to protect critical data.
-- **Remote Peer** enables you to run peers outside {{site.data.keyword.cloud_notm}} so that you can grow your blockchain network with more flexibility while taking advantage of an existing {{site.data.keyword.blockchainfull_notm}} network inside {{site.data.keyword.cloud_notm}}.
+- **Remote Peer on ICP** enables you to run peers outside {{site.data.keyword.cloud_notm}} so that you can grow your blockchain network with more flexibility while taking advantage of an existing {{site.data.keyword.blockchainfull_notm}} network inside {{site.data.keyword.cloud_notm}}.
+- **{{site.data.keyword.blockchainfull_notm}} for AWS** leverages AWS Quick Start technology to enable you to rapidly configure, deploy, and run an AWS-hosted IBP peer that is connected to an {{site.data.keyword.blockchainfull_notm}} Platform Network.
 
 {{site.data.keyword.blockchainfull_notm}} Platform is a platform service on {{site.data.keyword.cloud_notm}} and all membership offerings follow the [{{site.data.keyword.cloud_notm}} Services terms ![External link icon](images/external_link.svg "External link icon")](https://www-03.ibm.com/software/sla/sladb.nsf/sla/bm-6605-13 "{{site.data.keyword.cloud_notm}} Services terms") on service level agreements (SLAs). Note that both Starter Plan and Enterprise Plan networks are provisioned across **multiple environments** in geographically separated data-centers.
 
