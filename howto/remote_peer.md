@@ -12,7 +12,7 @@ lastupdated: "2018-11-13"
 {:codeblock: .codeblock}
 {:pre: .pre}
 
-# About remote peers
+# {{site.data.keyword.blockchainfull}} Platform for AWS and {{site.data.keyword.blockchainfull}} Platform for {{site.data.keyword.cloud_notm}} Private Peers
 {: #remote-peer-overview}
 
 
