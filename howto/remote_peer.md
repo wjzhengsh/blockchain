@@ -113,14 +113,14 @@ The following diagram describes the process to deploy an {{site.data.keyword.blo
 <img usemap="#home_map2" border="0" class="image" id="image_ztx_crb_f1b2" src="../images/remote_peer_ICP_flow.png" width="750" alt="Click a box to get more details on the process." style="width:750px;" />
 <map name="home_map2" id="home_map2">
 <area href="remote_peer_icp.html#prerequisites-icp" alt="Configure or access ICP" title="Configure or access" shape="rect" coords="157.05, 52.53, 283.62, 127.11" />
-<area href="remote_peer_icp.html#importing-the-helm-chart-to-icp" alt="Download file from GitHub" title="Download file from GitHub" shape="rect" coords="300.97, 52.53, 427.54, 127.11" />
-<area href="remote_peer_icp.html#importing-the-helm-chart-to-icp" alt="Import helm chart into ICP" title="Import helm chart into ICP" shape="rect" coords="443.95, 52.53, 570.53, 127.11" />
+<area href="remote_peer_icp.html#import-the-helm-chart-to-icp" alt="Download file from GitHub" title="Download file from GitHub" shape="rect" coords="300.97, 52.53, 427.54, 127.11" />
+<area href="remote_peer_icp.html#import-the-helm-chart-to-icp" alt="Import helm chart into ICP" title="Import helm chart into ICP" shape="rect" coords="443.95, 52.53, 570.53, 127.11" />
 <area href="remote_peer_icp.html#prerequisites-icp" alt="Create or join a network" title="Create or join a network" shape="rect" coords="157.05, 131.8, 283.62, 206.37" />
 <area href="remote_peer_operate_icp.html#remote-peer-operate-with-sdk" alt="Join a channel" title="Join a channel" shape="rect" coords="300.97, 131.8, 427.54, 206.37" />
 <area href="remote_peer_icp.html#register-peer" alt="Register remote peer identity" title="Register remote peer identity" shape="rect" coords="443.95, 131.8, 570.53, 206.37" />
 <area href="remote_peer_icp.html#network-endpoints" alt="Retrieve remote peer configuration information" title="Retrieve remote peer configuration information" shape="rect" coords="585.53, 131.8, 712.1, 206.37" />
 <area href="remote_peer_icp.html#step-three-configure-and-install-a-remote-peer" alt="Install Helm Chart" title="Install Helm Chart" shape="rect" coords="157.05, 258.43, 283.62, 333.48" />
-<area href="remote_peer_icp.html#importing-the-helm-chart-to-icp" alt="Verify deployment" title="Verify deployment" shape="rect" coords="300.97, 258.43, 427.54, 333.48" />
+<area href="remote_peer_icp.html#import-the-helm-chart-to-icp" alt="Verify deployment" title="Verify deployment" shape="rect" coords="300.97, 258.43, 427.54, 333.48" />
 <area href="remote_peer_operate_icp.html#remote-peer-operate-with-sdk" alt="Use Fabric SDK" title="Use Fabric SDK" shape="rect" coords="157.05, 338.64, 283.62, 413" />
 <area href="remote_peer_operate_icp.html#remote-peer-cli-operate" alt="Use Fabric Tools CLI" title="Use Fabric Tools CLI" shape="rect" coords="443.95, 338.64, 570.53, 413" />
 </map>
