@@ -70,17 +70,17 @@ Starter Plan is an entry point to {{site.data.keyword.blockchainfull_notm}} Plat
     - [CA](glossary.html#ca) and [ordering service](glossary.html#orderer) are not fault tolerant because each organization has only one CA and a network has only one [orderer](glossary.html#orderer).
     - Ordering service uses only [SOLO](glossary.html#solo) [consensus](glossary.html#consensus). A Starter Plan network consists of only one [orderer](glossary.html#orderer) that performs consensus for all peers.
     - [Hardware Security Module (HSM)](glossary.html#hsm) is not available to safeguard and manage digital keys for strong authentication and crypto processing.
-- **Starter Plan versions and upgrade**
+- **Versions and upgrade**
     - New Starter Plan networks that are created after October 04, 2018 are built on Hyperledger Fabric V1.2.1. Older Starter Plan networks remain at Fabric V1.1.0 level.
     - New peers that are added to older Starter Plan networks will be built on Fabric v1.2.1. The performance of your network is not affected because of backwards compatibility.
     - You can use [private data ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/private-data-arch.html "private data") feature of Hyperledger Fabric v1.2 in new Starter Plan networks. For more information about how to use private data with your chaincode, see [Private data](howto/develop_chaincode.html#private-data).
     - You have the option of using more advanced [channel configuration ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/latest/config_update.html "channel configuration") settings and [Access Control Lists ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/latest/access_control.html "Access Control Lists") when you create or update a channel.
     - The [Service discovery ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/discovery-overview.html "service discovery") feature of Hyperledger Fabric v1.2 is not supported on the {{site.data.keyword.blockchainfull_notm}}.
     - If you [reset](dashboard.html#reset-network) an older Starter Plan network that is at Fabric V1.1.0, your new network will be at Fabric V1.2 level. If you reset your network, you will need to install your chaincode or .bna files on the new network, as well as re-invite members of your old network.
+- **Maintenance and updates**
+    Starter Plan maintenance and network updates are performed on a fixed schedule. During the maintenance period, you cannot provision new networks and might notice brief periods of network interruption.
 - **Network resource limitation**
     Starter Plan assigns 1 CPU and 4 Gi RAM for each peer, and 20 Gi storage for each {{site.data.keyword.cloud_notm}} service instance, including peers. Chaincode containers and ledger blocks are the most resource intensive network components. Users that have many peers on their network, generate a lot of blocks, or use large chaincode files might experience the effect of resource limitations on performance. You can view your networks usage of storage in the ["Overview" screen of your Network Monitor](dashboard.html#storage).
-- **Maintenance and upgrade**
-    Starter Plan maintenance and network updates are performed on a fixed schedule. During the maintenance period, you cannot provision new networks and might notice brief periods of network interruption.
 - **Data retention**
     Starter Plan does not guarantee data retention with release upgrades.
 - **Migration considerations**
