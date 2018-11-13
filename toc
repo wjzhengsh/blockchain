@@ -39,6 +39,7 @@ IBM Blockchain Platform
 
 	certificates.md
 	howto/create_channel.md
+	howto/develop_chaincode.md
 	howto/install_instantiate_chaincode.md
 
 	{: .topicgroup}
