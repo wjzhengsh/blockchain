@@ -72,7 +72,7 @@ Migration from Beta or Developer edition to GA is not supported. You need to dow
 ### Amazon Web Services
 {: #aws}
 
-You can use the [Quick Start template ![External link icon](../images/external_link.svg "External link icon")](https://aws.amazon.com/quickstart/architecture/ibm-blockchain-platform/ "Quick Start Template") to easily deploy {{site.data.keyword.blockchainfull_notm}} Platform Remote Peers on AWS. For more information about deploying a remote peer on AWS, see the [AWS Remote Peer Deployment Guide ![External link icon](../images/external_link.svg "External link icon")](https://docs.aws.amazon.com/quickstart/latest/mongodb/welcome.html "Deployment Guide").
+You can use the [Quick Start template ![External link icon](../images/external_link.svg "External link icon")](https://aws.amazon.com/quickstart/architecture/ibm-blockchain-platform/ "Quick Start Template") to easily deploy {{site.data.keyword.blockchainfull_notm}} Platform remote peers on AWS. For more information about deploying remote peers on AWS, see [IBM Blockchain Platform for AWS deployment guide ![External link icon](../images/external_link.svg "External link icon")](https://docs.aws.amazon.com/quickstart/latest/ibm-blockchain-platform/welcome.html "IBM Blockchain Platform for AWS Quick Start Reference Deployment").
 
 For more information about deploying remote peers in AWS, see [Deploying remote peers in Amazon Web Services](remote_peer_aws.html "Deploying remote peers in Amazon Web Services").
 
