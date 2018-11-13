@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-11-08"
+lastupdated: "2018-11-13"
 
 ---
 
@@ -111,10 +111,10 @@ You need to add a new peer identity to your network on the {{site.data.keyword.b
 You are responsible for the cost of the AWS services that you use while you run this Quick Start reference deployment. There is no additional cost for using this Quick Start. For full details, see the pricing pages for each AWS service that you need to use in this Quick Start. Prices are subject to change.
 
 1. Choose one of the following options to launch the AWS CloudFormation template into your AWS account. For help choosing an option, see deployment options earlier in this guide. Each deployment takes about 10 minutes to complete.  
-<!-- TODO: Get official links from AWS as we ship -->  
-   * [Deploy {{site.data.keyword.blockchainfull_notm}} Platform for AWS into a new VPC on AWS ![External link icon](../images/external_link.svg "External link icon")](https://console.aws.amazon.com/cloudformation/ "Deploy {{site.data.keyword.blockchainfull_notm}} Platform for AWS into a new VPC on AWS").  
 
-   * [Deploy {{site.data.keyword.blockchainfull_notm}} Platform for AWS into an existing VPC on AWS ![External link icon](../images/external_link.svg "External link icon")](https://console.aws.amazon.com/cloudformation/home?region=us-east-2#cstack=sn%7EOracle-Database%7Cturl%7Ehttps://s3.amazonaws.com/quickstart-reference/ "Deploy {{site.data.keyword.blockchainfull_notm}} Platform for AWS  into an existing VPC on AWS").
+  * [Deploy {{site.data.keyword.blockchainfull_notm}} Platform for AWS into a new VPC on AWS ![External link icon](../images/external_link.svg "External link icon")](https://fwd.aws/v43nk "Deploy {{site.data.keyword.blockchainfull_notm}} Platform for AWS into a new VPC on AWS").  
+
+  * [Deploy {{site.data.keyword.blockchainfull_notm}} Platform for AWS into an existing VPC on AWS ![External link icon](../images/external_link.svg "External link icon")](https://fwd.aws/zrP4g "Deploy {{site.data.keyword.blockchainfull_notm}} Platform for AWS into an existing VPC on AWS").
 
   **Important:**     
   If you’re deploying the {{site.data.keyword.blockchainfull_notm}} Platform for AWS into an existing VPC, make sure that your VPC has two public subnets in different Availability Zones for the database instances. These subnets require NAT gateways or NAT instances in their route tables, to allow the instances to download packages and software without exposing them to the internet. You will also need the domain name option configured in the DHCP options as explained in the Amazon VPC documentation.  
