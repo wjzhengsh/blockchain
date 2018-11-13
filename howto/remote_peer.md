@@ -71,11 +71,10 @@ Migration from Beta or Developer edition to GA is not supported. You need to dow
 
 ### Amazon Web Services
 {: #aws}
-Note:  The following links will not work until AWS publishes the Quick Start template.  
 
-You can use the [Quick Start template ![External link icon](../images/external_link.svg "External link icon")](https://aws.amazon.com/quickstart/architecture/ibm-blockchain-platform/ "Quick Start Template") to easily deploy {{site.data.keyword.blockchainfull_notm}} Platform remote peers on AWS. For more information about deploying remote peers on AWS, see [IBM Blockchain Platform for AWS deployment guide ![External link icon](../images/external_link.svg "External link icon")](https://s3.amazonaws.com/aws-quickstart/quickstart-ibm-fabric/doc/ibm-blockchain-platform-for-aws.pdf "IBM Blockchain Platform for AWS Quick Start Reference Deployment").
+You can launch the [Quick Start template ![External link icon](../images/external_link.svg "External link icon")](https://aws.amazon.com/quickstart/architecture/ibm-blockchain-platform/ "Quick Start Template") to easily deploy {{site.data.keyword.blockchainfull_notm}} Platform remote peers on AWS using the [{{site.data.keyword.blockchainfull_notm}} Platform for AWS deployment guide ![External link icon](../images/external_link.svg "External link icon")](https://s3.amazonaws.com/aws-quickstart/quickstart-ibm-fabric/doc/ibm-blockchain-platform-for-aws.pdf "IBM Blockchain Platform for AWS Quick Start Reference Deployment").
 
-For more information about deploying remote peers in AWS, see [Deploying remote peers in Amazon Web Services](remote_peer_aws.html "Deploying remote peers in Amazon Web Services").
+For more comprehensive information about deploying remote peers in AWS, see our topic on [Deploying remote peers in Amazon Web Services](remote_peer_aws.html "Deploying remote peers in Amazon Web Services").
 
 The following diagram describes the process to deploy an {{site.data.keyword.blockchainfull_notm}} Platform remote peer on AWS.
 
