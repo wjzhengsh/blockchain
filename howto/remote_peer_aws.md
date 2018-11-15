@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-11-13"
+lastupdated: "2018-11-15"
 
 ---
 
@@ -199,9 +199,9 @@ If you are deploying the {{site.data.keyword.blockchainfull_notm}} Platform for 
 | **Network Configuration** | | |
 | `VPCID` |	ID of your existing VPC for deployment.| |
 | `AvailabilityZone1` | The Availability Zone in which to deploy the first peer node. | |
-| `SubnetID1` |	ID of the subnet to use for the first peer node. | |
+| `SubnetID1` |	ID of the subnet to use for the first peer node. The subnet should belong to the chosen VPC. To find the subnets belonging to the VPC, please check your AWS VPC dashboard, and select "subnets" menu.| |
 | `AvailabilityZone2` | The Availability Zone in which to deploy the second peer node. | |
-| `SubnetID2` |	ID of the subnet to use for the second peer node. | |
+| `SubnetID2` |	ID of the subnet to use for the second peer node. The subnet should belong to the chosen VPC. To find the subnets belonging to the VPC, please check your AWS VPC dashboard, and select "subnets" menu. | |
 | | | |
 | **Amazon EC2 Configuration**| | |
 | `InstanceType` 	| Type of EC2 instance for the peer instances. 	| m4.xlarge |
@@ -402,7 +402,6 @@ In IBP when a private key is created, two sets of independent key material is ge
 
 [Transport Layer Security ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/en/SSFKSJ_7.1.0/com.ibm.mq.doc/sy10660_.htm "An overview of the SSL or TLS handshake") (TLS) is embedded in the trust model of Hyperledger Fabric. All components on {{site.data.keyword.blockchainfull_notm}} Platform use TLS to communicate authenticate and communicate with each other. Therefore, the network components on {{site.data.keyword.blockchainfull_notm}} Platform need to be able to complete a TLS handshake with your  peers. One implication of this is that you need to enable passthru, by using white listing for example, in your firewall from client apps to your peer.
 
-You can use Mutual TLS, which requires two way (server-client) rather than one way (server only) authentication, to secure the communication between your application and Enterprise Plan networks. You can use the Network Monitor [to enable mutual TLS](../v10_dashboard.html#mutual-tls) for peers on {{site.data.keyword.blockchainfull_notm}} Platform. To enable Mutual TLS on your  peer, follow the instructions to [enable mutual-TLS for peer nodes ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/enable_tls.html "Securing Communication with Transport Security Layer") in the Hyperledger Fabric documentation. It is strongly recommended that you enable mutual-TLS for your applications.
 
 #### Membership Service Provider configuration
 {: #aws-security-MSP}
