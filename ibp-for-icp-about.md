@@ -246,7 +246,7 @@ For information on digital support offerings, refer to the IBM Blockchain Platfo
 
 ### {{site.data.keyword.blockchainfull_notm}} Platform for ICP
 
-If you have purchased an IBM Blockchain Platform for ICP license and you want to contact Customer support, see the information about [accessing the IBM Support Community and opening a support ticket ![External link icon](images/external_link.svg "External link icon")](http://www.ibm.com/support/docview.wss?uid=ibm0740041 "{{site.data.keyword.blockchainfull_notm}} Platform for ICP Support").
+If you have purchased an IBM Blockchain Platform for ICP license and you want to contact Customer support, see the information about [accessing the IBM Support Community and opening a support ticket ![External link icon](images/external_link.svg "External link icon")](https://www.ibm.com/support/docview.wss?uid=ibm10740041 "{{site.data.keyword.blockchainfull_notm}} Platform for ICP Support").
 
 ### {{site.data.keyword.blockchainfull_notm}} Platform Community Edition
 
