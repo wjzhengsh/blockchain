@@ -75,7 +75,7 @@ IBM Blockchain Platform
 		howto/peer_operate_ibp.md
 
 	{: .topicgroup}
-	IBM Blockchain Platform on Amazon Web Services
+	IBM Blockchain Platform for Amazon Web Services
 		howto/remote_peer_aws.md
 		howto/remote_peer_operate_aws.md
 	{: .navgroup-end}
