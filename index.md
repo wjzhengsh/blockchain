@@ -129,4 +129,4 @@ The Quick Start completes the following configurations:
  * In the public subnets, two peers across two Availability Zones (one peer in each subnet).
  * In each public subnet, a peer container with either an embedded LevelDB database or a secondary CouchDB container.
 
-For more information about IBP for AWS, see [About {{site.data.keyword.blockchainfull_notm}} Platform for Amazon Eeb Services](howto/remote_peer.html).
+For more information about IBP for AWS, see [About {{site.data.keyword.blockchainfull_notm}} Platform for Amazon Web Services](howto/remote_peer.html).
