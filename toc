@@ -15,13 +15,11 @@ IBM Blockchain Platform
 		get_start_starter_plan.md
 		enterprise_plan.md
 		get_start.md
-		enterprise_plus_plan.md
 		howto/pricing.md
 		howto/paying_mode.md
 
 	ibp-for-icp-about.md
 	howto/remote_peer.md
-	howto/operational_tools.md
 	needtoknow.md
 	{: .navgroup-end}
 
@@ -63,7 +61,7 @@ IBM Blockchain Platform
 		howto/CA_operate.md
 
 	{: .topicgroup}
-	Ordering services on ICP
+	Orderers on ICP
 		[About orderers](services/blockchain/ibp-for-icp-about.html#ibp-icp-orderer)
 		howto/orderer_deploy_icp.md
 		howto/orderer_operate.md
@@ -75,12 +73,6 @@ IBM Blockchain Platform
 		howto/peer_operate_icp.md
 		howto/peer_deploy_ibp.md
 		howto/peer_operate_ibp.md
-
-	{: .topicgroup}
-	Distributed Peer User Interface
-		[About Distributed Peer User Interface](services/blockchain/howto/operational_tools.html)
-		howto/operational_tools_deploy.md
-		howto/operational_tools_operate.md
 
 	{: .topicgroup}
 	IBM Blockchain Platform on Amazon Web Services
