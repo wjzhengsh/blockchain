@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -15,13 +15,17 @@ lastupdated: "2018-06-14"
 # 엔터프라이즈 플랜 네트워크 운영
 {: #v10_dashboard}
 
-{{site.data.keyword.blockchainfull}} Platform은 네트워크 모니터가 네트워크 리소스, 구성원, 가입된 채널, 트랜잭션 성능 데이터 및 배치된 체인코드를 포함하는 블록체인 환경의 개요를 제공하도록 합니다. 또한 네트워크 모니터는 Swagger API를 실행하고 {{site.data.keyword.blockchainfull_notm}} Platform: Dvelop을 사용하여 네트워크를 개발하며 샘플 애플리케이션을 시도하기 위한 시작점을 제공합니다.
+
+***[이 페이지가 도움이 되었습니까? 알려주십시오.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
+{{site.data.keyword.blockchainfull}} Platform에서는 네트워크 리소스, 구성원, 가입된 채널, 트랜잭션 성능 데이터 및 배치된 체인코드를 포함하는 블록체인 환경의 개요를 제공하기 위해 네트워크 모니터를 제공합니다. 또한 네트워크 모니터는 Swagger API를 실행하고 {{site.data.keyword.blockchainfull_notm}} Platform: Dvelop을 사용하여 네트워크를 개발하며 샘플 애플리케이션을 시도하기 위한 시작점을 제공합니다.
 {:shortdesc}
 
 네트워크 모니터에서 [엔터프라이즈 플랜 네트워크의 이름을 변경](#ep-network-name)할 수 있습니다.
 
 네트워크 모니터는 다음 화면을 세 개의 섹션으로 표시합니다. 네트워크 모니터의 왼쪽 네비게이터에서 각 화면으로 이동할 수 있습니다.
-- **내 네트워크** 섹션에는 "[개요](#overview)", "[구성원](#members)", "[채널](#channels)", "[알림](#notifications)" 및 "[API](#apis)" 화면이 포함됩니다.
+- **내 네트워크** 섹션에는 "[개요](#overview)", "[구성원](#members)", "[채널](#channels)", "[알림](#notifications)", "[인증 기관](#ca)" 및 "[API](#apis)" 화면이 포함됩니다.
 - **내 코드** 섹션에는 "[코드 개발](#write_code)", "[코드 설치](#chaincode)" 및 "[샘플 시험 사용](#samples)" 화면이 포함됩니다.
 - "[도움 받기](#support)" 화면에는 Helios 및 Hyperledger Fabric({{site.data.keyword.blockchainfull_notm}} Platform이 기반으로 하는 코드 베이스)의 릴리스 정보 뿐만 아니라 지원 정보가 표시됩니다.
 
@@ -59,6 +63,10 @@ lastupdated: "2018-06-14"
 
 **조치** 헤더 아래의 드롭 다운 목록에서 **로그 보기**를 클릭하여 컴포넌트 로그를 확인할 수도 있습니다. 로그는 다양한 네트워크 리소스 간 호출을 노출하며 디버깅 및 문제점 해결에 유용합니다. 예를 들어, 피어를 중지하고 트랜잭션으로 이를 대상으로 지정하여 실험하면 연결 오류가 표시됩니다. 피어를 다시 시작해서 트랜잭션을 다시 시도하면 연결에 성공합니다. 또한 채널에서 계속 트랜잭션을 수행하므로 연장된 기간 동안 피어를 작동 중지 상태로 남겨둘 수 있습니다. 피어를 다시 가져오면, 피어가 중지되었을 때 커미트된 블록을 수신하므로 원장의 동기화를 알게 됩니다. 원장이 완전히 동기화되면 이 원장에 대해 일반 호출 및 조회를 수행할 수 있습니다.
 
+### 원격 피어 구성  
+
+원격 피어를 {{site.data.keyword.cloud_notm}} 외부에 배치하면 구성 중에 네트워크의 API 엔드포인트 정보를 원격 피어에 제공해야 합니다. 원격 피어를 구성하려면 **원격 피어 구성** 단추를 클릭하여 네트워크의 API 엔드포인트 정보를 검색하십시오. 팝업 창에서는 네트워크 ID, 조직 MSP, CA 이름, CA URL 및 CA TLS 인증서의 API 엔드포인트 정보를 제공합니다. 각 필드의 끝에 있는 복사 아이콘을 클릭하여 해당 필드의 값을 복사하거나 **다운로드** 단추를 클릭하여 모든 필드의 값을 JSON 파일에 저장할 수 있습니다. 원격 피어에 관한 자세한 정보는 [원격 피어 정보](howto/remote_peer.html)를 참조하십시오.
+
 ### 연결 프로파일
 {: #enterprise-connection-profile}
 **연결 프로파일** 단추를 클릭하여 각 리소스의 하위 레벨 네트워크 정보에 대한 JSON 파일을 볼 수 있습니다. 연결 프로파일에는 애플리케이션에 필요한 모든 구성 정보가 포함됩니다. 하지만 이 파일에는 특정 컴포넌트 및 순서 지정자의 주소만 있으므로, 추가 피어를 대상으로 지정해야 하는 경우 해당 엔드포인트를 확보해야 합니다. "url"이 포함된 헤더에는 각 컴포넌트의 API 엔드포인트가 표시됩니다. 클라이언트 측 애플리케이션에서 특정 네트워크 컴포넌트를 대상으로 지정하기 위해 이러한 엔드포인트가 필요하며 그 정의는 일반적으로 앱을 동반하는 JSON 모델 구성 파일에 존재하게 됩니다. 조직의 일부가 아닌 피어에서 보증을 필요로 하는 애플리케이션을 사용자 정의하는 경우, 대역 외 오퍼레이션의 관련 운영자에서 해당 피어의 IP 주소를 검색해야 합니다. 클라이언트는 응답이 필요한 피어로 연결할 수 있어야 합니다.
@@ -89,8 +97,8 @@ lastupdated: "2018-06-14"
 *그림 4. 인증서*
 
 운영자는 "인증서" 탭에서 같은 기관의 구성원에 대한 인증서를 관리할 수 있습니다. **인증서 추가**를 클릭하여 "인증서 추가" 패널을 여십시오. 인증서에 이름을 지정하고, PEM 형식의 클라이언트 측 인증서를 "키" 필드에 붙여넣고 **제출**을 클릭하십시오. 클라이언트 측 인증서가 적용되려면 먼저 피어를 다시 시작해야 합니다.
-
-인증서 키 생성에 대한 자세한 정보는 [클라이언트 측 인증서 생성](v10_application.html#generating-the-client-side-certificates)을 참조하십시오.
+<!--
+For more information about generating your certificate key, see [Generating the client-side certificates](v10_application.html#generating-the-client-side-certificates).-->
 
 ## 채널
 {: #channels}
@@ -127,27 +135,48 @@ lastupdated: "2018-06-14"
 
 보류 중인 요청은 요청의 앞에 있는 상자를 선택하고 **요청 삭제**를 클릭하여 삭제할 수 있습니다. 완료된 요청은 삭제할 수 없음에 유의하십시오.
 
+## 인증 기관(Certificate Authority)
+{: #ca}
+
+"인증 기관(CA)" 화면의 테이블에는 조직에 등록된 모든 ID(예:관리자, 피어 및 클라이언트 애플리케이션)가 표시됩니다. 이 화면을 사용하여 새 ID도 등록할 수 있습니다.
+
+**그림 7**에서는 "인증 기관" 화면을 보여줍니다.
+
+![인증 기관](images/CA_screen.png "인증 기관")
+*그림 7. 인증 기관*
+
+**인증서 생성** 단추를 클릭하여 CA에서 새 공용 인증서와 개인 키를 가져올 수 있습니다. 이 패널은 Fabric SDK를 사용하는 클라이언트 애플리케이션의 [공용 및 개인 키 쌍 생성](v10_application.html#register-app)의 대체 방법으로 사용할 수 있습니다. **인증서** 필드에는 **개인 키** 바로 위에 signCert나 등록 인증서라고도 하는 공용 인증서가 포함되어 있습니다. 각 필드의 끝에 있는 복사 아이콘을 클릭하여 값을 복사하십시오. {{site.data.keyword.blockchainfull_notm}} Platform에서는 이 인증서를 저장하지 않는다는 점에 **유의**하십시오. 인증서를 안정하게 저장하고 보관해야 합니다. 자세한 정보는 [MSP 정보](certificates.html#msp)를 참조하십시오.
+
+**사용자 추가** 단추를 클릭하여 조직에 새 ID를 등록하십시오. **사용자 추가** 팝업 창에서 다음 필드를 채운 다음 **제출**을 클릭하십시오.
+  - **ID:** 새 ID의 이름이며, 경우에 따라 `enroll ID`라고도 합니다. 원격 피어를 구성하거나 새 애플리케이션을 등록하는 경우를 위해 **이 값을 저장**하십시오.
+  - **시크릿:** ID의 비밀번호이며, 경우에 따라 `enroll Secret`이라고도 합니다. 원격 피어를 구성하고 새 애플리케이션을 등록하는 경우를 위해 **이 값을 저장**하십시오.  
+  - **유형:** 등록할 ID 유형(피어 또는 클라이언트 애플리케이션)을 선택하십시오.
+  - **소속:** ID가 속할 조직 내 소속(예: `org1`)을 나타냅니다.
+  - **최대 등록 수:** 이 ID를 사용하여 인증서를 등록하거나 생성할 수 있는 횟수를 제한하는 데 이 필드를 사용할 수 있습니다. 필드를 공백으로 두면 기본적으로 무제한 등록 수로 값이 지정됩니다.
+
+[{{site.data.keyword.blockchainfull_notm}} Platform에서 인증서 관리](certificates.html) 튜토리얼을 방문하여 CA에 관해 자세히 알아볼 수 있습니다.
+
 ## API
 {: #apis}
 
-{{site.data.keyword.blockchainfull_notm}} Platform은 네트워크의 노드, 채널, 피어 및 멤버를 관리하는 데 사용할 수 있는 Swagger의 여러 REST API를 노출합니다. 애플리케이션은 이러한 API를 사용하여 네트워크 모니터를 사용하지 않고 중요한 네트워크 리소스를 제어할 수 있습니다.
+{{site.data.keyword.blockchainfull_notm}} Platform은 네트워크의 노드, 채널, 피어 및 구성원을 관리하는 데 사용할 수 있는 Swagger의 여러 REST API를 노출합니다. 애플리케이션은 이러한 API를 사용하여 네트워크 모니터를 사용하지 않고 중요한 네트워크 리소스를 제어할 수 있습니다.
 
-**그림 7**은 "API" 화면을 보여줍니다.
+**그림 8**에서는 "API" 화면을 보여줍니다.
 
 ![API](images/API_screen.png "API")
-*그림 7. API*
+*그림 8. API*
 
-**Swagger UI** 링크를 클릭하여 Swagger UI를 여십시오. API를 실행하려면 네트워크 신임 정보(이 API 페이지에 있음)를 사용하여 Swagger UI에 권한을 부여해야 합니다. 자세한 정보는 [Swagger API를 사용하여 네트워크와 상호작용](howto/swagger_apis.html)을 참조하십시오.
+**Swagger UI** 링크를 클릭하여 Swagger UI를 여십시오. API를 실행하려면 네트워크 인증 정보(이 API 페이지에 있음)를 사용하여 Swagger UI에 권한을 부여해야 합니다. 자세한 정보는 [Swagger API를 사용하여 네트워크와 상호작용](howto/swagger_apis.html)을 참조하십시오.
 
 ## 코드 개발
 {: #write-code}
 
 엔터프라이즈 플랜은 {{site.data.keyword.blockchainfull_notm}} Platform: Develop을 통합하고 산업 표준 도구와 기술을 개발 환경에 제공합니다. 사용자는 온라인 또는 로컬로 환경에서 네트워크를 개발할 수 있습니다. 네트워크를 개발한 후 엔터프라이즈 플랜 네트워크에 다시 배치할 수 있습니다.
 
-**그림 8**은 "코드 개발" 화면을 보여줍니다.
+**그림 9**에서는 "코드 개발" 화면을 보여줍니다.
 
 ![코드 개발](images/write_code.png "코드 개발")
-*그림 8. 코드 개발*
+*그림 9. 코드 개발*
 
 엔터프라이즈 플랜에서 코드를 개발하고 배치하는 데 대한 자세한 정보는 [엔터프라이즈 플랜에서 비즈니스 네트워크 개발](develop_enterprise.html)을 참조하십시오.
 
@@ -156,10 +185,10 @@ lastupdated: "2018-06-14"
 
 "스마트 계약"이라고도 하는 체인코드는 원장을 조회하고 업데이트하는 기능 세트가 포함된 소프트웨어의 부분입니다. 이 체인코드는 피어에 설치되고 채널에서 인스턴스화됩니다.
 
-**그림 9**는 "코드 설치" 화면을 보여줍니다.
+**그림 10**에서는 "코드 설치" 화면을 보여줍니다.
 
 ![코드 설치](images/chaincode_install_overview.png "코드 설치")
-*그림 9. 코드 설치*
+*그림 10. 코드 설치*
 
 체인코드는 먼저 피어의 파일 시스템에 설치되고 그 다음에 채널에서 인스턴스화됩니다. 자세한 정보는 [체인코드 설치, 인스턴스화 및 업데이트](howto/install_instantiate_chaincode.html)를 참조하십시오.
 
@@ -168,54 +197,51 @@ lastupdated: "2018-06-14"
 
 샘플 애플리케이션을 사용하면 블록체인 네트워크 및 애플리케이션 개발에 대해 이해하는 데 도움이 됩니다. **GitHub에서 보기** 링크를 따라 샘플을 사용하여 {{site.data.keyword.blockchainfull_notm}} Platform에 배치하는 방법을 학습하십시오. 샘플 개발 및 배치 방법에 대한 자세한 정보는 [샘플 애플리케이션 배치](howto/prebuilt_samples.html)를 참조하십시오.
 
-**그림 10**은 "샘플 시험 사용" 화면을 보여줍니다.
+**그림 11**에서는 "샘플 시험 사용" 화면을 보여줍니다.
 
 ![샘플 시험 사용](images/sample_overview_ep.png "샘플 시험 사용")
-*그림 10. 샘플*
+*그림 11. 샘플*
 
 ## 도움 받기
 {: #support}
 
 "도움 받기" 화면에는 "지원" 탭에서 지원 정보를 제공하고 "릴리스 정보" 탭에서 각 릴리스의 새 기능 및 변경된 기능에 대해 설명하는 두 개의 탭이 포함되어 있습니다.
 
-**그림 11**은 "지원" 탭에 지원 정보를 표시하는 초기 "지원" 화면을 보여줍니다.
+**그림 12**에서는 "지원" 탭에 지원 정보를 표시하는 초기 "지원" 화면을 보여줍니다.
 
 ![지원](images/support.png "지원")
-*그림 11. Blockchain 지원*
+*그림 12. Blockchain 지원*
+
+### Blockchain 리소스 및 지원 포럼
+{: #support-forums}
 
 이 페이지의 링크 및 리소스를 사용하여 문제점 해결 및 지원 포럼에 액세스할 수 있습니다.
 
 * **시작하기** 아래의 이 문서 사이트인 [{{site.data.keyword.blockchainfull_notm}} 서비스 문서](index.html)에서는 {{site.data.keyword.Bluemix_notm}}에서 {{site.data.keyword.blockchainfull}} Platform 시작 방법에 대한 안내를 제공합니다. 왼쪽 네비게이터에서 해당 주제를 찾거나 맨 위에 있는 검색 기능으로 용어를 검색할 수 있습니다.
-* **커뮤니티 도움말** 아래의 [IBM DeveloperWorks ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://developer.ibm.com/blockchain/)에는 개발자를 위한 리소스와 정보가 포함되어 있습니다.
+* [IBM Code ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://developer.ibm.com/code/technologies/blockchain/)에는 개발자의 코드 패턴과 정보가 포함되어 있습니다.
 * **지원 티켓** 아래의 [IBM dWAnswers ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://developer.ibm.com/answers/smartspace/blockchain/)는 질문과 응답을 위한 플랫폼 역할을 합니다. 이전 질문에서 응답을 검색하거나 새 질문을 제출할 수 있습니다. 질문에 키워드 **blockchain**을 포함하십시오.
   또한 **{{site.data.keyword.Bluemix_notm}} 지원 티켓 열기** 옵션을 사용하여 {{site.data.keyword.blockchainfull_notm}} 지원 팀에 티켓을 제출할 수 있습니다.  특정 {{site.data.keyword.Bluemix_notm}} 인스턴스의 세부사항 및 코드 스니펫을 공유하십시오.
 * **Blockchain 샘플 애플리케이션** 아래의 [샘플 애플리케이션 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://github.com/ibm-blockchain)은 애플리케이션 개발을 지원하는 안내 및 샘플 코드 스니펫을 제공합니다.
-* **Hyperledger Fabric** 아래의 [Hyperledger Fabric ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](http://hyperledger-fabric.readthedocs.io/) 및 [Hyperledger Fabric 커뮤니티 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](http://jira.hyperledger.org/secure/Dashboard.jspa)는 Hyperledger Fabric 스택에 대한 추가 세부사항을 제공합니다.
-    Hyperledger Fabric 코드에 대한 질문이 있으면 [Hyperledger 전문가 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://chat.hyperledger.org/channel/general)와 대화하십시오.
+* **Hyperledger Fabric** 아래의 [Hyperledger Fabric ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.1/) 및 [Hyperledger Fabric 커뮤니티 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](http://jira.hyperledger.org/secure/Dashboard.jspa)는 Hyperledger Fabric 스택에 대한 추가 세부사항을 제공합니다.   Hyperledger Fabric 코드에 대한 질문이 있으면 [Hyperledger 전문가 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://chat.hyperledger.org/channel/general)와 대화하십시오.
+* [{{site.data.keyword.blockchainfull_notm}} Platform: **Hyperledger Composer**의 개발 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://ibm-blockchain.github.io/develop/)에서는 {{site.data.keyword.blockchainfull_notm}} Platform: 개발인 Hyperledger Composer에 관한 자세한 정보를 제공합니다. [Hyperledger Composer 커뮤니티 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://chat.hyperledger.org/channel/general) 및 [StackOverflow ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://stackoverflow.com/questions/tagged/hyperledger-composer)에서 답변을 찾거나 질문을 제기할 수 있습니다.
 
-문제를 디버깅하거나 질문에 대한 답변을 확인할 수 없는 경우 IBM Cloud 서비스 포털에 지원 케이스를 제출하십시오. 자세한 정보는 [지원 받기](ibmblockchain_support.html)를 참조하십시오.
+문제를 디버깅하거나 질문에 대한 답변을 확인할 수 없는 경우 {{site.data.keyword.cloud_notm}} 서비스 포털에 지원 케이스를 제출하십시오. 자세한 정보는 [지원 받기](ibmblockchain_support.html)를 참조하십시오.
 
-그림 12 및 그림 13은 "릴리스 정보" 탭에 각 릴리스의 새 기능과 변경된 기능을 표시하는 초기 "도움 받기" 화면을 보여줍니다.
+**그림 13** 및 **그림 14**에서는 "릴리스 정보" 탭에 각 릴리스의 새 기능과 변경된 기능을 표시하는 초기 "도움말" 화면을 보여줍니다.
 
-![릴리스 정보 Helios](images/releasenotes_helios.png "릴리스 정보 Helios")
-*그림 12. Helios의 릴리스 정보*
+![릴리스 정보 helios](images/releasenotes_helios.png "네트워크 모니터 UI의 릴리스 정보")
+*그림 13. 네트워크 모니터 UI의 릴리스 정보*
 
-![릴리스 정보 Fabric](images/releasenotes_Fabric.png "릴리스 정보 Fabric")
-*그림 13. Fabric의 릴리스 정보*
+![릴리스 정보 Fabric](images/releasenotes_Fabric.png "Fabric의 릴리스 정보")
+*그림 14. Fabric의 릴리스 정보*
 
 
 ## 네트워크 환경 설정
 {: #network-preferences}
 
-오른쪽 상단 모서리를 클릭하고 드롭 다운 메뉴가 열리면 **네트워크 환경 설정**을 클릭하십시오. 네트워크 환경 설정 창이 열립니다. 네트워크 환경 설정 창에는 네트워크 이름, Fabric 버전, {{site.data.keyword.cloud_notm}}의 네트워크 위치 및 원장 데이터베이스 유형과 같은 네트워크의 기본 정보가 표시됩니다.
+오른쪽 상단 모서리를 클릭하고 드롭 다운 메뉴가 열리면 **네트워크 환경 설정**을 클릭하십시오. 네트워크 환경 설정 창이 열립니다. 네트워크 환경 설정 창에는 네트워크 이름, Fabric 버전, {{site.data.keyword.cloud_notm}}의 네트워크 위치 및 상태 데이터베이스 유형과 같은 네트워크의 기본 정보가 표시됩니다. 
 
 2018년 5월 15일 이후에 작성된 엔터프라이즈 플랜 네트워크는 Hyperledger Fabric v1.1에서 실행됩니다. 업그레이드 후 네트워크를 작성하는 경우 네트워크 환경 설정 창에서 네트워크에 대한 웹 비활성 제한시간 및 상호 TLS를 관리할 수도 있습니다. 네트워크 개시자만 이러한 설정을 변경할 수 있습니다.
-
-<!--
-
-Enterprise Plan networks that are created after May 15th, 2018 will run on Hyperledger Fabric v1.1. If you create networks after the upgrade, you can also manage web inactivity timeout, mutual TLS, and switch your ledger to CouchDB for your network in the Network preferences window. These settings can be changed by the network initiator only.
-
--->
 
 ### 웹 비활성 제한시간
 {: #web-inactivity-timeout}
@@ -246,20 +272,20 @@ Fabric 1.1 엔터프라이즈 플랜 네트워크의 경우 각 조직에는 자
 
 <!--
 
-### CouchDB ledger type
+### CouchDB state database
 {: #couchdb}
 
-**Note**: Only the **network initiator** can switch the ledger database from LevelDB to CouchDB. This is a network level setting and will affect all network members. Switching to CouchDB is permanent. You cannot revert back to LevelDB.
+**Note**: Only the **network initiator** can switch the state database from LevelDB to CouchDB. This is a network level setting and will affect all network members. Switching to CouchDB is permanent. You cannot revert back to LevelDB.
 
-Before Enterprise Plan upgrades to Fabric v1.1, all network peers store data in the pure key-value LevelDB. With Fabric v1.1, you can choose to use CouchDB as your ledger database. CouchDB is a document datastore that permits indexing the contents of your data and allows you to issue rich queries against the data on your peer. Note that Hyperledger Fabric does not support peers running different databases. If CouchDB is used, it must be used by all of the peers.
+Before Enterprise Plan upgrades to Fabric v1.1, all network peers store data in the pure key-value LevelDB. With Fabric v1.1, you can choose to use CouchDB as your state database. CouchDB is a document datastore that permits indexing the contents of your data and allows you to issue rich queries against the data on your peer. Note that Hyperledger Fabric does not support peers running different databases. If CouchDB is used, it must be used by all of the peers.
 
 To use CouchDB, your data must be stored in a data format that can be modeled in chaincode, such as JSON. If the decision is made to migrate from LevelDB to CouchDB, the {{site.data.keyword.blockchainfull_notm}} Platform will migrate your data from key-value format to the CouchDB format automatically.
 
-If you switch to CouchDB, you need to update your chaincode to take advantage of indexes and rich queries. For more information about CouchDB and how to set up index, see [CouchDB as the State Database ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/latest/couchdb_as_state_database.html). For more information about updating chaincode in {{site.data.keyword.blockchainfull_notm}} Platform, see [Updating a chaincode](howto/install_instantiate_chaincode.html#updating-a-chaincode).
+If you switch to CouchDB, you need to update your chaincode to take advantage of indexes and rich queries. For more information about CouchDB and how to set up index, see [CouchDB as the State Database ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/latest/couchdb_as_state_database.html) in the Hyperledger Fabric documentation. You can also find an example that uses an index with chaincode in this [Fabric tutorial![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/couchdb_tutorial.html){:new_window}. For more information about updating chaincode in {{site.data.keyword.blockchainfull_notm}} Platform, see [Updating a chaincode](howto/install_instantiate_chaincode.html#updating-a-chaincode).
 
 -->
 
-**그림 14**는 "네트워크 환경 설정" 창을 보여줍니다.
+**그림 15**에서는 "네트워크 환경 설정" 창을 보여줍니다.
 
 ![네트워크 환경 설정](images/network_preferences_ep_tmp.png "네트워크 환경 설정")
-*그림 14. 네트워크 환경 설정*
+*그림 15. 네트워크 환경 설정*

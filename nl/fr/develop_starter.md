@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -16,13 +16,18 @@ lastupdated: "2018-06-14"
 # Déploiement d'un réseau d'entreprise dans un plan Starter
 {: #deploying-a-business-network}
 
-Des réseaux d'entreprise peuvent être développés et déployés dans un environnement de plan Starter à l'aide de l'environnement développeur de la plateforme {{site.data.keyword.blockchainfull}} et du jeu d'outils de développeur Hyperledger Composer.
 
-Avec l'environnement développeur, vous pouvez rapidement modéliser et tester des réseaux d'entreprise {{site.data.keyword.blockchain}} et les déployer dans une instance de la plateforme {{site.data.keyword.blockchainfull_notm}}.
+*[Cette page est-elle utile ? Dites-nous.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)*
+
+
+Des réseaux d'entreprise peuvent être développés et déployés dans un environnement de plan Starter à l'aide de l'environnement développeur d'{{site.data.keyword.blockchainfull}} Platform et du jeu d'outils de développeur Hyperledger Composer.
+{:shortdesc}
+
+Avec l'environnement développeur, vous pouvez rapidement modéliser et tester des réseaux d'entreprise {{site.data.keyword.blockchain}} et les déployer dans une instance {{site.data.keyword.blockchainfull_notm}} Platform.
 
 ## Avant de commencer
 
-Lisez les sections [A propos du plan Starter](./starter_plan.html) et [Mise en route avec le plan Starter](./get_start_starter_plan.html). Assurez-vous également d'avoir installé l'environnement développeur de la plateforme [{{site.data.keyword.blockchainfull_notm}} : Develop](./develop_install.html) et d'avoir créé une instance du plan Starter de la plateforme {{site.data.keyword.blockchainfull_notm}} en suivant les instructions de la section [Gouvernance d'un réseau de plan Starter](./get_start_starter_plan.html). Assurez-vous de disposer de Node v8.9 ou supérieur, npm v5.x et Hyperledger Composer en version 0.19.x.
+Lisez les sections [A propos du plan Starter](./starter_plan.html) et [Mise en route avec le plan Starter](./get_start_starter_plan.html). Assurez-vous également d'avoir installé l'environnement développeur d'[{{site.data.keyword.blockchainfull_notm}} Platform: Develop](./develop_install.html) et d'avoir créé une instance du plan Starter d'{{site.data.keyword.blockchainfull_notm}} Platform en suivant les instructions de la section [Gouvernance d'un réseau de plan Starter](./get_start_starter_plan.html). Assurez-vous de disposer de Node v8.9 ou supérieur, npm v5.x et Hyperledger Composer en version 0.19.x.
 
 
 ## Etape 1 : Extraire la valeur confidentielle admin
@@ -33,7 +38,7 @@ Lisez les sections [A propos du plan Starter](./starter_plan.html) et [Mise en r
 
 3. Dans le profil de connexion, accédez à la section 'registrar'. Dans 'registrar', sous 'enrollId' figure une propriété **enrollSecret**. Récupérez la valeur confidentielle et enregistrez une copie de celle-ci.
 
-    ![D8KBag](https://i.makeagif.com/media/4-12-2018/D8KBag.gif)
+    ![Extraire la valeur confidentielle admin](images/get_enroll_secret.gif "Extraire la valeur confidentielle admin")
 
 
 ## Etape 2 : Créer une carte d'autorité de certification
@@ -63,19 +68,19 @@ Remplacez `enrollSecret` dans la commande précédente par la valeur confidentie
    ```
    {:codeblock}
 
-Remplacez `enrollSecret` dans la commande précédente par la valeur confidentielle admin extraite du profil de connexion.La commande `composer identity request` crée un répertoire `credentials` qui contient les fichiers `.pem` du certificat.
+Remplacez `enrollSecret` dans la commande précédente par la valeur confidentielle admin extraite du profil de connexion. La commande `composer identity request` crée un répertoire `credentials` qui contient les fichiers `.pem` du certificat.
 
 ## Etape 3 : Ajouter les certificats à l'instance de plan Starter
 
-Les certificats doivent être ajoutés à l'instance de plan Starter. Pour plus de commodité, elles peuvent être ajoutées à l'aide de l'interface utilisateur de la plateforme {{site.data.keyword.blockchainfull_notm}}. Les certificats doivent être ajoutés, puis les homologues doivent être redémarrés, et les certificats synchronisés sur le canal. Le certificat nécessaire est le fichier `admin-pub.pem` qui a été généré à partir de la commande précédente, qui se trouve dans le répertoire `credentials`.
+Les certificats doivent être ajoutés à l'instance de plan Starter. Pour plus de commodité, elles peuvent être ajoutées à l'aide de l'interface utilisateur {{site.data.keyword.blockchainfull_notm}} Platform. Les certificats doivent être ajoutés, puis les homologues doivent être redémarrés, et les certificats synchronisés sur le canal. Le certificat nécessaire est le fichier `admin-pub.pem` qui a été généré à partir de la commande précédente, qui se trouve dans le répertoire `credentials`.
 
 1. Dans l'interface utilisateur du plan Starter, cliquez sur l'onglet **Membres**, **Certificats**, puis **Ajouter un certificat**. Accédez à votre répertoire `credentials`, puis copiez et collez le contenu du fichier `admin-pub.pem` dans la zone de certificat. Soumettez le certificat et redémarrez les homologues. Remarque : le redémarrage des homologues prend une minute.
 
-    ![jlEb2y](https://i.makeagif.com/media/4-12-2018/jlEb2y.gif)
+    ![Ajouter des certificats](images/add_cert.gif "Ajouter des certificats")
 
 2. Ensuite, les certificats doivent être synchronisés sur le canal. Cliquez sur l'onglet **Canaux**, puis sur le bouton **Actions**, puis sur **Synchroniser le certificat** et **Soumettre**.
 
-    ![E-sVV5](https://i.makeagif.com/media/4-12-2018/E-sVV5.gif)
+    ![Synchroniser des certificats](images/sync_cert.gif "Synchroniser des certificats")
 
 ## Etape 4 : Créer une carte de réseau d'entreprise admin
 
@@ -137,13 +142,13 @@ Le réseau d'entreprise est à présent déployé dans l'instance de plan Starte
 
 ## Etape six : Effectuer un ping du réseau d'entreprise afin de vérifier qu'il fonctionne correctement
 
-1. Exécutez la commande suivante pour effectuer un ping du réseau d'entreprise :
+Exécutez la commande suivante pour effectuer un ping du réseau d'entreprise :
 
    ```
    composer network ping -c admin@vehicle-manufacture-network
    ```
    {:codeblock}
 
-Pour consulter les jours de code blockchain, cliquez sur **Canaux**, puis sélectionnez votre canal. Cliquez sur la flèche du menu déroulant pour afficher les journaux, ou sur le symbole Actions pour afficher plus de détails.
+Pour consulter les jours de code blockchain, cliquez sur **Canaux**, puis sélectionnez votre canal. <!-- Click the dropdown arrow to view the logs, or the Actions symbol to view in more detail. --> Cliquez sur l'onglet **Code blockchain**. Développez la ligne de code blockchain, puis cliquez sur le bouton **JSON** ou **Journaux**.
 
-![fN-Yuj](https://i.makeagif.com/media/4-13-2018/fN-Yuj.gif)
+<!-- [fN-Yuj](https://i.makeagif.com/media/4-13-2018/fN-Yuj.gif) -->

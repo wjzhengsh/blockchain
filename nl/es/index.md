@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -14,8 +14,13 @@ lastupdated: "2018-06-14"
 
 # Plataforma {{site.data.keyword.blockchainfull_notm}}
 
-**ATENCIÓN:** Antes de utilizar una oferta de {{site.data.keyword.blockchainfull}}, debe leer la información técnica y de soporte de la sección [Descargo de responsabilidad](needtoknow.html).  
+
+***[¿Le resulta útil esta página? Indíquenos su opinión.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
+**ATENCIÓN:** Antes de utilizar una oferta de {{site.data.keyword.blockchainfull}}, debe leer la información técnica y de soporte de la sección [Descargo de responsabilidad](needtoknow.html).
 {:shortdesc}
+
 
 La plataforma {{site.data.keyword.blockchainfull_notm}} es la única plataforma integrada lista para la empresa que aborda el ciclo de vida completo (**desarrollo**, **gobierno** y **funcionamiento**) de una red blockchain entre diversas organizaciones. Está diseñada para acelerar, mediante la colaboración en cada fase, la creación de redes de blockchain globales "creadas para la empresa" con el rendimiento y la seguridad para los casos de uso y los sectores regulados más exigentes.
 
@@ -27,22 +32,26 @@ La plataforma {{site.data.keyword.blockchainfull_notm}} es la única plataforma 
 
 **Nota**: La tabla no está pensada para representar una progresión lineal. Tareas como el desarrollo y la gestión de red se producen repetidamente a medida que evolucionan las aplicaciones y la pertenencia.
 
-## Ofertas de pertenencia de {{site.data.keyword.IBM_notm}}
+## Ofertas de pertenencia de {{site.data.keyword.blockchainfull_notm}}
 
 La plataforma {{site.data.keyword.blockchainfull_notm}} proporciona distintos planes de pertenencia para ayudar a todos los tipos de usuarios a empezar su viaje en blockchain y a mover sus aplicaciones en producción.
 
-|       | [Plan inicial](starter_plan.html)      | [Plan empresarial](enterprise_plan.html)  | Plan empresarial Plus | Plan autogestionado
+|       | [Plan inicial](starter_plan.html) | [Plan empresarial](enterprise_plan.html)  | Plan empresarial Plus | [Igual remoto](howto/remote_peer.html) |
 | ------------------------- |--------------------------|-----|-----|------|
-| **Qué se incluye** | **Niveles de servicio básicos; entorno de desarrollo y de prueba** | **Niveles de servicio avanzado; listo para producción empresarial** | **Cálculo dedicado para rendimiento y aislamiento; listo para producción empresarial** | Pila de software para instalar en su propia infraestructura; conexión a red alojada en este servicio en la nube |
-| **Política de facturación** | **[Créditos de prueba](howto/pricing.html#starter-plan-pricing) seguidos por un cargo mensual** | **Suscripción mensual** | **Suscripción mensual** | Suscripción mensual |
-| **Disponibilidad** | **Ya disponible** | **Ya disponible** | **Al comprar** | Próximamente |
+| **Qué se incluye** | **Niveles de servicio básicos; entorno de desarrollo y de prueba** | **Niveles de servicio avanzado; listo para producción empresarial** | **Cálculo dedicado para rendimiento y aislamiento; listo para producción empresarial** | **Diagrama Helm de igual remoto desplegable** |
+| **Política de facturación** | **Suscripción mensual con [créditos en nube disponibles](howto/pricing.html#starter-plan-pricing)** | **Suscripción mensual** | **Suscripción mensual** | **Gratuito para la versión Beta** |
+| **Disponibilidad** | **Disponible a nivel general** | **Disponible a nivel general** | **Al comprar** | **Beta** |
 
-**Precaución:** No utilice el **Plan inicial** para producción. Es un entorno de desarrollo y de prueba, y no es adecuado para las cargas de trabajo de producción.
+**Precaución:** No utilice el **Plan inicial** para uso en producción. Es un entorno de desarrollo y de prueba, y no es adecuado para las cargas de trabajo de producción.
 
 Las ofertas de {{site.data.keyword.blockchainfull_notm}} parten del código base de [Hyperledger Fabric](reference/v10_fabric.html) V1.1 que utiliza una arquitectura modular para alcanzar los niveles de seguridad empresarial, la integridad de datos, la escalabilidad y el rendimiento necesarios para satisfacer sus necesidades empresariales.
-- El **Plan inicial de IBM Blockchain** es un entorno para aprender o empezar a desarrollar redes de blockchain.
+- El **Plan inicial** es un entorno para aprender o empezar a desarrollar redes de blockchain.
 - El **Plan empresarial** es un entorno de producción que ofrece altos niveles de seguridad y de soporte.
 - El **Plan empresarial Plus** ofrece un entorno de producción dedicado para el rendimiento adicional y el cálculo aislado y los recursos de almacenamiento para proteger datos críticos.
+- El **igual remoto** le permite ejecutar iguales fuera de {{site.data.keyword.cloud_notm}} para que pueda hacer crecer su red de blockchain con más flexibilidad al aprovechar una red {{site.data.keyword.blockchainfull_notm}} existente dentro de {{site.data.keyword.cloud_notm}}.
+
+La plataforma {{site.data.keyword.blockchainfull_notm}} es un servicio de plataforma de {{site.data.keyword.cloud_notm}} y todas las ofertas pertenecientes siguen
+los [{{site.data.keyword.cloud_notm}}![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://www-03.ibm.com/software/sla/sladb.nsf/sla/bm-6605-13 "términos de servicio de {{site.data.keyword.cloud_notm}}") de los contratos de nivel de servicio (SLA). Tenga en cuenta que las redes del plan inicial y del plan de empresa se suministran en **varios entornos** en centros de datos separados geográficamente.
 
 Regístrese ahora para ser [miembro de {{site.data.keyword.blockchainfull_notm}}![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps).
 
@@ -58,9 +67,9 @@ Como propietario de negocio, puede desarrollar su caso de uso con la ayuda de ex
 Como desarrollador, puede nivelar con rapidez y facilidad los requisitos empresariales y agilizar el desarrollo de aplicaciones de blockchain en el entorno de red de la plataforma {{site.data.keyword.blockchainfull_notm}} utilizando su base interactiva para desarrollar, iterar y probar redes empresariales. Estas herramientas están diseñadas para convertir las reglas empresariales en código de red empresarial en su entorno preferido:
 * **Explorar en línea**  
   Aproveche la plataforma [{{site.data.keyword.blockchainfull_notm}}: desarrolle](./develop.html)<!--, which is powered by an open source development tool--> para aprender los conceptos clave de blockchain, cree definiciones de red y aproveche los modelos reutilizables del sector y las bibliotecas de contratos digitales.  
-  Cuando haya desarrollado su red empresarial, la podrá desplegar en una red real que se ejecute en la plataforma IBM Blockchain. Para obtener más información, consulte [Despliegue de redes empresariales con el Plan inicial](./develop_starter.html) y [Despliegue de redes de empresa con el Plan empresarial](./develop_enterprise.html).
+  Cuando haya desarrollado su red empresarial, la podrá desplegar en una red real que se ejecute en la plataforma {{site.data.keyword.blockchainfull_notm}}. Para obtener más información, consulte [Despliegue de redes empresariales con el Plan inicial](./develop_starter.html) y [Despliegue de redes de empresa con el Plan empresarial](./develop_enterprise.html).
 * **Instalar localmente**  
-  Utilice las imágenes certificadas por IBM de Hyperledger Fabric y Composer, que constituyen una infraestructura de código abierto y una herramienta para crear una red empresarial con el fin de desarrollar y realizar pruebas directamente en su portátil. Para obtener más información, consulte [Creación de su primera red](http://hyperledger-fabric.readthedocs.io/en/latest/build_network.html).
+  Utilice las imágenes certificadas por IBM de Hyperledger Fabric y Composer, que constituyen una infraestructura de código abierto y una herramienta para crear una red empresarial con el fin de desarrollar y realizar pruebas directamente en su portátil. Para obtener más información, consulte [Creación de su primera red](http://hyperledger-fabric.readthedocs.io/en/release-1.1/build_network.html).
 * **Colaborar en un entorno de nube**  
   Utilice las redes reales listas para ser utilizadas con las opciones de Plan inicial y Plan empresarial para desarrollar código y compartirlo con otros. Para obtener más información, consulte [Acerca del Plan inicial](starter_plan.html) y [Acerca del Plan empresarial](enterprise_plan.html).
 
@@ -101,7 +110,7 @@ El funcionamiento de la red en la plataforma {{site.data.keyword.blockchainfull_
 Para que blockchain esté operativo, los miembros forman una base de confianza ejecutando uno o varios servicios básicos de red:
 
 - **Servicio de ordenación**: ordenación y sincronización de transacciones  
-  Básicamente, el servicio de ordenación es la definición de la red.  Contiene información de identidad de cada miembro, información sobre canales y un conjunto de políticas que dictan qué miembros pueden realizar determinadas tareas (por ejemplo, invitar a otros miembros, crear canales, etc.). Cada transacción y configuración de operación fluirá a través del servicio de ordenación, por lo que se trata de una pieza más que fundamental en el esquema global.  Dada la importancia del servicio de ordenación, es fácil observar los inconvenientes de una orquestación autoritaria en la que quizás solo un miembro extrae las series.  Para contrarrestar esto, los miembros de la red gestionan conjuntamente el servicio de ordenación y actúan conjuntamente en las implementaciones de gobierno.  Es decir, las decisiones se toman colectivamente y NO unilateralmente. Todos los miembros participan en la red y por extensión, tienen voto en las operaciones de configuración y personalización de su postura en la red.  Estas nociones de “democracia” y la toma de decisiones conjunta son los componentes inherentes de una red descentralizada y fiable.  IBM actúa como "operador" del servicio de ordenación para redes desplegadas en la plataforma IBM Blockchain.
+  Básicamente, el servicio de ordenación es la definición de la red.  Contiene información de identidad de cada miembro, información sobre canales y un conjunto de políticas que dictan qué miembros pueden realizar determinadas tareas (por ejemplo, invitar a otros miembros, crear canales, etc.). Cada transacción y configuración de operación fluirá a través del servicio de ordenación, por lo que se trata de una pieza más que fundamental en el esquema global.  Dada la importancia del servicio de ordenación, es fácil observar los inconvenientes de una orquestación autoritaria en la que quizás solo un miembro extrae las series.  Para contrarrestar esto, los miembros de la red gestionan conjuntamente el servicio de ordenación y actúan conjuntamente en las implementaciones de gobierno.  Es decir, las decisiones se toman colectivamente y NO unilateralmente. Todos los miembros participan en la red y por extensión, tienen voto en las operaciones de configuración y personalización de su postura en la red.  Estas nociones de “democracia” y la toma de decisiones conjunta son los componentes inherentes de una red descentralizada y fiable.  IBM actúa como "operador" del servicio de ordenación para redes desplegadas en la plataforma {{site.data.keyword.blockchainfull_notm}}.
 
 - **Entidad emisora de certificados**: emisión de certificados a participantes  
   De forma sencilla, la entidad emisora de certificados (CA) proporciona pertenencia.  Todas las entidades de la red (iguales, clasificadores, clientes, etc.) deben tener una identidad para comunicarse, autenticarse y realizar transacciones. Estas “identidades” existen en forma de certificados x509 (es decir, certificados de inscripción), que son necesarios para cualquier participación directa en la red blockchain.  Además, existen formas de participación indirecta, pero las veremos más adelante.  La CA es como un sello de goma que aporta testificación y credibilidad a las identidades.  Cada miembro tiene su propia CA y, a través de esta CA, puede firmar certificados no solo de los componentes de su propiedad (iguales), sino que también de aplicaciones y clientes de terceros.  Puede comparar la CA de un miembro con un registro especial o un sello notarial.  Un certificado que firma esta entidad emisora de certificados es un requisito previo para acceder a la red.
@@ -130,11 +139,11 @@ La plataforma {{site.data.keyword.blockchainfull_notm}} está respaldada por Hyp
 
 A veces resulta útil pensar en los miembros como una persona que ejerce el rol de miembro en la red empresarial.  Estas son algunas de las más habituales.
 
-- **Iniciador**: un miembro que ha sido seleccionado por otros miembros para poner en marcha la red blockchain.    La plataforma IBM Blockchain necesita que un solo miembro inicie sesión en la plataforma IBM Blockchain y realice las tareas de inicio de red.  Estas incluyen denominación de red, invitación a un grupo inicial de miembros y definición del conjunto predeterminado de políticas de operaciones de red.  Se trata de un rol transitorio.  Cuando se ha puesto en marcha la red, el iniciador no conserva privilegios especiales y asume el rol de miembro.  
+- **Iniciador**: un miembro que ha sido seleccionado por otros miembros para poner en marcha la red blockchain.    La plataforma {{site.data.keyword.blockchainfull_notm}} necesita que un solo miembro inicie sesión en la plataforma {{site.data.keyword.blockchainfull_notm}} y realice las tareas de inicio de red.  Estas incluyen denominación de red, invitación a un grupo inicial de miembros y definición del conjunto predeterminado de políticas de operaciones de red.  Se trata de un rol transitorio.  Cuando se ha puesto en marcha la red, el iniciador no conserva privilegios especiales y asume el rol de miembro.  
 
 - **Mantenedor**: un miembro que ejecuta uno o varios iguales de red y CA.   Estos miembros mantienen la integridad del libro mayor distribuido participando en el proceso de consenso, que se encarga de la validación de transacciones en una red blockchain.   El mantenedor, al ser propietario de una CA, también puede emitir certificados a participantes y concederles acceso a la red.
 
-- **Operador**: un miembro que ejecuta servicios en nombre de otros miembros de red, incluidos el servicio de ordenación de transacciones, entidades emisoras de certificados, pasarelas de transacciones y otros servicios básicos de red.  De forma predeterminada, IBM es el operador de red de las redes desplegadas en la plataforma IBM Blockchain.
+- **Operador**: un miembro que ejecuta servicios en nombre de otros miembros de red, incluidos el servicio de ordenación de transacciones, entidades emisoras de certificados, pasarelas de transacciones y otros servicios básicos de red.  De forma predeterminada, IBM es el operador de red de las redes desplegadas en la plataforma {{site.data.keyword.blockchainfull_notm}}.
 
 - **Auditor**: un miembro al que se le han otorgado permisos para realizar funciones de auditoría en la red.  Algunos ejemplos de funciones de auditoría incluyen la facturación, el seguimiento del cumplimiento o el análisis.  El rol de auditor normalmente se traslada al miembro con acceso a una vista más amplia de transacciones en el libro mayor y/o un mayor número de inscripciones en los canales de transacción.
 
@@ -167,4 +176,4 @@ Antes de continuar, veamos una configuración simple dentro de la plataforma {{s
 
 {{site.data.keyword.IBM_notm}} ofrece soporte en soluciones {{site.data.keyword.blockchain}} implementadas por {{site.data.keyword.IBM_notm}}. Para obtener más información sobre el soporte de {{site.data.keyword.blockchainfull_notm}}, consulte [Obtención de soporte](ibmblockchain_support.html).
 
-Para obtener más información sobre todas las características y funciones de Hyperledger Fabric, consulte la [documentación de Hyperledger Fabric ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](http://hyperledger-fabric.readthedocs.io/en/latest/).
+Para obtener más información sobre todas las características y funciones de Hyperledger Fabric, consulte la [documentación de Hyperledger Fabric ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/).

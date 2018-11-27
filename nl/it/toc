@@ -1,7 +1,7 @@
 {:navgroup: .navgroup}
 {:topicgroup: .topicgroup}
 
-{: .toc subcollection="blockchain" audience="service" href="/docs/services/blockchain/index.html"}
+{: .toc subcollection="blockchain" audience="service" arm="339" href="/docs/services/blockchain/index.html"}
 IBM Blockchain Platform
 
 	{: .navgroup id="learn"}
@@ -26,6 +26,7 @@ IBM Blockchain Platform
 		develop_enterprise.md
 		v10_dashboard.md
 
+	howto/remote_peer.md
 	needtoknow.md
 	{: .navgroup-end}
 
@@ -35,17 +36,24 @@ IBM Blockchain Platform
 		howto/pricing.md
 		howto/paying_mode.md
 
+	certificates.md
 	howto/create_channel.md
 	howto/install_instantiate_chaincode.md
-	howto/monitor_network.md
-	howto/prebuilt_samples.md
 
 	{: .topicgroup}
 	Prova delle API con Swagger
 		howto/swagger_apis.md
 		howto/create_join_network_with_apis.md
 
+	howto/monitor_network.md
+	howto/prebuilt_samples.md
 	v10_application.md
+	howto/migrate_sp_ep.md
+
+	{: .topicgroup}
+	Esecuzione di peer remoti su IBM Cloud Private
+		howto/remote_peer_icp.md
+		howto/remote_peer_operate_icp.md
 	{: .navgroup-end}
 
 	{: .navgroup id="reference"}

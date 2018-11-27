@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -16,6 +16,10 @@ lastupdated: "2018-06-14"
 # 控管入門範本方案網路
 {: #getting-started-with-starter-plan}
 
+
+***[此頁面有幫助嗎？請告訴我們。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
 只要按一下，「{{site.data.keyword.blockchainfull}} 平台入門範本方案」即可提供您預先配置的區塊鏈網路。它會<!--offers you a free trial of 30 days and -->佈建具有許可權的網路，其預設配置包含兩個[組織](glossary.html#organization)（每個組織各一個[對等節點](glossary.html#peer)），以及一個[頻道](glossary.html#channel)。建立網路之後，您可以擴充並新增更多組織和對等節點到您的網路。<!--Note that it might cause extra cost if you exceed the default resource limits of two organizations and two peers.-->
 {:shortdesc}
 
@@ -23,7 +27,7 @@ lastupdated: "2018-06-14"
 
 「入門範本方案」可讓您學習及培養「{{site.data.keyword.blockchainfull_notm}} 平台」的技能、執行範例應用程式、測試自己的應用程式，以及模擬多組織情境。本入門指導教學介紹所需遵循的必要條件和步驟，以建立及使用「入門範本方案」網路。
 
-如果您是第一次使用「{{site.data.keyword.blockchainfull_notm}} 平台」和區塊鏈，可以閱讀[名詞解釋](glossary.html)來熟悉本文件和 [Hyperledger Fabric 文件 ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](http://hyperledger-fabric.readthedocs.io/en/latest/blockchain.html) 中的術語，以進一步瞭解區塊鏈。
+如果您是第一次使用「{{site.data.keyword.blockchainfull_notm}} 平台」和區塊鏈，可以閱讀[名詞解釋](glossary.html)來熟悉本文件和 [Hyperledger Fabric 文件 ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/blockchain.html) 中的術語，以進一步瞭解區塊鏈。
 
 
 ## 建立網路
@@ -98,7 +102,7 @@ You can run [chaincode](glossary.html#chaincode) on your peers in the network.  
 
 
 ## 開發及部署自訂商業網路
-「入門範本方案」整合「IBM Blockchain 平台：開發」開發人員環境和 Hyperledger Composer 開發人員工具集。您可以根據您的商業需求來開發區塊鏈網路。
+「入門範本方案」整合「{{site.data.keyword.blockchainfull_notm}} 平台：開發」開發人員環境和 Hyperledger Composer 開發人員工具集。您可以根據您的商業需求來開發區塊鏈網路。
 針對您的業務來開發網路之後，可以將您的商業網路部署至「入門範本方案」網路。
 
 如需相關資訊，請參閱[開發網路](develop.html)和[使用入門範本方案來部署商業網路](develop_starter.html)。
@@ -125,17 +129,17 @@ You can run [chaincode](glossary.html#chaincode) on your peers in the network.  
 As you can see in [Deploying sample applications](howto/prebuilt_samples.html), Starter Plan makes it easy to get a sample application integrated with your network by using Toolchain. This setup also allows for continuous integration by automatically updating your sample application whenever your forked application repo is changed. If you want to deploy this application into an Enterprise Plan network, you can copy your forked application repo into a new repo and then follow the instructions in [Deploying sample applications manually](howto/prebuilt_samples.html#deploy_sample_applications_manually).
 -->
 
-如果您在「入門範本方案」網路上部署任何範例應用程式，而且要在「企業方案」網路上部署這個應用程式，您可以將分出的應用程式儲存庫複製到新的儲存庫中，然後遵循[手動部署範例應用程式](howto/prebuilt_samples.html#deploy_sample_applications_manually)中的指示進行。
+如果您在「入門範本方案」網路上部署任何範例應用程式，而且要在「企業方案」網路上部署這個應用程式，您可以將分出的應用程式儲存庫複製到新的儲存庫中，然後遵循範例應用程式中的指示，在「企業方案」網路上部署它們。
 
 
 ## 刪除或離開網路
 如果您想要刪除或離開網路，可以從 {{site.data.keyword.cloud_notm}} 儀表板中刪除區塊鏈服務實例。
 
-**附註**：在您離開網路之前，請確定您不是網路任何通道中的成員。否則，您會在離開網路時收到錯誤。通道成員移除需要完成通道更新處理程序。如需通道更新處理程序的相關資訊，請參閱[更新通道](howto/create_channel.html#updating-a-channel)。
+**附註**：在您離開網路之前，請確定您不是網路任何頻道中的成員。否則，您會在離開網路時收到錯誤。頻道成員移除需要完成頻道更新處理程序。如需頻道更新處理程序的相關資訊，請參閱[更新頻道](howto/create_channel.html#updating-a-channel)。
 
 
 <!--
 ## References
 * For more information about {{site.data.keyword.blockchainfull_notm}} offerings, see [Blockchain offerings](index.html).
-* For more information about Hyperledger Fabric V1.1, see [Hyperledger Fabric documentation ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/latest/){:new_window}.
+* For more information about Hyperledger Fabric V1.1, see [Hyperledger Fabric documentation ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/){:new_window}.
 -->

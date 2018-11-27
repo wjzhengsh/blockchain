@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-09-05"
+lastupdated: "2018-10-04"
 
 ---
 
@@ -18,8 +18,10 @@ lastupdated: "2018-09-05"
 
 ***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
+**Important:**
+Starting from October 04, 2018, all new {{site.data.keyword.blockchainfull_notm}} Platform Starter networks will be provisioned by using Hyperledger Fabric v1.2.1. Fabric v1.2.1 is currently not compatible with the Remote Peer offering, which uses a v1.1.0 peer. Existing Starter Plan networks, which are based on Fabric v1.1.0, are not impacted and can still be used with the Remote Peer offering. {{site.data.keyword.blockchainfull}} Platform will update the Remote Peer offering to use the v1.2.1 peer, which will be compatible with new Starter networks, which uses Fabric v1.2.1, and Enterprise networks, which still use Fabric v1.1.0. Until the Remote Peer offering is updated to Fabric v1.2.1, **do not** attempt to deploy a v1.1.0 remote peer with a new v1.2.1 Starter network.
 
-The following instructions describe how to install an {{site.data.keyword.blockchainfull}} Platform remote peer on {{site.data.keyword.cloud_notm}} Private (ICP) and connect it to a network on {{site.data.keyword.blockchainfull_notm}} Platform.
+The following instructions describe how to install an {{site.data.keyword.blockchainfull_notm}} Platform remote peer on {{site.data.keyword.cloud_notm}} Private (ICP) and connect it to a network on {{site.data.keyword.blockchainfull_notm}} Platform.
 {:shortdesc}
 
 {{site.data.keyword.cloud_notm}} Private is an application platform for developing and managing on-premises containerized applications. {{site.data.keyword.blockchainfull_notm}} Platform Remote Peers on {{site.data.keyword.cloud_notm}} Private is an {{site.data.keyword.blockchainfull_notm}} product that is bundled with ICP for customers to deploy peers in their local environment. After you install the Helm Chart of the remote peer, you can find it as an application in the ICP catalog. The remote peer for ICP leverages the storage, security, logging, and support services of ICP for peer management. For more information about ICP, see [{{site.data.keyword.cloud_notm}} Private documentation ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0.3/kc_welcome_containers.html "{{site.data.keyword.cloud_notm}} Private documentation").
@@ -132,7 +134,7 @@ You need to add a new peer identity to your organization on the {{site.data.keyw
   *Figure 2. CA screen*
 
 2. Click the **Add User** button at the top of the screen. A pop-up screen opens and allows you to register your remote peer after you fill out the following fields. Save the values of the ID and Secret and you need to use them when you configure your peer.
-  - **ID:** The use name of your peer, which is referred to as your `enroll ID` when you configure your peer. **Save this value** for future usage when you deploy the remote peer.
+  - **ID:** The user name of your peer, which is referred to as your `enroll ID` when you configure your peer. **Save this value** for future usage when you deploy the remote peer.
   - **Secret:** The password of your peer, which is referred to as your `enroll Secret` when you configure your peer. **Save this Value** for future usage when you deploy the remote peer.
   - **Type:** Select `peer` for this field.
   - **Affiliation:** This is the affiliation under your organization, `org1` for example, that your remote peer will belong to. Select an existing affiliation from the drop-down list or type in a new one.

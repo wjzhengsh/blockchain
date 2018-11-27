@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-31"
+lastupdated: "2018-10-05"
 
 ---
 
@@ -27,7 +27,14 @@ By using the developer environment, you can quickly model and test {{site.data.k
 
 ## Before you begin
 
-Ensure that you read the [About Starter Plan](./starter_plan.html) and [Getting started with Starter Plan](./get_start_starter_plan.html). Also ensure that you have installed the [{{site.data.keyword.blockchainfull_notm}} Platform developer environment](./develop_install.html) and created an instance of the {{site.data.keyword.blockchainfull_notm}} Platform Starter Plan following the instructions in [Govern Starter Plan network](./get_start_starter_plan.html). Ensure you have Node v8.9 or higher, npm v5.x, and Hyperledger Composer at v0.19.x.
+Ensure that you read the [About Starter Plan](./starter_plan.html) and [Getting started with Starter Plan](./get_start_starter_plan.html). Also ensure that you have installed the [{{site.data.keyword.blockchainfull_notm}} Platform developer environment](./develop_install.html) and created an instance of the {{site.data.keyword.blockchainfull_notm}} Platform Starter Plan following the instructions in [Govern Starter Plan network](./get_start_starter_plan.html).
+
+Ensure you have Node v8.9 or higher, npm v5.x, and Hyperledger Composer:
+
+- If your network is on Fabric version 1.2, use Hyperledger Composer v0.20.x.
+- If your network is on Fabric version 1.1, use Hyperledger Composer v0.19.x.  
+
+You can find your Fabric version by opening the [Network Preferences window](../v10_dashboard.html#network-preferences) in your Network Monitor.
 
 
 ## Step One: Retrieve admin secret

@@ -14,7 +14,9 @@ lastupdated: "2018-03-16"
 
 # Pago de la red
 
-**Nota**: el Plan inicial de la plataforma {{site.data.keyword.blockchainfull}} es gratuito en su versión Beta.
+
+***[¿Le resulta útil esta página? Indíquenos su opinión.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
 
 La plataforma {{site.data.keyword.blockchainfull_notm}} factura mensualmente cuotas de suscripción y cuotas por igual. Dependiendo del plan de red que elija y de la cantidad de recursos que utilice, los pagos son diferentes.  Si tomamos como ejemplo el Plan empresarial, los miembros de la red deben pagar 1.000 $ al mes como cuota de suscripción y otros 1.000 $ al mes por cada uno de los iguales de la red. La cuota mensual se factura prorrateada por día. Por ejemplo, un miembro (cuota de suscripción asociada de 1.000 $) con dos iguales (la cuota por igual es de 1.000 $ X 2 iguales) pagaría 3.000 $ al mes. Si el mes tiene 30 días, el miembro paga 100 $ (3.000 $/30) al día.
 

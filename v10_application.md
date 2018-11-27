@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-31"
+lastupdated: "2018-10-16"
 
 ---
 
@@ -22,7 +22,7 @@ lastupdated: "2018-08-31"
 {{site.data.keyword.blockchainfull}} Platform provides APIs that you can use to connect applications to your blockchain network. You can use the network API endpoints in the connection profile to invoke your chaincode and update or query the channel-specific ledger on your peers. You can also use APIs in [the Swagger UI](howto/swagger_apis.html) to manage nodes, channels, and members of your network.
 {:shortdesc}
 
-You can use this tutorial to learn how to access the {{site.data.keyword.blockchainfull_notm}} Platform APIs and use them to enroll and register your application with the network. You will also learn how to interact with your network and issue transactions from your application. The tutorial is based on the [Writing Your First Application ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.1/write_first_app.html) tutorial in the Hyperledger Fabric documentation. You will use many of the same files and commands the **Writing Your First Application** tutorial, but will use them to interact with a network on {{site.data.keyword.blockchainfull_notm}} Platform. This tutorial describes each step of application development by using the Hyperledger Fabric Node SDK. You will also learn how to enroll and register users using the Fabric CA Client as an alternative to using the SDK.
+You can use this tutorial to learn how to access the {{site.data.keyword.blockchainfull_notm}} Platform APIs and use them to enroll and register your application with the network. You will also learn how to interact with your network and issue transactions from your application. The tutorial is based on the [Writing Your First Application ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/write_first_app.html "writing your first application"){:new_window} tutorial in the Hyperledger Fabric documentation. You will use many of the same files and commands the **Writing Your First Application** tutorial, but will use them to interact with a network on {{site.data.keyword.blockchainfull_notm}} Platform. This tutorial describes each step of application development by using the Hyperledger Fabric Node SDK. You can also learn how to enroll and register users by using the Fabric CA Client as an alternative to the SDKs.
 
 In addition to this tutorial, you can use sample applications and chaincode that {{site.data.keyword.blockchainfull}} Platform provides as templates when you create your own business solutions. For more information, see [Deploying sample applications](howto/prebuilt_samples.html).
 
@@ -34,14 +34,20 @@ You need the following prerequisites before you can use the **Writing Your First
   After you enter the Network Monitor of your network, add at least one peer for your organization on the "Overview" screen. Then, create at least one channel in your network. For more information, see [Creating a channel](howto/create_channel.html#creating-a-channel). **Note** that if you use a Starter Plan network, your network already has a channel with the name of `defaultchannel` that you can use to deploy chaincode.
 
 - Install required tools to download Hyperledger Fabric samples and to use Node SDK.
-  * [Curl ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.1/prereqs.html#install-curl "Curl") or [Git ![External link icon](images/external_link.svg "External link icon")](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git "Git")
-  * [Node.js ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/latest/prereqs.html#node-js-runtime-and-npm "Node.js")
+  * [Curl ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/prereqs.html#install-curl "Curl") or [Git ![External link icon](images/external_link.svg "External link icon")](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git "Git"){:new_window}
+  * [Node.js ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/latest/prereqs.html#node-js-runtime-and-npm "Node.js"){:new_window}
 
-- Install Hyperledger Fabric samples by downloading the `fabric-samples` directory. You can follow the [getting started guide ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.1/samples.html) in the Hyperledger Fabric documentation.
+- Install Hyperledger Fabric samples by downloading the `fabric-samples` directory. You can follow the [getting started guide ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/install.html "getting started guide"){:new_window} in the Hyperledger Fabric documentation.
 
-  After you download the `fabric-samples` directory in your local machine, navigate to `fabric-samples/fabcar`. You can make a copy of this directory and rename it so that you can try and test the sample application in a clean directory.
+- Navigate to the `fabric-samples` directory on your local machine.
+  * Use the `git checkout` command to use the branch that matches your networks Hyperledger Fabric version. You can find your Fabric version by opening the [Network Preferences window](../v10_dashboard.html#network-preferences) in your Network Monitor.
+    - If your network is on Fabric version 1.2, you can use the main branch.
+    - If your network is on Fabric version 1.1, run `git checkout v1.1.0`.
+    - If your network is on Fabric version 1.0, run `git checkout v1.0.6`.
 
-  In the `fabcar` directory, run the `npm install` command to install the necessary packages to use the Fabric SDK, which include `fabric-client` and `fabric-ca-client`.
+  * Navigate to `fabric-samples/fabcar`. You can make a copy of this directory and rename it so that you can try and test the sample application in a clean directory.
+
+  * In the `fabcar` directory, run the `npm install` command to install the necessary packages to use the Fabric SDK, which include `fabric-client` and `fabric-ca-client`.
 
 - Install and Instantiate the fabcar chaincode on your channel using the [Network Monitor](howto/install_instantiate_chaincode.html#installchaincode). You can find the fabcar chaincode in the `fabric-samples` folder under `fabric-samples > chaincode > fabcar > go`.
 
@@ -50,7 +56,7 @@ You need the following prerequisites before you can use the **Writing Your First
 ## Using the Fabric SDKs
 {: #using-the-fabric-sdks}
 
-The Hyperledger Fabric SDKs provide a powerful set of APIs that enable applications to interact with blockchain networks. You can find the latest list of supported languages in the [Hyperledger Fabric SDK Community documentation ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.1/getting_started.html#hyperledger-fabric-sdks "Hyperledger Fabric SDK Community documentation"){:new_window}. It is recommended to use the Node SDK or the Java SDK with {{site.data.keyword.blockchainfull_notm}} Platform. You can learn more about the APIs that the SDKs provide in the SDKs' individual repositories.
+The Hyperledger Fabric SDKs provide a powerful set of APIs that enable applications to interact with blockchain networks. You can find the latest list of supported languages in the [Hyperledger Fabric SDK Community documentation ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/getting_started.html#hyperledger-fabric-sdks "Hyperledger Fabric SDK Community documentation"){:new_window}. It is recommended to use the Node SDK or the Java SDK with {{site.data.keyword.blockchainfull_notm}} Platform. You can learn more about the APIs that the SDKs provide in the SDKs' individual repositories.
 
 This tutorial uses the [Node SDK ![External link icon](images/external_link.svg "External link icon")](https://fabric-sdk-node.github.io/ "Node SDK"){:new_window} to register and enroll your application, and then use the application to issue transactions by invoking and querying chaincode. This tutorial describes the information that you need to provide to the SDK so that your application can connect to your blockchain network. It also introduces some of the APIs that you can use, and how the SDK interacts with and submits transactions to your the blockchain network.
 
@@ -76,7 +82,7 @@ You need to provide your application with the API endpoints of specific network 
   ```
   {:codeblock}
 
-  **Note**: You might want to target network resources outside of your organization with your application. For example, if a chaincode [endorsement policy](howto/install_instantiate_chaincode.html#specifying-chaincode-endorsement-policies) requires endorsements from other organizations on the channel, then you need to obtain the endpoint information of their peers and the accompanying TLS certificates. You can find this information in the peers section of Connection Profile. However, you need to contact the admin of the other orgs about which peers they have joined to particular channels.
+  **Note**: You might want to target network resources outside of your organization with your application. For example, if a chaincode [endorsement policy](howto/install_instantiate_chaincode.html#endorsement-policy) requires endorsements from other organizations on the channel, then you need to obtain the endpoint information of their peers and the accompanying TLS certificates. You can find this information in the peers section of Connection Profile. However, you need to contact the admin of the other orgs about which peers they have joined to particular channels.
 
 3. Plug the API endpoint information into a configuration file of your application as shown in the following example:
   ```
@@ -91,11 +97,11 @@ You need to provide your application with the API endpoints of specific network 
 ## Enrolling your application
 {: #enroll-app}
 
-Before you connect an application to your network on {{site.data.keyword.blockchainfull_notm}} Platform, you need to prove the authenticity of your application to the network. We won't delve into the details of x509 and public key infrastructure because you can find plenty of [external resources ![External link icon](images/external_link.svg "External link icon")](https://en.wikipedia.org/wiki/Public_key_infrastructure){:new_window} for that. Simply speaking, the communication flows in Fabric use sign/verify operations at every touchpoint. Therefore, any application that sends calls, such as ledger queries or updates, to the network needs to sign payloads with their private key and attach a properly signed x509 certificate for verification purposes. **Enrollment** is the process of generating the necessary keys and certs from the appropriate Certificate Authority. After the enrollment, your application is ready to communicate with the network.
+Before you connect an application to your network on {{site.data.keyword.blockchainfull_notm}} Platform, you need to prove the authenticity of your application to the network. We won't delve into the details of x509 certificates and public key infrastructure, though you can learn more by visiting the [Managing certificates on {{site.data.keyword.blockchainfull_notm}} Platform](certificates.html) tutorial. Simply speaking, the communication flows in Fabric use sign/verify operations at every touchpoint. Therefore, any application that sends calls, such as ledger queries or updates, to the network needs to sign payloads with their private key and attach a properly signed x509 certificate for verification purposes. **Enrollment** is the process of generating the necessary keys and certs from the appropriate Certificate Authority. After the enrollment, your application is ready to communicate with the network.
 
-This section explains how to retrieve the keys and certs by using the Fabric SDK as part of the **Writing Your First Application** tutorial. You can also learn how to use the Fabric CA Client from the command line to enroll your application.
+This section explains how to retrieve the keys and certs with the Fabric Node SDK by using the sample code that is part of the **Writing Your First Application** tutorial. You can only generate certificates using an identity that has been registered with your Certificate Authority. The tutorial below first enrolls using an admin identity that has already been registered with your CA. It then uses those certificates to register a new client identity. The tutorial enrolls again using the new identity, and uses those certificates to submit transactions to the network. <!---You can find an illustration of how the developing applications tutorial interacts with your organization CA in the diagram below.--->
 
-<!-- this last sentance when the certificates article goes live --->
+You can also use the "Certificate Authority" screen of the Network Monitor to generate certificates, and use those certificates to interact with the network. To learn how, visit [Generating certificates using the Network Monitor](#enroll-panel). You can also learn how to use the [Fabric CA client](certificates.html#enroll-register-caclient) from the command line to generate certificates and register users in the [Managing certificates](certificates.html) tutorial.
 
 ### Enrollment using the Fabric SDK
 {: #enroll-app-sdk}
@@ -127,7 +133,7 @@ From the `fabcar` directory in your `fabric-samples` folder, open the `enrollAdm
   ```
   {:codeblock}
 
-3. After the definition of the KVS, you can use a few methods from the [Fabric Client ![External link icon](images/external_link.svg "External link icon")](https://fabric-sdk-node.github.io/Client.html "Fabric Client") class and Fabric-CA-Client API <!---[FabricCAServices ![External link icon](images/external_link.svg "External link icon")](https://fabric-sdk-node.github.io/FabricCAServices.html "FabricCAServices")---> to communicate with the CA Server. You will need to provide the SDK the name and URL of your Certificate Authority. Open the **Connection Profile** JSON file from your **Overview** screen in the Network Monitor, and find the following variables under the `certificateAuthorites` section:
+3. After the definition of the KVS, you can use a few methods from the [Fabric Client ![External link icon](images/external_link.svg "External link icon")](https://fabric-sdk-node.github.io/Client.html "Fabric Client"){:new_window} class and Fabric-CA-Client API <!---[FabricCAServices ![External link icon](images/external_link.svg "External link icon")](https://fabric-sdk-node.github.io/FabricCAServices.html "FabricCAServices")---> to communicate with the CA Server. You will need to provide the SDK the name and URL of your Certificate Authority. Open the **Connection Profile** JSON file from your **Overview** screen in the Network Monitor, and find the following variables under the `certificateAuthorites` section:
   * URL for CA: ``url`` under `certificateAuthorities`
   * Admin user ID: ``enrollId``
   * Admin password: ``enrollSecret``
@@ -178,47 +184,6 @@ The enrollment command generates the signCert and exports it into a folder named
 
 If you want to [operate your network using the SDK](#operate-sdk), you need to upload your admin signCert to the {{site.data.keyword.blockchainfull}} Platform. You can find your admin signCert in the `hfc-key-store` folder. Open the `admin` file, and copy the certificate inside the quotation marks after the `certificate` field. Use to a tool or text editor to convert the certificate into PEM format. You can then upload the admin certificate to your blockchain network from the Network Monitor. For more information about adding certificates, see [the "Certificates" tab of "Member" screen](v10_dashboard.html#members) in the Network Monitor. This is not necessary if you are only using the SDK to invoke or query chaincode.
 
-<!-- you can eliminate this section when the certificates article goes live --->
-
-### Enrollment using the Fabric CA Client
-{: #enroll-app-caclient}
-
-1. Download the [fabric-ca binaries](https://nexus.hyperledger.org/content/repositories/releases/org/hyperledger/fabric-ca/hyperledger-fabric-ca/) to your local machine and extract them. Move the executable `fabric-ca` client from the directory where it was downloaded into a directory where you can use it to run commands.
-
-2. Download the TLS certs from {{site.data.keyword.cloud_notm}} depending on the service plan, location, and cluster that you use.
-  - Root TLS Cert for Starter Plan  
-    - US: [us01.blockchain.ibm.com.cert ![External link icon](images/external_link.svg "External link icon")](http://blockchain-certs.mybluemix.net/us01.blockchain.ibm.com.cert "us01.blockchain.ibm.com.cert"); [us02.blockchain.ibm.com.cert ![External link icon](images/external_link.svg "External link icon")](http://blockchain-certs.mybluemix.net/us02.blockchain.ibm.com.cert "us02.blockchain.ibm.com.cert")
-    - UK: [uk01.blockchain.ibm.com.cert ![External link icon](images/external_link.svg "External link icon")](http://blockchain-certs.mybluemix.net/uk01.blockchain.ibm.com.cert "uk01.blockchain.ibm.com.cert"); [uk02.blockchain.ibm.com.cert ![External link icon](images/external_link.svg "External link icon")](http://blockchain-certs.mybluemix.net/uk02.blockchain.ibm.com.cert "uk02.blockchain.ibm.com.cert")
-    - Sydney: [aus01.blockchain.ibm.com.cert ![External link icon](images/external_link.svg "External link icon")](http://blockchain-certs.mybluemix.net/aus01.blockchain.ibm.com.cert "aus01.blockchain.ibm.com.cert"); [aus02.blockchain.ibm.com.cert ![External link icon](images/external_link.svg "External link icon")](http://blockchain-certs.mybluemix.net/aus02.blockchain.ibm.com.cert "aus02.blockchain.ibm.com.cert")
-  - [Root TLS Cert for Enterprise Plan ![External link icon](images/external_link.svg "External link icon")](https://blockchain-certs.mybluemix.net/3.secure.blockchain.ibm.com.rootcert)
-
-  Save the contents to a folder, for example ``$HOME/tls``. This step allows the data flowing to be encrypted on the wire.
-
-3. Open the **Connection Profile** JSON file from your **Overview** screen in the Network Monitor, and find the following variables:
-  * URL for CA: ``url`` under `certificateAuthorities`
-  * Admin user ID: ``enrollId``
-  * Admin password: ``enrollSecret``
-  * CA Name: ``caName``
-
-4. You can use the Fabric CA client to send an `enroll` call to the Certificate Authority by passing in the TLS certs path and the four strings above with the following command:
-  ```
-  ./fabric-ca-client enroll -u https://<enroll_id>:<enroll_password>@<ca_url_with_port> --caname <ca_name> --tls.certfiles <tls_cert_path>
-  ```
-  {:codeblock}
-
-  You need to run this command in the directory where you move the Fabric CA Client to. A real call might look similar to the following example command:
-  ```
-  ./fabric-ca-client enroll -u https://admin:dda0c53f7b@n7413e3b503174a58b112d30f3af55016-org1-ca.us3.blockchain.ibm.com:31011 --caname org1CA --tls.certfiles $HOME/tls/us2.blockchain.ibm.com.cert
-  ```
-  {:codeblock}
-
-5. Find your admin certificate in `$HOME/.fabric-ca-client/msp/signcerts/cert.pem`. You can then upload the admin certificate to your blockchain network from the Network Monitor. For more information about adding certificates, see [the "Certificates" tab of "Member" screen](v10_dashboard.html#members) in the Network Monitor.
-
-  You can also find CA root certificate and admin private key in the following directories:
-  * CA root certificate: `$HOME/.fabric-ca-client/msp/cacerts/--<ca_name>.pem`
-  * The admin private key: `$HOME/.fabric-ca-client/msp/keystore/<>_sk file`
-
-
 ## Registering your application
 {: #register-app}
 
@@ -231,7 +196,7 @@ You can use the `registerUser.js` file to register and enroll the application as
 
 1. Provide the CA URL and name to a new instance of the Fabric CA Client.
 
-2. Provide the enrollID to the `getUserContext` method from the [Fabric Client ![External link icon](images/external_link.svg "External link icon")](https://fabric-sdk-node.github.io/Client.html) to check whether your `admin` is enrolled and allowed to issue this request. **Edit** relevant code block in your file based on the sample below:
+2. Provide the enrollID to the `getUserContext` method from the [Fabric Client class ![External link icon](images/external_link.svg "External link icon")](https://fabric-sdk-node.github.io/Client.html "Fabric Client class"){:new_window} to check whether your `admin` is enrolled and allowed to issue this request. **Edit** relevant code block in your file based on the sample below:
   ```
   // be sure to change the http to https when the CA is running TLS enabled
   fabric_ca_client = new Fabric_CA_Client('https://admin:dda0c53f7b@n7413e3b503174a58b112d30f3af55016-org1-ca.us3.blockchain.ibm.com:31011', null , '<caName>', crypto_suite);
@@ -267,49 +232,6 @@ You can use the `registerUser.js` file to register and enroll the application as
 
 Run the `node registerUser.js` command to register and enroll `user1`. If you can find the `user1` certificates in the `hfc-key-store` folder, the command works. You can only register an identity once. If you experience a problem, try running `registerUser.js` with a new user name.
 
-<!-- you can eliminate this section when the certificates article goes live --->
-
-### Registering using the Fabric CA Client
-{: #register-app-caclient}
-
-1. Issue the following command to find your affiliation and your organization name in your blockchain network.
-  ```
-  ./fabric-ca-client affiliation list --tls.certfiles pathToPem
-  ```
-  {:codeblock}
-
-  You should see information that is similar to the following example:
-  ```
-  affiliation: ibp
-      affiliation: ibp.PeerOrg1
-  ```
-  {:codeblock}
-
-  Make a note of the second **affiliation** value, for example, `ibp.PeerOrg1`. You need to use this value in the command below.
-
-2. Run the following command to register the peer.
-  ```
-  ./fabric-ca-client register --id.name <name> --id.affiliation <affiliation> --id.secret <password> --tls.certfiles pathToPem
-  ```
-  {:codeblock}
-
-  Specify a name and password for your peer and replace `name` and `password` with your peer name and password. Make a note of this information. You need to need it when you configure your peer. For example:
-  ```
-  ./fabric-ca-client register --id.name user1 --id.affiliation ibp.PeerOrg1 --id.secret userpw  --tls.certfiles --tls.certfiles $HOME/tls/us2.blockchain.ibm.com.cert
-  ```
-  {:codeblock}
-
-  You can only register an identity once. If you experience a problem, try a command with a new user name and password.
-
-  When the command completes successfully, you should see information that is similar to the following example:
-  ```
-  2018/06/18 16:53:00 [INFO] Configuration file location: /fabric-ca-remote/admin/fabric-ca-client-config.yaml
-  2018/06/18 16:53:00 [INFO] TLS Enabled
-  2018/06/18 16:53:00 [INFO] TLS Enabled
-  Password: userpw
-  ```
-  {:codeblock}
-
 ### Registering using the Network Monitor
 
 Alternatively, you can register and enroll your client application using the Network Monitor **Certificate Authority** tab. Refer to this [information](v10_dashboard.html#ca) for more instructions.
@@ -323,7 +245,7 @@ Your application needs to interact with the full blockchain network to submit a 
 2. Endorsing peers return endorsed transaction to the application.
 3. The application sends the endorsed transaction to the ordering service to add the transaction to the ledger.
 
-For more information about the complete transaction flow, see [Transaction Flow ![External link icon](images/external_link.svg "External link icon")]( https://hyperledger-fabric.readthedocs.io/en/release-1.1/txflow.html "Transaction Flow"){:new_window} in the Hyperledger Fabric documentation. After you getting started with this tutorial, visit the [application connectivity and availability](#app-connectivity-availability) section for tips on managing how your SDK interacts with the network.
+For more information about the complete transaction flow, see [Transaction Flow ![External link icon](images/external_link.svg "External link icon")]( https://hyperledger-fabric.readthedocs.io/en/release-1.2/txflow.html "Transaction Flow"){:new_window} in the Hyperledger Fabric documentation. After you getting started with this tutorial, visit the [application connectivity and availability](#app-connectivity-availability) section for tips on managing how your SDK interacts with the network.
 
 The following samples demonstrates how the Node SDK sets up the network topology, defines the transaction proposal, and then submits the transaction to the network. You can use the `invoke.js` file to invoke functions within the `fabcar` chaincode. These functions allow you to create and transfer assets on the blockchain ledger. This tutorial uses the `initLedger` function to add new data to your channel, and then uses the `query.js` file to query the data.
 
@@ -344,6 +266,8 @@ Open the `invoke.js` file in a text editor.
   channel.addOrderer(order);
   ```
   {:codeblock}
+
+  The new peer and orderer variables open GRPC connections to your blockchain network. For more information about managing these connections, see [Opening and closing network connections](#connections).
 
   When you add the peer URL to the `fabric_client.newPeer` method, you also import the relevant TLS certificates from your connection profile by using the code snippet below. You did the same when you added the ordering service URL. You need to use these TLS certs to authenticate communication with your network.
   ```
@@ -412,7 +336,7 @@ Response is
 ```
 {:codeblock}
 
-For more information about the fabcar application and the functions it uses, you can visit the full tutorial of [Writing Your First Application ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.1/write_first_app.html "writing your first application"){:new_window} in the Hyperledger Fabric documentation.
+For more information about the fabcar application and the functions it uses, you can visit the full tutorial of [Writing Your First Application ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/write_first_app.html "writing your first application"){:new_window} in the Hyperledger Fabric documentation.
 
 ## Using your Connection Profile with the SDK
 {: #using-your-connection-profile-with-the-sdk}
@@ -436,10 +360,41 @@ The SDK then adds the peers and ordering service that are defined on the channel
 
 You can send transactions to peers that are outside of your organization for endorsement by editing your Connection Profile. The Connection Profile already contains the endpoint information and TLS certificates of peers from other organizations on your {{site.data.keyword.blockchainfull}} Platform network. Add the name of the peer to the relevant channel in the `channels` section of the profile to add the peer to the channel.
 
-## Application connectivity and availability
+## Generating certificates using the Network Monitor
+{: #enroll-panel}
+
+You can use the Network Monitor to generate certificates using the admin identity, and then pass those certificates directly to the SDK. This means that you can get started interacting with the network quickly, without having to generate certificates using the SDK.
+
+Navigate to the "Certificate Authority" panel in your Network Monitor. Click the **Generate Certificate** button next to your admin identity to get a new signCert and private key from your CA. The **Certificate** field contains the signCert, just above the **Private Key**. You can click the copy icon at the end of each field to copy the value. Save these certificates place where you can provide them to your application. **Note** that {{site.data.keyword.blockchainfull_notm}} Platform doesn't store these certificates. You need to safely save and store them.
+
+The signCert and private key are sufficient to form a user context that can sign requests within the Node SDK. Use the [createUser ![External link icon](images/external_link.svg "External link icon")](https://fabric-sdk-node.github.io/Client.html#createUser__anchor "create user"){:new_window} method of the Client class to create the user context object. Within the `creatUser` method, pass the identity name and mspid to the [user ![External link icon](images/external_link.svg "External link icon")](https://fabric-sdk-node.github.io/global.html#UserOpts "user"){:new_window} object, along with the paths to the private key and signCert to the [cryptoContent ![External link icon](images/external_link.svg "External link icon")](https://fabric-sdk-node.github.io/global.html#CryptoContent "crypto content"){:new_window} object.
+
+We can use the "Certificate Authority" panel and the `createUser` class as part of the developing applications tutorial as an example. If you have already gone through the tutorial, then you have installed and instantiated the `fabcar` chaincode, and added some data to your ledger. We can use the certificates to query the ledger as the `admin` user. Follow the instructions to generate certificates using the Network Monitor above if you have not already done so.
+
+Save your private key as privateKey.pem and your signCert as certificate.pem in the same directory as `query.js`. Open `query.js` in a text editor. Add the following line to the top of the file:
+```
+var fs = require('fs');
+```
+Replace the following line importing the user context from persistence,
+```
+return fabric_client.getUserContext('user1', true);
+```
+with the following code creating a new user context using our signCert and private key.
+```
+return fabric_client.createUser({
+		username: 'admin',
+		mspid:  'org1',
+		cryptoContent: {
+			privateKeyPEM: fs.readFileSync(path.join(__dirname,'./privateKey.pem')),
+			signedCertPEM: fs.readFileSync(path.join(__dirname,'./certificate.pem'))
+		}});
+```
+The snippet above reads your certificates directly to the `cryptoContent` class as PEM files. The username will be `admin`, since the certificates were generated using the `admin` identity. You can find your mspid in the `certificateAuthorites` section of your connection profile. Save the file and issue the command `node query.js`. If successful, the query will return the same results as before.
+
+## Best practices for application connectivity and availability
 {: #app-connectivity-availability}
 
-The Hyperledger Fabric [Transaction Flow ![External link icon](images/external_link.svg "External link icon")]( https://hyperledger-fabric.readthedocs.io/en/release-1.1/txflow.html "Transaction Flow"){:new_window} spans multiple components, with the client applications playing a unique role. The SDK submits transaction proposals to the peers for endorsement. It then collects the endorsed proposals to be sent to the ordering service, which then sends blocks of transactions to the peers to be added to channel ledgers. Developers of production applications should be prepared to manage their interactions between the SDK and their networks for efficiency and availability.
+The Hyperledger Fabric [Transaction Flow ![External link icon](images/external_link.svg "External link icon")]( https://hyperledger-fabric.readthedocs.io/en/release-1.2/txflow.html "Transaction Flow"){:new_window} spans multiple components, with the client applications playing a unique role. The SDK submits transaction proposals to the peers for endorsement. It then collects the endorsed proposals to be sent to the ordering service, which then sends blocks of transactions to the peers to be added to channel ledgers. Developers of production applications should be prepared to manage their interactions between the SDK and their networks for efficiency and availability.
 
 ### Managing transactions
 {: #managing-transactions}
@@ -448,20 +403,45 @@ Application clients should ensure that their transaction proposals are validated
 
 If a chaincode is not running, the first transaction proposal that is sent to this chaincode will start the chaincode. While the chaincode is starting, all other proposals are rejected with an error that indicates that the chaincode is currently starting. This is different from transaction invalidation. If any proposal is rejected while the chaincode is starting, application clients need to send the rejected proposals again after the chaincode starts. Application clients can use a message queue to avoid losing transaction proposals.
 
-You can use a channel based event service to monitor transactions and build message queues. Channel based listeners should be used rather than peer based services because of their ability to scale to multiple channels and distinguish between traffic on different channels. The [channelEventHub ![External link icon](images/external_link.svg "External link icon")](https://fabric-sdk-node.github.io/ChannelEventHub.html "channelEventHub"){:new_window} class can register listeners based on transaction, block, and chaincode events. You can learn how to set up a [channel based event service ![External link icon](images/external_link.svg "External link icon")](https://fabric-sdk-node.github.io/tutorial-channel-events.html "channel based event service"){:new_window} using the Node SDK Documentation.
+You can use a channel-based event service to monitor transactions and build message queues. The [channelEventHub ![External link icon](images/external_link.svg "External link icon")](https://fabric-sdk-node.github.io/ChannelEventHub.html "channelEventHub"){:new_window} class can register listeners based on transaction, block, and chaincode events. Channel-based listeners from the channel eventhub can scale to multiple channels and distinguish between traffic on different channels.
 
-### Closing network connections
+It is recommended that you use channelEventHub rather than the old eventHub class. EventHub is single threaded and contains events from all channels that could slow down or even hang listeners across channels. The eventHub class also provides no guarantee that an event will be delivered, and provides no way of retrieving events from a certain point, such as a block number, to track events that were missed.
 
-When you add peers and orderers to your SDK before submitting a transaction proposal, you are opening a grpc streaming connection to the network component. For example, the command
+**Note** that the peer eventhub will be deprecated in a future release of the Fabric SDK. If you have existing applications that use the peer eventhub, update your applications to use the channel eventhub. For more information, see [How to use the channel-based event service ![External link icon](images/external_link.svg "External link icon")](https://fabric-sdk-node.github.io/tutorial-channel-events.html "How to use the channel-based event service"){:new_window} in the Node SDK Documentation.
+
+### Opening and closing network connections
+{: #connections}
+
+When you create peer and orderer objects with the SDK before submitting transaction proposals, you are opening a gRPC connection between your application and the network component. For example, the following command opens a connection to `org1-peer1`. This connection continues to be active while your application is running.
+
 ```
 var peer = fabric_client.newPeer(creds.peers["org1-peer1"].url, { pem: creds.peers["org1-peer1"].tlsCACerts.pem , 'ssl-target-name-override': null});
 ```
-will open a connection to `org1-peer1`. If you have a continuously running application, you should close connections when they are not needed using the `peer.close()` and `orderer.close()` commands to free up resources and prevent performance degradation. You can find more detail in the [peer](https://fabric-sdk-node.github.io/Peer.html#close__anchor) and [orderer](https://fabric-sdk-node.github.io/Orderer.html#close__anchor) classes of the Node SDK documentation.
+{:codeblock}
+
+When you manage the connections between your application and your network, you might consider the following recommendations.
+
+- Reuse peer and orderer objects when you interact with your network, instead of opening new connections to submit transactions. Reusing peer and orderer objects can save resources and lead to better performance.  
+- To maintain a persistent connection to your network components, use [gRPC keepalives ![External link icon](images/external_link.svg "External link icon")](https://github.com/grpc/grpc/blob/master/doc/keepalive.md "gRPC Keepalives"). Keepalives keep the gRPC connection active and prevent an "unused" connection from being closed. The following example of peer connection adds gRPC options to the [Connection Options ![External link icon](images/external_link.svg "External link icon")](https://fabric-sdk-node.github.io/global.html#ConnectionOpts "Connection") object. The gRPC options are set to values that {{site.data.keyword.blockchainfull}} Platform recommends.  
+  ```
+  var peer = fabric_client.newPeer(creds.peers["org1-peer1"].url, { pem: creds.peers["org1-peer1"].tlsCACerts.pem , 'ssl-target-name-override': null},
+  grpcOptions": {
+    "grpc.keepalive_time_ms": 120000,
+    "grpc.http2.min_time_between_pings_ms": 120000,
+    "grpc.keepalive_timeout_ms": 20000,
+    "grpc.http2.max_pings_without_data": 0,
+    "grpc.keepalive_permit_without_calls": 1
+    }
+  );
+  ```
+  {:codeblock}
+
+- If a connection is no longer needed, use the `peer.close()` and `orderer.close()` commands to free up resources and prevent performance degradation. For more information, see the [peer close ![External link icon](images/external_link.svg "External link icon")](https://fabric-sdk-node.github.io/Peer.html#close__anchor "peer close") and [orderer close![External link icon](images/external_link.svg "External link icon")](https://fabric-sdk-node.github.io/Orderer.html#close__anchor "orderer close") classes in the Node SDK documentation.
 
 ### Highly available applications
 {: #ha-app}
 
-As a high availability best practice, it is strongly recommended that you deploy a minimum of two peers per organization for failover. You will need to adapt your applications for high availability as well. Install chaincode on both peers and add them to your channels. Then be prepared to [submit transaction proposals](#invoke) to both peer endpoints when setting up your network and building your peer target list. If you have an Enterprise Plan network, you can also add another orderer to your network as well. If you are using your [Connection Profile](#using-your-connection-profile-with-the-sdk) instead of adding network endpoints manually, ensure that your profile is up to date and that the additional peers and orderers have been added relevant channel in the `channels` section of the profile. The SDK will then add the components joined on the channel using the Connection Profile.
+As a high availability best practice, it is strongly recommended that you deploy a minimum of two peers per organization for failover. You will need to adapt your applications for high availability as well. Install chaincode on both peers and add them to your channels. Then be prepared to [submit transaction proposals](#invoke) to both peer endpoints when setting up your network and building your peer target list. If you have an Enterprise Plan network, you can also add another orderer to your network as well. If you are using your [Connection Profile](#using-your-connection-profile-with-the-sdk) instead of adding network endpoints manually, ensure that your profile is up to date and that the additional peers and orderers have been added to the relevant channel in the `channels` section of the profile. The SDK will then add the components joined on the channel using the Connection Profile.
 
 ## Enabling mutual TLS
 {: #mutual-tls}
@@ -487,7 +467,7 @@ You need to upload your admin signCert to the {{site.data.keyword.blockchainfull
 ### Joining a channel
 {: #join-channel-sdk}
 
-After you create a channel using the Network Monitor or the API's, you can use the SDK to join your peer to the channel.
+After your organization creates or joins a channel using the Network Monitor or the API's, you can use the SDK to join your peer to the channel.
 
 1. [Fetch the genesis block ![External link icon](images/external_link.svg "External link icon")](https://fabric-sdk-node.github.io/Channel.html#getGenesisBlock "fetch genesis block"){:new_window} of the channel from the ordering service.
 2. Pass the genesis block to the [join channel ![External link icon](images/external_link.svg "External link icon")](https://fabric-sdk-node.github.io/Channel.html#joinChannel "joinChannel"){:new_window}  method to join your peer to the channel.
@@ -505,7 +485,7 @@ To use the `fabcar` sample to join a channel, use the `invoke.js` file as your s
     let j_request = {
       targets : targets,
       block : genesis_block,
-      txId :     tx_id
+      txId : tx_id
     };
     // send genesis block to the peer
     return channel.joinChannel(j_request);
@@ -517,6 +497,9 @@ To use the `fabcar` sample to join a channel, use the `invoke.js` file as your s
     }
   });
   ```
+
+Your signCert will need to be added to the channel before you can fetch the genesis block. If you generated certificates after your organization joined the channel, you will need to upload your signCert to the platform and then click the **Sync Certificates** button in the "Channels" screen. You may need to wait a few minutes for channel sync to complete before issuing the join channel command. To learn more, see [Uploading signing certificates to {{site.data.keyword.blockchainfull_notm}} Platform](certificates.html#upload-certs) in the [Managing certificates](certificates.html) tutorial.
+
 ### Installing a chaincode
 {: #install-cc-sdk}
 
@@ -545,18 +528,20 @@ To instantiate the chaincode, you need to send an [instantiate proposal ![Extern
 To use the `fabcar` sample to instantiate your chaincode, use the `invoke.js` file as your starting point. You need to send this request as the admin rather than the application, so replace `user1` with `admin` in the `getUserContext` method. Replace the transaction proposal object with an install chaincode request using the example below:
 ```
 var request = {
-		targets: peer,
+    targets: peer,
     chaincodePath: chaincode_path,
     chaincodeId: 'fabcar',
     chaincodeType: 'golang',
     chaincodeVersion: 'v1',
-		channelNames: 'mychannel'
-		};
-
+    channelNames: 'mychannel',
+    txId : tx_id
+};
 ```
 {:codeblock}
 
 Send this request to `return channel.sendInstantiateProposal(request);` instead of the `return channel.sendTransactionProposal(request);` currently in the file. After sending the instantiate request to the channel, you then need to send the endorsed proposal as a transaction to the ordering service. This uses the same methods as sending a transaction, so you can keep the rest of the file unchanged. You may want [increase the timeout value](#set-timeout-in-sdk) in the instantiate proposal. Otherwise the request may timeout before the platform can start the chaincode container.
+
+Your signCert will need to be added to the channel before you can instantiate chaincode. If you generated certificates after you joined the channel, you will need to upload your signCert to the platform and then click the **Sync Certificates** button in the "Channels" screen. You may need to wait a few minutes for channel sync to complete before issuing the instantiate chaincode command. To learn more, see [Uploading signing certificates to {{site.data.keyword.blockchainfull_notm}} Platform](certificates.html#upload-certs) in the [Managing certificates](certificates.html) tutorial.
 
 ## (Optional) Setting timeout values in Fabric SDKs
 {: #set-timeout-in-sdk}
@@ -624,7 +609,7 @@ channel.sendInstantiateProposal(request, 300000);
 
 If your network uses CouchDB and you want to take advantage of the CouchDB indexing feature to improve the performance of CouchDB, you need to package the indexes with the chaincode.
 
-For more information about CouchDB and how to set up indexes, see [CouchDB as the State Database ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/couchdb_as_state_database.html "CouchDB as the State Database"){:new_window}. in the Hyperledger Fabric documentation. You can also find an example that uses an index with chaincode in this [Fabric tutorial ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/couchdb_tutorial.html){:new_window}.
+For more information about CouchDB and how to set up indexes, see [CouchDB as the State Database ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/release-1.2/couchdb_as_state_database.html "CouchDB as the State Database"){:new_window}. in the Hyperledger Fabric documentation. You can also find an example that uses an index with chaincode in this [Fabric tutorial ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/couchdb_tutorial.html){:new_window}.
 
 <!--# Next steps-->
 

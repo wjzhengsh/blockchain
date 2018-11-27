@@ -1,8 +1,8 @@
----
+﻿---
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -16,7 +16,11 @@ lastupdated: "2018-06-14"
 # 용어집
 {: #glossary}
 
-{{site.data.keyword.blockchainfull}} Platform은 블록체인 과정을 단순화합니다. 이 주제에서는 이 문서에 나오는 용어를 정의하고 블록체인의 개념을 소개합니다. 용어에 대해 더 자세히 알아보려면 [Hyperledger Fabric ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](http://hyperledger-fabric.readthedocs.io/en/master/glossary.html)을 참조할 수 있습니다.
+
+***[이 페이지가 도움이 되었습니까? 의견을 기다립니다.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
+{{site.data.keyword.blockchainfull}} Platform은 블록체인 과정을 단순화합니다. 이 주제에서는 이 문서에 나오는 용어를 정의하고 블록체인의 개념을 소개합니다. 용어에 대해 더 자세히 알아보려면 [Hyperledger Fabric ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/glossary.html)을 참조할 수 있습니다.
 {:shortdesc}
 
 ## 구성원(Member)
@@ -25,8 +29,8 @@ lastupdated: "2018-06-14"
 ## 네트워크 모니터(Network Monitor)
 {{site.data.keyword.blockchainfull_notm}} Platform이 블록체인 네트워크를 보고 관리하기 위해 제공하는 GUI 대시보드입니다.
 
-## 네트워크 신임 정보(Network Credentials)
-네트워크 모니터의 "API" 화면에 표시됩니다. 신임 정보에는 Swagger UI의 "키"(사용자 이름) 및 "시크릿"(비밀번호)이 포함됩니다. REST API를 시험 사용하기 전에 이러한 네트워크 신임 정보를 사용하여 인증해야 합니다. 
+## 네트워크 인증 정보(Network Credentials)
+네트워크 모니터의 "API" 화면에 표시됩니다. 인증 정보에는 Swagger UI의 "키"(사용자 이름) 및 "시크릿"(비밀번호)이 포함됩니다. REST API를 시험 사용하기 전에 이러한 네트워크 인증 정보를 사용하여 인증해야 합니다.
 
 ## 네트워크(Network)
 {{site.data.keyword.cloud_notm}}에 있는 {{site.data.keyword.blockchainfull_notm}} Platform 서비스의 인스턴스입니다.
@@ -51,8 +55,12 @@ lastupdated: "2018-06-14"
 
 ## 사용자(User)
 사용자는 기존 구성원에 대한 신뢰 관계를 통해 원장에 간접적으로 액세스할 수 있는 블록체인 네트워크의 참가자입니다.
-## 서비스 신임 정보(Service credentials)
-서비스 신임 정보는 JSON 형식이며 피어, 순서 지정 노드 및 CA 등의 네트워크 리소스에 대한 API 엔드포인트 정보 및 enrollID/시크릿을 포함합니다. 애플리케이션은 이러한 API 엔드포인트를 통해 네트워크 리소스와 상호작용합니다.
+
+## 상태 데이터베이스
+현재 상태 데이터는 체인코드에서 효율적인 읽기 및 조회를 위해 피어의 데이터베이스에 저장됩니다. 스타터 플랜 네트워크는 CouchDB를 상태 데이터베이스로 사용합니다. 엔터프라이즈 플랜 네트워크는 LevelDB 또는 CouchDB를 사용할 수 있습니다.
+
+## 서비스 인증 정보(Service credentials)
+서비스 인증 정보는 JSON 형식이며 피어, 순서 지정 노드 및 CA 등의 네트워크 리소스에 대한 API 엔드포인트 정보 및 enrollID/시크릿을 포함합니다. 애플리케이션은 이러한 API 엔드포인트를 통해 네트워크 리소스와 상호작용합니다.
 
 ## 설치(Install)
 피어 파일 시스템에 체인코드를 배치하는 프로세스입니다. 이 체인코드를 실행할 모든 피어에 체인코드를 설치해야 합니다.
@@ -71,9 +79,6 @@ lastupdated: "2018-06-14"
 
 ## 원장(Ledger)
 변경할 수 없는 순차 트랜잭션 레코드 및 현재 상태를 유지하는 상태 데이터베이스를 저장하는, 문자 그대로 "블록의 체인"으로 구성됩니다. 채널당 하나의 원장이 있으며 이에 대한 업데이트는 특정 채널의 정책에 따라 합의 프로세스를 통해 관리됩니다.
-
-## 원장 데이터베이스(Ledger database)
-현재 상태 데이터는 체인코드에서 효율적인 읽기 및 조회를 위해 피어의 데이터베이스에 저장됩니다. 스타터 플랜 네트워크는 CouchDB를 원장 데이터베이스로 사용합니다. 엔터프라이즈 플랜 네트워크는 LevelDB 또는 CouchDB를 사용할 수 있습니다.
 
 ## 인스턴스화(Instantiate)
 특정 채널에서 체인코드 컨테이너를 시작하고 초기화하는 프로세스입니다. 체인코드를 피어가 설치하고 모든 피어가 채널에 가입한 후 채널에서 체인코드를 인스턴스화해야 합니다. 인스턴스화는 체인 코드의 필수 초기화를 수행하며, 여기에는 체인코드의 초기 세계 상태를 구성하는 키 값 쌍 설정이 포함됩니다. 인스턴스화 후에 체인코드가 설치된 피어는 체인코드 호출을 허용할 수 있습니다.
@@ -112,13 +117,16 @@ lastupdated: "2018-06-14"
 원장 트랜잭션이 네트워크에서 동기화 상태를 유지하게 하는 협업 프로세스입니다. 합의를 통해 원장은 적절한 참가자가 트랜잭션을 승인하는 경우에만 업데이트되고 동일한 순서로 동일한 트랜잭션을 사용하여 업데이트됩니다. 합의에 도달하는 알고리즘 방식은 여러 가지가 있습니다.
 
 ## 현재 상태(Current state)
-원장의 현재 상태는 해당 체인 트랜잭션 로그에 포함된 모든 키에 대한 최신 값을 나타냅니다. 현재 상태는 채널에 알려진 모든 최신 키 값을 나타내기 때문에 세계 상태라고도 합니다. 체인코드는 현재 상태 데이터에 대해 트랜잭션 제안을 실행합니다. 현재 상태는 키 값이 변경되거나 새 키가 추가될 때마다 변경됩니다. 최신 키-값 쌍은 변경되기 전에 알려져야 하므로 현재 상태는 트랜잭션 플로우에 매우 중요합니다. 피어는 블록의 각 유효한 트랜잭션에 대한 원장의 현재 상태에 최신 값을 커미트합니다. 현재 상태는 피어 원장 데이터베이스에 저장됩니다.
+원장의 현재 상태는 해당 체인 트랜잭션 로그에 포함된 모든 키에 대한 최신 값을 나타냅니다. 현재 상태는 채널에 알려진 모든 최신 키 값을 나타내기 때문에 세계 상태라고도 합니다. 체인코드는 현재 상태 데이터에 대해 트랜잭션 제안을 실행합니다. 현재 상태는 키 값이 변경되거나 새 키가 추가될 때마다 변경됩니다. 최신 키-값 쌍은 변경되기 전에 알려져야 하므로 현재 상태는 트랜잭션 플로우에 매우 중요합니다. 피어는 블록의 각 유효한 트랜잭션에 대한 원장의 현재 상태에 최신 값을 커미트합니다. 현재 상태는 피어의 상태 데이터베이스에 저장됩니다.
 
 ## CA
-인증 기관입니다. 참가하는 모든 구성원에게 인증서를 발행하는 블록체인 네트워크 리소스입니다. 이러한 인증서는 구성원의 ID를 나타냅니다. 네트워크의 모든 엔티티(피어, 순서 지정자, 클라이언트 등)는 통신하고 인증하고 결과적으로 거래하기 위한 ID를 가져야 합니다. 이러한 ID는 블록체인 네트워크에 직접 참가하는 데 필요합니다. CA의 비즈니스 네트워크 카드를 작성할 수 있습니다. 그런 다음 [CA 카드](develop_starter.html#developing-business-networks-with-starter-plan)를 가져와 이 카드를 사용하여 관리자 시크릿을 스타터 플랜 인증 기관의 올바른 인증서로 교환합니다.
+인증 기관입니다. 참가하는 모든 구성원에게 인증서를 발행하는 블록체인 네트워크 리소스입니다. 이러한 인증서는 구성원의 ID를 나타냅니다. 네트워크의 모든 엔티티(피어, 순서 지정자, 클라이언트 등)는 통신하고 인증하고 결과적으로 거래하기 위한 ID를 가져야 합니다. 이러한 ID는 블록체인 네트워크에 직접 참가하는 데 필요합니다. CA의 비즈니스 네트워크 카드를 작성할 수 있습니다. 그런 다음 [CA 카드](develop_starter.html)를 가져와 이 카드를 사용하여 관리자 시크릿을 스타터 플랜 인증 기관의 올바른 인증서로 교환합니다.
 
 ## CouchDB
-스타터 플랜 네트워크의 원장 데이터베이스에 사용되는 문서 저장소입니다. 또한 CouchDB는 LevelDB와 함께 엔터프라이즈 플랜 네트워크에 대한 옵션입니다. CouchDB는 인덱스 사용을 지원하고 사용자가 피어의 데이터에 대해 다양한 조회를 실행할 수 있게 합니다.
+스타터 플랜 네트워크의 상태 데이터베이스에 사용되는 문서 저장소입니다. 또한 CouchDB는 LevelDB와 함께 엔터프라이즈 플랜 네트워크에 대한 옵션입니다. CouchDB는 인덱스 사용을 지원하고 사용자가 피어의 데이터에 대해 다양한 조회를 실행할 수 있게 합니다.
+
+## Gossip
+Hyperledger Fabric을 사용하면 피어가 순서 지정 서비스에 의존하지 않고 서로 중요한 네트워크 정보를 수집할 수 있습니다. [gossip 데이터 전파 프로코톨 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.1/gossip.html)에서는 피어에서 서로 메시지를 교환하는 안전하고 신뢰할 수 있으며 확장 가능한 방법을 제공합니다. 예를 들어, 지연, 네트워크 가동 중단 또는 다른 이유로 인해 피어에서 일부 블록이 누락된 경우 gossip 메시징을 사용하여 누락된 블록을 보유하고 있는 다른 피어와 연락하여 현재 원장 상태와 동기화할 수 있습니다.
 
 ## HSM
 하드웨어 보안 모듈입니다. On-Demand 암호화, 키 관리 및 키 스토리지를 관리 서비스로 제공합니다. HSM은 암호화 처리의 리소스 집약적 태스크를 처리하는 물리적 어플라이언스이며 애플리케이션에 대한 대기 시간을 줄입니다. 자세한 정보는 [하드웨어 보안 모듈 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/cloud/hardware-security-module)을 참조하십시오.
@@ -127,19 +135,19 @@ lastupdated: "2018-06-14"
 [Hyperledger Composer ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://hyperledger.github.io/composer/latest/introduction/introduction.html)는 오픈 소스 개발 도구 세트입니다. 이는 맞춤형 모델링 언어를 사용하며, 이 언어는 JavaScript 트랜잭션 및 액세스 제어 규칙과 결합되어 전체 블록체인 비즈니스 네트워크를 모델링합니다. 실제 블록체인에 무언가를 배치하기 전에 Hyperledger Composer를 사용하여 기존 시스템 및 데이터를 블록체인 애플리케이션과 통합할 수 있습니다.
 
 ## Hyperledger Fabric
-[Hyperledger Fabric ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](http://hyperledger-fabric.readthedocs.io/en/master/)은 모듈식 아키텍처로 블록체인 애플리케이션 또는 솔루션을 개발하기 위한 기초적인 역할을 하도록 Linux Foundation이 호스팅하는 비즈니스 블록체인 프레임워크입니다. 합의 및 멤버십 서비스와 같은 Hyperledger Fabric 컴포넌트는 플러그 앤 플레이입니다.
+[Hyperledger Fabric ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/)은 모듈식 아키텍처로 블록체인 애플리케이션 또는 솔루션을 개발하기 위한 기초적인 역할을 하도록 Linux Foundation이 호스팅하는 비즈니스 블록체인 프레임워크입니다. 합의 및 멤버십 서비스와 같은 Hyperledger Fabric 컴포넌트는 플러그 앤 플레이입니다.
 
 ## Kafka
 Hyperledger Fabric에 대한 합의 플러그인 구현이며 블록체인 네트워크에 순서 지정 서비스 노드의 클러스터로 나타납니다. Kafka 구현은 프로덕션 네트워크를 대상으로 합니다.
 
 ## LevelDB
-CouchDB와 함께 엔터프라이즈 플랜 네트워크의 원장 데이터베이스에 대한 옵션인 키-값 저장소입니다. LevelDB는 현재 상태를 키-값 쌍으로 저장하며, 인덱스 또는 다양한 조회 사용을 지원하지 않습니다.
+CouchDB와 함께 엔터프라이즈 플랜 네트워크의 상태 데이터베이스에 대한 옵션인 키-값 저장소입니다. LevelDB는 현재 상태를 키-값 쌍으로 저장하며, 인덱스 또는 다양한 조회 사용을 지원하지 않습니다.
 
 ## MSP
-멤버십 서비스 제공자입니다. 블록체인 네트워크 전체에서 인증서 및 ID를 발행하고 유효성 검증하기 위한 암호 메커니즘 및 프로토콜 세트입니다. 멤버십 서비스 제공자 범위에 발행된 ID는 멤버십 서비스 제공자의 규칙 유효성 검증 정책 내에서 평가할 수 있습니다. MSP는 각 채널 피어에 설치되어 피어에 발행된 트랜잭션 요청이 인증되고 권한이 부여된 사용자 ID에서 시작하는지 확인합니다.
+멤버십 서비스 제공자입니다.  블록체인 네트워크 전체에서 인증서 및 ID를 발행하고 유효성 검증하기 위한 암호 메커니즘 및 프로토콜 세트입니다. 멤버십 서비스 제공자 범위에 발행된 ID는 멤버십 서비스 제공자의 규칙 유효성 검증 정책 내에서 평가할 수 있습니다. MSP는 각 채널 피어에 설치되어 피어에 발행된 트랜잭션 요청이 인증되고 권한이 부여된 사용자 ID에서 시작하는지 확인합니다.
 
 ## SDK
-Hyperledger Fabric은 두 개의 SDK(Software Development Kit)를 지원합니다(노드 SDK 및 Java SDK). 노드 SDK는 NPM을 통해 설치 가능하고 Java SDK는 Maven을 통해 설치 가능합니다. SDK에는 사용 가능한 API의 문서와 함께 고유 git 저장소, 즉 [Fabric 노드 SDK ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://github.com/hyperledger/fabric-sdk-node) 및 [Fabric Java SDK ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://github.com/hyperledger/fabric-sdk-java)가 있습니다. Hyperledger Fabric Client SDK는 클라이언트 애플리케이션과 블록체인 네트워크 간 상호작용을 사용 가능하게 합니다.
+Hyperledger Fabric은 두 개의 SDK(Software Development Kit)를 지원합니다 (노드 SDK 및 Java SDK).  노드 SDK는 NPM을 통해 설치 가능하고 Java SDK는 Maven을 통해 설치 가능합니다.  SDK에는 사용 가능한 API의 문서와 함께 고유 git 저장소, 즉 [Fabric 노드 SDK ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://github.com/hyperledger/fabric-sdk-node) 및 [Fabric Java SDK ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://github.com/hyperledger/fabric-sdk-java)가 있습니다. Hyperledger Fabric Client SDK는 클라이언트 애플리케이션과 블록체인 네트워크 간 상호작용을 사용 가능하게 합니다.
 
 ## SOLO
 Hyperledger Fabric에 대한 합의 플러그인 구현이며 블록체인 네트워크에 단일 순서 지정 서비스 노드로 나타납니다. 스타터 플랜 네트워크는 SOLO 구현을 사용합니다. SOLO 구현은 프로덕션 네트워크에는 사용되지 않습니다. SOLO의 대안은 Kafka 클러스터입니다.

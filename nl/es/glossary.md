@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -16,7 +16,11 @@ lastupdated: "2018-06-14"
 # Glosario
 {: #glossary}
 
-La plataforma {{site.data.keyword.blockchainfull}} simplifica el trabajo con blockchain. En este tema se definen los términos que aparecen en esta documentación y se ofrece una introducción a los conceptos de blockchain. Para estudiar los términos con más detalle, puede consultar [Hyperledger Fabric ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](http://hyperledger-fabric.readthedocs.io/en/master/glossary.html).
+
+***[¿Le resulta útil esta página? Indíquenos su opinión.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
+La plataforma {{site.data.keyword.blockchainfull}} simplifica el trabajo con blockchain. En este tema se definen los términos que aparecen en esta documentación y se ofrece una introducción a los conceptos de blockchain. Para estudiar los términos con más detalle, puede consultar [Hyperledger Fabric ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/glossary.html).
 {:shortdesc}
 
 ## Activo
@@ -29,7 +33,7 @@ Conjunto ordenado de transacciones, que está vinculado criptográficamente al b
 Definición de una red blockchain, que incluye modelo de datos, lógica de transacción y reglas de control de acceso de la solución blockchain. Las definiciones de red empresarial se crean mediante [Hyperledger Composer](#hyperledger-composer). Las definiciones de la Red empresarial se empaquetan en archivos **.bna** (Business Network Archive) que se pueden desplegar.
 
 ## CA
-Autoridad emisora de certificados. Un recurso de la red blockchain que emite certificados a todos los miembros participantes. Estos certificados representan la identidad de un miembro. Todas las entidades de la red (iguales, clasificadores, clientes, etc.) deben tener una identidad para comunicarse, autenticarse y realizar transacciones. Estas identidades son necesarias para cualquier participación directa en la red blockchain. Puede crear una tarjeta de red empresarial para la CA. Después, la [tarjeta de CA](develop_starter.html#developing-business-networks-with-starter-plan) se puede importar y se utilizará para intercambiar el secreto de administración correspondiente a los certificados válidos desde la autoridad emisora de certificados del Plan inicial.
+Entidad emisora de certificados. Un recurso de la red blockchain que emite certificados a todos los miembros participantes. Estos certificados representan la identidad de un miembro. Todas las entidades de la red (iguales, clasificadores, clientes, etc.) deben tener una identidad para comunicarse, autenticarse y realizar transacciones. Estas identidades son necesarias para cualquier participación directa en la red blockchain. Puede crear una tarjeta de red empresarial para la CA. Después, la [tarjeta de CA](develop_starter.html) se puede importar y se utilizará para intercambiar el secreto de administración correspondiente a los certificados válidos de la entidad emisora de certificados del Plan inicial.
 
 ## Cadena
 La cadena del libro mayor es un registro de transacciones estructurado como bloques de transacciones relacionadas con hash. Los iguales reciben bloques de transacciones del servicio de ordenación, marcan las transacciones del bloque como válidas o no válidas en función de las políticas de aprobación y de las infracciones de simultaneidad y añaden el bloque a la cadena hash en el sistema de archivos del igual.
@@ -50,7 +54,7 @@ El archivo de conexión se puede ver en la pantalla "Visión general" del superv
 Proceso de colaboración para mantener las transacciones del libro mayor sincronizadas en la red. El consenso garantiza que los libros mayores se actualizan solo cuando los participantes adecuados apruebas las transacciones y que los libros mayores se actualizan con las mismas transacciones en el mismo orden. Existen muchas maneras algorítmicas diferentes para alcanzar un consenso.
 
 ## CouchDB
-Un almacén de documentos que se utiliza para la base de datos del libro mayor en las redes del Plan inicial. CouchDB es también una opción para las redes del Plan empresarial, junto con LevelDB. CouchDB soporta el uso de índices y le permite emitir consultas enriquecidas en los datos de su igual.
+Un almacén de documentos que se utiliza para la base de datos de estado en las redes del Plan inicial. CouchDB es también una opción para las redes del Plan empresarial, junto con LevelDB. CouchDB soporta el uso de índices y le permite emitir consultas enriquecidas en los datos de su igual.
 
 ## Estado actual
 El estado actual del libro mayor representa los valores más recientes para todas las claves alguna vez incluidas en su registro de transacciones de encadenamiento. Dado que el estado actual representa todos los valores de claves más recientes conocidos en el canal, a veces se refiere al mismo como Escenario mundial. El código de encadenamiento ejecuta propuestas de transacción en los datos de estado actuales. El estado actual cambia cada vez cuando cambia el valor de una clave o cuando se añade una clave nueva. El estado actual es fundamental para un flujo de transacciones porque el valor clave-valor más reciente debe ser conocido para poder cambiarse. Los iguales confirman los valores más recientes en el estado actual del libro mayor para cada transacción válida de un bloque. El estado Actual se almacena en una base de datos de libro mayor de iguales
@@ -64,8 +68,11 @@ Proceso por el que se validan las transacciones del código de encadenamiento. L
 ## Política de aprobación
 Define los nodos iguales de un canal que deben ejecutar las transacciones que están conectadas a una aplicación específica de código de encadenamiento y la combinación de respuestas necesaria (aprobaciones). Una política podría requerir que una transacción sea aprobada por un número mínimo de iguales de aprobación, por un porcentaje mínimo de iguales de aprobación o por todos los iguales de aprobación asignados a una determinada aplicación de código de encadenamiento. Las políticas se pueden definir en función de la aplicación y del nivel deseado de resiliencia frente a un comportamiento inadecuado, ya sea deliberado o no, por parte de los iguales de aprobación. Una transacción enviada debe satisfacer la política de aprobación para que los iguales de confirmación la marquen como válida. También se necesita una política de aprobación distinta para instalar y crear instancias de transacciones.
 
-## Bloque inicial
+## Bloque de origen
 El bloque de configuración que inicializa una red blockchain o canal, y que también sirve como primer bloque en una cadena.
+
+## Gossip
+Hyperledger Fabric permite a los iguales recopilar información de red importante entre sí sin tener que depender del servicio de ordenación. El [protocolo de diseminación de datos de rumores (gossip)![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.1/gossip.html) ofrece una forma segura, fiable y escalable de intercambiar mensajes entre sí. Por ejemplo, si los iguales pierden algunos bloques debido a retrasos, cortes de red u otras razones, pueden sincronizarse con el estado del libro mayor actual utilizando la mensajería de rumores para ponerse en contacto con otros iguales que están en posesión de estos bloques que faltan.
 
 ## HSM
 Módulo de seguridad de hardware (Hardware Security Module). Proporciona funciones de cifrado bajo demanda, gestión de claves y almacenamiento de claves como un servicio gestionado. HSM es un dispositivo físico que maneja las tareas que consumen muchos recursos del proceso de cifrado y que reduce la latencia para las aplicaciones. Para obtener más información, consulte [Módulo de seguridad de hardware ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/cloud/hardware-security-module)
@@ -74,7 +81,7 @@ Módulo de seguridad de hardware (Hardware Security Module). Proporciona funcion
 [Hyperledger Composer ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://hyperledger.github.io/composer/latest/introduction/introduction.html) es un conjunto de herramientas de desarrollo de código abierto. Utiliza un lenguaje de modelado adaptado, que se combina con las transacciones JavaScript, y reglas de control de acceso para modelar una red empresarial de blockchain en su totalidad. Puede utilizar Hyperledger Composer para integrar los sistemas y datos existentes con la aplicación blockchain antes de desplegar nada en un blockchain real.
 
 ## Hyperledger Fabric
-[Hyperledger Fabric ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](http://hyperledger-fabric.readthedocs.io/en/master/) es una infraestructura de blockchain empresarial que aloja Linux Foundation para que actúe como base para desarrollar aplicaciones blockchain o soluciones con una arquitectura modular. Los componentes de Hyperledger Fabric, como los servicios de consenso y de pertenencia, son de tipo conectar y listo.
+[Hyperledger Fabric ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/) es una infraestructura de blockchain empresarial que aloja Linux Foundation para que actúe como base para desarrollar aplicaciones blockchain o soluciones con una arquitectura modular. Los componentes de Hyperledger Fabric, como los servicios de consenso y de pertenencia, son de tipo conectar y listo.
 
 ## Instalar
 Proceso de colocar un código de encadenamiento en el sistema de archivos en un igual. Debe instalar el código de encadenamiento en cada igual que vaya a ejecutar dicho código de encadenamiento.
@@ -88,11 +95,8 @@ Implementación de plug-in de consenso para Hyperledger Fabric que da lugar a un
 ## Libro mayor
 Consta de una "cadena de bloques" literal que almacena el registro de transacciones inmutable y secuencial, así como una base de datos de estado que permite mantener el estado actual. Hay un libro mayor por canal y las actualizaciones en el mismo se gestionan mediante el proceso de consenso según las políticas de cada canal.
 
-## Base de datos de libro mayor
-Los datos del estado Actual se almacenan en una base de datos de los iguales para lecturas y consultas eficientes del código de encadenamiento. Las redes del Plan inicial utilizan CouchDB como la base de datos de libro mayor. Las redes del Plan empresarial pueden utilizar LevelDB o CouchDB.
-
 ## LevelDB
-Un almacén de valor de claves que es una opción para la base de datos de libro mayor para redes del Plan empresarial, junto con CouchDB. LevelDB almacena el estado actual como pares de clave-valor, y no admite el uso de índices ni de consultas enriquecidas.
+Un almacén de valor de claves que es una opción para la base de datos de estado para redes del Plan empresarial, junto con CouchDB. LevelDB almacena el estado actual como pares de clave-valor, y no admite el uso de índices ni de consultas enriquecidas.
 
 ## Miembro
 También conocidos como "organizaciones", los miembros de una red blockchain, de forma similar a los miembros de cualquier grupo, forman la estructura de la red. Un miembro puede ser tan grande como una empresa multinacional o tan pequeño como un individuo. Los miembros se inscriben en la red con un certificado que les otorga permisos para utilizar la red como un proveedor de servicios (por ejemplo, para emitir certificados o validar y ordenar transacciones) o como un consumidor. El primero proporciona servicios básicos de blockchain que incluyen validación de transacciones, ordenación de transacciones y servicios de gestión de certificados. Los miembros consumidores utilizan la red para invocar transacciones sobre el libro mayor distribuido. Los miembros pueden tener varios iguales.
@@ -135,6 +139,9 @@ Hyperledger Fabric admite dos kits de desarrollo de software (SDK). Un SDK de no
 
 ## SOLO
 Implementación de plug-in de consenso para Hyperledger Fabric que da lugar a un solo nodo de servicio de ordenación en la red blockchain. La red del Plan inicial utiliza la implementación SOLO. La implementación SOLO no está pensada para una red de producción. La alternativa a SOLO es un clúster Kafka.
+
+## Base de datos de estado
+Los datos del estado Actual se almacenan en una base de datos de los iguales para lecturas y consultas eficientes del código de encadenamiento. Las redes del Plan inicial utilizan CouchDB como la base de datos de estado. Las redes del Plan empresarial pueden utilizar LevelDB o CouchDB.
 
 ## Transacción
 Mecanismo que utilizan los participantes en la red blockchain para interactuar con los activos. Una transacción crea código de encadenamiento nuevo o invoca una operación sobre código de encadenamiento existente.

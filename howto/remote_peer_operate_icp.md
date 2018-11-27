@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-09-05"
+lastupdated: "2018-10-12"
 
 ---
 
@@ -140,9 +140,6 @@ You can use the **kubectl** commands to restart the remote peer that runs in ICP
 
 3. You can verify that the remote peer was restarted by running the `kubectl get pods` command and examining the output for the **RESTART** count for your pod.
 
-Additionally, you can use the [HEAD request](monitor_network.html#monitor-nodes) to check the availability of your remote peer.
-
-
 ## Using Fabric SDKs to operate the remote peer
 {: #remote-peer-operate-with-sdk}
 
@@ -208,7 +205,7 @@ var caCert = fs.readFileSync(path.join(__dirname, './cacert.pem'));
 
 Find the [endpoint information of your remote peer](#remote-peer-retrieve-endpoint-info) and provide it to the SDK by declaring a new peer variable or by updating your Connection Profile. The following example defines the peer as an endpoint on your fabric network and passes it the TLS cert that you imported.
 ```
-var peer = fabric_client.newPeer('grpcs://9.46.126.89:31618', { pem:  Buffer.from(caCert).toString(), 'ssl-target-name-override': remotepeer.blockchain.com});
+var peer = fabric_client.newPeer('grpcs://9.46.126.89:31618', { pem:  Buffer.from(caCert).toString(), 'ssl-target-name-override': 'remotepeer.blockchain.com'});
 ```
 {:codeblock}
 

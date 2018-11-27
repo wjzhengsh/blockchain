@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -16,7 +16,12 @@ lastupdated: "2018-06-14"
 # 在入門範本方案上部署商業網路
 {: #deploying-a-business-network}
 
+
+*[此頁面有幫助嗎？請告訴我們。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)*
+
+
 您可以使用「{{site.data.keyword.blockchainfull}} 平台」開發人員環境和 Hyperledger Composer 開發人員工具集來開發商業網路，並將其部署至「入門範本方案」環境。
+{:shortdesc}
 
 使用開發人員環境可讓您快速模型化及測試 {{site.data.keyword.blockchain}} 商業網路，並將其部署至「{{site.data.keyword.blockchainfull_notm}} 平台」的實例。
 
@@ -33,7 +38,7 @@ lastupdated: "2018-06-14"
 
 3. 在連線設定檔內，一直往下，直到您看到 'registrar'。在 'registrar' 的 'enrollId' 下，有 **enrollSecret** 內容。請擷取該密碼，並儲存一份副本。
 
-    ![D8KBag](https://i.makeagif.com/media/4-12-2018/D8KBag.gif)
+    ![擷取管理者密碼](images/get_enroll_secret.gif "擷取管理者密碼")
 
 
 ## 步驟 2：建立憑證管理中心卡
@@ -71,11 +76,11 @@ lastupdated: "2018-06-14"
 
 1. 在「入門範本方案使用者介面」中，按一下**成員**標籤，並按一下**憑證**，然後按一下**新增憑證**。移至 `credentials` 目錄，然後在憑證方框中複製並貼上 `admin-pub.pem` 檔案的內容。提交憑證，並重新啟動對等節點。附註：重新啟動對等節點需要一分鐘。
 
-    ![jlEb2y](https://i.makeagif.com/media/4-12-2018/jlEb2y.gif)
+    ![新增憑證](images/add_cert.gif "新增憑證")
 
 2. 接下來，必須將頻道上的憑證同步化。按一下**頻道**標籤，並按一下**動作**按鈕，然後按一下**同步化憑證**及**提交**。
 
-    ![E-sVV5](https://i.makeagif.com/media/4-12-2018/E-sVV5.gif)
+    ![同步憑證](images/sync_cert.gif "同步憑證")
 
 ## 步驟 4：建立管理者商業網路卡
 
@@ -113,7 +118,7 @@ lastupdated: "2018-06-14"
 2. 使用下面的指令來啟動商業網路。如果您收到錯誤，請稍候，然後再試一次。在 `-V` 選項之後，使用最後一個步驟中的版本號碼。
 
     ```
-    composer network start -c adminCard -n vehicle-manufacture-network -V 0.0.1 -A admin -C ./credentials/admin-pub.pem -f delete_me.card
+composer network start -c adminCard -n vehicle-manufacture-network -V 0.0.1 -A admin -C ./credentials/admin-pub.pem -f delete_me.card
     ```
     {:codeblock}
 
@@ -129,7 +134,7 @@ lastupdated: "2018-06-14"
 5. 使用下列指令來匯入商業網路卡：
 
     ```
-    composer card import -f ./admin@vehicle-manufacture-network.card
+composer card import -f ./admin@vehicle-manufacture-network.card
     ```
     {:codeblock}
 
@@ -137,13 +142,13 @@ lastupdated: "2018-06-14"
 
 ## 步驟六：對商業網路進行連線測試，以確保其正確執行
 
-1. 執行下列指令，以對商業網路進行連線測試：
+執行下列指令，以對商業網路進行連線測試：
 
    ```
    composer network ping -c admin@vehicle-manufacture-network
    ```
    {:codeblock}
 
-若要檢視鏈碼日誌，請按一下**頻道**，然後選取您的頻道。按一下下拉箭頭以檢視日誌，或按一下「動作」符號更詳細地進行檢視。
+若要檢視鏈碼日誌，請按一下**頻道**，然後選取您的頻道。<!-- Click the dropdown arrow to view the logs, or the Actions symbol to view in more detail. -->按一下**鏈碼**標籤。展開鏈碼列，然後按一下 **JSON** 或**日誌**按鈕。
 
-![fN-Yuj](https://i.makeagif.com/media/4-13-2018/fN-Yuj.gif)
+<!-- [fN-Yuj](https://i.makeagif.com/media/4-13-2018/fN-Yuj.gif) -->

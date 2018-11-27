@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -15,18 +15,22 @@ lastupdated: "2018-06-14"
 # サンプル・アプリケーションのデプロイ
 {: #overview}
 
+
+***[このページは参考になりましたか。ご意見をお聞かせください。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
 {{site.data.keyword.blockchainfull}} Platform には、ブロックチェーン・ネットワークとアプリケーション開発をより深く理解できるように、デプロイしたりテストしたりといった操作ができるサンプル・アプリケーションが用意されています。
 {: shortdesc}
 
 |  サンプル     | ユース・ケース       | サンプル・タイプ  | 作成者およびサポート  |
 | --------------|---------------------|----|-------|
-| [Marbles ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://github.com/IBM-Blockchain/marbles)| 複数のユーザーがさまざまなプロパティーを使用してマーブルを作成し、他のユーザーに転送することができます。 <br> <br> 手順に従って、{{site.data.keyword.cloud_notm}} 上の {{site.data.keyword.blockchainfull_notm}} サービスに Marbles をデプロイします。画面キャプチャーには、スターター・プラン UI ではなく、エンタープライズ・プラン UI が表示されていることに注意してください。機能は似ています。 | Javascript アプリケーションでの GO チェーンコード| IBM<br> [ヘルプの利用![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://github.com/IBM-Blockchain/marbles/issues) |
-|[Vehicle Manufacture ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://github.com/IBM-Blockchain/vehicle-manufacture) | ユーザーは仮想車両のライフサイクルを体験できます。  <br> <br> ネットワークにサンプルをデプロイするための段階的なガイドについては、**このデモを IBM Cloud に手動でデプロイ**するための手順に従ってください。| Javascript アプリケーションでの [Hyperledger Composer](../reference/hyperledger_composer.html) のビジネス・ネットワーク定義 | IBM<br> [ヘルプの利用![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://github.com/IBM-Blockchain/vehicle-manufacture/issues) |
-|[Perishable Goods ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://github.com/clauseHQ/demo-clause-ibm-perishable-goods)| ユーザーは、配送と温度読み取り値に基づいてサプライ・チェーンで商品を購入する法的契約を導入することができます。 <br>  <br> <!-- This sample leverages the [Toolchain tool service![External link icon](../images/external_link.svg "External link icon")](../images/external_link.svg "External link icon")](https://console.bluemix.net/docs/services/ContinuousDelivery/index.html) to deploy the sample on your network automatically.--> | Javascript アプリケーションでの [Hyperledger Composer](../reference/hyperledger_composer.html) のビジネス・ネットワーク定義 | [ClauseHQ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](http://clause.io/)<br> [ヘルプの利用![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://github.com/clauseHQ/demo-clause-ibm-perishable-goods/issues) |
+| [Marbles ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://github.com/IBM-Blockchain/marbles "Marbles")| 複数のユーザーがさまざまなプロパティーを使用してマーブルを作成し、他のユーザーに転送することができます。 <br> <br> 手順に従って、{{site.data.keyword.cloud_notm}} 上の {{site.data.keyword.blockchainfull_notm}} サービスに Marbles をデプロイします。 画面キャプチャーには、スターター・プラン UI ではなく、エンタープライズ・プラン UI が表示されていることに注意してください。 機能は似ています。 | Javascript アプリケーションでの GO チェーンコード| IBM<br> [ヘルプの利用 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://github.com/IBM-Blockchain/marbles/issues "ヘルプの利用") |
+|[Vehicle Manufacture ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://github.com/IBM-Blockchain/vehicle-manufacture "Vehicle Manufacture") | ユーザーは仮想車両のライフサイクルを体験できます。  <br> <br> ネットワークにサンプルをデプロイするための段階的なガイドについては、**このデモを {{site.data.keyword.cloud_notm}} に手動でデプロイ**するための手順に従ってください。| Javascript アプリケーションでの [Hyperledger Composer](../references/hyperledger_composer.html) のビジネス・ネットワーク定義 | IBM<br> [ヘルプの利用 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://github.com/IBM-Blockchain/vehicle-manufacture/issues "ヘルプの利用") |
+|[Perishable Goods ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://github.com/clauseHQ/demo-clause-ibm-perishable-goods "Perishable Goods")| ユーザーは、配送と温度読み取り値に基づいてサプライ・チェーンで商品を購入する法的契約を導入することができます。 <br>  <br> <!-- This sample leverages the [Toolchain tool service![External link icon](../images/external_link.svg "External link icon")](../images/external_link.svg "External link icon")](https://console.bluemix.net/docs/services/ContinuousDelivery/index.html) to deploy the sample on your network automatically.--> | Javascript アプリケーションでの [Hyperledger Composer](../references/hyperledger_composer.html) のビジネス・ネットワーク定義 | [Clause ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](http://clause.io/ "Clause")<br> [ヘルプの利用 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://github.com/clauseHQ/demo-clause-ibm-perishable-goods/issues "ヘルプの利用") |
 
-サンプル・アプリケーションは IBM およびコミュニティー・パートナーによって作成されています。サンプルに関するサポートは、対応する GitHub リポジトリーを介して提供されます。問題が発生した場合は、パブリッシャー名の横にある**「ヘルプの利用」**リンクをクリックし、Github リポジトリーで問題をオープンして該当のチームに通知します。
+サンプル・アプリケーションは IBM およびコミュニティー・パートナーによって作成されています。 サンプルに関するサポートは、対応する GitHub リポジトリーを介して提供されます。 問題が発生した場合は、パブリッシャー名の横にある**「ヘルプの利用」**リンクをクリックし、Github リポジトリーで問題をオープンして該当のチームに通知します。
 
-サンプルをデプロイするには、{{site.data.keyword.cloud_notm}} 上にスターター・プランまたはエンタープライズ・プランでのブロックチェーン・ネットワークが必要であり、チャネルおよびそのピアを構成します。詳しくは、[スターター・プラン・ネットワークの管理](../get_start_starter_plan.html)および [Enterprise Plan ネットワークのガバナンス](../get_start.html)を参照してください。
+サンプルをデプロイするには、{{site.data.keyword.cloud_notm}} 上にスターター・プランまたはエンタープライズ・プランでのブロックチェーン・ネットワークが必要であり、チャネルおよびピアを構成します。 詳しくは、[スターター・プラン・ネットワークの管理](../get_start_starter_plan.html)および [エンタープライズ・プラン・ネットワークのガバナンス](../get_start.html)を参照してください。
 
 
 <!--

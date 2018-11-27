@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-05-15"
+lastupdated: "2018-08-31"
 ---
 
 {:new_window: target="_blank"}
@@ -16,21 +16,25 @@ lastupdated: "2018-05-15"
 {: #ibmblockchain_support}
 
 
+***[¿Le resulta útil esta página? Indíquenos su opinión.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
 Hay varios mecanismos disponibles para obtener soporte y para resolver problemas asociados con la instancia de blockchain en {{site.data.keyword.Bluemix}}.
 {:shortdesc}
 
 
 ## Búsqueda de soluciones en los recursos existentes
 
-Vaya a la pantalla "Soporte" en el **Supervisor de red**, como se muestra en la **Figura 1**.  Ahí encontrará enlaces a recursos que proporcionan información técnica y soporte.  Para ver una descripción detallada de la pantalla "Soporte", consulte la sección *Soporte* del [Supervisor de red](v10_dashboard.html).
+Vaya a la pantalla "Soporte" en el **Supervisor de red**, como se muestra en la **Figura 1**. Encontrará enlaces con recursos que proporcionan información técnica y de soporte. Para obtener una descripción detallada acerca de la pantalla "Soporte", consulte [Obtención de ayuda](v10_dashboard.html#support).
 
 ![Pantalla soporte](images/support.png "Pantalla soporte")
 *Figura 1. Pantalla soporte*
 
 
 ## Envío de casos de soporte
+{: #support-cases}
 
-Si no consigue solucionar su problema con ninguno de los métodos anteriores, siga estos pasos para enviar un caso de soporte en el portal de servicio de {{site.data.keyword.cloud_notm}}.
+Si no consigue solucionar su problema con ninguno de los métodos anteriores, siga estos pasos para enviar un caso de soporte en el portal de servicio de {{site.data.keyword.cloud_notm}}. Los usuarios pueden recibir soporte según su [plan de soporte de {{site.data.keyword.cloud_notm}}](https://console.bluemix.net/docs/get-support/index.html#support-plans) sobre todos los problemas relacionados con la plataforma {site.data.keyword.blockchainfull_notm}} subyacente. Si necesita ayuda con el código de encadenamiento de Hyperledger Fabric, con Hyperledger Composer o con sus aplicaciones, utilice los recursos de la comunidad anteriores o inscríbase a [servicios de {{site.data.keyword.blockchainfull_notm}}![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/blockchain/services).
 
 1. Inicie una sesión en el [portal de servicio de {{site.data.keyword.cloud_notm}} ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://ibm.biz/ibmcloudsupport) con su ID de {{site.data.keyword.IBM_notm}}.
 2. Pulse la opción **Obtener ayuda** del centro o el botón **Crear un caso** de la esquina superior derecha.

@@ -1,11 +1,12 @@
 {:navgroup: .navgroup}
 {:topicgroup: .topicgroup}
 
-{: .toc subcollection="blockchain" audience="service" arm="339" href="/docs/services/blockchain/index.html"}
+{: .toc subcollection="blockchain" audience="service" arm="339" href="/docs/services/blockchain/index.html" path="services/blockchain"}
 IBM Blockchain Platform
 
 	{: .navgroup id="learn"}
 	index.md
+	whats_new.md
 
 	{: .topicgroup}
 	Develop the network
@@ -38,6 +39,7 @@ IBM Blockchain Platform
 
 	certificates.md
 	howto/create_channel.md
+	howto/develop_chaincode.md
 	howto/install_instantiate_chaincode.md
 
 	{: .topicgroup}
@@ -54,6 +56,11 @@ IBM Blockchain Platform
 	Running remote peers on IBM Cloud Private
 		howto/remote_peer_icp.md
 		howto/remote_peer_operate_icp.md
+
+	{: .topicgroup}
+	Running remote peers on Amazon Web Services
+		howto/remote_peer_aws.md
+		howto/remote_peer_operate_aws.md
 	{: .navgroup-end}
 
 	{: .navgroup id="reference"}

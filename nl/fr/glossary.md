@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -16,11 +16,15 @@ lastupdated: "2018-06-14"
 # Glossaire
 {: #glossary}
 
+
+***[Cette page est-elle utile ? Dites-nous.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
 La plateforme {{site.data.keyword.blockchainfull}} Platform simplifie votre parcours sur la blockchain. Cette rubrique définit les termes utilisés dans cette documentation et elle présente les concepts de blockchain. Pour une meilleure compréhension de ces termes, vous pouvez consulter [Hyperledger Fabric ![Icône de lien externe](images/external_link.svg "Icône de lien externe")](http://hyperledger-fabric.readthedocs.io/en/master/glossary.html).
 {:shortdesc}
 
 ## AC
-Autorité de certification. Ressource de réseau de blockchain qui émet des certificats pour tous les membres participants. Ces certificats représentent l'identité d'un membre. Toutes les entités du réseau (homologues, programmes de tri, clients, etc.) doivent posséder une identité pour communiquer, authentifier et enfin effectuer des transactions. Ces identités sont nécessaires à toute participation directe au réseau de blockchain.  Vous pouvez créer une carte réseau d'entreprise pour l'autorité de certification. La [Carte AC](develop_starter.html#developing-business-networks-with-starter-plan) peut ensuite être importée et elle sera utilisée pour l'échange de valeur confidentielle admin pour les certificats valides de l'autorité de certification du plan Starter
+Autorité de certification. Ressource de réseau de blockchain qui émet des certificats pour tous les membres participants. Ces certificats représentent l'identité d'un membre. Toutes les entités du réseau (homologues, programmes de tri, clients, etc.) doivent posséder une identité pour communiquer, authentifier et enfin effectuer des transactions. Ces identités sont nécessaires à toute participation directe au réseau de blockchain.  Vous pouvez créer une carte réseau d'entreprise pour l'autorité de certification. La [Carte AC](develop_starter.html) peut ensuite être importée et elle sera utilisée pour l'échange de valeur confidentielle admin pour les certificats valides de l'autorité de certification du plan Starter
 
 ## Adhésion
 Processus par lequel les transactions de code blockchain sont validées. Les règles d'adhésion sont implémentées en indiquant des règles d'adhésion.
@@ -28,8 +32,8 @@ Processus par lequel les transactions de code blockchain sont validées. Les rè
 ## Appartenance dynamique
 Un membre peut être ajouté de manière dynamique au réseau par un utilisateur disposant du privilège **registre**. Les membres se voient également affecter des rôles et des attributs, qui contrôlent leur accès et leurs droits sur le réseau. Les rôles et les attributs ne peuvent pas être affectés de manière dynamique. Hyperledger Fabric prend en charge l'ajout ou le retrait de membres, homologues, et noeuds de service de classement, sans compromettre les opérations du réseau dans son ensemble. L'appartenance dynamique est essentielle lors de l'ajustement des relations commerciales et que les entités doivent être ajoutées ou retirées pour différentes raisons.
 
-## Base de données de registre
-L'état actuel est stocké dans une base de données sur les homologues pour des lectures et requêtes efficaces depuis le code blockchain. Les réseaux du plan Starter utilisent CouchDB comme base de données de registre. Les réseaux du plan Enterprise peuvent utiliser soit LevelDB, soit CouchDB.
+## Base de données d'état
+L'état actuel est stocké dans une base de données sur les homologues pour des lectures et requêtes efficaces depuis le code blockchain. Les réseaux du plan Starter utilisent CouchDB comme base de données d'état. Les réseaux du plan Enterprise peuvent utiliser soit LevelDB, soit CouchDB.
 
 ## Bloc
 Ensemble ordonné de transactions, lié cryptographiquement au bloc précédent dans un canal.
@@ -53,7 +57,7 @@ Egalement appelés "contrats intelligents", les codes blockchain sont les élém
 Processus collaboratif qui permet de conserver les transactions de registre synchronisées au sein du réseau. Le consensus garantit que les registres sont mises à jour uniquement lorsque les participants appropriés approuvent les transactions, et que les registres sont mis à jour avec les mêmes transactions dans le même ordre. De nombreux modes algorithmiques différents permettent d'atteindre ce consensus.
 
 ## CouchDB
-Magasin de documents utilisé pour la base de données de registre dans les réseaux du plan Starter. CouchDB est également une option pour les réseaux du plan Enterprise, de pair avec LevelDB. CouchDB prend en charge l'utilisation d'index et vous permet d'exécuter des requêtes approfondies sur les données de votre homologue.
+Magasin de documents utilisé pour la base de données d'état dans les réseaux du plan Starter. CouchDB est également une option pour les réseaux du plan Enterprise, de pair avec LevelDB. CouchDB prend en charge l'utilisation d'index et vous permet d'exécuter des requêtes approfondies sur les données de votre homologue.
 
 ## Données d'identification du service
 Les données d'identification du service sont disponibles au format JSON et elles contiennent les informations de noeud final d'API et les ID d'inscription/valeurs confidentielles de vos ressources réseau, c'est-à-dire les homologues, les noeuds de programmes de tri et les autorités de certification. Votre application interagit avec les ressources réseau via ces noeuds finaux d'API.
@@ -62,7 +66,10 @@ Les données d'identification du service sont disponibles au format JSON et elle
 Les données d'identification sont visibles depuis l'écran "API" du Moniteur réseau. Elles incluent votre "clé" (nom d'utilisateur) et votre "valeur confidentielle" (mot de passe) dans l'interface utilisateur Swagger. Vous devez utiliser ces données d'identification réseau pour vous authentifier avant de tester les API REST. 
 
 ## Etat en cours
-L'état en cours du registre représente les valeurs les plus récentes pour toutes les clés qui sont incluses dans son journal des transactions de chaîne. Etant donné que l'état actuel représente toutes les valeurs de clé les plus récentes connues du canal, il est parfois appelé "World State". Le code blockchain exécute les propositions de transaction en fonction des données d'état actuel. L'état actuel change chaque fois que la valeur d'une clé change ou qu'une nouvelle clé est ajoutée. L'état actuel est critique pour un flux de transaction car la dernière paire clé-valeur doit être connue pour pouvoir être modifiée. Les homologues valident les valeurs les plus récentes en fonction de l'état actuel du registre pour chaque transaction valide dans un bloc. L'état actuel est stocké dans une base de données de registre d'homologues.
+L'état en cours du registre représente les valeurs les plus récentes pour toutes les clés qui sont incluses dans son journal des transactions de chaîne. Etant donné que l'état actuel représente toutes les valeurs de clé les plus récentes connues du canal, il est parfois appelé "World State". Le code blockchain exécute les propositions de transaction en fonction des données d'état actuel. L'état actuel change chaque fois que la valeur d'une clé change ou qu'une nouvelle clé est ajoutée. L'état actuel est critique pour un flux de transaction car la dernière paire clé-valeur doit être connue pour pouvoir être modifiée. Les homologues valident les valeurs les plus récentes en fonction de l'état actuel du registre pour chaque transaction valide dans un bloc. L'état actuel est stocké dans une base de données d'état d'un homologue.
+
+## Gossip
+Hyperledger Fabric permet aux homologues de regrouper d'importantes informations réseau les uns des autres sans avoir à reposer sur le service de tri. Le [protocole de dissémination de données Gossip![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-1.1/gossip.html) constitue un moyen sécurisé, fiable et évolutif pour que les homologues puissent échanger des messages entre eux. Par exemple, si des homologues perdent certains blocs en raison de retards, de pannes réseau, ou pour d'autres raisons, ils peuvent se synchroniser sur l'état du registre actuel en utilisant des messages Gossip pour contacter d'autres homologues en possession de ces blocs manquants.
 
 ## Homologue
 Ressource de réseau blockchain qui fournit les services permettant d'exécuter et de valider les transactions, et de gérer les registres. L'homologue exécute du code blockchain et il détient l'historique de transactions ainsi que l'état en cours des actifs sur les canaux du réseau, c'est-à-dire le registre. Ceux-ci sont détenus et gérés par des organisations et associés à des canaux.
@@ -74,7 +81,7 @@ Module de sécurité matérielle (HSM). Permet un chiffrement à la demande, la 
 [Hyperledger Composer ![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://hyperledger.github.io/composer/latest/introduction/introduction.html) est un jeu d'outils de développement en open source. Il utilise un langage de modélisation spécifique, qui est associé à des transactions JavaScript, ainsi qu'à des règles de contrôle d'accès pour modéliser un réseau d'entreprise de modèle en totalité. Vous pouvez utiliser Hyperledger Composer pour intégrer des systèmes et données existants à votre application de blockchain avant de déployer quoi que ce soit dans une véritable blockchain.
 
 ## Hyperledger Fabric
-[Hyperledger Fabric ![Icône de lien externe](images/external_link.svg "Icône de lien externe")](http://hyperledger-fabric.readthedocs.io/en/master/) est une architecture de blockchain d'entreprise hébergée par Linux Foundation pour servir de base au développement d'applications ou de solutions blockchain avec une architecture modulaire. Les composants Hyperledger Fabric comme les services de consensus et d'appartenance sont de type plug-and-play.
+[Hyperledger Fabric ![Icône de lien externe](images/external_link.svg "Icône de lien externe")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/) est une architecture de blockchain d'entreprise hébergée par Linux Foundation pour servir de base au développement d'applications ou de solutions blockchain avec une architecture modulaire. Les composants Hyperledger Fabric comme les services de consensus et d'appartenance sont de type plug-and-play.
 
 ## Installer
 Processus consistant à placer un code blockchain sur le système de fichiers d'un homologue. Vous devez installer le code blockchain sur chaque homologue qui va exécuter le code blockchain.  
@@ -86,7 +93,7 @@ Processus consistant à démarrer et à initialiser un conteneur de code blockch
 Implémentation de plug-in de consensus pour Hyperledger Fabric qui se traduit par un cluster de noeuds de service de tri dans le réseau de blockchain. Une implémentation kafka est destinée à un réseau de production. 
 
 ## LevelDB
-Magasin clés-valeurs en option pour la base de données de registre des réseaux du plan Enterprise, ainsi que CouchDB. LevelDB stocke l'état actuel dans des paires clé-valeur et ne gère pas l'utilisation d'index ou de recherches approfondies.
+Magasin clés-valeurs en option pour la base de données d'état des réseaux du plan Enterprise, ainsi que CouchDB. LevelDB stocke l'état actuel dans des paires clé-valeur et ne gère pas l'utilisation d'index ou de recherches approfondies.
 
 ## Membre
 Egalement appelés "organisations", les membres d'un réseau de blockchain, semblables aux membres d'un groupe, forment la structure du réseau. Un membre peut avoir la taille d'une multinationale ou d'un individu. Les membres sont inscrits sur le réseau avec un certificat qui leur accorde le droit d'utiliser le réseau en tant que fournisseur de services (par exemple, en émettant des certificats, en validant/ordonnant des transactions) ou en tant que consommateur. Le premier fournit des services de blockchain de base qui incluent la validation de transaction, le classement des transactions ainsi que des services de gestion de certificats. Les membres consommateurs utilisent le réseau pour appeler des transactions par rapport au registre partagé. Les membres peuvent comporter plusieurs homologues. 

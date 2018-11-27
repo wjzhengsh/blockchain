@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -15,6 +15,10 @@ lastupdated: "2018-06-14"
 
 # Desarrollar la red
 {: #develop-the-network}
+
+
+***[¿Le resulta útil esta página? Indíquenos su opinión.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
 
 El desarrollo de soluciones de blockchain mediante la plataforma {{site.data.keyword.blockchainfull}} aprovecha el conjunto de herramientas de desarrollo de código abierto de Hyperledger Composer. Hyperledger Composer utiliza un lenguaje de modelado adaptado, que se combina con transacciones JavaScript y reglas de control de acceso para modelar una red empresarial de blockchain por completo _antes_ de desplegar nada en una red blockchain real.
 {:shortdesc}

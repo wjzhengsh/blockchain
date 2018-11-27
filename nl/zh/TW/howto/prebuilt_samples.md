@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -15,18 +15,22 @@ lastupdated: "2018-06-14"
 # 部署範例應用程式
 {: #overview}
 
+
+***[此頁面有幫助嗎？請告訴我們。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
 「{{site.data.keyword.blockchainfull}} 平台」提供可部署及測試的範例應用程式，讓您能夠進一步瞭解區塊鏈網路和應用程式開發。
 {: shortdesc}
 
 |  範例        | 使用案例       | 樣本類型     | 建立者及支援         |
 | --------------|---------------------|----|-------|
-| [Marbles ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](https://github.com/IBM-Blockchain/marbles)| 多個使用者可以建立具有不同內容的彈珠，並將彈珠轉移給其他使用者。<br> <br> 遵循指示，在 {{site.data.keyword.cloud_notm}} 的「{{site.data.keyword.blockchainfull_notm}} 服務」上部署「彈珠」。請注意，畫面擷取會顯示「企業方案使用者介面」，而不是「入門範本方案」。此功能類似。| 具有 Javascript 應用程式的 GO 鏈碼| IBM<br> [取得協助 ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](https://github.com/IBM-Blockchain/marbles/issues) |
-|[Vehicle Manufacture ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](https://github.com/IBM-Blockchain/vehicle-manufacture) | 使用者可以體驗虛擬汽車的整個生命週期。<br> <br> 遵循指示，**手動將此展示部署至 IBM Cloud**，以取得將範例部署至網路的逐步指引。| 具有 Javascript 應用程式的「[Hyperledger Composer](../reference/hyperledger_composer.html) 商業網路定義」 | IBM<br> [取得協助 ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](https://github.com/IBM-Blockchain/vehicle-manufacture/issues) |
-|[Perishable Goods ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](https://github.com/clauseHQ/demo-clause-ibm-perishable-goods)| 使用者可以根據交貨和溫度讀數，部署可在供應鏈中採購貨品的法律合約。<br>  <br> <!-- This sample leverages the [Toolchain tool service![External link icon](../images/external_link.svg "External link icon")](../images/external_link.svg "External link icon")](https://console.bluemix.net/docs/services/ContinuousDelivery/index.html) to deploy the sample on your network automatically.--> | 具有 Javascript 應用程式的「[Hyperledger Composer](../reference/hyperledger_composer.html) 商業網路定義」 | [ClauseHQ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](http://clause.io/)<br> [取得協助 ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](https://github.com/clauseHQ/demo-clause-ibm-perishable-goods/issues) |
+| [Marbles ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](https://github.com/IBM-Blockchain/marbles "Marbles")| 多個使用者可以建立具有不同內容的彈珠，並將彈珠轉移給其他使用者。<br> <br> 遵循指示，在 {{site.data.keyword.cloud_notm}} 的「{{site.data.keyword.blockchainfull_notm}} 服務」上部署「彈珠」。請注意，畫面擷取會顯示「企業方案使用者介面」，而不是「入門範本方案」。此功能類似。| 具有 Javascript 應用程式的 GO 鏈碼| IBM<br> [取得協助 ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](https://github.com/IBM-Blockchain/marbles/issues "取得協助") |
+|[Vehicle Manufacture ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](https://github.com/IBM-Blockchain/vehicle-manufacture "Vehicle Manufacture") | 使用者可以體驗虛擬汽車的整個生命週期。<br> <br> 遵循指示，**手動將此展示部署至 {{site.data.keyword.cloud_notm}}**，以取得將範例部署至網路的逐步指引。|具有 Javascript 應用程式的「[Hyperledger Composer](../references/hyperledger_composer.html) 商業網路定義」 | IBM<br> [取得協助 ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](https://github.com/IBM-Blockchain/vehicle-manufacture/issues "取得協助") |
+|[Perishable Goods ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](https://github.com/clauseHQ/demo-clause-ibm-perishable-goods "Perishable Goods")| 使用者可以根據交貨和溫度讀數，部署可在供應鏈中採購貨品的法律合約。<br>  <br> <!-- This sample leverages the [Toolchain tool service![External link icon](../images/external_link.svg "External link icon")](../images/external_link.svg "External link icon")](https://console.bluemix.net/docs/services/ContinuousDelivery/index.html) to deploy the sample on your network automatically.--> |具有 Javascript 應用程式的「[Hyperledger Composer](../references/hyperledger_composer.html) 商業網路定義」 | [Clause ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](http://clause.io/ "Clause")<br> [取得協助 ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](https://github.com/clauseHQ/demo-clause-ibm-perishable-goods/issues "取得協助") |
 
 範例應用程式由 IBM 及社群夥伴建立。透過對應的 Github 儲存庫提供對範例的支援。如果您遇到問題，請按一下發佈者名稱旁邊的**取得協助**鏈結，然後在 Github 儲存庫中開立問題，以通知相關團隊。
 
-若要部署範例，您在 {{site.data.keyword.cloud_notm}} 上需要有使用「入門範本方案」或「企業方案」的區塊鏈網路，並配置頻道及其對等節點。如需相關資訊，請參閱[控管入門範本方案網路](../get_start_starter_plan.html)和[控管企業方案網路](../get_start.html)。
+若要部署範例，您在 {{site.data.keyword.cloud_notm}} 上需要有使用「入門範本方案」或「企業方案」的區塊鏈網路，並配置頻道及對等節點。如需相關資訊，請參閱[控管入門範本方案網路](../get_start_starter_plan.html)和[控管企業方案網路](../get_start.html)。
 
 
 <!--

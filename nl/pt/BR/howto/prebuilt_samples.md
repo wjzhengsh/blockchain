@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-06-14"
+lastupdated: "2018-08-31"
 
 ---
 
@@ -15,18 +15,22 @@ lastupdated: "2018-06-14"
 # Implementando aplicativos de amostra
 {: #overview}
 
+
+***[Esta página é útil? Diga-nos.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+
+
 O {{site.data.keyword.blockchainfull}} Platform fornece aplicativos de amostra que é possível implementar e testar, para que seja possível obter um melhor entendimento de redes de blockchain e desenvolvimento de aplicativos.
 {: shortdesc}
 
-|  Amostra     | Caso de uso         | Tipo de amostra  | Criador e suporte  |
+|  Amostra     | Caso de uso       | Tipo de amostra  | Criador e suporte  |
 | --------------|---------------------|----|-------|
-| [Bolinhas ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://github.com/IBM-Blockchain/marbles)| Múltiplos usuários podem criar bolinhas com diferentes propriedades e transferi-las para outros. <br> <br> Siga as instruções para implementar o Marbles on the {{site.data.keyword.blockchainfull_notm}} Service no {{site.data.keyword.cloud_notm}}. Observe que as capturas de tela exibem a UI do Enterprise Plan, em vez de o Starter Plan. A funcionalidade é semelhante. | Chaincode do GO com um aplicativo do Javascript| IBM<br> [Obter ajuda![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://github.com/IBM-Blockchain/marbles/issues) |
-|[Fabricação de veículo ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://github.com/IBM-Blockchain/vehicle-manufacture) | Os usuários podem passar pelo ciclo de vida de um veículo virtual. <br> <br> Siga as instruções para **Implementar manualmente esta demo para o IBM Cloud** para obter um guia passo a passo para implementar a amostra em sua rede.| [Hyperledger Composer](../reference/hyperledger_composer.html) Business Network Definition com um aplicativo do Javascript| IBM<br> [Obter ajuda![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://github.com/IBM-Blockchain/vehicle-manufacture/issues) |
-|[Mercadorias perecíveis ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://github.com/clauseHQ/demo-clause-ibm-perishable-goods)| Os usuários podem implementar contratos legais que compram mercadorias em uma cadeia de fornecimento com base nas leituras de entrega e de temperatura. <br>  <br> <!-- This sample leverages the [Toolchain tool service![External link icon](../images/external_link.svg "External link icon")](../images/external_link.svg "External link icon")](https://console.bluemix.net/docs/services/ContinuousDelivery/index.html) to deploy the sample on your network automatically.--> | [Hyperledger Composer](../reference/hyperledger_composer.html) Business Network Definition com um aplicativo do Javascript| [ClauseHQ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](http://clause.io/)<br> [Obter ajuda![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://github.com/clauseHQ/demo-clause-ibm-perishable-goods/issues) |
+| [Marbles ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://github.com/IBM-Blockchain/marbles "Marbles")| Múltiplos usuários podem criar bolinhas com diferentes propriedades e transferi-las para outros. <br> <br> Siga as instruções para implementar o Marbles no {{site.data.keyword.blockchainfull_notm}} Service no {{site.data.keyword.cloud_notm}}. Observe que as capturas de tela exibem a UI do Enterprise Plan, em vez de o Starter Plan. A funcionalidade é semelhante. | Chaincode do GO com um aplicativo do Javascript| IBM<br> [Obter ajuda ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://github.com/IBM-Blockchain/marbles/issues "Obter ajuda") |
+|[Fabricação de veículo ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://github.com/IBM-Blockchain/vehicle-manufacture "Fabricação de veículo") | Os usuários podem passar pelo ciclo de vida de um veículo virtual.  <br> <br> Siga as instruções para **Implementar manualmente este demo no {{site.data.keyword.cloud_notm}}** para obter um guia passo a passo para implementar a amostra em sua rede.| [Hyperledger Composer](../references/hyperledger_composer.html) Business Network Definition com um aplicativo do Javascript | IBM<br> [Obter ajuda ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://github.com/IBM-Blockchain/vehicle-manufacture/issues "Obter ajuda") |
+|[Mercadorias perecíveis ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://github.com/clauseHQ/demo-clause-ibm-perishable-goods "Mercadorias perecíveis")| Os usuários podem implementar contratos legais que compram mercadorias em uma cadeia de fornecimento com base nas leituras de entrega e de temperatura. <br>  <br> <!-- This sample leverages the [Toolchain tool service![External link icon](../images/external_link.svg "External link icon")](../images/external_link.svg "External link icon")](https://console.bluemix.net/docs/services/ContinuousDelivery/index.html) to deploy the sample on your network automatically.--> | [Hyperledger Composer](../references/hyperledger_composer.html) Business Network Definition com um aplicativo do Javascript | [Cláusula ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](http://clause.io/ "Cláusula")<br> [Obter ajuda ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://github.com/clauseHQ/demo-clause-ibm-perishable-goods/issues "Obter ajuda") |
 
 Os aplicativos de amostra são criados pela IBM e parceiros da comunidade. O suporte para amostras será fornecido por meio dos repositórios do Github correspondentes. Se você tiver um problema, clique no link **Obter ajuda** próximo do nome do publicador e abra um problema no repositório do Github para notificar a equipe relevante.
 
-Para implementar as amostras, você precisa de uma rede de blockchain no {{site.data.keyword.cloud_notm}} com o Starter Plan ou o Enterprise Plan e configure um canal e os seus peers. Para obter mais informações, veja [Governar a rede do Starter Plan](../get_start_starter_plan.html) e [Governar a rede do Enterprise Plan](../get_start.html).
+Para implementar amostras, você precisa de uma rede de blockchain no {{site.data.keyword.cloud_notm}} com o Starter Plan ou o Enterprise Plan e configurar um canal e os peers. Para obter mais informações, veja [Governar a rede do Starter Plan](../get_start_starter_plan.html) e [Governar a rede do Enterprise Plan](../get_start.html).
 
 
 <!--
