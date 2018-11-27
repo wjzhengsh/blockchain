@@ -25,7 +25,7 @@ If your problem cannot be solved by any of the [free digital support resources](
 - **Starter Plan and Enterprise Plan on {{site.data.keyword.cloud_notm}}**
   Submit a support case to {{site.data.keyword.IBM_notm}}. For more information, see [Submitting support cases](#support-cases).
 - **IBP for {{site.data.keyword.cloud_notm}} Private (ICP)**
-  If you have purchased an IBP for ICP license and you want to contact customer support, see [Accessing the IBM Support Community and opening a support ticket ![External link icon](images/external_link.svg "External link icon")](http://www.ibm.com/support/docview.wss?uid=ibm0740041 "{{site.data.keyword.blockchainfull_notm}} Platform for ICP Support").
+  If you have purchased an IBP for ICP license and you want to contact customer support, see [Accessing the IBM Support Community and opening a support ticket ![External link icon](images/external_link.svg "External link icon")](http://www.ibm.com/support/docview.wss?uid=ibm10740041 "{{site.data.keyword.blockchainfull_notm}} Platform for ICP Support").
 - **{{site.data.keyword.blockchainfull_notm}} Platform Community Edition**
   The {{site.data.keyword.blockchainfull_notm}} Platform Community Edition is intended for exploration, development, and testing. {{site.data.keyword.IBM_notm}} does not provide support for the {{site.data.keyword.blockchainfull_notm}} Platform Community Edition.
 
