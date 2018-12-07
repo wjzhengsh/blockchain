@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-11-27"
+lastupdated: "2018-12-07"
 
 ---
 
@@ -17,7 +17,7 @@ lastupdated: "2018-11-27"
 
 ***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
-After you set up an {{site.data.keyword.blockchainfull}} Platform on {{site.data.keyword.cloud_notm}} Private (ICP) peer, you need to complete several operational steps before your peer can issue transactions to query and invoke the ledger of the blockchain network. The steps include adding your organization to a channel, joining your peer to the channel, installing chaincode on your peer, instantiating chaincode on the channel, and connecting applications to your peer. If you want to connect your peer to a Starter Plan or Enterprise Plan network, see [Operating peers on {{site.data.keyword.cloud_notm}} Private with Starter Plan or Enterprise Plan](#peer-operate_icp)
+After you set up an {{site.data.keyword.blockchainfull}} Platform on {{site.data.keyword.cloud_notm}} Private (ICP) peer, you need to complete several operational steps before your peer can issue transactions to query and invoke the ledger of the blockchain network. The steps include adding your organization to a channel, joining your peer to the channel, installing chaincode on your peer, instantiating chaincode on the channel, and connecting applications to your peer. If you want to connect your peer to a Starter Plan or Enterprise Plan network, see [Operating peers on {{site.data.keyword.cloud_notm}} Private with Starter Plan or Enterprise Plan](peer_operate_ibp.html#peer-operate_icp)
 {:shortdesc}
 
 You need to complete a few prerequisite steps from your ICP Cluster to operate your peer.
@@ -35,7 +35,7 @@ You can then use one of the following methods to operate your peer.
 
 The Fabric SDKs are the recommended path, although the instructions assume familiarity with the operation of the SDK. If you prefer to use the command line, you can use the Fabric peer binaries.
 
-If your organization is not yet a member of a consortium or channel, you can use these steps to [create a channel](#create-channel). The instructions will take you through how to [prepare an organization definition](#organization-definition). This definition will be used to make you a member of the consortium by being added to an orderer system channel. Afterwards, you will be able to form a new channel by [creating a channel transaction](#peer-icp-channeltx)
+If your organization is not yet a member of a consortium or channel, you can use these steps to [create a channel](#create-channel). The instructions will take you through how to [prepare an organization definition](#organization-definition). This definition will be used to make you a member of the consortium by being added to an orderer system channel. Afterward, you will be able to form a new channel by [creating a channel transaction](#peer-icp-channeltx)
 <!--
 It is recommended that you deploy at least two instances of the peer Helm chart for [high availability](peer_icp.html#high-availability). Therefore, you need to follow these operations steps once for each peer. When you are ready to invoke and query chaincode from your application, connect to both peers to ensure that your [applications are highly available](../v10_application.html#ha-app).
 -->
@@ -56,7 +56,7 @@ You need to use the **kubectl** command line tool to connect to peer container t
    * Install Helm
    * Install Istio CLI
 
-  To operate orderers, you need to use the first **three** tools, among which Helm is optional. Click each of them and run the `curl` commands for the machine type that you're using. Then, issue `chmod` and `sudo mv` commands for each tool. The `chmod` command will change the permission of the CLI in question to make it executable, and the `sudo mv` command will move the file and rename it.
+  To operate a peer, you need to use the first **three** tools, among which Helm is optional. Click each of them and run the `curl` commands for the machine type that you're using. Then, issue `chmod` and `sudo mv` commands for each tool. The `chmod` command will change the permission of the CLI in question to make it executable, and the `sudo mv` command will move the file and rename it.
 
   The commands for the first tool **cloudctl** might look like the following example:
 
@@ -112,13 +112,13 @@ You need to use the **kubectl** command line tool to connect to peer container t
 ### Retrieving peer endpoint information
 {: #peer-endpoint}
 
-You need to target your peer endpoint from the SDK or the Fabric CA client to join channel or install smart contracts. You can find the endpoint of your peer by using your ICP console UI.
+You need to target your peer endpoint from the SDK or the Fabric CA client to join channel or install smart contracts. You can find the endpoint of your peer by using your ICP console UI. You will need to be a [Cluster administrator ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Cluster administrator roles and actions") to complete the following steps:
 
 1. Log in to your ICP console and click the **Menu** icon in the upper left corner.
 2. Click **Workload** > **Helm Releases**.
 3. Find the name of your Helm Release and open the Helm Release details panel.
 4. Scroll down to the **Notes** section at the bottom of the panel. In the **Notes** section, you can see a set of commands to help you operate your peer deployment.
-5. Follow the steps configure the [kubeclt CLI](#peer-kubectl-configure) if have not already. You will use kubectl to interact with your peer container.
+5. Follow the steps to configure the [kubeclt CLI](#peer-kubectl-configure) if you have not already. You will use kubectl to interact with your peer container.
 6. In your CLI, run the first command in the note, which follows **1. Get the application URL by running these commands:** This command will print out the peer URL and port, which is similar to following example. Save this URL for future commands.
 
   ```
@@ -133,31 +133,17 @@ You need to target your peer endpoint from the SDK or the Fabric CA client to jo
 
 You need to download your peer TLS certificate and pass it to your commands to communicate with your peer from a remote client.
 
-1. If you have not already, follow the steps to configure the [kubeclt CLI](#ca-kubectl-configure), which you need to use to interact with your peer container.
-
-2. Get your peers TLS cert by running the following commands:
-
-  ```
-  export POD_NAME=$(kubectl get pods --namespace <namespace> -l "release=<helm-release-name>" -o jsonpath="{.items[0].metadata.name}")
-  kubectl exec $POD_NAME -- cat  /certs/tls/signcerts/cert.pem > peer-tls.pem && cat peer-tls.pem | base64
-  ```
-  {:codeblock}
-
-  Replace `<helm-release-name>` with the name of your peer release. Replace `<namespace>` with the namespace where you deployed your release. A real command would look similar the following example:
-
-  ```
-  export POD_NAME=$(kubectl get pods --namespace blockchain-dev -l "release=peer1org1" -o jsonpath="{.items[0].metadata.name}")
-  kubectl exec $POD_NAME -- cat  /certs/tls/signcerts/cert.pem > peertls.pem && cat peertls.pem | base64
-  ```
-  {:codeblock}
-
-  This command will save your TLS certificate as the file `peertls.pem` on your local machine.
-
-3. Move the certificate to location where you can reference it in future commands, and rename it `peertls.pem`.
+1. Log in to your ICP console and click the **Menu** icon in the upper left corner.
+2. Click **Workload** > **Helm Releases**.
+3. Find the name of your Helm Release and open the Helm Release details panel.
+4. Scroll down to the **Notes** section at the bottom of the panel. In the **Notes** section, you can see a set of commands to help you operate your peer deployment.
+5. Follow the steps configure the [kubeclt CLI](#peer-kubectl-configure) if have not already. You will use kubectl to interact with your peer container.
+6. In your CLI, run the first command in the note, which follows **3. Get peer TLS root cert file**. This command will save your TLS certificate as the file `cacert.pem` on your local machine.
+7. Move the certificate to location where you can reference it in future commands, and rename it `peertls.pem`.
 
   ```
   mkdir $HOME/fabric-ca-client/peer-tls
-  cp peer-tls.pem $HOME/fabric-ca-client/peer-tls/peertls.pem
+  cp cacert.pem $HOME/fabric-ca-client/peer-tls/peertls.pem
   ```
   {:codeblock}
 
@@ -184,18 +170,18 @@ It is recommended that you use version 1.2 of the Node SDK.
 
 Your peer was deployed with the signCert of your peer admin inside. This will allow you to use peer admin's certificates and MSP folder to operate the peer.
 
-Locate the certificates you created when you [enrolled your peer admin](CA_operate.html#enroll-admin). If you used the example commands, you can find you peer admin MSP folder at `$HOME/fabric-ca-client/peer-admin`.
+Locate the certificates that you created when you [enrolled your peer admin](CA_operate.html#enroll-admin). If you used the example commands, you can find you peer admin MSP folder at `$HOME/fabric-ca-client/peer-admin`.
   - You can build the the peer admin user context with the SDK by using the signCert (public key) and private key in the MSP folder. You can find those keys in the following locations:
     - The signCert can be found in the **signcerts** folder: `$HOME/fabric-ca-client/peer-admin/msp/signcerts`
     - the private key can be found in the **keystore:** folder: `$HOME/fabric-ca-client/peer-admin/msp/keystore`
-    You can find an example of how to form a use context and operate the SDK using only the public and private key in [this section of the developing applications tutorial](../v10_application.html#enroll-panel).
+    For an example of how to form a use context and operate the SDK by using only the public and private key, see [Generating certificates by using the Network Monitor](../v10_application.html#enroll-panel).
 
 <!-- You can also use the SDK to generate the peer admin signCert and private key using the endpoint information of CA on Starter Plan or Enterprise Plan and your [peer admin username and password](CA_operate.html#register-admin). -->
 
 ### Passing your peer's TLS cert to the SDK
 {: #icp-peer-download-tlscert}
 
-You need to reference your peer's TLS cert to authenticate communication from your SDK. Locate the TLS cert that you [downloaded from your peer container](#peer-tls) and save it where it can be referenced by your application. You can then import the TLS cert into your application by using a simple read file command.
+You need to reference your peer's TLS cert to authenticate communication from your SDK. Locate the TLS cert that you [downloaded from your peer container](#peer-tls) and save it where it can be referenced by your application. If you used the example commands, you can find you peer TLS certificate at `$HOME/fabric-ca-client/peer-tls/peertls.pem`. You can then import the TLS cert into your application by using a simple read file command.
 
 ```
 var peerTLSCert = fs.readFileSync(path.join(__dirname, './peertls.pem'));
@@ -208,7 +194,7 @@ var peerTLSCert = fs.readFileSync(path.join(__dirname, './peertls.pem'));
 Find the [endpoint information of your peer](#peer-endpoint) and provide it to the SDK by declaring a new peer variable. The following example defines the peer as an endpoint on your fabric network and passes it the TLS cert that you imported.
 
 ```
-var peer = fabric_client.newPeer('grpcs://9.30.94.174:30159', { pem:  Buffer.from(peerTLSCert).toString(), 'ssl-target-name-override': 'null'});
+var peer = fabric_client.newPeer('grpcs://9.30.94.174:30159', { pem:  Buffer.from(peerTLSCert).toString(), 'ssl-target-name-override': null});
 ```
 {:codeblock}
 
@@ -221,7 +207,7 @@ If you have a large network, with multiple peers belonging to different organiza
 ### Passing your orderer's TLS cert to the SDK
 {: #icp-orderer-download-tlscert}
 
-You also need the TLS certificate of the orderer of your consortium to join channels and submit transactions. If you are the administrator of the orderer, follow the instructions to [download the orderer TLS certificate](orderer_operate.html#orderer-tls). If the orderer is governed by another organization, they need to provide you the TLS certificate in an out of band operation. You can then import the TLS cert into your application.
+You also need the TLS certificate of the orderer of your consortium to join channels and submit transactions. If you are the administrator of the orderer, follow the instructions to [download the orderer TLS certificate](orderer_operate.html#orderer-tls).  If you used the example commands, you can find you peer TLS certificate at `$HOME/fabric-ca-client/orderer-tls/orderertls.pem`. If the orderer is governed by another organization, they need to provide you the TLS certificate in an out of band operation. You can then import the TLS cert into your application.
 
 ```
 var ordererTLSCert = fs.readFileSync(path.join(__dirname, './orderertls.pem'));
@@ -234,7 +220,7 @@ var ordererTLSCert = fs.readFileSync(path.join(__dirname, './orderertls.pem'));
 To use the SDK, you also need the endpoint information of the orderers in your consortium. If you are the administrator of the orderer, you can use these instructions to [Retrieve the orderer endpoint information](orderer_operate.html#orderer-endpoint). If the orderer is governed by another organization, they need to provide you the orderer URL in and out of band operation. The following example defines an orderer as an endpoint and passes it the orderer TLS cert.
 
 ```
-var orderer = fabric_client.newOrderer('grpcs://9.30.94.174:30167', { pem:  Buffer.from(ordererTLSCert).toString(), 'ssl-target-name-override': 'null'});
+var orderer = fabric_client.newOrderer('grpcs://9.30.94.174:30167', { pem:  Buffer.from(ordererTLSCert).toString(), 'ssl-target-name-override': null});
 ```
 {:codeblock}
 <!--
@@ -270,14 +256,38 @@ Your peer was deployed with the signCert of your peer admin inside, allowing tha
 
 To interact with your peer from a remote client, you need to download the [Fabric peer client ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/peercommand.html "Fabric peer command").
 
-The easiest way to to get the peer client is to download the Fabric tool binaries from the Hyperledger Project. Create a directory where you would like to download the binaries with your command line, and fetch them by issuing the command below. You need to install [Curl ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/prereqs.html#install-curl "Curl") first.
+The easiest way to get the peer client is to download the Fabric tool binaries from the Hyperledger Project. Create a directory where you would like to download the binaries with your command line, and fetch them by issuing the command below. You need to install [Curl ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/prereqs.html#install-curl "Curl") first.
 
 ```
 curl -sSL http://bit.ly/2ysbOFE | bash -s 1.2.1 1.2.1 -d -s
 ```
 {:codeblock}
 
-The command will install the peer client in a `bin/` directory.
+The command will install the binaries in a `bin/` directory. Set your path to your tools, where the above Fabric tools are downloaded:
+```
+export PATH=$PATH:<full_path_to_bin_folder>
+```
+{:codeblock}
+
+For example, if you installed the binaries in your home directory you would set your `PATH` as:
+
+```
+export PATH=$PATH:$HOME/bin
+```
+{:codeblock}
+
+Downloading the binaries will create a config folder containing a core.yaml, orderer.yaml and a configtx.yaml file. Set the Fabric config path to this config directory:
+
+```
+export FABRIC_CFG_PATH=<full_path_to_config_folder>
+```
+{:codeblock}
+
+For example:
+```
+export FABRIC_CFG_PATH=$HOME/config
+```
+{:codeblock}
 
 ### Managing the certificates on your local system
 {: #manage-certs}
@@ -304,77 +314,128 @@ Before you can operate the peer, you need to do some management of the certifica
 
 3. You also need to reference to the TLS certificate of your orderer. If you are the administrator of the orderer, follow the instructions to [download the orderer TLS certificate](orderer_operate.html#orderer-tls). If the orderer is governed by another organization, they need to provide you the TLS certificate in an out of band operation. Save this certificate in a location where you can reference it in future commands.
 
-  ```
-  cp orderertls.pem $HOME/fabric-ca-client/orderer-tls/orderertls.pem
-  ```
-  {:codeblock}
+You can run a tree command to verify that you have completed these steps. Navigate to the directory where you stored your certificates. A tree command should generate a result similar to the following structure:
+```
+cd $HOME/fabric-ca-client
+tree
+.
+├── ca-admin
+│   ├── fabric-ca-client-config.yaml
+│   └── msp
+│       ├── cacerts
+│       │   └── 9-30-250-70-30395-SampleOrgCA.pem
+│       ├── keystore
+│       │   └── 2a97952445b38a6e0a14db134645981b74a3f93992d9ddac54cb4b4e19cdf525_sk
+│       ├── signcerts
+│       │   └── cert.pem
+│       └── user
+├── catls
+│   └── tls.pem
+├── orderer-tls
+│   └── orderertls.pem
+├── peer-admin
+│   └── msp
+│       ├── admincerts
+│       │   └── cert.pem
+│       ├── cacerts
+│       │   └── 9-30-250-70-30395-SampleOrgCA.pem
+│       ├── keystore
+│       │   └── 24f76217c5c7e641ee29b068712181294e427cbee4dbfce230a1a98b53489cbe_sk
+│       ├── signcerts
+│       │   └── cert.pem
+│       └── user
+├── peer-tls
+│   └── peertls.pem
+└── tlsca-admin
+    ├── fabric-ca-client-config.yaml
+    └── msp
+        ├── cacerts
+        │   └── 9-30-250-70-30395-tlsca.pem
+        ├── keystore
+        │   └── 45a7838b1a91ddfe3d4d22a5a7f2639b868493bcce594af3e3ceb9c07899d117_sk
+        ├── signcerts
+        │   └── cert.pem
+        └── user
+```
 
 ### Setting CLI environment variables
 {: #environment-variables}
 
 After we have moved all of our certificates to the necessary location, we need to set some environment variables that are used by our peer CLI commands. Then we will be ready to use the Fabric peer client to operate our peer.
 
-1. Set the path to directory where you [downloaded the Fabric tool binaries](#peer-client):
+1. Make sure that you have set the [environment variables in your CLI](#environment-variables)
+
+2. Set the Fabric config path to this config directory that was created when you [downloaded the Fabric tool binaries](#peer-client):
 
     ```
-    export FABRIC_CFG_PATH=<full/path/to/config/>
+    export FABRIC_CFG_PATH=<full_path_to_config_folder>
     ```
     {:codeblock}
 
     Setting this variable will allow you to run the commands using the peer client in any directory.
 
-2. You need the endpoint information of your orderer. If you are the administrator of the orderer, you can use these instructions to [Retrieve the orderer endpoint information](orderer_operate.html#orderer-endpoint). If the orderer is governed by another organization, they need to provide you the orderer URL in and out of band operation.
+3. You need the endpoint information of your orderer. If you are the administrator of the orderer, you can use these instructions to [Retrieve the orderer endpoint information](orderer_operate.html#orderer-endpoint). If the orderer is governed by another organization, they need to provide you the orderer URL in and out of band operation.
 
-3. [Retrieve your peers endpoint information](#peer-endpoint). We will use this URL to set the `PEERADDR` environment variable. You need to leave off the `http://` at the beginning.
+4. [Retrieve your peers endpoint information](#peer-endpoint). We will use this URL to set the `PEERADDR` environment variable. You need to leave off the `http://` at the beginning.
 
-<!-- using the proxy IP from the test scripts, but I understand that we may need to use the helm release name in the future-->
-
-4. Run the following commands to set the environment variables:
+5. Run the following commands to set the environment variables:
 
   ```
   export CHANNEL=<CHANNEL_NAME>
   export CC_NAME=<CC_NAME>
-  export ORGID=<ORGANIZATION_MSP_ID>
   export CORE_PEER_ADDRESS=<PEERADDR>
   export ORDERER_1=<ORDERER_URL>
   export CORE_PEER_MSPCONFIGPATH=<PATH_TO_ADMIN_MSP>
-  export CORE_PEER_LOCALMSPID=<ORG_ID_OF_PEER_BEING_USED>
+  export CORE_PEER_LOCALMSPID=<MSPID_OF_PEER_BEING_USED>
   ```
   {:codeblock}
 
   Replace the fields with your own information.
-    - Replace `<ORDERER_URL>` with the hostname and port of your consortium orderer.
     - Replace `<CHANNEL_NAME>` with the name of the channel that the peer joins.
     - Replace `<CC_NAME>` with any name to refer to your chaincode.
-    - Replace `<ORGANIZATION_MSP_ID>` the organization MSPID that you used when deploying your peer.
-    - Replace `<PEER_ADDR>` with the peer endpoint from the previous step.
+    - Replace `<PEERADDR>` with the peer endpoint hostname and port from the previous step.
+    - Replace `<ORDERER_URL>` with the hostname and port of your consortium orderer.
     - Replace `<PATH_TO_ADMIN_MSP>` with the path to your peer admin's MSP folder.
-    - Replace `<ORG_ID_OF_PEER_BEING_USED>` with the organization ID of the peer you're using to fetch a genesis block or join a channel or install chaincode.
+    - Replace `<MSPID_OF_PEER_BEING_USED>` with the organization MSPID of the peer you're using to fetch a genesis block or join a channel or install chaincode. This value was given during the Helm chart deployment.
 
   For example:
 
   ```
-  export ORDERER_1=9.30.94.174:31052
-  export CHANNEL=defaultchannel
+  export CHANNEL=mychannel
   export CC_NAME=mycc
-  export ORGID=PeerOrg1
-  export PEERADDR=9.30.94.174:30159
-  export CORE_PEER_MSPCONFIGPATH=$HOME/fabric-ca-client/peer-admin/msp
-  export CORE_PEER_LOCALMSPID=$org1
+  export CORE_PEER_ADDRESS=9.30.250.70:32110
+  export ORDERER_1=9.30.250.70:31507
+  export CORE_PEER_MSPCONFIGPATH=$HOME/fabric-ca-client/peer-admin/msp/
+  export CORE_PEER_LOCALMSPID=org1
   ```
+  {:codeblock}
+
+  You'll also want to enable TLS, which you can do by issuing:
+
+  ```
+  export CORE_PEER_TLS_ENABLED=true
+  ```
+  {:codeblock}
+
 
 ### Using the CLI to join the peer to the channel
 {: #icp-cli-join-peer-to-channel}
 
 Your organization needs to be a member of a channel before you can join the channel with your peer. If you are not member of a channel, you can follow the instructions to [create a new channel](#create-channel).
 
-1. Fetch the genesis block of the channel to build the channel ledger on your peer. Set `CORE_PEER_TLS_ROOTCERT_FILE` to the path of the TLS certificate of your CA on ICP and run the following command:
+1. Make sure that you have set the [environment variables in your CLI](#environment-variables).
+
+2. Fetch the genesis block of the channel to build the channel ledger on your peer. Set `CORE_PEER_TLS_ROOTCERT_FILE` to the path of the orderer TLS certificate and run the following command:
 
   ```
-  CORE_PEER_TLS_ROOTCERT_FILE=$HOME/fabric-ca-client/orderer-tls/orderertls.pem
-  peer channel fetch 0 -o ${ORDERER_1} -c ${CHANNEL} --tls
+  peer channel fetch 0 -o ${ORDERER_1} -c ${CHANNEL} --tls --cafile $HOME/fabric-ca-client/orderer-tls/orderertls.pem
   ```
   {:codeblock}
+
+  If this is successful, you will see results similar to:
+  ```
+  2018-11-27 17:00:49.387 EST [cli/common] readBlock -> INFO 041 Received block: 0
+  ```
 
   **Note:** It is possible that when you run any of these CLI commands, you might experience the following warning that can be safely ignored.
 
@@ -397,10 +458,10 @@ Your organization needs to be a member of a channel before you can join the chan
   defaultchannel_0.block
   ```
 
-2. Once you have fetched the genesis block of the channel, you can join the peer to the channel.  Set `CORE_PEER_TLS_ROOTCERT_FILE` to the path of the TLS certificate of your CA on ICP and join the channel by using the following command:
+3. Once you have fetched the genesis block of the channel, you can join the peer to the channel.  Set `CORE_PEER_TLS_ROOTCERT_FILE` to the path of your peer TLS certificate and join the channel by using the following command:
 
   ```
-  CORE_PEER_TLS_ROOTCERT_FILE=$HOME/fabric-ca-client/peer-tls/peertls.pem
+  export CORE_PEER_TLS_ROOTCERT_FILE=$HOME/fabric-ca-client/peer-tls/peertls.pem
   peer channel join -b ${CHANNEL}_0.block --tls
   ```
   {:codeblock}
@@ -416,51 +477,52 @@ Your organization needs to be a member of a channel before you can join the chan
 ### Using the CLI to install chaincode on the peer
 {: #icp-toolcontainer-install-cc}
 
-We are now ready to install and instantiate chaincode on the peer. For these instructions, we  install the `fabcar` chaincode from the `fabric-samples` repository. Download the `fabric-samples` chaincode from github by using the following commands:
+We are now ready to install and instantiate chaincode on the peer. For these instructions, we install the `fabcar` chaincode from the `fabric-samples` repository. Ensure you have [configured your GOPATH ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/dev-setup/devenv.html?highlight=gopath#set-your-gopath "Set your GOPATH") before and then download the `fabric-samples` chaincode from github by using the following commands:
 
   ```
+  cd $GOPATH/src
   git clone https://github.com/hyperledger/fabric-samples
   ```
   {:codeblock}
 
-Run the following Peer CLI command to install the `fabcar` chaincode onto the peer. Set `CORE_PEER_TLS_ROOTCERT_FILE` to the path of the TLS certificate of your CA on ICP.
+Run the following Peer CLI command to install the `fabcar` chaincode onto the peer. Set `CORE_PEER_TLS_ROOTCERT_FILE` to the path of your peer TLS certificate.
 
   ```
-  CORE_PEER_TLS_ROOTCERT_FILE=$HOME/fabric-ca-client/peer-tls/peertls.pem
-  peer chaincode install -n ${CC_NAME} -v v0 -p $PWD/fabric-samples/chaincode/fabcar/go/
+  export CORE_PEER_TLS_ROOTCERT_FILE=$HOME/fabric-ca-client/peer-tls/peertls.pem
+  peer chaincode install -n ${CC_NAME} -v v0 -p fabric-samples/chaincode/fabcar/go/
   ```
   {:codeblock}
 
   When this command completes successfully, you should see something similar to:
 
   ```
-  2018-07-06 18:39:00.461 UTC [chaincodeCmd] checkChaincodeCmdParams -> INFO 001 Using default escc
-  2018-07-06 18:39:00.461 UTC [chaincodeCmd] checkChaincodeCmdParams -> INFO 002 Using default vscc
-  2018-07-06 18:39:01.142 UTC [main] main -> INFO 003 Exiting.....
+  2018-11-27 17:05:54.062 EST [chaincodeCmd] install -> INFO 050 Installed remotely response:<status:200 payload:"OK"
   ```
 
 <!--
-**Note:** If this chaincode has already been installed and instantiated on another peer running in IBP Starter or Enterprise Plan, there are additional steps that must be performed before installing the chaincode on the peer.  See this [troubleshooting topic](#icp-cc-install-error) for more instructions on how to avoid errors associated with how this chaincode is installed.
+**Note:** If this chaincode has already been installed and instantiated on another peer running in IBP Starter or Enterprise Plan, there are additional steps that must be performed before installing the chaincode on the peer. For more instructions about how to avoid errors that are associated with how this chaincode is installed, see the [troubleshooting topic](#icp-cc-install-error).
 -->
 
 ### Using the CLI to instantiate chaincode on a channel
 {: #icp-toolcontainer-instantiate-cc}
 
-Because only one peer has to instantiate chaincode on a channel, you do not have use your peer to instantiate chaincode. Peers that are hosted on {{site.data.keyword.blockchainfull_notm}} Platform can do that. However, if you would like the peer to instantiate the chaincode onto the channel, you can do so by running the command below. Set the value of `CORE_PEER_TLS_ROOTCERT_FILE` to the path of the TLS certificate of your CA on ICP.
+Because only one peer has to instantiate chaincode on a channel, you do not have use your peer to instantiate chaincode. Peers that are hosted on {{site.data.keyword.blockchainfull_notm}} Platform can do that. However, if you would like the peer to instantiate the chaincode onto the channel, you can do so by running the command below. Set the value of `CORE_PEER_TLS_ROOTCERT_FILE` to the path of your peer TLS certificate. Set the value of `--cafile` to the orderer TLS cert.
 
 ```
-CORE_PEER_TLS_ROOTCERT_FILE=$HOME/fabric-ca-client/catls/catls.pem
-peer chaincode instantiate -o ${ORDERER_1} -C ${CHANNEL} -n ${CC_NAME} -v v0 -c '{"Args":[""]}' --tls --cafile /mnt/msp/tls/cacert.pem -P ""
+cd $HOME/fabric-ca-client
+export CORE_PEER_TLS_ROOTCERT_FILE=$HOME/fabric-ca-client/peer-tls/peertls.pem
+peer chaincode instantiate -o ${ORDERER_1} -C ${CHANNEL} -n ${CC_NAME} -v v0 -c '{"Args":[""]}' --tls --cafile $PWD/orderer-tls/orderertls.pem -P ""
 ```
 {:codeblock}
 
 When this command completes successfully, you should see something similar to:
 
 ```
-2018-07-06 18:43:15.066 UTC [chaincodeCmd] checkChaincodeCmdParams -> INFO 001 Using default escc
-2018-07-06 18:43:15.066 UTC [chaincodeCmd] checkChaincodeCmdParams -> INFO 002 Using default vscc
-2018-07-06 18:43:50.227 UTC [main] main -> INFO 003 Exiting.....
+2018-11-27 17:09:28.013 EST [chaincodeCmd] checkChaincodeCmdParams -> INFO 048 Using default escc
+2018-11-27 17:09:28.013 EST [chaincodeCmd] checkChaincodeCmdParams -> INFO 049 Using default vscc
 ```
+
+After the chaincode has been instantiated, you can use chaincode query and invoke commands to read and write data on the channel ledger. For more information, see the [peer chaincode ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/latest/commands/peerchaincode.html) commands in the Hyperledger Fabric documentation. You will need to pass the orderer endpoint to your invoke commands using the proxy IP and the external orderer port. You only need to pass the peer endpoint to a query command.
 
 ## Viewing peer logs in {{site.data.keyword.cloud_notm}} Private
 {: #peer-log-icp}
@@ -480,10 +542,8 @@ Complete the following steps to update your chaincode:
 
 1. To update the chaincode on each peer, simply rerun the process you used to install the chaincode on the peers, by using either a client application or a CLI command. Be sure to specify the same chaincode name as was originally used. However, this time increment the chaincode `Version`. All peers need to use the same chaincede name and version.
 
-2. After installing the new chaincode on all the peers in the channel, use the Network Monitor or the
+2. After you install the new chaincode on all the peers in the channel, use the
 [peer chaincode upgrade ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/peerchaincode.html#peer-chaincode-upgrade) command to update the channel to use the new chaincode.
-
-See step two of these [instructions](install_instantiate_chaincode.html#updating-a-chaincode) for more information about using the "Install Code" panel of Network Monitor to update the chaincode on the channel.
 
 ## Restarting a peer that runs in ICP
 {: #peer-restart}
@@ -512,16 +572,16 @@ You can use the **kubectl** commands to restart the peer that runs in ICP. The c
 ## Creating a channel
 {: #create-channel}
 
-If your organization is not yet a member of a consortium or channel, you can use the steps below to create a channel. You can also use these steps to update an existing channel. The instructions will take you through how to [prepare an organization definition](#organization-definition). This definition will be used to make you a [member of the consortium](orderer_operate.html#add-organizations-to-consortium) by being added to an orderer system channel. Afterwards, you will be able to form a new channel by [creating a channel transaction](#peer-icp-channeltx)
+If your organization is not yet a member of a consortium or channel, you can use the steps below to create a channel. You can also use these steps to update an existing channel. The instructions will take you through how to [prepare an organization definition](#organization-definition). This definition will be used to make you a [member of the consortium](orderer_operate.html#add-organizations-to-consortium) by being added to an orderer system channel. Afterward, you will be able to form a new channel by [creating a channel transaction](#peer-icp-channeltx)
 
-If you have already joined the consortium, you only need to complete the step of preparing the channel transaction. Another member of the consortium can also form a new channel with your organization as a member. You can update the organization definition when you need to send updates to the consortium, such as defining new anchor peers, adding new admin certificates, or updating your crypto material.
+If you have already joined the consortium, you need to complete only the step of preparing the channel transaction. Another member of the consortium can also form a new channel with your organization as a member. You can update the organization definition when you need to send updates to the consortium, such as defining new anchor peers, adding new admin certificates, or updating your crypto material.
 
 ### Downloading the configtxgen tool
 {: #peer-icp-configtxgen}
 
 If your organization needs to join a consortium or channel, you need to download the [configtxgen ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/configtxgen.html "configtxgen") tool.
 
-The easiest way to to get the configtxgen is to download all of the Fabric tool binaries from the Hyperledger Project. Navigate to a directory where you would like to download the binaries with your command line, and fetch them by issuing the command below. You need to install [Curl ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/prereqs.html#install-curl "Curl") first.
+The easiest way to get the configtxgen is to download all of the Fabric tool binaries from the Hyperledger Project. Navigate to a directory where you would like to download the binaries with your command line, and fetch them by issuing the command below. You need to install [Curl ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/prereqs.html#install-curl "Curl") first.
 
 ```
 curl -sSL http://bit.ly/2ysbOFE | bash -s 1.2.1 1.2.1 -d -s
@@ -530,16 +590,16 @@ curl -sSL http://bit.ly/2ysbOFE | bash -s 1.2.1 1.2.1 -d -s
 
 The command installs the configtxgen in a `bin/` directory. Set the `PATH` path to directory where you downloaded the Fabric tool binaries:
 
-  ```
-  export PATH=$PATH:<full/path/to/configtxgen/bin>
-  ```
-  {:codeblock}
+```
+export PATH=$PATH:<full_path_to_configtxgen>/bin
+```
+{:codeblock}
 
-  For example, if you installed the binaries in your home directory you would set your `PATH` as:
+For example, if you installed the binaries in your home directory you would set your `PATH` as:
 
-  ```
-  export PATH=$PATH:$HOME/bin
-  ```
+```
+export PATH=$PATH:$HOME/bin
+```
 
 ## Preparing an organization definition
 {: #organization-definition}
@@ -548,14 +608,25 @@ Once you have deployed your components, your organization can join a consortium 
 
 ### Prepare your Crypto material
 
-Before you prepare an organization definition, you need to register and enroll the [administrator of your peers](CA_operate.html#register-admin). Navigate to the directory where you created your peer admin MSP folder. The example steps created this folder in `$HOME/fabric-ca-client/peer-admin/msp`. You need have take some additional steps inside this folder before the MSP can be used by the `configtxgen` tool.
+Before you prepare an organization definition, you need to register and enroll the [administrator of your peers](CA_operate.html#register-admin). Navigate to the directory where you created your peer admin MSP folder. The example steps created this folder in `$HOME/fabric-ca-client/peer-admin/msp`. You need to take some additional steps inside this folder before the MSP can be used by the `configtxgen` tool.
 
-1. Move your TLS cert from your CA and put in a new folder named `tlscerts`.
+1. Copy your TLS cert from your CA and put in a new folder named `tlscacerts`.
 
   ```
   cd $HOME/fabric-ca-client/peer-admin/msp
-  mkdir tlscerts
-  cp ../../catls/tls.pem tlscerts/tls.pem
+  mkdir tlscacerts
+  ```
+
+  Then, you'll need to copy the cert to the `tlscacerts` directory you made:
+
+  ```
+  cp $HOME/fabric-ca-client/tlsca-admin/cacerts/<xxxx>tlsca.pem tlscacerts/
+  ```
+
+  Your command might look something like:
+
+  ```
+  cp fabric-ca-client/tlsca-admin/cacerts/9-30-250-70-32129-tlsca.pem /tlscacerts/
   ```
   {:codeblock}
 
@@ -589,7 +660,7 @@ Organizations:
         # ID to load the MSP definition as
         ID: org1
 
-        MSPDir: $HOME/fabric-ca-client/peer-admin/msp
+        MSPDir: <path_to_peer-admin>/msp
 
         AnchorPeers:
             # AnchorPeers defines the location of peers which can be used
@@ -600,11 +671,12 @@ Organizations:
 ```
 {:codeblock}
 
-This file contains the information that define your organization within the consortium. It is available in the `/config` folder of [the fabric peer client that you downloaded](peer_operate_icp.html#peer-client). Note the location of this `/config` folder to set the value of the `FABRIC_CFG_PATH` below. Edit the `Organizations` section of this file and set the following values:
+This file contains the information that define your organization within the consortium. A more complex version of this file is also available in the `/config` folder of [the fabric peer client that you downloaded](peer_operate_icp.html#peer-client). You can choose to edit that file, or replace it with the sample above. Note the location of this `/config` folder to set the value of the `FABRIC_CFG_PATH` below. Edit the `Organizations` section of this file and set the following values:
 
 - The `Name:` can be whatever name you wish to use for your organization.
 
-- The `ID:` values of your MSPID, which become the unique identifier of your organization. This value was specified when you deployed your peer helm chart. It is also visible inside the peer container by running the following commands, replacing `<peer pod name>` with the value of your peer's pod:
+- The `ID:` values of your MSPID, which become the unique identifier of your organization. This Organization MSP value was specified when you deployed your peer helm chart. It is also visible inside the peer container by running the following commands, replacing `<peer pod name>` with the value of your peer's pod:
+
   ```
   kubectl exec -it <peer pod name> -c peer sh
   $ env | grep CORE_PEER_LOCALMSPID
@@ -618,7 +690,7 @@ This file contains the information that define your organization within the cons
 
   Therefore, the MSP `ID` is org1.
 
-- The `MSPDir:` is the fully qualified path to your admin MSP, for example: `$HOME/fabric-ca-client/peer-admin/msp`
+- The `MSPDir:` is the fully qualified path to your admin MSP, for example: `/Users/chandra/fabric-ca-client/peer-admin/msp`
 
 - The `AnchorPeers:` field is the peer that your organization selects to be the lead peer for inter organization communication by gossip. This is used for features such as private data or service discovery; however, private data and service discovery are not currently supported by the peer Helm chart, although the field is still required. The `Host` and `Port` values are available in the ICP peer Helm Release page under the Notes section `#1. Get the application URL by running these commands`. The output will be similar to:
 
@@ -626,24 +698,26 @@ This file contains the information that define your organization within the cons
 http://9.30.250.70:30481
 ```
 
-where, the `Host:` = `9.30.250.70` and `Port:` = `30481`  
+Where the `Host:` = `9.30.250.70` and `Port:` = `30481`
 
 Then use the following command to print the organization definition:
 
 ```
 export FABRIC_CFG_PATH=<path_to_config_folder>
-configtxgen -printOrg <org_name> > orgdefinition.json
+configtxgen -printOrg <org_name> > <path_to_org_definition>orgdefinition.json
 ```
 {:codeblock}
 
 Your call might look similar to the following example command:
+
 ```
-export FABRIC_CFG_PATH=<path_to_peer_client>/config
-configtxgen -printOrg org1 > org1definition.json
+export FABRIC_CFG_PATH==<full_path_to_config_folder>
+mkdir -p $HOME/fabric-ca-client/org-definitions
+configtxgen -printOrg org1 > $HOME/fabric-ca-client/org-definitions/org1definition.json
 ```
 {:codeblock}
 
-If this command is successful, the `configtxgen` will print the organization definition in JSON format in the directory you set as `$FABRIC_CFG_PATH`. You need to send this file to the [orderer](orderer_operate.html#getting-the-organization-definitions) organization in an out of band operation to join the consortium. The orderer organization can then [add your organization to the consortium](orderer_operate.html#add-organizations-to-consortium) by adding the definition to the system channel, allowing you to create new channels and be added to channels by other consortium members.
+If this command is successful, the `configtxgen` will print the organization definition in JSON format. You need to send this file to the orderer organization in an out of band operation to join the consortium. The orderer organization can then [form a consortium or be added to an existing consortium](orderer_operate.html#consortium) by adding the definition to the system channel, allowing you to create new channels and be added to channels by other consortium members.
 
 ## Creating the channel transaction
 {: #peer-icp-channeltx}
@@ -653,8 +727,7 @@ Before you can create a new channel, your organization should have prepared an [
 ### Forming a new channel
 {: #peer-icp-create-channel}
 
-To form a new channel, an organization needs to create a channel creation transaction proposal using the [configtxgen tool![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/configtxgen.html "configtxgen"). This tool consumes a `configtx.yaml` file defining the new channel members. A sample `configtx.yaml` file is provided below:
-
+To form a new channel, an organization needs to create a channel creation transaction proposal using the [configtxgen tool![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/configtxgen.html "configtxgen"). This tool consumes a `configtx.yaml` file that defines the new channel members. A sample `configtx.yaml` file is provided below. A more complex version of this file is also available in the `/config` folder of [the fabric peer client that you downloaded](peer_operate_icp.html#peer-client). You can choose to edit that file, or replace it with the sample. Note the location of this `/config` folder to set the value of the `FABRIC_CFG_PATH` below.
 ```
 # Copyright IBM Corp. All Rights Reserved.
 #
@@ -670,45 +743,20 @@ To form a new channel, an organization needs to create a channel creation transa
 #
 ################################################################################
 Organizations:
+    - &org1
 
-
-    - &OrdererOrg
-
-        Name: OrdererOrg
+        Name: org1
 
         # ID to load the MSP definition as
-        ID: OrdererMSP
+        ID: org1
 
-        MSPDir: peer-admin/msp
-
-    - &Org1
-
-        Name: Org1MSP
-
-        # ID to load the MSP definition as
-        ID: Org1MSP
-
-        MSPDir: peer-admin/msp
+        MSPDir: /Users/chandra/fabric-ca-client/peer-admin/msp
 
         AnchorPeers:
 
-            - Host: peer0.org1.example.com
-              Port: 7051
+            - Host: 9.30.250.70
+              Port: 32110
 
-    - &Org2
-        # DefaultOrg defines the organization which is used in the sampleconfig
-        # of the fabric.git development environment
-        Name: Org2MSP
-
-        # ID to load the MSP definition as
-        ID: Org2MSP
-
-        MSPDir: peer-admin/msp
-
-        AnchorPeers:
-
-            - Host: peer0.org2.example.com
-              Port: 7051
 
 ################################################################################
 #
@@ -754,51 +802,6 @@ Application: &ApplicationDefaults
     Capabilities:
         <<: *ApplicationCapabilities
 
-################################################################################
-#
-#   SECTION: Orderer
-#
-#   - This section defines the values to encode into a config transaction or
-#   genesis block for orderer related parameters
-#
-################################################################################
-
-Orderer: &OrdererDefaults
-
-    # Orderer Type: The orderer implementation to start
-    # Available types are "solo" and "kafka"
-    OrdererType: solo
-
-    Addresses:
-        - 9.30.94.174:30159
-
-    # Batch Timeout: The amount of time to wait before creating a batch
-    BatchTimeout: 2s
-
-    # Batch Size: Controls the number of messages batched into a block
-    BatchSize:
-
-        # Max Message Count: The maximum number of messages to permit in a batch
-        MaxMessageCount: 10
-
-        # Absolute Max Bytes: The absolute maximum number of bytes allowed for
-        # the serialized messages in a batch.
-        AbsoluteMaxBytes: 99 MB
-
-        # Preferred Max Bytes: The preferred maximum number of bytes allowed for
-        # the serialized messages in a batch. A message larger than the preferred
-        # max bytes will result in a batch larger than preferred max bytes.
-        PreferredMaxBytes: 512 KB
-
-    Kafka:
-        # Brokers: A list of Kafka brokers to which the orderer connects
-        # NOTE: Use IP:port notation
-        Brokers:
-            - 127.0.0.1:9092
-
-    # Organizations is the list of orgs which are defined as participants on
-    # the orderer side of the network
-    Organizations:
 
 ################################################################################
 #
@@ -816,50 +819,80 @@ Profiles:
         Application:
             <<: *ApplicationDefaults
             Organizations:
-                - *Org1
-                - *Org2
-                - *Org3
+                - *org1
             Capabilities:
                 <<: *ApplicationCapabilities
 
 ```
 {:codeblock}
 
-The three sections that are relevant for creating a new channel are **Organizations**, **Orderers**, and **Profiles**:
+The three sections that are relevant for creating a new channel are **Organizations**, **Capabilities**, and **Profiles**:
 
 - **Organizations:** This section defines all of the members of the consortium. Each organization has an anchor, such as `&Org1`. Under this anchor you can find the organization's name, MSPID, directory to their MSP folder, and the anchor peers of their organization for cross peer gossip. You can fill out the organization profile for each consortium member with the following steps:
-  1. Specify the `Name` and `ID` of the organization by using their MSPID. The organization that creates the channel needs to know the MSPID that was specified when the when the peer Helm chart was deployed.
-  2. In `MSPDir`, specify the path to the MSP folder you used to create your [organization definition](#organization-definition). Note that none of your crypto material is used in the channel creation transaction. The *configtxgen* tool will ignore the actual contents of the MSP. However it expects an MSP folder at that location, with the correct folder substructure.
-  3. The `AnchorPeers` parameter is used to identity the lead peer each organization uses for inter organization communication by gossip. Specify the hostname and port of the peer which will act as the [anchor peer ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/glossary.html) for this organization. This value is important for using features such as private data or service discovery; however, private data and service discovery are not currently supported by the peer Helm chart.
+  1. Specify the `Name` and `ID` of the organization by using their MSPID. The organization that creates the channel needs to know the MSPID that was specified when the peer Helm chart was deployed.
+  2. In `MSPDir`, specify the fully qualified path to the MSP folder you used to create your [organization definition](#organization-definition). Note that none of your crypto material is used in the channel creation transaction. The *configtxgen* tool will ignore the actual contents of the MSP. However it expects an MSP folder at that location, with the correct folder substructure.
+  3. The `AnchorPeers` parameter is used to identity the lead peer each organization uses for inter organization communication by gossip. Specify the hostname and port of the peer that will act as the [anchor peer ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/glossary.html) for this organization. This value is important for using features such as private data or service discovery; however, private data and service discovery are not currently supported by the peer Helm chart.
 
-- **Orderers:** This section contains the type and list of orderers that will support the newly formed channel. Get the ordering service endpoint from the orderer organization, and use it to update the file.
+- **Capabilities:** This section is required to be in the `configtx.yaml` but no changes are required.
 
-- **Profiles:** section. This section contains the information needed to create a new channel. The profile contains the following information:
+- **Profiles:** section. This section contains the information that is needed to create a new channel. The profile contains the following information:
   1. The name of the new channel.
-  2. The name of the consortium defined within the system channel that will be used to create the channel.
-  3. The list of organizations that will be added to the channel. The organization names listed will use the anchor peer's listed in the `Organizations` section to find the listed organizations MSPID and the associated anchor peers.
+  2. The name of the consortium that is defined within the system channel and will be used to create the channel.
+  3. The list of organizations that will be added to the channel. The listed organization names will use the anchor peers that are listed in the `Organizations` section to find the listed organizations MSPID and the associated anchor peers.
 
   The *configtxgen* tool uses this `Profiles` section to create the channel creation proposal.
 
-When you are finished writing the `configtx.yaml` file, save it in a location you can reference it from the *configtxgen tool* in the `fabric-samples` folder, and have a complete path to the MSP folder. Using the configuration file, you are able to generate the channel update transaction proposal using the following command:
+After updated the configuration file, generate the channel update transaction proposal using the following command:
 
-```
-$HOME/bin/configtxgen -profile mychannel -outputCreateChannelTx ./mychannel.tx -channelID mychannel 
+``` 
+export FABRIC_CFG_PATH=<path_to_config_folder>
+configtxgen -profile <channel_profile_name> -outputCreateChannelTx ./<channel_profile_name>.tx -channelID <channel_profile_name>
 ```
 {:codeblock}
 
-If successful, you will see a result similar to the following output:
+A real command would like similar the to following example:
+``` 
+export FABRIC_CFG_PATH=$HOME/config
+configtxgen -profile mychannel -outputCreateChannelTx ./mychannel.tx -channelID mychannel
+```
+{:codeblock}
+
+
+If successful, you will see a result similar to the following output below. The command will write the channel update transaction proposal in your `FABRIC_CFG_PATH` directory.
 
 ```
-2018-11-12 18:34:03.977 EST [common/tools/configtxgen] main -> INFO 001 Loading configuration
-2018-11-12 18:34:04.039 EST [common/tools/configtxgen] doOutputChannelCreateTx -> INFO 002 Generating new channel configtx
+2018-11-27 16:39:36.130 EST [common/tools/configtxgen] main -> INFO 001 Loading configuration
+2018-11-27 16:39:36.134 EST [common/tools/configtxgen] doOutputChannelCreateTx -> INFO 002 Generating new channel configtx
+2018-11-27 16:39:36.134 EST [common/tools/configtxgen/encoder] NewApplicationGroup -> WARN 003 Default policy emission is deprecated, please include policy specificiations for the application group in configtx.yaml
+2018-11-27 16:39:36.135 EST [common/tools/configtxgen/encoder] NewApplicationOrgGroup -> WARN 004 Default policy emission is deprecated, please include policy specificiations for the application org group org1 in configtx.yaml
+2018-11-27 16:39:36.136 EST [common/tools/configtxgen] doOutputChannelCreateTx -> INFO 005 Writing new channel tx
 ```
 
-When the new `mychannel.tx` is signed by enough organizations to meet the system channel endorsement policy, you can submit the channel update transaction to the orderer to form the new channel.
+If your endorsement policy does not require additional signatures from other members of the consortium, you can submit the proposal directly to the orderer to form the new channel. Run the following command from the same location as you generated the channel update transaction to create the channel.
+
+```
+export CORE_PEER_LOCALMSPID=<ORG_MSPID>
+export CORE_PEER_MSPCONFIGPATH=<PATH_TO_ADMIN_MSP>
+peer channel create -o <orderer_url> --tls --cafile <orderer_tls_cert> -c <channel_profile_name> -f ./<channel_profile_name>.tx
+```
+{:codeblock}
+
+Where `<ORG_MSPID>` is the MSPID of your organization, and `<PATH_TO_ADMIN_MSP>` is the path to your peer admin MSP folder. Inside the command, `<orderer_url>` is the URL of the orderer that will create the channel, and `<orderer_tls_cert>` is the path the orderers TLS certificate. A real command might look like the example below:
+```
+export CORE_PEER_LOCALMSPID=org1
+export CORE_PEER_MSPCONFIGPATH=$HOME/fabric-ca-client/peer-admin/msp/
+peer channel create -o 9.30.250.70:31507 --tls --cafile $PWD/orderer-tls/orderertls.pem -c mychannel -f ./mychannel.tx
+```
+{:codeblock}
+
+```
+2018-11-27 16:59:30.610 EST [cli/common] readBlock -> INFO 04f Received block: 0
+```
+
 
 ## Endorsing the proposal and submitting the request
 
-After you form the channel creation transaction, send the transaction to peers that belong to all of the organizations that will become members of the new channel. After the channel creation transaction is signed, submit it to the orderer to create a new channel.
+When the new channel creation proposal is signed by enough organizations to meet the system channel endorsement policy, you can submit the channel update transaction to the orderer to form the new channel
 
 You can use the Node Fabric SDK APIs to complete signing and submission in a single transaction. For more information, visit the [How to create a Hyperledger Fabric Channel ![External link icon](../images/external_link.svg "External link icon")]](https://fabric-sdk-node.github.io/release-1.3/tutorial-channel-create.html) tutorial in the Node SDK documentation.
 
@@ -921,9 +954,9 @@ by [helm](https://docs.helm.sh/using_helm/#from-script), which includes the foll
    * `chmod 700 get_helm.sh`
    * `./get_helm.sh --version v2.7.2`
 
-   In the last step, ensure the version selected is compatible with ICP 2.1.0.3, `v2.7.2 ` is recommended.
+   In the last step, ensure the selected version is compatible with ICP 2.1.0.3. `v2.7.2 ` is recommended.
 
-3.  After the helm install completes, [login](#peer-kubectl-configure}) to your ICP cluster
+3.  After the helm installation completes, [login](#peer-kubectl-configure}) to your ICP cluster
 and run the following command:
 
  ```

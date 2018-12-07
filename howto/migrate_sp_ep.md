@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-31"
+lastupdated: "2018-12-07"
 
 ---
 
@@ -31,7 +31,7 @@ Enterprise Plan networks offer the following production-ready features to suppor
   - Secure Service Container (SSC) ensures that the blockchain image cannot be tampered and loaded at any given point in time and the appliance code and data is protected confidential at both flight and rest.
   - [Hardware secure module (HSM)](../glossary.html#hsm) for key management and key storage.
   - Pervasive disk encryption.
-- High Availability, Disaster Recovery, Crash Fault Tolerance and rolling upgrades.
+- High Availability, Disaster Recovery, Crash Fault Tolerance, and rolling upgrades.
 - Optional advanced support.
 
 ## Considerations
@@ -39,10 +39,9 @@ Enterprise Plan networks offer the following production-ready features to suppor
 
 Before you migrate from your Starter Plan network to an Enterprise Plan network, you might read the following considerations.
 
-- **Pricing:** The monthly fee for your organization to use an Enterprise Plan network includes $1000 membership fee on a per-instance basis and $1000 peer fee on a per-peer basis. For more information, see
-[Enterprise Plan pricing](pricing.html#enterprise-plan-pricing).
-- **Hyperledger Fabric version:** Enterprise Plan networks run on Hyperledger Fabric v1.1.  
-- **Resources affected:** Chaincode (smart contracts), business network definitions, client applications.
+- **Pricing:** The monthly fee for your organization to use an Enterprise Plan network includes $1000 membership fee on a per-instance basis and $1000 peer fee on a per-peer basis. For more information, see [Enterprise Plan pricing](pricing.html#enterprise-plan-pricing).
+- **Hyperledger Fabric version:** Enterprise Plan networks run on Hyperledger Fabric v1.1. Starter Plan networks run on Fabric v1.2. A component like [Private Data](https://hyperledger-fabric.readthedocs.io/en/release-1.2/private-data/private-data.html), as an example --- meaning, a chaincode developed to use Private Data --- that works with with a Starter Plan network, will not work in Enterprise Plan.
+- **Resources affected:** Chaincode (smart contracts), business network definitions, client applications. Again, be aware of whether your chaincode is leveraging a Fabric v1.2 component or functionality that is not compatible with v1.1 networks.
 - **Time required:** It will take at least half a day to migrate a basic network from Starter Plan to Enterprise Plan.
 - **Existing ledger data** cannot be moved from Starter Plan networks to Enterprise Plan networks because it is not appropriate for test data to exist in a production environment.
 
@@ -80,7 +79,7 @@ If you used Hyperleger Composer to define a business network and deployed a `.bn
 You might recreate the configuration of organizations (members), channels, and peers of your Starter Plan network in your Enterprise Plan network. You can use the Network Monitor UI to recreate these network resources by inviting the appropriate organizations (note that you won't be able to **switch** organizations as you can in Starter), create channels, and create peers (again, invited organizations will have to create their own peers).
 
 1. Login to your Enterprise Plan network on {{site.data.keyword.cloud_notm}} and enter the Network Monitor.
-2. Recreate organizations (members) on the "Members" screen, recreate channels on the "Channels" screen, and recreate peers on the "Overview" screen. For more information about creating network resources, see [Operating your Enterprise Plan network](../v10_dashboard.html#overview).
+2. Recreate organizations (members) on the "Members" screen, recreate channels on the "Channels" screen, and recreate peers on the "Overview" screen. For more information about creating network resources, see [Using the Network Monitor](../v10_dashboard.html#overview).
 3. Configure channels by adding members and setting channel policies the same way as in your Starter Plan network.
 
 **Note:** To achieve High Availability, you must create at least two peers for your organization, join them to the same channel, and code client applications properly to switch from one peer to the other when necessary.

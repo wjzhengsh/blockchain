@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-11-27"
+lastupdated: "2018-12-07"
 
 ---
 
@@ -43,7 +43,7 @@ It is recommended that you deploy at least two instances of the peer Helm chart 
 
 ## Prerequisites
 
-Whether you plan on using the SDKs or the command line, you need to complete the steps in this section in the course of operating your peer. You can complete all of these steps before you get started.
+Whether you plan to use the SDKs or the command line, you need to complete the steps in this section in the course of operating your peer. You can complete all of these steps before you get started.
 
 ### Configuring the CLIs
 {: #peer-kubectl-configure}
@@ -57,7 +57,7 @@ You need to use the **kubectl** command line tool to connect to peer container t
    * Install Helm
    * Install Istio CLI
 
-  To operate orderers, you need to use the first **three** tools, among which Helm is optional. Click each of them and run the `curl` commands for the machine type that you're using. Then, issue `chmod` and `sudo mv` commands for each tool. The `chmod` command will change the permission of the CLI in question to make it executable, and the `sudo mv` command will move the file and rename it.
+  To operate a peer, you need to use the first **three** tools, among which Helm is optional. Click each of them and run the `curl` commands for the machine type that you're using. Then, issue `chmod` and `sudo mv` commands for each tool. The `chmod` command will change the permission of the CLI in question to make it executable, and the `sudo mv` command will move the file and rename it.
 
   The commands for the first tool **cloudctl** might look like the following example:
 
@@ -113,7 +113,7 @@ You need to use the **kubectl** command line tool to connect to peer container t
 ### Retrieving peer endpoint information
 {: #peer-endpoint}
 
-You need to target your peer endpoint from the SDK or the Fabric CA client to join channel or install smart contracts. You can find the endpoint of your peer by using your ICP console UI.
+You need to target your peer endpoint from the SDK or the Fabric CA client to join channel or install smart contracts. You can find the endpoint of your peer by using your ICP console UI. You will need to be a [Cluster administrator ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Cluster administrator roles and actions") to complete the following steps:
 
 1. Log in to your ICP console and click the **Menu** icon in the upper left corner.
 2. Click **Workload** > **Helm Releases**.
@@ -134,31 +134,17 @@ You need to target your peer endpoint from the SDK or the Fabric CA client to jo
 
 You need to download your peer TLS certificate and pass it to your commands to communicate with your peer from a remote client.
 
-1. If you have not already, follow the steps to configure the [kubeclt CLI](#ca-kubectl-configure), which you need to use to interact with your peer container.
-
-2. Get your peers TLS cert by running the following commands:
-
-  ```
-  export POD_NAME=$(kubectl get pods --namespace <namespace> -l "release=<helm-release-name>" -o jsonpath="{.items[0].metadata.name}")
-  kubectl exec $POD_NAME -- cat  /certs/tls/signcerts/cert.pem > peer-tls.pem && cat peer-tls.pem | base64
-  ```
-  {:codeblock}
-
-  Replace `<helm-release-name>` with the name of your peer release. Replace `<namespace>` with the namespace where you deployed your release. A real command would look similar the following example:
-
-  ```
-  export POD_NAME=$(kubectl get pods --namespace blockchain-dev -l "release=peer1org1" -o jsonpath="{.items[0].metadata.name}")
-  kubectl exec $POD_NAME -- cat  /certs/tls/signcerts/cert.pem > peer-tls.pem && cat peer-tls.pem | base64
-  ```
-  {:codeblock}
-
-  This command will save your TLS certificate as the file `peer-tls.pem` on your local machine.
-
-3. Move the certificate to location where you can reference it in future commands, and rename it `peertls.pem`.
+1. Log in to your ICP console and click the **Menu** icon in the upper left corner.
+2. Click **Workload** > **Helm Releases**.
+3. Find the name of your Helm Release and open the Helm Release details panel.
+4. Scroll down to the **Notes** section at the bottom of the panel. In the **Notes** section, you can see a set of commands to help you operate your peer deployment.
+5. Follow the steps configure the [kubeclt CLI](#peer-kubectl-configure) if have not already. You will use kubectl to interact with your peer container.
+6. In your CLI, run the first command in the note, which follows **3. Get peer TLS root cert file**. This command will save your TLS certificate as the file `cacert.pem` on your local machine.
+7. Move the certificate to location where you can reference it in future commands, and rename it `peertls.pem`.
 
   ```
   mkdir $HOME/fabric-ca-client/peer-tls
-  cp peer-tls.pem $HOME/fabric-ca-client/peer-tls/peertls.pem
+  cp cacert.pem $HOME/fabric-ca-client/peer-tls/peertls.pem
   ```
   {:codeblock}
 
@@ -186,10 +172,10 @@ It is recommended that you use version 1.2 of the Node SDK.
 Your peer is deployed with the signCert of your peer admin inside. This allows you to use peer admin's certificates and MSP folder to operate the peer.
 
 Locate the certificates you created when you [enrolled your peer admin](peer_deploy_ibp.html#enroll-admin). If you used the example commands, you can find you peer admin MSP folder at `$HOME/fabric-ca-client/peer-admin`.
-  - You can build the the peer admin user context with the SDK by using the signCert (public key) and private key in the MSP folder. You can find those keys in the following locations:
+  - You can build the peer admin user context with the SDK by using the signCert (public key) and private key in the MSP folder. You can find those keys in the following locations:
     - The signCert can be found in the **signcerts** folder: `$HOME/fabric-ca-client/peer-admin/msp/signcerts`
     - The private key can be found in the **keystore:** folder: `$HOME/fabric-ca-client/peer-admin/msp/keystore`
-    You can find an example of how to form a use context and operate the SDK using only the public and private key in [this section of the developing applications tutorial](../v10_application.html#enroll-panel).
+    You can find an example of how to form a user context and operate the SDK by using only the public and private key in [this section of the developing applications tutorial](../v10_application.html#enroll-panel).
 
 You can also use the SDK to generate the peer admin signCert and private key by using the endpoint information of CA on Starter Plan or Enterprise Plan and your [peer admin username and password](peer_deploy_ibp.html#register-admin).
 
@@ -203,7 +189,7 @@ You need to upload the peer administrator signCert to the network on {{site.data
 ### Passing your peer's TLS cert to the SDK
 {: #icp-peer-download-tlscert}
 
-You need to reference the TLS cert of your peers to authenticate communication with your SDK. Locate the TLS cert that you [downloaded from your peer container](#peer-tls) and save it where it can be referenced by your application. You can then import the TLS cert into your application by using a simple read file command.
+You need to reference the TLS cert of your peers to authenticate communication with your SDK. Locate the TLS cert that you [downloaded from your peer container](#peer-tls) and save it where it can be referenced by your application. If you used the example commands, you can find you peer TLS certificate at `$HOME/fabric-ca-client/peer-tls/peertls.pem`. You can then import the TLS cert into your application by using a simple read file command.
 
 ```
 var peerTLSCert = fs.readFileSync(path.join(__dirname, './peertls.pem'));
@@ -216,7 +202,7 @@ var peerTLSCert = fs.readFileSync(path.join(__dirname, './peertls.pem'));
 Find the [endpoint information of your peer](#peer-endpoint) and provide it to the SDK by declaring a new peer variable or by updating your Connection Profile. The following example defines the peer as an endpoint on your fabric network and passes it the TLS cert that you imported.
 
 ```
-var peer = fabric_client.newPeer('grpcs://9.30.94.174:30167', { pem:  Buffer.from(peerTLSCert).toString(), 'ssl-target-name-override': 'null'});
+var peer = fabric_client.newPeer('grpcs://9.30.94.174:30167', { pem:  Buffer.from(peerTLSCert).toString(), 'ssl-target-name-override': null});
 ```
 {:codeblock}
 
@@ -237,9 +223,9 @@ Your organization needs to be a member of a channel before you can join the chan
 
     After your organization is added to a channel, you need to add your peer's signCert to the channel so that other members can verify your digital signature during transactions. The peer uploads its signCert during installation, which means you only need to synchronize the certificate to the channel. On the "Channels" screen of the Network Monitor, locate the channel that your organization joins and select **Sync Certificate** from the drop-down list under the **Action** header. This action synchronizes the certificates across all the peers on the channel. You might need to wait for a few minutes so that the channel sync can complete before you issue `join channel` commands.
 
-    **Note:** You will only be able to view new blocks being added to the channel, chaincode being instantiated, and other channel updates in the "Channels" screen of your Network Monitor if the peer you are adding to ICP and connecting to a Starter Plan or Enterprise Plan network is part of the same organization as a peer that has been added with the Network Monitor. This is because the Network Monitor gathers information on the "Channels" screen from your peer, and does not have visibility to peers outside of {{site.data.keyword.cloud_notm}}. As long as none of your peers are using the Private Data feature, the information in the Network Monitor will be the same for one peer in an organization as for the other.
+    **Note:** You will only be able to view new blocks being added to the channel, chaincode being instantiated, and other channel updates in the "Channels" screen of your Network Monitor if the peer you are adding to ICP and connecting to a Starter Plan or Enterprise Plan network is part of the same organization as a peer that has been added with the Network Monitor. This is because the Network Monitor gathers information on the "Channels" screen from your peer, and does not have visibility to peers outside of {{site.data.keyword.cloud_notm}}. If none of your peers are using the Private Data feature, the information in the Network Monitor will be the same for one peer in an organization as for the other.
 
-After your organization has become a member of a channel, follow the instructions to [join your peer to a channel](../v10_application.html#join-channel-sdk) using the SDK. You need to provide the URL of the ordering service and the channel name.
+After your organization has become a member of a channel, follow the instructions to [join your peer to a channel](../v10_application.html#join-channel-sdk) by using the SDK. You need to provide the URL of the ordering service and the channel name.
 
 ### Using the SDK to install chaincode on the peer
 {: #peer-install-cc-sdk}
@@ -268,7 +254,32 @@ curl -sSL http://bit.ly/2ysbOFE | bash -s 1.2.1 1.2.1 -d -s
 ```
 {:codeblock}
 
-The command will install the binaries in a `bin/` directory.
+The command will install the binaries in a `bin/` directory. Set your path to your tools, where the above Fabric tools are downloaded:
+```
+export PATH=$PATH:<full_path_to_bin_folder>
+```
+{:codeblock}
+
+For example, if you installed the binaries in your home directory you would set your `PATH` as:
+
+```
+export PATH=$PATH:$HOME/bin
+```
+{:codeblock}
+
+Downloading the binaries will create a `config` folder that contains a core.yaml, orderer.yaml, and configtx.yaml file. Set the Fabric config path to this `config` directory:
+
+```
+export FABRIC_CFG_PATH=<full_path_to_config_folder>
+```
+{:codeblock}
+
+For example:
+```
+export FABRIC_CFG_PATH=$HOME/config
+```
+{:codeblock}
+
 
 ### Managing the certificates on your local system
 {: #manage-certs}
@@ -276,7 +287,7 @@ The command will install the binaries in a `bin/` directory.
 Switch the directory where the peer admin MSP folder is generated. If you followed example steps in this documentation, you can find the MSP folder in a similar directory as below:
 
 ```
-cd $HOME/fabric-ca-platform/peer-admin/msp
+cd $HOME/fabric-ca-client/peer-admin/msp
 ```
 {:codeblock}
 
@@ -305,12 +316,58 @@ Before you can operate the peer, you need to do some management of the certifica
 
 3. Ensure that you [downloaded your peer TLS certificate](#peer-tls) and can reference it from your command line. If you followed the example commands, you can find this TLS cert in the `$HOME/fabric-ca-client/peer-tls/peertls.pem` file.
 
-4. You also need to reference the TLS cert you used to communicate with your with your Starter Plan or Enterprise Plan CA when you [enrolled your peer admin](peer_deploy_ibp.html#enroll-admin). If you followed the example commands in this documentation, you can find the TLS cert in the `$HOME/fabric-ca-client/tls-ibp/tls.pem` file.
+4. You also need to reference the TLS cert you used to communicate with your Starter Plan or Enterprise Plan CA when you [enrolled your peer admin](peer_deploy_ibp.html#enroll-admin). If you followed the example commands in this documentation, you can find the TLS cert in the `$HOME/fabric-ca-client/tls-ibp/tls.pem` file.
+
+You can run a tree command to verify that you have completed these steps. Navigate to the directory where you stored your certificates. A tree command should generate a result similar to the following structure:
+```
+cd $HOME/fabric-ca-client
+tree
+.
+├── ca-admin
+│   ├── fabric-ca-client-config.yaml
+│   └── msp
+│       ├── cacerts
+│       │   └── 9-12-19-115-31873-SampleOrgCA.pem
+│       ├── keystore
+│       │   └── c44ec1e708f84b6d0359f58ce2c9c8a289919ba81f2cf4bb5187c4ad5a43cbb0_sk
+│       └── signcerts
+│       |   └── cert.pem
+│       └── user
+├── catls
+│   └── tls.pem
+├── peer-admin
+│   ├── fabric-ca-client-config.yaml
+│   └── msp
+│       ├── admincerts
+│       │   └── cert.pem
+│       ├── cacerts
+│       │   └── n4790a319014a473a8a65850c660396ab-org1-ca-us05-blockchain-ibm-com-31011-org1CA.pem
+│       ├── keystore
+│       │   └── 6c2a999ee80a6b0592c63c58f95193bea2df59efe5489938d513de47b83b372a_sk
+│       ├── signcerts
+│       │   └── cert.pem
+│       └── user
+├── peer-tls
+│   └── peertls.pem
+├── tls-ibp
+│   └── tls.pem
+├── tls.pem
+└── tlsca-admin
+    ├── fabric-ca-client-config.yaml
+    └── msp
+        ├── cacerts
+        │   └── 9-30-250-70-30395-tlsca.pem
+        ├── keystore
+        │   └── bd57fa20283dfc76ada83f989ee0f62ce23e98c94dbd26f6cd23202d8084e38e_sk
+        ├── signcerts
+        │   └── cert.pem
+        └── user
+```
 
 ### Setting CLI environment variables
 {: #environment-variables}
 
-After you move all of your certificates to the necessary location, you need to set some environment variables for your commands to use. Then, you are ready to use the Fabric peer client to operate your peer.
+After you move all of our certificates to the necessary location, you need to set some environment variables for your commands to use. Then, you are ready to use the Fabric peer client to operate your peer.
 
 1. Retrieve configuration information from Starter Plan or Enterprise Plan from the **Connection Profile** file that is available in the **Overview** screen of the Network Monitor. Click **Connection Profile** and then **Download**.
 
@@ -324,45 +381,51 @@ After you move all of your certificates to the necessary location, you need to s
 
 2. [Find your peer's endpoint information](#peer-endpoint). You need to use the peer endpoint to set the `PEERADDR` environment variable. Ensure that you exclude the `http://` at the beginning.
 
-<!-- using the proxy IP from the test scripts, but I understand that we may need to use the helm release name in the future-->
-
 3. Run the following commands to set the environment variables.
 
   ```
+  export FABRIC_CFG_PATH=<full_path_to_config_folder>
   export CHANNEL=<CHANNEL_NAME>
   export CC_NAME=<CC_NAME>
-  export ORGID=<ORGANIZATION_MSP_ID>
   export CORE_PEER_ADDRESS=<PEERADDR>
   export ORDERER_1=<ORDERER_URL>
   export CORE_PEER_MSPCONFIGPATH=<PATH_TO_ADMIN_MSP>
-  export CORE_PEER_TLS_ROOTCERT_FILE=<PATH_TO_TLS_CERT_OF_CA_ON_ICP>
-  export CORE_PEER_LOCALMSPID=<ORG_ID_OF_PEER_BEING_USED>
+  export CORE_PEER_TLS_ROOTCERT_FILE=<PATH_TO_PEER_TLS_CERT>
+  export CORE_PEER_LOCALMSPID=<MSPID_OF_PEER_BEING_USED>
   ```
   {:codeblock}
 
   Replace the fields with your own information.
+    - Replace `<full_path_to_config_folder>` with the config folder that was created when you [downloaded the peer client](#peer-client)
     - Replace `<CHANNEL_NAME>` with the name of the channel that the peer joins.
     - Replace `<CC_NAME>` with any name to refer to your chaincode.
-    - Replace `<ORGANIZATION_MSP_ID>` with the name of the organization from the `creds.json` file.
-    - Replace `<PEER_ADDR>` with the peer endpoint from the previous step for the peer you are currently using.
-    - Replace `<ORDERER_URL>` with the hostname and port of the orderer from the `creds.json` file.
+    - Replace `<PEERADDR>` with the peer endpoint from the previous step for the peer you are currently using.
+    - Replace `<ORDERER_URL>` with the hostname and port of the orderer from your Connection Profile.
     - Replace `<PATH_TO_ADMIN_MSP>` with the path to your peer admin's MSP folder.
-    - Replace `<PATH_TO_TLS_CERT_OF_CA_ON_ICP>` with the path to the TLS cert of your CA on ICP.
-    - Replace `<ORG_ID_OF_PEER_BEING_USED>` with the organization ID of the peer you're using to fetch a genesis block or join a channel or install chaincode.
+    - Replace `<PATH_TO_PEER_TLS_CERT>` with the path to the peer TLS cert that you downloaded.
+    - Replace `<MSPID_OF_PEER_BEING_USED>` with the organization MSPID of the peer you're using to fetch a genesis block or join a channel or install chaincode.
 
   For example:
 
   ```
-  export ORDERER_1=ash-zbc07b.4.secure.blockchain.ibm.com:21239
+  export FABRIC_CFG_PATH=$HOME/config
   export CHANNEL=defaultchannel
   export CC_NAME=mycc
-  export ORGID=PeerOrg1
-  export PEERADDR=9.30.94.174:30159
-  export CORE_PEER_MSPCONFIGPATH=$HOME/fabric-ca-client/peer-admin/msp
-  export CORE_PEER_TLS_ROOTCERT_FILE=$HOME/fabric-ca-client/peertls/peertls.pem
-  export CORE_PEER_LOCALMSPID=$org1
+  export CORE_PEER_ADDRESS=9.30.94.174:30159
+  export ORDERER_1=ash-zbc07b.4.secure.blockchain.ibm.com:21239
+  export CORE_PEER_MSPCONFIGPATH=$HOME/fabric-ca-client/peer-admin/msp/
+  export CORE_PEER_TLS_ROOTCERT_FILE=$HOME/fabric-ca-client/peer-tls/peertls.pem
+  export CORE_PEER_LOCALMSPID=org1
   ```
   {:codeblock}
+
+  You'll also want to enable TLS, which you can do by issuing:
+
+  ```
+  export CORE_PEER_TLS_ENABLED=true
+  ```
+  {:codeblock}
+
 
 ### Using the CLI to join the peer to the channel
 {: #icp-cli-join-peer-to-channel}
@@ -372,11 +435,13 @@ Before you can run the CLI commands to join the peer to a channel, your organiza
   - You can start a new channel for the peer. As the channel initiator, you can automatically include your organization during [channel creation](create_channel.html#creating-a-channel).
   - Another member of the blockchain network can also add your organization to an existing channel by using a [channel update](create_channel.html#updating-a-channel).
 
-    After your organization is added to a channel, you need to add your peer's signCert to the channel so that other members can verify your digital signature during transactions. The peer uploads its signCert during installation, so that you need to only synchronize the certificate to the channel. On the "Channels" screen of the Network Monitor, locate the channel that your organization joins and select **Sync Certificate** from the drop-down list under the **Action** header. This action synchronizes the certificates across all the peers on the channel.
+    After your organization is added to a channel, you need to add your peer's signCert to the channel so that other members can verify your digital signature during transactions. The peer uploads its signCert during installation, so that you need to synchronize only the certificate to the channel. On the "Channels" screen of the Network Monitor, locate the channel that your organization joins and select **Sync Certificate** from the drop-down list under the **Action** header. This action synchronizes the certificates across all the peers on the channel.
 
     **Note:** If your ICP peer that connects to a Starter Plan or Enterprise Plan network is part of the same organization as another peer that is added with the Network Monitor, you can view only new blocks that are added to the channel, chaincode that is instantiated, and other channel updates in the "Channels" screen of your Network Monitor. This is because the Network Monitor gathers information on the "Channels" screen from your peer, and does not have visibility to peers outside of {{site.data.keyword.cloud_notm}}. If none of your peers use the Private Data feature, the information in the Network Monitor is the same for one peer in an organization as for the other peer.
 
-1. Fetch the genesis block of the channel to build the channel ledger on your peer. Note that `$HOME/fabric-ca-client/tls-ibp/tls.pem --tls` represents the path to your Starter Plan or Enterprise Plan TLS certificate. If your path is different, make sure to set the correct one.
+1. Make sure that you have set the [environment variables in your CLI](#environment-variables).
+
+2. Fetch the genesis block of the channel to build the channel ledger on your peer. Note that `$HOME/fabric-ca-client/tls-ibp/tls.pem` represents the path to your Starter Plan or Enterprise Plan TLS certificate. If your path is different, make sure to set the correct one.
 
   ```
   peer channel fetch 0 -o ${ORDERER_1} -c ${CHANNEL} --cafile $HOME/fabric-ca-client/tls-ibp/tls.pem --tls
@@ -404,7 +469,7 @@ Before you can run the CLI commands to join the peer to a channel, your organiza
   ```
   {:codeblock}
 
-2. After you fetch the genesis block of the channel, you can join the peer to the channel using the following command:
+3. After you fetch the genesis block of the channel, you can join the peer to the channel by using the following command:
 
   ```
   peer channel join -b ${CHANNEL}_0.block --tls
@@ -422,9 +487,10 @@ Before you can run the CLI commands to join the peer to a channel, your organiza
 ### Using the CLI to install chaincode on the peer
 {: #icp-toolcontainer-install-cc}
 
-We are now ready to install and instantiate chaincode on the peer. For these instructions, we'll install the `fabcar` chaincode from the `fabric-samples` repository. Download the `fabric-samples` chaincode from GitHub by using the following commands:
+We are now ready to install and instantiate chaincode on the peer. For these instructions, we install the `fabcar` chaincode from the `fabric-samples` repository. Ensure you have [configured your GOPATH ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/dev-setup/devenv.html?highlight=gopath#set-your-gopath "Set your GOPATH") before and then download the `fabric-samples` chaincode from github by using the following commands:
 
 ```
+cd $GOPATH/src
 git clone https://github.com/hyperledger/fabric-samples
 ```
 {:codeblock}
@@ -432,7 +498,7 @@ git clone https://github.com/hyperledger/fabric-samples
 Run the following Peer CLI command to install the `fabcar` chaincode onto the peer:
 
 ```
-peer chaincode install -n ${CC_NAME} -v v0 -p $PWD/fabric-samples/chaincode/fabcar/go/ --tls
+peer chaincode install -n ${CC_NAME} -v v0 -p fabric-samples/chaincode/fabcar/go/
 ```
 {:codeblock}
 
@@ -449,10 +515,10 @@ When this command completes successfully, you should see something similar to:
 ### Using the CLI to instantiate chaincode on a channel
 {: #icp-toolcontainer-instantiate-cc}
 
-Because only one peer has to instantiate chaincode on a channel, you do not have use your peer to instantiate chaincode. Peers that are hosted on {{site.data.keyword.blockchainfull_notm}} Platform can do that. However, if you would like the peer to instantiate the chaincode onto the channel, you can do so by running the command below. Set the value of `CORE_PEER_TLS_ROOTCERT_FILE` to the path of the TLS certificate of your CA on ICP.
+Because only one peer has to instantiate chaincode on a channel, you do not have use your peer to instantiate chaincode. Peers that are hosted on {{site.data.keyword.blockchainfull_notm}} Platform can do that. However, if you would like the peer to instantiate the chaincode onto the channel, you can do so by running the command below. Ensure you have set the value of `CORE_PEER_TLS_ROOTCERT_FILE` to the path of the TLS certificate of your CA on Starter Plan or Enterprise Plan.
 
 ```
-peer chaincode instantiate -o ${ORDERER_1} -C ${CHANNEL} -n ${CC_NAME} -v v0 -c '{"Args":[""]}' --tls --cafile /mnt/msp/tls/cacert.pem -P ""
+peer chaincode instantiate -o ${ORDERER_1} -C ${CHANNEL} -n ${CC_NAME} -v v0 -c '{"Args":[""]}' --tls --cafile $HOME/fabric-ca-client/tls-ibp/tls.pem -P ""
 ```
 {:codeblock}
 
@@ -461,18 +527,9 @@ When this command completes successfully, you should see something similar to:
 ```
 2018-07-06 18:43:15.066 UTC [chaincodeCmd] checkChaincodeCmdParams -> INFO 001 Using default escc
 2018-07-06 18:43:15.066 UTC [chaincodeCmd] checkChaincodeCmdParams -> INFO 002 Using default vscc
-2018-07-06 18:43:50.227 UTC [main] main -> INFO 003 Exiting.....
 ```
 
-## Viewing peer logs in {{site.data.keyword.cloud_notm}} Private
-{: #peer-log-icp}
-
-You can access the peer logs from ICP console and check the logs in the Kibana interface.
-
-1. In the ICP console, click the **Menu** icon in the upper left corner.
-2. From the menu list, click **Workloads** > **Helm Releases**.
-3. In the Helm Releases table, click the name of your helm release.
-4. Scroll down to the **Pod** section and click the **View Logs** link at the end of the table row. The peer logs are opened in the Kibana interface.
+After the chaincode has been instantiated, you can use chaincode query and invoke commands to read and write data on the channel ledger. For more information, see the [peer chaincode ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/latest/commands/peerchaincode.html) commands in the Hyperledger Fabric documentation. You will need to pass the orderer endpoint to your invoke commands by using the proxy IP and the external orderer port. You only need to pass the peer endpoint to a query command.
 
 ## Updating chaincode
 
@@ -541,6 +598,6 @@ If chaincode is already installed and instantiated on a channel before you attem
 1. Package chaincode with the [`peer chaincode package`![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/peerchaincode.html?highlight=peer%20chaincode%20package#peer-chaincode-package) command.
 2. Install the chaincode package on the peer that are running on {{site.data.keyword.cloud_notm}} Private by running the `peer chaincode install` command.
 3. If you have the platform specific binaries, you can run the [`peer chaincode upgrade`![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/peerchaincode.html?highlight=peer%20chaincode%20package#peer-chaincode-upgrade) command to upgrade the chaincode that is running on the Starter or Enterprise plan peer, which uses the chaincode package.
-4. Instantiate the newly-installed chaincode on the channel by using either the the Network Monitor UI or the CLI.
+4. Instantiate the newly-installed chaincode on the channel by using either the Network Monitor UI or the CLI.
 
 The process for upgrading chaincode can also be found in [`Chaincode for Operators`![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/chaincode4noah.html) in Hyperledger Fabric documentation.

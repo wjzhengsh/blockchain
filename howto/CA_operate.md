@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-11-27"
+lastupdated: "2018-12-07"
 ---
 
 {:new_window: target="_blank"}
@@ -56,7 +56,7 @@ You need to use the **kubectl** command line tool to connect to CA container tha
    * Install Helm
    * Install Istio CLI
 
-  To operate orderers, you need to use the first **three** tools, among which Helm is optional. Click each of them and run the `curl` commands for the machine type that you're using. Then, issue `chmod` and `sudo mv` commands for each tool. The `chmod` command will change the permission of the CLI in question to make it executable, and the `sudo mv` command will move the file and rename it.
+  To operate a CA, you need to use the first **three** tools, among which Helm is optional. Click each of them and run the `curl` commands for the machine type that you're using. Then, issue `chmod` and `sudo mv` commands for each tool. The `chmod` command will change the permission of the CLI in question to make it executable, and the `sudo mv` command will move the file and rename it.
 
   The commands for the first tool **cloudctl** might look like the following example:
 
@@ -109,7 +109,7 @@ You need to use the **kubectl** command line tool to connect to CA container tha
 ### Retrieving your Certificate Authority URL
 {: #ca-url}
 
-You need to target the CA URL for requests to generate certificates or register with a new identity. You can find your CA URL by using your ICP console UI.
+You need to target the CA URL for requests to generate certificates or register with a new identity. You can find your CA URL by using your ICP console UI. You will need to be a [Cluster administrator ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Cluster administrator roles and actions") to complete the following steps:
 
 1. Log in to your ICP console and click the **Menu** icon in the upper left corner.
 2. Click **Workload** > **Helm Releases**.
@@ -135,7 +135,7 @@ You need to download your CA TLS certificate and pass it with along with your co
 3. Find the name of your Helm Release and open the Helm Release details panel.
 4. Scroll down to the **Notes** section at the bottom of the panel. In the **Notes** section, you can see a set of commands to help you operate your CA deployment.
 5. If you have not already, follow the steps to configure the [kubectl CLI](#ca-kubectl-configure), which you need to use to interact with your CA container.
-6. In your CLI, run the commands in the third note, which follows **3. Get TLS certificate:** This command saves your TLS certificate as the file `tls.pem` on your local directory. You need to reference this certificate in a future command, make note of it's location.
+6. In your CLI, run the commands in the third note, which follows **3. Get TLS certificate:** This command saves your TLS certificate as the file `tls.pem` on your local directory. You need to reference this certificate in a future command. Make note of its location.
 7. The command also converts the certificate into base64 format and print it out. The result looks similar to the string below:
 
   ```
@@ -235,6 +235,26 @@ You can generate certificates only by using identities that have been registered
 
   If the `enroll` command fails, see the [Troubleshooting topic](#ca-enroll-error) for possible causes.
 
+You can run a tree command to verify that you have completed all of the prerequisite steps. Navigate to the directory where you stored your certificates. A tree command should generate a result similar to the following structure:
+
+```
+cd $HOME/fabric-ca-client
+tree
+.
+├── ca-admin
+│   ├── fabric-ca-client-config.yaml
+│   └── msp
+│       ├── cacerts
+│       │   └── 9-30-250-70-30395-SampleOrgCA.pem
+│       ├── keystore
+│       │   └── 2a97952445b38a6e0a14db134645981b74a3f93992d9ddac54cb4b4e19cdf525_sk
+│       ├── signcerts
+│       │   └── cert.pem
+│       └── user
+└── catls
+    └── tls.pem    
+```
+
 ## Using the CA to deploy an orderer or peer
 {: #deploy-orderer-peer}
 
@@ -281,7 +301,7 @@ The template for the configuration file can be found below:
 ```
 {:codeblock}
 
-Copy this entire file into a text editor where you can edit it and save it to your local file system as a JSON file. You need to fill in only the top two sections of this file: `"enrollment"` and `"tls"`.  
+Copy this entire file into a text editor where you can edit it and save it to your local file system as a JSON file.
 
 ### CA connection information
 
@@ -327,7 +347,7 @@ After retrieving your Certificate Authority connection information, you need to 
 
 If you want to found a consortium by deploying an ordering service and adding orgs to it, or to deploy peers and join them to channels, you first need to register the component identity with your CA. Your component deployment can then generate certificates that are necessary for the peer or orderer to participate in a network.
 
-1. [Generate certificates with your CA admin](#enroll-admin) by using the Fabric CA client. Use these admin certificates to issue the following commands. Ensure that `$FABRIC_CA_CLIENT_HOME` is set to `$HOME/fabric-ca-client/ca-admin`.
+1. [Generate certificates with your CA admin](#enroll-ca-admin) by using the Fabric CA client. Use these admin certificates to issue the following commands. Ensure that `$FABRIC_CA_CLIENT_HOME` is set to `$HOME/fabric-ca-client/ca-admin`.
 
   ```
   echo $FABRIC_CA_CLIENT_HOME
@@ -336,13 +356,13 @@ If you want to found a consortium by deploying an ordering service and adding or
 
 2. Issue the following command to find your affiliation and your organization name.
   ```
-  fabric-ca-client affiliation list --caname <ca_name> --tls.certfiles <tlsca_tls_path>
+  fabric-ca-client affiliation list --caname <ca_name> --tls.certfiles <ca_tls_cert_path>
   ```
   {:codeblock}
 
   Your command might look like the following example:
   ```
-  fabric-ca-client affiliation list --caname org1CA --tls.certfiles $HOME/fabric-ca-client/tlsca-admin/catls
+  fabric-ca-client affiliation list --caname org1CA --tls.certfiles $HOME/fabric-ca-client/catls/tls.pem
   ```
 
   You should see information that is similar to the following example:
@@ -363,7 +383,7 @@ If you want to found a consortium by deploying an ordering service and adding or
   Create a name and password for the component and then use them to replace `name` and `secret`. **Important:** Make a note of this information. Set the `--id.type` to `orderer` if you are deploying an orderer, or set it to `peer` if you are deploying a peer. The command might look similar to the following example:
 
   ```
-  fabric-ca-client register --caname org1CA --id.affiliation org1.department1 --id.name peer` --id.secret peerpw --id.type peer --tls.certfiles $HOME/fabric-ca-client/catls/tls.pem
+  fabric-ca-client register --caname org1CA --id.affiliation org1.department1 --id.name peer --id.secret peerpw --id.type peer --tls.certfiles $HOME/fabric-ca-client/catls/tls.pem
   ```
 
   After you run this command, you need to input the `name` and `secret` as the `"enrollid"` and `"enrollsecret"` in the configuration file, under the `"component"` section:
@@ -391,7 +411,7 @@ If you want to found a consortium by deploying an ordering service and adding or
 
 After you register the component, you also need to create an admin identity that you can use to operate the component. First, you need to register this new identity with your CA, and use it to generate an MSP folder. Then, you need to add the admin users signCert to the configuration file, where it will be made an admin cert of the orderer or peer during deployment. This allows you to use the certificates of the admin identity to operate your blockchain network, such as by starting a new channel or installing chaincode on your peers.
 
-You need to create only one admin identity for the components that belong to your organization. If you are deploying multiple peers, you need to complete these steps only once. You can use the signCert that you generated for one component to deploy any of the orderers or peers.
+You need to create only one admin identity for the components that belong to your organization. If you are deploying multiple peers or an orderer, you need to complete these steps only once. You can use the signCert that you generated for one component to deploy any of the peers or orderer.
 
 Ensure that your `$FABRIC_CA_CLIENT_HOME` is set to the path to the MSP of your CA Admin.
 
@@ -432,20 +452,84 @@ For example:
 fabric-ca-client enroll -u https://peeradmin:peeradminpw@9.30.94.174:30167 --caname org1CA -M $HOME/fabric-ca-client/peer-admin/msp --tls.certfiles $HOME/fabric-ca-client/catls/tls.pem
 ```
 
-After this command completes successfully, it generates a new MSP folder in the directory that you specified by using the `-M` flag. This directory contains the certificates that you will use to operate your components.
-
-In this MSP directory, open the signCert file of the new user and convert it to base64 format by using the following command.
+After this command completes successfully, it generates a new MSP folder in the directory that you specified by using the `-M` flag. This directory contains the certificates that you will use to operate your components. You can verify that the enroll command worked using a tree command. Navigate to the directory where you stored your certificates. A tree command should generate a result similar to the following structure:
 
 ```
-cat $HOME/<path-to-peer-admin>/msp/signcerts/cert.pem | base64
+cd $HOME/fabric-ca-client
+tree
+.
+├── ca-admin
+│   ├── fabric-ca-client-config.yaml
+│   └── msp
+│       ├── cacerts
+│       │   └── 9-30-250-70-30395-SampleOrgCA.pem
+│       ├── keystore
+│       │   └── 2a97952445b38a6e0a14db134645981b74a3f93992d9ddac54cb4b4e19cdf525_sk
+│       ├── signcerts
+│       │   └── cert.pem
+│       └── user
+├── catls
+│   └── tls.pem
+├── orderer-admin
+│   └── msp
+│       ├── cacerts
+│       │   └── 9-30-250-70-30395-SampleOrgCA.pem
+│       ├── keystore
+│       │   └── dfe06060490bf62e2bd709433fc747ff28cdbb1e040682c5d47a4e8598db4f2e_sk
+│       ├── signcerts
+│       │   └── cert.pem
+│       └── user
+├── peer-admin
+│   └── msp
+│       ├── cacerts
+│       │   └── 9-30-250-70-30395-SampleOrgCA.pem
+│       ├── keystore
+│       │   └── 24f76217c5c7e641ee29b068712181294e427cbee4dbfce230a1a98b53489cbe_sk
+│       ├── signcerts
+│       │   └── cert.pem
+│       └── user
+└── tlsca-admin
+    ├── fabric-ca-client-config.yaml
+    └── msp
+        ├── cacerts
+        │   └── 9-30-250-70-30395-tlsca.pem
+        ├── keystore
+        │   └── 45a7838b1a91ddfe3d4d22a5a7f2639b868493bcce594af3e3ceb9c07899d117_sk
+        ├── signcerts
+        │   └── cert.pem
+        └── user
+```
+
+In this MSP directory, open the signCert file of the new user and convert it to base64 format by using the following commands:
+
+```
+export FLAG=$(if [ "$(uname -s)" == "Linux" ]; then echo "-w 0"; else echo "-b 0"; fi)
+cat $HOME/<path-to-peer-admin>/msp/signcerts/cert.pem | base64 $FLAG
 ```
 {:codeblock}
+
+**Note:** It is important that the string generated by using the command above is formatted as a single line. It should look similar to:
+
+ ```
+ LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tDQpNSUlFbERDQ0EzeWdBd0lCQWdJUUFmMmo2MjdLZGNpSVE0dHlTOCs4a1RBTkJna3Foa2lHOXcwQkFRc0ZBREJoDQpNUXN3Q1FZRFZRUUdFd0pWVXpFVk1CTUdBMVVFQ2hNTVJHbG5hVU5sY25RZ1NXNWpNUmt3RndZRFZRUUxFeEIzDQpkM2N1WkdsbmFXTmxjblF1WTI5dE1TQXdIZ1lEVlFRREV4ZEVhV2RwUTJWeWRDQkhiRzlpWVd3Z1VtOXZkQ0JEDQpRVEFlRncweE16QXpNRGd4TWpBd01EQmFGdzB5TXpBek1EZ3hNakF3TURCYU1FMHhDekFKQmdOVkJBWVRBbFZUDQpNUlV3RXdZRFZRUUtFd3hFYVdkcFEyVnlkQ0JKYm1NeEp6QWxCZ05WQkFNVEhrUnBaMmxEWlhKMElGTklRVElnDQpVMlZqZFhKbElGTmxjblpsY2lC
+ ```
+ not like this:
+
+ ```
+ LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tDQpNSUlFbERDQ0EzeWdBd0lCQWdJUUFmMmo2MjdL
+ ZGNpSVE0dHlTOCs4a1RBTkJna3Foa2lHOXcwQkFRc0ZBREJoDQpNUXN3Q1FZRFZRUUdFd0pWVXpF
+ Vk1CTUdBMVVFQ2hNTVJHbG5hVU5sY25RZ1NXNWpNUmt3RndZRFZRUUxFeEIzDQpkM2N1WkdsbmFX
+ VEFlRncweE16QXpNRGd4TWpBd01EQmFGdzB5TXpBek1EZ3hNakF3TURCYU1FMHhDekFKQmdOVkJB
+ WVRBbFZUDQpNUlV3RXdZRFZRUUtFd3hFYVdkcFEyVnlkQ0JKYm1NeEp6QWxCZ05WQkFNVEhrUnBa
+ ```
 
 For example:
 
 ```
-cat $HOME/fabric-ca-client/peer-admin/msp/signcerts/cert.pem | base64
+export FLAG=$(if [ "$(uname -s)" == "Linux" ]; then echo "-w 0"; else echo "-b 0"; fi)
+cat $HOME/fabric-ca-client/peer-admin/msp/signcerts/cert.pem | base64 $FLAG
 ```
+{:codeblock}
 
 This command prints out a string that is similar to the following example:
 
@@ -509,7 +593,7 @@ You need to provide a CSR hostname to deploy an orderer or peer. This hostname i
 
 #### Locating the value of the cluster proxy IP address
 
-If you want to deploy an orderer or peer on the same ICP cluster on which you deployed your CA, ensure that you have an **admin** role on the ICP cluster where the orderer or peer will be deployed. Then, enter the same proxy IP that you used when you [configured for your CA](CA_deploy_icp.html#icp-ca-configuration-parms). If you want to deploy the orderer or peer on a different cluster, you can retrieve the value of the cluster proxy IP address from the ICP console by completing the following steps:
+If you want to deploy an orderer or peer on the same ICP cluster on which you deployed your CA, ensure that you have a [Cluster administrator ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Cluster administrator roles and actions") role on the ICP cluster where the orderer or peer will be deployed. Then, enter the same proxy IP that you used when you [configured for your CA](CA_deploy_icp.html#icp-ca-configuration-parms). If you want to deploy the orderer or peer on a different cluster, you can retrieve the value of the cluster proxy IP address from the ICP console by completing the following steps:
 
 1. Log in to the ICP console. In the left navigation panel, click **Platform** and then **Nodes** to view the nodes that are defined in the cluster.
 2. Click the node with the role `proxy` and then copy the value of the `Host IP` from the table.
@@ -556,46 +640,37 @@ After you completed all the steps above, your updated configuration file might l
 
 ```
 {
-	"enrollment": {
-		"component": {
-			"cahost": "9.30.94.174",
-			"caport": "30167",
-			"caname": "org1CA",
-			"catls": {
-				"cacert": "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUVsRENDQTN5Z0F3SUJBZ0lRQWYyajYyN0tkY2lJUTR0eVM4KzhrVEFOQmdrcWhraUc5dzBCQVFzRkFBkOHRiUWsKQ0FVdzdDMjlDNzlGdjFDNXFmUHJtQUVTcmNpSXhwZzBYNDBLUE1icDFaV1ZiZDQ9Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0KCg=="
-			},
-			"enrollid": "peer1",
-			"enrollsecret": "peerpw",
-			"admincerts": ["LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUNuRENDQWtPZ0F3SUJBZ0lVTXF5VDhUdnlwY3lYR2sxNXRRY3hxa1RpTG9Nd0NnWUlLb1pJemowRUF3SXcKYURFTTlEKaFhTTzRTWjJ2ZHBPL1NQZWtSRUNJQ3hjUmZVSWlkWHFYWGswUGN1OHF2aCtWSkhGeHBLUnQ3dStHZDMzalNSLwotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg=="]
-		},
-		"tls": {
-			"cahost": "9.30.94.174",
-			"caport": "30167",
-			"caname": "tlsca",
-			"catls": {
-				"cacert": "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUVsRENDQTN5Z0F3SUJBZ0lRQWYyajYyN0tkY2lJUTR0eVM4KzhrVEFOQmdrcWhraUc5dzBCQVFzRkFBkOHRiUWsKQ0FVdzdDMjlDNzlGdjFDNXFmUHJtQUVTcmNpSXhwZzBYNDBLUE1icDFaV1ZiZDQ9Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0KCg=="
-			},
-			"enrollid": "peertls",
-			"enrollsecret": "peertlspw",
-			"csr": {
-        "hosts": [
-          "9.42.134.44",
-          "org1peer1"
-        ]
-      }
-		},
-    "clientauth": {
-      "cahost": "",
-      "caport": "",
-      "caname": "",
-      "catls": {
-        "cacert": ""
-      },
-      "enrollid": "",
-      "enrollsecret": "",
-      "admincerts": [""]
+    "enrollment": {
+        "component": {
+            "cahost": "9.30.20.70",
+            "caport": "32129",
+            "caname": "chandra46CA",
+            "catls": {
+                "cacert": "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUNGakNDQWIyZ0F3SUJBZ0lVTmlUbkdTandSdU1JVXhpWGcwMGZZWXhPSndJd0NnWUlLb1pJemowRUF3SXcKYURFTE1Ba0dBMVVFQmhNQ1ZWTXhGekFWQmdOVkJBZ1REazV2Y25Sb0lFTmhjbTlzYVc1aE1SUXdFZ1lEVlFRSwpFd3RJZVhCbGNteGxaR2RsY2pFUE1BMEdBMVVFQ3hNR1JtRmljbWxqTVJ0Z3WURWUVFERXhCbVlXSnlhV010ClkyRXRjMlZ5ZG1WeU1CNFhEVEU0TVRFeE5qRTJNVEF3TUZvWERUTXpNVEV4TWpFMk1UQXdNRm93YURFTE1Ba0cKQTFVRUJoTUNWVk14RnpBVkJnTlZCQWdURGs1dmNuUm9JRU5oY205c2FXNWhNUlF3RWdZRFZRUUtFd3RJZVhCbApjbXhsWkdkbGNqRVBNQTBHQTFVRUN4TUdSbUZpY21sak1Sa3dGd1lEVlFRREV4Qm1ZV0p5YVdNdFkyRXRjMlZ5CmRtVnlNRmt3RXdZSEtvWkl6ajBDQVFZSUtvWkl6ajBEQVFjRFFnQUU1dlBucDJUNTdkY2hTOGRLNExsMFJRZEEKd284RmJsMzBPcnBGdWFHUld5TFl4eGcxcVFTemhUY3hTcGtHZjh3a1FzVDVFb01lSWcrRytldjBOU01FUTZORgpNRU13RGdZRFZSMFBBUUgvQkFRREFnRUdNQklHQTFVZEV3RUIvd1FJTUFZQkFmOENBUUV3SFFZRFZSME9CQllFCkZMd2d1N0J3Uk9lQ2hzV2hWQWptMTdmalh1eVBNQW9HQ0NxR1NNNDlCQU1DQTBjQU1FUUNJR0FCRmNSdXhtSkIKY3c4OTJJOXhPS3YxVmYyT0JHZUh5N2pFQzRBRm5najFBaUJqdHFvdjBXMXdxZjhwcGttYkxIQkJoWW1vS3ZqRwo4bDQyeVQ5bWYxWVQrZz09Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K"
+            },
+            "enrollid": "peer",
+            "enrollsecret": "peerpw",
+            "admincerts": [
+                "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUMzRENDQW9PZ0F3SUJBZ0lVS2Vib0drZEJqenM5bllRbkVQTWp0VG56YTVrd0NnWUlLb1pJemowRUF3SXcKYURFTE1Ba0dBMVVFQmhNQ1ZWTXhGekFWQmdOVkJBZ1REazV2Y25Sb0lFTmhjbTlzYVc1aE1SUXdFZ1lEVlFRSwpFd3RJZVhCbGNteGxaR2RsY2pFUE1BMEdBMVVFQ3hNR1JtRmljbWxqTVJrd0Z3WURWUVFERXhCbVlXSnlhV010ClkyRXRjMlZ5ZG1WeU1CNFhEVEU0TVRFeE9URTNNRE13TUZvWERURTVNVEV4T1RFM01EZ3dNRm93ZmpFTE1BaKQTFVRUJoTUNWVk14RnpBVkJnTlZCQWdURGs1dmNuUm9JRU5oY205c2FXNWhNUlF3RWdZRFZRUUtFd3RJZVhCbApjbXhsWkdkbGNqRXVNQXNHQTFVRUN4TUVkWE5sY2pBTEJnTlZCQXNUQkc5eVp6RXdFZ1lEVlFRTEV3dGtaWEJoCmNuUnRaVzUwTVRFUU1BNEdBMVVFQXhNSFlXUnRhVzR4Y0RCWk1CTUdCeXFHU000OUFnRUdDQ3FHU000OUF3RUgKQTBJQUJLbjUwdEU5TmpZb0RFNDBqalh6RUJ2T2c3Y3RtOElRd0laMnRkS29iNEwwVVhKdSs1Tkt5S2dyUk9vbApWcjBmQmg5cWZWMjl4Nms0T2dmMFNiVklBZWlqZ2ZRd2dmRXdEZ1lEVlIwUEFRSC9CQVFEQWdlQU1Bd0dBMVVkCkV3RUIvd1FDTUFBd0hRWURWUjBPQkJZRUZOYWFkV0VzcGp2Smk1akpiVktiS2M3ZU1wUmhNQjhHQTFVZEl3UVkKTUJhQUZMd2d1N0J3Uk9lQ2hzV2hWQWptMTdmalh1eVBNQ2NHQTFVZEVRUWdNQjZDSEdOb1lXNWtjbUZ6TFcxaQpjQzV5WVd4bGFXZG9MbWxpYlM1amIyMHdhQVlJS2dNRUJRWUhDQUVFWEhzaVlYUjBjbk1pT25zaWFHWXVRV1ptCmFXeHBZWFJwYjI0aU9pSnZjbWN4TG1SbGNHRnlkRzFsYm5ReElpd2lhR1l1Ulc1eWIyeHNiV1Z1ZEVsRUlqb2kKWVdSdGFXNHhjQ0lzSW1obUxsUjVjR1VpT2lKMWMyVnlJbjE5TUFvR0NDcUdTTTQ5QkFNQ0EwY0FNRVFDSURGeApDYzE1bDZUZ1dqYnhSZzlmNjczOGV0K0NZZ1I3VVpGR200VHdoQk5jQWlBNmtUMFFwbDV6WnBUN3BzM0dySXlVCmEydDRHSTQ5ZTdjUm5PMmdrSzl6Z3c9PQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg=="
+            ]
+        },
+        "tls": {
+            "cahost": "9.30.20.70",
+            "caport": "32129",
+            "caname": "tlsca",
+            "catls": {
+                "cacert": "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUNGakNDQWIyZ0F3SUJBZ0lVTmlUbkdTandSdU1JVXhpWGcwMGZZWXhPSndJd0NnWUlLb1pJemowRUF3SXcKYURFTE1Ba0dBMVVFQmhNQ1ZWTXhGekFWQmdOVkJBZ1REazV2Y25Sb0lFTmhjbTlzYVc1aE1SUXdFZ1lEVlFRSwpFd3RJZVhCbGNteGxaR2RsY2pFUE1BMEdBMVVFQ3hNR1JtRmljbWxqTVJrd0Z3WURWUVFERXhCbVlXSnlhV010ClkyRXRjMlZ5ZG1WeU1CNFhEVEU0TVRFeE5qRTJNVEF3TUZvWERUTXpNVEV4TWpFMk1UQXdNRm93YURFTE1Ba0cKQTFVRUJoTUNWVk14RnpBVkJnTlZCQWdURGs1dmNuUm9JRU5oY205c2FXNWhNUlF3RWdZRFZRUUtFd3RJZVhCbApXhsWkdkbGNqRVBNQTBHQTFVRUN4TUdSbUZpY21sak1Sa3dGd1lEVlFRREV4Qm1ZV0p5YVdNdFkyRXRjMlZ5CmRtVnlNRmt3RXdZSEtvWkl6ajBDQVFZSUtvWkl6ajBEQVFjRFFnQUU1dlBucDJUNTdkY2hTOGRLNExsMFJRZEEKd284RmJsMzBPcnBGdWFHUld5TFl4eGcxcVFTemhUY3hTcGtHZjh3a1FzVDVFb01lSWcrRytldjBOU01FUTZORgpNRU13RGdZRFZSMFBBUUgvQkFRREFnRUdNQklHQTFVZEV3RUIvd1FJTUFZQkFmOENBUUV3SFFZRFZSME9CQllFCkZMd2d1N0J3Uk9lQ2hzV2hWQWptMTdmalh1eVBNQW9HQ0NxR1NNNDlCQU1DQTBjQU1FUUNJR0FCRmNSdXhtSkIKY3c4OTJJOXhPS3YxVmYyT0JHZUh5N2pFQzRBRm5najFBaUJqdHFvdjBXMXdxZjhwcGttYkxIQkJoWW1vS3ZqRwo4bDQyeVQ5bWYxWVQrZz09Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K"
+            },
+            "enrollid": "peertls",
+            "enrollsecret": "peertlspw",
+            "csr": {
+                "hosts": [
+                    "9.30.20.70",
+                    "chandra48peer1"
+                ]
+            }
+        }
     }
-  }
 }
 ```
 {:codeblock}
@@ -626,52 +701,6 @@ Many Fabric components contain additional information inside their MSP folder. F
 
 For more information about the structure of MSPs, see [Membership ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/latest/membership/membership.html "Membership") and [Membership Service Providers ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/latest/msp.html "Membership Service Providers") in Hyperledger Fabric documentation.
 
-<!--Surya's flow made it look like we may actually need this section -->
-
-## Using TLS certificates
-{: #tls}
-
-### Retrieving domain name from TLS certificates
-
-When you communicate with a Hyperledger Fabric component, your call must be submitted by using the correct domain name. If a call is submitted to a component's IP address without resolving to the component's domain name, the call will be rejected and return an error.
-
-You can find the full URL and domain name of components that are hosted on the Starter or Enterprise Plan in your connection profile. The following example shows the full URL of a peer, which is concatenated with the peer's domain name, `us01.blockchain.ibm.com`.
-
-```
-grpcs://n7413e3b503174a58b112d30f3af55016-org1-peer1.us01.blockchain.ibm.com:31002"
-```
-
-You can also find a component's domain name from its TLS certificate.
-
-1. Download one of the root TLS certs from the list above and save it on your local machine.
-2. In the same directory as the root TLS certs, run the following command. This command can display the certificate in a human-readable format in your command line. You can then find important information, such as the domain name, from the command line.
-
-  ```
-  openssl x509 -in <certificate.pem_file> -text
-  ```
-  {:codeblock}
-
-For example, if you download the first certificate listed and run the `openssl x509 -in us01.blockchain.ibm.com.cert -text` command, you can see the following code as part of the output.
-
-```
-Certificate:
-    Data:
-        Version: 3 (0x2)
-        Serial Number:
-            05:5c:42:fb:90:b9:cb:3d:60:7c:e4:ec:7f:7f:8e:38
-    Signature Algorithm: ecdsa-with-SHA256
-        Issuer: C=US, O=DigiCert Inc, CN=DigiCert ECC Secure Server CA
-        Validity
-            Not Before: Jun 11 00:00:00 2018 GMT
-            Not After : Jun 19 12:00:00 2019 GMT
-        Subject: C=US, ST=New York, L=Armonk, O=International Business Machines Corporation, CN=*.us01.blockchain.ibm.com
-    ...
-    ...
-```
-
-The domain name is listed in the subject line as `CN=*.us01.blockchain.ibm.com`. You can also find alternative domain names that are listed farther down in the certificate.
-
-Retrieving a component's domain name from TLS certificates can be useful when you communicate with a remote peer or a Fabric component that is hosted outside {{site.data.keyword.blockchainfull_notm}} platform. You can then add the domain name to an SSL override when you use the SDKs, or add the domain name and corresponding IP address to your `etc/hosts` file.
 
 ## Viewing the CA logs
 {: #ca-operate-view-logs}

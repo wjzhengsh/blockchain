@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-11-27"
+lastupdated: "2018-12-07"
 
 ---
 
@@ -17,10 +17,10 @@ lastupdated: "2018-11-27"
 
 ***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
-{{site.data.keyword.blockchainfull}} Platform releases IBM Blockchain Platform for {{site.data.keyword.cloud_notm}} Private (ICP), an application platform for developing and managing containerized applications based on Kubernetes which allows users to deploy Certificate Authorities (CAs), orderers, and peers on x86 and IBM System Z. {{site.data.keyword.blockchainfull_notm}} Platform for ICP is based on Hyperledger Fabric v1.2.1 and is deployed by using Kubernetes Helm charts. After you install the Helm chart, you can find it as an {{site.data.keyword.blockchainfull_notm}} Platform tile in the ICP Catalog.
+{{site.data.keyword.blockchainfull}} Platform releases IBM Blockchain Platform for {{site.data.keyword.cloud_notm}} Private (ICP), an application platform for developing and managing containerized applications based on Kubernetes which allows users to deploy Certificate Authorities (CAs), orderers, and peers on x86, and LinuxONE and IBM Z. {{site.data.keyword.blockchainfull_notm}} Platform for ICP is based on Hyperledger Fabric v1.2.1 and is deployed by using Kubernetes Helm charts.
 {:shortdesc}
 
-{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private is a bundled product for ICP customers to deploy blockchain components in their local environment. After you install the Helm chart, you can find it as an {{site.data.keyword.blockchainfull_notm}} Platform tile in the ICP Catalog. For more information about ICP, see the documentation for [{{site.data.keyword.cloud_notm}} Private version 3.1.0 ![External link icon](images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/kc_welcome_containers.html "{{site.data.keyword.cloud_notm}} Private 3.1.0").
+{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private is a bundled product for ICP customers to deploy blockchain components in their local environment. After you import the Helm chart, you can find it as an {{site.data.keyword.blockchainfull_notm}} Platform tile in the ICP Catalog. For more information about ICP, see the documentation for [{{site.data.keyword.cloud_notm}} Private version 3.1.0 ![External link icon](images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/kc_welcome_containers.html "{{site.data.keyword.cloud_notm}} Private 3.1.0").
 
 ## What {{site.data.keyword.blockchainfull_notm}} Platform for ICP offers
 
@@ -41,14 +41,14 @@ Before getting started, ensure that you understand the following **consideration
 
 - You are responsible for the health monitoring, security, logging, and managing the resource usage of your components.
 - Components that run in other cloud environments are not visible in the Network Monitor of the networks running on {{site.data.keyword.cloud_notm}}.
-- The Helm charts deploy a single instance an orderer or peer, and two CAs (one of which is a TLS CA).
+- The Helm charts deploy a single instance of an orderer or peer, or CA.
 - You can deploy multiple components to a single name space in ICP as long as they have different release names.
 - Components cannot be addressed by using the Swagger UI in the Network Monitor UI.
 - Mutual TLS is not supported.
 
 **CA Considerations**
 - This Helm chart deploys a single instance of the CA. As it is considered best practice to have a separate CA for each organization, it might be necessary to deploy several CAs. For example, if you plan to deploy one orderer and three peers, you will need at least two CAs (one for the orderer organization and another for the peer organization).
-- Though you might choose to run a separate MySQL database, this option is not present in the Helm chart. The Helm chart will, however, deploy a MySQLite database inside the CA to handle the database necessities of the CA, which include tracking the number of enrollments per user and any revoked certificates.
+- Though you might choose to run a separate MySQL database, this option is not present in the Helm chart. The Helm chart will, however, deploy an SQLite database inside the CA to handle the database necessities of the CA, which include tracking the number of enrollments per user and any revoked certificates.
 
 **Orderer Considerations**
 - The ordering service is compatible with any component at v1.2 of Hyperledger Fabric.
@@ -71,7 +71,7 @@ Before getting started, ensure that you understand the following **consideration
 
 The {{site.data.keyword.blockchainfull_notm}} Platform for ICP Helm chart has been validated to run on {{site.data.keyword.cloud_notm}} Private v3.1.0 clusters on Ubuntu Linux by using the following worker nodes and backing storage:
 
-- **IBM Z**: z/VM and z/KVM, which are using NFS.
+- **LinuxONE and IBM Z**: z/VM and KVM, which are using NFS.
 - **x86**: Linux 64-bit that uses GlusterFS.
 
 ## License and pricing
@@ -246,7 +246,7 @@ For information on digital support offerings, refer to the IBM Blockchain Platfo
 
 ### {{site.data.keyword.blockchainfull_notm}} Platform for ICP
 
-If you have purchased an IBM Blockchain Platform for ICP license and you want to contact Customer support, see the information about [accessing the IBM Support Community and opening a support ticket ![External link icon](images/external_link.svg "External link icon")](https://www.ibm.com/support/docview.wss?uid=ibm10740041 "{{site.data.keyword.blockchainfull_notm}} Platform for ICP Support").
+If you have purchased an IBM Blockchain Platform for ICP license and you want to contact Customer support, see the information about [accessing the IBM Support Community and opening a support ticket ![External link icon](images/external_link.svg "External link icon")](https://www-01.ibm.com/support/docview.wss?uid=ibm10740041 "{{site.data.keyword.blockchainfull_notm}} Platform for ICP Support").
 
 ### {{site.data.keyword.blockchainfull_notm}} Platform Community Edition
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-10-05"
+lastupdated: "2018-12-07"
 
 ---
 
@@ -13,7 +13,7 @@ lastupdated: "2018-10-05"
 {:pre: .pre}
 {:tip: .tip}
 
-# Installing a development environment
+# Installing a business network development environment
 {: #installing-a-development-environment}
 
 
