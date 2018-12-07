@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-11-27"
+lastupdated: "2018-12-07"
 
 ---
 
@@ -86,6 +86,7 @@ For more information about how to use these images, see [Adding featured applica
     Replace the following values:
     - `<archive-name>` with the name of the downloaded `.tgz` file.
     - `<cluster_CA_domain>:8500` with domain that you use to log in to your ICP cluster.
+    - `<repo-name>` with the helm repository where you want to upload the chart. Run 'cloudctl catalog repos' to list your repositories.
 
     When this command completes successfully, you can see something that is similar to the following information:
     ```
@@ -172,13 +173,13 @@ For more information about how to use these images, see [Adding featured applica
 
     From the directory where you stored the downloaded Helm chart package from GitHub, run the following command in the ICP CLI to import the Helm chart into your ICP cluster. To import the Helm chart downloaded from GitHub, run the following command:
     ```
-    cloudctl catalog load-archive --archive <helm_chart_from_github> --clustername <cluster_CA_domain>:8500
+    cloudctl catalog load-chart --archive <helm_chart_from_github> --repo <repo-name>
     ```
     {:codeblock}
 
     Replace the following values:
-    - `<helm_chart_from_github>` with the name of the .tgz file you downloaded
-    - `<cluster_CA_domain>:8500` with domain that you use to log in to your ICP cluster.
+    - `<helm_chart_from_github>` with the name of the .tgz file you downloaded.
+    - `<repo-name>` with the helm repository where you want to upload the chart. Run 'cloudctl catalog repos' to list your repositories.
 
     When this command completes successfully, you can see something that is similar to the following information:
     ```
@@ -282,8 +283,8 @@ After importing the Helm chart to {{site.data.keyword.cloud_notm}} Private, you 
 
 After you install the Helm chart, click the **ibm-blockchain-platform-prod** or **ibm-blockchain-platform-dev** tile in your ICP catalog to open it. You can use the configuration page to deploy any of the individual components of your blockchain network. For more details on the components that are required for your blockchain solution and the order in which they must be deployed, see [{{site.data.keyword.blockchainfull_notm}} Platform for ICP deployment guide](../ibp_for_icp_deployment_guide.html).
 
-Then deploy the individual components that will belong to your organization:
+Then deploy the individual components:
 
 - If you are deploying an orderer, you first need to setup a Certificate Authority for the orderer. The CA will generate certificates that will be used by other components in your organization. For more information, see [Deploying an {{site.data.keyword.blockchainfull_notm}} Platform Certificate Authority in ICP](CA_deploy_icp.html). Then you can deploy the orderer that will be the common binding of the network. For more information, see [Deploying an {{site.data.keyword.blockchainfull_notm}} Platform orderer in ICP](orderer_deploy_icp.html)
 
-- If you are deploying a peer, you first need to setup a Certificate Authority for the orderer. The CA will generate certificates that will be used by the peer. For more information, see [Deploying an {{site.data.keyword.blockchainfull_notm}} Platform Certificate Authority in ICP](CA_deploy_icp.html). Then, when you are ready to join a network, you can deploy the peers that will join channels, endorse transactions, and store your data. For more information, see [Deploying an {{site.data.keyword.blockchainfull_notm}} Peer in ICP](peer_deploy_icp.html) or [Deploying an {{site.data.keyword.blockchainfull_notm}} Peer for a Starter or Enterprise Plan network](peer_deploy_ibp.html), depending on which blockchain network the peer will join.
+- If you are deploying a peer, you first need to setup a Certificate Authority for the peer. The CA will generate certificates that will be used by the peer. For more information, see [Deploying an {{site.data.keyword.blockchainfull_notm}} Platform Certificate Authority in ICP](CA_deploy_icp.html). Then, when you are ready to join a network, you can deploy the peers that will join channels, endorse transactions, and store your data. For more information, see [Deploying an {{site.data.keyword.blockchainfull_notm}} Peer in ICP](peer_deploy_icp.html) or [Deploying an {{site.data.keyword.blockchainfull_notm}} Peer for a Starter or Enterprise Plan network](peer_deploy_ibp.html), depending on which blockchain network the peer will join.

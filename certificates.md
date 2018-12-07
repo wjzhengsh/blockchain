@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-11-28"
+lastupdated: "2018-12-07"
 ---
 
 {:new_window: target="_blank"}
@@ -22,14 +22,14 @@ lastupdated: "2018-11-28"
 {{site.data.keyword.blockchainfull}} Platform is based on Hyperledger Fabric and builds permissioned blockchain networks. Participants are known as members of the network, and their activities and access to network resources are verified continuously. A participant's identity is provided in the form of a trusted x509 digital certificate. The verification is provided by an underlying public key infrastructure and sign/verify operations that secure transactions and management within the network.
 {:shortdesc}
 
-{{site.data.keyword.blockchainfull_notm}} Platform manages most of the certificate operations without users needing to handle their certificates. However, there are times when you will have to manage the certificates that allow you to communicate with the network, such as developing applications or expanding your network with a remote peer. The following is a short guide to your Certificate Authority, and the underlying certificate infrastructure. This tutorial can help you understand the certificates you will be working with and the tasks you need to perform.
+{{site.data.keyword.blockchainfull_notm}} Platform manages most of the certificate operations without users needing to handle their certificates. However, there are times when you will have to manage the certificates that allow you to communicate with the network, such as developing applications or expanding your network with a remote peer. The following is a short guide to your Certificate Authority, and the underlying certificate infrastructure. This tutorial can help you understand the certificates that you will be working with and the tasks you need to perform.
 
 ## Certificate authorities
 {: #network-ca}
 
 Certificate authorities (CAs) provide identity on the network. A CA can be considered as a publicly trusted notary that acts as an anchor of trust among multiple parties. All entities in the network are given a certificate signed by a root CA that encapsulates their digital identity. This certificate is the root of trust for all the sign and verify operations that are performed on the network. For more details about how certificate authorities are used to establish identity, see [Hyperledger Fabric documentation ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/latest/identity/identity.html).
 
-Each member in the network possesses their own CA, which is issued a certificate from the root CA of the network. This tie to the root CA establishes the anchor of trust for your organization. Your org CA signs requests for all the entities that your organization owns, such as your admin, peers, or applications. If you want to add a remote peer or new application to your network, you need to register the new identity with your Certificate Authority (registration). Then, the CA can provide the new entity with the certificates that the entity needs to interact with the network (enrollment).
+Each member in the network possesses their own CA. Your organization CA signs requests for all of the entities and components that you own, such as your admin, peers, or applications. If you want to add a remote peer or new application to your network, you need to register the new identity with your Certificate Authority (registration). Then, the CA can provide the new entity with the certificates that the entity needs to interact with the network (enrollment).
 
 ### Registration with the Network Monitor
 {: #ca-panel}
@@ -63,13 +63,13 @@ You can use the Network Monitor to generate certificates using the admin identit
 ### Uploading signing certificates to {{site.data.keyword.blockchainfull_notm}} Platform
 {: #upload-certs}
 
-An application requires only a valid signCert to submit transactions to the network. However, if a client wants to operate the network, by installing chaincode on peers or joining peers to channels, for example, the client needs to be recognized as an administrator. Each component recognizes a set of signCerts that are owned by an admin. If you need to operate your network from a client, you need to upload your signCert and have it added to the list of admin certs. You can do this on the platform by uploading your signCert in the **Certificates** tab of the ["Overview" panel](v10_dashboard.html#members) of your Network Monitor. Sync this certificate to your peers by hitting the restart button that comes up after uploading. Afterwards, your client will be able to operate the network. You can also upload your signCert using the [Swagger API](howto/swagger_apis.html) to add an admin certificate.
+An application requires only a valid signCert to submit transactions to the network. However, if a client wants to operate the network, by installing chaincode on peers or joining peers to channels, for example, the client needs to be recognized as an administrator. Each component recognizes a set of signCerts that are owned by an admin. If you need to operate your network from a client, you need to upload your signCert and have it added to the list of admin certs. You can do this on the platform by uploading your signCert in the **Certificates** tab of the ["Overview" panel](v10_dashboard.html#members) of your Network Monitor. Sync this certificate to your peers by hitting the restart button that comes up after uploading. Afterward, your client will be able to operate the network. You can also upload your signCert using the [Swagger API](howto/swagger_apis.html) to add an admin certificate.
 
 Channels also recognize a set of admin certs from the identities that are allowed to operate the channel, including being able to instantiate a chaincode on the channel. If you use a new signCert with a remote client, you must sync the certificate to the channel before you can instantiate a chaincode. Perform the following steps in the Network Monitor to add the certificate to the channel:
 
 1. Navigate to the **Certificates** tab of the "Members" screen. Click the **Add Certificate** button to upload the signCert to the platform.
 2. Navigate to the "Channels" screen and find the name of relevant channel.
-3. click **Sync Certificate** from the drop-down list under the **Actions** header to add the new certificate to the list of channel admin certs.
+3. Click **Sync Certificate** from the drop-down list under the **Actions** header to add the new certificate to the list of channel admin certs.
 
 **Note:** Certificates that are generated by using the admin identity of your organization are not automatically considered admin certs. A signCert and private key that are generated by using the **Generate Certificates** button will not let your SDK operate the network. They have been generated by the Fabric CA client, the SDK, or the Network Monitor, and have no connection to the pre-existing list of admin certs that network components recognize. You need to upload the signCert in the Network Monitor before your SDK can operate the network.
 
@@ -174,7 +174,7 @@ You can also use the Fabric CA client to generate certificates and register a ne
     ```
     {:codeblock}
 
-3. Download the TLS certs from {{site.data.keyword.cloud_notm}} depending on the service plan, location, and cluster that you use.
+3. Download the TLS certs from {{site.data.keyword.cloud_notm}} depending on the service plan, location, and cluster that you use. You can find your service plan based on the URL of your certificate authority.
   - Root TLS Cert for Starter Plan
     - US: [us01.blockchain.ibm.com.cert ![External link icon](images/external_link.svg "External link icon")](http://blockchain-certs.mybluemix.net/us01.blockchain.ibm.com.cert "us01.blockchain.ibm.com.cert"); [us02.blockchain.ibm.com.cert ![External link icon](images/external_link.svg "External link icon")](http://blockchain-certs.mybluemix.net/us02.blockchain.ibm.com.cert "us02.blockchain.ibm.com.cert")
     - UK: [uk01.blockchain.ibm.com.cert ![External link icon](images/external_link.svg "External link icon")](http://blockchain-certs.mybluemix.net/uk01.blockchain.ibm.com.cert "uk01.blockchain.ibm.com.cert"); [uk02.blockchain.ibm.com.cert ![External link icon](images/external_link.svg "External link icon")](http://blockchain-certs.mybluemix.net/uk02.blockchain.ibm.com.cert "uk02.blockchain.ibm.com.cert")

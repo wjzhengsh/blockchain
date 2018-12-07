@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-11-27"
+lastupdated: "2018-12-07"
 
 ---
 
@@ -137,6 +137,9 @@ The Hyperledger Fabric supports two Software Development Kits (SDKs). A Node SDK
 
 ## SignCert
 The certificate that any entities, whether organizations or admins, attach to their proposals or proposal responses. These signCerts are unique to an entity and are checked by the ordering service to make sure they match the signCert on file for that entity.
+
+## Smart contracts
+See [Chaincode](#chaincode).
 
 ## SOLO
 A consensus plugin implementation for Hyperledger Fabric that results in a single ordering service node in the blockchain network. The Starter Plan network uses the SOLO implementation. A SOLO implementation is not intended for a production network. The alternative to SOLO is a Kafka cluster.

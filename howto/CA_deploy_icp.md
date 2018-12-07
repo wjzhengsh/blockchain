@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-12-02"
+lastupdated: "2018-12-07"
 
 ---
 
@@ -36,6 +36,17 @@ Ensure that your ICP cluster meets the minimum hardware resource requirements:
 - The data storage requirement depends on how many identities and certificates are stored. CA storage is not as heavy as peer or orderer storage, but this will depend on the use case. The more users, the more storage is needed.
 - These minimum resource levels are sufficient for testing and experimentation. For an environment with a large number of transactions, it is important to allocate a sufficiently large amount of storage for your CA. The amount of storage to use will depend on the number of transactions and the number of signatures that are required from your network. If you exhaust the storage on your CA, you must deploy a new CA with a larger file system and let it sync via your other CAs on the same channels.
 
+## Storage
+{: #storage}
+
+You need to determine the storage that your CA will use. If you use the default settings, the Helm chart will create a new 2 Gi Persistent Volume Claim (PVC) with the name of `fabric-ca-pvc` for your CA.
+
+If you do not want to use the default storage settings, ensure that a *new* `storageClass` is set up during the ICP installation or the Kubernetes system administrator needs to create a storageClass before you deploy the CA.
+
+You can choose to deploy the CA on either the AMD64 or S390X platforms. However, be aware that [Dynamic provisioning](https://kubernetes.io/docs/concepts/storage/dynamic-provisioning/) is available for only AMD64 nodes in ICP. If your cluster includes a mix of S390X and AMD64 worker nodes, dynamic provisioning cannot be used.
+
+If you do not use dynamic provisioning, [Persistent Volumes ![External link icon](../images/external_link.svg "External link icon")](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) must be created and set up with labels that can be used to refine the Kubernetes PVC bind process.
+
 ## Prerequisites for deploying a CA
 {: #prerequisites-ca-icp}
 
@@ -43,7 +54,7 @@ Ensure that your ICP cluster meets the minimum hardware resource requirements:
 
 2. If you use the Community Edition and you want to run this Helm chart on an ICP cluster without Internet connectivity, you need to create archives on an Internet-connected machine before you can install the archives on your the ICP cluster. For more information, see [Adding featured applications to clusters without Internet connectivity ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_package_offline.html "Adding featured applications to clusters without Internet connectivity"){:new_window}. Note that you can find the specification file manifest.yaml under ibm-blockchain-platform-dev/ibm_cloud_pak in the Helm chart.
 
-3. Retrieve the value of the cluster Proxy IP address from the ICP console. Log in to the ICP cluster as an admin role. In the left navigation panel, click **Platform** and then **Nodes** to view the nodes that are defined in the cluster. Click the node with the role `proxy` and then copy the value of the `Host IP` from the table. **Important:** Save this value and you will use it when you configure the `Proxy IP` field of the Helm chart.
+3. Retrieve the value of the cluster Proxy IP address from the ICP console. **Note:** You will need to be a [Cluster administrator ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Cluster administrator roles and actions") to access your proxy IP. Log in to the ICP cluster. In the left navigation panel, click **Platform** and then **Nodes** to view the nodes that are defined in the cluster. Click the node with the role `proxy` and then copy the value of the `Host IP` from the table. **Important:** Save this value and you will use it when you configure the `Proxy IP` field of the Helm chart.
 
 4. Create the CA admin user name and password and store them inside a secret object in ICP. You can find the steps to create the secret in the in the [next section](#admin-secret).
 
@@ -173,7 +184,7 @@ For example:
 ```
 helm install --name jnchart2 mycluster/ibm-blockchain-platform \
 --version 1.1.0 \
---values orderer-s390x-values.yaml \
+--values ca-s390x-values.yaml \
 --tls
 ```
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-11-27"
+lastupdated: "2018-12-07"
 ---
 
 {:new_window: target="_blank"}
@@ -16,9 +16,13 @@ lastupdated: "2018-11-27"
 
 ***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
+## December 7, 2018
+
+The *Operate Starter Plan Network* and *Operate Enterprise Plan Network* topics are combined and replaced by a single tutorial about [Using the Network Monitor](v10_dashboard.html).
+
 ## November 27, 2018
 
-{{site.data.keyword.blockchainfull}} Platform releases {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private (ICP). ICP is an application platform for developing and managing containerized applications that are based on Kubernetes and it allows users to deploy Certificate Authorities (CAs), orderers, and peers on x86 and IBM System Z. {{site.data.keyword.blockchainfull_notm}} Platform for ICP is based on Hyperledger Fabric v1.2.1 and is deployed by using Kubernetes Helm charts. After you install the Helm chart, you can find it as a bundled service in the ICP Catalog. Note that [this offering](ibp-for-icp-about.html) is more suitable for experienced Fabric users.
+{{site.data.keyword.blockchainfull}} Platform releases {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private (ICP). ICP is an application platform for developing and managing containerized applications that are based on Kubernetes and it allows users to deploy Certificate Authorities (CAs), orderers, and peers on x86, LinuxONE and IBM Z. {{site.data.keyword.blockchainfull_notm}} Platform for ICP is based on Hyperledger Fabric v1.2.1 and is deployed by using Kubernetes Helm charts. After you install the Helm chart, you can find it as a bundled service in the ICP Catalog. Note that [this offering](ibp-for-icp-about.html) is more suitable for experienced Fabric users.
 
 For more information about ICP, see [{{site.data.keyword.cloud_notm}} Private v3.1.0 documentation ![External link icon](images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/kc_welcome_containers.html "{{site.data.keyword.cloud_notm}} Private v3.1.0 documentation").
 

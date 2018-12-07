@@ -36,7 +36,6 @@ IBM Blockchain Platform
 
 	{: .topicgroup}
 	Starter and Enterprise Plan on IBM Cloud
-		dashboard.md
 		v10_dashboard.md
 		howto/prebuilt_samples.md
 		howto/create_channel.md

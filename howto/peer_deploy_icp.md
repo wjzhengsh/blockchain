@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-11-27"
+lastupdated: "2018-12-07"
 
 ---
 
@@ -18,10 +18,10 @@ lastupdated: "2018-11-27"
 
 ***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
-The following instructions describe how to deploy an {{site.data.keyword.blockchainfull}} Platform peer on {{site.data.keyword.cloud_notm}} Private (ICP). These instructions allow you connect to an {{site.data.keyword.blockchainfull_notm}} Platform on ICP. If you want to connect a peer to a Starter Plan or Enterprise Plan network on {{site.data.keyword.cloud_notm}}, see [Deploying peers to connect to Starter Plan or Enterprise Plan](peer_deploy_ibp.html).
+The following instructions describe how to deploy an {{site.data.keyword.blockchainfull}} Platform peer on {{site.data.keyword.cloud_notm}} Private (ICP). These instructions allow you to connect to an {{site.data.keyword.blockchainfull_notm}} Platform on ICP. If you want to connect a peer to a Starter Plan or Enterprise Plan network on {{site.data.keyword.cloud_notm}}, see [Deploying peers to connect to Starter Plan or Enterprise Plan](peer_deploy_ibp.html).
 {:shortdesc}
 
-Before you a deploy a peer, review the [Considerations and limitations](../ibp-for-icp-about.html#ibp-icp-considerations).
+Before you deploy a peer, review the [Considerations and limitations](../ibp-for-icp-about.html#ibp-icp-considerations).
 
 ## Resources required
 {: #peer-resources-required}
@@ -53,17 +53,17 @@ If you do not use dynamic provisioning, [Persistent Volumes ![External link icon
 
 1. Before you can install a peer on ICP, you must [install ICP](../ICP_setup.html) and [install the {{site.data.keyword.blockchainfull_notm}} Platform Helm chart](helm_install_icp.html).
 
-2. If you use the Community Edition and you want to run this Helm chart on an ICP cluster without Internet connectivity, you need to create archives on an Internet-connected machine before you can install the archives on your the ICP cluster. For more information, see [Adding featured applications to clusters without Internet connectivity ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_package_offline.html "Adding featured applications to clusters without Internet connectivity"){:new_window}. Note that you can find the specification file `manifest.yaml` under `ibm-blockchain-platform-dev/ibm_cloud_pak` in the Helm chart.
+2. If you use the Community Edition and you want to run this Helm chart on an ICP cluster without Internet connectivity, you need to create archives on an Internet-connected machine before you can install the archives on your ICP cluster. For more information, see [Adding featured applications to clusters without Internet connectivity ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_package_offline.html "Adding featured applications to clusters without Internet connectivity"){:new_window}. Note that you can find the specification file `manifest.yaml` under `ibm-blockchain-platform-dev/ibm_cloud_pak` in the Helm chart.
 
 3. You must first [deploy a CA](CA_deploy_icp.html) on ICP. You need to use the CA to create a [peer configuration file and store it as a Kubernetes secret in ICP](#peer-config-file).
 
-4. Retrieve the value of the cluster Proxy IP address of your CA from the ICP console. Log in to the ICP cluster as an admin role. In the left navigation panel, click **Platform** and then **Nodes** to view the nodes that are defined in the cluster. Click the node with the role `proxy` and then copy the value of the `Host IP` from the table. **Important:** Save this value and you will use it when you configure the `Proxy IP` field of the Helm chart.
+4. Retrieve the value of the cluster Proxy IP address of your CA from the ICP console. **Note:** You will need to be a [Cluster administrator ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Cluster administrator roles and actions") to access your proxy IP. Log in to the ICP cluster. In the left navigation panel, click **Platform** and then **Nodes** to view the nodes that are defined in the cluster. Click the node with the role `proxy` and then copy the value of the `Host IP` from the table. **Important:** Save this value and you will use it when you configure the `Proxy IP` field of the Helm chart.
 
 
 ## Creating the peer configuration secret
 {: #peer-config-file}
 
-Before you deploy a peer, you need to create a configuration file that contains important information about the peer identity and your CA. Then, you need to pass this file to the Helm chart during configuration by using a [Kubernetes Secret ![External link icon](../images/external_link.svg "External link icon")](https://kubernetes.io/docs/concepts/configuration/secret/) object. This file will allow your peer to get the certificates that it needs from the CA to join a blockchain network. It also contains an admin certificate that will allow you to operate your peer as an admin user. Follow the instructions on [using the CA to deploy an orderer or peer](CA_operate.html#deploy-orderer-peer) before you configure the peer.
+To deploy a peer, you need to create a configuration file that contains important information about the peer identity and your certificate authority. Then, you need to pass this file to the Helm chart during configuration by using a [Kubernetes Secret ![External link icon](../images/external_link.svg "External link icon")](https://kubernetes.io/docs/concepts/configuration/secret/) object. This file will allow your peer to get the certificates it needs from the certificate authority to join a blockchain network. It also contains an admin certificate that will allow you to operate your peer. Follow the instructions for [using the CA to deploy an orderer or peer](CA_operate.html#deploy-orderer-peer) before peer configuration.
 
 You need to provide the CSR hostnames to the configuration file. This includes the `service host name` that will be the same value as the `helm release name` that you specify during deployment. For example, if you specify a `helm release name` of `org1peer1`, remember to insert the following value in the `"csr"` section of the file:
 ```
@@ -78,18 +78,36 @@ You need to provide the CSR hostnames to the configuration file. This includes t
 
 After you save the configuration file, you need to encode it to the base64 format before you provide it to ICP as a secret object. A Kubernetes secret allows you to protect and share information without having to pass it directly to the deployment.
 
-1. To encode the configuration file in the base64 format, run the following command from a terminal window:
-  ```
-  cat <config_file> | base64
-  ```
-  {:codeblock}
+1. To encode the configuration file in the base64 format, run the following commands from a terminal window:
+```
+export FLAG=$(if [ "$(uname -s)" == "Linux" ]; then echo "-w 0"; else echo "-b 0"; fi)
+cat <config_file> | base64 $FLAG
+```
+{:codeblock}
 
-  Save the resulting output for Step 4 below.
+**Note:** It is important that the string that the above command generates is formatted as a single line. It should look similar to:
+
+```
+LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tDQpNSUlFbERDQ0EzeWdBd0lCQWdJUUFmMmo2MjdLZGNpSVE0dHlTOCs4a1RBTkJna3Foa2lHOXcwQkFRc0ZBREJoDQpNUXN3Q1FZRFZRUUdFd0pWVXpFVk1CTUdBMVVFQ2hNTVJHbG5hVU5sY25RZ1NXNWpNUmt3RndZRFZRUUxFeEIzDQpkM2N1WkdsbmFXTmxjblF1WTI5dE1TQXdIZ1lEVlFRREV4ZEVhV2RwUTJWeWRDQkhiRzlpWVd3Z1VtOXZkQ0JEDQpRVEFlRncweE16QXpNRGd4TWpBd01EQmFGdzB5TXpBek1EZ3hNakF3TURCYU1FMHhDekFKQmdOVkJBWVRBbFZUDQpNUlV3RXdZRFZRUUtFd3hFYVdkcFEyVnlkQ0JKYm1NeEp6QWxCZ05WQkFNVEhrUnBaMmxEWlhKMElGTklRVElnDQpVMlZqZFhKbElGTmxjblpsY2lC
+```
+
+But not like this:
+
+```
+LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tDQpNSUlFbERDQ0EzeWdBd0lCQWdJUUFmMmo2MjdL
+ZGNpSVE0dHlTOCs4a1RBTkJna3Foa2lHOXcwQkFRc0ZBREJoDQpNUXN3Q1FZRFZRUUdFd0pWVXpF
+Vk1CTUdBMVVFQ2hNTVJHbG5hVU5sY25RZ1NXNWpNUmt3RndZRFZRUUxFeEIzDQpkM2N1WkdsbmFX
+VEFlRncweE16QXpNRGd4TWpBd01EQmFGdzB5TXpBek1EZ3hNakF3TURCYU1FMHhDekFKQmdOVkJB
+WVRBbFZUDQpNUlV3RXdZRFZRUUtFd3hFYVdkcFEyVnlkQ0JKYm1NeEp6QWxCZ05WQkFNVEhrUnBa
+```
+
+Save the resulting output for Step 4 below.
 
 2. Log in to the ICP console. In the left navigation panel, click **Configuration** and then **Secrets**. Click the **Create Secret** button to open a pop panel that allows you to generate a new secret object.
 
 3. On the **General** tab, complete the following fields:
-  - **Name:** Give your secret a unique name within your cluster. You will use this name when deploying your peer. The name must be all lower case.
+  - **Name:** Give your secret a unique name within your cluster. You will use this name when deploying your peer. The name must be all lowercase.  
+  **Note:** When you deploy a peer, a new secret is automatically generated by the deployment with the name `<helm_release_name>-secret`. Therefore, when you name your secret, be sure the name of the secret differs from the `<helm_release_name>-secret` . Otherwise, the helm chart deployment will fail because the secret it tries to create already exists.
   - **Namespace:** The namespace to add your secret. Select the `namespace` that you want to deploy your peer to.
   - **Type:** Enter the value `Opaque`.
 
@@ -97,8 +115,16 @@ After you save the configuration file, you need to encode it to the base64 forma
   - In the `Name` fields, specify `secret.json` and in the value field paste in the `base64` encoded string  of your configuration file.
 
 5. (Optional) If you plan to use `CouchDB` as your state database, you need to add two additional values to this secret object. In the **Data** tab, click the **Add data** button to add the CouchDB userid and password to be used for the database when the container is deployed.
- - Specify the name `couchdbusr` and enter the value you would like the deployment to use as the CouchDB userid.
- - Specify the name `couchdbpwd` and enter the value you would like to use as the CouchDB user password.
+  1. Create your user name and password and encode the values in the base64 format. Run the following commands in a terminal window and replace `admin` and `adminpw` with the values that you want to use.
+    ```
+    echo -n 'couch' | base64 $FLAG
+    echo -n 'couchpw' | base64 $FLAG
+    ```
+    {:code_block}
+
+  2. In the **Name** field, enter the value `couchdbuser`. In the corresponding **Value** field, enter the result of `echo -n 'couch' | base64 $FLAG` from step one above.
+  3. Click the **Add data** button to add a second key value pair.
+  4. In the second **Name** field, enter the value `couchdbpwd`. In the corresponding **Value** field, enter the result of `echo -n 'couchpw' | base64 $FLAG` from step one above.
 
 6. Click **Create** to save your secret object.
 
@@ -109,8 +135,9 @@ After you save the configuration file, you need to encode it to the base64 forma
 
 After you create your peer configuration secret object, you can configure and install your peer in ICP with the following steps. You can install only one peer at a time.
 
+
 1. Log in to the ICP console and click the **Catalog** link in the upper right corner.
-2. Click `Blockchain` in the left navigation panel to locate the tile labelled `ibm-blockchain-platform-prod` or `ibm-blockchain-platform-dev` if you downloaded  the Community edition. Click the tile to open it and you can see a Readme file that includes information about installing and configuring the Helm chart.
+2. Click `Blockchain` in the left navigation panel to locate the tile labeled `ibm-blockchain-platform-prod` or `ibm-blockchain-platform-dev` if you downloaded  the Community edition. Click the tile to open it and you can see a Readme file that includes information about installing and configuring the Helm chart.
 3. Click the **Configuration** tab on the top of the panel or click the **Configure** button in the lower right corner.
 4. Specify the values for the [General configuration parameters](#peer-global-parameters) and accept the license agreement.
 5. Open the `All parameters` twistie and specify the value for the [Global configuration parameters](#peer-global-parameters).
@@ -120,7 +147,7 @@ After you create your peer configuration secret object, you can configure and in
 ### Configuration parameters
 {: #icp-peer-configuration-parms}
 
-The following table lists the configurable parameters of the {{site.data.keyword.blockchainfull_notm}} Platform, **specific to the peer component**, and their default values. If you are experimenting with the peer or getting started for the first time, use the default values of the database and storage parameters. Scroll to the peer component section to check the  `Install Peer` checkbox and provide the associated configuration information for that component only. **Although the Helm chart UI says no further configuration is required, you need to enter certain parameters to deploy a peer.**
+The following table lists the configurable parameters of the {{site.data.keyword.blockchainfull_notm}} Platform, **specific to the peer component**, and their default values. If you are experimenting with the peer or getting started for the first time, use the default values of the database and storage parameters. Scroll to the peer component section to check the  `Install Peer` check box and provide the associated configuration information for that component only. **Although the Helm chart UI says no further configuration is required, you need to enter certain parameters to deploy a peer.**
 
 #### General and global configuration parameters
 {: #peer-global-parameters}
@@ -135,22 +162,20 @@ The following table lists the configurable parameters of the {{site.data.keyword
 #### Peer configuration parameters
 {: #peer-parameters}
 
-| `Orderer configuration`| You can customize the configuration of the orderer by pasting your own `orderer.yaml` configuration file in this field. To see a sample `orderer.yaml` file, see [`orderer.yaml` sample config ![External link icon](../images/external_link.svg "External link icon")](https://github.com/hyperledger/fabric/blob/release-1.2/sampleconfig/orderer.yaml) **For advanced users only**. | none | no |
-
 |  Parameter     | Description    | Default  | Required |
 | --------------|-----------------|-------|------- |
 |**Cluster configuration** |**Cluster configuration information** | ||
 | `Install Peer` | Select to install a peer|unchecked | yes, if you want to deploy a peer |
 | `Peer worker node architecture`| Select your cloud platform architecture (AMD64 or S390x)| AMD64 | yes |
-| `Peer image repository`| Location of the Peer Helm chart. This field is autofilled to the installed path. | ibmblockchain/v1fabric-peer | yes |
-| `Peer Docker image tag`|Value of the tag associated with the peer image |1.2.1, autofilled to correct value.|yes|
+| `Peer image repository`| Location of the Peer Helm chart. This field is autofilled to the installed path. | ibmcom/ibp-fabric-peer | yes |
+| `Peer Docker image tag`|Value of the tag that is associated with the peer image. |1.2.1, autofilled to correct value.|yes|
 | `Peer configuration`| You can customize the configuration of the peer by pasting your own `core.yaml` configuration file in this field. To see a sample `core.yaml` file, see [`core.yaml` sample config ![External link icon](../images/external_link.svg "External link icon")](https://github.com/hyperledger/fabric/blob/release-1.2/sampleconfig/core.yaml) **For advanced users only**. | none | no |
 | `Peer configuration secret (Required)`|Name of the [Peer configuration secret](#peer-config-secret) you created in ICP. | none | yes |
-|`Organization MSP (Required)`| You can create a new Organization MSP value such as 'org1' or specify an existing Organization MSP that the peer will be part of.  |none|yes|
+|`Organization MSP (Required)`| You can create a new Organization MSPID value such as 'org1' or specify an existing Organization MSP that the peer will be part of. If you have deployed an orderer organization, ensure that any peer MSPIDs are different from your orderer MSPID. Also, make a note of this value, as you will need it for your `CORE_PEER_LOCALMSPID` and `configtx.yaml` later. | none | yes |
 |`Peer service type`| Used to specify whether [external ports should be exposed ![External link icon](../images/external_link.svg "External link icon")](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types) on the peer. Select NodePort to expose the ports externally (recommended), and ClusterIP to not expose the ports. LoadBalancer and ExternalName are not supported in this release. | NodePort | yes |
 | `State database`| The [state database](../glossary.html#state-database) used to store your channel ledger. The peer needs to use the same database as your [blockchain network](../v10_dashboard.html#network-preferences). | none | yes |
-|`CouchDB image repository`| Only applies if CouchDB was selected as the ledger database. This field is autofilled to the installed path. If you are using the Community Edition and don't have internet access, it should match the directory where you downloaded the Fabric CouchDB image.| fabric-couchdb | yes |
-| `CouchDB Docker image tag`| Only applies if CouchDB was selected as the ledger database. Value of the tag associated with the CouchDB image. | Autofilled to correct value. | yes |
+|`CouchDB image repository`| Applies only if CouchDB was selected as the ledger database. This field is autofilled to the installed path. If you are using the Community Edition and don't have internet access, it should match the directory where you downloaded the Fabric CouchDB image.| ibmcom/ibp-fabric-couchdb | yes |
+| `CouchDB Docker image tag`| Applies only if CouchDB was selected as the ledger database. Value of the tag associated with the CouchDB image. | Autofilled to correct value. | yes |
 | `Peer Data persistence enabled`| Enable the ability to persist data after cluster restarts or fails. See [storage in Kubernetes ![External link icon](../images/external_link.svg "External link icon")](https://kubernetes.io/docs/concepts/storage/ "Volumes") for more information. *If unchecked, all data will be lost in the event of a failover or pod restart.* | checked | no |
 | `Peer use dynamic provisioning`| Check to enable dynamic provisioning for storage volumes. | checked | no |
 | `Peer persistent volume claim`| For new claim only. Enter a name for your new Persistent Volume Claim (PVC) to be created. | my-data-pvc | no |
@@ -207,7 +232,7 @@ helm install --name <helm_release_name>  <helm_chart> \
 ```
 {:codeblock}
 
-where:
+Where:
 - `<helm_release name>` represents the name you want to give your helm release.
 - `<helm_chart>` represents the name of the Helm chart that is imported into the catalog.
 - `<helm_chart_version>` represents the version of the Helm chart that is imported into the catalog.
@@ -233,8 +258,8 @@ If you scroll down to the `Notes` section, there is important information that y
 ## Viewing the peer logs
 {: #peer-deploy-view-logs}
 
-Peer logs can be viewed using [kubectl CLI commmands](peer_operate_icp.html#peer-kubectl-configure) or through [Kibana ![External link icon](../images/external_link.svg "External link icon")](https://www.elastic.co/products/kibana "Your window into the Elastic Search"). For more information, see these [instructions for accessing the logs](peer_operate_icp.html#peer-icp-view-logs).
+Peer logs can be viewed by using [kubectl CLI commands](peer_operate_icp.html#peer-kubectl-configure) or through [Kibana ![External link icon](../images/external_link.svg "External link icon")](https://www.elastic.co/products/kibana "Your window into the Elastic Search"). For more information, see these [instructions for accessing the logs](peer_operate_icp.html#peer-icp-view-logs).
 
 ## What's next
 
-After you have deployed the peer, you need to complete several operational steps before you can submit transactions to and read the distributed ledger from the blockchain network. For more information, see [Operating peers with a multi-cloud network](peer_operate_icp.html).
+After you deploy the peer, you need to complete several operational steps before you can submit transactions to and read the distributed ledger from the blockchain network. For more information, see [Operating peers with a multi-cloud network](peer_operate_icp.html).

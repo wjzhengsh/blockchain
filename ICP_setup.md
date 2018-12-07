@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-11-27"
+lastupdated: "2018-12-07"
 
 ---
 
@@ -26,7 +26,7 @@ Before you deploy {{site.data.keyword.blockchainfull}} Platform components and b
 Complete the following prerequisites and prepare your environment to install ICP.
 
 ### Docker
-{{site.data.keyword.cloud_notm}} Private requires Docker to be installed. Follow the related instructions in [Installing {{site.data.keyword.cloud_notm}} Private ![External link icon](/images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_2.1.0.3/installing/install.html "Installing {{site.data.keyword.cloud_notm}} Private") to install Docker.
+{{site.data.keyword.cloud_notm}} Private requires Docker to be installed. Follow the related instructions in [Installing {{site.data.keyword.cloud_notm}} Private ![External link icon](/images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/installing/install.html "Installing {{site.data.keyword.cloud_notm}} Private") to install Docker.
 
 ### ICP settings
 Before you install ICP, the following tips are useful to prepare your nodes for ICP installation. Additional ICP prerequisites can be found in the [ICP documentation ![External link icon](/images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/installing/prep.html "Preparing your cluster for installation").

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-11-27"
+lastupdated: "2018-12-07"
 
 ---
 
@@ -21,7 +21,7 @@ lastupdated: "2018-11-27"
 The following instructions describe how to deploy an {{site.data.keyword.blockchainfull}} Platform peer on {{site.data.keyword.cloud_notm}} Private (ICP) which will connect to Starter Plan or Enterprise Plan network on {{site.data.keyword.cloud_notm}} or your local ICP.
 {:shortdesc}
 
-Before you a deploy a peer, review the [Considerations and limitations](../ibp-for-icp-about.html#ibp-icp-considerations).
+Before you deploy a peer, review the [Considerations and limitations](../ibp-for-icp-about.html#ibp-icp-considerations).
 
 Your Starter Plan or Enterprise Plan network must be running Hyperledger Fabric v1.1 or v1.2.1. You can find your Hyperledger Fabric version by opening the [Network Preferences window](../v10_dashboard.html#network-preferences) in your Network Monitor.
 
@@ -55,13 +55,13 @@ If you do not use dynamic provisioning, [Persistent Volumes ![External link icon
 
 1. Before you can install a peer on ICP, you must [install ICP](../ICP_setup.html) and [install the {{site.data.keyword.blockchainfull_notm}} Platform Helm chart](helm_install_icp.html).
 
-2. If you use the Community Edition and you want to run this Helm chart on an ICP cluster without Internet connectivity, you need to create archives on an Internet-connected machine before you can install the archives on your the ICP cluster. For more information, see [Adding featured applications to clusters without Internet connectivity ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_package_offline.html "Adding featured applications to clusters without Internet connectivity"){:new_window}. Note that you can find the specification file manifest.yaml under ibm-blockchain-platform-dev/ibm_cloud_pak in the Helm chart.
+2. If you use the Community Edition and you want to run this Helm chart on an ICP cluster without Internet connectivity, you need to create archives on an Internet-connected machine before you can install the archives on your ICP cluster. For more information, see [Adding featured applications to clusters without Internet connectivity ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_package_offline.html "Adding featured applications to clusters without Internet connectivity"){:new_window}. Note that you can find the specification file manifest.yaml under ibm-blockchain-platform-dev/ibm_cloud_pak in the Helm chart.
 
 3. You must have an organization that is a member of a Starter Plan or Enterprise Plan network on {{site.data.keyword.cloud_notm}}. The peer leverages the API endpoints, Hyperledger Fabric CAs, and Ordering Service of the {{site.data.keyword.blockchainfull_notm}} Platform network to operate. If you are not a member of any blockchain network, you need to create or join a network. For more information, see [Creating a network](../get_start.html#creating-a-network) or [Joining a network](../get_start.html#joining-a-network).
 
 4. You must first [deploy a CA](CA_deploy_icp.html) on ICP. You will be using this CA as a TLS CA. Follow the prerequisite steps for [operating a CA on ICP](CA_operate.html#prerequisites) before you deploy your peer. You will not need to proceed beyond those steps.
 
-5. Retrieve the value of the cluster Proxy IP address of your TLS CA from the ICP console. Log in to the ICP cluster as the cluster admin role. In the left navigation panel, click **Platform** and then **Nodes** to view the nodes that are defined in the cluster. Click the node with the role `proxy` and then copy the value of the `Host IP` from the table. **Important:** Save this value and you will use it when you configure the `Proxy IP` field of the Helm chart.
+5. Retrieve the value of the cluster Proxy IP address of your TLS CA from the ICP console. **Note:** You need to be a [Cluster administrator ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Cluster administrator roles and actions") to access your proxy IP. Log in to the ICP cluster. In the left navigation panel, click **Platform** and then **Nodes** to view the nodes that are defined in the cluster. Click the node with the role `proxy` and then copy the value of the `Host IP` from the table. **Important:** Save this value and you will use it when you configure the `Proxy IP` field of the Helm chart.
 
 6. Create a peer configuration file and store it as a Kubernetes secret in ICP. You can find the steps to create this file in the [next section](#peer-config-file).
 
@@ -141,12 +141,28 @@ In the file under the `"components"` section, input the following values from ab
 - `"caname"` is the value of the **Certificate Authority (CA) Name**
 - `"cahost"` is the host name of the CA url. For example if the CA url is `https://ncaca9b06047b4bee966b3dec0cbb6671-org1-ca.stage.blockchain.ibm.com:31011`, the value of the `"cahost"` would be `ncaca9b06047b4bee966b3dec0cbb6671-org1-ca.stage.blockchain.ibm.com`
 - `"caport"` is the port from the `"cahost"`. For example if the CA url is `https://ncaca9b06047b4bee966b3dec0cbb6671-org1-ca.stage.blockchain.ibm.com:31011`, the `"caport"` would be `31011`.
-- `"cacert"`  is the value from the **Certificate Authority (CA) TLS Certificate** field. Before you insert the certificate in the file, you need to encode it to base64 format by running the following command:
+- `"cacert"`  is the value from the **Certificate Authority (CA) TLS Certificate** field. Before you insert the certificate in the file, you need to encode it to base64 format by running the following commands and replacing the string `<paste in Certificate Authority (CA) TLS Certificate>` with the value you copied from your Network Monitor.
 
   ```
-  echo -e '<paste in Certificate Authority (CA) TLS Certificate>` | base64
+  export FLAG=$(if [ "$(uname -s)" == "Linux" ]; then echo "-w 0"; else echo "-b 0"; fi)
+  echo -e '<paste in Certificate Authority (CA) TLS Certificate>' | base64 $FLAG
   ```
   {:codeblock}
+
+  **Note:** It is important that the string that the above command generates is formatted as a single line. It should look similar to:
+
+  ```
+  LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tDQpNSUlFbERDQ0EzeWdBd0lCQWdJUUFmMmo2MjdLZGNpSVE0dHlTOCs4a1RBTkJna3Foa2lHOXcwQkFRc0ZBREJoDQpNUXN3Q1FZRFZRUUdFd0pWVXpFVk1CTUdBMVVFQ2hNTVJHbG5hVU5sY25RZ1NXNWpNUmt3RndZRFZRUUxFeEIzDQpkM2N1WkdsbmFXTmxjblF1WTI5dE1TQXdIZ1lEVlFRREV4ZEVhV2RwUTJWeWRDQkhiRzlpWVd3Z1VtOXZkQ0JEDQpRVEFlRncweE16QXpNRGd4TWpBd01EQmFGdzB5TXpBek1EZ3hNakF3TURCYU1FMHhDekFKQmdOVkJBWVRBbFZUDQpNUlV3RXdZRFZRUUtFd3hFYVdkcFEyVnlkQ0JKYm1NeEp6QWxCZ05WQkFNVEhrUnBaMmxEWlhKMElGTklRVElnDQpVMlZqZFhKbElGTmxjblpsY2lC
+  ```
+
+  But not like this:
+  ```
+  LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tDQpNSUlFbERDQ0EzeWdBd0lCQWdJUUFmMmo2MjdL
+  ZGNpSVE0dHlTOCs4a1RBTkJna3Foa2lHOXcwQkFRc0ZBREJoDQpNUXN3Q1FZRFZRUUdFd0pWVXpF
+  Vk1CTUdBMVVFQ2hNTVJHbG5hVU5sY25RZ1NXNWpNUmt3RndZRFZRUUxFeEIzDQpkM2N1WkdsbmFX
+  VEFlRncweE16QXpNRGd4TWpBd01EQmFGdzB5TXpBek1EZ3hNakF3TURCYU1FMHhDekFKQmdOVkJB
+  WVRBbFZUDQpNUlV3RXdZRFZRUUtFd3hFYVdkcFEyVnlkQ0JKYm1NeEp6QWxCZ05WQkFNVEhrUnBa
+  ```
 
 Paste the resulting string into the `"cacert"` field  under `"catls"` in the file. After the update, the `"cacert"` field looks similar to the following example:
 
@@ -181,9 +197,9 @@ To join your peers to channels and install and instantiate chaincode, you need t
 ### Creating an administrator
 {: #register-admin}
 
-After you register the peer identity, you also need to create an admin identity that you will use operate to the peer. You first need to register this new identity with your CA, and use it to generate an MSP folder. You will then add the admin users signCert to the configuration file, where it will be made an admin cert of the orderer or peer during deployment. This allows you to use the certificates of the admin identity to operate your blockchain network, such as by starting a new channel or installing chaincode on your peers.
+After you register the peer identity, you also need to create an admin identity that you will use operate to the peer. You first need to register this new identity with your CA, and use it to generate an MSP folder. You will then add the admin users signCert to the configuration file, where it will be made an admin cert of the peer during deployment. This allows you to use the certificates of the admin identity to operate your blockchain network, such as by starting a new channel or installing chaincode on your peers.
 
-You only need to create one admin identity for the components belonging to your organization. If you are deploying multiple peers, you only need to complete these steps once. You can use the signCert that you generated for one peer to deploy any other peers or orderers of your organization.
+You only need to create one admin identity for the components belonging to your organization. If you are deploying multiple peers, you only need to complete these steps once. You can use the signCert that you generated for one peer to deploy any other peers belonging to your organization.
 
 1. Log in to your {{site.data.keyword.blockchainfull_notm}} Platform and access your Network Monitor. On the "Certificate Authority" screen, you can view all the identities that have been registered with your organization, such as your admin or client applications.
   ![CA screen](../images/CA_screen_starter.png "CA screen")
@@ -221,7 +237,12 @@ After you register the admin identity, you need to generate the peer admin MSP f
   ```
   {:codeblock}
 
-4. Download the TLS certs from {{site.data.keyword.cloud_notm}} depending on the service plan, location, and cluster that you use.
+4. Open the **Connection Profile** JSON file from your "Overview" panel in the Network Monitor, and find the following variables:
+  - URL for CA: `url` under `certificateAuthorities`
+  - CA Name: `caName`
+
+5. Download the TLS certs from {{site.data.keyword.cloud_notm}} depending on the service plan, location, and cluster that you use. You can find your cluster based on the domain name of your certificate authority URL: `us01.blockchain.ibm.com:31011` or `us02.blockchain.ibm.com:31011` for example.
+
   - Root TLS Cert for Starter Plan
     - US: [us01.blockchain.ibm.com.cert ![External link icon](../images/external_link.svg "External link icon")](https://blockchain-certs.mybluemix.net/us01.blockchain.ibm.com.cert "us01.blockchain.ibm.com.cert"); [us02.blockchain.ibm.com.cert ![External link icon](../images/external_link.svg "External link icon")](https://blockchain-certs.mybluemix.net/us02.blockchain.ibm.com.cert "us02.blockchain.ibm.com.cert")
     - UK: [uk01.blockchain.ibm.com.cert ![External link icon](../images/external_link.svg "External link icon")](https://blockchain-certs.mybluemix.net/uk01.blockchain.ibm.com.cert "uk01.blockchain.ibm.com.cert"); [uk02.blockchain.ibm.com.cert ![External link icon](../images/external_link.svg "External link icon")](https://blockchain-certs.mybluemix.net/uk02.blockchain.ibm.com.cert "uk02.blockchain.ibm.com.cert")
@@ -230,15 +251,11 @@ After you register the admin identity, you need to generate the peer admin MSP f
 
   Save the contents to a directory where you can reference it in future commands.
 
-  ```
-  mkdir tls-ibp
-  cp us01.blockchain.ibm.com.cert $HOME/fabric-ca-client/tls-ibp/tls.pem
-  ```
-  {:codeblock}
-
-5. Open the **Connection Profile** JSON file from your "Overview" panel in the Network Monitor, and find the following variables:
-  - URL for CA: `url` under `certificateAuthorities`
-  - CA Name: `caName`
+    ```
+    mkdir tls-ibp
+    cp us01.blockchain.ibm.com.cert $HOME/fabric-ca-client/tls-ibp/tls.pem
+    ```
+    {:codeblock}
 
 6. Issue the following command to generate certificates with your peer admin identity:
 
@@ -258,12 +275,28 @@ After you register the admin identity, you need to generate the peer admin MSP f
 
   After this command completes successfully, it will generate a new MSP folder in the directory that you specified as `$FABRIC_CA_CLIENT_HOME`. This directory contains the certificates that you will use to operate your peer.
 
-7. In the MSP folder that was just created, open the signCert file of the new user and convert it to the base64 format. You will find the signCert in the `signcerts` folder of the MSP directory. If you are using the example steps, you can use the following command:
+7. In the MSP folder that was just created, open the signCert file of the new user and convert it to the base64 format. You will find the signCert in the `signcerts` folder of the MSP directory. If you are using the example steps, you can use the following commands:
 
   ```
-  cat $HOME/fabric-ca-client/peer-admin/msp/signcerts/cert.pem | base64
+  export FLAG=$(if [ "$(uname -s)" == "Linux" ]; then echo "-w 0"; else echo "-b 0"; fi)
+  cat $HOME/fabric-ca-client/peer-admin/msp/signcerts/cert.pem | base64 $FLAG
   ```
   {:codeblock}
+
+  **Note:** It is important that the string generated by using the command above is formatted as a single line. It should look similar to:
+
+   ```
+   LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tDQpNSUlFbERDQ0EzeWdBd0lCQWdJUUFmMmo2MjdLZGNpSVE0dHlTOCs4a1RBTkJna3Foa2lHOXcwQkFRc0ZBREJoDQpNUXN3Q1FZRFZRUUdFd0pWVXpFVk1CTUdBMVVFQ2hNTVJHbG5hVU5sY25RZ1NXNWpNUmt3RndZRFZRUUxFeEIzDQpkM2N1WkdsbmFXTmxjblF1WTI5dE1TQXdIZ1lEVlFRREV4ZEVhV2RwUTJWeWRDQkhiRzlpWVd3Z1VtOXZkQ0JEDQpRVEFlRncweE16QXpNRGd4TWpBd01EQmFGdzB5TXpBek1EZ3hNakF3TURCYU1FMHhDekFKQmdOVkJBWVRBbFZUDQpNUlV3RXdZRFZRUUtFd3hFYVdkcFEyVnlkQ0JKYm1NeEp6QWxCZ05WQkFNVEhrUnBaMmxEWlhKMElGTklRVElnDQpVMlZqZFhKbElGTmxjblpsY2lC
+   ```
+   not like this:
+
+   ```
+   LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tDQpNSUlFbERDQ0EzeWdBd0lCQWdJUUFmMmo2MjdL
+   ZGNpSVE0dHlTOCs4a1RBTkJna3Foa2lHOXcwQkFRc0ZBREJoDQpNUXN3Q1FZRFZRUUdFd0pWVXpF
+   Vk1CTUdBMVVFQ2hNTVJHbG5hVU5sY25RZ1NXNWpNUmt3RndZRFZRUUxFeEIzDQpkM2N1WkdsbmFX
+   VEFlRncweE16QXpNRGd4TWpBd01EQmFGdzB5TXpBek1EZ3hNakF3TURCYU1FMHhDekFKQmdOVkJB
+   WVRBbFZUDQpNUlV3RXdZRFZRUUtFd3hFYVdkcFEyVnlkQ0JKYm1NeEp6QWxCZ05WQkFNVEhrUnBa
+   ```
 
   This command will print out a string that is similar to the following example:
 
@@ -279,7 +312,7 @@ After you register the admin identity, you need to generate the peer admin MSP f
 The `"tls"` fields in the configuration file require information from the CA you deployed on ICP. You will use this CA as a separate TLS CA, which makes your peer more secure. Use the following instructions to generate the relevant information:
 
 - The `"cahost"` and `"caport"` values are the URL and port of the [CA URL](CA_operate.html#ca-url). For example if the CA URL is `http://9.30.94.174:30167`, the value of the `cahost` would be `9.30.94.174` and the `caport` would be `30167`.
-- The `"caname"` is the name of the CA that was specified when you deploy the CA Helm chart. You referenced the CA name in your command when you generate certificates by using the [admin identity](CA_operate.html#enroll-ca-admin).
+- The `"caname"` is TLS CA name of the CA that you deployed on ICP. The TLS CA name is the value that you provided to the `CA TLS instance name` field during CA configuration.
 - The `"cacert"` is the base64-encoded TLS certificate of your CA. Update the following section with the value of the command output when you retrieve your [CA's TLS certificate](CA_operate.html#ca-tls) as a prerequisite.
 
   ```
@@ -300,7 +333,16 @@ The `"tls"` fields in the configuration file require information from the CA you
 
 You need to register your peer with the TLS CA on ICP by using the Fabric CA client.
 
-1. You need to enroll by using the admin of the TLS CA. Change `$FABRIC_CA_CLIENT_HOME` to a directory where you you want to store your TLS CA admin certificates.
+1. By now, you should have the TLS cert file `tls.pem` in the `$HOME/fabric-ca-client/catls` folder. If not, you can copy the TLS cert that you [downloaded from ICP](CA-operate.html#ca-tls) to a directory where you can reference it in commands below. Ensure that you're in your `$HOME/fabric-ca-client` directory.
+
+  ```
+  cd $HOME/fabric-ca-client
+  mkdir catls
+  cp $HOME/tls.pem $HOME/fabric-ca-client/catls/tls.pem
+  ```
+  {:codeblock}
+
+2. You need to enroll by using the admin of the TLS CA. Change `$FABRIC_CA_CLIENT_HOME` to a directory where you you want to store your TLS CA admin certificates.
 
   ```
   cd $HOME/fabric-ca-client
@@ -309,7 +351,7 @@ You need to register your peer with the TLS CA on ICP by using the Fabric CA cli
   ```
   {:codeblock}
 
-2. Run the command below to generate certificates with the TLS CA admin.
+3. Run the command below to generate certificates with the TLS CA admin.
 
   ```
   fabric-ca-client enroll -u https://<enroll_id>:<enroll_password>@<ca_url_with_port> --caname <tls_ca_name> --tls.certfiles <ca_tls_cert_file>
@@ -329,10 +371,10 @@ You need to register your peer with the TLS CA on ICP by using the Fabric CA cli
 
   After you have enrolled, you have the necessary certificates to register the peer with the TLS CA.
 
-3. Issue the following command to find your affiliation and your organization name.
+4. Issue the following command to find your affiliation and your organization name.
 
   ```
-  fabric-ca-client affiliation list --caname <tls_ca_name> --tls.certfiles <tlsca_tls_path>
+  fabric-ca-client affiliation list --caname <tls_ca_name> --tls.certfiles <tlsca_tls_cert_path>
   ```
   {:codeblock}
 
@@ -352,10 +394,10 @@ You need to register your peer with the TLS CA on ICP by using the Fabric CA cli
 
   Make a note of the **affiliation** value of your organization, for example, `org1.department1` for organization `org1` in the example above. You need to use this value in the command below.
 
-4. Run the following command to register the orderer or peer.
+5. Run the following command to register the peer.
 
   ```
-  fabric-ca-client register --caname <tls_ca_name> --id.name <name> --id.secret <secret>  --id.affiliation org1.department1 --id.type peer --tls.certfiles <tlsca_tls_path>
+  fabric-ca-client register --caname <tls_ca_name> --id.name <name> --id.secret <secret>  --id.affiliation org1.department1 --id.type peer --tls.certfiles <tlsca_tls_cert_path>
   ```
   {:codeblock}
 
@@ -388,14 +430,57 @@ You need to register your peer with the TLS CA on ICP by using the Fabric CA cli
   Password: peertlspw
   ```
 
+You can run a tree command to verify the work you have done to prepare the configuration file. Navigate to the directory where you stored your certificates. A tree command should generate a result similar to the following structure:
+
+```
+cd $HOME/fabric-ca-client
+tree
+.
+├── ca-admin
+│   ├── fabric-ca-client-config.yaml
+│   └── msp
+│       ├── cacerts
+│       │   └── 9-12-19-115-31873-SampleOrgCA.pem
+│       ├── keystore
+│       │   └── c44ec1e708f84b6d0359f58ce2c9c8a289919ba81f2cf4bb5187c4ad5a43cbb0_sk
+│       └── signcerts
+│       |   └── cert.pem
+│       └── user
+├── catls
+│   └── tls.pem
+├── peer-admin
+│   ├── fabric-ca-client-config.yaml
+│   └── msp
+│       ├── cacerts
+│       │   └── n4790a319014a473a8a65850c660396ab-org1-ca-us05-blockchain-ibm-com-31011-org1CA.pem
+│       ├── keystore
+│       │   └── 6c2a999ee80a6b0592c63c58f95193bea2df59efe5489938d513de47b83b372a_sk
+│       ├── signcerts
+│       │   └── cert.pem
+│       └── user
+├── tls-ibp
+│   └── tls.pem
+├── tls.pem
+└── tlsca-admin
+    ├── fabric-ca-client-config.yaml
+    └── msp
+        ├── cacerts
+        │   └── 9-30-250-70-30395-tlsca.pem
+        ├── keystore
+        │   └── bd57fa20283dfc76ada83f989ee0f62ce23e98c94dbd26f6cd23202d8084e38e_sk
+        ├── signcerts
+        │   └── cert.pem
+        └── user
+```
+
 ### CSR (Certificate Signing Request) hosts
 {: #csr-hosts}
 
-You need to provide the CSR hostnames to deploy an orderer or peer. The CSR hostnames include the proxy IP address of the cluster where you will deploy the component as well the `service host name` that will be your Helm chart host name.
+You need to provide the CSR hostnames to deploy a peer. The CSR hostnames include the proxy IP address of the cluster where you will deploy the component as well the `service host name` that will be your Helm chart host name.
 
 #### Locating the value of the cluster proxy IP address
 
-If you want to deploy an orderer or peer on the same ICP cluster on which you deployed your TLS CA, enter the same proxy IP that you used when you [configured for your TLS CA](CA_deploy_icp.html#icp-ca-configuration-parms). If you want to deploy the component on a different cluster, you can retrieve the value of the cluster proxy IP address from the ICP console. You need to have the cluster admin role of the ICP cluster where the orderer or peer will be deployed.
+If you want to deploy a peer on the same ICP cluster on which you deployed your TLS CA, enter the same proxy IP that you used when you [configured for your TLS CA](CA_deploy_icp.html#icp-ca-configuration-parms). If you want to deploy the component on a different cluster, you can retrieve the value of the cluster proxy IP address from the ICP console. You need to have the cluster admin role of the ICP cluster where the peer will be deployed.
 
 1. Log in to the ICP console. In the left navigation panel, click **Platform** and then **Nodes** to view the nodes that are defined in the cluster.
 2. Click the node with the role `proxy` and then copy the value of the `Host IP` from the table.
@@ -467,27 +552,52 @@ After you have completed filling in this file, you need to save it in JSON forma
 
 A [Kubernetes Secret ![External link icon](../images/external_link.svg "External link icon")](https://kubernetes.io/docs/concepts/configuration/secret/) allows you to protect and share information without having to pass it directly to the deployment. Once you have saved the configuration file, you need to `base64` encode it.
 
-1. To encode the configuration file in the base64 format, run the following command from a terminal window:
+1. To encode the configuration file in the base64 format, run the following commands from a terminal window:
 
   ```
-  cat <config_file> | base64
+  export FLAG=$(if [ "$(uname -s)" == "Linux" ]; then echo "-w 0"; else echo "-b 0"; fi)
+  cat <config_file> | base64 $FLAG
   ```
   {:codeblock}
+
+  **Note:** It is important that the string generated by using the command above is formatted as a single line. It should look similar to:
+
+   ```
+   LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tDQpNSUlFbERDQ0EzeWdBd0lCQWdJUUFmMmo2MjdLZGNpSVE0dHlTOCs4a1RBTkJna3Foa2lHOXcwQkFRc0ZBREJoDQpNUXN3Q1FZRFZRUUdFd0pWVXpFVk1CTUdBMVVFQ2hNTVJHbG5hVU5sY25RZ1NXNWpNUmt3RndZRFZRUUxFeEIzDQpkM2N1WkdsbmFXTmxjblF1WTI5dE1TQXdIZ1lEVlFRREV4ZEVhV2RwUTJWeWRDQkhiRzlpWVd3Z1VtOXZkQ0JEDQpRVEFlRncweE16QXpNRGd4TWpBd01EQmFGdzB5TXpBek1EZ3hNakF3TURCYU1FMHhDekFKQmdOVkJBWVRBbFZUDQpNUlV3RXdZRFZRUUtFd3hFYVdkcFEyVnlkQ0JKYm1NeEp6QWxCZ05WQkFNVEhrUnBaMmxEWlhKMElGTklRVElnDQpVMlZqZFhKbElGTmxjblpsY2lC
+   ```
+   not like this:
+
+   ```
+   LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tDQpNSUlFbERDQ0EzeWdBd0lCQWdJUUFmMmo2MjdL
+   ZGNpSVE0dHlTOCs4a1RBTkJna3Foa2lHOXcwQkFRc0ZBREJoDQpNUXN3Q1FZRFZRUUdFd0pWVXpF
+   Vk1CTUdBMVVFQ2hNTVJHbG5hVU5sY25RZ1NXNWpNUmt3RndZRFZRUUxFeEIzDQpkM2N1WkdsbmFX
+   VEFlRncweE16QXpNRGd4TWpBd01EQmFGdzB5TXpBek1EZ3hNakF3TURCYU1FMHhDekFKQmdOVkJB
+   WVRBbFZUDQpNUlV3RXdZRFZRUUtFd3hFYVdkcFEyVnlkQ0JKYm1NeEp6QWxCZ05WQkFNVEhrUnBa
+   ```
 
   Save the resulting output for step four below.
 
 2. Log in to the ICP console. In the left navigation panel, click **Configuration** and then **Secrets**. Click the **Create Secret** button to open a pop panel that allows you to generate a new secret object.
 
 3. On the **General** tab, complete the following fields:
-  - **Name:** Give your secret a unique name within your cluster. You will use this name when deploying your peer. The name must be all lower case.
+  - **Name:** Give your secret a unique name within your cluster. You will use this name when you deploy your peer. The name must be all lowercase.  
+  **Note:** When you deploy a peer, a new secret is automatically generated by the deployment with the name `<helm_release_name>-secret`. Therefore, when you name your secret, be sure the name of the secret differs from the `<helm_release_name>-secret` . Otherwise, the helm chart deployment will fail because the secret it tries to create already exists.
   - **Namespace:** The namespace to add your secret. Select the `namespace` that you want to deploy your peer to.
   - **Type:** Enter the value `Opaque`.
 
 4. Click the **Data** tab on the left navigation pane of this window. In the `Name` fields, specify `secret.json` and in the value field paste in the `base64` encoded string of your configuration file.
 
-5. (Optional) If you plan to use `CouchDB` as your state database, you need to add two additional values to this secret object. In the **Data** tab, click the **Add data** button to add the CouchDB userid and password to be used for the database when the container is deployed.
- - Specify the name `couchdbusr` and enter the value you would like the deployment to use as the CouchDB userid.
- - Specify the name `couchdbpwd` and enter the value you would like to use as the CouchDB user password.
+5. (Optional) If you plan to use `CouchDB` as your state database, you need to add two additional values to this secret object. In the **Data** tab, click the **Add data** button to add the CouchDB user ID and password to be used for the database when the container is deployed.
+  1. Create your user name and password and encode the values in the base64 format. Run the following commands in a terminal window and replace `admin` and `adminpw` with the values that you want to use.
+    ```
+    echo -n 'couch' | base64 $FLAG
+    echo -n 'couchpw' | base64 $FLAG
+    ```
+    {:code_block}
+
+   2. In the **Name** field, enter the value `couchdbuser`. In the corresponding **Value** field, enter the result of `echo -n 'couch' | base64 $FLAG` from step one above.
+   3. Click the **Add data** button to add a second key value pair.
+   4. In the second **Name** field, enter the value `couchdbpwd`. In the corresponding **Value** field, enter the result of `echo -n 'couchpw' | base64 $FLAG` from step one above.
 
 6. Click **Create** to save your secret object.
 
@@ -499,7 +609,7 @@ A [Kubernetes Secret ![External link icon](../images/external_link.svg "External
 After you create your peer configuration secret object, you can configure and install your peer in ICP with the following steps. You can install only one peer at a time.
 
 1. Log in to the ICP console and click the **Catalog** link in the upper right corner.
-2. Click `Blockchain` in the left navigation panel to locate the tile labelled `ibm-blockchain-platform-prod` or `ibm-blockchain-platform-dev` if you downloaded  the Community edition. Click the tile to open it and you can see a Readme file that includes information about installing and configuring the Helm chart.
+2. Click `Blockchain` in the left navigation panel to locate the tile that is labeled `ibm-blockchain-platform-prod` or `ibm-blockchain-platform-dev` if you downloaded  the Community edition. Click the tile to open it and you can see a Readme file that includes information about installing and configuring the Helm chart.
 3. Click the **Configuration** tab on the top of the panel or click the **Configure** button in the lower right corner.
 4. Specify the values for the [General configuration parameters](#peer-global-parameters) and accept the license agreement.
 5. Open the `All parameters` twistie and specify the value for the [Global configuration parameters](#peer-global-parameters).
@@ -529,14 +639,14 @@ The following table lists the configurable parameters of the {{site.data.keyword
 |**Cluster configuration** |**Cluster configuration information** | ||
 | `Install Peer` | Select to install a peer|unchecked | yes, if you want to install a peer |
 | `Peer worker node architecture`| Select your cloud platform architecture (AMD64 or S390x)| AMD64 | yes |
-| `Peer image repository`| Location of the Peer Helm chart. This field is autofilled to the installed path. If you are using the Community Edition and don't have internet access, it should match the directory where you downloaded the Fabric peer image. | ibmblockchain/v1fabric-peer | yes |
+| `Peer image repository`| Location of the Peer Helm chart. This field is autofilled to the installed path. If you are using the Community Edition and don't have internet access, it should match the directory where you downloaded the Fabric peer image. | ibmcom/ibp-fabric-peer | yes |
 | `Peer Docker image tag`|Value of the tag associated with the peer image |1.2.1, autofilled to correct value.|yes|
 | `Peer configuration`|You can customize the configuration of the peer by pasting your own `core.yaml` configuration file in this field. To see a sample `core.yaml` file, see [`core.yaml` sample config ![External link icon](../images/external_link.svg "External link icon")](https://github.com/hyperledger/fabric/blob/release-1.2/sampleconfig/core.yaml) **For advanced users only**. |none|no|
 | `Peer configuration secret (Required)`| Name of the [Peer configuration secret](#peer-config-secret) you created in ICP.  |none|yes|
 |`Organization MSP (Required)`|This value can be found in Network Monitor (IBP UI) by clicking "Remote Peer Configuration" on the Overview screen.  |none|yes|
 |`Peer service type`| Used to specify whether [external ports should be exposed ![External link icon](../images/external_link.svg "External link icon")](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types) on the peer. Select NodePort to expose the ports externally (recommended), and ClusterIP to not expose the ports. LoadBalancer and ExternalName are not supported in this release. | NodePort |yes|
 | `State database`| The [state database](../glossary.html#state-database) used to store your channel ledger. The peer needs to use the same database as your [blockchain network](../v10_dashboard.html#network-preferences). | LevelDB | yes |
-|`CouchDB image repository`| Only applies if CouchDB was selected as the ledger database. This field is autofilled to the installed path. If you are using the Community Edition and don't have internet access, it should match the directory where you downloaded the Fabric CouchDB image.| fabric-couchdb | yes |
+|`CouchDB image repository`| Only applies if CouchDB was selected as the ledger database. This field is autofilled to the installed path. If you are using the Community Edition and don't have internet access, it should match the directory where you downloaded the Fabric CouchDB image.| ibmcom/ibp-fabric-couchdb | yes |
 | `CouchDB Docker image tag`| Only applies if CouchDB was selected as the ledger database. Value of the tag associated with the CouchDB image. | Autofilled to correct value.| yes |
 | `Peer Data persistence enabled`| Enable the ability to persist data after cluster restarts or fails. See [storage in Kubernetes ![External link icon](../images/external_link.svg "External link icon")](https://kubernetes.io/docs/concepts/storage/ "Volumes") for more information.  *If unchecked, all data will be lost in the event of a failover or pod restart.* | checked | no |
 | `Peer use dynamic provisioning`| Check to enable dynamic provisioning for storage volumes. | checked | no |
@@ -594,10 +704,10 @@ helm install --name <helm_release_name>  <helm_chart> \
 ```
 
 where:
-- `<helm_release name>` represents the name you want to give your helm release.
+- `<helm_release name>` represents the name that you want to give your Helm release.
 - `<helm_chart>` represents the name of the Helm chart imported into the catalog.
 - `<helm_chart_version>` represents the version of the Helm chart imported into the catalog.
-- `<customvalues.yaml>` is the name of the yaml file containing the configuration parameters.
+- `<customvalues.yaml>` is the name of the yaml file that contains the configuration parameters.
 
 For example:
 
@@ -677,7 +787,7 @@ You can run a peer CLI command from inside the peer container to verify that you
   export ORDERER_1=ash-zbc07b.4.secure.blockchain.ibm.com:21239
   export CHANNEL=defaultchannel
   export CC_NAME=mycc
-  export ORGID=PeerOrg1
+  export ORGID=org1
   export PEERADDR=localhost:7051
   ```
   {:codeblock}
