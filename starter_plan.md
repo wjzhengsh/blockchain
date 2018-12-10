@@ -40,6 +40,8 @@ lastupdated: "2018-12-07"
 - **_{{site.data.keyword.blockchainfull_notm}} Platform: Develop application Integration_**
     Starter Plan enables you to deploy business networks that you have developed on [{{site.data.keyword.blockchainfull_notm}} Platform: Develop](https://blockchaindevelop.mybluemix.net/login). For more information, see [Deploying a business network on Starter Plan](develop_starter.html).
 
+    **IBM recommends using Hyperledger Composer solely for demos and proof-of-concepts. IBM does not provide support for networks using Hyperledger Composer in production, including the Composer CLI, JavaScript APIs, REST server, and Web Playground.**
+
 ## Is Starter Plan suitable for you
 
 If you fit into one of the following situations, the Starter Plan is suitable for you to start your blockchain journey.

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-11-27"
+lastupdated: "2018-12-08"
 
 ---
 
@@ -50,11 +50,8 @@ Enterprise Plan networks run in a **highly secure and isolated** environment wit
 For more details about all Hyperledger Fabric features and functionality,
 see [Hyperledger Fabric documentation ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/latest/ "Hyperledger Fabric documentation").
 
-**Figure 1** depicts an example of a deployed blockchain network that consists of four members (each owning two peers), Certificate Authorities that are responsible for distributing cryptographic identity material, and an ordering service that defines policies and network participants. The blue channel contains all four network members and the yellow channel is restricted to only three members: Banks B, C, and D. You can also see that Bank A plays the role of network initiator and that Bank D exists only as a member in the context of the yellow channel. Lastly, a user or application in possession of a properly signed x509 certificate can send calls to peers on the network.
 
-![Blockchain Network](images/blockchain_network_2-01.png "Example blockchain network")
-
-*Figure 1. An example blockchain network with four members that leverage channels to isolate data*
+<!--
 
 ## Develop applications to run on the network
 
@@ -69,7 +66,7 @@ As a business owner, you can develop your use case with help from IBM's deep ben
 As a developer, you can quickly and easily align business requirements and accelerate blockchain application development in  {{site.data.keyword.blockchainfull_notm}} Platform network environment by using an interactive playground to develop, iterate, and test business networks. These tools are designed to turn business rules into business network code in your preferred environment:
 
 * **Explore online**
-  Leverage [{{site.data.keyword.blockchainfull_notm}} Platform: Develop](./develop.html)<!--, which is powered by an open source development tool--> to learn key blockchain concepts, create network definitions, and leverage reusable industry models and smart contract libraries.
+  Leverage [{{site.data.keyword.blockchainfull_notm}} Platform: Develop](./develop.html) which is powered by an open source development tool to learn key blockchain concepts, create network definitions, and leverage reusable industry models and smart contract libraries.
 
   After you developed your business network, you can deploy it to a live network that runs on the {{site.data.keyword.blockchainfull_notm}} Platform. For more information, see [Deploying business networks with Starter Plan](./develop_starter.html) and [Deploying business networks with Enterprise Plan](./develop_enterprise.html).
 
@@ -79,10 +76,7 @@ As a developer, you can quickly and easily align business requirements and accel
 * **Collaborate in a cloud environment**
   Use ready-to-use live networks with Starter Plan and Enterprise Plan options to develop and share your code with others. For more information, see [About Starter Plan](starter_plan.html) and [About Enterprise Plan](enterprise_plan.html).
 
-## {{site.data.keyword.IBM_notm}} support
-
-{{site.data.keyword.IBM_notm}} offers various support options on {{site.data.keyword.IBM_notm}} implemented blockchain solutions. For more information about {{site.data.keyword.blockchainfull_notm}} Support, see [Getting support](ibmblockchain_support.html).
-
+-->
 
 ## Starter Plan and Enterprise Plan
 {: #starter-enterprise}
@@ -130,3 +124,7 @@ The Quick Start completes the following configurations:
  * In each public subnet, a peer container with either an embedded LevelDB database or a secondary CouchDB container.
 
 For more information about IBP for AWS, see [About {{site.data.keyword.blockchainfull_notm}} Platform for Amazon Web Services](howto/remote_peer.html).
+
+## {{site.data.keyword.IBM_notm}} support
+
+{{site.data.keyword.IBM_notm}} offers various support options on {{site.data.keyword.IBM_notm}} implemented blockchain solutions. For more information about {{site.data.keyword.blockchainfull_notm}} Support, see [Getting support](ibmblockchain_support.html).
