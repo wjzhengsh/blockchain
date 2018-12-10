@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-12-07"
+lastupdated: "2018-12-08"
 
 ---
 
@@ -50,11 +50,7 @@ After you form your consortium, you need to write the chaincode, also known as s
 - [Developing Chaincode](#develop-chaincode)
 - [Developing applications with the Fabric SDKs](#develop-apps)
 
-You can also use Hyperledger Composer, an open source toolset for Hyperledger Fabric, to develop your business logic, deploy the logic on your network, and connect to it from your applications.
-
-- [Developing and deploying customized business networks with Hyperledger Composer](#develop-composer)
-
-{{site.data.keyword.blockchainfull_notm}} Platform provides sample applications built using Hyperledger composer and samples built with chaincode that you can deploy to your Starter Plan network with only a few clicks.
+{{site.data.keyword.blockchainfull_notm}} Platform provides sample applications that you can deploy to your Starter Plan network with only a few clicks.
 
 - [Deploying sample applications](#sample-applications)
 
@@ -145,6 +141,8 @@ For more information, see the [developing applications](v10_application.html) tu
 
 ## Developing and deploying customized business networks with Hyperledger Composer
 {: #develop-composer}
+
+**IBM recommends using Hyperledger Composer solely for demos and proof-of-concepts. IBM does not provide support for networks using Hyperledger Composer in production, including the Composer CLI, JavaScript APIs, REST server, and Web Playground.**
 
 Starter Plan integrates {{site.data.keyword.blockchainfull_notm}} Platform: Develop developer environment and Hyperledger Composer developer toolset. You can develop your blockchain network based on your business needs.  After you develop a network for your business, you can deploy your business network to Starter Plan network.
 

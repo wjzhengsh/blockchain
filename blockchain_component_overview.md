@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-11-27"
+lastupdated: "2018-12-08"
 
 ---
 
@@ -47,6 +47,10 @@ At a physical level, a blockchain network is comprised primarily of peer nodes (
 
 To learn more about peers specifically, check out [this document focusing just on peers](https://hyperledger-fabric.readthedocs.io/en/release-1.2/peers/peers.html) from the Fabric community documentation.
 
+## Channels
+
+A channel is a mechanism by which a subset of members in a network can transact with each other privately. Data on the blockchain network is stored on the channel ledgers. The channel ledgers are hosed on the peers of the organizations that have joined the channel. For more information about channels and how to use them, see the [Hyperledger Fabric documentation ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/channels.html)
+
 ## Smart contracts
 
 Before businesses can transact with each other, a common understanding about rules and processes must be reached and defined in some sort of contract. Taken together, these contracts lay out the "business model" that governs all of the interactions between business partners.
@@ -62,3 +66,11 @@ Client applications in a Fabric-based network like IBP leverage underlying infra
 For a look at how applications interact with a network based on Fabric, check out the [documentation on writing your first application ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/master/write_first_app.html "Writing Your First Application") and the [developing application section ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/master/developapps/developing_applications.html "Developing Applications").
 
 Note that the latter link refers to Fabric functionalities, such as the `Contract` class, that are not compatible with Fabric v1.2, which is what Starter Plan and the IBP on ICP release are based on. Nevertheless, the section does contain conceptual information and other useful tips that are worth keeping in mind when developing applications that will interface with Fabric v1.2 components.
+
+## An example network
+
+**Figure 1** depicts an example of a deployed blockchain network that consists of four members (each owning two peers), Certificate Authorities that are responsible for distributing cryptographic identity material, and an ordering service that defines policies and network participants. The blue channel contains all four network members and the yellow channel is restricted to only three members: Banks B, C, and D. You can also see that Bank A plays the role of network initiator and that Bank D exists only as a member in the context of the yellow channel. Lastly, a user or application in possession of a properly signed x509 certificate can send calls to peers on the network.
+
+![Blockchain Network](images/blockchain_network_2-01.png "Example blockchain network")
+
+*Figure 1. An example blockchain network with four members that leverage channels to isolate data*

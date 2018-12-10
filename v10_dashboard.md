@@ -201,14 +201,16 @@ Click the **Swagger UI** link to open the Swagger UI. Note that you need to auth
 ## Develop Code
 {: #write-code}
 
-Starter Plan and Enterprise Plan are integrated with {{site.data.keyword.blockchainfull_notm}} Platform: Develop and provide a development environment with industry standard tools and technologies. You can develop your network in the environment online or locally. After you develop a network, you can deploy it back to your Enterprise Plan network.
+**IBM recommends using Hyperledger Composer solely for demos and proof-of-concepts. IBM does not provide support for networks using Hyperledger Composer in production, including the Composer CLI, JavaScript APIs, REST server, and Web Playground.**
+
+Starter Plan and Enterprise Plan are integrated with {{site.data.keyword.blockchainfull_notm}} Platform: Develop and provide a development environment with industry standard tools and technologies. You can develop your network in the environment online or locally. After you develop a network, you can deploy it back to your network.
 
 **Figure 10** shows the "Develop code" screen:
 
 ![Develop code](images/write_code.png "Develop code")
 *Figure 10. Develop code*
 
-For more information about developing and deploying your code with the Enterprise Plan, see [Developing business networks on Enterprise Plan](develop_enterprise.html).
+For more information about developing and deploying your business networks, see [Deploying business networks on Enterprise Plan](develop_enterprise.html) and [Deploying business networks on Starter Plan](develop_starter.html).
 
 ## Install code
 {: #chaincode}

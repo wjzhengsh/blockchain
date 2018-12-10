@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-12-07"
+lastupdated: "2018-12-08"
 
 ---
 
@@ -44,6 +44,7 @@ Before you migrate from your Starter Plan network to an Enterprise Plan network,
 - **Resources affected:** Chaincode (smart contracts), business network definitions, client applications. Again, be aware of whether your chaincode is leveraging a Fabric v1.2 component or functionality that is not compatible with v1.1 networks.
 - **Time required:** It will take at least half a day to migrate a basic network from Starter Plan to Enterprise Plan.
 - **Existing ledger data** cannot be moved from Starter Plan networks to Enterprise Plan networks because it is not appropriate for test data to exist in a production environment.
+- **Hyperledger Composer** IBM recommends using Hyperledger Composer solely for demos and proof-of-concepts. IBM does not provide support for networks using Hyperledger Composer in production, including the Composer CLI, JavaScript APIs, REST server, and Web Playground.
 
 **Note:** A *basic* network includes two organizations with two peers, a single channel, and a single chaincode or Business Network Archive (`.bna`) file. Actual time to migrate might vary depending on the size and complexity of the network components that you require in the Enterprise Plan network.
 
@@ -53,7 +54,6 @@ Before you migrate from your Starter Plan network to an Enterprise Plan network,
 There are a number of tasks required for preparing to move to an Enterprise Plan network from a Starter network. You can find detailed instructions in later sections, but here is a summary:
 
 - Create an Enterprise Plan network.
-- If you developed a `.bna` using Hyperledger Composer, locate and migrate the `.bna` file.
 - Recreate the desired configuration of organizations and peers from your test Starter Plan network.
 - Identify which chaincode, written in Go or Node, that will run in the Enterprise Plan network.
 - Update client applications with new API endpoint information for the Enterprise Plan network.
@@ -62,16 +62,6 @@ There are a number of tasks required for preparing to move to an Enterprise Plan
 {: #migrate_starter_to_enterprise_create_network}
 
 You need to create an Enterprise Plan network before you migrate. For more information, see [Creating an Enterprise Plan network](../get_start.html#creating-a-network).
-
-### Migrate a `.bna` file
-{: #migrate_starter_to_enterprise_bna}
-
-**Note:** You can skip this step if you don't use a `.bna` file in your Starter Plan network.
-
-If you used Hyperleger Composer to define a business network and deployed a `.bna` file to your Starter Plan network, you can deploy the same `.bna` file to your Enterprise Plan network.
-
-- If you have your business network archive file (`.bna`), follow the instructions in [Deploying a business network on Enterprise Plan](../develop_enterprise.html).
-- If you do not have your `.bna` file, use the `composer network download` command to retrieve it from the Starter Plan instance. For more information about the `composer network download` command, see [Hyperledger Composer command line documentation ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger.github.io/composer/latest/reference/commands){:new_window}. Then, you can follow the instructions in [Deploying a business network on Enterprise Plan](../develop_enterprise.html).
 
 ### Recreate network configuration
 {: #migrate_starter_to_enterprise_config_network}
