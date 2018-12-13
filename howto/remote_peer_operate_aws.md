@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-11-27"
+lastupdated: "2018-12-12"
 
 ---
 
@@ -134,7 +134,7 @@ You can also operate your peer from the command line using the Fabric CA client 
 ### Enrollment by using Fabric CA client
 {: #peer-client-enroll}
 
-The first step is to generate the required certificates (enrollment) by using the Fabric CA client. You need to install the Fabric CA client first. Download the [fabric-ca binaries v1.2.0 for your platform](https://nexus.hyperledger.org/content/repositories/releases/org/hyperledger/fabric-ca/hyperledger-fabric-ca/) to your local machine, extract them, and move them to a folder such as `$HOME/fabric-ca-remote/`.
+The first step is to generate the required certificates (enrollment) by using the Fabric CA client. You need to install the Fabric CA client first. Download the [fabric-ca binaries v1.2.1 for your platform](https://nexus.hyperledger.org/content/repositories/releases/org/hyperledger/fabric-ca/hyperledger-fabric-ca/) to your local machine, extract them, and move them to a folder such as `$HOME/fabric-ca-remote/`.
 
 1.  Prepare your environment to use the Fabric CA client. Change to the directory where you moved your client binaries so that you can reference it directly in your commands.
     ```
@@ -180,7 +180,14 @@ The first step is to generate the required certificates (enrollment) by using th
     ```
     {:codeblock}
 
-   When the command completes successfully, you can see a response that is similar to the following example:
+    **Tip:** If the value of the enrollment url, the `-u` parameter value, contains a special character, you need to either encode the special character or surround the url with the single quotes. For example, `!` becomes `%21`, or the command looks like:
+
+    ```
+    ./fabric-ca-client enroll -u 'https://admin:C25A06287!0@ash-zbc07c.4.secure.blockchain.ibm.com:21241' --tls.certfiles $HOME/fabric-ca-remote/cert.pem --caname PeerOrg1CA
+    ```
+    {:codeblock}
+
+    When the command completes successfully, you can see a response that is similar to the following example:
     ```
     2018/06/13 09:00:45 [INFO] Created a default configuration file at
     /fabric-ca-remote/fabric-ca-client-config.yaml
@@ -273,7 +280,7 @@ On your local machine, open a command terminal and navigate to the directory whe
     3. Click **Members** in the left navigator and click the **Certificates** tab.
     4. Click the **Add Certificate** button.
     5. In the **Add certificate** window, give your certificate a name, such as `fabrictools.pem`, paste in the certificate you just copied to the clipboard and click **Submit**.
-    6. You will be asked  if you want to restart the peers. Click **Restart**.
+    6. You may be asked if you want to restart the peers, if so click **Restart**.
     7. Click **Channels** in the left navigator and locate the channel that the peer will join.
     8. Click the three dots under the **Actions** header and click **Sync Certificate**. In the **Sync certificate** window, click **Submit**.
 
@@ -282,22 +289,39 @@ On your local machine, open a command terminal and navigate to the directory whe
 ### Setting up the Fabric tools container
 {: #setup-fabric-cli}
 
-After you move all of our certificates to the necessary location, you can install and use the Fabric tools container from Docker. Ensure that you run these commands from the directory where you stored your MSP folder.
+After you move all of our certificates to the necessary location, you can install and use the Fabric tools container from Docker. These commands are meant to be run locally on your machine. Ensure that you run these commands from the directory where you stored your MSP folder. Before completing these steps, [Git ![External link icon](../images/external_link.svg "External link icon")](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git "Getting Started - Installing Git") should be installed on your local machine.   
 
-1.  Download the Fabric tools Docker image with the following command:
-    ```
-    docker pull ibmblockchain/fabric-tools:1.2.0
-    ```
-    {:codeblock}
+Download the Fabric tools Docker image with the following command:
 
-2.  Run the following commands to start the Fabric tools container.
-    ```
-    docker network create blockchain.com
-    docker run -ti --network blockchain.com -v ${PWD}:/mnt ibmblockchain/fabric-tools:1.2.0
-    ```
-    {:codeblock}
+```
+docker pull ibmblockchain/fabric-tools:1.2.1
+```
+{:codeblock}
 
-    This command will mount the MSP directory inside your tools container.
+#### Gathering resources for the container    
+
+We need to setup some folders on your local machine to contain the `fabcar` sample which is used later when we install and instantiate chaincode. Run the following commands to setup the folder structure for the sample chaincode and then download it using Git.
+
+```
+mkdir toolsrc
+cd toolsrc
+mkdir mycc
+mkdir vendor
+cd vendor
+git clone https://github.com/hyperledger/fabric.git
+```
+{:codeblock}
+
+**Note:** If you have your own chaincode files, you can put them in the `mycc` folder so they can also be used by the peer CLI commands.  
+
+Run the following commands to start the Fabric tools container. The second command mounts the MSP and fabric samples folders inside your tools container. Ensure that you run these commands from the directory where you stored your MSP folder.
+
+```
+docker network create blockchain.com
+docker run -ti --network blockchain.com -v ${PWD}:/mnt -v path/to/toolsrc:/src ibmblockchain/fabric-tools:1.2.1
+```
+{:codeblock}
+
 
 <!--
 3.  The peer address must resolve to a domain name with a suffix of `blockchain.com`. You can do this either via your DNS or modify your /etc/hosts file. For purposes of these instructions, we will modify the `/etc/hosts` file in the Fabric tools container. To retrieve the endpoint information of your peer, locate your peer instance in the AWS console. Make note of the value of the AWS `IPv4 Public IP` for the EC2 instance.
@@ -418,15 +442,7 @@ Before you can run the CLI commands to join the peer to a channel, your organiza
 ### Using the Fabric tools container to install chaincode on the peer
 {: #aws-toolcontainer-install-cc}
 
-We are now ready to install and instantiate chaincode on the peer. For these instructions, we'll install the `fabcar` chaincode from the `fabric-samples` repository. Download the `fabric-samples` chaincode from GitHub using the following commands:
-
-  ```
-  cd /
-  mkdir /src
-  cd /src
-  git clone https://github.com/hyperledger/fabric-samples
-  ```
-  {:codeblock}
+We are now ready to install and instantiate chaincode on the peer. For these instructions, we'll install the `fabcar` chaincode from the Hyperledger `fabric-samples` repository which you should have already downloaded to your local machine when you [setup your Fabric tools container](#setup-fabric-cli).  
 
 Run the following Peer CLI command to install the `fabcar` chaincode onto the peer.
 

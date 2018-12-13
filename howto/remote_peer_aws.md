@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-11-27"
+lastupdated: "2018-12-11"
 
 ---
 
@@ -76,6 +76,8 @@ A pop-up window opens and displays the values of the following fields. Save the 
 - **Certificate Authority (CA) TLS Certificate**
 
 You can copy and paste each field directly into the Quick Start template, or save them to a JSON file by clicking the **Download** link.
+
+**Important:** The Quick Start template expects the TLS certificate to be formatted with `\r\n` line breaks. If you are using a browser with the Network Monitor on a `*NIX` OS, you need to reformat the certificate that you copy from the UI. Replace all occurrences of `\n` with `\r\n` and paste the resulting string into the field labeled `Certificate Authority (CA) TLS Certificate Chain`.
 
 **Note:** If you download the information in JSON, you need to convert the TLS certificate into PEM format before you provide it to the  peer. Convert the **Certificate Authority (CA) TLS Certificate** in the JSON file you downloaded into PEM format by issuing the command:
 ```
@@ -230,7 +232,9 @@ To verify the peer is running:
 
   * You can create a shell session inside the peer container by running `docker exec -it peer sh`.
 
-Additionally, to verify that the  peer connection is working to your {{site.data.keyword.blockchainfull_notm}} Platform network, you can run a peer CLI command from inside the  peer container. Run the `peer channel fetch` CLI command to fetch the genesis block from the channel:
+Optionally, if you want additional verification that the peer connection is working to your {{site.data.keyword.blockchainfull_notm}} Platform network, you can run the `peer channel fetch` CLI command from inside the  peer container. Otherwise, you can skip ahead to instructions for [Operating your peer](remote_peer_operate_aws.html).  
+
+Run the `peer channel fetch` CLI command to fetch the genesis block from the channel:
 
 1. Retrieve configuration information from your `Connection Profile` available in the Overview panel of your Network Monitor. Click **Connection Profile** and then **Download**.
 
