@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-12-07"
+lastupdated: "2018-12-14"
 
 ---
 
@@ -243,11 +243,15 @@ After you register the admin identity, you need to generate the peer admin MSP f
 
 5. Download the TLS certs from {{site.data.keyword.cloud_notm}} depending on the service plan, location, and cluster that you use. You can find your cluster based on the domain name of your certificate authority URL: `us01.blockchain.ibm.com:31011` or `us02.blockchain.ibm.com:31011` for example.
 
-  - Root TLS Cert for Starter Plan
-    - US: [us01.blockchain.ibm.com.cert ![External link icon](../images/external_link.svg "External link icon")](https://blockchain-certs.mybluemix.net/us01.blockchain.ibm.com.cert "us01.blockchain.ibm.com.cert"); [us02.blockchain.ibm.com.cert ![External link icon](../images/external_link.svg "External link icon")](https://blockchain-certs.mybluemix.net/us02.blockchain.ibm.com.cert "us02.blockchain.ibm.com.cert")
-    - UK: [uk01.blockchain.ibm.com.cert ![External link icon](../images/external_link.svg "External link icon")](https://blockchain-certs.mybluemix.net/uk01.blockchain.ibm.com.cert "uk01.blockchain.ibm.com.cert"); [uk02.blockchain.ibm.com.cert ![External link icon](../images/external_link.svg "External link icon")](https://blockchain-certs.mybluemix.net/uk02.blockchain.ibm.com.cert "uk02.blockchain.ibm.com.cert")
-    - Sydney: [aus01.blockchain.ibm.com.cert ![External link icon](../images/external_link.svg "External link icon")](https://blockchain-certs.mybluemix.net/aus01.blockchain.ibm.com.cert "aus01.blockchain.ibm.com.cert"); [aus02.blockchain.ibm.com.cert ![External link icon](../images/external_link.svg "External link icon")](https://blockchain-certs.mybluemix.net/aus02.blockchain.ibm.com.cert "aus02.blockchain.ibm.com.cert")
-  - [Root TLS Cert for Enterprise Plan ![External link icon](../images/external_link.svg "External link icon")](https://blockchain-certs.mybluemix.net/3.secure.blockchain.ibm.com.rootcert)
+  - TLS Cert for Starter Plan
+    - US: [us01.blockchain.ibm.com.cert ![External link icon](images/external_link.svg "External link icon")](https://blockchain-certs.mybluemix.net/us01.blockchain.ibm.com.cert "us01.blockchain.ibm.com.cert"); [us02.blockchain.ibm.com.cert ![External link icon](images/external_link.svg "External link icon")](https://blockchain-certs.mybluemix.net/us02.blockchain.ibm.com.cert "us02.blockchain.ibm.com.cert");
+    [us03.blockchain.ibm.com.cert ![External link icon](images/external_link.svg "External link icon")](https://blockchain-certs.mybluemix.net/us03.blockchain.ibm.com.cert "us03.blockchain.ibm.com.cert"); [us04.blockchain.ibm.com.cert ![External link icon](images/external_link.svg "External link icon")](https://blockchain-certs.mybluemix.net/us04.blockchain.ibm.com.cert "us04.blockchain.ibm.com.cert");
+    [us05.blockchain.ibm.com.cert ![External link icon](images/external_link.svg "External link icon")](https://blockchain-certs.mybluemix.net/us05.blockchain.ibm.com.cert "us05.blockchain.ibm.com.cert"); [us06.blockchain.ibm.com.cert ![External link icon](images/external_link.svg "External link icon")](https://blockchain-certs.mybluemix.net/us06.blockchain.ibm.com.cert "us06.blockchain.ibm.com.cert");
+    [us07.blockchain.ibm.com.cert ![External link icon](images/external_link.svg "External link icon")](https://blockchain-certs.mybluemix.net/us07.blockchain.ibm.com.cert "us07.blockchain.ibm.com.cert"); [us08.blockchain.ibm.com.cert ![External link icon](images/external_link.svg "External link icon")](https://blockchain-certs.mybluemix.net/us08.blockchain.ibm.com.cert "us08.blockchain.ibm.com.cert")
+    - UK: [uk01.blockchain.ibm.com.cert ![External link icon](images/external_link.svg "External link icon")](https://blockchain-certs.mybluemix.net/uk01.blockchain.ibm.com.cert "uk01.blockchain.ibm.com.cert"); [uk02.blockchain.ibm.com.cert ![External link icon](images/external_link.svg "External link icon")](https://blockchain-certs.mybluemix.net/uk02.blockchain.ibm.com.cert "uk02.blockchain.ibm.com.cert");
+    [uk03.blockchain.ibm.com.cert ![External link icon](images/external_link.svg "External link icon")](https://blockchain-certs.mybluemix.net/uk03.blockchain.ibm.com.cert "uk03.blockchain.ibm.com.cert"); [uk04.blockchain.ibm.com.cert ![External link icon](images/external_link.svg "External link icon")](https://blockchain-certs.mybluemix.net/uk04.blockchain.ibm.com.cert "uk04.blockchain.ibm.com.cert")
+    - Sydney: [aus01.blockchain.ibm.com.cert ![External link icon](images/external_link.svg "External link icon")](https://blockchain-certs.mybluemix.net/aus01.blockchain.ibm.com.cert "aus01.blockchain.ibm.com.cert");
+  - [TLS Cert for Enterprise Plan ![External link icon](images/external_link.svg "External link icon")](https://blockchain-certs.mybluemix.net/3.secure.blockchain.ibm.com.rootcert)
 
   Save the contents to a directory where you can reference it in future commands.
 
@@ -520,8 +524,8 @@ After you have completed all the steps, your updated configuration file will loo
 			"catls": {
 				"cacert": "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUVsRENDQTN5Z0F3SUJBZ0lRQWYyajYyN0tkY2lJUTR0eVM4KzhrVEFOQmdrcWhraUc5dzBCQVFzRkFBkOHRiUWsKQ0FVdzdDMjlDNzlGdjFDNXFmUHJtQUVTcmNpSXhwZzBYNDBLUE1icDFaV1ZiZDQ9Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0KCg=="
 			},
-			"enrollid": "peer",
-			"enrollsecret": "peerpw",
+			"enrollid": "peer1",
+			"enrollsecret": "peer1pw",
 			"admincerts": ["LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUNuRENDQWtPZ0F3SUJBZ0lVTXF5VDhUdnlwY3lYR2sxNXRRY3hxa1RpTG9Nd0NnWUlLb1pJemowRUF3SXcKYURFTTlEKaFhTTzRTWjJ2ZHBPL1NQZWtSRUNJQ3hjUmZVSWlkWHFYWGswUGN1OHF2aCtWSkhGeHBLUnQ3dStHZDMzalNSLwotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg=="]
 		},
 		"tls": {
@@ -832,3 +836,29 @@ Component logs can be viewed from the command line by using the [`kubectl CLI co
 ## What's next
 
 After you have deployed the peer, you need to complete several operational steps before you can submit transactions to and read the distributed ledger from the blockchain network. For more information, see [Operating peers with Starter Plan or Enterprise Plan](peer_operate_ibp.html).
+
+
+## Troubleshooting
+{: #peer-ibp-troubleshooting}
+
+### **Problem:** Error with CA URL when running the `enroll` command
+{: #ca-enroll-error}
+
+The Fabric CA client enroll command may fail if the enrollment url, the `-u` parameter value, contains a special character. For example, the following command with the enroll ID and password of `admin:C25A06287!0`,
+
+```
+./fabric-ca-client enroll -u https://admin:C25A06287!0@ash-zbc07c.4.secure.blockchain.ibm.com:21241 --tls.certfiles $HOME/fabric-ca-remote/cert.pem --caname PeerOrg1CA
+```
+
+will fail and produce the following error:
+
+```
+!pw@9.12.19.115: event not found
+```
+
+### **Solution:**
+You need to either encode the special character or surround the url with the single quotes. For example, `!` becomes `%21`, or the command looks like:
+
+```
+./fabric-ca-client enroll -u 'https://admin:C25A06287!0@ash-zbc07c.4.secure.blockchain.ibm.com:21241' --tls.certfiles $HOME/fabric-ca-remote/cert.pem --caname PeerOrg1CA
+```

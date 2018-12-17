@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-12-07"
+lastupdated: "2018-12-14"
 
 ---
 
@@ -39,7 +39,7 @@ Ensure that your ICP system meets the minimum hardware resource requirements:
 ## Storage
 {: #storage}
 
-You need to determine the storage that your orderer will use. If you use the default settings, the Helm chart will create a new 8 Gi Persistent Volume Claim (PVC) with the name of `my-data-pvc` for your orderer data, and another 8 Gi PVC with the name of `statedb-pvc` for your state database.
+You need to determine the storage that your orderer will use. If you use the default settings, the Helm chart will create a new 8 Gi Persistent Volume Claim (PVC) with the name of `orderer-data` for your orderer data.
 
 If you do not want to use the default storage settings, ensure that a *new* `storageClass` is set up during the ICP installation or the Kubernetes system administrator needs to create a storageClass before you deploy.
 
