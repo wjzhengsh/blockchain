@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-31"
+lastupdated: "2018-12-07"
 
 ---
 
@@ -31,7 +31,7 @@ As redes do Enterprise Plan oferecem os recursos prontos para produção a segui
   - O Secure Service Container (SSC) assegura que a imagem do blockchain não possa ser violada e carregada em um determinado momento e que o código do dispositivo e os dados sejam protegidos de forma confidencial tanto em andamento quanto em repouso.
   - [Hardware secure module (HSM)](../glossary.html#hsm) para gerenciamento e armazenamento de chave.
   - Criptografia de disco pervasiva.
-- Alta disponibilidade, Recuperação de desastre, Tolerância a falhas de travamento e upgrades contínuos.
+- Alta Disponibilidade, Recuperação de Desastre, Tolerância a Falhas de Travamento e upgrades contínuos.
 - Suporte avançado opcional.
 
 ## Considerações
@@ -41,8 +41,8 @@ Antes de migrar da rede do Starter Plan para uma rede do Enterprise Plan, é pos
 
 - **Precificação:** a taxa mensal de sua organização para usar uma rede do Enterprise Plan inclui a taxa de associação de US$ 1000 por instância e a taxa de US$ 1000 por peer de acordo com o peer. Para obter mais informações, consulte
 [Precificação do Enterprise Plan](pricing.html#enterprise-plan-pricing).
-- **Versão do Hyperledger Fabric:** as redes do Enterprise Plan são executadas no Hyperledger Fabric v1.1.  
-- **Recursos afetados:** Chaincode (contratos inteligentes), definições da rede de negócios, aplicativos clientes.
+- **Versão do Hyperledger Fabric:** as redes do Enterprise Plan são executadas no Hyperledger Fabric v1.1. As redes do Starter Plan são executadas no Fabric v1.2. Um componente como [Dados Privados](https://hyperledger-fabric.readthedocs.io/en/release-1.2/private-data/private-data.html), como um exemplo --- significando um chaincode desenvolvido para usar Dados Privados --- que trabalha com uma rede do Starter Plan, não funcionará no Enterprise Plan.
+- **Recursos afetados:** Chaincode (contratos inteligentes), definições da rede de negócios, aplicativos clientes. Novamente, esteja ciente de que seu chaincode está alavancando um componente do Fabric v1.2 ou uma funcionalidade que não é compatível com redes v1.1.
 - **Tempo necessário:** Levará pelo menos metade de um dia para migrar uma rede básica do Starter Plan para o Enterprise Plan.
 - **Os dados existentes do livro-razão** não podem ser movidos das redes do Starter Plan para as redes do Enterprise Plan porque não é apropriado que existam dados de teste em um ambiente de produção.
 
@@ -80,7 +80,7 @@ Se você usou o Hyperledger Composer para definir uma rede de negócios e implem
 É possível recriar a configuração de organizações (membros), canais e peers da rede do Starter Plan na rede do Enterprise Plan. É possível usar a IU do Monitor de rede para recriar esses recursos de rede convidando as organizações apropriadas (observe que não será possível **alternar** as organizações como no Starter), criar canais e peers (novamente, as organizações convidadas terão que criar seus próprios peers).
 
 1. Efetue login na rede do Enterprise Plan no {{site.data.keyword.cloud_notm}} e entre no Monitor de rede.
-2. Recrie as organizações (membros) na tela "Membros", recrie os canais na tela "Canais" e crie novamente os peers na tela "Visão geral". Para obter mais informações sobre como criar recursos de rede, consulte [Operando sua rede do Enterprise Plan](../v10_dashboard.html#overview).
+2. Recrie as organizações (membros) na tela "Membros", recrie os canais na tela "Canais" e crie novamente os peers na tela "Visão geral". Para obter informações adicionais sobre como criar recursos de rede, consulte [Usando o Monitor de Rede](../v10_dashboard.html#overview).
 3. Configure os canais incluindo membros e configurando políticas de canal da mesma maneira que na rede do Starter Plan.
 
 **Nota:** para atingir Alta disponibilidade, deve-se criar pelo menos dois peers para sua organização, associá-los ao mesmo canal e codificar os aplicativos clientes adequadamente para alternar de um peer para o outro quando necessário.

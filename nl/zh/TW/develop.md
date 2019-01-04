@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-31"
+lastupdated: "2018-12-07"
 
 ---
 
@@ -13,21 +13,21 @@ lastupdated: "2018-08-31"
 {:pre: .pre}
 {:tip: .tip}
 
-# 開發網路
+# 開發商業網路
 {: #develop-the-network}
 
 
 ***[此頁面有幫助嗎？請告訴我們。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 
-使用「{{site.data.keyword.blockchainfull}} 平台」來開發區塊鏈解決方案時，會運用 Hyperledger Composer 開放程式碼開發工具集。在您將任何項目部署至實際區塊鏈網路_之前_，Hyperledger Composer 會使用定製的模型化語言，結合 JavaScript 交易和存取控制規則來建立完整的區塊鏈商業網路模型。
+使用 {{site.data.keyword.blockchainfull}} Platform 來開發區塊鏈解決方案時，會運用 Hyperledger Composer 開放程式碼開發工具集。在您將任何項目部署至實際區塊鏈網路_之前_，Hyperledger Composer 會使用定製的建模語言，結合 JavaScript 交易和存取控制規則來建立完整的區塊鏈商業網路模型。
 {:shortdesc}
 
-**附註**：「入門範本方案」提供範例應用程式，可讓您學習及嘗試。在開發自訂商業網路之前，您可以先在「入門範本方案」中執行範例應用程式。如需相關資訊，請參閱[關於入門範本方案](starter_plan.html)。
+**附註：**「入門範本方案」提供範例應用程式，可讓您學習及嘗試。在開發自訂商業網路之前，您可以先在「入門範本方案」中執行範例應用程式。如需相關資訊，請參閱[關於入門範本方案](starter_plan.html)。
 
 此指導教學完整說明 {{site.data.keyword.blockchain}} 解決方案的開發程序：從建立及模型化商業網路開始，然後將其部署至執行中的區塊鏈網路。
 
-下列步驟概述在「{{site.data.keyword.blockchainfull_notm}} 平台」上管理之 {{site.data.keyword.blockchain}} 解決方案的基本開發程序。
+下列步驟概述在 {{site.data.keyword.blockchainfull_notm}} Platform 上管理之 {{site.data.keyword.blockchain}} 解決方案的基本開發程序。
 
 1. 建立資料結構，以包含商業網路定義。商業網路是使用[模型化語言](https://hyperledger.github.io/composer/latest/reference/cto_language)，依據資產、參與者及交易來定義。
 
@@ -35,13 +35,13 @@ lastupdated: "2018-08-31"
 
 3. 將所定義的商業網路包裝在單一可部署檔案中。
 
-4. 將所包裝的商業網路部署至「{{site.data.keyword.blockchainfull_notm}} 平台」。部署商業網路之後，可以產生 REST 伺服器，以容許與外部應用程式整合。
+4. 將所包裝的商業網路部署至 {{site.data.keyword.blockchainfull_notm}} Platform。部署商業網路之後，可以產生 REST 伺服器，以容許與外部應用程式整合。
 
 ## 開始之前
 
 確定您已安裝[「{{site.data.keyword.blockchainfull_notm}}：開發」開發工具](./develop_install.html)。
 
-## 步驟 1：建立商業網路結構
+## 步驟一：建立商業網路結構
 
 開發 {{site.data.keyword.blockchain}} 解決方案的一個主要概念就是**商業網路定義 (BND)**。BND 可定義區塊鏈解決方案的資料模型、交易邏輯及存取控制規則。若要建立 BND，您需要在磁碟上建立適合的專案結構。
 
@@ -61,9 +61,9 @@ lastupdated: "2018-08-31"
 
 5. 選取 `org.acme.biznet` 作為名稱空間。
 
-## 步驟 2：定義商業網路
+## 步驟二：定義商業網路
 
-商業網路是由資產、參與者、交易、存取控制規則，以及選用性的事件和查詢所構成。在步驟 1 中建立的架構商業網路包括一個模型檔 (`.cto`)，其中包含商業網路中所有資產、參與者及交易的類別定義。架構商業網路也包含具有基本存取控制規則的存取控制文件 (`permissions.acl`)、含有交易處理器函數的 Script 檔 (`logic.js`)，以及含有商業網路 meta 資料的套件檔 (`package.json`)。
+商業網路是由資產、參與者、交易、存取控制規則，以及選用性的事件和查詢所構成。在步驟一中建立的架構商業網路包括一個模型檔 (`.cto`)，其中包含商業網路中所有資產、參與者及交易的類別定義。架構商業網路也包含具有基本存取控制規則的存取控制文件 (`permissions.acl`)、含有交易處理器函數的 Script 檔 (`logic.js`)，以及含有商業網路 meta 資料的套件檔 (`package.json`)。
 
 ### 將資產、參與者及交易模型化
 
@@ -162,7 +162,7 @@ lastupdated: "2018-08-31"
 
 3. 儲存您對 `permissions.acl` 的變更。
 
-## 步驟 3：包裝商業網路
+## 步驟三：包裝商業網路
 
 定義商業網路之後，必須將其包裝在可部署的商業網路保存檔 (`.bna`) 中。
 
@@ -177,8 +177,8 @@ composer archive create -t dir -n .
 
 執行指令之後，`tutorial-network` 目錄中會建立一個商業網路保存檔 (`tutorial-network@0.0.1.bna`)。
 
-## 步驟 4：部署商業網路及產生 REST 伺服器
+## 步驟四：部署商業網路及產生 REST 伺服器
 
-使用[入門範本方案](./develop_starter.html)或[企業方案](./develop_enterprise.html)，將商業網路部署至「{{site.data.keyword.blockchainfull_notm}} 平台」。
+使用[入門範本方案](./develop_starter.html)或[企業方案](./develop_enterprise.html)，將商業網路部署至 {{site.data.keyword.blockchainfull_notm}} Platform。
 
-商業網路部署至「{{site.data.keyword.blockchainfull_notm}} 平台」之後，會產生一個定製的 REST 伺服器。該 REST 伺服器會檢查商業網路的內容，並且為網路的資產、交易及參與者建置 RESTful API 呼叫。如需產生 REST 伺服器的指示，請參閱 [Hyperledger Composer 文件](https://hyperledger.github.io/composer/latest/integrating/getting-started-rest-api)。
+商業網路部署至 {{site.data.keyword.blockchainfull_notm}} Platform 之後，會產生一個定製的 REST 伺服器。該 REST 伺服器會檢查商業網路的內容，並且為網路的資產、交易及參與者建置 RESTful API 呼叫。如需產生 REST 伺服器的指示，請參閱 [Hyperledger Composer 文件](https://hyperledger.github.io/composer/latest/integrating/getting-started-rest-api)。

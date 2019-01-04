@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-31"
+lastupdated: "2018-12-07"
 ---
 
 {:new_window: target="_blank"}
@@ -18,7 +18,7 @@ lastupdated: "2018-08-31"
 
 
 链代码是一款软件，可封装用于在分类帐中创建和修改资产的业务逻辑和事务处理指示信息。
-链代码可使用不同语言编写，并且 {{site.data.keyword.blockchainfull}} Platform 支持 Go 和 Node.js 链代码。链代码在 Docker 容器中运行，该容器与需要与之交互的任何同级相关联。有关开发链代码的更多信息，请参阅[链代码教程 ![外部链接图标](../images/external_link.svg "外部链接图标")](http://hyperledger-fabric.readthedocs.io/en/latest/chaincode.html)。
+链代码可使用不同语言编写，并且 {{site.data.keyword.blockchainfull}} Platform 支持 Go 和 Node.js 链代码。链代码在 Docker 容器中运行，该容器与需要与之交互的任何同级相关联。有关开发链代码的更多信息，请参阅[链代码教程 ![外部链接图标](../images/external_link.svg "外部链接图标")](http://hyperledger-fabric.readthedocs.io/en/release-1.2/chaincode.html)。
 {:shortdesc}
 
 链代码安装在同级上，然后在通道上进行实例化。**想要使用链代码提交事务或读取数据的所有成员都需要在其同级上安装链代码。**链代码通过其名称和版本进行定义。在一个通道中，各个同级上已安装的链代码的名称和版本需要保持一致。
@@ -38,12 +38,12 @@ lastupdated: "2018-08-31"
 
 2. 在**安装链代码**弹出面板中，输入链代码的名称和版本。**注**：将在应用程序中使用名称和版本字符串以与已安装的链代码进行交互。单击**浏览**按钮并在本地文件系统中浏览到存储链代码源文件的任何位置。选择要安装在同级上的一个或多个链代码源文件。然后，从**链代码类型**下拉列表中选择链代码语言。
 
-可以通过上传一个或多个 GO 或 NODE 文件来安装链代码，也可以上传打包在 .zip 文件内的链代码。使用 .zip 文件将使链代码保持完整的目录结构。如果要包含依赖关系的包，或者要将索引用于 CouchDB，那么使用 .zip 文件会非常有用。有关如何在链代码中包含索引的示例，请参阅[通过链代码使用 CouchDB ![外部链接图标](../images/external_link.svg "外部链接图标")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/couchdb_as_state_database.html#using-couchdb-from-chaincode){:new_window}，或者遵循 Hypereldger Fabric 文档中的此[教程 ![外部链接图标](../images/external_link.svg "外部链接图标")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/couchdb_tutorial.html){:new_window}。您还可以找到有关[管理使用 GO 编写的链代码的外部依赖性 ![外部链接图标](../images/external_link.svg "外部链接图标")](https://hyperledger-fabric.readthedocs.io/en/latest/chaincode4ade.html#managing-external-dependencies-for-chaincode-written-in-go){:new_window} 的信息。
+可以通过上传一个或多个 GO 或 NODE 文件来安装链代码，也可以上传打包在 .zip 文件内的链代码。使用 .zip 文件将使链代码保持完整的目录结构。如果要包含依赖关系的包，或者要将索引用于 CouchDB，那么使用 .zip 文件会非常有用。有关 CouchDB 以及如何设置索引的更多信息，请参阅开发应用程序教程中的[使用 CouchDB 时的最佳实践](../v10_application.html#couchdb-indices)。您还可以在 Hyperledger Fabric 文档中找到有关[管理使用 GO 编写的链代码的外部依赖性 ![外部链接图标](../images/external_link.svg "外部链接图标")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/chaincode4ade.html#managing-external-dependencies-for-chaincode-written-in-go){:new_window} 的信息。
 
   ![安装链代码](../images/chaincode_install.png "安装链代码")
 
 ## 实例化链代码
-在将链代码安装到每个加入通道的同级的文件系统上之后，必须接着在通道上对该链代码进行实例化，以便同级可以通过链代码容器与分类帐交互。实例化对链代码执行任何必要的初始化。通常，这会涉及设置组成链代码初始全局状态的键值对。
+在将链代码安装到每个加入通道的同级的文件系统上之后，必须接着在通道上对该链代码进行实例化，以便同级可以通过链代码容器与分类帐交互。实例化对链代码执行任何必要的初始化。通常，这涉及设置组成链代码初始全局状态的键值对。
 
 您需要在通道上具有**操作员**或**作者**权限才能实例化链代码。在不同同级上具有相同名称和版本的链代码仅需要实例化一次即可部署链代码容器。要实例化链代码，请完成以下步骤：
 1. 在“网络监视器”的“安装代码”屏幕中，选择安装了链代码的同级并在链代码表中找到要实例化的链代码。然后，单击**操作**标头下的**实例化**按钮。
@@ -59,6 +59,7 @@ lastupdated: "2018-08-31"
 3. 指定链代码的[支持策略](../glossary.html#endorsement-policy)。您可以在[下一部分](#specifying-chaincode-endorsement-policies)中了解有关如何设置支持策略的更多信息。
 
 ## 指定链代码支持策略
+{: #endorsement-policy}
 
 可以使用支持策略来指定哪组同级需要验证新交易。例如，支持策略可以指定仅当通道上的大部分成员支持交易时，才会将该交易添加到分类帐。
 
@@ -72,9 +73,11 @@ lastupdated: "2018-08-31"
 
 * **使用 JSON 指定高级策略**：使用高级策略可要求来自重要成员或管理员的支持，或者对某些成员的支持给予更多权重。
 
-  指定高级策略最简单的方法是先使用 UI 屏幕来构建简单策略。然后，单击**高级策略**按钮，这将使用您在简单策略中设置的相同成员和规则自动填充策略的 JSON 版本。接下来，您就可以编辑该 JSON 以编写更高级的版本。有关使用 JSON 编写支持策略的更多信息，请参阅 [Hyperledger Fabric Node SDK 文档 ![外部链接图标](../images/external_link.svg "外部链接图标")](https://fabric-sdk-node.github.io/global.html#ChaincodeInstantiateUpgradeRequest)。<!--You can also find examples of advanced endorsement policies in the main [Hyperledger Fabric documentation![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/latest/arch-deep-dive.html#example-endorsement-policies)-->
+  指定高级策略最简单的方法是先使用 UI 屏幕来构建简单策略。然后，单击**高级策略**按钮，这将使用您在简单策略中设置的相同成员和规则自动填充策略的 JSON 版本。接下来，您就可以编辑该 JSON 以编写更高级的版本。有关使用 JSON 编写支持策略的更多信息，请参阅 [Hyperledger Fabric Node SDK 文档 ![外部链接图标](../images/external_link.svg "外部链接图标")](https://fabric-sdk-node.github.io/global.html#ChaincodeInstantiateUpgradeRequest)。<!--You can also find examples of advanced endorsement policies in the main [Hyperledger Fabric documentation![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/arch-deep-dive.html#example-endorsement-policies)-->
 
   ![高级支持策略](../images/advanced_endorsement.png "高级支持策略")
+
+当新组织加入通道并安装链代码时，不会自动更新支持策略。例如，如果策略需要五个组织中的两个组织来支持事务处理，那么在一个新组织加入该通道时，该策略将不会更新为需要六个组织中的两个组织。相反，新组织将不会在策略上列出，并且他们将无法支持事务处理。您可以通过更新相关链代码来将新组织添加到支持策略中。
 
 ## 更新链代码
 
@@ -84,6 +87,6 @@ lastupdated: "2018-08-31"
 
   ![更新链代码](../images/upgrade_chaincode.png "更新链代码")
 
-2. 在表中找到新的链代码，然后单击**操作**标题下的**更新**按钮。此操作将重新实例化链代码并将链代码容器替换为新容器。请注意，无需输入任何新的自变量作为更新函数的一部分。此升级操作在通道上发生，并且只需由一个组织执行。
+2. 在表中找到新的链代码，然后单击**操作**标题下的**更新**按钮。此操作将重新实例化链代码并将链代码容器替换为新容器。单击**更新**按钮时，您有机会更新链代码支持策略，如果最近向通道添加了组织，这样做很重要。请注意，无需输入任何新的自变量作为更新函数的一部分。此升级操作在通道上发生，并且只需由一个组织执行。
 
   ![更新按钮](../images/upgrade_button.png "更新按钮")

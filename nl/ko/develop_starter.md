@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-31"
+lastupdated: "2018-12-07"
 
 ---
 
@@ -27,7 +27,14 @@ lastupdated: "2018-08-31"
 
 ## 시작하기 전에
 
-[스타터 플랜 정보](./starter_plan.html) 및 [스타터 플랜 시작하기](./get_start_starter_plan.html)를 읽었는지 확인하십시오. 또한 [스타터 플랜 네트워크 통제](./get_start_starter_plan.html)의 지시사항에 따라 [{{site.data.keyword.blockchainfull_notm}} Platform 개발자 환경](./develop_install.html)을 설치하고 {{site.data.keyword.blockchainfull_notm}} Platform 스타터 플랜의 인스턴스를 작성했는지 확인하십시오. Node v8.9 이상, npm v5.x 및 Hyperledger Composer v0.19.x가 있는지 확인하십시오.
+[스타터 플랜 정보](./starter_plan.html) 및 [스타터 플랜 시작하기](./get_start_starter_plan.html)를 읽었는지 확인하십시오. 또한 [스타터 플랜 네트워크 통제](./get_start_starter_plan.html)의 지시사항에 따라 [{{site.data.keyword.blockchainfull_notm}} Platform 개발자 환경](./develop_install.html)을 설치하고 {{site.data.keyword.blockchainfull_notm}} Platform 스타터 플랜의 인스턴스를 작성했는지 확인하십시오.
+
+Node v8.9 이상, npm v5.x 및 Hyperledger Composer가 있는지 확인하십시오.
+
+- 네트워크에 Fabric 버전 1.2가 있는 경우 Hyperledger Composer v0.20.x를 사용하십시오.
+- 네트워크에 Fabric 버전 1.1이 있는 경우 Hyperledger Composer v0.19.x를 사용하십시오.  
+
+네트워크 모니터에서 [네트워크 환경 설정 창](../v10_dashboard.html#network-preferences)을 열어 Fabric 버전을 찾을 수 있습니다. 
 
 
 ## 1단계: 관리자 시크릿 검색

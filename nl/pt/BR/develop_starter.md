@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-31"
+lastupdated: "2018-12-07"
 
 ---
 
@@ -27,7 +27,14 @@ Usando o ambiente de desenvolvedor, é possível rapidamente modelar e testar re
 
 ## Antes de iniciar
 
-Leia [Sobre o Starter Plan](./starter_plan.html) e [Introdução ao Starter Plan](./get_start_starter_plan.html). Também assegure-se de que tenha instalado o ambiente do desenvolvedor do [{{site.data.keyword.blockchainfull_notm}} Platform](./develop_install.html) e tenha criado uma instância do {{site.data.keyword.blockchainfull_notm}} Platform Starter Plan seguindo as instruções em [Governar a rede do Starter Plan](./get_start_starter_plan.html). Assegure-se de ter o Node v8.9 ou superior, o npm v5.x e o Hyperledger Composer na v0.19.x.
+Leia [Sobre o Starter Plan](./starter_plan.html) e [Introdução ao Starter Plan](./get_start_starter_plan.html). Também assegure-se de que tenha instalado o ambiente do desenvolvedor do [{{site.data.keyword.blockchainfull_notm}} Platform](./develop_install.html) e tenha criado uma instância do {{site.data.keyword.blockchainfull_notm}} Platform Starter Plan seguindo as instruções em [Governar a rede do Starter Plan](./get_start_starter_plan.html).
+
+Assegure-se de ter o Node v8.9 ou superior, o npm v5.x e o Hyperledger Composer:
+
+- Se sua rede estiver no Fabric versão 1.2, use o Hyperledger Composer v0.20.x.
+- Se sua rede estiver no Fabric versão 1.1, use o Hyperledger Composer v0.19.x.  
+
+É possível localizar a versão do Fabric abrindo a [janela Preferências de rede](../v10_dashboard.html#network-preferences) em seu Network Monitor.
 
 
 ## Etapa um: Recuperar o segredo do administrador

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-31"
+lastupdated: "2018-12-07"
 
 ---
 
@@ -16,11 +16,10 @@ lastupdated: "2018-08-31"
 # Glosario
 {: #glossary}
 
-
 ***[¿Le resulta útil esta página? Indíquenos su opinión.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
-
-La plataforma {{site.data.keyword.blockchainfull}} simplifica el trabajo con blockchain. En este tema se definen los términos que aparecen en esta documentación y se ofrece una introducción a los conceptos de blockchain. Para estudiar los términos con más detalle, puede consultar [Hyperledger Fabric ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/glossary.html).
+En este tema se definen términos específicos de la plataforma {{site.data.keyword.blockchainfull}} que aparecen en esta documentación. Para estudiar los términos con más detalle y ver un glosario de términos relacionados con los conceptos de Hyperledger Fabric, consulte el [Glosario de Hyperledger Fabric
+![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](http://hyperledger-fabric.readthedocs.io/en/release-1.2/glossary.html).
 {:shortdesc}
 
 ## Activo
@@ -33,13 +32,13 @@ Conjunto ordenado de transacciones, que está vinculado criptográficamente al b
 Definición de una red blockchain, que incluye modelo de datos, lógica de transacción y reglas de control de acceso de la solución blockchain. Las definiciones de red empresarial se crean mediante [Hyperledger Composer](#hyperledger-composer). Las definiciones de la Red empresarial se empaquetan en archivos **.bna** (Business Network Archive) que se pueden desplegar.
 
 ## CA
-Entidad emisora de certificados. Un recurso de la red blockchain que emite certificados a todos los miembros participantes. Estos certificados representan la identidad de un miembro. Todas las entidades de la red (iguales, clasificadores, clientes, etc.) deben tener una identidad para comunicarse, autenticarse y realizar transacciones. Estas identidades son necesarias para cualquier participación directa en la red blockchain. Puede crear una tarjeta de red empresarial para la CA. Después, la [tarjeta de CA](develop_starter.html) se puede importar y se utilizará para intercambiar el secreto de administración correspondiente a los certificados válidos de la entidad emisora de certificados del Plan inicial.
+Abreviatura de "entidad emisora de certificados"; es el componente que emite certificados a todos los miembros participantes. Estos certificados representan la identidad de un miembro. Todas las entidades de la red (iguales, clasificadores, clientes, etc.) deben tener una identidad para comunicarse, autenticarse y realizar transacciones. Estas identidades son necesarias para cualquier participación directa en la red blockchain. Puede crear una tarjeta de red empresarial para la CA. Después, la [tarjeta de CA](develop_starter.html) se puede importar y se utilizará para intercambiar el secreto de administración correspondiente a los certificados válidos de la entidad emisora de certificados del Plan inicial.
 
 ## Cadena
 La cadena del libro mayor es un registro de transacciones estructurado como bloques de transacciones relacionadas con hash. Los iguales reciben bloques de transacciones del servicio de ordenación, marcan las transacciones del bloque como válidas o no válidas en función de las políticas de aprobación y de las infracciones de simultaneidad y añaden el bloque a la cadena hash en el sistema de archivos del igual.
 
 ## Código de encadenamiento
-También conocidos como contratos digitales, el código de encadenamiento son fragmentos de software que contienen un conjunto de funciones para consultar o actualizar el libro mayor.
+También conocido como **contratos inteligentes**, el código de encadenamiento son fragmentos de software que contienen un conjunto de funciones para consultar o actualizar el libro mayor.
 
 ## Canal
 Consiste en una subred de miembros de la red que desean realizar transacciones en privado. Los canales proporcionan aislamiento de datos y confidencialidad permitiendo que los miembros de un canal establezcan normas específicas y un libro mayor separado, al que solo pueden acceder los miembros del canal. Los iguales, que son los nodos que funcionan como puntos finales de transacción para las organizaciones, se unen a los canales.
@@ -52,6 +51,9 @@ El archivo de conexión se puede ver en la pantalla "Visión general" del superv
 
 ## Consenso
 Proceso de colaboración para mantener las transacciones del libro mayor sincronizadas en la red. El consenso garantiza que los libros mayores se actualizan solo cuando los participantes adecuados apruebas las transacciones y que los libros mayores se actualizan con las mismas transacciones en el mismo orden. Existen muchas maneras algorítmicas diferentes para alcanzar un consenso.
+
+## Consorcio
+El grupo de organizaciones que no son de clasificador y que aparecen en el canal del sistema del clasificador. Estas son las únicas organizaciones que pueden crear canales. En el momento de la creación del canal, todas las organizaciones que se añaden al canal deben formar parte del consorcio. No obstante, es posible añadir una organización que no esté definida en un consorcio a un canal existente. Aunque una red blockchain puede tener varios consorcios, la mayoría de las redes blockchain tienen un único consorcio.
 
 ## CouchDB
 Un almacén de documentos que se utiliza para la base de datos de estado en las redes del Plan inicial. CouchDB es también una opción para las redes del Plan empresarial, junto con LevelDB. CouchDB soporta el uso de índices y le permite emitir consultas enriquecidas en los datos de su igual.
@@ -90,7 +92,7 @@ Proceso de colocar un código de encadenamiento en el sistema de archivos en un 
 Proceso de iniciar e inicializar un contenedor de código de encadenamiento en un canal específico. Una vez se ha instalado el código de encadenamiento en los iguales y cada igual se ha unido al canal, se debe crear una instancia del código de encadenamiento en el canal. La creación de una instancia realiza la inicialización necesaria del código de encadenamiento, lo que incluye definir los pares de clave y valor que forman el estado inicial de un código de encadenamiento. Después de crear la instancia, los iguales que tienen el código de encadenamiento instalado pueden aceptar invocaciones de código de encadenamiento.
 
 ## Kafka
-Implementación de plug-in de consenso para Hyperledger Fabric que da lugar a un clúster de nodos de servicio de ordenación en la red blockchain. Una implementación kafka está pensada para una red de producción.
+Implementación de plug-in de consenso para Hyperledger Fabric que da lugar a un clúster de nodos de servicio de ordenación en la red blockchain. Una implementación Kafka está pensada para una red de producción.
 
 ## Libro mayor
 Consta de una "cadena de bloques" literal que almacena el registro de transacciones inmutable y secuencial, así como una base de datos de estado que permite mantener el estado actual. Hay un libro mayor por canal y las actualizaciones en el mismo se gestionan mediante el proceso de consenso según las políticas de cada canal.
@@ -114,16 +116,13 @@ Visibles desde la pantalla "API" del supervisor de red. Las credenciales incluye
 Panel de control de GUI que proporciona la plataforma {{site.data.keyword.blockchainfull_notm}} para ver y gestionar la red blockchain.
 
 ## Nodo
-Entidad de comunicación de blockchain. Existen tres tipos de nodos: los nodos de tipo CA, Igual y Servicio de ordenación (colección de clasificadores para un canal).
+Entidad de comunicación de blockchain. Hay tres tipos de nodos: CA, igual y clasificador.
 
 ## Clasificador
-Nodo del servicio de ordenación. Recurso de la red blockchain que proporciona servicios de autenticación de clientes. Además, proporciona servicios para ordenar y difundir transacciones.
+El nodo que recopila transacciones de los miembros de la red, ordena las transacciones y las empaqueta en bloques. A continuación, se distribuyen estos bloques a los iguales, que verificarán luego los bloques y los añadirán a los libros mayores de cada canal. Las clasificadores contienen el material de identidad de cifrado que está vinculado a cada miembro y autentican la identidad de clientes e iguales para que puedan acceder a la red. La función global que proporciona un nodo o una recopilación de nodos clasificadores se conoce como **servicio de ordenación**.
 
 ## Organización
 Consulte [Miembro](#member).
-
-## Servicio de ordenación
-Cada red blockchain necesita un servicio de ordenación. El servicio de ordenación recopila transacciones de los miembros de la red, ordena las transacciones y las empaqueta en bloques. Luego el servicio de ordenación distribuye los nuevos bloques a los iguales, que verifican los bloques y los añaden a los libros mayores de cada canal. El servicio de ordenación también es un enlace común para la red general. Contiene el material de identidad de cifrado que está vinculado a cada miembro y autentica la identidad de clientes e iguales para que puedan acceder a la red.
 
 ## Participante
 Cualquier organización, individuo, aplicación o dispositivo que interactúa con la red blockchain. Bajo el término participante se distinguen dos grupos: los miembros y los usuarios.
@@ -132,10 +131,16 @@ Cualquier organización, individuo, aplicación o dispositivo que interactúa co
 Recurso de la red blockchain que proporciona los servicios para ejecutar y validar transacciones y para mantener libros mayores. El igual ejecuta código de encadenamiento y es el titular del historial de transacciones y del estado actual de los activos en los canales de la red, es decir, del libro mayor. Los iguales son propiedad de las organizaciones, que los gestionan, y se unen a canales.
 
 ## Credenciales de servicio
-Las credenciales de servicio están en formato JSON y contienen la información de punto final de API y los ID de inscripción/secretos de los componentes de red, es decir, iguales, nodos de ordenación y CA. La aplicación interactúa con los recursos de red a través de estos puntos finales de API.
+Las credenciales de servicio están en formato JSON y contienen la información de punto final de API y los ID de inscripción/secretos de los componentes de red, es decir, CA, clasificadores e iguales. La aplicación interactúa con los recursos de red a través de estos puntos finales de API.
 
 ## SDK
 Hyperledger Fabric admite dos kits de desarrollo de software (SDK). Un SDK de nodo y un SDK Java.  El SDK de nodo se puede instalar mediante NPM y el SDK Java mediante Maven.  Los SDK tienen sus propios repositorios git, es decir, [SDK de nodo de Fabric ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://github.com/hyperledger/fabric-sdk-node) y [SDK de Java de Fabric ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://github.com/hyperledger/fabric-sdk-java), con documentación sobre las API disponibles. Los SDK de cliente de Hyperledger Fabric permiten la interacción entre la aplicación cliente y la red blockchain.
+
+## SignCert
+El certificado que las entidades, ya sean organizaciones o administradores, adjuntan a sus propuestas o a sus respuestas a propuestas. Estos signCerts son exclusivos para una entidad y el servicio de ordenación los comprueba para asegurarse de que coinciden con el signCert del archivo para dicha entidad.
+
+## Contratos inteligentes
+Véase [Código de encadenamiento](#chaincode).
 
 ## SOLO
 Implementación de plug-in de consenso para Hyperledger Fabric que da lugar a un solo nodo de servicio de ordenación en la red blockchain. La red del Plan inicial utiliza la implementación SOLO. La implementación SOLO no está pensada para una red de producción. La alternativa a SOLO es un clúster Kafka.

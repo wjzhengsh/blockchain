@@ -45,7 +45,7 @@ Un membro della rete può coprire le spese per uno o più altri membri della ret
    1. Accedi a {{site.data.keyword.cloud_notm}}.
    2. Dalla barra dei menu, fai clic su **Gestisci** > **Account** > **Organizzazioni Cloud Foundry**.
    3. Fai clic su **Visualizza dettagli** dell'organizzazione Cloud Foundry per cui creerai la rete. Se non hai un'organizzazione per la rete, fai clic sul pulsante **Aggiungi una nuova organizzazione Cloud Foundry** per crearne una.
-   4. Fai clic sul pulsante **Aggiungi uno spazio Cloud Foundry** per creare uno spazio per un altro membro della rete.  Seleziona la regione per lo spazio, denominala e fai clic su **Aggiungi**.  Nota: solo il creatore dello spazio può accedere allo spazio creato.  
+   4. Fai clic sul pulsante **Aggiungi uno spazio Cloud Foundry** per creare uno spazio per un altro membro della rete. Seleziona la regione per lo spazio, denominala e fai clic su **Aggiungi**.  Nota: solo il creatore dello spazio può accedere allo spazio creato.  
    **Nota**: se il pagatore paga per più di un membro, dovrà ripetere questo passo per creare spazi separati per ciascuno dei membri per i quali pagherà.
 2. Il pagatore invita gli altri membri al suo account {{site.data.keyword.cloud_notm}} e fornisce loro l'accesso ai suoi specifici spazi. Assicurati che ogni membro possa avere accesso a un solo spazio.
    1. Dalla barra dei menu, fai clic su **Gestisci** > **Account** > **Utenti**.  

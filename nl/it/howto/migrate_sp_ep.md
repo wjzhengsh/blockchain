@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-31"
+lastupdated: "2018-12-07"
 
 ---
 
@@ -28,7 +28,7 @@ Le reti piano Enterprise offrono le seguenti funzioni pronte per la produzione a
 - Nessun limite di archiviazione, che è di 20 GB per il piano Starter.
 - Gestione avanzata della CPU e della RAM per garantire che tutte le reti funzionino senza problemi.
 - Sicurezza avanzata con le seguenti funzioni:
-  - SSC (Secure Service Container) garantisce che l'immagine blockchain non possa essere manomessa e caricata in un dato momento e che il codice e i dati delle appliance siano protetti in modo confidenziale sia in fase di elaborazione che di inattività.
+  - SSC (Secure Service Container) garantisce che l'immagine blockchain non possa essere manomessa e caricata in un dato momento e che il codice e i dati dei dispositivi siano protetti in modo confidenziale sia in fase di elaborazione che di inattività.
   - [Hardware secure module (HSM)](../glossary.html#hsm) per la gestione e l'archiviazione delle chiavi.
   - Crittografia pervasiva del disco.
 - Alta disponibilità, ripristino di emergenza, tolleranza di errori anomali e aggiornamenti progressivi.
@@ -41,8 +41,8 @@ Prima di migrare dalla tua rete piano Starter a una rete piano Enterprise, esami
 
 - **Prezzi:** per la tua organizzazione, la tariffa mensile per l'utilizzo di una rete piano Enterprise include un costo di adesione di $1000 in base alle singole istanze e un costo peer di $1000 in base ai singoli peer. Per ulteriori informazioni, vedi
 [Prezzi del piano Enterprise](pricing.html#enterprise-plan-pricing).
-- **Versione di Hyperledger Fabric:** le reti piano Enterprise vengono eseguite su Hyperledger Fabric v1.1.  
-- **Risorse interessate:** chaincode (smart contract), definizioni di rete di business, applicazioni client.
+- **Versione di Hyperledger Fabric:** le reti piano Enterprise vengono eseguite su Hyperledger Fabric v1.1. Le reti piano Starter sono eseguite su Fabric v1.2. Questo ad esempio significa che un componente come [Private Data](https://hyperledger-fabric.readthedocs.io/en/release-1.2/private-data/private-data.html), --- un chaincode sviluppato per utilizzare Private Data --- che funziona con una rete del piano Starter, non funzionerà nel piano Enterprise.
+- **Risorse interessate:** chaincode (smart contract), definizioni di rete di business, applicazioni client. Ancora una volta, fai attenzione se il tuo chaincode sta utilizzando un componente o una funzionalità Fabric v1.2 che non è compatibile con le reti v1.1.
 - **Tempo richiesto:** la migrazione di una rete di base dal piano Starter al piano Enterprise richiederà almeno mezza giornata.
 - I **Dati del libro mastro esistenti** non possono essere spostati dalle reti piano Starter alle reti piano Enterprise perché non è appropriato che i dati di test esistano in un ambiente di produzione.
 
@@ -80,7 +80,7 @@ Se hai utilizzato Hyperleger Composer per definire una rete di business e hai di
 Puoi ricreare la configurazione di organizzazioni (membri), canali e peer della tua rete piano Starter nella tua rete piano Enterprise. Puoi utilizzare l'interfaccia utente di Monitoraggio della rete per ricreare queste risorse di rete invitando le organizzazioni appropriate (nota che non potrai **passare** tra le organizzazioni come in Starter), creare i canali e creare i peer (di nuovo, le organizzazioni invitate dovranno creare i propri peer).
 
 1. Accedi alla tua rete piano Enterprise su {{site.data.keyword.cloud_notm}} e accedi al Monitoraggio della rete.
-2. Ricrea le organizzazioni (membri) sulla schermata "Membri", ricrea i canali sulla schermata "Canali" e ricrea i peer sulla schermata "Panoramica". Per ulteriori informazioni sulla creazione delle risorse di rete, vedi [Gestione della rete piano Enterprise](../v10_dashboard.html#overview).
+2. Ricrea le organizzazioni (membri) sulla schermata "Membri", ricrea i canali sulla schermata "Canali" e ricrea i peer sulla schermata "Panoramica". Per ulteriori informazioni sulla creazione delle risorse di rete, vedi [Utilizzo del Monitoraggio della rete](../v10_dashboard.html#overview).
 3. Configura i canali aggiungendo membri e impostando le politiche di canale allo stesso modo della tua rete piano Starter.
 
 **Nota:** per ottenere l'alta disponibilità, devi creare almeno due peer per la tua organizzazione, unirli allo stesso canale e codificare correttamente le applicazioni client per passare da un peer all'altro laddove necessario.

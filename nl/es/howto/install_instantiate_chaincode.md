@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-31"
+lastupdated: "2018-12-07"
 ---
 
 {:new_window: target="_blank"}
@@ -17,7 +17,7 @@ lastupdated: "2018-08-31"
 ***[¿Le resulta útil esta página? Indíquenos su opinión.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 
-El código de encadenamiento es un software que combina lógica empresarial e instrucciones transaccionales para crear y modificar activos en libro mayor. El código de encadenamiento puede estar escrito en distintos lenguajes, y la plataforma {{site.data.keyword.blockchainfull}} da soporte al código de encadenamiento Go y Node.js. Se ejecuta en un contenedor docker asociado a cualquier igual que necesite interactuar con el mismo. Para obtener más información sobre el desarrollo de código de encadenamiento, consulte [Guías de aprendizaje de código de encadenamiento ![icono de enlace externo](../images/external_link.svg "icono de enlace externo")](http://hyperledger-fabric.readthedocs.io/en/latest/chaincode.html).
+El código de encadenamiento es un software que combina lógica empresarial e instrucciones transaccionales para crear y modificar activos en libro mayor. El código de encadenamiento puede estar escrito en distintos lenguajes, y la plataforma {{site.data.keyword.blockchainfull}} da soporte al código de encadenamiento Go y Node.js. Se ejecuta en un contenedor de Docker asociado a cualquier igual que necesite interactuar con el mismo. Para obtener más información sobre el desarrollo de código de encadenamiento, consulte [Guías de aprendizaje de código de encadenamiento ![icono de enlace externo](../images/external_link.svg "icono de enlace externo")](http://hyperledger-fabric.readthedocs.io/en/release-1.2/chaincode.html).
 {:shortdesc}
 
 El código de encadenamiento se instala en un igual, y luego se crea una instancia en un canal. **Todos los miembros que desean enviar transacciones o leer datos utilizando un código de encadenamiento tienen que instalar el código de encadenamiento en su igual.** Un código de encadenamiento se define por su nombre y versión. Tanto el nombre como la versión del código de encadenamiento instalado deben ser coherentes entre los iguales de un canal.
@@ -37,12 +37,13 @@ Debe instalar el código de encadenamiento en cada igual que vaya a ejecutar dic
 
 2. En el panel emergente **Instalar código de encadenamiento**, especifique el nombre y la versión. **Observe** que las series de nombre y versión se utilizarán en las aplicaciones para que interactúen con el código de encadenamiento instalado. Pulse el botón **Examinar** y navegue por el sistema de archivos hasta el lugar en el que se han guardado los archivos de origen del código de encadenamiento. Seleccione uno o varios archivos de origen de código de encadenamiento para instalarlos en el igual. A continuación, seleccione el lenguaje del código de encadenamiento desde el desplegable **Tipo de código de encadenamiento**.
 
-Puede instalar el código de encadenamiento cargando un único o varios archivos GO o NODE, o puede cargar código de encadenamiento en un archivo .zip. Utilizar un archivo .zip mantendrá el código de encadenamiento con una estructura de directorios completa. Esto será útil si desea incluir paquetes de dependencias, o utilizar índices con CouchDB. Para ver un ejemplo de cómo incluir índices en su código de encadenamiento, consulte [Utilización de CouchDB desde el código de encadenamiento ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/couchdb_as_state_database.html#using-couchdb-from-chaincode){:new_window} o siga esta [guía de aprendizaje ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/couchdb_tutorial.html){:new_window} en la documentación de Hypereldger Fabric. También puede encontrar información sobre la [gestión de dependencias externas para el código de encadenamiento escrito en GO![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/latest/chaincode4ade.html#managing-external-dependencies-for-chaincode-written-in-go){:new_window}
+Puede instalar el código de encadenamiento cargando un único o varios archivos GO o NODE, o puede cargar código de encadenamiento en un archivo .zip. Utilizar un archivo .zip mantendrá el código de encadenamiento con una estructura de directorios completa. Esto será útil si desea incluir paquetes de dependencias, o utilizar índices con CouchDB. Para obtener más información sobre CouchDB y cómo configurar índices, consulte
+[Prácticas recomendadas al utilizar CouchDB](../v10_application.html#couchdb-indices) en la guía de aprendizaje de desarrollo de aplicaciones. También puede encontrar información sobre la [gestión de dependencias externas para el código de encadenamiento escrito en GO ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/chaincode4ade.html#managing-external-dependencies-for-chaincode-written-in-go){:new_window} en la documentación de Hyperledger Fabric.
 
   ![Instalar código de encadenamiento](../images/chaincode_install.png "Instalar código de encadenamiento")
 
 ## Creación de instancia de código de encadenamiento
-Tras la instalación de un código de encadenamiento en el sistema de archivos de cada igual que se une a un canal, debe crearse una instancia del código de encadenamiento en el canal para que los iguales puedan interactuar con el libro mayor a través del contenedor. La creación de instancia lleva a cabo la inicialización necesaria del código de encadenamiento. A menudo esto implicará la definición de pares de clave y valor que comprendan el estado inicial del código de encadenamiento.
+Tras la instalación de un código de encadenamiento en el sistema de archivos de cada igual que se une a un canal, debe crearse una instancia del código de encadenamiento en el canal para que los iguales puedan interactuar con el libro mayor a través del contenedor. La creación de instancia lleva a cabo la inicialización necesaria del código de encadenamiento. A menudo, esto implicará la definición de pares de clave y valor que comprendan el escenario mundial inicial del código de encadenamiento.
 
 Debe tener permiso de **Operador** o **Escritor** en el canal para crear la instancia del código de encadenamiento. Debe crearse solo una instancia a la vez de este código de encadenamiento, que tiene el mismo nombre y versión en diferentes iguales, para desplegar el contenedor. Para ello, realice los siguientes pasos:
 1. En la pantalla "Instalar código" del Supervisor de red, seleccione el igual en el que instaló el código de encadenamiento y localice el código de encadenamiento del cual desea crear una instancia en la tabla de código de encadenamiento. Luego pulse el botón **Crear instancia** situado bajo la cabecera **Acción**.
@@ -58,6 +59,7 @@ Debe tener permiso de **Operador** o **Escritor** en el canal para crear la inst
 3. Especifique la [política de aprobación](../glossary.html#endorsement-policy) del código de encadenamiento. Puede obtener más información sobre cómo establecer políticas de aprobación en la [sección siguiente](#specifying-chaincode-endorsement-policies).
 
 ## Especificación de las políticas de aprobación del código de encadenamiento
+{: #endorsement-policy}
 
 Puede utilizar políticas de aprobación para especificar qué conjunto de iguales se necesita para validar una transacción nueva. Por ejemplo, una política de aprobación puede especificar que una transacción se añada al libro mayor solo si una mayoría de los miembros del canal validan la transacción.
 
@@ -71,9 +73,11 @@ Cuando utilice el Supervisor de red para establecer la política de aprobación,
 
 * **Utilice JSON para especificar una Política avanzada:** Utilice las políticas avanzadas para pedir recomendaciones de miembros o administradores importantes, o para dar a las recomendaciones de ciertos miembros más peso.
 
-  La manera más fácil de especificar una política avanzada es empezar por crear una política simple mediante la pantalla de la IU. A continuación, pulse el botón **Política avanzada**, que rellena automáticamente una versión de JSON de la política con los mismos miembros y reglas que se establecen en la política simple. A continuación, puede editar el JSON para grabar una versión más avanzada. Para obtener más información sobre cómo escribir políticas de aprobación en JSON, consulte la [documentación del SDK de nodo de Hyperledger Fabric![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://fabric-sdk-node.github.io/global.html#ChaincodeInstantiateUpgradeRequest). <!--You can also find examples of advanced endorsement policies in the main [Hyperledger Fabric documentation![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/latest/arch-deep-dive.html#example-endorsement-policies)-->
+  La manera más fácil de especificar una política avanzada es empezar por crear una política simple mediante la pantalla de la IU. A continuación, pulse el botón **Política avanzada**, que rellena automáticamente una versión de JSON de la política con los mismos miembros y reglas que se establecen en la política simple. A continuación, puede editar el JSON para grabar una versión más avanzada. Para obtener más información sobre cómo escribir políticas de aprobación en JSON, consulte la [documentación del SDK de nodo de Hyperledger Fabric![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://fabric-sdk-node.github.io/global.html#ChaincodeInstantiateUpgradeRequest). <!--You can also find examples of advanced endorsement policies in the main [Hyperledger Fabric documentation![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/arch-deep-dive.html#example-endorsement-policies)-->
 
   ![Política de aprobación avanzada](../images/advanced_endorsement.png "Política de aprobación avanzada")
+
+Las políticas de aprobación no se actualizan automáticamente cuando nuevas organizaciones se unen al canal e instalan el código de encadenamiento. Por ejemplo, si la política requiere que dos de cinco organizaciones aprueben una transacción, la política no se actualizará para que necesite dos de seis organizaciones cuando una nueva organización se una al canal. En su lugar, la nueva organización no aparecerá en la política y no se podrán aprobar las transacciones. Puede añadir una nueva organización a una política de aprobación actualizando el código de encadenamiento correspondiente.
 
 ## Actualización de un código de encadenamiento
 
@@ -83,6 +87,6 @@ Puede actualizar un código de encadenamiento para cambiar la programación del 
 
   ![Actualizar código de encadenamiento](../images/upgrade_chaincode.png "Actualizar código de encadenamiento")
 
-2. Busque el nuevo código de encadenamiento en la tabla y pulse el botón **Actualizar** bajo la cabecera **Acción**. Esta acción vuelve a instanciar el código de encadenamiento y sustituye el contenedor del código de encadenamiento por uno nuevo. Observe que no tiene que especificar ningún argumento nuevo como parte de la función de actualización. Esta acción de actualización tiene lugar en el canal, y solo es necesario que la realice una organización.
+2. Busque el nuevo código de encadenamiento en la tabla y pulse el botón **Actualizar** bajo la cabecera **Acción**. Esta acción vuelve a instanciar el código de encadenamiento y sustituye el contenedor del código de encadenamiento por uno nuevo. Al pulsar el botón **Actualizar**, tiene la oportunidad de actualizar la política de aprobación del código de encadenamiento, lo cual es importante si se ha añadido una organización recientemente al canal. Observe que no tiene que especificar ningún argumento nuevo como parte de la función de actualización. Esta acción de actualización tiene lugar en el canal, y solo es necesario que la realice una organización.
 
   ![Botón de actualización](../images/upgrade_button.png "Botón de actualización")
