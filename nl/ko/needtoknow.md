@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-31"
+lastupdated: "2018-10-30"
 ---
 
 {:new_window: target="_blank"}
@@ -26,7 +26,9 @@ lastupdated: "2018-08-31"
 IBM은 오랜 시간 혁신의 선두 자리를 지켜왔으며 {{site.data.keyword.Bluemix_notm}}에서 {{site.data.keyword.blockchainfull_notm}} 오퍼링 플랜을 통해 여전히 그 역할을 계속하고 있습니다. {{site.data.keyword.blockchain}}은 금융 산업, 로컬 및 글로벌 공급 체인과 많은 비즈니스 영역에서 업무 조직에 관한 지원을 중단하도록 보호되는 기술입니다. 다양한 조기 도입 프로그램을 통해 IBM 고객 및 비즈니스 파트너는 산업용 솔루션으로서 블록체인을 활발하게 이용해 오고 있습니다. {{site.data.keyword.blockchainfull_notm}} on {{site.data.keyword.Bluemix_notm}}가 그러한 프로그램 중 하나입니다. **다른 새 기술의 경우와 같이 {{site.data.keyword.blockchainfull_notm}} on {{site.data.keyword.Bluemix_notm}} 사용자는 신속하고 근본적인 변화의 가능성에 대해 인지하고 있어야 합니다.**  
 {:shortdesc}
 
-{{site.data.keyword.blockchainfull_notm}}을 뒷받침하는 아키텍처는 Linux Foundation의 Hyperledger Fabric 프로젝트입니다. 각 오픈 소스 커뮤니티의 기여를 통해 Hyperledger Fabric이 개선되지만 적용에 어려움이 있을 수 있습니다. **IBM은 Hyperledger Fabric Blockchain 네트워크에서 금융 자산을 직접 정의하거나 교환하는 것에 대해 경고하고 있습니다**.  
+{{site.data.keyword.blockchainfull_notm}}을 뒷받침하는 아키텍처는 Linux Foundation의 Hyperledger Fabric 프로젝트입니다. 각 오픈 소스 커뮤니티의 기여를 통해 Hyperledger Fabric이 개선되지만 적용에 어려움이 있을 수 있습니다. **IBM은 Hyperledger Fabric 블록체인 네트워크에서 금융 자산을 직접 정의하거나 교환하는 것에 대해 경고하고 있습니다**.  
+
+IBM은 데모와 개념 증명을 위해 단독으로 Hyperledger Composer를 사용할 것을 권장합니다. **IBM은 Composer CLI, JavaScript API, REST 서버 및 Web Playground를 포함한 프로덕션에서 Hyperledger Composer를 사용하여 네트워크에 대한 지원을 제공하지 않습니다**.
 
 ## 오픈 소스 설명
 

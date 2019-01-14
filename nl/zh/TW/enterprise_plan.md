@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-31"
+lastupdated: "2018-12-07"
 
 ---
 
@@ -18,18 +18,18 @@ lastupdated: "2018-08-31"
 ***[此頁面有幫助嗎？請告訴我們。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 
-針對想要建立或加入區塊鏈網路以從事實際商業活動的組織，「{{site.data.keyword.blockchainfull}} 平台企業方案」是可用於正式作業的供應項目。此方案提供金鑰基礎架構，附有工具和支援，可輕鬆啟動高度安全且可用於正式作業的網路。2018 年 5 月 15 日，「企業方案」會從 Hyperledger Fabric 1.0 版升級至 1.1 版。在 2018 年 5 月 15 日之後建立的所有網路都是 Fabric 1.1 版層次。不過，先前建立的網路將會保留為 Fabric 1.0 版層次。
+針對想要建立或加入區塊鏈網路以從事實際商業活動的組織，{{site.data.keyword.blockchainfull}} Platform 企業方案是可用於正式作業的供應項目。此方案提供金鑰基礎架構，附有工具和支援，可輕鬆啟動高度安全且可用於正式作業的網路。2018 年 5 月 15 日，「企業方案」會從 Hyperledger Fabric 1.0 版升級至 1.1 版。在 2018 年 5 月 15 日之後建立的所有網路都是 Fabric 1.1 版層次。不過，先前建立的網路將會保留為 Fabric 1.0 版層次。
 {:shortdesc}
 
 **附註：**
-- 「{{site.data.keyword.blockchainfull_notm}} 平台企業方案」提供正式作業環境。如果您需要開發及測試環境，請參閱[關於入門範本方案](starter_plan.html)。
-- 「{{site.data.keyword.blockchainfull_notm}} 平台」是 {{site.data.keyword.cloud_notm}} 上的平台服務，而且所有成員資格供應項目都遵循服務水準合約 (SLA) 上的 [{{site.data.keyword.cloud_notm}} 服務條款 ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](https://www-03.ibm.com/software/sla/sladb.nsf/sla/bm-6605-13 "{{site.data.keyword.cloud_notm}} 服務條款")。「企業方案」網路跨**多個環境**在不同地理位置的資料中心進行佈建。
+- {{site.data.keyword.blockchainfull_notm}} Platform 企業方案提供正式作業環境。如果您需要開發及測試環境，請參閱[關於入門範本方案](starter_plan.html)。
+- {{site.data.keyword.blockchainfull_notm}} Platform 是 {{site.data.keyword.cloud_notm}} 上的平台服務，而且所有成員資格供應項目都遵循服務水準合約 (SLA) 上的 [{{site.data.keyword.cloud_notm}} 服務條款 ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](https://www-03.ibm.com/software/sla/sladb.nsf/sla/bm-6605-13 "{{site.data.keyword.cloud_notm}} 服務條款")。「企業方案」網路跨**多個環境**在不同地理位置的資料中心進行佈建。
 
-IBM 為即將起始網路的成員提供圖形使用者介面，可引導網路起始者完成設定及佈建網路的重要步驟。其中包括邀請其他成員及設定控管規則。如需相關資訊，請參閱[控管企業方案網路](get_start.html)。網路部署完成之後，即可使用互動式圖形使用者介面（網路監視器）來監視網路的性能和活動；管理重要的網路活動，包括新的部署、新增或移除成員、鏈碼生命週期和頻道管理；以及尋求技術支援。如需「網路監視器」的相關資訊，請參閱[操作企業方案網路](v10_dashboard.html)。
+IBM 為即將起始網路的成員提供圖形使用者介面，可引導網路起始者完成設定及佈建網路的重要步驟。其中包括邀請其他成員及設定控管規則。如需相關資訊，請參閱[控管企業方案網路](get_start.html)。網路部署完成之後，即可使用互動式圖形使用者介面（網路監視器）來監視網路的性能和活動；管理重要的網路活動，包括新的部署、新增或移除成員、鏈碼生命週期和頻道管理；以及尋求技術支援。如需相關資訊，請參閱[使用網路監視器](v10_dashboard.html)。
 
 立即註冊您的 [{{site.data.keyword.blockchainfull_notm}} 成員資格 ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps)。
 
-「{{site.data.keyword.blockchainfull_notm}} 平台」是以重要的 Hyperledger Fabric 元件建置而成，其中包括「憑證管理中心 (CA)」，以及至少 1 個對等節點（最多 6 個）。「企業方案」也為網路成員提供損毀容錯 (CFT) Kafka 排序服務。
+{{site.data.keyword.blockchainfull_notm}} Platform 是以重要的 Hyperledger Fabric 元件建置而成，其中包括「憑證管理中心 (CA)」，以及至少 1 個對等節點（最多 6 個）。「企業方案」也為網路成員提供損毀容錯 (CFT) Kafka 排序服務。
 
 Fabric CA 是隨附於「企業方案」的憑證管理中心。針對每個成員，會各提供兩個中繼 CA，以授予網路的成員資格。成員也可以使用 CA 來提供成員資格（憑證）給網路的使用者。
 

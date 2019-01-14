@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-31"
+lastupdated: "2018-09-27"
 
 ---
 
@@ -32,9 +32,9 @@ Fai clic sul pulsante **Nuovo canale** nella schermata "Canali" del tuo Monitora
 2. Invita qualsiasi combinazione di membri della tua rete selezionandoli e facendo clic sul pulsante **Add Member**. Personalizza le autorizzazioni assegnando i ruoli per ciascuno dei membri invitati e fai clic su **Avanti**.
 ![Creazione di un canale 2](../images/create_channel_2.png "Creazione di un canale pannello 2")
 
-    * Un operatore del canale può interrogare mediante query o aggiornare il libro mastro del canale. L'operatore del canale dispone dell'autorizzazione ad accettare (**Accetta**) o rifiutare (**Rifiuta**) una richiesta di creazione di un canale e di inoltrare una richiesta di aggiornamento del canale. Ci deve essere almeno un **Operatore** in ciascun canale.
-    * Uno scrittore di canale può aggiornare il libro mastro del canale.
-    * Un lettore del canale può solo interrogare mediante query il libro mastro del canale.
+    * Un operatore del canale può interrogare mediante query o aggiornare il libro mastro del canale. Un operatore del canale dispone dell'autorizzazione ad accettare (**Accetta**) o rifiutare (**Rifiuta**) una richiesta di creazione di un canale e di inoltrare una richiesta di aggiornamento del canale. Ci deve essere almeno un **Operatore** in ciascun canale.
+    * Uno scrittore del canale può aggiornare il libro mastro del canale, ad esempio richiamando una funzione chaincode. Uno scrittore del canale può anche istanziare un chaincode su un canale.
+    * Un lettore del canale può solo interrogare mediante query il libro mastro del canale, ad esempio richiamando una funzione chaincode in sola lettura.
 
 3. Configura la politica di aggiornamento del canale selezionando il numero di operatori del canale per l'approvazione di una richiesta di aggiornamento del canale e fai clic su **Invia richiesta**.
   ![Creazione di un canale 3](../images/create_channel_3.png "Creazione di un canale pannello 3")
@@ -71,3 +71,6 @@ Tutti i membri del canale riceveranno notifiche email relative alla richiesta di
 * Anche gli scrittori o i lettori del canale esistenti ricevono notifiche email sull'aggiornamento del canale. Possono trovare la richiesta con lo stato _Non richiesto_ nella schermata **Notifiche** del Monitoraggio della rete.
 
 Quando un numero sufficiente di operatori del canale concorda sulla richiesta, uno qualsiasi dei membri del canale può fare clic sul pulsante **Invia richiesta** e il canale viene aggiornato. Tutti i membri del canale possono trovare il canale aggiornato nella schermata "Canali" del Monitoraggio della rete.
+
+**Importante:**
+Le politiche di approvazione non vengono aggiornate automaticamente quando delle nuove organizzazioni si uniscono al canale e installano il chaincode. Ad esempio, se la politica richiede due delle cinque organizzazioni per approvare una transazione, la politica non sarà aggiornata per richiedere due delle sei organizzazioni quando una nuova organizzazione si unisce al canale. Invece, la nuova organizzazione non sarà elencata sulla politica e non potrà approvare le transazioni. Puoi aggiungere una nuova organizzazione a una politica di approvazione [aggiornando il chaincode pertinente](install_instantiate_chaincode.html#updating-a-chaincode). Per ulteriori informazioni, vedi [Specifica delle politiche di approvazione del chaincode](install_instantiate_chaincode.html#endorsement-policy).

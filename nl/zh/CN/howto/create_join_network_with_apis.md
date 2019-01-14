@@ -128,7 +128,7 @@ https://ibmblockchain-v2-tor.1.secure.blockchain.ibm.com/api/v1/networks
 - `location_id`：可用网络位置的标识。指定在[检查可用网络位置](#check-location)中记下的 `location_id` 的值。
 - `company_name`：作为网络中成员的标识。
 - `email`：用于接收通知的电子邮件地址。
-- `peers`：要针对此成员创建的同级的数量。有效值为 0 - 6。您还可以稍后在“网络监视器”UI 中为成员创建同级。
+- `peers`：要针对此成员创建的同级的数量。有效值为 0 - 6。您还可以稍后在“网络监视器 UI”中为成员创建同级。
 - `ledger_type`：此网络的分类帐的类型。有效值为 levelDB 和 couchDB。**levelDB** 是缺省值。
 
 

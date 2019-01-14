@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-31"
+lastupdated: "2018-12-07"
 
 ---
 
@@ -25,7 +25,7 @@ lastupdated: "2018-08-31"
 - {{site.data.keyword.blockchainfull_notm}} Platform piano Enterprise fornisce un ambiente di produzione. Se hai bisogno di un ambiente di sviluppo e test, vedi [Informazioni su piano Starter](starter_plan.html).
 - {{site.data.keyword.blockchainfull_notm}} Platform è un servizio di piattaforma su {{site.data.keyword.cloud_notm}} e tutte le offerte di adesione seguono i [termini dei servizi {{site.data.keyword.cloud_notm}} ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://www-03.ibm.com/software/sla/sladb.nsf/sla/bm-6605-13 "{{site.data.keyword.cloud_notm}} - Termini dei servizi") sugli SLA (service level agreement). Le reti piano Enterprise vengono fornite in **più ambienti** in data center geograficamente separati.
 
-Per i membri che inizieranno la rete, IBM fornisce un'interfaccia grafica utente (GUI) per assistere passo dopo passo l'iniziatore della rete nelle procedure chiave per configurare la rete e fornirla. Ciò include l'invito di altri membri e l'impostazione delle regole di governance. Per ulteriori informazioni, vedi [Governance della rete piano Enterprise](get_start.html). Dopo che la rete è stata distribuita, è disponibile un'interfaccia grafica utente (GUI), il Monitoraggio della rete, per monitorare lo stato e l'attività della rete, gestire le attività di rete chiave tra cui le nuove distribuzioni, l'aggiunta o la rimozione di membri, il ciclo di vita del chaincode e la gestione dei canali e per cercare assistenza tecnica. Per ulteriori informazioni sul Monitor Network, vedi [Gestione della rete piano Enterprise](v10_dashboard.html).
+Per i membri che inizieranno la rete, IBM fornisce un'interfaccia grafica utente (GUI) per assistere passo dopo passo l'iniziatore della rete nelle procedure chiave per configurare la rete e fornirla. Ciò include l'invito di altri membri e l'impostazione delle regole di governance. Per ulteriori informazioni, vedi [Governance della rete piano Enterprise](get_start.html). Dopo che la rete è stata distribuita, è disponibile un'interfaccia grafica utente (GUI), il Monitoraggio della rete, per monitorare lo stato e l'attività della rete, gestire le attività di rete chiave tra cui le nuove distribuzioni, l'aggiunta o la rimozione di membri, il ciclo di vita del chaincode e la gestione dei canali e per cercare assistenza tecnica. Per ulteriori informazioni, consulta [Utilizzo del Monitoraggio della rete](v10_dashboard.html).
 
 Registrati ora per la tua [adesione a {{site.data.keyword.blockchainfull_notm}}![Icona link esterno](images/external_link.svg "Icona link esterno")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps).
 
@@ -40,7 +40,7 @@ La CA Fabric è l'Autorità di certificazione fornita con piano Enterprise. Sono
 
 I peer Fabric appartenenti ai membri sono l'interfaccia o il gateway per le applicazioni per eseguire il chaincode, fornendo la logica di business per eseguire le transazioni sul libro mastro.  Tutte le transazioni devono essere approvate. Gli altri membri della rete concedono questa approvazione. Dopo l'approvazione, le transazioni vengono inviate a un servizio ordini fornito da IBM (Kafka).
 
-Oltre ai componenti blockchain principali, l'opzione di adesione Enterprise fornisce un'infrastruttura con memorizzazione di dati e comunicazioni protetti (TLS) e un'elevata disponibilità.  Mentre le reti Fabric condividono queste risorse d'infrastruttura, viene fornito un isolamento per i nodi componente Fabric in una rete e ciascun nodo viene eseguito in un contenitore docker sicuro che protegge l'ambiente di esecuzione.
+Oltre ai componenti blockchain principali, l'opzione di adesione Enterprise fornisce un'infrastruttura con memorizzazione di dati e comunicazioni protetti (TLS) e un'elevata disponibilità.  Mentre le reti Fabric condividono queste risorse d'infrastruttura, viene fornito un isolamento per i nodi componente Fabric in una rete e ciascun nodo viene eseguito in un contenitore Docker sicuro che protegge l'ambiente di esecuzione.
 
 Il solo aspetto che deve essere determinato è la dimensione dei peer richiesta dalla rete. Questa decisione è basata sul numero di canali richiesti, più il carico di lavoro per canale, l'utilizzo della memoria e lo spazio su disco (memorizzazione).
 

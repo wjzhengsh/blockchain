@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-31"
+lastupdated: "2018-10-04"
 
 ---
 
@@ -22,14 +22,14 @@ Este tutorial mostra como visualizar e monitorar as informações de status de s
 {:shortdesc}
 
 
-## Peers de Monitoramento, Orderers e CAs
+## Peers de Monitoramento, Orderers e autoridades de certificação
 {: #monitor-nodes}
 
 É possível emitir uma solicitação de HTTP **HEAD** com relação a um de seus nós de rede para verificar o status do nó. Um nó de rede pode ser um peer, um solicitador ou uma autoridade de certificação em sua rede de blockchain. Uma solicitação de **HEAD** é semelhante a uma solicitação GET e envia apenas os cabeçalhos sem corpos. Será possível obter uma resposta 200 se o nó funcionar normalmente.
 
 1. Na tela "Visão geral" do Monitor de rede, clique em **Perfil de conexão**. Em seguida, é possível clicar em **JSON bruta** para visualizar o perfil de conexão em seu navegador da web ou clicar em **Download** para salvar o perfil de conexão localmente.
-2. No perfil de conexão, localize as informações da URL do nó de rede que você deseja verificar. Por exemplo, a URL do solicitador `fabric-orderer-20190b` é `grpcs://fft-zbc02b.4.secure.blockchain.ibm.com:20190`.  
-    ![Exemplo de URL do solicitador](../images/orderer_url.png "Exemplo de URL do solicitador")
+2. No perfil de conexão, localize as informações da URL do nó de rede que você deseja verificar. Por exemplo, a URL do solicitador `fabric-orderer-20190b` é `grpcs://fft-zbc02b.4.secure.blockchain.ibm.com:20190`.
+![Exemplo de URL do solicitador](../images/orderer_url.png "Exemplo de URL do solicitador")
 3. Substitua **grpcs** por **https** na URL. No exemplo acima, a URL torna-se `https://fft-zbc02b.4.secure.blockchain.ibm.com:20190`.
 4. Emita a solicitação de **HEAD** com relação à URL com uma ferramenta como curl ou um app Chrome Postman.
     - Se você obtiver uma resposta de status 200, o seu nó de rede funcionará normalmente.
@@ -54,7 +54,7 @@ curl: (7) Failed to connect to fft-zbc02b.4.secure.blockchain.ibm.com:20190: Con
 ```
 {:codeblock}
 
-A figura a seguir mostra uma solicitação de **HEAD** com uma resposta 200 no app Chrome Postman.  
+A figura a seguir mostra uma solicitação de **HEAD** com uma resposta 200 no app Chrome Postman.
 
   ![Exemplo do Postman de solicitação de HEAD](../images/orderer_head_postman.png "Exemplo do Postman de solicitação de HEAD")
 
@@ -63,53 +63,53 @@ A tela "Visão geral" do Monitor de rede exibe o status de seu Serviço de solic
 
 Cada componente gera logs por meio de atividades diferentes. Isso porque cada componente desempenha funções diferentes na [arquitetura de rede ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/network/network.html) e nos [fluxos de transação ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.1/txflow.html) do Hyperledger Fabric.
 
-- ** Logs de Serviço de Ordenação **  
-  O Serviço de solicitação é o componente de ligação comum da rede de blockchain. Todas as propostas de transação endossadas dos peers, das atualizações de canal ou das atualizações de associação de rede são enviadas ao Serviço de solicitação para verificação. Portanto, o Serviço de solicitação contém logs de quando a rede foi iniciada. Ele também contém logs para uma transação que foi rejeitada porque não era adequadamente endossada pelas organizações corretas. Também é possível localizar logs de quando os canais são criados ou atualizados ou de quando uma atualização de canal falha.
+- **Logs de serviço de ordenação**
+ O Serviço de Ordenação é o componente de ligação comum da rede de blockchain. Todas as propostas de transação endossadas dos peers, das atualizações de canal ou das atualizações de associação de rede são enviadas ao Serviço de solicitação para verificação. Portanto, o Serviço de solicitação contém logs de quando a rede foi iniciada. Ele também contém logs para uma transação que foi rejeitada porque não era adequadamente endossada pelas organizações corretas. Também é possível localizar logs de quando os canais são criados ou atualizados ou de quando uma atualização de canal falha.
 
-- ** Logs de autoridade de certificação **  
-  A Autoridade de certificação gerencia a identidade dos participantes dentro da rede. Nos logs de Autoridade de certificação, é possível localizar logs de quando os participantes geram chaves públicas e privadas para se comunicar com a rede (inscrever-se), ou quando novos membros, peers ou aplicativos se registram com a Autoridade de certificação. Também será possível usar os logs de CA para depuração se houver problemas com a verificação de certificado.
+- **Logs da autoridade de certificação**
+  A Autoridade de Certificação gerencia a identidade dos participantes na rede. Nos logs de Autoridade de certificação, é possível localizar logs de quando os participantes geram chaves públicas e privadas para se comunicar com a rede (inscrever-se), ou quando novos membros, peers ou aplicativos se registram com a Autoridade de certificação. Também será possível usar os logs de CA para depuração se houver problemas com a verificação de certificado.
 
 - ** Logs de Peer **  
-  Os logs de peer contêm os resultados da instalação, da instanciação e da chamada de chaincode. É possível procurar um nome e uma versão de chaincode para localizar os logs de um certo chaincode. Também é possível ver os logs de um chaincode específico na [seção de chaincode do monitor de canal](#monitor-channel-cc). As mensagens, geradas por suas propostas de transação, ou quaisquer problemas de tempo limite com suas solicitações de proposta, podem ser localizadas nos logs de peer. Também é possível localizar os resultados das solicitações de junção de canal.
+  Os logs de peer contêm os resultados da instalação, da instanciação e da chamada de chaincode. É possível procurar um nome e uma versão de chaincode para localizar os logs de um certo chaincode. Também é possível ver os logs de um chaincode específico na [seção de chaincode do monitor de canal](#monitor-channel-cc). As mensagens, geradas por suas propostas de transação, ou quaisquer problemas de tempo limite com suas solicitações de proposta, podem ser localizadas nos logs de peer. Os logs de peer também contêm erros de transações que foram rejeitadas para não atender à [política de aprovação do chaincode](install_instantiate_chaincode.html#endorsement-policy). Também é possível localizar os resultados das solicitações de junção de canal.
 
 O Hyperledger Fabric fornece diferentes [níveis de criação de log ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.1/logging-control.html "controle de criação de log") com base na gravidade da mensagem. O nível de criação de log padrão no {{site.data.keyword.blockchainfull_notm}} Platform é `INFO`. Para visualizar logs adicionais, é possível abrir um [chamado de suporte](../ibmblockchain_support.html#submitting-support-cases) para configurar o nível de criação de log para o nível `DEBUG` mais detalhado. Esteja ciente de que os logs de nível `DEBUG` exibem uma grande quantia de mensagens de fofoca que podem precisar ser filtradas. Procure `warning` ou `error` em suas mensagens para detectar problemas por meio dos componentes do Hyperledger Fabric. Para detectar se o contêiner do componente falha ou é encerrado, procure por mensagens `panic` ou `killed` enviadas pelo {{site.data.keyword.cloud_notm}}.
 
 ## Visualizando logs no Kibana no Starter Plan
-Os logs de sua rede do Starter Plan são reunidos pelo [serviço {{site.data.keyword.cloud_notm}} Log Analysis![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://console.bluemix.net/catalog/services/log-analysis "serviço Log Analysis"). Por padrão, os seus logs são coletados pelo Plano Lite do serviço de Análise do log. Esse plano é grátis e **armazena seus logs por 3 dias** antes de descartá-los. Ele também permite que você **procure somente os primeiros 500 MB de seus logs por dia**. Se os logs de rede excederem 500 MB, não será possível visualizar novos logs no Kibana. Se a sua rede gerar mais de 500 MB de logs ou você quiser reter os logs por mais de 3 dias, será possível fazer upgrade para uma versão paga do Serviço Log Analysis.
+Os logs de sua rede do Starter Plan são reunidos pelo [serviço {{site.data.keyword.cloud_notm}} Log Analysis![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://console.bluemix.net/catalog/services/log-analysis "serviço Log Analysis"). Por padrão, os seus logs são coletados pelo Plano Lite do serviço de Análise do log. Esse plano é gratuito e **armazena seus logs por três dias** antes de descartá-los. Ele também permite que você **procure somente os primeiros 500 MB de seus logs por dia**. Se os logs de rede excederem 500 MB, não será possível visualizar novos logs no Kibana. Se a sua rede gerar mais de 500 MB de logs ou você desejar reter seus logs por mais de três dias, será possível fazer upgrade para uma versão paga do Serviço de Análise do Log.
 
 Na tela "Visão geral" do Monitor de rede, clique em **Visualizar logs** na lista suspensa no cabeçalho **Ações** para abrir os logs de cada componente de rede na interface do Kibana. Quando o Kibana é aberto, ele exibe logs que são filtrados por uma barra de procura na parte superior. Por exemplo, ao clicar para visualizar os logs de peer, a procura é filtrada por seu ID de rede e ID de peer: `NETWORK_ID_str:"nf8389d520c243004bb21ff5d70fc8939" && NODE_NAME_str:"org1-peer1"`. Será possível inserir um campo adicional na barra de procura se desejar visualizar logs mais específicos. Por exemplo, é possível incluir `&& "marbles"` para exibir os logs do chaincode `"marbles"`. Excluir o termo de componente específico e procurar apenas com o ID de rede, por exemplo, `NETWORK_ID_str:"nf8389d520c243004bb21ff5d70fc8939"`, exibe os logs de todos os componentes de rede.
 
 É possível usar o botão de intervalo de tempo no canto superior direito para mudar o período em que os logs são exibidos. Também é possível usar a guia no lado esquerdo da tela para incluir e remover campos da procura. O campo mais importante a ser exibido é o campo da mensagem. Pode ser útil procurar com uma mensagem sem o registro de data e hora para localizar todas as instâncias desse log de mensagens. Clique no botão **Salvar** para salvar sua procura atual e retornar para uma visualização específica. Para obter mais informações sobre como exibir dados no Kibana, consulte [Guia do Usuário do Kibana ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://www.elastic.co/guide/en/kibana/6.2/index.html "Guia do Usuário do Kibana"). Também é possível [fazer download de seus logs](https://console.bluemix.net/docs/services/CloudLogAnalysis/how-to/manage-logs/downloading_logs_cloud.html#downloading_logs) para seu sistema de arquivos local usando a CLI do Log Analysis.
 
-**Nota:** por padrão, o Kibana vem pré-configurado para mostrar logs a partir dos 30 dias de atividade. Se não houve atividade nos últimos 30 dias, você verá uma mensagem informando *Nenhum resultado localizado*. Para visualizar outros logs, é possível clicar no ícone de cronômetro no canto superior direito sob seu nome de usuário e configurar um intervalo de tempo mais amplo, como *Início do ano até hoje*.  
+**Nota:** por padrão, o Kibana vem pré-configurado para mostrar logs a partir dos 30 dias de atividade. Se não houve atividade nos últimos 30 dias, você verá uma mensagem informando *Nenhum resultado localizado*. Para visualizar outros logs, é possível clicar no ícone de cronômetro no canto superior direito sob seu nome de usuário e configurar um intervalo de tempo mais amplo, como *Início do ano até hoje*.
 
 ## Monitorando canais
 {: #monitor-channnels}
 
-Entre no Monitor de Rede e localize o canal que você deseja visualizar e monitorar na tela "Canal".  Na tela do canal específico, é possível visualizar as informações de status dos dados, os membros e o chaincode instanciado deste canal em três guias:
+Entre no Monitor de Rede e localize o canal que você deseja visualizar e monitorar na tela "Canal". Na tela do canal específico, é possível visualizar as informações de status dos dados, os membros e o chaincode instanciado deste canal em três guias:
 
 ### Visão Geral do Canal
 {: #monitor-channel-overview}
 
 A guia "Visão Geral do Canal" mostra as informações de bloco nesse canal:
-  * Uma série de pontos de dados, que incluem o número total de blocos que são criados, o intervalo de tempo desde a última transação, o número de instanciações de chaincode e o número de chamadas de chaincode.
-  * Uma tabela que lista todos os blocos neste canal.  Expanda um bloco e você poderá visualizar as informações detalhadas sobre o bloco.  
+  * Uma série de pontos de dados, que incluem o número total de blocos que foram criados, o intervalo de tempo desde a última transação, o número de instanciações de chaincode e o número de chamadas de chaincode.
+  * Uma tabela que lista todos os blocos neste canal. Expanda um bloco e você poderá visualizar as informações detalhadas sobre o bloco.
 
-  ![Visão geral do canal](../images/channel_overview_detail.png "Visão geral do canal")  
+  ![Visão geral do canal](../images/channel_overview_detail.png "Visão geral do canal")
 
-### Membros  
+### Membros
 {: #monitor-channel-members}
 
 A guia "Membros" mostra as informações dos membros neste canal, incluindo os endereços de e-mail para os operadores organizacionais.
 
-  ![Channel members](../images/channel_members.png "Channel members")  
+  ![Channel members](../images/channel_members.png "Channel members")
 
 ### Chaincode
 {: #monitor-channel-cc}
 
-A guia "Chaincode" lista todos os chaincodes que são instanciados nesse canal com o ID do chaincode, a versão e o número de peers que estão executando o chaincode.   
+A guia "Chaincode" lista todos os chaincodes que são instanciados nesse canal com o ID do chaincode, a versão e o número de peers que estão executando o chaincode.
 
-Expanda uma linha de chaincode para obter informações detalhadas sobre o chaincode:  
+Expanda uma linha de chaincode para obter informações detalhadas sobre o chaincode:
   * É possível clicar em **JSON** para visualizar o arquivo JSON do chaincode.
   * É possível clicar em **Logs** para visualizar logs do chaincode. Essa visualização exibe os logs de quais peers você instalou o chaincode e são filtrados com o nome e a versão do chaincode.
 

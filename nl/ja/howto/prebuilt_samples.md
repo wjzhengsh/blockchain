@@ -16,7 +16,7 @@ lastupdated: "2018-08-31"
 {: #overview}
 
 
-***[このページは参考になりましたか。ご意見をお聞かせください。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+***[このページは参考になりましたか。 ご意見をお聞かせください。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 
 {{site.data.keyword.blockchainfull}} Platform には、ブロックチェーン・ネットワークとアプリケーション開発をより深く理解できるように、デプロイしたりテストしたりといった操作ができるサンプル・アプリケーションが用意されています。

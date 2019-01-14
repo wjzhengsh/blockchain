@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-31"
+lastupdated: "2018-12-07"
 
 ---
 
@@ -40,8 +40,9 @@ Las redes del Plan empresarial ofrecen las siguientes características preparada
 Antes de migrar su red del Plan inicia a una red del Plan empresarial, lea las siguientes consideraciones.
 
 - **Precios:** el coste mensual para su organización de utilizar una red del Plan empresarial incluye 1000 $ de cuota de miembro por instancia a y 1000 $ de cuota por igual. Para obtener más información, consulte [Precios del Plan empresarial](pricing.html#enterprise-plan-pricing).
-- **Versión de Hyperledger Fabric:** las redes del Plan empresarial se ejecutan en Hyperledger Fabric v1.1.  
-- **Recursos afectados:** código de encadenamiento (contratos inteligentes), definiciones de red de negocio, aplicaciones cliente.
+- **Versión de Hyperledger Fabric:** las redes del Plan empresarial se ejecutan en Hyperledger Fabric v1.1. Las redes del Plan inicial se ejecutan en Fabric v1.2. Un componente como, por ejemplo, los
+[Datos privados](https://hyperledger-fabric.readthedocs.io/en/release-1.2/private-data/private-data.html) (es decir, un código de encadenamiento desarrollado para utilizar datos privados), que funciona con una red del Plan inicial, no funcionará en el Plan empresarial.
+- **Recursos afectados:** código de encadenamiento (contratos inteligentes), definiciones de red de negocio, aplicaciones cliente. De nuevo, tenga en cuenta si el código de encadenamiento hace uso de un componente de Fabric v1.2 o de una función que no es compatible con las redes v1.1.
 - **Tiempo necesario: ** tardará al menos medio día en migrar una red básica del Plan inicial a un Plan empresarial.
 - Los **datos existentes del libro mayor** no se pueden pasar de redes del Plan inicial a redes del Plan empresarial porque no resulta adecuado que los datos de prueba existan en un entorno de producción.
 
@@ -79,7 +80,8 @@ Si ha utilizado Hyperledger Composer para definir una red de negocio y ha desple
 Puede volver a crear la configuración de las organizaciones (miembros), canales e iguales de la red del Plan inicial en la red del Plan empresarial. Puede utilizar la interfaz de usuario del supervisor de red para volver a crear estos recursos de red invitando a las organizaciones adecuadas (tenga en cuenta que no podrá **cambiar** las organizaciones como en el Plan inicial), crear canales y crear iguales (de nuevo, las organizaciones invitadas tendrán que crear sus propios iguales).
 
 1. Inicie una sesión en la red del Plan empresarial en {{site.data.keyword.cloud_notm}} y entre en el supervisor de red.
-2. Vuelva a crear las organizaciones (miembros) en la pantalla "Miembros", vuelva a crear los canales en la pantalla "Canales" y vuelva a crear los pares en la pantalla "Visión general". Para obtener más información sobre cómo crear recursos de red, consulte [Cómo trabajar con la red del Plan empresarial](../v10_dashboard.html#overview).
+2. Vuelva a crear las organizaciones (miembros) en la pantalla "Miembros", vuelva a crear los canales en la pantalla "Canales" y vuelva a crear los pares en la pantalla "Visión general". Para obtener más información sobre la creación de recursos de red, consulte
+[Utilización del supervisor de red](../v10_dashboard.html#overview).
 3. Configure los canales añadiendo miembros y estableciendo políticas de canal de la misma manera que en la red del Plan inicial.
 
 **Nota:** para conseguir alta disponibilidad, debe crear al menos dos iguales para su organización, unirlos al mismo canal y codificar las aplicaciones de cliente correctamente para pasar de un igual al otro cuando sea necesario.

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-31"
+lastupdated: "2018-12-07"
 
 ---
 
@@ -13,7 +13,7 @@ lastupdated: "2018-08-31"
 {:pre: .pre}
 {:tip: .tip}
 
-# Desarrollar la red
+# Desarrollo de redes empresariales
 {: #develop-the-network}
 
 
@@ -23,7 +23,7 @@ lastupdated: "2018-08-31"
 El desarrollo de soluciones de blockchain mediante la plataforma {{site.data.keyword.blockchainfull}} aprovecha el conjunto de herramientas de desarrollo de código abierto de Hyperledger Composer. Hyperledger Composer utiliza un lenguaje de modelado adaptado, que se combina con transacciones JavaScript y reglas de control de acceso para modelar una red empresarial de blockchain por completo _antes_ de desplegar nada en una red blockchain real.
 {:shortdesc}
 
-**Nota**: el Plan inicial proporciona aplicaciones de ejemplo que puede probar y de las que puede aprender. Puede ejecutar aplicaciones de ejemplo en el Plan inicial antes de desarrollar su red empresarial personalizada. Para obtener más información, consulte [Acerca del Plan inicial](starter_plan.html).
+**Nota:** el Plan inicial proporciona aplicaciones de ejemplo que puede probar y de las que puede aprender. Puede ejecutar aplicaciones de ejemplo en el Plan inicial antes de desarrollar su red empresarial personalizada. Para obtener más información, consulte [Acerca del Plan inicial](starter_plan.html).
 
 Este documento le guía por el proceso de desarrollo de una solución {{site.data.keyword.blockchain}} que empieza por crear y modelar una red empresarial y la despliega en una red blockchain en ejecución.
 

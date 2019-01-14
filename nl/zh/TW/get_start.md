@@ -20,10 +20,10 @@ lastupdated: "2018-08-31"
 ***[此頁面有幫助嗎？請告訴我們。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 
-「{{site.data.keyword.blockchainfull}} 平台企業方案」提供具有高度安全性、完整性、可調整性及效能的區塊鏈網路。您可以快速佈建全功能的網路，並使用「網路監視器」（這是一個 GUI 儀表板）來立即執行[鏈碼](glossary.html#chaincode)和應用程式，而不需要從頭開始設計及配置網路。
+{{site.data.keyword.blockchainfull}} Platform 企業方案提供具有高度安全性、完整性、可調整性及效能的區塊鏈網路。您可以快速佈建全功能的網路，並使用「網路監視器」（這是一個 GUI 儀表板）來立即執行[鏈碼](glossary.html#chaincode)和應用程式，而不需要從頭開始設計及配置網路。
 {:shortdesc}
 
-**附註**：「{{site.data.keyword.blockchainfull_notm}} 平台企業方案」提供正式作業環境。如果您需要開發及測試環境，請參閱[關於入門範本方案](starter_plan.html)。
+**附註**：{{site.data.keyword.blockchainfull_notm}} Platform 企業方案提供正式作業環境。如果您需要開發及測試環境，請參閱[關於入門範本方案](starter_plan.html)。
 
 此指導教學介紹所需遵循的必要條件和步驟，以在 IBM 的高可用性安全環境中管理「企業方案」網路。  
 
@@ -36,9 +36,9 @@ lastupdated: "2018-08-31"
 
 
 ## 建立網路
-開始之前，您需要在 {{site.data.keyword.Bluemix_notm}} 上建立「[{{site.data.keyword.blockchain}} 平台」服務實例 ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](https://console.bluemix.net/catalog/services/blockchain)。您需要使用您的 {{site.data.keyword.Bluemix_notm}} ID 登入。如果您沒有 ID，請按一下**註冊以建立**按鈕。將實例的服務和認證名稱重新命名，以便您未來能夠輕易辨識。選取您可以在其中部署 {{site.data.keyword.blockchain}} 網路的 {{site.data.keyword.Bluemix_notm}} 地區、組織和空間。然後從定價方案表格中選取**企業成員資格方案**，並按一下**建立**按鈕。  
+開始之前，您需要在 {{site.data.keyword.Bluemix_notm}} 上建立 [{{site.data.keyword.blockchain}} Platform 服務實例 ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](https://console.bluemix.net/catalog/services/blockchain)。您需要使用您的 {{site.data.keyword.Bluemix_notm}} ID 登入。如果您沒有 ID，請按一下**註冊以建立**按鈕。將實例的服務和認證名稱重新命名，以便您未來能夠輕易辨識。選取您可以在其中部署 {{site.data.keyword.blockchain}} 網路的 {{site.data.keyword.Bluemix_notm}} 地區、組織和空間。然後從定價方案表格中選取**企業成員資格方案**，並按一下**建立**按鈕。  
 
-您可以在 [{{site.data.keyword.Bluemix_notm}} 服務儀表板 ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](https://console.bluemix.net/dashboard/services "{{site.data.keyword.Bluemix_notm}} 服務儀表板") 中找到您的「{{site.data.keyword.blockchain}} 平台」服務實例。  
+您可以在 [{{site.data.keyword.Bluemix_notm}} 服務儀表板 ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](https://console.bluemix.net/dashboard/services "{{site.data.keyword.Bluemix_notm}} 服務儀表板") 中找到您的 {{site.data.keyword.blockchain}} Platform 服務實例。  
 
 如果您是網路起始者，請按一下**建立網路**按鈕，以起始 {{site.data.keyword.blockchain}} 網路。遵循精靈指示，完成網路和資源的基本配置。  
 ![建立網路精靈](images/create_network_name.png "建立網路精靈")  
@@ -61,9 +61,9 @@ lastupdated: "2018-08-31"
 
 
 ## 加入網路
-與建立網路類似，您需要在 {{site.data.keyword.Bluemix_notm}} 上建立「[{{site.data.keyword.blockchain}} 平台」服務實例 ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](https://console.bluemix.net/catalog/services/blockchain)。您需要使用您的 {{site.data.keyword.Bluemix_notm}} ID 登入。如果您沒有 ID，請按一下**註冊以建立**按鈕。將實例的服務和認證名稱重新命名，以便您未來能夠輕易辨識。選取您可以在其中部署 {{site.data.keyword.blockchain}} 網路的 {{site.data.keyword.Bluemix_notm}} 地區、組織和空間。然後從定價方案表格中選取**企業成員資格方案**，並按一下**建立**按鈕。
+與建立網路類似，您需要在 {{site.data.keyword.Bluemix_notm}} 上建立 [{{site.data.keyword.blockchain}} Platform 服務實例 ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](https://console.bluemix.net/catalog/services/blockchain)。您需要使用您的 {{site.data.keyword.Bluemix_notm}} ID 登入。如果您沒有 ID，請按一下**註冊以建立**按鈕。將實例的服務和認證名稱重新命名，以便您未來能夠輕易辨識。選取您可以在其中部署 {{site.data.keyword.blockchain}} 網路的 {{site.data.keyword.Bluemix_notm}} 地區、組織和空間。然後從定價方案表格中選取**企業成員資格方案**，並按一下**建立**按鈕。
 
-您可以在 [{{site.data.keyword.Bluemix_notm}} 服務儀表板 ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](https://console.bluemix.net/dashboard/services "{{site.data.keyword.Bluemix_notm}} 服務儀表板") 中找到您的「{{site.data.keyword.blockchain}} 平台」服務實例。
+您可以在 [{{site.data.keyword.Bluemix_notm}} 服務儀表板 ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](https://console.bluemix.net/dashboard/services "{{site.data.keyword.Bluemix_notm}} 服務儀表板") 中找到您的 {{site.data.keyword.blockchain}} Platform 服務實例。
 
 如果您是受邀的網路成員，請按一下**擱置邀請 ->** 按鈕，從下拉清單中選取您要加入的網路，然後按一下**加入網路！**按鈕。遵循精靈指示，檢視網路的網路基本配置，並配置您自己的網路資源。  
 ![加入網路精靈](images/join_network_name.png "加入網路精靈")  
@@ -106,7 +106,7 @@ lastupdated: "2018-08-31"
 
 
 ## 開發及部署自訂商業網路
-您可以使用「{{site.data.keyword.blockchainfull_notm}} 平台：開發」開發人員環境和 Hyperledger Composer 開發人員工具集，根據您的商業需求來開發商業網路。針對您的業務來開發網路之後，可以將您的商業網路部署至「企業方案」網路。
+您可以使用 {{site.data.keyword.blockchainfull_notm}} Platform: Develop 開發人員環境和 Hyperledger Composer 開發人員工具集，根據您的商業需求來開發商業網路。針對您的業務來開發網路之後，可以將您的商業網路部署至「企業方案」網路。
 
 如需相關資訊，請參閱[開發網路](develop.html)和[在企業方案上部署商業網路](develop_enterprise.html)。
 
