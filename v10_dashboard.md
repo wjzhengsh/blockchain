@@ -359,7 +359,7 @@ On the top of the left navigator in the Network Monitor, click the arrow icon be
 ## Reset network (for Starter Plan networks)
 {: #reset-network}
 
-Starter Plan networks offer the capability to edit your network configuration without deleting and re-creating a network. Your network is reset back to the initial network configuration, which includes two organizations, one peer per each organization, and a default channel. This is useful, for example, when you are running rounds of tests on the blockchain network, which allows you to start over from a clean network.
+Starter Plan networks offer the capability to edit your network configuration without deleting and re-creating a network. Your network is reset back to the initial network configuration, which includes two organizations, one peer per each organization, and a default channel. This is useful, for example, when you are running rounds of tests on the blockchain network and need to start over from a clean network.
 
 **Caution**: After you reset the network, the API endpoints of your peers, orderer, and CA are changed. You need to adjust API endpoint information in your applications.
 

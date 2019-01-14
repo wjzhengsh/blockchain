@@ -156,7 +156,7 @@ The following table lists the configurable parameters of the AWS chart and their
 |** IBM Blockchian Configuration** | |
 | `IBMBlockchainVersion` | IBM Blockchain version to deploy. | 1.2.1 |
 | `StateDatabase` | The type of database to use for storing blockchain state. This selection should match the State Database type used by the rest of the network. | CouchDB|
-| `PeerVolumeSize` | Size of the EBS Volume Size used to store persistent data (ledger, state database, MSP) for the peer in GBs. | 100 |
+| `PeerVolumeSize` | Size of the EBS Volume that is used to store persistent data (ledger, state database, MSP) for the peer in GBs. | 100 |
 | `Peer 1 enroll ID`| The Enroll ID you entered in your IBM Blockchain Platform UI Certificate Authority panel for your first peer. |  |
 | `Peer 1 enroll secret` | The Enroll Secret you entered in your IBM Blockchain Platform UI Certificate Authority panel for your first peer. | |
 | `Peer 2 enroll ID` | The Enroll ID you entered in your IBM Blockchain Platform UI Certificate Authority panel for your second peer. | |
@@ -216,7 +216,7 @@ If you are deploying the {{site.data.keyword.blockchainfull_notm}} Platform for 
 When the AWS CloudFormation template has successfully created the stack, two {{site.data.keyword.blockchainfull_notm}} Platform for AWS peer instances will be running in your AWS account. The instances will be named based on the combination of the `Organization MSP` and the `Peer enroll id` that is specified in the Quick Start template. For example, `org1-remotepeer1`.  
 
 ![Peer AWS EC2 Instances](../images/remote_peer_AWS_EC2_instances.png "Peer AWS EC2 Instances")  
-*Figure 3. Remote Peer on AWS EC2 instances*
+*Figure 3. Peer on AWS EC2 instances*
 
 To verify the peer is running:
 
@@ -253,7 +253,7 @@ Run the `peer channel fetch` CLI command to fetch the genesis block from the cha
    ```
    {:codeblock}
 
-   - Copy the orderers TLS certificate from the connections profile to the  peer. Navigate to the **orderers** section. Copy the certificate that follows "pem:", beginning with -----BEGIN CERTIFICATE----- and ending with -----END CERTIFICATE-----. Do not include the quotation marks. Run the following command from the command line, replacing `<orderer cert>` with the content you copied from the creds.json file.
+   - Copy the orderer's TLS certificate from the connections profile to the  peer. Navigate to the **orderers** section. Copy the certificate that follows "pem:", beginning with -----BEGIN CERTIFICATE----- and ending with -----END CERTIFICATE-----. Do not include the quotation marks. Run the following command from the command line, replacing `<orderer cert>` with the content you copied from the creds.json file.
 
    ```
    echo -e "<orderer cert>" > /etc/hyperledger/<PEER_ENROLL_ID>/orderer_tlscacert.pem
@@ -404,7 +404,7 @@ In IBP when a private key is created, two sets of independent key material is ge
 #### TLS
 {: #aws-security-tls}
 
-[Transport Layer Security ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/en/SSFKSJ_7.1.0/com.ibm.mq.doc/sy10660_.htm "An overview of the SSL or TLS handshake") (TLS) is embedded in the trust model of Hyperledger Fabric. All components on {{site.data.keyword.blockchainfull_notm}} Platform use TLS to communicate authenticate and communicate with each other. Therefore, the network components on {{site.data.keyword.blockchainfull_notm}} Platform need to be able to complete a TLS handshake with your  peers. One implication of this is that you need to enable passthru, by using white listing for example, in your firewall from client apps to your peer.
+[Transport Layer Security ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/en/SSFKSJ_7.1.0/com.ibm.mq.doc/sy10660_.htm "An overview of the SSL or TLS handshake") (TLS) is embedded in the trust model of Hyperledger Fabric. All components on {{site.data.keyword.blockchainfull_notm}} Platform use TLS to authenticate and communicate with each other. Therefore, the network components on {{site.data.keyword.blockchainfull_notm}} Platform need to be able to complete a TLS handshake with your  peers. One implication of this is that you need to enable passthru, by using white listing for example, in your firewall from client apps to your peer.
 
 
 #### Membership Service Provider configuration

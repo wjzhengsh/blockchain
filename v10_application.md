@@ -373,7 +373,7 @@ Save your private key as privateKey.pem and your signCert as certificate.pem in 
 ```
 var fs = require('fs');
 ```
-Replace the following line importing the user context from persistence,
+Replace the following line that imports the user context from persistence,
 ```
 return fabric_client.getUserContext('user1', true);
 ```
@@ -607,7 +607,7 @@ channel.sendInstantiateProposal(request, 300000);
 ## Best practices when using CouchDB
 {: #couchdb-indices}
 
-If your ledger data is stored in CouchDB, it is strongly recommended that you create indexes for your CouchDB queries and use them in your chaincode. Indexes allow your applications to retrieve data efficiently as your network adds additional blocks of transactions and entries in the world state. Also, CouchDB allows you to perform rich data queries from your chaincode against data on a channel ledger.
+If your ledger data is stored in CouchDB, it is strongly recommended that you create indexes for your CouchDB queries and use them in your chaincode. Indexes allow your applications to retrieve data efficiently when your network adds additional blocks of transactions and entries in the world state. Also, CouchDB allows you to perform rich data queries from your chaincode against data on a channel ledger.
 
 For more information about CouchDB and how to set up indexes, see [CouchDB as the State Database ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/couchdb_as_state_database.html "CouchDB as the State Database"){:new_window} in the Hyperledger Fabric documentation. You can also find an example that uses an index with chaincode in the [Fabric CouchDB tutorial ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/couchdb_tutorial.html).
 

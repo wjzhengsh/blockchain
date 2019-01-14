@@ -90,7 +90,7 @@ The {{site.data.keyword.blockchainfull_notm}} Platform for ICP Helm chart has be
 
 The pricing of {{site.data.keyword.blockchainfull_notm}} Platform on ICP is based on the number of Virtual Processor Cores (VPCs) used. A VPC can be either a virtual core that is assigned to a virtual server, or a physical processor core in a non-partitioned server. You must obtain a licensed entitlement for each VPC made available to the {{site.data.keyword.blockchainfull_notm}} Platform. <!-- A VPC is a unit of measurement by which a program can be licensed.-->
 
-For more information about how to determine your usage of VPCs, see this article on ["Virtual Processor Cores (VPC)" ![External link icon](images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/en/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_virtual_processor_core_licenses.html "Virtual Processor Cores (VPC's)") in IBM Knowledge Center. You can use the [IBM License Metric Tool](https://www.ibm.com/support/knowledgecenter/en/SS8JFY_9.2.0/com.ibm.lmt.doc/welcome/LMT_welcome.html) to configure and create a report that you can use to determine the number of VPCs that you need to license.
+For more information about how to determine your usage of VPCs, see this article on ["Virtual Processor Cores (VPC)" ![External link icon](images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/en/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_virtual_processor_core_licenses.html "Virtual Processor Cores (VPC's)") in IBM Knowledge Center. You can use the [{{site.data.keyword.IBM_notm}} License Metric Tool](https://www.ibm.com/support/knowledgecenter/en/SS8JFY_9.2.0/com.ibm.lmt.doc/welcome/LMT_welcome.html) to configure and create a report that you can use to determine the number of VPCs for which you need to get a license.
 
 
 ## Installing {{site.data.keyword.blockchainfull_notm}} Platform for ICP
@@ -130,7 +130,7 @@ The CA will validate the identity and issue certificates for the other component
 ## About orderers on ICP
 {: #ibp-icp-orderer}
 
-Orderers authenticate clients, order transactions, and broadcast transactions in a blockchain network. They are the common binding of blockchain networks based on Hyperledger Fabric. As a result, the organization that founds a network needs to deploy and start an "ordering service" (the node or collection of nodes that do the ordering) before other organizations can deploy their peers, join channels, and start transacting on the network. For more information about orderers and the role that they play in a blockchain network, see [Blockchain component overview](blockchain_component_overview.html#orderer).
+Orderers authenticate clients, order transactions, and broadcast transactions in a blockchain network. They are the common binding of blockchain networks based on Hyperledger Fabric. As a result, the organization that founds a network needs to deploy and start an "ordering service" (the node or collection of nodes that do the ordering) before other organizations can deploy their peers, join channels, and start transactions on the network. For more information about orderers and the role that they play in a blockchain network, see [Blockchain component overview](blockchain_component_overview.html#orderer).
 
 If you are founding a blockchain network, you need to deploy an orderer. After it has been deployed, you can invite other organizations to your consortium, which can then create channels of their own.
 
@@ -224,8 +224,8 @@ To solve this problem **channels** can be used to segregate data to a subset of 
 
 **Note:** Orderers are always located in the data center region you selected to host the network. It is not possible to have multiple orderers across country borders. Peers, however, can be located either in the data center or at a remote location outside {{site.data.keyword.cloud_notm}}.
 
-![Data residency when peers are outside the country of the IBM Blockchain Platform region](images/remote_peer_data_res_2.png "Data Residency peers reside outside the country of the IBM Blockchain Platform region")
-*Figure 2. Data Residency peers reside outside the country of the IBM Blockchain Platform region*
+![Data residency when peers are outside the country of the IBM Blockchain Platform region](images/remote_peer_data_res_2.png "Data Residency when peers reside outside the country of the IBM Blockchain Platform region")
+*Figure 2. Data Residency when peers reside outside the country of the IBM Blockchain Platform region*
 
 In **Figure 2**, Data residency is not required for `OrgC` and `OrgD`. In fact, `OrgD` now includes two distributed peers, `OrgD-peer1` and `OrgD-peer2`, which reside in the *United States*. Therefore, in order for  `OrgA`, `OrgB`, and their respective client applications and peers that reside in Germany to isolate the ledger data on channel `X`, a new channel `Y` is created for `OrgC` and `OrgD`.
 
