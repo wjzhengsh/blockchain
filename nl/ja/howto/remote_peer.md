@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-09-05"
+lastupdated: "2018-11-27"
 
 ---
 
@@ -12,147 +12,121 @@ lastupdated: "2018-09-05"
 {:codeblock: .codeblock}
 {:pre: .pre}
 
-# リモート・ピアについて
+# {{site.data.keyword.blockchainfull_notm}} Platform for Amazon Web Services について
 {: #remote-peer-overview}
 
+***[このページは参考になりましたか。 ご意見をお聞かせください。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
-***[このページは参考になりましたか。ご意見をお聞かせください。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+**注:** {{site.data.keyword.blockchainfull}} Platform Remote Peer on ICP (ベータ) プログラムは終了しました。引き続き ICP 環境でピアを実行することを希望する場合は、代わりに **{{site.data.keyword.blockchainfull_notm}} Platform for ICP** オファリングをご使用ください。詳しくは、[ICP のピアについて](../ibp-for-icp-about.html#ibp-icp-peer)を参照してください。
 
-
-{{site.data.keyword.blockchainfull}} Platform リモート・ピアは、既存のブロックチェーン・ネットワークに接続した後に {{site.data.keyword.cloud_notm}} Private (ICP) <!--[AWS]or on AWS Cloud --> で実行できます。{{site.data.keyword.cloud_notm}} の外部でピアを実行すると、{{site.data.keyword.cloud_notm}} 内部の既存のネットワークを利用しながら、ブロックチェーン・ネットワークの拡張や参加をより柔軟に行うことができます。リモート・ピアではプラットフォームの認証局 (CA) および順序付けサービスを利用しますが、ピアを {{site.data.keyword.cloud_notm}} 外部の他のアプリケーションとコロケーションすることができます。
+AWS クラウド内の {{site.data.keyword.blockchainfull_notm}} Platform ピアを {{site.data.keyword.cloud_notm}} 内の既存のブロックチェーン・ネットワークに接続した後に、このピアを実行できます。{{site.data.keyword.cloud_notm}} の外部でピアを実行すると、{{site.data.keyword.cloud_notm}} 内部の既存のネットワークを利用しながら、ブロックチェーン・ネットワークの拡張や参加をより柔軟に行うことができます。 AWS クラウド内のピアは、プラットフォーム上の認証局 (CA) と順序付けサービスを利用しますが、{{site.data.keyword.cloud_notm}} 外部にある他のアプリケーションとピアを共同配置することを可能にします。
 {:shortdesc}
 
-<!--[AWS]Move ICP description here.-->{{site.data.keyword.cloud_notm}} Private (ICP) は、オンプレミス環境でプライベート・クラウドを構築するための Kubernetes ベースのプラットフォームです。ICP を使用してリモート・ピアを実行し、リモート・ピアを {{site.data.keyword.blockchainfull_notm}} Platform 上のブロックチェーン・ネットワークに接続します。ICP 向けの {{site.data.keyword.blockchainfull_notm}} Platform リモート・ピアは、ICP のストレージ、セキュリティー、ロギング、およびサポート・サービスを利用するため、リモート・ピアをオンプレミス環境で管理することができます。ICP について詳しくは、[{{site.data.keyword.cloud_notm}} Private 資料 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0.3/kc_welcome_containers.html "{{site.data.keyword.cloud_notm}} Private 資料") を参照してください。  
-
-**注:** {{site.data.keyword.blockchainfull_notm}} Platform リモート・ピアは、現在、評価および試験に適したベータ版となっています。**このベータ版は実動使用を想定したものではありません。** アクセスおよび詳細については、[ライセンスおよび料金](#remote-peer-license-pricing)を参照してください。
-
-<!--[AWS]The following cloud platforms are supported:-->
-<!--[AWS]
-|  Cloud Platform | Supported Versions |
-| ----------------|--------------------|
-| {{site.data.keyword.cloud_notm}} Private (ICP) | 2.1.0.3 |
--->
-<!--[AWS]
-|  Cloud Platform | Instance types |
-| ----------------|--------------------|
-| Amazon Web Services (AWS) | Choose from the list of available types. The minimum size is `t2.medium`, the default is `m4.xlarge`|
--->
-
-<!--[AWS]In all cases, the network on {{site.data.keyword.blockchainfull_notm}} Platform and the remote peer nodes must be running at the same **Fabric version 1.1**.
--->
-
-このベータ版では、{{site.data.keyword.cloud_notm}} Private (ICP) v2.1.0.3 のクラウド・プラットフォームがサポートされます。{{site.data.keyword.blockchainfull_notm}} Platform 上のネットワークおよび ICP 内のリモート・ピア・ノードは、同じ **Fabric バージョン 1.1** で実行されている必要があります。
 
 ## 考慮事項
 {: #remote-peer-limitations}
 
-リモート・ピアは、{{site.data.keyword.blockchainfull_notm}} Platform でホストされるピアの全機能またはサポートへのアクセス権限がありません。リモート・ピアを実行する前に、以下の制限事項および制約を理解していることを確認します。
-- 他のクラウド環境で実行されているリモート・ピアは、{{site.data.keyword.cloud_notm}} 上のブロックチェーン・ネットワークのネットワーク・モニターに表示されません。
-- ネットワーク・モニター UI で Swagger UI を使用してリモート・ピアをアドレス指定することはできません。
-- リモート・ピアの正常性モニター、セキュリティー、ロギング、およびリソース使用量を管理するのはお客様の責任です。
-- リモート・ピアは Hyperledger Fabric v1.1 レベルのブロックチェーン・ネットワークにのみ接続できます。
-- リモート・ピアのデータベース・タイプがブロックチェーン・ネットワークのデータベース・タイプと一致する必要があります (LevelDB または CouchDB)。
-- CouchDB Fauxton インターフェースは、リモート・ピアでは使用できません。
-- リモート・ピアの[ゴシップ](../glossary.html#gossip)は現在サポートされていません。
-
+{{site.data.keyword.blockchainfull_notm}} Platform for AWS は、{{site.data.keyword.blockchainfull_notm}} Platform 上でホストされているピアの全機能やサポートにはアクセスできません。{{site.data.keyword.blockchainfull_notm}} Platform for AWS を実行する前に、以下の制限事項および制約を理解していることを確認します。
+- 他のクラウド環境で実行されているピアは、{{site.data.keyword.cloud_notm}} 上のブロックチェーン・ネットワークのネットワーク・モニターに表示されません。
+- ネットワーク・モニター UI で Swagger UI を使用して、{{site.data.keyword.blockchainfull_notm}} Platform for AWS 上で実行されているピアのアドレスを指定することはできません。
+- {{site.data.keyword.blockchainfull_notm}} Platform for AWS ピア・ノードの正常性モニター、セキュリティー、ロギング、およびリソース使用量を管理するのはお客様の責任です。
+- {{site.data.keyword.blockchainfull_notm}} Platform for AWS ピアは Fabric レベル v1.1 または v1.2.1 のブロックチェーン・ネットワークにのみ接続できます。Fabric のバージョンは、ネットワーク・モニターで[「ネットワーク設定 (Network preferences)」ウィンドウ](../v10_dashboard.html#network-preferences)を開くことで確認できます。
+- {{site.data.keyword.blockchainfull_notm}} Platform for AWS ピアのデータベース・タイプは、ブロックチェーン・ネットワークのデータベース・タイプと一致する必要があります (LevelDB または CouchDB)。
+- CouchDB Fauxton インターフェースは、AWS ピアでは使用できません。
+- AWS ピアの[ゴシップ](../glossary.html#gossip)は現在サポートされていません。 これは、[プライベート・データ ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/private-data-arch.html "プライベート・データ") や [サービス・ディスカバリー ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/discovery-overview.html "サービス・ディスカバリー") などのゴシップに依存する Fabric 機能もサポートされていないことを意味します。
 
 ## 前提条件
 {: #remote-peer-prereq}
 
-リモート・ピアを使用するには、{{site.data.keyword.blockchainfull_notm}} Platform のスターター・プランまたはエンタープライズ・プラン・ネットワークのメンバーである組織が必要です。リモート・ピアは、{{site.data.keyword.blockchainfull_notm}} Platform のプラン・ネットワークの API エンドポイント、Hyperledger Fabric CA、および順序付けサービスを利用して作動します。ブロックチェーン・ネットワークのメンバーではない場合は、ネットワークを作成するか、ネットワークに参加する必要があります。詳しくは、[ネットワークの作成](../get_start.html#creating-a-network)または[ネットワークへの参加](../get_start.html#joining-a-network)を参照してください。
-
+{{site.data.keyword.blockchainfull_notm}} Platform for AWS ピアを使用するには、{{site.data.keyword.blockchainfull_notm}} Platform 上のスターター・プラン・ネットワークまたはエンタープライズ・プラン・ネットワークのメンバーである組織が必要です。{{site.data.keyword.blockchainfull_notm}} Platform for AWS ピアは、{{site.data.keyword.blockchainfull_notm}} Platform ネットワークの API エンドポイント、Hyperledger Fabric CA、および順序付けサービスを利用して作動します。ブロックチェーン・ネットワークのメンバーではない場合は、ネットワークを作成するか、ネットワークに参加する必要があります。 詳しくは、[ネットワークの作成](../get_start.html#creating-a-network)または[ネットワークへの参加](../get_start.html#joining-a-network)を参照してください。
 
 ## ライセンスおよび料金
 {: #remote-peer-license-pricing}
 
-<!--[AWS]To access remote peers on AWS Cloud, see [License and pricing in AWS](remote_peer_aws.html#license-pricing-icp "License and pricing in AWS"). -->リモート・ピアにアクセスして ICP で実行するには、[ICP のリモート・ピアのライセンスおよび料金](remote_peer_icp.html#license-pricing-icp "ICP のリモート・ピアのライセンスおよび料金")を参照してください。リモート・ピアのベータ版のライセンスは無料です。<!--[AWS] for both platforms.-->今後、一般出荷可能 (GA) オファリングによってベータ版が置き換えられます。
+{{site.data.keyword.blockchainfull_notm}} Platform for AWS は現在は Community Edition として無償で提供されていますが、将来的には、IBP for AWS は Bring-Your-Own-License (BYOL) モデルに変更される可能性があり、その場合は IBM からライセンスを購入することが必要になります。
 
-ベータ版から GA への移行はサポートされていません。GA オファリングがリリースされた際にこれを使用するには、新しいリモート・ピアをダウンロードおよびインストールする必要があります。新しいリモート・ピアは、ベータ版のリモート・ピアと同じネットワークの同じチャネルに参加させることができます。
-
-**注:** リモート・ピアを操作するには、{{site.data.keyword.blockchainfull_notm}} Platform のスターター・プランまたはエンタープライズ・プラン・ネットワークに属する組織が必要です。つまり、ユーザーまたはネットワークの別のメンバーが組織の IBM Blockchain [メンバーシップ料金](https://console.bluemix.net/docs/services/blockchain/howto/pricing.html#key-elements-of-pricing)を支払う必要があります。料金の支払方法について詳しくは、[支払いモード](paying_mode.html)を参照してください。  
+**注:** AWS ピアを操作するには、{{site.data.keyword.blockchainfull_notm}} Platform のスターター・プランまたはエンタープライズ・プラン・ネットワークに属する組織が必要です。 つまり、ユーザーまたはネットワークの別のメンバーが組織の {{site.data.keyword.blockchainfull_notm}} [メンバーシップ料金](pricing.html#key-elements-of-pricing)を支払う必要があります。 料金の支払方法について詳しくは、[支払いモード](paying_mode.html)を参照してください。
 
 
-<!--[AWS]## Deploying a remote peer
-{: #deploy-remote-peer}-->
+## AWS ピアのデプロイ
+{: #deploy-remote-peer}
 
-<!--[AWS]{{site.data.keyword.blockchainfull_notm}} Platform Remote Peer currently supports two cloud environments to run remote peers: Amazon Web Services (AWS) and {{site.data.keyword.cloud_notm}} Private (ICP).-->
+AWS [クイック・スタート・テンプレート ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://aws.amazon.com/quickstart/architecture/ibm-blockchain-platform/ "クイック・スタート・テンプレート") を使用して、{{site.data.keyword.blockchainfull_notm}} Platform for AWS を簡単にデプロイできます。詳しくは、[{{site.data.keyword.blockchainfull_notm}} Platform for AWS Quick Start Deployment Guide ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://s3.amazonaws.com/aws-quickstart/quickstart-ibm-fabric/doc/ibm-blockchain-platform-for-aws.pdf "IBM Blockchain Platform for Platform for AWS Quick Start Reference Deployment") を参照してください。
 
-<!--[AWS]### Amazon Web Services
-{: #aws}-->
+{{site.data.keyword.blockchainfull_notm}} Platform for AWS のデプロイ方法については、[Amazon Web Services でのピアのデプロイ](remote_peer_aws.html "Amazon Web Services でのピアのデプロイ")を参照してください。
 
-<!--[AWS]*Note: Need to replace the following links with real links to AWS remote peer once they are published by AWS*
-You can use the [Quick Starts ![External link icon](../images/external_link.svg "External link icon")](https://amazonaws-china.com/quickstart/architecture/mongodb/ "Quick Start Template") to easily deploy {{site.data.keyword.blockchainfull_notm}} Platform Remote Peers on AWS. For more information about deploying a remote peer on AWS, see the [AWS Remote Peer Deployment Guide ![External link icon](../images/external_link.svg "External link icon")](https://docs.aws.amazon.com/quickstart/latest/mongodb/welcome.html "Deployment Guide").
+以下の図は、{{site.data.keyword.blockchainfull_notm}} Platform for AWS ピアをデプロイするプロセスを説明しています。
 
-For more information about deploying remote peers in AWS, see [Deploying remote peers in Amazon Web Services](remote_peer_aws.html "Deploying remote peers in "Amazon Web Services).
+<img usemap="#home_map1" border="0" class="image" id="image_ztx_crb_f1b2" src="../images/remote_peer_AWS_flow.png" width="750" alt="ボックスをクリックすると、プロセスの詳細が表示されます。" style="width:750px;" />
+<map name="home_map1" id="home_map1">
+<area href="remote_peer_aws.html#remote-peer-aws-account" alt="AWS の構成または AWS へのアクセス" title="構成またはアクセス" shape="rect" coords="157.05, 52.53, 283.62, 127.11" />
+<area href="remote_peer_aws.html#remote-peer-aws-account" alt="鍵ペアの作成" title="鍵ペアの作成" shape="rect" coords="300.97, 52.53, 427.54, 127.11" />
+<area href="remote_peer_aws.html#prerequisites-aws" alt="ネットワークの作成またはネットワークへの参加" title="ネットワークの作成またはネットワークへの参加" shape="rect" coords="157.05, 131.8, 283.62, 206.37" />
+<area href="remote_peer_operate_aws.html#aws-peer-operate-with-sdk" alt="チャネルへの参加" title="チャネルへの参加" shape="rect" coords="300.97, 131.8, 427.54, 206.37" />
+<area href="remote_peer_aws.html#aws-register-peer" alt="ピア ID の登録" title="ピア ID の登録" shape="rect" coords="443.95, 131.8, 570.53, 206.37" />
+<area href="remote_peer_aws.html#aws-network-endpoints" alt="ピア構成情報の取得" title="ピア構成情報の取得" shape="rect" coords="585.53, 131.8, 712.1, 206.37" />
+<area href="remote_peer_aws.html#remote-peer-aws-launchqs" alt="リンクのクリック" title="リンクのクリック" shape="rect" coords="157.05, 258.43, 283.62, 333.48" />
+<area href="remote_peer_aws.html#remote-peer-aws-launchqs" alt="ピア・インスタンスの構成" title="ピア・インスタンスの構成" shape="rect" coords="300.97, 258.43, 427.54, 333.48" />
+<area href="remote_peer_aws.html#remote-peer-aws-test" alt="デプロイメントの確認" title="デプロイメントの確認" shape="rect" coords="443.95, 258.43, 570.53, 333.48" />
+<area href="remote_peer_operate_aws.html#aws-peer-operate-with-sdk" alt="Fabric SDK の使用" title="Fabric SDK の使用" shape="rect" coords="157.05, 338.64, 283.62, 413" />
+<area href="remote_peer_operate_aws.html#aws-peer-cli-operate" alt="Fabric ツール CLI の使用" title="Fabric ツール CLI の使用" shape="rect" coords="443.95, 338.64, 570.53, 413" />
+</map>
 
-The following diagram describes the process to deploy an {{site.data.keyword.blockchainfull_notm}} Platform remote peer on AWS.
-
-![Remote Peer deployment flow on AWS](../images/remote_peer_AWS_flow.png "Remote Peer deployment flow on AWS")  
-*Figure 1. Remote Peer deployment flow on AWS*
--->  
-
-<!--[AWS]## Deploying a remote peer
-{: #deploy-remote-peer}-->
-
-<!--[AWS]### {{site.data.keyword.cloud_notm}} Private
-{: #icp}-->
-
-## リモート・ピアのデプロイ
-{: #icp}
-
-<!--[AWS]{{site.data.keyword.cloud_notm}} Private (ICP) is a Kubernetes-based platform for building a private cloud in an on-premises environment. You can use ICP to run a remote peer and connect the remote peer to a blockchain network on {{site.data.keyword.blockchainfull_notm}} Platform. {{site.data.keyword.blockchainfull_notm}} Platform Remote Peer for ICP leverages the storage, security, logging, and support services of ICP so that you can manage your remote peers in your on-premises environment. For more information about ICP, see [{{site.data.keyword.cloud_notm}} Private documentation ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0.3/kc_welcome_containers.html "{{site.data.keyword.cloud_notm}} Private documentation").-->
-
-<!--[AWS]Nancy did some re-org here by moving ICP description to the beginning of this topic as we only support ICP now. Will move it back or other places later.-->
-
-以下の図は、{{site.data.keyword.blockchainfull_notm}} Platform リモート・ピアを ICP にデプロイするステップを説明しています。ICP でのリモート・ピアのデプロイ方法について詳しくは、[{{site.data.keyword.cloud_notm}} Private でのリモート・ピアのデプロイ](remote_peer_icp.html "{{site.data.keyword.cloud_notm}} Private でのリモート・ピアのデプロイ")を参照してください。
-
-![ICP でのリモート・ピアのデプロイメント・フロー](../images/remote_peer_ICP_flow.png "ICP でのリモート・ピアのデプロイメント・フロー")  
-<!--[AWS]
-*Figure 2. Remote Peer deployment flow on ICP*
--->  
-*図 1. ICP でのリモート・ピアのデプロイメント・フロー*
+*図 1. AWS 上の {{site.data.keyword.blockchainfull_notm}} Platform for AWS デプロイメントの流れ*
 
 
-## リモート・ピアの操作
+## AWS ピアの操作
 {: #operate-remote-peer}
 
-リモート・ピアをデプロイした後に、ピアがネットワークにトランザクションを送信できるようにするには、いくつかの操作ステップを実行する必要があります。この操作ステップでは、チャネルへの組織の追加、チャネルへのリモート・ピアの参加、リモート・ピアでのチェーンコードのインストール、チャネルでのチェーンコードのインスタンス化、およびリモート・ピアへのアプリケーションの接続を行います。詳しくは、<!--[AWS][Operating remote peers in Amazon Web Service](remote_peer_operate_aws.html#remote-peer-operate-aws) or -->[{{site.data.keyword.cloud_notm}}Private でのリモート・ピアの操作](remote_peer_operate_icp.html#remote-peer-operate)を参照してください。
+AWS ピアをデプロイした後に、ピアがネットワークにトランザクションを送信できるようにするには、いくつかの操作ステップを実行する必要があります。 この操作ステップでは、チャネルへの組織の追加、チャネルへのピアの参加、ピアでのチェーンコードのインストール、チャネルでのチェーンコードのインスタンス化、およびピアへのアプリケーションの接続を行います。 詳しくは、[Amazon Web Service でのピアの操作](remote_peer_operate_aws.html#remote-peer-operate-aws)を参照してください。
 
 ## データの常駐
 {: #data-residency}
 
-データの常駐要件は、データの常駐場所を管理する制限です。データの常駐に関する最も一般的な要件は、IT システムで処理および保管されるすべてのお客様データを特定の国の境界内にとどめることを義務付ける、特定の国の法律に関連付けられています。同様に、政府、医療、金融サービスなど、規制の厳しい業界の企業は、すべてのデータを完全にファイアウォールの内側に保管することが求められます。また、一部の企業には、特定のタイプのデータ (典型的なものは個人情報) を機密とし、完全に企業ファイアウォールの内側に保管することを義務付ける企業ポリシーがあります。したがって、データの常駐を実現するには、ブロックチェーン・ネットワークのすべてのコンポーネントが同じ[チャネル](../glossary.html#channel)の一部であり、1 つの国の域内に常駐する必要があります。
+ブロックチェーン・ネットワークでは、処理されるデータのタイプが認識されないため、特定の種類のデータを保護するために追加のステップが必要になる場合があります。 データの常駐に関する最も一般的な要件は、IT システムで処理および保管されるすべてのデータを特定の国の中にとどめることを義務付ける、特定の国の法律に関連付けられています。 同様に、政府、医療、金融サービスなど、規制の厳しい業界の企業は、データを完全にファイアウォールの内側に保管することが求められます。 したがって、データの常駐を実現するには、ブロックチェーン・ネットワークのすべてのコンポーネントが同じ[チャネル](../glossary.html#channel)の一部であり、1 つの国に常駐する必要があります。
 
-データの常駐要件に対応するには、{{site.data.keyword.blockchainfull_notm}} Platform の基礎となっている Hyperledger Fabric アーキテクチャーを理解することが重要です。このアーキテクチャーは、順序付けサービス、認証局 (CA)、ピアという 3 つの主要コンポーネントを中核としています。ピアは順序付けサービスから順序付け状態の更新をブロックの形式で受け取り、状態および台帳を維持します。したがって、ピアと順序付けサービスには直接的な関係があります。台帳には、トランザクション・ログに含まれるすべてのキーおよびデータの最新の値が含まれます。
+データの常駐要件に対応するには、{{site.data.keyword.blockchainfull_notm}} Platform の基礎となっている Hyperledger Fabric アーキテクチャーを理解することが重要です。 このアーキテクチャーは、認証局 (CA)、順序付けプログラム、およびピアという 3 つの主要コンポーネントを中核として構築されています。ピアは順序付けサービスから順序付け状態の更新をブロックの形式で受け取り、状態および台帳を維持します。 したがって、ピアと順序付けプログラムの間には直接的な関係があります。台帳には、トランザクション・ログに含まれるすべてのキーおよびデータの最新の値が含まれます。
 
-さらに、クライアント・アプリケーションは、[Fabric SDK](../v10_application.html#using-the-fabric-sdks) を使用してトランザクションをピアおよび順序付けサービスに送信します。これらのトランザクションには、台帳のキーと値のペアを含む[読み取り/書き込みセット ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.1/readwrite.html "読み取り/書き込みセットのセマンティクス") のデータが含まれます。
+さらに、クライアント・アプリケーションは、[Fabric SDK](../v10_application.html#using-the-fabric-sdks) を使用してトランザクションをピアおよび順序付けサービスに送信します。 これらのトランザクションには、台帳のキーと値のペアを含む[読み取り/書き込みセット ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/readwrite.html "読み取り/書き込みセットのセマンティクス") のデータが含まれます。
 
-業務に国内データの常駐が必要な場合、順序付けサービス、ピア・ノード、およびクライアント・アプリケーションが同じ国に常駐する必要があります。{{site.data.keyword.blockchainfull_notm}} Platform ネットワークが {{site.data.keyword.cloud_notm}} で作成されている場合、ネットワークのロケーションを選択することができます。<!--For a Starter Plan network, you can select from US South, United Kingdom, and Sydney. For an Enterprise Plan network, you can select from currently available locations, which include Dallas, Frankfurt, London, Sao Paulo, Tokyo, and Toronto. -->地域とロケーションについて詳しくは、[{{site.data.keyword.blockchainfull_notm}} Platform の地域とロケーション](../reference/ibp_regions.html)を参照してください。これらのいずれかの国でデータの常駐を実現するには、リモート・ピアが {{site.data.keyword.blockchainfull_notm}} Platform ネットワークのロケーションと同じ国に常駐する必要があります。
+国内のデータの常駐が自社業務にとっての要件である場合は、順序付けプログラム、ピア、およびクライアント・アプリケーションは同じ国に常駐している必要があります。{{site.data.keyword.blockchainfull_notm}} Platform ネットワークが {{site.data.keyword.cloud_notm}} で作成されている場合、ネットワークのロケーションを選択することができます。 <!--For a Starter Plan network, you can select from US South, United Kingdom, and Sydney. For an Enterprise Plan network, you can select from currently available locations, which include Dallas, Frankfurt, London, Sao Paulo, Tokyo, and Toronto. -->地域とロケーションについて詳しくは、[{{site.data.keyword.blockchainfull_notm}} Platform の地域とロケーション](../reference/ibp_regions.html)を参照してください。 これらのいずれかの国でデータの常駐を実現するには、ピアが {{site.data.keyword.blockchainfull_notm}} Platform ネットワークのロケーションと同じ国に常駐する必要があります。
 
-{{site.data.keyword.blockchainfull_notm}} Platform ネットワークに国をまたぐリモート・ピアおよび順序付けサービス・ノードが含まれる場合は、チャネルを使用して、データをネットワーク上のピアのサブセットに分割できます。順序付けノードは、常に、ネットワークをホストするように選択したデータ・センターに配置されます。国をまたいで順序付けプログラムを保持することはできません。ただし、ピアは、データ・センターまたは {{site.data.keyword.cloud_notm}} の外側のリモート・ロケーションに配置できます。したがって、データの常駐を実現するには、順序付けプログラムおよびすべてのピア (データ・センターに対してローカルなピアまたはリモート・ピア) が同じ国に常駐するチャネルを作成します。この方法では、順序付けプログラムおよびピアが共有するすべてのデータが 1 つの国で保管されます。順序付けプログラムおよびリモート・ピアが国をまたいで配置され、データの常駐が不要な場合は、必要に応じてその他のチャネルも存在できます。
+### データの常駐のユース・ケース
+
+4 つの組織からなる共同事業体とともに、順序付けプログラムと認証局が含まれた {{site.data.keyword.blockchainfull_notm}} Platform ネットワークについて考えてみましょう。これらの組織は 1 つ以上のピア・ノードを有しています。4 つの組織はすべて同一チャネルに属しており、このネットワークのすべてのコンポーネントは、{{site.data.keyword.blockchainfull_notm}} Platform ネットワークがデプロイされた地域 (フランクフルトなど) にあります。 最後に、ピアと相互動作するクライアント・アプリケーションもドイツ内にあります。 データの常駐は維持されます。  
+
+![すべてのコンポーネントが同じ国にある場合のデータの常駐](../images/remote_peer_data_res_1.png "すべてのコンポーネントが同じ国にある場合のデータの常駐")  
+*図 3. すべてのコンポーネントが同じ国にある場合のデータの常駐*
+
+次に、**ピア**がいずれかの組織に参加した場合の影響を考えてみましょう。ピアは、ネットワークの残り部分と同じ領域に配置することも、IBP ネットワーク領域外の任意の場所に配置することもできます。
+
+-	このピアがネットワークの残り部分と同じ国にある場合は、データの常駐は維持されます。 すべての台帳データは、上記の**図 3** で示しているようにドイツ内にとどまります。
+-	このピアが別の国 (米国など) に存在する場合は、ピア台帳上のデータは国境にまたがって共有されるため、データの常駐は維持されなくなります。
+
+この問題を解決するために、**チャネル**を使用してネットワーク上のピアのサブセットに対してデータを分離できます。{{site.data.keyword.blockchainfull_notm}} Platform ネットワークに、国境にまたがる複数のピアと順序付けプログラムが含まれている場合は、チャネルによって、国境外のピアを有している組織から台帳データが分離されます。  
+
+**注:** 順序付けプログラムは常に、ネットワークをホストするために選択したデータ・センター領域に配置されます。国境にまたがる複数の順序付けプログラムを保持することはできません。ただし、ピアは、データ・センターと {{site.data.keyword.cloud_notm}} の外側のリモート・ロケーションのいずれにも配置できます。
+
+![IBM Blockchain Platform 領域の国の外にピアが存在する場合のデータの常駐](../images/remote_peer_data_res_2.png "IBM Blockchain Platform 領域の国の外にピアが存在する場合のデータの常駐")  
+*図 4. IBM Blockchain Platform 領域の国の外にピアが存在する場合のデータの常駐*
+
+**図 4** では、`OrgC` と `OrgD` に対してはデータの常駐は不要です。実際には、`OrgD` には現在は `OrgD-peer1` と `OrgD-peer2` という 2 つのピアが含まれており、これらのピアは*米国* にあります。したがって、`OrgA` と `OrgB`、およびこれらの組織のそれぞれのクライアント・アプリケーションとピア (ドイツに存在しているもの) によって、チャネル `X` 上の台帳データが分離されるために、新しいチャネル `Y` が `OrgC` および `OrgD` 用に作成されます。
+
+{{site.data.keyword.blockchainfull_notm}} Platform ネットワーク上のデータの流れについて詳しくは、[Fabric documentation on transaction flow![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/txflow.html "トランザクション・フロー") を参照してください。
 
 今後、Hyperledger Fabric の新しいテクノロジーによって、[プライベート・データ・コレクション ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/private-data/private-data.html "プライベート・データ・コレクション") およびゼロ知識証明を使用して、さらなるデータの常駐を実現する機能が改善されます。
 
-- プライベート・データ・コレクションによって、プライベート・データが、国内のピアなど、表示を許可されたピアにのみピアツーピアで共有されます (ゴシップ・プロトコルによって)。データはピアのプライベート・データベースに保管されます。ここでは関与しない順序付けサービスに対しては、プライベート・データは表示されません。チャネルのすべてのピアの台帳にこのデータのハッシュが書き込まれます。状態検証で使用されるハッシュは、トランザクションの証拠として機能し、監査目的で使用することができます。
+- プライベート・データ・コレクションによって、プライベート・データが、国内のピアなど、表示を許可されたピアにのみピアツーピアで共有されます (ゴシップ・プロトコルによって)。 データはピアのプライベート・データベースに保管されます。  順序付けサービスは、ここでは関与しません。またプライベート・データを認識することもありません。 チャネルのすべてのピアの台帳にこのデータのハッシュが書き込まれます。 状態検証で使用されるハッシュは、トランザクションの証拠として機能し、監査目的で使用することができます。 プライベート・データは、Fabric バージョン 1.2.1 上で稼働している {{site.data.keyword.blockchainfull_notm}} Platform 上のネットワークで使用できます。ただし、プライベート・データ機能をピアで使用することはできません。
 
-- ゼロ知識証明 (ZKP) により、「証明者」は「検証者」に、機密事項自体を示すことなく、機密事項に関する知識があることを保証できます。何を知っているかを示すことなく、何かを知っていることを示してステートメントを満たす方法です。
+- ゼロ知識証明 (ZKP) により、「証明者」は「検証者」に、機密事項自体を示すことなく、機密事項に関する知識があることを保証できます。 何を知っているかを示すことなく、何かを知っていることを示してステートメントを満たす方法です。
 
 これらのテクノロジーについて詳しくは、[Hyperledger Fabric を使用したプライベートおよび機密トランザクション ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/developerworks/cloud/library/cl-blockchain-private-confidential-transactions-hyperledger-fabric-zero-knowledge-proof/index.html "Hyperledger Fabric を使用したプライベートおよび機密トランザクション") に関するホワイト・ペーパーを参照してください。
 
 ## サポートについて
 {: #remote-peer-support}
 
-ベータ版の {{site.data.keyword.blockchainfull_notm}} リモート・ピア・オファリングは、探索、開発、およびテストを目的としています。**このベータ版を実動に使用しないでください。**{{site.data.keyword.blockchainfull_notm}} Platform では、このベータ版をサポートしていません。リモート・ピアに関連する問題が発生した場合は、[ブロックチェーンのリソースおよびサポート・フォーラム](../v10_dashboard.html#support-forums)を参照してください。ネットワーク・モニターの**「ヘルプの利用」**画面でもサポート・リソースを確認できます。  
+IBM Blockchain Platform では、このオファリングのサポートは提供されていません。ピアに関する問題が発生した場合は、ブロックチェーン開発者向けの無料のリソースとサポート・フォーラムを利用して、{{site.data.keyword.IBM_notm}} および Fabric コミュニティーから支援を得ることができます。詳しくは、[ブロックチェーンのリソースおよびサポート・フォーラム](../ibmblockchain_support.html#resources)を参照してください。ネットワーク・モニターの**「ヘルプの利用」**画面でもサポート・リソースを確認できます。
 
-<!--[AWS]
-- For issues that are related to AWS, you can use both [community support forums ![External link icon](../images/external_link.svg "External link icon")](https://forums.aws.amazon.com/index.jspa "AWS community support forums") and [AWS premium support ![External link icon](../images/external_link.svg "External link icon")](https://aws.amazon.com/premiumsupport/ "AWS premium support").
--->
+- AWS に関連する問題の場合は、[コミュニティーのサポート・フォーラム ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://forums.aws.amazon.com/index.jspa "AWS コミュニティーのサポート・フォーラム") と [AWS プレミアム・サポート ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://aws.amazon.com/premiumsupport/ "AWS プレミアム・サポート") の両方をご利用できます。
 
-{{site.data.keyword.cloud_notm}} Private に関連する問題の場合は、ICP によって、[無料のデジタル・サポートおよび Community Edition サポート ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/developerworks/community/blogs/fe25b4ef-ea6a-4d86-a629-6f87ccf4649e/entry/Learn_more_about_IBM_Cloud_Private_Support?lang=en_us "ICP の無料のデジタル・サポートおよび Community Edition サポート") が提供されています。
-
-<!-- add back after GA?
-If your problem cannot be solved by any of the above routes, {site.data.keyword.blockchainfull_notm}} Platform Remote Peer Enterprise Edition for ICP users can open support cases in the {{site.data.keyword.cloud_notm}} Service Portal. See [submitting support cases](../ibmblockchain_support.html#support-cases) for details on opening a support case.
--->
-
-<!-- add back at GA
-{{site.data.keyword.blockchainfull_notm}} does not support cases opened in {{site.data.keyword.cloud_notm}} relating to the {{site.data.keyword.blockchainfull_notm}} Platform Remote Peer Community Edition. The Community Edition is meant for exploration, development and testing, and should not be used for production.-->
+{{site.data.keyword.blockchainfull_notm}} は、{{site.data.keyword.cloud_notm}} で開かれた、{{site.data.keyword.blockchainfull_notm}} Platform for AWS に関連するケースをサポートしていません。Community Edition は、検証、開発、およびテストを目的としたものであるため、実動用には使用しないでください。
