@@ -210,7 +210,7 @@ var peer = fabric_client.newPeer('grpcs://9.30.94.174:30167', { pem:  Buffer.fro
 You need to specify a `ssl-target-name-override` of `<something>.blockchain.com` in order for the peer to resolve the DNS request.
 -->
 
-**Note:** Because the peer is outside of {{site.data.keyword.cloud_notm}, other organizations on the {{site.data.keyword.blockchainfull_notm}} Platform network will not be able to find your peer's endpoint information in their Connection Profile. If other organizations need to send your peer a transaction to be endorsed, you need to provide them the peer url in and out of band operation.
+**Note:** Because the peer is outside of {{site.data.keyword.cloud_notm}}, other organizations on the {{site.data.keyword.blockchainfull_notm}} Platform network will not be able to find your peer's endpoint information in their Connection Profile. If other organizations need to send your peer a transaction to be endorsed, you need to provide them the peer url in and out of band operation.
 
 ### Using the SDK to join to a channel
 {: #peer-join-channel-sdk}

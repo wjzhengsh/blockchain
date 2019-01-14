@@ -36,7 +36,7 @@ The underpinning of a blockchain network based on Fabric is identities and permi
 ## Orderers
 {: #orderer}
 
-While the ordering service is often referred to as the "heart" of a network, its function is actually quite simple: to order transactions into blocks and send them back out to the peers to be written to their ledgers. In previous versions of Fabric, this functionality was bundled inside the peer, but starting with Fabric v1.0, it was separated into a separate component to increase peer performance and aberrations that could result in potential state forks.
+While the ordering service is often referred to as the "heart" of a network, its function is actually quite simple: to order transactions into blocks and send them back out to the peers to be written to their ledgers. In previous versions of Fabric, this functionality was bundled inside the peer, but starting with Fabric v1.0, it was separated into a separate component to increase peer performance and avoid aberrations that could result in potential state forks.
 
 At a physical level, this ordering function usually requires a set of orderers that are collectively known as the "ordering service", though in test or POC environments it is possible to use a single node (known as a SOLO orderer).
 

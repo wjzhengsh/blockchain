@@ -287,7 +287,7 @@ After a smart contract has been installed on a peer and instantiated on a channe
 1. Ensure that the smart contract you wish to upgrade is instantiated.
 2. Install the new version of the smart contract to a peer on the same network.
 3. Right-click on the instantiated smart contract, and select **Upgrade Smart Contract**.
-4. Optionally, choose a transaction to run as the new smart contract is instantiated.
+4. Optionally, choose a transaction to run after the new smart contract is instantiated.
 
 ## Submitting transactions
 

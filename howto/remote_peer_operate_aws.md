@@ -78,7 +78,7 @@ Because you add a new certificate, you need to restart the container for the pee
 ### Passing your peer's TLS cert to the SDK
 {: #aws-remote-peer-download-tlscert}
 
-You need to copy the contents of the TLS `cacert.pem` from the peer container to your application to authenticate communication from your SDK. Run the following command in the the Peer CLI container. Replace `<PEER_ENROLL_ID>` with the stack name of the remote peer you specified in the Quick Start template. (Recall two VPC instances are created.)
+You need to copy the contents of the TLS `cacert.pem` from the peer container to your application to authenticate communication from your SDK. Run the following command in the peer container. Replace `<PEER_ENROLL_ID>` with the stack name of the remote peer you specified in the Quick Start template. (Recall that two VPC instances are created.)
 ```
 cat /etc/hyperledger/<PEER_ENROLL_ID>/tls/ca.crt
 ```
@@ -220,7 +220,7 @@ On your local machine, open a command terminal and navigate to the directory whe
    ```
    {:codeblock}
 
-2. Copy your orderers TLS certificate from the {{site.data.keyword.blockchainfull_notm}} Platform into the MSP folder. Your connections profile contains the necessary cert. On the "Overview" screen of your Network Monitor, click the **Connection Profile** button and open the JSON file that contains the network credentials. Navigate to the `orderers` section. Copy the certificate that follows `"pem:"`, beginning with `-----BEGIN CERTIFICATE-----` and ending with `-----END CERTIFICATE----- `. Do not include the quotation marks.
+2. Copy your orderer's TLS certificate from the {{site.data.keyword.blockchainfull_notm}} Platform into the MSP folder. Your connections profile contains the necessary cert. On the "Overview" screen of your Network Monitor, click the **Connection Profile** button and open the JSON file that contains the network credentials. Navigate to the `orderers` section. Copy the certificate that follows `"pem:"`, beginning with `-----BEGIN CERTIFICATE-----` and ending with `-----END CERTIFICATE----- `. Do not include the quotation marks.
 
     From your terminal window, run the following commands:
     ```
