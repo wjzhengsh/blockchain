@@ -58,7 +58,7 @@ You can generate certificates with only identities that have been registered wit
 ### Generating certificates using the Network Monitor
 {: #certs-panel}
 
-You can use the Network Monitor to generate certificates using the admin identity, and then pass those certificates directly to to the SDK. Click the **Generate Certificate** button next to your admin identity to get a new signCert and private key from your CA. The **Certificate** field contains the signCert, just above the **Private Key**. You can click the copy icon at the end of each field to copy the value. You then need to save these certificates in a place where you can then import then into your application. For more information, see [developing applications tutorial](v10_application.html#enroll-panel). **Note** that {{site.data.keyword.blockchainfull_notm}} Platform doesn't store these certificates. You need to safely save and store them.
+You can use the Network Monitor to generate certificates using the admin identity, and then pass those certificates directly to the SDK. Click the **Generate Certificate** button next to your admin identity to get a new signCert and private key from your CA. The **Certificate** field contains the signCert, just above the **Private Key**. You can click the copy icon at the end of each field to copy the value. You then need to save these certificates in a place where you can then import then into your application. For more information, see [developing applications tutorial](v10_application.html#enroll-panel). **Note** that {{site.data.keyword.blockchainfull_notm}} Platform doesn't store these certificates. You need to safely save and store them.
 
 ### Uploading signing certificates to {{site.data.keyword.blockchainfull_notm}} Platform
 {: #upload-certs}
