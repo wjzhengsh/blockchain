@@ -25,7 +25,7 @@ lastupdated: "2018-12-07"
 
 **附註：**
 - {{site.data.keyword.blockchainfull_notm}} Platform 入門範本方案是開發和測試環境，不適用於正式作業工作負載。如果您需要正式作業環境，請參閱[關於企業方案](enterprise_plan.html)。您可能會先檢查[入門範本方案考量](#considerations)，再使用「入門範本方案」。
-- {{site.data.keyword.blockchainfull_notm}} Platform 是 {{site.data.keyword.cloud_notm}} 上的平台服務，而且所有成員資格供應項目都遵循服務水準合約 (SLA) 上的 [{{site.data.keyword.cloud_notm}} 服務條款 ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](https://www-03.ibm.com/software/sla/sladb.nsf/sla/bm-6605-13 "{{site.data.keyword.cloud_notm}} 服務條款")。「入門範本方案」網路跨**多個環境**在不同地理位置的資料中心進行佈建。
+- {{site.data.keyword.blockchainfull_notm}} Platform 是 {{site.data.keyword.cloud_notm}} 上的平台服務，而且所有成員資格供應項目都遵循服務水準合約 (SLA) 上的 [{{site.data.keyword.cloud_notm}} 服務條款 ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](http://www-03.ibm.com/software/sla/sladb.nsf/sla/bm "{{site.data.keyword.cloud_notm}} 服務條款")。「入門範本方案」網路跨**多個環境**在不同地理位置的資料中心進行佈建。
 
 ## 入門範本方案所提供的內容
 

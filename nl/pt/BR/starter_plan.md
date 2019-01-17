@@ -24,7 +24,7 @@ O {{site.data.keyword.blockchainfull}} Platform Starter Plan é uma opção de n
 
 **Notas:**
 - O {{site.data.keyword.blockchainfull_notm}} Platform Starter Plan é um ambiente de desenvolvimento e teste e não é adequado para cargas de trabalho de produção. Se você precisar de um ambiente de produção, veja [Sobre o Enterprise Plan](enterprise_plan.html). Você pode verificar as [Considerações do Starter Plan](#considerations) antes de usar o Starter Plan.
-- O {{site.data.keyword.blockchainfull_notm}} Platform é um serviço de plataforma no {{site.data.keyword.cloud_notm}} e todas as ofertas de associação seguem os [termos de Serviços do {{site.data.keyword.cloud_notm}} ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://www-03.ibm.com/software/sla/sladb.nsf/sla/bm-6605-13 "{{site.data.keyword.cloud_notm}} termos de Serviços") sobre os acordos de nível de serviço (SLAs). As redes do Starter Plan são provisionadas em **diversos ambientes** em data centers separados geograficamente.
+- O {{site.data.keyword.blockchainfull_notm}} Platform é um serviço de plataforma no {{site.data.keyword.cloud_notm}} e todas as ofertas de associação seguem os [termos de Serviços do {{site.data.keyword.cloud_notm}} ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](http://www-03.ibm.com/software/sla/sladb.nsf/sla/bm "{{site.data.keyword.cloud_notm}} termos de Serviços") sobre os acordos de nível de serviço (SLAs). As redes do Starter Plan são provisionadas em **diversos ambientes** em data centers separados geograficamente.
 
 ## O que o Starter Plan oferece
 
