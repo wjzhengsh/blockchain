@@ -24,7 +24,7 @@ lastupdated: "2018-08-31"
 
 **注:**
 - {{site.data.keyword.blockchainfull_notm}} Platform スターター・プランは、開発/テスト環境であり、実動ワークロードには適していません。 実稼働環境が必要な場合は、[エンタープライズ・プランについて](enterprise_plan.html)を参照してください。 Starter Plan を使用する前に、[Starter Plan に関する考慮事項](#considerations)を確認することをお勧めします。  
-- {{site.data.keyword.blockchainfull_notm}} Platform は {{site.data.keyword.cloud_notm}} のプラットフォーム・サービスであり、すべてのメンバーシップ・オファリングはサービス・レベル・アグリーメント (SLA) に関する [{{site.data.keyword.cloud_notm}} サービスのご利用条件 ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://www-03.ibm.com/software/sla/sladb.nsf/sla/bm-6605-13 "{{site.data.keyword.cloud_notm}} サービスのご利用条件") に従っています。スターター・プラン・ネットワークは、地理的に分離されたデータ・センターの**複数の環境**にまたがってプロビジョンされます。
+- {{site.data.keyword.blockchainfull_notm}} Platform は {{site.data.keyword.cloud_notm}} のプラットフォーム・サービスであり、すべてのメンバーシップ・オファリングはサービス・レベル・アグリーメント (SLA) に関する [{{site.data.keyword.cloud_notm}} サービスのご利用条件 ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](http://www-03.ibm.com/software/sla/sladb.nsf/sla/bm "{{site.data.keyword.cloud_notm}} サービスのご利用条件") に従っています。スターター・プラン・ネットワークは、地理的に分離されたデータ・センターの**複数の環境**にまたがってプロビジョンされます。
 
 ## スターター・プランでの提供内容
 

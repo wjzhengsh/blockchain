@@ -25,7 +25,7 @@ lastupdated: "2018-12-07"
 
 **注：**
 - {{site.data.keyword.blockchainfull_notm}} Platform 入门套餐是一个开发与测试环境，不适合生产工作负载。如果需要生产环境，请参阅[关于企业套餐](enterprise_plan.html)。在使用入门套餐之前，请检查[入门套餐注意事项](#considerations)。
-- {{site.data.keyword.blockchainfull_notm}} Platform 是 {{site.data.keyword.cloud_notm}} 上的平台服务，所有成员资格产品均遵循服务级别协议 (SLA) 上的 [{{site.data.keyword.cloud_notm}} 服务条款 ![外部链接图标](images/external_link.svg "外部链接图标")](https://www-03.ibm.com/software/sla/sladb.nsf/sla/bm-6605-13 "{{site.data.keyword.cloud_notm}} 服务条款")。入门套餐网络是跨**多个环境**进行供应的，这些环境分布在不同地理位置的多个数据中心。
+- {{site.data.keyword.blockchainfull_notm}} Platform 是 {{site.data.keyword.cloud_notm}} 上的平台服务，所有成员资格产品均遵循服务级别协议 (SLA) 上的 [{{site.data.keyword.cloud_notm}} 服务条款 ![外部链接图标](images/external_link.svg "外部链接图标")](http://www-03.ibm.com/software/sla/sladb.nsf/sla/bm "{{site.data.keyword.cloud_notm}} 服务条款")。入门套餐网络是跨**多个环境**进行供应的，这些环境分布在不同地理位置的多个数据中心。
 
 ## 入门套餐提供的内容
 
@@ -72,7 +72,7 @@ lastupdated: "2018-12-07"
     - 添加到较旧的入门套餐网络的新同级将基于 Fabric v1.2.1 进行构建。由于向后兼容，网络的性能不受影响。
     - 您可以在新的入门套餐网络中使用 Hyperledger Fabric v1.2 的[专用数据
 ![外部链接图标](images/external_link.svg "外部链接图标")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/private-data-arch.html "专用数据")。有关如何将专用数据与链代码配合使用的更多信息，请参阅[专用数据](howto/develop_chaincode.html#private-data)。
-    - 创建或更新通道时，您可以选择使用更高级的[通道配置 ![外部链接图标](images/external_link.svg "外部链接图标")](https://hyperledger-fabric.readthedocs.io/en/latest/config_update.html "通道配置") 设置和[访问控制列表 ![外部链接图标](images/external_link.svg "外部链接图标")](https://hyperledger-fabric.readthedocs.io/en/latest/access_control.html "访问控制列表")。 
+    - 创建或更新通道时，您可以选择使用更高级的[通道配置 ![外部链接图标](images/external_link.svg "外部链接图标")](https://hyperledger-fabric.readthedocs.io/en/latest/config_update.html "通道配置") 设置和[访问控制列表 ![外部链接图标](images/external_link.svg "外部链接图标")](https://hyperledger-fabric.readthedocs.io/en/latest/access_control.html "访问控制列表")。
 
     - Hyperledger Fabric v1.2 的 [服务发现 ![外部链接图标](images/external_link.svg "外部链接图标")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/discovery-overview.html "服务发现") 功能在 {{site.data.keyword.blockchainfull_notm}} 上不受支持。
 

@@ -24,7 +24,7 @@ lastupdated: "2018-12-07"
 
 **Note:**
 - {{site.data.keyword.blockchainfull_notm}} Platform piano Starter è un ambiente di sviluppo e test  non è adatto per i carichi di lavoro di produzione. Se ti serve un ambiente di produzione, vedi [Informazioni sul piano Enterprise](enterprise_plan.html). Potresti controllare [Considerazioni su piano Starter](#considerations) prima di utilizzare piano Starter.
-- {{site.data.keyword.blockchainfull_notm}} Platform è un servizio di piattaforma su {{site.data.keyword.cloud_notm}} e tutte le offerte di adesione seguono i [termini dei servizi {{site.data.keyword.cloud_notm}} ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://www-03.ibm.com/software/sla/sladb.nsf/sla/bm-6605-13 "{{site.data.keyword.cloud_notm}} - Termini dei servizi") sugli SLA (service level agreement). Le reti piano Starter vengono fornite in **più ambienti** in data center geograficamente separati.
+- {{site.data.keyword.blockchainfull_notm}} Platform è un servizio di piattaforma su {{site.data.keyword.cloud_notm}} e tutte le offerte di adesione seguono i [termini dei servizi {{site.data.keyword.cloud_notm}} ![Icona link esterno](images/external_link.svg "Icona link esterno")](http://www-03.ibm.com/software/sla/sladb.nsf/sla/bm "{{site.data.keyword.cloud_notm}} - Termini dei servizi") sugli SLA (service level agreement). Le reti piano Starter vengono fornite in **più ambienti** in data center geograficamente separati.
 
 ## Cosa offre il piano Starter
 

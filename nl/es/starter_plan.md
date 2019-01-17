@@ -25,7 +25,7 @@ El Plan inicial de la plataforma de {{site.data.keyword.blockchainfull}} es una 
 **Notas:**
 - El Plan inicial de la plataforma {{site.data.keyword.blockchainfull_notm}} es un entorno de desarrollo y de prueba, y no es adecuado para las cargas de trabajo de producción. Si necesita un entorno de producción, consulte [Acerca del Plan empresarial](enterprise_plan.html). Puede comprobar las [consideraciones del Plan inicial](#considerations) antes de utilizar el Plan inicial.
 - La plataforma {{site.data.keyword.blockchainfull_notm}} es un servicio de plataforma de {{site.data.keyword.cloud_notm}} y todas las ofertas pertenecientes siguen
-los [{{site.data.keyword.cloud_notm}}![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://www-03.ibm.com/software/sla/sladb.nsf/sla/bm-6605-13 "términos de servicio de {{site.data.keyword.cloud_notm}}") de los contratos de nivel de servicio (SLA). Las redes de plan inicial se suministran a través de **varios entornos** en centros de datos separados geográficamente.
+los [{{site.data.keyword.cloud_notm}}![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](http://www-03.ibm.com/software/sla/sladb.nsf/sla/bm "términos de servicio de {{site.data.keyword.cloud_notm}}") de los contratos de nivel de servicio (SLA). Las redes de plan inicial se suministran a través de **varios entornos** en centros de datos separados geográficamente.
 
 ## Qué ofrece el Plan inicial
 
