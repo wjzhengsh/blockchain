@@ -99,7 +99,7 @@ Hyperledger Fabric 架構的**模組性**以及網路角色的明確區分，所
 * 整合到入口網站的全年無休技術支援。
 * 無特許存取權的強化安全堆疊、惡意軟體與竄改防制、100% 加密，以及許多其他特性，適用於受監管行業中含有機密資料的網路。
 
-「入門範本方案」及「企業方案」是 {{site.data.keyword.cloud_notm}} 上的平台服務，而且這兩個方案都遵循服務水準合約 (SLA) 上的 [{{site.data.keyword.cloud_notm}} 服務條款 ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](https://www-03.ibm.com/software/sla/sladb.nsf/sla/bm-6605-13 "{{site.data.keyword.cloud_notm}} 服務條款")。請注意，「入門範本方案」及「企業方案」網路都跨**多個環境**在不同地理位置的資料中心進行佈建。
+「入門範本方案」及「企業方案」是 {{site.data.keyword.cloud_notm}} 上的平台服務，而且這兩個方案都遵循服務水準合約 (SLA) 上的 [{{site.data.keyword.cloud_notm}} 服務條款 ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](http://www-03.ibm.com/software/sla/sladb.nsf/sla/bm "{{site.data.keyword.cloud_notm}} 服務條款")。請注意，「入門範本方案」及「企業方案」網路都跨**多個環境**在不同地理位置的資料中心進行佈建。
 
 如需「入門範本方案」及「企業方案」的相關資訊，請參閱[關於入門範本方案](starter_plan.html)及[關於企業方案](enterprise_plan.html)。如果您準備好開始，請立即在 {{site.data.keyword.cloud_notm}} 上註冊 [IBP 入門範本或企業成員資格 ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps)！
 

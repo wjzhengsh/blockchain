@@ -23,7 +23,7 @@ lastupdated: "2018-12-07"
 
 **附註：**
 - {{site.data.keyword.blockchainfull_notm}} Platform 企業方案提供正式作業環境。如果您需要開發及測試環境，請參閱[關於入門範本方案](starter_plan.html)。
-- {{site.data.keyword.blockchainfull_notm}} Platform 是 {{site.data.keyword.cloud_notm}} 上的平台服務，而且所有成員資格供應項目都遵循服務水準合約 (SLA) 上的 [{{site.data.keyword.cloud_notm}} 服務條款 ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](https://www-03.ibm.com/software/sla/sladb.nsf/sla/bm-6605-13 "{{site.data.keyword.cloud_notm}} 服務條款")。「企業方案」網路跨**多個環境**在不同地理位置的資料中心進行佈建。
+- {{site.data.keyword.blockchainfull_notm}} Platform 是 {{site.data.keyword.cloud_notm}} 上的平台服務，而且所有成員資格供應項目都遵循服務水準合約 (SLA) 上的 [{{site.data.keyword.cloud_notm}} 服務條款 ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](http://www-03.ibm.com/software/sla/sladb.nsf/sla/bm "{{site.data.keyword.cloud_notm}} 服務條款")。「企業方案」網路跨**多個環境**在不同地理位置的資料中心進行佈建。
 
 IBM 為即將起始網路的成員提供圖形使用者介面，可引導網路起始者完成設定及佈建網路的重要步驟。其中包括邀請其他成員及設定控管規則。如需相關資訊，請參閱[控管企業方案網路](get_start.html)。網路部署完成之後，即可使用互動式圖形使用者介面（網路監視器）來監視網路的性能和活動；管理重要的網路活動，包括新的部署、新增或移除成員、鏈碼生命週期和頻道管理；以及尋求技術支援。如需相關資訊，請參閱[使用網路監視器](v10_dashboard.html)。
 

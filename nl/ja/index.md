@@ -50,7 +50,7 @@ lastupdated: "2018-08-31"
 - **エンタープライズ・プラス・プラン**は重要なデータを保護するために、追加のパフォーマンスと分離されたコンピュートおよびストレージ・リソース専用の実稼働環境を提供します。
 - **リモート・ピア**を使用すると、{{site.data.keyword.cloud_notm}} 外部でピアを実行でき、これにより、{{site.data.keyword.cloud_notm}} 内部の既存の {{site.data.keyword.blockchainfull_notm}} ネットワークを利用する一方で、より柔軟にブロックチェーン・ネットワークを拡大できます。
 
-{{site.data.keyword.blockchainfull_notm}} Platform は {{site.data.keyword.cloud_notm}} のプラットフォーム・サービスであり、すべてのメンバーシップ・オファリングはサービス・レベル・アグリーメント (SLA) に関する [{{site.data.keyword.cloud_notm}} サービスのご利用条件 ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://www-03.ibm.com/software/sla/sladb.nsf/sla/bm-6605-13 "{{site.data.keyword.cloud_notm}} サービスのご利用条件") に従っています。スターター・プランとエンタープライズ・プランの両方のネットワークは、地理的に分離されたデータ・センターの**複数の環境**にまたがってプロビジョンされていることに注意してください。
+{{site.data.keyword.blockchainfull_notm}} Platform は {{site.data.keyword.cloud_notm}} のプラットフォーム・サービスであり、すべてのメンバーシップ・オファリングはサービス・レベル・アグリーメント (SLA) に関する [{{site.data.keyword.cloud_notm}} サービスのご利用条件 ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](http://www-03.ibm.com/software/sla/sladb.nsf/sla/bm "{{site.data.keyword.cloud_notm}} サービスのご利用条件") に従っています。スターター・プランとエンタープライズ・プランの両方のネットワークは、地理的に分離されたデータ・センターの**複数の環境**にまたがってプロビジョンされていることに注意してください。
 
 [{{site.data.keyword.blockchainfull_notm}} メンバーシップ ![外部リンクのアイコン](images/external_link.svg "外部リンクのアイコン")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps)を今すぐお申し込みください。
 

@@ -101,7 +101,7 @@ Hyperledger Fabric 体系结构的**模块性**和网络角色的显著分离提
 * 集成到门户网站的全天候技术支持。
 * 强化的安全堆栈，具有无特权访问、恶意软件和篡改抵制、100% 加密，以及许多其他功能，用于具有受监管行业中敏感数据的网络。
 
-入门套餐和企业套餐是 {{site.data.keyword.cloud_notm}} 上的平台服务，两个套餐都遵循服务级别协议 (SLA) 上的 [{{site.data.keyword.cloud_notm}} 服务条款 ![外部链接图标](images/external_link.svg "外部链接图标")](https://www-03.ibm.com/software/sla/sladb.nsf/sla/bm-6605-13 "{{site.data.keyword.cloud_notm}} 服务条款")。请注意，入门套餐和企业套餐网络是跨**多个环境**进行供应的，这些环境分布在不同地理位置的多个数据中心。
+入门套餐和企业套餐是 {{site.data.keyword.cloud_notm}} 上的平台服务，两个套餐都遵循服务级别协议 (SLA) 上的 [{{site.data.keyword.cloud_notm}} 服务条款 ![外部链接图标](images/external_link.svg "外部链接图标")](http://www-03.ibm.com/software/sla/sladb.nsf/sla/bm "{{site.data.keyword.cloud_notm}} 服务条款")。请注意，入门套餐和企业套餐网络是跨**多个环境**进行供应的，这些环境分布在不同地理位置的多个数据中心。
 
 有关入门套餐和企业套餐的更多信息，请参阅[关于入门套餐](starter_plan.html)和[关于企业套餐](enterprise_plan.html)。如果您准备开始使用，请立即在 {{site.data.keyword.cloud_notm}} 上注册 [IBP 入门或企业成员资格 ![外部链接图标](images/external_link.svg "外部链接图标")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps)！
 

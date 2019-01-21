@@ -100,7 +100,7 @@ Hyperledger Fabric 아키텍처의 **모듈성** 및 네트워크 역할의 뚜�
 * 포털에 통합된 24/7 기술 지원.
 * 권한 부여 없는 액세스, 악성코드 및 변조 저항, 100% 암호화 및 규제 산업의 민감한 데이터가 있는 네트워크에 대한 더 많은 기능으로 강화된 보안 스택.
 
-스타터 플랜 및 엔터프라이즈 플랜은 {{site.data.keyword.cloud_notm}}의 플랫폼 서비스이며 두 플랜은 서비스 레벨 계약(SLA)의 [{{site.data.keyword.cloud_notm}} 서비스 이용 약관![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://www-03.ibm.com/software/sla/sladb.nsf/sla/bm-6605-13 "{{site.data.keyword.cloud_notm}} 서비스 이용 약관")을 준수합니다. 스타터 및 엔터프라이즈 플랜 네트워크는 모두 지리적으로 구분된 데이터 센터의 **여러 환경** 간에 프로비저닝됩니다.
+스타터 플랜 및 엔터프라이즈 플랜은 {{site.data.keyword.cloud_notm}}의 플랫폼 서비스이며 두 플랜은 서비스 레벨 계약(SLA)의 [{{site.data.keyword.cloud_notm}} 서비스 이용 약관![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](http://www-03.ibm.com/software/sla/sladb.nsf/sla/bm "{{site.data.keyword.cloud_notm}} 서비스 이용 약관")을 준수합니다. 스타터 및 엔터프라이즈 플랜 네트워크는 모두 지리적으로 구분된 데이터 센터의 **여러 환경** 간에 프로비저닝됩니다.
 
 스타터 플랜 및 엔터프라이즈 플랜에 대한 자세한 정보는 [스타터 플랜 정보](starter_plan.html) 및 [엔터프라이즈 플랜 정보](enterprise_plan.html)를 참조하십시오. 시작할 준비가 된 경우 지금 {{site.data.keyword.cloud_notm}}의 [IBP 스타터 또는 엔터프라이즈 멤버십 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps)에 가입하십시오! 
 
