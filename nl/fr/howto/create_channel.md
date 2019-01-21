@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-31"
+lastupdated: "2018-09-27"
 
 ---
 
@@ -31,9 +31,9 @@ Cliquez sur le bouton **Nouveau canal** dans l'écran "Canaux" de votre moniteur
 2. Invitez des membres de votre réseau en les sélectionnant et en cliquant sur le bouton **Ajouter un membre**. Personnalisez les droits en affectant des rôles pour chacun des membres invités, puis cliquez sur **Suivant**.
   ![Créer un canal 2](../images/create_channel_2.png "Panneau Créer un canal 2")
 
-    * Un opérateur de canal peut interroger ou mettre à jour le registre de canal. Cet opérateur a le droit d'**accepter** ou de **décliner** une demande de création de canal, et de soumettre une demande de mise à jour de canal. Il doit y avoir au moins un **Opérateur** dans chaque canal.
-    * Un rédacteur de canal peut mettre à jour le registre de canal.
-    * Un lecteur de canal peut uniquement interroger le registre de canal.
+    * Un opérateur de canal peut interroger ou mettre à jour le registre de canal. Un opérateur de canal a le droit d'**accepter** ou de **décliner** une demande de création de canal, et de soumettre une demande de mise à jour de canal. Il doit y avoir au moins un **Opérateur** dans chaque canal.
+    * Un rédacteur de canal peut mettre à jour le registre de canal, en appelant une fonction de code blockchain par exemple. Un rédacteur de canal peut aussi instancier un code blockchain sur un canal.
+    * Un lecteur de canal peut uniquement interroger le registre de canal, en appelant une fonction de code blockchain en lecture seule par exemple.
 
 3. Configurez les règles de mise à jour de canal en sélectionnant le nombre d'opérateurs de canal pour l'approbation d'une demande de mise à jour de canal, puis cliquez sur **Soumettre une demande**.
   ![Créer un canal 3](../images/create_channel_3.png "Panneau Créer un canal 3")
@@ -70,3 +70,6 @@ Tous les membres du canal recevront des notifications par courrier électronique
 * Les rédacteurs ou lecteurs de canal existants reçoivent des notifications par courrier électronique lors de la mise à jour de canal. Ils peuvent aussi trouver la demande avec le statut _Non requis_ dans l'écran **Notifications** du moniteur réseau.
 
 Lorsque suffisamment d'opérateurs de canal s'accordent sur la demande, tout membre de canal peut cliquer sur le bouton **Soumettre une Demande** et le canal est mis à jour. Tous les membres du canal peuvent voir le canal mis à jour dans l'écran "Canaux" du moniteur réseau.
+
+**Important :**
+Les règles de validation ne sont mises à jour automatiquement lorsque de nouvelles organisations rejoignent le canal et installent le code blockchain. Par exemple, si la règle requiert deux organisations sur cinq pour valider une transaction, elle ne sera pas mise à jour pour exiger deux organisations sur six lorsqu'une nouvelle organisation rejoint le canal. Au lieu de cela, la nouvelle organisation ne sera pas répertoriée dans la règle, et elle ne pourra pas valider les transactions. Vous pouvez ajouter une nouvelle organisation à une règle de validation en [mettant à jour le code blockchain pertinent](install_instantiate_chaincode.html#updating-a-chaincode). Pour plus d'informations, voir [Spécification de règles de validation pour le code blockchain](install_instantiate_chaincode.html#endorsement-policy).

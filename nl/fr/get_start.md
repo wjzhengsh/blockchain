@@ -54,7 +54,7 @@ Vous avez maintenant déployé un réseau {{site.data.keyword.blockchain}} qui p
 * Une autorité de certification spécifique aux membres
 * Des règles de gouvernance par défaut
 * Jusqu'à 15 membres de réseau  
-* Trois programmes de tri et deux noeuds d'autorité de certification intermédiaires
+* Trois services de tri et deux noeuds d'autorité de certification intermédiaires
 * Jusqu'à trois petits homologues pour chaque membre  
 * Un service de tri tolérant aux pannes
 * Jusqu'à 150 canaux

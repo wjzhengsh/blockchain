@@ -41,7 +41,7 @@ Pour comprendre la tarification, nous devons commencer par une présentation des
 
 -	**Organisations** – Entité quelconque ayant besoin de conserver une copie du registre blockchain et de valider des transactions. Une même entreprise peut avoir plusieurs organisations blockchain.
 -	**Homologues** – Noeud associé à une organisation et qui contient le registre de blockchain et valide des transactions. Les homologues sont associés à une organisation blockchain spécifique.
--	**Service de tri** – Composé d'un seul programme de tri (SOLO) ou de plusieurs. Le service de tri séquence les transactions, crée des blocs, et envoie les blocs aux homologues pour validation.
+-	**Service de tri** – Composé d'un seul service de tri (SOLO) ou de plusieurs. Le service de tri séquence les transactions, crée des blocs, et envoie les blocs aux homologues pour validation.
 -	**Autorité de certification** – Emet des certificats numériques à des fins d'identification à n'importe quel composant interactif.
 
 {{site.data.keyword.blockchainfull_notm}} Platform offre deux plans d'appartenance, le plan **Starter** et le plan **Enterprise**, que vous pouvez sélectionner dans {{site.data.keyword.cloud_notm}}. Les deux plans vous permettent de créer des organisations et vous allouent une autorité de certification. Les plans divergent quant aux homologues, autorités de certification et service de tri.
@@ -209,12 +209,12 @@ Le plan Enterprise ne limite pas le nombre d'instances réseau que vous pouvez m
 |-----|----------------|
 | Frais d'appartenance au réseau 1 | 1000$ |
 | Frais d'homologue | 1000$ |
-| Frais d'homologue | 1000$ |
+| Frais d'homologue | 1000$|
 | Frais d'appartenance au réseau 2 | 1000$ |
 | Frais d'homologue | 1000$ |
-| Frais d'homologue | 1000$ |
+| Frais d'homologue | 1000$|
 | Total | 6000$ |
 
 *Figure 11. Redevance pour deux réseaux du plan Enterprise, chacun avec la configuration réseau de base*
 
-Si l'autre membre utilise uniquement un réseau du plan Enterprise et conserve la même configuration réseau, sa facture, reflétée dans la figure 9, se présente comme avant. 
+Si l'autre membre utilise uniquement un réseau du plan Enterprise et conserve la même configuration réseau, sa facture, reflétée dans la figure 9, se présente comme avant.
