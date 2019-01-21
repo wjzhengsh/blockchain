@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-31"
+lastupdated: "2018-12-07"
 
 ---
 
@@ -12,7 +12,7 @@ lastupdated: "2018-08-31"
 {:screen: .screen}
 {:pre: .pre}
 
-# Exploitation d'un réseau de plan Enterprise
+# Utilisation du Moniteur réseau
 {: #v10_dashboard}
 
 
@@ -22,228 +22,261 @@ lastupdated: "2018-08-31"
 {{site.data.keyword.blockchainfull}} Platform comporte un Moniteur réseau qui fournit une vue d'ensemble de votre environnement de blockchain, notamment des composants réseau, des membres, des canaux rejoints, des données de performance et du code blockchain déployé. Le Moniteur réseau constitue également un point d'entrée pour l'exécution des API Swagger, le développement d'un réseau avec {{site.data.keyword.blockchainfull_notm}} Platform: Develop, et le test de modèles d'application.
 {:shortdesc}
 
-Vous pouvez [changer le nom du réseau de votre plan Enterprise](#ep-network-name) dans le Moniteur réseau.
+Utilisez ce tutoriel afin d'apprendre à utiliser votre Moniteur réseau pour exploiter un réseau de plan Enterprise ou Starter. Bien que la plupart des captures d'écran de ce tutoriel concernent le plan Enterprise, les instructions sont valables également pour le plan Starter. Lorsque certaines fonctions sont uniquement accessibles pour un plan, la section concernée est libellée **Pour les réseaux de plan Starter** ou **Pour les réseaux de plan Enterprise**.
+
+## Panneau de navigation de gauche
 
 Le Moniteur réseau présente les écrans suivants dans trois sections. Vous pouvez accéder à chaque écran dans le navigateur de gauche du Moniteur réseau.
 - La section **Mon réseau** contient les écrans "[Présentation](#overview)", "[Membres](#members)", "[Canaux](#channels)", "[Notifications](#notifications)", "[Autorité de certification](#ca)" et "[API](#apis)".
 - La section **Mon code** contient les écrans "[Ecriture de code](#write_code)", "[Installer le code](#chaincode)" et "[Essayer les modèles](#samples)".
 - L'écran "[Obtenir de l'aide](#support)" affiche des informations de support ainsi que les notes sur l'édition pour Helios et Hyperledger Fabric (codebase sur lequel repose {{site.data.keyword.blockchainfull_notm}} Platform).
 
+Le nom de votre réseau de blockchain figure en haut du panneau de navigation de gauche. Vous pouvez [changer le nom de votre réseau](#network-name) dans le Moniteur réseau.
+
 Vous pouvez [vérifier et configurer les préférences réseau](#network-preferences) dans le menu déroulant dans l'angle supérieur droit du Moniteur réseau.
 
 Ce tutoriel décrit chacun des écrans et fonctions ci-dessus.
 
-## Mettre à jour le nom de réseau
-{: #ep-network-name}
-
-Lorsque vous créez un réseau du plan Enterprise, {{site.data.keyword.blockchainfull_notm}} Platform affecte un nom à votre réseau. Toutefois, vous pouvez à tout moment mettre à jour ce nom réseau dans votre Moniteur réseau.
-
-Dans la partie supérieure gauche du Moniteur réseau, cliquez sur le nom de réseau et la zone devient éditable. Entrez le nouveau nom que vous voulez utiliser et appuyez sur **Entrée**. Le nom de votre réseau est mis à jour en quelques secondes.
-
-La **Figure 1** illustre les étapes de mise à jour du nom de réseau du plan Starter : nom affecté remplacé par "Starter Plan Network".
-
-![Mise à jour du nom réseau](images/update_network_name_ep.gif "Mise à jour du nom réseau")
-*Figure 1. Mise à jour du nom réseau*
-
-
 ## Présentation
 {: #overview}
 
-L'écran "Présentation" affiche des informations d'état en temps réel concernant vos ressources blockchain, notamment le programme de tri, l'autorité de certification et les noeuds homologue. Chaque ressource s'affiche sous quatre en-têtes distincts : **Type**, **Nom**, **Statut** et **Actions**. Pendant la création de votre réseau de blockchain, trois noeuds de programme de tri et deux noeuds d'autorité de certification sont crées automatiquement. Les autorités de certification sont spécifiques à un membre, alors que les noeuds de programme de tri sont des noeuds finaux communs et partagés au sein du réseau.
+L'écran "Présentation" affiche des informations d'état en temps réel concernant vos ressources blockchain, notamment le service de tri, l'autorité de certification et les noeuds homologue. Chaque ressource s'affiche sous quatre en-têtes distincts : **Type**, **Nom**, **Statut** et **Actions**. Pendant la création de votre réseau de blockchain, trois noeuds de service de tri et deux noeuds d'autorité de certification sont crées automatiquement. Les autorités de certification sont spécifiques à un membre, alors que les services de tri sont des noeuds finaux communs et partagés au sein du réseau.
 
-La **Figure 2** illustre l'écran "Présentation" :
+La **Figure 1** illustre l'écran "Présentation" :
 
 ![Présentation du réseau](images/myresources.png "Présentation du réseau")
-*Figure 2. Présentation du réseau*
+*Figure 1. Présentation du réseau*
 
 ### Actions de noeud
 L'en-tête **Actions** du tableau comporte des boutons qui permettent de démarrer ou d'arrêter vos ressources. Vous pouvez également démarrer ou arrêter un groupe de noeuds en sélectionnant plusieurs noeuds et en cliquant sur le bouton **Démarrer les éléments sélectionnés** ou **Arrêter les éléments sélectionnés**. Le bouton **Démarrer les éléments sélectionnés** ou **Arrêter les éléments sélectionnés** apparaît au-dessus du tableau lorsque vous sélectionnez un ou plusieurs noeuds.
 
-Notez que les actions Arrêter et Démarrer ne sont pas disponibles pour un noeud de programme de tri. En général, il n'est pas nécessaire d'arrêter et de démarrer des noeuds Homologues ou CA sur un réseau. Les opérations Arrêter et Démarrer sont fournies au cas où vous devez redémarrer un homologue, par exemple pour l'affichage dans un état nettoyé.
+Les actions Arrêter et Démarrer ne sont pas disponibles pour un noeud de service de tri. En général, il n'est pas nécessaire d'arrêter et de démarrer des noeuds Homologues ou CA sur un réseau. Les opérations Arrêter et Démarrer sont fournies au cas où vous devez redémarrer un homologue, par exemple pour l'affichage dans un état nettoyé.
 
-Vous pouvez également consulter les journaux de composant en cliquant sur **Afficher les journaux** dans la liste déroulante sous l'en-tête **Actions**. Ces journaux présentent les appels de procédure entre les différentes ressources réseau et ils sont utiles pour le débogage et le traitement des incidents. Vous pouvez par exemple les tester en arrêtant un homologue et en le ciblant avec une transaction ; vous verrez alors des erreurs de connectivité. Lorsque vous redémarrez l'homologue et relancez la transaction, vous verrez qu'une connexion est réussie. Vous
+Vous pouvez également consulter les journaux de composant en cliquant sur **Afficher les journaux** dans la liste déroulante sous l'en-tête **Actions**. Ces journaux présentent les appels de procédure entre les différentes ressources réseau et ils sont utiles pour le débogage et le traitement des incidents. Pour plus d'informations sur l'utilisation de vos journaux réseau, voir [Surveillance d'un réseau de blockchain](howto/monitor_network.html)
+
+Pour comprendre les effets de démarrage et d'arrêt d'un homologue, vous pouvez par exemple les tester en arrêtant un homologue et en le ciblant avec une transaction ; vous verrez alors des erreurs de connectivité dans les journaux. Lorsque vous redémarrez l'homologue et relancez la transaction, vous verrez qu'une connexion est réussie. Vous
 pouvez aussi arrêter un homologue pendant une longue période alors que vos canaux continuent à effectuer des transactions. l'homologue est redémarré, vous remarquez une synchronisation du registre dès qu'il reçoit les blocs qui ont été validés alors qu'il était arrêté. Une fois que le registre est complètement synchronisé, vous pouvez procéder à des appels et des requêtes normaux.
 
 ### Configuration de l'homologue distant  
 
-Si vous déployez un homologue distant en dehors de {{site.data.keyword.cloud_notm}}, vous devez indiquer les informations de noeud final d'API de votre réseau à l'homologue distant pendant la configuration. Cliquez sur le bouton **Configuration de l'homologue distant** pour extraire les informations de noeud final d'API du réseau afin de configurer votre homologue distant. La fenêtre en incrustation fournit les informations de noeud final d'API : ID réseau, MSP de l'organisation, Nom de l'autorité de certification, URL de l'autorité de certification et certificat TLS de l'autorité de certification. Vous pouvez cliquer sur l'icône copier à la fin de chaque zone pour copier la valeur de la zone, ou cliquer sur le bouton **Télécharger** pour sauvegarder les valeurs de toutes les zones dans un fichier JSON. Pour plus d'informations sur les homologues distants, voir [A propos des homologues distants](howto/remote_peer.html).
+Si vous déployez un homologue en dehors de {{site.data.keyword.cloud_notm}}, vous devez indiquer les informations de noeud final d'API de votre réseau pendant la configuration. Cliquez sur le bouton **Configuration de l'homologue distant** pour extraire les informations de noeud final d'API du réseau afin de configurer votre homologue. La fenêtre en incrustation fournit les informations de noeud final d'API : ID réseau, MSP de l'organisation, Nom de l'autorité de certification, URL de l'autorité de certification et certificat TLS de l'autorité de certification. Vous pouvez cliquer sur l'icône copier à la fin de chaque zone pour copier la valeur de la zone, ou cliquer sur le bouton **Télécharger** pour sauvegarder les valeurs de toutes les zones dans un fichier JSON. Pour plus d'informations, voir [A propos de {{site.data.keyword.blockchainfull_notm}} Platform pour Amazon Web Services](howto/remote_peer.html) et [A propose de {{site.data.keyword.blockchainfull_notm}} Platform pour {{site.data.keyword.cloud_notm}} Private](ibp-for-icp-about.html).
 
 ### Profil de connexion
-{: #enterprise-connection-profile}
-Vous pouvez consulter le ficher JSON pour les informations réseau de faible niveau de chaque ressource en cliquant sur le bouton **Profil de connexion**. Le profil de connexion contient toutes les informations de configuration dont vous avez besoin pour une application. Cependant, ce fichier contient uniquement les adresses de vos composants spécifiques et du programme de tri ; si vous devez cibler des homologues supplémentaires, vous devez obtenir leurs noeuds finaux. L'en-tête "url" affiche le noeud final d'API pour chaque composant. Ces noeuds finaux sont requis pour cibler les composants réseau spécifiques d'une application côté client, et leurs définitions résident généralement dans un fichier de configuration modélisé JSON qui est fourni avec l'application. Si vous personnalisez une application qui nécessite une validation par des homologues qui ne font pas partie de votre organisation, vous devrez obtenir ces adresses IP auprès des opérateurs concernés dans le cadre d'une opération externe. Les clients doivent pouvoir se connecter aux
+{: #connection-profile}
+
+Vous pouvez consulter le ficher JSON pour les informations réseau de faible niveau de chaque ressource en cliquant sur le bouton **Profil de connexion**. Le profil de connexion contient toutes les informations de configuration dont vous avez besoin pour une application. Cependant, ce fichier contient uniquement les adresses de vos composants spécifiques et du service de tri ; si vous devez cibler des homologues supplémentaires, vous devez obtenir leurs noeuds finaux. L'en-tête "url" affiche le noeud final d'API pour chaque composant. Ces noeuds finaux sont requis pour cibler les composants réseau spécifiques d'une application côté client, et leurs définitions résident généralement dans un fichier de configuration modélisé JSON qui est fourni avec l'application. Si vous personnalisez une application qui nécessite une validation par des homologues qui ne font pas partie de votre organisation, vous devrez obtenir ces adresses IP auprès des opérateurs concernés dans le cadre d'une opération externe. Les clients doivent pouvoir se connecter aux
 homologues dont ils attendent une réponse.
 
 ### Ajout d'homologues
 {: #peers}
-Cliquez sur le bouton **Ajouter des homologues** pour ajouter des noeuds homologue à votre réseau. Dans le plan Starter, deux homologues sont ajoutés automatiquement lors de la création du réseau. Dans le plan Enterprise, vous pouvez ajouter des noeuds homologue pour la première fois lorsque vous créez ou rejoignez un réseau ou ultérieurement dans le moniteur réseau. Vous pouvez vous trouver dans différents scénarios lorsque vous avez besoin d'homologues supplémentaires.  Par exemple, vous pouvez souhaiter que plusieurs homologues rejoignent le même canal à des fins de redondance. Chaque homologue traite les transactions du canal et leurs copies respectives du registre. Dans le cas où l'un des homologues est défaillant, les autres peuvent poursuivre le traitement des transactions et des demandes d'application.  Vous pouvez équilibrer de manière symétrique toutes les demandes d'applications entre homologues, ou vous pouvez cibler différents homologues pour différentes fonctions. Par exemple, vous pouvez utiliser un homologue pour interroger le registre et utiliser un autre homologue pour traiter les adhésions pour les mises à jour du registre.
 
-  Dans la fenêtre contextuelle "Ajouter des homologues", sélectionnez le nombre de noeuds homologue que vous voulez ajouter. <!--Currently only "small" peers are available for purchase, however there will eventually be "medium" and "large" to help accommodate larger workloads and higher transaction throughput.-->
+Les membres du réseau déploient des [homologues](blockchain_component_overview.html#peer) pour stocker leurs copies de registre et exécuter du code blockchain pour interroger ou mettre à jour le registre. Si la règle de validation définit un homologue en tant qu'homologue d'adhésion, l'homologue renvoie également les résultats de la validation aux applications.
+
+Cliquez sur le bouton **Ajouter des homologues** dans l'angle supérieur droit pour ajouter des noeuds homologue à votre réseau. Dans la fenêtre contextuelle "Ajouter des homologues", sélectionnez le nombre et la taille des noeuds homologue que vous voulez ajouter. Vous pouvez ajouter d'autres homologues pour vos organisations en fonction de vos besoins. Vous pouvez vous trouver dans différents scénarios lorsque vous avez besoin d'homologues supplémentaires. Par exemple, vous pouvez souhaiter que plusieurs homologues rejoignent le même canal à des fins de redondance. Chaque homologue traite les transactions du canal et leurs copies respectives du registre. Dans le cas où l'un des homologues est défaillant, les autres peuvent poursuivre le traitement des transactions et des demandes d'application. Vous pouvez équilibrer de manière symétrique toutes les demandes d'applications entre homologues, ou vous pouvez cibler différents homologues pour différentes fonctions. Par exemple, vous pouvez utiliser un homologue pour interroger le registre et utiliser un autre homologue pour traiter les adhésions pour les mises à jour du registre.
+
+Le **plan Starter** crée un homologue pour chacune des deux organisations formées lorsque le réseau est démarré par défaut. 
+
+
+### Stockage (pour les réseaux de plan Starter)
+{: #storage}
+
+La **Figure 2** illustre l'onglet "Stockage" qui affiche la consommation du stockage de votre réseau. 
+
+![Onglet Stockage dans l'écran Présentation](images/monitor_storage_starter.png "Stockage")
+*Figure 2. Stockage*
+
+Le diagramme "Ressources" affiche l'espace de stockage utilisé par les homologues et les autorités de certification. Toutes les organisations que vous créez ou invitez à rejoindre votre réseau sont incluses dans ce pool. Les organisations qui consomment des ressources sont répertoriés sur l'écran dans seconde puce.
+
+Le service de tri consomme le stockage d'un pool de ressources distinct. Votre service de tri peut consommer plus de ressources lorsque des membres du réseau créent de nouveaux canaux et génèrent de nouveaux blocs de transactions.
+
 
 ## Membres
 {: #members}
 L'écran "Membres" comporte deux onglets qui affichent des informations relatives aux membres du réseau (onglet "Membres") et des informations sur les certificats (onglet "Certificats").
 
-### Membres
+### Ajout de membres aux réseaux de plan Enterprise
 {: #members_tab}
+
 La **Figure 3** illustre l'écran "Membres" initial qui affiche les membres de votre réseau sous l'onglet "Membres" :
 
 ![Onglet Membres de l'écran Membres](images/monitor_members.png "Membres du réseau")
 *Figure 3. Membres du réseau*
 
-Outre les membres que vous invitez lors de la création du réseau, vous pouvez inviter d'autres membres sous l'onglet "Membres". Pour inviter un membre à rejoindre votre réseau, entrez le nom de l'institution et l'adresse électronique de l'opérateur et cliquez sur **Ajouter un membre**. Un réseau peut comporter au total 15 membres (initiateur du réseau compris). Pour retirer un membre de votre réseau, cliquez sur le symbole "retirer" en fin de ligne du membre.
+Vous pouvez inviter d'autres "membres" dans l'onglet "Membres" afin d'ajouter ceux qui sont initialement invités lorsque vous créez le réseau. Pour inviter un membre à rejoindre votre réseau, entrez le nom de l'institution et l'adresse électronique de l'opérateur et cliquez sur **Ajouter un membre**. Un réseau peut comporter au total 15 membres (initiateur du réseau compris). Pour retirer un membre de votre réseau, cliquez sur le symbole "retirer" en fin de ligne du membre.
+
+### Ajout de membres aux réseaux de plan Starter
+
+La **Figure 4** illustre l'écran "Ajouter un membre". 
+
+![Ajouter un membre](images/invite_member_starter.png "Ajouter un membre")
+*Figure 4. Ajouter un membre*
+
+Lorsque vous cliquez sur **Ajouter un membre**, deux options vous sont proposées :
+- **Inviter un membre**. Vous pouvez inviter d'autres organisations à devenir membres du réseau. Les organisation invitées peuvent rejoindre votre réseau et collaborer avec vous.
+- **Créer un membre**. Vous pouvez également créer un membre en utilisant votre adresse e-mail. Vous avez sur ce dernier le même contrôle que sur les deux organisations que vous recevez avec le plan Starter par défaut.
+
 
 ### Certificats
-La **Figure 4** présente l'écran "Membres" initial qui affiche les certificats de membre sous l'onglet "Certificats" :
+{: #certificates_tab}
+
+La **Figure 5** présente l'écran "Membres" initial qui affiche les certificats de membre sous l'onglet "Certificats" :
 
 ![Onglet Certificats de l'écran Membres](images/monitor_certificates.png "Certificats")
-*Figure 4. Certificats*
+*Figure 5. Certificats*
 
 Les opérateurs peuvent gérer les certificats des membres d'une même institution sous l'onglet "Certificats". Cliquez sur **Ajouter le certificat** pour afficher l'écran "Ajouter le certificat". Donnez un nom à votre certificat, collez vos certificats côté client au format PEM dans la zone "Clé", puis cliquez sur **Soumettre**. Vous devez redémarrer vos homologues pour que les certificats côté client puissent être pris en compte.
-<!--
-For more information about generating your certificate key, see [Generating the client-side certificates](v10_application.html#generating-the-client-side-certificates).-->
+
+Pour plus d'informations sur la génération de votre clé de certificat, voir  [Inscription de votre application](v10_application.html#enroll-app).
+
 
 ## Canaux
 {: #channels}
 
-Vous pouvez diviser votre réseau en canaux, où chaque canal représente un sous-ensemble de membres qui sont autorisés à consulter les données du code blockchain instancié sur ce canal. Chaque réseau doit comporter au moins un canal pour que les transactions puissent s'effectuer. Chaque canal a un registre unique et les utilisateurs doivent être correctement authentifiés pour exécuter des opérations de lecture/écriture sur ce registre. Si vous n'êtes pas sur un canal, vous ne pouvez voir aucune donnée.
+Les canaux, qui se composent d'un sous-ensemble de membres réseau qui souhaitent effectuer des transactions en privé, fournissent l'isolement de données et la confidentialité en autorisant les membres d'un canal à établir des règles spécifiques et un registre distinct, auxquels seuls les membres du canal peuvent accéder. Chaque réseau doit comporter au moins un canal pour que les transactions puissent s'effectuer. Chaque canal a un registre unique et les utilisateurs doivent être correctement authentifiés pour exécuter des opérations de lecture/écriture sur ce registre. Si vous n'êtes pas sur un canal, vous ne pouvez voir aucune donnée.
 
-La **Figure 5** illustre l'écran de tableau de bord initial qui affiche une présentation de tous les canaux de votre réseau.
+La **Figure 6** illustre l'écran de tableau de bord initial qui affiche une présentation de tous les canaux de votre réseau.
 
 ![Canaux](images/channels.png "Canaux")
-*Figure 5. Canaux*
+*Figure 6. Canaux*
 
 La création d'un canal entraîne la génération d'un registre spécifique à un canal. Pour plus d'informations, voir [Création d'un canal](howto/create_channel.html).
 
 Vous pouvez aussi sélectionner un canal existant afin d'afficher des détails plus précis sur ce canal, l'appartenance et le code blockchain actif. Pour plus d'informations, voir [Surveillance d'un réseau](howto/monitor_network.html).
 
+Si vous avez envoyé par téléchargement un nouveau certificat vers la plateforme à l'aide de l'[onglet "Certificats"](#certificates_tab) de l'écran "Membres", vous pouvez utiliser ce panneau pour ajouter le certificat à un canal. Cliquez sur **Synchroniser le certificat** dans la liste déroulante sous l'en-tête **Actions** en regard du canal concerné. Cela vous permet d'utiliser le canal, avec la capacité d'instancier un code blockchain sur le canal. Pour plus d'informations, voir [Envoi par téléchargement de certificats à {{site.data.keyword.blockchainfull_notm}} Platform](certificates.html#upload-certs) dans le tutoriel [Gestion des certificats](certificates.html).
+
+
 ## Notifications
 {: #notifications}
 
-Vous pouvez traiter les demandes en attente et consulter les demandes terminées dans l'écran "Notifications".
+Lorsque vous créez un canal ou êtes invité à rejoindre un nouveau canal, une notification s'affiche dans le moniteur réseau. Vous pouvez afficher et répondre à ces demandes dans l'écran "Notifications".
 
-La **Figure 6** illustre l'écran "Notifications" :
+La **Figure 7** illustre l'écran "Notifications" :
 
 ![Notifications](images/notifications.png "Notifications")
-*Figure 6. Notifications*
-
-Lorsque vous créez un canal ou êtes invité à rejoindre un nouveau canal, une notification s'affiche dans le moniteur réseau.
+*Figure 7. Notifications*
 
 Les demandes sont regroupées dans les sous-onglets "Toutes", "En attente" et "Terminée". Les nombres figurant à la suite de l'en-tête du sous-onglet indiquent le nombre de demandes dans chaque sous-onglet.
    * Vous pouvez trouver toutes vos demandes sous le sous-onglet "Toutes".
    * Les demandes que vous n'avez pas acceptées ou que vous avez refusées, ou que vous n'avez pas encore consultées, figurent sous le sous-onglet "En attente". Cliquez sur le bouton **Inspecter la demande** pour consulter la demande, qui comporte la règle de canal et les membres, ainsi que le statut de vote. Si vous être un opérateur de canal, vous pouvez soit **Accepter** soit **Décliner** la demande, ou la traiter à un autre moment en cliquant sur **Plus tard**. Si la demande est acceptée par suffisamment d'opérateurs de canal, vous pouvez cliquer sur **Soumettre une demande** pour activer la mise à jour de canal.
-   * Une demande soumise apparaît alors dans le sous-onglet "Terminée".  Vous pouvez cliquez sur **Inspecter la demande** pour afficher ses détails.
+   * Une demande soumise apparaît alors dans le sous-onglet "Terminée". Vous pouvez cliquez sur **Inspecter la demande** pour afficher ses détails.
 
 Si vous avez une longue liste de demandes, vous pouvez rechercher dans la zone de recherche située dans la partie supérieure de l'écran.
 
 Les demandes en attente peuvent être supprimées en sélectionnant la case en regard et en cliquant sur **Supprimer la demande**. Notez qu'une demande terminée ne peut pas être supprimée.
+
 
 ## Autorité de certification
 {: #ca}
 
 Le tableau à l'écran "Autorité de certification" panneau affiche toutes les identités qui ont été enregistrés auprès de votre autorité de certification, y compris l'admin, les homologues et les applications client de votre organisation. Vous pouvez également utiliser cet écran pour enregistrer une nouvelle identité.
 
-La **Figure 7** illustre l'écran "Autorité de certification" :
+La **Figure 8** illustre l'écran "Autorité de certification" :
 
 ![Autorité de certification](images/CA_screen.png "Autorité de certification")
-*Figure 7. Autorité de certification*
+*Figure 8. Autorité de certification*
 
-Cliquez sur le bouton **Générer le certificat** pour obtenir un nouveau certificat public et une clé privée auprès de votre autorité de certification. Ce panneau peut être utilisé comme alternative à la [génération d'une paire de clés publique et privée](v10_application.html#register-app) pour une application client qui utilise le logiciel SDK Fabric. La zone **Certificat** contient votre certificat public, également appelé signCert ou certificat d'inscription, juste au-dessus de votre **clé privée**. Vous pouvez cliquer sur l'icône copier à la fin de chaque champ pour copier la valeur. **Notez** qu'{{site.data.keyword.blockchainfull_notm}} Platform ne stocke pas ces certificats. Vous devez les enregistrer et les stocker en lieu sûr. Consultez les [informations MSP](certificates.html#msp) pour plus de détails.
+Cliquez sur le bouton **Génération de certificat** en regard de votre identité admin pour obtenir un nouveau certificat public et une clé privée auprès de votre autorité de certification. La zone **Certificat** contient le certificat public, également appelé signCert ou certificat d'inscription, juste au-dessus de la **clé privée**. Vous pouvez cliquer sur l'icône copier à la fin de chaque champ pour copier la valeur. Ce panneau peut être utilisé comme alternative à la génération d'une paire de clés publique et privée pour une application client qui utilise le logiciel SDK Fabric. Pour en savoir plus, voir le [tutoriel relatif au développement d'applications](v10_application.html#enroll-panel). **Notez** qu'{{site.data.keyword.blockchainfull_notm}} Platform ne stocke pas ces certificats. Vous devez les enregistrer et les stocker en lieu sûr.
 
 Cliquez sur le bouton **Ajouter un utilisateur** pour enregistrer une nouvelle identité à votre organisation. Dans la fenêtre en incrustation **Ajouter un utilisateur**, renseignez les zones suivantes, puis cliquez sur **Soumettre**.
-  - **ID :** Il s'agit du nom de votre nouvelle identité, parfois appelée `ID inscription`. **Sauvegardez cette valeur** à des fins de configuration d'un homologue distant ou d'inscription d'une nouvelle application.
-  - **Valeur confidentielle :** Il s'agit du mot de passe de votre identité, parfois appelé `Valeur confidentielle d'inscription`  **Sauvegardez cette valeur**  à des fins de configuration d'un homologue distant ou d'inscription d'une nouvelle application.  
+  - **ID d'inscription :** Il s'agit du nom de votre nouvelle identité, parfois appelée `ID inscription`. **Sauvegardez cette valeur** à des fins de configuration d'un homologue distant ou d'inscription d'une nouvelle application.
+  - **Secret d'inscription :** Il s'agit du mot de passe de votre identité, parfois appelé `Secret d'inscription`. **Sauvegardez cette valeur** à des fins de configuration d'un homologue distant ou d'inscription d'une nouvelle application.  
   - **Type :** Sélectionnez le type d'identité que vous voulez enregistrer, qu'il s'agisse d'un homologue ou d'une application client.
   - **Affiliation :** Il doit s'agir de l'affiliation au sein de votre organisation, par exemple `org1`, à laquelle l'identité va appartenir.
   - **Nombre d'inscriptions maximum :** Vous pouvez utiliser cette zone pour limiter le nombre de fois où vous pouvez inscrire ou générer des certificats à l'aide de cette identité. Si vous laissez cette zone vide, la valeur par défaut est un nombre illimité d'inscriptions.
 
 Vous pouvez en savoir plus sur l'autorité de certification en consultant le tutoriel relatif à la [Gestion des certificats sur {{site.data.keyword.blockchainfull_notm}} Platform](certificates.html).
 
+
 ## API
 {: #apis}
 
 {{site.data.keyword.blockchainfull_notm}} Platform expose dans Swagger un certain nombre d'API REST que vous pouvez utiliser pour gérer les noeuds, les homologues et les membres de votre réseau. Vos applications peuvent recourir à ces API pour gérer d'importantes ressources réseau sans utiliser le moniteur réseau.
 
-La **Figure 8** illustre l'écran "API" :
+La **Figure 9** illustre l'écran "API" :
 
 ![API](images/API_screen.png "API")
-*Figure 8. API*
+*Figure 9. API*
 
 Cliquez sur le lien **Interface utilisateur swagger** pour ouvrir l'identificateur Swagger. Notez que vous devez autoriser l'interface utilisateur swagger à l'aide de vos données d'identification réseau (qui se trouvent sur la page d'API) avant d'exécuter les API. Pour plus de détails, voir [Interaction avec le réseau à l'aide d'API Swagger](howto/swagger_apis.html).
 
 ## Développement de Code
 {: #write-code}
 
-Le plan Enterprise intègre {{site.data.keyword.blockchainfull_notm}} Platform: Develop et fournit un environnement de développement avec des outils et des technologies standard du secteur. Vous pouvez développer votre réseau dans l'environnement en ligne ou en local. Dès que vous avez développé un réseau, vous pouvez le redéployer dans votre réseau de plan Enterprise.
+Le plan Starter et le plan Enterprise s'intègrent à {{site.data.keyword.blockchainfull_notm}} Platform: Develop et fournissent un environnement de développement avec des outils et des technologies standard du secteur. Vous pouvez développer votre réseau dans l'environnement en ligne ou en local. Dès que vous avez développé un réseau, vous pouvez le redéployer dans votre réseau de plan Enterprise.
 
-La **Figure 9** illustre l'écran "Développement de code" :
+La **Figure 10** illustre l'écran "Développement de code" :
 
 ![Développement de code](images/write_code.png "Développement de code")
-*Figure 9. Développement de code*
+*Figure 10. Développement de code*
 
 Pour plus d'informations sur le développement et le déploiement de votre code avec le plan Enterprise, voir [Déploiement d'un réseau d'entreprise dans un plan Starter](develop_enterprise.html).
 
 ## Installer le code
 {: #chaincode}
 
-Le code blockchain, également appelé "contrat intelligent", est l'élément logiciel qui contient un ensemble de fonctions permettant d'interroger et de mettre à jour le registre. Ils sont installés sur des homologues et instanciés sur un canal.
+Le code blockchain, également appelé "smart contract", est l'élément logiciel qui contient un ensemble de fonctions permettant d'interroger et de mettre à jour le registre. Ils sont installés sur des homologues et instanciés sur un canal.
 
-La **Figure 10** illustre l'écran "Installer le code" :
+La **Figure 11** illustre l'écran "Installer le code" :
 
 ![Installer le code](images/chaincode_install_overview.png "Installer le code")
-*Figure 10. Installer le code*
+*Figure 11. Installer le code*
 
 Un code blockchain est tout d'abord installé sur le système de fichiers d'un homologue, puis il est instancié sur un canal. Pour plus d'informations, voir [Installation, instanciation et mise à jour d'un code blockchain](howto/install_instantiate_chaincode.html).
+
 
 ## Essayer les modèles
 {: #samples}
 
 Des modèles d'application vous permettent d'avoir une meilleure compréhension d'un réseau de blockchain et du développement d'application. Suivez les liens **Afficher sur GitHub** pour découvrir comment utiliser les modèles et les déployer sur {{site.data.keyword.blockchainfull_notm}} Platform. Pour plus d'informations sur le développement et le déploiement de vos modèles, voir [Déploiement de modèles d'application](howto/prebuilt_samples.html).
 
-La **Figure 11** illustre l'écran "Essayer les modèles" :
+La **Figure 12** illustre l'écran "Essayer les modèles" :
 
 ![Essayer les modèles](images/sample_overview_ep.png "Essayer les modèles")
-*Figure 11. Essayer les modèles*
+*Figure 12. Essayer les modèles*
+
 
 ## Obtenir de l'aide
 {: #support}
 
-L'écran "Obtenir de l'aide" comporte deux onglets qui fournissent des informations de support sous l'onglet "Support" et une description des fonctions nouvelles et modifiées de chaque édition sous l'onglet "Notes sur l'édition".
+L'écran "Obtenir de l'aide" comporte un onglet "Support" qui fournit une liste des ressources pour les développeurs et un onglet "Notes sur l'édition" qui décrit les nouvelles fonctions de  {{site.data.keyword.blockchainfull}} Platform.
 
-La **Figure 12** illustre l'écran "Support" initial qui comporte des informations de support sous l'onglet "Support" :
+La **Figure 13** affiche des informations sous l'onglet "Support" initial :
 
 ![Support](images/support.png "Support")
-*Figure 12. Support Blockchain*
+*Figure 13. Support Blockchain*
+
 
 ### Ressources de blockchain et forums de support
 {: #support-forums}
 
-Utilisez les liens et les ressources de cette page pour accéder à des forums de dépannage et de support.
+Utilisez les ressources de l'onglet "Support" pour résoudre les problèmes et obtenir de l'aide auprès de {{site.data.keyword.IBM_notm}} et de la communauté  Fabric. Pour plus d'informations sur les liens de l'onglet "Support", voir  [Ressources et forums de support](ibmblockchain_support.html#resources) dans [Support](ibmblockchain_support.html).
 
-* [Docs de service {{site.data.keyword.blockchainfull_notm}}](index.html), qui est le présent site de documentation, fournit une aide sur la mise en route d'{{site.data.keyword.blockchainfull}} Platform sur {{site.data.keyword.Bluemix_notm}}. Vous pouvez accéder aux rubriques correspondantes depuis le navigateur de gauche ou rechercher un terme à l'aide de la fonction de recherche située en haut de l'écran.
-* [IBM Code ![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://developer.ibm.com/code/technologies/blockchain/) contient des modèles de code et des informations pour les développeurs.
-* [IBM dWAnswers ![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://developer.ibm.com/answers/smartspace/blockchain/) sous **Ticket de demande de service** fait office de plateforme pour les questions et les réponses. Vous pouvez rechercher des réponses à des questions préalablement posées ou soumettre une nouvelle question. Assurez-vous d'inclure le mot clé **blockchain** dans votre question.
-  Vous pouvez également soumettre un ticket pour l'équipe de support {{site.data.keyword.blockchainfull_notm}} à l'aide de l'option **Ouvrir un ticket de demande de service {{site.data.keyword.Bluemix_notm}}**.  Partagez les détails et les fragments de code de votre instance {{site.data.keyword.Bluemix_notm}} spécifique.
-* [Modèles d'application![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://github.com/ibm-blockchain) sous **Modèles d'application blockchain** fournit une aide et des exemples de fragment de code pour vous aider dans le développement d'applications.
-* [Hyperledger Fabric ![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-1.1/) et [Communauté Hyperledger Fabric![Icône de lien externe](images/external_link.svg "Icône de lien externe")](http://jira.hyperledger.org/secure/Dashboard.jspa) sous **Hyperledger Fabric** fournissent des données plus détaillées sur la pile Hyperledger Fabric.Dialoguez avec un [expert Hyperledger![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://chat.hyperledger.org/channel/general) si vous avez des questions sur le code Hyperledger Fabric.
-* [{{site.data.keyword.blockchainfull_notm}} Platform: Develop ![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://ibm-blockchain.github.io/develop/) sous **Hyperledger Composer** fournit davantage de détails sur Hyperledger Composer, c'est-à-dire {{site.data.keyword.blockchainfull_notm}} Platform: Develop. Vous pouvez trouver des réponses ou poser des questions dans la [communauté Hyperledger Composer![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://chat.hyperledger.org/channel/general) et [StackOverflow ![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://stackoverflow.com/questions/tagged/hyperledger-composer).
+[IBM dWAnswers ![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://developer.ibm.com/answers/smartspace/blockchain/) est un forum de communauté pour les utilisateurs de {{site.data.keyword.blockchainfull_notm}} Platform et d'Hyperledger Fabric et il est surveillé par des experts IBM. Vous pouvez rechercher des réponses à des questions préalablement posées ou soumettre une nouvelle question. Si vous ne parvenez pas à déboguer votre problème ou à obtenir une réponse à votre question, soumettez un cas sur le portail de service {{site.data.keyword.cloud_notm}}. Pour plus d'informations, voir  [Soumission de cas de support](ibmblockchain_support.html#support-cases).
 
-Si vous ne parvenez pas à déboguer votre problème ou à obtenir une réponse à votre question, soumettez un cas sur le portail de service {{site.data.keyword.cloud_notm}}. Pour plus d'informations, voir [Support](ibmblockchain_support.html).
 
-La **Figure 13** et la **Figure 14** illustrent l'écran "Obtenir de l'aide" initial qui comporte les fonctions nouvelles et modifiées de chaque édition sous l'onglet "Notes sur l'édition" :
+### Notes sur l'édition de Fabric
+{: #release-notes}
+
+L'onglet "Notes sur l'édition" affiche les fonctions les plus récentes de votre réseau. Le bouton "Interface utilisateur du Moniteur réseau" permet d'affiche la liste des nouvelles fonctions et des correctifs pour l 'expérience utilisateur {{site.data.keyword.blockchainfull}} Platform. Le bouton "Hyperledger Fabric" vous redirige vers les notes sur l'édition pour la version de votre réseau d'Hyperledger Fabric et de l'autorité de certification Fabric.
+
+La **Figure 14** illustre les notes sur l'édition pour l'interface utilisateur du Moniteur réseau.
 
 ![Notes sur l'édition helios](images/releasenotes_helios.png "Notes sur l'édition de l'interface utilisateur du Moniteur réseau")
-*Figures 13. Notes sur l'édition pour Helios*
+*Figures 14. Notes sur l'édition pour Helios*
+
+La **Figure 15** illustrez les notes sur l'édition pour votre version de réseau  d'Hyperledger Fabric et de l'autorité de certification Fabric.
 
 ![Notes sur l'édition Fabric](images/releasenotes_Fabric.png "Notes sur l'édition de Fabric")
-*Figures 14. Notes sur l'édition pour Fabric*
+*Figures 15. Notes sur l'édition pour Fabric*
 
 
 ## Préférences réseau
 {: #network-preferences}
 
-Cliquez dans l'angle supérieur droit et ouvrez le menu déroulant, puis les **Préférences réseau**. La fenêtre Préférences réseau s'affiche. Elle affiche les informations de base de votre réseau, comme le nom réseau, la version Fabric, l'emplacement réseau dans {{site.data.keyword.cloud_notm}}, ainsi que le type de base de données d'état. 
+Cliquez dans l'angle supérieur droit et ouvrez le menu déroulant, puis les **Préférences réseau**. La fenêtre Préférences réseau s'affiche. Elle affiche les informations de base de votre réseau, comme le nom réseau, la version Fabric, l'emplacement réseau dans {{site.data.keyword.cloud_notm}}, ainsi que le type de base de données d'état.
 
-Les réseaux du plan Enterprise créés après le 15 mai 2048 opéreront avec Hyperledger Fabric v1.1. Si vous créez des réseaux après la mise à niveau, vous pouvez également gérer les délai d'inactivité Web et le TLS mutuel pour votre réseau dans la fenêtre Préférences réseau. Ces paramètres peuvent être modifiés par l'initiateur du réseau uniquement.
+Les **réseaux de plan Enterprise** créés après le 15 mai 2018 opéreront avec Hyperledger Fabric version 1.1.1. Si vous créez des réseaux après la mise à niveau, vous pouvez également gérer les délai d'inactivité Web et le TLS mutuel pour votre réseau dans la fenêtre Préférences réseau. Ces paramètres peuvent être modifiés par l'initiateur du réseau uniquement.
 
 ### Délai d'inactivité Web
 {: #web-inactivity-timeout}
@@ -252,16 +285,21 @@ Les réseaux du plan Enterprise créés après le 15 mai 2048 opéreront avec Hy
 
 Le délai d'attente d'inactivité Web est défini sur **Désactivé** par défaut. Si vous définissez le délai d'attente d'inactivité Web sur **Activé**, tout membre du réseau sera déconnecté automatiquement au bout de 10 minutes d'inactivité. Lorsque le délai d'attente d'inactivité Web atteint 10 minutes, la fonction Délai d'inactivité Web met fin aux sessions Web inactives afin de garantir la sécurité du compte des membres du réseau. Si vous cliquez sur un lien ou si vous actualisez le Moniteur réseau, le délai d'inactivité Web est réinitialisé. Avant d'atteindre les 10 minutes, il est possible d'arrêter la session Web en fermant la fenêtre ou l'onglet du navigateur.
 
-### TLS mutuel
+La **Figure 16** illustre la fenêtre "Préférences réseau" :
+
+![Préférences réseau](images/network_preferences.gif "Préférences réseau")
+*Figure 16. Préférences réseau*
+
+### TLS mutuel (pour les réseaux de plan Enterprise)
 {: #mutual-tls}
 
-Le protocole TLS mutuel sécurise la communication entre votre application et votre réseau.
+Les **réseaux de plan Enterprise** vous offrent la possibilité d'activer la fonction TLS mutuel afin de sécuriser la communication entre votre application et vos composants de blockchain.
 
 **Remarque **: Seul un **initiateur réseau** peut activer ou désactiver le TLS mutuel. Il s'agit d'un paramètre de niveau réseau et il concerne tous les membres réseau.
 
 Le bouton TLS mutuel est défini sur **Désactivé** par défaut. Si vous activez TLS mutuel, vous devez mettre à jour vos applications afin de prendre en charge cette fonction. Sinon, vos applications ne pourront pas communiquer avec le réseau.
 
-Pour un réseau du plan Enterprise Fabric 1.1, chaque organisation a sa propre autorité de certification TLS mutuel. Les informations nécessaires pour la connexion  à l'autorité de certification TLS mutuel sont disponibles dans le [Profil de connexion](##enterprise-connection-profile) accessible depuis votre écran **Présentation** dans le Moniteur réseau en cliquant sur le bouton **Profil de connexion**.  Le profil de connexion contient les informations nécessaires à la connexion à l'autorité de certification et à l'obtention des certificats dont vous avez besoin pour la connexion à votre réseau.
+Pour un réseau du plan Enterprise Fabric 1.1, chaque organisation a sa propre autorité de certification TLS mutuel. Les informations nécessaires pour la connexion  à l'autorité de certification TLS mutuel sont disponibles dans le [Profil de connexion](#enterprise-connection-profile) accessible depuis votre écran **Présentation** dans le Moniteur réseau en cliquant sur le bouton **Profil de connexion**. Le profil de connexion contient les informations nécessaires à la connexion à l'autorité de certification et à l'obtention des certificats dont vous avez besoin pour la connexion à votre réseau.
 
 Dans le profil de connexion, localisez la section `certificateAuthorities` où vous trouverez les attributs suivants qui sont nécessaires à l'inscription et à l'obtention des certificats pour communiquer avec votre réseau à l'aide de TLS mutuel.
 
@@ -283,11 +321,51 @@ Before Enterprise Plan upgrades to Fabric v1.1, all network peers store data in 
 
 To use CouchDB, your data must be stored in a data format that can be modeled in chaincode, such as JSON. If the decision is made to migrate from LevelDB to CouchDB, the {{site.data.keyword.blockchainfull_notm}} Platform will migrate your data from key-value format to the CouchDB format automatically.
 
-If you switch to CouchDB, you need to update your chaincode to take advantage of indexes and rich queries. For more information about CouchDB and how to set up index, see [CouchDB as the State Database ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/latest/couchdb_as_state_database.html) in the Hyperledger Fabric documentation. You can also find an example that uses an index with chaincode in this [Fabric tutorial![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/couchdb_tutorial.html){:new_window}. For more information about updating chaincode in {{site.data.keyword.blockchainfull_notm}} Platform, see [Updating a chaincode](howto/install_instantiate_chaincode.html#updating-a-chaincode).
+If you switch to CouchDB, you need to update your chaincode to take advantage of indexes and rich queries. For more information about CouchDB and how to set up indexes, see [Best practices when using CouchDB](../v10_application.html#couchdb-indices) in the Developing applications tutorial. For more information about updating chaincode in {{site.data.keyword.blockchainfull_notm}} Platform, see [Updating a chaincode](howto/install_instantiate_chaincode.html#updating-a-chaincode).
 
 -->
 
-La **Figure 15** affiche la fenêtre "Préférences réseau" :
+La **Figure 17** affiche la fenêtre "Préférences réseau" :
 
 ![Préférences réseau](images/network_preferences_ep_tmp.png "Préférences réseau")
-*Figure 15. Préférences réseau*
+*Figure 17. Préférences réseau*
+
+## Mettre à jour le nom de réseau
+{: #network-name}
+
+Lorsque vous créez une instance de plan Starter ou de plan Enterprise, {{site.data.keyword.blockchainfull_notm}} Platform affecte un nom à votre réseau. Toutefois, vous pouvez à tout moment mettre à jour ce nom réseau dans votre Moniteur réseau.
+
+Dans la partie supérieure gauche du Moniteur réseau, cliquez sur l'icône de réseau et la zone devient éditable. Entrez le nouveau nom que vous voulez utiliser et appuyez sur **Entrée**. Le nom de votre réseau est mis à jour en quelques secondes.
+
+La **Figure 18** illustre les étapes de mise à jour du nom de réseau du plan Starter : nom affecté remplacé par "Starter Plan Network".
+
+![Mise à jour du nom réseau](images/update_network_name_ep.gif "Mise à jour du nom réseau")
+*Figure 18. Mise à jour du nom réseau*
+
+
+## Basculement entre réseaux (pour les réseau de plan Starter)
+{: #switch-network}
+
+Si vous créez plusieurs réseaux avec le plan Starter, vous pouvez basculer entre vos réseaux dans le Moniteur de réseau.
+
+Dans la partie supérieure gauche du Moniteur réseau, cliquez sur l'icône en forme de flèche en regard du nom de réseau. Sélectionnez et cliquez sur le nom de réseau à partir duquel vous voulez basculer dans la liste déroulante. Votre navigateur s'actualise et ouvre le Moniteur réseau du réseau vers lequel vous basculez.
+
+La **Figure 19** illustre les étapes de basculement vers un autre réseau du plan Starter.
+
+![Basculement entre les réseaux](images/switch_network.gif "Basculement entre les réseaux")
+*Figure 19. Basculement entre les réseaux*
+
+
+## Réinitialisation de réseau (pour les réseaux de plan Starter)
+{: #reset-network}
+
+Les réseaux de plan Starter vous offrent la possibilité de modifier votre configuration réseau sans supprimer et recréer un réseau. Votre réseau est réinitialisé sur sa configuration réseau initiale, qui comprend deux organisations, un homologue par organisation, ainsi qu'un canal par défaut. Ceci est utile, par exemple, lorsque vous exécutez des tests sur le réseau de blockchain, ce qui vous permet de reprendre à partir d'un réseau propre.
+
+**Attention **: Une fois que vous avez réinitialisé le réseau, les noeuds finaux d'API de vos homologues, le service de tri et l'autorité de certification sont modifiés. Vous devez ajuster les informations de noeud final d'API dans vos applications.
+
+Cliquez dans l'angle supérieur droit et ouvrez le menu déroulant. Cliquez sur le bouton **Réinitialiser le réseau**. Si vous êtes prêt à réinitialiser votre réseau, cliquez sur **OK** pour continuer. Votre Moniteur réseau est actualisé pour refléter les nouveaux paramètres.
+
+La **Figure 20** présente la fonction de "réinitialisation du réseau" :
+
+![Réinitialiser le réseau](images/reset_network.png "Réinitialiser le réseau")
+*Figure 20. Réinitialiser le réseau*
