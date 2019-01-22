@@ -301,7 +301,7 @@ Le **rei piano Enterprise** ti consentono di abilitare il TLS reciproco per prot
 
 Il pulsante TLS reciproco è impostato su **Off** per impostazione predefinita. Se abiliti il TLS reciproco, devi aggiornare le tue applicazioni per supportare questa funzione. Altrimenti, le tue applicazioni non saranno in grado di comunicare con la tua rete.
 
-Per una rete piano Fabric 1.1 Enterprise, ogni organizzazione ha la propria autorità di certificazione (CA) del TLS reciproco. Le informazioni necessarie per il collegamento alla CA del TLS reciproco sono disponibili nel [profilo di connessione ](#enterprise-connection-profile) accessibile dalla tua schermata **Panoramica** nel Monitoraggio della rete facendo clic sul pulsante **Profilo connessione**. Il profilo di connessione contiene le informazioni necessarie per il collegamento al CA e sull'ottenimento dei certificati di cui hai bisogno per collegarti alla tua rete.
+Per una rete piano Fabric 1.1 Enterprise, ogni organizzazione ha la propria autorità di certificazione (CA) del TLS reciproco. Le informazioni necessarie per il collegamento alla CA del TLS reciproco sono disponibili nel [profilo di connessione ](#connection-profile) accessibile dalla tua schermata **Panoramica** nel Monitoraggio della rete facendo clic sul pulsante **Profilo connessione**. Il profilo di connessione contiene le informazioni necessarie per il collegamento al CA e sull'ottenimento dei certificati di cui hai bisogno per collegarti alla tua rete.
 
 Nel profilo di connessione, individua la sezione `certificateAuthorities` dove troverai i seguenti attributi necessari per registrare ed ottenere i certificati per comunicare con la tua rete utilizzando il TLS reciproco.
 

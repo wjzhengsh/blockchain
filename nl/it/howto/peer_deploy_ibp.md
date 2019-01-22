@@ -212,7 +212,7 @@ Devi creare solo un'identità amministratore per i componenti che appartengono a
   - **Affiliazione:** si tratta dell'affiliazione sotto la tua organizzazione, ad esempio `org1`, a cui apparterrà il tuo peer. Seleziona un'affiliazione esistente dall'elenco a discesa o immettine una nuova.
   - **Iscrizioni massime:** puoi utilizzare questo campo per limitare il numero di volte in cui puoi registrare o generare certificati utilizzando questa identità. Se non specificato, il valore predefinito è di registrazioni illimitate.
 
-  Dopo aver immesso questi campi, fai clic su **Invia** per creare l'amministratore. L'amministratore creato viene quindi elencato nella tabella come un'identità nella tua organizzazione. 
+  Dopo aver immesso questi campi, fai clic su **Invia** per creare l'amministratore. L'amministratore creato viene quindi elencato nella tabella come un'identità nella tua organizzazione.
 
 ### Generazione della cartella MSP di gestione del peer
 {: #enroll-admin}
@@ -246,7 +246,7 @@ Dopo aver registrato l'identità di gestione, devi generare il signCert e la car
   - Certificato TLS root per piano Starter
     - Stati Uniti: [us01.blockchain.ibm.com.cert ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://blockchain-certs.mybluemix.net/us01.blockchain.ibm.com.cert "us01.blockchain.ibm.com.cert"); [us02.blockchain.ibm.com.cert ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://blockchain-certs.mybluemix.net/us02.blockchain.ibm.com.cert "us02.blockchain.ibm.com.cert")
     - Regno Unito: [uk01.blockchain.ibm.com.cert ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://blockchain-certs.mybluemix.net/uk01.blockchain.ibm.com.cert "uk01.blockchain.ibm.com.cert"); [uk02.blockchain.ibm.com.cert ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://blockchain-certs.mybluemix.net/uk02.blockchain.ibm.com.cert "uk02.blockchain.ibm.com.cert")
-    - Sydney: [aus01.blockchain.ibm.com.cert ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://blockchain-certs.mybluemix.net/aus01.blockchain.ibm.com.cert "aus01.blockchain.ibm.com.cert"); [aus02.blockchain.ibm.com.cert ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://blockchain-certs.mybluemix.net/aus02.blockchain.ibm.com.cert "aus02.blockchain.ibm.com.cert")
+    - Sydney: [aus01.blockchain.ibm.com.cert ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://blockchain-certs.mybluemix.net/aus01.blockchain.ibm.com.cert "aus01.blockchain.ibm.com.cert")<!--; [aus02.blockchain.ibm.com.cert ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://blockchain-certs.mybluemix.net/aus02.blockchain.ibm.com.cert "aus02.blockchain.ibm.com.cert")-->
   - [Certificato TLS root per piano Enterprise ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://blockchain-certs.mybluemix.net/3.secure.blockchain.ibm.com.rootcert)
 
   Salva i contenuti in una directory a cui puoi fare riferimento nei comandi futuri.
@@ -257,7 +257,7 @@ Dopo aver registrato l'identità di gestione, devi generare il signCert e la car
     ```
     {:codeblock}
 
-6. Immetti il seguente comando per generare i certificati con la tua identità di gestione del peer: 
+6. Immetti il seguente comando per generare i certificati con la tua identità di gestione del peer:
 
   ```
   fabric-ca-client enroll -u https://<enroll_id>:<enroll_password>@<ca_url_with_port> --caname <ca_name> --tls.certfiles <ca-tls_cert_file>
@@ -273,7 +273,7 @@ Dopo aver registrato l'identità di gestione, devi generare il signCert e la car
   ```
   {:codeblock}
 
-  Dopo che questo comando è stato completato correttamente, genererà una nuova cartella MSP nella directory che hai specificato come `$FABRIC_CA_CLIENT_HOME`. Questa directory contiene i certificati che utilizzerai per gestire i tuoi peer. 
+  Dopo che questo comando è stato completato correttamente, genererà una nuova cartella MSP nella directory che hai specificato come `$FABRIC_CA_CLIENT_HOME`. Questa directory contiene i certificati che utilizzerai per gestire i tuoi peer.
 
 7. Nella cartella MSP che è appena stata creata, apri il file signCert del nuovo utente e convertilo nel formato base64. Troverai il signCert nella cartella `signcerts` della directory MSP. Se stai utilizzando la procedura di esempio, puoi utilizzare i seguenti comandi:
 
@@ -333,7 +333,7 @@ I campi `"tls"` nel file di configurazione richiedono le informazioni dalla CA c
 
 Devi registrare il tuo peer con la CA del TLS su ICP utilizzando il client CA Fabric.
 
-1. Al momento, dovresti avere il file del certificato TLS `tls.pem` nella cartella `$HOME/fabric-ca-client/catls`. Se non è così, puoi copiare il certificato TLS che hai [scaricato da ICP](CA-operate.html#ca-tls) in una directory a cui puoi fare riferimento in comandi futuri. Assicurati di essere nella tua directory `$HOME/fabric-ca-client`.
+1. Al momento, dovresti avere il file del certificato TLS `tls.pem` nella cartella `$HOME/fabric-ca-client/catls`. Se non è così, puoi copiare il certificato TLS che hai [scaricato da ICP](CA_operate.html#ca-tls) in una directory a cui puoi fare riferimento in comandi futuri. Assicurati di essere nella tua directory `$HOME/fabric-ca-client`.
 
   ```
   cd $HOME/fabric-ca-client
@@ -369,7 +369,7 @@ export FABRIC_CA_CLIENT_HOME=$HOME/fabric-ca-client/tlsca-admin
   ```
   {:codeblock}
 
-  Dopo aver eseguito l'iscrizione, disponi dei certificati necessari per registrare il peer con la CA del TLS. 
+  Dopo aver eseguito l'iscrizione, disponi dei certificati necessari per registrare il peer con la CA del TLS.
 
 4. Immetti il seguente comando per trovare il nome della tua affiliazione e della tua organizzazione.
 

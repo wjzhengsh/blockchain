@@ -13,7 +13,7 @@ lastupdated: "2018-12-07"
 {:pre: .pre}
 {:tip: .tip}
 
-# Introduzione a piano Starter 
+# Introduzione a piano Starter
 {: #getting-started-with-starter-plan}
 
 
@@ -95,7 +95,7 @@ Puoi invitare altre [organizzazioni](glossary.html#organization) ad aderire alla
 1. Nella schermata "Membri" del tuo Monitoraggio della rete, fai clic sul pulsante **Invita Membri**.
 2. Viene visualizzata la finestra "Invita membro".
     - Se vuoi invitare un'altra organizzazione, scegli "Invita un membro".  Specifica il nome e l'indirizzo email dell'operatore dell'organizzazione che vuoi invitare.  Puoi anche immettere le informazioni aggiuntive che vuoi includere nel tuo invito nel campo "Aggiungi una nota".  Fai clic sul pulsante **Invia invito**.  L'organizzazione invitata riceverà una email di invito e potrà quindi attenersi alle istruzioni nell'e-mail per aderire alla tua rete.
-    - Se vuoi aggiungere delle ulteriori organizzazioni che possono essere aggiunte a un canale, scegli "Aggiungi un membro".  Specifica un nome per la tua nuova organizzazione. Puoi, facoltativamente, aggiungere dei peer alla tua nuova organizzazione o farlo in un secondo momento nel Monitoraggio della rete.  Fai clic sul pulsante **Crea**. Nota: se aggiungi dei peer per la tua nuova organizzazione, devi passare a questa nuova organizzazione per vedere i tuoi peer. Per ulteriori informazioni sul passaggio da un'organizzazione a un'altra, vedi [Passaggio da un'organizzazione a un'altra](v10_dashboard.html#switch-organizations).
+    - Se vuoi aggiungere delle ulteriori organizzazioni che possono essere aggiunte a un canale, scegli "Aggiungi un membro".  Specifica un nome per la tua nuova organizzazione. Puoi, facoltativamente, aggiungere dei peer alla tua nuova organizzazione o farlo in un secondo momento nel Monitoraggio della rete.  Fai clic sul pulsante **Crea**. Nota: se aggiungi dei peer per la tua nuova organizzazione, devi passare a questa nuova organizzazione per vedere i tuoi peer.<!-- Per ulteriori informazioni sul passaggio da un'organizzazione a un'altra, vedi [Passaggio da un'organizzazione a un'altra](v10_dashboard.html#switch-organizations).-->
 
 
 ## Adesione a una rete
@@ -121,7 +121,7 @@ I canali sono utilizzati dagli insiemi di organizzazioni per eseguire transazion
 
 Per ulteriori informazioni, vedi [Creazione di un canale](howto/create_channel.html#creating-a-channel). Se un'altra organizzazione ti invita in un canale, troverai anche le istruzioni su come accettare l'invito e unire i tuoi peer al canale.
 
-## Sviluppo del chaincode 
+## Sviluppo del chaincode
 {: #develop-chaincode}
 
 Il [chaincode](glossary.html#chaincode), a cui a volte viene fatto riferimento come agli smart contract, è il software che ti consente di leggere e aggiornare i dati sul libro mastro blockchain. Il chaincode può trasformare la logica di business in un programma eseguibile accettato e verificato da tutti i membri della rete blockchain.
@@ -135,7 +135,7 @@ Dopo aver aderito ai canali e sviluppato la tua logica di business, devi install
 Per ulteriori informazioni sulla distribuzione di esempi precostruiti, consulta [Installazione, istanziazione e aggiornamento di un chaincode](howto/install_instantiate_chaincode.html).
 
 
-## Sviluppo delle applicazioni utilizzando gli SDK Fabric 
+## Sviluppo delle applicazioni utilizzando gli SDK Fabric
 {: #develop-apps}
 
 {{site.data.keyword.blockchainfull_notm}} Platform fornisce degli endpoint API a cui puoi collegarti utilizzando gli SDK Fabric. Puoi utilizzare gli SDK per richiamare il chaincode dalle tue applicazioni e inviare le transazioni alla tua rete blockchain.
@@ -143,7 +143,7 @@ Per ulteriori informazioni sulla distribuzione di esempi precostruiti, consulta 
 Per ulteriori informazioni, vedi l'esercitazione [sviluppo di applicazioni](v10_application.html).
 
 
-## Sviluppo e distribuzione di reti di business personalizzate con Hyperledger Composer 
+## Sviluppo e distribuzione di reti di business personalizzate con Hyperledger Composer
 {: #develop-composer}
 
 Il piano Starter integra l'ambiente per sviluppatori {{site.data.keyword.blockchainfull_notm}} Platform: Develop e il set di strumenti per gli sviluppatori Hyperledger Composer. Puoi sviluppare la tua rete blockchain in base alle tue esigenze di business.  Dopo che hai sviluppato una rete per il tuo business, puoi distribuire la tua rete di business nella rete piano Starter.
@@ -185,7 +185,7 @@ Puoi trovare le credenziali di rete sulla schermata "API" nel tuo Monitoraggio d
 
 Puoi richiamare il profilo di connessione nella schermata "Panoramica" nel tuo Monitoraggio della rete. Fai clic sul pulsante **Profilo connessione** nella schermata "Panoramica"; il profilo di connessione viene visualizzato in una nuova pagina.
 
-## Gestione della tua rete utilizzando le API Swagger 
+## Gestione della tua rete utilizzando le API Swagger
 {: #swagger}
 
 {{site.data.keyword.blockchainfull_notm}} Platform presenta diverse API REST in Swagger che puoi utilizzare per gestire i nodi, i canali, i peer e i membri della tua rete. Le tue applicazioni possono utilizzare queste API per controllare importanti risorse di rete senza usare il Monitoraggio della rete.

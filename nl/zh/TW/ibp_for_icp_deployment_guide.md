@@ -50,7 +50,7 @@ lastupdated: "2018-12-07"
 
 為了防止 CA 的無限回歸（其中，每個 CA 都必須永遠地鏈結至另一個 CA），CA 具有與其相關聯的預設使用者名稱及密碼配對。部署 CA 時，您可以指定此使用者名稱及密碼。此 CA 是「主要 CA」，即信任元件的根源。在正式作業網路中，建議至少部署一個其他 CA，以從此主要 CA 取得其憑證，並使用稱為「中繼 CA」的 CA 將憑證發給使用者及元件。不過，在此版本中，不支援使用中繼 CA。
 
-每個組織都必須有一個用於登記的 CA 以及一個 TLS CA。當您在 ICP 上部署 CA 時，依預設也會將 TLS CA 部署至相同的容器。此 TLS CA 會產生及管理 TLS 憑證。「入門範本方案」或「企業方案」網路上的 CA 未包含 TLS CA，但確實包含用於登記的 CA。因此，如果您計劃將對等節點連接至「入門範本方案」或「企業方案」網路，則在部署對等節點之前，也必須[在 ICP 中部署 CA](howto/CA_deploy_icp.html)，以充當該對等節點的 TLS CA。另請參閱[將 ICP 對等節點連接至 IBP 的必要條件](howto/peer_deploy_ibp#prerequisites-peer-ibp)。請注意，TLS CA 僅用於發出憑證，而且可能會在該活動完成時關閉。
+每個組織都必須有一個用於登記的 CA 以及一個 TLS CA。當您在 ICP 上部署 CA 時，依預設也會將 TLS CA 部署至相同的容器。此 TLS CA 會產生及管理 TLS 憑證。「入門範本方案」或「企業方案」網路上的 CA 未包含 TLS CA，但確實包含用於登記的 CA。因此，如果您計劃將對等節點連接至「入門範本方案」或「企業方案」網路，則在部署對等節點之前，也必須[在 ICP 中部署 CA](howto/CA_deploy_icp.html)，以充當該對等節點的 TLS CA。另請參閱[將 ICP 對等節點連接至 IBP 的必要條件](howto/peer_deploy_ibp.html#prerequisites-peer-ibp)。請注意，TLS CA 僅用於發出憑證，而且可能會在該活動完成時關閉。
 
 如需 TLS 的相關資訊，請參閱「Hyperledger Fabric 文件」中的[使用傳輸層安全 (TLS) 保護通訊安全 ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](https://hyperledger-fabric.readthedocs.io/en/release-1.3/enable_tls.html "使用傳輸層安全 (TLS) 保護通訊安全")。
 

@@ -78,12 +78,12 @@ lastupdated: "2018-12-07"
 
 [傳輸層安全 ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](https://www.ibm.com/support/knowledgecenter/en/SSFKSJ_7.1.0/com.ibm.mq.doc/sy10660_.htm) (TLS) 內嵌在 Hyperledger Fabric 的信任模型中。{{site.data.keyword.blockchainfull_notm}} Platform 上的所有元件都會使用 TLS 來彼此鑑別及通訊。因此，您需要將平台發出的 TLS 憑證附加至您的呼叫，以驗證及加密您的通訊。本指導教學中討論的其他憑證可保護您與網路進行交易，以及管理網路的能力。TLS 憑證用來保護您對網路的呼叫。
 
-TLS 憑證是由平台公開發出，且對所有網路元件都是相同的。您可以使用下列鏈結來下載 TLS 憑證，視您的成員資格方案和雲端位置而定。您也可以在[憑證設定檔](v10_dashboard.html#enterprise-connection-profile "憑證設定檔")中找到 TLS 憑證。此憑證可以位於任何位置，只要您可從應用程式或指令行參照它。
+TLS 憑證是由平台公開發出，且對所有網路元件都是相同的。您可以使用下列鏈結來下載 TLS 憑證，視您的成員資格方案和雲端位置而定。您也可以在[憑證設定檔](v10_dashboard.html#connection-profile "憑證設定檔")中找到 TLS 憑證。此憑證可以位於任何位置，只要您可從應用程式或指令行參照它。
 
 - 入門範本方案的主要 TLS 憑證
   - 美國：[us01.blockchain.ibm.com.cert ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](http://blockchain-certs.mybluemix.net/us01.blockchain.ibm.com.cert "us01.blockchain.ibm.com.cert")；[us02.blockchain.ibm.com.cert ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](http://blockchain-certs.mybluemix.net/us02.blockchain.ibm.com.cert "us02.blockchain.ibm.com.cert")
   - 英國：[uk01.blockchain.ibm.com.cert ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](http://blockchain-certs.mybluemix.net/uk01.blockchain.ibm.com.cert "uk01.blockchain.ibm.com.cert")；[uk02.blockchain.ibm.com.cert ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](http://blockchain-certs.mybluemix.net/uk02.blockchain.ibm.com.cert "uk02.blockchain.ibm.com.cert")
-  - 雪梨：[aus01.blockchain.ibm.com.cert ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](http://blockchain-certs.mybluemix.net/aus01.blockchain.ibm.com.cert "aus01.blockchain.ibm.com.cert")；[aus02.blockchain.ibm.com.cert ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](http://blockchain-certs.mybluemix.net/aus02.blockchain.ibm.com.cert "aus02.blockchain.ibm.com.cert")
+  - 雪梨：[aus01.blockchain.ibm.com.cert ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](http://blockchain-certs.mybluemix.net/aus01.blockchain.ibm.com.cert "aus01.blockchain.ibm.com.cert")<!--；[aus02.blockchain.ibm.com.cert ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](http://blockchain-certs.mybluemix.net/aus02.blockchain.ibm.com.cert "aus02.blockchain.ibm.com.cert")-->
 - [企業方案的主要 TLS 憑證 ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](https://blockchain-certs.mybluemix.net/3.secure.blockchain.ibm.com.rootcert)
 
 所有 {{site.data.keyword.blockchainfull_notm}} Platform 網路都會使用伺服器端 TLS，其中網路需要鑑別用戶端。「企業方案」網路也可以啟用相互 TLS，讓用戶端和伺服器彼此鑑別，以進一步保護您的應用程式。用戶端 TLS 憑證（適用於「相互 TLS」）是由用戶端 CA 發出，且對您的網路是唯一的。如果您使用「企業方案」網路，建議您啟用相互 TLS。如需相互 TLS 的相關資訊，請參閱下列[指示](v10_dashboard.html#mutual-tls "相互 TLS 指示")。
@@ -178,7 +178,7 @@ Fabric 內的 MSP 資料夾具有已定義的結構。使用 Fabric CA 用戶端
   - 入門範本方案的主要 TLS 憑證
     - 美國：[us01.blockchain.ibm.com.cert ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](http://blockchain-certs.mybluemix.net/us01.blockchain.ibm.com.cert "us01.blockchain.ibm.com.cert")；[us02.blockchain.ibm.com.cert ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](http://blockchain-certs.mybluemix.net/us02.blockchain.ibm.com.cert "us02.blockchain.ibm.com.cert")
     - 英國：[uk01.blockchain.ibm.com.cert ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](http://blockchain-certs.mybluemix.net/uk01.blockchain.ibm.com.cert "uk01.blockchain.ibm.com.cert")；[uk02.blockchain.ibm.com.cert ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](http://blockchain-certs.mybluemix.net/uk02.blockchain.ibm.com.cert "uk02.blockchain.ibm.com.cert")
-    - 雪梨：[aus01.blockchain.ibm.com.cert ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](http://blockchain-certs.mybluemix.net/aus01.blockchain.ibm.com.cert "aus01.blockchain.ibm.com.cert")；[aus02.blockchain.ibm.com.cert ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](http://blockchain-certs.mybluemix.net/aus02.blockchain.ibm.com.cert "aus02.blockchain.ibm.com.cert")
+    - 雪梨：[aus01.blockchain.ibm.com.cert ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](http://blockchain-certs.mybluemix.net/aus01.blockchain.ibm.com.cert "aus01.blockchain.ibm.com.cert")<!--；[aus02.blockchain.ibm.com.cert ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](http://blockchain-certs.mybluemix.net/aus02.blockchain.ibm.com.cert "aus02.blockchain.ibm.com.cert")-->
   - [企業方案的主要 TLS 憑證 ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](https://blockchain-certs.mybluemix.net/3.secure.blockchain.ibm.com.rootcert)
 
   將內容儲存至資料夾，例如 ``$HOME/tls``。此步驟可讓資料流在通訊連線上加密。
