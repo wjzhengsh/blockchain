@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-31"
+lastupdated: "2018-12-07"
 
 ---
 
@@ -13,7 +13,7 @@ lastupdated: "2018-08-31"
 {:pre: .pre}
 {:tip: .tip}
 
-# Développement du réseau
+# Développement de réseaux d'entreprise
 {: #develop-the-network}
 
 
@@ -23,7 +23,7 @@ lastupdated: "2018-08-31"
 Le développement de solutions de blockchain à l'aide de {{site.data.keyword.blockchainfull}} Platform permet d'optimiser le jeu d'outils de développement en open source d'Hyperledger Composer. Hyperledger Composer utilise un langage de modélisation spécifique, qui est associé à des transactions JavaScript, ainsi qu'à des règles de contrôle d'accès pour modéliser un réseau d'entreprise de modèle en totalité _avant_ tout déploiement dans un réseau de blockchain réel.
 {:shortdesc}
 
-**Remarque **: Le plan Starter fournit des applications que vous pouvez étudier et tester. Vous pouvez ainsi exécuter des modèles d'application dans le plan Starter avant de développer votre réseau d'entreprise personnalisé. Pour plus de détails, voir [A propos du plan Starter](starter_plan.html).
+**Remarque :** Le plan Starter fournit des applications que vous pouvez étudier et tester. Vous pouvez ainsi exécuter des modèles d'application dans le plan Starter avant de développer votre réseau d'entreprise personnalisé. Pour plus de détails, voir [A propos du plan Starter](starter_plan.html).
 
 Ce tutoriel décrit toutes les étapes du développement d'une solution {{site.data.keyword.blockchain}} qui vont de la création et de la modélisation d'un réseau d'entreprise à son déploiement dans un réseau de blockchain opérationnel.
 

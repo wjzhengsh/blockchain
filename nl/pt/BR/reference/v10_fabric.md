@@ -51,7 +51,7 @@ Em uma rede do Hyperledger Fabric, o fluxo de dados para consultas e transaçõe
 2. Cada peer no canal verifica a identidade e a autoridade do cliente de envio e (se válido) executa o chaincode especificado nas entradas fornecidas (chave/vals).  Com base nos resultados da transação e na Política de Endosso para o chaincode chamado, cada peer retorna uma resposta SIM ou NÃO assinada ao aplicativo.  Cada resposta SIM assinada é um **endosso** da transação.
 
 	Neste ponto, no fluxo de transação, o processo diverge para consultas e transações.  Se a proposta chamou uma função de consulta no chaincode, o aplicativo retorna os dados ao cliente.  Se a proposta chamou uma função no chaincode para atualizar o livro-razão, o aplicativo continua com as etapas a seguir:  
-3. O aplicativo encaminha a transação (conjunto de leitura/gravação e endossos) para **serviço de solicitação** de rede.  
+3. O aplicativo encaminha a transação (conjunto de leitura/gravação e endossos) para **serviço de ordenação** de rede.  
 4. A transação é, então, retransmitida para o tópico de partição do canal no cluster do Kafka para solicitação.  Todos os peers de canal validam cada transação no bloco aplicando a Política de Validação específica do chaincode e executando uma Verificação de Versão de Controle de Simultaneidade.  
 	* Quaisquer transações que falham no processo de validação são marcadas como inválidas no bloco e o bloco é anexado à hashchain do canal.  
 	* Todas as transações válidas atualizam o banco de dados do estado de acordo com os pares chave/valor modificados.  
@@ -60,17 +60,17 @@ O **protocolo de disseminação de dados por boatos** transmite continuamente os
 
 Para obter uma introdução passo a passo sobre o fluxo de transação, consulte *[Fluxo de Transação ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/txflow.html){:new_window}* na [Documentação do Hyperledger Fabric ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/){:new_window}.  
 
-## Serviço de Solicitação
-O Hyperledger Fabric inclui um serviço baseado em Kafka para solicitar e transmitir transações de rede. O Kafka também fornece tolerância a falhas e travamento à sua rede; o que significa que, se um número aceitável de nós de serviço de solicitação estiver indisponível, o serviço continuará solicitando e distribuindo blocos de transações para peers do canal.
+## Serviço de Ordenação
+O Hyperledger Fabric inclui um serviço baseado em Kafka para solicitar e transmitir transações de rede. O Kafka também fornece tolerância a falhas e travamento à sua rede; o que significa que, se um número aceitável de nós de serviço de ordenação estiver indisponível, o serviço continuará solicitando e distribuindo blocos de transações para peers do canal.
 
-Os aplicativos do lado do cliente chamam a API 'channel.sendTransaction' para encaminhar transações endossadas ao serviço de solicitação. Os nós de serviço de solicitação, então, usam o serviço do Kafka e o seu servidor ZooKeeper associado, para pedir as transações em um bloco. O bloco ordenado de transações é, eventualmente, "entregue" aos peers de canal, para validação e confirmação no livro-razão.
+Os aplicativos do lado do cliente chamam a API 'channel.sendTransaction' para encaminhar transações endossadas ao serviço de ordenação. Os nós de serviço de ordenação, então, usam o serviço do Kafka e o seu servidor ZooKeeper associado, para pedir as transações em um bloco. O bloco ordenado de transações é, eventualmente, "entregue" aos peers de canal, para validação e confirmação no livro-razão.
 
-Os nós de serviço de solicitação também fornecem os serviços a seguir:
+Os nós de serviço de ordenação também fornecem os serviços a seguir:
 1. Autenticação de clientes
-2. Manutenção de uma cadeia do sistema que define as configurações de serviço de solicitação, certificados raiz e IDs do MSP para organizações autenticadas e um agrupamento de perfis contendo os vários consórcios dentro da rede.
+2. Manutenção de uma cadeia do sistema que define as configurações de serviço de ordenação, certificados raiz e IDs do MSP para organizações autenticadas e um agrupamento de perfis contendo os vários consórcios dentro da rede.
 3. Filtragem e validação das transações de configuração que reconfiguram ou criam um canal.  
 
-Para obter mais informações sobre o serviço de solicitação do Hyperledger Fabric, veja *[Apresentando um serviço de solicitação baseado em Kafka ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/kafka.html){:new_window}* na [Documentação do Hyperledger Fabric ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/){:new_window}.
+Para obter mais informações sobre o serviço de ordenação do Hyperledger Fabric, veja *[Apresentando um serviço de ordenação baseado em Kafka ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/kafka.html){:new_window}* na [Documentação do Hyperledger Fabric ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/){:new_window}.
 
 ## SDKs do HFC
 Os SDKs do Hyperledger Fabric Client (HFC) permitem que desenvolvedores de aplicativos construam aplicativos que interajam com uma rede de blockchain. O SDK do HFC ajuda a facilitar aplicativos para gerenciar o ciclo de vida de canais e chaincode.

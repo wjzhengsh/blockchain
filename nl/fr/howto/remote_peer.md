@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-09-05"
+lastupdated: "2018-11-27"
 
 ---
 
@@ -12,148 +12,123 @@ lastupdated: "2018-09-05"
 {:codeblock: .codeblock}
 {:pre: .pre}
 
-# A propos des homologues distants
+# A propos d'{{site.data.keyword.blockchainfull_notm}} Platform for Amazon Web Services
 {: #remote-peer-overview}
-
 
 ***[Cette page est-elle utile ? Dites-nous.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
+**Remarque :** Le programme (bêta) Homologue distant {{site.data.keyword.blockchainfull}} Platform sur ICP est terminé. Si vous souhaitez néanmoins exécuter des homologues dans votre environnement ICP, utilisez plutôt l'offre **{{site.data.keyword.blockchainfull_notm}} Platform for ICP**. Pour plus d'informations, voir [A propos des homologues dans ICP](../ibp-for-icp-about.html#ibp-icp-peer).
 
-Vous pouvez exécuter des homologues distants {{site.data.keyword.blockchainfull}} Platform sur {{site.data.keyword.cloud_notm}} Private (ICP) <!--[AWS]or on AWS Cloud --> après les avoir connectés à un réseau de blockchain existant. L'exécution des homologues en dehors d'{{site.data.keyword.cloud_notm}} offre davantage de souplesse pour agrandir ou rejoindre un réseau de blockchain tout en bénéficiant d'un réseau existant dans {{site.data.keyword.cloud_notm}}. Les homologues distants optimisent les autorités de certification (CA) et le service de tri sur la plateforme, mais ils vous permettent de colocaliser votre homologue avec d'autres applications extérieures à {{site.data.keyword.cloud_notm}}.
+Vous pouvez exécuter l'homologue {{site.data.keyword.blockchainfull_notm}} Platform dans AWS Cloud une fois que vous l'avez connecté à un réseau de blockchain existant dans {{site.data.keyword.cloud_notm}}. L'exécution des homologues en dehors d'{{site.data.keyword.cloud_notm}} offre davantage de souplesse pour agrandir ou rejoindre un réseau de blockchain tout en bénéficiant d'un réseau existant dans {{site.data.keyword.cloud_notm}}. Les homologues optimisent les autorités de certification (CA) et le service de tri sur la plateforme, mais ils vous permettent de colocaliser votre homologue avec d'autres applications extérieures à {{site.data.keyword.cloud_notm}}.
 {:shortdesc}
 
-<!--[AWS]Move ICP description here.-->{{site.data.keyword.cloud_notm}} Private (ICP) est une plateforme basée sur Kubernetes pour la génération d'un cloud privé dans un environnement sur site. Vous pouvez utiliser ICP pour exécuter un homologue distant et connecter ce dernier à un réseau de blockchain sur {{site.data.keyword.blockchainfull_notm}} Platform. {{site.data.keyword.blockchainfull_notm}} Platform Remote Peer for ICP optimise le stockage, la sécurité, la consignation et les services de support d'ICP afin que vous puissiez gérer vos homologues distants dans votre environnement sur site. Pour plus d'informations sur ICP, voir la [documentation {{site.data.keyword.cloud_notm}} Private ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0.3/kc_welcome_containers.html "Documentation {{site.data.keyword.cloud_notm}} Private").  
-
-**Remarque : ** {{site.data.keyword.blockchainfull_notm}} Platform Remote Peer est actuellement une offre en version bêta qui convient pour une évaluation et un expérimentation. **Cette version bêta n'est pas destinée pour un usage en production.** Pour plus de détails sur l'accès et pour plus d'informations, voir [licence et tarification](#remote-peer-license-pricing).
-
-<!--[AWS]The following cloud platforms are supported:-->
-<!--[AWS]
-|  Cloud Platform | Supported Versions |
-| ----------------|--------------------|
-| {{site.data.keyword.cloud_notm}} Private (ICP) | 2.1.0.3 |
--->
-<!--[AWS]
-|  Cloud Platform | Instance types |
-| ----------------|--------------------|
-| Amazon Web Services (AWS) | Choose from the list of available types. The minimum size is `t2.medium`, the default is `m4.xlarge`|
--->
-
-<!--[AWS]In all cases, the network on {{site.data.keyword.blockchainfull_notm}} Platform and the remote peer nodes must be running at the same **Fabric version 1.1**.
--->
-
-L'édition bêta prend en charge la plateforme cloud d'{{site.data.keyword.cloud_notm}} Private (ICP), version 2.1.0.3. Notez que le réseau sur {{site.data.keyword.blockchainfull_notm}} Platform et les noeuds de l'homologue distant dans ICP doivent s'exécuter sans la même **version de Fabric 1.1**.
 
 ## Remarques
 {: #remote-peer-limitations}
 
-Un homologue distant n'a pas accès à toutes les fonctionnalités ou à la prise en charge des homologues qui sont hébergés sur {{site.data.keyword.blockchainfull_notm}} Platform. Avant d'exécuter des homologues distants, vérifiez que vous comprenez les restrictions et limitations suivantes :
-- Les homologues distants qui s'exécutent dans d'autres environnements de cloud ne sont pas visibles dans le Moniteur de réseau du réseau de blockchain sur {{site.data.keyword.cloud_notm}}.
-- Les homologues distants ne peuvent pas être adressés à l'aide de l'interface utilisateur swagger dans l'interface utilisateur du Moniteur réseau. 
-- Vous êtes responsable de la gestion de surveillance de l'intégrité, de la sécurité, de la journalisation et de l'utilisation des ressources de vos homologues distants.
-- Vous pouvez connecter vos homologues distants uniquement aux réseaux de blockchain au niveau Hyperledger Fabric v1.1.
-- Le type de base de données de l'homologue distant doit correspondre au type de base de données de votre réseau blockchain, LevelDB ou CouchDB.
-- L'interface CouchDB Fauxton n'est pas disponible sur l'homologue distant.
-- [Gossip](../glossary.html#gossip) pour les homologues distants n'est pas pour l'instant pris en charge.
-
+{{site.data.keyword.blockchainfull_notm}} Platform for AWS n'a pas accès à toutes les fonctionnalités ou à la prise en charge des homologues qui sont hébergés sur  {{site.data.keyword.blockchainfull_notm}} Platform. Avant d'exécuter {{site.data.keyword.blockchainfull_notm}} Platform for AWS, vérifiez que vous comprenez les restrictions et limitations suivantes : 
+- Les homologues qui s'exécutent dans d'autres environnements de cloud ne sont pas visibles dans le Moniteur de réseau du réseau de blockchain sur {{site.data.keyword.cloud_notm}}.
+- Les homologues qui s'exécutent sur {{site.data.keyword.blockchainfull_notm}} Platform for AWS ne peuvent pas être adressés à l'aide de l'interface utilisateur swagger dans l'interface utilisateur du Moniteur réseau. 
+- Vous êtes responsable de la gestion de surveillance de l'intégrité, de la sécurité, de la journalisation et de l'utilisation des ressources de vos noeuds homologues {{site.data.keyword.blockchainfull_notm}} Platform for AWS.
+- Vous pouvez connecter vos homologues {{site.data.keyword.blockchainfull_notm}} Platform for AWS uniquement aux réseaux de blockchain au niveau Fabric v1.1 ou v1.2.1. Pour connaître votre version Fabric, ouvriez la [fenêtre Préférences réseau](../v10_dashboard.html#network-preferences) dans votre Moniteur réseau.
+- Le type de base de données de l'homologue {{site.data.keyword.blockchainfull_notm}} Platform for AWS doit correspondre au type de base de données de votre réseau blockchain, LevelDB ou CouchDB.
+- L'interface CouchDB Fauxton n'est pas disponible sur l'homologue AWS.
+- [Gossip](../glossary.html#gossip) pour les homologues AWS n'est pas pour l'instant pris en charge. Cela suppose que les fonctions Fabric qui dépendent de gossip, comme les [données privées ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/private-data-arch.html "données privées") et la [reconnaissance de service![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/discovery-overview.html "reconnaissance de service"), ne sont également pas pris en charge.
 
 ## Prérequis
 {: #remote-peer-prereq}
 
-Pour utiliser un homologue distant, vous devez disposer d'une organisation qui est membre d'un réseau de plan Starter ou Enterprise sur {{site.data.keyword.blockchainfull_notm}} Platform. L'homologue distant optimise les noeuds finaux d'API, les autorités de certification Hyperledger Fabric et le service de tri du réseau de plan {{site.data.keyword.blockchainfull_notm}} Platform à exploiter. Si vous n'êtes membre d'aucun un réseau de blockchain, vous devez créer ou rejoindre un réseau. Pour plus d'informations, voir [Création d'un réseau de plan](../get_start.html#creating-a-network) ou [Rejoindre un réseau](../get_start.html#joining-a-network).
-
+Pour utiliser un homologue {{site.data.keyword.blockchainfull_notm}} Platform for AWS, vous devez disposer d'une organisation qui est membre d'un réseau de plan Starter ou Enterprise sur {{site.data.keyword.blockchainfull_notm}} Platform. L'homologue {{site.data.keyword.blockchainfull_notm}} Platform for AWS optimise les noeuds finaux d'API, les autorités de certification Hyperledger Fabric et le service de tri du réseau {{site.data.keyword.blockchainfull_notm}} Platform à exploiter. Si vous n'êtes membre d'aucun un réseau de blockchain, vous devez créer ou rejoindre un réseau. Pour plus d'informations, voir [Création d'un réseau de plan](../get_start.html#creating-a-network) ou [Rejoindre un réseau](../get_start.html#joining-a-network).
 
 ## Licence et tarification
 {: #remote-peer-license-pricing}
 
-<!--[AWS]To access remote peers on AWS Cloud, see [License and pricing in AWS](remote_peer_aws.html#license-pricing-icp "License and pricing in AWS"). -->Pour accéder aux homologues distants pour l'exécution sur ICP, voir la section relative à la [licence et la tarification pour les homologues distants sur ICP](remote_peer_icp.html#license-pricing-icp "Licence et tarification pour les homologues distants sur ICP"). Les licences pour l'édition bêta des homologues distants sont gratuites.<!--[AWS] for both platforms.--> Par la suite, une offre de disponibilité générale (GA) remplace l'édition bêta.
+{{site.data.keyword.blockchainfull_notm}} Platform for AWS est actuellement proposé dans l'édition Community, gratuitement ; Ultérieurement, IBP for AWS pourrait devenir un modèle Bring-Your-Own-License (BYOL), ce qui impliquera l'achat d'une licence auprès d'IBM.
 
-La migration depuis une édition bêta n'est pas prise en charge. Vous devez télécharger et installer les nouveaux homologues distants pour une utiliser de l'offre GA lorsqu'elle est disponible. Vous pouvez ensuite joindre de nouveaux homologues distants aux mêmes canaux du même réseau que vos homologues distants bêta.
-
-**Remarque :** Pour exploiter un homologue distant, vous devez disposer d'une organisation qui appartient au réseau d'un plan Starter ou Enterprise sur {{site.data.keyword.blockchainfull_notm}} Platform. Cela implique que vous ou un autre membre du réseau doivent payer les [frais d'appartenance](https://console.bluemix.net/docs/services/blockchain/howto/pricing.html#key-elements-of-pricing) IBM Blockchain pour votre organisation. Pour plus d'informations sur le paiement de ces frais, voir [Mode de paiement](paying_mode.html).  
+**Remarque :** Pour exploiter un homologue AWS, vous devez disposer d'une organisation qui appartient au réseau d'un plan Starter ou Enterprise sur {{site.data.keyword.blockchainfull_notm}} Platform. Cela implique que vous ou un autre membre du réseau doivent payer les {{site.data.keyword.blockchainfull_notm}} [frais d'appartenance](pricing.html#key-elements-of-pricing) pour votre organisation. Pour plus d'informations sur le paiement de ces frais, voir [Mode de paiement](paying_mode.html).
 
 
-<!--[AWS]## Deploying a remote peer
-{: #deploy-remote-peer}-->
+## Déploiement d'un homologue AWS
+{: #deploy-remote-peer}
 
-<!--[AWS]{{site.data.keyword.blockchainfull_notm}} Platform Remote Peer currently supports two cloud environments to run remote peers: Amazon Web Services (AWS) and {{site.data.keyword.cloud_notm}} Private (ICP).-->
+Utilisez le [modèle de démarrage rapide AWS ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://aws.amazon.com/quickstart/architecture/ibm-blockchain-platform/ "Quick Start Template") pour déployer facilement {{site.data.keyword.blockchainfull_notm}} Platform for AWS. Pour plus d'informations, voir [{{site.data.keyword.blockchainfull_notm}} Platform for AWS Quick Start Deployment Guide ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://s3.amazonaws.com/aws-quickstart/quickstart-ibm-fabric/doc/ibm-blockchain-platform-for-aws.pdf "IBM Blockchain Platform for AWS Quick Start Reference Deployment").
 
-<!--[AWS]### Amazon Web Services
-{: #aws}-->
+Pour plus de détails sur le déploiement de {{site.data.keyword.blockchainfull_notm}} Platform for AWS, voir [Déploiement d'homologues dans Amazon Web Services](remote_peer_aws.html "Déploiement d'homologues dans Amazon Web Services").
 
-<!--[AWS]*Note: Need to replace the following links with real links to AWS remote peer once they are published by AWS*
-You can use the [Quick Starts ![External link icon](../images/external_link.svg "External link icon")](https://amazonaws-china.com/quickstart/architecture/mongodb/ "Quick Start Template") to easily deploy {{site.data.keyword.blockchainfull_notm}} Platform Remote Peers on AWS. For more information about deploying a remote peer on AWS, see the [AWS Remote Peer Deployment Guide ![External link icon](../images/external_link.svg "External link icon")](https://docs.aws.amazon.com/quickstart/latest/mongodb/welcome.html "Deployment Guide").
+Le diagramme suivant décrit le processus de déploiement d'un homologue {{site.data.keyword.blockchainfull_notm}} Platform for AWS.
 
-For more information about deploying remote peers in AWS, see [Deploying remote peers in Amazon Web Services](remote_peer_aws.html "Deploying remote peers in "Amazon Web Services).
+<img usemap="#home_map1" border="0" class="image" id="image_ztx_crb_f1b2" src="../images/remote_peer_AWS_flow.png" width="750" alt="Cliquez sur une zone pour afficher davantage de détails sur le processus." style="width:750px;" />
+<map name="home_map1" id="home_map1">
+<area href="remote_peer_aws.html#remote-peer-aws-account" alt="Configurer ou accéder à AWS" title="Configurer ou accéder" shape="rect" coords="157.05, 52.53, 283.62, 127.11" />
+<area href="remote_peer_aws.html#remote-peer-aws-account" alt="Créer une paire de clés" title="Créer une paire de clés" shape="rect" coords="300.97, 52.53, 427.54, 127.11" />
+<area href="remote_peer_aws.html#prerequisites-aws" alt="Créer ou rejoindre un réseau" title="Créer ou rejoindre un réseau" shape="rect" coords="157.05, 131.8, 283.62, 206.37" />
+<area href="remote_peer_operate_aws.html#aws-peer-operate-with-sdk" alt="Rejoindre un canal" title="Rejoindre un canal" shape="rect" coords="300.97, 131.8, 427.54, 206.37" />
+<area href="remote_peer_aws.html#aws-register-peer" alt="Enregistrer une identité homologue" title="Enregistrer une identité homologue" shape="rect" coords="443.95, 131.8, 570.53, 206.37" />
+<area href="remote_peer_aws.html#aws-network-endpoints" alt="Extraire les informations de configuration homologue" title="Extraire les informations de configuration homologue" shape="rect" coords="585.53, 131.8, 712.1, 206.37" />
+<area href="remote_peer_aws.html#remote-peer-aws-launchqs" alt="Cliquer sur le lien" title="Cliquer sur le lien" shape="rect" coords="157.05, 258.43, 283.62, 333.48" />
+<area href="remote_peer_aws.html#remote-peer-aws-launchqs" alt="Configurer des instances homologues" title="Configurer des instances homologues" shape="rect" coords="300.97, 258.43, 427.54, 333.48" />
+<area href="remote_peer_aws.html#remote-peer-aws-test" alt="Vérifier le déploiement" title="Vérifier le déploiement" shape="rect" coords="443.95, 258.43, 570.53, 333.48" />
+<area href="remote_peer_operate_aws.html#aws-peer-operate-with-sdk" alt="Utiliser le logiciel SDK Fabric" title="Utiliser le logiciel SDK Fabric" shape="rect" coords="157.05, 338.64, 283.62, 413" />
+<area href="remote_peer_operate_aws.html#aws-peer-cli-operate" alt="Utiliser l'interface CLI des outils Fabric" title="Utiliser l'interface CLI des outils Fabric" shape="rect" coords="443.95, 338.64, 570.53, 413" />
+</map>
 
-The following diagram describes the process to deploy an {{site.data.keyword.blockchainfull_notm}} Platform remote peer on AWS.
-
-![Remote Peer deployment flow on AWS](../images/remote_peer_AWS_flow.png "Remote Peer deployment flow on AWS")  
-*Figure 1. Remote Peer deployment flow on AWS*
--->  
-
-<!--[AWS]## Deploying a remote peer
-{: #deploy-remote-peer}-->
-
-<!--[AWS]### {{site.data.keyword.cloud_notm}} Private
-{: #icp}-->
-
-## Déploiement d'un homologue distant
-{: #icp}
-
-<!--[AWS]{{site.data.keyword.cloud_notm}} Private (ICP) is a Kubernetes-based platform for building a private cloud in an on-premises environment. You can use ICP to run a remote peer and connect the remote peer to a blockchain network on {{site.data.keyword.blockchainfull_notm}} Platform. {{site.data.keyword.blockchainfull_notm}} Platform Remote Peer for ICP leverages the storage, security, logging, and support services of ICP so that you can manage your remote peers in your on-premises environment. For more information about ICP, see [{{site.data.keyword.cloud_notm}} Private documentation ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0.3/kc_welcome_containers.html "{{site.data.keyword.cloud_notm}} Private documentation").-->
-
-<!--[AWS]Nancy did some re-org here by moving ICP description to the beginning of this topic as we only support ICP now. Will move it back or other places later.-->
-
-Le diagramme suivant décrit les étapes permettant de déployer un homologue distant {{site.data.keyword.blockchainfull_notm}} Platform sur ICP. Pour plus d'informations sur la façon de déployer des homologues distants sur ICP, voir la section relative au [déploiement d'homologues distants dans {{site.data.keyword.cloud_notm}} Private](remote_peer_icp.html "Déploiement d'homologues distants dans {{site.data.keyword.cloud_notm}} Private").
-
-![Flux de déploiement d'homologue distant dans ICP](../images/remote_peer_ICP_flow.png "Flux de déploiement d'homologue distant dans ICP")  
-<!--[AWS]
-*Figure 2. Remote Peer deployment flow on ICP*
--->  
-*Figure 1. Flux de déploiement d'homologue distant dans ICP*
+*Figure 1. Flux de déploiement de {{site.data.keyword.blockchainfull_notm}} Platform for AWS sur AWS*
 
 
-## Exploitation d'un homologue distant
+## Exploitation d'un homologue AWS
 {: #operate-remote-peer}
 
-Après que vous avez déployé l'homologue distant, vous devez effectuer quelques tâches supplémentaires pour que votre homologue distant puisse soumettre des transactions au réseau. Ces étapes incluent l'ajout de votre organisation à un canal, l'association de votre homologue distant au canal, l'installation de code blockchain sur votre homologue distant, l'instanciation de code blockchain sur le canal, ainsi que la connexion d'applications à votre homologue distant.
-Pour plus d'informations, voir <!--[AWS][Operating remote peers in Amazon Web Service](remote_peer_operate_aws.html#remote-peer-operate-aws) or -->[Exploitation d'homologues distants dans {{site.data.keyword.cloud_notm}} Private](remote_peer_operate_icp.html#remote-peer-operate).
+Après que vous avez déployé l'homologue, vous devez effectuer quelques tâches supplémentaires pour que votre homologue puisse soumettre des transactions au réseau. Ces étapes opérationnelles incluent l'ajout de votre organisation à un canal, l'association de votre homologue au canal, l'installation de code blockchain sur votre homologue, l'instanciation de code blockchain sur le canal, ainsi que la connexion d'applications à votre homologue.
+Pour plus d'informations, voir [Utilisation des homologues dans Amazon Web Service](remote_peer_operate_aws.html#remote-peer-operate-aws).
 
 ## Hébergement de données
 {: #data-residency}
 
-Les exigences en termes d'hébergement de données sont des restrictions qui gouvernent l'emplacement où les données peuvent résider. L'exigence la plus courante sur l'hébergement de données est associée aux réglementations de certains pays, qui demandent que toutes les données client qui sont traitées et stockées sur un système informatique doivent demeurer à l'intérieur des frontières d'un pays donné. De même, certaines entreprises dans des secteurs extrêmement régulés, comme le gouvernement, la santé et les services financiers, exigent que l'ensemble de leurs données soient entièrement stockées derrière leur pare-feu. En outre, certaines entreprises appliquent des règles d'entreprise où certains types de données, généralement des informations identifiant la personne, doivent demeurer privées et derrière leur pare-feu d'entreprise. Par conséquent, pour appliquer l'hébergement de données, tous les composants du réseau de blockchain doivent faire partie du même [canal](../glossary.html#channel) et se trouver à l'intérieur des frontières d'un seul pays.
+Etant donné que les réseaux de blockchain dépendent du type de données qui sont traitées, des étapes supplémentaires sont parfois nécessaires pour assurer la sécurité de certains types de données. L'exigence la plus courante sur l'hébergement de données est associée aux réglementations de certains pays, qui demandent que toutes les données qui sont traitées et stockées sur un système informatique doivent demeurer à l'intérieur des frontières d'un pays donné. De même, certaines entreprises dans des secteurs extrêmement régulés, comme le gouvernement, la santé et les services financiers, exigent que les données soient entièrement stockées derrière leur pare-feu. Par conséquent, pour appliquer l'hébergement de données, tous les composants du réseau de blockchain doivent faire partie du même [canal](../glossary.html#channel) et se trouver à l'intérieur des frontières d'un seul pays.
 
-Pour respecter les exigences d'hébergement de données, il est important de comprendre l'architecture Hyperledger Fabric qui est sous-jacente à {{site.data.keyword.blockchainfull_notm}} Platform. L'architecture est centrée autour de trois composants clé : service de tri, autorité de certification et homologue. Un homologue reçoit les mises à jour de l'état de tri sous la forme de blocs du service de tri et gère l'état et la registre. Par conséquent, un homologue et un service de tri ont une relation directe. Le registre contient les valeurs les plus récentes de toutes les clés et les données incluses dans les journaux de transaction.
+Pour respecter les exigences d'hébergement de données, il est important de comprendre l'architecture Hyperledger Fabric qui est sous-jacente à {{site.data.keyword.blockchainfull_notm}} Platform. L'architecture est centrée autour de trois composants clé : autorité de certification, service de tri et homologue. Un homologue reçoit les mises à jour de l'état de tri sous la forme de blocs du service de tri et gère l'état et la registre. Par conséquent, un homologue et un service de tri ont une relation directe. Le registre contient les valeurs les plus récentes de toutes les clés et les données incluses dans les journaux de transaction.
 
-En outre, les applications client utilisent les [logiciels SDK Fabric](../v10_application.html#using-the-fabric-sdks) pour envoyer des transactions aux homologues et au service de tri. Ces transactions incluent les données [read-write set ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-1.1/readwrite.html "Read-Write set semantics"), qui contiennent les paires clé-valeur sur le registre.
+En outre, les applications client utilisent les [logiciels SDK Fabric](../v10_application.html#using-the-fabric-sdks) pour envoyer des transactions aux homologues et au service de tri. Ces transactions incluent les données [read-write set ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/readwrite.html "Read-Write set semantics"), qui contiennent les paires clé-valeur sur le registre.
 
-Si l'hébergement de données dans le pays est une exigence de votre entreprise, le service de tri, les noeuds homologues et les applications client doivent résider dans le même pays. Lorsqu'un réseau {{site.data.keyword.blockchainfull_notm}} Platform est créé dans {{site.data.keyword.cloud_notm}}, vous avez la possibilité de choisir un emplacement pour le réseau. <!--For a Starter Plan network, you can select from US South, United Kingdom, and Sydney. For an Enterprise Plan network, you can select from currently available locations, which include Dallas, Frankfurt, London, Sao Paulo, Tokyo, and Toronto. -->Pour plus d'informations sur les régions et les emplacements, voir [Régions et emplacements d'{{site.data.keyword.blockchainfull_notm}} Platform](../reference/ibp_regions.html). Pour appliquer l'hébergement de données dans l'un de ces pays, votre homologue distant doit résider dans le même pays que l'emplacement du réseau {{site.data.keyword.blockchainfull_notm}} Platform.
+Si l'hébergement de données dans le pays est une exigence pour votre entreprise, le service de tri, les homologues et les applications client doivent résider dans le même pays. Lorsqu'un réseau {{site.data.keyword.blockchainfull_notm}} Platform est créé dans {{site.data.keyword.cloud_notm}}, vous avez la possibilité de choisir un emplacement pour le réseau. <!--For a Starter Plan network, you can select from US South, United Kingdom, and Sydney. For an Enterprise Plan network, you can select from currently available locations, which include Dallas, Frankfurt, London, Sao Paulo, Tokyo, and Toronto. -->Pour plus d'informations sur les régions et les emplacements, voir [Régions et emplacements d'{{site.data.keyword.blockchainfull_notm}} Platform](../reference/ibp_regions.html). Pour appliquer l'hébergement de données dans l'un de ces pays, votre homologue doit résider dans le même pays que l'emplacement du réseau {{site.data.keyword.blockchainfull_notm}} Platform.
 
-Si le réseau {{site.data.keyword.blockchainfull_notm}} Platform contient un homologue distant et des noeuds de service de tri aux frontières de pays, vous pouvez utiliser des canaux pour séparer les données dans un sous-ensemble d'homologues sur le réseau. Les noeuds de tri sont toujours situés dans le centre de données que vous avez sélectionné pour héberger le réseau. Il n'est pas possible d'avoir des programmes de tri entre les frontières. Les homologues peuvent cependant se situer dans le centre de données ou sur un site distant à l'extérieur de {{site.data.keyword.cloud_notm}}. Par conséquent, pour appliquer l'hébergement de données, un canal peut être créé dans lequel le programme de tri et tous les homologues, qu'il s'agisse d'homologues locaux dans le centre de données ou d'homologues distants, résident dans le même pays. De cette manière, toutes les données du programme de tri et les homologues partagent des séjours au sein des frontières d'un seul pays. D'autres canaux peuvent encore exister si nécessaire, lorsque le programme de tri et les homologues distants sont situés sur les frontières de pays et que l'hébergement de données n'est pas obligatoire.
+### Cas d'utilisation de l'hébergement des données dans un pays
+
+Envisagez d'utiliser un réseau {{site.data.keyword.blockchainfull_notm}} Platform qui inclut le service de tri et  et l'autorité de certification ainsi qu'un consortium de quatre organisations. Ces organisations comportent un ou plusieurs noeuds homologues. Les quatre organisations font partie d'un canal unique et tous les composants de réseau résident dans la région (par exemple, Francfort) où le réseau {{site.data.keyword.blockchainfull_notm}} Platform a été déployé. Enfin, les applications client qui interagissent avec les homologues résident également en Allemagne. L'hébergement de données est géré.  
+
+![Hébergement de données lorsque tous les composants  résident dans le même pays](../images/remote_peer_data_res_1.png "Hébergement de données lorsque tous les composants résident dans le même pays")
+  
+*Figure 3. Hébergement de données lorsque tous les composants résident dans le même pays*
+
+Nous allons maintenant étudier les conséquences lorsqu'un **homologue** rejoint l'une des organisations. Un homologue peut résider dans la même région que le reste du réseau ou en dehors de la région du réseau IBP :
+
+-	Si l'homologue réside dans le même pays que le reste du réseau, l'hébergement de données est géré. Toutes les données du registre demeurent en Allemagne comme illustré dans la **Figure 3** ci-dessus.
+-	Si l'homologue réside dans un pays différent (par exemple, les Etats-Unis), l'hébergement de données n'est plus géré car les données sur le registre homologue sont partagées à l'extérieur des frontières.
+
+Pour résoudre ce problème, des **canaux** peuvent être utilisés pour séparer les données dans un sous-ensemble d'homologues sur le réseau. Lorsque le réseau {{site.data.keyword.blockchainfull_notm}} Platform comporte un des homologues et des services de tri entres les frontières de pays, les canaux assurent l'isolement des données de registre des organisations avec des homologues à l'extérieur des frontières.  
+
+**Remarque :** Les noeuds de service de tri sont toujours situés dans la région du centre de données que vous avez sélectionné pour héberger le réseau. Il n'est pas possible d'avoir plusieurs services de tri entre les frontières. Toutefois, les homologues peuvent se situer dans le centre de données ou sur un site distant à l'extérieur de {{site.data.keyword.cloud_notm}}. 
+
+![Les homologues d'hébergement de données résident à l'extérieur du pays de la région d'IBM Blockchain Platform](../images/remote_peer_data_res_2.png "Les homologues d'hébergement de données résident à l'extérieur du pays de la région d'IBM Blockchain Platform")  
+*Figure 4. Les homologues d'hébergement de données résident à l'extérieur du pays de la région d'IBM Blockchain Platform*
+
+Dans la **Figure 4**, l'hébergement de données n'est pas obligatoire pour `OrgC` et `OrgD`. En fait, `OrgD` inclut désormais deux homologues, `OrgD-peer1` et `OrgD-peer2`, qui résident aux *Etats-Unis*. Par conséquent, pour que `OrgA`, `OrgB` et leurs applications client et homologues respectifs qui résident en Allemagne puissent isoler les données de registre sur le canal `X`, un nouveau canal `Y` est créé pour `OrgC` et `OrgD`.
+
+Pour une meilleure compréhension du flux de données sur le réseau de {{site.data.keyword.blockchainfull_notm}} Platform, voir la[documentation Fabric sur le flux de transactions![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/txflow.html "Flux de transactions").
 
 A l'avenir, la nouvelle technologie dans Hyperledger Fabric améliorera la capacité à réaliser d'autres hébergements de données l'étranger en utilisant des [collectes de données privées ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/private-data/private-data.html "Collectes de données privées") et zéro connaissance.
 
-- Une collecte de données privées garantit que les données privées sont partagés homologue par homologue (via le protocole gossip) sur des homologues autorisés uniquement pour voir si, par exemple, des homologues se trouvent entre les frontières d'un pays. Les données sont stockées dans une base de données privée sur l'homologue. Le service de tri n'est pas impliqué ici et il ne voit pas les données privées. Un hachage de ces données est écrit dans les registres de chaque homologue sur le canal. Le hachage qui est utilisé pour la validation d'état fait office de preuve de la transaction, et il peut être utilisé à des fins d'audit.
+- Une collecte de données privées garantit que les données privées sont partagés homologue par homologue (via le protocole gossip) sur des homologues autorisés uniquement pour voir si, par exemple, des homologues se trouvent entre les frontières d'un pays. Les données sont stockées dans une base de données privée sur l'homologue.  Le service de tri n'est pas impliqué ici et il ne voit pas les données privées. Un hachage de ces données est écrit dans les registres de chaque homologue sur le canal. Le hachage qui est utilisé pour la validation d'état fait office de preuve de la transaction, et il peut être utilisé à des fins d'audit. Des données privées sont disponibles pour les réseaux sur  {{site.data.keyword.blockchainfull_notm}} Platform qui s'exécutent dans Fabric version 1.2.1. Toutefois, la fonction Données privées n'est pas disponible pour les homologues.
 
 - Une preuve ZKP (Zero-Knowledge Proof) permet à un “prouveur” de garantir à un “vérificateur” qu'ils ont la connaissance d'une valeur confidentielle sans révéler la valeur confidentielle elle-même. Il s'agit d'un moyen de montrer que vous savez quelque chose qui répond à une instruction sans afficher ce que vous savez.
 
-Pour plus d'informations sur ces technologies, consultez le livre blanc sur les [transactions privées et confidentielles avec Hyperledger Fabric ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://www.ibm.com/developerworks/cloud/library/cl-blockchain-private-confidential-transactions-hyperledger-fabric-zero-knowledge-proof/index.html "Transactions privées et confidentielles avec Hyperledger Fabric").
+Vous trouverez davantage d'informations sur ces technologies dans le livre blanc sur les [transactions privées et confidentielles avec Hyperledger Fabric ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://www.ibm.com/developerworks/cloud/library/cl-blockchain-private-confidential-transactions-hyperledger-fabric-zero-knowledge-proof/index.html "Transactions privées et confidentielles avec Hyperledger Fabric").
 
 ## Support
 {: #remote-peer-support}
 
-L'édition bêta de l'offre {{site.data.keyword.blockchainfull_notm}} Remote Peer est destinée à l'exploration, au développement et aux tests. **N'utilisez pas cette édition pour la production.** {{site.data.keyword.blockchainfull_notm}} Platform n'assure pas de support pour cette édition. Si vous rencontrez des problèmes liés à votre homologue distant, voir les [ressources de blockchain et les forums de support](../v10_dashboard.html#support-forums). Vous pouvez également afficher les ressources de support à l'écran **Obtenir de l'aide** du Moniteur réseau.  
+IBM Blockchain Platform n'assure pas de support pour cette offre. Si vous rencontrez des problèmes liés à votre homologue, vous pouvez utiliser des ressources développeur de blockchain gratuites, des forums de support et obtenir de l'aide auprès d'{{site.data.keyword.IBM_notm}} et de la communauté Fabric. Pour plus d'informations, voir les [ressources et forums de support blockchain](../ibmblockchain_support.html#resources).Vous pouvez également afficher les ressources de support à l'écran **Obtenir de l'aide** du Moniteur réseau.
 
-<!--[AWS]
-- For issues that are related to AWS, you can use both [community support forums ![External link icon](../images/external_link.svg "External link icon")](https://forums.aws.amazon.com/index.jspa "AWS community support forums") and [AWS premium support ![External link icon](../images/external_link.svg "External link icon")](https://aws.amazon.com/premiumsupport/ "AWS premium support").
--->
+- Pour les problèmes liés à AWS, vous pouvez utiliser à la fois les [forums de support de la communauté ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://forums.aws.amazon.com/index.jspa "forums de support de la communauté AWS") et le [support premium AWS![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://aws.amazon.com/premiumsupport/ "support premium AWS").
 
-Pour les problèmes liés à {{site.data.keyword.cloud_notm}} Private, aux offres ICP [support numérique gratuit ICP et support Community Edition ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://www.ibm.com/developerworks/community/blogs/fe25b4ef-ea6a-4d86-a629-6f87ccf4649e/entry/Learn_more_about_IBM_Cloud_Private_Support?lang=en_us "Support numérique gratuit ICP et support Community Edition").
-
-<!-- add back after GA?
-If your problem cannot be solved by any of the above routes, {site.data.keyword.blockchainfull_notm}} Platform Remote Peer Enterprise Edition for ICP users can open support cases in the {{site.data.keyword.cloud_notm}} Service Portal. See [submitting support cases](../ibmblockchain_support.html#support-cases) for details on opening a support case.
--->
-
-<!-- add back at GA
-{{site.data.keyword.blockchainfull_notm}} does not support cases opened in {{site.data.keyword.cloud_notm}} relating to the {{site.data.keyword.blockchainfull_notm}} Platform Remote Peer Community Edition. The Community Edition is meant for exploration, development and testing, and should not be used for production.-->
+{{site.data.keyword.blockchainfull_notm}} ne prend pas en charge les cas d'utilisation qui sont ouverts dans {{site.data.keyword.cloud_notm}} et son liés à {{site.data.keyword.blockchainfull_notm}} Platform for AWS. L'édition Community est destinée à l'exploration, au développement et aux tests et elle ne doit pas être utilisée en production. 

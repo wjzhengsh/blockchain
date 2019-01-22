@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-31"
+lastupdated: "2018-12-07"
 
 ---
 
@@ -23,24 +23,24 @@ O {{site.data.keyword.blockchainfull}} Platform Enterprise Plan é uma oferta pr
 
 **Notas:**
 - O {{site.data.keyword.blockchainfull_notm}} Platform Enterprise Plan fornece um ambiente de produção. Se você precisar de um ambiente de desenvolvimento e teste, veja [Sobre o Starter Plan](starter_plan.html).
-- O {{site.data.keyword.blockchainfull_notm}} Platform é um serviço de plataforma no {{site.data.keyword.cloud_notm}} e todas as ofertas de associação seguem os [termos de Serviços do {{site.data.keyword.cloud_notm}} ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://www-03.ibm.com/software/sla/sladb.nsf/sla/bm-6605-13 "{{site.data.keyword.cloud_notm}} termos de Serviços") sobre os acordos de nível de serviço (SLAs). As redes do Enterprise Plan são provisionadas em **diversos ambientes** em data centers separados geograficamente.
+- O {{site.data.keyword.blockchainfull_notm}} Platform é um serviço de plataforma no {{site.data.keyword.cloud_notm}} e todas as ofertas de associação seguem os [termos de Serviços do {{site.data.keyword.cloud_notm}} ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](http://www-03.ibm.com/software/sla/sladb.nsf/sla/bm "{{site.data.keyword.cloud_notm}} termos de Serviços") sobre os acordos de nível de serviço (SLAs). As redes do Enterprise Plan são provisionadas em **diversos ambientes** em data centers separados geograficamente.
 
-Para membros que irão iniciar a rede, a IBM fornece uma interface gráfica com o usuário para guiar o inicializador de rede pelas etapas principais para configurar e provisionar a rede. Isso inclui convidar outros membros e configurar regras de governança. Para obter mais informações, veja [Governar a rede do Enterprise Plan](get_start.html). Após a rede ser implementada, uma interface gráfica com o usuário interativa, o Monitor de rede, está disponível para monitorar o funcionamento e a atividade da rede; gerenciar atividades de rede chaves que incluem novas implementações, inclusão ou remoção de membros, ciclo de vida do chaincode e gerenciamento de canal; e buscar suporte técnico. Localize mais informações sobre o Monitor de rede, veja [Opere a rede do Enterprise Plan](v10_dashboard.html).
+Para membros que irão iniciar a rede, a IBM fornece uma interface gráfica com o usuário para guiar o inicializador de rede pelas etapas principais para configurar e provisionar a rede. Isso inclui convidar outros membros e configurar regras de governança. Para obter mais informações, veja [Governar a rede do Enterprise Plan](get_start.html). Após a rede ser implementada, uma interface gráfica com o usuário interativa, o Monitor de rede, está disponível para monitorar o funcionamento e a atividade da rede; gerenciar atividades de rede chaves que incluem novas implementações, inclusão ou remoção de membros, ciclo de vida do chaincode e gerenciamento de canal; e buscar suporte técnico. Para obter mais informações, consulte [Usando o monitor de rede](v10_dashboard.html).
 
 Inscreva-se agora para a sua associação do [{{site.data.keyword.blockchainfull_notm}} ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps).
 
-O {{site.data.keyword.blockchainfull_notm}} Platform foi construído com os componentes chave do Hyperledger Fabric que incluem uma Autoridade de certificação (CA) e pelo menos 1 peer (máximo de 6).  O Enterprise Plan também fornece um serviço de solicitação do Kafka tolerante a falhas de travamento (CFT) para os membros de rede.
+O {{site.data.keyword.blockchainfull_notm}} Platform foi construído com os componentes chave do Hyperledger Fabric que incluem uma Autoridade de certificação (CA) e pelo menos 1 peer (máximo de 6).  O Enterprise Plan também fornece um serviço de ordenação do Kafka tolerante a falhas de travamento (CFT) para os membros de rede.
 
-A autoridade de certificação do Fabric é a fornecida com o Enterprise Plan. Duas CAs intermediárias são fornecidas por membro, as quais concedem associação à rede. Usando a autoridade de certificação, o membro também pode fornecer associação (certificações) aos usuários da rede.
+A autoridade de certificação do Fabric é a fornecida com o Enterprise Plan. Duas autoridades de certificação intermediárias são fornecidas por membro, as quais concedem associação à rede. Usando a autoridade de certificação, o membro também pode fornecer associação (certificações) aos usuários da rede.
 
 É importante entender que para uma transação ser anexada ao livro-razão, há três fases que estão envolvidas:  
 1. Simulação e Endosso de Transação (peer)
-2. Pedido (serviço de solicitação)
+2. Pedido (serviço de ordenação)
 3. Validação e Confirmação (peer)
 
-Os peers do Fabric pertencentes aos membros são a interface ou o gateway para aplicativos para execução do chaincode, fornecendo a lógica de negócios para executar transações com relação ao livro-razão.  Todas as transações devem ser aprovadas. Os outros membros da rede fazem esse endosso. Após a aprovação, as transações são enviadas para um serviço de solicitação fornecido pela IBM (Kafka).
+Os peers do Fabric pertencentes aos membros são a interface ou o gateway para aplicativos para execução do chaincode, fornecendo a lógica de negócios para executar transações com relação ao livro-razão.  Todas as transações devem ser aprovadas. Os outros membros da rede fazem esse endosso. Após a aprovação, as transações são enviadas para um serviço de ordenação fornecido pela IBM (Kafka).
 
-Além dos componentes de blockchain principais, a opção Associação Corporativa fornece uma infraestrutura com armazenamento de dados seguros e comunicações (TLS), além de alta disponibilidade.  Embora as redes do Fabric compartilhem esses recursos de infraestrutura, é fornecido isolamento para os nós do componente do Fabric em uma rede e cada nó é executado em um contêiner do docker seguro que protege o ambiente de execução.
+Além dos componentes de blockchain principais, a opção Associação Corporativa fornece uma infraestrutura com armazenamento de dados seguros e comunicações (TLS), além de alta disponibilidade.  Embora as redes do Fabric compartilhem esses recursos de infraestrutura, é fornecido isolamento para os nós do componente Fabric em uma rede e cada nó é executado em um contêiner do Docker seguro que protege o ambiente de execução.
 
 O único aspecto que deve ser determinado é o tamanho dos peers que a rede requer. Essa decisão é baseada no número de canais que são necessários, além da carga de trabalho por canal, do uso de memória e do espaço em disco (armazenamento).
 

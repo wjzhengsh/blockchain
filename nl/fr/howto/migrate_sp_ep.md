@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-31"
+lastupdated: "2018-12-07"
 
 ---
 
@@ -28,7 +28,7 @@ Les réseaux de plan Enterprise offrent les fonctionnalités prêtes pour la pro
 - Aucune limite de stockage, qui est de type 20 Go pour le plan Starter.
 - Gestion UC et RAM améliorée pour garantir que tous les réseaux fonctionnent sans problème.
 - Sécurité améliorée avec les fonctions suivantes :
-  - SSC (Secure Service Container) garantit que l'image de blockchain ne peut pas être tampered altérée et chargée à un moment donné et le code et les données de dispositif sont protégées en termes de confidentialité à la volée et au repos.
+  - SSC (Secure Service Container) garantit que l'image de blockchain ne peut pas être altérée et chargée à un moment donné et le code et les données de dispositif sont protégées en termes de confidentialité à la volée et au repos.
   - [HSM (Hardware secure module)](../glossary.html#hsm) pour la gestion et le stockage des clés.
   - Chiffrement de disque répandu.
 - Haute disponibilité, Reprise après incident, Tolérance aux pannes et Mises à jour en continu.
@@ -41,8 +41,8 @@ Avant de migrer depuis votre réseau de plan Starter vers un réseau de plan Ent
 
 - **Tarification :** Les frais mensuels de votre organisation pour l'utilisation d'un réseau de plan Enterprise inclut des frais d'appartenance de 1000 $ par instance et des frais d'homologue de 1000 $ par homologue. Pour plus d'informations, voir
 [Tarification du plan Enterprise](pricing.html#enterprise-plan-pricing).
-- **Version d'Hyperledger Fabric :** Les réseaux de plan Enterprise s'exécutent sur Hyperledger Fabric v1.1.  
-- **Ressources affectées :** Code blockchain (contrats intelligents), définitions de réseau d'entreprise, applications client.
+- **Version d'Hyperledger Fabric :** Les réseaux de plan Enterprise s'exécutent sur Hyperledger Fabric v1.1. Les réseaux Starter Plan s'exécutent dans la version 1.2 de Fabric. Un composant comme [Donnes privées](https://hyperledger-fabric.readthedocs.io/en/release-1.2/private-data/private-data.html), par exemple --- c'est-à-dire, un code blockchain développé pour l'utilisation de données privées --- qui fonctionne avec un réseau Starter Plan, ne fonctionnera pas dans un réseau Enterprise Plan.
+- **Ressources affectées :** Code blockchain (smart contracts), définitions de réseau d'entreprise, applications client. Tenez compte également du fait que votre code blockchain optimise composant en version 1.2 de Fabric ou une fonctionnalité qui n'est pas compatible avec les réseaux en version 1.1.
 - **Temps nécessaire :** Une demi-journée est au moins nécessaire pour migrer un réseau de base d'un plan Starter vers un plan Enterprise.
 - **Données de registre existant** : Elles ne peuvent pas être déplacées de réseaux de plan Starter vers des réseaux de plan Enterprise car il n'est pas approprié que des données de test existent dans un environnement de production.
 
@@ -71,7 +71,7 @@ Vous devez créer un réseau de plan avant de migrer. Pour plus d'informations, 
 
 Si vous avez utilisé Hyperleger Composer pour définir un réseau d'entreprise et déployé un fichier `.bna` dans votre réseau de plan Starter, vous pouvez déployer le même fichier `.bna` dans votre réseau de plan Enterprise.
 
-- Si vous disposez d'un fichier archive de réseau d'entreprise (`.bna`), suivez les instructions relatives au [déploiement d'un réseau d'entreprise dans un plan Enterprise](../develop_enterprise.html). 
+- Si vous disposez d'un fichier archive de réseau d'entreprise (`.bna`), suivez les instructions relatives au [déploiement d'un réseau d'entreprise dans un plan Enterprise](../develop_enterprise.html).
 - Si vous n'avez pas de fichier `.bna`, utilisez la commande `composer network download` pour l'extraire de l'instance de plan Starter. Pour plus d'informations sur la commande `composer network download`, consultez la [documentation relative à la ligne de commande Hyperledger Composer![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger.github.io/composer/latest/reference/commands){:new_window}. Ensuite, vous pouvez suivre les instructions de la section [Déploiement d'un réseau d'entreprise dans un plan Enterprise](../develop_enterprise.html).
 
 ### Recréation d'une configuration de réseau
@@ -80,7 +80,7 @@ Si vous avez utilisé Hyperleger Composer pour définir un réseau d'entreprise 
 Vous pourriez recréer la configuration des organisations (membres), des canaux et des homologues du réseau de votre plan Starter dans votre réseau de plan Enterprise. Vous pouvez utiliser l'interface utilisateur du Moniteur réseau pour recréer ces ressources réseau en invitant les organisations appropriées (notez que vous ne pourrez pas **basculer** entre les organisations comme dans le plan Starter), créer des canaux et créer des homologues (encore une fois, les organisations invitées devront créer leurs propres homologues).
 
 1. Connectez-vous au réseau de votre plan Enterprise sur {{site.data.keyword.cloud_notm}} et accédez au Moniteur réseau.
-2. Recréez des organisations (membres) à l'écran "Membres", recréez des canaux à l'écran "Canaux", puis recréez des homologues à l'écran "Présentation". Pour plus d'informations sur la création de ressources réseau, voir [Exploitation du réseau de votre plan Enterprise](../v10_dashboard.html#overview).
+2. Recréez des organisations (membres) à l'écran "Membres", recréez des canaux à l'écran "Canaux", puis recréez des homologues à l'écran "Présentation". Pour plus d'informations sur la création de ressources réseau, voir [Utilisation du Moniteur réseau](../v10_dashboard.html#overview).
 3. Configurez des canaux en ajoutant des membres et en définissant des règles de canal de la même manière que dans votre réseau de plan Starter.
 
 **Remarque **: Pour atteindre une haute disponibilité, vous devez créer au moins deux homologues pour votre organisation, les joindre au même canal et aux applications client de code de manière appropriée pour basculer d'un homologue à l'autre lorsque nécessaire.

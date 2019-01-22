@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-31"
+lastupdated: "2018-09-27"
 
 ---
 
@@ -32,9 +32,9 @@ Clique no botão **Novo canal** na tela "Canais" de seu Monitor de Rede e conclu
 2. Convide qualquer combinação de seus membros de rede selecionando membros de rede e clicando no botão **Incluir membro**. Customize as permissões designando funções para cada um dos membros convidados e clique em **Avançar**.
   ![Criar canal 2](../images/create_channel_2.png "Criar um painel de canal 2")
 
-    * Um operador de canal pode consultar ou atualizar o livro-razão do canal. O operador de canal tem autoridade para **Aceitar** ou **Recusar** uma solicitação de criação do canal e para enviar uma solicitação de atualização do canal. Deve haver pelo menos um **Operador** em cada canal.
-    * Um escritor de canal pode atualizar o livro-razão do canal.
-    * Um leitor de canal pode apenas consultar o livro-razão do canal.
+    * Um operador de canal pode consultar ou atualizar o livro-razão do canal. Um operador de canal tem a autoridade para **Aceitar** ou **Recusar** uma solicitação de criação de canal e para enviar uma solicitação de atualização de canal. Deve haver pelo menos um **Operador** em cada canal.
+    * Um gravador de canal pode atualizar o livro-razão, chamando uma função de chaincode, por exemplo. Um gravador de canal também pode instanciar um chaincode em um canal.
+    * Um leitor de canal pode apenas consultar o livro-razão do canal, chamando uma função de chaincode somente leitura, por exemplo.
 
 3. Configure a política de atualização do canal selecionando o número de operadores de canal para aprovar a solicitação de atualização do canal e clique em **Enviar solicitação**.
   ![Criar canal 3](../images/create_channel_3.png "Criar um painel de canal 3")
@@ -71,3 +71,6 @@ Todos os membros do canal receberão notificações por e-mail na solicitação 
 * Escritores ou leitores existentes do canal também receberão notificações por e-mail sobre a atualização do canal. Eles poderão localizar a solicitação com o status _Não necessário_ na tela **Notificações** do Monitor de rede.
 
 Quando operadores de canal suficientes concordarem com a solicitação, qualquer membro do canal poderá clicar no botão **Enviar solicitação** e o canal será atualizado. Todos os membros do canal poderão localizar o canal atualizado na tela "Canais" do Monitor de rede.
+
+**Importante:**
+As políticas de endosso não são atualizadas automaticamente quando novas organizações se associam ao canal e instalam o chaincode. Por exemplo, se a política requerer duas de cinco organizações para endossar uma transação, a política não será atualizada para requerer duas de seis organizações quando uma nova organização se associar ao canal. Em vez disso, a nova organização não será listada na política e eles não serão capazes de endossar transações. É possível incluir uma nova organização em uma política de endosso [atualizando o chaincode relevante](install_instantiate_chaincode.html#updating-a-chaincode). Para obter mais informações, consulte [Especificando políticas de endosso do chaincode](install_instantiate_chaincode.html#endorsement-policy).

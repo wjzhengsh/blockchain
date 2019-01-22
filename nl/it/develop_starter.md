@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-31"
+lastupdated: "2018-12-07"
 
 ---
 
@@ -27,7 +27,14 @@ Utilizzando l'ambiente per gli sviluppatori, puoi modellare e testare rapidament
 
 ## Prima di cominciare
 
-Assicurati di leggere [Informazioni su piano Starter](./starter_plan.html) e [Introduzione a piano Starter](./get_start_starter_plan.html). Assicurati anche di aver installato l'ambiente per sviluppatori [{{site.data.keyword.blockchainfull_notm}} Platform](./develop_install.html) e di aver creato l'istanza di {{site.data.keyword.blockchainfull_notm}} Platform piano Starter attenendoti alle istruzioni contenute in [Governance della rete piano Starter](./get_start_starter_plan.html). Assicurati di avere Node v8.9 o successivo, npm v5.x e Hyperledger Composer alla v0.19.x.
+Assicurati di leggere [Informazioni su piano Starter](./starter_plan.html) e [Introduzione a piano Starter](./get_start_starter_plan.html). Assicurati anche di aver installato l'ambiente per sviluppatori [{{site.data.keyword.blockchainfull_notm}} Platform](./develop_install.html) e di aver creato l'istanza di {{site.data.keyword.blockchainfull_notm}} Platform piano Starter attenendoti alle istruzioni contenute in [Governance della rete piano Starter](./get_start_starter_plan.html).
+
+Assicurati di avere Node v8.9 o successivo, npm v5.x e Hyperledger Composer:
+
+- Se la tua rete è alla versione 1.2 di Fabric, utilizza Hyperledger Composer v0.20.x.
+- Se la tua rete è alla versione 1.1 di Fabric, utilizza Hyperledger Composer v0.19.x.  
+
+Puoi trovare la tua versione di Fabric aprendo la [finestra Preferenze della rete](../v10_dashboard.html#network-preferences) nel tuo Monitoraggio della rete.
 
 
 ## Passo uno: Richiamo del segreto di amministrazione (admin secret)

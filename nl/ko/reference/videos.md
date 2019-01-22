@@ -23,7 +23,7 @@ lastupdated: "2018-08-31"
 ***[이 페이지가 도움이 되었습니까? 알려주십시오.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 
-다음 동영상 시리즈를 보고 {{site.data.keyword.blockchainfull}} Platform 및 Blockchain 네트워크 개발을 시작하는 방법에 대해 자세히 알아보십시오.
+다음 동영상 시리즈를 보고 {{site.data.keyword.blockchainfull}} Platform 및 블록체인 네트워크 개발을 시작하는 방법에 대해 자세히 알아보십시오.
 
 **참고**: 동영상 시리즈는 재생 목록이며 아래 동영상 프레임에서 연속으로 재생됩니다. 동영상의 왼쪽 상단에서 메뉴 아이콘을 클릭하여 재생 목록을 열고 다른 동영상으로 전환할 수 있습니다.
 

@@ -19,7 +19,7 @@ lastupdated: "2018-08-31"
 ***[此頁面有幫助嗎？請告訴我們。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 
-「{{site.data.keyword.blockchainfull}} 平台：開發」以開放程式碼 Hyperledger Composer 工具集為建置基礎，為 Linux Foundation 的 Hyperledger Project 中的專案之一。Hyperledger Composer 可讓架構師和開發人員使用對 Web 或行動應用程式公開商業邏輯的 REST API 快速建立 {{site.data.keyword.blockchain}} 解決方案，並可將區塊鏈與現有企業記錄系統整合。
+{{site.data.keyword.blockchainfull}} Platform: Develop 以開放程式碼 Hyperledger Composer 工具集為建置基礎，為 Linux Foundation 的 Hyperledger Project 中的專案之一。Hyperledger Composer 可讓架構師和開發人員使用對 Web 或行動應用程式公開商業邏輯的 REST API 快速建立 {{site.data.keyword.blockchain}} 解決方案，並可將區塊鏈與現有企業記錄系統整合。
 {:shortdesc}
 
 Hyperledger Composer 是由運行環境、指令行介面、REST 伺服器、LoopBack 連接器、遊樂場使用者介面、Yeoman 程式碼產生器，以及 VSCode 和 Atom 編輯器外掛程式組合而成。如需 Hyperledger Composer 的相關資訊，請參閱 [Hyperledger Composer 文件 ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](https://hyperledger.github.io/composer/latest/introduction/introduction.html)

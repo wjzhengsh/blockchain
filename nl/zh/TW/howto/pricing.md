@@ -18,41 +18,41 @@ lastupdated: "2018-08-31"
 ***[此頁面有幫助嗎？請告訴我們。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 
-本手冊可協助您瞭解「{{site.data.keyword.blockchainfull}} 平台」成員資格方案的定價，以及開發及擴充區塊鏈網路所需支付的費用。  
+本手冊可協助您瞭解 {{site.data.keyword.blockchainfull}} Platform 成員資格方案的定價，以及開發及擴充區塊鏈網路所需支付的費用。  
 {:shortdesc}
 
-「{{site.data.keyword.blockchainfull}} 平台」會按月向建置區塊鏈網路的組織收取會員費和對等節點費用。視您選擇的成員資格方案及您網路所使用的網路資源而定，費用會有所不同。下表顯示「{{site.data.keyword.blockchainfull_notm}} 平台」的定價概觀。
+{{site.data.keyword.blockchainfull}} Platform 會按月向建置區塊鏈網路的組織收取會員費和對等節點費用。視您選擇的成員資格方案及您網路所使用的網路資源而定，費用會有所不同。下表顯示 {{site.data.keyword.blockchainfull_notm}} Platform 的定價概觀。
 
 | 定價元素         | 每個月的入門範本方案成本    | 每個月的企業方案成本           |
 |-----|-----|-----|
 | 會員費   | $250 | $1000 |
 | 對等節點費用 | $125 | $1000 |
 
-*圖 1.「{{site.data.keyword.blockchainfull}} 平台」定價概觀*
+*圖 1. {{site.data.keyword.blockchainfull}} Platform 定價概觀*
 
 月費是按日數比例計費。例如，一個成員（相關會員費為 $1,000 美元）有兩個對等節點（每個對等節點費用 $1,000 美元 X 2 個對等節點），則每個月需支付的費用為 $3,000 美元。如果該月份有 30 天，則該成員每日支付 $100 美元（$3,000 美元/30）。如需如何支付網路費用的相關資訊，請參閱[付費模式](paying_mode.html)。
 
-在向您收費之前，「**{{site.data.keyword.blockchainfull_notm}} 平台入門範本方案」提供 $500 試用額度**。如需相關資訊，請參閱[入門範本方案定價](#starter-plan-pricing)。
+在向您收費之前，**{{site.data.keyword.blockchainfull_notm}} Platform 入門範本方案提供 $500 試用額度**。如需相關資訊，請參閱[入門範本方案定價](#starter-plan-pricing)。
 
 
 ## 網路基本元件
 
-為了瞭解定價，我們需要從簡介網路基本元件開始。「{{site.data.keyword.blockchainfull_notm}} 平台」可啟用建立以 Hyperledger Fabric 為基礎的區塊鏈網路。在高層次，Fabric 區塊鏈網路由下列基本元件組成：
+為了瞭解定價，我們需要從簡介網路基本元件開始。{{site.data.keyword.blockchainfull_notm}} Platform 可啟用建立以 Hyperledger Fabric 為基礎的區塊鏈網路。在高層次，Fabric 區塊鏈網路由下列基本元件組成：
 
 -	**組織** – 需要維護區塊鏈分類帳副本，以及需要驗證交易的任何實體。單一公司可以有多個區塊鏈組織。
 -	**對等節點** – 與組織相關聯的節點，其包含區塊鏈分類帳以及驗證交易。對等節點與個別區塊鏈組織相關聯。
 -	**排序服務** – 由單一排序節點 (SOLO) 或是排序節點集合所組合。排序服務會排序交易、建立區塊，以及將區塊傳送給對等節點來進行驗證。
 -	**憑證管理中心 (CA)** – 基於識別用途向任何互動式網路元件發出數位憑證。
 
-「{{site.data.keyword.blockchainfull_notm}} 平台」提供兩個您可以在 {{site.data.keyword.cloud_notm}} 中選擇的成員資格方案：**入門範本方案**及**企業方案**。這兩種方案都容許您建立組織，並為您提供憑證管理中心。這些方案會轉向對等節點、CA 及排序服務。
+{{site.data.keyword.blockchainfull_notm}} Platform 提供兩個您可以在 {{site.data.keyword.cloud_notm}} 中選擇的成員資格方案：**入門範本方案**及**企業方案**。這兩種方案都容許您建立組織，並為您提供憑證管理中心。這些方案會轉向對等節點、CA 及排序服務。
 
-「企業方案」提供高可用性 CA，以及具有損毀容錯排序服務的對等節點。「入門範本方案」沒有高可用性選項，並利用基本 SOLO 排序服務。因此，「入門範本方案」被設計為開發、測試及概念驗證環境的「{{site.data.keyword.blockchainfull_notm}} 平台」進入點。「企業方案」選項則適用於備妥要進行試驗及正式作業環境的網路。
+「企業方案」提供高可用性 CA，以及具有損毀容錯排序服務的對等節點。「入門範本方案」沒有高可用性選項，並利用基本 SOLO 排序服務。因此，「入門範本方案」被設計為開發、測試及概念驗證環境的 {{site.data.keyword.blockchainfull_notm}} Platform 進入點。「企業方案」選項則適用於備妥要進行試驗及正式作業環境的網路。
 
 ## 定價的關鍵元素
 
 「入門範本方案」及「企業方案」兩者都具有兩個定價元素：
 
-- **會員費** – 涵蓋建立組織、存取排序服務和 CA，並且是根據**每個實例**收費。在此定價元素中，「{{site.data.keyword.blockchainfull_notm}} 平台」可代表您的網路處理排序服務及 CA。需要有此費用，才能存取根據「{{site.data.keyword.blockchainfull_notm}} 平台」所建置的網路。
+- **會員費** – 涵蓋建立組織、存取排序服務和 CA，並且是根據**每個實例**收費。在此定價元素中，{{site.data.keyword.blockchainfull_notm}} Platform 可代表您的網路處理排序服務及 CA。需要有此費用，才能存取根據 {{site.data.keyword.blockchainfull_notm}} Platform 所建置的網路。
 
   -	「入門範本方案」容許每個成員資格有*無限制* 的組織，而且可以在「網路監視器」中切換組織。因為「入門範本方案」是針對開發、測試和 POC 環境所設計，所以您可以在多組織環境中模擬。**請注意**，總網路儲存空間上限是 20GB（包括元件、鏈碼及分類帳資料）。您的模擬組織在區塊鏈網路中共用 20GB 儲存空間。
 
@@ -84,7 +84,7 @@ lastupdated: "2018-08-31"
 ### 入門範本方案定價範例
 
 #### 入門範本方案試用
-「入門範本方案」的目的是容許任何人開始使用，並查看「{{site.data.keyword.blockchainfull_notm}} 平台」增加的值。因此，「{{site.data.keyword.blockchainfull_notm}} 平台」提供 $500 雲端額度，預期涵蓋新使用者一個月內使用預設網路配置（如上所述）所造成的所有費用。如果您**第一次**使用預設配置來建立或加入「入門範本方案」網路，則您的帳單反映在圖 4 中。
+「入門範本方案」的目的是容許任何人開始使用，並查看 {{site.data.keyword.blockchainfull_notm}} Platform 增加的值。因此，{{site.data.keyword.blockchainfull_notm}} Platform 提供 $500 雲端額度，預期涵蓋新使用者一個月內使用預設網路配置（如上所述）所造成的所有費用。如果您**第一次**使用預設配置來建立或加入「入門範本方案」網路，則您的帳單反映在圖 4 中。
 
 | 定價元件           | 每個月的成本   |
 | ----- | ---------------- |
@@ -97,9 +97,9 @@ lastupdated: "2018-08-31"
 
 *圖 4. 具有雲端額度的預設「入門範本方案」網路費用*
 
-**新使用者必須註冊，才能取得雲端額度。**不會自動套用它們。如果還沒有額度，請[註冊 ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](https://www.ibm.com/account/reg/us-en/signup?formid=urx-32798 "註冊")，以索取額度。在您存取「入門範本方案」之前，請等待 24 小時，以確定您的[帳戶 ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](https://console.bluemix.net/docs/billing-usage/viewing_usage.html#credits "帳戶") 中有這些額度。否則，可能會在套用額度之前向您收取費用。
+**新使用者必須註冊，才能取得雲端額度。**雲端額度不會自動套用。如果還沒有額度，請[註冊 ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](https://www.ibm.com/account/reg/us-en/signup?formid=urx-32798 "註冊")，以索取額度。在您存取「入門範本方案」之前，請等待 24 小時，以確定您的[帳戶 ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](https://console.bluemix.net/docs/billing-usage/viewing_usage.html#credits "帳戶") 中有這些額度。否則，可能會在套用額度之前就向您收取費用。
 
-此供應項目提供終生額度。只要您保持 {{site.data.keyword.cloud_notm}} 帳戶，額度就會持續存在，因此您不必在第一個月就使用它們。額度適用於所有 {{site.data.keyword.cloud_notm}} 服務。除「{{site.data.keyword.blockchainfull}} 平台」以外，您在 {{site.data.keyword.cloud_notm}} 上使用的產品可以耗用它們。
+此供應項目提供終生額度。只要您保持 {{site.data.keyword.cloud_notm}} 帳戶，額度就會持續存在，因此您不必在第一個月就使用它們。額度適用於所有 {{site.data.keyword.cloud_notm}} 服務。除 {{site.data.keyword.blockchainfull}} Platform 以外，您在 {{site.data.keyword.cloud_notm}} 上使用的產品可以使用這些額度。
 
 | 定價元件           | 每個月的成本   |
 | ----- | ---------------- |
@@ -149,7 +149,7 @@ lastupdated: "2018-08-31"
 *圖 7. 兩個預設「入門範本方案」網路費用*
 
 #### 移除對等節點
-您也可以移除預設「入門範本方案」網路配置中的對等節點。在此狀況下，「{{site.data.keyword.blockchainfull_notm}} 平台」仍會提供您 Cloud 試用額度 $500，但您的帳單每個月會減少 $125。月底時，結果是剩餘 $125 對等節點額度。您可能會發現自己處於在「入門範本方案」環境中與另一位成員分工合作（每位成員都只需要單一對等節點）的情境中。如果您從「入門範本方案」網路中移除對等節點並使用試用額度，則您的帳單反映在圖 8 中。
+您也可以移除預設「入門範本方案」網路配置中的對等節點。在此狀況下，{{site.data.keyword.blockchainfull_notm}} Platform 仍會提供您 Cloud 試用額度 $500，但您的帳單每個月會減少 $125。月底時，結果是剩餘 $125 對等節點額度。您可能會發現自己處於在「入門範本方案」環境中與另一位成員分工合作（每位成員都只需要單一對等節點）的情境中。如果您從「入門範本方案」網路中移除對等節點並使用試用額度，則您的帳單反映在圖 8 中。
 
 | 定價元件           | 每個月的成本   |
 | ----- | ---------------- |
@@ -167,7 +167,7 @@ lastupdated: "2018-08-31"
 
 ## 企業方案定價
 
-「{{site.data.keyword.blockchainfull_notm}} 平台」未提供「企業方案」網路的預設配置。您可以選擇要作為開頭的配置。當您準備好使用「企業方案」時，應該妥善瞭解網路配置的內容。作為高可用性最佳作法，強烈建議每個組織最少有兩個對等節點，以確保組織不會遭遇網路中斷。
+{{site.data.keyword.blockchainfull_notm}} Platform 未提供「企業方案」網路的預設配置。您可以選擇要作為開頭的配置。當您準備好使用「企業方案」時，應該妥善瞭解網路配置的內容。作為高可用性最佳作法，強烈建議每個組織最少有兩個對等節點，以確保組織不會遭遇網路中斷。
 
 如果您位於具有其他網路成員的「企業方案」網路中，而且每一位成員都為您的組織新增兩個對等節點，則每一張帳單都反映在圖 8 中。
 

@@ -19,8 +19,7 @@ lastupdated: "2018-08-31"
 ***[Cette page est-elle utile ? Dites-nous.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 
-Les frais d'{{site.data.keyword.blockchainfull}} Platform sont mensuels avec des frais d'appartenance et des frais d'homologue. Les membres réseau peuvent régler leur facture avec leurs comptes {{site.data.keyword.cloud_notm}} qui contiennent l'espace nécessaire à la création de l'instance de réseau. Un membre réseau peut aussi couvrir les factures d'autres membres du réseau et payer pour l'intégralité du réseau.
-Le débiteur peut aussi transférer les factures à d'autres membres si nécessaire.
+Les frais d'{{site.data.keyword.blockchainfull}} Platform sont mensuels avec des frais d'appartenance et des frais d'homologue. Les membres réseau peuvent régler leur facture avec leurs comptes {{site.data.keyword.cloud_notm}} qui contiennent l'espace nécessaire à la création de l'instance de réseau. Un membre réseau peut aussi couvrir les factures d'autres membres du réseau et payer pour l'intégralité du réseau. Le débiteur peut aussi transférer les factures à d'autres membres si nécessaire.
 {:shortdesc}
 
 Selon le plan de réseau que vous choisissez et la quantité de ressources que vous utilisez, vos paiements peuvent varier. Pour plus d'informations, voir [Tarification](pricing.html).
@@ -46,9 +45,9 @@ Un membre du réseau peut couvrir les frais d'un ou de plusieurs autres membres 
    1. Connectez-vous à {{site.data.keyword.cloud_notm}}.
    2. Dans la barre de menus, cliquez sur **Gérer** > **Compte** > **Organisations Cloud Foundry**.
    3. Cliquez sur **Afficher Détails** en regard de l'organisation Cloud Foundry pour laquelle vous allez créer le réseau. Si vous n'avez pas d'organisation pour le réseau, cliquez sur le bouton **Ajouter une nouvelle organisation Cloud Foundry** pour en créer une.
-   4. Cliquez sur le bouton **Ajouter un espace Cloud Foundry** afin de créer un espace pour un autre membre réseau.  Sélectionnez la région de l'espace, donnez-lui un nom, puis cliquez sur **Ajouter**.  Notez que seul le créateur de l'espace peut accéder à l'espace créé.  
+   4. Cliquez sur le bouton **Ajouter un espace Cloud Foundry** afin de créer un espace pour un autre membre réseau. Sélectionnez la région de l'espace, donnez-lui un nom, puis cliquez sur **Ajouter**.  Notez que seul le créateur de l'espace peut accéder à l'espace créé.  
    **Remarque **: Si le débiteur paye pour plusieurs membres, il doit recommencer cette étape pour créer des espaces distincts pour chacun des membres pour lesquels il va payer.
-2. Le débiteur invite d'autres membres à rejoindre le compte {{site.data.keyword.cloud_notm}} du débiteur et il leur accorde l'accès à leur espace spécifique.  Assurez-vous que chaque utilisateur n'a accès qu'à un seul espace.
+2. Le débiteur invite d'autres membres à rejoindre le compte {{site.data.keyword.cloud_notm}} du débiteur et il leur accorde l'accès à leur espace spécifique. Assurez-vous que chaque utilisateur n'a accès qu'à un seul espace.
    1. Dans la barre de menus, cliquez sur **Gérer** > **Compte** > **Utilisateurs**.  
    2. Cliquez sur **Inviter des utilisateurs** et affectez-leur un accès utilisateur :
       1. Indiquez l'adresse de courrier électronique d'un seul utilisateur que vous allez inviter à rejoindre votre organisation Cloud Foundry.
@@ -66,7 +65,7 @@ Un membre du réseau peut couvrir les frais d'un ou de plusieurs autres membres 
    2. Connectez-vous à {{site.data.keyword.cloud_notm}} et vérifiez que vous utilisez l'organisation et l'espace {{site.data.keyword.cloud_notm}} corrects, que le débiteur vous ajoute.
       1. Sur la console {{site.data.keyword.cloud_notm}}, cliquez sur l'avatar de profil dans l'angle supérieur droit.
       2. Choisissez le compte du débiteur dans la liste déroulante **Compte**.  Notez que le compte et l'organisation dans laquelle vous mettez à disposition l'instance de service blockchain sont ceux qui sont facturés.  
-   3. Dans le catalogue {{site.data.keyword.cloud_notm}}, recherchez **Blockchain** et créez une instance de service. 
+   3. Dans le catalogue {{site.data.keyword.cloud_notm}}, recherchez **Blockchain** et créez une instance de service.
       1. Dans la zone **Nom du service**, entrez un nom descriptif à des fins de reconnaissance future.
       2. Vérifiez que l'organisation et l'espace sont ceux auxquels le débiteur vous ajoute.
       3. Sélectionnez le plan d'appartenance avec lequel vous allez créer votre instance de réseau. Votre plan d'appartenance doit être le même que celui avec lequel le débiteur crée le réseau.

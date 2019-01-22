@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-09-28"
+lastupdated: "2018-12-08"
 
 ---
 
@@ -13,9 +13,10 @@ lastupdated: "2018-09-28"
 {:pre: .pre}
 {:tip: .tip}
 
-# Installing a development environment
+# Installing a business network development environment
 {: #installing-a-development-environment}
 
+**IBM recommends using Hyperledger Composer solely for demos and proof-of-concepts. IBM does not provide support for networks using Hyperledger Composer in production, including the Composer CLI, JavaScript APIs, REST server, and Web Playground.**
 
 ***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
@@ -42,25 +43,46 @@ If you are using VSCode, there is a Hyperledger Composer VSCode extension availa
 
 ## Step One: Install the command line tools
 
-The command line tools include **composer-cli**, the main {{site.data.keyword.blockchainfull_notm}} Platform: Develop command line module; **generator-hyperledger-composer**, **composer-rest-server**, and **Yeoman**, these modules are used to generate business networks, bespoke REST servers, and Angular applications.
+The command line tools include **composer-cli**, the main {{site.data.keyword.blockchainfull_notm}} Platform: Develop command line module; **generator-hyperledger-composer**, **composer-rest-server**, and **Yeoman**, these modules are used to generate business networks, bespoke REST servers, and Angular applications. The version you install depends on the version of Hyperledger Fabric that your Starter or Enterprise plan is running. You can find your Fabric version by opening the [Network Preferences window](../v10_dashboard.html#network-preferences) in your Network Monitor.
 
-1. Install **composer-cli** by using the following command:
+1. For use with new instances of Starter Plan running Hyperledger Fabric v1.2.1, install **composer-cli** by using the following command:
+
+    ```
+    npm install -g composer-cli@0.20.x
+    ```
+    {:codeblock}
+
+  For use with Enterprise Plan and Starter Plan instances running Hyperledger Fabric v1.1, install **composer-cli** by using the following command:
 
     ```
     npm install -g composer-cli@0.19.x
     ```
     {:codeblock}
 
-2. Install **composer-rest-server** by using the following command:
+2. For use with new instances of Starter Plan running Hyperledger Fabric v1.2.1, install **composer-rest-server** by using the following command:
+
+    ```
+    npm install -g composer-rest-server@0.20.x
+    ```
+    {:codeblock}
+
+  For use with Enterprise Plan and Starter Plan instances running Hyperledger Fabric v1.1, install **composer-rest-server** by using the following command:
 
     ```
     npm install -g composer-rest-server@0.19.x
     ```
     {:codeblock}
 
-    Use the **composer-rest-server** module to create a REST Server on your machine to expose your business networks as RESTful APIs.
+ Use the **composer-rest-server** module to create a REST Server on your machine to expose your business networks as RESTful APIs.
 
-3. Install **generator-hyperledger-composer** by using the following command:
+3. For use with new instances of Starter Plan running Hyperledger Fabric v1.2.1, install **generator-hyperledger-composer** by using the following command:
+
+    ```
+    npm install -g generator-hyperledger-composer@0.20.x
+    ```
+    {:codeblock}
+
+  For use with Enterprise Plan and Starter Plan instances running Hyperledger Fabric v1.1, install **generator-hyperledger-composer** by using the following command:
 
     ```
     npm install -g generator-hyperledger-composer@0.19.x
@@ -81,7 +103,7 @@ The command line tools include **composer-cli**, the main {{site.data.keyword.bl
 The Hyperledger Composer playground is a user interface that can be used as a simulated environment for testing a business network. Install the playground by using the following command:
 
 ```
-npm install -g composer-playground@0.19.x
+npm install -g composer-playground@0.20.x
 ```
 {:codeblock}
 

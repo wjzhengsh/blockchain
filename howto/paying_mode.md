@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-31"
+lastupdated: "2018-09-28"
 
 ---
 
@@ -10,6 +10,7 @@ lastupdated: "2018-08-31"
 {:shortdesc: .shortdesc}
 {:screen: .screen}
 {:codeblock: .codeblock}
+{:note: .note}
 {:pre: .pre}
 
 # Paying mode
@@ -23,6 +24,10 @@ lastupdated: "2018-08-31"
 {:shortdesc}
 
 Depending on the network plan that you choose and the amount of resources that you use, your payments are different. For more information about pricing, see [Pricing](pricing.html).
+
+When several organizations build a consortium, it is recommended that the participating organizations use a federated email address to create their network. In this case, access to the network does not depend on any individual's avalibility.
+{:note}
+
 
 ## Prerequisites
 {: #prereq}
@@ -76,6 +81,7 @@ One member in the network can cover the fees for one or more other network membe
 {: #pay-for-others-limitation}
 - Because all members are inside of the payers {{site.data.keyword.cloud_notm}} account, the payer has access to all members' blockchain instances and can impersonate them. Therefore, this paying mode is best used for PoC environments, or in cases where the payer is handling all management of the {{site.data.keyword.blockchainfull_notm}} Platform and the members are being provided with only an application.  
 - Any member in the payer's Cloud Foundry Org can see all the spaces in the organization.  However, they cannot edit or modify the organizations because they don't have accesses.  
+- Be aware that any member in the payer's Cloud Foundry Org can see the IBM Cloud IDs of other members in the same Cloud Foundry Org.  
 - After adding all members to the payer's {{site.data.keyword.cloud_notm}} account and assigning them access to provision blockchain instances and join the network, the payer is also giving the members access to create other services, which could cause additional charges. All members might sign an agreement with trust that they will not create any unauthorized services in their accounts to cause extra cost to the payer's account.  
 
 ## Letting a member pay for you

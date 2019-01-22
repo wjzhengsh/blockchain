@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-31"
+lastupdated: "2018-12-07"
 
 ---
 
@@ -16,11 +16,9 @@ lastupdated: "2018-08-31"
 # Glossario
 {: #glossary}
 
-
 ***[Questa pagina è utile? Faccelo sapere.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
-
-{{site.data.keyword.blockchainfull}} Platform semplifica la tua esperienza sulla blockchain. Questo argomento definisce i termini che compaiono in questa documentazione e intende offrirti un'introduzione ai concetti della blockchain. Per una comprensione più approfondita dei termini, puoi consultare [Hyperledger Fabric ![Icona link esterno](images/external_link.svg "Icona link esterno")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/glossary.html).
+Questo argomento definisce i termini specifici di {{site.data.keyword.blockchainfull}} Platform che compaiono in questa documentazione. Per una comprensione più approfondita dei termini e per un glossario dei termini correlati ai concetti di Hyperledger Fabric, fai riferimento a [Hyperledger Fabric glossary ![Icona link esterno](images/external_link.svg "Icona link esterno")](http://hyperledger-fabric.readthedocs.io/en/release-1.2/glossary.html).
 {:shortdesc}
 
 ## Asset
@@ -33,13 +31,13 @@ Un set ordinato di transazioni, che è crittograficamente collegato al precedent
 Una definizione di una rete blockchain che include il modello di dati, la logica di transazione e le regole di controllo dell'accesso per la tua soluzione blockchain. Le BND (Business Network Definition) vengono create utilizzando [Hyperledger Composer](#hyperledger-composer). Le BND (Business Network Definition) sono assemblate in file **.bna** (business network archive) distribuibili.
 
 ## CA
-Acronimo di Certificate Authority, ossia Autorità di certificazione. Una risorsa di rete blockchain che emette i certificati per tutti i membri partecipanti. Questi certificati rappresentano l'identità di un membro. Tutte le entità nella rete (peer, ordinanti, client ecc.) devono avere un'identità per comunicare, autenticare e, alla fine, interagire con il libro mastro. Queste identità sono richieste per qualsiasi partecipazione diretta nella rete blockchain. Puoi creare una scheda di rete di business per la CA. La [scheda CA](develop_starter.html) può quindi essere importata e verrà utilizzata per scambiare il segreto di amministrazione (admin secret) per i certificati validi dall'Autorità di certificazione di piano Starter.
+Un'abbreviazione di "Certificate Authority - Autorità di certificazione", si tratta del componente che emette i certificati a tutti i membri partecipanti. Questi certificati rappresentano l'identità di un membro. Tutte le entità nella rete (peer, ordinanti, client ecc.) devono avere un'identità per comunicare, autenticare e, alla fine, interagire con il libro mastro. Queste identità sono richieste per qualsiasi partecipazione diretta nella rete blockchain. Puoi creare una scheda di rete di business per la CA. La [scheda CA](develop_starter.html) può quindi essere importata e verrà utilizzata per scambiare il segreto di amministrazione (admin secret) per i certificati validi dall'Autorità di certificazione di piano Starter.
 
 ## Catena
 La catena del libro mastro è un log di transazioni strutturato come blocchi di transazioni collegati da hash. I peer ricevono i blocchi di transazioni dal servizio ordini, contrassegnano le transazioni del blocco come valide o non valide, in base alle politiche di approvazione e alle violazioni della concorrenza, e accodano il blocco alla catena hash sul file system del peer.
 
 ## Chaincode
-Noto anche come "smart contract", il chaincode è un elemento software che contiene una serie di funzioni per eseguire query o aggiornamenti del libro mastro.
+Noto anche come **smart contract**, il chaincode è un elemento software che contiene una serie di funzioni per eseguire query o aggiornamenti del libro mastro.
 
 ## Canale
 Consiste in un sottoinsieme di membri della rete che vogliono eseguire transazioni in privato. I canali forniscono l'isolamento e la confidenzialità dei dati consentendo ai membri di un canale di stabilire delle specifiche regole e un libro mastro separato a cui possono accedere solo i membri del canale. I peer, che sono i nodi che fungono da endpoint delle transazioni per le organizzazioni, vengono uniti ai canali.
@@ -52,6 +50,9 @@ Il profilo di connessione è visibile nella schermata "Panoramica" del Monitorag
 
 ## Consenso
 Un processo collaborativo per mantenere le transazioni del libro mastro sincronizzate nella rete. Il consenso garantisce che i libri mastro vengano aggiornati solo quando gli appropriati partecipanti approvano le transazioni e che i libri mastro vengano aggiornati con le stesse transazioni nello stesso ordine. Ci sono molti modi algoritmici differenti per raggiungere il consenso.
+
+## Consorzio
+Il gruppo di organizzazioni non ordinanti elencate sul canale del sistema ordinante. Queste sono le sole organizzazioni che possono creare il canale. Nel momento della creazione del canale, tutte le organizzazioni aggiunte al canale devono far parte di un consorzio. Tuttavia, un'organizzazione che non viene definita in un consorzio, può essere aggiunta a un canale esistente. Sebbene una rete blockchain può avere più consorzi, la maggior parte delle reti blockchain hanno un solo consorzio.
 
 ## CouchDB
 Un archivio documenti utilizzato per il database dello stato nelle reti piano Starter. CouchDB è anche un'opzione per le reti piano Enterprise, insieme a LevelDB. CouchDB supporta l'utilizzo di indici e consente di emettere query avanzate sui dati sul tuo peer.
@@ -75,7 +76,7 @@ Il blocco di configurazione che inizializza un canale o una rete blockchain e ch
 Hyperledger Fabric consente ai peer di raccogliere, reciprocamente, importanti informazioni sulla rete senza dover fare affidamento sul servizio ordini. Il [protocollo di diffusione dei dati gossip ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.1/gossip.html) fornisce ai peer un modo sicuro, affidabile e scalabile per scambiare messaggi tra loro. Ad esempio, se i peer perdono alcuni blocchi a causa di ritardi, interruzioni di rete o altri motivi, possono sincronizzarsi con lo stato attuale del libro mastro utilizzando la messaggistica gossip per contattare altri peer in possesso di questi blocchi mancanti.
 
 ## HSM
-Hardware Security Module. Fornisce gestione delle chiavi, archiviazione delle chiavi e crittografia on-demand come un servizio gestito. HSM è un'appliance fisica che gestisce le attività a elevato utilizzo di risorse dell'elaborazione di crittografia e riduce la latenza per le applicazioni. Per ulteriori informazioni, vedi [Hardware Security Module ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://www.ibm.com/cloud/hardware-security-module)
+Hardware Security Module. Fornisce gestione delle chiavi, archiviazione delle chiavi e crittografia on-demand come un servizio gestito. HSM è un dispositivo fisico che gestisce le attività a elevato utilizzo di risorse dell'elaborazione di crittografia e riduce la latenza per le applicazioni. Per ulteriori informazioni, vedi [Hardware Security Module ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://www.ibm.com/cloud/hardware-security-module)
 
 ## Hyperledger Composer
 [Hyperledger Composer ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://hyperledger.github.io/composer/latest/introduction/introduction.html) è un set di strumento di sviluppo open source. Utilizza un linguaggio di modellazione su misura, che è combinato con le transazioni JavaScript e le regole di controllo dell'accesso per modellare completamente una rete di business blockchain. Puoi utilizzare Hyperledger Composer per integrare i sistemi e i dati esistenti con la tua applicazione blockchain prima di eseguire qualsiasi distribuzione a una vera blockchain.
@@ -90,7 +91,7 @@ Il processo di inserire un chaincode nel file system di un peer. Devi installare
 Il processo di avviare e istanziare un contenitore chaincode su uno specifico canale. Dopo che il chaincode è stato installato sui peer e ogni peer ha aderito al canale, il chaincode deve essere istanziato sul canale. L'istanziazione esegue tutta l'inizializzazione necessario del chaincode, che include l'impostazione di coppie chiave-valore che formano lo stato globale iniziale di un chaincode. Dopo l'istanziazione i peer che hanno il chaincode installato possono accettare richiami del chaincode.
 
 ## Kafka
-L'implementazione di un plugin di consenso per Hyperledger Fabric che dà come risultato un cluster di nodi del servizio ordini nella rete blockchain. Un'implementazione kafka è concepita per una rete di produzione.
+L'implementazione di un plugin di consenso per Hyperledger Fabric che dà come risultato un cluster di nodi del servizio ordini nella rete blockchain. Un'implementazione Kafka è concepita per una rete di produzione.
 
 ## Libro mastro
 Formato da una vera e propria "catena di blocchi" che memorizzano i record di transazioni immutabili e in sequenza, e un database dello stato per conservare lo stato corrente. C'è un libro mastro per canale e gli aggiornamenti ad esso vengono gestiti dal processo di consenso in base alle politiche di uno specifico canale.
@@ -114,16 +115,13 @@ Visibile dalla schermata "API" del Monitoraggio della rete. Le credenziali inclu
 Il dashboard GUI fornito da {{site.data.keyword.blockchainfull_notm}} Platform per visualizzare e gestire la rete blockchain.
 
 ## Nodo
-L'entità di comunicazione della blockchain. Ci sono tre tipi di nodi: nodi CA, Peer e Ordering Service (Servizio ordini) (la raccolta di ordinanti per un canale).
+L'entità di comunicazione della blockchain. Ci sono tre tipi di nodi: CA, peer e ordinante. 
 
 ## Ordinante
-Un nodo Ordering Service (Servizio ordini). Una risorsa di rete blockchain che fornisce servizi di autenticazione client. Fornisce inoltre servizi per ordinare e trasmettere le transazioni.
+Il nodo che raccoglie le transazioni dai membri della rete, ordina le transazioni e le include in blocchi. Questi blocchi vengono poi distribuiti ai peer, che verificano quindi i blocchi e li aggiungono ai libri mastro su ogni canale. Gli ordinanti contengono il materiale di identità crittografica associato a ciascun membro e autenticano l'identità dei client e dei peer per l'accesso alla rete. La funzione generale fornita da un nodo ordinante o da una raccolta di nodi, è nota come **servizio ordini**.
 
 ## Organizzazione
 Vedi [Membro](#member).
-
-## Servizio ordini
-Ogni rete blockchain richiede un servizio ordini. Il servizio ordini raccoglie le transazioni dai membri della rete, ordina le transazioni e le include in blocchi. Il servizio ordini distribuisce quindi i nuovi blocchi ai peer, che verificano quindi i blocchi e li aggiungono ai libri mastro su ogni canale. Il servizio ordini è anche un'associazione comune per la rete complessiva. Contiene il materiale di identità crittografica associato a ciascun membro e autentica l'identità di client e peer per l'accesso alla rete.
 
 ## Partecipante
 Qualsiasi organizzazione, individuo, applicazione o dispositivo che interagisce con la rete blockchain. Nell'ambito del termine 'partecipante' rientrano due raggruppamenti distinti, ossia membri e utenti.
@@ -132,10 +130,16 @@ Qualsiasi organizzazione, individuo, applicazione o dispositivo che interagisce 
 Una risorsa di rete blockchain che fornisce i servizi per eseguire e convalidare le transazioni e mantenere i libri mastro. Il peer esegue il chaincode ed è il detentore della cronologia delle transazioni e dello stato corrente degli asset sui canali della rete, ossia il libro mastro. Appartengono e sono gestiti dalle organizzazioni e vengono uniti ai canali.
 
 ## Credenziali del servizio
-Le credenziali del servizio sono in formato JSON e contengono le informazioni sull'endpoint API e gli ID registrazione(enrollID)/segreti per le tue risorse di rete, ossia i peer, i nodi di ordine e le CA. La tua applicazione interagisce con le risorse di rete tramite questi endpoint API.
+Le credenziali del servizio sono in formato JSON e contengono le informazioni sull'endpoint API e gli ID iscrizione(enrollID)/segreti per le tue risorse di rete, ossia le CA, gli ordinanti e i peer. La tua applicazione interagisce con le risorse di rete tramite questi endpoint API.
 
 ## SDK
 Hyperledger Fabric supporta due SDK (Software Development Kit). Un SDK Node e un SDK Java.  L'SDK Node può essere installato tramite NPM e l'SDK Java tramite Maven.  Gli SDK hanno i propri repository git, ossia [SDK Node Fabric ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://github.com/hyperledger/fabric-sdk-node) e [SDK Java Fabric ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://github.com/hyperledger/fabric-sdk-java), con la documentazione per le API disponibili. Gli SDK Hyperledger Fabric Client abilitano l'interazione tra la tua applicazione client e la tua rete blockchain.
+
+## SignCert
+Il certificato che ogni entità, che sia un'organizzazione o un amministratore, allega alla propria proposta o alle risposte alla proposta. Questi signCert sono univoci per un'entità e vengono controllati dal servizio ordini per garantire che corrispondano al signCert sul file di tale entità.
+
+## Smart contract
+Vedi [Chaincode](#chaincode).
 
 ## SOLO
 L'implementazione di un plugin di consenso per Hyperledger Fabric che dà come risultato un singolo nodo di servizio ordini nella rete blockchain. La rete piano Starter utilizza l'implementazione SOLO. Un'implementazione SOLO non è concepita per una rete di produzione. L'alternativa a SOLO è un cluster Kafka.

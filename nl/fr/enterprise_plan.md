@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-31"
+lastupdated: "2018-12-07"
 
 ---
 
@@ -23,9 +23,9 @@ Le plan Enterprise d'{{site.data.keyword.blockchainfull}} Platform est une offre
 
 **Remarques :**
 - Le plan Enterprise d'{{site.data.keyword.blockchainfull_notm}} Platform fournit un environnement de production. Si vous avez besoin d'un environnement de tests et de développement, voir [A propos du plan Starter](starter_plan.html).
-- {{site.data.keyword.blockchainfull_notm}} Platform est un service de plateforme sur {{site.data.keyword.cloud_notm}} et toutes les offres d'appartenance suivent les [Dispositions des services {{site.data.keyword.cloud_notm}} ![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://www-03.ibm.com/software/sla/sladb.nsf/sla/bm-6605-13 "Dispositions des services {{site.data.keyword.cloud_notm}}") relatives aux accords sur les niveaux de licence (SLA). Les réseaux du plan Enterprise sont mis à disposition dans **plusieurs environnements** dans des centres de données géographiquement distincts.
+- {{site.data.keyword.blockchainfull_notm}} Platform est un service de plateforme sur {{site.data.keyword.cloud_notm}} et toutes les offres d'appartenance suivent les [Dispositions des services {{site.data.keyword.cloud_notm}} ![Icône de lien externe](images/external_link.svg "Icône de lien externe")](http://www-03.ibm.com/software/sla/sladb.nsf/sla/bm "Dispositions des services {{site.data.keyword.cloud_notm}}") relatives aux accords sur les niveaux de licence (SLA). Les réseaux du plan Enterprise sont mis à disposition dans **plusieurs environnements** dans des centres de données géographiquement distincts.
 
-IBM met à disposition des membres qui vont démarrer le réseau une interface graphique qui guide l'initiateur du réseau au cours des étapes de configuration et de mise à disposition du réseau. Cette interface comporte des fonctions permettant d'inviter d'autres membres et de définir des règles de gouvernance. Pour plus d'informations, voir [Gouvernance du réseau de plan Enterprise](get_start.html). Une fois le réseau déployé, une interface graphique interactive, le Moniteur réseau, est disponible pour surveiller la santé et l'activité du réseau, gérer les principales activités en réseau, comme les nouveaux déploiements, l'ajout ou le retrait de membres, le cycle de vie du code blockchain, ainsi que la gestion des canaux et la recherche d'un support technique. Pour plus d'informations sur le Moniteur réseau, voir [Exploitation du réseau de plan Enterprise](v10_dashboard.html).
+IBM met à disposition des membres qui vont démarrer le réseau une interface graphique qui guide l'initiateur du réseau au cours des étapes de configuration et de mise à disposition du réseau. Cette interface comporte des fonctions permettant d'inviter d'autres membres et de définir des règles de gouvernance. Pour plus d'informations, voir [Gouvernance du réseau de plan Enterprise](get_start.html). Une fois le réseau déployé, une interface graphique interactive, le Moniteur réseau, est disponible pour surveiller la santé et l'activité du réseau, gérer les principales activités en réseau, comme les nouveaux déploiements, l'ajout ou le retrait de membres, le cycle de vie du code blockchain, ainsi que la gestion des canaux et la recherche d'un support technique. Pour plus d'informations, voir [Utilisation du Moniteur réseau](v10_dashboard.html).
 
 Inscrivez-vous dès maintenant en tant que [{{site.data.keyword.blockchainfull_notm}} membre ![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps).
 
@@ -41,7 +41,7 @@ Il est important de comprendre que l'ajout d'une transaction au registre s'effec
 Les homologues Fabric dont les membres sont propriétaires constituent l'interface ou la passerelle pour les applications qui exécutent du code blockchain ; ils fournissent la logique métier nécessaire à l'exécution des transactions dans le registre.  Toutes les transactions doivent être validées. Les autres membres du réseau effectuent cette validation. Ensuite, les transactions sont envoyées à un service de tri (Kafka) fourni par IBM.
 
 Outre les principaux composants blockchain, l'option Plan d'appartenance d'entreprise
-fournit une infrastructure avec un stockage de données et des communications sécurisées (TLS) ainsi qu'une haute disponibilité.  Alors que les réseaux Fabric partagent ces ressources d'infrastructure, l'isolement est fourni pour les noeuds de composant Fabric au sein d'un réseau, et chaque noeud s'exécute dans un conteneur docker sécurisé qui protège l'environnement d'exécution.
+fournit une infrastructure avec un stockage de données et des communications sécurisées (TLS) ainsi qu'une haute disponibilité.  Alors que les réseaux Fabric partagent ces ressources d'infrastructure, l'isolement est fourni pour les noeuds de composant Fabric au sein d'un réseau, et chaque noeud s'exécute dans un conteneur Docker sécurisé qui protège l'environnement d'exécution.
 
 Le seul élément qui doit être défini est la taille des homologues nécessaires au réseau. Ce choix dépend du nombre de canaux requis, ainsi que de la charge de travail par canal, de l'utilisation de la mémoire et de l'espace disque (stockage).
 

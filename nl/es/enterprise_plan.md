@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-31"
+lastupdated: "2018-12-07"
 
 ---
 
@@ -24,9 +24,9 @@ El Plan empresarial de la plataforma {{site.data.keyword.blockchainfull}} es una
 **Notas:**
 - El Plan empresarial de la plataforma {{site.data.keyword.blockchainfull_notm}} proporciona un entorno de producción. Si necesita un entorno de desarrollo y pruebas, consulte [Acerca del Plan inicial](starter_plan.html).
 - La plataforma {{site.data.keyword.blockchainfull_notm}} es un servicio de plataforma de {{site.data.keyword.cloud_notm}} y todas las ofertas pertenecientes siguen
-los [{{site.data.keyword.cloud_notm}}![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://www-03.ibm.com/software/sla/sladb.nsf/sla/bm-6605-13 "términos de servicio de {{site.data.keyword.cloud_notm}}") de los contratos de nivel de servicio (SLA). Las redes del plan de empresa se suministran en **varios entornos** en centros de datos separados geográficamente.
+los [{{site.data.keyword.cloud_notm}}![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](http://www-03.ibm.com/software/sla/sladb.nsf/sla/bm "términos de servicio de {{site.data.keyword.cloud_notm}}") de los contratos de nivel de servicio (SLA). Las redes del plan de empresa se suministran en **varios entornos** en centros de datos separados geográficamente.
 
-Para los miembros que van a iniciar la red, IBM proporciona una interfaz gráfica de usuario para guiar al iniciador de la red a través de los pasos clave para establecer y suministrar la red. Ello incluye invitar a otros miembros y definir las reglas de gobierno. Para obtener más información, consulte [Gobierno de la red del Plan empresarial](get_start.html). Una vez desplegada la red, dispondrá de una interfaz gráfica de usuario, el supervisor de red, para supervisar la actividad y el estado de la red, gestionar las actividades de red clave (que incluyen nuevos despliegues, adición o eliminación de miembros, ciclo de vida del código de encadenamiento y gestión de canales) y buscar soporte técnico. Para obtener más información sobre el supervisor de red, consulte [Operación de la red del Plan empresarial](v10_dashboard.html).
+Para los miembros que van a iniciar la red, IBM proporciona una interfaz gráfica de usuario para guiar al iniciador de la red a través de los pasos clave para establecer y suministrar la red. Ello incluye invitar a otros miembros y definir las reglas de gobierno. Para obtener más información, consulte [Gobierno de la red del Plan empresarial](get_start.html). Una vez desplegada la red, dispondrá de una interfaz gráfica de usuario, el supervisor de red, para supervisar la actividad y el estado de la red, gestionar las actividades de red clave (que incluyen nuevos despliegues, adición o eliminación de miembros, ciclo de vida del código de encadenamiento y gestión de canales) y buscar soporte técnico. Para obtener más información, consulte [Utilización del supervisor de red](v10_dashboard.html).
 
 Regístrese ahora para ser [miembro de {{site.data.keyword.blockchainfull_notm}}![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps).
 
@@ -41,7 +41,7 @@ Es importante comprender que en el proceso de adición de una transacción al li
 
 Los iguales de Fabric propiedad de los miembros son la interfaz o pasarela para las aplicaciones que ejecutan el código de encadenamiento y, con ello, proporcionan la lógica empresarial para la ejecución de transacciones del libro mayor.  Deben aprobarse todas las transacciones. Los otros miembros de la red llevan a cabo esta aprobación. Tras la aprobación, las transacciones se envían a un servicio de ordenación de IBM (Kafka).
 
-Además de los componentes principales de blockchain, la opción de pertenencia Empresarial proporciona una infraestructura con almacenamiento de datos y comunicaciones seguras (TLS) así como alta disponibilidad.  Aunque las redes de Fabric comparten estos recursos de infraestructura, se proporciona aislamiento en los nodos de los componentes de Fabric de una red y cada nodo se ejecuta en un contenedor Docker seguro que protege el entorno de ejecución.
+Además de los componentes principales de blockchain, la opción de pertenencia Empresarial proporciona una infraestructura con almacenamiento de datos y comunicaciones seguras (TLS) así como alta disponibilidad.  Aunque las redes de Fabric comparten estos recursos de infraestructura, se proporciona aislamiento en los nodos de los componentes de Fabric de una red y cada nodo se ejecuta en un contenedor de Docker seguro que protege el entorno de ejecución.
 
 El único aspecto que se debe determinar es el tamaño de los iguales que necesita la red. Esta decisión se basa en el número de canales necesarios, además de la carga por canal, el uso de memoria y el espacio en disco (almacenamiento).
 

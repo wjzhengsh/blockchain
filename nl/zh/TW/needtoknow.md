@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-31"
+lastupdated: "2018-10-30"
 ---
 
 {:new_window: target="_blank"}
@@ -27,6 +27,8 @@ IBM 在創新領域擁有歷史悠久的領導地位，現在更以 {{site.data.
 {:shortdesc}
 
 {{site.data.keyword.blockchainfull_notm}} 背後的基礎架構是 Linux Foundation 的 Hyperledger Fabric 專案。每一份開放程式碼社群的提出內容都會改進 Hyperledger Fabric，但可能會有採用上的挑戰。**IBM 警告不要直接在任何 Hyperledger Fabric 區塊鏈網路上定義或交換金融資產<!--, or any assets of value,-->**。  
+
+IBM 建議僅將 Hyperledger Composer 用於展示及概念驗證。**IBM 不支援在正式作業中使用 Hyperledger Composer 的網路，包括 Composer CLI、JavaScript API、REST 伺服器及「Web 遊樂場」**。
 
 ## 開放程式碼聲明
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-31"
+lastupdated: "2018-10-30"
 ---
 
 {:new_window: target="_blank"}
@@ -27,6 +27,8 @@ IBM 一直以来都在创新方面颇具领导能力，在 {{site.data.keyword.B
 {:shortdesc}
 
 {{site.data.keyword.blockchainfull_notm}} 背后的体系结构是 Linux Foundation 的 Hyperledger 项目。每一个开放式源代码社区贡献都会改进 Hyperledger Fabric，但是会带来采用挑战。**IBM 提醒不要直接在任何 Hyperledger Fabric 区块链网络上定义或交换金融资产<!--, or any assets of value,-->**。  
+
+IBM 建议将 Hyperledger Composer 仅用于演示和概念验证。**IBM 不支持将 Hyperledger Composer 用于生产的网络，包括 Composer CLI、JavaScript API、REST 服务器和 Web Playground**。
 
 ## 开放式源代码声明
 

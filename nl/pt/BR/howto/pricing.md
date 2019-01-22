@@ -41,7 +41,7 @@ Para entender a precificação, precisamos iniciar com uma introdução aos comp
 
 -	**Organizações** - qualquer entidade que precisa manter uma cópia do livro-razão de blockchain e precisa validar transações. Pode haver múltiplas organizações de blockchain para uma única empresa.
 -	**Peers** - O nó associado a uma organização que contém o livro-razão de blockchain e valida transações. Os peers são associados a uma organização de blockchain individual.
--	**Serviço de solicitação** - Composto por um único solicitador (SOLO) ou uma coleção de solicitadores. O serviço de solicitação sequencia transações, cria blocos e envia blocos para os peers para validação.
+-	**Serviço de solicitação** - Composto por um único solicitador (SOLO) ou uma coleção de solicitadores. O serviço de ordenação sequencia transações, cria blocos e envia blocos para os peers para validação.
 -	**Autoridade de certificação (CA)** – emite certificados digitais para propósitos de identificação para qualquer componente de rede interativa.
 
 O {{site.data.keyword.blockchainfull_notm}} Platform oferece dois planos de associação, o **Starter Plan** e o **Enterprise Plan**, que é possível escolher no {{site.data.keyword.cloud_notm}}. Ambos os planos permitem criar organizações e fornecem uma autoridade de certificação. Os planos divergem em torno dos peers, das autoridades de certificação e do serviço de pedido.
@@ -111,7 +111,7 @@ A oferta fornece créditos vitalício. Os créditos duram desde que você manten
 | Créditos utilizados | -$450. |
 | Créditos remanescentes após o primeiro mês | $50 |
 
-*Figura 5. Usando créditos de avaliação com outros {{site.data.keyword.cloud_notm}} Services*
+*Figura 5. Usando créditos de avaliação com outros Serviços {{site.data.keyword.cloud_notm}}*
 
 #### Peers adicionais
 O Starter Plan não restringe o número de peers que é possível incluir em sua rede. Se você incluir, por exemplo, dois peers na rede padrão do Starter Plan, um para cada uma das suas organizações, aumentará a sua conta em US$ 250 por mês. A sua conta será refletida na Figura 6 se você incluir dois peers adicionais no início do primeiro mês ao criar ou se associar a uma rede do Starter Plan e consumir os créditos de avaliação.

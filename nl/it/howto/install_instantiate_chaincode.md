@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-31"
+lastupdated: "2018-12-07"
 ---
 
 {:new_window: target="_blank"}
@@ -17,12 +17,12 @@ lastupdated: "2018-08-31"
 ***[Questa pagina è utile? Faccelo sapere.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 
-Il chaincode è il software che incapsula la logica di business e le istruzioni transazionali per la creazione e la modifica di asset nel libro mastro. Il chaincode può essere scritto in diversi linguaggi e {{site.data.keyword.blockchainfull}} Platform supporta il chaincode Go e Node.js. Un chaincode viene eseguito in un contenitore docker associato a un qualsiasi peer che deve interagire con esso. Per ulteriori informazioni sullo sviluppo del chaincode, vedi le [esercitazioni per il chaincode ![Icona link esterno](../images/external_link.svg "Icona link esterno")](http://hyperledger-fabric.readthedocs.io/en/latest/chaincode.html).
+Il chaincode è il software che incapsula la logica di business e le istruzioni transazionali per la creazione e la modifica di asset nel libro mastro. Il chaincode può essere scritto in diversi linguaggi e {{site.data.keyword.blockchainfull}} Platform supporta il chaincode Go e Node.js. Un chaincode viene eseguito in un contenitore Docker associato a un qualsiasi peer che deve interagire con esso. Per ulteriori informazioni sullo sviluppo del chaincode, vedi le [esercitazioni per il chaincode ![Icona link esterno](../images/external_link.svg "Icona link esterno")](http://hyperledger-fabric.readthedocs.io/en/release-1.2/chaincode.html).
 {:shortdesc}
 
 Il chaincode viene installato su un peer e quindi viene istanziato su un canale. **Tutti i membri che desiderano inviare transazioni o leggere i dati utilizzando un chaincode, devono installare il chaincode sul proprio peer.** Un chaincode è definito dal suo nome e dalla sua versione. Sia il nome che la versione del chaincode installato devono essere coerenti tra i peer di un canale.
 
-Una volta che il chaincode è installato sui peer, un singolo membro della rete istanzia il chaincode sul canale. Per eseguire questa azione, è necessario che il membro della rete abbia aderito al canale. L'istanziazione immetterà i dati iniziali utilizzati dal chaincode e quindi avvierà i contenitori chaincode sui peer uniti al canale con il chaincode installato. I peer possono quindi utilizzare i contenitori in esecuzione per effettuare transazioni. **Tieni presente che solo un membro della rete deve istanziare un chaincode.** Se un peer con un chaincode installato si unisce a un canale in cui è già stato istanziato, il contenitore chaincode verrà avviato automaticamente. 
+Una volta che il chaincode è installato sui peer, un singolo membro della rete istanzia il chaincode sul canale. Per eseguire questa azione, è necessario che il membro della rete abbia aderito al canale. L'istanziazione immetterà i dati iniziali utilizzati dal chaincode e quindi avvierà i contenitori chaincode sui peer uniti al canale con il chaincode installato. I peer possono quindi utilizzare i contenitori in esecuzione per effettuare transazioni. **Tieni presente che solo un membro della rete deve istanziare un chaincode.** Se un peer con un chaincode installato si unisce a un canale in cui è già stato istanziato, il contenitore chaincode verrà avviato automaticamente.
 
 La combinazione di **installazione e istanziazione** è una funzione potente perché consente a un peer di utilizzare un singolo chaincode su molti canali. I peer possono unirsi a più canali che utilizzano lo stesso chaincode, ma con diversi gruppi di membri della rete in grado di accedere ai dati. Un peer può installare il chaincode una volta e quindi utilizzare lo stesso contenitore chaincode su qualsiasi canale in cui è stato istanziato. Questo approccio leggero consente di risparmiare spazio di calcolo e di archiviazione e ti aiuta a ridimensionare la tua rete.
 
@@ -37,13 +37,12 @@ Devi installare il chaincode su ogni peer che eseguirà questo chaincode. Per in
 
 2. Nel pannello a comparsa **Installa chaincode**, immetti il nome e la versione del tuo chaincode. **Nota**: le stringhe di nome e versione verranno utilizzate nelle applicazioni per interagire con il chaincode installato. Fai clic sul pulsante **Sfoglia** e accedi tramite il tuo file system locale alla posizione in cui sono memorizzati i file di origine chaincode. Seleziona uno o più di file di origine chaincode da installare sul peer. Quindi seleziona il tuo linguaggio chaincode dal menu a discesa **Tipo chaincode**.
 
-Puoi installare il chaincode caricando uno o più file GO o NODE oppure puoi caricare il chaincode in un file .zip. L'utilizzo di un file .zip preserverà la struttura di directory completa del tuo chaincode. Ciò sarà utile se vuoi includere dei pacchetti di dipendenze oppure utilizzare gli indici con CouchDB. Per un esempio di come includere gli indici con il tuo chaincode, consulta
-[Utilizzo di CouchDB dal chaincode ![Icona link esterno](../images/external_link.svg "Icona link esterno")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/couchdb_as_state_database.html#using-couchdb-from-chaincode){:new_window} o segui questa [esercitazione ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/couchdb_tutorial.html){:new_window} nella documentazione di Hypereldger Fabric. Puoi anche trovare informazioni sulla [gestione delle dipendenze esterne per il chaincode scritto in GO![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/latest/chaincode4ade.html#managing-external-dependencies-for-chaincode-written-in-go){:new_window}
+Puoi installare il chaincode caricando uno o più file GO o NODE oppure puoi caricare il chaincode in un file .zip. L'utilizzo di un file .zip preserverà la struttura di directory completa del tuo chaincode. Ciò sarà utile se vuoi includere dei pacchetti di dipendenze oppure utilizzare gli indici con CouchDB. Per ulteriori informazioni su CouchDB e su come configurare gli indici, vedi [Passi ottimali quando si utilizza CouchDB](../v10_application.html#couchdb-indices) nell'esercitazione Sviluppo di applicazioni. Puoi anche trovare informazioni sulla [gestione delle dipendenze esterne per il chaincode scritto in GO ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/chaincode4ade.html#managing-external-dependencies-for-chaincode-written-in-go){:new_window} nella documentazione di Hyperledger Fabric.
 
   ![Installa chaincode](../images/chaincode_install.png "Installa chaincode")
 
 ## Istanzia un chaincode
-Dopo essere stato installato sul file system di ogni peer che aderisce a un canale, il chaincode deve essere quindi istanziato sul canale in modo che i peer possano interagire con il libro mastro tramite il contenitore del chaincode. L'istanziazione esegue tutta l'inizializzazione necessaria del chaincode. Spesso ciò implicherà l'impostazione di coppie chiave/valore che compongono lo stato globale iniziale di un chaincode.
+Dopo essere stato installato sul file system di ogni peer che aderisce a un canale, il chaincode deve essere quindi istanziato sul canale in modo che i peer possano interagire con il libro mastro tramite il contenitore del chaincode. L'istanziazione esegue tutta l'inizializzazione necessaria del chaincode. Spesso ciò implicherà l'impostazione di coppie chiave/valore che compongono lo stato globale iniziale di un chaincode. 
 
 È necessario disporre di autorizzazione di operatore (**Operatore**) o di scrittore (**Scrittore**) sul canale per istanziare il chaincode. Il chaincode che ha lo stesso nome e la stessa versione su peer diversi deve essere istanziato solo una volta per distribuirne il contenitore. Per istanziare un chaincode, completare la seguente procedura:
 1. Nella schermata "Installa il codice" del tuo Monitor di rete, seleziona il peer dove hai installato il chaincode e individua il chaincode che vuoi istanziare dalla tabella dei chaincode. Fai quindi clic sul pulsante **Istanzia** sotto l'intestazione **Azione**.
@@ -59,6 +58,7 @@ Dopo essere stato installato sul file system di ogni peer che aderisce a un cana
 3. Specifica la [politica di approvazione](../glossary.html#endorsement-policy) del tuo chaincode. Puoi scoprire di più sulla modalità di impostazione delle politiche di approvazione nella [prossima sezione](#specifying-chaincode-endorsement-policies).
 
 ## Specifica delle politiche di approvazione del chaincode
+{: #endorsement-policy}
 
 Puoi utilizzare le politiche di approvazione per specificare quali serie di peer deve convalidare una nuova transazione. Ad esempio, una politica di approvazione può specificare che una transazione verrà aggiunta al libro mastro solo se la maggioranza dei membri del canale la approva.
 
@@ -72,9 +72,11 @@ Quando utilizzi il Monitoraggio della rete per impostare la tua politica di appr
 
 * **Utilizza JSON per specificare una politica avanzata:** utilizza le politiche avanzate per richiedere le approvazioni da amministratori o membri importanti oppure per dare un maggior peso alle approvazioni di specifici membri.
 
-  Il modo più facile per specificare una politica avanzata consiste nell'iniziare creando una politica semplice utilizzando la schermata dell'IU. Fai quindi clic sul pulsante **Politica avanzata**, che compila automaticamente una versione JSON della politica con gli stessi membri e le stesse regole da te impostati nella politica semplice. Puoi quindi modificare il JSON per scrivere una versione più avanzata. Per ulteriori informazioni sulla scrittura di politiche di approvazione in JSON, consulta la [documentazione dell'SDK Node Hyperledger Fabric![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://fabric-sdk-node.github.io/global.html#ChaincodeInstantiateUpgradeRequest). <!--You can also find examples of advanced endorsement policies in the main [Hyperledger Fabric documentation![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/latest/arch-deep-dive.html#example-endorsement-policies)-->
+  Il modo più facile per specificare una politica avanzata consiste nell'iniziare creando una politica semplice utilizzando la schermata dell'IU. Fai quindi clic sul pulsante **Politica avanzata**, che compila automaticamente una versione JSON della politica con gli stessi membri e le stesse regole da te impostati nella politica semplice. Puoi quindi modificare il JSON per scrivere una versione più avanzata. Per ulteriori informazioni sulla scrittura di politiche di approvazione in JSON, consulta la [documentazione dell'SDK Node Hyperledger Fabric![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://fabric-sdk-node.github.io/global.html#ChaincodeInstantiateUpgradeRequest). <!--You can also find examples of advanced endorsement policies in the main [Hyperledger Fabric documentation![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/arch-deep-dive.html#example-endorsement-policies)-->
 
   ![Politica di approvazione avanzata](../images/advanced_endorsement.png "Politica di approvazione avanzata")
+
+Le politiche di approvazione non vengono aggiornate automaticamente quando delle nuove organizzazioni si uniscono al canale e installano il chaincode. Ad esempio, se la politica richiede due delle cinque organizzazioni per approvare una transazione, la politica non sarà aggiornata per richiedere due delle sei organizzazioni quando una nuova organizzazione si unisce al canale. Invece, la nuova organizzazione non sarà elencata sulla politica e non potrà approvare le transazioni. Puoi aggiungere una nuova organizzazione a una politica di approvazione aggiornando il chaincode pertinente. 
 
 ## Aggiornamento di un chaincode
 
@@ -84,6 +86,7 @@ Puoi aggiornare un chaincode per modificare la programmazione del chaincode ment
 
   ![Aggiorna chaincode](../images/upgrade_chaincode.png "Aggiorna chaincode")
 
-2. Trova il tuo nuovo chaincode nella tabella e fai clic sul pulsante **Aggiorna** nell'intestazione **Azione**. Questa azione istanzia nuovamente il tuo chaincode e sostituisce il contenitore del chaincode con uno nuovo. Tieni presente che non devi immettere alcun nuovo argomento come parte della funzione di aggiornamento. Questa azione di aggiornamento viene svolta sul canale e deve essere eseguita solo da un'organizzazione.
+2. Trova il tuo nuovo chaincode nella tabella e fai clic sul pulsante **Aggiorna** nell'intestazione **Azione**. Questa azione istanzia nuovamente il tuo chaincode e sostituisce il contenitore del chaincode con uno nuovo. Quando fai clic sul pulsante **Aggiorna**, hai l'opportunità di aggiornare la politica di approvazione del chaincode,
+cosa importante da fare se è stata di recente aggiunta un'organizzazione al canale. Tieni presente che non devi immettere alcun nuovo argomento come parte della funzione di aggiornamento. Questa azione di aggiornamento viene svolta sul canale e deve essere eseguita solo da un'organizzazione.
 
   ![Pulsante Aggiorna](../images/upgrade_button.png "Pulsante Aggiorna")

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-31"
+lastupdated: "2018-12-07"
 
 ---
 
@@ -16,11 +16,9 @@ lastupdated: "2018-08-31"
 # Glossário
 {: #glossary}
 
-
 ***[Esta página é útil? Diga-nos.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
-
-O {{site.data.keyword.blockchainfull}} Platform simplifica a sua jornada no blockchain. Este tópico define termos que aparecem nesta documentação e destina-se a apresentar conceitos de blockchain. Para entender melhor os termos, consulte [Hyperledger Fabric ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/glossary.html).
+Este tópico define {{site.data.keyword.blockchainfull}}Termos específicos da plataforma que aparecem nesta documentação. Para um entendimento mais profundo dos termos e para obter um glossário de termos relacionados aos conceitos do Hyperledger Fabric, consulte o [Glossário do Hyperledger Fabric ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](http://hyperledger-fabric.readthedocs.io/en/release-1.2/glossary.html).
 {:shortdesc}
 
 ## Ativo
@@ -33,25 +31,28 @@ Um conjunto ordenado de transações, que é criptograficamente vinculado ao blo
 Uma definição de uma rede de blockchain, que inclui o modelo de dados, a lógica de transação e as regras de controle de acesso para a sua solução de blockchain. Definições de rede de negócios são criadas usando o [Hyperledger Composer](#hyperledger-composer). Definições de rede de negócios são empacotadas em arquivos **.bna** (archive de rede de negócios) implementáveis.
 
 ## Autoridade de certificação
-Autoridade de certificação. Um recurso de rede de blockchain que emite certificados para todos os membros participantes. Esses certificados representam a identidade de um membro. Todas as entidades na rede (peers, solicitantes, clientes etc.) deve ter uma identidade para se comunicar, autenticar e, finalmente, transacionar. Essas identidades são necessárias para qualquer participação direta na rede de blockchain. É possível criar um cartão de rede de negócios para a autoridade de certificação. O [Cartão de autoridade de certificação](develop_starter.html) poderá então ser importado e o cartão será usado para trocar o segredo do administrador para certificados válidos da autoridade de certificação do Starter Plan.
+Uma abreviação de "Autoridade de Certificação", esse é o componente que emite certificados para todos os membros participantes. Esses certificados representam a identidade de um membro. Todas as entidades na rede (peers, solicitantes, clientes etc.) deve ter uma identidade para se comunicar, autenticar e, finalmente, transacionar. Essas identidades são necessárias para qualquer participação direta na rede de blockchain. É possível criar um cartão de rede de negócios para a autoridade de certificação. O [Cartão de autoridade de certificação](develop_starter.html) poderá então ser importado e o cartão será usado para trocar o segredo do administrador para certificados válidos da autoridade de certificação do Starter Plan.
 
 ## Cadeia
-A cadeia do livro-razão é um log de transações estruturado como blocos de transações vinculados ao hash. Peers recebem blocos de transações do serviço de solicitação, marcam as transações do bloco como válidas ou inválidas com base em políticas de aprovação e violações de simultaneidade e anexam o bloco à cadeia hash no sistema de arquivos do peer.
+A cadeia do livro-razão é um log de transações estruturado como blocos de transações vinculados ao hash. Peers recebem blocos de transações do serviço de ordenação, marcam as transações do bloco como válidas ou inválidas com base em políticas de aprovação e violações de simultaneidade e anexam o bloco à cadeia hash no sistema de arquivos do peer.
 
 ## Chaincode
-Também conhecido como contratos inteligentes, o chaincode são as partes de software que contêm um conjunto de funções para consultar ou atualizar o livro-razão.
+Também conhecido como **contratos inteligentes**, o chaincode são as partes do software que contêm um conjunto de funções para consultar ou atualizar o livro-razão.
 
 ## Canal
 Consiste de um subconjunto de membros de rede que querem transacionar em particular. Os canais fornecem isolamento de dados e confidencialidade permitindo que os membros de um canal estabeleçam regras específicas e um livro-razão separado que somente membros do canal podem acessar. Peers, que são os nós que funcionam como os terminais de transação para organizações, são unidos aos canais.
 
 ## Cliente
-O cliente representa a entidade que age em nome de um usuário. Ele deve se conectar a um peer para comunicação com o blockchain. O cliente pode se conectar a qualquer peer de sua escolha. Os clientes criam e, assim, chamam transações. O cliente envia uma chamada de transação real para os endossantes e transmite propostas de transação para o serviço de solicitação.
+O cliente representa a entidade que age em nome de um usuário. Ele deve se conectar a um peer para comunicação com o blockchain. O cliente pode se conectar a qualquer peer de sua escolha. Os clientes criam e, assim, chamam transações. O cliente envia uma chamada de transação real para os endossantes e transmite propostas de transação para o serviço de ordenação.
 
 ## Perfil de conexão
 O perfil de conexão é visível na tela "Visão geral" do Monitor de rede quando você clica no botão **Perfil de conexão**. As informações estão disponíveis no formato JSON e contêm as informações de terminal de API e enrollIDs/segredos para os seus recursos de rede, ou seja, peers, solicitantes e autoridades de certificação. O seu aplicativo interage com recursos de rede por meio desses terminais de API.
 
 ## Consenso
 Um processo colaborativo para manter as transações o livro-razão sincronizadas na rede. O consenso assegura que os livros-razão são sejam atualizados apenas quando os participantes apropriados aprovam transações e que isso seja feita com as mesmas transações na mesma ordem. Existem muitas formas algorítmicas diferentes de alcançar o consenso.
+
+## Consórcio
+O grupo de organizações não solicitadoras listadas no canal do sistema do solicitador. Essas são as únicas organizações que podem criar canais. No momento da criação do canal, todas as organizações incluídas no canal devem fazer parte de um consórcio. No entanto, uma organização que não esteja definida em um consórcio poderá ser incluída em um canal existente. Embora uma rede de blockchain possa ter vários consórcios, a maioria das redes de blockchain tem um único consórcio.
 
 ## CouchDB
 Um armazenamento de documentos usado para o banco de dados de estado nas redes do Starter Plan. O CouchDB também é uma opção para redes do Enterprise Plan, juntamente com o LevelDB. O CouchDB suporta o uso de índices e permite emitir consultas complexas com relação aos dados em seu peer.
@@ -61,7 +62,7 @@ O estado atual do livro-razão representa os valores mais recentes para todas as
 
 ## Associação dinâmica
 Um membro pode ser incluído dinamicamente na rede por um usuário com privilégio de **escrivão**. Os membros também têm
-atribuições e atributos designados, que controlam o seu acesso e autoridade na rede. Apesar disso, nem funções, nem atributos podem ser designados dinamicamente. O Hyperledger Fabric suporta a inclusão ou remoção de membros, peers e nós de serviço de solicitação, sem comprometer as operações da rede geral. A associação dinâmica é crítica quando os relacionamentos de negócios se ajustam e as entidades precisam ser incluídas ou removidas por vários motivos.
+atribuições e atributos designados, que controlam o seu acesso e autoridade na rede. Apesar disso, nem funções, nem atributos podem ser designados dinamicamente. O Hyperledger Fabric suporta a inclusão ou remoção de membros, peers e nós de serviço de ordenação, sem comprometer as operações da rede geral. A associação dinâmica é crítica quando os relacionamentos de negócios se ajustam e as entidades precisam ser incluídas ou removidas por vários motivos.
 
 ## Aprovação
 O processo pelo qual as transações de chaincode são validadas. Regras de aprovação são implementadas especificando as políticas de aprovação.
@@ -73,7 +74,7 @@ Define os nós de peer em um canal que deve executar transações que estão con
 O bloco de configuração que inicializa uma rede de blockchain ou canal e também serve como o primeiro bloco em uma cadeia.
 
 ## Fofoca
-O Hyperledger Fabric permite que os peers reúnam informações importantes de rede entre si sem ter que depender do serviço de solicitação. O [protocolo de disseminação de dados de fofoca ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.1/gossip.html) fornece uma maneira segura, confiável e escalável para os peers trocarem mensagens entre si. Por exemplo, se os peers perderem alguns blocos devido a atrasos, indisponibilidades de rede ou outros motivos, eles poderão sincronizar-se com o estado atual do livro-razão usando o sistema de mensagens de fofoca para entrar em contato com outros peers que tiverem a posse desses blocos ausentes.
+O Hyperledger Fabric permite que os peers reúnam informações importantes de rede entre si sem ter que depender do serviço de ordenação. O [protocolo de disseminação de dados de fofoca ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.1/gossip.html) fornece uma maneira segura, confiável e escalável para os peers trocarem mensagens entre si. Por exemplo, se os peers perderem alguns blocos devido a atrasos, indisponibilidades de rede ou outros motivos, eles poderão sincronizar-se com o estado atual do livro-razão usando o sistema de mensagens de fofoca para entrar em contato com outros peers que tiverem a posse desses blocos ausentes.
 
 ## HSM
 Hardware Security Module. Fornece criptografia on demand, gerenciamento de chave e armazenamento de chave como um serviço gerenciado. HSM é um dispositivo físico que manipula as tarefas intensivas em recurso de processamento de criptografia e reduz a latência para aplicativos. Para obter mais informações, veja [Hardware Security Module ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://www.ibm.com/cloud/hardware-security-module)
@@ -91,7 +92,7 @@ O processo de colocar um chaincode no sistema de arquivos de um peer. Deve-se in
 O processo de iniciar e inicializar um contêiner de chaincode em um canal específico. Após o chaincode ser instalado nos Peers e cada Peer ter se associado ao canal, o chaincode deverá ser instanciado no canal. A instanciação executa qualquer inicialização necessária do chaincode, que inclui configurar os pares de chave-valor que constituem o estado geral inicial do chaincode. Após a instanciação, peers que tiverem o chaincode instalado poderão aceitar chamadas de chaincode.
 
 ## Kafka
-Uma implementação de plug-in de consenso para o Hyperledger Fabric que resulta em um cluster de nós de serviço de solicitação na rede de blockchain. Uma implementação de Kafka é destinada a uma rede de produção.
+Uma implementação de plug-in de consenso para o Hyperledger Fabric que resulta em um cluster de nós de serviço de ordenação na rede de blockchain. Uma implementação Kafka é destinada a uma rede de produção.
 
 ## Livro-razão
 Composto por uma "cadeia de blocos" literal que armazena o registro sequencial imutável de transações, bem como um banco de dados de estado para manter o estado atual. Há um livro-razão por canal e as atualizações para ele são gerenciadas pelo processo de consenso de acordo com as políticas de um canal específico.
@@ -115,16 +116,13 @@ Visível da tela "APIs" do Monitor de rede. As credenciais incluem a sua "chave"
 O painel da GUI que o {{site.data.keyword.blockchainfull_notm}} Platform fornece para visualizar e gerenciar a rede de blockchain.
 
 ## Nó
-A entidade de comunicação do blockchain. Há três tipos de nós: nós de autoridade de certificação, de Peer e de Serviço de solicitação (a coleta de solicitantes para um canal).
+A entidade de comunicação do blockchain. Há três tipos de nós: CA, Peer e solicitador.
 
-## Solicitante
-Um nó de Serviço de solicitação. Um recurso de rede de blockchain que fornece serviços de autenticação de cliente. Além disso, ele fornece serviços para solicitar e transmitir transações.
+## Solicitador
+O nó que coleta transações de membros da rede, ordena as transações e as empacota em blocos. Esses blocos são, então, distribuídos para os peers que, em seguida, verificam os blocos e os incluem nos livros-razão em cada canal. Os solicitadores contêm o material de identidade criptográfica que está vinculado a cada membro e autenticam a identidade de clientes e peers para acesso à rede. A função geral que um nó de solicitação ou coleta de nós fornece é conhecida como o **serviço de ordenação**.
 
 ## Organização
 Veja [Membro](#member).
-
-## Serviço de Solicitação
-Cada rede de blockchain requer um Serviço de solicitação. O serviço de solicitação coleta transações de membros de rede, pede as transações e as coloca em pacotes configuráveis em blocos. O serviço de solicitação então distribui os novos blocos para peers, que, então, verificam os blocos e os incluem nos livros-razão em cada canal. O serviço de solicitação também é uma ligação comum para a rede geral. Ele contém o material de identidade criptográfico que está ligado a cada membro e autentica a identidade de clientes e peers para acessar a rede.
 
 ## Participante
 Qualquer organização, indivíduo, aplicativo ou dispositivo que interaja com a rede de blockchain. Sob o guarda-chuva de participante há dois agrupamentos distintos, que são membros e usuários.
@@ -133,13 +131,19 @@ Qualquer organização, indivíduo, aplicativo ou dispositivo que interaja com a
 Um recurso de rede de blockchain que fornece os serviços para executar e validar transações e manter livros-razão. O Peer executa o chaincode e é o portador do histórico de transação e o estado atual de ativos nos canais da rede, ou seja, o livro-razão. Eles são de propriedade e gerenciados por organizações e são associados a canais.
 
 ## Credenciais de serviço
-As credenciais de serviço estão no formato JSON e contêm as informações sobre terminal de API e enrollIDs/segredos para os seus recursos de rede, isto é, peers, nós de solicitação e autoridades de certificação. O seu aplicativo interage com recursos de rede por meio desses terminais de API.
+As credenciais de serviço estão no formato JSON e contêm as informações de terminal da API e os enrollIDs/segredos para seus recursos de rede, ou seja, autoridades de certificação, solicitadores e peers. O seu aplicativo interage com recursos de rede por meio desses terminais de API.
 
 ## SDK
 O Hyperledger Fabric suporta dois Software Development Kits (SDKs). Um SDK do Nó e SDK do Java.  O SDK do Nó pode ser instalado via NPM e o SDK do Java via Maven.  Os SDKs têm os seus próprios repositórios Git, ou seja, [Fabric Node SDK ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://github.com/hyperledger/fabric-sdk-node) e [Fabric Java SDK ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://github.com/hyperledger/fabric-sdk-java), com a documentação para as APIs disponíveis. Os SDKs do Hyperledger Fabric Client permitem a interação entre o seu aplicativo cliente e a sua rede de blockchain.
 
+## SignCert
+O certificado que quaisquer entidades, sejam organizações ou administradores, anexam às suas propostas ou respostas de proposta. Esses signCerts são exclusivos de uma entidade e são verificados pelo serviço de ordenação para garantir que eles correspondam ao signCert no arquivo para essa entidade.
+
+## Contratos inteligentes
+Consulte [Chaincode](#chaincode).
+
 ## SOLO
-Uma implementação de plug-in de consenso para o Hyperledger Fabric que resulta em um único nó de serviço de solicitação na rede de blockchain. A rede do Starter Plan usa a implementação SOLO. Uma implementação SOLO não é destinada para uma rede de produção. A alternativa para SOLO é um cluster do Kafka.
+Uma implementação de plug-in de consenso para o Hyperledger Fabric que resulta em um único nó de serviço de ordenação na rede de blockchain. A rede do Starter Plan usa a implementação SOLO. Uma implementação SOLO não é destinada para uma rede de produção. A alternativa para SOLO é um cluster do Kafka.
 
 ## Banco de dados de
 Os dados de estado atual são armazenados em um banco de dados nos peers para leituras eficientes e consultas do chaincode. As redes do Starter Plan usam o CouchDB como o banco de dados de estado. O Enterprise Plan Networks pode usar o LevelDB ou o CouchDB.

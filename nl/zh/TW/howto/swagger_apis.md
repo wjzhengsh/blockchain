@@ -18,11 +18,11 @@ lastupdated: "2018-08-31"
 ***[此頁面有幫助嗎？請告訴我們。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 
-「{{site.data.keyword.blockchainfull_notm}} 平台」會公開 Swagger 中的多種 REST API，可讓您用來管理網路的節點、頻道、對等節點及成員。您的應用程式可以使用這些 API 來控制重要網路資源，而不需要使用網路監視器。
+{{site.data.keyword.blockchainfull_notm}} Platform 會公開 Swagger 中的多種 REST API，可讓您用來管理網路的節點、頻道、對等節點及成員。您的應用程式可以使用這些 API 來控制重要網路資源，而不需要使用網路監視器。
 
 {:shortdesc}
 
-開始之前，您需要在 {{site.data.keyword.Bluemix_notm}} 上建立 [{{site.data.keyword.blockchain}} 平台服務實例 ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](https://console.bluemix.net/catalog/services/blockchain)，以及建立或加入「入門範本方案」<!--or Enterprise Plan -->區塊鏈網路。
+開始之前，您需要在 {{site.data.keyword.Bluemix_notm}} 上建立 [{{site.data.keyword.blockchain}} Platform 服務實例 ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](https://console.bluemix.net/catalog/services/blockchain)，以及建立或加入「入門範本方案」<!--or Enterprise Plan -->區塊鏈網路。
 
 
 ## 擷取網路認證
@@ -64,23 +64,23 @@ You can also open the Swagger UI with the URL in the connection profiles. For ex
 
 按一下您要執行的 REST API，然後按一下**試用**按鈕。
 
-**圖 4** 顯示「Swagger 使用者介面」中的「試用」按鈕：
+**圖 4** 顯示 Swagger 使用者介面中的「試用」按鈕：
 
-![「Swagger 使用者介面」中的「試用」按鈕](../images/swaggerUITryItOut.png "「Swagger 使用者介面」中的「試用」按鈕")  
-*圖 4. 「Swagger 使用者介面」中的「試用」按鈕*
+![Swagger 使用者介面中的「試用」按鈕](../images/swaggerUITryItOut.png "Swagger 使用者介面中的「試用」按鈕")  
+*圖 4. Swagger 使用者介面中的「試用」按鈕*
 
 在按一下**試用**按鈕之後，您可以輸入使用 API 的必要參數。您可以在網路認證中找到 `networkID`，並且在「網路監視器」中找到其他參數。在您輸入參數之後，請按一下**執行**，以對網路執行 REST API 呼叫。
 
 **圖 5** 顯示「Swagger 使用者介面」中的參數：
 
-![「Swagger 使用者介面」中的參數](../images/swaggerUIParams.png "「Swagger 使用者介面」中的參數")  
+![Swagger 使用者介面中的參數](../images/swaggerUIParams.png "Swagger 使用者介面中的參數")  
 *圖 5. 輸入參數*  
 
 在按一下**執行**之後，您可以看到針對網路之 API 呼叫的回應。您也可以看到可從指令行直接呼叫 API 的 CURL 指令。
 
 **圖 6** 顯示 API 回應內文、URL 及 CURL 指令：
 
-![「Swagger 使用者介面」中的 API 回應](../images/swaggerUICurlResponse.png "「Swagger 使用者介面」中的 API 回應")  
+![Swagger 使用者介面中的 API 回應](../images/swaggerUICurlResponse.png "Swagger 使用者介面中的 API 回應")  
 *圖 6. API 回應*    
 
 ## 疑難排解提示
