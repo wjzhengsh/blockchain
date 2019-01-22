@@ -95,7 +95,7 @@ Vous pouvez inviter d'autres [organisations](glossary.html#organization) à rejo
 1. A l'écran "Membres" de votre Moniteur réseau, cliquez sur le bouton **Inviter des membres**.
 2. La fenêtre "Inviter un membre" s'affiche.
     - Si vous voulez inviter une autre organisation, choisissez "Inviter un membre".  Indiquez le nom et l'adresse e-mail opérateur de l'organisation à inviter.  Vous pouvez également entrer des informations supplémentaires à inclure dans votre invitation dans la zone "Ajouter une note".  Cliquez sur le bouton **Envoyer une invitation**.  L'organisation invitée recevra un e-mail d'invitation et elle pourra suivre les instructions qui y figurent pour rejoindre votre réseau.
-    - Si vous souhaitez ajouter d'autres organisations pouvant être ajoutés à un canal, choisissez "Ajouter un membre".  Entrez un nom pour votre nouvelle organisation. Vous pouvez éventuellement ajouter des homologues à votre nouvelle organisation ou le faire ultérieurement dans le Moniteur réseau.  Cliquez sur le bouton **Créer**. Notez que si vous ajoutez des homologues pour votre nouvelle organisation, vous devez basculer vers cette nouvelle organisation pour voir vos homologues. Pour plus d'informations sur le basculement entre les organisations, voir [Basculement entre les organisations](v10_dashboard.html#switch-organizations).
+    - Si vous souhaitez ajouter d'autres organisations pouvant être ajoutés à un canal, choisissez "Ajouter un membre".  Entrez un nom pour votre nouvelle organisation. Vous pouvez éventuellement ajouter des homologues à votre nouvelle organisation ou le faire ultérieurement dans le Moniteur réseau.  Cliquez sur le bouton **Créer**. Notez que si vous ajoutez des homologues pour votre nouvelle organisation, vous devez basculer vers cette nouvelle organisation pour voir vos homologues.<!-- Pour plus d'informations sur le basculement entre les organisations, voir [Basculement entre les organisations](v10_dashboard.html#switch-organizations).-->
 
 
 ## Rejoindre un réseau
@@ -124,7 +124,7 @@ Pour plus d'informations, voir [Création d'un canal](howto/create_channel.html#
 ## Développement de code blockchain
 {: #develop-chaincode}
 
-Le [code blockchain](glossary.html#chaincode), parfois appelé smart contracts, est un logiciel qui vous permet de lire et de mettre à jour des données dans le registre de blockchain. Le code blockchain peut transformer la logique applicative en programme exécutable accepté et vérifié par tous les membres du réseau de blockchain. 
+Le [code blockchain](glossary.html#chaincode), parfois appelé smart contracts, est un logiciel qui vous permet de lire et de mettre à jour des données dans le registre de blockchain. Le code blockchain peut transformer la logique applicative en programme exécutable accepté et vérifié par tous les membres du réseau de blockchain.
 
 Pour plus d'informations, voir le tutoriel relatif au [développement de code blockchain](howto/develop_chaincode.html) pour en savoir plus sur la manière d'écrire du code blockchain, ainsi que sur les fonctions  Fabric qui sont accessibles via le code blockchain.
 

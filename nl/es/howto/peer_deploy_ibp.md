@@ -269,7 +269,7 @@ Tras registrar la identidad de administrador, debe generar la carpeta de MSP de 
   - Certificado TLS raíz para el Plan inicial
     - EEUU: [us01.blockchain.ibm.com.cert ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://blockchain-certs.mybluemix.net/us01.blockchain.ibm.com.cert "us01.blockchain.ibm.com.cert"); [us02.blockchain.ibm.com.cert ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://blockchain-certs.mybluemix.net/us02.blockchain.ibm.com.cert "us02.blockchain.ibm.com.cert")
     - Reino Unido: [uk01.blockchain.ibm.com.cert ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://blockchain-certs.mybluemix.net/uk01.blockchain.ibm.com.cert "uk01.blockchain.ibm.com.cert"); [uk02.blockchain.ibm.com.cert ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://blockchain-certs.mybluemix.net/uk02.blockchain.ibm.com.cert "uk02.blockchain.ibm.com.cert")
-    - Sídney: [aus01.blockchain.ibm.com.cert ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://blockchain-certs.mybluemix.net/aus01.blockchain.ibm.com.cert "aus01.blockchain.ibm.com.cert"); [aus02.blockchain.ibm.com.cert ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://blockchain-certs.mybluemix.net/aus02.blockchain.ibm.com.cert "aus02.blockchain.ibm.com.cert")
+    - Sídney: [aus01.blockchain.ibm.com.cert ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://blockchain-certs.mybluemix.net/aus01.blockchain.ibm.com.cert "aus01.blockchain.ibm.com.cert")<!--; [aus02.blockchain.ibm.com.cert ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://blockchain-certs.mybluemix.net/aus02.blockchain.ibm.com.cert "aus02.blockchain.ibm.com.cert")-->
   - [Certificado TLS raíz para el Plan empresarial ![icono de enlace externo](../images/external_link.svg "icono de enlace externo")](https://blockchain-certs.mybluemix.net/3.secure.blockchain.ibm.com.rootcert)
 
   Guarde el contenido en un directorio donde pueda hacer referencia a él en mandatos posteriores.
@@ -362,7 +362,7 @@ Necesita registrar el igual con la CA de TLS en ICP utilizando el cliente de CA 
 
 1. Por ahora, debe tener el archivo de certificado TLS `tls.pem` en la carpeta
 `$HOME/fabric-ca-client/catls`. Si no es así, copie el certificado TLS que ha
-[descargado de ICP](CA-operate.html#ca-tls) en un directorio en el que pueda hacer referencia a él en mandatos posteriores. Asegúrese de que se encuentra en el directorio `$HOME/fabric-ca-client`.
+[descargado de ICP](CA_operate.html#ca-tls) en un directorio en el que pueda hacer referencia a él en mandatos posteriores. Asegúrese de que se encuentra en el directorio `$HOME/fabric-ca-client`.
 
   ```
   cd $HOME/fabric-ca-client

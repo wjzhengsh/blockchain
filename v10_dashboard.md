@@ -299,7 +299,7 @@ The web inactivity timeout is set to **Off** by default. If you turn the web ina
 
 The mutual TLS button is set to **Off** by default. If you enable mutual TLS, you need to update your applications to support this function. Otherwise, your applications will not be able to communicate with your network.
 
-For a Fabric 1.1 Enterprise plan network, each organization has its own mutual TLS certificate authority (CA). The information required to connect to the mutual TLS CA is available in the [Connection profile ](#enterprise-connection-profile) accessible from your **Overview** screen in the Network Monitor by clicking the **Connection Profile** button. The connection profile contains the necessary information to connect to the CA and get the certificates you need to connect to your network.
+For a Fabric 1.1 Enterprise plan network, each organization has its own mutual TLS certificate authority (CA). The information required to connect to the mutual TLS CA is available in the [Connection profile ](#connection-profile) accessible from your **Overview** screen in the Network Monitor by clicking the **Connection Profile** button. The connection profile contains the necessary information to connect to the CA and get the certificates you need to connect to your network.
 
 In the Connection Profile, locate the `certificateAuthorities` section where you will find the following attributes that are necessary to enroll and get the certificates to communicate with your network using Mutual TLS.
 

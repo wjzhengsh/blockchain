@@ -50,7 +50,7 @@ Fabric ベースのブロックチェーン・ネットワークでは、デプ�
 
 CA の無限回帰 (すべての CA を別の CA に無限にリンクする必要がある) を防止するために、CA にはデフォルトのユーザー名とパスワードのペアが関連付けられています。このユーザー名とパスワードは、CA のデプロイ時に指定します。この CA は、コンポーネントのトラスト・ルートである「ルート CA」です。実動ネットワークでは、このルート CA から証明書を取得する他の CA を少なくとも 1 つデプロイし、「中間 CA」とも呼ばれるその CA を使用して証明書をユーザーとコンポーネントに発行することをお勧めします。ただし、このリリースでは、中間 CA の使用はサポートされていません。
 
-すべての組織に、エンロール用の CA と TLS CA が必要です。ICP に CA をデプロイすると、TLS CA もデフォルトで同じコンテナーにデプロイされます。この TLS CA によって、TLS 証明書が生成され、管理されます。スターターまたはエンタープライズ・プラン・ネットワーク上の CA には TLS CA は含まれていませんが、エンロールに使用される CA は含まれています。したがって、ピアをスターターまたはエンタープライズ・プラン・ネットワークに接続する場合は、ピアをデプロイする前に、そのピアの TLS CA として機能する [ICP に CA をデプロイ](howto/CA_deploy_icp.html)する必要もあります。[ICP ピアを IBP に接続するための前提条件](howto/peer_deploy_ibp#prerequisites-peer-ibp)も参照してください。TLS CA は証明書の発行にのみ使用され、そのアクティビティーの完了時にシャットダウンできます。
+すべての組織に、エンロール用の CA と TLS CA が必要です。ICP に CA をデプロイすると、TLS CA もデフォルトで同じコンテナーにデプロイされます。この TLS CA によって、TLS 証明書が生成され、管理されます。スターターまたはエンタープライズ・プラン・ネットワーク上の CA には TLS CA は含まれていませんが、エンロールに使用される CA は含まれています。したがって、ピアをスターターまたはエンタープライズ・プラン・ネットワークに接続する場合は、ピアをデプロイする前に、そのピアの TLS CA として機能する [ICP に CA をデプロイ](howto/CA_deploy_icp.html)する必要もあります。[ICP ピアを IBP に接続するための前提条件](howto/peer_deploy_ibp.html#prerequisites-peer-ibp)も参照してください。TLS CA は証明書の発行にのみ使用され、そのアクティビティーの完了時にシャットダウンできます。
 
 TLS について詳しくは、Hyperledger Fabric の資料で [Securing Communication With Transport Layer Security (TLS) ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.3/enable_tls.html "Securing Communication With Transport Layer Security (TLS)") を参照してください。
 

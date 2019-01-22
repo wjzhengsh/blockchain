@@ -246,7 +246,7 @@ lastupdated: "2018-12-07"
   - 入门套餐的根 TLS 证书
     - 美国：[us01.blockchain.ibm.com.cert ![外部链接图标](../images/external_link.svg "外部链接图标")](https://blockchain-certs.mybluemix.net/us01.blockchain.ibm.com.cert "us01.blockchain.ibm.com.cert")；[us02.blockchain.ibm.com.cert ![外部链接图标](../images/external_link.svg "外部链接图标")](https://blockchain-certs.mybluemix.net/us02.blockchain.ibm.com.cert "us02.blockchain.ibm.com.cert")
     - 英国：[uk01.blockchain.ibm.com.cert ![外部链接图标](../images/external_link.svg "外部链接图标")](https://blockchain-certs.mybluemix.net/uk01.blockchain.ibm.com.cert "uk01.blockchain.ibm.com.cert")；[uk02.blockchain.ibm.com.cert ![外部链接图标](../images/external_link.svg "外部链接图标")](https://blockchain-certs.mybluemix.net/uk02.blockchain.ibm.com.cert "uk02.blockchain.ibm.com.cert")
-    - 悉尼：[aus01.blockchain.ibm.com.cert ![外部链接图标](../images/external_link.svg "外部链接图标")](https://blockchain-certs.mybluemix.net/aus01.blockchain.ibm.com.cert "aus01.blockchain.ibm.com.cert")；[aus02.blockchain.ibm.com.cert ![外部链接图标](../images/external_link.svg "外部链接图标")](https://blockchain-certs.mybluemix.net/aus02.blockchain.ibm.com.cert "aus02.blockchain.ibm.com.cert")
+    - 悉尼：[aus01.blockchain.ibm.com.cert ![外部链接图标](../images/external_link.svg "外部链接图标")](https://blockchain-certs.mybluemix.net/aus01.blockchain.ibm.com.cert "aus01.blockchain.ibm.com.cert")<!--；[aus02.blockchain.ibm.com.cert ![外部链接图标](../images/external_link.svg "外部链接图标")](https://blockchain-certs.mybluemix.net/aus02.blockchain.ibm.com.cert "aus02.blockchain.ibm.com.cert")-->
   - [企业套餐的根 TLS 证书 ![外部链接图标](../images/external_link.svg "外部链接图标")](https://blockchain-certs.mybluemix.net/3.secure.blockchain.ibm.com.rootcert)
 
   将内容保存到可在未来命令中引用这些内容的目录。
@@ -333,7 +333,7 @@ lastupdated: "2018-12-07"
 
 您需要使用 Fabric CA 客户机向 ICP 上的 TLS CA 注册同级。
 
-1. 现在，您在 `$HOME/fabric-ca-client/catls` 文件夹中应该有 TLS 证书文件 `tls.pem`。如果没有，您可以将[从 ICP 下载](CA-operate.html#ca-tls)的 TLS 证书复制到可以在下面命令中引用的目录。确保您位于 `$HOME/fabric-ca-client` 目录中。
+1. 现在，您在 `$HOME/fabric-ca-client/catls` 文件夹中应该有 TLS 证书文件 `tls.pem`。如果没有，您可以将[从 ICP 下载](CA_operate.html#ca-tls)的 TLS 证书复制到可以在下面命令中引用的目录。确保您位于 `$HOME/fabric-ca-client` 目录中。
 
   ```
   cd $HOME/fabric-ca-client

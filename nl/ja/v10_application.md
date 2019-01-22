@@ -68,7 +68,7 @@ Hyperledger Fabric SDK には、アプリケーションでブロックチェー
 	![チェーンコード別の API エンドポイント](images/channel_chaincode.png "チェーンコード別の API エンドポイント")
 
 2. ネットワーク・リソースの API エンドポイント情報を見つけます。これは、次の例にある `peer1-org1` 行の URL のような情報です。
-	
+
   ```
     "peers": {
         "org1-peer1": {
@@ -191,7 +191,7 @@ node enrollAdmin.js
   - スターター・プラン用のルート TLS 証明書  
     - 米国: [us01.blockchain.ibm.com.cert ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](http://blockchain-certs.mybluemix.net/us01.blockchain.ibm.com.cert "us01.blockchain.ibm.com.cert"); [us02.blockchain.ibm.com.cert ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](http://blockchain-certs.mybluemix.net/us02.blockchain.ibm.com.cert "us02.blockchain.ibm.com.cert")
     - 英国: [uk01.blockchain.ibm.com.cert ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](http://blockchain-certs.mybluemix.net/uk01.blockchain.ibm.com.cert "uk01.blockchain.ibm.com.cert"); [uk02.blockchain.ibm.com.cert ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](http://blockchain-certs.mybluemix.net/uk02.blockchain.ibm.com.cert "uk02.blockchain.ibm.com.cert")
-    - シドニー: [aus01.blockchain.ibm.com.cert ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](http://blockchain-certs.mybluemix.net/aus01.blockchain.ibm.com.cert "aus01.blockchain.ibm.com.cert"); [aus02.blockchain.ibm.com.cert ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](http://blockchain-certs.mybluemix.net/aus02.blockchain.ibm.com.cert "aus02.blockchain.ibm.com.cert")
+    - シドニー: [aus01.blockchain.ibm.com.cert ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](http://blockchain-certs.mybluemix.net/aus01.blockchain.ibm.com.cert "aus01.blockchain.ibm.com.cert")<!--; [aus02.blockchain.ibm.com.cert ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](http://blockchain-certs.mybluemix.net/aus02.blockchain.ibm.com.cert "aus02.blockchain.ibm.com.cert")-->
   - [エンタープライズ・プラン用のルート TLS 証明書 ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://blockchain-certs.mybluemix.net/3.secure.blockchain.ibm.com.rootcert)
 
   コンテンツをフォルダー (例えば ``$ HOME/tls``) に保存します。 このステップにより、データの流れがワイヤー上で暗号化されます。

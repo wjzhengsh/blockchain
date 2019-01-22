@@ -78,12 +78,12 @@ lastupdated: "2018-12-07"
 
 [传输层安全性 ![外部链接图标](images/external_link.svg "外部链接图标")](https://www.ibm.com/support/knowledgecenter/en/SSFKSJ_7.1.0/com.ibm.mq.doc/sy10660_.htm) (TLS) 嵌入在 Hyperledger Fabric 的信任模型中。{{site.data.keyword.blockchainfull_notm}} Platform 上的所有组件都使用 TLS 进行认证并相互通信。因此，需要将平台发出的 TLS 证书连接到调用以验证和加密通信。本教程中讨论的其他证书可以为管理网络以及进行网络事务处理提供保护。TLS 证书用于保护对网络的调用。
 
-平台公开发布 TLS 证书，这些证书对于所有网络组件都是相同的。根据成员资格套餐和云位置，您可以使用以下链接下载 TLS 证书。您还可以在[凭证概要文件](v10_dashboard.html#enterprise-connection-profile "凭证概要文件")中查找 TLS 证书。此证书可位于任意位置，只要可从应用程序或命令行进行引用即可。
+平台公开发布 TLS 证书，这些证书对于所有网络组件都是相同的。根据成员资格套餐和云位置，您可以使用以下链接下载 TLS 证书。您还可以在[凭证概要文件](v10_dashboard.html#connection-profile "凭证概要文件")中查找 TLS 证书。此证书可位于任意位置，只要可从应用程序或命令行进行引用即可。
 
 - 入门套餐的根 TLS 证书
   - 美国：[us01.blockchain.ibm.com.cert ![外部链接图标](images/external_link.svg "外部链接图标")](http://blockchain-certs.mybluemix.net/us01.blockchain.ibm.com.cert "us01.blockchain.ibm.com.cert")；[us02.blockchain.ibm.com.cert ![外部链接图标](images/external_link.svg "外部链接图标")](http://blockchain-certs.mybluemix.net/us02.blockchain.ibm.com.cert "us02.blockchain.ibm.com.cert")
   - 英国：[uk01.blockchain.ibm.com.cert ![外部链接图标](images/external_link.svg "外部链接图标")](http://blockchain-certs.mybluemix.net/uk01.blockchain.ibm.com.cert "uk01.blockchain.ibm.com.cert")；[uk02.blockchain.ibm.com.cert ![外部链接图标](images/external_link.svg "外部链接图标")](http://blockchain-certs.mybluemix.net/uk02.blockchain.ibm.com.cert "uk02.blockchain.ibm.com.cert")
-  - 悉尼：[aus01.blockchain.ibm.com.cert ![外部链接图标](images/external_link.svg "外部链接图标")](http://blockchain-certs.mybluemix.net/aus01.blockchain.ibm.com.cert "aus01.blockchain.ibm.com.cert")；[aus02.blockchain.ibm.com.cert ![外部链接图标](images/external_link.svg "外部链接图标")](http://blockchain-certs.mybluemix.net/aus02.blockchain.ibm.com.cert "aus02.blockchain.ibm.com.cert")
+  - 悉尼：[aus01.blockchain.ibm.com.cert ![外部链接图标](images/external_link.svg "外部链接图标")](http://blockchain-certs.mybluemix.net/aus01.blockchain.ibm.com.cert "aus01.blockchain.ibm.com.cert")<!--；[aus02.blockchain.ibm.com.cert ![外部链接图标](images/external_link.svg "外部链接图标")](http://blockchain-certs.mybluemix.net/aus02.blockchain.ibm.com.cert "aus02.blockchain.ibm.com.cert")-->
 - [企业套餐的根 TLS 证书 ![外部链接图标](images/external_link.svg "外部链接图标")](https://blockchain-certs.mybluemix.net/3.secure.blockchain.ibm.com.rootcert)
 
 所有 {{site.data.keyword.blockchainfull_notm}} Platform 网络都使用服务器端 TLS，网络需要在其中认证客户机。企业套餐网络还可支持相互 TLS，其中客户机和服务器相互认证以进一步保护您的应用程序。客户机端 TLS 证书（用于相互 TLS）由客户机 CA 颁发并且对于网络是唯一的。如果使用企业套餐网络，那么建议启用相互 TLS。有关相互 TLS 的更多信息，请参阅这些[指示信息](v10_dashboard.html#mutual-tls "相互 TLS 指示信息")。
@@ -152,7 +152,7 @@ Fabric 中的 MSP 文件夹具有已定义的结构。在使用 Fabric CA 客户
 
 有关 MSP 结构的更多信息，请参阅 Hyperledger Fabric 文档中的[成员资格 ![外部链接图标](images/external_link.svg "外部链接图标")](https://hyperledger-fabric.readthedocs.io/en/latest/membership/membership.html "成员资格") 和[成员资格服务提供者 ![外部链接图标](images/external_link.svg "外部链接图标")](https://hyperledger-fabric.readthedocs.io/en/latest/msp.html "成员资格服务提供者")。
 
-## 使用 Fabric CA 客户机注册和登记 
+## 使用 Fabric CA 客户机注册和登记
 {: #enroll-register-caclient}
 
 您还可以使用 Fabric CA 客户机来生成证书并向认证中心注册新身份。以下指示信息使用您的管理员身份生成证书，然后使用这些证书来注册新客户机。有关使用 Fabric CA 客户机进行注册和生成证书的更多信息，请参阅[成员资格服务提供程序](#msp)。
@@ -178,7 +178,7 @@ Fabric 中的 MSP 文件夹具有已定义的结构。在使用 Fabric CA 客户
   - 入门套餐的根 TLS 证书
     - 美国：[us01.blockchain.ibm.com.cert ![外部链接图标](images/external_link.svg "外部链接图标")](http://blockchain-certs.mybluemix.net/us01.blockchain.ibm.com.cert "us01.blockchain.ibm.com.cert")；[us02.blockchain.ibm.com.cert ![外部链接图标](images/external_link.svg "外部链接图标")](http://blockchain-certs.mybluemix.net/us02.blockchain.ibm.com.cert "us02.blockchain.ibm.com.cert")
     - 英国：[uk01.blockchain.ibm.com.cert ![外部链接图标](images/external_link.svg "外部链接图标")](http://blockchain-certs.mybluemix.net/uk01.blockchain.ibm.com.cert "uk01.blockchain.ibm.com.cert")；[uk02.blockchain.ibm.com.cert ![外部链接图标](images/external_link.svg "外部链接图标")](http://blockchain-certs.mybluemix.net/uk02.blockchain.ibm.com.cert "uk02.blockchain.ibm.com.cert")
-    - 悉尼：[aus01.blockchain.ibm.com.cert ![外部链接图标](images/external_link.svg "外部链接图标")](http://blockchain-certs.mybluemix.net/aus01.blockchain.ibm.com.cert "aus01.blockchain.ibm.com.cert")；[aus02.blockchain.ibm.com.cert ![外部链接图标](images/external_link.svg "外部链接图标")](http://blockchain-certs.mybluemix.net/aus02.blockchain.ibm.com.cert "aus02.blockchain.ibm.com.cert")
+    - 悉尼：[aus01.blockchain.ibm.com.cert ![外部链接图标](images/external_link.svg "外部链接图标")](http://blockchain-certs.mybluemix.net/aus01.blockchain.ibm.com.cert "aus01.blockchain.ibm.com.cert")<!--；[aus02.blockchain.ibm.com.cert ![外部链接图标](images/external_link.svg "外部链接图标")](http://blockchain-certs.mybluemix.net/aus02.blockchain.ibm.com.cert "aus02.blockchain.ibm.com.cert")-->
   - [企业套餐的根 TLS 证书 ![外部链接图标](images/external_link.svg "外部链接图标")](https://blockchain-certs.mybluemix.net/3.secure.blockchain.ibm.com.rootcert)
 
   将内容保存到文件夹，例如，``$HOME/tls``。此步骤允许在连线上加密数据流。

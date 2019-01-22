@@ -337,7 +337,7 @@ The `"tls"` fields in the configuration file require information from the CA you
 
 You need to register your peer with the TLS CA on ICP by using the Fabric CA client.
 
-1. By now, you should have the TLS cert file `tls.pem` in the `$HOME/fabric-ca-client/catls` folder. If not, you can copy the TLS cert that you [downloaded from ICP](CA-operate.html#ca-tls) to a directory where you can reference it in commands below. Ensure that you're in your `$HOME/fabric-ca-client` directory.
+1. By now, you should have the TLS cert file `tls.pem` in the `$HOME/fabric-ca-client/catls` folder. If not, you can copy the TLS cert that you [downloaded from ICP](CA_operate.html#ca-tls) to a directory where you can reference it in commands below. Ensure that you're in your `$HOME/fabric-ca-client` directory.
 
   ```
   cd $HOME/fabric-ca-client

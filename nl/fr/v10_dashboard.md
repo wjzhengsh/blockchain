@@ -299,7 +299,7 @@ Les **réseaux de plan Enterprise** vous offrent la possibilité d'activer la fo
 
 Le bouton TLS mutuel est défini sur **Désactivé** par défaut. Si vous activez TLS mutuel, vous devez mettre à jour vos applications afin de prendre en charge cette fonction. Sinon, vos applications ne pourront pas communiquer avec le réseau.
 
-Pour un réseau du plan Enterprise Fabric 1.1, chaque organisation a sa propre autorité de certification TLS mutuel. Les informations nécessaires pour la connexion  à l'autorité de certification TLS mutuel sont disponibles dans le [Profil de connexion](#enterprise-connection-profile) accessible depuis votre écran **Présentation** dans le Moniteur réseau en cliquant sur le bouton **Profil de connexion**. Le profil de connexion contient les informations nécessaires à la connexion à l'autorité de certification et à l'obtention des certificats dont vous avez besoin pour la connexion à votre réseau.
+Pour un réseau du plan Enterprise Fabric 1.1, chaque organisation a sa propre autorité de certification TLS mutuel. Les informations nécessaires pour la connexion  à l'autorité de certification TLS mutuel sont disponibles dans le [Profil de connexion](#connection-profile) accessible depuis votre écran **Présentation** dans le Moniteur réseau en cliquant sur le bouton **Profil de connexion**. Le profil de connexion contient les informations nécessaires à la connexion à l'autorité de certification et à l'obtention des certificats dont vous avez besoin pour la connexion à votre réseau.
 
 Dans le profil de connexion, localisez la section `certificateAuthorities` où vous trouverez les attributs suivants qui sont nécessaires à l'inscription et à l'obtention des certificats pour communiquer avec votre réseau à l'aide de TLS mutuel.
 

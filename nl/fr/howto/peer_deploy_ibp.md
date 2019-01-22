@@ -42,7 +42,7 @@ Vérifiez que votre système ICP respecte les exigences de ressources matériell
 ## Stockage
 {: #storage}
 
-Vous devez déterminer l'espace de stockage que votre homologue va utiliser. Si vous utilisez les paramètres par défaut, la charte Helm crée un nouveau volume persistant de 8 Gi nommé `my-data-pvc` pour les données de votre homologue, et un autre volume persistant de 8 Gi nommé `statedb-pvc` pour votre base de données d'état. 
+Vous devez déterminer l'espace de stockage que votre homologue va utiliser. Si vous utilisez les paramètres par défaut, la charte Helm crée un nouveau volume persistant de 8 Gi nommé `my-data-pvc` pour les données de votre homologue, et un autre volume persistant de 8 Gi nommé `statedb-pvc` pour votre base de données d'état.
 
 Si vous ne voulez pas utiliser les paramètres de stockage par défaut, vérifiez qu'une *nouvelle* `storageClass` est définie lors de l'installation ICP ou l'administrateur système Kubernetes doit créer une storageClass avant le déploiement.
 
@@ -72,7 +72,7 @@ Avant de déployer un homologue, vous devez créer un fichier JSON de configurat
 
 Nous fournissons dans ces instructions un exemple de fichier JSON que vous pouvez éditer et sauvegarder sur votre système de fichiers local. Nous vous guiderons ensuite au cours des étapes d'utilisation de votre autorité de certification pour compléter le fichier de configuration.
 
-### Fichier de configuration 
+### Fichier de configuration
 
 Voici un modèle de fichier de configuration :
 ```
@@ -212,7 +212,7 @@ Il vous suffit de créer une identité admin pour les composants appartenant à 
   - **Affiliation :** Il s'agit de l'affiliation de votre organisation, `org1` par exemple, à laquelle appartiendra votre homologue. Sélectionnez une affiliation existante dans la liste déroulante ou entrez-en une nouvelle.
   - **Nombre d'inscriptions maximum :** Vous pouvez utiliser cette zone pour limiter le nombre de fois où vous pouvez inscrire ou générer des certificats à l'aide de cette identité. Si cette zone n'est pas renseignée, la valeur par défaut est un nombre illimité d'inscriptions.
 
-  Après avoir saisi ces zones, cliquez sur **Soumettre** pour créer l'administrateur. Les administrateurs enregistrés sont ensuite répertoriés dans le tableau en tant qu'identité dans votre organisation. 
+  Après avoir saisi ces zones, cliquez sur **Soumettre** pour créer l'administrateur. Les administrateurs enregistrés sont ensuite répertoriés dans le tableau en tant qu'identité dans votre organisation.
 
 ### Génération du dossier MSP admin homologue
 {: #enroll-admin}
@@ -229,7 +229,7 @@ Une fois l'identité admin enregistrée, vous devez générer le dossier MSP adm
   {:codeblock}
 
 3. Définissez le chemin dans lequel le client peut créer vos certificats :`$FABRIC_CA_CLIENT_HOME`. Vérifiez que vous avez supprimé la configuration matérielle qui a peut-être été créée par des tentatives préalables. S'il s'agit de la première fois que vous exécutez la commande `enroll`, le dossier `msp` et le fichier `.yaml` n'existent pas.
-    
+
 
   ```
   export FABRIC_CA_CLIENT_HOME=$HOME/fabric-ca-client/peer-admin
@@ -247,7 +247,7 @@ Une fois l'identité admin enregistrée, vous devez générer le dossier MSP adm
   - Certificat TLS racine pour le plan Starter
     - Etats-Unis : [us01.blockchain.ibm.com.cert ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://blockchain-certs.mybluemix.net/us01.blockchain.ibm.com.cert "us01.blockchain.ibm.com.cert"); [us02.blockchain.ibm.com.cert ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://blockchain-certs.mybluemix.net/us02.blockchain.ibm.com.cert "us02.blockchain.ibm.com.cert")
     - Royaume-Uni : [uk01.blockchain.ibm.com.cert ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://blockchain-certs.mybluemix.net/uk01.blockchain.ibm.com.cert "uk01.blockchain.ibm.com.cert"); [uk02.blockchain.ibm.com.cert ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://blockchain-certs.mybluemix.net/uk02.blockchain.ibm.com.cert "uk02.blockchain.ibm.com.cert")
-    - Sydney : [aus01.blockchain.ibm.com.cert ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://blockchain-certs.mybluemix.net/aus01.blockchain.ibm.com.cert "aus01.blockchain.ibm.com.cert"); [aus02.blockchain.ibm.com.cert ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://blockchain-certs.mybluemix.net/aus02.blockchain.ibm.com.cert "aus02.blockchain.ibm.com.cert")
+    - Sydney : [aus01.blockchain.ibm.com.cert ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://blockchain-certs.mybluemix.net/aus01.blockchain.ibm.com.cert "aus01.blockchain.ibm.com.cert")<!--; [aus02.blockchain.ibm.com.cert ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://blockchain-certs.mybluemix.net/aus02.blockchain.ibm.com.cert "aus02.blockchain.ibm.com.cert")-->
   - [Root TLS Cert for Enterprise Plan ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://blockchain-certs.mybluemix.net/3.secure.blockchain.ibm.com.rootcert)
 
   Sauvegardez ce contenu dans un répertoire où vous pouvez y faire référence dans les commandes futures.
@@ -334,7 +334,7 @@ Les zones `"tls"` dans le fichier de configuration requièrent des informations 
 
 Vous devez enregistrer votre homologue auprès de l'autorité de certification TLS sur ICP à l'aide du client de l'autorité de certification Fabric.
 
-1. Le fichier de certificat TLS `tls.pem` doit se trouver dans le dossier `$HOME/fabric-ca-client/catls`. Su ce n'est pas le cas, vous pouvez copier le certificat TLS que vous avez[téléchargé depuis ICP](CA-operate.html#ca-tls) dans un répertoire où vous pouvez le référencer dans les commandes ci-dessous. Vérifiez que vous êtes au niveau de votre répertoire `$HOME/fabric-ca-client`.
+1. Le fichier de certificat TLS `tls.pem` doit se trouver dans le dossier `$HOME/fabric-ca-client/catls`. Su ce n'est pas le cas, vous pouvez copier le certificat TLS que vous avez[téléchargé depuis ICP](CA_operate.html#ca-tls) dans un répertoire où vous pouvez le référencer dans les commandes ci-dessous. Vérifiez que vous êtes au niveau de votre répertoire `$HOME/fabric-ca-client`.
 
   ```
   cd $HOME/fabric-ca-client
@@ -484,8 +484,8 @@ Vous devez fournir les noms d'hôte CSR pour déployer un homologue. Les noms d'
 
 Si vous voulez déployer un homologue sur le même cluster ICP que celui sur lequel vous avez déployé l'autorité de certification de votre TLS, entrez la même IP proxy que celle utilisée lorsque vous avez [configuré l'autorité de certification de votre TLS](CA_deploy_icp.html#icp-ca-configuration-parms). Si vous voulez déployer le composant sur un autre cluster, vous pouvez extraire la valeur de l'adresse IP proxy du cluster à partir de la console ICP. Vous devez avoir le rôle admin de cluster du cluster ICP où l'homologue va être déployé.
 
-1. Connectez-vous à la console ICP. Dans le panneau de navigation gauche, cliquez sur **Plateforme** puis sur **Noeuds** pour afficher les noeuds qui sont définis dans le cluster. 
-2. Cliquez sur le noeud avec le rôle `proxy`, puis copiez la valeur de l'`IP hôte` de la table. 
+1. Connectez-vous à la console ICP. Dans le panneau de navigation gauche, cliquez sur **Plateforme** puis sur **Noeuds** pour afficher les noeuds qui sont définis dans le cluster.
+2. Cliquez sur le noeud avec le rôle `proxy`, puis copiez la valeur de l'`IP hôte` de la table.
 3. Insérez l'`IP hôte` comme valeur de `"hosts"` dans la section `"csr"` du fichier de configuration ci-dessous :
 
   ```
