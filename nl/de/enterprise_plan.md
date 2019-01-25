@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-31"
+lastupdated: "2018-12-07"
 
 ---
 
@@ -23,15 +23,15 @@ Beim {{site.data.keyword.blockchainfull}} Platform Enterprise Plan handelt es si
 
 **Hinweise:**
 - {{site.data.keyword.blockchainfull_notm}} Platform Enterprise Plan stellt eine Produktionsumgebung zur Verfügung. Wenn Sie eine Entwicklungs- und Testumgebung benötigen, lesen Sie die [Informationen zum Starter Plan](starter_plan.html).
-- {{site.data.keyword.blockchainfull_notm}} Platform ist ein Plattformservice unter {{site.data.keyword.cloud_notm}} und alle Mitgliedschaftsangebote unterliegen den [{{site.data.keyword.cloud_notm}} Services-Bedingungen ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](http://www-03.ibm.com/software/sla/sladb.nsf/sla/bm "{{site.data.keyword.cloud_notm}} Services-Bedingungen") der Service-Level-Agreements (SLAs). Enterprise Plan-Netze werden in **verschiedenen Umgebungen** in geografisch getrennten Rechenzentren bereitgestellt.
+- {{site.data.keyword.blockchainfull_notm}} Platform ist ein Plattformservice unter {{site.data.keyword.cloud_notm}} und alle Mitgliedschaftsangebote unterliegen den [{{site.data.keyword.cloud_notm}} Services-Bedingungen ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://www-03.ibm.com/software/sla/sladb.nsf/sla/bm-6605-13 "{{site.data.keyword.cloud_notm}} Services-Bedingungen") der Service-Level-Agreements (SLAs). Enterprise Plan-Netze werden in **verschiedenen Umgebungen** in geografisch getrennten Rechenzentren bereitgestellt.
 
-Für Mitglieder, die das Netz initiieren werden, stellt IBM eine grafische Benutzerschnittstelle zur Verfügung, die den Netzinitiator durch die grundlegenden Schritte zum Einrichten des Netzes führt. Dies umfasst das Einladen anderer Mitglieder und das Festlegen von Governance-Regeln. Weitere Informationen finden Sie unter [Enterprise Plan-Netz steuern](get_start.html). Wenn das Netz bereitgestellt wurde, steht Ihnen der Network Monitor, eine interaktive grafische Benutzerschnittstelle, zur Verfügung, die folgende Möglichkeiten bietet: Überwachen des Zustands und der Aktivität des Netzes, Management der zentralen Netzaktivitäten wie zum Beispiel neue Bereitstellungen, Hinzufügen und Entfernen von Mitgliedern, Chaincode-Lebenszyklus und Kanalmanagement sowie Anforderung von technischer Unterstützung. Weitere Informationen zum Network Monitor finden Sie unter [Enterprise Plan-Netz betreiben](v10_dashboard.html).
+Für Mitglieder, die das Netz initiieren werden, stellt IBM eine grafische Benutzerschnittstelle zur Verfügung, die den Netzinitiator durch die grundlegenden Schritte zum Einrichten des Netzes führt. Dies umfasst das Einladen anderer Mitglieder und das Festlegen von Governance-Regeln. Weitere Informationen finden Sie unter [Enterprise Plan-Netz steuern](get_start.html). Wenn das Netz bereitgestellt wurde, steht Ihnen der Network Monitor, eine interaktive grafische Benutzerschnittstelle, zur Verfügung, die folgende Möglichkeiten bietet: Überwachen des Zustands und der Aktivität des Netzes, Management der zentralen Netzaktivitäten wie zum Beispiel neue Bereitstellungen, Hinzufügen und Entfernen von Mitgliedern, Chaincode-Lebenszyklus und Kanalmanagement sowie Anforderung von technischer Unterstützung. Weitere Informationen finden Sie unter [Network Monitor verwenden](v10_dashboard.html).
 
 Melden Sie sich jetzt für die [{{site.data.keyword.blockchainfull_notm}}-Mitgliedschaft ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps) an.
 
 Die {{site.data.keyword.blockchainfull_notm}} Platform wird mit grundlegenden Hyperledger Fabric-Komponenten erstellt, zu denen eine Zertifizierungsstelle (CA) und mindestens 1 Peer (maximal 6) gehören.  Der Enterprise Plan stellt außerdem einen fehlertoleranten (Crash Fault Tolerant, CFT) Kafka-Anordnungsservice für die Netzmitglieder bereit.
 
-Die Fabric-CA ist die Zertifizierungsstelle, die mit dem Enterprise Plan zur Verfügung gestellt wird. Pro Mitglied werden zwei temporäre Zertifizierungsstellen bereitgestellt, die die Netzmitgliedschaft gewähren. Mithilfe der Zertifizierungsstelle (CA) hat das Mitglied auch die Möglichkeit, die Mitgliedschaft (Zertifikate) an Benutzer des Netzes weiterzugeben.
+Die Fabric-CA ist die Zertifizierungsstelle, die mit dem Enterprise Plan zur Verfügung gestellt wird. Pro Mitglied werden zwei Zwischenzertifizierungsstellen bereitgestellt, die die Netzmitgliedschaft gewähren. Mithilfe der Zertifizierungsstelle (CA) hat das Mitglied auch die Möglichkeit, die Mitgliedschaft (Zertifikate) an Benutzer des Netzes weiterzugeben.
 
 Das Zuordnen einer Transaktion zu einem Ledger umfasst drei Phasen:  
 1. Transaktionssimulation und Bewilligung (Peer)
@@ -44,7 +44,7 @@ Neben den zentralen Blockchain-Komponenten bietet die Enterprise-Mitgliedschafts
 
 Der einzige Aspekt, der festgelegt werden muss, ist die Größe der für das Netz erforderlichen Peers. Diese Entscheidung ist abhängig von der Anzahl der erforderlichen Kanäle sowie von der Workload pro Kanal, der Hauptspeicherbelegung und dem Plattenspeicherplatz.
 
-Sie sollten den Enterprise Plan zur Einrichtung stabilerer, produktionsgeeigneter bzw. produktionsnaher Bereitstellungen verwenden. Zu Testzwecken verwenden Sie den [Starter Plan](starter_plan.html), [entwickeln in IBM Container Service](https://ibm-blockchain.github.io/) oder [installieren Docker-Images lokal](http://hyperledger-fabric.readthedocs.io/en/release-1.1/build_network.html).
+Sie sollten den Enterprise Plan zur Einrichtung stabilerer, produktionsgeeigneter bzw. produktionsnaher Bereitstellungen verwenden. Zu Testzwecken verwenden Sie den [Starter Plan](starter_plan.html), [entwickeln Sie in IBM Container Service](https://ibm-blockchain.github.io/) oder [installieren Sie Docker-Images lokal](http://hyperledger-fabric.readthedocs.io/en/release-1.1/build_network.html).
 
 <!--- The Enterprise plan provides the ordering service and CA. The membership fee is $1,000, and a per peer fee of $1,000 that is associated with the network. If you want to have high availability (HA), you must purchase an additional peer to provide the HA capabilities. For example, one organization (associated membership fee of $1,000) of two peers ($1,000 X 2 peers) with HA ($1,000 X 2 HA peers) requires a monthly charge of $5,000.  --->
 

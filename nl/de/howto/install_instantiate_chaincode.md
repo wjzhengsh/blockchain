@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-31"
+lastupdated: "2018-12-07"
 ---
 
 {:new_window: target="_blank"}
@@ -17,7 +17,7 @@ lastupdated: "2018-08-31"
 ***[Ist diese Seite hilfreich? Teilen Sie uns Ihre Meinung mit.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 
-Bei Chaincode handelt es sich um Software, die die Geschäftslogik und transaktionsorientierten Anweisungen zum Erstellen und Ändern von Assets im Ledger zusammenfasst. Chaincode kann in unterschiedlichen Sprachen geschrieben werden. {{site.data.keyword.blockchainfull}} Platform bietet Unterstützung für Chaincode, der auf Go und Node.js basiert. Chaincode wird in einem Docker-Container ausgeführt, der den Peers zugeordnet ist, die mit diesem Container interagieren müssen. Weitere Informationen zum Entwickeln von Chaincode finden Sie in den [Chaincode-Lernprogrammen ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](http://hyperledger-fabric.readthedocs.io/en/latest/chaincode.html).
+Bei Chaincode handelt es sich um Software, die die Geschäftslogik und transaktionsorientierten Anweisungen zum Erstellen und Ändern von Assets im Ledger zusammenfasst. Chaincode kann in unterschiedlichen Sprachen geschrieben werden. {{site.data.keyword.blockchainfull}} Platform bietet Unterstützung für Chaincode, der auf Go und Node.js basiert. Chaincode wird in einem Docker-Container ausgeführt, der den Peers zugeordnet ist, die mit diesem Container interagieren müssen. Weitere Informationen zum Entwickeln von Chaincode finden Sie in den [Chaincode-Lernprogrammen ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](http://hyperledger-fabric.readthedocs.io/en/release-1.2/chaincode.html).
 {:shortdesc}
 
 Chaincode wird auf einem Peer installiert und anschließend in einem Kanal instanziiert. **Alle Mitglieder, die Transaktionen übergeben oder Daten mithilfe von Chaincode lesen wollen, müssen den Chaincode auf Ihrem Peer installieren.** Ein Chaincode wird anhand seines Namens und seiner Version definiert. Sowohl der Name als auch die Version des installierten Chaincodes müssen für die Peers eines Kanals einheitlich sein.
@@ -37,7 +37,7 @@ Sie müssen den Chaincode auf allen Peers installieren, auf denen dieser Chainco
 
 2. Geben Sie in der Popup-Anzeige **Chaincode** den Namen und die Version Ihres Chaincodes ein. **Hinweis:** Die Zeichenfolgen für den Namen und die Version werden in Anwendungen für die Interaktion mit dem installierten Chaincode verwendet. Klicken Sie auf die Schaltfläche **Durchsuchen**, um im lokalen Dateisystem zur Speicherposition der Chaincode-Quellendateien zu navigieren. Wählen Sie mindestens eine Chaincode-Quellendatei aus, die für den Peer installiert werden soll. Wählen Sie dann die Chaincode-Sprache in der Dropdown-Liste **Chaincode-Typ** aus.
 
-Sie können Chaincode installieren, indem Sie GO- oder NODE-Dateien hochladen. Sie können auch Chaincode in einer ZIP-Datei hochladen. Wenn Sie eine ZIP-Datei verwenden, wird der Chaincode mit der gesamten Verzeichnisstruktur beibehalten. Dies ist hilfreich, wenn Pakete mit Abhängigkeiten berücksichtigt oder Indizes mit CouchDB verwendet werden sollen. Ein Beispiel zum Einfügen von Indizes bei Ihrem Chaincode finden Sie im Abschnitt zum [Verwenden von CouchDB über Chaincode ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/couchdb_as_state_database.html#using-couchdb-from-chaincode){:new_window} oder in diesem [Lernprogramm ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/couchdb_tutorial.html){:new_window} in der Hyperledger Fabric-Dokumentation. Darüber hinaus können Sie auch Informationen zum [Verwalten externer Abhängigkeiten für in GO geschriebenen Chaincode![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/latest/chaincode4ade.html#managing-external-dependencies-for-chaincode-written-in-go){:new_window} aufrufen.
+Sie können Chaincode installieren, indem Sie GO- oder NODE-Dateien hochladen. Sie können auch Chaincode in einer ZIP-Datei hochladen. Wenn Sie eine ZIP-Datei verwenden, wird der Chaincode mit der gesamten Verzeichnisstruktur beibehalten. Dies ist hilfreich, wenn Pakete mit Abhängigkeiten berücksichtigt oder Indizes mit CouchDB verwendet werden sollen. Weitere Angaben über CouchDB und das Konfigurieren von Indizes enthält der Abschnitt [Best Practices bei der Verwendung von CouchDB](../v10_application.html#couchdb-indices) im Lernprogramm "Anwendungen entwickeln". Informationen finden Sie außerdem im Abschnitt über das [Management von externen Abhängigkeiten für in GO geschriebenen Chaincode ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/chaincode4ade.html#managing-external-dependencies-for-chaincode-written-in-go){:new_window} in der Hyperledger Fabric-Dokumentation.
 
   ![Chaincode installieren](../images/chaincode_install.png "Chaincode installieren")
 
@@ -58,6 +58,7 @@ Sie müssen über die Berechtigung **Operator** oder **Schreibberechtigter** fü
 3. Geben Sie die [Bewilligungsrichtlinie](../glossary.html#endorsement-policy) Ihres Chaincodes an. Anleitungen zum Festlegen von Bewilligungsrichtlinien finden Sie im [nächsten Abschnitt](#specifying-chaincode-endorsement-policies).
 
 ## Bewilligungsrichtlinien des Chaincodes angeben
+{: #endorsement-policy}
 
 Mit Bewilligungsrichtlinien können Sie die Gruppe von Peers angeben, von denen eine neue Transaktion validiert werden muss. Eine Bewilligungsrichtlinie kann z. B. angeben, dass eine Transaktion nur zum Ledger hinzugefügt wird, wenn eine Mehrheit der Mitglieder im Kanal die Transaktion bewilligt.
 
@@ -71,9 +72,11 @@ Wenn Sie die Bewilligungsrichtlinie über den Network Monitor festlegen, können
 
 * **Erweiterte Richtlinie mit JSON angeben:** Über erweiterte Richtlinien können Sie eine Bewilligung durch wichtige Mitglieder oder Administratoren erforderlich machen oder den Bewilligungen bestimmter Mitglieder mehr Gewicht verleihen.
 
-  Am einfachsten können Sie eine erweiterte Richtlinie angeben, indem Sie zunächst über die entsprechende Benutzerschnittstellenanzeige eine einfache Richtlinie erstellen. Klicken Sie dann auf die Schaltfläche **Erweiterte Richtlinie**. Daraufhin wird automatisch eine JSON-Version der Richtlinie mit denselben Mitgliedern und Regeln wie in der einfachen Richtlinie erstellt. Sie können den JSON-Code anschließend bearbeiten, um eine komplexere Version zu schreiben. Weitere Informationen zum Schreiben von Bewilligungsrichtlinien in JSON finden Sie in der [Node-SDK-Dokumentation von Hyperledger Fabric ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://fabric-sdk-node.github.io/global.html#ChaincodeInstantiateUpgradeRequest). <!--You can also find examples of advanced endorsement policies in the main [Hyperledger Fabric documentation![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric.readthedocs.io/en/latest/arch-deep-dive.html#example-endorsement-policies)-->
+  Am einfachsten können Sie eine erweiterte Richtlinie angeben, indem Sie zunächst über die entsprechende Benutzerschnittstellenanzeige eine einfache Richtlinie erstellen. Klicken Sie dann auf die Schaltfläche **Erweiterte Richtlinie**. Daraufhin wird automatisch eine JSON-Version der Richtlinie mit denselben Mitgliedern und Regeln wie in der einfachen Richtlinie erstellt. Sie können den JSON-Code anschließend bearbeiten, um eine komplexere Version zu schreiben. Weitere Informationen zum Schreiben von Bewilligungsrichtlinien in JSON finden Sie in der [Node-SDK-Dokumentation von Hyperledger Fabric ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://fabric-sdk-node.github.io/global.html#ChaincodeInstantiateUpgradeRequest). <!--You can also find examples of advanced endorsement policies in the main [Hyperledger Fabric documentation![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/arch-deep-dive.html#example-endorsement-policies)-->
 
   ![Erweiterte Bewilligungsrichtlinie](../images/advanced_endorsement.png "Erweiterte Bewilligungsrichtlinie")
+
+Bewilligungsrichtlinien werden nicht automatisch aktualisiert, wenn neue Organisationen dem Kanal beitreten und den Chaincode installieren. Falls die Richtlinie beispielsweise zwei von fünf Organisationen erforderlich macht, damit eine Transaktion bewilligt wird, wird sie nicht dahingehend aktualisiert, dass zwei von sechs Organisationen erforderlich sind, nachdem eine neue Organisation dem Kanal beigetreten ist. Stattdessen wird die neue Organisation nicht in der Richtlinie aufgeführt und ist nicht in der Lage, Transaktionen zu bewilligen. Sie können eine neue Organisation zu einer Bewilligungsrichtlinie hinzufügen, indem Sie den entsprechenden Chaincode aktualisieren.
 
 ## Chaincode aktualisieren
 
@@ -83,6 +86,6 @@ Sie können Chaincode aktualisieren, um die Chaincode-Programmierung zu ändern,
 
   ![Chaincode aktualisieren](../images/upgrade_chaincode.png "Chaincode aktualisieren")
 
-2. Suchen Sie den neuen Chaincode in der Tabelle und klicken Sie auf die Schaltfläche **Aktualisieren** unter der Überschrift **Aktion**. Mit dieser Aktion wird der Chaincode erneut instanziiert und der Chaincode-Container wird durch einen neuen ersetzt. Beachten Sie, dass im Rahmen der Aktualisierungsfunktion keine neuen Argumente eingegeben werden müssen. Diese Upgradeaktion wird auf dem Kanal ausgeführt und muss von nur einer Organisation ausgeführt werden.
+2. Suchen Sie den neuen Chaincode in der Tabelle und klicken Sie auf die Schaltfläche **Aktualisieren** unter der Überschrift **Aktion**. Mit dieser Aktion wird der Chaincode erneut instanziiert und der Chaincode-Container wird durch einen neuen ersetzt. Wenn Sie auf die Schaltfläche **Aktualisieren** klicken, haben Sie die Möglichkeit, die Bewilligungsrichtlinie des Chaincodes zu aktualisieren; dies ist wichtig, falls kürzlich eine Organisation zum Kanal hinzugefügt wurde. Beachten Sie, dass im Rahmen der Aktualisierungsfunktion keine neuen Argumente eingegeben werden müssen. Diese Upgradeaktion wird auf dem Kanal ausgeführt und muss von nur einer Organisation ausgeführt werden.
 
   ![Schaltfläche 'Aktualisieren'](../images/upgrade_button.png "Schaltfläche 'Aktualisieren'")

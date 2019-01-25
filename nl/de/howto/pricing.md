@@ -21,7 +21,7 @@ lastupdated: "2018-08-31"
 In diesem Abschnitt finden Sie Informationen zur Preisstruktur der Mitgliedschaftspläne für {{site.data.keyword.blockchainfull}} Platform und zu den Kosten, die beim Entwickeln und Erweitern Ihres Blockchain-Netzes entstehen.  
 {:shortdesc}
 
-Bei {{site.data.keyword.blockchainfull}} Platform werden Organisationen, die Blockchain-Netze erstellen, monatliche Mitgliedschafts- und Peergebühren berechnet. Die Gebühren variieren je nach ausgewähltem Netzplan und den im Netz verwendeten Netzressourcen. Die folgende Tabelle enthält einen Überblick über die Preisstruktur bei {{site.data.keyword.blockchainfull_notm}} Platform. 
+Bei {{site.data.keyword.blockchainfull}} Platform werden Organisationen, die Blockchain-Netze erstellen, monatliche Mitgliedschafts- und Peergebühren berechnet. Die Gebühren variieren je nach ausgewähltem Netzplan und den im Netz verwendeten Netzressourcen. Die folgende Tabelle enthält einen Überblick über die Preisstruktur bei {{site.data.keyword.blockchainfull_notm}} Platform.
 
 | Preiskomponenten | Starter Plan-Kosten pro Monat | Enterprise Plan-Kosten pro Monat |
 |-----|-----|-----|
@@ -185,7 +185,7 @@ Wenn Sie in einem Enterprise Plan-Netz mit einem anderen Netzmitglied zusammenar
 #### Zusätzliche Peers
 {: #additional-peers}
 
-Bezogen auf das vorausgehende Beispiel werden bei diesem Beispiel zwei weitere Peers zur Organisation hinzugefügt. Ihre Rechnung erhöht sich um 2000 $ pro Monat. Sie entspricht der in Abbildung 10 dargestellten Rechnung: 
+Bezogen auf das vorausgehende Beispiel werden bei diesem Beispiel zwei weitere Peers zur Organisation hinzugefügt. Ihre Rechnung erhöht sich um 2000 $ pro Monat. Sie entspricht der in Abbildung 10 dargestellten Rechnung:
 
 | Preiskomponenten | Kosten pro Monat |
 |-----|----------------|

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-31"
+lastupdated: "2018-10-04"
 
 ---
 
@@ -28,8 +28,7 @@ Dieses Lernprogramm zeigt, wie Sie Statusinformationen zu Ihrem {{site.data.keyw
 Sie können eine HTTP-Anforderung **HEAD** für einen Netzknoten ausgeben, um den Knotenstatus zu überprüfen. Bei einem Netzwerkknoten kann es sich um einen Peer, einen Anordnungsknoten oder eine Zertifizierungsstelle im Blockchain-Netz handeln. Eine **HEAD**-Anforderung gleicht einer GET-Anforderung und sendet lediglich Header ohne den Anforderungshauptteil. Sie können mit etwa 200 Antworten rechnen, wenn der Knoten ordnungsgemäß ausgeführt wird.
 
 1. Klicken Sie in der Anzeige "Übersicht" im Network Monitor auf **Verbindungsprofil**. Klicken Sie anschließend auf **Unaufbereiteter JSON-Code**, um das Verbindungsprofil im Web-Browser anzuzeigen, oder auf **Herunterladen**, um das Verbindungsprofil lokal zu speichern.
-2. Suchen Sie im Verbindungsprofil die URL-Informationen des Netzknotens, der überprüft werden soll. Die URL des Anordnungsknotens `fabric-orderer-20190b` lautet z. B. `grpcs://fft-zbc02b.4.secure.blockchain.ibm.com:20190`.  
-    ![Beispiel-URL für Anordnungsknoten](../images/orderer_url.png "Beispiel-URL für Anordnungsknoten")
+2. Suchen Sie im Verbindungsprofil die URL-Informationen des Netzknotens, der überprüft werden soll. Die URL des Anordnungsknotens `fabric-orderer-20190b` lautet z. B. `grpcs://fft-zbc02b.4.secure.blockchain.ibm.com:20190`. ![Beispiel für Anordnungsknoten-URL](../images/orderer_url.png "Beispiel für Anordnungsknoten-URL")
 3. Ersetzen Sie **grpcs** in der URL durch **https**. Die URL im voranstehenden Beispiel wird zu `https://fft-zbc02b.4.secure.blockchain.ibm.com:20190`.
 4. Geben Sie die **HEAD**-Anforderung für die URL mit einem Tool wie "cURL" oder der Chrome-App "Postman" aus.
     - Wenn Sie etwa 200 Statusantworten erhalten, wird der Netzknoten ordnungsgemäß ausgeführt.
@@ -46,7 +45,7 @@ grpc-message: malformed method name: "/"
 ```
 {:codeblock}
 
-Bei dem folgenden Beispiel handelt es sich um eine **HEAD**-Anforderung mit einem Verbindungsfehler in cURL. 
+Bei dem folgenden Beispiel handelt es sich um eine **HEAD**-Anforderung mit einem Verbindungsfehler in cURL.
 
 ```
 C:\>curl -i --head https://fft-zbc02b.4.secure.blockchain.ibm.com:20190
@@ -54,7 +53,7 @@ curl: (7) Failed to connect to fft-zbc02b.4.secure.blockchain.ibm.com:20190: Con
 ```
 {:codeblock}
 
-In der folgenden Abbildung ist eine **HEAD**-Anforderung mit etwa 200 Antworten in der Chrome-App "Postman" zu sehen.  
+In der folgenden Abbildung ist eine **HEAD**-Anforderung mit etwa 200 Antworten in der Chrome-App "Postman" zu sehen.
 
   ![HEAD-Beispielanforderung mit Postman](../images/orderer_head_postman.png "HEAD-Beispielanforderung mit Postman")
 
@@ -63,16 +62,16 @@ In der Anzeige "Übersicht" des Network Monitor wird der Status Ihres Anordnungs
 
 Jede Komponente generiert Protokolle zu verschiedenen Aktivitäten. Dies ist darauf zurückzuführen, dass jede Komponente unterschiedliche Rollen in der [Netzarchitektur ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/network/network.html) und in den [Transaktionsabläufen ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric.readthedocs.io/en/release-1.1/txflow.html) von Hyperledger Fabric spielt.
 
-- **Protokolle des Anordnungsservice**  
+- **Protokolle des Anordnungsservice**
   Der Anordnungsservice stellt die einheitliche Bindekomponente des Blockchain-Netzes dar. Alle bewilligten Transaktionsvorschläge der Peers sowie Kanal- oder Netzmitgliedschaftsaktualisierungen werden zur Verifizierung an den Anordnungsservice gesendet. Aus diesem Grund enthält der Anordnungsservice Protokolle für den Zeitpunkt, zu dem das Netz gestartet wurde. Außerdem enthält er Protokolle für eine Transaktion, die zurückgewiesen wurde, weil sie nicht von den richtigen Organisationen ordnungsgemäß bewilligt wurde. Des Weiteren gibt es Protokolle für dem Zeitpunkt, zu dem Kanäle erstellt oder aktualisiert wurden oder zu dem Kanalaktualisierungen fehlgeschlagen sind.
 
-- **Protokolle für Zertifizierungsstellen**  
+- **Protokolle der Zertifizierungsstelle**
   Die Zertifizierungsstelle verwaltet die Identität der Teilnehmer innerhalb des Netzes. In den Protokollen für Zertifizierungsstellen (CA) finden Sie Protokolle für den Zeitpunkt, zu dem die Teilnehmer öffentliche und private Schlüssel generiert haben, um mit dem Netz zu kommunizieren (Eintragung), oder zu dem neue Mitglieder, Peers oder Anwendungen sich bei der Zertifizierungsstelle registriert haben. Die Protokolle der Zertifizierungsstelle können auch zum Debuggen verwendet werden, wenn Probleme mit der Zertifikatsprüfung aufgetreten sind.
 
 - **Protokolle für Peers**  
-  In den Protokollen für Peers werden die Ergebnisse der Installation, der Instanziierung und des Aufrufs des Chaincodes gespeichert. Sie können nach einem Chaincode-Namen und der Chaincode-Version suchen, um die Protokolle eines bestimmten Chaincodes zu finden. Außerdem können Sie die Protokolle eines bestimmten Chaincodes im [Abschnitt zum Chaincode des Kanalmonitors](#monitor-channel-cc) anzeigen. Die Nachrichten, die von Ihren Transaktionsvorschlägen generiert werden, sowie alle Probleme aufgrund von Zeitlimitüberschreitungen bei den Vorschlagsanforderungen werden in den Peerprotokollen dokumentiert. Des Weiteren finden Sie dort die Ergebnisse von Kanalbeitrittsanforderungen.
+  In den Protokollen für Peers werden die Ergebnisse der Installation, der Instanziierung und des Aufrufs des Chaincodes gespeichert. Sie können nach einem Chaincode-Namen und der Chaincode-Version suchen, um die Protokolle eines bestimmten Chaincodes zu finden. Außerdem können Sie die Protokolle eines bestimmten Chaincodes im [Abschnitt zum Chaincode des Kanalmonitors](#monitor-channel-cc) anzeigen. Die Nachrichten, die von Ihren Transaktionsvorschlägen generiert werden, sowie alle Probleme aufgrund von Zeitlimitüberschreitungen bei den Vorschlagsanforderungen werden in den Peerprotokollen dokumentiert. Die Protokolle der Peers enthalten außerdem Fehler für Transaktionen, die zurückgewiesen wurden, weil sie die [Bewilligungsrichtlinie des Chaincodes](install_instantiate_chaincode.html#endorsement-policy) nicht erfüllten. Des Weiteren finden Sie dort die Ergebnisse von Kanalbeitrittsanforderungen.
 
-Hyperledger Fabric stellt verschiedene [Protokollierungsstufen ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric.readthedocs.io/en/release-1.1/logging-control.html "Protokollierungssteuerung") auf Basis der Fehlerkategorie einer Nachricht bereit. Die  Standardprotokollierungsstufe von {{site.data.keyword.blockchainfull_notm}} Platform ist `INFO`. Zur Anzeige zusätzlicher Protokolle können Sie ein [Support-Ticket](../ibmblockchain_support.html#submitting-support-cases) öffnen, um die Protokollierungsstufe `DEBUG` festzulegen, bei der ausführlichere Informationen angezeigt werden. Beachten Sie hierbei, dass bei Protokollen der Stufe `DEBUG` beträchtliche Volumen an Gossip-Nachrichten angezeigt werden, die möglicherweise gefiltert werden müssen. Durchsuchen Sie die Nachrichten auf die Angabe `warning` oder `error`, um Probleme mit Hyperledger Fabric-Komponenten zu finden. Um festzustellen, ob die Ausführung des Komponentencontainers fehlgeschlagen ist oder ob seine Ausführung abgebrochen wurde, müssen Sie nach Nachrichten mit der Angabe `panic` oder `killed` suchen, die von {{site.data.keyword.cloud_notm}} gesendet wurden.
+Hyperledger Fabric stellt verschiedene [Protokollierungsstufen ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric.readthedocs.io/en/release-1.1/logging-control.html "Logging control") auf Basis der Fehlerkategorie einer Nachricht bereit. Die Standardprotokollierungsstufe von {{site.data.keyword.blockchainfull_notm}} Platform ist `INFO`. Zur Anzeige zusätzlicher Protokolle können Sie ein [Support-Ticket](../ibmblockchain_support.html#submitting-support-cases) öffnen, um die Protokollierungsstufe `DEBUG` festzulegen, bei der ausführlichere Informationen angezeigt werden. Beachten Sie hierbei, dass bei Protokollen der Stufe `DEBUG` beträchtliche Volumen an Gossip-Nachrichten angezeigt werden, die möglicherweise gefiltert werden müssen. Durchsuchen Sie die Nachrichten auf die Angabe `warning` oder `error`, um Probleme mit Hyperledger Fabric-Komponenten zu finden. Um festzustellen, ob die Ausführung des Komponentencontainers fehlgeschlagen ist oder ob seine Ausführung abgebrochen wurde, müssen Sie nach Nachrichten mit der Angabe `panic` oder `killed` suchen, die von {{site.data.keyword.cloud_notm}} gesendet wurden.
 
 ## Protokolle in Kibana in Starter Plan anzeigen
 Die Protokolle des Starter Plan-Netzes werden vom [{{site.data.keyword.cloud_notm}} Log Analysis-Service ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://console.bluemix.net/catalog/services/log-analysis "Log Analysis-Service") erfasst. Standardmäßig werden Ihre Protokolle über den Lite Plan des Log Analysis-Service erfasst. Hierbei handelt es sich um einen kostenlosen Plan, mit dem **Ihre Protokolle für eine Dauer von drei Tagen gespeichert** werden, bevor sie gelöscht werden. Darüber hinaus können Sie mit diesem Service auch nur in den **ersten 500 MB Ihrer pro Tag erfassten Protokolle suchen**. Umfassen Ihre Netzprotokolle mehr als 500 MB, können neue Protokolle in Kibana nicht angezeigt werden. Werden in Ihrem Netz Protokolle mit einem Gesamtumfang über 500 MB generiert oder sollen die Protokolle für einen längeren Zeitraum als drei Tage aufbewahrt werden, können Sie ein Upgrade auf eine gebührenpflichtige Version des Log Analysis-Service durchführen.
@@ -81,35 +80,35 @@ Klicken Sie in der Anzeige "Übersicht" Ihres Network Monitor in der Dropdown-Li
 
 Mit der Schaltfläche für den Zeitbereich oben rechts in der Anzeige können Sie den Zeitraum ändern, für den Protokolle angezeigt werden sollen. Darüber hinaus können Sie die Registerkarte auf der linken Seite der Anzeige verwenden, um Felder zur Suche hinzuzufügen oder aus ihr zu entfernen. Das wichtigste Feld, das angezeigt werden kann, ist das Nachrichtenfeld. Möglicherweise ist es sinnvoll, mit einer Nachricht ohne die Zeitmarke zu suchen, um alle Instanzen des entsprechenden Nachrichtenprotokolls zu finden. Klicken Sie auf die Schaltfläche **Speichern**, um die aktuelle Suche zu speichern und zu einer bestimmten Ansicht zurückzukehren. Weitere Informationen zur Anzeige von Daten in Kibana finden Sie im [Kibana-Benutzerhandbuch ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://www.elastic.co/guide/en/kibana/6.2/index.html "Kibana-Benutzerhandbuch"). Außerdem können Sie [Ihre Protokolle herunterladen](https://console.bluemix.net/docs/services/CloudLogAnalysis/how-to/manage-logs/downloading_logs_cloud.html#downloading_logs) und sie im lokalen Dateisystem speichern. Verwenden Sie dazu die Log Analysis-Befehlszeilenschnittstelle.
 
-**Hinweis:** Standardmäßig ist Kibana so vorkonfiguriert, dass Protokolle zu Aktivitäten für einen Zeitraum von 30 Tagen angezeigt werden. Wenn in den letzten 30 Tagen keine Aktivitäten stattgefunden haben, wird die Nachricht *Keine Ergebnisse gefunden* angezeigt. Wenn Sie andere Protokolle anzeigen möchten, können Sie auf das Zeitgebersymbol in der rechten oberen Ecke unterhalb Ihres Benutzernamens klicken und einen längeren Zeitraum festlegen, z. B. Zeiträume wie *Jahr bis zum aktuellen Datum*.  
+**Hinweis:** Standardmäßig ist Kibana so vorkonfiguriert, dass Protokolle zu Aktivitäten für einen Zeitraum von 30 Tagen angezeigt werden. Wenn in den letzten 30 Tagen keine Aktivitäten stattgefunden haben, wird die Nachricht *Keine Ergebnisse gefunden* angezeigt. Wenn Sie andere Protokolle anzeigen möchten, können Sie auf das Zeitgebersymbol in der rechten oberen Ecke unterhalb Ihres Benutzernamens klicken und einen längeren Zeitraum festlegen, z. B. Zeiträume wie *Jahr bis zum aktuellen Datum*.
 
 ## Kanäle überwachen
 {: #monitor-channnels}
 
-Rufen Sie den Network Monitor auf und suchen Sie nach dem Kanal in der Anzeige "Kanal", den Sie anzeigen und überwachen möchten.  In der Anzeige des betreffenden Kanals können Sie die Datenstatusinformationen, Mitglieder und den instanziierten Chaincode dieses Kanals auf drei Registerkarten anzeigen:
+Rufen Sie den Network Monitor auf und suchen Sie nach dem Kanal in der Anzeige "Kanal", den Sie anzeigen und überwachen möchten. In der Anzeige des betreffenden Kanals können Sie die Datenstatusinformationen, Mitglieder und den instanziierten Chaincode dieses Kanals auf drei Registerkarten anzeigen:
 
 ### Kanalüberblick
 {: #monitor-channel-overview}
 
 Die Registerkarte "Kanalüberblick" zeigt die Blockinformationen zu diesem Kanal:
   * Eine Reihe von Datenpunkten, zu denen die Gesamtzahl der erstellten Blöcke gehört, das Zeitintervall seit der letzten Transaktion, die Anzahl von Chaincode-Instanziierungen und die Anzahl von Chaincode-Aufrufen.
-  * Eine Tabelle, in der alle Blöcke dieses Kanals aufgeführt werden.  Wenn Sie einen Block erweitern, werden detaillierte Informationen zu dem Block angezeigt.  
+  * Eine Tabelle, in der alle Blöcke dieses Kanals aufgeführt werden. Wenn Sie einen Block erweitern, werden detaillierte Informationen zu dem Block angezeigt.
 
-  ![Kanalüberblick](../images/channel_overview_detail.png "Kanalüberblick")  
+  ![Kanalüberblick](../images/channel_overview_detail.png "Kanalüberblick")
 
-### Mitglieder  
+### Mitglieder
 {: #monitor-channel-members}
 
 Auf der Registerkarte "Mitglieder" werden die Informationen der Mitglieder auf diesem Kanal einschließlich der E-Mail-Adressen für die Operatoren der Organisation angezeigt.
 
-  ![Kanalmitglieder](../images/channel_members.png "Kanalmitglieder")  
+  ![Kanalmitglieder](../images/channel_members.png "Kanalmitglieder")
 
 ### Chaincode
 {: #monitor-channel-cc}
 
-Auf der Registerkarte "Chaincode" wird der gesamte Chaincode aufgelistet, der auf diesem Kanal instanziiert wird - mit der Chaincode-ID, der Version und der Anzahl Peers, die den Chaincode ausführen.   
+Auf der Registerkarte "Chaincode" wird der gesamte Chaincode aufgelistet, der auf diesem Kanal instanziiert wird - mit der Chaincode-ID, der Version und der Anzahl Peers, die den Chaincode ausführen.
 
-Erweitern Sie eine Chaincode-Zeile, um detaillierte Informationen zu dem Chaincode abzurufen:  
+Erweitern Sie eine Chaincode-Zeile, um detaillierte Informationen zu dem Chaincode abzurufen:
   * Sie können auf **JSON** klicken, um die JSON-Datei des Chaincodes anzuzeigen.
   * Sie können auf **Protokolle** klicken, um Protokolle des Chaincodes anzuzeigen. In dieser Ansicht werden Protokolle angezeigt, in denen Angaben dazu enthalten sind, über welchen Peer der Chaincode installiert wurde. Diese Informationen können anhand des Chaincode-Namens und der Chaincode-Version gefiltert werden.
 

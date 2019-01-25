@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-31"
+lastupdated: "2018-12-07"
 
 ---
 
@@ -40,8 +40,8 @@ Enterprise Plan-Netze umfassen die folgenden produktionsbereiten Funktionen, um 
 Bevor Sie die Migration Ihres Starter Plan-Netzes auf ein Enterprise Plan-Netz durchführen, sollten Sie die folgenden wichtigen Hinweise lesen.
 
 - **Preisstruktur:** Die monatliche Gebühr Ihrer Organisation für die Nutzung eines Enterprise Plan-Netzes umfasst eine pro Instanz berechnete Mitgliedschaftsgebühr von 1000 Dollar und eine pro Peer berechnete Peergebühr von ebenfalls 1000 Dollar. Weitere Informationen zu diesem Thema finden Sie im Abschnitt zur [Enterprise Plan-Preisstruktur](pricing.html#enterprise-plan-pricing).
-- **Hyperledger Fabric-Version:** Enterprise Plan-Netze arbeiten mit Hyperledger Fabric v1.1.  
-- **Betroffene Ressourcen:** Chaincode (Smart Contracts), Unternehmensnetznetzdefinitionen, Clientanwendungen.
+- **Hyperledger Fabric-Version:** Enterprise Plan-Netze arbeiten mit Hyperledger Fabric v1.1. Starter Plan-Netze werden unter Hyperledger Fabric v1.2 ausgeführt. Beispielsweise funktioniert eine Komponente wie [Private Data](https://hyperledger-fabric.readthedocs.io/en/release-1.2/private-data/private-data.html) (also ein Chaincode, der für die Verwendung von privaten Daten entwickelt wurde), die in einem Starter Plan-Netz verwendet werden kann, nicht in einem Enterprise Plan-Netz.
+- **Betroffene Ressourcen:** Chaincode (Smart Contracts), Unternehmensnetznetzdefinitionen, Clientanwendungen. Achten Sie auch hier darauf, ob Ihr Chaincode eine Komponente oder Funktionalität von Fabric v1.2 nutzt, die nicht mit Netzen von v1.1 kompatibel ist.
 - **Erforderliche Zeit:** Die Migration eines Basisnetzes von der Starter Plan-Version auf die Enterprise Plan-Version nimmt mindestens einen halben Tag in Anspruch.
 - **Vorhandene Ledgerdaten** können nicht aus Starter Plan-Netzen in Enterprise Plan-Netze verschoben werden, da Testdaten nicht in einer Produktionsumgebung vorhanden sein sollten.
 
@@ -79,7 +79,7 @@ Wenn Sie zur Definition eines Unternehmensnetzes Hyperledger Composer verwendet 
 Sie können die Konfiguration von Organisationen (Mitgliedern), Kanälen und Peers Ihres Starter Plan-Netzes in Ihrem Enterprise Plan-Netz neu erstellen. Sie können die Network Monitor-Benutzerschnittstelle verwenden, um diese Netzressourcen neu zu erstellen, indem Sie die geeigneten Organisationen einladen, Kanäle und Peers erstellen. (Beachten Sie hierbei, dass ein **Wechsel** der Organisationen nicht möglich ist, wie dies in Starter der Fall ist. Außerdem ist zu beachten, dass eingeladene Organisationen eigene Peers erstellen müssen.)
 
 1. Melden Sie sich bei Ihrem Enterprise Plan-Netz unter {{site.data.keyword.cloud_notm}} an und rufen Sie den Network Monitor auf.
-2. Erstellen Sie Organisationen (Mitglieder) in der Anzeige "Mitglieder", Kanäle in der Anzeige "Kanäle" und Peers in der Anzeige "Übersicht" neu. Weitere Informationen zur Erstellung von Netzressourcen finden Sie im Abschnitt zum [Betreiben Ihres Enterprise Plan-Netzes](../v10_dashboard.html#overview).
+2. Erstellen Sie Organisationen (Mitglieder) in der Anzeige "Mitglieder", Kanäle in der Anzeige "Kanäle" und Peers in der Anzeige "Übersicht" neu. Weitere Informationen zur Erstellung von Netzressourcen finden Sie im Abschnitt zum [Network Monitor verwenden](../v10_dashboard.html#overview).
 3. Konfigurieren Sie Kanäle, indem Sie Mitglieder hinzufügen und Kanalrichtlinien auf die gleiche Weise festlegen, wie dies im Starter Plan-Netz der Fall ist.
 
 **Hinweis:** Zur Erzielung einer hohen Verfügbarkeit müssen Sie mindestens zwei Peers für Ihre Organisation erstellen, diese demselben Kanal hinzufügen und Clientanwendungen korrekt codieren, sodass eine Umschaltung von einem Peer auf den nächsten bei Bedarf möglich ist.

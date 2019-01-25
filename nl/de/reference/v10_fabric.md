@@ -51,7 +51,7 @@ In einem Hyperledger Fabric-Netz wird der Datenfluss für Abfragen und Transakti
 2. Jeder Peer auf dem Kanal überprüft die Identität und Berechtigung des übergebenden Clients und (falls gültig) führt den angegebenen Chaincode für die übergebenen Eingaben (Schlüssel/Werte) aus.  Auf der Grundlage der Transaktionsergebnisse und der Bewilligungsrichtlinie für den aufgerufenen Chaincode gibt jeder Peer eine signierte Antwort YES oder NO an die Anwendung zurück.  Jede signierte Antwort YES ist eine **Bewilligung** der Transaktion.
 
 	An diesem Punkt im Transaktionsfluss verzweigt sich der Prozess für Abfragen und Transaktionen.  Wenn der Vorschlag eine Abfragefunktion im Chaincode aufgerufen hat, gibt die Anwendung die Daten an den Client zurück.  Wenn der Vorschlag eine Funktion im Chaincode zum Aktualisieren des Ledgers aufgerufen hat, wird die Anwendung mit den folgenden Schritten fortgesetzt:  
-3. Die Anwendung leitet die Transaktion (Lesen/Schreiben und Bewilligungen) an den **Anordnungsservice** des Netzes weiter.  
+3. Die Anwendung leitet die Transaktion (Lese-/Schreibsätze und Bewilligungen) an den **Anordnungsservice** des Netzes weiter.  
 4. Die Transaktion wird dann an das Partitionsthema (Partition Topic) des Kanals im Kafka-Cluster zum Festlegen einer Anordnung übermittelt.  Alle Kanalpeers validieren jede Transaktion im Block, indem Sie die Chaincode-spezifische Prüfrichtlinie anwenden und einen 'Concurrency Control Version Check' ausführen.  
 	* Alle Transaktionen, die den Validierungsprozess nicht bestehen, werden im Block als ungültig markiert und der Block wird an die Hashchain des Kanals angehängt.  
 	* Alle gültigen Transaktionen aktualisieren die Statusdatenbank entsprechend mit den geänderten Schlüssel/Wert-Paaren.  

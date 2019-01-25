@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-31"
+lastupdated: "2018-12-07"
 
 ---
 
@@ -16,21 +16,16 @@ lastupdated: "2018-08-31"
 # Glossar
 {: #glossary}
 
-
 ***[Ist diese Seite hilfreich? Teilen Sie uns Ihre Meinung mit.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
-
-{{site.data.keyword.blockchainfull}} Platform macht das Kennenlernen leicht. In diesem Abschnitt werden Begriffe definiert, die in dieser Dokumentation Verwendung finden und dazu gedacht sind, Sie in die Blockchain-Konzepte einzuführen. Ein eingehendere Erläuterung von Begriffen finden Sie unter [Hyperledger Fabric ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/glossary.html).
+In diesem Abschnitt werden spezielle Begriffe von {{site.data.keyword.blockchainfull}} definiert, die in der vorliegenden Dokumentation Verwendung finden. Eine eingehendere Erläuterung der Begriffe sowie ein Glossar der Begriffe, die im Zusammenhang mit den Konzepten von Hyperledger Fabric verwendet werden, enthält das [Glossar für Hyperledger Fabric ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](http://hyperledger-fabric.readthedocs.io/en/release-1.2/glossary.html).
 {:shortdesc}
 
 ## Aktueller Status
-Der aktuelle Status des Ledgers stellt die neuesten Werte für alle Schlüssel dar, die im zugehörigen Chaintransaktionsprotokoll enthalten sind. Da der aktuelle Status die neuesten Werte aller Schlüssel darstellt, die dem Kanal bekannt sind, wird er auch als World-Status bezeichnet. Chaincode führt Transaktionsvorschläge für Daten mit dem aktuellen Status aus. Der aktuelle Status ändert sich jedes Mal, wenn der Wert eines Schlüssels geändert oder ein neuer Schlüssel hinzugefügt wird. Der aktuelle Status ist für einen Transaktionsablauf kritisch, da das neueste Schlüssel/Wert-Paar vor einer Änderung bekannt sein muss. Peers schreiben die neuesten Werte für jede gültige Transaktion in einem Block im aktuellen Status des Ledgers fest. Der aktuelle Status wird in der Statusdatenbank eines Peers gespeichert.
+Der aktuelle Status des Ledgers stellt die neuesten Werte für alle Schlüssel dar, die im zugehörigen Chaintransaktionsprotokoll enthalten sind. Da der aktuelle Status die neuesten Werte aller Schlüssel darstellt, die dem Kanal bekannt sind, wird er auch als World-Status bezeichnet. Chaincode führt Transaktionsvorschläge für Daten mit dem aktuellen Status aus. Der aktuelle Status ändert sich jedes Mal, wenn der Wert eines Schlüssels geändert oder ein neuer Schlüssel hinzugefügt wird. Der aktuelle Status ist für einen Transaktionsfluss kritisch, da das neueste Schlüssel/Wert-Paar vor einer Änderung bekannt sein muss. Peers schreiben die neuesten Werte für jede gültige Transaktion in einem Block im aktuellen Status des Ledgers fest. Der aktuelle Status wird in der Statusdatenbank eines Peers gespeichert.
 
 ## Anordnungsknoten
-Ein Anordnungsserviceknoten ("Orderer"). Eine Blockchain-Netzressource, die Clientauthentifizierungsservices bereitstellt. Darüber hinaus stellt der Anordnungsknoten Services zum Anordnen und übertragen von Transaktionen bereit.
-
-## Anordnungsservice
-Jedes Blockchain-Netz erfordert einen Anordnungsservice. Der Anordnungsservice erfasst Transaktionen von Netzmitgliedern, ordnet die Transaktionen und bündelt sie zu Blöcken. Der Anordnungsservice verteilt anschließend die neuen Blöcke an Peers, die wiederum die Blöcke prüfen und den Ledgern in jedem Kanal hinzufügen. Der Anordnungsservice dient darüber hinaus als gemeinsame Bindung für das gesamte Netz. Er enthält das Identitätsmaterial für die Verschlüsselung, das an jedes Mitglied gebunden ist, und authentifiziert die Identität von Clients und Peers für den Zugriff auf das Netz.
+Der Knoten, der Transaktionen von Netzmitgliedern erfasst, die Transaktionen anordnet und sie zu Blöcken bündelt. Diese Blöcke werden anschließend an Peers verteilt, die wiederum die Blöcke prüfen und den Ledgern in jedem Kanal hinzufügen. Anordnungsknoten enthalten das Identitätsmaterial für die Verschlüsselung, das an jedes Mitglied gebunden ist, und authentifizieren die Identität von Clients und Peers für den Zugriff auf das Netz. Die Funktion, die von einem Anordnungsknoten oder einer solchen Knotengruppe bereitgestellt wird, wird als **Anordnungsservice** bezeichnet.
 
 ## Asset
 Materielle oder immaterielle Güter, Services oder Liegenschaften, die als Element dargestellt werden, die im Blockchain-Netz gehandelt werden.
@@ -51,7 +46,7 @@ Eine geordnete Gruppe von Transaktionen, die kryptografisch mit dem vorangehende
 Die Chain (Kette) des Ledgers ist ein Transaktionsprotokoll, das die Struktur von durch Hashwerte verknüpften Blöcken von Transaktionen hat. Peers empfangen Blöcke von Transaktionen aus dem Anordnungsservice, markieren die Transaktionen des Blocks je nach Bewilligungsrichtlinien und Verletzungen des gemeinsamen Zugriffs als gültig oder ungültig und hängen den Block an die Hash-Chain im Dateisystem des Peers an.
 
 ## Chaincode
-Bei Chaincode, auch als Smart Contract bezeichnet, handelt es sich um Stücke von Software, die eine Gruppe von Funktionen zum Abfragen oder Aktualisieren des Ledgers enthalten.
+Bei Chaincode, auch als **Smart Contract** bezeichnet, handelt es sich um Teile von Software, die eine Gruppe von Funktionen zum Abfragen oder Aktualisieren des Ledgers enthalten.
 
 ## Client
 Der Client stellt die Entität dar, die im Namen eines Benutzers agiert. Er muss eine Verbindung zu einem Peer herstellen, um mit dem Blockchain-System kommunizieren zu können. Der Client kann die Verbindung zu einem beliebigen Peer seiner Wahl herstellen. Clients erstellen Transaktionen und rufen sie dadurch auf. Der Client übergibt einen tatsächlichen Transaktionsaufruf an die Bewilliger und sendet Transaktionsvorschläge an den Anordnungsservice.
@@ -90,10 +85,13 @@ Eine Implementierung eines Konsens-Plug-ins für Hyperledger Fabric, deren Ergeb
 Ein Kanal besteht aus einer Untergruppe der Netzmitglieder, die Transaktionen privat ausführen möchten. Kanäle sorgen für Datenisolation und Vertraulichkeit, indem sie es den Mitgliedern eines Kanals ermöglichen, bestimmte Regeln und ein separates Ledger einzurichten, auf das nur Kanalmitglieder Zugriff haben. Peers, bei denen es sich um Knoten handelt, die als Transaktionsendpunkte für Organisationen fungieren, werden mit Kanälen verknüpft.
 
 ## Knoten
-Die Kommunikationsentität der Blockchain. Es gibt drei Typen von Knoten: Zertifizierungsstellenknoten (CA), Peerknoten und Anordnungsserviceknoten (die Gruppe von Anordnungsknoten für einen Kanal).
+Die Kommunikationsentität der Blockchain. Es gibt drei Typen von Knoten: Zertifizierungsstellenknoten (CA), Peerknoten und Anordnungsknoten.
 
 ## Konsens
 Ein kooperativer Prozess, durch den die Ledgertransaktionen im gesamten Netz synchron gehalten werden. Der Konsens stellt sicher, dass Ledger nur aktualisiert werden, wenn die richtigen Teilnehmer Transaktionen genehmigen, und dass Ledger mit denselben Transaktionen in derselben Reihenfolge aktualisiert werden. Es gibt mehrere algorithmische Möglichkeiten, den Konsens zu realisieren.
+
+## Konsortium
+Die Gruppe der Organisationen, bei denen es sich nicht um Anordnungsknoten handelt und die im Systemkanal des Anordnungsknotens aufgelistet sind. Dies sind die einzigen Organisationen, die Kanäle erstellen können. Zum Zeitpunkt der Kanalerstellung müssen alle zum Kanal hinzugefügten Organisationen Mitglieder eines Konsortiums sein. Eine Organisation, die nicht in einem Konsortium definiert ist, kann allerdings zu einem vorhandenen Kanal hinzugefügt werden. Ein Blockchain-Netz kann zwar mehrere Konsortien umfassen, aber die meisten Blockchain-Netze beinhalten nur ein einziges Konsortium.
 
 ## Ledger
 Das Ledger besteht aus einer Literalkette von Blöcken ("chain of blocks"), die die unveränderliche Aufzeichnung von Transaktionen sowie eine Statusdatenbank speichern, in der der aktuelle Status verwaltet wird. Es gibt ein Ledger pro Kanal und Aktualisierungen des Ledgers werden durch den Konsensprozess nach den Richtlinien eines bestimmten Kanals verwaltet.
@@ -126,7 +124,13 @@ Eine Blockchain-Netzressource, die die Services zur Ausführung und Validierung 
 Hyperledger Fabric unterstützt zwei Software Development Kits (SDKs). Ein Node-SDK und ein Java-SDK.  Das Node-SDK kann über NPM und das Java-SDK über Maven installiert werden.  Die SDKs haben eigene Git-Repositorys, nämlich [Fabric Node SDK ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://github.com/hyperledger/fabric-sdk-node) und [Fabric Java SDK ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://github.com/hyperledger/fabric-sdk-java), mit Dokumentation für die verfügbaren APIs. Die Hyperledger Fabric Client-SDKs ermöglichen die Interaktion zwischen Ihrer Clientanwendung und Ihrem Blockchain-Netz.
 
 ## Serviceberechtigungsnachweise
-Serviceberechtigungsnachweise liegen im JSON-Format vor und enthalten die Informationen zu den API-Endpunkten sowie die Eintrags-IDs (enrollIDs) und die geheimen Schlüssel (secrets) für Ihre Netzressourcen, das heißt für Peers, Anordnungsknoten und Zertifizierungsstellen (CA). Ihre Anwendung interagiert mit Netzressourcen über diese API-Endpunkte.
+Serviceberechtigungsnachweise liegen im JSON-Format vor und enthalten die Informationen zu den API-Endpunkten sowie die Eintrags-IDs (enrollIDs) und die geheimen Schlüssel (secrets) für Ihre Netzressourcen, das heißt für Zertifizierungsstellen, Anordnungsknoten und Peers. Ihre Anwendung interagiert mit Netzressourcen über diese API-Endpunkte.
+
+## signCert-Zertifikat
+Das Zertifikat, das alle Entitäten (Organisationen oder Administratoren) an ihre Vorschläge oder Antworten auf Vorschläge anhängen. signCert-Zertifikate sind für eine Entität eindeutig und werden durch den Anordnungsservice geprüft, um sicherzustellen, dass sie mit dem signCert-Zertifikat in der Datei für diese Entität identisch sind.
+
+## Smart Contracts
+Siehe [Chaincode](#chaincode).
 
 ## SOLO
 Eine Implementierung eines Konsens-Plug-ins für Hyperledger Fabric, die zur Folge hat, dass nur ein Anordnungsservice im Blockchain-Netz vorhanden ist. Das Starter Plan-Netz verwendet die SOLO-Implementierung. Eine SOLO-Implementierung ist nicht für ein Produktionsnetz gedacht. Die Alternative zu SOLO ist ein Kafka-Cluster.
@@ -149,5 +153,5 @@ Das Verbindungsprofil ist in der Anzeige "Übersicht" im Network Monitor sichtba
 ## World-Status
 Siehe [Aktueller Status](#current-state).
 ## Zertifizierungsstelle (CA)
-Zertifizierungsstelle (Certificate Authority). Eine Blockchain-Netzressource, die Zertifikate an alle teilnehmenden Mitglieder ausstellt. Diese Zertifikate stellen die Identität eines Mitglieds dar. Alle Entitäten im Netz (Peers, Anordnungsknoten, Clients usw.) müssen eine Identität haben, um kommunizieren, sich authentifizieren und letztlich Transaktionen ausführen zu können. Diese Identitäten sind für jede direkte Teilnahme am Blockchain-Netz erforderlich. Sie können eine Unternehmensnetzkarte für die Zertifizierungsstelle hinzufügen. Die [CA-Karte](develop_starter.html) kann anschließend importiert und verwendet werden, um den geheimen Administratorschlüssel für gültige Zertifikate aus der Starter Plan-Zertifizierungsstelle auszutauschen.
+CA steht als Abkürzung für den englischen Begriff "Certificate Authority", zu Deutsch "Zertifizierungsstelle". Hierbei handelt es sich um die Komponente, die Zertifikate an alle teilnehmenden Mitglieder ausgibt. Diese Zertifikate stellen die Identität eines Mitglieds dar. Alle Entitäten im Netz (Peers, Anordnungsknoten, Clients usw.) müssen eine Identität haben, um kommunizieren, sich authentifizieren und letztlich Transaktionen ausführen zu können. Diese Identitäten sind für jede direkte Teilnahme am Blockchain-Netz erforderlich. Sie können eine Unternehmensnetzkarte für die Zertifizierungsstelle hinzufügen. Die [CA-Karte](develop_starter.html) kann anschließend importiert und verwendet werden, um den geheimen Administratorschlüssel für gültige Zertifikate aus der Starter Plan-Zertifizierungsstelle auszutauschen.
 

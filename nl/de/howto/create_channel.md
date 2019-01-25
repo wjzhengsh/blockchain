@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-31"
+lastupdated: "2018-09-27"
 
 ---
 
@@ -31,9 +31,9 @@ Klicken Sie auf die Schaltfläche **Neuer Kanal** in der Anzeige "Kanäle" Ihres
 2. Laden Sie eine beliebige Kombination Ihrer Netzmitglieder ein, indem Sie die Netzmitglieder auswählen und auf die Schaltfläche **Mitglied hinzufügen** klicken. Passen Sie Berechtigungen an, indem Sie Rollen für die einzelnen eingeladenen Mitglieder zuordnen, und klicken Sie auf **Weiter**.
   ![Kanalerstellung 2](../images/create_channel_2.png "Kanalerstellung - Anzeige 2")
 
-    * Ein Kanaloperator kann das Ledger des Kanals abfragen oder aktualisieren. Der Kanaloperator hat die Berechtigung zum **Akzeptieren** oder **Ablehnen** einer Anforderung zur Kanalerstellung und zum Übergeben einer Anforderung zur Kanalaktualisierung. Für jeden Kanal muss es mindestens einen **Operator** geben.
-    * Ein Mitglied mit Schreibberechtigung kann das Ledger des Kanals aktualisieren.
-    * Ein Mitglied mit Leseberechtigung kann das Ledger des Kanals nur abfragen.
+    * Ein Kanaloperator kann das Ledger des Kanals abfragen oder aktualisieren. Ein Kanaloperator hat die Berechtigung zum **Akzeptieren** oder **Ablehnen** einer Anforderung zur Kanalerstellung und zum Übergeben einer Anforderung zur Kanalaktualisierung. Für jeden Kanal muss es mindestens einen **Operator** geben.
+    * Ein Mitglied mit Schreibberechtigung kann das Ledger des Kanals aktualisieren, beispielsweise durch das Aufrufen einer Chaincodefunktion. Ein Kanalmitglied mit Schreibberechtigung kann außerdem einen Chaincode auf einem Kanal instanziieren.
+    * Ein Mitglied mit Leseberechtigung kann das Ledger des Kanals lediglich abfragen, beispielsweise durch das Aufrufen einer Chaincodelesezugriffsfunktion.
 
 3. Konfigurieren Sie die Kanalaktualisierungsrichtlinie durch Auswahl der Anzahl von Kanaloperatoren, die eine Anforderung zur Kanalaktualisierung genehmigen müssen, und klicken Sie auf **Anforderung übergeben**.
   ![Kanalerstellung 3](../images/create_channel_3.png "Kanalerstellung Anzeige 3")
@@ -70,3 +70,5 @@ Alle Kanalmitglieder erhalten E-Mail-Benachrichtigungen über die Anforderung zu
 * Vorhandene Schreib- oder Leseberechtigte für einen Kanal erhalten ebenfalls E-Mail-Benachrichtigungen zur Kanalaktualisierung. Sie finden die Anforderung mit dem Status _Nicht erforderlich_ in der Anzeige **Benachrichtigungen** des Network Monitor.
 
 Wenn eine ausreichende Anzahl von Kanaloperatoren der Anforderung zustimmen, kann jedes beliebige Kanalmitglied auf die Schaltfläche **Anforderung übergeben** klicken und der Kanal wird aktualisiert. Alle Kanalmitglieder finden den aktualisierten Kanal in der Anzeige "Kanäle" im Network Monitor.
+
+**Wichtig:** Bewilligungsrichtlinien werden nicht automatisch aktualisiert, wenn neue Organisationen dem Kanal beitreten und den Chaincode installieren. Falls die Richtlinie beispielsweise zwei von fünf Organisationen erforderlich macht, damit eine Transaktion bewilligt wird, wird sie nicht dahingehend aktualisiert, dass zwei von sechs Organisationen erforderlich sind, nachdem eine neue Organisation dem Kanal beigetreten ist. Stattdessen wird die neue Organisation nicht in der Richtlinie aufgeführt und ist nicht in der Lage, Transaktionen zu bewilligen. Sie können eine neue Organisation zu einer Bewilligungsrichtlinie hinzufügen, indem Sie den [entsprechenden Chaincode aktualisieren](install_instantiate_chaincode.html#updating-a-chaincode). Weitere Informationen finden Sie im Abschnitt [Bewilligungsrichtlinien des Chaincodes angeben](install_instantiate_chaincode.html#endorsement-policy).
