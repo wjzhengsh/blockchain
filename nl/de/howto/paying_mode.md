@@ -59,7 +59,7 @@ Ein Mitglied innerhalb eines Netzes kann die Gebühren für einzelne oder mehrer
          - **Bereichsrollen:** Entwickler.
       3. Klicken Sie auf **Benutzer einladen**.  
    **Hinweis**: Wenn der Zahler für mehrere Mitglieder bezahlt, dann muss er diesen Schritt wiederholen, um weitere Mitglieder einzuladen und diesen Mitgliedern Zugriff zu erteilen.
-3. Der Zahler erstellt ein Blockchain-Netz unter {{site.data.keyword.blockchainfull_notm}} Platform und lädt andere Mitglieder in das Blockchain-Netz im Network Monitor des Netzes ein. Weitere Informationen zur Einladung von Netzmitgliedern finden Sie unter [Mitglieder](https://console.bluemix.net/docs/services/blockchain/v10_dashboard.html#members).
+3. Der Zahler erstellt ein Blockchain-Netz unter {{site.data.keyword.blockchainfull_notm}} Platform und lädt andere Mitglieder in das Blockchain-Netz in der Network Monitor-Instanz des Netzes ein. Weitere Informationen zur Einladung von Netzmitgliedern finden Sie unter [Mitglieder](https://console.bluemix.net/docs/services/blockchain/v10_dashboard.html#members).
 4. Jedes Mitglied empfängt eine Benachrichtigungs-E-Mail, die eine Einladung zur Teilnahme am Netz enthält. Das Mitglied kann die folgenden Schritte ausführen, um dem Netz beizutreten.
    1. Klicken Sie auf die Schaltfläche "Fortfahren" in der Benachrichtigungs-E-Mail, sodass Sie zur Blockchain-Serviceseite in {{site.data.keyword.cloud_notm}} gelangen.
    2. Melden Sie sich bei {{site.data.keyword.cloud_notm}} an und vergewissern Sie sich, dass Sie die korrekte {{site.data.keyword.cloud_notm}}-Organisation und den korrekten Bereich verwenden, zu denen Sie der Zahler hinzugefügt hat.
@@ -91,7 +91,7 @@ Eine Alternative zum Hinzufügen weiterer Mitgliederkonten zum Konto des Zahlers
   4. Wählen Sie im Abschnitt **Cloud Foundry-Zugriff** in der Dropdown-Liste Ihre Organisation aus, zu der das Konto des Zahlers hinzugefügt werden soll.
   5. Wählen Sie als **Organisationsrolle** die Option **Abrechnungsmanager** aus.
   6. Konfigurieren Sie die weiteren Felder entsprechend und klicken Sie dann auf **Benutzer einladen**.  
-3. Der Zahler lädt weitere Mitglieder zum Blockchain-Netz im Network Monitor des Netzes ein. Weitere Informationen zur Einladung von Netzmitgliedern finden Sie unter [Mitglieder](https://console.bluemix.net/docs/services/blockchain/v10_dashboard.html#members).
+3. Der Zahler lädt weitere Mitglieder zum Blockchain-Netz in der Network Monitor-Instanz des Netzes ein. Weitere Informationen zur Einladung von Netzmitgliedern finden Sie unter [Mitglieder](https://console.bluemix.net/docs/services/blockchain/v10_dashboard.html#members).
 4. Jedes Mitglied empfängt eine Benachrichtigungs-E-Mail, die eine Einladung zur Teilnahme am Netz enthält. Das Mitglied kann dem Netz nun beitreten. Weitere Informationen finden Sie in **Schritt 4** unter [Für andere Netzmitglieder bezahlen](#pay-for-others).
 
 ### Bekannte Einschränkung

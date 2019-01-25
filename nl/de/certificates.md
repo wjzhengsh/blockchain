@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-31"
+lastupdated: "2018-12-07"
 ---
 
 {:new_window: target="_blank"}
@@ -27,63 +27,116 @@ lastupdated: "2018-08-31"
 ## Zertifizierungsstellen
 {: #network-ca}
 
-Zertifizierungsstellen (CAs; Certificate Authorities) ermöglichen die Identitätsfeststellung innerhalb des Netzes. Eine CA kann als öffentlich anerkannter Notar betrachtet werden, der als Vertrauensanker zwischen mehreren Parteien fungiert. Alle Entitäten innerhalb des Netzes erhalten ein Zertifikat, das von einer sog. Root-CA (Stammzertifizierungsstelle) signiert wurde und in dem die digitale Identität der betreffenden Entitäten enthalten ist. Dieses Zertifikat stellt die Vertrauensgrundlage für alle Signier- und Verifizierungsoperationen dar, die innerhalb des Netzes ausgeführt werden. Weitere Einzelheiten zur Verwendung von Zertifizierungsstellen zur Erstellung einer Identität finden Sie in der [Hyperledger Fabric-Dokumentation ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric.readthedocs.io/en/latest/identity/identity.html).
+Zertifizierungsstellen (CAs; Certificate Authorities) ermöglichen die Identitätsfeststellung innerhalb des Netzes. Eine Zertifizierungsstelle kann als öffentlich anerkannter Notar betrachtet werden, der als Vertrauensanker zwischen mehreren Parteien fungiert. Alle Entitäten innerhalb des Netzes erhalten ein Zertifikat, das von einer so genannten Stammzertifizierungsstelle (Root-CA) signiert wurde und in dem die digitale Identität der betreffenden Entitäten enthalten ist. Dieses Zertifikat stellt die Vertrauensgrundlage für alle Signier- und Verifizierungsoperationen dar, die innerhalb des Netzes ausgeführt werden. Weitere Einzelheiten zur Verwendung von Zertifizierungsstellen zur Erstellung einer Identität finden Sie in der [Hyperledger Fabric-Dokumentation ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric.readthedocs.io/en/latest/identity/identity.html).
 
-Jedes Mitglied des Netzes verfügt über eine eigene CA, die ein von der Root-CA des Netzes ausgestelltes Zertifikat erhält. Diese Verbindung zur Root-CA bildet den Vertrauensanker für Ihre Organisation. Ihre Organisations-CA signiert Anforderungen für alle Entitäten, deren Eigner Ihre Organisation ist. Hierzu gehören z. B. der Administrator, Peers oder Anwendungen. Wenn Sie einen fernen Peer oder eine neue Anwendung zu Ihrem Netz hinzufügen wollen, dann müssen Sie die neue Identität bei Ihrer Zertifizierungsstelle (Registrierung) registrieren. Anschließend kann die Zertifizierungsstelle (CA) der neuen Entität die Zertifikate zur Verfügung stellen, die sie zur Interaktion mit dem Netz (Eintragung) benötigt.
+Jedes Mitglied des Netzes verfügt über eine eigene Zertifizierungsstelle. Die Zertifizierungsstelle Ihrer Organisations signiert Anforderungen für alle Entitäten und Komponenten, deren Eigner Sie sind. Hierzu gehören z. B. der Administrator, Peers oder Anwendungen. Wenn Sie einen fernen Peer oder eine neue Anwendung zu Ihrem Netz hinzufügen wollen, dann müssen Sie die neue Identität bei Ihrer Zertifizierungsstelle (Registrierung) registrieren. Anschließend kann die Zertifizierungsstelle der neuen Entität die Zertifikate zur Verfügung stellen, die die Entität zur Interaktion mit dem Netz (Eintragung) benötigt. 
 
 ### Registrierung mit Network Monitor durchführen
 {: #ca-panel}
 
-Mit dem {{site.data.keyword.blockchainfull_notm}} Platform Network Monitor können Sie die Identitäten anzeigen, die bei Ihrer CA registriert wurden, und neue Identitäten hinzuzufügen. Navigieren Sie zur Anzeige "Zertifizierungsstelle" im Network Monitor. Diese Anzeige enthält alle Identitäten, die bei Ihrer CA registriert wurden (einschließlich der Administratoren, Peers und Clientanwendungen Ihrer Organisation). Zur Registrierung einer neuen Identität in Ihrer Organisation müssen Sie auf die Schaltfläche **Benutzer hinzufügen** oben in der Anzeige klicken. Daraufhin wird ein Popup-Fenster geöffnet, in dem die folgenden Felder angezeigt werden, die zur Registrierung einer neuen Identität benötigt werden.
-  - **ID:** Dies ist der Name Ihrer neuen Identität, der auch als `Eintragungs-ID` bezeichnet wird. **Speichern Sie diesen Wert** zur Konfiguration eines fernen Peers oder zur Eintragung einer neuen Anwendung.
-  - **Geheimer Schlüssel:** Dies ist das Kennwort für Ihre Identität, das auch als `geheimer Eintragungsschlüssel` bezeichnet wird. **Speichern Sie diesen Wert** zur Konfiguration eines fernen Peers oder zur Eintragung einer neuen Anwendung.  
+Mit dem {{site.data.keyword.blockchainfull_notm}} Platform Network Monitor können Sie die Identitäten anzeigen, die bei Ihrer Zertifizierungsstelle registriert wurden, und neue Identitäten hinzuzufügen. Navigieren Sie zur Anzeige "Zertifizierungsstelle" im Network Monitor. Diese Anzeige enthält alle Identitäten, die bei Ihrer Zertifizierungsstelle registriert wurden (einschließlich der Administratoren, Peers und Clientanwendungen Ihrer Organisation). Zur Registrierung einer neuen Identität in Ihrer Organisation müssen Sie in der Anzeige auf die Schaltfläche **Benutzer hinzufügen**. Daraufhin wird ein Popup-Fenster geöffnet, in dem die folgenden Felder angezeigt werden, die zur Registrierung einer neuen Identität benötigt werden.
+  - **Eintragungs-ID:** Dies ist der Name Ihrer neuen Identität. ``**Speichern Sie diesen Wert.** Sie benötigen ihn, wenn Sie einen fernen Peer konfigurieren oder eine neue Anwendung eintragen.
+  - **Geheimer Eintragungsschlüssel:** Dies ist das Kennwort für Ihre Identität.`` **Speichern Sie diesen Wert.** Sie benötigen ihn, wenn Sie einen fernen Peer konfigurieren oder eine neue Anwendung eintragen.
   - **Typ:** Wählen Sie den Typ der Identität aus, die registriert werden soll (Peer oder Clientanwendung).
   - **Zugehörigkeit:** Dies ist die Zugehörigkeit innerhalb Ihrer Organisation, z. B. `org1`, zu der die Identität gehören wird.
   - **Maximale Anzahl der Eintragungen:** In diesem Feld können Sie die Anzahl der Wiederholungen für die Eintragung oder die Generierung von Zertifikaten mit einer bestimmten Identität einschränken. Erfolgt in dem Feld keine Angabe, dann wird standardmäßig der Wert für eine unbeschränkte Anzahl von Eintragungen verwendet.
 
-In dieser Anzeige können Sie eine neue Peeridentität registrieren, wenn Sie einen [fernen Peer](howto/remote_peer.html) bereitstellen. Alternativ hierzu können Sie einen Client registrieren, wenn Sie eine Anwendung entwickeln, mit der Transaktionen an Ihr Netz übergeben werden können. Im [Lernprogramm 'Anwendungen entwickeln'](v10_application.html) finden Sie weiterführende Informationen zur Verwendung der Fabric-SDKs auf der Plattform.
+In dieser Anzeige können Sie eine neue Peeridentität registrieren, wenn Sie einen [fernen Peer](howto/remote_peer.html) bereitstellen. Alternativ hierzu können Sie einen Client registrieren, wenn Sie eine Anwendung entwickeln, mit der Transaktionen an Ihr Netz übergeben werden können. Im Lernprogramm [Anwendungen entwickeln](v10_application.html) finden Sie weiterführende Informationen zur Verwendung der Fabric-SDKs auf der Plattform.
 
 ### Clientseitige Zertifikate generieren (Eintragung)
 {: #enrollment}
 Bevor Sie eine Verbindung zwischen einem Client eines anderen Anbieters und {{site.data.keyword.blockchainfull_notm}} Platform herstellen können, müssen Sie sich authentifizieren. Der Prozess zum Generieren der erforderlichen Zertifikate, Ihres privaten Schlüssels und Ihres öffentlichen Zertifikats (sog. Eintragungszertifikat oder signCert-Zertifikat) wird als Eintragung bezeichnet. Diese Zertifikate werden immer dann benötigt, wenn der Client mit dem Netz kommuniziert. Jeder Client, der Aufrufe an das Netz übergibt, muss die Nutzdaten mit einem privaten Schlüssel signieren und ein korrekt signiertes x509-Zertifikat beifügen.
 
-Rufen Sie das [Lernprogramm 'Anwendungen entwickeln'](v10_application.html) auf, um weiterführende Informationen zur [Eintragung mit dem Fabric Node-SDK](v10_application.html) zu erhalten. Die Eintragung mit dem SDK generiert ein signCert-Zertifikat, einen öffentlichen Schlüssel, der zum Erstellen des signCert-Zertifikats verwendet wurde, und Ihren privaten Schlüssel.
+Rufen Sie das [Lernprogramm 'Anwendungen entwickeln'](v10_application.html) auf, um weiterführende Informationen zur [Eintragung mit dem Fabric Node-SDK](v10_application.html#enroll-app) zu erhalten. Die Eintragung mit dem SDK generiert drei separate Elemente: einen privaten Schlüssel, ein signCert-Zertifikat und einen öffentlichen Schlüssel, der zum Erstellen des signCert-Zertifikats verwendet wurde.
 
-Sie können Zertifikate auch mit dem Fabric-CA-Client über die [Befehlszeile](#enroll-register-caclient) generieren. Der Fabric-CA-Client gibt eine umfassende Gruppe von Zertifikaten in einem MSP-Ordner (MSP = Membership Service Provider) zurück. Dieser Ordner enthält das von der CA signierte Stammzertifikat, die Zwischenzertifikate, die Ihrer Zugehörigkeit zugeordnet sind, einen privaten Schlüssel sowie Ihr signCert-Zertifikat. Weitere Informationen zum Membership Service Provider (MSP) und zum Inhalt dieses Ordners finden Sie im folgenden Abschnitt [Membership Service Providers](#msp).
+Sie können Zertifikate auch mit dem [Fabric-CA-Client](#enroll-register-caclient) über die Befehlszeile generieren. Der Fabric-CA-Client gibt eine umfassende Gruppe von Zertifikaten in einem MSP-Ordner (MSP = Membership Service Provider) zurück. Dieser Ordner enthält das von der Zertifizierungsstelle signierte Stammzertifikat, die Zwischenzertifikate, einen privaten Schlüssel sowie Ihr signCert-Zertifikat. Weitere Informationen zu MSP und zum Inhalt des MSP-Ordners finden Sie unter [Membership Service Providers (MSPs)](#msp).
+
+Sie können Zertifikate nur mit Identitäten generieren, die bei Ihrer Zertifizierungsstelle registriert sind, indem Sie den Namen und den geheimen Schlüssel der jeweiligen Identität verwenden. Die Identität namens **admin** ist standardmäßig bereits bei Ihrer Zertifizierungsstelle registriert und wird in der Anzeige "Zertifizierungsstelle" aufgelistet. Den geheimen Schlüssel der Identität "admin" können Sie in Ihrem Verbindungsprofil ermitteln, indem Sie in der Anzeige "Übersicht" vom Network Monitor auf die Schaltfläche **Verbindungsprofil** klicken. Außerdem können Sie eine neue Identität registrieren, indem Sie in der Anzeige "Zertifizierungsstelle" vom Network Monitor auf die Schaltfläche [Benutzer hinzufügen](#ca-panel) klicken, und anschließend Zertifikate mit dem Namen und dem geheimen Schlüssel der neuen Identität generieren.
+
+**Hinweis:** Falls Sie die obigen Anweisungen zum Generieren von Zertifikaten mit Fabric Node SDK oder dem Fabric-CA-Client verwenden, tragen Sie als erstes die Identität "admin" ein. Anschließend verwenden Sie diese Zertifikate, um eine neue Clientidentität bei Ihrer Zertifizierungsstelle zu registrieren. Falls Sie die SDK-Anweisungen im Abschnitt [Anwendungen entwickeln](v10_application.html) verwenden, tragen Sie sich erneut unter Verwendung der Clientidentität ein. Anschließend verwenden Sie diese Zertifikate, um Transaktionen an das Netz zu übergeben. <!---You can an illustration of how the developing applications tutorial interacts with your organization CA in the diagram below.--->
+
+### Zertifikate mit Network Monitor generieren
+{: #certs-panel}
+
+Mit Network Monitor können Sie unter Verwendung der Administratoridentität Zertifikate generieren und diese Zertifikate anschließend direkt an das SDK übergeben. Klicken Sie auf die Schaltfläche **Zertifikat generieren** neben Ihrer Administratoridentität, um ein neues signCert-Zertifikat sowie einen privaten Schlüssel von Ihrer Zertifizierungsstelle abzurufen. Das Feld **Zertifikat** enthält das signCert-Zertifikat, direkt über **Privater Schlüssel**. Sie können auf das Kopiersymbol klicken, das sich am Ende aller Felder befindet, um den Wert zu kopieren. Anschließend müssen Sie diese Zertifikate an einer Position speichern, von der aus Sie sie danach in Ihre Anwendung importieren können. Weitere Informationen enthält das Lernprogramm [Anwendungen entwickeln](v10_application.html#enroll-panel). **Hinweis:** Diese Zertifikate werden von {{site.data.keyword.blockchainfull_notm}} Platform nicht gespeichert. Sie müssen sie an einem sicheren Ort aufbewahren und speichern.
 
 ### Signierzertifikate in {{site.data.keyword.blockchainfull_notm}} Platform hochladen
 {: #upload-certs}
 
-Eine Anwendung benötigt ein gültiges signCert-Zertifikat nur zum Übergeben von Transaktionen an das Netz. Wenn ein Netz jedoch mithilfe eines Clients betrieben werden soll, indem auf den Peers Chaincode installiert wird oder indem Peers zu Kanälen hinzugefügt werden, dann muss der Client als Administrator erkennbar sein. Jede Komponente erkennt eine Gruppe von signCert-Zertifikaten, deren Eigner ein bestimmter Administrator ist. Soll Ihr Netz über einen Client betrieben werden, dann müssen Sie das signCert-Zertifikat hochladen und zur Liste der Administratorzertifikate hinzufügen. Dieser Arbeitsschritt kann auf der Plattform ausgeführt werden, indem Sie das signCert-Zertifikat auf der Registerkarte **Zertifikate** der [Anzeige "Übersicht"](v10_dashboard.html#members) des Network Monitor hochladen. Synchronisieren Sie dieses Zertifikat mit Ihren Peers, indem Sie die Schaltfläche für den Neustart verwenden, die nach dem Hochladen angezeigt wird. Anschließend wird Ihr Client als Administrator des Netzes erkannt.
+Eine Anwendung benötigt nur ein gültiges signCert-Zertifikat zum Übergeben von Transaktionen an das Netz. Wenn ein Netz jedoch mithilfe eines Clients betrieben werden soll, indem auf den Peers Chaincode installiert wird oder indem Peers zu Kanälen hinzugefügt werden, dann muss der Client als Administrator erkennbar sein. Jede Komponente erkennt eine Gruppe von signCert-Zertifikaten, deren Eigner ein bestimmter Administrator ist. Soll Ihr Netz über einen Client betrieben werden, dann müssen Sie das signCert-Zertifikat hochladen und zur Liste der Administratorzertifikate hinzufügen. Dieser Arbeitsschritt kann auf der Plattform ausgeführt werden, indem Sie das signCert-Zertifikat auf der Registerkarte **Zertifikate** der [Anzeige "Übersicht"](v10_dashboard.html#members) des Network Monitor hochladen. Synchronisieren Sie dieses Zertifikat mit Ihren Peers, indem Sie die Schaltfläche für den Neustart verwenden, die nach dem Hochladen angezeigt wird. Danach kann Ihr Client das Netz betreiben. Sie können Ihr signCert-Zertifikat auch mithilfe der [Swagger-API](howto/swagger_apis.html) hochladen, um ein Administratorzertifikat hinzuzufügen.
 
-<!----
-When you add an organization to a channel, this will upload the organization signCert to the channel MSP. Synching the Sign Certs does something.
---->
+Kanäle erkennen ebenfalls eine Gruppe von Administratorzertifikaten unter den Identitäten, die zum Betreiben des Kanals berechtigt sind, was die Möglichkeit einschließt, einen Chaincode auf dem Kanal zu instanziieren. Falls Sie bei einem fernen Client ein neues signCert-Zertifikat verwenden, müssen Sie das Zertifikat für den Kanal synchronisieren, bevor Sie einen Chaincode instanziieren können. Führen Sie die folgenden Schritte in Network Monitor aus, um das Zertifikat zum Kanal hinzuzufügen:
+
+1. Navigieren Sie zu der Registerkarte **Zertifikate** der Anzeige "Mitglieder". Klicken Sie auf die Schaltfläche **Zertifikat hinzufügen**, um das signCert-Zertifikat in die Plattform hochzuladen.
+2. Navigieren Sie zur Anzeige "Kanäle" und suchen Sie nach dem Namen des entsprechenden Kanals.
+3. Klicken Sie in der Dropdown-Liste unter der Überschrift **Aktionen** auf **Zertifikat synchronisieren**, um das neue Zertifikat zur Liste der Administratorzertifikate für den Kanal hinzuzufügen.
+
+**Hinweis:** Zertifikate, die unter Verwendung der Administratoridentität (admin) Ihrer Organisation generiert werden, werden nicht automatisch als Administratorzertifikate betrachtet. Ein signCert-Zertifikat und ein privater Schlüssel, die durch Auswahl der Schaltfläche **Zertifikat generieren** erstellt werden, ermöglichen Ihrem SDK nicht den Betrieb des Netzes. Sie wurden durch den Fabric-CA-Client, das SDK oder von Network Monitor generiert und weisen keine Verbindung zu der bereits vorhandenen Liste von Administratorzertifikaten auf, die von den Netzkomponenten erkannt werden. Sie müssen das signCert-Zertifikat in Network Monitor hochladen, bevor Ihr SDK das Netz betreiben kann.
 
 ## TLS-Zertifikate verwenden
 {: #tls}
 
 [Transport Layer Security ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://www.ibm.com/support/knowledgecenter/en/SSFKSJ_7.1.0/com.ibm.mq.doc/sy10660_.htm) (TLS) ist in das Hyperledger Fabric-Vertrauensmodell eingebettet. Alle Komponenten von {{site.data.keyword.blockchainfull_notm}} Platform verwenden TLS zur Authentifizierung und Kommunikation. Aus diesem Grund müssen Sie ein TLS-Zertifikat, das von der Plattform ausgegeben wird, an Ihre Aufrufe anfügen, um Ihre Kommunikation zu überprüfen und zu verschlüsseln. Die anderen Zertifikate, die in diesem Lernprogramm erläutert werden, dienen zum Schutz der Funktionalität, über die Transaktionen mit dem Netz ausgeführt werden und mit der das Netz verwaltet wird. TLS-Zertifikate werden verwendet, um Ihre Aufrufe an das Netz zu sichern.
 
-TLS-Zertifikate werden von der Plattform öffentlich ausgegeben und sind für alle Netzkomponenten identisch. Sie können die TLS-Zertifikate über die folgenden Links herunterladen, wobei der zu verwendende Link von Ihrem Mitgliedschaftsplan und dem Cloudstandort abhängig ist. Die TLS-Zertifikate befinden sich außerdem in Ihrem [Berechtigungsnachweisprofil](v10_dashboard.html#connection-profile "Berechtigungsnachweisprofil"). Dieses Zertifikat kann an einer beliebigen Position gespeichert werden, sofern Sie über Ihre Anwendung oder die Befehlszeile darauf verweisen können.
+TLS-Zertifikate werden von der Plattform öffentlich ausgegeben und sind für alle Netzkomponenten identisch. Sie können die TLS-Zertifikate über die folgenden Links herunterladen, wobei der zu verwendende Link von Ihrem Mitgliedschaftsplan und dem Cloudstandort abhängig ist. Die TLS-Zertifikate befinden sich außerdem in Ihrem [Berechtigungsnachweisprofil](v10_dashboard.html#enterprise-connection-profile "Berechtigungsnachweisprofil"). Dieses Zertifikat kann an einer beliebigen Position gespeichert werden, sofern Sie über Ihre Anwendung oder die Befehlszeile darauf verweisen können.
 
-- TLS-Stammzertifikat für den Starter Plan  
+- TLS-Stammzertifikat für den Starter Plan
   - US: [us01.blockchain.ibm.com.cert ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](http://blockchain-certs.mybluemix.net/us01.blockchain.ibm.com.cert "us01.blockchain.ibm.com.cert"); [us02.blockchain.ibm.com.cert ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](http://blockchain-certs.mybluemix.net/us02.blockchain.ibm.com.cert "us02.blockchain.ibm.com.cert")
   - UK: [uk01.blockchain.ibm.com.cert ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](http://blockchain-certs.mybluemix.net/uk01.blockchain.ibm.com.cert "uk01.blockchain.ibm.com.cert"); [uk02.blockchain.ibm.com.cert ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](http://blockchain-certs.mybluemix.net/uk02.blockchain.ibm.com.cert "uk02.blockchain.ibm.com.cert")
-  - Sydney: [aus01.blockchain.ibm.com.cert ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](http://blockchain-certs.mybluemix.net/aus01.blockchain.ibm.com.cert "aus01.blockchain.ibm.com.cert")<!--; [aus02.blockchain.ibm.com.cert ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](http://blockchain-certs.mybluemix.net/aus02.blockchain.ibm.com.cert "aus02.blockchain.ibm.com.cert")-->
+  - Sydney: [aus01.blockchain.ibm.com.cert ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](http://blockchain-certs.mybluemix.net/aus01.blockchain.ibm.com.cert "aus01.blockchain.ibm.com.cert"); [aus02.blockchain.ibm.com.cert ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](http://blockchain-certs.mybluemix.net/aus02.blockchain.ibm.com.cert "aus02.blockchain.ibm.com.cert")
 - [TLS-Stammzertifikat für den Enterprise Plan ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://blockchain-certs.mybluemix.net/3.secure.blockchain.ibm.com.rootcert)
 
 Alle {{site.data.keyword.blockchainfull_notm}} Platform-Netze verwenden serverseitiges TLS. Hierbei muss das Netz Ihre Clients authentifizieren. Enterprise Plan-Netze können auch die gegenseitige TLS-Authentifizierung (Mutual TLS, MTLS) aktivieren. In diesem Fall authentifizieren sich der Client und der Server gegenseitig, um Ihre Anwendungen weitergehend zu sichern. Clientseitige TLS-Zertifikate (zur gegenseitigen TLS-Authentifizierung) werden von der Client-CA ausgegeben und sind innerhalb Ihres Netzes eindeutig. Wenn Sie ein Enterprise Plan-Netz verwenden, dann sollten Sie die gegenseitige TLS-Authentifizierung aktivieren. Weitere Informationen zur gegenseitige TLS-Authentifizierung finden Sie in diesen [Anweisungen](v10_dashboard.html#mutual-tls "Anweisungen zur gegenseitigen TLS-Authentifizierung").
 
+### Domänennamen aus TLS-Zertifikaten abrufen
+
+Wenn Sie mit einer Hyperledger Fabric-Komponente kommunizieren, die sich außerhalb von {{site.data.keyword.blockchainfull_notm}} Platform befindet, muss Ihr Aufruf unter Verwendung des korrekten Domänennamens übergeben werden. Wenn ein Aufruf an die IP-Adresse einer Komponente übergeben wird, ohne dass der Domänenname der Komponente aufgelöst wird, wird der Aufruf zurückgewiesen und mit einem Fehler zurückgegeben.
+
+Die vollständige URL und den Domänennamen von Komponenten, die auf der Plattform gehostet werden, finden Sie in Ihrem Verbindungsprofil. Das folgende Beispiel zeigt die vollständige URL eines Peers, die mit dem Domänennamen des Peers verknüpft ist (`us01.blockchain.ibm.com`).
+```
+grpcs://n7413e3b503174a58b112d30f3af55016-org1-peer1.us01.blockchain.ibm.com:31002"
+```
+
+Den Domänennamen einer Komponente können Sie auch in ihrem TLS-Zertifikat ermitteln.
+
+1. Laden Sie eines der TLS-Stammzertifikate aus der obigen Liste herunter und speichern Sie es auf Ihrer lokalen Maschine.
+2. Führen Sie den folgenden Befehl in demjenigen Verzeichnis aus, in dem sich auch das TLS-Stammzertifikat befindet. Dieser Befehl kann das Zertifikat in einem lesbaren Format in der Befehlszeile ausgeben. Anschließend können Sie in der Befehlszeile nach wichtigen Informationen wie beispielsweise dem Domänennamen suchen.
+  ```
+  openssl x509 -in <Zertifikatsdatei> -text
+  ```
+  {:codeblock}
+
+Wenn Sie beispielsweise das erste aufgelistete Zertifikat herunterladen und den Befehl `openssl x509 -in us01.blockchain.ibm.com.cert -text` ausgeben, wird im Rahmen der Ausgabe der folgende Code angezeigt.
+
+```
+Certificate:
+    Data:
+        Version: 3 (0x2)
+        Serial Number:
+            05:5c:42:fb:90:b9:cb:3d:60:7c:e4:ec:7f:7f:8e:38
+    Signature Algorithm: ecdsa-with-SHA256
+        Issuer: C=US, O=DigiCert Inc, CN=DigiCert ECC Secure Server CA
+        Validity
+            Not Before: Jun 11 00:00:00 2018 GMT
+            Not After : Jun 19 12:00:00 2019 GMT
+        Subject: C=US, ST=New York, L=Armonk, O=International Business Machines Corporation, CN=*.us01.blockchain.ibm.com
+    ...
+    ...
+```
+
+Der Domänenname ist in der mit "Subject" beginnenden Zeile als `CN=*.us01.blockchain.ibm.com` aufgeführt. Sie können auch nach alternativen Domänennamen suchen, die im Zertifikat weiter unten aufgeführt sind.
+
+Das Abrufen eines Domänennamens einer Komponente aus TLS-Zertifikaten kann nützlich sein, wenn Sie mit einem fernen Peer oder einer Fabric-Komponente kommunizieren, die sich außerhalb von {{site.data.keyword.blockchainfull_notm}} Platform befindet. Anschließend können Sie bei Verwendung der SDKs den Domänennamen zu einer SSL-Überschreibung hinzufügen oder den Domänennamen und die entsprechende IP-Adresse zu Ihrer Datei `etc.hosts` hinzufügen.
+
 ## Membership Service Providers (MSPs)
 {: #msp}
 
-{{site.data.keyword.blockchainfull_notm}} Platform-Komponenten verbrauchen Identitäten über Membership Service Providers (MSPs). MSPs ordnen die Zertifikate zu, die von den CAs mit den entsprechenden Netz- und Kanalrollen ausgegeben werden. Weitere Informationen zu MSPs finden Sie unter dem [Konzeptthema zur Mitgliedschaft in der Hyperledger Fabric-Dokumentation ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric.readthedocs.io/en/latest/membership/membership.html "Konzeptthema zur Mitgliedschaft in der Hyperledger Fabric-Dokumentation").
+{{site.data.keyword.blockchainfull_notm}} Platform-Komponenten verbrauchen Identitäten über Membership Service Providers (MSPs). MSPs ordnen die Zertifikate zu, die von den Zertifizierungsstellen mit den entsprechenden Netz- und Kanalrollen ausgegeben werden. Weitere Informationen zu MSPs finden Sie unter dem [Konzeptthema zur Mitgliedschaft in der Hyperledger Fabric-Dokumentation ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric.readthedocs.io/en/latest/membership/membership.html "Konzeptthema 'Membership' in der Hyperledger Fabric-Dokumentation").
 
 Die MSP-Ordner in Fabric verfügen über eine definierte Struktur. Wenn Sie die Eintragung mit dem Fabric-CA-Client durchführen, dann speichert der Client die Zertifikate in einem MSP-Ordner im lokalen Dateisystem in den folgenden Unterordnern:
 
-- **cacerts:** Dieser Ordner enthält das Stammzertifikat der Root-CA Ihres Netzes.
-- **intermediatecerts:** Hier befinden sich Zertifikate der temporären Zertifizierungsstellen (CAs) Ihres Netzes. Diese temporären Zertifizierungsstellen sind mit der Root-CA verknüpft und bilden eine Zertifikatskette. Jede Enterprise Plan-Organisation verfügt über zwei temporäre Zertifizierungsstellen, um so die Möglichkeit zum Failover (Funktionsübernahme) und die Hochverfügbarkeit sicherzustellen.
+- **cacerts:** Dieser Ordner enthält das Stammzertifikat der Stammzertifizierungsstelle Ihres Netzes.
+- **intermediatecerts:** Hier befinden sich Zertifikate der Zwischenzertifizierungsstellen Ihres Netzes. Diese Zwischenzertifizierungsstellen sind mit der Stammzertifizierungsstelle verknüpft und bilden eine Zertifikatskette. Jede Enterprise Plan-Organisation verfügt über zwei Zwischenzertifizierungsstellen, um so die Möglichkeit zum Failover (Funktionsübernahme) und die Hochverfügbarkeit sicherzustellen.
 - **signcerts:** Dieser Ordner enthält Ihr öffentliches Signierzertifikat, das auch als signCert-Zertifikat oder Eintragungszertifikat bezeichnet wird. Dieses Zertifikat wird Ihren Aufrufen ans Netz (z. B. einem Chaincode-Aufruf) hinzugefügt, wenn Sie über die Befehlszeile auf das MSP-Verzeichnis verweisen oder ein Benutzerkontextobjekt mit den SDKs erstellen. Sie können dieses Zertifikat auf die Plattform hochladen, wenn Sie ein Netz über das SDK oder die Befehlszeile betreiben wollen.
 - **keystore:** Dieser Ordner enthält Ihren privaten Schlüssel. Dieser Schlüssel wird zum Signieren Ihrer Aufrufe an das Netz verwendet, wenn Sie über die Befehlszeile auf Ihr MSP-Verzeichnis verweisen oder ein Benutzerkontextobjekt mit den SDKs erstellen. Bewahren Sie diesen Schlüssel an einem sicheren Ort auf, um Ihr Netz und Ihre Daten zu schützen.
 
@@ -94,15 +147,15 @@ Sie können auch einen MSP-Ordner erstellen, auf den vom Fabric-CA-Client mit de
 
 Zahlreiche Fabric-Komponenten enthalten zusätzliche Informationen in ihrem MSP-Ordner. Wenn Sie z. B. mit einem fernen Peer arbeiten, dann werden möglicherweise die folgenden Ordner angezeigt:
 
-- **admincerts:** Dieser Ordner enthält die Liste der Administratoren für diese Organisation oder Komponente. Sie müssen Ihr Signierzertifikat in diesen Ordner hochladen, wenn Sie mit einem fernen Peer über die Befehlszeile oder mithilfe der SDKs arbeiten.
+- **admincerts:** Dieser Ordner enthält die Liste der Administratoren für diese Organisation oder Komponente. Sie müssen Ihr signCert-Zertifikat in diesen Ordner hochladen, wenn Sie mit einem fernen Peer über die Befehlszeile oder mithilfe der SDKs arbeiten. Wenn Sie den Fabric-CA-Client verwenden, benötigen Sie außerdem einen Ordner "admincerts" in Ihrem MSP, der die entsprechenden signCert-Zertifikate enthält, die als Administratorzertifikate erkannt werden sollen.
 - **tls:** In diesem Ordner werden TLS-Zertifikate gespeichert, die zur Kommunikation mit anderen Netzkomponenten verwendet werden.
 
-Weitere Informationen zur Struktur der MSPs finden Sie im Abschnitt zur [Mitgliedschaft ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric.readthedocs.io/en/latest/membership/membership.html "Mitgliedschaft") und im Abschnitt zu [Membership Service Providers ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric.readthedocs.io/en/latest/msp.html "Membership Service Providers") in der Hyperledger Fabric-Dokumentation.
+Weitere Informationen zur Struktur der MSPs finden Sie im Abschnitt zur [Mitgliedschaft ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric.readthedocs.io/en/latest/membership/membership.html "Membership") und im Abschnitt zu [Membership Service Providers ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric.readthedocs.io/en/latest/msp.html "Membership Service Providers") in der Hyperledger Fabric-Dokumentation.
 
 ## Eintragung und Registrierung mithilfe des Fabric-CA-Clients durchführen
 {: #enroll-register-caclient}
 
-Zum Generieren von Zertifikaten und zum Registrieren einer neuen Identität bei der Zertifizierungsstelle können Sie auch den Fabric-CA-Client verwenden. Die folgenden Anweisungen dienen zum Generieren von Zertifikaten anhand Ihrer Administratoridentität und zur anschließenden Verwendung dieser Zertifikate zur Registrierung eines neuen Clients. Durch die Eintragung mithilfe des Fabric-CA-Clients werden die Zertifikate generiert, die im [Abschnitt zu Membership Services Providers](#msp) beschrieben werden.
+Zum Generieren von Zertifikaten und zum Registrieren einer neuen Identität bei der Zertifizierungsstelle können Sie auch den Fabric-CA-Client verwenden. Die folgenden Anweisungen dienen zum Generieren von Zertifikaten anhand Ihrer Administratoridentität und zur anschließenden Verwendung dieser Zertifikate zur Registrierung eines neuen Clients. Weitere Informationen zur Eintragung mithilfe des Fabric-CA-Clients und zur Generierung von Zertifikaten finden Sie im Abschnitt [Membership Services Providers (MSPs)](#msp).
 
 ### Eintragung mithilfe des Fabric-CA-Clients durchführen
 {: #enroll-app-caclient}
@@ -111,6 +164,7 @@ Zum Generieren von Zertifikaten und zum Registrieren einer neuen Identität bei 
     ```
     cd $HOME/fabric-ca-platform/
     ```
+    {:codeblock}
 
 2.  Legen Sie den Pfad fest, in dem der Client Ihre Schlüssel erstellen kann. Vergewissern Sie sich, dass das Konfigurationsmaterial entfernt wurde, das beim letzten Versuch erstellt wurde. Wenn Sie den Befehl `enroll` zuvor noch nicht ausgeführt haben, dann sind der Ordner `msp` und die Datei `.yaml` nicht vorhanden.
     ```
@@ -118,21 +172,22 @@ Zum Generieren von Zertifikaten und zum Registrieren einer neuen Identität bei 
     rm -rf $FABRIC_CA_CLIENT_HOME/fabric-ca-client-config.yaml
     rm -rf $FABRIC_CA_CLIENT_HOME/msp
     ```
+    {:codeblock}
 
-3. Laden Sie die TLS-Zertifikate von {{site.data.keyword.cloud_notm}} herunter, die dem verwendeten Serviceplan, Standort und Cluster entsprechen.
-  - TLS-Stammzertifikat für den Starter Plan  
+3. Laden Sie die TLS-Zertifikate von {{site.data.keyword.cloud_notm}} herunter, die dem verwendeten Serviceplan, Standort und Cluster entsprechen. Ihren Serviceplan können Sie anhand der URL Ihrer Zertifizierungsstelle ermitteln.
+  - TLS-Stammzertifikat für den Starter Plan
     - US: [us01.blockchain.ibm.com.cert ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](http://blockchain-certs.mybluemix.net/us01.blockchain.ibm.com.cert "us01.blockchain.ibm.com.cert"); [us02.blockchain.ibm.com.cert ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](http://blockchain-certs.mybluemix.net/us02.blockchain.ibm.com.cert "us02.blockchain.ibm.com.cert")
     - UK: [uk01.blockchain.ibm.com.cert ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](http://blockchain-certs.mybluemix.net/uk01.blockchain.ibm.com.cert "uk01.blockchain.ibm.com.cert"); [uk02.blockchain.ibm.com.cert ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](http://blockchain-certs.mybluemix.net/uk02.blockchain.ibm.com.cert "uk02.blockchain.ibm.com.cert")
-    - Sydney: [aus01.blockchain.ibm.com.cert ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](http://blockchain-certs.mybluemix.net/aus01.blockchain.ibm.com.cert "aus01.blockchain.ibm.com.cert")<!--; [aus02.blockchain.ibm.com.cert ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](http://blockchain-certs.mybluemix.net/aus02.blockchain.ibm.com.cert "aus02.blockchain.ibm.com.cert")-->
+    - Sydney: [aus01.blockchain.ibm.com.cert ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](http://blockchain-certs.mybluemix.net/aus01.blockchain.ibm.com.cert "aus01.blockchain.ibm.com.cert"); [aus02.blockchain.ibm.com.cert ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](http://blockchain-certs.mybluemix.net/aus02.blockchain.ibm.com.cert "aus02.blockchain.ibm.com.cert")
   - [TLS-Stammzertifikat für den Enterprise Plan ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://blockchain-certs.mybluemix.net/3.secure.blockchain.ibm.com.rootcert)
 
   Speichern Sie den Inhalt in einem Ordner, z. B. ``$HOME/tls``. Dieser Schritt ermöglicht das Verschlüsseln der Daten während der Übertragung.
 
 4. Öffnen Sie die JSON-Datei mit dem **Verbindungsprofil** in der Anzeige "Übersicht" im Network Monitor und suchen Sie die folgenden Variablen:
-  * URL für CA: `url` unter `certificateAuthorities`
+  * URL für Zertifizierungsstelle: `url` unter `certificateAuthorities`
   * Administrator-ID: ``enrollId``
   * Administratorkennwort: ``enrollSecret``
-  * CA-Name: ``caName``
+  * Name der Zertifizierungsstelle: ``caName``
 
 5. Unter Verwendung des Fabric-CA-Clients kann ein `enroll`-Aufruf an die Zertifizierungsstelle gesendet werden. Hierzu übergeben Sie den Pfad für die TLS-Zertifikate sowie die vier oben angegebenen Zeichenfolgen mit dem folgenden Befehl:
   ```
@@ -144,7 +199,6 @@ Zum Generieren von Zertifikaten und zum Registrieren einer neuen Identität bei 
   ```
   ./fabric-ca-client enroll -u https://admin:dda0c53f7b@n7413e3b503174a58b112d30f3af55016-org1-ca.us3.blockchain.ibm.com:31011 --caname org1CA --tls.certfiles $HOME/tls/us2.blockchain.ibm.com.cert
   ```
-  {:codeblock}
 
 6. Suchen Sie das Administratorzertifikat in `$FABRIC_CA_CLIENT_HOME/msp/signcerts/cert.pem`. Sie können das Administratorzertifikat dann vom Network Monitor in Ihr Blockchain-Netz hochladen. Weitere Informationen zum Hinzufügen von Zertifikaten finden Sie auf der [Registerkarte "Zertifikate" der Anzeige "Mitglieder"](v10_dashboard.html#members) im Network Monitor.
 
@@ -152,14 +206,14 @@ Zum Generieren von Zertifikaten und zum Registrieren einer neuen Identität bei 
   * CA-Stammzertifikat: `$FABRIC_CA_CLIENT_HOME/msp/cacerts/--<ca_name>.pem`
   * Privater Schlüssel des Administrators: `$FABRIC_CA_CLIENT_HOME/msp/keystore/<>_sk file`
 
-Ein Beispiel zur Eintragung mithilfe des Fabric-CA-Clients und zur Verwendung der generierten Zertifikate zum Betrieb der Netzkomponenten finden Sie in den Anweisungen zum [Betrieb eines fernen Peers](howto/remote_peer_operate_icp.html#remote-peer-cli-operate).
+Ein Beispiel zur Eintragung mithilfe des Fabric-CA-Clients und zur Verwendung der generierten Zertifikate zum Betrieb der Netzkomponenten finden Sie in den Anweisungen zum [Betrieb eines fernen Peers](howto/peer_operate_icp.html#peer-cli-operate).
 
 ### Registrierung mithilfe des Fabric-CA-Clients durchführen
 {: #register-app-caclient}
 
 1. Setzen Sie den folgenden Befehl ab, um Ihre Zugehörigkeit und den Namen Ihrer Organisation im Blockchain-Netz zu suchen.
   ```
-  ./fabric-ca-client affiliation list --tls.certfiles pathToPem
+  ./fabric-ca-client affiliation list --tls.certfiles <tls_cert_path>
   ```
   {:codeblock}
 
@@ -168,21 +222,19 @@ Ein Beispiel zur Eintragung mithilfe des Fabric-CA-Clients und zur Verwendung de
   affiliation: ibp
       affiliation: ibp.PeerOrg1
   ```
-  {:codeblock}
 
   Notieren Sie den zweiten Wert für **affiliation**. Beispiel: `ibp.PeerOrg1`. Sie müssen diesen Wert im folgenden Befehl verwenden.
 
 2. Führen Sie den folgenden Befehl aus, um den Peer zu registrieren.
   ```
-  ./fabric-ca-client register --id.name <name> --id.affiliation <affiliation> --id.secret <password> --tls.certfiles pathToPem
+  ./fabric-ca-client register --id.name <name> --id.affiliation <affiliation> --id.secret <password> --tls.certfiles <tls_cert_path>
   ```
   {:codeblock}
 
   Geben Sie einen Namen und ein Kennwort für Ihren Peer an und ersetzen Sie `name` und `password` durch den Peernamen und das zugehörige Kennwort. Notieren Sie diese Informationen. Sie benötigen diese Informationen bei der Konfiguration Ihres Peers. Beispiel:
   ```
-  ./fabric-ca-client register --id.name user1 --id.affiliation ibp.PeerOrg1 --id.secret userpw  --tls.certfiles --tls.certfiles $HOME/tls/us2.blockchain.ibm.com.cert
+  ./fabric-ca-client register --id.name user1 --id.affiliation ibp.PeerOrg1 --id.secret userpw  --tls.certfiles $HOME/tls/us2.blockchain.ibm.com.cert
   ```
-  {:codeblock}
 
   Eine Identität kann immer nur einmal registriert werden. Tritt ein Problem auf, dann wiederholen Sie den Vorgang mit einem Befehl, für den ein neuer Benutzername und ein neues Kennwort angegeben werden.
 
@@ -193,4 +245,3 @@ Ein Beispiel zur Eintragung mithilfe des Fabric-CA-Clients und zur Verwendung de
   2018/06/18 16:53:00 [INFO] TLS Enabled
   Password: userpw
   ```
-  {:codeblock}

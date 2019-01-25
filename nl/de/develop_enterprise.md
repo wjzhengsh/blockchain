@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-31"
+lastupdated: "2018-12-07"
 
 ---
 
@@ -26,156 +26,94 @@ Dieses Lernprogramm erläutert den nächsten Schritt des Lebenszyklus eines Unte
 
 ## Vorbemerkungen
 
-Stellen Sie sicher, dass Sie die {{site.data.keyword.blockchainfull}}: Develop-Entwicklerumgebung installiert haben und mit der Entwicklung und Bereitstellung von Unternehmensnetzen vertraut sind. Anleitungen zum Schreiben von Unternehmensnetzen sind in der [Hyperledger Composer-Dokumentation](https://hyperledger.github.io/composer/latest/business-network/business-network-index) verfügbar.
+Stellen Sie sicher, dass Sie die {{site.data.keyword.blockchainfull_notm}}-Entwicklerumgebung installiert haben und mit der Entwicklung und Bereitstellung von Unternehmensnetzen vertraut sind. Anleitungen zum Schreiben von Unternehmensnetzen sind in der [Hyperledger Composer-Dokumentation](https://hyperledger.github.io/composer/latest/business-network/business-network-index) verfügbar.
 
-Sie benötigen Zugriff auf eine Enterprise Plan-Instanz von {{site.data.keyword.blockchainfull_notm}} Platform. Weitere Informationen zum {{site.data.keyword.blockchainfull_notm}} Platform Enterprise Plan finden Sie in der [Übersicht zu Enterprise Plan](./enterprise_plan.html).
+Sie benötigen Zugriff auf eine Enterprise Plan-Instanz von {{site.data.keyword.blockchainfull_notm}} Platform und müssen bereits Ihre Peers erstellt haben. Weitere Informationen zum {{site.data.keyword.blockchainfull_notm}} Platform Enterprise Plan finden Sie in der [Übersicht zu Enterprise Plan](./enterprise_plan.html).
 
 ## Schritt 1: Verbindungsprofil für {{site.data.keyword.blockchainfull_notm}} Platform erstellen
 
 1. Erstellen Sie ein Verzeichnis zum Speichern Ihrer Verbindungsdetails. Beispiel:
 
     ```
-    /Users/myUserId/.composer-connection-profiles/bmx-hlfv1
+    /Users/myUserId/.composer-connection-profiles/bmx-hlfv11
     ```
     {:codeblock}
 
-    Jedes Verbindungsprofil muss eine Datei `connection.json` enthalten. Erstellen Sie ein neues Verzeichnis unter `.composer-connection-profiles`, in dieser Beispielinstanz `bmx-hlfv1`. Dies ist der Name des Profils, das Sie beim Arbeiten mit Hyperledger Composer und {{site.data.keyword.blockchainfull_notm}} Platform verwenden.
+    Jedes Verbindungsprofil muss eine Datei `connection.json` enthalten. Erstellen Sie ein neues Verzeichnis unter `.composer-connection-profiles`, in dieser Beispielinstanz `bmx-hlfv11`. Dies ist der Name des Profils, das Sie beim Arbeiten mit Hyperledger Composer und {{site.data.keyword.blockchainfull_notm}} Platform verwenden.
 
     ```
-    mkdir -p ~/.composer-connection-profiles/bmx-hlfv1
-        cd ~/.composer-connection-profiles/bmx-hlfv1
-    ```
-    {:codeblock}
-
-2. Sie sollten jetzt über die folgende Verzeichnisstruktur verfügen:
-
-    ```
-    /Users/myUserId/.composer-connection-profiles/bmx-hlfv1
+    mkdir -p ~/.composer-connection-profiles/bmx-hlfv11
+    cd ~/.composer-connection-profiles/bmx-hlfv11
     ```
     {:codeblock}
 
-    Erstellen Sie eine Datei in dem neu erstellten Verzeichnis und geben Sie ihr den Namen `connection.json`. Sie können die folgende Vorlage für Ihre Datei `connection.json` verwenden:
+    Sie sollten jetzt über die folgende Verzeichnisstruktur verfügen:
 
     ```
-        {
-            "name": "bmx-hlfv1",
-            "description": "A description for a V1 Profile",
-            "type": "hlfv1",
-            "orderers": [
-                {
-                    "url": "grpcs://abca.4.secure.blockchain.ibm.com:12345"
-                }
-            ],
-            "ca": {
-                "url": "https://abc.4.secure.blockchain.ibm.com:98765",
-                "name": "PeerOrg1CA"
-            },
-            "peers": [
-                {
-                    "requestURL": "grpcs://abcd.4.secure.blockchain.ibm.com:22222",
-                    "eventURL": "grpcs://abcd.4.secure.blockchain.ibm.com:33333"
-                }
-            ],
-            "keyValStore": "/Users/jeff/.composer-credentials-mychannel-hsbn",
-            "channel": "mychannel",
-            "mspID": "PeerOrg1",
-            "globalCert": "-----BEGIN CERTIFICATE-----\r\n...LotsOfStuff\r\n-----END CERTIFICATE-----\r\n-----BEGIN CERTIFICATE-----\r\nMorestuff\r\n-----END CERTIFICATE-----\r\n",
-            "timeout": 300
-        }
+    /Users/myUserId/.composer-connection-profiles/bmx-hlfv11
     ```
-    {:codeblock}
 
-    Sie füllen die neu erstellte Datei `connection.json` mit Attributen, die über Ihr {{site.data.keyword.blockchainfull_notm}} Platform-Dashboard bereitgestellt werden. Wählen Sie in Ihrem Dashboard die Option **Übersicht** aus, klicken Sie auf die Schaltfläche **Verbindungsprofil**, um die Endpunkt- und Zertifikatsinformationen für die Mitglieder des Kanals anzuzeigen.
+## Schritt 2: Verbindungsprofil abrufen
 
-## Schritt 2: Informationen zu Anordnungsknoten hinzufügen
+1. Wählen Sie im {{site.data.keyword.blockchainfull_notm}} Platform-Dashboard die Option **Übersicht**, anschließend  **Verbindungsprofil** und dann die Schaltfläche **Herunterladen** aus, um Ihr Verbindungsprofil abzurufen.
 
-1. Jetzt kann mit der Änderung der Vorlage mit den Informationen begonnen werden, die vom Verbindungsprofil bereitgestellt werden. Es sind möglicherweise mehrere Anordnungsknoten im Verbindungsprofil vorhanden, jedoch ist nur einer für eine Datei `connection.json` erforderlich.
+2. Speichern Sie das Verbindungsprofil in der Verzeichnisstruktur, die im vorherigen Schritt erstellt wurde. Benennen Sie es mit **connection.json**.
 
-    Ersetzen Sie die URL-Werte für die Anordnungsknoten in der Vorlage durch die relevanten Informationen aus Ihrem Verbindungsprofil im folgenden Format:
+## Schritt 3: Kanalinformationen hinzufügen
 
-    ```
-    "url": "grpcs://abca.4.secure.blockchain.ibm.com:12345"
-    ```
-    {:codeblock}
+1. Fügen Sie den Wert für "channel" in der Datei `connection.json` so hinzu, dass er mit dem Namen des Kanals übereinstimmt, für den Sie Ihr Unternehmensnetz erstellen und bereitstellen wollen. In der verfügbaren Beispielvorlage für Verbindungsprofile lautet das Kanalelement wie folgt: `"channels": {},`.
 
-## Schritt 3: Informationen der Zertifizierungsstelle hinzufügen
+## Schritt 4: Peers vorbereiten
 
-1. Ersetzen Sie unter 'ca' in der Datei `connection.json` den Wert für **url** und den Wert für **caName** durch die Werte aus beiden Einträgen im Abschnitt **certificateAuthorities**.
+**Hinweis:** Dieser Schritt **muss** ausgeführt werden, bevor Sie den Kanal erstellen, für den ein Unternehmensnetz bereitgestellt werden soll. Falls dieser Schritt nach der Kanalerstellung ausgeführt wird, lässt sich ein bereitgestelltes Unternehmensnetz **möglicherweise nicht starten**.
 
-## Schritt 4: Peerinformationen hinzufügen
-
-1. Die Anforderungs-URL (**requestURL**) und die Ereignis-URL (**eventURL**) müssen für jeden Peer festgelegt werden. Ersetzen Sie das Attribut **url** durch den Wert für **url**, der sich in Ihrem Verbindungsprofil befindet. Ersetzen Sie das Attribut **eventURL** durch die Ereignis-URL (**eventUrl**), die sich in Ihrem Verbindungsprofil befindet. Nach diesen Änderungen sollte der Abschnitt "peers" in der Datei `connection.json` das folgende Format haben:
-
-    ```
-        "peers": [
-          {
-              "requestURL": "grpcs://abca.4.secure.blockchain.ibm.com:12345",
-              "eventURL": "grpcs://abca.4.secure.blockchain.ibm.com:12345"
-    ```
-    {:codeblock}
-
-## Schritt 5: keyValStore-Informationen hinzufügen
-
-1. Legen Sie das Attribut **keyValStore** so fest, dass es auf das richtige Verzeichnis verweist. Erstellen Sie ein Verzeichnis, das als Schlüsselwertspeicher (**keyValStore**) verwendet werden soll. Erstellen Sie zum Beispiel ein neues Verzeichnis unter Ihrem Ausgangsverzeichnis mit dem Namen `.composer-credentials-mychannel`. Stellen Sie sicher, dass das Attribut **keyValStore** auf Ihr neu erstelltes Verzeichnis im folgenden Format verweist:
-
-    ```
-    "keyValStore": "/Users/myUserId/.composer-credentials-mychannel",
-    ```
-    {:codeblock}
-
-## Schritt 6: Kanalinformationen hinzufügen
-
-1. Ersetzen Sie den Wert für "channel"in der Datei `connection.json` durch den Namen des Kanals, für den Sie Ihr Unternehmensnetz erstellen und bereitstellen wollen.
-
-## Schritt 7: MSP-ID hinzufügen
-
-Der Wert **mspID** in Ihrer Datei `connection.json` muss auf den mspID-Wert Ihrer Organisation gesetzt werden. Das Verbindungsprofil enthält eine Liste der Organisationen mit ihren zugeordneten mspID-Werten. Sie müssen den Wert aus dem Attribut **mspid** Ihrer Organisation verwenden.
-
-## Schritt 8: globalCert-Wert hinzufügen
-1. {{site.data.keyword.blockchainfull_notm}} Platform verwendet ein allgemeines TLS-Zertifikat für die Anordnungsknoten und Peers. Für jeden Anordnungsknoten und jeden Peer gibt es ein Attribut **tlsCACerts**, das jeweils dasselbe Zertifikat enthält. Ersetzen Sie den Pseudowert in der Datei `connection.json` durch den Wert aus **tlsCACerts**. Der Wert sollte das folgende Format haben:
-
-    ```
-    "globalCert": "-----BEGIN CERTIFICATE-----\r\.......
-    ```
-    {:codeblock}
-
-## Schritt 9: Peers vorbereiten
-
-**Hinweis:** Dieser Schritt **muss** ausgeführt werden, bevor Sie den Kanal erstellen, für den ein Unternehmensnetz bereitgestellt werden soll. Falls dieser Schritt nach der Kanalerstellung ausgeführt wird, lässt sich ein bereitgestelltes Unternehmensnetz **nicht starten**.
-
-Im Verbindungsprofildokument befindet sich unter **certificateAuthorities** ein Attribut **registrar**, das Attribute für **enrollId** und **enrollSecret** im folgenden Format enthält:
+Im Verbindungsprofildokument befindet sich unter **certificateAuthorities** ein Attribut namens  **registrar**, das Attribute für **enrollId** und **enrollSecret** mit dem folgenden Format enthält:
 
  ```
         "registrar": [
             {
-                "affiliation": "org1",
                 "enrollId": "admin",
                 "enrollSecret": "PA55W0RD12"
             }
         ],
  ```
- {:codeblock}
 
-1. Fordern Sie Zertifikate mit dem folgenden Befehl an:
+1. Erstellen Sie mit dem folgenden Befehl eine Unternehmensnetzkarte für die Zertifizierungsstelle:
 
     ```
-    composer identity request -p bmx-hlfv1 -i admin -s PA55W0RD12
+    composer card create -f ca.card -p bmx-hlfv11 -u admin -s PA55W0RD12
     ```
     {:codeblock}
 
-    Durch diesen Befehl werden drei Dateien in das Verzeichnis `.identityCredentials` unter Ihrem Ausgangsverzeichnis heruntergeladen. Die interessanten Dateien basieren auf dem Wert für **enrollId**. Im obigen Beispiel sind daher zwei Dateien mit den Namen **admin-pub.pem** und **admin-priv.pem** vorhanden.
+  Achten Sie darauf, den Befehl in dem Verzeichnis auszuführen, in dem sich Ihr Verbindungsprofil befindet.
 
-3. Wählen Sie **Mitglieder** im Navigationsmenü aus. Wählen Sie dann die Menüoption **Zertifikate** aus und klicken Sie auf die Schaltfläche **Zertifikat hinzufügen**.
+2. Importieren Sie die Unternehmensnetzkarte mit dem folgenden Befehl:
 
-4. Geben Sie einen eindeutigen Namen für dieses Zertifikat in das Feld **Name** ein. Dieser Name kann keine Gedankenstriche oder Bindestrich enthalten.
+    ```
+    composer card import -f ca.card -c ca
+    ```
+    {:codeblock}
 
-5. Öffnen Sie die zuvor erstellte Datei `admin-pub.pem` und kopieren Sie den Inhalt dieser Datei in das Feld **Schlüssel**. Drücken Sie die Schaltfläche **Übergeben**.
+3. Nachdem die Karte importiert worden ist, kann sie zum Anfordern der Zertifikate bei der Zertifizierungsstelle mit dem folgenden Befehl verwendet werden:
 
-6. Verwenden Sie die Benutzerschnittstelle, um die Peers zu stoppen und erneut zu starten.
+    ```
+    composer identity request --card ca --path ./credentials -u admin -s PA55W0RD12
+    ```
+    {:codeblock}
 
-7. Das Zertifikat sollte jetzt in der Liste der Zertifikate aufgeführt werden.
+    Der Befehl `composer identity request` erstellt ein Verzeichnis für Berechtigungsnachweise, das die relevanten Zertifikatsdateien enthält.
 
-## Schritt 10: Kanal erstellen
+4. Wählen Sie **Mitglieder** im Navigationsmenü aus. Wählen Sie dann die Menüoption **Zertifikate** aus und klicken Sie auf die Schaltfläche **Zertifikat hinzufügen**.
+
+5. Geben Sie einen eindeutigen Namen für dieses Zertifikat in das Feld **Name** ein. Dieser Name kann keine Gedankenstriche oder Bindestrich enthalten.
+
+6. Öffnen Sie die zuvor erstellte Datei `admin-pub.pem` und kopieren Sie den Inhalt dieser Datei in das Feld **Schlüssel**. Drücken Sie die Schaltfläche **Übergeben**.
+
+7. Verwenden Sie die Benutzerschnittstelle, um die Peers zu stoppen und erneut zu starten.
+
+8. Das Zertifikat sollte jetzt in der Liste der Zertifikate aufgeführt werden.
+
+## Schritt 5: Kanal erstellen
 
 1. Wählen Sie **Kanäle** im Navigationsmenü in der linken Anzeige aus und klicken Sie auf die Schaltfläche **Neuer Kanal**.
 
@@ -191,27 +129,64 @@ Im Verbindungsprofildokument befindet sich unter **certificateAuthorities** ein 
 
 7. Wählen Sie **Kanäle** im Navigationsmenü aus. Der neue Kanal wird in der Liste der Kanäle angezeigt und sollte den Hinweis “Noch keine Peers hinzugefügt” zeigen. Klicken Sie auf das Aktionsmenü neben dem Kanal und wählen Sie die Option **Peers zuordnen** aus. Wählen Sie die Kontrollkästchen neben den Peers aus, die Sie hinzufügen wollen, und klicken Sie auf **Ausgewählte hinzufügen**.
 
-## Schritt 11: Neue Identität zum Verwalten des Unternehmensnetzes importieren
+## Schritt 6: Neue Identität zum Verwalten des Unternehmensnetzes erstellen
 
-Erstellen Sie eine Identität in Composer, indem Sie die Zertifikate verwenden, die zuvor angefordert worden sind. Diese neue Identität verfügt über die Berechtigung, Chaincode auf den Peers zu installieren, die Ihr hochgeladenes öffentliches Zertifikat besitzen, und fungiert als Aussteller für die Zertifizierungsstellen (CA).
+Erstellen Sie die Unternehmensnetzkarte unter Verwendung der angeforderten Zertifikate. Diese Unternehmensnetzkarte  verfügt über die Berechtigung, Chaincode auf den Peers zu installieren, die Ihr hochgeladenes öffentliches Zertifikat besitzen, und fungiert als Aussteller für die Zertifizierungsstellen (CA).
 
-1. Führen Sie den folgenden Befehl aus, um eine neue Identität zu erstellen:
+1. Erstellen Sie die Karte mit dem folgenden Befehl:
 
     ```
-    composer identity import -p bmx-hlfv1 -u admin -c ~/.identityCredentials/admin-pub.pem -k ~/.identityCredentials/admin-priv.pem
+    composer card create -f adminCard.card -p bmx-hlfv11 -u admin -c ./credentials/admin-pub.pem -k ./credentials/admin-priv.pem --role PeerAdmin --role ChannelAdmin
     ```
     {:codeblock}
 
-    Dabei ist `bmx-hlfv1` der Name des Profils, das Sie zuvor erstellt haben. Jetzt können Sie Ihre `.bna`-Datei auf der {{site.data.keyword.blockchainfull_notm}} Platform bereitstellen.
+    Dabei ist `bmx-hlfv11` der Name des Profils, das Sie zuvor erstellt haben.
+
+2. Nachdem Sie die Karte erstellt haben, importieren Sie sie mit dem folgenden Befehl:
+
+    ```
+    composer card import -f adminCard.card -c adminCard
+    ```
+    {:codeblock}
+
+    Jetzt können Sie Ihre `.bna`-Datei auf der {{site.data.keyword.blockchainfull_notm}} Platform bereitstellen.
 
 
-## Schritt 12: Unternehmensnetz bereitstellen
+## Schritt 7: Unternehmensnetz bereitstellen
 
 Jetzt können Sie Ihre `.bna`-Datei auf der {{site.data.keyword.blockchainfull_notm}} Platform bereitstellen.
 
-1. Führen Sie den folgenden Befehl mit der im vorherigen Schritt erstellten Identität aus, um das Unternehmensnetz bereitzustellen:
+1. Damit Sie die im vorherigen Schritt erstellte Karte verwenden können, müssen Sie zunächst das Unternehmensnetz installieren und anschließend starten. Installieren Sie das Unternehmensnetz mit dem folgenden Befehl:
 
    ```
-   composer network deploy -a myNetwork.bna -p bmx-hlfv1 -i admin -s anyString
+   composer network install -c adminCard -a myNetwork.bna
    ```
    {:codeblock}
+
+2. Nachdem Sie das Unternehmensnetz installiert haben, starten Sie es mit dem folgenden Befehl:
+
+    ```
+    composer network start -c adminCard -n myNetwork -V networkVersion -A admin -C ./credentials/admin-pub.pem -f delete_me.card
+    ```
+    {:codeblock}
+
+3. Um zu prüfen, ob das Unternehmensnetz ordnungsgemäß bereitgestellt wurde, erstellen Sie eine Identität und eine zugehörige Unternehmensnetzkarte, mit denen das Netz über ein Pingsignal überprüft werden kann.
+
+    ```
+    composer card create -f admin.card -p bmx-hlfv11 -u admin -n myNetwork -c ./credentials/admin-pub.pem -k ./credentials/admin-priv.pem
+    ```
+    {:codeblock}
+
+4. Importieren Sie die Unternehmensnetzkarte mit dem folgenden Befehl:
+
+    ```
+    composer card import -f admin.card
+    ```
+    {:codeblock}
+
+5. Überprüfen Sie das Netz mit einem Pingsignal, um festzustellen, ob das Netz ausgeführt wird:
+
+    ```
+    composer network ping -c admin@myNetwork
+    ```
+    {:codeblock}

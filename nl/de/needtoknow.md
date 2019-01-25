@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-31"
+lastupdated: "2018-10-30"
 ---
 
 {:new_window: target="_blank"}
@@ -27,6 +27,13 @@ Mit den Plänen des {{site.data.keyword.blockchainfull_notm}}-Angebots für {{si
 {:shortdesc}
 
 {{site.data.keyword.blockchainfull_notm}} baut auf der Architektur des Hyperledger Fabric-Projekts der Linux Foundation auf. Jeder Beitrag der Open-Source-Community verbessert Hyperledger Fabric, kann jedoch im Hinblick auf die Akzeptanz eine Herausforderung darstellen. **IBM warnt vor dem direkten Definieren oder Austauschen von Finanzanlagen <!--, or any assets of value,--> in einem auf Hyperledger Fabric basierenden Blockchain-Netz**.  
+
+IBM empfiehlt die Verwendung von Hyperledger Composer ausschließlich für
+Demonstrationszwecke und Machbarkeitsnachweise. **IBM bietet keinen
+Support für Netze, die Hyperledger Composer in Produktionsumgebungen
+nutzen, inklusive
+Composer-Befehlszeilenschnittstelle, JavaScript-APIs, REST-Server und Web
+Playground**.
 
 ## Open-Source-Aussage
 
