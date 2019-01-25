@@ -188,7 +188,7 @@ Wenn Sie das [Netz mit einem SDK betreiben wollen](#operate-sdk), dann müssen S
   - TLS-Stammzertifikat für den Starter Plan  
     - US: [us01.blockchain.ibm.com.cert ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](http://blockchain-certs.mybluemix.net/us01.blockchain.ibm.com.cert "us01.blockchain.ibm.com.cert"); [us02.blockchain.ibm.com.cert ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](http://blockchain-certs.mybluemix.net/us02.blockchain.ibm.com.cert "us02.blockchain.ibm.com.cert")
     - UK: [uk01.blockchain.ibm.com.cert ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](http://blockchain-certs.mybluemix.net/uk01.blockchain.ibm.com.cert "uk01.blockchain.ibm.com.cert"); [uk02.blockchain.ibm.com.cert ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](http://blockchain-certs.mybluemix.net/uk02.blockchain.ibm.com.cert "uk02.blockchain.ibm.com.cert")
-    - Sydney: [aus01.blockchain.ibm.com.cert ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](http://blockchain-certs.mybluemix.net/aus01.blockchain.ibm.com.cert "aus01.blockchain.ibm.com.cert"); [aus02.blockchain.ibm.com.cert ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](http://blockchain-certs.mybluemix.net/aus02.blockchain.ibm.com.cert "aus02.blockchain.ibm.com.cert")
+    - Sydney: [aus01.blockchain.ibm.com.cert ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](http://blockchain-certs.mybluemix.net/aus01.blockchain.ibm.com.cert "aus01.blockchain.ibm.com.cert")<!--; [aus02.blockchain.ibm.com.cert ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](http://blockchain-certs.mybluemix.net/aus02.blockchain.ibm.com.cert "aus02.blockchain.ibm.com.cert")-->
   - [TLS-Stammzertifikat für den Enterprise Plan ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://blockchain-certs.mybluemix.net/3.secure.blockchain.ibm.com.rootcert)
 
   Speichern Sie den Inhalt in einem Ordner, z. B. ``$HOME/tls``. Dieser Schritt ermöglicht das Verschlüsseln der Daten während der Übertragung.
@@ -451,7 +451,7 @@ Sie können einen kanalbasierten Ereignisservice verwenden, um Transaktionen zu 
 
 ### Netzverbindungen schließen
 
-Wenn Sie Peers und Anordnungsknoten zu Ihrem SDK hinzufügen, bevor Sie einen Transaktionsvorschlag übergeben, dann wird eine grpc-Streaming-Verbindung zur Netzkomponente geöffnet. Beispiel: 
+Wenn Sie Peers und Anordnungsknoten zu Ihrem SDK hinzufügen, bevor Sie einen Transaktionsvorschlag übergeben, dann wird eine grpc-Streaming-Verbindung zur Netzkomponente geöffnet. Beispiel:
 ```
 var peer = fabric_client.newPeer(creds.peers["org1-peer1"].url, { pem: creds.peers["org1-peer1"].tlsCACerts.pem , 'ssl-target-name-override': null});
 ```

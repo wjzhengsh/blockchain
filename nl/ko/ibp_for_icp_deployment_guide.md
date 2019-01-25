@@ -50,7 +50,7 @@ Fabric 기반 블록체인 네트워크에서 배치해야 할 첫 번째 컴포
 
 CA의 무한 회귀(모든 CA가 다른 CA와 계속 링크되어야 하는 경우)를 방지하기 위해 CA에는 기본 사용자 이름과 비밀번호 쌍이 연관되어 있습니다. CA가 배치될 때 이 사용자 이름 및 비밀번호를 지정합니다. 이 CA는 컴포넌트의 신뢰 루트인 "루트 CA"입니다. 프로덕션 네트워크에서 이 루트 CA에서 인증서를 가져오는 하나 이상의 다른 CA를 배치하고 "중간 CA"인 해당 CA를 사용하여 사용자와 컴포넌트에 인증서를 발행하는 것이 좋습니다. 그러나 이 릴리스에서는 중간 CA의 사용은 지원되지 않습니다.
 
-모든 조직에는 등록에 필요한 CA와 TLS CA가 있어야 합니다. ICP에 CA를 배치할 때 TLS CA도 기본적으로 동일한 컨테이너에 배치됩니다. 이 TLS CA에서 TLS 인증서를 생성하고 관리합니다. 스타터 또는 엔터프라이즈 플랜 네트워크에 있는 CA에는 TLS CA가 포함되어 있지 않지만 등록에 사용되는 CA는 포함되어 있습니다. 따라서 스타터 또는 엔터프라이즈 플랜 네트워크에 피어를 연결하려면 피어를 배치하기 전에 해당 피어의 TLS CA로 사용할 [ICP에 CA도 배치](howto/CA_deploy_icp.html)해야 합니다. [IBP에 ICP 피어를 연결하기 위한 전제조건](howto/peer_deploy_ibp#prerequisites-peer-ibp)도 참조하십시오. TLS CA는 인증서 발행에만 사용되며 해당 활동이 완료되면 종료될 수 있다는 점에 유의하십시오.
+모든 조직에는 등록에 필요한 CA와 TLS CA가 있어야 합니다. ICP에 CA를 배치할 때 TLS CA도 기본적으로 동일한 컨테이너에 배치됩니다. 이 TLS CA에서 TLS 인증서를 생성하고 관리합니다. 스타터 또는 엔터프라이즈 플랜 네트워크에 있는 CA에는 TLS CA가 포함되어 있지 않지만 등록에 사용되는 CA는 포함되어 있습니다. 따라서 스타터 또는 엔터프라이즈 플랜 네트워크에 피어를 연결하려면 피어를 배치하기 전에 해당 피어의 TLS CA로 사용할 [ICP에 CA도 배치](howto/CA_deploy_icp.html)해야 합니다. [IBP에 ICP 피어를 연결하기 위한 전제조건](howto/peer_deploy_ibp.html#prerequisites-peer-ibp)도 참조하십시오. TLS CA는 인증서 발행에만 사용되며 해당 활동이 완료되면 종료될 수 있다는 점에 유의하십시오.
 
 TLS에 대한 자세한 정보는 Hyperledger Fabric 문서에서 [TLS(Transport Layer Security)로 통신 보안 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.3/enable_tls.html "TLS(Transport Layer Security)로 통신 보안")의 내용을 참조하십시오.
 

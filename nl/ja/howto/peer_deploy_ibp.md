@@ -244,7 +244,7 @@ ICP システムが最小ハードウェア・リソース要件を満たして�
   - スターター・プラン用のルート TLS 証明書
     - 米国: [us01.blockchain.ibm.com.cert ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://blockchain-certs.mybluemix.net/us01.blockchain.ibm.com.cert "us01.blockchain.ibm.com.cert"); [us02.blockchain.ibm.com.cert ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://blockchain-certs.mybluemix.net/us02.blockchain.ibm.com.cert "us02.blockchain.ibm.com.cert")
     - 英国: [uk01.blockchain.ibm.com.cert ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://blockchain-certs.mybluemix.net/uk01.blockchain.ibm.com.cert "uk01.blockchain.ibm.com.cert"); [uk02.blockchain.ibm.com.cert ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://blockchain-certs.mybluemix.net/uk02.blockchain.ibm.com.cert "uk02.blockchain.ibm.com.cert")
-    - シドニー: [aus01.blockchain.ibm.com.cert ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://blockchain-certs.mybluemix.net/aus01.blockchain.ibm.com.cert "aus01.blockchain.ibm.com.cert"); [aus02.blockchain.ibm.com.cert ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://blockchain-certs.mybluemix.net/aus02.blockchain.ibm.com.cert "aus02.blockchain.ibm.com.cert")
+    - シドニー: [aus01.blockchain.ibm.com.cert ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://blockchain-certs.mybluemix.net/aus01.blockchain.ibm.com.cert "aus01.blockchain.ibm.com.cert")<!--; [aus02.blockchain.ibm.com.cert ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://blockchain-certs.mybluemix.net/aus02.blockchain.ibm.com.cert "aus02.blockchain.ibm.com.cert")-->
   - [エンタープライズ・プラン用のルート TLS 証明書 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://blockchain-certs.mybluemix.net/3.secure.blockchain.ibm.com.rootcert)
 
   後で実行するコマンドで参照できるディレクトリーに内容を保存します。
@@ -331,7 +331,7 @@ cat $HOME/fabric-ca-client/peer-admin/msp/signcerts/cert.pem | base64 $FLAG
 
 Fabric CA クライアントを使用して、ICP 上の TLS CA にピアを登録する必要があります。
 
-1. これで、TLS 証明書ファイル `tls.pem` が `$HOME/fabric-ca-client/catls` フォルダーに作成されました。このファイルが作成されていない場合は、[ICP からダウンロードした](CA-operate.html#ca-tls) TLS 証明書を、以下のコマンドで参照できるディレクトリーにコピーします。`$HOME/fabric-ca-client` ディレクトリーにいることを確認してください。
+1. これで、TLS 証明書ファイル `tls.pem` が `$HOME/fabric-ca-client/catls` フォルダーに作成されました。このファイルが作成されていない場合は、[ICP からダウンロードした](CA_operate.html#ca-tls) TLS 証明書を、以下のコマンドで参照できるディレクトリーにコピーします。`$HOME/fabric-ca-client` ディレクトリーにいることを確認してください。
 
   ```
   cd $HOME/fabric-ca-client

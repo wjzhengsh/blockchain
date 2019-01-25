@@ -51,7 +51,7 @@ lastupdated: "2018-12-07"
 为了防止 CA 的无限回归（其中每个 CA 必须链接到另一个 CA，以此类推），CA 关联有缺省用户名和密码对。您在部署 CA 时指定此用户名和密码。此 CA 是“根 CA”，是组件的信任根。在生产网络中，建议您部署至少一个从此根 CA 获取其证书的其他 CA，并使用该 CA（称为“中间 CA”）来向用户和组件颁发证书。但是，在此发行版中，不支持使用中间 CA。
 
 每个组织都必须拥有用于注册的 CA 和 TLS CA。在 ICP 上部署 CA 时，缺省情况下还会在同一容器中部署 TLS CA。此 TLS CA 生成并管理 TLS 证书。入门套餐或企业套餐网络上的 CA 不包含 TLS CA，但它包含用于注册的 CA。
-因此，如果计划将同级连接到入门套餐或企业套餐网络，那么在部署同级之前，还必须[在 ICP 中部署 CA](howto/CA_deploy_icp.html)，该 CA 将充当该同级的 TLS CA。另请参阅[将 ICP 同级连接到 IBP 的先决条件](howto/peer_deploy_ibp#prerequisites-peer-ibp)。请注意，TLS CA 仅用于颁发证书，并且可以在该活动完成时关闭。
+因此，如果计划将同级连接到入门套餐或企业套餐网络，那么在部署同级之前，还必须[在 ICP 中部署 CA](howto/CA_deploy_icp.html)，该 CA 将充当该同级的 TLS CA。另请参阅[将 ICP 同级连接到 IBP 的先决条件](howto/peer_deploy_ibp.html#prerequisites-peer-ibp)。请注意，TLS CA 仅用于颁发证书，并且可以在该活动完成时关闭。
 
 有关 TLS 的更多信息，请参阅 Hyperledger Fabric 文档中的[使用传输层安全性 (TLS) 保护通信安全 ![外部链接图标](images/external_link.svg "外部链接图标")](https://hyperledger-fabric.readthedocs.io/en/release-1.3/enable_tls.html "使用传输层安全性 (TLS) 保护通信安全")。
 

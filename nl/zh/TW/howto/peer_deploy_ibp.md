@@ -246,7 +246,7 @@ lastupdated: "2018-12-07"
   - 入門範本方案的主要 TLS 憑證
     - 美國：[us01.blockchain.ibm.com.cert ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](https://blockchain-certs.mybluemix.net/us01.blockchain.ibm.com.cert "us01.blockchain.ibm.com.cert")；[us02.blockchain.ibm.com.cert ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](https://blockchain-certs.mybluemix.net/us02.blockchain.ibm.com.cert "us02.blockchain.ibm.com.cert")
     - 英國：[uk01.blockchain.ibm.com.cert ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](https://blockchain-certs.mybluemix.net/uk01.blockchain.ibm.com.cert "uk01.blockchain.ibm.com.cert")；[uk02.blockchain.ibm.com.cert ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](https://blockchain-certs.mybluemix.net/uk02.blockchain.ibm.com.cert "uk02.blockchain.ibm.com.cert")
-    - 雪梨：[aus01.blockchain.ibm.com.cert ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](https://blockchain-certs.mybluemix.net/aus01.blockchain.ibm.com.cert "aus01.blockchain.ibm.com.cert")；[aus02.blockchain.ibm.com.cert ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](https://blockchain-certs.mybluemix.net/aus02.blockchain.ibm.com.cert "aus02.blockchain.ibm.com.cert")
+    - 雪梨：[aus01.blockchain.ibm.com.cert ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](https://blockchain-certs.mybluemix.net/aus01.blockchain.ibm.com.cert "aus01.blockchain.ibm.com.cert")<!--；[aus02.blockchain.ibm.com.cert ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](https://blockchain-certs.mybluemix.net/aus02.blockchain.ibm.com.cert "aus02.blockchain.ibm.com.cert")-->
   - [企業方案的主要 TLS 憑證 ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](https://blockchain-certs.mybluemix.net/3.secure.blockchain.ibm.com.rootcert)
 
   將內容儲存至您可在未來指令中參照它的目錄。
@@ -333,7 +333,7 @@ lastupdated: "2018-12-07"
 
 您需要使用 Fabric CA 用戶端，向 ICP 上的 TLS CA 登錄您的對等節點。
 
-1. 現在，您在 `$HOME/fabric-ca-client/catls` 資料夾中應該具有 TLS 憑證檔案 `tls.pem`。如果沒有，您可以將您[從 ICP 下載](CA-operate.html#ca-tls)的 TLS 憑證複製到某個目錄，讓您在下列指令中能夠參照它。請確定您位於 `$HOME/fabric-ca-client` 目錄中。
+1. 現在，您在 `$HOME/fabric-ca-client/catls` 資料夾中應該具有 TLS 憑證檔案 `tls.pem`。如果沒有，您可以將您[從 ICP 下載](CA_operate.html#ca-tls)的 TLS 憑證複製到某個目錄，讓您在下列指令中能夠參照它。請確定您位於 `$HOME/fabric-ca-client` 目錄中。
 
   ```
   cd $HOME/fabric-ca-client
