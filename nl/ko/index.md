@@ -16,7 +16,7 @@ lastupdated: "2018-11-27"
 
 ***[이 페이지가 도움이 되었습니까? 알려주십시오.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
-**주의:** {{site.data.keyword.blockchainfull}} Platform 오퍼링을 사용하기 전에 [면책사항](needtoknow.html) 절에서 기술 및 지원 정보를 읽으십시오.
+**주의:** {{site.data.keyword.blockchainfull}} Platform 오퍼링을 사용하기 전에 [면책사항](/docs/services/blockchain/needtoknow.html) 절에서 기술 및 지원 정보를 읽으십시오.
 {:shortdesc}
 
 {{site.data.keyword.blockchainfull_notm}} Platform(IBP)은 다중 조직 블록체인 네트워크의 전체 라이프사이클을 다루는 유일한 통합 비즈니스 준비 플랫폼입니다. 가장 요구가 많은 유스 케이스와 규제 산업에 대해서도 성능과 보안으로 "비즈니스를 위해 빌드"된 글로벌 블록체인 네트워크의 작성을 각 단계의 협업을 통해 가속화하도록 설계되었습니다. {{site.data.keyword.cloud_notm}}의 {{site.data.keyword.IBM_notm}} 관리 네트워크 오퍼링은 블록체인의 신규 고객에 적합합니다. Hyperledger Fabric 사용 경험이 있는 고객은 {{site.data.keyword.cloud_notm}} Private(ICP) 또는 AWS(Amazon Web Services)를 통해 네트워크 컴포넌트 또는 네트워크를 고유한 인프라에 배치할 수 있습니다.
@@ -26,14 +26,14 @@ lastupdated: "2018-11-27"
 |       |[**스타터 플랜**](#starter-enterprise)      |[ **엔터프라이즈 플랜**](#starter-enterprise)  | [**IBP for ICP**](#ibp-for-icp) | [**IBP for AWS**](#ibp-for-aws)|
 | ------------------------- |--------------------------|-----|-----|------|
 | **포함된 내용** | **기본 서비스 레벨, 개발 및 테스트 환경** |**고급 서비스 레벨 및 엔터프라이즈 프로덕션 준비 환경** |**배치 가능한 CA, 순서 지정자 및 피어 Helm 차트** | **AWS 빠른 시작 피어**  |
-| **청구 정책** | **[클라우드 크레딧 사용 가능](howto/pricing.html#starter-plan-pricing) 월별 구독** |**월별 구독** |  **[VPC 가격](ibp-for-icp-about.html#ibp-icp-pricing) 및 무료 커뮤니티 에디션** | **무료** |
+| **청구 정책** | **[클라우드 크레딧 사용 가능](/docs/services/blockchain/howto/pricing.html#starter-plan-pricing) 월별 구독** |**월별 구독** |  **[VPC 가격](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-pricing) 및 무료 커뮤니티 에디션** | **무료** |
 | **클라우드 플랫폼**| **IBM Cloud**|**IBM Cloud**|**IBM Cloud Private**| **AWS**|
 
 **주의:** **스타터 플랜**을 프로덕션 용도로 사용하지 마십시오. 이는 개발 및 테스트 환경이며 프로덕션 워크로드에 적합하지 않습니다.
 
 ## {{site.data.keyword.blockchainfull_notm}} 플랫폼 기능
 
-{{site.data.keyword.blockchainfull_notm}} 오퍼링은 사용자의 비즈니스 요구사항을 충족하기 위한 엔터프라이즈 레벨의 보안, 데이터 무결성, 확장성 및 성능을 얻기 위해 모듈식 아키텍처를 활용하는 [Hyperledger Fabric](reference/v10_fabric.html) 코드 베이스에서 빌드되었습니다.
+{{site.data.keyword.blockchainfull_notm}} 오퍼링은 사용자의 비즈니스 요구사항을 충족하기 위한 엔터프라이즈 레벨의 보안, 데이터 무결성, 확장성 및 성능을 얻기 위해 모듈식 아키텍처를 활용하는 [Hyperledger Fabric](/docs/services/blockchain/reference/v10_fabric.html) 코드 베이스에서 빌드되었습니다.
 
 {{site.data.keyword.blockchainfull_notm}} Platform은 인증된 구성원이 자산을 쉽게 정의할 수 있으며 자산 수정 및 교환을 위한 비즈니스 솔루션을 작성할 수 있는 매우 안전하고 권한 부여된 블록체인 네트워크를 제공합니다.  {{site.data.keyword.blockchainfull_notm}} Platform 오퍼링을 사용하면 **컨소시엄을 활성 블록체인 네트워크로 빠르게 구성**할 수 있는 오케스트레이션 프레임워크를 활용할 수 있습니다. {{site.data.keyword.blockchainfull_notm}} Platform은 여러 기관이 함께 결합해서 통제된 네트워크를 민주적으로 작성하는 과정을 단순화하도록 설계된 익숙한 도구를 제공합니다. 네트워크의 작성, 통제 및 운영 태스크는 기본 제공 대시보드 모니터 및 프로비저닝된 유틸리티를 통해 직관적이고 투명하게 됩니다. 네트워크 작성 및 통제 구현의 번거로운 프로세스에 선행하여, 컨소시엄 구성원은 그 대신 **스마트 계약의 배치 및 자산과 정보의 전송에 초점을 맞출 수 있습니다**.
 
@@ -69,19 +69,19 @@ Hyperledger Fabric 아키텍처의 **모듈성** 및 네트워크 역할의 뚜�
 개발자는 대화식 플레이그라운드에서 비즈니스 네트워크를 개발하고 반복하고 테스트하여 {{site.data.keyword.blockchainfull_notm}} Platform 네트워크 환경에서 비즈니스 요구사항을 빠르고 쉽게 조정하고 블록체인 애플리케이션 개발을 가속화할 수 있습니다. 이러한 도구는 선호하는 환경에서 비즈니스 규칙을 비즈니스 네트워크 코드로 바꾸도록 설계되었습니다.
 
 * **온라인 탐색**
-  [{{site.data.keyword.blockchainfull_notm}} Platform: Develop](./develop.html)<!--, which is powered by an open source development tool-->을 활용하여 키 블록체인 개념을 학습하고 네트워크 정의를 작성하며 재사용 가능한 산업 모델 및 스마트 계약 라이브러리를 이용하십시오.
+  [{{site.data.keyword.blockchainfull_notm}} Platform: Develop](/docs/services/blockchain/develop.html)<!--, which is powered by an open source development tool-->을 활용하여 키 블록체인 개념을 학습하고 네트워크 정의를 작성하며 재사용 가능한 산업 모델 및 스마트 계약 라이브러리를 이용하십시오.
 
-    비즈니스 네트워크를 개발한 후 {{site.data.keyword.blockchainfull_notm}} Platform에서 실행되는 라이브 네트워크에 배치할 수 있습니다. 자세한 정보는 [스타터 플랜에서 비즈니스 네트워크 배치](./develop_starter.html) 및 [엔터프라이즈 플랜에서 비즈니스 네트워크 배치](./develop_enterprise.html)를 참조하십시오.
+    비즈니스 네트워크를 개발한 후 {{site.data.keyword.blockchainfull_notm}} Platform에서 실행되는 라이브 네트워크에 배치할 수 있습니다. 자세한 정보는 [스타터 플랜에서 비즈니스 네트워크 배치](/docs/services/blockchain/develop_starter.html) 및 [엔터프라이즈 플랜에서 비즈니스 네트워크 배치](/docs/services/blockchain/develop_enterprise.html)를 참조하십시오.
 
 * **로컬로 설치**
   Hyperledger Fabric을 활용하여 랩탑에서 직접 개발하고 테스트하십시오. 자세한 정보는 [첫 네트워크 빌드](http://hyperledger-fabric.readthedocs.io/en/release-1.2/build_network.html)를 참조하십시오.
 
 * **클라우드 환경에서 협업**
-  스타터 플랜 및 엔터프라이즈 플랜 옵션이 있는 사용 준비가 된 라이브 네트워크에서 코드를 개발하고 다른 사용자와 공유하십시오. 자세한 정보는 [스타터 플랜 정보](starter_plan.html) 및 [엔터프라이즈 플랜 정보](enterprise_plan.html)를 참조하십시오.
+  스타터 플랜 및 엔터프라이즈 플랜 옵션이 있는 사용 준비가 된 라이브 네트워크에서 코드를 개발하고 다른 사용자와 공유하십시오. 자세한 정보는 [스타터 플랜 정보](/docs/services/blockchain/starter_plan.html) 및 [엔터프라이즈 플랜 정보](/docs/services/blockchain/enterprise_plan.html)를 참조하십시오.
 
 ## {{site.data.keyword.IBM_notm}} 지원
 
-{{site.data.keyword.IBM_notm}}은 {{site.data.keyword.IBM_notm}} 구현 블록체인 솔루션에서 여러 지원 옵션을 제공합니다. {{site.data.keyword.blockchainfull_notm}} 지원에 대한 자세한 정보는 [지원 받기](ibmblockchain_support.html)를 참조하십시오.
+{{site.data.keyword.IBM_notm}}은 {{site.data.keyword.IBM_notm}} 구현 블록체인 솔루션에서 여러 지원 옵션을 제공합니다. {{site.data.keyword.blockchainfull_notm}} 지원에 대한 자세한 정보는 [지원 받기](/docs/services/blockchain/ibmblockchain_support.html)를 참조하십시오.
 
 
 ## 스타터 플랜 또는 엔터프라이즈 플랜
@@ -102,7 +102,7 @@ Hyperledger Fabric 아키텍처의 **모듈성** 및 네트워크 역할의 뚜�
 
 스타터 플랜 및 엔터프라이즈 플랜은 {{site.data.keyword.cloud_notm}}의 플랫폼 서비스이며 두 플랜은 서비스 레벨 계약(SLA)의 [{{site.data.keyword.cloud_notm}} 서비스 이용 약관![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](http://www-03.ibm.com/software/sla/sladb.nsf/sla/bm "{{site.data.keyword.cloud_notm}} 서비스 이용 약관")을 준수합니다. 스타터 및 엔터프라이즈 플랜 네트워크는 모두 지리적으로 구분된 데이터 센터의 **여러 환경** 간에 프로비저닝됩니다.
 
-스타터 플랜 및 엔터프라이즈 플랜에 대한 자세한 정보는 [스타터 플랜 정보](starter_plan.html) 및 [엔터프라이즈 플랜 정보](enterprise_plan.html)를 참조하십시오. 시작할 준비가 된 경우 지금 {{site.data.keyword.cloud_notm}}의 [IBP 스타터 또는 엔터프라이즈 멤버십 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps)에 가입하십시오! 
+스타터 플랜 및 엔터프라이즈 플랜에 대한 자세한 정보는 [스타터 플랜 정보](/docs/services/blockchain/starter_plan.html) 및 [엔터프라이즈 플랜 정보](/docs/services/blockchain/enterprise_plan.html)를 참조하십시오. 시작할 준비가 된 경우 지금 {{site.data.keyword.cloud_notm}}의 [IBP 스타터 또는 엔터프라이즈 멤버십 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps)에 가입하십시오! 
 
 ## {{site.data.keyword.blockchainfull_notm}} Platform for ICP
 {: #ibp-for-icp}
@@ -115,7 +115,7 @@ IBP for ICP를 통해 블록체인 네트워크를 프라이빗 클라우드에 
  * 클라이언트는 오퍼레이션에 맞는 Helm 차트 및 세부사항 문서를 사용하여 Kubernetes에서 Fabric을 구성할 수 있습니다. 
  * 커뮤니티 에디션을 사용하지 않는 한 고급 기술 지원으로 클라이언트에게 권한을 부여할 수 있습니다. 
 
- IBP for ICP에 대한 자세한 정보는 [{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private 정보](ibp-for-icp-about.html)를 참조하십시오.
+ IBP for ICP에 대한 자세한 정보는 [{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private 정보](/docs/services/blockchain/ibp-for-icp-about.html)를 참조하십시오.
 
 ## {{site.data.keyword.blockchainfull_notm}} Platform for AWS
 {: #ibp-for-aws}
@@ -129,4 +129,4 @@ IBP for ICP를 통해 블록체인 네트워크를 프라이빗 클라우드에 
  * 공인 서브넷에서 두 개의 가용성 구역(각 서브넷당 하나)에 걸쳐 있는 두 개의 피어
  * 각 공인 서브넷에서 임베디드 LevelDB 데이터베이스 또는 보조 CouchDB 컨테이너가 포함된 피어 컨테이너
 
-IBP for AWS에 대한 자세한 정보는 [{{site.data.keyword.blockchainfull_notm}} Platform for Amazon Web Services 정보](howto/remote_peer.html)를 참조하십시오.
+IBP for AWS에 대한 자세한 정보는 [{{site.data.keyword.blockchainfull_notm}} Platform for Amazon Web Services 정보](/docs/services/blockchain/howto/remote_peer.html)를 참조하십시오.

@@ -263,7 +263,7 @@ tree
 다음 지시사항은 편집하여 로컬 파일 시스템에 저장할 수 있는 [템플리트 JSON 구성 파일](#config-file-template)을 제공하며 이 파일을 완성하기 위해 CA를 사용하는 방법에 대해 설명합니다.
 
 - ICP에 순서 지정자를 배치하거나 ICP에서 호스팅되는 컨소시엄에 연결할 피어를 배치하는 경우 아래의 지시사항을 수행하십시오.
-- 스타터 플랜 또는 엔터프라이즈 플랜에 연결할 피어를 배치하려는 경우 [IBM Cloud Private에 스타터 플랜 또는 엔터프라이즈 플랜에 연결할 피어 배치](peer_deploy_ibp.html)의 지시사항을 대신 수행하십시오. 이 단계는 {{site.data.keyword.blockchainfull_notm}} Platform에서 CA를 사용하여 ICP에 피어를 배치하는 방법에 대해 설명합니다.
+- 스타터 플랜 또는 엔터프라이즈 플랜에 연결할 피어를 배치하려는 경우 [IBM Cloud Private에 스타터 플랜 또는 엔터프라이즈 플랜에 연결할 피어 배치](/docs/services/blockchain/howto/peer_deploy_ibp.html)의 지시사항을 대신 수행하십시오. 이 단계는 {{site.data.keyword.blockchainfull_notm}} Platform에서 CA를 사용하여 ICP에 피어를 배치하는 방법에 대해 설명합니다.
 
 ### 구성 파일
 {: #config-file-template}
@@ -675,7 +675,7 @@ fabric-ca-client register --caname tlsca --id.affiliation org1.department1 --id.
 ```
 {:codeblock}
 
-다른 필드는 공백으로 둘 수 있습니다. 이 파일을 저장하는 경우 [순서 지정자](orderer_deploy_icp.html) 또는 [피어](peer_deploy_icp.html)를 배치할 때 해당 파일을 사용해야 합니다.
+다른 필드는 공백으로 둘 수 있습니다. 이 파일을 저장하는 경우 [순서 지정자](/docs/services/blockchain/howto/orderer_deploy_icp.html) 또는 [피어](/docs/services/blockchain/howto/peer_deploy_icp.html)를 배치할 때 해당 파일을 사용해야 합니다.
 
 ## MSP(Membership Service Provider)
 {: #msp}
@@ -691,7 +691,7 @@ MSP 폴더에는 Fabric 컴포넌트에서 사용할 구조가 정의되어 있�
 
 네트워크 모니터 및 Swagger API를 사용하여 fabric-ca-client에서 참조할 MSP 폴더를 빌드할 수도 있습니다.
 
-- **cacerts** 및 **intermediatecerts**: MSP API에 대한 `Get` 요청을 실행하여 [Swagger API](swagger_apis.html)를 통해 이러한 인증서를 페치할 수 있습니다.
+- **cacerts** 및 **intermediatecerts**: MSP API에 대한 `Get` 요청을 실행하여 [Swagger API](/docs/services/blockchain/howto/swagger_apis.html)를 통해 이러한 인증서를 페치할 수 있습니다.
 - **signCerts** 및 **keystore**: "인증 기관" 패널에서 **인증서 생성** 단추를 클릭하여 이러한 인증서를 생성할 수 있습니다. 두 개의 인증서가 나열된 팝업 창이 열립니다. **인증서** 및 **개인 키**를 복사하여 각각 signCert 및 키 저장소에 저장하십시오. 해당 인증서는 플랫폼에 저장되지 않으므로 안전한 위치에 보관하십시오.
 
 많은 Fabric 컴포넌트에는 MSP 폴더에 추가 정보가 포함되어 있습니다. 예를 들어 원격 피어를 운영하는 경우 다음 폴더가 표시될 수 있습니다.

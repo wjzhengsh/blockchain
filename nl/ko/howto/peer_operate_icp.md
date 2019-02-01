@@ -17,7 +17,7 @@ lastupdated: "2018-12-07"
 
 ***[이 페이지가 도움이 되었습니까? 알려주십시오.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
-ICP({{site.data.keyword.cloud_notm}} Private)에 {{site.data.keyword.blockchainfull}} Platform을 설정한 다음 여러 오퍼레이션 단계를 완료해야 피어가 블록체인 네트워크의 원장을 조회하고 호출하기 위한 트랜잭션을 발행할 수 있습니다. 이 단계에는 채널에 조직을 추가하고 피어에 채널이 가입하며 피어에 체인코드를 설치하고 채널에서 체인코드를 인스턴스화하며 애플리케이션을 피어에 연결하는 단계가 포함됩니다. 네트워크를 스터터 플랜 또는 엔터프라이즈 플랜 네트워크에 연결하려면 [스타터 플랜 또는 엔터프라이즈 플랜 네트워크로 {{site.data.keyword.cloud_notm}} Private에서 피어 운영](peer_operate_ibp.html#peer-operate_icp)을 참조하십시오.
+ICP({{site.data.keyword.cloud_notm}} Private)에 {{site.data.keyword.blockchainfull}} Platform을 설정한 다음 여러 오퍼레이션 단계를 완료해야 피어가 블록체인 네트워크의 원장을 조회하고 호출하기 위한 트랜잭션을 발행할 수 있습니다. 이 단계에는 채널에 조직을 추가하고 피어에 채널이 가입하며 피어에 체인코드를 설치하고 채널에서 체인코드를 인스턴스화하며 애플리케이션을 피어에 연결하는 단계가 포함됩니다. 네트워크를 스터터 플랜 또는 엔터프라이즈 플랜 네트워크에 연결하려면 [스타터 플랜 또는 엔터프라이즈 플랜 네트워크로 {{site.data.keyword.cloud_notm}} Private에서 피어 운영](/docs/services/blockchain/howto/peer_operate_ibp.html#peer-operate_icp)을 참조하십시오.
 {:shortdesc}
 
 피어를 운영하려면 ICP 클러스터에서 몇 가지 전제조건 단계를 완료해야 합니다.
@@ -37,7 +37,7 @@ ICP({{site.data.keyword.cloud_notm}} Private)에 {{site.data.keyword.blockchainf
 
 조직이 아직 컨소시엄 또는 채널의 멤버가 아닌 경우 이 단계를 사용하여 [채널을 작성](#create-channel)할 수 있습니다. 지시사항은 [조직 정의 준비](#organization-definition) 방법을 제공합니다. 이 정의는 순서 지정자 시스템 채널에 추가하여 컨소시엄의 멤버가 될 수 있도록 하는 데 사용됩니다. 그런 다음 [채널 트랜잭션을 작성](#peer-icp-channeltx)하여 새 채널을 형성할 수 있습니다. 
 <!--
-It is recommended that you deploy at least two instances of the peer Helm chart for [high availability](peer_icp.html#high-availability). Therefore, you need to follow these operations steps once for each peer. When you are ready to invoke and query chaincode from your application, connect to both peers to ensure that your [applications are highly available](../v10_application.html#ha-app).
+It is recommended that you deploy at least two instances of the peer Helm chart for [high availability](/docs/services/blockchain/howto/peer_icp.html#high-availability). Therefore, you need to follow these operations steps once for each peer. When you are ready to invoke and query chaincode from your application, connect to both peers to ensure that your [applications are highly available](/docs/services/blockchain/v10_application.html#ha-app).
 -->
 
 ## 선행 조건
@@ -126,7 +126,7 @@ SDK를 사용할지 아니면 명령행을 사용할 계획인지에 상관없�
   ```
   {:codeblock}
 
-**참고:** 방화벽 뒤에 피어를 배치하는 경우 플랫폼의 네트워크에서 피어로 TIS 핸드쉐이크를 완료할 수 있으려면 패스스루를 열어야 합니다. 피어의 포트 7051에 바인드된 노드 포트에 대한 패스스루만 사용으로 설정해야 합니다. 자세한 정보는 [피어 엔드포인트 정보 찾기](peer_operate_ibp.html#peer-endpoint)를 참조하십시오.
+**참고:** 방화벽 뒤에 피어를 배치하는 경우 플랫폼의 네트워크에서 피어로 TIS 핸드쉐이크를 완료할 수 있으려면 패스스루를 열어야 합니다. 피어의 포트 7051에 바인드된 노드 포트에 대한 패스스루만 사용으로 설정해야 합니다. 자세한 정보는 [피어 엔드포인트 정보 찾기](/docs/services/blockchain/howto/peer_operate_ibp.html#peer-endpoint)를 참조하십시오.
 
 ### 피어 TLS 인증서 다운로드
 {: #peer-tls}
@@ -152,7 +152,7 @@ SDK를 사용할지 아니면 명령행을 사용할 계획인지에 상관없�
 
 Hyperledger Fabric SDK에서는 애플리케이션에서 블록체인 네트워크와 상호작용하고 운영하는 데 사용할 수 있는 강력한 API 세트를 제공합니다. [Hyperledger Fabric SDK 커뮤니티 문서 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/getting_started.html#hyperledger-fabric-sdks "Hyperledger Fabric SDK 커뮤니티 문서")에서 Fabric SDK 내에서 지원되는 최신 언어 목록과 사용 가능한 전체 API 목록을 찾을 수 있습니다. Fabric SDK를 사용하여 {{site.data.keyword.blockchainfull_notm}} Platform의 채널에 피어가 가입하고 피어에 체인코드를 설치하며 채널에서 체인코드를 인스턴스화할 수 있습니다.
 
-다음 지시사항에서는 [Fabric Node SDK ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://fabric-sdk-node.github.io/ "Fabric Node SDK")를 사용하여 피어를 운영하고 이미 SDK에 익숙하다고 가정합니다. [애플리케이션 개발 튜토리얼](../v10_application.html)은 시작하기 전에 Node SDK를 사용하는 방법을 알아보고 체인코드를 호출하여 조회할 준비가 되었을 때 피어로 애플리케이션을 개발하기 위한 가이드로 사용할 수 있습니다.
+다음 지시사항에서는 [Fabric Node SDK ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://fabric-sdk-node.github.io/ "Fabric Node SDK")를 사용하여 피어를 운영하고 이미 SDK에 익숙하다고 가정합니다. [애플리케이션 개발 튜토리얼](/docs/services/blockchain/v10_application.html)은 시작하기 전에 Node SDK를 사용하는 방법을 알아보고 체인코드를 호출하여 조회할 준비가 되었을 때 피어로 애플리케이션을 개발하기 위한 가이드로 사용할 수 있습니다.
 
 ### Node SDK 설치
 
@@ -170,13 +170,13 @@ Node SDK 버전 1.2를 사용하는 것이 좋습니다.
 
 피어가 내부에서 피어 관리자의 signCert로 배치됩니다. 이를 통해 사용자는 피어가 운영되도록 피어 관리자의 인증서 및 MSP 폴더를 사용할 수 있습니다. 
 
-[피어 관리자를 등록](CA_operate.html#enroll-admin)할 때 작성한 인증서를 찾으십시오. 예제 명령을 사용한 경우 `$HOME/fabric-ca-client/peer-admin`에서 피어 관리자 MSL 폴더를 찾을 수 있습니다.
+[피어 관리자를 등록](/docs/services/blockchain/howto/CA_operate.html#enroll-admin)할 때 작성한 인증서를 찾으십시오. 예제 명령을 사용한 경우 `$HOME/fabric-ca-client/peer-admin`에서 피어 관리자 MSL 폴더를 찾을 수 있습니다.
   - MSP 폴더의 signCert(공개 키) 및 개인 키를 사용하여 SDK로 피어 관리자 컨텍스트를 빌드할 수 있습니다. 다음 위치에서 해당 키를 찾을 수 있습니다. 
     - `$HOME/fabric-ca-client/peer-admin/msp/signcerts`의 **signcerts** 폴더에서 signCert를 찾을 수 있습니다.
     - `$HOME/fabric-ca-client/peer-admin/msp/keystore`의 **keystore:** 폴더에서 개인 키를 찾을 수 있습니다.
-    공개 키 및 개인 키만 사용하여 사용 컨텍스트를 형성하고 SDK를 운영하는 방법의 예는 [네트워크 모니터를 사용하여 인증서 생성](../v10_application.html#enroll-panel)을 참조하십시오.
+    공개 키 및 개인 키만 사용하여 사용 컨텍스트를 형성하고 SDK를 운영하는 방법의 예는 [네트워크 모니터를 사용하여 인증서 생성](/docs/services/blockchain/v10_application.html#enroll-panel)을 참조하십시오.
 
-<!-- You can also use the SDK to generate the peer admin signCert and private key using the endpoint information of CA on Starter Plan or Enterprise Plan and your [peer admin username and password](CA_operate.html#register-admin). -->
+<!-- You can also use the SDK to generate the peer admin signCert and private key using the endpoint information of CA on Starter Plan or Enterprise Plan and your [peer admin username and password](/docs/services/blockchain/howto/CA_operate.html#register-admin). -->
 
 ### 피어의 TLS 인증서를 SDK에 전달
 {: #icp-peer-download-tlscert}
@@ -207,7 +207,7 @@ You need to specify a `ssl-target-name-override` of `<something>.blockchain.com`
 ### 순서 지정자의 TLS 인증서를 SDK에 전달
 {: #icp-orderer-download-tlscert}
 
-채널에 가입하고 트랜잭션을 제출하려면 컨소시엄의 순서 지정자에 대한 TLS 인증서도 필요합니다. 순서 지정자의 관리자인 경우 지시사항에 따라 [순서 지정자 TLS 인증서를 다운로드](orderer_operate.html#orderer-tls)하십시오. 예제 명령을 사용한 경우 `$HOME/fabric-ca-client/orderer-tls/orderertls.pem`에서 피어 TLS 인증서를 찾을 수 있습니다. 다른 조직에서 순서 지정자를 관리하는 경우 사용자에게 대역 내외 오퍼레이션에서 TLS 인증서를 제공해야 합니다. 그런 다음 TLS 인증서를 애플리케이션에 가져올 수 있습니다. 
+채널에 가입하고 트랜잭션을 제출하려면 컨소시엄의 순서 지정자에 대한 TLS 인증서도 필요합니다. 순서 지정자의 관리자인 경우 지시사항에 따라 [순서 지정자 TLS 인증서를 다운로드](/docs/services/blockchain/howto/orderer_operate.html#orderer-tls)하십시오. 예제 명령을 사용한 경우 `$HOME/fabric-ca-client/orderer-tls/orderertls.pem`에서 피어 TLS 인증서를 찾을 수 있습니다. 다른 조직에서 순서 지정자를 관리하는 경우 사용자에게 대역 내외 오퍼레이션에서 TLS 인증서를 제공해야 합니다. 그런 다음 TLS 인증서를 애플리케이션에 가져올 수 있습니다. 
 
 ```
 var ordererTLSCert = fs.readFileSync(path.join(__dirname, './orderertls.pem'));
@@ -217,7 +217,7 @@ var ordererTLSCert = fs.readFileSync(path.join(__dirname, './orderertls.pem'));
 ### SDK에 순서 지정자 정보 제공
 {: #orderer-SDK-endpoints}
 
-SDK를 사용하려면 컨소시엄에서 순서 지정자의 엔드포인트 정보도 필요합니다. 순서 지정자의 관리자인 경우 이 지시사항을 사용하여 [순서 지정자 엔드포인트 정보를 검색](orderer_operate.html#orderer-endpoint)할 수 있습니다. 다른 조직에서 순서 지정자를 관리하는 경우 사용자에게 대역 내외 오퍼레이션에서 순서 지정자 URL을 제공해야 합니다. 다음 예제는 엔드포인트로서 순서 지정자를 정의하고 이를 순서 지정자 TLS 인증서에 전달합니다. 
+SDK를 사용하려면 컨소시엄에서 순서 지정자의 엔드포인트 정보도 필요합니다. 순서 지정자의 관리자인 경우 이 지시사항을 사용하여 [순서 지정자 엔드포인트 정보를 검색](/docs/services/blockchain/howto/orderer_operate.html#orderer-endpoint)할 수 있습니다. 다른 조직에서 순서 지정자를 관리하는 경우 사용자에게 대역 내외 오퍼레이션에서 순서 지정자 URL을 제공해야 합니다. 다음 예제는 엔드포인트로서 순서 지정자를 정의하고 이를 순서 지정자 TLS 인증서에 전달합니다. 
 
 ```
 var orderer = fabric_client.newOrderer('grpcs://9.30.94.174:30167', { pem:  Buffer.from(ordererTLSCert).toString(), 'ssl-target-name-override': null});
@@ -232,24 +232,24 @@ You need to specify a `ssl-target-name-override` of `<something>.blockchain.com`
 
 조직은 피어로 채널에 가입하기 전에 채널의 멤버가 되어야 합니다. 채널의 멤버가 아니면 지시사항에 따라 [새 채널을 작성](#create-channel)할 수 있습니다. 
 
-채널의 멤버가 된 후 지시사항에 따라 SDK를 사용하여 [피어를 채널에 가입](../v10_application.html#join-channel-sdk)하십시오. 
+채널의 멤버가 된 후 지시사항에 따라 SDK를 사용하여 [피어를 채널에 가입](/docs/services/blockchain/v10_application.html#join-channel-sdk)하십시오. 
 
 ### SDK를 사용하여 피어에 체인코드 설치
 {: #peer-install-cc-sdk}
 
-SDK를 사용하여 피어에 [체인코드를 설치](../v10_application.html#install-cc-sdk)하려면 다음 지시사항을 사용하십시오.
+SDK를 사용하여 피어에 [체인코드를 설치](/docs/services/blockchain/v10_application.html#install-cc-sdk)하려면 다음 지시사항을 사용하십시오.
 
 ### SDK를 사용하여 채널에서 체인코드 인스턴스화
 {: #peer-instantiate-cc-sdk}
 
-채널의 한 멤버만 체인코드를 인스턴스화하거나 업데이트하면 됩니다. 따라서 피어에 있는 체인코드를 설치한 채널의 모든 멤버가 체인코드를 인스턴스화하고 인증 정책을 지정할 수 있습니다. 그러나 피어를 사용하여 채널에서 체인코드를 인스턴스화하려면 SDK를 사용하고 지시사항에 따라 [체인코드를 인스턴스화](../v10_application.html#instantiate-cc-sdk)할 수 있습니다.
+채널의 한 멤버만 체인코드를 인스턴스화하거나 업데이트하면 됩니다. 따라서 피어에 있는 체인코드를 설치한 채널의 모든 멤버가 체인코드를 인스턴스화하고 인증 정책을 지정할 수 있습니다. 그러나 피어를 사용하여 채널에서 체인코드를 인스턴스화하려면 SDK를 사용하고 지시사항에 따라 [체인코드를 인스턴스화](/docs/services/blockchain/v10_application.html#instantiate-cc-sdk)할 수 있습니다.
 
 ## CLI를 사용하여 피어 운영
 {: #peer-cli-operate}
 
 Fabric Peer 바이너리를 사용하여 명령행에서 원격 피어를 운영할 수도 있습니다. 
 
-피어가 내부에서 피어 관리자의 signCert로 배치되며 해당 ID가 피어를 운영할 수 있습니다. 다음 지시사항은 채널에 피어가 가입하고 피어에 체인코드를 설치하며 채널에서 체인코드를 인스턴스화하기 위해 [피어를 배치](CA_operate.html#register-admin) 할 때 생성된 피어 관리자 MSP 폴더를 사용합니다. 
+피어가 내부에서 피어 관리자의 signCert로 배치되며 해당 ID가 피어를 운영할 수 있습니다. 다음 지시사항은 채널에 피어가 가입하고 피어에 체인코드를 설치하며 채널에서 체인코드를 인스턴스화하기 위해 [피어를 배치](/docs/services/blockchain/howto/CA_operate.html#register-admin) 할 때 생성된 피어 관리자 MSP 폴더를 사용합니다. 
 
 ### Fabric 피어 클라이언트 다운로드
 {: #peer-client}
@@ -299,7 +299,7 @@ cd $HOME/fabric-ca-client/peer-admin/msp
 ```
 {:codeblock}
 
-피어를 운영하기 전에 로컬 머신에서 인증서에 대한 일부 관리를 수행해야 합니다. 피어에서 TLS 인증서에 액세스할 수 있는지도 확인해야 합니다. 사용할 인증서에 대한 자세한 정보는 [{{site.data.keyword.cloud_notm}} Private에서 인증 기관 얻기](CA_operate.html)의 [멤버십 서비스 제공자](CA_operate.html#msp)를 참조하십시오.
+피어를 운영하기 전에 로컬 머신에서 인증서에 대한 일부 관리를 수행해야 합니다. 피어에서 TLS 인증서에 액세스할 수 있는지도 확인해야 합니다. 사용할 인증서에 대한 자세한 정보는 [{{site.data.keyword.cloud_notm}} Private에서 인증 기관 얻기](/docs/services/blockchain/howto/CA_operate.html)의 [멤버십 서비스 제공자](/docs/services/blockchain/howto/CA_operate.html#msp)를 참조하십시오.
 
 1. `admincerts`라는 새 폴더로 피어 관리자의 signCert를 이동하십시오. 
 
@@ -312,7 +312,7 @@ cd $HOME/fabric-ca-client/peer-admin/msp
 
 2. [피어 TLS 인증서를 다운로드](#peer-tls)하고 명령행에서 이를 참조할 수 있는지 확인하십시오. 이 문서에 있는 예제 명령을 따른 경우 `$HOME/fabric-ca-client/peer-tls/peertls.pem` 파일에서 이 TLS 인증서를 찾을 수 있습니다. 
 
-3. 순서 지정자의 TLS 인증서도 참조해야 합니다. 순서 지정자의 관리자인 경우 지시사항에 따라 [순서 지정자 TLS 인증서를 다운로드](orderer_operate.html#orderer-tls)하십시오. 다른 조직에서 순서 지정자를 관리하는 경우 사용자에게 대역 내외 오퍼레이션에서 TLS 인증서를 제공해야 합니다. 이후 명령에서 이 인증서를 참조할 수 있는 위치에 이 인증서를 저장하십시오.
+3. 순서 지정자의 TLS 인증서도 참조해야 합니다. 순서 지정자의 관리자인 경우 지시사항에 따라 [순서 지정자 TLS 인증서를 다운로드](/docs/services/blockchain/howto/orderer_operate.html#orderer-tls)하십시오. 다른 조직에서 순서 지정자를 관리하는 경우 사용자에게 대역 내외 오퍼레이션에서 TLS 인증서를 제공해야 합니다. 이후 명령에서 이 인증서를 참조할 수 있는 위치에 이 인증서를 저장하십시오.
 
 트리 명령을 실행하여 이 단계를 완료했는지 확인할 수 있습니다. 인증서를 저장한 디렉토리로 이동하십시오. 트리 명령은 다음 구조와 유사한 결과를 생성해야 합니다.
 ```
@@ -374,7 +374,7 @@ tree
 
     이 변수를 설정하면 디렉토리에 있는 피어 클라이언트를 사용하여 명령을 실행할 수 있습니다. 
 
-3. 순서 지정자의 엔드포인트 정보가 필요합니다. 순서 지정자의 관리자인 경우 이 지시사항을 사용하여 [순서 지정자 엔드포인트 정보를 검색](orderer_operate.html#orderer-endpoint)할 수 있습니다. 다른 조직에서 순서 지정자를 관리하는 경우 사용자에게 대역 내외 오퍼레이션에서 순서 지정자 URL을 제공해야 합니다. 
+3. 순서 지정자의 엔드포인트 정보가 필요합니다. 순서 지정자의 관리자인 경우 이 지시사항을 사용하여 [순서 지정자 엔드포인트 정보를 검색](/docs/services/blockchain/howto/orderer_operate.html#orderer-endpoint)할 수 있습니다. 다른 조직에서 순서 지정자를 관리하는 경우 사용자에게 대역 내외 오퍼레이션에서 순서 지정자 URL을 제공해야 합니다. 
 
 4. [피어 엔드포인트 정보를 검색](#peer-endpoint)하십시오. 이 URL을 사용하여 `PEERADDR` 환경 변수를 설정합니다. 시작 부분에서 `http://`를 포함하지 않아야 합니다. 
 
@@ -608,7 +608,7 @@ export PATH=$PATH:$HOME/bin
 
 ### Crypto 자료 준비
 
-정의의 조직을 준비하기 전에 [피어의 관리자](CA_operate.html#register-admin)를 등록해야 합니다. 피어 관리자 MSP 폴더를 작성한 디렉토리로 이동하십시오. 예제 단계는 `$HOME/fabric-ca-client/peer-admin/msp`의 이 폴더에 작성되었습니다. `configtxgen` 도구로 MSP를 사용하기 전에 일부 추가 단계를 수행해야 합니다. 
+정의의 조직을 준비하기 전에 [피어의 관리자](/docs/services/blockchain/howto/CA_operate.html#register-admin)를 등록해야 합니다. 피어 관리자 MSP 폴더를 작성한 디렉토리로 이동하십시오. 예제 단계는 `$HOME/fabric-ca-client/peer-admin/msp`의 이 폴더에 작성되었습니다. `configtxgen` 도구로 MSP를 사용하기 전에 일부 추가 단계를 수행해야 합니다. 
 
 1. CA에서 TLS 인증서를 복사하여 `tlscacerts`라는 새 폴더에 배치하십시오.
 
@@ -671,7 +671,7 @@ Organizations:
 ```
 {:codeblock}
 
-이 파일에는 컨소시엄 내에 조직을 정의하는 정보가 포함됩니다. 이 파일의 좀 더 복잡한 버전은 [다운로드한 Fabric 피어 클라이언트](peer_operate_icp.html#peer-client)의 `/config` 폴더에서도 사용 가능합니다. 해당 파일을 편집하거나 위의 샘플로 대체하도록 선택할 수 있습니다. 아래의 `FABRIC_CFG_PATH` 값을 설정하려면 이 `/config` 폴더의 위치를 기록해 두십시오. 이 파일의 `Organizations` 섹션을 편집하고 다음 값을 설정하십시오. 
+이 파일에는 컨소시엄 내에 조직을 정의하는 정보가 포함됩니다. 이 파일의 좀 더 복잡한 버전은 [다운로드한 Fabric 피어 클라이언트](/docs/services/blockchain/howto/peer_operate_icp.html#peer-client)의 `/config` 폴더에서도 사용 가능합니다. 해당 파일을 편집하거나 위의 샘플로 대체하도록 선택할 수 있습니다. 아래의 `FABRIC_CFG_PATH` 값을 설정하려면 이 `/config` 폴더의 위치를 기록해 두십시오. 이 파일의 `Organizations` 섹션을 편집하고 다음 값을 설정하십시오. 
 
 - `Name:`은 조직에 사용할 이름으로 어떠한 이름도 될 수 있습니다. 
 
@@ -717,17 +717,17 @@ configtxgen -printOrg org1 > $HOME/fabric-ca-client/org-definitions/org1definiti
 ```
 {:codeblock}
 
-명령이 성공하면 `configtxgen`은 JSON 형식으로 조직 정의를 출력합니다. 컨소시엄에 가입하려면 대역 내외 오퍼레이션에서 이 파일을 순서 지정자 조직에 전송해야 합니다. 그런 다음 순서 지정자 조직은 정의를 시스템 채널에 추가하여 [컨소시엄을 형성하거나 기존 컨소시엄에 추가](orderer_operate.html#consortium)될 수 있습니다. 
+명령이 성공하면 `configtxgen`은 JSON 형식으로 조직 정의를 출력합니다. 컨소시엄에 가입하려면 대역 내외 오퍼레이션에서 이 파일을 순서 지정자 조직에 전송해야 합니다. 그런 다음 순서 지정자 조직은 정의를 시스템 채널에 추가하여 [컨소시엄을 형성하거나 기존 컨소시엄에 추가](/docs/services/blockchain/howto/orderer_operate.html#consortium)될 수 있습니다. 
 
 ## 채널 트랜잭션 작성
 {: #peer-icp-channeltx}
 
-새 채널을 작성하기 전에 조직은 [조직 정의](#organization-definition)를 준비하고 컨소시엄의 멤버가 되어야 합니다. [컨소시엄을 형성하거나 기존 컨소시엄에 추가](orderer_operate.html#consortium)되어야 하는 경우 이 지시사항을 따르십시오. 조직이 이미 시스템 채널에 추가된 경우 컨소시엄의 멤버도 새 채널에 쉽게 추가될 수 있습니다. 시스템 채널의 멤버가 아닌 조직은 [채널 업데이트 요청 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/channel_update_tutorial.html) 사용을 통해 채널에 조직 정의를 추가하여 수동으로 채널에 가입할 수 있습니다. 이 단계를 사용하여 기존 채널을 업데이트할 수도 있습니다. 
+새 채널을 작성하기 전에 조직은 [조직 정의](#organization-definition)를 준비하고 컨소시엄의 멤버가 되어야 합니다. [컨소시엄을 형성하거나 기존 컨소시엄에 추가](/docs/services/blockchain/howto/orderer_operate.html#consortium)되어야 하는 경우 이 지시사항을 따르십시오. 조직이 이미 시스템 채널에 추가된 경우 컨소시엄의 멤버도 새 채널에 쉽게 추가될 수 있습니다. 시스템 채널의 멤버가 아닌 조직은 [채널 업데이트 요청 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/channel_update_tutorial.html) 사용을 통해 채널에 조직 정의를 추가하여 수동으로 채널에 가입할 수 있습니다. 이 단계를 사용하여 기존 채널을 업데이트할 수도 있습니다. 
 
 ### 새 채널 형성
 {: #peer-icp-create-channel}
 
-새 채널을 형성하려면 조직은 [configtxgen 도구 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/configtxgen.html "configtxgen")를 사용하여 채널 작성 트랜잭션 제안을 작성해야 합니다. 이 도구는 새 채널 멤버를 정의하는 `configtx.yaml` 파일을 이용합니다. 샘플 `configtx.yaml` 파일은 아래에 제공됩니다. 이 파일의 좀 더 복잡한 버전은 [다운로드한 Fabric 피어 클라이언트](peer_operate_icp.html#peer-client)의 `/config` 폴더에서도 사용 가능합니다. 해당 파일을 편집하거나 샘플로 대체하도록 선택할 수 있습니다. 아래의 `FABRIC_CFG_PATH` 값을 설정하려면 이 `/config` 폴더의 위치를 기록해 두십시오. 
+새 채널을 형성하려면 조직은 [configtxgen 도구 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/configtxgen.html "configtxgen")를 사용하여 채널 작성 트랜잭션 제안을 작성해야 합니다. 이 도구는 새 채널 멤버를 정의하는 `configtx.yaml` 파일을 이용합니다. 샘플 `configtx.yaml` 파일은 아래에 제공됩니다. 이 파일의 좀 더 복잡한 버전은 [다운로드한 Fabric 피어 클라이언트](/docs/services/blockchain/howto/peer_operate_icp.html#peer-client)의 `/config` 폴더에서도 사용 가능합니다. 해당 파일을 편집하거나 샘플로 대체하도록 선택할 수 있습니다. 아래의 `FABRIC_CFG_PATH` 값을 설정하려면 이 `/config` 폴더의 위치를 기록해 두십시오. 
 ```
 # Copyright IBM Corp. All Rights Reserved.
 #

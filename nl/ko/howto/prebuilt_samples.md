@@ -25,12 +25,12 @@ lastupdated: "2018-08-31"
 | 샘플     | 유스 케이스       | 샘플 유형  | 작성자 및 지원  |
 | --------------|---------------------|----|-------|
 | [Marbles ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://github.com/IBM-Blockchain/marbles "Marbles")| 여러 사용자가 서로 다른 특성으로 Marbles를 작성하고 다른 사용자에게 전송할 수 있습니다. <br> <br> 지시사항에 따라 {{site.data.keyword.cloud_notm}}의 {{site.data.keyword.blockchainfull_notm}} 서비스에 Marbles를 배치하십시오. 화면 캡처는 스타터 플랜이 아닌 엔터프라이즈 플랜 UI를 보여줍니다. 기능은 유사합니다. | Javascript 애플리케이션의 GO 체인코드|IBM<br> [도움말 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://github.com/IBM-Blockchain/marbles/issues "도움말") |
-|[자동차 제조업체 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://github.com/IBM-Blockchain/vehicle-manufacture "자동차 제조업체") | 사용자는 가상 차량의 라이프사이클을 살펴볼 수 있습니다.  <br> <br> 네트워크에 샘플 배치에 대한 단계별 안내서의 지시사항에 따라 **{{site.data.keyword.cloud_notm}}에 이 데모를 수동으로 배치**하십시오.|Javascript 애플리케이션의 [Hyperledger Composer](../references/hyperledger_composer.html) 비즈니스 네트워크 정의 |IBM<br> [도움말 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://github.com/IBM-Blockchain/vehicle-manufacture/issues "도움말") |
-|[부패 상품![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://github.com/clauseHQ/demo-clause-ibm-perishable-goods "부패 상품")| 사용자는 배송과 온도를 기준으로 공급 체인에 상품을 구매하는 합법적인 계약을 배치할 수 있습니다. <br>  <br> <!-- This sample leverages the [Toolchain tool service![External link icon](../images/external_link.svg "External link icon")](../images/external_link.svg "External link icon")](https://console.bluemix.net/docs/services/ContinuousDelivery/index.html) to deploy the sample on your network automatically.--> |Javascript 애플리케이션의 [Hyperledger Composer](../references/hyperledger_composer.html) 비즈니스 네트워크 정의 | [절 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](http://clause.io/ "절")<br> [도움말 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://github.com/clauseHQ/demo-clause-ibm-perishable-goods/issues "도움말") |
+|[자동차 제조업체 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://github.com/IBM-Blockchain/vehicle-manufacture "자동차 제조업체") | 사용자는 가상 차량의 라이프사이클을 살펴볼 수 있습니다.  <br> <br> 네트워크에 샘플 배치에 대한 단계별 안내서의 지시사항에 따라 **{{site.data.keyword.cloud_notm}}에 이 데모를 수동으로 배치**하십시오.|Javascript 애플리케이션의 [Hyperledger Composer](/docs/services/blockchain/references/hyperledger_composer.html) 비즈니스 네트워크 정의 |IBM<br> [도움말 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://github.com/IBM-Blockchain/vehicle-manufacture/issues "도움말") |
+|[부패 상품![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://github.com/clauseHQ/demo-clause-ibm-perishable-goods "부패 상품")| 사용자는 배송과 온도를 기준으로 공급 체인에 상품을 구매하는 합법적인 계약을 배치할 수 있습니다. <br>  <br> <!-- This sample leverages the [Toolchain tool service![External link icon](../images/external_link.svg "External link icon")](../images/external_link.svg "External link icon")](https://console.bluemix.net/docs/services/ContinuousDelivery/index.html) to deploy the sample on your network automatically.--> |Javascript 애플리케이션의 [Hyperledger Composer](/docs/services/blockchain/references/hyperledger_composer.html) 비즈니스 네트워크 정의 | [절 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](http://clause.io/ "절")<br> [도움말 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://github.com/clauseHQ/demo-clause-ibm-perishable-goods/issues "도움말") |
 
 IBM 및 커뮤니티 파트너가 샘플 애플리케이션을 작성합니다. 샘플에 대한 지원은 해당 Github 저장소를 통해 제공됩니다. 문제점이 발생하면 공개자 이름 옆에 있는 **도움 받기** 링크를 클릭하고 Github 저장소에서 문제를 열어 관련 팀에게 알리십시오.
 
-샘플을 배치하려면 스타터 플랜 또는 엔터프라이즈 플랜에서 {{site.data.keyword.cloud_notm}}에 블록체인 네트워크가 필요하며 채널 및 해당 피어를 구성합니다. 자세한 정보는 [스타터 플랜 네트워크 통제](../get_start_starter_plan.html) 및 [엔터프라이즈 플랜 네트워크 통제](../get_start.html)를 참조하십시오.
+샘플을 배치하려면 스타터 플랜 또는 엔터프라이즈 플랜에서 {{site.data.keyword.cloud_notm}}에 블록체인 네트워크가 필요하며 채널 및 해당 피어를 구성합니다. 자세한 정보는 [스타터 플랜 네트워크 통제](/docs/services/blockchain/get_start_starter_plan.html) 및 [엔터프라이즈 플랜 네트워크 통제](/docs/services/blockchain/get_start.html)를 참조하십시오.
 
 
 <!--
@@ -57,7 +57,7 @@ Starter Plan provides two sample applications for you to start with.
 
 Complete the following steps to deploy a sample application:
 
-1. Enter the **Network Monitor** of your Starter Plan network. If you don't have one, see [Creating a network](../get_start_starter_plan.html#creating-a-network).
+1. Enter the **Network Monitor** of your Starter Plan network. If you don't have one, see [Creating a network](/docs/services/blockchain/get_start_starter_plan.html#creating-a-network).
 
 2. Open the "Try samples" screen in your Network Monitor. Choose the sample application that you want to deploy and click the **Deploy via Toolchain** button.
 
@@ -82,9 +82,9 @@ Because this process creates a forked GitHub repository that you have access to 
 ## Deploying sample applications manually
 {: #deploy_sample_applications_manually}
 
-If you want to deploy sample applications without using the Network Monitor, ensure that you install all software prerequisites on your local file system. For more information, see [Setting up application development environment](../v10_application.html#setting-up-application-development-environment).
+If you want to deploy sample applications without using the Network Monitor, ensure that you install all software prerequisites on your local file system. For more information, see [Setting up application development environment](/docs/services/blockchain/v10_application.html#setting-up-application-development-environment).
 
-You also need a blockchain network on {{site.data.keyword.cloud_notm}} with either Starter Plan or Enterprise Plan, and configure a channel and its peers. For more information, see [Govern Starter Plan network](../get_start_starter_plan.html) and [Govern Enterprise Plan network](../get_start.html). After you provision a network and can deploy applications on it, retrieve the API endpoints of your network resources that your application will access. For more information, see [Adding network API endpoints to your application](../v10_application.html#adding-network-api-endpoints-to-your-application).
+You also need a blockchain network on {{site.data.keyword.cloud_notm}} with either Starter Plan or Enterprise Plan, and configure a channel and its peers. For more information, see [Govern Starter Plan network](/docs/services/blockchain/get_start_starter_plan.html) and [Govern Enterprise Plan network](/docs/services/blockchain/get_start.html). After you provision a network and can deploy applications on it, retrieve the API endpoints of your network resources that your application will access. For more information, see [Adding network API endpoints to your application](/docs/services/blockchain/v10_application.html#adding-network-api-endpoints-to-your-application).
 
 You can deploy one of the following sample applications to your network:
 
@@ -104,7 +104,7 @@ You can deploy one of the following sample applications to your network:
 
 - **Other applications**
 
-  For more information about how to host your own applications inside {{site.data.keyword.cloud_notm}}, see [Hosting applications](../v10_application.html#hosting-applications).
+  For more information about how to host your own applications inside {{site.data.keyword.cloud_notm}}, see [Hosting applications](/docs/services/blockchain/v10_application.html#hosting-applications).
 
 -->
 

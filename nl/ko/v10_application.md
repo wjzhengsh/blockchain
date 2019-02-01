@@ -19,19 +19,19 @@ lastupdated: "2018-12-07"
 ***[이 페이지가 도움이 되었습니까? 알려주십시오.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 
-{{site.data.keyword.blockchainfull}} Platform에서는 블록체인 네트워크에 애플리케이션을 연결하는 데 사용할 수 있는 API를 제공합니다. 연결 프로파일에서 네트워크 API 엔드포인트를 사용하여 체인코드를 호출하고 피어에서 채널별 원장을 업데이트하거나 조회할 수 있습니다. [Swagger UI](howto/swagger_apis.html)의 API도 사용하여 네트워크의 노드, 채널 및 구성원을 관리할 수 있습니다.
+{{site.data.keyword.blockchainfull}} Platform에서는 블록체인 네트워크에 애플리케이션을 연결하는 데 사용할 수 있는 API를 제공합니다. 연결 프로파일에서 네트워크 API 엔드포인트를 사용하여 체인코드를 호출하고 피어에서 채널별 원장을 업데이트하거나 조회할 수 있습니다. [Swagger UI](/docs/services/blockchain/howto/swagger_apis.html)의 API도 사용하여 네트워크의 노드, 채널 및 구성원을 관리할 수 있습니다.
 {:shortdesc}
 
 이 튜토리얼을 사용하여 {{site.data.keyword.blockchainfull_notm}} Platform API에 액세스하고 해당 API를 사용하여 애플리케이션을 네트워크에 등록하는 방법을 알아볼 수 있습니다. 네트워크와 상호작용하고 애플리케이션에서 트랜잭션을 발행하는 방법에 대해서도 알아봅니다. 이 튜토리얼은 Hyperledger Fabric 문서의 [첫 번째 애플리케이션 작성 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/write_first_app.html "첫 번째 애플리케이션 작성"){:new_window} 튜토리얼을 기반으로 합니다. **첫 번째 애플리케이션 쓰기** 튜토리얼과 동일한 여러 파일과 명령을 사용하지만 해당 파일과 명령을 사용하여 {{site.data.keyword.blockchainfull_notm}} Platform에서 네트워크와 상호작용합니다. 이 튜토리얼에서는 Hyperledger Fabric Node SDK를 사용하여 애플리케이션 개발의 각 단계를 설명합니다. SDK를 사용하는 대신 Fabric CA 클라이언트를 사용하여 사용자를 등록하는 방법도 확인할 수 있습니다.
 
-이 학습서 외에도 고유 비즈니스 솔루션을 작성할 때 해당 {{site.data.keyword.blockchainfull_notm}} Platform에서 템플리트로 제공하는 샘플 애플리케이션과 체인코드를 사용할 수 있습니다. 자세한 정보는 [샘플 애플리케이션 배치](howto/prebuilt_samples.html)를 참조하십시오.
+이 학습서 외에도 고유 비즈니스 솔루션을 작성할 때 해당 {{site.data.keyword.blockchainfull_notm}} Platform에서 템플리트로 제공하는 샘플 애플리케이션과 체인코드를 사용할 수 있습니다. 자세한 정보는 [샘플 애플리케이션 배치](/docs/services/blockchain/howto/prebuilt_samples.html)를 참조하십시오.
 
 ## 전제조건
 {{site.data.keyword.blockchainfull_notm}} Platform에서 **첫 번째 애플리케이션 쓰기** 튜토리얼을 사용할 수 있으려면 다음 전제조건이 필요합니다.
 
-- {{site.data.keyword.cloud_notm}}에 블록체인 네트워크가 없으면 스타터 또는 엔터프라이즈 멤버십 플랜으로 해당 네트워크를 작성해야 합니다. 자세한 정보는 [스타터 플랜 네트워크 작성](get_start_starter_plan.html#creating-a-network) 또는 [엔터프라이즈 플랜 네트워크 작성](get_start.html#creating-a-network)을 참조하십시오.
+- {{site.data.keyword.cloud_notm}}에 블록체인 네트워크가 없으면 스타터 또는 엔터프라이즈 멤버십 플랜으로 해당 네트워크를 작성해야 합니다. 자세한 정보는 [스타터 플랜 네트워크 작성](/docs/services/blockchain/get_start_starter_plan.html#creating-a-network) 또는 [엔터프라이즈 플랜 네트워크 작성](/docs/services/blockchain/get_start.html#creating-a-network)을 참조하십시오.
 
-  네트워크의 네트워크 모니터를 입력한 다음 "개요" 화면에서 조직의 피어를 하나 이상 추가하십시오. 그런 다음 네트워크에 하나 이상의 채널을 작성하십시오. 자세한 정보는 [채널 작성](howto/create_channel.html#creating-a-channel)을 참조하십시오. 스타터 플랜 네트워크를 사용하는 경우 체인코드를 배치하는 데 사용할 수 있는 `defaultchannel`이라는 이름의 채널이 네트워크에 이미 있다는 점을 **참고**하십시오.
+  네트워크의 네트워크 모니터를 입력한 다음 "개요" 화면에서 조직의 피어를 하나 이상 추가하십시오. 그런 다음 네트워크에 하나 이상의 채널을 작성하십시오. 자세한 정보는 [채널 작성](/docs/services/blockchain/howto/create_channel.html#creating-a-channel)을 참조하십시오. 스타터 플랜 네트워크를 사용하는 경우 체인코드를 배치하는 데 사용할 수 있는 `defaultchannel`이라는 이름의 채널이 네트워크에 이미 있다는 점을 **참고**하십시오.
 
 - Hyperledger Fabric 샘플을 다운로드하고 Node SDK를 사용하는 데 필요한 도구를 설치하십시오.
   * [Curl ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/prereqs.html#install-curl "Curl") 또는 [Git ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git "Git"){:new_window}
@@ -40,7 +40,7 @@ lastupdated: "2018-12-07"
 - `fabric-samples` 디렉토리를 다운로드하여 Hyperledger Fabric 샘플을 설치하십시오. Hyperledger Fabric 문서에 있는 [시작하기 안내서 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/install.html "시작하기 안내서"){:new_window}의 내용을 수행할 수 있습니다.
 
 - 로컬 시스템의 `fabric-samples` 디렉토리로 이동하십시오.
-  * 사용자 네트워크의 Hyperledger Fabric 버전과 일치하는 분기를 사용하려면 `git checkout` 명령을 사용하십시오. 네트워크 모니터에서 [네트워크 환경 설정 창](../v10_dashboard.html#network-preferences)을 열어서 Fabric 버전을 찾을 수 있습니다.
+  * 사용자 네트워크의 Hyperledger Fabric 버전과 일치하는 분기를 사용하려면 `git checkout` 명령을 사용하십시오. 네트워크 모니터에서 [네트워크 환경 설정 창](/docs/services/blockchain/v10_dashboard.html#network-preferences)을 열어서 Fabric 버전을 찾을 수 있습니다.
     - 네트워크가 Fabric 버전 1.2에 있는 경우 기본 분기를 사용할 수 있습니다.
     - 네트워크가 Fabric 버전 1.1에 있는 경우 `git checkout v1.1.0`을 실행하십시오.
     - 네트워크가 Fabric 버전 1.0에 있는 경우 `git checkout v1.0.6`을 실행하십시오.
@@ -49,7 +49,7 @@ lastupdated: "2018-12-07"
 
   * `fabcar` 디렉토리에서 `npm install` 명령을 실행하여 Fabric SDK를 사용하는 데 필요한 패키지를 설치하십시오. 여기에는 `fabric-client`와 `fabric-ca-client`가 포함되어 있습니다.
 
-- [네트워크 모니터](howto/install_instantiate_chaincode.html#installchaincode)를 사용하여 채널에서 fabcar 체인코드를 설치하고 인스턴스화하십시오. `fabric-samples` 폴더의 `fabric-samples > chaincode > fabcar > go`에서 fabcar 체인코드를 찾을 수 있습니다.
+- [네트워크 모니터](/docs/services/blockchain/howto/install_instantiate_chaincode.html#installchaincode)를 사용하여 채널에서 fabcar 체인코드를 설치하고 인스턴스화하십시오. `fabric-samples` 폴더의 `fabric-samples > chaincode > fabcar > go`에서 fabcar 체인코드를 찾을 수 있습니다.
 
 - 네트워크 모니터의 "개요" 화면에서 네트워크의 연결 프로파일을 검색하십시오. 연결 프로파일을 `fabcar` 디렉토리에 저장하고 `creds.json`으로 이름을 바꾸십시오.
 
@@ -81,21 +81,21 @@ Hyperledger Fabric SDK에서는 애플리케이션에서 블록체인 네트워�
                   ...
   ```
 
-  **참고**: 애플리케이션에서 조직 외부의 네트워크 리소스를 대상으로 지정할 수 있습니다. 예를 들어 체인코드 [인증 정책](howto/install_instantiate_chaincode.html#endorsement-policy)에 채널에 있는 다른 조직의 인증이 필요한 경우 피어의 엔드포인트 정보와 수반하는 TLS 인증서를 얻어야 합니다. 연결 프로파일의 피어 섹션에서 이 정보를 찾을 수 있습니다. 그러나 특정 채널에 가입한 피어에 관해서는 다른 조직의 관리자에게 문의해야 합니다.
+  **참고**: 애플리케이션에서 조직 외부의 네트워크 리소스를 대상으로 지정할 수 있습니다. 예를 들어 체인코드 [인증 정책](/docs/services/blockchain/howto/install_instantiate_chaincode.html#endorsement-policy)에 채널에 있는 다른 조직의 인증이 필요한 경우 피어의 엔드포인트 정보와 수반하는 TLS 인증서를 얻어야 합니다. 연결 프로파일의 피어 섹션에서 이 정보를 찾을 수 있습니다. 그러나 특정 채널에 가입한 피어에 관해서는 다른 조직의 관리자에게 문의해야 합니다.
 
 3. 다음 예제에 표시된 대로 API 엔드포인트 정보를 애플리케이션의 구성 파일에 플러그로 지정하십시오.
   ```
   grpcs://n7413e3b503174a58b112d30f3af55016-orderer.us3.blockchain.ibm.com:31001
   ```
 
-  네트워크 리소스의 가용성을 확인하기 위해 해당 엔드포인트에 [HEAD 요청](howto/monitor_network.html#monitor-nodes)도 보낼 수 있습니다.
+  네트워크 리소스의 가용성을 확인하기 위해 해당 엔드포인트에 [HEAD 요청](/docs/services/blockchain/howto/monitor_network.html#monitor-nodes)도 보낼 수 있습니다.
 
   Fabric SDK를 사용하는 경우 연결 프로파일을 사용하여 네트워크에도 연결할 수 있습니다. 이 튜토리얼에서는 SDK에 네트워크의 엔드포인트 정보를 수동으로 제공합니다. 그러나 나중 섹션에서 [SDK와 연결 프로파일을 사용](#using-your-connection-profile-with-the-sdk)하는 데 관한 지침과 튜토리얼을 찾을 수 있습니다.
 
 ## 애플리케이션 등록
 {: #enroll-app}
 
-{{site.data.keyword.blockchainfull_notm}} Platform에서 애플리케이션을 네트워크에 연결하기 전에 네트워크에 애플리케이션의 인증서를 제공해야 합니다. x509 인증서 및 공개 키 인프라에 대해서는 자세히 다루지 않지만 [{{site.data.keyword.blockchainfull_notm}} Platform에서 인증서 관리](certificates.html) 튜토리얼을 방문하여 자세한 정보를 확인할 수 있습니다. 간단히 말해서 Fabric의 통신 플로우는 모든 터치포인트에서 서명/확인 오퍼레이션을 사용합니다. 따라서 원장 조회 또는 업데이트와 같은 호출을 네트워크에 보내는 애플리케이션에서는 개인 키로 페이로드에 서명한 다음 검증을 위해 적절하게 서명된 x509 인증서를 첨부해야 합니다. **등록**은 해당 인증 기관에서 필요한 키와 인증서를 생성하는 프로세스입니다. 등록하고 나면 애플리케이션은 네트워크와 통신할 준비가 됩니다.
+{{site.data.keyword.blockchainfull_notm}} Platform에서 애플리케이션을 네트워크에 연결하기 전에 네트워크에 애플리케이션의 인증서를 제공해야 합니다. x509 인증서 및 공개 키 인프라에 대해서는 자세히 다루지 않지만 [{{site.data.keyword.blockchainfull_notm}} Platform에서 인증서 관리](/docs/services/blockchain/certificates.html) 튜토리얼을 방문하여 자세한 정보를 확인할 수 있습니다. 간단히 말해서 Fabric의 통신 플로우는 모든 터치포인트에서 서명/확인 오퍼레이션을 사용합니다. 따라서 원장 조회 또는 업데이트와 같은 호출을 네트워크에 보내는 애플리케이션에서는 개인 키로 페이로드에 서명한 다음 검증을 위해 적절하게 서명된 x509 인증서를 첨부해야 합니다. **등록**은 해당 인증 기관에서 필요한 키와 인증서를 생성하는 프로세스입니다. 등록하고 나면 애플리케이션은 네트워크와 통신할 준비가 됩니다.
 
 이 절에서는 **첫 번째 애플리케이션 작성** 튜토리얼에 포함된 샘플 코드를 사용하여 Fabric Node SDK로 키 및 인증서를 검색하는 방법에 대해 설명합니다. 인증 기관을 통해 등록된 ID를 사용해야만 인증서를 생성할 수 있습니다. 다음 튜토리얼은 먼저 CA를 통해 이미 등록되어 있는 관리자 ID를 사용하여 등록합니다. 그런 다음 해당 인증서를 사용하여 새 클라이언트 ID를 등록합니다. 이 튜토리얼에서는 새 ID를 사용하여 다시 등록한 후 해당 인증서를 사용하여 네트워크에 트랜잭션을 제출합니다. <!---You can find an illustration of how the developing applications tutorial interacts with your organization CA in the diagram below.--->
 
@@ -232,7 +232,7 @@ node enrollAdmin.js
 
 ### 네트워크 모니터를 사용하여 등록
 
-또는 네트워크 모니터 **인증 기관** 탭을 사용하여 클라이언트 애플리케이션을 등록할 수 있습니다. 자세한 지시사항은 이 [정보](v10_dashboard.html#ca)를 참조하십시오.
+또는 네트워크 모니터 **인증 기관** 탭을 사용하여 클라이언트 애플리케이션을 등록할 수 있습니다. 자세한 지시사항은 이 [정보](/docs/services/blockchain/v10_dashboard.html#ca)를 참조하십시오.
 
 ## 체인코드를 호출하고 조회하여 트랜잭션 실행
 {: #invoke-query}
@@ -446,7 +446,7 @@ var peer = fabric_client.newPeer(creds.peers["org1-peer1"].url, { pem: creds.pee
 ## 상호 TLS 사용
 {: #mutual-tls}
 
-Fabric V1.1 레벨에 있는 엔터프라이즈 플랜 네트워크를 실행하는 경우 애플리케이션에 [상호 TLS를 사용](v10_dashboard.html#network-preferences)하는 옵션이 있습니다. 상호 TLS를 사용으로 설정하는 경우 이 기능을 지원하도록 애플리케이션을 업데이트해야 합니다. 그렇지 않으면 애플리케이션에서 네트워크와 통신할 수 없습니다.
+Fabric V1.1 레벨에 있는 엔터프라이즈 플랜 네트워크를 실행하는 경우 애플리케이션에 [상호 TLS를 사용](/docs/services/blockchain/v10_dashboard.html#network-preferences)하는 옵션이 있습니다. 상호 TLS를 사용으로 설정하는 경우 이 기능을 지원하도록 애플리케이션을 업데이트해야 합니다. 그렇지 않으면 애플리케이션에서 네트워크와 통신할 수 없습니다.
 
 연결 프로파일에서 `certificateAuthorities` 섹션을 찾으십시오. 이 섹션에는 상호 TLS를 사용하여 사용자 네트워크와 통신하기 위해 인증서를 등록접수하고 가져오는 데 필요한 다음 속성이 있습니다.
 
@@ -460,7 +460,7 @@ Fabric V1.1 레벨에 있는 엔터프라이즈 플랜 네트워크를 실행하
 ## (선택사항) SDK를 사용하여 네트워크 운영
 {: #operate-sdk}
 
-SDK도 사용하여 블록체인 네트워크를 운영할 수 있습니다. 이 튜토리얼에서는 SDK를 사용하여 피어를 채널에 가입하고 피어에 체인코드를 설치하며 채널에서 체인코드를 인스턴스화하는 방법을 설명합니다. 모든 피어가 {{site.data.keyword.blockchainfull_notm}} Platform에서 실행 중인 경우 [Swagger UI](howto/swagger_apis.html)에서 네트워크 모니터나 API를 사용하여 해당 오퍼레이션을 수행할 수 있으므로 이 단계는 선택사항입니다.
+SDK도 사용하여 블록체인 네트워크를 운영할 수 있습니다. 이 튜토리얼에서는 SDK를 사용하여 피어를 채널에 가입하고 피어에 체인코드를 설치하며 채널에서 체인코드를 인스턴스화하는 방법을 설명합니다. 모든 피어가 {{site.data.keyword.blockchainfull_notm}} Platform에서 실행 중인 경우 [Swagger UI](/docs/services/blockchain/howto/swagger_apis.html)에서 네트워크 모니터나 API를 사용하여 해당 오퍼레이션을 수행할 수 있으므로 이 단계는 선택사항입니다.
 
 해당 단계를 완료하려면 관리 signCert를 {{site.data.keyword.blockchainfull_notm}} Platform에 업로드해야 합니다. [등록 섹션](#enroll-app-sdk)의 끝에서 signCert를 업로드하는 방법에 관한 지시사항을 찾을 수 있습니다.
 
@@ -498,7 +498,7 @@ SDK도 사용하여 블록체인 네트워크를 운영할 수 있습니다. 이
   });
   ```
 
-최초 블록을 페치하려면 먼저 채널에 signCert를 추가해야 합니다. 조직에서 채널에 가입한 후에 인증서를 생성한 경우 signCert를 플랫폼에 업로드한 후 "채널" 화면에서 **인증서 동기화** 단추를 클릭하십시오. join channel 명령을 실행하기 전에 채널 동기화가 완료될 때까지 몇 분 정도 대기해야 할 수도 있습니다. 자세한 정보는 [인증서 관리](certificates.html) 튜토리얼의 [{{site.data.keyword.blockchainfull_notm}} Platform에 서명 인증서 업로드](certificates.html#upload-certs)를 참조하십시오.
+최초 블록을 페치하려면 먼저 채널에 signCert를 추가해야 합니다. 조직에서 채널에 가입한 후에 인증서를 생성한 경우 signCert를 플랫폼에 업로드한 후 "채널" 화면에서 **인증서 동기화** 단추를 클릭하십시오. join channel 명령을 실행하기 전에 채널 동기화가 완료될 때까지 몇 분 정도 대기해야 할 수도 있습니다. 자세한 정보는 [인증서 관리](certificates.html) 튜토리얼의 [{{site.data.keyword.blockchainfull_notm}} Platform에 서명 인증서 업로드](/docs/services/blockchain/certificates.html#upload-certs)를 참조하십시오.
 
 ### 체인코드 설치
 {: #install-cc-sdk}
@@ -541,7 +541,7 @@ var request = {
 
 현재 파일에 있는 `return channel.sendTransactionProposal(request);` 대신 `return channel.sendInstantiateProposal(request);`에 이 요청을 보내십시오. 채널에 인스턴스화 요청을 보낸 다음 인증된 제안을 트랜잭션으로 순서 지정 서비스에 보내야 합니다. 여기에서는 트랜잭션을 보낼 때와 동일한 메소드를 사용하므로, 나머지 파일은 변경하지 않은 상태로 유지할 수 있습니다. 인스턴스화 제안에서 [시간제한 초과를 증가](#set-timeout-in-sdk)시킬 수 있습니다. 그렇지 않으면 플랫폼에서 체인코드 컨테이너를 시작할 수 있기 전에 제한시간이 초과될 수 있습니다.
 
-체인코드를 인스턴스화하려면 먼저 채널에 signCert를 추가해야 합니다. 채널에 가입한 후에 인증서를 생성한 경우 signCert를 플랫폼에 업로드한 후 "채널" 화면에서 **인증서 동기화** 단추를 클릭하십시오. instantiate chaincode 명령을 실행하기 전에 채널 동기화가 완료될 때까지 몇 분 정도 대기해야 할 수도 있습니다. 자세한 정보는 [인증서 관리](certificates.html) 튜토리얼의 [{{site.data.keyword.blockchainfull_notm}} Platform에 서명 인증서 업로드](certificates.html#upload-certs)를 참조하십시오.
+체인코드를 인스턴스화하려면 먼저 채널에 signCert를 추가해야 합니다. 채널에 가입한 후에 인증서를 생성한 경우 signCert를 플랫폼에 업로드한 후 "채널" 화면에서 **인증서 동기화** 단추를 클릭하십시오. instantiate chaincode 명령을 실행하기 전에 채널 동기화가 완료될 때까지 몇 분 정도 대기해야 할 수도 있습니다. 자세한 정보는 [인증서 관리](/docs/services/blockchain/certificates.html) 튜토리얼의 [{{site.data.keyword.blockchainfull_notm}} Platform에 서명 인증서 업로드](/docs/services/blockchain/certificates.html#upload-certs)를 참조하십시오.
 
 ## (선택사항) Fabric SDK에서 제한시간 값 설정
 {: #set-timeout-in-sdk}

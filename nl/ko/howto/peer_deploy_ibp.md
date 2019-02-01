@@ -21,9 +21,9 @@ lastupdated: "2018-12-07"
 다음 지시사항은 {{site.data.keyword.cloud_notm}} 또는 로컬 ICP의 스타터 플랜 또는 엔터프라이즈 플랜 네트워크에 연결할 {{site.data.keyword.cloud_notm}} Private(ICP)에 {{site.data.keyword.blockchainfull}} Platform을 배치하는 방법에 대해 설명합니다.
 {:shortdesc}
 
-피어를 배치하기 전에 [고려사항 및 제한사항](../ibp-for-icp-about.html#ibp-icp-considerations)을 검토하십시오.
+피어를 배치하기 전에 [고려사항 및 제한사항](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-considerations)을 검토하십시오.
 
-스타터 플랜 또는 엔터프라이즈 플랜 네트워크에서는 Hyperledger Fabric v1.1 또는 v1.2.1이 실행되어야 합니다. 네트워크 모니터에서 [네트워크 환경 설정 창](../v10_dashboard.html#network-preferences)을 열어 Hyperledger Fabric 버전을 찾을 수 있습니다.
+스타터 플랜 또는 엔터프라이즈 플랜 네트워크에서는 Hyperledger Fabric v1.1 또는 v1.2.1이 실행되어야 합니다. 네트워크 모니터에서 [네트워크 환경 설정 창](/docs/services/blockchain/v10_dashboard.html#network-preferences)을 열어 Hyperledger Fabric 버전을 찾을 수 있습니다.
 
 ## 필수 리소스
 {: #peer-resources-required}
@@ -53,13 +53,13 @@ amd64 또는 s390x 플랫폼에 피어를 배치하도록 선택할 수 있습�
 ## 피어를 배치하기 위한 전제조건
 {: #prerequisites-peer-ibp}
 
-1. ICP에 피어를 설치하기 전에 [ICP를 설치](../ICP_setup.html)하고 [{{site.data.keyword.blockchainfull_notm}} Platform Helm 차트를 설치](helm_install_icp.html)해야 합니다.
+1. ICP에 피어를 설치하기 전에 [ICP를 설치](../ICP_setup.html)하고 [{{site.data.keyword.blockchainfull_notm}} Platform Helm 차트를 설치](/docs/services/blockchain/howto/helm_install_icp.html)해야 합니다.
 
 2. 커뮤니티 에디션을 사용하고 인터넷 연결 없이 ICP 클러스터에서 이 Helm 차트를 실행할 경우 ICP 클러스터에 아카이브를 설치하기 전에 인터넷이 연결된 머신에 아카이브를 작성해야 합니다. 자세한 정보는 [인터넷 연결 없이 클러스터에 주요 애플리케이션 추가 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_package_offline.html "인터넷 연결 없이 클러스터에 주요 애플리케이션 추가"){:new_window}를 참조하십시오. Helm 차트의 ibm-blockchain-platform-dev/ibm_cloud_pak 아래에서 스펙 파일인 manifest.yaml을 찾을 수 있습니다.
 
-3. {{site.data.keyword.cloud_notm}}에서 스타터 플랜 또는 엔터프라이즈 플랜 네트워크의 멤버인 조직이 있어야 합니다. 피어에서는 {{site.data.keyword.blockchainfull_notm}} Platform 네트워크의 순서 지정 서비스, Hyperledger Fabric CA 및 API 엔드포인트를 활용하여 운영합니다. 블록체인 네트워크의 구성원이 아니면 네트워크를 작성하거나 가입해야 합니다. 자세한 정보는 [네트워크 작성](../get_start.html#creating-a-network) 또는 [네트워크에 가입](../get_start.html#joining-a-network)을 참조하십시오.
+3. {{site.data.keyword.cloud_notm}}에서 스타터 플랜 또는 엔터프라이즈 플랜 네트워크의 멤버인 조직이 있어야 합니다. 피어에서는 {{site.data.keyword.blockchainfull_notm}} Platform 네트워크의 순서 지정 서비스, Hyperledger Fabric CA 및 API 엔드포인트를 활용하여 운영합니다. 블록체인 네트워크의 구성원이 아니면 네트워크를 작성하거나 가입해야 합니다. 자세한 정보는 [네트워크 작성](/docs/services/blockchain/get_start.html#creating-a-network) 또는 [네트워크에 가입](/docs/services/blockchain/get_start.html#joining-a-network)을 참조하십시오.
 
-4. 먼저 ICP에 [CA를 배치](CA_deploy_icp.html)해야 합니다. TLS CA로 이 CA를 사용합니다. 피어를 배치하기 전에 [ICP에서 CA를 운영](CA_operate.html#prerequisites)하기 위한 전제조건 단계를 따라야 합니다. 이 단계 이상으로 진행할 필요가 없습니다.
+4. 먼저 ICP에 [CA를 배치](/docs/services/blockchain/howto/CA_deploy_icp.html)해야 합니다. TLS CA로 이 CA를 사용합니다. 피어를 배치하기 전에 [ICP에서 CA를 운영](/docs/services/blockchain/howto/CA_operate.html#prerequisites)하기 위한 전제조건 단계를 따라야 합니다. 이 단계 이상으로 진행할 필요가 없습니다.
 
 5. ICP 콘솔에서 TLS CA의 클러스터 프록시 IP 주소 값을 검색하십시오. **참고:** 프록시 IP에 액세스하려면 [클러스터 관리자 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "클러스터 관리자 역할 및 조치")여야 합니다. ICP 클러스터에 로그인하십시오. 왼쪽 탐색 패널에서 **플랫폼**, **노드**를 차례로 클릭하여 클러스터에 정의된 노드를 보십시오. 역할이 `proxy`인 노드를 클릭한 후 테이블에서 `Host IP`의 값을 복사하십시오. **중요:** 이 값을 저장하십시오. 그러면 Helm 차트의 `Proxy IP` 필드를 구성할 때 이 값을 사용하게 됩니다.
 
@@ -219,7 +219,7 @@ JSON 파일로 이 전체 파일을 편집하고 이를 로컬 파일 시스템�
 
 관리자 ID를 등록한 후 피어 관리자 MSP 폴더 및 signCert를 생성해야 합니다. 그러므로 스타터 플랜 또는 엔터프라이즈 플랜 CA에 대한 등록 명령을 실행해야 합니다.
 
-1. 아직 수행하지 않은 경우 [Fabric CA 클라이언트](CA_operate.html#fabric-ca-client)를 다운로드하십시오.
+1. 아직 수행하지 않은 경우 [Fabric CA 클라이언트](/docs/services/blockchain/howto/CA_operate.html#fabric-ca-client)를 다운로드하십시오.
 2. 암호화 자료를 저장할 디렉토리로 이동하고 피어 관리자의 MSP 폴더를 저장할 폴더를 작성하십시오.
 
   ```
@@ -311,9 +311,9 @@ JSON 파일로 이 전체 파일을 편집하고 이를 로컬 파일 시스템�
 
 구성 파일의 `"tls"` 필드에는 ICP에 배치한 CA의 정보가 필요합니다. 피어의 보안을 강화하도록 개별 TLS CA로 이 CA를 사용합니다. 관련 정보를 생성하려면 다음 정보를 사용하십시오.
 
-- `"cahost"` 및 `"caport"` 값은 [CA URL](CA_operate.html#ca-url)의 URL 및 포트입니다. 예를 들어, CA URL이 `http://9.30.94.174:30167`인 경우 `cahost`의 값은 `9.30.94.174`이 되고 `caport`의 값은 `30167`이 됩니다.
+- `"cahost"` 및 `"caport"` 값은 [CA URL](/docs/services/blockchain/howto/CA_operate.html#ca-url)의 URL 및 포트입니다. 예를 들어, CA URL이 `http://9.30.94.174:30167`인 경우 `cahost`의 값은 `9.30.94.174`이 되고 `caport`의 값은 `30167`이 됩니다.
 - `"caname"`은 ICP에 배치한 CA의 TLS CA 이름입니다. TLS CA 이름은 CA 구성 중에 `CA TLS instance name` 필드에 제공한 값입니다.
-- `"cacert"`는 CA의 base64로 인코딩된 TLS 인증서입니다. 전제조건으로 [CA의 TLS 인증서](CA_operate.html#ca-tls)를 검색할 때 명령 출력의 값으로 다음 섹션을 업데이트하십시오.
+- `"cacert"`는 CA의 base64로 인코딩된 TLS 인증서입니다. 전제조건으로 [CA의 TLS 인증서](/docs/services/blockchain/howto/CA_operate.html#ca-tls)를 검색할 때 명령 출력의 값으로 다음 섹션을 업데이트하십시오.
 
   ```
   "catls": {
@@ -333,7 +333,7 @@ JSON 파일로 이 전체 파일을 편집하고 이를 로컬 파일 시스템�
 
 Fabric CA 클라이언트를 사용하여 ICP에서 TLS CA로 피어를 등록해야 합니다.
 
-1. 현재 `$HOME/fabric-ca-client/catls` 폴더에 TLS 인증서 파일 `tls.pem`이 있어야 합니다. 그렇지 않으면 [ICP에서 다운로드](CA_operate.html#ca-tls)한 TLS 인증서를 다음 명령에서 참조할 수 있는 디렉토리에 복사할 수 있습니다. 사용자가 `$HOME/fabric-ca-client` 디렉토리에 있는지 확인하십시오.
+1. 현재 `$HOME/fabric-ca-client/catls` 폴더에 TLS 인증서 파일 `tls.pem`이 있어야 합니다. 그렇지 않으면 [ICP에서 다운로드](/docs/services/blockchain/howto/CA_operate.html#ca-tls)한 TLS 인증서를 다음 명령에서 참조할 수 있는 디렉토리에 복사할 수 있습니다. 사용자가 `$HOME/fabric-ca-client` 디렉토리에 있는지 확인하십시오.
 
   ```
   cd $HOME/fabric-ca-client
@@ -358,9 +358,9 @@ Fabric CA 클라이언트를 사용하여 ICP에서 TLS CA로 피어를 등록�
   ```
   {:codeblock}
 
-  명령에서 `<enroll_id>` 및 `<enroll_password>`는 인증 기관을 배치했을 때 Kubernetes 시크릿에 전달한 [CA 관리자 및 비밀번호](CA_deploy_icp.html#admin-secret)입니다. `<ca_url_with_port>` 내부에 [CA URL](CA_operate.html#ca-url)을 삽입하십시오. 시작 부분에서 `http://`를 포함하지 않아야 합니다. `<tls_ca_name>`은 [CA conf](CA_deploy_icp.html#icp-ca-configuration-parms) 중에 지정한 값입니다.
+  명령에서 `<enroll_id>` 및 `<enroll_password>`는 인증 기관을 배치했을 때 Kubernetes 시크릿에 전달한 [CA 관리자 및 비밀번호](/docs/services/blockchain/howto/CA_deploy_icp.html#admin-secret)입니다. `<ca_url_with_port>` 내부에 [CA URL](/docs/services/blockchain/howto/CA_operate.html#ca-url)을 삽입하십시오. 시작 부분에서 `http://`를 포함하지 않아야 합니다. `<tls_ca_name>`은 [CA conf](/docs/services/blockchain/howto/CA_deploy_icp.html#icp-ca-configuration-parms) 중에 지정한 값입니다.
 
-  `<ca_tls_cert_file>`은 전체 경로가 포함된 [CA TLS 인증서](CA_operate.html#ca-tls) 파일입니다.
+  `<ca_tls_cert_file>`은 전체 경로가 포함된 [CA TLS 인증서](/docs/services/blockchain/howto/CA_operate.html#ca-tls) 파일입니다.
 
   실제 호출은 다음 예제와 비슷하게 보일 수 있습니다.
 
@@ -480,7 +480,7 @@ tree
 
 #### 클러스터 프록시 IP 주소의 값 찾기
 
-TLS CA를 배치한 동일한 ICP 클러스터에 피어를 배치할 경우 동일한 [TLS CA에 대해 구성](CA_deploy_icp.html#icp-ca-configuration-parms)할 때 사용한 동일한 프록시 IP를 입력하십시오. 다른 클러스터에 컴포넌트를 배치할 경우 ICP 콘솔에서 클러스터 프록시 IP 주소의 값을 검색할 수 있습니다. 사용자는 피어가 배치될 ICP 클러스터의 클러스터 관리자 역할이 필요합니다.
+TLS CA를 배치한 동일한 ICP 클러스터에 피어를 배치할 경우 동일한 [TLS CA에 대해 구성](/docs/services/blockchain/howto/CA_deploy_icp.html#icp-ca-configuration-parms)할 때 사용한 동일한 프록시 IP를 입력하십시오. 다른 클러스터에 컴포넌트를 배치할 경우 ICP 콘솔에서 클러스터 프록시 IP 주소의 값을 검색할 수 있습니다. 사용자는 피어가 배치될 ICP 클러스터의 클러스터 관리자 역할이 필요합니다.
 
 1. ICP 콘솔에 로그인하십시오. 왼쪽 탐색 패널에서 **플랫폼**, **노드**를 차례로 클릭하여 클러스터에 정의된 노드를 보십시오.
 2. 역할이 `proxy`인 노드를 클릭한 후 테이블에서 `Host IP`의 값을 복사하십시오.
@@ -645,7 +645,7 @@ TLS CA를 배치한 동일한 ICP 클러스터에 피어를 배치할 경우 동
 | `Peer configuration secret(필수)`| ICP에 작성한 [피어 구성 시크릿](#peer-config-secret)의 이름입니다. |없음| 예|
 |`Organization MSP(필수)`| 이 값은 개요 화면의 "원격 피어 구성"을 클릭하여 네트워크 모니터(IBP UI)에서 찾을 수 있습니다. |없음| 예|
 |`Peer service type`| 피어에서 [외부 포트 노출![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types) 여부를 지정하는 데 사용됩니다. 포트를 외부에 노출하려면(권장됨) NodePort를 선택하고 포트를 노출하지 않으려면 ClusterIP를 선택하십시오. 이 릴리스에서 LoadBalancer 및 ExternalName은 지원되지 않습니다.| NodePort | 예|
-| `State database`| 채널 원장을 저장하는 데 사용한 [상태 데이터베이스](../glossary.html#state-database)입니다. 피어에서는 [블록체인 네트워크](../v10_dashboard.html#network-preferences)와 동일한 데이터베이스를 사용해야 합니다. |LevelDB | 예 |
+| `State database`| 채널 원장을 저장하는 데 사용한 [상태 데이터베이스](../glossary.html#state-database)입니다. 피어에서는 [블록체인 네트워크](/docs/services/blockchain/v10_dashboard.html#network-preferences)와 동일한 데이터베이스를 사용해야 합니다. |LevelDB | 예 |
 |`CouchDB image repository`| CouchDB가 원장 데이터베이스로 선택된 경우에만 적용됩니다. 이 필드는 설치된 경로에 자동으로 채워집니다. 커뮤니티 에디션을 사용 중이고 인터넷 액세스 권한이 없는 경우 Fabric CouchDB 이미지를 다운로드한 디렉토리와 일치해야 합니다. | ibmcom/ibp-fabric-couchdb | 예 |
 | `CouchDB Docker image tag`| CouchDB가 원장 데이터베이스로 선택된 경우에만 적용됩니다. CouchDB 이미지와 연관된 태그의 값입니다. |값을 정정하도록 자동으로 채워집니다. | 예 |
 | `Peer Data persistence enabled`| 클러스터가 다시 시작하거나 실패한 후 데이터를 지속하는 기능을 사용합니다. 자세한 정보는 [Kubernetes의 스토리지 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://kubernetes.io/docs/concepts/storage/ "볼륨")을 참조하십시오.  *선택하지 않으면 장애 복구 또는 팟(Pod) 다시 시작 시 모든 데이터가 유실됩니다.* | 선택됨 | 아니오 |
@@ -724,22 +724,22 @@ helm install --name jnchart2 mycluster/ibm-blockchain-platform \
 
 구성 매개변수를 완료하고 **설치** 단추를 클릭한 후 **Helm 릴리스 보기** 단추를 클릭하여 배치를 보십시오. 성공한 경우 배치 테이블의 `DESIRED`, `CURRENT`, `UP TO DATE` 및 `AVAILABLE` 필드에 값 1이 표시됩니다. 새로 고치기를 클릭하고 테이블이 업데이트될 때까지 기다려야 할 수 있습니다. 또한 ICP 콘솔의 왼쪽 상단에서 **메뉴** 아이콘을 클릭하여 배치 테이블도 찾을 수 있습니다. 메뉴 표시줄에서 **워크로드**, **Helm 릴리스**를 차례로 클릭하십시오.
 
-`Notes` 섹션까지 아래로 스크롤한 경우 [피어 운영](peer_operate_ibp.html) 시 사용할 중요 정보가 있습니다.
+`Notes` 섹션까지 아래로 스크롤한 경우 [피어 운영](/docs/services/blockchain/howto/peer_operate_ibp.html) 시 사용할 중요 정보가 있습니다.
 
 <!--
 ### Verifying the peer can connect to Starter or Enterprise Plan network
 
 You can run a peer CLI command from inside the peer container to verify that your peer has connected to your network on the {{site.data.keyword.blockchainfull_notm}} Platform. Complete the following instructions to run the `peer channel fetch` command to fetch the genesis block from a channel:
 
-1. If you have not already connected to your ICP cluster, follow these [instructions](peer_operate_ibp.html#peer-kubectl-configure) to connect to it and use the cli from inside the peer container.
+1. If you have not already connected to your ICP cluster, follow these [instructions](/docs/services/blockchain/howto/peer_operate_ibp.html#peer-kubectl-configure) to connect to it and use the cli from inside the peer container.
 
-2. If you deploy your peer behind a firewall, you need to open a passthru to enable the network on the platform to complete a TlS handshake with your peer. You only need to enable a passthru for the Node port bound to port 7051 of your peer. For more information, see [finding your peer endpoint information](peer_operate_ibp.html#peer-endpoint).
+2. If you deploy your peer behind a firewall, you need to open a passthru to enable the network on the platform to complete a TlS handshake with your peer. You only need to enable a passthru for the Node port bound to port 7051 of your peer. For more information, see [finding your peer endpoint information](/docs/services/blockchain/howto/peer_operate_ibp.html#peer-endpoint).
 
 3. Your organization needs to be added to a channel in the network before you can fetch the genesis block.
 
-  - You can start a new channel for the peer. If you are using IBP Starter or Enterprise Plan, you can automatically include your organization during [channel creation](create_channel.html#creating-a-channel).
+  - You can start a new channel for the peer. If you are using IBP Starter or Enterprise Plan, you can automatically include your organization during [channel creation](/docs/services/blockchain/howto/create_channel.html#creating-a-channel).
 
-  - Another member of the blockchain network can also add your organization to an existing channel by using a [channel update](create_channel.html#updating-a-channel).
+  - Another member of the blockchain network can also add your organization to an existing channel by using a [channel update](/docs/services/blockchain/howto/create_channel.html#updating-a-channel).
 
     The peer uploads its signCert during installation, so that you need to only synchronize the certificate to the channel. On the "Channels" screen of the Network Monitor, locate the channel that your organization joined and select **Sync Certificate** from the drop-down list under the **Action** header. This action synchronizes the certificates across all the peers on the channel.
 
@@ -820,15 +820,15 @@ You can run a peer CLI command from inside the peer container to verify that you
   ```
 
   Successfully fetching the genesis block indicates that your peer can connect to your Starter or Enterprise Plan network.
-  You still need to join the peer to the channel and install chaincode. See [operating your peer](peer_operate_ibp.html) for more information.
+  You still need to join the peer to the channel and install chaincode. See [operating your peer](/docs/services/blockchain/howto/peer_operate_ibp.html) for more information.
 
 -->
 
 ## 피어 로그 보기
 {: #peer-ibp-view-logs}
 
-컴포넌트 로그는 [`kubectl CLI 명령`](peer_operate_ibp.html#peer-kubectl-configure)을 사용하거나 ICP 클러스터에 포함된 [Kibana ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.elastic.co/products/kibana "Elastic Search에 대한 창")를 통해 표시될 수 있습니다. 자세한 정보는 [로그에 액세스하기 위한 지시사항](peer_operate_ibp.html#peer-ibp-view-logs)을 참조하십시오.
+컴포넌트 로그는 [`kubectl CLI 명령`](/docs/services/blockchain/howto/peer_operate_ibp.html#peer-kubectl-configure)을 사용하거나 ICP 클러스터에 포함된 [Kibana ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.elastic.co/products/kibana "Elastic Search에 대한 창")를 통해 표시될 수 있습니다. 자세한 정보는 [로그에 액세스하기 위한 지시사항](/docs/services/blockchain/howto/peer_operate_ibp.html#peer-ibp-view-logs)을 참조하십시오.
 
 ## 다음에 수행할 작업
 
-피어를 배치하고 나면, 블록체인 네트워크에 트랜잭션을 제출하고 분산된 원장을 읽을 수 있도록 여러 운영 단계를 완료해야 합니다. 자세한 정보는 [스타터 플랜 또는 엔터프라이즈 플랜으로 피어 운영](peer_operate_ibp.html)을 참조하십시오.
+피어를 배치하고 나면, 블록체인 네트워크에 트랜잭션을 제출하고 분산된 원장을 읽을 수 있도록 여러 운영 단계를 완료해야 합니다. 자세한 정보는 [스타터 플랜 또는 엔터프라이즈 플랜으로 피어 운영](/docs/services/blockchain/howto/peer_operate_ibp.html)을 참조하십시오.

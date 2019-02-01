@@ -18,7 +18,7 @@ lastupdated: "2018-08-31"
 ***[이 페이지가 도움이 되었습니까? 알려주십시오.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 
-{{site.data.keyword.blockchainfull}} Platform은 {{site.data.keyword.cloud_notm}}에서 블록체인 네트워크를 작성하거나 가입하는 데 사용할 수 있는 다수의 REST API를 노출합니다. 네트워크와 연관된 [Swagger UI](swagger_apis.html)를 사용하여 이러한 API를 사용해 볼 수 있습니다.
+{{site.data.keyword.blockchainfull}} Platform은 {{site.data.keyword.cloud_notm}}에서 블록체인 네트워크를 작성하거나 가입하는 데 사용할 수 있는 다수의 REST API를 노출합니다. 네트워크와 연관된 [Swagger UI](/docs/services/blockchain/howto/swagger_apis.html)를 사용하여 이러한 API를 사용해 볼 수 있습니다.
 {:shortdesc}
 
 

@@ -17,10 +17,10 @@ lastupdated: "2018-12-07"
 
 ***[이 페이지가 도움이 되었습니까? 알려주십시오.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
-{{site.data.keyword.cloud_notm}} Private(ICP) Helm 차트에 {{site.data.keyword.blockchainfull}} Platform을 가져오면 개별 컴포넌트를 배치할 수 있습니다. 인증 기관(CA)은 조직의 신뢰 루트이며 배치할 다른 컴포넌트에 대한 인증서를 생성할 수 있도록 합니다. 결과적으로 다른 컴포넌트를 배치하기 전에 CA를 배치해야 합니다. 여러 클라우드 블록체인 네트워크의 각 조직에서는 자체 CA를 배치해야 합니다. CA와 블록체인 네트워크에서 수행하는 역할에 대한 자세한 정보는 [인증 기관](../blockchain_component_overview.html#ca)을 참조하십시오.
+{{site.data.keyword.cloud_notm}} Private(ICP) Helm 차트에 {{site.data.keyword.blockchainfull}} Platform을 가져오면 개별 컴포넌트를 배치할 수 있습니다. 인증 기관(CA)은 조직의 신뢰 루트이며 배치할 다른 컴포넌트에 대한 인증서를 생성할 수 있도록 합니다. 결과적으로 다른 컴포넌트를 배치하기 전에 CA를 배치해야 합니다. 여러 클라우드 블록체인 네트워크의 각 조직에서는 자체 CA를 배치해야 합니다. CA와 블록체인 네트워크에서 수행하는 역할에 대한 자세한 정보는 [인증 기관](/docs/services/blockchain/blockchain_component_overview.html#ca)을 참조하십시오.
 {:shortdesc}
 
-인증 기관을 배치하기 전에 [고려사항 및 제한사항](../ibp-for-icp-about.html#ibp-icp-considerations)을 검토하십시오.
+인증 기관을 배치하기 전에 [고려사항 및 제한사항](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-considerations)을 검토하십시오.
 
 ## 필수 리소스
 {: #ca-resources-required}
@@ -50,7 +50,7 @@ AMD64 또는 S390X 플랫폼에 CA를 배치하도록 선택할 수 있습니다
 ## CA 배치에 필요한 전제조건
 {: #prerequisites-ca-icp}
 
-1. CA를 ICP에 설치하려면 [ICP를 설치](../ICP_setup.html)하고 [{{site.data.keyword.blockchainfull_notm}} Platform Helm 차트](helm_install_icp.html)를 설치해야 합니다.
+1. CA를 ICP에 설치하려면 [ICP를 설치](../ICP_setup.html)하고 [{{site.data.keyword.blockchainfull_notm}} Platform Helm 차트](/docs/services/blockchain/howto/helm_install_icp.html)를 설치해야 합니다.
 
 2. Community Edition을 사용하고 인터넷 연결없이 ICP 클러스터에 이 Helm 차트를 실행하려면 아카이브를 ICP 클러스터에 설치하기 전에 인터넷에 연결된 시스템에서 아카이브를 작성해야 합니다. 자세한 정보는 [인터넷 연결없이 클러스터에 주요 애플리케이션 추가 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_package_offline.html "인터넷 연결없이 클러스터에 주요 애플리케이션 추가"){:new_window}를 참조하십시오. Helm 차트의 ibm-blockchain-platform-dev/ibm_cloud_pak 아래에 스펙 파일 manifest.yaml이 있습니다.
 
@@ -195,7 +195,7 @@ helm install --name jnchart2 mycluster/ibm-blockchain-platform \
 
 구성 매개변수를 완료하고 **설치** 단추를 클릭한 후 **helm 릴리스 보기** 단추를 클릭하여 배치를 확인하십시오. 정상적으로 완료된 경우 배치 표의 `DESIRED`, `CURRENT`, `UP TO DATE` 및 `AVAILABLE` 필드에 값 1이 표시되어야 합니다. 새로 고치기를 클릭하고 표가 업데이트될 때까지 기다려야 할 수 있습니다. ICP 콘솔의 왼쪽 상단에서 **메뉴** 아이콘을 클릭하여 배치 표를 찾을 수도 있습니다. 메뉴 표시줄에서 **워크로드**를 클릭한 다음 **Helm 릴리스**를 클릭하십시오.
 
-아래로 스크롤하여 `참고` 섹션으로 이동하면 [CA 운영](CA_operate.html#ca-operate)에 사용할 중요한 정보를 찾을 수 있습니다.
+아래로 스크롤하여 `참고` 섹션으로 이동하면 [CA 운영](/docs/services/blockchain/howto/CA_operate.html#ca-operate)에 사용할 중요한 정보를 찾을 수 있습니다.
 
 ICP에 {{site.data.keyword.blockchainfull_notm}} Platform CA를 설치하면 configmap이 기본 환경 변수 설정으로 작성됩니다. 그런 다음 CA 서버의 환경 변수를 변경하거나 추가하여 작동을 구성할 수 있습니다. CA 서버 구성 매개변수에 대한 자세한 정보는 [Fabric CA 서버 문서 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric-ca.readthedocs.io/en/latest/users-guide.html#fabric-ca-server "Fabric CA 서버")를 참조하십시오.
 
@@ -204,9 +204,9 @@ configmap을 구성한 후 변경사항이 적용되기 전에 CA 서버를 다�
 ## CA 로그 보기
 {: #ca-deploy-view-logs}
 
-컴포넌트 로그는 명령행에서 [`kubectl CLI 명령`](CA_operate.html#ca-kubectl-configure)을 사용하거나 ICP 클러스터에 포함된 [Kibana ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.elastic.co/products/kibana "Elastic Search에 대한 창")을 통하여 볼 수 있습니다. 자세한 정보는 이러한 [로그 액세스 지시사항](CA_operate.html#ca-operate-view-logs)의 내용을 참조하십시오.
+컴포넌트 로그는 명령행에서 [`kubectl CLI 명령`](/docs/services/blockchain/howto/CA_operate.html#ca-kubectl-configure)을 사용하거나 ICP 클러스터에 포함된 [Kibana ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.elastic.co/products/kibana "Elastic Search에 대한 창")을 통하여 볼 수 있습니다. 자세한 정보는 이러한 [로그 액세스 지시사항](/docs/services/blockchain/howto/CA_operate.html#ca-operate-view-logs)의 내용을 참조하십시오.
 
 ## CA 운영
 {: #operate-ca}
 
-CA는 조직의 신뢰 루트가 됩니다. CA를 사용하여 다른 컴포넌트에 대한 인증서를 생성해야 합니다. 결과적으로 순서 지정자 또는 피어를 배치하기 전에 [CA를 설정하고 여러 운영 단계를 완료해야 합니다](CA_operate.html).
+CA는 조직의 신뢰 루트가 됩니다. CA를 사용하여 다른 컴포넌트에 대한 인증서를 생성해야 합니다. 결과적으로 순서 지정자 또는 피어를 배치하기 전에 [CA를 설정하고 여러 운영 단계를 완료해야 합니다](/docs/services/blockchain/howto/CA_operate.html).

@@ -36,10 +36,10 @@ lastupdated: "2018-12-07"
 지시사항에서는 SDK 오퍼레이션에 익숙하다고 가정하지만 Fabric SDK 경로를 사용하는 것이 좋습니다. 명령행을 사용하려는 경우 Fabric 피어 클라이언트를 사용할 수 있습니다.
 
 <!--
-It is recommended that you deploy at least two instances of the peer Helm chart for [high availability](peer_icp.html#high-availability). Therefore, you need to follow these operations steps once for each peer. When you are ready to invoke and query chaincode from your application, connect to both peers to ensure that your [applications are highly available](../v10_application.html#ha-app).
+It is recommended that you deploy at least two instances of the peer Helm chart for [high availability](/docs/services/blockchain/howto/peer_icp.html#high-availability). Therefore, you need to follow these operations steps once for each peer. When you are ready to invoke and query chaincode from your application, connect to both peers to ensure that your [applications are highly available](/docs/services/blockchain/v10_application.html#ha-app).
 -->
 
-**참고**: {{site.data.keyword.blockchainfull_notm}} Platform 피어에서는 {{site.data.keyword.blockchainfull_notm}} Platform에서 호스팅되는 피어의 전체 기능 또는 지원에 액세스할 권한이 없습니다. 따라서 네트워크 모니터를 사용하여 ICP의 피어를 작동시킬 수 없습니다. 피어 실행을 시작하기 전에 [고려사항 및 제한사항](../ibp-for-icp-about.html#ibp-icp-considerations)을 검토하십시오.
+**참고**: {{site.data.keyword.blockchainfull_notm}} Platform 피어에서는 {{site.data.keyword.blockchainfull_notm}} Platform에서 호스팅되는 피어의 전체 기능 또는 지원에 액세스할 권한이 없습니다. 따라서 네트워크 모니터를 사용하여 ICP의 피어를 작동시킬 수 없습니다. 피어 실행을 시작하기 전에 [고려사항 및 제한사항](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-considerations)을 검토하십시오.
 
 ## 선행 조건
 
@@ -153,7 +153,7 @@ ICP에서 실행되는 피어 컨테이너에 연결하려면 **kubectl** 명령
 
 Hyperledger Fabric SDK에서는 애플리케이션에서 블록체인 네트워크와 상호작용하고 운영하는 데 사용할 수 있는 강력한 API 세트를 제공합니다. [Hyperledger Fabric SDK 커뮤니티 문서 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/getting_started.html#hyperledger-fabric-sdks "Hyperledger Fabric SDK 커뮤니티 문서")에서 Fabric SDK 내에서 지원되는 최신 언어 목록과 사용 가능한 전체 API 목록을 찾을 수 있습니다. Fabric SDK를 사용하여 {{site.data.keyword.blockchainfull_notm}} Platform의 채널에 피어를 가입시키고 피어에 체인코드를 설치하며 채널에서 체인코드를 인스턴스화할 수 있습니다.
 
-다음 지시사항에서는 [Fabric Node SDK ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://fabric-sdk-node.github.io/ "Fabric Node SDK")를 사용하여 피어를 운영하고 이미 SDK에 익숙하다고 가정합니다. [애플리케이션 개발 튜토리얼](../v10_application.html)은 시작하기 전에 Node SDK를 사용하는 방법을 알아보고 체인코드를 호출하여 조회할 준비가 되었을 때 피어로 애플리케이션을 개발하기 위한 안내서로 사용할 수 있습니다.
+다음 지시사항에서는 [Fabric Node SDK ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://fabric-sdk-node.github.io/ "Fabric Node SDK")를 사용하여 피어를 운영하고 이미 SDK에 익숙하다고 가정합니다. [애플리케이션 개발 튜토리얼](/docs/services/blockchain/v10_application.html)은 시작하기 전에 Node SDK를 사용하는 방법을 알아보고 체인코드를 호출하여 조회할 준비가 되었을 때 피어로 애플리케이션을 개발하기 위한 안내서로 사용할 수 있습니다.
 
 ### Node SDK 설치
 
@@ -171,13 +171,13 @@ Node SDK 버전 1.2를 사용하는 것이 좋습니다.
 
 피어는 내부에 피어 관리자의 signCert와 함께 배치됩니다. 이를 통해 피어 관리자의 인증서와 MSP 폴더를 사용하여 피어를 운영할 수 있습니다.
 
-[피어 관리자를 등록](peer_deploy_ibp.html#enroll-admin)할 때 작성한 인증서를 찾으십시오. 예제 명령을 사용한 경우 `$HOME/fabric-ca-client/peer-admin`에 피어 관리자 MSP 폴더가 있습니다.
+[피어 관리자를 등록](/docs/services/blockchain/howto/peer_deploy_ibp.html#enroll-admin)할 때 작성한 인증서를 찾으십시오. 예제 명령을 사용한 경우 `$HOME/fabric-ca-client/peer-admin`에 피어 관리자 MSP 폴더가 있습니다.
   - MSP 폴더에서 signCert(공용 키)과 개인 키를 사용하여 SDK로 피어 관리자 컨텍스트를 빌드할 수 있습니다. 다음 위치에서 해당 키를 찾을 수 있습니다.
     - signCert는 **signcerts** 폴더(`$HOME/fabric-ca-client/peer-admin/msp/signcerts`)에 있습니다.
     - 개인 키는 **키 저장소:** 폴더(`$HOME/fabric-ca-client/peer-admin/msp/keystore`)에 있습니다.
-    공용 및 개인 키만을 사용하여 사용자 컨텍스트를 작성하고 SDK를 작동하는 방법의 예를 [애플리케이션 개발 튜토리얼의 이 섹션](../v10_application.html#enroll-panel)에서 찾을 수 있습니다.
+    공용 및 개인 키만을 사용하여 사용자 컨텍스트를 작성하고 SDK를 작동하는 방법의 예를 [애플리케이션 개발 튜토리얼의 이 섹션](/docs/services/blockchain/v10_application.html#enroll-panel)에서 찾을 수 있습니다.
 
-또한 SDK를 사용하여 스타터 플랜 또는 엔터프라이즈 플랜의 CA 엔드포인트 정보와 [피어 관리자 사용자 이름 및 비밀번호](peer_deploy_ibp.html#register-admin)를 사용하여 피어 관리자 signCert 및 개인 키를 생성할 수 있습니다.
+또한 SDK를 사용하여 스타터 플랜 또는 엔터프라이즈 플랜의 CA 엔드포인트 정보와 [피어 관리자 사용자 이름 및 비밀번호](/docs/services/blockchain/howto/peer_deploy_ibp.html#register-admin)를 사용하여 피어 관리자 signCert 및 개인 키를 생성할 수 있습니다.
 
 ### 스타터 플랜 또는 엔터프라이즈 플랜에 피어 관리자 signCert 업로드
 {: #remote-peer-upload-sdk}
@@ -217,32 +217,32 @@ You need to specify a `ssl-target-name-override` of `<something>.blockchain.com`
 
 피어와 채널을 결합하려면 조직은 채널의 멤버여야 합니다.
 
-  - 피어의 새 채널을 시작할 수 있습니다. 채널 개시자인 경우 [채널 작성](create_channel.html#creating-a-channel) 중에 조직을 자동으로 포함시킬 수 있습니다.
+  - 피어의 새 채널을 시작할 수 있습니다. 채널 개시자인 경우 [채널 작성](/docs/services/blockchain/howto/create_channel.html#creating-a-channel) 중에 조직을 자동으로 포함시킬 수 있습니다.
 
-  - 블록체인 네트워크의 다른 멤버도 [채널 업데이트](create_channel.html#updating-a-channel)를 사용하여 기존 채널에 조직을 추가할 수 있습니다.
+  - 블록체인 네트워크의 다른 멤버도 [채널 업데이트](/docs/services/blockchain/howto/create_channel.html#updating-a-channel)를 사용하여 기존 채널에 조직을 추가할 수 있습니다.
 
     채널에 조직을 추가하고 나면 다른 구성원이 트랜잭션 중에 디지털 서명을 확인할 수 있도록 피어의 signCert를 채널에 추가해야 합니다. 피어에서 설치 중에 signCert를 업로드하므로 사용자는 채널에 인증서를 동기화하기만 하면 됩니다. 네트워크 모니터의 "화면" 채널에서 조직이 가입하는 채널을 찾고 **조치** 헤더의 드롭 다운 목록에서 **인증서 동기화**를 선택하십시오. 이 조치는 채널에 있는 피어 전체에서 인증서를 동기화합니다. `join channel` 명령을 실행하기 전에 채널 동기화가 완료되도록 몇 분 동안 기다려야 합니다.
 
     **참고:** ICP에 추가하고 스타터 플랜 또는 엔터프라이즈 플랜 네트워크에 연결한 피어가 네트워크 모니터로 추가된 피어와 같은 조직의 일부이면 채널에 추가되는 새 블록, 인스턴스화되는 체인코드 및 네트워크 모니터의 "채널" 화면에서의 다른 채널 업데이트를 볼 수 있습니다. 네트워크 모니터는 피어에서 "채널" 화면에 대한 정보를 수집하고 {{site.data.keyword.cloud_notm}} 외부의 피어에 대한 가시성이 없기 때문입니다. 모든 피어가 개인용 데이터 기능을 사용하지 않는 경우 네트워크 모니터의 정보는 조직의 한 피어에 대해 다른 피어와 마찬가지로 동일하게 됩니다.
 
-조직이 채널의 멤버가 되면 다음 지시사항을 따라 SDK를 사용하여 [피어를 채널에 가입](../v10_application.html#join-channel-sdk)시키십시오. 순서 지정 서비스의 URL과 채널 이름을 제공해야 합니다.
+조직이 채널의 멤버가 되면 다음 지시사항을 따라 SDK를 사용하여 [피어를 채널에 가입](/docs/services/blockchain/v10_application.html#join-channel-sdk)시키십시오. 순서 지정 서비스의 URL과 채널 이름을 제공해야 합니다.
 
 ### SDK를 사용하여 피어에 체인코드 설치
 {: #peer-install-cc-sdk}
 
-SDK를 사용하여 피어에 [체인코드를 설치](../v10_application.html#install-cc-sdk)하려면 다음 지시사항을 사용하십시오.
+SDK를 사용하여 피어에 [체인코드를 설치](/docs/services/blockchain/v10_application.html#install-cc-sdk)하려면 다음 지시사항을 사용하십시오.
 
 ### SDK를 사용하여 채널에서 체인코드 인스턴스화
 {: #peer-instantiate-cc-sdk}
 
-채널의 한 멤버만 체인코드를 인스턴스화하거나 업데이트하면 됩니다. 따라서 {{site.data.keyword.blockchainfull_notm}} Platform에 피어가 있는 채널의 네트워크 구성원이 네트워크 모니터를 사용하여 체인코드를 인스턴스화하고 인증 정책을 지정할 수 있습니다. 그러나 피어를 사용하여 채널에서 체인코드를 인스턴스화하려면 SDK를 사용하고 지시사항에 따라 [체인코드를 인스턴스화](../v10_application.html#instantiate-cc-sdk)할 수 있습니다.
+채널의 한 멤버만 체인코드를 인스턴스화하거나 업데이트하면 됩니다. 따라서 {{site.data.keyword.blockchainfull_notm}} Platform에 피어가 있는 채널의 네트워크 구성원이 네트워크 모니터를 사용하여 체인코드를 인스턴스화하고 인증 정책을 지정할 수 있습니다. 그러나 피어를 사용하여 채널에서 체인코드를 인스턴스화하려면 SDK를 사용하고 지시사항에 따라 [체인코드를 인스턴스화](/docs/services/blockchain/v10_application.html#instantiate-cc-sdk)할 수 있습니다.
 
 ## CLI를 사용하여 피어 운영
 {: #peer-cli-operate}
 
 Fabric `peer` client를 사용하여 명령행에서 피어를 운영할 수도 있습니다.
 
-피어는 내부에 피어 관리자의 signCert와 함께 배치되어 해당 ID로 피어를 운영할 수 있습니다. 다음 지시사항은 피어를 채널에 가입시키기 위해 [피어를 배치](peer_deploy_ibp.html#register-admin)할 때 생성된 피어 관리자 MSP 폴더를 사용하고 피어에 체인코드를 설치하며 그런 다음 채널에서 체인코드를 인스턴스화합니다.
+피어는 내부에 피어 관리자의 signCert와 함께 배치되어 해당 ID로 피어를 운영할 수 있습니다. 다음 지시사항은 피어를 채널에 가입시키기 위해 [피어를 배치](/docs/services/blockchain/howto/peer_deploy_ibp.html#register-admin)할 때 생성된 피어 관리자 MSP 폴더를 사용하고 피어에 체인코드를 설치하며 그런 다음 채널에서 체인코드를 인스턴스화합니다.
 
 ### Fabric 피어 클라이언트 다운로드
 {: #peer-client}
@@ -291,7 +291,7 @@ cd $HOME/fabric-ca-client/peer-admin/msp
 ```
 {:codeblock}
 
-피어를 운영하려면 로컬 머신에서 몇 가지 인증서 관리 작업을 수행해야 합니다. 예를 들면, 스타터 플랜 또는 엔터프라이즈 플랜에 피어 관리자 signCert를 업로드해야 하며 {{site.data.keyword.cloud_notm}}에서 피어와 네트워크의 TLS 인증서에 액세스할 수 있는지 확인해야 합니다. 사용할 인증서와 수행할 태스크에 대한 자세한 정보는 [{{site.data.keyword.blockchainfull_notm}} Platform에서 인증서 관리](../certificates.html)를 참조하십시오.
+피어를 운영하려면 로컬 머신에서 몇 가지 인증서 관리 작업을 수행해야 합니다. 예를 들면, 스타터 플랜 또는 엔터프라이즈 플랜에 피어 관리자 signCert를 업로드해야 하며 {{site.data.keyword.cloud_notm}}에서 피어와 네트워크의 TLS 인증서에 액세스할 수 있는지 확인해야 합니다. 사용할 인증서와 수행할 태스크에 대한 자세한 정보는 [{{site.data.keyword.blockchainfull_notm}} Platform에서 인증서 관리](/docs/services/blockchain/certificates.html)를 참조하십시오.
 
 1. 이름이 `admincerts`인 새 폴더로 피어 관리자의 signCert를 이동하십시오.
 
@@ -316,7 +316,7 @@ cd $HOME/fabric-ca-client/peer-admin/msp
 
 3. [피어 TLS 인증서를 다운로드](#peer-tls)했고 명령행에서 참조할 수 있는지 확인하십시오. 예제 명령을 사용한 경우 `$HOME/fabric-ca-client/peer-tls/peertls.pem` 파일에서 이 TLS 인증서를 찾을 수 있습니다.
 
-4. 또한 [피어 관리자를 등록](peer_deploy_ibp.html#enroll-admin)할 때 스타터 플랜 또는 엔터프라이즈 플랜 CA와 통신하는 데 사용한 TLS 인증서를 참조해야 합니다. 이 문서의 예제 명령을 수행했다면 `$HOME/fabric-ca-client/tls-ibp/tls.pem` 파일에 TLS 인증서가 있습니다.
+4. 또한 [피어 관리자를 등록](/docs/services/blockchain/howto/peer_deploy_ibp.html#enroll-admin)할 때 스타터 플랜 또는 엔터프라이즈 플랜 CA와 통신하는 데 사용한 TLS 인증서를 참조해야 합니다. 이 문서의 예제 명령을 수행했다면 `$HOME/fabric-ca-client/tls-ibp/tls.pem` 파일에 TLS 인증서가 있습니다.
 
 이러한 단계를 완료했는지 확인하려면 트리 명령을 실행할 수 있습니다. 인증서를 저장한 디렉토리로 이동하십시오. 트리 명령은 다음 구조와 유사한 결과를 생성해야 합니다.
 ```
@@ -432,8 +432,8 @@ tree
 
 다음 중 하나의 방법으로 네트워크의 채널에 조직을 추가해야 피어를 채널에 가입시키는 CLI 명령을 실행할 수 있습니다.
 
-  - 피어의 새 채널을 시작할 수 있습니다. 채널 개시자로서 [채널 작성](create_channel.html#creating-a-channel) 중에 조직을 자동으로 포함시킬 수 있습니다.
-  - 블록체인 네트워크의 다른 멤버도 [채널 업데이트](create_channel.html#updating-a-channel)를 사용하여 기존 채널에 조직을 추가할 수 있습니다.
+  - 피어의 새 채널을 시작할 수 있습니다. 채널 개시자로서 [채널 작성](/docs/services/blockchain/howto/create_channel.html#creating-a-channel) 중에 조직을 자동으로 포함시킬 수 있습니다.
+  - 블록체인 네트워크의 다른 멤버도 [채널 업데이트](/docs/services/blockchain/howto/create_channel.html#updating-a-channel)를 사용하여 기존 채널에 조직을 추가할 수 있습니다.
 
     채널에 조직을 추가하고 나면 다른 구성원이 트랜잭션 중에 디지털 서명을 확인할 수 있도록 피어의 signCert를 채널에 추가해야 합니다. 피어에서 설치 중에 signCert를 업로드하므로 사용자는 채널에 인증서를 동기화하기만 하면 됩니다. 네트워크 모니터의 "화면" 채널에서 조직이 가입하는 채널을 찾고 **조치** 헤더의 드롭 다운 목록에서 **인증서 동기화**를 선택하십시오. 이 조치는 채널에 있는 피어 전체에서 인증서를 동기화합니다.
 
@@ -542,7 +542,7 @@ peer chaincode instantiate -o ${ORDERER_1} -C ${CHANNEL} -n ${CC_NAME} -v v0 -c 
 2. 채널의 모든 피어에 새 체인코드를 설치한 다음 네트워크 모니터 또는
 [피어 체인코드 업그레이드 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/peerchaincode.html#peer-chaincode-upgrade) 명령을 사용하여 새 체인코드를 사용하도록 채널을 업데이트하십시오.
 
-네트워크 모니터의 "코드 설치" 패널을 사용하여 채널에서 체인코드를 업데이트하는 데 관한 자세한 정보는 해당 [지시사항](install_instantiate_chaincode.html#updating-a-chaincode) 중 2단계를 참조하십시오.
+네트워크 모니터의 "코드 설치" 패널을 사용하여 채널에서 체인코드를 업데이트하는 데 관한 자세한 정보는 해당 [지시사항](/docs/services/blockchain/howto/install_instantiate_chaincode.html#updating-a-chaincode) 중 2단계를 참조하십시오.
 
 ## 피어 로그 보기
 {: #peer-ibp-view-logs}

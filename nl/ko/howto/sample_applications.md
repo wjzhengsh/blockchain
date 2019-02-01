@@ -18,9 +18,9 @@ lastupdated: "2017-08-14"
 
 ## 시작하기 전에
 
-사용자의 로컬 파일 시스템에 모든 소프트웨어 전제조건을 설치했는지 확인하십시오. 자세한 정보는 [애플리케이션 개발 환경 설정](../v10_application.html#setting-up-application-development-environment)을 참조하십시오.
+사용자의 로컬 파일 시스템에 모든 소프트웨어 전제조건을 설치했는지 확인하십시오. 자세한 정보는 [애플리케이션 개발 환경 설정](/docs/services/blockchain/v10_application.html#setting-up-application-development-environment)을 참조하십시오.
 
-또한, {{site.data.keyword.blockchain}} 네트워크가 {{site.data.keyword.Bluemix_short}}에 채널 및 해당 피어와 함께 구성되어 있어야 합니다. 자세한 정보는 [네트워크 통제](../get_start.html)를 참조하십시오. 네트워크가 사용할 준비가 되었으면 사용자의 애플리케이션이 액세스할 네트워크 리소스의 API 엔드포인트를 검색하십시오.  자세한 정보는 [애플리케이션에 네트워크 서비스 신임 정보 추가](../v10_application.html#adding-network-service-credentials-to-your-application)를 참조하십시오.
+또한, {{site.data.keyword.blockchain}} 네트워크가 {{site.data.keyword.Bluemix_short}}에 채널 및 해당 피어와 함께 구성되어 있어야 합니다. 자세한 정보는 [네트워크 통제](../get_start.html)를 참조하십시오. 네트워크가 사용할 준비가 되었으면 사용자의 애플리케이션이 액세스할 네트워크 리소스의 API 엔드포인트를 검색하십시오.  자세한 정보는 [애플리케이션에 네트워크 서비스 신임 정보 추가](/docs/services/blockchain/v10_application.html#adding-network-service-credentials-to-your-application)를 참조하십시오.
 
 
 ## Marbles 애플리케이션

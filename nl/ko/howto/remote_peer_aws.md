@@ -24,12 +24,12 @@ lastupdated: "2018-11-27"
 
 AWS에 대한 자세한 정보는 [AWS 개요 문서 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://d1.awsstatic.com/whitepapers/aws-overview.pdf "AWS 개요 문서")를 참조하십시오.
 
-{{site.data.keyword.blockchainfull_notm}} Platform for AWS 피어를 배치하기 전에 [피어 고려사항](remote_peer.html#remote-peer-limitations)을 검토하십시오.
+{{site.data.keyword.blockchainfull_notm}} Platform for AWS 피어를 배치하기 전에 [피어 고려사항](/docs/services/blockchain/howto/remote_peer.html#remote-peer-limitations)을 검토하십시오.
 
 ## 선행 조건
 {: #prerequisites-aws}
 
-{{site.data.keyword.blockchainfull_notm}} Platform for AWS 피어(peer)를 사용하려면 IBM Blockchain Platform에서 호스팅되는 블록체인 네트워크의 구성원인 조직이 있어야 합니다. 네트워크 인증 정보 및 네트워크의 API 엔드포인트에 액세스하려면 IBM Cloud에서 네트워크 모니터를 사용해야 합니다. 블록체인 네트워크의 구성원이 아니면 네트워크를 작성하거나 가입해야 합니다. 자세한 정보는 [네트워크 작성](../get_start.html#creating-a-network) 또는 [네트워크에 가입](../get_start.html#joining-a-network)을 참조하십시오.
+{{site.data.keyword.blockchainfull_notm}} Platform for AWS 피어(peer)를 사용하려면 IBM Blockchain Platform에서 호스팅되는 블록체인 네트워크의 구성원인 조직이 있어야 합니다. 네트워크 인증 정보 및 네트워크의 API 엔드포인트에 액세스하려면 IBM Cloud에서 네트워크 모니터를 사용해야 합니다. 블록체인 네트워크의 구성원이 아니면 네트워크를 작성하거나 가입해야 합니다. 자세한 정보는 [네트워크 작성](/docs/services/blockchain/get_start.html#creating-a-network) 또는 [네트워크에 가입](/docs/services/blockchain/get_start.html#joining-a-network)을 참조하십시오.
 
 피어에 대한 기본 VPC 인스턴스 유형은 `m4.xlarge`입니다. CPU, 메모리 및 스토리지 요구사항에 따라 선택한 인스턴스 유형을 최적화해야 합니다. 피어를 사용하려면 최소 다음과 같은 항목이 필요합니다.  
 -	2x CPU
@@ -260,9 +260,9 @@ AWS CloudFormation 템플리트에서 정상적으로 스택을 작성하면 AWS
 
 2. 최초 블록을 페치하려면 먼저 네트워크의 채널에 조직을 추가해야 합니다.
 
-  - 피어를 위한 새 채널을 시작할 수 있습니다. 채널 개시자로서 [채널 작성](create_channel.html#creating-a-channel) 중에 조직을 자동으로 포함시킬 수 있습니다.
+  - 피어를 위한 새 채널을 시작할 수 있습니다. 채널 개시자로서 [채널 작성](/docs/services/blockchain/howto/create_channel.html#creating-a-channel) 중에 조직을 자동으로 포함시킬 수 있습니다.
 
-  - 블록체인 네트워크의 다른 구성원도 [채널 업데이트](create_channel.html#updating-a-channel)를 사용하여 기존 채널에 조직을 추가할 수 있습니다.
+  - 블록체인 네트워크의 다른 구성원도 [채널 업데이트](/docs/services/blockchain/howto/create_channel.html#updating-a-channel)를 사용하여 기존 채널에 조직을 추가할 수 있습니다.
 
   - 채널에 조직이 추가된 후에는 피어의 서명 인증서를 채널에 추가해야 합니다. 피어는 설치 중에 해당 서명 인증서를 업로드하므로 인증서를 채널과 동기화하기만 하면 됩니다. 네트워크 모니터의 "화면" 채널에서 조직이 가입하는 채널을 찾고 **조치** 헤더의 드롭 다운 목록에서 **인증서 동기화**를 선택하십시오. 이 조치는 채널에 있는 피어 전체에서 인증서를 동기화합니다.
 
@@ -338,13 +338,13 @@ AWS CloudFormation 템플리트에서 정상적으로 스택을 작성하면 AWS
 ## 다음으로 수행할 작업
 {: #whats-next-aws}
 
-AWS에 피어가 설정된 후 트랜잭션을 제출하고 블록체인 네트워크의 분산 원장을 읽어들이기 전에 몇 가지 작동 단계를 완료할 수 있습니다. 자세한 정보는 [AWS에서 피어 작동](remote_peer_operate_aws.html#remote-peer-operate-aws)을 참조하십시오.
+AWS에 피어가 설정된 후 트랜잭션을 제출하고 블록체인 네트워크의 분산 원장을 읽어들이기 전에 몇 가지 작동 단계를 완료할 수 있습니다. 자세한 정보는 [AWS에서 피어 작동](/docs/services/blockchain/howto/remote_peer_operate_aws.html#remote-peer-operate-aws)을 참조하십시오.
 
 ## 고가용성(HA)
 {: #aws-high-availability}
 
 기본적으로 빠른 시작 템플리트는 HA 지원을 위해 서로 다른 두 개의 가용성 구역에 두 개의 피어 인스턴스를 배치합니다.
-이 HA 지원을 활용하려면 [고가용성을 위한 클라이언트 애플리케이션](../v10_application.html#ha-app)도 구성해야 합니다.
+이 HA 지원을 활용하려면 [고가용성을 위한 클라이언트 애플리케이션](/docs/services/blockchain/v10_application.html#ha-app)도 구성해야 합니다.
 
 ## 보안 고려사항
 {: #remote-peer-aws-security}
@@ -382,14 +382,14 @@ levelDB를 사용하는지 또는 couchDB를 사용하는지 여부에 관계 �
 {: #aws-security-data-residency}
 
 데이터 상주를 사용하는 경우 모든 블록체인 원장 데이터의 처리 및 저장이 단일 국가의 경계 내에서 수행되어야 합니다.
-그 방법에 대한 자세한 정보는 이 [주제](remote_peer.html#data-residency)를 참조하십시오.
+그 방법에 대한 자세한 정보는 이 [주제](/docs/services/blockchain/howto/remote_peer.html#data-residency)를 참조하십시오.
 
 #### 키 관리
 {: #aws-security-key-management}
 
-키 관리는 피어 보안 측면에서 매우 중요한 요소입니다. 개인 키가 손상되거나 유실되는 경우 적대적인 액터가 피어의 데이터 및 기능에 액세스할 수도 있습니다. {{site.data.keyword.blockchainfull_notm}} Platform 엔터프라이즈 플랜에서는 HSM([Hardware Security Modules](../glossary.html#hsm))을 사용하여 네트워크의 개인 키를 저장합니다. HSM은 다른 당사자가 개인 키에 액세스하지 못하게 하는 물리적 어플라이언스입니다.
+키 관리는 피어 보안 측면에서 매우 중요한 요소입니다. 개인 키가 손상되거나 유실되는 경우 적대적인 액터가 피어의 데이터 및 기능에 액세스할 수도 있습니다. {{site.data.keyword.blockchainfull_notm}} Platform 엔터프라이즈 플랜에서는 HSM([Hardware Security Modules](/docs/services/blockchain/glossary.html#hsm))을 사용하여 네트워크의 개인 키를 저장합니다. HSM은 다른 당사자가 개인 키에 액세스하지 못하게 하는 물리적 어플라이언스입니다.
 
-AWS에 피어를 배치하는 경우 사용자가 개인 키를 관리해야 합니다. {{site.data.keyword.blockchainfull_notm}} Platform에서 개인 키를 생성해도 해당 키는 Platform에 저장되지 않습니다. 키가 손상되지 않도록 안전한 위치에 저장하는 것이 중요합니다. 피어의 개인 키는 피어 MSP의 키 저장소 폴더(피어 컨테이너 내에 있는 `/etc/hyperledger/<PEER_ENROLL_ID>/msp/keystore/` 디렉토리)에 있습니다. 피어 내에 있는 인증서에 대한 자세한 정보를 확인하려면 [{{site.data.keyword.blockchainfull_notm}} Platform에서 인증서 관리](../certificates.html) 주제의 [MSP(Membership Services Provider)](../certificates.html#msp) 절을 방문하십시오.
+AWS에 피어를 배치하는 경우 사용자가 개인 키를 관리해야 합니다. {{site.data.keyword.blockchainfull_notm}} Platform에서 개인 키를 생성해도 해당 키는 Platform에 저장되지 않습니다. 키가 손상되지 않도록 안전한 위치에 저장하는 것이 중요합니다. 피어의 개인 키는 피어 MSP의 키 저장소 폴더(피어 컨테이너 내에 있는 `/etc/hyperledger/<PEER_ENROLL_ID>/msp/keystore/` 디렉토리)에 있습니다. 피어 내에 있는 인증서에 대한 자세한 정보를 확인하려면 [{{site.data.keyword.blockchainfull_notm}} Platform에서 인증서 관리](/docs/services/blockchain/certificates.html) 주제의 [MSP(Membership Services Provider)](/docs/services/blockchain/certificates.html#msp) 절을 방문하십시오.
 
 Key Escrow를 사용하여 유실된 개인 키를 복구할 수 있습니다. 이 작업은 키 유실 전에 수행해야 합니다. 개인 키를 복구할 수 없는 경우 인증 기관에서 새 signCert를 받아서 새 개인 키를 가져와야 합니다. 또한 가입한 모든 채널에서 관리자 인증서를 제거하고 대체해야 합니다.
 
@@ -406,7 +406,7 @@ In IBP when a private key is created, two sets of independent key material is ge
 #### Membership Services Provider 구성
 {: #aws-security-MSP}
 
-IBM Blockchain Platform의 컴포넌트는 MSP(Membership Service Provider)를 통해 ID를 이용합니다. MSP는 CA에서 발행하는 인증서를 네트워크 및 채널 역할과 연관시킵니다. 피어에서 MSP가 작동하는 방법에 대한 자세한 정보는 이 [주제](../certificates.html#msp)를 참조하십시오.
+IBM Blockchain Platform의 컴포넌트는 MSP(Membership Service Provider)를 통해 ID를 이용합니다. MSP는 CA에서 발행하는 인증서를 네트워크 및 채널 역할과 연관시킵니다. 피어에서 MSP가 작동하는 방법에 대한 자세한 정보는 이 [주제](/docs/services/blockchain/certificates.html#msp)를 참조하십시오.
 
 #### 애플리케이션 보안
 {: #aws-security-appl}

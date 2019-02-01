@@ -23,7 +23,7 @@ lastupdated: "2018-12-07"
 {{site.data.keyword.blockchainfull}} Platform을 사용하여 블록체인 솔루션을 개발할 때 Hyperledger Composer 오픈 소스 개발 도구 세트를 활용합니다. Hyperledger Composer는 맞춤형 모델링 언어를 사용하며, 이 언어는 사용자가 실제 블록체인 네트워크에 무언가를 배치하기 _전에_ JavaScript 트랜잭션 및 액세스 제어 규칙에 결합되어 블록체인 비즈니스 네트워크 전체를 모델링합니다.
 {:shortdesc}
 
-**참고:** 스타터 플랜은 사용자가 학습하고 시험 사용해 볼 수 있는 샘플 애플리케이션을 제공합니다. 사용자 정의 비즈니스 네트워크를 개발하기 전에 스타터 플랜에서 샘플 애플리케이션을 실행할 수 있습니다. 자세한 정보는 [스타터 플랜 정보](starter_plan.html)를 참조하십시오.
+**참고:** 스타터 플랜은 사용자가 학습하고 시험 사용해 볼 수 있는 샘플 애플리케이션을 제공합니다. 사용자 정의 비즈니스 네트워크를 개발하기 전에 스타터 플랜에서 샘플 애플리케이션을 실행할 수 있습니다. 자세한 정보는 [스타터 플랜 정보](/docs/services/blockchain/starter_plan.html)를 참조하십시오.
 
 이 튜토리얼에서는 비즈니스 네트워크 작성 및 모델링으로 시작하는 {{site.data.keyword.blockchain}} 솔루션의 개발을 거친 다음 실행 중인 블록체인 네트워크에 배치합니다.
 
@@ -39,7 +39,7 @@ lastupdated: "2018-12-07"
 
 ## 시작하기 전에
 
-[{{site.data.keyword.blockchainfull_notm}}: Develop 개발 도구](./develop_install.html)를 설치했는지 확인하십시오.
+[{{site.data.keyword.blockchainfull_notm}}: Develop 개발 도구](/docs/services/blockchain/develop_install.html)를 설치했는지 확인하십시오.
 
 ## 1단계: 비즈니스 네트워크 구조 작성
 
@@ -179,6 +179,6 @@ composer archive create -t dir -n .
 
 ## 4단계: 비즈니스 네트워크 배치 및 REST 서버 생성
 
-[스타터 플랜](./develop_starter.html) 또는 [엔터프라이즈 플랜](./develop_enterprise.html)을 사용하여 비즈니스 네트워크를 {{site.data.keyword.blockchainfull_notm}} Platform에 배치하십시오.
+[스타터 플랜](/docs/services/blockchain/develop_starter.html) 또는 [엔터프라이즈 플랜](/docs/services/blockchain/develop_enterprise.html)을 사용하여 비즈니스 네트워크를 {{site.data.keyword.blockchainfull_notm}} Platform에 배치하십시오.
 
 비즈니스 네트워크를 {{site.data.keyword.blockchainfull_notm}} Platform에 배치한 후 맞춤형 REST 서버를 생성할 수 있습니다. REST 서버는 비즈니스 네트워크의 컨텐츠를 조사하고 네트워크의 자산, 트랜잭션 및 참가자에 대한 RESTful API 호출을 빌드합니다. REST 서버 생성을 위한 지시사항은 [Hyperledger Composer 문서](https://hyperledger.github.io/composer/latest/integrating/getting-started-rest-api)에 포함되어 있습니다.

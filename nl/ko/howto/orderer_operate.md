@@ -148,7 +148,7 @@ ICP에서 실행되는 순서 지정자 컨테이너에 연결하려면 **kubect
 
 순서 지정자 관리자 MSP 폴더가 생성되는 디렉토리로 전환하십시오. 이 문서의 예제 단계를 수행한 방법 또는 배치하는 컴포넌트의 수에 따라 `$HOME/fabric-ca-client/orderer-admin/msp` 또는 `$HOME/fabric-ca-client/peer-admin/msp`에서 MSP 폴더를 찾을 수 있습니다.
 
-순서 지정자를 작동시키려면 먼저 로컬 시스템에서 몇 가지 인증서 관리 작업을 수행해야 합니다. 또한 순서 지정자에서 TLS 인증서에 액세스할 수 있는지 확인해야 합니다. 사용할 인증서에 대한 자세한 정보는 [{{site.data.keyword.cloud_notm}} Private에서 인증 기관 작동](CA_operate.html)의 [MSP(Membership Service Provider)](CA_operate.html#msp)를 참조하십시오.
+순서 지정자를 작동시키려면 먼저 로컬 시스템에서 몇 가지 인증서 관리 작업을 수행해야 합니다. 또한 순서 지정자에서 TLS 인증서에 액세스할 수 있는지 확인해야 합니다. 사용할 인증서에 대한 자세한 정보는 [{{site.data.keyword.cloud_notm}} Private에서 인증 기관 작동](/docs/services/blockchain/howto/CA_operate.html)의 [MSP(Membership Service Provider)](/docs/services/blockchain/howto/CA_operate.html#msp)를 참조하십시오.
 
 1. 순서 지정자 관리자의 signCert를 `admincerts`로 이름 지정된 새 폴더로 이동하십시오.
 
@@ -220,9 +220,9 @@ tree
 
 다음 목록은 컨소시엄의 다양한 조직 세트에서 수행되는 일반 단계 및 태스크를 보여줍니다.
 
-1. 콘소시엄에 가입하는 각각의 조직에서 [조직 정의를 준비](peer_operate_icp.html#organization-definition)해야 합니다.
+1. 콘소시엄에 가입하는 각각의 조직에서 [조직 정의를 준비](/docs/services/blockchain/howto/peer_operate_icp.html#organization-definition)해야 합니다.
 2. 순서 지정자 조직 관리자는 순서 지정자 시스템 채널에 조직을 추가하여 [컨소시엄을 구성](#consortium)합니다.
-3. 콘소시엄의 조직은 채널 구성 트랜잭션을 준비하여 [새 채널을 작성](peer_operate_icp.html#peer-icp-channeltx)할 수 있습니다.
+3. 콘소시엄의 조직은 채널 구성 트랜잭션을 준비하여 [새 채널을 작성](/docs/services/blockchain/howto/peer_operate_icp.html#peer-icp-channeltx)할 수 있습니다.
 
 ## Fabric 도구 가져오기
 {: #get-fabric-tools}
@@ -268,7 +268,7 @@ tree
 ## 조직 정의 작성
 {: #org-definition}
 
-조직의 **정의**에는 조직 이름(MSP ID) 및 관련 인증서가 포함되어 있습니다. 시스템 채널 및 애플리케이션 채널은 채널 작성, 업데이트 및 트랜잭션 인증을 제어하는 정책에 조직을 포함시키기 위해 이 정의를 사용합니다. 컨소시엄에 가입하려는 각각의 조직에서 이 단계를 완료해야 합니다. 자세한 정보는 [조직 정의 준비](peer_operate_icp.html#organization-definition)를 참조하십시오.
+조직의 **정의**에는 조직 이름(MSP ID) 및 관련 인증서가 포함되어 있습니다. 시스템 채널 및 애플리케이션 채널은 채널 작성, 업데이트 및 트랜잭션 인증을 제어하는 정책에 조직을 포함시키기 위해 이 정의를 사용합니다. 컨소시엄에 가입하려는 각각의 조직에서 이 단계를 완료해야 합니다. 자세한 정보는 [조직 정의 준비](/docs/services/blockchain/howto/peer_operate_icp.html#organization-definition)를 참조하십시오.
 
 ## 컨소시엄 구성
 {: #consortium}
@@ -280,7 +280,7 @@ tree
 
 ### 조직 정의 가져오기
 
-순서 지정자는 컨소시엄에 가입하려는 구성원으로부터 [조직 정의](peer_operate_icp.html#organization-definition)를 수신해야 합니다. 이 작업은 해당 MSP ID 및 압호화 자료가 포함된 JSON 파일을 전송하는 다른 구성원과의 대역 내외 오퍼레이션에서 완료해야 합니다. 참고로 아래의 명령에서는 `org-definitions`로 이름 지정된 폴더를 작성하여 관련된 모든 파일을 해당 디렉토리에 배치한 것으로 가정합니다.
+순서 지정자는 컨소시엄에 가입하려는 구성원으로부터 [조직 정의](/docs/services/blockchain/howto/peer_operate_icp.html#organization-definition)를 수신해야 합니다. 이 작업은 해당 MSP ID 및 압호화 자료가 포함된 JSON 파일을 전송하는 다른 구성원과의 대역 내외 오퍼레이션에서 완료해야 합니다. 참고로 아래의 명령에서는 `org-definitions`로 이름 지정된 폴더를 작성하여 관련된 모든 파일을 해당 디렉토리에 배치한 것으로 가정합니다.
 
 ### 시스템 채널의 최초 블록 페치
 
@@ -375,9 +375,9 @@ tree
 
 다운로드된 [Fabric 도구](#get-fabric-tools)(`configtxtlator`)는 protobuf 형식의 채널 구성을 JSON 형식으로 변환하거나 반대로 변환합니다.
 
-다음 단계는 [블록을 JSON 형식으로 변환]( https://hyperledger-fabric.readthedocs.io/en/release-1.2/channel_update_tutorial.html#convert-the-configuration-to-json-and-trim-it-down)하는 작업과 관련된 채널 업데이트 튜토리얼의 일반 플로우를 수행합니다. 애플리케이션 채널이 아닌 순서 지정자 시스템 채널을 업데이트하고 있다는 사실을 반영하려면 튜토리얼에 있는 명령을 일부 변경해야 합니다. 해당 튜토리얼을 방문하여 이 프로세스에 대한 자세한 정보를 확인할 수 있습니다. 이 절에서는 단순히 사용자를 위한 명령만 제공합니다.
+다음 단계는 [블록을 JSON 형식으로 변환](https://hyperledger-fabric.readthedocs.io/en/release-1.2/channel_update_tutorial.html#convert-the-configuration-to-json-and-trim-it-down)하는 작업과 관련된 채널 업데이트 튜토리얼의 일반 플로우를 수행합니다. 애플리케이션 채널이 아닌 순서 지정자 시스템 채널을 업데이트하고 있다는 사실을 반영하려면 튜토리얼에 있는 명령을 일부 변경해야 합니다. 해당 튜토리얼을 방문하여 이 프로세스에 대한 자세한 정보를 확인할 수 있습니다. 이 절에서는 단순히 사용자를 위한 명령만 제공합니다.
 
-1. 조직 정의 JSON 파일을 [조직을 작성한](peer_operate_icp.html#organization-definition) 폴더에서 `configupdate` 폴더로 복사하십시오. 아래의 예제에서 조직 정의 JSON 파일은 `org1definition.json`입니다.
+1. 조직 정의 JSON 파일을 [조직을 작성한](/docs/services/blockchain/howto/peer_operate_icp.html#organization-definition) 폴더에서 `configupdate` 폴더로 복사하십시오. 아래의 예제에서 조직 정의 JSON 파일은 `org1definition.json`입니다.
 
    ```
    cp <path_to_config_folder>/org1definition.json $HOME/fabric-ca-client/org-definitions/configupdate
@@ -393,7 +393,7 @@ tree
   ```
   {:codeblock}
 
-3. 조직의 암호화 자료를 컨소시엄 구성에 추가하려면 다음 명령을 실행하십시오. <NEWORGMSP>를 [사용자가 작성한 조직](peer_operate_icp.html#organization-definition)에 대한 조직 MSP ID로 대체하십시오.
+3. 조직의 암호화 자료를 컨소시엄 구성에 추가하려면 다음 명령을 실행하십시오. <NEWORGMSP>를 [사용자가 작성한 조직](/docs/services/blockchain/howto/peer_operate_icp.html#organization-definition)에 대한 조직 MSP ID로 대체하십시오.
 
   ```
   jq -s '.[0] * {"channel_group":{"groups":{"Consortiums":{"groups":{"SampleConsortium":{"groups": {"<NEWORGMSP>":.[1]}}}}}}}' config.json ./orgdefinition.json > modified_config.json

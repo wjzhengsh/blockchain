@@ -24,7 +24,7 @@ Fabric을 기반으로 하는 네트워크의 컴포넌트에 대한 상위 레�
 
 *이 비디오가 스타터 및 엔터프라이즈 네트워크의 퍼스펙티브에서 컴포넌트에 중점을 두고 있으나 정보는 계속해서 IBP on ICP(IBM Cloud Platform)의 고객 관리 솔루션과 높은 관련성을 유지합니다.*
 
-이 개요의 목적으로 인증 기관(CA), 순서 지정자, 피어, 스마트 계약 및 애플리케이션에 중점을 둡니다. [{{site.data.keyword.blockchainfull_notm}} Platform for ICP 배치 안내서](ibp_for_icp_deployment_guide.html) 주제에서 확인할 수 있듯이 이 순서는 임의적이지 않으며, Fabric 기반 네트워크의 컴포넌트가 배치되는 순서를 반영합니다. 
+이 개요의 목적으로 인증 기관(CA), 순서 지정자, 피어, 스마트 계약 및 애플리케이션에 중점을 둡니다. [{{site.data.keyword.blockchainfull_notm}} Platform for ICP 배치 안내서](/docs/services/blockchain/ibp_for_icp_deployment_guide.html) 주제에서 확인할 수 있듯이 이 순서는 임의적이지 않으며, Fabric 기반 네트워크의 컴포넌트가 배치되는 순서를 반영합니다. 
 
 ## 인증 기관
 {: #ca}

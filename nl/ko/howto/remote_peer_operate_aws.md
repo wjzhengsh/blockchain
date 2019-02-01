@@ -21,16 +21,16 @@ lastupdated: "2018-11-27"
 
 AWS에 {{site.data.keyword.blockchainfull}} Platform 피어를 설정한 다음 여러 오퍼레이션 단계를 완료해야 피어가 블록체인 네트워크의 원장을 조회하고 호출하기 위한 트랜잭션을 발행할 수 있습니다. 이 단계에는 채널에 조직을 추가하고 채널에 피어를 가입하며 피어에 체인코드를 설치하고 채널에서 체인코드를 인스턴스화하며 애플리케이션을 피어에 연결하는 단계가 포함됩니다. [Fabric SDK](#aws-peer-operate-with-sdk) 또는 [명령행](#aws-peer-cli-operate)을 사용하여 이러한 운영 단계를 완료할 수 있습니다. 지시사항에서는 SDK 오퍼레이션에 익숙하다고 가정하지만 Fabric SDK 경로를 사용하는 것이 좋습니다.
 
-**참고**: AWS의 {{site.data.keyword.blockchainfull_notm}} Platform 피어에서는 {{site.data.keyword.blockchainfull_notm}} Platform에서 호스팅되는 피어의 전체 기능 또는 지원에 액세스할 권한이 없습니다. 따라서 네트워크 모니터를 사용하여 피어를 작동시킬 수 없습니다. AWS에서 피어 실행을 시작하기 전에 [고려사항](remote_peer.html#remote-peer-limitations)을 검토하십시오.
+**참고**: AWS의 {{site.data.keyword.blockchainfull_notm}} Platform 피어에서는 {{site.data.keyword.blockchainfull_notm}} Platform에서 호스팅되는 피어의 전체 기능 또는 지원에 액세스할 권한이 없습니다. 따라서 네트워크 모니터를 사용하여 피어를 작동시킬 수 없습니다. AWS에서 피어 실행을 시작하기 전에 [고려사항](/docs/services/blockchain/howto/remote_peer.html#remote-peer-limitations)을 검토하십시오.
 
 ## Fabric SDK를 사용하여 피어 운영
 {: #aws-peer-operate-with-sdk}
 
 Hyperledger Fabric SDK에서는 애플리케이션에서 블록체인 네트워크와 상호작용하고 운영하는 데 사용할 수 있는 강력한 API 세트를 제공합니다. [Hyperledger Fabric SDK 커뮤니티 문서 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/getting_started.html#hyperledger-fabric-sdks "Hyperledger Fabric SDK 커뮤니티 문서")에서 Hyperledger Fabric SDK 내에서 지원되는 최신 언어 목록과 사용 가능한 전체 API 목록을 찾을 수 있습니다. Fabric SDK를 사용하여 {{site.data.keyword.blockchainfull_notm}} Platform의 채널에 피어를 가입시키고 피어에 체인코드를 설치하며 채널에서 체인코드를 인스턴스화할 수 있습니다.
 
-다음 지시사항에서는 [Fabric Node SDK ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://fabric-sdk-node.github.io/ "Hyperledger Fabric SDK for jode.js")를 사용하여 피어를 운영하고 이미 SDK에 익숙하다고 가정합니다. [애플리케이션 개발 튜토리얼](../v10_application.html)은 시작하기 전에 Node SDK를 사용하는 방법을 알아보고 체인코드를 호출하여 조회할 준비가 되었을 때 피어로 애플리케이션을 개발하기 위한 안내서로 사용할 수 있습니다.
+다음 지시사항에서는 [Fabric Node SDK ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://fabric-sdk-node.github.io/ "Hyperledger Fabric SDK for jode.js")를 사용하여 피어를 운영하고 이미 SDK에 익숙하다고 가정합니다. [애플리케이션 개발 튜토리얼](/docs/services/blockchain/v10_application.html)은 시작하기 전에 Node SDK를 사용하는 방법을 알아보고 체인코드를 호출하여 조회할 준비가 되었을 때 피어로 애플리케이션을 개발하기 위한 안내서로 사용할 수 있습니다.
 
-AWS 빠른 시작의 {{site.data.keyword.blockchainfull_notm}} Platform 피어는 고가용성을 위해 두 개의 피어를 작성합니다. 따라서 피어마다 해당 오퍼레이션 단계를 한 번씩 수행해야 합니다. 애플리케이션에서 체인코드를 조회하고 호출할 준비가 되면 [애플리케이션의 고가용성](../v10_application.html#ha-app)을 위해 SDK를 두 피어 모두에 연결하십시오.
+AWS 빠른 시작의 {{site.data.keyword.blockchainfull_notm}} Platform 피어는 고가용성을 위해 두 개의 피어를 작성합니다. 따라서 피어마다 해당 오퍼레이션 단계를 한 번씩 수행해야 합니다. 애플리케이션에서 체인코드를 조회하고 호출할 준비가 되면 [애플리케이션의 고가용성](/docs/services/blockchain/v10_application.html#ha-app)을 위해 SDK를 두 피어 모두에 연결하십시오.
 
 ### Node SDK 설치
 
@@ -45,7 +45,7 @@ Node SDK 버전 1.2를 사용하는 것이 좋습니다.
 ### 피어에서 작동하도록 SDK 준비
 {: #remote-peer-node-sdk}
 
-SDK를 사용하여 피어를 운영하기 전에 애플리케이션이 {{site.data.keyword.blockchainfull_notm}} Platform과 피어에서 네트워크와 통신하는 데 필요한 인증서(등록)를 생성해야 합니다. **admin** ID를 사용하여 [SDK에 등록](../v10_application.html#enroll-app-sdk)하는 단계를 수행하십시오. [애플리케이션 개발](../v10_application.html) 튜토리얼에서도 **admin**으로 등록하므로 샘플 코드를 수정하지 않아도 됩니다.
+SDK를 사용하여 피어를 운영하기 전에 애플리케이션이 {{site.data.keyword.blockchainfull_notm}} Platform과 피어에서 네트워크와 통신하는 데 필요한 인증서(등록)를 생성해야 합니다. **admin** ID를 사용하여 [SDK에 등록](/docs/services/blockchain/v10_application.html#enroll-app-sdk)하는 단계를 수행하십시오. [애플리케이션 개발](/docs/services/blockchain/v10_application.html) 튜토리얼에서도 **admin**으로 등록하므로 샘플 코드를 수정하지 않아도 됩니다.
 
 ### IBM Blockchain Platform에 signcert 업로드
 {: #remote-peer-upload-SDK}
@@ -107,23 +107,23 @@ var peer = fabric_client.newPeer('grpcs://<AWS_EC2_dashboard_Public_DNS>:7051', 
 
 블록체인 네트워크의 구성원으로서 조직이 네트워크의 채널에 추가되어야 피어를 채널에 가입할 수 있습니다.
 
-  - 피어의 새 채널을 시작할 수 있습니다. 채널 개시자로서 [채널 작성](create_channel.html#creating-a-channel) 중에 조직을 자동으로 포함시킬 수 있습니다.
+  - 피어의 새 채널을 시작할 수 있습니다. 채널 개시자로서 [채널 작성](/docs/services/blockchain/howto/create_channel.html#creating-a-channel) 중에 조직을 자동으로 포함시킬 수 있습니다.
 
-  - 블록체인 네트워크의 다른 멤버도 [채널 업데이트](create_channel.html#updating-a-channel)를 사용하여 기존 채널에 조직을 추가할 수 있습니다.
+  - 블록체인 네트워크의 다른 멤버도 [채널 업데이트](/docs/services/blockchain/howto/create_channel.html#updating-a-channel)를 사용하여 기존 채널에 조직을 추가할 수 있습니다.
 
     채널에 조직을 추가하고 나면 다른 구성원이 트랜잭션 중에 디지털 서명을 확인할 수 있도록 피어의 서명 인증서를 채널에 추가해야 합니다. 피어에서 설치 중에 서명 인증서를 업로드하므로 사용자는 채널에 인증서를 동기화하기만 하면 됩니다. 네트워크 모니터의 "화면" 채널에서 조직이 가입하는 채널을 찾고 **조치** 헤더의 드롭 다운 목록에서 **인증서 동기화**를 선택하십시오. 이 조치는 채널에 있는 피어 전체에서 인증서를 동기화합니다. 채널 가입 명령을 실행하기 전에 채널 동기화가 완료되도록 몇 분 동안 기다려야 합니다.
 
-조직이 채널의 일부이면 [채널 가입](../v10_application.html#join-channel-sdk)의 지시사항을 따르십시오. 주문 서비스와 채널 이름의 URL을 제공해야 합니다.
+조직이 채널의 일부이면 [채널 가입](/docs/services/blockchain/v10_application.html#join-channel-sdk)의 지시사항을 따르십시오. 주문 서비스와 채널 이름의 URL을 제공해야 합니다.
 
 ### SDK를 사용하여 피어에 체인코드 설치
 {: #remote-peer-install-cc-sdk}
 
-SDK를 사용하여 피어에 [체인코드를 설치](../v10_application.html#install-cc-sdk)하려면 다음 지시사항을 준수하십시오.
+SDK를 사용하여 피어에 [체인코드를 설치](/docs/services/blockchain/v10_application.html#install-cc-sdk)하려면 다음 지시사항을 준수하십시오.
 
 ### SDK를 사용하여 채널에서 체인코드 인스턴스화
 {: #remote-peer-instantiate-cc-sdk}
 
-채널의 한 멤버만 체인코드를 인스턴스화하거나 업데이트하면 됩니다. 따라서 {{site.data.keyword.blockchainfull_notm}} Platform에 피어가 있는 채널의 네트워크 구성원이 네트워크 모니터를 사용하여 체인코드를 인스턴스화하고 인증 정책을 지정할 수 있습니다. 그러나 피어를 사용하여 채널에서 체인코드를 인스턴스화하려면 SDK를 사용하고 지시사항에 따라 [체인코드를 인스턴스화](../v10_application.html#instantiate-cc-sdk)할 수 있습니다.
+채널의 한 멤버만 체인코드를 인스턴스화하거나 업데이트하면 됩니다. 따라서 {{site.data.keyword.blockchainfull_notm}} Platform에 피어가 있는 채널의 네트워크 구성원이 네트워크 모니터를 사용하여 체인코드를 인스턴스화하고 인증 정책을 지정할 수 있습니다. 그러나 피어를 사용하여 채널에서 체인코드를 인스턴스화하려면 SDK를 사용하고 지시사항에 따라 [체인코드를 인스턴스화](/docs/services/blockchain/v10_application.html#instantiate-cc-sdk)할 수 있습니다.
 
 
 ## CLI를 사용하여 피어 운영
@@ -200,7 +200,7 @@ Fabric CA Client 및 Fabric 도구 컨테이너를 사용하여 명령행에서 
 ### 로컬 시스템에서 인증서 관리
 {: #manage-certs}
 
-로컬 시스템에서 인증서를 관리하고 Fabric CA Client에서 생성한 인증서를 {{site.data.keyword.blockchainfull_notm}} Platform과 피어에 업로드해야 피어를 운영할 수 있습니다. Platform과 피어에서 TLS 인증서도 다운로드해야 합니다. 작업할 인증서와 수행할 작업에 관한 자세한 정보는 [{{site.data.keyword.blockchainfull_notm}} Platform에서 인증서 관리](../certificates.html)를 참조하십시오.
+로컬 시스템에서 인증서를 관리하고 Fabric CA Client에서 생성한 인증서를 {{site.data.keyword.blockchainfull_notm}} Platform과 피어에 업로드해야 피어를 운영할 수 있습니다. Platform과 피어에서 TLS 인증서도 다운로드해야 합니다. 작업할 인증서와 수행할 작업에 관한 자세한 정보는 [{{site.data.keyword.blockchainfull_notm}} Platform에서 인증서 관리](/docs/services/blockchain/certificates.html)를 참조하십시오.
 
 로컬 시스템에서 명령 터미널을 열고 Fabric-CA-Client 2진 파일을 이동하고 MSP 폴더를 저장한 디렉토리로 이동합니다.
 
@@ -224,7 +224,7 @@ Fabric CA Client 및 Fabric 도구 컨테이너를 사용하여 명령행에서 
 
 3. 또한 피어의 TLS 인증서를 AWS의 피어 컨테이너에서 로컬 시스템으로 복사해야 합니다.
 
-    - [이 지시사항을 준수](remote_peer_aws.html#remote-peer-aws-test)하여 피어 컨테이너에 로그인하고 해당 번호가 뒤에 오는 빠른 시작 템플리트에 지정한 피어의 스택 이름으로 <PEER_ENROLL_ID>를 대체하는 다음 명령을 실행하십시오. (두 개의 VPC 인스턴스가 작성됨을 상기하십시오.)
+    - [이 지시사항을 준수](/docs/services/blockchain/howto/remote_peer_aws.html#remote-peer-aws-test)하여 피어 컨테이너에 로그인하고 해당 번호가 뒤에 오는 빠른 시작 템플리트에 지정한 피어의 스택 이름으로 <PEER_ENROLL_ID>를 대체하는 다음 명령을 실행하십시오. (두 개의 VPC 인스턴스가 작성됨을 상기하십시오.)
       ```
       cat /etc/hyperledger/<PEER_ENROLL_ID>/tls/ca.crt
       ```
@@ -313,9 +313,9 @@ Fabric CA Client 및 Fabric 도구 컨테이너를 사용하여 명령행에서 
 
 네트워크의 채널에 조직을 추가해야 피어를 채널에 가입시키는 CLI 명령을 실행할 수 있습니다.
 
-  - 피어의 새 채널을 시작할 수 있습니다. 채널 개시자로서 [채널 작성](create_channel.html#creating-a-channel) 중에 조직을 자동으로 포함시킬 수 있습니다.
+  - 피어의 새 채널을 시작할 수 있습니다. 채널 개시자로서 [채널 작성](/docs/services/blockchain/howto/create_channel.html#creating-a-channel) 중에 조직을 자동으로 포함시킬 수 있습니다.
 
-  - 블록체인 네트워크의 다른 멤버도 [채널 업데이트](create_channel.html#updating-a-channel)를 사용하여 기존 채널에 조직을 추가할 수 있습니다.
+  - 블록체인 네트워크의 다른 멤버도 [채널 업데이트](/docs/services/blockchain/howto/create_channel.html#updating-a-channel)를 사용하여 기존 채널에 조직을 추가할 수 있습니다.
 
     채널에 조직을 추가하고 나면 다른 구성원이 트랜잭션 중에 디지털 서명을 확인할 수 있도록 피어의 서명 인증서를 채널에 추가해야 합니다. 피어에서 설치 중에 서명 인증서를 업로드하므로 사용자는 채널에 인증서를 동기화하기만 하면 됩니다. 네트워크 모니터의 "화면" 채널에서 조직이 가입하는 채널을 찾고 **조치** 헤더의 드롭 다운 목록에서 **인증서 동기화**를 선택하십시오. 이 조치는 채널에 있는 피어 전체에서 인증서를 동기화합니다.
 
@@ -475,7 +475,7 @@ CORE_PEER_TLS_ROOTCERT_FILE=/mnt/msp/tls/cacert.pem CORE_PEER_TLS_ENABLED=true C
  ```
  {:codeblock}  
 
-또한 [HEAD 요청](monitor_network.html#monitor-nodes)을 사용하여 피어의 가용성을 확인할 수 있습니다.
+또한 [HEAD 요청](/docs/services/blockchain/howto/monitor_network.html#monitor-nodes)을 사용하여 피어의 가용성을 확인할 수 있습니다.
 
 ## 피어 로그 보기
 
@@ -496,7 +496,7 @@ docker logs peer
 
 2. 채널의 모든 피어에 새 체인코드를 설치한 다음 네트워크 모니터 또는 [피어 체인코드 업그레이드 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/peerchaincode.html#peer-chaincode-upgrade) 명령을 사용하여 새 체인코드를 사용하도록 채널을 업데이트하십시오.
 
-네트워크 모니터의 코드 설치 패널을 사용하여 채널에서 체인코드를 업데이트하는 데 관한 자세한 정보는 해당 [지시사항](install_instantiate_chaincode.html#updating-a-chaincode) 중 2단계를 참조하십시오.
+네트워크 모니터의 코드 설치 패널을 사용하여 채널에서 체인코드를 업데이트하는 데 관한 자세한 정보는 해당 [지시사항](/docs/services/blockchain/howto/install_instantiate_chaincode.html#updating-a-chaincode) 중 2단계를 참조하십시오.
 
 ## 문제점 해결
 

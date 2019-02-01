@@ -39,7 +39,7 @@ lastupdated: "2018-11-27"
 {: #resources}
 
 **{{site.data.keyword.blockchainfull_notm}} 서비스 문서**
-이 문서 사이트인 [{{site.data.keyword.blockchainfull_notm}} 서비스 문서](index.html)에서는 IBP로 시작하는 방법에 관한 가이드라인을 제공합니다. 왼쪽 네비게이터에서 해당 주제를 찾거나 맨 위에 있는 검색 기능으로 용어를 검색할 수 있습니다.
+이 문서 사이트인 [{{site.data.keyword.blockchainfull_notm}} 서비스 문서](/docs/services/blockchain/index.html)에서는 IBP로 시작하는 방법에 관한 가이드라인을 제공합니다. 왼쪽 네비게이터에서 해당 주제를 찾거나 맨 위에 있는 검색 기능으로 용어를 검색할 수 있습니다.
 
 **{{site.data.keyword.IBM_notm}} dWAnswers**
 [{{site.data.keyword.IBM_notm}} dWAnswers ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://developer.ibm.com/answers/smartspace/blockchain/ "블록체인 영역의 질문과 답변")는 {{site.data.keyword.IBM_notm}}의 전문가가 모니터하는 IBP와 Hyperledger Fabric 사용자를 위한 커뮤니티 포럼입니다. 이전 질문에 대한 답변을 검색하거나 새 질문을 제출할 수 있습니다. 새 질문에 키워드 **blockchain**을 포함하십시오.
