@@ -30,7 +30,7 @@ O {{site.data.keyword.blockchainfull}} Platform fornece aplicativos de amostra q
 
 Os aplicativos de amostra são criados pela IBM e parceiros da comunidade. O suporte para amostras será fornecido por meio dos repositórios do Github correspondentes. Se você tiver um problema, clique no link **Obter ajuda** próximo do nome do publicador e abra um problema no repositório do Github para notificar a equipe relevante.
 
-Para implementar amostras, você precisa de uma rede de blockchain no {{site.data.keyword.cloud_notm}} com o Starter Plan ou o Enterprise Plan e configurar um canal e os peers. Para obter mais informações, veja [Governar a rede do Starter Plan](../get_start_starter_plan.html) e [Governar a rede do Enterprise Plan](../get_start.html).
+Para implementar amostras, você precisa de uma rede de blockchain no {{site.data.keyword.cloud_notm}} com o Starter Plan ou o Enterprise Plan e configurar um canal e os peers. Para obter mais informações, veja [Governar a rede do Starter Plan](/docs/services/blockchain/get_start_starter_plan.html) e [Governar a rede do Enterprise Plan](/docs/services/blockchain/get_start.html).
 
 
 <!--
@@ -57,7 +57,7 @@ Starter Plan provides two sample applications for you to start with.
 
 Complete the following steps to deploy a sample application:
 
-1. Enter the **Network Monitor** of your Starter Plan network. If you don't have one, see [Creating a network](../get_start_starter_plan.html#creating-a-network).
+1. Enter the **Network Monitor** of your Starter Plan network. If you don't have one, see [Creating a network](/docs/services/blockchain/get_start_starter_plan.html#creating-a-network).
 
 2. Open the "Try samples" screen in your Network Monitor. Choose the sample application that you want to deploy and click the **Deploy via Toolchain** button.
 
@@ -82,9 +82,9 @@ Because this process creates a forked GitHub repository that you have access to 
 ## Deploying sample applications manually
 {: #deploy_sample_applications_manually}
 
-If you want to deploy sample applications without using the Network Monitor, ensure that you install all software prerequisites on your local file system. For more information, see [Setting up application development environment](../v10_application.html#setting-up-application-development-environment).
+If you want to deploy sample applications without using the Network Monitor, ensure that you install all software prerequisites on your local file system. For more information, see [Setting up application development environment](/docs/services/blockchain/v10_application.html#setting-up-application-development-environment).
 
-You also need a blockchain network on {{site.data.keyword.cloud_notm}} with either Starter Plan or Enterprise Plan, and configure a channel and its peers. For more information, see [Govern Starter Plan network](../get_start_starter_plan.html) and [Govern Enterprise Plan network](../get_start.html). After you provision a network and can deploy applications on it, retrieve the API endpoints of your network resources that your application will access. For more information, see [Adding network API endpoints to your application](../v10_application.html#adding-network-api-endpoints-to-your-application).
+You also need a blockchain network on {{site.data.keyword.cloud_notm}} with either Starter Plan or Enterprise Plan, and configure a channel and its peers. For more information, see [Govern Starter Plan network](../get_start_starter_plan.html) and [Govern Enterprise Plan network](/docs/services/blockchain/get_start.html). After you provision a network and can deploy applications on it, retrieve the API endpoints of your network resources that your application will access. For more information, see [Adding network API endpoints to your application](/docs/services/blockchain/v10_application.html#adding-network-api-endpoints-to-your-application).
 
 You can deploy one of the following sample applications to your network:
 
@@ -104,7 +104,7 @@ You can deploy one of the following sample applications to your network:
 
 - **Other applications**
 
-  For more information about how to host your own applications inside {{site.data.keyword.cloud_notm}}, see [Hosting applications](../v10_application.html#hosting-applications).
+  For more information about how to host your own applications inside {{site.data.keyword.cloud_notm}}, see [Hosting applications](/docs/services/blockchain/v10_application.html#hosting-applications).
 
 -->
 

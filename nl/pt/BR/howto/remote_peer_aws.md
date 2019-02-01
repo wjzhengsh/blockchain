@@ -24,12 +24,12 @@ Estas instruções descrevem como usar um modelo de Iniciação Rápida do Amazo
 
 Para obter mais informações sobre o AWS, consulte o [documento da visão geral do AWS ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://d1.awsstatic.com/whitepapers/aws-overview.pdf "documento da visão geral do AWS").
 
-Antes de implementar os peers do {{site.data.keyword.blockchainfull_notm}} Platform for AWS, revise as [considerações sobre o peer](remote_peer.html#remote-peer-limitations).
+Antes de implementar os peers do {{site.data.keyword.blockchainfull_notm}} Platform for AWS, revise as [considerações sobre o peer](/docs/services/blockchain/howto/remote_peer.html#remote-peer-limitations).
 
 ## Pré-requisitos
 {: #prerequisites-aws}
 
-Para usar um peer do {{site.data.keyword.blockchainfull_notm}} Platform for AWS (peer), deve-se ter uma organização que seja membro de uma rede de blockchain que esteja hospedada no IBM Blockchain Platform. É necessário usar o Monitor de Rede no IBM Cloud para acessar as credenciais de rede e os terminais de API de sua rede. Se você não for membro de nenhuma rede de blockchain, precisará criar ou associar-se a uma rede. Para obter mais informações, consulte [Criando uma rede](../get_start.html#creating-a-network) ou [Associando-se a uma rede](../get_start.html#joining-a-network).
+Para usar um peer do {{site.data.keyword.blockchainfull_notm}} Platform for AWS (peer), deve-se ter uma organização que seja membro de uma rede de blockchain que esteja hospedada no IBM Blockchain Platform. É necessário usar o Monitor de Rede no IBM Cloud para acessar as credenciais de rede e os terminais de API de sua rede. Se você não for membro de nenhuma rede de blockchain, precisará criar ou associar-se a uma rede. Para obter mais informações, consulte [Criando uma rede](/docs/services/blockchain/get_start.html#creating-a-network) ou [Associando-se a uma rede](/docs/services/blockchain/get_start.html#joining-a-network).
 
 O tipo de instância VPC padrão para o peer é `m4.xlarge`. É necessário otimizar o tipo de instância escolhido com base em seus requisitos de CPU, memória e armazenamento. O peer requer pelo menos:  
 -	2x CPU
@@ -260,9 +260,9 @@ Além disso, para verificar se a conexão do peer está funcionando para a sua r
 
 2. Sua organização precisa ser incluída em um canal na rede antes que você possa buscar o bloco genesis.
 
-  - É possível iniciar um novo canal para o peer. Como o inicializador de canais, é possível incluir automaticamente a sua organização durante a [criação do canal](create_channel.html#creating-a-channel).
+  - É possível iniciar um novo canal para o peer. Como o inicializador de canais, é possível incluir automaticamente a sua organização durante a [criação do canal](/docs/services/blockchain/howto/create_channel.html#creating-a-channel).
 
-  - Outro membro da rede de blockchain também pode incluir sua organização em um canal existente usando uma [atualização de canal](create_channel.html#updating-a-channel).
+  - Outro membro da rede de blockchain também pode incluir sua organização em um canal existente usando uma [atualização de canal](/docs/services/blockchain/howto/create_channel.html#updating-a-channel).
 
   - Depois que sua organização é incluída em um canal, é necessário incluir o certificado de assinatura do peer no canal. O peer faz upload de seu certificado de assinatura durante a instalação, de modo que você precise somente sincronizar o certificado para o canal. Na tela "Canais" do Monitor de rede, localize o canal que sua organização associou e selecione **Sincronizar certificado** na lista suspensa sob o cabeçalho **Ação**. Essa ação sincroniza os certificados em todos os peers no canal.
 
@@ -338,13 +338,13 @@ encargos do AWS para essa pilha. Certifique-se de excluir a pilha quando conclui
 ## O que Vem Depois
 {: #whats-next-aws}
 
-Depois de configurar o peer no AWS, é possível concluir várias etapas operacionais antes de poder enviar transações e ler o livro-razão distribuído a partir da rede de blockchain. Para obter mais informações, consulte [Operando um peer no AWS](remote_peer_operate_aws.html#remote-peer-operate-aws).
+Depois de configurar o peer no AWS, é possível concluir várias etapas operacionais antes de poder enviar transações e ler o livro-razão distribuído a partir da rede de blockchain. Para obter mais informações, consulte [Operando um peer no AWS](/docs/services/blockchain/howto/remote_peer_operate_aws.html#remote-peer-operate-aws).
 
 ## Alta Disponibilidade (HA)
 {: #aws-high-availability}
 
 Por padrão, para o suporte de HA, o modelo de Iniciação Rápida implementa duas instâncias do peer, em duas zonas de disponibilidade diferentes.
-Para alavancar esse suporte de HA, também é necessário configurar seus [aplicativos clientes para alta disponibilidade](../v10_application.html#ha-app).
+Para alavancar esse suporte de HA, também é necessário configurar seus [aplicativos clientes para alta disponibilidade](/docs/services/blockchain/v10_application.html#ha-app).
 
 ## Considerações de segurança
 {: #remote-peer-aws-security}
@@ -382,14 +382,14 @@ Os dados em seu banco de dados de estado, independentemente de você estar usand
 {: #aws-security-data-residency}
 
 A residência de dados obriga que o processamento e armazenamento de todos os dados do livro-razão de blockchain permaneçam dentro da fronteira de um único país.
-Para obter detalhes adicionais sobre como isso pode ser realizado, consulte este [tópico](remote_peer.html#data-residency).
+Para obter detalhes adicionais sobre como isso pode ser realizado, consulte este [tópico](/docs/services/blockchain/howto/remote_peer.html#data-residency).
 
 #### Gerenciamento de chave
 {: #aws-security-key-management}
 
-O gerenciamento de chaves é um aspecto crítico da segurança do peer. Se uma chave privada for comprometida ou perdida, agentes hostis poderão acessar os dados e a funcionalidade de seu peer. O Enterprise Plan do {{site.data.keyword.blockchainfull_notm}} Platform usa os [Hardware Security Modules](../glossary.html#hsm) (HSM) para armazenar as chaves privadas de sua rede. O HSM é um dispositivo físico que evita que outras partes acessem a sua chave privada.
+O gerenciamento de chaves é um aspecto crítico da segurança do peer. Se uma chave privada for comprometida ou perdida, agentes hostis poderão acessar os dados e a funcionalidade de seu peer. O Enterprise Plan do {{site.data.keyword.blockchainfull_notm}} Platform usa os [Hardware Security Modules](/docs/services/blockchain/glossary.html#hsm) (HSM) para armazenar as chaves privadas de sua rede. O HSM é um dispositivo físico que evita que outras partes acessem a sua chave privada.
 
-Ao implementar um peer no AWS, você é responsável por gerenciar suas chaves privadas. Embora o {{site.data.keyword.blockchainfull_notm}} Platform gere suas chaves privadas, essas chaves não são armazenadas na Plataform. É essencial assegurar-se de que você armazene suas chaves em um local seguro para que elas não sejam comprometidas. É possível localizar a chave privada de seu peer na pasta de keystore de seu peer MSP, no diretório `/etc/hyperledger/<PEER_ENROLL_ID>/msp/keystore/` dentro de seu contêiner de peer. Para obter mais informações sobre os certificados dentro de seu peer, visite a seção [Membership Services Provider](../certificates.html#msp) do tópico [Gerenciando certificados no {{site.data.keyword.blockchainfull_notm}} Platform](../certificates.html).
+Ao implementar um peer no AWS, você é responsável por gerenciar suas chaves privadas. Embora o {{site.data.keyword.blockchainfull_notm}} Platform gere suas chaves privadas, essas chaves não são armazenadas na Plataform. É essencial assegurar-se de que você armazene suas chaves em um local seguro para que elas não sejam comprometidas. É possível localizar a chave privada de seu peer na pasta de keystore de seu peer MSP, no diretório `/etc/hyperledger/<PEER_ENROLL_ID>/msp/keystore/` dentro de seu contêiner de peer. Para obter mais informações sobre os certificados dentro de seu peer, visite a seção [Membership Services Provider](/docs/services/blockchain/certificates.html#msp) do tópico [Gerenciando certificados no {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/certificates.html).
 
 É possível usar o Key Escrow para recuperar chaves privadas perdidas. Isso precisa ser executado antes da perda de qualquer chave. Se uma chave privada não puder ser recuperada, será necessário obter novas chaves privadas obtendo um novo signCert da Autoridade de Certificação. Deve-se também remover e substituir seu certificado de administrador em quaisquer canais aos quais você esteja associado.
 
@@ -406,7 +406,7 @@ In IBP when a private key is created, two sets of independent key material is ge
 #### Configuração do Provedor de Serviços de Associação
 {: #aws-security-MSP}
 
-Os componentes do IBM Blockchain Platform consomem identidades por meio de Membership Service Providers (MSPs). MSPs associam os certificados que as autoridades de certificação emitem com as funções de rede e canal. Consulte este [tópico](../certificates.html#msp) para obter mais informações sobre como os MSPs trabalham com o peer.
+Os componentes do IBM Blockchain Platform consomem identidades por meio de Membership Service Providers (MSPs). MSPs associam os certificados que as autoridades de certificação emitem com as funções de rede e canal. Consulte este [tópico](/docs/services/blockchain/howto/certificates.html#msp) para obter mais informações sobre como os MSPs trabalham com o peer.
 
 #### Segurança do aplicativo
 {: #aws-security-appl}

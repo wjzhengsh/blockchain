@@ -14,14 +14,14 @@ lastupdated: "2017-12-06"
 
 # Criando Canais Gerenciados 
 
-**ATENÇÃO:** antes de usar uma oferta do {{site.data.keyword.blockchainfull}}, leia as informações técnicas e de suporte na seção [Renúncia de responsabilidade](needtoknow.html).  
+**ATENÇÃO:** antes de usar uma oferta do {{site.data.keyword.blockchainfull}}, leia as informações técnicas e de suporte na seção [Renúncia de responsabilidade](/docs/services/blockchain/needtoknow.html).  
 {:shortdesc}
 
 Em alguns casos – mercados de câmbio de moeda estrangeira altamente regulados, por exemplo – pode ser necessário colocar um terceiro confiável encarregado das funções administrativas em canais que normalmente seriam controlados por vários operadores ou membros. 
 
 O processo de fornecimento, tal como uma rede, é semelhante à criação de qualquer rede. A principal diferença está na designação de permissões aos membros no modo como eles podem transacionar dentro de canais.  
 
-As etapas para criar uma rede e convidar membros podem ser localizadas aqui: [Controlar uma rede](get_start.html#creating-a-network). 
+As etapas para criar uma rede e convidar membros podem ser localizadas aqui: [Controlar uma rede](/docs/services/blockchain/get_start.html#creating-a-network). 
 
 **Nota**: em um exemplo real, o operador de tal rede pode instalar chaincodes customizados durante a fase "Criar Rede" usando o Editor de Política, mas para o propósito deste exemplo, vamos assumir que sua configuração de rede seja padrão. 
 
@@ -52,7 +52,7 @@ Em uma rede com 15 membros (14 bancos, além de você, o terceiro confiável), v
 
 Seu canal foi criado com êxito, mas ainda precisa de chaincode conectado a ele. Em um canal dedicado a trocas de moeda estrangeira, este chaincode exigiria presumidamente que todos os três membros do canal (os dois bancos em questão e você, o terceiro confiável) endossassem **cada** transação. Esse chaincode também pode ser gravado para enviar um registro do *resultado* dessa transação a um canal gerenciado "somente leitura" formado por cada membro na rede (mais sobre isso posteriormente). Antes que qualquer chaincode possa ser instanciado, no entanto, ele deve primeiro ser instalado nos peers de membros. Assim que isso ocorre, ele pode ser instanciado pelo operador do canal (você).  
 
-O procedimento real para instalar e instanciar este tipo de chaincode não é diferente do que para qualquer chaincode (diferente do número de operadores necessários para aprovar a instanciação), portanto, siga as instruções aqui: [Instalando e instanciando um chaincode](install_instantiate_chaincode.html.html).
+O procedimento real para instalar e instanciar este tipo de chaincode não é diferente do que para qualquer chaincode (diferente do número de operadores necessários para aprovar a instanciação), portanto, siga as instruções aqui: [Instalando e instanciando um chaincode](/docs/services/blockchain/install_instantiate_chaincode.html.html).
 
 # Um Canal Somente Leitura Gerenciado
 

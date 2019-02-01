@@ -22,7 +22,7 @@ lastupdated: "2018-08-31"
 O {{site.data.keyword.blockchainfull}} Platform cobra mensalmente com taxas de associação e taxas de peer. Os membros da rede podem pagar suas faturas com suas contas do {{site.data.keyword.cloud_notm}} que contêm o espaço para criar a instância de rede. Como alternativa, um membro de rede pode cobrir a conta de outros membros na rede, ou mesmo todos os membros, para pagar a rede inteira. O pagador também pode transferir os faturamentos de volta para outros membros, se necessário.
 {:shortdesc}
 
-Dependendo do plano de rede que você escolher e da quantia de recursos que usar, os seus pagamentos serão diferentes. Para obter mais informações sobre precificação, veja [Precificação](pricing.html).
+Dependendo do plano de rede que você escolher e da quantia de recursos que usar, os seus pagamentos serão diferentes. Para obter mais informações sobre precificação, veja [Precificação](/docs/services/blockchain/howto/pricing.html).
 
 ## Pré-requisitos
 {: #prereq}

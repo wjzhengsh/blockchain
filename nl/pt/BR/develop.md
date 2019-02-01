@@ -23,7 +23,7 @@ lastupdated: "2018-12-07"
 Desenvolver soluções de blockchain usando o {{site.data.keyword.blockchainfull}} Platform alavanca o conjunto de ferramentas de desenvolvimento de software livre do Hyperledger Composer. O Hyperledger Composer usa uma linguagem de modelagem personalizada, que é combinada com transações JavaScript e regras de controle de acesso para modelar uma rede de negócios blockchain por completo _antes_ de implementar qualquer coisa em uma rede de blockchain real.
 {:shortdesc}
 
-**Nota:** o Starter Plan fornece aplicativos de amostra que você pode aprender e experimentar. É possível executar aplicativos de amostra no Starter Plan antes de você desenvolver a sua rede de negócios customizada. Para obter mais informações, veja [Sobre o Starter Plan](starter_plan.html).
+**Nota:** o Starter Plan fornece aplicativos de amostra que você pode aprender e experimentar. É possível executar aplicativos de amostra no Starter Plan antes de você desenvolver a sua rede de negócios customizada. Para obter mais informações, veja [Sobre o Starter Plan](/docs/services/blockchain/starter_plan.html).
 
 Este tutorial passa pelo desenvolvimento de uma solução de {{site.data.keyword.blockchain}} que começa com a criação e a modelagem de uma rede de negócios e, em seguida, implementa-a em uma rede de blockchain em execução.
 
@@ -39,7 +39,7 @@ As etapas a seguir descrevem o desenvolvimento básico de uma solução do {{sit
 
 ## Antes de iniciar
 
-Assegure-se de que você tenha instalado as [ferramentas de desenvolvimento do {{site.data.keyword.blockchainfull_notm}}: Develop](./develop_install.html).
+Assegure-se de que você tenha instalado as [ferramentas de desenvolvimento do {{site.data.keyword.blockchainfull_notm}}: Develop](/docs/services/blockchain/develop_install.html).
 
 ## Etapa Um: Criando a estrutura de rede de negócios
 
@@ -177,6 +177,6 @@ Após a execução do comando, um archive de rede de negócios (`tutorial-networ
 
 ## Etapa quatro: Implementando a rede de negócios e gerando um servidor REST
 
-Implemente a rede de negócios no {{site.data.keyword.blockchainfull_notm}} Platform usando o [Starter Plan](./develop_starter.html) ou o [Enterprise Plan](./develop_enterprise.html).
+Implemente a rede de negócios no {{site.data.keyword.blockchainfull_notm}} Platform usando o [Starter Plan](/docs/services/blockchain/develop_starter.html) ou o [Enterprise Plan](/docs/services/blockchain/develop_enterprise.html).
 
 Após a rede de negócios ser implementada no {{site.data.keyword.blockchainfull_notm}} Platform, um servidor REST personalizado poderá ser gerado. O servidor REST examina o conteúdo de negócios de rede e constrói chamadas API RESTful para os ativos, transações e participantes da rede. As instruções para gerar um servidor REST são incluídas na [Documentação do Hyperledger Composer](https://hyperledger.github.io/composer/latest/integrating/getting-started-rest-api).

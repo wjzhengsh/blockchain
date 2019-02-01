@@ -37,9 +37,9 @@ Em seguida, é possível usar um dos métodos a seguir para operar seu peer remo
 
 Os SDKs do Fabric são o caminho recomendado, embora as instruções assumam familiaridade com a operação do SDK.
 
-Recomenda-se implementar pelo menos duas instâncias do gráfico de Helm do peer remoto para [alta disponibilidade](remote_peer_icp.html#high-availability). Portanto, é necessário seguir estas etapas de operações uma vez para cada peer. Quando estiver pronto para chamar e consultar o chaincode de seu aplicativo, conecte-se a ambos os peers para assegurar-se de que seus [aplicativos sejam altamente disponíveis](../v10_application.html#ha-app).
+Recomenda-se implementar pelo menos duas instâncias do gráfico de Helm do peer remoto para [alta disponibilidade](/docs/services/blockchain/howto/remote_peer_icp.html#high-availability). Portanto, é necessário seguir estas etapas de operações uma vez para cada peer. Quando estiver pronto para chamar e consultar o chaincode de seu aplicativo, conecte-se a ambos os peers para assegurar-se de que seus [aplicativos sejam altamente disponíveis](/docs/services/blockchain/v10_application.html#ha-app).
 
-**Nota**: um peer remoto do {{site.data.keyword.blockchainfull_notm}} Platform não tem acesso à funcionalidade completa ou ao suporte de peers hospedados no {{site.data.keyword.blockchainfull_notm}} Platform. Como resultado, não é possível usar o Monitor de rede para operar um peer remoto. Antes de iniciar a execução de peers remotos, assegure-se de revisar as [considerações](remote_peer.html#remote-peer-limitations).
+**Nota**: um peer remoto do {{site.data.keyword.blockchainfull_notm}} Platform não tem acesso à funcionalidade completa ou ao suporte de peers hospedados no {{site.data.keyword.blockchainfull_notm}} Platform. Como resultado, não é possível usar o Monitor de rede para operar um peer remoto. Antes de iniciar a execução de peers remotos, assegure-se de revisar as [considerações](/docs/services/blockchain/howto/remote_peer.html#remote-peer-limitations).
 
 ## Pré-requisitos
 
@@ -138,7 +138,7 @@ Sempre que um certificado é incluído no peer remoto, o nó do peer precisa ser
 
 3. Será possível verificar se o peer remoto foi reiniciado executando o comando `kubectl get pods` e examinando a saída para a contagem **RESTART** de seu pod.
 
-Além disso, é possível usar a [solicitação de HEAD](monitor_network.html#monitor-nodes) para verificar a disponibilidade de seu peer remoto.
+Além disso, é possível usar a [solicitação de HEAD](/docs/services/blockchain/howto/monitor_network.html#monitor-nodes) para verificar a disponibilidade de seu peer remoto.
 
 
 ## Usando SDKs do Fabric para operar o peer remoto
@@ -161,7 +161,7 @@ Recomenda-se usar a versão 1.1 do Node SDK.
 ### Preparando o SDK para trabalhar com o peer remoto
 {: #remote-peer-node-sdk}
 
-Antes de usar o SDK para operar o peer remoto, é necessário gerar os certificados necessários (inscrição) que permitirão que seu aplicativo se comunique com sua rede no {{site.data.keyword.blockchainfull_notm}} Platform e no peer remoto. Siga as etapas para [se inscrever com o SDK](../v10_application.html#enroll-app-sdk) usando sua identidade de **administrador**. O tutorial [Desenvolvendo aplicativos](../v10_application.html) também é inscrito como o **administrador**, portanto, não é necessário modificar o código de amostra.
+Antes de usar o SDK para operar o peer remoto, é necessário gerar os certificados necessários (inscrição) que permitirão que seu aplicativo se comunique com sua rede no {{site.data.keyword.blockchainfull_notm}} Platform e no peer remoto. Siga as etapas para [se inscrever com o SDK](/docs/services/blockchain/v10_application.html#enroll-app-sdk) usando sua identidade de **administrador**. O tutorial [Desenvolvendo aplicativos](/docs/services/blockchain/v10_application.html) também é inscrito como o **administrador**, portanto, não é necessário modificar o código de amostra.
 
 ### Fazendo Upload de um signCert para a Plataforma  {{site.data.keyword.blockchainfull_notm}}
 {: #remote-peer-upload-sdk}
@@ -219,23 +219,23 @@ var peer = fabric_client.newPeer('grpcs://9.46.126.89:31618', { pem:  Buffer.fro
 
 Como membro da rede de blockchain, sua organização precisa ser incluída em um canal na rede antes de poder associar o peer remoto ao canal.
 
-  - É possível iniciar um novo canal para o peer remoto. Como o inicializador de canais, é possível incluir automaticamente a sua organização durante a [criação do canal](create_channel.html#creating-a-channel). Observe que você precisa ter pelo menos um peer no {{site.data.keyword.blockchainfull_notm}} Platform antes de poder criar um canal no Monitor de rede.  
+  - É possível iniciar um novo canal para o peer remoto. Como o inicializador de canais, é possível incluir automaticamente a sua organização durante a [criação do canal](/docs/services/blockchain/howto/create_channel.html#creating-a-channel). Observe que você precisa ter pelo menos um peer no {{site.data.keyword.blockchainfull_notm}} Platform antes de poder criar um canal no Monitor de rede.  
 
-  - Outro membro da rede de blockchain também pode incluir sua organização em um canal existente usando uma [atualização de canal](create_channel.html#updating-a-channel). Um membro do canal com peers no {{site.data.keyword.blockchainfull_notm}} Platform pode usar o Monitor de rede para incluir a organização no canal, mesmo que você não hospede nenhum peer na plataforma.
+  - Outro membro da rede de blockchain também pode incluir sua organização em um canal existente usando uma [atualização de canal](/docs/services/blockchain/howto/create_channel.html#updating-a-channel). Um membro do canal com peers no {{site.data.keyword.blockchainfull_notm}} Platform pode usar o Monitor de rede para incluir a organização no canal, mesmo que você não hospede nenhum peer na plataforma.
 
     Após sua organização ser incluída em um canal, será necessário incluir o certificado de assinatura do seu parceiro no canal para que outros membros possam verificar sua assinatura digital durante as transações. O peer remoto faz upload de seu certificado de assinatura durante a instalação, para que você precise apenas sincronizar o certificado com o canal. Na tela "Canais" do Monitor de rede, localize o canal ao qual sua organização se associa e selecione **Certificado de sincronização** na lista suspensa sob o cabeçalho **Ação**. Essa ação sincroniza os certificados em todos os peers no canal.
 
-Quando sua organização fizer parte do canal, siga as instruções de [associação a um canal](../v10_application.html#join-channel-sdk). É necessário fornecer a URL do serviço de solicitação e o nome do canal.
+Quando sua organização fizer parte do canal, siga as instruções de [associação a um canal](/docs/services/blockchain/v10_application.html#join-channel-sdk). É necessário fornecer a URL do serviço de solicitação e o nome do canal.
 
 ### Usando o SDK para instalar o chaincode no peer
 {: #remote-peer-install-cc-sdk}
 
-Use as instruções a seguir para usar o SDK para [instalar um chaincode](../v10_application.html#install-cc-sdk) no peer remoto.
+Use as instruções a seguir para usar o SDK para [instalar um chaincode](/docs/services/blockchain/v10_application.html#install-cc-sdk) no peer remoto.
 
 ### Usando o SDK para instanciar o chaincode no canal
 {: #remote-peer-instantiate-cc-sdk}
 
-Apenas um membro do canal precisa instanciar ou atualizar o chaincode. Portanto, qualquer membro de rede do canal com peers no {{site.data.keyword.blockchainfull_notm}} Platform pode usar o Monitor de rede para instanciar o chaincode e especificar políticas de endosso. No entanto, se você quiser usar o peer remoto para instanciar chaincode em um canal, será possível usar o SDK e seguir as instruções para [instanciar um chaincode](../v10_application.html#instantiate-cc-sdk).
+Apenas um membro do canal precisa instanciar ou atualizar o chaincode. Portanto, qualquer membro de rede do canal com peers no {{site.data.keyword.blockchainfull_notm}} Platform pode usar o Monitor de rede para instanciar o chaincode e especificar políticas de endosso. No entanto, se você quiser usar o peer remoto para instanciar chaincode em um canal, será possível usar o SDK e seguir as instruções para [instanciar um chaincode](/docs/services/blockchain/v10_application.html#instantiate-cc-sdk).
 
 
 ## Usando a CLI para operar o peer remoto
@@ -313,7 +313,7 @@ Exemplo:
 ### Gerenciando os certificados no sistema local
 {: #manage-certs}
 
-Antes de operarmos o peer remoto, precisaremos fazer algum gerenciamento dos certificados em nossa máquina local e fazer upload de alguns dos certificados gerados pelo Fabric CA Client para o {{site.data.keyword.blockchainfull_notm}} Platform e seu peer. Também será necessário fazer download de certificados TLS do Platform e do peer. Se quiser saber mais sobre os certificados com os quais estará trabalhando e as tarefas que estará executando, consulte [Gerenciando certificados no {{site.data.keyword.blockchainfull_notm}} Platform](../certificates.html).
+Antes de operarmos o peer remoto, precisaremos fazer algum gerenciamento dos certificados em nossa máquina local e fazer upload de alguns dos certificados gerados pelo Fabric CA Client para o {{site.data.keyword.blockchainfull_notm}} Platform e seu peer. Também será necessário fazer download de certificados TLS do Platform e do peer. Se quiser saber mais sobre os certificados com os quais estará trabalhando e as tarefas que estará executando, consulte [Gerenciando certificados no {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/certificates.html).
 
 Na máquina local, abra um terminal de comando e navegue para o diretório para o qual moveu os binários do Fabric-CA-Client e armazenou a pasta MSP.
 1. Copie o arquivo `cert.pem` da pasta `signcerts` para uma nova pasta `admincerts`.  
@@ -410,9 +410,9 @@ Depois de movermos todos os nossos certificados para o local necessário, estamo
 
 Antes de ser possível executar os comandos da CLI para associar o peer remoto a um canal, sua organização precisará ser incluída em um canal na rede.
 
-  - É possível iniciar um novo canal para o peer remoto. Como o inicializador de canais, é possível incluir automaticamente a sua organização durante a [criação do canal](create_channel.html#creating-a-channel). Observe que você precisa ter pelo menos um peer no {{site.data.keyword.blockchainfull_notm}} Platform antes de poder criar um canal no Monitor de rede.  
+  - É possível iniciar um novo canal para o peer remoto. Como o inicializador de canais, é possível incluir automaticamente a sua organização durante a [criação do canal](/docs/services/blockchain/howto/create_channel.html#creating-a-channel). Observe que você precisa ter pelo menos um peer no {{site.data.keyword.blockchainfull_notm}} Platform antes de poder criar um canal no Monitor de rede.  
 
-  - Outro membro da rede de blockchain também pode incluir sua organização em um canal existente usando uma [atualização de canal](create_channel.html#updating-a-channel). Um membro do canal com peers no {{site.data.keyword.blockchainfull_notm}} Platform pode usar o Monitor de rede para incluir a organização no canal, mesmo que você não hospede nenhum peer na plataforma.
+  - Outro membro da rede de blockchain também pode incluir sua organização em um canal existente usando uma [atualização de canal](/docs/services/blockchain/howto/create_channel.html#updating-a-channel). Um membro do canal com peers no {{site.data.keyword.blockchainfull_notm}} Platform pode usar o Monitor de rede para incluir a organização no canal, mesmo que você não hospede nenhum peer na plataforma.
 
     Após sua organização ser incluída em um canal, será necessário incluir o certificado de assinatura do seu parceiro no canal para que outros membros possam verificar sua assinatura digital durante as transações. O peer remoto faz upload de seu certificado de assinatura durante a instalação, para que você precise apenas sincronizar o certificado com o canal. Na tela "Canais" do Monitor de rede, localize o canal ao qual sua organização se associa e selecione **Certificado de sincronização** na lista suspensa sob o cabeçalho **Ação**. Essa ação sincroniza os certificados em todos os peers no canal.
 
@@ -577,7 +577,7 @@ Conclua as etapas a seguir para atualizar seu chaincode:
 2. Depois de instalar o novo chaincode em todos os peers no canal, use o Monitor de rede ou o
 comando [peer chaincode upgrade ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/peerchaincode.html#peer-chaincode-upgrade) para atualizar o canal para usar o novo chaincode.
 
-Consulte a etapa dois destas [instruções](install_instantiate_chaincode.html#updating-a-chaincode) para obter mais informações sobre o uso do painel "Instalar código" do Monitor de rede para atualizar o chaincode no canal.
+Consulte a etapa dois destas [instruções](/docs/services/blockchain/howto/install_instantiate_chaincode.html#updating-a-chaincode) para obter mais informações sobre o uso do painel "Instalar código" do Monitor de rede para atualizar o chaincode no canal.
 
 ## Detecção de problemas
 {: #icp-troubleshooting}

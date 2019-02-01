@@ -40,7 +40,7 @@ O chaincode pode ser gravado em várias linguagens e o {{site.data.keyword.block
 ## Instalando o chaincode
 {: #install-chaincode}
 
-Como o chaincode fornece a estrutura de transações em um canal, um chaincode precisa ser instalado em todos os peers associados ao canal que desejam usar o chaincode para atualizar ou consultar o livro-razão do canal. Em seguida, um membro do canal pode instanciar o chaincode em um canal e configurar a política de endosso do chaincode. A instalação e a instanciação do chaincode podem ser executadas usando a IU do Monitor de Rede, a interface da linha de comandos do Fabric Peer ou a partir de um aplicativo cliente usando o [Fabric SDK](../v10_application.html#operate-sdk). Para aprender como usar a IU do Monitor de Rede para implementar o chaincode, consulte [Instalando, instanciando e atualizando um chaincode](install_instantiate_chaincode.html).
+Como o chaincode fornece a estrutura de transações em um canal, um chaincode precisa ser instalado em todos os peers associados ao canal que desejam usar o chaincode para atualizar ou consultar o livro-razão do canal. Em seguida, um membro do canal pode instanciar o chaincode em um canal e configurar a política de endosso do chaincode. A instalação e a instanciação do chaincode podem ser executadas usando a IU do Monitor de Rede, a interface da linha de comandos do Fabric Peer ou a partir de um aplicativo cliente usando o [Fabric SDK](/docs/services/blockchain/v10_application.html#operate-sdk). Para aprender como usar a IU do Monitor de Rede para implementar o chaincode, consulte [Instalando, instanciando e atualizando um chaincode](/docs/services/blockchain/howto/install_instantiate_chaincode.html).
 
 ## Chaincode e dados
 {: #chaincode-data}

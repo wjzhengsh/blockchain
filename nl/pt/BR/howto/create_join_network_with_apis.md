@@ -18,7 +18,7 @@ lastupdated: "2018-08-31"
 ***[Esta página é útil? Diga-nos.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 
-O {{site.data.keyword.blockchainfull}} Platform expõe uma série de APIs de REST que você pode usar para criar ou se associar a uma rede de blockchain no {{site.data.keyword.cloud_notm}}. É possível experimentar essas APIs usando a [IU do Swagger](swagger_apis.html) que está associada à sua rede.
+O {{site.data.keyword.blockchainfull}} Platform expõe uma série de APIs de REST que você pode usar para criar ou se associar a uma rede de blockchain no {{site.data.keyword.cloud_notm}}. É possível experimentar essas APIs usando a [IU do Swagger](/docs/services/blockchain/howto/swagger_apis.html) que está associada à sua rede.
 {:shortdesc}
 
 
