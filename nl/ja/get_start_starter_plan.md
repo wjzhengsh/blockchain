@@ -20,14 +20,14 @@ lastupdated: "2018-12-07"
 ***[このページは参考になりましたか。 ご意見をお聞かせください。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 
-{{site.data.keyword.blockchainfull}} Platform Starter Plan は、構成済みのブロックチェーン・ネットワークをクリック 1 回でユーザーに提供します。 デフォルトでは 2 つの[組織](glossary.html#organization)、それぞれの組織ごとに 1 つの [ピア](glossary.html#peer)、そして 1 つの[チャネル](glossary.html#channel)で構成される許可制ネットワークをプロビジョンします。 ネットワークが作成されたら、これを拡張してさらに組織やピアをネットワークに追加できます。 これらのネットワークは {{site.data.keyword.blockchainfull_notm}} Platform を初めて使用する初心者ユーザーを対象としています。<!--Note that it might cause extra cost if you exceed the default resource limits of two organizations and two peers.-->
+{{site.data.keyword.blockchainfull}} Platform Starter Plan は、構成済みのブロックチェーン・ネットワークをクリック 1 回でユーザーに提供します。 デフォルトでは 2 つの[組織](/docs/services/blockchain/glossary.html#organization)、それぞれの組織ごとに 1 つの [ピア](/docs/services/blockchain/glossary.html#peer)、そして 1 つの[チャネル](/docs/services/blockchain/glossary.html#channel)で構成される許可制ネットワークをプロビジョンします。 ネットワークが作成されたら、これを拡張してさらに組織やピアをネットワークに追加できます。 これらのネットワークは {{site.data.keyword.blockchainfull_notm}} Platform を初めて使用する初心者ユーザーを対象としています。<!--Note that it might cause extra cost if you exceed the default resource limits of two organizations and two peers.-->
 {:shortdesc}
 
 スターター・プランを使用すると、{{site.data.keyword.blockchainfull_notm}} プラットフォームのスキルを習得し、サンプル・アプリケーションを実行し、独自のアプリケーションをテストし、複数組織のシナリオをシミュレートできます。 この入門チュートリアルは、スターター・プランを使用してブロックチェーン・ネットワークで開発およびトランザクションを開始するステップを案内します。
 
-{{site.data.keyword.blockchainfull_notm}} Platform およびブロックチェーンが初めてという方は、オープン・ソースの [Hyperledger Fabric](reference/v10_fabric.html) 上に構築されたネットワークの[基礎コンポーネントの概要](blockchain_component_overview.html)を参照し、ブロックチェーンについての詳細を確認することができます。また、[Hyperledger Fabric の資料 ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](http://hyperledger-fabric.readthedocs.io/en/release-1.2/blockchain.html "Blockchain の紹介") も確認してください。
+{{site.data.keyword.blockchainfull_notm}} Platform およびブロックチェーンが初めてという方は、オープン・ソースの [Hyperledger Fabric](/docs/services/blockchain/reference/v10_fabric.html) 上に構築されたネットワークの[基礎コンポーネントの概要](/docs/services/blockchain/blockchain_component_overview.html)を参照し、ブロックチェーンについての詳細を確認することができます。また、[Hyperledger Fabric の資料 ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](http://hyperledger-fabric.readthedocs.io/en/release-1.2/blockchain.html "Blockchain の紹介") も確認してください。
 
-**注**: {{site.data.keyword.blockchainfull_notm}} Platform Starter Plan は開発/テスト環境であり、実動ワークロードには適していません。 実稼働環境が必要な場合は、[エンタープライズ・プランについて](enterprise_plan.html)を参照してください。
+**注**: {{site.data.keyword.blockchainfull_notm}} Platform Starter Plan は開発/テスト環境であり、実動ワークロードには適していません。 実稼働環境が必要な場合は、[エンタープライズ・プランについて](/docs/services/blockchain/enterprise_plan.html)を参照してください。
 
 ## 概要
 
@@ -73,7 +73,7 @@ lastupdated: "2018-12-07"
 ## ネットワークの作成
 {: #creating-a-network}
 
-{{site.data.keyword.blockchainfull_notm}} プラットフォーム・サービス・インスタンスを作成するとすぐに、デフォルト構成のスターター・プラン・[ネットワーク](glossary.html#network)を取得できます。
+{{site.data.keyword.blockchainfull_notm}} プラットフォーム・サービス・インスタンスを作成するとすぐに、デフォルト構成のスターター・プラン・[ネットワーク](/docs/services/blockchain/glossary.html#network)を取得できます。
 
 1. {{site.data.keyword.cloud_notm}} カタログで [ブロックチェーン・サービス![「外部リンク」アイコン](images/external_link.svg "「外部リンク」アイコン")](https://console.bluemix.net/catalog/services/blockchain) を探します。
     **注**: {{site.data.keyword.cloud_notm}} の有料アカウントを使用してログインする必要があります。 アカウントがない場合は、**「登録して作成」**ボタンをクリックします。 無料トライアル・アカウントを作成した後、{{site.data.keyword.cloud_notm}} コンソールで**「管理」** > **「請求および使用量」** > **「請求処理」**に移動し、**「クレジット・カードの追加」**をクリックして、**「従量課金 (PAYG)」**タイプにアップグレードします。
@@ -90,12 +90,12 @@ lastupdated: "2018-12-07"
 ## メンバーの招待
 {: #inviting-members}
 
-他の組織と[トランザクション](glossary.html#transaction)を相互に実行できるように、 その[組織](glossary.html#organization)をスターター・プラン・ネットワークに[メンバー](glossary.html#member)として招待し、参加させることができます。 さらに、学習やテストのためにスターター・プランを使用する場合は、自分自身のメンバーをネットワークに追加することで、複数組織のネットワークをシミュレートできます。
+他の組織と[トランザクション](/docs/services/blockchain/glossary.html#transaction)を相互に実行できるように、 その[組織](/docs/services/blockchain/glossary.html#organization)をスターター・プラン・ネットワークに[メンバー](/docs/services/blockchain/glossary.html#member)として招待し、参加させることができます。 さらに、学習やテストのためにスターター・プランを使用する場合は、自分自身のメンバーをネットワークに追加することで、複数組織のネットワークをシミュレートできます。
 
 1. ネットワーク・モニターの「メンバー」画面で、**「メンバーの招待 (Invite Members)」**ボタンをクリックします。
 2. 「メンバーの招待 (Invite member)」ウィンドウが開きます。
     - 別の組織を招待する場合は、「メンバーの招待 (Invite a member)」を選択します。  招待する組織の名前とオペレーターの E メール・アドレスを指定します。  また、「メモの追加 ( Add a note)」フィールドに、招待に含める追加情報を入力することもできます。  **「招待の送信」**ボタンをクリックします。  招待された組織は招待メールを受け取り、その E メールの指示に従ってネットワークに参加できます。
-    - チャネルに追加できる組織をさらに追加する場合は、「メンバーの追加 (Add a member)」を選択します。  新しい組織の名前を指定します。 オプションで組織にピアを追加できますが、これは後でネットワーク・モニターでも追加できます。  **「作成」**ボタンをクリックします。 新しい組織にピアを追加する場合は、ピアを表示するためにこの新しい組織に切り替える必要があります。<!-- 組織の切り替えについて詳しくは、[組織の切り替え](v10_dashboard.html#switch-organizations)を参照してください。-->
+    - チャネルに追加できる組織をさらに追加する場合は、「メンバーの追加 (Add a member)」を選択します。  新しい組織の名前を指定します。 オプションで組織にピアを追加できますが、これは後でネットワーク・モニターでも追加できます。  **「作成」**ボタンをクリックします。 新しい組織にピアを追加する場合は、ピアを表示するためにこの新しい組織に切り替える必要があります。<!-- 組織の切り替えについて詳しくは、[組織の切り替え](/docs/services/blockchain/v10_dashboard.html#switch-organizations)を参照してください。-->
 
 
 ## ネットワークへの参加
@@ -117,22 +117,22 @@ lastupdated: "2018-12-07"
 ## チャネルを作成する
 {: #create-channels}
 
-チャネルは、データを他の組織に公開せずにトランザクションを実行するために、一連の組織によって使用されます。スターター・プラン・ネットワークの選択したメンバーと、誰がチャネルを更新できるかに関するポリシーを使用して[チャネル](glossary.html#channel)を作成できます。
+チャネルは、データを他の組織に公開せずにトランザクションを実行するために、一連の組織によって使用されます。スターター・プラン・ネットワークの選択したメンバーと、誰がチャネルを更新できるかに関するポリシーを使用して[チャネル](/docs/services/blockchain/glossary.html#channel)を作成できます。
 
-詳しくは、[チャネルの作成](howto/create_channel.html#creating-a-channel)を参照してください。 別の組織からチャネルに招待された場合は、招待を受け入れてピアをチャネルに参加させる手順も確認できます。
+詳しくは、[チャネルの作成](/docs/services/blockchain/howto/create_channel.html#creating-a-channel)を参照してください。 別の組織からチャネルに招待された場合は、招待を受け入れてピアをチャネルに参加させる手順も確認できます。
 
 ## チェーンコードの開発
 {: #develop-chaincode}
 
-[チェーンコード](glossary.html#chaincode) (スマート・コントラクトとも呼ばれる) は、ブロックチェーン台帳のデータの読み取りおよび更新を可能にするソフトウェアです。チェーンコードは、ブロックチェーン・ネットワークのすべてのメンバーによって合意および検証された実行可能プログラムにビジネス・ロジックを変換できます。
+[チェーンコード](/docs/services/blockchain/glossary.html#chaincode) (スマート・コントラクトとも呼ばれる) は、ブロックチェーン台帳のデータの読み取りおよび更新を可能にするソフトウェアです。チェーンコードは、ブロックチェーン・ネットワークのすべてのメンバーによって合意および検証された実行可能プログラムにビジネス・ロジックを変換できます。
 
-詳しくは、[チェーンコードの開発](howto/develop_chaincode.html)チュートリアルで、チェーンコードの作成を開始する方法やチェーンコードによりアクセス可能な Fabric の機能について学習してください。
+詳しくは、[チェーンコードの開発](/docs/services/blockchain/howto/develop_chaincode.html)チュートリアルで、チェーンコードの作成を開始する方法やチェーンコードによりアクセス可能な Fabric の機能について学習してください。
 
 ## チェーンコードのインストールとインスタンス化
 {: #install-instantiate-chaincode}
 チャネルに参加し、ビジネス・ロジックを開発した後、チェーンコードをネットワーク内のピアにインストールする必要があります。ネットワーク・モニターを使用して、組織のピア上でチェーンコードをインストールおよびインスタンス化したり、継続的な開発を促進するためにチェーンコードを更新したりできます。
 
-事前作成されたサンプルのデプロイについて詳しくは、[チェーンコードのインストール、インスタンス化、および更新](howto/install_instantiate_chaincode.html)を参照してください。
+事前作成されたサンプルのデプロイについて詳しくは、[チェーンコードのインストール、インスタンス化、および更新](/docs/services/blockchain/howto/install_instantiate_chaincode.html)を参照してください。
 
 
 ## Fabric SDK を使用したアプリケーションの開発
@@ -140,7 +140,7 @@ lastupdated: "2018-12-07"
 
 {{site.data.keyword.blockchainfull_notm}} Platform には、Fabric SDK を使用して接続できる API エンドポイントが用意されています。SDK を使用して、アプリケーションからチェーンコードを呼び出し、ブロックチェーン・ネットワークにトランザクションを送信できます。
 
-詳しくは、[アプリケーションの開発](v10_application.html)チュートリアルを参照してください。
+詳しくは、[アプリケーションの開発](/docs/services/blockchain/v10_application.html)チュートリアルを参照してください。
 
 
 ## カスタマイズされたビジネス・ネットワークの Hyperledger Composer による開発とデプロイ
@@ -148,7 +148,7 @@ lastupdated: "2018-12-07"
 
 スターター・プランは、開発者環境と Hyperledger Composer 開発者ツール・セットを開発する {{site.data.keyword.blockchainfull_notm}} プラットフォームを統合します。 ユーザーのビジネス・ニーズに基づいて、独自のブロックチェーン・ネットワークを開発できます。  ビジネス用のネットワークを開発した後に、そのビジネス・ネットワークをスターター・プラン・ネットワークにデプロイできます。
 
-詳しくは、[ネットワークの開発](develop.html)および[スターター・プランによるビジネス・ネットワークのデプロイ](develop_starter.html)を参照してください。
+詳しくは、[ネットワークの開発](/docs/services/blockchain/develop.html)および[スターター・プランによるビジネス・ネットワークのデプロイ](/docs/services/blockchain/develop_starter.html)を参照してください。
 
 
 ## サンプル・アプリケーションのデプロイ
@@ -157,13 +157,13 @@ lastupdated: "2018-12-07"
 スターター・プランを使用すると、数回のクリックだけでサンプル・アプリケーションをネットワークにデプロイできます。 これらのサンプルを使用して、チェーンコードおよび Hyperledger Composer ビジネス・ネットワークについての詳細を学習し、これらを独自の開発の開始点として使用することができます。
 
 詳しくは、
-[サンプル・アプリケーションの開発](howto/prebuilt_samples.html)を参照してください。
+[サンプル・アプリケーションの開発](/docs/services/blockchain/howto/prebuilt_samples.html)を参照してください。
 
 
 ## ネットワーク・リソースのモニター
 {: #monitoring-resources}
 
-アプリケーションがトランザクションを要求する場合、ネットワーク・モニターでトランザクション状況情報を表示できます。 ネットワークのモニターについて詳しくは、[ネットワークのモニター](howto/monitor_network.html)を参照してください。
+アプリケーションがトランザクションを要求する場合、ネットワーク・モニターでトランザクション状況情報を表示できます。 ネットワークのモニターについて詳しくは、[ネットワークのモニター](/docs/services/blockchain/howto/monitor_network.html)を参照してください。
 
 
 ## ネットワーク資格情報および接続プロファイルの取得
@@ -182,7 +182,7 @@ lastupdated: "2018-12-07"
 ![ネットワーク資格情報の取得](images/service_credentials.gif "ネットワーク資格情報の取得")
 
 ### ネットワーク・モニターでの取得
-ネットワーク・モニターの「API」画面でネットワーク資格情報を確認することができます。 API の使用について詳しくは、[Swagger API を使用したネットワークとの対話](howto/swagger_apis.html)を参照してください。
+ネットワーク・モニターの「API」画面でネットワーク資格情報を確認することができます。 API の使用について詳しくは、[Swagger API を使用したネットワークとの対話](/docs/services/blockchain/howto/swagger_apis.html)を参照してください。
 
 ネットワーク・モニターの「概説」画面で接続プロファイルを取り出すことができます。 「概説」画面の**「接続プロファイル」**ボタンをクリックすると、接続プロファイルが新しいページに表示されます。
 
@@ -191,13 +191,13 @@ lastupdated: "2018-12-07"
 
 {{site.data.keyword.blockchainfull_notm}} Platform では多数の REST API を Swagger で公開しており、これらを使用してノード、チャネル、ピア、およびネットワーク・メンバーを管理できます。 アプリケーションではこれらの API を使用して、ネットワーク・モニターを使用せずに重要なネットワーク・リソースを制御できます。
 
-詳しくは、[Swagger API を使用したネットワークとの対話](howto/swagger_apis.html)を参照してください。
+詳しくは、[Swagger API を使用したネットワークとの対話](/docs/services/blockchain/howto/swagger_apis.html)を参照してください。
 
 
 ## ネットワークのリセット
 {: #resetting-network}
 
-カスタマイズした構成や実行中のチェーンコード、またはデプロイしたアプリケーションをクリーンアップする場合は、作成したネットワークを最初のデフォルト構成に戻すことができます。 詳しくは、[ネットワークのリセット](v10_dashboard.html#reset-network)を参照してください。
+カスタマイズした構成や実行中のチェーンコード、またはデプロイしたアプリケーションをクリーンアップする場合は、作成したネットワークを最初のデフォルト構成に戻すことができます。 詳しくは、[ネットワークのリセット](/docs/services/blockchain/v10_dashboard.html#reset-network)を参照してください。
 
 
 ## スターター・プランからエンタープライズ・プランへのマイグレーション
@@ -205,12 +205,12 @@ lastupdated: "2018-12-07"
 
 スターター・プラン・ネットワークに対してテストする `.bna`、チェーンコード、およびアプリケーションを、エンタープライズ・プラン・ネットワークにデプロイできます。
 
-ビジネス・ネットワーク・アーカイブ・ファイル (`.bna`) がある場合は、[エンタープライズ・プランへのビジネス・ネットワークのデプロイ](./develop_enterprise.html)の説明に従ってください。 `.bna` ファイルがない場合は、`composer network download` コマンドを使用してスターター・プラン・インスタンスから取得します。 `composer network download` コマンドについて詳しくは、[Hyperledger Composer コマンド・ラインの資料![「外部リンク」アイコン](images/external_link.svg "「外部リンク」アイコン")](https://hyperledger.github.io/composer/latest/reference/commands){:new_window} を参照してください。
+ビジネス・ネットワーク・アーカイブ・ファイル (`.bna`) がある場合は、[エンタープライズ・プランへのビジネス・ネットワークのデプロイ](/docs/services/blockchain/develop_enterprise.html)の説明に従ってください。 `.bna` ファイルがない場合は、`composer network download` コマンドを使用してスターター・プラン・インスタンスから取得します。 `composer network download` コマンドについて詳しくは、[Hyperledger Composer コマンド・ラインの資料![「外部リンク」アイコン](images/external_link.svg "「外部リンク」アイコン")](https://hyperledger.github.io/composer/latest/reference/commands){:new_window} を参照してください。
 
-チェーンコードは `.bna` ファイルに似ていますが、外部で開発されます。 スターター・プラン・ネットワークでテストするチェーンコードをエンタープライズにデプロイするには、[チェーンコードのインストール、インスタンス化、および更新](howto/install_instantiate_chaincode.html#installchaincode)の説明に従ってください。
+チェーンコードは `.bna` ファイルに似ていますが、外部で開発されます。 スターター・プラン・ネットワークでテストするチェーンコードをエンタープライズにデプロイするには、[チェーンコードのインストール、インスタンス化、および更新](/docs/services/blockchain/howto/install_instantiate_chaincode.html#installchaincode)の説明に従ってください。
 
 <!--
-As you can see in [Deploying sample applications](howto/prebuilt_samples.html), Starter Plan makes it easy to get a sample application integrated with your network by using Toolchain. This setup also allows for continuous integration by automatically updating your sample application whenever your forked application repo is changed. If you want to deploy this application into an Enterprise Plan network, you can copy your forked application repo into a new repo and then follow the instructions in [Deploying sample applications manually](howto/prebuilt_samples.html#deploy_sample_applications_manually).
+As you can see in [Deploying sample applications](/docs/services/blockchain/howto/prebuilt_samples.html), Starter Plan makes it easy to get a sample application integrated with your network by using Toolchain. This setup also allows for continuous integration by automatically updating your sample application whenever your forked application repo is changed. If you want to deploy this application into an Enterprise Plan network, you can copy your forked application repo into a new repo and then follow the instructions in [Deploying sample applications manually](howto/prebuilt_samples.html#deploy_sample_applications_manually).
 -->
 
 スターター・プラン・ネットワークにサンプル・アプリケーションをデプロイし、そのアプリケーションをエンタープライズ・プラン・ネットワークにデプロイする場合は、fork したアプリケーション・リポジトリーを新規リポジトリーにコピーしてから、サンプル・アプリケーションの説明に従ってエンタープライズ・プラン・ネットワークにデプロイすることができます。
@@ -221,11 +221,11 @@ As you can see in [Deploying sample applications](howto/prebuilt_samples.html), 
 
 ネットワークを削除または離脱する場合は、{{site.data.keyword.cloud_notm}} ダッシュボードからブロックチェーン・サービス・インスタンスを削除します。
 
-**注**: ネットワークから離脱する前に、ネットワーク上のどのチャネルのメンバーでもないことを確認してください。そうでない場合、ネットワークを離脱する際にエラーが発生します。 チャネル・メンバーを除去する場合は、チャネル更新処理を実行する必要があります。 チャネル更新処理について詳しくは、[チャネルの更新](howto/create_channel.html#updating-a-channel)を参照してください。
+**注**: ネットワークから離脱する前に、ネットワーク上のどのチャネルのメンバーでもないことを確認してください。そうでない場合、ネットワークを離脱する際にエラーが発生します。 チャネル・メンバーを除去する場合は、チャネル更新処理を実行する必要があります。 チャネル更新処理について詳しくは、[チャネルの更新](/docs/services/blockchain/howto/create_channel.html#updating-a-channel)を参照してください。
 
 
 <!--
 ## References
-* For more information about {{site.data.keyword.blockchainfull_notm}} offerings, see [Blockchain offerings](index.html).
+* For more information about {{site.data.keyword.blockchainfull_notm}} offerings, see [Blockchain offerings](/docs/services/blockchain/index.html).
 * For more information about Hyperledger Fabric V1.2, see [Hyperledger Fabric documentation ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/release-1.2/){:new_window}.
 -->

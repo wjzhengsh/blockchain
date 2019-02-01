@@ -17,7 +17,7 @@ lastupdated: "2018-12-07"
 
 ***[このページは参考になりましたか。 ご意見をお聞かせください。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
-{{site.data.keyword.blockchainfull}} Platform on {{site.data.keyword.cloud_notm}} Private (ICP) ピアをセットアップした後、ピアでブロックチェーン・ネットワークの台帳の照会と呼び出しのためのトランザクションを発行できるようにするには、いくつかの操作ステップを実行する必要があります。 このステップでは、チャネルへの組織の追加、チャネルへのピアの参加、ピアでのチェーンコードのインストール、チャネルでのチェーンコードのインスタンス化、およびピアへのアプリケーションの接続を行います。 ピアをスターター・プランまたはエンタープライズ・プランのネットワークに接続する必要がある場合は、[スターター・プランまたはエンタープライズ・プランを使用した {{site.data.keyword.cloud_notm}} Private でのピアの操作](peer_operate_ibp.html#peer-operate_icp)を参照してください。
+{{site.data.keyword.blockchainfull}} Platform on {{site.data.keyword.cloud_notm}} Private (ICP) ピアをセットアップした後、ピアでブロックチェーン・ネットワークの台帳の照会と呼び出しのためのトランザクションを発行できるようにするには、いくつかの操作ステップを実行する必要があります。 このステップでは、チャネルへの組織の追加、チャネルへのピアの参加、ピアでのチェーンコードのインストール、チャネルでのチェーンコードのインスタンス化、およびピアへのアプリケーションの接続を行います。 ピアをスターター・プランまたはエンタープライズ・プランのネットワークに接続する必要がある場合は、[スターター・プランまたはエンタープライズ・プランを使用した {{site.data.keyword.cloud_notm}} Private でのピアの操作](/docs/services/blockchain/howto/peer_operate_ibp.html#peer-operate_icp)を参照してください。
 {:shortdesc}
 
 ピアを操作するには、ICP クラスターからいくつかの前提条件ステップを実行する必要があります。
@@ -37,7 +37,7 @@ lastupdated: "2018-12-07"
 
 組織がまだ共同事業体またはチャネルのメンバーでない場合は、以下のステップを使用して、[チャネルを作成](#create-channel)できます。 この手順では、[組織定義を準備する](#organization-definition)方法について説明します。 この定義は、ユーザーを順序付けプログラムのシステム・チャネルに追加して共同事業体のメンバーにする際に使用されます。 その後、[チャネル・トランザクションを作成](#peer-icp-channeltx)することで、新しいチャネルを形成できます。
 <!--
-It is recommended that you deploy at least two instances of the peer Helm chart for [high availability](peer_icp.html#high-availability). Therefore, you need to follow these operations steps once for each peer. When you are ready to invoke and query chaincode from your application, connect to both peers to ensure that your [applications are highly available](../v10_application.html#ha-app).
+It is recommended that you deploy at least two instances of the peer Helm chart for [high availability](/docs/services/blockchain/howto/peer_icp.html#high-availability). Therefore, you need to follow these operations steps once for each peer. When you are ready to invoke and query chaincode from your application, connect to both peers to ensure that your [applications are highly available](/docs/services/blockchain/v10_application.html#ha-app).
 -->
 
 ## 前提条件
@@ -126,7 +126,7 @@ ICP で実行されるピア・コンテナーに接続するには、**kubectl*
   ```
   {:codeblock}
 
-**注:** ファイアウォールの内側にピアをデプロイする場合は、パススルーを開き、プラットフォーム上のネットワークでピアとの TLS ハンドシェークを実行できるようにする必要があります。ピアのポート 7051 にバインドされたノード・ポートのパススルーのみを有効にする必要があります。 詳しくは、[ピアのエンドポイント情報の検索](peer_operate_ibp.html#peer-endpoint)を参照してください。
+**注:** ファイアウォールの内側にピアをデプロイする場合は、パススルーを開き、プラットフォーム上のネットワークでピアとの TLS ハンドシェークを実行できるようにする必要があります。ピアのポート 7051 にバインドされたノード・ポートのパススルーのみを有効にする必要があります。 詳しくは、[ピアのエンドポイント情報の検索](/docs/services/blockchain/howto/peer_operate_ibp.html#peer-endpoint)を参照してください。
 
 ### ピアの TLS 証明書のダウンロード
 {: #peer-tls}
@@ -170,13 +170,13 @@ npm install fabric-client@1.2
 
 ピアは、ピア管理者の署名付き証明書を組み込むようにデプロイされています。 これにより、ピア管理者の証明書および MSP フォルダーを使用してピアを操作できるようになります。
 
-[ピア管理者の登録](CA_operate.html#enroll-admin)時に作成した証明書を見つけます。 コマンド例を使用した場合、ピア管理者の MSP フォルダーは `$HOME/fabric-ca-client/peer-admin` にあります。
+[ピア管理者の登録](/docs/services/blockchain/howto/CA_operate.html#enroll-admin)時に作成した証明書を見つけます。 コマンド例を使用した場合、ピア管理者の MSP フォルダーは `$HOME/fabric-ca-client/peer-admin` にあります。
   - MSP フォルダー内の署名付き証明書 (公開鍵) および秘密鍵を使用して、SDK でピア管理者のユーザー・コンテキストを作成できます。 これらのキーは、以下の場所にあります。
     - 署名付き証明書は、**signcerts** フォルダー (`$HOME/fabric-ca-client/peer-admin/msp/signcerts`) 内にあります。
     - 秘密鍵は、**keystore:** フォルダー (`$HOME/fabric-ca-client/peer-admin/msp/keystore`) 内にあります。
-    公開鍵と秘密鍵のみを使用し、ユーザー・コンテキストを作成して SDK を操作する方法の例については、[ネットワーク・モニターを使用した証明書の生成](../v10_application.html#enroll-panel)を参照してください。
+    公開鍵と秘密鍵のみを使用し、ユーザー・コンテキストを作成して SDK を操作する方法の例については、[ネットワーク・モニターを使用した証明書の生成](/docs/services/blockchain/v10_application.html#enroll-panel)を参照してください。
 
-<!-- You can also use the SDK to generate the peer admin signCert and private key using the endpoint information of CA on Starter Plan or Enterprise Plan and your [peer admin username and password](CA_operate.html#register-admin). -->
+<!-- You can also use the SDK to generate the peer admin signCert and private key using the endpoint information of CA on Starter Plan or Enterprise Plan and your [peer admin username and password](/docs/services/blockchain/howto/CA_operate.html#register-admin). -->
 
 ### SDK へのピアの TLS 証明書の引き渡し
 {: #icp-peer-download-tlscert}
@@ -207,7 +207,7 @@ You need to specify a `ssl-target-name-override` of `<something>.blockchain.com`
 ### SDK への順序付けプログラムの TLS 証明書の引き渡し
 {: #icp-orderer-download-tlscert}
 
-チャネルに参加してトランザクションを送信するには、共同事業体の順序付けプログラムの TLS 証明書も必要です。 順序付けプログラムの管理者である場合は、手順に従って[順序付けプログラムの TLS 証明書をダウンロード](orderer_operate.html#orderer-tls)してください。  コマンド例を使用した場合、ピアの TLS 証明書は `$HOME/fabric-ca-client/orderer-tls/orderertls.pem` にあります。 順序付けプログラムが別の組織によって管理されている場合は、アウト・オブ・バンド操作で TLS 証明書を提供してもらう必要があります。 その後、TLS 証明書をアプリケーションにインポートできます。
+チャネルに参加してトランザクションを送信するには、共同事業体の順序付けプログラムの TLS 証明書も必要です。 順序付けプログラムの管理者である場合は、手順に従って[順序付けプログラムの TLS 証明書をダウンロード](/docs/services/blockchain/howto/orderer_operate.html#orderer-tls)してください。  コマンド例を使用した場合、ピアの TLS 証明書は `$HOME/fabric-ca-client/orderer-tls/orderertls.pem` にあります。 順序付けプログラムが別の組織によって管理されている場合は、アウト・オブ・バンド操作で TLS 証明書を提供してもらう必要があります。 その後、TLS 証明書をアプリケーションにインポートできます。
 
 ```
 var ordererTLSCert = fs.readFileSync(path.join(__dirname, './orderertls.pem'));
@@ -217,7 +217,7 @@ var ordererTLSCert = fs.readFileSync(path.join(__dirname, './orderertls.pem'));
 ### SDK への順序付けプログラム情報の提供
 {: #orderer-SDK-endpoints}
 
-SDK を使用するには、共同事業体の順序付けプログラムのエンドポイント情報も必要です。 順序付けプログラムの管理者である場合は、手順に従って[順序付けプログラムのエンドポイント情報を取得](orderer_operate.html#orderer-endpoint)できます。 順序付けプログラムが別の組織によって管理されている場合は、アウト・オブ・バンド操作で順序付けプログラムの URL を提供してもらう必要があります。 以下の例では、順序付けプログラムをエンドポイントとして定義し、そのエンドポイントに順序付けプログラムの TLS 証明書を渡します。
+SDK を使用するには、共同事業体の順序付けプログラムのエンドポイント情報も必要です。 順序付けプログラムの管理者である場合は、手順に従って[順序付けプログラムのエンドポイント情報を取得](/docs/services/blockchain/howto/orderer_operate.html#orderer-endpoint)できます。 順序付けプログラムが別の組織によって管理されている場合は、アウト・オブ・バンド操作で順序付けプログラムの URL を提供してもらう必要があります。 以下の例では、順序付けプログラムをエンドポイントとして定義し、そのエンドポイントに順序付けプログラムの TLS 証明書を渡します。
 
 ```
 var orderer = fabric_client.newOrderer('grpcs://9.30.94.174:30167', { pem:  Buffer.from(ordererTLSCert).toString(), 'ssl-target-name-override': null});
@@ -232,24 +232,24 @@ You need to specify a `ssl-target-name-override` of `<something>.blockchain.com`
 
 チャネルをピアと結合するには、組織がチャネルのメンバーであることが必要です。 チャネルのメンバーでない場合は、手順に従って[新しいチャネルを作成](#create-channel)できます。
 
-組織がチャネルのメンバーになったら、手順に従って、SDK を使用して[ピアをチャネルに参加](../v10_application.html#join-channel-sdk)させます。
+組織がチャネルのメンバーになったら、手順に従って、SDK を使用して[ピアをチャネルに参加](/docs/services/blockchain/v10_application.html#join-channel-sdk)させます。
 
 ### SDK を使用したピアへのチェーンコードのインストール
 {: #peer-install-cc-sdk}
 
-以下の手順に従って、SDK を使用してピアに[チェーンコードをインストール](../v10_application.html#install-cc-sdk)します。
+以下の手順に従って、SDK を使用してピアに[チェーンコードをインストール](/docs/services/blockchain/v10_application.html#install-cc-sdk)します。
 
 ### SDK を使用したチャネルでのチェーンコードのインスタンス化
 {: #peer-instantiate-cc-sdk}
 
-チェーンコードをインスタンス化または更新する必要があるのは、チャネルのいずれかのメンバーのみです。 したがって、ピアにチェーンコードがインストールされているチャネルのすべてのメンバーは、チェーンコードをインスタンス化してエンドースメント・ポリシーを指定できます。 ただし、ピアを使用してチャネルでチェーンコードをインスタンス化する必要がある場合は、SDK を使用し、手順に従って[チェーンコードをインスタンス化](../v10_application.html#instantiate-cc-sdk)できます。
+チェーンコードをインスタンス化または更新する必要があるのは、チャネルのいずれかのメンバーのみです。 したがって、ピアにチェーンコードがインストールされているチャネルのすべてのメンバーは、チェーンコードをインスタンス化してエンドースメント・ポリシーを指定できます。 ただし、ピアを使用してチャネルでチェーンコードをインスタンス化する必要がある場合は、SDK を使用し、手順に従って[チェーンコードをインスタンス化](/docs/services/blockchain/v10_application.html#instantiate-cc-sdk)できます。
 
 ## CLI を使用したピアの操作
 {: #peer-cli-operate}
 
 また、Fabric ピア・バイナリーを使用して、コマンド・ラインからピアを操作することもできます。
 
-ピアはピア管理者の署名付き証明書を組み込むようにデプロイされており、これにより、その ID を使用してピアを操作できます。 以下の手順では、ピアをチャネルに参加させたり、ピア上にチェーンコードをインストールしてからチャネル上でチェーンコードをインスタンス化したりするために、[ピアのデプロイ](CA_operate.html#register-admin)時に生成されたピア管理者の MSP フォルダーを使用します。
+ピアはピア管理者の署名付き証明書を組み込むようにデプロイされており、これにより、その ID を使用してピアを操作できます。 以下の手順では、ピアをチャネルに参加させたり、ピア上にチェーンコードをインストールしてからチャネル上でチェーンコードをインスタンス化したりするために、[ピアのデプロイ](/docs/services/blockchain/howto/CA_operate.html#register-admin)時に生成されたピア管理者の MSP フォルダーを使用します。
 
 ### Fabric ピア・クライアントのダウンロード
 {: #peer-client}
@@ -299,7 +299,7 @@ cd $HOME/fabric-ca-client/peer-admin/msp
 ```
 {:codeblock}
 
-ピアを操作するには、ローカル・マシン上で証明書の一部の管理を行う必要があります。 また、ピアから TLS 証明書にアクセスできることを確認する必要もあります。 使用する証明書について詳しくは、[{{site.data.keyword.cloud_notm}} Private での認証局の操作](CA_operate.html)の[メンバーシップ・サービス・プロバイダー](CA_operate.html#msp)を参照してください。
+ピアを操作するには、ローカル・マシン上で証明書の一部の管理を行う必要があります。 また、ピアから TLS 証明書にアクセスできることを確認する必要もあります。 使用する証明書について詳しくは、[{{site.data.keyword.cloud_notm}} Private での認証局の操作](/docs/services/blockchain/howto/CA_operate.html)の[メンバーシップ・サービス・プロバイダー](/docs/services/blockchain/howto/CA_operate.html#msp)を参照してください。
 
 1. ピア管理者の署名付き証明書を `admincerts` という名前の新規フォルダーに移動します。
 
@@ -312,7 +312,7 @@ cd $HOME/fabric-ca-client/peer-admin/msp
 
 2. [ピアの TLS 証明書をダウンロード](#peer-tls)し、コマンド・ラインからこれを参照できることを確認します。 この資料のコマンド例に従った場合、この TLS 証明書は `$HOME/fabric-ca-client/peer-tls/peertls.pem` ファイルにあります。
 
-3. 順序付けプログラムの TLS 証明書を参照する必要もあります。 順序付けプログラムの管理者である場合は、手順に従って[順序付けプログラムの TLS 証明書をダウンロード](orderer_operate.html#orderer-tls)してください。 順序付けプログラムが別の組織によって管理されている場合は、アウト・オブ・バンド操作で TLS 証明書を提供してもらう必要があります。 この証明書を、今後のコマンドで参照できる場所に保存します。
+3. 順序付けプログラムの TLS 証明書を参照する必要もあります。 順序付けプログラムの管理者である場合は、手順に従って[順序付けプログラムの TLS 証明書をダウンロード](/docs/services/blockchain/howto/orderer_operate.html#orderer-tls)してください。 順序付けプログラムが別の組織によって管理されている場合は、アウト・オブ・バンド操作で TLS 証明書を提供してもらう必要があります。 この証明書を、今後のコマンドで参照できる場所に保存します。
 
 tree コマンドを実行して、これらのステップを完了したことを検証できます。 証明書を格納したディレクトリーにナビゲートします。 tree コマンドを実行すると、以下の構造に似た結果が生成されます。
 ```
@@ -374,7 +374,7 @@ tree
 
     この変数を設定すると、任意のディレクトリーでピア・クライアントを使用してコマンドを実行できるようになります。
 
-3. 順序付けプログラムのエンドポイント情報が必要です。 順序付けプログラムの管理者である場合は、手順に従って[順序付けプログラムのエンドポイント情報を取得](orderer_operate.html#orderer-endpoint)できます。 順序付けプログラムが別の組織によって管理されている場合は、アウト・オブ・バンド操作で順序付けプログラムの URL を提供してもらう必要があります。
+3. 順序付けプログラムのエンドポイント情報が必要です。 順序付けプログラムの管理者である場合は、手順に従って[順序付けプログラムのエンドポイント情報を取得](/docs/services/blockchain/howto/orderer_operate.html#orderer-endpoint)できます。 順序付けプログラムが別の組織によって管理されている場合は、アウト・オブ・バンド操作で順序付けプログラムの URL を提供してもらう必要があります。
 
 4. [ピアのエンドポイント情報を取得します](#peer-endpoint)。 この URL を使用して、`PEERADDR` 環境変数を設定します。 先頭の `http://` は省略する必要があります。
 
@@ -607,7 +607,7 @@ export PATH=$PATH:$HOME/bin
 
 ### 暗号情報の準備
 
-組織定義を準備する前に、[ピアの管理者](CA_operate.html#register-admin)に登録してエンロールする必要があります。 ピア管理者の MSP フォルダーを作成したディレクトリーにナビゲートします。 この例のステップでは、`$HOME/fabric-ca-client/peer-admin/msp` にこのフォルダーを作成しました。 `configtxgen` ツールで MSP を使用するには、このフォルダー内でいくつかの追加ステップを実行する必要があります。
+組織定義を準備する前に、[ピアの管理者](/docs/services/blockchain/howto/CA_operate.html#register-admin)に登録してエンロールする必要があります。 ピア管理者の MSP フォルダーを作成したディレクトリーにナビゲートします。 この例のステップでは、`$HOME/fabric-ca-client/peer-admin/msp` にこのフォルダーを作成しました。 `configtxgen` ツールで MSP を使用するには、このフォルダー内でいくつかの追加ステップを実行する必要があります。
 
 1. TLS 証明書を CA からコピーし、`tlscacerts` という名前の新規フォルダーに配置します。
 
@@ -670,7 +670,7 @@ Organizations:
 ```
 {:codeblock}
 
-このファイルには、共同事業体内の組織を定義する情報が含まれます。 このファイルより複雑なバージョンは、[ダウンロードした Fabric ピア・クライアント](peer_operate_icp.html#peer-client)の、`/config` フォルダーにもあります。 このファイルを編集することも、上記のサンプルに置き換えることもできます。 この `/config` フォルダーの場所をメモして、以下の `FABRIC_CFG_PATH` の値を設定します。 このファイルの `Organizations` セクションを編集し、以下の値を設定します。
+このファイルには、共同事業体内の組織を定義する情報が含まれます。 このファイルより複雑なバージョンは、[ダウンロードした Fabric ピア・クライアント](/docs/services/blockchain/howto/peer_operate_icp.html#peer-client)の、`/config` フォルダーにもあります。 このファイルを編集することも、上記のサンプルに置き換えることもできます。 この `/config` フォルダーの場所をメモして、以下の `FABRIC_CFG_PATH` の値を設定します。 このファイルの `Organizations` セクションを編集し、以下の値を設定します。
 
 - `Name:` には、組織に使用する任意の名前を指定できます。
 
@@ -716,12 +716,12 @@ configtxgen -printOrg org1 > $HOME/fabric-ca-client/org-definitions/org1definiti
 ```
 {:codeblock}
 
-このコマンドが正常に実行されると、`configtxgen` は組織定義を JSON 形式で出力します。 共同事業体に参加するには、このファイルを順序付けプログラム組織にアウト・オブ・バンド操作で送信する必要があります。 その後、順序付けプログラム組織は、システム・チャネルに定義を追加することによって、[共同事業体を形成したり、既存の共同事業体に追加してもらったり](orderer_operate.html#consortium)することができるようになります。これにより、ユーザーは、新規チャネルを作成したり、他の共同事業体メンバーによってチャネルに追加してもらったりすることができるようになります。
+このコマンドが正常に実行されると、`configtxgen` は組織定義を JSON 形式で出力します。 共同事業体に参加するには、このファイルを順序付けプログラム組織にアウト・オブ・バンド操作で送信する必要があります。 その後、順序付けプログラム組織は、システム・チャネルに定義を追加することによって、[共同事業体を形成したり、既存の共同事業体に追加してもらったり](/docs/services/blockchain/howto/orderer_operate.html#consortium)することができるようになります。これにより、ユーザーは、新規チャネルを作成したり、他の共同事業体メンバーによってチャネルに追加してもらったりすることができるようになります。
 
 ## チャネル・トランザクションの作成
 {: #peer-icp-channeltx}
 
-新規チャネルを作成する前に、組織は[組織定義](#organization-definition)を準備し、共同事業体のメンバーとなる必要があります。 [共同事業体を形成するか、共同事業体に追加してもらう](orderer_operate.html#consortium)必要がある場合は、以下の手順に従います。 組織が既にシステム・チャネルに追加されている場合は、共同事業体のメンバーを簡単に新規チャネルに追加することもできます。 システム・チャネルのメンバーでない組織は、[チャネル更新要求 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/channel_update_tutorial.html) を使用してその組織定義をチャネルに追加することで、手動でのみチャネルに参加できます。 これらのステップを使用して、既存のチャネルを更新することもできます。
+新規チャネルを作成する前に、組織は[組織定義](#organization-definition)を準備し、共同事業体のメンバーとなる必要があります。 [共同事業体を形成するか、共同事業体に追加してもらう](/docs/services/blockchain/howto/orderer_operate.html#consortium)必要がある場合は、以下の手順に従います。 組織が既にシステム・チャネルに追加されている場合は、共同事業体のメンバーを簡単に新規チャネルに追加することもできます。 システム・チャネルのメンバーでない組織は、[チャネル更新要求 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/channel_update_tutorial.html) を使用してその組織定義をチャネルに追加することで、手動でのみチャネルに参加できます。 これらのステップを使用して、既存のチャネルを更新することもできます。
 
 ### 新規チャネルの形成
 {: #peer-icp-create-channel}

@@ -39,7 +39,7 @@ lastupdated: "2018-11-27"
 {: #resources}
 
 **{{site.data.keyword.blockchainfull_notm}} Service の資料**
-[{{site.data.keyword.blockchainfull_notm}} Service の資料](index.html) (この資料サイト) では、IBP を開始する方法を説明しています。左側のナビゲーターから対応するトピックを見つけるか、上部の検索機能を使用して用語を検索できます。
+[{{site.data.keyword.blockchainfull_notm}} Service の資料](/docs/services/blockchain/index.html) (この資料サイト) では、IBP を開始する方法を説明しています。左側のナビゲーターから対応するトピックを見つけるか、上部の検索機能を使用して用語を検索できます。
 
 **{{site.data.keyword.IBM_notm}} dWAnswers**
 [{{site.data.keyword.IBM_notm}} dWAnswers ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://developer.ibm.com/answers/smartspace/blockchain/ "Blockchain 領域での質問と回答") は、IBP と Hyperledger Fabric のユーザーのコミュニティー・フォーラムであり、主に {{site.data.keyword.IBM_notm}} の専門家によって監視されています。過去に投稿された質問への回答を探したり、新しい質問を送信したりできます。新しい質問には必ずキーワード **blockchain** を含めてください。

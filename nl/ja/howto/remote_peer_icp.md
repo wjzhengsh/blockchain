@@ -24,7 +24,7 @@ lastupdated: "2018-09-05"
 
 {{site.data.keyword.cloud_notm}} Private は、オンプレミスのコンテナー化されたアプリケーションを開発および管理するためのアプリケーション・プラットフォームです。{{site.data.keyword.cloud_notm}} Private の {{site.data.keyword.blockchainfull_notm}} Platform リモート・ピアは、お客様がローカル環境にピアをデプロイできるように ICP とバンドルされた {{site.data.keyword.blockchainfull_notm}} 製品です。リモート・ピアの Helm チャートをインストールした後、これを ICP カタログでアプリケーションとして見つけることができます。ICP のリモート・ピアは、ICP のストレージ、セキュリティー、ロギング、およびサポート・サービスをピア管理に活用します。ICP について詳しくは、[{{site.data.keyword.cloud_notm}} Private 資料 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0.3/kc_welcome_containers.html "{{site.data.keyword.cloud_notm}} Private 資料") を参照してください。
 
-ICP にリモート・ピアをインストールする前に、[リモート・ピアに関する考慮事項](remote_peer.html#remote-peer-limitations)を確認してください。
+ICP にリモート・ピアをインストールする前に、[リモート・ピアに関する考慮事項](/docs/services/blockchain/howto/remote_peer.html#remote-peer-limitations)を確認してください。
 
 ## 前提条件
 {: #prerequisites-icp}
@@ -62,7 +62,7 @@ ICP にリモート・ピアをインストールする前に、{{site.data.keyw
 
 3. {{site.data.keyword.blockchainfull_notm}} プラットフォーム  
 
-  リモート・ピアを使用するには、{{site.data.keyword.blockchainfull_notm}} Platform でホストされるブロックチェーン・ネットワークのメンバーである組織が必要です。{{site.data.keyword.cloud_notm}} 上のネットワーク・モニターを使用して、ネットワーク資格情報およびネットワークの API エンドポイントにアクセスする必要があります。ブロックチェーン・ネットワークのメンバーではない場合は、ネットワークを作成するか、ネットワークに参加する必要があります。詳しくは、[ネットワークの作成](../get_start.html#creating-a-network)または[ネットワークへの参加](../get_start.html#joining-a-network)を参照してください。
+  リモート・ピアを使用するには、{{site.data.keyword.blockchainfull_notm}} Platform でホストされるブロックチェーン・ネットワークのメンバーである組織が必要です。{{site.data.keyword.cloud_notm}} 上のネットワーク・モニターを使用して、ネットワーク資格情報およびネットワークの API エンドポイントにアクセスする必要があります。ブロックチェーン・ネットワークのメンバーではない場合は、ネットワークを作成するか、ネットワークに参加する必要があります。詳しくは、[ネットワークの作成](/docs/services/blockchain/get_start.html#creating-a-network)または[ネットワークへの参加](/docs/services/blockchain/get_start.html#joining-a-network)を参照してください。
 
 ## ICP への Helm チャートのインポート
 
@@ -180,7 +180,7 @@ ICP にリモート・ピアをインストールする前に、{{site.data.keyw
 | `ピア登録機密事項 (Peer enroll secret)`| {{site.data.keyword.blockchainfull_notm}} Platform ネットワーク・モニターの「認証局」画面で入力した登録機密事項。| なし | はい |
 | | | | |
 |**リモート・ピア・データベース** | **台帳データベース・タイプ**| | |
-| `台帳データベース`| チャネル台帳の保管に使用される[状態データベース](../glossary.html#state-database)。リモート・ピアは、[ブロックチェーン・ネットワーク](../v10_dashboard.html#network-preferences)と同じデータベースを使用する必要があります。 | なし | はい |
+| `台帳データベース`| チャネル台帳の保管に使用される[状態データベース](/docs/services/blockchain/glossary.html#state-database)。リモート・ピアは、[ブロックチェーン・ネットワーク](/docs/services/blockchain/v10_dashboard.html#network-preferences)と同じデータベースを使用する必要があります。 | なし | はい |
 | `CouchDB イメージ (CouchDB image)`| 台帳データベースとして CouchDB が選択されている場合にのみ適用されます。| インストール・パスが自動入力されます。この値を変更しないでください。 | はい |
 |**データの永続性** | クラスターが再始動または失敗した後にデータを維持する機能を有効にします。詳しくは、[Kubernetes のストレージ ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://kubernetes.io/docs/concepts/storage/ "ボリューム") を参照してください。 | | |
 | `データの永続性が有効 (Data persistence enabled)`| コンテナーの再始動時にデータが利用可能であることを示します。*チェック・マークを外すと、フェイルオーバーやポッドの再始動の場合にすべてのデータが失われます。* | オン | いいえ |
@@ -298,7 +298,7 @@ helm CLI version on your local machine is ahead of helm cli version on your serv
 Error: incompatible versions client[v2.9.1] server[v2.7.3+icp]
 ```
 
-See the [troubleshooting topic](remote_peer_operate_icp.html#icp-troubleshooting) for instructions on resolving this error.
+See the [troubleshooting topic](/docs/services/blockchain/howto/remote_peer_operate_icp.html#icp-troubleshooting) for instructions on resolving this error.
 
 -->
 
@@ -379,13 +379,13 @@ If you haven't, install [openssl](https://github.com/openssl/openssl) on your sy
 
 3. リモート・ピアが {{site.data.keyword.blockchainfull}} Platform ネットワークに接続できることを確認するには、リモート・ピア・コンテナー内部からピア CLI コマンドを実行します。`peer channel fetch` CLI コマンドを実行して、チャネルからジェネシス・ブロックをフェッチします。
 
-   1. まだ ICP クラスターに接続していない場合は、この[指示](remote_peer_operate_icp.html#remote-peer-kubectl-configure)に従って接続し、ピア・コンテナー内部から cli を使用します。
+   1. まだ ICP クラスターに接続していない場合は、この[指示](/docs/services/blockchain/howto/remote_peer_operate_icp.html#remote-peer-kubectl-configure)に従って接続し、ピア・コンテナー内部から cli を使用します。
 
    2. ジェネシス・ブロックをフェッチするには、まず、組織をネットワーク内のチャネルに追加する必要があります。
 
-     - リモート・ピアから新しいチャネルを開始できます。チャネル・イニシエーターは、[チャネル作成](create_channel.html#creating-a-channel)時に組織を自動的に含めることができます。ネットワーク・モニターでチャネルを作成するには、{{site.data.keyword.blockchainfull_notm}} Platform 上に少なくとも 1 つのピアが存在する必要があることに注意してください。  
+     - リモート・ピアから新しいチャネルを開始できます。チャネル・イニシエーターは、[チャネル作成](/docs/services/blockchain/howto/create_channel.html#creating-a-channel)時に組織を自動的に含めることができます。ネットワーク・モニターでチャネルを作成するには、{{site.data.keyword.blockchainfull_notm}} Platform 上に少なくとも 1 つのピアが存在する必要があることに注意してください。  
 
-     - ブロックチェーン・ネットワークの別のメンバーも[チャネルの更新](create_channel.html#updating-a-channel)を使用して、既存のチャネルに組織を追加できます。{{site.data.keyword.blockchainfull_notm}} Platform 上にピアがあるチャネルのメンバーは、プラットフォームでピアをホストしていない場合でも、ネットワーク・モニターを使用して組織をチャネルに追加できます。
+     - ブロックチェーン・ネットワークの別のメンバーも[チャネルの更新](/docs/services/blockchain/howto/create_channel.html#updating-a-channel)を使用して、既存のチャネルに組織を追加できます。{{site.data.keyword.blockchainfull_notm}} Platform 上にピアがあるチャネルのメンバーは、プラットフォームでピアをホストしていない場合でも、ネットワーク・モニターを使用して組織をチャネルに追加できます。
 
       証明書とチャネルを同期するだけで良いように、リモート・ピアはインストール時にその署名証明書をアップロードします。ネットワーク・モニターの「チャネル」画面で、組織が参加したチャネルを見つけ、**「アクション」**ヘッダーの下にあるドロップダウン・リストから**「証明書の同期」**を選択します。このアクションによって、チャネルのすべてのピアで証明書が同期されます。
 
@@ -458,7 +458,7 @@ If you haven't, install [openssl](https://github.com/openssl/openssl) on your sy
 ## 次のステップ
 {: #whats-next-icp}
 
-ICP でリモート・ピアをセットアップした後に、いくつかの操作ステップを完了してからトランザクションを実行し、ブロックチェーン・ネットワークからの分散台帳を読み取ることができます。詳しくは、[リモート・ピアの操作](remote_peer_operate_icp.html)を参照してください。
+ICP でリモート・ピアをセットアップした後に、いくつかの操作ステップを完了してからトランザクションを実行し、ブロックチェーン・ネットワークからの分散台帳を読み取ることができます。詳しくは、[リモート・ピアの操作](/docs/services/blockchain/howto/remote_peer_operate_icp.html)を参照してください。
 
 ## 高可用性
 {: #high-availability}
@@ -472,7 +472,7 @@ ICP でリモート・ピアをセットアップした後に、いくつかの�
 2. クラスターにピアを複数回インストールして、さまざまなワーカー・ノードにピアをデプロイします。Helm チャートには、ネットワーク ID および OrgID に基づくアンチアフィニティー・ポリシーが含まれています。ICP クラスターは、ピアが同じ組織から同じネットワークに接続しているかどうかを検出し、これらのピアをさまざまなワーカー・ノードに配置しようと試みます。  
   **注:** ポリシーではピアをさまざまなワーカー・ノードに配置することを推奨していますが、これは必須ではありません。例えば、ワーカー・ノードが 1 つのみである場合、すべてのピアがこの同じノードにデプロイされます。
 
-2 つ以上のピアをデプロイする場合は、[高可用性を実現するためのアプリケーション](../v10_application.html#ha-app)を構成する必要もあります。
+2 つ以上のピアをデプロイする場合は、[高可用性を実現するためのアプリケーション](/docs/services/blockchain/v10_application.html#ha-app)を構成する必要もあります。
 
 ## セキュリティー上の考慮事項
 {: #icp-security}
@@ -492,14 +492,14 @@ ICP でリモート・ピアをセットアップした後に、いくつかの�
 ### データの常駐
 {: #icp-data-residency}
 
-データの常駐では、すべてのブロックチェーン台帳データの処理およびストレージが 1 つの国にとどまることが求められます。データの常駐の実現方法について詳しくは、[データの常駐](remote_peer.html#data-residency)を参照してください。
+データの常駐では、すべてのブロックチェーン台帳データの処理およびストレージが 1 つの国にとどまることが求められます。データの常駐の実現方法について詳しくは、[データの常駐](/docs/services/blockchain/howto/remote_peer.html#data-residency)を参照してください。
 
 ### 鍵管理
 {: #icp-security-key-management}
 
-鍵管理はリモート・ピア・セキュリティーの重要な側面です。秘密鍵が漏えいしたり、失われたりすると、悪意を持つアクターがリモート・ピアのデータおよび機能にアクセスできる可能性があります。{{site.data.keyword.blockchainfull_notm}} Platform エンタープライズ・プランでは、[ハードウェア・セキュリティー・モジュール](../glossary.html#hsm) (HSM) を使用して、ネットワークの秘密鍵を保管します。HSM は、他者による秘密鍵へのアクセスを防ぐ物理アプライアンスです。
+鍵管理はリモート・ピア・セキュリティーの重要な側面です。秘密鍵が漏えいしたり、失われたりすると、悪意を持つアクターがリモート・ピアのデータおよび機能にアクセスできる可能性があります。{{site.data.keyword.blockchainfull_notm}} Platform エンタープライズ・プランでは、[ハードウェア・セキュリティー・モジュール](/docs/services/blockchain/glossary.html#hsm) (HSM) を使用して、ネットワークの秘密鍵を保管します。HSM は、他者による秘密鍵へのアクセスを防ぐ物理アプライアンスです。
 
-ICP でリモート・ピアをデプロイする場合は、秘密鍵を管理する必要があります。{{site.data.keyword.blockchainfull_notm}} Platform によって秘密鍵が生成されますが、鍵は Platform には保管されません。鍵が漏えいしないように、安全な場所に保管することが重要です。リモート・ピアの秘密鍵は、ピア MSP の keystore フォルダー (ピア・コンテナー内の `/mnt/crypto/peer/peer/msp/keystore/` ディレクトリー) にあります。リモート・ピア内部の証明書について詳しくは、[{{site.data.keyword.blockchainfull_notm}} Platform の証明書の管理](../certificates.html)チュートリアルの[メンバーシップ・サービス・プロバイダー](../certificates.html#msp)のセクションを参照してください。
+ICP でリモート・ピアをデプロイする場合は、秘密鍵を管理する必要があります。{{site.data.keyword.blockchainfull_notm}} Platform によって秘密鍵が生成されますが、鍵は Platform には保管されません。鍵が漏えいしないように、安全な場所に保管することが重要です。リモート・ピアの秘密鍵は、ピア MSP の keystore フォルダー (ピア・コンテナー内の `/mnt/crypto/peer/peer/msp/keystore/` ディレクトリー) にあります。リモート・ピア内部の証明書について詳しくは、[{{site.data.keyword.blockchainfull_notm}} Platform の証明書の管理](/docs/services/blockchain/certificates.html)チュートリアルの[メンバーシップ・サービス・プロバイダー](/docs/services/blockchain/certificates.html#msp)のセクションを参照してください。
 
 鍵エスクローを使用して、失われた秘密鍵を復旧することができます。これは、鍵が失われる前に実行する必要があります。秘密鍵を復旧できない場合は、認証局に新しい ID を登録して、新しい秘密鍵を取得する必要があります。また、参加しているチャネルから signCert を削除し、置き換える必要があります。
 
@@ -512,12 +512,12 @@ IBP では、秘密鍵が作成されるときに 2 つの異なるエンティ�
 
 [Transport Layer Security![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/en/SSFKSJ_7.1.0/com.ibm.mq.doc/sy10660_.htm "SSL または TLS ハンドシェークの概要") (TLS) は、Hyperledger Fabric の信頼モデルに組み込まれています。{{site.data.keyword.blockchainfull_notm}} Platform のすべてのコンポーネントは、TLS を使用して認証し、相互に通信します。したがって、{{site.data.keyword.blockchainfull_notm}} Platform のネットワーク・コンポーネントは、リモート・ピアとの TLS ハンドシェークを実行できる必要があります。これに関連して、ホワイト・リストなどを使用して、クライアント・アプリからピアまで Web ファイアウォールでパススルーできる必要があります。
 
-片方向 (サーバーのみ) ではなく双方向 (サーバー - クライアント) 認証が必要な相互 TLS を使用して、アプリケーションとエンタープライズ・プラン・ネットワークの間の通信を保護できます。ネットワーク・モニターを使用して、{{site.data.keyword.blockchainfull_notm}} Platform でピアの[相互 TLS](../v10_dashboard.html#mutual-tls) を有効にすることができます。リモート・ピアで相互 TLS を有効にするには、Hyperledger Fabric 資料の[ピア・ノードの相互 TLS を有効にする ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.1/enable_tls.html "Transport Layer Security による通信の保護") 手順に従います。アプリケーションの相互 TLS を有効にすることを強くお勧めします。
+片方向 (サーバーのみ) ではなく双方向 (サーバー - クライアント) 認証が必要な相互 TLS を使用して、アプリケーションとエンタープライズ・プラン・ネットワークの間の通信を保護できます。ネットワーク・モニターを使用して、{{site.data.keyword.blockchainfull_notm}} Platform でピアの[相互 TLS](/docs/services/blockchain/v10_dashboard.html#mutual-tls) を有効にすることができます。リモート・ピアで相互 TLS を有効にするには、Hyperledger Fabric 資料の[ピア・ノードの相互 TLS を有効にする ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.1/enable_tls.html "Transport Layer Security による通信の保護") 手順に従います。アプリケーションの相互 TLS を有効にすることを強くお勧めします。
 
 ### メンバーシップ・サービス・プロバイダーの構成
 {: #icp-security-MSP}
 
-{{site.data.keyword.blockchainfull_notm}} Platform のコンポーネントは、メンバーシップ・サービス・プロバイダー (MSP) を介して ID を使用します。MSP は、CA から発行された証明書をネットワークおよびチャネルの役割に関連付けます。MSP がリモート・ピアを使用する方法について詳しくは、[メンバーシップ・サービス・プロバイダー (MSP)](../certificates.html#msp) を参照してください。
+{{site.data.keyword.blockchainfull_notm}} Platform のコンポーネントは、メンバーシップ・サービス・プロバイダー (MSP) を介して ID を使用します。MSP は、CA から発行された証明書をネットワークおよびチャネルの役割に関連付けます。MSP がリモート・ピアを使用する方法について詳しくは、[メンバーシップ・サービス・プロバイダー (MSP)](/docs/services/blockchain/certificates.html#msp) を参照してください。
 
 ### アプリケーション・セキュリティー
 {: #icp-security-appl}

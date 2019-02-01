@@ -263,7 +263,7 @@ tree
 以下の手順では、編集してローカル・ファイル・システムに保存できる[テンプレート JSON 構成ファイル](#config-file-template)を示します。また、CA を使用してこのファイルを完成させる方法について順を追って説明します。
 
 - ICP に順序付けプログラムをデプロイする場合、または ICP でホストされている共同事業体に接続するためにピアをデプロイする場合は、以下の手順に従ってください。
-- スターター・プランまたはエンタープライズ・プランに接続するためにピアをデプロイする場合は、代わりに[スターター・プランまたはエンタープライズ・プランに接続するための IBM Cloud Private でのピアのデプロイ](peer_deploy_ibp.html)の手順に従ってください。これらのステップでは、{{site.data.keyword.blockchainfull_notm}} Platform で CA を使用して ICP にピアをデプロイする方法について順を追って説明しています。
+- スターター・プランまたはエンタープライズ・プランに接続するためにピアをデプロイする場合は、代わりに[スターター・プランまたはエンタープライズ・プランに接続するための IBM Cloud Private でのピアのデプロイ](/docs/services/blockchain/howto/peer_deploy_ibp.html)の手順に従ってください。これらのステップでは、{{site.data.keyword.blockchainfull_notm}} Platform で CA を使用して ICP にピアをデプロイする方法について順を追って説明しています。
 
 ### 構成ファイル
 {: #config-file-template}
@@ -675,7 +675,7 @@ CA をデプロイした同じ ICP クラスターに順序付けプログラム
 ```
 {:codeblock}
 
-他のフィールドはブランクのままで構いません。このファイルを保存し、[順序付けプログラム](orderer_deploy_icp.html)または[ピア](peer_deploy_icp.html)のデプロイ時に使用する必要があります。
+他のフィールドはブランクのままで構いません。このファイルを保存し、[順序付けプログラム](/docs/services/blockchain/howto/orderer_deploy_icp.html)または[ピア](/docs/services/blockchain/howto/peer_deploy_icp.html)のデプロイ時に使用する必要があります。
 
 ## メンバーシップ・サービス・プロバイダー (MSP)
 {: #msp}
@@ -691,7 +691,7 @@ MSP フォルダーには、Fabric コンポーネントで使用される定義
 
 ネットワーク・モニターや Swagger API を使用して、fabric-ca-client が参照できる MSP フォルダーを作成することもできます。
 
-- **cacerts** および **intermediatecerts**: [Swagger API](swagger_apis.html) で `GET` 要求を MSP API に発行すると、これらの証明書を取得できます。
+- **cacerts** および **intermediatecerts**: [Swagger API](/docs/services/blockchain/howto/swagger_apis.html) で `GET` 要求を MSP API に発行すると、これらの証明書を取得できます。
 - **signCerts** および **keystore**: 「認証局」パネル上の**「証明書の生成 (Generate Certificates)」**ボタンをクリックすると、これらの証明書を生成できます。 ポップアップ・ウィンドウが開き、2 つの証明書がリストされます。 signCerts に**証明書**を、keystore に **秘密鍵**をコピーして格納してください。 これらの証明書はプラットフォーム上には保管されないので、安全な場所に保管してください。
 
 多くの Fabric コンポーネントの MSP フォルダー内には追加情報が含まれています。 例えば、リモート・ピアを操作する場合、以下のフォルダーを参照することもできます。

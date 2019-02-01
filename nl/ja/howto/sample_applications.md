@@ -17,10 +17,10 @@ lastupdated: "2017-08-14"
 
 ## 始めに
 
-前提条件となるすべてのソフトウェアがローカル・ファイル・システムにインストールされていることを確認します。詳しくは、[アプリケーション開発環境のセットアップ](../v10_application.html#setting-up-application-development-environment)を参照してください。
+前提条件となるすべてのソフトウェアがローカル・ファイル・システムにインストールされていることを確認します。詳しくは、[アプリケーション開発環境のセットアップ](/docs/services/blockchain/v10_application.html#setting-up-application-development-environment)を参照してください。
 
 また、チャネルとそのピアが構成された{{site.data.keyword.blockchain}}・ネットワークが {{site.data.keyword.Bluemix_short}} に存在する必要があります。
-詳しくは、[ネットワークの管理](../get_start.html)を参照してください。ネットワークを使用する準備ができたら、アプリケーションがアクセスするネットワーク・リソースの API エンドポイントを取得します。詳しくは、[アプリケーションへのネットワーク・サービス資格情報の追加](../v10_application.html#adding-network-service-credentials-to-your-application)を参照してください。
+詳しくは、[ネットワークの管理](/docs/services/blockchain/get_start.html)を参照してください。ネットワークを使用する準備ができたら、アプリケーションがアクセスするネットワーク・リソースの API エンドポイントを取得します。詳しくは、[アプリケーションへのネットワーク・サービス資格情報の追加](../v10_application.html#adding-network-service-credentials-to-your-application)を参照してください。
 
 
 ## マーブル・アプリケーション

@@ -21,9 +21,9 @@ lastupdated: "2018-12-07"
 以下の手順では、{{site.data.keyword.cloud_notm}} 上またはローカル ICP 上のスターター・プラン・ネットワークまたはエンタープライズ・プラン・ネットワークに接続する {{site.data.keyword.blockchainfull}} Platform ピアを {{site.data.keyword.cloud_notm}} Private (ICP) にデプロイする方法を説明します。
 {:shortdesc}
 
-ピアをデプロイする前に、[考慮事項と制限](../ibp-for-icp-about.html#ibp-icp-considerations)を確認してください。
+ピアをデプロイする前に、[考慮事項と制限](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-considerations)を確認してください。
 
-スターター・プラン・ネットワークまたはエンタープライズ・プラン・ネットワークでは、Hyperledger Fabric v1.1 または v1.2.1 が実行されている必要があります。Hyperledger Fabric のバージョンを確認するには、ネットワーク・モニターで[「ネットワーク設定 (Network Preferences)」ウィンドウ](../v10_dashboard.html#network-preferences)を開きます。
+スターター・プラン・ネットワークまたはエンタープライズ・プラン・ネットワークでは、Hyperledger Fabric v1.1 または v1.2.1 が実行されている必要があります。Hyperledger Fabric のバージョンを確認するには、ネットワーク・モニターで[「ネットワーク設定 (Network Preferences)」ウィンドウ](/docs/services/blockchain/v10_dashboard.html#network-preferences)を開きます。
 
 ## 必要なリソース
 {: #peer-resources-required}
@@ -53,13 +53,13 @@ ICP システムが最小ハードウェア・リソース要件を満たして�
 ## ピアをデプロイするための前提条件
 {: #prerequisites-peer-ibp}
 
-1. ICP にピアをインストールするには、その前に [ICP をインストール](../ICP_setup.html)し、[{{site.data.keyword.blockchainfull_notm}} Platform Helm チャートをインストール](helm_install_icp.html)する必要があります。
+1. ICP にピアをインストールするには、その前に [ICP をインストール](/docs/services/blockchain/ICP_setup.html)し、[{{site.data.keyword.blockchainfull_notm}} Platform Helm チャートをインストール](/docs/services/blockchain/howto/helm_install_icp.html)する必要があります。
 
 2. Community Edition を使用しており、インターネットに接続されていない ICP クラスター上でこの Helm チャートを実行する場合は、アーカイブを ICP クラスターにインストールするためには、インターネットに接続されたマシン上でそれらのアーカイブを事前に作成する必要があります。詳しくは、[インターネット接続がないクラスターへのフィーチャー・アプリケーションの追加 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_package_offline.html "インターネット接続がないクラスターへのフィーチャー・アプリケーションの追加"){:new_window} を参照してください。仕様ファイル manifest.yaml は、Helm チャート内の ibm-blockchain-platform-dev/ibm_cloud_pak にあります。
 
-3. {{site.data.keyword.cloud_notm}} のスターター・プランまたはエンタープライズ・プラン・ネットワークのメンバーである組織が必要です。ピアは、{{site.data.keyword.blockchainfull_notm}} Platform のネットワークの API エンドポイント、Hyperledger Fabric CA、および順序付けサービスを利用して作動します。ブロックチェーン・ネットワークのメンバーではない場合は、ネットワークを作成するか、ネットワークに参加する必要があります。詳しくは、[ネットワークの作成](../get_start.html#creating-a-network)または[ネットワークへの参加](../get_start.html#joining-a-network)を参照してください。
+3. {{site.data.keyword.cloud_notm}} のスターター・プランまたはエンタープライズ・プラン・ネットワークのメンバーである組織が必要です。ピアは、{{site.data.keyword.blockchainfull_notm}} Platform のネットワークの API エンドポイント、Hyperledger Fabric CA、および順序付けサービスを利用して作動します。ブロックチェーン・ネットワークのメンバーではない場合は、ネットワークを作成するか、ネットワークに参加する必要があります。詳しくは、[ネットワークの作成](/docs/services/blockchain/get_start.html#creating-a-network)または[ネットワークへの参加](/docs/services/blockchain/get_start.html#joining-a-network)を参照してください。
 
-4. まず ICP に [CA をデプロイ](CA_deploy_icp.html)する必要があります。この CA を TLS CA として使用します。ピアをデプロイする前に、[ICP 上で CA を操作](CA_operate.html#prerequisites)するための前提条件となる手順を実行してください。これらの手順以外の操作を実行する必要はありません。
+4. まず ICP に [CA をデプロイ](/docs/services/blockchain/howto/CA_deploy_icp.html)する必要があります。この CA を TLS CA として使用します。ピアをデプロイする前に、[ICP 上で CA を操作](/docs/services/blockchain/howto/CA_operate.html#prerequisites)するための前提条件となる手順を実行してください。これらの手順以外の操作を実行する必要はありません。
 
 5. ICP コンソールから、TLS CA のクラスター・プロキシー IP アドレスの値を取得します。**注:** プロキシー IP にアクセスするには、[クラスター管理者 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "クラスター管理者役割とアクション") である必要があります。ICP クラスターにログインします。左側のナビゲーション・パネルで**「プラットフォーム」**、**「ノード」**の順にクリックし、クラスターで定義されているノードを表示します。`proxy` 役割を持つノードをクリックし、テーブルから`「ホスト IP」`の値をコピーします。**重要:** この値を保存して、Helm チャートの`「プロキシー IP (Proxy IP)」`フィールドを構成する際に使用します。
 
@@ -217,7 +217,7 @@ ICP システムが最小ハードウェア・リソース要件を満たして�
 
 管理者 ID を登録したら、ピア管理者の MSP フォルダーと署名付き証明書を生成する必要があります。したがって、スターター・プランまたはエンタープライズ・プランの CA に対して登録コマンドを実行する必要があります。
 
-1. [Fabric CA クライアント](CA_operate.html#fabric-ca-client)をダウンロードします (まだダウンロードしていない場合)。
+1. [Fabric CA クライアント](/docs/services/blockchain/howto/CA_operate.html#fabric-ca-client)をダウンロードします (まだダウンロードしていない場合)。
 2. 暗号情報を保管するディレクトリーにナビゲートして、ピア管理者の MSP フォルダーを格納するフォルダーを作成します。
 
   ```
@@ -309,9 +309,9 @@ cat $HOME/fabric-ca-client/peer-admin/msp/signcerts/cert.pem | base64 $FLAG
 
 構成ファイル内の `"tls"` フィールドには、ICP にデプロイした CA から得られる情報を入力する必要があります。この CA を別個の TLS CA として使用します。これにより、ピアのセキュリティーが向上します。以下の指示に従って、関連情報を生成してください。
 
-- `"cahost"` および `"caport"` の値は、[CA URL](CA_operate.html#ca-url) の URL とポートです。例えば、CA URL が `http://9.30.94.174:30167` の場合は、`cahost` の値は `9.30.94.174` となり、`caport` は `30167` となります。
+- `"cahost"` および `"caport"` の値は、[CA URL](/docs/services/blockchain/howto/CA_operate.html#ca-url) の URL とポートです。例えば、CA URL が `http://9.30.94.174:30167` の場合は、`cahost` の値は `9.30.94.174` となり、`caport` は `30167` となります。
 - `"caname"` は、ICP にデプロイした CA の TLS CA 名です。この TLS CA 名は、CA の構成時に`「CA TLS インスタンス名 (CA TLS instance name)」`フィールドに指定した値です。
-- `"cacert"` は、CA の base64 でエンコードされた TLS 証明書です。前提条件として [CA の TLS 証明書](CA_operate.html#ca-tls)を取得したときのコマンド出力の値によって、次のセクションを更新します。
+- `"cacert"` は、CA の base64 でエンコードされた TLS 証明書です。前提条件として [CA の TLS 証明書](/docs/services/blockchain/howto/CA_operate.html#ca-tls)を取得したときのコマンド出力の値によって、次のセクションを更新します。
 
   ```
   "catls": {
@@ -331,7 +331,7 @@ cat $HOME/fabric-ca-client/peer-admin/msp/signcerts/cert.pem | base64 $FLAG
 
 Fabric CA クライアントを使用して、ICP 上の TLS CA にピアを登録する必要があります。
 
-1. これで、TLS 証明書ファイル `tls.pem` が `$HOME/fabric-ca-client/catls` フォルダーに作成されました。このファイルが作成されていない場合は、[ICP からダウンロードした](CA_operate.html#ca-tls) TLS 証明書を、以下のコマンドで参照できるディレクトリーにコピーします。`$HOME/fabric-ca-client` ディレクトリーにいることを確認してください。
+1. これで、TLS 証明書ファイル `tls.pem` が `$HOME/fabric-ca-client/catls` フォルダーに作成されました。このファイルが作成されていない場合は、[ICP からダウンロードした](/docs/services/blockchain/howto/CA_operate.html#ca-tls) TLS 証明書を、以下のコマンドで参照できるディレクトリーにコピーします。`$HOME/fabric-ca-client` ディレクトリーにいることを確認してください。
 
   ```
   cd $HOME/fabric-ca-client
@@ -356,9 +356,9 @@ export FABRIC_CA_CLIENT_HOME=$HOME/fabric-ca-client/tlsca-admin
   ```
   {:codeblock}
 
-  コマンドの `<enroll_id>` および `<enroll_password>` は、認証局のデプロイ時に Kubernetes 秘密に渡した [CA 管理者ユーザー名とパスワード](CA_deploy_icp.html#admin-secret)です。`<ca_url_with_port>` 内に [CA URL](CA_operate.html#ca-url) を挿入します。先頭の `http://` は省略します。`<tls_ca_name>` は、[CA の構成](CA_deploy_icp.html#icp-ca-configuration-parms)時に指定した値です。
+  コマンドの `<enroll_id>` および `<enroll_password>` は、認証局のデプロイ時に Kubernetes 秘密に渡した [CA 管理者ユーザー名とパスワード](/docs/services/blockchain/howto/CA_deploy_icp.html#admin-secret)です。`<ca_url_with_port>` 内に [CA URL](/docs/services/blockchain/howto/CA_operate.html#ca-url) を挿入します。先頭の `http://` は省略します。`<tls_ca_name>` は、[CA の構成](/docs/services/blockchain/howto/CA_deploy_icp.html#icp-ca-configuration-parms)時に指定した値です。
 
-  `<ca_tls_cert_file>` は、[CA TLS 証明書](CA_operate.html#ca-tls)のファイル名とフルパスです。
+  `<ca_tls_cert_file>` は、[CA TLS 証明書](/docs/services/blockchain/howto/CA_operate.html#ca-tls)のファイル名とフルパスです。
 
   実際の呼び出しは以下の例のようになります。
 
@@ -478,7 +478,7 @@ tree
 
 #### クラスター・プロキシー IP アドレスの値の取得
 
-TLS CA をデプロイしたのと同じ ICP クラスターにピアをデプロイする場合は、[TLS CA 向けに構成](CA_deploy_icp.html#icp-ca-configuration-parms)したときに使用したものと同じプロキシー IP を入力します。コンポーネントを別のクラスターにデプロイする場合は、ICP コンソールからクラスター・プロキシー IP アドレスの値を取得できます。ピアのデプロイ先となる ICP クラスターのクラスター管理者役割が必要です。
+TLS CA をデプロイしたのと同じ ICP クラスターにピアをデプロイする場合は、[TLS CA 向けに構成](/docs/services/blockchain/howto/CA_deploy_icp.html#icp-ca-configuration-parms)したときに使用したものと同じプロキシー IP を入力します。コンポーネントを別のクラスターにデプロイする場合は、ICP コンソールからクラスター・プロキシー IP アドレスの値を取得できます。ピアのデプロイ先となる ICP クラスターのクラスター管理者役割が必要です。
 
 1. ICP コンソールにログインします。左側のナビゲーション・パネルで**「プラットフォーム」**、**「ノード」**の順にクリックし、クラスターで定義されているノードを表示します。
 2. `proxy` 役割を持つノードをクリックし、テーブルから`「ホスト IP」`の値をコピーします。
@@ -643,7 +643,7 @@ TLS CA をデプロイしたのと同じ ICP クラスターにピアをデプ�
 |`ピア構成の秘密 (Peer configuration secret) (必須)`|ICP 内で作成した[ピア構成の秘密](#peer-config-secret)の名前。|なし|はい|
 |`組織 MSP (Organization MSP) (必須)`|この値は、「概要」画面の「リモート・ピアの構成」をクリックして、ネットワーク・モニター (IBP UI) で確認できます。|なし|はい|
 |`ピア・サービス・タイプ (Peer service type)`| ピアで[外部ポートを公開 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types) するかどうかを指定するために使用します。ポートを外部に対して公開する場合は NodePort を選択し (推奨)、ポートを公開しない場合は ClusterIP を選択します。LoadBalancer および ExternalName はこのリリースではサポートされていません。| NodePort |はい|
-| `状態データベース`| チャネル台帳の保管に使用される[状態データベース](../glossary.html#state-database)。ピアは、[ブロックチェーン・ネットワーク](../v10_dashboard.html#network-preferences)と同じデータベースを使用する必要があります。| LevelDB | はい |
+| `状態データベース`| チャネル台帳の保管に使用される[状態データベース](/docs/services/blockchain/glossary.html#state-database)。ピアは、[ブロックチェーン・ネットワーク](/docs/services/blockchain/v10_dashboard.html#network-preferences)と同じデータベースを使用する必要があります。| LevelDB | はい |
 |`CouchDB イメージ・リポジトリー (CouchDB image repository)`| 台帳データベースとして CouchDB が選択されている場合にのみ適用されます。このフィールドにはインストール・パスが自動入力されます。Community Edition を使用しており、インターネットにアクセスできない場合は、このフィールドでは、Fabric CouchDB のイメージをダウンロードしたディレクトリーを指定する必要があります。| ibmcom/ibp-fabric-couchdb | はい |
 | `CouchDB Docker イメージ・タグ (CouchDB Docker image tag)`| 台帳データベースとして CouchDB が選択されている場合にのみ適用されます。CouchDB イメージに関連付けられたタグの値。|正しい値が自動入力されます。| はい |
 |`ピア・データの永続性が有効 (Peer Data persistence enabled)`| クラスターが再始動または失敗した後にデータを維持する機能を有効にします。詳しくは、[Kubernetes のストレージ ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://kubernetes.io/docs/concepts/storage/ "ボリューム") を参照してください。*チェック・マークを外すと、フェイルオーバーやポッドの再始動の場合にすべてのデータが失われます。* | オン | いいえ |
@@ -722,22 +722,22 @@ helm install --name jnchart2 mycluster/ibm-blockchain-platform \
 
 構成パラメーターを入力し、**「インストール」**ボタンをクリックした後、**「Helm リリースの表示」**ボタンをクリックしてデプロイメントを表示します。成功した場合は、「デプロイメント」テーブルの`「必要数」`、`「現行」`、`「最新」`、および`「使用可能」`の各フィールドに値 1 が表示されます。最新表示をクリックしてテーブルが更新されるまで待つ必要がある場合があります。「デプロイメント」テーブルは、ICP コンソールの左上隅にある**「メニュー」**アイコンをクリックして確認することもできます。メニュー・リストから、**「ワークロード」**、**「Helm リリース」**の順にクリックします。
 
-`「メモ」`セクションまでスクロールダウンすると、[ピアを操作](peer_operate_ibp.html)する際に使用する重要な情報があります。
+`「メモ」`セクションまでスクロールダウンすると、[ピアを操作](/docs/services/blockchain/howto/peer_operate_ibp.html)する際に使用する重要な情報があります。
 
 <!--
 ### Verifying the peer can connect to Starter or Enterprise Plan network
 
 You can run a peer CLI command from inside the peer container to verify that your peer has connected to your network on the {{site.data.keyword.blockchainfull_notm}} Platform. Complete the following instructions to run the `peer channel fetch` command to fetch the genesis block from a channel:
 
-1. If you have not already connected to your ICP cluster, follow these [instructions](peer_operate_ibp.html#peer-kubectl-configure) to connect to it and use the cli from inside the peer container.
+1. If you have not already connected to your ICP cluster, follow these [instructions](/docs/services/blockchain/howto/peer_operate_ibp.html#peer-kubectl-configure) to connect to it and use the cli from inside the peer container.
 
-2. If you deploy your peer behind a firewall, you need to open a passthru to enable the network on the platform to complete a TlS handshake with your peer. You only need to enable a passthru for the Node port bound to port 7051 of your peer. For more information, see [finding your peer endpoint information](peer_operate_ibp.html#peer-endpoint).
+2. If you deploy your peer behind a firewall, you need to open a passthru to enable the network on the platform to complete a TlS handshake with your peer. You only need to enable a passthru for the Node port bound to port 7051 of your peer. For more information, see [finding your peer endpoint information](/docs/services/blockchain/howto/peer_operate_ibp.html#peer-endpoint).
 
 3. Your organization needs to be added to a channel in the network before you can fetch the genesis block.
 
-  - You can start a new channel for the peer. If you are using IBP Starter or Enterprise Plan, you can automatically include your organization during [channel creation](create_channel.html#creating-a-channel).
+  - You can start a new channel for the peer. If you are using IBP Starter or Enterprise Plan, you can automatically include your organization during [channel creation](/docs/services/blockchain/howto/create_channel.html#creating-a-channel).
 
-  - Another member of the blockchain network can also add your organization to an existing channel by using a [channel update](create_channel.html#updating-a-channel).
+  - Another member of the blockchain network can also add your organization to an existing channel by using a [channel update](/docs/services/blockchain/howto/create_channel.html#updating-a-channel).
 
     The peer uploads its signCert during installation, so that you need to only synchronize the certificate to the channel. On the "Channels" screen of the Network Monitor, locate the channel that your organization joined and select **Sync Certificate** from the drop-down list under the **Action** header. This action synchronizes the certificates across all the peers on the channel.
 
@@ -818,15 +818,15 @@ You can run a peer CLI command from inside the peer container to verify that you
   ```
 
   Successfully fetching the genesis block indicates that your peer can connect to your Starter or Enterprise Plan network.
-  You still need to join the peer to the channel and install chaincode. See [operating your peer](peer_operate_ibp.html) for more information.
+  You still need to join the peer to the channel and install chaincode. See [operating your peer](/docs/services/blockchain/howto/peer_operate_ibp.html) for more information.
 
 -->
 
 ## ピア・ログの表示
 {: #peer-ibp-view-logs}
 
-コンポーネント・ログは、[`kubectl CLI コマンド`](peer_operate_ibp.html#peer-kubectl-configure)を使用してコマンド・ラインから、または [Kibana ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.elastic.co/products/kibana "Elastic Stack への開かれた窓") (ICP クラスターに含まれています) を使用して表示できます。詳しくは、こちらの[ログへのアクセス手順](peer_operate_ibp.html#peer-ibp-view-logs)を参照してください。
+コンポーネント・ログは、[`kubectl CLI コマンド`](/docs/services/blockchain/howto/peer_operate_ibp.html#peer-kubectl-configure)を使用してコマンド・ラインから、または [Kibana ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.elastic.co/products/kibana "Elastic Stack への開かれた窓") (ICP クラスターに含まれています) を使用して表示できます。詳しくは、こちらの[ログへのアクセス手順](/docs/services/blockchain/howto/peer_operate_ibp.html#peer-ibp-view-logs)を参照してください。
 
 ## 次の作業
 
-ピアをデプロイした後に、いくつかの操作ステップを完了する必要があります。その後、ブロックチェーン・ネットワークにトランザクションを送信したり、ブロックチェーン・ネットワークから分散台帳を読み取ったりできるようになります。詳しくは、[スターター・プランまたはエンタープライズ・プランを使用したピアの操作](peer_operate_ibp.html)を参照してください。
+ピアをデプロイした後に、いくつかの操作ステップを完了する必要があります。その後、ブロックチェーン・ネットワークにトランザクションを送信したり、ブロックチェーン・ネットワークから分散台帳を読み取ったりできるようになります。詳しくは、[スターター・プランまたはエンタープライズ・プランを使用したピアの操作](/docs/services/blockchain/howto/peer_operate_ibp.html)を参照してください。

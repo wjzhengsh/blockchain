@@ -17,7 +17,7 @@ lastupdated: "2018-12-07"
 
 {{site.data.keyword.blockchainfull}} Platform for {{site.data.keyword.cloud_notm}} Private は、ローカル ICP クラスターにインストールできる Helm チャート・ファイルとして提供されます。Helm チャートをインストールすると、ICP カタログで {{site.data.keyword.blockchainfull_notm}} Platform をアプリケーションとして見つけることができます。
 
-{{site.data.keyword.blockchainfull_notm}} Platform for ICP をインストールする前に、[考慮事項と制限](../ibp-for-icp-about.html#ibp-icp-considerations)を確認してください。Helm チャート、料金、およびサポートに含まれるブロックチェーン・コンポーネントのデプロイ方法について詳しくは、[{{site.data.keyword.blockchainfull_notm}} Platform for ICP について](../ibp-for-icp-about.html)を参照してください。
+{{site.data.keyword.blockchainfull_notm}} Platform for ICP をインストールする前に、[考慮事項と制限](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-considerations)を確認してください。Helm チャート、料金、およびサポートに含まれるブロックチェーン・コンポーネントのデプロイ方法について詳しくは、[{{site.data.keyword.blockchainfull_notm}} Platform for ICP について](/docs/services/blockchain/ibp-for-icp-about.html)を参照してください。
 
 {{site.data.keyword.blockchainfull_notm}} Platform for ICP では、以下の 2 つのエディションを提供します。
 
@@ -28,7 +28,7 @@ lastupdated: "2018-12-07"
 ## Helm チャートをインストールするための前提条件
 {: #helm-install-prereqs}
 
-Helm チャートをインストールする前に、ICP クラスターを構成しておく必要があります。[ICP クラスターのセットアップおよび構成](../ICP_setup.html)手順を確認してください。
+Helm チャートをインストールする前に、ICP クラスターを構成しておく必要があります。[ICP クラスターのセットアップおよび構成](/docs/services/blockchain/ICP_setup.html)手順を確認してください。
 
 ## ファイアウォールの内側での {{site.data.keyword.blockchainfull_notm}} Platform のインストール
 {: #helm-install-prereqs-firewall}
@@ -281,10 +281,10 @@ Helm チャートを {{site.data.keyword.cloud_notm}} Private にインポート
 
 ## 個々のコンポーネントのデプロイ
 
-Helm チャートをインストールしたら、ICP カタログ内の **ibm-blockchain-platform-prod** タイルまたは **ibm-blockchain-platform-dev** タイルをクリックして開きます。構成ページを使用して、ブロックチェーン・ネットワークの個々のコンポーネントをデプロイできます。ブロックチェーン・ソリューションに必要なコンポーネント、およびそれらをデプロイする順序について詳しくは、[{{site.data.keyword.blockchainfull_notm}} Platform for ICP デプロイメント・ガイド](../ibp_for_icp_deployment_guide.html)を参照してください。
+Helm チャートをインストールしたら、ICP カタログ内の **ibm-blockchain-platform-prod** タイルまたは **ibm-blockchain-platform-dev** タイルをクリックして開きます。構成ページを使用して、ブロックチェーン・ネットワークの個々のコンポーネントをデプロイできます。ブロックチェーン・ソリューションに必要なコンポーネント、およびそれらをデプロイする順序について詳しくは、[{{site.data.keyword.blockchainfull_notm}} Platform for ICP デプロイメント・ガイド](/docs/services/blockchain/ibp_for_icp_deployment_guide.html)を参照してください。
 
 次に、個々のコンポーネントをデプロイします。
 
-- 順序付けプログラムをデプロイする場合は、まず順序付けプログラムの認証局をセットアップする必要があります。CA は、組織内の他のコンポーネントによって使用される証明書を生成します。詳しくは、[ICP への {{site.data.keyword.blockchainfull_notm}} Platform 認証局のデプロイ](CA_deploy_icp.html)を参照してください。その後、ネットワークの共通バインディングとなる順序付けプログラムをデプロイできます。詳しくは、[ICP での {{site.data.keyword.blockchainfull_notm}} Platform 順序付けプログラムのデプロイ](orderer_deploy_icp.html)を参照してください。
+- 順序付けプログラムをデプロイする場合は、まず順序付けプログラムの認証局をセットアップする必要があります。CA は、組織内の他のコンポーネントによって使用される証明書を生成します。詳しくは、[ICP への {{site.data.keyword.blockchainfull_notm}} Platform 認証局のデプロイ](/docs/services/blockchain/howto/CA_deploy_icp.html)を参照してください。その後、ネットワークの共通バインディングとなる順序付けプログラムをデプロイできます。詳しくは、[ICP での {{site.data.keyword.blockchainfull_notm}} Platform 順序付けプログラムのデプロイ](/docs/services/blockchain/howto/orderer_deploy_icp.html)を参照してください。
 
-- ピアをデプロイする場合は、まずピアの認証局をセットアップする必要があります。CA は、ピアによって使用される証明書を生成します。詳しくは、[ICP への {{site.data.keyword.blockchainfull_notm}} Platform 認証局のデプロイ](CA_deploy_icp.html)を参照してください。その後、ネットワークに参加する準備ができたら、チャネルに参加し、トランザクションを承認し、データを保管するピアをデプロイできます。詳しくは、ピアが参加するブロックチェーン・ネットワークに応じて、[ICP での {{site.data.keyword.blockchainfull_notm}} ピアのデプロイ](peer_deploy_icp.html)または[スターター・プランまたはエンタープライズ・プラン・ネットワークのための {{site.data.keyword.blockchainfull_notm}} ピアのデプロイ](peer_deploy_ibp.html)を参照してください。
+- ピアをデプロイする場合は、まずピアの認証局をセットアップする必要があります。CA は、ピアによって使用される証明書を生成します。詳しくは、[ICP への {{site.data.keyword.blockchainfull_notm}} Platform 認証局のデプロイ](/docs/services/blockchain/howto/CA_deploy_icp.html)を参照してください。その後、ネットワークに参加する準備ができたら、チャネルに参加し、トランザクションを承認し、データを保管するピアをデプロイできます。詳しくは、ピアが参加するブロックチェーン・ネットワークに応じて、[ICP での {{site.data.keyword.blockchainfull_notm}} ピアのデプロイ](/docs/services/blockchain/howto/peer_deploy_icp.html)または[スターター・プランまたはエンタープライズ・プラン・ネットワークのための {{site.data.keyword.blockchainfull_notm}} ピアのデプロイ](/docs/services/blockchain/howto/peer_deploy_ibp.html)を参照してください。

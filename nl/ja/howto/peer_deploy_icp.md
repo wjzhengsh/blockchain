@@ -18,10 +18,10 @@ lastupdated: "2018-12-07"
 
 ***[このページは参考になりましたか。ご意見をお聞かせください。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
-以下の手順では、{{site.data.keyword.cloud_notm}} Private (ICP) に {{site.data.keyword.blockchainfull}} Platform ピアをデプロイする方法を説明します。これらの手順に従って、ICP 上の {{site.data.keyword.blockchainfull_notm}} Platform に接続できます。{{site.data.keyword.cloud_notm}} 上のスターター・プラン・ネットワークまたはエンタープライズ・プラン・ネットワークにピアを接続するには、[スターター・プランまたはエンタープライズ・プランに接続するためのピアのデプロイ](peer_deploy_ibp.html)を参照してください。
+以下の手順では、{{site.data.keyword.cloud_notm}} Private (ICP) に {{site.data.keyword.blockchainfull}} Platform ピアをデプロイする方法を説明します。これらの手順に従って、ICP 上の {{site.data.keyword.blockchainfull_notm}} Platform に接続できます。{{site.data.keyword.cloud_notm}} 上のスターター・プラン・ネットワークまたはエンタープライズ・プラン・ネットワークにピアを接続するには、[スターター・プランまたはエンタープライズ・プランに接続するためのピアのデプロイ](/docs/services/blockchain/howto/peer_deploy_ibp.html)を参照してください。
 {:shortdesc}
 
-ピアをデプロイする前に、[考慮事項と制限](../ibp-for-icp-about.html#ibp-icp-considerations)を確認してください。
+ピアをデプロイする前に、[考慮事項と制限](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-considerations)を確認してください。
 
 ## 必要なリソース
 {: #peer-resources-required}
@@ -51,7 +51,7 @@ ICP システムが最小ハードウェア・リソース要件を満たして�
 ## ピアをデプロイするための前提条件
 {: #prerequisites-peer-icp}
 
-1. ICP にピアをインストールするには、その前に [ICP をインストール](../ICP_setup.html)し、[{{site.data.keyword.blockchainfull_notm}} Platform Helm チャートをインストール](helm_install_icp.html)する必要があります。
+1. ICP にピアをインストールするには、その前に [ICP をインストール](/docs/services/blockchain/ICP_setup.html)し、[{{site.data.keyword.blockchainfull_notm}} Platform Helm チャートをインストール](/docs/services/blockchain/howto/helm_install_icp.html)する必要があります。
 
 2. Community Edition を使用しており、インターネットに接続されていない ICP クラスター上でこの Helm チャートを実行する場合は、アーカイブを ICP クラスターにインストールするためには、インターネットに接続されたマシン上でそれらのアーカイブを事前に作成する必要があります。詳しくは、[インターネット接続がないクラスターへのフィーチャー・アプリケーションの追加 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_package_offline.html "インターネット接続がないクラスターへのフィーチャー・アプリケーションの追加"){:new_window} を参照してください。仕様ファイル `manifest.yaml` は、Helm チャート内の `ibm-blockchain-platform-dev/ibm_cloud_pak` にあります。
 
@@ -173,7 +173,7 @@ LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tDQpNSUlFbERDQ0EzeWdBd0lCQWdJUUFmMmo2MjdL
 |`ピア構成の秘密 (Peer configuration secret) (必須)`|ICP 内で作成した[ピア構成の秘密](#peer-config-secret)の名前。| なし | はい |
 |`組織 MSP (Organization MSP) (必須)`| 「org1」などの新しい組織 MSPID 値を作成することも、ピアの所属先となる既存の組織 MSP を指定することもできます。順序付けプログラム組織をデプロイした場合は、どのピアの MSPID も順序付けプログラムの MSPID とは異なる値になるようにしてください。また、この値は後で `CORE_PEER_LOCALMSPID` および `configtx.yaml` 用に必要になるため、この値をメモしておいてください。| なし | はい |
 |`ピア・サービス・タイプ (Peer service type)`| ピアで[外部ポートを公開 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types) するかどうかを指定するために使用します。ポートを外部に対して公開する場合は NodePort を選択し (推奨)、ポートを公開しない場合は ClusterIP を選択します。LoadBalancer および ExternalName はこのリリースではサポートされていません。| NodePort | はい |
-| `状態データベース`| チャネル台帳の保管に使用される[状態データベース](../glossary.html#state-database)。ピアは、[ブロックチェーン・ネットワーク](../v10_dashboard.html#network-preferences)と同じデータベースを使用する必要があります。| なし | はい |
+| `状態データベース`| チャネル台帳の保管に使用される[状態データベース](/docs/services/blockchain/glossary.html#state-database)。ピアは、[ブロックチェーン・ネットワーク](/docs/services/blockchain/v10_dashboard.html#network-preferences)と同じデータベースを使用する必要があります。| なし | はい |
 |`CouchDB イメージ・リポジトリー (CouchDB image repository)`| 台帳データベースとして CouchDB が選択されている場合にのみ適用されます。このフィールドにはインストール・パスが自動入力されます。Community Edition を使用しており、インターネットにアクセスできない場合は、このフィールドでは、Fabric CouchDB のイメージをダウンロードしたディレクトリーを指定する必要があります。| ibmcom/ibp-fabric-couchdb | はい |
 | `CouchDB Docker イメージ・タグ (CouchDB Docker image tag)`| 台帳データベースとして CouchDB が選択されている場合にのみ適用されます。CouchDB イメージに関連付けられたタグの値。|正しい値が自動入力されます。| はい |
 |`ピア・データの永続性が有効 (Peer Data persistence enabled)`| クラスターが再始動または失敗した後にデータを維持する機能を有効にします。詳しくは、[Kubernetes のストレージ ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://kubernetes.io/docs/concepts/storage/ "ボリューム") を参照してください。*チェック・マークを外すと、フェイルオーバーやポッドの再始動の場合にすべてのデータが失われます。* | オン | いいえ |
@@ -252,13 +252,13 @@ helm install --name jnchart2 mycluster/ibm-blockchain-platform \
 
 構成パラメーターを入力し、**「インストール」**ボタンをクリックした後、**「Helm リリースの表示」**ボタンをクリックしてデプロイメントを表示します。成功した場合は、「デプロイメント」テーブルの`「必要数」`、`「現行」`、`「最新」`、および`「使用可能」`の各フィールドに値 1 が表示されます。最新表示をクリックしてテーブルが更新されるまで待つ必要がある場合があります。「デプロイメント」テーブルは、ICP コンソールの左上隅にある**「メニュー」**アイコンをクリックして確認することもできます。メニュー・リストから、**「ワークロード」**、**「Helm リリース」**の順にクリックします。
 
-`「メモ」`セクションまでスクロールダウンすると、[ピアを操作](peer_operate_icp.html)する際に使用する重要な情報があります。
+`「メモ」`セクションまでスクロールダウンすると、[ピアを操作](/docs/services/blockchain/howto/peer_operate_icp.html)する際に使用する重要な情報があります。
 
 ## ピア・ログの表示
 {: #peer-deploy-view-logs}
 
-ピアのログを表示するには、[kubectl CLI コマンド](peer_operate_icp.html#peer-kubectl-configure)を使用するか、[Kibana ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.elastic.co/products/kibana "Elastic Stack への開かれた窓") を使用します。詳しくは、こちらの[ログへのアクセス手順](peer_operate_icp.html#peer-icp-view-logs)を参照してください。
+ピアのログを表示するには、[kubectl CLI コマンド](/docs/services/blockchain/howto/peer_operate_icp.html#peer-kubectl-configure)を使用するか、[Kibana ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.elastic.co/products/kibana "Elastic Stack への開かれた窓") を使用します。詳しくは、こちらの[ログへのアクセス手順](/docs/services/blockchain/howto/peer_operate_icp.html#peer-icp-view-logs)を参照してください。
 
 ## 次の作業
 
-ピアをデプロイした後に、いくつかの操作ステップを完了する必要があります。その後、ブロックチェーン・ネットワークにトランザクションを送信したり、ブロックチェーン・ネットワークから分散台帳を読み取ったりできるようになります。詳しくは、[マルチクラウド・ネットワークを使用したピアの操作](peer_operate_icp.html)を参照してください。
+ピアをデプロイした後に、いくつかの操作ステップを完了する必要があります。その後、ブロックチェーン・ネットワークにトランザクションを送信したり、ブロックチェーン・ネットワークから分散台帳を読み取ったりできるようになります。詳しくは、[マルチクラウド・ネットワークを使用したピアの操作](/docs/services/blockchain/howto/peer_operate_icp.html)を参照してください。

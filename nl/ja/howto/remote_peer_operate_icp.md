@@ -37,9 +37,9 @@ lastupdated: "2018-09-05"
 
 推奨されるパスは Fabric SDK ですが、この手順では、SDK の操作に精通していることが前提となっています。
 
-[高可用性](remote_peer_icp.html#high-availability)を実現するために、リモート・ピアの Helm チャートのインスタンスを少なくとも 2 つデプロイすることをお勧めします。したがって、ピアごとに 1 回、これらの操作ステップに従う必要があります。アプリケーションからチェーンコードの呼び出しと照会を行う準備ができたら、両方のピアに接続して、[アプリケーションの可用性が高い](../v10_application.html#ha-app)ことを確認します。
+[高可用性](/docs/services/blockchain/howto/remote_peer_icp.html#high-availability)を実現するために、リモート・ピアの Helm チャートのインスタンスを少なくとも 2 つデプロイすることをお勧めします。したがって、ピアごとに 1 回、これらの操作ステップに従う必要があります。アプリケーションからチェーンコードの呼び出しと照会を行う準備ができたら、両方のピアに接続して、[アプリケーションの可用性が高い](/docs/services/blockchain/v10_application.html#ha-app)ことを確認します。
 
-**注**: {{site.data.keyword.blockchainfull_notm}} Platform リモート・ピアには、{{site.data.keyword.blockchainfull_notm}} Platform でホストされるピアの全機能またはサポートへのアクセス権限がありません。結果として、ネットワーク・モニターを使用してリモート・ピアを操作することはできません。リモート・ピアの実行を開始する前に、必ず[考慮事項](remote_peer.html#remote-peer-limitations)を確認してください。
+**注**: {{site.data.keyword.blockchainfull_notm}} Platform リモート・ピアには、{{site.data.keyword.blockchainfull_notm}} Platform でホストされるピアの全機能またはサポートへのアクセス権限がありません。結果として、ネットワーク・モニターを使用してリモート・ピアを操作することはできません。リモート・ピアの実行を開始する前に、必ず[考慮事項](/docs/services/blockchain/howto/remote_peer.html#remote-peer-limitations)を確認してください。
 
 ## 前提条件
 
@@ -140,7 +140,7 @@ kubectl exec -it remotepeer-bd65c4769-95rmm bash
 
 3. `kubectl get pods` コマンドを実行し、出力でポッドの **RESTART** 数を調べて、リモート・ピアが再始動されたことを確認できます。
 
-さらに、[HEAD 要求](monitor_network.html#monitor-nodes)を使用して、リモート・ピアの可用性を確認できます。
+さらに、[HEAD 要求](/docs/services/blockchain/howto/monitor_network.html#monitor-nodes)を使用して、リモート・ピアの可用性を確認できます。
 
 
 ## Fabric SDK を使用したリモート・ピアの操作
@@ -148,7 +148,7 @@ kubectl exec -it remotepeer-bd65c4769-95rmm bash
 
 Hyperledger Fabric SDK には強力な API のセットが用意されており、これらの API により、アプリケーションはブロックチェーン・ネットワークと対話したりこれを操作したりすることができます。サポートされている言語の最新リストおよび Fabric SDK 内で使用可能な API の完全なリストについては、[Hyperledger Fabric SDK コミュニティーの資料 ![外部リンク・アイコン](../images/external_link.svg " 外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/getting_started.html#hyperledger-fabric-sdks "Hyperledger Fabric SDK コミュニティーの資料") を参照してください。Fabric SDK を使用して、リモート・ピアを {{site.data.keyword.blockchainfull_notm}} Platform 上のチャネルに参加させたり、チェーンコードをピアにインストールしたり、チェーンコードをチャネル上でインスタンス化したりできます。
 
-以下の手順では、[Fabric Node SDK ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://fabric-sdk-node.github.io/ "Fabric Node SDK") を使用してリモート・ピアを操作するため、事前に SDK に精通していることが前提となっています。開始前に Node SDK の使用方法を学習するために、およびチェーンコードを呼び出して照会する準備ができたら、リモート・ピアを使用してアプリケーションを開発する際のガイドとして、[アプリケーションの開発チュートリアル](../v10_application.html)を使用できます。
+以下の手順では、[Fabric Node SDK ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://fabric-sdk-node.github.io/ "Fabric Node SDK") を使用してリモート・ピアを操作するため、事前に SDK に精通していることが前提となっています。開始前に Node SDK の使用方法を学習するために、およびチェーンコードを呼び出して照会する準備ができたら、リモート・ピアを使用してアプリケーションを開発する際のガイドとして、[アプリケーションの開発チュートリアル](/docs/services/blockchain/v10_application.html)を使用できます。
 
 ### Node SDK のインストール
 
@@ -163,7 +163,7 @@ npm install fabric-client@1.1
 ### リモート・ピアを使用するための SDK の準備
 {: #remote-peer-node-sdk}
 
-SDK を使用してリモート・ピアを操作する前に、必要な証明書 (登録) を生成する必要があります。これによりアプリケーションは、{{site.data.keyword.blockchainfull_notm}} Platform 上のネットワークおよびリモート・ピアと通信することができます。**管理者** ID を使用して、ステップに従って [SDK に登録](../v10_application.html#enroll-app-sdk)します。[アプリケーションの開発](../v10_application.html)チュートリアルでは同様に**管理者**として登録するため、サンプル・コードを変更する必要はありません。
+SDK を使用してリモート・ピアを操作する前に、必要な証明書 (登録) を生成する必要があります。これによりアプリケーションは、{{site.data.keyword.blockchainfull_notm}} Platform 上のネットワークおよびリモート・ピアと通信することができます。**管理者** ID を使用して、ステップに従って [SDK に登録](/docs/services/blockchain/v10_application.html#enroll-app-sdk)します。[アプリケーションの開発](/docs/services/blockchain/v10_application.html)チュートリアルでは同様に**管理者**として登録するため、サンプル・コードを変更する必要はありません。
 
 ### {{site.data.keyword.blockchainfull_notm}} Platform への signCert のアップロード
 {: #remote-peer-upload-sdk}
@@ -221,23 +221,23 @@ var peer = fabric_client.newPeer('grpcs://9.46.126.89:31618', { pem:  Buffer.fro
 
 ブロックチェーン・ネットワークのメンバーは、リモート・ピアをチャネルに参加させる前に、組織をネットワーク内のチャネルに追加する必要があります。
 
-  - リモート・ピアに対して新しいチャネルを開始できます。チャネル・イニシエーターは、[チャネル作成](create_channel.html#creating-a-channel)時に組織を自動的に含めることができます。ネットワーク・モニターでチャネルを作成するには、{{site.data.keyword.blockchainfull_notm}} Platform 上に少なくとも 1 つのピアが存在する必要があることに注意してください。  
+  - リモート・ピアに対して新しいチャネルを開始できます。チャネル・イニシエーターは、[チャネル作成](/docs/services/blockchain/howto/create_channel.html#creating-a-channel)時に組織を自動的に含めることができます。ネットワーク・モニターでチャネルを作成するには、{{site.data.keyword.blockchainfull_notm}} Platform 上に少なくとも 1 つのピアが存在する必要があることに注意してください。  
 
-  - ブロックチェーン・ネットワークの別のメンバーが、[チャネル更新](create_channel.html#updating-a-channel)を使用して、組織を既存のチャネルに追加することもできます。{{site.data.keyword.blockchainfull_notm}} Platform 上にピアがあるチャネルのメンバーは、プラットフォームでピアをホストしていない場合でも、ネットワーク・モニターを使用して組織をチャネルに追加できます。
+  - ブロックチェーン・ネットワークの別のメンバーが、[チャネル更新](/docs/services/blockchain/howto/create_channel.html#updating-a-channel)を使用して、組織を既存のチャネルに追加することもできます。{{site.data.keyword.blockchainfull_notm}} Platform 上にピアがあるチャネルのメンバーは、プラットフォームでピアをホストしていない場合でも、ネットワーク・モニターを使用して組織をチャネルに追加できます。
 
     組織がチャネルに追加されたら、他のメンバーがトランザクション中にデジタル署名を検証できるように、ピアの署名証明書をチャネルに追加する必要があります。証明書とチャネルを同期するだけで良いように、リモート・ピアはインストール時にその署名証明書をアップロードします。ネットワーク・モニターの「チャネル」画面で、組織が参加したチャネルを見つけ、**「アクション」**ヘッダーの下にあるドロップダウン・リストから**「証明書の同期」**を選択します。このアクションによって、チャネルのすべてのピアで証明書が同期されます。
 
-組織がチャネルに含まれている場合は、[チャネルに参加する](../v10_application.html#join-channel-sdk)手順に従います。順序付けサービスの URL とチャネル名を指定する必要があります。
+組織がチャネルに含まれている場合は、[チャネルに参加する](/docs/services/blockchain/v10_application.html#join-channel-sdk)手順に従います。順序付けサービスの URL とチャネル名を指定する必要があります。
 
 ### SDK を使用したピアへのチェーンコードのインストール
 {: #remote-peer-install-cc-sdk}
 
-以下の手順に従って、SDK を使用してリモート・ピアに[チェーンコードをインストール](../v10_application.html#install-cc-sdk)します。
+以下の手順に従って、SDK を使用してリモート・ピアに[チェーンコードをインストール](/docs/services/blockchain/v10_application.html#install-cc-sdk)します。
 
 ### SDK を使用したチャネルでのチェーンコードのインスタンス化
 {: #remote-peer-instantiate-cc-sdk}
 
-チェーンコードをインスタンス化または更新する必要があるのは、チャネルのいずれかのメンバーのみです。したがって、{{site.data.keyword.blockchainfull_notm}} Platform 上にピアがあるチャネルのどのネットワーク・メンバーも、ネットワーク・モニターを使用してチェーンコードをインスタンス化し、エンドースメント・ポリシーを指定できます。ただし、リモート・ピアを使用してチャネルでチェーンコードをインスタンス化する必要がある場合は、SDK を使用し、手順に従って[チェーンコードをインスタンス化](../v10_application.html#instantiate-cc-sdk)できます。
+チェーンコードをインスタンス化または更新する必要があるのは、チャネルのいずれかのメンバーのみです。したがって、{{site.data.keyword.blockchainfull_notm}} Platform 上にピアがあるチャネルのどのネットワーク・メンバーも、ネットワーク・モニターを使用してチェーンコードをインスタンス化し、エンドースメント・ポリシーを指定できます。ただし、リモート・ピアを使用してチャネルでチェーンコードをインスタンス化する必要がある場合は、SDK を使用し、手順に従って[チェーンコードをインスタンス化](/docs/services/blockchain/v10_application.html#instantiate-cc-sdk)できます。
 
 
 ## CLI を使用したリモート・ピアの操作
@@ -314,7 +314,7 @@ Fabric CA クライアントおよび Fabric ツール・コンテナーを使�
 ### 証明書のローカル・システムでの管理
 {: #manage-certs}
 
-リモート・ピアを操作するには、ローカル・マシンで証明書の一部の管理を行い、Fabric CA クライアントによって生成された一部の証明書を {{site.data.keyword.blockchainfull_notm}} Platform およびピアにアップロードする必要があります。また、Platform およびピアから TLS 証明書をダウンロードする必要もあります。作業対象の証明書および実行するタスクについて詳しくは、[{{site.data.keyword.blockchainfull_notm}} Platform の証明書の管理](../certificates.html)を参照してください。
+リモート・ピアを操作するには、ローカル・マシンで証明書の一部の管理を行い、Fabric CA クライアントによって生成された一部の証明書を {{site.data.keyword.blockchainfull_notm}} Platform およびピアにアップロードする必要があります。また、Platform およびピアから TLS 証明書をダウンロードする必要もあります。作業対象の証明書および実行するタスクについて詳しくは、[{{site.data.keyword.blockchainfull_notm}} Platform の証明書の管理](/docs/services/blockchain/certificates.html)を参照してください。
 
 ローカル・マシンでコマンド端末を開き、Fabric-CA-Client バイナリーを移動して MSP フォルダーを保管したディレクトリーにナビゲートします。
 1. `cert.pem` ファイルを `signcerts` フォルダーから新しい `admincerts` フォルダーにコピーします。  
@@ -411,9 +411,9 @@ Fabric CA クライアントおよび Fabric ツール・コンテナーを使�
 
 CLI コマンドを実行してリモート・ピアをチャネルに参加させる前に、組織をネットワーク内のチャネルに追加する必要があります。
 
-  - リモート・ピアに対して新しいチャネルを開始できます。チャネル・イニシエーターは、[チャネル作成](create_channel.html#creating-a-channel)時に組織を自動的に含めることができます。ネットワーク・モニターでチャネルを作成するには、{{site.data.keyword.blockchainfull_notm}} Platform 上に少なくとも 1 つのピアが存在する必要があることに注意してください。  
+  - リモート・ピアに対して新しいチャネルを開始できます。チャネル・イニシエーターは、[チャネル作成](/docs/services/blockchain/howto/create_channel.html#creating-a-channel)時に組織を自動的に含めることができます。ネットワーク・モニターでチャネルを作成するには、{{site.data.keyword.blockchainfull_notm}} Platform 上に少なくとも 1 つのピアが存在する必要があることに注意してください。  
 
-  - ブロックチェーン・ネットワークの別のメンバーが、[チャネル更新](create_channel.html#updating-a-channel)を使用して、組織を既存のチャネルに追加することもできます。{{site.data.keyword.blockchainfull_notm}} Platform 上にピアがあるチャネルのメンバーは、プラットフォームでピアをホストしていない場合でも、ネットワーク・モニターを使用して組織をチャネルに追加できます。
+  - ブロックチェーン・ネットワークの別のメンバーが、[チャネル更新](/docs/services/blockchain/howto/create_channel.html#updating-a-channel)を使用して、組織を既存のチャネルに追加することもできます。{{site.data.keyword.blockchainfull_notm}} Platform 上にピアがあるチャネルのメンバーは、プラットフォームでピアをホストしていない場合でも、ネットワーク・モニターを使用して組織をチャネルに追加できます。
 
     組織がチャネルに追加されたら、他のメンバーがトランザクション中にデジタル署名を検証できるように、ピアの署名証明書をチャネルに追加する必要があります。証明書とチャネルを同期するだけで良いように、リモート・ピアはインストール時にその署名証明書をアップロードします。ネットワーク・モニターの「チャネル」画面で、組織が参加したチャネルを見つけ、**「アクション」**ヘッダーの下にあるドロップダウン・リストから**「証明書の同期」**を選択します。このアクションによって、チャネルのすべてのピアで証明書が同期されます。
 
@@ -576,7 +576,7 @@ ICP コンソールからリモート・ピアのログにアクセスし、Kiba
 
 2. チャネル内のすべてのピアに新しいチェーンコードをインストールした後、ネットワーク・モニターまたは [peer chaincode upgrade ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/peerchaincode.html#peer-chaincode-upgrade) コマンドを使用して、新しいチェーンコードを使用するようにチャネルを更新します。
 
-ネットワーク・モニターの「コードのインストール」パネルを使用してチェーンコードをチャネルで更新する方法について詳しくは、これらの[手順](install_instantiate_chaincode.html#updating-a-chaincode)のステップ 2 を参照してください。
+ネットワーク・モニターの「コードのインストール」パネルを使用してチェーンコードをチャネルで更新する方法について詳しくは、これらの[手順](/docs/services/blockchain/howto/install_instantiate_chaincode.html#updating-a-chaincode)のステップ 2 を参照してください。
 
 ## トラブルシューティング
 {: #icp-troubleshooting}

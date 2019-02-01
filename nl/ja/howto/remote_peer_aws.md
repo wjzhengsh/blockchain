@@ -24,12 +24,12 @@ lastupdated: "2018-11-27"
 
 AWS について詳しくは、[AWS の概要ドキュメント ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://d1.awsstatic.com/whitepapers/aws-overview.pdf "AWS の概要ドキュメント") を参照してください。
 
-{{site.data.keyword.blockchainfull_notm}} Platform for AWS ピアをデプロイする前に、[ピアに関する考慮事項](remote_peer.html#remote-peer-limitations)を参照してください。
+{{site.data.keyword.blockchainfull_notm}} Platform for AWS ピアをデプロイする前に、[ピアに関する考慮事項](/docs/services/blockchain/howto/remote_peer.html#remote-peer-limitations)を参照してください。
 
 ## 前提条件
 {: #prerequisites-aws}
 
-{{site.data.keyword.blockchainfull_notm}} Platform for AWS ピア (ピア) を使用するには、IBM Blockchain Platform 上でホストされているブロックチェーン・ネットワークのメンバーである組織が必要です。IBM Cloud 上のネットワーク・モニターを使用して、ネットワーク資格情報およびネットワークの API エンドポイントにアクセスする必要があります。 ブロックチェーン・ネットワークのメンバーではない場合は、ネットワークを作成するか、ネットワークに参加する必要があります。 詳しくは、[ネットワークの作成](../get_start.html#creating-a-network)または[ネットワークへの参加](../get_start.html#joining-a-network)を参照してください。
+{{site.data.keyword.blockchainfull_notm}} Platform for AWS ピア (ピア) を使用するには、IBM Blockchain Platform 上でホストされているブロックチェーン・ネットワークのメンバーである組織が必要です。IBM Cloud 上のネットワーク・モニターを使用して、ネットワーク資格情報およびネットワークの API エンドポイントにアクセスする必要があります。 ブロックチェーン・ネットワークのメンバーではない場合は、ネットワークを作成するか、ネットワークに参加する必要があります。 詳しくは、[ネットワークの作成](/docs/services/blockchain/get_start.html#creating-a-network)または[ネットワークへの参加](/docs/services/blockchain/get_start.html#joining-a-network)を参照してください。
 
 ピアのデフォルト VPC インスタンス・タイプは `m4.xlarge` です。CPU、メモリー、およびストレージの要件に基づいて、選択するインスタンス・タイプを最適化する必要があります。ピアには、少なくとも以下が必要です。  
 -	2 基の CPU
@@ -260,9 +260,9 @@ AWS CloudFormation テンプレートによってスタックが正常に作成�
 
 2. ジェネシス・ブロックをフェッチするには、まず、組織をネットワーク内のチャネルに追加する必要があります。
 
-  - ピアに対して新しいチャネルを開始できます。 チャネル・イニシエーターは、[チャネル作成](create_channel.html#creating-a-channel)時に組織を自動的に含めることができます。
+  - ピアに対して新しいチャネルを開始できます。 チャネル・イニシエーターは、[チャネル作成](/docs/services/blockchain/howto/create_channel.html#creating-a-channel)時に組織を自動的に含めることができます。
 
-  - ブロックチェーン・ネットワークの別のメンバーが、[チャネル更新](create_channel.html#updating-a-channel)を使用して、組織を既存のチャネルに追加することもできます。
+  - ブロックチェーン・ネットワークの別のメンバーが、[チャネル更新](/docs/services/blockchain/howto/create_channel.html#updating-a-channel)を使用して、組織を既存のチャネルに追加することもできます。
 
   - 組織がチャネルに追加されたら、ピアの署名証明書をチャネルに追加する必要があります。 証明書とチャネルを同期するだけで良いように、ピアはインストール時にその署名証明書をアップロードします。 ネットワーク・モニターの「チャネル」画面で、組織が参加したチャネルを見つけ、**「アクション」**ヘッダーの下にあるドロップダウン・リストから**「証明書の同期」**を選択します。 このアクションによって、チャネルのすべてのピアで証明書が同期されます。
 
@@ -339,13 +339,13 @@ AWS CloudFormation テンプレートによってスタックが正常に作成�
 ## 次の作業
 {: #whats-next-aws}
 
-AWS でピアをセットアップした後に、いくつかの操作ステップを完了してからトランザクションを実行し、ブロックチェーン・ネットワークからの分散台帳を読み取ることができます。 詳しくは、[AWS でのピアの操作](remote_peer_operate_aws.html#remote-peer-operate-aws)を参照してください。
+AWS でピアをセットアップした後に、いくつかの操作ステップを完了してからトランザクションを実行し、ブロックチェーン・ネットワークからの分散台帳を読み取ることができます。 詳しくは、[AWS でのピアの操作](/docs/services/blockchain/howto/remote_peer_operate_aws.html#remote-peer-operate-aws)を参照してください。
 
 ## 高可用性 (HA)
 {: #aws-high-availability}
 
 デフォルトでは、高可用性をサポートするために、クイック・スタート・テンプレートによってピアの 2 つのインスタンスが 2 つの異なるアベイラビリティー・ゾーンにデプロイされます。
-この高可用性サポートを利用するために、[クライアント・アプリケーションを高可用性向けに](../v10_application.html#ha-app)構成する必要もあります。
+この高可用性サポートを利用するために、[クライアント・アプリケーションを高可用性向けに](/docs/services/blockchain/v10_application.html#ha-app)構成する必要もあります。
 
 ## セキュリティーに関する考慮事項
 {: #remote-peer-aws-security}
@@ -383,14 +383,14 @@ levelDB または couchDB のどちらを使用している場合でも、状態
 {: #aws-security-data-residency}
 
 データの常駐では、すべてのブロックチェーン台帳データの処理およびストレージが 1 つの国にとどまることが求められます。
-このことを実現する方法について詳しくは、こちらの[トピック](remote_peer.html#data-residency)を参照してください。
+このことを実現する方法について詳しくは、こちらの[トピック](/docs/services/blockchain/remote_peer.html#data-residency)を参照してください。
 
 #### 鍵管理
 {: #aws-security-key-management}
 
-鍵管理はピア・セキュリティーの重要な側面です。 秘密鍵が漏えいしたり、失われたりすると、悪意を持つアクターがピアのデータおよび機能にアクセスできる可能性があります。 {{site.data.keyword.blockchainfull_notm}} Platform エンタープライズ・プランでは、[ハードウェア・セキュリティー・モジュール](../glossary.html#hsm) (HSM) を使用して、ネットワークの秘密鍵を保管します。 HSM は、他者による秘密鍵へのアクセスを防ぐ物理アプライアンスです。
+鍵管理はピア・セキュリティーの重要な側面です。 秘密鍵が漏えいしたり、失われたりすると、悪意を持つアクターがピアのデータおよび機能にアクセスできる可能性があります。 {{site.data.keyword.blockchainfull_notm}} Platform エンタープライズ・プランでは、[ハードウェア・セキュリティー・モジュール](/docs/services/blockchain/glossary.html#hsm) (HSM) を使用して、ネットワークの秘密鍵を保管します。 HSM は、他者による秘密鍵へのアクセスを防ぐ物理アプライアンスです。
 
-AWS でピアをデプロイする場合は、秘密鍵を管理する必要があります。 {{site.data.keyword.blockchainfull_notm}} Platform によって秘密鍵が生成されますが、鍵は Platform には保管されません。 鍵が漏えいしないように、安全な場所に保管することが重要です。 ピアの秘密鍵は、ピア MSP の keystore フォルダーにあります (ピア・コンテナー内の `/etc/hyperledger/<PEER_ENROLL_ID>/msp/keystore/` ディレクトリー)。ピア内部の証明書について詳しくは、[{{site.data.keyword.blockchainfull_notm}} Platform の証明書の管理](../certificates.html)のトピックの[メンバーシップ・サービス・プロバイダー](../certificates.html#msp)のセクションを参照してください。
+AWS でピアをデプロイする場合は、秘密鍵を管理する必要があります。 {{site.data.keyword.blockchainfull_notm}} Platform によって秘密鍵が生成されますが、鍵は Platform には保管されません。 鍵が漏えいしないように、安全な場所に保管することが重要です。 ピアの秘密鍵は、ピア MSP の keystore フォルダーにあります (ピア・コンテナー内の `/etc/hyperledger/<PEER_ENROLL_ID>/msp/keystore/` ディレクトリー)。ピア内部の証明書について詳しくは、[{{site.data.keyword.blockchainfull_notm}} Platform の証明書の管理](/docs/services/blockchain/certificates.html)のトピックの[メンバーシップ・サービス・プロバイダー](/docs/services/blockchain/certificates.html#msp)のセクションを参照してください。
 
 鍵エスクローを使用して、失われた秘密鍵を復旧することができます。 これは、鍵が失われる前に実行する必要があります。 秘密鍵を復旧できない場合は、認証局から新しい署名付き証明書を取得することで、新しい秘密鍵を取得する必要があります。また、自身が参加しているすべてのチャネルから管理者証明書を削除して置き換える必要もあります。
 
@@ -407,7 +407,7 @@ In IBP when a private key is created, two sets of independent key material is ge
 #### メンバーシップ・サービス・プロバイダーの構成
 {: #aws-security-MSP}
 
-IBM Blockchain Platform のコンポーネントは、メンバーシップ・サービス・プロバイダー (MSP) を介して ID を使用します。 MSP は、CA から発行された証明書をネットワークおよびチャネルの役割に関連付けます。 MSP とピアの連係について詳しくは、こちらの[トピック](../certificates.html#msp)を参照してください。
+IBM Blockchain Platform のコンポーネントは、メンバーシップ・サービス・プロバイダー (MSP) を介して ID を使用します。 MSP は、CA から発行された証明書をネットワークおよびチャネルの役割に関連付けます。 MSP とピアの連係について詳しくは、こちらの[トピック](/docs/services/blockchain/certificates.html#msp)を参照してください。
 
 #### アプリケーション・セキュリティー
 {: #aws-security-appl}

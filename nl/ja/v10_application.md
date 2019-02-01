@@ -19,20 +19,20 @@ lastupdated: "2018-08-31"
 ***[このページは参考になりましたか。 ご意見をお聞かせください。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 
-{{site.data.keyword.blockchainfull}} Platform には、アプリケーションをブロックチェーン・ネットワークに接続するために使用できる API が用意されています。接続プロファイル内にあるネットワーク API エンドポイントを使用して、チェーンコードを起動し、ピアにあるチャネル固有の台帳を更新または照会することができます。また、[Swagger UI](howto/swagger_apis.html) の API を使用して、ネットワークのノード、チャネル、およびメンバーを管理することもできます。
+{{site.data.keyword.blockchainfull}} Platform には、アプリケーションをブロックチェーン・ネットワークに接続するために使用できる API が用意されています。接続プロファイル内にあるネットワーク API エンドポイントを使用して、チェーンコードを起動し、ピアにあるチャネル固有の台帳を更新または照会することができます。また、[Swagger UI](/docs/services/blockchain/howto/swagger_apis.html) の API を使用して、ネットワークのノード、チャネル、およびメンバーを管理することもできます。
 {:shortdesc}
 
 このチュートリアルを使用して、{{site.data.keyword.blockchainfull_notm}} Platform API にアクセスし、それらを使用してアプリケーションをネットワークにエンロールおよび登録する方法を学習できます。また、ネットワークと対話する方法や、アプリケーションからトランザクションを発行する方法を学習することもできます。このチュートリアルは、 Hyperledger Fabric 資料の [Writing Your First Application ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.1/write_first_app.html) チュートリアルに基づいています。使用するファイルとコマンドの多くは **Writing Your First Application** チュートリアルのものと同じですが、それらを {{site.data.keyword.blockchainfull_notm}} Platform 上のネットワークと対話するために使用します。このチュートリアルでは、Hyperledger Fabric Node SDK を使用してアプリケーションを開発する手順について 1 つずつ説明します。また、SDK を使用する代わりに Fabric CA クライアントを使用してユーザーのエンロールおよび登録を行う方法についても学習します。
 
 独自のビジネス・ソリューションを作成するときには、このチュートリアルに加えて、{{site.data.keyword.blockchainfull}} Platform に用意されているサンプルのアプリケーションとチェーンコードをテンプレートとして使用できます。詳しくは、
-[サンプル・アプリケーションの開発](howto/prebuilt_samples.html)を参照してください。
+[サンプル・アプリケーションの開発](/docs/services/blockchain/howto/prebuilt_samples.html)を参照してください。
 
 ## 前提条件
 **Writing Your First Application** チュートリアルを {{site.data.keyword.blockchainfull_notm}} Platform で使用するには、その前に以下の前提条件を満たす必要があります。
 
-- {{site.data.keyword.cloud_notm}} 上にブロックチェーン・ネットワークがない場合は、スターターまたはエンタープライズのメンバーシップ・プランを使用して作成する必要があります。詳しくは、[スターター・プラン・ネットワークの作成](get_start_starter_plan.html#creating-a-network)または[エンタープライズ・プラン・ネットワークの作成](get_start.html#creating-a-network)を参照してください。
+- {{site.data.keyword.cloud_notm}} 上にブロックチェーン・ネットワークがない場合は、スターターまたはエンタープライズのメンバーシップ・プランを使用して作成する必要があります。詳しくは、[スターター・プラン・ネットワークの作成](/docs/services/blockchain/get_start_starter_plan.html#creating-a-network)または[エンタープライズ・プラン・ネットワークの作成](/docs/services/blockchain/get_start.html#creating-a-network)を参照してください。
 
-  使用するネットワークのネットワーク・モニターを開き、「概説」画面で組織用のピアを 1 つ以上追加します。そして、ネットワーク内にチャネルを 1 つ以上作成します。詳しくは、[チャネルの作成](howto/create_channel.html#creating-a-channel)を参照してください。 スターター・プラン・ネットワークを使用している場合は、チェーンコードをデプロイするために使用できる `defaultchannel` という名前のチャネルがネットワークに既にあることに**注意してください**。
+  使用するネットワークのネットワーク・モニターを開き、「概説」画面で組織用のピアを 1 つ以上追加します。そして、ネットワーク内にチャネルを 1 つ以上作成します。詳しくは、[チャネルの作成](/docs/services/blockchain/howto/create_channel.html#creating-a-channel)を参照してください。 スターター・プラン・ネットワークを使用している場合は、チェーンコードをデプロイするために使用できる `defaultchannel` という名前のチャネルがネットワークに既にあることに**注意してください**。
 
 - Hyperledger Fabric のサンプルをダウンロードするため、および Node SDK を使用するために必要なツールをインストールします。
   * [Curl ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.1/prereqs.html#install-curl "Curl") または [Git ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git "Git")
@@ -44,7 +44,7 @@ lastupdated: "2018-08-31"
 
   `fabcar` ディレクトリーの中で、`npm install` コマンドを実行して Fabric SDK を使用するために必要なパッケージ (`fabric-client` や `fabric-ca-client` など) をインストールします。
 
-- [ネットワーク・モニター](howto/install_instantiate_chaincode.html#installchaincode)を使用して、チャネルに fabcar チェーンコードをインストールし、インスタンス化します。fabcar チェーンコードは、`fabric-samples` フォルダー内の、`fabric-samples > chaincode > fabcar > go` の下にあります。
+- [ネットワーク・モニター](/docs/services/blockchain/howto/install_instantiate_chaincode.html#installchaincode)を使用して、チャネルに fabcar チェーンコードをインストールし、インスタンス化します。fabcar チェーンコードは、`fabric-samples` フォルダー内の、`fabric-samples > chaincode > fabcar > go` の下にあります。
 
 - ネットワーク・モニターの「概説」画面で接続プロファイルを取得します。接続プロファイルを `fabcar` ディレクトリーに保存し、名前を `creds.json` に変更します。
 
@@ -78,7 +78,7 @@ Hyperledger Fabric SDK には、アプリケーションでブロックチェー
   ```
   {:codeblock}
 
-  **注**: 自分の組織の外部にあるネットワーク・リソースをアプリケーションのターゲットにすることもできます。例えば、チェーンコードの[エンドースメント・ポリシー](howto/install_instantiate_chaincode.html#specifying-chaincode-endorsement-policies)が、チャネルの他の組織からの承認を必須としている場合は、各組織のピアのエンドポイント情報と付属の TLS 証明書を取得する必要があります。この情報は、接続プロファイルのピアのセクションにあります。ただし、どのピアがどのチャネルに参加しているかについては、他の組織の管理者に問い合わせる必要があります。
+  **注**: 自分の組織の外部にあるネットワーク・リソースをアプリケーションのターゲットにすることもできます。例えば、チェーンコードの[エンドースメント・ポリシー](/docs/services/blockchain/howto/install_instantiate_chaincode.html#specifying-chaincode-endorsement-policies)が、チャネルの他の組織からの承認を必須としている場合は、各組織のピアのエンドポイント情報と付属の TLS 証明書を取得する必要があります。この情報は、接続プロファイルのピアのセクションにあります。ただし、どのピアがどのチャネルに参加しているかについては、他の組織の管理者に問い合わせる必要があります。
 
 3. 次の例のように、API エンドポイント情報をアプリケーションの構成ファイルにプラグインします。
   ```
@@ -86,7 +86,7 @@ Hyperledger Fabric SDK には、アプリケーションでブロックチェー
   ```
   {:codeblock}
 
-  また、それらのエンドポイントに [HEAD 要求](howto/monitor_network.html#monitor-nodes)を送信して、ネットワーク・リソースが使用可能かどうかを調べることもできます。
+  また、それらのエンドポイントに [HEAD 要求](/docs/services/blockchain/howto/monitor_network.html#monitor-nodes)を送信して、ネットワーク・リソースが使用可能かどうかを調べることもできます。
 
   Fabric SDK を使用する場合は、接続プロファイルを使用してネットワークに接続することもできます。このチュートリアルでは、手動でネットワークのエンドポイント情報を SDK に渡します。ただし、後のセクションに、[接続プロファイルを SDK で使用する](#using-your-connection-profile-with-the-sdk)ためのチュートリアルとガイドを記載しています。
 
@@ -214,7 +214,7 @@ node enrollAdmin.js
   ```
   {:codeblock}
 
-5. `$HOME/.fabric-ca-client/msp/signcerts/cert.pem` 内で管理者証明書を見つけます。 見つけたら、ネットワーク・モニターから管理者証明書をブロックチェーン・ネットワークにアップロードできます。 証明書の追加に関する詳細情報については、ネットワーク・モニターの[「メンバー」画面の「証明書」タブ](v10_dashboard.html#members)を参照してください。
+5. `$HOME/.fabric-ca-client/msp/signcerts/cert.pem` 内で管理者証明書を見つけます。 見つけたら、ネットワーク・モニターから管理者証明書をブロックチェーン・ネットワークにアップロードできます。 証明書の追加に関する詳細情報については、ネットワーク・モニターの[「メンバー」画面の「証明書」タブ](/docs/services/blockchain/v10_dashboard.html#members)を参照してください。
 
   さらに、以下のディレクトリーで CA ルート証明書と管理者秘密鍵を見つけることができます。
   * CA ルート証明書: `$HOME/.fabric-ca-client/msp/cacerts/--<ca_name>.pem`
@@ -314,7 +314,7 @@ node enrollAdmin.js
 
 ### ネットワーク・モニターを使用した登録
 
-代わりに、ネットワーク・モニターの**「認証局」**タブを使用して、クライアント・アプリケーションのエンロールおよび登録を行うこともできます。詳しくは、この[情報](v10_dashboard.html#ca)を参照してください。
+代わりに、ネットワーク・モニターの**「認証局」**タブを使用して、クライアント・アプリケーションのエンロールおよび登録を行うこともできます。詳しくは、この[情報](/docs/services/blockchain/v10_dashboard.html#ca)を参照してください。
 
 ## チェーンコードの起動と照会によるトランザクションの発行
 {: #invoke-query}
@@ -468,7 +468,7 @@ var peer = fabric_client.newPeer(creds.peers["org1-peer1"].url, { pem: creds.pee
 ## 相互 TLS を有効にする
 {: #mutual-tls}
 
-Fabric V1.1 レベルのエンタープライズ・プラン・ネットワークを実行する場合は、アプリケーションで[相互 TLS を有効にする](v10_dashboard.html#network-preferences)ことができます。相互 TLS を有効にする場合は、この機能をサポートするようにアプリケーションを更新する必要があります。 そうしないと、アプリケーションはネットワークと通信できません。
+Fabric V1.1 レベルのエンタープライズ・プラン・ネットワークを実行する場合は、アプリケーションで[相互 TLS を有効にする](/docs/services/blockchain/v10_dashboard.html#network-preferences)ことができます。相互 TLS を有効にする場合は、この機能をサポートするようにアプリケーションを更新する必要があります。 そうしないと、アプリケーションはネットワークと通信できません。
 
 接続プロファイルで `certificateAuthorities` セクションを見つけます。このセクションに、相互 TLS を使用してネットワークと通信するための証明書をエンロールして取得するのに必要な以下の属性があります。
 
@@ -482,7 +482,7 @@ Fabric V1.1 レベルのエンタープライズ・プラン・ネットワー�
 ## (オプション) SDK を使用したネットワークの操作
 {: #operate-sdk}
 
-また、SDK を使用してブロックチェーン・ネットワークを操作することもできます。このチュートリアルでは、SDK を使用してピアをチャネルに参加させる方法、チェーンコードをピアにインストールする方法、およびチャネル上のチェーンコードをインスタンス化する方法を説明します。これらは任意の手順です。すべてのピアが {{site.data.keyword.blockchainfull}} Platform で実行されるものである場合は、ネットワーク・モニターや [Swagger UI](howto/swagger_apis.html) の API でもこれらの操作を実行できるからです。
+また、SDK を使用してブロックチェーン・ネットワークを操作することもできます。このチュートリアルでは、SDK を使用してピアをチャネルに参加させる方法、チェーンコードをピアにインストールする方法、およびチャネル上のチェーンコードをインスタンス化する方法を説明します。これらは任意の手順です。すべてのピアが {{site.data.keyword.blockchainfull}} Platform で実行されるものである場合は、ネットワーク・モニターや [Swagger UI](/docs/services/blockchain/howto/swagger_apis.html) の API でもこれらの操作を実行できるからです。
 
 これらの手順を実行するためには、管理者の署名付き証明書を {{site.data.keyword.blockchainfull}} Platform にアップロードする必要があります。署名付き証明書をアップロードする方法について詳しくは、[エンロール・セクション](#enroll-app-sdk)の最後を参照してください。
 

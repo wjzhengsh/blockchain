@@ -36,10 +36,10 @@ lastupdated: "2018-12-07"
 推奨されるパスは Fabric SDK ですが、この手順では、SDK の操作に精通していることが前提となっています。 コマンド・ラインを使用する場合は、Fabric ピア・クライアントを使用できます。
 
 <!--
-It is recommended that you deploy at least two instances of the peer Helm chart for [high availability](peer_icp.html#high-availability). Therefore, you need to follow these operations steps once for each peer. When you are ready to invoke and query chaincode from your application, connect to both peers to ensure that your [applications are highly available](../v10_application.html#ha-app).
+It is recommended that you deploy at least two instances of the peer Helm chart for [high availability](/docs/services/blockchain/howto/peer_icp.html#high-availability). Therefore, you need to follow these operations steps once for each peer. When you are ready to invoke and query chaincode from your application, connect to both peers to ensure that your [applications are highly available](/docs/services/blockchain/v10_application.html#ha-app).
 -->
 
-**注**: {{site.data.keyword.blockchainfull_notm}} Platform ピアには、{{site.data.keyword.blockchainfull_notm}} Platform でホストされるピアのすべての機能およびサポートへのアクセス権限があるわけではありません。 結果として、ネットワーク・モニターを使用して ICP 上のピアを操作することはできません。 ピアの実行を開始する前に、必ず[考慮事項と制限](../ibp-for-icp-about.html#ibp-icp-considerations)を確認してください。
+**注**: {{site.data.keyword.blockchainfull_notm}} Platform ピアには、{{site.data.keyword.blockchainfull_notm}} Platform でホストされるピアのすべての機能およびサポートへのアクセス権限があるわけではありません。 結果として、ネットワーク・モニターを使用して ICP 上のピアを操作することはできません。 ピアの実行を開始する前に、必ず[考慮事項と制限](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-considerations)を確認してください。
 
 ## 前提条件
 
@@ -171,13 +171,13 @@ npm install fabric-client@1.2
 
 ピアは、ピア管理者の署名付き証明書を組み込むようにデプロイされます。これにより、ピア管理者の証明書および MSP フォルダーを使用してピアを操作できるようになります。
 
-[ピア管理者の登録](peer_deploy_ibp.html#enroll-admin)時に作成した証明書を見つけます。コマンド例を使用した場合、ピア管理者の MSP フォルダーは `$HOME/fabric-ca-client/peer-admin` にあります。
+[ピア管理者の登録](/docs/services/blockchain/howto/peer_deploy_ibp.html#enroll-admin)時に作成した証明書を見つけます。コマンド例を使用した場合、ピア管理者の MSP フォルダーは `$HOME/fabric-ca-client/peer-admin` にあります。
   - MSP フォルダー内の署名付き証明書 (公開鍵) および秘密鍵を使用して、SDK でピア管理者のユーザー・コンテキストを作成できます。これらのキーは、以下の場所にあります。
     - 署名付き証明書は、**signcerts** フォルダー (`$HOME/fabric-ca-client/peer-admin/msp/signcerts`) 内にあります。
     - 秘密鍵は、**keystore:** フォルダー (`$HOME/fabric-ca-client/peer-admin/msp/keystore`) 内にあります。
-    公開鍵と秘密鍵のみを使用し、ユーザー・コンテキストを作成して SDK を操作する方法の例については、[アプリケーションの開発チュートリアルのこのセクション](../v10_application.html#enroll-panel)を参照してください。
+    公開鍵と秘密鍵のみを使用し、ユーザー・コンテキストを作成して SDK を操作する方法の例については、[アプリケーションの開発チュートリアルのこのセクション](/docs/services/blockchain/v10_application.html#enroll-panel)を参照してください。
 
-また、SDK で、スターター・プランまたはエンタープライズ・プランでの CA のエンドポイント情報および [ピア管理者のユーザー名とパスワード](peer_deploy_ibp.html#register-admin)を使用して、ピア管理者の署名付き証明書および秘密鍵を生成することもできます。
+また、SDK で、スターター・プランまたはエンタープライズ・プランでの CA のエンドポイント情報および [ピア管理者のユーザー名とパスワード](/docs/services/blockchain/howto/peer_deploy_ibp.html#register-admin)を使用して、ピア管理者の署名付き証明書および秘密鍵を生成することもできます。
 
 ### ピア管理者の署名付き証明書をスターター・プランまたはエンタープライズ・プランにアップロード
 {: #remote-peer-upload-sdk}
@@ -217,32 +217,32 @@ You need to specify a `ssl-target-name-override` of `<something>.blockchain.com`
 
 チャネルをピアと結合するには、組織がチャネルのメンバーであることが必要です。
 
-  - ピアに対して新しいチャネルを開始できます。 チャネル・イニシエーターである場合は、[チャネル作成](create_channel.html#creating-a-channel)時に組織を自動的に含めることができます。
+  - ピアに対して新しいチャネルを開始できます。 チャネル・イニシエーターである場合は、[チャネル作成](/docs/services/blockchain/howto/create_channel.html#creating-a-channel)時に組織を自動的に含めることができます。
 
-  - ブロックチェーン・ネットワークの別のメンバーが、[チャネル更新](create_channel.html#updating-a-channel)を使用して、組織を既存のチャネルに追加することもできます。
+  - ブロックチェーン・ネットワークの別のメンバーが、[チャネル更新](/docs/services/blockchain/howto/create_channel.html#updating-a-channel)を使用して、組織を既存のチャネルに追加することもできます。
 
     組織がチャネルに追加されたら、他のメンバーがトランザクション中にデジタル署名を検証できるように、ピアの署名付き証明書をチャネルに追加する必要があります。ピアではインストール時にその署名付き証明書がアップロードされるため、証明書とチャネルを同期するだけで済みます。ネットワーク・モニターの「チャネル」画面で、組織が参加したチャネルを見つけ、**「アクション」**ヘッダーの下にあるドロップダウン・リストから**「証明書の同期」**を選択します。 このアクションによって、チャネルのすべてのピアで証明書が同期されます。 `join channel` コマンドを発行する前にチャネル同期が完了できるように、数分待機することが必要になる場合があります。
 
     **注:** ICP に追加してスターター・プランまたはエンタープライズ・プランに接続するピアが、ネットワーク・モニターで追加されたピアと同じ組織に含まれている場合、ネットワーク・モニターの「チャネル」画面では、チャネルに追加される新規ブロック、インスタンス化されるチェーンコード、およびその他のチャネル更新のみを表示できます。これは、ネットワーク・モニターでは「チャネル」画面でピアからの情報を収集しますが、{{site.data.keyword.cloud_notm}} 外部のピアを表示することはできないためです。いずれのピアもプライベート・データ機能を使用していない場合、ネットワーク・モニター内の情報は、組織内のピア間で同じものになります。
 
-組織がチャネルのメンバーになったら、SDK を使用して、[ピアをチャネルに参加させる](../v10_application.html#join-channel-sdk)手順に従います。順序付けサービスの URL とチャネル名を指定する必要があります。
+組織がチャネルのメンバーになったら、SDK を使用して、[ピアをチャネルに参加させる](/docs/services/blockchain/v10_application.html#join-channel-sdk)手順に従います。順序付けサービスの URL とチャネル名を指定する必要があります。
 
 ### SDK を使用したピアへのチェーンコードのインストール
 {: #peer-install-cc-sdk}
 
-以下の手順に従って、SDK を使用してピアに[チェーンコードをインストール](../v10_application.html#install-cc-sdk)します。
+以下の手順に従って、SDK を使用してピアに[チェーンコードをインストール](/docs/services/blockchain/v10_application.html#install-cc-sdk)します。
 
 ### SDK を使用したチャネルでのチェーンコードのインスタンス化
 {: #peer-instantiate-cc-sdk}
 
-チェーンコードをインスタンス化または更新する必要があるのは、チャネルのいずれかのメンバーのみです。 したがって、{{site.data.keyword.blockchainfull_notm}} Platform 上にピアがあるチャネルのどのネットワーク・メンバーも、ネットワーク・モニターを使用してチェーンコードをインスタンス化し、エンドースメント・ポリシーを指定できます。 ただし、ピアを使用してチャネルでチェーンコードをインスタンス化する必要がある場合は、SDK を使用し、手順に従って[チェーンコードをインスタンス化](../v10_application.html#instantiate-cc-sdk)できます。
+チェーンコードをインスタンス化または更新する必要があるのは、チャネルのいずれかのメンバーのみです。 したがって、{{site.data.keyword.blockchainfull_notm}} Platform 上にピアがあるチャネルのどのネットワーク・メンバーも、ネットワーク・モニターを使用してチェーンコードをインスタンス化し、エンドースメント・ポリシーを指定できます。 ただし、ピアを使用してチャネルでチェーンコードをインスタンス化する必要がある場合は、SDK を使用し、手順に従って[チェーンコードをインスタンス化](/docs/services/blockchain/v10_application.html#instantiate-cc-sdk)できます。
 
 ## CLI を使用したピアの操作
 {: #peer-cli-operate}
 
 また、Fabric `peer` クライアントを使用して、コマンド・ラインからピアを操作することもできます。
 
-ピアはピア管理者の署名付き証明書を組み込むようにデプロイされており、これにより、その ID を使用してピアを操作できます。以下の手順では、ピアをチャネルに参加させたり、ピア上にチェーンコードをインストールしてからチャネル上でチェーンコードをインスタンス化したりするために、[ピアのデプロイ](peer_deploy_ibp.html#register-admin)時に生成されたピア管理者の MSP フォルダーを使用します。
+ピアはピア管理者の署名付き証明書を組み込むようにデプロイされており、これにより、その ID を使用してピアを操作できます。以下の手順では、ピアをチャネルに参加させたり、ピア上にチェーンコードをインストールしてからチャネル上でチェーンコードをインスタンス化したりするために、[ピアのデプロイ](/docs/services/blockchain/howto/peer_deploy_ibp.html#register-admin)時に生成されたピア管理者の MSP フォルダーを使用します。
 
 ### Fabric ピア・クライアントのダウンロード
 {: #peer-client}
@@ -291,7 +291,7 @@ cd $HOME/fabric-ca-client/peer-admin/msp
 ```
 {:codeblock}
 
-ピアを操作するには、ローカル・マシン上で証明書の一部の管理を行う必要があります。例えば、ピア管理者の署名付き証明書をスターター・プランまたはエンタープライズ・プランにアップロードし、{{site.data.keyword.cloud_notm}}上のピアおよびネットワークから TLS 証明書にアクセスできるようにする必要があります。使用する証明書および実行するタスクについて詳しくは、[{{site.data.keyword.blockchainfull_notm}} Platform の証明書の管理](../certificates.html)を参照してください。
+ピアを操作するには、ローカル・マシン上で証明書の一部の管理を行う必要があります。例えば、ピア管理者の署名付き証明書をスターター・プランまたはエンタープライズ・プランにアップロードし、{{site.data.keyword.cloud_notm}}上のピアおよびネットワークから TLS 証明書にアクセスできるようにする必要があります。使用する証明書および実行するタスクについて詳しくは、[{{site.data.keyword.blockchainfull_notm}} Platform の証明書の管理](/docs/services/blockchain/certificates.html)を参照してください。
 
 1. ピア管理者の署名付き証明書を `admincerts` という名前の新規フォルダーに移動します。
 
@@ -316,7 +316,7 @@ cd $HOME/fabric-ca-client/peer-admin/msp
 
 3. [ピアの TLS 証明書をダウンロードし](#peer-tls)、コマンド・ラインからこの証明書を参照できることを確認します。コマンド例に従った場合、この TLS 証明書は `$HOME/fabric-ca-client/peer-tls/peertls.pem` ファイルにあります。
 
-4. また、[ピア管理者の登録](peer_deploy_ibp.html#enroll-admin)時にスターター・プランまたはエンタープライズ・プランの CA との通信に使用した TLS 証明書を参照する必要もあります。この資料のコマンド例に従った場合、TLS 証明書は `$HOME/fabric-ca-client/tls-ibp/tls.pem` ファイルにあります。
+4. また、[ピア管理者の登録](/docs/services/blockchain/howto/peer_deploy_ibp.html#enroll-admin)時にスターター・プランまたはエンタープライズ・プランの CA との通信に使用した TLS 証明書を参照する必要もあります。この資料のコマンド例に従った場合、TLS 証明書は `$HOME/fabric-ca-client/tls-ibp/tls.pem` ファイルにあります。
 
 tree コマンドを実行して、これらのステップを完了したことを検証できます。証明書を格納したディレクトリーにナビゲートします。tree コマンドを実行すると、以下の構造に似た結果が生成されます。
 ```
@@ -432,8 +432,8 @@ tree
 
 CLI コマンドを実行してピアをチャネルに参加させる前に、次のいずれかの方法で、組織をネットワーク内のチャネルに追加する必要があります。
 
-  - ピアに対して新しいチャネルを開始できます。 チャネル・イニシエーターは、[チャネル作成](create_channel.html#creating-a-channel)時に組織を自動的に含めることができます。
-  - ブロックチェーン・ネットワークの別のメンバーが、[チャネル更新](create_channel.html#updating-a-channel)を使用して、組織を既存のチャネルに追加することもできます。
+  - ピアに対して新しいチャネルを開始できます。 チャネル・イニシエーターは、[チャネル作成](/docs/services/blockchain/howto/create_channel.html#creating-a-channel)時に組織を自動的に含めることができます。
+  - ブロックチェーン・ネットワークの別のメンバーが、[チャネル更新](/docs/services/blockchain/howto/create_channel.html#updating-a-channel)を使用して、組織を既存のチャネルに追加することもできます。
 
     組織がチャネルに追加されたら、他のメンバーがトランザクション中にデジタル署名を検証できるように、ピアの署名付き証明書をチャネルに追加する必要があります。ピアではインストール時にその署名付き証明書がアップロードされるため、証明書とチャネルを同期するだけで済みます。ネットワーク・モニターの「チャネル」画面で、組織が参加したチャネルを見つけ、**「アクション」**ヘッダーの下にあるドロップダウン・リストから**「証明書の同期」**を選択します。 このアクションによって、チャネルのすべてのピアで証明書が同期されます。
 
@@ -541,7 +541,7 @@ peer chaincode instantiate -o ${ORDERER_1} -C ${CHANNEL} -n ${CC_NAME} -v v0 -c 
 
 2. チャネル内のすべてのピアに新しいチェーンコードをインストールした後、ネットワーク・モニターまたは [peer chaincode upgrade ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/peerchaincode.html#peer-chaincode-upgrade) コマンドを使用して、新しいチェーンコードを使用するようにチャネルを更新します。
 
-ネットワーク・モニターの「コードのインストール」パネルを使用してチェーンコードをチャネルで更新する方法について詳しくは、これらの[手順](install_instantiate_chaincode.html#updating-a-chaincode)のステップ 2 を参照してください。
+ネットワーク・モニターの「コードのインストール」パネルを使用してチェーンコードをチャネルで更新する方法について詳しくは、これらの[手順](/docs/services/blockchain/howto/install_instantiate_chaincode.html#updating-a-chaincode)のステップ 2 を参照してください。
 
 ## ピア・ログの表示
 {: #peer-ibp-view-logs}

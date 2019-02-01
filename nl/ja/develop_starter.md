@@ -27,14 +27,14 @@ lastupdated: "2018-12-07"
 
 ## 始めに
 
-[スターター・プランについて](./starter_plan.html)と[スターター・プランの概説](./get_start_starter_plan.html)を必ずお読みください。 また、[{{site.data.keyword.blockchainfull_notm}}Platform 開発者環境](./develop_install.html)を既にインストールし、[スターター・プラン・ネットワークの管理](./get_start_starter_plan.html)の指示に従って {{site.data.keyword.blockchainfull_notm}} Platform スターター・プランのインスタンスを既に作成したことを確認してください。
+[スターター・プランについて](/docs/services/blockchain/starter_plan.html)と[スターター・プランの概説](/docs/services/blockchain/get_start_starter_plan.html)を必ずお読みください。 また、[{{site.data.keyword.blockchainfull_notm}}Platform 開発者環境](/docs/services/blockchain/develop_install.html)を既にインストールし、[スターター・プラン・ネットワークの管理](/docs/services/blockchain/get_start_starter_plan.html)の指示に従って {{site.data.keyword.blockchainfull_notm}} Platform スターター・プランのインスタンスを既に作成したことを確認してください。
 
 Node v8.9 以上、npm v5.x、および Hyperledger Composer がインストールされていることを確認します。
 
 - ネットワークが Fabric バージョン 1.2 上にある場合は、Hyperledger Composer v0.20.x を使用します。
 - ネットワークが Fabric バージョン 1.1 上にある場合は、Hyperledger Composer v0.19.x を使用します。  
 
-Fabric のバージョンは、ネットワーク・モニターで[「ネットワーク設定 (Network preferences)」ウィンドウ](../v10_dashboard.html#network-preferences)を開くことで確認できます。
+Fabric のバージョンは、ネットワーク・モニターで[「ネットワーク設定 (Network preferences)」ウィンドウ](/docs/services/blockchain/v10_dashboard.html#network-preferences)を開くことで確認できます。
 
 
 ## ステップ 1: 管理シークレットの取得

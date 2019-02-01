@@ -65,7 +65,7 @@ lastupdated: "2018-08-31"
 
 ### リモート・ピア構成  
 
-{{site.data.keyword.cloud_notm}} の外部にリモート・ピアをデプロイする場合は、構成の際に、ネットワークの API エンドポイント情報をリモート・ピアに提供する必要があります。**「リモート・ピア構成 (Remote Peer Configuration)」**ボタンをクリックして、リモート・ピアを構成するネットワークの API エンドポイント情報を取得してください。ポップアップ・ウィンドウに、ネットワーク ID、組織 MSP、CA 名、CA URL、および CA TLS 証明書を含む API エンドポイント情報が示されます。各フィールドの端にあるコピー・アイコンをクリックしてそのフィールドの値をコピーすることも、**「ダウンロード」**ボタンをクリックしてすべてのフィールドの値を JSON ファイル形式で保存することもできます。リモート・ピアについて詳しくは、[リモート・ピアについて](howto/remote_peer.html)を参照してください。
+{{site.data.keyword.cloud_notm}} の外部にリモート・ピアをデプロイする場合は、構成の際に、ネットワークの API エンドポイント情報をリモート・ピアに提供する必要があります。**「リモート・ピア構成 (Remote Peer Configuration)」**ボタンをクリックして、リモート・ピアを構成するネットワークの API エンドポイント情報を取得してください。ポップアップ・ウィンドウに、ネットワーク ID、組織 MSP、CA 名、CA URL、および CA TLS 証明書を含む API エンドポイント情報が示されます。各フィールドの端にあるコピー・アイコンをクリックしてそのフィールドの値をコピーすることも、**「ダウンロード」**ボタンをクリックしてすべてのフィールドの値を JSON ファイル形式で保存することもできます。リモート・ピアについて詳しくは、[リモート・ピアについて](/docs/services/blockchain/howto/remote_peer.html)を参照してください。
 
 ### 接続プロファイル
 {: #connection-profile}
@@ -98,7 +98,7 @@ lastupdated: "2018-08-31"
 
 オペレーターは、同じ機関に属するメンバーの証明書を「証明書」タブで管理できます。 **「証明書の追加」**をクリックして、「証明書の追加」パネルを開きます。 証明書に名前を指定し、「鍵」フィールドにクライアント・サイドの PEM 形式の証明書を貼り付け、**「実行依頼 (Submit)」**をクリックします。 このクライアント・サイドの証明書を有効にするためにピアを再始動する必要があります。
 <!--
-For more information about generating your certificate key, see [Generating the client-side certificates](v10_application.html#generating-the-client-side-certificates).-->
+For more information about generating your certificate key, see [Generating the client-side certificates](/docs/services/blockchain/v10_application.html#generating-the-client-side-certificates).-->
 
 ## チャネル
 {: #channels}
@@ -110,9 +110,9 @@ For more information about generating your certificate key, see [Generating the 
 ![チャネル](images/channels.png "チャネル")
 *図 5. チャネル*
 
-チャネルを作成すると、チャネル固有の台帳が生成されます。 詳しくは、[チャネルの作成](howto/create_channel.html)を参照してください。
+チャネルを作成すると、チャネル固有の台帳が生成されます。 詳しくは、[チャネルの作成](/docs/services/blockchain/howto/create_channel.html)を参照してください。
 
-また、既存のチャネルを選択して、チャネル、メンバーシップ、アクティブ・チェーンコードに関する詳細を表示することもできます。 詳しくは、[ネットワークのモニター](howto/monitor_network.html)を参照してください。
+また、既存のチャネルを選択して、チャネル、メンバーシップ、アクティブ・チェーンコードに関する詳細を表示することもできます。 詳しくは、[ネットワークのモニター](/docs/services/blockchain/howto/monitor_network.html)を参照してください。
 
 ## 通知
 {: #notifications}
@@ -145,7 +145,7 @@ For more information about generating your certificate key, see [Generating the 
 ![認証局](images/CA_screen.png "認証局")
 *図 7. 認証局*
 
-**「証明書の生成」**ボタンをクリックすると、新しいパブリック証明書と秘密鍵を CA から取得できます。このパネルは、Fabric SDK を使用するクライアント・アプリケーションで[公開鍵と秘密鍵のペアを生成する](v10_application.html#register-app)方法の代替方法として使用できます。**「証明書」**フィールドには、**「秘密鍵」**のすぐ上に、パブリック証明書 (署名付き証明書またはエンロール証明書とも呼ばれる) が含まれています。各フィールドの端にあるコピー・アイコンをクリックすると、そのフィールドの値をコピーできます。{{site.data.keyword.blockchainfull_notm}} Platform にはそれらの証明書が保管されないことに**注意してください**。ユーザーがそれらを安全に保存して保管する必要があります。詳しくは、[MSP 情報](certificates.html#msp)を参照してください。
+**「証明書の生成」**ボタンをクリックすると、新しいパブリック証明書と秘密鍵を CA から取得できます。このパネルは、Fabric SDK を使用するクライアント・アプリケーションで[公開鍵と秘密鍵のペアを生成する](/docs/services/blockchain/v10_application.html#register-app)方法の代替方法として使用できます。**「証明書」**フィールドには、**「秘密鍵」**のすぐ上に、パブリック証明書 (署名付き証明書またはエンロール証明書とも呼ばれる) が含まれています。各フィールドの端にあるコピー・アイコンをクリックすると、そのフィールドの値をコピーできます。{{site.data.keyword.blockchainfull_notm}} Platform にはそれらの証明書が保管されないことに**注意してください**。ユーザーがそれらを安全に保存して保管する必要があります。詳しくは、[MSP 情報](/docs/services/blockchain/certificates.html#msp)を参照してください。
 
 **「ユーザーの追加」**ボタンをクリックして、新しい ID を組織に登録します。**「ユーザーの追加」**ポップアップ・ウィンドウで、以下のフィールドに入力してから、**「送信」**をクリックします。
   - **ID:** 新しい ID の名前です。`エンロール ID` と呼ぶこともあります。 リモート・ピアを構成したり新しいアプリケーションをエンロールしたりするときのために、**この値を保存してください**。
@@ -154,7 +154,7 @@ For more information about generating your certificate key, see [Generating the 
   - **所属団体名 (Affiliation):** ID を所属させる組織内の団体名 (`org1` など) です。
   - **最大エンロール回数 (Maximum Enrollments):** このフィールドを使用すると、この ID を使用してエンロールする回数、つまり、証明書を生成する回数を制限できます。このフィールドをブランクのままにすると、エンロール回数はデフォルト値の無制限になります。
 
-CA について詳しくは、[{{site.data.keyword.blockchainfull_notm}} Platform の証明書の管理](certificates.html)チュートリアルを参照してください。
+CA について詳しくは、[{{site.data.keyword.blockchainfull_notm}} Platform の証明書の管理](/docs/services/blockchain/certificates.html)チュートリアルを参照してください。
 
 ## API
 {: #apis}
@@ -166,7 +166,7 @@ CA について詳しくは、[{{site.data.keyword.blockchainfull_notm}} Platfor
 ![API](images/API_screen.png "API")
 *図 8. API*
 
-**「Swagger UI」**リンクをクリックして Swagger UI を開きます。 API を実行するには、その前にネットワーク資格情報 (この API ページにあります) を使用して Swagger UI に権限を与える必要があることに注意してください。 詳しくは、[Swagger API を使用したネットワークとの対話](howto/swagger_apis.html)を参照してください。
+**「Swagger UI」**リンクをクリックして Swagger UI を開きます。 API を実行するには、その前にネットワーク資格情報 (この API ページにあります) を使用して Swagger UI に権限を与える必要があることに注意してください。 詳しくは、[Swagger API を使用したネットワークとの対話](/docs/services/blockchain/howto/swagger_apis.html)を参照してください。
 
 ## コードの開発 (Develop Code)
 {: #write-code}
@@ -178,7 +178,7 @@ CA について詳しくは、[{{site.data.keyword.blockchainfull_notm}} Platfor
 ![コードの開発 (Develop code)](images/write_code.png "コードの開発 (Develop code)")
 *図 9. コードの開発 (Develop code)*
 
-エンタープライズ・プランでコードを開発してデプロイする方法について詳しくは、[エンタープライズ・プランでのビジネス・ネットワークの開発](develop_enterprise.html)を参照してください。
+エンタープライズ・プランでコードを開発してデプロイする方法について詳しくは、[エンタープライズ・プランでのビジネス・ネットワークの開発](/docs/services/blockchain/develop_enterprise.html)を参照してください。
 
 ## コードのインストール (Install code)
 {: #chaincode}
@@ -190,12 +190,12 @@ CA について詳しくは、[{{site.data.keyword.blockchainfull_notm}} Platfor
 ![コードのインストール (Install code)](images/chaincode_install_overview.png "コードのインストール (Install code)")
 *図 10. コードのインストール (Install code)*
 
-チェーンコードは、まずピアのファイル・システムにインストールされてから、チャネルでインスタンス化されます。 詳しくは、[チェーンコードのインストール、インスタンス化、および更新](howto/install_instantiate_chaincode.html)を参照してください。
+チェーンコードは、まずピアのファイル・システムにインストールされてから、チャネルでインスタンス化されます。 詳しくは、[チェーンコードのインストール、インスタンス化、および更新](/docs/services/blockchain/howto/install_instantiate_chaincode.html)を参照してください。
 
 ## サンプルの試行
 {: #samples}
 
-サンプル・アプリケーションは、ブロックチェーン・ネットワークとアプリケーション開発についての理解を深めるのに役立ちます。 サンプルの使用方法、およびサンプルの {{site.data.keyword.blockchainfull_notm}} Platform へのデプロイ方法を学習するには、**「GitHub の表示」**リンクに従ってください。 サンプルの開発およびデプロイ方法について詳しくは、[サンプル・アプリケーションのデプロイ](howto/prebuilt_samples.html)を参照してください。
+サンプル・アプリケーションは、ブロックチェーン・ネットワークとアプリケーション開発についての理解を深めるのに役立ちます。 サンプルの使用方法、およびサンプルの {{site.data.keyword.blockchainfull_notm}} Platform へのデプロイ方法を学習するには、**「GitHub の表示」**リンクに従ってください。 サンプルの開発およびデプロイ方法について詳しくは、[サンプル・アプリケーションのデプロイ](/docs/services/blockchain/howto/prebuilt_samples.html)を参照してください。
 
 **図 11** に「サンプルの試行」画面を示します。
 
@@ -217,7 +217,7 @@ CA について詳しくは、[{{site.data.keyword.blockchainfull_notm}} Platfor
 
 このページのリンクおよびリソースを使用して、トラブルシューティング・フォーラムおよびサポート・フォーラムにアクセスします。
 
-* [{{site.data.keyword.blockchainfull_notm}} サービス資料](index.html)の**概説** (この資料サイト) には、{{site.data.keyword.Bluemix_notm}} で {{site.data.keyword.blockchainfull}} Platform を初めて使用する場合のガイドが用意されています。 左側のナビゲーターから対応するトピックを見つけるか、上部の検索機能を使用して用語を検索できます。
+* [{{site.data.keyword.blockchainfull_notm}} サービス資料](/docs/services/blockchain/index.html)の**概説** (この資料サイト) には、{{site.data.keyword.Bluemix_notm}} で {{site.data.keyword.blockchainfull}} Platform を初めて使用する場合のガイドが用意されています。 左側のナビゲーターから対応するトピックを見つけるか、上部の検索機能を使用して用語を検索できます。
 * [IBM Code ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://developer.ibm.com/code/technologies/blockchain/) には、開発者向けのコード・パターンや情報があります。
 * **サポート・チケット**の下の [IBM dWAnswers ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://developer.ibm.com/answers/smartspace/blockchain/) は、質問と回答のやり取りを行うプラットフォームの役割を果たします。 過去に投稿された質問から回答を探したり、新しい質問を送信したりできます。 質問にはキーワード **blockchain** を含めてください。
   また、**「{{site.data.keyword.Bluemix_notm}} サポート・チケットのオープン」** オプションを使用して、チケットを {{site.data.keyword.blockchainfull_notm}} サポート・チームに送信することもできます。  該当する特定の {{site.data.keyword.Bluemix_notm}} インスタンスの詳細およびコード・スニペットを提供してください。
@@ -225,7 +225,7 @@ CA について詳しくは、[{{site.data.keyword.blockchainfull_notm}} Platfor
 * [Hyperledger Fabric ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.1/) と [Hyperledger Fabric コミュニティー ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](http://jira.hyperledger.org/secure/Dashboard.jspa) の **Hyperledger Fabric** には、Hyperledger Fabric スタックに関する詳細を調べることができます。 [Hyperledger Expert ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://chat.hyperledger.org/channel/general) では、Hyperledger Fabric コードについて質問することができます。
 * **Hyperledger Composer** の下の [{{site.data.keyword.blockchainfull_notm}} Platform: Develop ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://ibm-blockchain.github.io/develop/) には、 Hyperledger Composer (つまり {{site.data.keyword.blockchainfull_notm}} Platform: Develop) の詳細が示されています。[Hyperledger Composer コミュニティー ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://chat.hyperledger.org/channel/general) および [StackOverflow ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://stackoverflow.com/questions/tagged/hyperledger-composer) で回答を見つけたり質問をしたりすることもできます。
 
-問題をデバッグできない場合や、疑問点の答を突き止めることができない場合は、{{site.data.keyword.cloud_notm}} サービス・ポータルでサポート・ケースを送信してください。 詳しくは、[サポートのページ](ibmblockchain_support.html)を参照してください。
+問題をデバッグできない場合や、疑問点の答を突き止めることができない場合は、{{site.data.keyword.cloud_notm}} サービス・ポータルでサポート・ケースを送信してください。 詳しくは、[サポートのページ](/docs/services/blockchain/ibmblockchain_support.html)を参照してください。
 
 **図 13** および **図 14** に示す最初の「ヘルプの利用」画面の「リリース・ノート」タブには、各リリースの新機能と変更された機能が表示されています。
 

@@ -28,7 +28,7 @@ lastupdated: "2018-12-07"
 
 {{site.data.keyword.blockchainfull_notm}} 開発者環境をインストールします。ビジネス・ネットワークの開発とデプロイの方法を理解しておく必要があります。 ビジネス・ネットワークの作成に関するガイダンスは、[Hyperledger Composer の資料](https://hyperledger.github.io/composer/latest/business-network/business-network-index)から参照できます。
 
-{{site.data.keyword.blockchainfull_notm}} Platform のエンタープライズ・プラン・インスタンスに対するアクセス権限が必要であり、事前にピアを作成しておく必要があります。{{site.data.keyword.blockchainfull_notm}} Platform エンタープライズ・プランについて詳しくは、[エンタープライズ・プランの概説](./enterprise_plan.html)を参照してください。
+{{site.data.keyword.blockchainfull_notm}} Platform のエンタープライズ・プラン・インスタンスに対するアクセス権限が必要であり、事前にピアを作成しておく必要があります。{{site.data.keyword.blockchainfull_notm}} Platform エンタープライズ・プランについて詳しくは、[エンタープライズ・プランの概説](/docs/services/blockchain/enterprise_plan.html)を参照してください。
 
 ## ステップ 1: {{site.data.keyword.blockchainfull_notm}} Platform の接続プロファイルの作成
 

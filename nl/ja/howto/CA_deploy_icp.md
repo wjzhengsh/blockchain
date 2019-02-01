@@ -17,10 +17,10 @@ lastupdated: "2018-12-07"
 
 ***[このページは参考になりましたか。 ご意見をお聞かせください。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
-{{site.data.keyword.blockchainfull}} Platform on {{site.data.keyword.cloud_notm}} Private (ICP) Helm チャートをインポートすると、個別のコンポーネントをデプロイできるようになります。認証局 (CA) は組織のトラスト・ルートであり、ユーザーがデプロイする他のコンポーネントの資格情報を生成できるようにします。そのため、他のコンポーネントをデプロイする前に、CA をデプロイする必要があります。マルチクラウド・ブロックチェーン・ネットワーク内の各組織は、それぞれ独自の CA をデプロイする必要があります。CA と、それらがブロックチェーン・ネットワークで果たす役割について詳しくは、[認証局](../blockchain_component_overview.html#ca)を参照してください。
+{{site.data.keyword.blockchainfull}} Platform on {{site.data.keyword.cloud_notm}} Private (ICP) Helm チャートをインポートすると、個別のコンポーネントをデプロイできるようになります。認証局 (CA) は組織のトラスト・ルートであり、ユーザーがデプロイする他のコンポーネントの資格情報を生成できるようにします。そのため、他のコンポーネントをデプロイする前に、CA をデプロイする必要があります。マルチクラウド・ブロックチェーン・ネットワーク内の各組織は、それぞれ独自の CA をデプロイする必要があります。CA と、それらがブロックチェーン・ネットワークで果たす役割について詳しくは、[認証局](/docs/services/blockchain/blockchain_component_overview.html#ca)を参照してください。
 {:shortdesc}
 
-認証局をデプロイする前に、[考慮事項と制限](../ibp-for-icp-about.html#ibp-icp-considerations)を確認してください。
+認証局をデプロイする前に、[考慮事項と制限](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-considerations)を確認してください。
 
 ## 必要なリソース
 {: #ca-resources-required}
@@ -50,7 +50,7 @@ CA は、AMD64 プラットフォームまたは S390X プラットフォーム�
 ## CA をデプロイするための前提条件
 {: #prerequisites-ca-icp}
 
-1. ICP に CA をインストールするには、その前に [ICP をインストール](../ICP_setup.html)し、[{{site.data.keyword.blockchainfull_notm}} Platform Helm チャートをインストール](helm_install_icp.html)する必要があります。
+1. ICP に CA をインストールするには、その前に [ICP をインストール](/docs/services/blockchain//ICP_setup.html)し、[{{site.data.keyword.blockchainfull_notm}} Platform Helm チャートをインストール](/docs/services/blockchain/howto/helm_install_icp.html)する必要があります。
 
 2. Community Edition を使用し、インターネット接続なしでこの Helm チャートを ICP クラスター上で実行する場合は、インターネットに接続されたマシン上にアーカイブを作成した後に、アーカイブを ICP クラスターにインストールすることができます。詳しくは、[インターネット接続がないクラスターへのフィーチャー・アプリケーションの追加 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_package_offline.html "インターネット接続がないクラスターへのフィーチャー・アプリケーションの追加"){:new_window} を参照してください。仕様ファイル manifest.yaml は、Helm チャート内の ibm-blockchain-platform-dev/ibm_cloud_pak にあります。
 
@@ -195,7 +195,7 @@ helm install --name jnchart2 mycluster/ibm-blockchain-platform \
 
 構成パラメーターを入力し、**「インストール」**ボタンをクリックした後、**「Helm リリースの表示」**ボタンをクリックしてデプロイメントを表示します。成功した場合は、「デプロイメント」テーブルの`「必要数」`、`「現行」`、`「最新」`、および`「使用可能」`の各フィールドに値 1 が表示されます。最新表示をクリックしてテーブルが更新されるまで待つ必要がある場合があります。「デプロイメント」テーブルは、ICP コンソールの左上隅にある**「メニュー」**アイコンをクリックして確認することもできます。メニュー・リストから、**「ワークロード」**、**「Helm リリース」**の順にクリックします。
 
-`「メモ」`セクションまでスクロールダウンすると、[CA の操作](CA_operate.html#ca-operate)に使用する重要な情報を確認できます。
+`「メモ」`セクションまでスクロールダウンすると、[CA の操作](/docs/services/blockchain/howto/CA_operate.html#ca-operate)に使用する重要な情報を確認できます。
 
 ICP に {{site.data.keyword.blockchainfull_notm}} Platform CA をインストールすると、デフォルトの環境変数設定で configmap が作成されます。その後、CA サーバーの環境変数を変更または追加して、その動作を構成できます。CA サーバー構成パラメーターについて詳しくは、[Fabric CA サーバーの資料 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric-ca.readthedocs.io/en/latest/users-guide.html#fabric-ca-server "Fabric CA サーバー") を参照してください。
 
@@ -209,4 +209,4 @@ configmap を構成したら、変更を有効にするために CA サーバー
 ## CA の操作
 {: #operate-ca}
 
-CA は、組織のトラスト・ルートになります。CA を使用して、他のコンポーネントの証明書を生成する必要があります。そのため、順序付けプログラムまたはピアをデプロイする前に、[CA をセットアップして、いくつかの操作手順を実行する](CA_operate.html)必要があります。
+CA は、組織のトラスト・ルートになります。CA を使用して、他のコンポーネントの証明書を生成する必要があります。そのため、順序付けプログラムまたはピアをデプロイする前に、[CA をセットアップして、いくつかの操作手順を実行する](/docs/services/blockchain/howto/CA_operate.html)必要があります。
