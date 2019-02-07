@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-10-04"
+  years: 2017, 2019
+lastupdated: "2019-02-08"
 ---
 
 {:new_window: target="_blank"}
@@ -10,20 +10,22 @@ lastupdated: "2018-10-04"
 {:codeblock: .codeblock}
 {:screen: .screen}
 {:pre: .pre}
-
+{:note: .note}
+{:important: .important}
+{:tip: .tip}
 
 # Known issues
-
+{: #known-issues}
 
 ***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 
 The following issues are already reported:
-- **Configuring an external CA in not supported yet**. As an alternative, you can generate and upload admin certificates via the Network Monitor. For more information, see [Generating the client-side certificates](v10_application.html#enroll-app) and the description on the ["Certificates" tab of "Member" screen](v10_dashboard.html#members) in the Network Monitor.
+- **Configuring an external CA in not supported yet**. As an alternative, you can generate and upload admin certificates via the Network Monitor. For more information, see [Generating the client-side certificates](/docs/services/blockchain/v10_application.html#dev-app-enroll-panel) and the description on the ["Certificates" tab of "Member" screen](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-members) in the Network Monitor.
 - In the Network Monitor of a Starter Plan network, when you click **View Logs** on the nodes that are listed on the "Overview" screen, the {{site.data.keyword.cloud}} Logging Kibana interface opens. **By default, Kibana is preconfigured to show logs from the last 30 days of activity**. If there is no activity in the last 30 days, you will see a message that says *No results found*. To view other logs, you can click the timer icon in the upper right corner under your user name and set a broader time range, such as *Year to date*
 - The logs of your Starter Plan network are gathered by the [{{site.data.keyword.cloud_notm}} Log Analysis service ![External link icon](images/external_link.svg "External link icon")](https://console.bluemix.net/catalog/services/log-analysis). By default, your logs are collected by the Lite Plan of the Log Analysis service. This plan is free and **only allows you to search the first 500 MB of your logs per day**. If your network's logs exceed 500 MB, you cannot view new logs in Kibana. If your network generates more than 500 MB of logs, you can upgrade to a paid version of the Log Analysis Service.
 - Because Starter Plan is not a production environment, **applications might not be able to immediately reach a network resource**.
-  - If this happens, it is recommended as a first step to increase the default timeout values in the Fabric SDK. For more information about setting timeout values, see [Setting timeout values in Fabric SDKs](v10_application.html#set-timeout-in-sdk).
+  - If this happens, it is recommended as a first step to increase the default timeout values in the Fabric SDK. For more information about setting timeout values, see [Setting timeout values in Fabric SDKs](/docs/services/blockchain/v10_application.html#dev-app-set-timeout-in-sdk).
   - You can also retry your request at the application level.
 - **Chaincode containers can sometimes be stopped** by a background network issue and may need to be rebuilt and restarted after being invoked by a user. If this happens it may take your chaincode a few minutes to respond.
 - Because of the resource limitation in Starter Plan network, that is, 1 CPU and 4 Gi RAM for each peer, **you might encounter a `REQUEST_TIMEOUT` error during chaincode instantiation**. If this happens, retry the instantiation step. If the error continues, you can increase the chaincode instantiation timeout. In the connection profile, the chaincode instantiation timeout is set to 300 seconds.
@@ -45,11 +47,10 @@ The following issues are already reported:
     - If you use Node SDK, you can change the timeout setting of the `sendInstantiateProposal(request, timeout)` method. For more information, see [sendInstantiateProposal(request, timeout) ![External link icon](images/external_link.svg "External link icon")](https://fabric-sdk-node.github.io/Channel.html#sendInstantiateProposal).
     - If you use Java SDK, you can change the timeout setting of the `instantiateProposalRequest.setProposalWaitTime(DEPLOYWAITTIME)` command, which is in the `src/test/java/org/hyperledger/fabric/sdkintegration/End2endIT.java` file.
 
-For support and help with your {{site.data.keyword.blockchainfull_notm}} Platform network on {{site.data.keyword.cloud_notm}}, see [Getting support](ibmblockchain_support.html).
-
+For support and help with your {{site.data.keyword.blockchainfull_notm}} Platform network on {{site.data.keyword.cloud_notm}}, see [Getting support](/docs/services/blockchain/ibmblockchain_support.html#blockchain-support).
 
 ## Updating chaincode for Enterprise Plan network upgrade
-{: #chaincode-migration}
+{: #known-issues-ibp-about-chaincode-migration}
 
 If your Enterprise Plan network is at Hyperledger Fabric V1.0 level, {{site.data.keyword.blockchainfull_notm}} Platform will schedule an upgrade for your network to migrate to Hyperledger Fabric V1.1. With the network upgrade, if you use complex chaincode with dependencies, you need to update the dependencies in your chaincode. Otherwise, you might encounter a service disruption.
 
@@ -67,4 +68,4 @@ Perform the following steps to update your chaincode:
 
     You can then use `go build` to check whether the new code compiles and whether the chaincode update works.
 
-2. After your network upgrade, you can [update your chaincode](howto/install_instantiate_chaincode.html#updating-a-chaincode) in the Network Monitor.
+2. After your network upgrade, you can [update your chaincode](/docs/services/blockchain/howto/install_instantiate_chaincode.html#install-instantiate-chaincode-update-cc) in the Network Monitor.
