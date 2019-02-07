@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-08-31"
+  years: 2018,2019
+lastupdated: "2019-02-08"
 
 ---
 
@@ -13,12 +13,13 @@ lastupdated: "2018-08-31"
 {:pre: .pre}
 
 # Interacting with the network using Swagger APIs
+{: #ibp-swagger}
 
 
 ***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 
-{{site.data.keyword.blockchainfull_notm}} Platform exposes a number of REST APIs in Swagger that you can use to manage the nodes, channels, peers, and members of your network. Your applications can use these API's to control important network resources without using the network monitor.
+{{site.data.keyword.blockchainfull_notm}} Platform exposes a number of REST APIs in Swagger that you can use to manage the nodes, channels, peers, and members of your network. Your applications can use these APIs to control important network resources without using the network monitor.
 
 {:shortdesc}
 
@@ -26,8 +27,7 @@ Before you begin, you need to create a [{{site.data.keyword.blockchain}} Platfor
 
 
 ## Retrieving network credentials
-
-{: #retrieving-network-credentials}
+{: #ibp-swagger-retrieving-network-credentials}
 
 Enter the Network Monitor of your Blockchain network and open the "APIs" screen from the left navigator. You can see your network credentials for the REST APIs. You will later authorize the APIs by using the values of the "key" and "secret" displayed here, and run the APIs with the "network_id" as a parameter. Click **Show secret** to reveal the value of the secret field. Copy the values of the key, secret, and network_id fields, which you can used later in the Swagger UI.
 
@@ -44,6 +44,7 @@ If you are using the Starter Plan, it is possible to switch between organization
 
 
 ## Authorizing Swagger APIs
+{: #ibp-swagger-authorizing-swagger}
 
 Click the **Swagger UI** link on the "APIs" screen to open the Swagger UI.  
 <!-- remove this line because the link is different depending on if you are starter or enterprise plan
@@ -61,6 +62,7 @@ Using Basic Auth authentication, any credentials that you specify in the Authori
 
 
 ## Trying out APIs
+{: #ibp-swagger-try-out}
 
 Click the REST API you want to run and click the **Try it out** button.
 
@@ -84,9 +86,14 @@ After you click **Execute**, you can see the response of the API call against yo
 *Figure 6. API response*    
 
 ## Troubleshooting tips
+{: #ibp-swagger-troubleshooting}
 
 ### 401 Unauthorized  
-  Ensure that you have authorized the REST API by providing your network credentials. For more information, see [Authorizing Swagger APIs](#authorizing-swagger-apis).
+{: #ibp-swagger-401}
+
+  Ensure that you have authorized the REST API by providing your network credentials. For more information, see [Authorizing Swagger APIs](/docs/services/blockchain/howto/swagger_apis.html#ibp-swagger-authorizing-swagger).
 
 ### 400 Error: Bad Request
+{: #ibp-swagger-400}
+
   Some APIs might take an argument in the Body of the request which acts as a filter to show results only for a specific peer. A sample snippet is provided in the Body, which if used, needs to be edited to specify the peer or list of peers that you would like to filter on. To avoid this error, either edit the snippet to specify a peer in your network or remove the snippet entirely.

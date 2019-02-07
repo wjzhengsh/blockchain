@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-12-07"
+  years: 2018,2019
+lastupdated: "2019-02-08"
 ---
 
 {:new_window: target="_blank"}
@@ -10,8 +10,8 @@ lastupdated: "2018-12-07"
 {:codeblock: .codeblock}
 {:screen: .screen}
 {:pre: .pre}
-
 # Installing, instantiating, and updating a chaincode
+{: #install-instantiate-chaincode}
 
 
 ***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
@@ -27,7 +27,7 @@ After chaincode is installed on the peers, a single network member instantiates 
 The combination of **installation and instantiation** is a powerful feature because it allows for a peer to use a single chaincode across many channels. Peers may want to join multiple channels that use the same chaincode, but with different sets of network members able to access the data. A peer can the install the chaincode once, and then use the same chaincode container on any channel where it has been instantiated. This lightweight approach saves compute and storage space, and helps you scale your network.
 
 ## Installing a chaincode
-{: #installchaincode}
+{: #install-instantiate-chaincode-install-cc}
 
 You must install the chaincode on every peer that will run this chaincode. Complete the following steps to install a chaincode:
 1. In the "Install code" screen of your Network Monitor, select a peer from the drop-down list to install the chaincode onto. Click the **Install Chaincode** button.
@@ -37,11 +37,14 @@ You must install the chaincode on every peer that will run this chaincode. Compl
 
 2. In the **Install Chaincode** pop-up panel, enter the name and version of your chaincode. **Note** that the name and version strings will be used in applications to interact with the installed chaincode. Click the **Browse** button and navigate through your local file system to wherever your chaincode source files are stored. Select one or more chaincode source files to install on the peer. Then select your chaincode language from the **Chaincode Type** dropdown.
 
-You can install chaincode by uploading a single or multiple GO or NODE files, or you can upload chaincode inside a .zip file. Using a .zip file will maintain your chaincode with a complete directory structure. This will be helpful if you want include packages of dependencies, or use indexes with CouchDB. For more information about CouchDB and how to set up indexes, see [Best Practices when using CouchDB](../v10_application.html#couchdb-indices) in the Developing applications tutorial. You can also find information on [managing external dependencies for chaincode written in GO ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/chaincode4ade.html#managing-external-dependencies-for-chaincode-written-in-go){:new_window} in the Hyperledger Fabric documentation.
+You can install chaincode by uploading a single or multiple GO or NODE files, or you can upload chaincode inside a .zip file. Using a .zip file will maintain your chaincode with a complete directory structure. This will be helpful if you want include packages of dependencies, or use indexes with CouchDB. For more information about CouchDB and how to set up indexes, see [Best Practices when using CouchDB](/docs/services/blockchain/v10_application.html#dev-app-couchdb-indices) in the Developing applications tutorial. You can also find information on [managing external dependencies for chaincode written in GO ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/chaincode4ade.html#managing-external-dependencies-for-chaincode-written-in-go){:new_window} in the Hyperledger Fabric documentation.
 
   ![Install Chaincode](../images/chaincode_install.png "Install Chaincode")
 
 ## Instantiate a chaincode
+{: #install-instantiate-chaincode-instantiate-cc}
+
+
 After a chaincode is installed onto the file system of every peer that joins a channel, the chaincode must then be instantiated on the channel so that peers can interact with the ledger via the chaincode container. The instantiation performs any necessary initialization of the chaincode. This will often involve setting the key value pairs that comprise a chaincode's initial world state.
 
 You need to have **Operator** or **Writer** authority on the channel to instantiate the chaincode. The chaincode that has the same name and version on different peers needs to be instantiated only once to deploy the chaincode container. Complete the following steps to instantiate a chaincode:
@@ -55,14 +58,15 @@ You need to have **Operator** or **Writer** authority on the channel to instanti
   ![Instantiate Chaincode panel](../images/chaincode_instantiate_panel.png "Instantiate Chaincode panel")
 -->
 
-3. Specify your chaincode's [endorsement policy](../glossary.html#endorsement-policy). You can learn more about how to set endorsement policies in the [next section](#specifying-chaincode-endorsement-policies).
+3. Specify your chaincode's [endorsement policy](/docs/services/blockchain/glossary.html#glossary-endorsement-policy). You can learn more about how to set endorsement policies in the [next section](/docs/services/blockchain/howto/install-instantiate-chaincode.html#install-instantiate-chaincode-endorsement-policy).
+
 
 ## Specifying chaincode endorsement policies
-{: #endorsement-policy}
+{: #install-instantiate-chaincode-endorsement-policy}
 
 You can use endorsement policies to specify which set of peers need to validate a new transaction. For example, an endorsement policy can specify that a transaction will be added to the ledger only if a majority of the members on the channel endorse the transaction.
 
-The endorsement policy is set when a chaincode is instantiated on a channel. The organization that instantiates the chaincode can select from among the channel members who have installed the chaincode to become validators, and sets the endorsement policy for all channel members. You can update your endorsement policy by following the steps for [updating your chaincode](#updating-a-chaincode), then specifying a new policy when you reinstantiate your chaincode on the second step.
+The endorsement policy is set when a chaincode is instantiated on a channel. The organization that instantiates the chaincode can select from among the channel members who have installed the chaincode to become validators, and sets the endorsement policy for all channel members. You can update your endorsement policy by following the steps for [updating your chaincode](/docs/services/blockchain/howto/install_instantiate_chaincode.html#install-instantiate-chaincode-update-cc), then specifying a new policy when you reinstantiate your chaincode on the second step.
 
 When you use the Network Monitor to set your endorsement policy, you can either use the UI to specify a **Simple Policy**, or use JSON to specify an **Advanced Policy**.
 
@@ -79,10 +83,11 @@ When you use the Network Monitor to set your endorsement policy, you can either 
 Endorsement policies are not updated automatically when new organizations join the channel and install the chaincode. For example, if the policy requires two of five organizations to endorse a transaction, the policy will not be updated to require two out of six organizations when a new organization joins the channel. Instead, the new organization will not be listed on the policy, and they will not be able to endorse transactions. You can add a new organization to an endorsement policy by updating the relevant chaincode.
 
 ## Updating a chaincode
+{: #install-instantiate-chaincode-update-cc}
 
 You can update a chaincode to change the chaincode's programming while maintaining its relationship to the assets on the ledger. Because of the installation and instantiation combination, you need to update the chaincode on all peers that are on the channel with this chaincode. Complete the following steps to update your chaincode.
 
-1. Install a chaincode with the same name as your old chaincode, but with a different version. You can follow the same steps as [Installing a chaincode](#installchaincode). Make sure that you select the same channel as your original chaincode.
+1. Install a chaincode with the same name as your old chaincode, but with a different version. You can follow the same steps as [Installing a chaincode](/docs/services/blockchain/howto/install_instantiate_chaincode.html#install-instantiate-chaincode-install-cc). Make sure that you select the same channel as your original chaincode.
 
   ![Update Chaincode](../images/upgrade_chaincode.png "Update Chaincode")
 
