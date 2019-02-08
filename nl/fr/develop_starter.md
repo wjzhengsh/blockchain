@@ -27,14 +27,14 @@ Avec l'environnement développeur, vous pouvez rapidement modéliser et tester d
 
 ## Avant de commencer
 
-Lisez les sections [A propos du plan Starter](./starter_plan.html) et [Mise en route avec le plan Starter](./get_start_starter_plan.html). Assurez-vous également d'avoir installé l'environnement développeur d'[{{site.data.keyword.blockchainfull_notm}} Platform: Develop](./develop_install.html) et d'avoir créé une instance du plan Starter d'{{site.data.keyword.blockchainfull_notm}} Platform en suivant les instructions de la section [Gouvernance d'un réseau de plan Starter](./get_start_starter_plan.html).
+Lisez les sections [A propos du plan Starter](/docs/services/blockchain/starter_plan.html) et [Mise en route avec le plan Starter](/docs/services/blockchain/get_start_starter_plan.html). Assurez-vous également d'avoir installé l'environnement développeur d'[{{site.data.keyword.blockchainfull_notm}} Platform: Develop](/docs/services/blockchain/develop_install.html) et d'avoir créé une instance du plan Starter d'{{site.data.keyword.blockchainfull_notm}} Platform en suivant les instructions de la section [Gouvernance d'un réseau de plan Starter](/docs/services/blockchain/get_start_starter_plan.html).
 
 Assurez-vous de disposer de Node v8.9 ou supérieur, npm v5.x et Hyperledger Composer :
 
 - Si votre réseau est en version 1.2 de Fabric, utilisez Hyperledger Composer v0.20.x.
 - Si votre réseau est en version 1.1 de Fabric, utilisez Hyperledger Composer v0.19.x.  
 
-Pour connaître votre version Fabric, ouvriez la [fenêtre Préférences réseau](../v10_dashboard.html#network-preferences) dans votre Moniteur réseau.
+Pour connaître votre version Fabric, ouvriez la [fenêtre Préférences réseau](/docs/services/blockchain/v10_dashboard.html#network-preferences) dans votre Moniteur réseau.
 
 
 ## Etape 1 : Extraire la valeur confidentielle admin

@@ -30,7 +30,7 @@ Ce guide vous aidera à comprendre la tarification des plans d'appartenance à {
 
 *Figure 1. Vue d'ensemble de la tarification d'{{site.data.keyword.blockchainfull}} Platform*
 
-Les frais mensuels sont facturés par jour au prorata. Par exemple, une organisation (avec des frais d'appartenance de 1 000 dollars) ayant deux homologues (frais par homologue de 1 000 dollars X 2 homologues) doit payer 3 000 dollars par mois. Si le mois comporte 30 jours, le membre paie 100 dollars (3 000/30) par jour. Pour plus d'informations sur le mode de règlement pour vos réseaux, voir [Mode de paiement](paying_mode.html).
+Les frais mensuels sont facturés par jour au prorata. Par exemple, une organisation (avec des frais d'appartenance de 1 000 dollars) ayant deux homologues (frais par homologue de 1 000 dollars X 2 homologues) doit payer 3 000 dollars par mois. Si le mois comporte 30 jours, le membre paie 100 dollars (3 000/30) par jour. Pour plus d'informations sur le mode de règlement pour vos réseaux, voir [Mode de paiement](/docs/services/blockchain/howto/paying_mode.html).
 
 Le plan Starter d'**{{site.data.keyword.blockchainfull_notm}} Platform vous offre un crédit d'essai de $500** avant d'être facturé. Pour plus d'informations, voir [Tarification du plan Starter](#starter-plan-pricing).
 

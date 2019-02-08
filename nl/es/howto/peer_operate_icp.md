@@ -19,7 +19,7 @@ lastupdated: "2018-12-07"
 
 Después de configurar una plataforma {{site.data.keyword.blockchainfull}} el igual de {{site.data.keyword.cloud_notm}} privado (ICP), tiene que llevar a cabo varios pasos operativos para que el igual pueda enviar transacciones para consultar e invocar el libro mayor de la red blockchain. Los pasos incluyen añadir su organización a un canal, unir el igual al canal, instalar el código de encadenamiento en el igual,
 crear una instancia del código de encadenamiento en el canal y conectar aplicaciones al igual. Si desea conectar el igual a una red de Plan inicial o de Plan empresarial, consulte
-[Operación de iguales en {{site.data.keyword.cloud_notm}} privado con el Plan inicial o el Plan empresarial](peer_operate_ibp.html#peer-operate_icp)
+[Operación de iguales en {{site.data.keyword.cloud_notm}} privado con el Plan inicial o el Plan empresarial](/docs/services/blockchain/howto/peer_operate_ibp.html#peer-operate_icp)
 {:shortdesc}
 
 Es necesario completar algunos pasos de requisito previo desde el clúster ICP para trabajar con el igual.
@@ -40,7 +40,7 @@ Los SDK de Fabric son el método recomendado, aunque en las instrucciones se pre
 Si la organización aún no es miembro de un consorcio o canal, puede utilizar estos pasos para [crear un canal](#create-channel). Las instrucciones le indicarán cómo [preparar la definición de una organización](#organization-definition). Esta definición se utilizará para convertirle en miembro del consorcio al añadirle a un canal de sistema de clasificador. Más adelante, podrá formar un nuevo canal mediante la
 [creación de una transacción de canal](#peer-icp-channeltx)
 <!--
-It is recommended that you deploy at least two instances of the peer Helm chart for [high availability](peer_icp.html#high-availability). Therefore, you need to follow these operations steps once for each peer. When you are ready to invoke and query chaincode from your application, connect to both peers to ensure that your [applications are highly available](../v10_application.html#ha-app).
+It is recommended that you deploy at least two instances of the peer Helm chart for [high availability](/docs/services/blockchain/howto/peer_icp.html#high-availability). Therefore, you need to follow these operations steps once for each peer. When you are ready to invoke and query chaincode from your application, connect to both peers to ensure that your [applications are highly available](/docs/services/blockchain/v10_application.html#ha-app).
 -->
 
 ## Requisitos previos
@@ -132,7 +132,7 @@ Debe establecer como objetivo el punto final de igual desde el SDK o el cliente 
   ```
   {:codeblock}
 
-**Nota:** si despliega el igual detrás de un cortafuegos, necesitará abrir un paso a través para habilitar la red en la plataforma para completar un reconocimiento de TLS con el igual. Solo necesita habilitar un paso a través para el puerto de nodo enlazado con el puerto 7051 del igual. Para obtener más información, consulte [Cómo encontrar la información de punto final de igual](peer_operate_ibp.html#peer-endpoint).
+**Nota:** si despliega el igual detrás de un cortafuegos, necesitará abrir un paso a través para habilitar la red en la plataforma para completar un reconocimiento de TLS con el igual. Solo necesita habilitar un paso a través para el puerto de nodo enlazado con el puerto 7051 del igual. Para obtener más información, consulte [Cómo encontrar la información de punto final de igual](/docs/services/blockchain/howto/peer_operate_ibp.html#peer-endpoint).
 
 ### Descargar el certificado TLS del igual
 {: #peer-tls}
@@ -159,7 +159,7 @@ Necesita descargar el certificado TLS del igual y pasarlo a los mandatos para co
 
 Los SDK de Hyperledger Fabric ofrecen un potente conjunto de API que permiten a las aplicaciones interactuar con las redes blockchain. Encontrará la lista más reciente de lenguajes soportados y una lista de las API disponibles en los SDK de Fabric en la [documentación de la comunidad de SDK de Hyperledger Fabric ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/getting_started.html#hyperledger-fabric-sdks "documentación de la comunidad de SDK de Hyperledger Fabric"). Puede utilizar los SDK de Fabric para unir su igual a un canal en la plataforma {{site.data.keyword.blockchainfull_notm}}, instalar un código de encadenamiento en el igual y crear una instancia del código de encadenamiento en un canal.
 
-En las siguientes instrucciones se utiliza el [Node SDK de Fabric ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://fabric-sdk-node.github.io/ "Node SDK de Fabric") para trabajar con el igual y se da por supuesto que está familiarizado con el SDK. Puede utilizar la [guía de aprendizaje sobre desarrollo de aplicaciones](../v10_application.html) para aprender a utilizar Node SDK antes de empezar y como guía para desarrollar aplicaciones con el igual cuanto esté listo para invocar el código de encadenamiento de la consulta.
+En las siguientes instrucciones se utiliza el [Node SDK de Fabric ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://fabric-sdk-node.github.io/ "Node SDK de Fabric") para trabajar con el igual y se da por supuesto que está familiarizado con el SDK. Puede utilizar la [guía de aprendizaje sobre desarrollo de aplicaciones](/docs/services/blockchain/v10_application.html) para aprender a utilizar Node SDK antes de empezar y como guía para desarrollar aplicaciones con el igual cuanto esté listo para invocar el código de encadenamiento de la consulta.
 
 ### Instalación de Node SDK
 
@@ -177,14 +177,14 @@ Se recomienda utilizar la versión 1.2 de Node SDK.
 
 El igual se ha desplegado con el signCert del administrador de igual incluido. Esto le permitirá utilizar los certificados del administrador de igual y la carpeta de MSP para trabajar con el igual.
 
-Localice los certificados que ha creado al [inscribir el administrador de igual](CA_operate.html#enroll-admin). Si ha utilizado los mandatos de ejemplo, puede encontrar la carpeta de MSP del administrador de igual en `$HOME/fabric-ca-client/peer-admin`.
+Localice los certificados que ha creado al [inscribir el administrador de igual](/docs/services/blockchain/howto/CA_operate.html#enroll-admin). Si ha utilizado los mandatos de ejemplo, puede encontrar la carpeta de MSP del administrador de igual en `$HOME/fabric-ca-client/peer-admin`.
   - Puede crear el contexto de usuario del administrador de igual con el SDK utilizando el signCert (clave pública) y la clave privada en la carpeta de MSP. Puede encontrar dichas claves en las ubicaciones siguientes:
     - El signCert se puede encontrar en la carpeta **signcerts**: `$HOME/fabric-ca-client/peer-admin/msp/signcerts`
     - La clave privada se puede encontrar en la carpeta **keystore**: `$HOME/fabric-ca-client/peer-admin/msp/keystore`
     Para ver un ejemplo de cómo formar un contexto de usuario y trabajar con el SDK utilizando únicamente las claves pública y privada, consulte
-[Generación de certificados utilizando el supervisor de red](../v10_application.html#enroll-panel).
+[Generación de certificados utilizando el supervisor de red](/docs/services/blockchain/v10_application.html#enroll-panel).
 
-<!-- You can also use the SDK to generate the peer admin signCert and private key using the endpoint information of CA on Starter Plan or Enterprise Plan and your [peer admin username and password](CA_operate.html#register-admin). -->
+<!-- You can also use the SDK to generate the peer admin signCert and private key using the endpoint information of CA on Starter Plan or Enterprise Plan and your [peer admin username and password](/docs/services/blockchain/howto/CA_operate.html#register-admin). -->
 
 ### Cómo pasar el certificado TLS del igual al SDK
 {: #icp-peer-download-tlscert}
@@ -216,7 +216,7 @@ Si tiene una red grande, con varios iguales que pertenecen a distintas organizac
 ### Cómo pasar el certificado TLS del clasificador al SDK
 {: #icp-orderer-download-tlscert}
 
-También necesita el certificado TLS del clasificador del consorcio para unirse a los canales y enviar transacciones. Si es el administrador del clasificador, siga las instrucciones para [descargar el certificado TLS del clasificador](orderer_operate.html#orderer-tls).  Si ha utilizado los mandatos de ejemplo, puede encontrar el certificado TLS del igual en `$HOME/fabric-ca-client/orderer-tls/orderertls.pem`. Si el clasificador está controlado por otra organización, deberán proporcionarle el certificado TLS en una operación fuera de banda. A continuación, puede importar el certificado TLS en la aplicación.
+También necesita el certificado TLS del clasificador del consorcio para unirse a los canales y enviar transacciones. Si es el administrador del clasificador, siga las instrucciones para [descargar el certificado TLS del clasificador](/docs/services/blockchain/howto/orderer_operate.html#orderer-tls).  Si ha utilizado los mandatos de ejemplo, puede encontrar el certificado TLS del igual en `$HOME/fabric-ca-client/orderer-tls/orderertls.pem`. Si el clasificador está controlado por otra organización, deberán proporcionarle el certificado TLS en una operación fuera de banda. A continuación, puede importar el certificado TLS en la aplicación.
 
 ```
 var ordererTLSCert = fs.readFileSync(path.join(__dirname, './orderertls.pem'));
@@ -226,7 +226,7 @@ var ordererTLSCert = fs.readFileSync(path.join(__dirname, './orderertls.pem'));
 ### Cómo proporcionar la información del clasificador al SDK
 {: #orderer-SDK-endpoints}
 
-Para utilizar el SDK, necesitará también la información de punto final de los clasificadores del consorcio. Si es el administrador del clasificador, puede utilizar las instrucciones para [Recuperar la información del punto final del clasificador](orderer_operate.html#orderer-endpoint). Si el clasificador está controlado por otra organización, deberán proporcionarle el URL del clasificador en una operación fuera de banda. En el ejemplo siguiente se define un clasificador como punto final y se pasa el certificado TLS del clasificador.
+Para utilizar el SDK, necesitará también la información de punto final de los clasificadores del consorcio. Si es el administrador del clasificador, puede utilizar las instrucciones para [Recuperar la información del punto final del clasificador](/docs/services/blockchain/howto/orderer_operate.html#orderer-endpoint). Si el clasificador está controlado por otra organización, deberán proporcionarle el URL del clasificador en una operación fuera de banda. En el ejemplo siguiente se define un clasificador como punto final y se pasa el certificado TLS del clasificador.
 
 ```
 var orderer = fabric_client.newOrderer('grpcs://9.30.94.174:30167', { pem:  Buffer.from(ordererTLSCert).toString(), 'ssl-target-name-override': null});
@@ -242,17 +242,17 @@ You need to specify a `ssl-target-name-override` of `<something>.blockchain.com`
 La organización necesita ser miembro de un canal para que pueda unirse al canal con el igual. Si no es miembro de un canal, puede seguir las instrucciones para [crear un nuevo canal](#create-channel).
 
 Después de que la organización pase a ser un miembro de un canal, siga las instrucciones para hacer que
-[los iguales se unan a un canal](../v10_application.html#join-channel-sdk) utilizando el SDK.
+[los iguales se unan a un canal](/docs/services/blockchain/v10_application.html#join-channel-sdk) utilizando el SDK.
 
 ### Utilización del SDK para instalar el código de encadenamiento en el igual
 {: #peer-install-cc-sdk}
 
-Siga las instrucciones siguientes para utilizar el SDK para [instalar un código de encadenamiento](../v10_application.html#install-cc-sdk) en el igual.
+Siga las instrucciones siguientes para utilizar el SDK para [instalar un código de encadenamiento](/docs/services/blockchain/v10_application.html#install-cc-sdk) en el igual.
 
 ### Utilización del SDK para crear una instancia de código de encadenamiento en el canal
 {: #peer-instantiate-cc-sdk}
 
-Sólo un miembro del canal necesita crear una instancia o actualizar el código de encadenamiento. Por lo tanto, cualquier miembro del canal que tenga el código de encadenamiento instalado en los iguales puede crear una instancia del código de encadenamiento y especificar política de aprobación. Sin embargo, si desea utilizar el igual para crear una instancia del código de encadenamiento en un canal, puede utilizar el SDK y seguir las instrucciones para [crear una instancia de un código de encadenamiento](../v10_application.html#instantiate-cc-sdk).
+Sólo un miembro del canal necesita crear una instancia o actualizar el código de encadenamiento. Por lo tanto, cualquier miembro del canal que tenga el código de encadenamiento instalado en los iguales puede crear una instancia del código de encadenamiento y especificar política de aprobación. Sin embargo, si desea utilizar el igual para crear una instancia del código de encadenamiento en un canal, puede utilizar el SDK y seguir las instrucciones para [crear una instancia de un código de encadenamiento](/docs/services/blockchain/v10_application.html#instantiate-cc-sdk).
 
 ## Utilización de la CLI para trabajar con el igual
 {: #peer-cli-operate}
@@ -260,7 +260,7 @@ Sólo un miembro del canal necesita crear una instancia o actualizar el código 
 También puede trabajar con el igual desde la línea de mandatos utilizando los binarios de iguales de Fabric.
 
 El igual se ha desplegado con el signCert del administrador de igual incluido, permitiendo que dicha identidad pueda trabajar con el igual. Las instrucciones siguientes utilizarán la carpeta de MSP del administrador de igual que se generó cuando
-[desplegó el igual](CA_operate.html#register-admin) para hacer que el igual se una a un canal, instalar un código de encadenamiento en el igual y, a continuación, crear una instancia del código de encadenamiento en un canal.
+[desplegó el igual](/docs/services/blockchain/howto/CA_operate.html#register-admin) para hacer que el igual se una a un canal, instalar un código de encadenamiento en el igual y, a continuación, crear una instancia del código de encadenamiento en un canal.
 
 ### Descarga del cliente de igual de Fabric
 {: #peer-client}
@@ -312,8 +312,8 @@ cd $HOME/fabric-ca-client/peer-admin/msp
 {:codeblock}
 
 Para poder trabajar con el igual, necesita realizar algunas gestiones sobre los certificados de la máquina local. También debe asegurarse de que puede acceder a los certificados TLS desde el igual. Para obtener más información sobre los certificados a utilizar, consulte
-[Proveedores de servicios de pertenencia](CA_operate.html#msp) en
-[Funcionamiento de una entidad emisora de certificados en {{site.data.keyword.cloud_notm}} privado](CA_operate.html).
+[Proveedores de servicios de pertenencia](/docs/services/blockchain/howto/CA_operate.html#msp) en
+[Funcionamiento de una entidad emisora de certificados en {{site.data.keyword.cloud_notm}} privado](/docs/services/blockchain/howto/CA_operate.html).
 
 1. Mueva el signCert del administrador de igual a una carpeta nueva denominada `admincerts`:
 
@@ -327,7 +327,7 @@ Para poder trabajar con el igual, necesita realizar algunas gestiones sobre los 
 2. Asegúrese de [descargar el certificado TLS del igual](#peer-tls) y de que puede hacer referencia a él desde la línea de mandatos. Si ha seguido los mandatos de ejemplo de esta documentación, puede encontrar este certificado TLS en el archivo
 `$HOME/fabric-ca-client/peer-tls/peertls.pem`.
 
-3. También necesita hacer referencia al certificado TLS del clasificador. Si es el administrador del clasificador, siga las instrucciones para [descargar el certificado TLS del clasificador](orderer_operate.html#orderer-tls). Si el clasificador está controlado por otra organización, deberán proporcionarle el certificado TLS en una operación fuera de banda. Guarde este certificado en una ubicación en la que pueda hacer referencia a él en mandatos posteriores.
+3. También necesita hacer referencia al certificado TLS del clasificador. Si es el administrador del clasificador, siga las instrucciones para [descargar el certificado TLS del clasificador](/docs/services/blockchain/howto/orderer_operate.html#orderer-tls). Si el clasificador está controlado por otra organización, deberán proporcionarle el certificado TLS en una operación fuera de banda. Guarde este certificado en una ubicación en la que pueda hacer referencia a él en mandatos posteriores.
 
 Puede ejecutar un mandato de árbol (tree) para verificar que se han completado estos pasos. Vaya al directorio donde ha almacenado los certificados. Un mandato tree debe generar un resultado similar a la estructura siguiente:
 ```
@@ -389,7 +389,7 @@ Después de mover todos los certificados a la ubicación necesaria, se necesitan
 
     Al establecer esta variable, podrá ejecutar los mandatos utilizando el cliente de igual en cualquier directorio.
 
-3. Necesita la información de punto final del clasificador. Si es el administrador del clasificador, puede utilizar las instrucciones para [Recuperar la información del punto final del clasificador](orderer_operate.html#orderer-endpoint). Si el clasificador está controlado por otra organización, deberán proporcionarle el URL del clasificador en una operación fuera de banda.
+3. Necesita la información de punto final del clasificador. Si es el administrador del clasificador, puede utilizar las instrucciones para [Recuperar la información del punto final del clasificador](/docs/services/blockchain/howto/orderer_operate.html#orderer-endpoint). Si el clasificador está controlado por otra organización, deberán proporcionarle el URL del clasificador en una operación fuera de banda.
 
 4. [Recupere la información de punto final de los iguales](#peer-endpoint). Este URL se utilizará para establecer la variable de entorno `PEERADDR`. Necesita omitir la parte `http://` al principio.
 
@@ -593,7 +593,7 @@ Puede utilizar los mandatos **kubectl** para reiniciar el igual que se ejecuta e
 ## Creación de un canal
 {: #create-channel}
 
-Si la organización aún no es miembro de un consorcio o canal, puede utilizar los pasos que se indican a continuación para crear un canal. También puede utilizar estos pasos para actualizar un canal existente. Las instrucciones le indicarán cómo [preparar la definición de una organización](#organization-definition). Esta definición se utilizará para convertirle en [miembro del consorcio](orderer_operate.html#add-organizations-to-consortium) al añadirle a un canal de sistema de clasificador. Más adelante, podrá formar un nuevo canal mediante la
+Si la organización aún no es miembro de un consorcio o canal, puede utilizar los pasos que se indican a continuación para crear un canal. También puede utilizar estos pasos para actualizar un canal existente. Las instrucciones le indicarán cómo [preparar la definición de una organización](#organization-definition). Esta definición se utilizará para convertirle en [miembro del consorcio](/docs/services/blockchain/howto/orderer_operate.html#add-organizations-to-consortium) al añadirle a un canal de sistema de clasificador. Más adelante, podrá formar un nuevo canal mediante la
 [creación de una transacción de canal](#peer-icp-channeltx)
 
 Si ya se ha unido al consorcio, deberá completar únicamente el paso de preparación de la transacción del canal. Otro miembro del consorcio también puede formar un nuevo canal con su organización como miembro. Puede actualizar la definición de la organización cuando necesite enviar actualizaciones al consorcio, como la definición de nuevos iguales de ancla, la adición de nuevos certificados de administrador o la actualización del material criptográfico.
@@ -631,7 +631,7 @@ Una vez que haya desplegado los componentes, la organización se puede unir a un
 
 ### Preparar el material criptográfico
 
-Antes de preparar una definición de organización, necesita registrar e inscribir el [administrador de los iguales](CA_operate.html#register-admin). Vaya al directorio donde ha creado la carpeta de MSP del administrador de igual. Los pasos de ejemplo crearon esta carpeta en `$HOME/fabric-ca-client/peer-admin/msp`. Debe llevar a cabo algunos pasos adicionales dentro de esta carpeta para que la herramienta
+Antes de preparar una definición de organización, necesita registrar e inscribir el [administrador de los iguales](/docs/services/blockchain/howto/CA_operate.html#register-admin). Vaya al directorio donde ha creado la carpeta de MSP del administrador de igual. Los pasos de ejemplo crearon esta carpeta en `$HOME/fabric-ca-client/peer-admin/msp`. Debe llevar a cabo algunos pasos adicionales dentro de esta carpeta para que la herramienta
 `configtxgen` pueda utilizar MSP.
 
 1. Copie el certificado TLS de la entidad emisora de certificados y colóquelo en una nueva carpeta denominada
@@ -696,7 +696,7 @@ Organizations:
 ```
 {:codeblock}
 
-Este archivo contiene la información que define la organización dentro del consorcio. También hay disponible una versión más compleja de este archivo en la carpeta `/config` del [cliente de igual de Fabric que ha descargado](peer_operate_icp.html#peer-client). Puede optar por editar dicho archivo, o sustituirlo por el del ejemplo anterior. Tenga en cuenta la ubicación de esta carpeta
+Este archivo contiene la información que define la organización dentro del consorcio. También hay disponible una versión más compleja de este archivo en la carpeta `/config` del [cliente de igual de Fabric que ha descargado](/docs/services/blockchain/howto/peer_operate_icp.html#peer-client). Puede optar por editar dicho archivo, o sustituirlo por el del ejemplo anterior. Tenga en cuenta la ubicación de esta carpeta
 `/config` para establecer el valor de la variable
 `FABRIC_CFG_PATH` siguiente. Edite la sección `Organizations` de este archivo y establezca los valores siguientes:
 
@@ -747,12 +747,12 @@ configtxgen -printOrg org1 > $HOME/fabric-ca-client/org-definitions/org1definiti
 ```
 {:codeblock}
 
-Si el mandato se ejecuta correctamente, `configtxgen` imprimirá la definición de organización en formato JSON. Es necesario enviar este archivo a la organización del clasificador en una operación fuera de banda para unirse al consorcio. A continuación, la organización del clasificador puede [formar un consorcio o incorporarse a un consorcio existente](orderer_operate.html#consortium) añadiendo la definición al canal del sistema, lo que le permite crear nuevos canales y que otros miembros del consorcio le añadan a canales.
+Si el mandato se ejecuta correctamente, `configtxgen` imprimirá la definición de organización en formato JSON. Es necesario enviar este archivo a la organización del clasificador en una operación fuera de banda para unirse al consorcio. A continuación, la organización del clasificador puede [formar un consorcio o incorporarse a un consorcio existente](/docs/services/blockchain/howto/orderer_operate.html#consortium) añadiendo la definición al canal del sistema, lo que le permite crear nuevos canales y que otros miembros del consorcio le añadan a canales.
 
 ## Creación de la transacción del canal
 {: #peer-icp-channeltx}
 
-Para poder crear un nuevo canal, la organización debe haber preparado una [definición de organización](#organization-definition) y haberse convertido en miembro del consorcio. Siga estas instrucciones si necesita [formar un consorcio o incorporarse a uno](orderer_operate.html#consortium). También se posible que se añadan fácilmente miembros del consorcio a nuevos canales, si su organización se ha añadido ya al canal del sistema. Las organizaciones que no sean miembro del canal del sistema solo se puede unir a un canal de forma manual, añadiendo su definición de organización al canal utilizando una [solicitud de actualización de canal
+Para poder crear un nuevo canal, la organización debe haber preparado una [definición de organización](#organization-definition) y haberse convertido en miembro del consorcio. Siga estas instrucciones si necesita [formar un consorcio o incorporarse a uno](/docs/services/blockchain/howto/orderer_operate.html#consortium). También se posible que se añadan fácilmente miembros del consorcio a nuevos canales, si su organización se ha añadido ya al canal del sistema. Las organizaciones que no sean miembro del canal del sistema solo se puede unir a un canal de forma manual, añadiendo su definición de organización al canal utilizando una [solicitud de actualización de canal
 ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/channel_update_tutorial.html). También puede utilizar estos pasos para actualizar un canal existente.
 
 ### Formación de un nuevo canal
@@ -761,7 +761,7 @@ Para poder crear un nuevo canal, la organización debe haber preparado una [defi
 Para formar un nuevo canal, una organización tiene que crear una propuesta de transacción de creación de canal utilizando la
 [herramienta configtxgen
 ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/configtxgen.html "configtxgen"). Esta herramienta consume un archivo configtx.yaml que define los miembros del nuevo canal. A continuación se proporciona un archivo
-`configtx.yaml` de ejemplo. También hay disponible una versión más compleja de este archivo en la carpeta `/config` del [cliente de igual de Fabric que ha descargado](peer_operate_icp.html#peer-client). Puede optar por editar dicho archivo, o sustituirlo por el del ejemplo. Tenga en cuenta la ubicación de esta carpeta
+`configtx.yaml` de ejemplo. También hay disponible una versión más compleja de este archivo en la carpeta `/config` del [cliente de igual de Fabric que ha descargado](/docs/services/blockchain/howto/peer_operate_icp.html#peer-client). Puede optar por editar dicho archivo, o sustituirlo por el del ejemplo. Tenga en cuenta la ubicación de esta carpeta
 `/config` para establecer el valor de la variable
 `FABRIC_CFG_PATH` siguiente.
 ```

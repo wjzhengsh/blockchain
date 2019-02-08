@@ -17,10 +17,10 @@ lastupdated: "2018-12-07"
 
 ***[Cette page est-elle utile ? Dites-nous.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
-Les services de tri authentifient les clients, trient les transactions et diffusent les transactions dans un réseau de blockchain avec le composant de service de tri. Pour plus d'informations sur les services de tri et leur rôle dans un réseau blockchain, voir la [présentation sur les composants de blockchain](../blockchain_component_overview.html).
+Les services de tri authentifient les clients, trient les transactions et diffusent les transactions dans un réseau de blockchain avec le composant de service de tri. Pour plus d'informations sur les services de tri et leur rôle dans un réseau blockchain, voir la [présentation sur les composants de blockchain](/docs/services/blockchain/blockchain_component_overview.html).
 {:shortdesc}
 
-Avant de déployer un service de tri, consultez les [considérations et limitations](../ibp-for-icp-about.html#ibp-icp-considerations).
+Avant de déployer un service de tri, consultez les [considérations et limitations](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-considerations).
 
 ## Ressources obligatoires
 {: #ca-resources-required}
@@ -51,7 +51,7 @@ Si vous n'utilisez pas la mise à disposition dynamique, des [Volumes permanents
 ## Prérequis pour le déploiement d'un service de tri
 {: #prerequisites-orderer-icp}
 
-1. Avant d'installer un service de tri sur ICP, vous devez [installer ICP](../ICP_setup.html) et [installer la Charte Helm de {{site.data.keyword.blockchainfull_notm}} Platform](helm_install_icp.html).
+1. Avant d'installer un service de tri sur ICP, vous devez [installer ICP](/docs/services/blockchain/ICP_setup.html) et [installer la Charte Helm de {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/howto/helm_install_icp.html).
 
 2. Si vous utilisez Community Edition et souhaitez exécuter cette charte Helm sur un cluster ICP sans connectivité Internet, vous devez créer des archives sur une machine connectée à Internet avant d'installer les archives sur votre cluster ICP. Pour plus d'informations, voir [Adding featured applications to clusters without Internet connectivity ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_package_offline.html "Adding featured applications to clusters without Internet connectivity"){:new_window}. Remarque : Vous pouvez trouver le fichier de spécification `manifest.yaml` sous ibm-blockchain-platform-dev/ibm_cloud_pak dans la charte Helm.
 
@@ -62,7 +62,7 @@ Si vous n'utilisez pas la mise à disposition dynamique, des [Volumes permanents
 ## Création du fichier de configuration d'un service de tri
 {: #orderer-config-file}
 
-Avant de déployer un service de tri, vous devez créer un fichier de configuration contenant d'importantes informations relatives à l'identité du service de tri et à votre autorité de certification. Vous devez ensuite transmettre ce fichier à la charte Helm  pendant la configuration à l'aide d'un objet [Valeur confidentielle de Kubernetes![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://kubernetes.io/docs/concepts/configuration/secret/). Ce fichier permettra au service de tri d'obtenir les certificats dont il a besoin auprès de l'autorité de certification pour rejoindre un réseau de blockchain. Il contient également un certificat admin qui vous permet d'utiliser le service de tri en tant qu'utilisateur admin. Suivez les instructions relatives à l'[utilisation de l'autorité de certification pour déployer un service de tri ou un homologue](CA_operate.html#deploy-orderer-peer) avant de configurer le service de tri.
+Avant de déployer un service de tri, vous devez créer un fichier de configuration contenant d'importantes informations relatives à l'identité du service de tri et à votre autorité de certification. Vous devez ensuite transmettre ce fichier à la charte Helm  pendant la configuration à l'aide d'un objet [Valeur confidentielle de Kubernetes![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://kubernetes.io/docs/concepts/configuration/secret/). Ce fichier permettra au service de tri d'obtenir les certificats dont il a besoin auprès de l'autorité de certification pour rejoindre un réseau de blockchain. Il contient également un certificat admin qui vous permet d'utiliser le service de tri en tant qu'utilisateur admin. Suivez les instructions relatives à l'[utilisation de l'autorité de certification pour déployer un service de tri ou un homologue](/docs/services/blockchain/howto/CA_operate.html#deploy-orderer-peer) avant de configurer le service de tri.
 
 Vous devez fournir les noms d'hôte CSR dans le fichier de configuration. Cela inclut le `nom d'hôte de service` qui sera basé sur le `nom d'édition Helm` que vous indiquez durant le déploiement. Le `nom d'hôte de service` est la valeur `helm_release_name` que vous spécifiez avec la chaîne `-orderer` ajoutée à la fin. Par exemple, si vous indiquez le `nom d'édition Helm` `orderer1`, vous pouvez insérer la valeur suivante dans la section `"csr"` du fichier :
 
@@ -224,4 +224,4 @@ Une fois que vous avez entré les paramètres de configuration et cliqué sur le
 ## Affichage des journaux du service de tri
 {: #orderer-view-logs}
 
-Les journaux de composant peuvent être affichés à partir de la ligne de commande à l'aide de [`commandes de l'interface CLI kubectl`](orderer_operate.html#orderer-kubectl-configure) ou via [Kibana ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://www.elastic.co/products/kibana "Votre fenêtre dans Elastic Search"), qui est inclus dans votre cluster ICP. Pour plus d'informations, consultez les [instructions relatives à l'accès aux journaux](orderer_operate.html#orderer-view-logs).
+Les journaux de composant peuvent être affichés à partir de la ligne de commande à l'aide de [`commandes de l'interface CLI kubectl`](/docs/services/blockchain/howto/orderer_operate.html#orderer-kubectl-configure) ou via [Kibana ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://www.elastic.co/products/kibana "Votre fenêtre dans Elastic Search"), qui est inclus dans votre cluster ICP. Pour plus d'informations, consultez les [instructions relatives à l'accès aux journaux](/docs/services/blockchain/howto/orderer_operate.html#orderer-view-logs).

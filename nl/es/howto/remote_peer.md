@@ -17,7 +17,7 @@ lastupdated: "2018-11-27"
 
 ***[¿Le resulta útil esta página? Indíquenos su opinión.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
-**Nota:** el programa de igual remoto de la plataforma {{site.data.keyword.blockchainfull}} en ICP (Beta) ha finalizado. Si todavía desea ejecutar iguales en su entorno de ICP, utilice la oferta de la **plataforma {{site.data.keyword.blockchainfull_notm}} para ICP** en su lugar. Para obtener más información, consulte [Acerca de los iguales en ICP](../ibp-for-icp-about.html#ibp-icp-peer).
+**Nota:** el programa de igual remoto de la plataforma {{site.data.keyword.blockchainfull}} en ICP (Beta) ha finalizado. Si todavía desea ejecutar iguales en su entorno de ICP, utilice la oferta de la **plataforma {{site.data.keyword.blockchainfull_notm}} para ICP** en su lugar. Para obtener más información, consulte [Acerca de los iguales en ICP](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-peer).
 
 Puede ejecutar el igual de la plataforma {{site.data.keyword.blockchainfull_notm}} en la nube de AWS tras conectarlo a una red blockchain existente en {{site.data.keyword.cloud_notm}}. La ejecución de iguales fuera de {{site.data.keyword.cloud_notm}} proporciona más flexibilidad para crecer o unirse a una red blockchain al tiempo que se aprovecha una red existente dentro de {{site.data.keyword.cloud_notm}}. Los iguales de la nube de AWS utilizan las entidades emisoras de certificados (CA) y el servicio de ordenación en la plataforma, pero le permiten colocar su igual con otras aplicaciones fuera de {{site.data.keyword.cloud_notm}}.
 {:shortdesc}
@@ -30,10 +30,10 @@ La plataforma {{site.data.keyword.blockchainfull_notm}} para AWS no tiene acceso
 - Los iguales que se ejecutan en otros entornos de nube no son visibles en el supervisor de la red en {{site.data.keyword.cloud_notm}}.
 - No se puede direccionar a los iguales que se ejecutan en la plataforma {{site.data.keyword.blockchainfull_notm}} para AWS mediante la interfaz de usuario de Swagger en la interfaz de usuario del supervisor de red.
 - El usuario es el responsable de la gestión de la supervisión del estado, la seguridad, el registro y el uso de recursos de sus nodos de igual de la plataforma {{site.data.keyword.blockchainfull_notm}} para AWS.
-- Puede conectar sus iguales de la plataforma {{site.data.keyword.blockchainfull_notm}} para AWS únicamente a redes blockchain que tengan el nivel v1.1 o v1.2.1 de Fabric. Puede encontrar la versión de Fabric abriendo la [ventana Preferencias de red](../v10_dashboard.html#network-preferences) en el supervisor de red.
+- Puede conectar sus iguales de la plataforma {{site.data.keyword.blockchainfull_notm}} para AWS únicamente a redes blockchain que tengan el nivel v1.1 o v1.2.1 de Fabric. Puede encontrar la versión de Fabric abriendo la [ventana Preferencias de red](/docs/services/blockchain/v10_dashboard.html#network-preferences) en el supervisor de red.
 - El tipo de base de datos del igual de la plataforma {{site.data.keyword.blockchainfull_notm}} para AWS debe coincidir con el tipo de base de datos de la red blockchain, ya sea LevelDB o CouchDB.
 - La interfaz CouchDB Fauxton no está disponible en el igual de AWS.
-- Actualmente no se da soporte a [gossip (rumor)](../glossary.html#gossip) para los iguales de AWS. Esto implica que tampoco hay soporte para las características de Fabric que dependen de rumores (gossip), como
+- Actualmente no se da soporte a [gossip (rumor)](/docs/services/blockchain/glossary.html#gossip) para los iguales de AWS. Esto implica que tampoco hay soporte para las características de Fabric que dependen de rumores (gossip), como
 [datos privados
 ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/private-data-arch.html "datos privados") y
 [descubrimiento de servicios
@@ -42,7 +42,7 @@ La plataforma {{site.data.keyword.blockchainfull_notm}} para AWS no tiene acceso
 ## Requisitos previos
 {: #remote-peer-prereq}
 
-Para utilizar un igual de la plataforma {{site.data.keyword.blockchainfull_notm}} para AWS, debe tener una organización que sea miembro de una red del Plan inicial o del Plan empresarial en la plataforma {{site.data.keyword.blockchainfull_notm}}. El igual de la plataforma {{site.data.keyword.blockchainfull_notm}} para AWS aprovecha los puntos finales de API, las CA de Hyperledger Fabric y el servicio de ordenación de la red de la plataforma {{site.data.keyword.blockchainfull_notm}} para funcionar. Si no es miembro de ninguna red blockchain, tiene que crear o unirse a una red. Para obtener más información, consulte [Creación de una red](../get_start.html#creating-a-network) o [Cómo unirse a una red](../get_start.html#joining-a-network).
+Para utilizar un igual de la plataforma {{site.data.keyword.blockchainfull_notm}} para AWS, debe tener una organización que sea miembro de una red del Plan inicial o del Plan empresarial en la plataforma {{site.data.keyword.blockchainfull_notm}}. El igual de la plataforma {{site.data.keyword.blockchainfull_notm}} para AWS aprovecha los puntos finales de API, las CA de Hyperledger Fabric y el servicio de ordenación de la red de la plataforma {{site.data.keyword.blockchainfull_notm}} para funcionar. Si no es miembro de ninguna red blockchain, tiene que crear o unirse a una red. Para obtener más información, consulte [Creación de una red](/docs/services/blockchain/get_start.html#creating-a-network) o [Cómo unirse a una red](/docs/services/blockchain/get_start.html#joining-a-network).
 
 ## Licencias y precios
 {: #remote-peer-license-pricing}
@@ -50,7 +50,7 @@ Para utilizar un igual de la plataforma {{site.data.keyword.blockchainfull_notm}
 La plataforma {{site.data.keyword.blockchainfull_notm}} para AWS se ofrece actualmente como Community Edition, que es gratuita; en el futuro, IBP para AWS podría cambiar a un modelo BYOL (Bring-Your-Own-License), que requerirá la compra de una licencia de IBM.
 
 **Nota:** para trabajar con un igual de AWS, debe tener una organización que pertenezca a una red del Plan inicial o del Plan empresarial en la plataforma {{site.data.keyword.blockchainfull_notm}}. Esto implica que el usuario u otro miembro de la red debe pagar la
-[cuota de pertenencia](pricing.html#key-elements-of-pricing) de {{site.data.keyword.blockchainfull_notm}} para la organización. Para obtener más información sobre cómo pagar las cuotas, consulte [Modalidad de pago](paying_mode.html).
+[cuota de pertenencia](/docs/services/blockchain/howto/pricing.html#key-elements-of-pricing) de {{site.data.keyword.blockchainfull_notm}} para la organización. Para obtener más información sobre cómo pagar las cuotas, consulte [Modalidad de pago](/docs/services/blockchain/howto/paying_mode.html).
 
 
 ## Despliegue de un igual de AWS
@@ -61,7 +61,7 @@ Utilice la [Plantilla de inicio rápido ![Icono de enlace externo](../images/ext
 ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://s3.amazonaws.com/aws-quickstart/quickstart-ibm-fabric/doc/ibm-blockchain-platform-for-aws.pdf "Despliegue de referencia de Inicio rápido de la plataforma IBM Blockchain para AWS").
 
 Para obtener instrucciones sobre cómo desplegar la plataforma {{site.data.keyword.blockchainfull_notm}} para AWS, consulte
-[Despliegue de iguales en Amazon Web Services](remote_peer_aws.html "Despliegue de iguales en Amazon Web Services").
+[Despliegue de iguales en Amazon Web Services](/docs/services/blockchain/howto/remote_peer_aws.html "Despliegue de iguales en Amazon Web Services").
 
 En el diagrama siguiente se describe el proceso para desplegar un igual de la plataforma {{site.data.keyword.blockchainfull_notm}} para AWS.
 
@@ -87,18 +87,18 @@ En el diagrama siguiente se describe el proceso para desplegar un igual de la pl
 {: #operate-remote-peer}
 
 Después de desplegar el igual de AWS, tiene que completar varios pasos operativos para que el igual pueda enviar transacciones a la red. Los pasos operativos incluyen añadir su organización a un canal, unir el igual al canal, instalar el código de encadenamiento en el igual,
-crear una instancia del código de encadenamiento en el canal y conectar aplicaciones al igual. Para obtener más información, consulte [Funcionamiento de iguales en Amazon Web Services](remote_peer_operate_aws.html#remote-peer-operate-aws).
+crear una instancia del código de encadenamiento en el canal y conectar aplicaciones al igual. Para obtener más información, consulte [Funcionamiento de iguales en Amazon Web Services](/docs/services/blockchain/howto/remote_peer_operate_aws.html#remote-peer-operate-aws).
 
 ## Residencia de datos
 {: #data-residency}
 
-Debido a que las redes blockchain no conocen qué tipo de datos se procesa, en ocasiones deben realizarse pasos adicionales para mantener seguros determinados tipos de datos. El requisito más común en cuanto a residencia de datos está asociado a las leyes de determinados países, según las cuales todos los datos que se procesan y almacenan en un sistema de TI deben permanecer dentro de las fronteras del país específico. Paralelamente, algunas empresas de sectores muy regulados, como las gubernamentales, de sanidad y de servicios financieros, obligan a que los datos se almacenen tras su cortafuegos. Por lo tanto, para conseguir la residencia de datos, todos los componentes de la red blockchain deben formar parte del mismo [canal](../glossary.html#channel) y deben residen dentro de las fronteras de un solo país.
+Debido a que las redes blockchain no conocen qué tipo de datos se procesa, en ocasiones deben realizarse pasos adicionales para mantener seguros determinados tipos de datos. El requisito más común en cuanto a residencia de datos está asociado a las leyes de determinados países, según las cuales todos los datos que se procesan y almacenan en un sistema de TI deben permanecer dentro de las fronteras del país específico. Paralelamente, algunas empresas de sectores muy regulados, como las gubernamentales, de sanidad y de servicios financieros, obligan a que los datos se almacenen tras su cortafuegos. Por lo tanto, para conseguir la residencia de datos, todos los componentes de la red blockchain deben formar parte del mismo [canal](/docs/services/blockchain/glossary.html#channel) y deben residen dentro de las fronteras de un solo país.
 
 Para hacer frente a los requisitos de residencia de datos, es importante comprender la arquitectura de Hyperledger Fabric subyacente a la plataforma {{site.data.keyword.blockchainfull_notm}}. La arquitectura se centra en torno a tres componentes clave: la entidad emisora de certificados (CA), el clasificador y el igual. Un igual recibe actualizaciones de estado ordenadas en forma de bloques desde el servicio de ordenación y mantiene el estado y el libro mayor. Por lo tanto, un igual y un clasificador tienen una relación directa. El libro mayor contiene los valores más recientes de todas las claves y los datos que incluyen los registros de transacciones.
 
-Además, las aplicaciones cliente utilizan los [SDK de Fabric](../v10_application.html#using-the-fabric-sdks) para enviar transacciones a los iguales y al servicio de ordenación. Estas transacciones incluyen datos del [conjunto de lectura-escritura ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/readwrite.html "semántica del conjunto de lectura-escritura"), que contienen los valores de clave-valor en el libro mayor.
+Además, las aplicaciones cliente utilizan los [SDK de Fabric](/docs/services/blockchain/v10_application.html#using-the-fabric-sdks) para enviar transacciones a los iguales y al servicio de ordenación. Estas transacciones incluyen datos del [conjunto de lectura-escritura ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/readwrite.html "semántica del conjunto de lectura-escritura"), que contienen los valores de clave-valor en el libro mayor.
 
-Si la residencia de datos en el país es un requisito para su empresa, el clasificador, el igual y las aplicaciones cliente deben residir en el mismo país. Cuando se crea una red de la plataforma {{site.data.keyword.blockchainfull_notm}} en {{site.data.keyword.cloud_notm}}, tiene la opción de seleccionar la ubicación de la red. <!--For a Starter Plan network, you can select from US South, United Kingdom, and Sydney. For an Enterprise Plan network, you can select from currently available locations, which include Dallas, Frankfurt, London, Sao Paulo, Tokyo, and Toronto. -->Para obtener más información sobre regiones y ubicaciones, consulte [Regiones y ubicaciones de la plataforma {{site.data.keyword.blockchainfull_notm}}](../reference/ibp_regions.html). Para conseguir la residencia de datos en uno de estos países, el igual debe residir en el mismo país que la red de la plataforma {{site.data.keyword.blockchainfull_notm}}.
+Si la residencia de datos en el país es un requisito para su empresa, el clasificador, el igual y las aplicaciones cliente deben residir en el mismo país. Cuando se crea una red de la plataforma {{site.data.keyword.blockchainfull_notm}} en {{site.data.keyword.cloud_notm}}, tiene la opción de seleccionar la ubicación de la red. <!--For a Starter Plan network, you can select from US South, United Kingdom, and Sydney. For an Enterprise Plan network, you can select from currently available locations, which include Dallas, Frankfurt, London, Sao Paulo, Tokyo, and Toronto. -->Para obtener más información sobre regiones y ubicaciones, consulte [Regiones y ubicaciones de la plataforma {{site.data.keyword.blockchainfull_notm}}](/docs/services/blockchain/reference/ibp_regions.html). Para conseguir la residencia de datos en uno de estos países, el igual debe residir en el mismo país que la red de la plataforma {{site.data.keyword.blockchainfull_notm}}.
 
 ### Un caso de uso para la residencia de datos
 
@@ -140,7 +140,7 @@ Puede obtener más información sobre estas tecnologías en el documento técnic
 {: #remote-peer-support}
 
 La plataforma IBM Blockchain no proporciona soporte para esta oferta. Si detecta algún problema relacionado con el igual, puede hacer uso de los recursos gratuitos de desarrollador de blockchain y de los foros de soporte para obtener ayuda de la comunidad de Fabric y de
-{{site.data.keyword.IBM_notm}}. Para obtener más información, consulte [Recursos de blockchain y foros de soporte](../ibmblockchain_support.html#resources). También puede consultar los recursos de soporte en la pantalla **Obtener ayuda** del supervisor de red.
+{{site.data.keyword.IBM_notm}}. Para obtener más información, consulte [Recursos de blockchain y foros de soporte](/docs/services/blockchain/ibmblockchain_support.html#resources). También puede consultar los recursos de soporte en la pantalla **Obtener ayuda** del supervisor de red.
 
 - Para ver los problemas relacionados con AWS, puede utilizar tanto los
 [foros de soporte de la comunidad

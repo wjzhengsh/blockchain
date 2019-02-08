@@ -52,13 +52,13 @@ Unter der Überschrift **Aktionen** befinden sich Schaltflächen zum Starten ode
 
 Die Stopp- und die Startaktion sind für einen Anordnungsknoten nicht verfügbar. Im Allgemeinen besteht keine Notwendigkeit, Peer- oder CA-Knoten in einem Netz zu stoppen oder zu starten. Die Stopp- und die Startaktion sind für den Fall vorhanden, dass Sie einen Peer erneut starten müssen, zum Beispiel um ihn in einem bereinigten Status verfügbar zu machen.
 
-Sie können auch Komponentenprotokolle prüfen, indem Sie in der Dropdown-Liste unter der Überschrift **Aktionen** auf **Protokolle anzeigen** klicken. Die Protokolle zeigen die Aufrufe zwischen den verschiedenen Netzressourcen und sind für die Fehlersuche und -behebung von Nutzen. Weitere Informationen zur Verwendung der Netzprotokolle enthält der Abschnitt [Blockchain-Netz überwachen](howto/monitor_network.html).
+Sie können auch Komponentenprotokolle prüfen, indem Sie in der Dropdown-Liste unter der Überschrift **Aktionen** auf **Protokolle anzeigen** klicken. Die Protokolle zeigen die Aufrufe zwischen den verschiedenen Netzressourcen und sind für die Fehlersuche und -behebung von Nutzen. Weitere Informationen zur Verwendung der Netzprotokolle enthält der Abschnitt [Blockchain-Netz überwachen](/docs/services/blockchain/howto/monitor_network.html).
 
 Zur Veranschaulichung der Effekte des Startens und Stoppens eines Peers können Sie einen Peer probeweise stoppen und dann versuchen, eine Transaktion an diesen Peer zu senden; in den Protokollen werden daraufhin Konnektivitätsfehler angezeigt. Wenn Sie den Peer erneut starten und die Transaktion erneut versuchen, wird eine erfolgreiche Verbindung angezeigt. Sie können einen Peer auch für einen längeren Zeitraum inaktiv lassen, während über Ihre Kanäle weiterhin Transaktionen durchgeführt werden. Wenn der Peer wieder aktiviert wird, werden Sie eine Synchronisation des Ledgers bemerken, da der Peer die Blöcke empfängt, die festgeschrieben wurden, als er inaktiv war. Wenn das Ledger vollständig synchronisiert wurde, können Sie normale Aufrufe und Abfragen für das Ledger ausführen.
 
 ### Ferne Peers konfigurieren  
 
-Wenn Sie einen Peer außerhalb von {{site.data.keyword.cloud_notm}} bereitstellen, dann müssen Sie die Informationen zum API-Endpunkt Ihres Netzes während der Konfiguration angeben. Klicken Sie auf die Schaltfläche **Konfiguration ferner Peers**, um die Informationen zum API-Endpunkt des Netzes abzurufen und den Peer zu konfigurieren. Das Popup-Fenster enthält die Informationen zum API-Endpunkt mit der Netz-ID, dem MSP der Organisation, dem CA-Namen, der CA-URL sowie dem CA-TLS-Zertifikat. Sie können entweder auf das Kopiersymbol klicken, das sich am Ende aller Felder befindet, um den Wert dieses Felds zu kopieren, oder auf die Schaltfläche **Download**, um die Werte aller Felder in einer JSON-Datei zu speichern. Weitere Angaben finden Sie unter [Informationen zu {{site.data.keyword.blockchainfull_notm}} Platform for Amazon Web Services](howto/remote_peer.html) und [Informationen zu {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private](ibp-for-icp-about.html).
+Wenn Sie einen Peer außerhalb von {{site.data.keyword.cloud_notm}} bereitstellen, dann müssen Sie die Informationen zum API-Endpunkt Ihres Netzes während der Konfiguration angeben. Klicken Sie auf die Schaltfläche **Konfiguration ferner Peers**, um die Informationen zum API-Endpunkt des Netzes abzurufen und den Peer zu konfigurieren. Das Popup-Fenster enthält die Informationen zum API-Endpunkt mit der Netz-ID, dem MSP der Organisation, dem CA-Namen, der CA-URL sowie dem CA-TLS-Zertifikat. Sie können entweder auf das Kopiersymbol klicken, das sich am Ende aller Felder befindet, um den Wert dieses Felds zu kopieren, oder auf die Schaltfläche **Download**, um die Werte aller Felder in einer JSON-Datei zu speichern. Weitere Angaben finden Sie unter [Informationen zu {{site.data.keyword.blockchainfull_notm}} Platform for Amazon Web Services](/docs/services/blockchain/howto/remote_peer.html) und [Informationen zu {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/ibp-for-icp-about.html).
 
 ### Verbindungsprofil
 {: #connection-profile}
@@ -68,7 +68,7 @@ Sie können die JSON-Datei zu Low-Level-Netzinformationen zu den einzelnen Resso
 ### Peers hinzufügen
 {: #peers}
 
-Netzmitglieder stellen [Peers](blockchain_component_overview.html#peer) bereit, um ihre Kopien des Ledgers zu speichern und Chaincode zum Abfragen und Aktualisieren des Ledgers auszuführen. Wenn die Bewilligungsrichtlinie einen Peer als bewilligenden Peer definiert, gibt der Peer außerdem Bewilligungsergebnisse an Anwendungen zurück.
+Netzmitglieder stellen [Peers](/docs/services/blockchain/blockchain_component_overview.html#peer) bereit, um ihre Kopien des Ledgers zu speichern und Chaincode zum Abfragen und Aktualisieren des Ledgers auszuführen. Wenn die Bewilligungsrichtlinie einen Peer als bewilligenden Peer definiert, gibt der Peer außerdem Bewilligungsergebnisse an Anwendungen zurück.
 
 Klicken Sie auf die Schaltfläche **Peers hinzufügen** in der rechten oberen Ecke, um Ihrem Netz Peerknoten hinzuzufügen. Wählen Sie im Popup-Fenster "Peers hinzufügen" die Anzahl und Größe der Peerknoten aus, die Sie hinzufügen wollen. Sie können bei Bedarf weitere Peers für Ihre Organisationen hinzufügen. In anderen Szenarios kann eine höhere Anzahl an Peers erforderlich sein. Sie könnten z. B. mehrere Peers benötigen, um sie zu Redundanzzwecken mit demselben Kanal zu verknüpfen. Jeder Peer verarbeitet die Transaktionen des Kanals und schreibt in seine jeweilige Kopie des Ledgers. Wenn einer der Peers ausfällt, kann der andere Peer (oder auch mehrere andere Peers) die Verarbeitung von Transaktionen und Anwendungsanforderungen fortsetzen. Sie können außerdem alle Anwendungsanforderungen symmetrisch auf die Peers verteilen oder Sie können verschiedene Peers für verschiedene Funktionen vorsehen. Sie können zum Beispiel einen Peer zum Abfragen des Ledgers und einen anderen Peer zur Verarbeitung von Bewilligungen für Ledgeraktualisierungen verwenden.
 
@@ -124,7 +124,7 @@ In **Abbildung 5** ist die erste Anzeige "Mitglieder" dargestellt, die Mitglieds
 
 Operatoren können die Zertifikate für die Mitglieder in derselben Institution auf der Registerkarte "Zertifikate" verwalten. Klicken Sie auf **Zertifikat hinzufügen**, um die Anzeige "Zertifikat hinzufügen" zu öffnen. Geben Sie Ihrem Zertifikat einen Namen, fügen Sie die clientseitigen Zertifikate im PEM-Format in das Feld "Schlüssel" ein und klicken Sie auf **Übergeben**. Sie müssen die Peers erneut starten, damit die clientseitigen Zertifikate wirksam werden.
 
-Weitere Informationen zur Generierung Ihres Zertifikatsschlüssels finden Sie unter [Anwendung eintragen](v10_application.html#enroll-app).
+Weitere Informationen zur Generierung Ihres Zertifikatsschlüssels finden Sie unter [Anwendung eintragen](/docs/services/blockchain/v10_application.html#enroll-app).
 
 
 ## Kanäle
@@ -137,11 +137,11 @@ In **Abbildung 6** ist die Anfangsanzeige des Dashboards mit einer Übersicht al
 ![Kanäle](images/channels.png "Kanäle")
 *Abbildung 6. Kanäle*
 
-Durch das Erstellen eines Kanals wird ein kanalspezifisches Ledger generiert. Weitere Informationen finden Sie unter [Kanal erstellen](howto/create_channel.html).
+Durch das Erstellen eines Kanals wird ein kanalspezifisches Ledger generiert. Weitere Informationen finden Sie unter [Kanal erstellen](/docs/services/blockchain/howto/create_channel.html).
 
-Sie können auch einen vorhandenen Kanal auswählen, um genauere Details zu Kanal, Mitgliedschaft und aktivem Chaincode anzuzeigen. Weitere Informationen finden Sie unter [Netz überwachen](howto/monitor_network.html).
+Sie können auch einen vorhandenen Kanal auswählen, um genauere Details zu Kanal, Mitgliedschaft und aktivem Chaincode anzuzeigen. Weitere Informationen finden Sie unter [Netz überwachen](/docs/services/blockchain/howto/monitor_network.html).
 
-Wenn Sie unter Verwendung der [Registerkarte "Zertifikate"](#certificates_tab) in der Anzeige "Mitglieder" ein neues Zertifikat in die Plattform hochgeladen haben, können Sie diese Anzeige verwenden, um das Zertifikat zu einem Kanal hinzuzufügen. Klicken Sie in der Dropdown-Liste unter der Überschrift **Aktionen** neben dem entsprechenden Kanal auf **Zertifikat synchronisieren**. Auf diese Weise können Sie den Kanal von einem fernen Client aus betreiben, was auch die Möglichkeit einschließt, einen Chaincode auf dem Kanal zu instanziieren. Weitere Informationen enthält der Abschnitt [Signierzertifikate in {{site.data.keyword.blockchainfull_notm}} Platform hochladen](certificates.html#upload-certs) im Lernprogramm [Zertifikate verwalten](certificates.html).
+Wenn Sie unter Verwendung der [Registerkarte "Zertifikate"](#certificates_tab) in der Anzeige "Mitglieder" ein neues Zertifikat in die Plattform hochgeladen haben, können Sie diese Anzeige verwenden, um das Zertifikat zu einem Kanal hinzuzufügen. Klicken Sie in der Dropdown-Liste unter der Überschrift **Aktionen** neben dem entsprechenden Kanal auf **Zertifikat synchronisieren**. Auf diese Weise können Sie den Kanal von einem fernen Client aus betreiben, was auch die Möglichkeit einschließt, einen Chaincode auf dem Kanal zu instanziieren. Weitere Informationen enthält der Abschnitt [Signierzertifikate in {{site.data.keyword.blockchainfull_notm}} Platform hochladen](/docs/services/blockchain/certificates.html#upload-certs) im Lernprogramm [Zertifikate verwalten](/docs/services/blockchain/certificates.html).
 
 
 ## Benachrichtigungen
@@ -174,7 +174,7 @@ In **Abbildung 8** ist die Anzeige "Zertifizierungsstelle" dargestellt:
 ![Zertifizierungsstelle](images/CA_screen.png "Zertifizierungsstelle")
 *Abbildung 8. Zertifizierungsstelle*
 
-Klicken Sie auf die Schaltfläche **Zertifikat generieren** neben Ihrer Administratoridentität, um ein neues öffentliches Zertifikat sowie einen privaten Schlüssel von Ihrer CA abzurufen. Das Feld **Zertifikat** enthält das öffentliche Zertifikat, das auch als signCert-Zertifikat oder Eintragungszertifikat bezeichnet wird. Es befindet sich direkt über dem Feld **Privater Schlüssel**. Sie können auf das Kopiersymbol klicken, das sich am Ende aller Felder befindet, um den Wert zu kopieren. Diese Anzeige bietet eine alternative Möglichkeit zum Generieren eines Paars aus öffentlichem und privatem Schlüssel für eine Clientanwendung, die mit dem Fabric-SDK arbeitet. Weitere Informationen bietet das Lernprogramm [Anwendungen entwickeln](v10_application.html#enroll-panel). **Beachten Sie hierbei**, dass diese Zertifikate unter {{site.data.keyword.blockchainfull_notm}} Platform nicht gespeichert werden. Sie müssen sie an einem sicheren Ort aufbewahren und speichern.
+Klicken Sie auf die Schaltfläche **Zertifikat generieren** neben Ihrer Administratoridentität, um ein neues öffentliches Zertifikat sowie einen privaten Schlüssel von Ihrer CA abzurufen. Das Feld **Zertifikat** enthält das öffentliche Zertifikat, das auch als signCert-Zertifikat oder Eintragungszertifikat bezeichnet wird. Es befindet sich direkt über dem Feld **Privater Schlüssel**. Sie können auf das Kopiersymbol klicken, das sich am Ende aller Felder befindet, um den Wert zu kopieren. Diese Anzeige bietet eine alternative Möglichkeit zum Generieren eines Paars aus öffentlichem und privatem Schlüssel für eine Clientanwendung, die mit dem Fabric-SDK arbeitet. Weitere Informationen bietet das Lernprogramm [Anwendungen entwickeln](/docs/services/blockchain/v10_application.html#enroll-panel). **Beachten Sie hierbei**, dass diese Zertifikate unter {{site.data.keyword.blockchainfull_notm}} Platform nicht gespeichert werden. Sie müssen sie an einem sicheren Ort aufbewahren und speichern.
 
 Klicken Sie auf die Schaltfläche **Benutzer hinzufügen**, um eine neue Identität bei Ihrer Organisation zu registrieren. Füllen Sie im Popup-Fenster **Benutzer hinzufügen** die folgenden Felder aus und klicken Sie anschließend auf **Abschicken**.
   - **Eintragungs-ID:** Dies ist der Name Ihrer neuen Identität. ``**Speichern Sie diesen Wert.** Sie benötigen ihn, wenn Sie einen fernen Peer konfigurieren oder eine neue Anwendung eintragen.
@@ -183,7 +183,7 @@ Klicken Sie auf die Schaltfläche **Benutzer hinzufügen**, um eine neue Identit
   - **Zugehörigkeit:** Dies ist die Zugehörigkeit innerhalb Ihrer Organisation, z. B. `org1`, zu der die Identität gehören wird.
   - **Maximale Anzahl der Eintragungen:** In diesem Feld können Sie die Anzahl der Wiederholungen für die Eintragung oder die Generierung von Zertifikaten mit dieser Identität einschränken. Erfolgt in dem Feld keine Angabe, dann wird standardmäßig der Wert für eine unbeschränkte Anzahl von Eintragungen verwendet.
 
-Weitere Informationen zu Ihrer Zertifizierungsstelle (CA) erhalten Sie, wenn Sie das Lernprogramm [Zertifikate in {{site.data.keyword.blockchainfull_notm}} Platform verwalten](certificates.html) aufrufen.
+Weitere Informationen zu Ihrer Zertifizierungsstelle (CA) erhalten Sie, wenn Sie das Lernprogramm [Zertifikate in {{site.data.keyword.blockchainfull_notm}} Platform verwalten](/docs/services/blockchain/certificates.html) aufrufen.
 
 
 ## APIs
@@ -196,7 +196,7 @@ In **Abbildung 9** ist die Anzeige "APIs" zu sehen:
 ![APIs](images/API_screen.png "APIs")
 *Abbildung 9. APIs*
 
-Klicken Sie auf den Link für die **Swagger-Benutzerschnittstelle (UI)**, um die Swagger-Benutzerschnittstelle zu öffnen. Beachten Sie, dass Sie die Swagger-Benutzerschnittstelle mit Ihren Netzberechtigungsnachweisen (die auf dieser Seite "APIs" zu finden sind) berechtigen müssen, bevor Sie die APIs ausführen können. Weitere Informationen finden Sie in [Swagger-APIs verwenden, um mit dem Netz zu interagieren](howto/swagger_apis.html).
+Klicken Sie auf den Link für die **Swagger-Benutzerschnittstelle (UI)**, um die Swagger-Benutzerschnittstelle zu öffnen. Beachten Sie, dass Sie die Swagger-Benutzerschnittstelle mit Ihren Netzberechtigungsnachweisen (die auf dieser Seite "APIs" zu finden sind) berechtigen müssen, bevor Sie die APIs ausführen können. Weitere Informationen finden Sie in [Swagger-APIs verwenden, um mit dem Netz zu interagieren](/docs/services/blockchain/howto/swagger_apis.html).
 
 ## Code entwickeln
 {: #write-code}
@@ -208,7 +208,7 @@ In **Abbildung 10** ist die Anzeige "Code entwickeln" dargestellt:
 ![Code entwickeln](images/write_code.png "Code entwickeln")
 *Abbildung 10. Code entwickeln*
 
-Weitere Informationen zur Entwicklung und Bereitstellung Ihres Codes mit dem Enterprise Plan finden Sie unter [Unternehmensnetze im Enterprise Plan entwickeln](develop_enterprise.html).
+Weitere Informationen zur Entwicklung und Bereitstellung Ihres Codes mit dem Enterprise Plan finden Sie unter [Unternehmensnetze im Enterprise Plan entwickeln](/docs/services/blockchain/develop_enterprise.html).
 
 ## Code installieren
 {: #chaincode}
@@ -220,13 +220,13 @@ In **Abbildung 11** ist die Anzeige "Code installieren" zu sehen:
 ![Code installieren](images/chaincode_install_overview.png "Code installieren")
 *Abbildung 11. Code installieren*
 
-Ein Chaincode wird zunächst im Dateisystem eines Peers installiert und anschließend auf einem Kanal instanziiert. Weitere Informationen finden Sie in [Chaincode installieren, instanziieren und aktualisieren](howto/install_instantiate_chaincode.html).
+Ein Chaincode wird zunächst im Dateisystem eines Peers installiert und anschließend auf einem Kanal instanziiert. Weitere Informationen finden Sie in [Chaincode installieren, instanziieren und aktualisieren](/docs/services/blockchain/howto/install_instantiate_chaincode.html).
 
 
 ## Beispiele ausprobieren
 {: #samples}
 
-eispielanwendungen helfen Ihnen, sich mit Blockchain-Netzen und der Anwendungsentwicklung vertraut zu machen. Rufen Sie die Links für **Auf GitHub anzeigen** auf und informieren Sie sich, wie die Beispiele genutzt und in {{site.data.keyword.blockchainfull_notm}} Platform bereitgestellt werden können. Weitere Informationen zur Entwicklung und Bereitstellung eigener Beispiele finden Sie unter [Beispielanwendungen bereitstellen](howto/prebuilt_samples.html).
+eispielanwendungen helfen Ihnen, sich mit Blockchain-Netzen und der Anwendungsentwicklung vertraut zu machen. Rufen Sie die Links für **Auf GitHub anzeigen** auf und informieren Sie sich, wie die Beispiele genutzt und in {{site.data.keyword.blockchainfull_notm}} Platform bereitgestellt werden können. Weitere Informationen zur Entwicklung und Bereitstellung eigener Beispiele finden Sie unter [Beispielanwendungen bereitstellen](/docs/services/blockchain/howto/prebuilt_samples.html).
 
 In **Abbildung 12** ist die Anzeige "Beispiele ausprobieren" dargestellt:
 
@@ -248,9 +248,9 @@ Die Anzeige "Hilfe anfordern" enthält eine Registerkarte "Support", auf der ein
 ### Blockchain-Ressourcen und Unterstützungsforen
 {: #support-forums}
 
-Mit den Ressourcen auf der Registerkarte "Support" können Sie Fehler beheben sowie Hilfe von {{site.data.keyword.IBM_notm}} und der Fabric-Community anfordern. Weitere Informationen zu den Links auf der Registerkarte "Support" finden Sie unter [Ressourcen und Unterstützungsforen](ibmblockchain_support.html#resources) im Abschnitt [Support anfordern](ibmblockchain_support.html).
+Mit den Ressourcen auf der Registerkarte "Support" können Sie Fehler beheben sowie Hilfe von {{site.data.keyword.IBM_notm}} und der Fabric-Community anfordern. Weitere Informationen zu den Links auf der Registerkarte "Support" finden Sie unter [Ressourcen und Unterstützungsforen](/docs/services/blockchain/ibmblockchain_support.html#resources) im Abschnitt [Support anfordern](/docs/services/blockchain/ibmblockchain_support.html).
 
-[IBM dWAnswers ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://developer.ibm.com/answers/smartspace/blockchain/) ist ein von IBM Experten betreutes Community-Forum für Benutzer von {{site.data.keyword.blockchainfull_notm}} Platform und Hyperledger Fabric. Sie können nach Antworten auf bereits gestellte Fragen suchen oder eine neue Frage stellen. Wenn Sie Ihr Problem nicht beheben können oder keine Antwort auf Ihre Frage finden, reichen Sie einen Supportfall im {{site.data.keyword.cloud_notm}} Service Portal ein. Weitere Informationen finden Sie unter [Supportfälle einreichen](ibmblockchain_support.html#support-cases).
+[IBM dWAnswers ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://developer.ibm.com/answers/smartspace/blockchain/) ist ein von IBM Experten betreutes Community-Forum für Benutzer von {{site.data.keyword.blockchainfull_notm}} Platform und Hyperledger Fabric. Sie können nach Antworten auf bereits gestellte Fragen suchen oder eine neue Frage stellen. Wenn Sie Ihr Problem nicht beheben können oder keine Antwort auf Ihre Frage finden, reichen Sie einen Supportfall im {{site.data.keyword.cloud_notm}} Service Portal ein. Weitere Informationen finden Sie unter [Supportfälle einreichen](/docs/services/blockchain/ibmblockchain_support.html#support-cases).
 
 
 ### Releaseinformationen zu Fabric
@@ -319,7 +319,7 @@ Before Enterprise Plan upgrades to Fabric v1.1, all network peers store data in 
 
 To use CouchDB, your data must be stored in a data format that can be modeled in chaincode, such as JSON. If the decision is made to migrate from LevelDB to CouchDB, the {{site.data.keyword.blockchainfull_notm}} Platform will migrate your data from key-value format to the CouchDB format automatically.
 
-If you switch to CouchDB, you need to update your chaincode to take advantage of indexes and rich queries. For more information about CouchDB and how to set up indexes, see [Best practices when using CouchDB](../v10_application.html#couchdb-indices) in the Developing applications tutorial. For more information about updating chaincode in {{site.data.keyword.blockchainfull_notm}} Platform, see [Updating a chaincode](howto/install_instantiate_chaincode.html#updating-a-chaincode).
+If you switch to CouchDB, you need to update your chaincode to take advantage of indexes and rich queries. For more information about CouchDB and how to set up indexes, see [Best practices when using CouchDB](/docs/services/blockchain/v10_application.html#couchdb-indices) in the Developing applications tutorial. For more information about updating chaincode in {{site.data.keyword.blockchainfull_notm}} Platform, see [Updating a chaincode](/docs/services/blockchain/howto/install_instantiate_chaincode.html#updating-a-chaincode).
 
 -->
 

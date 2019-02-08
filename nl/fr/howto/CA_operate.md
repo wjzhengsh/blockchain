@@ -221,7 +221,7 @@ Vous pouvez générer des certificats uniquement à l'aide d'identités qui ont 
   ```
   {:codeblock}
 
-  Le `<enroll_id>` et le `<enroll_password>` dans la commande sont le[nom d'utilisateur et le mot de passe admin d'autorité de certification](CA_deploy_icp.html#admin-secret) que vous avez transmis au secret Kubernetes lors du déploiement de l'autorité de certification. Insérez l'[URL d'autorité de certification](#ca-url) dans le `<ca_url_with_port>`. Retirez `http://` au début. Le `<ca_name>` est la valeur que vous avez fournie dans la zone `Nom de l'autorité de certification` lors du déploiement de l'autorité de certification.
+  Le `<enroll_id>` et le `<enroll_password>` dans la commande sont le[nom d'utilisateur et le mot de passe admin d'autorité de certification](/docs/services/blockchain/howto/CA_deploy_icp.html#admin-secret) que vous avez transmis au secret Kubernetes lors du déploiement de l'autorité de certification. Insérez l'[URL d'autorité de certification](#ca-url) dans le `<ca_url_with_port>`. Retirez `http://` au début. Le `<ca_name>` est la valeur que vous avez fournie dans la zone `Nom de l'autorité de certification` lors du déploiement de l'autorité de certification.
 
   Le `<ca_tls_cert_path>` est le chemin d'accès complet au [certificat TLS de votre autorité de certification](#ca-tls).
 
@@ -263,7 +263,7 @@ Avant de déployer un service de tri ou un homologue, vous devez créer un fichi
 les instructions suivantes vous fournissent un [modèle de fichier de configuration JSON](#config-file-template) que vous pouvez éditer et sauvegarder sur votre système de fichiers local, et elles vous guident tout au long de l'utilisation de votre autorité de certification pour compléter ce fichier.
 
 - Suivez les instructions ci-dessous si vous déployez un service de tri sur ICP ou si vous déployez un homologue pour la connexion à un consortium hébergé sur ICP.
-- Si vous voulez déployer un homologue pour la connexion à un Starter Plan ou un Enterprise Plan, suivez plutôt les instructions relatives au [Déploiement d'homologues dans IBM Cloud Private pour la connexion à un Starter Plan ou un Enterprise Plan](peer_deploy_ibp.html). Ces étapes vous guident tout au long de l'utilisation de votre autorité de certification sur {{site.data.keyword.blockchainfull_notm}} Platform pour déployer notre homologue sur ICP.
+- Si vous voulez déployer un homologue pour la connexion à un Starter Plan ou un Enterprise Plan, suivez plutôt les instructions relatives au [Déploiement d'homologues dans IBM Cloud Private pour la connexion à un Starter Plan ou un Enterprise Plan](/docs/services/blockchain/howto/peer_deploy_ibp.html). Ces étapes vous guident tout au long de l'utilisation de votre autorité de certification sur {{site.data.keyword.blockchainfull_notm}} Platform pour déployer notre homologue sur ICP.
 
 ### Fichier de configuration 
 {: #config-file-template}
@@ -553,7 +553,7 @@ export FABRIC_CA_CLIENT_HOME=$HOME/fabric-ca-client/tlsca-admin
 ```
 {:codeblock}
 
-Exécutez la commande ci-dessous pour vous inscrire en tant qu'admin auprès de l'autorité de certification TLS. La commande est la même que celle utilisée pour vous inscrire en tant que [admin de l'autorité de certification](#enroll-ca-admin), à la seule différence que vous utiliserez le nom d'instance TLS de l'autorité de certification que vous avez spécifié lors de la [configuration de votre autorité de certification.](CA_deploy_icp.html#icp-ca-configuration-parms) Assurez-vous d'utiliser le même `ca-admin-name` et `ca-admin-password` que dans le secret de votre autorité de certification.
+Exécutez la commande ci-dessous pour vous inscrire en tant qu'admin auprès de l'autorité de certification TLS. La commande est la même que celle utilisée pour vous inscrire en tant que [admin de l'autorité de certification](#enroll-ca-admin), à la seule différence que vous utiliserez le nom d'instance TLS de l'autorité de certification que vous avez spécifié lors de la [configuration de votre autorité de certification.](/docs/services/blockchain/howto/CA_deploy_icp.html#icp-ca-configuration-parms) Assurez-vous d'utiliser le même `ca-admin-name` et `ca-admin-password` que dans le secret de votre autorité de certification.
 
 ```
 fabric-ca-client enroll -u https://<enroll_id>:<enroll_password>@<ca_url_with_port> --caname <tls_ca_name> --tls.certfiles <ca_tls_cert_path>
@@ -597,7 +597,7 @@ Vous devez fournir un nom d'hôte CSR pour déployer un service de tri ou un hom
 
 #### Recherche de la valeur de l'adresse IP proxy du cluster
 
-Si vous voulez déployer un service de tri ou un homologue sur le même cluster ICP que celui sur lequel vous avez déployé un rôle[Administrateur de cluster ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Rôles et actions de l'administrateur de cluster") sur le cluster ICP où le service de tri ou l'homologue va être déployé. Ensuite, entrez la même IP proxy que celle utilisée lorsque vous avez [configuré votre autorité de certification](CA_deploy_icp.html#icp-ca-configuration-parms). Si vous voulez déployer le service de tri ou l'homologue sur un autre cluster, vous pouvez extraire la valeur de l'adresse IP proxy du cluster à partir de la console ICP. 
+Si vous voulez déployer un service de tri ou un homologue sur le même cluster ICP que celui sur lequel vous avez déployé un rôle[Administrateur de cluster ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Rôles et actions de l'administrateur de cluster") sur le cluster ICP où le service de tri ou l'homologue va être déployé. Ensuite, entrez la même IP proxy que celle utilisée lorsque vous avez [configuré votre autorité de certification](/docs/services/blockchain/howto/CA_deploy_icp.html#icp-ca-configuration-parms). Si vous voulez déployer le service de tri ou l'homologue sur un autre cluster, vous pouvez extraire la valeur de l'adresse IP proxy du cluster à partir de la console ICP. 
 
 1. Connectez-vous à la console ICP. Dans le panneau de navigation gauche, cliquez sur **Plateforme** puis sur **Noeuds** pour afficher les noeuds qui sont définis dans le cluster. 
 2. Cliquez sur le noeud avec le rôle `proxy`, puis copiez la valeur de l'`IP hôte` de la table. 
@@ -679,7 +679,7 @@ Une fois toutes les étapes ci-dessus effectuées, votre fichier de configuratio
 ```
 {:codeblock}
 
-Vous pouvez laisser les autres zones vides. Sauvegardez ce fichier et vous devrez l'utiliser lorsque du déploiement d'un [service de tri](orderer_deploy_icp.html) ou d'un [homologue](peer_deploy_icp.html).
+Vous pouvez laisser les autres zones vides. Sauvegardez ce fichier et vous devrez l'utiliser lorsque du déploiement d'un [service de tri](/docs/services/blockchain/howto/orderer_deploy_icp.html) ou d'un [homologue](/docs/services/blockchain/howto/peer_deploy_icp.html).
 
 ## Fournisseur de services aux membres (MSP)
 {: #msp}
@@ -695,7 +695,7 @@ Les dossiers MSP doivent avoir une structure définie pour pouvoir être utilis�
 
 Vous pouvez aussi créer un dossier MSP qui peut être référencé par fabric-ca-client à l'aide du Moniteur réseau et des API Swagger.
 
-- **cacerts** et **intermediatecerts** : Vous pouvez extraire ces certificats avec les [API Swagger](swagger_apis.html) en émettant une demande `Get` à l'API MSP.
+- **cacerts** et **intermediatecerts** : Vous pouvez extraire ces certificats avec les [API Swagger](/docs/services/blockchain/howto/swagger_apis.html) en émettant une demande `Get` à l'API MSP.
 - **signCerts** et **keystore** : Vous pouvez générer ces certificats en cliquant sur le bouton **Générer des certificats** dans le panneau "Autorité de certification". Une fenêtre en incrustation s'ouvre avec deux certificats répertoriés. Copiez et stockez le **certificat** dans signCerts et la **clé privée** dans le fichier de clés. Conservez ces certificats en lieu sûr car ils ne sont pas stockés sur la plate-forme.
 
 De nombreux composants Fabric contiennent des informations supplémentaires dans leur dossier MSP. Par exemple, si vous exploitez un homologue distant, vous pouvez voir les dossiers suivants :

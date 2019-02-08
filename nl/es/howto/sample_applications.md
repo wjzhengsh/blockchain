@@ -18,9 +18,9 @@ Puede desplegar y probar aplicaciones de ejemplo para conocer mejor el despliegu
 
 ## Antes de empezar
 
-Asegúrese de instalar todos los requisitos previos de software en el sistema de archivos local.  Para más información, consulte [Configuración del entorno de desarrollo de aplicaciones](../v10_application.html#setting-up-application-development-environment).
+Asegúrese de instalar todos los requisitos previos de software en el sistema de archivos local.  Para más información, consulte [Configuración del entorno de desarrollo de aplicaciones](/docs/services/blockchain/v10_application.html#setting-up-application-development-environment).
 
-También debe tener configurada una red de {{site.data.keyword.blockchain}} on {{site.data.keyword.Bluemix_short}} con un canal y sus iguales.  Para obtener más información, consulte [Gobierno de red](../get_start.html).  Cuando la red esté lista para utilizarse, recupere los puntos finales de API de los recursos de red a los que accederá la aplicación.  Para obtener más información, consulte [Adición de credenciales de servicio de red a la aplicación](../v10_application.html#adding-network-service-credentials-to-your-application).
+También debe tener configurada una red de {{site.data.keyword.blockchain}} on {{site.data.keyword.Bluemix_short}} con un canal y sus iguales.  Para obtener más información, consulte [Gobierno de red](/docs/services/blockchain/get_start.html).  Cuando la red esté lista para utilizarse, recupere los puntos finales de API de los recursos de red a los que accederá la aplicación.  Para obtener más información, consulte [Adición de credenciales de servicio de red a la aplicación](/docs/services/blockchain/v10_application.html#adding-network-service-credentials-to-your-application).
 
 
 ## Aplicación Marbles

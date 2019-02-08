@@ -29,7 +29,7 @@ Hyperledger Composer besteht aus einer Laufzeit, einer Befehlszeilenschnittstell
 
 Mit Hyperledger Composer können Sie schnell Ihr aktuelles Unternehmensnetz modellieren, das Ihre vorhandenen Assets und die zugehörigen Transaktionen enthält. Als Assets werden hier materielle oder immaterielle Güter, Services oder Liegenschaften bezeichnet. In Ihrem Unternehmensnetzmodell definieren Sie die Transaktionen, die mit Assets interagieren. Unternehmensnetze können darüber hinaus die Teilnehmer einschließen, die mit ihnen interagieren und die über mehrere Unternehmensnetze hinweg jeweils einer eindeutigen Identität zugeordnet werden können.
 
-Weitere Informationen zur Erstellung von Unternehmensnetzen finden Sie unter [Unternehmensnetze entwickeln](../develop.html) oder in der [Hyperledger Composer-Dokumentation ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://hyperledger.github.io/composer/latest/introduction/introduction.html).
+Weitere Informationen zur Erstellung von Unternehmensnetzen finden Sie unter [Unternehmensnetze entwickeln](/docs/services/blockchain/develop.html) oder in der [Hyperledger Composer-Dokumentation ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://hyperledger.github.io/composer/latest/introduction/introduction.html).
 
 ## Abfragen
 

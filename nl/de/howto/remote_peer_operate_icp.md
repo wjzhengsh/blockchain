@@ -36,9 +36,9 @@ Zum Betreiben Ihres fernen Peers können Sie eine der folgenden Methoden verwend
 
 Die Fabric-SDKs stellen den empfohlenen Pfad dar, wobei in den Anweisungen davon ausgegangen wird, dass Sie bereits mit dem Betrieb des SDK vertraut sind.
 
-Es wird empfohlen, dass Sie mindestens zwei Instanzen des Helm-Diagramms für den fernen Peer bereitstellen, um [Hochverfügbarkeit](remote_peer_icp.html#high-availability) zu erreichen. Aus diesem Grund müssen Sie diese operativen Schritte einmal pro Peer ausführen. Wenn Sie bereit sind zum Aufrufen und Abfragen des Chaincodes über Ihre Anwendung, dann stellen Sie für beide Peers eine Verbindung her, um sicherzustellen, dass Ihre [Anwendungen hoch verfügbar](../v10_application.html#ha-app) sind.
+Es wird empfohlen, dass Sie mindestens zwei Instanzen des Helm-Diagramms für den fernen Peer bereitstellen, um [Hochverfügbarkeit](/docs/services/blockchain/howto/remote_peer_icp.html#high-availability) zu erreichen. Aus diesem Grund müssen Sie diese operativen Schritte einmal pro Peer ausführen. Wenn Sie bereit sind zum Aufrufen und Abfragen des Chaincodes über Ihre Anwendung, dann stellen Sie für beide Peers eine Verbindung her, um sicherzustellen, dass Ihre [Anwendungen hoch verfügbar](/docs/services/blockchain/v10_application.html#ha-app) sind.
 
-**Hinweis**: Ein ferner Peer unter {{site.data.keyword.blockchainfull_notm}} verfügt nicht über Zugriff auf die vollständige Funktionalität oder Unterstützung von Peers, die unter {{site.data.keyword.blockchainfull_notm}} Platform gehostet werden. Demzufolge können Sie den Network Monitor nicht zum Betreiben eines fernen Peers verwenden. Bevor Sie mit der Ausführung ferner Peers beginnen, müssen Sie sich mit den [wichtigen Hinweisen](remote_peer.html#remote-peer-limitations) vertraut machen.
+**Hinweis**: Ein ferner Peer unter {{site.data.keyword.blockchainfull_notm}} verfügt nicht über Zugriff auf die vollständige Funktionalität oder Unterstützung von Peers, die unter {{site.data.keyword.blockchainfull_notm}} Platform gehostet werden. Demzufolge können Sie den Network Monitor nicht zum Betreiben eines fernen Peers verwenden. Bevor Sie mit der Ausführung ferner Peers beginnen, müssen Sie sich mit den [wichtigen Hinweisen](/docs/services/blockchain/howto/remote_peer.html#remote-peer-limitations) vertraut machen.
 
 ## Voraussetzungen
 
@@ -137,7 +137,7 @@ Mit den **kubectl**-Befehlen können Sie den fernen Peer, der unter ICP ausgefü
 
 3. Sie können überprüfen, ob der ferne Peer neu gestartet wurde, indem Sie den Befehl `kubectl get pods` ausführen und die Ausgabe auf den Zähler für **RESTART** Ihres Pods überprüfen.
 
-Darüber hinaus können Sie die [HEAD-Anforderung](monitor_network.html#monitor-nodes) verwenden, um die Verfügbarkeit Ihres fernen Peers zu überprüfen.
+Darüber hinaus können Sie die [HEAD-Anforderung](/docs/services/blockchain/howto/monitor_network.html#monitor-nodes) verwenden, um die Verfügbarkeit Ihres fernen Peers zu überprüfen.
 
 
 ## Fabric-SDKs zum Betrieb des fernen Peers verwenden
@@ -145,7 +145,7 @@ Darüber hinaus können Sie die [HEAD-Anforderung](monitor_network.html#monitor-
 
 Die Hyperledger Fabric-SDKs stellen eine leistungsstarke Gruppe von APIs zur Verfügung, die Anwendungen die Interaktion mit und den Betrieb von Blockchain-Netzen ermöglichen. Die aktuellste Version der Liste der unterstützten Sprachen und die vollständige Liste der verfügbaren APIs in den Fabric-SDKs finden Sie in der [Hyperledger Fabric SDK Community-Dokumentation ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/getting_started.html#hyperledger-fabric-sdks "Hyperledger Fabric SDK Community-Dokumentation"). Sie können die Fabric-SDKs verwenden, um Ihren fernen Peer zu einem Kanal unter {{site.data.keyword.blockchainfull_notm}} Platform hinzuzufügen, einen Chaincode auf dem Peer zu installieren und den Chaincode auf einem Kanal zu instanziieren.
 
-Die folgenden Anweisungen verwenden das [Fabric Node-SDK ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://fabric-sdk-node.github.io/ "Fabric Node-SDK"), um den fernen Peer zu betreiben. Dabei wird davon ausgegangen, dass Sie bereits über Kenntnisse zu dem SDK verfügen. Sie können das [Lernprogramm 'Anwendungen entwickeln'](../v10_application.html) benutzen, um sich mit der Vorgehensweise zur Verwendung des Node-SDK vertraut zu machen. Außerdem dient es als Leitfaden für die Entwicklung von Anwendungen mit dem fernen Peer, wenn Sie bereit sind zum Aufrufen und Abfragen des Chaincodes.
+Die folgenden Anweisungen verwenden das [Fabric Node-SDK ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://fabric-sdk-node.github.io/ "Fabric Node-SDK"), um den fernen Peer zu betreiben. Dabei wird davon ausgegangen, dass Sie bereits über Kenntnisse zu dem SDK verfügen. Sie können das [Lernprogramm 'Anwendungen entwickeln'](/docs/services/blockchain/v10_application.html) benutzen, um sich mit der Vorgehensweise zur Verwendung des Node-SDK vertraut zu machen. Außerdem dient es als Leitfaden für die Entwicklung von Anwendungen mit dem fernen Peer, wenn Sie bereit sind zum Aufrufen und Abfragen des Chaincodes.
 
 ### Node-SDK installieren
 
@@ -160,7 +160,7 @@ Hierbei wird die Verwendung von Version 1.1 des Node-SDK empfohlen.
 ### SDK zur Nutzung mit dem fernen Peer vorbereiten
 {: #remote-peer-node-sdk}
 
-Bevor Sie das SDK zum Betreiben des fernen Peers benutzen können, müssen Sie die erforderlichen Zertifikate (Eintragung) generieren, auf deren Basis Ihre Anwendung mit dem Netz unter {{site.data.keyword.blockchainfull_notm}} Platform und dem fernen Peer kommunizieren kann. Führen Sie die Schritte für die [Eintragung beim SDK](../v10_application.html#enroll-app-sdk) aus und verwenden Sie dabei Ihre Identität **admin**. Das Lernprogramm [Anwendungen entwickeln](../v10_application.html) wird ebenfalls unter **admin** eingetragen, sodass der Beispielcode nicht geändert werden muss.
+Bevor Sie das SDK zum Betreiben des fernen Peers benutzen können, müssen Sie die erforderlichen Zertifikate (Eintragung) generieren, auf deren Basis Ihre Anwendung mit dem Netz unter {{site.data.keyword.blockchainfull_notm}} Platform und dem fernen Peer kommunizieren kann. Führen Sie die Schritte für die [Eintragung beim SDK](/docs/services/blockchain/v10_application.html#enroll-app-sdk) aus und verwenden Sie dabei Ihre Identität **admin**. Das Lernprogramm [Anwendungen entwickeln](/docs/services/blockchain/v10_application.html) wird ebenfalls unter **admin** eingetragen, sodass der Beispielcode nicht geändert werden muss.
 
 ### signCert-Zertifikat auf {{site.data.keyword.blockchainfull_notm}} Platform hochladen
 {: #remote-peer-upload-sdk}
@@ -218,23 +218,23 @@ Sie müssen für `ssl-target-name-override` den Wert `<something>.blockchain.com
 
 Als Mitglied des Blockchain-Netzes muss Ihre Organisation zu einem Kanal im Netz hinzugefügt werden, bevor der ferne Peer dem Kanal beitreten kann.
 
-  - Sie können einen neuen Kanal für den fernen Peer starten. Als Kanalinitiator können Sie Ihre Organisation während der [Kanalerstellung](create_channel.html#creating-a-channel) automatisch einbinden. Beachten Sie hierbei, dass Sie über mindestens einen Peer unter {{site.data.keyword.blockchainfull_notm}} Platform verfügen müssen, um einen Kanal im Network Monitor zu erstellen.  
+  - Sie können einen neuen Kanal für den fernen Peer starten. Als Kanalinitiator können Sie Ihre Organisation während der [Kanalerstellung](/docs/services/blockchain/howto/create_channel.html#creating-a-channel) automatisch einbinden. Beachten Sie hierbei, dass Sie über mindestens einen Peer unter {{site.data.keyword.blockchainfull_notm}} Platform verfügen müssen, um einen Kanal im Network Monitor zu erstellen.  
 
-  - Ein anderes Mitglied des Blockchain-Netzes kann Ihre Organisation ebenfalls zu einem vorhandenen Kanal hinzufügen, indem es eine [Kanalaktualisierung](create_channel.html#updating-a-channel) durchführt. Ein Mitglied des Kanals mit Peers unter {{site.data.keyword.blockchainfull_notm}} Platform kann den Network Monitor verwenden, um Ihre Organisation zum Kanal hinzuzufügen, auch wenn Sie auf der Plattform keine Peers hosten.
+  - Ein anderes Mitglied des Blockchain-Netzes kann Ihre Organisation ebenfalls zu einem vorhandenen Kanal hinzufügen, indem es eine [Kanalaktualisierung](/docs/services/blockchain/howto/create_channel.html#updating-a-channel) durchführt. Ein Mitglied des Kanals mit Peers unter {{site.data.keyword.blockchainfull_notm}} Platform kann den Network Monitor verwenden, um Ihre Organisation zum Kanal hinzuzufügen, auch wenn Sie auf der Plattform keine Peers hosten.
 
     Nachdem Ihre Organisation zu einem Kanal hinzugefügt wurde, müssen Sie das Signierzertifikat Ihres Peers zu dem Kanal hinzufügen, damit andere Mitglieder Ihre digitale Signatur während der Ausführung von Transaktionen überprüfen können. Der ferne Peer lädt sein Signierzertifikat während der Installation hoch, sodass Sie das Zertifikat lediglich mit dem Kanal synchronisieren müssen. Suchen Sie in der Anzeige "Kanäle" des Network Monitor nach dem Kanal, dem Ihre Organisation beitreten soll, und wählen Sie in der Dropdown-Liste unter der Überschrift **Aktion** die Option **Zertifikat synchronisieren** aus. Durch diese Aktion werden die Zertifikate für alle Peers auf dem Kanal synchronisiert.
 
-Wenn Ihre Organisation Teil des Kanals ist, dann führen Sie die Anweisungen aus, die im Abschnitt zum [Beitreten zu einem Kanal](../v10_application.html#join-channel-sdk) aufgeführt sind. Sie müssen die URL des Anordnungsservice und den Kanalnamen angeben.
+Wenn Ihre Organisation Teil des Kanals ist, dann führen Sie die Anweisungen aus, die im Abschnitt zum [Beitreten zu einem Kanal](/docs/services/blockchain/v10_application.html#join-channel-sdk) aufgeführt sind. Sie müssen die URL des Anordnungsservice und den Kanalnamen angeben.
 
 ### SDK zum Installieren des Chaincodes auf dem Peer verwenden
 {: #remote-peer-install-cc-sdk}
 
-Führen Sie die folgenden Anweisungen aus, um das SDK zum [Installieren eines Chaincodes](../v10_application.html#install-cc-sdk) auf Ihrem fernen Peer zu verwenden.
+Führen Sie die folgenden Anweisungen aus, um das SDK zum [Installieren eines Chaincodes](/docs/services/blockchain/v10_application.html#install-cc-sdk) auf Ihrem fernen Peer zu verwenden.
 
 ### SDK zur Instanziierung des Chaincodes auf dem Kanal verwenden
 {: #remote-peer-instantiate-cc-sdk}
 
-Nur ein Mitglied des Kanals muss den Chaincode instanziieren oder aktualisieren. Aus diesem Grund kann jedes Netzmitglied auf dem Kanal, das über Peers unter {{site.data.keyword.blockchainfull_notm}} Platform verfügt, den Network Monitor zum Instanziieren des Chaincodes und zur Angabe der Bewilligungsrichtlinien verwenden. Wenn Sie den fernen Peer allerdings zum Instanziieren des Chaincodes auf einem Kanal verwenden wollen, dann können Sie das SDK benutzen und die Anweisungen im Abschnitt zum [Instanziieren eines Chaincodes](../v10_application.html#instantiate-cc-sdk) befolgen.
+Nur ein Mitglied des Kanals muss den Chaincode instanziieren oder aktualisieren. Aus diesem Grund kann jedes Netzmitglied auf dem Kanal, das über Peers unter {{site.data.keyword.blockchainfull_notm}} Platform verfügt, den Network Monitor zum Instanziieren des Chaincodes und zur Angabe der Bewilligungsrichtlinien verwenden. Wenn Sie den fernen Peer allerdings zum Instanziieren des Chaincodes auf einem Kanal verwenden wollen, dann können Sie das SDK benutzen und die Anweisungen im Abschnitt zum [Instanziieren eines Chaincodes](/docs/services/blockchain/v10_application.html#instantiate-cc-sdk) befolgen.
 
 
 ## Befehlszeilenschnittstelle zum Betrieb des fernen Peers verwenden
@@ -311,7 +311,7 @@ Der erste Schritt umfasst das Generieren der erforderlichen Zertifikate (Eintrag
 ### Zertifikate auf dem lokalen System verwalten
 {: #manage-certs}
 
-Bevor Sie einen fernen Peer betreiben können, müssen verschiedene Managementschritte für die Zertifikate auf dem lokalen System ausgeführt werden. Einige der Zertifikate, die vom Fabric-CA-Client generiert wurden, müssen auf {{site.data.keyword.blockchainfull_notm}} Platform und den Peer hochgeladen werden. Außerdem müssen die TLS-Zertifikate von Platform und dem Peer heruntergeladen werden. Wenn Sie weitere Informationen zu den Zertifikaten, mit denen Sie arbeiten werden, und zu den Tasks benötigen, die auszuführen sind, dann lesen Sie den Abschnitt zum [Verwalten von Zertifikaten unter {{site.data.keyword.blockchainfull_notm}} Platform](../certificates.html).
+Bevor Sie einen fernen Peer betreiben können, müssen verschiedene Managementschritte für die Zertifikate auf dem lokalen System ausgeführt werden. Einige der Zertifikate, die vom Fabric-CA-Client generiert wurden, müssen auf {{site.data.keyword.blockchainfull_notm}} Platform und den Peer hochgeladen werden. Außerdem müssen die TLS-Zertifikate von Platform und dem Peer heruntergeladen werden. Wenn Sie weitere Informationen zu den Zertifikaten, mit denen Sie arbeiten werden, und zu den Tasks benötigen, die auszuführen sind, dann lesen Sie den Abschnitt zum [Verwalten von Zertifikaten unter {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/certificates.html).
 
 Öffnen Sie auf dem lokalen System ein Command Terminal und navigieren Sie zu dem Verzeichnis, in dem die Binärkomponenten des Fabric-CA-Clients und der MSP-Ordner abgelegt wurden.
 1. Kopieren Sie die Datei `cert.pem` aus dem Ordner `signcerts` in einen neuen Ordner `admincerts`.  
@@ -408,9 +408,9 @@ Nachdem alle Zertifikate an die erforderliche Position verschoben wurden, sind S
 
 Bevor Sie die CLI-Befehle für den Beitritt des fernen Peers zu einem Kanal ausführen können, muss Ihre Organisation zu einem Kanal im Netz hinzugefügt werden.
 
-  - Sie können einen neuen Kanal für den fernen Peer starten. Als Kanalinitiator können Sie Ihre Organisation während der [Kanalerstellung](create_channel.html#creating-a-channel) automatisch einbinden. Beachten Sie hierbei, dass Sie über mindestens einen Peer unter {{site.data.keyword.blockchainfull_notm}} Platform verfügen müssen, um einen Kanal im Network Monitor zu erstellen.  
+  - Sie können einen neuen Kanal für den fernen Peer starten. Als Kanalinitiator können Sie Ihre Organisation während der [Kanalerstellung](/docs/services/blockchain/howto/create_channel.html#creating-a-channel) automatisch einbinden. Beachten Sie hierbei, dass Sie über mindestens einen Peer unter {{site.data.keyword.blockchainfull_notm}} Platform verfügen müssen, um einen Kanal im Network Monitor zu erstellen.  
 
-  - Ein anderes Mitglied des Blockchain-Netzes kann Ihre Organisation ebenfalls zu einem vorhandenen Kanal hinzufügen, indem es eine [Kanalaktualisierung](create_channel.html#updating-a-channel) durchführt. Ein Mitglied des Kanals mit Peers unter {{site.data.keyword.blockchainfull_notm}} Platform kann den Network Monitor verwenden, um Ihre Organisation zum Kanal hinzuzufügen, auch wenn Sie auf der Plattform keine Peers hosten.
+  - Ein anderes Mitglied des Blockchain-Netzes kann Ihre Organisation ebenfalls zu einem vorhandenen Kanal hinzufügen, indem es eine [Kanalaktualisierung](/docs/services/blockchain/howto/create_channel.html#updating-a-channel) durchführt. Ein Mitglied des Kanals mit Peers unter {{site.data.keyword.blockchainfull_notm}} Platform kann den Network Monitor verwenden, um Ihre Organisation zum Kanal hinzuzufügen, auch wenn Sie auf der Plattform keine Peers hosten.
 
     Nachdem Ihre Organisation zu einem Kanal hinzugefügt wurde, müssen Sie das Signierzertifikat Ihres Peers zu dem Kanal hinzufügen, damit andere Mitglieder Ihre digitale Signatur während der Ausführung von Transaktionen überprüfen können. Der ferne Peer lädt sein Signierzertifikat während der Installation hoch, sodass Sie das Zertifikat lediglich mit dem Kanal synchronisieren müssen. Suchen Sie in der Anzeige "Kanäle" des Network Monitor nach dem Kanal, dem Ihre Organisation beitreten soll, und wählen Sie in der Dropdown-Liste unter der Überschrift **Aktion** die Option **Zertifikat synchronisieren** aus. Durch diese Aktion werden die Zertifikate für alle Peers auf dem Kanal synchronisiert.
 
@@ -574,7 +574,7 @@ Führen Sie die folgenden Schritte aus, um den Chaincode zu aktualisieren:
 2. Nach der Installation des neuen Chaincodes auf allen Peers des Kanals können Sie mit dem Network Monitor oder dem Befehl für ein
 [Upgrade des Chaincodes des Peers ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/peerchaincode.html#peer-chaincode-upgrade) den Kanal aktualisieren, sodass der neue Chaincode verwendet wird.
 
-Weitere Informationen zur Verwendung der Anzeige "Code installieren" des Network Monitor zur Aktualisierung des Chaincodes auf dem Kanal finden Sie in Schritt 2 dieser [Anweisungen](install_instantiate_chaincode.html#updating-a-chaincode).
+Weitere Informationen zur Verwendung der Anzeige "Code installieren" des Network Monitor zur Aktualisierung des Chaincodes auf dem Kanal finden Sie in Schritt 2 dieser [Anweisungen](/docs/services/blockchain/howto/install_instantiate_chaincode.html#updating-a-chaincode).
 
 ## Fehlerbehebung
 {: #icp-troubleshooting}

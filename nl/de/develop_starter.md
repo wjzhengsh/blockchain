@@ -27,14 +27,14 @@ In der Entwicklerumgebung können Sie {{site.data.keyword.blockchain}}-Unternehm
 
 ## Vorbemerkungen
 
-Stellen Sie sicher, dass Sie die [Informationen zum Starter Plan](./starter_plan.html) und die [Einführung in Starter Plan](./get_start_starter_plan.html) lesen. Stellen Sie außerdem sicher, dass Sie die [{{site.data.keyword.blockchainfull_notm}} Platform-Entwicklerumgebung](./develop_install.html) installiert und eine {{site.data.keyword.blockchainfull_notm}} Platform Starter Plan-Instanz nach den Anweisungen in [Starter Plan-Netz steuern](./get_start_starter_plan.html) erstellt haben.
+Stellen Sie sicher, dass Sie die [Informationen zum Starter Plan](/docs/services/blockchain/starter_plan.html) und die [Einführung in Starter Plan](/docs/services/blockchain/get_start_starter_plan.html) lesen. Stellen Sie außerdem sicher, dass Sie die [{{site.data.keyword.blockchainfull_notm}} Platform-Entwicklerumgebung](/docs/services/blockchain/develop_install.html) installiert und eine {{site.data.keyword.blockchainfull_notm}} Platform Starter Plan-Instanz nach den Anweisungen in [Starter Plan-Netz steuern](/docs/services/blockchain/get_start_starter_plan.html) erstellt haben.
 
 Node v8.9 oder höher, npm v5.x und Hyperledger Composer müssen vorhanden sein.
 
 - Wenn Ihr Netz den Stand von Fabric Version 1.2 aufweist, verwenden Sie Hyperledger Composer v0.20.x.
 - Wenn Ihr Netz den Stand von Fabric Version 1.2 aufweist, verwenden Sie Hyperledger Composer v0.19.x.  
 
-Ihre Fabric-Version können Sie ermitteln, indem Sie das [Fenster "Netzvorgaben"](../v10_dashboard.html#network-preferences) im Network Monitor öffnen.
+Ihre Fabric-Version können Sie ermitteln, indem Sie das [Fenster "Netzvorgaben"](/docs/services/blockchain/v10_dashboard.html#network-preferences) im Network Monitor öffnen.
 
 
 ## Schritt 1: Geheimen Administratorschlüssel abrufen

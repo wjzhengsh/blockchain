@@ -20,17 +20,17 @@ lastupdated: "2018-08-31"
 ***[Questa pagina è utile? Faccelo sapere.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 
-{{site.data.keyword.blockchainfull}} Platform piano Enterprise fornisce una rete blockchain con sicurezza, integrità, scalabilità e prestazioni elevate. Puoi eseguire rapidamente il provisioning di una rete pienamente funzionante e utilizzare il Monitoraggio della rete, che è un dashboard GUI, per eseguire immediatamente [chaincode](glossary.html#chaincode) e applicazioni senza dover progettare e configurare una rete da zero.
+{{site.data.keyword.blockchainfull}} Platform piano Enterprise fornisce una rete blockchain con sicurezza, integrità, scalabilità e prestazioni elevate. Puoi eseguire rapidamente il provisioning di una rete pienamente funzionante e utilizzare il Monitoraggio della rete, che è un dashboard GUI, per eseguire immediatamente [chaincode](/docs/services/blockchain/glossary.html#chaincode) e applicazioni senza dover progettare e configurare una rete da zero.
 {:shortdesc}
 
-**Nota**: {{site.data.keyword.blockchainfull_notm}} Platform piano Enterprise fornisce un ambiente di produzione. Se hai bisogno di un ambiente di sviluppo e test, vedi [Informazioni su piano Starter](starter_plan.html).
+**Nota**: {{site.data.keyword.blockchainfull_notm}} Platform piano Enterprise fornisce un ambiente di produzione. Se hai bisogno di un ambiente di sviluppo e test, vedi [Informazioni su piano Starter](/docs/services/blockchain/starter_plan.html).
 
 Questa esercitazione introduce i prerequisiti e i passi a cui dovrai attenerti per ottenere una rete piano Enterprise ospitata in un ambiente altamente disponibile e sicuro di IBM.  
 
-La seguente procedura indica il flusso di base per avviare una rete piano Enterprise con più [membri](glossary.html#member) di rete:
-1. Un **iniziatore di rete**, in quanto tipo speciale di membro di rete, crea la rete e definisce le politiche di governance. L'iniziatore di rete può quindi invitare altre [organizzazioni](glossary.html#organization) ad aderire a questa rete come membri della rete.  Per ulteriori informazioni, vedi [Creazione di una rete](#creating-a-network).
+La seguente procedura indica il flusso di base per avviare una rete piano Enterprise con più [membri](/docs/services/blockchain/glossary.html#member) di rete:
+1. Un **iniziatore di rete**, in quanto tipo speciale di membro di rete, crea la rete e definisce le politiche di governance. L'iniziatore di rete può quindi invitare altre [organizzazioni](/docs/services/blockchain/glossary.html#organization) ad aderire a questa rete come membri della rete.  Per ulteriori informazioni, vedi [Creazione di una rete](#creating-a-network).
 2. I **membri della rete** invitati ricevono una notifica email che fornisce le istruzioni per consentire loro di aderire a una rete {{site.data.keyword.blockchain}}. Oltre alle istruzioni nella notifica email, puoi anche attenerti alla procedura indicata in [Adesione a una rete](#joining-a-network).
-3. Tutti i **membri della rete**, dopo aver creato, o aver aderito a, una rete, possono accedere al Monitoraggio della rete per configurare e gestire le loro risorse di rete. Puoi configurare i [canali](glossary.html#channel) con un gruppo di membri della rete per eseguire transazioni private su un libro mastro specifico per il canale, a cui possono accedere solo i membri del canale. Nel Monitoraggio della rete, puoi anche indicare l'adesione dei tuoi peer al canale e quindi installare e istanziare il chaincode su di essi. Per ulteriori informazioni, vedi [Configurazione delle risorse di rete e dell'ambiente](#configuring-network-resources-and-environment).
+3. Tutti i **membri della rete**, dopo aver creato, o aver aderito a, una rete, possono accedere al Monitoraggio della rete per configurare e gestire le loro risorse di rete. Puoi configurare i [canali](/docs/services/blockchain/glossary.html#channel) con un gruppo di membri della rete per eseguire transazioni private su un libro mastro specifico per il canale, a cui possono accedere solo i membri del canale. Nel Monitoraggio della rete, puoi anche indicare l'adesione dei tuoi peer al canale e quindi installare e istanziare il chaincode su di essi. Per ulteriori informazioni, vedi [Configurazione delle risorse di rete e dell'ambiente](#configuring-network-resources-and-environment).
 4. Gli **sviluppatori di applicazioni**, dopo lo sviluppo delle applicazioni, abilitano l'interazione tra le loro applicazioni e la rete. Per ulteriori informazioni, vedi [Abilitazione delle applicazioni a interagire con la rete](#enabling-applications-to-interact-with-the-network).
 5. Gli **operatori di rete** monitorano le transazioni sui loro canali nel Monitoraggio della rete. Per ulteriori informazioni, vedi [Monitoraggio delle risorse di rete](#monitoring-network-resources).
 
@@ -48,7 +48,7 @@ Se sei un iniziatore di rete, fai clic sul pulsante **Crea rete** per iniziare u
 	I membri che inviti riceveranno una notifica email relativa al loro invito dopo che hai completato tutti i passi per creare la rete.
 3. Nella schermata "Definisci regole di governance", stabilisci le politiche per l'adesione, la creazione del canale e il chaincode. Per impostazione predefinita, tutti i membri della rete possono invitare altri membri ad aderire alla rete, creare canali e istanziare chaincode. Attualmente, la tua rete utilizza le politiche di governance predefinite.  Fai clic su **Avanti**.
 4. Nella schermata "Rivedi riepilogo", verifica la tua configurazione di rete. Se vuoi apportare modifiche, fai clic su **Modifica** accanto all'intestazione della sezione oppure fai clic sul pulsante **Precedente** per tornare alle schermate precedenti. Una volta che hai completato la configurazione della rete, fai clic su **Fatto**.  
-5. Nella schermata "Rete creata", verrai informato che la tua rete è stata creata correttamente. Puoi fare clic su **Aggiungi [Peer](glossary.html#peer)** per configurare le tue risorse di rete oppure puoi fare clic su **Entra nel monitoraggio** direttamente per aprire il Monitoraggio della rete. Puoi anche aggiungere i peer in un secondo momento nel Monitoraggio della rete.  Per ulteriori informazioni sui peer, vedi [Aggiungi peer](v10_dashboard.html#peers).
+5. Nella schermata "Rete creata", verrai informato che la tua rete è stata creata correttamente. Puoi fare clic su **Aggiungi [Peer](/docs/services/blockchain/glossary.html#peer)** per configurare le tue risorse di rete oppure puoi fare clic su **Entra nel monitoraggio** direttamente per aprire il Monitoraggio della rete. Puoi anche aggiungere i peer in un secondo momento nel Monitoraggio della rete.  Per ulteriori informazioni sui peer, vedi [Aggiungi peer](/docs/services/blockchain/v10_dashboard.html#peers).
 
 Ora hai correttamente distribuito una rete {{site.data.keyword.blockchain}} che può supportare le seguenti risorse di rete:  
 * Un'Autorità di certificazione (CA, Certificate Authority) specifica per il membro
@@ -71,20 +71,20 @@ Se sei un membro della rete invitato, fai clic sul pulsante **Invito in attesa -
 
 1. Nella schermata "Introduzione", immetti il nome della tua organizzazione e fai clic su **Avanti**.
 2. Nella schermata "Rivedi le regole di governance", visualizza le politiche di governance di adesione, creazione del canale e chaincode. Fai clic su **Avanti**.
-3. (Facoltativo) Nella schermata "Aggiungi peer", scegli la quantità di peer che vuoi aggiungere. Fai clic su **Avanti**. Ogni membro in una rete può aggiungere fino a tre peer. Questo passo è facoltativo e puoi aggiungere i tuoi peer in un secondo momento nel Monitoraggio della rete. Per ulteriori informazioni sui peer, vedi [Aggiungi peer](v10_dashboard.html#peers).
+3. (Facoltativo) Nella schermata "Aggiungi peer", scegli la quantità di peer che vuoi aggiungere. Fai clic su **Avanti**. Ogni membro in una rete può aggiungere fino a tre peer. Questo passo è facoltativo e puoi aggiungere i tuoi peer in un secondo momento nel Monitoraggio della rete. Per ulteriori informazioni sui peer, vedi [Aggiungi peer](/docs/services/blockchain/v10_dashboard.html#peers).
 4. Nella schermata "Rivedi riepilogo di rete", verifica la configurazione di rete. Se vuoi apportare modifiche, fare clic su **Precedente** per tornare alle schermate precedenti. Dopo che hai completato la configurazione delle risorse, fai clic su **Fatto**. Sarai informato che la tua adesione alla rete è riuscita. Puoi quindi fare clic su **Entra nel monitoraggio** per aprire il Monitoraggio della rete.
 
-<!-- or click **Create a Channel** to initiate a channel creation request. You can create channels later in the Network Monitor. For more information, see [Channels](v10_dashboard.html#channels).  -->
+<!-- or click **Create a Channel** to initiate a channel creation request. You can create channels later in the Network Monitor. For more information, see [Channels](/docs/services/blockchain/v10_dashboard.html#channels).  -->
 
 
 ## Configurazione delle risorse di rete e dell'ambiente
 
-1. Accedi al tuo Monitoraggio della rete dopo che hai creato, o hai aderito a, una rete {{site.data.keyword.blockchain}}. Il Monitoraggio della rete è un dashboard GUI dove puoi gestire e tracciare le informazioni sullo stato della rete. Per ulteriori informazioni, consulta [monitoraggio della rete](v10_dashboard.html).
-2. Aggiungi i tuoi peer alla rete. Se già hai aggiunto abbastanza peer, tralascia questo passo. I peer eseguono il chaincode e sono l'endpoint per interagire con le tue applicazioni. Gai clic su **Aggiungi peer** nella schermata "Panoramica" e seleziona la quantità e la dimensione dei tuoi peer. Per ulteriori informazioni, vedi [Panoramica](v10_dashboard.html#overview).
-3. Configura un canale. A tutti i membri nello stesso canale viene fornito un libro mastro specifico per il canale, che offre isolamento e confidenzialità dei dati. Per ulteriori informazioni su come creare un canale, vedi [Creazione di un canale](howto/create_channel.html#creating-a-channel).  
+1. Accedi al tuo Monitoraggio della rete dopo che hai creato, o hai aderito a, una rete {{site.data.keyword.blockchain}}. Il Monitoraggio della rete è un dashboard GUI dove puoi gestire e tracciare le informazioni sullo stato della rete. Per ulteriori informazioni, consulta [monitoraggio della rete](/docs/services/blockchain/v10_dashboard.html).
+2. Aggiungi i tuoi peer alla rete. Se già hai aggiunto abbastanza peer, tralascia questo passo. I peer eseguono il chaincode e sono l'endpoint per interagire con le tue applicazioni. Gai clic su **Aggiungi peer** nella schermata "Panoramica" e seleziona la quantità e la dimensione dei tuoi peer. Per ulteriori informazioni, vedi [Panoramica](/docs/services/blockchain/v10_dashboard.html#overview).
+3. Configura un canale. A tutti i membri nello stesso canale viene fornito un libro mastro specifico per il canale, che offre isolamento e confidenzialità dei dati. Per ulteriori informazioni su come creare un canale, vedi [Creazione di un canale](/docs/services/blockchain/howto/create_channel.html#creating-a-channel).  
     Se sei un membro del canale che è stato invitato ad aderire a un canale, riceverai una notifica email con un link alla procedura guidata che ti consente di aderire al canale.
-4. Unisci i peer al canale.  Solo i peer associati al canale possono accedere al suo libro mastro. Per ulteriori informazioni, vedi [Canali](v10_dashboard.html#channels).
-5. Installa e istanzia il chaincode. Tutti i membri del canale devono installare lo stesso chaincode con lo stesso nome e la stessa versione su ogni peer che eseguirà il chaincode. Dopo aver installato il chaincode, devi istanziarlo sul canale prima di poterlo utilizzare. Per ulteriori informazioni, vedi [Installazione, istanziazione e aggiornamento di un chaincode](howto/install_instantiate_chaincode.html).  
+4. Unisci i peer al canale.  Solo i peer associati al canale possono accedere al suo libro mastro. Per ulteriori informazioni, vedi [Canali](/docs/services/blockchain/v10_dashboard.html#channels).
+5. Installa e istanzia il chaincode. Tutti i membri del canale devono installare lo stesso chaincode con lo stesso nome e la stessa versione su ogni peer che eseguirà il chaincode. Dopo aver installato il chaincode, devi istanziarlo sul canale prima di poterlo utilizzare. Per ulteriori informazioni, vedi [Installazione, istanziazione e aggiornamento di un chaincode](/docs/services/blockchain/howto/install_instantiate_chaincode.html).  
 
 **Nota**: per ottenere un'elevata disponibilità, ciascuna organizzazione deve acquistare almeno due peer e, in un canale, ogni membro partecipante deve unire almeno due peer.
 
@@ -101,7 +101,7 @@ Richiama le tue credenziali del servizio attenendoti alla seguente procedura:
 3. Nella schermata "Aggiungi nuova credenziale", dai un nome alla credenziale e immetti **{"type": "service_instance_token"}** nel campo "Aggiungi parametro di configurazione inline". Fai clic su **Aggiungi**; la nuova credenziale viene aggiunta nella tabella. Puoi fare clic su **Visualizza credenziali** nella colonna "AZIONI" per visualizzare i dettagli della credenziale. Questa credenziale contiene la chiave API e il segreto, che puoi utilizzare per autorizzare le API.
 
 ### Richiamo nel Monitoraggio della rete
-Puoi trovare le credenziali di rete sulla schermata "API" nel tuo Monitoraggio della rete. Per ulteriori informazioni sull'utilizzo delle API, vedi [Prova delle API con Swagger](howto/swagger_apis.html).
+Puoi trovare le credenziali di rete sulla schermata "API" nel tuo Monitoraggio della rete. Per ulteriori informazioni sull'utilizzo delle API, vedi [Prova delle API con Swagger](/docs/services/blockchain/howto/swagger_apis.html).
 
 Puoi richiamare il profilo di connessione nella schermata "Panoramica" nel tuo Monitoraggio della rete. Fai clic sul pulsante **Profilo connessione** nella schermata "Panoramica"; il profilo di connessione viene visualizzato in una nuova pagina.
 
@@ -109,23 +109,23 @@ Puoi richiamare il profilo di connessione nella schermata "Panoramica" nel tuo M
 ## Sviluppo e distribuzione di reti di business personalizzate
 Puoi sviluppare reti di business in base alle tue esigenze aziendali con l'ambiente per sviluppatori {{site.data.keyword.blockchainfull_notm}} Platform: Develop e il set di strumenti per gli sviluppatori Hyperledger Composer. Dopo che hai sviluppato una rete per il tuo business, puoi distribuire la tua rete di business nella rete piano Enterprise.
 
-Per ulteriori informazioni, vedi [Sviluppare la rete](develop.html) e [Distribuzione di una rete di business su piano Enterprise](develop_enterprise.html).
+Per ulteriori informazioni, vedi [Sviluppare la rete](/docs/services/blockchain/develop.html) e [Distribuzione di una rete di business su piano Enterprise](/docs/services/blockchain/develop_enterprise.html).
 
 
 ## Abilitazione delle applicazioni a interagire con la rete
-Le applicazioni si avvalgono delle API SDK per interagire con le tue risorse di rete {{site.data.keyword.blockchain}}. Devi aggiungere le informazioni sull'endpoint API delle tue risorse di rete nella tua applicazione in modo che l'applicazione possa alla fine avere come obiettivo i tuoi peer le richieste di transazione. Puoi quindi aggiungere le informazioni sull'endpoint API dal Monitoraggio della rete. Le applicazioni possono essere ospitate sul tuo file system locale o su {{site.data.keyword.Bluemix_notm}}. Per ulteriori informazioni, vedi [Sviluppo di applicazioni](v10_application.html).
+Le applicazioni si avvalgono delle API SDK per interagire con le tue risorse di rete {{site.data.keyword.blockchain}}. Devi aggiungere le informazioni sull'endpoint API delle tue risorse di rete nella tua applicazione in modo che l'applicazione possa alla fine avere come obiettivo i tuoi peer le richieste di transazione. Puoi quindi aggiungere le informazioni sull'endpoint API dal Monitoraggio della rete. Le applicazioni possono essere ospitate sul tuo file system locale o su {{site.data.keyword.Bluemix_notm}}. Per ulteriori informazioni, vedi [Sviluppo di applicazioni](/docs/services/blockchain/v10_application.html).
 
 ## Monitoraggio delle risorse di rete  
-Dopo che una transazione è stata attivata dalla tua applicazione, puoi visualizzare le informazioni sullo stato della transazione nel Monitoraggio della rete. Per ulteriori informazioni sul monitoraggio di rete, vedi [Monitoraggio di una rete](howto/monitor_network.html).
+Dopo che una transazione è stata attivata dalla tua applicazione, puoi visualizzare le informazioni sullo stato della transazione nel Monitoraggio della rete. Per ulteriori informazioni sul monitoraggio di rete, vedi [Monitoraggio di una rete](/docs/services/blockchain/howto/monitor_network.html).
 
 ## Uscire da una rete
 Se desideri uscire da una rete, elimina l'istanza del servizio blockchain dal tuo dashboard {{site.data.keyword.Bluemix_notm}}.  
 
-**Nota**: prima di uscire da una rete, assicurati di non essere un membro dei canali sulla rete. Altrimenti, riscontrerai degli errori quando esci dalla rete. Una rimozione di un membro del canale deve completare il processo di aggiornamento del canale. Per ulteriori informazioni sul processo di aggiornamento del canale, consulta [Aggiornamento di un canale](howto/create_channel.html#updating-a-channel).
+**Nota**: prima di uscire da una rete, assicurati di non essere un membro dei canali sulla rete. Altrimenti, riscontrerai degli errori quando esci dalla rete. Una rimozione di un membro del canale deve completare il processo di aggiornamento del canale. Per ulteriori informazioni sul processo di aggiornamento del canale, consulta [Aggiornamento di un canale](/docs/services/blockchain/howto/create_channel.html#updating-a-channel).
 
 
 <!--
 ## References
-* For more information about {{site.data.keyword.blockchainfull_notm}} offerings, see [Blockchain offerings](index.html).
+* For more information about {{site.data.keyword.blockchainfull_notm}} offerings, see [Blockchain offerings](/docs/services/blockchain/index.html).
 * For more information about Hyperledger Fabric, see [Hyperledger Fabric documentation ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/){:new_window}.
 -->

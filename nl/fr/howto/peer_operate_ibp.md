@@ -36,10 +36,10 @@ Vous pouvez ensuite utiliser l'une des méthodes suivantes pour exploiter votre 
 Les logiciels SDK Fabric sont recommandés. Cependant, les instructions supposent que vous avez une bonne connaissance du fonctionnement du logiciel SDK. Si vous préférez utiliser la ligne de commande, vous pouvez utiliser le client homologue Fabric.
 
 <!--
-It is recommended that you deploy at least two instances of the peer Helm chart for [high availability](peer_icp.html#high-availability). Therefore, you need to follow these operations steps once for each peer. When you are ready to invoke and query chaincode from your application, connect to both peers to ensure that your [applications are highly available](../v10_application.html#ha-app).
+It is recommended that you deploy at least two instances of the peer Helm chart for [high availability](/docs/services/blockchain/howto/peer_icp.html#high-availability). Therefore, you need to follow these operations steps once for each peer. When you are ready to invoke and query chaincode from your application, connect to both peers to ensure that your [applications are highly available](/docs/services/blockchain/v10_application.html#ha-app).
 -->
 
-**Remarque **: L'homologue {{site.data.keyword.blockchainfull_notm}} Platform n'a pas accès à toutes les fonctionnalités ou à la prise en charge des homologues qui sont hébergés sur {{site.data.keyword.blockchainfull_notm}} Platform. Par conséquent, vous ne pouvez pas utiliser le moniteur réseau pour exploiter un homologue sur ICP. Avant de commencer à lancer des homologues, assurez-vous d'avoir passé en revue les [considérations et limitations](../ibp-for-icp-about.html#ibp-icp-considerations).
+**Remarque **: L'homologue {{site.data.keyword.blockchainfull_notm}} Platform n'a pas accès à toutes les fonctionnalités ou à la prise en charge des homologues qui sont hébergés sur {{site.data.keyword.blockchainfull_notm}} Platform. Par conséquent, vous ne pouvez pas utiliser le moniteur réseau pour exploiter un homologue sur ICP. Avant de commencer à lancer des homologues, assurez-vous d'avoir passé en revue les [considérations et limitations](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-considerations).
 
 ## Prérequis
 
@@ -153,7 +153,7 @@ Vous devez télécharger votre certificat TLS homologue et le transmettre à vos
 
 Les logiciels SDK Hyperledger Fabric fournissent un puissant jeu d'API qui permettent aux applications d'interagir et d'exploiter les réseaux de blockchain. Vous pouvez obtenir la liste la plus récente des langages pris en charge et la liste complète des API disponibles au sein des logiciels SDK Fabric dans la [documentation Hyperledger Fabric SDK community![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/getting_started.html#hyperledger-fabric-sdks "documentation Hyperledger Fabric SDK Community"). Vous pouvez utiliser les logiciels SDK Fabric pour associer votre homologue à un canal sur {{site.data.keyword.blockchainfull_notm}} Platform, installer un code blockchain sur votre homologue, et instancier le code blockchain sur un canal.
 
-Les instructions suivantes utilisent le [Logiciel SDK Fabric Node![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://fabric-sdk-node.github.io/ "Logiciel SDK Fabric Node") pour exploiter l'homologue et supposent une connaissance préalable du logiciel SDK. Vous pouvez utiliser le [tutoriel de développement d'applications](../v10_application.html) pour en savoir plus sur l'utilisation du logiciel SDK Node avant de commencer, et comme guide pour le développement d'applications avec votre homologue lorsque vous êtes prêt à appeler et à interroger le code blockchain.
+Les instructions suivantes utilisent le [Logiciel SDK Fabric Node![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://fabric-sdk-node.github.io/ "Logiciel SDK Fabric Node") pour exploiter l'homologue et supposent une connaissance préalable du logiciel SDK. Vous pouvez utiliser le [tutoriel de développement d'applications](/docs/services/blockchain/v10_application.html) pour en savoir plus sur l'utilisation du logiciel SDK Node avant de commencer, et comme guide pour le développement d'applications avec votre homologue lorsque vous êtes prêt à appeler et à interroger le code blockchain.
 
 ### Installation du logiciel SDK Node
 
@@ -171,13 +171,13 @@ Il est recommandé d'utiliser la version 1.2 du logiciel SDK Node.
 
 Votre homologue est déployé avec le certificat signCert de votre admin homologue interne. Cela vous permet d'utiliser les certificats et le dossier MSP de l'admin homologue pour exploiter l'homologue.
 
-Recherchez les certificats que vous avez créés lorsque vous avez [enregistré votre admin homologue](peer_deploy_ibp.html#enroll-admin). Si vous avez utilisé les commandes en  exemple, vous pouvez trouver votre dossier MSP admin homologue dans `$HOME/fabric-ca-client/peer-admin`.
+Recherchez les certificats que vous avez créés lorsque vous avez [enregistré votre admin homologue](/docs/services/blockchain/howto/peer_deploy_ibp.html#enroll-admin). Si vous avez utilisé les commandes en  exemple, vous pouvez trouver votre dossier MSP admin homologue dans `$HOME/fabric-ca-client/peer-admin`.
   - Vous pouvez générer le contexte utilisateur admin homologue avec le logiciel SDK qui utilise le certificat signCert (clé publique) et la clé privée dans le dossier MSP. Vous pouvez trouver ces clés dans les emplacements suivants :
     - Le certificat signCert peut se trouver dans le dossier **signcerts** : `$HOME/fabric-ca-client/peer-admin/msp/signcerts`
     - La clé privée peut se  trouver dans le dossier **keystore:** : `$HOME/fabric-ca-client/peer-admin/msp/keystore`
-    Pour obtenir un exemple de formation d'un contexte d'utilisation et d'exploitation du logiciel SDK à l'aide seulement de la clé publique et la clé privée, voir [cette section du tutoriel relatif au développement d'applications](../v10_application.html#enroll-panel).
+    Pour obtenir un exemple de formation d'un contexte d'utilisation et d'exploitation du logiciel SDK à l'aide seulement de la clé publique et la clé privée, voir [cette section du tutoriel relatif au développement d'applications](/docs/services/blockchain/v10_application.html#enroll-panel).
 
-Vous pouvez également utiliser le logiciel SDK pour générer le certificat signCert admin homologue et la clé privée en utilisant les informations de noeud de l'autorité de certification dans Starter Plan ou Enterprise Plan et votre [nom d'utilisateur et mot de passe](peer_deploy_ibp.html#register-admin).
+Vous pouvez également utiliser le logiciel SDK pour générer le certificat signCert admin homologue et la clé privée en utilisant les informations de noeud de l'autorité de certification dans Starter Plan ou Enterprise Plan et votre [nom d'utilisateur et mot de passe](/docs/services/blockchain/howto/peer_deploy_ibp.html#register-admin).
 
 ### Téléchargement du certificat signCert admin homologue vers un plan Starter ou Enterprise
 {: #remote-peer-upload-sdk}
@@ -217,32 +217,32 @@ You need to specify a `ssl-target-name-override` of `<something>.blockchain.com`
 
 Votre organisation doit être membre d'un canal pour que vous puissiez rejoindre le canal avec votre homologue. 
 
-  - Vous pouvez démarrer un nouveau canal pour l'homologue. En tant qu'initiateur de canal, vous pouvez inclure automatiquement votre organisation durant la [création de canal](create_channel.html#creating-a-channel).
+  - Vous pouvez démarrer un nouveau canal pour l'homologue. En tant qu'initiateur de canal, vous pouvez inclure automatiquement votre organisation durant la [création de canal](/docs/services/blockchain/howto/create_channel.html#creating-a-channel).
 
-  - Un autre membre du réseau blockchain peut également ajouter votre organisation à un canal existant en utilisant une [mise à jour de canal](create_channel.html#updating-a-channel).
+  - Un autre membre du réseau blockchain peut également ajouter votre organisation à un canal existant en utilisant une [mise à jour de canal](/docs/services/blockchain/howto/create_channel.html#updating-a-channel).
 
     Une fois que votre organisation est ajoutée à un canal, vous devez ajouter le certificat signCert de votre homologue au canal de sorte que les autres membres puissent vérifier votre signature numérique au cours des transactions. L'homologue envoie par téléchargement son certificat signCert lors de l'installation, ce qui signifie que vous devez uniquement synchroniser le certificat pour le canal. Dans l'écran "Canaux" de votre Moniteur réseau, localisez le canal rejoint par votre organisation et sélectionnez **Synchroniser le certificat** dans la liste déroulante sous l'en-tête **Action**. Cette action synchronise les certificats entre tous les homologues sur le canal. Vous devrez peut-être attendre quelques minutes le temps que le canal se synchronise avant l'exécution des commandes `join channel`.
 
     **Remarque :** Vous ne pourrez voir que les nouveaux blocs qui sont ajoutés au canal, le code blockchain instancié et les autres mises à jour de canal à l'écran "Canaux" de votre Moniteur réseau si l'homologue que vous ajoutez à ICP et à un réseau Starter Plan ou Enterprise Plan fait parte de la même organisation en tant qu'homologue qui est ajouté avec le Moniteur réseau. Ceci est dû au fait que le Moniteur réseau collecte des informations à l'écran "Canaux" de votre  homologue, et il n'a pas de visibilité sur les homologues à l'extérieur de {{site.data.keyword.cloud_notm}}. Si aucun de vos homologues n'utilise la fonction Données privées, les informations du Moniteur réseau seront les mêmes pour un homologue dans une organisation comme dans une autre.
 
-Dès que votre organisation est devenue membre d'un canal, suivez les instructions permettant de [joindre votre homologue à un canal](../v10_application.html#join-channel-sdk) à l'aide du logiciel SDK. Vous devez indiquer l'URL du service de commande et le nom du canal.
+Dès que votre organisation est devenue membre d'un canal, suivez les instructions permettant de [joindre votre homologue à un canal](/docs/services/blockchain/v10_application.html#join-channel-sdk) à l'aide du logiciel SDK. Vous devez indiquer l'URL du service de commande et le nom du canal.
 
 ### Utilisation du logiciel SDK pour installer le code blockchain sur l'homologue
 {: #peer-install-cc-sdk}
 
-Utilisez les instructions suivantes pour utiliser le logiciel SDK pour [installer un code blockchain](../v10_application.html#install-cc-sdk) sur votre homologue.
+Utilisez les instructions suivantes pour utiliser le logiciel SDK pour [installer un code blockchain](/docs/services/blockchain/v10_application.html#install-cc-sdk) sur votre homologue.
 
 ### Utilisation du logiciel SDK pour instancier le code blockchain sur l'homologue
 {: #peer-instantiate-cc-sdk}
 
-Un seul membre de ce canal doit instancier ou mettre à jour le code blockchain. Par conséquent, tout membre réseau du canal avec des homologues sur {{site.data.keyword.blockchainfull_notm}} Platform peut utiliser le Moniteur réseau pour instancier du code blockchain et spécifier les règles de validation. Toutefois, si vous souhaitez utiliser l'homologue pour instancier du code blockchain sur un canal, vous pouvez utiliser le logiciel SDK et suivre les instructions d'[instanciation d'un code blockchain](../v10_application.html#instantiate-cc-sdk).
+Un seul membre de ce canal doit instancier ou mettre à jour le code blockchain. Par conséquent, tout membre réseau du canal avec des homologues sur {{site.data.keyword.blockchainfull_notm}} Platform peut utiliser le Moniteur réseau pour instancier du code blockchain et spécifier les règles de validation. Toutefois, si vous souhaitez utiliser l'homologue pour instancier du code blockchain sur un canal, vous pouvez utiliser le logiciel SDK et suivre les instructions d'[instanciation d'un code blockchain](/docs/services/blockchain/v10_application.html#instantiate-cc-sdk).
 
 ## Utilisation de l'interface CLI pour exploiter l'homologue
 {: #peer-cli-operate}
 
 Vous pouvez également exploiter votre homologue depuis la ligne de commande à l'aide du client `homologue` Fabric.
 
-Votre homologue a été déployé avec le certificat signCert de votre admin homologue interne, ce qui permet à cette identité d'exploiter l'homologue. Les instructions ci-après utilisent le dossier MSP admin homologue qui a été généré lorsque vous avez [déployé votre homologue](peer_deploy_ibp.html#register-admin) pour joindre l'homologue à un canal, installer un code blockchain sur l'homologue, puis instancier le code blockchain sur un canal.
+Votre homologue a été déployé avec le certificat signCert de votre admin homologue interne, ce qui permet à cette identité d'exploiter l'homologue. Les instructions ci-après utilisent le dossier MSP admin homologue qui a été généré lorsque vous avez [déployé votre homologue](/docs/services/blockchain/howto/peer_deploy_ibp.html#register-admin) pour joindre l'homologue à un canal, installer un code blockchain sur l'homologue, puis instancier le code blockchain sur un canal.
 
 ### Téléchargement du client homologue Fabric
 {: #peer-client}
@@ -291,7 +291,7 @@ cd $HOME/fabric-ca-client/peer-admin/msp
 ```
 {:codeblock}
 
-Avant d'exploiter l'homologue, vous devez procéder à quelques opérations de gestion des certificats sur votre machine locale. Par exemple, vous devez télécharger le certificat signCert admin vers Starter Plan ou Enterprise Plan et vous assurer que vous pouvez accéder aux certificats TLS à partir de l'homologue et votre réseau sur {{site.data.keyword.cloud_notm}}. Pour plus d'informations sur les certificats à utiliser et les tâches à exécuter, voir  [Gestion des  certificats sur {{site.data.keyword.blockchainfull_notm}} Platform](../certificates.html).
+Avant d'exploiter l'homologue, vous devez procéder à quelques opérations de gestion des certificats sur votre machine locale. Par exemple, vous devez télécharger le certificat signCert admin vers Starter Plan ou Enterprise Plan et vous assurer que vous pouvez accéder aux certificats TLS à partir de l'homologue et votre réseau sur {{site.data.keyword.cloud_notm}}. Pour plus d'informations sur les certificats à utiliser et les tâches à exécuter, voir  [Gestion des  certificats sur {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/certificates.html).
 
 1. Déplacez le certificat signCert de l'admin de votre homologue vers un nouveau dossier nommé `admincerts` :
 
@@ -316,7 +316,7 @@ Avant d'exploiter l'homologue, vous devez procéder à quelques opérations de g
 
 3. Vérifiez que vous avez [téléchargé le certificat TLS de votre homologue](#peer-tls) et que vous pouvez le référencer à partir de la ligne de commande. Si vous avez suivi les commandes en exemple, vous pouvez trouver ce certificat TLS dans le fichier `$HOME/fabric-ca-client/peer-tls/peertls.pem`.
 
-4. Vous devez également référencer le certificat TLS que vous avez utilisé pour communiquer avec l'autorité de certification de votre Starter Plan ou Enterprise Plan lors de  l'[inscription de votre admin homologue](peer_deploy_ibp.html#enroll-admin). Si vous avez suivi les exemples de commandes figurant dans cette documentation, vous pouvez trouver le certificat dans le fichier  `$HOME/fabric-ca-client/tls-ibp/tls.pem`.
+4. Vous devez également référencer le certificat TLS que vous avez utilisé pour communiquer avec l'autorité de certification de votre Starter Plan ou Enterprise Plan lors de  l'[inscription de votre admin homologue](/docs/services/blockchain/howto/peer_deploy_ibp.html#enroll-admin). Si vous avez suivi les exemples de commandes figurant dans cette documentation, vous pouvez trouver le certificat dans le fichier  `$HOME/fabric-ca-client/tls-ibp/tls.pem`.
 
 Vous pouvez exécuter une commande tree pour vérifier que vous avez effectué ces étapes. Accédez au répertoire dans lequel vous avez stocké vos certificats. Une commande tree doit générer un résultat similaire à la structure suivante :
 ```
@@ -432,8 +432,8 @@ Après avoir déplacé tous vos certificats vers l'emplacement nécessaire, vous
 
 Avant d'exécuter les commandes d'interface CLI pour joindre l'homologue à un canal, il est nécessaire d'ajouter votre organisation à un canal du réseau de l'une des manières ci-après.
 
-  - Vous pouvez démarrer un nouveau canal pour l'homologue. En tant qu'initiateur de canal, vous pouvez inclure automatiquement votre organisation durant la [création de canal](create_channel.html#creating-a-channel).
-  - Un autre membre du réseau blockchain peut également ajouter votre organisation à un canal existant en utilisant une [mise à jour de canal](create_channel.html#updating-a-channel).
+  - Vous pouvez démarrer un nouveau canal pour l'homologue. En tant qu'initiateur de canal, vous pouvez inclure automatiquement votre organisation durant la [création de canal](/docs/services/blockchain/howto/create_channel.html#creating-a-channel).
+  - Un autre membre du réseau blockchain peut également ajouter votre organisation à un canal existant en utilisant une [mise à jour de canal](/docs/services/blockchain/howto/create_channel.html#updating-a-channel).
 
     Une fois que votre organisation est ajoutée à un canal, vous devez ajouter le certificat signCert de votre homologue au canal de sorte que les autres membres puissent vérifier votre signature numérique au cours des transactions. L'homologue envoie par téléchargement son certificat signCert lors de l'installation, de sorte que vous devez uniquement synchroniser le certificat pour le canal. Dans l'écran "Canaux" de votre Moniteur réseau, localisez le canal rejoint par votre organisation et sélectionnez **Synchroniser le certificat** dans la liste déroulante sous l'en-tête **Action**. Cette action synchronise les certificats entre tous les homologues sur le canal.
 
@@ -543,7 +543,7 @@ Procédez comme suit pour mettre à jour votre code blockchain :
 2. Une fois le nouveau code blockchain installé sur tous les homologues du canal, utilisez le Moniteur réseau ou la commande
 [peer chaincode upgrade ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/peerchaincode.html#peer-chaincode-upgrade) pour mettre à jour le canal qui va utiliser le nouveau code blockchain.
 
-Consultez l'étape 2 des présentes [instructions](install_instantiate_chaincode.html#updating-a-chaincode) pour plus d'informations sur l'utilisation du panneau "Installer le code" du Moniteur réseau pour la mise à jour du code blockchain sur le canal.
+Consultez l'étape 2 des présentes [instructions](/docs/services/blockchain/howto/install_instantiate_chaincode.html#updating-a-chaincode) pour plus d'informations sur l'utilisation du panneau "Installer le code" du Moniteur réseau pour la mise à jour du code blockchain sur le canal.
 
 ## Affichage des journaux de l'homologue
 {: #peer-ibp-view-logs}

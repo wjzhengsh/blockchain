@@ -30,7 +30,7 @@ Questo manuale ti aiuta a comprendere i prezzi per i piani di adesione {{site.da
 
 *Figura 1. Panoramica dei prezzi di {{site.data.keyword.blockchainfull}} Platform*
 
-Il costo mensile viene addebitato ogni giorno su base proporzionale. Ad esempio, un membro (costo di adesione associato di $1.000) di due peer (costo per ogni peer di $1.000 X 2 peer) deve pagare $3.000 ogni mese. Se il mese ha 30 giorni, il membro paga $ 100 ($3.000/30) ogni giorno. Per ulteriori informazioni su come pagare per le tue reti, consulta [Modalità di pagamento](paying_mode.html).
+Il costo mensile viene addebitato ogni giorno su base proporzionale. Ad esempio, un membro (costo di adesione associato di $1.000) di due peer (costo per ogni peer di $1.000 X 2 peer) deve pagare $3.000 ogni mese. Se il mese ha 30 giorni, il membro paga $ 100 ($3.000/30) ogni giorno. Per ulteriori informazioni su come pagare per le tue reti, consulta [Modalità di pagamento](/docs/services/blockchain/howto/paying_mode.html).
 
 Il piano Starter di **{{site.data.keyword.blockchainfull_notm}} Platform ti offre $500 di crediti di prova** prima che ti vengano fatti degli addebiti. Per ulteriori informazioni, consulta [Prezzi del piano Starter](#starter-plan-pricing).
 

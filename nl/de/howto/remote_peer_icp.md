@@ -24,7 +24,7 @@ In den folgenden Anweisungen wird die Vorgehensweise zur Installation eines fern
 
 Bei {{site.data.keyword.cloud_notm}} Private handelt es sich um eine Anwendungsplattform zur Entwicklung und zum Management lokaler containerisierter Anwendungen. {{site.data.keyword.blockchainfull_notm}} Platform Remote Peers on {{site.data.keyword.cloud_notm}} Private ist ein {{site.data.keyword.blockchainfull_notm}}-Produkt, das in einem Produktpaket mit ICP angeboten wird und mit dem Kunden Peers in Ihrer lokalen Umgebung bereitstellen können. Nach der Installation des Helm-Diagramms des fernen Peers ist es als Anwendung im ICP-Katalog enthalten. Der ferne Peer für ICP nutzt den Speicher, die Sicherheits- und Protokollierungsfunktionen sowie die Unterstützungsleistungen von ICP für das Peer-Management. Weitere Informationen zu ICP finden Sie in der [{{site.data.keyword.cloud_notm}} Private-Dokumentation ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0.3/kc_welcome_containers.html "{{site.data.keyword.cloud_notm}} Private-Dokumentation").
 
-Vor der Installation ferner Peers unter ICP sollten Sie sich mit den Informationen im Abschnitt mit den [wichtigen Hinweisen zu fernen Peers](remote_peer.html#remote-peer-limitations) vertraut machen.
+Vor der Installation ferner Peers unter ICP sollten Sie sich mit den Informationen im Abschnitt mit den [wichtigen Hinweisen zu fernen Peers](/docs/services/blockchain/howto/remote_peer.html#remote-peer-limitations) vertraut machen.
 
 ## Voraussetzungen
 {: #prerequisites-icp}
@@ -62,7 +62,7 @@ Vor der Installation ferner Peers unter ICP müssen Sie die folgenden Schritte u
 
 3. {{site.data.keyword.blockchainfull_notm}} Platform  
 
-  Zur Verwendung eines fernen Peers benötigen Sie eine Organisation, die Mitglied eines Blockchain-Netzes ist, das unter {{site.data.keyword.blockchainfull_notm}} Platform gehostet wird. Sie müssen den Network Monitor unter {{site.data.keyword.cloud_notm}} verwenden, um auf die Netzberechtigungsnachweise und die API-Endpunkte Ihres Netzes zugreifen zu können. Wenn Sie nicht Mitglied eines Blockchain-Netzes sind, dann müssen Sie ein Netz erstellen oder einem Netz beitreten. Weitere Informationen hierzu finden Sie im Abschnitt zum [Erstellen eines Netzes](../get_start.html#creating-a-network) oder [Beitritt zu einem Netz](../get_start.html#joining-a-network).
+  Zur Verwendung eines fernen Peers benötigen Sie eine Organisation, die Mitglied eines Blockchain-Netzes ist, das unter {{site.data.keyword.blockchainfull_notm}} Platform gehostet wird. Sie müssen den Network Monitor unter {{site.data.keyword.cloud_notm}} verwenden, um auf die Netzberechtigungsnachweise und die API-Endpunkte Ihres Netzes zugreifen zu können. Wenn Sie nicht Mitglied eines Blockchain-Netzes sind, dann müssen Sie ein Netz erstellen oder einem Netz beitreten. Weitere Informationen hierzu finden Sie im Abschnitt zum [Erstellen eines Netzes](/docs/services/blockchain/get_start.html#creating-a-network) oder [Beitritt zu einem Netz](/docs/services/blockchain/get_start.html#joining-a-network).
 
 ## Helm-Diagramm in ICP importieren
 
@@ -179,7 +179,7 @@ Die folgende Tabelle enthält eine Auflistung der konfigurierbaren Parameter des
 | `Geheimer Eintragungsschlüssel des Peers`| Dies ist der geheime Eintragungsschlüssel, den Sie in der Anzeige "Zertifizierungsstelle" im {{site.data.keyword.blockchainfull_notm}} Platform Network Monitor eingegeben haben. | Nein | Ja |
 | | | | |
 |**Datenbank des fernen Peers** | **Typ der Ledgerdatenbank**| | |
-| `Ledgerdatenbank`| Zur Speicherung des Kanalledgers verwendete [Statusdatenbank](../glossary.html#state-database). Der ferne Peer muss dieselbe Datenbank wie das [Blockchain-Netz](../v10_dashboard.html#network-preferences) verwenden. | Nein | Ja |
+| `Ledgerdatenbank`| Zur Speicherung des Kanalledgers verwendete [Statusdatenbank](/docs/services/blockchain/glossary.html#state-database). Der ferne Peer muss dieselbe Datenbank wie das [Blockchain-Netz](/docs/services/blockchain/v10_dashboard.html#network-preferences) verwenden. | Nein | Ja |
 | `CouchDB-Image`| Gilt nur, wenn CouchDB als Ledgerdatenbank ausgewählt wurde. | Automatisch mit installiertem Pfad ausgefüllt; diesen Wert nicht ändern | Ja |
 |**Datenpersistenz** | Aktivieren der Funktionalität zum persistenten Speichern von Daten nach Neustart oder Ausfall des Clusters. Siehe hierzu [Speicher in Kubernetes ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://kubernetes.io/docs/concepts/storage/ "Volumes"). | | |
 | `Datenpersistenz aktiviert`| Statusdaten stehen zur Verfügung, wenn der Container neu gestartet wird. *Wird diese Option inaktiviert, gehen alle Daten bei einem Failover oder Podneustart verloren.* | Aktiviert | Nein |
@@ -298,7 +298,7 @@ helm CLI version on your local machine is ahead of helm cli version on your serv
 Error: incompatible versions client[v2.9.1] server[v2.7.3+icp]
 ```
 
-See the [troubleshooting topic](remote_peer_operate_icp.html#icp-troubleshooting) for instructions on resolving this error.
+See the [troubleshooting topic](/docs/services/blockchain/howto/remote_peer_operate_icp.html#icp-troubleshooting) for instructions on resolving this error.
 
 -->
 
@@ -376,13 +376,13 @@ Nach der Installation des fernen Peers können Sie das Peerprotokoll anzeigen, u
   - Werden keine Protokolle in der Anzeige aufgeführt, dann ist der Start Ihres fernen Peers fehlgeschlagen. Zur Anzeige zusätzlicher Protokolle zur Untersuchung des Problems müssen Sie auf das Symbol **Menü** in der oberen linken Ecke klicken und dann auf **Workloads** > **Helm-Releases** klicken. Klicken Sie auf das gewünschte Helm-Release, um es zu öffnen. Klicken Sie dann auf den Link **Protokolle anzeigen** neben dem zugeordneten **Pod**, um zusätzliche Diagrammprotokolle in der Kibana-Schnittstelle anzuzeigen.
 3. Um zu überprüfen, ob der ferne Peer eine Verbindung zum {{site.data.keyword.blockchainfull}} Platform-Netz herstellen kann, können Sie einen CLI-Befehl für den Peer im Container des fernen Peers ausführen. Führen Sie den CLI-Befehl `peer channel fetch` aus, um den Genesis-Block aus einem Kanal abzurufen:
 
-   1. Wenn noch keine Verbindung zum ICP-Cluster hergestellt wurde, dann führen Sie die folgenden [Anweisungen](remote_peer_operate_icp.html#remote-peer-kubectl-configure) aus, um die Verbindung herzustellen, und verwenden Sie die CLI im Peer-Container.
+   1. Wenn noch keine Verbindung zum ICP-Cluster hergestellt wurde, dann führen Sie die folgenden [Anweisungen](/docs/services/blockchain/howto/remote_peer_operate_icp.html#remote-peer-kubectl-configure) aus, um die Verbindung herzustellen, und verwenden Sie die CLI im Peer-Container.
 
    2. Ihre Organisation muss zu einem Kanal im Netz hinzugefügt werden, bevor Sie den Genesis-Block abrufen können.
 
-     - Sie können einen neuen Kanal für den fernen Peer starten. Als Kanalinitiator können Sie Ihre Organisation während der [Kanalerstellung](create_channel.html#creating-a-channel) automatisch einbinden. Beachten Sie hierbei, dass Sie über mindestens einen Peer unter {{site.data.keyword.blockchainfull_notm}} Platform verfügen müssen, um einen Kanal im Network Monitor zu erstellen.  
+     - Sie können einen neuen Kanal für den fernen Peer starten. Als Kanalinitiator können Sie Ihre Organisation während der [Kanalerstellung](/docs/services/blockchain/howto/create_channel.html#creating-a-channel) automatisch einbinden. Beachten Sie hierbei, dass Sie über mindestens einen Peer unter {{site.data.keyword.blockchainfull_notm}} Platform verfügen müssen, um einen Kanal im Network Monitor zu erstellen.  
 
-     - Ein anderes Mitglied des Blockchain-Netzes kann Ihre Organisation ebenfalls zu einem vorhandenen Kanal hinzufügen, indem es eine [Kanalaktualisierung](create_channel.html#updating-a-channel) durchführt. Ein Mitglied des Kanals mit Peers unter {{site.data.keyword.blockchainfull_notm}} Platform kann den Network Monitor verwenden, um Ihre Organisation zum Kanal hinzuzufügen, auch wenn Sie auf der Plattform keine Peers hosten.
+     - Ein anderes Mitglied des Blockchain-Netzes kann Ihre Organisation ebenfalls zu einem vorhandenen Kanal hinzufügen, indem es eine [Kanalaktualisierung](/docs/services/blockchain/howto/create_channel.html#updating-a-channel) durchführt. Ein Mitglied des Kanals mit Peers unter {{site.data.keyword.blockchainfull_notm}} Platform kann den Network Monitor verwenden, um Ihre Organisation zum Kanal hinzuzufügen, auch wenn Sie auf der Plattform keine Peers hosten.
 
       Der ferne Peer lädt sein Signierzertifikat während der Installation hoch, sodass Sie das Zertifikat lediglich mit dem Kanal synchronisieren müssen. Suchen Sie in der Anzeige "Kanäle" des Network Monitor nach dem Kanal, dem Ihre Organisation beigetreten ist, und wählen Sie in der Dropdown-Liste unter der Überschrift **Aktion** die Option **Zertifikat synchronisieren** aus. Durch diese Aktion werden die Zertifikate für alle Peers auf dem Kanal synchronisiert.
 
@@ -455,7 +455,7 @@ Nach der Installation des fernen Peers können Sie das Peerprotokoll anzeigen, u
 ## Weitere Schritte
 {: #whats-next-icp}
 
-Nachdem Sie nun den fernen Peer in ICP eingerichtet haben, können Sie verschiedene operative Schritte ausführen, bevor Sie Transaktionen an das Blockchain-Netz übergeben und das verteilte Ledger aus dem Blockchain-Netz lesen können. Weitere Informationen finden Sie im Abschnitt zum [Betrieb eines fernen Peers](remote_peer_operate_icp.html).
+Nachdem Sie nun den fernen Peer in ICP eingerichtet haben, können Sie verschiedene operative Schritte ausführen, bevor Sie Transaktionen an das Blockchain-Netz übergeben und das verteilte Ledger aus dem Blockchain-Netz lesen können. Weitere Informationen finden Sie im Abschnitt zum [Betrieb eines fernen Peers](/docs/services/blockchain/howto/remote_peer_operate_icp.html).
 
 ## Hochverfügbarkeit
 {: #high-availability}
@@ -468,7 +468,7 @@ Führen Sie die folgenden Schritte aus, um unter ICP hoch verfügbare ferne Peer
 2. Installieren Sie den Peer mehrfach auf Ihrem Cluster, um Peers für unterschiedliche Workerknoten bereitzustellen. Das Helm-Diagramm enthält eine Anti-Affinitätsrichtlinie, die auf Ihrer Netz-ID und Organisations-ID (OrgID) basiert. Der ICP-Cluster erkennt, ob Ihre Peers eine Verbindung zu demselben Netz derselben Organisation herstellen und versucht, diese Peers auf unterschiedlichen Workerknoten anzuordnen.  
   **Hinweis:** Obwohl auf Basis der Richtlinie Peers möglichst auf unterschiedlichen Workerknoten platziert werden sollten, ist dies nicht zwingend erforderlich. Wenn Sie beispielsweise über nur einen Workerknoten verfügen, dann werden alle Peers auf diesem Knoten bereitgestellt.
 
-Wenn Sie zumindest zwei Peers bereitstellen, dann müssen Sie Ihre [Anwendungen auch für die Hochverfügbarkeit](../v10_application.html#ha-app) konfigurieren.
+Wenn Sie zumindest zwei Peers bereitstellen, dann müssen Sie Ihre [Anwendungen auch für die Hochverfügbarkeit](/docs/services/blockchain/v10_application.html#ha-app) konfigurieren.
 
 ## Sicherheitsaspekte
 {: #icp-security}
@@ -489,13 +489,13 @@ Außerhalb von {{site.data.keyword.cloud_notm}} müssen Sie das Identitätsmanag
 {: #icp-data-residency}
 
 Für den Datenspeicherort ist es erforderlich, dass die Verarbeitung und Speicherung aller Blockchain-Ledgerdaten innerhalb der Grenzen eines bestimmten Landes stattfinden.
-Weitere Informationen zur Erfüllung der Kriterien für den Datenspeicherort finden Sie unter [Datenspeicherort](remote_peer.html#data-residency).
+Weitere Informationen zur Erfüllung der Kriterien für den Datenspeicherort finden Sie unter [Datenspeicherort](/docs/services/blockchain/remote_peer.html#data-residency).
 
 ### Schlüsselmanagement
 {: #icp-security-key-management}
 
-Das Schlüsselmanagement stellt einen kritischen Aspekt für die Sicherheit ferner Peers dar. Wenn ein privater Schlüssel manipuliert wird oder verloren geht, dann können feindliche Akteure möglicherweise auf die Daten und die Funktionalität Ihres fernen Peers zugreifen. {{site.data.keyword.blockchainfull_notm}} Platform Enterprise Plan verwendet [Hardware Security Modules](../glossary.html#hsm) (HSM), um die privaten Schlüssel Ihres Netzes zu speichern. Bei HSM handelt es sich um eine physische Appliance, die verhindert, dass andere Parteien auf Ihren privaten Schlüssel zugreifen können.
-Wenn Sie einem fernen Peer unter ICP bereitstellen, dann sind Sie für das Management Ihrer privaten Schlüssel verantwortlich. Obwohl {{site.data.keyword.blockchainfull_notm}} Platform Ihre privaten Schlüssel generiert, werden diese Schlüssel nicht unter Platform gespeichert. Es ist wichtig sicherzustellen, dass Ihre Schlüssel an einem sicheren Ort gespeichert werden, damit sie nicht manipuliert werden können. Sie finden den privaten Schlüssel Ihres fernen Peers im Keystore-Ordner des Peer-MSP im Verzeichnis `/mnt/crypto/peer/peer/msp/keystore/` des Peer-Containers. Weitere Informationen zu den Zertifikaten im fernen Peer finden Sie im Abschnitt zum [Membership Services Provider](../certificates.html#msp) im Lernprogramm [Zertifikate unter {{site.data.keyword.blockchainfull_notm}} Platform verwalten](../certificates.html).
+Das Schlüsselmanagement stellt einen kritischen Aspekt für die Sicherheit ferner Peers dar. Wenn ein privater Schlüssel manipuliert wird oder verloren geht, dann können feindliche Akteure möglicherweise auf die Daten und die Funktionalität Ihres fernen Peers zugreifen. {{site.data.keyword.blockchainfull_notm}} Platform Enterprise Plan verwendet [Hardware Security Modules](/docs/services/blockchain/glossary.html#hsm) (HSM), um die privaten Schlüssel Ihres Netzes zu speichern. Bei HSM handelt es sich um eine physische Appliance, die verhindert, dass andere Parteien auf Ihren privaten Schlüssel zugreifen können.
+Wenn Sie einem fernen Peer unter ICP bereitstellen, dann sind Sie für das Management Ihrer privaten Schlüssel verantwortlich. Obwohl {{site.data.keyword.blockchainfull_notm}} Platform Ihre privaten Schlüssel generiert, werden diese Schlüssel nicht unter Platform gespeichert. Es ist wichtig sicherzustellen, dass Ihre Schlüssel an einem sicheren Ort gespeichert werden, damit sie nicht manipuliert werden können. Sie finden den privaten Schlüssel Ihres fernen Peers im Keystore-Ordner des Peer-MSP im Verzeichnis `/mnt/crypto/peer/peer/msp/keystore/` des Peer-Containers. Weitere Informationen zu den Zertifikaten im fernen Peer finden Sie im Abschnitt zum [Membership Services Provider](/docs/services/blockchain/certificates.html#msp) im Lernprogramm [Zertifikate unter {{site.data.keyword.blockchainfull_notm}} Platform verwalten](/docs/services/blockchain/certificates.html).
 
 Sie können Key Escrow verwenden, um verloren gegangene private Schlüssel wiederherzustellen. Der entsprechende Arbeitsschritt muss ausgeführt werden, bevor Sie einen Schlüssel verlieren. Wenn ein privater Schlüssel nicht wiederhergestellt werden kann, dann müssen sie neue private Schlüssel anfordern. Hierzu müssen Sie eine neue Identität bei Ihrer Zertifizierungsstelle registrieren. Außerdem sollten Sie in diesem Fall das signCert-Zertifikat von allen Kanälen entfernen, denen Sie beigetreten sind, oder es auf diesen Kanälen ersetzen.
 
@@ -508,12 +508,12 @@ Wenn in ICP ein privater Schlüssel erstellt wird, dann werden zwei Sätze der u
 
 [Transport Layer Security ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://www.ibm.com/support/knowledgecenter/en/SSFKSJ_7.1.0/com.ibm.mq.doc/sy10660_.htm "Übersicht zum SSL- oder TLS-Handshake") (TLS) ist im Vertrauensmodell von Hyperledger Fabric eingebettet. Alle Komponenten unter {{site.data.keyword.blockchainfull_notm}} Platform verwenden TLS zur Authentifizierung und Kommunikation mit anderen Komponenten. Aus diesem Grund müssen die Netzkomponenten unter {{site.data.keyword.blockchainfull_notm}} Platform in der Lage sein, den TLS-Handshake mit Ihren fernen Peers auszuführen. Dies hat u. a. zur Folge, dass Sie den Durchgriff von den Client-Apps zu Ihrem Peer in Ihrer Web-Firewall (z. B. über ein Whitelisting) aktivieren müssen.
 
-Sie können die gegenseitige TLS-Authentifizierung (Mutual TLS, MTLS) verwenden, für die eine 2-Wege-Authentifizierung (Server-Client) und keine 1-Wege-Authentifizierung (nur Server) erforderlich ist, um die Kommunikation zwischen Ihrer Anwendung und den Enterprise Plan-Netzen zu sichern. Sie können den Network Monitor zur [Aktivierung der gegenseitigen TLS-Authentifizierung](../v10_dashboard.html#mutual-tls) für Peers unter {{site.data.keyword.blockchainfull_notm}} Platform verwenden. Um die gegenseitige TLS-Authentifizierung auf Ihrem fernen Peer zu aktivieren, müssen Sie die Anweisungen zum [Aktivieren der gegenseitigen TLS-Authentifizierung für Peerknoten ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric.readthedocs.io/en/release-1.1/enable_tls.html "Sichern der Kommunikation mit Transport Layer Security") in der Hyperledger Fabric-Dokumentation befolgen. Es wird dringend empfohlen, die gegenseitige TLS-Authentifizierung für Ihre Anwendungen zu aktivieren.
+Sie können die gegenseitige TLS-Authentifizierung (Mutual TLS, MTLS) verwenden, für die eine 2-Wege-Authentifizierung (Server-Client) und keine 1-Wege-Authentifizierung (nur Server) erforderlich ist, um die Kommunikation zwischen Ihrer Anwendung und den Enterprise Plan-Netzen zu sichern. Sie können den Network Monitor zur [Aktivierung der gegenseitigen TLS-Authentifizierung](/docs/services/blockchain/v10_dashboard.html#mutual-tls) für Peers unter {{site.data.keyword.blockchainfull_notm}} Platform verwenden. Um die gegenseitige TLS-Authentifizierung auf Ihrem fernen Peer zu aktivieren, müssen Sie die Anweisungen zum [Aktivieren der gegenseitigen TLS-Authentifizierung für Peerknoten ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric.readthedocs.io/en/release-1.1/enable_tls.html "Sichern der Kommunikation mit Transport Layer Security") in der Hyperledger Fabric-Dokumentation befolgen. Es wird dringend empfohlen, die gegenseitige TLS-Authentifizierung für Ihre Anwendungen zu aktivieren.
 
 ### Konfiguration von Membership Service Provider
 {: #icp-security-MSP}
 
-{{site.data.keyword.blockchainfull_notm}} Platform-Komponenten verbrauchen Identitäten über Membership Service Providers (MSPs). MSPs ordnen die Zertifikate zu, die von den CAs mit den entsprechenden Netz- und Kanalrollen ausgegeben werden. Weitere Informationen zur Vorgehensweise von MSPs beim Arbeiten mit einem fernen Peer finden Sie im Abschnitt zu den [Membership Service Providers (MSPs)](../certificates.html#msp).
+{{site.data.keyword.blockchainfull_notm}} Platform-Komponenten verbrauchen Identitäten über Membership Service Providers (MSPs). MSPs ordnen die Zertifikate zu, die von den CAs mit den entsprechenden Netz- und Kanalrollen ausgegeben werden. Weitere Informationen zur Vorgehensweise von MSPs beim Arbeiten mit einem fernen Peer finden Sie im Abschnitt zu den [Membership Service Providers (MSPs)](/docs/services/blockchain/certificates.html#msp).
 
 ### Anwendungssicherheit
 {: #icp-security-appl}

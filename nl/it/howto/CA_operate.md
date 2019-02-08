@@ -221,7 +221,7 @@ Puoi generare i certificati solo utilizzando le identità che sono state registr
   ```
   {:codeblock}
 
-  `<enroll_id>` e `<enroll_password>` nel comando sono [il nome utente e la password dell'amministratore CA](CA_deploy_icp.html#admin-secret) che hai passato al segreto Kubernetes quando hai distribuito la CA (Certificate Authority). Immetti l'[URL della CA](#ca-url) in `<ca_url_with_port>`. Tralascia il `http://` all'inizio. `<ca_name>` è il valore che hai fornito al campo `CA Name` quando hai distribuito la CA.
+  `<enroll_id>` e `<enroll_password>` nel comando sono [il nome utente e la password dell'amministratore CA](/docs/services/blockchain/howto/CA_deploy_icp.html#admin-secret) che hai passato al segreto Kubernetes quando hai distribuito la CA (Certificate Authority). Immetti l'[URL della CA](#ca-url) in `<ca_url_with_port>`. Tralascia il `http://` all'inizio. `<ca_name>` è il valore che hai fornito al campo `CA Name` quando hai distribuito la CA.
 
   `<ca_tls_cert_path>` è il percorso completo del tuo [certificato TLS CA](#ca-tls).
 
@@ -263,7 +263,7 @@ Prima di distribuire un ordinante o un peer, devi creare un file JSON di configu
 Le seguenti istruzioni ti forniscono un [file di configurazione JSON template](#config-file-template) che puoi modificare e salvare sul tuo file system locale e che ti guida su come utilizzare la tua CA per completare questo file.
 
 - Attieniti alle seguenti istruzioni se stai distribuendo un ordinante su ICP o un peer per il collegamento a un consorzio ospitato su ICP.
-- Se vuoi distribuire un peer per il collegamento al piano Starter o Enterprise, segui invece le istruzioni sulla [Distribuzione dei peer in IBM Cloud Private per il collegamento al piano Starter o Enterprise](peer_deploy_ibp.html). Queste istruzioni ti guidano su come utilizzare la tua CA su {{site.data.keyword.blockchainfull_notm}} Platform per distribuire il nostro peer su ICP.
+- Se vuoi distribuire un peer per il collegamento al piano Starter o Enterprise, segui invece le istruzioni sulla [Distribuzione dei peer in IBM Cloud Private per il collegamento al piano Starter o Enterprise](/docs/services/blockchain/howto/peer_deploy_ibp.html). Queste istruzioni ti guidano su come utilizzare la tua CA su {{site.data.keyword.blockchainfull_notm}} Platform per distribuire il nostro peer su ICP.
 
 ### File di configurazione 
 {: #config-file-template}
@@ -551,7 +551,7 @@ export FABRIC_CA_CLIENT_HOME=$HOME/fabric-ca-client/tlsca-admin
 ```
 {:codeblock}
 
-Immetti il seguente comando per l'iscrizione come amministratore per la CA del TLS. Il comando è lo stesso che hai utilizzato per l'iscrizione come [amministratore della CA](#enroll-ca-admin), soltanto tu utilizzerai il nome dell'istanza della CA del TLS che hai specificato durante la [configurazione della CA.](CA_deploy_icp.html#icp-ca-configuration-parms) Assicurati di utilizzare gli stessi `ca-admin-name` e `ca-admin-password` nel tuo segreto della CA.
+Immetti il seguente comando per l'iscrizione come amministratore per la CA del TLS. Il comando è lo stesso che hai utilizzato per l'iscrizione come [amministratore della CA](#enroll-ca-admin), soltanto tu utilizzerai il nome dell'istanza della CA del TLS che hai specificato durante la [configurazione della CA.](/docs/services/blockchain/howto/CA_deploy_icp.html#icp-ca-configuration-parms) Assicurati di utilizzare gli stessi `ca-admin-name` e `ca-admin-password` nel tuo segreto della CA.
 
 ```
 fabric-ca-client enroll -u https://<enroll_id>:<enroll_password>@<ca_url_with_port> --caname <tls_ca_name> --tls.certfiles <ca_tls_cert_path>
@@ -593,7 +593,7 @@ Devi fornire un nome host della CSR per distribuire un ordinante o un peer. Ques
 
 #### Individuazione del valore dell'indirizzo IP proxy del cluster
 
-Se vuoi distribuire un ordinante o un peer sullo stesso cluster ICP in cui hai distribuito la tua CA, assicurati di avere il ruolo di [Amministratore del cluster ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Cluster administrator roles and actions") sul cluster ICP in cui sarà distribuito il peer o l'ordinante. Successivamente, immetti lo stesso IP proxy che hai utilizzato quando [hai configurato la tua CA](CA_deploy_icp.html#icp-ca-configuration-parms). Se vuoi distribuire l'ordinante o il peer a un cluster diverso, puoi richiamare il valore dell'indirizzo IP proxy del cluster dalla console ICP completando le seguenti istruzioni:
+Se vuoi distribuire un ordinante o un peer sullo stesso cluster ICP in cui hai distribuito la tua CA, assicurati di avere il ruolo di [Amministratore del cluster ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Cluster administrator roles and actions") sul cluster ICP in cui sarà distribuito il peer o l'ordinante. Successivamente, immetti lo stesso IP proxy che hai utilizzato quando [hai configurato la tua CA](/docs/services/blockchain/howto/CA_deploy_icp.html#icp-ca-configuration-parms). Se vuoi distribuire l'ordinante o il peer a un cluster diverso, puoi richiamare il valore dell'indirizzo IP proxy del cluster dalla console ICP completando le seguenti istruzioni:
 
 1. Accedi alla console ICP. Nel pannello di navigazione di sinistra, fai clic su **Piattaforma** e quindi su **Nodi** per visualizzare i nodi definiti nel cluster.
 2. Fai clic sul nodo con il ruolo `proxy` e copia il valore dell'`IP host` dalla tabella.
@@ -675,7 +675,7 @@ Dopo aver completato tutti i precedenti passi, il tuo file di configurazione agg
 ```
 {:codeblock}
 
-Puoi lasciare gli altri campi vuoti. Salva questo file perché ne hai bisogno quando distribuisci un [ordinante](orderer_deploy_icp.html) o un [peer](peer_deploy_icp.html).
+Puoi lasciare gli altri campi vuoti. Salva questo file perché ne hai bisogno quando distribuisci un [ordinante](/docs/services/blockchain/howto/orderer_deploy_icp.html) o un [peer](/docs/services/blockchain/howto/peer_deploy_icp.html).
 
 ## Membership Service Provider (MSP)
 {: #msp}
@@ -691,7 +691,7 @@ Le cartelle MSP devono avere una struttura definita in modo da essere utilizzate
 
 Puoi anche creare una cartella MSP a cui il client CA Fabric può fare riferimento utilizzando le API Swagger e il Monitoraggio della rete.
 
-- **cacerts** e **intermediatecerts**: puoi recuperare questi certificati con le [API Swagger](swagger_apis.html) inviando una richiesta `Get` all'API MSP.
+- **cacerts** e **intermediatecerts**: puoi recuperare questi certificati con le [API Swagger](/docs/services/blockchain/howto/swagger_apis.html) inviando una richiesta `Get` all'API MSP.
 - **signCerts** e **keystore**: puoi generare questi certificati facendo clic sul pulsante **Genera certificati** nel pannello "CA (Certificate Authority)". Si apre una finestra a comparsa con due certificati elencati. Copia e memorizza il **Certificato** in signCerts e la **Chiave privata** nel keystore. Conserva questi certificati in un luogo sicuro perché non vengono memorizzati sulla piattaforma.
 
 Molti componenti Fabric contengono informazioni aggiuntive all'interno della propria cartella MSP. Ad esempio, se gestisci un peer remoto, potresti vedere le seguenti cartelle:

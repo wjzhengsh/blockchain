@@ -157,8 +157,8 @@ Cambie al directorio donde se genera la carpeta de MSP del administrador de clas
 `$HOME/fabric-ca-client/orderer-admin/msp` o en `$HOME/fabric-ca-client/peer-admin/msp`
 
 Para poder trabajar con el clasificador, necesita realizar algunas gestiones sobre los certificados de la máquina local. También debe asegurarse de que puede acceder a los certificados TLS desde el clasificador. Para obtener más información sobre los certificados a utilizar, consulte
-[Proveedores de servicios de pertenencia](CA_operate.html#msp) en
-[Funcionamiento de una entidad emisora de certificados en {{site.data.keyword.cloud_notm}} privado](CA_operate.html).
+[Proveedores de servicios de pertenencia](/docs/services/blockchain/howto/CA_operate.html#msp) en
+[Funcionamiento de una entidad emisora de certificados en {{site.data.keyword.cloud_notm}} privado](/docs/services/blockchain/howto/CA_operate.html).
 
 1. Mueva el signCert del administrador de clasificador a una carpeta nueva denominada `admincerts`:
 
@@ -231,9 +231,9 @@ Tenga en cuenta que puede añadir una organización a un canal sin unirse al can
 
 En la lista siguiente se muestran los pasos y tareas generales que realizarán distintos grupos de organizaciones del consorcio.
 
-1. Es necesario que cada organización que se vaya a unir al consorcio [prepare una definición de organización](peer_operate_icp.html#organization-definition).
+1. Es necesario que cada organización que se vaya a unir al consorcio [prepare una definición de organización](/docs/services/blockchain/howto/peer_operate_icp.html#organization-definition).
 2. El administrador de la organización del clasificador [forma el consorcio](#consortium) añadiendo organizaciones al canal del sistema del clasificador.
-3. Cualquier organización del consorcio puede [crear un nuevo canal](peer_operate_icp.html#peer-icp-channeltx) mediante la preparación de una transacción de configuración de canal.
+3. Cualquier organización del consorcio puede [crear un nuevo canal](/docs/services/blockchain/howto/peer_operate_icp.html#peer-icp-channeltx) mediante la preparación de una transacción de configuración de canal.
 
 ## Obtención de las herramientas de Fabric
 {: #get-fabric-tools}
@@ -279,7 +279,7 @@ Debe descargar las herramientas de Hyperledger Fabric siguientes para actualizar
 ## Creación de una definición de organización
 {: #org-definition}
 
-La **definición** de una organización contiene el nombre de organización (ID de MSP) y los certificados pertinentes. El canal del sistema y los canales de aplicación utilizarán esta definición para incluir su organización en las políticas que controlan la creación, las actualizaciones y la aprobación de la transacción del canal. Cada organización que desee unirse al consorcio deberá completar este paso. Para obtener más información sobre, consulte [Preparación de una definición de organización](peer_operate_icp.html#organization-definition).
+La **definición** de una organización contiene el nombre de organización (ID de MSP) y los certificados pertinentes. El canal del sistema y los canales de aplicación utilizarán esta definición para incluir su organización en las políticas que controlan la creación, las actualizaciones y la aprobación de la transacción del canal. Cada organización que desee unirse al consorcio deberá completar este paso. Para obtener más información sobre, consulte [Preparación de una definición de organización](/docs/services/blockchain/howto/peer_operate_icp.html#organization-definition).
 
 ## Formación del consorcio
 {: #consortium}
@@ -291,7 +291,7 @@ Recupere el flujo de alto nivel para formar un consorcio:
 
 ### Obtención de las definiciones de organización
 
-El clasificador necesita recibir las [definiciones de organización](peer_operate_icp.html#organization-definition) de los miembros que deseen unirse al consorcio. Esto debe realizarse en una operación fuera de banda en la que los demás miembros le envían los archivos JSON que incluyen su ID de MSP y su material criptográfico. Como referencia en los mandatos siguientes, supondremos que ha creado una carpeta denominada
+El clasificador necesita recibir las [definiciones de organización](/docs/services/blockchain/howto/peer_operate_icp.html#organization-definition) de los miembros que deseen unirse al consorcio. Esto debe realizarse en una operación fuera de banda en la que los demás miembros le envían los archivos JSON que incluyen su ID de MSP y su material criptográfico. Como referencia en los mandatos siguientes, supondremos que ha creado una carpeta denominada
 `org-definitions` y que ha colocado todos los archivos pertinentes en dicho directorio.
 
 ### Recuperación del bloque de origen del canal del sistema
@@ -393,7 +393,7 @@ La [herramienta de Fabric](#get-fabric-tools) `configtxtlator` descargada convie
 Estos pasos siguen el flujo general de la guía de aprendizaje de actualización de canal acerca de
 [convertir el bloque al formato JSON]( https://hyperledger-fabric.readthedocs.io/en/release-1.2/channel_update_tutorial.html#convert-the-configuration-to-json-and-trim-it-down). Deberá realizar algunos cambios en los mandatos de la guía de aprendizaje para reflejar el hecho de que está actualizando el canal del sistema del clasificador en lugar de un canal de aplicación. Puede visitar la guía de aprendizaje para obtener más detalles sobre este proceso. En esta sección simplemente se proporcionan los mandatos.
 
-1. Copie el archivo JSON de la definición de organización de la carpeta donde haya [creado la organización](peer_operate_icp.html#organization-definition) a la carpeta `configupdate`. En el mandato de ejemplo que se muestra a continuación, el archivo JSON de la definición de organización es `org1definition.json`:
+1. Copie el archivo JSON de la definición de organización de la carpeta donde haya [creado la organización](/docs/services/blockchain/howto/peer_operate_icp.html#organization-definition) a la carpeta `configupdate`. En el mandato de ejemplo que se muestra a continuación, el archivo JSON de la definición de organización es `org1definition.json`:
 
    ```
    cp <path_to_config_folder>/org1definition.json $HOME/fabric-ca-client/org-definitions/configupdate
@@ -410,7 +410,7 @@ Estos pasos siguen el flujo general de la guía de aprendizaje de actualización
   {:codeblock}
 
 3. Ejecute el mandato siguiente para añadir el material criptográfico de una organización a la configuración del consorcio. Sustituya
-<NEWORGMSP> por el ID de MSP de organización de la [organización que haya creado](peer_operate_icp.html#organization-definition).
+<NEWORGMSP> por el ID de MSP de organización de la [organización que haya creado](/docs/services/blockchain/howto/peer_operate_icp.html#organization-definition).
 
   ```
   jq -s '.[0] * {"channel_group":{"groups":{"Consortiums":{"groups":{"SampleConsortium":{"groups": {"<NEWORGMSP>":.[1]}}}}}}}' config.json ./orgdefinition.json > modified_config.json

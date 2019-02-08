@@ -18,4 +18,4 @@ lastupdated: "2018-12-07"
 
 ***[Cette page est-elle utile ? Dites-nous.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
-Consultez le tutoriel [Utilisation du Moniteur réseau](v10_dashboard.html) pour en savoir plus sur l'exploitation de votre réseau de plan Starter.
+Consultez le tutoriel [Utilisation du Moniteur réseau](/docs/services/blockchain/v10_dashboard.html) pour en savoir plus sur l'exploitation de votre réseau de plan Starter.

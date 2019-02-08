@@ -22,7 +22,7 @@ lastupdated: "2018-08-31"
 Für {{site.data.keyword.blockchainfull}} Platform werden monatliche Mitgliedsgebühren und Peer-Gebühren in Rechnung gestellt. Netzmitglieder können ihre Rechnung über ihre {{site.data.keyword.cloud_notm}}-Konten bezahlen, die den Bereich zum Erstellen der Netzinstanz enthalten. Alternativ hierzu kann ein Netzmitglied die Rechnung für andere (oder auch alle) Mitglieder im Netz übernehmen und für das gesamte Netz bezahlen. Der Zahler kann die Abrechnungen bei Bedarf auch an andere Mitglieder zurückübertragen.
 {:shortdesc}
 
-Ihre Kosten sind je nach ausgewähltem Netzplan und Größe der genutzten Ressourcen unterschiedlich. Weitere Informationen zur Preisstruktur finden Sie unter [Preisstruktur](pricing.html).
+Ihre Kosten sind je nach ausgewähltem Netzplan und Größe der genutzten Ressourcen unterschiedlich. Weitere Informationen zur Preisstruktur finden Sie unter [Preisstruktur](/docs/services/blockchain/howto/pricing.html).
 
 ## Voraussetzungen
 {: #prereq}

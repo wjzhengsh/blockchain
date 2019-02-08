@@ -17,10 +17,10 @@ lastupdated: "2018-12-07"
 
 ***[¿Le resulta útil esta página? Indíquenos su opinión.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
-Los clasificadores autentican clientes, ordenan transacciones y difunden transacciones en una red blockchain con el componente de clasificador. Para obtener más información sobre los clasificadores y qué papel desempeñan en una red blockchain, consulte [Visión general de los componentes de blockchain](../blockchain_component_overview.html).
+Los clasificadores autentican clientes, ordenan transacciones y difunden transacciones en una red blockchain con el componente de clasificador. Para obtener más información sobre los clasificadores y qué papel desempeñan en una red blockchain, consulte [Visión general de los componentes de blockchain](/docs/services/blockchain/blockchain_component_overview.html).
 {:shortdesc}
 
-Antes de desplegar un servicio de ordenación, revise las [Consideraciones y limitaciones](../ibp-for-icp-about.html#ibp-icp-considerations).
+Antes de desplegar un servicio de ordenación, revise las [Consideraciones y limitaciones](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-considerations).
 
 ## Recursos necesarios
 {: #ca-resources-required}
@@ -51,7 +51,7 @@ Si no utiliza el suministro dinámico, deberán crearse [volúmenes persistentes
 ## Requisitos previos para desplegar un clasificador
 {: #prerequisites-orderer-icp}
 
-1. Para poder instalar un clasificador en ICP, primero debe [instalar ICP](../ICP_setup.html) e [instalar el diagrama de Helm de la plataforma {{site.data.keyword.blockchainfull_notm}}](helm_install_icp.html).
+1. Para poder instalar un clasificador en ICP, primero debe [instalar ICP](/docs/services/blockchain/ICP_setup.html) e [instalar el diagrama de Helm de la plataforma {{site.data.keyword.blockchainfull_notm}}](/docs/services/blockchain/howto/helm_install_icp.html).
 
 2. Si utiliza Community Edition y desea ejecutar este diagrama de Helm en un clúster de ICP sin conexión a Internet, debe crear archivados en una máquina conectada a Internet para poder instalar los archivados en el clúster de ICP. Para obtener más información, consulte [Adición de aplicaciones destacadas a clústeres sin conexión a Internet ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_package_offline.html "Adición de aplicaciones destacadas a clústeres sin conexión a Internet"){:new_window}. Tenga en cuenta que puede encontrar el archivo de especificación `manifest.yaml` en ibm-blockchain-platform-dev/ibm_cloud_pak en el diagrama de Helm.
 
@@ -62,7 +62,7 @@ Si no utiliza el suministro dinámico, deberán crearse [volúmenes persistentes
 ## Creación de un archivo de configuración de clasificador
 {: #orderer-config-file}
 
-Para desplegar un clasificador, primero debe crear un archivo de configuración que contiene información importante sobre la identidad del clasificador y su CA. A continuación, debe pasar este archivo al diagrama de Helm durante la configuración utilizando un objeto de [secreto de Kubernetes ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://kubernetes.io/docs/concepts/configuration/secret/). Este archivo permitirá que el clasificador pueda obtener los certificados que necesita de la CA para unirse a una red blockchain. También contiene un certificado de administrador que le permitirá trabajar con el clasificador como usuario administrador. Siga las instrucciones para [utilizar la CA para desplegar un clasificador o igual](CA_operate.html#deploy-orderer-peer) antes de la configuración del clasificador.
+Para desplegar un clasificador, primero debe crear un archivo de configuración que contiene información importante sobre la identidad del clasificador y su CA. A continuación, debe pasar este archivo al diagrama de Helm durante la configuración utilizando un objeto de [secreto de Kubernetes ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://kubernetes.io/docs/concepts/configuration/secret/). Este archivo permitirá que el clasificador pueda obtener los certificados que necesita de la CA para unirse a una red blockchain. También contiene un certificado de administrador que le permitirá trabajar con el clasificador como usuario administrador. Siga las instrucciones para [utilizar la CA para desplegar un clasificador o igual](/docs/services/blockchain/howto/CA_operate.html#deploy-orderer-peer) antes de la configuración del clasificador.
 
 Debe proporcionar los nombres de host de CSR en el archivo de configuración. Esto incluye el `nombre de host de servicio`, que estará basado en el `nombre de release de Helm` que especifique durante el despliegue. El `nombre de host de servicio` es el `helm_release_name` que especifique con la serie `-orderer` añadida al final. Por ejemplo, si especifica un `nombre de release de Helm` de `orderer1`, puede insertar el valor siguiente en la sección `"csr"` del archivo:
 
@@ -224,4 +224,4 @@ Tras completar los parámetros de configuración y pulsar el botón **Instalar**
 ## Visualización de los registros de clasificador
 {: #orderer-view-logs}
 
-Los registros de componentes se pueden visualizar desde la línea de mandatos utilizando los [`mandatos de la CLI kubectl`](orderer_operate.html#orderer-kubectl-configure) o a través de [Kibana ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.elastic.co/products/kibana "Su ventana en Elastic Search"), que se incluye en el clúster de ICP. Para obtener más información, consulte estas [instrucciones para acceder a los registros](orderer_operate.html#orderer-view-logs).
+Los registros de componentes se pueden visualizar desde la línea de mandatos utilizando los [`mandatos de la CLI kubectl`](/docs/services/blockchain/howto/orderer_operate.html#orderer-kubectl-configure) o a través de [Kibana ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.elastic.co/products/kibana "Su ventana en Elastic Search"), que se incluye en el clúster de ICP. Para obtener más información, consulte estas [instrucciones para acceder a los registros](/docs/services/blockchain/howto/orderer_operate.html#orderer-view-logs).

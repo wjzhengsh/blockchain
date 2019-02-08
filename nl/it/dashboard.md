@@ -18,4 +18,4 @@ lastupdated: "2018-12-07"
 
 ***[Questa pagina è utile? Faccelo sapere.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
-Visita l'esercitazione [Utilizzo del Monitoraggio della rete](v10_dashboard.html) per ulteriori informazioni su come utilizzare la tua rete piano Starter.
+Visita l'esercitazione [Utilizzo del Monitoraggio della rete](/docs/services/blockchain/v10_dashboard.html) per ulteriori informazioni su come utilizzare la tua rete piano Starter.

@@ -14,14 +14,14 @@ lastupdated: "2017-12-06"
 
 # Creación de canales gestionados 
 
-**ATENCIÓN:** Antes de utilizar una oferta de {{site.data.keyword.blockchainfull}}, debe leer la información técnica y de soporte de la sección [Descargo de responsabilidad](needtoknow.html).  
+**ATENCIÓN:** Antes de utilizar una oferta de {{site.data.keyword.blockchainfull}}, debe leer la información técnica y de soporte de la sección [Descargo de responsabilidad](/docs/services/blockchain/needtoknow.html).  
 {:shortdesc}
 
 En algunos casos (por ejemplo, mercados de intercambio de divisas altamente regulados), sería necesario poner a un tercero a cargo de las funciones administrativas en canales que normalmente gestionarían diversos operadores o miembros. 
 
 El proceso de suministro de una red así es similar a la creación de una red. La principal diferencia radica en la asignación de permisos a los miembros para la realización de transacciones en los canales.  
 
-Los pasos para crear una red e invitar a miembros pueden encontrarse aquí: [Gobierno de red](get_start.html#creating-a-network). 
+Los pasos para crear una red e invitar a miembros pueden encontrarse aquí: [Gobierno de red](/docs/services/blockchain/get_start.html#creating-a-network). 
 
 **Nota**: en un ejemplo real, el operador de esa red podría instalar códigos de encadenamiento personalizados durante la fase de "creación de red" utilizando el Editor de políticas, pero para este ejemplo vamos a suponer que la configuración de red es estándar. 
 
@@ -52,7 +52,7 @@ En una red con 15 miembros (14 bancos y usted, el tercero de confianza), podría
 
 El canal se ha creado correctamente, pero aún necesita código de encadenamiento conectado al mismo. En un canal dedicado a intercambios de divisas, este código de encadenamiento seguramente necesitaría los tres miembros del canal (los dos bancos en cuestión y usted, el tercero de confianza) para la aprobación de **cada** transacción. También puede escribirse este código de encadenamiento de forma que se envíe un registro del *resultado* de la transacción a un canal "de solo lectura" gestionado compuesto por cada miembro de la red (se explicará más adelante). No obstante, antes de que se pueda crear una instancia de un código de encadenamiento, este debe instalarse en los iguales de los miembros. Una vez instalado, el operador de canal (usted) podrá crear una instancia.  
 
-El procedimiento para instalar y crear una instancia de este tipo de código de encadenamiento no es distinto de cualquier otro código de encadenamiento (salvo por el número de operadores necesarios para aprobar la instancia), por lo que puede seguir las instrucciones descritas aquí: [Instalación y creación de instancia de código de encadenamiento](install_instantiate_chaincode.html.html).
+El procedimiento para instalar y crear una instancia de este tipo de código de encadenamiento no es distinto de cualquier otro código de encadenamiento (salvo por el número de operadores necesarios para aprobar la instancia), por lo que puede seguir las instrucciones descritas aquí: [Instalación y creación de instancia de código de encadenamiento](/docs/services/blockchain/install_instantiate_chaincode.html.html).
 
 # Un canal gestionado de solo lectura
 

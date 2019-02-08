@@ -30,7 +30,7 @@ Bei {{site.data.keyword.blockchainfull}} Platform werden Organisationen, die Blo
 
 *Abbildung 1. Übersicht über die Preisstruktur bei {{site.data.keyword.blockchainfull}}*
 
-Die monatliche Gebühr wird nach täglichen Anteilen in Rechnung gestellt. Beispiel: Ein Mitglied (zugeordnete Mitgliedsgebühr 1.000 $) von zwei Peers (Peergebühr 1.000 $ x 2 Peers) muss 3.000 $ pro Monat bezahlen. Wenn der Monat 30 Tage hat, bezahlt das Mitglied 100 $ (3.000 $/30) pro Tag. Weitere Informationen zur Bezahlung für Ihre Netze finden Sie unter [Zahlungsmodus](paying_mode.html).
+Die monatliche Gebühr wird nach täglichen Anteilen in Rechnung gestellt. Beispiel: Ein Mitglied (zugeordnete Mitgliedsgebühr 1.000 $) von zwei Peers (Peergebühr 1.000 $ x 2 Peers) muss 3.000 $ pro Monat bezahlen. Wenn der Monat 30 Tage hat, bezahlt das Mitglied 100 $ (3.000 $/30) pro Tag. Weitere Informationen zur Bezahlung für Ihre Netze finden Sie unter [Zahlungsmodus](/docs/services/blockchain/howto/paying_mode.html).
 
 Der **{{site.data.keyword.blockchainfull_notm}} Platform Starter Plan beinhaltet ein Testguthaben in Höhe von 500 $**, das auf die Gebühren angerechnet wird. Weitere Informationen hierzu finden Sie im Abschnitt [Preisstruktur des Starter Plans](#starter-plan-pricing).
 

@@ -36,10 +36,10 @@ Luego puede utilizar uno de los métodos siguientes para utilizar el igual.
 Los SDK de Fabric son el método recomendado, aunque en las instrucciones se presupone que está familiarizado con el funcionamiento del SDK. Si prefiere utilizar la línea de mandatos, puede utilizar el cliente de igual de Fabric.
 
 <!--
-It is recommended that you deploy at least two instances of the peer Helm chart for [high availability](peer_icp.html#high-availability). Therefore, you need to follow these operations steps once for each peer. When you are ready to invoke and query chaincode from your application, connect to both peers to ensure that your [applications are highly available](../v10_application.html#ha-app).
+It is recommended that you deploy at least two instances of the peer Helm chart for [high availability](/docs/services/blockchain/howto/peer_icp.html#high-availability). Therefore, you need to follow these operations steps once for each peer. When you are ready to invoke and query chaincode from your application, connect to both peers to ensure that your [applications are highly available](/docs/services/blockchain/v10_application.html#ha-app).
 -->
 
-**Nota**: un igual de la plataforma {{site.data.keyword.blockchainfull_notm}} no tiene acceso a toda la funcionalidad ni al soporte de los iguales alojados en la plataforma {{site.data.keyword.blockchainfull_notm}}. Como resultado, no puede utilizar el supervisor de red para trabajar con un igual en ICP. Antes de empezar a ejecutar iguales, asegúrese de revisar las [consideraciones y limitaciones](../ibp-for-icp-about.html#ibp-icp-considerations).
+**Nota**: un igual de la plataforma {{site.data.keyword.blockchainfull_notm}} no tiene acceso a toda la funcionalidad ni al soporte de los iguales alojados en la plataforma {{site.data.keyword.blockchainfull_notm}}. Como resultado, no puede utilizar el supervisor de red para trabajar con un igual en ICP. Antes de empezar a ejecutar iguales, asegúrese de revisar las [consideraciones y limitaciones](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-considerations).
 
 ## Requisitos previos
 
@@ -153,7 +153,7 @@ Necesita descargar el certificado TLS del igual y pasarlo a los mandatos para co
 
 Los SDK de Hyperledger Fabric ofrecen un potente conjunto de API que permiten a las aplicaciones interactuar con las redes blockchain. Encontrará la lista más reciente de lenguajes soportados y una lista de las API disponibles en los SDK de Fabric en la [documentación de la comunidad de SDK de Hyperledger Fabric ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/getting_started.html#hyperledger-fabric-sdks "documentación de la comunidad de SDK de Hyperledger Fabric"). Puede utilizar los SDK de Fabric para unir su igual a un canal en la plataforma {{site.data.keyword.blockchainfull_notm}}, instalar un código de encadenamiento en el igual y crear una instancia del código de encadenamiento en un canal.
 
-En las siguientes instrucciones se utiliza el [Node SDK de Fabric ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://fabric-sdk-node.github.io/ "Node SDK de Fabric") para trabajar con el igual y se da por supuesto que está familiarizado con el SDK. Puede utilizar la [guía de aprendizaje sobre desarrollo de aplicaciones](../v10_application.html) para aprender a utilizar Node SDK antes de empezar y como guía para desarrollar aplicaciones con el igual cuanto esté listo para invocar el código de encadenamiento de la consulta.
+En las siguientes instrucciones se utiliza el [Node SDK de Fabric ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://fabric-sdk-node.github.io/ "Node SDK de Fabric") para trabajar con el igual y se da por supuesto que está familiarizado con el SDK. Puede utilizar la [guía de aprendizaje sobre desarrollo de aplicaciones](/docs/services/blockchain/v10_application.html) para aprender a utilizar Node SDK antes de empezar y como guía para desarrollar aplicaciones con el igual cuanto esté listo para invocar el código de encadenamiento de la consulta.
 
 ### Instalación de Node SDK
 
@@ -171,13 +171,13 @@ Se recomienda utilizar la versión 1.2 de Node SDK.
 
 El igual se despliega con el signCert del administrador de igual incluido. Esto le permite utilizar los certificados del administrador de igual y la carpeta de MSP para trabajar con el igual.
 
-Localice los certificados que ha creado al [inscribir el administrador de igual](peer_deploy_ibp.html#enroll-admin). Si ha utilizado los mandatos de ejemplo, puede encontrar la carpeta de MSP del administrador de igual en `$HOME/fabric-ca-client/peer-admin`.
+Localice los certificados que ha creado al [inscribir el administrador de igual](/docs/services/blockchain/howto/peer_deploy_ibp.html#enroll-admin). Si ha utilizado los mandatos de ejemplo, puede encontrar la carpeta de MSP del administrador de igual en `$HOME/fabric-ca-client/peer-admin`.
   - Puede crear el contexto de usuario del administrador de igual con el SDK utilizando el signCert (clave pública) y la clave privada en la carpeta de MSP. Puede encontrar dichas claves en las ubicaciones siguientes:
     - El signCert se puede encontrar en la carpeta **signcerts**: `$HOME/fabric-ca-client/peer-admin/msp/signcerts`
     - La clave privada se puede encontrar en la carpeta **keystore**: `$HOME/fabric-ca-client/peer-admin/msp/keystore`
-    Puede ver un ejemplo de cómo formar un contexto de usuario y trabajar con el SDK utilizando únicamente las claves pública y privada en [esta sección de la guía de aprendizaje de desarrollo de aplicaciones](../v10_application.html#enroll-panel).
+    Puede ver un ejemplo de cómo formar un contexto de usuario y trabajar con el SDK utilizando únicamente las claves pública y privada en [esta sección de la guía de aprendizaje de desarrollo de aplicaciones](/docs/services/blockchain/v10_application.html#enroll-panel).
 
-También puede utilizar el SDK para generar el signCert del administrador de igual y la clave privada utilizando la información de punto final de la entidad emisora de certificados en el Plan inicial o el Plan empresarial y su [nombre de usuario y contraseña de administrador de igual](peer_deploy_ibp.html#register-admin).
+También puede utilizar el SDK para generar el signCert del administrador de igual y la clave privada utilizando la información de punto final de la entidad emisora de certificados en el Plan inicial o el Plan empresarial y su [nombre de usuario y contraseña de administrador de igual](/docs/services/blockchain/howto/peer_deploy_ibp.html#register-admin).
 
 ### Carga del signCert de administrador de igual en el Plan inicial o el Plan empresarial
 {: #remote-peer-upload-sdk}
@@ -217,25 +217,25 @@ You need to specify a `ssl-target-name-override` of `<something>.blockchain.com`
 
 La organización necesita ser miembro de un canal para que pueda unirse al canal con el igual.
 
-  - Puede iniciar un nuevo canal para el igual. Si es el iniciador del canal, puede incluir automáticamente su organización durante la [creación del canal](create_channel.html#creating-a-channel).
+  - Puede iniciar un nuevo canal para el igual. Si es el iniciador del canal, puede incluir automáticamente su organización durante la [creación del canal](/docs/services/blockchain/howto/create_channel.html#creating-a-channel).
 
-  - Otro miembro de la red blockchain también puede añadir su organización a un canal existente mediante una [actualización de canal](create_channel.html#updating-a-channel).
+  - Otro miembro de la red blockchain también puede añadir su organización a un canal existente mediante una [actualización de canal](/docs/services/blockchain/howto/create_channel.html#updating-a-channel).
 
     Una vez que la organización se haya añadido a un canal, deberá añadir el signCert del igual al canal para que otros miembros puedan verificar la firma digital durante las transacciones. El igual carga su signCert durante la instalación, lo que implica que solo necesita sincronizar el certificado con el canal. En la pantalla "Canales" del supervisor de red, localice el canal al que se ha unido su organización y seleccione **Sincronizar certificado** en la lista desplegable bajo la cabecera **Acción**. Esta acción sincroniza los certificados entre todos los iguales del canal. Es posible que tenga que esperar unos minutos a que finalice la sincronización del canal antes de emitir los mandatos `join channel`.
 
     **Nota:** solo podrá ver los bloques nuevos que se añaden al canal, el código de encadenamiento del que se está creando una instancia y otras actualizaciones del canal en la pantalla "Canales" del supervisor de red si el igual que está añadiendo a ICP y conectando a una red de Plan inicial o Plan empresarial forma parte de la misma organización que un igual que se haya añadido con el supervisor de red. Esto se debe a que el supervisor de red recopila información en la pantalla "Canales" de su igual y no tiene visibilidad para los iguales que estén fuera de {{site.data.keyword.cloud_notm}}. Si ninguno de sus iguales utiliza la característica de datos privados, la información del supervisor de red será tanto para un igual de una organización como para el otro.
 
-Después de que la organización pase a ser un miembro de un canal, siga las instrucciones para hacer que [el igual se una a un canal](../v10_application.html#join-channel-sdk) utilizando el SDK. Debe especificar URL del servicio de ordenación y el nombre del canal.
+Después de que la organización pase a ser un miembro de un canal, siga las instrucciones para hacer que [el igual se una a un canal](/docs/services/blockchain/v10_application.html#join-channel-sdk) utilizando el SDK. Debe especificar URL del servicio de ordenación y el nombre del canal.
 
 ### Utilización del SDK para instalar el código de encadenamiento en el igual
 {: #peer-install-cc-sdk}
 
-Siga las instrucciones siguientes para utilizar el SDK para [instalar un código de encadenamiento](../v10_application.html#install-cc-sdk) en el igual.
+Siga las instrucciones siguientes para utilizar el SDK para [instalar un código de encadenamiento](/docs/services/blockchain/v10_application.html#install-cc-sdk) en el igual.
 
 ### Utilización del SDK para crear una instancia de código de encadenamiento en el canal
 {: #peer-instantiate-cc-sdk}
 
-Sólo un miembro del canal necesita crear una instancia o actualizar el código de encadenamiento. Por lo tanto, cualquier miembro de red del canal con iguales en la plataforma {{site.data.keyword.blockchainfull_notm}} puede utilizar el supervisor de red para crear una instancia de código de encadenamiento y especificar políticas de aprobación. Sin embargo, si desea utilizar el igual para crear una instancia del código de encadenamiento en un canal, puede utilizar el SDK y seguir las instrucciones para [crear una instancia de un código de encadenamiento](../v10_application.html#instantiate-cc-sdk).
+Sólo un miembro del canal necesita crear una instancia o actualizar el código de encadenamiento. Por lo tanto, cualquier miembro de red del canal con iguales en la plataforma {{site.data.keyword.blockchainfull_notm}} puede utilizar el supervisor de red para crear una instancia de código de encadenamiento y especificar políticas de aprobación. Sin embargo, si desea utilizar el igual para crear una instancia del código de encadenamiento en un canal, puede utilizar el SDK y seguir las instrucciones para [crear una instancia de un código de encadenamiento](/docs/services/blockchain/v10_application.html#instantiate-cc-sdk).
 
 ## Utilización de la CLI para trabajar con el igual
 {: #peer-cli-operate}
@@ -243,7 +243,7 @@ Sólo un miembro del canal necesita crear una instancia o actualizar el código 
 También puede trabajar con el igual desde la línea de mandatos utilizando el cliente de igual (`peer`) de Fabric.
 
 El igual se ha desplegado con el signCert del administrador de igual incluido, permitiendo que dicha identidad pueda trabajar con el igual. Las instrucciones siguientes utilizarán la carpeta de MSP del administrador de igual que se generó cuando
-[desplegó el igual](peer_deploy_ibp.html#register-admin) para hacer que el igual se una a un canal, instalar un código de encadenamiento en el igual y, a continuación, crear una instancia del código de encadenamiento en un canal.
+[desplegó el igual](/docs/services/blockchain/howto/peer_deploy_ibp.html#register-admin) para hacer que el igual se una a un canal, instalar un código de encadenamiento en el igual y, a continuación, crear una instancia del código de encadenamiento en un canal.
 
 ### Descarga del cliente de igual de Fabric
 {: #peer-client}
@@ -293,7 +293,7 @@ cd $HOME/fabric-ca-client/peer-admin/msp
 ```
 {:codeblock}
 
-Para poder trabajar con el igual, necesita realizar algunas gestiones sobre los certificados de la máquina local. Por ejemplo, deberá cargar el signCert del administrador de igual en el Plan inicial o el Plan empresarial y asegurarse de que puede acceder a los certificados TLS desde el igual y la red en {{site.data.keyword.cloud_notm}}. Para obtener más información sobre los certificados a utilizar y las tareas que debe realizar, consulte [Gestión de certificados en la plataforma {{site.data.keyword.blockchainfull_notm}}](../certificates.html).
+Para poder trabajar con el igual, necesita realizar algunas gestiones sobre los certificados de la máquina local. Por ejemplo, deberá cargar el signCert del administrador de igual en el Plan inicial o el Plan empresarial y asegurarse de que puede acceder a los certificados TLS desde el igual y la red en {{site.data.keyword.cloud_notm}}. Para obtener más información sobre los certificados a utilizar y las tareas que debe realizar, consulte [Gestión de certificados en la plataforma {{site.data.keyword.blockchainfull_notm}}](/docs/services/blockchain/certificates.html).
 
 1. Mueva el signCert del administrador de igual a una carpeta nueva denominada `admincerts`:
 
@@ -319,7 +319,7 @@ Para poder trabajar con el igual, necesita realizar algunas gestiones sobre los 
 3. Asegúrese de haber [descargado el certificado TLS del igual](#peer-tls) y de que puede hacer referencia a él desde la línea de mandatos. Si ha seguido los mandatos de ejemplo, puede encontrar este certificado TLS en el archivo
 `$HOME/fabric-ca-client/peer-tls/peertls.pem`.
 
-4. También deberá hacer referencia al certificado TLS que ha utilizado para comunicarse con la entidad emisora de certificados del Plan inicial o el Plan empresarial al [inscribir el administrador de igual](peer_deploy_ibp.html#enroll-admin). Si ha seguido los mandatos de ejemplo de esta documentación, puede encontrar el certificado TLS en el archivo `$HOME/fabric-ca-client/tls-ibp/tls.pem`.
+4. También deberá hacer referencia al certificado TLS que ha utilizado para comunicarse con la entidad emisora de certificados del Plan inicial o el Plan empresarial al [inscribir el administrador de igual](/docs/services/blockchain/howto/peer_deploy_ibp.html#enroll-admin). Si ha seguido los mandatos de ejemplo de esta documentación, puede encontrar el certificado TLS en el archivo `$HOME/fabric-ca-client/tls-ibp/tls.pem`.
 
 Puede ejecutar un mandato de árbol (tree) para verificar que se han completado estos pasos. Vaya al directorio donde ha almacenado los certificados. Un mandato tree debe generar un resultado similar a la estructura siguiente:
 ```
@@ -436,8 +436,8 @@ Después de mover todos los certificados a la ubicación necesaria, es necesario
 
 Para poder ejecutar los mandatos de CLI para unir el igual a un canal, la organización se debe añadir a un canal de la red de una de las maneras siguientes.
 
-  - Puede iniciar un nuevo canal para el igual. Como iniciador de canal, puede incluir automáticamente su organización durante la [creación del canal](create_channel.html#creating-a-channel).
-  - Otro miembro de la red blockchain también puede añadir su organización a un canal existente mediante una [actualización de canal](create_channel.html#updating-a-channel).
+  - Puede iniciar un nuevo canal para el igual. Como iniciador de canal, puede incluir automáticamente su organización durante la [creación del canal](/docs/services/blockchain/howto/create_channel.html#creating-a-channel).
+  - Otro miembro de la red blockchain también puede añadir su organización a un canal existente mediante una [actualización de canal](/docs/services/blockchain/howto/create_channel.html#updating-a-channel).
 
     Una vez que la organización se haya añadido a un canal, deberá añadir el signCert del igual al canal para que otros miembros puedan verificar la firma digital durante las transacciones. El igual carga su signCert durante la instalación, por lo que solo necesita sincronizar el certificado con el canal. En la pantalla "Canales" del supervisor de red, localice el canal al que se ha unido su organización y seleccione **Sincronizar certificado** en la lista desplegable bajo la cabecera **Acción**. Esta acción sincroniza los certificados entre todos los iguales del canal.
 
@@ -551,7 +551,7 @@ Siga los pasos siguientes para actualizar el código de encadenamiento:
 
 2. Después de instalar el nuevo código de encadenamiento en todos los iguales del canal, utilice el supervisor de red o el mandato de [actualización de código de encadenamiento del igual ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/peerchaincode.html#peer-chaincode-upgrade) para utilizar el nuevo código de encadenamiento.
 
-Consulte el paso dos de estas [instrucciones](install_instantiate_chaincode.html#updating-a-chaincode) para obtener más información sobre cómo utilizar el panel "Instalar código" del supervisor de red para actualizar el código de encadenamiento en el canal.
+Consulte el paso dos de estas [instrucciones](/docs/services/blockchain/howto/install_instantiate_chaincode.html#updating-a-chaincode) para obtener más información sobre cómo utilizar el panel "Instalar código" del supervisor de red para actualizar el código de encadenamiento en el canal.
 
 ## Visualización de los registros de igual
 {: #peer-ibp-view-logs}

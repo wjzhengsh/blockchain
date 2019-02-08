@@ -17,7 +17,7 @@ lastupdated: "2018-12-07"
 
 {{site.data.keyword.blockchainfull}} Platform for {{site.data.keyword.cloud_notm}} Private viene fornito come un file di grafico Helm che può essere installato su un cluster ICP locale. Dopo che hai installato il grafico Helm, puoi trovare {{site.data.keyword.blockchainfull_notm}} Platform come un'applicazione nel catalogo ICP. 
 
-Prima di installare {{site.data.keyword.blockchainfull_notm}} Platform for ICP, rivedi [Considerazioni e limitazioni](../ibp-for-icp-about.html#ibp-icp-considerations). Per ulteriori informazioni su come distribuire i componenti blockchain inclusi nel grafico Helm, i prezzi e il supporto, consulta [About {{site.data.keyword.blockchainfull_notm}} Platform for ICP](../ibp-for-icp-about.html).
+Prima di installare {{site.data.keyword.blockchainfull_notm}} Platform for ICP, rivedi [Considerazioni e limitazioni](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-considerations). Per ulteriori informazioni su come distribuire i componenti blockchain inclusi nel grafico Helm, i prezzi e il supporto, consulta [About {{site.data.keyword.blockchainfull_notm}} Platform for ICP](/docs/services/blockchain/ibp-for-icp-about.html).
 
 {{site.data.keyword.blockchainfull_notm}} Platform for ICP offre due edizioni:
 
@@ -28,7 +28,7 @@ Prima di installare {{site.data.keyword.blockchainfull_notm}} Platform for ICP, 
 ## Prerequisiti per l'installazione del grafico Helm 
 {: #helm-install-prereqs}
 
-Prima di installare il grafico Helm, devi aver configurato un cluster ICP. Rivedi le istruzioni per [impostare e configurare un cluster ICP](../ICP_setup.html).
+Prima di installare il grafico Helm, devi aver configurato un cluster ICP. Rivedi le istruzioni per [impostare e configurare un cluster ICP](/docs/services/blockchain/ICP_setup.html).
 
 ## Installazione di {{site.data.keyword.blockchainfull_notm}} Platform dietro un firewall
 {: #helm-install-prereqs-firewall}
@@ -281,10 +281,10 @@ Dopo aver importato il grafico Helm in {{site.data.keyword.cloud_notm}} Private,
 
 ## Distribuzione di componenti individuali
 
-Dopo aver installato il grafico Helm, fai clic sul tile **ibm-blockchain-platform-prod** o **ibm-blockchain-platform-dev** nel tuo catalogo ICP per aprirlo. Puoi utilizzare la pagina di configurazione per distribuire tutti i componenti individuali della tua rete blockchain. Per ulteriori dettagli sui componenti necessari per la tua soluzione blockchain e l'ordine in cui devono essere distribuiti, vedi [Guida alla distribuzione di {{site.data.keyword.blockchainfull_notm}} Platform for ICP](../ibp_for_icp_deployment_guide.html).
+Dopo aver installato il grafico Helm, fai clic sul tile **ibm-blockchain-platform-prod** o **ibm-blockchain-platform-dev** nel tuo catalogo ICP per aprirlo. Puoi utilizzare la pagina di configurazione per distribuire tutti i componenti individuali della tua rete blockchain. Per ulteriori dettagli sui componenti necessari per la tua soluzione blockchain e l'ordine in cui devono essere distribuiti, vedi [Guida alla distribuzione di {{site.data.keyword.blockchainfull_notm}} Platform for ICP](/docs/services/blockchain/ibp_for_icp_deployment_guide.html).
 
 Successivamente, distribuisci i componenti individuali:
 
-- Se stai distribuendo un ordinante, devi prima configurare una CA (Certificate Authority) per l'ordinante. La CA genererà dei certificati che saranno utilizzati dagli altri componenti nella tua organizzazione. Per ulteriori informazioni, vedi [Distribuzione di una CA (Certificate Authority) {{site.data.keyword.blockchainfull_notm}} Platform in ICP](CA_deploy_icp.html). Successivamente, puoi distribuire l'ordinante che sarà il bind comune della rete. Per ulteriori informazioni, vedi [Distribuzione di un ordinante {{site.data.keyword.blockchainfull_notm}} Platform in ICP](orderer_deploy_icp.html)
+- Se stai distribuendo un ordinante, devi prima configurare una CA (Certificate Authority) per l'ordinante. La CA genererà dei certificati che saranno utilizzati dagli altri componenti nella tua organizzazione. Per ulteriori informazioni, vedi [Distribuzione di una CA (Certificate Authority) {{site.data.keyword.blockchainfull_notm}} Platform in ICP](/docs/services/blockchain/howto/CA_deploy_icp.html). Successivamente, puoi distribuire l'ordinante che sarà il bind comune della rete. Per ulteriori informazioni, vedi [Distribuzione di un ordinante {{site.data.keyword.blockchainfull_notm}} Platform in ICP](/docs/services/blockchain/howto/orderer_deploy_icp.html)
 
-- Se stai distribuendo un peer, devi prima configurare una CA (Certificate Authority) per il peer. La CA genererà dei certificati che saranno utilizzati dal peer. Per ulteriori informazioni, vedi [Distribuzione di una CA (Certificate Authority) {{site.data.keyword.blockchainfull_notm}} Platform in ICP](CA_deploy_icp.html). Successivamente, quando sei pronto ad unirti a una rete, puoi distribuire i peer che aderiranno al canale, approveranno le transazioni e archivieranno i tuoi dati. Per ulteriori informazioni, consulta [Distribuzione di un peer {{site.data.keyword.blockchainfull_notm}} in ICP](peer_deploy_icp.html) o [Distribuzione di un peer {{site.data.keyword.blockchainfull_notm}} per una rete del piano Starter o Enterprise](peer_deploy_ibp.html), a seconda della rete blockchain a cui si unirà il peer.
+- Se stai distribuendo un peer, devi prima configurare una CA (Certificate Authority) per il peer. La CA genererà dei certificati che saranno utilizzati dal peer. Per ulteriori informazioni, vedi [Distribuzione di una CA (Certificate Authority) {{site.data.keyword.blockchainfull_notm}} Platform in ICP](/docs/services/blockchain/howto/CA_deploy_icp.html). Successivamente, quando sei pronto ad unirti a una rete, puoi distribuire i peer che aderiranno al canale, approveranno le transazioni e archivieranno i tuoi dati. Per ulteriori informazioni, consulta [Distribuzione di un peer {{site.data.keyword.blockchainfull_notm}} in ICP](/docs/services/blockchain/howto/peer_deploy_icp.html) o [Distribuzione di un peer {{site.data.keyword.blockchainfull_notm}} per una rete del piano Starter o Enterprise](/docs/services/blockchain/howto/peer_deploy_ibp.html), a seconda della rete blockchain a cui si unirà il peer.

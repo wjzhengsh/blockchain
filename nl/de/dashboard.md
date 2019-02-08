@@ -18,4 +18,4 @@ lastupdated: "2018-12-07"
 
 ***[Ist diese Seite hilfreich? Teilen Sie uns Ihre Meinung mit.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
-Das Lernprogramm [Network Monitor verwenden](v10_dashboard.html) zeigt Ihnen, wie Sie Ihr Starter Plan-Netz betreiben.
+Das Lernprogramm [Network Monitor verwenden](/docs/services/blockchain/v10_dashboard.html) zeigt Ihnen, wie Sie Ihr Starter Plan-Netz betreiben.

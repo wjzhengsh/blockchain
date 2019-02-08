@@ -22,7 +22,7 @@ lastupdated: "2018-08-31"
 Les frais d'{{site.data.keyword.blockchainfull}} Platform sont mensuels avec des frais d'appartenance et des frais d'homologue. Les membres réseau peuvent régler leur facture avec leurs comptes {{site.data.keyword.cloud_notm}} qui contiennent l'espace nécessaire à la création de l'instance de réseau. Un membre réseau peut aussi couvrir les factures d'autres membres du réseau et payer pour l'intégralité du réseau. Le débiteur peut aussi transférer les factures à d'autres membres si nécessaire.
 {:shortdesc}
 
-Selon le plan de réseau que vous choisissez et la quantité de ressources que vous utilisez, vos paiements peuvent varier. Pour plus d'informations, voir [Tarification](pricing.html).
+Selon le plan de réseau que vous choisissez et la quantité de ressources que vous utilisez, vos paiements peuvent varier. Pour plus d'informations, voir [Tarification](/docs/services/blockchain/howto/pricing.html).
 
 ## Prérequis
 {: #prereq}

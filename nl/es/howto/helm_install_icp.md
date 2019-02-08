@@ -19,8 +19,8 @@ La plataforma {{site.data.keyword.blockchainfull}} para {{site.data.keyword.clou
 {{site.data.keyword.blockchainfull_notm}} como una aplicación en el catálogo de ICP.
 
 Antes de instalar la plataforma {{site.data.keyword.blockchainfull_notm}} para ICP, revise las
-[Consideraciones y limitaciones](../ibp-for-icp-about.html#ibp-icp-considerations). Para obtener más información sobre cómo desplegar los componentes de blockchain que se incluyen en el diagrama de Helm, los precios y el soporte, consulte
-[Acerca de la plataforma {{site.data.keyword.blockchainfull_notm}} para ICP](../ibp-for-icp-about.html).
+[Consideraciones y limitaciones](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-considerations). Para obtener más información sobre cómo desplegar los componentes de blockchain que se incluyen en el diagrama de Helm, los precios y el soporte, consulte
+[Acerca de la plataforma {{site.data.keyword.blockchainfull_notm}} para ICP](/docs/services/blockchain/ibp-for-icp-about.html).
 
 La plataforma {{site.data.keyword.blockchainfull_notm}} para ICP proporciona dos ediciones:
 
@@ -35,7 +35,7 @@ La plataforma {{site.data.keyword.blockchainfull_notm}} para ICP proporciona dos
 {: #helm-install-prereqs}
 
 Antes de instalar el diagrama de Helm, debe haber configurado un clúster de ICP. Consulte las instrucciones para
-[configurar un clúster de ICP](../ICP_setup.html).
+[configurar un clúster de ICP](/docs/services/blockchain/ICP_setup.html).
 
 ## Instalación de la plataforma {{site.data.keyword.blockchainfull_notm}} detrás de un cortafuegos
 {: #helm-install-prereqs-firewall}
@@ -298,10 +298,10 @@ Tras importar el diagrama de Helm en {{site.data.keyword.cloud_notm}} privado, d
 
 ## Despliegue de componentes individuales
 
-Después de instalar el diagrama de Helm, pulse sobre el mosaico **ibm-blockchain-platform-prod** o el mosaico **ibm-blockchain-platform-dev** del catálogo de ICP para abrirlo. Puede utilizar la página de configuración para desplegar cualquiera de los componentes individuales de la red blockchain. Para obtener más detalles sobre los componentes necesarios para la solución de blockchain y el orden en que se deben desplegar, consulte [Guía de despliegue de la plataforma {{site.data.keyword.blockchainfull_notm}} para ICP](../ibp_for_icp_deployment_guide.html).
+Después de instalar el diagrama de Helm, pulse sobre el mosaico **ibm-blockchain-platform-prod** o el mosaico **ibm-blockchain-platform-dev** del catálogo de ICP para abrirlo. Puede utilizar la página de configuración para desplegar cualquiera de los componentes individuales de la red blockchain. Para obtener más detalles sobre los componentes necesarios para la solución de blockchain y el orden en que se deben desplegar, consulte [Guía de despliegue de la plataforma {{site.data.keyword.blockchainfull_notm}} para ICP](/docs/services/blockchain/ibp_for_icp_deployment_guide.html).
 
 A continuación, despliegue los componentes individuales:
 
-- Si va a desplegar un clasificador, en primer lugar debe configurar una entidad emisora de certificados para el clasificador. La CA generará certificados que utilizarán los demás componentes de la organización. Para obtener más información, consulte [Despliegue de una entidad emisora de certificados de la plataforma {{site.data.keyword.blockchainfull_notm}} en ICP](CA_deploy_icp.html). A continuación, puede desplegar el clasificador, que será el enlace común de la red. Para obtener más información, consulte [Despliegue de un clasificador de la plataforma {{site.data.keyword.blockchainfull_notm}} en ICP](orderer_deploy_icp.html)
+- Si va a desplegar un clasificador, en primer lugar debe configurar una entidad emisora de certificados para el clasificador. La CA generará certificados que utilizarán los demás componentes de la organización. Para obtener más información, consulte [Despliegue de una entidad emisora de certificados de la plataforma {{site.data.keyword.blockchainfull_notm}} en ICP](/docs/services/blockchain/howto/CA_deploy_icp.html). A continuación, puede desplegar el clasificador, que será el enlace común de la red. Para obtener más información, consulte [Despliegue de un clasificador de la plataforma {{site.data.keyword.blockchainfull_notm}} en ICP](/docs/services/blockchain/howto/orderer_deploy_icp.html)
 
-- Si va a desplegar un igual, en primer lugar debe configurar una entidad emisora de certificados para el igual. La CA generará los certificados que utilizará el igual. Para obtener más información, consulte [Despliegue de una entidad emisora de certificados de la plataforma {{site.data.keyword.blockchainfull_notm}} en ICP](CA_deploy_icp.html). A continuación, cuando esté listo para unirse a una red, puede desplegar los iguales que se unirán a canales, aprobarán transacciones y almacenarán los datos. Para obtener más información, consulte [Despliegue de un igual de {{site.data.keyword.blockchainfull_notm}} en ICP](peer_deploy_icp.html) o [Despliegue de un igual de {{site.data.keyword.blockchainfull_notm}} para una red de Plan inicial o Plan empresarial](peer_deploy_ibp.html), dependiendo de la red blockchain a la que se vaya a unir el igual.
+- Si va a desplegar un igual, en primer lugar debe configurar una entidad emisora de certificados para el igual. La CA generará los certificados que utilizará el igual. Para obtener más información, consulte [Despliegue de una entidad emisora de certificados de la plataforma {{site.data.keyword.blockchainfull_notm}} en ICP](/docs/services/blockchain/howto/CA_deploy_icp.html). A continuación, cuando esté listo para unirse a una red, puede desplegar los iguales que se unirán a canales, aprobarán transacciones y almacenarán los datos. Para obtener más información, consulte [Despliegue de un igual de {{site.data.keyword.blockchainfull_notm}} en ICP](/docs/services/blockchain/howto/peer_deploy_icp.html) o [Despliegue de un igual de {{site.data.keyword.blockchainfull_notm}} para una red de Plan inicial o Plan empresarial](/docs/services/blockchain/howto/peer_deploy_ibp.html), dependiendo de la red blockchain a la que se vaya a unir el igual.

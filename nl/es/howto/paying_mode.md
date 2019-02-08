@@ -22,7 +22,7 @@ lastupdated: "2018-08-31"
 La plataforma {{site.data.keyword.blockchainfull}} factura mensualmente cuotas de suscripción y cuotas por igual. Los miembros de la red pueden abonar su factura con sus cuentas de {{site.data.keyword.cloud_notm}} que contienen el espacio para crear la instancia de la red. Si lo desea, un miembro de la red puede hacerse cargo de la factura de todos los miembros de la red o incluso pagar la red completa. El pagador también puede transferir las facturas a otros miembros si es necesario.
 {:shortdesc}
 
-Dependiendo del plan de red que elija y de la cantidad de recursos que utilice, los pagos son diferentes. Para obtener más información sobre los precios, consulte [Tarifas](pricing.html).
+Dependiendo del plan de red que elija y de la cantidad de recursos que utilice, los pagos son diferentes. Para obtener más información sobre los precios, consulte [Tarifas](/docs/services/blockchain/howto/pricing.html).
 
 ## Requisitos previos
 {: #prereq}

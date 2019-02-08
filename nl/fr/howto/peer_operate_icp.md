@@ -18,7 +18,7 @@ lastupdated: "2018-12-07"
 ***[Cette page est-elle utile ? Dites-nous.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 Après que vous avez configuré une plateforme {{site.data.keyword.blockchainfull}} Platform sur un homologue {{site.data.keyword.cloud_notm}} Private (ICP), vous devez effectuer des étapes supplémentaires pour que votre homologue puisse émettre des transactions afin d'interroger et d'appeler le registre du réseau de blockchain. Ces étapes incluent l'ajout de votre organisation à un canal, l'association de votre homologue au canal, l'installation de code blockchain sur votre homologue, l'instanciation de code blockchain sur le canal, ainsi que la connexion d'applications à votre homologue.
-Si vous voulez connecter votre homologue à un réseau de plan Starter ou Enterprise, voir [Exploitation des homologues sur {{site.data.keyword.cloud_notm}} Private avec un réseau de plan Starter ou Enterprise](peer_operate_ibp.html#peer-operate_icp)
+Si vous voulez connecter votre homologue à un réseau de plan Starter ou Enterprise, voir [Exploitation des homologues sur {{site.data.keyword.cloud_notm}} Private avec un réseau de plan Starter ou Enterprise](/docs/services/blockchain/howto/peer_operate_ibp.html#peer-operate_icp)
 {:shortdesc}
 
 Vous devez effectuer quelques étapes préalables depuis votre cluster ICP pour exploiter votre homologue.
@@ -38,7 +38,7 @@ Les logiciels SDK Fabric sont recommandés. Cependant, les instructions supposen
 
 Si votre organisation n'est pas encore membre d'un consortium ou d'un canal, vous pouvez utiliser ces étapes pour [créer un canal](#create-channel). Les instructions vous guident tout au long de la [préparation d'une définition d'organisation](#organization-definition). Cette définition sera utilisée pour faire de vous un membre du consortium par l'ajout à un canal système de service de tri. Par la suite, vous pourrez former un nouveau canal par la [création d'une transaction de canal](#peer-icp-channeltx)
 <!--
-It is recommended that you deploy at least two instances of the peer Helm chart for [high availability](peer_icp.html#high-availability). Therefore, you need to follow these operations steps once for each peer. When you are ready to invoke and query chaincode from your application, connect to both peers to ensure that your [applications are highly available](../v10_application.html#ha-app).
+It is recommended that you deploy at least two instances of the peer Helm chart for [high availability](/docs/services/blockchain/howto/peer_icp.html#high-availability). Therefore, you need to follow these operations steps once for each peer. When you are ready to invoke and query chaincode from your application, connect to both peers to ensure that your [applications are highly available](/docs/services/blockchain/v10_application.html#ha-app).
 -->
 
 ## Prérequis
@@ -127,7 +127,7 @@ Vous devez cibler le noeud final de votre homologue à partir du logiciel SDK ou
   ```
   {:codeblock}
 
-**Remarque :** Si vous déployez votre homologue derrière un pare-feu, vous devez ouvrir un passe-système afin de permettre au réseau sur la plateforme d'effectuer un établissement de liaison TLS avec votre homologue. Vous devez uniquement activer un passe-système pour le port du noeud lié au port 7051 de vos homologues. Pour plus d'informations, voir la section relative à la [recherche de vos informations de noeud final](peer_operate_ibp.html#peer-endpoint).
+**Remarque :** Si vous déployez votre homologue derrière un pare-feu, vous devez ouvrir un passe-système afin de permettre au réseau sur la plateforme d'effectuer un établissement de liaison TLS avec votre homologue. Vous devez uniquement activer un passe-système pour le port du noeud lié au port 7051 de vos homologues. Pour plus d'informations, voir la section relative à la [recherche de vos informations de noeud final](/docs/services/blockchain/howto/peer_operate_ibp.html#peer-endpoint).
 
 ### Télécharger votre certificat TLS homologue
 {: #peer-tls}
@@ -153,7 +153,7 @@ Vous devez télécharger votre certificat TLS homologue et le transmettre à vos
 
 Les logiciels SDK Hyperledger Fabric fournissent un puissant jeu d'API qui permettent aux applications d'interagir et d'exploiter les réseaux de blockchain. Vous pouvez obtenir la liste la plus récente des langages pris en charge et la liste complète des API disponibles au sein des logiciels SDK Fabric dans la [documentation Hyperledger Fabric SDK community![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/getting_started.html#hyperledger-fabric-sdks "documentation Hyperledger Fabric SDK Community"). Vous pouvez utiliser les logiciels SDK Fabric pour associer votre homologue à un canal sur {{site.data.keyword.blockchainfull_notm}} Platform, installer un code blockchain sur votre homologue, et instancier le code blockchain sur un canal.
 
-Les instructions suivantes utilisent le [Logiciel SDK Fabric Node![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://fabric-sdk-node.github.io/ "Logiciel SDK Fabric Node") pour exploiter l'homologue et supposent une connaissance préalable du logiciel SDK. Vous pouvez utiliser le [tutoriel de développement d'applications](../v10_application.html) pour en savoir plus sur l'utilisation du logiciel SDK Node avant de commencer, et comme guide pour le développement d'applications avec votre homologue lorsque vous êtes prêt à appeler et à interroger le code blockchain.
+Les instructions suivantes utilisent le [Logiciel SDK Fabric Node![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://fabric-sdk-node.github.io/ "Logiciel SDK Fabric Node") pour exploiter l'homologue et supposent une connaissance préalable du logiciel SDK. Vous pouvez utiliser le [tutoriel de développement d'applications](/docs/services/blockchain/v10_application.html) pour en savoir plus sur l'utilisation du logiciel SDK Node avant de commencer, et comme guide pour le développement d'applications avec votre homologue lorsque vous êtes prêt à appeler et à interroger le code blockchain.
 
 ### Installation du logiciel SDK Node
 
@@ -171,13 +171,13 @@ Il est recommandé d'utiliser la version 1.2 du logiciel SDK Node.
 
 Votre homologue a été déployé avec le certificat signCert de votre admin homologue interne. Cela vous permettra d'utiliser des certificats d'admin homologues et un dossier MSP pour exploiter l'homologue.
 
-Recherchez les certificats que vous avez créés lorsque vous avez [enregistré votre admin homologue](CA_operate.html#enroll-admin). Si vous avez utilisé les commandes en  exemple, vous pouvez trouver votre dossier MSP admin homologue dans `$HOME/fabric-ca-client/peer-admin`.
+Recherchez les certificats que vous avez créés lorsque vous avez [enregistré votre admin homologue](/docs/services/blockchain/howto/CA_operate.html#enroll-admin). Si vous avez utilisé les commandes en  exemple, vous pouvez trouver votre dossier MSP admin homologue dans `$HOME/fabric-ca-client/peer-admin`.
   - Vous pouvez générer le contexte utilisateur admin homologue avec le logiciel SDK qui utilise le certificat signCert (clé publique) et la clé privée dans le dossier MSP. Vous pouvez trouver ces clés dans les emplacements suivants :
     - Le certificat signCert peut se trouver dans le dossier **signcerts** : `$HOME/fabric-ca-client/peer-admin/msp/signcerts`
     - La clé privée peut se  trouver dans le dossier **keystore:** : `$HOME/fabric-ca-client/peer-admin/msp/keystore`
-    Pour obtenir un exemple de formation d'un contexte d'utilisation et d'exploitation du logiciel SDK à l'aide seulement de la clé publique et la clé privée, voir [Génération de certificats à l'aide du Moniteur réseau](../v10_application.html#enroll-panel).
+    Pour obtenir un exemple de formation d'un contexte d'utilisation et d'exploitation du logiciel SDK à l'aide seulement de la clé publique et la clé privée, voir [Génération de certificats à l'aide du Moniteur réseau](/docs/services/blockchain/v10_application.html#enroll-panel).
 
-<!-- You can also use the SDK to generate the peer admin signCert and private key using the endpoint information of CA on Starter Plan or Enterprise Plan and your [peer admin username and password](CA_operate.html#register-admin). -->
+<!-- You can also use the SDK to generate the peer admin signCert and private key using the endpoint information of CA on Starter Plan or Enterprise Plan and your [peer admin username and password](/docs/services/blockchain/howto/CA_operate.html#register-admin). -->
 
 ### Transmission du certificat TLS de votre homologue au logiciel SDK
 {: #icp-peer-download-tlscert}
@@ -208,7 +208,7 @@ Si vous disposez d'un réseau de grande taille, avec plusieurs homologues appart
 ### Transmission du certificat TLS de votre service de tri au logiciel SDK
 {: #icp-orderer-download-tlscert}
 
-Vous avez également besoin du certificat TLS du service de tri de votre consortium pour rejoindre des canaux et soumettre des transactions. Si vous êtes l'administrateur du service de tri, suivez les instructions relatives au [téléchargement du certificat TLS du service de tri](orderer_operate.html#orderer-tls).  Si vous avez utilisé les commandes en exemple, vous pouvez trouver le certificat TLS de votre homologue dans `$HOME/fabric-ca-client/orderer-tls/orderertls.pem`. Si le service de tri est régi par une autre organisation, elle doit vous fournir le certificat TLS dans une opération hors bande. Vous pouvez ensuite importer le certificat TLS dans votre application.
+Vous avez également besoin du certificat TLS du service de tri de votre consortium pour rejoindre des canaux et soumettre des transactions. Si vous êtes l'administrateur du service de tri, suivez les instructions relatives au [téléchargement du certificat TLS du service de tri](/docs/services/blockchain/howto/orderer_operate.html#orderer-tls).  Si vous avez utilisé les commandes en exemple, vous pouvez trouver le certificat TLS de votre homologue dans `$HOME/fabric-ca-client/orderer-tls/orderertls.pem`. Si le service de tri est régi par une autre organisation, elle doit vous fournir le certificat TLS dans une opération hors bande. Vous pouvez ensuite importer le certificat TLS dans votre application.
 
 ```
 var ordererTLSCert = fs.readFileSync(path.join(__dirname, './orderertls.pem'));
@@ -218,7 +218,7 @@ var ordererTLSCert = fs.readFileSync(path.join(__dirname, './orderertls.pem'));
 ### Indication des informations de service de tri au logiciel SDK
 {: #orderer-SDK-endpoints}
 
-Pour utiliser le logiciel SDK, vous avez également besoin des informations de noeud final des services de tri dans votre consortium. Si vous êtes l'administrateur du service de tri, vous pouvez utiliser les instructions relatives à l'[extraction des informations de noeud final du service de tri](orderer_operate.html#orderer-endpoint).  Si le service de tri est régi par une autre organisation, elle doit vous fournir l'URL du service de tri dans une opération hors bande. L'exemple suivant définit un service de tri comme noeud final et le transmet au certificat TLS du service de tri.
+Pour utiliser le logiciel SDK, vous avez également besoin des informations de noeud final des services de tri dans votre consortium. Si vous êtes l'administrateur du service de tri, vous pouvez utiliser les instructions relatives à l'[extraction des informations de noeud final du service de tri](/docs/services/blockchain/howto/orderer_operate.html#orderer-endpoint).  Si le service de tri est régi par une autre organisation, elle doit vous fournir l'URL du service de tri dans une opération hors bande. L'exemple suivant définit un service de tri comme noeud final et le transmet au certificat TLS du service de tri.
 
 ```
 var orderer = fabric_client.newOrderer('grpcs://9.30.94.174:30167', { pem:  Buffer.from(ordererTLSCert).toString(), 'ssl-target-name-override': null});
@@ -233,24 +233,24 @@ You need to specify a `ssl-target-name-override` of `<something>.blockchain.com`
 
 Votre organisation doit être membre d'un canal pour que vous puissiez rejoindre le canal avec votre homologue. Si vous n'êtes pas membre d'un canal, vous pouvez suivre les instructions relatives à la [création d'un canal](#create-channel).
 
-Dès que votre organisation est devenue membre d'un canal, suivez les instructions permettant de [joindre vos homologues à un canal](../v10_application.html#join-channel-sdk) à l'aide du logiciel SDK.
+Dès que votre organisation est devenue membre d'un canal, suivez les instructions permettant de [joindre vos homologues à un canal](/docs/services/blockchain/v10_application.html#join-channel-sdk) à l'aide du logiciel SDK.
 
 ### Utilisation du logiciel SDK pour installer le code blockchain sur l'homologue
 {: #peer-install-cc-sdk}
 
-Utilisez les instructions suivantes pour utiliser le logiciel SDK pour [installer un code blockchain](../v10_application.html#install-cc-sdk) sur votre homologue.
+Utilisez les instructions suivantes pour utiliser le logiciel SDK pour [installer un code blockchain](/docs/services/blockchain/v10_application.html#install-cc-sdk) sur votre homologue.
 
 ### Utilisation du logiciel SDK pour instancier le code blockchain sur l'homologue
 {: #peer-instantiate-cc-sdk}
 
-Un seul membre de ce canal doit instancier ou mettre à jour le code blockchain. Par conséquent, tout membre du canal qui a  installé le code blockchain sur ses homologues peut instancier et spécifier les règles de validation. Toutefois, si vous souhaitez utiliser l'homologue pour instancier du code blockchain sur un canal, vous pouvez utiliser le logiciel SDK et suivre les instructions d'[instanciation d'un code blockchain](../v10_application.html#instantiate-cc-sdk).
+Un seul membre de ce canal doit instancier ou mettre à jour le code blockchain. Par conséquent, tout membre du canal qui a  installé le code blockchain sur ses homologues peut instancier et spécifier les règles de validation. Toutefois, si vous souhaitez utiliser l'homologue pour instancier du code blockchain sur un canal, vous pouvez utiliser le logiciel SDK et suivre les instructions d'[instanciation d'un code blockchain](/docs/services/blockchain/v10_application.html#instantiate-cc-sdk).
 
 ## Utilisation de l'interface CLI pour exploiter l'homologue
 {: #peer-cli-operate}
 
 Vous pouvez également exploiter votre homologue depuis la ligne de commande à l'aide de binaires d'homologue Fabric. 
 
-Votre homologue a été déployé avec le certificat signCert de votre admin homologue interne, ce qui permet à cette identité d'exploiter l'homologue. Les instructions ci-après utilisent le dossier MSP admin homologue qui a été généré lorsque vous avez [déployé votre homologue](CA_operate.html#register-admin) pour joindre l'homologue à un canal, installer un code blockchain sur l'homologue, puis instancier le code blockchain sur un canal.
+Votre homologue a été déployé avec le certificat signCert de votre admin homologue interne, ce qui permet à cette identité d'exploiter l'homologue. Les instructions ci-après utilisent le dossier MSP admin homologue qui a été généré lorsque vous avez [déployé votre homologue](/docs/services/blockchain/howto/CA_operate.html#register-admin) pour joindre l'homologue à un canal, installer un code blockchain sur l'homologue, puis instancier le code blockchain sur un canal.
 
 ### Téléchargement du client homologue Fabric
 {: #peer-client}
@@ -300,7 +300,7 @@ cd $HOME/fabric-ca-client/peer-admin/msp
 ```
 {:codeblock}
 
-Avant d'exploiter l'homologue, vous devez procéder à quelques opérations de gestion des certificats sur votre machine locale. Vous devez également vous assurer que vous pouvez accéder aux certificats TLS à partir de l'homologue. Pour plus d'informations sur les certificats à utiliser, voir [Fournisseur de services aux membres (MSP)](CA_operate.html#msp) dans [Exploitation d'une autorité de certification sur {{site.data.keyword.cloud_notm}} Private](CA_operate.html).
+Avant d'exploiter l'homologue, vous devez procéder à quelques opérations de gestion des certificats sur votre machine locale. Vous devez également vous assurer que vous pouvez accéder aux certificats TLS à partir de l'homologue. Pour plus d'informations sur les certificats à utiliser, voir [Fournisseur de services aux membres (MSP)](/docs/services/blockchain/howto/CA_operate.html#msp) dans [Exploitation d'une autorité de certification sur {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/howto/CA_operate.html).
 
 1. Déplacez le certificat signCert de l'admin de votre homologue vers un nouveau dossier nommé `admincerts` :
 
@@ -313,7 +313,7 @@ Avant d'exploiter l'homologue, vous devez procéder à quelques opérations de g
 
 2. Vérifiez que vous avez [téléchargé le certificat TLS de votre homologue](#peer-tls) et que vous pouvez le référencer à partir de la ligne de commande. Si vous avez suivi les exemples de commandes figurant dans cette documentation, vous pouvez trouver ce certificat dans le fichier `$HOME/fabric-ca-client/peer-tls/peertls.pem`.
 
-3. Vous devez également référencer le certificat TLS de votre service de tri. Si vous êtes l'administrateur du service de tri, suivez les instructions relatives au [téléchargement du certificat TLS du service de tri](orderer_operate.html#orderer-tls).  Si le service de tri est régi par une autre organisation, elle doit vous fournir le certificat TLS dans une opération hors bande. Conservez ce certificat dans un emplacement où vous pouvez y faire référence dans les commandes futures.
+3. Vous devez également référencer le certificat TLS de votre service de tri. Si vous êtes l'administrateur du service de tri, suivez les instructions relatives au [téléchargement du certificat TLS du service de tri](/docs/services/blockchain/howto/orderer_operate.html#orderer-tls).  Si le service de tri est régi par une autre organisation, elle doit vous fournir le certificat TLS dans une opération hors bande. Conservez ce certificat dans un emplacement où vous pouvez y faire référence dans les commandes futures.
 
 Vous pouvez exécuter une commande tree pour vérifier que vous avez effectué ces étapes. Accédez au répertoire dans lequel vous avez stocké vos certificats. Une commande tree doit générer un résultat similaire à la structure suivante :
 ```
@@ -375,7 +375,7 @@ Après avoir déplacé tous nos certificats vers l'emplacement nécessaire, nous
 
     La définition de cette variable vous permettra d'exécuter les commandes à l'aide du client homologue dans un répertoire.
 
-3. Vous avez besoin des informations de noeud final de votre service de tri. Si vous êtes l'administrateur du service de tri, vous pouvez utiliser les instructions relatives à l'[extraction des informations de noeud final du service de tri](orderer_operate.html#orderer-endpoint).  Si le service de tri est régi par une autre organisation, elle doit vous fournir l'URL du service de tri dans une opération hors bande. 
+3. Vous avez besoin des informations de noeud final de votre service de tri. Si vous êtes l'administrateur du service de tri, vous pouvez utiliser les instructions relatives à l'[extraction des informations de noeud final du service de tri](/docs/services/blockchain/howto/orderer_operate.html#orderer-endpoint).  Si le service de tri est régi par une autre organisation, elle doit vous fournir l'URL du service de tri dans une opération hors bande. 
 
 4. [Procédez à l'extraction des informations de noeud final](#peer-endpoint). Nous allons utiliser cette  URL pour définir la variable d'environnement `PEERADDR`. Vous devez retirer `http://` au début. 
 
@@ -573,7 +573,7 @@ Vous pouvez utiliser les commandes **kubectl** pour redémarrer l'homologue qui 
 ## Création d'un canal
 {: #create-channel}
 
-Si votre organisation n'est pas encore membre d'un consortium ou d'un canal, vous pouvez utiliser les étapes ci-après pour créer un canal. Vous pouvez également utiliser ces étapes pour mettre à jour un canal existant. Les instructions vous guident tout au long de la [préparation d'une définition d'organisation](#organization-definition). Cette définition sera utilisée pour faire de vous un [membre du consortium](orderer_operate.html#add-organizations-to-consortium) par l'ajout à un canal système de service de tri. Par la suite, vous pourrez former un nouveau canal par la [création d'une transaction de canal](#peer-icp-channeltx)
+Si votre organisation n'est pas encore membre d'un consortium ou d'un canal, vous pouvez utiliser les étapes ci-après pour créer un canal. Vous pouvez également utiliser ces étapes pour mettre à jour un canal existant. Les instructions vous guident tout au long de la [préparation d'une définition d'organisation](#organization-definition). Cette définition sera utilisée pour faire de vous un [membre du consortium](/docs/services/blockchain/howto/orderer_operate.html#add-organizations-to-consortium) par l'ajout à un canal système de service de tri. Par la suite, vous pourrez former un nouveau canal par la [création d'une transaction de canal](#peer-icp-channeltx)
 
 Si vous avez déjà rejoint le consortium, vous devez effectuer uniquement l'étape de préparation de la transaction de canal. Un autre membre du consortium peut également former un nouveau canal avec votre organisation en tant que membre. Vous pouvez mettre à jour la définition d'organisation si vous souhaitez envoyer des mises à jour au consortium, comme la définition de nouveaux homologues d'ancrage, l'ajout de nouveaux certificats d'administration, ou la mise à jour votre matériel cryptographique.
 
@@ -609,7 +609,7 @@ Une fois que vous avez déployé vos composants, votre organisation peut rejoind
 
 ### Préparer votre matériel cryptographique
 
-Avant de préparer une définition d'organisation, vous devez enregistrer et inscrire  l'[administrateur de vos homologues](CA_operate.html#register-admin). Accédez au répertoire dans lequel vous avez créé le dossier MSP de votre admin homologue. Les étapes en exemple ont créé ce dossier dans  `$HOME/fabric-ca-client/peer-admin/msp`. Vous devez effectuer certaines étapes supplémentaires dans ce dossier pour que ce dossier puisse être utilisé par l'outil `configtxgen`.
+Avant de préparer une définition d'organisation, vous devez enregistrer et inscrire  l'[administrateur de vos homologues](/docs/services/blockchain/howto/CA_operate.html#register-admin). Accédez au répertoire dans lequel vous avez créé le dossier MSP de votre admin homologue. Les étapes en exemple ont créé ce dossier dans  `$HOME/fabric-ca-client/peer-admin/msp`. Vous devez effectuer certaines étapes supplémentaires dans ce dossier pour que ce dossier puisse être utilisé par l'outil `configtxgen`.
 
 1. Copiez votre certificat TLS depuis votre autorité de certification et placez-le dans un nouveau dossier nommé `tlscacerts`.
 
@@ -672,7 +672,7 @@ Organizations:
 ```
 {:codeblock}
 
-Ce fichier contient des informations qui définissent votre organisation au sein du consortium. Une version plus complexe de ce fichier est également disponible dans le dossier `/config` du [client d'homologue Fabric que vous avez téléchargé](peer_operate_icp.html#peer-client). Vous pouvez choisir de modifier ce fichier, ou de le remplacer par l'exemple ci-dessus. Notez l'emplacement de ce dossier `/config` afin de définir la valeur de `FABRIC_CFG_PATH` ci-dessous. Editez la section `Organizations` de ce fichier et définissez les valeurs suivantes :
+Ce fichier contient des informations qui définissent votre organisation au sein du consortium. Une version plus complexe de ce fichier est également disponible dans le dossier `/config` du [client d'homologue Fabric que vous avez téléchargé](/docs/services/blockchain/howto/peer_operate_icp.html#peer-client). Vous pouvez choisir de modifier ce fichier, ou de le remplacer par l'exemple ci-dessus. Notez l'emplacement de ce dossier `/config` afin de définir la valeur de `FABRIC_CFG_PATH` ci-dessous. Editez la section `Organizations` de ce fichier et définissez les valeurs suivantes :
 
 - `Nom :` peut être le nom que vous souhaitez utiliser pour votre organisation.
 
@@ -718,17 +718,17 @@ configtxgen -printOrg org1 > $HOME/fabric-ca-client/org-definitions/org1definiti
 ```
 {:codeblock}
 
-Si cette commande aboutit, l'outil `configtxgen` imprime la définition d'organisation au format JSON. Vous devez envoyer ce fichier à l'organisation du service de tri dans une opération hors bande pour rejoindre le consortium. L'organisation du service de tri peut ensuite [former un consortium ou être ajoutée à un consortium existant](orderer_operate.html#consortium) par l'ajout de la  définition au canal système, ce qui vous permet de créer de nouveaux canaux et d'être ajouté aux canaux par d'autres membres du consortium.
+Si cette commande aboutit, l'outil `configtxgen` imprime la définition d'organisation au format JSON. Vous devez envoyer ce fichier à l'organisation du service de tri dans une opération hors bande pour rejoindre le consortium. L'organisation du service de tri peut ensuite [former un consortium ou être ajoutée à un consortium existant](/docs/services/blockchain/howto/orderer_operate.html#consortium) par l'ajout de la  définition au canal système, ce qui vous permet de créer de nouveaux canaux et d'être ajouté aux canaux par d'autres membres du consortium.
 
 ## Création de la transaction de canal
 {: #peer-icp-channeltx}
 
-Pour que vous puissiez créer un nouveau canal, votre organisation doit avoir préparé une [définition d'organisation](#organization-definition) et être devenue membre du consortium. Suivez les instructions ci-après si vous devez [former un consortium ou être ajouté à l'un d'eux](orderer_operate.html#consortium). Les membres du consortium peuvent également être facilement ajoutés à de nouveaux canaux, si leur organisation a déjà été ajoutée au canal  système. Les organisations qui ne sont pas membres du canal système peuvent uniquement rejoindre un canal manuellement, par l'ajout de leur définition d'organisation au canal à l'aide d'une [demande de mise à jour de canal![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/channel_update_tutorial.html). Vous pouvez également utiliser ces étapes pour mettre à jour un canal existant. 
+Pour que vous puissiez créer un nouveau canal, votre organisation doit avoir préparé une [définition d'organisation](#organization-definition) et être devenue membre du consortium. Suivez les instructions ci-après si vous devez [former un consortium ou être ajouté à l'un d'eux](/docs/services/blockchain/howto/orderer_operate.html#consortium). Les membres du consortium peuvent également être facilement ajoutés à de nouveaux canaux, si leur organisation a déjà été ajoutée au canal  système. Les organisations qui ne sont pas membres du canal système peuvent uniquement rejoindre un canal manuellement, par l'ajout de leur définition d'organisation au canal à l'aide d'une [demande de mise à jour de canal![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/channel_update_tutorial.html). Vous pouvez également utiliser ces étapes pour mettre à jour un canal existant. 
 
 ### Formation d'un nouveau canal
 {: #peer-icp-create-channel}
 
-Pour former un nouveau canal, une organisation doit créer une proposition de transaction de création de canal à l'aide de l'outil [outil configtxgen![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/configtxgen.html "configtxgen"). Cet outil utile un fichier a `configtx.yaml` qui définit les membres du nouveau canal. Un exemple de fichier `configtx.yaml` est fourni ci-après. Une version plus complexe de ce fichier est également disponible dans le dossier `/config` du [client d'homologue Fabric que vous avez téléchargé](peer_operate_icp.html#peer-client). Vous pouvez choisir de modifier ce fichier, ou de le remplacer par l'exemple. Notez l'emplacement de ce dossier `/config` afin de définir la valeur de `FABRIC_CFG_PATH` ci-dessous. 
+Pour former un nouveau canal, une organisation doit créer une proposition de transaction de création de canal à l'aide de l'outil [outil configtxgen![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/configtxgen.html "configtxgen"). Cet outil utile un fichier a `configtx.yaml` qui définit les membres du nouveau canal. Un exemple de fichier `configtx.yaml` est fourni ci-après. Une version plus complexe de ce fichier est également disponible dans le dossier `/config` du [client d'homologue Fabric que vous avez téléchargé](/docs/services/blockchain/howto/peer_operate_icp.html#peer-client). Vous pouvez choisir de modifier ce fichier, ou de le remplacer par l'exemple. Notez l'emplacement de ce dossier `/config` afin de définir la valeur de `FABRIC_CFG_PATH` ci-dessous. 
 ```
 # Copyright IBM Corp. All Rights Reserved.
 #

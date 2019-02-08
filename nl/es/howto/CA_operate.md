@@ -226,7 +226,7 @@ Solo puede generar certificados utilizando identidades que se hayan registrado c
   ```
   {:codeblock}
 
-  Los valores de `<enroll_id>` y `<enroll_password>` en el mandato son [el nombre de usuario y la contraseña del administrador de CA](CA_deploy_icp.html#admin-secret) que ha pasado al secreto de Kubernetes al desplegar la entidad emisora de certificados. Inserte el [URL de CA](#ca-url) dentro de `<ca_url_with_port>`. Excluya la parte de `http://` al principio. El valor de `<ca_name>` es el que ha proporcionado en el campo
+  Los valores de `<enroll_id>` y `<enroll_password>` en el mandato son [el nombre de usuario y la contraseña del administrador de CA](/docs/services/blockchain/howto/CA_deploy_icp.html#admin-secret) que ha pasado al secreto de Kubernetes al desplegar la entidad emisora de certificados. Inserte el [URL de CA](#ca-url) dentro de `<ca_url_with_port>`. Excluya la parte de `http://` al principio. El valor de `<ca_name>` es el que ha proporcionado en el campo
 `CA Name` al desplegar la CA.
 
   `<ca_tls_cert_path>` es la vía de acceso completa al [certificado TLS de CA](#ca-tls).
@@ -272,7 +272,7 @@ En las instrucciones siguientes se proporciona un [archivo de configuración JSO
 
 - Siga las instrucciones que se muestran a continuación si va a desplegar un clasificador en ICP o va a desplegar un igual para conectarse a un consorcio que se aloja en ICP.
 - Si desea desplegar un igual para conectarse a un Plan inicial o un Plan empresarial, siga las instrucciones de
-[Despliegue de iguales en IBM Cloud Private para conectarse a un Plan inicial o un Plan empresarial](peer_deploy_ibp.html) en su lugar. Estos pasos le indicarán cómo utilizar la CA en la plataforma {{site.data.keyword.blockchainfull_notm}} para desplegar el igual en ICP.
+[Despliegue de iguales en IBM Cloud Private para conectarse a un Plan inicial o un Plan empresarial](/docs/services/blockchain/howto/peer_deploy_ibp.html) en su lugar. Estos pasos le indicarán cómo utilizar la CA en la plataforma {{site.data.keyword.blockchainfull_notm}} para desplegar el igual en ICP.
 
 ### Archivo de configuración
 {: #config-file-template}
@@ -567,7 +567,7 @@ export FABRIC_CA_CLIENT_HOME=$HOME/fabric-ca-client/tlsca-admin
 ```
 {:codeblock}
 
-Ejecute el mandato siguiente para inscribirse como administrador en la CA de TLS. El mandato es el mismo que el que ha utilizado para inscribirse como [administrador de CA](#enroll-ca-admin), excepto por el hecho de que debe utilizar el nombre de instancia de TLS de CA que ha especificado durante la [configuración de CA.](CA_deploy_icp.html#icp-ca-configuration-parms) Asegúrese de utilizar los mismos valores de `ca-admin-name` y `ca-admin-password` en el secreto de CA.
+Ejecute el mandato siguiente para inscribirse como administrador en la CA de TLS. El mandato es el mismo que el que ha utilizado para inscribirse como [administrador de CA](#enroll-ca-admin), excepto por el hecho de que debe utilizar el nombre de instancia de TLS de CA que ha especificado durante la [configuración de CA.](/docs/services/blockchain/howto/CA_deploy_icp.html#icp-ca-configuration-parms) Asegúrese de utilizar los mismos valores de `ca-admin-name` y `ca-admin-password` en el secreto de CA.
 
 ```
 fabric-ca-client enroll -u https://<enroll_id>:<enroll_password>@<ca_url_with_port> --caname <tls_ca_name> --tls.certfiles <ca_tls_cert_path>
@@ -611,7 +611,7 @@ Debe proporcionar un nombre de host de CSR para desplegar un clasificador o un i
 #### Localización del valor de la dirección IP de proxy del clúster
 
 Si desea desplegar un clasificador o un igual en el mismo clúster de ICP en el que ha desplegado la CA, asegúrese de tener un rol de
-[administrador de clúster ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Acciones y roles de administrador de clúster") en el clúster ICP donde se va a desplegar el clasificador o el igual. A continuación, especifique la misma IP de proxy que ha utilizado en la [configuración para la CA](CA_deploy_icp.html#icp-ca-configuration-parms). Si desea desplegar el clasificador o el igual en un clúster distinto, puede recuperar el valor de la dirección IP de proxy del clúster desde la consola de ICP realizando los pasos siguientes:
+[administrador de clúster ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Acciones y roles de administrador de clúster") en el clúster ICP donde se va a desplegar el clasificador o el igual. A continuación, especifique la misma IP de proxy que ha utilizado en la [configuración para la CA](/docs/services/blockchain/howto/CA_deploy_icp.html#icp-ca-configuration-parms). Si desea desplegar el clasificador o el igual en un clúster distinto, puede recuperar el valor de la dirección IP de proxy del clúster desde la consola de ICP realizando los pasos siguientes:
 
 1. Inicie sesión en la consola de ICP. En el panel de navegación de la izquierda, pulse
 **Plataforma** y, a continuación, pulse **Nodos** para ver los nodos que están definidos en el clúster.
@@ -699,7 +699,7 @@ Una vez que haya completado todos los pasos anteriores, el archivo de configurac
 
 Puede dejar los demás campos en
 blanco. Guarde este archivo, ya que necesitará utilizarlo al desplegar un
-[clasificador](orderer_deploy_icp.html) o un [igual](peer_deploy_icp.html).
+[clasificador](/docs/services/blockchain/howto/orderer_deploy_icp.html) o un [igual](/docs/services/blockchain/howto/peer_deploy_icp.html).
 
 ## Proveedores de servicios de pertenencia (MSP)
 {: #msp}
@@ -716,7 +716,7 @@ Las carpetas de MSP deben tener una estructura definida para que las utilicen lo
 
 También puede crear una carpeta de MSP a la que puede hacer referencia el cliente fabric-ca-client utilizando el supervisor de red y las API de Swagger.
 
-- **cacerts** e **intermediatecerts**: puede recuperar estos certificados con las [API de Swagger](swagger_apis.html) emitiendo una solicitud `Get` a la API de MSP.
+- **cacerts** e **intermediatecerts**: puede recuperar estos certificados con las [API de Swagger](/docs/services/blockchain/howto/swagger_apis.html) emitiendo una solicitud `Get` a la API de MSP.
 - **signCerts** y **keystore**: para generar estos certificados, pulse el botón **Generar certificados** en el panel "Entidad emisora de certificados". Se abre una ventana emergente con dos certificados. Copie y almacene el **Certificado** en signCerts y la **Clave privada** en el almacén de claves. Guarde estos certificados en un lugar seguro, ya que no se almacenan en la plataforma.
 
 Muchos componentes de Fabric contienen información adicional dentro de su carpeta de MSP. Por ejemplo, si trabaja con un igual remoto, es posible que vea las carpetas siguientes:

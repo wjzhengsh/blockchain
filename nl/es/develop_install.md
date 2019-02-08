@@ -42,7 +42,7 @@ Si utiliza VSCode, dispone de una extensión de VSCode de Hyperledger Composer [
 
 ## Paso uno: Instalar las herramientas de línea de mandatos
 
-Las herramientas de línea de mandatos incluyen **composer-cli**, el módulo principal de línea de mandatos de {{site.data.keyword.blockchainfull_notm}} Platform: Develop; **generator-hyperledger-composer**, **composer-rest-server** y **Yeoman**; estos módulos se utilizan para generar redes empresariales, servidores REST adaptados y aplicaciones Angular. La versión que instale dependerá de la versión de Hyperledger Fabric que ejecute su Plan inicial o Plan empresarial. Puede encontrar la versión de Fabric abriendo la [ventana Preferencias de red](../v10_dashboard.html#network-preferences) en el supervisor de red.
+Las herramientas de línea de mandatos incluyen **composer-cli**, el módulo principal de línea de mandatos de {{site.data.keyword.blockchainfull_notm}} Platform: Develop; **generator-hyperledger-composer**, **composer-rest-server** y **Yeoman**; estos módulos se utilizan para generar redes empresariales, servidores REST adaptados y aplicaciones Angular. La versión que instale dependerá de la versión de Hyperledger Fabric que ejecute su Plan inicial o Plan empresarial. Puede encontrar la versión de Fabric abriendo la [ventana Preferencias de red](/docs/services/blockchain/v10_dashboard.html#network-preferences) en el supervisor de red.
 
 1. Para su uso con nuevas instancias del Plan inicial que ejecutan Hyperledger Fabric v1.2.1, instale
 **composer-cli** utilizando el mandato siguiente:

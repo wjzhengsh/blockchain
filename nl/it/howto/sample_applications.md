@@ -18,9 +18,9 @@ Puoi distribuire e testare applicazioni di esempio per ottenere una migliore com
 
 ## Prima di cominciare
 
-Assicurati di installare tutti i prerequisiti software sul tuo file system locale.  Per ulteriori informazioni, vedi [Configurazione dell'ambiente di sviluppo di applicazioni](../v10_application.html#setting-up-application-development-environment).
+Assicurati di installare tutti i prerequisiti software sul tuo file system locale.  Per ulteriori informazioni, vedi [Configurazione dell'ambiente di sviluppo di applicazioni](/docs/services/blockchain/v10_application.html#setting-up-application-development-environment).
 
-Devi anche avere una rete {{site.data.keyword.blockchain}} su {{site.data.keyword.Bluemix_short}} con un canale e i suoi peer configurati.  Per ulteriori informazioni, vedi [Governance della rete](../get_start.html).  Quando la tua rete è pronta per l'uso, richiama gli endpoint API delle tue risorse di rete a cui accederà la tua applicazione.  Per ulteriori informazioni, vedi [Aggiunta delle credenziali del servizio di rete alla tua applicazione](../v10_application.html#adding-network-service-credentials-to-your-application).
+Devi anche avere una rete {{site.data.keyword.blockchain}} su {{site.data.keyword.Bluemix_short}} con un canale e i suoi peer configurati.  Per ulteriori informazioni, vedi [Governance della rete](/docs/services/blockchain/get_start.html).  Quando la tua rete è pronta per l'uso, richiama gli endpoint API delle tue risorse di rete a cui accederà la tua applicazione.  Per ulteriori informazioni, vedi [Aggiunta delle credenziali del servizio di rete alla tua applicazione](/docs/services/blockchain/v10_application.html#adding-network-service-credentials-to-your-application).
 
 
 ## Applicazione Marbles

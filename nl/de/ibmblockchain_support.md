@@ -39,7 +39,7 @@ Wenn sich Ihr Problem nicht mithilfe der [kostenlosen digitalen Unterstützungsr
 {: #resources}
 
 **{{site.data.keyword.blockchainfull_notm}}-Servicedokumente**:
-Die [{{site.data.keyword.blockchainfull_notm}}-Servicedokumente](index.html) (also die vorliegende Dokumentationssite) bieten Anleitungen für den Einstieg in IBP. Die entsprechenden Themen können Sie über den Navigator auf der linken Seite aufrufen oder Sie können in der Suchfunktion im oberen Bereich einen Suchbegriff eingeben.
+Die [{{site.data.keyword.blockchainfull_notm}}-Servicedokumente](/docs/services/blockchain/index.html) (also die vorliegende Dokumentationssite) bieten Anleitungen für den Einstieg in IBP. Die entsprechenden Themen können Sie über den Navigator auf der linken Seite aufrufen oder Sie können in der Suchfunktion im oberen Bereich einen Suchbegriff eingeben.
 
 **{{site.data.keyword.IBM_notm}} dWAnswers**:
 [{{site.data.keyword.IBM_notm}} dWAnswers ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://developer.ibm.com/answers/smartspace/blockchain/ "Fragen und Antworten zu Blockchains") ist ein Community-Forum für Benutzer von IBP und Hyperledger Fabric, das unter anderem durch {{site.data.keyword.IBM_notm}} Experten betreut wird. Sie können in diesem Forum nach Antworten auf bereits gestellte Fragen suchen oder eine neue Frage stellen. Achten Sie darauf, das Stichwort **blockchain** in Ihrer neuen Frage zu verwenden.

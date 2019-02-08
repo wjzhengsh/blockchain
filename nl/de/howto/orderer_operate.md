@@ -148,7 +148,7 @@ Sie müssen das TLS-Zertifikat Ihres Anordnungsknotens herunterladen und es an I
 
 Wechseln Sie in das Verzeichnis, in dem der MSP-Ordner für den Administrator des Anordnungsknotens generiert wurde. Abhängig davon, wie Sie die Beispielschritte in dieser Dokumentation befolgt haben oder wie viele Komponenten Sie bereitstellen, finden Sie den MSP-Ordner unter `$HOME/fabric-ca-client/orderer-admin/msp` oder `$HOME/fabric-ca-client/peer-admin/msp`.
 
-Bevor Sie den Anordnungsknoten betreiben können, müssen Sie einige Management-Tasks für die Zertifikate auf Ihrer lokalen Maschine ausführen. Außerdem müssen Sie sicherstellen, dass Sie vom Anordnungsknoten aus auf die TLS-Zertifikate zugreifen können. Weitere Angaben über die zu verwendenden Zertifikate enthält der Abschnitt [Membership Service Providers (MSPs)](CA_operate.html#msp) unter [Zertifizierungsstelle in {{site.data.keyword.cloud_notm}} Private betreiben](CA_operate.html).
+Bevor Sie den Anordnungsknoten betreiben können, müssen Sie einige Management-Tasks für die Zertifikate auf Ihrer lokalen Maschine ausführen. Außerdem müssen Sie sicherstellen, dass Sie vom Anordnungsknoten aus auf die TLS-Zertifikate zugreifen können. Weitere Angaben über die zu verwendenden Zertifikate enthält der Abschnitt [Membership Service Providers (MSPs)](/docs/services/blockchain/howto/CA_operate.html#msp) unter [Zertifizierungsstelle in {{site.data.keyword.cloud_notm}} Private betreiben](/docs/services/blockchain/howto/CA_operate.html).
 
 1. Versetzen Sie das signCert-Zertifikat für den Administrator des Anordnungsknotens in einen neuen Ordner namens `admincerts`:
 
@@ -220,9 +220,9 @@ Sie können übrigens eine Organisation zu einem Kanal hinzufügen, ohne zuvor d
 
 In der folgenden Liste sind die allgemeinen Schritte angegeben; ausgeführt werden die Tasks durch unterschiedliche Gruppen von Organisationen in Ihrem Konsortium.
 
-1. Jede Organisation, die dem Konsortium beitreten soll, muss eine [Organisationsdefinition vorbereiten](peer_operate_icp.html#organization-definition).
+1. Jede Organisation, die dem Konsortium beitreten soll, muss eine [Organisationsdefinition vorbereiten](/docs/services/blockchain/howto/peer_operate_icp.html#organization-definition).
 2. Der Administrator für die Organisation des Anordnungsknotens muss das Konsortium [gründen](#consortium), indem er Organisationen zum Systemkanal des Anordnungsknotens hinzufügt.
-3. Jede Organisation im Konsortium kann einen [neuen Kanal erstellen](peer_operate_icp.html#peer-icp-channeltx), indem sie eine Transaktion für die Kanalkonfiguration vorbereitet.
+3. Jede Organisation im Konsortium kann einen [neuen Kanal erstellen](/docs/services/blockchain/howto/peer_operate_icp.html#peer-icp-channeltx), indem sie eine Transaktion für die Kanalkonfiguration vorbereitet.
 
 ## Fabric-Tools abrufen
 {: #get-fabric-tools}
@@ -268,7 +268,7 @@ Zum Aktualisieren des Systemkanals müsssen Sie die folgenden Tools von Hyperled
 ## Organisationsdefinition erstellen
 {: #org-definition}
 
-Die **Definition** einer Organisation enthält den Organisationsnamen (MSP-ID) und die entsprechenden Zertifikate. Der Systemkanal und die Anwendungskanäle verwenden diese Definition, um Ihre Organisation in die Richtlinien aufzunehmen, die Erstellung, Aktualisierungen und Transaktionsbewilligung von Kanälen steuern. Dieser Schritt muss von jeder Organisation ausgeführt werden, die Mitglied eines Konsortiums werden möchte. Weitere Informationen finden Sie unter [Organisationsdefinition vorbereiten](peer_operate_icp.html#organization-definition).
+Die **Definition** einer Organisation enthält den Organisationsnamen (MSP-ID) und die entsprechenden Zertifikate. Der Systemkanal und die Anwendungskanäle verwenden diese Definition, um Ihre Organisation in die Richtlinien aufzunehmen, die Erstellung, Aktualisierungen und Transaktionsbewilligung von Kanälen steuern. Dieser Schritt muss von jeder Organisation ausgeführt werden, die Mitglied eines Konsortiums werden möchte. Weitere Informationen finden Sie unter [Organisationsdefinition vorbereiten](/docs/services/blockchain/howto/peer_operate_icp.html#organization-definition).
 
 ## Konsortium gründen
 {: #consortium}
@@ -280,7 +280,7 @@ Die Gründung eines Konsortiums vollzieht sich allgemein wie folgt:
 
 ### Organisationsdefinitionen abrufen
 
-Der Anordnungsknoten muss die [Organisationsdefinitionen](peer_operate_icp.html#organization-definition) von Mitgliedern empfangen, die dem Konsortium beitreten wollen. Dies muss in einer externen Operation mit anderen Mitgliedern erfolgen, von denen die JSON-Dateien gesendet werden, die deren MSP-ID und Verschlüsselungsmaterial enthalten. In den nachfolgenden Befehlen wird davon ausgegangen, dass Sie einen Ordner namens `org-definitions` erstellt und alle relevanten Dateien in diesem Verzeichnis abgelegt haben.
+Der Anordnungsknoten muss die [Organisationsdefinitionen](/docs/services/blockchain/howto/peer_operate_icp.html#organization-definition) von Mitgliedern empfangen, die dem Konsortium beitreten wollen. Dies muss in einer externen Operation mit anderen Mitgliedern erfolgen, von denen die JSON-Dateien gesendet werden, die deren MSP-ID und Verschlüsselungsmaterial enthalten. In den nachfolgenden Befehlen wird davon ausgegangen, dass Sie einen Ordner namens `org-definitions` erstellt und alle relevanten Dateien in diesem Verzeichnis abgelegt haben.
 
 ### Genesis-Block des Systemkanals abrufen
 
@@ -377,7 +377,7 @@ Das heruntergeladene [Fabric-Tool](#get-fabric-tools) `configtxtlator` setzt das
 
 Die nachstehenden Schritte folgen dem allgemeinen Ablauf des Lernprogramms für die Kanalaktualisierung, um den [Genesis-Block in das JSON-Format zu konvertieren]( https://hyperledger-fabric.readthedocs.io/en/release-1.2/channel_update_tutorial.html#convert-the-configuration-to-json-and-trim-it-down). Sie müssen einige Änderungen an den Befehlen im Lernprogramm vornehmen, um die Tatsache zu berücksichtigen, dass Sie den Kanal des Anordnungsknotens und nicht einen Anwendungskanal aktualisieren. Weitere Details zu diesem Prozess können Sie dem Lernprogramm entnehmen. Im vorliegenden Abschnitt sind lediglich die von Ihnen auszuführenden Befehle angegeben.
 
-1. Kopieren Sie die JSON-Datei mit der Organisationsdefinition aus dem Ordner, in dem Sie [Ihre Organisation erstellt haben](peer_operate_icp.html#organization-definition), in den Ordner `configupdate`. Im folgenden Beispielbefehl heißt die JSON-Datei mit der Organisationsdefinition `org1definition.json`:
+1. Kopieren Sie die JSON-Datei mit der Organisationsdefinition aus dem Ordner, in dem Sie [Ihre Organisation erstellt haben](/docs/services/blockchain/howto/peer_operate_icp.html#organization-definition), in den Ordner `configupdate`. Im folgenden Beispielbefehl heißt die JSON-Datei mit der Organisationsdefinition `org1definition.json`:
 
    ```
    cp <path_to_config_folder>/org1definition.json $HOME/fabric-ca-client/org-definitions/configupdate
@@ -393,7 +393,7 @@ Die nachstehenden Schritte folgen dem allgemeinen Ablauf des Lernprogramms für 
   ```
   {:codeblock}
 
-3. Führen Sie den folgenden Befehl aus, um das Verschlüsselungsmaterial einer Organisation zur Konfiguration des Konsortiums hinzuzufügen. Ersetzen Sie < NEWORGMSP> durch die MSP-ID der [Organisation, die Sie erstellt haben](peer_operate_icp.html#organization-definition).
+3. Führen Sie den folgenden Befehl aus, um das Verschlüsselungsmaterial einer Organisation zur Konfiguration des Konsortiums hinzuzufügen. Ersetzen Sie < NEWORGMSP> durch die MSP-ID der [Organisation, die Sie erstellt haben](/docs/services/blockchain/howto/peer_operate_icp.html#organization-definition).
 
   ```
   jq -s '.[0] * {"channel_group":{"groups":{"Consortiums":{"groups":{"SampleConsortium":{"groups": {"<NEWORGMSP>":.[1]}}}}}}}' config.json ./orgdefinition.json > modified_config.json

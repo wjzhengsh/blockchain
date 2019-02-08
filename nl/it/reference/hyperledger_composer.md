@@ -29,7 +29,7 @@ Hyperledger Composer è composto da un runtime, un'interfaccia riga di comando, 
 
 Hyperledger Composer ti consente di modellare rapidamente la tua rete di business corrente, che contiene i tuoi asset esistenti e le transazioni ad esse correlate; gli asset sono merci, servizi o proprietà tangibili o intangibili. Come parte del tuo modello di rete di business, definisci le transazioni che possono interagire con gli asset. Le reti di business includono anche i partecipanti che interagiscono con esse, ognuno dei quali può essere associato a una identità univoca nell'ambito di più reti di business.
 
-Per ulteriori informazioni sulla creazione di reti di business, vedi [Sviluppo di reti di business](../develop.html) o la [documentazione di Hyperledger Composer![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger.github.io/composer/latest/introduction/introduction.html).
+Per ulteriori informazioni sulla creazione di reti di business, vedi [Sviluppo di reti di business](/docs/services/blockchain/develop.html) o la [documentazione di Hyperledger Composer![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger.github.io/composer/latest/introduction/introduction.html).
 
 ## Query
 

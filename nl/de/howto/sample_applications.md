@@ -18,9 +18,9 @@ Sie können Beispielanwendungen bereitstellen und testen, um ein besseres Verst�
 
 ## Vorbemerkungen
 
-Sie müssen die gesamte vorausgesetzte Software auf Ihrem lokalen Dateisystem installieren.  Weitere Informationen finden Sie unter [Anwendungsentwicklungsumgebung einrichten](../v10_application.html#setting-up-application-development-environment).
+Sie müssen die gesamte vorausgesetzte Software auf Ihrem lokalen Dateisystem installieren.  Weitere Informationen finden Sie unter [Anwendungsentwicklungsumgebung einrichten](/docs/services/blockchain/v10_application.html#setting-up-application-development-environment).
 
-Sie müssen außerdem über ein {{site.data.keyword.blockchain}}-Netz unter {{site.data.keyword.Bluemix_short}} verfügen, für das ein Kanal mit den zugehörigen Peers konfiguriert ist.  Weitere Informationen finden Sie unter [Netz steuern](../get_start.html).  Wenn Ihr Netz betriebsbereit ist, rufen Sie die API-Endpunkte Ihrer Netzressourcen ab, auf die Ihre Anwendung zugreift.  Weitere Informationen finden Sie unter [Netzservice-Berechtigungsnachweise zur Anwendung hinzufügen](../v10_application.html#adding-network-service-credentials-to-your-application).
+Sie müssen außerdem über ein {{site.data.keyword.blockchain}}-Netz unter {{site.data.keyword.Bluemix_short}} verfügen, für das ein Kanal mit den zugehörigen Peers konfiguriert ist.  Weitere Informationen finden Sie unter [Netz steuern](/docs/services/blockchain/get_start.html).  Wenn Ihr Netz betriebsbereit ist, rufen Sie die API-Endpunkte Ihrer Netzressourcen ab, auf die Ihre Anwendung zugreift.  Weitere Informationen finden Sie unter [Netzservice-Berechtigungsnachweise zur Anwendung hinzufügen](/docs/services/blockchain/v10_application.html#adding-network-service-credentials-to-your-application).
 
 
 ## Marbles-Anwendung

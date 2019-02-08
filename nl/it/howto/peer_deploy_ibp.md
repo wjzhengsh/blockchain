@@ -21,9 +21,9 @@ lastupdated: "2018-12-07"
 Le seguenti istruzioni descrivono come distribuire un peer {{site.data.keyword.blockchainfull}} Platform su {{site.data.keyword.cloud_notm}} Private (ICP) che si collegherà alla rete del piano Starter o Enterprise su {{site.data.keyword.cloud_notm}} o sul tuo ICP locale.
 {:shortdesc}
 
-Prima di distribuire un peer, rivedi [Considerazioni e limitazioni](../ibp-for-icp-about.html#ibp-icp-considerations).
+Prima di distribuire un peer, rivedi [Considerazioni e limitazioni](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-considerations).
 
-La tua rete del piano Starter o Enterprise deve eseguire Hyperledger Fabric v1.1 o v1.2.1. Puoi trovare la tua versione di Hyperledger Fabric aprendo la [finestra Preferenze della rete](../v10_dashboard.html#network-preferences) nel tuo Monitoraggio della rete.
+La tua rete del piano Starter o Enterprise deve eseguire Hyperledger Fabric v1.1 o v1.2.1. Puoi trovare la tua versione di Hyperledger Fabric aprendo la [finestra Preferenze della rete](/docs/services/blockchain/v10_dashboard.html#network-preferences) nel tuo Monitoraggio della rete.
 
 ## Risorse richieste
 {: #peer-resources-required}
@@ -53,13 +53,13 @@ Se non utilizzi il provisioning dinamico, devono essere creati e configurati dei
 ## Prerequisiti per la distribuzione di un peer
 {: #prerequisites-peer-ibp}
 
-1. Prima di poter installare un peer su ICP, devi [installare ICP](../ICP_setup.html) e [installare il grafico Helm di {{site.data.keyword.blockchainfull_notm}} Platform](helm_install_icp.html).
+1. Prima di poter installare un peer su ICP, devi [installare ICP](/docs/services/blockchain/ICP_setup.html) e [installare il grafico Helm di {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/howto/helm_install_icp.html).
 
 2. Se utilizzi la Community Edition e vuoi eseguire questo grafico Helm su un cluster ICP senza la connettività Internet, devi creare degli archivi su una macchina collegata a Internet prima di poter installare gli archivi sul tuo cluster ICP. Per ulteriori informazioni, consulta [Adding featured applications to clusters without Internet connectivity ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_package_offline.html "Adding featured applications to clusters without Internet connectivity"){:new_window}. Tieni presente che puoi trovare il file della specifica manifest.yaml in ibm-blockchain-platform-dev/ibm_cloud_pak nel grafico Helm.
 
-3. Devi disporre di un'organizzazione che sia un membro di una rete del piano Starter o piano Enterprise su {{site.data.keyword.cloud_notm}}. Per operare, il peer si avvale degli endpoint API, delle CA Hyperledger Fabric e del servizio ordini della rete di {{site.data.keyword.blockchainfull_notm}} Platform. Se non sei membro di alcuna rete blockchain, devi creare o aderire a una rete. Per ulteriori informazioni, vedi [Creazione di una rete](../get_start.html#creating-a-network) o [Adesione a una rete](../get_start.html#joining-a-network).
+3. Devi disporre di un'organizzazione che sia un membro di una rete del piano Starter o piano Enterprise su {{site.data.keyword.cloud_notm}}. Per operare, il peer si avvale degli endpoint API, delle CA Hyperledger Fabric e del servizio ordini della rete di {{site.data.keyword.blockchainfull_notm}} Platform. Se non sei membro di alcuna rete blockchain, devi creare o aderire a una rete. Per ulteriori informazioni, vedi [Creazione di una rete](/docs/services/blockchain/get_start.html#creating-a-network) o [Adesione a una rete](/docs/services/blockchain/get_start.html#joining-a-network).
 
-4. Devi prima [distribuire una CA](CA_deploy_icp.html) su ICP. Utilizzerai questa CA come una CA TLS. Segui i passi preliminari per [utilizzare una CA su ICP](CA_operate.html#prerequisites) prima di distribuire il tuo peer. Non dovrai procedere oltre con questa procedura.
+4. Devi prima [distribuire una CA](/docs/services/blockchain/howto/CA_deploy_icp.html) su ICP. Utilizzerai questa CA come una CA TLS. Segui i passi preliminari per [utilizzare una CA su ICP](/docs/services/blockchain/howto/CA_operate.html#prerequisites) prima di distribuire il tuo peer. Non dovrai procedere oltre con questa procedura.
 
 5. Richiama il valore dell'indirizzo IP proxy del cluster della tua CA TLS dalla console ICP. **Nota:** devi essere un [Amministratore del cluster ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Cluster administrator roles and actions") per accedere al tuo IP proxy. Accedi al cluster ICP. Nel pannello di navigazione di sinistra, fai clic su **Piattaforma** e quindi su **Nodi** per visualizzare i nodi definiti nel cluster. Fai clic sul nodo con il ruolo `proxy` e copia il valore dell'`IP host` dalla tabella. **Importante:** salva questo valore perché lo utilizzerai quando configuri il campo `Proxy IP` del grafico Helm.
 
@@ -219,7 +219,7 @@ Devi creare solo un'identità amministratore per i componenti che appartengono a
 
 Dopo aver registrato l'identità di gestione, devi generare il signCert e la cartella di gestione del peer. Pertanto, devi eseguire un comando di registrazione sulla tua CA del piano Starter o Enterprise.
 
-1. Scarica il [client CA Fabric](CA_operate.html#fabric-ca-client) se non lo hai già fatto.
+1. Scarica il [client CA Fabric](/docs/services/blockchain/howto/CA_operate.html#fabric-ca-client) se non lo hai già fatto.
 2. Passa alla directory in cui archivierai il tuo materiale di crittografia e crea la cartella in cui archivierai la cartella MSP del tuo amministratore del peer.
 
   ```
@@ -311,9 +311,9 @@ cat $HOME/fabric-ca-client/peer-admin/msp/signcerts/cert.pem | base64 $FLAG
 
 I campi `"tls"` nel file di configurazione richiedono le informazioni dalla CA che hai distribuito su ICP. Utilizzerai questa CA come una CA TLS separata, che rende il tuo peer più sicuro. Utilizza le seguenti istruzioni per generare le informazioni pertinenti:
 
-- I valori `"cahost"` e `"caport"` sono l'URL e la porta dell'[URL della CA](CA_operate.html#ca-url). Ad esempio, se l'URL della CA è `http://9.30.94.174:30167`, il valore di `cahost` sarà `9.30.94.174` e `caport` sarà `30167`.
+- I valori `"cahost"` e `"caport"` sono l'URL e la porta dell'[URL della CA](/docs/services/blockchain/howto/CA_operate.html#ca-url). Ad esempio, se l'URL della CA è `http://9.30.94.174:30167`, il valore di `cahost` sarà `9.30.94.174` e `caport` sarà `30167`.
 - `"caname"` è il nome della CA TLS della CA che hai distribuito su ICP. Il nome della CA TLS è il valore che hai fornito al campo `CA TLS instance name` durante la configurazione della CA.
-- `"cacert"` è un certificato TLS codificato base64 della tua CA. Come prerequisito, aggiorna la seguente sezione con il valore dell'output del comando quando richiami il tuo [certificato TLS della CA](CA_operate.html#ca-tls).
+- `"cacert"` è un certificato TLS codificato base64 della tua CA. Come prerequisito, aggiorna la seguente sezione con il valore dell'output del comando quando richiami il tuo [certificato TLS della CA](/docs/services/blockchain/howto/CA_operate.html#ca-tls).
 
   ```
   "catls": {
@@ -333,7 +333,7 @@ I campi `"tls"` nel file di configurazione richiedono le informazioni dalla CA c
 
 Devi registrare il tuo peer con la CA del TLS su ICP utilizzando il client CA Fabric.
 
-1. Al momento, dovresti avere il file del certificato TLS `tls.pem` nella cartella `$HOME/fabric-ca-client/catls`. Se non è così, puoi copiare il certificato TLS che hai [scaricato da ICP](CA_operate.html#ca-tls) in una directory a cui puoi fare riferimento in comandi futuri. Assicurati di essere nella tua directory `$HOME/fabric-ca-client`.
+1. Al momento, dovresti avere il file del certificato TLS `tls.pem` nella cartella `$HOME/fabric-ca-client/catls`. Se non è così, puoi copiare il certificato TLS che hai [scaricato da ICP](/docs/services/blockchain/howto/CA_operate.html#ca-tls) in una directory a cui puoi fare riferimento in comandi futuri. Assicurati di essere nella tua directory `$HOME/fabric-ca-client`.
 
   ```
   cd $HOME/fabric-ca-client
@@ -358,9 +358,9 @@ export FABRIC_CA_CLIENT_HOME=$HOME/fabric-ca-client/tlsca-admin
   ```
   {:codeblock}
 
-  `<enroll_id>` e `<enroll_password>` nel comando sono [il nome utente e la password dell'amministratore CA](CA_deploy_icp.html#admin-secret) che hai passato al segreto Kubernetes quando hai distribuito la CA (Certificate Authority). Immetti l'[URL della CA](CA_operate.html#ca-url) in `<ca_url_with_port>`. Tralascia il `http://` all'inizio. `<tls_ca_name>` è quello che hai specificato durante la [configurazione della CA](CA_deploy_icp.html#icp-ca-configuration-parms).
+  `<enroll_id>` e `<enroll_password>` nel comando sono [il nome utente e la password dell'amministratore CA](/docs/services/blockchain/howto/CA_deploy_icp.html#admin-secret) che hai passato al segreto Kubernetes quando hai distribuito la CA (Certificate Authority). Immetti l'[URL della CA](/docs/services/blockchain/howto/CA_operate.html#ca-url) in `<ca_url_with_port>`. Tralascia il `http://` all'inizio. `<tls_ca_name>` è quello che hai specificato durante la [configurazione della CA](/docs/services/blockchain/howto/CA_deploy_icp.html#icp-ca-configuration-parms).
 
-  `<ca_tls_cert_file>` è il tuo nome del file del [certificato TLS CA](CA_operate.html#ca-tls) con il proprio percorso completo.
+  `<ca_tls_cert_file>` è il tuo nome del file del [certificato TLS CA](/docs/services/blockchain/howto/CA_operate.html#ca-tls) con il proprio percorso completo.
 
   Una chiamata reale potrebbe essere simile al seguente esempio:
 
@@ -480,7 +480,7 @@ Devi fornire i nomi host CSR per distribuire un peer. I nomi host CSR includono 
 
 #### Individuazione del valore dell'indirizzo IP proxy del cluster
 
-Se vuoi distribuire un peer sullo stesso cluster ICP su cui hai distribuito la tua CA TLS, immetti lo stesso IP proxy che hai utilizzato quando hai [configurato la tua CA TLS](CA_deploy_icp.html#icp-ca-configuration-parms). Se vuoi distribuire il componente su un cluster diverso, puoi richiamare il valore dell'indirizzo IP proxy del cluster dalla console ICP. Devi avere il ruolo di amministratore del cluster ICP in cui sarà distribuito il peer.
+Se vuoi distribuire un peer sullo stesso cluster ICP su cui hai distribuito la tua CA TLS, immetti lo stesso IP proxy che hai utilizzato quando hai [configurato la tua CA TLS](/docs/services/blockchain/howto/CA_deploy_icp.html#icp-ca-configuration-parms). Se vuoi distribuire il componente su un cluster diverso, puoi richiamare il valore dell'indirizzo IP proxy del cluster dalla console ICP. Devi avere il ruolo di amministratore del cluster ICP in cui sarà distribuito il peer.
 
 1. Accedi alla console ICP. Nel pannello di navigazione di sinistra, fai clic su **Piattaforma** e quindi su **Nodi** per visualizzare i nodi definiti nel cluster.
 2. Fai clic sul nodo con il ruolo `proxy` e copia il valore dell'`IP host` dalla tabella.
@@ -645,7 +645,7 @@ La seguente tabella elenca i parametri configurabili di {{site.data.keyword.bloc
 | `Peer configuration secret (Required)`| Il nome del [segreto di configurazione del peer](#peer-config-secret) che hai creato in ICP.  |nessuno|sì|
 |`Organization MSP (Required)`|Questo valore può essere trovato nel Monitoraggio della rete (IU IBP) facendo clic su "Configurazione peer remota" sulla schermata Panoramica.  |nessuno|sì|
 |`Peer service type`| Utilizzato per specificare se le [porte esterne devono essere esposte ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types) sul peer. Seleziona NodePort per esporre le porte esternamente (consigliato) e ClusterIP per non esporle. LoadBalancer e ExternalName non sono supportati in questa release. | NodePort |sì|
-| `State database`| Il [database dello stato](../glossary.html#state-database) utilizzato per memorizzare il tuo libro mastro del canale. Il peer deve utilizzare lo stesso database della tua [rete blockchain](../v10_dashboard.html#network-preferences). | LevelDB | sì |
+| `State database`| Il [database dello stato](/docs/services/blockchain/glossary.html#state-database) utilizzato per memorizzare il tuo libro mastro del canale. Il peer deve utilizzare lo stesso database della tua [rete blockchain](/docs/services/blockchain/v10_dashboard.html#network-preferences). | LevelDB | sì |
 |`CouchDB image repository`| Si applica solo se CouchDB è stato selezionato come database libro mastro. Questo campo viene automaticamente compilato con il percorso installato. Se stai utilizzando la Community Edition e non hai accesso a Internet, dovrebbe corrispondere alla directory in cui hai scaricato l'immagine CouchDB Fabric. | ibmcom/ibp-fabric-couchdb | sì |
 | `CouchDB Docker image tag`| Si applica solo se CouchDB è stato selezionato come database libro mastro. Il valore della tag associata all'immagine CouchDB. | Compilato automaticamente sul valore corretto. | sì |
 | `Peer Data persistence enabled`| Abilita la capacità di rendere persistenti i dati dopo il riavvio o un errore del cluster. Vedi [archiviazione in Kubernetes ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://kubernetes.io/docs/concepts/storage/ "Volumi") per ulteriori informazioni.  *Se non selezionato, tutti i dati andranno persi in caso di failover o di riavvio del pod.* | verificato | no |
@@ -724,22 +724,22 @@ Puoi creare un nuovo file `yaml` modificando il `values.yaml` incluso nel file d
 
 Una volta che hai terminato il tuo lavoro con i parametri di configurazione, fai clic sul pulsante **Installa** e sul pulsante **Visualizza release Helm** per visualizzare la tua distribuzione. Se l'azione è stata eseguita correttamente, dovresti vedere il valore 1 nei campi `DESIRED`, `CURRENT`, `UP TO DATE` e `AVAILABLE` nella tabella Distribuzione. Potresti dover fare clic su Aggiorna e attendere l'aggiornamento della tabella. Puoi anche trovare la tabella Distribuzione facendo clic sull'icona **Menu** nell'angolo in alto a sinistra nella console ICP. Dall'elenco di menu, fai clic su **Workload** e poi su **Release Helm**.
 
-Se scorri in basso fino alla sezione `Note`, sono presenti delle informazioni importanti che utilizzerai per [utilizzare il tuo peer](peer_operate_ibp.html).
+Se scorri in basso fino alla sezione `Note`, sono presenti delle informazioni importanti che utilizzerai per [utilizzare il tuo peer](/docs/services/blockchain/howto/peer_operate_ibp.html).
 
 <!--
 ### Verifying the peer can connect to Starter or Enterprise Plan network
 
 You can run a peer CLI command from inside the peer container to verify that your peer has connected to your network on the {{site.data.keyword.blockchainfull_notm}} Platform. Complete the following instructions to run the `peer channel fetch` command to fetch the genesis block from a channel:
 
-1. If you have not already connected to your ICP cluster, follow these [instructions](peer_operate_ibp.html#peer-kubectl-configure) to connect to it and use the cli from inside the peer container.
+1. If you have not already connected to your ICP cluster, follow these [instructions](/docs/services/blockchain/howto/peer_operate_ibp.html#peer-kubectl-configure) to connect to it and use the cli from inside the peer container.
 
-2. If you deploy your peer behind a firewall, you need to open a passthru to enable the network on the platform to complete a TlS handshake with your peer. You only need to enable a passthru for the Node port bound to port 7051 of your peer. For more information, see [finding your peer endpoint information](peer_operate_ibp.html#peer-endpoint).
+2. If you deploy your peer behind a firewall, you need to open a passthru to enable the network on the platform to complete a TlS handshake with your peer. You only need to enable a passthru for the Node port bound to port 7051 of your peer. For more information, see [finding your peer endpoint information](/docs/services/blockchain/howto/peer_operate_ibp.html#peer-endpoint).
 
 3. Your organization needs to be added to a channel in the network before you can fetch the genesis block.
 
-  - You can start a new channel for the peer. If you are using IBP Starter or Enterprise Plan, you can automatically include your organization during [channel creation](create_channel.html#creating-a-channel).
+  - You can start a new channel for the peer. If you are using IBP Starter or Enterprise Plan, you can automatically include your organization during [channel creation](/docs/services/blockchain/howto/create_channel.html#creating-a-channel).
 
-  - Another member of the blockchain network can also add your organization to an existing channel by using a [channel update](create_channel.html#updating-a-channel).
+  - Another member of the blockchain network can also add your organization to an existing channel by using a [channel update](/docs/services/blockchain/howto/create_channel.html#updating-a-channel).
 
     The peer uploads its signCert during installation, so that you need to only synchronize the certificate to the channel. On the "Channels" screen of the Network Monitor, locate the channel that your organization joined and select **Sync Certificate** from the drop-down list under the **Action** header. This action synchronizes the certificates across all the peers on the channel.
 
@@ -820,15 +820,15 @@ You can run a peer CLI command from inside the peer container to verify that you
   ```
 
   Successfully fetching the genesis block indicates that your peer can connect to your Starter or Enterprise Plan network.
-  You still need to join the peer to the channel and install chaincode. See [operating your peer](peer_operate_ibp.html) for more information.
+  You still need to join the peer to the channel and install chaincode. See [operating your peer](/docs/services/blockchain/howto/peer_operate_ibp.html) for more information.
 
 -->
 
 ## Visualizzazione dei log del peer
 {: #peer-ibp-view-logs}
 
-È possibile visualizzare i log del componente dalla riga di comando utilizzando i [`comandi della CLI kubectl`](peer_operate_ibp.html#peer-kubectl-configure) o tramite [Kibana ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.elastic.co/products/kibana "Your window into the Elastic Search"), che è incluso nel tuo cluster ICP. Per ulteriori informazioni, consulta queste [istruzioni per l'accesso ai log](peer_operate_ibp.html#peer-ibp-view-logs).
+È possibile visualizzare i log del componente dalla riga di comando utilizzando i [`comandi della CLI kubectl`](/docs/services/blockchain/howto/peer_operate_ibp.html#peer-kubectl-configure) o tramite [Kibana ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.elastic.co/products/kibana "Your window into the Elastic Search"), che è incluso nel tuo cluster ICP. Per ulteriori informazioni, consulta queste [istruzioni per l'accesso ai log](/docs/services/blockchain/howto/peer_operate_ibp.html#peer-ibp-view-logs).
 
 ## Operazioni successive
 
-Dopo aver distribuito il peer, devi completare diversi passi operativi prima di poter inviare transazioni e leggere il libro mastro distribuito dalla rete blockchain. Per ulteriori informazioni, consulta [Utilizzo dei peer con il piano Starter o Enterprise](peer_operate_ibp.html).
+Dopo aver distribuito il peer, devi completare diversi passi operativi prima di poter inviare transazioni e leggere il libro mastro distribuito dalla rete blockchain. Per ulteriori informazioni, consulta [Utilizzo dei peer con il piano Starter o Enterprise](/docs/services/blockchain/howto/peer_operate_ibp.html).

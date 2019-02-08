@@ -42,7 +42,7 @@ Se stai usando VSCode, è disponibile un'estensione Hyperledger Composer VSCode 
 
 ## Passo uno: Installazione degli strumenti di riga di comando
 
-Gli strumenti di riga di comando includono **composer-cli**, il modulo di riga di comando {{site.data.keyword.blockchainfull_notm}} Platform: Develop principale; **generator-hyperledger-composer**, **composer-rest-server** e **Yeoman** sono moduli utilizzati per generare reti di business, server REST personalizzati e applicazioni Angular. La versione da installare dipende dalla versione dell'Hyperledger Fabric in esecuzione nel tuo piano Starter o Enterprise. Puoi trovare la tua versione di Fabric aprendo la [finestra Preferenze della rete](../v10_dashboard.html#network-preferences) nel tuo Monitoraggio della rete.
+Gli strumenti di riga di comando includono **composer-cli**, il modulo di riga di comando {{site.data.keyword.blockchainfull_notm}} Platform: Develop principale; **generator-hyperledger-composer**, **composer-rest-server** e **Yeoman** sono moduli utilizzati per generare reti di business, server REST personalizzati e applicazioni Angular. La versione da installare dipende dalla versione dell'Hyperledger Fabric in esecuzione nel tuo piano Starter o Enterprise. Puoi trovare la tua versione di Fabric aprendo la [finestra Preferenze della rete](/docs/services/blockchain/v10_dashboard.html#network-preferences) nel tuo Monitoraggio della rete.
 
 1. Per l'utilizzo con le nuove istanze del piano Starter che eseguono l'Hyperledger Fabric v1.2.1, installa **composer-cli** utilizzando il seguente comando:
 

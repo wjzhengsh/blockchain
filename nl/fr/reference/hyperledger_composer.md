@@ -29,7 +29,7 @@ Hyperledger Composer se compose d'un environnement d'exécution, d'une interface
 
 Hyperledger Composer vous permet de rapidement modéliser votre réseau d'entreprise existant, lequel contient vos ressources existantes et les transactions qui leur sont associées ; les ressources sont des biens matériels ou immatériels, services ou propriétés. Dans le cadre de votre modèle de réseau d'entreprise, vous définissez les transactions qui peuvent interagir avec les ressources. Les réseaux d'entreprise incluent également les participants qui interagissent avec eux, chacun d'eux pouvant être associé à une identité unique, au sein de plusieurs réseaux d'entreprise.
 
-Pour plus d'informations sur la génération de réseaux d'entreprise, voir [Développement de réseaux d'entreprise](../develop.html) ou consultez la [documentation Hyperledger Composer ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger.github.io/composer/latest/introduction/introduction.html).
+Pour plus d'informations sur la génération de réseaux d'entreprise, voir [Développement de réseaux d'entreprise](/docs/services/blockchain/develop.html) ou consultez la [documentation Hyperledger Composer ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger.github.io/composer/latest/introduction/introduction.html).
 
 ## Requêtes
 

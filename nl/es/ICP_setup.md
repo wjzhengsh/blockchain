@@ -103,4 +103,4 @@ Realice los pasos siguientes para instalar y configurar {{site.data.keyword.clou
 2. Instale la CLI de IBM Cloud privado
 [3.1.0 ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/manage_cluster/install_cli.html) para instalar y trabajar con la CA.
 
-Después de instalar ICP, puede continuar con la [importación del diagrama de Helm de la plataforma {{site.data.keyword.blockchainfull_notm}} para ICP](howto/helm_install_icp.html) en el clúster de ICP.
+Después de instalar ICP, puede continuar con la [importación del diagrama de Helm de la plataforma {{site.data.keyword.blockchainfull_notm}} para ICP](/docs/services/blockchain/howto/helm_install_icp.html) en el clúster de ICP.
