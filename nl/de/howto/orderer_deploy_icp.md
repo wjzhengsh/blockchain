@@ -17,9 +17,9 @@ lastupdated: "2018-12-07"
 
 ***[Ist diese Seite hilfreich? Teilen Sie uns Ihre Meinung mit.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
-Anordnungsknoten authentifizieren Clients, ordnen Transaktionen an und senden Transaktionen in einem Blockchain-Netz mit der Anordnungskomponente. Weitere Informationen zu Anordnungsknoten und der Rolle, die sie in einem Blockchain-Netz übernehmen, enthält der Abschnitt [Blockchain-Komponenten im Überblick](../blockchain_component_overview.html).{:shortdesc}
+Anordnungsknoten authentifizieren Clients, ordnen Transaktionen an und senden Transaktionen in einem Blockchain-Netz mit der Anordnungskomponente. Weitere Informationen zu Anordnungsknoten und der Rolle, die sie in einem Blockchain-Netz übernehmen, enthält der Abschnitt [Blockchain-Komponenten im Überblick](/docs/services/blockchain/blockchain_component_overview.html).{:shortdesc}
 
-Lesen Sie vor der Bereitstellung eines Anordnungsknotens den Abschnitt mit [Hinweisen und Einschränkungen](../ibp-for-icp-about.html#ibp-icp-considerations).
+Lesen Sie vor der Bereitstellung eines Anordnungsknotens den Abschnitt mit [Hinweisen und Einschränkungen](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-considerations).
 
 ## Erforderliche Ressourcen
 {: #ca-resources-required}
@@ -50,7 +50,7 @@ Wenn Sie nicht mit der dynamischen Bereitstellung arbeiten, müssen [persistente
 ## Voraussetzungen für die Bereitstellung eines Anordnungsknotens
 {: #prerequisites-orderer-icp}
 
-1. Bevor Sie in ICP einen Anordnungsknoten installieren können, müssen Sie [ICP installieren](../ICP_setup.html) und das [Helm-Diagramm für {{site.data.keyword.blockchainfull_notm}} Platform installieren](helm_install_icp.html).
+1. Bevor Sie in ICP einen Anordnungsknoten installieren können, müssen Sie [ICP installieren](/docs/services/blockchain/ICP_setup.html) und das [Helm-Diagramm für {{site.data.keyword.blockchainfull_notm}} Platform installieren](/docs/services/blockchain/howto/helm_install_icp.html).
 
 2. Falls Sie Community Edition verwenden und dieses Helm-Diagramm in einem ICP-Cluster ohne Internetkonnektivität ausführen wollen, müssen Sie auf einer mit dem Internet verbundenen Maschine Archive erstellen, bevor Sie die Archive im ICP-Cluster installieren können. Weitere Informationen finden Sie unter [Ausgewählte Anwendungen ohne Internetverbindung zu Clustern hinzufügen ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_package_offline.html "Ausgewählte Anwendungen ohne Internetverbindung zu Clustern hinzufügen"){:new_window}. Die Spezifikationsdatei `manifest.yaml` ist im Helm-Diagramm unter "ibm-blockchain-platform-dev/ibm_cloud_pak" zu finden.
 
@@ -61,7 +61,7 @@ Wenn Sie nicht mit der dynamischen Bereitstellung arbeiten, müssen [persistente
 ## Konfigurationsdatei für Anordnungsknoten erstellen
 {: #orderer-config-file}
 
-Bevor Sie einen Anordnungsknoten bereitstellen, müssen Sie eine Konfigurationsdatei erstellen, die wichtige Informationen zur Identität des Anordnungsknotens und zur Zertifizierungsstelle enthält. Anschließend müssen Sie diese Datei während der Konfiguration mithilfe eines [Kubernetes-Objekts für einen geheimen Schlüssel ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://kubernetes.io/docs/concepts/configuration/secret/) an das Helm-Diagramm übergeben. Diese Datei ermöglicht es dem Anordnungsknoten, von der Zertifizierungsstelle die Zertifikate abzrufen, die für den Beitritt zu einem Blockchain-Netz benötigt werden. Außerdem enthält diese Datei ein Administratorzertifikat, mit dem Sie Ihren Anordnungsknoten als Benutzer mit Administratorberechtigung betreiben können. Befolgen Sie die Anweisungen im Abschnitt über die [Verwendung der Zertifizierungsstelle zum Bereitstellen eines Anordnungsknotens oder Peers](CA_operate.html#deploy-orderer-peer), bevor Sie den Anordnungsknoten konfigurieren.
+Bevor Sie einen Anordnungsknoten bereitstellen, müssen Sie eine Konfigurationsdatei erstellen, die wichtige Informationen zur Identität des Anordnungsknotens und zur Zertifizierungsstelle enthält. Anschließend müssen Sie diese Datei während der Konfiguration mithilfe eines [Kubernetes-Objekts für einen geheimen Schlüssel ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://kubernetes.io/docs/concepts/configuration/secret/) an das Helm-Diagramm übergeben. Diese Datei ermöglicht es dem Anordnungsknoten, von der Zertifizierungsstelle die Zertifikate abzrufen, die für den Beitritt zu einem Blockchain-Netz benötigt werden. Außerdem enthält diese Datei ein Administratorzertifikat, mit dem Sie Ihren Anordnungsknoten als Benutzer mit Administratorberechtigung betreiben können. Befolgen Sie die Anweisungen im Abschnitt über die [Verwendung der Zertifizierungsstelle zum Bereitstellen eines Anordnungsknotens oder Peers](/docs/services/blockchain/howto/CA_operate.html#deploy-orderer-peer), bevor Sie den Anordnungsknoten konfigurieren.
 
 Sie müssen die CSR-Hostnamen in der Konfigurationsdatei angeben. Hierzu gehört auch der `Service-Host-Name`, der auf dem während der Bereitstellung von Ihnen angegebenen `Namen des Helm-Release` basiert. Der `Service-Host-Name` ist der Wert für `helm_release_name`, den Sie angeben, mit der am Ende hinzugefügten Zeichenfolge `-orderer`. Falls Sie beispielsweise für den `Namen des Helm-Release` den Wert `orderer1` angeben, können Sie den folgenden Wert im Abschnitt `"csr"` der Datei einfügen:
 
@@ -223,4 +223,4 @@ Nachdem Sie die Konfigurationsparameter ausgefüllt und auf die Schaltfläche **
 ## Protokolle des Anordnungsknotens anzeigen
 {: #orderer-view-logs}
 
-Komponentenprotokolle können über die Befehlszeile mit den [`Befehlen der CLI "kubectl"`](orderer_operate.html#orderer-kubectl-configure) oder über [Kibana ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://www.elastic.co/products/kibana "Your Window into the Elastic Search") angezeigt werden, das in Ihrem ICP-Cluster enthalten ist. Weitere Informationen enthalten die [Anweisungen für den Zugriff auf die Protokolle](orderer_operate.html#orderer-view-logs).
+Komponentenprotokolle können über die Befehlszeile mit den [`Befehlen der CLI "kubectl"`](/docs/services/blockchain/howto/orderer_operate.html#orderer-kubectl-configure) oder über [Kibana ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://www.elastic.co/products/kibana "Your Window into the Elastic Search") angezeigt werden, das in Ihrem ICP-Cluster enthalten ist. Weitere Informationen enthalten die [Anweisungen für den Zugriff auf die Protokolle](/docs/services/blockchain/howto/orderer_operate.html#orderer-view-logs).

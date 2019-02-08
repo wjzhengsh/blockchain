@@ -24,7 +24,7 @@ Pour un aperçu de haut niveau des composants d'un réseau basé sur Fabric, reg
 
 *Bien que cette vidéo présente les composants du point de vue des réseaux Starter et Enterprise, les informations demeurent très pertinentes pour la solution gérée par le client IBP sur ICP (IBM Cloud Platform).*
 
-Pour les besoins de cette présentation, nos nous concentrerons seulement sur les autorités de certification, les services de tri, les homologues, les smart contracts et les applications. Comme vous pouvez le voir dans le document [{{site.data.keyword.blockchainfull_notm}} Platform for ICP deployment guide](ibp_for_icp_deployment_guide.html), cette séquence n'est pas arbitraire ; elle reflète la séquence dans laquelle vont être déployés les composants d'un réseau basé sur Fabric.
+Pour les besoins de cette présentation, nos nous concentrerons seulement sur les autorités de certification, les services de tri, les homologues, les smart contracts et les applications. Comme vous pouvez le voir dans le document [{{site.data.keyword.blockchainfull_notm}} Platform for ICP deployment guide](/docs/services/blockchain/ibp_for_icp_deployment_guide.html), cette séquence n'est pas arbitraire ; elle reflète la séquence dans laquelle vont être déployés les composants d'un réseau basé sur Fabric.
 
 ## Autorités de certification
 {: #ca}

@@ -17,10 +17,10 @@ lastupdated: "2018-12-07"
 
 ***[Questa pagina è utile? Faccelo sapere.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
-Gli ordinanti autenticano i client, ordinano le transazioni ed eseguono il broadcast delle transazioni in una rete blockchain con il componente ordinante. Per ulteriori informazioni sugli ordinanti e sul loro ruolo in una rete blockchain, consulta [Panoramica sui componenti blockchain](../blockchain_component_overview.html).
+Gli ordinanti autenticano i client, ordinano le transazioni ed eseguono il broadcast delle transazioni in una rete blockchain con il componente ordinante. Per ulteriori informazioni sugli ordinanti e sul loro ruolo in una rete blockchain, consulta [Panoramica sui componenti blockchain](/docs/services/blockchain/blockchain_component_overview.html).
 {:shortdesc}
 
-Prima di distribuire un servizio ordini, rivedi [Considerazioni e limitazioni](../ibp-for-icp-about.html#ibp-icp-considerations).
+Prima di distribuire un servizio ordini, rivedi [Considerazioni e limitazioni](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-considerations).
 
 ## Risorse richieste
 {: #ca-resources-required}
@@ -51,7 +51,7 @@ Se non utilizzi il provisioning dinamico, devono essere creati e configurati dei
 ## Prerequisiti per la distribuzione di un ordinante
 {: #prerequisites-orderer-icp}
 
-1. Prima di poter installare un ordinante su ICP, devi [installare ICP](../ICP_setup.html) e [installare il grafico Helm di {{site.data.keyword.blockchainfull_notm}} Platform](helm_install_icp.html).
+1. Prima di poter installare un ordinante su ICP, devi [installare ICP](/docs/services/blockchain/ICP_setup.html) e [installare il grafico Helm di {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/howto/helm_install_icp.html).
 
 2. Se utilizzi la Community Edition e vuoi eseguire questo grafico Helm su un cluster ICP senza la connettività Internet, devi creare degli archivi su una macchina collegata a Internet prima di poter installare gli archivi sul tuo cluster ICP. Per ulteriori informazioni, consulta [Adding featured applications to clusters without Internet connectivity ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_package_offline.html "Adding featured applications to clusters without Internet connectivity"){:new_window}. Tieni presente che puoi trovare il file della specifica `manifest.yaml` in ibm-blockchain-platform-dev/ibm_cloud_pak nel grafico Helm.
 
@@ -62,7 +62,7 @@ Se non utilizzi il provisioning dinamico, devono essere creati e configurati dei
 ## Creazione di un file di configurazione dell'ordinante
 {: #orderer-config-file}
 
-Prima di distribuire un ordinante, devi creare un file di configurazione che contiene le informazioni importanti sull'identità dell'ordinante e la tua CA. Successivamente, devi passare questo file al grafico Helm durante la configurazione utilizzando un oggetto [segreto Kubernetes ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://kubernetes.io/docs/concepts/configuration/secret/). Questo file consentirà all'ordinante di ottenere i certificati di cui ha bisogno dalla CA per aderire a una rete blockchain. Contiene inoltre un certificato di gestione che ti consentirà di utilizzare l'ordinante come un utente amministratore. Attieniti alle istruzioni sull'[utilizzo della CA per distribuire un ordinante o un peer](CA_operate.html#deploy-orderer-peer) prima di configurare l'ordinante.
+Prima di distribuire un ordinante, devi creare un file di configurazione che contiene le informazioni importanti sull'identità dell'ordinante e la tua CA. Successivamente, devi passare questo file al grafico Helm durante la configurazione utilizzando un oggetto [segreto Kubernetes ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://kubernetes.io/docs/concepts/configuration/secret/). Questo file consentirà all'ordinante di ottenere i certificati di cui ha bisogno dalla CA per aderire a una rete blockchain. Contiene inoltre un certificato di gestione che ti consentirà di utilizzare l'ordinante come un utente amministratore. Attieniti alle istruzioni sull'[utilizzo della CA per distribuire un ordinante o un peer](/docs/services/blockchain/howto/CA_operate.html#deploy-orderer-peer) prima di configurare l'ordinante.
 
 Devi fornire i nomi host CSR al file di configurazione. È incluso il nome host del servizio (`service host name`) che si baserà sul nome della release Helm (`helm release name`) che specifichi durante la distribuzione. Il nome host del servizio (`service host name`) è il nome della release Helm (`helm_release_name`) che specifichi con la stringa `-orderer` aggiunta alla fine. Ad esempio, se specifichi un nome della release Helm (`helm release name`) di `orderer1`, puoi inserire il seguente valore nella sezione `"csr"` del file:
 
@@ -224,4 +224,4 @@ Una volta che hai terminato il tuo lavoro con i parametri di configurazione, fai
 ## Visualizzazione dei log dell'ordinante
 {: #orderer-view-logs}
 
-È possibile visualizzare i log del componente dalla riga di comando utilizzando i [`comandi della CLI kubectl`](orderer_operate.html#orderer-kubectl-configure) o tramite [Kibana ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.elastic.co/products/kibana "Your window into the Elastic Search"), che è incluso nel tuo cluster ICP. Per ulteriori informazioni, consulta queste [istruzioni per l'accesso ai log](orderer_operate.html#orderer-view-logs).
+È possibile visualizzare i log del componente dalla riga di comando utilizzando i [`comandi della CLI kubectl`](/docs/services/blockchain/howto/orderer_operate.html#orderer-kubectl-configure) o tramite [Kibana ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.elastic.co/products/kibana "Your window into the Elastic Search"), che è incluso nel tuo cluster ICP. Per ulteriori informazioni, consulta queste [istruzioni per l'accesso ai log](/docs/services/blockchain/howto/orderer_operate.html#orderer-view-logs).

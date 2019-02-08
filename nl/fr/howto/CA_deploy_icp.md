@@ -17,10 +17,10 @@ lastupdated: "2018-12-07"
 
 ***[Cette page est-elle utile ? Dites-nous.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
-Une fois que vous avez importé la charte Helm d'{{site.data.keyword.blockchainfull}} Platform on {{site.data.keyword.cloud_notm}} Private (ICP), vous pouvez déployer les composants individuels. L'autorité de certification est la racine de confiance de votre entreprise et elle vous permet de générer des données d'identification pour les autres composants à déployer. Par conséquent, vous devez déployer une autorité de certification avant de déployer les autres composants. Chaque organisation dans un réseau de blockchain multi-cloud doit déployer sa propre autorité de certification. Pour plus d'informations sur les autorités de certification et leur rôle dans un réseau de blockchain, voir [Autorités de certification](../blockchain_component_overview.html#ca).
+Une fois que vous avez importé la charte Helm d'{{site.data.keyword.blockchainfull}} Platform on {{site.data.keyword.cloud_notm}} Private (ICP), vous pouvez déployer les composants individuels. L'autorité de certification est la racine de confiance de votre entreprise et elle vous permet de générer des données d'identification pour les autres composants à déployer. Par conséquent, vous devez déployer une autorité de certification avant de déployer les autres composants. Chaque organisation dans un réseau de blockchain multi-cloud doit déployer sa propre autorité de certification. Pour plus d'informations sur les autorités de certification et leur rôle dans un réseau de blockchain, voir [Autorités de certification](/docs/services/blockchain/blockchain_component_overview.html#ca).
 {:shortdesc}
 
-Avant de déployer une autorité de certification, passez en revue la section [Considérations et limitations](../ibp-for-icp-about.html#ibp-icp-considerations).
+Avant de déployer une autorité de certification, passez en revue la section [Considérations et limitations](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-considerations).
 
 ## Ressources obligatoires
 {: #ca-resources-required}
@@ -50,7 +50,7 @@ Si vous n'utilisez pas la mise à disposition dynamique, des[Volumes permanents 
 ## Prérequis pour le déploiement d'une autorité de certification
 {: #prerequisites-ca-icp}
 
-1. Avant d'installer une autorité de certification sur ICP, vous devez [installer ICP](../ICP_setup.html) et [installer la Charte Helm de {{site.data.keyword.blockchainfull_notm}} Platform](helm_install_icp.html).
+1. Avant d'installer une autorité de certification sur ICP, vous devez [installer ICP](/docs/services/blockchain/ICP_setup.html) et [installer la Charte Helm de {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/howto/helm_install_icp.html).
 
 2. Si vous utilisez Community Edition et souhaitez exécuter cette charte Helm sur un cluster ICP sans connectivité Internet, vous devez créer des archives sur une machine connectée à Internet avant d'installer les archives sur votre cluster ICP. Pour plus d'informations, voir [Adding featured applications to clusters without Internet connectivity ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_package_offline.html "Adding featured applications to clusters without Internet connectivity"){:new_window}. Remarque : Vous pouvez trouver le fichier de spécification manifest.yaml sous ibm-blockchain-platform-dev/ibm_cloud_pak dans la charte Helm.
 
@@ -195,7 +195,7 @@ Vous pouvez créer un nouveau fichier `yaml` en éditant `values.yaml` qui est i
 
 Une fois que vous avez entré les paramètres de configuration et cliqué sur le bouton **Installer**, cliquez sur le bouton **Afficher l'édition Helm** pour afficher votre déploiement. Si l'opération aboutit, vous devez voir la valeur 1 dans les zones `DESIRED`, `CURRENT`, `UP TO DATE` et `AVAILABLE` dans le tableau Déploiement. Vous devrez peut-être cliquer sur Actualiser et attendre que le tableau soit mis à jour. Vous pouvez aussi afficher le tableau Déploiement en cliquant sur l'icône **Menu** dans l'angle supérieur gauche sur la console ICP. Dans la liste de menus, cliquez sur **Charges de travail**, puis sur **Editions Helm**.
 
-Si vous faites défiler jusqu'à la section `Remarques`, vous verrez des informations importantes relatives à l'[exploitation de votre autorité de certification](CA_operate.html#ca-operate).
+Si vous faites défiler jusqu'à la section `Remarques`, vous verrez des informations importantes relatives à l'[exploitation de votre autorité de certification](/docs/services/blockchain/howto/CA_operate.html#ca-operate).
 
 Une fois que vous avez installé une autorité de certification {{site.data.keyword.blockchainfull_notm}} Platform dans ICP, un configmap est créé avec les paramètres de variables d'environnement par défaut. Vous pouvez ensuite changer ou ajouter des variables d'environnement pour l'autorité de certification afin de configurer son comportement. Pour plus d'informations sur les paramètres de configuration du serveur de l'autorité de certification, voir [la documentation du serveur d'autorité de certification Fabric![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric-ca.readthedocs.io/en/latest/users-guide.html#fabric-ca-server "Fabric CA Server").
 
@@ -204,9 +204,9 @@ Après avoir configuré configmap, vous devez redémarrer le serveur de l'autori
 ## Affichage des journaux de l'autorité de certification
 {: #ca-deploy-view-logs}
 
-Les journaux de composant peuvent être affichés à partir de la ligne de commande à l'aide de [`commandes de l'interface CLI kubectl`](CA_operate.html#ca-kubectl-configure) ou via [Kibana ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://www.elastic.co/products/kibana "Votre fenêtre dans Elastic Search"), qui est inclus dans votre cluster ICP. Pour plus d'informations, consultez les [instructions relatives à l'accès aux journaux](CA_operate.html#ca-operate-view-logs).
+Les journaux de composant peuvent être affichés à partir de la ligne de commande à l'aide de [`commandes de l'interface CLI kubectl`](/docs/services/blockchain/howto/CA_operate.html#ca-kubectl-configure) ou via [Kibana ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://www.elastic.co/products/kibana "Votre fenêtre dans Elastic Search"), qui est inclus dans votre cluster ICP. Pour plus d'informations, consultez les [instructions relatives à l'accès aux journaux](/docs/services/blockchain/howto/CA_operate.html#ca-operate-view-logs).
 
 ## Utilisation de votre autorité de certification
 {: #operate-ca}
 
-Votre autorité de certification sera la racine de confiance pour votre organisation. Vous devez utiliser votre autorité de certification pour générer les certificats de vos autres composants.  Par conséquent, avant de déployer un service de tri ou un homologue, vous devez [configurer votre autorité de certification et effectuer plusieurs étapes opérationnelles](CA_operate.html)
+Votre autorité de certification sera la racine de confiance pour votre organisation. Vous devez utiliser votre autorité de certification pour générer les certificats de vos autres composants.  Par conséquent, avant de déployer un service de tri ou un homologue, vous devez [configurer votre autorité de certification et effectuer plusieurs étapes opérationnelles](/docs/services/blockchain/howto/CA_operate.html)

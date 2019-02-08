@@ -148,7 +148,7 @@ Vous devez télécharger le certificat TLS de votre service de tri et le transme
 
 Accédez au répertoire où le dossier MSP admin du service de tri est généré. Selon que vous avez suivi les étapes en exemple décrites dans cette documentation, ou le nombre de composants que vous déployez, vous pouvez rechercher le dossier MSP dans `$HOME/fabric-ca-client/orderer-admin/msp` ou `$HOME/fabric-ca-client/peer-admin/msp`
 
-Avant d'utiliser le service de tri, vous devez procéder à quelques opérations de gestion des certificats sur votre machine locale. Vous devez également vous assurer que vous pouvez accéder aux certificats TLS à partir du service de tri. Pour plus d'informations sur les certificats à utiliser, voir [Fournisseur de services aux membres (MSP)](CA_operate.html#msp) dans [Exploitation d'une autorité de certification sur {{site.data.keyword.cloud_notm}} Private](CA_operate.html).
+Avant d'utiliser le service de tri, vous devez procéder à quelques opérations de gestion des certificats sur votre machine locale. Vous devez également vous assurer que vous pouvez accéder aux certificats TLS à partir du service de tri. Pour plus d'informations sur les certificats à utiliser, voir [Fournisseur de services aux membres (MSP)](/docs/services/blockchain/howto/CA_operate.html#msp) dans [Exploitation d'une autorité de certification sur {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/howto/CA_operate.html).
 
 1. Déplacez le certificat signCert de l'admin de votre service de tri vers un nouveau dossier nommé `admincerts` :
 
@@ -220,9 +220,9 @@ Notez que vous pouvez ajouter une organisation à un canal sans d'abord rejoindr
 
 La liste suivante présente les étapes générales et les tâches qui seront effectuées par différents ensembles d'organisations de votre consortium.
 
-1. Chaque organisation qui souhaite rejoindre le consortium doit [préparer une définition d'organisation](peer_operate_icp.html#organization-definition).
+1. Chaque organisation qui souhaite rejoindre le consortium doit [préparer une définition d'organisation](/docs/services/blockchain/howto/peer_operate_icp.html#organization-definition).
 2. L'admin de l'organisation du service de tri [forme le consortium](#consortium) par l'ajout d'organisations au canal système du service de tri.
-3. Toute organisation du consortium peut [créer un nouveau canal](peer_operate_icp.html#peer-icp-channeltx) par la préparation d'une transaction de configuration de canal.
+3. Toute organisation du consortium peut [créer un nouveau canal](/docs/services/blockchain/howto/peer_operate_icp.html#peer-icp-channeltx) par la préparation d'une transaction de configuration de canal.
 
 ## Obtention des outils Fabric
 {: #get-fabric-tools}
@@ -268,7 +268,7 @@ Vous devez télécharger les outils Hyperledger Fabric ci-après pour mettre à 
 ## Création d'une définition d'organisation
 {: #org-definition}
 
-La **définition** d'une organisation contient le nom de l'organisation (ID MSP) et les certificats pertinents. Le canal système et les canaux d'application vont utiliser cette définition pour inclure votre organisation dans les règles qui contrôlent la création de canal, les mises à jour et la validation de transaction. Chaque organisation qui souhaite rejoindre le consortium doit effectuer cette étape. Pour en savoir plus, voir la section relative à la [préparation d'une définition d'organisation](peer_operate_icp.html#organization-definition).
+La **définition** d'une organisation contient le nom de l'organisation (ID MSP) et les certificats pertinents. Le canal système et les canaux d'application vont utiliser cette définition pour inclure votre organisation dans les règles qui contrôlent la création de canal, les mises à jour et la validation de transaction. Chaque organisation qui souhaite rejoindre le consortium doit effectuer cette étape. Pour en savoir plus, voir la section relative à la [préparation d'une définition d'organisation](/docs/services/blockchain/howto/peer_operate_icp.html#organization-definition).
 
 ## Formation du consortium
 {: #consortium}
@@ -280,7 +280,7 @@ Rappelez le flux de haut niveau pour la formation d'un consortium :
 
 ### Obtention des définitions d'organisation
 
-Le service de tri doit recevoir les [définitionsd'organisation](peer_operate_icp.html#organization-definition) de membres qui souhaitent rejoindre le consortium. Cela doit être effectué dans une opération hors bande avec d'autres membres qui vous envoient des fichiers JSON qui incluent leur ID MSP et le matériel cryptographique. Pour la référence dans les commandes ci-dessous, on suppose que vous avez créé un dossier nommé `org-definitions` et placé tous les fichiers pertinents dans ce répertoire.
+Le service de tri doit recevoir les [définitionsd'organisation](/docs/services/blockchain/howto/peer_operate_icp.html#organization-definition) de membres qui souhaitent rejoindre le consortium. Cela doit être effectué dans une opération hors bande avec d'autres membres qui vous envoient des fichiers JSON qui incluent leur ID MSP et le matériel cryptographique. Pour la référence dans les commandes ci-dessous, on suppose que vous avez créé un dossier nommé `org-definitions` et placé tous les fichiers pertinents dans ce répertoire.
 
 ### Extraction du bloc d'origine du canal système
 
@@ -377,7 +377,7 @@ L'[outil Fabric](#get-fabric-tools) `configtxtlator` téléchargé convertit le 
 
 Ces étapes suivent le flux général du tutoriel de mise à jour de canal sur la[conversion du bloc au format JSON]( https://hyperledger-fabric.readthedocs.io/en/release-1.2/channel_update_tutorial.html#convert-the-configuration-to-json-and-trim-it-down). Vous devez apporter certaines modifications aux commandes dans ce tutoriel pour refléter le fait que vous mettez à jour le canal système du service de tri et non un canal d'application. Vous pouvez consulter le tutoriel pour plus de détails sur ce processus. Cette section fournit simplement les commandes.
 
-1. Copiez le fichier JSON de la définition d'organisation du dossier où vous avez [créé votre organisation](peer_operate_icp.html#organization-definition) vers le dossier `configupdate`. Dans l'exemple de commande ci-dessous, le fichier JSON de la définition d'organisation est `org1definition.json` :
+1. Copiez le fichier JSON de la définition d'organisation du dossier où vous avez [créé votre organisation](/docs/services/blockchain/howto/peer_operate_icp.html#organization-definition) vers le dossier `configupdate`. Dans l'exemple de commande ci-dessous, le fichier JSON de la définition d'organisation est `org1definition.json` :
 
    ```
    cp <path_to_config_folder>/org1definition.json $HOME/fabric-ca-client/org-definitions/configupdate
@@ -393,7 +393,7 @@ Ces étapes suivent le flux général du tutoriel de mise à jour de canal sur l
   ```
   {:codeblock}
 
-3. Exécutez la commande suivante pour ajouter le matériel cryptographique d'une organisation à la configuration du consortium. Remplacez <NEWORGMSP> par l'ID MSO de l'organisation pour l'[organisation que vous avez créée](peer_operate_icp.html#organization-definition).
+3. Exécutez la commande suivante pour ajouter le matériel cryptographique d'une organisation à la configuration du consortium. Remplacez <NEWORGMSP> par l'ID MSO de l'organisation pour l'[organisation que vous avez créée](/docs/services/blockchain/howto/peer_operate_icp.html#organization-definition).
 
   ```
   jq -s '.[0] * {"channel_group":{"groups":{"Consortiums":{"groups":{"SampleConsortium":{"groups": {"<NEWORGMSP>":.[1]}}}}}}}' config.json ./orgdefinition.json > modified_config.json

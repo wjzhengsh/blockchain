@@ -16,7 +16,7 @@ lastupdated: "2018-11-27"
 
 ***[Ist diese Seite hilfreich? Teilen Sie uns Ihre Meinung mit.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
-**ACHTUNG:** Lesen Sie vor der Verwendung eines {{site.data.keyword.blockchainfull}} Platform-Angebots die technischen Angaben und Unterstützungsinformationen im Abschnitt [Haftungsausschluss](needtoknow.html).
+**ACHTUNG:** Lesen Sie vor der Verwendung eines {{site.data.keyword.blockchainfull}} Platform-Angebots die technischen Angaben und Unterstützungsinformationen im Abschnitt [Haftungsausschluss](/docs/services/blockchain/needtoknow.html).
 {:shortdesc}
 
 {{site.data.keyword.blockchainfull_notm}} Platform (IBP) ist die einzige integrierte und für den sofortigen Einsatz bereite Plattform, die den gesamten Lebenszyklus eines Blockchain-Netzes mit mehreren teilnehmenden Organisationen umfasst. Die Lösung wurde konzipiert, um die Einrichtung globaler, unternehmensgerechter Blockchain-Netze durch die Zusammenarbeit in allen Phasen zu beschleunigen, die die Leistung und Sicherheit für die anspruchsvollsten Anwendungsfälle und die reguliertesten Branchen bieten. Von {{site.data.keyword.IBM_notm}} verwaltete Netzangebote in {{site.data.keyword.cloud_notm}} sind für Blockchain-Neukunden geeignet. Kunden mit Erfahrungen in der Verwendung von Hyperledger Fabric können über {{site.data.keyword.cloud_notm}} Private (ICP) oder Amazon Web Services (AWS) Netzkomponenten oder ein vollständiges Netz in ihrer eigenen Infrastruktur bereitstellen.
@@ -26,14 +26,14 @@ lastupdated: "2018-11-27"
 |       | [**Starter Plan**](#starter-enterprise)      | [ **Enterprise Plan**](#starter-enterprise)  | [**IBP for ICP**](#ibp-for-icp) | [**IBP for AWS**](#ibp-for-aws)|
 | ------------------------- |--------------------------|-----|-----|------|
 | **Inhalt** | **Service-Levels (Basis), Entwicklungs- und Testumgebung** | **Service-Levels (Erweitert) und produktionsbereite Umgebung für Unternehmen** |**Bereitstellbare Helm-Diagramme für Zertifizierungsstellen, Anordnungsknoten und Peers** | **AWS-Peer mit Schnelleinstieg**  |
-| **Abrechnungsmodell** | **Monatliches Abonnement mit [verfügbaren Cloud-Punkten](howto/pricing.html#starter-plan-pricing)** | **Monatliche Subskription** |  **[VPC-Preisstruktur](ibp-for-icp-about.html#ibp-icp-pricing) und kostenlose Community Edition** | **Kostenlos** |
+| **Abrechnungsmodell** | **Monatliches Abonnement mit [verfügbaren Cloud-Punkten](/docs/services/blockchain/howto/pricing.html#starter-plan-pricing)** | **Monatliche Subskription** |  **[VPC-Preisstruktur](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-pricing) und kostenlose Community Edition** | **Kostenlos** |
 | **Cloudplattform**| **IBM Cloud**|**IBM Cloud**|**IBM Cloud Private**| **AWS**|
 
 **Achtung:** Der **Starter Plan** darf nicht in Produktionsumgebungen verwendet werden. Es handelt sich um eine Entwicklungs- und Testumgebung, die für Produktionsworkloads nicht geeignet ist.
 
 ## Leistungsspektrum von {{site.data.keyword.blockchainfull_notm}} Platform
 
-Die {{site.data.keyword.blockchainfull_notm}}-Angebote basieren auf der [Hyperledger Fabric](reference/v10_fabric.html)-Codebasis und bieten aufgrund ihrer modularen Architektur die für die Anforderungen Ihres Unternehmens erforderliche Sicherheit, Datenintegrität, Skalierbarkeit und Leistung.
+Die {{site.data.keyword.blockchainfull_notm}}-Angebote basieren auf der [Hyperledger Fabric](/docs/services/blockchain/reference/v10_fabric.html)-Codebasis und bieten aufgrund ihrer modularen Architektur die für die Anforderungen Ihres Unternehmens erforderliche Sicherheit, Datenintegrität, Skalierbarkeit und Leistung.
 
 {{site.data.keyword.blockchainfull_notm}} Platform stellt ein sehr sicheres, genehmigtes Blockchain-Netz bereit, in dem authentifizierte Mitglieder Assets leicht definieren und die Geschäftslösungen für deren Änderung und Austausch erstellen können. Mit den {{site.data.keyword.blockchainfull_notm}} Platform-Angeboten können Sie die Vorteile eines Orchestrierungsframeworks nutzen, in dem Sie **Ihr Konsortium in kurzer Zeit in einem aktiven Blockchain-Netz strukturieren** können. {{site.data.keyword.blockchainfull_notm}} Platform bietet geeignete Tools, die es mehreren Institutionen erleichtern, sich zusammenzuschließen und ein demokratisch gesteuertes Netz zu erstellen. Die Erstellungs-, Governance- und Betriebsaufgaben des Netzes werden durch einen integrierten Dashboard-Monitor und bereitgestellte Dienstprogramme intuitiver und transparenter gestaltet. Anstelle der umständlichen Prozesse der Netzerstellung und Governance-Implementierung können sich Mitglieder von Konsortien **auf die Bereitstellung von Smart Contracts und die Übertragung von Assets und Informationen konzentrieren**.
 
@@ -67,17 +67,17 @@ Als Unternehmer können Sie Ihren Anwendungsfall mit Unterstützung der zahlreic
 
 Als Entwickler können Sie Geschäftsanforderungen schnell und einfach umsetzen und die Blockchain-Anwendungsentwicklung in der {{site.data.keyword.blockchainfull_notm}} Platform-Netzumgebung beschleunigen, indem Sie eine interaktive Playground-Umgebung zum Entwickeln, Iterieren und Testen von Unternehmensnetzen verwenden. Mit diesen Tools können Sie in Ihrer bevorzugten Umgebung Geschäftsregeln in Unternehmensnetzcode umwandeln:
 
-* **Online erkunden** - Verwenden Sie [{{site.data.keyword.blockchainfull_notm}} Platform: Develop](./develop.html)<!--, which is powered by an open source development tool-->, um zentrale Blockchain-Konzepte kennenzulernen, Netzdefinitionen zu erstellen sowie die Vorteile von wiederverwendbaren Branchenmodellen und von Smart-Contract-Bibliotheken zu nutzen.
+* **Online erkunden** - Verwenden Sie [{{site.data.keyword.blockchainfull_notm}} Platform: Develop](/docs/services/blockchain/develop.html)<!--, which is powered by an open source development tool-->, um zentrale Blockchain-Konzepte kennenzulernen, Netzdefinitionen zu erstellen sowie die Vorteile von wiederverwendbaren Branchenmodellen und von Smart-Contract-Bibliotheken zu nutzen.
 
-  Nachdem Sie Ihr Unternehmensnetz entwickelt haben, können Sie es in einem Live-Netz bereitstellen, das unter {{site.data.keyword.blockchainfull_notm}} Platform ausgeführt wird. Weitere Informationen finden Sie unter [Unternehmensnetze mit dem Starter Plan bereitstellen](./develop_starter.html) und [Unternehmensnetze mit dem Enterprise Plan bereitstellen](./develop_enterprise.html).
+  Nachdem Sie Ihr Unternehmensnetz entwickelt haben, können Sie es in einem Live-Netz bereitstellen, das unter {{site.data.keyword.blockchainfull_notm}} Platform ausgeführt wird. Weitere Informationen finden Sie unter [Unternehmensnetze mit dem Starter Plan bereitstellen](/docs/services/blockchain/develop_starter.html) und [Unternehmensnetze mit dem Enterprise Plan bereitstellen](/docs/services/blockchain/develop_enterprise.html).
 
 * **Lokal installieren** - Mit Hyperledger Fabric können Sie Entwicklung und Tests direkt auf Ihrem Laptop ausführen. Weitere Informationen finden Sie im Abschnitt über die [Erstellung Ihres ersten Netzes](http://hyperledger-fabric.readthedocs.io/en/release-1.2/build_network.html).
 
-* **In einer Cloudumgebung zusammenarbeiten** - Verwenden Sie die sofort einsatzfähigen Live-Netze mit Starter Plan- und Enterprise Plan-Optionen, um Ihren Code zusammen mit anderen zu entwickeln und gemeinsam zu nutzen. Weitere Informationen finden Sie in den [Informationen zum Starter Plan](starter_plan.html) und den [Informationen zum Enterprise Plan](enterprise_plan.html).
+* **In einer Cloudumgebung zusammenarbeiten** - Verwenden Sie die sofort einsatzfähigen Live-Netze mit Starter Plan- und Enterprise Plan-Optionen, um Ihren Code zusammen mit anderen zu entwickeln und gemeinsam zu nutzen. Weitere Informationen finden Sie in den [Informationen zum Starter Plan](/docs/services/blockchain/starter_plan.html) und den [Informationen zum Enterprise Plan](/docs/services/blockchain/enterprise_plan.html).
 
 ## {{site.data.keyword.IBM_notm}} Support
 
-{{site.data.keyword.IBM_notm}} bietet verschiedene Supportoptionen für von {{site.data.keyword.IBM_notm}} implementierte Blockchain-Lösungen. Weitere Informationen zum {{site.data.keyword.blockchainfull_notm}}-Support finden Sie unter [Support anfordern](ibmblockchain_support.html).
+{{site.data.keyword.IBM_notm}} bietet verschiedene Supportoptionen für von {{site.data.keyword.IBM_notm}} implementierte Blockchain-Lösungen. Weitere Informationen zum {{site.data.keyword.blockchainfull_notm}}-Support finden Sie unter [Support anfordern](/docs/services/blockchain/ibmblockchain_support.html).
 
 
 ## Starter Plan und Enterprise Plan
@@ -98,7 +98,7 @@ Der Betrieb Ihres Netzes auf der {{site.data.keyword.blockchainfull_notm}} Platf
 
 Der Starter Plan und der Enterprise Plan sind Plattformservices unter {{site.data.keyword.cloud_notm}}; beide Pläne unterliegen den [{{site.data.keyword.cloud_notm}} Services-Bedingungen![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://www-03.ibm.com/software/sla/sladb.nsf/sla/bm-6605-13 "{{site.data.keyword.cloud_notm}} Services-Bedingungen") der Service-Level-Agreements (SLAs). Beachten Sie hierbei, dass sowohl Starter Plan- als auch Enterprise Plan-Netze in **mehreren Umgebungen** in geografisch getrennten Rechenzentren bereitgestellt werden.
 
-Weiterführende Angaben finden Sie in den [Informationen zum Starter Plan](starter_plan.html) und den [Informationen zum Enterprise Plan](enterprise_plan.html). Wenn Sie startbereit sind, registrieren Sie sich jetzt für Ihre [IBP Starter- oder Enterprise-Mitgliedschaft ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps) on {{site.data.keyword.cloud_notm}}!
+Weiterführende Angaben finden Sie in den [Informationen zum Starter Plan](/docs/services/blockchain/starter_plan.html) und den [Informationen zum Enterprise Plan](/docs/services/blockchain/enterprise_plan.html). Wenn Sie startbereit sind, registrieren Sie sich jetzt für Ihre [IBP Starter- oder Enterprise-Mitgliedschaft ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps) on {{site.data.keyword.cloud_notm}}!
 
 ## {{site.data.keyword.blockchainfull_notm}} Platform for ICP
 {: #ibp-for-icp}
@@ -111,7 +111,7 @@ IBP for ICP ermöglicht die Bereitstellung von Blockchain-Netzen in einer privat
  * Fabric kann von Kunden unter Kubernetes mithilfe von Helm-Diagrammen und der ausführlichen Dokumentation für den Betrieb konfiguriert werden.
  * Mit Ausnahme der Community Edition sind Kunden für die erweiterte technische Unterstützung (Advanced Technical Support) berechtigt.
 
- Weitere Angaben über IBP for ICP enthält der Abschnitt [Informationen zu {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private](ibp-for-icp-about.html).
+ Weitere Angaben über IBP for ICP enthält der Abschnitt [Informationen zu {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/ibp-for-icp-about.html).
 
 ## {{site.data.keyword.blockchainfull_notm}} Platform for AWS
 {: #ibp-for-aws}
@@ -125,4 +125,4 @@ Der Schnelleinstieg konfiguriert Folgendes:
  * Zwei Peers in zwei Verfügbarkeitszonen in den öffentlichen Teilnetzen (1 Peer pro Teilnetz).
  * Ein Peer-Container in jedem öffentlichen Teilnetz mit entweder einer integrierten LevelDB-Datenbank oder einem sekundären CouchDB-Container.
 
-Weitere Angaben über IBP for AWS enthält der Abschnitt [Informationen zu {{site.data.keyword.blockchainfull_notm}} Platform for Amazon Web Services](howto/remote_peer.html).
+Weitere Angaben über IBP for AWS enthält der Abschnitt [Informationen zu {{site.data.keyword.blockchainfull_notm}} Platform for Amazon Web Services](/docs/services/blockchain/howto/remote_peer.html).

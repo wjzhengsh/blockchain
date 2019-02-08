@@ -23,7 +23,7 @@ lastupdated: "2018-12-07"
 Le développement de solutions de blockchain à l'aide de {{site.data.keyword.blockchainfull}} Platform permet d'optimiser le jeu d'outils de développement en open source d'Hyperledger Composer. Hyperledger Composer utilise un langage de modélisation spécifique, qui est associé à des transactions JavaScript, ainsi qu'à des règles de contrôle d'accès pour modéliser un réseau d'entreprise de modèle en totalité _avant_ tout déploiement dans un réseau de blockchain réel.
 {:shortdesc}
 
-**Remarque :** Le plan Starter fournit des applications que vous pouvez étudier et tester. Vous pouvez ainsi exécuter des modèles d'application dans le plan Starter avant de développer votre réseau d'entreprise personnalisé. Pour plus de détails, voir [A propos du plan Starter](starter_plan.html).
+**Remarque :** Le plan Starter fournit des applications que vous pouvez étudier et tester. Vous pouvez ainsi exécuter des modèles d'application dans le plan Starter avant de développer votre réseau d'entreprise personnalisé. Pour plus de détails, voir [A propos du plan Starter](/docs/services/blockchain/starter_plan.html).
 
 Ce tutoriel décrit toutes les étapes du développement d'une solution {{site.data.keyword.blockchain}} qui vont de la création et de la modélisation d'un réseau d'entreprise à son déploiement dans un réseau de blockchain opérationnel.
 
@@ -39,7 +39,7 @@ Les étapes suivantes décrivent le développement de base d'une solution {{site
 
 ## Avant de commencer
 
-Vous devez vérifier que vous avez installé les outils de développement d'[{{site.data.keyword.blockchainfull_notm}} Platform: Develop](./develop_install.html).
+Vous devez vérifier que vous avez installé les outils de développement d'[{{site.data.keyword.blockchainfull_notm}} Platform: Develop](/docs/services/blockchain/develop_install.html).
 
 ## Etape 1 : Créer la structure du réseau d'entreprise
 
@@ -179,6 +179,6 @@ Une fois la commande exécutée, un fichier archive de réseau d'entreprise (`tu
 
 ## Etape 4 : Déployer le réseau d'entreprise et générer un serveur REST
 
-Déployez le réseau d'entreprise sur {{site.data.keyword.blockchainfull_notm}} Platform à l'aide du [plan Starter](./develop_starter.html) ou du [plan Enterprise](./develop_enterprise.html).
+Déployez le réseau d'entreprise sur {{site.data.keyword.blockchainfull_notm}} Platform à l'aide du [plan Starter](/docs/services/blockchain/develop_starter.html) ou du [plan Enterprise](/docs/services/blockchain/develop_enterprise.html).
 
 Une fois le réseau d'entreprise déployé sur {{site.data.keyword.blockchainfull_notm}} Platform, un serveur REST spécifique peut être généré. Ce serveur REST examine le contenu du réseau d'entreprise et génère des appels d'API RESTful pour les ressources, les transactions et les participants du réseau. Les instructions relatives à la génération d'un serveur REST figurent dans la [documentation Hyperledger Composer](https://hyperledger.github.io/composer/latest/integrating/getting-started-rest-api).

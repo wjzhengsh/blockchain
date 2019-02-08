@@ -24,7 +24,7 @@ Per una panoramica di alto livello dei componenti in una rete basata su Fabric, 
 
 *Sebbene questo video si concentra sui componenti dalla prospettiva delle reti Starter e Enterprise, le informazioni sono ancora altamente pertinenti per la soluzione gestita dal cliente di IBP on ICP (IBM Cloud Platform).*
 
-Ai fini di questa panoramica, ci concentreremo solo sulle autorità di certificazione (CA, Certificate Authority), sugli ordinanti, sui peer, sugli smart contract e sulle applicazioni. Come puoi vedere dall'argomento [Guida di distribuzione di {{site.data.keyword.blockchainfull_notm}} Platform for ICP](ibp_for_icp_deployment_guide.html), questa sequenza non è arbitraria; rispecchia la sequenza in cui i componenti in una rete basata su Fabric saranno distribuiti.
+Ai fini di questa panoramica, ci concentreremo solo sulle autorità di certificazione (CA, Certificate Authority), sugli ordinanti, sui peer, sugli smart contract e sulle applicazioni. Come puoi vedere dall'argomento [Guida di distribuzione di {{site.data.keyword.blockchainfull_notm}} Platform for ICP](/docs/services/blockchain/ibp_for_icp_deployment_guide.html), questa sequenza non è arbitraria; rispecchia la sequenza in cui i componenti in una rete basata su Fabric saranno distribuiti.
 
 ## Autorità di certificazione (CA, Certificate Authority) 
 {: #ca}

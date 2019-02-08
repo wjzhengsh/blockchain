@@ -52,14 +52,14 @@ L'intestazione **Azioni** della tabella fornisce i pulsanti per avviare o arrest
 
 Le azioni Stop e Start non sono disponibili per un nodo Orderer (Ordinante). In generale, non è necessario arrestare e avviare i nodi Peer o CA su una rete. Le azioni Stop e Start sono fornite nel caso in cui tu abbia bisogno di riavviare un peer, ad esempio per attivarlo in uno stato pulito.
 
-Puoi anche controllare i log componenti facendo clic su **Visualizza log** dall'elenco a discesa sotto l'intestazione **Azioni**. I log presentano le chiamate tra le diverse risorse di rete e sono utili per il debug e la risoluzione dei problemi. Per ulteriori informazioni sull'utilizzo dei tuoi log di rete, vedi [Monitoraggio di una rete blockchain](howto/monitor_network.html)
+Puoi anche controllare i log componenti facendo clic su **Visualizza log** dall'elenco a discesa sotto l'intestazione **Azioni**. I log presentano le chiamate tra le diverse risorse di rete e sono utili per il debug e la risoluzione dei problemi. Per ulteriori informazioni sull'utilizzo dei tuoi log di rete, vedi [Monitoraggio di una rete blockchain](/docs/services/blockchain/howto/monitor_network.html)
 
 Per comprendere gli effetti dell'avvio e dell'arresto di un peer, fai una prova arrestando un peer e provando a sceglierlo come obiettivo di una transazione; vedrai degli errori di connettività nei log. Quando riavvii il peer e tenti nuovamente la transazione, vedrai una connessione stabilita correttamente. Puoi anche
 lasciare inattivo il peer per un periodo di tempo prolungato mentre i tuoi canali continuano a interagire con il libro mastro. Quando il peer viene riattivato, noterai una sincronizzazione del libro mastro poiché riceve i blocchi di cui era stato eseguito il commit mentre era inattivo. Dopo che il libro mastro sarà stato completamente sincronizzato, puoi eseguire su di esso richiami e query normali.
 
 ### Configurazione del peer remoto  
 
-Se distribuisci un peer al di fuori di {{site.data.keyword.cloud_notm}}, devi fornire le informazioni sull'endpoint API della tua rete durante la configurazione. Fai clic sul pulsante **Configurazione peer remoto** per richiamare le informazioni sull'endpoint API della rete per configurare il tuo peer. La finestra a comparsa fornisce le informazioni sull'endpoint API di ID rete, MSP organizzazione, nome CA, URL CA e certificato TLS CA. Puoi fare clic sull'icona di copia alla fine di ogni campo per copiare il valore di tale campo o fare clic sul pulsante **Scarica** per salvare i valori di tutti i campi in un file JSON. Per ulteriori informazioni, vedi [Informazioni su {{site.data.keyword.blockchainfull_notm}} Platform for Amazon Web Services](howto/remote_peer.html) e [Informazioni su {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private](ibp-for-icp-about.html).
+Se distribuisci un peer al di fuori di {{site.data.keyword.cloud_notm}}, devi fornire le informazioni sull'endpoint API della tua rete durante la configurazione. Fai clic sul pulsante **Configurazione peer remoto** per richiamare le informazioni sull'endpoint API della rete per configurare il tuo peer. La finestra a comparsa fornisce le informazioni sull'endpoint API di ID rete, MSP organizzazione, nome CA, URL CA e certificato TLS CA. Puoi fare clic sull'icona di copia alla fine di ogni campo per copiare il valore di tale campo o fare clic sul pulsante **Scarica** per salvare i valori di tutti i campi in un file JSON. Per ulteriori informazioni, vedi [Informazioni su {{site.data.keyword.blockchainfull_notm}} Platform for Amazon Web Services](/docs/services/blockchain/howto/remote_peer.html) e [Informazioni su {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/ibp-for-icp-about.html).
 
 ### Profilo connessione
 {: #connection-profile}
@@ -72,7 +72,7 @@ un qualsiasi peer da cui necessitano di una risposta.
 ### Aggiungi peer
 {: #peers}
 
-I membri della rete distribuiscono i [peer](blockchain_component_overview.html#peer) per archiviare le loro copie del libro mastro di rete e per eseguire il chaincode per eseguire query del libro mastro o per aggiornarlo. Se la politica di approvazione definisce un peer come peer di approvazione, il peer restituisce anche i risultati dell'approvazione alle applicazioni.
+I membri della rete distribuiscono i [peer](/docs/services/blockchain/blockchain_component_overview.html#peer) per archiviare le loro copie del libro mastro di rete e per eseguire il chaincode per eseguire query del libro mastro o per aggiornarlo. Se la politica di approvazione definisce un peer come peer di approvazione, il peer restituisce anche i risultati dell'approvazione alle applicazioni.
 
 Fai clic sul pulsante **Aggiungi peer** nella parte superiore destra per aggiungere dei nodi peer alla tua rete. Nel pannello "Aggiungi peer" a comparsa, seleziona il numero e la dimensione dei nodi peer che vuoi aggiungere. Puoi aggiungere altri peer per le tue organizzazioni in base ai tuoi requisiti. Potresti trovarti in scenari differenti in cui hai bisogno di più peer. Ad esempio, potresti volere più peer che si uniscono allo stesso canale per la ridondanza. Ogni peer elabora le transazioni del canale e scrive nelle loro rispettive copie nel libro mastro. In caso di malfunzionamento di uno dei peer, l'altro peer (o molteplici altri peer) possono continuare ad elaborare transazioni e richieste dell'applicazione. Puoi anche bilanciare simmetricamente il carico di tutte le richieste di applicazione tra i peer o potresti indicare come obiettivo peer differenti per funzioni differenti. Puoi ad esempio usare un peer per eseguire query del libro mastro e utilizzare un altro peer per elaborare le approvazioni per gli aggiornamenti del libro mastro.
 
@@ -128,7 +128,7 @@ La **Figura 5** mostra la schermata "Membri" iniziale che visualizza i certifica
 
 Gli operatori possono gestire i certificati per i membri nella stessa istituzione nella scheda "Certificati". Fai clic su **Aggiungi certificato** per aprire il pannello "Aggiungi certificato". Dai un nome al tuo certificato, incolla i certificati lato client in formato PEM nel campo "Chiave" e fai clic su **Invia**. Devi riavviare i peer prima che i certificati lato client possano diventare effettivi.
 
-Per ulteriori informazioni sulla generazione della tua chiave di certificato, vedi [Iscrizione della tua applicazione](v10_application.html#enroll-app).
+Per ulteriori informazioni sulla generazione della tua chiave di certificato, vedi [Iscrizione della tua applicazione](/docs/services/blockchain/v10_application.html#enroll-app).
 
 
 ## Canali
@@ -141,11 +141,11 @@ La **Figura 6** mostra la schermata dashboard iniziale che visualizza una panora
 ![Canali](images/channels.png "Canali")
 *Figura 6. Canali*
 
-La creazione di un canale comporta la generazione di un libro mastro specifico per il canale. Per ulteriori informazioni, vedi [Creazione di un canale](howto/create_channel.html).
+La creazione di un canale comporta la generazione di un libro mastro specifico per il canale. Per ulteriori informazioni, vedi [Creazione di un canale](/docs/services/blockchain/howto/create_channel.html).
 
-Puoi anche selezionare un canale esistente per visualizzare dei dettagli più precisi sul canale, l'adesione e il chaincode attivo. Per ulteriori informazioni, vedi [Monitoraggio di una rete](howto/monitor_network.html).
+Puoi anche selezionare un canale esistente per visualizzare dei dettagli più precisi sul canale, l'adesione e il chaincode attivo. Per ulteriori informazioni, vedi [Monitoraggio di una rete](/docs/services/blockchain/howto/monitor_network.html).
 
-Se hai caricato un nuovo certificato sulla piattaforma utilizzando la [scheda "Certificati"](#certificates_tab) della schermata "Membri", puoi utilizzare questo pannello per aggiungere il certificato a un canale. Fai clic su **Sincronizza certificato** dall'elenco a discesa sotto l'intestazione **Azioni** accanto al canale pertinente. Ciò ti consente di gestire il canale da un client remoto, compresa la capacità di istanziare un chaincode sul canale. Per ulteriori informazioni, vedi [Caricamento dei certificati di firma in {{site.data.keyword.blockchainfull_notm}} Platform](certificates.html#upload-certs) nell'esercitazione [Gestione dei certificati](certificates.html).
+Se hai caricato un nuovo certificato sulla piattaforma utilizzando la [scheda "Certificati"](#certificates_tab) della schermata "Membri", puoi utilizzare questo pannello per aggiungere il certificato a un canale. Fai clic su **Sincronizza certificato** dall'elenco a discesa sotto l'intestazione **Azioni** accanto al canale pertinente. Ciò ti consente di gestire il canale da un client remoto, compresa la capacità di istanziare un chaincode sul canale. Per ulteriori informazioni, vedi [Caricamento dei certificati di firma in {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/certificates.html#upload-certs) nell'esercitazione [Gestione dei certificati](/docs/services/blockchain/certificates.html).
 
 
 ## Notifiche
@@ -178,7 +178,7 @@ La **Figura 8** mostra la schermata "CA (Certificate Authority)":
 ![CA (Certificate Authority)](images/CA_screen.png "CA (Certificate Authority)")
 *Figura 8. CA (Certificate Authority)*
 
-Fai clic sul pulsante **Genera certificato** accanto alla tua identità di amministratore per ottenere un nuovo certificato pubblico e una nuova chiave privata dalla tua CA. Il campo **Certificato** contiene il tuo certificato pubblico, indicato anche come signCert o certificato di iscrizione, appena sopra la **Chiave privata**. Puoi fare clic sull'icona di copia alla fine di ogni campo per copiare il valore. Questo pannello può essere utilizzato come un metodo alternativo per generare una coppia di chiavi pubblica e privata per un'applicazione client che utilizza l'SDK Fabric. Per ulteriori informazioni, vedi l'[esercitazione sullo sviluppo di applicazioni](v10_application.html#enroll-panel). **Nota** che {{site.data.keyword.blockchainfull_notm}} Platform non memorizza questi certificati. Devi salvarli e memorizzarli in modo sicuro.
+Fai clic sul pulsante **Genera certificato** accanto alla tua identità di amministratore per ottenere un nuovo certificato pubblico e una nuova chiave privata dalla tua CA. Il campo **Certificato** contiene il tuo certificato pubblico, indicato anche come signCert o certificato di iscrizione, appena sopra la **Chiave privata**. Puoi fare clic sull'icona di copia alla fine di ogni campo per copiare il valore. Questo pannello può essere utilizzato come un metodo alternativo per generare una coppia di chiavi pubblica e privata per un'applicazione client che utilizza l'SDK Fabric. Per ulteriori informazioni, vedi l'[esercitazione sullo sviluppo di applicazioni](/docs/services/blockchain/v10_application.html#enroll-panel). **Nota** che {{site.data.keyword.blockchainfull_notm}} Platform non memorizza questi certificati. Devi salvarli e memorizzarli in modo sicuro.
 
 Fai clic sul pulsante **Aggiungi utente** per registrare una nuova identità nella tua organizzazione. Nella finestra a comparsa **Aggiungi utente**, completa i seguenti campi e fai quindi clic su **Invia**.
   - **ID di registrazione:** questo sarà il nome della tua nuova identità, a volte indicato come `enroll ID`. **Salva questo valore**; devi utilizzarlo quando configuri un peer remoto o iscrivi una nuova applicazione.
@@ -187,7 +187,7 @@ Fai clic sul pulsante **Aggiungi utente** per registrare una nuova identità nel
   - **Affiliazione:** questa sarà l'affiliazione all'interno della tua organizzazione, ad esempio `org1`, a cui appartiene l'identità.
   - **Registrazioni massime:** utilizza questo campo per limitare il numero di volte in cui puoi iscrivere o generare certificati con questa identità. Se lasci il campo vuoto, il valore predefinito è un numero illimitato di registrazioni.
 
-Per ulteriori informazioni sulla tua CA, consulta l'esercitazione [Gestione dei certificati su {{site.data.keyword.blockchainfull_notm}} Platform](certificates.html).
+Per ulteriori informazioni sulla tua CA, consulta l'esercitazione [Gestione dei certificati su {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/certificates.html).
 
 
 ## API
@@ -200,7 +200,7 @@ La **Figura 9** mostra la schermata "API":
 ![API](images/API_screen.png "API")
 *Figura 9. API*
 
-Fai clic sul link **IU Swagger** per aprire l'IU Swagger. Nota: prima di eseguire le API, devi autorizzare l'IU Swagger con le tue credenziali di rete (che sono disponibili in questa pagina delle API). Per ulteriori informazioni, vedi [Interazione con la rete utilizzando le API Swagger](howto/swagger_apis.html).
+Fai clic sul link **IU Swagger** per aprire l'IU Swagger. Nota: prima di eseguire le API, devi autorizzare l'IU Swagger con le tue credenziali di rete (che sono disponibili in questa pagina delle API). Per ulteriori informazioni, vedi [Interazione con la rete utilizzando le API Swagger](/docs/services/blockchain/howto/swagger_apis.html).
 
 ## Sviluppa il codice
 {: #write-code}
@@ -212,7 +212,7 @@ La **Figura 10** mostra la schermata "Sviluppa il codice":
 ![Sviluppa il codice](images/write_code.png "Sviluppa il codice")
 *Figura 10. Sviluppa il codice*
 
-Per ulteriori informazioni sullo sviluppo e sulla distribuzione del tuo codice con piano Enterprise, vedi [Sviluppo di reti di business in piano Enterprise](develop_enterprise.html).
+Per ulteriori informazioni sullo sviluppo e sulla distribuzione del tuo codice con piano Enterprise, vedi [Sviluppo di reti di business in piano Enterprise](/docs/services/blockchain/develop_enterprise.html).
 
 ## Installa il codice
 {: #chaincode}
@@ -224,13 +224,13 @@ La **Figura 11** mostra la schermata "Installa il codice":
 ![Installa il codice](images/chaincode_install_overview.png "Installa il codice")
 *Figura 11. Installa il codice*
 
-Un chaincode viene prima installato sul file system di un peer e viene quindi istanziato su un canale. Per ulteriori informazioni, vedi [Installazione, istanziazione e aggiornamento di un chaincode](howto/install_instantiate_chaincode.html).
+Un chaincode viene prima installato sul file system di un peer e viene quindi istanziato su un canale. Per ulteriori informazioni, vedi [Installazione, istanziazione e aggiornamento di un chaincode](/docs/services/blockchain/howto/install_instantiate_chaincode.html).
 
 
 ## Prova gli esempi
 {: #samples}
 
-Le applicazioni di esempio ti aiutano ad ottenere una migliore comprensione della rete blockchain e dello sviluppo di applicazioni. Segui i link **Visualizza in GitHub** per apprendere in che modo usare gli esempi e distribuirli a {{site.data.keyword.blockchainfull_notm}} Platform. Per ulteriori informazioni su come sviluppare e distribuire i tuoi esempi, consulta [Distribuzione di applicazioni di esempio](howto/prebuilt_samples.html).
+Le applicazioni di esempio ti aiutano ad ottenere una migliore comprensione della rete blockchain e dello sviluppo di applicazioni. Segui i link **Visualizza in GitHub** per apprendere in che modo usare gli esempi e distribuirli a {{site.data.keyword.blockchainfull_notm}} Platform. Per ulteriori informazioni su come sviluppare e distribuire i tuoi esempi, consulta [Distribuzione di applicazioni di esempio](/docs/services/blockchain/howto/prebuilt_samples.html).
 
 La **Figura 12** mostra la schermata "Prova gli esempi":
 
@@ -252,9 +252,9 @@ La **Figura 13** visualizza le informazioni nella scheda "Supporto" iniziale:
 ### Risorse blockchain e forum di supporto
 {: #support-forums}
 
-Utilizza le risorse nella scheda "Supporto" per risolvere i problemi e richiedere assistenza da {{site.data.keyword.IBM_notm}} e dalla community di Fabric. Per ulteriori informazioni sui link nella scheda "Supporto", vedi [Risorse e forum di supporto](ibmblockchain_support.html#resources) in [Richiedi assistenza](ibmblockchain_support.html).
+Utilizza le risorse nella scheda "Supporto" per risolvere i problemi e richiedere assistenza da {{site.data.keyword.IBM_notm}} e dalla community di Fabric. Per ulteriori informazioni sui link nella scheda "Supporto", vedi [Risorse e forum di supporto](/docs/services/blockchain/ibmblockchain_support.html#resources) in [Richiedi assistenza](/docs/services/blockchain/ibmblockchain_support.html).
 
-[IBM dWAnswers ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://developer.ibm.com/answers/smartspace/blockchain/) è un forum della community per gli utenti di {{site.data.keyword.blockchainfull_notm}} Platform e Hyperledger Fabric ed è monitorato dagli esperti IBM. Puoi cercare risposte a domande fatte in precedenza o inoltrare una nuova domanda. Se non riesci a eseguire il debug del tuo problema o a trovare una risposta alla tua domanda, inoltra un caso di supporto nel portale del servizio {{site.data.keyword.cloud_notm}}. Per ulteriori informazioni, vedi [Inoltro di casi di supporto](ibmblockchain_support.html#support-cases).
+[IBM dWAnswers ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://developer.ibm.com/answers/smartspace/blockchain/) è un forum della community per gli utenti di {{site.data.keyword.blockchainfull_notm}} Platform e Hyperledger Fabric ed è monitorato dagli esperti IBM. Puoi cercare risposte a domande fatte in precedenza o inoltrare una nuova domanda. Se non riesci a eseguire il debug del tuo problema o a trovare una risposta alla tua domanda, inoltra un caso di supporto nel portale del servizio {{site.data.keyword.cloud_notm}}. Per ulteriori informazioni, vedi [Inoltro di casi di supporto](/docs/services/blockchain/ibmblockchain_support.html#support-cases).
 
 
 ### Note sulla release di Fabric
@@ -323,7 +323,7 @@ Before Enterprise Plan upgrades to Fabric v1.1, all network peers store data in 
 
 To use CouchDB, your data must be stored in a data format that can be modeled in chaincode, such as JSON. If the decision is made to migrate from LevelDB to CouchDB, the {{site.data.keyword.blockchainfull_notm}} Platform will migrate your data from key-value format to the CouchDB format automatically.
 
-If you switch to CouchDB, you need to update your chaincode to take advantage of indexes and rich queries. For more information about CouchDB and how to set up indexes, see [Best practices when using CouchDB](../v10_application.html#couchdb-indices) in the Developing applications tutorial. For more information about updating chaincode in {{site.data.keyword.blockchainfull_notm}} Platform, see [Updating a chaincode](howto/install_instantiate_chaincode.html#updating-a-chaincode).
+If you switch to CouchDB, you need to update your chaincode to take advantage of indexes and rich queries. For more information about CouchDB and how to set up indexes, see [Best practices when using CouchDB](/docs/services/blockchain/v10_application.html#couchdb-indices) in the Developing applications tutorial. For more information about updating chaincode in {{site.data.keyword.blockchainfull_notm}} Platform, see [Updating a chaincode](/docs/services/blockchain/howto/install_instantiate_chaincode.html#updating-a-chaincode).
 
 -->
 

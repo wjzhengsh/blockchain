@@ -28,7 +28,7 @@ Questa esercitazione di occupa del passo successivo di un ciclo di vita della re
 
 Assicurati di avere installato l'ambiente per gli sviluppatori {{site.data.keyword.blockchainfull_notm}} e di essere a tuo agio con lo sviluppo e la distribuzione delle reti di business. Le istruzioni relative alla scrittura di reti di business sono disponibili nella [documentazione di Hyperledger Composer](https://hyperledger.github.io/composer/latest/business-network/business-network-index).
 
-Devi accedere a un'istanza piano Enterprise di {{site.data.keyword.blockchainfull_notm}} e di aver prima creato i tuoi peer. Per ulteriori informazioni su {{site.data.keyword.blockchainfull_notm}} Platform piano Enterprise, vedi la [panoramica di piano Enterprise](./enterprise_plan.html).
+Devi accedere a un'istanza piano Enterprise di {{site.data.keyword.blockchainfull_notm}} e di aver prima creato i tuoi peer. Per ulteriori informazioni su {{site.data.keyword.blockchainfull_notm}} Platform piano Enterprise, vedi la [panoramica di piano Enterprise](/docs/services/blockchain/enterprise_plan.html).
 
 ## Passo uno: Creazione di un profilo di connessione per {{site.data.keyword.blockchainfull_notm}} Platform
 

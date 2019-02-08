@@ -18,10 +18,10 @@ lastupdated: "2018-12-07"
 
 ***[Questa pagina è utile? Faccelo sapere.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
-Le seguenti istruzioni descrivono come distribuire un peer {{site.data.keyword.blockchainfull}} Platform su {{site.data.keyword.cloud_notm}} Private (ICP). Queste istruzioni ti consentono di collegarti a {{site.data.keyword.blockchainfull_notm}} Platform on ICP. Se vuoi collegare un peer a una rete del piano Starter o Enterprise su {{site.data.keyword.cloud_notm}}, vedi [Distribuzione dei peer per il collegamento al piano Starter o Enterprise](peer_deploy_ibp.html).
+Le seguenti istruzioni descrivono come distribuire un peer {{site.data.keyword.blockchainfull}} Platform su {{site.data.keyword.cloud_notm}} Private (ICP). Queste istruzioni ti consentono di collegarti a {{site.data.keyword.blockchainfull_notm}} Platform on ICP. Se vuoi collegare un peer a una rete del piano Starter o Enterprise su {{site.data.keyword.cloud_notm}}, vedi [Distribuzione dei peer per il collegamento al piano Starter o Enterprise](/docs/services/blockchain/howto/peer_deploy_ibp.html).
 {:shortdesc}
 
-Prima di distribuire un peer, rivedi [Considerazioni e limitazioni](../ibp-for-icp-about.html#ibp-icp-considerations).
+Prima di distribuire un peer, rivedi [Considerazioni e limitazioni](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-considerations).
 
 ## Risorse richieste
 {: #peer-resources-required}
@@ -51,11 +51,11 @@ Se non utilizzi il provisioning dinamico, devono essere creati e configurati dei
 ## Prerequisiti per la distribuzione di un peer
 {: #prerequisites-peer-icp}
 
-1. Prima di poter installare un peer su ICP, devi [installare ICP](../ICP_setup.html) e [installare il grafico Helm di {{site.data.keyword.blockchainfull_notm}} Platform](helm_install_icp.html).
+1. Prima di poter installare un peer su ICP, devi [installare ICP](/docs/services/blockchain/ICP_setup.html) e [installare il grafico Helm di {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/howto/helm_install_icp.html).
 
 2. Se utilizzi la Community Edition e vuoi eseguire questo grafico Helm su un cluster ICP senza la connettività Internet, devi creare degli archivi su una macchina collegata a Internet prima di poter installare gli archivi sul tuo cluster ICP. Per ulteriori informazioni, consulta [Adding featured applications to clusters without Internet connectivity ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_package_offline.html "Adding featured applications to clusters without Internet connectivity"){:new_window}. Tieni presente che puoi trovare il file della specifica `manifest.yaml` in `ibm-blockchain-platform-dev/ibm_cloud_pak` nel grafico Helm.
 
-3. Devi prima [distribuire una CA](CA_deploy_icp.html) su ICP. Devi utilizzare la CA per creare un [file di configurazione del peer e archivialo come un segreto Kubernetes in ICP](#peer-config-file).
+3. Devi prima [distribuire una CA](/docs/services/blockchain/howto/CA_deploy_icp.html) su ICP. Devi utilizzare la CA per creare un [file di configurazione del peer e archivialo come un segreto Kubernetes in ICP](#peer-config-file).
 
 4. Richiama il valore dell'indirizzo IP proxy del cluster della tua CA dalla console ICP. **Nota:** dovrai essere un [Amministratore del cluster ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Cluster administrator roles and actions") per accedere al tuo IP proxy. Accedi al cluster ICP. Nel pannello di navigazione di sinistra, fai clic su **Piattaforma** e quindi su **Nodi** per visualizzare i nodi definiti nel cluster. Fai clic sul nodo con il ruolo `proxy` e copia il valore dell'`IP host` dalla tabella. **Importante:** salva questo valore perché lo utilizzerai quando configuri il campo `Proxy IP` del grafico Helm.
 
@@ -63,7 +63,7 @@ Se non utilizzi il provisioning dinamico, devono essere creati e configurati dei
 ## Creazione del segreto di configurazione del peer
 {: #peer-config-file}
 
-Per distribuire un peer, devi creare un file di configurazione che contiene le informazioni importanti sull'identità del peer e la tua CA (Certificate Authority). Successivamente, devi passare questo file al grafico Helm durante la configurazione utilizzando un oggetto [segreto Kubernetes ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://kubernetes.io/docs/concepts/configuration/secret/). Questo file consentirà al tuo peer di ottenere i certificati di cui ha bisogno dalla CA (Certificate Authority) per aderire a una rete blockchain. Contiene inoltre un certificato di gestione che ti consentirà di utilizzare il tuo peer. Attieniti alle istruzioni per l'[utilizzo della CA per distribuire un ordinante o un peer](CA_operate.html#deploy-orderer-peer) prima di configurare il peer.
+Per distribuire un peer, devi creare un file di configurazione che contiene le informazioni importanti sull'identità del peer e la tua CA (Certificate Authority). Successivamente, devi passare questo file al grafico Helm durante la configurazione utilizzando un oggetto [segreto Kubernetes ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://kubernetes.io/docs/concepts/configuration/secret/). Questo file consentirà al tuo peer di ottenere i certificati di cui ha bisogno dalla CA (Certificate Authority) per aderire a una rete blockchain. Contiene inoltre un certificato di gestione che ti consentirà di utilizzare il tuo peer. Attieniti alle istruzioni per l'[utilizzo della CA per distribuire un ordinante o un peer](/docs/services/blockchain/howto/CA_operate.html#deploy-orderer-peer) prima di configurare il peer.
 
 Devi fornire i nomi host CSR al file di configurazione. È incluso il nome host del servizio (`service host name`) che sarà lo stesso valore del nome della release Helm (`helm release name`) che specifichi durante la distribuzione. Ad esempio, se specifichi un nome della release Helm (`helm release name`) di `org1peer1`, ricorda di inserire il seguente valore nella sezione `"csr"` del file:
 ```
@@ -173,7 +173,7 @@ La seguente tabella elenca i parametri configurabili di {{site.data.keyword.bloc
 | `Peer configuration secret (Required)`|Il nome del [segreto di configurazione del peer](#peer-config-secret) che hai creato in ICP. | nessuno | sì |
 |`Organization MSP (Required)`| Puoi creare un nuovo valore MSPID dell'organizzazione come ad esempio 'org1' o specificare una MSP dell'organizazione esistente di cui farà parte il peer. Se hai distribuito un'organizzazione ordinante, assicurati che tutti gli MSPID del peer siano diversi dall'MSPID dell'ordinante. Inoltre, prendi nota di questo valore, perché ne avrai in seguito bisogno per `CORE_PEER_LOCALMSPID` e `configtx.yaml`. | nessuno | sì |
 |`Peer service type`| Utilizzato per specificare se le [porte esterne devono essere esposte ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types) sul peer. Seleziona NodePort per esporre le porte esternamente (consigliato) e ClusterIP per non esporle. LoadBalancer e ExternalName non sono supportati in questa release. | NodePort | sì |
-| `State database`| Il [database dello stato](../glossary.html#state-database) utilizzato per memorizzare il tuo libro mastro del canale. Il peer deve utilizzare lo stesso database della tua [rete blockchain](../v10_dashboard.html#network-preferences). | nessuno | sì |
+| `State database`| Il [database dello stato](/docs/services/blockchain/glossary.html#state-database) utilizzato per memorizzare il tuo libro mastro del canale. Il peer deve utilizzare lo stesso database della tua [rete blockchain](/docs/services/blockchain/v10_dashboard.html#network-preferences). | nessuno | sì |
 |`CouchDB image repository`| Si applica solo se CouchDB è stato selezionato come database libro mastro. Questo campo viene automaticamente compilato con il percorso installato. Se stai utilizzando la Community Edition e non hai accesso a Internet, dovrebbe corrispondere alla directory in cui hai scaricato l'immagine CouchDB Fabric.| ibmcom/ibp-fabric-couchdb | sì |
 | `CouchDB Docker image tag`| Si applica solo se CouchDB è stato selezionato come database libro mastro. Il valore della tag associata all'immagine CouchDB. | Compilato automaticamente sul valore corretto. | sì |
 | `Peer Data persistence enabled`| Abilita la capacità di rendere persistenti i dati dopo il riavvio o un errore del cluster. Vedi [archiviazione in Kubernetes ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://kubernetes.io/docs/concepts/storage/ "Volumi") per ulteriori informazioni. *Se non selezionato, tutti i dati andranno persi in caso di failover o di riavvio del pod.* | verificato | no |
@@ -253,13 +253,13 @@ Puoi creare un nuovo file `yaml` modificando il `values.yaml` incluso nel file d
 
 Una volta che hai terminato il tuo lavoro con i parametri di configurazione, fai clic sul pulsante **Installa** e sul pulsante **Visualizza release Helm** per visualizzare la tua distribuzione. Se l'azione è stata eseguita correttamente, dovresti vedere il valore 1 nei campi `DESIRED`, `CURRENT`, `UP TO DATE` e `AVAILABLE` nella tabella Distribuzione. Potresti dover fare clic su Aggiorna e attendere l'aggiornamento della tabella. Puoi anche trovare la tabella Distribuzione facendo clic sull'icona **Menu** nell'angolo in alto a sinistra nella console ICP. Dall'elenco di menu, fai clic su **Workload** e poi su **Release Helm**.
 
-Se scorri in basso fino alla sezione `Note`, sono presenti delle informazioni importanti che utilizzerai per [utilizzare il tuo peer](peer_operate_icp.html).
+Se scorri in basso fino alla sezione `Note`, sono presenti delle informazioni importanti che utilizzerai per [utilizzare il tuo peer](/docs/services/blockchain/howto/peer_operate_icp.html).
 
 ## Visualizzazione dei log del peer
 {: #peer-deploy-view-logs}
 
-È possibile visualizzare i log del peer utilizzando i [comandi della CLI kubectl](peer_operate_icp.html#peer-kubectl-configure) o tramite [Kibana ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.elastic.co/products/kibana "Your window into the Elastic Search"). Per ulteriori informazioni, consulta queste [istruzioni per l'accesso ai log](peer_operate_icp.html#peer-icp-view-logs).
+È possibile visualizzare i log del peer utilizzando i [comandi della CLI kubectl](/docs/services/blockchain/howto/peer_operate_icp.html#peer-kubectl-configure) o tramite [Kibana ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.elastic.co/products/kibana "Your window into the Elastic Search"). Per ulteriori informazioni, consulta queste [istruzioni per l'accesso ai log](/docs/services/blockchain/howto/peer_operate_icp.html#peer-icp-view-logs).
 
 ## Operazioni successive
 
-Dopo aver distribuito il peer, devi completare diversi passi operativi prima di poter inviare transazioni e leggere il libro mastro distribuito dalla rete blockchain. Per ulteriori informazioni, vedi [Utilizzo dei peer con una rete multi-cloud](peer_operate_icp.html).
+Dopo aver distribuito il peer, devi completare diversi passi operativi prima di poter inviare transazioni e leggere il libro mastro distribuito dalla rete blockchain. Per ulteriori informazioni, vedi [Utilizzo dei peer con una rete multi-cloud](/docs/services/blockchain/howto/peer_operate_icp.html).

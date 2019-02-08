@@ -93,4 +93,4 @@ Pour installer et configurer {{site.data.keyword.cloud_notm}} Private dans votre
 
 2. Installez l'interface CLI d'IBM Cloud Private [3.1.0 ![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/manage_cluster/install_cli.html) pour installer et utiliser l'autorité de certification.
 
-Une fois ICP installé, vous pouvez continuer à [importer la charte Helm d'{{site.data.keyword.blockchainfull_notm}} Platform for ICP](howto/helm_install_icp.html) dans votre cluster ICP.
+Une fois ICP installé, vous pouvez continuer à [importer la charte Helm d'{{site.data.keyword.blockchainfull_notm}} Platform for ICP](/docs/services/blockchain/howto/helm_install_icp.html) dans votre cluster ICP.

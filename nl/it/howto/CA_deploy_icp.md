@@ -17,10 +17,10 @@ lastupdated: "2018-12-07"
 
 ***[Questa pagina è utile? Faccelo sapere.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
-Dopo aver importato {{site.data.keyword.blockchainfull}} Platform sul grafico {{site.data.keyword.cloud_notm}} Private (ICP) Helm, puoi distribuire i componenti individuali. La CA (Certificate Authority) è la radice di attendibilità per la tua organizzazione e ti consente di generare le credenziali per altri componenti che vorrai distribuire. Di conseguenza, devi distribuire una CA prima di distribuire altri componenti. Ogni organizzazione in una rete blockchain a più cloud deve distribuire la propria CA.  Per ulteriori informazioni sulle CA e sul loro ruolo in una rete blockchain, consulta [Autorità di certificazione (CA, Certificate Authority)](../blockchain_component_overview.html#ca).
+Dopo aver importato {{site.data.keyword.blockchainfull}} Platform sul grafico {{site.data.keyword.cloud_notm}} Private (ICP) Helm, puoi distribuire i componenti individuali. La CA (Certificate Authority) è la radice di attendibilità per la tua organizzazione e ti consente di generare le credenziali per altri componenti che vorrai distribuire. Di conseguenza, devi distribuire una CA prima di distribuire altri componenti. Ogni organizzazione in una rete blockchain a più cloud deve distribuire la propria CA.  Per ulteriori informazioni sulle CA e sul loro ruolo in una rete blockchain, consulta [Autorità di certificazione (CA, Certificate Authority)](/docs/services/blockchain/blockchain_component_overview.html#ca).
 {:shortdesc}
 
-Prima di distribuire una CA (Certificate Authority), esamina [Considerazioni e limitazioni](../ibp-for-icp-about.html#ibp-icp-considerations).
+Prima di distribuire una CA (Certificate Authority), esamina [Considerazioni e limitazioni](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-considerations).
 
 ## Risorse richieste
 {: #ca-resources-required}
@@ -50,7 +50,7 @@ Se non utilizzi il provisioning dinamico, devono essere creati e configurati dei
 ## Prerequisiti per la distribuzione di una CA
 {: #prerequisites-ca-icp}
 
-1. Prima di poter installare una CA su ICP, devi [installare ICP](../ICP_setup.html) e [installare il grafico Helm di {{site.data.keyword.blockchainfull_notm}} Platform](helm_install_icp.html).
+1. Prima di poter installare una CA su ICP, devi [installare ICP](/docs/services/blockchain/ICP_setup.html) e [installare il grafico Helm di {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/howto/helm_install_icp.html).
 
 2. Se utilizzi la Community Edition e vuoi eseguire questo grafico Helm su un cluster ICP senza la connettività Internet, devi creare degli archivi su una macchina collegata a Internet prima di poter installare gli archivi sul tuo cluster ICP. Per ulteriori informazioni, consulta [Adding featured applications to clusters without Internet connectivity ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_package_offline.html "Adding featured applications to clusters without Internet connectivity"){:new_window}. Tieni presente che puoi trovare il file della specifica manifest.yaml in ibm-blockchain-platform-dev/ibm_cloud_pak nel grafico Helm.
 
@@ -195,7 +195,7 @@ Puoi creare un nuovo file `yaml` modificando il `values.yaml` incluso nel file d
 
 Una volta che hai terminato il tuo lavoro con i parametri di configurazione, fai clic sul pulsante **Installa** e sul pulsante **Visualizza release Helm** per visualizzare la tua distribuzione. Se l'azione è stata eseguita correttamente, dovresti vedere il valore 1 nei campi `DESIRED`, `CURRENT`, `UP TO DATE` e `AVAILABLE` nella tabella Distribuzione. Potresti dover fare clic su Aggiorna e attendere l'aggiornamento della tabella. Puoi anche trovare la tabella Distribuzione facendo clic sull'icona **Menu** nell'angolo in alto a sinistra nella console ICP. Dall'elenco di menu, fai clic su **Workload** e poi su **Release Helm**.
 
-Se scorri in basso fino alla sezione `Note`, puoi trovare delle informazioni importanti che utilizzerai per [utilizzare la tua CA](CA_operate.html#ca-operate).
+Se scorri in basso fino alla sezione `Note`, puoi trovare delle informazioni importanti che utilizzerai per [utilizzare la tua CA](/docs/services/blockchain/howto/CA_operate.html#ca-operate).
 
 Dopo aver installato la CA di {{site.data.keyword.blockchainfull_notm}} Platform in ICP, viene creata una mappa di configurazione con le impostazioni delle variabili di ambiente predefinite. Successivamente puoi modificare o aggiungere delle variabili di ambiente per il server CA per configurarne il comportamento. Per ulteriori informazioni sui parametri di configurazione del server CA, consulta la [documentazione del server CA ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric-ca.readthedocs.io/en/latest/users-guide.html#fabric-ca-server "Fabric CA Server").
 
@@ -204,9 +204,9 @@ Dopo aver configurato la mappa di configurazione, devi riavviare il server CA pr
 ## Visualizzazione dei log CA
 {: #ca-deploy-view-logs}
 
-È possibile visualizzare i log del componente dalla riga di comando utilizzando i [`comandi della CLI kubectl`](CA_operate.html#ca-kubectl-configure) o tramite [Kibana ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.elastic.co/products/kibana "Your window into the Elastic Search"), che è incluso nel tuo cluster ICP. Per ulteriori informazioni, consulta queste [istruzioni per l'accesso ai log](CA_operate.html#ca-operate-view-logs).
+È possibile visualizzare i log del componente dalla riga di comando utilizzando i [`comandi della CLI kubectl`](/docs/services/blockchain/howto/CA_operate.html#ca-kubectl-configure) o tramite [Kibana ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.elastic.co/products/kibana "Your window into the Elastic Search"), che è incluso nel tuo cluster ICP. Per ulteriori informazioni, consulta queste [istruzioni per l'accesso ai log](/docs/services/blockchain/howto/CA_operate.html#ca-operate-view-logs).
 
 ## Gestione della tua CA 
 {: #operate-ca}
 
-La tua CA sarà la radice di attendibilità per la tua organizzazione. Devi utilizzare la tua CA per generare i certificati per i tuoi altri componenti.  Di conseguenza, prima di distribuire un ordinante o un peer, devi [configurare la tua CA e completare diversi passi operativi](CA_operate.html)
+La tua CA sarà la radice di attendibilità per la tua organizzazione. Devi utilizzare la tua CA per generare i certificati per i tuoi altri componenti.  Di conseguenza, prima di distribuire un ordinante o un peer, devi [configurare la tua CA e completare diversi passi operativi](/docs/services/blockchain/howto/CA_operate.html)

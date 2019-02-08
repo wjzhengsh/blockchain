@@ -28,7 +28,7 @@ Ce tutoriel concerne l'étape suivante du cycle de vie d'un réseau d'entreprise
 
 Vous devez vérifier que vous avez installé l'environnement de développeur de {{site.data.keyword.blockchainfull_notm}}.  Vous devez aussi savoir comment développer et déployer des réseaux d'entreprise. Pour plus de détails sur la création de réseaux d'entreprise, vous pouvez consulter la [documentation Hyperledger Composer](https://hyperledger.github.io/composer/latest/business-network/business-network-index).
 
-Vous devez accéder à une instance du plan Enterprise d'{{site.data.keyword.blockchainfull_notm}} Platform et vous devez avoir créé vos homologues au préalable. Pour plus d'informations sur le plan Enterprise d'{{site.data.keyword.blockchainfull_notm}} Platform, voir [Présentation du plan Enterprise](./enterprise_plan.html).
+Vous devez accéder à une instance du plan Enterprise d'{{site.data.keyword.blockchainfull_notm}} Platform et vous devez avoir créé vos homologues au préalable. Pour plus d'informations sur le plan Enterprise d'{{site.data.keyword.blockchainfull_notm}} Platform, voir [Présentation du plan Enterprise](/docs/services/blockchain/enterprise_plan.html).
 
 ## Etape 1 : Créer un profil de connexion pour {{site.data.keyword.blockchainfull_notm}} Platform
 

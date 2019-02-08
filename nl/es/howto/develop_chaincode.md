@@ -45,7 +45,7 @@ Puede obtener información sobre cómo empezar a escribir código de encadenamie
 {: #install-chaincode}
 
 Debido a que el código de encadenamiento proporciona la estructura de transacciones en un canal, es necesario instalar un código de encadenamiento en todos los iguales que se hayan unido al canal que desea utilizar el código de encadenamiento para actualizar o consultar el libro mayor del canal. A continuación, un miembro del canal puede crear una instancia del código de encadenamiento en un canal y establecer la política de aprobación del código de encadenamiento. La instalación y la creación de la instancia del código de encadenamiento se puede realizar utilizando la interfaz de usuario del supervisor de red, la interfaz de línea de mandatos de igual de Fabric o desde la aplicación cliente mediante el
-[SDK de Fabric](../v10_application.html#operate-sdk). Para obtener información sobre cómo utilizar la interfaz de usuario del supervisor de red para desplegar código de encadenamiento, consulte [Instalación, creación de instancias y actualización de un código de encadenamiento](install_instantiate_chaincode.html).
+[SDK de Fabric](/docs/services/blockchain/v10_application.html#operate-sdk). Para obtener información sobre cómo utilizar la interfaz de usuario del supervisor de red para desplegar código de encadenamiento, consulte [Instalación, creación de instancias y actualización de un código de encadenamiento](/docs/services/blockchain/howto/install_instantiate_chaincode.html).
 
 ## Código de encadenamiento y datos
 {: #chaincode-data}
@@ -149,7 +149,7 @@ Para obtener más información sobre cómo utilizar recopilaciones de datos priv
 ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/latest/private_data_tutorial.html "Utilización de datos privados") en la documentación de Fabric. No puede utilizar el supervisor de red para instalar código de encadenamiento con un archivo de configuración de recopilación. No obstante, puede utilizar los SDK de Fabric para instalar, crear una instancia o actualizar un código de encadenamiento que utilice datos privados. Para obtener más información, consulte [Cómo utilizar datos privados
 ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://fabric-sdk-node.github.io/release-1.3/tutorial-private-data.html "Cómo utilizar datos privados") en la documentación del SDK de Node. Tenga en cuenta que deberá cargar el signCert del SDK en la plataforma
 {{site.data.keyword.blockchainfull_notm}} para poder utilizar los SDK para instalar y crear una instancia del código de encadenamiento en el igual. Para obtener más información sobre cómo interactuar y operar con la red con los SDK de Fabric, consulte
-[Desarrollo de aplicaciones](../v10_application.html) y [Trabajar con la red utilizando el SDK](../v10_application.html#operate-sdk).
+[Desarrollo de aplicaciones](/docs/services/blockchain/v10_application.html) y [Trabajar con la red utilizando el SDK](/docs/services/blockchain/v10_application.html#operate-sdk).
 
 ## Utilización de índices con CouchDB
 {: #indexes}
@@ -158,4 +158,4 @@ Si los datos de libro mayor se almacenan en CouchDB, se recomienda encarecidamen
 
 Para obtener más información sobre CouchDB y cómo configurar índices, consulte
 [CouchDB como base de datos de estado ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/couchdb_as_state_database.html "CouchDB como base de datos de estado"){:new_window} en la documentación de Hyperledger Fabric. También encontrará un ejemplo que utiliza un índice con código de encadenamiento en la [guía de aprendizaje de CouchDB de Fabric ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/couchdb_tutorial.html). Consulte
-[Prácticas recomendadas al utilizar CouchDB](../v10_application.html#couchdb-indices) en la guía de aprendizaje de desarrollo de aplicaciones para obtener más información sobre cómo consultar datos desde sus aplicaciones.
+[Prácticas recomendadas al utilizar CouchDB](/docs/services/blockchain/v10_application.html#couchdb-indices) en la guía de aprendizaje de desarrollo de aplicaciones para obtener más información sobre cómo consultar datos desde sus aplicaciones.

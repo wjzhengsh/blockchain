@@ -21,16 +21,16 @@ lastupdated: "2018-11-27"
 
 Dopo che hai configurato i peer {{site.data.keyword.blockchainfull}} Platform in AWS, devi completare diversi passi operativi prima che il tuo peer possa emettere transazioni per eseguire query e richiami del libro mastro della rete blockchain. I passi includono l'aggiunta della tua organizzazione a un canale, l'unione del tuo peer al canale, l'installazione del chaincode sul peer, l'istanziazione del chaincode sul canale e la connessione delle applicazioni al tuo peer. Puoi utilizzare gli [SDK Fabric](#aws-peer-operate-with-sdk) o la [riga di comando](#aws-peer-cli-operate) per completare questi passi operativi. Gli SDK Fabric sono il percorso consigliato, sebbene le istruzioni presuppongano la familiarità con il funzionamento dell'SDK.
 
-**Nota**: un peer {{site.data.keyword.blockchainfull_notm}} Platform in AWS non ha accesso alla piena funzionalità o al supporto completo dei peer ospitati su {{site.data.keyword.blockchainfull_notm}} Platform. Di conseguenza, non puoi utilizzare il Monitoraggio della rete per gestire un peer. Prima di iniziare a eseguire i peer in AWS, assicurati di aver esaminato le [considerazioni](remote_peer.html#remote-peer-limitations).
+**Nota**: un peer {{site.data.keyword.blockchainfull_notm}} Platform in AWS non ha accesso alla piena funzionalità o al supporto completo dei peer ospitati su {{site.data.keyword.blockchainfull_notm}} Platform. Di conseguenza, non puoi utilizzare il Monitoraggio della rete per gestire un peer. Prima di iniziare a eseguire i peer in AWS, assicurati di aver esaminato le [considerazioni](/docs/services/blockchain/howto/remote_peer.html#remote-peer-limitations).
 
 ## Utilizzo degli SDK Fabric per gestire il peer
 {: #aws-peer-operate-with-sdk}
 
 Gli SDK Hyperledger Fabric forniscono una potente serie di API che consentono alle applicazioni di interagire con le reti blockchain e di gestire tali reti. Puoi trovare l'elenco più aggiornato dei linguaggi supportati e l'elenco completo delle API disponibili all'interno degli SDK Hyperledger Fabric nella documentazione della [documentazione della community degli SDK Hyperledger Fabric![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/getting_started.html#hyperledger-fabric-sdks "Community degli SDK Hyperledger Fabric"). Puoi utilizzare gli SDK Fabric per unire il tuo peer a un canale su {{site.data.keyword.blockchainfull_notm}} Platform, installare un chaincode sul tuo peer e istanziare il chaincode su un canale.
 
-Le seguenti istruzioni utilizzano l'[SDK Node di Fabric ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://fabric-sdk-node.github.io/ "SDK Hyperledger Fabric per jode.js") per gestire il peer e presumono una precedente dimestichezza con l'SDK. Puoi utilizzare l'[esercitazione sullo sviluppo di applicazioni](../v10_application.html) per imparare a utilizzare l'SDK Node prima di iniziare e come guida allo sviluppo di applicazioni con il tuo peer quando sei pronto ad eseguire richiami e query del chaincode.
+Le seguenti istruzioni utilizzano l'[SDK Node di Fabric ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://fabric-sdk-node.github.io/ "SDK Hyperledger Fabric per jode.js") per gestire il peer e presumono una precedente dimestichezza con l'SDK. Puoi utilizzare l'[esercitazione sullo sviluppo di applicazioni](/docs/services/blockchain/v10_application.html) per imparare a utilizzare l'SDK Node prima di iniziare e come guida allo sviluppo di applicazioni con il tuo peer quando sei pronto ad eseguire richiami e query del chaincode.
 
-Il peer {{site.data.keyword.blockchainfull_notm}} Platform su Quick Start AWS crea due peer per l'alta disponibilità. Pertanto, devi seguire i passi operativi una volta per ogni peer. Quando sei pronto ad eseguire query e richiami del chaincode dalla tua applicazione, fai in modo che il tuo SDK si connetta a entrambi i peer per garantire che le tue [applicazioni siano altamente disponibili](../v10_application.html#ha-app).
+Il peer {{site.data.keyword.blockchainfull_notm}} Platform su Quick Start AWS crea due peer per l'alta disponibilità. Pertanto, devi seguire i passi operativi una volta per ogni peer. Quando sei pronto ad eseguire query e richiami del chaincode dalla tua applicazione, fai in modo che il tuo SDK si connetta a entrambi i peer per garantire che le tue [applicazioni siano altamente disponibili](/docs/services/blockchain/v10_application.html#ha-app).
 
 ### Installazione dell'SDK Node
 
@@ -45,7 +45,7 @@ Si consiglia di utilizzare la versione 1.2 dell'SDK Node.
 ### Preparazione dell'SDK per lavorare con il peer
 {: #remote-peer-node-sdk}
 
-Prima di utilizzare l'SDK per gestire il peer, devi generare i certificati necessari (iscrizione) che consentiranno alla tua applicazione di comunicare con la tua rete su {{site.data.keyword.blockchainfull_notm}} Platform e con il tuo peer. Segui la procedura per eseguire l'[iscrizione con l'SDK](../v10_application.html#enroll-app-sdk) utilizzando la tua identità **admin**. L'esercitazione [Sviluppo di applicazioni](../v10_application.html) esegue anche l'iscrizione come **admin**, pertanto non devi modificare il codice di esempio.
+Prima di utilizzare l'SDK per gestire il peer, devi generare i certificati necessari (iscrizione) che consentiranno alla tua applicazione di comunicare con la tua rete su {{site.data.keyword.blockchainfull_notm}} Platform e con il tuo peer. Segui la procedura per eseguire l'[iscrizione con l'SDK](/docs/services/blockchain/v10_application.html#enroll-app-sdk) utilizzando la tua identità **admin**. L'esercitazione [Sviluppo di applicazioni](/docs/services/blockchain/v10_application.html) esegue anche l'iscrizione come **admin**, pertanto non devi modificare il codice di esempio.
 
 ### Caricamento di un certificato di firma su IBM Blockchain Platform
 {: #remote-peer-upload-SDK}
@@ -107,23 +107,23 @@ var peer = fabric_client.newPeer('grpcs://<AWS_EC2_dashboard_Public_DNS>:7051', 
 
 Come membro della rete blockchain, la tua organizzazione deve essere aggiunta a un canale nella rete prima che tu possa unire il tuo peer al canale. 
 
-  - Puoi avviare un nuovo canale per il peer. Come iniziatore di canale, puoi includere automaticamente la tua organizzazione durante la [creazione del canale](create_channel.html#creating-a-channel).
+  - Puoi avviare un nuovo canale per il peer. Come iniziatore di canale, puoi includere automaticamente la tua organizzazione durante la [creazione del canale](/docs/services/blockchain/howto/create_channel.html#creating-a-channel).
 
-  - Un altro membro della rete blockchain può anche aggiungere la tua organizzazione a un canale esistente usando un [aggiornamento canale](create_channel.html#updating-a-channel). 
+  - Un altro membro della rete blockchain può anche aggiungere la tua organizzazione a un canale esistente usando un [aggiornamento canale](/docs/services/blockchain/howto/create_channel.html#updating-a-channel). 
 
     Una volta che la tua organizzazione è stata aggiunta a un canale, devi aggiungere il certificato di firma del peer al canale in modo che gli altri membri possano verificare la tua firma digitale durante le transazioni. Il peer carica il proprio certificato di firma durante l'installazione, pertanto dovrai solo sincronizzare il certificato al canale. Nella schermata "Canali" del Monitoraggio della rete, individua il canale a cui si unisce la tua organizzazione e seleziona **Sincronizza certificato** dall'elenco a discesa sotto l'intestazione **Azione**. Questa azione sincronizza i certificati su tutti i peer nel canale. Prima di immettere i comandi di unione al canale, potresti dover attendere qualche minuto in modo che la sincronizzazione del canale possa essere completata.
 
-Una volta che la tua organizzazione fa parte del canale, segui le istruzioni relative all'[Unione a un canale](../v10_application.html#join-channel-sdk). Devi fornire l'URL del servizio ordini e il nome del canale.
+Una volta che la tua organizzazione fa parte del canale, segui le istruzioni relative all'[Unione a un canale](/docs/services/blockchain/v10_application.html#join-channel-sdk). Devi fornire l'URL del servizio ordini e il nome del canale.
 
 ### Utilizzo dell'SDK per installare il chaincode sul peer
 {: #remote-peer-install-cc-sdk}
 
-Attieniti alle istruzioni per utilizzare l'SDK per [installare un chaincode](../v10_application.html#install-cc-sdk) sul tuo peer.
+Attieniti alle istruzioni per utilizzare l'SDK per [installare un chaincode](/docs/services/blockchain/v10_application.html#install-cc-sdk) sul tuo peer.
 
 ### Utilizzo dell'SDK per istanziare il chaincode sul canale
 {: #remote-peer-instantiate-cc-sdk}
 
-Solo un membro del canale deve istanziare o aggiornare il chaincode. Pertanto, qualsiasi membro di rete del canale con i peer su {{site.data.keyword.blockchainfull_notm}} Platform può utilizzare il Monitoraggio della rete per istanziare il chaincode e specificare le politiche di approvazione. Tuttavia, se vuoi utilizzare il peer per istanziare il chaincode su un canale, puoi usare l'SDK e attenerti alle istruzioni per [istanziare un chaincode](../v10_application.html#instantiate-cc-sdk).
+Solo un membro del canale deve istanziare o aggiornare il chaincode. Pertanto, qualsiasi membro di rete del canale con i peer su {{site.data.keyword.blockchainfull_notm}} Platform può utilizzare il Monitoraggio della rete per istanziare il chaincode e specificare le politiche di approvazione. Tuttavia, se vuoi utilizzare il peer per istanziare il chaincode su un canale, puoi usare l'SDK e attenerti alle istruzioni per [istanziare un chaincode](/docs/services/blockchain/v10_application.html#instantiate-cc-sdk).
 
 
 ## Utilizzo della CLI per gestire il peer
@@ -200,7 +200,7 @@ Il primo passo consiste nel generare i certificati richiesti (iscrizione) utiliz
 ### Gestione dei certificati sul tuo sistema locale
 {: #manage-certs}
 
-Prima di poter operare con il peer, dobbiamo eseguire alcune operazioni di gestione dei certificati sulla nostra macchina locale e caricare alcuni dei certificati che il client CA Fabric ha generato su {{site.data.keyword.blockchainfull_notm}} Platform e nel tuo peer. Dobbiamo anche scaricare i certificati TLS dalla piattaforma e dal peer. Se vuoi saperne di più sui certificati con cui lavorerai e sulle attività da svolgere, visita [Gestione dei certificati su {{site.data.keyword.blockchainfull_notm}} Platform](../certificates.html).
+Prima di poter operare con il peer, dobbiamo eseguire alcune operazioni di gestione dei certificati sulla nostra macchina locale e caricare alcuni dei certificati che il client CA Fabric ha generato su {{site.data.keyword.blockchainfull_notm}} Platform e nel tuo peer. Dobbiamo anche scaricare i certificati TLS dalla piattaforma e dal peer. Se vuoi saperne di più sui certificati con cui lavorerai e sulle attività da svolgere, visita [Gestione dei certificati su {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/certificates.html).
 
 Sulla tua macchina locale, apri un terminale di comando e passa alla directory in cui hai spostato i file binari del client CA Fabric e memorizzato la cartella MSP.
 
@@ -224,7 +224,7 @@ Sulla tua macchina locale, apri un terminale di comando e passa alla directory i
 
 3. Devi anche copiare il certificato TLS del tuo peer dal contenitore peer su AWS alla tua macchina locale. 
 
-    - [Attieniti a queste istruzioni](remote_peer_aws.html#remote-peer-aws-test) per eseguire l'accesso al tuo contenitore peer ed eseguire il seguente comando, sostituendo <PEER_ENROLL_ID> con il nome dello stack del peer, che hai specificato nel template Quick Start, seguito dal suo numero. (Ricordati che vengono create due istanze VPC).
+    - [Attieniti a queste istruzioni](/docs/services/blockchain/howto/remote_peer_aws.html#remote-peer-aws-test) per eseguire l'accesso al tuo contenitore peer ed eseguire il seguente comando, sostituendo <PEER_ENROLL_ID> con il nome dello stack del peer, che hai specificato nel template Quick Start, seguito dal suo numero. (Ricordati che vengono create due istanze VPC).
       ```
       cat /etc/hyperledger/<PEER_ENROLL_ID>/tls/ca.crt
       ```
@@ -313,9 +313,9 @@ Dopo che hai spostato tutti i nostri certificati nell'ubicazione necessaria, puo
 
 Prima di poter eseguire i comandi della CLI per unire il peer a un canale, è necessario aggiungere la tua organizzazione a un canale nella rete.
 
-  - Puoi avviare un nuovo canale per il peer. Come iniziatore di canale, puoi includere automaticamente la tua organizzazione durante la [creazione del canale](create_channel.html#creating-a-channel).
+  - Puoi avviare un nuovo canale per il peer. Come iniziatore di canale, puoi includere automaticamente la tua organizzazione durante la [creazione del canale](/docs/services/blockchain/howto/create_channel.html#creating-a-channel).
 
-  - Un altro membro della rete blockchain può anche aggiungere la tua organizzazione a un canale esistente usando un [aggiornamento canale](create_channel.html#updating-a-channel). 
+  - Un altro membro della rete blockchain può anche aggiungere la tua organizzazione a un canale esistente usando un [aggiornamento canale](/docs/services/blockchain/howto/create_channel.html#updating-a-channel). 
 
     Una volta che la tua organizzazione è stata aggiunta a un canale, devi aggiungere il certificato di firma del peer al canale in modo che gli altri membri possano verificare la tua firma digitale durante le transazioni. Il peer carica il proprio certificato di firma durante l'installazione, pertanto dovrai solo sincronizzare il certificato al canale. Nella schermata "Canali" del Monitoraggio della rete, individua il canale a cui si unisce la tua organizzazione e seleziona **Sincronizza certificato** dall'elenco a discesa sotto l'intestazione **Azione**. Questa azione sincronizza i certificati su tutti i peer nel canale.
 
@@ -474,7 +474,7 @@ Puoi avviare, arrestare o riavviare il peer nell'ambiente in cui distribuisci il
  ```
  {:codeblock}  
 
-Inoltre, puoi utilizzare la [richiesta HEAD](monitor_network.html#monitor-nodes) per verificare la disponibilità del tuo peer.
+Inoltre, puoi utilizzare la [richiesta HEAD](/docs/services/blockchain/howto/monitor_network.html#monitor-nodes) per verificare la disponibilità del tuo peer.
 
 ## Visualizzazione dei log di peer
 
@@ -496,7 +496,7 @@ Completa la seguente procedura per aggiornare il tuo chaincode:
 2. Dopo aver installato il nuovo chaincode su tutti i peer nel canale, utilizza il Monitoraggio della rete o il comando
 [peer chaincode upgrade ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/peerchaincode.html#peer-chaincode-upgrade) per aggiornare il canale per utilizzare il nuovo chaincode.
 
-Vedi il passo due di queste [istruzioni](install_instantiate_chaincode.html#updating-a-chaincode) per ulteriori informazioni sull'utilizzo del pannello Installa il codice del Monitoraggio della rete per aggiornare il chaincode sul canale.
+Vedi il passo due di queste [istruzioni](/docs/services/blockchain/howto/install_instantiate_chaincode.html#updating-a-chaincode) per ulteriori informazioni sull'utilizzo del pannello Installa il codice del Monitoraggio della rete per aggiornare il chaincode sul canale.
 
 ## Risoluzione dei problemi
 

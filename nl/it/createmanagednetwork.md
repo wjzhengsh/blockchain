@@ -14,14 +14,14 @@ lastupdated: "2017-12-06"
 
 # Creazione di canali gestiti 
 
-**ATTENZIONE:** prima di utilizzare un'offerta {{site.data.keyword.blockchainfull}}, leggi le informazioni tecniche e di supporto nella sezione [Dichiarazione di non responsabilità](needtoknow.html).   
+**ATTENZIONE:** prima di utilizzare un'offerta {{site.data.keyword.blockchainfull}}, leggi le informazioni tecniche e di supporto nella sezione [Dichiarazione di non responsabilità](/docs/services/blockchain/needtoknow.html).   
 {:shortdesc}
 
 In alcuni casi d'uso, ad esempio dei mercati di cambio di valute estere altamente regolamentati, potrebbe essere necessario affidare a una terza parte attendibile i ruoli amministrativi sui canali che normalmente sarebbero gestiti da diversi operatori o membri. 
 
 Il processo per fornire una rete di questo tipo è simile a quello della creazione di una qualsiasi rete. La differenza principale riguarda le assegnazioni di autorizzazioni ai membri relative al modo in cui interagiscono con il libro mastro nei canali.  
 
-La procedura per creare una rete e invitare membri è disponibile qui: [Governance della rete](get_start.html#creating-a-network). 
+La procedura per creare una rete e invitare membri è disponibile qui: [Governance della rete](/docs/services/blockchain/get_start.html#creating-a-network). 
 
 **Nota**: in un esempio di utilizzo reale, l'operatore di una rete di questo tipo potrebbe installare del chaincode personalizzato durante la fase "Create Network" utilizzando l'editor delle politiche ma, al fine di questo esempio, presumeremo che la tua configurazione di rete sia quella standard. 
 
@@ -52,7 +52,7 @@ In una rete con 15 membri (14 banche e tu, ossia la terza parte attendibile), po
 
 Il tuo canale è stato creato correttamente ma ha ancora bisogno che a esso sia collegato un chaincode. In un canale dedicato agli scambi di valuta estera, questo chaincode richiederà presumibilmente che tutti e tre i membri del canale (le due banche in questione e tu, ossia la terza parte attendibile) approvino **ogni** transazione. Questo chaincode potrebbe anche essere scritto per inviare un record del *risultato* di questa transazione a un canale "di sola lettura" gestito composto da ogni membro nella rete (ne riparleremo in maggiore dettaglio più avanti). Tuttavia, prima di potere essere istanziato, il chaincode deve essere installato sui peer dei membri. Dopo essere stato installato, può essere istanziato dall'operatore del canale (tu).  
 
-L'effettiva procedura per installare e istanziare questo tipo di chaincode non è diversa da quella per qualsiasi chaincode (a parte il numero di operatori necessari per approvare l'istanziazione); attieniti pertanto alle istruzioni che trovi qui: [Installazione e istanziazione di un chaincode](install_instantiate_chaincode.html.html).
+L'effettiva procedura per installare e istanziare questo tipo di chaincode non è diversa da quella per qualsiasi chaincode (a parte il numero di operatori necessari per approvare l'istanziazione); attieniti pertanto alle istruzioni che trovi qui: [Installazione e istanziazione di un chaincode](/docs/services/blockchain/install_instantiate_chaincode.html.html).
 
 # Un canale gestito di sola lettura
 

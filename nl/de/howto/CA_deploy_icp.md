@@ -17,10 +17,10 @@ lastupdated: "2018-12-07"
 
 ***[Ist diese Seite hilfreich? Teilen Sie uns Ihre Meinung mit.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
-Nachdem Sie das Helm-Diagramm für {{site.data.keyword.blockchainfull}} Platform on {{site.data.keyword.cloud_notm}} Private (ICP) importiert haben, können Sie die einzelnen Komponenten bereitstellen. Die Zertifizierungsstelle (Certificate Authority, CA) ist das Stammverzeichnis der vertrauenswürdigen Elemente für Ihre Organisation und ermöglicht Ihnen die Generierung von Berechtigungsnachweisen für die anderen Komponenten, die Sie bereitstellen wollen. Infolgedessen müssen Sie eine Zertifizierungsstelle bereitstellen, bevor Sie die anderen Komponenten bereitstellen. Jede Organisation in einem Blockchain-Netz mit mehreren Clouds muss ihre eigene Zertifizierungsstelle bereitstellen. Weitere Informationen zu Zertifizierungsstellen und der Rolle, die sie in einem Blockchain-Netz übernehmen, enthält der Abschnitt [Zertifizierungsstellen](../blockchain_component_overview.html#ca).
+Nachdem Sie das Helm-Diagramm für {{site.data.keyword.blockchainfull}} Platform on {{site.data.keyword.cloud_notm}} Private (ICP) importiert haben, können Sie die einzelnen Komponenten bereitstellen. Die Zertifizierungsstelle (Certificate Authority, CA) ist das Stammverzeichnis der vertrauenswürdigen Elemente für Ihre Organisation und ermöglicht Ihnen die Generierung von Berechtigungsnachweisen für die anderen Komponenten, die Sie bereitstellen wollen. Infolgedessen müssen Sie eine Zertifizierungsstelle bereitstellen, bevor Sie die anderen Komponenten bereitstellen. Jede Organisation in einem Blockchain-Netz mit mehreren Clouds muss ihre eigene Zertifizierungsstelle bereitstellen. Weitere Informationen zu Zertifizierungsstellen und der Rolle, die sie in einem Blockchain-Netz übernehmen, enthält der Abschnitt [Zertifizierungsstellen](/docs/services/blockchain/blockchain_component_overview.html#ca).
 {:shortdesc}
 
-Lesen Sie vor der Bereitstellung einer Zertifizierungsstelle den Abschnitt mit [Hinweisen und Einschränkungen](../ibp-for-icp-about.html#ibp-icp-considerations).
+Lesen Sie vor der Bereitstellung einer Zertifizierungsstelle den Abschnitt mit [Hinweisen und Einschränkungen](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-considerations).
 
 ## Erforderliche Ressourcen
 {: #ca-resources-required}
@@ -50,7 +50,7 @@ Wenn Sie nicht mit der dynamischen Bereitstellung arbeiten, müssen [persistente
 ## Voraussetzungen für die Bereitstellung einer Zertifizierungsstelle
 {: #prerequisites-ca-icp}
 
-1. Bevor Sie in ICP eine Zertifizierungsstelle installieren können, müssen Sie [ICP installieren](../ICP_setup.html) und das [Helm-Diagramm für {{site.data.keyword.blockchainfull_notm}} Platform installieren](helm_install_icp.html).
+1. Bevor Sie in ICP eine Zertifizierungsstelle installieren können, müssen Sie [ICP installieren](/docs/services/blockchain/ICP_setup.html) und das [Helm-Diagramm für {{site.data.keyword.blockchainfull_notm}} Platform installieren](/docs/services/blockchain/howto/helm_install_icp.html).
 
 2. Falls Sie Community Edition verwenden und dieses Helm-Diagramm in einem ICP-Cluster ohne Internetkonnektivität ausführen wollen, müssen Sie auf einer mit dem Internet verbundenen Maschine Archive erstellen, bevor Sie die Archive im ICP-Cluster installieren können. Weitere Informationen finden Sie unter [Ausgewählte Anwendungen ohne Internetverbindung zu Clustern hinzufügen ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_package_offline.html "Ausgewählte Anwendungen ohne Internetverbindung zu Clustern hinzufügen"){:new_window}. Die Spezifikationsdatei "manifest.yaml" ist im Helm-Diagramm unter "ibm-blockchain-platform-dev/ibm_cloud_pak" zu finden.
 
@@ -195,7 +195,7 @@ Sie können eine neue Datei `yaml` erstellen, indem Sie die Datei `values.yaml` 
 
 Nachdem Sie die Konfigurationsparameter ausgefüllt und auf die Schaltfläche **Installieren** geklickt haben, können Sie die Bereitstellung prüfen, indem Sie auf die Schaltfläche **Helm-Release anzeigen** klicken. Wenn die Bereitstellung erfolgreich durchgeführt wurde, sollte der Wert 1 in den Feldern `GEWÜNSCHT`, `DERZEIT`, `AKTUELL` und `VERFÜGBAR` der Tabelle "Bereitstellung" angezeigt werden. Möglicherweise müssen Sie zur Aktualisierung klicken und warten, bis die Tabelle aktualisiert angezeigt wird. Die Tabelle "Bereitstellung" können Sie außerdem aufrufen, indem Sie in der linken oberen Ecke der ICP-Konsole auf das **Menüsymbol** klicken. Klicken Sie in der Menüliste auf **Workloads** und dann auf **Helm-Releases**.
 
-Wenn Sie bis zum Abschnitt `Hinweise` vorblättern, finden Sie wichtige Informationen, die Sie zum [Betrieb der Zertifizierungsstelle](CA_operate.html#ca-operate) verwenden.
+Wenn Sie bis zum Abschnitt `Hinweise` vorblättern, finden Sie wichtige Informationen, die Sie zum [Betrieb der Zertifizierungsstelle](/docs/services/blockchain//howto/CA_operate.html#ca-operate) verwenden.
 
 Nachdem Sie die Zertifizierungsstelle für {{site.data.keyword.blockchainfull_notm}} Platform in ICP installiert haben, wird eine Konfigurationsübersicht mit Standardeinstellungen für Umgebungsvariablen erstellt. Danach können Sie Umgebungsvariablen für den Server der Zertifizierungsstelle ändern oder hinzufügen, um sein Verhalten anzupassen. Weitere Informationen zu den Konfigurationsparametern für den Server der Zertifizierungsstelle enthält die [Dokumentation zum Fabric-CA-Server ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric-ca.readthedocs.io/en/latest/users-guide.html#fabric-ca-server "Fabric CA Server").
 
@@ -204,9 +204,9 @@ Nachdem Sie die Konfigurationsübersicht konfiguriert haben, müssen Sie den Ser
 ## Protokolle der Zertifizierungsstelle anzeigen
 {: #ca-deploy-view-logs}
 
-Komponentenprotokolle können über die Befehlszeile mit den [`Befehlen der CLI "kubectl"`](CA_operate.html#ca-kubectl-configure) oder über [Kibana ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://www.elastic.co/products/kibana "Your Window into the Elastic Search") angezeigt werden, das in Ihrem ICP-Cluster enthalten ist. Weitere Informationen enthalten die [Anweisungen für den Zugriff auf die Protokolle](CA_operate.html#ca-operate-view-logs).
+Komponentenprotokolle können über die Befehlszeile mit den [`Befehlen der CLI "kubectl"`](/docs/services/blockchain/howto/CA_operate.html#ca-kubectl-configure) oder über [Kibana ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://www.elastic.co/products/kibana "Your Window into the Elastic Search") angezeigt werden, das in Ihrem ICP-Cluster enthalten ist. Weitere Informationen enthalten die [Anweisungen für den Zugriff auf die Protokolle](/docs/services/blockchain/howto/CA_operate.html#ca-operate-view-logs).
 
 ## Zertifizierungsstelle betreiben
 {: #operate-ca}
 
-Ihre Zertifizierungsstelle wird als Stammverzeichnis für die vertrauenswürdigen Elemente Ihrer Organisation verwendet. Sie müssen Ihre Zertifizierungsstelle verwenden, um Zertifikate für Ihre anderen Komponenten zu generieren. Infolgedessen müssen Sie vor der Bereitstellung eines Anordnungsknotens oder Peers Ihre [Zertifizierungsstelle einrichten und mehrere operative Schritte ausführen](CA_operate.html).
+Ihre Zertifizierungsstelle wird als Stammverzeichnis für die vertrauenswürdigen Elemente Ihrer Organisation verwendet. Sie müssen Ihre Zertifizierungsstelle verwenden, um Zertifikate für Ihre anderen Komponenten zu generieren. Infolgedessen müssen Sie vor der Bereitstellung eines Anordnungsknotens oder Peers Ihre [Zertifizierungsstelle einrichten und mehrere operative Schritte ausführen](/docs/services/blockchain/howto/CA_operate.html).

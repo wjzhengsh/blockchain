@@ -21,9 +21,9 @@ lastupdated: "2018-12-07"
 Les instructions ci-après expliquent comment déployer un homologue {{site.data.keyword.blockchainfull}} Platform sur {{site.data.keyword.cloud_notm}} Private (ICP) qui établira une connexion à un réseau Starter Plan ou Enterprise Plan sur {{site.data.keyword.cloud_notm}} ou votre ICP local.
 {:shortdesc}
 
-Avant de déployer un homologue, passez en revue la section [Considérations et limitations](../ibp-for-icp-about.html#ibp-icp-considerations).
+Avant de déployer un homologue, passez en revue la section [Considérations et limitations](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-considerations).
 
-Votre réseau Starter Plan ou Enterprise Plan doit exécuter Hyperledger Fabric version 1.1 ou version 1.2.1. Pour connaître la votre version d'Hyperledger Fabric, ouvriez la [fenêtre Préférences réseau](../v10_dashboard.html#network-preferences) dans votre Moniteur réseau.
+Votre réseau Starter Plan ou Enterprise Plan doit exécuter Hyperledger Fabric version 1.1 ou version 1.2.1. Pour connaître la votre version d'Hyperledger Fabric, ouvriez la [fenêtre Préférences réseau](/docs/services/blockchain/v10_dashboard.html#network-preferences) dans votre Moniteur réseau.
 
 ## Ressources obligatoires
 {: #peer-resources-required}
@@ -53,13 +53,13 @@ Si vous n'utilisez pas la mise à disposition dynamique, des[Volumes permanents 
 ## Prérequis pour le déploiement d'un homologue
 {: #prerequisites-peer-ibp}
 
-1. Avant d'installer un homologue sur ICP, vous devez [installer ICP](../ICP_setup.html) et [installer la Charte Helm de {{site.data.keyword.blockchainfull_notm}} Platform](helm_install_icp.html).
+1. Avant d'installer un homologue sur ICP, vous devez [installer ICP](/docs/services/blockchain/ICP_setup.html) et [installer la Charte Helm de {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/howto/helm_install_icp.html).
 
 2. Si vous utilisez Community Edition et souhaitez exécuter cette charte Helm sur un cluster ICP sans connectivité Internet, vous devez créer des archives sur une machine connectée à Internet avant d'installer les archives sur votre cluster ICP. Pour plus d'informations, voir [Adding featured applications to clusters without Internet connectivity ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_package_offline.html "Adding featured applications to clusters without Internet connectivity"){:new_window}. Remarque : Vous pouvez trouver le fichier de spécification manifest.yaml sous  ibm-blockchain-platform-dev/ibm_cloud_pak dans la charte Helm.
 
-3. Vous devez disposer d'une organisation qui est membre d'un réseau de plan Starter ou Enterprise sur {{site.data.keyword.cloud_notm}}. L'homologue optimise les noeuds finaux d'API, les autorités de certification Hyperledger Fabric et le service de tri du réseau {{site.data.keyword.blockchainfull_notm}} Platform à exploiter. Si vous n'êtes membre d'aucun un réseau de blockchain, vous devez créer ou rejoindre un réseau. Pour plus d'informations, voir [Création d'un réseau de plan](../get_start.html#creating-a-network) ou [Rejoindre un réseau](../get_start.html#joining-a-network).
+3. Vous devez disposer d'une organisation qui est membre d'un réseau de plan Starter ou Enterprise sur {{site.data.keyword.cloud_notm}}. L'homologue optimise les noeuds finaux d'API, les autorités de certification Hyperledger Fabric et le service de tri du réseau {{site.data.keyword.blockchainfull_notm}} Platform à exploiter. Si vous n'êtes membre d'aucun un réseau de blockchain, vous devez créer ou rejoindre un réseau. Pour plus d'informations, voir [Création d'un réseau de plan](/docs/services/blockchain/get_start.html#creating-a-network) ou [Rejoindre un réseau](/docs/services/blockchain/get_start.html#joining-a-network).
 
-4. Vous devez d'abord [déployer une autorité de certification](CA_deploy_icp.html) sur ICP. Vous utiliserez cette autorité de certification en tant qu'autorité de certification TLS. Suivez les étapes prérequises pour l'[l'utilisation d'une autorité de certification sur ICP](CA_operate.html#prerequisites) avant de déployer votre homologue. Vous n'aurez pas besoin d'effectuer des étapes supplémentaires.
+4. Vous devez d'abord [déployer une autorité de certification](/docs/services/blockchain/howto/CA_deploy_icp.html) sur ICP. Vous utiliserez cette autorité de certification en tant qu'autorité de certification TLS. Suivez les étapes prérequises pour l'[l'utilisation d'une autorité de certification sur ICP](/docs/services/blockchain/howto/CA_operate.html#prerequisites) avant de déployer votre homologue. Vous n'aurez pas besoin d'effectuer des étapes supplémentaires.
 
 5. Procédez à l'extraction de la valeur de l'adresse IP proxy du cluster de votre autorité de certification TLS depuis la console ICP. **Remarque :** Vous devez être [administrateur de cluster![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Cluster administrator roles and actions") pour accéder à votre IP de proxy. Connectez-vous au cluster ICP. Dans le panneau de navigation gauche, cliquez sur **Plateforme** puis sur **Noeuds** pour afficher les noeuds qui sont définis dans le cluster. Cliquez sur le noeud avec le rôle `proxy`, puis copiez la valeur de l'`IP hôte` de la table. **Important :** Conservez cette valeur car vous allez l'utiliser lors de la configuration de la zone `Adresse IP du proxy` de la charte Helm.
 
@@ -219,7 +219,7 @@ Il vous suffit de créer une identité admin pour les composants appartenant à 
 
 Une fois l'identité admin enregistrée, vous devez générer le dossier MSP admin homologue et le certificat SignCert. Par conséquent, vous devez exécuter une commande enroll pour votre autorité de certification Starter Plan ou Enterprise Plan.
 
-1. Téléchargez le [client CA Fabric](CA_operate.html#fabric-ca-client) si ce n'est déjà fait.
+1. Téléchargez le [client CA Fabric](/docs/services/blockchain/howto/CA_operate.html#fabric-ca-client) si ce n'est déjà fait.
 2. Accédez au répertoire dans lequel vous allez stocker votre matériel cryptographique et créez le dossier dans lequel vous allez stocker le dossier MSP de votre admin homologue.
 
   ```
@@ -312,9 +312,9 @@ Une fois l'identité admin enregistrée, vous devez générer le dossier MSP adm
 
 Les zones `"tls"` dans le fichier de configuration requièrent des informations de l'autorité de certification que vous avez déployée sur ICP. Vous utiliserez cette autorité de certification en tan qu'autorité de certification TLS distincte, ce qui rend votre homologue plus sûr. Utilisez les instructions suivantes pour générer les informations pertinentes :
 
-- Les valeurs `"cahost"` et `"caport"` représentent l'URL et le port de  l'[URL d'autorité de certification](CA_operate.html#ca-url). Par exemple, si l'URL de l'autorité de certification est `http://9.30.94.174:30167`, la valeur de `cahost` serait `9.30.94.174` et `caport` serait `30167`.
+- Les valeurs `"cahost"` et `"caport"` représentent l'URL et le port de  l'[URL d'autorité de certification](/docs/services/blockchain/howto/CA_operate.html#ca-url). Par exemple, si l'URL de l'autorité de certification est `http://9.30.94.174:30167`, la valeur de `cahost` serait `9.30.94.174` et `caport` serait `30167`.
 - Le `"caname"` est nom d'autorité de certification TLS de l'autorité de certification que vous avez déployée sur ICP. Le nom de l'autorité de certification TLS est la valeur que vous avez fournie dans la zone relative au `nom de l'instance TLS de l'autorité de certification` pendant la configuration de l'autorité de certification.
-- La valeur `"cacert"` est le certificat TLS encodé en base64 de votre autorité de certification. Mettez à jour la section suivante avec la valeur du résultat de la commande lors de l'extraction de votre [certificat TLS de l'autorité de certification](CA_operate.html#ca-tls) en tant que prérequis.
+- La valeur `"cacert"` est le certificat TLS encodé en base64 de votre autorité de certification. Mettez à jour la section suivante avec la valeur du résultat de la commande lors de l'extraction de votre [certificat TLS de l'autorité de certification](/docs/services/blockchain/howto/CA_operate.html#ca-tls) en tant que prérequis.
 
   ```
   "catls": {
@@ -334,7 +334,7 @@ Les zones `"tls"` dans le fichier de configuration requièrent des informations 
 
 Vous devez enregistrer votre homologue auprès de l'autorité de certification TLS sur ICP à l'aide du client de l'autorité de certification Fabric.
 
-1. Le fichier de certificat TLS `tls.pem` doit se trouver dans le dossier `$HOME/fabric-ca-client/catls`. Su ce n'est pas le cas, vous pouvez copier le certificat TLS que vous avez[téléchargé depuis ICP](CA_operate.html#ca-tls) dans un répertoire où vous pouvez le référencer dans les commandes ci-dessous. Vérifiez que vous êtes au niveau de votre répertoire `$HOME/fabric-ca-client`.
+1. Le fichier de certificat TLS `tls.pem` doit se trouver dans le dossier `$HOME/fabric-ca-client/catls`. Su ce n'est pas le cas, vous pouvez copier le certificat TLS que vous avez[téléchargé depuis ICP](/docs/services/blockchain/howto/CA_operate.html#ca-tls) dans un répertoire où vous pouvez le référencer dans les commandes ci-dessous. Vérifiez que vous êtes au niveau de votre répertoire `$HOME/fabric-ca-client`.
 
   ```
   cd $HOME/fabric-ca-client
@@ -359,9 +359,9 @@ Vous devez enregistrer votre homologue auprès de l'autorité de certification T
   ```
   {:codeblock}
 
-  Le `<enroll_id>` et le `<enroll_password>` dans la commande sont le[nom d'utilisateur et le mot de passe admin d'autorité de certification](CA_deploy_icp.html#admin-secret) que vous avez transmis au secret Kubernetes lors du déploiement de l'autorité de certification. Insérez  l'[URL d'autorité de certification](CA_operate.html#ca-url) dans le `<ca_url_with_port>`. Laissez `http://` au début. Le `<tls_ca_name>` est celui que vous avez spécifié lors de la [configuration de l'autorité de certification](CA_deploy_icp.html#icp-ca-configuration-parms).
+  Le `<enroll_id>` et le `<enroll_password>` dans la commande sont le[nom d'utilisateur et le mot de passe admin d'autorité de certification](/docs/services/blockchain/howto/CA_deploy_icp.html#admin-secret) que vous avez transmis au secret Kubernetes lors du déploiement de l'autorité de certification. Insérez  l'[URL d'autorité de certification](/docs/services/blockchain/howto/CA_operate.html#ca-url) dans le `<ca_url_with_port>`. Laissez `http://` au début. Le `<tls_ca_name>` est celui que vous avez spécifié lors de la [configuration de l'autorité de certification](/docs/services/blockchain/howto/CA_deploy_icp.html#icp-ca-configuration-parms).
 
-  Le `<ca_tls_cert_file>` est le nom de fichier de votre [certification TLS d'autorité de certification](CA_operate.html#ca-tls) avec son chemin d'accès complet.
+  Le `<ca_tls_cert_file>` est le nom de fichier de votre [certification TLS d'autorité de certification](/docs/services/blockchain/howto/CA_operate.html#ca-tls) avec son chemin d'accès complet.
 
   Un appel réel doit ressembler à l'exemple suivant :
 
@@ -482,7 +482,7 @@ Vous devez fournir les noms d'hôte CSR pour déployer un homologue. Les noms d'
 
 #### Recherche de la valeur de l'adresse IP proxy du cluster
 
-Si vous voulez déployer un homologue sur le même cluster ICP que celui sur lequel vous avez déployé l'autorité de certification de votre TLS, entrez la même IP proxy que celle utilisée lorsque vous avez [configuré l'autorité de certification de votre TLS](CA_deploy_icp.html#icp-ca-configuration-parms). Si vous voulez déployer le composant sur un autre cluster, vous pouvez extraire la valeur de l'adresse IP proxy du cluster à partir de la console ICP. Vous devez avoir le rôle admin de cluster du cluster ICP où l'homologue va être déployé.
+Si vous voulez déployer un homologue sur le même cluster ICP que celui sur lequel vous avez déployé l'autorité de certification de votre TLS, entrez la même IP proxy que celle utilisée lorsque vous avez [configuré l'autorité de certification de votre TLS](/docs/services/blockchain/howto/CA_deploy_icp.html#icp-ca-configuration-parms). Si vous voulez déployer le composant sur un autre cluster, vous pouvez extraire la valeur de l'adresse IP proxy du cluster à partir de la console ICP. Vous devez avoir le rôle admin de cluster du cluster ICP où l'homologue va être déployé.
 
 1. Connectez-vous à la console ICP. Dans le panneau de navigation gauche, cliquez sur **Plateforme** puis sur **Noeuds** pour afficher les noeuds qui sont définis dans le cluster.
 2. Cliquez sur le noeud avec le rôle `proxy`, puis copiez la valeur de l'`IP hôte` de la table.
@@ -647,7 +647,7 @@ Le tableau suivant répertorie les paramètres configurables de {{site.data.keyw
 | `Peer configuration secret (Required)`| Nom du [secret de configuration d'homologue](#peer-config-secret) que vous avez créé dans ICP.  |none|yes|
 |`Organization MSP (Required)`|Cette valeur peut être trouvée dans le Moniteur réseau  (interface utilisateur IBP) en cliquant sur "Configuration de l'homologue distant" sur l'écran Présentation. |none|yes|
 |`Peer service type`| Utilisé pour indiquer si des[ports externes doivent être exposés ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types) sur l'homologue. Sélectionnez NodePort pour exposer les ports en externe (recommandé), et ClusterIP pour ne pas exposer les ports. LoadBalancer et ExternalName ne sont pas pris en charge dans cette édition. | NodePort |yes|
-| `State database`| [Base de données d'état](../glossary.html#state-database) utilisée pour le stockage de votre registre de canal. L'homologue doit utiliser la même base de données que votre [réseau de blockchain](../v10_dashboard.html#network-preferences). | LevelDB | yes |
+| `State database`| [Base de données d'état](/docs/services/blockchain/glossary.html#state-database) utilisée pour le stockage de votre registre de canal. L'homologue doit utiliser la même base de données que votre [réseau de blockchain](/docs/services/blockchain/v10_dashboard.html#network-preferences). | LevelDB | yes |
 |`CouchDB image repository`| S'applique uniquement si CouchDB a été sélectionné comme base de données de registre. Cette zone est remplie automatiquement par le chemin installé. Si vous utilisez Community Edition et ne disposez pas d'un accès Internet, il doit s'agir du répertoire où vous avez téléchargé l'image CouchDB Fabric. | ibmcom/ibp-fabric-couchdb | yes |
 | `CouchDB Docker image tag`| S'applique uniquement si CouchDB a été sélectionné comme base de données de registre. Valeur de la balise associée à l'image CouchDBde. | Renseigné automatiquement par la valeur correcte.| yes |
 | `Peer Data persistence enabled`| Activité de la capacité de persistance des données après un redémarrage ou une défaillance du cluster. Voir la section relative au [stockage dans Kubernetes ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://kubernetes.io/docs/concepts/storage/ "Volumes") pour plus de détails.  *Si ce paramètre est désélectionné, toutes les données seront perdues en cas de reprise en ligne ou de redémarrage du pod.* | checked | no |
@@ -727,22 +727,22 @@ Vous pouvez créer un nouveau fichier `yaml` en éditant `values.yaml` inclus da
 
 Une fois que vous avez entré les paramètres de configuration et cliqué sur le bouton **Installer**, cliquez sur le bouton **Afficher l'édition Helm** pour afficher votre déploiement. Si l'opération aboutit, vous devez voir la valeur 1 dans les zones  `DESIRED`, `CURRENT`, `UP TO DATE` et `AVAILABLE` dans le tableau Déploiement. Vous devrez peut-être cliquer sur Actualiser et attendre que le tableau soit mis à jour. Vous pouvez aussi afficher le tableau Déploiement en cliquant sur l'icône **Menu** dans l'angle supérieur gauche sur la console ICP. Dans la liste de menus, cliquez sur **Charges de travail**, puis sur **Editions Helm**.
 
-Si vous faites défiler jusqu'à la section `Remarques`, vous verrez des informations importantes relatives à l'[exploitation de votre homologue](peer_operate_ibp.html).
+Si vous faites défiler jusqu'à la section `Remarques`, vous verrez des informations importantes relatives à l'[exploitation de votre homologue](/docs/services/blockchain/howto/peer_operate_ibp.html).
 
 <!--
 ### Verifying the peer can connect to Starter or Enterprise Plan network
 
 You can run a peer CLI command from inside the peer container to verify that your peer has connected to your network on the {{site.data.keyword.blockchainfull_notm}} Platform. Complete the following instructions to run the `peer channel fetch` command to fetch the genesis block from a channel:
 
-1. If you have not already connected to your ICP cluster, follow these [instructions](peer_operate_ibp.html#peer-kubectl-configure) to connect to it and use the cli from inside the peer container.
+1. If you have not already connected to your ICP cluster, follow these [instructions](/docs/services/blockchain/howto/peer_operate_ibp.html#peer-kubectl-configure) to connect to it and use the cli from inside the peer container.
 
-2. If you deploy your peer behind a firewall, you need to open a passthru to enable the network on the platform to complete a TlS handshake with your peer. You only need to enable a passthru for the Node port bound to port 7051 of your peer. For more information, see [finding your peer endpoint information](peer_operate_ibp.html#peer-endpoint).
+2. If you deploy your peer behind a firewall, you need to open a passthru to enable the network on the platform to complete a TlS handshake with your peer. You only need to enable a passthru for the Node port bound to port 7051 of your peer. For more information, see [finding your peer endpoint information](/docs/services/blockchain/howto/peer_operate_ibp.html#peer-endpoint).
 
 3. Your organization needs to be added to a channel in the network before you can fetch the genesis block.
 
-  - You can start a new channel for the peer. If you are using IBP Starter or Enterprise Plan, you can automatically include your organization during [channel creation](create_channel.html#creating-a-channel).
+  - You can start a new channel for the peer. If you are using IBP Starter or Enterprise Plan, you can automatically include your organization during [channel creation](/docs/services/blockchain/howto/create_channel.html#creating-a-channel).
 
-  - Another member of the blockchain network can also add your organization to an existing channel by using a [channel update](create_channel.html#updating-a-channel).
+  - Another member of the blockchain network can also add your organization to an existing channel by using a [channel update](/docs/services/blockchain/howto/create_channel.html#updating-a-channel).
 
     The peer uploads its signCert during installation, so that you need to only synchronize the certificate to the channel. On the "Channels" screen of the Network Monitor, locate the channel that your organization joined and select **Sync Certificate** from the drop-down list under the **Action** header. This action synchronizes the certificates across all the peers on the channel.
 
@@ -823,15 +823,15 @@ You can run a peer CLI command from inside the peer container to verify that you
   ```
 
   Successfully fetching the genesis block indicates that your peer can connect to your Starter or Enterprise Plan network.
-  You still need to join the peer to the channel and install chaincode. See [operating your peer](peer_operate_ibp.html) for more information.
+  You still need to join the peer to the channel and install chaincode. See [operating your peer](/docs/services/blockchain/howto/peer_operate_ibp.html) for more information.
 
 -->
 
 ## Affichage des journaux de l'homologue
 {: #peer-ibp-view-logs}
 
-Les journaux de composant peuvent être affichés à partir de la ligne de commande à l'aide de [`commandes de l'interface CLI kubectl`](peer_operate_ibp.html#peer-kubectl-configure) ou via [Kibana ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://www.elastic.co/products/kibana "Votre fenêtre dans Elastic Search"), qui est inclus dans votre cluster ICP. Pour plus d'informations, consultez les [instructions relatives à l'accès aux journaux](peer_operate_ibp.html#peer-ibp-view-logs).
+Les journaux de composant peuvent être affichés à partir de la ligne de commande à l'aide de [`commandes de l'interface CLI kubectl`](/docs/services/blockchain/howto/peer_operate_ibp.html#peer-kubectl-configure) ou via [Kibana ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://www.elastic.co/products/kibana "Votre fenêtre dans Elastic Search"), qui est inclus dans votre cluster ICP. Pour plus d'informations, consultez les [instructions relatives à l'accès aux journaux](/docs/services/blockchain/howto/peer_operate_ibp.html#peer-ibp-view-logs).
 
 ## Etapes suivantes
 
-Après que vous avez déployé l'homologue, vous devez effectuer quelques étapes supplémentaires avant de soumettre des transactions et lire le registre partagé depuis le réseau de blockchain. Pour plus d'informations, voir  [Exploitation des homologues avec Starter Plan ou Enterprise Plan](peer_operate_ibp.html).
+Après que vous avez déployé l'homologue, vous devez effectuer quelques étapes supplémentaires avant de soumettre des transactions et lire le registre partagé depuis le réseau de blockchain. Pour plus d'informations, voir  [Exploitation des homologues avec Starter Plan ou Enterprise Plan](/docs/services/blockchain/howto/peer_operate_ibp.html).

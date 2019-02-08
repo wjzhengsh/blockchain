@@ -20,10 +20,10 @@ lastupdated: "2018-12-07"
 
 En las instrucciones siguientes se describe cómo desplegar un igual de la plataforma
 {{site.data.keyword.blockchainfull}} en {{site.data.keyword.cloud_notm}} privado (ICP). Estas instrucciones le permiten conectarse a una plataforma {{site.data.keyword.blockchainfull_notm}} en ICP. Si desea conectar un igual a una red de Plan inicial o Plan empresarial en
-{{site.data.keyword.cloud_notm}}, consulte [Despliegue de iguales para conectarse al Plan inicial o el Plan empresarial](peer_deploy_ibp.html).
+{{site.data.keyword.cloud_notm}}, consulte [Despliegue de iguales para conectarse al Plan inicial o el Plan empresarial](/docs/services/blockchain/howto/peer_deploy_ibp.html).
 {:shortdesc}
 
-Antes de desplegar un igual, revise las [Consideraciones y limitaciones](../ibp-for-icp-about.html#ibp-icp-considerations).
+Antes de desplegar un igual, revise las [Consideraciones y limitaciones](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-considerations).
 
 ## Recursos necesarios
 {: #peer-resources-required}
@@ -58,14 +58,14 @@ Si no utiliza el suministro dinámico, deberán crearse [volúmenes persistentes
 ## Requisitos previos para desplegar un igual
 {: #prerequisites-peer-icp}
 
-1. Para poder instalar un igual en ICP, primero debe [instalar ICP](../ICP_setup.html) e
-[instalar el diagrama de Helm de la plataforma {{site.data.keyword.blockchainfull_notm}}](helm_install_icp.html).
+1. Para poder instalar un igual en ICP, primero debe [instalar ICP](/docs/services/blockchain/ICP_setup.html) e
+[instalar el diagrama de Helm de la plataforma {{site.data.keyword.blockchainfull_notm}}](/docs/services/blockchain/howto/helm_install_icp.html).
 
 2. Si utiliza Community Edition y desea ejecutar este diagrama de Helm en un clúster de ICP sin conexión a Internet, debe crear archivados en una máquina conectada a Internet para poder instalar los archivados en el clúster de ICP. Para obtener más información, consulte
 [Adición de aplicaciones destacadas a clústeres sin conexión a Internet
 ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_package_offline.html "Adición de aplicaciones destacadas a clústeres sin conexión a Internet"){:new_window}. Tenga en cuenta que puede encontrar el archivo de especificación manifest.yaml en ibm-blockchain-platform-dev/ibm_cloud_pak en el diagrama de Helm.
 
-3. En primer lugar, debe [desplegar una CA](CA_deploy_icp.html) en ICP. Debe utilizar la CA para crear un
+3. En primer lugar, debe [desplegar una CA](/docs/services/blockchain/howto/CA_deploy_icp.html) en ICP. Debe utilizar la CA para crear un
 [archivo de configuración de igual y almacenarlo como secreto de Kubernetes en ICP](#peer-config-file).
 
 4. Recupere el valor de la dirección IP de proxy de clúster de la CA desde la consola de ICP. **Nota:** necesitará ser un
@@ -78,7 +78,7 @@ Si no utiliza el suministro dinámico, deberán crearse [volúmenes persistentes
 
 Para desplegar un igual, debe crear un archivo de configuración que contenga información importante sobre la identidad del igual y su entidad emisora de certificados. A continuación, debe pasar este archivo al diagrama de Helm durante la configuración utilizando un objeto de [secreto de Kubernetes
 ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://kubernetes.io/docs/concepts/configuration/secret/). Este archivo permitirá que el igual pueda obtener los certificados que necesita de la entidad emisora de certificados para unirse a una red blockchain. También contiene un certificado de administrador que le permitirá trabajar con el igual. Siga las instrucciones para
-[utilizar la CA para desplegar un clasificador o igual](CA_operate.html#deploy-orderer-peer) antes de la configuración del igual.
+[utilizar la CA para desplegar un clasificador o igual](/docs/services/blockchain/howto/CA_operate.html#deploy-orderer-peer) antes de la configuración del igual.
 
 Debe proporcionar los nombres de host de CSR en el archivo de configuración. Esto incluye el `nombre de host de servicio`, que tendrá el mismo valor que el `nombre de release de Helm` que especifique durante el despliegue. Por ejemplo, si especifica un
 `nombre de release de Helm` de `org1peer1`, recuerde insertar el valor siguiente en la sección
@@ -202,7 +202,7 @@ En la tabla siguiente se muestran los parámetros configurables de la plataforma
 |`Tipo de servicio de igual`| Se usa para especificar si los
 [puertos externos se deben exponer
 ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types) en el igual. Seleccione NodePort para exponer los puertos externamente (recomendado), y ClusterIP para no exponer los puertos. LoadBalancer y ExternalName no se admiten en este release. | NodePort | sí |
-| `Base de datos de estado`| La [base de datos de estado](../glossary.html#state-database) utilizada para almacenar el libro mayor del canal. El igual tiene que utilizar la misma base de datos que la [red blockchain](../v10_dashboard.html#network-preferences). | ninguno | sí |
+| `Base de datos de estado`| La [base de datos de estado](/docs/services/blockchain/glossary.html#state-database) utilizada para almacenar el libro mayor del canal. El igual tiene que utilizar la misma base de datos que la [red blockchain](/docs/services/blockchain/v10_dashboard.html#network-preferences). | ninguno | sí |
 |`Repositorio de imágenes de CouchDB`| Solo es aplicable si se ha seleccionado CouchDB como base de datos de libro mayor. Este campo se rellena automáticamente con la vía de acceso instalada. Si utiliza Community Edition y no tiene acceso a Internet, debe coincidir con el directorio donde ha descargado la imagen de CouchDB de Fabric.| ibmcom/ibp-fabric-couchdb | sí |
 | `Etiqueta de imagen de Docker de CouchDB`| Solo es aplicable si se ha seleccionado CouchDB como base de datos de libro mayor. Valor de la etiqueta asociada con la imagen de CouchDB. | Se rellena automáticamente con el valor correcto. | sí |
 | `Persistencia de datos de igual habilitada`| Habilita la posibilidad de guardar permanentemente los datos después de que el clúster se reinicie o falle. Consulte [almacenamiento en Kubernetes ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://kubernetes.io/docs/concepts/storage/ "Volúmenes") para obtener más información. *Si no está marcada esta opción, se perderán todos los datos en el caso de una migración tras error o de un reinicio del pod.* | marcada | no |
@@ -289,14 +289,14 @@ Tras completar los parámetros de configuración y pulsar el botón **Instalar**
 **Cargas de trabajo** y, a continuación, **Releases de Helm**.
 
 Si se desplaza hacia abajo hasta la sección `Notas`, hay información importante que utilizará al
-[trabajar con el igual](peer_operate_icp.html).
+[trabajar con el igual](/docs/services/blockchain/howto/peer_operate_icp.html).
 
 ## Visualización de los registros de igual
 {: #peer-deploy-view-logs}
 
-Los registros de igual se pueden visualizar utilizando los [mandatos de la CLI kubectl](peer_operate_icp.html#peer-kubectl-configure) o a través de [Kibana ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.elastic.co/products/kibana "Su ventana en Elastic Search"). Para obtener más información, consulte estas
-[instrucciones para acceder a los registros](peer_operate_icp.html#peer-icp-view-logs).
+Los registros de igual se pueden visualizar utilizando los [mandatos de la CLI kubectl](/docs/services/blockchain/howto/peer_operate_icp.html#peer-kubectl-configure) o a través de [Kibana ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.elastic.co/products/kibana "Su ventana en Elastic Search"). Para obtener más información, consulte estas
+[instrucciones para acceder a los registros](/docs/services/blockchain/howto/peer_operate_icp.html#peer-icp-view-logs).
 
 ## Qué hacer a continuación
 
-Después de haber desplegado el igual, deberá realizar varios pasos operativos para poder enviar transacciones y leer el libro mayor distribuido de la red blockchain. Para obtener más información, consulte [Funcionamiento de iguales con una red multinube](peer_operate_icp.html).
+Después de haber desplegado el igual, deberá realizar varios pasos operativos para poder enviar transacciones y leer el libro mayor distribuido de la red blockchain. Para obtener más información, consulte [Funcionamiento de iguales con una red multinube](/docs/services/blockchain/howto/peer_operate_icp.html).

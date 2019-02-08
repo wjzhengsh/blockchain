@@ -221,7 +221,7 @@ Die Generierung von Zertifikaten ist nur unter Verwendung von Identitäten mögl
   ```
   {:codeblock}
 
-  Die Angaben `<enroll_id>` und `<enroll_password>` im Befehl stehen für [den Benutzernamen und das Kennwort des CA-Administrators](CA_deploy_icp.html#admin-secret), die Sie beim Bereitstellen der Zertifizierungsstelle an den geheimen Kubernetes-Schlüssel übergeben haben. Fügen Sie die [URL der Zertifizierungsstelle](#ca-url) in `<ca_url_with_port>` ein. Lassen Sie die Angabe `http://` am Beginn weg. `<ca_name>` steht für den Wert, den Sie beim Bereitstellen der Zertifizierungsstelle im Feld `CA-Name` angegeben haben.
+  Die Angaben `<enroll_id>` und `<enroll_password>` im Befehl stehen für [den Benutzernamen und das Kennwort des CA-Administrators](/docs/services/blockchain/howto/CA_deploy_icp.html#admin-secret), die Sie beim Bereitstellen der Zertifizierungsstelle an den geheimen Kubernetes-Schlüssel übergeben haben. Fügen Sie die [URL der Zertifizierungsstelle](#ca-url) in `<ca_url_with_port>` ein. Lassen Sie die Angabe `http://` am Beginn weg. `<ca_name>` steht für den Wert, den Sie beim Bereitstellen der Zertifizierungsstelle im Feld `CA-Name` angegeben haben.
 
   `<ca_tls_cert_path>` steht für den vollständigen Pfad des [TLS-Zertifikats der Zertifizierungsstelle](#ca-tls).
 
@@ -263,7 +263,7 @@ Bevor Sie einen Anordnungsknoten oder einen Peer bereitstellen, müssen Sie eine
 Die folgenden Anweisungen bieten Ihnen eine [Vorlage für die JSON-Konfigurationsdatei](#config-file-template), die Sie bearbeiten und in Ihrem lokalen Dateisystem speichern können. Außerdem erfahren Sie, wie Sie diese Datei mithilfe Ihrer Zertifizierungsstelle erstellen.
 
 - Befolgen Sie die nachstehenden Anweisungen, wenn Sie einen Anordnungsknoten in ICP oder einen Peer für eine Verbindung zu einem in ICP gehosteten Konsortium bereitstellen.
-- Falls Sie einen Peer für die Vebindung zu einem Starter Plan oder Enterprise Plan bereitstellen wollen, befolgen Sie stattdessen die Anweisungen im Abschnitt [Peers in IBM Cloud Private zur Verbindung mit Starter Plan oder Enterprise Plan bereitstellen](peer_deploy_ibp.html). Die dortigen Schritte führen Sie durch die Bereitstellung von Peers in ICP mithilfe der Zertifizierungsstelle von {{site.data.keyword.blockchainfull_notm}} Platform.
+- Falls Sie einen Peer für die Vebindung zu einem Starter Plan oder Enterprise Plan bereitstellen wollen, befolgen Sie stattdessen die Anweisungen im Abschnitt [Peers in IBM Cloud Private zur Verbindung mit Starter Plan oder Enterprise Plan bereitstellen](/docs/services/blockchain/howto/peer_deploy_ibp.html). Die dortigen Schritte führen Sie durch die Bereitstellung von Peers in ICP mithilfe der Zertifizierungsstelle von {{site.data.keyword.blockchainfull_notm}} Platform.
 
 ### Konfigurationsdatei
 {: #config-file-template}
@@ -551,7 +551,7 @@ export FABRIC_CA_CLIENT_HOME=$HOME/fabric-ca-client/tlsca-admin
 ```
 {:codeblock}
 
-Führen Sie den folgenden Befehl aus, um sich als Administrator für die TLS-Zertifizierungsstelle einzutragen. Der Befehl ist mit dem Befehl identisch, den Sie zum Eintragen des [CA-Administrators](#enroll-ca-admin) verwendet haben, mit lediglich der Ausnahme, dass Sie hier den TLS-Instanznamen für die Zertifizierungsstelle verwenden, den Sie während der [Konfiguration der Zertifizierungsstelle](CA_deploy_icp.html#icp-ca-configuration-parms) angegeben haben. Achten Sie darauf, in Ihrem geheimen Schlüssel für die Zertifizierungsstelle dieselben Werte für `ca-admin-name` und `ca-admin-password` zu verwenden.
+Führen Sie den folgenden Befehl aus, um sich als Administrator für die TLS-Zertifizierungsstelle einzutragen. Der Befehl ist mit dem Befehl identisch, den Sie zum Eintragen des [CA-Administrators](#enroll-ca-admin) verwendet haben, mit lediglich der Ausnahme, dass Sie hier den TLS-Instanznamen für die Zertifizierungsstelle verwenden, den Sie während der [Konfiguration der Zertifizierungsstelle](/docs/services/blockchain/howto/CA_deploy_icp.html#icp-ca-configuration-parms) angegeben haben. Achten Sie darauf, in Ihrem geheimen Schlüssel für die Zertifizierungsstelle dieselben Werte für `ca-admin-name` und `ca-admin-password` zu verwenden.
 
 ```
 fabric-ca-client enroll -u https://<enroll_id>:<enroll_password>@<ca_url_with_port> --caname <tls_ca_name> --tls.certfiles <ca_tls_cert_path>
@@ -593,7 +593,7 @@ Zum Bereitstellen eines Anordnungsknotens oder Peers müssen Sie einen CSR-Hostn
 
 #### Wert der Proxy-IP-Adresse für den Cluster ermitteln
 
-Falls Sie einen Anordnungsknoten oder Peer in demselben ICP-Cluster bereitstellen wollen, in dem Sie Ihre Zertifizierungsstelle bereitgestellt haben, müssen Sie unbedingt die Rolle eines [Clusteradministrators ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Clusteradministratorrolle und -aktionen") in dem ICP-Cluster besitzen, in dem der Anordnungsknoten bzw. Peer bereitgestellt werden soll. Geben Sie dieselbe Proxy-IP ein, die Sie bei der [Konfiguration der Zertifizierungsstelle](CA_deploy_icp.html#icp-ca-configuration-parms) verwendet haben. Wenn Sie den Anordnungsknoten oder Peer in einem anderen Cluster bereitstellen wollen, können Sie den Wert für die Proxy-IP-Adresse des Clusters über die ICP-Konsole abrufen, indem Sie die folgenden Schritte ausführen:
+Falls Sie einen Anordnungsknoten oder Peer in demselben ICP-Cluster bereitstellen wollen, in dem Sie Ihre Zertifizierungsstelle bereitgestellt haben, müssen Sie unbedingt die Rolle eines [Clusteradministrators ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Clusteradministratorrolle und -aktionen") in dem ICP-Cluster besitzen, in dem der Anordnungsknoten bzw. Peer bereitgestellt werden soll. Geben Sie dieselbe Proxy-IP ein, die Sie bei der [Konfiguration der Zertifizierungsstelle](/docs/services/blockchain/howto/CA_deploy_icp.html#icp-ca-configuration-parms) verwendet haben. Wenn Sie den Anordnungsknoten oder Peer in einem anderen Cluster bereitstellen wollen, können Sie den Wert für die Proxy-IP-Adresse des Clusters über die ICP-Konsole abrufen, indem Sie die folgenden Schritte ausführen:
 
 1. Melden Sie sich bei der ICP-Konsole an. Klicken Sie im linken Navigationsfenster auf **Plattform** und anschließend auf **Knoten**, um die im Cluster definierten Knoten anzuzeigen. 
 2. Klicken Sie auf den Knoten mit der Rolle `Proxy` und kopieren Sie den Wert, der in der Tabelle für die `Host-IP` angegeben ist. 
@@ -675,7 +675,7 @@ Nachdem Sie alle obigen Schritte ausgeführt haben, könnte Ihre aktualisierte K
 ```
 {:codeblock}
 
-Die anderen Felder können leer bleiben. Speichern Sie diese Datei; Sie benötigen sie, wenn Sie einen [Anordnungsknoten](orderer_deploy_icp.html) oder [Peer](peer_deploy_icp.html) bereitstellen.
+Die anderen Felder können leer bleiben. Speichern Sie diese Datei; Sie benötigen sie, wenn Sie einen [Anordnungsknoten](/docs/services/blockchain/howto/orderer_deploy_icp.html) oder [Peer](/docs/services/blockchain/howto/peer_deploy_icp.html) bereitstellen.
 
 ## Membership Service Providers (MSPs)
 {: #msp}
@@ -691,7 +691,7 @@ MSP-Ordner müssen eine definierte Struktur besitzen, damit sie von Fabric-Kompo
 
 Sie können auch einen MSP-Ordner erstellen, auf den vom Fabric-CA-Client mit dem Network Monitor und den Swagger-APIs verwiesen werden kann.
 
-- **cacerts** und **intermediatecerts**: Sie können diese Zertifikate mithilfe der [Swagger-APIs](swagger_apis.html) abrufen, indem Sie eine Anforderung `Get` an die MSP-API absetzen.
+- **cacerts** und **intermediatecerts**: Sie können diese Zertifikate mithilfe der [Swagger-APIs](/docs/services/blockchain/howto/swagger_apis.html) abrufen, indem Sie eine Anforderung `Get` an die MSP-API absetzen.
 - **signCerts** und **keystore**: Sie können diese Zertifikate generieren, indem Sie in der Anzeige "Zertifizierungsstelle" auf die Schaltfläche **Zertifikate generieren** klicken. Daraufhin wird ein Popup-Fenster geöffnet, in dem zwei Zertifikate aufgelistet werden. Kopieren Sie das **Zertifikat** in "signCerts" und den **privaten Schlüssel** in "keystore". Bewahren Sie diese Zertifikate an einem sicheren Ort auf, weil sie nicht auf der Plattform gespeichert werden.
 
 Zahlreiche Fabric-Komponenten enthalten zusätzliche Informationen in ihrem MSP-Ordner. Wenn Sie z. B. mit einem fernen Peer arbeiten, dann werden möglicherweise die folgenden Ordner angezeigt:

@@ -30,7 +30,7 @@ La plataforma de {{site.data.keyword.blockchainfull}} carga mensualmente las tar
 
 *Figura 1. Visión general de los precios de la plataforma de {{site.data.keyword.blockchainfull}}*
 
-La cuota mensual se factura prorrateada por día. Por ejemplo, un miembro (cuota de suscripción asociada de 1.000 $) con dos iguales (la cuota por igual es de 1.000 $ X 2 iguales) pagaría 3.000 $ al mes. Si el mes tiene 30 días, el miembro paga 100 $ (3.000 $/30) al día. Para obtener más información sobre cómo pagar para las redes, consulte [Modalidad de pago](paying_mode.html).
+La cuota mensual se factura prorrateada por día. Por ejemplo, un miembro (cuota de suscripción asociada de 1.000 $) con dos iguales (la cuota por igual es de 1.000 $ X 2 iguales) pagaría 3.000 $ al mes. Si el mes tiene 30 días, el miembro paga 100 $ (3.000 $/30) al día. Para obtener más información sobre cómo pagar para las redes, consulte [Modalidad de pago](/docs/services/blockchain/howto/paying_mode.html).
 
 **El Plan inicial de la plataforma de {{site.data.keyword.blockchainfull_notm}} le ofrece 500 dólares de créditos de prueba** antes de que se le cobren. Para obtener más información, consulte [Precios del Plan inicial](#starter-plan-pricing).
 

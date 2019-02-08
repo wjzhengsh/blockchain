@@ -24,7 +24,7 @@ Le seguenti istruzioni descrivono come installare un peer remoto di {{site.data.
 
 {{site.data.keyword.cloud_notm}} Private è una piattaforma applicativa per lo sviluppo e la gestione di applicazioni in contenitori in loco. {{site.data.keyword.blockchainfull_notm}} Platform Remote Peer on {{site.data.keyword.cloud_notm}} Private è un prodotto {{site.data.keyword.blockchainfull_notm}} che viene fornito con ICP per consentire ai clienti di distribuire i peer nel proprio ambiente locale. Dopo aver installato il grafico Helm del peer remoto, puoi trovarlo sotto forma di applicazione nel catalogo ICP. Il peer remoto per ICP sfrutta i servizi di archiviazione, sicurezza, registrazione e supporto di ICP per la gestione dei peer. Per ulteriori informazioni su ICP, consulta la [documentazione di {{site.data.keyword.cloud_notm}} Private ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0.3/kc_welcome_containers.html "{{site.data.keyword.cloud_notm}} Private - documentazione").
 
-Prima di installare i peer remoti su ICP, esamina le [considerazioni sui peer remoti](remote_peer.html#remote-peer-limitations).
+Prima di installare i peer remoti su ICP, esamina le [considerazioni sui peer remoti](/docs/services/blockchain/howto/remote_peer.html#remote-peer-limitations).
 
 ## Prerequisiti
 {: #prerequisites-icp}
@@ -62,7 +62,7 @@ Prima di installare i peer remoti su ICP, è necessario completare le seguenti p
 
 3. {{site.data.keyword.blockchainfull_notm}} Platform  
 
-  Per utilizzare un peer remoto, devi disporre di un'organizzazione che sia un membro di una rete blockchain ospitata su IBM {{site.data.keyword.blockchainfull_notm}} Platform. Devi utilizzare il Monitoraggio della rete su {{site.data.keyword.cloud_notm}} per accedere alle credenziali di rete e agli endpoint API della tua rete. Se non sei membro di alcuna rete blockchain, devi creare o aderire a una rete. Per ulteriori informazioni, vedi [Creazione di una rete](../get_start.html#creating-a-network) o [Adesione a una rete](../get_start.html#joining-a-network).
+  Per utilizzare un peer remoto, devi disporre di un'organizzazione che sia un membro di una rete blockchain ospitata su IBM {{site.data.keyword.blockchainfull_notm}} Platform. Devi utilizzare il Monitoraggio della rete su {{site.data.keyword.cloud_notm}} per accedere alle credenziali di rete e agli endpoint API della tua rete. Se non sei membro di alcuna rete blockchain, devi creare o aderire a una rete. Per ulteriori informazioni, vedi [Creazione di una rete](/docs/services/blockchain/get_start.html#creating-a-network) o [Adesione a una rete](/docs/services/blockchain/get_start.html#joining-a-network).
 
 ## Importa il grafico Helm in ICP
 
@@ -180,7 +180,7 @@ La seguente tabella elenca i parametri configurabili del grafico di {{site.data.
 | `Segreto di registrazione peer`| Questo è il segreto di registrazione che hai immesso nella schermata "CA (Certificate Authority)" del Monitoraggio della rete di {{site.data.keyword.blockchainfull_notm}} Platform.| nessuno | sì |
 | | | | |
 |**Database peer remoto** | **Tipo di database libro mastro**| | |
-| `Database libro mastro`| Il [database dello stato](../glossary.html#state-database) utilizzato per memorizzare il tuo libro mastro del canale. Il peer remoto deve utilizzare lo stesso database della tua [rete blockchain](../v10_dashboard.html#network-preferences). | nessuno | sì |
+| `Database libro mastro`| Il [database dello stato](/docs/services/blockchain/glossary.html#state-database) utilizzato per memorizzare il tuo libro mastro del canale. Il peer remoto deve utilizzare lo stesso database della tua [rete blockchain](/docs/services/blockchain/v10_dashboard.html#network-preferences). | nessuno | sì |
 | `Immagine CouchDB`| Si applica solo se CouchDB è stato selezionato come database libro mastro. | Compilato automaticamente sul percorso installato, non modificare questo valore. | sì |
 |**Persistenza dati** | Abilita la capacità di rendere persistenti i dati dopo il riavvio o un errore del cluster. Vedi [archiviazione in Kubernetes ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://kubernetes.io/docs/concepts/storage/ "Volumi") per ulteriori informazioni. | | |
 | `Persistenza dati abilitata`| I dati dello stato saranno disponibili al riavvio del contenitore. *Se non verificato, tutti i dati andranno persi in caso di failover o di riavvio del pod.* | verificato | no |
@@ -300,7 +300,7 @@ helm CLI version on your local machine is ahead of helm cli version on your serv
 Error: incompatible versions client[v2.9.1] server[v2.7.3+icp]
 ```
 
-See the [troubleshooting topic](remote_peer_operate_icp.html#icp-troubleshooting) for instructions on resolving this error.
+See the [troubleshooting topic](/docs/services/blockchain/howto/remote_peer_operate_icp.html#icp-troubleshooting) for instructions on resolving this error.
 
 -->
 
@@ -382,13 +382,13 @@ Dopo aver installato il peer remoto, puoi visualizzare il log del peer per verif
 3. Per verificare che il peer remoto possa connettersi alla tua rete {{site.data.keyword.blockchainfull}} Platform, puoi
 eseguire un comando della CLI del peer dall'interno del contenitore peer remoto. Esegui il comando della CLI `peer channel fetch` per recuperare il blocco genesi da un canale:
 
-   1. Se non è già connesso al tuo cluster ICP, segui queste [istruzioni](remote_peer_operate_icp.html#remote-peer-kubectl-configure) per stabilire la connessione e utilizza la CLI dall'interno del contenitore peer.
+   1. Se non è già connesso al tuo cluster ICP, segui queste [istruzioni](/docs/services/blockchain/howto/remote_peer_operate_icp.html#remote-peer-kubectl-configure) per stabilire la connessione e utilizza la CLI dall'interno del contenitore peer.
 
    2. La tua organizzazione deve essere aggiunta a un canale nella rete prima che tu possa recuperare il blocco genesi.
 
-     - Puoi avviare un nuovo canale per il peer remoto. Come iniziatore di canale, puoi includere automaticamente la tua organizzazione durante la [creazione del canale](create_channel.html#creating-a-channel). Tieni presente che devi disporre di almeno un peer su {{site.data.keyword.blockchainfull_notm}} Platform prima di poter creare un canale nel Monitoraggio della rete.  
+     - Puoi avviare un nuovo canale per il peer remoto. Come iniziatore di canale, puoi includere automaticamente la tua organizzazione durante la [creazione del canale](/docs/services/blockchain/howto/create_channel.html#creating-a-channel). Tieni presente che devi disporre di almeno un peer su {{site.data.keyword.blockchainfull_notm}} Platform prima di poter creare un canale nel Monitoraggio della rete.  
 
-     - Un altro membro della rete blockchain può anche aggiungere la tua organizzazione a un canale esistente usando un [aggiornamento del canale](create_channel.html#updating-a-channel). Un membro del canale con i peer su {{site.data.keyword.blockchainfull_notm}} Platform può utilizzare il Monitoraggio della rete per aggiungere la tua organizzazione al canale anche se non ospiti alcun peer sulla piattaforma.
+     - Un altro membro della rete blockchain può anche aggiungere la tua organizzazione a un canale esistente usando un [aggiornamento del canale](/docs/services/blockchain/howto/create_channel.html#updating-a-channel). Un membro del canale con i peer su {{site.data.keyword.blockchainfull_notm}} Platform può utilizzare il Monitoraggio della rete per aggiungere la tua organizzazione al canale anche se non ospiti alcun peer sulla piattaforma.
 
       Il peer remoto carica il proprio certificato di firma durante l'installazione, pertanto dovrai solo sincronizzare il certificato sul canale. Nella schermata "Canali" del Monitoraggio della rete, individua il canale a cui si è unita la tua organizzazione e seleziona **Sincronizza certificato** dall'elenco a discesa sotto l'intestazione **Azione**. Questa azione sincronizza i certificati su tutti i peer nel canale.
 
@@ -461,7 +461,7 @@ eseguire un comando della CLI del peer dall'interno del contenitore peer remoto.
 ## Operazioni successive
 {: #whats-next-icp}
 
-Dopo aver configurato il peer remoto in ICP, devi completare diversi passi operativi prima di poter inviare transazioni e leggere il libro mastro distribuito dalla rete blockchain. Per ulteriori informazioni, vedi [Gestione di un peer remoto](remote_peer_operate_icp.html).
+Dopo aver configurato il peer remoto in ICP, devi completare diversi passi operativi prima di poter inviare transazioni e leggere il libro mastro distribuito dalla rete blockchain. Per ulteriori informazioni, vedi [Gestione di un peer remoto](/docs/services/blockchain/howto/remote_peer_operate_icp.html).
 
 ## Alta disponibilità
 {: #high-availability}
@@ -475,7 +475,7 @@ Completa la seguente procedura per distribuire peer remoti altamente disponibili
 2. Installa il peer più volte sul tuo cluster per distribuire i peer su diversi nodi di lavoro. Il grafico Helm contiene una politica di anti-affinità che si basa sui tuoi ID rete e ID organizzazione. Il cluster ICP rileva se i peer si connettono alla stessa rete dalla stessa organizzazione e tenta di organizzare tali peer su diversi nodi di lavoro.  
   **Nota:** sebbene la politica "preferisca" mettere i peer su diversi nodi di lavoro, non lo impone. Ad esempio, se hai un solo nodo di lavoro, tutti i peer vengono distribuiti su questo stesso nodo.
 
-Se distribuisci almeno due peer, dovrai anche configurare le [applicazioni per l'alta disponibilità](../v10_application.html#ha-app).
+Se distribuisci almeno due peer, dovrai anche configurare le [applicazioni per l'alta disponibilità](/docs/services/blockchain/v10_application.html#ha-app).
 
 ## Considerazioni sulla sicurezza
 {: #icp-security}
@@ -496,14 +496,14 @@ Il piano Enterprise di {{site.data.keyword.blockchainfull}} Platform utilizza la
 {: #icp-data-residency}
 
 La residenza dei dati richiede che l'elaborazione e l'archiviazione di tutti i dati del libro mastro blockchain rimangano all'interno dei confini di un singolo paese.
-Per ulteriori informazioni su come completare la residenza dei dati, vedi [Residenza dei dati](remote_peer.html#data-residency).
+Per ulteriori informazioni su come completare la residenza dei dati, vedi [Residenza dei dati](/docs/services/blockchain/howto/remote_peer.html#data-residency).
 
 ### Gestione delle chiavi
 {: #icp-security-key-management}
 
-La gestione delle chiavi è un aspetto fondamentale della sicurezza dei peer remoti. Se una chiave privata viene compromessa o persa, gli attori ostili potrebbero essere in grado di accedere ai dati e alle funzionalità del tuo peer remoto. Il piano Enterprise di {{site.data.keyword.blockchainfull_notm}} Platform utilizza gli [Hardware Security Module](../glossary.html#hsm) (HSM) per memorizzare le chiavi private della tua rete. HSM è un'appliance fisica che impedisce ad altre parti di accedere alla tua chiave privata.
+La gestione delle chiavi è un aspetto fondamentale della sicurezza dei peer remoti. Se una chiave privata viene compromessa o persa, gli attori ostili potrebbero essere in grado di accedere ai dati e alle funzionalità del tuo peer remoto. Il piano Enterprise di {{site.data.keyword.blockchainfull_notm}} Platform utilizza gli [Hardware Security Module](/docs/services/blockchain/glossary.html#hsm) (HSM) per memorizzare le chiavi private della tua rete. HSM è un'appliance fisica che impedisce ad altre parti di accedere alla tua chiave privata.
 
-Quando distribuisci un peer remoto su ICP, sei responsabile della gestione delle tue chiavi private. Sebbene {{site.data.keyword.blockchainfull_notm}} Platform generi le tue chiavi private, tali chiavi non vengono memorizzate sulla piattaforma. È essenziale assicurarsi di memorizzare le chiavi in un luogo sicuro in modo che non vengano compromesse. Puoi trovare la chiave privata del tuo peer remoto nella cartella keystore dell'MSP del peer, nella directory `/mnt/crypto/peer/peer/msp/keystore/` all'interno del tuo contenitore peer. Per ulteriori informazioni sui certificati all'interno del tuo peer remoto, vedi la sezione [Membership Services Provider](../certificates.html#msp) dell'esercitazione [Gestione dei certificati su {{site.data.keyword.blockchainfull_notm}} Platform](../certificates.html).
+Quando distribuisci un peer remoto su ICP, sei responsabile della gestione delle tue chiavi private. Sebbene {{site.data.keyword.blockchainfull_notm}} Platform generi le tue chiavi private, tali chiavi non vengono memorizzate sulla piattaforma. È essenziale assicurarsi di memorizzare le chiavi in un luogo sicuro in modo che non vengano compromesse. Puoi trovare la chiave privata del tuo peer remoto nella cartella keystore dell'MSP del peer, nella directory `/mnt/crypto/peer/peer/msp/keystore/` all'interno del tuo contenitore peer. Per ulteriori informazioni sui certificati all'interno del tuo peer remoto, vedi la sezione [Membership Services Provider](/docs/services/blockchain/certificates.html#msp) dell'esercitazione [Gestione dei certificati su {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/certificates.html).
 
 Puoi utilizzare Key Escrow per recuperare le chiavi private perse. Questo deve essere eseguito prima della perdita di qualsiasi chiave. Se non è possibile recuperare una chiave privata, devi ottenere nuove chiavi private registrando una nuova identità con la tua Autorità di certificazione. Devi inoltre rimuovere e sostituire il tuo signCert da tutti i canali a cui ti sei unito.
 
@@ -516,12 +516,12 @@ In IBP, quando viene creata una chiave privata, vengono generati due insiemi di 
 
 [Transport Layer Security ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/en/SSFKSJ_7.1.0/com.ibm.mq.doc/sy10660_.htm "Una panoramica dell'handshake SSL o TLS") (TLS) è integrato nel modello di attendibilità di Hyperledger Fabric. Tutti i componenti in {{site.data.keyword.blockchainfull_notm}} Platform utilizzano TLS per autenticarsi e comunicare tra loro. Pertanto, i componenti di rete su {{site.data.keyword.blockchainfull_notm}} Platform devono essere in grado di completare un handshake TLS con i tuoi peer remoti. Ciò implica, tra le altre cose, che devi abilitare il pass-through, utilizzando ad esempio l'elenco elementi consentiti nel firewall web dalle applicazioni client al tuo peer.
 
-Puoi utilizzare il TLS reciproco, che richiede l'autenticazione bidirezionale (server-client) anziché unidirezionale (solo server), per proteggere la comunicazione tra la tua applicazione e le reti piano Enterprise. Puoi utilizzare il Monitoraggio della rete [per abilitare il TLS reciproco](../v10_dashboard.html#mutual-tls) per i peer su {{site.data.keyword.blockchainfull_notm}} Platform. Per abilitare il TLS reciproco sul tuo peer remoto, segui le istruzioni per [abilitare il TLS reciproco per i nodi peer ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.1/enable_tls.html "Protezione della comunicazione con Transport Layer Security") nella documentazione di Hyperledger Fabric. Si consiglia vivamente di abilitare il TLS reciproco per le applicazioni.
+Puoi utilizzare il TLS reciproco, che richiede l'autenticazione bidirezionale (server-client) anziché unidirezionale (solo server), per proteggere la comunicazione tra la tua applicazione e le reti piano Enterprise. Puoi utilizzare il Monitoraggio della rete [per abilitare il TLS reciproco](/docs/services/blockchain/v10_dashboard.html#mutual-tls) per i peer su {{site.data.keyword.blockchainfull_notm}} Platform. Per abilitare il TLS reciproco sul tuo peer remoto, segui le istruzioni per [abilitare il TLS reciproco per i nodi peer ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.1/enable_tls.html "Protezione della comunicazione con Transport Layer Security") nella documentazione di Hyperledger Fabric. Si consiglia vivamente di abilitare il TLS reciproco per le applicazioni.
 
 ### Configurazione di Membership Service Provider
 {: #icp-security-MSP}
 
-I componenti di {{site.data.keyword.blockchainfull_notm}} Platform utilizzano le identità tramite gli MSP (Membership Service Provider). Gli MSP associano i certificati emessi dalle CA ai ruoli di rete e di canale. Per ulteriori informazioni sul funzionamento degli MSP con il peer remoto, vedi [Membership Service Provider (MSP)](../certificates.html#msp).
+I componenti di {{site.data.keyword.blockchainfull_notm}} Platform utilizzano le identità tramite gli MSP (Membership Service Provider). Gli MSP associano i certificati emessi dalle CA ai ruoli di rete e di canale. Per ulteriori informazioni sul funzionamento degli MSP con il peer remoto, vedi [Membership Service Provider (MSP)](/docs/services/blockchain/certificates.html#msp).
 
 ### Sicurezza delle applicazioni
 {: #icp-security-appl}

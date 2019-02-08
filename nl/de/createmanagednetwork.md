@@ -14,14 +14,14 @@ lastupdated: "2017-12-06"
 
 # Verwaltete Kanäle erstellen 
 
-**ACHTUNG:** Bevor Sie ein {{site.data.keyword.blockchainfull}}-Angebot verwenden, lesen Sie die technischen Angaben und Unterstützungsinformationen im Abschnitt [Haftungsausschluss](needtoknow.html).  
+**ACHTUNG:** Bevor Sie ein {{site.data.keyword.blockchainfull}}-Angebot verwenden, lesen Sie die technischen Angaben und Unterstützungsinformationen im Abschnitt [Haftungsausschluss](/docs/services/blockchain/needtoknow.html).  
 {:shortdesc}
 
 Bei einigen Anwendungsfällen - z. B. auf Devisenmärkten mit strikten gesetzlichen Auflagen - kann es erforderlich sein, einem vertrauenswürdigen Dritten die Verantwortung für die Verwaltungsrollen auf den Kanälen zu geben, die normalerweise von verschiedenen Operatoren oder Mitgliedern gehandhabt werden. 
 
 Der Prozess der Einrichtung eines solchen Netzes gleicht im Wesentlichen der Erstellung aller anderen Netze. Der Hauptunterschied besteht darin, dass den Mitgliedern Berechtigungen zugewiesen werden, die bestimmen, wie sie Transaktionen in Kanälen ausführen können.  
 
-Die Schritte zum Erstellen eines Netzes und zum Einladen von Mitgliedern finden Sie hier: [Netz steuern](get_start.html#creating-a-network). 
+Die Schritte zum Erstellen eines Netzes und zum Einladen von Mitgliedern finden Sie hier: [Netz steuern](/docs/services/blockchain/get_start.html#creating-a-network). 
 
 **Hinweis**: In einem realen Beispiel hat der Operator eines solchen Netzes während der Phase "Netz erstellen" mit dem Richtlinieneditor die Möglichkeit, angepasste Chaincodes zu installieren. In diesem Beispiel wird aber von der Standardnetzkonfiguration ausgegangen. 
 
@@ -52,7 +52,7 @@ In einem Netz mit 15 Mitgliedern (14 Banken und Sie als vertrauenswürdiger Drit
 
 Der Kanal wurde erfolgreich erstellt, aber es muss noch Chaincode zugeordnet werden. In einem Kanal, der für Devisentauschgeschäfte vorgesehen ist, setzt dieser Chaincode vermutlich alle drei Mitglieder des Kanals voraus (die beiden Banken und Sie als vertrauenswürdigen Dritten), um **jede** Transaktion zu bewilligen. Dieser Chaincode kann auch geschrieben werden, um einen Datensatz des *Ergebnisses* dieser Transaktion an einen verwalteten "Nur-Lese"-Kanal zu senden, der aus allen Mitgliedern im Netz besteht (mehr dazu später). Bevor ein Chaincode instanziiert werden kann, muss er zuvor auf den Peers der Mitglieder installiert werden. Sobald dies der Fall ist, kann er durch den Kanaloperator (das sind Sie) instanziiert werden.  
 
-Die Vorgehensweise zum Installieren und Instanziieren dieser Art von Chaincode unterscheidet sich nicht von dem Vorgehen bei anderem Chaincode (im Unterschied zur Anzahl der Operatoren, die erforderlich ist, um die Instanziierung zu genehmigen). Also folgen Sie den Anweisungen unter [Chaincode installieren und instanziieren](install_instantiate_chaincode.html.html).
+Die Vorgehensweise zum Installieren und Instanziieren dieser Art von Chaincode unterscheidet sich nicht von dem Vorgehen bei anderem Chaincode (im Unterschied zur Anzahl der Operatoren, die erforderlich ist, um die Instanziierung zu genehmigen). Also folgen Sie den Anweisungen unter [Chaincode installieren und instanziieren](/docs/services/blockchain/install_instantiate_chaincode.html).
 
 # Verwalteter Nur-Lese-Kanal
 

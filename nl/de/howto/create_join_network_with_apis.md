@@ -18,7 +18,7 @@ lastupdated: "2018-08-31"
 ***[Ist diese Seite hilfreich? Teilen Sie uns Ihre Meinung mit.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 
-{{site.data.keyword.blockchainfull}} Platform stellt eine Reihe von REST-APIs bereit, die Sie verwenden können, um ein Blockchain-Netz in {{site.data.keyword.cloud_notm}} zu erstellen oder daran teilzunehmen. Sie können diese APIs mithilfe der [Swagger-Benutzerschnittstelle](swagger_apis.html) testen, die Ihrem Netz zugeordnet ist.
+{{site.data.keyword.blockchainfull}} Platform stellt eine Reihe von REST-APIs bereit, die Sie verwenden können, um ein Blockchain-Netz in {{site.data.keyword.cloud_notm}} zu erstellen oder daran teilzunehmen. Sie können diese APIs mithilfe der [Swagger-Benutzerschnittstelle](/docs/services/blockchain/howto/swagger_apis.html) testen, die Ihrem Netz zugeordnet ist.
 {:shortdesc}
 
 
@@ -134,7 +134,7 @@ Wenn Sie den Enterprise Plan verwenden, müssen Sie zwei Schritte ausführen, um
 
 ## Neue Mitglieder in ein Netz einladen
 
-Nach der Erstellung eines Blockchain-Netzes können Sie andere Mitglieder einladen, am Netz teilzunehmen. Sie müssen die ID des Netzes angeben, in das Sie Mitglieder einladen möchten. Der Basisauthentifizierungsberechtigungsnachweis, der zum Einladen eines Mitglieds erforderlich ist, unterscheidet sich von dem, der in der API **Netz erstellen** verwendet wird. <!--In order to get the basic auth information you will need to follow the same steps in "Retrieving basic auth information for API". --> Sie können den Berechtigungsnachweis zum Einladen eines Mitglieds mithilfe der API **Netzberechtigungsnachweise abrufen** in der [Swagger-Benutzerschnittstelle](swagger_apis.html#retrieving-network-credentials) oder über die Option [Basisauthentifizierungsinformationen für API abrufen](#retrieve-id-token) in Ihrer Serviceinstanz in {{site.data.keyword.cloud_notm}} abrufen.
+Nach der Erstellung eines Blockchain-Netzes können Sie andere Mitglieder einladen, am Netz teilzunehmen. Sie müssen die ID des Netzes angeben, in das Sie Mitglieder einladen möchten. Der Basisauthentifizierungsberechtigungsnachweis, der zum Einladen eines Mitglieds erforderlich ist, unterscheidet sich von dem, der in der API **Netz erstellen** verwendet wird. <!--In order to get the basic auth information you will need to follow the same steps in "Retrieving basic auth information for API". --> Sie können den Berechtigungsnachweis zum Einladen eines Mitglieds mithilfe der API **Netzberechtigungsnachweise abrufen** in der [Swagger-Benutzerschnittstelle](/docs/services/blockchain/howto/swagger_apis.html#retrieving-network-credentials) oder über die Option [Basisauthentifizierungsinformationen für API abrufen](#retrieve-id-token) in Ihrer Serviceinstanz in {{site.data.keyword.cloud_notm}} abrufen.
 
 ```
 /networks/{networkID}/invite

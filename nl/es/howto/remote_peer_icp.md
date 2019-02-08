@@ -24,7 +24,7 @@ En las siguientes instrucciones se describe cómo instalar un igual remoto de la
 
 {{site.data.keyword.cloud_notm}} privado es una plataforma de aplicaciones para desarrollar y gestionar aplicaciones contenerizadas locales. Los iguales remotos de la plataforma {{site.data.keyword.blockchainfull_notm}} en {{site.data.keyword.cloud_notm}} privado constituyen un producto de {{site.data.keyword.blockchainfull_notm}} que se suministra con ICP para que los clientes desplieguen iguales en su entorno local. Después de instalar el diagrama Helm del igual remoto, lo encontrará como aplicación en el catálogo de ICP. El igual remoto para ICP aprovecha los servicios de almacenamiento, seguridad, registro y soporte de ICP para la gestión de iguales. Para obtener más información sobre ICP, consulte la [{{site.data.keyword.cloud_notm}} privado ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0.3/kc_welcome_containers.html "documentación de {{site.data.keyword.cloud_notm}} privado").
 
-Antes de instalar iguales remotos en ICP, revise las [consideraciones sobre iguales remotos](remote_peer.html#remote-peer-limitations).
+Antes de instalar iguales remotos en ICP, revise las [consideraciones sobre iguales remotos](/docs/services/blockchain/howto/remote_peer.html#remote-peer-limitations).
 
 ## Requisitos previos
 {: #prerequisites-icp}
@@ -62,7 +62,7 @@ Antes de instalar iguales remotos en ICP, debe llevar a cabo los siguientes paso
 
 3. Plataforma {{site.data.keyword.blockchainfull_notm}}  
 
-  Para utilizar un igual remoto, debe tener una organización que sea miembro de una red de blockchain alojada en la plataforma {{site.data.keyword.blockchainfull_notm}}. Es necesario utilizar el supervisor de red en {{site.data.keyword.cloud_notm}} para acceder a las credenciales de red y a los puntos finales de API de la red. Si no es miembro de ninguna red blockchain, tiene que crear o unirse a una red. Para obtener más información, consulte [Creación de una red](../get_start.html#creating-a-network) o [Cómo unirse a una red](../get_start.html#joining-a-network).
+  Para utilizar un igual remoto, debe tener una organización que sea miembro de una red de blockchain alojada en la plataforma {{site.data.keyword.blockchainfull_notm}}. Es necesario utilizar el supervisor de red en {{site.data.keyword.cloud_notm}} para acceder a las credenciales de red y a los puntos finales de API de la red. Si no es miembro de ninguna red blockchain, tiene que crear o unirse a una red. Para obtener más información, consulte [Creación de una red](/docs/services/blockchain/get_start.html#creating-a-network) o [Cómo unirse a una red](/docs/services/blockchain/get_start.html#joining-a-network).
 
 ## Importar el diagrama Helm en ICP
 
@@ -178,7 +178,7 @@ En la tabla siguiente se muestran los parámetros configurables del diagrama del
 | `Secreto de inscripción del igual`| Es el secreto de inscripción que ha especificado en la pantalla "Entidad emisora de certificados" del supervisor de red de la plataforma {{site.data.keyword.blockchainfull_notm}}.| ninguno | sí |
 | | | | |
 |**Base de datos de igual remoto** | **Tipo de base de datos de libro mayor**| | |
-| `Base de datos de libro mayor`| La [base de datos de estado](../glossary.html#state-database) utilizada para almacenar el libro mayor del canal. El igual remoto tiene que utilizar la misma base de datos que la [red blockchain](../v10_dashboard.html#network-preferences). | ninguno | sí |
+| `Base de datos de libro mayor`| La [base de datos de estado](/docs/services/blockchain/glossary.html#state-database) utilizada para almacenar el libro mayor del canal. El igual remoto tiene que utilizar la misma base de datos que la [red blockchain](/docs/services/blockchain/v10_dashboard.html#network-preferences). | ninguno | sí |
 | `Imagen de CouchDB`| Solo se aplica si se ha seleccionado CouchDB como base de datos de libro mayor. | Se rellena automáticamente con la vía de acceso instalada, no cambie este valor. | sí |
 |**Persistencia de datos** | Habilita la posibilidad de guardar permanentemente los datos después de que el clúster se reinicie o falle. Consulte [almacenamiento en Kubernetes ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://kubernetes.io/docs/concepts/storage/ "Volúmenes") para obtener más información. | | |
 | `Persistencia de datos habilitada`| Los datos de estado estarán disponibles cuando se reinicie el contenedor. *Si no está marcada esta opción, se perderán todos los datos en el caso de una migración tras error o de un reinicio del pod.* | marcada | no |
@@ -297,7 +297,7 @@ helm CLI version on your local machine is ahead of helm cli version on your serv
 Error: incompatible versions client[v2.9.1] server[v2.7.3+icp]
 ```
 
-See the [troubleshooting topic](remote_peer_operate_icp.html#icp-troubleshooting) for instructions on resolving this error.
+See the [troubleshooting topic](/docs/services/blockchain/howto/remote_peer_operate_icp.html#icp-troubleshooting) for instructions on resolving this error.
 
 -->
 
@@ -378,13 +378,13 @@ Después de instalar el igual remoto, puede ver el registro del igual para compr
 
 3. Para comprobar que el igual remoto se puede conectar a la red de la plataforma {{site.data.keyword.blockchainfull}}, puede ejecutar el mandato de la CLI peer desde dentro del contenedor del igual remoto. Ejecute el mandato de la CLI `peer channel fetch` para capturar el bloque de origen de un canal:
 
-   1. Si aún no ha conectado con el clúster ICP, siga estas [instrucciones](remote_peer_operate_icp.html#remote-peer-kubectl-configure) para conectar con el mismo y utilizar la cli desde dentro del contenedor del igual.
+   1. Si aún no ha conectado con el clúster ICP, siga estas [instrucciones](/docs/services/blockchain/howto/remote_peer_operate_icp.html#remote-peer-kubectl-configure) para conectar con el mismo y utilizar la cli desde dentro del contenedor del igual.
 
    2. Es necesario añadir la organización a un canal de la red para poder capturar el bloque de origen.
 
-     - Puede iniciar un nuevo canal para el igual remoto. Como iniciador de canal, puede incluir automáticamente su organización durante la [creación del canal](create_channel.html#creating-a-channel). Tenga en cuenta que debe tener al menos un igual en la plataforma {{site.data.keyword.blockchainfull_notm}} para poder crear un canal en el supervisor de red.   
+     - Puede iniciar un nuevo canal para el igual remoto. Como iniciador de canal, puede incluir automáticamente su organización durante la [creación del canal](/docs/services/blockchain/howto/create_channel.html#creating-a-channel). Tenga en cuenta que debe tener al menos un igual en la plataforma {{site.data.keyword.blockchainfull_notm}} para poder crear un canal en el supervisor de red.   
 
-     - Otro miembro de la red blockchain también puede añadir su organización a un canal existente mediante una [actualización de canal](create_channel.html#updating-a-channel). Un miembro del canal con iguales en la plataforma {{site.data.keyword.blockchainfull_notm}} puede utilizar el supervisor de red para añadir su organización al canal aunque no aloje ningún igual en la plataforma.
+     - Otro miembro de la red blockchain también puede añadir su organización a un canal existente mediante una [actualización de canal](/docs/services/blockchain/howto/create_channel.html#updating-a-channel). Un miembro del canal con iguales en la plataforma {{site.data.keyword.blockchainfull_notm}} puede utilizar el supervisor de red para añadir su organización al canal aunque no aloje ningún igual en la plataforma.
 
       El igual remoto carga el certificado de firma durante la instalación, de modo que solo necesita sincronizar el certificado con el canal. En la pantalla "Canales" del supervisor de red, localice el canal al que se ha unido su organización y seleccione **Sincronizar certificado** en la lista desplegable bajo la cabecera **Acción**. Esta acción sincroniza los certificados entre todos los iguales del canal. 
 
@@ -457,7 +457,7 @@ Después de instalar el igual remoto, puede ver el registro del igual para compr
 ## Qué hacer a continuación
 {: #whats-next-icp}
 
-Después de configurar el igual remoto en ICP, puede completar varios pasos operativos antes para enviar transacciones y leer el libro mayor distribuido de la red blockchain. Para obtener más información, consulte [Funcionamiento de un igual remoto](remote_peer_operate_icp.html).
+Después de configurar el igual remoto en ICP, puede completar varios pasos operativos antes para enviar transacciones y leer el libro mayor distribuido de la red blockchain. Para obtener más información, consulte [Funcionamiento de un igual remoto](/docs/services/blockchain/howto/remote_peer_operate_icp.html).
 
 ## Alta disponibilidad
 {: #high-availability}
@@ -471,7 +471,7 @@ Siga estos pasos para desplegar iguales remotos de alta disponibilidad en ICP:
 2. Instale el igual varias veces en el clúster para desplegar iguales en nodos trabajadores diferentes. El diagrama Helm contiene una política antiafinidad que se basa en el ID de red y el ID de organización. El clúster de ICP detecta si sus iguales se conectan a la misma red desde la misma organización e intenta organizar a esos iguales en distintos nodos trabajadores.  
 **Nota:**  aunque la política "prefiere" colocar los iguales en distintos nodos trabajadores, no lo impone. Por ejemplo, si solo tiene un nodo trabajador, todos los iguales se despliegan en este mismo nodo.
 
-Si despliega al menos dos iguales, también tiene que configurar sus [aplicaciones para alta disponibilidad](../v10_application.html#ha-app).
+Si despliega al menos dos iguales, también tiene que configurar sus [aplicaciones para alta disponibilidad](/docs/services/blockchain/v10_application.html#ha-app).
 
 ## Consideraciones sobre seguridad
 {: #icp-security}
@@ -492,15 +492,15 @@ El plan de empresa de la plataforma {{site.data.keyword.blockchainfull}} utiliza
 {: #icp-data-residency}
 
 La residencia de los datos impone que el proceso y el almacenamiento de todos los datos del libro mayor de blockchain permanezcan dentro de los límites de un solo país.
-Para obtener más información sobre cómo se puede conseguir la residencia de los datos, consulte [Residencia de los datos](remote_peer.html#data-residency).
+Para obtener más información sobre cómo se puede conseguir la residencia de los datos, consulte [Residencia de los datos](/docs/services/blockchain/howto/remote_peer.html#data-residency).
 
 ### Gestión de claves
 {: #icp-security-key-management}
 
-La gestión de claves es un aspecto crítico de la seguridad del igual remoto. Si una clave privada se ve comprometida o se pierde, es posible que usuarios hostiles accedan a los datos y a las funciones del igual remoto. El plan de empresa de la plataforma {{site.data.keyword.blockchainfull_notm}} utiliza [Módulos de seguridad de hardware](../glossary.html#hsm) (HSM) para almacenar las claves privadas de la red. HSM es un dispositivo físico que evita que otro accedan a su clave privada. 
+La gestión de claves es un aspecto crítico de la seguridad del igual remoto. Si una clave privada se ve comprometida o se pierde, es posible que usuarios hostiles accedan a los datos y a las funciones del igual remoto. El plan de empresa de la plataforma {{site.data.keyword.blockchainfull_notm}} utiliza [Módulos de seguridad de hardware](/docs/services/blockchain/glossary.html#hsm) (HSM) para almacenar las claves privadas de la red. HSM es un dispositivo físico que evita que otro accedan a su clave privada. 
 
 Cuando despliega un igual remoto en ICP, es el responsable de gestionar las claves privadas. Aunque la plataforma {{site.data.keyword.blockchainfull_notm}} genera sus claves privadas, dichas claves no se almacenan en la plataforma. Resulta esencial asegurarse de que las claves se almacenan
-en una ubicación segura para que no se vean comprometidas. Encontrará la clave privada de su igual remoto en la carpeta de almacén de claves de MSP del igual, en el directorio `/mnt/crypto/peer/peer/msp/keystore/` dentro del contenedor del igual. Para obtener más información sobre los certificados del igual remoto, consulte la sección sobre [Proveedor de servicios de pertenencia](../certificates.html#msp) de la guía de aprendizaje sobre [Gestión de certificados de la plataforma {{site.data.keyword.blockchainfull_notm}}](../certificates.html).
+en una ubicación segura para que no se vean comprometidas. Encontrará la clave privada de su igual remoto en la carpeta de almacén de claves de MSP del igual, en el directorio `/mnt/crypto/peer/peer/msp/keystore/` dentro del contenedor del igual. Para obtener más información sobre los certificados del igual remoto, consulte la sección sobre [Proveedor de servicios de pertenencia](/docs/services/blockchain/certificates.html#msp) de la guía de aprendizaje sobre [Gestión de certificados de la plataforma {{site.data.keyword.blockchainfull_notm}}](/docs/services/blockchain/certificates.html).
 
 Puede utilizar Key Escrow para recuperar claves privadas perdidas. Esto hay que hacerlo antes de perder ninguna clave. Si una clave privada no se puede recuperar, tiene que obtener nuevas claves privadas registrando una nueva identidad con la entidad emisora de certificados. También debe eliminar y sustituir signCert de cualquier canal al que se haya unido.
 
@@ -513,12 +513,12 @@ En IBP, cuando se crea una clave privadas, se generan dos conjuntos de materiale
 
 [La seguridad de capa de transporte ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/en/SSFKSJ_7.1.0/com.ibm.mq.doc/sy10660_.htm "Una visión general del reconocimiento SSL o TLS") (TLS) está integrada en el modelo de confianza de Hyperledger Fabric. Todos los componentes de la plataforma {{site.data.keyword.blockchainfull_notm}} utilizan TLS para autenticarse y comunicarse entre sí. Por lo tanto, los componentes de red de la plataforma {{site.data.keyword.blockchainfull_notm}} deben ser capaces de completar un reconocimiento de TLS con sus iguales remotos. Una implicación de este enfoque es que necesitas activar el paso a través, usando por ejemplo una lista blanca, en el cortafuego de web entre las apps cliente a su igual.
 
-Puede utilizar TLS mutuo, que requiere dos sentidos (servidor-cliente) en lugar de una autenticación de un solo sentido (servidor), para proteger la comunicación entre la aplicación y las redes del plan de empresa. Puede utilizar el supervisor de red [para habilitar el TLS mutuo](../v10_dashboard.html#mutual-tls) para los iguales de la plataforma {{site.data.keyword.blockchainfull_notm}}. Para habilitar TLS mutuo en el igual remoto, siga las instrucciones para [habilitar el TLS mutuo para los nodos iguales ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.1/enable_tls.html "Protección de la comunicación con seguridad de capa de transporte") de la documentación de Hyperledger Fabric. Se recomienda encarecidamente habilitar el TLS mutuo para las aplicaciones.
+Puede utilizar TLS mutuo, que requiere dos sentidos (servidor-cliente) en lugar de una autenticación de un solo sentido (servidor), para proteger la comunicación entre la aplicación y las redes del plan de empresa. Puede utilizar el supervisor de red [para habilitar el TLS mutuo](/docs/services/blockchain/v10_dashboard.html#mutual-tls) para los iguales de la plataforma {{site.data.keyword.blockchainfull_notm}}. Para habilitar TLS mutuo en el igual remoto, siga las instrucciones para [habilitar el TLS mutuo para los nodos iguales ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.1/enable_tls.html "Protección de la comunicación con seguridad de capa de transporte") de la documentación de Hyperledger Fabric. Se recomienda encarecidamente habilitar el TLS mutuo para las aplicaciones.
 
 ### Configuración del proveedor de servicios de pertenencia
 {: #icp-security-MSP}
 
-Los componentes de la plataforma {{site.data.keyword.blockchainfull_notm}} consumen identidades a través de proveedores de servicios de pertenencia (MSP). Los MSP asocian los certificados que emiten las entidades emisoras de certificados con roles de red y de canal. Para obtener más información sobre cómo funcionan los MSP con el igual remoto, consulte [Proveedores de servicios de pertenencia (MSP)](../certificates.html#msp).
+Los componentes de la plataforma {{site.data.keyword.blockchainfull_notm}} consumen identidades a través de proveedores de servicios de pertenencia (MSP). Los MSP asocian los certificados que emiten las entidades emisoras de certificados con roles de red y de canal. Para obtener más información sobre cómo funcionan los MSP con el igual remoto, consulte [Proveedores de servicios de pertenencia (MSP)](/docs/services/blockchain/certificates.html#msp).
 
 ### Seguridad de las aplicaciones
 {: #icp-security-appl}

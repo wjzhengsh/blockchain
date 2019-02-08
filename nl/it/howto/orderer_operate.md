@@ -148,7 +148,7 @@ Devi scaricare il tuo certificato TLS dell'ordinante e trasmetterlo ai tuoi coma
 
 Passa alla directory in cui viene generata la cartella MSP di gestione dell'ordinante. A seconda di come hai seguito le istruzioni di esempio in questa documentazione o di quanti componenti stai distribuendo, puoi trovare la cartella MSP in `$HOME/fabric-ca-client/orderer-admin/msp` o `$HOME/fabric-ca-client/peer-admin/msp`
 
-Prima di poter utilizzare l'ordinante, devi eseguire alcune operazioni di gestione sui certificati sulla tua macchina locale. Devi anche assicurarti di poter accedere ai certificati TLS dall'ordinante. Per ulteriori informazioni sui certificati da usare, vedi [Membership Service Provider (MSP)](CA_operate.html#msp) in [Gestione di una CA (Certificate Authority - Autorità di certificazione) su {{site.data.keyword.cloud_notm}} Private](CA_operate.html).
+Prima di poter utilizzare l'ordinante, devi eseguire alcune operazioni di gestione sui certificati sulla tua macchina locale. Devi anche assicurarti di poter accedere ai certificati TLS dall'ordinante. Per ulteriori informazioni sui certificati da usare, vedi [Membership Service Provider (MSP)](/docs/services/blockchain/howto/CA_operate.html#msp) in [Gestione di una CA (Certificate Authority - Autorità di certificazione) su {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/howto/CA_operate.html).
 
 1. Sposta il signCert del tuo amministratore ordinante in una nuova cartella denominata `admincerts`: 
 
@@ -220,9 +220,9 @@ Tieni presente che puoi aggiungere un'organizzazione a un canale senza aderire p
 
 Il seguente elenco mostra i passi e le attività generali che saranno eseguite da serie diverse di organizzazioni del tuo consorzio.
 
-1. Ogni organizzazione per aderire al consorzio deve [preparare una definizione dell'organizzazione](peer_operate_icp.html#organization-definition).
+1. Ogni organizzazione per aderire al consorzio deve [preparare una definizione dell'organizzazione](/docs/services/blockchain/howto/peer_operate_icp.html#organization-definition).
 2. L'amministratore dell'organizzazione ordinante [forma il consorzio](#consortium) aggiungendo delle organizzazioni al canale del sistema ordinante.
-3. Ogni organizzazione del consorzio può [creare un nuovo canale](peer_operate_icp.html#peer-icp-channeltx) preparando una transazione di configurazione del canale.
+3. Ogni organizzazione del consorzio può [creare un nuovo canale](/docs/services/blockchain/howto/peer_operate_icp.html#peer-icp-channeltx) preparando una transazione di configurazione del canale.
 
 ## Ottenimento degli strumenti Fabric
 {: #get-fabric-tools}
@@ -268,7 +268,7 @@ Devi scaricare i seguenti strumenti Hyperledger Fabric per aggiornare il canale 
 ## Creazione di una definizione dell'organizzazione
 {: #org-definition}
 
-La **definizione** di un'organizzazione contiene il nome dell'organizzazione (ID MSP) e i certificati pertinenti. Il canale del sistema e i canali dell'applicazione utilizzeranno questa definizione per includere la tua organizzazione nelle politiche che controllano la creazione, gli aggiornamenti e l'approvazione della transazione del canale. Ogni organizzazione che vuole aderire al consorzio deve completare questo passo. Per ulteriori informazioni, consulta [preparazione di una definizione di organizzazione](peer_operate_icp.html#organization-definition).
+La **definizione** di un'organizzazione contiene il nome dell'organizzazione (ID MSP) e i certificati pertinenti. Il canale del sistema e i canali dell'applicazione utilizzeranno questa definizione per includere la tua organizzazione nelle politiche che controllano la creazione, gli aggiornamenti e l'approvazione della transazione del canale. Ogni organizzazione che vuole aderire al consorzio deve completare questo passo. Per ulteriori informazioni, consulta [preparazione di una definizione di organizzazione](/docs/services/blockchain/howto/peer_operate_icp.html#organization-definition).
 
 ## Formazione del consorzio 
 {: #consortium}
@@ -280,7 +280,7 @@ Richiama il flusso di livello superiore per formare un consorzio:
 
 ### Ottenimento delle definizioni dell'organizzazione
 
-L'ordinante deve ricevere le [definizioni dell'organizzazione](peer_operate_icp.html#organization-definition) dai membri che vogliono aderire al consorzio. Questa operazione deve essere completata in un'operazione fuori banda con degli altri membri che ti inviano i file JSON che includono i loro ID MSP e il materiale di crittografia. Come riferimento per i seguenti comandi, assumiamo che hai creato una cartella denominata `org-definitions` e posizionato tutti i file pertinenti in tale directory.
+L'ordinante deve ricevere le [definizioni dell'organizzazione](/docs/services/blockchain/howto/peer_operate_icp.html#organization-definition) dai membri che vogliono aderire al consorzio. Questa operazione deve essere completata in un'operazione fuori banda con degli altri membri che ti inviano i file JSON che includono i loro ID MSP e il materiale di crittografia. Come riferimento per i seguenti comandi, assumiamo che hai creato una cartella denominata `org-definitions` e posizionato tutti i file pertinenti in tale directory.
 
 ### Recupero del blocco di genesi del canale del sistema
 
@@ -377,7 +377,7 @@ Lo [strumento Fabric](#get-fabric-tools) `configtxtlator` scaricato, traduce il 
 
 Queste istruzioni seguono il flusso generale dell'esercitazione di aggiornamento del canale circa la [conversione del blocco nel formato JSON]( https://hyperledger-fabric.readthedocs.io/en/release-1.2/channel_update_tutorial.html#convert-the-configuration-to-json-and-trim-it-down). Devi apportare alcune modifiche ai comandi nell'esercitazione per tener conto del fatto che stai aggiornando il canale del sistema ordinante invece di un canale dell'applicazione. Puoi visitare l'esercitazione per ulteriori dettagli su questo processo. Questa sezione ti fornisce semplicemente i comandi.
 
-1. Copia il file JSON della definizione dell'organizzazione dalla cartella in cui hai [creato la tua organizzazione](peer_operate_icp.html#organization-definition) nella tua cartella `configupdate`. Nel seguente comando di esempio, il file JSON della definizione dell'organizzazione è `org1definition.json`:
+1. Copia il file JSON della definizione dell'organizzazione dalla cartella in cui hai [creato la tua organizzazione](/docs/services/blockchain/howto/peer_operate_icp.html#organization-definition) nella tua cartella `configupdate`. Nel seguente comando di esempio, il file JSON della definizione dell'organizzazione è `org1definition.json`:
 
    ```
    cp <path_to_config_folder>/org1definition.json $HOME/fabric-ca-client/org-definitions/configupdate
@@ -393,7 +393,7 @@ Queste istruzioni seguono il flusso generale dell'esercitazione di aggiornamento
   ```
   {:codeblock}
 
-3. Immetti il seguente comando per aggiungere il materiale di crittografia di un'organizzazione alla configurazione del consorzio. Sostituisci <NEWORGMSP> con l'ID MSP dell'organizzazione per l'[organizzazione che hai creato](peer_operate_icp.html#organization-definition).
+3. Immetti il seguente comando per aggiungere il materiale di crittografia di un'organizzazione alla configurazione del consorzio. Sostituisci <NEWORGMSP> con l'ID MSP dell'organizzazione per l'[organizzazione che hai creato](/docs/services/blockchain/howto/peer_operate_icp.html#organization-definition).
 
   ```
   jq -s '.[0] * {"channel_group":{"groups":{"Consortiums":{"groups":{"SampleConsortium":{"groups": {"<NEWORGMSP>":.[1]}}}}}}}' config.json ./orgdefinition.json > modified_config.json

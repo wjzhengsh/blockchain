@@ -42,7 +42,7 @@ Si vous utilisez VSCode, une extension VSCode Hyperledger Composer est disponibl
 
 ## Etape 1 : Installer les outils de ligne de commande
 
-Les outils de ligne de commande incluent **composer-cli**, module de ligne de commande principal d'{{site.data.keyword.blockchainfull_notm}} Platform: Develop. Les modules **generator-hyperledger-composer**, **composer-rest-server** et **Yeoman** sont utilisés pour générer des réseaux d'entreprise, des serveur REST spécifiques et des applications Angular. La version que vous installez dépend de la version d'Hyperledger Fabric exécutée par votre plan Starter ou Enterprise. Pour connaître votre version Fabric, ouvriez la [fenêtre Préférences réseau](../v10_dashboard.html#network-preferences) dans votre Moniteur réseau.
+Les outils de ligne de commande incluent **composer-cli**, module de ligne de commande principal d'{{site.data.keyword.blockchainfull_notm}} Platform: Develop. Les modules **generator-hyperledger-composer**, **composer-rest-server** et **Yeoman** sont utilisés pour générer des réseaux d'entreprise, des serveur REST spécifiques et des applications Angular. La version que vous installez dépend de la version d'Hyperledger Fabric exécutée par votre plan Starter ou Enterprise. Pour connaître votre version Fabric, ouvriez la [fenêtre Préférences réseau](/docs/services/blockchain/v10_dashboard.html#network-preferences) dans votre Moniteur réseau.
 
 1. Pour une utilisation avec de nouvelles instances de plan Starter exécutant Hyperledger Fabric version 1.2.1, installez **composer-cli** à l'aide de la commande suivante :
 

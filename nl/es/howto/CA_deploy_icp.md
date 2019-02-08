@@ -17,10 +17,10 @@ lastupdated: "2018-12-07"
 
 ***[¿Le resulta útil esta página? Indíquenos su opinión.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
-Tras importar el diagrama de Helm de la plataforma {{site.data.keyword.blockchainfull}} en {{site.data.keyword.cloud_notm}} privado (ICP), puede desplegar los componentes individuales. La entidad emisora de certificados (CA) es la raíz de confianza de la organización y le permite generar credenciales para los demás componentes que vaya a desplegar. Como consecuencia, debe desplegar una CA antes de desplegar los demás componentes. Cada organización de una red blockchain multinube debe desplegar su propia CA.  Para obtener más información sobre las CA y qué papel desempeñan en una red blockchain, consulte [Entidades emisoras de certificados](../blockchain_component_overview.html#ca).
+Tras importar el diagrama de Helm de la plataforma {{site.data.keyword.blockchainfull}} en {{site.data.keyword.cloud_notm}} privado (ICP), puede desplegar los componentes individuales. La entidad emisora de certificados (CA) es la raíz de confianza de la organización y le permite generar credenciales para los demás componentes que vaya a desplegar. Como consecuencia, debe desplegar una CA antes de desplegar los demás componentes. Cada organización de una red blockchain multinube debe desplegar su propia CA.  Para obtener más información sobre las CA y qué papel desempeñan en una red blockchain, consulte [Entidades emisoras de certificados](/docs/services/blockchain/blockchain_component_overview.html#ca).
 {:shortdesc}
 
-Antes de desplegar una entidad emisora de certificados, revise las [Consideraciones y limitaciones](../ibp-for-icp-about.html#ibp-icp-considerations).
+Antes de desplegar una entidad emisora de certificados, revise las [Consideraciones y limitaciones](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-considerations).
 
 ## Recursos necesarios
 {: #ca-resources-required}
@@ -54,8 +54,8 @@ Si no utiliza el suministro dinámico, deberán crearse [volúmenes persistentes
 ## Requisitos previos para desplegar una CA
 {: #prerequisites-ca-icp}
 
-1. Para poder instalar una CA en ICP, primero debe [instalar ICP](../ICP_setup.html) e
-[instalar el diagrama de Helm de la plataforma {{site.data.keyword.blockchainfull_notm}}](helm_install_icp.html).
+1. Para poder instalar una CA en ICP, primero debe [instalar ICP](/docs/services/blockchain/ICP_setup.html) e
+[instalar el diagrama de Helm de la plataforma {{site.data.keyword.blockchainfull_notm}}](/docs/services/blockchain/howto/helm_install_icp.html).
 
 2. Si utiliza Community Edition y desea ejecutar este diagrama de Helm en un clúster de ICP sin conexión a Internet, debe crear archivados en una máquina conectada a Internet para poder instalar los archivados en el clúster de ICP. Para obtener más información, consulte
 [Adición de aplicaciones destacadas a clústeres sin conexión a Internet
@@ -222,7 +222,7 @@ Tras completar los parámetros de configuración y pulsar el botón **Instalar**
 **Cargas de trabajo** y, a continuación, **Releases de Helm**.
 
 Si se desplaza hacia abajo hasta la sección `Notas`, puede encontrar información importante que podrá utilizar para
-[trabajar con la CA](CA_operate.html#ca-operate).
+[trabajar con la CA](/docs/services/blockchain/howto/CA_operate.html#ca-operate).
 
 Tras instalar la CA de la plataforma {{site.data.keyword.blockchainfull_notm}} en ICP, se crea un mapa de configuración con los valores predeterminados de las variables de entorno. A continuación, puede cambiar o añadir variables de entorno para el servidor de CA con el fin de configurar su comportamiento. Para obtener más información sobre los parámetros de configuración del servidor de CA, consulte
 [la documentación del servidor de CA de Fabric ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric-ca.readthedocs.io/en/latest/users-guide.html#fabric-ca-server "Servidor de CA de Fabric").
@@ -233,11 +233,11 @@ Tras configurar el mapa de configuración, debe reiniciar el servidor de CA para
 {: #ca-deploy-view-logs}
 
 Los registros de componentes se pueden visualizar desde la línea de mandatos utilizando los
-[`mandatos de la CLI kubectl`](CA_operate.html#ca-kubectl-configure) o a través de
+[`mandatos de la CLI kubectl`](/docs/services/blockchain/howto/CA_operate.html#ca-kubectl-configure) o a través de
 [Kibana ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.elastic.co/products/kibana "Su ventana en Elastic Search"), que se incluye en el clúster de ICP. Para obtener más información, consulte estas
-[instrucciones para acceder a los registros](CA_operate.html#ca-operate-view-logs).
+[instrucciones para acceder a los registros](/docs/services/blockchain/howto/CA_operate.html#ca-operate-view-logs).
 
 ## Funcionamiento de la CA
 {: #operate-ca}
 
-La CA será la raíz de confianza de la organización. Debe utilizar la CA para generar certificados para los demás componentes.  Como consecuencia, antes de desplegar un clasificador o un igual, debe [configurar la CA y realizar varios pasos operativos](CA_operate.html)
+La CA será la raíz de confianza de la organización. Debe utilizar la CA para generar certificados para los demás componentes.  Como consecuencia, antes de desplegar un clasificador o un igual, debe [configurar la CA y realizar varios pasos operativos](/docs/services/blockchain/howto/CA_operate.html)

@@ -25,12 +25,12 @@ Die Anweisungen in diesem Abschnitt beschreiben, wie Sie mit einer Schnelleinsti
 
 Weitere Informationen zu AWS finden Sie im Dokument mit der [Übersicht über AWS-Services ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://d1.awsstatic.com/whitepapers/aws-overview.pdf "Overview of AWS Services").
 
-Lesen Sie vor der Bereitstellung von Peers von {{site.data.keyword.blockchainfull_notm}} Platform for AWS die [Hinweise zu Peers](remote_peer.html#remote-peer-limitations).
+Lesen Sie vor der Bereitstellung von Peers von {{site.data.keyword.blockchainfull_notm}} Platform for AWS die [Hinweise zu Peers](/docs/services/blockchain/howto/remote_peer.html#remote-peer-limitations).
 
 ## Voraussetzungen
 {: #prerequisites-aws}
 
-Zur Verwendung eines Peers von {{site.data.keyword.blockchainfull_notm}} Platform for AWS (nachfolgend kurz "Peer" genannt) benötigen Sie eine Organisation, die Mitglied eines unter IBM Blockchain Platform gehosteten Blockchain-Netzes ist. Sie müssen den Network Monitor unter IBM Cloud verwenden, um auf die Netzberechtigungsnachweise und die API-Endpunkte Ihres Netzes zugreifen zu können. Wenn Sie nicht Mitglied eines Blockchain-Netzes sind, müssen Sie ein Netz erstellen oder einem Netz beitreten. Weitere Informationen hierzu finden Sie im Abschnitt [Netz erstellen](../get_start.html#creating-a-network) oder [Am Netz teilnehmen](../get_start.html#joining-a-network).
+Zur Verwendung eines Peers von {{site.data.keyword.blockchainfull_notm}} Platform for AWS (nachfolgend kurz "Peer" genannt) benötigen Sie eine Organisation, die Mitglied eines unter IBM Blockchain Platform gehosteten Blockchain-Netzes ist. Sie müssen den Network Monitor unter IBM Cloud verwenden, um auf die Netzberechtigungsnachweise und die API-Endpunkte Ihres Netzes zugreifen zu können. Wenn Sie nicht Mitglied eines Blockchain-Netzes sind, müssen Sie ein Netz erstellen oder einem Netz beitreten. Weitere Informationen hierzu finden Sie im Abschnitt [Netz erstellen](/docs/services/blockchain/get_start.html#creating-a-network) oder [Am Netz teilnehmen](/docs/services/blockchain/get_start.html#joining-a-network).
 
 Der standardmäßige VPC-Instanztyp für den Peer ist `m4.xlarge`. Sie sollten den ausgewählten Instanztyp anhand Ihres CPU-, Hauptspeicher- und Speicherbedarfs optimieren. Für den Peer ist mindestens Folgendes erforderlich:  
 -	2 CPUs
@@ -261,9 +261,9 @@ Um zu prüfen, ob die Peerverbindung zu Ihrem {{site.data.keyword.blockchainfull
 
 2. Ihre Organisation muss zu einem Kanal im Netz hinzugefügt werden, bevor Sie den Genesis-Block abrufen können.
 
-  - Sie können einen neuen Kanal für den Peer starten. Als Kanalinitiator können Sie Ihre Organisation während der [Kanalerstellung](create_channel.html#creating-a-channel) automatisch einbinden.
+  - Sie können einen neuen Kanal für den Peer starten. Als Kanalinitiator können Sie Ihre Organisation während der [Kanalerstellung](/docs/services/blockchain/howto/create_channel.html#creating-a-channel) automatisch einbinden.
 
-  - Ein anderes Mitglied des Blockchain-Netzes kann Ihre Organisation ebenfalls zu einem vorhandenen Kanal hinzufügen, indem es eine [Kanalaktualisierung](create_channel.html#updating-a-channel) durchführt.
+  - Ein anderes Mitglied des Blockchain-Netzes kann Ihre Organisation ebenfalls zu einem vorhandenen Kanal hinzufügen, indem es eine [Kanalaktualisierung](/docs/services/blockchain/howto/create_channel.html#updating-a-channel) durchführt.
 
   - Nachdem Ihre Organisation zu einem Kanal hinzugefügt wurde, müssen Sie das Signierzertifikat Ihres Peers zu dem Kanal hinzufügen. Der Peer lädt sein Signierzertifikat während der Installation hoch, sodass Sie das Zertifikat lediglich mit dem Kanal synchronisieren müssen. Suchen Sie in der Anzeige "Kanäle" des Network Monitor nach dem Kanal, dem Ihre Organisation beigetreten ist, und wählen Sie in der Dropdown-Liste unter der Überschrift **Aktion** die Option **Zertifikat synchronisieren** aus. Durch diese Aktion werden die Zertifikate für alle Peers auf dem Kanal synchronisiert.
 
@@ -338,12 +338,12 @@ Um zu prüfen, ob die Peerverbindung zu Ihrem {{site.data.keyword.blockchainfull
 ## Nächste Schritte
 {: #whats-next-aws}
 
-Nachdem Sie nun den Peer in AWS eingerichtet haben, können Sie verschiedene operative Schritte ausführen, bevor Sie Transaktionen an das Blockchain-Netz übergeben und das verteilte Ledger aus dem Blockchain-Netz lesen können. Weitere Informationen finden Sie unter [Peer in AWS betreiben](remote_peer_operate_aws.html#remote-peer-operate-aws).
+Nachdem Sie nun den Peer in AWS eingerichtet haben, können Sie verschiedene operative Schritte ausführen, bevor Sie Transaktionen an das Blockchain-Netz übergeben und das verteilte Ledger aus dem Blockchain-Netz lesen können. Weitere Informationen finden Sie unter [Peer in AWS betreiben](/docs/services/blockchain/howto/remote_peer_operate_aws.html#remote-peer-operate-aws).
 
 ## Hochverfügbarkeit
 {: #aws-high-availability}
 
-Zur Unterstützung der Hochverfügbarkeit stellt die Schnelleinstiegsvorlage standardmäßig zwei Instanzen des Peers in zwei verschiedenen Verfügbarkeitszonen bereit. Zur Nutzung dieser Unterstützung für die Hochverfügbarkeit müssen Sie auch Ihre [Clientanwendungen für die Hochverfügbarkeit](../v10_application.html#ha-app) konfigurieren.
+Zur Unterstützung der Hochverfügbarkeit stellt die Schnelleinstiegsvorlage standardmäßig zwei Instanzen des Peers in zwei verschiedenen Verfügbarkeitszonen bereit. Zur Nutzung dieser Unterstützung für die Hochverfügbarkeit müssen Sie auch Ihre [Clientanwendungen für die Hochverfügbarkeit](/docs/services/blockchain/v10_application.html#ha-app) konfigurieren.
 
 ## Hinweise zur Sicherheit
 {: #remote-peer-aws-security}
@@ -381,14 +381,14 @@ Die Daten in Ihrer Statusdatenbank werden nicht verschlüsselt; hierbei ist es o
 #### Datenspeicherort
 {: #aws-security-data-residency}
 
-Für den Datenspeicherort ist es erforderlich, dass die Verarbeitung und Speicherung aller Blockchain-Ledgerdaten innerhalb der Grenzen eines bestimmten Landes stattfinden. Weitere Details dazu, wie dies erreicht werden kann, finden Sie [hier](remote_peer.html#data-residency).
+Für den Datenspeicherort ist es erforderlich, dass die Verarbeitung und Speicherung aller Blockchain-Ledgerdaten innerhalb der Grenzen eines bestimmten Landes stattfinden. Weitere Details dazu, wie dies erreicht werden kann, finden Sie [hier](/docs/services/blockchain/howto/remote_peer.html#data-residency).
 
 #### Schlüsselmanagement
 {: #aws-security-key-management}
 
-Das Schlüsselmanagement stellt einen kritischen Aspekt für die Peersicherheit dar. Wenn ein privater Schlüssel manipuliert wird oder verloren geht, dann können feindliche Akteure möglicherweise auf Daten und Funktionalität Ihres Peers zugreifen. {{site.data.keyword.blockchainfull_notm}} Platform Enterprise Plan verwendet [Hardware Security Modules](../glossary.html#hsm) (HSM), um die privaten Schlüssel Ihres Netzes zu speichern. Bei HSM handelt es sich um eine physische Appliance, die verhindert, dass andere Parteien auf Ihren privaten Schlüssel zugreifen können.
+Das Schlüsselmanagement stellt einen kritischen Aspekt für die Peersicherheit dar. Wenn ein privater Schlüssel manipuliert wird oder verloren geht, dann können feindliche Akteure möglicherweise auf Daten und Funktionalität Ihres Peers zugreifen. {{site.data.keyword.blockchainfull_notm}} Platform Enterprise Plan verwendet [Hardware Security Modules](/docs/services/blockchain/glossary.html#hsm) (HSM), um die privaten Schlüssel Ihres Netzes zu speichern. Bei HSM handelt es sich um eine physische Appliance, die verhindert, dass andere Parteien auf Ihren privaten Schlüssel zugreifen können.
 
-Wenn Sie einen Peer unter AWS bereitstellen, dann sind Sie für das Management Ihrer privaten Schlüssel verantwortlich. Obwohl {{site.data.keyword.blockchainfull_notm}} Platform Ihre privaten Schlüssel generiert, werden diese Schlüssel nicht auf der Plattform gespeichert. Es ist wichtig sicherzustellen, dass Ihre Schlüssel an einem sicheren Ort gespeichert werden, damit sie nicht manipuliert werden können. Sie finden den privaten Schlüssel Ihres Peers im Keystore-Ordner des Peer-MSP im Verzeichnis `/etc/hyperledger/<PEER_ENROLL_ID>/msp/keystore/` innerhalb des Peer-Containers. Weitere Informationen zu den Zertifikaten im Peer finden Sie im Abschnitt zum [Membership Services Provider](../certificates.html#msp) unter [Zertifikate unter {{site.data.keyword.blockchainfull_notm}} Platform verwalten](../certificates.html).
+Wenn Sie einen Peer unter AWS bereitstellen, dann sind Sie für das Management Ihrer privaten Schlüssel verantwortlich. Obwohl {{site.data.keyword.blockchainfull_notm}} Platform Ihre privaten Schlüssel generiert, werden diese Schlüssel nicht auf der Plattform gespeichert. Es ist wichtig sicherzustellen, dass Ihre Schlüssel an einem sicheren Ort gespeichert werden, damit sie nicht manipuliert werden können. Sie finden den privaten Schlüssel Ihres Peers im Keystore-Ordner des Peer-MSP im Verzeichnis `/etc/hyperledger/<PEER_ENROLL_ID>/msp/keystore/` innerhalb des Peer-Containers. Weitere Informationen zu den Zertifikaten im Peer finden Sie im Abschnitt zum [Membership Services Provider](/docs/services/blockchain/certificates.html#msp) unter [Zertifikate unter {{site.data.keyword.blockchainfull_notm}} Platform verwalten](/docs/services/blockchain/certificates.html).
 
 Sie können Key Escrow verwenden, um verloren gegangene private Schlüssel wiederherzustellen. Der entsprechende Arbeitsschritt muss ausgeführt werden, bevor Sie einen Schlüssel verlieren. Wenn ein privater Schlüssel nicht wiederhergestellt werden kann, dann müssen Sie neue private Schlüssel anfordern. Hierzu müssen Sie ein neues signCert-Zertifikat bei Ihrer Zertifizierungsstelle abrufen. Außerdem sollten Sie in diesem Fall das Administratorzertifikat von allen Kanälen entfernen, denen Sie beigetreten sind, oder es auf diesen Kanälen ersetzen.
 
@@ -405,7 +405,7 @@ In IBP when a private key is created, two sets of independent key material is ge
 #### Konfiguration von Membership Service Provider
 {: #aws-security-MSP}
 
-IBM Blockchain Platform-Komponenten verbrauchen Identitäten über Membership Service Providers (MSPs). MSPs ordnen die Zertifikate zu, die von den Zertifizierungsstellen mit den entsprechenden Netz- und Kanalrollen ausgegeben werden. Weitere Informationen zur Vorgehensweise von MSPs beim Arbeiten mit einem fernen Peer finden Sie [hier](../certificates.html#msp).
+IBM Blockchain Platform-Komponenten verbrauchen Identitäten über Membership Service Providers (MSPs). MSPs ordnen die Zertifikate zu, die von den Zertifizierungsstellen mit den entsprechenden Netz- und Kanalrollen ausgegeben werden. Weitere Informationen zur Vorgehensweise von MSPs beim Arbeiten mit einem fernen Peer finden Sie [hier](/docs/services/blockchain/certificates.html#msp).
 
 #### Anwendungssicherheit
 {: #aws-security-appl}

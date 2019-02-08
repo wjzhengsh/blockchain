@@ -25,12 +25,12 @@ lastupdated: "2018-08-31"
 |  Esempi     | Caso d'uso       | Tipo di esempio  | Creatore e supporto  |
 | --------------|---------------------|----|-------|
 | [Marble ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://github.com/IBM-Blockchain/marbles "Marble")| Più utenti possono creare delle biglie con proprietà differenti e trasferirle ad altri. <br> <br> Attieniti alle istruzioni per distribuire Marble sul servizio{{site.data.keyword.blockchainfull_notm}} su {{site.data.keyword.cloud_notm}}. Nota: le acquisizioni di schermo visualizzano l'IU del piano Enterprise piuttosto che il piano Starter. La funzionalità è simile. | Chaincode GO con un'applicazione Javascript| IBM<br> [Richiedi assistenza ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://github.com/IBM-Blockchain/marbles/issues "Richiedi assistenza") |
-|[Produzione di veicoli ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://github.com/IBM-Blockchain/vehicle-manufacture "Produzione di veicoli") | Gli utenti possono esplorare le varie fasi del ciclo di vita di un veicolo virtuale.  <br> <br> Attieniti alle istruzioni per **distribuire manualmente questa demo a {{site.data.keyword.cloud_notm}}** per una guida dettagliata alla distribuzione dell'esempio nella tua rete.| BND (Business Network Definition) [Hyperledger Composer](../references/hyperledger_composer.html) con un'applicazione Javascript | IBM<br> [Richiedi assistenza ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://github.com/IBM-Blockchain/vehicle-manufacture/issues "Richiedi assistenza") |
-|[Beni deperibili ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://github.com/clauseHQ/demo-clause-ibm-perishable-goods "Beni deperibili")| Gli utenti possono distribuire contratti legali che acquistano merci in una catena di approvvigionamento in base alla consegna e alle letture della temperatura. <br>  <br> <!-- This sample leverages the [Toolchain tool service![External link icon](../images/external_link.svg "External link icon")](../images/external_link.svg "External link icon")](https://console.bluemix.net/docs/services/ContinuousDelivery/index.html) to deploy the sample on your network automatically.--> | BND (Business Network Definition) [Hyperledger Composer](../references/hyperledger_composer.html) con un'applicazione Javascript | [Clausola ![Icona link esterno](../images/external_link.svg "Icona link esterno")](http://clause.io/ "Clausola")<br> [Richiedi assistenza ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://github.com/clauseHQ/demo-clause-ibm-perishable-goods/issues "Richiedi assistenza") |
+|[Produzione di veicoli ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://github.com/IBM-Blockchain/vehicle-manufacture "Produzione di veicoli") | Gli utenti possono esplorare le varie fasi del ciclo di vita di un veicolo virtuale.  <br> <br> Attieniti alle istruzioni per **distribuire manualmente questa demo a {{site.data.keyword.cloud_notm}}** per una guida dettagliata alla distribuzione dell'esempio nella tua rete.| BND (Business Network Definition) [Hyperledger Composer](/docs/services/blockchain/references/hyperledger_composer.html) con un'applicazione Javascript | IBM<br> [Richiedi assistenza ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://github.com/IBM-Blockchain/vehicle-manufacture/issues "Richiedi assistenza") |
+|[Beni deperibili ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://github.com/clauseHQ/demo-clause-ibm-perishable-goods "Beni deperibili")| Gli utenti possono distribuire contratti legali che acquistano merci in una catena di approvvigionamento in base alla consegna e alle letture della temperatura. <br>  <br> <!-- This sample leverages the [Toolchain tool service![External link icon](../images/external_link.svg "External link icon")](../images/external_link.svg "External link icon")](https://console.bluemix.net/docs/services/ContinuousDelivery/index.html) to deploy the sample on your network automatically.--> | BND (Business Network Definition) [Hyperledger Composer](/docs/services/blockchain/references/hyperledger_composer.html) con un'applicazione Javascript | [Clausola ![Icona link esterno](../images/external_link.svg "Icona link esterno")](http://clause.io/ "Clausola")<br> [Richiedi assistenza ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://github.com/clauseHQ/demo-clause-ibm-perishable-goods/issues "Richiedi assistenza") |
 
 Le applicazioni di esempio sono create da IBM e dai partner della community. Il supporto per gli esempi verrà fornito tramite i repository GitHub corrispondenti. Se riscontri un problema, fai clic sul link **Richiedi assistenza** accanto al nome dell'editore e apri un problema nel repository Github per informare il team pertinente.
 
-Per distribuire gli esempi, hai bisogno di una rete blockchain su {{site.data.keyword.cloud_notm}} con il piano Starter o il piano Enterprise e devi configurare un canale e i peer. Per ulteriori informazioni, vedi [Governance della rete piano Starter](../get_start_starter_plan.html) e [Governance della rete piano Enterprise](../get_start.html).
+Per distribuire gli esempi, hai bisogno di una rete blockchain su {{site.data.keyword.cloud_notm}} con il piano Starter o il piano Enterprise e devi configurare un canale e i peer. Per ulteriori informazioni, vedi [Governance della rete piano Starter](/docs/services/blockchain/get_start_starter_plan.html) e [Governance della rete piano Enterprise](/docs/services/blockchain/get_start.html).
 
 
 <!--
@@ -57,7 +57,7 @@ Starter Plan provides two sample applications for you to start with.
 
 Complete the following steps to deploy a sample application:
 
-1. Enter the **Network Monitor** of your Starter Plan network. If you don't have one, see [Creating a network](../get_start_starter_plan.html#creating-a-network).
+1. Enter the **Network Monitor** of your Starter Plan network. If you don't have one, see [Creating a network](/docs/services/blockchain/get_start_starter_plan.html#creating-a-network).
 
 2. Open the "Try samples" screen in your Network Monitor. Choose the sample application that you want to deploy and click the **Deploy via Toolchain** button.
 
@@ -82,9 +82,9 @@ Because this process creates a forked GitHub repository that you have access to 
 ## Deploying sample applications manually
 {: #deploy_sample_applications_manually}
 
-If you want to deploy sample applications without using the Network Monitor, ensure that you install all software prerequisites on your local file system. For more information, see [Setting up application development environment](../v10_application.html#setting-up-application-development-environment).
+If you want to deploy sample applications without using the Network Monitor, ensure that you install all software prerequisites on your local file system. For more information, see [Setting up application development environment](/docs/services/blockchain/v10_application.html#setting-up-application-development-environment).
 
-You also need a blockchain network on {{site.data.keyword.cloud_notm}} with either Starter Plan or Enterprise Plan, and configure a channel and its peers. For more information, see [Govern Starter Plan network](../get_start_starter_plan.html) and [Govern Enterprise Plan network](../get_start.html). After you provision a network and can deploy applications on it, retrieve the API endpoints of your network resources that your application will access. For more information, see [Adding network API endpoints to your application](../v10_application.html#adding-network-api-endpoints-to-your-application).
+You also need a blockchain network on {{site.data.keyword.cloud_notm}} with either Starter Plan or Enterprise Plan, and configure a channel and its peers. For more information, see [Govern Starter Plan network](/docs/services/blockchain/get_start_starter_plan.html) and [Govern Enterprise Plan network](/docs/services/blockchain/get_start.html). After you provision a network and can deploy applications on it, retrieve the API endpoints of your network resources that your application will access. For more information, see [Adding network API endpoints to your application](/docs/services/blockchain/v10_application.html#adding-network-api-endpoints-to-your-application).
 
 You can deploy one of the following sample applications to your network:
 
@@ -104,7 +104,7 @@ You can deploy one of the following sample applications to your network:
 
 - **Other applications**
 
-  For more information about how to host your own applications inside {{site.data.keyword.cloud_notm}}, see [Hosting applications](../v10_application.html#hosting-applications).
+  For more information about how to host your own applications inside {{site.data.keyword.cloud_notm}}, see [Hosting applications](/docs/services/blockchain/v10_application.html#hosting-applications).
 
 -->
 

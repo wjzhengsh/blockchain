@@ -22,9 +22,9 @@ En las instrucciones siguientes se describe cómo desplegar un igual de la plata
 {{site.data.keyword.blockchainfull}} en {{site.data.keyword.cloud_notm}} privado (ICP) que se conectará a una red de Plan inicial o Plan empresarial en {{site.data.keyword.cloud_notm}} o su ICP local.
 {:shortdesc}
 
-Antes de desplegar un igual, revise las [Consideraciones y limitaciones](../ibp-for-icp-about.html#ibp-icp-considerations).
+Antes de desplegar un igual, revise las [Consideraciones y limitaciones](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-considerations).
 
-La red del Plan inicial o Plan empresarial debe estar ejecutando Hyperledger Fabric v1.1 o v1.2.1. Puede encontrar la versión de Hyperledger Fabric abriendo la [ventana Preferencias de red](../v10_dashboard.html#network-preferences) en el supervisor de red.
+La red del Plan inicial o Plan empresarial debe estar ejecutando Hyperledger Fabric v1.1 o v1.2.1. Puede encontrar la versión de Hyperledger Fabric abriendo la [ventana Preferencias de red](/docs/services/blockchain/v10_dashboard.html#network-preferences) en el supervisor de red.
 
 ## Recursos necesarios
 {: #peer-resources-required}
@@ -59,16 +59,16 @@ Si no utiliza el suministro dinámico, deberán crearse [volúmenes persistentes
 ## Requisitos previos para desplegar un igual
 {: #prerequisites-peer-ibp}
 
-1. Para poder instalar un igual en ICP, primero debe [instalar ICP](../ICP_setup.html) e
-[instalar el diagrama de Helm de la plataforma {{site.data.keyword.blockchainfull_notm}}](helm_install_icp.html).
+1. Para poder instalar un igual en ICP, primero debe [instalar ICP](/docs/services/blockchain/ICP_setup.html) e
+[instalar el diagrama de Helm de la plataforma {{site.data.keyword.blockchainfull_notm}}](/docs/services/blockchain/howto/helm_install_icp.html).
 
 2. Si utiliza Community Edition y desea ejecutar este diagrama de Helm en un clúster de ICP sin conexión a Internet, debe crear archivados en una máquina conectada a Internet para poder instalar los archivados en el clúster de ICP. Para obtener más información, consulte
 [Adición de aplicaciones destacadas a clústeres sin conexión a Internet
 ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_package_offline.html "Adición de aplicaciones destacadas a clústeres sin conexión a Internet"){:new_window}. Tenga en cuenta que puede encontrar el archivo de especificación manifest.yaml en ibm-blockchain-platform-dev/ibm_cloud_pak en el diagrama de Helm.
 
-3. Debe tener una organización que sea miembro de una red de Plan inicial o de Plan empresarial en {{site.data.keyword.cloud_notm}}. El igual aprovecha los puntos finales de API, las CA de Hyperledger Fabric y el servicio de ordenación de la red de la plataforma {{site.data.keyword.blockchainfull_notm}} para funcionar. Si no es miembro de ninguna red blockchain, tiene que crear o unirse a una red. Para obtener más información, consulte [Creación de una red](../get_start.html#creating-a-network) o [Cómo unirse a una red](../get_start.html#joining-a-network).
+3. Debe tener una organización que sea miembro de una red de Plan inicial o de Plan empresarial en {{site.data.keyword.cloud_notm}}. El igual aprovecha los puntos finales de API, las CA de Hyperledger Fabric y el servicio de ordenación de la red de la plataforma {{site.data.keyword.blockchainfull_notm}} para funcionar. Si no es miembro de ninguna red blockchain, tiene que crear o unirse a una red. Para obtener más información, consulte [Creación de una red](/docs/services/blockchain/get_start.html#creating-a-network) o [Cómo unirse a una red](/docs/services/blockchain/get_start.html#joining-a-network).
 
-4. En primer lugar, debe [desplegar una CA](CA_deploy_icp.html) en ICP. Utilizará esta CA como una CA de TLS. Siga los pasos de requisito previo para [trabajar con una CA en ICP](CA_operate.html#prerequisites) antes de desplegar el igual. No será necesario que continúe más allá de estos pasos.
+4. En primer lugar, debe [desplegar una CA](/docs/services/blockchain/howto/CA_deploy_icp.html) en ICP. Utilizará esta CA como una CA de TLS. Siga los pasos de requisito previo para [trabajar con una CA en ICP](/docs/services/blockchain/howto/CA_operate.html#prerequisites) antes de desplegar el igual. No será necesario que continúe más allá de estos pasos.
 
 5. Recupere el valor de la dirección IP de proxy de clúster de la CA de TLS desde la consola de ICP. **Nota:** necesitará ser un
 [administrador del clúster ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Acciones y roles de administrador de clúster") para acceder a la IP de proxy. Inicie sesión en el clúster de ICP. En el panel de navegación de la izquierda, pulse
@@ -240,7 +240,7 @@ Solo necesita crear una identidad de administrador para los componentes que pert
 
 Tras registrar la identidad de administrador, debe generar la carpeta de MSP de administrador de igual y el signCert. Por lo tanto, debe ejecutar un mandato de inscripción en la CA del Plan inicial o el Plan empresarial.
 
-1. Descargue el [cliente de CA de Fabric](CA_operate.html#fabric-ca-client) si aún no lo ha hecho.
+1. Descargue el [cliente de CA de Fabric](/docs/services/blockchain/howto/CA_operate.html#fabric-ca-client) si aún no lo ha hecho.
 2. Vaya al directorio donde vaya a almacenar el material criptográfico y cree la carpeta donde vaya a almacenar la carpeta de MSP del administrador de igual.
 
   ```
@@ -337,10 +337,10 @@ Tras registrar la identidad de administrador, debe generar la carpeta de MSP de 
 Los campos de `"tls"` del archivo de configuración necesitan información de la CA que ha desplegado en ICP. Utilizará esta CA como una CA de TLS independiente, lo cual hace que el igual sea más seguro. Utilice las instrucciones siguientes para generar la información pertinente:
 
 - Los valores de `"cahost"` y `"caport"` son el URL y el puerto del
-[URL de CA](CA_operate.html#ca-url). Por ejemplo, si el URL de CA es `http://9.30.94.174:30167`, el valor de
+[URL de CA](/docs/services/blockchain/howto/CA_operate.html#ca-url). Por ejemplo, si el URL de CA es `http://9.30.94.174:30167`, el valor de
 `cahost` sería `9.30.94.174` y el valor de `caport` sería `30167`.
 - `"caname"` es el nombre de CA de TLS de la CA que ha desplegado en ICP. El nombre de CA de TLS es el valor que ha proporcionado en el campo `CA TLS instance name` (nombre de instancia de TLS de CA) durante la configuración de CA.
-- `"cacert"` es el certificado TLS codificado en base64 de la CA. Actualice la sección siguiente con el valor de la salida del mandato cuando recupere el [certificado TLS de CA](CA_operate.html#ca-tls) como requisito previo.
+- `"cacert"` es el certificado TLS codificado en base64 de la CA. Actualice la sección siguiente con el valor de la salida del mandato cuando recupere el [certificado TLS de CA](/docs/services/blockchain/howto/CA_operate.html#ca-tls) como requisito previo.
 
   ```
   "catls": {
@@ -362,7 +362,7 @@ Necesita registrar el igual con la CA de TLS en ICP utilizando el cliente de CA 
 
 1. Por ahora, debe tener el archivo de certificado TLS `tls.pem` en la carpeta
 `$HOME/fabric-ca-client/catls`. Si no es así, copie el certificado TLS que ha
-[descargado de ICP](CA_operate.html#ca-tls) en un directorio en el que pueda hacer referencia a él en mandatos posteriores. Asegúrese de que se encuentra en el directorio `$HOME/fabric-ca-client`.
+[descargado de ICP](/docs/services/blockchain/howto/CA_operate.html#ca-tls) en un directorio en el que pueda hacer referencia a él en mandatos posteriores. Asegúrese de que se encuentra en el directorio `$HOME/fabric-ca-client`.
 
   ```
   cd $HOME/fabric-ca-client
@@ -387,10 +387,10 @@ Necesita registrar el igual con la CA de TLS en ICP utilizando el cliente de CA 
   ```
   {:codeblock}
 
-  Los valores de `<enroll_id>` y `<enroll_password>` en el mandato son [el nombre de usuario y la contraseña del administrador de CA](CA_deploy_icp.html#admin-secret) que ha pasado al secreto de Kubernetes al desplegar la entidad emisora de certificados. Inserte el [URL de CA](CA_operate.html#ca-url) dentro de `<ca_url_with_port>`. Excluya la parte de `http://` al principio. El valor de `<tls_ca_name>` es el que ha especificado durante la
-[configuración de CA](CA_deploy_icp.html#icp-ca-configuration-parms).
+  Los valores de `<enroll_id>` y `<enroll_password>` en el mandato son [el nombre de usuario y la contraseña del administrador de CA](/docs/services/blockchain/howto/CA_deploy_icp.html#admin-secret) que ha pasado al secreto de Kubernetes al desplegar la entidad emisora de certificados. Inserte el [URL de CA](/docs/services/blockchain/howto/CA_operate.html#ca-url) dentro de `<ca_url_with_port>`. Excluya la parte de `http://` al principio. El valor de `<tls_ca_name>` es el que ha especificado durante la
+[configuración de CA](/docs/services/blockchain/howto/CA_deploy_icp.html#icp-ca-configuration-parms).
 
-  El valor de `<ca_tls_cert_file>` es el nombre de archivo del [certificado TLS de CA](CA_operate.html#ca-tls) con su vía de acceso completa.
+  El valor de `<ca_tls_cert_file>` es el nombre de archivo del [certificado TLS de CA](/docs/services/blockchain/howto/CA_operate.html#ca-tls) con su vía de acceso completa.
 
   Una llamada real será similar al ejemplo siguiente:
 
@@ -512,7 +512,7 @@ Debe proporcionar los nombres de host de CSR para desplegar un igual. Los nombre
 #### Localización del valor de la dirección IP de proxy del clúster
 
 Si desea desplegar un igual en el mismo clúster de ICP en el que ha desplegado la CA de TLS, especifique la misma IP de proxy que haya utilizado al
-[configurar la CA de TLS](CA_deploy_icp.html#icp-ca-configuration-parms). Si desea desplegar el componente en un clúster distinto, puede recuperar el valor de la dirección IP de proxy del clúster desde la consola de ICP. Es necesario que tenga el rol de administrador de clúster del clúster de ICP donde se vaya a desplegar el igual.
+[configurar la CA de TLS](/docs/services/blockchain/howto/CA_deploy_icp.html#icp-ca-configuration-parms). Si desea desplegar el componente en un clúster distinto, puede recuperar el valor de la dirección IP de proxy del clúster desde la consola de ICP. Es necesario que tenga el rol de administrador de clúster del clúster de ICP donde se vaya a desplegar el igual.
 
 1. Inicie sesión en la consola de ICP. En el panel de navegación de la izquierda, pulse
 **Plataforma** y, a continuación, pulse **Nodos** para ver los nodos que están definidos en el clúster.
@@ -689,7 +689,7 @@ En la tabla siguiente se muestran los parámetros configurables de la plataforma
 |`Tipo de servicio de igual`| Se usa para especificar si los
 [puertos externos se deben exponer
 ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types) en el igual. Seleccione NodePort para exponer los puertos externamente (recomendado), y ClusterIP para no exponer los puertos. LoadBalancer y ExternalName no se admiten en este release. | NodePort |sí|
-| `Base de datos de estado`| La [base de datos de estado](../glossary.html#state-database) utilizada para almacenar el libro mayor del canal. El igual tiene que utilizar la misma base de datos que la [red blockchain](../v10_dashboard.html#network-preferences). | LevelDB | sí |
+| `Base de datos de estado`| La [base de datos de estado](/docs/services/blockchain/glossary.html#state-database) utilizada para almacenar el libro mayor del canal. El igual tiene que utilizar la misma base de datos que la [red blockchain](/docs/services/blockchain/v10_dashboard.html#network-preferences). | LevelDB | sí |
 |`Repositorio de imágenes de CouchDB`| Solo se aplica si se ha seleccionado CouchDB como base de datos de libro mayor. Este campo se rellena automáticamente con la vía de acceso instalada. Si utiliza Community Edition y no tiene acceso a Internet, debe coincidir con el directorio donde ha descargado la imagen de CouchDB de Fabric.| ibmcom/ibp-fabric-couchdb | sí |
 | `Etiqueta de imagen de Docker de CouchDB`| Solo se aplica si se ha seleccionado CouchDB como base de datos de libro mayor. Valor de la etiqueta asociada con la imagen de CouchDB. | Se rellena automáticamente con el valor correcto.| sí |
 | `Persistencia de datos de igual habilitada`| Habilita la posibilidad de guardar permanentemente los datos después de que el clúster se reinicie o falle. Consulte [almacenamiento en Kubernetes ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://kubernetes.io/docs/concepts/storage/ "Volúmenes") para obtener más información.  *Si no está marcada esta opción, se perderán todos los datos en el caso de una migración tras error o de un reinicio del pod.* | marcada | no |
@@ -775,22 +775,22 @@ Tras completar los parámetros de configuración y pulsar el botón **Instalar**
 **Cargas de trabajo** y, a continuación, **Releases de Helm**.
 
 Si se desplaza hacia abajo hasta la sección `Notas`, hay información importante que utilizará al
-[trabajar con el igual](peer_operate_ibp.html).
+[trabajar con el igual](/docs/services/blockchain/howto/peer_operate_ibp.html).
 
 <!--
 ### Verifying the peer can connect to Starter or Enterprise Plan network
 
 You can run a peer CLI command from inside the peer container to verify that your peer has connected to your network on the {{site.data.keyword.blockchainfull_notm}} Platform. Complete the following instructions to run the `peer channel fetch` command to fetch the genesis block from a channel:
 
-1. If you have not already connected to your ICP cluster, follow these [instructions](peer_operate_ibp.html#peer-kubectl-configure) to connect to it and use the cli from inside the peer container.
+1. If you have not already connected to your ICP cluster, follow these [instructions](/docs/services/blockchain/howto/peer_operate_ibp.html#peer-kubectl-configure) to connect to it and use the cli from inside the peer container.
 
-2. If you deploy your peer behind a firewall, you need to open a passthru to enable the network on the platform to complete a TlS handshake with your peer. You only need to enable a passthru for the Node port bound to port 7051 of your peer. For more information, see [finding your peer endpoint information](peer_operate_ibp.html#peer-endpoint).
+2. If you deploy your peer behind a firewall, you need to open a passthru to enable the network on the platform to complete a TlS handshake with your peer. You only need to enable a passthru for the Node port bound to port 7051 of your peer. For more information, see [finding your peer endpoint information](/docs/services/blockchain/howto/peer_operate_ibp.html#peer-endpoint).
 
 3. Your organization needs to be added to a channel in the network before you can fetch the genesis block.
 
-  - You can start a new channel for the peer. If you are using IBP Starter or Enterprise Plan, you can automatically include your organization during [channel creation](create_channel.html#creating-a-channel).
+  - You can start a new channel for the peer. If you are using IBP Starter or Enterprise Plan, you can automatically include your organization during [channel creation](/docs/services/blockchain/howto/create_channel.html#creating-a-channel).
 
-  - Another member of the blockchain network can also add your organization to an existing channel by using a [channel update](create_channel.html#updating-a-channel).
+  - Another member of the blockchain network can also add your organization to an existing channel by using a [channel update](/docs/services/blockchain/howto/create_channel.html#updating-a-channel).
 
     The peer uploads its signCert during installation, so that you need to only synchronize the certificate to the channel. On the "Channels" screen of the Network Monitor, locate the channel that your organization joined and select **Sync Certificate** from the drop-down list under the **Action** header. This action synchronizes the certificates across all the peers on the channel.
 
@@ -871,7 +871,7 @@ You can run a peer CLI command from inside the peer container to verify that you
   ```
 
   Successfully fetching the genesis block indicates that your peer can connect to your Starter or Enterprise Plan network.
-  You still need to join the peer to the channel and install chaincode. See [operating your peer](peer_operate_ibp.html) for more information.
+  You still need to join the peer to the channel and install chaincode. See [operating your peer](/docs/services/blockchain/howto/peer_operate_ibp.html) for more information.
 
 -->
 
@@ -879,10 +879,10 @@ You can run a peer CLI command from inside the peer container to verify that you
 {: #peer-ibp-view-logs}
 
 Los registros de componentes se pueden visualizar desde la línea de mandatos utilizando los
-[`mandatos de la CLI kubectl`](peer_operate_ibp.html#peer-kubectl-configure) o a través de
+[`mandatos de la CLI kubectl`](/docs/services/blockchain/howto/peer_operate_ibp.html#peer-kubectl-configure) o a través de
 [Kibana ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.elastic.co/products/kibana "Su ventana en Elastic Search"), que se incluye en el clúster de ICP. Para obtener más información, consulte estas
-[instrucciones para acceder a los registros](peer_operate_ibp.html#peer-ibp-view-logs).
+[instrucciones para acceder a los registros](/docs/services/blockchain/howto/peer_operate_ibp.html#peer-ibp-view-logs).
 
 ## Qué hacer a continuación
 
-Después de haber desplegado el igual, deberá realizar varios pasos operativos para poder enviar transacciones y leer el libro mayor distribuido de la red blockchain. Para obtener más información, consulte [Funcionamiento de iguales con el Plan inicial o el Plan empresarial](peer_operate_ibp.html).
+Después de haber desplegado el igual, deberá realizar varios pasos operativos para poder enviar transacciones y leer el libro mayor distribuido de la red blockchain. Para obtener más información, consulte [Funcionamiento de iguales con el Plan inicial o el Plan empresarial](/docs/services/blockchain/howto/peer_operate_ibp.html).

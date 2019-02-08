@@ -14,14 +14,14 @@ lastupdated: "2017-12-06"
 
 # Création de canaux gérés 
 
-**ATTENTION :** Avant d'utiliser une offre {{site.data.keyword.blockchainfull}}, lisez les informations relatives aux données techniques et à l'aide dans la section [Clause de protection](needtoknow.html).  
+**ATTENTION :** Avant d'utiliser une offre {{site.data.keyword.blockchainfull}}, lisez les informations relatives aux données techniques et à l'aide dans la section [Clause de protection](/docs/services/blockchain/needtoknow.html).  
 {:shortdesc}
 
 Dans certains scénarios d'utilisation (marchés des changes extrêmement régulés, par exemple), il peut être  nécessaire de faire appel à un tiers pour la prise en charge des rôles d'administration des canaux. Cette fonction est habituellement confiée à différents opérateurs ou membres. 
 
 Le processus de mise à disposition d'un réseau est semblable à la création de n'importe quel réseau. La principale différence réside dans l'attribution de droits aux membres qui définissent comment ces derniers peuvent réaliser des transactions au sein des canaux.  
 
-Les étapes permettant de créer un réseau et d'inviter des membres sont accessibles ici : [Gouvernance d'un réseau](get_start.html#creating-a-network). 
+Les étapes permettant de créer un réseau et d'inviter des membres sont accessibles ici : [Gouvernance d'un réseau](/docs/services/blockchain/get_start.html#creating-a-network). 
 
 **Remarque **: Dans un exemple de scénario concret, l'opérateur d'un tel réseau pourrait installer des codes blockchain personnalisés lors de l'étape "Créer un réseau" à l'aide de l'éditeur de règles, mais dans le cas du présent exemple, nous partirons du principe que votre configuration réseau doit être de type standard. 
 
@@ -52,7 +52,7 @@ Dans un réseau composé de 15 membres (14 banques et vous, le tiers digne de co
 
 Votre canal est créé mais du code blockchain doit encore lui être associé. Dans un canal dédié aux changes de devises, ce code blockchain nécessiterait probablement l'ensemble des trois membres du canal (les deux banques en question et vous, le tiers digne de confiance) pour valider **chaque** transaction. Ce code blockchain pourrait aussi être écrit pour envoyer un enregistrement du *résultat* de cette transaction à un canal "en lecture seule" géré comprenant chaque membre du réseau (décrit plus loin). Pour que le code blockchain puisse être instancié, cependant, il doit d'abord être installé sur les homologues des membres. Une fois cette condition remplie, l'instanciation peut être effectuée par l'opérateur du canal (vous).  
 
-La procédure effective d'installation et instanciation de ce type de code blockchain n'est pas différente de celle de tout autre code blockchain (si ce n'est le nombre d'opérateurs nécessaires pour approuver l'instanciation), vous devez donc suivre les instructions de la section [Installation et instanciation d'un code blockchain](install_instantiate_chaincode.html.html).
+La procédure effective d'installation et instanciation de ce type de code blockchain n'est pas différente de celle de tout autre code blockchain (si ce n'est le nombre d'opérateurs nécessaires pour approuver l'instanciation), vous devez donc suivre les instructions de la section [Installation et instanciation d'un code blockchain](/docs/services/blockchain/install_instantiate_chaincode.html.html).
 
 # Canal en lecture seule géré
 

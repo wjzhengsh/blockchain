@@ -42,7 +42,7 @@ Wenn Sie VSCode verwenden, ist eine Hyperledger Composer-Erweiterung für VSCode
 
 ## Schritt 1: Befehlszeilentools installieren
 
-Zu den Befehlszeilentools gehören **composer-cli**, das Hauptbefehlszeilenmodul von {{site.data.keyword.blockchainfull_notm}} Platform: Develop, **generator-hyperledger-composer**, **composer-rest-server** und **Yeoman**. Diese Module werden zum Generieren von Unternehmensnetzen, speziellen REST-Servern und Angular-Anwendungen verwendet. Welche Version Sie installieren, ist von der Hyperledger Fabric-Version abhängig, mit der Ihr Starter Plan oder Enterprise Plan ausgeführt wird. Ihre Fabric-Version können Sie ermitteln, indem Sie das [Fenster "Netzvorgaben"](../v10_dashboard.html#network-preferences) im Network Monitor öffnen.
+Zu den Befehlszeilentools gehören **composer-cli**, das Hauptbefehlszeilenmodul von {{site.data.keyword.blockchainfull_notm}} Platform: Develop, **generator-hyperledger-composer**, **composer-rest-server** und **Yeoman**. Diese Module werden zum Generieren von Unternehmensnetzen, speziellen REST-Servern und Angular-Anwendungen verwendet. Welche Version Sie installieren, ist von der Hyperledger Fabric-Version abhängig, mit der Ihr Starter Plan oder Enterprise Plan ausgeführt wird. Ihre Fabric-Version können Sie ermitteln, indem Sie das [Fenster "Netzvorgaben"](/docs/services/blockchain/v10_dashboard.html#network-preferences) im Network Monitor öffnen.
 
 1. Installieren Sie zur Verwendung bei neuen Starter Plan-Instanzen, die Hyperledger Fabric v1.2.1 ausführen, **composer-cli** mit dem folgenden Befehl:
 

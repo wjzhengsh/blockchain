@@ -24,12 +24,12 @@ Ces instructions expliquent comment utiliser un modèle de démarrage rapide Ama
 
 Pour plus d'informations sur AWS, consultez le [Document de présentation d'AWS![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://d1.awsstatic.com/whitepapers/aws-overview.pdf "Document de présentation d'AWS").
 
-Avant de déployer des homologues {{site.data.keyword.blockchainfull_notm}} Platform for AWS, passez en revue les [considérations relatives aux homologues](remote_peer.html#remote-peer-limitations).
+Avant de déployer des homologues {{site.data.keyword.blockchainfull_notm}} Platform for AWS, passez en revue les [considérations relatives aux homologues](/docs/services/blockchain/howto/remote_peer.html#remote-peer-limitations).
 
 ## Prérequis
 {: #prerequisites-aws}
 
-Pour utiliser un homologue {{site.data.keyword.blockchainfull_notm}} Platform for AWS, vous devez appartenir à une organisation qui est membre d'un réseau de blockchain hébergé sur IBM Blockchain Platform. Vous devez utiliser le Moniteur réseau sur IBM Cloud pour accéder aux données d'identification du réseau et aux noeuds finaux d'API de votre réseau. Si vous n'êtes membre d'aucun un réseau de blockchain, vous devez créer ou rejoindre un réseau. Pour plus d'informations, voir [Création d'un réseau de plan](../get_start.html#creating-a-network) ou [Rejoindre un réseau](../get_start.html#joining-a-network).
+Pour utiliser un homologue {{site.data.keyword.blockchainfull_notm}} Platform for AWS, vous devez appartenir à une organisation qui est membre d'un réseau de blockchain hébergé sur IBM Blockchain Platform. Vous devez utiliser le Moniteur réseau sur IBM Cloud pour accéder aux données d'identification du réseau et aux noeuds finaux d'API de votre réseau. Si vous n'êtes membre d'aucun un réseau de blockchain, vous devez créer ou rejoindre un réseau. Pour plus d'informations, voir [Création d'un réseau de plan](/docs/services/blockchain/get_start.html#creating-a-network) ou [Rejoindre un réseau](/docs/services/blockchain/get_start.html#joining-a-network).
 
 La type d'instance VPC par défaut pour l'homologue est `m4.xlarge`. Vous devez optimiser le type d'instance que vous choisissez en fonction de vos besoins en termes d'UC, de mémoire et de stockage. L'homologue nécessite au moins :  
 -	2 UC
@@ -261,9 +261,9 @@ Pour vérifier que la connexion à votre réseau {{site.data.keyword.blockchainf
 
 2. Votre organisation doit être ajoutée à un canal du réseau pour que vous puissiez extraire le bloc d'origine. 
 
-  - Vous pouvez démarrer un nouveau canal pour l'homologue. En tant qu'initiateur de canal, vous pouvez inclure automatiquement votre organisation durant la [création de canal](create_channel.html#creating-a-channel).
+  - Vous pouvez démarrer un nouveau canal pour l'homologue. En tant qu'initiateur de canal, vous pouvez inclure automatiquement votre organisation durant la [création de canal](/docs/services/blockchain/howto/create_channel.html#creating-a-channel).
 
-  - Un autre membre du réseau blockchain peut également ajouter votre organisation à un canal existant en utilisant une [mise à jour de canal](create_channel.html#updating-a-channel).
+  - Un autre membre du réseau blockchain peut également ajouter votre organisation à un canal existant en utilisant une [mise à jour de canal](/docs/services/blockchain/howto/create_channel.html#updating-a-channel).
 
   - Une fois que votre organisation est ajoutée à un canal, vous devez ajouter le certificat signataire de votre homologue au canal. L'homologue envoie par téléchargement son certificat signataire lors de l'installation, de sorte que vous devez uniquement synchroniser le certificat pour le canal. Dans l'écran "Canaux" de votre Moniteur réseau, localisez le canal rejoint par votre organisation et sélectionnez **Synchroniser le certificat** dans la liste déroulante sous l'en-tête **Action**. Cette action synchronise les certificats entre tous les homologues sur le canal.
 
@@ -338,12 +338,12 @@ Pour vérifier que la connexion à votre réseau {{site.data.keyword.blockchainf
 ## Etapes suivantes
 {: #whats-next-aws}
 
-Après que vous avez configuré l'homologue dans AWS, vous pouvez effectuer quelques étapes supplémentaires avant de soumettre les transactions et lire le registre partagé du réseau de blockchain. Pour plus d'informations, voir  [Exploitation d'un homologue dans AWS](remote_peer_operate_aws.html#remote-peer-operate-aws).
+Après que vous avez configuré l'homologue dans AWS, vous pouvez effectuer quelques étapes supplémentaires avant de soumettre les transactions et lire le registre partagé du réseau de blockchain. Pour plus d'informations, voir  [Exploitation d'un homologue dans AWS](/docs/services/blockchain/howto/remote_peer_operate_aws.html#remote-peer-operate-aws).
 
 ## Haute disponibilité (HA)
 {: #aws-high-availability}
 
-Par défaut, pour la prise en charge de la haute disponibilité, le modèle de démarrage rapide déploie deux instances d'homologue, dans deux zones de disponibilité différentes. Pour optimiser cette prise en charge de la haute disponibilité, vous devez également configurer vos [applications client pour la haute disponibilité](../v10_application.html#ha-app).
+Par défaut, pour la prise en charge de la haute disponibilité, le modèle de démarrage rapide déploie deux instances d'homologue, dans deux zones de disponibilité différentes. Pour optimiser cette prise en charge de la haute disponibilité, vous devez également configurer vos [applications client pour la haute disponibilité](/docs/services/blockchain/v10_application.html#ha-app).
 
 ## Remarques sur la sécurité
 {: #remote-peer-aws-security}
@@ -381,14 +381,14 @@ Les données de votre base de données d'état, que vous utilisiez levelDB ou co
 {: #aws-security-data-residency}
 
 L'hébergement de données indique que le traitement et le stockage de l'ensemble des données de registre de blockchain demeurent à l'intérieur des frontières d'un pays unique.
-Pour plus de détails sur ce qui peut être réalisé, consultez cette [rubrique](remote_peer.html#data-residency).
+Pour plus de détails sur ce qui peut être réalisé, consultez cette [rubrique](/docs/services/blockchain/howto/remote_peer.html#data-residency).
 
 #### Gestion des clés 
 {: #aws-security-key-management}
 
-La gestion des clés est un aspect essentiel de la sécurité de l'homologue. Si une clé privée est compromise ou égarée, des acteurs hostiles pourraient accéder aux données et aux fonctionnalités de votre homologue. Le plan Enterprise d'{{site.data.keyword.blockchainfull_notm}} Platform utilise des [modules de sécurité matérielle](../glossary.html#hsm) (HSM) pour stocker les clés privées de votre réseau. HSM est un dispositif physique qui empêche des tiers d'accéder à votre clé privée.
+La gestion des clés est un aspect essentiel de la sécurité de l'homologue. Si une clé privée est compromise ou égarée, des acteurs hostiles pourraient accéder aux données et aux fonctionnalités de votre homologue. Le plan Enterprise d'{{site.data.keyword.blockchainfull_notm}} Platform utilise des [modules de sécurité matérielle](/docs/services/blockchain/glossary.html#hsm) (HSM) pour stocker les clés privées de votre réseau. HSM est un dispositif physique qui empêche des tiers d'accéder à votre clé privée.
 
-Lorsque vous déployez un homologue distant sur AWS, vous êtes responsable de la gestion de vos clés privées. Bien qu'{{site.data.keyword.blockchainfull_notm}} Platform génère vos clés privées, ces clés ne sont pas stockées sur cette plateforme. Il est essentiel que vous stockiez vos clés dans un emplacement sécurisé afin qu'elles ne soient pas compromises. Vous pouvez trouver la clé privée de votre homologue dans le dossier du magasin de clés de votre MSP, dans le répertoire  `/etc/hyperledger/<PEER_ENROLL_ID>/msp/keystore/` au sein de votre conteneur d'homologue. Pour plus d'informations sur les certificats au sein de votre homologue distant, voir la section relative [Membership Services Provider](../certificates.html#msp) de la rubrique [Gestion des certificats sur {{site.data.keyword.blockchainfull_notm}} Platform](../certificates.html).
+Lorsque vous déployez un homologue distant sur AWS, vous êtes responsable de la gestion de vos clés privées. Bien qu'{{site.data.keyword.blockchainfull_notm}} Platform génère vos clés privées, ces clés ne sont pas stockées sur cette plateforme. Il est essentiel que vous stockiez vos clés dans un emplacement sécurisé afin qu'elles ne soient pas compromises. Vous pouvez trouver la clé privée de votre homologue dans le dossier du magasin de clés de votre MSP, dans le répertoire  `/etc/hyperledger/<PEER_ENROLL_ID>/msp/keystore/` au sein de votre conteneur d'homologue. Pour plus d'informations sur les certificats au sein de votre homologue distant, voir la section relative [Membership Services Provider](/docs/services/blockchain/certificates.html#msp) de la rubrique [Gestion des certificats sur {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/certificates.html).
 
 Vous pouvez utiliser Key Escrow pour récupérer des clés privées perdues. Cette opération doit être effectuée avant la perte de clés. Si une clé privée ne peut pas être récupérée, vous devez obtenir de nouvelles clés privées en obtenant un nouveau certificat SignCert auprès de votre autorité de certification. Vous devez également retirer et remplacer votre certificat admin des canaux que vous avez rejoints.
 
@@ -405,7 +405,7 @@ In IBP when a private key is created, two sets of independent key material is ge
 #### Configuration de Membership Service Provider (Fournisseur de services aux membres)
 {: #aws-security-MSP}
 
-Les composants d'IBM Blockchain Platform consomment des identités via des Fournisseur de services aux membres (MSP). Les MSP associent les certificats émis par les autorités de certification à des rôles de réseau et de canal. Pour plus d'informations sur la façon dont les MSP fonctionnent avec les homologues distants, consultez cette [rubrique](../certificates.html#msp).
+Les composants d'IBM Blockchain Platform consomment des identités via des Fournisseur de services aux membres (MSP). Les MSP associent les certificats émis par les autorités de certification à des rôles de réseau et de canal. Pour plus d'informations sur la façon dont les MSP fonctionnent avec les homologues distants, consultez cette [rubrique](/docs/services/blockchain/certificates.html#msp).
 
 #### Sécurité des applications
 {: #aws-security-appl}

@@ -24,7 +24,7 @@ Eine allgemeine Übersicht über die Komponenten in einem auf Fabric basierenden
 
 *Dieses Video behandelt die Komponenten zwar schwerpunktmäßig aus der Perspektive von Starter- und Enterprise-Netzen, die Informationen sind jedoch auch für die vom Kunden verwaltete Lösung von IBP on ICP (IBM Cloud Platform) äußerst relevant.*
 
-Die vorliegende Übersicht konzentriert sich lediglich auf Zertifizierungsstellen, Anordnungsknoten, Peers, Smart Contracts und Anwendungen. Im Handbuch [{{site.data.keyword.blockchainfull_notm}} Platform for ICP - Bereitstellung](ibp_for_icp_deployment_guide.html) ist erläutert, dass diese Auflistung nicht willkürlich ist, sondern die Reihenfolge abbildet, in der die Komponenten in einem auf Fabric basierenden Netz bereitgestellt werden.
+Die vorliegende Übersicht konzentriert sich lediglich auf Zertifizierungsstellen, Anordnungsknoten, Peers, Smart Contracts und Anwendungen. Im Handbuch [{{site.data.keyword.blockchainfull_notm}} Platform for ICP - Bereitstellung](/docs/services/blockchain/ibp_for_icp_deployment_guide.html) ist erläutert, dass diese Auflistung nicht willkürlich ist, sondern die Reihenfolge abbildet, in der die Komponenten in einem auf Fabric basierenden Netz bereitgestellt werden.
 
 ## Zertifizierungsstellen
 {: #ca}

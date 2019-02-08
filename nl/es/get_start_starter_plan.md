@@ -20,18 +20,18 @@ lastupdated: "2018-12-07"
 ***[¿Le resulta útil esta página? Indíquenos su opinión.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 
-El Plan inicial (Starter Plan) de la plataforma {{site.data.keyword.blockchainfull}} le ofrece una red blockchain preconfigurada con una simple pulsación. Proporciona una red autorizada con la configuración de dos [organizaciones](glossary.html#organization), un [igual](glossary.html#peer) por cada organización y un [canal](glossary.html#channel) de forma predeterminada. Una vez creada la red, puede extenderla y añadir más organizaciones e iguales a la red. Estas redes están pensadas para usuarios novatos que son nuevos en la plataforma
+El Plan inicial (Starter Plan) de la plataforma {{site.data.keyword.blockchainfull}} le ofrece una red blockchain preconfigurada con una simple pulsación. Proporciona una red autorizada con la configuración de dos [organizaciones](/docs/services/blockchain/glossary.html#organization), un [igual](/docs/services/blockchain/glossary.html#peer) por cada organización y un [canal](/docs/services/blockchain/glossary.html#channel) de forma predeterminada. Una vez creada la red, puede extenderla y añadir más organizaciones e iguales a la red. Estas redes están pensadas para usuarios novatos que son nuevos en la plataforma
 {{site.data.keyword.blockchainfull_notm}}. <!--Note that it might cause extra cost if you exceed the default resource limits of two organizations and two peers.-->
 {:shortdesc}
 
 El Plan inicial le permite aprender y desarrollar habilidades con la plataforma {{site.data.keyword.blockchainfull_notm}}, ejecutar aplicaciones de ejemplo, probar sus propias aplicaciones y simular un escenario de varias organizaciones. Esta guía de aprendizaje de iniciación le enseñará a utilizar el Plan inicial para empezar a desarrollar y realizar transacciones en una red blockchain.
 
-Si es nuevo en la plataforma {{site.data.keyword.blockchainfull_notm}} y en blockchain, puede obtener más información acerca de blockchain consultando la [visión general de los componentes fundamentales](blockchain_component_overview.html) de las redes creadas sobre
-[Hyperledger Fabric](reference/v10_fabric.html) de código abierto. También puede consultar la
+Si es nuevo en la plataforma {{site.data.keyword.blockchainfull_notm}} y en blockchain, puede obtener más información acerca de blockchain consultando la [visión general de los componentes fundamentales](/docs/services/blockchain/blockchain_component_overview.html) de las redes creadas sobre
+[Hyperledger Fabric](/docs/services/blockchain/reference/v10_fabric.html) de código abierto. También puede consultar la
 [documentación de Hyperledger Fabric
 ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](http://hyperledger-fabric.readthedocs.io/en/release-1.2/blockchain.html "Introducción a Blockchain").
 
-**Nota**: El Plan inicial de la plataforma {{site.data.keyword.blockchainfull_notm}} es un entorno de desarrollo y prueba, y no es adecuado para cargas de trabajo de producción. Si necesita un entorno de producción, consulte [Acerca del Plan empresarial](enterprise_plan.html).
+**Nota**: El Plan inicial de la plataforma {{site.data.keyword.blockchainfull_notm}} es un entorno de desarrollo y prueba, y no es adecuado para cargas de trabajo de producción. Si necesita un entorno de producción, consulte [Acerca del Plan empresarial](/docs/services/blockchain/enterprise_plan.html).
 
 ## Visión general
 
@@ -77,7 +77,7 @@ La plataforma {{site.data.keyword.blockchainfull_notm}} proporciona herramientas
 ## Creación de una red
 {: #creating-a-network}
 
-Puede obtener una [red](glossary.html#network) del Plan inicial con la configuración predeterminada inmediatamente después de crear una instancia de servicio de la plataforma {{site.data.keyword.blockchainfull_notm}}.
+Puede obtener una [red](/docs/services/blockchain/glossary.html#network) del Plan inicial con la configuración predeterminada inmediatamente después de crear una instancia de servicio de la plataforma {{site.data.keyword.blockchainfull_notm}}.
 
 1. Localice el [servicio Blockchain ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://console.bluemix.net/catalog/services/blockchain) en el catálogo de {{site.data.keyword.cloud_notm}}.
     **Nota**: Debe iniciar una sesión con su cuenta de pago de {{site.data.keyword.cloud_notm}}. Si no tiene una cuenta, pulse el botón **Regístrese para crear**. Después de crear una cuenta de prueba gratuita, actualícela a un tipo **Pago según uso** yendo a **Gestionar** > **Facturación y uso** > **Facturación** en la consola de {{site.data.keyword.cloud_notm}} y pulsando **Añadir tarjeta de crédito**.
@@ -94,12 +94,12 @@ Encontrará su instancia del servicio blockchain en el [ panel de control del se
 ## Invitación a miembros
 {: #inviting-members}
 
-Puede invitar a otros [organizaciones](glossary.html#organization) a que se unan a su red del Plan inicial como [miembros](glossary.html#member) para poder realizar [transacciones](glossary.html#transaction) entre sí. Además, si desea utilizar el Plan inicial para aprender y realizar pruebas, puede simular una red de varias organizaciones añadiendo miembros a su red.
+Puede invitar a otros [organizaciones](/docs/services/blockchain/glossary.html#organization) a que se unan a su red del Plan inicial como [miembros](/docs/services/blockchain/glossary.html#member) para poder realizar [transacciones](/docs/services/blockchain/glossary.html#transaction) entre sí. Además, si desea utilizar el Plan inicial para aprender y realizar pruebas, puede simular una red de varias organizaciones añadiendo miembros a su red.
 
 1. En la pantalla "Miembros" del supervisor de red, pulse el botón **Invitar miembros**.
 2. Se abre la ventana "Invitar miembro".
     - Si desea invitar a otra organización, elija "Invitar a un miembro".  Especifique el nombre y la dirección de correo electrónico del operador de la organización que desea invitar.  También puede especificar información adicional que desee incluir en la invitación en el campo "Añadir una nota".  Pulse el botón **Enviar invitación**.  La organización invitada recibirá una invitación por correo electrónico y podrá seguir las instrucciones del correo para unirse a su red.
-    - Si desea añadir organizaciones adicionales que se puedan añadir a un canal, elija "Añadir un miembro".  Especifique un nombre para la nueva organización. También puede añadir iguales a la nueva organización o puede hacerlo más adelante en el supervisor de red.  Pulse el botón **Crear**. Tenga en cuenta que si añade iguales a su nueva organización, debe cambiar a esta nueva organización para ver sus iguales.<!-- Para obtener más información sobre cómo cambiar de organización, consulte [Cambiar de organización](v10_dashboard.html#switch-organizations).-->
+    - Si desea añadir organizaciones adicionales que se puedan añadir a un canal, elija "Añadir un miembro".  Especifique un nombre para la nueva organización. También puede añadir iguales a la nueva organización o puede hacerlo más adelante en el supervisor de red.  Pulse el botón **Crear**. Tenga en cuenta que si añade iguales a su nueva organización, debe cambiar a esta nueva organización para ver sus iguales.<!-- Para obtener más información sobre cómo cambiar de organización, consulte [Cambiar de organización](/docs/services/blockchain/v10_dashboard.html#switch-organizations).-->
 
 
 ## Cómo unirse a una red
@@ -122,22 +122,22 @@ Encontrará la instancia del servicio blockchain en el [panel de control del ser
 {: #create-channels}
 
 Los grupos de organizaciones utilizan canales para realizar transacciones sin exponer los datos a otras organizaciones. Puede crear un
-[canal](glossary.html#channel) con miembros seleccionados de su red de Plan inicial, y políticas sobre quién puede actualizar el canal.
+[canal](/docs/services/blockchain/glossary.html#channel) con miembros seleccionados de su red de Plan inicial, y políticas sobre quién puede actualizar el canal.
 
-Para obtener más información, consulte [Creación de un canal](howto/create_channel.html#creating-a-channel). Si otra organización le invita a un canal, también encontrará instrucciones sobre cómo aceptar la invitación y hacer que sus iguales se unan al canal.
+Para obtener más información, consulte [Creación de un canal](/docs/services/blockchain/howto/create_channel.html#creating-a-channel). Si otra organización le invita a un canal, también encontrará instrucciones sobre cómo aceptar la invitación y hacer que sus iguales se unan al canal.
 
 ## Desarrollo de código de encadenamiento
 {: #develop-chaincode}
 
-El [código de encadenamiento](glossary.html#chaincode), al que a veces se hace referencia también como contratos inteligentes, es software que le permite leer y actualizar datos en el libro mayor de blockchain. El código de encadenamiento puede convertir la lógica empresarial en un programa ejecutable acordado y verificado por todos los miembros de la red blockchain.
+El [código de encadenamiento](/docs/services/blockchain/glossary.html#chaincode), al que a veces se hace referencia también como contratos inteligentes, es software que le permite leer y actualizar datos en el libro mayor de blockchain. El código de encadenamiento puede convertir la lógica empresarial en un programa ejecutable acordado y verificado por todos los miembros de la red blockchain.
 
-Para obtener más información, consulte la guía de aprendizaje de [desarrollo de código de encadenamiento](howto/develop_chaincode.html) para obtener información sobre cómo empezar a escribir código de encadenamiento, así como de las características de Fabric que son accesibles a través del código de encadenamiento.
+Para obtener más información, consulte la guía de aprendizaje de [desarrollo de código de encadenamiento](/docs/services/blockchain/howto/develop_chaincode.html) para obtener información sobre cómo empezar a escribir código de encadenamiento, así como de las características de Fabric que son accesibles a través del código de encadenamiento.
 
 ## Instalación y creación de instancias del código de encadenamiento
 {: #install-instantiate-chaincode}
 Tras unirse a canales y desarrollar la lógica empresarial, deberá instalar código de encadenamiento en los iguales de la red. Puede utilizar el supervisor de red para instalar y crear una instancia del código de encadenamiento en los iguales de su organización, así como actualizar el código de encadenamiento para facilitar el desarrollo continuo.
 
-Para obtener más información sobre el despliegue de ejemplos precompilados, consulte [Instalación, creación de instancias y actualización de un código de encadenamiento](howto/install_instantiate_chaincode.html).
+Para obtener más información sobre el despliegue de ejemplos precompilados, consulte [Instalación, creación de instancias y actualización de un código de encadenamiento](/docs/services/blockchain/howto/install_instantiate_chaincode.html).
 
 
 ## Desarrollo de aplicaciones utilizando los SDK de Fabric
@@ -145,7 +145,7 @@ Para obtener más información sobre el despliegue de ejemplos precompilados, co
 
 La plataforma {{site.data.keyword.blockchainfull_notm}} proporciona puntos finales de API a los que puede conectarse utilizando los SDK de Fabric. Puede utilizar los SDK para invocar código de encadenamiento desde sus aplicaciones y enviar transacciones a la red blockchain.
 
-Para obtener más información, consulte la guía de aprendizaje de [desarrollo de aplicaciones](v10_application.html).
+Para obtener más información, consulte la guía de aprendizaje de [desarrollo de aplicaciones](/docs/services/blockchain/v10_application.html).
 
 
 ## Desarrollo y despliegue de redes empresariales personalizadas con Hyperledger Composer
@@ -153,7 +153,7 @@ Para obtener más información, consulte la guía de aprendizaje de [desarrollo 
 
 El Plan inicial integra el entorno para el desarrollador IBM {{site.data.keyword.blockchainfull_notm}} Platform: Develop y el conjunto de herramientas para el desarrollador Hyperledger Composer. Puede desarrollar su red blockchain en función de los requisitos de su empresa.  Después de desarrollar una red para su empresa, puede desplegar su red empresarial en la red del Plan inicial.
 
-Para obtener más información, consulte [Desarrollar la red](develop.html) y [Despliegue de una red empresarial con el Plan inicial](develop_starter.html).
+Para obtener más información, consulte [Desarrollar la red](/docs/services/blockchain/develop.html) y [Despliegue de una red empresarial con el Plan inicial](/docs/services/blockchain/develop_starter.html).
 
 
 ## Despliegue de aplicaciones de ejemplo
@@ -161,13 +161,13 @@ Para obtener más información, consulte [Desarrollar la red](develop.html) y [D
 
 El Plan inicial le permite desplegar aplicaciones de ejemplo en la red con solo unas pulsaciones. Puede utilizar estos ejemplos para obtener más información sobre el código de encadenamiento y las redes empresariales de Hyperledger Composer, así como utilizarlos como puntos de partida para su propio desarrollo.
 
-Para obtener más información, consulte [Despliegue de aplicaciones de ejemplo](howto/prebuilt_samples.html).
+Para obtener más información, consulte [Despliegue de aplicaciones de ejemplo](/docs/services/blockchain/howto/prebuilt_samples.html).
 
 
 ## Supervisión de recursos de red
 {: #monitoring-resources}
 
-Si la aplicación solicita una transacción, podrá ver información de estado de la transacción en el Supervisor de red. Para obtener más información sobre la supervisión de red, consulte [Supervisión de una red](howto/monitor_network.html).
+Si la aplicación solicita una transacción, podrá ver información de estado de la transacción en el Supervisor de red. Para obtener más información sobre la supervisión de red, consulte [Supervisión de una red](/docs/services/blockchain/howto/monitor_network.html).
 
 
 ## Recuperación de credenciales de red y del perfil de conexión
@@ -186,7 +186,7 @@ Para recuperar sus credenciales de servicio, siga los pasos siguientes:
 ![Recuperación de credenciales de red](images/service_credentials.gif "Recuperación de credenciales de red")
 
 ### Recuperación en el supervisor de red
-Encontrará las credenciales de red en la pantalla "API" del supervisor de red. Para obtener más información sobre cómo utilizar las API, consulte [Cómo interactuar con la red con las API de Swagger](howto/swagger_apis.html).
+Encontrará las credenciales de red en la pantalla "API" del supervisor de red. Para obtener más información sobre cómo utilizar las API, consulte [Cómo interactuar con la red con las API de Swagger](/docs/services/blockchain/howto/swagger_apis.html).
 
 Puede recuperar el perfil de conexión en la pantalla "Visión general" del supervisor de red. Pulse el botón **Perfil de conexión** en la pantalla "Visión general" y aparecerá el perfil de conexión en una página nueva.
 
@@ -195,13 +195,13 @@ Puede recuperar el perfil de conexión en la pantalla "Visión general" del supe
 
 La plataforma {{site.data.keyword.blockchainfull_notm}} ofrece varias API REST en Swagger que puede utilizar para gestionar los nodos, canales, iguales y miembros de la red. Las aplicaciones pueden utilizar estas API para controlar los recursos de red importantes sin utilizar el Supervisor de red.
 
-Para obtener más información, consulte [Cómo interactuar con la red con las API de Swagger](howto/swagger_apis.html)
+Para obtener más información, consulte [Cómo interactuar con la red con las API de Swagger](/docs/services/blockchain/howto/swagger_apis.html)
 
 
 ## Restablecimiento de una red
 {: #resetting-network}
 
-Si desea borrar las configuraciones personalizadas, el código de encadenamiento en ejecución o las aplicaciones desplegadas, puede restablecer la red a la configuración predeterminada inicial. Para obtener más información, consulte [Restablecer la red](v10_dashboard.html#reset-network).
+Si desea borrar las configuraciones personalizadas, el código de encadenamiento en ejecución o las aplicaciones desplegadas, puede restablecer la red a la configuración predeterminada inicial. Para obtener más información, consulte [Restablecer la red](/docs/services/blockchain/v10_dashboard.html#reset-network).
 
 
 ## Migración de Plan inicial al Plan empresarial
@@ -209,12 +209,12 @@ Si desea borrar las configuraciones personalizadas, el código de encadenamiento
 
 Puede desplegar un `.bna`, código de encadenamiento y aplicaciones que se han probado en una red del Plan inicial en una red del Plan empresarial.
 
-Si tiene un archivo de archivado de red empresarial (`.bna`), siga las instrucciones para [desplegar una red empresarial en el Plan empresarial](./develop_enterprise.html). Si no dispone de un archivo `.bna`, utilice el mandato `composer network download` para recuperarlo de la instancia del Plan inicial. Para obtener más información sobre el mandato `composer network download`, consulte la [documentación de línea de mandatos de Hyperledger Composer ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://hyperledger.github.io/composer/latest/reference/commands){:new_window}.
+Si tiene un archivo de archivado de red empresarial (`.bna`), siga las instrucciones para [desplegar una red empresarial en el Plan empresarial](/docs/services/blockchain/develop_enterprise.html). Si no dispone de un archivo `.bna`, utilice el mandato `composer network download` para recuperarlo de la instancia del Plan inicial. Para obtener más información sobre el mandato `composer network download`, consulte la [documentación de línea de mandatos de Hyperledger Composer ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://hyperledger.github.io/composer/latest/reference/commands){:new_window}.
 
-El código de encadenamiento, que es similar a los archivos `.bna`, se desarrolla externamente. Para desplegar un código de encadenamiento que se prueba en una red del Plan inicial en el Plan empresarial, siga las instrucciones de [Instalación, creación de instancias y actualización de un código de encadenamiento](howto/install_instantiate_chaincode.html#installchaincode).
+El código de encadenamiento, que es similar a los archivos `.bna`, se desarrolla externamente. Para desplegar un código de encadenamiento que se prueba en una red del Plan inicial en el Plan empresarial, siga las instrucciones de [Instalación, creación de instancias y actualización de un código de encadenamiento](/docs/services/blockchain/howto/install_instantiate_chaincode.html#installchaincode).
 
 <!--
-As you can see in [Deploying sample applications](howto/prebuilt_samples.html), Starter Plan makes it easy to get a sample application integrated with your network by using Toolchain. This setup also allows for continuous integration by automatically updating your sample application whenever your forked application repo is changed. If you want to deploy this application into an Enterprise Plan network, you can copy your forked application repo into a new repo and then follow the instructions in [Deploying sample applications manually](howto/prebuilt_samples.html#deploy_sample_applications_manually).
+As you can see in [Deploying sample applications](/docs/services/blockchain/howto/prebuilt_samples.html), Starter Plan makes it easy to get a sample application integrated with your network by using Toolchain. This setup also allows for continuous integration by automatically updating your sample application whenever your forked application repo is changed. If you want to deploy this application into an Enterprise Plan network, you can copy your forked application repo into a new repo and then follow the instructions in [Deploying sample applications manually](/docs/services/blockchain/howto/prebuilt_samples.html#deploy_sample_applications_manually).
 -->
 
 Si despliega cualquier aplicación de ejemplo en la red del Plan inicial y desea desplegar esta aplicación en una red del Plan empresarial, puede copiar el repositorio bifurcado de aplicaciones en un nuevo repositorio y luego seguir las instrucciones de las aplicaciones de ejemplo para desplegarla en la red del Plan empresarial.
@@ -225,11 +225,11 @@ Si despliega cualquier aplicación de ejemplo en la red del Plan inicial y desea
 
 Si desea suprimir o abandonar una red, puede suprimir la instancia de servicio de blockchain desde el panel de control de {{site.data.keyword.cloud_notm}}.
 
-**Nota**: antes de abandonar una red, asegúrese de que no es miembro de ninguno de los canales de la red. De lo contrario, recibirá errores cuando abandone la red. Una eliminación de un miembro de un canal debe completar el proceso de actualización del canal. Para obtener más información sobre el proceso de actualización de un canal, consulte [Actualización de un canal](howto/create_channel.html#updating-a-channel).
+**Nota**: antes de abandonar una red, asegúrese de que no es miembro de ninguno de los canales de la red. De lo contrario, recibirá errores cuando abandone la red. Una eliminación de un miembro de un canal debe completar el proceso de actualización del canal. Para obtener más información sobre el proceso de actualización de un canal, consulte [Actualización de un canal](/docs/services/blockchain/howto/create_channel.html#updating-a-channel).
 
 
 <!--
 ## References
-* For more information about {{site.data.keyword.blockchainfull_notm}} offerings, see [Blockchain offerings](index.html).
+* For more information about {{site.data.keyword.blockchainfull_notm}} offerings, see [Blockchain offerings](/docs/services/blockchain/index.html).
 * For more information about Hyperledger Fabric V1.2, see [Hyperledger Fabric documentation ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/release-1.2/){:new_window}.
 -->

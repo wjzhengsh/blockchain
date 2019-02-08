@@ -52,14 +52,14 @@ L'en-tête **Actions** du tableau comporte des boutons qui permettent de démarr
 
 Les actions Arrêter et Démarrer ne sont pas disponibles pour un noeud de service de tri. En général, il n'est pas nécessaire d'arrêter et de démarrer des noeuds Homologues ou CA sur un réseau. Les opérations Arrêter et Démarrer sont fournies au cas où vous devez redémarrer un homologue, par exemple pour l'affichage dans un état nettoyé.
 
-Vous pouvez également consulter les journaux de composant en cliquant sur **Afficher les journaux** dans la liste déroulante sous l'en-tête **Actions**. Ces journaux présentent les appels de procédure entre les différentes ressources réseau et ils sont utiles pour le débogage et le traitement des incidents. Pour plus d'informations sur l'utilisation de vos journaux réseau, voir [Surveillance d'un réseau de blockchain](howto/monitor_network.html)
+Vous pouvez également consulter les journaux de composant en cliquant sur **Afficher les journaux** dans la liste déroulante sous l'en-tête **Actions**. Ces journaux présentent les appels de procédure entre les différentes ressources réseau et ils sont utiles pour le débogage et le traitement des incidents. Pour plus d'informations sur l'utilisation de vos journaux réseau, voir [Surveillance d'un réseau de blockchain](/docs/services/blockchain/howto/monitor_network.html)
 
 Pour comprendre les effets de démarrage et d'arrêt d'un homologue, vous pouvez par exemple les tester en arrêtant un homologue et en le ciblant avec une transaction ; vous verrez alors des erreurs de connectivité dans les journaux. Lorsque vous redémarrez l'homologue et relancez la transaction, vous verrez qu'une connexion est réussie. Vous
 pouvez aussi arrêter un homologue pendant une longue période alors que vos canaux continuent à effectuer des transactions. l'homologue est redémarré, vous remarquez une synchronisation du registre dès qu'il reçoit les blocs qui ont été validés alors qu'il était arrêté. Une fois que le registre est complètement synchronisé, vous pouvez procéder à des appels et des requêtes normaux.
 
 ### Configuration de l'homologue distant  
 
-Si vous déployez un homologue en dehors de {{site.data.keyword.cloud_notm}}, vous devez indiquer les informations de noeud final d'API de votre réseau pendant la configuration. Cliquez sur le bouton **Configuration de l'homologue distant** pour extraire les informations de noeud final d'API du réseau afin de configurer votre homologue. La fenêtre en incrustation fournit les informations de noeud final d'API : ID réseau, MSP de l'organisation, Nom de l'autorité de certification, URL de l'autorité de certification et certificat TLS de l'autorité de certification. Vous pouvez cliquer sur l'icône copier à la fin de chaque zone pour copier la valeur de la zone, ou cliquer sur le bouton **Télécharger** pour sauvegarder les valeurs de toutes les zones dans un fichier JSON. Pour plus d'informations, voir [A propos de {{site.data.keyword.blockchainfull_notm}} Platform pour Amazon Web Services](howto/remote_peer.html) et [A propose de {{site.data.keyword.blockchainfull_notm}} Platform pour {{site.data.keyword.cloud_notm}} Private](ibp-for-icp-about.html).
+Si vous déployez un homologue en dehors de {{site.data.keyword.cloud_notm}}, vous devez indiquer les informations de noeud final d'API de votre réseau pendant la configuration. Cliquez sur le bouton **Configuration de l'homologue distant** pour extraire les informations de noeud final d'API du réseau afin de configurer votre homologue. La fenêtre en incrustation fournit les informations de noeud final d'API : ID réseau, MSP de l'organisation, Nom de l'autorité de certification, URL de l'autorité de certification et certificat TLS de l'autorité de certification. Vous pouvez cliquer sur l'icône copier à la fin de chaque zone pour copier la valeur de la zone, ou cliquer sur le bouton **Télécharger** pour sauvegarder les valeurs de toutes les zones dans un fichier JSON. Pour plus d'informations, voir [A propos de {{site.data.keyword.blockchainfull_notm}} Platform pour Amazon Web Services](/docs/services/blockchain/howto/remote_peer.html) et [A propose de {{site.data.keyword.blockchainfull_notm}} Platform pour {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/ibp-for-icp-about.html).
 
 ### Profil de connexion
 {: #connection-profile}
@@ -70,7 +70,7 @@ homologues dont ils attendent une réponse.
 ### Ajout d'homologues
 {: #peers}
 
-Les membres du réseau déploient des [homologues](blockchain_component_overview.html#peer) pour stocker leurs copies de registre et exécuter du code blockchain pour interroger ou mettre à jour le registre. Si la règle de validation définit un homologue en tant qu'homologue d'adhésion, l'homologue renvoie également les résultats de la validation aux applications.
+Les membres du réseau déploient des [homologues](/docs/services/blockchain/blockchain_component_overview.html#peer) pour stocker leurs copies de registre et exécuter du code blockchain pour interroger ou mettre à jour le registre. Si la règle de validation définit un homologue en tant qu'homologue d'adhésion, l'homologue renvoie également les résultats de la validation aux applications.
 
 Cliquez sur le bouton **Ajouter des homologues** dans l'angle supérieur droit pour ajouter des noeuds homologue à votre réseau. Dans la fenêtre contextuelle "Ajouter des homologues", sélectionnez le nombre et la taille des noeuds homologue que vous voulez ajouter. Vous pouvez ajouter d'autres homologues pour vos organisations en fonction de vos besoins. Vous pouvez vous trouver dans différents scénarios lorsque vous avez besoin d'homologues supplémentaires. Par exemple, vous pouvez souhaiter que plusieurs homologues rejoignent le même canal à des fins de redondance. Chaque homologue traite les transactions du canal et leurs copies respectives du registre. Dans le cas où l'un des homologues est défaillant, les autres peuvent poursuivre le traitement des transactions et des demandes d'application. Vous pouvez équilibrer de manière symétrique toutes les demandes d'applications entre homologues, ou vous pouvez cibler différents homologues pour différentes fonctions. Par exemple, vous pouvez utiliser un homologue pour interroger le registre et utiliser un autre homologue pour traiter les adhésions pour les mises à jour du registre.
 
@@ -126,7 +126,7 @@ La **Figure 5** présente l'écran "Membres" initial qui affiche les certificats
 
 Les opérateurs peuvent gérer les certificats des membres d'une même institution sous l'onglet "Certificats". Cliquez sur **Ajouter le certificat** pour afficher l'écran "Ajouter le certificat". Donnez un nom à votre certificat, collez vos certificats côté client au format PEM dans la zone "Clé", puis cliquez sur **Soumettre**. Vous devez redémarrer vos homologues pour que les certificats côté client puissent être pris en compte.
 
-Pour plus d'informations sur la génération de votre clé de certificat, voir  [Inscription de votre application](v10_application.html#enroll-app).
+Pour plus d'informations sur la génération de votre clé de certificat, voir  [Inscription de votre application](/docs/services/blockchain/v10_application.html#enroll-app).
 
 
 ## Canaux
@@ -139,11 +139,11 @@ La **Figure 6** illustre l'écran de tableau de bord initial qui affiche une pr�
 ![Canaux](images/channels.png "Canaux")
 *Figure 6. Canaux*
 
-La création d'un canal entraîne la génération d'un registre spécifique à un canal. Pour plus d'informations, voir [Création d'un canal](howto/create_channel.html).
+La création d'un canal entraîne la génération d'un registre spécifique à un canal. Pour plus d'informations, voir [Création d'un canal](/docs/services/blockchain/howto/create_channel.html).
 
-Vous pouvez aussi sélectionner un canal existant afin d'afficher des détails plus précis sur ce canal, l'appartenance et le code blockchain actif. Pour plus d'informations, voir [Surveillance d'un réseau](howto/monitor_network.html).
+Vous pouvez aussi sélectionner un canal existant afin d'afficher des détails plus précis sur ce canal, l'appartenance et le code blockchain actif. Pour plus d'informations, voir [Surveillance d'un réseau](/docs/services/blockchain/howto/monitor_network.html).
 
-Si vous avez envoyé par téléchargement un nouveau certificat vers la plateforme à l'aide de l'[onglet "Certificats"](#certificates_tab) de l'écran "Membres", vous pouvez utiliser ce panneau pour ajouter le certificat à un canal. Cliquez sur **Synchroniser le certificat** dans la liste déroulante sous l'en-tête **Actions** en regard du canal concerné. Cela vous permet d'utiliser le canal, avec la capacité d'instancier un code blockchain sur le canal. Pour plus d'informations, voir [Envoi par téléchargement de certificats à {{site.data.keyword.blockchainfull_notm}} Platform](certificates.html#upload-certs) dans le tutoriel [Gestion des certificats](certificates.html).
+Si vous avez envoyé par téléchargement un nouveau certificat vers la plateforme à l'aide de l'[onglet "Certificats"](#certificates_tab) de l'écran "Membres", vous pouvez utiliser ce panneau pour ajouter le certificat à un canal. Cliquez sur **Synchroniser le certificat** dans la liste déroulante sous l'en-tête **Actions** en regard du canal concerné. Cela vous permet d'utiliser le canal, avec la capacité d'instancier un code blockchain sur le canal. Pour plus d'informations, voir [Envoi par téléchargement de certificats à {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/certificates.html#upload-certs) dans le tutoriel [Gestion des certificats](/docs/services/blockchain/certificates.html).
 
 
 ## Notifications
@@ -176,7 +176,7 @@ La **Figure 8** illustre l'écran "Autorité de certification" :
 ![Autorité de certification](images/CA_screen.png "Autorité de certification")
 *Figure 8. Autorité de certification*
 
-Cliquez sur le bouton **Génération de certificat** en regard de votre identité admin pour obtenir un nouveau certificat public et une clé privée auprès de votre autorité de certification. La zone **Certificat** contient le certificat public, également appelé signCert ou certificat d'inscription, juste au-dessus de la **clé privée**. Vous pouvez cliquer sur l'icône copier à la fin de chaque champ pour copier la valeur. Ce panneau peut être utilisé comme alternative à la génération d'une paire de clés publique et privée pour une application client qui utilise le logiciel SDK Fabric. Pour en savoir plus, voir le [tutoriel relatif au développement d'applications](v10_application.html#enroll-panel). **Notez** qu'{{site.data.keyword.blockchainfull_notm}} Platform ne stocke pas ces certificats. Vous devez les enregistrer et les stocker en lieu sûr.
+Cliquez sur le bouton **Génération de certificat** en regard de votre identité admin pour obtenir un nouveau certificat public et une clé privée auprès de votre autorité de certification. La zone **Certificat** contient le certificat public, également appelé signCert ou certificat d'inscription, juste au-dessus de la **clé privée**. Vous pouvez cliquer sur l'icône copier à la fin de chaque champ pour copier la valeur. Ce panneau peut être utilisé comme alternative à la génération d'une paire de clés publique et privée pour une application client qui utilise le logiciel SDK Fabric. Pour en savoir plus, voir le [tutoriel relatif au développement d'applications](/docs/services/blockchain/v10_application.html#enroll-panel). **Notez** qu'{{site.data.keyword.blockchainfull_notm}} Platform ne stocke pas ces certificats. Vous devez les enregistrer et les stocker en lieu sûr.
 
 Cliquez sur le bouton **Ajouter un utilisateur** pour enregistrer une nouvelle identité à votre organisation. Dans la fenêtre en incrustation **Ajouter un utilisateur**, renseignez les zones suivantes, puis cliquez sur **Soumettre**.
   - **ID d'inscription :** Il s'agit du nom de votre nouvelle identité, parfois appelée `ID inscription`. **Sauvegardez cette valeur** à des fins de configuration d'un homologue distant ou d'inscription d'une nouvelle application.
@@ -185,7 +185,7 @@ Cliquez sur le bouton **Ajouter un utilisateur** pour enregistrer une nouvelle i
   - **Affiliation :** Il doit s'agir de l'affiliation au sein de votre organisation, par exemple `org1`, à laquelle l'identité va appartenir.
   - **Nombre d'inscriptions maximum :** Vous pouvez utiliser cette zone pour limiter le nombre de fois où vous pouvez inscrire ou générer des certificats à l'aide de cette identité. Si vous laissez cette zone vide, la valeur par défaut est un nombre illimité d'inscriptions.
 
-Vous pouvez en savoir plus sur l'autorité de certification en consultant le tutoriel relatif à la [Gestion des certificats sur {{site.data.keyword.blockchainfull_notm}} Platform](certificates.html).
+Vous pouvez en savoir plus sur l'autorité de certification en consultant le tutoriel relatif à la [Gestion des certificats sur {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/certificates.html).
 
 
 ## API
@@ -198,7 +198,7 @@ La **Figure 9** illustre l'écran "API" :
 ![API](images/API_screen.png "API")
 *Figure 9. API*
 
-Cliquez sur le lien **Interface utilisateur swagger** pour ouvrir l'identificateur Swagger. Notez que vous devez autoriser l'interface utilisateur swagger à l'aide de vos données d'identification réseau (qui se trouvent sur la page d'API) avant d'exécuter les API. Pour plus de détails, voir [Interaction avec le réseau à l'aide d'API Swagger](howto/swagger_apis.html).
+Cliquez sur le lien **Interface utilisateur swagger** pour ouvrir l'identificateur Swagger. Notez que vous devez autoriser l'interface utilisateur swagger à l'aide de vos données d'identification réseau (qui se trouvent sur la page d'API) avant d'exécuter les API. Pour plus de détails, voir [Interaction avec le réseau à l'aide d'API Swagger](/docs/services/blockchain/howto/swagger_apis.html).
 
 ## Développement de Code
 {: #write-code}
@@ -210,7 +210,7 @@ La **Figure 10** illustre l'écran "Développement de code" :
 ![Développement de code](images/write_code.png "Développement de code")
 *Figure 10. Développement de code*
 
-Pour plus d'informations sur le développement et le déploiement de votre code avec le plan Enterprise, voir [Déploiement d'un réseau d'entreprise dans un plan Starter](develop_enterprise.html).
+Pour plus d'informations sur le développement et le déploiement de votre code avec le plan Enterprise, voir [Déploiement d'un réseau d'entreprise dans un plan Starter](/docs/services/blockchain/develop_enterprise.html).
 
 ## Installer le code
 {: #chaincode}
@@ -222,13 +222,13 @@ La **Figure 11** illustre l'écran "Installer le code" :
 ![Installer le code](images/chaincode_install_overview.png "Installer le code")
 *Figure 11. Installer le code*
 
-Un code blockchain est tout d'abord installé sur le système de fichiers d'un homologue, puis il est instancié sur un canal. Pour plus d'informations, voir [Installation, instanciation et mise à jour d'un code blockchain](howto/install_instantiate_chaincode.html).
+Un code blockchain est tout d'abord installé sur le système de fichiers d'un homologue, puis il est instancié sur un canal. Pour plus d'informations, voir [Installation, instanciation et mise à jour d'un code blockchain](/docs/services/blockchain/howto/install_instantiate_chaincode.html).
 
 
 ## Essayer les modèles
 {: #samples}
 
-Des modèles d'application vous permettent d'avoir une meilleure compréhension d'un réseau de blockchain et du développement d'application. Suivez les liens **Afficher sur GitHub** pour découvrir comment utiliser les modèles et les déployer sur {{site.data.keyword.blockchainfull_notm}} Platform. Pour plus d'informations sur le développement et le déploiement de vos modèles, voir [Déploiement de modèles d'application](howto/prebuilt_samples.html).
+Des modèles d'application vous permettent d'avoir une meilleure compréhension d'un réseau de blockchain et du développement d'application. Suivez les liens **Afficher sur GitHub** pour découvrir comment utiliser les modèles et les déployer sur {{site.data.keyword.blockchainfull_notm}} Platform. Pour plus d'informations sur le développement et le déploiement de vos modèles, voir [Déploiement de modèles d'application](/docs/services/blockchain/howto/prebuilt_samples.html).
 
 La **Figure 12** illustre l'écran "Essayer les modèles" :
 
@@ -250,9 +250,9 @@ La **Figure 13** affiche des informations sous l'onglet "Support" initial :
 ### Ressources de blockchain et forums de support
 {: #support-forums}
 
-Utilisez les ressources de l'onglet "Support" pour résoudre les problèmes et obtenir de l'aide auprès de {{site.data.keyword.IBM_notm}} et de la communauté  Fabric. Pour plus d'informations sur les liens de l'onglet "Support", voir  [Ressources et forums de support](ibmblockchain_support.html#resources) dans [Support](ibmblockchain_support.html).
+Utilisez les ressources de l'onglet "Support" pour résoudre les problèmes et obtenir de l'aide auprès de {{site.data.keyword.IBM_notm}} et de la communauté  Fabric. Pour plus d'informations sur les liens de l'onglet "Support", voir  [Ressources et forums de support](/docs/services/blockchain/ibmblockchain_support.html#resources) dans [Support](/docs/services/blockchain/ibmblockchain_support.html).
 
-[IBM dWAnswers ![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://developer.ibm.com/answers/smartspace/blockchain/) est un forum de communauté pour les utilisateurs de {{site.data.keyword.blockchainfull_notm}} Platform et d'Hyperledger Fabric et il est surveillé par des experts IBM. Vous pouvez rechercher des réponses à des questions préalablement posées ou soumettre une nouvelle question. Si vous ne parvenez pas à déboguer votre problème ou à obtenir une réponse à votre question, soumettez un cas sur le portail de service {{site.data.keyword.cloud_notm}}. Pour plus d'informations, voir  [Soumission de cas de support](ibmblockchain_support.html#support-cases).
+[IBM dWAnswers ![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://developer.ibm.com/answers/smartspace/blockchain/) est un forum de communauté pour les utilisateurs de {{site.data.keyword.blockchainfull_notm}} Platform et d'Hyperledger Fabric et il est surveillé par des experts IBM. Vous pouvez rechercher des réponses à des questions préalablement posées ou soumettre une nouvelle question. Si vous ne parvenez pas à déboguer votre problème ou à obtenir une réponse à votre question, soumettez un cas sur le portail de service {{site.data.keyword.cloud_notm}}. Pour plus d'informations, voir  [Soumission de cas de support](/docs/services/blockchain/ibmblockchain_support.html#support-cases).
 
 
 ### Notes sur l'édition de Fabric
@@ -321,7 +321,7 @@ Before Enterprise Plan upgrades to Fabric v1.1, all network peers store data in 
 
 To use CouchDB, your data must be stored in a data format that can be modeled in chaincode, such as JSON. If the decision is made to migrate from LevelDB to CouchDB, the {{site.data.keyword.blockchainfull_notm}} Platform will migrate your data from key-value format to the CouchDB format automatically.
 
-If you switch to CouchDB, you need to update your chaincode to take advantage of indexes and rich queries. For more information about CouchDB and how to set up indexes, see [Best practices when using CouchDB](../v10_application.html#couchdb-indices) in the Developing applications tutorial. For more information about updating chaincode in {{site.data.keyword.blockchainfull_notm}} Platform, see [Updating a chaincode](howto/install_instantiate_chaincode.html#updating-a-chaincode).
+If you switch to CouchDB, you need to update your chaincode to take advantage of indexes and rich queries. For more information about CouchDB and how to set up indexes, see [Best practices when using CouchDB](/docs/services/blockchain/v10_application.html#couchdb-indices) in the Developing applications tutorial. For more information about updating chaincode in {{site.data.keyword.blockchainfull_notm}} Platform, see [Updating a chaincode](/docs/services/blockchain/howto/install_instantiate_chaincode.html#updating-a-chaincode).
 
 -->
 

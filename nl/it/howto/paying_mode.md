@@ -22,7 +22,7 @@ lastupdated: "2018-08-31"
 {{site.data.keyword.blockchainfull}} Platform prevede un addebito mensile con costi per le adesioni e costi per i peer. I membri della rete possono pagare la fattura con i loro account {{site.data.keyword.cloud_notm}} che contengono lo spazio per creare l'istanza della rete. In alternativa, un membro della rete può coprire la fattura per altri membri nella rete o anche per tutti i membri e pagare per l'intera rete. Il pagatore può anche trasferire le fatture ad altri membri, se necessario.
 {:shortdesc}
 
-A seconda del piano di rete da te scelto e dalla quantità di risorse da te utilizzata, i tuoi pagamenti sono differenti. Per ulteriori informazioni sui prezzi, vedi [Prezzi](pricing.html).
+A seconda del piano di rete da te scelto e dalla quantità di risorse da te utilizzata, i tuoi pagamenti sono differenti. Per ulteriori informazioni sui prezzi, vedi [Prezzi](/docs/services/blockchain/howto/pricing.html).
 
 ## Prerequisiti
 {: #prereq}

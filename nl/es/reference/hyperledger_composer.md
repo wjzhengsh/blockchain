@@ -29,7 +29,7 @@ Hyperledger Composer se compone de un entorno de ejecución, una interfaz de lí
 
 Hyperledger Composer le permite modelar rápidamente su red empresarial actual, que contiene los activos existentes y las transacciones relacionadas con los mismos; los activos son bienes, servicios o propiedades tangibles o intangibles. Como parte de su modelo de red empresarial, defina las transacciones que pueden interactuar con activos. Las redes empresariales también incluyen los participantes que interactúan con las mismas, cada uno de los cuales se puede asociar a una identidad exclusiva, entre varias redes empresariales.
 
-Para obtener más información sobre cómo crear redes empresariales, consulte [Desarrollo de redes empresariales](../develop.html) o la [documentación de Hyperledger Composer ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger.github.io/composer/latest/introduction/introduction.html).
+Para obtener más información sobre cómo crear redes empresariales, consulte [Desarrollo de redes empresariales](/docs/services/blockchain/develop.html) o la [documentación de Hyperledger Composer ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger.github.io/composer/latest/introduction/introduction.html).
 
 ## Consultas
 

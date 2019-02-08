@@ -27,14 +27,14 @@ Mediante el entorno del desarrollador, puede modelar rápidamente y probar redes
 
 ## Antes de empezar
 
-Asegúrese de leer los apartados [Acerca del Plan inicial](./starter_plan.html) e [Iniciación al Plan inicial](./get_start_starter_plan.html). Asegúrese también de tener instalado el [entorno del desarrollador de la plataforma {{site.data.keyword.blockchainfull_notm}}](./develop_install.html) y de haber creado una instancia del Plan inicial de la plataforma {{site.data.keyword.blockchainfull_notm}} siguiendo las instrucciones del [Gobierno de la red del Plan inicial](./get_start_starter_plan.html).
+Asegúrese de leer los apartados [Acerca del Plan inicial](/docs/services/blockchain/starter_plan.html) e [Iniciación al Plan inicial](/docs/services/blockchain/get_start_starter_plan.html). Asegúrese también de tener instalado el [entorno del desarrollador de la plataforma {{site.data.keyword.blockchainfull_notm}}](/docs/services/blockchain/develop_install.html) y de haber creado una instancia del Plan inicial de la plataforma {{site.data.keyword.blockchainfull_notm}} siguiendo las instrucciones del [Gobierno de la red del Plan inicial](/docs/services/blockchain/get_start_starter_plan.html).
 
 Asegúrese de tener el nodo v8.9 o superior, npm v5.x, e Hyperledger Composer:
 
 - Si la red está en Fabric versión 1.2, utilice Hyperledger Composer v0.20.x.
 - Si la red está en Fabric versión 1.1, utilice Hyperledger Composer v0.19.x.  
 
-Puede encontrar la versión de Fabric abriendo la [ventana Preferencias de red](../v10_dashboard.html#network-preferences) en el supervisor de red.
+Puede encontrar la versión de Fabric abriendo la [ventana Preferencias de red](/docs/services/blockchain/v10_dashboard.html#network-preferences) en el supervisor de red.
 
 
 ## Paso uno: Recuperar el secreto de administración

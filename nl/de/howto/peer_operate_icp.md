@@ -17,7 +17,7 @@ lastupdated: "2018-12-07"
 
 ***[Ist diese Seite hilfreich? Teilen Sie uns Ihre Meinung mit.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
-Nach der Einrichtung eines Peers unter {{site.data.keyword.blockchainfull}} Platform on {{site.data.keyword.cloud_notm}} Private (ICP) müssen Sie verschiedene operative Schritte ausführen, bevor Ihr Peer Transaktionen zum Abfragen und Aufrufen des Ledgers für das Blockchain-Netz absetzen kann. Die Schritte umfassen das Hinzufügen Ihrer Organisation zu einem Kanal, das Hinzufügen Ihres Peers zum Kanal, das Installieren des Chaincodes auf dem Peer, die Instanziierung des Chaincodes auf dem Kanal und die Verbindung von Anwendungen mit dem Peer. Falls Sie Ihren Peer mit einem Starter Plan- oder Enterprise Plan-Netz verbinden wollen, lesen Sie den Abschnitt [Peers unter {{site.data.keyword.cloud_notm}} Private mit Starter Plan- oder Enterprise Plan- Netz betreiben](peer_operate_ibp.html#peer-operate_icp).
+Nach der Einrichtung eines Peers unter {{site.data.keyword.blockchainfull}} Platform on {{site.data.keyword.cloud_notm}} Private (ICP) müssen Sie verschiedene operative Schritte ausführen, bevor Ihr Peer Transaktionen zum Abfragen und Aufrufen des Ledgers für das Blockchain-Netz absetzen kann. Die Schritte umfassen das Hinzufügen Ihrer Organisation zu einem Kanal, das Hinzufügen Ihres Peers zum Kanal, das Installieren des Chaincodes auf dem Peer, die Instanziierung des Chaincodes auf dem Kanal und die Verbindung von Anwendungen mit dem Peer. Falls Sie Ihren Peer mit einem Starter Plan- oder Enterprise Plan-Netz verbinden wollen, lesen Sie den Abschnitt [Peers unter {{site.data.keyword.cloud_notm}} Private mit Starter Plan- oder Enterprise Plan- Netz betreiben](/docs/services/blockchain/howto/peer_operate_ibp.html#peer-operate_icp).
 {:shortdesc}
 
 Sie müssen einige vorausgesetzte Schritte über den ICP-Cluster ausführen, um Ihren Peer betreiben zu können.
@@ -37,7 +37,7 @@ Die Fabric-SDKs stellen den empfohlenen Pfad dar, wobei in den Anweisungen davon
 
 Wenn Ihre Organisation noch nicht Mitglied eines Konsortiums oder eines Kanals ist, können Sie diese Schritte zum [Erstellen eines Kanals](#create-channel) verwenden. Die Anweisungen führen Sie durch die [Vorbereitung einer Organisationsdefinition](#organization-definition). Diese Definition macht Sie zu einem Mitglied des Konsortiums, indem Sie zu einem Systemkanal eines Anordnungsknotens hinzugefügt werden. Anschließend können Sie einen neuen Kanal erstellen, indem Sie eine [Kanaltransaktion erstellen](#peer-icp-channeltx).
 <!--
-It is recommended that you deploy at least two instances of the peer Helm chart for [high availability](peer_icp.html#high-availability). Therefore, you need to follow these operations steps once for each peer. When you are ready to invoke and query chaincode from your application, connect to both peers to ensure that your [applications are highly available](../v10_application.html#ha-app).
+It is recommended that you deploy at least two instances of the peer Helm chart for [high availability](/docs/services/blockchain/howto/peer_icp.html#high-availability). Therefore, you need to follow these operations steps once for each peer. When you are ready to invoke and query chaincode from your application, connect to both peers to ensure that your [applications are highly available](/docs/services/blockchain/v10_application.html#ha-app).
 -->
 
 ## Voraussetzungen
@@ -126,7 +126,7 @@ Sie müssen Ihren Peerendpunkt im SDK oder im Fabric-CA-Client als Ziel verwende
   ```
   {:codeblock}
 
-**Hinweis:** Wenn Sie Ihren Peer hinter einer Firewall bereitstellen, müssen Sie einen Durchgriff öffnen, damit das Netz auf der Plattform einen TLS-Handshake mit Ihrem Peer durchführen kann. Sie müssen lediglich einen Durchgriff für den Knotenport aktivieren, der an Port 7051 Ihres Peers gebunden ist. Weitere Informationen enthält der Abschnitt [Endpunktinformationen des Peers ermitteln](peer_operate_ibp.html#peer-endpoint).
+**Hinweis:** Wenn Sie Ihren Peer hinter einer Firewall bereitstellen, müssen Sie einen Durchgriff öffnen, damit das Netz auf der Plattform einen TLS-Handshake mit Ihrem Peer durchführen kann. Sie müssen lediglich einen Durchgriff für den Knotenport aktivieren, der an Port 7051 Ihres Peers gebunden ist. Weitere Informationen enthält der Abschnitt [Endpunktinformationen des Peers ermitteln](/docs/services/blockchain/howto/peer_operate_ibp.html#peer-endpoint).
 
 ### TLS-Zertifikat des Peers herunterladen
 {: #peer-tls}
@@ -152,7 +152,7 @@ Sie müssen das TLS-Zertifikat Ihres Peers herunterladen und es an Ihre Befehlen
 
 Die Hyperledger Fabric-SDKs stellen eine leistungsstarke Gruppe von APIs zur Verfügung, die Anwendungen die Interaktion mit und den Betrieb von Blockchain-Netzen ermöglichen. Die aktuellste Version der Liste der unterstützten Sprachen und die vollständige Liste der verfügbaren APIs in den Fabric-SDKs finden Sie in der [Hyperledger Fabric SDK Community-Dokumentation ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/getting_started.html#hyperledger-fabric-sdks "Hyperledger Fabric SDK Community-Dokumentation"). Sie können die Fabric-SDKs verwenden, um Ihren Peer zu einem Kanal unter {{site.data.keyword.blockchainfull_notm}} Platform hinzuzufügen, einen Chaincode auf dem Peer zu installieren und den Chaincode auf einem Kanal zu instanziieren.
 
-Die folgenden Anweisungen verwenden das [Fabric Node-SDK ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://fabric-sdk-node.github.io/ "Fabric Node SDK"), um den Peer zu betreiben. Dabei wird davon ausgegangen, dass Sie bereits über Kenntnisse zu dem SDK verfügen. Sie können das [Lernprogramm 'Anwendungen entwickeln'](../v10_application.html) benutzen, um sich mit der Vorgehensweise zur Verwendung des Node-SDK vertraut zu machen. Außerdem dient es als Leitfaden für die Entwicklung von Anwendungen mit dem Peer, wenn Sie bereit sind zum Aufrufen und Abfragen des Chaincodes.
+Die folgenden Anweisungen verwenden das [Fabric Node-SDK ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://fabric-sdk-node.github.io/ "Fabric Node SDK"), um den Peer zu betreiben. Dabei wird davon ausgegangen, dass Sie bereits über Kenntnisse zu dem SDK verfügen. Sie können das [Lernprogramm 'Anwendungen entwickeln'](/docs/services/blockchain/v10_application.html) benutzen, um sich mit der Vorgehensweise zur Verwendung des Node-SDK vertraut zu machen. Außerdem dient es als Leitfaden für die Entwicklung von Anwendungen mit dem Peer, wenn Sie bereit sind zum Aufrufen und Abfragen des Chaincodes.
 
 ### Node-SDK installieren
 
@@ -170,13 +170,13 @@ Hierbei wird die Verwendung von Version 1.2 des Node-SDK empfohlen.
 
 Ihr Peer wurde mit dem integrierten signCert-Zertifikat Ihres Peeradministrators bereitgestellt. Hierdurch können Sie die Zertifikate und den MSP-Ordner des Peeradministrators verwenden, um den Peer zu betreiben.
 
-Suchen Sie nach den Zertifikaten, die Sie bei der [Eintragung des Peeradministrators](CA_operate.html#enroll-admin) erstellt haben. Falls Sie hierzu die Beispielbefehle ausgeführt haben, finden Sie den MSP-Ordner des Peeradministrators an der Position `$HOME/fabric-ca-client/peer-admin`.
+Suchen Sie nach den Zertifikaten, die Sie bei der [Eintragung des Peeradministrators](/docs/services/blockchain/howto/CA_operate.html#enroll-admin) erstellt haben. Falls Sie hierzu die Beispielbefehle ausgeführt haben, finden Sie den MSP-Ordner des Peeradministrators an der Position `$HOME/fabric-ca-client/peer-admin`.
   - Sie können den Benutzerkontext des Peeradministrators mit dem SDK unter Verwendung des signCert-Zertifikats (öffentlicher Schlüssel) und des privaten Schlüssels im MSP-Ordner erstellen. Diese Schlüssel finden Sie an den folgenden Positionen:
     - Das signCert-Zertifikat befindet sich im Ordner **signcerts**: `$HOME/fabric-ca-client/peer-admin/msp/signcerts`
     - Der private Schlüssel befindet sich im Ordner **keystore**: `$HOME/fabric-ca-client/peer-admin/msp/keystore`.
-    Ein Beispiel für die Bildung eines Benutzerkontextes und die Verwendung des SDK nur mit dem öffentlichen und dem privaten Schlüssel enthält der Abschnitt [Zertifkate mit Network Monitor generieren](../v10_application.html#enroll-panel).
+    Ein Beispiel für die Bildung eines Benutzerkontextes und die Verwendung des SDK nur mit dem öffentlichen und dem privaten Schlüssel enthält der Abschnitt [Zertifkate mit Network Monitor generieren](/docs/services/blockchain/v10_application.html#enroll-panel).
 
-<!-- You can also use the SDK to generate the peer admin signCert and private key using the endpoint information of CA on Starter Plan or Enterprise Plan and your [peer admin username and password](CA_operate.html#register-admin). -->
+<!-- You can also use the SDK to generate the peer admin signCert and private key using the endpoint information of CA on Starter Plan or Enterprise Plan and your [peer admin username and password](/docs/services/blockchain/howto/CA_operate.html#register-admin). -->
 
 ### TLS-Zertifikat des Peers an SDK übergeben
 {: #icp-peer-download-tlscert}
@@ -207,7 +207,7 @@ Falls Sie ein umfangreiches Netz verwenden, bei dem mehrere Peers zu unterschied
 ### TLS-Zertifikat des Anordnungsknotens an SDK übergeben
 {: #icp-orderer-download-tlscert}
 
-Um Kanälen beitreten und Transaktionen übergeben zu können, benötigen Sie außerdem das TLS-Zertifikat für den Anordnungsknoten Ihres Konsortiums. Befolgen Sie als Administrator des Anordnungsknotens die Anweisungen für den [Download des TLS-Zertifikats für den Anordnungsknoten](orderer_operate.html#orderer-tls).  Falls Sie die Beispielbefehle ausgeführt haben, finden Sie das TLS-Zertifikat des Peers an der Position `$HOME/fabric-ca-client/orderer-tls/orderertls.pem`. Wenn der Anordnungsknoten von einer anderen Organisation gesteuert wird, muss diese Ihnen das TLS-Zertifikat in einer externen Operation zur Verfügung stellen. Anschließend können Sie das TLS-Zertifikat in Ihre Anwendung importieren.
+Um Kanälen beitreten und Transaktionen übergeben zu können, benötigen Sie außerdem das TLS-Zertifikat für den Anordnungsknoten Ihres Konsortiums. Befolgen Sie als Administrator des Anordnungsknotens die Anweisungen für den [Download des TLS-Zertifikats für den Anordnungsknoten](/docs/services/blockchain/howto/orderer_operate.html#orderer-tls).  Falls Sie die Beispielbefehle ausgeführt haben, finden Sie das TLS-Zertifikat des Peers an der Position `$HOME/fabric-ca-client/orderer-tls/orderertls.pem`. Wenn der Anordnungsknoten von einer anderen Organisation gesteuert wird, muss diese Ihnen das TLS-Zertifikat in einer externen Operation zur Verfügung stellen. Anschließend können Sie das TLS-Zertifikat in Ihre Anwendung importieren.
 
 ```
 var ordererTLSCert = fs.readFileSync(path.join(__dirname, './orderertls.pem'));
@@ -217,7 +217,7 @@ var ordererTLSCert = fs.readFileSync(path.join(__dirname, './orderertls.pem'));
 ### Informationen zum Anordnungsknoten für SDK bereitstellen
 {: #orderer-SDK-endpoints}
 
-Um das SDK verwenden zu können, benötigen Sie außerdem die Endpunktinformationen der Anordnungsknoten in Ihrem Konsortium. Als Administrator des Anordnungsknotens können Sie mit diesen Anweisungen die [Endpunktinformationen des Anordnungsknotens abrufen](orderer_operate.html#orderer-endpoint). Wenn der Anordnungsknoten von einer anderen Organisation gesteuert wird, muss diese Ihnen die URL des Anordnungsknotens in einer externen Operation zur Verfügung stellen. Im folgenden Beispiel wird ein Anordnungsknoten als Endpunkt definiert und das TLS-Zertifikat des Anordnungsknotens an ihn übergeben.
+Um das SDK verwenden zu können, benötigen Sie außerdem die Endpunktinformationen der Anordnungsknoten in Ihrem Konsortium. Als Administrator des Anordnungsknotens können Sie mit diesen Anweisungen die [Endpunktinformationen des Anordnungsknotens abrufen](/docs/services/blockchain/howto/orderer_operate.html#orderer-endpoint). Wenn der Anordnungsknoten von einer anderen Organisation gesteuert wird, muss diese Ihnen die URL des Anordnungsknotens in einer externen Operation zur Verfügung stellen. Im folgenden Beispiel wird ein Anordnungsknoten als Endpunkt definiert und das TLS-Zertifikat des Anordnungsknotens an ihn übergeben.
 
 ```
 var orderer = fabric_client.newOrderer('grpcs://9.30.94.174:30167', { pem:  Buffer.from(ordererTLSCert).toString(), 'ssl-target-name-override': null});
@@ -232,24 +232,24 @@ You need to specify a `ssl-target-name-override` of `<something>.blockchain.com`
 
 Ihre Organisation muss Mitglied eines Kanals sein, damit Sie mit Ihrem Peer dem Kanal beitreten können. Falls Sie nicht Mitglied eines Kanals sind, können Sie die Anweisungen zum [Erstellen eines neuen Kanals](#create-channel) ausführen.
 
-Nachdem Ihre Organisation Mitglied eines Kanals geworden ist, befolgen Sie die Anweisungen für den [Beitritt Ihrer Peers zu einem Kanal](../v10_application.html#join-channel-sdk), der unter Verwendung des SKD erfolgt.
+Nachdem Ihre Organisation Mitglied eines Kanals geworden ist, befolgen Sie die Anweisungen für den [Beitritt Ihrer Peers zu einem Kanal](/docs/services/blockchain/v10_application.html#join-channel-sdk), der unter Verwendung des SKD erfolgt.
 
 ### SDK zum Installieren des Chaincodes auf dem Peer verwenden
 {: #peer-install-cc-sdk}
 
-Führen Sie die folgenden Anweisungen aus, um das SDK zum [Installieren eines Chaincodes](../v10_application.html#install-cc-sdk) auf Ihrem Peer zu verwenden.
+Führen Sie die folgenden Anweisungen aus, um das SDK zum [Installieren eines Chaincodes](/docs/services/blockchain/v10_application.html#install-cc-sdk) auf Ihrem Peer zu verwenden.
 
 ### SDK zur Instanziierung des Chaincodes auf dem Kanal verwenden
 {: #peer-instantiate-cc-sdk}
 
-Nur ein Mitglied des Kanals muss den Chaincode instanziieren oder aktualisieren. Aus diesem Grund kann jedes Mitglied des Kanals, auf dessen Peers der Chaincode installiert ist, den Chaincode instanziieren und Bewilligungsrichtlinien angeben. Wenn Sie den Peer allerdings zum Instanziieren des Chaincodes auf einem Kanal verwenden wollen, dann können Sie das SDK benutzen und die Anweisungen im Abschnitt zum [Instanziieren eines Chaincodes](../v10_application.html#instantiate-cc-sdk) befolgen.
+Nur ein Mitglied des Kanals muss den Chaincode instanziieren oder aktualisieren. Aus diesem Grund kann jedes Mitglied des Kanals, auf dessen Peers der Chaincode installiert ist, den Chaincode instanziieren und Bewilligungsrichtlinien angeben. Wenn Sie den Peer allerdings zum Instanziieren des Chaincodes auf einem Kanal verwenden wollen, dann können Sie das SDK benutzen und die Anweisungen im Abschnitt zum [Instanziieren eines Chaincodes](/docs/services/blockchain/v10_application.html#instantiate-cc-sdk) befolgen.
 
 ## Befehlszeilenschnittstelle zum Betrieb des Peers verwenden
 {: #peer-cli-operate}
 
 Sie können den Peer auch über die Befehlszeile betreiben, indem Sie die Fabric-Binärdateien für Peers verwenden.
 
-Ihr Peer wurde mit dem integrierten signCert-Zertifikat Ihres Peeradministrators bereitgestellt, wodurch diese Identität den Peer betreiben darf. Die folgenden Anweisungen verwenden den MSP-Ordner des Peeradministrators, der beim [Bereitstellen Ihres Peers](CA_operate.html#register-admin) generiert wurde, um den Peer zu einem Kanal hinzuzufügen, einen Chaincode auf dem Peer zu installieren und dann den Chaincode in einem Kanal zu instanziieren.
+Ihr Peer wurde mit dem integrierten signCert-Zertifikat Ihres Peeradministrators bereitgestellt, wodurch diese Identität den Peer betreiben darf. Die folgenden Anweisungen verwenden den MSP-Ordner des Peeradministrators, der beim [Bereitstellen Ihres Peers](/docs/services/blockchain/howto/CA_operate.html#register-admin) generiert wurde, um den Peer zu einem Kanal hinzuzufügen, einen Chaincode auf dem Peer zu installieren und dann den Chaincode in einem Kanal zu instanziieren.
 
 ### Fabric-Client "peer" herunterladen
 {: #peer-client}
@@ -299,7 +299,7 @@ cd $HOME/fabric-ca-client/peer-admin/msp
 ```
 {:codeblock}
 
-Bevor Sie den Peer betreiben können, müssen Sie einige Management-Tasks für die Zertifikate auf Ihrer lokalen Maschine ausführen. Außerdem müssen Sie sicherstellen, dass Sie vom Peer aus auf die TLS-Zertifikate zugreifen können. Weitere Angaben über die zu verwendenden Zertifikate enthält der Abschnitt [Membership Service Providers (MSPs)](CA_operate.html#msp) unter [Zertifizierungsstelle in {{site.data.keyword.cloud_notm}} Private betreiben](CA_operate.html).
+Bevor Sie den Peer betreiben können, müssen Sie einige Management-Tasks für die Zertifikate auf Ihrer lokalen Maschine ausführen. Außerdem müssen Sie sicherstellen, dass Sie vom Peer aus auf die TLS-Zertifikate zugreifen können. Weitere Angaben über die zu verwendenden Zertifikate enthält der Abschnitt [Membership Service Providers (MSPs)](/docs/services/blockchain/howto/CA_operate.html#msp) unter [Zertifizierungsstelle in {{site.data.keyword.cloud_notm}} Private betreiben](/docs/services/blockchain/howto/CA_operate.html).
 
 1. Versetzen Sie das signCert-Zertifikat für den Peeradministrator in einen neuen Ordner namens `admincerts`:
 
@@ -312,7 +312,7 @@ Bevor Sie den Peer betreiben können, müssen Sie einige Management-Tasks für d
 
 2. Stellen Sie sicher, dass Sie das [TLS-Zertifikat des Peers heruntergeladen](#peer-tls) haben und in der Befehlszeile darauf verweisen können. Wenn Sie die Beispielbefehle in dieser Dokumentation befolgt haben, befindet sich das TLS-Zertifikat in der Datei `$HOME/fabric-ca-client/peer-tls/peertls.pem`.
 
-3. Sie müssen außerdem auf das TLS-Zertifikat des Anordnungsknotens verweisen. Befolgen Sie als Administrator des Anordnungsknotens die Anweisungen für den [Download des TLS-Zertifikats für den Anordnungsknoten](orderer_operate.html#orderer-tls).  Wenn der Anordnungsknoten von einer anderen Organisation gesteuert wird, muss diese Ihnen das TLS-Zertifikat in einer externen Operation zur Verfügung stellen. Speichern Sie dieses Zertifikat an einer Position, unter der Sie in zukünftigen Befehlen darauf verweisen können.
+3. Sie müssen außerdem auf das TLS-Zertifikat des Anordnungsknotens verweisen. Befolgen Sie als Administrator des Anordnungsknotens die Anweisungen für den [Download des TLS-Zertifikats für den Anordnungsknoten](/docs/services/blockchain/howto/orderer_operate.html#orderer-tls).  Wenn der Anordnungsknoten von einer anderen Organisation gesteuert wird, muss diese Ihnen das TLS-Zertifikat in einer externen Operation zur Verfügung stellen. Speichern Sie dieses Zertifikat an einer Position, unter der Sie in zukünftigen Befehlen darauf verweisen können.
 
 Durch einen Befehl "tree" können Sie prüfen, ob Sie diese Schritte ausgeführt haben. Navigieren Sie zu dem Verzeichnis, in dem Sie Ihre Zertifikate gespeichert haben. Der Befehl "tree" sollte ein Ergebnis ähnlich der folgenden Struktur generieren:
 ```
@@ -374,7 +374,7 @@ Nachdem alle Zertifikate an die erforderliche Position verschoben wurden, müsse
 
     Durch das Festlegen dieser Variablen können Sie die Befehle mit dem Peer-Client in jedem beliebigen Verzeichnis ausführen.
 
-3. Sie benötigen die Endpunktinformationen für den Anordnungsknoten. Als Administrator des Anordnungsknotens können Sie mit diesen Anweisungen die [Endpunktinformationen des Anordnungsknotens abrufen](orderer_operate.html#orderer-endpoint). Wenn der Anordnungsknoten von einer anderen Organisation gesteuert wird, muss diese Ihnen die URL des Anordnungsknotens in einer externen Operation zur Verfügung stellen. 
+3. Sie benötigen die Endpunktinformationen für den Anordnungsknoten. Als Administrator des Anordnungsknotens können Sie mit diesen Anweisungen die [Endpunktinformationen des Anordnungsknotens abrufen](/docs/services/blockchain/howto/orderer_operate.html#orderer-endpoint). Wenn der Anordnungsknoten von einer anderen Organisation gesteuert wird, muss diese Ihnen die URL des Anordnungsknotens in einer externen Operation zur Verfügung stellen. 
 
 4. [Rufen Sie die Endpunktinformationen des Peers ab](#peer-endpoint). Diese URL wird zum Festlegen der Umgebungsvariablen `PEERADDR` verwendet. Sie müssen die Angabe `http://` am Anfang weglassen.
 
@@ -571,7 +571,7 @@ Mit den **kubectl**-Befehlen können Sie den Peer, der unter ICP ausgeführt wir
 ## Kanal erstellen
 {: #create-channel}
 
-Wenn Ihre Organisation noch nicht Mitglied eines Konsortiums oder eines Kanals ist, können Sie die nachfolgenden Schritte verwenden, um einen Kanal zu erstellen. Sie können diese Schritte auch verwenden, um einen vorhandenen Kanal zu aktualisieren. Die Anweisungen führen Sie durch die [Vorbereitung einer Organisationsdefinition](#organization-definition). Diese Definition macht Sie zu einem [Mitglied des Konsortiums](orderer_operate.html#add-organizations-to-consortium), indem Sie zu einem Systemkanal eines Anordnungsknotens hinzugefügt werden. Anschließend können Sie einen neuen Kanal erstellen, indem Sie eine [Kanaltransaktion erstellen](#peer-icp-channeltx).
+Wenn Ihre Organisation noch nicht Mitglied eines Konsortiums oder eines Kanals ist, können Sie die nachfolgenden Schritte verwenden, um einen Kanal zu erstellen. Sie können diese Schritte auch verwenden, um einen vorhandenen Kanal zu aktualisieren. Die Anweisungen führen Sie durch die [Vorbereitung einer Organisationsdefinition](#organization-definition). Diese Definition macht Sie zu einem [Mitglied des Konsortiums](/docs/services/blockchain/howto/orderer_operate.html#add-organizations-to-consortium), indem Sie zu einem Systemkanal eines Anordnungsknotens hinzugefügt werden. Anschließend können Sie einen neuen Kanal erstellen, indem Sie eine [Kanaltransaktion erstellen](#peer-icp-channeltx).
 
 Wenn Sie dem Konsortium bereits beigetreten sind, müssen Sie nur den Schritt zur Vorbereitung der Kanaltransaktion ausführen. Ein anderes Mitglied des Konsortiums kann ebenfalls einen neuen Kanal erstellen, dessen Mitglied Ihre Organisation ist. Sie können die Organisationsdefinition aktualisieren, wenn Sie Aktualisierungen an das Konsortium senden müssen, beispielsweise zum Definieren neuer Ankerpeers, zum Hinzufügen neuer Administratorzertifikate oder zum Aktualisieren Ihres Verschlüsselungsmaterials.
 
@@ -607,7 +607,7 @@ Sobald Sie Ihre Komponenten bereitgestellt haben, kann Ihre Organisation einem K
 
 ### Verschlüsselungsmaterial vorbereiten
 
-Bevor Sie eine Organisationsdefinition vorbereiten, müssen Sie sich registrieren und den [Administrator Ihrer Peers](CA_operate.html#register-admin) eintragen. Navigieren Sie zu dem Verzeichnis, in dem Sie den MSP-Ordner für den Peeradministrator erstellt haben. Bei den Beispielschritten wurde dieser Ordner an der Position `$HOME/fabric-ca-client/peer-admin/msp` erstellt. Innerhalb dieses Ordners müssen Sie einige zusätzliche Schritte ausführen, damit der MSP durch das Tool `configtxgen` verwendet werden kann.
+Bevor Sie eine Organisationsdefinition vorbereiten, müssen Sie sich registrieren und den [Administrator Ihrer Peers](/docs/services/blockchain/howto/CA_operate.html#register-admin) eintragen. Navigieren Sie zu dem Verzeichnis, in dem Sie den MSP-Ordner für den Peeradministrator erstellt haben. Bei den Beispielschritten wurde dieser Ordner an der Position `$HOME/fabric-ca-client/peer-admin/msp` erstellt. Innerhalb dieses Ordners müssen Sie einige zusätzliche Schritte ausführen, damit der MSP durch das Tool `configtxgen` verwendet werden kann.
 
 1. Kopieren Sie Ihr TLS-Zertifikat aus Ihrer Zertifizierungsstelle und legen Sie es in einem neuen Ordner namens `tlscacerts` ab.
 
@@ -670,7 +670,7 @@ Organizations:
 ```
 {:codeblock}
 
-Diese Datei enthält die Informationen, die Ihre Organisation innerhalb des Konsortiums definieren. Eine komplexere Version dieser Datei ist außerdem im Ordner `/config` des [heruntergeladenen Fabric-Clients "peer"](peer_operate_icp.html#peer-client) verfügbar. Sie können diese Datei bearbeiten, aber auch durch das obige Beispiel ersetzen. Notieren Sie sich die Position dieses Ordners `/config`, die nachfolgend als Wert für `FABRIC_CFG_PATH` festgelegt wird. Bearbeiten Sie den Abschnitt `Organizations` dieser Datei und legen Sie die folgenden Werte fest:
+Diese Datei enthält die Informationen, die Ihre Organisation innerhalb des Konsortiums definieren. Eine komplexere Version dieser Datei ist außerdem im Ordner `/config` des [heruntergeladenen Fabric-Clients "peer"](/docs/services/blockchain/howto/peer_operate_icp.html#peer-client) verfügbar. Sie können diese Datei bearbeiten, aber auch durch das obige Beispiel ersetzen. Notieren Sie sich die Position dieses Ordners `/config`, die nachfolgend als Wert für `FABRIC_CFG_PATH` festgelegt wird. Bearbeiten Sie den Abschnitt `Organizations` dieser Datei und legen Sie die folgenden Werte fest:
 
 - `Name:` Diesen Wert können Sie für Ihre Organisation frei wählen.
 
@@ -716,17 +716,17 @@ configtxgen -printOrg org1 > $HOME/fabric-ca-client/org-definitions/org1definiti
 ```
 {:codeblock}
 
-Wenn dieser Befehl erfolgreich ausgeführt wird, gibt das Tool `configtxgen` die Organisationsdefinition im JSON-Format aus. Diese Datei müssen Sie in einer externen Operation an die Organisation des Anordnungsknotens senden, um dem Konsortium beizutreten. Die Organisation des Anordungsknotens kann anschließend [ein Konsortium gründen oder einem bestehenden Konsortium beitreten](orderer_operate.html#consortium), indem die Definition zum Systemkanal hinzugefügt wird; hierdurch können Sie neue Kanäle erstellen und von anderen Konsortiumsmitgliedern zu Kanälen hinzugefügt werden.
+Wenn dieser Befehl erfolgreich ausgeführt wird, gibt das Tool `configtxgen` die Organisationsdefinition im JSON-Format aus. Diese Datei müssen Sie in einer externen Operation an die Organisation des Anordnungsknotens senden, um dem Konsortium beizutreten. Die Organisation des Anordungsknotens kann anschließend [ein Konsortium gründen oder einem bestehenden Konsortium beitreten](/docs/services/blockchain/howto/orderer_operate.html#consortium), indem die Definition zum Systemkanal hinzugefügt wird; hierdurch können Sie neue Kanäle erstellen und von anderen Konsortiumsmitgliedern zu Kanälen hinzugefügt werden.
 
 ## Kanaltransaktion erstellen
 {: #peer-icp-channeltx}
 
-Bevor Sie einen neuen Kanal erstellen können, muss Ihre Organisation eine [Organisationsdefinition](#organization-definition) vorbereitet haben und Mitglied des Konsortiums geworden sein. Befolgen Sie diese Anweisungen, wenn Sie ein [Konsortium gründen oder einem Konsortium beitreten](orderer_operate.html#consortium) wollen. Mitglieder des Konsortiums können ohne großen Aufwand zu neuen Kanälen hinzugefügt werden, falls ihre Organisation bereits zum Systemkanal hinzugefügt wurde. Organisationen, die nicht Mitglied des Systemkanals sind, können einem Kanal nur manuell beitreten, indem sie ihre Organisationsdefinition mithilfe einer [Kanalaktualisierungsanforderung ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/channel_update_tutorial.html) hinzufügen. Sie können diese Schritte auch verwenden, um einen vorhandenen Kanal zu aktualisieren.
+Bevor Sie einen neuen Kanal erstellen können, muss Ihre Organisation eine [Organisationsdefinition](#organization-definition) vorbereitet haben und Mitglied des Konsortiums geworden sein. Befolgen Sie diese Anweisungen, wenn Sie ein [Konsortium gründen oder einem Konsortium beitreten](/docs/services/blockchain/howto/orderer_operate.html#consortium) wollen. Mitglieder des Konsortiums können ohne großen Aufwand zu neuen Kanälen hinzugefügt werden, falls ihre Organisation bereits zum Systemkanal hinzugefügt wurde. Organisationen, die nicht Mitglied des Systemkanals sind, können einem Kanal nur manuell beitreten, indem sie ihre Organisationsdefinition mithilfe einer [Kanalaktualisierungsanforderung ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/channel_update_tutorial.html) hinzufügen. Sie können diese Schritte auch verwenden, um einen vorhandenen Kanal zu aktualisieren.
 
 ### Neuen Kanal gründen
 {: #peer-icp-create-channel}
 
-Um einen neuen Kanal zu gründen, muss eine Organisation einen Transaktionsvorschlag für eine Kanalaktualisierung mit dem Tool [configtxgen ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/configtxgen.html "configtxgen") erstellen. Dieses Tool verarbeitet eine Datei `configtx.yaml`, in der die Mitglieder des neuen Kanals definiert sind. Ein Beispiel für die Datei `configtx.yaml` ist nachfolgend dargestellt. Eine komplexere Version dieser Datei ist außerdem im Ordner `/config` des [heruntergeladenen Fabric-Clients "peer"](peer_operate_icp.html#peer-client) verfügbar. Sie können diese Datei bearbeiten, aber auch durch das Beispiel ersetzen. Notieren Sie sich die Position dieses Ordners `/config`, die nachfolgend als Wert für `FABRIC_CFG_PATH` festgelegt wird. 
+Um einen neuen Kanal zu gründen, muss eine Organisation einen Transaktionsvorschlag für eine Kanalaktualisierung mit dem Tool [configtxgen ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/configtxgen.html "configtxgen") erstellen. Dieses Tool verarbeitet eine Datei `configtx.yaml`, in der die Mitglieder des neuen Kanals definiert sind. Ein Beispiel für die Datei `configtx.yaml` ist nachfolgend dargestellt. Eine komplexere Version dieser Datei ist außerdem im Ordner `/config` des [heruntergeladenen Fabric-Clients "peer"](/docs/services/blockchain/howto/peer_operate_icp.html#peer-client) verfügbar. Sie können diese Datei bearbeiten, aber auch durch das Beispiel ersetzen. Notieren Sie sich die Position dieses Ordners `/config`, die nachfolgend als Wert für `FABRIC_CFG_PATH` festgelegt wird. 
 ```
 # Copyright IBM Corp. All Rights Reserved.
 #

@@ -28,7 +28,7 @@ Esta guía aborda el siguiente paso del ciclo de vida de la red empresarial, es 
 
 Asegúrese de que ha instalado el entorno de desarrollador de {{site.data.keyword.blockchainfull_notm}} y de estar familiarizado con el desarrollo y despliegue de redes empresariales. Dispone de instrucciones sobre cómo escribir redes empresariales en la [documentación de Hyperledger Composer](https://hyperledger.github.io/composer/latest/business-network/business-network-index).
 
-Necesita acceso a una instancia del Plan empresarial de la plataforma {{site.data.keyword.blockchainfull_notm}} y de tener creados los iguales de antemano. Para obtener más información sobre el Plan empresarial de la plataforma {{site.data.keyword.blockchainfull_notm}}, consulte la [visión general del Plan empresarial](./enterprise_plan.html).
+Necesita acceso a una instancia del Plan empresarial de la plataforma {{site.data.keyword.blockchainfull_notm}} y de tener creados los iguales de antemano. Para obtener más información sobre el Plan empresarial de la plataforma {{site.data.keyword.blockchainfull_notm}}, consulte la [visión general del Plan empresarial](/docs/services/blockchain/enterprise_plan.html).
 
 ## Paso uno: Crear un perfil de conexión para la plataforma {{site.data.keyword.blockchainfull_notm}}
 

@@ -25,7 +25,7 @@ Para obtener una visión general de alto nivel de los componentes de una red bas
 
 *Aunque este vídeo se centra en los componentes desde la perspectiva de las redes de Plan inicial o empresarial, la información sigue siendo adecuada en gran medida para la solución gestionada por el cliente de IBP en ICP (plataforma IBM Cloud).*
 
-Para los fines de esta visión general, nos centraremos solo en las entidades emisoras de certificados (CA), clasificadores, iguales, contratos inteligentes y aplicaciones. Como puede ver en el tema [Guía de despliegue de la plataforma {{site.data.keyword.blockchainfull_notm}} para ICP](ibp_for_icp_deployment_guide.html), esta secuencia no es arbitraria; refleja la secuencia en la que desplegarán los componentes de una red basada en Fabric.
+Para los fines de esta visión general, nos centraremos solo en las entidades emisoras de certificados (CA), clasificadores, iguales, contratos inteligentes y aplicaciones. Como puede ver en el tema [Guía de despliegue de la plataforma {{site.data.keyword.blockchainfull_notm}} para ICP](/docs/services/blockchain/ibp_for_icp_deployment_guide.html), esta secuencia no es arbitraria; refleja la secuencia en la que desplegarán los componentes de una red basada en Fabric.
 
 ## Entidades emisoras de certificados
 {: #ca}

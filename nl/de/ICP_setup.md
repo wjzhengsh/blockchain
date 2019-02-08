@@ -94,4 +94,4 @@ Führen Sie die folgenden Schritte aus, um {{site.data.keyword.cloud_notm}} Priv
 
 2. Installieren Sie die CLI von IBM Cloud Private [3.1.0 ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/manage_cluster/install_cli.html), um die Zertifizierungsstelle zu installieren und zu betreiben.
 
-Nach der Installation von ICP können Sie mit dem [Import des Helm-Diagramms für {{site.data.keyword.blockchainfull_notm}} Platform for ICP](howto/helm_install_icp.html) in Ihren ICP-Cluster fortfahren.
+Nach der Installation von ICP können Sie mit dem [Import des Helm-Diagramms für {{site.data.keyword.blockchainfull_notm}} Platform for ICP](/docs/services/blockchain/howto/helm_install_icp.html) in Ihren ICP-Cluster fortfahren.

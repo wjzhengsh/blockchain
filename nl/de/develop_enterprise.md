@@ -28,7 +28,7 @@ Dieses Lernprogramm erläutert den nächsten Schritt des Lebenszyklus eines Unte
 
 Stellen Sie sicher, dass Sie die {{site.data.keyword.blockchainfull_notm}}-Entwicklerumgebung installiert haben und mit der Entwicklung und Bereitstellung von Unternehmensnetzen vertraut sind. Anleitungen zum Schreiben von Unternehmensnetzen sind in der [Hyperledger Composer-Dokumentation](https://hyperledger.github.io/composer/latest/business-network/business-network-index) verfügbar.
 
-Sie benötigen Zugriff auf eine Enterprise Plan-Instanz von {{site.data.keyword.blockchainfull_notm}} Platform und müssen bereits Ihre Peers erstellt haben. Weitere Informationen zum {{site.data.keyword.blockchainfull_notm}} Platform Enterprise Plan finden Sie in der [Übersicht zu Enterprise Plan](./enterprise_plan.html).
+Sie benötigen Zugriff auf eine Enterprise Plan-Instanz von {{site.data.keyword.blockchainfull_notm}} Platform und müssen bereits Ihre Peers erstellt haben. Weitere Informationen zum {{site.data.keyword.blockchainfull_notm}} Platform Enterprise Plan finden Sie in der [Übersicht zu Enterprise Plan](/docs/services/blockchain/enterprise_plan.html).
 
 ## Schritt 1: Verbindungsprofil für {{site.data.keyword.blockchainfull_notm}} Platform erstellen
 
