@@ -22,10 +22,28 @@ lastupdated: "2019-02-08"
 ## February 8, 2019
 {: #whats-new-2-08-2019}
 
-{{site.data.keyword.blockchainfull}} Platform releases a free 2.0 beta, the next generation of {{site.data.keyword.blockchainfull_notm}} Platform solutions that enables you to deploy, operate, and monitor your blockchain network. {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta includes a new user interface console, that can be used to deploy and manage blockchain components in your own {{site.data.keyword.IBM_notm}} Kubernetes Service cluster on {{site.data.keyword.cloud_notm}}.
+{{site.data.keyword.blockchainfull}} Platform releases a free 2.0 beta, the next generation of {{site.data.keyword.blockchainfull_notm}} Platform solutions that enables you to deploy, operate, and monitor your blockchain network. {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta includes a new user interface console, that can be used to deploy and manage blockchain components in your own {{site.data.keyword.IBM_notm}} Kubernetes Service cluster on {{site.data.keyword.cloud_notm}}. The {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta will allow you to:
 
-- Information about the {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta is available in [About {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta](/docs/services/blockchain/howto/ibp-console.html#ibp-console-overview).
-- Instructions on how to deploy the free 2.0 beta release into an {{site.data.keyword.IBM_notm}} Kubernetes Service cluster is available in [Getting started with {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks).
+**Build your network faster and easier within a seamless experience**
+
+*	Smooth integration between smart contract development (VS Code) and network management
+*	Simplified DevOps allows you to move from development to test to production from a single console
+*	Support for writing smart contracts in Javascript, Java, and Go languages
+
+**Operate and govern networks with total control**
+
+*	Deploy only the blockchain components you need (peer, ordering service, Certificate Authority)
+*	Redesigned console lets you manage network components in one place, no matter where they are deployed
+*	Maintain complete control of your identities, ledger, and smart contracts
+
+**Grow distributed networks with ease with newly enabled multi-cloud flexibility**
+
+*	Connect to nodes running in any environment (on-premises, public, hybrid clouds)
+*	Easily connect a single peer to multiple industry networks
+*	Start small, pay as you grow for what you use with no upfront investment, and upgrade easily through Kubernetes
+
+- More information about the {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta is available in [About {{site.data.keyword.blockchainfull_notm}} Platform 2.0](/docs/services/blockchain/howto/ibp-console.html#ibp-console-overview).
+- Instructions on how to deploy the free 2.0 beta release into an {{site.data.keyword.IBM_notm}} Kubernetes Service cluster is available in [Getting started with {{site.data.keyword.blockchainfull_notm}} Platform 2.0](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks).
 - New tutorials for using the {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta are available in the **{{site.data.keyword.blockchainfull_notm}} Platform 2.0** subsection under the **HOW TO** category.
   * [Build a network tutorial](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network) guides you through the process of hosting a network by creating an orderer and peer.
   * [Join a network tutorial](/docs/services/blockchain/howto/ibp-console-join-network.html#ibp-console-join-network) explains how to  joining an existing network by creating a peer and joining it to a channel.
