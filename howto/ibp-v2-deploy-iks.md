@@ -34,8 +34,8 @@ lastupdated: "2019-02-08"
 
 Before you deploy the console, ensure that you understand the following considerations:
 
-- {{site.data.keyword.blockchainfull_notm}} Platform 2.0 is built by using Hyperledger Fabric v1.4.
-- All peers deployed using {{site.data.keyword.blockchainfull_notm}} Platform 2.0 use CouchDB as their state database.
+- {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta is built by using Hyperledger Fabric v1.4.
+- All peers deployed using the free 2.0 beta use CouchDB as their state database.
 - You have the option to use a free Kubernetes cluster for evaluation of the beta offering, however capacity and performance are limited, none of your data can be migrated, and the cluster is deleted after 30 days.
 - You are responsible for the management of health monitoring, security, and logging  of your Kubernetes cluster. See this [information ![External link icon](../images/external_link.svg "External link icon")](https://console.bluemix.net/docs/containers/cs_responsibilities.html#your-responsibilities-by-using-ibm-cloud-kubernetes-service "Cluster management responsibilities") for details on what {{site.data.keyword.cloud_notm}} manages and what you are responsible for.
 - You are also responsible for monitoring the resource usage of your Kubernetes cluster by using the Kubernetes dashboard. If you need to increase storage capacity or performance of your cluster, see this information on how to [modify your existing volume ![External link icon](../images/external_link.svg "External link icon")](https://console.bluemix.net/docs/containers/cs_storage_file.html#change_storage_configuration "Changing the size and IOPS of your existing storage device").
