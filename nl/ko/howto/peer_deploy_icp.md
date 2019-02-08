@@ -18,10 +18,10 @@ lastupdated: "2018-12-07"
 
 ***[이 페이지가 도움이 되었습니까? 알려주십시오.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
-다음 지시사항은 {{site.data.keyword.cloud_notm}} Private(ICP)에 {{site.data.keyword.blockchainfull}} Platform 피어를 배치하는 방법에 대해 설명합니다. 이 지시사항을 통해 ICP의 {{site.data.keyword.blockchainfull_notm}} Platform에 연결할 수 있습니다. 피어를 {{site.data.keyword.cloud_notm}}의 스타터 플랜 또는 엔터프라이즈 플랜 네트워크에 연결할 경우 [스타터 플랜 또는 엔터프라이즈 플랜에 연결하도록 피어 배치](peer_deploy_ibp.html)를 참조하십시오.
+다음 지시사항은 {{site.data.keyword.cloud_notm}} Private(ICP)에 {{site.data.keyword.blockchainfull}} Platform 피어를 배치하는 방법에 대해 설명합니다. 이 지시사항을 통해 ICP의 {{site.data.keyword.blockchainfull_notm}} Platform에 연결할 수 있습니다. 피어를 {{site.data.keyword.cloud_notm}}의 스타터 플랜 또는 엔터프라이즈 플랜 네트워크에 연결할 경우 [스타터 플랜 또는 엔터프라이즈 플랜에 연결하도록 피어 배치](/docs/services/blockchain/howto/peer_deploy_ibp.html)를 참조하십시오.
 {:shortdesc}
 
-피어를 배치하기 전에 [고려사항 및 제한사항](../ibp-for-icp-about.html#ibp-icp-considerations)을 검토하십시오.
+피어를 배치하기 전에 [고려사항 및 제한사항](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-considerations)을 검토하십시오.
 
 ## 필수 리소스
 {: #peer-resources-required}
@@ -51,7 +51,7 @@ amd64 또는 s390x 플랫폼에 피어를 배치하도록 선택할 수 있습�
 ## 피어를 배치하기 위한 전제조건
 {: #prerequisites-peer-icp}
 
-1. ICP에 피어를 설치하기 전에 [install ICP를 설치](../ICP_setup.html)하고 [{{site.data.keyword.blockchainfull_notm}} Platform Helm 차트를 설치](helm_install_icp.html)해야 합니다.
+1. ICP에 피어를 설치하기 전에 [install ICP를 설치](/docs/services/blockchain/ICP_setup.html)하고 [{{site.data.keyword.blockchainfull_notm}} Platform Helm 차트를 설치](/docs/services/blockchain/howto/helm_install_icp.html)해야 합니다.
 
 2. 커뮤니티 에디션을 사용하고 인터넷 연결 없이 ICP 클러스터에서 이 Helm 차트를 실행할 경우 ICP 클러스터에 아카이브를 설치하기 전에 인터넷이 연결된 머신에 아카이브를 작성해야 합니다. 자세한 정보는 [인터넷 연결 없이 클러스터에 주요 애플리케이션 추가 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_package_offline.html "인터넷 연결 없이 클러스터에 주요 애플리케이션 추가"){:new_window}를 참조하십시오. Helm 차트의 `ibm-blockchain-platform-dev/ibm_cloud_pak` 아래에서 스펙 파일 `manifest.yaml`을 찾을 수 있습니다. 
 
@@ -63,7 +63,7 @@ amd64 또는 s390x 플랫폼에 피어를 배치하도록 선택할 수 있습�
 ## 피어 구성 시크릿 작성
 {: #peer-config-file}
 
-피어를 배치하려면 피어 ID 및 인증 기관에 대한 중요한 정보가 포함된 구성 파일을 작성해야 합니다. 그런 다음 [Kubernetes 시크릿 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://kubernetes.io/docs/concepts/configuration/secret/) 오브젝트를 사용하여 구성 중에 이 파일을 Helm 차트에 전달해야 합니다. 이 파일을 통해 피어는 블록체인 네트워크에 가입하기 위해 인증 기관에서 필요한 인증서를 가져올 수 있습니다. 이 파일에는 사용자가 피어를 운영할 수 있는 관리자 인증서도 포함됩니다. 피어 구성 전에 [CA를 사용하여 순서 지정자 또는 피어 배치](CA_operate.html#deploy-orderer-peer)에 대한 지시사항을 따르십시오.
+피어를 배치하려면 피어 ID 및 인증 기관에 대한 중요한 정보가 포함된 구성 파일을 작성해야 합니다. 그런 다음 [Kubernetes 시크릿 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://kubernetes.io/docs/concepts/configuration/secret/) 오브젝트를 사용하여 구성 중에 이 파일을 Helm 차트에 전달해야 합니다. 이 파일을 통해 피어는 블록체인 네트워크에 가입하기 위해 인증 기관에서 필요한 인증서를 가져올 수 있습니다. 이 파일에는 사용자가 피어를 운영할 수 있는 관리자 인증서도 포함됩니다. 피어 구성 전에 [CA를 사용하여 순서 지정자 또는 피어 배치](/docs/services/blockchain/howto/CA_operate.html#deploy-orderer-peer)에 대한 지시사항을 따르십시오.
 
 구성 파일에 CSR 호스트 이름을 제공해야 합니다. 여기에는 배치 중에 지정하는 `helm release name`과 동일한 값이 되는 `service host name`이 포함됩니다. 예를 들어, `org1peer1`의 `helm release name`을 지정하는 경우 파일의 `"csr"` 섹션에 다음 값을 삽입해야 합니다. 
 ```
@@ -173,7 +173,7 @@ WVRBbFZUDQpNUlV3RXdZRFZRUUtFd3hFYVdkcFEyVnlkQ0JKYm1NeEp6QWxCZ05WQkFNVEhrUnBa
 | `Peer configuration secret(필수)`| ICP에 작성한 [피어 구성 시크릿](#peer-config-secret)의 이름입니다. | 없음 | 예 |
 |`Organization MSP(필수)`| 새 조직 MSPID 값(예: 'org1')을 작성하거나 피어가 일부가 되는 기존 조직 MSP를 지정할 수 있습니다. 순서 지정자 조직을 배치한 경우 피어 MSPID가 순서 지정자 MSPID와 다른지 확인하십시오. 또한 나중에 `CORE_PEER_LOCALMSPID` 및 `configtx.yaml`에 필요하므로 이 값을 기록해 두십시오. | 없음 | 예 |
 |`Peer service type`| 피어에서 [외부 포트 노출![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types) 여부를 지정하는 데 사용됩니다. 포트를 외부적으로 노출하려면(권장됨) NodePort를 선택하고 포트를 노출하지 않으려면 ClusterIP를 선택하십시오. 이 릴리스에서 LoadBalancer 및 ExternalName은 지원되지 않습니다.| NodePort | 예 |
-| `State database`| 채널 원장을 저장하는 데 사용한 [상태 데이터베이스](../glossary.html#state-database)입니다. 피어에서는 [블록체인 네트워크](../v10_dashboard.html#network-preferences)와 동일한 데이터베이스를 사용해야 합니다. | 없음 | 예 |
+| `State database`| 채널 원장을 저장하는 데 사용한 [상태 데이터베이스](/docs/services/blockchain/glossary.html#state-database)입니다. 피어에서는 [블록체인 네트워크](/docs/services/blockchain/v10_dashboard.html#network-preferences)와 동일한 데이터베이스를 사용해야 합니다. | 없음 | 예 |
 |`CouchDB image repository`| CouchDB가 원장 데이터베이스로 선택된 경우에만 적용됩니다. 이 필드는 설치된 경로에 자동으로 채워집니다. 커뮤니티 에디션을 사용 중이고 인터넷 액세스 권한이 없는 경우 Fabric CouchDB 이미지를 다운로드한 디렉토리와 일치해야 합니다. | ibmcom/ibp-fabric-couchdb | 예 |
 | `CouchDB Docker image tag`| CouchDB가 원장 데이터베이스로 선택된 경우에만 적용됩니다. CouchDB 이미지와 연관된 태그의 값입니다. | 값을 정정하도록 자동으로 채워집니다. | 예 |
 | `Peer Data persistence enabled`| 클러스터가 다시 시작하거나 실패한 후 데이터를 지속하는 기능을 사용합니다. 자세한 정보는 [Kubernetes의 스토리지 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://kubernetes.io/docs/concepts/storage/ "볼륨")을 참조하십시오. *선택하지 않으면 장애 복구 또는 팟(Pod) 다시 시작 시 모든 데이터가 유실됩니다.* | 선택됨 | 아니오 |
@@ -253,13 +253,13 @@ helm install --name jnchart2 mycluster/ibm-blockchain-platform \
 
 구성 매개변수를 완료하고 **설치** 단추를 클릭한 후 **Helm 릴리스 보기** 단추를 클릭하여 배치를 보십시오. 성공한 경우 배치 테이블의 `DESIRED`, `CURRENT`, `UP TO DATE` 및 `AVAILABLE` 필드에 값 1이 표시됩니다. 새로 고치기를 클릭하고 테이블이 업데이트될 때까지 기다려야 할 수 있습니다. 또한 ICP 콘솔의 왼쪽 상단에서 **메뉴** 아이콘을 클릭하여 배치 테이블도 찾을 수 있습니다. 메뉴 표시줄에서 **워크로드**, **Helm 릴리스**를 차례로 클릭하십시오.
 
-`Notes` 섹션까지 아래로 스크롤한 경우 [피어 운영](peer_operate_icp.html) 시 사용할 중요 정보가 있습니다.
+`Notes` 섹션까지 아래로 스크롤한 경우 [피어 운영](/docs/services/blockchain/howto/peer_operate_icp.html) 시 사용할 중요 정보가 있습니다.
 
 ## 피어 로그 보기
 {: #peer-deploy-view-logs}
 
-피어 로그는 [kubectl CLI 명령](peer_operate_icp.html#peer-kubectl-configure)을 사용하거나 [Kibana ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.elastic.co/products/kibana "Elastic Search에 대한 창")를 통해 표시될 수 있습니다. 자세한 정보는 [로그에 액세스하기 위한 지시사항](peer_operate_icp.html#peer-icp-view-logs)을 참조하십시오.
+피어 로그는 [kubectl CLI 명령](/docs/services/blockchain/howto/peer_operate_icp.html#peer-kubectl-configure)을 사용하거나 [Kibana ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.elastic.co/products/kibana "Elastic Search에 대한 창")를 통해 표시될 수 있습니다. 자세한 정보는 [로그에 액세스하기 위한 지시사항](/docs/services/blockchain/howto/peer_operate_icp.html#peer-icp-view-logs)을 참조하십시오.
 
 ## 다음에 수행할 작업
 
-피어를 배치하고 나면, 블록체인 네트워크에 트랜잭션을 제출하고 분산된 원장을 읽을 수 있도록 여러 운영 단계를 완료해야 합니다. 자세한 정보는 [다중 클라우드 네트워크에서 피어 운영](peer_operate_icp.html)을 참조하십시오.
+피어를 배치하고 나면, 블록체인 네트워크에 트랜잭션을 제출하고 분산된 원장을 읽을 수 있도록 여러 운영 단계를 완료해야 합니다. 자세한 정보는 [다중 클라우드 네트워크에서 피어 운영](/docs/services/blockchain/howto/peer_operate_icp.html)을 참조하십시오.

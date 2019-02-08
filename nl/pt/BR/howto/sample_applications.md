@@ -18,9 +18,9 @@ lastupdated: "2017-08-14"
 
 ## Antes de iniciar
 
-Certifique-se de instalar todos os pré-requisitos de software em seu sistema de arquivos local. Para obter mais informações, consulte [Configurando o ambiente de desenvolvimento de aplicativo](../v10_application.html#setting-up-application-development-environment).
+Certifique-se de instalar todos os pré-requisitos de software em seu sistema de arquivos local. Para obter mais informações, consulte [Configurando o ambiente de desenvolvimento de aplicativo](/docs/services/blockchain/v10_application.html#setting-up-application-development-environment).
 
-Também é necessário ter uma rede de {{site.data.keyword.blockchain}} no {{site.data.keyword.Bluemix_short}} com um canal e seus peers configurados. Para obter mais informações, consulte [Controle a rede](../get_start.html). Quando sua rede estiver pronta para uso, recupere os terminais de API de seus recursos de rede que seu aplicativo acessará. Para obter mais informações, consulte [Incluindo credenciais de serviço de rede em seu aplicativo](../v10_application.html#adding-network-service-credentials-to-your-application).
+Também é necessário ter uma rede de {{site.data.keyword.blockchain}} no {{site.data.keyword.Bluemix_short}} com um canal e seus peers configurados. Para obter mais informações, consulte [Controle a rede](/docs/services/blockchain/get_start.html). Quando sua rede estiver pronta para uso, recupere os terminais de API de seus recursos de rede que seu aplicativo acessará. Para obter mais informações, consulte [Incluindo credenciais de serviço de rede em seu aplicativo](/docs/services/blockchain/v10_application.html#adding-network-service-credentials-to-your-application).
 
 
 ## Aplicativo Marbles

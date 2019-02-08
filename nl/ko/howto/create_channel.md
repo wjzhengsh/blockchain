@@ -72,4 +72,4 @@ lastupdated: "2018-09-27"
 충분한 채널 운영자가 요청에 동의하면 임의의 채널 구성원이 **요청 제출** 단추를 클릭하여 채널을 업데이트할 수 있습니다. 모든 채널 구성원이 네트워크 모니터의 "채널" 화면에서 업데이트된 채널을 찾을 수 있습니다.
 
 **중요:**
-새 조직에서 채널에 가입하고 체인코드를 설치할 때 보증 정책은 자동으로 업데이트되지 않습니다. 예를 들어, 5개 조직 중 2개 조직에서 트랜잭션을 보증해야 하는 경우 새로운 조직에서 채널에 가입할 때 6개 조직 중 2개 조직이 필요하도록 정책이 업데이트되지 않습니다. 대신 새 조직이 정책에 나열되지 않으며 트랜잭션을 보증할 수 없습니다. [관련 체인코드 업데이트](install_instantiate_chaincode.html#updating-a-chaincode)로 새 조직을 보증 정책에 추가할 수 있습니다. 자세한 정보는 [체인코드 보증 정책](install_instantiate_chaincode.html#endorsement-policy)을 참조하십시오.
+새 조직에서 채널에 가입하고 체인코드를 설치할 때 보증 정책은 자동으로 업데이트되지 않습니다. 예를 들어, 5개 조직 중 2개 조직에서 트랜잭션을 보증해야 하는 경우 새로운 조직에서 채널에 가입할 때 6개 조직 중 2개 조직이 필요하도록 정책이 업데이트되지 않습니다. 대신 새 조직이 정책에 나열되지 않으며 트랜잭션을 보증할 수 없습니다. [관련 체인코드 업데이트](/docs/services/blockchain/howto/install_instantiate_chaincode.html#updating-a-chaincode)로 새 조직을 보증 정책에 추가할 수 있습니다. 자세한 정보는 [체인코드 보증 정책](/docs/services/blockchain/howto/install_instantiate_chaincode.html#endorsement-policy)을 참조하십시오.

@@ -17,7 +17,7 @@ lastupdated: "2018-11-27"
 
 ***[このページは参考になりましたか。 ご意見をお聞かせください。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
-**注:** {{site.data.keyword.blockchainfull}} Platform Remote Peer on ICP (ベータ) プログラムは終了しました。引き続き ICP 環境でピアを実行することを希望する場合は、代わりに **{{site.data.keyword.blockchainfull_notm}} Platform for ICP** オファリングをご使用ください。詳しくは、[ICP のピアについて](../ibp-for-icp-about.html#ibp-icp-peer)を参照してください。
+**注:** {{site.data.keyword.blockchainfull}} Platform Remote Peer on ICP (ベータ) プログラムは終了しました。引き続き ICP 環境でピアを実行することを希望する場合は、代わりに **{{site.data.keyword.blockchainfull_notm}} Platform for ICP** オファリングをご使用ください。詳しくは、[ICP のピアについて](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-peer)を参照してください。
 
 AWS クラウド内の {{site.data.keyword.blockchainfull_notm}} Platform ピアを {{site.data.keyword.cloud_notm}} 内の既存のブロックチェーン・ネットワークに接続した後に、このピアを実行できます。{{site.data.keyword.cloud_notm}} の外部でピアを実行すると、{{site.data.keyword.cloud_notm}} 内部の既存のネットワークを利用しながら、ブロックチェーン・ネットワークの拡張や参加をより柔軟に行うことができます。 AWS クラウド内のピアは、プラットフォーム上の認証局 (CA) と順序付けサービスを利用しますが、{{site.data.keyword.cloud_notm}} 外部にある他のアプリケーションとピアを共同配置することを可能にします。
 {:shortdesc}
@@ -30,7 +30,7 @@ AWS クラウド内の {{site.data.keyword.blockchainfull_notm}} Platform ピア
 - 他のクラウド環境で実行されているピアは、{{site.data.keyword.cloud_notm}} 上のブロックチェーン・ネットワークのネットワーク・モニターに表示されません。
 - ネットワーク・モニター UI で Swagger UI を使用して、{{site.data.keyword.blockchainfull_notm}} Platform for AWS 上で実行されているピアのアドレスを指定することはできません。
 - {{site.data.keyword.blockchainfull_notm}} Platform for AWS ピア・ノードの正常性モニター、セキュリティー、ロギング、およびリソース使用量を管理するのはお客様の責任です。
-- {{site.data.keyword.blockchainfull_notm}} Platform for AWS ピアは Fabric レベル v1.1 または v1.2.1 のブロックチェーン・ネットワークにのみ接続できます。Fabric のバージョンは、ネットワーク・モニターで[「ネットワーク設定 (Network preferences)」ウィンドウ](../v10_dashboard.html#network-preferences)を開くことで確認できます。
+- {{site.data.keyword.blockchainfull_notm}} Platform for AWS ピアは Fabric レベル v1.1 または v1.2.1 のブロックチェーン・ネットワークにのみ接続できます。Fabric のバージョンは、ネットワーク・モニターで[「ネットワーク設定 (Network preferences)」ウィンドウ](/docs/services/blockchain/v10_dashboard.html#network-preferences)を開くことで確認できます。
 - {{site.data.keyword.blockchainfull_notm}} Platform for AWS ピアのデータベース・タイプは、ブロックチェーン・ネットワークのデータベース・タイプと一致する必要があります (LevelDB または CouchDB)。
 - CouchDB Fauxton インターフェースは、AWS ピアでは使用できません。
 - AWS ピアの[ゴシップ](../glossary.html#gossip)は現在サポートされていません。 これは、[プライベート・データ ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/private-data-arch.html "プライベート・データ") や [サービス・ディスカバリー ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/discovery-overview.html "サービス・ディスカバリー") などのゴシップに依存する Fabric 機能もサポートされていないことを意味します。
@@ -38,14 +38,14 @@ AWS クラウド内の {{site.data.keyword.blockchainfull_notm}} Platform ピア
 ## 前提条件
 {: #remote-peer-prereq}
 
-{{site.data.keyword.blockchainfull_notm}} Platform for AWS ピアを使用するには、{{site.data.keyword.blockchainfull_notm}} Platform 上のスターター・プラン・ネットワークまたはエンタープライズ・プラン・ネットワークのメンバーである組織が必要です。{{site.data.keyword.blockchainfull_notm}} Platform for AWS ピアは、{{site.data.keyword.blockchainfull_notm}} Platform ネットワークの API エンドポイント、Hyperledger Fabric CA、および順序付けサービスを利用して作動します。ブロックチェーン・ネットワークのメンバーではない場合は、ネットワークを作成するか、ネットワークに参加する必要があります。 詳しくは、[ネットワークの作成](../get_start.html#creating-a-network)または[ネットワークへの参加](../get_start.html#joining-a-network)を参照してください。
+{{site.data.keyword.blockchainfull_notm}} Platform for AWS ピアを使用するには、{{site.data.keyword.blockchainfull_notm}} Platform 上のスターター・プラン・ネットワークまたはエンタープライズ・プラン・ネットワークのメンバーである組織が必要です。{{site.data.keyword.blockchainfull_notm}} Platform for AWS ピアは、{{site.data.keyword.blockchainfull_notm}} Platform ネットワークの API エンドポイント、Hyperledger Fabric CA、および順序付けサービスを利用して作動します。ブロックチェーン・ネットワークのメンバーではない場合は、ネットワークを作成するか、ネットワークに参加する必要があります。 詳しくは、[ネットワークの作成](/docs/services/blockchain/get_start.html#creating-a-network)または[ネットワークへの参加](/docs/services/blockchain/get_start.html#joining-a-network)を参照してください。
 
 ## ライセンスおよび料金
 {: #remote-peer-license-pricing}
 
 {{site.data.keyword.blockchainfull_notm}} Platform for AWS は現在は Community Edition として無償で提供されていますが、将来的には、IBP for AWS は Bring-Your-Own-License (BYOL) モデルに変更される可能性があり、その場合は IBM からライセンスを購入することが必要になります。
 
-**注:** AWS ピアを操作するには、{{site.data.keyword.blockchainfull_notm}} Platform のスターター・プランまたはエンタープライズ・プラン・ネットワークに属する組織が必要です。 つまり、ユーザーまたはネットワークの別のメンバーが組織の {{site.data.keyword.blockchainfull_notm}} [メンバーシップ料金](pricing.html#key-elements-of-pricing)を支払う必要があります。 料金の支払方法について詳しくは、[支払いモード](paying_mode.html)を参照してください。
+**注:** AWS ピアを操作するには、{{site.data.keyword.blockchainfull_notm}} Platform のスターター・プランまたはエンタープライズ・プラン・ネットワークに属する組織が必要です。 つまり、ユーザーまたはネットワークの別のメンバーが組織の {{site.data.keyword.blockchainfull_notm}} [メンバーシップ料金](/docs/services/blockchain/howto/pricing.html#key-elements-of-pricing)を支払う必要があります。 料金の支払方法について詳しくは、[支払いモード](/docs/services/blockchain/howto/paying_mode.html)を参照してください。
 
 
 ## AWS ピアのデプロイ
@@ -53,7 +53,7 @@ AWS クラウド内の {{site.data.keyword.blockchainfull_notm}} Platform ピア
 
 AWS [クイック・スタート・テンプレート ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://aws.amazon.com/quickstart/architecture/ibm-blockchain-platform/ "クイック・スタート・テンプレート") を使用して、{{site.data.keyword.blockchainfull_notm}} Platform for AWS を簡単にデプロイできます。詳しくは、[{{site.data.keyword.blockchainfull_notm}} Platform for AWS Quick Start Deployment Guide ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://s3.amazonaws.com/aws-quickstart/quickstart-ibm-fabric/doc/ibm-blockchain-platform-for-aws.pdf "IBM Blockchain Platform for Platform for AWS Quick Start Reference Deployment") を参照してください。
 
-{{site.data.keyword.blockchainfull_notm}} Platform for AWS のデプロイ方法については、[Amazon Web Services でのピアのデプロイ](remote_peer_aws.html "Amazon Web Services でのピアのデプロイ")を参照してください。
+{{site.data.keyword.blockchainfull_notm}} Platform for AWS のデプロイ方法については、[Amazon Web Services でのピアのデプロイ](/docs/services/blockchain/howto/remote_peer_aws.html "Amazon Web Services でのピアのデプロイ")を参照してください。
 
 以下の図は、{{site.data.keyword.blockchainfull_notm}} Platform for AWS ピアをデプロイするプロセスを説明しています。
 
@@ -78,18 +78,18 @@ AWS [クイック・スタート・テンプレート ![外部リンク・アイ
 ## AWS ピアの操作
 {: #operate-remote-peer}
 
-AWS ピアをデプロイした後に、ピアがネットワークにトランザクションを送信できるようにするには、いくつかの操作ステップを実行する必要があります。 この操作ステップでは、チャネルへの組織の追加、チャネルへのピアの参加、ピアでのチェーンコードのインストール、チャネルでのチェーンコードのインスタンス化、およびピアへのアプリケーションの接続を行います。 詳しくは、[Amazon Web Service でのピアの操作](remote_peer_operate_aws.html#remote-peer-operate-aws)を参照してください。
+AWS ピアをデプロイした後に、ピアがネットワークにトランザクションを送信できるようにするには、いくつかの操作ステップを実行する必要があります。 この操作ステップでは、チャネルへの組織の追加、チャネルへのピアの参加、ピアでのチェーンコードのインストール、チャネルでのチェーンコードのインスタンス化、およびピアへのアプリケーションの接続を行います。 詳しくは、[Amazon Web Service でのピアの操作](/docs/services/blockchain/howto/remote_peer_operate_aws.html#remote-peer-operate-aws)を参照してください。
 
 ## データの常駐
 {: #data-residency}
 
-ブロックチェーン・ネットワークでは、処理されるデータのタイプが認識されないため、特定の種類のデータを保護するために追加のステップが必要になる場合があります。 データの常駐に関する最も一般的な要件は、IT システムで処理および保管されるすべてのデータを特定の国の中にとどめることを義務付ける、特定の国の法律に関連付けられています。 同様に、政府、医療、金融サービスなど、規制の厳しい業界の企業は、データを完全にファイアウォールの内側に保管することが求められます。 したがって、データの常駐を実現するには、ブロックチェーン・ネットワークのすべてのコンポーネントが同じ[チャネル](../glossary.html#channel)の一部であり、1 つの国に常駐する必要があります。
+ブロックチェーン・ネットワークでは、処理されるデータのタイプが認識されないため、特定の種類のデータを保護するために追加のステップが必要になる場合があります。 データの常駐に関する最も一般的な要件は、IT システムで処理および保管されるすべてのデータを特定の国の中にとどめることを義務付ける、特定の国の法律に関連付けられています。 同様に、政府、医療、金融サービスなど、規制の厳しい業界の企業は、データを完全にファイアウォールの内側に保管することが求められます。 したがって、データの常駐を実現するには、ブロックチェーン・ネットワークのすべてのコンポーネントが同じ[チャネル](/docs/services/blockchain/glossary.html#channel)の一部であり、1 つの国に常駐する必要があります。
 
 データの常駐要件に対応するには、{{site.data.keyword.blockchainfull_notm}} Platform の基礎となっている Hyperledger Fabric アーキテクチャーを理解することが重要です。 このアーキテクチャーは、認証局 (CA)、順序付けプログラム、およびピアという 3 つの主要コンポーネントを中核として構築されています。ピアは順序付けサービスから順序付け状態の更新をブロックの形式で受け取り、状態および台帳を維持します。 したがって、ピアと順序付けプログラムの間には直接的な関係があります。台帳には、トランザクション・ログに含まれるすべてのキーおよびデータの最新の値が含まれます。
 
-さらに、クライアント・アプリケーションは、[Fabric SDK](../v10_application.html#using-the-fabric-sdks) を使用してトランザクションをピアおよび順序付けサービスに送信します。 これらのトランザクションには、台帳のキーと値のペアを含む[読み取り/書き込みセット ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/readwrite.html "読み取り/書き込みセットのセマンティクス") のデータが含まれます。
+さらに、クライアント・アプリケーションは、[Fabric SDK](/docs/services/blockchain/v10_application.html#using-the-fabric-sdks) を使用してトランザクションをピアおよび順序付けサービスに送信します。 これらのトランザクションには、台帳のキーと値のペアを含む[読み取り/書き込みセット ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/readwrite.html "読み取り/書き込みセットのセマンティクス") のデータが含まれます。
 
-国内のデータの常駐が自社業務にとっての要件である場合は、順序付けプログラム、ピア、およびクライアント・アプリケーションは同じ国に常駐している必要があります。{{site.data.keyword.blockchainfull_notm}} Platform ネットワークが {{site.data.keyword.cloud_notm}} で作成されている場合、ネットワークのロケーションを選択することができます。 <!--For a Starter Plan network, you can select from US South, United Kingdom, and Sydney. For an Enterprise Plan network, you can select from currently available locations, which include Dallas, Frankfurt, London, Sao Paulo, Tokyo, and Toronto. -->地域とロケーションについて詳しくは、[{{site.data.keyword.blockchainfull_notm}} Platform の地域とロケーション](../reference/ibp_regions.html)を参照してください。 これらのいずれかの国でデータの常駐を実現するには、ピアが {{site.data.keyword.blockchainfull_notm}} Platform ネットワークのロケーションと同じ国に常駐する必要があります。
+国内のデータの常駐が自社業務にとっての要件である場合は、順序付けプログラム、ピア、およびクライアント・アプリケーションは同じ国に常駐している必要があります。{{site.data.keyword.blockchainfull_notm}} Platform ネットワークが {{site.data.keyword.cloud_notm}} で作成されている場合、ネットワークのロケーションを選択することができます。 <!--For a Starter Plan network, you can select from US South, United Kingdom, and Sydney. For an Enterprise Plan network, you can select from currently available locations, which include Dallas, Frankfurt, London, Sao Paulo, Tokyo, and Toronto. -->地域とロケーションについて詳しくは、[{{site.data.keyword.blockchainfull_notm}} Platform の地域とロケーション](/docs/services/blockchain/reference/ibp_regions.html)を参照してください。 これらのいずれかの国でデータの常駐を実現するには、ピアが {{site.data.keyword.blockchainfull_notm}} Platform ネットワークのロケーションと同じ国に常駐する必要があります。
 
 ### データの常駐のユース・ケース
 
@@ -125,7 +125,7 @@ AWS ピアをデプロイした後に、ピアがネットワークにトラン�
 ## サポートについて
 {: #remote-peer-support}
 
-IBM Blockchain Platform では、このオファリングのサポートは提供されていません。ピアに関する問題が発生した場合は、ブロックチェーン開発者向けの無料のリソースとサポート・フォーラムを利用して、{{site.data.keyword.IBM_notm}} および Fabric コミュニティーから支援を得ることができます。詳しくは、[ブロックチェーンのリソースおよびサポート・フォーラム](../ibmblockchain_support.html#resources)を参照してください。ネットワーク・モニターの**「ヘルプの利用」**画面でもサポート・リソースを確認できます。
+IBM Blockchain Platform では、このオファリングのサポートは提供されていません。ピアに関する問題が発生した場合は、ブロックチェーン開発者向けの無料のリソースとサポート・フォーラムを利用して、{{site.data.keyword.IBM_notm}} および Fabric コミュニティーから支援を得ることができます。詳しくは、[ブロックチェーンのリソースおよびサポート・フォーラム](/docs/services/blockchain/ibmblockchain_support.html#resources)を参照してください。ネットワーク・モニターの**「ヘルプの利用」**画面でもサポート・リソースを確認できます。
 
 - AWS に関連する問題の場合は、[コミュニティーのサポート・フォーラム ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://forums.aws.amazon.com/index.jspa "AWS コミュニティーのサポート・フォーラム") と [AWS プレミアム・サポート ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://aws.amazon.com/premiumsupport/ "AWS プレミアム・サポート") の両方をご利用できます。
 

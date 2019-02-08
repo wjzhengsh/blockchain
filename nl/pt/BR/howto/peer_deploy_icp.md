@@ -18,10 +18,10 @@ lastupdated: "2018-12-07"
 
 ***[Esta página é útil? Diga-nos.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
-As instruções a seguir descrevem como implementar um peer do {{site.data.keyword.blockchainfull}} Platform no {{site.data.keyword.cloud_notm}} Private (ICP). Essas instruções permitem que você se conecte a um {{site.data.keyword.blockchainfull_notm}} Platform no ICP. Se você desejar conectar um peer a uma rede do Starter Plan ou do Enterprise Plan no {{site.data.keyword.cloud_notm}}, consulte [Implementando peers para conectar-se ao Starter Plan ou ao Enterprise Plan](peer_deploy_ibp.html).
+As instruções a seguir descrevem como implementar um peer do {{site.data.keyword.blockchainfull}} Platform no {{site.data.keyword.cloud_notm}} Private (ICP). Essas instruções permitem que você se conecte a um {{site.data.keyword.blockchainfull_notm}} Platform no ICP. Se você desejar conectar um peer a uma rede do Starter Plan ou do Enterprise Plan no {{site.data.keyword.cloud_notm}}, consulte [Implementando peers para conectar-se ao Starter Plan ou ao Enterprise Plan](/docs/services/blockchain/howto/peer_deploy_ibp.html).
 {:shortdesc}
 
-Antes de implementar um peer, revise as [Considerações e limitações](../ibp-for-icp-about.html#ibp-icp-considerations).
+Antes de implementar um peer, revise as [Considerações e limitações](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-considerations).
 
 ## Recursos necessários
 {: #peer-resources-required}
@@ -51,11 +51,11 @@ Se você não usar o fornecimento dinâmico, os [Volumes persistentes ![Ícone d
 ## Pré-requisitos para implementar um peer
 {: #prerequisites-peer-icp}
 
-1. Antes de poder instalar um peer no ICP, deve-se [instalar o ICP](../ICP_setup.html) e [instalar o gráfico do Helm do {{site.data.keyword.blockchainfull_notm}} Platform](helm_install_icp.html).
+1. Antes de poder instalar um peer no ICP, deve-se [instalar o ICP](/docs/services/blockchain/ICP_setup.html) e [instalar o gráfico do Helm do {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/howto/helm_install_icp.html).
 
 2. Se você usar o Community Edition e desejar executar esse gráfico do Helm em um cluster do ICP sem conectividade à Internet, será necessário criar archives em uma máquina conectada à Internet antes de poder instalar os archives em seu cluster do ICP. Para obter mais informações, veja [Incluindo aplicativos de destaque em clusters sem conectividade à Internet ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_package_offline.html "Incluindo aplicativos de destaque em clusters sem conectividade à Internet"){:new_window}. Observe que é possível localizar o arquivo de especificação `manifest.yaml` em `ibm-blockchain-platform-dev/ibm_cloud_pak` no gráfico Helm.
 
-3. Deve-se primeiro [implementar uma CA](CA_deploy_icp.html) no ICP. É necessário usar uma CA para criar um [arquivo de configuração de peer e armazená-lo como um segredo do Kubernetes no ICP](#peer-config-file).
+3. Deve-se primeiro [implementar uma CA](/docs/services/blockchain/howto/CA_deploy_icp.html) no ICP. É necessário usar uma CA para criar um [arquivo de configuração de peer e armazená-lo como um segredo do Kubernetes no ICP](#peer-config-file).
 
 4. Recupere o valor do endereço IP do Proxy do cluster de sua CA por meio do console do ICP. **Nota:** você precisará ser um [Administrador de cluster ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Funções e ações de administrador de cluster") para acessar seu IP de proxy. Efetue login no cluster do ICP. No painel de navegação à esquerda, clique em **Plataforma** e, em seguida, em **Nós** para visualizar os nós que estão definidos no cluster. Clique no nó com a função `proxy` e, em seguida, copie o valor do `IP do host` da tabela. **Importante:** salve esse valor e você o usará ao configurar o campo `Proxy IP` do gráfico do Helm.
 
@@ -63,7 +63,7 @@ Se você não usar o fornecimento dinâmico, os [Volumes persistentes ![Ícone d
 ## Criando o segredo de configuração de peer
 {: #peer-config-file}
 
-Para implementar um peer, é necessário criar um arquivo de configuração que contenha informações importantes sobre a identidade do peer e a autoridade de certificação. Em seguida, é necessário passar esse arquivo para o gráfico do Helm durante a configuração usando um objeto [Segredo do Kubernetes ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://kubernetes.io/docs/concepts/configuration/secret/). Esse arquivo permitirá que seu peer obtenha os certificados de que precisa da autoridade de certificação para ingressar em uma rede de blockchain. Ele também contém um certificado de administrador que permitirá que você opere seu peer. Siga as instruções para [usar a CA para implementar um solicitador ou peer](CA_operate.html#deploy-orderer-peer) antes da configuração do peer.
+Para implementar um peer, é necessário criar um arquivo de configuração que contenha informações importantes sobre a identidade do peer e a autoridade de certificação. Em seguida, é necessário passar esse arquivo para o gráfico do Helm durante a configuração usando um objeto [Segredo do Kubernetes ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://kubernetes.io/docs/concepts/configuration/secret/). Esse arquivo permitirá que seu peer obtenha os certificados de que precisa da autoridade de certificação para ingressar em uma rede de blockchain. Ele também contém um certificado de administrador que permitirá que você opere seu peer. Siga as instruções para [usar a CA para implementar um solicitador ou peer](/docs/services/blockchain/howto/CA_operate.html#deploy-orderer-peer) antes da configuração do peer.
 
 É necessário fornecer os nomes de host do CSR para o arquivo de configuração. Isso inclui o `service host name` que terá o mesmo valor que o `helm release name` especificado durante a implementação. Por exemplo, se você especificar um `helm release name` igual a `org1peer1`, lembre-se de inserir o valor a seguir na seção `"csr"` do arquivo:
 ```
@@ -171,7 +171,7 @@ A tabela a seguir lista os parâmetros configuráveis do {{site.data.keyword.blo
 | `Peer configuration secret (Required)`|Nome do [Segredo de configuração do peer](#peer-config-secret) criado no ICP. | nenhum | sim |
 |`Organization MSP (Required)`| É possível criar um novo valor de MSPID da Organização, como 'org1', ou especificar um MSP da Organização existente do qual o peer fará parte. Se você tiver implementado uma organização do solicitador, assegure-se de que os MSPIDs de peer sejam diferentes de seu MSPID solicitado. Além disso, anote esse valor, pois você precisará dele para seu `CORE_PEER_LOCALMSPID` e `configtx.yaml` posteriormente. | nenhum | sim |
 |`Peer service type`| Usado para especificar se [portas externas devem ser expostas ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types) no peer. Selecione NodePort para expor as portas externamente (recomendado) e ClusterIP para não expor as portas. O LoadBalancer e o ExternalName não são suportados nesta liberação. | NodePort | sim |
-| `State database`| O [banco de dados de estado](../glossary.html#state-database) usado para armazenar o livro-razão do canal. O peer precisa usar o mesmo banco de dados que sua [rede de blockchain](../v10_dashboard.html#network-preferences). | nenhum | sim |
+| `State database`| O [banco de dados de estado](/docs/services/blockchain/glossary.html#state-database) usado para armazenar o livro-razão do canal. O peer precisa usar o mesmo banco de dados que sua [rede de blockchain](../v10_dashboard.html#network-preferences). | nenhum | sim |
 |`CouchDB image repository`| Aplica-se somente se o CouchDB foi selecionado como o banco de dados de livro-razão. Esse campo é preenchido automaticamente para o caminho instalado. Se você estiver usando o Community Edition e não tiver acesso à Internet, ele deverá corresponder ao diretório no qual a imagem do Fabric CouchDB foi transferida por download.| ibmcom/ibp-fabric-couchdb | sim |
 | `CouchDB Docker image tag`| Aplica-se somente se o CouchDB foi selecionado como o banco de dados de livro-razão. Valor da tag associada à imagem do CouchDB. | Preenchido automaticamente com o valor correto. | sim |
 | `Peer Data persistence enabled`| Ative a capacidade de persistir dados após reinicializações ou falhas do cluster. Consulte [armazenamento no Kubernetes ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://kubernetes.io/docs/concepts/storage/ "Volumes") para obter mais informações. *Se desmarcado, todos os dados serão perdidos no caso de um failover ou de uma reinicialização de pod.* | verificado | não |
@@ -248,7 +248,7 @@ helm install --name jnchart2 mycluster/ibm-blockchain-platform \ --version 1.1.0
 
 Depois de concluir os parâmetros de configuração e clicar no botão **Instalar**, clique no botão **Visualizar liberação do Helm** para visualizar sua implementação. Se isso foi bem-sucedido, você verá o valor 1 nos campos `DESIRED`, `CURRENT`, `UP TO DATE` e `AVAILABLE` na tabela Implementação. Você pode precisar clicar em atualizar e aguardar que a tabela seja atualizada. Também é possível localizar a tabela Implementação, clicando no ícone **Menu** no canto superior esquerdo do console do ICP. Na lista de menu, clique em **Cargas de trabalho** e, em seguida, **Liberações do Helm**.
 
-Se você rolar para baixo para a seção `Notas`, haverá informações importantes que serão usadas ao [operar seu peer](peer_operate_icp.html).
+Se você rolar para baixo para a seção `Notas`, haverá informações importantes que serão usadas ao [operar seu peer](/docs/services/blockchain/howto/peer_operate_icp.html).
 
 ## Visualizando os logs de peer
 {: #peer-deploy-view-logs}
@@ -257,4 +257,4 @@ Os logs de peer podem ser visualizados usando os [comandos da CLI kubectl](peer_
 
 ## O que vem depois
 
-Depois de implementar o peer, é necessário concluir várias etapas operacionais antes de poder enviar transações e ler o livro-razão distribuído a partir da rede de blockchain. Para obter mais informações, consulte [Peers operacionais com uma rede multi-cloud](peer_operate_icp.html).
+Depois de implementar o peer, é necessário concluir várias etapas operacionais antes de poder enviar transações e ler o livro-razão distribuído a partir da rede de blockchain. Para obter mais informações, consulte [Peers operacionais com uma rede multi-cloud](/docs/services/blockchain/howto/peer_operate_icp.html).

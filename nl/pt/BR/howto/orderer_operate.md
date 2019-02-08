@@ -146,7 +146,7 @@ Nesse exemplo, o endereço IP do Proxy é `9.30.94.174` e a porta externa do nó
 
 Alterne para o diretório no qual a pasta MSP do administrador do solicitador é gerada. Dependendo de como você seguiu as etapas de exemplo nesta documentação ou de quantos componentes você está implementando, é possível localizar a pasta MSP em `$HOME/fabric-ca-client/orderer-admin/msp` ou `$HOME/fabric-ca-client/peer-admin/msp`
 
-Antes de poder operar o solicitador, é necessário executar algum gerenciamento dos certificados em sua máquina local. Também é necessário assegurar que seja possível acessar os certificados TLS a partir do solicitador. Para obter mais informações sobre os certificados a serem usados, consulte [Membership Service Providers](CA_operate.html#msp) em [Operando uma autoridade de certificação no {{site.data.keyword.cloud_notm}} Private](CA_operate.html).
+Antes de poder operar o solicitador, é necessário executar algum gerenciamento dos certificados em sua máquina local. Também é necessário assegurar que seja possível acessar os certificados TLS a partir do solicitador. Para obter mais informações sobre os certificados a serem usados, consulte [Membership Service Providers](/docs/services/blockchain/howto/CA_operate.html#msp) em [Operando uma autoridade de certificação no {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/howto/CA_operate.html).
 
 1. Mova o signCert do administrador do solicitador para uma nova pasta denominada `admincerts`:
 
@@ -216,9 +216,9 @@ Observe que é possível incluir uma organização em um canal sem primeiro asso
 
 A lista a seguir mostra as etapas gerais e as tarefas serão executadas por conjuntos diferentes de organizações de seu consórcio.
 
-1. Para se associar ao consórcio, cada organização precisa [preparar uma definição de organização](peer_operate_icp.html#organization-definition).
+1. Para se associar ao consórcio, cada organização precisa [preparar uma definição de organização](/docs/services/blockchain/howto/peer_operate_icp.html#organization-definition).
 2. O administrador da organização do solicitador [forma o consórcio](#consortium) incluindo organizações no canal do sistema do solicitador.
-3. Qualquer organização do consórcio pode [criar um novo canal](peer_operate_icp.html#peer-icp-channeltx) preparando uma transação de configuração de canal.
+3. Qualquer organização do consórcio pode [criar um novo canal](/docs/services/blockchain/howto/peer_operate_icp.html#peer-icp-channeltx) preparando uma transação de configuração de canal.
 
 ## Obtendo as ferramentas do Fabric
 {: #get-fabric-tools}
@@ -264,7 +264,7 @@ A lista a seguir mostra as etapas gerais e as tarefas serão executadas por conj
 ## Criando uma definição de organização
 {: #org-definition}
 
-A **definição** de uma organização contém o nome da organização (ID do MSP) e os certificados relevantes. O canal do sistema e os canais de aplicativos usarão essa definição para incluir sua organização nas políticas que controlam a criação do canal, as atualizações e o endosso da transação. Cada organização que deseja se juntar ao consórcio precisa concluir essa etapa. Para saber mais, consulte [preparando uma definição de organização](peer_operate_icp.html#organization-definition).
+A **definição** de uma organização contém o nome da organização (ID do MSP) e os certificados relevantes. O canal do sistema e os canais de aplicativos usarão essa definição para incluir sua organização nas políticas que controlam a criação do canal, as atualizações e o endosso da transação. Cada organização que deseja se juntar ao consórcio precisa concluir essa etapa. Para saber mais, consulte [preparando uma definição de organização](/docs/services/blockchain/howto/peer_operate_icp.html#organization-definition).
 
 ## Formando o consórcio
 {: #consortium}
@@ -276,7 +276,7 @@ Chame novamente o fluxo de alto nível para formar um consórcio:
 
 ### Obtendo as definições de organização
 
-O solicitador precisa receber as [definições de organização](peer_operate_icp.html#organization-definition) de membros que desejam se juntar ao consórcio. Isso precisa ser concluído em uma operação fora da banda com outros membros enviando os arquivos JSON que incluem sesu IDs do MSP e material de criptografia. Para referência nos comandos abaixo, assumimos que você tenha criado uma pasta denominada `org-definitions` e tenha colocado todos os arquivos relevantes nesse diretório.
+O solicitador precisa receber as [definições de organização](/docs/services/blockchain/howto/peer_operate_icp.html#organization-definition) de membros que desejam se juntar ao consórcio. Isso precisa ser concluído em uma operação fora da banda com outros membros enviando os arquivos JSON que incluem sesu IDs do MSP e material de criptografia. Para referência nos comandos abaixo, assumimos que você tenha criado uma pasta denominada `org-definitions` e tenha colocado todos os arquivos relevantes nesse diretório.
 
 ### Buscando o bloco genesis do canal do sistema
 
@@ -371,9 +371,9 @@ O solicitador precisa receber as [definições de organização](peer_operate_ic
 
 A [ferramenta do Fabric](#get-fabric-tools) transferida por download, `configtxtlator`, converte o formato protobuf de uma configuração de canal para o formato JSON e vice-versa.
 
-Essas etapas seguem o fluxo geral do tutorial de atualização do canal sobre [como converter o bloco em formato JSON]( https://hyperledger-fabric.readthedocs.io/en/release-1.2/channel_update_tutorial.html#convert-the-configuration-to-json-and-trim-it-down). É necessário fazer algumas mudanças nos comandos no tutorial para refletir o fato de que você está atualizando o canal do sistema solicitador em vez de um canal de aplicativo. É possível visitar o tutorial para obter mais detalhes sobre esse processo. Esta seção simplesmente fornece os comandos para você.
+Essas etapas seguem o fluxo geral do tutorial de atualização do canal sobre [como converter o bloco em formato JSON](https://hyperledger-fabric.readthedocs.io/en/release-1.2/channel_update_tutorial.html#convert-the-configuration-to-json-and-trim-it-down). É necessário fazer algumas mudanças nos comandos no tutorial para refletir o fato de que você está atualizando o canal do sistema solicitador em vez de um canal de aplicativo. É possível visitar o tutorial para obter mais detalhes sobre esse processo. Esta seção simplesmente fornece os comandos para você.
 
-1. Copie o arquivo JSON de definição de organização da pasta em que você [criou sua organização](peer_operate_icp.html#organization-definition) para a pasta `configupdate`. No exemplo de comando abaixo, o arquivo JSON de definição da organização é `org1definition.json`:
+1. Copie o arquivo JSON de definição de organização da pasta em que você [criou sua organização](/docs/services/blockchain/howto/peer_operate_icp.html#organization-definition) para a pasta `configupdate`. No exemplo de comando abaixo, o arquivo JSON de definição da organização é `org1definition.json`:
 
    ```
    cp <path_to_config_folder>/org1definition.json $HOME/fabric-ca-client/org-definitions/configupdate
@@ -389,7 +389,7 @@ Essas etapas seguem o fluxo geral do tutorial de atualização do canal sobre [c
   ```
   {:codeblock}
 
-3. Execute o comando a seguir para incluir o material de criptografia de uma organização na configuração do consórcio. Substitua <NEWORGMSP> pelo ID do MSP da organização para a [organização que você criou](peer_operate_icp.html#organization-definition).
+3. Execute o comando a seguir para incluir o material de criptografia de uma organização na configuração do consórcio. Substitua <NEWORGMSP> pelo ID do MSP da organização para a [organização que você criou](/docs/services/blockchain/howto/peer_operate_icp.html#organization-definition).
 
   ```
   jq -s '.[0] * {"channel_group":{"groups":{"Consortiums":{"groups":{"SampleConsortium":{"groups": {"<NEWORGMSP>":.[1]}}}}}}}' config.json ./orgdefinition.json > modified_config.json

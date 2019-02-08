@@ -24,7 +24,7 @@ For a high-level overview of the components in a network based on Fabric, check 
 
 *Although this video focuses on the components from the perspective of Starter and Enterprise networks, the information is still highly relevant to the customer managed solution of IBP on ICP (IBM Cloud Platform).*
 
-For the purposes of this overview, we'll focus just on certificate authorities (CAs), orderers, peers, smart contracts, and applications. As you can see from the [{{site.data.keyword.blockchainfull_notm}} Platform for ICP deployment guide](ibp_for_icp_deployment_guide.html) topic, this sequence is not arbitrary; it reflects the sequence in which components in a network based on Fabric will be deployed.
+For the purposes of this overview, we'll focus just on certificate authorities (CAs), orderers, peers, smart contracts, and applications. As you can see from the [{{site.data.keyword.blockchainfull_notm}} Platform for ICP deployment guide](/docs/services/blockchain/ibp_for_icp_deployment_guide.html) topic, this sequence is not arbitrary; it reflects the sequence in which components in a network based on Fabric will be deployed.
 
 ## Certificate Authorities
 {: #ca}

@@ -261,7 +261,7 @@ Antes de implementar um solicitador ou peer, é necessário criar um arquivo JSO
 As instruções a seguir fornecem a você um [arquivo de configuração JSON de modelo](#config-file-template) que pode ser editado e salvo em seu sistema de arquivos local e o instruem sobre como usar sua CA para concluir este arquivo.
 
 - Siga as instruções abaixo se estiver implementando um solicitador no ICP ou implementando um peer para se conectar a um consórcio que está hospedado no ICP.
-- Se você deseja implementar um peer para se conectar ao Starter Plan ou ao Enterprise Plan, siga as instruções em [Implementando peers no IBM Cloud Private para conectar-se ao Starter Plan ou ao Enterprise Plan](peer_deploy_ibp.html). Essas etapas o instruem sobre como usar a CA no {{site.data.keyword.blockchainfull_notm}} Platform para implementar nosso peer no ICP.
+- Se você deseja implementar um peer para se conectar ao Starter Plan ou ao Enterprise Plan, siga as instruções em [Implementando peers no IBM Cloud Private para conectar-se ao Starter Plan ou ao Enterprise Plan](/docs/services/blockchain/peer_deploy_ibp.html). Essas etapas o instruem sobre como usar a CA no {{site.data.keyword.blockchainfull_notm}} Platform para implementar nosso peer no ICP.
 
 ### Arquivo de configuração
 {: #config-file-template}
@@ -659,7 +659,7 @@ Depois de concluir todas as etapas acima, seu arquivo de configuração atualiza
 ```
 {:codeblock}
 
-É possível deixar os outros campos em branco. Salve esse arquivo e você precisará utilizá-lo ao implementar um [solicitador](orderer_deploy_icp.html) ou [peer](peer_deploy_icp.html).
+É possível deixar os outros campos em branco. Salve esse arquivo e você precisará utilizá-lo ao implementar um [solicitador](/docs/services/blockchain/howto/orderer_deploy_icp.html) ou [peer](/docs/services/blockchain/howto/peer_deploy_icp.html).
 
 ## Fornecedores de serviço de associação (MSPs)
 {: #msp}
@@ -675,7 +675,7 @@ As pastas MSP devem ter uma estrutura definida para ser usada pelos componentes 
 
 Também é possível construir uma pasta MSP que o fabric-ca-client pode referenciar usando o Monitor de Rede e as APIs do Swagger.
 
-- **cacerts** e **intermediatecerts**: é possível buscar esses certificados com as [APIs do Swagger](swagger_apis.html) emitindo uma solicitação `Get` para a API do MSP.
+- **cacerts** e **intermediatecerts**: é possível buscar esses certificados com as [APIs do Swagger](/docs/services/blockchain/howto/swagger_apis.html) emitindo uma solicitação `Get` para a API do MSP.
 - **signCerts** e **keystore**: é possível gerar esses certificados clicando no botão **Gerar certificados** no painel "Autoridade de Certificação". Uma janela pop-up é aberta com dois certificados listados. Copie e armazene o **Certificado** em signCerts e a **Chave Privada** no keystore. Mantenha esses certificados em um local seguro porque eles não ficam armazenados na plataforma.
 
 Muitos componentes do Fabric contêm informações adicionais dentro de sua pasta MSP. Por exemplo, se você operar um peer remoto, poderá ver as pastas a seguir:

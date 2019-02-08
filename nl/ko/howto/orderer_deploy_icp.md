@@ -17,10 +17,10 @@ lastupdated: "2018-12-07"
 
 ***[이 페이지가 도움이 되었습니까? 알려주십시오.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
-순서 지정자는 블록체인 네트워크의 클라이언트, 순서 지정 트랜잭션 및 브로드캐스트 트랜잭션을 순서 지정자 컴포넌트로 인증합니다. 순서 지정자와 블록체인 네트워크에서 수행하는 역할에 대한 자세한 정보는 [blockchain 컴포넌트 개요](../blockchain_component_overview.html)를 참조하십시오.
+순서 지정자는 블록체인 네트워크의 클라이언트, 순서 지정 트랜잭션 및 브로드캐스트 트랜잭션을 순서 지정자 컴포넌트로 인증합니다. 순서 지정자와 블록체인 네트워크에서 수행하는 역할에 대한 자세한 정보는 [blockchain 컴포넌트 개요](/docs/services/blockchain/blockchain_component_overview.html)를 참조하십시오.
 {:shortdesc}
 
-순서 지정 서비스를 배치하기 전에 [고려사항 및 제한사항](../ibp-for-icp-about.html#ibp-icp-considerations)을 검토하십시오.
+순서 지정 서비스를 배치하기 전에 [고려사항 및 제한사항](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-considerations)을 검토하십시오.
 
 ## 필수 리소스
 {: #ca-resources-required}
@@ -51,7 +51,7 @@ amd64 또는 s390x 플랫폼에 순서 지정자를 배치하도록 선택할 �
 ## 순서 지정자 배치에 필요한 전제조건
 {: #prerequisites-orderer-icp}
 
-1. 순서 지정자를 ICP에 설치하려면 [ICP를 설치](../ICP_setup.html)하고 [{{site.data.keyword.blockchainfull_notm}} Platform Helm 차트](helm_install_icp.html)를 설치해야 합니다.
+1. 순서 지정자를 ICP에 설치하려면 [ICP를 설치](/docs/services/blockchain/ICP_setup.html)하고 [{{site.data.keyword.blockchainfull_notm}} Platform Helm 차트](/docs/services/blockchain/howto/helm_install_icp.html)를 설치해야 합니다.
 
 2. Community Edition을 사용하고 인터넷 연결없이 ICP 클러스터에 이 Helm 차트를 실행하려면 아카이브를 ICP 클러스터에 설치하기 전에 인터넷에 연결된 시스템에서 아카이브를 작성해야 합니다. 자세한 정보는 [인터넷 연결없이 클러스터에 주요 애플리케이션 추가 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_package_offline.html "인터넷 연결없이 클러스터에 주요 애플리케이션 추가"){:new_window}를 참조하십시오. Helm 차트의 ibm-blockchain-platform-dev/ibm_cloud_pak 아래에 스펙 파일 `manifest.yaml`이 있습니다.
 
@@ -62,7 +62,7 @@ amd64 또는 s390x 플랫폼에 순서 지정자를 배치하도록 선택할 �
 ## 순서 지정자 구성 파일 작성
 {: #orderer-config-file}
 
-순서 지정자를 배치하기 전에 순서 지정자 ID와 CA에 대한 중요한 정보를 포함하는 구성 파일을 작성해야 합니다. 그런 다음 구성하는 중에 이 파일을 [Kubernetes 시크릿 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://kubernetes.io/docs/concepts/configuration/secret/) 오브젝트를 사용하여 Helm 차트에 전달해야 합니다. 이 파일을 사용하면 순서 지정자가 블록체인 네트워크에 가입하기 위해 CA로부터 필요한 인증서를 획득할 수 있습니다. 관리자로서 순서 지정자를 운영할 수 있는 관리자 인증서도 포함되어 있습니다. 순서 지정자를 구성하기 전에 [CA를 사용하여 순서 지정자 또는 피어 배치](CA_operate.html#deploy-orderer-peer)에 대한 지시사항를 따르십시오.
+순서 지정자를 배치하기 전에 순서 지정자 ID와 CA에 대한 중요한 정보를 포함하는 구성 파일을 작성해야 합니다. 그런 다음 구성하는 중에 이 파일을 [Kubernetes 시크릿 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://kubernetes.io/docs/concepts/configuration/secret/) 오브젝트를 사용하여 Helm 차트에 전달해야 합니다. 이 파일을 사용하면 순서 지정자가 블록체인 네트워크에 가입하기 위해 CA로부터 필요한 인증서를 획득할 수 있습니다. 관리자로서 순서 지정자를 운영할 수 있는 관리자 인증서도 포함되어 있습니다. 순서 지정자를 구성하기 전에 [CA를 사용하여 순서 지정자 또는 피어 배치](/docs/services/blockchain/howto/CA_operate.html#deploy-orderer-peer)에 대한 지시사항를 따르십시오.
 
 CSR 호스트 이름을 구성 파일에 제공해야 합니다. 배치 중에 지정한 `helm release name`을 기준으로 할 `service host name`이 포함됩니다. `service host name`은 끝에 추가된 문자열 `-orderer`로 지정하는 `helm_release_name`입니다. 예를 들어, `orderer1`의 `helm release name`을 지정하려면 다음 값을 파일의 `"csr"` 섹션에 삽입할 수 있습니다.
 

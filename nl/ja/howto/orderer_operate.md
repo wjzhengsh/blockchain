@@ -148,7 +148,7 @@ ICP で実行されている順序付けプログラムのコンテナーに接�
 
 順序付けプログラム管理者の MSP フォルダーが生成されたディレクトリーに移動します。この資料のサンプル・ステップにどのように従ったか、またはデプロイしているコンポーネントの数に応じて、MSP フォルダーは `$HOME/fabric-ca-client/orderer-admin/msp` または `$HOME/fabric-ca-client/peer-admin/msp` にあります。
 
-順序付けプログラムを操作するためには、まず、ローカル・マシンでいくつかの証明書管理作業を行う必要があります。また、順序付けプログラムから TLS 証明書にアクセスできることを確認する必要もあります。使用する証明書について詳しくは、[{{site.data.keyword.cloud_notm}} Private での認証局の操作](CA_operate.html)の[メンバーシップ・サービス・プロバイダー](CA_operate.html#msp)を参照してください。
+順序付けプログラムを操作するためには、まず、ローカル・マシンでいくつかの証明書管理作業を行う必要があります。また、順序付けプログラムから TLS 証明書にアクセスできることを確認する必要もあります。使用する証明書について詳しくは、[{{site.data.keyword.cloud_notm}} Private での認証局の操作](/docs/services/blockchain/howto/CA_operate.html)の[メンバーシップ・サービス・プロバイダー](/docs/services/blockchain/howto/CA_operate.html#msp)を参照してください。
 
 1. 順序付けプログラム管理者の署名付き証明書を `admincerts` という名前の新規フォルダーに移動します。
 
@@ -220,9 +220,9 @@ tree
 
 以下のリストに、全般的なステップと、共同事業体のさまざまな組織セットによって実行されるタスクを示します。
 
-1. 共同事業体に参加する各組織は、[組織定義を準備](peer_operate_icp.html#organization-definition)する必要があります。
+1. 共同事業体に参加する各組織は、[組織定義を準備](/docs/services/blockchain/howto/peer_operate_icp.html#organization-definition)する必要があります。
 2. 順序付けプログラムの組織管理は、順序付けプログラムのシステム・チャネルに組織を追加することによって、[共同事業体](#consortium)を形成します。
-3. チャネル構成トランザクションを準備することで、共同事業体のすべての組織が[新規チャネルを作成](peer_operate_icp.html#peer-icp-channeltx)できます。
+3. チャネル構成トランザクションを準備することで、共同事業体のすべての組織が[新規チャネルを作成](/docs/services/blockchain/howto/peer_operate_icp.html#peer-icp-channeltx)できます。
 
 ## Fabric ツールの取得
 {: #get-fabric-tools}
@@ -268,7 +268,7 @@ tree
 ## 組織定義の作成
 {: #org-definition}
 
-組織の**定義**には、組織名 (MSP ID) および関連する証明書が含まれます。システム・チャネルおよびアプリケーション・チャネルはこの定義を使用して、チャネル作成、更新、およびトランザクション・エンドースメントを管理するポリシーに組織を含めます。共同事業体に参加を希望する各組織は、このステップを実行する必要があります。詳しくは、[組織定義の準備](peer_operate_icp.html#organization-definition)を参照してください。
+組織の**定義**には、組織名 (MSP ID) および関連する証明書が含まれます。システム・チャネルおよびアプリケーション・チャネルはこの定義を使用して、チャネル作成、更新、およびトランザクション・エンドースメントを管理するポリシーに組織を含めます。共同事業体に参加を希望する各組織は、このステップを実行する必要があります。詳しくは、[組織定義の準備](/docs/services/blockchain/howto/peer_operate_icp.html#organization-definition)を参照してください。
 
 ## 共同事業体の形成
 {: #consortium}
@@ -280,7 +280,7 @@ tree
 
 ### 組織定義の取得
 
-順序付けプログラムは、共同事業体への参加を希望するメンバーから[組織定義](peer_operate_icp.html#organization-definition)を受け取る必要があります。これは、MSP ID と暗号情報を含む JSON ファイルを送信する他のメンバーとのアウト・オブ・バンド操作で実行する必要があります。以下のコマンドでの参照用に、`org-definitions` という名前のフォルダーを作成し、そのディレクトリーにすべての関連ファイルを配置したと想定します。
+順序付けプログラムは、共同事業体への参加を希望するメンバーから[組織定義](/docs/services/blockchain/howto/peer_operate_icp.html#organization-definition)を受け取る必要があります。これは、MSP ID と暗号情報を含む JSON ファイルを送信する他のメンバーとのアウト・オブ・バンド操作で実行する必要があります。以下のコマンドでの参照用に、`org-definitions` という名前のフォルダーを作成し、そのディレクトリーにすべての関連ファイルを配置したと想定します。
 
 ### システム・チャネルの起源ブロックのフェッチ
 
@@ -375,9 +375,9 @@ tree
 
 ダウンロードした [Fabric ツール](#get-fabric-tools)の `configtxtlator` によって、protobuf フォーマットのチャネル構成が JSON フォーマット、またはその逆に変換されます。
 
-これらのステップは、[ブロックの JSON フォーマットへの変換]( https://hyperledger-fabric.readthedocs.io/en/release-1.2/channel_update_tutorial.html#convert-the-configuration-to-json-and-trim-it-down)に関するチャネル更新チュートリアルの一般的なフローに従います。ただし、更新しているのがアプリケーション・チャネルではなく順序付けプログラムのシステム・チャネルであるという事実が反映されるように、いくつかの変更をチュートリアルのコマンドに対して行う必要があります。このプロセスについて詳しくは、チュートリアルを参照してください。このセクションは単にコマンドを示します。
+これらのステップは、[ブロックの JSON フォーマットへの変換](https://hyperledger-fabric.readthedocs.io/en/release-1.2/channel_update_tutorial.html#convert-the-configuration-to-json-and-trim-it-down)に関するチャネル更新チュートリアルの一般的なフローに従います。ただし、更新しているのがアプリケーション・チャネルではなく順序付けプログラムのシステム・チャネルであるという事実が反映されるように、いくつかの変更をチュートリアルのコマンドに対して行う必要があります。このプロセスについて詳しくは、チュートリアルを参照してください。このセクションは単にコマンドを示します。
 
-1. [組織を作成した](peer_operate_icp.html#organization-definition)フォルダーから `configupdate` フォルダーに、組織定義の JSON ファイルをコピーします。以下のコマンド例では、組織定義の JSON ファイルは `org1definition.json` です。
+1. [組織を作成した](/docs/services/blockchain/howto/peer_operate_icp.html#organization-definition)フォルダーから `configupdate` フォルダーに、組織定義の JSON ファイルをコピーします。以下のコマンド例では、組織定義の JSON ファイルは `org1definition.json` です。
 
    ```
    cp <path_to_config_folder>/org1definition.json $HOME/fabric-ca-client/org-definitions/configupdate
@@ -393,7 +393,7 @@ tree
   ```
   {:codeblock}
 
-3. 以下のコマンドを実行して、組織の暗号情報を共同事業体構成に追加します。<NEWORGMSP> を、[作成した組織](peer_operate_icp.html#organization-definition)の組織 MSP ID に置き換えます。
+3. 以下のコマンドを実行して、組織の暗号情報を共同事業体構成に追加します。<NEWORGMSP> を、[作成した組織](/docs/services/blockchain/howto/peer_operate_icp.html#organization-definition)の組織 MSP ID に置き換えます。
 
   ```
   jq -s '.[0] * {"channel_group":{"groups":{"Consortiums":{"groups":{"SampleConsortium":{"groups": {"<NEWORGMSP>":.[1]}}}}}}}' config.json ./orgdefinition.json > modified_config.json

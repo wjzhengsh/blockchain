@@ -23,7 +23,7 @@ lastupdated: "2018-12-07"
 {{site.data.keyword.blockchainfull}} Platform を使用したブロックチェーン・ソリューションの開発では、Hyperledger Composer のオープン・ソース開発ツール・セットを利用します。 JavaScript トランザクションとアクセス制御ルールを組み合わせたカスタム・モデリング言語を Hyperledger Composer で使用すると、実際のブロックチェーン・ネットワークに何かをデプロイする_前 _ に、ブロックチェーン・ビジネス・ネットワーク全体をモデル化できます。
 {:shortdesc}
 
-**注:** スターター・プランには、学習して試すことができるサンプル・アプリケーションが用意されています。 カスタマイズされたビジネス・ネットワークを開発する前に、スターター・プランでサンプル・アプリケーションを実行できます。 詳しくは、[スターター・プランについて](starter_plan.html)を参照してください。
+**注:** スターター・プランには、学習して試すことができるサンプル・アプリケーションが用意されています。 カスタマイズされたビジネス・ネットワークを開発する前に、スターター・プランでサンプル・アプリケーションを実行できます。 詳しくは、[スターター・プランについて](/docs/services/blockchain/starter_plan.html)を参照してください。
 
 このチュートリアルでは、{{site.data.keyword.blockchain}} ソリューションの開発手順を説明します。まず、ビジネス・ネットワークの作成とモデリングを行い、次にそれを実行中のブロックチェーン・ネットワークにデプロイします。
 
@@ -39,7 +39,7 @@ lastupdated: "2018-12-07"
 
 ## 始めに
 
-[{{site.data.keyword.blockchainfull_notm}}: Develop 開発ツール](./develop_install.html)がインストールされていることを確認します。
+[{{site.data.keyword.blockchainfull_notm}}: Develop 開発ツール](/docs/services/blockchain/develop_install.html)がインストールされていることを確認します。
 
 ## ステップ 1: ビジネス・ネットワーク構造の作成
 
@@ -179,6 +179,6 @@ lastupdated: "2018-12-07"
 
 ## ステップ 4: ビジネス・ネットワークのデプロイと REST サーバーの生成
 
-[スターター・プラン](./develop_starter.html)または[エンタープライズ・プラン](./develop_enterprise.html)を使用して、ビジネス・ネットワークを {{site.data.keyword.blockchainfull_notm}} Platform にデプロイします。
+[スターター・プラン](/docs/services/blockchain//develop_starter.html)または[エンタープライズ・プラン](/docs/services/blockchain/develop_enterprise.html)を使用して、ビジネス・ネットワークを {{site.data.keyword.blockchainfull_notm}} Platform にデプロイします。
 
 ビジネス・ネットワークを {{site.data.keyword.blockchainfull_notm}} Platform にデプロイしたら、カスタム REST サーバーを生成できます。 REST サーバーは、ビジネス・ネットワークの内容を調べ、ネットワークの資産、トランザクション、参加者のための RESTful API 呼び出しを作成します。 REST サーバーの生成手順は、[Hyperledger Composer の資料](https://hyperledger.github.io/composer/latest/integrating/getting-started-rest-api)から参照できます。

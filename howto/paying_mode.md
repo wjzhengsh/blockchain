@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-09-28"
+  years: 2018,2019
+lastupdated: "2019-02-08"
 
 ---
 
@@ -10,7 +10,6 @@ lastupdated: "2018-09-28"
 {:shortdesc: .shortdesc}
 {:screen: .screen}
 {:codeblock: .codeblock}
-{:note: .note}
 {:pre: .pre}
 
 # Paying mode
@@ -23,26 +22,25 @@ lastupdated: "2018-09-28"
 {{site.data.keyword.blockchainfull}} Platform charges monthly with membership fees and peer fees. Network members can pay their bill with their {{site.data.keyword.cloud_notm}} accounts that contain the space to create the network instance. Alternatively, one network member can cover the bill for other members in the network, or even all members to pay for the entire network. The payer can also transfer the billings back to other members if necessary.
 {:shortdesc}
 
-Depending on the network plan that you choose and the amount of resources that you use, your payments are different. For more information about pricing, see [Pricing](pricing.html).
+Depending on the network plan that you choose and the amount of resources that you use, your payments are different. For more information about pricing, see [Pricing](/docs/services/blockchain/howto/pricing.html#ibp-pricing).
 
-When several organizations build a consortium, it is recommended that the participating organizations use a federated email address to create their network. In this case, access to the network does not depend on any individual's avalibility.
-{:note}
+Note that when several organizations build a consortium, it is recommended that the participating organizations use a functional email address to create their network. In this case, access to the network does not depend on any individual's availability.
 
 
 ## Prerequisites
-{: #prereq}
+{: #paying-mode-prereq}
 
 Every network member must have a paid {{site.data.keyword.cloud_notm}} account, for example, a **Pay-As-You-Go** account, so that they can create {{site.data.keyword.blockchainfull_notm}} Platform service instances on {{site.data.keyword.cloud_notm}}. If you don't have an account, [register](https://console.bluemix.net/registration/) one and upgrade it to a paid account. To upgrade your account to a Pay-As-You-Go type, go to **Manage** > **Billing and Usage** > **Billing** in the {{site.data.keyword.cloud_notm}} console, and click **Add Credit Card**.
 
 
 ## Paying your own fees
-{: #pay-your-own}
+{: #paying-mode-pay-your-own}
 
 After you create or join any blockchain networks on {{site.data.keyword.blockchainfull_notm}} Platform, your {{site.data.keyword.cloud_notm}} accounts will be charged for your membership fee and peer fees.
 
 
 ## Paying for other network members
-{: #pay-for-others}
+{: #paying-mode-pay-for-others}
 
 One member in the network can cover the fees for one or more other network members in the same blockchain network. To pay in this mode, the payer and other network members must complete the following steps.
 
@@ -64,7 +62,7 @@ One member in the network can cover the fees for one or more other network membe
          - **Space roles**: Developer.
       3. Click **Invite Users**.  
    **Note**: If the payer pays for more than one member, the payer needs to repeat this step to invite other members and assign access for each of them.
-3. The payer creates a blockchain network {{site.data.keyword.blockchainfull_notm}} Platform and invites other members to the blockchain network in the Network Monitor of the network. For more information about inviting network members, see [Members](https://console.bluemix.net/docs/services/blockchain/v10_dashboard.html#members).
+3. The payer creates a blockchain network {{site.data.keyword.blockchainfull_notm}} Platform and invites other members to the blockchain network in the Network Monitor of the network. For more information about inviting network members, see [Members](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-members).
 4. Each member then receives a notification email that contains an invitation to join the network. The member can complete the following steps to join the network.
    1. Click the "Proceed" button in the notification email, which takes you to the blockchain service page in {{site.data.keyword.cloud_notm}}.
    2. Log in to {{site.data.keyword.cloud_notm}} and ensure that you use correct {{site.data.keyword.cloud_notm}} organization and space, which the payer add you to.
@@ -75,17 +73,17 @@ One member in the network can cover the fees for one or more other network membe
       2. Verify that the organization and space are the ones that the payer add you to.
       3. Select the membership plan with which to create your network instance. Your membership plan must be the same as the one that the payer create the network with.
       4. Click **Create**.
-   4. After you create the blockchain service instance, follow the wizard to join the network.  For more information, see [Joining a network](https://console.bluemix.net/docs/services/blockchain/get_start.html#joining-a-network).
+   4. After you create the blockchain service instance, follow the wizard to join the network.  For more information, see [Joining a network](/docs/services/blockchain/get_start.html#getting-started-with-enterprise-plan-join-nw).
 
 ### Known limitations
-{: #pay-for-others-limitation}
+{: #paying-mode-limitation}
 - Because all members are inside of the payers {{site.data.keyword.cloud_notm}} account, the payer has access to all members' blockchain instances and can impersonate them. Therefore, this paying mode is best used for PoC environments, or in cases where the payer is handling all management of the {{site.data.keyword.blockchainfull_notm}} Platform and the members are being provided with only an application.  
 - Any member in the payer's Cloud Foundry Org can see all the spaces in the organization.  However, they cannot edit or modify the organizations because they don't have accesses.  
 - Be aware that any member in the payer's Cloud Foundry Org can see the IBM Cloud IDs of other members in the same Cloud Foundry Org.  
 - After adding all members to the payer's {{site.data.keyword.cloud_notm}} account and assigning them access to provision blockchain instances and join the network, the payer is also giving the members access to create other services, which could cause additional charges. All members might sign an agreement with trust that they will not create any unauthorized services in their accounts to cause extra cost to the payer's account.  
 
 ## Letting a member pay for you
-{: #let-other-pay}
+{: #paying-mode-let-other-pay}
 
 An alternative of adding other members' accounts to the payer's account, other members can also add the payer's account to their accounts as a **Billing Manager**. To pay in this mode, the payer and other network members must complete the following steps.
 
@@ -97,17 +95,17 @@ An alternative of adding other members' accounts to the payer's account, other m
   4. Under the **Cloud Foundry access** section, choose your organization that you want to add the payer' account to from the drop-down list.
   5. Choose **Billing manager** as the **Organization roles**.
   6. Configure other fields accordingly and then click **Invite users**.  
-3. The payer invites other members to the blockchain network in the Network Monitor of the network. For more information about inviting network members, see [Members](https://console.bluemix.net/docs/services/blockchain/v10_dashboard.html#members).
-4. Each member then receives a notification email that contains an invitation to join the network. The member can then join the network. For more information, see **step 4** under [Paying for other network members](#pay-for-others).
+3. The payer invites other members to the blockchain network in the Network Monitor of the network. For more information about inviting network members, see [Members](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-members).
+4. Each member then receives a notification email that contains an invitation to join the network. The member can then join the network. For more information, see **step 4** under [Paying for other network members](/docs/services/blockchain/howto/paying_mode.html#paying-mode-pay-for-others).
 
 ### Known limitation
-{: #let-other-pay-limitation}
+{: #paying-mode-let-other-pay-limitation}
 
 After adding the payer's {{site.data.keyword.cloud_notm}} account as billing manager to other members account and other members purchase any other services by using their account, the payer need to cover those fees too. All members might sign an agreement with trust that they will not create any unauthorized services in their accounts to cause extra cost to the payer's account.  
 
 
 ## Transferring billings to other members
-{: #transfer-billing}
+{: #paying-mode-transfer-billing}
 
 While network members can have a member to pay for them, later on, other members can take over the billings. You can remove the payer's account from your accounts so that the payer can stop to pay for you.
 

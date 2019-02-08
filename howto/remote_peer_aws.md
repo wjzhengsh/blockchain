@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-12-11"
+  years: 2017, 2019
+lastupdated: "2019-02-08"
 
 ---
 
@@ -10,9 +10,12 @@ lastupdated: "2018-12-11"
 {:shortdesc: .shortdesc}
 {:screen: .screen}
 {:codeblock: .codeblock}
+{:note: .note}
+{:important: .important}
+{:tip: .tip}
 {:pre: .pre}
 
-# Deploying {{site.data.keyword.blockchainfull_notm}} Platform for AWS
+# Getting started with {{site.data.keyword.blockchainfull_notm}} Platform for AWS
 {: #remote-peer-aws}
 
 
@@ -24,12 +27,21 @@ These instructions describe how to use an Amazon Web Services (AWS) Quick Start 
 
 For more information about AWS, see the [AWS overview document ![External link icon](../images/external_link.svg "External link icon")](https://d1.awsstatic.com/whitepapers/aws-overview.pdf "AWS overview document").
 
-Before you deploy {{site.data.keyword.blockchainfull_notm}} Platform for AWS peers, review the [peer considerations](remote_peer.html#remote-peer-limitations).
+{{site.data.keyword.blockchainfull_notm}} Platform for AWS enables peers to leverage the connection profile, Hyperledger Fabric certificate authorities (CAs), and the ordering service of an existing Starter or Enterprise Plan network on {{site.data.keyword.cloud_notm}} to process transactions via an AWS Quick Start template. The Quick Start allows you to deploy peers by using AWS CloudFormation templates. This template is for IT infrastructure decision makers and system administrators who want to rapidly configure, deploy, and run AWS-hosted {{site.data.keyword.blockchainfull_notm}} Platform peers that are connected to a Starter or Enterprise plan network. You can use the template to build a new virtual private cloud (VPC) in AWS, or deploy the peer into an existing VPC.
+
+The Quick Start completes the following configurations:
+ * A highly available architecture that spans two Availability Zones.
+ * A VPC configured with public subnets according to AWS best practices. This provides you with your own virtual network on AWS.
+ * An internet gateway to allow access to the internet.
+ * In the public subnets, two peers across two Availability Zones (one peer in each subnet).
+ * In each public subnet, a peer container with either an embedded LevelDB database or a secondary CouchDB container.
+
+Before you deploy {{site.data.keyword.blockchainfull_notm}} Platform for AWS peers, review the [peer considerations](/docs/services/blockchain/howto/remote_peer.html#remote-peer-aws-about-limitations).
 
 ## Prerequisites
-{: #prerequisites-aws}
+{: #remote-peer-aws-prerequisites}
 
-To use a {{site.data.keyword.blockchainfull_notm}} Platform for AWS peer (peer), you must have an organization that is a member of a blockchain network that is hosted on IBM Blockchain Platform. You need to use the Network Monitor on IBM Cloud to access network credentials and API endpoints of your network. If you are not a member of any blockchain network, you need to create or join a network. For more information, see [Creating a network](../get_start.html#creating-a-network) or [Joining a network](../get_start.html#joining-a-network).
+To use a {{site.data.keyword.blockchainfull_notm}} Platform for AWS peer (remote peer), you must have an organization that is a member of a blockchain network that is hosted on IBM Blockchain Platform. You need to use the Network Monitor on IBM Cloud to access network credentials and API endpoints of your network. If you are not a member of any blockchain network, you need to create or join a network. For more information, see [Creating a network](/docs/services/blockchain/get_start.html#getting-started-with-enterprise-plan-create-network) or [Joining a network](/docs/services/blockchain/get_start.html#getting-started-with-enterprise-plan-join-nw).
 
 The default VPC instance type for the peer is `m4.xlarge`.  You should optimize the instance type you choose based on your cpu, memory and storage requirements. The peer requires at least:  
 -	2x CPU
@@ -49,7 +61,7 @@ The Quick Start provides two deployment options:
 
 * Deploy the {{site.data.keyword.blockchainfull_notm}} Platform for AWS into an existing VPC. This option provisions the {{site.data.keyword.blockchainfull_notm}} Platform for AWS peer in your existing AWS infrastructure. There are separate templates for these options where you can configure CIDR blocks, instance types, and  Peer settings, as discussed later in this guide.
 
-## Step One: Prepare your AWS account
+## Step one: Prepare your AWS account
 {: #remote-peer-aws-account}
 
 1. If you don’t already have an AWS account, create one [here ![External link icon](../images/external_link.svg "External link icon")](https://aws.amazon.com "https//aws/amazon.com") by following the on-screen instructions.
@@ -60,8 +72,8 @@ The Quick Start provides two deployment options:
 
 4. If necessary, request a service limit increase for the Amazon EC2 <type> instance type. You might need to do this if you already have an existing deployment that uses this instance type, and you think you might exceed the default limit with this deployment.
 
-## Step Two: Retrieve your remote peer configuration information
-{: #aws-network-endpoints}
+## Step two: Retrieve your remote peer configuration information
+{: #remote-peer-aws-network-endpoints}
 
 You need to provide the API endpoints of your network to your  peer during configuration. These endpoints allow a  peer to find and connect to the network on {{site.data.keyword.blockchainfull_notm}} Platform. On the **Overview** screen of your Network Monitor, click the **Remote Peer Configuration** button.
 
@@ -77,7 +89,8 @@ A pop-up window opens and displays the values of the following fields. Save the 
 
 You can copy and paste each field directly into the Quick Start template, or save them to a JSON file by clicking the **Download** link.
 
-**Important:** The Quick Start template expects the TLS certificate to be formatted with `\r\n` line breaks. If you are using a browser with the Network Monitor on a `*NIX` OS, you need to reformat the certificate that you copy from the UI. Replace all occurrences of `\n` with `\r\n` and paste the resulting string into the field labeled `Certificate Authority (CA) TLS Certificate Chain`.
+The Quick Start template expects the TLS certificate to be formatted with `\r\n` line breaks. If you are using a browser with the Network Monitor on a `*NIX` OS, you need to reformat the certificate that you copy from the UI. Replace all occurrences of `\n` with `\r\n` and paste the resulting string into the field labeled `Certificate Authority (CA) TLS Certificate Chain`.
+{:important}
 
 **Note:** If you download the information in JSON, you need to convert the TLS certificate into PEM format before you provide it to the  peer. Convert the **Certificate Authority (CA) TLS Certificate** in the JSON file you downloaded into PEM format by issuing the command:
 ```
@@ -87,8 +100,8 @@ echo -e "<CERT>" > admin.pem
 
 Replace `<CERT>` with the value of the **Certificate Authority (CA) TLS Certificate**. Then, when prompted for the **Certificate Authority (CA) TLS Certificate** in the Quick Start template, `cat` the admin.pem file and then copy and paste the contents into the field.  
 
-## Step Three: Register a {{site.data.keyword.blockchainfull_notm}} Platform for AWS peer
-{: #aws-register-peer}
+## Step three: Register a {{site.data.keyword.blockchainfull_notm}} Platform for AWS peer
+{: #remote-peer-aws-register-peer}
 
 You need to add a new peer identity to your network on the {{site.data.keyword.blockchainfull_notm}} Platform before the {{site.data.keyword.blockchainfull_notm}} Platform for AWS peer can join the network. Complete the following steps to register a peer.
 
@@ -107,7 +120,7 @@ You need to add a new peer identity to your network on the {{site.data.keyword.b
 
   After you fill in the fields, click **Submit** to register the peer. The registered peer is then listed in the table as an identity on the network. As a security measure, use each identity, and the accompanying enrollID and secret, to deploy only one peer. Do not reuse peer ID's and passwords.
 
-## Step Four: Launch the Quick Start
+## Step four: Launch the Quick Start
 {: #remote-peer-aws-launchqs}
 
 You are responsible for the cost of the AWS services that you use while you run this Quick Start reference deployment. There is no additional cost for using this Quick Start. For full details, see the pricing pages for each AWS service that you need to use in this Quick Start. Prices are subject to change.
@@ -131,9 +144,9 @@ You are responsible for the cost of the AWS services that you use while you run 
 
 In the following tables, parameters are listed by category and described separately for the two deployment options:
 
-  * [Parameters for deploying {{site.data.keyword.blockchainfull_notm}} Platform for AWS into a new VPC](#remote-peer-aws-parameters-newvpc)
+  * [Parameters for deploying {{site.data.keyword.blockchainfull_notm}} Platform for AWS into a new VPC](/docs/services/blockchain/howto/remote_peer_aws.html#remote-peer-aws-parameters-newvpc)
 
-  * [Parameters for deploying {{site.data.keyword.blockchainfull_notm}} Platform for AWS into an existing VPC](#remote-peer-aws-parameters-existvpc).
+  * [Parameters for deploying {{site.data.keyword.blockchainfull_notm}} Platform for AWS into an existing VPC](/docs/services/blockchain/howto/remote_peer_aws.html#remote-peer-aws-parameters-existvpc).
 
 ### Parameters for deploying {{site.data.keyword.blockchainfull_notm}} Platform for AWS  into a new VPC
 {: #remote-peer-aws-parameters-newvpc}
@@ -194,7 +207,7 @@ If you are deploying the {{site.data.keyword.blockchainfull_notm}} Platform for 
 
 - Create a security group tied to your existing VPC and add inbound rules on ports 22 and 7051 to this security group. TCP connections on port 22 allow for SSH access to the generated instance while TCP connections on port 7051 allow for external gRPC access to the peer instance (needed for operating the peer using the Fabric tools CLI and Fabric SDKs). You will be prompted for these VPC settings when you launch the Quick Start.
 
- When deploying a {{site.data.keyword.blockchainfull_notm}} Platform for AWS peer into an existing VPC, the following parameters replace the parameters in the corresponding sections [above](#remote-peer-aws-parameters-newvpc):
+ When deploying a {{site.data.keyword.blockchainfull_notm}} Platform for AWS peer into an existing VPC, the following parameters replace the parameters in the corresponding sections [above](/docs/services/blockchain/howto/remote_peer_aws.html#remote-peer-aws-parameters-newvpc):
 
 |  Parameter    | Description | Default |
 | --------------|-------------|---------|
@@ -210,12 +223,12 @@ If you are deploying the {{site.data.keyword.blockchainfull_notm}} Platform for 
 | `KeyPairName` |	Name of an existing EC2 key pair within the AWS region. You must generate this. | |
 | `SecurityGroup` | ID of an existing EC2 security group within the AWS region. You should allow inbound TCP connections on ports 22 and 7051. |	| |
 
-## Step Five: Test the Deployment
+## Step five: Test the Deployment
 {: #remote-peer-aws-test}
 
 When the AWS CloudFormation template has successfully created the stack, two {{site.data.keyword.blockchainfull_notm}} Platform for AWS peer instances will be running in your AWS account. The instances will be named based on the combination of the `Organization MSP` and the `Peer enroll id` that is specified in the Quick Start template. For example, `org1-remotepeer1`.  
 
-![Peer AWS EC2 Instances](../images/remote_peer_AWS_EC2_instances.png "Peer AWS EC2 Instances")  
+![Peer on AWS EC2 Instances](../images/remote_peer_AWS_EC2_instances.png "Peer on AWS EC2 Instances")  
 *Figure 3. Peer on AWS EC2 instances*
 
 To verify the peer is running:
@@ -232,7 +245,7 @@ To verify the peer is running:
 
   * You can create a shell session inside the peer container by running `docker exec -it peer sh`.
 
-Optionally, if you want additional verification that the peer connection is working to your {{site.data.keyword.blockchainfull_notm}} Platform network, you can run the `peer channel fetch` CLI command from inside the  peer container. Otherwise, you can skip ahead to instructions for [Operating your peer](remote_peer_operate_aws.html).  
+Optionally, if you want additional verification that the peer connection is working to your {{site.data.keyword.blockchainfull_notm}} Platform network, you can run the `peer channel fetch` CLI command from inside the  peer container. Otherwise, you can skip ahead to instructions for [Operating your peer](/docs/services/blockchain/howto/remote_peer_operate_aws.html#remote-peer-aws-operate).  
 
 Run the `peer channel fetch` CLI command to fetch the genesis block from the channel:
 
@@ -253,7 +266,7 @@ Run the `peer channel fetch` CLI command to fetch the genesis block from the cha
    ```
    {:codeblock}
 
-   - Copy the orderer's TLS certificate from the connections profile to the  peer. Navigate to the **orderers** section. Copy the certificate that follows "pem:", beginning with -----BEGIN CERTIFICATE----- and ending with -----END CERTIFICATE-----. Do not include the quotation marks. Run the following command from the command line, replacing `<orderer cert>` with the content you copied from the creds.json file.
+   - Copy the orderer's TLS certificate from the connection profile to the peer. Navigate to the **orderers** section. Copy the certificate that follows "pem:", beginning with -----BEGIN CERTIFICATE----- and ending with -----END CERTIFICATE-----. Do not include the quotation marks. Run the following command from the command line, replacing `<orderer cert>` with the content you copied from the creds.json file.
 
    ```
    echo -e "<orderer cert>" > /etc/hyperledger/<PEER_ENROLL_ID>/orderer_tlscacert.pem
@@ -264,9 +277,9 @@ Run the `peer channel fetch` CLI command to fetch the genesis block from the cha
 
 2. Your organization needs to be added to a channel in the network before you can fetch the genesis block.
 
-  - You can start a new channel for the  peer. As the channel initiator, you can automatically include your organization during [channel creation](create_channel.html#creating-a-channel).
+  - You can start a new channel for the  peer. As the channel initiator, you can automatically include your organization during [channel creation](/docs/services/blockchain/howto/create_channel.html#ibp-create-channel-creating-a-channel).
 
-  - Another member of the blockchain network can also add your organization to an existing channel using a [channel update](create_channel.html#updating-a-channel).
+  - Another member of the blockchain network can also add your organization to an existing channel using a [channel update](/docs/services/blockchain/howto/create_channel.html#ibp-create-channel-updating-a-channel).
 
   - After your organization is added to a channel, you need to add your peer's signing certificate to the channel. The  peer uploads its signing cert during installation, so that you need to only synchronize the certificate to the channel. On the "Channels" screen of the Network Monitor, locate the channel that your organization joined and select **Sync Certificate** from the drop-down list under the **Action** header. This action synchronizes the certificates across all the peers on the channel.
 
@@ -327,7 +340,7 @@ Run the `peer channel fetch` CLI command to fetch the genesis block from the cha
 
    Congratulations. Your {{site.data.keyword.blockchainfull_notm}} Platform for AWS peer is successfully connected to your {{site.data.keyword.blockchainfull_notm}} Platform network.
 
-## FAQ
+## FAQs
 {: #remote-peer-aws-faq}
 
 * **Q**. I encountered a CREATE_FAILED error when I launched the Quick Start.
@@ -340,15 +353,15 @@ Run the `peer channel fetch` CLI command to fetch the genesis block from the cha
 * **A**. We recommend that you launch the Quick Start templates from the location we’ve provided or from another S3 bucket. If you deploy the templates from a local copy on your computer or from a non-S3 location, you might encounter template size limitations when you create the stack. For more information about AWS CloudFormation limits, see the [AWS documentation ![External link icon](../images/external_link.svg "External link icon")](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cloudformation-limits.html "AWS CloudFormation Limits").
 
 ## What's next
-{: #whats-next-aws}
+{: #remote-peer-aws-whats-next}
 
-After you set up the  peer in AWS, you can complete several operational steps before you can submit transactions to and read the distributed ledger from the blockchain network. For more information, see [Operating a  peer in AWS](remote_peer_operate_aws.html#remote-peer-operate-aws).
+After you set up the  peer in AWS, you can complete several operational steps before you can submit transactions to and read the distributed ledger from the blockchain network. For more information, see [Operating peers in AWS](/docs/services/blockchain/howto/remote_peer_operate_aws.html#remote-peer-aws-operate).
 
 ## High Availability (HA)
-{: #aws-high-availability}
+{: #remote-peer-aws-high-availability}
 
 By default, for HA support, the Quick Start template deploys two instances of the peer, in two different availability zones.
-To leverage this HA support, you also need to configure your [client applications for high availability](../v10_application.html#ha-app).
+To leverage this HA support, you also need to configure your [client applications for high availability](/docs/services/blockchain/v10_application.html#dev-app-ha-app).
 
 ## Security Considerations
 {: #remote-peer-aws-security}
@@ -371,54 +384,54 @@ The root user on cluster nodes can be accessed only by using the SSH key specifi
 A security group acts as a firewall that controls the traffic for one or more instances. When you launch an instance, you associate one or more security groups with the instance. You add rules to each security group that allow traffic to or from its associated instances. You can modify the rules for a security group at any time. The new rules are automatically applied to all instances that are associated with the security group. The security groups created and assigned to the individual instances as part of this solution are restricted as much as possible while allowing access to the various functions needed by the peer. We recommend reviewing security groups to further restrict access as needed once the cluster is up and running.
 
 ### Peer Security
-{: #aws-security}
+{: #remote-peer-aws-peer-security}
 
 The peers are deployed outside of {{site.data.keyword.blockchainfull_notm}} Platform; therefore, you are responsible for managing the security of the  peer. This includes important areas of security provided by Enterprise Plan networks such as key management and data encryption. Review the following topics when you consider security for your  peers.
 
 #### Data security
-{: #aws-security-data}
+{: #remote-peer-aws-security-data}
 
 {{site.data.keyword.blockchainfull_notm}} Platform Enterprise Plan uses whole disk encryption that is based on [symmetric key encryption ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/en/SSB23S_1.1.0.14/gtps7/s7symm.html "Symmetric cryptography") to protect all the data that the networks use. You must take similar steps in your own environment to protect your  peer data.
 
 The data in your state database, whether you are using levelDB or couchDB, is not encrypted. You can use application level encryption to protect the data at rest in your state database.
 
 #### Data residency
-{: #aws-security-data-residency}
+{: #remote-peer-aws-data-residency}
 
 Data residency mandates that the processing and storage of all blockchain ledger data remains within the border of a single country.
-For more details on how this can be accomplished, refer to this [topic](remote_peer.html#data-residency).
+For more information about how this can be accomplished, see [Data residency](/docs/services/blockchain/howto/remote_peer.html#remote-peer-aws-about-data-residency).
 
 #### Key management
-{: #aws-security-key-management}
+{: #remote-peer-aws-security-key-management}
 
-Key management is a critical aspect of peer security. If a private key is compromised or lost, hostile actors might be able to access your  peer's data and functionality. {{site.data.keyword.blockchainfull_notm}} Platform Enterprise Plan uses [Hardware Security Modules](../glossary.html#hsm) (HSM) to store the private keys of your network. The HSM is a physical appliance that prevents other parties from accessing your private key.
+Key management is a critical aspect of peer security. If a private key is compromised or lost, hostile actors might be able to access your  peer's data and functionality. {{site.data.keyword.blockchainfull_notm}} Platform Enterprise Plan uses [Hardware Security Modules](/docs/services/blockchain/glossary.html#glossary-hsm) (HSM) to store the private keys of your network. The HSM is a physical appliance that prevents other parties from accessing your private key.
 
-When you deploy a  peer on AWS, you are responsible for managing your private keys. Although {{site.data.keyword.blockchainfull_notm}} Platform generates your private keys, those keys are not stored on the Platform. It is essential to ensure that you store your keys in a secure location so that they are not compromised. You can find the private key of your  peer in the keystore folder of your peer MSP, at the `/etc/hyperledger/<PEER_ENROLL_ID>/msp/keystore/` directory within your peer container. For more information about the certificates inside your  peer, visit the [Membership Services Provider](../certificates.html#msp) section of the [Managing certificates on {{site.data.keyword.blockchainfull_notm}} Platform](../certificates.html) topic.
+When you deploy a  peer on AWS, you are responsible for managing your private keys. Although {{site.data.keyword.blockchainfull_notm}} Platform generates your private keys, those keys are not stored on the Platform. It is essential to ensure that you store your keys in a secure location so that they are not compromised. You can find the private key of your  peer in the keystore folder of your peer MSP, at the `/etc/hyperledger/<PEER_ENROLL_ID>/msp/keystore/` directory within your peer container. For more information about the certificates inside your  peer, visit the [Membership Services Provider](/docs/services/blockchain/certificates.html#managing-certificates-msp) section of the [Managing certificates on {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/certificates.html#managing-certificates) topic.
 
 You can use Key Escrow to recover lost private keys. This needs to be performed prior to the loss of any keys. If a private key cannot be recovered, you need to get new private keys by getting a new signCert from the Certificate Authority. You should also remove and replace your admin cert from any channels that you joined.
 
 <!---
-In IBP when a private key is created, two sets of independent key material is generated, in custody of two different entities. Those two sets of key materials are then combined to create the private key.
+In {{site.data.keyword.blockchainfull_notm}} Platform when a private key is created, two sets of independent key material is generated, in custody of two different entities. Those two sets of key materials are then combined to create the private key.
 --->
 
 #### TLS
-{: #aws-security-tls}
+{: #remote-peer-aws-security-tls}
 
 [Transport Layer Security ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/en/SSFKSJ_7.1.0/com.ibm.mq.doc/sy10660_.htm "An overview of the SSL or TLS handshake") (TLS) is embedded in the trust model of Hyperledger Fabric. All components on {{site.data.keyword.blockchainfull_notm}} Platform use TLS to authenticate and communicate with each other. Therefore, the network components on {{site.data.keyword.blockchainfull_notm}} Platform need to be able to complete a TLS handshake with your  peers. One implication of this is that you need to enable passthru, by using white listing for example, in your firewall from client apps to your peer.
 
 
 #### Membership Service Provider configuration
-{: #aws-security-MSP}
+{: #remote-peer-aws-security-MSP}
 
-Components of IBM Blockchain Platform consume identities via Membership Service Providers (MSPs). MSPs associate the certificates that the CAs issue with network and channel roles. Refer to this [topic](../certificates.html#msp) for more information about how MSPs work with the  peer.
+Components of IBM Blockchain Platform consume identities via Membership Service Providers (MSPs). MSPs associate the certificates that the CAs issue with network and channel roles. Refer to this [topic](/docs/services/blockchain/certificates.html#managing-certificates-msp) for more information about how MSPs work with the  peer.
 
 #### Application security
-{: #aws-security-appl}
+{: #remote-peer-aws-security-appl}
 
 Because all chaincode invocations are signed, Fabric manages the application security. In addition, Fabric also includes ACL-based application level checks.
 
 ## License and pricing
-{: #license-pricing-aws}
+{: #remote-peer-aws-license-pricing-aws}
 
 You must accept a Community edition license version of {{site.data.keyword.blockchainfull_notm}} Platform for AWS  to be able to use the deployment solution enabled by the Quick Start. The use of {{site.data.keyword.blockchainfull_notm}} Platform for AWS  (including all packages provided via the Quick Start offering, and packages derived from these) is not intended for production use. IBM may decide to de-authorize access to the code, and the use of this code, at any time.
 The {{site.data.keyword.blockchainfull_notm}} Platform for AWS software license agreement contains more details about licensing terms. When you launch the Quick Start, you are asked to read and agree to the terms of the agreement.

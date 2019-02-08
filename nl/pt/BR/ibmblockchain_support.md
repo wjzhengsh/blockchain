@@ -39,7 +39,7 @@ Se o problema não puder ser resolvido por nenhum dos [recursos de suporte digit
 {: #resources}
 
 **{{site.data.keyword.blockchainfull_notm}} Service docs**
-[{{site.data.keyword.blockchainfull_notm}} Service docs](index.html), que é o site de docs, fornece orientação sobre como iniciar com o IBP. É possível localizar tópicos correspondentes no navegador esquerdo ou procurar qualquer termo com a função de procura na parte superior.
+[{{site.data.keyword.blockchainfull_notm}} Service docs](/docs/services/blockchain/index.html), que é o site de docs, fornece orientação sobre como iniciar com o IBP. É possível localizar tópicos correspondentes no navegador esquerdo ou procurar qualquer termo com a função de procura na parte superior.
 
 ** {{site.data.keyword.IBM_notm}} dWAnswers**
 [{{site.data.keyword.IBM_notm}} dWAnswers ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://developer.ibm.com/answers/smartspace/blockchain/ "Perguntas e respostas no espaço do Blockchain") é um fórum de comunidade para usuários do IBP e do Hyperledger Fabric, que é monitorado por especialistas {{site.data.keyword.IBM_notm}}, entre outros. É possível procurar respostas para perguntas apresentadas anteriormente ou enviar uma nova pergunta. Certifique-se de incluir a palavra-chave **blockchain** em sua nova pergunta.

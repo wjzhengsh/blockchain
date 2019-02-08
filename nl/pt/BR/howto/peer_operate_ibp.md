@@ -36,10 +36,10 @@ Em seguida, é possível usar um dos métodos a seguir para operar seu peer.
 Os SDKs do Fabric são o caminho recomendado, embora as instruções assumam familiaridade com a operação do SDK. Se você preferir usar a linha de comandos, poderá usar o cliente do peer do Fabric.
 
 <!--
-It is recommended that you deploy at least two instances of the peer Helm chart for [high availability](peer_icp.html#high-availability). Therefore, you need to follow these operations steps once for each peer. When you are ready to invoke and query chaincode from your application, connect to both peers to ensure that your [applications are highly available](../v10_application.html#ha-app).
+It is recommended that you deploy at least two instances of the peer Helm chart for [high availability](/docs/services/blockchain/howto/peer_icp.html#high-availability). Therefore, you need to follow these operations steps once for each peer. When you are ready to invoke and query chaincode from your application, connect to both peers to ensure that your [applications are highly available](/docs/services/blockchain/v10_application.html#ha-app).
 -->
 
-**Nota**: um peer do {{site.data.keyword.blockchainfull_notm}} Platform não tem acesso à funcionalidade completa ou ao suporte de peers que estão hospedados no {{site.data.keyword.blockchainfull_notm}} Platform. Como resultado, não é possível usar o Monitor de Rede para operar um peer no ICP. Antes de iniciar a execução de peers, assegure-se de revisar as [considerações e limitações](../ibp-for-icp-about.html#ibp-icp-considerations).
+**Nota**: um peer do {{site.data.keyword.blockchainfull_notm}} Platform não tem acesso à funcionalidade completa ou ao suporte de peers que estão hospedados no {{site.data.keyword.blockchainfull_notm}} Platform. Como resultado, não é possível usar o Monitor de Rede para operar um peer no ICP. Antes de iniciar a execução de peers, assegure-se de revisar as [considerações e limitações](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-considerations).
 
 ## Pré-requisitos
 
@@ -149,7 +149,7 @@ Se você planeja usar os SDKs ou a linha de comandos, é necessário concluir as
 
 Os SDKs do Hyperledger Fabric fornecem um conjunto poderoso de APIs que permitem que os aplicativos interajam e operem redes de blockchain. É possível localizar a lista mais recente de idiomas suportados e a lista completa de APIs disponíveis nos SDKs do Fabric na [documentação da comunidade do Hyperledger Fabric SDK ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/getting_started.html#hyperledger-fabric-sdks "documentação da comunidade do Hyperledger Fabric SDK"). É possível usar os SDKs do Fabric para associar seu peer a um canal no {{site.data.keyword.blockchainfull_notm}} Platform, instalar um chaincode em seu peer e instanciar o chaincode em um canal.
 
-As instruções a seguir usam o [SDK do Fabric Node ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://fabric-sdk-node.github.io/ "SDK do Fabric Node") para operar o peer e presumir familiaridade anterior com o SDK. É possível usar o [tutorial de desenvolvimento de aplicativos](../v10_application.html) para aprender a usar o SDK do Node antes de iniciar e como um guia para desenvolver aplicativos com seu peer quando estiver pronto para chamar e consultar o chaincode.
+As instruções a seguir usam o [SDK do Fabric Node ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://fabric-sdk-node.github.io/ "SDK do Fabric Node") para operar o peer e presumir familiaridade anterior com o SDK. É possível usar o [tutorial de desenvolvimento de aplicativos](/docs/services/blockchain/v10_application.html) para aprender a usar o SDK do Node antes de iniciar e como um guia para desenvolver aplicativos com seu peer quando estiver pronto para chamar e consultar o chaincode.
 
 ### Instalando o SDK do Nó
 
@@ -167,13 +167,13 @@ npm install fabric-client@1.2
 
 Seu peer é implementado com o signCert de dentro de seu administrador de peer. Isso permite que você use os certificados do administrador de peer e a pasta MSP para operar o peer.
 
-Localize os certificados que você criou quando [inscreveu seu administrador de peer](peer_deploy_ibp.html#enroll-admin). Se você usou os comandos de exemplo, é possível localizar sua pasta MSP do administrador de peer em `$HOME/fabric-ca-client/peer-admin`.
+Localize os certificados que você criou quando [inscreveu seu administrador de peer](/docs/services/blockchain/howto/peer_deploy_ibp.html#enroll-admin). Se você usou os comandos de exemplo, é possível localizar sua pasta MSP do administrador de peer em `$HOME/fabric-ca-client/peer-admin`.
   - É possível construir o contexto do usuário administrador de peer com o SDK usando a chave signCert (chave pública) e a chave privada na pasta MSP. É possível localizar essas chaves nos locais a seguir:
     - O signCert pode ser localizado na pasta **signcerts**: `$HOME/fabric-ca-client/peer-admin/msp/signcerts`
     - A chave privada pode ser localizada na pasta **keystore:**: `$HOME/fabric-ca-client/peer-admin/msp/keystore`
-    É possível localizar um exemplo de como formar um contexto do usuário e operar o SDK usando apenas as chaves pública e privada [nesta seção do tutorial de desenvolvimento de aplicativos](../v10_application.html#enroll-panel).
+    É possível localizar um exemplo de como formar um contexto do usuário e operar o SDK usando apenas as chaves pública e privada [nesta seção do tutorial de desenvolvimento de aplicativos](/docs/services/blockchain/v10_application.html#enroll-panel).
 
-Também é possível usar o SDK para gerar o signCert do administrador de peer e a chave privada usando as informações de terminal da CA no Starter Plan ou no Enterprise Plan e seu [nome de usuário e senha do administrador de peer](peer_deploy_ibp.html#register-admin).
+Também é possível usar o SDK para gerar o signCert do administrador de peer e a chave privada usando as informações de terminal da CA no Starter Plan ou no Enterprise Plan e seu [nome de usuário e senha do administrador de peer](/docs/services/blockchain/howto/peer_deploy_ibp.html#register-admin).
 
 ### Fazendo upload do signCert do administrador de peer para o Starter Plan ou o Enterprise Plan
 {: #remote-peer-upload-sdk}
@@ -213,32 +213,32 @@ You need to specify a `ssl-target-name-override` of `<something>.blockchain.com`
 
 Sua organização precisa ser um membro de um canal antes que seja possível associar o canal ao seu peer.
 
-  - É possível iniciar um novo canal para o peer. Se você for o inicializador de canais, será possível incluir automaticamente sua organização durante a [criação de canal](create_channel.html#creating-a-channel).
+  - É possível iniciar um novo canal para o peer. Se você for o inicializador de canais, será possível incluir automaticamente sua organização durante a [criação de canal](/docs/services/blockchain/howto/create_channel.html#creating-a-channel).
 
-  - Outro membro da rede de blockchain também pode incluir sua organização em um canal existente usando uma [atualização de canal](create_channel.html#updating-a-channel).
+  - Outro membro da rede de blockchain também pode incluir sua organização em um canal existente usando uma [atualização de canal](/docs/services/blockchain/howto/create_channel.html#updating-a-channel).
 
     Após sua organização ser incluída em um canal, é necessário incluir o signCert de seu peer no canal para que outros membros possam verificar sua assinatura digital durante as transações. O peer faz upload de seu signCert durante a instalação, o que significa que é necessário apenas sincronizar o certificado para o canal. Na tela "Canais" do Monitor de rede, localize o canal ao qual sua organização se associa e selecione **Certificado de sincronização** na lista suspensa sob o cabeçalho **Ação**. Essa ação sincroniza os certificados em todos os peers no canal. Pode ser necessário aguardar alguns minutos para que a sincronização do canal possa ser concluída antes de emitir comandos `join channel`.
 
     **Nota:** só será possível visualizar novos blocos que estão sendo incluídos no canal, o chaincode que está sendo instanciado e outras atualizações de canal na tela "Canais" de seu Monitor de Rede se o peer que está sendo incluído no ICP e conectado a uma rede do Starter Plan ou do Enterprise Plan fizer parte da mesma organização que um peer que foi incluído com o Monitor de Rede. Isso é porque o Network Monitor reúne informações sobre a tela "Canais" de seu peer e não tem visibilidade para os peers fora do {{site.data.keyword.cloud_notm}}. Se nenhum de seus peers estiver usando o recurso Dados Privados, as informações no Monitor de Rede serão as mesmas para um peer em uma organização que para o outro.
 
-Depois que sua organização se tornar um membro de um canal, siga as instruções para [associar seu peer a um canal](../v10_application.html#join-channel-sdk) usando o SDK. É necessário fornecer a URL do serviço de ordenação e o nome do canal.
+Depois que sua organização se tornar um membro de um canal, siga as instruções para [associar seu peer a um canal](/docs/services/blockchain/v10_application.html#join-channel-sdk) usando o SDK. É necessário fornecer a URL do serviço de ordenação e o nome do canal.
 
 ### Usando o SDK para instalar o chaincode no peer
 {: #peer-install-cc-sdk}
 
-Use as instruções a seguir para usar o SDK para [instalar um chaincode](../v10_application.html#install-cc-sdk) em seu peer.
+Use as instruções a seguir para usar o SDK para [instalar um chaincode](/docs/services/blockchain/v10_application.html#install-cc-sdk) em seu peer.
 
 ### Usando o SDK para instanciar o chaincode no canal
 {: #peer-instantiate-cc-sdk}
 
-Apenas um membro do canal precisa instanciar ou atualizar o chaincode. Portanto, qualquer membro de rede do canal com peers no {{site.data.keyword.blockchainfull_notm}} Platform pode usar o Monitor de rede para instanciar o chaincode e especificar políticas de endosso. No entanto, se você desejar usar o peer para instanciar o chaincode em um canal, será possível usar o SDK e seguir as instruções para [instanciar um chaincode](../v10_application.html#instantiate-cc-sdk).
+Apenas um membro do canal precisa instanciar ou atualizar o chaincode. Portanto, qualquer membro de rede do canal com peers no {{site.data.keyword.blockchainfull_notm}} Platform pode usar o Monitor de rede para instanciar o chaincode e especificar políticas de endosso. No entanto, se você desejar usar o peer para instanciar o chaincode em um canal, será possível usar o SDK e seguir as instruções para [instanciar um chaincode](/docs/services/blockchain/v10_application.html#instantiate-cc-sdk).
 
 ## Usando a CLI para operar o peer
 {: #peer-cli-operate}
 
 Também é possível operar seu peer a partir da linha de comandos usando o cliente `peer` do Fabric.
 
-Seu peer foi implementado com o signCert de seu administrador de peer dentro, permitindo que essa identidade opere o peer. As instruções a seguir usarão a pasta MSP do administrador de peer que foi gerada quando você [implementou seu peer](peer_deploy_ibp.html#register-admin) para se associar ao peer em um canal, instalar um chaincode no peer e, em seguida, instanciar o chaincode em um canal.
+Seu peer foi implementado com o signCert de seu administrador de peer dentro, permitindo que essa identidade opere o peer. As instruções a seguir usarão a pasta MSP do administrador de peer que foi gerada quando você [implementou seu peer](/docs/services/blockchain/howto/peer_deploy_ibp.html#register-admin) para se associar ao peer em um canal, instalar um chaincode no peer e, em seguida, instanciar o chaincode em um canal.
 
 ### Fazendo download do cliente de peer Fabric
 {: #peer-client}
@@ -287,7 +287,7 @@ cd $HOME/fabric-ca-client/peer-admin/msp
 ```
 {:codeblock}
 
-Antes de poder operar o peer, é necessário executar algum gerenciamento dos certificados em sua máquina local. Por exemplo, será necessário fazer upload do signCert do administrador do peer para o Starter Plan ou o Enterprise Plan e assegurar que você possa acessar os certificados TLS do peer e de sua rede no {{site.data.keyword.cloud_notm}}. Para obter mais informações sobre os certificados a serem usados e as tarefas a serem executadas, consulte [Gerenciando certificados no {{site.data.keyword.blockchainfull_notm}} Platform](../certificates.html).
+Antes de poder operar o peer, é necessário executar algum gerenciamento dos certificados em sua máquina local. Por exemplo, será necessário fazer upload do signCert do administrador do peer para o Starter Plan ou o Enterprise Plan e assegurar que você possa acessar os certificados TLS do peer e de sua rede no {{site.data.keyword.cloud_notm}}. Para obter mais informações sobre os certificados a serem usados e as tarefas a serem executadas, consulte [Gerenciando certificados no {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/certificates.html).
 
 1. Mova o signCert do administrador de peer para uma nova pasta denominada `admincerts`:
 
@@ -312,7 +312,7 @@ Antes de poder operar o peer, é necessário executar algum gerenciamento dos ce
 
 3. Assegure-se de que você [tenha transferido por download seu certificado TLS de peer](#peer-tls) e possa referenciá-lo a partir de sua linha de comandos. Se você seguiu os comandos de exemplo, será possível localizar esse certificado TLS no arquivo `$HOME/fabric-ca-client/peer-tls/peertls.pem`.
 
-4. Também é necessário referenciar o certificado TLS que você usou para se comunicar com sua CA do Starter Plan ou do Enterprise Plan quando você [inscreveu seu administrador de peer](peer_deploy_ibp.html#enroll-admin). Se você seguiu os comandos de exemplo nesta documentação, será possível localizar o certificado TLS no arquivo `$HOME/fabric-ca-client/tls-ibp/tls.pem`.
+4. Também é necessário referenciar o certificado TLS que você usou para se comunicar com sua CA do Starter Plan ou do Enterprise Plan quando você [inscreveu seu administrador de peer](/docs/services/blockchain/howto/peer_deploy_ibp.html#enroll-admin). Se você seguiu os comandos de exemplo nesta documentação, será possível localizar o certificado TLS no arquivo `$HOME/fabric-ca-client/tls-ibp/tls.pem`.
 
 É possível executar um comando de árvore para verificar se você concluiu essas etapas. Navegue para o diretório no qual você armazenou seus certificados. Um comando de árvore deve gerar um resultado semelhante à estrutura a seguir:
 ```
@@ -426,8 +426,8 @@ Depois de mover todos os nossos certificados para o local necessário, é precis
 
 Antes de poder executar os comandos da CLI para associar o peer a um canal, sua organização precisa ser incluída em um canal na rede de uma das maneiras a seguir.
 
-  - É possível iniciar um novo canal para o peer. Como o inicializador de canais, é possível incluir automaticamente a sua organização durante a [criação do canal](create_channel.html#creating-a-channel).
-  - Outro membro da rede de blockchain também pode incluir sua organização em um canal existente usando uma [atualização de canal](create_channel.html#updating-a-channel).
+  - É possível iniciar um novo canal para o peer. Como o inicializador de canais, é possível incluir automaticamente a sua organização durante a [criação do canal](/docs/services/blockchain/howto/create_channel.html#creating-a-channel).
+  - Outro membro da rede de blockchain também pode incluir sua organização em um canal existente usando uma [atualização de canal](/docs/services/blockchain/howto/create_channel.html#updating-a-channel).
 
     Após sua organização ser incluída em um canal, é necessário incluir o signCert de seu peer no canal para que outros membros possam verificar sua assinatura digital durante as transações. O peer faz upload de seu signCert durante a instalação, de modo que você precise sincronizar apenas o certificado para o canal. Na tela "Canais" do Monitor de rede, localize o canal ao qual sua organização se associa e selecione **Certificado de sincronização** na lista suspensa sob o cabeçalho **Ação**. Essa ação sincroniza os certificados em todos os peers no canal.
 
@@ -536,7 +536,7 @@ Conclua as etapas a seguir para atualizar seu chaincode:
 2. Depois de instalar o novo chaincode em todos os peers no canal, use o Monitor de rede ou o
 comando [peer chaincode upgrade ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/peerchaincode.html#peer-chaincode-upgrade) para atualizar o canal para usar o novo chaincode.
 
-Consulte a etapa dois destas [instruções](install_instantiate_chaincode.html#updating-a-chaincode) para obter mais informações sobre o uso do painel "Instalar código" do Monitor de rede para atualizar o chaincode no canal.
+Consulte a etapa dois destas [instruções](/docs/services/blockchain/howto/install_instantiate_chaincode.html#updating-a-chaincode) para obter mais informações sobre o uso do painel "Instalar código" do Monitor de rede para atualizar o chaincode no canal.
 
 ## Visualizando os logs de peer
 {: #peer-ibp-view-logs}

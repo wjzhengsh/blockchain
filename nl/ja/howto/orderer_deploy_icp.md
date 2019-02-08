@@ -17,10 +17,10 @@ lastupdated: "2018-12-07"
 
 ***[このページは参考になりましたか。 ご意見をお聞かせください。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
-順序付けプログラムは、順序付けプログラム・コンポーネントを含むブロックチェーン・ネットワーク内のクライアント、順序付けトランザクション、およびブロードキャスト・トランザクションを認証します。順序付けプログラムと、ブロックチェーン・ネットワーク内でのその役割について詳しくは、[ブロックチェーン・コンポーネントの概要](../blockchain_component_overview.html)を参照してください。
+順序付けプログラムは、順序付けプログラム・コンポーネントを含むブロックチェーン・ネットワーク内のクライアント、順序付けトランザクション、およびブロードキャスト・トランザクションを認証します。順序付けプログラムと、ブロックチェーン・ネットワーク内でのその役割について詳しくは、[ブロックチェーン・コンポーネントの概要](/docs/services/blockchain/blockchain_component_overview.html)を参照してください。
 {:shortdesc}
 
-順序付けサービスをデプロイする前に、[考慮事項と制限事項](../ibp-for-icp-about.html#ibp-icp-considerations)を確認してください。
+順序付けサービスをデプロイする前に、[考慮事項と制限事項](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-considerations)を確認してください。
 
 ## 必要なリソース
 {: #ca-resources-required}
@@ -51,7 +51,7 @@ ICP システムが最小ハードウェア・リソース要件を満たして�
 ## 順序付けプログラムをデプロイするための前提条件
 {: #prerequisites-orderer-icp}
 
-1. ICP に順序付けプログラムをインストールするには、最初に [ICP をインストール](../ICP_setup.html)し、[{{site.data.keyword.blockchainfull_notm}} Platform Helm チャートをインストール](helm_install_icp.html)する必要があります。
+1. ICP に順序付けプログラムをインストールするには、最初に [ICP をインストール](/docs/services/blockchain/ICP_setup.html)し、[{{site.data.keyword.blockchainfull_notm}} Platform Helm チャートをインストール](/docs/services/blockchain/helm_install_icp.html)する必要があります。
 
 2. Community Edition を使用し、インターネット接続なしでこの Helm チャートを ICP クラスター上で実行する場合は、インターネットに接続されたマシン上にアーカイブを作成した後に、アーカイブを ICP クラスターにインストールすることができます。詳しくは、[インターネット接続がないクラスターへのフィーチャー・アプリケーションの追加 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_package_offline.html "インターネット接続がないクラスターへのフィーチャー・アプリケーションの追加"){:new_window} を参照してください。仕様ファイル `manifest.yaml` は、Helm チャート内の ibm-blockchain-platform-dev/ibm_cloud_pak にあります。
 

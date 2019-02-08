@@ -17,10 +17,10 @@ lastupdated: "2018-12-07"
 
 ***[Esta página é útil? Diga-nos.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
-Os solicitadores autenticam clientes, transações de pedidos e transações de transmissão em uma rede de blockchain com o componente solicitador. Para obter mais informações sobre os solicitadores e a função que eles desempenham em uma rede de blockchain, consulte [Visão geral sobre componentes de blockchain](../blockchain_component_overview.html).
+Os solicitadores autenticam clientes, transações de pedidos e transações de transmissão em uma rede de blockchain com o componente solicitador. Para obter mais informações sobre os solicitadores e a função que eles desempenham em uma rede de blockchain, consulte [Visão geral sobre componentes de blockchain](/docs/services/blockchain/blockchain_component_overview.html).
 {:shortdesc}
 
-Antes de implementar um serviço de ordenação, revise as [Considerações e limitações](../ibp-for-icp-about.html#ibp-icp-considerations).
+Antes de implementar um serviço de ordenação, revise as [Considerações e limitações](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-considerations).
 
 ## Recursos necessários
 {: #ca-resources-required}
@@ -51,7 +51,7 @@ Se você não usar o fornecimento dinâmico, os [Volumes Persistentes](https://k
 ## Pré-requisitos para implementar um solicitador
 {: #prerequisites-orderer-icp}
 
-1. Antes de poder instalar um solicitador no ICP, deve-se [instalar o ICP](../ICP_setup.html) e [instalar o gráfico Helm do {{site.data.keyword.blockchainfull_notm}} Platform](helm_install_icp.html).
+1. Antes de poder instalar um solicitador no ICP, deve-se [instalar o ICP](/docs/services/blockchain/ICP_setup.html) e [instalar o gráfico Helm do {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/howto/helm_install_icp.html).
 
 2. Se você usar o Community Edition e desejar executar esse gráfico do Helm em um cluster do ICP sem conectividade à Internet, será necessário criar archives em uma máquina conectada à Internet antes de instalar os archives em seu cluster do ICP. Para obter mais informações, veja [Incluindo aplicativos de destaque em clusters sem conectividade à Internet ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_package_offline.html "Incluindo aplicativos de destaque em clusters sem conectividade à Internet"){:new_window}. Observe que é possível localizar o arquivo de especificação `manifest.yaml` em ibm-blockchain-platform-dev/ibm_cloud_pak no gráfico Helm.
 

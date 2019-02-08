@@ -22,10 +22,10 @@ lastupdated: "2018-12-07"
 {:shortdesc}
 
 **注:**
-- {{site.data.keyword.blockchainfull_notm}} Platform エンタープライズ・プランは実稼働環境を提供します。 開発/テスト用の環境が必要な場合は、[スターター・プランについて](starter_plan.html)を参照してください。
+- {{site.data.keyword.blockchainfull_notm}} Platform エンタープライズ・プランは実稼働環境を提供します。 開発/テスト用の環境が必要な場合は、[スターター・プランについて](/docs/services/blockchain/starter_plan.html)を参照してください。
 - {{site.data.keyword.blockchainfull_notm}} Platform は {{site.data.keyword.cloud_notm}} のプラットフォーム・サービスであり、すべてのメンバーシップ・オファリングはサービス・レベル・アグリーメント (SLA) に関する [{{site.data.keyword.cloud_notm}} サービスのご利用条件 ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](http://www-03.ibm.com/software/sla/sladb.nsf/sla/bm "{{site.data.keyword.cloud_notm}} サービスのご利用条件") に従っています。 エンタープライズ・プラン・ネットワークは、**複数の環境**にまたがり、地理的に別々のデータ・センターにプロビジョンされます。
 
-ネットワークを始めようとしているメンバーのために、IBM は、ネットワークをセットアップしてプロビジョンするための重要な手順をネットワーク・イニシエーターに案内するグラフィカル・ユーザー・インターフェースを用意しています。 例えば、他のメンバーを招待したり、ガバナンス・ルールを設定したりする手順を案内します。 詳しくは、[エンタープライズ・プラン・ネットワークの管理](get_start.html)を参照してください。 ネットワークをデプロイした後、ネットワーク・モニターという対話式グラフィカル・ユーザー・インターフェースを使用すると、ネットワークの正常性とアクティビティーをモニターしたり、主要なネットワーク・アクティビティー (新規デプロイメント、メンバーの追加/削除、チェーンコードのライフサイクル、チャネル管理などの作業) を管理したり、技術サポートを利用したりできます。 詳しくは、[ネットワーク・モニターの使用](v10_dashboard.html)を参照してください。
+ネットワークを始めようとしているメンバーのために、IBM は、ネットワークをセットアップしてプロビジョンするための重要な手順をネットワーク・イニシエーターに案内するグラフィカル・ユーザー・インターフェースを用意しています。 例えば、他のメンバーを招待したり、ガバナンス・ルールを設定したりする手順を案内します。 詳しくは、[エンタープライズ・プラン・ネットワークの管理](/docs/services/blockchain/get_start.html)を参照してください。 ネットワークをデプロイした後、ネットワーク・モニターという対話式グラフィカル・ユーザー・インターフェースを使用すると、ネットワークの正常性とアクティビティーをモニターしたり、主要なネットワーク・アクティビティー (新規デプロイメント、メンバーの追加/削除、チェーンコードのライフサイクル、チャネル管理などの作業) を管理したり、技術サポートを利用したりできます。 詳しくは、[ネットワーク・モニターの使用](/docs/services/blockchain/v10_dashboard.html)を参照してください。
 
 今すぐ [{{site.data.keyword.blockchainfull_notm}} メンバーシップ ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps) に登録してください。
 
@@ -44,11 +44,11 @@ Fabric CA は、エンタープライズ・プランで提供される認証局�
 
 決定する必要がある唯一の点は、ネットワークに必要なピアのサイズです。 これは、必要なチャネルの数、1 チャネルあたりのワークロード、メモリー使用量、ディスク・スペース (ストレージ) に基づいて決定します。
 
-より安定した実動レベルまたは実動に近いレベルのデプロイメントには、エンタープライズ・プランを使用してください。 テストを目的とする場合は、[スターター・プラン](starter_plan.html)を使用するか、[IBM Container Service](https://ibm-blockchain.github.io/) で開発するか、または [Docker イメージをローカルにインストール](http://hyperledger-fabric.readthedocs.io/en/release-1.1/build_network.html)します。
+より安定した実動レベルまたは実動に近いレベルのデプロイメントには、エンタープライズ・プランを使用してください。 テストを目的とする場合は、[スターター・プラン](/docs/services/blockchain/starter_plan.html)を使用するか、[IBM Container Service](https://ibm-blockchain.github.io/) で開発するか、または [Docker イメージをローカルにインストール](http://hyperledger-fabric.readthedocs.io/en/release-1.1/build_network.html)します。
 
 <!--- The Enterprise plan provides the ordering service and CA. The membership fee is $1,000, and a per peer fee of $1,000 that is associated with the network. If you want to have high availability (HA), you must purchase an additional peer to provide the HA capabilities. For example, one organization (associated membership fee of $1,000) of two peers ($1,000 X 2 peers) with HA ($1,000 X 2 HA peers) requires a monthly charge of $5,000.  --->
 
 ## 料金  
 エンタープライズ・プランのご利用料金は、ネットワーク・メンバーのメンバーシップ料金が 1 カ月あたり $1,000、それに加えてネットワーク内のピアごとに 1 カ月あたり $1,000 です。  毎月の料金は、日割りで請求されます。  例えば、2 つのピアを使用するメンバーは、該当するメンバーシップ料金 $1,000 と、ピアごとの料金 $1,000 X 2 ピアを合わせて、毎月 $3,000 をお支払いいただく必要があります。  その月の日数が 30 日の場合、そのメンバーは毎日 $100 ($3,000/30) を支払います。  高可用性 (HA) が必要な場合、HA 機能を提供するために、必要なピア数を 2 倍にする必要があることに注意してください。
 
-各ネットワーク・メンバーは、ネットワーク・インスタンスを作成するスペースを所有する自分の {{site.data.keyword.cloud_notm}} アカウントで請求料金を支払うことができます。 それ以外にも、1 つのネットワーク・メンバーがネットワーク内のすべてのメンバーの請求料金を負担することもできます。 ブロックチェーン・ネットワークの支払い方法について詳しくは、[ネットワークの支払い](howto/paying_mode.html)を参照してください。
+各ネットワーク・メンバーは、ネットワーク・インスタンスを作成するスペースを所有する自分の {{site.data.keyword.cloud_notm}} アカウントで請求料金を支払うことができます。 それ以外にも、1 つのネットワーク・メンバーがネットワーク内のすべてのメンバーの請求料金を負担することもできます。 ブロックチェーン・ネットワークの支払い方法について詳しくは、[ネットワークの支払い](/docs/services/blockchain/howto/paying_mode.html)を参照してください。

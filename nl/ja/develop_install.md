@@ -42,7 +42,7 @@ VSCode を使用している場合は、Hyperledger Composer VSCode 拡張機能
 
 ## ステップ 1: コマンド・ライン・ツールのインストール
 
-コマンド・ライン・ツールには、**composer-cli**、メインの {{site.data.keyword.blockchainfull_notm}} Platform:Develop コマンド・ライン・モジュール、**generator-hyperledger-composer**、**composer-rest-server**、**Yeoman** が含まれます。これらのモジュールは、ビジネス・ネットワーク、カスタム REST サーバー、Angular アプリケーションの生成に使用されます。 インストールするバージョンは、スターター・プランまたはエンタープライズ・プランが実行されている Hyperledger Fabric のバージョンによって異なります。Fabric のバージョンは、ネットワーク・モニターで[「ネットワーク設定 (Network preferences)」ウィンドウ](../v10_dashboard.html#network-preferences)を開くことで確認できます。
+コマンド・ライン・ツールには、**composer-cli**、メインの {{site.data.keyword.blockchainfull_notm}} Platform:Develop コマンド・ライン・モジュール、**generator-hyperledger-composer**、**composer-rest-server**、**Yeoman** が含まれます。これらのモジュールは、ビジネス・ネットワーク、カスタム REST サーバー、Angular アプリケーションの生成に使用されます。 インストールするバージョンは、スターター・プランまたはエンタープライズ・プランが実行されている Hyperledger Fabric のバージョンによって異なります。Fabric のバージョンは、ネットワーク・モニターで[「ネットワーク設定 (Network preferences)」ウィンドウ](/docs/services/blockchain/v10_dashboard.html#network-preferences)を開くことで確認できます。
 
 1. Hyperledger Fabric v1.2.1 を実行しているスターター・プランの新規インスタンスで使用する場合は、以下のコマンドを使用して **composer-cli** をインストールします。
 

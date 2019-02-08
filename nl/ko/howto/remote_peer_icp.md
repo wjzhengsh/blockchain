@@ -23,7 +23,7 @@ lastupdated: "2018-09-05"
 
 {{site.data.keyword.cloud_notm}} Private는 온프레미스 컨테이너화 애플리케이션을 개발하고 관리하는 데 사용하는 애플리케이션 플랫폼입니다. {{site.data.keyword.cloud_notm}} Private의 {{site.data.keyword.blockchainfull_notm}} Platform Remote Peers는 고객이 로컬 환경에 피어를 배치하도록 ICP와 함께 번들된 {{site.data.keyword.blockchainfull_notm}} 제품입니다. 원격 피어의 Helm 차트를 설치하고 나면 ICP 카탈로그에서 해당 차트를 애플리케이션으로 찾을 수 있습니다. ICP의 원격 피어에서 피어 관리를 위해 ICP의 스토리지, 보안, 로깅 및 지원 서비스를 활용합니다. ICP에 관한 자세한 정보는 [{{site.data.keyword.cloud_notm}} Private 문서 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0.3/kc_welcome_containers.html "{{site.data.keyword.cloud_notm}} Private 문서")를 참조하십시오.
 
-ICP에 원격 피어를 설치하기 전에 [원격 피어 고려사항](remote_peer.html#remote-peer-limitations)을 검토하십시오.
+ICP에 원격 피어를 설치하기 전에 [원격 피어 고려사항](/docs/services/blockchain/howto/remote_peer.html#remote-peer-limitations)을 검토하십시오.
 
 ## 전제조건
 {: #prerequisites-icp}
@@ -61,7 +61,7 @@ ICP에 원격 피어를 설치하기 전에 {{site.data.keyword.cloud_notm}} Pri
 
 3. {{site.data.keyword.blockchainfull_notm}} Platform  
 
-  원격 피어를 사용하려면 {{site.data.keyword.blockchainfull_notm}} Platform에서 호스팅되는 Blockchain 네트워크의 멤버인 조직이 있어야 합니다. 네트워크의 API 엔드포인트와 네트워크 인증 정보에 액세스하려면 {{site.data.keyword.cloud_notm}}에서 네트워크 모니터를 사용해야 합니다. Blockchain 네트워크의 구성원이 아니면 네트워크를 작성하거나 가입해야 합니다. 자세한 정보는 [네트워크 작성](../get_start.html#creating-a-network) 또는 [네트워크에 가입](../get_start.html#joining-a-network)을 참조하십시오.
+  원격 피어를 사용하려면 {{site.data.keyword.blockchainfull_notm}} Platform에서 호스팅되는 Blockchain 네트워크의 멤버인 조직이 있어야 합니다. 네트워크의 API 엔드포인트와 네트워크 인증 정보에 액세스하려면 {{site.data.keyword.cloud_notm}}에서 네트워크 모니터를 사용해야 합니다. Blockchain 네트워크의 구성원이 아니면 네트워크를 작성하거나 가입해야 합니다. 자세한 정보는 [네트워크 작성](/docs/services/blockchain/get_start.html#creating-a-network) 또는 [네트워크에 가입](/docs/services/blockchain/get_start.html#joining-a-network)을 참조하십시오.
 
 ## Helm 차트를 ICP에 가져오기
 
@@ -179,7 +179,7 @@ ICP에 원격 피어를 설치하기 전에 {{site.data.keyword.cloud_notm}} Pri
 | `Peer enroll secret`| {{site.data.keyword.blockchainfull_notm}} Platform Network Monitor의 "인증 기관" 화면에 입력한 등록 시크릿입니다. | 없음 | 예 |
 | | | | |
 |**원격 피어 데이터베이스** | **원장 데이터베이스 유형**| | |
-| `Ledger database`| 채널 원장을 저장하는 데 사용한 [상태 데이터베이스](../glossary.html#state-database)입니다. 원격 피어에서는 [Blockchain 네트워크](../v10_dashboard.html#network-preferences)와 동일한 데이터베이스를 사용해야 합니다. | 없음 | 예 |
+| `Ledger database`| 채널 원장을 저장하는 데 사용한 [상태 데이터베이스](/docs/services/blockchain/glossary.html#state-database)입니다. 원격 피어에서는 [Blockchain 네트워크](/docs/services/blockchain/v10_dashboard.html#network-preferences)와 동일한 데이터베이스를 사용해야 합니다. | 없음 | 예 |
 | `CouchDB image`| CouchDB가 원장 데이터베이스로 선택된 경우에만 적용됩니다. | 설치된 경로로 자동 입력됩니다. 이 값을 변경하지 마십시오. | 예 |
 |**데이터 지속성** | 클러스터가 다시 시작하거나 실패한 후 데이터를 지속하는 기능을 사용합니다. 자세한 정보는 [Kubernetes의 스토리지 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://kubernetes.io/docs/concepts/storage/ "볼륨")을 참조하십시오. | | |
 | `Data persistence enabled`| 컨테이너를 다시 시작하면 상태 데이터를 사용할 수 있습니다. *선택하지 않으면 장애 복구 또는 팟(Pod) 다시 시작 시 모든 데이터가 유실됩니다.* | 선택됨 | 아니오 |
@@ -299,7 +299,7 @@ helm CLI version on your local machine is ahead of helm cli version on your serv
 Error: incompatible versions client[v2.9.1] server[v2.7.3+icp]
 ```
 
-See the [troubleshooting topic](remote_peer_operate_icp.html#icp-troubleshooting) for instructions on resolving this error.
+See the [troubleshooting topic](/docs/services/blockchain/howto/remote_peer_operate_icp.html#icp-troubleshooting) for instructions on resolving this error.
 
 -->
 
@@ -381,13 +381,13 @@ If you haven't, install [openssl](https://github.com/openssl/openssl) on your sy
 3. 원격 피어에서 {{site.data.keyword.blockchainfull}} Platform 네트워크에 연결할 수 있는지 확인하려면
 원격 피어 컨테이너 내부에서 피어 CLI 명령을 실행할 수 있습니다. `peer channel fetch` CLI 명령을 실행하여 채널의 최초 블록을 페치하십시오.
 
-1. ICP 클러스터에 아직 연결하지 않은 경우 다음 [지시사항](remote_peer_operate_icp.html#remote-peer-kubectl-configure)에 따라 연결하고 피어 컨테이너에서 cli를 사용하십시오.
+1. ICP 클러스터에 아직 연결하지 않은 경우 다음 [지시사항](/docs/services/blockchain/howto/remote_peer_operate_icp.html#remote-peer-kubectl-configure)에 따라 연결하고 피어 컨테이너에서 cli를 사용하십시오.
 
 2. 네트워크의 채널에 조직을 추가해야 최초 블록을 페치할 수 있습니다.
 
-     - 원격 피어의 새 채널을 시작할 수 있습니다. 채널 개시자로서 [채널 작성](create_channel.html#creating-a-channel) 중에 조직을 자동으로 포함시킬 수 있습니다. {{site.data.keyword.blockchainfull_notm}} Platform에 피어가 하나 이상 있어야 네트워크 모니터에서 채널을 작성할 수 있습니다.  
+     - 원격 피어의 새 채널을 시작할 수 있습니다. 채널 개시자로서 [채널 작성](/docs/services/blockchain/howto/create_channel.html#creating-a-channel) 중에 조직을 자동으로 포함시킬 수 있습니다. {{site.data.keyword.blockchainfull_notm}} Platform에 피어가 하나 이상 있어야 네트워크 모니터에서 채널을 작성할 수 있습니다.  
 
-     - Blockchain 네트워크의 다른 멤버도 [채널 업데이트](create_channel.html#updating-a-channel)를 사용하여 기존 채널에 조직을 추가할 수 있습니다. 플랫폼에서 피어를 호스팅하지 않는 경우에도 {{site.data.keyword.blockchainfull_notm}} Platform에 피어가 있는 채널 구성원은 네트워크 모니터를 사용하여 채널에 조직을 추가할 수 있습니다.
+     - Blockchain 네트워크의 다른 멤버도 [채널 업데이트](/docs/services/blockchain/howto/create_channel.html#updating-a-channel)를 사용하여 기존 채널에 조직을 추가할 수 있습니다. 플랫폼에서 피어를 호스팅하지 않는 경우에도 {{site.data.keyword.blockchainfull_notm}} Platform에 피어가 있는 채널 구성원은 네트워크 모니터를 사용하여 채널에 조직을 추가할 수 있습니다.
 
      원격 피어에서 설치 중에 서명 인증서를 업로드하므로 사용자는 채널에 인증서를 동기화하기만 하면 됩니다. 네트워크 모니터의 "화면" 채널에서 조직이 가입하는 채널을 찾고 **조치** 헤더의 드롭 다운 목록에서 **인증서 동기화**를 선택하십시오. 이 조치는 채널에 있는 피어 전체에서 인증서를 동기화합니다.
 
@@ -460,7 +460,7 @@ If you haven't, install [openssl](https://github.com/openssl/openssl) on your sy
 ## 다음 작업
 {: #whats-next-icp}
 
-ICP에 원격 피어를 설정하고 나면, Blockchain 네트워크에 트랜잭션을 제출하고 분산된 원장을 읽을 수 있도록 여러 운영 단계를 완료할 수 있습니다. 자세한 정보는 [원격 피어 운영](remote_peer_operate_icp.html)을 참조하십시오.
+ICP에 원격 피어를 설정하고 나면, Blockchain 네트워크에 트랜잭션을 제출하고 분산된 원장을 읽을 수 있도록 여러 운영 단계를 완료할 수 있습니다. 자세한 정보는 [원격 피어 운영](/docs/services/blockchain/howto/remote_peer_operate_icp.html)을 참조하십시오.
 
 ## 고가용성
 {: #high-availability}
@@ -475,7 +475,7 @@ ICP에 원격 피어를 설정하고 나면, Blockchain 네트워크에 트랜�
 ICP 클러스터에서 피어가 동일한 조직의 동일한 네트워크에 연결하는지 발견하고 여러 다른 작업자 노드에서 해당 피어를 배열하려고 합니다.  
   **참고:** 정책에서는 피어를 다른 작업자 노드에 두는 것을 "선호"하지만 필수는 아닙니다. 예를 들어 하나의 작업자 노드만 있으면 모든 피어가 이 노드에 배치됩니다.
 
-두 개 이상의 피어를 배치하는 경우 [애플리케이션의 고가용성](../v10_application.html#ha-app)도 구성해야 합니다.
+두 개 이상의 피어를 배치하는 경우 [애플리케이션의 고가용성](/docs/services/blockchain/v10_application.html#ha-app)도 구성해야 합니다.
 
 ## 보안 고려사항
 {: #icp-security}
@@ -495,14 +495,14 @@ ICP 클러스터에서 피어가 동일한 조직의 동일한 네트워크에 �
 ### 데이터 상주
 {: #icp-data-residency}
 
-데이터 상주를 사용하면 모든 Blockchain 원장 데이터를 한 국가 내에서 처리하고 저장해야 합니다. 데이터 상주를 수행하는 방법에 관한 자세한 정보는 [데이터 상주](remote_peer.html#data-residency)를 참조하십시오.
+데이터 상주를 사용하면 모든 Blockchain 원장 데이터를 한 국가 내에서 처리하고 저장해야 합니다. 데이터 상주를 수행하는 방법에 관한 자세한 정보는 [데이터 상주](/docs/services/blockchain/howto/remote_peer.html#data-residency)를 참조하십시오.
 
 ### 키 관리
 {: #icp-security-key-management}
 
-키 관리는 원격 피어 보안의 중요한 요소입니다. 개인 키가 손상되거나 유실되면 적대적인 액터가 원격 피어의 데이터와 기능에 액세스할 수 있습니다. {{site.data.keyword.blockchainfull_notm}} Platform 엔터프라이즈 플랜에서는 HSM([Hardware Security Modules](../glossary.html#hsm))을 사용하여 네트워크의 개인 키를 저장합니다. HSM은 다른 당사자가 개인 키에 액세스하지 못하게 하는 물리적 어플라이언스입니다.
+키 관리는 원격 피어 보안의 중요한 요소입니다. 개인 키가 손상되거나 유실되면 적대적인 액터가 원격 피어의 데이터와 기능에 액세스할 수 있습니다. {{site.data.keyword.blockchainfull_notm}} Platform 엔터프라이즈 플랜에서는 HSM([Hardware Security Modules](/docs/services/blockchain/glossary.html#hsm))을 사용하여 네트워크의 개인 키를 저장합니다. HSM은 다른 당사자가 개인 키에 액세스하지 못하게 하는 물리적 어플라이언스입니다.
 
-ICP에서 원격 피어를 배치하면 사용자가 개인 키를 관리해야 합니다. {{site.data.keyword.blockchainfull_notm}} Platform에서 개인 키를 생성해도 해당 키는 Platform에 저장되지 않습니다. 키가 손상되지 않도록 안전한 위치에 저장하는 것이 중요합니다. 피어 컨테이너의 `/mnt/crypto/peer/peer/msp/keystore/` 디렉토리에 있는 피어 MSP의 키 저장소 폴더에서 원격 피어의 개인 키를 찾을 수 있습니다. 원격 피어의 인증서에 관한 자세한 정보는 [{{site.data.keyword.blockchainfull_notm}} Platform에서 인증서 관리](../certificates.html) 튜토리얼의 [Membership Services Provider](../certificates.html#msp) 섹션을 참조하십시오.
+ICP에서 원격 피어를 배치하면 사용자가 개인 키를 관리해야 합니다. {{site.data.keyword.blockchainfull_notm}} Platform에서 개인 키를 생성해도 해당 키는 Platform에 저장되지 않습니다. 키가 손상되지 않도록 안전한 위치에 저장하는 것이 중요합니다. 피어 컨테이너의 `/mnt/crypto/peer/peer/msp/keystore/` 디렉토리에 있는 피어 MSP의 키 저장소 폴더에서 원격 피어의 개인 키를 찾을 수 있습니다. 원격 피어의 인증서에 관한 자세한 정보는 [{{site.data.keyword.blockchainfull_notm}} Platform에서 인증서 관리](/docs/services/blockchain/certificates.html) 튜토리얼의 [Membership Services Provider](/docs/services/blockchain/certificates.html#msp) 섹션을 참조하십시오.
 
 Key Escrow를 사용하여 유실된 개인 키를 복구할 수 있습니다. 이 작업은 키 유실 전에 수행해야 합니다. 개인 키를 복구할 수 없으면 새 ID를 인증 기관에 등록하여 새 개인 키를 가져와야 합니다. 가입한 모든 채널에서 signCert를 제거하고 바꿔야 합니다.
 
@@ -515,12 +515,12 @@ IBP에서 개인 키를 작성할 때 두 개의 서로 다른 엔티티에 보�
 
 [전송 계층 보안 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/en/SSFKSJ_7.1.0/com.ibm.mq.doc/sy10660_.htm "SSL 또는 TLS 핸드쉐이크 개요")(TLS)은 Hyperledger Fabric의 신뢰 모델에 임베드됩니다. {{site.data.keyword.blockchainfull_notm}} Platform의 모든 컴포넌트에서는 TLS를 사용하여 서로 인증하고 통신합니다. 따라서 {{site.data.keyword.blockchainfull_notm}} Platform의 네트워크 컴포넌트에서 원격 피어를 통해 TLS 핸드쉐이크를 완료할 수 있어야 합니다. 따라서 화이트리스트 등을 사용하여 웹 방화벽을 통과하여 클라이언트 앱에서 피어로 이동할 수 있어야 합니다.
 
-단방향(서버만) 인증이 아니라 양방향(서버-클라이언트) 인증이 필요한 상호 TLS를 사용하여 애플리케이션과 엔터프라이즈 플랜 네트워크 사이의 통신을 보호할 수 있습니다. 네트워크 모니터를 사용하여 {{site.data.keyword.blockchainfull_notm}} Platform에서 피어에 대해 [상호 TLS를 사용](../v10_dashboard.html#mutual-tls)하게 설정할 수 있습니다. 원격 피어에서 상호 TLS를 사용하려면 Hyperledger Fabric 문서의 [피어 노드에 상호 TLS 사용 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.1/enable_tls.html "전송 계층 보안으로 통신 보안") 지시사항을 따르십시오. 애플리케이션에 상호 TLS를 사용하는 것이 좋습니다.
+단방향(서버만) 인증이 아니라 양방향(서버-클라이언트) 인증이 필요한 상호 TLS를 사용하여 애플리케이션과 엔터프라이즈 플랜 네트워크 사이의 통신을 보호할 수 있습니다. 네트워크 모니터를 사용하여 {{site.data.keyword.blockchainfull_notm}} Platform에서 피어에 대해 [상호 TLS를 사용](/docs/services/blockchain/v10_dashboard.html#mutual-tls)하게 설정할 수 있습니다. 원격 피어에서 상호 TLS를 사용하려면 Hyperledger Fabric 문서의 [피어 노드에 상호 TLS 사용 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.1/enable_tls.html "전송 계층 보안으로 통신 보안") 지시사항을 따르십시오. 애플리케이션에 상호 TLS를 사용하는 것이 좋습니다.
 
 ### Membership Services Provider 구성
 {: #icp-security-MSP}
 
-{{site.data.keyword.blockchainfull_notm}} Platform의 컴포넌트에서는 MSP(Membership Services Provider)를 통해 ID를 이용합니다. MSP는 CA에서 발행하는 인증서를 네트워크 및 채널 역할과 연관시킵니다. MSP가 원격 피어와 작동하는 방식에 관한 자세한 정보는[MSP(Membership Services Provider)](../certificates.html#msp)를 참조하십시오.
+{{site.data.keyword.blockchainfull_notm}} Platform의 컴포넌트에서는 MSP(Membership Services Provider)를 통해 ID를 이용합니다. MSP는 CA에서 발행하는 인증서를 네트워크 및 채널 역할과 연관시킵니다. MSP가 원격 피어와 작동하는 방식에 관한 자세한 정보는[MSP(Membership Services Provider)](/docs/services/blockchain/certificates.html#msp)를 참조하십시오.
 
 ### 애플리케이션 보안
 {: #icp-security-appl}

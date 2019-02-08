@@ -130,7 +130,7 @@ Insira o Monitor de rede e abra a tela "Instalar código". Se você tiver um cha
 ## Monitoring sample applications
 {: #monitor-apps}
 
-In a Starter Plan network, you can view and access sample applications in the "Try Samples" screen of the Network Monitor.  After you deploy a sample application, you can click the **Launch** button to enter your application interface, or the **View on GitHub** link to visit the code repository.  For more information, see [Deploying sample applications](prebuilt_samples.html).
+In a Starter Plan network, you can view and access sample applications in the "Try Samples" screen of the Network Monitor.  After you deploy a sample application, you can click the **Launch** button to enter your application interface, or the **View on GitHub** link to visit the code repository.  For more information, see [Deploying sample applications](/docs/services/blockchain/howto/prebuilt_samples.html).
 
   ![Sample applications](../images/sampleappflow0.png "Sample applications")
 --->

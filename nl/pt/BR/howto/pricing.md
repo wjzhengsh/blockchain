@@ -30,7 +30,7 @@ O {{site.data.keyword.blockchainfull}} Platform cobra mensalmente a associação
 
 *Figura 1. Visão geral de precificação do {{site.data.keyword.blockchainfull}} Platform*
 
-A taxa mensal é cobrada diariamente rateada. Por exemplo, um membro (taxa de participação associada de U$ 1.000) de dois peers (por taxa peer de U$ 1.000 × 2 peers) precisa pagar U$ 3.000 por mês. Se o mês tiver 30 dias, o membro pagará U$ 100 (U$ 3.000/30) todos os dias. Para obter mais informações sobre como pagar por suas redes, veja [Modo de pagamento](paying_mode.html).
+A taxa mensal é cobrada diariamente rateada. Por exemplo, um membro (taxa de participação associada de U$ 1.000) de dois peers (por taxa peer de U$ 1.000 × 2 peers) precisa pagar U$ 3.000 por mês. Se o mês tiver 30 dias, o membro pagará U$ 100 (U$ 3.000/30) todos os dias. Para obter mais informações sobre como pagar por suas redes, veja [Modo de pagamento](/docs/services/blockchain/howto/paying_mode.html).
 
 O **{{site.data.keyword.blockchainfull_notm}} Platform Starter Plan oferece a você créditos de avaliação de US$ 500** antes de você ser cobrado. Para obter mais informações, veja [Precificação do Starter Plan](#starter-plan-pricing).
 

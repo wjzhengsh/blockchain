@@ -71,7 +71,7 @@ ICP 시스템에서 다음과 같은 최소 하드웨어 리소스 요구사항�
 
 * 컴포넌트에서 사용할 스토리지를 판별해야 합니다. 기본 설정을 사용하는 경우 피어 Helm 차트에서 피어 데이터를 위해 이름이 `my-data-pvc`인 지속적 볼륨 청구를 작성합니다. 원장 데이터베이스로 CouchDB를 선택하는 경우 Helm 차트에서 원장 데이터베이스를 위해 이름이 `statedb-pvc`인 다른 지속적 볼륨 청구를 작성합니다.
 * 기본 스토리지 설정을 사용하지 않으려면 ICP 설치 중에 *새* storageClass가 설정되었는지 확인하거나, Kubernetes 시스템 관리자 배치하기 전에 storageClass를 작성해야 합니다.
-* [동적 프로비저닝 ![외부 링크 아이콘](/images/external_link.svg "외부 링크 아이콘")]( https://kubernetes.io/docs/concepts/storage/dynamic-provisioning/ "동적 볼륨 프로비저닝")은 ICP의 amd64 노드에서만 사용할 수 있습니다. 따라서 클러스터에 s390x 와 amd64 작업자 노드가 혼합되어 있는 경우 동적 프로비저닝을 사용할 수 없습니다.
+* [동적 프로비저닝 ![외부 링크 아이콘](/images/external_link.svg "외부 링크 아이콘")](https://kubernetes.io/docs/concepts/storage/dynamic-provisioning/ "동적 볼륨 프로비저닝")은 ICP의 amd64 노드에서만 사용할 수 있습니다. 따라서 클러스터에 s390x 와 amd64 작업자 노드가 혼합되어 있는 경우 동적 프로비저닝을 사용할 수 없습니다.
 * 동적 프로비저닝을 사용하지 않을 경우 [지속적 볼륨 ![외부 링크 아이콘](/images/external_link.svg "외부 링크 아이콘")](https://kubernetes.io/docs/concepts/storage/persistent-volumes/ "지속적 볼륨")을 작성하여 Kubernetes 지속적 볼륨 청구(PVC) 바인드 프로세스를 세분화하기 위해 사용할 수 있는 레이블로 설정해야 합니다.
 * NFS v2/v3 지속적 볼륨을 사용하는 경우 NFS 파일 시스템이 존재하는 호스트 시스템에서 **NFSv2/v3 파일 시스템 잠금을 위한 NFS 상태 모니터** 모듈(**rpc-statd**)을 사용으로 설정해야 합니다. 이 모듈은 NFS 파일 시스템에서 다른 프로세스가 보유한 파일에 대한 독점적 잠금을 확인할 수 있도록 해줍니다. 이 모듈을 사용으로 설정하려면 다음 명령을 실행하십시오.
   ```
@@ -93,4 +93,4 @@ ICP 시스템에서 다음과 같은 최소 하드웨어 리소스 요구사항�
 
 2. CA를 설치하고 작동시키기 위해 IBM Cloud Private CLI [3.1.0 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/manage_cluster/install_cli.html)을 설치하십시오.
 
-ICP를 설치한 후에도 계속 ICP 클러스터로 [{{site.data.keyword.blockchainfull_notm}} Platform for ICP Helm 차트를 가져올 수](howto/helm_install_icp.html) 있습니다.
+ICP를 설치한 후에도 계속 ICP 클러스터로 [{{site.data.keyword.blockchainfull_notm}} Platform for ICP Helm 차트를 가져올 수](/docs/services/blockchain/howto/helm_install_icp.html) 있습니다.

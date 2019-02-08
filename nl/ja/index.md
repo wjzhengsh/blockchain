@@ -18,7 +18,7 @@ lastupdated: "2018-08-31"
 ***[このページは参考になりましたか。ご意見をお聞かせください。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 
-**重要:** {{site.data.keyword.blockchainfull}} プラットフォーム・オファリングを使用する前に、[特記事項](needtoknow.html)のセクションにある技術情報とサポート情報をお読みください。
+**重要:** {{site.data.keyword.blockchainfull}} プラットフォーム・オファリングを使用する前に、[特記事項](/docs/services/blockchain/needtoknow.html)のセクションにある技術情報とサポート情報をお読みください。
 {:shortdesc}
 
 
@@ -26,9 +26,9 @@ lastupdated: "2018-08-31"
 
 |  機能     | アクティビティー       | [役割](#participating-in-a-blockchain-network)  |
 | ------------------------- |--------------------------|-----|
-| [開発](develop.html) | ビジネス・ネットワークの開発、アプリケーションの開発、チェーンコードの開発 | ネットワーク開発者、アプリケーション開発者 |
-| [ガバナンス](get_start.html)| メンバーの招待、資格情報の生成、ガバナンス・モデルの提案、証明書やエンドポイントの情報の配信 | ネットワーク・オペレーター、ネットワーク・メンバー |
-| [運用](v10_dashboard.html)| 正常性やアクティビティーのモニター、新規デプロイメントの管理、メンバーの追加または削除、チェーンコード・ライフサイクルの管理、チャネルの管理、サポート | ネットワーク・オペレーター、ネットワーク参加者 |
+| [開発](/docs/services/blockchain/develop.html) | ビジネス・ネットワークの開発、アプリケーションの開発、チェーンコードの開発 | ネットワーク開発者、アプリケーション開発者 |
+| [ガバナンス](/docs/services/blockchain/get_start.html)| メンバーの招待、資格情報の生成、ガバナンス・モデルの提案、証明書やエンドポイントの情報の配信 | ネットワーク・オペレーター、ネットワーク・メンバー |
+| [運用](/docs/services/blockchain/v10_dashboard.html)| 正常性やアクティビティーのモニター、新規デプロイメントの管理、メンバーの追加または削除、チェーンコード・ライフサイクルの管理、チャネルの管理、サポート | ネットワーク・オペレーター、ネットワーク参加者 |
 
 **注**: 表は、直線的に作業を進める状況に対応したものではありません。 アプリケーションやメンバーシップの進展に合わせて、開発やネットワーク管理などのタスクを繰り返し行う必要があります。
 
@@ -36,15 +36,15 @@ lastupdated: "2018-08-31"
 
 あらゆるタイプのユーザーがブロックチェーンの利用を開始してアプリケーションを実稼働環境に移行できるように、{{site.data.keyword.blockchainfull_notm}} Platform にはさまざまなメンバーシップ・プランが用意されています。
 
-|       | [Starter Plan](starter_plan.html) | [Enterprise Plan](enterprise_plan.html)  | Enterprise Plus Plan | [リモート・ピア](howto/remote_peer.html) |
+|       | [Starter Plan](/docs/services/blockchain/starter_plan.html) | [Enterprise Plan](/docs/services/blockchain/enterprise_plan.html)  | Enterprise Plus Plan | [リモート・ピア](/docs/services/blockchain/howto/remote_peer.html) |
 | ------------------------- |--------------------------|-----|-----|------|
 | **組み込まれている機能** | **基本サービス・レベル、開発/テスト環境** | **拡張サービス・レベル、エンタープライズ実稼働環境への対応** | **パフォーマンスと分離のための専用計算処理、エンタープライズ実稼働環境への対応** | **デプロイ可能なリモート・ピアの Helm チャート** |
-| **請求ポリシー** | **[使用可能なクラウド・クレジット](howto/pricing.html#starter-plan-pricing)の月単位のサブスクリプション** | **月単位のサブスクリプション** | **月単位のサブスクリプション** | **ベータ版は無料** |
+| **請求ポリシー** | **[使用可能なクラウド・クレジット](/docs/services/blockchain/howto/pricing.html#starter-plan-pricing)の月単位のサブスクリプション** | **月単位のサブスクリプション** | **月単位のサブスクリプション** | **ベータ版は無料** |
 | **利用できる時期** | **一般出荷可能** | **一般出荷可能** | **購入時** | **ベータ版** |
 
 **注意:** 実動使用に**スターター・プラン**を使用しないでください。これは、開発/テスト環境であり、実動ワークロードには適していません。
 
-{{site.data.keyword.blockchainfull_notm}} オファリングの構築基盤は、[Hyperledger Fabric](reference/v10_fabric.html) V1.1 のコード・ベースです。このコード・ベースでは、ビジネス・ニーズに対応したエンタープライズ・レベルのセキュリティー、データ保全性、スケーラビリティー、パフォーマンスを実現するために、モジュラー・アーキテクチャーを採用しています。
+{{site.data.keyword.blockchainfull_notm}} オファリングの構築基盤は、[Hyperledger Fabric](/docs/services/blockchain/reference/v10_fabric.html) V1.1 のコード・ベースです。このコード・ベースでは、ビジネス・ニーズに対応したエンタープライズ・レベルのセキュリティー、データ保全性、スケーラビリティー、パフォーマンスを実現するために、モジュラー・アーキテクチャーを採用しています。
 - **スターター・プラン**はブロックチェーン・ネットワークの開発を学習または開始するための環境です。
 - **エンタープライズ・プラン**は高水準のセキュリティーとサポートを提供する実稼働環境です。
 - **エンタープライズ・プラス・プラン**は重要なデータを保護するために、追加のパフォーマンスと分離されたコンピュートおよびストレージ・リソース専用の実稼働環境を提供します。
@@ -65,12 +65,12 @@ lastupdated: "2018-08-31"
 
 開発者は、{{site.data.keyword.blockchainfull_notm}} プラットフォーム・ネットワーク環境でインタラクティブ・プレイグラウンドを使用してビジネス・ネットワークを開発、反復、テストすることにより、迅速かつ容易にビジネス要件を調整し、ブロックチェーン・アプリケーション開発を加速することができます。 ビジネス・ルールをそれぞれの好みの環境でビジネス・ネットワーク・コードに変換すること。それが、そのようなツールの設計思想です。
 * **オンラインでの検討**  
-  [{{site.data.keyword.blockchainfull_notm}} Platform: Develop](./develop.html)<!--, which is powered by an open source development tool--> を活用して、ブロックチェーンの重要な概念を習得したり、ネットワーク定義を作成したり、再使用可能な業種別モデルやスマート・コントラクト・ライブラリーを利用したりします。  
-  ビジネス・ネットワークを開発したら、{{site.data.keyword.blockchainfull_notm}} Platform で稼働するライブ・ネットワークにデプロイできます。 詳しくは、[Starter Plan を使用したビジネス・ネットワークのデプロイ](./develop_starter.html)および[エンタープライズ・プランを使用したビジネス・ネットワークのデプロイ](./develop_enterprise.html)を参照してください。
+  [{{site.data.keyword.blockchainfull_notm}} Platform: Develop](/docs/services/blockchain/develop.html)<!--, which is powered by an open source development tool--> を活用して、ブロックチェーンの重要な概念を習得したり、ネットワーク定義を作成したり、再使用可能な業種別モデルやスマート・コントラクト・ライブラリーを利用したりします。  
+  ビジネス・ネットワークを開発したら、{{site.data.keyword.blockchainfull_notm}} Platform で稼働するライブ・ネットワークにデプロイできます。 詳しくは、[Starter Plan を使用したビジネス・ネットワークのデプロイ](/docs/services/blockchain/develop_starter.html)および[エンタープライズ・プランを使用したビジネス・ネットワークのデプロイ](/docs/services/blockchain/develop_enterprise.html)を参照してください。
 * **ローカル・インストール**  
   IBM 認定イメージの Hyperledger Fabric および Composer (ビジネス・ネットワークを構築するためのオープン・ソースのフレームワークとツール) を利用して、開発とテストをラップトップ上で直接行います。 詳しくは、[Building Your First Network](http://hyperledger-fabric.readthedocs.io/en/release-1.1/build_network.html) を参照してください。
 * **クラウド環境でのコラボレーション**  
-  すぐに使用できるライブ・ネットワーク (Starter Plan とエンタープライズ・プランのオプションあり) を使用して、コードを開発し、他のユーザーと共有します。 詳しくは、[Starter Plan について](starter_plan.html)および [エンタープライズ・プランについて](enterprise_plan.html)を参照してください。
+  すぐに使用できるライブ・ネットワーク (Starter Plan とエンタープライズ・プランのオプションあり) を使用して、コードを開発し、他のユーザーと共有します。 詳しくは、[Starter Plan について](/docs/services/blockchain/starter_plan.html)および [エンタープライズ・プランについて](/docs/services/blockchain/enterprise_plan.html)を参照してください。
 
 
 ## ネットワークの**ガバナンス**
@@ -173,6 +173,6 @@ Hyperledger Fabric アーキテクチャーの**モジュール性**と、ネッ
 
 ## {{site.data.keyword.IBM_notm}} サポート
 
-{{site.data.keyword.IBM_notm}} では、{{site.data.keyword.IBM_notm}} を実装した {{site.data.keyword.blockchain}} ソリューションのサポートを提供しています。 {{site.data.keyword.blockchainfull_notm}} サポートの詳細については、[サポートのページ](ibmblockchain_support.html)を参照してください。
+{{site.data.keyword.IBM_notm}} では、{{site.data.keyword.IBM_notm}} を実装した {{site.data.keyword.blockchain}} ソリューションのサポートを提供しています。 {{site.data.keyword.blockchainfull_notm}} サポートの詳細については、[サポートのページ](/docs/services/blockchain/ibmblockchain_support.html)を参照してください。
 
 Hyperledger Fabric の機能の詳細については、[Hyperledger Fabric の資料 ![外部リンクのアイコン](images/external_link.svg "外部リンクのアイコン")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/)を参照してください。

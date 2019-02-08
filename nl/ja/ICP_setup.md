@@ -71,8 +71,8 @@ ICP システムが最小ハードウェア・リソース要件を満たして�
 
 * コンポーネントが使用するストレージを設定する必要があります。 デフォルト設定を使用すると、ピアの Helm チャートによって、ピア・データ用に `my-data-pvc` という名前の新しい Persistent Volume Claim が作成されます。台帳データベースとして CouchDB を選択すると、Helm チャートによって、台帳データベース用に `statedb-pvc` という名前の別の Persistent Volume Claim が作成されます。
 * デフォルトのストレージ設定を使用しない場合は、ICP のインストール時に*新しい* storageClass がセットアップされたことを確認します。セットアップされていない場合は、デプロイの前に Kubernetes システム管理者が storageClass を作成する必要があります。
-* [動的プロビジョニング ![外部リンク・アイコン](/images/external_link.svg "外部リンク・アイコン")]( https://kubernetes.io/docs/concepts/storage/dynamic-provisioning/ "動的ボリューム・プロビジョニング") は、ICP の amd64 ノードにのみ使用可能です。 したがって、クラスターに s390x と amd64 ワーカー・ノードが混在している場合は、動的プロビジョニングを使用できません。
-* 動的プロビジョニングを使用しない場合は、[永続ボリューム ![外部リンク・アイコン](/images/external_link.svg "外部リンク・アイコン")](https://kubernetes.io/docs/concepts/storage/persistent-volumes/ "永続ボリューム") を作成し、Kubernetes Persistent Volume Claim (PVC) バインド処理を改善するために使用できるラベルを使用してセットアップする必要があります。
+* [動的プロビジョニング ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")]( https://kubernetes.io/docs/concepts/storage/dynamic-provisioning/ "動的ボリューム・プロビジョニング") は、ICP の amd64 ノードにのみ使用可能です。 したがって、クラスターに s390x と amd64 ワーカー・ノードが混在している場合は、動的プロビジョニングを使用できません。
+* 動的プロビジョニングを使用しない場合は、[永続ボリューム ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://kubernetes.io/docs/concepts/storage/persistent-volumes/ "永続ボリューム") を作成し、Kubernetes Persistent Volume Claim (PVC) バインド処理を改善するために使用できるラベルを使用してセットアップする必要があります。
 * NFS v2/v3 永続ボリュームを使用する場合は、NFS ファイル・システムが存在するホスト・システムで、**rpc-statd** とも呼ばれる **NFS status monitor for NFSv2/v3 Filesystem Locks** モジュールを有効にする必要があります。このモジュールにより、NFS ファイル・システムは、他のプロセスが保持しているファイルの排他ロックを検査できます。以下のコマンドを実行して、このモジュールを有効にします。
   ```
   sudo systemctl enable rpc-statd
@@ -89,8 +89,8 @@ ICP システムが最小ハードウェア・リソース要件を満たして�
 
 以下の手順を実行して、ご使用の環境に {{site.data.keyword.cloud_notm}} Private をインストールし、セットアップします。
 
-1. バージョン 3.1.0 の [IBM Cloud Private ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン") ](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/kc_welcome_containers.html) クラスターをインストールします。Helm チャートを開発、テスト、または実験用に使用する場合は、[ICP Community Edition バージョン 3.1.0 ![外部リンク・アイコン](/images/external_link.svg "外部リンク・アイコン")]( https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/kc_welcome_containers.html "{{site.data.keyword.cloud_notm}} Private-CE バージョン 3.1.0") を無料でインストールできます。
+1. バージョン 3.1.0 の [IBM Cloud Private ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン") ](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/kc_welcome_containers.html) クラスターをインストールします。Helm チャートを開発、テスト、または実験用に使用する場合は、[ICP Community Edition バージョン 3.1.0 ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")]( https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/kc_welcome_containers.html "{{site.data.keyword.cloud_notm}} Private-CE バージョン 3.1.0") を無料でインストールできます。
 
 2. IBM Cloud Private CLI [3.1.0 ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/manage_cluster/install_cli.html) をインストールして、CA をインストールし、操作します。
 
-ICP のインストール後、[{{site.data.keyword.blockchainfull_notm}} Platform for ICP Helm チャート](howto/helm_install_icp.html)を ICP クラスターに引き続きインポートできます。
+ICP のインストール後、[{{site.data.keyword.blockchainfull_notm}} Platform for ICP Helm チャート](/docs/services/blockchain/howto/helm_install_icp.html)を ICP クラスターに引き続きインポートできます。

@@ -24,7 +24,7 @@ Fabric に基づくネットワークのコンポーネントの概要につい�
 
 *このビデオでは、スターター・ネットワークおよびエンタープライズ・ネットワークの観点からコンポーネントに焦点を当てていますが、情報は ICP (IBM Cloud プラットフォーム) 上の IBP のカスタマー管理ソリューションに大いに関連しています。*
 
-この概要では、認証局 (CA)、順序付けプログラム、ピア、スマート・コントラクト、およびアプリケーションにのみ焦点を当てます。[{{site.data.keyword.blockchainfull_notm}} Platform for ICP デプロイメント・ガイド](ibp_for_icp_deployment_guide.html)のトピックに示されているように、この順序は任意ではなく、Fabric に基づくネットワークのコンポーネントがデプロイされる順序を反映しています。
+この概要では、認証局 (CA)、順序付けプログラム、ピア、スマート・コントラクト、およびアプリケーションにのみ焦点を当てます。[{{site.data.keyword.blockchainfull_notm}} Platform for ICP デプロイメント・ガイド](/docs/services/blockchain/ibp_for_icp_deployment_guide.html)のトピックに示されているように、この順序は任意ではなく、Fabric に基づくネットワークのコンポーネントがデプロイされる順序を反映しています。
 
 ## 認証局
 {: #ca}

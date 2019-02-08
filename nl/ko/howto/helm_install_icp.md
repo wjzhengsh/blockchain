@@ -17,7 +17,7 @@ lastupdated: "2018-12-07"
 
 {{site.data.keyword.blockchainfull}} Platform for {{site.data.keyword.cloud_notm}} Private은 로컬 ICP 클러스터에 설치될 수 있는 Helm 차트 파일로 제공됩니다. Helm 차트를 설치하고 나면 ICP 카탈로그에서 {{site.data.keyword.blockchainfull_notm}} 플랫폼을 애플리케이션으로 찾을 수 있습니다. 
 
-{{site.data.keyword.blockchainfull_notm}} Platform for ICP를 설치하기 전에 [고려사항 및 제한사항](../ibp-for-icp-about.html#ibp-icp-considerations)을 검토하십시오. Helm 차트, 가격 및 지원에 포함된 블록체인 컴포넌트의 배치에 대한 자세한 정보는 [{{site.data.keyword.blockchainfull_notm}} Platform for ICP 정보](../ibp-for-icp-about.html)를 참조하십시오.
+{{site.data.keyword.blockchainfull_notm}} Platform for ICP를 설치하기 전에 [고려사항 및 제한사항](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-considerations)을 검토하십시오. Helm 차트, 가격 및 지원에 포함된 블록체인 컴포넌트의 배치에 대한 자세한 정보는 [{{site.data.keyword.blockchainfull_notm}} Platform for ICP 정보](/docs/services/blockchain/ibp-for-icp-about.html)를 참조하십시오.
 
 {{site.data.keyword.blockchainfull_notm}} Platform for ICP에서는 다음 두 가지 에디션을 제공합니다. 
 
@@ -28,7 +28,7 @@ lastupdated: "2018-12-07"
 ## Helm 차트를 설치하기 위한 전제조건
 {: #helm-install-prereqs}
 
-Helm 차트를 설치하기 전에 ICP 클러스터를 구성해야 합니다. [ICP 클러스터 설정 및 구성](../ICP_setup.html)에 대한 지시사항을 검토하십시오.
+Helm 차트를 설치하기 전에 ICP 클러스터를 구성해야 합니다. [ICP 클러스터 설정 및 구성](/docs/services/blockchain/ICP_setup.html)에 대한 지시사항을 검토하십시오.
 
 ## 방화벽 뒤에 {{site.data.keyword.blockchainfull_notm}} Platform 설치
 {: #helm-install-prereqs-firewall}
@@ -281,10 +281,10 @@ Helm 차트를 {{site.data.keyword.cloud_notm}} Private에 가져온 후 컴포�
 
 ## 개별 컴포넌트 배치
 
-Helm 차트를 설치한 후 ICP 카탈로그에서 **ibm-blockchain-platform-prod** 또는 **ibm-blockchain-platform-dev** 타일을 클릭하여 이를 여십시오. 구성 페이지를 사용하여 블록체인 네트워크의 개별 컴포넌트를 배치할 수 있습니다. 블록체인 솔루션에 필요한 컴포넌트 및 컴포넌트가 배치되어야 하는 순서에 대한 자세한 정보는 [{{site.data.keyword.blockchainfull_notm}} Platform for ICP 배치 안내서](../ibp_for_icp_deployment_guide.html)를 참조하십시오.
+Helm 차트를 설치한 후 ICP 카탈로그에서 **ibm-blockchain-platform-prod** 또는 **ibm-blockchain-platform-dev** 타일을 클릭하여 이를 여십시오. 구성 페이지를 사용하여 블록체인 네트워크의 개별 컴포넌트를 배치할 수 있습니다. 블록체인 솔루션에 필요한 컴포넌트 및 컴포넌트가 배치되어야 하는 순서에 대한 자세한 정보는 [{{site.data.keyword.blockchainfull_notm}} Platform for ICP 배치 안내서](/docs/services/blockchain/ibp_for_icp_deployment_guide.html)를 참조하십시오.
 
 그런 다음 개별 컴포넌트를 배치하십시오. 
 
-- 순서 지정자를 배치하는 경우 먼저 순서 지정자의 인증 기관을 설정해야 합니다. CA가 조직의 기타 컴포넌트에서 사용되는 인증서를 생성합니다. 자세한 정보는 [ICP에서 {{site.data.keyword.blockchainfull_notm}} Platform 인증 기관 배치](CA_deploy_icp.html)를 참조하십시오. 그런 다음 네트워크의 공통 바인딩이 될 순서 지정자를 배치할 수 있습니다. 자세한 정보는 [ICP에서 {{site.data.keyword.blockchainfull_notm}} Platform 순서 지정자 배치](orderer_deploy_icp.html)를 참조하십시오. 
+- 순서 지정자를 배치하는 경우 먼저 순서 지정자의 인증 기관을 설정해야 합니다. CA가 조직의 기타 컴포넌트에서 사용되는 인증서를 생성합니다. 자세한 정보는 [ICP에서 {{site.data.keyword.blockchainfull_notm}} Platform 인증 기관 배치](/docs/services/blockchain/howto/CA_deploy_icp.html)를 참조하십시오. 그런 다음 네트워크의 공통 바인딩이 될 순서 지정자를 배치할 수 있습니다. 자세한 정보는 [ICP에서 {{site.data.keyword.blockchainfull_notm}} Platform 순서 지정자 배치](/docs/services/blockchain/howto/orderer_deploy_icp.html)를 참조하십시오. 
 
-- 피어를 배치하는 경우 먼저 피어의 인증 기관을 설정해야 합니다. CA가 조직의 피어에서 사용되는 인증서를 생성합니다. 자세한 정보는 [ICP에서 {{site.data.keyword.blockchainfull_notm}} Platform 인증 기관 배치](CA_deploy_icp.html)를 참조하십시오. 그런 다음 네트워크에 가입할 준비가 되면 채널에 가입하고, 트랜잭션을 보증하고, 데이터를 저장하는 피어를 배치할 수 있습니다. 자세한 정보는 피어가 가입하는 블록체인 네트워크에 따라 [ICP에서 {{site.data.keyword.blockchainfull_notm}} 피어 배치](peer_deploy_icp.html) 또는 [스타터 또는 엔터프라이즈 플랜 네트워크를 위한 {{site.data.keyword.blockchainfull_notm}} 피어 배치](peer_deploy_ibp.html)를 참조하십시오. 
+- 피어를 배치하는 경우 먼저 피어의 인증 기관을 설정해야 합니다. CA가 조직의 피어에서 사용되는 인증서를 생성합니다. 자세한 정보는 [ICP에서 {{site.data.keyword.blockchainfull_notm}} Platform 인증 기관 배치](/docs/services/blockchain/howto/CA_deploy_icp.html)를 참조하십시오. 그런 다음 네트워크에 가입할 준비가 되면 채널에 가입하고, 트랜잭션을 보증하고, 데이터를 저장하는 피어를 배치할 수 있습니다. 자세한 정보는 피어가 가입하는 블록체인 네트워크에 따라 [ICP에서 {{site.data.keyword.blockchainfull_notm}} 피어 배치](/docs/services/blockchain/howto/peer_deploy_icp.html) 또는 [스타터 또는 엔터프라이즈 플랜 네트워크를 위한 {{site.data.keyword.blockchainfull_notm}} 피어 배치](/docs/services/blockchain/howto/peer_deploy_ibp.html)를 참조하십시오. 

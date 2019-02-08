@@ -28,7 +28,7 @@ Este tutorial aborda a próxima etapa de um ciclo de vida de rede de negócios, 
 
 Assegure-se de que você tenha instalado o ambiente do desenvolvedor do {{site.data.keyword.blockchainfull_notm}} e esteja confortável com o desenvolvimento e a implementação de redes de negócios. Orientação sobre como escrever redes de negócios está disponível na [Documentação do Hyperledger Composer](https://hyperledger.github.io/composer/latest/business-network/business-network-index).
 
-É necessário o acesso a uma instância do Enterprise Plan do {{site.data.keyword.blockchainfull_notm}} Platform e ter criado seus peers antecipadamente. Para obter mais informações sobre o {{site.data.keyword.blockchainfull_notm}} Platform Enterprise Plan, veja a [Visão geral do Enterprise Plan](./enterprise_plan.html).
+É necessário o acesso a uma instância do Enterprise Plan do {{site.data.keyword.blockchainfull_notm}} Platform e ter criado seus peers antecipadamente. Para obter mais informações sobre o {{site.data.keyword.blockchainfull_notm}} Platform Enterprise Plan, veja a [Visão geral do Enterprise Plan](/docs/services/blockchain/enterprise_plan.html).
 
 ## Etapa um: Crie um perfil de conexão para o {{site.data.keyword.blockchainfull_notm}} Platform
 

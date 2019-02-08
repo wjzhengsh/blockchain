@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-12-14"
+  years: 2018, 2019
+lastupdated: "2019-02-08"
 
 ---
 
@@ -13,19 +13,19 @@ lastupdated: "2018-12-14"
 {:pre: .pre}
 
 # Deploying an orderer in {{site.data.keyword.cloud_notm}} Private
-{: #orderer-deploy}
+{: #icp-orderer-deploy}
 
 ***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
-Orderers authenticate clients, order transactions, and broadcast transactions in a blockchain network with the orderer component. For more information about orderers and the role that they play in a blockchain network, see [Overview on blockchain components](../blockchain_component_overview.html).
+Orderers authenticate clients, order transactions, and broadcast transactions in a blockchain network with the orderer component. For more information about orderers and the role that they play in a blockchain network, see [Overview on blockchain components](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview).
 {:shortdesc}
 
-Before you a deploy an ordering service, review the [Considerations and limitations](../ibp-for-icp-about.html#ibp-icp-considerations).
+Before you a deploy an ordering service, review the [Considerations and limitations](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-about-considerations).
 
 ## Resources required
-{: #ca-resources-required}
+{: #icp-orderer-deploy-resources-required}
 
-Ensure that your ICP system meets the minimum hardware resource requirements:
+Ensure that your {{site.data.keyword.cloud_notm}} Private system meets the minimum hardware resource requirements:
 
 | Component | vCPU | RAM | Disk for data storage |
 |-----------|------|-----|-----------------------|
@@ -33,36 +33,36 @@ Ensure that your ICP system meets the minimum hardware resource requirements:
 
 
  **Notes:**
- - A vCPU is a virtual core that is assigned to a virtual machine or a physical processor core if the server is not partitioned for virtual machines. You need to consider vCPU requirements when you decide the virtual processor core (VPC) for your deployment in ICP. VPC is a unit of measurement to determine the licensing cost of IBM products. For more information about scenarios to decide VPC, see [Virtual processor core (VPC) ![External link icon](images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/en/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_virtual_processor_core_licenses.html).
+ - A vCPU is a virtual core that is assigned to a virtual machine or a physical processor core if the server is not partitioned for virtual machines. You need to consider vCPU requirements when you decide the virtual processor core (VPC) for your deployment in {{site.data.keyword.cloud_notm}} Private. VPC is a unit of measurement to determine the licensing cost of IBM products. For more information about scenarios to decide VPC, see [Virtual processor core (VPC) ![External link icon](images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/en/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_virtual_processor_core_licenses.html).
  - These minimum resource levels are sufficient for testing and experimentation. For an environment with a large volume of transactions, it is important to allocate a sufficiently large amount of storage; 500 GB for your ordering service as an example. The amount of storage to use will depend on the number of transactions and the number of signatures that are required from your network. If you are about to exhaust the storage on your orderer, you must deploy a new orderer with a larger file system and let it sync via your other components on the same channels.
 
 ## Storage
-{: #storage}
+{: #icp-orderer-deploy-storage}
 
 You need to determine the storage that your orderer will use. If you use the default settings, the Helm chart will create a new 8 Gi Persistent Volume Claim (PVC) with the name of `orderer-data` for your orderer data.
 
-If you do not want to use the default storage settings, ensure that a *new* `storageClass` is set up during the ICP installation or the Kubernetes system administrator needs to create a storageClass before you deploy.
+If you do not want to use the default storage settings, ensure that a *new* `storageClass` is set up during the installation of  {{site.data.keyword.cloud_notm}} Private or the Kubernetes system administrator needs to create a storageClass before you deploy.
 
-You can choose to deploy the orderer on either the amd64 or s390x platforms. However, be aware that [Dynamic provisioning](https://kubernetes.io/docs/concepts/storage/dynamic-provisioning/) is only available for amd64 nodes in ICP. If your cluster includes a mix of s390x and amd64 worker nodes, dynamic provisioning cannot be used.
+You can choose to deploy the orderer on either the amd64 or s390x platforms. However, be aware that [Dynamic provisioning ![External link icon](../images/external_link.svg "External link icon")](https://kubernetes.io/docs/concepts/storage/dynamic-provisioning/ "Dynamic Volume Provisioning") is available for only AMD64 nodes in {{site.data.keyword.cloud_notm}} Private. If your cluster includes a mix of s390x and amd64 worker nodes, dynamic provisioning cannot be used.
 
-If you do not use dynamic provisioning, [Persistent Volumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) must be created and setup with labels that can be used to refine the Kubernetes PVC bind process.
+If you do not use dynamic provisioning, [Persistent Volumes ![External link icon](../images/external_link.svg "External link icon")](https://kubernetes.io/docs/concepts/storage/persistent-volumes/ "Persistent Volumes") must be created and setup with labels that can be used to refine the Kubernetes PVC bind process.
 
 
 ## Prerequisites for deploying an orderer
-{: #prerequisites-orderer-icp}
+{: #icp-orderer-deploy-prerequisites}
 
-1. Before you can install an orderer on ICP, you must [install ICP](../ICP_setup.html) and [install the {{site.data.keyword.blockchainfull_notm}} Platform Helm chart](helm_install_icp.html).
+1. Before you can install an orderer on {{site.data.keyword.cloud_notm}} Private, you must [install {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/ICP_setup.html#icp-setup) and [install the {{site.data.keyword.blockchainfull_notm}} Platform Helm chart](/docs/services/blockchain/howto/helm_install_icp.html#helm-install).
 
-2. If you use the Community Edition and you want to run this Helm chart on an ICP cluster without Internet connectivity, you need to create archives on an Internet-connected machine before you can install the archives on your the ICP cluster. For more information, see [Adding featured applications to clusters without Internet connectivity ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_package_offline.html "Adding featured applications to clusters without Internet connectivity"){:new_window}. Note that you can find the specification file `manifest.yaml` under ibm-blockchain-platform-dev/ibm_cloud_pak in the Helm chart.
+2. If you use the Community Edition and you want to run this Helm chart on an {{site.data.keyword.cloud_notm}} Private cluster without Internet connectivity, you need to create archives on an Internet-connected machine before you can install the archives on your the {{site.data.keyword.cloud_notm}} Private cluster. For more information, see [Adding featured applications to clusters without Internet connectivity ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_package_offline.html "Adding featured applications to clusters without Internet connectivity"){:new_window}. Note that you can find the specification file `manifest.yaml` under ibm-blockchain-platform-dev/ibm_cloud_pak in the Helm chart.
 
-3. Retrieve the value of the cluster Proxy IP address of your CA from the ICP console. **Note:** You will need to be a [Cluster administrator ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Cluster administrator roles and actions") to access your proxy IP. Log in to the ICP cluster. In the left navigation panel, click **Platform** and then **Nodes** to view the nodes that are defined in the cluster. Click the node with the role `proxy` and then copy the value of the `Host IP` from the table. **Important:** Save this value and you will use it when you configure the `Proxy IP` field of the Helm chart.
+3. Retrieve the value of the cluster Proxy IP address of your CA from the {{site.data.keyword.cloud_notm}} Private console. **Note:** You will need to be a [Cluster administrator ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Cluster administrator roles and actions") to access your proxy IP. Log in to the {{site.data.keyword.cloud_notm}} Private cluster. In the left navigation panel, click **Platform** and then **Nodes** to view the nodes that are defined in the cluster. Click the node with the role `proxy` and then copy the value of the `Host IP` from the table. **Important:** Save this value and you will use it when you configure the `Proxy IP` field of the Helm chart.
 
-4. Create an [orderer configuration file and store it as a Kubernetes secret in ICP](#orderer-config-file).
+4. Create an [orderer configuration file and store it as a Kubernetes secret in {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/howto/orderer_deploy_icp.html#icp-orderer-deploy-config-file).
 
 ## Creating an orderer configuration file
-{: #orderer-config-file}
+{: #icp-orderer-deploy-config-file}
 
-Before you deploy an orderer, you need to create a configuration file containing important information about the orderer identity and your CA. Then, you need to pass this file to the Helm chart during configuration by using a [Kubernetes Secret ![External link icon](../images/external_link.svg "External link icon")](https://kubernetes.io/docs/concepts/configuration/secret/) object. This file will allow the orderer to get the certificates that it needs from the CA to join a blockchain network. It also contains an admin certificate that will allow you to operate the orderer as an admin user. Follow the instructions on [using the CA to deploy an orderer or peer](CA_operate.html#deploy-orderer-peer) before you configure the orderer.
+Before you deploy an orderer, you need to create a configuration file containing important information about the orderer identity and your CA. Then, you need to pass this file to the Helm chart during configuration by using a [Kubernetes Secret ![External link icon](../images/external_link.svg "External link icon")](https://kubernetes.io/docs/concepts/configuration/secret/) object. This file will allow the orderer to get the certificates that it needs from the CA to join a blockchain network. It also contains an admin certificate that will allow you to operate the orderer as an admin user. Follow the instructions on [using the CA to deploy an orderer or peer](/docs/services/blockchain/howto/CA_operate.html#ca-operate-deploy-orderer-peer) before you configure the orderer.
 
 You need to provide the CSR hostnames to the configuration file. This includes the `service host name` that will be based on the `helm release name` that you specify during deployment. The `service host name` is the `helm_release_name` that you specify with the string `-orderer` added at the end. For example, if you specify a `helm release name` of `orderer1`, you can insert the following value in the `"csr"` section of the file:
 
@@ -75,7 +75,7 @@ You need to provide the CSR hostnames to the configuration file. This includes t
 }
 ```
 
-After you save the configuration file, you need to encode it in the base64 format before you provide the file to ICP as a secret object. A Kubernetes secret allows you to protect and share information without having to pass it directly to the deployment.
+After you save the configuration file, you need to encode it in the base64 format before you provide the file to {{site.data.keyword.cloud_notm}} Private as a secret object. A Kubernetes secret allows you to protect and share information without having to pass it directly to the deployment.
 
 1. Encode the configuration file in the base64 format by running the following commands from a terminal window:
 
@@ -102,7 +102,7 @@ After you save the configuration file, you need to encode it in the base64 forma
 
   Save the resulting output for Step 4 below.
 
-2. Log in to the ICP console. In the left navigation panel, click **Configuration** and then **Secrets**. Click the **Create Secret** button to open a pop panel that allows you to generate a new secret object.
+2. Log in to the {{site.data.keyword.cloud_notm}} Private console. In the left navigation panel, click **Configuration** and then **Secrets**. Click the **Create Secret** button to open a pop panel that allows you to generate a new secret object.
 
 3. On the **General** tab, complete the following fields:
   - **Name:** Give your secret a unique name within your cluster. You will use this name when deploying your orderer. The name must be all lower case.  
@@ -114,19 +114,20 @@ After you save the configuration file, you need to encode it in the base64 forma
 
 5. Click **Create** to save your secret object.
 
-**Note:** The orderer configuration secret will not be removed from your ICP cluster when you delete your Helm release. If you delete your orderer, you need to delete this secret too.
+**Note:** The orderer configuration secret will not be removed from your {{site.data.keyword.cloud_notm}} Private cluster when you delete your Helm release. If you delete your orderer, you need to delete this secret too.
 
 ## Configuration
-{: #orderer-configuration}
+{: #icp-orderer-deploy-configuration}
 
-After you create your orderer configuration secret object, you can configure and install your orderer in ICP with the following steps. You can install only one orderer at a time.
 
-1. Log in to the ICP console and click the **Catalog** link in the upper right corner.
+After you create your orderer configuration secret object, you can configure and install your orderer in {{site.data.keyword.cloud_notm}} Private with the following steps. You can install only one orderer at a time.
+
+1. Log in to the {{site.data.keyword.cloud_notm}} Private console and click the **Catalog** link in the upper right corner.
 2. Click `Blockchain` in the left navigation panel to locate the tile labelled `ibm-blockchain-platform-prod` or `ibm-blockchain-platform-dev` if you downloaded the Community edition. Click the tile to open it and you can see a Readme file that includes information about installing and configuring the Helm chart.
 3. Click the **Configuration** tab on the top of the panel or click the **Configure** button in the lower right corner.
-4. Specify the values for the [General configuration parameters](#orderer-global-parameters) and accept the license agreement.
-5. Open the `All parameters` twistie and specify the value for the [Global configuration parameters](#orderer-global-parameters).
-6. Scroll down to the **Orderer configuration** section. Select the `Install Orderer` check box and complete the [configuration settings](#orderer-parameters) for the orderer.
+4. Specify the values for the [General configuration  parameters](/docs/services/blockchain/howto/orderer_deploy_icp.html#icp-orderer-configuration-parms) and accept the license agreement.
+5. Open the `All parameters` twistie and specify the value for the [Global configuration parameters](/docs/services/blockchain/howto/orderer_deploy_icp.html#icp-orderer-deploy-global-parameters).
+6. Scroll down to the **Orderer configuration** section. Select the `Install Orderer` check box and complete the [configuration settings](/docs/services/blockchain/howto/orderer_deploy_icp.html#icp-orderer-deploy-parameters) for the orderer.
 7. Click **Install**.
 
 
@@ -147,22 +148,22 @@ This must be done on the system's where the NFS filesystem is served from.
 The following table lists the configurable parameters of the {{site.data.keyword.blockchainfull_notm}} Platform, **specific to the orderer component**, and their default values. **Although the Helm chart UI says no further configuration is required, you need to enter certain parameters to deploy an orderer.**
 
 #### General and global configuration parameters
-{: #orderer-global-parameters}
+{: #icp-orderer-deploy-global-parameters}
 
 |  Parameter     | Description    | Default  | Required |
 | --------------|-----------------|-------|------- |
-| `Helm release name`| The name of your helm release. Must begin with a lowercase letter and end with any alphanumeric character, must only contain hyphens and lowercase alphanumeric characters. You must use a unique Helm release name each time you attempt to install a component. **Important:** This value must match the value that you used to generate the 'service host name' for the "hosts" field in your [JSON secret file.](#orderer-config-file) | none | yes  |
+| `Helm release name`| The name of your helm release. Must begin with a lowercase letter and end with any alphanumeric character, must only contain hyphens and lowercase alphanumeric characters. You must use a unique Helm release name each time you attempt to install a component. **Important:** This value must match the value that you used to generate the 'service host name' for the "hosts" field in your [JSON secret file.](/docs/services/blockchain/howto/orderer_deploy_icp.html#icp-orderer-deploy-config-file) | none | yes  |
 | `Target namespace`| Choose the Kubernetes namespace to install the Helm chart. | none | yes |
 |**Global configuration**| Parameters which apply to all components in the Helm chart|||
 | `Service account name`| Enter the name of the [service account ![External link icon](../images/external_link.svg "External link icon")](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/) that you will use to run the pod. | default | no |
 
 #### Orderer configuration parameters
-{: #orderer-parameters}
+{: #icp-orderer-deploy-parameters}
 
 |  Parameter     | Description    | Default  | Required |
 | --------------|-----------------|-------|------- |
 | `Install Orderer`| Select to install an orderer. | unchecked | yes, if you want to deploy an orderer |
-| `Orderer worker node architecture`| Select your ICP worker node architecture (AMD64 or S390X). | Autodetected architecture based on your master node | yes |
+| `Orderer worker node architecture`| Select your {{site.data.keyword.cloud_notm}} Private worker node architecture (AMD64 or S390X). | Autodetected architecture based on your master node | yes |
 | `Orderer configuration`| You can customize the configuration of the orderer by pasting your own `orderer.yaml` configuration file in this field. To see a sample `orderer.yaml` file, see [`orderer.yaml` sample config ![External link icon](../images/external_link.svg "External link icon")](https://github.com/hyperledger/fabric/blob/release-1.2/sampleconfig/orderer.yaml) **For advanced users only**. | none | no |
 | `Organization MSP secret (Required)`| Specify the name of the secret object that contains organization MSP certificates and keys. | none | yes |
 | `Orderer data persistence enabled` | Data will be available when the container restarts. If unchecked, all data will be lost in the event of a failover or pod restart. | checked | no |
@@ -172,7 +173,7 @@ The following table lists the configurable parameters of the {{site.data.keyword
 | `Orderer consensus type`| The consensus type of the ordering service. | SOLO | yes |
 | `Orderer organization name`| Specify the name you would like to use for the orderer organization. If you also plan to deploy peers, make sure to use a different name than the one you will give to your peers. For example, give your orderer org a name like `ordererOrg` | none | yes |
 | `Orderer Org MSP ID`| Specify the name you want to use for the MSP ID of the orderer organization. This should be the same name you give to your orderer organization, and will be set as an environment variable by the deployment process. Make a note of this value and you will need to reference it later. | none | yes |
-| `Orderer storage class name`| Specify a storage class name for the orderer. | none | Depends on how the ICP cluster is configured. Check with your cluster administrator |
+| `Orderer storage class name`| Specify a storage class name for the orderer. | none | Depends on how the {{site.data.keyword.cloud_notm}} Private cluster is configured. Check with your cluster administrator |
 | `Orderer existing volume claim`| Specify the name of an existing Volume Claim and leave all other fields blank. | none | no |
 | `Orderer selector label`| [Selector label ![External link icon](../images/external_link.svg "External link icon")](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) for your PVC. | none | no |
 | `Orderer selector value`| [Selector value ![External link icon](../images/external_link.svg "External link icon")](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) for your PVC. | none | no |
@@ -185,7 +186,7 @@ The following table lists the configurable parameters of the {{site.data.keyword
 | `Orderer memory limit`| Specify the maximum amount of memory to allocate to the Orderer. | 2Gi | yes |
 
 ### Using the Helm command line to install the Helm release
-{: #icp-helm-cli}
+{: #icp-orderer-deploy-helm-cli}
 
 Alternatively, you can use the Helm CLI to install the Helm release. Before you run the `helm install` command, ensure that you [add your cluster's Helm repository to the Helm CLI environment ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_int_helm_repo_to_cli.html "Adding the internal Helm repository to Helm CLI").
 
@@ -218,10 +219,11 @@ helm install --name jnchart2 mycluster/ibm-blockchain-platform \
 You can create a new `yaml` file by editing `values.yaml` included in the downloaded archive file, which includes all the necessary parameters with their default settings.
 
 ## Verifying the orderer installation
+{: #icp-orderer-deploy-verify-install}
 
-After you complete the configuration parameters and click the **Install** button, click the **View Helm Release** button to view your deployment. If it was successful, you should see the value 1 in the `DESIRED`, `CURRENT`, `UP TO DATE`, and `AVAILABLE` fields in the Deployment table. You may need to click refresh and wait for the table to be updated. You can also find the Deployment table by clicking the **Menu** icon in the upper left corner In the ICP console. From the menu list, click **Workloads** and then **Helm Releases**.
+After you complete the configuration parameters and click the **Install** button, click the **View Helm Release** button to view your deployment. If it was successful, you should see the value 1 in the `DESIRED`, `CURRENT`, `UP TO DATE`, and `AVAILABLE` fields in the Deployment table. You may need to click refresh and wait for the table to be updated. You can also find the Deployment table by clicking the **Menu** icon in the upper left corner in the {{site.data.keyword.cloud_notm}} Private console. From the menu list, click **Workloads** and then **Helm Releases**.
 
 ## Viewing the orderer logs
-{: #orderer-view-logs}
+{: #icp-orderer-deploy-view-logs}
 
-Component logs can be viewed from the command line by using the [`kubectl CLI commands`](orderer_operate.html#orderer-kubectl-configure) or through [Kibana ![External link icon](../images/external_link.svg "External link icon")](https://www.elastic.co/products/kibana "Your window into the Elastic Search"), which is included in your ICP cluster. For more information, see these [instructions for accessing the logs](orderer_operate.html#orderer-view-logs).
+Component logs can be viewed from the command line by using the [`kubectl CLI commands`](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate#icp-orderer-operate-kubectl-configure) or through [Kibana ![External link icon](../images/external_link.svg "External link icon")](https://www.elastic.co/products/kibana "Your window into the Elastic Search"), which is included in your {{site.data.keyword.cloud_notm}} Private cluster. For more information, see these [instructions for accessing the logs](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-orderer-view-logs).
