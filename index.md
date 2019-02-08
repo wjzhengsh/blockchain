@@ -35,13 +35,13 @@ lastupdated: "2019-02-08"
 | ------------------------- |-----------|-----------|-----------|-----------|
 | [**Starter Plan**](/docs/services/blockchain/starter_plan.html#starter-plan-about) | {{site.data.keyword.IBM_notm}}-managed network with basic service levels, development, and testing environment | Monthly subscription | {{site.data.keyword.cloud_notm}} |
 | [**Enterprise Plan**](/docs/services/blockchain/enterprise_plan.html#enterprise-plan-about) | {{site.data.keyword.IBM_notm}}-managed network with advanced service levels and enterprise production ready environment | Monthly subscription | {{site.data.keyword.cloud_notm}} |
-| [**{{site.data.keyword.blockchainfull_notm}} Platform 2.0**](/docs/services/blockchain/howto/ibp-console.html#ibp-console-overview) | {{site.data.keyword.blockchainfull_notm}} Platform console to deploy and manage blockchain components in your {{site.data.keyword.cloud_notm}} Kubernetes cluster | Free for Beta | {{site.data.keyword.cloud_notm}} |
+| [**{{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta**](/docs/services/blockchain/howto/ibp-console.html#ibp-console-overview) | {{site.data.keyword.blockchainfull_notm}} Platform console to deploy and manage blockchain components in your {{site.data.keyword.cloud_notm}} Kubernetes cluster | Free for Beta | {{site.data.keyword.cloud_notm}} |
 | [**{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private**](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-about) | Deployable CA, Orderer, and Peer Helm charts | [VPC pricing](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-about-pricing) and Free Community Edition | {{site.data.keyword.cloud_notm}} Private |
 | [**{{site.data.keyword.blockchainfull_notm}} Platform for AWS**](/docs/services/blockchain/howto/remote_peer.html#remote-peer-aws-about) | AWS Quick Start Template to deploy remote peers that are outside {{site.data.keyword.cloud_notm}} | Free | AWS |
 
 *Figure 1. {{site.data.keyword.blockchainfull_notm}} Platform offerings*
 
-Do not use Starter Plan for production usage. It is a development and testing environment, and is not suitable for production workloads.
+Do not use Starter Plan or the free 2.0 beta for production usage. It is a development and testing environment, and is not suitable for production workloads.
 {: important}
 
 ## Step one: Get an offering
