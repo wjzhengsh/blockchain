@@ -49,7 +49,7 @@ Do not use Starter Plan or the free 2.0 beta for production usage. It is a devel
 
 Ensure that you have the cloud account or PPA license to get an {{site.data.keyword.blockchainfull_notm}} Platform offering.
 
-* **Starter Plan, Enterprise Plan, and {{site.data.keyword.blockchainfull_notm}} Platform Software-as-a-Service**
+* **Starter Plan**, **Enterprise Plan**, and **{{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta**
 
   These offerings are available in {{site.data.keyword.cloud_notm}} and you can locate them in the [Catalog dashboard ![External link icon](images/external_link.svg "External link icon")](https://cloud.ibm.com/catalog "Catalog") of {{site.data.keyword.cloud_notm}}.
 
@@ -64,7 +64,7 @@ Ensure that you have the cloud account or PPA license to get an {{site.data.keyw
 ## Step two: Deploy {{site.data.keyword.blockchainfull_notm}} Platform
 {: #get-started-ibp-step2}
 
-* **Starter Plan, Enterprise Plan, and {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta**
+* **Starter Plan**, **Enterprise Plan**, and **{{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta**
 
   Log in to {{site.data.keyword.cloud_notm}} and create a service instance with the offering. If you use Starter Plan, you can get a blockchain network with default configuration immediately after you [create the service instance](/docs/services/blockchain/get_start_starter_plan.html#getting-started-with-starter-plan). If you use Enterprise Plan or {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta, you need to follow the wizard to complete initial configuration for your network. For more information, see [Creating an Enterprise Plan network](/docs/services/blockchain/get_start.html#getting-started-with-enterprise-plan-create-network) or [Deploying {{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}} Kubernetes Service](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks).
 
