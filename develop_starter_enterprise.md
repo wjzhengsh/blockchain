@@ -88,7 +88,7 @@ The secret retrieved in the preceding step will be used to create a business net
 
 The certificates must be added to the Starter Plan network. For convenience, you can add them by using the {{site.data.keyword.blockchainfull_notm}} Platform Network Monitor. The certificates must be added, then the peers must be restarted, and then the certificates must be synced on the channel. The certificate needed is the `admin-pub.pem` file that was generated from the previous command, which is in the `credentials` directory.
 
-1. In the Starter Plan Network Monitor, click on the **Members** tab, then **Certificates**, then **Add Certificate**. Go to your `credentials` directory, and copy and paste the contents of the `admin-pub.pem` file in the certificate box. Submit the certificate and restart the peers. Note: restarting the peers takes a minute.
+1. In the Starter Plan Network Monitor, click the **Members** tab, then **Certificates**, then **Add Certificate**. Go to your `credentials` directory, and copy and paste the contents of the `admin-pub.pem` file in the certificate box. Submit the certificate and restart the peers. Note: restarting the peers takes a minute.
 
     ![Add certificates](images/add_cert.gif "Add certificates")
 

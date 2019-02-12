@@ -35,11 +35,11 @@ This three-part tutorial series takes you through the process of creating and in
 
 * [Build a network tutorial](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network) guides you through the process of hosting a network by creating an orderer and peer.
 * [Join a network tutorial](/docs/services/blockchain/howto/ibp-console-join-network.html#ibp-console-join-network) guides you through the process of joining an existing network by creating a peer and joining it to a channel.
-* [Deploy a smart contract on the network](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts) provides information on how to write a smart contract and deploy it on your network.
+* [Deploy a smart contract on the network tutorial](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts) provides information on how to write a smart contract and deploy it on your network.
 
 You can use the steps in these tutorials to build a network with multiple organizations in one cluster for the purposes of development and testing. Use the **Build a network** tutorial if you want to found a blockchain consortium. Use the **Join a network** tutorial to connect a peer to the network. Following the tutorials with different consortium members allows you to create a truly **distributed** blockchain network.  
 
-This tutorial is meant to show how to join a peer to an **existing** network. It presumes an orderer, that hosts the network, already exists in your cluster or on another {{site.data.keyword.blockchainfull_notm}} Platform cluster. If you don't have an existing network to join, visit the [Build a network tutorial](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network) tutorial to learn how to create one. The **Join a network** tutorial takes you through the steps to create the following `Org2` blockchain components, highlighted in the blue box:
+This tutorial is meant to show how to join a peer to an **existing** network. It presumes an orderer, that hosts the network, already exists in your cluster or on another {{site.data.keyword.blockchainfull_notm}} Platform cluster. If you don't have an existing network to join, visit the [Build a network tutorial](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network) to learn how to create one. The **Join a network** tutorial takes you through the steps to create the following `Org2` blockchain components, highlighted in the blue box:
 ![Join network structure](../images/ib2-join-network.png "Join network structure")  
 *Figure 1. Join network structure*  
 Perform the steps in the **Join a network** tutorial to create the following components and complete the following actions:
@@ -51,9 +51,9 @@ Perform the steps in the **Join a network** tutorial to create the following com
 * **One Certificate Authority (CA)** `Org2 CA`
   A CA is the node that issues certificates to all organization members. We create one CA for the peer organization `Org2`.
 * **Joining one channel**
-  The tutorial describes how to join the channel that was created by the [Build a network tutorial](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network) tutorial.
+  The tutorial describes how to join the channel that was created by the [Build a network tutorial](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network).
 
-Throughout this tutorial we supply **recommended values** for some of the fields in the console. This allows the names and identities to be easier to recognize in the tabs and drop-down lists. These values are not mandatory, but you will find them helpful. We provide a table of the recommended values after each task.
+Throughout this tutorial, we supply **recommended values** for some of the fields in the console. This allows the names and identities to be easier to recognize in the tabs and drop-down lists. These values are not mandatory, but you will find them helpful. We provide a table of the recommended values after each task.
 {:tip}
 
 ## Step one: Create additional organization and your entry point to your blockchain
@@ -207,13 +207,13 @@ Because only orderer admins can add peer organizations to the consortium, you wi
 Because only orderer admins can add peer organizations to the consortium, you will need to be the orderer admin, meaning you have the orderer organization admin identity in your console wallet.  
 
 1. Navigate to the **Nodes** tab.
-2. Scroll down to the orderer you want to use and click on it to open it.
+2. Scroll down to the orderer you want to use and click it to open it.
 3. Under **Consortium Members**, click **Add organization**.
 4. From the drop-down list, select `Org2 MSP`, as this is the MSP that represents the peer's organization `org2`.
 5. Click **Submit**.
 
 Now add the peer organization to the channel.
-1. Navigate to the **Channels** tab, click on `channel1`.
+1. Navigate to the **Channels** tab, click `channel1`.
 2. Click the  **Settings** icon to update the channel and add the peer organization to the channel.
 2. Scroll down to the section titled ` Add organizations to the channel` and open the `Select a channel member` drop-down list and select the peer organization MSP, `Org2 MSP` for the tutorial.
 5. Click **Add** and then assign permissions for that organization. We recommend you make them an `Operator` so they can update the channel.
@@ -236,8 +236,8 @@ When you follow these steps you need to be the admin of the **peer organization*
 {: #ibp-console-join-network-import-remote-msp}
 The orderer admin needs to import this JSON file to add your organization to their console:
 1. Navigate to the **Organizations** tab, click the **Import MSP definition** button, and select the JSON file that represents the peer organization MSP definition.  
-2. Navigate to the **Nodes** page and click on your orderer node. On the ordering node panel, under **Consortium Members**, click **Add Organization**. On the side panel that opens, select `Org2 MSP` from the list of MSP definitions from your **Organizations** tab.
-3. Navigate to the **Channels** tab, click on `channel1` and then click the  **Settings** icon to update the channel and add the peer organization to the channel.
+2. Navigate to the **Nodes** page and click your orderer node. On the ordering node panel, under **Consortium Members**, click **Add Organization**. On the side panel that opens, select `Org2 MSP` from the list of MSP definitions from your **Organizations** tab.
+3. Navigate to the **Channels** tab, click `channel1` and then click the  **Settings** icon to update the channel and add the peer organization to the channel.
 4. Scroll down to the section titled ` Add organizations to the channel` and open the `Select a channel member` drop-down list and select the peer organization MSP, `Org2 MSP` for the tutorial.
 5. Click **Add** and then assign permissions for that organization. We recommend you make them an `Operator` so they can update the channel.
 6. Click **Update channel**.
