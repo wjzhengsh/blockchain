@@ -177,7 +177,7 @@ It is recommended that you use version 1.2 of the Node SDK.
 Your peer was deployed with the signCert of your peer admin inside. This will allow you to use peer admin's certificates and MSP folder to operate the peer.
 
 Locate the certificates that you created when you [enrolled your peer admin](/docs/services/blockchain/howto/CA_operate.html#ca-operate-enroll-admin). If you used the example commands, you can find you peer admin MSP folder at `$HOME/fabric-ca-client/peer-admin`.
-  - You can build the the peer admin user context with the SDK by using the signCert (public key) and private key in the MSP folder. You can find those keys in the following locations:
+  - You can build the peer admin user context with the SDK by using the signCert (public key) and private key in the MSP folder. You can find those keys in the following locations:
     - The signCert can be found in the **signcerts** folder: `$HOME/fabric-ca-client/peer-admin/msp/signcerts`
     - The private key can be found in the **keystore:** folder: `$HOME/fabric-ca-client/peer-admin/msp/keystore`
 

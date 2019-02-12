@@ -531,7 +531,7 @@ Stack creation completes successfully, but Docker logs contain the error:
 **Solution:**  
 This error can be caused by neglecting to specify a port on the CAUrl when the Quick Start template was deployed.
 The CAUrl should look similar to `https://<network>-org1-ca.stage.blockchain.ibm.com:31011`.
-Redeploy the Quick Start template, being careful to specify the proper value for the the CAUrl.
+Redeploy the Quick Start template, being careful to specify the proper value for the CAUrl.
 
 ### **Problem:** Instantiating chaincode fails with error
 {: #remote-peer-aws-operate-problem-2}

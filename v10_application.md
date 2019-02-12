@@ -74,7 +74,7 @@ You need to provide your application with the API endpoints of specific network 
   * On the "Overview" screen, click **Connection Profile**. The Connection Profile contains a complete set of API endpoint information of all your network resources.
     ![Connection Profile in Network Monitor](images/service_credentials.png "Connection Profile in Network Monitor")
 
-  * If you have running chaincode in the network, you can get the API endpoint information that is specific to the chaincode. On the "Channels" screen, click the the channel row on which the chaincode is running to open the specific channel screen. Then, locate the chaincode and click the **JSON** button.
+  * If you have running chaincode in the network, you can get the API endpoint information that is specific to the chaincode. On the "Channels" screen, click the channel row on which the chaincode is running to open the specific channel screen. Then, locate the chaincode and click the **JSON** button.
     ![API endpoints per chaincode](images/channel_chaincode.png "API endpoints per chaincode")
 
 2. Locate the API endpoint information of your network resources, which is similar to the URL of `peer1-org1` row in the following example:
@@ -346,7 +346,7 @@ For more information about the fabcar application and the functions it uses, you
 
 Instead of importing the endpoint information of your network manually, you can have the SDK connect to your network by using the **Connection Profile** from the **Overview** screen of your Network Monitor. This streamlines the process of connecting to your certificate Authority for enrollment and registration. It also eliminates the need to define your fabric network before you submit a transaction. The SDK will find the peers and orderers on the relevant channel directly from the Connection Profile. You can find more information on how to use a Connection Profile in the [Node SDK documentation ![External link icon](images/external_link.svg "External link icon")](https://fabric-sdk-node.github.io/tutorial-network-config.html "connection profile tutorial"){:new_window}.
 
-We can use the `invoke.js` file as an example to see the efficiency of using a Connection Profile rather than manual endpoints. You can establish a new instance of the the fabric client using the `loadFromConfig` class. Replace `var fabric_client = new Fabric_Client();` with the following code.
+We can use the `invoke.js` file as an example to see the efficiency of using a Connection Profile rather than manual endpoints. You can establish a new instance of the fabric client using the `loadFromConfig` class. Replace `var fabric_client = new Fabric_Client();` with the following code.
 ```
 var fabric_client = Fabric_Client.loadFromConfig(path.join(__dirname, './connection-profile.json'));
 ```

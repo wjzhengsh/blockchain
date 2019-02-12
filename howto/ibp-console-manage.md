@@ -61,10 +61,10 @@ You can only view the console logs if you are logged in as a console administrat
 The logs of your your peers, orderers and Certificate Authorities are collected by the {{site.data.keyword.IBM_notm}} Kubernetes service. Use the steps below to view the logs of your nodes from the cluster where you deployed your {{site.data.keyword.blockchainfull_notm}} Platform 2.0 network.
 
 1. Open the [{{site.data.keyword.cloud_notm}} dashboard ![External link icon](../images/external_link.svg "External link icon")](https://console.bluemix.net/dashboard/apps/) and navigate to the overview screen of your {{site.data.keyword.IBM_notm}} Kubernetes service cluster.
-2. Above the cluster overview screen, click on **Kubernetes Dashboard**.
+2. Above the cluster overview screen, click **Kubernetes Dashboard**.
 3. Inside the Kubernetes dashboard, use the left navigation Namespace drop-down list to change the namespace to the {{site.data.keyword.blockchainfull_notm}} Platform service instance. The service instance name will be a long string of letters and numbers. You can find your service instance name at the beginning of the URL of your {{site.data.keyword.blockchainfull_notm}} Platform console.
 4. On the left navigation, click **Pods** to view the list of node pods that you have deployed.
-5. Click on a pod. Then click **View logs** on the top menu to open the logs of your node. Above the logs, you can use the dropdown menu after **Logs from** to view the logs from the different containers within the pod. For example, your peer and the state database (CouchDB for example) run in different containers and generate different logs.
+5. Click a pod. Then click **View logs** on the top menu to open the logs of your node. Above the logs, you can use the dropdown menu after **Logs from** to view the logs from the different containers within the pod. For example, your peer and the state database (CouchDB for example) run in different containers and generate different logs.
 
 By default, the logs of your nodes are collected locally within your cluster. You can also use the {{site.data.keyword.cloud_notm}} Log Analysis service or a third party service to collect, store and analyze the logs from your network. For information, see [Logging and monitoring for the {{site.data.keyword.IBM_notm}} Kubernetes service ![External link icon](../images/external_link.svg "External link icon")](https://console.cloud.ibm.com/docs/containers?topic=containers-health#health "Logging and Monitoring for the {{site.data.keyword.IBM_notm}} Kubernetes service").
 

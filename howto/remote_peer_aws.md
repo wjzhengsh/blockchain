@@ -257,7 +257,7 @@ Run the `peer channel fetch` CLI command to fetch the genesis block from the cha
    ash-zbc07b.4.secure.blockchain.ibm.com:21239
    ```
 
-   - Find the name of your organization by searching for **organizations**. This should be the same organization you use to register your  peer. You can find your organization's name together with its associated `mspid`. This value is also availabe in the Network Monitor Overview panel. Click on the **Remote Peer Configuration** button. The value is displayed under `Organization MSP`. Make a note of the value of the `mspid`.
+   - Find the name of your organization by searching for **organizations**. This should be the same organization you use to register your  peer. You can find your organization's name together with its associated `mspid`. This value is also availabe in the Network Monitor Overview panel. Click the **Remote Peer Configuration** button. The value is displayed under `Organization MSP`. Make a note of the value of the `mspid`.
 
    - If you have not already done so, create a shell session inside the peer container by running `docker exec -it peer sh`.
 

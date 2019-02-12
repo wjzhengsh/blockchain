@@ -35,7 +35,7 @@ This three-part tutorial series takes you through the process of creating and in
 
 * [Build a network tutorial](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network) guides you through the process of hosting a network by creating an orderer and peer.
 * [Join a network tutorial](/docs/services/blockchain/howto/ibp-console-join-network.html#ibp-console-join-network) guides you through the process of joining an existing network by creating a peer and joining it to a channel.
-* [Deploy a smart contract on the network](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts) provides information on how to write a smart contract and deploy it on your network.
+* [Deploy a smart contract on the network tutorial](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts) provides information on how to write a smart contract and deploy it on your network.
 
 You can use the steps in these tutorials to build a network with multiple organizations in one cluster for the purposes of development and testing. Use the **Build a network** tutorial if you want to found a blockchain consortium and have other members use the **Join a network** tutorial to connect from a different cluster. Following the tutorials with different consortium members allows you to create a truly **distributed** blockchain network.
 
@@ -345,7 +345,7 @@ Because only orderer admins can add peer organizations to the consortium, you wi
 <!-- More on the latter at the LINK. -->
 Because you are the orderer admin, this process is relatively straightforward:
 1. Navigate to the **Nodes** tab.
-2. Scroll down to the orderer you created and click on it to open it.
+2. Scroll down to the orderer you created and click it to open it.
 3. Under **Consortium Members**, click **Add organization**.
 4. From the drop-down list, select `Org1 MSP`, as this is the MSP that represents the peer's organization `org1`.
 5. Click **Submit**.

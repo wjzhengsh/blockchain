@@ -75,7 +75,7 @@ Before you deploy the console, ensure that you understand the following consider
 
 Migration to the {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta is not supported. But migrating to the generally available (GA) release will be possible under the following circumstances:
 - Enterprise Plan customers will be able to migrate to {{site.data.keyword.blockchainfull_notm}} Platform 2.0 when it becomes generally available.
-- If you are using a paid {{site.data.keyword.cloud_notm}} Kubernetes Service, you will be able to migrate your  {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta network to the the GA release.
+- If you are using a paid {{site.data.keyword.cloud_notm}} Kubernetes Service, you will be able to migrate your  {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta network to the GA release.
 
 Deployments to the free {{site.data.keyword.cloud_notm}} Kubernetes Service will not be migrated, nor will migrations from Starter Plan.
 
