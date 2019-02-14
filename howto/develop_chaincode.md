@@ -2,13 +2,16 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2018-02-08"
+lastupdated: "2018-02-14"
 ---
 
 {:new_window: target="_blank"}
 {:shortdesc: .shortdesc}
 {:codeblock: .codeblock}
 {:screen: .screen}
+{:note: .note}
+{:important: .important}
+{:tip: .tip}
 {:pre: .pre}
 
 # Writing smart contracts
@@ -35,7 +38,10 @@ The tutorial also introduces important aspects of fabric that are accessible thr
 
 Chaincode can be written in multiple languages, and the {{site.data.keyword.blockchainfull_notm}} Platform supports chaincode written in Go and Node.js. Chaincode allows users query and change data that is stored in the blockchain by using APIs that the Fabric Chaincode interface provides. Data on the blockchain is stored in key-value pairs in the world state of the channel [ledger ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/ledger/ledger.html "ledger"). Chaincode uses get commands to retrieve values and use put commands to create or update values. Using these basic operations, you can build functions that define the business rules of your network. These functions can be invoked by your applications and surfaced to end users of the network. To continue using the vehicle network example, you can create a function that allows a car dealership to use a put command to add a new car to the ledger only if they provide a valid vehicle ID number.
 
-You can learn how to start writing chaincode by visiting the [Chaincode for developers tutorial ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/latest/chaincode4ade.html "chaincode for developers tutorial") in the Hyperledger Fabric community documentation. The tutorial will take you through the construction of a simple chaincode that creates and reads assets and introduces you to which APIs are used in the process. You can also find the chaincode API reference guide for all chaincode languages. There are additional examples in the chaincode folder of the [Fabric samples repository ![External link icon](../images/external_link.svg "External link icon")](https://github.com/hyperledger/fabric-samples "Fabric samples").
+You can learn how to start writing chaincode by visiting the [Chaincode for developers tutorial ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/latest/chaincode4ade.html "chaincode for developers tutorial") in the Hyperledger Fabric community documentation. The tutorial will take you through the construction of a simple chaincode that creates and reads assets and introduces you to which APIs are used in the process. You can also find the chaincode API reference guide for all chaincode languages. There are additional examples in the chaincode folder of the [Fabric samples repository ![External link icon](../images/external_link.svg "External link icon")](https://github.com/hyperledger/fabric-samples "Fabric samples").  
+
+A smart contract is typically able to validate requests, apply the business rules and return a deterministic result. However, there are some situations where either additional facts are required or the business network wants to ensure that the information provided by the clients are true facts. Hyperledger Fabric does not prevent external calls to third-party systems from the smart contracts. However, it is the responsibility of the developer of the smart contract to ensure that the resulting R/W sets are deterministic.
+{:note}
 
 ## Installing Chaincode
 {: #develop-smart-contracts-install}

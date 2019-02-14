@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-02-11"
+lastupdated: "2019-02-14"
 
 ---
 
@@ -73,11 +73,11 @@ Before you deploy the console, ensure that you understand the following consider
 ## Migration
 {: #ibp-console-overview-migration}
 
-Migration to the {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta is not supported. But migrating to the generally available (GA) release will be possible under the following circumstances:
-- Enterprise Plan customers will be able to migrate to {{site.data.keyword.blockchainfull_notm}} Platform 2.0 when it becomes generally available.
-- If you are using a paid {{site.data.keyword.cloud_notm}} Kubernetes Service, you will be able to migrate your  {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta network to the GA release.
+You cannot migrate from any {{site.data.keyword.blockchainfull_notm}} platform offerring to the {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 **beta**.  
 
-Deployments to the free {{site.data.keyword.cloud_notm}} Kubernetes Service will not be migrated, nor will migrations from Starter Plan.
+In the future, you will be able to migrate from an Enterprise Plan release to the {{site.data.keyword.blockchainfull_notm}} Platform 2.0 when it becomes generally available (GA).   
+
+All {{site.data.keyword.blockchainfull_notm}} platform free 2.0 beta service instances will not be migrated to the GA version, nor can Starter Plan instances be migrated to the 2.0 GA version.
 
 ## License and pricing
 {: #ibp-console-overview-license-and-pricing}

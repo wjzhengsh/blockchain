@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-02-14"
 
 ---
 
@@ -31,13 +31,14 @@ Whether you deploy to a paid or free Kubernetes cluster, use the Kubernetes dash
 ## Sample network tutorial series
 {: #ibp-console-build-network-sample-tutorial}
 
-This three-part tutorial series takes you through the process of creating and interconnecting a relatively simple, multi-node {{site.data.keyword.blockchainfull_notm}} Platform 2.0 network by using the console and leveraging your Kubernetes deployment.
+This three-part tutorial series takes you through the process of creating and interconnecting a relatively simple, multi-node {{site.data.keyword.blockchainfull_notm}} Platform 2.0 network by using the console to deploy a network into your Kubernetes cluster and installing and instantiating a smart contract.
 
-* [Build a network tutorial](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network) guides you through the process of hosting a network by creating an orderer and peer.
+* **Build a network tutorial** This current tutorial guides you through the process of hosting a network by creating an orderer and peer.
 * [Join a network tutorial](/docs/services/blockchain/howto/ibp-console-join-network.html#ibp-console-join-network) guides you through the process of joining an existing network by creating a peer and joining it to a channel.
-* [Deploy a smart contract on the network tutorial](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts) provides information on how to write a smart contract and deploy it on your network.
+* [Deploy a smart contract on the network](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts) provides information on how to write a smart contract and deploy it on your network.
 
-You can use the steps in these tutorials to build a network with multiple organizations in one cluster for the purposes of development and testing. Use the **Build a network** tutorial if you want to found a blockchain consortium and have other members use the **Join a network** tutorial to connect from a different cluster. Following the tutorials with different consortium members allows you to create a truly **distributed** blockchain network.
+You can use the steps in these tutorials to build a network with multiple organizations in one cluster for the purposes of development and testing. Use the **Build a network** tutorial if you want to found a blockchain consortium by creating an orderer node and adding organizations. Use the **Join a network** tutorial to connect a peer to the network. Following the tutorials with different consortium members allows you to create a truly **distributed** blockchain network.  
+
 
 ### The structure of this network
 {: #ibp-console-build-network-structure}
@@ -60,7 +61,7 @@ This configuration is sufficient for testing applications and smart contracts. T
 * **One channel**: `channel1`  
   Channels provide data privacy. They allow sets of organizations to transact without exposing their data to organizations that are not members of the channel. Each channel has its own blockchain ledger, shared between the peers joined to that channel. The tutorial creates create one channel joined by both organizations, and instantiate smart contract on the channel that the organizations can use to transact.
 
-This configuration isn't mandatory. The {{site.data.keyword.blockchainfull_notm}} Platform 2.0 is highly customizable. If you have resources available in your Kubernetes cluster, you can use the console found a consortium with many peer organizations. You can also create a peer organization that connects to multiple ordering services. This tutorial provides the steps you need to build your own network, with references to topics that provide a deeper dive into the {{site.data.keyword.blockchainfull_notm}} Platform and the console.
+This configuration isn't mandatory. The {{site.data.keyword.blockchainfull_notm}} Platform 2.0 is highly customizable. If you have resources available in your Kubernetes cluster, you can use the console to deploy an orderer node and add organizations to it, also known as to found a consortium. Additionally, you can create a peer organization that connects to multiple ordering services. This tutorial provides the steps you need to build your own network, with references to topics that provide a deeper dive into the {{site.data.keyword.blockchainfull_notm}} Platform and the console.
 
 
 In this **Build a network** tutorial, we build only a portion of the network above, a simple network that can be used to host an orderer and a single peer organization and peer on a single channel. The following illustration shows the portion of the network above that we will build:
@@ -90,7 +91,7 @@ Perform the following steps from your console:
 2. Click  **{{site.data.keyword.cloud_notm}}** under **Create Certificate Authority** and **Next**.
 3. Use the second side panel to give your CA a **display name**. Our recommended value for this CA is `Org1 CA`.
 4. On the next panel, give your CA admin credentials by specifying an **Admin ID** of `admin`, and giving any secret that you want. We recommend `adminpw` to help you follow along in this tutorial.
-5. Click **Submit**.
+5. Click **Next** then **Submit**.
 
 **Task: Creating the peer organization CA**
 
@@ -136,9 +137,9 @@ Now that we have created the peer's CA and used it to **register** our organizat
 1. Navigate to the **Organizations** tab in the left navigation and click **Create MSP definition**.
 2. Give your MSP the display name `Org1 MSP` and an MSP ID of `org1msp`. If you want to specify your own MSP ID in this field, make sure to follow the specifications about the limitations to this name from the tool tip.
 3. Under **Root Certificate Authority details**, specify the peer CA that we created as your root CA for your organization. If this is your first time through this tutorial, you should only see one: `Org1 CA`.
-4. The **Enroll ID** and **Enroll secret** fields below this will auto populate with the enroll ID and secret for the first user that you created with your CA. Do not use these values. Instead, give the enroll ID and secret for your organization admin, `org1admin` and `org1adminpw`. Then, give this identity a display name, `Org1 Admin`.
+4. The **Enroll ID** and **Enroll secret** fields below this will auto populate with the enroll ID and secret for the first user that you created with your CA. You could use these values, but we do not recommend that you use your CA admin identity as your organization admin.  Instead for security reasons, we recommend that you enter the separate enroll ID and secret that you created for your organization admin, `org1admin` and `org1adminpw`. Then, give this identity a display name, `Org1 Admin`.
 5. Click the **Generate** button to enroll this identity as the admin of your organization and export the identity to the wallet, where it will be used when you create the peer and creating a channel.
-6. Click **Export** to export the admin certificates to your file system. As we said above, this identity is not stored in your cluster or managed by {{site.data.keyword.IBM_notm}}. It is only stored in your browser.
+6. Click **Export** to export the admin certificates to your file system so you can manage the file. As we said above, this identity is not stored in your cluster or managed by {{site.data.keyword.IBM_notm}}. It is only stored in your browser. If you change browsers, you need to import this identity into your console wallet to be able to administer the peer.
 7. Click **Create MSP definition**.
 
 **Task: Create the peer organization MSP**
@@ -217,7 +218,7 @@ Use your console to perform the following steps:
 ## Step two: Create the node that orders transactions
 {: #ibp-console-build-network-create-orderer}
 
-In other distributed blockchains, such as Ethereum and Bitcoin, there is no central authority that orders transactions and sends them out to peers. Hyperledger Fabric, the blockchain that the {{site.data.keyword.blockchainfull_notm}} Platform is based on, work differently. It features a node called an **orderer**.
+In other distributed blockchains, such as Ethereum and Bitcoin, there is no central authority that orders transactions and sends them out to peers. Hyperledger Fabric, the blockchain that the {{site.data.keyword.blockchainfull_notm}} Platform is based on, works differently. It features a node called an **orderer**.
 
 Orderers are key components in a network because they perform a few essential functions:
 
@@ -244,6 +245,7 @@ The process for creating a CA for an orderer is identical to creating it for a p
 2. Click  **{{site.data.keyword.cloud_notm}}** under **Create Certificate Authority** and **Next**
 3. Give this CA a unique display name, `Orderer CA`.
 4. You're free to reuse the **Enroll ID** you gave for the other CA, `admin`, and then to specify any secret you want, but we recommend `adminpw`.
+5. Click **Next** then **Submit**.
 
 ### Using your CA to register orderer and orderer admin identities
 {: #ibp-console-build-network-use-CA-orderer}
@@ -275,9 +277,9 @@ Create your orderer organization MSP definition and specify the admin identity f
 1. Navigate to the **Organizations** tab in the left navigation and click **Create MSP definition**.
 2. Give your MSP definition a display name such as `Orderer MSP` and an ID such as `orderermsp`, making sure to follow the specifications about the limitations to this name from the tool tip.
 3. Under **Root Certificate Authority details**, select the `Orderer CA` we created.
-4. The **Enroll ID** and **Enroll secret** below this will auto populate with the enroll ID and secret for the first user you created with your CA. Do not use these values. Instead, give the enroll ID and secret for your organization admin, `ordereradmin`, and any secret, but we recommend `ordereradminpw` to help follow along in the tutorial. Then, give this identity a display name, such as `Orderer Admin`.
+4. The **Enroll ID** and **Enroll secret** below this will auto populate with the enroll ID and secret for the first user you created with your CA. You could use these values, but we do not recommend that you use your CA admin identity as your organization admin.  Instead for security reasons, we recommend that you enter the separate enroll ID and secret that you created for your organization admin, `ordereradmin`, and `ordereradminpw`. Then, give this identity a display name, such as `Orderer Admin`.
 5. Click the **Generate** button to enroll this identity as the admin of your organization and add the identity to the console wallet, where it will be used when creating the orderer.
-6. Click **Export** to export the orderer organization admin identity to your file system. As we said above, this identity is not stored in your cluster or managed by {{site.data.keyword.IBM_notm}}. It is only stored in the local storage of your browser.
+6. Click **Export** to export the orderer organization admin identity to your file system. As we said above, this identity is not stored in your cluster or managed by {{site.data.keyword.IBM_notm}}. It is only stored in the local storage of your browser.  If you change browsers, you need to import this identity into your console wallet to be able to administer the orderer.
 7. Click **Create MSP definition**.
 
 **Task: Create the orderer organization MSP definition**
@@ -326,7 +328,7 @@ Perform the following steps from your console:
   | ------------------------- |-----------|-----------|-----------|-----------|
   | **Create Orderer** | Orderer | orderermsp |||
   | **CA** | Orderer CA ||||
-  | **Orderer Identity** | |  | ordereradmin | ordereradminpw |
+  | **Orderer Identity** | |  | orderer1 | orderer1pw |
   | **Administrator certificate** | Orderer MSP ||||
   | **TLS CA** | Orderer CA ||||
   | **TLS CA ID** | || admin | adminpw |
@@ -345,14 +347,14 @@ Because only orderer admins can add peer organizations to the consortium, you wi
 <!-- More on the latter at the LINK. -->
 Because you are the orderer admin, this process is relatively straightforward:
 1. Navigate to the **Nodes** tab.
-2. Scroll down to the orderer you created and click it to open it.
+2. Scroll down to the orderer you created and click on it to open it.
 3. Under **Consortium Members**, click **Add organization**.
 4. From the drop-down list, select `Org1 MSP`, as this is the MSP that represents the peer's organization `org1`.
 5. Click **Submit**.
 
 When this process is complete, it is possible for `org1` to create or join a channel hosted on your `Orderer`.
 
-In this tutorial, we can easily access the `Org1 MSP` because both the peer organization and the orderer organization were created in the same console. When a peer organization is created in a different console or cluster and wants to join your consortium, they need to send you their MSP definition in an out of band operation. You will also need to export the orderer node to their console for them to be able to join or create a channel. This process is described in the Join a network tutorial, under [Exporting your organization information](/docs/services/blockchain/howto/ibp-console-join-network.html#ibp-console-join-network-add-org2-remote).
+In this tutorial, we can easily access the `Org1 MSP` because both the peer organization and the orderer organization were created in the same console. In a real life scenario, other organization MSP definitions would be created by different network operators in their own cluster using their own {{site.data.keyword.blockchainfull_notm}} console. Later, when the organization, such as a peer organization, wants to join your consortium, the network operator needs to send you their organization MSP definition in an out of band operation. Additionally, you will need to export your orderer node for them to import into their console so they can join a peer to a channel or create a new channel. This process is described in the Join a network tutorial, under [Exporting your organization information](/docs/services/blockchain/howto/ibp-console-join-network.html#ibp-console-join-network-add-org2-remote).
 
 ## Step four: Create a channel
 {: #ibp-console-build-network-create-channel}
@@ -428,19 +430,7 @@ Perform the following steps from your console:
 After you have created and joined your peer to a channel, you have a fully functional basic blockchain network that you can use for development and testing. Use the following steps to deploy a smart contract and begin submitting transactions to the blockchain:
 
 - [Deploy a smart contract on your network](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts) using the console.
-- After you have installed and instantiated your smart contract, you can [submit transactions using your client application](docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-connect-to-SDK).
+- After you have installed and instantiated your smart contract, you can [submit transactions using your client application](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-connect-to-SDK).
 - Use [the commercial paper sample](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-commercial-paper) to deploy an example smart contract and submit transactions by using sample application code.
 
 You can also create another peer organization by using the [Join a network tutorial](/docs/services/blockchain/howto/ibp-console-join-network.html#ibp-console-join-network-structure). You can add the second organization to your channel to simulate a distributed network, with two peers that share a single channel ledger.
-
-## Troubleshooting
-{: #ibp-console-build-network-troubleshooting}
-
-**Problem:** Errors occur when I try to operate a node.  
-
-**Solution:** If you receive errors while operating a node in the console, [check your node logs](/docs/services/blockchain/howto/ibp-console-manage.html#ibp-console-manage-console-node-logs) for errors.  
-
-
-**Problem:** Kubernetes dashboard shows the peer fails to start and the peer logs include `2019-02-06 19:43:24.159 UTC [main] InitCmd -> ERRO 001 Cannot run peer because cannot init crypto, folder “/certs/msp” does not exist`
-
-**Solution:** Ensure that when you created the peer's organization MSP definition, that the enroll id and secret you specified corresponds to an identity of type `client` and not `peer`.
