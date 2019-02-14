@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-02-14"
 ---
 
 {:new_window: target="_blank"}
@@ -12,10 +12,12 @@ lastupdated: "2019-02-08"
 {:pre: .pre}
 {:note: .note}
 {:important: .important}
-{:tip: .tip}
+{:tip: .tip}_
 
 # Known issues
 {: #known-issues}
+This page describes known issues you may encounter when using Starter or Enterprise Plans.
+{:shortdesc}
 
 ***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 

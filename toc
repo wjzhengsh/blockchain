@@ -60,6 +60,7 @@ IBM Blockchain Platform
 		howto/ibp-console-identities.md
 		howto/ibp-console-organizations.md
 		howto/ibp-console-manage.md
+		howto/ibp-v2-troubleshooting.md
 
 	{: .topicgroup}
 	IBM Blockchain Platform on IBM Cloud Private
@@ -92,6 +93,7 @@ IBM Blockchain Platform
 	{: .navgroup-end}
 
 	{: .navgroup id="reference"}
+	howto/ibp-v2-faq.md
 	glossary.md
 	reference/ibp_regions.md
 	reference/videos.md

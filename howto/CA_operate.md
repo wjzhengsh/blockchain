@@ -742,6 +742,11 @@ Component logs can be viewed from the command line by using the [`kubectl CLI co
 
   **Note:** When you view your logs in Kibana, you might receive the response `No results found`. This condition can occur if {{site.data.keyword.cloud_notm}} Private uses your worker node IP address as its hostname. To resolve this problem, remove the filter that begins with `node.hostname.keyword` at the top of the panel and the logs will become visible.
 
+## Security
+{: #ca-operate-security}
+
+The CA may be kept offline if only a limited number of certs are issued, for example just peers, Node.js server, client applications, to ensure further security and prevent compromise of CA key materials. However, the CA should be online when on-demand issuance of certificates to users is required. It is strongly recommended that you secure your CA admin private key with [HSM](https://console.test.cloud.ibm.com/docs/services/blockchain/glossary.html#glossary-hsm) if possible.
+
 ## Troubleshooting
 {: #ca-operate-troubleshooting}
 

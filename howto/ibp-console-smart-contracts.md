@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-02-14"
 
 ---
 
@@ -20,6 +20,18 @@ lastupdated: "2019-02-08"
 
 ***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
+## Sample network tutorial series
+{: #ibp-console-smart-contracts-structure}
+
+This three-part tutorial series takes you through the process of creating and interconnecting a relatively simple, multi-node {{site.data.keyword.blockchainfull_notm}} Platform 2.0 network by using the console to deploy a network into your Kubernetes cluster and installing and instantiating a smart contract.
+
+* [Build a network tutorial](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network) guides you through the process of hosting a network by creating an orderer and peer.
+* [Join a network tutorial](/docs/services/blockchain/howto/ibp-console-join-network.html#ibp-console-join-network) guides you through the process of joining an existing network by creating a peer and joining it to a channel.
+* **Deploy a smart contract on the network** This current tutorial provides information on how to write a smart contract and deploy it on your network.
+
+You can use the steps in these tutorials to build a network with multiple organizations in one cluster for the purposes of development and testing. Use the **Build a network** tutorial if you want to found a blockchain consortium by creating an orderer node and adding organizations. Use the **Join a network** tutorial to connect a peer to the network. Following the tutorials with different consortium members allows you to create a truly **distributed** blockchain network.  
+
+This final tutorial is meant to show how to create and package a smart contract, how to install the smart contract on a peer, and how to instantiate the smart contract on a channel. .
 
 A smart contract is the code, sometimes referred to as chaincode, that allows you to read and update data on the blockchain ledger. A smart contract can turn business logic into an executable program agreed to and verified by all members of a blockchain network. This tutorial is the third part in the [sample network tutorial series](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-sample-tutorial) and describes how to deploy smart contracts to start transactions in the blockchain network. The previous two tutorials describe how to create components in the {{site.data.keyword.blockchainfull_notm}} Platform console and connect them to components that are created in other clusters to create a truly **distributed** blockchain network
 {:shortdesc}
@@ -54,7 +66,7 @@ The {{site.data.keyword.blockchainfull_notm}} console manages the *deployment* o
 - For a complete end-to-end tutorial about using an application to interact with smart contracts, see [Hyperledger Fabric Commercial Paper tutorial ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/tutorial/commercial_paper.html "Hyperledger Fabric Commercial Paper tutorial").
 - To learn about how to incorporate access control mechanisms into your smart contract, see [Chaincode for Developers ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/chaincode4ade.html#chaincode-access-control "Chaincode for Developers").
 - When you are ready to start building smart contracts, you can use the [{{site.data.keyword.blockchainfull_notm}} Visual Studio code extension ![External link icon](../images/external_link.svg "External link icon")](https://marketplace.visualstudio.com/items?itemName=IBMBlockchain.ibm-blockchain-platform "{{site.data.keyword.blockchainfull_notm}} Platform - Visual Studio Marketplace") to start building your own smart contract project. You can also use that extension to [connect directly to your network from Visual Studio code](docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-vscode).
-- When you are ready to install, the smart contract must be packaged into [.cds format ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/latest/chaincode4noah.html#packaging "packaging smart contracts") so that it can be installed onto the peers. For more information, see [Packaging smart contracts](/docs/services/blockchain/vscode-extension.html#packaging-a-smart-contract).
+- When you are ready to install, the smart contract must be packaged into [.cds format ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/latest/chaincode4noah.html#packaging "packaging smart contracts") so that it can be installed onto the peers. For more information, see [Packaging smart contracts](/docs/services/blockchain/vscode-extension.html#packaging-a-smart-contract). Alternatively, you can use the [peer cli commands ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/peerchaincode.html#peer-chaincode-package "peer chaincode package") to build the package.
 <!-- Update the tutorial link to release1-4 when it is published -->
 
 
@@ -172,15 +184,12 @@ In order to use private data with {{site.data.keyword.blockchainfull_notm}} Plat
  **Note:** A client needs to be an admin of your peer in order to install or instantitate a smart contract. Therefore, you need to download the certificates of the peer admin identity from your console wallet and pass the peer admin's public and private key to directly to the SDK instead of creating an application identity. For an example of how to pass a key pair to the SDK, see [Connecting to your network using low level Fabric SDK APIs](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-low-level).  
 
 3. **Configure anchor peers.** Because cross organizational [gossip ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/gossip.html "Gossip data dissemination protocol") must be enabled for private data to work, an anchor peer must exist for each organization in the collection definition. This anchor peer is not a special **type** of peer, it is just the peer that the organization makes known to other organizations, and in so doing bootstraps cross organizational gossip. Therefore, at least one [anchor peer ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/gossip.html#anchor-peers "Anchor peers") must be defined for each organization in the collection definition.
- - To configure a peer to be an anchor peer, click the **Channels** tab and open the channel where the smart contract was instantiated.  
+ - To configure a peer to be an anchor peer, click the **Channels** tab and open the channel where the the smart contract was instantiated.  
  - Click the **Channel details** tab.
  - Scroll down to the Anchor peers table and click **Add anchor peer**.
  - Select at least one peer from each organization in collection definition that you want to serve as the anchor peer for the organization. For redundancy reasons, you can consider selecting more than one peer from each organization in the collection.
 
 Your channel is now configured to use private data.
-
-## Troubleshooting
-{: #console-operate-troubleshooting}
 
 **Problem:** Installing, instantiating, or upgrading a smart contract fails with an error in the console.  
 **Solution:** If one of these actions on a smart contract fails, [check your node logs](/docs/services/blockchain/howto/ibp-console-manage.html#ibp-console-manage-console-node-logs) for errors.
