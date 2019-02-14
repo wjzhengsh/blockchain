@@ -31,7 +31,7 @@ This three-part tutorial series takes you through the process of creating and in
 
 You can use the steps in these tutorials to build a network with multiple organizations in one cluster for the purposes of development and testing. Use the **Build a network** tutorial if you want to found a blockchain consortium by creating an orderer node and adding organizations. Use the **Join a network** tutorial to connect a peer to the network. Following the tutorials with different consortium members allows you to create a truly **distributed** blockchain network.  
 
-This final tutorial is meant to show how to create and package a smart contract, how to install the smart contract on a peer, and how to instantiate the smart contract on a channel. .
+This final tutorial is meant to show how to create and package a smart contract, how to install the smart contract on a peer, and how to instantiate the smart contract on a channel.  
 
 A smart contract is the code, sometimes referred to as chaincode, that allows you to read and update data on the blockchain ledger. A smart contract can turn business logic into an executable program agreed to and verified by all members of a blockchain network. This tutorial is the third part in the [sample network tutorial series](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-sample-tutorial) and describes how to deploy smart contracts to start transactions in the blockchain network. The previous two tutorials describe how to create components in the {{site.data.keyword.blockchainfull_notm}} Platform console and connect them to components that are created in other clusters to create a truly **distributed** blockchain network
 {:shortdesc}
