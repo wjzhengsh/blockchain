@@ -23,6 +23,7 @@ IBM Blockchain Platform
 		howto/remote_peer.md
 
 	whats_new.md
+	howto/ibp-v2-faq.md
 	blockchain_component_overview.md
 	needtoknow.md
 	{: .navgroup-end}
@@ -93,7 +94,6 @@ IBM Blockchain Platform
 	{: .navgroup-end}
 
 	{: .navgroup id="reference"}
-	howto/ibp-v2-faq.md
 	glossary.md
 	reference/ibp_regions.md
 	reference/videos.md
