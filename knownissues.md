@@ -12,7 +12,7 @@ lastupdated: "2019-02-14"
 {:pre: .pre}
 {:note: .note}
 {:important: .important}
-{:tip: .tip}_
+{:tip: .tip}
 
 # Known issues
 {: #known-issues}
