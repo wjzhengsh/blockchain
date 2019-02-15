@@ -46,12 +46,11 @@ It is possible you may experience this error under a variety of conditions.
 The peer log includes `2019-02-06 19:43:24.159 UTC [main] InitCmd -> ERRO 001 Cannot run peer because cannot init crypto, folder “/certs/msp” does not exist`
 {: tsSymptoms}
 
-This error can occur if:
-- When you created the peer or orderer organization MSP definition, you specified an enroll id and secret that corresponds to an identity of type `peer` and not `client`. It must be of type `client`.
-- When you created the peer or orderer organization MSP definition, you specified an enroll id and secret that does not match the enroll id or secret of the corresponding organization admin identity.
-- When you created the peer or orderer, you specified the enroll id and secret of an identity that is not type 'peer'.
-{: tsCauses}
-
+- This error can occur under the following conditions:
+  - When you created the peer or orderer organization MSP definition, you specified an enroll id and secret that corresponds to an identity of type `peer` and not `client`. It must be of type `client`.
+  - When you created the peer or orderer organization MSP definition, you specified an enroll id and secret that does not match the enroll id or secret of the corresponding organization admin identity.
+  - When you created the peer or orderer, you specified the enroll id and secret of an identity that is not type 'peer'.
+ 
 - Open your peer or orderer CA node and view the registered identities listed in the **Registered Users** table.
 - Delete the peer or orderer and recreate it, being careful to specify the correct enroll id and secret.
 - Note that before you create the peer or orderer, you need to create an organization admin id, of type 'client'. Be sure to specify that same id as the enroll id when you create the organization MSP definition. See these instructions for [registering peer identities](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-use-CA-org1) and these instructions for [registering orderer identities](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-use-CA-orderer).
@@ -90,7 +89,7 @@ You may need to view your smart contract, or chaincode container, logs to debug 
 Your console wallet identities consist of a public and private key pair that allow you to manage your blockchain components but they are only stored in your browser local storage. You are responsible for securing and managing these identities. We recommend that you export them to your file system after you create them. Whenever you create a new node, you associate an identity from your console wallet with the node. This admin identity is what allows you to manage the node. When you switch browsers or change to a browser on a different machine, these identities are no longer in your wallet. Therefore, you are unable to manage the components.
 {: tsSymptoms}
 
-One of the new features of {{site.data.keyword.blockchainfull_notm}} Platform 2.0 is that you are now responsible for securing and managing your certificates. Therefore, they are only persisted in the browser local storage to allow you manage the component.
+One of the new features of {{site.data.keyword.blockchainfull_notm}} Platform 2.0 is that you are now responsible for securing and managing your certificates. Therefore, they are only persisted in the browser local storage to allow you to manage the component.
 {: tsCauses}
 
 - Any time you create a new organization MSP definition, you generate keys for an identity that is allowed to administer the organization. Therefore, during that process you must click the **Generate** and then **Export** buttons to store the generated identity in your console wallet and then save it to your file system as a JSON file.
