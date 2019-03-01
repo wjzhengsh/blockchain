@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-12-07"
+  years: 2018,2019
+lastupdated: "2019-02-08"
 ---
 
 {:new_window: target="_blank"}
@@ -10,8 +10,8 @@ lastupdated: "2018-12-07"
 {:codeblock: .codeblock}
 {:screen: .screen}
 {:pre: .pre}
-
 # Chaincode installieren, instanziieren und aktualisieren
+{: #install-instantiate-chaincode}
 
 
 ***[Ist diese Seite hilfreich? Teilen Sie uns Ihre Meinung mit.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
@@ -27,7 +27,7 @@ Nachdem der Chaincode auf den Peers installiert wurde, wird der Chaincode von ei
 Die Kombination von **Installation und Instanziierung** ist eine leistungsfähige Funktion, da ein Peer auf diese Weise in zahlreichen Kanälen mit ein und demselben Chaincode arbeiten kann. In bestimmten Fällen sollen Peers möglicherweise mehreren Kanälen beitreten, die mit demselben Chaincode arbeiten, jedoch über unterschiedliche Gruppen von Netzmitgliedern verfügen, die auf die Daten zugreifen können. Ein Peer kann den Chaincode einmal installieren und anschließend denselben Chaincode-Container auf jedem Kanal verwenden, auf dem eine Instanziierung durchgeführt wurde. Dieser einfache Ansatz spart Rechenleistung und Speicherplatz und unterstützt Sie bei der Skalierung Ihres Netzes.
 
 ## Chaincode installieren
-{: #installchaincode}
+{: #install-instantiate-chaincode-install-cc}
 
 Sie müssen den Chaincode auf allen Peers installieren, auf denen dieser Chaincode ausgeführt werden soll. Führen Sie die folgenden Schritte aus, um einen Chaincode zu installieren:
 1. Wählen Sie in der Anzeige "Code installieren" Ihres Network Monitor einen Peer in der Dropdown-Liste aus, um den Chaincode zu installieren. Klicken Sie auf die Schaltfläche **Chaincode installieren**.
@@ -37,11 +37,14 @@ Sie müssen den Chaincode auf allen Peers installieren, auf denen dieser Chainco
 
 2. Geben Sie in der Popup-Anzeige **Chaincode** den Namen und die Version Ihres Chaincodes ein. **Hinweis:** Die Zeichenfolgen für den Namen und die Version werden in Anwendungen für die Interaktion mit dem installierten Chaincode verwendet. Klicken Sie auf die Schaltfläche **Durchsuchen**, um im lokalen Dateisystem zur Speicherposition der Chaincode-Quellendateien zu navigieren. Wählen Sie mindestens eine Chaincode-Quellendatei aus, die für den Peer installiert werden soll. Wählen Sie dann die Chaincode-Sprache in der Dropdown-Liste **Chaincode-Typ** aus.
 
-Sie können Chaincode installieren, indem Sie GO- oder NODE-Dateien hochladen. Sie können auch Chaincode in einer ZIP-Datei hochladen. Wenn Sie eine ZIP-Datei verwenden, wird der Chaincode mit der gesamten Verzeichnisstruktur beibehalten. Dies ist hilfreich, wenn Pakete mit Abhängigkeiten berücksichtigt oder Indizes mit CouchDB verwendet werden sollen. Weitere Angaben über CouchDB und das Konfigurieren von Indizes enthält der Abschnitt [Best Practices bei der Verwendung von CouchDB](/docs/services/blockchain/v10_application.html#couchdb-indices) im Lernprogramm "Anwendungen entwickeln". Informationen finden Sie außerdem im Abschnitt über das [Management von externen Abhängigkeiten für in GO geschriebenen Chaincode ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/chaincode4ade.html#managing-external-dependencies-for-chaincode-written-in-go){:new_window} in der Hyperledger Fabric-Dokumentation.
+Sie können Chaincode installieren, indem Sie GO- oder NODE-Dateien hochladen. Sie können auch Chaincode in einer ZIP-Datei hochladen. Wenn Sie eine ZIP-Datei verwenden, wird der Chaincode mit der gesamten Verzeichnisstruktur beibehalten. Dies ist hilfreich, wenn Pakete mit Abhängigkeiten berücksichtigt oder Indizes mit CouchDB verwendet werden sollen. Weitere Angaben über CouchDB und das Konfigurieren von Indizes enthält der Abschnitt [Best Practices bei der Verwendung von CouchDB](/docs/services/blockchain/v10_application.html#dev-app-couchdb-indices) im Lernprogramm "Anwendungen entwickeln". Informationen finden Sie außerdem im Abschnitt über das [Management von externen Abhängigkeiten für in GO geschriebenen Chaincode ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/chaincode4ade.html#managing-external-dependencies-for-chaincode-written-in-go){:new_window} in der Hyperledger Fabric-Dokumentation.
 
   ![Chaincode installieren](../images/chaincode_install.png "Chaincode installieren")
 
 ## Chaincode instanziieren
+{: #install-instantiate-chaincode-instantiate-cc}
+
+
 Nachdem ein Chaincode im Dateisystem jedes Peers installiert wurde, der einem Kanal beitritt, muss der Chaincode anschließend auf dem Kanal instanziiert werden, sodass die Peers mit dem Ledger über den Chaincode-Container interagieren können. Die Instanziierung führt die erforderliche Initialisierung des Chaincodes durch. Dazu ist es häufig notwendig, die Schlüssel/Wert-Paare anzugeben, die den ursprünglichen World-Status eines Chaincodes darstellen.
 
 Sie müssen über die Berechtigung **Operator** oder **Schreibberechtigter** für den Kanal verfügen, um den Chaincode zu instanziieren. Chaincode, der auf unterschiedlichen Peers denselben Namen und die dieselbe Version hat, muss nur einmal instanziiert werden, um den Chaincode-Container bereitzustellen. Führen Sie die folgenden Schritte aus, um einen Chaincode zu instanziieren:
@@ -55,14 +58,15 @@ Sie müssen über die Berechtigung **Operator** oder **Schreibberechtigter** fü
   ![Instantiate Chaincode panel](../images/chaincode_instantiate_panel.png "Instantiate Chaincode panel")
 -->
 
-3. Geben Sie die [Bewilligungsrichtlinie](/docs/services/blockchain/glossary.html#endorsement-policy) Ihres Chaincodes an. Anleitungen zum Festlegen von Bewilligungsrichtlinien finden Sie im [nächsten Abschnitt](#specifying-chaincode-endorsement-policies).
+3. Geben Sie die [Bewilligungsrichtlinie](/docs/services/blockchain/glossary.html#glossary-endorsement-policy) Ihres Chaincodes an. Anleitungen zum Festlegen von Bewilligungsrichtlinien finden Sie im [nächsten Abschnitt](/docs/services/blockchain/howto/install-instantiate-chaincode.html#install-instantiate-chaincode-endorsement-policy).
+
 
 ## Bewilligungsrichtlinien des Chaincodes angeben
-{: #endorsement-policy}
+{: #install-instantiate-chaincode-endorsement-policy}
 
 Mit Bewilligungsrichtlinien können Sie die Gruppe von Peers angeben, von denen eine neue Transaktion validiert werden muss. Eine Bewilligungsrichtlinie kann z. B. angeben, dass eine Transaktion nur zum Ledger hinzugefügt wird, wenn eine Mehrheit der Mitglieder im Kanal die Transaktion bewilligt.
 
-Die Bewilligungsrichtlinie wird festgelegt, wenn ein Chaincode in einem Kanal instanziiert wird. Die Organisation, von der die Chaincode-Instanz erstellt wird, kann unter den Kanalmitgliedern, von denen der Chaincode installiert wurde, Prüfer auswählen und legt die Bewilligungsrichtlinie für alle Kanalmitglieder fest. Sie können die Bewilligungsrichtlinie wie im Abschnitt zum [Aktualisieren des Chaincodes](#updating-a-chaincode) beschrieben aktualisieren, indem Sie im zweiten Schritt beim Reinstanziieren des Chaincodes anschließend eine neue Richtlinie angeben.
+Die Bewilligungsrichtlinie wird festgelegt, wenn ein Chaincode in einem Kanal instanziiert wird. Die Organisation, von der die Chaincode-Instanz erstellt wird, kann unter den Kanalmitgliedern, von denen der Chaincode installiert wurde, Prüfer auswählen und legt die Bewilligungsrichtlinie für alle Kanalmitglieder fest. Sie können die Bewilligungsrichtlinie wie im Abschnitt zum [Aktualisieren des Chaincodes](/docs/services/blockchain/howto/install_instantiate_chaincode.html#install-instantiate-chaincode-update-cc) beschrieben aktualisieren, indem Sie im zweiten Schritt beim Reinstanziieren des Chaincodes anschließend eine neue Richtlinie angeben.
 
 Wenn Sie die Bewilligungsrichtlinie über den Network Monitor festlegen, können Sie über die Benutzerschnittstelle eine **einfache Richtlinie** angeben oder mit JSON eine **erweiterte Richtlinie** angeben.
 
@@ -79,10 +83,11 @@ Wenn Sie die Bewilligungsrichtlinie über den Network Monitor festlegen, können
 Bewilligungsrichtlinien werden nicht automatisch aktualisiert, wenn neue Organisationen dem Kanal beitreten und den Chaincode installieren. Falls die Richtlinie beispielsweise zwei von fünf Organisationen erforderlich macht, damit eine Transaktion bewilligt wird, wird sie nicht dahingehend aktualisiert, dass zwei von sechs Organisationen erforderlich sind, nachdem eine neue Organisation dem Kanal beigetreten ist. Stattdessen wird die neue Organisation nicht in der Richtlinie aufgeführt und ist nicht in der Lage, Transaktionen zu bewilligen. Sie können eine neue Organisation zu einer Bewilligungsrichtlinie hinzufügen, indem Sie den entsprechenden Chaincode aktualisieren.
 
 ## Chaincode aktualisieren
+{: #install-instantiate-chaincode-update-cc}
 
 Sie können Chaincode aktualisieren, um die Chaincode-Programmierung zu ändern, und gleichzeitig die Beziehung beibehalten, die zwischen dem Chaincode und den Assets im Ledger besteht. Aufgrund der Kombination aus Installation und Instanziierung müssen Sie den Chaincode für alle Peers, die sich mit diesem Chaincode im Kanal befinden, aktualisieren. Führen Sie die folgenden Schritte aus, um den Chaincode zu aktualisieren.
 
-1. Installieren Sie Chaincode, dessen Name mit dem des alten Chaincodes identisch ist, der jedoch eine andere Version aufweist. Hierzu können Sie dieselben Schritte ausführen wie für das [Installieren von Chaincode](#installchaincode). Stellen Sie sicher, dass Sie denselben Kanal auswählen wie beim ursprünglichen Chaincode.
+1. Installieren Sie Chaincode, dessen Name mit dem des alten Chaincodes identisch ist, der jedoch eine andere Version aufweist. Hierzu können Sie dieselben Schritte ausführen wie für das [Installieren von Chaincode](/docs/services/blockchain/howto/install_instantiate_chaincode.html#install-instantiate-chaincode-install-cc). Stellen Sie sicher, dass Sie denselben Kanal auswählen wie beim ursprünglichen Chaincode.
 
   ![Chaincode aktualisieren](../images/upgrade_chaincode.png "Chaincode aktualisieren")
 

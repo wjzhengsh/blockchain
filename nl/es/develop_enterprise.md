@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-12-07"
+lastupdated: "2018-12-08"
 
 ---
 
@@ -16,6 +16,7 @@ lastupdated: "2018-12-07"
 # Despliegue de una red empresarial en el Plan empresarial
 {: #deploying-a-business-network}
 
+**IBM recomienda el uso de Hyperledger Composer únicamente para demostraciones y pruebas de concepto. IBM no proporciona soporte para redes que utilicen Hyperledger Composer en producción, incluyendo la CLI de Composer, las API de JavaScript, el servidor REST y Web Playground.**
 
 ***[¿Le resulta útil esta página? Indíquenos su opinión.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
@@ -28,9 +29,9 @@ Esta guía aborda el siguiente paso del ciclo de vida de la red empresarial, es 
 
 Asegúrese de que ha instalado el entorno de desarrollador de {{site.data.keyword.blockchainfull_notm}} y de estar familiarizado con el desarrollo y despliegue de redes empresariales. Dispone de instrucciones sobre cómo escribir redes empresariales en la [documentación de Hyperledger Composer](https://hyperledger.github.io/composer/latest/business-network/business-network-index).
 
-Necesita acceso a una instancia del Plan empresarial de la plataforma {{site.data.keyword.blockchainfull_notm}} y de tener creados los iguales de antemano. Para obtener más información sobre el Plan empresarial de la plataforma {{site.data.keyword.blockchainfull_notm}}, consulte la [visión general del Plan empresarial](/docs/services/blockchain/enterprise_plan.html).
+Necesita acceso a una instancia del Plan empresarial de {{site.data.keyword.blockchainfull_notm}} Platform y de tener creados los iguales de antemano. Para obtener más información sobre el Plan empresarial de la plataforma {{site.data.keyword.blockchainfull_notm}}, consulte la [visión general del Plan empresarial](./enterprise_plan.html).
 
-## Paso uno: Crear un perfil de conexión para la plataforma {{site.data.keyword.blockchainfull_notm}}
+## Paso uno: crear un perfil de conexión para la plataforma {{site.data.keyword.blockchainfull_notm}}
 
 1. Cree un directorio en el que almacenará los detalles de conexión, por ejemplo:
 
@@ -53,19 +54,19 @@ Necesita acceso a una instancia del Plan empresarial de la plataforma {{site.dat
     /Users/myUserId/.composer-connection-profiles/bmx-hlfv11
     ```
 
-## Paso dos: recupere el perfil de conexión
+## Paso dos: recuperar el perfil de conexión
 
 1. Desde el panel de control de la plataforma {{site.data.keyword.blockchainfull_notm}}, seleccione
 **Visión general** y luego **Connection Profile**, y pulse el botón **Descargar** para recuperar su perfil de conexión.
 
 2. Guarde el perfil de conexión en la estructura de directorios creada en el paso anterior. Póngale el nombre **connection.json**.
 
-## Paso tres: adición de información de canal
+## Paso tres: añadir información de canal
 
 1. Añada el valor del canal en el archivo `connection.json` de modo que coincida con el nombre del canal que tiene previsto crear y en el que piensa desplegar su red empresarial. En la plantilla de perfil de conexión de ejemplo proporcionada, el elemento channels es el siguiente:
 `"channels": {},`.
 
-## Paso cuatro: preparación de los iguales
+## Paso cuatro: preparar los iguales
 
 **Nota**: este paso se **debe** realizar antes de crear el canal en el que se va a desplegar una red empresarial. Si este paso se realiza después de crear el canal, es posible que la red empresarial desplegada **no se inicie**.
 
@@ -115,7 +116,7 @@ En el documento de perfil de conexión, bajo **certificateAuthorities**, hay un 
 
 8. Ahora el certificado debería aparecer en la lista de certificados.
 
-## Paso cinco: creación de un canal
+## Paso cinco: crear un canal
 
 1. Seleccione **Canales** en el menú de navegación del panel izquierdo y pulse el botón **Nuevo canal**.
 
@@ -131,7 +132,7 @@ En el documento de perfil de conexión, bajo **certificateAuthorities**, hay un 
 
 7. Seleccione **Canales** en el menú de navegación. El nuevo canal debería estar en la lista de canales y debería mostrar "No se han añadido iguales aún". Pulse el menú de acciones que hay junto al canal y seleccione **Unir iguales**. Marque los recuadros de selección que hay junto a los iguales que desea añadir y pulse **Añadir seleccionados**.
 
-## Paso seis: creación de una nueva identidad para administrar la red empresarial
+## Paso seis: crear una nueva identidad para administrar la red empresarial
 
 Cree una tarjeta de red empresarial utilizando los certificados solicitados. Esta tarjeta de red empresarial tendrá autoridad para instalar código de encadenamiento en los iguales que tienen el certificado público cargado y será un emisor para las entidades emisoras de certificados.
 
@@ -154,7 +155,7 @@ Cree una tarjeta de red empresarial utilizando los certificados solicitados. Est
     Ahora esté preparado para desplegar su archivo `.bna` en la plataforma {{site.data.keyword.blockchainfull_notm}}.
 
 
-## Paso siete: despliegue de la red empresarial
+## Paso siete: desplegar la red empresarial
 
 Ahora puede desplegar el archivo `.bna` en la plataforma {{site.data.keyword.blockchainfull_notm}}.
 

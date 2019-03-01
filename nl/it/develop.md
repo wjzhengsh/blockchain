@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-12-07"
+lastupdated: "2018-12-08"
 
 ---
 
@@ -13,9 +13,10 @@ lastupdated: "2018-12-07"
 {:pre: .pre}
 {:tip: .tip}
 
-# Sviluppo di reti di business 
+# Sviluppo di reti di business
 {: #develop-the-network}
 
+**IBM consiglia di utilizzare Hyperledger Composer esclusivamente per le demo e per i modelli di verifica (PoC, Proof of Concept). IBM non fornisce supporto per le reti che utilizzano Hyperledger Composer in produzione, compresi la CLI Composer, le API JavaScript, il server REST e Web Playground.**
 
 ***[Questa pagina è utile? Faccelo sapere.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
@@ -23,7 +24,7 @@ lastupdated: "2018-12-07"
 Lo sviluppo di soluzioni blockchain utilizzando {{site.data.keyword.blockchainfull}} Platform si avvale del set di strumento di sviluppo open source Hyperledger Composer. Hyperledger Composer utilizza un linguaggio di modellazione su misura, che è combinato con le transazioni JavaScript e le regole di controllo dell'accesso per modellare completamente una rete di business blockchain _prima_ che tu esegua alcuna distribuzione a una rete blockchain reale.
 {:shortdesc}
 
-**Nota:** il piano Starter fornisce applicazioni di esempio che puoi apprendere e provare. Puoi eseguire le applicazioni di esempio in piano Starter prima di sviluppare la tua rete di business personalizzata. Per ulteriori informazioni, vedi [Informazioni su piano Starter](/docs/services/blockchain/starter_plan.html).
+**Nota:** il piano Starter fornisce applicazioni di esempio che puoi apprendere e provare. Puoi eseguire le applicazioni di esempio in piano Starter prima di sviluppare la tua rete di business personalizzata. Per ulteriori informazioni, vedi [Informazioni sul piano Starter](starter_plan.html).
 
 Questa esercitazione spiega lo sviluppo di una soluzione {{site.data.keyword.blockchain}} che inizia con la creazione e la modellazione di una rete di business e la distribuisce quindi a una rete blockchain in esecuzione.
 
@@ -39,7 +40,7 @@ La seguente procedura descrive lo sviluppo di base di una soluzione {{site.data.
 
 ## Prima di cominciare
 
-Assicurati di avere installato gli strumenti di sviluppo di [{{site.data.keyword.blockchainfull_notm}}: Develop](/docs/services/blockchain/develop_install.html).
+Assicurati di avere installato gli strumenti di sviluppo di [{{site.data.keyword.blockchainfull_notm}}: Develop](./develop_install.html).
 
 ## Passo uno: Creazione della struttura di rete di business
 
@@ -179,6 +180,6 @@ Dopo che hai eseguito il comando, viene creato un file di archivio di rete di bu
 
 ## Passo quattro: Distribuzione della rete di business e generazione di un server REST
 
-Distribuisci la rete di business sulla {{site.data.keyword.blockchainfull_notm}} Platform utilizzando [piano Starter](/docs/services/blockchain/develop_starter.html) o [piano Enterprise](/docs/services/blockchain/develop_enterprise.html).
+Distribuisci la rete di business sulla {{site.data.keyword.blockchainfull_notm}} Platform utilizzando [piano Starter](./develop_starter.html) o [piano Enterprise](./develop_enterprise.html).
 
 Dopo che la tua rete di business è stata distribuita a {{site.data.keyword.blockchainfull_notm}} Platform, è possibile generare un server REST personalizzato. Il server REST esamina il contenuto della rete di business e crea chiamate API RESTful per gli asset, le transazioni e i partecipanti della rete. Le istruzioni per generare un server REST sono incluse nella [documentazione di Hyperledger Composer](https://hyperledger.github.io/composer/latest/integrating/getting-started-rest-api).

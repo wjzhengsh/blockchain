@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-12-07"
+lastupdated: "2018-12-08"
 
 ---
 
@@ -16,6 +16,7 @@ lastupdated: "2018-12-07"
 # エンタープライズ・プランへのビジネス・ネットワークのデプロイ
 {: #deploying-a-business-network}
 
+**デモおよび概念検証のみに Hyperledger Composer を使用することをお勧めします。 IBM では、実動の Hyperledger Composer を使用するネットワークをサポートしていません。これには Composer CLI、JavaScript API、REST サーバー、および Web Playground が含まれます。**
 
 ***[このページは参考になりましたか。 ご意見をお聞かせください。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
@@ -28,7 +29,7 @@ lastupdated: "2018-12-07"
 
 {{site.data.keyword.blockchainfull_notm}} 開発者環境をインストールします。ビジネス・ネットワークの開発とデプロイの方法を理解しておく必要があります。 ビジネス・ネットワークの作成に関するガイダンスは、[Hyperledger Composer の資料](https://hyperledger.github.io/composer/latest/business-network/business-network-index)から参照できます。
 
-{{site.data.keyword.blockchainfull_notm}} Platform のエンタープライズ・プラン・インスタンスに対するアクセス権限が必要であり、事前にピアを作成しておく必要があります。{{site.data.keyword.blockchainfull_notm}} Platform エンタープライズ・プランについて詳しくは、[エンタープライズ・プランの概説](/docs/services/blockchain/enterprise_plan.html)を参照してください。
+{{site.data.keyword.blockchainfull_notm}} Platform のエンタープライズ・プラン・インスタンスに対するアクセス権限が必要であり、事前にピアを作成しておく必要があります。 {{site.data.keyword.blockchainfull_notm}} Platform エンタープライズ・プランについて詳しくは、[エンタープライズ・プランの概説](./enterprise_plan.html)を参照してください。
 
 ## ステップ 1: {{site.data.keyword.blockchainfull_notm}} Platform の接続プロファイルの作成
 
@@ -57,7 +58,7 @@ lastupdated: "2018-12-07"
 
 1. {{site.data.keyword.blockchainfull_notm}} Platform ダッシュボードで、**「概要」**、**「接続プロファイル」**、**「ダウンロード」**ボタンの順に選択し、接続プロファイルを取得します。
 
-2. 前のステップで作成したディレクトリー構造に接続プロファイルを保存します。それに **connection.json** という名前を付けます。
+2. 前のステップで作成したディレクトリー構造に接続プロファイルを保存します。 それに **connection.json** という名前を付けます。
 
 ## ステップ 3: チャネル情報の追加
 
@@ -131,7 +132,7 @@ lastupdated: "2018-12-07"
 
 ## ステップ 6: ビジネス・ネットワークを管理する新規 ID の作成
 
-要求された証明書を使用して、ビジネス・ネットワーク・カードを作成します。このビジネス・ネットワーク・カードは、アップロードされたパブリック証明書を持つピアにチェーンコードをインストールする権限を持ち、認証局の発行者になります。
+要求された証明書を使用して、ビジネス・ネットワーク・カードを作成します。 このビジネス・ネットワーク・カードは、アップロードされたパブリック証明書を持つピアにチェーンコードをインストールする権限を持ち、認証局の発行者になります。
 
 1. カードを作成するには、次のコマンドを実行します。
 
@@ -156,7 +157,7 @@ lastupdated: "2018-12-07"
 
 これで、`.bna` ファイルを {{site.data.keyword.blockchainfull_notm}} Platform にデプロイできます。
 
-1. 前のステップで作成したカードを使用するには、まずビジネス・ネットワークをインストールし、その後開始する必要があります。以下のコマンドを使用して、ビジネス・ネットワークをインストールします。
+1. 前のステップで作成したカードを使用するには、まずビジネス・ネットワークをインストールし、その後開始する必要があります。 以下のコマンドを使用して、ビジネス・ネットワークをインストールします。
 
    ```
    composer network install -c adminCard -a myNetwork.bna

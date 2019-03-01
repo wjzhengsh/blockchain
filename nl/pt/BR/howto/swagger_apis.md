@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-08-31"
+  years: 2018,2019
+lastupdated: "2019-02-08"
 
 ---
 
@@ -13,12 +13,13 @@ lastupdated: "2018-08-31"
 {:pre: .pre}
 
 # Interagindo com a rede usando APIs do Swagger
+{: #ibp-swagger}
 
 
 ***[Esta página é útil? Diga-nos.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 
-O {{site.data.keyword.blockchainfull_notm}} Platform expõe uma série de APIs de REST no Swagger que podem ser usadas para gerenciar os nós, os canais, os peers e os membros de sua rede. Os seus aplicativos podem usar essas APIs para controlar recursos de rede importantes sem usar o monitor de rede.
+O {{site.data.keyword.blockchainfull_notm}} Platform expõe uma série de APIs de REST no Swagger que podem ser usadas para gerenciar os nós, os canais, os peers e os membros de sua rede. Seus aplicativos podem usar essas APIs para controlar recursos de rede importantes sem usar o monitor de rede.
 
 {:shortdesc}
 
@@ -26,8 +27,7 @@ Antes de iniciar, é necessário criar uma instância de serviço do [{{site.dat
 
 
 ## Recuperando credenciais de rede
-
-{: #retrieving-network-credentials}
+{: #ibp-swagger-retrieving-network-credentials}
 
 Entre no Monitor de rede de sua rede de Blockchain e abra a tela "APIs" do navegador esquerdo. É possível ver as suas credenciais de rede para as APIs de REST. Posteriormente, você autorizará as APIs usando os valores da "chave" e do "segredo" exibidos aqui e executará as APIs com o "network_id" como um parâmetro. Clique em **Mostrar segredo** para revelar o valor do campo segredo. Copie os valores dos campos chave, segredo e network_id, que você poderá usar posteriormente na UI do Swagger.
 
@@ -44,6 +44,7 @@ A **Figura 2** mostra como Alternar entre organizações:
 
 
 ## Autorizando APIs do Swagger
+{: #ibp-swagger-authorizing-swagger}
 
 Clique no link **UI do Swagger** na tela "APIs" para abrir a UI do Swagger.  
 <!-- remove this line because the link is different depending on if you are starter or enterprise plan
@@ -61,6 +62,7 @@ A **Figura 3** mostra o processo para autorizar APIs do Swagger:
 
 
 ## Tentando APIs
+{: #ibp-swagger-try-out}
 
 Clique na API de REST que você deseja executar e clique no botão **Tentar**.
 
@@ -84,9 +86,14 @@ A **Figura 6** mostra o corpo de resposta da API, a URL e o comando CURL:
 *Figura 6. Resposta da API*    
 
 ## Dicas de resolução de problemas
+{: #ibp-swagger-troubleshooting}
 
 ### 401 Desautorizado  
-  Assegure-se de que você tenha autorizado a API de REST fornecendo as suas credenciais de rede. Para obter mais informações, veja [Autorizando APIs do Swagger](#authorizing-swagger-apis).
+{: #ibp-swagger-401}
+
+  Assegure-se de que você tenha autorizado a API de REST fornecendo as suas credenciais de rede. Para obter mais informações, veja [Autorizando APIs do Swagger](/docs/services/blockchain/howto/swagger_apis.html#ibp-swagger-authorizing-swagger).
 
 ### 400 Erro: Solicitação inválida
+{: #ibp-swagger-400}
+
   Algumas APIs podem levar um argumento no Corpo da solicitação que age como um filtro para mostrar resultados somente para um período específico. Um fragmento de amostra é fornecido no Corpo, que, se usado, precisa ser editado para especificar o peer ou a lista de peers nos quais você gostaria de filtrar. Para evitar esse erro, edite o fragmento para especificar um peer em sua rede ou remova o fragmento inteiramente.

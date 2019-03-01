@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-12-07"
+lastupdated: "2019-02-08"
 
 ---
 
@@ -12,10 +12,10 @@ lastupdated: "2018-12-07"
 {:screen: .screen}
 {:pre: .pre}
 
-# Gestione della rete piano Starter
+# Utilizzo della rete piano Starter
 {: #operate-starter-plan-network}
 
 
 ***[Questa pagina è utile? Faccelo sapere.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
-Visita l'esercitazione [Utilizzo del Monitoraggio della rete](/docs/services/blockchain/v10_dashboard.html) per ulteriori informazioni su come utilizzare la tua rete piano Starter.
+Visita l'esercitazione [Utilizzo del Monitoraggio della rete](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard) per ulteriori informazioni su come utilizzare la tua rete piano Starter.

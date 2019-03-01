@@ -5,38 +5,40 @@
 IBM Blockchain Platform
 
 	{: .navgroup id="learn"}
-	index.md
-	whats_new.md
-	blockchain_component_overview.md
+	{: .topicgroup}
+	Getting started tutorials
+		index.md
+		get_start_starter_plan.md
+		get_start.md
+		howto/ibp-v2-deploy-iks.md
+		ibp_for_icp_deployment_guide.md
+		howto/remote_peer_aws.md
 
 	{: .topicgroup}
-	IBM Cloud-Pläne
+	About IBM Blockchain Platform
 		starter_plan.md
-		get_start_starter_plan.md
 		enterprise_plan.md
-		get_start.md
-		howto/pricing.md
-		howto/paying_mode.md
+		howto/ibp-console.md
+		ibp-for-icp-about.md
+		howto/remote_peer.md
 
-	ibp-for-icp-about.md
-	howto/remote_peer.md
+	whats_new.md
+	blockchain_component_overview.md
 	needtoknow.md
 	{: .navgroup-end}
 
 	{: .navgroup id="howto"}
 	{: .topicgroup}
-	Smart Contracts, Anwendungen und Unternehmensnetze entwickeln
+	Developing smart contracts and applications
 		howto/develop_chaincode.md
 		vscode-extension.md
 		v10_application.md
-		develop.md
-		develop_install.md
-		develop_starter.md
-		develop_enterprise.md
+
 
 	{: .topicgroup}
-	Starter Plan und Enterprise Plan in IBM Cloud
+	Starter and Enterprise Plan
 		v10_dashboard.md
+		develop_starter_enterprise.md
 		howto/prebuilt_samples.md
 		howto/create_channel.md
 		howto/install_instantiate_chaincode.md
@@ -45,29 +47,39 @@ IBM Blockchain Platform
 		howto/monitor_network.md
 		certificates.md
 		howto/migrate_sp_ep.md
+		howto/pricing.md
+		howto/paying_mode.md
 
 	{: .topicgroup}
-	IBM Blockchain Platform in ICP bereitstellen
+	IBM Blockchain Platform 2.0
+		howto/ibp-console-build-network.md
+		howto/ibp-console-join-network.md
+		howto/ibp-console-smart-contracts.md
+		howto/ibp-console-create-app.md
+		howto/ibp-console-import-nodes.md
+		howto/ibp-console-identities.md
+		howto/ibp-console-organizations.md
+		howto/ibp-console-manage.md
+
+	{: .topicgroup}
+	IBM Blockchain Platform on IBM Cloud Private
 		ibp_for_icp_deployment_guide.md
 		ICP_setup.md
 		howto/helm_install_icp.md
-
+		howto/ibp-console-deploy-icp.md
 
 	{: .topicgroup}
-	Zertifizierungsstellen in ICP
-		[Informationen zu Zertifizierungsstellen](services/blockchain/ibp-for-icp-about.html#ibp-icp-ca)
+	-- Certificate Authorities on IBM Cloud Private
 		howto/CA_deploy_icp.md
 		howto/CA_operate.md
 
 	{: .topicgroup}
-	Anordnungsknoten in ICP
-		[Informationen zu Anordnungsknoten](services/blockchain/ibp-for-icp-about.html#ibp-icp-orderer)
+	-- Ordering services on IBM Cloud Private
 		howto/orderer_deploy_icp.md
 		howto/orderer_operate.md
 
 	{: .topicgroup}
-	Peers in ICP
-		[Informationen zu Peers](services/blockchain/ibp-for-icp-about.html#ibp-icp-peer)
+	-- Peers on IBM Cloud Private
 		howto/peer_deploy_icp.md
 		howto/peer_operate_icp.md
 		howto/peer_deploy_ibp.md
@@ -84,8 +96,6 @@ IBM Blockchain Platform
 	reference/ibp_regions.md
 	reference/videos.md
 	reference/v10_fabric.md
-	reference/hyperledger_composer.md
-	[IBM Blockchain Platform - Entwicklung](https://ibm-blockchain.github.io/develop/)
 	{: .navgroup-end}
 
 	{: .navgroup id="help"}

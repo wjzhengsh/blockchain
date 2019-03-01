@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-12-07"
+  years: 2018, 2019
+lastupdated: "2019-02-08"
 ---
 
 {:new_window: target="_blank"}
@@ -11,33 +11,34 @@ lastupdated: "2018-12-07"
 {:screen: .screen}
 {:pre: .pre}
 
-# Funcionamiento de un clasificador en {{site.data.keyword.cloud_notm}} privado
-{: #orderer-operate}
+# Funcionamiento de un clasificador en {{site.data.keyword.cloud_notm}} Private
+{: #icp-orderer-operate}
 
 ***[¿Le resulta útil esta página? Indíquenos su opinión.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
-Después de instalar el clasificador de la plataforma {{site.data.keyword.blockchainfull}} en ICP, se crea un mapa de configuración que contiene los valores predeterminados de las variables de entorno. A continuación, puede cambiar o añadir variables de entorno para el clasificador con el fin de configurar su comportamiento.
+Después de instalar el clasificador de {{site.data.keyword.blockchainfull}} Platform en {{site.data.keyword.cloud_notm}} Private, se crea un mapa de configuración que contiene los valores predeterminados de las variables de entorno. A continuación, puede cambiar o añadir variables de entorno para el clasificador con el fin de configurar su comportamiento.
 
 Como regla general, los administradores del clasificador se encargan del arranque y el mantenimiento de los clasificadores, pero esto no es necesario en un despliegue SOLO en el que solo existe un clasificador. En un despliegue SOLO, el administrador del clasificador tendrá la responsabilidad de añadir nuevas organizaciones al canal del sistema del clasificador.
 
 ## Requisitos previos
+{: #icp-orderer-operate-prerequisites}
 
-Es necesario completar algunos pasos de requisito previo desde el clúster ICP para trabajar con el clasificador.
+Es necesario completar algunos pasos de requisito previo desde el clúster de {{site.data.keyword.cloud_notm}} Private para trabajar con el clasificador.
 
 **Requisitos previos:**
-- [Configure las CLI](#orderer-kubectl-configure)
-- [Recupere la información de punto final del clasificador](#orderer-endpoint)
-- [Descargue el certificado TLS del clasificador](#orderer-tls)
+- [Configure las CLI](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-kubectl-configure)
+- [Recupere la información de punto final del clasificador](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-orderer-endpoint)
+- [Descargue el certificado TLS del clasificador](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-tls-cert)
 
 A continuación, utilice las instrucciones de este tema para trabajar con el clasificador. Tenga en cuenta que trabajará con el clasificador a través de la línea de mandatos, que requiere obtener el binario de la CLI de igual (`peer`). El binario de la CLI
 `peer` se descarga junto con los demás binarios, como `configtxlator`. Por lo tanto, muchos de los mandatos de este tema comienzan por la palabra "peer". En realidad no utiliza el igual, sino que se trata simplemente del nombre del binario.
 
 ### Configuración de las CLI
-{: #orderer-kubectl-configure}
+{: #icp-orderer-operate-kubectl-configure}
 
-Necesitará utilizar la herramienta de línea de mandatos **kubectl** para conectarse al contenedor de clasificador que se ejecuta en ICP.
+Necesitará utilizar la herramienta de línea de mandatos **kubectl** para conectarse al contenedor de clasificador que se ejecuta en {{site.data.keyword.cloud_notm}} Private.
 
-1. Inicie sesión en la interfaz de usuario del clúster de ICP. Vaya al separador **Herramientas de línea de mandatos** y pulse **CLI de Cloud Private**. Verá las herramientas siguientes, las cuales puede descargar.
+1. Inicie sesión en la interfaz de usuario del clúster de {{site.data.keyword.cloud_notm}} Private. Vaya al separador **Herramientas de línea de mandatos** y pulse **CLI de Cloud Private**. Verá las herramientas siguientes, las cuales puede descargar.
 
    * Instalar la CLI y los plugins de IBM Cloud Private
    * Instalar la CLI de Kubectl
@@ -80,9 +81,9 @@ Necesitará utilizar la herramienta de línea de mandatos **kubectl** para conec
 
   Ahora está listo para utilizar la herramienta **kubectl** para obtener la información de punto final de clasificador.
 
-3. Si lo prefiere, si desea utilizar **Helm**, realice algunos pasos más. Tenga en cuenta que la instalación de Helm es opcional y no es necesario utilizarla en estas instrucciones. No obstante, puede resultar útil para gestionar los releases de Helm y crear sus propios archivados para su despliegue en ICP.
+3. Si lo prefiere, si desea utilizar **Helm**, realice algunos pasos más. Tenga en cuenta que la instalación de Helm es opcional y no es necesario utilizarla en estas instrucciones. No obstante, puede resultar útil para gestionar los releases de Helm y crear sus propios archivados para su despliegue en {{site.data.keyword.cloud_notm}} Private.
 
-  1. Pulse "Instalar Helm" y ejecute el mandato `curl` desde la interfaz de usuario de ICP.
+  1. Pulse "Instalar Helm" y ejecute el mandato `curl` desde la interfaz de usuario de {{site.data.keyword.cloud_notm}} Private.
   2. Desempaquete el archivo `tar` ejecutando el mandato siguiente:
 
     ```
@@ -100,16 +101,16 @@ Necesitará utilizar la herramienta de línea de mandatos **kubectl** para conec
   Puede ejecutar el mandato `helm help` para confirmar que Helm se ha instalado correctamente.
 
 ### Recuperación de la información de punto final de clasificador
-{: #orderer-endpoint}
+{: #icp-orderer-operate-orderer-endpoint}
 
 Debe tener como objetivo el punto final de clasificador para realizar actualizaciones en el canal del sistema del clasificador. Necesitará ser un
 [administrador del clúster ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Acciones y roles de administrador de clúster") para realizar los pasos siguientes:
 
-1. Inicie sesión en la consola de ICP y pulse el icono **Menú** en la esquina superior izquierda.
+1. Inicie sesión en la consola de {{site.data.keyword.cloud_notm}} Private y pulse el icono **Menú** en la esquina superior izquierda.
 2. Pulse **Carga de trabajo** > **Releases de Helm**.
 3. Busque el nombre del release de Helm y abra el panel de detalles del release de Helm.
 4. Desplácese hacia abajo hasta la sección **Notas** en la parte inferior del panel. En la sección **Notas** se incluye un conjunto de mandatos que le ayudarán a trabajar con el despliegue del clasificador.
-5. Si no lo ha hecho aún, siga las instrucciones para configurar la [CLI kubeclt](#orderer-kubectl-configure). Deberá utilizarla para interactuar con el contenedor del clasificador.
+5. Si no lo ha hecho aún, siga las instrucciones para configurar la [CLI kubectl](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-kubectl-configure). Deberá utilizarla para interactuar con el contenedor del clasificador.
 6. En la CLI, ejecute el primer mandato de la nota, que sigue a **1. Obtenga el URL de aplicación ejecutando estos mandatos:** Este mandato imprimirá el URL y el puerto del clasificador, que son similares a los del ejemplo siguiente. Guarde este URL, ya que necesitará utilizarlo en mandatos posteriores para establecer la dirección de proxy y el puerto de nodo externo.
 
   ```
@@ -122,16 +123,16 @@ En este ejemplo, la dirección IP de proxy es `9.30.94.174` y el puerto de nodo 
 **Nota:** si despliega el clasificador detrás de un cortafuegos, necesitará abrir un paso a través para habilitar la red en la plataforma para completar esta tarea.
 
 ### Descarga del certificado TLS del clasificador
-{: #orderer-tls}
+{: #icp-orderer-operate-tls-cert}
 
 Necesita descargar el certificado TLS del clasificador y pasarlo a los mandatos para comunicarse con el clasificador desde un cliente remoto. Necesitará ser un
 [administrador del clúster ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Acciones y roles de administrador de clúster") para realizar los pasos siguientes:
 
-1. Inicie sesión en la consola de ICP y pulse el icono **Menú** en la esquina superior izquierda.
+1. Inicie sesión en la consola de {{site.data.keyword.cloud_notm}} Private y pulse el icono **Menú** en la esquina superior izquierda.
 2. Pulse **Carga de trabajo** > **Releases de Helm**.
 3. Busque el nombre del release de Helm y abra el panel de detalles del release de Helm.
 4. Desplácese hacia abajo hasta la sección **Notas** en la parte inferior del panel. En la sección **Notas** se incluye un conjunto de mandatos que le ayudarán a trabajar con el despliegue del clasificador.
-5. Si no lo ha hecho aún, siga las instrucciones para configurar la [CLI kubeclt](#ca-kubectl-configure). Deberá utilizarla para interactuar con el contenedor del clasificador.
+5. Si no lo ha hecho aún, siga las instrucciones para configurar la [CLI kubectl](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-kubectl-configure). Deberá utilizarla para interactuar con el contenedor del clasificador.
 6. En la CLI, ejecute el tercer mandato de la nota, que sigue a **3. Obtenga el archivo de certificado raíz TLS del clasificador**.  Este mandato guardará el certificado TLS como el archivo `cert.pem` en la máquina local.
 
   **Nota:** antes de ejecutar los mandatos, puede eliminar `app=orderer` tal como se muestra en el mandato siguiente:
@@ -141,7 +142,7 @@ Necesita descargar el certificado TLS del clasificador y pasarlo a los mandatos 
   ```
   {:codeblock}
 
-7. Mueva el certificado generado a una ubicación en la que pueda hacer referencia a él en mandatos posteriores, y cambie su nombre a
+7. Mueva el certificado generado a una ubicación en la que pueda hacer referencia al mismo en mandatos posteriores, y cambie su nombre a
 `orderertls.pem`.
 
   ```
@@ -157,8 +158,8 @@ Cambie al directorio donde se genera la carpeta de MSP del administrador de clas
 `$HOME/fabric-ca-client/orderer-admin/msp` o en `$HOME/fabric-ca-client/peer-admin/msp`
 
 Para poder trabajar con el clasificador, necesita realizar algunas gestiones sobre los certificados de la máquina local. También debe asegurarse de que puede acceder a los certificados TLS desde el clasificador. Para obtener más información sobre los certificados a utilizar, consulte
-[Proveedores de servicios de pertenencia](/docs/services/blockchain/howto/CA_operate.html#msp) en
-[Funcionamiento de una entidad emisora de certificados en {{site.data.keyword.cloud_notm}} privado](/docs/services/blockchain/howto/CA_operate.html).
+[Proveedores de servicios de pertenencia](/docs/services/blockchain/howto/CA_operate.html#ca-operate-msp) en
+[Funcionamiento de una entidad emisora de certificados en {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/howto/CA_operate.html#ca-operate).
 
 1. Mueva el signCert del administrador de clasificador a una carpeta nueva denominada `admincerts`:
 
@@ -169,7 +170,7 @@ Para poder trabajar con el clasificador, necesita realizar algunas gestiones sob
   ```
   {:codeblock}
 
-2. Asegúrese de [descargar el certificado TLS del clasificador](#orderer-tls) y de que puede hacer referencia a él desde la línea de mandatos. Si ha seguido los mandatos de ejemplo de esta documentación, puede encontrar este certificado TLS en el archivo
+2. Asegúrese de [descargar el certificado TLS del clasificador](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-tls-cert) y de que puede hacer referencia al mismo desde la línea de mandatos. Si ha seguido los mandatos de ejemplo de esta documentación, puede encontrar este certificado TLS en el archivo
 `$HOME/fabric-ca-client/orderer-tls/orderertls.pem`.
 
 Puede ejecutar un mandato de árbol (tree) para verificar que se han completado estos pasos. Vaya al directorio donde ha almacenado los certificados. Un mandato tree debe generar un resultado similar a la estructura siguiente:
@@ -215,11 +216,11 @@ tree
 ```
 
 ## Adición de organizaciones al canal del sistema del clasificador
-{: #add-organizations-to-consortium}
+{: #icp-orderer-operate-add-organizations-to-consortium}
 
 **Nota:** si tiene pensado desplegar un igual y conectarlo a una red de Plan inicial o Plan empresarial, puede omitir este paso.
 
-Al desplegar un clasificador utilizando el diagrama de Helm de la plataforma {{site.data.keyword.blockchainfull_notm}} para ICP, se crea automáticamente el bloque de origen con la organización del clasificador como único administrador del canal del sistema. Esto implica que el administrador de la organización del clasificador tiene la capacidad única de añadir organizaciones al consorcio. La política que rige esto, conocida como `mod_policy` para el canal del sistema del clasificador, no se debe cambiar después de que se añadan nuevas organizaciones al canal del sistema del clasificador.
+Al desplegar un clasificador utilizando el diagrama de Helm de {{site.data.keyword.blockchainfull_notm}} Platform para {{site.data.keyword.cloud_notm}} Private, se crea automáticamente el bloque de origen con la organización del clasificador como único administrador del canal del sistema. Esto implica que el administrador de la organización del clasificador tiene la capacidad única de añadir organizaciones al consorcio. La política que rige esto, conocida como `mod_policy` para el canal del sistema del clasificador, no se debe cambiar después de que se añadan nuevas organizaciones al canal del sistema del clasificador.
 
 La adición de organizaciones al canal del sistema del clasificador las convierte en parte del "consorcio", que es la lista de miembros que pueden, de forma predeterminada, crear canales. Ser miembro del consorcio facilita también la adición a un canal mediante el uso de los certificados y la información que aparece en el canal del sistema.
 
@@ -227,20 +228,20 @@ La actualización del canal del sistema del clasificador se realiza a través de
 
 La adición de organizaciones al canal del sistema del clasificador es básicamente el mismo flujo que la actualización de la configuración de cualquier canal para añadir una organización. No obstante, necesita realizar algunos cambios, ya que el canal a actualizar no es un canal de aplicación y el administrador apropiado es el administrador del clasificador en lugar de una organización de igual.
 
-Tenga en cuenta que puede añadir una organización a un canal sin unirse al canal del sistema en primer lugar. Para obtener más información, consulte la [Guía de aprendizaje para añadir una organización a un canal](https://hyperledger-fabric.readthedocs.io/en/release-1.2/channel_update_tutorial.html) en la documentación de Hyperledger Fabric.
+Tenga en cuenta que puede añadir una organización a un canal sin unirse al canal del sistema en primer lugar. Para obtener más información, consulte la [guía de aprendizaje sobre cómo añadir una organización a un canal ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/channel_update_tutorial.html "Adición de una organización a un canal") en la documentación de Hyperledger Fabric.
 
 En la lista siguiente se muestran los pasos y tareas generales que realizarán distintos grupos de organizaciones del consorcio.
 
-1. Es necesario que cada organización que se vaya a unir al consorcio [prepare una definición de organización](/docs/services/blockchain/howto/peer_operate_icp.html#organization-definition).
-2. El administrador de la organización del clasificador [forma el consorcio](#consortium) añadiendo organizaciones al canal del sistema del clasificador.
-3. Cualquier organización del consorcio puede [crear un nuevo canal](/docs/services/blockchain/howto/peer_operate_icp.html#peer-icp-channeltx) mediante la preparación de una transacción de configuración de canal.
+1. Es necesario que cada organización que se vaya a unir al consorcio [prepare una definición de organización](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-organization-definition).
+2. El administrador de la organización del clasificador [forma el consorcio](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-consortium) añadiendo organizaciones al canal del sistema del clasificador.
+3. Cualquier organización del consorcio puede [crear un nuevo canal](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-channeltx) mediante la preparación de una transacción de configuración de canal.
 
 ## Obtención de las herramientas de Fabric
-{: #get-fabric-tools}
+{: #icp-orderer-operate-get-fabric-tools}
 
 Debe descargar las herramientas de Hyperledger Fabric siguientes para actualizar el canal del sistema.
-- [peer](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/peercommand.html), que le permitirá recuperar el bloque de origen y actualizar el canal del sistema.
-- [configtxlator](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/configtxlator.html), que convierte el formato protobuf de una configuración de canal al formato JSON, que se puede leer y actualizar con mayor facilidad.
+- [peer ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/peercommand.html), que le permitirá captar el bloque inicial y actualizar el canal del sistema.
+- [configtxlator ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/configtxlator.html), que convierte el formato protobuf de una configuración de canal al formato JSON, que resulta más fácil de leer y de actualizar.
 
 1. Decida dónde desea almacenar las herramientas y, a continuación, ejecute este mandato:
 
@@ -277,12 +278,12 @@ Debe descargar las herramientas de Hyperledger Fabric siguientes para actualizar
   {:codeblock}
 
 ## Creación de una definición de organización
-{: #org-definition}
+{: #icp-orderer-operate-org-definition}
 
-La **definición** de una organización contiene el nombre de organización (ID de MSP) y los certificados pertinentes. El canal del sistema y los canales de aplicación utilizarán esta definición para incluir su organización en las políticas que controlan la creación, las actualizaciones y la aprobación de la transacción del canal. Cada organización que desee unirse al consorcio deberá completar este paso. Para obtener más información sobre, consulte [Preparación de una definición de organización](/docs/services/blockchain/howto/peer_operate_icp.html#organization-definition).
+La **definición** de una organización contiene el nombre de organización (ID de MSP) y los certificados pertinentes. El canal del sistema y los canales de aplicación utilizarán esta definición para incluir su organización en las políticas que controlan la creación, las actualizaciones y la aprobación de la transacción del canal. Cada organización que desee unirse al consorcio deberá completar este paso. Para obtener más información sobre, consulte [Preparación de una definición de organización](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-organization-definition).
 
 ## Formación del consorcio
-{: #consortium}
+{: #icp-orderer-operate-consortium}
 
 Recupere el flujo de alto nivel para formar un consorcio:
 
@@ -291,7 +292,7 @@ Recupere el flujo de alto nivel para formar un consorcio:
 
 ### Obtención de las definiciones de organización
 
-El clasificador necesita recibir las [definiciones de organización](/docs/services/blockchain/howto/peer_operate_icp.html#organization-definition) de los miembros que deseen unirse al consorcio. Esto debe realizarse en una operación fuera de banda en la que los demás miembros le envían los archivos JSON que incluyen su ID de MSP y su material criptográfico. Como referencia en los mandatos siguientes, supondremos que ha creado una carpeta denominada
+El clasificador necesita recibir las [definiciones de organización](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-organization-definition) de los miembros que deseen unirse al consorcio. Esto debe realizarse en una operación fuera de banda en la que los demás miembros le envían los archivos JSON que incluyen su ID de MSP y su material criptográfico. Como referencia en los mandatos siguientes, supondremos que ha creado una carpeta denominada
 `org-definitions` y que ha colocado todos los archivos pertinentes en dicho directorio.
 
 ### Recuperación del bloque de origen del canal del sistema
@@ -329,8 +330,8 @@ El clasificador necesita recibir las [definiciones de organización](/docs/servi
 
     - Sustituya `<CORE_PEER_MSPCONFIGPATH>` por la vía de acceso a la carpeta de MSP de administrador de la organización del clasificador.
     - Sustituya `<CORE_PEER_TLS_ROOTCERT_FILE>` por la vía de acceso al certificado de CA de TLS.
-    - Sustituya `<PROXY_IP>` por la dirección IP de proxy de la [información de punto final de clasificador](#orderer-endpoint)
-    - Sustituya `<EXTERNAL_NODE_PORT>` por el puerto de nodo externo de la [información de punto final de clasificador](#orderer-endpoint)
+    - Sustituya `<PROXY_IP>` por la dirección IP de proxy de la [información de punto final de clasificador](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-orderer-endpoint)
+    - Sustituya `<EXTERNAL_NODE_PORT>` por el puerto de nodo externo de la [información de punto final de clasificador](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-orderer-endpoint)
 
   Las variables de entorno pueden tener un aspecto similar al del ejemplo siguiente:
 
@@ -369,7 +370,7 @@ El clasificador necesita recibir las [definiciones de organización](/docs/servi
   {:codeblock}
 
   Sustituya `<orderer_TLS_root_cert_file>` por la vía de acceso al archivo `orderertls.pem` que ha creado en este
-[paso](#orderer-tls). Por ejemplo, el mandato puede tener un aspecto similar al del ejemplo siguiente:
+[paso](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-tls-cert). Por ejemplo, el mandato puede tener un aspecto similar al del ejemplo siguiente:
 
   ```
   peer channel fetch config ./configupdate/genesis.pb -o $PROXY:$ORDERER_PORT -c $CHANNEL_NAME --tls  --cafile $HOME/fabric-ca-client/orderer-tls/orderertls.pem
@@ -386,14 +387,13 @@ El clasificador necesita recibir las [definiciones de organización](/docs/servi
   También puede encontrar el bloque de origen (`genesis.pb`) en el sistema de archivos más tarde.
 
 ### Creación de la actualización de canal del sistema
-{: #system-channel-update}
+{: #icp-orderer-operate-system-channel-update}
 
-La [herramienta de Fabric](#get-fabric-tools) `configtxtlator` descargada convierte el formato protobuf de una configuración de canal al formato JSON, y viceversa.
+La [herramienta de Fabric](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-get-fabric-tools) `configtxtlator` descargada convierte el formato protobuf de una configuración de canal al formato JSON, y viceversa.
 
-Estos pasos siguen el flujo general de la guía de aprendizaje de actualización de canal acerca de
-[convertir el bloque al formato JSON]( https://hyperledger-fabric.readthedocs.io/en/release-1.2/channel_update_tutorial.html#convert-the-configuration-to-json-and-trim-it-down). Deberá realizar algunos cambios en los mandatos de la guía de aprendizaje para reflejar el hecho de que está actualizando el canal del sistema del clasificador en lugar de un canal de aplicación. Puede visitar la guía de aprendizaje para obtener más detalles sobre este proceso. En esta sección simplemente se proporcionan los mandatos.
+En estos pasos se sigue el flujo general de la guía de aprendizaje de actualización de canal acerca de [convertir el bloque al formato JSON ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")]( https://hyperledger-fabric.readthedocs.io/en/release-1.2/channel_update_tutorial.html#convert-the-configuration-to-json-and-trim-it-down "Convertir la configuración a JSON y abreviarla"). Deberá realizar algunos cambios en los mandatos de la guía de aprendizaje para reflejar el hecho de que está actualizando el canal del sistema del clasificador en lugar de un canal de aplicación. Puede visitar la guía de aprendizaje para obtener más detalles sobre este proceso. En esta sección simplemente se proporcionan los mandatos.
 
-1. Copie el archivo JSON de la definición de organización de la carpeta donde haya [creado la organización](/docs/services/blockchain/howto/peer_operate_icp.html#organization-definition) a la carpeta `configupdate`. En el mandato de ejemplo que se muestra a continuación, el archivo JSON de la definición de organización es `org1definition.json`:
+1. Copie el archivo JSON de la definición de organización de la carpeta donde haya [creado la organización](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-organization-definition) a la carpeta `configupdate`. En el mandato de ejemplo que se muestra a continuación, el archivo JSON de la definición de organización es `org1definition.json`:
 
    ```
    cp <path_to_config_folder>/org1definition.json $HOME/fabric-ca-client/org-definitions/configupdate
@@ -410,7 +410,7 @@ Estos pasos siguen el flujo general de la guía de aprendizaje de actualización
   {:codeblock}
 
 3. Ejecute el mandato siguiente para añadir el material criptográfico de una organización a la configuración del consorcio. Sustituya
-<NEWORGMSP> por el ID de MSP de organización de la [organización que haya creado](/docs/services/blockchain/howto/peer_operate_icp.html#organization-definition).
+<NEWORGMSP> por el ID de MSP de organización de la [organización que haya creado](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-organization-definition).
 
   ```
   jq -s '.[0] * {"channel_group":{"groups":{"Consortiums":{"groups":{"SampleConsortium":{"groups": {"<NEWORGMSP>":.[1]}}}}}}}' config.json ./orgdefinition.json > modified_config.json
@@ -461,8 +461,8 @@ Antes de realizar estos pasos, asegúrese de que `FABRIC_CFG_PATH`, `$PROXY` y `
 
 ```
 export ORDERER_CA=<path and file name of the orderer TLS CA cert>
-export PROXY = <proxy ip address from [orderer endpoint information](#orderer-endpoint)>
-export ORDERER_PORT = <external node port from [orderer endpoint information](#orderer-endpoint)>
+export PROXY = <proxy ip address from [orderer endpoint information](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-orderer-endpoint)>
+export ORDERER_PORT = <external node port from [orderer endpoint information](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-orderer-endpoint)>
 ```
 {:codeblock}
 
@@ -496,11 +496,9 @@ Este mandato firma la solicitud de actualización y la envía al clasificador de
 Es posible incluir varias definiciones de organización en una única actualización de configuración de canal del sistema del clasificador, pero se recomienda actualizar el canal con una organización al mismo tiempo y comprobar que la actualización se haya realizado correctamente.
 
 ## Visualización de los registros de clasificador
-{: #orderer-view-logs}
+{: #icp-orderer-operate-orderer-view-logs}
 
-Los registros de componentes se pueden visualizar desde la línea de mandatos utilizando los
-[`mandatos de la CLI kubectl`](#ca-kubectl-configure) o a través de
-[Kibana ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.elastic.co/products/kibana "Su ventana en Elastic Search"), que se incluye en el clúster de ICP.
+Los registros de los componentes se pueden consultar desde la línea de mandatos mediante [`mandatos de CLI kubectl`](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-kubectl-configure) o a través de [Kibana ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.elastic.co/products/kibana "Su ventana en Elastic Search"), que está incluido en su clúster de {{site.data.keyword.cloud_notm}} Private.
 
 - Utilice el mandato `kubectl logs` para ver los registros de contenedor dentro del pod. Si no está seguro de cuál es el nombre del pod, ejecute el mandato siguiente para ver la lista de pods.
 
@@ -521,16 +519,16 @@ Los registros de componentes se pueden visualizar desde la línea de mandatos ut
 [Documentación de Kubernetes
 ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs “Getting Started”)
 
-- Como alternativa, puede acceder a los registros utilizando la
-[consola de gestión de clúster de ICP](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/troubleshoot/events.html), que abre los registros en Kibana.
+- Como alternativa, puede acceder a los registros mediante la [consola de gestión de clústeres de {{site.data.keyword.cloud_notm}} Private ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/troubleshoot/events.html), que abre los registros en Kibana.
 
-  **Nota:** al visualizar los registros en Kibana, es posible que reciba la respuesta `No results found`. Esta condición se puede producir si ICP utiliza la dirección IP del nodo trabajador como su nombre de host. Para resolver este problema, elimine el filtro que comienza por `node.hostname.keyword` al principio del panel y los registros se volverán visibles.
+  **Nota:** al visualizar los registros en Kibana, es posible que reciba la respuesta `No results found`. Esta
+condición se puede producir si {{site.data.keyword.cloud_notm}} Private utiliza la dirección IP del nodo trabajador como su nombre de host. Para resolver este problema, elimine el filtro que comienza por `node.hostname.keyword` al principio del panel y los registros se volverán visibles.
 
 ## Resolución de problemas
-{: #orderer-troubleshooting}
+{: #icp-orderer-operate-troubleshooting}
 
 ### **Problema:** el mandato `peer channel update` falla y devuelve un error.
-{: #orderer-peer-channel-update-error}
+{: #icp-orderer-operate-peer-channel-update-error}
 
 Es posible que se reciba el error siguiente al ejecutar un mandato `peer channel update`:
 

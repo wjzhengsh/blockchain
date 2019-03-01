@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-12-07"
+  years: 2017, 2019
+lastupdated: "2019-02-08"
 
 ---
 
@@ -10,65 +10,67 @@ lastupdated: "2018-12-07"
 {:shortdesc: .shortdesc}
 {:screen: .screen}
 {:codeblock: .codeblock}
+{:note: .note}
+{:important: .important}
+{:tip: .tip}
 {:pre: .pre}
 
 # Peers in {{site.data.keyword.cloud_notm}} Private bereitstellen und mit Starter Plan oder Enterprise Plan verbinden
-{: #peer-ibp}
+{: #ibp-peer-deploy}
 
 
 ***[Ist diese Seite hilfreich? Teilen Sie uns Ihre Meinung mit.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
-Die Anweisungen in diesem Abschnitt beschreiben, wie ein Peer von {{site.data.keyword.blockchainfull}} Platform unter {{site.data.keyword.cloud_notm}} Private (ICP) bereitgestellt wird, der mit einem Starter Plan- oder Enterprise Plan-Netz in {{site.data.keyword.cloud_notm}} oder in Ihrer lokalen ICP-Instanz verbunden werden soll.
-{:shortdesc}
+In den folgenden Anweisungen wird beschrieben, wie ein {{site.data.keyword.blockchainfull}} Plattform-Peer auf dem {{site.data.keyword.cloud_notm}} privaten Server bereitgestellt wird und der Peer zum Starter Plan- oder Enterprise Plan-Netz auf {{site.data.keyword.cloud_notm}} oder auf der lokalen {{site.data.keyword.cloud_notm}} Private-Instanz verbunden wird.{:shortdesc}
 
-Lesen Sie vor der Bereitstellung eines Peers den Abschnitt mit [Hinweisen und Einschränkungen](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-considerations).
+Lesen Sie vor der Bereitstellung eines Peers den Abschnitt mit [Hinweisen und Einschränkungen](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-about-considerations).
 
-Im Starter Plan- oder Enterprise Plan-Netz muss Hyperledger Fabric Version 1.1 oder 1.2.1 ausgeführt werden. Ihre Version von Hyperledger Fabric können Sie ermitteln, indem Sie das [Fenster "Netzvorgaben"](/docs/services/blockchain/v10_dashboard.html#network-preferences) im Network Monitor öffnen. 
+Im Starter Plan- oder Enterprise Plan-Netz muss Hyperledger Fabric Version 1.1 oder 1.2.1 ausgeführt werden. Ihre Version von Hyperledger Fabric können Sie ermitteln, indem Sie das [Fenster "Netzvorgaben"](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-network-preferences) im Network Monitor öffnen.
 
 ## Erforderliche Ressourcen
-{: #peer-resources-required}
+{: #ibp-peer-deploy-resources-required}
 
-Stellen Sie sicher, dass Ihr ICP-System die Mindestvoraussetzungen für Hardwareressourcen erfüllt:
+Stellen Sie sicher, dass Ihr {{site.data.keyword.cloud_notm}} Private-System die Mindestvoraussetzungen für Hardwareressourcen erfüllt:
 
 | Komponente | vCPU | RAM | Platte für Datenspeicherung |
 |-----------|------|-----|-----------------------|
 | Peer | 2 | 2 GB | 50 GB mit der Möglichkeit zur Erweiterung |
-| CouchDB für Peer | 2| 2 GB | 50 GB mit der Möglichkeit zur Erweiterung |
+| CouchDB für Peer | 2| 2 GB |50 GB mit der Möglichkeit zur Erweiterung |
 
  **Hinweise:**
- - Eine vCPU (virtuelle CPU) ist ein virtueller Kern, der einer virtuellen Maschine oder einem physischen Prozessorkern zugeordnet wird, wenn der Server nicht für virtuelle Maschinen partitioniert ist. Bei der Festlegung des virtuellen Prozessorkerns (VPC) für Ihre Bereitstellung in ICP müssen Sie bestimmte vCPU-Voraussetzungen berücksichtigen. VPC ist eine Maßeinheit, mit der die Lizenzgebühren für IBM Produkte bestimmt werden. Weitere Informationen zu Szenarios für die Festlegung des VPC finden Sie unter [Virtueller Prozessorkern (VPC) ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://www.ibm.com/support/knowledgecenter/en/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_virtual_processor_core_licenses.html).
+ - Eine vCPU (virtuelle CPU) ist ein virtueller Kern, der einer virtuellen Maschine oder einem physischen Prozessorkern zugeordnet wird, wenn der Server nicht für virtuelle Maschinen partitioniert ist. Bei der Festlegung des virtuellen Prozessorkerns (VPC) für Ihre Bereitstellung in {{site.data.keyword.cloud_notm}} Private müssen Sie bestimmte vCPU-Voraussetzungen berücksichtigen. VPC ist eine Maßeinheit, mit der die Lizenzgebühren für IBM Produkte bestimmt werden. Weitere Informationen zu Szenarios für die Festlegung des VPC finden Sie unter [Virtueller Prozessorkern (VPC) ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://www.ibm.com/support/knowledgecenter/en/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_virtual_processor_core_licenses.html).
  - Diese Mindestressourcenwerte sind für Tests und Versuchsreihen ausreichend. Für eine Umgebung mit einer größeren Menge von Transaktionen muss unbedingt eine ausreichend große Speicherkapazität zugeordnet sein, beispielsweise 250 GB für Ihren Peer. Die zu verwendende Speicherkapazität richtet sich nach der Anzahl der Transaktionen und der Anzahl der Signaturen, die in Ihrem Netz benötigt werden. Falls eine Überlastung des Speichers auf Ihrem Peer droht, müssen Sie einen neuen Peer mit einem größeren Dateisystem bereitstellen und über Ihre anderen Komponenten auf denselben Kanälen synchronisieren lassen.
 
 ## Speicher
-{: #storage}
+{: #ibp-peer-deploy-storage}
 
 Sie müssen den Speicher ermitteln, der von Ihrem Peer benutzt werden soll. Falls Sie die Standardeinstellungen verwenden, erstellt das Helm-Diagramm eine neue Anforderung für einen persistenten Datenträger mit 8 Gi namens `my-data-pvc` für Ihre Peerdaten und einen weitere Anforderung für einen persistenten Datenträger mit 8 Gi namens `statedb-pvc` für Ihre Statusdatenbank.
 
-Wenn Sie nicht mit den Standardspeichereinstellungen arbeiten wollen, dann vergewissern Sie sich, dass während der ICP-Installation eine *neue* Speicherklasse `(storageClass)` eingerichtet wurde. Andernfalls muss der Kubernetes-Systemadministrator eine Speicherklasse erstellen, bevor Sie die Bereitstellung vornehmen können.
+Wenn Sie nicht mit den Standardspeichereinstellungen arbeiten wollen, dann vergewissern Sie sich, dass während der {{site.data.keyword.cloud_notm}} Private-Installation eine *neue* Speicherklasse `(storageClass)` eingerichtet wird. Andernfalls muss der Kubernetes-Systemadministrator eine Speicherklasse erstellen, bevor Sie die Bereitstellung vornehmen können.
 
-Für die Bereitstellung des Peers stehen die Plattformen amd64 oder s390x zur Auswahl. Bitte beachten Sie jedoch, dass die [dynamische Bereitstellung](https://kubernetes.io/docs/concepts/storage/dynamic-provisioning/) in ICP nur für amd64-Knoten verfügbar ist. Wenn in Ihrem Cluster eine Kombination aus s390x- und amd64-Workerknoten eingesetzt wird, kann die dynamische Bereitstellung nicht verwendet werden.
+Für die Bereitstellung des Peers stehen die Plattformen amd64 oder s390x zur Auswahl. Es ist jedoch zu beachten, dass die [dynamische Bereitstellung ![External link icon](../images/external_link.svg "External link icon")](https://kubernetes.io/docs/concepts/storage/dynamic-provisioning/ "Dynamische Bereitstellung") nur für amd64-Knoten in {{site.data.keyword.cloud_notm}} Private verfügbar ist. Wenn in Ihrem Cluster eine Kombination aus s390x- und amd64-Workerknoten eingesetzt wird, kann die dynamische Bereitstellung nicht verwendet werden.
 
-Wenn Sie nicht mit der dynamischen Bereitstellung arbeiten, müssen [persistente Datenträger ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) erstellt und mit Bezeichnungen eingerichtet werden, die zum Optimieren des PVC-Bindungsprozesses von Kubernetes verwendet werden können.
+Wenn Sie nicht mit der dynamischen Bereitstellung arbeiten, müssen [persistente Datenträger![External link icon](../images/external_link.svg "External link icon")](https://kubernetes.io/docs/concepts/storage/persistent-volumes/ "Persistente Datenträger") erstellt und mit Bezeichnungen eingerichtet werden, die zum Optimieren des PVC-Bindungsprozesses (PVC = Persistent Volume Claim) von Kubernetes verwendet werden können.
 
 ## Voraussetzungen für die Bereitstellung eines Peers
-{: #prerequisites-peer-ibp}
+{: #ibp-peer-deploy-prerequisites}
 
-1. Bevor Sie in ICP einen Peer installieren können, müssen Sie [ICP installieren](/docs/services/blockchain/ICP_setup.html) und das [Helm-Diagramm für {{site.data.keyword.blockchainfull_notm}} Platform installieren](/docs/services/blockchain/howto/helm_install_icp.html).
+1. Bevor Sie in {{site.data.keyword.cloud_notm}} Private einen Peer installieren können, müssen Sie [{{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/ICP_setup.html#icp-setup) installieren und [das {{site.data.keyword.blockchainfull_notm}} Platform Helm-Diagramm installieren](/docs/services/blockchain/howto/helm_install_icp.html#helm-install).
 
-2. Falls Sie Community Edition verwenden und dieses Helm-Diagramm in einem ICP-Cluster ohne Internetkonnektivität ausführen wollen, müssen Sie auf einer mit dem Internet verbundenen Maschine Archive erstellen, bevor Sie die Archive im ICP-Cluster installieren können. Weitere Informationen finden Sie unter [Ausgewählte Anwendungen ohne Internetverbindung zu Clustern hinzufügen ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_package_offline.html "Ausgewählte Anwendungen ohne Internetverbindung zu Clustern hinzufügen"){:new_window}. Die Spezifikationsdatei "manifest.yaml" ist im Helm-Diagramm unter "ibm-blockchain-platform-dev/ibm_cloud_pak" zu finden.
+2. Falls Sie Community Edition verwenden und dieses Helm-Diagramm in einem {{site.data.keyword.cloud_notm}} Private-Cluster ohne Internetkonnektivität ausführen wollen, müssen Sie auf einer mit dem Internet verbundenen Maschine Archive erstellen, bevor Sie die Archive im {{site.data.keyword.cloud_notm}} Private-Cluster installieren können. Weitere Informationen finden Sie unter [Ausgewählte Anwendungen ohne Internetverbindung zu Clustern hinzufügen ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_package_offline.html "Ausgewählte Anwendungen ohne Internetverbindung zu Clustern hinzufügen"){:new_window}. Die Spezifikationsdatei "manifest.yaml" ist im Helm-Diagramm unter "ibm-blockchain-platform-dev/ibm_cloud_pak" zu finden.
 
-3. Sie benötigen eine Organisation, die Mitglied eines Starter Plan- oder Enterprise Plan-Netzes in {{site.data.keyword.cloud_notm}} ist. Der Peer nutzt die API-Endpunkte, Hyperledger Fabric-CAs und den Anordnungsservice des {{site.data.keyword.blockchainfull_notm}} Platform-Netzes zum Betrieb. Wenn Sie nicht Mitglied eines Blockchain-Netzes sind, müssen Sie ein Netz erstellen oder einem Netz beitreten. Weitere Informationen hierzu finden Sie im Abschnitt [Netz erstellen](/docs/services/blockchain/get_start.html#creating-a-network) oder [Am Netz teilnehmen](/docs/services/blockchain/get_start.html#joining-a-network).
+3. Sie benötigen eine Organisation, die Mitglied eines Starter Plan- oder Enterprise Plan-Netzes in {{site.data.keyword.cloud_notm}} ist. Der Peer nutzt die API-Endpunkte, Hyperledger Fabric-CAs und den Anordnungsservice des {{site.data.keyword.blockchainfull_notm}} Platform-Netzes zum Betrieb. Wenn Sie nicht Mitglied eines Blockchain-Netzes sind, müssen Sie ein Netz erstellen oder einem Netz beitreten. Weitere Informationen hierzu finden Sie im Abschnitt [Netz erstellen](/docs/services/blockchain/get_start.html#getting-started-with-enterprise-plan-create-network) oder [Am Netz teilnehmen](/docs/services/blockchain/get_start.html#getting-started-with-enterprise-plan-join-nw).
 
-4. Zunächst müssen Sie in ICP eine [Zertifizierungsstelle bereitstellen](/docs/services/blockchain/howto/CA_deploy_icp.html). Diese Zertifizierungsstelle wird als TLS-Zertifizierungsstelle verwendet. Führen Sie die vorausgesetzten Schritte für den [Betrieb einer Zertifizierungsstelle in ICP](/docs/services/blockchain/howto/CA_operate.html#prerequisites) aus, bevor Sie den Peer bereitstellen. Die übrigen Schritte im entsprechenden Abschnitt müssen Sie nicht ausführen.
+4. Zunächst müssen Sie in {{site.data.keyword.cloud_notm}} Private eine [Zertifizierungsstelle bereitstellen](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy). Diese Zertifizierungsstelle wird als TLS-Zertifizierungsstelle verwendet. Führen Sie die [vorausgesetzten Schritte](/docs/services/blockchain/howto/CA_operate.html#ca-operate-prerequisites) für den Betrieb einer Zertifizierungsstelle in {{site.data.keyword.cloud_notm}} Private aus, bevor Sie den Peer bereitstellen. Die übrigen Schritte im entsprechenden Abschnitt müssen Sie nicht ausführen.
 
-5. Rufen Sie den Wert für die Proxy-IP-Adresse des Clusters Ihrer TLS-Zertifizierungsstelle in der ICP-Konsole ab. **Hinweis:** Sie müssen die Berechtigung eines [Clusteradministrators ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Clusteradministratorrolle und -aktionen") besitzen, um auf Ihre Proxy-IP-Adresse zugreifen zu können. Melden Sie sich beim ICP-Cluster an. Klicken Sie im linken Navigationsfenster auf **Plattform** und anschließend auf **Knoten**, um die im Cluster definierten Knoten anzuzeigen. Klicken Sie auf den Knoten mit der Rolle `Proxy` und kopieren Sie den Wert, der in der Tabelle für die `Host-IP` angegeben ist. **Wichtig:** Speichern Sie diesen Wert. Sie benötigen ihn, wenn Sie das Feld für die `Proxy-IP-Adresse` des Helm-Diagramms konfigurieren.
+5. Rufen Sie den Wert für die Proxy-IP-Adresse des Clusters Ihrer TLS-Zertifizierungsstelle in der {{site.data.keyword.cloud_notm}} Private-Konsole ab. **Hinweis:** Sie müssen die Berechtigung eines [Clusteradministrators ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Clusteradministratorrolle und -aktionen") besitzen, um auf Ihre Proxy-IP-Adresse zugreifen zu können. Melden Sie sich beim {{site.data.keyword.cloud_notm}} Private-Cluster an. Klicken Sie im linken Navigationsfenster auf **Plattform** und anschließend auf **Knoten**, um die im Cluster definierten Knoten anzuzeigen. Klicken Sie auf den Knoten mit der Rolle `Proxy` und kopieren Sie den Wert, der in der Tabelle für die `Host-IP` angegeben ist. **Wichtig:** Speichern Sie diesen Wert. Sie benötigen ihn, wenn Sie das Feld für die `Proxy-IP-Adresse` des Helm-Diagramms konfigurieren.
 
-6. Erstellen Sie eine Konfigurationsdatei für den Peer und speichern Sie sie als geheimen Kubernetes-Schlüssel in ICP. Die Schritte zum Erstellen dieser Datei sind im [nächsten Abschnitt](#peer-config-file) beschrieben.
+6. Erstellen Sie eine Konfigurationsdatei für den Peer und speichern Sie sie als geheimen Kubernetes-Schlüssel in {{site.data.keyword.cloud_notm}} Private. Die Schritte zum Erstellen dieser Datei sind im [nächsten Abschnitt](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-config-file) beschrieben.
 
 ## Konfigurationsdatei erstellen
-{: #peer-config-file}
+{: #ibp-peer-deploy-config-file}
 
-Damit Sie einen Peer bereitstellen können, müssen Sie eine JSON-Konfigurationsdatei erstellen, die wichtige Informationen zur Identität des Peers und zur Zertifizierungsstelle in {{site.data.keyword.cloud_notm}} enthält. Anschließend müssen Sie diese Datei während der Konfiguration mithilfe eines [Kubernetes-Objekts für einen geheimen Schlüssel ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://kubernetes.io/docs/concepts/configuration/secret/) an das Helm-Diagramm übergeben. Diese Datei ermöglicht es dem Peer, von der Zertifizierungsstelle in {{site.data.keyword.cloud_notm}} die Zertifikate abzrufen, die für den Beitritt zu einem Starter Plan- oder Enterprise Plan-Netz benötigt werden. Außerdem enthält diese Datei ein Administratorzertifikat, mit dem Sie Ihren Peer als Benutzer mit Administratorberechtigung betreiben können.
+Damit Sie einen Peer bereitstellen können, müssen Sie eine JSON-Konfigurationsdatei erstellen, die wichtige Informationen zur Identität des Peers und zur Zertifizierungsstelle in {{site.data.keyword.cloud_notm}} enthält. Anschließend müssen Sie diese Datei während der Konfiguration mithilfe eines [Kubernetes-Objekts für einen geheimen Schlüssel ![External link icon](../images/external_link.svg "External link icon")](https://kubernetes.io/docs/concepts/configuration/secret/ "Geheimer Schlüssel"). Diese Datei ermöglicht es dem Peer, von der Zertifizierungsstelle in {{site.data.keyword.cloud_notm}} die Zertifikate abzrufen, die für den Beitritt zu einem Starter Plan- oder Enterprise Plan-Netz benötigt werden. Außerdem enthält diese Datei ein Administratorzertifikat, mit dem Sie Ihren Peer als Benutzer mit Administratorberechtigung betreiben können.
 
 Die vorliegenden Anweisungen bieten eine JSON-Vorlage, die Sie bearbeiten und in Ihrem lokalen Dateisystem speichern können. Anschließend werden Sie durch die Vervollständigung der Konfigurationsdatei unter Verwendung der Zertifizierungsstelle geführt.
 
@@ -111,19 +113,19 @@ Kopieren Sie diese gesamte Datei in einen Texteditor, in dem Sie sie bearbeiten 
 
 Zum Vervollständigen der Konfigurationsdatei müssen Sie mehrere Schritte in der Network Monitor-Instanz des Starter Plan- oder Enterprise Plan-Netzes ausführen.
 
-1. [Sie müssen die Endpunktinformationen für die Zertifizierungsstelle Ihres Starter Plan- oder Enterprise Plan-Netzes abrufen](#ibp-ca-endpoint).
-2. [Sie müssen den Peer bei der Zertifizierungsstelle registrieren](#register-peer).
-3. [Sie müssen einen Peeradministrator registrieren](#register-admin), der zum Betrieb des Peers verwendet wird. Falls Sie bereits einen Administrator für die Bereitstellung eines anderen Peers registriert haben, müssen Sie diesen Schritt nicht ausführen.
+1. [Sie müssen die Endpunktinformationen für die Zertifizierungsstelle Ihres Starter Plan- oder Enterprise Plan-Netzes abrufen](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-ibp-ca-endpoint).
+2. [Sie müssen den Peer bei der Zertifizierungsstelle registrieren](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-register-peer).
+3. [Sie müssen einen Peeradministrator registrieren](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-register-admin), der zum Betrieb des Peers verwendet wird. Falls Sie bereits einen Administrator für die Bereitstellung eines anderen Peers registriert haben, müssen Sie diesen Schritt nicht ausführen.
 
-Außerdem müssen Sie einige Schritte mit dem Fabric-CA-Client und Ihrer in ICP bereitgestellten TLS-Zertifizierungsstelle ausführen.
+Außerdem müssen Sie einige Schritte mit dem Fabric-CA-Client und Ihrer in {{site.data.keyword.cloud_notm}} Private bereitgestellten TLS-Zertifizierungsstelle ausführen.
 
-1. Sie müssen mit dem Fabric-CA-Client den [MSP-Ordner des Peeradministrators generieren](#enroll-admin).
-2. [Sie müssen die Endpunktinformationen für Ihre TLS-Zertifizierungsstelle abrufen](#tls-ca-endpoint).
-3. Sie müssen mit dem Fabric-CA-Client den [Peer bei Ihrer TLS-Zertifizierungsstelle registrieren](#tls-register-peer).
+1. Sie müssen mit dem Fabric-CA-Client den [MSP-Ordner des Peeradministrators generieren](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-enroll-admin).
+2. [Sie müssen die Endpunktinformationen für Ihre TLS-Zertifizierungsstelle abrufen](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-tls-ca-endpoint).
+3. Sie müssen mit dem Fabric-CA-Client den [Peer bei Ihrer TLS-Zertifizierungsstelle registrieren](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-tls-register-peer).
 
 
 ### Informationen zur Zertifizierungsstelle für Starter Plan oder Enterprise Plan
-{: #ibp-ca-endpoint}
+{: #ibp-peer-deploy-ibp-ca-endpoint}
 
 Zunächst müssen Sie für die Konfigurationsdatei die Verbindungsinformationen Ihrer Zertifizierungsstelle in {{site.data.keyword.cloud_notm}} angeben. Melden Sie sich bei der Network Monitor-Benutzerschnittstelle für den Starter Plan oder Enterprise Plan an. Klicken Sie in der Anzeige **Übersicht** Ihres Network Monitor auf die Schaltfläche zur **Konfiguration ferner Peers**. Dadurch wird ein Dialogfenster geöffnet, in dem die erforderlichen Informationen zu Ihrer Zertifizierungsstelle enthalten sind.
 
@@ -172,7 +174,7 @@ Fügen Sie die resultierende Zeichenfolge im Feld `"cacert"` unter dem Abschnitt
   ```
 
 ### Peer registrieren
-{: #register-peer}
+{: #ibp-peer-deploy-register-peer}
 
 Damit Ihre Peers an Kanälen teilnehmen sowie Chaincode installieren und instanziieren können, müssen Sie einen Peer zuerst bei Ihrer Zertifizierungsstelle in {{site.data.keyword.cloud_notm}} registrieren. Ihre Peerbereitstellung kann anschließend Zertifikate generieren, die der Peer zur Teilnahme an einem Starter Plan- oder Enterprise Plan-Netz benötigt. Führen Sie die folgenden Schritte aus, um einen Peer mit einer `Eintragungs-ID` und einem `geheimen Eintragungsschlüssel` zu registrieren. Diese beiden Werte werden in die Konfigurationsdatei eingefügt.
 
@@ -195,7 +197,7 @@ Damit Ihre Peers an Kanälen teilnehmen sowie Chaincode installieren und instanz
 
 
 ### Administrator erstellen
-{: #register-admin}
+{: #ibp-peer-deploy-register-admin}
 
 Nachdem Sie die Peeridentität registriert haben, müssen Sie außerdem eine Administratoridentität erstellen, mit der Sie den Peer betreiben. Diese neue Identität müssen Sie zuerst bei Ihrer Zertifizierungsstelle registrieren; anschließend verwenden Sie sie, um einen MSP-Ordner zu generieren. Danach müssen Sie das signCert-Zertifikat der Benutzer mit Administratorberechtigung zur Konfigurationsdatei hinzufügen, wo es während der Bereitstellung zum Administratorzertifikat des Peers wird. Auf diese Weise können Sie die Zertifikate der Administratoridentität beim Betrieb Ihres Blockchain-Netzes verwenden, beispielsweise zum Starten eines neuen Kanals oder zum Installieren von Chaincode auf den Peers.
 
@@ -215,11 +217,11 @@ Für die zu Ihrer Organisation gehörenden Komponenten müssen Sie nur eine einz
   Klicken Sie nach dem Ausfüllen dieser Felder auf **Senden**, um den Administrator zu erstellen. Der erstellte Administrator wird dann in der Tabelle als Identität in Ihrer Organisation aufgelistet.
 
 ### MSP-Ordner für Peeradministrator generieren
-{: #enroll-admin}
+{: #ibp-peer-deploy-enroll-admin}
 
 Nachdem Sie die Administratoridentität registriert haben, müssen Sie den MSP-Ordner und das signCert-Zertifikat des Administrators generieren. Daher müssen Sie einen Eintragungsbefehl (enroll) für die Zertifizierungsstelle Ihres Starter Plan oder Enterprise Plan ausführen.
 
-1. Laden Sie den [Fabric-CA-Client](/docs/services/blockchain/howto/CA_operate.html#fabric-ca-client) herunter, falls Sie dies noch nicht ausgeführt haben.
+1. Laden Sie den [Fabric-CA-Client](/docs/services/blockchain/howto/CA_operate.html#ca-operate-fabric-ca-client) herunter, falls Sie dies noch nicht ausgeführt haben.
 2. Navigieren Sie zu dem Verzeichnis, in dem Sie Ihr Verschlüsselungsmaterial speichern wollen, und erstellen Sie den Ordner, in dem Sie den MSP-Ordner Ihres Peeradministrators speichern wollen.
 
   ```
@@ -243,11 +245,15 @@ Nachdem Sie die Administratoridentität registriert haben, müssen Sie den MSP-O
 
 5. Laden Sie die TLS-Zertifikate von {{site.data.keyword.cloud_notm}} herunter, die dem verwendeten Serviceplan, Standort und Cluster entsprechen. Den Cluster können Sie anhand des Domänennamens in der URL Ihrer Zertifizierungsstelle ermitteln, z. B. `us01.blockchain.ibm.com:31011` oder `us02.blockchain.ibm.com:31011`.
 
-  - TLS-Stammzertifikat für den Starter Plan
-    - US: [us01.blockchain.ibm.com.cert ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://blockchain-certs.mybluemix.net/us01.blockchain.ibm.com.cert "us01.blockchain.ibm.com.cert"); [us02.blockchain.ibm.com.cert ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://blockchain-certs.mybluemix.net/us02.blockchain.ibm.com.cert "us02.blockchain.ibm.com.cert")
-    - UK: [uk01.blockchain.ibm.com.cert ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://blockchain-certs.mybluemix.net/uk01.blockchain.ibm.com.cert "uk01.blockchain.ibm.com.cert"); [uk02.blockchain.ibm.com.cert ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://blockchain-certs.mybluemix.net/uk02.blockchain.ibm.com.cert "uk02.blockchain.ibm.com.cert")
-    - Sydney: [aus01.blockchain.ibm.com.cert ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://blockchain-certs.mybluemix.net/aus01.blockchain.ibm.com.cert "aus01.blockchain.ibm.com.cert"); [aus02.blockchain.ibm.com.cert ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://blockchain-certs.mybluemix.net/aus02.blockchain.ibm.com.cert "aus02.blockchain.ibm.com.cert")
-  - [TLS-Stammzertifikat für den Enterprise Plan ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://blockchain-certs.mybluemix.net/3.secure.blockchain.ibm.com.rootcert)
+  - TLS-Zertifikat für den Starter Plan
+    - US: [us01.blockchain.ibm.com.cert ![External link icon](../images/external_link.svg "External link icon")](https://blockchain-certs.mybluemix.net/us01.blockchain.ibm.com.cert "us01.blockchain.ibm.com.cert"); [us02.blockchain.ibm.com.cert ![External link icon](../images/external_link.svg "External link icon")](https://blockchain-certs.mybluemix.net/us02.blockchain.ibm.com.cert "us02.blockchain.ibm.com.cert");
+    [us03.blockchain.ibm.com.cert ![External link icon](../images/external_link.svg "External link icon")](https://blockchain-certs.mybluemix.net/us03.blockchain.ibm.com.cert "us03.blockchain.ibm.com.cert"); [us04.blockchain.ibm.com.cert ![External link icon](../images/external_link.svg "External link icon")](https://blockchain-certs.mybluemix.net/us04.blockchain.ibm.com.cert "us04.blockchain.ibm.com.cert");
+    [us05.blockchain.ibm.com.cert ![External link icon](../images/external_link.svg "External link icon")](https://blockchain-certs.mybluemix.net/us05.blockchain.ibm.com.cert "us05.blockchain.ibm.com.cert"); [us06.blockchain.ibm.com.cert ![External link icon](../images/external_link.svg "External link icon")](https://blockchain-certs.mybluemix.net/us06.blockchain.ibm.com.cert "us06.blockchain.ibm.com.cert");
+    [us07.blockchain.ibm.com.cert ![External link icon](../images/external_link.svg "External link icon")](https://blockchain-certs.mybluemix.net/us07.blockchain.ibm.com.cert "us07.blockchain.ibm.com.cert"); [us08.blockchain.ibm.com.cert ![External link icon](../images/external_link.svg "External link icon")](https://blockchain-certs.mybluemix.net/us08.blockchain.ibm.com.cert "us08.blockchain.ibm.com.cert")
+    - UK: [uk01.blockchain.ibm.com.cert ![External link icon](../images/external_link.svg "External link icon")](https://blockchain-certs.mybluemix.net/uk01.blockchain.ibm.com.cert "uk01.blockchain.ibm.com.cert"); [uk02.blockchain.ibm.com.cert ![External link icon](../images/external_link.svg "External link icon")](https://blockchain-certs.mybluemix.net/uk02.blockchain.ibm.com.cert "uk02.blockchain.ibm.com.cert");
+    [uk03.blockchain.ibm.com.cert ![External link icon](../images/external_link.svg "External link icon")](https://blockchain-certs.mybluemix.net/uk03.blockchain.ibm.com.cert "uk03.blockchain.ibm.com.cert"); [uk04.blockchain.ibm.com.cert ![External link icon](../images/external_link.svg "External link icon")](https://blockchain-certs.mybluemix.net/uk04.blockchain.ibm.com.cert "uk04.blockchain.ibm.com.cert")
+    - Sydney: [aus01.blockchain.ibm.com.cert ![External link icon](../images/external_link.svg "External link icon")](https://blockchain-certs.mybluemix.net/aus01.blockchain.ibm.com.cert "aus01.blockchain.ibm.com.cert");
+  - [TLS-Zertifikat für den Enterprise Plan ![External link icon](../images/external_link.svg "External link icon")](https://blockchain-certs.mybluemix.net/3.secure.blockchain.ibm.com.rootcert)
 
   Speichern Sie den Inhalt in einem Verzeichnis, unter dem Sie in zukünftigen Befehlen darauf verweisen können.
 
@@ -264,7 +270,7 @@ Nachdem Sie die Administratoridentität registriert haben, müssen Sie den MSP-O
   ```
   {:codeblock}
 
-  Die Variablen `<enroll_id>` und `<enroll_password>` im obigen Befehl stehen für die **ID** und den **geheimen Schlüssel** des Peeradministrators, der [mit Network Monitor registriert wurde](#register-admin). Die Variablen `<ca_name>` und `<ca_url_with_port>` stehen für die Werte der Felder `caName` und `url` aus Ihrem Verbindungsprofil. Lassen Sie die Angabe `http://` am Beginn der URL für die Zertifizierungsstelle weg.
+  Die Variablen `<enroll_id>` und `<enroll_password>` im obigen Befehl stehen für die **ID** und den **geheimen Schlüssel** des Peeradministrators, der [mit Network Monitor registriert wurde](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-register-admin). Die `<ca_name>` und `<ca_url_with_port>` stehen für die Werte der Felder `caName` und `url` aus Ihrem Verbindungsprofil. Lassen Sie die Angabe `http://` am Beginn der URL für die Zertifizierungsstelle weg.
 
   Ein realer Aufruf könnte ähnlich wie im folgenden Beispiel aussehen:
 
@@ -273,7 +279,7 @@ Nachdem Sie die Administratoridentität registriert haben, müssen Sie den MSP-O
   ```
   {:codeblock}
 
-  Nach der erfolgreichen Ausführung dieses Befehls wird ein neuer MSP-Ordner in dem Verzeichnis generiert, das Sie mit `$FABRIC_CA_CLIENT_HOME` angegeben haben. Dieses Verzeichnis enthält die Zertifikate, die Sie zum Betrieb Ihres Peers verwenden. 
+  Nach der erfolgreichen Ausführung dieses Befehls wird ein neuer MSP-Ordner in dem Verzeichnis generiert, das Sie mit `$FABRIC_CA_CLIENT_HOME` angegeben haben. Dieses Verzeichnis enthält die Zertifikate, die Sie zum Betrieb Ihres Peers verwenden.
 
 7. Öffnen Sie im soeben erstellten MSP-Ordner die signCert-Datei des neuen Benutzers und konvertieren Sie sie in das Base64-Format. Die signCert-Datei befindet sich im Ordner `signcerts` des MSP-Verzeichnisses. Falls Sie anhand der Beispielschritte vorgehen, können Sie hierzu die folgenden Befehle verwenden:
 
@@ -288,7 +294,7 @@ Nachdem Sie die Administratoridentität registriert haben, müssen Sie den MSP-O
    ```
    LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tDQpNSUlFbERDQ0EzeWdBd0lCQWdJUUFmMmo2MjdLZGNpSVE0dHlTOCs4a1RBTkJna3Foa2lHOXcwQkFRc0ZBREJoDQpNUXN3Q1FZRFZRUUdFd0pWVXpFVk1CTUdBMVVFQ2hNTVJHbG5hVU5sY25RZ1NXNWpNUmt3RndZRFZRUUxFeEIzDQpkM2N1WkdsbmFXTmxjblF1WTI5dE1TQXdIZ1lEVlFRREV4ZEVhV2RwUTJWeWRDQkhiRzlpWVd3Z1VtOXZkQ0JEDQpRVEFlRncweE16QXpNRGd4TWpBd01EQmFGdzB5TXpBek1EZ3hNakF3TURCYU1FMHhDekFKQmdOVkJBWVRBbFZUDQpNUlV3RXdZRFZRUUtFd3hFYVdkcFEyVnlkQ0JKYm1NeEp6QWxCZ05WQkFNVEhrUnBaMmxEWlhKMElGTklRVElnDQpVMlZqZFhKbElGTmxjblpsY2lC
    ```
- Und nicht so:
+   Und nicht so:
 
    ```
    LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tDQpNSUlFbERDQ0EzeWdBd0lCQWdJUUFmMmo2MjdL
@@ -307,13 +313,13 @@ Nachdem Sie die Administratoridentität registriert haben, müssen Sie den MSP-O
   Fügen Sie diese Zeichenfolge im Feld `"admincerts"` unter dem Abschnitt "component" in der Konfigurationsdatei ein.
 
 ### Informationen zur TLS-Zertifizierungsstelle
-{: #tls-ca-endpoint}
+{: #ibp-peer-deploy-tls-ca-endpoint}
 
-Für die Felder im Abschnitt `"tls"` der Konfigurationsdatei sind Informationen aus der Zertifizierungsstelle erforderlich, die Sie in ICP bereitgestellt haben. Diese Zertifizierungsstelle verwenden Sie als separate TLS-Zertifizierungsstelle, was Ihren Peer stärker schützt. Anhand der folgenden Anweisungen können Sie die relevanten Informationen generieren:
+Für die Felder im Abschnitt `"tls"` der Konfigurationsdatei sind Informationen aus der Zertifizierungsstelle erforderlich, die Sie in {{site.data.keyword.cloud_notm}} Private bereitgestellt haben. Diese Zertifizierungsstelle verwenden Sie als separate TLS-Zertifizierungsstelle, was Ihren Peer stärker schützt. Anhand der folgenden Anweisungen können Sie die relevanten Informationen generieren:
 
-- Die Werte für `"cahost"` und `"caport"` sind die URL und der Port aus der [URL der Zertifizierungsstelle](/docs/services/blockchain/howto/CA_operate.html#ca-url). Lautet beispielsweise die URL Ihrer Zertifizierungsstelle `http://9.30.94.174:30167`, wäre `9.30.94.174` der Wert für `cahost` und `30167` der Wert für `caport`.
-- Der Wert für `"caname"` ist der Name der TLS-Zertifizierungsstelle, die Sie in ICP bereitgestellt haben. Der Name der TLS-Zertifizierungsstelle ist der Wert, den Sie während der Konfiguration der Zertifizierungsstelle im Feld `Name der CA-TLS-Instanz` angegeben haben.
-- Der Wert für `"cacert"` ist das in Base64 codierte TLS-Zertifikat Ihrer Zertifizierungsstelle. Aktualisieren Sie den folgenden Abschnitt mit dem Wert der Befehlsausgabe, wenn Sie das [TLS-Zertifikat der Zertifizierungsstelle](/docs/services/blockchain/howto/CA_operate.html#ca-tls) als Voraussetzung abrufen.
+- Die Werte für `"cahost"` und `"caport"` sind die URL und der Port aus der [URL der Zertifizierungsstelle](/docs/services/blockchain/howto/CA_operate.html#ca-operate-url). Lautet beispielsweise die URL Ihrer Zertifizierungsstelle `http://9.30.94.174:30167`, wäre `9.30.94.174` der Wert für `cahost` und `30167` der Wert für `caport`.
+- Der Wert für `"caname"` ist der Name der TLS-Zertifizierungsstelle, die Sie in {{site.data.keyword.cloud_notm}} Private bereitgestellt haben. Der Name der TLS-Zertifizierungsstelle ist der Wert, den Sie während der Konfiguration der Zertifizierungsstelle im Feld `Name der CA-TLS-Instanz` angegeben haben.
+- Der Wert für `"cacert"` ist das in Base64 codierte TLS-Zertifikat Ihrer Zertifizierungsstelle. Aktualisieren Sie den folgenden Abschnitt mit dem Wert der Befehlsausgabe, wenn Sie das [TLS-Zertifikat der Zertifizierungsstelle](/docs/services/blockchain/howto/CA_operate.html#ca-operate-tls) als Voraussetzung abrufen.
 
   ```
   "catls": {
@@ -329,11 +335,11 @@ Für die Felder im Abschnitt `"tls"` der Konfigurationsdatei sind Informationen 
   ```
 
 ### Peer bei der TLS-Zertifizierungsstelle registrieren
-{: #tls-register-peer}
+{: #ibp-peer-deploy-tls-register-peer}
 
-Sie müssen Ihren Peer mit dem Fabric-CA-Client bei der TLS-Zertifizierungsstelle in ICP registrieren.
+Sie müssen Ihren Peer mit dem Fabric-CA-Client bei der TLS-Zertifizierungsstelle in {{site.data.keyword.cloud_notm}} Private registrieren.
 
-1. Die TLS-Zertifikatsdatei `tls.pem` sollte jetzt im Ordner `$HOME/fabric-ca-client/catls` vorhanden sein. Wenn dies nicht der Fall ist, können Sie das TLS-Zertifikat, das Sie [aus ICP heruntergeladen haben](/docs/services/blockchain/howto/CA-operate.html#ca-tls), in ein Verzeichnis kopieren, in dem Sie in den nachfolgenden Befehlen darauf verweisen können. Stellen Sie sicher, dass Sie als Ausgangsposition das Verzeichnis `$HOME/fabric-ca-client` verwenden.
+1. Die TLS-Zertifikatsdatei `tls.pem` sollte jetzt im Ordner `$HOME/fabric-ca-client/catls` vorhanden sein. Wenn dies nicht der Fall ist, können Sie das TLS-Zertifikat, das Sie [aus {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/howto/CA_operate.html#ca-operate-tls) heruntergeladen haben, in ein Verzeichnis kopieren, in dem Sie in den nachfolgenden Befehlen darauf verweisen können. Stellen Sie sicher, dass Sie als Ausgangsposition das Verzeichnis `$HOME/fabric-ca-client` verwenden.
 
   ```
   cd $HOME/fabric-ca-client
@@ -358,9 +364,9 @@ Sie müssen Ihren Peer mit dem Fabric-CA-Client bei der TLS-Zertifizierungsstell
   ```
   {:codeblock}
 
-  Die Variablen `<enroll_id>` und `<enroll_password>` im Befehl stehen für [den Benutzernamen und das Kennwort des CA-Administrators](/docs/services/blockchain/howto/CA_deploy_icp.html#admin-secret), die Sie beim Bereitstellen der Zertifizierungsstelle an den geheimen Kubernetes-Schlüssel übergeben haben. Fügen Sie die [URL der Zertifizierungsstelle](/docs/services/blockchain/howto/CA_operate.html#ca-url) in `<ca_url_with_port>`. Lassen Sie die Angabe `http://` am Beginn weg. Den Wert für `<tls_ca_name>` haben Sie während der [Konfiguration der Zertifizierungsstelle](/docs/services/blockchain/howto/CA_deploy_icp.html#icp-ca-configuration-parms) angegeben.
+  `<enroll_id>` und `<enroll_password>` im Befehl stehen für [den Benutzernamen und das Kennwort des CA-Administrators](/docs/services/blockchain/CA_deploy.html#ca-deploy-admin-secret), die Sie beim Bereitstellen der Zertifizierungsstelle an den geheimen Kubernetes-Schlüssel übergeben haben. Fügen Sie die [URL der Zertifizierungsstelle](/docs/services/blockchain/howto/CA_operate.html#ca-operate-url) in `<ca_url_with_port>`. Lassen Sie die Angabe `http://` am Beginn weg. Der Wert für `<tls_ca_name>` haben Sie während der [Konfiguration der Zertifizierungsstelle](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-configuration-parms) angegeben.
 
-  Der Wert für `<ca_tls_cert_file>` ist der Dateiname Ihres [TLS-Zertifikats der Zertifizierungsstelle](/docs/services/blockchain/howto/CA_operate.html#ca-tls) mit dem vollständigen Pfad.
+  `<ca_tls_cert_file>` ist der Dateiname Ihres [TLS-Zertifikats der Zertifizierungsstelle](/docs/services/blockchain/howto/CA_operate.html#ca-operate-tls) mit dem vollständigen Pfad.
 
   Ein echter Aufruf könnte wie im folgenden Beispiel aussehen:
 
@@ -369,7 +375,7 @@ Sie müssen Ihren Peer mit dem Fabric-CA-Client bei der TLS-Zertifizierungsstell
   ```
   {:codeblock}
 
-  Nach der Eintragung besitzen Sie die erforderlichen Zertifikate für die Registrierung des Peers bei der TLS-Zertifizierungsstelle. 
+  Nach der Eintragung besitzen Sie die erforderlichen Zertifikate für die Registrierung des Peers bei der TLS-Zertifizierungsstelle.
 
 4. Geben Sie den folgenden Befehl aus, um Ihre Zugehörigkeit und Ihren Organisationsnamen zu ermitteln.
 
@@ -401,7 +407,7 @@ Sie müssen Ihren Peer mit dem Fabric-CA-Client bei der TLS-Zertifizierungsstell
   ```
   {:codeblock}
 
-  Im Feld `--caname` müssen Sie den Namen Ihrer TLS-Zertifizierungsstelle verwenden. Erstellen Sie einen Namen und ein Kennwort für den Peer und ersetzen Sie `name` und `secret` durch diese Werte. **Wichtig:** Notieren Sie sich diese Informationen. Sie müssen die Werte für `name` und `secret` bei `"enrollid"` und `"enrollsecret"` im Abschnitt `"tls"` der Konfigurationsdatei eingeben.
+  Im Feld `--caname` müssen Sie den Namen Ihrer TLS-Zertifizierungsstelle verwenden.  Erstellen Sie einen Namen und ein Kennwort für den Peer und ersetzen Sie `name` und `secret` durch diese Werte. **Wichtig:** Notieren Sie sich diese Informationen. Sie müssen die Werte für `name` und `secret` bei `"enrollid"` und `"enrollsecret"` im Abschnitt `"tls"` der Konfigurationsdatei eingeben.
 
   Ein Beispielbefehl könnte wie folgt aussehen:
 
@@ -474,16 +480,16 @@ tree
 ```
 
 ### Hosts für Zertifikatssignieranforderungen (Certificate Signing Request, CSR)
-{: #csr-hosts}
+{: #ibp-peer-deploy-csr-hosts}
 
 Sie müssen die CSR-Hostnamen angeben, um einen Peer bereitzustellen. Die CSR-Hostnamen beinhalten die Proxy-IP-Adresse des Clusters, in dem Sie die Komponente bereitstellen, sowie den `Service-Host-Namen`, der der Hostname für das Helm-Diagramm ist.
 
 #### Wert der Proxy-IP-Adresse für den Cluster ermitteln
 
-Wenn Sie einen Peer in demselben ICP-Cluster bereitstellen wollen, in dem Sie Ihre TLS-Zertifizierungsstelle bereitgestellt haben, geben Sie dieselbe Proxy-IP ein, die Sie bei der [Konfiguration für Ihre TLS-Zertifizierungsstelle](/docs/services/blockchain/howto/CA_deploy_icp.html#icp-ca-configuration-parms) verwendet haben. Wenn Sie den Peer in einem anderen Cluster bereitstellen wollen, können Sie den Wert für die Proxy-IP-Adresse des Clusters über die ICP-Konsole abrufen. Sie müssen die Rolle eines Clusteradministrators für den ICP-Cluster besitzen, in dem der Peer bereitgestellt werden soll.
+Wenn Sie einen Peer in demselben {{site.data.keyword.cloud_notm}} Private-Cluster bereitstellen wollen, in dem Sie Ihre TLS-Zertifizierungsstelle bereitgestellt haben, geben Sie dieselbe Proxy-IP ein, die Sie bei der [Konfiguration für Ihre TLS-Zertifizierungsstelle](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-configuration-parms) verwendet haben. Wenn Sie den Peer in einem anderen Cluster bereitstellen wollen, können Sie den Wert für die Proxy-IP-Adresse des Clusters über die {{site.data.keyword.cloud_notm}} Private-Konsole abrufen. Sie müssen die Rolle eines Clusteradministrators für den {{site.data.keyword.cloud_notm}} Private-Cluster besitzen, in dem der Peer bereitgestellt werden soll.
 
-1. Melden Sie sich bei der ICP-Konsole an. Klicken Sie im linken Navigationsfenster auf **Plattform** und anschließend auf **Knoten**, um die im Cluster definierten Knoten anzuzeigen. 
-2. Klicken Sie auf den Knoten mit der Rolle `Proxy` und kopieren Sie den Wert, der in der Tabelle für die `Host-IP` angegeben ist. 
+1. Melden Sie sich bei der {{site.data.keyword.cloud_notm}} Private-Konsole an. Klicken Sie im linken Navigationsfenster auf **Plattform** und anschließend auf **Knoten**, um die im Cluster definierten Knoten anzuzeigen.
+2. Klicken Sie auf den Knoten mit der Rolle `Proxy` und kopieren Sie den Wert, der in der Tabelle für die `Host-IP` angegeben ist.
 3. Fügen Sie die `Host-IP` als Wert für  `"hosts"` im nachfolgend gezeigten Abschnitt `"csr"` der Konfigurationsdatei ein:
 
   ```
@@ -493,6 +499,7 @@ Wenn Sie einen Peer in demselben ICP-Cluster bereitstellen wollen, in dem Sie Ih
   ```
 
 #### Service-Host-Namen ermitteln
+{: #ibp-peer-deploy-determine-svc-host-name}
 
 Der `Service-Host-Name` ist der während der Bereitstellung von Ihnen angegebene `Name des Helm-Release`. Hat der Cluster die Proxy-IP-Adresse "9.42.134.44" und der `Name des Helm-Release` den Wert `org1peer1`, müssen Sie Folgendes im Abschnitt `"csr"` der Datei einfügen:
 
@@ -507,6 +514,7 @@ Der `Service-Host-Name` ist der während der Bereitstellung von Ihnen angegebene
 {:codeblock}
 
 ### Konfigurationsdatei vervollständigen
+{: #ibp-peer-deploy-complete-config}
 
 Nachdem Sie alle Schritte ausgeführt haben, sieht Ihre aktualisierte Konfigurationsdatei ähnlich wie im folgenden Beispiel aus:
 
@@ -520,8 +528,8 @@ Nachdem Sie alle Schritte ausgeführt haben, sieht Ihre aktualisierte Konfigurat
 			"catls": {
 				"cacert": "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUVsRENDQTN5Z0F3SUJBZ0lRQWYyajYyN0tkY2lJUTR0eVM4KzhrVEFOQmdrcWhraUc5dzBCQVFzRkFBkOHRiUWsKQ0FVdzdDMjlDNzlGdjFDNXFmUHJtQUVTcmNpSXhwZzBYNDBLUE1icDFaV1ZiZDQ9Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0KCg=="
 			},
-			"enrollid": "peer",
-			"enrollsecret": "peerpw",
+			"enrollid": "peer1",
+			"enrollsecret": "peer1pw",
 			"admincerts": ["LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUNuRENDQWtPZ0F3SUJBZ0lVTXF5VDhUdnlwY3lYR2sxNXRRY3hxa1RpTG9Nd0NnWUlLb1pJemowRUF3SXcKYURFTTlEKaFhTTzRTWjJ2ZHBPL1NQZWtSRUNJQ3hjUmZVSWlkWHFYWGswUGN1OHF2aCtWSkhGeHBLUnQ3dStHZDMzalNSLwotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg=="]
 		},
 		"tls": {
@@ -545,12 +553,12 @@ Nachdem Sie alle Schritte ausgeführt haben, sieht Ihre aktualisierte Konfigurat
 ```
 {:codeblock}
 
-Nachdem Sie diese Datei vollständig ausgefüllt haben, müssen Sie sie im JSON-Format speichern und als geheimen Kubernetes-Schlüssel an Ihre Peerbereitstellung übergeben. Erstellen Sie den geheimen Schlüssel mithilfe der Schritte im [nächsten Abschnitt](#peer-config-file-ibp).
+Nachdem Sie diese Datei vollständig ausgefüllt haben, müssen Sie sie im JSON-Format speichern und als geheimen Kubernetes-Schlüssel an Ihre Peerbereitstellung übergeben. Erstellen Sie den geheimen Schlüssel mithilfe der Schritte im [nächsten Abschnitt](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-config-file-ibp).
 
 ## Geheimen Schlüssel für Konfiguration erstellen
-{: #peer-config-file-ibp}
+{: #ibp-peer-deploy-config-file-ibp}
 
-Mit einem [geheimen Kubernetes-Schlüssel ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://kubernetes.io/docs/concepts/configuration/secret/) können Sie Informationen schützen und gemeinsam nutzen, ohne die Angaben direkt an die Bereitstellung übergeben zu müssen. Nachdem Sie die Konfigurationsdatei gespeichert haben, müssen Sie sie in `Base64` codieren.
+Mit einem [geheimen Kubernetes-Schlüssel ![External link icon](../images/external_link.svg "External link icon")](https://kubernetes.io/docs/concepts/configuration/secret/ "Geheimer Schlüssel") können Sie Informationen schützen und gemeinsam nutzen, ohne die Angaben direkt an die Bereitstellung übergeben zu müssen. Nachdem Sie die Konfigurationsdatei gespeichert haben, müssen Sie sie in `Base64` codieren.
 
 1. Codieren Sie die Konfigurationsdatei im Base64-Format, indem Sie die folgenden Befehle in einem Terminalfenster ausführen:
 
@@ -565,7 +573,7 @@ Mit einem [geheimen Kubernetes-Schlüssel ![Symbol für externen Link](../images
    ```
    LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tDQpNSUlFbERDQ0EzeWdBd0lCQWdJUUFmMmo2MjdLZGNpSVE0dHlTOCs4a1RBTkJna3Foa2lHOXcwQkFRc0ZBREJoDQpNUXN3Q1FZRFZRUUdFd0pWVXpFVk1CTUdBMVVFQ2hNTVJHbG5hVU5sY25RZ1NXNWpNUmt3RndZRFZRUUxFeEIzDQpkM2N1WkdsbmFXTmxjblF1WTI5dE1TQXdIZ1lEVlFRREV4ZEVhV2RwUTJWeWRDQkhiRzlpWVd3Z1VtOXZkQ0JEDQpRVEFlRncweE16QXpNRGd4TWpBd01EQmFGdzB5TXpBek1EZ3hNakF3TURCYU1FMHhDekFKQmdOVkJBWVRBbFZUDQpNUlV3RXdZRFZRUUtFd3hFYVdkcFEyVnlkQ0JKYm1NeEp6QWxCZ05WQkFNVEhrUnBaMmxEWlhKMElGTklRVElnDQpVMlZqZFhKbElGTmxjblpsY2lC
    ```
- Und nicht so:
+   Und nicht so:
 
    ```
    LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tDQpNSUlFbERDQ0EzeWdBd0lCQWdJUUFmMmo2MjdL
@@ -577,7 +585,7 @@ Mit einem [geheimen Kubernetes-Schlüssel ![Symbol für externen Link](../images
 
   Speichern Sie die resultierende Ausgabe für Schritt 4 unten.
 
-2. Melden Sie sich bei der ICP-Konsole an. Klicken Sie im linken Navigationsfenster auf **Konfiguration** und anschließend auf **Geheime Schlüssel**. Klicken Sie auf die Schaltfläche **Geheimen Schlüssel erstellen**, um ein Popup-Fenster zu öffnen, in dem Sie ein neues Objekt für einen geheimen Schlüssel generieren können.
+2. Melden Sie sich bei der {{site.data.keyword.cloud_notm}} Private-Konsole an. Klicken Sie im linken Navigationsfenster auf **Konfiguration** und anschließend auf **Geheime Schlüssel**. Klicken Sie auf die Schaltfläche **Geheimen Schlüssel erstellen**, um ein Popup-Fenster zu öffnen, in dem Sie ein neues Objekt für einen geheimen Schlüssel generieren können.
 
 3. Füllen Sie auf der Registerkarte **Allgemein** die folgenden Felder aus:
   - **Name:** Geben Sie für Ihren geheimen Schlüssel einen Namen ein, der in Ihrem Cluster eindeutig ist. Diesen Namen verwenden Sie beim Bereitstellen Ihres Peers. Der Name darf nur aus Kleinbuchstaben bestehen.  
@@ -601,71 +609,71 @@ Mit einem [geheimen Kubernetes-Schlüssel ![Symbol für externen Link](../images
 
 6. Klicken Sie auf **Erstellen**, um das Objekt für den geheimen Schlüssel zu speichern.
 
-**Hinweis:** Der geheime Schlüssel für die Konfiguration des Peers wird nicht aus dem ICP-Cluster entfernt, wenn Sie das Helm-Release löschen. Wenn Sie Ihren Peer löschen, müssen Sie diesen geheimen Schlüssel ebenfalls löschen.
+**Hinweis:** Der geheime Schlüssel für die Konfiguration des Peers wird nicht aus dem {{site.data.keyword.cloud_notm}} Private-Cluster entfernt, wenn Sie das Helm-Release löschen. Wenn Sie Ihren Peer löschen, müssen Sie diesen geheimen Schlüssel ebenfalls löschen.
 
 ## Konfiguration
-{: #peer-configuration}
+{: #ibp-peer-deploy-peer-configuration}
 
-Nachdem Sie das Objekt für den geheimen Schlüssel der Konfiguration des Peers erstellt haben, können Sie Ihren Peer mit den folgenden Schritten in ICP konfigurieren und installieren. Sie können jeweils nur einen einzigen Peer installieren.
+Nachdem Sie das Objekt für den geheimen Schlüssel der Konfiguration des Peers erstellt haben, können Sie Ihren Peer mit den folgenden Schritten in {{site.data.keyword.cloud_notm}} Private konfigurieren und installieren. Sie können jeweils nur einen einzigen Peer installieren.
 
-1. Melden Sie sich bei der ICP-Konsole an und klicken Sie auf den Link **Katalog** in der oberen rechten Ecke.
+1. Melden Sie sich bei der {{site.data.keyword.cloud_notm}} Private-Konsole an und klicken Sie auf den Link **Katalog** in der oberen rechten Ecke.
 2. Klicken Sie im linken Navigationsfenster auf `Blockchain` und suchen Sie nach der Kachel namens `ibm-blockchain-platform-prod` bzw. `ibm-blockchain-platform-dev`, falls Sie die Community Edition heruntergeladen haben. Klicken Sie auf die Kachel, um sie zu öffnen. Daraufhin wird eine Readme-Datei mit Informationen zur Installation und Konfiguration des Helm-Diagramms angezeigt.
 3. Klicken Sie oben in der Anzeige auf die Registerkarte **Konfiguration** oder klicken Sie in der rechten unteren Ecke der Anzeige auf die Schaltfläche **Konfigurieren**.
-4. Geben Sie die Werte für die [allgemeinen Konfigurationsparameter](#peer-global-parameters) an und akzeptieren Sie die Lizenzvereinbarung.
-5. Öffnen Sie das Twistie `Alle Parameter` und geben Sie den Wert für die [globalen Konfigurationsparameter](#peer-global-parameters) an.
-6. Blättern Sie bis zum Abschnitt **Konfiguration des Peers** vor. Wählen Sie das Kontrollkästchen `Peer installieren` aus und füllen Sie die [Konfigurationseinstellungen](#peer-parameters) für den Peer aus.
+4. Geben Sie die Werte für die [allgemeinen Konfigurationsparameter](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-peer-configuration-parms) an und akzeptieren Sie die Lizenzvereinbarung.
+5. Öffnen Sie das Twistie `Alle Parameter` und geben Sie den Wert für die [globalen Konfigurationsparameter](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-global-parameters) an.
+6. Blättern Sie bis zum Abschnitt **Konfiguration des Peers** vor. Wählen Sie das Kontrollkästchen `Peer installieren` aus und füllen Sie die [Konfigurationseinstellungen](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-peer-parameters) für den Peer aus.
 7. Klicken Sie auf **Installieren**.
 
 ### Konfigurationsparameter
-{: #ibp-peer-configuration-parms}
+{: #ibp-peer-deploy-peer-configuration-parms}
 
 Die folgende Tabelle enthält eine Auflistung der **speziell für die Peerkomponente** konfigurierbaren Parameter von {{site.data.keyword.blockchainfull_notm}} Platform sowie die zugehörigen Standardwerte. Wenn Sie mit den Peer ausprobieren wollen oder diese Komponente zum ersten Mal verwenden, verwenden Sie die Standardwerte für die Datenbank- und Speicherparameter. Blättern Sie zum Abschnitt für die Peerkomponente, wählen Sie das Kontrollkästchen `Peer installieren` aus und geben Sie die zugehörigen Konfigurationsinformationen nur für diese Komponente an. **Obwohl in der Benutzerschnittstelle für das Helm-Diagramm angegeben ist, dass keine weitere Konfiguration erforderlich ist, müssen Sie bestimmte Parameter eingeben, um einen Peer bereitzustellen.**
 
 #### Allgemeine und globale Konfigurationsparameter
-{: #peer-global-parameters}
+{: #ibp-peer-deploy-global-parameters}
 
 |  Parameter     | Beschreibung    | Standardwert  | Erforderlich |
 | --------------|-----------------|-------|------- |
-| `Helm-Releasename`| Der Name Ihres Helm-Release. Er muss mit einem Kleinbuchstaben beginnen und mit einem alphanumerischen Zeichen enden, darf jedoch ausschließlich Bindestriche und alphanumerische Zeichen in Kleinschreibung enthalten. Bei jedem Versuch, eine Komponente zu installieren, müssen Sie einen eindeutigen Namen für das Helm-Release verwenden. **Wichtig:** Dieser Wert muss mit dem Wert übereinstimmen, den Sie zum Generieren des Service-Host-Namens für das Feld "hosts" in Ihrer [JSON-Datei mit dem geheimen Schlüssel](#csr-hosts) verwendet haben. | Nein | Ja  |
+| `Helm-Releasename`| Der Name Ihres Helm-Release. Er muss mit einem Kleinbuchstaben beginnen und mit einem alphanumerischen Zeichen enden, darf jedoch ausschließlich Bindestriche und alphanumerische Zeichen in Kleinschreibung enthalten. Bei jedem Versuch, eine Komponente zu installieren, müssen Sie einen eindeutigen Namen für das Helm-Release verwenden. **Wichtig:** Dieser Wert muss mit dem Wert übereinstimmen, den Sie zum Generieren des Service-Host-Namens für das Feld "hosts" in Ihrer [JSON-Datei mit dem geheimen Schlüssel](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-csr-hosts) verwendet haben. | Nein | Ja  |
 | `Zielnamensbereich`| Wählen Sie den Kubernetes-Namensbereich für die Installation des Helm-Diagramms aus. | Nein | Ja |
-| **Globale Konfiguration**| Diese Parameter gelten für alle Komponenten im Helm-Diagramm. |||
-| `Name des Servicekontos`| Geben Sie den Namen des [Servicekontos ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/) ein, das Sie zur Ausführung des Pods verwenden wollen. | Standardwert | Nein |
+|**Globale Konfiguration**| Diese Parameter gelten für alle Komponenten im Helm-Diagramm.|||
+| `Name des Servicekontos`| Geben Sie den Namen des [Servicekontos ![External link icon](../images/external_link.svg "External link icon")](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/ "Servicekonten für Pods konfigurieren") ein, das Sie für die Ausführung des Pods verwenden wollen. | Standardwert | Nein |
 
 #### Konfigurationsparameter für Peers
-{: #peer-parameters}
+{: #ibp-peer-deploy-peer-parameters}
 
 |  Parameter     | Beschreibung    | Standardwert  | Erforderlich |
 | --------------|-----------------|-------|------- |
 |**Clusterkonfiguration** |**Informationen zur Clusterkonfiguration** | ||
-| `Peer installieren` | Wählen Sie diese Option aus, um einen Peer zu installieren. | Nicht ausgewählt | Ja, falls Sie einen Peer installieren wollen. |
-| `Workerknotenarchitektur für Peer`| Wählen Sie Ihre Cloud-Plattformarchitektur aus (AMD64 oder S390x). | AMD64 | Ja |
+| `Peer installieren` | Wählen Sie diese Option aus, um einen Peer zu installieren.|Nicht ausgewählt | Ja, falls Sie einen Peer installieren wollen. |
+| `Workerknotenarchitektur für Peer`| Wählen Sie Ihre Cloud-Plattformarchitektur aus (AMD64 oder S390x).| AMD64 | Ja |
 | `Image-Repository für Peer`| Die Position des Helm-Diagramms für den Peer. In diesem Feld wird automatisch der installierte Pfad eingetragen. Falls Sie die Community Edition verwenden und kein Zugang zum Internet besteht, sollte dieser Wert mit dem Verzeichnis übereinstimmen, in das Sie das Fabric-Image für den Peer heruntergeladen haben. | ibmcom/ibp-fabric-peer | Ja |
-| `Tag für Docker-Image des Peers`|Der Wert des Tags, der dem Peer-Image zugeordnet ist. | 1.2.1 (wird automatisch mit dem richtigen Wert gefüllt) |Ja|
-| `Peerkonfiguration`| Sie können die Konfiguration des Peers anpassen, indem Sie in diesem Feld eine eigene Konfigurationsdatei `core.yaml` einfügen. Ein Beispiel für eine Datei `core.yaml` finden Sie auf der Seite [`core.yaml` sample config ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://github.com/hyperledger/fabric/blob/release-1.2/sampleconfig/core.yaml) **(nur für fortgeschrittene Benutzer)**. |Nein|Nein|
-| `Geheimer Schlüssel für Peerkonfiguration (erforderlich)`| Der Name des [geheimen Schlüssels für die Peerkonfiguration](#peer-config-secret), den Sie in ICP erstellt haben. |Nein|Ja|
-| `MSP der Organisation (erforderlich)`| Diesen Wert finden Sie in Network Monitor (IBP-Benutzerschnittstelle), indem Sie in der Übersichtsanzeige auf "Konfiguration des fernen Peers" klicken. |Nein|Ja|
-| `Peer-Service-Typ`| Hiermit wird angegeben, ob auf dem Peer [externe Ports zugänglich gemacht werden sollen ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types). Wählen Sie "NodePort" aus, damit die Ports extern zugänglich gemacht werden (empfohlen); wählen Sie "ClusterIP" aus, damit die Ports nicht zugänglich gemacht werden. Die Optionen "LoadBalancer" und "ExternalName" werden in diesem Release nicht unterstützt. | NodePort |Ja|
-| `Statusdatenbank`| Zur Speicherung des Kanalledgers verwendete [Statusdatenbank](/docs/services/blockchain/glossary.html#state-database). Der Peer muss dieselbe Datenbank wie das [Blockchain-Netz](/docs/services/blockchain/v10_dashboard.html#network-preferences) verwenden. | LevelDB | Ja |
-| `Image-Repository für CouchDB`| Gilt nur, wenn CouchDB als Ledgerdatenbank ausgewählt wurde. In diesem Feld wird automatisch der installierte Pfad eingetragen. Falls Sie die Community Edition verwenden und kein Zugang zum Internet besteht, sollte dieser Wert mit dem Verzeichnis übereinstimmen, in das Sie das Fabric-Image für CouchDB heruntergeladen haben. | ibmcom/ibp-fabric-couchdb | Ja |
-| `Tag für Docker-Image von CouchDB`| Gilt nur, wenn CouchDB als Ledgerdatenbank ausgewählt wurde. Der Wert des Tags, der dem CouchDB-Image zugeordnet ist. | Wird automatisch mit dem richtigen Wert gefüllt. | Ja |
+| `Tag für Docker-Image des Peers`|Der Wert des Tags, der dem Peer-Image zugeordnet ist. |1.2.1 (wird automatisch mit dem richtigen Wert gefüllt)|Ja|
+| `Peerkonfiguration`|Sie können die Konfiguration des Peers anpassen, indem Sie in diesem Feld eine eigene Konfigurationsdatei `core.yaml` einfügen. Eine Beispieldatei `core.yaml` finden Sie in der Beispielkonfiguration [`core.yaml` ![External link icon](../images/external_link.svg "External link icon")](https://github.com/hyperledger/fabric/blob/release-1.2/sampleconfig/core.yaml "hyperledger/fabric/core.yaml") **Nur für fortgeschrittene Benutzer**. |Nein|Nein|
+| `Geheimer Schlüssel für Peerkonfiguration (erforderlich)`|Der Name des [geheimen Schlüssels für die Peerkonfiguration](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-config-file-ibp), den Sie in {{site.data.keyword.cloud_notm}} Private erstellt haben. |Nein|Ja|
+|`MSP der Organisation (erforderlich)`| Diesen Wert finden Sie in Network Monitor (Starter Plan- und Enterprise Plan-Benutzerschnittstelle), indem Sie in der Übersichtsanzeige auf "Konfiguration des fernen Peers" klicken. |Nein|Ja|
+|`Peer-Service-Typ`| Hiermit wird angegeben, ob auf dem Peer [externe Ports zugänglich gemacht werden sollen ![External link icon](../images/external_link.svg "External link icon")](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types "Publishing services - service types"). Wählen Sie "NodePort" aus, damit die Ports extern zugänglich gemacht werden (empfohlen); wählen Sie "ClusterIP" aus, damit die Ports nicht zugänglich gemacht werden. Die Optionen "LoadBalancer" und "ExternalName" werden in diesem Release nicht unterstützt. | NodePort |Ja|
+| `Statusdatenbank`| Zur Speicherung des Kanalledgers verwendete [Statusdatenbank](/docs/services/blockchain/glossary.html#glossary-state-database). Der Peer muss dieselbe Datenbank wie das [Blockchain-Netz](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-network-preferences) verwenden. | LevelDB | Ja |
+|`Image-Repository für CouchDB`| Gilt nur, wenn CouchDB als Ledgerdatenbank ausgewählt wurde. In diesem Feld wird automatisch der installierte Pfad eingetragen. Falls Sie die Community Edition verwenden und kein Zugang zum Internet besteht, sollte dieser Wert mit dem Verzeichnis übereinstimmen, in das Sie das Fabric-Image für CouchDB heruntergeladen haben.| ibmcom/ibp-fabric-couchdb | Ja |
+| `Tag für Docker-Image von CouchDB`| Gilt nur, wenn CouchDB als Ledgerdatenbank ausgewählt wurde. Der Wert des Tags, der dem CouchDB-Image zugeordnet ist. | Wird automatisch mit dem richtigen Wert gefüllt.| Ja |
 | `Datenpersistenz für Peer aktiviert`| Aktivieren der Funktionalität zum persistenten Speichern von Daten nach Neustart oder Ausfall des Clusters. Siehe hierzu [Speicher in Kubernetes ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://kubernetes.io/docs/concepts/storage/ "Volumes").  *Wird diese Option inaktiviert, gehen alle Daten bei einem Failover oder Podneustart verloren.* | Aktiviert | Nein |
 | `Dynamische Bereitstellung für Peer verwenden`| Wählen Sie diese Option aus, um die dynamische Bereitstellung für Speicherdatenträger zu aktivieren. | Aktiviert | Nein |
-| `Volume Claim für Peer`| Nur für eine neue Anforderung eines Datenträgers (Volume Claim).  Geben Sie den Namen der neuen Anforderung für persistenten Datenspeicher (Persistent Volume Claim, PVC) ein, die erstellt werden soll. | my-data-pvc | Nein |
+| `Volume Claim für Peer`| Nur für eine neue Anforderung eines Datenträgers (Volume Claim). Geben Sie den Namen der neuen Anforderung für persistenten Datenspeicher (Persistent Volume Claim, PVC) ein, die erstellt werden soll. | my-data-pvc | Nein |
 | `Speicherklassenname für Peer`| Geben Sie einen Speicherklassennamen für den Peer an. | Leer, wenn ein neuer PVC erstellt wird; andernfalls muss die Speicherklasse angegeben werden, die dem vorhandenen PVC zugeordnet ist | Nein |
 | `Vorhandener Volume Claim für Peer`| Angeben des Namens eines vorhandenen Volume Claims. Alle anderen Felder leer lassen. | Nein | Nein |
 | `Selektorkennsatz für Peer`| [Selektorkennsatz ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link") ](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/ "Labels and Selectors") für Ihren PVC.| Nein | Nein |
 | `Selektorwert für Peer`| [Selektorwert ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/ "Labels and Selectors") für Ihren PVC. | Nein | Nein |
 | `Speicherzugriffsmodus für Peer`| Angeben des [Zugriffsmodus ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes "Access Modes") des Speichers für den PVC.  | ReadWriteMany| Nein |
 | `Volume Claim-Größe für Peer`| Die Größe des Volume Claims, die größer als 2Gi sein muss. | 8Gi  | Ja |
-| `Persistent Volume Claim der Statusdatenbank`| Nur für eine neue Anforderung eines Datenträgers (Volume Claim).  Geben Sie den Namen der neuen Anforderung für persistenten Datenspeicher (Persistent Volume Claim, PVC) ein, die erstellt werden soll. | statedb-pvc | Nein |
+| `Persistent Volume Claim der Statusdatenbank`| Nur für eine neue Anforderung eines Datenträgers (Volume Claim). Geben Sie den Namen der neuen Anforderung für persistenten Datenspeicher (Persistent Volume Claim, PVC) ein, die erstellt werden soll. | statedb-pvc | Nein |
 | `Speicherklassenname der Statusdatenbank`| Geben Sie einen Speicherklassennamen für die Statusdatenbank an. | Nein | Nein |
 | `Vorhandener Volume Claim der Statusdatenbank`| Angeben des Namens eines vorhandenen Volume Claims. Alle anderen Felder leer lassen. | Nein | Nein |
-| `Selektorkennsatz für Statusdatenbank`| Der [Selektorkennsatz](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) für den PVC. | Nein | Nein |
+| `Selektorkennsatz für Statusdatenbank`| Der [Selektorkennsatz](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) für den PVC.| Nein | Nein |
 | `Selektorwert für Statusdatenbank`| Der [Selektorwert](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) für den PVC. | Nein | Nein |
 | `Speicherzugriffsmodus für Statusdatenbank`| Angeben des [Zugriffsmodus ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes "Access Modes") des Speichers für den PVC. | ReadWriteMany| Nein |
 | `Volume Claim-Größe der Statusdatenbank`| Wählen Sie die Größe der zu verwendenden Platte aus. | 8Gi | Ja |
 | `Datenpersistenz für CouchDB aktiviert`| Ledgerdaten sind für CouchDB-Container beim Neustart des Containers verfügbar. *Wird diese Option inaktiviert, gehen alle Daten bei einem Failover oder Podneustart verloren.*| Aktiviert | Nein |
-| `Dynamische Bereitstellung für CouchDB verwenden`| Für CouchDB-Container wird dynamischer Speicher von Kubernetes verwendet. | Aktiviert | Nein |
+| `Dynamische Bereitstellung für CouchDB verwenden`| Für CouchDB-Container wird dynamischer Speicher von Kubernetes verwendet.| Aktiviert | Nein |
 | `Peer-CPU-Anforderung` | Mindestanzahl der CPUs, die dem Peer zugeordnet werden soll. | 1 | Ja |
 | `Peer-CPU-Limit` | Maximale Anzahl CPUs, die dem Peer zugeordnet werden soll.| 2 | Ja |
 | `Peer-Speicheranforderung` | Mindestens erforderlicher Speicher, der dem Peer zugeordnet werden soll. | 1Gi | Ja |
@@ -690,7 +698,7 @@ processes. This container has two volume mounts, one for the Peer PVC and the se
 -->
 
 ### Helm-Release mit der Helm-Befehlszeile installieren
-{: #ibp-helm-cli}
+{: #ibp-peer-deploy-helm-cli}
 
 Zur Installation des Helm-Release können Sie alternativ auch die Helm-CLI verwenden. Stellen Sie vor Ausführung des Befehls `helm install` sicher, dass Sie [das Helm-Repository Ihres Clusters zur Helm-CLI-Umgebung hinzugefügt haben ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_int_helm_repo_to_cli.html "Internes Helm-Repository zur Helm-CLI hinzufügen").
 
@@ -720,115 +728,44 @@ helm install --name jnchart2 mycluster/ibm-blockchain-platform \
 Sie können eine neue Datei `yaml` erstellen, indem Sie die Datei `values.yaml` bearbeiten, die in der heruntergeladenen Archivdatei enthalten ist. In dieser Datei befinden sich alle erforderlichen Parameter mit ihren Standardeinstellungen.
 
 ## Peer-Installation überprüfen
-{: #verify-installation-ibp}
+{: #ibp-peer-deploy-verify-installation-ibp}
 
-Nachdem Sie die Konfigurationsparameter ausgefüllt und auf die Schaltfläche **Installieren** geklickt haben, können Sie die Bereitstellung prüfen, indem Sie auf die Schaltfläche **Helm-Release anzeigen** klicken. Wenn die Bereitstellung erfolgreich durchgeführt wurde, sollte der Wert 1 in den Feldern `GEWÜNSCHT`, `DERZEIT`, `AKTUELL` und `VERFÜGBAR` der Tabelle "Bereitstellung" angezeigt werden. Möglicherweise müssen Sie zur Aktualisierung klicken und warten, bis die Tabelle aktualisiert angezeigt wird. Die Tabelle "Bereitstellung" können Sie außerdem aufrufen, indem Sie in der linken oberen Ecke der ICP-Konsole auf das **Menüsymbol** klicken. Klicken Sie in der Menüliste auf **Workloads** und dann auf **Helm-Releases**.
+Nachdem Sie die Konfigurationsparameter ausgefüllt und auf die Schaltfläche **Installieren** geklickt haben, können Sie die Bereitstellung prüfen, indem Sie auf die Schaltfläche **Helm-Release anzeigen** klicken. Wenn die Bereitstellung erfolgreich durchgeführt wurde, sollte der Wert 1 in den Feldern `GEWÜNSCHT`, `DERZEIT`, `AKTUELL` und `VERFÜGBAR` der Tabelle "Bereitstellung" angezeigt werden. Möglicherweise müssen Sie zur Aktualisierung klicken und warten, bis die Tabelle aktualisiert angezeigt wird. Die Tabelle "Bereitstellung" können Sie außerdem aufrufen, indem Sie in der linken oberen Ecke der {{site.data.keyword.cloud_notm}} Private-Konsole auf das **Menüsymbol** klicken. Klicken Sie in der Menüliste auf **Workloads** und dann auf **Helm-Releases**.
 
-Wenn Sie bis zum Abschnitt `Hinweise` vorblättern, finden Sie wichtige Informationen, die Sie zum [Betrieb Ihres Peers](/docs/services/blockchain/howto/peer_operate_ibp.html) verwenden.
-
-<!--
-### Verifying the peer can connect to Starter or Enterprise Plan network
-
-You can run a peer CLI command from inside the peer container to verify that your peer has connected to your network on the {{site.data.keyword.blockchainfull_notm}} Platform. Complete the following instructions to run the `peer channel fetch` command to fetch the genesis block from a channel:
-
-1. If you have not already connected to your ICP cluster, follow these [instructions](/docs/services/blockchain/howto/peer_operate_ibp.html#peer-kubectl-configure) to connect to it and use the cli from inside the peer container.
-
-2. If you deploy your peer behind a firewall, you need to open a passthru to enable the network on the platform to complete a TlS handshake with your peer. You only need to enable a passthru for the Node port bound to port 7051 of your peer. For more information, see [finding your peer endpoint information](/docs/services/blockchain/howto/peer_operate_ibp.html#peer-endpoint).
-
-3. Your organization needs to be added to a channel in the network before you can fetch the genesis block.
-
-  - You can start a new channel for the peer. If you are using IBP Starter or Enterprise Plan, you can automatically include your organization during [channel creation](/docs/services/blockchain/howto/create_channel.html#creating-a-channel).
-
-  - Another member of the blockchain network can also add your organization to an existing channel by using a [channel update](/docs/services/blockchain/howto/create_channel.html#updating-a-channel).
-
-    The peer uploads its signCert during installation, so that you need to only synchronize the certificate to the channel. On the "Channels" screen of the Network Monitor, locate the channel that your organization joined and select **Sync Certificate** from the drop-down list under the **Action** header. This action synchronizes the certificates across all the peers on the channel.
-
-4. You also need to upload the signCert of your peer admin to Starter Plan or Enterprise Plan in order for a remote CLI or application to perform channel operations such as fetching the channel genesis block and instantiating chaincode.
-    1. On your local machine, cat the file `HOME/fabric-ca-client/peer-admin/msp/signcerts/cert.pem` and then copy it to the clipboard.
-    2. Enter the Network Monitor of your network on {{site.data.keyword.blockchainfull_notm}} Platform.
-    3. Click **Members** in the left navigator and click the **Certificates** tab.
-    4. Click the **Add Certificate** button.
-    5. In the **Add certificate** window, give your certificate a name, such as "peer-admin", paste in the certificate you just copied to the clipboard and click **Submit**.
-    6. You will be asked whether you want to restart the peers. Click **Restart**.
-    7. Click **Channels** in the left navigator and locate the channel that the peer will join.
-    8. Click the three dots under the **Actions** header and click **Sync Certificate**. In the **Sync certificate** window, click **Submit**.
-
-5. Retrieve configuration information from your Connection profile available on the "Overview" screen of your Network Monitor. Click **Connection Profile** and then **Download**.
-
-  - Find the orderer URL by searching for **orderers**, which is located under `orderers > url`. Make a note of the URL that begins with the network name. The URL is similar to the following example:
-
-    ```
-    ash-zbc07b.4.secure.blockchain.ibm.com:21239
-    ```
-
-  - Find the name of your organization by searching for **organizations**. This should be the same organization as you use to register your peer. You can find your organization's name together with its associated `mspid`. Make a note of the value of the `mspid`.
-
-6. Run the following commands to set the environment variables in the peer container.
-
-  ```
-  export ORDERER_1=<ORDERER_URL>
-  export CHANNEL=<CHANNEL_NAME>
-  export CC_NAME=<CC_NAME>
-  export ORGID=<ORGANIZATION_MSP_ID>
-  export PEERADDR=<PEER_ADDR>
-  ```
-  {:codeblock}
-
-  Replace the fields with your own information.
-  - Replace `<ORDERER_URL>` with the hostname and port of the orderer from the `creds.json` file.
-  - Replace `<CHANNEL_NAME>` with the name of the channel that the peer joins.
-  - Replace `<CC_NAME>` with any name to refer to your chaincode.
-  - Replace `<ORGANIZATION_MSP_ID>` with the name of the organization from the `creds.json` file.
-  - Replace `<PEER_ADDR>` with `localhost:7051`
-
-  For example:
-
-  ```
-  export ORDERER_1=ash-zbc07b.4.secure.blockchain.ibm.com:21239
-  export CHANNEL=defaultchannel
-  export CC_NAME=mycc
-  export ORGID=org1
-  export PEERADDR=localhost:7051
-  ```
-  {:codeblock}
-
-7. Run the following peer CLI command to fetch the genesis block of the channel.
-
-  ```
-  CORE_PEER_TLS_ROOTCERT_FILE=/mnt/certs/tls/cacert.pem CORE_PEER_TLS_ENABLED=true CORE_PEER_ADDRESS=${PEERADDR} CORE_PEER_LOCALMSPID=${ORGID} CORE_PEER_MSPCONFIGPATH=/mnt/crypto/peer/peer/msp/ GOPATH=/ peer channel fetch 0 -o ${ORDERER_1} -c ${CHANNEL} --cafile /mnt/certs/tls/cacert.pem --tls
-  ```
-  {:codeblock}
-
-  **Note:** It is possible that when you run any of these CLI commands, you might experience the following warning that can be safely ignored.
-
-  ```
-  [msp] getPemMaterialFromDir -> WARN 001 Failed reading file
-  /mnt/crypto/peer/peer/msp/intermediatecerts/<intermediate cert name>.pem: no pem content for file /mnt/crypto/peer/peer/msp/intermediatecerts/<intermediate cert name>.pem
-  ```
-
-  Verify that the command worked successfully and that genesis block is added to your peer container by running the following command:
-
-  ```
-  ls *.block
-  ```
-  {:codeblock}
-
-  You know that the genesis block is added successfully when you see something that is similar to the following example:
-
-  ```
-  defaultchannel_0.block
-  ```
-
-  Successfully fetching the genesis block indicates that your peer can connect to your Starter or Enterprise Plan network.
-  You still need to join the peer to the channel and install chaincode. See [operating your peer](/docs/services/blockchain/howto/peer_operate_ibp.html) for more information.
-
--->
+Wenn Sie bis zum Abschnitt `Hinweise` vorblättern, finden Sie wichtige Informationen, die Sie zum [Betrieb Ihres Peers](/docs/services/blockchain/howto/peer_operate_ibp.html#ibp-peer-operate) verwenden.
 
 ## Protokolle des Peers anzeigen
-{: #peer-ibp-view-logs}
+{: #ibp-peer-deploy-view-logs}
 
-Komponentenprotokolle können über die Befehlszeile mit den [`Befehlen der CLI "kubectl"`](/docs/services/blockchain/howto/peer_operate_ibp.html#peer-kubectl-configure) oder über [Kibana ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://www.elastic.co/products/kibana "Your Window into the Elastic Search") angezeigt werden, das in Ihrem ICP-Cluster enthalten ist. Weitere Informationen enthalten die [Anweisungen für den Zugriff auf die Protokolle](/docs/services/blockchain/howto/peer_operate_ibp.html#peer-ibp-view-logs).
+Komponentenprotokolle können über die Befehlszeile mit den [`Befehlen der CLI "kubectl"`](/docs/services/blockchain/howto/peer_operate_ibp.html#ibp-peer-operate-kubectl-configure) oder über [Kibana ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://www.elastic.co/products/kibana "Your Window into the Elastic Search") angezeigt werden, das in Ihrem {{site.data.keyword.cloud_notm}} Private-Cluster enthalten ist. Weitere Informationen enthalten die [Anweisungen für den Zugriff auf die Protokolle](/docs/services/blockchain/howto/peer_operate_ibp.html#ibp-peer-operate-view-logs).
 
 ## Nächste Schritte
+{: #ibp-peer-deploy-whats-next}
 
-Nachdem Sie den Peer bereitgestellt haben, müssen Sie verschiedene operative Schritte ausführen, bevor Sie Transaktionen an das Blockchain-Netz übergeben und das verteilte Ledger aus dem Blockchain-Netz lesen können. Weitere Informationen finden Sie unter [Peers mit Starter Plan oder Enterprise Plan betreiben](/docs/services/blockchain/howto/peer_operate_ibp.html).
+Nachdem Sie den Peer bereitgestellt haben, müssen Sie verschiedene operative Schritte ausführen, bevor Sie Transaktionen an das Blockchain-Netz übergeben und das verteilte Ledger aus dem Blockchain-Netz lesen können. Weitere Informationen finden Sie unter [Peers mit Starter Plan oder Enterprise Plan betreiben](/docs/services/blockchain/howto/peer_operate_ibp.html#ibp-peer-operate).
+
+
+## Fehlerbehebung
+{: #ibp-peer-deploy-troubleshooting}
+
+### **Problem:** Fehler bei der URL der Zertifizierungsstelle, wenn der Befehl `enroll` ausgeführt wird.
+{: #ibp-peer-deploy-ca-enroll-error}
+
+Der Befehl "enroll" im Fabric-CA-Client kann fehlschlagen, wenn die Eintragungs-URL, der Parameterwert `-u`, ein Sonderzeichen enthält. Beispiel: Der folgende Befehl mit der Eintragungs-ID und dem Kennwort `admin:C25A06287!0`
+
+```
+./fabric-ca-client enroll -u https://admin:C25A06287!0@ash-zbc07c.4.secure.blockchain.ibm.com:21241 --tls.certfiles $HOME/fabric-ca-remote/cert.pem --caname PeerOrg1CA
+```
+
+schlägt fehl und führt zu folgendem Fehler:
+
+```
+!pw@9.12.19.115: event not found
+```
+
+### **Lösung:**
+Sie müssen entweder das Sonderzeichen codieren oder die URL in die Hochkommas einschließen. Beispiel: `!` wird zu `%21` oder der Befehl sieht wie folgt aus:
+
+```
+./fabric-ca-client enroll -u 'https://admin:C25A06287!0@ash-zbc07c.4.secure.blockchain.ibm.com:21241' --tls.certfiles $HOME/fabric-ca-remote/cert.pem --caname PeerOrg1CA
+```

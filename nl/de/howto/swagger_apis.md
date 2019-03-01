@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-08-31"
+  years: 2018,2019
+lastupdated: "2019-02-08"
 
 ---
 
@@ -13,6 +13,7 @@ lastupdated: "2018-08-31"
 {:pre: .pre}
 
 # Über Swagger-APIs mit dem Netz interagieren
+{: #ibp-swagger}
 
 
 ***[Ist diese Seite hilfreich? Teilen Sie uns Ihre Meinung mit.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
@@ -26,8 +27,7 @@ Bevor Sie beginnen, müssen Sie eine [{{site.data.keyword.blockchain}} Platform-
 
 
 ## Netzberechtigungsnachweise abrufen
-
-{: #retrieving-network-credentials}
+{: #ibp-swagger-retrieving-network-credentials}
 
 Wechseln Sie in den Network Monitor Ihres Blockchain-Netzes und öffnen Sie die Anzeige "APIs" im Navigator auf der linken Seite. Ihre Netzberechtigungsnachweise für die REST-APIs werden angezeigt. Später berechtigen Sie die APIs, indem Sie die hier angezeigten Werte des Schlüssels ("key") und des geheimen Schlüssels ("secret") verwenden und die APIs mit dem Parameter "network_id" (Netz-ID) ausführen. Klicken Sie auf **Geheimen Schlüssel anzeigen**, um den Wert des Felds für den geheimen Schlüssel ("secret") sichtbar zu machen. Kopieren Sie die Werte der Felder für Schlüssel, geheimen Schlüssel und Netz-ID, die Sie später in der Swagger-Benutzerschnittstelle verwenden können.
 
@@ -44,6 +44,7 @@ Wenn Sie den Starter Plan verwenden, ist es möglich, im Network Monitor zwische
 
 
 ## Swagger-APIs berechtigen
+{: #ibp-swagger-authorizing-swagger}
 
 Klicken Sie auf den Link für die **Swagger-Benutzerschnittstelle (UI)** in der Anzeige "APIs", um die Swagger-Benutzerschnittstelle zu öffnen.  
 <!-- remove this line because the link is different depending on if you are starter or enterprise plan
@@ -61,6 +62,7 @@ In **Abbildung 3** wird die Autorisierung von Swagger-APIs dargestellt:
 
 
 ## APIs ausprobieren
+{: #ibp-swagger-try-out}
 
 Klicken Sie auf die REST-API, die Sie ausführen möchten, und klicken Sie auf die Schaltfläche für das **Ausprobieren**.
 
@@ -84,9 +86,14 @@ In **Abbildung 6** sind der Hauptteil der API-Antwort, die URL und der cURL-Befe
 *Abbildung 6. API-Antwort*    
 
 ## Tipps zur Fehlerbehebung
+{: #ibp-swagger-troubleshooting}
 
 ### 401 Keine Berechtigung  
-  Stellen Sie sicher, dass Sie die REST-API durch Bereitstellen Ihrer Netzberechtigungsnachweise berechtigt haben. Weitere Informationen finden Sie unter [Swagger-APIs berechtigen](#authorizing-swagger-apis).
+{: #ibp-swagger-401}
+
+  Stellen Sie sicher, dass Sie die REST-API durch Bereitstellen Ihrer Netzberechtigungsnachweise berechtigt haben. Weitere Informationen finden Sie unter [Swagger-APIs berechtigen](/docs/services/blockchain/howto/swagger_apis.html#ibp-swagger-authorizing-swagger).
 
 ### 400 Fehler: Falsche Anforderung
+{: #ibp-swagger-400}
+
   Einige APIs akzeptieren möglicherweise ein Argument im Hauptteil (Body) der Anforderung, das als Filter für die Anzeige von Ergebnissen nur für einen bestimmten Peer verwendet wird. Ein Beispielausschnitt wird im Hauptteil bereitgestellt. Wenn dieser Ausschnitt verwendet wird, muss er bearbeitet werden, um den Peer bzw. die Liste von Peers anzugeben, nach denen Sie filtern möchten. Zur Vermeidung dieses Fehlers bearbeiten Sie entweder den Ausschnitt, um einen Peer in Ihrem Netz anzugeben, oder Sie entfernen den Ausschnitt völlig.

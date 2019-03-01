@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-12-07"
+  years: 2018, 2019
+lastupdated: "2019-02-08"
 ---
 
 {:new_window: target="_blank"}
@@ -12,31 +12,32 @@ lastupdated: "2018-12-07"
 {:pre: .pre}
 
 # Anordnungsknoten in {{site.data.keyword.cloud_notm}} Private betreiben
-{: #orderer-operate}
+{: #icp-orderer-operate}
 
 ***[Ist diese Seite hilfreich? Teilen Sie uns Ihre Meinung mit.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
-Nachdem Sie den Anordnungsknoten für {{site.data.keyword.blockchainfull}} Platform in ICP installiert haben, wird eine Konfigurationsübersicht mit Standardeinstellungen für Umgebungsvariablen erstellt. Danach können Sie Umgebungsvariablen für den Anordnungsknoten ändern oder hinzufügen, um sein Verhalten anzupassen.
+Nachdem Sie den Anordnungsknoten für {{site.data.keyword.blockchainfull}} Platform in {{site.data.keyword.cloud_notm}} Private installiert haben, wird eine Konfigurationsübersicht mit Standardeinstellungen für Umgebungsvariablen erstellt. Danach können Sie Umgebungsvariablen für den Anordnungsknoten ändern oder hinzufügen, um sein Verhalten anzupassen.
 
 Administratoren von Anordnungsknoten sind generell für das Bootstrapping und die Wartung von Anordnungsknoten zuständig. In einer SOLO-Bereitstellung, bei der es nur einen einzigen Anordnungsknoten gibt, ist dies jedoch nicht erforderlich. Bei einer SOLO-Bereitstellung ist der Administrator des Anordnungsknotens dafür zuständig, neue Organisationen zum Systemkanal des Anordnungsknotens hinzuzufügen.
 
 ## Voraussetzungen
+{: #icp-orderer-operate-prerequisites}
 
-Sie müssen einige vorausgesetzte Schritte über den ICP-Cluster ausführen, um Ihren Anordnungsknoten betreiben zu können.
+Sie müssen einige vorausgesetzte Schritte über den {{site.data.keyword.cloud_notm}} Private-Cluster ausführen, um Ihren Anordnungsknoten betreiben zu können.
 
 **Voraussetzungen:**
-- [CLIs konfigurieren](#orderer-kubectl-configure)
-- [Endpunktinformationen für den Anordnungsknoten abrufen](#orderer-endpoint)
-- [TLS-Zertifikat des Anordnungsknotens herunterladen](#orderer-tls)
+- [CLIs konfigurieren](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-kubectl-configure)
+- [Endpunktinformationen für den Anordnungsknoten abrufen](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-orderer-endpoint)
+- [TLS-Zertifikat des Anordnungsknotens herunterladen](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-tls-cert)
 
 Anschließend können Sie Ihren Anordnungsknoten mithilfe der Anweisungen in diesem Abschnitt betreiben. Bitte beachten Sie, dass der Anordnungsknoten über die Befehlszeile betrieben wird, was einen Abruf der Binärdatei für die CLI `peer` erforderlich macht. Die Binärdatei für die CLI `peer` wird zusammen mit den anderen Binärdateien heruntergeladen, z. B. `configtxlator`. Daher beginnen viele Befehle in diesem Abschnitt mit dem Wort "peer". Dies bedeutet nicht, dass der Peer verwendet wird, sondern ist lediglich der Name der Binärdatei.
 
 ### CLIs konfigurieren
-{: #orderer-kubectl-configure}
+{: #icp-orderer-operate-kubectl-configure}
 
-Sie müssen mit dem Befehlszeilentool **kubectl** eine Verbindung zu dem in ICP ausgeführten Container für den Anordnungsknoten herstellen.
+Sie müssen mit dem Befehlszeilentool **kubectl** eine Verbindung zu dem in {{site.data.keyword.cloud_notm}} Private ausgeführten Container für den Anordnungsknoten herstellen.
 
-1. Melden Sie sich bei der Benutzerschnittstelle Ihres ICP-Clusters an. Navigieren Sie zur Registerkarte **Befehlszeilentools** und klicken Sie auf **Cloud Private-CLI**. Daraufhin werden die folgenden Tools angezeigt, die Sie herunterladen können.
+1. Melden Sie sich bei der Benutzerschnittstelle Ihres {{site.data.keyword.cloud_notm}} Private-Clusters an. Navigieren Sie zur Registerkarte **Befehlszeilentools** und klicken Sie auf **Cloud Private-CLI**. Daraufhin werden die folgenden Tools angezeigt, die Sie herunterladen können.
 
    * IBM Cloud Private-CLI und Plug-ins installieren
    * CLI "kubectl" installieren
@@ -77,9 +78,9 @@ Sie müssen mit dem Befehlszeilentool **kubectl** eine Verbindung zu dem in ICP 
 
   Nun können Sie das Tool **kubectl** verwenden, um die Endpunktinformationen für den Anordnungsknoten abzurufen.
 
-3. Falls Sie **Helm** verwenden wollen, führen Sie optional ein paar weitere Schritte aus. Bitte beachten Sie, dass die Installation von Helm optional ist und Helm in den vorliegenden Anweisungen nicht verwendet werden muss. Es kann jedoch zur Verwaltung Ihrer Helm-Releases und zur Erstellung eigener Archive für die Bereitstellung in ICP von Nutzen sein.
+3. Falls Sie **Helm** verwenden wollen, führen Sie optional ein paar weitere Schritte aus. Bitte beachten Sie, dass die Installation von Helm optional ist und Helm in den vorliegenden Anweisungen nicht verwendet werden muss. Es kann jedoch zur Verwaltung Ihrer Helm-Releases und zur Erstellung eigener Archive für die Bereitstellung in {{site.data.keyword.cloud_notm}} Private von Nutzen sein.
 
-  1. Klicken Sie auf "Helm installieren" und führen Sie den Befehl `curl` über die ICP-Benutzerschnittstelle aus.
+  1. Klicken Sie auf "Helm installieren" und führen Sie den Befehl `curl` über die {{site.data.keyword.cloud_notm}} Private-Benutzerschnittstelle aus.
   2. Entpacken Sie die Datei `tar` mit dem folgenden Befehl:
 
     ```
@@ -97,15 +98,15 @@ Sie müssen mit dem Befehlszeilentool **kubectl** eine Verbindung zu dem in ICP 
   Mit dem Befehl `helm help` können Sie sich vergewissern, dass Helm erfolgreich installiert wurde.
 
 ### Endpunktinformationen des Anordnungsknotens abrufen
-{: #orderer-endpoint}
+{: #icp-orderer-operate-orderer-endpoint}
 
 Um Aktualisierungen am Systemkanal des Anordnungsknotens vorzunehmen, müssen Sie den Endpunkt des Anordnungsknotens als Ziel angeben. Sie müssen die Berechtigung eines [Clusteradministrators ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Clusteradministratorrolle und -aktionen") besitzen, um die folgenden Schritte ausführen zu können:
 
-1. Melden Sie sich bei der ICP-Konsole an und klicken Sie auf das **Menüsymbol** in der linken oberen Ecke.
-2. Klicken Sie auf **Workload** > **Helm-Releases**. 
+1. Melden Sie sich bei der {{site.data.keyword.cloud_notm}} Private-Konsole an und klicken Sie auf das **Menüsymbol** in der linken oberen Ecke.
+2. Klicken Sie auf **Workload** > **Helm-Releases**.
 3. Suchen Sie nach dem Namen Ihres Helm-Release und öffnen Sie die Anzeige mit den Details des Helm-Release.
 4. Blättern Sie bis zum Abschnitt **Hinweise** vor, der sich am Ende der Anzeige befindet. Der Abschnitt **Hinweise** enthält eine Reihe von Befehlen, die Sie beim Betrieb der Bereitstellung Ihres Anordnungsknotens unterstützen.
-5. Befolgen Sie, sofern noch nicht geschehen, die Anweisungen zum Konfigurieren der [CLI "kubectl"](#orderer-kubectl-configure). Sie benötigen sie, um mit dem Container für Anordnungsknoten zu interagieren.
+5. Befolgen Sie, sofern noch nicht geschehen, die Anweisungen zum Konfigurieren der [CLI "kubectl"](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-kubectl-configure). Sie benötigen sie, um mit dem Container für Anordnungsknoten zu interagieren.
 6. Führen Sie in der CLI den ersten Befehl in den Hinweisen aus, der nach **1. Rufen Sie die Anwendungs-URL mit den folgenden Befehlen ab:** angegeben ist. Dieser Befehl gibt die URL und den Port für den Anordnungsknoten aus, der ähnlich wie im folgenden Beispiel lautet. Speichern Sie diese URL; Sie benötigen sie in späteren Befehlen, um die Proxy-Adresse und den externen Knotenport festzulegen.
 
   ```
@@ -117,16 +118,16 @@ In diesem Beispiel ist `9.30.94.174` die Proxy-IP-Adresse; der externe Knotenpor
 **Hinweis:** Wenn Sie Ihren Anordnungsknoten hinter einer Firewall bereitstellen, müssen Sie einen Durchgriff öffnen, damit das Netz auf der Plattform diese Task ausführen kann.
 
 ### TLS-Zertifikat des Anordnungsknotens herunterladen
-{: #orderer-tls}
+{: #icp-orderer-operate-tls-cert}
 
 Sie müssen das TLS-Zertifikat Ihres Anordnungsknotens herunterladen und es an Ihre Befehlen übergeben, damit Sie von einem fernen Client aus mit Ihrem Anordnungsknoten kommunizieren können. Sie müssen die Berechtigung eines [Clusteradministrators ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Clusteradministratorrolle und -aktionen") besitzen, um die folgenden Schritte ausführen zu können:
 
-1. Melden Sie sich bei der ICP-Konsole an und klicken Sie auf das **Menüsymbol** in der linken oberen Ecke.
-2. Klicken Sie auf **Workload** > **Helm-Releases**. 
+1. Melden Sie sich bei der {{site.data.keyword.cloud_notm}} Private-Konsole an und klicken Sie auf das **Menüsymbol** in der linken oberen Ecke.
+2. Klicken Sie auf **Workload** > **Helm-Releases**.
 3. Suchen Sie nach dem Namen Ihres Helm-Release und öffnen Sie die Anzeige mit den Details des Helm-Release.
 4. Blättern Sie bis zum Abschnitt **Hinweise** vor, der sich am Ende der Anzeige befindet. Der Abschnitt **Hinweise** enthält eine Reihe von Befehlen, die Sie beim Betrieb der Bereitstellung Ihres Anordnungsknotens unterstützen.
-5. Befolgen Sie, sofern noch nicht geschehen, die Anweisungen zum Konfigurieren der [CLI "kubectl"](#ca-kubectl-configure). Sie benötigen sie, um mit dem Container für Anordnungsknoten zu interagieren.
-6. Führen Sie in der CLI den dritten Befehl im Hinweis aus, der auf **3. TLS-Stammzertifikatdatei für Anordnungsknoten abrufen:** folgt. Mit diesem Befehl wird das TLS-Zertifikat als Datei `cert.pem` auf Ihrer lokalen Maschine gespeichert.
+5. Befolgen Sie, sofern noch nicht geschehen, die Anweisungen zum Konfigurieren der [CLI "kubectl"](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-kubectl-configure). Sie benötigen sie, um mit dem Container für Anordnungsknoten zu interagieren.
+6. Führen Sie in der CLI den dritten Befehl im Hinweis aus, der auf **3. TLS-Stammzertifikatdatei für Anordnungsknoten abrufen:** folgt.  Mit diesem Befehl wird das TLS-Zertifikat als Datei `cert.pem` auf Ihrer lokalen Maschine gespeichert.
 
   **Hinweis:** Vor der Ausführung der Befehle können Sie `app=orderer` wie im nachfolgenden Befehl gezeigt entfernen:
 
@@ -148,7 +149,7 @@ Sie müssen das TLS-Zertifikat Ihres Anordnungsknotens herunterladen und es an I
 
 Wechseln Sie in das Verzeichnis, in dem der MSP-Ordner für den Administrator des Anordnungsknotens generiert wurde. Abhängig davon, wie Sie die Beispielschritte in dieser Dokumentation befolgt haben oder wie viele Komponenten Sie bereitstellen, finden Sie den MSP-Ordner unter `$HOME/fabric-ca-client/orderer-admin/msp` oder `$HOME/fabric-ca-client/peer-admin/msp`.
 
-Bevor Sie den Anordnungsknoten betreiben können, müssen Sie einige Management-Tasks für die Zertifikate auf Ihrer lokalen Maschine ausführen. Außerdem müssen Sie sicherstellen, dass Sie vom Anordnungsknoten aus auf die TLS-Zertifikate zugreifen können. Weitere Angaben über die zu verwendenden Zertifikate enthält der Abschnitt [Membership Service Providers (MSPs)](/docs/services/blockchain/howto/CA_operate.html#msp) unter [Zertifizierungsstelle in {{site.data.keyword.cloud_notm}} Private betreiben](/docs/services/blockchain/howto/CA_operate.html).
+Bevor Sie den Anordnungsknoten betreiben können, müssen Sie einige Management-Tasks für die Zertifikate auf Ihrer lokalen Maschine ausführen. Außerdem müssen Sie sicherstellen, dass Sie vom Anordnungsknoten aus auf die TLS-Zertifikate zugreifen können. Weitere Angaben über die zu verwendenden Zertifikate enthält der Abschnitt [Membership Service Providers (MSPs)](/docs/services/blockchain/howto/CA_operate.html#ca-operate-msp) unter [Zertifizierungsstelle in {{site.data.keyword.cloud_notm}} Private betreiben](/docs/services/blockchain/howto/CA_operate.html#ca-operate).
 
 1. Versetzen Sie das signCert-Zertifikat für den Administrator des Anordnungsknotens in einen neuen Ordner namens `admincerts`:
 
@@ -159,7 +160,7 @@ Bevor Sie den Anordnungsknoten betreiben können, müssen Sie einige Management-
   ```
   {:codeblock}
 
-2. Stellen Sie sicher, dass Sie das [TLS-Zertifikat des Anordnungsknotens heruntergeladen](#orderer-tls) haben und in der Befehlszeile darauf verweisen können. Wenn Sie die Beispielbefehle in dieser Dokumentation befolgt haben, befindet sich das TLS-Zertifikat in der Datei `$HOME/fabric-ca-client/orderer-tls/orderertls.pem`.
+2. Stellen Sie sicher, dass Sie das [TLS-Zertifikat des Anordnungsknotens heruntergeladen](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-tls-cert) haben und in der Befehlszeile darauf verweisen können. Wenn Sie die Beispielbefehle in dieser Dokumentation befolgt haben, befindet sich das TLS-Zertifikat in der Datei `$HOME/fabric-ca-client/orderer-tls/orderertls.pem`.
 
 Durch einen Befehl "tree" können Sie prüfen, ob Sie diese Schritte ausgeführt haben. Navigieren Sie zu dem Verzeichnis, in dem Sie Ihre Zertifikate gespeichert haben. Der Befehl "tree" sollte ein Ergebnis ähnlich der folgenden Struktur generieren:
 ```
@@ -204,11 +205,11 @@ tree
 ```
 
 ## Organisationen zum Systemkanal des Anordnungsknotens hinzufügen
-{: #add-organizations-to-consortium}
+{: #icp-orderer-operate-add-organizations-to-consortium}
 
 **Hinweise:** Falls Sie einen Peer bereitstellen und mit einem Starter Plan- oder Enterprise Plan-Netz verbinden wollen, können Sie diesen Schritt überspringen.
 
-Wenn Sie einen Anordnungsknoten mithilfe des Helm-Diagramms für {{site.data.keyword.blockchainfull_notm}} Platform for ICP bereitstellen, wird der Genesis-Block automatisch erstellt und enthält die Organisation des Anordnungsknotens als einzigen Administrator für den Systemkanal. Dies bedeutet, dass ausschließlich der Administrator für die Organisation des Anordnungsknotens in der Lage ist, Organisationen zum Konsortium hinzuzufügen. Die Richtlinie, die dies steuert, ist unter dem Namen `mod_policy` für den Systemkanal des Anordnungsknotens bekannt und sollte nicht geändert werden, nachdem neue Organisationen zum Systemkanal des Anordnungsknotens hinzugefügt wurden.
+Wenn Sie einen Anordnungsknoten mithilfe des Helm-Diagramms für {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private bereitstellen, wird der Genesis-Block automatisch erstellt und enthält die Organisation des Anordnungsknotens als einzigen Administrator für den Systemkanal. Dies bedeutet, dass ausschließlich der Administrator für die Organisation des Anordnungsknotens in der Lage ist, Organisationen zum Konsortium hinzuzufügen. Die Richtlinie, die dies steuert, ist unter dem Namen `mod_policy` für den Systemkanal des Anordnungsknotens bekannt und sollte nicht geändert werden, nachdem neue Organisationen zum Systemkanal des Anordnungsknotens hinzugefügt wurden.
 
 Durch das Hinzufügen von Organisationen zum Systemkanal des Anordnungsknotens werden diese zu einem Teil des so genannten "Konsortiums", also der Liste der Mitglieder, die standardmäßig Kanäle erstellen können. Ein Mitglied des Konsortiums kann unter Verwendung der Zertifikate und Informationen, die im Systemkanal aufgeführt sind, außerdem einfach zu einem Kanal hinzugefügt werden.
 
@@ -216,20 +217,20 @@ Die Aktualisierung des Systemkanals des Anordnungsknotens wird durch Transaktion
 
 Das Hinzufügen von Organisationen zum Systemkanal des Anordnungsknotens folgt im Wesentlichen demselben Ablauf wie das Aktualisieren der Konfiguration eines beliebigen Kanals zum Hinzufügen einer Organisation. Sie müssen jedoch einige wenige Änderungen vornehmen, da der zu aktualisierende Kanal kein Anwendungskanal und der relevante Administrator der Administrator des Anordnungsknotens und nicht einer Peerorganisation ist.
 
-Sie können übrigens eine Organisation zu einem Kanal hinzufügen, ohne zuvor dem Systemkanal beitreten zu müssen. Weitere Informationen enthält das Lernprogramm [Adding an Org to a Channel Tutorial](https://hyperledger-fabric.readthedocs.io/en/release-1.2/channel_update_tutorial.html) in der Dokumentation von Hyperledger Fabric.
+Sie können übrigens eine Organisation zu einem Kanal hinzufügen, ohne zuvor dem Systemkanal beitreten zu müssen. Weitere Informationen finden Sie in der Dokumentation zu Hyperledger Fabric im Lernprogramm [Adding an Org to a Channel Tutorial ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/channel_update_tutorial.html "Adding an org to a channel") .
 
 In der folgenden Liste sind die allgemeinen Schritte angegeben; ausgeführt werden die Tasks durch unterschiedliche Gruppen von Organisationen in Ihrem Konsortium.
 
-1. Jede Organisation, die dem Konsortium beitreten soll, muss eine [Organisationsdefinition vorbereiten](/docs/services/blockchain/howto/peer_operate_icp.html#organization-definition).
-2. Der Administrator für die Organisation des Anordnungsknotens muss das Konsortium [gründen](#consortium), indem er Organisationen zum Systemkanal des Anordnungsknotens hinzufügt.
-3. Jede Organisation im Konsortium kann einen [neuen Kanal erstellen](/docs/services/blockchain/howto/peer_operate_icp.html#peer-icp-channeltx), indem sie eine Transaktion für die Kanalkonfiguration vorbereitet.
+1. Jede Organisation, die dem Konsortium beitreten soll, muss eine [Organisationsdefinition vorbereiten](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-organization-definition).
+2. Der Administrator für die Organisation des Anordnungsknotens muss das Konsortium [gründen](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-consortium), indem er Organisationen zum Systemkanal des Anordnungsknotens hinzufügt.
+3. Jede Organisation im Konsortium kann einen [neuen Kanal erstellen](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-channeltx), indem sie eine Transaktion für die Kanalkonfiguration vorbereitet.
 
 ## Fabric-Tools abrufen
-{: #get-fabric-tools}
+{: #icp-orderer-operate-get-fabric-tools}
 
 Zum Aktualisieren des Systemkanals müsssen Sie die folgenden Tools von Hyperledger Fabric herunterladen.
-- [peer](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/peercommand.html): Mit diesem Tool können Sie den Genesis-Block abrufen und den Systemkanal aktualisieren.
-- [configtxlator](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/configtxlator.html): Dieses Tool setzt das Protobuf-Format einer Kanalkonfiguration in das JSON-Format um, das einfacher zu lesen und zu aktualisieren ist.
+- [peer ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/peercommand.html): Damit können Sie den Genesis-Block abrufen und den Systemkanal aktualisieren.
+- [configtxlator ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/configtxlator.html): Dieses Tool setzt das Protobuf-Format einer Kanalkonfiguration in das JSON-Format um, das einfacher zu lesen und zu aktualisieren ist.
 
 1. Legen Sie fest, wo Sie die Tools speichern wollen, und führen Sie dann den folgenden Befehl aus:
 
@@ -266,12 +267,12 @@ Zum Aktualisieren des Systemkanals müsssen Sie die folgenden Tools von Hyperled
   {:codeblock}
 
 ## Organisationsdefinition erstellen
-{: #org-definition}
+{: #icp-orderer-operate-org-definition}
 
-Die **Definition** einer Organisation enthält den Organisationsnamen (MSP-ID) und die entsprechenden Zertifikate. Der Systemkanal und die Anwendungskanäle verwenden diese Definition, um Ihre Organisation in die Richtlinien aufzunehmen, die Erstellung, Aktualisierungen und Transaktionsbewilligung von Kanälen steuern. Dieser Schritt muss von jeder Organisation ausgeführt werden, die Mitglied eines Konsortiums werden möchte. Weitere Informationen finden Sie unter [Organisationsdefinition vorbereiten](/docs/services/blockchain/howto/peer_operate_icp.html#organization-definition).
+Die **Definition** einer Organisation enthält den Organisationsnamen (MSP-ID) und die entsprechenden Zertifikate. Der Systemkanal und die Anwendungskanäle verwenden diese Definition, um Ihre Organisation in die Richtlinien aufzunehmen, die Erstellung, Aktualisierungen und Transaktionsbewilligung von Kanälen steuern. Dieser Schritt muss von jeder Organisation ausgeführt werden, die Mitglied eines Konsortiums werden möchte. Weitere Informationen finden Sie unter [Organisationsdefinition vorbereiten](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-organization-definition).
 
 ## Konsortium gründen
-{: #consortium}
+{: #icp-orderer-operate-consortium}
 
 Die Gründung eines Konsortiums vollzieht sich allgemein wie folgt:
 
@@ -280,7 +281,7 @@ Die Gründung eines Konsortiums vollzieht sich allgemein wie folgt:
 
 ### Organisationsdefinitionen abrufen
 
-Der Anordnungsknoten muss die [Organisationsdefinitionen](/docs/services/blockchain/howto/peer_operate_icp.html#organization-definition) von Mitgliedern empfangen, die dem Konsortium beitreten wollen. Dies muss in einer externen Operation mit anderen Mitgliedern erfolgen, von denen die JSON-Dateien gesendet werden, die deren MSP-ID und Verschlüsselungsmaterial enthalten. In den nachfolgenden Befehlen wird davon ausgegangen, dass Sie einen Ordner namens `org-definitions` erstellt und alle relevanten Dateien in diesem Verzeichnis abgelegt haben.
+Der Anordnungsknoten muss die [Organisationsdefinitionen](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-organization-definition) von Mitgliedern empfangen, die dem Konsortium beitreten wollen. Dies muss in einer externen Operation mit anderen Mitgliedern erfolgen, von denen die JSON-Dateien gesendet werden, die deren MSP-ID und Verschlüsselungsmaterial enthalten. In den nachfolgenden Befehlen wird davon ausgegangen, dass Sie einen Ordner namens `org-definitions` erstellt und alle relevanten Dateien in diesem Verzeichnis abgelegt haben.
 
 ### Genesis-Block des Systemkanals abrufen
 
@@ -317,8 +318,8 @@ Der Anordnungsknoten muss die [Organisationsdefinitionen](/docs/services/blockch
 
     - Ersetzen Sie `<CORE_PEER_MSPCONFIGPATH>` durch den Pfad zum MSP-Ordner des Administrators für die Organisation des Anordnungsknotens.
     - Ersetzen Sie `<CORE_PEER_TLS_ROOTCERT_FILE>` durch den Pfad zum TLS-Zertifikat der Zertifizierungsstelle.
-    - Ersetzen Sie `<PROXY_IP>` durch die Proxy-IP-Adresse aus den [Endpunktinformationen des Anordnungsknotens](#orderer-endpoint).
-    - Ersetzen Sie `<EXTERNAL_NODE_PORT>` durch den externen Knotenport aus den [Endpunktinformationen des Anordnungsknotens](#orderer-endpoint).
+    - Ersetzen Sie `<PROXY_IP>` durch die Proxy-IP-Adresse aus den [Endpunktinformationen des Anordnungsknotens](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-orderer-endpoint).
+    - Ersetzen Sie `<EXTERNAL_NODE_PORT>` durch den externen Knotenport aus den [Endpunktinformationen des Anordnungsknotens](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-orderer-endpoint).
 
   Ihre Umgebungsvariablen könnten wie im folgenden Beispiel aussehen:
 
@@ -354,7 +355,7 @@ Der Anordnungsknoten muss die [Organisationsdefinitionen](/docs/services/blockch
   ```
   {:codeblock}
 
-  Ersetzen Sie `<orderer_TLS_root_cert_file>` durch den Pfad zur Datei `orderertls.pem`, die Sie in [diesem Schritt](#orderer-tls) erstellt haben. Ihr Befehl könnte beispielsweise wie folgt lauten:
+  Ersetzen Sie `<orderer_TLS_root_cert_file>` durch den Pfad zur Datei `orderertls.pem`, die Sie in [diesem Schritt](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-tls-cert) erstellt haben. Ihr Befehl könnte beispielsweise wie folgt lauten:
 
   ```
   peer channel fetch config ./configupdate/genesis.pb -o $PROXY:$ORDERER_PORT -c $CHANNEL_NAME --tls  --cafile $HOME/fabric-ca-client/orderer-tls/orderertls.pem
@@ -371,13 +372,13 @@ Der Anordnungsknoten muss die [Organisationsdefinitionen](/docs/services/blockch
   Den Block `genesis.pb` finden Sie anschließend auch in Ihrem Dateisystem.
 
 ### Aktualisierung des Systemkanals erstellen
-{: #system-channel-update}
+{: #icp-orderer-operate-system-channel-update}
 
-Das heruntergeladene [Fabric-Tool](#get-fabric-tools) `configtxtlator` setzt das Protobuf-Format einer Kanalkonfiguration in das JSON-Format um (und umgekehrt).
+Das heruntergeladene [Fabric-Tool](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-get-fabric-tools) `configtxtlator` setzt das Protobuf-Format einer Kanalkonfiguration in das JSON-Format um (und umgekehrt).
 
-Die nachstehenden Schritte folgen dem allgemeinen Ablauf des Lernprogramms für die Kanalaktualisierung, um den [Genesis-Block in das JSON-Format zu konvertieren]( https://hyperledger-fabric.readthedocs.io/en/release-1.2/channel_update_tutorial.html#convert-the-configuration-to-json-and-trim-it-down). Sie müssen einige Änderungen an den Befehlen im Lernprogramm vornehmen, um die Tatsache zu berücksichtigen, dass Sie den Kanal des Anordnungsknotens und nicht einen Anwendungskanal aktualisieren. Weitere Details zu diesem Prozess können Sie dem Lernprogramm entnehmen. Im vorliegenden Abschnitt sind lediglich die von Ihnen auszuführenden Befehle angegeben.
+Diese Schritte folgen dem allgemeinen Ablauf des Lernprogramms zur Kanalaktualisierung zum [Konvertieren des Genesis-Blocks in das JSON-Format ![External link icon](../images/external_link.svg "External link icon")]( https://hyperledger-fabric.readthedocs.io/en/release-1.2/channel_update_tutorial.html#convert-the-configuration-to-json-and-trim-it-down "Convert the Configuration to JSON and Trim It Down"). Sie müssen einige Änderungen an den Befehlen im Lernprogramm vornehmen, um die Tatsache zu berücksichtigen, dass Sie den Kanal des Anordnungsknotens und nicht einen Anwendungskanal aktualisieren. Weitere Details zu diesem Prozess können Sie dem Lernprogramm entnehmen. Im vorliegenden Abschnitt sind lediglich die von Ihnen auszuführenden Befehle angegeben.
 
-1. Kopieren Sie die JSON-Datei mit der Organisationsdefinition aus dem Ordner, in dem Sie [Ihre Organisation erstellt haben](/docs/services/blockchain/howto/peer_operate_icp.html#organization-definition), in den Ordner `configupdate`. Im folgenden Beispielbefehl heißt die JSON-Datei mit der Organisationsdefinition `org1definition.json`:
+1. Kopieren Sie die JSON-Datei mit der Organisationsdefinition aus dem Ordner, in dem Sie [Ihre Organisation erstellt haben](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-organization-definition), in den Ordner `configupdate`. Im folgenden Beispielbefehl heißt die JSON-Datei mit der Organisationsdefinition `org1definition.json`:
 
    ```
    cp <path_to_config_folder>/org1definition.json $HOME/fabric-ca-client/org-definitions/configupdate
@@ -393,7 +394,7 @@ Die nachstehenden Schritte folgen dem allgemeinen Ablauf des Lernprogramms für 
   ```
   {:codeblock}
 
-3. Führen Sie den folgenden Befehl aus, um das Verschlüsselungsmaterial einer Organisation zur Konfiguration des Konsortiums hinzuzufügen. Ersetzen Sie < NEWORGMSP> durch die MSP-ID der [Organisation, die Sie erstellt haben](/docs/services/blockchain/howto/peer_operate_icp.html#organization-definition).
+3. Führen Sie den folgenden Befehl aus, um das Verschlüsselungsmaterial einer Organisation zur Konfiguration des Konsortiums hinzuzufügen. Ersetzen Sie < NEWORGMSP> durch die MSP-ID der [Organisation, die Sie erstellt haben](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-organization-definition).
 
   ```
   jq -s '.[0] * {"channel_group":{"groups":{"Consortiums":{"groups":{"SampleConsortium":{"groups": {"<NEWORGMSP>":.[1]}}}}}}}' config.json ./orgdefinition.json > modified_config.json
@@ -443,8 +444,8 @@ Stellen Sie vor Ausführung der folgenden Schritte sicher, dass `FABRIC_CFG_PATH
 
 ```
 export ORDERER_CA=<path and file name of the orderer TLS CA cert>
-export PROXY = <proxy ip address from [orderer endpoint information](#orderer-endpoint)>
-export ORDERER_PORT = <external node port from [orderer endpoint information](#orderer-endpoint)>
+export PROXY = <proxy ip address from [orderer endpoint information](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-orderer-endpoint)>
+export ORDERER_PORT = <external node port from [orderer endpoint information](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-orderer-endpoint)>
 ```
 {:codeblock}
 
@@ -477,9 +478,9 @@ Mit diesem Befehl wird die Aktualisierungsanforderung gleichzeitig signiert und 
 Es ist zwar möglich, mehrere Organisationsdefinitionen in eine einzige Konfigurationsaktualisierung für den Systemkanal des Anordnungsknotens einzubeziehen, aber es hat sich das Verfahren bewährt, den Kanal jeweils nur mit einer Organisation zu aktualisieren und anschließend zu prüfen, ob die Aktualisierung erfolgreich war.
 
 ## Protokolle des Anordnungsknotens anzeigen
-{: #orderer-view-logs}
+{: #icp-orderer-operate-orderer-view-logs}
 
-Komponentenprotokolle können über die Befehlszeile mit den [`Befehlen der CLI "kubectl"`](#ca-kubectl-configure) oder über [Kibana ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://www.elastic.co/products/kibana "Your Window into the Elastic Search") angezeigt werden, das in Ihrem ICP-Cluster enthalten ist. 
+Komponentenprotokolle können über die Befehlszeile mit den [`Befehlen der CLI "kubectl"`](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-kubectl-configure) oder über [Kibana ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://www.elastic.co/products/kibana "Your Window into the Elastic Search") angezeigt werden, das in Ihrem {{site.data.keyword.cloud_notm}} Private-Cluster enthalten ist. 
 
 - Mit dem Befehl `kubectl logs` können Sie die Containerprotokolle innerhalb des Pods anzeigen. Falls Sie den Podnamen nicht genau kennen, führen den folgenden Befehl aus, um Ihre Podliste anzuzeigen.
 
@@ -497,15 +498,15 @@ Komponentenprotokolle können über die Befehlszeile mit den [`Befehlen der CLI 
 
   Weitere Informationen zum Befehl `kubectl logs` enthält die [Kubernetes-Dokumentation ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs “Getting Started”).
 
-- Alternativ können Sie auf Protokolle auch über die [ICP-Konsole für das Cluster-Management](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/troubleshoot/events.html) zugreifen, die die Protokolle in Kibana öffnet.
+- Alternativ können Sie auf die Protokolle zugreifen, indem Sie die [{{site.data.keyword.cloud_notm}} Private Cluster-Managementkonsole ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/troubleshoot/events.html) verwenden, die die Protokolle in Kibana öffnet.
 
-  **Hinweis:** Wenn Sie Ihre Protokolle in Kibana anzeigen, empfangen Sie möglicherweise die Antwort `Keine Ergebnisse gefunden`. Diese Bedingung kann auftreten, wenn ICP die IP-Adresse Ihres Workerknotens als Hostnamen verwendet. Entfernen Sie zur Lösung dieses Problems oben in der Anzeige den Filter, der mit `node.hostname.keyword` beginnt. Anschließend sind die Protokolle sichtbar.
+  **Hinweis:** Wenn Sie Ihre Protokolle in Kibana anzeigen, empfangen Sie möglicherweise die Antwort `Keine Ergebnisse gefunden`. Diese Bedingung kann auftreten, wenn {{site.data.keyword.cloud_notm}} Private die IP-Adresse Ihres Workerknotens als Hostnamen verwendet. Entfernen Sie zur Lösung dieses Problems oben in der Anzeige den Filter, der mit `node.hostname.keyword` beginnt. Anschließend sind die Protokolle sichtbar.
 
 ## Fehlerbehebung
-{: #orderer-troubleshooting}
+{: #icp-orderer-operate-troubleshooting}
 
 ### **Problem:** Befehl `peer channel update` schlägt mit einem Fehler fehl
-{: #orderer-peer-channel-update-error}
+{: #icp-orderer-operate-peer-channel-update-error}
 
 Möglicherweise empfangen Sie bei der Ausführung eines Befehls `peer channel update` den folgenden Fehler:
 

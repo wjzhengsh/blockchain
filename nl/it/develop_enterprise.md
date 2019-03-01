@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-12-07"
+lastupdated: "2018-12-08"
 
 ---
 
@@ -16,11 +16,12 @@ lastupdated: "2018-12-07"
 # Distribuzione di una rete di business su piano Enterprise
 {: #deploying-a-business-network}
 
+**IBM consiglia di utilizzare Hyperledger Composer esclusivamente per le demo e per i modelli di verifica (PoC, Proof of Concept). IBM non fornisce supporto per le reti che utilizzano Hyperledger Composer in produzione, compresi la CLI Composer, le API JavaScript, il server REST e Web Playground.**
 
 ***[Questa pagina è utile? Faccelo sapere.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 
-{{site.data.keyword.blockchainfull}} Platform: gli strumenti per gli sviluppatori ti aiutano a creare una BND (**Business Network Definition**) che può quindi essere impacchettata in un archivio di rete di business (`.bna`). L'ambiente per gli sviluppatori ti consente di distribuire i file `.bna` a una {{site.data.keyword.blockchain}} locale o cloud per lo sviluppo e la condivisione.
+Gli strumenti per gli sviluppatori di {{site.data.keyword.blockchainfull}} Platform: Develop ti aiutano a creare una BND (**Business Network Definition**) che può quindi essere impacchettata in un archivio di rete di business (`.bna`). L'ambiente per gli sviluppatori ti consente di distribuire i file `.bna` a una {{site.data.keyword.blockchain}} locale o cloud per lo sviluppo e la condivisione.
 
 Questa esercitazione di occupa del passo successivo di un ciclo di vita della rete di business, che consiste nell'attivare la tua rete di business distribuendo il `.bna` a {{site.data.keyword.blockchainfull_notm}} Platform piano Enterprise.
 
@@ -28,7 +29,7 @@ Questa esercitazione di occupa del passo successivo di un ciclo di vita della re
 
 Assicurati di avere installato l'ambiente per gli sviluppatori {{site.data.keyword.blockchainfull_notm}} e di essere a tuo agio con lo sviluppo e la distribuzione delle reti di business. Le istruzioni relative alla scrittura di reti di business sono disponibili nella [documentazione di Hyperledger Composer](https://hyperledger.github.io/composer/latest/business-network/business-network-index).
 
-Devi accedere a un'istanza piano Enterprise di {{site.data.keyword.blockchainfull_notm}} e di aver prima creato i tuoi peer. Per ulteriori informazioni su {{site.data.keyword.blockchainfull_notm}} Platform piano Enterprise, vedi la [panoramica di piano Enterprise](/docs/services/blockchain/enterprise_plan.html).
+Devi accedere a un'istanza piano Enterprise di {{site.data.keyword.blockchainfull_notm}} e di aver prima creato i tuoi peer. Per ulteriori informazioni su {{site.data.keyword.blockchainfull_notm}} Platform piano Enterprise, vedi la [panoramica di piano Enterprise](./enterprise_plan.html).
 
 ## Passo uno: Creazione di un profilo di connessione per {{site.data.keyword.blockchainfull_notm}} Platform
 
@@ -53,7 +54,7 @@ Devi accedere a un'istanza piano Enterprise di {{site.data.keyword.blockchainful
     /Users/myUserId/.composer-connection-profiles/bmx-hlfv11
     ```
 
-## Passo due: Richiama il tuo profilo di connessione
+## Passo due: Richiamo del tuo profilo di connessione
 
 1. Dal tuo dashboard {{site.data.keyword.blockchainfull_notm}} Platform , seleziona **Panoramica**, poi **Profilo connessione** e il pulsante **Scarica** per richiamare il profilo di connessione.
 
@@ -140,7 +141,7 @@ Crea la scheda di rete di business utilizzando i certificati richiesti. Questa s
     ```
     {:codeblock}
 
-    Dove `bmx-hlfv11` è il nome del profilo da te precedentemente creato. 
+    Dove `bmx-hlfv11` è il nome del profilo da te precedentemente creato.
 
 2. Dopo aver creato la scheda, importala utilizzando il seguente comando:
 

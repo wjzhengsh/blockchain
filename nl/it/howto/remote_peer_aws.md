@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-11-27"
+  years: 2017, 2019
+lastupdated: "2019-02-08"
 
 ---
 
@@ -10,9 +10,12 @@ lastupdated: "2018-11-27"
 {:shortdesc: .shortdesc}
 {:screen: .screen}
 {:codeblock: .codeblock}
+{:note: .note}
+{:important: .important}
+{:tip: .tip}
 {:pre: .pre}
 
-# Distribuzione di {{site.data.keyword.blockchainfull_notm}} Platform for AWS
+# Introduzione a {{site.data.keyword.blockchainfull_notm}} Platform for AWS
 {: #remote-peer-aws}
 
 
@@ -24,20 +27,29 @@ Queste istruzioni descrivono come utilizzare un template Quick Start AWS (Amazon
 
 Per ulteriori informazioni su AWS, vedi il [documento di panoramica di AWS![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://d1.awsstatic.com/whitepapers/aws-overview.pdf "documento di panoramica di AWS").
 
-Prima di distribuire i peer {{site.data.keyword.blockchainfull_notm}} Platform for AWS, riesamina le [considerazioni sui peer](/docs/services/blockchain/howto/remote_peer.html#remote-peer-limitations).
+{{site.data.keyword.blockchainfull_notm}} Platform for AWS abilita i peer ad avvalersi del profilo di connessione, delle CA (Certificate Authority) Hyperledger Fabric e del servizio ordini di una rete piano Starter o Enterprise esistente su {{site.data.keyword.cloud_notm}} per elaborare transazioni mediante un template Quick Start AWS. Quick Start ti consente di distribuire i peer utilizzando i template CloudFormation AWS. Questo template è per gli amministratori di sistema e i responsabili delle decisioni relative all'infrastruttura IT che desiderano configurare, distribuire ed eseguire rapidamente dei peer {{site.data.keyword.blockchainfull_notm}} Platform ospitati su AWS che sono connessi a una rete piano Starter o Enterprise. Puoi utilizzare il template per creare un nuovo VPC (virtual private cloud) in AWS o distribuire il peer in un VPC esistente.
+
+Quick Start completa le seguenti configurazioni:
+ * Un'architettura altamente disponibile che si estende a due zone di disponibilità.
+ * Un VPC configurato con sottoreti pubbliche secondo le prassi ottimali di AWS. Questo ti fornisce una tua rete virtuale su AWS.
+ * Un gateway internet per consentire l'accesso a Internet.
+ * Nelle sottoreti pubbliche, due peer in due zone di disponibilità (un peer in ogni sottorete).
+ * In ogni sottorete pubblica, un contenitore peer con un database LevelDB integrato o un contenitore CouchDB secondario.
+
+Prima di distribuire i peer {{site.data.keyword.blockchainfull_notm}} Platform for AWS, riesamina le [considerazioni sui peer](/docs/services/blockchain/howto/remote_peer.html#remote-peer-aws-about-limitations).
 
 ## Prerequisiti
-{: #prerequisites-aws}
+{: #remote-peer-aws-prerequisites}
 
-Per utilizzare un peer {{site.data.keyword.blockchainfull_notm}} Platform for AWS, devi avere un'organizzazione che sia un membro di una rete blockchain ospitata su IBM Blockchain Platform. Devi utilizzare il Monitoraggio della rete su IBM Cloud per accedere alle credenziali di rete e agli endpoint API della tua rete. Se non sei membro di alcuna rete blockchain, devi creare o aderire a una rete. Per ulteriori informazioni, vedi [Creazione di una rete](/docs/services/blockchain/get_start.html#creating-a-network) o [Adesione a una rete](/docs/services/blockchain/get_start.html#joining-a-network).
+Per utilizzare un peer {{site.data.keyword.blockchainfull_notm}} Platform for AWS (peer remoto), devi avere un'organizzazione che sia un membro di una rete blockchain ospitata su IBM Blockchain Platform. Devi utilizzare il Monitoraggio della rete su IBM Cloud per accedere alle credenziali di rete e agli endpoint API della tua rete. Se non sei membro di alcuna rete blockchain, devi creare o aderire a una rete. Per ulteriori informazioni, vedi [Creazione di una rete](/docs/services/blockchain/get_start.html#getting-started-with-enterprise-plan-create-network) o [Adesione a una rete](/docs/services/blockchain/get_start.html#getting-started-with-enterprise-plan-join-nw).
 
-Il tipo di istanza VPC predefinito per il peer è `m4.xlarge`. Devi ottimizzare il tipo di istanza che scegli in base ai tuoi requisiti di CPU, memoria e archiviazione. Il peer richiede almeno:  
+Il tipo di istanza VPC predefinito per il peer è `m4.xlarge`.  Devi ottimizzare il tipo di istanza che scegli in base ai tuoi requisiti di CPU, memoria e archiviazione. Il peer richiede almeno:  
 -	CPU 2x
 -	2 GB di RAM
 -	4 GB di spazio per il chaincode
 -	10 GB di spazio per il libro mastro con capacità di crescere man mano che il libro mastro si espande
 
-Questi livelli minimi di risorse sono sufficienti per l'esecuzione di test e la sperimentazione. Per un ambiente di produzione, è importante assegnare una quantità sufficientemente grande di archiviazione, 100GB ad esempio.La quantità di archiviazione utilizzata dipenderà dal numero di transazioni e dal numero di firme richiesti dalla tua rete. Se esaurisci l'archiviazione sul tuo peer, devi <!-- either expand the storage or --> distribuire un nuovo peer con un file system più grande e consentirgli di eseguire la sincronizzazione tramite il tuo altro peer (o i tuoi altri peer) sullo stesso canale (o sugli stessi canali).
+Questi livelli minimi di risorse sono sufficienti per l'esecuzione di test e la sperimentazione. Per un ambiente di produzione, è importante assegnare una quantità sufficientemente grande di archiviazione, 100GB ad esempio. La quantità di archiviazione utilizzata dipenderà dal numero di transazioni e dal numero di firme richiesti dalla tua rete. Se esaurisci l'archiviazione sul tuo peer, devi <!-- either expand the storage or --> distribuire un nuovo peer con un file system più grande e consentirgli di eseguire la sincronizzazione tramite il tuo altro peer (o i tuoi altri peer) sullo stesso canale (o sugli stessi canali).
 
 
 ## Opzioni di distribuzione
@@ -61,7 +73,7 @@ Il Quick Start fornisce due opzioni di distribuzione:
 4. Se necessario, richiedi un aumento del limite del servizio per il tipo di istanza Amazon EC2 <type>. Potresti aver bisogno di eseguire tale operazione se già hai una distribuzione esistente che usa questo tipo di istanza e pensi che potrebbe superare il limite predefinito con questa distribuzione.
 
 ## Passo due: Richiama le informazioni di configurazione del tuo peer remoto
-{: #aws-network-endpoints}
+{: #remote-peer-aws-network-endpoints}
 
 Durante la configurazione, devi fornire gli endpoint API della tua rete al tuo peer. Questi endpoint consentono a un peer di trovare e connettersi alla rete su {{site.data.keyword.blockchainfull_notm}} Platform. Nella schermata **Panoramica** del tuo Monitoraggio della rete, fai clic sul pulsante **Configurazione peer remoto**.
 
@@ -77,6 +89,9 @@ Si apre una finestra a comparsa che mostra i valori dei seguenti campi. Salva i 
 
 Puoi copiare e incollare ciascun campo direttamente nel template Quick Start o salvarli in un file JSON facendo clic sul link **Download**.
 
+Il template Quick Start prevede che il certificato TLS sia formattato con interruzioni di riga `\r\n`. Se stai utilizzando un browser con il Monitoraggio di rete su un sistema operativo `*NIX`, hai bisogno di riformattare il certificato che copi dall'interfaccia utente. Sostituisci tutte le ricorrenze di `\n` con `\r\n` e incolla la stringa risultante nel campo etichettato come `Certificate Authority (CA) TLS Certificate Chain`.
+{:important}
+
 **Nota:** se scarichi le informazioni in JSON, devi convertire il certificato TLS in formato PEM prima di fornirlo al peer. Converti il **Certificato TLS CA (Certificate Authority)** nel file JSON che hai scaricato in formato PEM immettendo il comando:
 ```
 echo -e "<CERT>" > admin.pem
@@ -86,24 +101,24 @@ echo -e "<CERT>" > admin.pem
 Sostituisci `<CERT>` con il valore del **Certificato TLS CA (Certificate Authority)**. Quindi, quando ti viene richiesto il **Certificato TLS CA (Certificate Authority)** nel template Quick Start, esegui il `cat` del file admin.pem e procedi quindi a copiare e incollare il contenuto nel campo.  
 
 ## Passo tre: Registra un peer {{site.data.keyword.blockchainfull_notm}} Platform for AWS
-{: #aws-register-peer}
+{: #remote-peer-aws-register-peer}
 
 Devi aggiungere una nuova identità peer alla tua organizzazione su {{site.data.keyword.blockchainfull_notm}} Platform prima che il peer {{site.data.keyword.blockchainfull_notm}} Platform for AWS possa unirsi alla rete. Per registrare un peer, completa la seguente procedura.
 
-**Nota:** per l'alta disponibilità, il template Quick Start crea due nodi peer nelle due zone di disponibilità. Sono pertanto necessari due segreti e ID di iscrizione.**Ripeti questo processo due volte per generare due segreti e ID di iscrizione**
+**Nota:** per l'alta disponibilità, il template Quick Start crea due nodi peer nelle due zone di disponibilità. Sono pertanto necessari due segreti e ID di iscrizione. **Ripeti questo processo due volte per generare due segreti e ID di iscrizione**
 
 1. Accedi al Monitoraggio della rete della tua rete su {{site.data.keyword.blockchainfull_notm}} Platform. Nella schermata "CA (Certificate Authority)" del tuo Monitoraggio della rete, puoi visualizzare tutte le identità che sono state registrate con la rete, come ad esempio l'amministratore o le applicazioni client.
   ![Schermata CA](../images/CA_screen_starter.png "Schermata CA")
   *Figura 2. Schermata CA*
 
 2. Fai clic sul pulsante **Aggiungi utente** sul pannello. Si apre una schermata a comparsa che ti consente di registrare il tuo peer alla rete dopo aver compilato i campi di seguito. **Salva il valore di ID e segreto per dopo quando configuri il tuo peer nel template Quick Start,**
-  - **ID di registrazione:** il nome che vuoi utilizzare per il tuo peer, a cui si fa riferimento come `enroll ID` quando configuri il tuo peer. **Salva questo valore** per un uso futuro.
-  - **Segreto di registrazione:** la password che vuoi utilizzare per il tuo peer, a cui si fa riferimento come `enroll Secret` quando configuri il tuo peer. **Salva questo valore** per un uso futuro.
+  - **ID di iscrizione:** il nome che vuoi utilizzare per il tuo peer, a cui si fa riferimento come `enroll ID` quando configuri il tuo peer. **Salva questo valore** per un uso futuro.
+  - **Segreto di iscrizione:** la password che vuoi utilizzare per il tuo peer, a cui si fa riferimento come `enroll Secret` quando configuri il tuo peer. **Salva questo valore** per un uso futuro.
   - **Tipo:** seleziona `peer` per questo campo.
   - **Affiliazione:** si tratta dell'affiliazione sotto la tua organizzazione, ad esempio `org1`, a cui appartiene il tuo peer. Puoi specificare una nuova affiliazione o utilizzarne una esistente.
-  - **Registrazioni massime:** utilizza questo campo per limitare il numero di volte in cui puoi registrare o generare certificati utilizzando questa identità. Se non specificato, il valore predefinito è di registrazioni illimitate.
+  - **Numero massimo di iscrizioni:** utilizza questo campo per limitare il numero di volte in cui puoi registrare o generare certificati utilizzando questa identità. Se non specificato, il valore predefinito è di registrazioni illimitate.
 
-  Dopo aver completato questi campi, fai clic su **Inoltra** per registrare il peer. Il peer registrato viene quindi elencato nella tabella come identità sulla rete. Come misura di sicurezza, utilizza ogni identità, e l'ID registrazione e il segreto di accompagnamento, per distribuire solo un singolo peer. Non riutilizzare ID e password dei peer.
+  Dopo aver completato questi campi, fai clic su **Inoltra** per registrare il peer. Il peer registrato viene quindi elencato nella tabella come identità sulla rete. Come misura di sicurezza, utilizza ogni identità, e l'ID iscrizione e il segreto di accompagnamento, per distribuire solo un singolo peer. Non riutilizzare ID e password dei peer.
 
 ## Passo quattro: Avvia Quick Start
 {: #remote-peer-aws-launchqs}
@@ -117,7 +132,7 @@ Sei responsabile per il costo dei servizi AWS che utilizzi mentre esegui questa 
   * [Distribuisci {{site.data.keyword.blockchainfull_notm}} Platform for AWS in un VPC esistente su AWS ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://fwd.aws/zrP4g "Distribuisci {{site.data.keyword.blockchainfull_notm}} Platform for AWS in un VPC esistente su AWS").
 
   **Importante:**     
-Se stai distribuendo {{site.data.keyword.blockchainfull_notm}} Platform for AWS in un VPC esistente, assicurati che il tuo VPC abbia due sottoreti pubbliche in zone di disponibilità differenti per le istanze del database. Queste sottoreti richiedono gateway NAT o istanze NAT nelle loro tabelle di instradamento per consentire alle istanze di scaricare pacchetti e software senza esporli a internet. Avrai anche bisogno dell'opzione di nome dominio configurata nelle opzioni DHCP, come spiegato nella documentazione di VPC Amazon.  
+  Se stai distribuendo {{site.data.keyword.blockchainfull_notm}} Platform for AWS in un VPC esistente, assicurati che il tuo VPC abbia due sottoreti pubbliche in zone di disponibilità differenti per le istanze del database. Queste sottoreti richiedono gateway NAT o istanze NAT nelle loro tabelle di instradamento per consentire alle istanze di scaricare pacchetti e software senza esporli a internet. Avrai anche bisogno dell'opzione di nome dominio configurata nelle opzioni DHCP, come spiegato nella documentazione di VPC Amazon.  
 
   Assicurati inoltre di creare un gruppo di sicurezza collegato al tuo VPC esistente e di aggiungere regole in entrata sulle porte 22 e 7051 a questo gruppo di sicurezza. Le connessioni TCP sulla porta 22 consentono l'accesso SSH all'istanza generata mentre le connessioni TCP sulla porta 7051 consentono l'accesso gRPC esterno all'istanza peer (necessario per gestire il peer utilizzando le SDK Fabric e la CLI degli strumenti Fabric). Queste impostazioni VPC ti verranno richieste quando avvii il Quick Start.
 
@@ -129,9 +144,9 @@ Se stai distribuendo {{site.data.keyword.blockchainfull_notm}} Platform for AWS 
 
 Nelle seguenti tabelle, i parametri sono elencati per categoria e descritti separatamente per le due opzioni di distribuzione:
 
-  * [Parametri per la distribuzione di {{site.data.keyword.blockchainfull_notm}} Platform for AWS in un nuovo VPC](#remote-peer-aws-parameters-newvpc)
+  * [Parametri per la distribuzione di {{site.data.keyword.blockchainfull_notm}} Platform for AWS in un nuovo VPC](/docs/services/blockchain/howto/remote_peer_aws.html#remote-peer-aws-parameters-newvpc)
 
-  * [Parametro per la distribuzione di {{site.data.keyword.blockchainfull_notm}} Platform for AWS in un VPC esistente](#remote-peer-aws-parameters-existvpc).
+  * [Parametro per la distribuzione di {{site.data.keyword.blockchainfull_notm}} Platform for AWS in un VPC esistente](/docs/services/blockchain/howto/remote_peer_aws.html#remote-peer-aws-parameters-existvpc).
 
 ### Parametri per la distribuzione di {{site.data.keyword.blockchainfull_notm}} Platform for AWS in un nuovo VPC
 {: #remote-peer-aws-parameters-newvpc}
@@ -149,22 +164,22 @@ La seguente tabella elenca i parametri configurabili del grafico AWS e i loro va
 | | | |
 | **Configurazione EC2 Amazon** | | |
 | `InstanceType` | Il tipo di istanza EC2 per le istanze peer. | m4.xlarge |
-| `KeyPairName` |Il nome della coppia di chiavi EC2 esistente all'interno della regione AWS. Devi eseguirne la generazione. | |
+| `KeyPairName` | Il nome della coppia di chiavi EC2 esistente all'interno della regione AWS. Devi eseguirne la generazione. | |
 | | | |
 |**Configurazione IBM Blockchain** | |
 | `IBMBlockchainVersion` | Versione di IBM Blockchain da distribuire. | 1.2.1 |
 | `StateDatabase` | Il tipo di database da utilizzare per archiviare lo stato delle blockchain. Questa selezione deve corrispondere al tipo di database dello stato utilizzato dal resto della rete. | CouchDB|
 | `PeerVolumeSize` | La dimensione del volume EBS utilizzato per archiviare i dati persistenti (libro mastro, database dello stato, MSP) per il peer in GB. | 100 |
-| `Peer 1 enroll ID`| L'ID di registrazione (iscrizione) che hai immesso nel tuo pannello di CA (Certificate Authority - Autorità di certificazione) dell'IU di IBM Blockchain Platform per il tuo primo peer. |  |
-| `Peer 1 enroll secret` | Il segreto di registrazione (iscrizione) che hai immesso nel tuo pannello di CA (Certificate Authority - Autorità di certificazione) dell'IU di IBM Blockchain Platform per il tuo primo peer. | |
-| `Peer 2 enroll ID` | L'ID di registrazione (iscrizione) che hai immesso nel tuo pannello di CA (Certificate Authority - Autorità di certificazione) dell'IU di IBM Blockchain Platform per il tuo secondo peer. | |
-| `Peer 2 enroll secret` | Il segreto di registrazione (iscrizione) che hai immesso nel tuo pannello di CA (Certificate Authority - Autorità di certificazione) dell'IU di IBM Blockchain Platform per il tuo secondo peer. | |
+| `Peer 1 enroll ID`| L'ID di iscrizione che hai immesso nel tuo pannello di CA (Certificate Authority - Autorità di certificazione) dell'IU di IBM Blockchain Platform per il tuo primo peer. |  |
+| `Peer 1 enroll secret` | Il segreto di iscrizione che hai immesso nel tuo pannello di CA (Certificate Authority - Autorità di certificazione) dell'IU di IBM Blockchain Platform per il tuo primo peer. | |
+| `Peer 2 enroll ID` | L'ID di iscrizione che hai immesso nel tuo pannello di CA (Certificate Authority - Autorità di certificazione) dell'IU di IBM Blockchain Platform per il tuo secondo peer. | |
+| `Peer 2 enroll secret` | Il segreto di iscrizione che hai immesso nel tuo pannello di CA (Certificate Authority - Autorità di certificazione) dell'IU di IBM Blockchain Platform per il tuo secondo peer. | |
 | | | |
 |**Credenziali del servizio IBM Blockchain**| | |
 | `Organization MSP` | Questo valore è disponibile nella tua IU di IBM Blockchain Platform. Fai clic sul pulsante Configurazione peer remota nel pannello Panoramica e copia e incolla qui tali informazioni. | |
-| `Certificate Authority (CA) Name` | Questo valore è disponibile nella tua IU di IBM Blockchain Platform. Fai clic sul pulsante Configurazione peer remota nel pannello Panoramica e copia e incolla qui tali informazioni. | |
+| `Certificate Authority (CA) Name` | Questo valore è disponibile nella tua IU di IBM Blockchain Platform. Fai clic sul pulsante Configurazione peer remota nel pannello Panoramica e copia e incolla qui tali informazioni.| |
 | `Certificate Authority (CA) URL` | Questo valore è disponibile nella tua IU di IBM Blockchain Platform. Fai clic sul pulsante Configurazione peer remota nel pannello Panoramica e copia e incolla qui tali informazioni, compresa la porta. Se non viene specificata, la porta predefinita è 443. | |
-| `Certificate Authority (CA)  TLS Certificate`| Questo valore è disponibile nella tua IU di IBM Blockchain Platform. Fai clic sul pulsante Configurazione peer remota nel pannello Panoramica e copia e incolla qui tali informazioni. | |
+| `Certificate Authority (CA)  TLS Certificate`| Questo valore è disponibile nella tua IU di IBM Blockchain Platform. Fai clic sul pulsante Configurazione peer remota nel pannello Panoramica e copia e incolla qui tali informazioni.| |
 | | | |
 |**Altri parametri**| | |
 | `QSS3BucketName` | Il nome bucket S3 per gli asset Quick Start. Il nome bucket Quick Start può includere numeri, lettere minuscole, lettere maiuscole e trattini (-). Non può iniziare o terminare con un trattino (-). | `aws-quickstart` |
@@ -174,7 +189,7 @@ La seguente tabella elenca i parametri configurabili del grafico AWS e i loro va
 
 2. Nella pagina Riesamina, riesamina e conferma le impostazioni del template. In Funzionalità, seleziona la casella di spunta per riconoscere che il template creerà le risorse IAM.
 
-3. Scegli Crea per distribuire lo stack. 
+3. Scegli Crea per distribuire lo stack.
 
 4. Monitora lo stato dello stack. Quando lo stato di tutti gli stack è `CREATE_COMPLETE`, il cluster Peer è pronto. Dopo il corretto completamento dell'operazione, dovresti disporre di uno stack root con quattro stack nidificati se era stato scelto couchDB o due stack nidificati se era stato scelto levelDB.
 
@@ -186,25 +201,25 @@ La seguente tabella elenca i parametri configurabili del grafico AWS e i loro va
 
 Se stai distribuendo il peer {{site.data.keyword.blockchainfull_notm}} Platform for AWS in un VPC esistente, tieni conto di quanto segue:
 
- - Assicurati che il tuo VPC abbia due sottoreti private in zone di disponibilità differenti per le istanze del database. Queste sottoreti richiedono gateway NAT o istanze NAT nelle loro tabelle di instradamento per consentire alle istanze di scaricare pacchetti e software senza esporli a internet. 
+ - Assicurati che il tuo VPC abbia due sottoreti private in zone di disponibilità differenti per le istanze del database. Queste sottoreti richiedono gateway NAT o istanze NAT nelle loro tabelle di instradamento per consentire alle istanze di scaricare pacchetti e software senza esporli a internet.
 
  - Configura l'opzione di nome dominio nelle opzioni DHCP, come spiegato nella [documentazione di VPC Amazon![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_DHCP_Options.html "Set di opzioni DHCP").  
 
 - Crea un gruppo di sicurezza collegato al tuo VPC esistente e aggiungi regole in entrata sulle porte 22 e 7051 a questo gruppo di sicurezza. Le connessioni TCP sulla porta 22 consentono l'accesso SSH all'istanza generata mentre le connessioni TCP sulla porta 7051 consentono l'accesso gRPC esterno all'istanza peer (necessario per gestire il peer utilizzando le SDK Fabric e la CLI degli strumenti Fabric). Queste impostazioni VPC ti verranno richieste quando avvii il Quick Start.
 
- Quando distribuisci un peer {{site.data.keyword.blockchainfull_notm}} Platform for AWS in un VPC esistente, i seguenti parametri sostituiscono i parametri nelle sezioni corrispondenti [in alto](#remote-peer-aws-parameters-newvpc):
+ Quando distribuisci un peer {{site.data.keyword.blockchainfull_notm}} Platform for AWS in un VPC esistente, i seguenti parametri sostituiscono i parametri nelle sezioni corrispondenti [in alto](/docs/services/blockchain/howto/remote_peer_aws.html#remote-peer-aws-parameters-newvpc):
 
 |  Parametro    | Descrizione | Valore predefinito |
 | --------------|-------------|---------|
 | **Configurazione di rete** | | |
-| `VPCID` |	L'ID del tuo VPC esistente per la distribuzione. | |
+| `VPCID` |	L'ID del tuo VPC esistente per la distribuzione.| |
 | `AvailabilityZone1` | La zona di disponibilità in cui distribuire il primo nodo peer. | |
 | `SubnetID1` |	L'ID della sottorete da utilizzare per il primo nodo peer. La sottorete deve appartenere al VPC scelto. Per trovare le sottoreti appartenenti al VPC, controlla il tuo dashboard VPC AWS e seleziona il menu "subnets".| |
 | `AvailabilityZone2` | La zona di disponibilità in cui distribuire il secondo nodo peer. | |
-| `SubnetID2` |	L'ID della sottorete da utilizzare per il secondo nodo peer. La sottorete deve appartenere al VPC scelto. Per trovare le sottoreti appartenenti al VPC, controlla il tuo dashboard VPC AWS e seleziona il menu "subnets".| |
+| `SubnetID2` |	L'ID della sottorete da utilizzare per il secondo nodo peer. La sottorete deve appartenere al VPC scelto. Per trovare le sottoreti appartenenti al VPC, controlla il tuo dashboard VPC AWS e seleziona il menu "subnets". | |
 | | | |
 | **Configurazione EC2 Amazon**| | |
-| `InstanceType` 	| Il tipo di istanza EC2 per le istanze peer. | m4.xlarge |
+| `InstanceType` 	| Il tipo di istanza EC2 per le istanze peer. 	| m4.xlarge |
 | `KeyPairName` |	Il nome della coppia di chiavi EC2 esistente all'interno della regione AWS. Devi eseguirne la generazione. | |
 | `SecurityGroup` | L'ID del gruppo di sicurezza EC2 esistente all'interno della regione AWS. Devi consentire le connessioni TCP in entrata sulle porte 22 e 7051. |	| |
 
@@ -214,7 +229,7 @@ Se stai distribuendo il peer {{site.data.keyword.blockchainfull_notm}} Platform 
 Dopo che il template AWS CloudFormation ha creato correttamente lo stack, nel tuo account AWS saranno in esecuzione due istanze del peer {{site.data.keyword.blockchainfull_notm}} Platform for AWS. Le istanze verranno denominate in base alla combinazione di `Organization MSP` e `Peer enroll id` specificati nel template Quick Start. Ad esempio, `org1-remotepeer1`.  
 
 ![Peer su istanze AWS EC2](../images/remote_peer_AWS_EC2_instances.png "Peer su istanze AWS EC2")  
-*Figura 3. Peer remoto su istanze AWS EC2 *
+*Figura 3. Peer su istanze AWS EC2 *
 
 Per verificare che il peer sia in esecuzione:
 
@@ -230,7 +245,9 @@ Per verificare che il peer sia in esecuzione:
 
   * Puoi creare una sessione shell all'interno del contenitore peer eseguendo `docker exec -it peer sh`.
 
-Inoltre, per verificare che la connessione del peer alla tua rete {{site.data.keyword.blockchainfull_notm}} Platform stia funzionando, puoi eseguire un comando della CLI del peer dall'interno del contenitore peer. Esegui il comando della CLI `peer channel fetch` CLI per recuperare il blocco genesi dal canale.
+Facoltativamente, se vuoi una verifica aggiuntiva che la connessione peer alla tua rete {{site.data.keyword.blockchainfull_notm}} Platform stia funzionando, puoi eseguire il comando  della CLI `peer channel fetch` dall'interno del contenitore peer. Altrimenti, puoi passare direttamente alle istruzioni per [gestire il tuo peer](/docs/services/blockchain/howto/remote_peer_operate_aws.html#remote-peer-aws-operate).  
+
+Esegui il comando della CLI `peer channel fetch` CLI per recuperare il blocco di genesi dal canale.
 
 1. Richiama le informazioni di configurazione dal tuo profilo di connessione (`Connection Profile`) disponibile nel pannello Panoramica del tuo Monitoraggio della rete. Fai clic su **Profilo connessione** e quindi su **Scarica**.
 
@@ -240,7 +257,7 @@ Inoltre, per verificare che la connessione del peer alla tua rete {{site.data.ke
    ash-zbc07b.4.secure.blockchain.ibm.com:21239
    ```
 
-   - Trova il nome della tua organizzazione ricercando le **organizzazioni**. Questa deve essere la stessa organizzazione utilizzata per registrare il tuo peer. Puoi trovare il nome della tua organizzazione insieme al suo `mspid` associato. Questo valore è anche disponibile nel pannello Panoramica del Monitoraggio della rete. Fai clic sul pulsante **Configurazione peer remota**. Il valore è visualizzato sotto `MSP organizzazione`. Prendi nota del valore dell'`mspid`.
+   - Trova il nome della tua organizzazione ricercando le **organizzazioni**. Questa deve essere la stessa organizzazione utilizzata per registrare il tuo peer. Puoi trovare il nome della tua organizzazione insieme al suo `mspid` associato. Questo valore è anche disponibile nel pannello Panoramica del Monitoraggio della rete. Fai clic sul pulsante **Configurazione peer remoto**. Il valore è visualizzato sotto `MSP organizzazione`. Prendi nota del valore dell'`mspid`.
 
    - Se non lo hai già fatto, crea una sessione shell all'interno del contenitore peer eseguendo `docker exec -it peer sh`.
 
@@ -258,11 +275,11 @@ Inoltre, per verificare che la connessione del peer alla tua rete {{site.data.ke
 
    Sostituisci `<PEER_ENROLL_ID>` con l'ID di iscrizione specificato nel template Quick Start e associato a questa istanza del peer.
 
-2. La tua organizzazione deve essere aggiunta a un canale nella rete prima che tu possa recuperare il blocco genesi.
+2. La tua organizzazione deve essere aggiunta a un canale nella rete prima che tu possa recuperare il blocco di genesi.
 
-  - Puoi avviare un nuovo canale per il peer. Come iniziatore di canale, puoi includere automaticamente la tua organizzazione durante la [creazione del canale](/docs/services/blockchain/howto/create_channel.html#creating-a-channel).
+  - Puoi avviare un nuovo canale per il peer. Come iniziatore di canale, puoi includere automaticamente la tua organizzazione durante la [creazione del canale](/docs/services/blockchain/howto/create_channel.html#ibp-create-channel-creating-a-channel).
 
-  - Un altro membro della rete blockchain può anche aggiungere la tua organizzazione a un canale esistente usando un [aggiornamento canale](/docs/services/blockchain/howto/create_channel.html#updating-a-channel). 
+  - Un altro membro della rete blockchain può anche aggiungere la tua organizzazione a un canale esistente usando un [aggiornamento canale](/docs/services/blockchain/howto/create_channel.html#ibp-create-channel-updating-a-channel).
 
   - Dopo che la tua organizzazione è stata aggiunta a un canale, devi aggiungere il certificato di firma del tuo peer al canale. Il peer carica il proprio certificato di firma durante l'installazione, pertanto dovrai solo sincronizzare il certificato al canale. Nella schermata "Canali" del Monitoraggio della rete, individua il canale a cui si è unita la tua organizzazione e seleziona **Sincronizza certificato** dall'elenco a discesa sotto l'intestazione **Azione**. Questa azione sincronizza i certificati su tutti i peer nel canale.
 
@@ -291,7 +308,7 @@ Inoltre, per verificare che la connessione del peer alla tua rete {{site.data.ke
    export PEERADDR=localhost:7051
    ```
 
-4. Esegui il seguente comando della CLI del peer per recuperare il blocco genesi del canale.
+4. Esegui il seguente comando della CLI del peer per recuperare il blocco di genesi del canale.
 
    **IMPORTANTE:** nel seguente comando, sostituisci ciascuna ricorrenza di `<PEER_ENROLL_ID>` con l'ID di iscrizione associato a questa istanza peer che era stato specificato nel template Quick Start. Questo valore può essere individuato eseguendo il comando `ls /etc/hyperledger/`. Saranno elencate due cartelle: `fabric` e la seconda è il tuo `<PEER_ENROLL_ID>`.
 
@@ -308,14 +325,14 @@ Inoltre, per verificare che la connessione del peer alla tua rete {{site.data.ke
    /etc/hyperledger/<PEER_ENROLL_ID>/msp/intermediatecerts/<intermediate cert name>.pem: no pem content for file  /etc/hyperledger/<PEER_ENROLL_ID>/msp/intermediatecerts/<intermediate cert name>.pem
    ```
 
-   Verifica che il comando abbia funzionato correttamente e che il blocco genesi sia stato aggiunto al tuo contenitore peer eseguendo questo comando:
+   Verifica che il comando abbia funzionato correttamente e che il blocco di genesi sia stato aggiunto al tuo contenitore peer eseguendo questo comando:
 
    ```
    ls *.block
    ```
    {:codeblock}
 
-   Sai che il blocco genesi viene aggiunto correttamente quando viene visualizzato qualcosa di simile al seguente esempio:
+   Sai che il blocco di genesi viene aggiunto correttamente quando viene visualizzato qualcosa di simile al seguente esempio:
 
    ```
    defaultchannel_0.block
@@ -335,15 +352,15 @@ Inoltre, per verificare che la connessione del peer alla tua rete {{site.data.ke
 * **A**. ti consigliamo di avviare i template Quick Start dall'ubicazione che abbiamo fornito o da un altro bucket S3. Se distribuisci i template da una copia locale sul tuo computer o da un'ubicazione non S3, potresti riscontrare delle limitazioni della dimensione del template quando crei lo stack. Per ulteriori informazioni sui limiti AWS CloudFormation, vedi la [documentazione di AWS ![Icona link esterno](../images/external_link.svg "Icona link esterno")](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cloudformation-limits.html "Limiti di AWS CloudFormation").
 
 ## Operazioni successive
-{: #whats-next-aws}
+{: #remote-peer-aws-whats-next}
 
-Dopo aver configurato il peer in AWS, devi completare diversi passi operativi prima di poter inoltrare transazioni alla rete blockchain e leggere il libro mastro distribuito da essa. Per ulteriori informazioni, vedi [Gestione di un peer in AWS](/docs/services/blockchain/howto/remote_peer_operate_aws.html#remote-peer-operate-aws).
+Dopo aver configurato il peer in AWS, devi completare diversi passi operativi prima di poter inoltrare transazioni alla rete blockchain e leggere il libro mastro distribuito da essa. Per ulteriori informazioni, vedi [Utilizzo dei peer in AWS](/docs/services/blockchain/howto/remote_peer_operate_aws.html#remote-peer-aws-operate).
 
 ## Elevata disponibilità (HA, High Availability)
-{: #aws-high-availability}
+{: #remote-peer-aws-high-availability}
 
 Per impostazione predefinita, per supportare l'HA, il template Quick Start distribuisce due istanze del peer, in due zone di disponibilità differenti.
-Per avvalerti di questo supporto HA, devi anche configurare le tue [applicazioni client per l'elevata disponibilità](/docs/services/blockchain/v10_application.html#ha-app).
+Per avvalerti di questo supporto HA, devi anche configurare le tue [applicazioni client per l'elevata disponibilità](/docs/services/blockchain/v10_application.html#dev-app-ha-app).
 
 ## Considerazioni sulla sicurezza
 {: #remote-peer-aws-security}
@@ -366,54 +383,54 @@ All'utente root sui nodi cluster è possibile accedere solo utilizzando la chiav
 Un gruppo di sicurezza funge da firewall che controlla il traffico per una o più istanze. Quando avvii un'istanza, associ uno o più gruppi di sicurezza con l'istanza. Aggiungi le regole a ciascun gruppo di sicurezza che consentono il traffico verso o dalle relative istanze associate. Puoi modificare le regole per un gruppo di sicurezza in qualsiasi momento. Le nuove regole vengono applicate automaticamente a tutte le istanze associate al gruppo di sicurezza. I gruppi di sicurezza creati e assegnati alle singole istanze come parte di questa soluzione sono limitati il più possibile, pur consentendo l'accesso alle diverse funzioni richieste dal peer. Consigliamo di esaminare i gruppi di sicurezza per limitare ulteriormente l'accesso come necessario una volta che il cluster è attivo e in esecuzione.
 
 ### Sicurezza dei peer
-{: #aws-security}
+{: #remote-peer-aws-peer-security}
 
 I peer vengono distribuiti al di fuori di {{site.data.keyword.blockchainfull_notm}} Platform; pertanto, sei responsabile della gestione della sicurezza del peer. Ciò include importanti aree di sicurezza fornite dalle reti piano Enterprise, come la gestione delle chiavi e la crittografia dei dati. Esamina i seguenti argomenti quando prendi in considerazione la sicurezza per i tuoi peer.
 
 #### Sicurezza dei dati
-{: #aws-security-data}
+{: #remote-peer-aws-security-data}
 
 Il piano Enterprise di {{site.data.keyword.blockchainfull_notm}} Platform utilizza la crittografia dell'intero disco, che è basata sulla[crittografia a chiave simmetrica![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/en/SSB23S_1.1.0.14/gtps7/s7symm.html "Crittografia simmetrica") per proteggere tutti i dati utilizzati dalle reti. Devi adottare misure simili nel tuo ambiente per proteggere i dati del tuo peer.
 
 I dati nel tuo database dello stato, indipendentemente dal fatto che tu stia utilizzando levelDB o couchDB, non sono crittografati. Puoi utilizzare la crittografia a livello delle applicazioni per proteggere i dati inattivi nel tuo database dello stato.
 
 #### Residenza dei dati
-{: #aws-security-data-residency}
+{: #remote-peer-aws-data-residency}
 
 La residenza dei dati richiede che l'elaborazione e l'archiviazione di tutti i dati del libro mastro blockchain rimangano all'interno dei confini di un singolo paese.
-Per ulteriori informazioni su come è possibile eseguire tale operazione, fai riferimento a questo [argomento](/docs/services/blockchain/howto/remote_peer.html#data-residency).
+Per ulteriori informazioni su come è possibile eseguire tale operazione, vedi [Residenza dei dati](/docs/services/blockchain/howto/remote_peer.html#remote-peer-aws-about-data-residency).
 
 #### Gestione delle chiavi
-{: #aws-security-key-management}
+{: #remote-peer-aws-security-key-management}
 
-La gestione delle chiavi è un aspetto critico della sicurezza del peer. Se una chiave privata è compromessa o persa, attori ostili potrebbero essere in grado di accedere ai dati e alla funzionalità del tuo peer. Il piano Enterprise di {{site.data.keyword.blockchainfull_notm}} Platform utilizza gli [Hardware Security Module](/docs/services/blockchain/glossary.html#hsm) (HSM) per archiviare le chiavi private della tua rete. HSM è un dispositivo fisico che impedisce ad altre parti di accedere alla tua chiave privata.
+La gestione delle chiavi è un aspetto critico della sicurezza del peer. Se una chiave privata è compromessa o persa, attori ostili potrebbero essere in grado di accedere ai dati e alla funzionalità del tuo peer. Il piano Enterprise di {{site.data.keyword.blockchainfull_notm}} Platform utilizza gli HSM ([Hardware Security Module](/docs/services/blockchain/glossary.html#glossary-hsm)) per archiviare le chiavi private della tua rete. HSM è un dispositivo fisico che impedisce ad altre parti di accedere alla tua chiave privata.
 
-Quando distribuisci un peer su AWS, sei responsabile della gestione delle tue chiavi private. Sebbene {{site.data.keyword.blockchainfull_notm}} Platform generi le tue chiavi private, tali chiavi non vengono archiviate su Platform. È essenziale assicurarsi di memorizzare le chiavi in un luogo sicuro in modo che non vengano compromesse. Puoi trovare la chiave privata del tuo peer nella cartella keystore dell'MSP del tuo peer, nella directory `/etc/hyperledger/<PEER_ENROLL_ID>/msp/keystore/` all'interno del tuo contenitore peer. Per ulteriori informazioni sui certificati all'interno del tuo peer, visita la sezione [Membership Services Provider](/docs/services/blockchain/certificates.html#msp) dell'argomento [Gestione dei certificati su {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/certificates.html).
+Quando distribuisci un peer su AWS, sei responsabile della gestione delle tue chiavi private. Sebbene {{site.data.keyword.blockchainfull_notm}} Platform generi le tue chiavi private, tali chiavi non vengono archiviate su Platform. È essenziale assicurarsi di memorizzare le chiavi in un luogo sicuro in modo che non vengano compromesse. Puoi trovare la chiave privata del tuo peer nella cartella keystore dell'MSP del tuo peer, nella directory `/etc/hyperledger/<PEER_ENROLL_ID>/msp/keystore/` all'interno del tuo contenitore peer. Per ulteriori informazioni sui certificati all'interno del tuo peer, visita la sezione [Membership Services Provider](/docs/services/blockchain/certificates.html#managing-certificates-msp) dell'argomento [Gestione dei certificati su {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/certificates.html#managing-certificates).
 
-Puoi utilizzare Key Escrow per recuperare le chiavi private perse. Questo deve essere eseguito prima della perdita di qualsiasi chiave. Se non è possibile recuperare una chiave privata, hai bisogno di ottenere nuove chiavi private ottenendo un nuovo signCert dalla CA (Certificate Authority, Autorità di certificazione). Devi anche rimuovere e sostituire il tuo certificato di gestione da qualsiasi canale a cui ti sei unito.
+Puoi utilizzare Key Escrow per recuperare le chiavi private perse. Questo deve essere eseguito prima della perdita di qualsiasi chiave. Se non è possibile recuperare una chiave privata, hai bisogno di ottenere nuove chiavi private ottenendo un nuovo signCert dalla CA (Certificate Authority, Autorità di certificazione). Devi anche rimuovere e sostituire il tuo certificato di amministrazione da qualsiasi canale a cui ti sei unito.
 
 <!---
-In IBP when a private key is created, two sets of independent key material is generated, in custody of two different entities. Those two sets of key materials are then combined to create the private key.
+In {{site.data.keyword.blockchainfull_notm}} Platform when a private key is created, two sets of independent key material is generated, in custody of two different entities. Those two sets of key materials are then combined to create the private key.
 --->
 
 #### TLS
-{: #aws-security-tls}
+{: #remote-peer-aws-security-tls}
 
 [Transport Layer Security ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/en/SSFKSJ_7.1.0/com.ibm.mq.doc/sy10660_.htm "Una panoramica dell'handshake SSL o TLS") (TLS) è integrato nel modello di attendibilità di Hyperledger Fabric. Tutti i componenti in {{site.data.keyword.blockchainfull_notm}} Platform utilizzano TLS per autenticarsi e comunicare tra loro. Pertanto, i componenti di rete su {{site.data.keyword.blockchainfull_notm}} Platform devono essere in grado di completare un handshake TLS con i tuoi peer. Ciò implica, tra le altre cose, che devi abilitare il pass-through, utilizzando ad esempio l'elenco elementi consentiti (whitelist), nel tuo firewall dalle applicazioni client al tuo peer.
 
 
 #### Configurazione di Membership Service Provider
-{: #aws-security-MSP}
+{: #remote-peer-aws-security-MSP}
 
-I componenti di IBM Blockchain Platform utilizzano le identità tramite gli MSP (Membership Service Provider). Gli MSP associano i certificati emessi dalle CA ai ruoli di rete e di canale. Fai riferimento a questo [argomento](/docs/services/blockchain/certificates.html#msp) per ulteriori informazioni su come funzionano gli MSP con il peer.
+I componenti di IBM Blockchain Platform utilizzano le identità tramite gli MSP (Membership Service Provider). Gli MSP associano i certificati emessi dalle CA ai ruoli di rete e di canale. Fai riferimento a questo [argomento](/docs/services/blockchain/certificates.html#managing-certificates-msp) per ulteriori informazioni su come funzionano gli MSP con il peer.
 
 #### Sicurezza delle applicazioni
-{: #aws-security-appl}
+{: #remote-peer-aws-security-appl}
 
 Poiché tutti i richiami del chaincode sono firmati, Fabric gestisce la sicurezza delle applicazioni. Inoltre, Fabric include anche controlli a livello di applicazione basati su ACL.
 
 ## Licenza e determinazione dei prezzi
-{: #license-pricing-aws}
+{: #remote-peer-aws-license-pricing-aws}
 
 Devi accettare una versione di licenza Community Edition di {{site.data.keyword.blockchainfull_notm}} Platform for AWS per poter utilizzare la soluzione di distribuzione abilitata da Quick Start. L'uso di {{site.data.keyword.blockchainfull_notm}} Platform for AWS (compresi tutti i pacchetti forniti dall'offerta Quick Start e i pacchetti da essi derivati) non è destinato a un uso di produzione. IBM potrebbe decidere di annullare l'autorizzazione di accesso al codice, e l'uso di questo codice, in qualsiasi momento.
 L'accordo di licenza del software {{site.data.keyword.blockchainfull_notm}} Platform for AWS contiene ulteriori dettagli sui termini di licenza. Quando avvii Quick Start, ti viene chiesto di leggere e accettare i termini dell'accordo.

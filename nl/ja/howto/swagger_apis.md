@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-08-31"
+  years: 2018,2019
+lastupdated: "2019-02-08"
 
 ---
 
@@ -13,6 +13,7 @@ lastupdated: "2018-08-31"
 {:pre: .pre}
 
 # Swagger API を使用したネットワークとの対話
+{: #ibp-swagger}
 
 
 ***[このページは参考になりましたか。 ご意見をお聞かせください。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
@@ -26,8 +27,7 @@ lastupdated: "2018-08-31"
 
 
 ## ネットワーク資格情報の取得
-
-{: #retrieving-network-credentials}
+{: #ibp-swagger-retrieving-network-credentials}
 
 ブロックチェーン・ネットワークのネットワーク・モニターに入り、左側のナビゲーターから「API」画面を開きます。 REST API のネットワーク資格情報が表示されます。 後で、ここに表示された「key」と「secret」の値を使用して API を許可し、「network_id」をパラメーターとして使用して API を実行します。 **「secret の表示 (Show secret)」**をクリックして secret フィールドの値を表示します。 key、secret、および network_id フィールドの値をコピーします。これらの値は、後で Swagger UI で使用できます。
 
@@ -44,6 +44,7 @@ Starter Plan を使用している場合は、ネットワーク・モニター�
 
 
 ## Swagger API の許可
+{: #ibp-swagger-authorizing-swagger}
 
 「API」画面の**「Swagger UI」**リンクをクリックして Swagger UI を開きます。  
 <!-- remove this line because the link is different depending on if you are starter or enterprise plan
@@ -61,6 +62,7 @@ Swagger UI で、**「許可 (Authorize)」**ボタンをクリックします�
 
 
 ## API の試行
+{: #ibp-swagger-try-out}
 
 実行する REST API をクリックして、**「試行する」**ボタンをクリックします。
 
@@ -84,9 +86,14 @@ Swagger UI で、**「許可 (Authorize)」**ボタンをクリックします�
 *図 6. API 応答*    
 
 ## トラブルシューティングのヒント
+{: #ibp-swagger-troubleshooting}
 
 ### 401 認証が必要  
-  ネットワーク資格情報を指定して REST API を許可したことを確認してください。 詳しくは、[Swagger API の許可](#authorizing-swagger-apis)を参照してください。
+{: #ibp-swagger-401}
+
+  ネットワーク資格情報を指定して REST API を許可したことを確認してください。 詳しくは、[Swagger API の許可](/docs/services/blockchain/howto/swagger_apis.html#ibp-swagger-authorizing-swagger)を参照してください。
 
 ### 400 エラー: 間違った要求
+{: #ibp-swagger-400}
+
   API によっては、要求の本体で引数が使用される場合があります。この引数は、特定のピアに関する結果のみを表示するためのフィルターの機能を果たします。 本体の中にサンプル・スニペットが記述されています。このサンプル・スニペットが使用されている場合は、編集して、フィルターに掛けるピアまたはピアのリストを指定する必要があります。 このエラーを回避するには、スニペットを編集してネットワーク内のピアを指定するか、スニペット全体を削除します。

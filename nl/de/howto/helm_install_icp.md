@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-12-07"
+  years: 2017, 2019
+lastupdated: "2019-02-08"
 
 ---
 
@@ -10,16 +10,19 @@ lastupdated: "2018-12-07"
 {:shortdesc: .shortdesc}
 {:screen: .screen}
 {:codeblock: .codeblock}
+{:note: .note}
+{:important: .important}
+{:tip: .tip}
 {:pre: .pre}
 
 # {{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}} Private installieren
-{: #remote-peer-icp}
+{: #helm-install}
 
-{{site.data.keyword.blockchainfull}} Platform for {{site.data.keyword.cloud_notm}} Private wird als Helm-Diagrammdatei geliefert, die on einem lokalen ICP-Cluster installiert werden kann. Nachdem Sie das Helm-Diagramm installiert haben, finden Sie {{site.data.keyword.blockchainfull_notm}} Platform als Anwendung im ICP-Katalog.
+{{site.data.keyword.blockchainfull}} Platform for {{site.data.keyword.cloud_notm}} Private wird als Helm-Diagrammdatei geliefert, die in einem lokalen {{site.data.keyword.cloud_notm}} Private-Cluster installiert werden kann. Nachdem Sie das Helm-Diagramm installiert haben, finden Sie {{site.data.keyword.blockchainfull_notm}} Platform als Anwendung im {{site.data.keyword.cloud_notm}} Private-Katalog.
 
-Lesen Sie vor der Installation von {{site.data.keyword.blockchainfull_notm}} Platform for ICP die  [Hinweise und Einschränkungen](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-considerations). Weitere Informationen zum Bereitstellen der Blockchain-Komponenten, die im Helm-Diagramm enthalten sind, finden Sie im Abschnitt  [Informationen zu {{site.data.keyword.blockchainfull_notm}} Platform for ICP](/docs/services/blockchain/ibp-for-icp-about.html).
+Lesen Sie vor der Installation von {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private die [Hinweise und Einschränkungen](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-about-considerations). Weitere Informationen zum Bereitstellen der Blockchain-Komponenten, die im Helm-Diagramm enthalten sind, finden Sie im Abschnitt [Informationen zu {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-about).
 
-{{site.data.keyword.blockchainfull_notm}} Platform for ICP steht in zwei Editionen zur Verfügung:
+{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private steht in zwei Editionen zur Verfügung:
 
 - {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private wird über Passport Advantage (PPA) bereitgestellt. Sie benötigen die erforderliche Lizenz, um auf  [Passport Advantage Online ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://www.ibm.com/software/passportadvantage/pao_customer.html "Passport Advantage Online") zugreifen zu können. Die technische Unterstützung für {{site.data.keyword.blockchainfull_notm}} Platform ist im Kauf enthalten.
 
@@ -28,14 +31,14 @@ Lesen Sie vor der Installation von {{site.data.keyword.blockchainfull_notm}} Pla
 ## Voraussetzungen für die Installation des Helm-Diagramms
 {: #helm-install-prereqs}
 
-Vor der Installation des Helm-Diagramms müssen Sie einen ICP-Cluster konfiguriert haben. Lesen Sie hierzu die Anweisungen im Abschnitt über die  [Einrichtung und Konfiguration eines ICP-Clusters](/docs/services/blockchain/ICP_setup.html).
+Vor der Installation des Helm-Diagramms müssen Sie einen {{site.data.keyword.cloud_notm}} Private-Cluster konfiguriert haben. Lesen Sie hierzu die Anweisungen im Abschnitt über die [Einrichtung und Konfiguration eines {{site.data.keyword.cloud_notm}} Private-Clusters](/docs/services/blockchain/ICP_setup.html#icp-setup).
 
 ## {{site.data.keyword.blockchainfull_notm}} Platform hinter einer Firewall installieren
 {: #helm-install-prereqs-firewall}
 
 Sie können die Komponenten von {{site.data.keyword.blockchainfull_notm}} Platform hinter einer Firewall ohne Internetkonnektivität bereitstellen. Das PPA-Paket für das Helm-Diagramm enthält alle Docker-Images für die Fabric-Komponenten, die von {{site.data.keyword.blockchainfull_notm}} Platform verwendet werden; die Komponenten müssen nicht während der Bereitstellung von Docker Hub heruntergeladen werden.
 
-Das Helm-Diagramm für Community Edition enthält jedoch nicht die erforderlichen Docker-Images für die Fabric-Komponenten, weil diese Edition so konfiguriert ist, dass die entsprechenden Images während der Bereitstellung von Docker Hub heruntergeladen werden. Falls keine Internetkonnektivität besteht, schlägt die Bereitstellung fehl. Daher müssen Sie zusätzliche Schritte ausführen, um auf einer Maschine mit Internetverbindung Archive zu erstellen, bevor Sie die Archive in Ihrem ICP-Cluster installieren können. Die folgenden Images sind erforderlich:
+Das Helm-Diagramm für Community Edition enthält jedoch nicht die erforderlichen Docker-Images für die Fabric-Komponenten, weil diese Edition so konfiguriert ist, dass die entsprechenden Images während der Bereitstellung von Docker Hub heruntergeladen werden. Falls keine Internetkonnektivität besteht, schlägt die Bereitstellung fehl. Daher müssen Sie zusätzliche Schritte ausführen, um auf einer Maschine mit Internetverbindung Archive zu erstellen, bevor Sie die Archive in Ihrem {{site.data.keyword.cloud_notm}} Private-Cluster installieren können. Die folgenden Images sind erforderlich:
 - [Fabric-Peer ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://hub.docker.com/r/ibmcom/ibp-fabric-peer/ "Fabric peer")
 - [Fabric-Zertifizierungsstelle ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://hub.docker.com/r/ibmcom/ibp-fabric-ca/ "Fabric CA")
 - [Fabric-Anordnungsknoten ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://hub.docker.com/r/ibmcom/ibp-fabric-orderer/ "Fabric orderer")
@@ -45,11 +48,11 @@ Das Helm-Diagramm für Community Edition enthält jedoch nicht die erforderliche
 
 Weitere Informationen zur Verwendung dieser Images finden Sie unter  [Ausgewählte Anwendungen ohne Internetverbindung zu Clustern hinzufügen ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_package_offline.html). Die Spezifikationsdatei `manifest.yaml` ist im Helm-Diagramm unter dem Verzeichnis  `ibm-blockchain-platform-dev/ibm_cloud_pak` zu finden.
 
-## Helm-Diagramm in ICP importieren
+## Helm-Diagramm in {{site.data.keyword.cloud_notm}} Private importieren
 
-1. Laden Sie die Helm-Diagrammdatei für IBM Blockchain Platform for ICP bei [Passport Advantage Online ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://www.ibm.com/software/passportadvantage/pao_customer.html "Passport Advantage Online") oder für die kostenlose Community Edition bei [GitHub ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://github.com/IBM/charts/blob/master/repo/stable/ibm-blockchain-platform-dev-1.0.0.tgz "IBM/charts") herunter.  Dieses Helm-Diagrammpaket enthält drei untergeordnete Helm-Diagramme für die Zertifizierungsstelle, den Anordnungsknoten und den Peer.
+1. Laden Sie die Helm-Diagrammdatei für IBM Blockchain Platform for {{site.data.keyword.cloud_notm}} Private bei [Passport Advantage Online ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://www.ibm.com/software/passportadvantage/pao_customer.html "Passport Advantage Online") oder für die kostenlose Community Edition bei [GitHub ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://github.com/IBM/charts/blob/master/repo/stable/ibm-blockchain-platform-dev-1.0.0.tgz "IBM/charts") herunter. Dieses Helm-Diagrammpaket enthält drei untergeordnete Helm-Diagramme für die Zertifizierungsstelle, den Anordnungsknoten und den Peer.
 
-2. Melden Sie sich bei Ihrem ICP-Cluster an, wenn Sie dort noch nicht angemeldet sind.
+2. Wenn Sie sich noch nicht angemeldet haben, melden Sie sich bei Ihrem {{site.data.keyword.cloud_notm}} Private-Cluster an.
 
   ```
   cloudctl login -a https://<cluster_CA_domain>:8443 --skip-ssl-validation
@@ -62,7 +65,7 @@ Weitere Informationen zur Verwendung dieser Images finden Sie unter  [Ausgewähl
   ```
   {:codeblock}
 
-5. Suchen Sie mit dem folgenden Befehl nach dem Namen des Repositorys in ICP, um das Helm-Diagramm hochzuladen:
+5. Suchen Sie mit dem folgenden Befehl nach dem Namen des Repositorys in {{site.data.keyword.cloud_notm}} Private, um das Helm-Diagramm hochzuladen:
   ```
   cloudctl catalog repos
   ```
@@ -70,11 +73,13 @@ Weitere Informationen zur Verwendung dieser Images finden Sie unter  [Ausgewähl
 
   Wenn dieser Befehl erfolgreich ausgeführt wurde, wird eine Liste der Repositorys in Ihrem Cluster angezeigt. Wählen Sie den Namen des Zielrepositorys aus und speichern Sie ihn. Sie benötigen ihn im folgenden Befehl.
 
-6. Importieren Sie das Helm-Diagramm über die Befehlszeile. Welchen Befehl Sie zum Importieren des Helm-Diagramms ausführen müssen, ist davon abhängig, ob Sie das Helm-Diagramm bei Passport Advantage (PPA) oder bei GitHub heruntergeladen haben.
+6. Importieren Sie das Helm-Diagramm über die Befehlszeile.
+  Welchen Befehl Sie zum Importieren des Helm-Diagramms ausführen müssen, ist davon abhängig, ob Sie das Helm-Diagramm bei Passport Advantage (PPA) oder bei GitHub heruntergeladen haben.
 
   - **{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private**
 
-    Befolgen Sie diese Anweisungen, wenn Sie das Helm-Diagramm bei PPA heruntergeladen haben. Führen Sie den folgenden Befehl in der ICP-CLI ausgehend von dem Verzeichnis aus, in dem Sie das bei PPA heruntergeladene Helm-Diagrammpaket gespeichert haben, um das Helm-Diagramm in Ihren ICP-Cluster zu importieren.
+    Befolgen Sie diese Anweisungen, wenn Sie das Helm-Diagramm bei PPA heruntergeladen haben.
+    Führen Sie den folgenden Befehl in der {{site.data.keyword.cloud_notm}} Private-CLI ausgehend von dem Verzeichnis aus, in dem Sie das bei PPA heruntergeladene Helm-Diagrammpaket gespeichert haben, um das Helm-Diagramm in Ihren {{site.data.keyword.cloud_notm}} Private-Cluster zu importieren.
 
     ```
     cloudctl catalog load-archive --archive <archive-name> --registry <cluster_CA_domain>:8500 --repo <repo-name>
@@ -83,10 +88,12 @@ Weitere Informationen zur Verwendung dieser Images finden Sie unter  [Ausgewähl
 
     Ersetzen Sie hierbei die folgenden Werte:
     - `<archive-name>` durch den Namen der heruntergeladenen Datei `.tgz`
-    - `<cluster_CA_domain>:8500` durch die Domäne, die Sie zur Anmeldung bei Ihrem ICP-Cluster nutzen
-    - `<repo-name>` durch das Helm-Repository, in das Sie das Diagramm hochladen wollen (mit dem Befehl 'cloudctl catalog repos' können Sie Ihre Repositorys auflisten)
+    - `<cluster_CA_domain>:8500` durch die Domäne, die Sie zur Anmeldung bei Ihrem {{site.data.keyword.cloud_notm}} Private-Cluster nutzen
+    - `<repo-name>` durch das Helm-Repository, in das Sie das Diagramm hochladen wollen ( mit dem Befehl 'cloudctl catalog repos' können Sie Ihre Repositorys auflisten)
 
     Wenn dieser Befehl erfolgreich ausgeführt wird, werden Informationen ähnlich den Folgenden angezeigt:
+
+    <details><summary>Helm install output</summary>
     ```
     Expanding archive
     OK
@@ -169,7 +176,7 @@ Weitere Informationen zur Verwendung dieser Images finden Sie unter  [Ausgewähl
   - **Bei GitHub heruntergeladene Community Edition**
     Befolgen Sie diese Anweisungen, wenn Sie das Helm-Diagramm bei GitHub heruntergeladen haben.
 
-    Führen Sie in dem Verzeichnis, in dem Sie das heruntergeladene Helm-Diagramm gespeichert haben, den folgenden Befehl in der ICP-Befehlszeilenschnittstelle aus, um das Helm-Diagramm in Ihren ICP-Cluster zu importieren. Importieren Sie das bei GitHub heruntergeladene Helm-Diagramm mit dem folgenden Befehl:
+    Führen Sie den folgenden Befehl in der {{site.data.keyword.cloud_notm}} Private-CLI ausgehend von dem Verzeichnis aus, in dem Sie das bei GitHub heruntergeladene Helm-Diagrammpaket gespeichert haben, um das Helm-Diagramm in Ihren {{site.data.keyword.cloud_notm}} Private-Cluster zu importieren. Importieren Sie das bei GitHub heruntergeladene Helm-Diagramm mit dem folgenden Befehl:
     ```
     cloudctl catalog load-chart --archive <helm_chart_from_github> --repo <repo-name>
     ```
@@ -177,7 +184,7 @@ Weitere Informationen zur Verwendung dieser Images finden Sie unter  [Ausgewähl
 
     Ersetzen Sie hierbei die folgenden Werte:
     - `<helm_chart_from_github>` durch den Namen der heruntergeladenen Datei ".tgz"
-    - `<repo-name>` durch das Helm-Repository, in das Sie das Diagramm hochladen wollen (mit dem Befehl 'cloudctl catalog repos' können Sie Ihre Repositorys auflisten)
+    - `<repo-name>` durch das Helm-Repository, in das Sie das Diagramm hochladen wollen ( mit dem Befehl 'cloudctl catalog repos' können Sie Ihre Repositorys auflisten)
 
     Wenn dieser Befehl erfolgreich ausgeführt wird, werden Informationen ähnlich den Folgenden angezeigt:
     ```
@@ -189,12 +196,12 @@ Weitere Informationen zur Verwendung dieser Images finden Sie unter  [Ausgewähl
   OK
     ```
 
-Klicken Sie in der ICP-Konsole auf die Schaltfläche **Katalog** und dann im linken Navigationsfenster auf  **Blockchain**, um zu prüfen, ob der Import erfolgreich verlaufen ist. Wenn dies der Fall ist, sollte auf der ICP-Seite "Katalog" die Kachel **ibm-blockchain-platform-prod** oder **ibm-blockchain-platform-dev** angezeigt werden.
+Klicken Sie in der {{site.data.keyword.cloud_notm}} Private-Konsole auf die Schaltfläche **Katalog** und dann im linken Navigationsfenster auf **Blockchain**, um zu prüfen, ob der Import erfolgreich verlaufen ist. Wenn dies der Fall ist, sollte auf der {{site.data.keyword.cloud_notm}} Private-Seite "Katalog" die Kachel **ibm-blockchain-platform-prod** oder **ibm-blockchain-platform-dev** angezeigt werden.
 
 
 ## Voraussetzungen für Podsicherheitsrichtlinie (PodSecurityPolicy)
 
-Nachdem Sie das Helm-Diagramm in {{site.data.keyword.cloud_notm}} Private importiert haben, müssen Sie vor der Installation der Komponenten eine [Podsicherheitsrichtlinie (PodSecurityPolicy) ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://kubernetes.io/docs/concepts/policy/pod-security-policy/ "Pod Security Policies") an den Zielnamensbereich binden. Wählen Sie entweder eine vordefinerte Podsicherheitsrichtlinie aus oder lassen Sie von Ihrem Clusteradministrator eine Podsicherheitsrichtlinie erstellen:
+Nachdem Sie das Helm-Diagramm in {{site.data.keyword.cloud_notm}} Private importiert haben, müssen Sie vor der Installation der Komponenten eine [Podsicherheitsrichtlinie (PodSecurityPolicy) ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://kubernetes.io/docs/concepts/policy/pod-security-policy/ "Pod Security Policies") an den Zielnamensbereich binden.  Wählen Sie entweder eine vordefinerte Podsicherheitsrichtlinie aus oder lassen Sie von Ihrem Clusteradministrator eine Podsicherheitsrichtlinie erstellen:
 - Name der vordefinierten Podsicherheitsrichtlinie (PodSecurityPolicy): [`ibm-privileged-psp`](https://ibm.biz/cpkspec-psp)
 - Definition einer angepassten Podsicherheitsrichtlinie:
   ```
@@ -279,10 +286,10 @@ Nachdem Sie das Helm-Diagramm in {{site.data.keyword.cloud_notm}} Private import
 
 ## Einzelne Komponenten bereitstellen
 
-Klicken Sie nach der Installation des Helm-Diagramms in Ihrem ICP-Katalog auf die Kachel **ibm-blockchain-platform-prod** oder **ibm-blockchain-platform-dev**, um sie zu öffnen. Auf der Konfigurationsseite können Sie jede gewünschte Komponente Ihres Blockchain-Netzes einzeln bereitstellen. Weitere Informationen zu den Komponenten, die für Ihre Blockchain-Lösung erforderlich sind, und zu der Reihenfolge, in der sie bereitgestellt werden müssen, enthält das Handbuch [{{site.data.keyword.blockchainfull_notm}} Platform for ICP - Bereitstellung](/docs/services/blockchain/ibp_for_icp_deployment_guide.html).
+Klicken Sie nach der Installation des Helm-Diagramms in Ihrem {{site.data.keyword.cloud_notm}} Private-Katalog auf die Kachel **ibm-blockchain-platform-prod** oder **ibm-blockchain-platform-dev**, um sie zu öffnen. Auf der Konfigurationsseite können Sie jede gewünschte Komponente Ihres Blockchain-Netzes einzeln bereitstellen. Weitere Informationen zu den Komponenten, die für Ihre Blockchain-Lösung erforderlich sind, und zu der Reihenfolge, in der sie bereitgestellt werden müssen, finden Sie in der [Einführung zu {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/ibp_for_icp_deployment_guide.html#get-started-icp).
 
 Stellen Sie anschließend die einzelnen Komponenten bereit:
 
-- Falls Sie einen Anordnungsknoten bereitstellen wollen, müssen Sie zunächst eine Zertifizierungsstelle für den Anordnungsknoten einrichten. Die Zertifizierungsstelle generiert Zertifikate, die von anderen Komponenten in Ihrer Organisation verwendet werden. Weitere Informationen enthält der Abschnitt [Zertifizierungsstelle für {{site.data.keyword.blockchainfull_notm}} Platform in ICP bereitstellen](/docs/services/blockchain/howto/CA_deploy_icp.html). Anschließend können Sie den Anordnungsknoten bereitstellen, der als allgemeine Bindung des Netzes dient. Weitere Informationen finden Sie unter [Anordnungsknoten von {{site.data.keyword.blockchainfull_notm}} Platform in ICP bereitstellen](/docs/services/blockchain/howto/orderer_deploy_icp.html).
+- Falls Sie einen Anordnungsknoten bereitstellen wollen, müssen Sie zunächst eine Zertifizierungsstelle für den Anordnungsknoten einrichten. Die Zertifizierungsstelle generiert Zertifikate, die von anderen Komponenten in Ihrer Organisation verwendet werden. Weitere Informationen enthält der Abschnitt [Zertifizierungsstelle für {{site.data.keyword.blockchainfull_notm}} Platform in {{site.data.keyword.cloud_notm}} Private bereitstellen](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy). Anschließend können Sie den Anordnungsknoten bereitstellen, der als allgemeine Bindung des Netzes dient. Weitere Informationen finden Sie unter [Anordnungsknoten von {{site.data.keyword.blockchainfull_notm}} Platform in {{site.data.keyword.cloud_notm}} Private bereitstellen](/docs/services/blockchain/howto/orderer_deploy_icp.html#icp-orderer-deploy).
 
-- Falls Sie einen Peer bereitstellen wollen, müssen Sie zunächst eine Zertifizierungsstelle für den Peer einrichten. Die Zertifizierungsstelle generiert Zertifikate, die vom Peer verwendet werden. Weitere Informationen enthält der Abschnitt [Zertifizierungsstelle für {{site.data.keyword.blockchainfull_notm}} Platform in ICP bereitstellen](/docs/services/blockchain/howto/CA_deploy_icp.html). Sobald Sie anschließend bereit dafür sind, an einem Netz teilzunehmen, können Sie die Peers bereitstellen, die Kanälen beitreten, Transaktionen zulassen und Ihre Daten speichern. Weitere Informationen finden Sie abhängig von dem Blockchain-Netz, an dem der Peer teilnehmen soll, im Abschnitt [{{site.data.keyword.blockchainfull_notm}}-Peer in ICP bereitstellen](/docs/services/blockchain/howto/peer_deploy_icp.html) bzw. [{{site.data.keyword.blockchainfull_notm}}-Peer für Starter Plan- oder Enterprise Plan-Netz bereitstellen](/docs/services/blockchain/howto/peer_deploy_ibp.html).
+- Falls Sie einen Peer bereitstellen wollen, müssen Sie zunächst eine Zertifizierungsstelle für den Peer einrichten. Die Zertifizierungsstelle generiert Zertifikate, die vom Peer verwendet werden. Weitere Informationen enthält der Abschnitt [Zertifizierungsstelle für {{site.data.keyword.blockchainfull_notm}} Platform in {{site.data.keyword.cloud_notm}} Private bereitstellen](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy). Sobald Sie anschließend bereit dafür sind, an einem Netz teilzunehmen, können Sie die Peers bereitstellen, die Kanälen beitreten, Transaktionen zulassen und Ihre Daten speichern. Weitere Informationen finden Sie abhängig von dem Blockchain-Netz, an dem der Peer teilnehmen soll, im Abschnitt [{{site.data.keyword.blockchainfull_notm}}-Peer in {{site.data.keyword.cloud_notm}} Private bereitstellen](/docs/services/blockchain/howto/peer_deploy_icp.html#icp-peer-deploy) oder [{{site.data.keyword.blockchainfull_notm}}-Peer für Starter Plan- oder Enterprise Plan-Netz bereitstellen](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy).

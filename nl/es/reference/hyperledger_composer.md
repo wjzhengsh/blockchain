@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-31"
+lastupdated: "2018-12-08"
 ---
 
 {:new_window: target="_blank"}
@@ -15,6 +15,7 @@ lastupdated: "2018-08-31"
 # Hyperledger Composer
 {: #hyperledger-composer}
 
+**IBM recomienda el uso de Hyperledger Composer únicamente para demostraciones y pruebas de concepto. IBM no proporciona soporte para redes que utilicen Hyperledger Composer en producción, incluyendo la CLI de Composer, las API de JavaScript, el servidor REST y Web Playground.**
 
 ***[¿Le resulta útil esta página? Indíquenos su opinión.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
@@ -29,7 +30,7 @@ Hyperledger Composer se compone de un entorno de ejecución, una interfaz de lí
 
 Hyperledger Composer le permite modelar rápidamente su red empresarial actual, que contiene los activos existentes y las transacciones relacionadas con los mismos; los activos son bienes, servicios o propiedades tangibles o intangibles. Como parte de su modelo de red empresarial, defina las transacciones que pueden interactuar con activos. Las redes empresariales también incluyen los participantes que interactúan con las mismas, cada uno de los cuales se puede asociar a una identidad exclusiva, entre varias redes empresariales.
 
-Para obtener más información sobre cómo crear redes empresariales, consulte [Desarrollo de redes empresariales](/docs/services/blockchain/develop.html) o la [documentación de Hyperledger Composer ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger.github.io/composer/latest/introduction/introduction.html).
+Para obtener más información sobre cómo crear redes empresariales, consulte [Desarrollo de redes empresariales](../develop.html) o la [documentación de Hyperledger Composer ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger.github.io/composer/latest/introduction/introduction.html).
 
 ## Consultas
 

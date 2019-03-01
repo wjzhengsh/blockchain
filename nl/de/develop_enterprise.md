@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-12-07"
+lastupdated: "2018-12-08"
 
 ---
 
@@ -16,6 +16,7 @@ lastupdated: "2018-12-07"
 # Unternehmensnetz im Enterprise Plan bereitstellen
 {: #deploying-a-business-network}
 
+**IBM empfiehlt die Verwendung von Hyperledger Composer ausschließlich für Demonstrationszwecke und Machbarkeitsnachweise. IBM bietet keinen Support für Netze, die Hyperledger Composer in Produktionsumgebungen nutzen, inklusive Composer-Befehlszeilenschnittstelle, JavaScript-APIs, REST-Server und Web Playground.**
 
 ***[Ist diese Seite hilfreich? Teilen Sie uns Ihre Meinung mit.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
@@ -28,7 +29,7 @@ Dieses Lernprogramm erläutert den nächsten Schritt des Lebenszyklus eines Unte
 
 Stellen Sie sicher, dass Sie die {{site.data.keyword.blockchainfull_notm}}-Entwicklerumgebung installiert haben und mit der Entwicklung und Bereitstellung von Unternehmensnetzen vertraut sind. Anleitungen zum Schreiben von Unternehmensnetzen sind in der [Hyperledger Composer-Dokumentation](https://hyperledger.github.io/composer/latest/business-network/business-network-index) verfügbar.
 
-Sie benötigen Zugriff auf eine Enterprise Plan-Instanz von {{site.data.keyword.blockchainfull_notm}} Platform und müssen bereits Ihre Peers erstellt haben. Weitere Informationen zum {{site.data.keyword.blockchainfull_notm}} Platform Enterprise Plan finden Sie in der [Übersicht zu Enterprise Plan](/docs/services/blockchain/enterprise_plan.html).
+Sie benötigen Zugriff auf eine Enterprise Plan-Instanz von {{site.data.keyword.blockchainfull_notm}} Platform und müssen bereits Ihre Peers erstellt haben. Weitere Informationen zum {{site.data.keyword.blockchainfull_notm}} Platform Enterprise Plan finden Sie in der [Übersicht zu Enterprise Plan](./enterprise_plan.html).
 
 ## Schritt 1: Verbindungsprofil für {{site.data.keyword.blockchainfull_notm}} Platform erstellen
 
@@ -67,7 +68,7 @@ Sie benötigen Zugriff auf eine Enterprise Plan-Instanz von {{site.data.keyword.
 
 **Hinweis:** Dieser Schritt **muss** ausgeführt werden, bevor Sie den Kanal erstellen, für den ein Unternehmensnetz bereitgestellt werden soll. Falls dieser Schritt nach der Kanalerstellung ausgeführt wird, lässt sich ein bereitgestelltes Unternehmensnetz **möglicherweise nicht starten**.
 
-Im Verbindungsprofildokument befindet sich unter **certificateAuthorities** ein Attribut namens  **registrar**, das Attribute für **enrollId** und **enrollSecret** mit dem folgenden Format enthält:
+Im Verbindungsprofildokument befindet sich unter **certificateAuthorities** ein Attribut namens **registrar**, das Attribute für **enrollId** und **enrollSecret** mit dem folgenden Format enthält:
 
  ```
         "registrar": [
