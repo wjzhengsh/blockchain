@@ -53,9 +53,9 @@ To use Swagger APIs to create or join a network, you need a basic authentication
     {
       "org1": {
         "url": "https://ibp-sp.us-south.ibm-blockchain-5-prod.cloud.ibm.com",
-        "network_id": "n5edfb60c998940c5933daca2be76974a",
+        "network_id": "n5edf19260c998940c5933daca2be76974a",
         "key": "org1",
-        "secret": "A8YeuUuNvKVbN5cVGO9SpaaHCVxYiP0uEN0fviQB2W9_ldJLtMSOSHqkUpkqysMA"
+        "secret": "A8YeuUuNvKVbN5cVGOlwprpaaHCVxYiP0uEN0fviQB2W9_ldJLtMSOSHqkUpkqysMA"
         }
     }    
     ```
