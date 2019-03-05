@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -15,8 +17,6 @@ lastupdated: "2019-02-08"
 
 # Getting started with Starter Plan
 {: #getting-started-with-starter-plan}
-
-***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 {{site.data.keyword.blockchainfull}} Platform Starter Plan offers you a pre-configured blockchain network with a single click. It provisions a permissioned network with the configuration of two [organizations](/docs/services/blockchain/glossary.html#glossary-organization), one [peer](/docs/services/blockchain/glossary.html#glossary-peer) per each organization, and one [channel](/docs/services/blockchain/glossary.html#glossary-channel) by default. After the network is created, you can scale and add more organizations and peers to your network. These networks are intended for novice users who are new to the {{site.data.keyword.blockchainfull_notm}} Platform. <!--Note that it might cause extra cost if you exceed the default resource limits of two organizations and two peers.-->
 {:shortdesc}
@@ -70,7 +70,7 @@ After you form your consortium, you need to write the chaincode, also known as s
 
 You can get a Starter Plan [network](/docs/services/blockchain/glossary.html#glossary-network) with the default configuration immediately after you create an {{site.data.keyword.blockchainfull_notm}} Platform service instance.
 
-1. Locate the [Blockchain service ![External link icon](images/external_link.svg "External link icon")](https://console.bluemix.net/catalog/services/blockchain) in {{site.data.keyword.cloud_notm}} Catalog.
+1. Locate the [Blockchain service ![External link icon](images/external_link.svg "External link icon")](https://cloud.ibm.com/catalog/services/ibm-blockchain-5-prod) in {{site.data.keyword.cloud_notm}} Catalog.
     **Note**: You need to log in with your {{site.data.keyword.cloud_notm}} paid account. If you do not have an account, click the **Sign up to Create** button. After you create a free trial account, upgrade it to a **Pay-As-You-Go** type by going to **Manage** > **Billing and Usage** > **Billing** in the {{site.data.keyword.cloud_notm}} console, and clicking **Add Credit Card**.
 2. Choose the region in {{site.data.keyword.cloud_notm}} to create the network.
 3. Select your Cloud Foundry organization and space to create the network.
@@ -79,7 +79,7 @@ You can get a Starter Plan [network](/docs/services/blockchain/glossary.html#glo
   Now you're ready to use your Starter Plan network with the default configuration. The network is running with one orderer (known as a "SOLO" ordering service), two organizations, one CA, and one peer per each organization. A default channel is also created.
 6. Click the **Launch** button.
 
-You can find your blockchain service instance in your [{{site.data.keyword.Bluemix_notm}} service dashboard ![External link icon](images/external_link.svg "External link icon")](https://console.bluemix.net/dashboard/services "{{site.data.keyword.Bluemix_notm}} service dashboard").
+You can find your blockchain service instance in your [{{site.data.keyword.cloud_notm}} service dashboard ![External link icon](images/external_link.svg "External link icon")](https://cloud.ibm.com/resources "{{site.data.keyword.cloud_notm}} service dashboard").
 
 
 ## Inviting members
@@ -98,7 +98,7 @@ You can invite other [organizations](/docs/services/blockchain/glossary.html#glo
 
 If you are invited by a network initiator, you will receive an email notification with instructions on how to join the network. Follow the instructions in the email, and you will become one of the members in the network.
 
-You need to create a [{{site.data.keyword.blockchain}} Platform service instance ![External link icon](images/external_link.svg "External link icon")](https://console.bluemix.net/catalog/services/blockchain) with Starter Plan membership option in {{site.data.keyword.cloud_notm}}.
+You need to create an [{{site.data.keyword.blockchainfull_notm}} Platform service instance ![External link icon](images/external_link.svg "External link icon")](https://cloud.ibm.com/catalog/services/ibm-blockchain-5-prod) with Starter Plan membership option in {{site.data.keyword.cloud_notm}}.
 
 1. Log in with your {{site.data.keyword.cloud_notm}} account. If you do not have an account, click the **Sign up to Create** button.
 2. Select the Cloud Foundry organization where you want to store your {{site.data.keyword.blockchain}} network.
@@ -106,7 +106,7 @@ You need to create a [{{site.data.keyword.blockchain}} Platform service instance
 4. Click the **Create** button. The service instance page opens with a pop-up welcome panel. Note that you can choose to join a network or continue to create your own one. To create a network, see step 4 in [Creating a network](/docs/services/blockchain/get_start_starter_plan.html#getting-started-with-starter-plan-creating-a-network).
 5. On the welcome panel, choose **Join existing network**, select the network to join from the drop-down list, and click **Continue**.
 
-You can find your blockchain service instance in the [{{site.data.keyword.cloud_notm}} service dashboard ![External link icon](images/external_link.svg "External link icon")](https://console.bluemix.net/dashboard/services "{{site.data.keyword.cloud_notm}} service dashboard").
+You can find your blockchain service instance in the [{{site.data.keyword.cloud_notm}} service dashboard ![External link icon](images/external_link.svg "External link icon")](https://cloud.ibm.com/resources "{{site.data.keyword.cloud_notm}} service dashboard").
 
 
 ## Create channels
@@ -160,7 +160,7 @@ After you create a Starter Plan network in {{site.data.keyword.cloud_notm}}, you
 ### Retrieving from the service instance page
 {: #getting-started-with-starter-plan-retrieve-service-instance}
 
-You are on the service instance page right after you create a service instance. You can also click your service in the [{{site.data.keyword.cloud_notm}} service dashboard ![External link icon](images/external_link.svg "External link icon")](https://console.bluemix.net/dashboard/services "{{site.data.keyword.cloud_notm}} service dashboard") to open your service instance page.
+You are on the service instance page right after you create a service instance. You can also click your service in the [{{site.data.keyword.cloud_notm}} service dashboard ![External link icon](images/external_link.svg "External link icon")](https://cloud.ibm.com/resources "{{site.data.keyword.cloud_notm}} service dashboard") to open your service instance page.
 
 Retrieve your service credentials with the following steps:
 1. On the service instance page, click **Service credentials** in the left navigator to show the "Service credentials" screen.

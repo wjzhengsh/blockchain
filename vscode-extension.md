@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -17,9 +19,6 @@ lastupdated: "2019-02-08"
 
 # Tools for smart contracts
 {: #develop-vscode}
-
-***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 
 The {{site.data.keyword.blockchainfull}} Platform Visual Studio Code extension provides an environment within Visual Studio Code for developing, packaging, and deploying smart contract packages. The extension also includes commands to set up a preconfigured local instance of Hyperledger Fabric for simplified local smart contract development.
 
@@ -95,7 +94,7 @@ To connect to the preconfigured Hyperledger Fabric instance, first ensure Docker
 
 To restart the `local_fabric` runtime:
 
-1. Right-click the `local_fabric` connection when it is established.
+1. Right-click on the `local_fabric` connection when it is established.
 2. Select **Restart Fabric Runtime**.
 
 The Hyperledger Fabric containers will be stopped and restarted.
@@ -105,7 +104,7 @@ The Hyperledger Fabric containers will be stopped and restarted.
 
 To teardown the `local_fabric` runtime:
 
-1. Right-click the `local_fabric` connection when it is established.
+1. Right-click on the `local_fabric` connection when it is established.
 2. Select **Teardown Fabric Runtime**.
 
 Performing a teardown of the `local_fabric` network will close all Hyperledger Fabric containers. **Please note**: This will result in the loss of the ledger and world state data.
@@ -117,7 +116,7 @@ In normal operation, a peer will create and maintain a chaincode container to ru
 
 To enable development mode with the preconfigured Hyperledger Fabric runtime:
 
-1. Right-click the `local_fabric` connection when it is established.
+1. Right-click on the `local_fabric` connection when it is established.
 2. Select **Toggle Development Mode**.
 
 Development mode must be enabled in order to use the debugging feature of the extension.
@@ -129,13 +128,13 @@ The {{site.data.keyword.blockchainfull_notm}} Platform Visual Studio Code extens
 
 **Note:** Currently the extension is not compatible with {{site.data.keyword.blockchainfull_notm}} Platform Enterprise Plan.
 
-1. If you don't have an instance of {{site.data.keyword.blockchainfull_notm}} Platform Starter Plan, [create one ![External link icon](images/external_link.svg "External link icon")](https://console.bluemix.net/catalog/services/blockchain).
+1. If you don't have an instance of {{site.data.keyword.blockchainfull_notm}} Platform Starter Plan, [create one ![External link icon](images/external_link.svg "External link icon")](https://cloud.ibm.com/catalog/services/ibm-blockchain-5-prod).
 2. Open the {{site.data.keyword.blockchainfull_notm}} Platform UI by clicking **Launch**.
 3. Retrieve your connection profile by clicking **Overview** > **Connection Profile** > **Download**.
 4. Generate the required admin certificates by clicking **Certificate Authority** > **Generate Certificate** and saving the certificate and private key to your file system.
 5. Add the certificates to your {{site.data.keyword.blockchainfull_notm}} Platform Starter Plan instance by clicking **Members** > **Certificates** > **Add Certificate**, and selecting the certificate created in the preceding step.
 6. In Visual Studio Code, open the {{site.data.keyword.blockchainfull_notm}} Platform extension view and click **Add new connection**.
-7. Enter the connection name, the path to the connection profile, and either select an existing file system [wallet ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/developapps/wallet.html "Wallet"), or create a new wallet using a certificate and private key.
+7. Enter the connection name, the path to the connection profile, and either select an existing [wallet![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/developapps/wallet.html "Wallet") on your file system , or create a new wallet using a certificate and private key.
 
 ### Connecting to your own Hyperledger Fabric instance
 {: #develop-vscode-connecting-to-own-Fabric-instance}
@@ -184,7 +183,7 @@ By editing a connection, you can change the filepath for the connection profile,
 
 To edit a connection:
 
-1. From the extension, right-click the connection to edit in the lower-left, this opens a contextual menu with the options to add an identity, edit the connection, or delete the connection.
+1. From the extension, right-click on the connection to edit in the lower-left, this opens a contextual menu with the options to add an identity, edit the connection, or delete the connection.
 2. Select **Edit connection**.
 3. The **User Settings** page will open, with the connection details highlighted.
 4. Make any changes, and save the settings page.
@@ -194,7 +193,7 @@ To edit a connection:
 
 Connections can be deleted by:
 
-1. From the extension, right-click the connection to edit in the lower-left, this opens a contextual menu with the options to add an identity, edit the connection, or delete the connection.
+1. From the extension, right-click on the connection to edit in the lower-left, this opens a contextual menu with the options to add an identity, edit the connection, or delete the connection.
 2. Select **Delete connection**.
 3. A dialogue box appears to confirm connection deletion. Click **Yes**.
 
@@ -207,7 +206,7 @@ When you add a connection, you must either select an existing wallet containing 
 
 To add an identity to a connection that is already established:
 
-1. From the extension, right-click the connection to edit in the lower-left, this opens a contextual menu with the options to add an identity, edit the connection, or delete the connection.
+1. From the extension, right-click on the connection to edit in the lower-left, this opens a contextual menu with the options to add an identity, edit the connection, or delete the connection.
 2. Select **Add an identity**.
 3. Either select an existing wallet containing the identity to add, or create a new wallet by providing the filepaths of the certificates and private key.
 
@@ -224,7 +223,7 @@ The connection details required to connect to the `local_fabric` connection can 
 To export the `local_fabric` connection details:
 
 1. Start the preconfigured Hyperledger Fabric runtime.
-2. Right-click the `local_fabric` connection, and select **Export Connection Details**.
+2. Right-click on the `local_fabric` connection, and select **Export Connection Details**.
 
 The connection details are saved to a directory called `local_fabric` contained in your current project directory.
 
@@ -250,7 +249,7 @@ After connecting to an instance of Hyperledger Fabric, you can install and insta
 To begin running on a channel, an installed smart contract package must first be instantiated.
 
 1. Connect to the Hyperledger Fabric instance where the smart contract package is installed.
-2. Right-click the channel you wish to instantiate the smart contract package on and click **Instantiate Smart Contract**.
+2. Right-click on the channel you wish to instantiate the smart contract package on and click **Instantiate Smart Contract**.
 3. Select the smart contract package and version to be instantiated. The smart contract package must be installed on a peer that is a member of this channel.
 4. Enter the name of the instantiate function in your smart contract.
 5. Enter any arguments required by your instantiate function.
@@ -281,7 +280,7 @@ Tests for a smart contract can be generated after the smart contract has been in
 To generate smart contract tests:
 
 1. Ensure that the smart contract has been instantiated.
-2. Under **Instantiated Smart Contracts**, right-click the smart contract to generate tests for.
+2. Under **Instantiated Smart Contracts**, right-click on the smart contract to generate tests for.
 3. Select **Generate Smart Contract Tests**.
 4. Now select the language for the test file, either **JavaScript** or **TypeScript**. The {{site.data.keyword.blockchainfull_notm}} Platform extension will now install required npm modules and build the test file.
 
@@ -298,7 +297,7 @@ The ability to debug a smart contract locally helps a smart contract developer t
 4. Select the Debug Smart Contract configuration by using the dropdown in the upper-left.
 5. Package and install the smart contract by clicking the **play** button.
 6. Add breakpoints to the smart contract by clicking on the relevant line numbers in your smart contract files.
-7. Right-click the installed smart contract and select **Instantiate**. You can now right-click to submit transactions and the execution will be paused on defined breakpoints.
+7. Right-click on the installed smart contract and select **Instantiate**. You can now right-click to submit transactions and the execution will be paused on defined breakpoints.
 
 To make changes to your smart contract while debugging, click the **restart** button after making the changes to your smart contract. Restarting debugging means you don't need to instantiate the contract again.
 
@@ -311,7 +310,7 @@ After a smart contract has been installed on a peer and instantiated on a channe
 
 1. Ensure that the smart contract you wish to upgrade is instantiated.
 2. Install the new version of the smart contract to a peer on the same network.
-3. Right-click the instantiated smart contract, and select **Upgrade Smart Contract**.
+3. Right-click on the instantiated smart contract, and select **Upgrade Smart Contract**.
 4. Optionally, choose a transaction to run after the new smart contract is instantiated.
 
 ## Submitting transactions
@@ -324,5 +323,5 @@ To submit a transaction:
 1. Ensure that your smart contract is installed and instantiated, and that you're connected to the network.
 2. In the connections pane, expand the **Instantiated Smart Contracts**.
 3. Expand the smart contract that contains the transaction to be submitted.
-4. Right-click the transaction to submit, and select **Submit Transaction**.
+4. Right-click on the transaction to submit, and select **Submit Transaction**.
 5. Enter any arguments required by the transaction, and press **Enter**.

@@ -2,7 +2,9 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-02-14"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -17,9 +19,9 @@ lastupdated: "2019-02-14"
 # Creating and managing identities
 {: #ibp-console-identities}
 
-***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 The nodes of the {{site.data.keyword.blockchainfull_notm}} Platform are based on Hyperledger Fabric and builds permissioned blockchain networks. This means that all participants of the blockchain consortium need to have identities that are continuously verified by Public Key Infrastructure. The {{site.data.keyword.blockchainfull_notm}} Platform console allows you to create these identities by using your organization's Certificate Authorities (CAs). You need to store these identities in your console wallet so you can use them to operate your network.
+
+**Target audience:** This topic is designed for network operators who are responsible for creating, monitoring, and managing the blockchain network.
 
 ## Managing Certificate Authorities
 {: #ibp-console-identities-manage-ca}
@@ -81,17 +83,19 @@ On Side panel 4, click the **Add Attribute** button. Provide an **attribute name
 ## Enrolling an identity
 {: #ibp-console-identities-enroll}
 
-You can generate the public and private key for each identity that has been registered with your CA. You can generate keys for one of your admin identities when you [create your organization MSP](/docs/services/blockchain/howto/ibp-console-organizations.html#console-organizations-create-msp), and provide additional certificates to the MSP for other admins that have already been enrolled using your CA.
+You can generate the public certificate and private key for each identity that has been registered with your CA. If you have registered additional admin identities with your CA, you can generate the keys for the admin identity and then additionally include it when you [create your organization MSP](/docs/services/blockchain/howto/ibp-console-organizations.html#console-organizations-create-msp).
 
-Be sure that you have [set the identity](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-ca-identity) that the CA uses to create the keys. After setting the identity, you can click the **Enroll Identity** button, and displays the keys and display them in a side panel in base64 format.
-  - The public key is displayed in the **Certificate** field. This certificate is also referred to as your enrollment certificate, signing certificate, or signCert.
-  - You can find the corresponding private key in the **Private Key** field.
+Before enrolling an identity, you need to [set the identity](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-ca-identity) to be able to operate the CA. Normally you would set it to the admin identity that was specified when you created the CA. You can confirm your CA is set to that identity by examining the CA details page and viewing the enroll ID of the currently active identity next to the CA name. After confirming the identity is set to your admin identity, click  **Enroll identity** on the user's overflow menu to generate the certificate and key for any user registered with the CA.
 
-Each key pair created by clicking **Enroll Identity** is only generated once and not stored by the console or your browser. Clicking the **Enroll Identity** button will also be counted against the maximum number of enrollments that you have set for the CA admin. After enrollment, you should store the key pair by downloading the identity to your local file system or adding it to your console wallet. Enter a new name for this public and private key pair into the **Name** field in order to retrieve them.
-  - Click **Export Identity** to download these certificates to your local file system in JSON format.
-  - Click **Add Identity to Wallet** to add these certificates to the console wallet. You can then find the name and keys of this identity in a new tile in your [wallet tab](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-wallet)
+- Enter the user's `Enroll secret`.
+- On the next step, the generated keys are displayed.
+  - The public key is displayed in the **Certificate** field. This certificate is also referred to as your enrollment certificate, signing certificate, or signCert. You need to export the signCert to a file on your local system so it can be used when creating a client application with the VSCode extension.
+  - You can find the corresponding private key in the **Private Key** field. Again, you need to export the private key to your local system for use with a client application created with the VSCode extension.
+  - The certificate and private key created by clicking **Enroll Identity** is only generated once and not stored by the console or your browser. Clicking the **Enroll Identity** button will also be counted against the maximum number of enrollments that you have set for the CA admin. As part of this enroll enrollment, you should store the key pair by downloading the identity to your local file system or adding it to your console wallet. Enter a new name for this public and private key pair into the **Name** field in order to retrieve them.
+- **Important:** Click **Export identity** to download the certificate and key to your local file system  as a single file in JSON format. You are responsible for securing and managing these keys.
+- Click **Add identity to wallet** to add these certificates to the console wallet. You can then find the name and keys of this identity in a new tile in your [wallet tab](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-wallet)
 
-You can also use the Fabric CA client or Fabric SDKs to enroll the identities you have created in the console. The console provides you with all of the information that will need to compete these steps. Ensure you have saved the **Enroll ID** and **Enroll Secret** that you specified during registration.
+You can also use the Fabric CA client or Fabric SDKs to enroll the identities you have created in the console. The console provides you with all of the information that will need to compete these steps. Ensure you have saved the **Enroll ID** and **Enroll secret** that you specified during registration.
 
 ## Using your TLS CA
 {: #ibp-console-identities-tlsca}

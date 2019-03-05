@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -17,9 +19,6 @@ lastupdated: "2019-02-08"
 
 # Deploying peers in {{site.data.keyword.cloud_notm}} Private
 {: #icp-peer-deploy}
-
-
-***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 The following instructions describe how to deploy an {{site.data.keyword.blockchainfull}} Platform peer on {{site.data.keyword.cloud_notm}} Private. These instructions allow you to connect to an {{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}} Private. If you want to connect a peer to a Starter Plan or Enterprise Plan network on {{site.data.keyword.cloud_notm}}, see [Deploying peers to connect to Starter Plan or Enterprise Plan](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy).
 {:shortdesc}
@@ -46,7 +45,7 @@ Ensure that your {{site.data.keyword.cloud_notm}} Private system meets the minim
 
 You need to determine the storage that your peer will use. If you use the default settings, the Helm chart will create a new 8 Gi Persistent Volume Claim (PVC) with the name of `my-data-pvc` for your peer data, and another 8 Gi PVC with the name of `statedb-pvc` for your state database.
 
-If you do not want to use the default storage settings, ensure that a *new* `storageClass` is set up during the installation of {{site.data.keyword.cloud_notm}} Private or the Kubernetes system administrator needs to create a storageClass before you deploy.
+If you do not want to use the default storage settings, ensure that either a new `storageClass` is set up during the installation of {{site.data.keyword.cloud_notm}} Private or the Kubernetes system admin creates a `storageClass` before you deploy {{site.data.keyword.blockchainfull_notm}} Platform.
 
 You can choose to deploy the peer on either the amd64 or s390x platforms. However, be aware that [Dynamic provisioning ![External link icon](../images/external_link.svg "External link icon")](https://kubernetes.io/docs/concepts/storage/dynamic-provisioning/ "Dynamic Volume Provisioning") is only available for amd64 nodes in {{site.data.keyword.cloud_notm}} Private. If your cluster includes a mix of s390x and amd64 worker nodes, dynamic provisioning cannot be used.
 

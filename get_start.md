@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -15,10 +17,6 @@ lastupdated: "2019-02-08"
 
 # Getting started with Enterprise Plan
 {: #getting-started-with-enterprise-plan}
-
-
-***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 
 {{site.data.keyword.blockchainfull}} Platform Enterprise Plan provides a blockchain network with high security, integrity, scalability, and performance. You can quickly provision a fully functional network and use the Network Monitor, which is a GUI dashboard, to immediately run [chaincode](/docs/services/blockchain/glossary.html#glossary-chaincode) and applications without having to design and configure a network from scratch.
 {:shortdesc}
@@ -38,14 +36,14 @@ The following steps indicate the basic flow to launch an Enterprise Plan network
 ## Creating a network
 {: #getting-started-with-enterprise-plan-create-network}
 
-Before you begin, you need to create a [{{site.data.keyword.blockchain}} Platform service instance ![External link icon](images/external_link.svg "External link icon")](https://console.bluemix.net/catalog/services/blockchain) on {{site.data.keyword.Bluemix_notm}}. You need to log in with your {{site.data.keyword.Bluemix_notm}} ID. If you do not have an ID, click the **Sign up to Create** button. Rename the service and credential names for your instance so you can recognize it easily in the future. Select the {{site.data.keyword.Bluemix_notm}} region, organization, and space, where you can deploy your {{site.data.keyword.blockchain}} network. Then, select **Enterprise Membership Plan** from the pricing plans table and click the **Create** button.
+Before you begin, you need to create a [{{site.data.keyword.blockchain}} Platform service instance ![External link icon](images/external_link.svg "External link icon")](https://cloud.ibm.com/catalog/services/ibm-blockchain-5-prod) on {{site.data.keyword.cloud_notm}}. You need to log in with your {{site.data.keyword.cloud_notm}} ID. If you do not have an ID, click the **Sign up to Create** button. Rename the service and credential names for your instance so you can recognize it easily in the future. Select the {{site.data.keyword.cloud_notm}} region, organization, and space, where you can deploy your {{site.data.keyword.blockchain}} network. Then, select **Enterprise Membership Plan** from the pricing plans table and click the **Create** button.
 
-You can find your {{site.data.keyword.blockchain}} Platform service instance in your [{{site.data.keyword.Bluemix_notm}} service dashboard ![External link icon](images/external_link.svg "External link icon")](https://console.bluemix.net/dashboard/services "{{site.data.keyword.Bluemix_notm}} service dashboard").
+You can find your {{site.data.keyword.blockchain}} Platform service instance in your [{{site.data.keyword.cloud_notm}} service dashboard ![External link icon](images/external_link.svg "External link icon")](https://cloud.ibm.com/resources "{{site.data.keyword.cloud_notm}} service dashboard").
 
 If you are a network initiator, click the **Create Network** button to initiate a {{site.data.keyword.blockchain}} network. Follow the wizard to complete the basic configuration of your network and resources.
 ![Create Network wizard](images/create_network_name.png "Create Network wizard")
 
-1. In the "Let's Get Started" screen, give a name to your network, choose the location of your {{site.data.keyword.Bluemix_notm}} organization, and add the name of your institution. When you invite other network members, they will look for this network name to join. Click **Next**.
+1. In the "Let's Get Started" screen, give a name to your network, choose the location of your {{site.data.keyword.cloud_notm}} organization, and add the name of your institution. When you invite other network members, they will look for this network name to join. Click **Next**.
 2. (Optional) In the "Invite Members" screen, enter the institution name and the email address of the member who you want to invite to your network. The institution name that you designate is not an official title. It simply allows the institution to be easily recognized and can be changed when they join the network. Note that a network can have up to 15 members including yourself. This step is optional, and you can invite members to your network later in the Network Monitor. Click **Next**.
 	Members that you invite will receive an email notification about your invitation after you complete all of the steps to create the network.
 3. In the "Define Governance Rules" screen, establish the policies for membership, channel creation, and chaincode. By default, all network members can invite other members to join the network, create channels, and instantiate chaincode. Currently, your network uses the default governance policies. Click **Next**.
@@ -66,9 +64,9 @@ Now you successfully deploy a {{site.data.keyword.blockchain}} network that can 
 ## Joining a network
 {: #getting-started-with-enterprise-plan-join-nw}
 
-Similar to creating a network, you need to create a [{{site.data.keyword.blockchain}} Platform service instance ![External link icon](images/external_link.svg "External link icon")](https://console.bluemix.net/catalog/services/blockchain) on {{site.data.keyword.Bluemix_notm}}. You need to log in with your {{site.data.keyword.Bluemix_notm}} ID. If you do not have an ID, click the **Sign up to Create** button. Rename the service and credential names for your instance so you can recognize it easily in the future. Select the {{site.data.keyword.Bluemix_notm}} region, organization, and space, where you can deploy your {{site.data.keyword.blockchain}} network. Then, select **Enterprise Membership Plan** from the pricing plans table and click the **Create** button.
+Similar to creating a network, you need to create a [{{site.data.keyword.blockchain}} Platform service instance ![External link icon](images/external_link.svg "External link icon")](https://cloud.ibm.com/catalog/services/ibm-blockchain-5-prod) on {{site.data.keyword.cloud_notm}}. You need to log in with your {{site.data.keyword.cloud_notm}} ID. If you do not have an ID, click the **Sign up to Create** button. Rename the service and credential names for your instance so you can recognize it easily in the future. Select the {{site.data.keyword.cloud_notm}} region, organization, and space, where you can deploy your {{site.data.keyword.blockchain}} network. Then, select **Enterprise Membership Plan** from the pricing plans table and click the **Create** button.
 
-You can find your {{site.data.keyword.blockchain}} Platform service instance in the [{{site.data.keyword.Bluemix_notm}} service dashboard ![External link icon](images/external_link.svg "External link icon")](https://console.bluemix.net/dashboard/services "{{site.data.keyword.Bluemix_notm}} service dashboard").
+You can find your {{site.data.keyword.blockchain}} Platform service instance in the [{{site.data.keyword.cloud_notm}} service dashboard ![External link icon](images/external_link.svg "External link icon")](https://cloud.ibm.com/resources "{{site.data.keyword.cloud_notm}} service dashboard").
 
 If you are an invited network member, click the **Pending Invite ->** button, select the network that you want to join from the drop-down list, and click the **Join Network!** button. Follow the wizard to view the network basic configuration of your network and configure your own network resources.
 ![Join Network wizard](images/join_network_name.png "Join Network wizard")
@@ -100,7 +98,7 @@ After you create an Enterprise Plan network in {{site.data.keyword.cloud_notm}},
 
 ### Retrieving from the service instance page
 {: #getting-started-with-enterprise-plan-retrieve-svc-ins}
-You are on the service instance page right after you create a service instance. You can also click your service in the [{{site.data.keyword.cloud_notm}} service dashboard ![External link icon](images/external_link.svg "External link icon")](https://console.bluemix.net/dashboard/services "{{site.data.keyword.cloud_notm}} service dashboard") to open your service instance page.
+You are on the service instance page right after you create a service instance. You can also click your service in the [{{site.data.keyword.cloud_notm}} service dashboard ![External link icon](images/external_link.svg "External link icon")](https://cloud.ibm.com/resources "{{site.data.keyword.cloud_notm}} service dashboard") to open your service instance page.
 
 Retrieve your service credentials with the following steps:
 1. On the service instance page, click **Service credentials** in the left navigator to show the "Service credentials" screen.
@@ -116,7 +114,7 @@ You can retrieve the connection profile on the "Overview" screen in your Network
 
 ## Enabling applications to interact with the network
 {: #getting-started-with-enterprise-plan-enable-apps}
-Applications leverage the SDK APIs to interact with your {{site.data.keyword.blockchain}} network resources. You need to add the API endpoint information of your network resources in your application so that the application can ultimately target your peers with transaction requests. You can then add the API endpoint information from the Network Monitor. Applications can be hosted on your local file system or on {{site.data.keyword.Bluemix_notm}}. For more information, see [Developing applications](/docs/services/blockchain/v10_application.html#dev-app).
+Applications leverage the SDK APIs to interact with your {{site.data.keyword.blockchain}} network resources. You need to add the API endpoint information of your network resources in your application so that the application can ultimately target your peers with transaction requests. You can then add the API endpoint information from the Network Monitor. Applications can be hosted on your local file system or on {{site.data.keyword.cloud_notm}}. For more information, see [Developing applications](/docs/services/blockchain/v10_application.html#dev-app).
 
 ## Monitoring network resources
 {: #getting-started-with-enterprise-plan-monitor-resources}
@@ -124,7 +122,7 @@ After a transaction is triggered from your application, you can view transaction
 
 ## Leaving a network
 {: #getting-started-with-enterprise-plan-leave-nw}
-If you want to leave a network, delete the blockchain service instance from your {{site.data.keyword.Bluemix_notm}} dashboard.
+If you want to leave a network, delete the blockchain service instance from your {{site.data.keyword.cloud_notm}} dashboard.
 
 Before you leave a network, ensure that you are not a member in any channels of the network. Otherwise, you will get errors when you leave the network. A channel member removal needs to complete the channel update process. For more information about the channel update process, see [Updating a channel](/docs/services/blockchain/howto/create_channel.html#ibp-create-channel-updating-a-channel).
 {:note}

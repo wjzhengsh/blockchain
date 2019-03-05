@@ -2,7 +2,10 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-02-14"
+
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -18,26 +21,27 @@ lastupdated: "2019-02-14"
 # Build a network tutorial
 {: #ibp-console-build-network}
 
-***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
-{{site.data.keyword.blockchainfull}} Platform is a blockchain-as-a-service offering that enables you to develop, deploy, and operate blockchain applications and networks. You can learn more about blockchain components and how they work together by visiting the [Blockchain component overview](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview). This tutorial is the first part in the [sample network tutorial series](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-sample-tutorial) and describes how to use the {{site.data.keyword.blockchainfull_notm}} Platform console that is deployed on {{site.data.keyword.cloud_notm}} to build a fully functional network on a single {{site.data.keyword.cloud_notm}} Kubernetes Service.
+{{site.data.keyword.blockchainfull}} Platform is a blockchain-as-a-service offering that enables you to develop, deploy, and operate blockchain applications and networks. You can learn more about blockchain components and how they work together by visiting the [Blockchain component overview](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview). This tutorial is the first part in the [sample network tutorial series](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-sample-tutorial) and describes how to use the {{site.data.keyword.blockchainfull_notm}} Platform console to build a fully functional network on a single {{site.data.keyword.cloud_notm}} Kubernetes Service.
 {:shortdesc}
+
+**Target audience:** This topic is designed for network operators who are responsible for creating, monitoring, and managing the blockchain network.   
 
 If you have not already deployed the console to a Kubernetes cluster by using {{site.data.keyword.cloud_notm}} Kubernetes Service, see [Getting started with {{site.data.keyword.blockchainfull_notm}} Platform 2.0](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks). You can create a new Kubernetes cluster for the console deployment or use an existing one in your {{site.data.keyword.cloud_notm}} account.  After you deploy the {{site.data.keyword.blockchainfull}} Platform to your Kubernetes cluster, you can launch the console to create and manage your blockchain components.
 
 Whether you deploy to a paid or free Kubernetes cluster, use the Kubernetes dashboard to pay close attention to the resources at your disposal when you choose to deploy nodes and create channels. It is your responsibility to manage your Kubernetes cluster and deploy additional resources if necessary. While components will successfully deploy to a free cluster, the more components you add, the slower your components will run.
 {: note}
 
+
 ## Sample network tutorial series
 {: #ibp-console-build-network-sample-tutorial}
 
-This three-part tutorial series takes you through the process of creating and interconnecting a relatively simple, multi-node {{site.data.keyword.blockchainfull_notm}} Platform 2.0 network by using the console to deploy a network into your Kubernetes cluster and installing and instantiating a smart contract.
+This three-part tutorial series guides you through the process of creating and interconnecting a relatively simple, multi-node Hyperledger Fabric network by using the {{site.data.keyword.blockchainfull_notm}} Platform 2.0 console to deploy a network into your Kubernetes cluster and install and instantiate a smart contract.
 
 * **Build a network tutorial** This current tutorial guides you through the process of hosting a network by creating an orderer and peer.
 * [Join a network tutorial](/docs/services/blockchain/howto/ibp-console-join-network.html#ibp-console-join-network) guides you through the process of joining an existing network by creating a peer and joining it to a channel.
 * [Deploy a smart contract on the network](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts) provides information on how to write a smart contract and deploy it on your network.
 
-You can use the steps in these tutorials to build a network with multiple organizations in one cluster for the purposes of development and testing. Use the **Build a network** tutorial if you want to found a blockchain consortium by creating an orderer node and adding organizations. Use the **Join a network** tutorial to connect a peer to the network. Following the tutorials with different consortium members allows you to create a truly **distributed** blockchain network.  
+You can use the steps in these tutorials to build a network with multiple organizations in one cluster for the purposes of development and testing. Use the **Build a network** tutorial if you want to form a blockchain consortium by creating an orderer node and adding organizations. Use the **Join a network** tutorial to connect a peer to the network. Following the tutorials with different consortium members allows you to create a truly **distributed** blockchain network.  
 
 
 ### The structure of this network
@@ -61,7 +65,7 @@ This configuration is sufficient for testing applications and smart contracts. T
 * **One channel**: `channel1`  
   Channels provide data privacy. They allow sets of organizations to transact without exposing their data to organizations that are not members of the channel. Each channel has its own blockchain ledger, shared between the peers joined to that channel. The tutorial creates create one channel joined by both organizations, and instantiate smart contract on the channel that the organizations can use to transact.
 
-This configuration isn't mandatory. The {{site.data.keyword.blockchainfull_notm}} Platform 2.0 is highly customizable. If you have resources available in your Kubernetes cluster, you can use the console to deploy an orderer node and add organizations to it, also known as to found a consortium. Additionally, you can create a peer organization that connects to multiple ordering services. This tutorial provides the steps you need to build your own network, with references to topics that provide a deeper dive into the {{site.data.keyword.blockchainfull_notm}} Platform and the console.
+This configuration isn't mandatory. The {{site.data.keyword.blockchainfull_notm}} Platform 2.0 is highly customizable. If you have resources available in your Kubernetes cluster, you can use the console to deploy an orderer node and add organizations to it, also known as to form a consortium. Additionally, you can create a peer organization that connects to multiple ordering services. This tutorial provides the steps you need to build your own network, with references to topics that provide a deeper dive into the {{site.data.keyword.blockchainfull_notm}} Platform and the console.
 
 
 In this **Build a network** tutorial, we build only a portion of the network above, a simple network that can be used to host an orderer and a single peer organization and peer on a single channel. The following illustration shows the portion of the network above that we will build:
@@ -91,7 +95,7 @@ Perform the following steps from your console:
 2. Click  **{{site.data.keyword.cloud_notm}}** under **Create Certificate Authority** and **Next**.
 3. Use the second side panel to give your CA a **display name**. Our recommended value for this CA is `Org1 CA`.
 4. On the next panel, give your CA admin credentials by specifying an **Admin ID** of `admin`, and giving any secret that you want. We recommend `adminpw` to help you follow along in this tutorial.
-5. Click **Next** then **Submit**.
+5. Click **Next** then **Add certificate authority**.
 
 **Task: Creating the peer organization CA**
 
@@ -199,7 +203,7 @@ Use your console to perform the following steps:
   - Give the **TLS Enroll ID**, `admin`, and the secret `adminpw`, the same values are the Enroll ID and Enroll secret that you gave when creating the CA.
   - The **TLS CSR hostname** is for advanced users to specify a custom domain name that can be used to address the peer endpoint. Leave the **TLS CSR hostname** blank for now, it is not used in this tutorial.
 6. The last side panel will ask you to **Associate an identity** and make it the admin of your peer. Select your peer admin identity `Org1 Admin`.
-7. Review the summary and click **Submit**.
+7. Review the summary and click **Add peer**.
 
 **Task: Deploying a peer**
 
@@ -242,10 +246,10 @@ In this tutorial, we will create only a single orderer.
 
 The process for creating a CA for an orderer is identical to creating it for a peer.
 1. Navigate to the **Nodes** tab and click **Add Certificate Authority**.
-2. Click  **{{site.data.keyword.cloud_notm}}** under **Create Certificate Authority** and **Next**
+2. Click  **{{site.data.keyword.cloud_notm}}** under **Create a new Certificate Authority** and **Next**
 3. Give this CA a unique display name, `Orderer CA`.
 4. You're free to reuse the **Enroll ID** you gave for the other CA, `admin`, and then to specify any secret you want, but we recommend `adminpw`.
-5. Click **Next** then **Submit**.
+5. Click **Next** then **Add certificate authority**.
 
 ### Using your CA to register orderer and orderer admin identities
 {: #ibp-console-build-network-use-CA-orderer}
@@ -308,7 +312,7 @@ Exporting your organization admin identity is important because you are responsi
 {:tip}
 
 ### Creating an orderer
-{: #ibp-console-build-network-create-orderer}
+{: #ibp-console-build-network-create-an-orderer}
 
 Perform the following steps from your console:
 
@@ -320,7 +324,7 @@ Perform the following steps from your console:
    - Give the **TLS Enroll ID**, `admin`, and the secret `adminpw`. These values are the Enroll ID and Enroll secret that you gave when creating the CA.
    - The **TLS CSR hostname** is for advanced users to specify a custom domain name that can be used to address the orderer endpoint. Leave the **TLS CSR hostname** blank for now, it is not used in this tutorial.
 6. The **Associate identity** step allows you to choose an admin for your orderer. Select `Orderer Admin` as before and click **Next**.
-7. Review the summary and click **Submit**.
+7. Review the summary and click **Add orderer**.
 
 **Task: Create an orderer**
 
@@ -350,7 +354,7 @@ Because you are the orderer admin, this process is relatively straightforward:
 2. Scroll down to the orderer you created and click on it to open it.
 3. Under **Consortium Members**, click **Add organization**.
 4. From the drop-down list, select `Org1 MSP`, as this is the MSP that represents the peer's organization `org1`.
-5. Click **Submit**.
+5. Click **Add organization**.
 
 When this process is complete, it is possible for `org1` to create or join a channel hosted on your `Orderer`.
 
@@ -392,7 +396,7 @@ Perform the following steps from your console:
 5. Specify the identity of the channel creator. Where the MSP step above notes the organization that created the channel, this step notes **your** admin identity, `Org1 Admin`.
 6. Select the organizations that you want to join the channel and the permissions you want them to have. Although you entered `Org1 MSP (org1msp)` as the channel creator, you also need to select it here. Click **Add** and then give your organization a level of permissions. In real-world scenarios, as a channel creator you'll want to choose permissions carefully, matching the needs of organizations joining a channel. Because you are creating a channel with a single member, and every channel must have at least one operator, make your organization an **Operator**.
 
-When you're ready, click **Create**. You should be taken back to the Channels tab.
+When you're ready, click **Create channel**. You should be taken back to the Channels tab.
 
 **Task: Create a channel**
 
@@ -422,7 +426,7 @@ Perform the following steps from your console:
 2. Select your `Orderer` and click **Next**.
 3. Enter the name of the channel you just created `channel1` and click **Next**.
 4. Select which peers you want to join the channel. For purposes of this tutorial, click `Peer Org1`.
-5. Click **Submit**.
+5. Click **Join channel**.
 
 ## Next steps
 {: #ibp-console-build-network-next-steps}

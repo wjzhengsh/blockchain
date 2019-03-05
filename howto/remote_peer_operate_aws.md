@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -14,10 +16,6 @@ lastupdated: "2019-02-08"
 
 # Operating peers in AWS
 {: #remote-peer-aws-operate}
-
-
-***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 
 After you set up {{site.data.keyword.blockchainfull}} Platform peers in AWS, you need to complete several operational steps before your peer can issue transactions to query and invoke the ledger of the blockchain network. The steps include adding your organization to a channel, joining your peer to the channel, installing chaincode on your peer, instantiating chaincode on the channel, and connecting applications to your peer. You can use either the [Fabric SDKs](/docs/services/blockchain/howto/remote_peer_operate_aws.html#remote-peer-aws-operate-with-sdk) or the [command line](/docs/services/blockchain/howto/remote_peer_operate_aws.html#remote-peer-aws-operate-cli-operate) to complete these operational steps. The Fabric SDKs are the recommended path, although the instructions assume familiarity with the operation of the SDK.
 
@@ -531,7 +529,7 @@ Stack creation completes successfully, but Docker logs contain the error:
 **Solution:**  
 This error can be caused by neglecting to specify a port on the CAUrl when the Quick Start template was deployed.
 The CAUrl should look similar to `https://<network>-org1-ca.stage.blockchain.ibm.com:31011`.
-Redeploy the Quick Start template, being careful to specify the proper value for the CAUrl.
+Redeploy the Quick Start template, being careful to specify the proper value for the the CAUrl.
 
 ### **Problem:** Instantiating chaincode fails with error
 {: #remote-peer-aws-operate-problem-2}

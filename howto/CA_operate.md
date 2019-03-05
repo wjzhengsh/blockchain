@@ -2,7 +2,10 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-14"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
+
 ---
 
 {:new_window: target="_blank"}
@@ -16,8 +19,6 @@ lastupdated: "2019-02-14"
 
 # Operating a Certificate Authority on {{site.data.keyword.cloud_notm}} Private
 {: #ca-operate}
-
-***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 Certificate authorities (CAs) provide identities on the network. A CA can be considered as being similar to a publicly trusted notary that is used to establish trust among multiple parties. Each entity in the network is given a certificate that a root CA signs to encapsulate the entity's digital identity. This certificate is the root of trust for all the signing and verification operations that are performed on the network.
 {:shortdesc}
@@ -243,7 +244,7 @@ You can generate certificates only by using identities that have been registered
 
   The `enroll` command generates a complete set of certificates, which is known as a Membership Service Provider (MSP) folder, that is located inside the directory where you set to `$HOME` path for your Fabric CA client. For example, `$HOME/fabric-ca-client/ca-admin`. For more information about MSPs and what the MSP folder contains, see [Membership Service Providers](/docs/services/blockchain/howto/CA_operate.html#ca-operate-msp).
 
-  If the `enroll` command fails, see the [Troubleshooting topic](/docs/services/blockchain/howto/CA_operate.html#ca-operate-enroll-error) for possible causes.
+  If the `enroll` command fails, see the [Troubleshooting topic](/docs/services/blockchain/howto/CA_operate.html#ca-operate-troubleshooting) for possible causes.
 
 You can run a tree command to verify that you have completed all of the prerequisite steps. Navigate to the directory where you stored your certificates. A tree command should generate a result similar to the following structure:
 
@@ -355,7 +356,7 @@ After retrieving your Certificate Authority connection information, you need to 
 ### Registering the component identity with the CA
 {: #ca-operate-register-component}
 
-If you want to found a consortium by deploying an ordering service and adding orgs to it, or to deploy peers and join them to channels, you first need to register the component identity with your CA. Your component deployment can then generate certificates that are necessary for the peer or orderer to participate in a network.
+If you want to form a consortium by deploying an ordering service and adding orgs to it, or to deploy peers and join them to channels, you first need to register the component identity with your CA. Your component deployment can then generate certificates that are necessary for the peer or orderer to participate in a network.
 
 1. [Generate certificates with your CA admin](/docs/services/blockchain/howto/CA_operate.html#ca-operate-enroll-ca-admin) by using the Fabric CA client. Use these admin certificates to issue the following commands. Ensure that `$FABRIC_CA_CLIENT_HOME` is set to `$HOME/fabric-ca-client/ca-admin`.
 
@@ -751,7 +752,7 @@ The CA may be kept offline if only a limited number of certs are issued, for exa
 {: #ca-operate-troubleshooting}
 
 ### **Problem:** Error when running the `enroll` command
-{: #ca-operate-enroll-error}
+{: #ca-operate-enroll-error1}
 
 When running the Fabric CA client enroll command, it is possible the command will fail with the following error:
 
@@ -771,7 +772,7 @@ This error can occur when your Fabric CA client tries to enroll but cannot conne
 Review the parameters you specified on your `enroll` command and ensure none of these conditions exist.
 
 ### **Problem:** Error with CA URL when running the `enroll` command
-{: #ca-operate-enroll-error}
+{: #ca-operate-enroll-error2}
 
 The Fabric CA client enroll command may fail if the enrollment url, the `-u` parameter value, contains a special character. For example, the following command with the enroll ID and password of `admin:C25A06287!0`,
 

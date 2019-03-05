@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018,2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -15,10 +17,6 @@ lastupdated: "2019-02-08"
 # Paying mode
 {: #paying-mode}
 
-
-***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
-
 {{site.data.keyword.blockchainfull}} Platform charges monthly with membership fees and peer fees. Network members can pay their bill with their {{site.data.keyword.cloud_notm}} accounts that contain the space to create the network instance. Alternatively, one network member can cover the bill for other members in the network, or even all members to pay for the entire network. The payer can also transfer the billings back to other members if necessary.
 {:shortdesc}
 
@@ -30,7 +28,7 @@ Note that when several organizations build a consortium, it is recommended that 
 ## Prerequisites
 {: #paying-mode-prereq}
 
-Every network member must have a paid {{site.data.keyword.cloud_notm}} account, for example, a **Pay-As-You-Go** account, so that they can create {{site.data.keyword.blockchainfull_notm}} Platform service instances on {{site.data.keyword.cloud_notm}}. If you don't have an account, [register](https://console.bluemix.net/registration/) one and upgrade it to a paid account. To upgrade your account to a Pay-As-You-Go type, go to **Manage** > **Billing and Usage** > **Billing** in the {{site.data.keyword.cloud_notm}} console, and click **Add Credit Card**.
+Every network member must have a paid {{site.data.keyword.cloud_notm}} account, for example, a **Pay-As-You-Go** account, so that they can create {{site.data.keyword.blockchainfull_notm}} Platform service instances on {{site.data.keyword.cloud_notm}}. If you don't have an account, [register](https://cloud.ibm.com/registration/) one and upgrade it to a paid account. To upgrade your account to a Pay-As-You-Go type, go to **Manage** > **Billing and Usage** > **Billing** in the {{site.data.keyword.cloud_notm}} console, and click **Add Credit Card**.
 
 
 ## Paying your own fees

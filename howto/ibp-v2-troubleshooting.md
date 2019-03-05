@@ -2,7 +2,9 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-02-14"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -50,7 +52,7 @@ The peer log includes `2019-02-06 19:43:24.159 UTC [main] InitCmd -> ERRO 001 Ca
   - When you created the peer or orderer organization MSP definition, you specified an enroll id and secret that corresponds to an identity of type `peer` and not `client`. It must be of type `client`.
   - When you created the peer or orderer organization MSP definition, you specified an enroll id and secret that does not match the enroll id or secret of the corresponding organization admin identity.
   - When you created the peer or orderer, you specified the enroll id and secret of an identity that is not type 'peer'.
- 
+
 - Open your peer or orderer CA node and view the registered identities listed in the **Registered Users** table.
 - Delete the peer or orderer and recreate it, being careful to specify the correct enroll id and secret.
 - Note that before you create the peer or orderer, you need to create an organization admin id, of type 'client'. Be sure to specify that same id as the enroll id when you create the organization MSP definition. See these instructions for [registering peer identities](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-use-CA-org1) and these instructions for [registering orderer identities](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-use-CA-orderer).
@@ -73,14 +75,10 @@ You may receive this error if this version of the smart contract already exists 
 ## How can I view my smart contract container logs?
 {: #ibp-console-smart-contracts-troubleshoot-entry2}
 
-You may need to view your smart contract, or chaincode container, logs to debug a smart contract issue.
+You may need to view your smart contract, or chaincode, container logs to debug a smart contract issue.
 {: tsSymptoms}
 
-- Open your Kubernetes dashboard and open your peer pod where the smart contract is running.
-- Click the `exec` link from your dashboard to exec into the pod. By default it points to peer container.
-- Switch to the `dind` container by selecting it from the dropdown list.
-- Run the command `docker ps -a` to see the list of chaincode containers.
-- Run `docker logs <chaincode-container-ID>` replacing <chaincode-container-ID> with the ID of your chaincode container.
+Follow these instructions to [view your container logs](/docs/services/blockchain/howto/ibp-console-manage.html#ibp-console-manage-console-container-logs).
 {: tsResolve}
 
 ## My channel, smart contracts, and identities have disappeared from the console. How can I get them back?
@@ -102,4 +100,16 @@ One of the new features of {{site.data.keyword.blockchainfull_notm}} Platform 2.
   - Select the identity you just imported to your console wallet from the drop down list.
   - Click **Associate**.
 - Repeat this process for each identity that was in the wallet of the original browser.
+{: tsResolve}
+
+## Why am I getting the error `An error occurred when updating channel` when I try to add an organization to my channel?
+{: #ibp-v2-troubleshooting-update-channel}
+
+When you attempt to add another organization to a channel, the update fails with the message `An error occurred when updating channel`.
+{: tsSymptoms}
+
+This error occurs when the selected **Channel Updater MSP ID** on the **Update channel** panel is not an admin of the channel.
+{: tsCauses}
+
+On the **Update channel** panel, scroll down to the **Channel Updater MSP ID** and select the MSP ID that was specified when the channel was created or specify the MSP ID that is the admin of the channel.
 {: tsResolve}
