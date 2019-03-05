@@ -2,7 +2,9 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-02-12"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -18,10 +20,13 @@ lastupdated: "2019-02-12"
 # Creating applications
 {: #ibp-console-app}
 
-***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
-After installing smart contracts and deploying your nodes, you can use client applications to transact with other members of your network. Applications can invoke the business logic contained in smart contracts to create, transfer, or update assets on the blockchain ledger. Use this tutorial to learn how to interact with networks you manage from {{site.data.keyword.blockchainfull}} platform console from client applications.
+After installing smart contracts and deploying your nodes, you can use client applications to transact with other members of your network. Applications can invoke the business logic contained in smart contracts to create, transfer, or update assets on the blockchain ledger. Use this tutorial to learn how to use client applications to interact with networks that you manage from {{site.data.keyword.blockchainfull}} Platform console.
 {:shortdesc}
+
+**Target audience:** This topic is designed for application developers who are interested in learning more about how to create a client application that interacts with a blockchain network.
+
+## Learning resources
+{: #ibp-console-app-learning-resources}
 
 You can learn more about how applications and smart contracts work together by visiting the [Developing applications topic ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/developapps/developing_applications.html "developing applications") in the Hyperledger Fabric documentation. The topic explores a hypothetical use case where banks and corporations trade commercial paper and describes how the transactions are encoded in smart contracts. The [commercial paper tutorial ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/tutorial/commercial_paper.html "commercial paper tutorial") extends this topic by allowing you to deploy the smart contracts on fabric network and use sample application code to create and transfer the commercial paper between network members.
 
@@ -37,7 +42,7 @@ You can learn more about how applications and smart contracts work together by v
 
 Developing an application might require coordination between two distinct users of your network, The network operator and the application developer:
 - **The network operator** is the administrator who uses the {{site.data.keyword.blockchainfull_notm}} Platform console to deploy the nodes of your organization and installs the smart contracts on your network.
-- **The application developer** builds the client application will be consumed by end users. The developer uses the [Hyperledger Fabric SDK's ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/getting_started.html#hyperledger-fabric-sdks "Hyperledger Fabric SDK's"){:new_window} to invoke transactions written in the smart contracts.
+- **The application developer** builds the client application will be consumed by end users. The developer uses the [Hyperledger Fabric SDKs ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/getting_started.html#hyperledger-fabric-sdks "Hyperledger Fabric SDKs"){:new_window} to invoke transactions written in the smart contracts.
 
 If you are the **network operator**, you will need to complete the following steps before the application developer can interact with your network:
 1. Use your organization CA to [register an application identity](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-identities).
@@ -73,7 +78,7 @@ If you want to continue to use your existing smart contract and application code
 
 Applications need to sign the transactions they submit to {{site.data.keyword.blockchainfull_notm}} nodes, and attach a public key that is used by nodes to verify that the transactions are being sent by the proper party. This ensures that transactions are submitted by the organizations that have permission to participate.
 
-The network operator needs to use the organization's CA to register an application identity, which can then be used by the application developer to generate a public and private key. The operator can provide the enroll ID and secret of the identity, along the CA endpoint information, to be used by the SDK to generate certificates. By enrolling on the client side, the application developer ensures that no other party has access to the private key of the application. For additional security, the network operator can set an enrollment limit of one during registration. After the application developer enrolls, the enroll ID and secret cannot be used to generate another private key.
+The network operator needs to use the organization's CA to register an application identity, which can then be used by the application developer to generate a public and private key. The operator can provide the enroll ID and secret of the identity, along the CA endpoint information, to be used by the SDK to generate certificates. By enrolling on the client side, the application developer ensures that no other party has access to the private key of the application. During registration, the network operator can set an enrollment limit of one for additional security. After the application developer enrolls, the enroll ID and secret cannot be used to generate another private key.
 
 If you are less worried about security, the network operator can enroll an application identity using the [CA tab](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-enroll). The operator can then download the identity or export it to the console wallet. In order to use the certificates from the SDK, the keys need to decoded from base64 into PEM format. You can decode the certs by running the following command on your local machine:
 
@@ -238,7 +243,7 @@ After you have generated the application public and private key and stored them 
 
 The {{site.data.keyword.blockchainfull_notm}} Platform Visual Studio Code extension provides an environment within Visual Studio Code for developing, packaging, and deploying smart contract packages. Be sure you have your connection profile and the set of key files generated using your CA. You can then use the VScode extension to connect to a network you are managing using your console.
 
-Follow the instructions to download the [VScode extension ![External link icon](../images/external_link.svg "External link icon")](https://marketplace.visualstudio.com/items?itemName=IBMBlockchain.ibm-blockchain-platform#overview "VScode extension") on the visual studio code marketplace. Once the extension is installed, open VScode you an access the extension by clicking **View** > **Command Palette**. Enter the command *IBM Blockchain Platform: Create Smart Contract Project* to create a new smart contract project.
+Follow the instructions to download the [VScode extension ![External link icon](../images/external_link.svg "External link icon")](https://marketplace.visualstudio.com/items?itemName=IBMBlockchain.ibm-blockchain-platform#overview "VScode extension") on the visual studio code marketplace. After the extension is installed, open VScode and you can access the extension by clicking **View > Command Palette**. Enter the command *IBM Blockchain Platform: Create Smart Contract Project* to create a new smart contract project.
 
 Once you have created the new project, you can connect directly to your network from Visual Studio code using the information in your instantiated smart contract from your console. Use the  **Instantiated smart contracts** table on the Smart contracts tab to download your [connection profile](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-profile) to your local file system. Then [create an application identity](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-identities) and use your CA to create and download a certificate (public key) and private key. Follow the instructions above to convert the private key and certificate into PEM format. Once you have downloaded your connection profile and keys, use the following steps to connect to your network.
 
@@ -434,7 +439,7 @@ You can find the wallet that was created in the `identity` folder of the `magnet
 
 ### Step four: Using the connection profile to build a fabric gateway
 
-The Hyperledger Fabric [Transaction Flow ![External link icon](../images/external_link.svg "External link icon")]( https://hyperledger-fabric.readthedocs.io/en/release-1.4/txflow.html "Transaction Flow"){:new_window} spans multiple components, with the client applications playing a unique role. Your application needs to connect to the peers that need to endorse the transaction and the ordering service that will order the transaction and add it into a block. You can provide the endpoints of these nodes to your application by using your connection profile to construct a Fabric Gateway. The Gateway then conducts the low level interactions with your fabric network. To learn more, visit the [Fabric gateway ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/developapps/gateway.html "Fabric gateway") topic in the Fabric Documentation.
+The Hyperledger Fabric [Transaction Flow ![External link icon](../images/external_link.svg "External link icon")]( https://hyperledger-fabric.readthedocs.io/en/release-1.4/txflow.html "Transaction Flow"){:new_window} spans multiple components, with the client applications playing a unique role. Your application needs to connect to the peers that need to endorse the transaction and needs to connect to the ordering service that will order the transaction and add it into a block. You can provide the endpoints of these nodes to your application by using your connection profile to construct a Fabric Gateway. The Gateway then conducts the low level interactions with your fabric network. To learn more, visit the [Fabric gateway ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/developapps/gateway.html "Fabric gateway") topic in the Fabric Documentation.
 
 You have already downloaded your connection profile and used it to connect to your organization's Certificate Authority. Now we will use the connection profile to build a gateway.
 
@@ -459,27 +464,10 @@ const wallet = new FileSystemWallet('../identity/user/isabella/wallet');
 ```
 {:codeblock}
 
-After importing your wallet, the following code passes your connection profile and the wallet to new gateway. The lines that print logs have been removed for brevity.
-
-```
-const userName = 'User1@org1.example.com';
-
-// Load connection profile; will be used to locate a gateway
-let connectionProfile = yaml.safeLoad(fs.readFileSync('../gateway/networkConnection.yaml', 'utf8'));
-
-// Set connection options; identity and wallet
-let connectionOptions = {
-  identity: userName,
-  wallet: wallet,
-  discovery: { enabled: false, asLocalhost: true }
-};
-
-await gateway.connect(connectionProfile, connectionOptions);
-```
-{:codeblock}
-
-**Edit** the code above to import the connection profile that you downloaded from the console. Update the username that you selected for your `identityLabel` in `enrollUser.js`. In addition, you also need to update the discovery options to take advantage of service discovery on your network. Set `discovery: { enabled: true, asLocalhost: false }`.  **Note** that the console connection profile is in JSON format rather than a YAML file. You will need to change the section importing your connection profile. After your edits, the code above might look like the following:
-
+After importing your wallet, use the following code to pass your connection profile and wallet to the new gateway. You will need to make the following **Edits** to the code so it resembles the code snippet below. The lines that print logs have been removed for brevity.
+- Update the `userName` to match the value that you selected for your `identityLabel` in `enrollUser.js`.
+- Update the discovery options to take advantage of service discovery on your network. Set `discovery: { enabled: true, asLocalhost: false }`.  
+- Update the section importing your connection profile. The console connection profile is in JSON format rather than a YAML file used by the sample.  
 ```
 const userName = 'user1';
 
@@ -499,7 +487,7 @@ await gateway.connect(connectionProfile, connectionOptions);
 ```
 {:codeblock}
 
-This code snippet will use the gateway to open GRPC connections to the peer and orderer nodes, and interact with your network.
+This code snippet uses the gateway to open GRPC connections to the peer and orderer nodes, and interact with your network.
 
 ### Step five: Invoking the smart contract
 
@@ -519,7 +507,7 @@ const contract = await network.getContract('papercontract-js', 'org.papernet.com
 ```
 {:codeblock}
 
-The gateway now has all the information it needs to submit a transaction. The following line invokes the `issue` the issue function in the commercial paper contract, with the arguments defining the new commercial paper asset.
+The gateway now has all the information it needs to submit a transaction. The following line invokes the `issue` function in the commercial paper contract, with the arguments defining the new commercial paper asset.
 
 ```
 const issueResponse = await contract.submitTransaction('issue', 'MagnetoCorp', '00001', '2020-05-31', '2020-11-30', '5000000');
@@ -561,7 +549,7 @@ Navigate to the `digibank/application` directory. You can follow the directions 
 
 If you are interested in preserving your existing application code, or using Fabric SDKs for languages other than Node.js, you can still connect to your network using lower level Fabric SDK API's. Use the console to [download your connection profile](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-profile). You can then import the endpoints of the peers and ordering nodes of your channel directly from the connection profile, or use the node endpoint information to manually add peer and orderer objects. You will also need to use your CA to [create an application identity](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-identities), and then use the CA endpoint information enroll on the client side, or generate certificates using your console.
 
-The [Fabric Node SDK ![External link icon](../images/external_link.svg "External link icon ")](https://fabric-sdk-node.github.io "Fabric Node SDK") documentation provides a tutorial on how to [connect to your network using a connection profile ![External link icon](../images/external_link.svg "External link icon")](https://fabric-sdk-node.github.io/tutorial-network-config.html "connection profile tutorial"){:new_window}. The tutorial uses the CA endpoint information in your connection profile to generate keys using the SDK. You can also use your console to generate a public and private key and convert the keys into PEM format. You can then set a user context by passing your keys directly to the SDK's [Fabric Client class ![External link icon](../images/external_link.svg "External link icon")](https://fabric-sdk-node.github.io/Client.html "Fabric Client class") using the code below:
+The [Fabric Node SDK ![External link icon](../images/external_link.svg "External link icon ")](https://fabric-sdk-node.github.io "Fabric Node SDK") documentation provides a tutorial on how to [connect to your network using a connection profile ![External link icon](../images/external_link.svg "External link icon")](https://fabric-sdk-node.github.io/tutorial-network-config.html "connection profile tutorial"){:new_window}. The tutorial uses the CA endpoint information in your connection profile to generate keys using the SDK. You can also use your console to generate a public and private key and convert the keys into PEM format. You can then set a user context by passing your keys directly to the SDKs [Fabric Client class ![External link icon](../images/external_link.svg "External link icon")](https://fabric-sdk-node.github.io/Client.html "Fabric Client class") using the code below:
 
 ```
 fabric_client.createUser({

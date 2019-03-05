@@ -2,7 +2,9 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-02-14"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -17,8 +19,6 @@ lastupdated: "2019-02-14"
 
 # About {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta
 {: #ibp-console-overview}
-
-***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 The {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta is the next generation of {{site.data.keyword.blockchainfull_notm}} Platform offerings, giving you total control over your deployments and certificates. This free beta includes the new {{site.data.keyword.blockchainfull_notm}} Platform console, a user interface that can simplify and accelerate the process of deploying components into a {{site.data.keyword.cloud_notm}} Kubernetes Service managed and controlled by you.
 {:shortdesc}
@@ -51,7 +51,9 @@ The {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta release inc
 **Scalability and flexibility**
 - **Chose your compute.** You have the flexibility to decide the amount of CPU, memory, and storage you want to provision in your Kubernetes cluster.
 - **Scale** up and down the resources in your Kubernetes cluster, paying for only what you need.
-- **Disaster recovery and multi-zone high availability.** This option duplicates your Kubernetes deployment across zones, enabling high availability (HA) of your components and disaster recovery (DR).
+- **Disaster recovery and multi-zone high availability.** This option duplicates your Kubernetes deployment across zones, enabling high availability (HA) of your components and disaster recovery (DR).  
+
+Check out this [blog ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/blogs/blockchain/2019/02/taking-the-next-step-towards-deploying-blockchain-anywhere "Taking the next step towards deploying blockchain for business anywhere") on taking the next step towards deploying blockchain for business anywhere.  
 
 This offering is for experienced Fabric users who want to build and manage their own networks. The ability to deploy an entire network with a single click is coming soon. In the meantime, to deploy a network with one click that uses a standard configuration, see our documentation about [Starter Plan](/docs/services/blockchain/get_start_starter_plan.html#getting-started-with-starter-plan) instead.
 
@@ -63,10 +65,10 @@ Before you deploy the console, ensure that you understand the following consider
 - {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta is built with Hyperledger Fabric v1.4.
 - All peers deployed with the free 2.0 beta use CouchDB as their state database.
 - You have the option to use a free Kubernetes cluster for evaluation of the beta offering, however capacity and performance are limited, none of your data can be migrated, and the cluster is deleted after 30 days.
-- You are responsible for the management of health monitoring, security, and logging of your Kubernetes cluster. See this [information ![External link icon](../images/external_link.svg "External link icon")](https://console.bluemix.net/docs/containers/cs_responsibilities.html#your-responsibilities-by-using-ibm-cloud-kubernetes-service "Cluster management responsibilities") for details on what {{site.data.keyword.cloud_notm}} manages and what you are responsible for.
-- You are also responsible for monitoring the resource usage of your Kubernetes cluster by using the Kubernetes dashboard. If you need to increase storage capacity or performance of your cluster, see this information on how to [modify your existing volume ![External link icon](../images/external_link.svg "External link icon")](https://console.bluemix.net/docs/containers/cs_storage_file.html#change_storage_configuration "Changing the size and IOPS of your existing storage device").
+- You are responsible for the management of health monitoring, security, and logging of your Kubernetes cluster. See this [information ![External link icon](../images/external_link.svg "External link icon")](https://cloud.ibm.com/docs/containers/cs_responsibilities.html#your-responsibilities-by-using-ibm-cloud-kubernetes-service "Cluster management responsibilities") for details on what {{site.data.keyword.cloud_notm}} manages and what you are responsible for.
+- You are also responsible for monitoring the resource usage of your Kubernetes cluster by using the Kubernetes dashboard. If you need to increase storage capacity or performance of your cluster, see this information on how to [modify your existing volume ![External link icon](../images/external_link.svg "External link icon")](https://cloud.ibm.com/docs/containers/cs_storage_file.html#change_storage_configuration "Changing the size and IOPS of your existing storage device").
 - You are responsible for managing and securing your certificates, your public and private keys. {{site.data.keyword.IBM_notm}} does not store your certificates in the Kubernetes cluster or in the console. They are only kept in the local storage of your browser. If you switch browsers, you will have to import your created identities into that browser.
-- The free 2.0 beta offering is available in only the **Dallas** region of {{site.data.keyword.cloud_notm}}. Therefore, all blockchain components will reside in the Dallas data center. They are not deployed elsewhere.
+- The free 2.0 beta offering is available in only the **Dallas** region of {{site.data.keyword.cloud_notm}} Kubernetes service. This region includes data centers in Dallas, San Jose, Houston, and Brazil. Therefore, all blockchain components can reside in any of these four data centers. They are not deployed elsewhere.
 - While the {{site.data.keyword.blockchainfull_notm}} Platform 2.0 beta offering is free, if you choose a paid Kubernetes cluster instead of the limited free cluster, you will incur charges to your {{site.data.keyword.cloud_notm}} account.
 - Kubernetes must be version 1.11 or higher in your {{site.data.keyword.cloud_notm}} Kubernetes cluster. Use these instructions to [upgrade your new and existing clusters](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks-updating-kubernetes) to this version.
 
@@ -118,10 +120,10 @@ Notice how a single instance of the console, also known as Operational Tooling, 
 ## High Availability (HA) and Disaster Recovery (DR)
 {: #ibp-console-overview-hadr}
 
-Multi-zone storage must be enabled in your paid IBM Cloud Kubernetes cluster if you require HA and DR. There are a variety of [Kubernetes storage options](https://console.bluemix.net/docs/containers/cs_storage_planning.html#persistent_storage_overview) available. Coming soon, IBM Cloud will support the Portworx storage solution which is the recommended solution. Until then, if HA and DR are required for your implementation, you will need to bring your own storage solution.  
+Multi-zone storage must be enabled in your paid IBM Cloud Kubernetes cluster if you require HA and DR. There are a variety of [Kubernetes storage options](https://cloud.ibm.com/docs/containers/cs_storage_planning.html#persistent_storage_overview) available. Coming soon, IBM Cloud will support the Portworx storage solution which is the recommended solution. Until then, if HA and DR are required for your implementation, you will need to bring your own storage solution.  
 
 To add your own storage solution, you will need to create a customized storage class. Read about how to
-[add a storage class](https://console.bluemix.net/docs/containers/cs_storage_basics.html#storageclasses) for your solution. IBP uses [dynamic volume provisioning](https://console.bluemix.net/docs/containers/cs_storage_basics.html#dynamic_provisioning) with the `default` storage class. Therefore,  to change the default storage class, run the following command:
+[add a storage class](https://cloud.ibm.com/docs/containers/cs_storage_basics.html#storageclasses) for your solution. IBP uses [dynamic volume provisioning](https://cloud.ibm.com/docs/containers/cs_storage_basics.html#dynamic_provisioning) with the `default` storage class. Therefore,  to change the default storage class, run the following command:
 ```
 kubectl patch storageclass <storageclass> -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
 ```

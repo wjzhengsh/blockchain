@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -17,10 +19,6 @@ lastupdated: "2019-02-08"
 
 # Developing applications with the Fabric SDKs
 {: #dev-app}
-
-
-***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 
 {{site.data.keyword.blockchainfull}} Platform provides APIs that you can use to connect applications to your blockchain network. You can use the network API endpoints in the connection profile to invoke your chaincode and update or query the channel-specific ledger on your peers. You can also use APIs in [the Swagger UI](/docs/services/blockchain/howto/swagger_apis.html#ibp-swagger) to manage nodes, channels, and members of your network.
 {:shortdesc}
@@ -74,7 +72,7 @@ You need to provide your application with the API endpoints of specific network 
   * On the "Overview" screen, click **Connection Profile**. The Connection Profile contains a complete set of API endpoint information of all your network resources.
     ![Connection Profile in Network Monitor](images/service_credentials.png "Connection Profile in Network Monitor")
 
-  * If you have running chaincode in the network, you can get the API endpoint information that is specific to the chaincode. On the "Channels" screen, click the channel row on which the chaincode is running to open the specific channel screen. Then, locate the chaincode and click the **JSON** button.
+  * If you have running chaincode in the network, you can get the API endpoint information that is specific to the chaincode. On the "Channels" screen, click the the channel row on which the chaincode is running to open the specific channel screen. Then, locate the chaincode and click the **JSON** button.
     ![API endpoints per chaincode](images/channel_chaincode.png "API endpoints per chaincode")
 
 2. Locate the API endpoint information of your network resources, which is similar to the URL of `peer1-org1` row in the following example:
@@ -346,7 +344,7 @@ For more information about the fabcar application and the functions it uses, you
 
 Instead of importing the endpoint information of your network manually, you can have the SDK connect to your network by using the **Connection Profile** from the **Overview** screen of your Network Monitor. This streamlines the process of connecting to your certificate Authority for enrollment and registration. It also eliminates the need to define your fabric network before you submit a transaction. The SDK will find the peers and orderers on the relevant channel directly from the Connection Profile. You can find more information on how to use a Connection Profile in the [Node SDK documentation ![External link icon](images/external_link.svg "External link icon")](https://fabric-sdk-node.github.io/tutorial-network-config.html "connection profile tutorial"){:new_window}.
 
-We can use the `invoke.js` file as an example to see the efficiency of using a Connection Profile rather than manual endpoints. You can establish a new instance of the fabric client using the `loadFromConfig` class. Replace `var fabric_client = new Fabric_Client();` with the following code.
+We can use the `invoke.js` file as an example to see the efficiency of using a Connection Profile rather than manual endpoints. You can establish a new instance of the the fabric client using the `loadFromConfig` class. Replace `var fabric_client = new Fabric_Client();` with the following code.
 ```
 var fabric_client = Fabric_Client.loadFromConfig(path.join(__dirname, './connection-profile.json'));
 ```
@@ -622,22 +620,22 @@ Avoid using chaincode for queries that will result in a scan of the entire Couch
 - Peers on the {{site.data.keyword.blockchainfull_notm}} Platform have a set queryLimit, and will only return 10,000 entries from the state database. If your query hits the queryLimit, you can use multiple queries to get the remaining results. If you need more results from a range query, start subsequent queries with the last key returned by the previous query. If you need more results from JSON queries, sort your query using one of the variables in your data, then use the last value from the previous query in a 'greater than' filter for the next query.
 - Do not query the entire database for the purpose of aggregation or reporting. If you want to build a dashboard or collect large amounts of data as part of your application, you can query an off chain database that replicates the data from your blockchain network. This will allow you to understand the data on the blockchain without degrading the performance of your network or disrupting transactions.
 
-  You can use the channel-based event services client provided by the Fabric SDK's to build an off chain data store. For example, you can use a block listener to get the latest transactions being added to a channel ledger. The transaction read and write sets from the valid transactions can then be used to update a copy of the world state that has been stored in a separate database. For more information, see [How to use the channel-based event service ![External link icon](images/external_link.svg "External link icon")](https://fabric-sdk-node.github.io/tutorial-channel-events.html "How to use the channel-based event service"){:new_window} in the Node SDK documentation.
+  You can use the channel-based event services client provided by the Fabric SDKs to build an off chain data store. For example, you can use a block listener to get the latest transactions being added to a channel ledger. The transaction read and write sets from the valid transactions can then be used to update a copy of the world state that has been stored in a separate database. For more information, see [How to use the channel-based event service ![External link icon](images/external_link.svg "External link icon")](https://fabric-sdk-node.github.io/tutorial-channel-events.html "How to use the channel-based event service"){:new_window} in the Node SDK documentation.
 
 ## Hosting applications
 {: #dev-app-host-app}
 
-You can host your application on your local file system or push it to {{site.data.keyword.Bluemix_notm}}. To push your application to {{site.data.keyword.Bluemix_notm}}, complete the following steps:
+You can host your application on your local file system or push it to {{site.data.keyword.cloud_notm}}. To push your application to {{site.data.keyword.cloud_notm}}, complete the following steps:
 1. Install the [Cloud Foundry Command Line Installer ![External link icon](images/external_link.svg "External link icon")](https://github.com/cloudfoundry/cli/releases).  Test your installation with the `cf` command.
     * If your installation is successful, you should see a bunch of text output in your terminal.
     * If you see "command not found", your installation was either not successful or CF is not added to your system path.
-2. Set up API endpoint and log in with your {{site.data.keyword.Bluemix_notm}} ID and password by issuing the following commands:
+2. Set up API endpoint and log in with your {{site.data.keyword.cloud_notm}} ID and password by issuing the following commands:
     ```
     > cf api https://api.ng.bluemix.net
     > cf login
     ```
     {:codeblock}
-3. Browse to the directory of your application, and push your application by issuing the following command. This can take several minutes depending on your application size. You can see logs from {{site.data.keyword.Bluemix_notm}} in your terminal. The logs cease when the application is successfully launched.
+3. Browse to the directory of your application, and push your application by issuing the following command. This can take several minutes depending on your application size. You can see logs from {{site.data.keyword.cloud_notm}} in your terminal. The logs cease when the application is successfully launched.
 	```
 	> cf push YOUR_APP_NAME_HERE
 	```

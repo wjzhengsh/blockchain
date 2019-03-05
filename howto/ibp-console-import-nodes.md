@@ -2,7 +2,9 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -18,10 +20,10 @@ lastupdated: "2019-02-08"
 # Importing nodes
 {: #ibp-console-import-nodes}
 
-***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 The console includes the option to import nodes that are created by using another {{site.data.keyword.blockchainfull}} Platform console.
 {:shortdesc}  
+
+**Target audience:** This topic is designed for network operators who are responsible for creating, monitoring, and managing the blockchain network.
 
 ## Why import a node?
 
@@ -57,6 +59,7 @@ There are several reasons why you might want to import a CA into your console. A
 To import a CA to the {{site.data.keyword.blockchainfull_notm}} Platform console and operate it, you must have already exported the CA from another {{site.data.keyword.blockchainfull_notm}} Platform. Importing a CA allows you to register new users and [enroll identities](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-enroll).
 
 ### Before you begin
+{: #ibp-console-import-ca-before-you-begin}
 
 - Ensure that you have already imported the CA's admin identity JSON file into your console wallet.
 - Ensure that the CA JSON file that was exported from the console where it was created is available.
@@ -67,6 +70,8 @@ Importing a CA is performed from the **Nodes** tab. Click the **Add Certificate 
 
 - Click the **Upload JSON** button to skip the manual entry of the information and browse to the JSON file that was exported from the console where the CA was created.
 - Set the admin identity for the CA by clicking **Existing identity** and selecting the CA admin identity from your console wallet.
+
+Optionally, when you import a CA, you can also specify the credentials for the additional TLS CA if one is included.  
 
 After you have imported the CA into the console, you can use your CA to create new identities and generate the necessary certificates to operate your components and submit transactions to the network. To learn more, see [Managing certificate authorities](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-manage-ca).
 
@@ -86,6 +91,7 @@ An orderer node is the blockchain component that collects transactions from netw
 Importing an orderer into the console allows you to create new channels for peers to transact privately.
 
 ### Before you begin
+{: #ibp-console-import-orderer-before-you-begin}
 
 - Ensure that you have already imported the orderer's admin identity JSON file into your console wallet.
 - Ensure that the orderer JSON file that was exported from the console where it was created is available.
@@ -107,6 +113,7 @@ After you import a peer into the console, you can install smart contracts on the
 **Note:** If you need to add more peers to the peer organization or create additional admin identities for a peer, you need to import the peer's CA and then use that CA to perform those operations.
 
 ### Before you begin
+{: #ibp-console-import-peer-before-you-begin}
 
 Before you can import a peer, you need to gather the following information and certificates:
 

@@ -2,7 +2,10 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
+
 ---
 
 {:new_window: target="_blank"}
@@ -13,8 +16,6 @@ lastupdated: "2019-02-08"
 
 # Operating an orderer on {{site.data.keyword.cloud_notm}} Private
 {: #icp-orderer-operate}
-
-***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 After you install {{site.data.keyword.blockchainfull}} Platform orderer in {{site.data.keyword.cloud_notm}} Private, a configmap is created and it contains default settings for environment variables. You can then change or add environment variables for the orderer to configure its behavior.
 

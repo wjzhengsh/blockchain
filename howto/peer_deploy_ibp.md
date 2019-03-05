@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -17,9 +19,6 @@ lastupdated: "2019-02-08"
 
 # Deploying peers in {{site.data.keyword.cloud_notm}} Private and connect to Starter Plan or Enterprise Plan
 {: #ibp-peer-deploy}
-
-
-***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 The following instructions describe how to deploy an {{site.data.keyword.blockchainfull}} Platform peer on {{site.data.keyword.cloud_notm}} Private and connect the peer to Starter Plan or Enterprise Plan network on {{site.data.keyword.cloud_notm}} or your local {{site.data.keyword.cloud_notm}} Private.
 {:shortdesc}

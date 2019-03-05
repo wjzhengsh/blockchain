@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -17,8 +19,6 @@ lastupdated: "2019-02-08"
 
 # About {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private
 {: #ibp-icp-about}
-
-***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 {{site.data.keyword.blockchainfull}} Platform releases {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private, which is an application platform for developing and managing containerized applications. The {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private offering is based on Kubernetes, which allows users to deploy Certificate Authorities (CAs), orderers, and peers on x86, LinuxONE, and IBM Z. {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private is based on Hyperledger Fabric v1.2.1 and is deployed by using Kubernetes Helm charts.
 {:shortdesc}
@@ -176,9 +176,9 @@ Because these components are deployed outside of {{site.data.keyword.cloud_notm}
 The data in your state database, whether you use LevelDB or CouchDB, is not encrypted. You can use application level encryption to protect the data at rest in your state database.
 
 ### Data residency
-{: #ibp-icp-about-data-residency}
+{: #ibp-icp-about-security-data-residency}
 
-Data residency requirements can mandate that the processing and storage of all blockchain ledger data remain within the border of a single country (or within some other defined boundary). For more information on how data residency can be accomplished, see [Data residency](/docs/services/blockchain/howto/remote_peer.html#remote-peer-aws-about-data-residency).
+Data residency requirements can mandate that the processing and storage of all blockchain ledger data remain within the border of a single country (or within some other defined boundary). For more information on how data residency can be accomplished, see [Data residency](#ibp-icp-about-data-residency).
 
 ### Key management
 {: #ibp-icp-about-security-key-management}

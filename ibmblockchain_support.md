@@ -2,7 +2,10 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
+
 ---
 
 {:new_window: target="_blank"}
@@ -17,8 +20,6 @@ lastupdated: "2019-02-08"
 # Getting support
 {: #blockchain-support}
 
-***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 {{site.data.keyword.blockchainfull}} Platform provides several avenues for troubleshooting problems and getting support, which depend on the {{site.data.keyword.blockchainfull_notm}} Platform offerings that you use.
 {:shortdesc}
 
@@ -26,7 +27,7 @@ For all {{site.data.keyword.blockchainfull_notm}} Platform offerings, it is reco
 
 If your problem cannot be solved by any of the [free digital support resources](/docs/services/blockchain/ibmblockchain_support.html#blockchain-support-resources), consider the following approaches to get support for the offerings that you use.
 - **Starter Plan and Enterprise Plan on {{site.data.keyword.cloud_notm}}**
-  Submit a support case though {{site.data.keyword.cloud_notm}}. For more information, see [Submitting support cases](/docs/services/blockchain/ibmblockchain_support.html#blockchain-support-cases).
+  Submit a support case through {{site.data.keyword.cloud_notm}}. For more information, see [Submitting support cases](/docs/services/blockchain/ibmblockchain_support.html#blockchain-support-cases).
 
 - **{{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta**
   Submit a support case through {{site.data.keyword.cloud_notm}}. **Support will be limited during the Beta period.** For more information, see [Submitting support cases](/docs/services/blockchain/ibmblockchain_support.html#blockchain-support-cases).
@@ -75,15 +76,15 @@ For issues that are related to Starter or Enterprise Plan, you can submit a supp
 If you need help with Hyperledger Fabric chaincode, Hyperledger Composer, or your applications, please make use of the community resources above or engage [{{site.data.keyword.blockchainfull_notm}} Services ![External link icon](images/external_link.svg "External link icon")](https://www.ibm.com/blockchain/services "Turn your blockchain strategy into business outcomes with {{site.data.keyword.blockchainfull_notm}} Services"). It is recommended to use Hyperledger Composer solely for demos and proofs of concept. {{site.data.keyword.IBM_notm}} does not provide support for networks using Hyperledger Composer in production, including the Composer CLI, JavaScript APIs, REST server, and Web Playground.
 {:note}
 
-The response to your support case depends on your [{{site.data.keyword.cloud_notm}} support plan ![External link icon](images/external_link.svg "External link icon")](https://console.bluemix.net/docs/get-support/index.html#support-plans "Support Plans").
+The response to your support case depends on your [{{site.data.keyword.cloud_notm}} support plan ![External link icon](images/external_link.svg "External link icon")](https://cloud.ibm.com/docs/get-support/index.html#support-plans "Support Plans").
 
-- If you have purchased **Premium Support** or **Advanced Support**, you can specify a severity level on your ticket from Sev-1 to Sev-4. Sev-1 is the highest level of severity. Support cases with higher severity levels indicates more urgency and will be responded to more quickly by the support team. For more information, see [{{site.data.keyword.cloud_notm}} support plan offerings ![External link icon](images/external_link.svg "External link icon")](https://console.bluemix.net/docs/get-support/index.html#support-plans "Support Plans").  
+- If you have purchased **Premium Support** or **Advanced Support**, you can specify a severity level on your ticket from Sev-1 to Sev-4. Sev-1 is the highest level of severity. Support cases with higher severity levels indicates more urgency and will be responded to more quickly by the support team. For more information, see [{{site.data.keyword.cloud_notm}} support plan offerings ![External link icon](images/external_link.svg "External link icon")](https://cloud.ibm.com/docs/get-support/index.html#support-plans "Support Plans").  
 - If you do not purchase support, your {{site.data.keyword.cloud_notm}} Pay-As-You-Go or Subscription account comes with a free **Basic Support** plan. In this case, your support case will automatically be registered Sev-4.
 
 **Beta offerings** are provided with more limited support than Generally Available releases.
 - Support cases are registered with a lower severity level, usually Sev-4 or Sev-3.
 - Support is provided on a 5x24 basis. No weekend support is provided.
-- For more information, see [{{site.data.keyword.cloud_notm}} support for Beta services](https://console.bluemix.net/docs/get-support/servicessupport.html#support-different-services "{{site.data.keyword.IBM_notm}} Beta service").
+- For more information, see [{{site.data.keyword.cloud_notm}} support for Beta services](https://cloud.ibm.com/docs/get-support/servicessupport.html#support-different-services "{{site.data.keyword.IBM_notm}} Beta service").
 
 Follow these steps to submit a support case.
 

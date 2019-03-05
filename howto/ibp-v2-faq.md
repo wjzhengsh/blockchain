@@ -2,7 +2,9 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-02-14"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -63,10 +65,16 @@ Enterprise Plan customers will be able to migrate to IBM Blockchain Platform 2.0
 {: #ibp-v2-faq-logs}
 {: faq}
 
-With {{site.data.keyword.blockchainfull_notm}} Platform 2.0, you can now directly access your peer, CA and orderer logs from your Kubernetes dashboard. We recommend you take advantage of the [{{site.data.keyword.cloud_notm}} LogDNA ![External link icon](../images/external_link.svg "External link icon")](https://console.bluemix.net/catalog/services/logdna "{{site.data.keyword.IBM_notm}} Log Analysis with LogDNA") service which allows you to easily parse the logs in real-time.
+With {{site.data.keyword.blockchainfull_notm}} Platform 2.0, you can now directly access your peer, CA and orderer logs from your Kubernetes dashboard. We recommend you take advantage of the [{{site.data.keyword.cloud_notm}} LogDNA ![External link icon](../images/external_link.svg "External link icon")](https://cloud.ibm.com/catalog/services/logdna "{{site.data.keyword.IBM_notm}} Log Analysis with LogDNA") service which allows you to easily parse the logs in real-time.
 
 ## What is the value of using {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta over native Hyperledger Fabric?
 {: #ibp-v2-faq-native-fabric}
 {: faq}
 
-{{site.data.keyword.blockchainfull_notm}} Platform free 2.0 Beta enables clients to easily deploy a custom blockchain network. The platform includes an intuitive console for quick deployment of a network and the ability to easily install and instantiate smart contracts. With the platform you also receive support from experts at {{site.data.keyword.IBM_notm}} to help you with developing your smart contract and building your network.
+{{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta enables clients to easily deploy a custom blockchain network. The platform includes an intuitive console for quick deployment of a network and the ability to easily install and instantiate smart contracts. With the platform you also receive support from experts at {{site.data.keyword.IBM_notm}} to help you with developing your smart contract and building your network.
+
+## How can I maximize performance and scale my {{site.data.keyword.blockchainfull_notm}} Platform solution?
+{: #ibp-v2-faq-perf-scale}
+{: faq}
+
+Check out this [blog series ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/blogs/blockchain/2019/01/answering-your-questions-on-hyperledger-fabric-performance-and-scale/ "Answering your questions on Hyperledger Fabric performance and scale") for factors that affect performance of your solution and information on how blockchain can scale.
