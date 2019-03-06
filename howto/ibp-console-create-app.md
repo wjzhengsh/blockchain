@@ -59,7 +59,7 @@ If you are the **application developer**, use the information provided by the ne
 
 The application developer can use two programming models to interact with the network:
 
-**High Level Fabric SDK API's**
+**High Level Fabric SDK APIs**
 
 Starting with Fabric v1.4, users can take advantage of a simplified application and smart contract programming model. The new model reduces the number of steps and amount of code required to submit a transaction. This model is only supported for applications written in **Node.js**. If you want to take advantage of the new model, you can use this tutorial to complete the following actions on an {{site.data.keyword.blockchainfull_notm}} Platform 2.0 network:
 
@@ -69,9 +69,9 @@ Starting with Fabric v1.4, users can take advantage of a simplified application 
 - Learn about application development by deploying the [commercial paper tutorial](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-commercial-paper) to the nodes managed from your console. This tutorial will provide more background on how to use Fabric Wallets and Gateways.
 
 
-**Low Level Fabric SDK API's**
+**Low Level Fabric SDK APIs**
 
-If you want to continue to use your existing smart contract and application code, or use the other Fabric SDK languages provided by the Hyperledger community, you can use the [low level Fabric SDK API's](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-low-level) to connect to your network.
+If you want to continue to use your existing smart contract and application code, or use the other Fabric SDK languages provided by the Hyperledger community, you can use the [low level Fabric SDK APIs](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-low-level) to connect to your network.
 
 ## Register an application identity
 {: #ibp-console-app-identities}
@@ -468,6 +468,7 @@ After importing your wallet, use the following code to pass your connection prof
 - Update the `userName` to match the value that you selected for your `identityLabel` in `enrollUser.js`.
 - Update the discovery options to take advantage of service discovery on your network. Set `discovery: { enabled: true, asLocalhost: false }`.  
 - Update the section importing your connection profile. The console connection profile is in JSON format rather than a YAML file used by the sample.  
+
 ```
 const userName = 'user1';
 
@@ -544,10 +545,10 @@ After creating the commercial paper operating as magnetocorp, you can buy and re
 
 Navigate to the `digibank/application` directory. You can follow the directions provided in **Step three** to create to generate the certificates and wallet that will sign the transaction as digibank. You can then use the `buy.js` file to purchase the commercial paper from magnetocorp, and then use `redeem.js` to redeem the paper. You can follow **Step four** and **Step five** to edit those files so that they point to the correct connection profile, channel and smart contract.
 
-## Connecting to your network using low level Fabric SDK API's
+## Connecting to your network using low level Fabric SDK APIs
 {: #ibp-console-app-low-level}
 
-If you are interested in preserving your existing application code, or using Fabric SDKs for languages other than Node.js, you can still connect to your network using lower level Fabric SDK API's. Use the console to [download your connection profile](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-profile). You can then import the endpoints of the peers and ordering nodes of your channel directly from the connection profile, or use the node endpoint information to manually add peer and orderer objects. You will also need to use your CA to [create an application identity](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-identities), and then use the CA endpoint information enroll on the client side, or generate certificates using your console.
+If you are interested in preserving your existing application code, or using Fabric SDKs for languages other than Node.js, you can still connect to your network using lower level Fabric SDK APIs. Use the console to [download your connection profile](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-profile). You can then import the endpoints of the peers and ordering nodes of your channel directly from the connection profile, or use the node endpoint information to manually add peer and orderer objects. You will also need to use your CA to [create an application identity](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-identities), and then use the CA endpoint information enroll on the client side, or generate certificates using your console.
 
 The [Fabric Node SDK ![External link icon](../images/external_link.svg "External link icon ")](https://fabric-sdk-node.github.io "Fabric Node SDK") documentation provides a tutorial on how to [connect to your network using a connection profile ![External link icon](../images/external_link.svg "External link icon")](https://fabric-sdk-node.github.io/tutorial-network-config.html "connection profile tutorial"){:new_window}. The tutorial uses the CA endpoint information in your connection profile to generate keys using the SDK. You can also use your console to generate a public and private key and convert the keys into PEM format. You can then set a user context by passing your keys directly to the SDKs [Fabric Client class ![External link icon](../images/external_link.svg "External link icon")](https://fabric-sdk-node.github.io/Client.html "Fabric Client class") using the code below:
 
@@ -562,7 +563,7 @@ fabric_client.createUser({
 ```
 {:codeblock}
 
-If you are using low level SDK API's to connect to your network, there are additional steps that you can take to manage the performance and availability of your application. For more information, see [Best practices for application connectivity and availability](/docs/services/blockchain/v10_application.html#dev-app-connectivity-availability).
+If you are using low level SDK APIs to connect to your network, there are additional steps that you can take to manage the performance and availability of your application. For more information, see [Best practices for application connectivity and availability](/docs/services/blockchain/v10_application.html#dev-app-connectivity-availability).
 
 ## Using indexes with CouchDB
 {: #console-app-couchdb}
