@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-12-07"
+lastupdated: "2018-12-08"
 
 ---
 
@@ -16,6 +16,7 @@ lastupdated: "2018-12-07"
 # 비즈니스 네트워크 개발 환경 설치
 {: #installing-a-development-environment}
 
+**IBM은 Hyperledger Composer를 데모 및 개념 증명(POC)용으로만 사용하도록 권장합니다. IBM은 Composer CLI, JavaScript API, REST 서버 및 웹 플레이그라운드를 포함하여 프로덕션에서 Hyperledger Composer를 사용하는 네트워크를 지원하지 않습니다.**
 
 ***[이 페이지가 도움이 되었습니까? 알려주십시오.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
@@ -42,30 +43,30 @@ VSCode를 사용하는 경우 [여기](https://marketplace.visualstudio.com/item
 
 ## 1단계: 명령행 도구 설치
 
-명령행 도구에는 **composer-cli**라는 기본 {{site.data.keyword.blockchainfull_notm}} Platform: Develop 명령행 모듈과 **generator-hyperledger-composer**, **composer-rest-server** 및 **Yeoman**이 포함되며, 이러한 모듈은 비즈니스 네트워크, 맞춤형 REST 서버 및 Angular 애플리케이션을 생성하는 데 사용됩니다. 설치 버전은 스타터 또는 엔터프라이즈 플랜이 실행 중인 Hyperledger Fabric의 버전에 따라 달라집니다. 네트워크 모니터에서 [네트워크 환경 설정 창](/docs/services/blockchain/v10_dashboard.html#network-preferences)을 열어 Fabric 버전을 찾을 수 있습니다. 
+명령행 도구에는 **composer-cli**라는 기본 {{site.data.keyword.blockchainfull_notm}} Platform: Develop 명령행 모듈과 **generator-hyperledger-composer**, **composer-rest-server** 및 **Yeoman**이 포함되며, 이러한 모듈은 비즈니스 네트워크, 맞춤형 REST 서버 및 Angular 애플리케이션을 생성하는 데 사용됩니다. 설치 버전은 스타터 또는 엔터프라이즈 플랜이 실행 중인 Hyperledger Fabric의 버전에 따라 달라집니다. 네트워크 모니터에서 [네트워크 환경 설정 창](../v10_dashboard.html#network-preferences)을 열어서 Fabric 버전을 찾을 수 있습니다.
 
-1. Hyperledger Fabric v1.2.1을 실행 중인 스타터 플랜의 새 인스턴스에 사용하려면 다음 명령을 사용하여 **composer-cli**를 설치하십시오. 
+1. Hyperledger Fabric v1.2.1을 실행 중인 스타터 플랜의 새 인스턴스에 사용하려면 다음 명령을 사용하여 **composer-cli**를 설치하십시오.
 
     ```
     npm install -g composer-cli@0.20.x
     ```
     {:codeblock}
 
-  Hyperledger Fabric v1.1을 실행 중인 엔터프라이즈 플랜 및 스타터 플랜 인스턴스에 사용하려면 다음 명령을 사용하여 **composer-cli**를 설치하십시오. 
+  Hyperledger Fabric v1.1을 실행 중인 엔터프라이즈 플랜 및 스타터 플랜 인스턴스에 사용하려면 다음 명령을 사용하여 **composer-cli**를 설치하십시오.
 
     ```
 npm install -g composer-cli@0.19.x
     ```
     {:codeblock}
 
-2. Hyperledger Fabric v1.2.1을 실행 중인 스타터 플랜의 새 인스턴스에 사용하려면 다음 명령을 사용하여 **composer-rest-server**를 설치하십시오. 
+2. Hyperledger Fabric v1.2.1을 실행 중인 스타터 플랜의 새 인스턴스에 사용하려면 다음 명령을 사용하여 **composer-rest-server**를 설치하십시오.
 
     ```
     npm install -g composer-rest-server@0.20.x
     ```
     {:codeblock}
 
-  Hyperledger Fabric v1.1을 실행 중인 엔터프라이즈 플랜 및 스타터 플랜 인스턴스에 사용하려면 다음 명령을 사용하여 **composer-rest-server**를 설치하십시오. 
+  Hyperledger Fabric v1.1을 실행 중인 엔터프라이즈 플랜 및 스타터 플랜 인스턴스에 사용하려면 다음 명령을 사용하여 **composer-rest-server**를 설치하십시오.
 
     ```
 npm install -g composer-rest-server@0.19.x
@@ -74,14 +75,14 @@ npm install -g composer-rest-server@0.19.x
 
  RESTful API로 비즈니스 네트워크를 노출시키려면 **composer-rest-server** 모듈을 사용하여 시스템에서 REST 서버를 작성하십시오.
 
-3. Hyperledger Fabric v1.2.1을 실행 중인 스타터 플랜의 새 인스턴스에 사용하려면 다음 명령을 사용하여 **generator-hyperledger-composer**를 설치하십시오. 
+3. Hyperledger Fabric v1.2.1을 실행 중인 스타터 플랜의 새 인스턴스에 사용하려면 다음 명령을 사용하여 **generator-hyperledger-composer**를 설치하십시오.
 
     ```
     npm install -g generator-hyperledger-composer@0.20.x
     ```
     {:codeblock}
 
-  Hyperledger Fabric v1.1을 실행 중인 엔터프라이즈 플랜 및 스타터 플랜 인스턴스에 사용하려면 다음 명령을 사용하여 **generator-hyperledger-composer**를 설치하십시오. 
+  Hyperledger Fabric v1.1을 실행 중인 엔터프라이즈 플랜 및 스타터 플랜 인스턴스에 사용하려면 다음 명령을 사용하여 **generator-hyperledger-composer**를 설치하십시오.
 
     ```
 npm install -g generator-hyperledger-composer@0.19.x

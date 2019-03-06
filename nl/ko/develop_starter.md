@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-12-07"
+lastupdated: "2018-12-08"
 
 ---
 
@@ -16,6 +16,7 @@ lastupdated: "2018-12-07"
 # 스타터 플랜에 비즈니스 네트워크 배치
 {: #deploying-a-business-network}
 
+**IBM은 Hyperledger Composer를 데모 및 개념 증명(POC)용으로만 사용하도록 권장합니다. IBM은 Composer CLI, JavaScript API, REST 서버 및 웹 플레이그라운드를 포함하여 프로덕션에서 Hyperledger Composer를 사용하는 네트워크를 지원하지 않습니다.**
 
 *[이 페이지가 도움이 되었습니까? 알려주십시오.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)*
 
@@ -27,14 +28,14 @@ lastupdated: "2018-12-07"
 
 ## 시작하기 전에
 
-[스타터 플랜 정보](/docs/services/blockchain/starter_plan.html) 및 [스타터 플랜 시작하기](/docs/services/blockchain/get_start_starter_plan.html)를 읽었는지 확인하십시오. 또한 [스타터 플랜 네트워크 통제](/docs/services/blockchain/get_start_starter_plan.html)의 지시사항에 따라 [{{site.data.keyword.blockchainfull_notm}} Platform 개발자 환경](./develop_install.html)을 설치하고 {{site.data.keyword.blockchainfull_notm}} Platform 스타터 플랜의 인스턴스를 작성했는지 확인하십시오.
+[스타터 플랜 정보](./starter_plan.html) 및 [스타터 플랜 시작하기](./get_start_starter_plan.html)를 읽었는지 확인하십시오. 또한 [스타터 플랜 네트워크 통제](./get_start_starter_plan.html)의 지시사항에 따라 [{{site.data.keyword.blockchainfull_notm}} Platform 개발자 환경](./develop_install.html)을 설치하고 {{site.data.keyword.blockchainfull_notm}} Platform 스타터 플랜의 인스턴스를 작성했는지 확인하십시오.
 
 Node v8.9 이상, npm v5.x 및 Hyperledger Composer가 있는지 확인하십시오.
 
 - 네트워크에 Fabric 버전 1.2가 있는 경우 Hyperledger Composer v0.20.x를 사용하십시오.
 - 네트워크에 Fabric 버전 1.1이 있는 경우 Hyperledger Composer v0.19.x를 사용하십시오.  
 
-네트워크 모니터에서 [네트워크 환경 설정 창](/docs/services/blockchain/v10_dashboard.html#network-preferences)을 열어 Fabric 버전을 찾을 수 있습니다. 
+네트워크 모니터에서 [네트워크 환경 설정 창](../v10_dashboard.html#network-preferences)을 열어서 Fabric 버전을 찾을 수 있습니다.
 
 
 ## 1단계: 관리자 시크릿 검색
