@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-08-31"
+  years: 2017, 2019
+lastupdated: "2019-02-08"
 
 ---
 
@@ -13,17 +13,18 @@ lastupdated: "2018-08-31"
 {:pre: .pre}
 
 # Swagger API를 사용하여 네트워크 작성 또는 가입
+{: #swagger-network}
 
 
 ***[이 페이지가 도움이 되었습니까? 알려주십시오.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 
-{{site.data.keyword.blockchainfull}} Platform은 {{site.data.keyword.cloud_notm}}에서 블록체인 네트워크를 작성하거나 가입하는 데 사용할 수 있는 다수의 REST API를 노출합니다. 네트워크와 연관된 [Swagger UI](/docs/services/blockchain/howto/swagger_apis.html)를 사용하여 이러한 API를 사용해 볼 수 있습니다.
+{{site.data.keyword.blockchainfull}} Platform은 {{site.data.keyword.cloud_notm}}에서 블록체인 네트워크를 작성하거나 가입하는 데 사용할 수 있는 다수의 REST API를 노출합니다. 네트워크와 연관된 [Swagger UI](/docs/services/blockchain/howto/swagger_apis.html#ibp-swagger)를 사용하여 이러한 API를 사용해 볼 수 있습니다.
 {:shortdesc}
 
 
 ## API에 대한 기본 인증 정보 검색
-{: #retrieve-id-token}
+{: #swagger-network-retrieve-id-token}
 
 시작하기 전에 {{site.data.keyword.cloud_notm}}에서 스타터 플랜 또는 엔터프라이즈 플랜을 사용하여 [{{site.data.keyword.blockchainfull_notm}} Platform 서비스 인스턴스 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://console.bluemix.net/catalog/services/blockchain)를 작성해야 합니다.
 
@@ -45,7 +46,6 @@ Swagger API를 사용하여 네트워크를 작성하거나 가입하려면 {{si
       "description": "This token can be used with the IBP APIs to create or join a network. It can only be used once."
     }
     ```
-    {:codeblock}
 
     `service_instance_id`는 기본 인증 사용자 ID 역할을 하고 `service_instance_token`은 기본 인증 비밀번호 역할을 합니다. **네트워크 작성** 또는 **네트워크 가입** API를 호출할 때 이러한 값을 기본 인증 정보로 사용하십시오.
 
@@ -61,13 +61,12 @@ Swagger API를 사용하여 네트워크를 작성하거나 가입하려면 {{si
       }
     }
     ```
-    {:codeblock}
 
     **참고**: **초대** API의 경우 `key`는 기본 인증 사용자 ID 역할을 하고 `secret`은 기본 인증 비밀번호 역할을 합니다.
 
 
 ## 사용 가능한 네트워크 위치 확인
-{: #check-location}
+{: #swagger-network-check-location}
 
 사용 가능한 네트워크 위치에서만 API를 사용하여 블록체인 네트워크를 작성할 수 있습니다. 네트워크를 작성하기 전에 다음 API를 사용하여 사용 가능한 네트워크 위치의 현재 목록을 가져오십시오. 이 API 실행에는 인증 정보가 필요하지 않습니다.
 
@@ -76,7 +75,7 @@ https://ibmblockchain-v2.ng.bluemix.net/api/v1/network-locations/available
 ```
 {:codeblock}
 
-사용 가능한 네트워크 위치의 목록이 리턴되며 다음과 유사합니다.
+사용 가능한 네트워크 위치의 목록이 리턴되며 다음 예와 유사합니다.
 
 ```
 {
@@ -100,9 +99,8 @@ https://ibmblockchain-v2.ng.bluemix.net/api/v1/network-locations/available
   }
 }
 ```
-{:codeblock}
 
-네트워크를 작성하려면 API에서 리턴된 목록에서 네트워크를 작성할 위치를 선택하십시오. ``location_id`` 및 ``swagger_url``이 이 위치와 연관되어 있습니다.  
+네트워크를 작성하려면 API에서 리턴된 목록에서 네트워크를 작성할 위치를 선택하십시오. ``location_id`` 및 ``swagger_url``이 이 위치와 연관되어 있습니다.
 
 네트워크에 가입하려면 초대 이메일에 지정된 ``location_id``와 연관된 ``swagger_url``을 기록해 두십시오.
 
@@ -115,9 +113,9 @@ https://ibmblockchain-v2.ng.bluemix.net/api/v1/network-locations/available
 
 엔터프라이즈 플랜을 사용하는 경우 두 가지 단계를 완료하여 API로 네트워크를 작성해야 합니다.
 
-1. 엔터프라이즈 플랜<!-- or Enterprise Plus Plan-->을 사용하여 {{site.data.keyword.cloud_notm}}에 블록체인 서비스 인스턴스를 작성하십시오.  기본 인증 사용자 이름 및 비밀번호로 서비스 인스턴스 ID 및 토큰을 검색하십시오. 자세한 정보는 [API에 대한 기본 인증 정보 검색](#retrieve-id-token)을 참조하십시오.
+1. 엔터프라이즈 플랜<!-- or Enterprise Plus Plan-->을 사용하여 {{site.data.keyword.cloud_notm}}에 블록체인 서비스 인스턴스를 작성하십시오.  기본 인증 사용자 이름 및 비밀번호로 서비스 인스턴스 ID 및 토큰을 검색하십시오. 자세한 정보는 [API에 대한 기본 인증 정보 검색](/docs/services/blockchain/howto/create_join_network_with_apis.html#swagger-network-retrieve-id-token)을 참조하십시오.
 
-2. 이러한 서비스 인증 정보를 사용하여 **네트워크 작성** API를 호출하십시오. [사용 가능한 네트워크 위치 확인](#check-location)에서 검색된 api ``swagger_url``에 대해 이 API를 발행하십시오. ``swagger_url link``로 이동하여 Swagger UI로 네트워크 작성 API를 발행하거나 ``/api-docs`` 없이 URL 주소를 사용하여 명령을 프로그래밍 방식으로 실행하십시오.
+2. 이러한 서비스 인증 정보를 사용하여 **네트워크 작성** API를 호출하십시오. [사용 가능한 네트워크 위치 확인](/docs/services/blockchain/howto/create_join_network_with_apis.html#swagger-network-check-location)에서 검색된 api ``swagger_url``에 대해 이 API를 발행하십시오. ``swagger_url link``로 이동하여 Swagger UI로 네트워크 작성 API를 발행하거나 ``/api-docs`` 없이 URL 주소를 사용하여 명령을 프로그래밍 방식으로 실행하십시오.
 
     ```
 https://ibmblockchain-v2-tor.1.secure.blockchain.ibm.com/api/v1/networks
@@ -125,7 +123,7 @@ https://ibmblockchain-v2-tor.1.secure.blockchain.ibm.com/api/v1/networks
     {:codeblock}
 
 **매개변수**:
-- `location_id`: 사용 가능한 네트워크 위치의 ID입니다. [사용 가능한 네트워크 위치 확인](#check-location)에서 기록해 둔 `loation_id`의 값을 지정하십시오.
+- `location_id`: 사용 가능한 네트워크 위치의 ID입니다. [사용 가능한 네트워크 위치 확인](/docs/services/blockchain/howto/create_join_network_with_apis.html#swagger-network-check-location)에서 기록해 둔 `loation_id`의 값을 지정하십시오.
 - `company_name`: 네트워크의 구성원으로서의 ID입니다.
 - `email`: 알림을 받을 이메일 주소입니다.
 - `peers`: 이 구성원에 대해 작성할 피어의 수입니다. 올바른 값은 0 - 6입니다. 나중에 네트워크 모니터 UI에서 구성원에 대한 피어를 작성할 수도 있습니다.
@@ -134,7 +132,7 @@ https://ibmblockchain-v2-tor.1.secure.blockchain.ibm.com/api/v1/networks
 
 ## 새 구성원을 네트워크에 초대
 
-블록체인 네트워크를 작성한 후 네트워크에 가입하도록 다른 구성원을 초대할 수 있습니다. 가입하도록 새 구성원을 초대할 네트워크의 ID를 지정해야 합니다. 구성원을 초대하는 데 필요한 기본 인증 인증 정보는 **네트워크 작성** API에서 사용되는 인증 정보와 다릅니다. <!--In order to get the basic auth information you will need to follow the same steps in "Retrieving basic auth information for API". --> [Swagger UI](swagger_apis.html#retrieving-network-credentials)에서 **네트워크 인증 정보 검색** API를 사용하거나 {{site.data.keyword.cloud_notm}}의 서비스 인스턴스에서 [API에 대한 기본 인증 정보를 검색](#retrieve-id-token)하여 구성원을 초대하기 위한 인증 정보를 가져올 수 있습니다.
+블록체인 네트워크를 작성한 후 네트워크에 가입하도록 다른 구성원을 초대할 수 있습니다. 가입하도록 새 구성원을 초대할 네트워크의 ID를 지정해야 합니다. 구성원을 초대하는 데 필요한 기본 인증 인증 정보는 **네트워크 작성** API에서 사용되는 인증 정보와 다릅니다. <!--In order to get the basic auth information, you need to follow the same steps in "Retrieving basic auth information for API". --> [Swagger UI](/docs/services/blockchain/howto/swagger_apis.html#ibp-swagger-retrieving-network-credentials)에서 **네트워크 인증 정보 검색** API를 사용하거나 {{site.data.keyword.cloud_notm}}의 서비스 인스턴스에서 [API에 대한 기본 인증 정보를 검색](/docs/services/blockchain/howto/create_join_network_with_apis.html#swagger-network-retrieve-id-token)하여 구성원을 초대하기 위한 인증 정보를 가져올 수 있습니다.
 
 ```
 /networks/{networkID}/invite
@@ -152,9 +150,9 @@ https://ibmblockchain-v2-tor.1.secure.blockchain.ibm.com/api/v1/networks
 
 블록체인 네트워크에 가입하도록 초대되면 `location_id` 및 `network id`가 포함된 네트워크 초대 이메일을 받습니다.
 
-1. 네트워크에 가입하기 전에 {{site.data.keyword.blockchainfull_notm}} Platform 서비스 인스턴스를 작성하고 기본 인증 사용자 이름 및 비밀번호로 서비스 인스턴스 ID 및 토큰을 검색해야 합니다. 자세한 정보는 [API에 대한 기본 인증 정보 검색](#retrieve-id-token)을 참조하십시오.
+1. 네트워크에 가입하기 전에 {{site.data.keyword.blockchainfull_notm}} Platform 서비스 인스턴스를 작성하고 기본 인증 사용자 이름 및 비밀번호로 서비스 인스턴스 ID 및 토큰을 검색해야 합니다. 자세한 정보는 [API에 대한 기본 인증 정보 검색](/docs/services/blockchain/howto/create_join_network_with_apis.html#swagger-network-retrieve-id-token)을 참조하십시오.
 
-2. [사용 가능한 네트워크 위치를 확인](#check-location)하여 초대 이메일에서 `location_id`에 대한 `swagger_url`을 가져오십시오. 다음과 같이 표시됩니다.
+2. [사용 가능한 네트워크 위치를 확인](/docs/services/blockchain/howto/create_join_network_with_apis.html#swagger-network-check-location)하여 초대 이메일에서 `location_id`에 대한 `swagger_url`을 가져오십시오. 다음과 같이 표시됩니다.
 
     ```
 https://ibmblockchain-v2-tor.1.secure.blockchain.ibm.com/api-docs

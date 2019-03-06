@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-12-07"
+  years: 2017, 2019
+lastupdated: "2019-02-08"
 
 ---
 
@@ -10,65 +10,70 @@ lastupdated: "2018-12-07"
 {:shortdesc: .shortdesc}
 {:screen: .screen}
 {:codeblock: .codeblock}
+{:note: .note}
+{:important: .important}
+{:tip: .tip}
 {:pre: .pre}
 
 # {{site.data.keyword.cloud_notm}} Private에 피어 배치 및 스타터 플랜 또는 엔터프라이즈 플랜에 연결
-{: #peer-ibp}
+{: #ibp-peer-deploy}
 
 
 ***[이 페이지가 도움이 되었습니까? 알려주십시오.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
-다음 지시사항은 {{site.data.keyword.cloud_notm}} 또는 로컬 ICP의 스타터 플랜 또는 엔터프라이즈 플랜 네트워크에 연결할 {{site.data.keyword.cloud_notm}} Private(ICP)에 {{site.data.keyword.blockchainfull}} Platform을 배치하는 방법에 대해 설명합니다.
+다음 지시사항은 {{site.data.keyword.blockchainfull}} Platform 피어를 {{site.data.keyword.cloud_notm}} Private에 배치하고
+피어를 {{site.data.keyword.cloud_notm}} 또는 로컬 {{site.data.keyword.cloud_notm}} Private의 스타터 플랜 또는 엔터프라이즈 플랜에 연결하는 방법에 대해 설명합니다.
 {:shortdesc}
 
-피어를 배치하기 전에 [고려사항 및 제한사항](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-considerations)을 검토하십시오.
+피어를 배치하기 전에 [고려사항 및 제한사항](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-about-considerations)을 검토하십시오.
 
-스타터 플랜 또는 엔터프라이즈 플랜 네트워크에서는 Hyperledger Fabric v1.1 또는 v1.2.1이 실행되어야 합니다. 네트워크 모니터에서 [네트워크 환경 설정 창](/docs/services/blockchain/v10_dashboard.html#network-preferences)을 열어 Hyperledger Fabric 버전을 찾을 수 있습니다.
+스타터 플랜 또는 엔터프라이즈 플랜 네트워크에서는 Hyperledger Fabric v1.1 또는 v1.2.1이 실행되어야 합니다. 네트워크 모니터에서 [네트워크 환경 설정 창](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-network-preferences)을 열어서 Hyperledger Fabric 버전을 찾을 수 있습니다.
 
 ## 필수 리소스
-{: #peer-resources-required}
+{: #ibp-peer-deploy-resources-required}
 
-ICP 시스템에서 최소 하드웨어 리소스 요구사항을 충족하는지 확인하십시오.
+사용자의 {{site.data.keyword.cloud_notm}} Private 시스템이 최소 하드웨어 리소스 요구사항을 충족하는지 확인하십시오.
 
 | 컴포넌트 | vCPU | RAM | 데이터 스토리지용 디스크 |
 |-----------|------|-----|-----------------------|
-|피어(Peer) |2 |2GB | 50GB(확장 기능 포함) |
+|피어 |2 |2GB | 50GB(확장 기능 포함) |
 | 피어를 위한 CouchDB |2|2GB | 50GB(확장 기능 포함) |
 
  **참고:**
- - vCPU는 서버가 가상 머신에 대해 파티션되지 않은 경우 가상 머신 또는 실제 프로세서 코어에 지정되는 가상 코어입니다. ICP에서 배치를 위해 가상 프로세서 코어(VPC)를 결정할 때 vCPU 요구사항을 고려해야 합니다. VPC는 IBM 제품의 라이센싱 비용을 결정하는 측정 단위입니다. VPC를 결정하기 위한 시나리오에 대한 자세한 정보는 [가상 프로세서 코어(VPC) ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/en/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_virtual_processor_core_licenses.html)를 참조하십시오.
+ - vCPU는 서버가 가상 머신에 대해 파티션되지 않은 경우 가상 머신 또는 실제 프로세서 코어에 지정되는 가상 코어입니다. {{site.data.keyword.cloud_notm}} Private에서 배치를 위해 가상 프로세서 코어(VPC)를 결정할 때 vCPU 요구사항을 고려해야 합니다. VPC는 IBM 제품의 라이센싱 비용을 판별하는 측정 단위입니다. VPC를 결정하기 위한 시나리오에 대한 자세한 정보는 [가상 프로세서 코어(VPC) ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/en/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_virtual_processor_core_licenses.html)를 참조하십시오.
  - 이 최소 리소스 레벨은 테스트 및 실험을 수행하는 데 충분합니다. 트랜잭션의 대형 볼륨이 포함된 환경의 경우 스토리지의 충분한 양을 할당하는 것이 중요합니다(예: 피어를 위해 250GB). 사용할 스토리지의 양은 네트워크에서 필요한 트랜잭션의 수와 서명의 수에 따라 달라집니다. 피어에서 스토리지를 다 써버리는 경우 대형 파일 시스템에서 새 피어를 배치해야 하고 동일한 채널의 기타 컴포넌트를 통해 동기화할 수 있도록 해야 합니다.
 
 ## 스토리지
-{: #storage}
+{: #ibp-peer-deploy-storage}
 
 피어에서 사용할 스토리지를 결정해야 합니다. 기본 설정을 사용하는 경우 Helm 차트에서 피어 데이터의 새로운 8 Gi 지속적 볼륨 청구(PVC)를 `my-data-pvc`라는 이름으로 작성하고, 상태 데이터베이스의 다른 8 Gi PVC를 `statedb-pvc`라는 이름으로 작성합니다.
 
-기본 스토리지 설정을 사용하지 않으려면 ICP 설치 중에 *새* `storageClass`가 설정되었는지 확인하거나, Kubernetes 시스템 관리자 배치하기 전에 storageClass를 작성해야 합니다.
+기본 스토리지 설정을 사용하지 않으려면 {{site.data.keyword.cloud_notm}} Private 설치 중에 *새* `storageClass`가 설정되었는지 확인하거나,
+Kubernetes 시스템 관리자 배치하기 전에 storageClass를 작성해야 합니다.
 
-amd64 또는 s390x 플랫폼에 피어를 배치하도록 선택할 수 있습니다. 그러나 [동적 프로비저닝](https://kubernetes.io/docs/concepts/storage/dynamic-provisioning/)은 ICP에서 amd64 노드에만 사용 가능하다는 점에 유의하십시오. 클러스터에 s390x와 amd64 작업자 노드가 혼합되어 있는 경우 동적 프로비저닝을 사용할 수 없습니다.
+amd64 또는 s390x 플랫폼에 피어를 배치하도록 선택할 수 있습니다. 단, [동적 프로비저닝 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://kubernetes.io/docs/concepts/storage/dynamic-provisioning/ "동적 프로비저닝")은 {{site.data.keyword.cloud_notm}} Private의 amd64 노드에 대해서만 사용 가능합니다. 클러스터에 s390x와 amd64 작업자 노드가 혼합되어 있는 경우 동적 프로비저닝을 사용할 수 없습니다.
 
-동적 프로비저닝을 사용하지 않는 경우 [지속적 볼륨 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)을 작성하여 Kubernetes PVC 바인드 프로세스를 세분화하는 데 사용할 수 있는 레이블로 설정해야 합니다.
+동적 프로비저닝을 사용하지 않는 경우 [지속적 볼륨 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://kubernetes.io/docs/concepts/storage/persistent-volumes/ "지속적 볼륨")을 작성하여 Kubernetes PVC 바인드 프로세스를 세분화하는 데 사용할 수 있는 레이블로 설정해야 합니다.
 
 ## 피어를 배치하기 위한 전제조건
-{: #prerequisites-peer-ibp}
+{: #ibp-peer-deploy-prerequisites}
 
-1. ICP에 피어를 설치하기 전에 [ICP를 설치](../ICP_setup.html)하고 [{{site.data.keyword.blockchainfull_notm}} Platform Helm 차트를 설치](/docs/services/blockchain/howto/helm_install_icp.html)해야 합니다.
+1. 피어를 {{site.data.keyword.cloud_notm}} Private에 설치하기 전에 [{{site.data.keyword.cloud_notm}} Private을 설치](/docs/services/blockchain/ICP_setup.html#icp-setup)하고 [{{site.data.keyword.blockchainfull_notm}} Platform Helm 차트를 설치](/docs/services/blockchain/howto/helm_install_icp.html#helm-install)해야 합니다.
 
-2. 커뮤니티 에디션을 사용하고 인터넷 연결 없이 ICP 클러스터에서 이 Helm 차트를 실행할 경우 ICP 클러스터에 아카이브를 설치하기 전에 인터넷이 연결된 머신에 아카이브를 작성해야 합니다. 자세한 정보는 [인터넷 연결 없이 클러스터에 주요 애플리케이션 추가 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_package_offline.html "인터넷 연결 없이 클러스터에 주요 애플리케이션 추가"){:new_window}를 참조하십시오. Helm 차트의 ibm-blockchain-platform-dev/ibm_cloud_pak 아래에서 스펙 파일인 manifest.yaml을 찾을 수 있습니다.
+2. Community Edition을 사용하고 인터넷 연결 없이 {{site.data.keyword.cloud_notm}} Private 클러스터에 이 Helm 차트를 실행하려면 아카이브를 {{site.data.keyword.cloud_notm}} Private 클러스터에 설치하기 전에 인터넷에 연결된 시스템에서 아카이브를 작성해야 합니다. 자세한 정보는 [인터넷 연결 없이 클러스터에 주요 애플리케이션 추가 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_package_offline.html "인터넷 연결 없이 클러스터에 주요 애플리케이션 추가"){:new_window}를 참조하십시오. Helm 차트의 ibm-blockchain-platform-dev/ibm_cloud_pak 아래에서 스펙 파일인 manifest.yaml을 찾을 수 있습니다.
 
-3. {{site.data.keyword.cloud_notm}}에서 스타터 플랜 또는 엔터프라이즈 플랜 네트워크의 멤버인 조직이 있어야 합니다. 피어에서는 {{site.data.keyword.blockchainfull_notm}} Platform 네트워크의 순서 지정 서비스, Hyperledger Fabric CA 및 API 엔드포인트를 활용하여 운영합니다. 블록체인 네트워크의 구성원이 아니면 네트워크를 작성하거나 가입해야 합니다. 자세한 정보는 [네트워크 작성](/docs/services/blockchain/get_start.html#creating-a-network) 또는 [네트워크에 가입](/docs/services/blockchain/get_start.html#joining-a-network)을 참조하십시오.
+3. {{site.data.keyword.cloud_notm}}에서 스타터 플랜 또는 엔터프라이즈 플랜 네트워크의 멤버인 조직이 있어야 합니다. 피어에서는 {{site.data.keyword.blockchainfull_notm}} Platform 네트워크의 순서 지정 서비스, Hyperledger Fabric CA 및 API 엔드포인트를 활용하여 운영합니다. 블록체인 네트워크의 구성원이 아니면 네트워크를 작성하거나 가입해야 합니다. 자세한 정보는 [네트워크 작성](/docs/services/blockchain/get_start.html#getting-started-with-enterprise-plan-create-network) 또는 [네트워크에 가입](/docs/services/blockchain/get_start.html#getting-started-with-enterprise-plan-join-nw)을 참조하십시오.
 
-4. 먼저 ICP에 [CA를 배치](/docs/services/blockchain/howto/CA_deploy_icp.html)해야 합니다. TLS CA로 이 CA를 사용합니다. 피어를 배치하기 전에 [ICP에서 CA를 운영](/docs/services/blockchain/howto/CA_operate.html#prerequisites)하기 위한 전제조건 단계를 따라야 합니다. 이 단계 이상으로 진행할 필요가 없습니다.
+4. 먼저 {{site.data.keyword.cloud_notm}} Private에 [CA를 배치](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy)해야 합니다. TLS CA로 이 CA를 사용합니다. 피어를 배치하기 전에 {{site.data.keyword.cloud_notm}} Private에서 CA를 운영하기 위한 [전제조건 단계](/docs/services/blockchain/howto/CA_operate.html#ca-operate-prerequisites)를 따라야 합니다. 이 단계 이상으로 진행할 필요가 없습니다.
 
-5. ICP 콘솔에서 TLS CA의 클러스터 프록시 IP 주소 값을 검색하십시오. **참고:** 프록시 IP에 액세스하려면 [클러스터 관리자 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "클러스터 관리자 역할 및 조치")여야 합니다. ICP 클러스터에 로그인하십시오. 왼쪽 탐색 패널에서 **플랫폼**, **노드**를 차례로 클릭하여 클러스터에 정의된 노드를 보십시오. 역할이 `proxy`인 노드를 클릭한 후 테이블에서 `Host IP`의 값을 복사하십시오. **중요:** 이 값을 저장하십시오. 그러면 Helm 차트의 `Proxy IP` 필드를 구성할 때 이 값을 사용하게 됩니다.
+5. {{site.data.keyword.cloud_notm}} Private 콘솔에서 TLS CA의 클러스터 프록시 IP 주소 값을 검색하십시오. **참고:** 프록시 IP에 액세스하려면 [클러스터 관리자 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "클러스터 관리자 역할 및 조치")여야 합니다. {{site.data.keyword.cloud_notm}} Private 클러스터에 로그인하십시오. 왼쪽 탐색 패널에서 **플랫폼**, **노드**를 차례로 클릭하여 클러스터에 정의되어 있는 노드를 표시하십시오. 역할이 `proxy`인 노드를 클릭한 후 테이블에서 `Host IP`의 값을 복사하십시오. **중요:** 이 값을 저장하십시오. 이 값은 Helm 차트의 `Proxy IP` 필드를 구성할 때 사용하게 됩니다.
 
-6. 피어 구성 파일을 작성하고 ICP에서 Kubernetes 시크릿으로 이를 저장하십시오. [다음 섹션](#peer-config-file)에서 이 파일을 작성하기 위한 단계를 찾을 수 있습니다.
+6. 피어 구성 파일을 작성하고 {{site.data.keyword.cloud_notm}} Private에서 Kubernetes 시크릿으로 이를 저장하십시오. [다음 섹션](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-config-file)에서 이 파일을 작성하기 위한 단계를 찾을 수 있습니다.
 
 ## 구성 파일 빌드
-{: #peer-config-file}
+{: #ibp-peer-deploy-config-file}
 
-피어를 배치하기 전에 {{site.data.keyword.cloud_notm}}의 피어 ID 및 인증 기관에 대한 중요한 정보가 포함된 구성 JSON 파일을 작성해야 합니다. 그런 다음 [Kubernetes 시크릿 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://kubernetes.io/docs/concepts/configuration/secret/) 오브젝트를 사용하여 구성 중에 이 파일을 Helm 차트에 전달해야 합니다. 이 파일을 통해 피어는 스타터 플랜 또는 엔터프라이즈 플랜에 가입하기 위해 {{site.data.keyword.cloud_notm}}의 인증 기관에서 필요한 인증서를 가져올 수 있습니다. 이 파일에는 사용자가 관리자로 피어를 운영할 수 있는 관리자 인증서도 포함됩니다.
+피어를 배치하기 전에 {{site.data.keyword.cloud_notm}}의 피어 ID 및 인증 기관에 대한 중요한 정보가 포함된 구성 JSON 파일을 작성해야 합니다. 그런 다음 [Kubernetes 시크릿 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://kubernetes.io/docs/concepts/configuration/secret/ "시크릿") 오브젝트를 사용하여 구성 중에 이 파일을 Helm 차트에 전달해야 합니다. 이 파일을 통해 피어는 스타터 플랜 또는 엔터프라이즈 플랜에 가입하기 위해 {{site.data.keyword.cloud_notm}}의 인증 기관에서 필요한 인증서를 가져올 수 있습니다. 이 파일에는 사용자가 관리자로 피어를 운영할 수 있는 관리자 인증서도 포함됩니다.
 
 편집하고 로컬 파일 시스템에 저장할 수 있도록 이 지시사항에 템플리트 JSON을 제공합니다. 그런 다음 구성 파일을 완료하기 위해 CA를 사용하는 방법에 대해 설명합니다.
 
@@ -107,23 +112,23 @@ amd64 또는 s390x 플랫폼에 피어를 배치하도록 선택할 수 있습�
 ```
 {:codeblock}
 
-JSON 파일로 이 전체 파일을 편집하고 이를 로컬 파일 시스템에 저장할 수 있는 텍스트 편집기에 해당 파일을 복사하십시오. 이 파일의 상위 두 가지 섹션인 `"enrollment"` 및 `"tls"`만 채워야 합니다.
+이 전체 파일을 편집할 수 있는 텍스트 편집기에 복사하고 이를 로컬 파일 시스템에 JSON 파일로 저장하십시오. 이 파일의 상위 두 가지 섹션인 `"enrollment"` 및 `"tls"`만 채워야 합니다.
 
 구성 파일을 완료하려면 스타터 플랜 또는 엔터프라이즈 플랜 네트워크에서 여러 단계를 완료해야 합니다.
 
-1. [스타터 플랜 또는 엔터프라이즈 플랜 CA의 엔드포인트 정보를 검색](#ibp-ca-endpoint)하십시오.
-2. [CA로 피어를 검색](#register-peer)하십시오.
-3. 피어를 운영하는 데 사용할 [피어 관리자를 등록](#register-admin)하십시오. 다른 피어를 배치하도록 관리자를 이미 등록한 경우 이 단계를 완료할 필요는 없습니다.
+1. [스타터 플랜 또는 엔터프라이즈 플랜 CA의 엔드포인트 정보를 검색](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-ibp-ca-endpoint)하십시오.
+2. [CA로 피어를 검색](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-register-peer)하십시오.
+3. 피어를 운영하는 데 사용할 [피어 관리자를 등록](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-register-admin)하십시오. 다른 피어를 배치하도록 관리자를 이미 등록한 경우 이 단계를 완료할 필요는 없습니다.
 
-또한 ICP에 배치된 Fabric CA 클라이언트 및 TLS CA를 사용하여 여러 단계를 완료해야 합니다.
+또한 {{site.data.keyword.cloud_notm}} Private에 배치된 Fabric CA 클라이언트 및 TLS CA를 사용하여 여러 단계를 완료해야 합니다.
 
-1. Fabric CA 클라이언트를 사용하여 [피어 관리자 MSP 폴더를 생성](#enroll-admin)하십시오.
-2. [TLS CA의 엔드포인트 정보를 검색](#tls-ca-endpoint)하십시오.
-3. Fabric CA 클라이언트를 사용하여 [TLS CA로 피어를 등록](#tls-register-peer)하십시오.
+1. Fabric CA 클라이언트를 사용하여 [피어 관리자 MSP 폴더를 생성](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-enroll-admin)하십시오.
+2. [TLS CA의 엔드포인트 정보를 검색](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-tls-ca-endpoint)하십시오.
+3. Fabric CA 클라이언트를 사용하여 [TLS CA로 피어를 등록](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-tls-register-peer)하십시오.
 
 
 ### 스타터 플랜 또는 엔터프라이즈 플랜 CA 정보
-{: #ibp-ca-endpoint}
+{: #ibp-peer-deploy-ibp-ca-endpoint}
 
 먼저 {{site.data.keyword.cloud_notm}}의 CA에 대한 연결 정보를 구성 파일에 제공해야 합니다. 스타터 또는 엔터프라이즈 플랜의 네트워크 모니터 UI에 로그인하십시오. 네트워크 모니터의 **개요** 화면에서 **원격 피어 구성** 단추를 클릭하십시오. 그러면 CA에 대한 필수 정보가 포함된 팝업이 열립니다.
 
@@ -149,13 +154,13 @@ JSON 파일로 이 전체 파일을 편집하고 이를 로컬 파일 시스템�
   ```
   {:codeblock}
 
-  **참고:** 위의 명령으로 생성된 문자열을 하나의 행으로 형식화하는 것이 중요합니다. 다음과 유사하게 표시되어야 합니다.
+  **참고:** 위의 명령으로 생성된 문자열은 하나의 행으로 형식화되어야 합니다. 다음과 유사하게 표시되어야 합니다.
 
   ```
   LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tDQpNSUlFbERDQ0EzeWdBd0lCQWdJUUFmMmo2MjdLZGNpSVE0dHlTOCs4a1RBTkJna3Foa2lHOXcwQkFRc0ZBREJoDQpNUXN3Q1FZRFZRUUdFd0pWVXpFVk1CTUdBMVVFQ2hNTVJHbG5hVU5sY25RZ1NXNWpNUmt3RndZRFZRUUxFeEIzDQpkM2N1WkdsbmFXTmxjblF1WTI5dE1TQXdIZ1lEVlFRREV4ZEVhV2RwUTJWeWRDQkhiRzlpWVd3Z1VtOXZkQ0JEDQpRVEFlRncweE16QXpNRGd4TWpBd01EQmFGdzB5TXpBek1EZ3hNakF3TURCYU1FMHhDekFKQmdOVkJBWVRBbFZUDQpNUlV3RXdZRFZRUUtFd3hFYVdkcFEyVnlkQ0JKYm1NeEp6QWxCZ05WQkFNVEhrUnBaMmxEWlhKMElGTklRVElnDQpVMlZqZFhKbElGTmxjblpsY2lC
   ```
 
-  그러나 다음과 같이 표시됩니다.
+  그러나 다음과 같이 표시되어서는 안됩니다.
   ```
   LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tDQpNSUlFbERDQ0EzeWdBd0lCQWdJUUFmMmo2MjdL
   ZGNpSVE0dHlTOCs4a1RBTkJna3Foa2lHOXcwQkFRc0ZBREJoDQpNUXN3Q1FZRFZRUUdFd0pWVXpF
@@ -172,7 +177,7 @@ JSON 파일로 이 전체 파일을 편집하고 이를 로컬 파일 시스템�
   ```
 
 ### 피어 등록
-{: #register-peer}
+{: #ibp-peer-deploy-register-peer}
 
 피어를 채널에 가입하고 체인코드를 설치 및 인스턴스화하려면 먼저 {{site.data.keyword.cloud_notm}}에서 CA로 피어를 등록해야 합니다. 그런 다음 피어 배치는 피어가 스타터 플랜 또는 엔터프라이즈 플랜 네트워크에 참여하는 데 필요한 인증서를 생성할 수 있습니다. `enroll ID` 및 `enroll secret`을 사용하여 피어를 등록하기 위한 다음 단계를 완료하십시오. 그런 다음 이 두 값을 구성 파일에 붙여넣습니다.
 
@@ -187,7 +192,7 @@ JSON 파일로 이 전체 파일을 편집하고 이를 로컬 파일 시스템�
   - **소속:** 피어가 속할 `org1`과 같은 조직의 소속입니다. 드롭 다운 목록에서 기존 소속을 선택하거나 새 소속을 입력하십시오.
   - **최대 등록 수:** 이 ID를 사용하여 인증서를 등록하거나 생성할 수 있는 횟수를 제한하는 데 이 필드를 사용할 수 있습니다. 값을 지정하지 않으면 무제한 등록으로 기본값이 지정됩니다.
 
-  필드를 완료한 후 **제출**을 클릭하여 피어를 등록하십시오. 등록된 피어는 조직의 식별자로 테이블에 나열됩니다.보안 조치로 각 ID 및 수반하는 enrollID 및 secret을 사용하여 하나의 피어만 배치하십시오. 피어 ID 및 비밀번호를 재사용하지 마십시오.
+  필드를 완료한 후 **제출**을 클릭하여 피어를 등록하십시오. 등록된 피어는 조직의 식별자로 테이블에 나열됩니다. 보안 조치로 각 ID 및 수반하는 enrollID 및 secret을 사용하여 하나의 피어만 배치하십시오. 피어 ID 및 비밀번호를 재사용하지 마십시오.
 
 3. 구성 파일의 `"components"` 섹션 아래에서 다음 값을 위부터 입력하십시오.
   - `"enrollid"`은 이전 단계의 `enroll ID` 값입니다.
@@ -195,7 +200,7 @@ JSON 파일로 이 전체 파일을 편집하고 이를 로컬 파일 시스템�
 
 
 ### 관리자 작성
-{: #register-admin}
+{: #ibp-peer-deploy-register-admin}
 
 피어 ID를 등록한 후 피어를 운영하는 데 사용할 관리자 ID도 작성해야 합니다. 먼저 CA로 이 새 ID를 등록하고 MSP 폴더를 생성하는 데 이를 사용해야 합니다. 그런 다음 배치 중에 피어의 관리자 인증서가 작성될 관리자를 구성 파일에 추가합니다. 이를 통해 새 채널 시작 또는 피어에 체인코드 설치와 같은 작업을 통해 블록체인 네트워크를 운영하는 데 관리자 ID의 인증서를 사용할 수 있습니다.
 
@@ -215,11 +220,11 @@ JSON 파일로 이 전체 파일을 편집하고 이를 로컬 파일 시스템�
   이 필드를 입력한 후 **제출**을 클릭하여 관리자를 작성하십시오. 그런 다음 작성된 관리자는 조직의 ID로 테이블에 나열됩니다.
 
 ### 피어 관리자 MSP 폴더 생성
-{: #enroll-admin}
+{: #ibp-peer-deploy-enroll-admin}
 
 관리자 ID를 등록한 후 피어 관리자 MSP 폴더 및 signCert를 생성해야 합니다. 그러므로 스타터 플랜 또는 엔터프라이즈 플랜 CA에 대한 등록 명령을 실행해야 합니다.
 
-1. 아직 수행하지 않은 경우 [Fabric CA 클라이언트](/docs/services/blockchain/howto/CA_operate.html#fabric-ca-client)를 다운로드하십시오.
+1. 아직 수행하지 않은 경우 [Fabric CA 클라이언트](/docs/services/blockchain/howto/CA_operate.html#ca-operate-fabric-ca-client)를 다운로드하십시오.
 2. 암호화 자료를 저장할 디렉토리로 이동하고 피어 관리자의 MSP 폴더를 저장할 폴더를 작성하십시오.
 
   ```
@@ -228,7 +233,7 @@ JSON 파일로 이 전체 파일을 편집하고 이를 로컬 파일 시스템�
   ```
   {:codeblock}
 
-3. 클라이언트가 `$FABRIC_CA_CLIENT_HOME`으로 인증서를 작성할 수 있는 경로를 설정하십시오. 과거의 시도로 작성될 수 있는 구성 자료를 제거했는지 확인하십시오. `enroll` 명령을 처음 실행하는 경우 `msp` 폴더와 `.yaml` 파일이 없습니다.
+3. 클라이언트가 `$FABRIC_CA_CLIENT_HOME`으로 인증서를 작성할 수 있는 경로를 설정하십시오. 이전 시도에서 작성된 구성 자료를 제거했는지 확인하십시오. `enroll` 명령을 처음 실행하는 경우 `msp` 폴더와 `.yaml` 파일이 없습니다.
 
   ```
   export FABRIC_CA_CLIENT_HOME=$HOME/fabric-ca-client/peer-admin
@@ -243,11 +248,14 @@ JSON 파일로 이 전체 파일을 편집하고 이를 로컬 파일 시스템�
 
 5. 사용하는 서비스 플랜, 위치 및 클러스터에 따라 {{site.data.keyword.cloud_notm}}에서 TLS 인증서를 다운로드하십시오. 인증 기관 URL(예: `us01.blockchain.ibm.com:31011` 또는 `us02.blockchain.ibm.com:31011`)의 도메인 이름을 기반으로 클러스터를 찾을 수 있습니다.
 
-  - 스타터 플랜의 루트 TLS 인증서
-    - 미국: [us01.blockchain.ibm.com.cert ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://blockchain-certs.mybluemix.net/us01.blockchain.ibm.com.cert "us01.blockchain.ibm.com.cert"), [us02.blockchain.ibm.com.cert ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://blockchain-certs.mybluemix.net/us02.blockchain.ibm.com.cert "us02.blockchain.ibm.com.cert")
-    - 영국: [uk01.blockchain.ibm.com.cert ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://blockchain-certs.mybluemix.net/uk01.blockchain.ibm.com.cert "uk01.blockchain.ibm.com.cert"), [uk02.blockchain.ibm.com.cert ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://blockchain-certs.mybluemix.net/uk02.blockchain.ibm.com.cert "uk02.blockchain.ibm.com.cert")
-    - 시드니: [aus01.blockchain.ibm.com.cert ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://blockchain-certs.mybluemix.net/aus01.blockchain.ibm.com.cert "aus01.blockchain.ibm.com.cert")<!--, [aus02.blockchain.ibm.com.cert ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://blockchain-certs.mybluemix.net/aus02.blockchain.ibm.com.cert "aus02.blockchain.ibm.com.cert")-->
-  - [엔터프라이즈 플랜에 대한 루트 TLS 인증서 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://blockchain-certs.mybluemix.net/3.secure.blockchain.ibm.com.rootcert)
+  - 스타터 플랜의 TLS 인증서
+    - 미국: [us01.blockchain.ibm.com.cert ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://blockchain-certs.mybluemix.net/us01.blockchain.ibm.com.cert "us01.blockchain.ibm.com.cert"); [us02.blockchain.ibm.com.cert ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://blockchain-certs.mybluemix.net/us02.blockchain.ibm.com.cert "us02.blockchain.ibm.com.cert");
+  [us03.blockchain.ibm.com.cert ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://blockchain-certs.mybluemix.net/us03.blockchain.ibm.com.cert "us03.blockchain.ibm.com.cert"); [us04.blockchain.ibm.com.cert ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://blockchain-certs.mybluemix.net/us04.blockchain.ibm.com.cert "us04.blockchain.ibm.com.cert");
+  [us05.blockchain.ibm.com.cert ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://blockchain-certs.mybluemix.net/us05.blockchain.ibm.com.cert "us05.blockchain.ibm.com.cert"); [us06.blockchain.ibm.com.cert ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://blockchain-certs.mybluemix.net/us06.blockchain.ibm.com.cert "us06.blockchain.ibm.com.cert");
+  [us07.blockchain.ibm.com.cert ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://blockchain-certs.mybluemix.net/us07.blockchain.ibm.com.cert "us07.blockchain.ibm.com.cert"); [us08.blockchain.ibm.com.cert ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://blockchain-certs.mybluemix.net/us08.blockchain.ibm.com.cert "us08.blockchain.ibm.com.cert")
+    - 영국: [uk01.blockchain.ibm.com.cert ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://blockchain-certs.mybluemix.net/uk01.blockchain.ibm.com.cert "uk01.blockchain.ibm.com.cert"); [uk02.blockchain.ibm.com.cert ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://blockchain-certs.mybluemix.net/uk02.blockchain.ibm.com.cert "uk02.blockchain.ibm.com.cert"); [uk03.blockchain.ibm.com.cert ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://blockchain-certs.mybluemix.net/uk03.blockchain.ibm.com.cert "uk03.blockchain.ibm.com.cert"); [uk04.blockchain.ibm.com.cert ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://blockchain-certs.mybluemix.net/uk04.blockchain.ibm.com.cert "uk04.blockchain.ibm.com.cert")
+    - 시드니: [aus01.blockchain.ibm.com.cert ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://blockchain-certs.mybluemix.net/aus01.blockchain.ibm.com.cert "aus01.blockchain.ibm.com.cert");
+  - [엔터프라이즈 플랜의 TLS 인증서 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://blockchain-certs.mybluemix.net/3.secure.blockchain.ibm.com.rootcert)
 
   이후 명령에서 이 인증서를 참조할 수 있는 디렉토리에 컨텐츠를 저장하십시오.
 
@@ -264,7 +272,7 @@ JSON 파일로 이 전체 파일을 편집하고 이를 로컬 파일 시스템�
   ```
   {:codeblock}
 
-  위의 `<enroll_id>` 및 `<enroll_password>`는 [네트워크 모니터를 사용하여 등록](#register-admin)된 피어 관리자의 **ID** 및 **시크릿**입니다. `<ca_name>` 및 `<ca_url_with_port>`는 연결 프로파일의 `caName` 및 `url` 값입니다. CA URL의 시작 부분에서 `http://`를 포함하지 않아야 합니다.
+  `<enroll_id>` 및 `<enroll_password>`는 [네트워크 모니터를 사용하여 등록](#register-admin)된 피어 관리자의 **ID** 및 **시크릿**입니다. `<ca_name>` 및 `<ca_url_with_port>`는 연결 프로파일의 `caName` 및 `url` 값입니다. CA URL의 시작 부분에 `http://`를 포함하지 않아야 합니다.
 
   실제 호출은 다음 예제 명령과 비슷하게 보일 수 있습니다.
 
@@ -283,12 +291,12 @@ JSON 파일로 이 전체 파일을 편집하고 이를 로컬 파일 시스템�
   ```
   {:codeblock}
 
-  **참고:** 위의 명령으로 생성된 문자열을 하나의 행으로 형식화하는 것이 중요합니다. 다음과 유사하게 표시되어야 합니다.
+  **참고:** 위의 명령으로 생성된 문자열은 하나의 행으로 형식화되어야 합니다. 다음과 유사하게 표시되어야 합니다.
 
    ```
    LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tDQpNSUlFbERDQ0EzeWdBd0lCQWdJUUFmMmo2MjdLZGNpSVE0dHlTOCs4a1RBTkJna3Foa2lHOXcwQkFRc0ZBREJoDQpNUXN3Q1FZRFZRUUdFd0pWVXpFVk1CTUdBMVVFQ2hNTVJHbG5hVU5sY25RZ1NXNWpNUmt3RndZRFZRUUxFeEIzDQpkM2N1WkdsbmFXTmxjblF1WTI5dE1TQXdIZ1lEVlFRREV4ZEVhV2RwUTJWeWRDQkhiRzlpWVd3Z1VtOXZkQ0JEDQpRVEFlRncweE16QXpNRGd4TWpBd01EQmFGdzB5TXpBek1EZ3hNakF3TURCYU1FMHhDekFKQmdOVkJBWVRBbFZUDQpNUlV3RXdZRFZRUUtFd3hFYVdkcFEyVnlkQ0JKYm1NeEp6QWxCZ05WQkFNVEhrUnBaMmxEWlhKMElGTklRVElnDQpVMlZqZFhKbElGTmxjblpsY2lC
    ```
-   그러나 다음과 같이 표시됩니다.
+   그러나 다음과 같이 표시어서는 안됩니다.
 
    ```
    LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tDQpNSUlFbERDQ0EzeWdBd0lCQWdJUUFmMmo2MjdL
@@ -307,13 +315,13 @@ JSON 파일로 이 전체 파일을 편집하고 이를 로컬 파일 시스템�
   구성 파일의 컴포넌트 섹션 아래에서 이 문자열을 `"admincerts"` 필드에 입력하십시오.
 
 ### TLS CA 정보
-{: #tls-ca-endpoint}
+{: #ibp-peer-deploy-tls-ca-endpoint}
 
-구성 파일의 `"tls"` 필드에는 ICP에 배치한 CA의 정보가 필요합니다. 피어의 보안을 강화하도록 개별 TLS CA로 이 CA를 사용합니다. 관련 정보를 생성하려면 다음 정보를 사용하십시오.
+구성 파일의 `"tls"` 필드에는 {{site.data.keyword.cloud_notm}} Private에 배치한 CA의 정보가 필요합니다. 피어의 보안을 강화하도록 개별 TLS CA로 이 CA를 사용합니다. 관련 정보를 생성하려면 다음 정보를 사용하십시오.
 
-- `"cahost"` 및 `"caport"` 값은 [CA URL](/docs/services/blockchain/howto/CA_operate.html#ca-url)의 URL 및 포트입니다. 예를 들어, CA URL이 `http://9.30.94.174:30167`인 경우 `cahost`의 값은 `9.30.94.174`이 되고 `caport`의 값은 `30167`이 됩니다.
-- `"caname"`은 ICP에 배치한 CA의 TLS CA 이름입니다. TLS CA 이름은 CA 구성 중에 `CA TLS instance name` 필드에 제공한 값입니다.
-- `"cacert"`는 CA의 base64로 인코딩된 TLS 인증서입니다. 전제조건으로 [CA의 TLS 인증서](/docs/services/blockchain/howto/CA_operate.html#ca-tls)를 검색할 때 명령 출력의 값으로 다음 섹션을 업데이트하십시오.
+- `"cahost"` 및 `"caport"` 값은 [CA URL](/docs/services/blockchain/howto/CA_operate.html#ca-operate-url)의 URL 및 포트입니다. 예를 들어, CA URL이 `http://9.30.94.174:30167`인 경우 `cahost`의 값은 `9.30.94.174`이 되고 `caport`의 값은 `30167`이 됩니다.
+- `"caname"`은 {{site.data.keyword.cloud_notm}} Private에 배치한 CA의 TLS CA 이름입니다. TLS CA 이름은 CA 구성 중에 `CA TLS instance name` 필드에 제공한 값입니다.
+- `"cacert"`는 CA의 base64로 인코딩된 TLS 인증서입니다. 전제조건으로 [CA의 TLS 인증서](/docs/services/blockchain/howto/CA_operate.html#ca-operate-tls)를 검색할 때 명령 출력의 값으로 다음 섹션을 업데이트하십시오.
 
   ```
   "catls": {
@@ -329,11 +337,11 @@ JSON 파일로 이 전체 파일을 편집하고 이를 로컬 파일 시스템�
   ```
 
 ### TLS CA로 피어 등록
-{: #tls-register-peer}
+{: #ibp-peer-deploy-tls-register-peer}
 
-Fabric CA 클라이언트를 사용하여 ICP에서 TLS CA로 피어를 등록해야 합니다.
+Fabric CA 클라이언트를 사용하여 {{site.data.keyword.cloud_notm}} Private에서 TLS CA로 피어를 등록해야 합니다.
 
-1. 현재 `$HOME/fabric-ca-client/catls` 폴더에 TLS 인증서 파일 `tls.pem`이 있어야 합니다. 그렇지 않으면 [ICP에서 다운로드](/docs/services/blockchain/howto/CA_operate.html#ca-tls)한 TLS 인증서를 다음 명령에서 참조할 수 있는 디렉토리에 복사할 수 있습니다. 사용자가 `$HOME/fabric-ca-client` 디렉토리에 있는지 확인하십시오.
+1. 현재 `$HOME/fabric-ca-client/catls` 폴더에 TLS 인증서 파일 `tls.pem`이 있어야 합니다. 그렇지 않으면 [{{site.data.keyword.cloud_notm}} Private에서 다운로드](/docs/services/blockchain/howto/CA_operate.html#ca-operate-tls)한 TLS 인증서를 다음 명령에서 참조할 수 있는 디렉토리에 복사할 수 있습니다. `$HOME/fabric-ca-client` 디렉토리에 있는지 확인하십시오.
 
   ```
   cd $HOME/fabric-ca-client
@@ -358,9 +366,9 @@ Fabric CA 클라이언트를 사용하여 ICP에서 TLS CA로 피어를 등록�
   ```
   {:codeblock}
 
-  명령에서 `<enroll_id>` 및 `<enroll_password>`는 인증 기관을 배치했을 때 Kubernetes 시크릿에 전달한 [CA 관리자 및 비밀번호](/docs/services/blockchain/howto/CA_deploy_icp.html#admin-secret)입니다. `<ca_url_with_port>` 내부에 [CA URL](/docs/services/blockchain/howto/CA_operate.html#ca-url)을 삽입하십시오. 시작 부분에서 `http://`를 포함하지 않아야 합니다. `<tls_ca_name>`은 [CA conf](/docs/services/blockchain/howto/CA_deploy_icp.html#icp-ca-configuration-parms) 중에 지정한 값입니다.
+  `<enroll_id>` 및 `<enroll_password>`는 인증 기관을 배치했을 때 Kubernetes 시크릿에 전달한 [CA 관리자 및 비밀번호](/docs/services/blockchain/CA_deploy.html#ca-deploy-admin-secret)입니다. `<ca_url_with_port>` 내부에 [CA URL](/docs/services/blockchain/howto/CA_operate.html#ca-operate-url)을 삽입하십시오. 시작 부분에 `http://`를 포함하지 않아야 합니다. `<tls_ca_name>`은 [CA 구성](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-configuration-parms) 중에 지정된 값입니다.
 
-  `<ca_tls_cert_file>`은 전체 경로가 포함된 [CA TLS 인증서](/docs/services/blockchain/howto/CA_operate.html#ca-tls) 파일입니다.
+  `<ca_tls_cert_file>`은 전체 경로가 포함된 [CA TLS 인증서](/docs/services/blockchain/howto/CA_operate.html#ca-operate-tls) 파일입니다.
 
   실제 호출은 다음 예제와 비슷하게 보일 수 있습니다.
 
@@ -378,7 +386,7 @@ Fabric CA 클라이언트를 사용하여 ICP에서 TLS CA로 피어를 등록�
   ```
   {:codeblock}
 
-  명령은 다음 예제와 비슷하게 보일 수 있습니다.
+  명령은 다음 예제와 같을 수 있습니다.
 
   ```
   fabric-ca-client affiliation list --caname tlsca --tls.certfiles $HOME/fabric-ca-client/catls/tls.pem
@@ -401,7 +409,7 @@ Fabric CA 클라이언트를 사용하여 ICP에서 TLS CA로 피어를 등록�
   ```
   {:codeblock}
 
-  `--caname` 필드에 TLS CA 이름을 사용해야 합니다. 피어의 이름과 비밀번호를 작성하고 이를 사용하여 `name`과 `secret`을 바꾸십시오. **중요:** 이 정보를 기록하십시오. 구성 파일의 `"tls"` 섹션에서 `"enrollid"` 및 `"enrollsecret"`으로 `name` 및 `secret`을 입력해야 합니다.
+  `--caname` 필드에 TLS CA 이름을 사용해야 합니다.  피어의 이름과 비밀번호를 작성하고 이를 사용하여 `name`과 `secret`을 바꾸십시오. **중요:** 이 정보를 기록하십시오. 구성 파일의 `"tls"` 섹션에서 `"enrollid"` 및 `"enrollsecret"`으로 `name` 및 `secret`을 입력해야 합니다.
 
   예제 명령은 다음과 비슷하게 보일 수 있습니다.
 
@@ -474,15 +482,15 @@ tree
 ```
 
 ### CSR(Certificate Signing Request) 호스트
-{: #csr-hosts}
+{: #ibp-peer-deploy-csr-hosts}
 
 피어를 배치하려면 CSR 호스트 이름을 제공해야 합니다. CSR 호스트 이름에는 Helm 차트 호스트 이름이 될 `service host name`을 비롯하여 컴포넌트를 배치하는 클러스터의 프록시 IP 주소가 포함됩니다.
 
 #### 클러스터 프록시 IP 주소의 값 찾기
 
-TLS CA를 배치한 동일한 ICP 클러스터에 피어를 배치할 경우 동일한 [TLS CA에 대해 구성](/docs/services/blockchain/howto/CA_deploy_icp.html#icp-ca-configuration-parms)할 때 사용한 동일한 프록시 IP를 입력하십시오. 다른 클러스터에 컴포넌트를 배치할 경우 ICP 콘솔에서 클러스터 프록시 IP 주소의 값을 검색할 수 있습니다. 사용자는 피어가 배치될 ICP 클러스터의 클러스터 관리자 역할이 필요합니다.
+TLS CA를 배치한 동일한 {{site.data.keyword.cloud_notm}} Private 클러스터에 피어를 배치할 경우 동일한 [TLS CA에 대해 구성](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-configuration-parms)할 때 사용한 동일한 프록시 IP를 입력하십시오. 다른 클러스터에 컴포넌트를 배치할 경우 {{site.data.keyword.cloud_notm}} Private 콘솔에서 클러스터 프록시 IP 주소의 값을 검색할 수 있습니다. 사용자는 피어가 배치될 {{site.data.keyword.cloud_notm}} Private 클러스터의 클러스터 관리자 역할이 필요합니다.
 
-1. ICP 콘솔에 로그인하십시오. 왼쪽 탐색 패널에서 **플랫폼**, **노드**를 차례로 클릭하여 클러스터에 정의된 노드를 보십시오.
+1. {{site.data.keyword.cloud_notm}} Private 콘솔에 로그인하십시오. 왼쪽 탐색 패널에서 **플랫폼**, **노드**를 차례로 클릭하여 클러스터에 정의되어 있는 노드를 표시하십시오.
 2. 역할이 `proxy`인 노드를 클릭한 후 테이블에서 `Host IP`의 값을 복사하십시오.
 3. 아래 구성 파일의 `"csr"` 섹션에 있는 `"hosts"`의 값으로 `Host IP`를 삽입하십시오.
 
@@ -493,6 +501,7 @@ TLS CA를 배치한 동일한 ICP 클러스터에 피어를 배치할 경우 동
   ```
 
 #### 서비스 호스트 이름 결정
+{: #ibp-peer-deploy-determine-svc-host-name}
 
 `service host name`은 배치 중에 지정하는 `helm release name`이 됩니다. 클러스터 IP 프록시 주소가 "9.42.134.44"이고 `helm release name`이 `org1peer1`인 경우 파일의 `"csr"` 섹션을 삽입합니다.
 
@@ -507,6 +516,7 @@ TLS CA를 배치한 동일한 ICP 클러스터에 피어를 배치할 경우 동
 {:codeblock}
 
 ### 구성 파일 완료
+{: #ibp-peer-deploy-complete-config}
 
 모든 단계를 완료한 후 업데이트된 구성 파일은 다음 예제와 비슷하게 보입니다.
 
@@ -520,8 +530,8 @@ TLS CA를 배치한 동일한 ICP 클러스터에 피어를 배치할 경우 동
 			"catls": {
 				"cacert": "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUVsRENDQTN5Z0F3SUJBZ0lRQWYyajYyN0tkY2lJUTR0eVM4KzhrVEFOQmdrcWhraUc5dzBCQVFzRkFBkOHRiUWsKQ0FVdzdDMjlDNzlGdjFDNXFmUHJtQUVTcmNpSXhwZzBYNDBLUE1icDFaV1ZiZDQ9Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0KCg=="
 			},
-			"enrollid": "peer",
-			"enrollsecret": "peerpw",
+			"enrollid": "peer1",
+			"enrollsecret": "peer1pw",
 			"admincerts": ["LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUNuRENDQWtPZ0F3SUJBZ0lVTXF5VDhUdnlwY3lYR2sxNXRRY3hxa1RpTG9Nd0NnWUlLb1pJemowRUF3SXcKYURFTTlEKaFhTTzRTWjJ2ZHBPL1NQZWtSRUNJQ3hjUmZVSWlkWHFYWGswUGN1OHF2aCtWSkhGeHBLUnQ3dStHZDMzalNSLwotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg=="]
 		},
 		"tls": {
@@ -545,12 +555,12 @@ TLS CA를 배치한 동일한 ICP 클러스터에 피어를 배치할 경우 동
 ```
 {:codeblock}
 
-이 파일의 채우기를 완료한 후 JSON 형식으로 이 파일을 저장하고 Kurbernetes 시크릿으로 이를 피어 배치에 전달해야 합니다. [다음 섹션](#peer-config-file-ibp)에 있는 단계를 사용하여 시크릿을 작성하십시오.
+이 파일의 채우기를 완료한 후 JSON 형식으로 이 파일을 저장하고 Kurbernetes 시크릿으로 이를 피어 배치에 전달해야 합니다. [다음 섹션](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-config-file-ibp)에 있는 단계를 사용하여 시크릿을 작성하십시오.
 
 ## 구성 시크릿 작성
-{: #peer-config-file-ibp}
+{: #ibp-peer-deploy-config-file-ibp}
 
-[Kubernetes 시크릿 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://kubernetes.io/docs/concepts/configuration/secret/)을 통해 정보를 배치에 직접 전달하지 않고 정보를 보호하고 공유할 수 있습니다. 구성 파일을 저장했으면 이를 `base64`으로 인코딩해야 합니다.
+[Kubernetes 시크릿 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://kubernetes.io/docs/concepts/configuration/secret/ "시크릿")을 통해 정보를 배치에 직접 전달하지 않고 정보를 보호하고 공유할 수 있습니다. 구성 파일을 저장했으면 이를 `base64`으로 인코딩해야 합니다.
 
 1. base64 형식에서 구성 파일을 인코딩하려면 터미널 창에서 다음 명령을 실행하십시오.
 
@@ -560,12 +570,12 @@ TLS CA를 배치한 동일한 ICP 클러스터에 피어를 배치할 경우 동
   ```
   {:codeblock}
 
-  **참고:** 위의 명령으로 생성된 문자열을 하나의 행으로 형식화하는 것이 중요합니다. 다음과 유사하게 표시되어야 합니다.
+  **참고:** 위의 명령으로 생성된 문자열은 하나의 행으로 형식화되어야 합니다. 다음과 유사하게 표시되어야 합니다.
 
    ```
    LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tDQpNSUlFbERDQ0EzeWdBd0lCQWdJUUFmMmo2MjdLZGNpSVE0dHlTOCs4a1RBTkJna3Foa2lHOXcwQkFRc0ZBREJoDQpNUXN3Q1FZRFZRUUdFd0pWVXpFVk1CTUdBMVVFQ2hNTVJHbG5hVU5sY25RZ1NXNWpNUmt3RndZRFZRUUxFeEIzDQpkM2N1WkdsbmFXTmxjblF1WTI5dE1TQXdIZ1lEVlFRREV4ZEVhV2RwUTJWeWRDQkhiRzlpWVd3Z1VtOXZkQ0JEDQpRVEFlRncweE16QXpNRGd4TWpBd01EQmFGdzB5TXpBek1EZ3hNakF3TURCYU1FMHhDekFKQmdOVkJBWVRBbFZUDQpNUlV3RXdZRFZRUUtFd3hFYVdkcFEyVnlkQ0JKYm1NeEp6QWxCZ05WQkFNVEhrUnBaMmxEWlhKMElGTklRVElnDQpVMlZqZFhKbElGTmxjblpsY2lC
    ```
-   그러나 다음과 같이 표시됩니다.
+   그러나 다음과 같이 표시되어서는 안됩니다.
 
    ```
    LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tDQpNSUlFbERDQ0EzeWdBd0lCQWdJUUFmMmo2MjdL
@@ -575,17 +585,17 @@ TLS CA를 배치한 동일한 ICP 클러스터에 피어를 배치할 경우 동
    WVRBbFZUDQpNUlV3RXdZRFZRUUtFd3hFYVdkcFEyVnlkQ0JKYm1NeEp6QWxCZ05WQkFNVEhrUnBa
    ```
 
-  아래 4단계로 생성되는 출력을 저장하십시오.
+  아래 4단계의 결과 출력을 저장하십시오.
 
-2. ICP 콘솔에 로그인하십시오. 왼쪽 탐색 패널에서 **구성**, **시크릿**을 차례로 클릭하십시오. 새 시크릿 오브젝트를 생성할 수 있는 팝업 패널을 열려면 **시크릿 작성** 단추를 클릭하십시오.
+2. {{site.data.keyword.cloud_notm}} Private 콘솔에 로그인하십시오. 왼쪽 탐색 패널에서 **구성**, **시크릿**을 차례로 클릭하십시오. **시크릿 작성** 단추를 클릭하여 새 시크릿 오브젝트를 작성할 수 있는 팝업 패널을 여십시오.
 
 3. **일반** 탭에서 다음 필드를 완료하십시오.
-  - **이름:** 클러스터 내에서 시크릿에 고유한 이름을 제공하십시오. 피어를 배치할 때 이 이름을 사용합니다. 이름은 모두 소문자여야 합니다.   
-  **참고:** 피어를 배치할 때 새 시크릿은 이름이 `<helm_release_name>-secret`인 배치로 자동 생성됩니다. 그러므로 시크릿의 이름을 지정하는 경우 시크릿의 이름은 `<helm_release_name>-secret`과 달라야 합니다. 그렇지 않으면 작성을 시도하는 시크릿이 이미 존재하므로 Helm 차트 배치에 실패합니다.
+  - **이름:** 클러스터 내에서 시크릿에 고유한 이름을 지정하십시오. 피어를 배치할 때 이 이름을 사용합니다. 이름은 모두 소문자여야 합니다.  
+  **참고:** 피어를 배치할 때 새 시크릿은 새 시크릿은 이름이 `<helm_release_name>-secret`인 배치로 자동 생성됩니다. 그러므로 시크릿의 이름을 지정하는 경우 시크릿의 이름은 `<helm_release_name>-secret`과 달라야 합니다. 그렇지 않으면 작성을 시도하는 시크릿이 이미 존재하므로 Helm 차트 배치에 실패합니다.
   - **네임스페이스:** 시크릿을 추가할 네임스페이스입니다. 피어를 배치할 `namespace`를 선택하십시오.
   - **유형:** `Opaque` 값을 입력하십시오.
 
-4. 이 창의 왼쪽 분할창에서 **데이터** 탭을 클릭하십시오. `Name` 필드에서 `secret.json`을 지정하고 값 필드에서 구성 파일의 `base64`로 인코딩된 문자열에 붙여넣으십시오.
+4. 이 창의 왼쪽 탐색 분할창에서 **데이터** 탭을 클릭하십시오. `Name` 필드에서 `secret.json`을 지정하고 해당 값 필드에 구성 파일의 `base64`로 인코딩된 문자열을 붙여넣으십시오.
 
 5. (선택사항) 상태 데이터베이스로 `CouchDB`를 사용할 계획인 경우 두 개의 추가 값을 이 시크릿 오브젝트에 추가해야 합니다. **데이터** 탭에서 **데이터 추가** 단추를 클릭하여 컨테이너가 배치될 때 데이터베이스에 사용할 CouchDB 사용자 ID 및 비밀번호를 추가하십시오.
   1. 사용자 이름 및 비밀번호를 작성하고 base64 형식으로 이 값을 인코딩하십시오. 터미널 창에서 다음 명령을 실행하고 `admin` 및 `adminpw`를 사용할 값으로 대체하십시오.
@@ -601,53 +611,53 @@ TLS CA를 배치한 동일한 ICP 클러스터에 피어를 배치할 경우 동
 
 6. **작성**을 클릭하여 시크릿 오브젝트를 저장하십시오.
 
-**참고:** 피어 구성 시크릿은 Helm 릴리스를 삭제할 때 ICP 클러스터에서 제거되지 않습니다. 피어를 삭제하는 경우 이 시크릿도 삭제해야 합니다.
+**참고:** Helm 릴리스를 삭제할 때 피어 구성 시크릿은 {{site.data.keyword.cloud_notm}} Private 클러스터에서 제거되지 않습니다. 피어를 삭제하는 경우 이 시크릿도 삭제해야 합니다.
 
 ## 구성
-{: #peer-configuration}
+{: #ibp-peer-deploy-peer-configuration}
 
-피어 구성 시크릿 오브젝트를 작성한 후 다음 단계를 사용하여 ICP에서 피어를 구성하고 설치할 수 있습니다. 한 번에 하나의 피어만 설치할 수 있습니다.
+피어 구성 시크릿 오브젝트를 작성한 후 다음 단계를 통해 {{site.data.keyword.cloud_notm}} Private에서 피어를 구성하고 설치할 수 있습니다. 한 번에 하나의 피어만 설치할 수 있습니다.
 
-1. ICP 콘솔에 로그인하고 오른쪽 상단에서 **카탈로그** 링크를 클릭하십시오.
+1. {{site.data.keyword.cloud_notm}} Private 콘솔에 로그인하고 오른쪽 상단에서 **카탈로그** 링크를 클릭하십시오.
 2. 왼쪽 탐색 패널에서 `Blockchain`을 클릭하여 `ibm-blockchain-platform-prod` 또는 `ibm-blockchain-platform-dev`로 레이블된 타일을 찾으십시오(커뮤니티 에디션을 다운로드한 경우). 타일을 클릭하여 이를 열면 Helm 차트 설치 및 구성에 대한 정보가 포함된 Readme 파일이 표시됩니다.
-3. 패널의 상단에 있는 **구성** 탭을 클릭하거나 오른쪽 하단에서 **구성** 단추를 클릭하십시오.
-4. [일반 구성 매개변수](#peer-global-parameters)의 값을 지정하고 라이센스 계약에 동의하십시오.
-5. `All parameters` 트위스티를 열고 [글로벌 구성 매개변수](#peer-global-parameters)의 값을 지정하십시오.
-6. 아래로 스크롤하여 **피어 구성** 섹션으로 이동하십시오. `Install Peer` 선택란을 선택하고 피어의 [구성 설정](#peer-parameters)을 완료하십시오.
+3. 패널의 상단에 있는 **구성** 탭을 클릭하거나 오른쪽 하단 구석에 있는 **구성** 단추를 클릭하십시오.
+4. [일반 구성 매개변수](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-peer-configuration-parms)의 값을 지정하고 라이센스 계약에 동의하십시오.
+5. `All parameters` 트위스티를 열고 [글로벌 구성 매개변수](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-global-parameters)의 값을 지정하십시오.
+6. 아래로 스크롤하여 **피어 구성** 섹션으로 이동하십시오. `Install Peer` 선택란을 선택하고 피어의 [구성 설정](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-peer-parameters)을 완료하십시오.
 7. **설치**를 클릭하십시오.
 
 ### 구성 매개변수
-{: #ibp-peer-configuration-parms}
+{: #ibp-peer-deploy-peer-configuration-parms}
 
 다음 표는 {{site.data.keyword.blockchainfull_notm}} Platform의 구성 가능한 매개변수, **피어 컴포넌트에 특정한 값** 및 기본값을 나열합니다. 피어를 실험하거나 처음 시작하는 경우 데이터베이스 및 스토리지 매개변수의 기본값을 사용하십시오. 피어 컴포넌트 섹션으로 스크롤하여 `Install Peer` 선택란을 선택하고 해당 컴포넌트에 대한 연관된 구성 정보만 제공하십시오. **Helm 차트 UI에는 추가 구성이 필요하지 않다고 표시되어 있으나 피어를 배치하려면 특정 매개변수를 입력해야 합니다.**
 
 #### 일반 및 글로벌 구성 매개변수
-{: #peer-global-parameters}
+{: #ibp-peer-deploy-global-parameters}
 
 |매개변수     |설명    | 기본값  | 필수 |
 | --------------|-----------------|-------|------- |
-| `Helm release name`| Helm 릴리스의 이름입니다. 소문자로 시작하고 영숫자 문자로 끝나야 하며 하이픈과 소문자의 영숫자 문자만 포함해야 합니다. 컴포넌트를 설치하려고 할 때마다 고유한 Helm 릴리스 이름을 사용해야 합니다. **중요:** 이 값은 [JSON 시크릿 파일](#csr-hosts)의 "호스트" 필드에 대한 '서비스 호스트 이름'을 생성하는 데 사용한 값과 일치해야 합니다. | 없음 | 예  |
-| `Target namespace`| Kubernetes 네임스페이스를 선택하여 Helm 차트를 설치합니다. | 없음 | 예 |
-|**글로벌 구성**| Helm 차트의 모든 컴포넌트에 적용하는 매개변수입니다. |||
-| `Service account name`| 팟(Pod)을 실해하는 데 사용하는 [서비스 계정 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/)의 이름을 입력합니다. | 기본값 | 아니오 |
+| `Helm release name`| Helm 릴리스의 이름입니다. 소문자로 시작하고 영숫자 문자로 끝나야 하며 하이픈과 소문자의 영숫자 문자만 포함해야 합니다. 컴포넌트를 설치하려고 할 때마다 고유한 Helm 릴리스 이름을 사용해야 합니다. **중요:** 이 값은 [JSON 시크릿 파일](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-csr-hosts)의 "호스트" 필드에 대한 '서비스 호스트 이름'을 생성하는 데 사용한 값과 일치해야 합니다. | 없음 | 예  |
+| `Target namespace`| Helm 차트를 설치할 Kubernetes 네임스페이스를 선택합니다. | 없음 | 예 |
+|**글로벌 구성**| Helm 차트의 모든 컴포넌트에 적용하는 매개변수입니다.|||
+| `Service account name`| 팟(Pod)을 실행하는 데 사용할 [서비스 계정 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/ "팟(Pod)의 서비스 계정 구성")의 이름을 입력합니다. | 기본값 | 아니오 |
 
 #### 피어 구성 매개변수
-{: #peer-parameters}
+{: #ibp-peer-deploy-peer-parameters}
 
 |매개변수     |설명    | 기본값  | 필수 |
 | --------------|-----------------|-------|------- |
 |**클러스터 구성** |** 클러스터 구성 정보 ** | ||
-| `Install Peer` | 피어를 설치하도록 선택합니다. |선택 취소 | 예(피어를 설치할 경우) |
-| `Peer worker node architecture`| 클라우드 플랫폼 아키텍처(AMD64 또는 S390x)를 선택합니다. | AMD64 | 예 |
-| `Peer image repository`| 피어 Helm 차트의 위치입니다. 이 필드는 설치된 경로에 자동으로 채워집니다. 커뮤니티 에디션을 사용 중이고 인터넷 액세스 권한이 없는 경우 Fabric 피어 이미지를 다운로드한 디렉토리와 일치해야 합니다. | ibmcom/ibp-fabric-peer | 예 |
-| `Peer Docker image tag`| 피어 이미지와 연관된 태그의 값입니다. |1.2.1. 값을 정정하도록 자동으로 채워집니다. | 예|
-| `Peer configuration`| 이 필드에서 고유한 `core.yaml` 구성 파일을 붙여넣어 피어의 구성을 사용자 정의할 수 있습니다. 샘플 `core.yaml` 파일을 보려면 [`core.yaml` 샘플 구성 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://github.com/hyperledger/fabric/blob/release-1.2/sampleconfig/core.yaml)을 참조하십시오(**고급 사용자 전용**). |없음| 아니오|
-| `Peer configuration secret(필수)`| ICP에 작성한 [피어 구성 시크릿](#peer-config-secret)의 이름입니다. |없음| 예|
-|`Organization MSP(필수)`| 이 값은 개요 화면의 "원격 피어 구성"을 클릭하여 네트워크 모니터(IBP UI)에서 찾을 수 있습니다. |없음| 예|
-|`Peer service type`| 피어에서 [외부 포트 노출![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types) 여부를 지정하는 데 사용됩니다. 포트를 외부에 노출하려면(권장됨) NodePort를 선택하고 포트를 노출하지 않으려면 ClusterIP를 선택하십시오. 이 릴리스에서 LoadBalancer 및 ExternalName은 지원되지 않습니다.| NodePort | 예|
-| `State database`| 채널 원장을 저장하는 데 사용한 [상태 데이터베이스](../glossary.html#state-database)입니다. 피어에서는 [블록체인 네트워크](/docs/services/blockchain/v10_dashboard.html#network-preferences)와 동일한 데이터베이스를 사용해야 합니다. |LevelDB | 예 |
-|`CouchDB image repository`| CouchDB가 원장 데이터베이스로 선택된 경우에만 적용됩니다. 이 필드는 설치된 경로에 자동으로 채워집니다. 커뮤니티 에디션을 사용 중이고 인터넷 액세스 권한이 없는 경우 Fabric CouchDB 이미지를 다운로드한 디렉토리와 일치해야 합니다. | ibmcom/ibp-fabric-couchdb | 예 |
-| `CouchDB Docker image tag`| CouchDB가 원장 데이터베이스로 선택된 경우에만 적용됩니다. CouchDB 이미지와 연관된 태그의 값입니다. |값을 정정하도록 자동으로 채워집니다. | 예 |
+| `Install Peer` | 피어를 설치하도록 선택합니다.|선택 취소 | 예(피어를 설치할 경우) |
+| `Peer worker node architecture`| 클라우드 플랫폼 아키텍처(AMD64 또는 S390x)를 선택합니다.| AMD64 | 예 |
+| `Peer image repository`| 피어 Helm 차트의 위치입니다. 이 필드는 설치된 경로로 자동으로 채워집니다. 커뮤니티 에디션을 사용 중이고 인터넷 액세스 권한이 없는 경우 Fabric 피어 이미지를 다운로드한 디렉토리와 일치해야 합니다. | ibmcom/ibp-fabric-peer | 예 |
+| `Peer Docker image tag`| 피어 이미지와 연관된 태그의 값입니다. |1.2.1. 값을 정정하도록 자동으로 채워집니다.| 예|
+| `Peer configuration`| 이 필드에서 고유한 `core.yaml` 구성 파일을 붙여넣어 피어의 구성을 사용자 정의할 수 있습니다. `core.yaml` 파일을 보려면 [`core.yaml` 샘플 구성 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://github.com/hyperledger/fabric/blob/release-1.2/sampleconfig/core.yaml "hyperledger/fabric/core.yaml")을 참조하십시오(**고급 사용자 전용**). |없음| 아니오|
+| `Peer configuration secret(필수)`| {{site.data.keyword.cloud_notm}} Private에 작성한 [피어 구성 시크릿](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-config-file-ibp)의 이름입니다. |없음| 예|
+|`Organization MSP(필수)`| 이 값은 개요 화면의 "원격 피어 구성"을 클릭하여 네트워크 모니터(스타터 플랜 및 엔터프라이즈 플랜 UI)에서 찾을 수 있습니다. |없음| 예|
+|`Peer service type`| 피어에서 [외부 포트 노출![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types "서비스 공개 - 서비스 유형") 여부를 지정하는 데 사용됩니다. 포트를 외부적으로 노출하려면(권장됨) NodePort를 선택하고 포트를 노출하지 않으려면 ClusterIP를 선택하십시오. 이 릴리스에서 LoadBalancer 및 ExternalName은 지원되지 않습니다. | NodePort | 예|
+| `State database`|채널 원장을 저장하는 데 사용한 [상태 데이터베이스](/docs/services/blockchain/glossary.html#glossary-state-database)입니다. 피어에서는 [블록체인 네트워크](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-network-preferences)와 동일한 데이터베이스를 사용해야 합니다. |LevelDB | 예 |
+|`CouchDB image repository`| CouchDB가 원장 데이터베이스로 선택된 경우에만 적용됩니다. 이 필드는 설치된 경로로 자동으로 채워집니다. 커뮤니티 에디션을 사용 중이고 인터넷 액세스 권한이 없는 경우 Fabric CouchDB 이미지를 다운로드한 디렉토리와 일치해야 합니다.| ibmcom/ibp-fabric-couchdb | 예 |
+| `CouchDB Docker image tag`| CouchDB가 원장 데이터베이스로 선택된 경우에만 적용됩니다. CouchDB 이미지와 연관된 태그의 값입니다. |값을 정정하도록 자동으로 채워집니다.| 예 |
 | `Peer Data persistence enabled`| 클러스터가 다시 시작하거나 실패한 후 데이터를 지속하는 기능을 사용합니다. 자세한 정보는 [Kubernetes의 스토리지 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://kubernetes.io/docs/concepts/storage/ "볼륨")을 참조하십시오.  *선택하지 않으면 장애 복구 또는 팟(Pod) 다시 시작 시 모든 데이터가 유실됩니다.* | 선택됨 | 아니오 |
 | `Peer use dynamic provisioning`| 스토리지 볼륨에 대한 동적 프로비저닝을 사용으로 설정할 경우 선택합니다. | 선택됨 | 아니오 |
 | `Peer persistent volume claim`| 새 청구에만 해당됩니다.  작성될 새 지속적 볼륨 청구(PVC)의 이름을 입력합니다. | my-data-pvc | 아니오 |
@@ -661,7 +671,7 @@ TLS CA를 배치한 동일한 ICP 클러스터에 피어를 배치할 경우 동
 | `State database storage class name`| 상태 데이터베이스의 스토리지 클래스 이름을 지정합니다. | 없음 | 아니오 |
 | `State database existing volume claim`| 기존 볼륨 청구의 이름을 지정하고 다른 모든 필드는 공백으로 두십니다. | 없음 | 아니오 |
 | `State database selector label`| PVC를 위한 [선택기 레이블](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/)| 없음 | 아니오 |
-| `State database selector value`| PVC를 위한 [선택기 값](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/)| 없음 | 아니오 |
+| `State database selector value`| PVC를 위한 [선택기 값](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) | 없음 | 아니오 |
 | `State database storage access mode`| PVC의 스토리지 [액세스 모드 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes "액세스 모드")를 지정하십시오. | ReadWriteMany| 아니오 |
 | `State database volume claim size`| 사용할 디스크 크기를 선택합니다. | 8Gi | 예 |
 | `CouchDB - Data persistence enabled`| CouchDB 컨테이너의 경우 컨테이너 다시 시작 시 원장 데이터를 사용할 수 있습니다. *선택하지 않으면 장애 복구 또는 팟(Pod) 다시 시작 시 모든 데이터가 유실됩니다.*| 선택됨 | 아니오 |
@@ -690,7 +700,7 @@ processes. This container has two volume mounts, one for the Peer PVC and the se
 -->
 
 ### Helm 명령행을 사용하여 Helm 릴리스 설치
-{: #ibp-helm-cli}
+{: #ibp-peer-deploy-helm-cli}
 
 또는 Helm CLI를 사용하여 Helm 릴리스를 설치할 수 있습니다. `helm install` 명령을 실행하기 전에 [Helm CLI 환경에 클러스터의 Helm 저장소를 추가![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_int_helm_repo_to_cli.html "Helm CLI에 내부 Helm 저장소 추가")했는지 확인하십시오.
 
@@ -720,115 +730,44 @@ helm install --name jnchart2 mycluster/ibm-blockchain-platform \
 다운로드된 아카이브 파일에 포함된 `values.yaml`을 편집하여 새 `yaml` 파일을 작성할 수 있으며, 여기에는 기본 설정이 사용된 모든 필수 매개변수가 포함됩니다.
 
 ## 피어 설치 확인
-{: #verify-installation-ibp}
+{: #ibp-peer-deploy-verify-installation-ibp}
 
-구성 매개변수를 완료하고 **설치** 단추를 클릭한 후 **Helm 릴리스 보기** 단추를 클릭하여 배치를 보십시오. 성공한 경우 배치 테이블의 `DESIRED`, `CURRENT`, `UP TO DATE` 및 `AVAILABLE` 필드에 값 1이 표시됩니다. 새로 고치기를 클릭하고 테이블이 업데이트될 때까지 기다려야 할 수 있습니다. 또한 ICP 콘솔의 왼쪽 상단에서 **메뉴** 아이콘을 클릭하여 배치 테이블도 찾을 수 있습니다. 메뉴 표시줄에서 **워크로드**, **Helm 릴리스**를 차례로 클릭하십시오.
+구성 매개변수를 완료하고 **설치** 단추를 클릭한 후 **Helm 릴리스 보기** 단추를 클릭하여 배치를 보십시오. 성공한 경우 배치 테이블의 `DESIRED`, `CURRENT`, `UP TO DATE` 및 `AVAILABLE` 필드에 값 1이 표시됩니다. 새로 고치기를 클릭하고 테이블이 업데이트될 때까지 기다려야 할 수 있습니다. 또한 {{site.data.keyword.cloud_notm}} Private 콘솔의 왼쪽 상단에서 **메뉴** 아이콘을 클릭하여 배치 테이블도 찾을 수 있습니다. 메뉴 표시줄에서 **워크로드**, **Helm 릴리스**를 차례로 클릭하십시오.
 
-`Notes` 섹션까지 아래로 스크롤한 경우 [피어 운영](/docs/services/blockchain/howto/peer_operate_ibp.html) 시 사용할 중요 정보가 있습니다.
-
-<!--
-### Verifying the peer can connect to Starter or Enterprise Plan network
-
-You can run a peer CLI command from inside the peer container to verify that your peer has connected to your network on the {{site.data.keyword.blockchainfull_notm}} Platform. Complete the following instructions to run the `peer channel fetch` command to fetch the genesis block from a channel:
-
-1. If you have not already connected to your ICP cluster, follow these [instructions](/docs/services/blockchain/howto/peer_operate_ibp.html#peer-kubectl-configure) to connect to it and use the cli from inside the peer container.
-
-2. If you deploy your peer behind a firewall, you need to open a passthru to enable the network on the platform to complete a TlS handshake with your peer. You only need to enable a passthru for the Node port bound to port 7051 of your peer. For more information, see [finding your peer endpoint information](/docs/services/blockchain/howto/peer_operate_ibp.html#peer-endpoint).
-
-3. Your organization needs to be added to a channel in the network before you can fetch the genesis block.
-
-  - You can start a new channel for the peer. If you are using IBP Starter or Enterprise Plan, you can automatically include your organization during [channel creation](/docs/services/blockchain/howto/create_channel.html#creating-a-channel).
-
-  - Another member of the blockchain network can also add your organization to an existing channel by using a [channel update](/docs/services/blockchain/howto/create_channel.html#updating-a-channel).
-
-    The peer uploads its signCert during installation, so that you need to only synchronize the certificate to the channel. On the "Channels" screen of the Network Monitor, locate the channel that your organization joined and select **Sync Certificate** from the drop-down list under the **Action** header. This action synchronizes the certificates across all the peers on the channel.
-
-4. You also need to upload the signCert of your peer admin to Starter Plan or Enterprise Plan in order for a remote CLI or application to perform channel operations such as fetching the channel genesis block and instantiating chaincode.
-    1. On your local machine, cat the file `HOME/fabric-ca-client/peer-admin/msp/signcerts/cert.pem` and then copy it to the clipboard.
-    2. Enter the Network Monitor of your network on {{site.data.keyword.blockchainfull_notm}} Platform.
-    3. Click **Members** in the left navigator and click the **Certificates** tab.
-    4. Click the **Add Certificate** button.
-    5. In the **Add certificate** window, give your certificate a name, such as "peer-admin", paste in the certificate you just copied to the clipboard and click **Submit**.
-    6. You will be asked whether you want to restart the peers. Click **Restart**.
-    7. Click **Channels** in the left navigator and locate the channel that the peer will join.
-    8. Click the three dots under the **Actions** header and click **Sync Certificate**. In the **Sync certificate** window, click **Submit**.
-
-5. Retrieve configuration information from your Connection profile available on the "Overview" screen of your Network Monitor. Click **Connection Profile** and then **Download**.
-
-  - Find the orderer URL by searching for **orderers**, which is located under `orderers > url`. Make a note of the URL that begins with the network name. The URL is similar to the following example:
-
-    ```
-    ash-zbc07b.4.secure.blockchain.ibm.com:21239
-    ```
-
-  - Find the name of your organization by searching for **organizations**. This should be the same organization as you use to register your peer. You can find your organization's name together with its associated `mspid`. Make a note of the value of the `mspid`.
-
-6. Run the following commands to set the environment variables in the peer container.
-
-  ```
-  export ORDERER_1=<ORDERER_URL>
-  export CHANNEL=<CHANNEL_NAME>
-  export CC_NAME=<CC_NAME>
-  export ORGID=<ORGANIZATION_MSP_ID>
-  export PEERADDR=<PEER_ADDR>
-  ```
-  {:codeblock}
-
-  Replace the fields with your own information.
-  - Replace `<ORDERER_URL>` with the hostname and port of the orderer from the `creds.json` file.
-  - Replace `<CHANNEL_NAME>` with the name of the channel that the peer joins.
-  - Replace `<CC_NAME>` with any name to refer to your chaincode.
-  - Replace `<ORGANIZATION_MSP_ID>` with the name of the organization from the `creds.json` file.
-  - Replace `<PEER_ADDR>` with `localhost:7051`
-
-  For example:
-
-  ```
-  export ORDERER_1=ash-zbc07b.4.secure.blockchain.ibm.com:21239
-  export CHANNEL=defaultchannel
-  export CC_NAME=mycc
-  export ORGID=org1
-  export PEERADDR=localhost:7051
-  ```
-  {:codeblock}
-
-7. Run the following peer CLI command to fetch the genesis block of the channel.
-
-  ```
-  CORE_PEER_TLS_ROOTCERT_FILE=/mnt/certs/tls/cacert.pem CORE_PEER_TLS_ENABLED=true CORE_PEER_ADDRESS=${PEERADDR} CORE_PEER_LOCALMSPID=${ORGID} CORE_PEER_MSPCONFIGPATH=/mnt/crypto/peer/peer/msp/ GOPATH=/ peer channel fetch 0 -o ${ORDERER_1} -c ${CHANNEL} --cafile /mnt/certs/tls/cacert.pem --tls
-  ```
-  {:codeblock}
-
-  **Note:** It is possible that when you run any of these CLI commands, you might experience the following warning that can be safely ignored.
-
-  ```
-  [msp] getPemMaterialFromDir -> WARN 001 Failed reading file
-  /mnt/crypto/peer/peer/msp/intermediatecerts/<intermediate cert name>.pem: no pem content for file /mnt/crypto/peer/peer/msp/intermediatecerts/<intermediate cert name>.pem
-  ```
-
-  Verify that the command worked successfully and that genesis block is added to your peer container by running the following command:
-
-  ```
-  ls *.block
-  ```
-  {:codeblock}
-
-  You know that the genesis block is added successfully when you see something that is similar to the following example:
-
-  ```
-  defaultchannel_0.block
-  ```
-
-  Successfully fetching the genesis block indicates that your peer can connect to your Starter or Enterprise Plan network.
-  You still need to join the peer to the channel and install chaincode. See [operating your peer](/docs/services/blockchain/howto/peer_operate_ibp.html) for more information.
-
--->
+`Notes` 섹션까지 아래로 스크롤한 경우 [피어 운영](/docs/services/blockchain/howto/peer_operate_ibp.html#ibp-peer-operate) 시 사용할 중요 정보가 있습니다.
 
 ## 피어 로그 보기
-{: #peer-ibp-view-logs}
+{: #ibp-peer-deploy-view-logs}
 
-컴포넌트 로그는 [`kubectl CLI 명령`](/docs/services/blockchain/howto/peer_operate_ibp.html#peer-kubectl-configure)을 사용하거나 ICP 클러스터에 포함된 [Kibana ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.elastic.co/products/kibana "Elastic Search에 대한 창")를 통해 표시될 수 있습니다. 자세한 정보는 [로그에 액세스하기 위한 지시사항](/docs/services/blockchain/howto/peer_operate_ibp.html#peer-ibp-view-logs)을 참조하십시오.
+컴포넌트 로그는 [`kubectl CLI 명령`](/docs/services/blockchain/howto/peer_operate_ibp.html#ibp-peer-operate-kubectl-configure)을 사용하거나 {{site.data.keyword.cloud_notm}} Private 클러스터에 포함된 [Kibana ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.elastic.co/products/kibana "Elastic Search에 대한 창")를 통해 표시될 수 있습니다. 자세한 정보는 [로그에 액세스하기 위한 지시사항](/docs/services/blockchain/howto/peer_operate_ibp.html#ibp-peer-operate-view-logs)을 참조하십시오.
 
 ## 다음에 수행할 작업
+{: #ibp-peer-deploy-whats-next}
 
-피어를 배치하고 나면, 블록체인 네트워크에 트랜잭션을 제출하고 분산된 원장을 읽을 수 있도록 여러 운영 단계를 완료해야 합니다. 자세한 정보는 [스타터 플랜 또는 엔터프라이즈 플랜으로 피어 운영](/docs/services/blockchain/howto/peer_operate_ibp.html)을 참조하십시오.
+피어를 배치하고 나면, 블록체인 네트워크에 트랜잭션을 제출하고 분산된 원장을 읽을 수 있도록 여러 작업 단계를 완료해야 합니다. 자세한 정보는 [스타터 플랜 또는 엔터프라이즈 플랜으로 피어 운영](/docs/services/blockchain/howto/peer_operate_ibp.html#ibp-peer-operate)을 참조하십시오.
+
+
+## 문제점 해결
+{: #ibp-peer-deploy-troubleshooting}
+
+### **문제점:** `enroll` 명령을 실행할 때 CA URL에 오류가 발생합니다.
+{: #ibp-peer-deploy-ca-enroll-error}
+
+등록 url, `-u` 매개변수값에 특수 문자가 포함된 경우, Fabric CA 클라이언트 등록 명령이 실패할 수 있습니다. 예를 들어, 등록 ID 및 비밀번호가 `admin:C25A06287!0`인 다음 명령의 경우, 
+
+```
+./fabric-ca-client enroll -u https://admin:C25A06287!0@ash-zbc07c.4.secure.blockchain.ibm.com:21241 --tls.certfiles $HOME/fabric-ca-remote/cert.pem --caname PeerOrg1CA
+```
+
+명령이 실패하고 다음 오류가 생성됩니다.
+
+```
+!pw@9.12.19.115: event not found
+```
+
+### **솔루션:**
+특수 문자를 인코딩하거나 작은따옴표로 url을 묶어야 합니다. 예를 들어, `!`가 `%21`이 되거나 다음과 유사하게 표시됩니다.
+
+```
+./fabric-ca-client enroll -u 'https://admin:C25A06287!0@ash-zbc07c.4.secure.blockchain.ibm.com:21241' --tls.certfiles $HOME/fabric-ca-remote/cert.pem --caname PeerOrg1CA
+```

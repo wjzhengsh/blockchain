@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-12-07"
+  years: 2017, 2019
+lastupdated: "2018-02-08"
 ---
 
 {:new_window: target="_blank"}
@@ -12,42 +12,42 @@ lastupdated: "2018-12-07"
 {:pre: .pre}
 
 # 스마트 계약 작성
+{: #develop-smart-contracts}
 
 ***[이 페이지가 도움이 되었습니까? 알려주십시오.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
-체인코드(스마트 계약이라고도 함)는 blockchain 원장에서 데이터를 읽고 업데이트할 수 있도록 하는 소프트웨어입니다. 체인코드는 비즈니스 로직을 블록체인 네트워크의 모든 구성원이 검증하고 허용한 실행가능 프로그램으로 변환할 수 있습니다. 비즈니스 로직에는 당사자 사이에 거래된 자산의 정의가 포함됩니다. 또한 비즈니스 로직은 실행될 트랜잭션에 필요한 이용 약관으로 구성됩니다. 이러한 규칙을 블록 체인의 코드로 변환하면 비즈니스에서 비즈니스 처리와 감사를 간소화하고 대량의 수동 처리 및 서류 작업을 줄일 수 있습니다.
+체인코드(스마트 계약이라고도 함)는 blockchain 원장에서 데이터를 읽고 업데이트할 수 있도록 하는 소프트웨어입니다. 체인코드는 비즈니스 로직을 블록체인 네트워크의 모든 구성원이 승인하고 확인한 실행 가능 프로그램으로 변환할 수 있습니다. 비즈니스 로직에는 당사자 사이에 거래된 자산의 정의가 포함됩니다. 또한 비즈니스 로직은 실행될 트랜잭션에 필요한 이용 약관으로 구성됩니다. 이러한 규칙을 블록 체인의 코드로 변환하면 비즈니스에서 비즈니스 처리와 감사를 간소화하고 대량의 수동 처리 및 서류 작업을 줄일 수 있습니다.
 
 예로, 자동차 대리점, 보험 회사 및 정부 규제기관의 네트워크에서 blockchain을 사용하여 자동차 소유권을 추적하기로 결정했다고 가정해보십시오. 체인코드에는 모든 차량이 네트워크에 추가될 수 있도록 유효한 등록 및 차량 식별 번호가 필요할 수 있습니다. 차량이 판매될 때 체인코드에서는 차량이 규제 기관에 의해 새 소유자에게 등록될 때까지 자금을 에스크로에 두도록 요구할 수 있습니다. 새 등록이 완료되면 새 소유자가 기록되고 자금이 자동으로 이체됩니다.
 
 다음 튜토리얼에서는 다음 사항을 포함하여 체인코드 빌드의 기본 요소를 안내합니다.
 
-- [체인코드 작성을 시작하는 방법](#write-chaincode)
-- [체인코드와 데이터 간의 관계](#install-chaincode)
-- [교차 체인코드 트랜잭션](#cross-chaincode-transactions)
+- [체인코드 작성을 시작하는 방법](/docs/services/blockchain/howto/develop_chaincode.html#develop-smart-contracts-write)
+- [체인코드와 데이터 간의 관계](/docs/services/blockchain/howto/develop_chaincode.html#develop-smart-contracts-data)
+- [교차 체인코드 트랜잭션](/docs/services/blockchain/howto/develop_chaincode.html#develop-smart-contracts-cross-chaincode)
 
 해당 튜토리얼에서는 체인코드를 통하여 액세스할 수 있는 Fabric의 중요한 요소도 소개합니다.
 
-- [개인용 데이터](#private-data)
-- [couchDB에서 인덱스 사용](#indexes)
+- [couchDB에서 인덱스 사용](/docs/services/blockchain/howto/develop_chaincode.html#develop-smart-contracts-indexes)
 
 ## 체인코드 작성
-{: #write-chaincode}
+{: #develop-smart-contracts-write}
 
 체인코드는 여러 언어로 작성할 수 있으며 {{site.data.keyword.blockchainfull_notm}} Platform에서는 Go와 Node.js로 작성된 체인코드를 지원합니다. 체인코드를 사용하면 Fabric 체인코드 인터페이스에서 제공하는 API를 사용하여 blockchain에 저장된 데이터를 조회하고 변경할 수 있습니다. blockchain의 데이터는 채널 [원장 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/ledger/ledger.html "원장")의 세계 상태로 키-값 쌍에 저장됩니다. 체인코드는 get 명령을 사용하여 값을 검색하고 put 명령을 사용하여 값을 작성하거나 업데이트합니다. 이러한 기본 오퍼레이션을 사용하면 네트워크의 비즈니스 규칙을 정의하는 함수를 빌드할 수 있습니다. 이러한 함수는 애플리케이션에 의해 호출되어 네트워크의 일반 사용자에게 제공될 수 있습니다. 차량 네트워크 예를 계속 사용하려면 자동차 대리점에서 올바른 차량 ID 번호를 제공하는 경우에만 put 명령을 사용하여 원장에 새 자동차를 추가할 수 있는 함수를 작성할 수 있습니다.
 
 Hyperledger Fabric 커뮤니티 문서의 [개발자용 체인코드 튜토리얼![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/latest/chaincode4ade.html "개발자용 체인코드 튜토리얼")을 참조하여 체인코드를 작성하는 방법을 학습할 수 있습니다. 이 튜토리얼에서는 자산을 작성하고 읽는 간단한 체인코드를 구현하는 과정을 안내하고 해당 프로세스에서 사용되는 API를 소개합니다. 모든 체인코드 언어에 해당하는 체인코드 API 참조 안내서를 찾을 수도 있습니다. [Fabric 샘플 저장소 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://github.com/hyperledger/fabric-samples "Fabric 샘플")의 체인코드 폴더에 추가 예제가 있습니다.
 
 ## 체인코드 설치
-{: #install-chaincode}
+{: #develop-smart-contracts-install}
 
-체인코드는 채널에서 트랜잭션의 구조를 제공하므로 채널코드를 사용하여 채널 원장을 업데이트하거나 조회하려는 채널에 가입된 모든 피어에 체인코드를 설치해야 합니다. 그런 다음 채널의 한 멤버는 채널에서 체인코드를 인스턴스화하고 체인코드의 보증 정책을 설정할 수 있습니다. 체인코드의 설치 및 인스턴스화는 네트워크 모니터 UI, Fabric 피어 명령행 인터페이스를 사용하거나 [Fabric SDK](/docs/services/blockchain/v10_application.html#operate-sdk)를 사용하는 클라이언트 애플리케이션을 통해 수행할 수 있습니다. 네트워크 모니터 UI를 사용하여 체인코드를 배치하는 방법을 자세히 알아보려면 [체인코드 설치, 인스턴스화 및 업데이트](/docs/services/blockchain/howto/install_instantiate_chaincode.html)의 내용을 참조하십시오.
+체인코드는 채널에서 트랜잭션의 구조를 제공하므로 채널코드를 사용하여 채널 원장을 업데이트하거나 조회하려는 채널에 가입된 모든 피어에 체인코드를 설치해야 합니다. 그런 다음 채널의 한 멤버는 채널에서 체인코드를 인스턴스화하고 체인코드의 보증 정책을 설정할 수 있습니다. 체인코드의 설치 및 인스턴스화는 네트워크 모니터 UI, Fabric 피어 명령행 인터페이스를 사용하거나 [Fabric SDK](/docs/services/blockchain/v10_application.html#dev-app-operate-sdk)를 사용하는 클라이언트 애플리케이션을 통해 수행할 수 있습니다. 네트워크 모니터 UI를 사용하여 체인코드를 배치하는 방법을 자세히 알아보려면 [체인코드 설치, 인스턴스화 및 업데이트](/docs/services/blockchain/howto/install_instantiate_chaincode.html#install-instantiate-chaincode)의 내용을 참조하십시오.
 
 ## 체인코드 및 데이터
-{: #chaincode-data}
+{: #develop-smart-contracts-data}
 
-각 채널에는 하나의 원장만 있으며 해당 원장의 데이터는 고유 키와 키 값 쌍을 원장에 추가한 체인코드로 분할됩니다. 멤버는 올바른 키와 연관된 체인코드를 사용하여 채널 원장에서 데이터를 읽거나 업데이트할 수만 있습니다. 체인코드에서 액세스할 수 있는 데이터는 해당 체인코드의 네임스페이스로 참조되고 해당 원장의 모든 데이터가 한 체인코드의 네임스페이스 내에 포함됩니다. 체인코드는 관련 데이터에 액세스할 수 있는 체인코드에 [교차 체인코드 트랜잭션](#cross-chaincode-transactions)을 사용해서만 해당 네임스페이스 외부의 데이터와 상호작용할 수 있습니다.
+각 채널에는 하나의 원장만 있으며 해당 원장의 데이터는 고유 키와 키 값 쌍을 원장에 추가한 체인코드로 분할됩니다. 멤버는 올바른 키와 연관된 체인코드를 사용하여 채널 원장에서 데이터를 읽거나 업데이트할 수만 있습니다. 체인코드에서 액세스할 수 있는 데이터는 해당 체인코드의 네임스페이스로 참조되고 해당 원장의 모든 데이터가 한 체인코드의 네임스페이스 내에 포함됩니다. 체인코드는 관련 데이터에 액세스할 수 있는 체인코드에 [교차 체인코드 트랜잭션](/docs/services/blockchain/howto/develop_chaincode.html#develop-smart-contracts-cross-chaincode)을 사용해서만 해당 네임스페이스 외부의 데이터와 상호작용할 수 있습니다.
 
-체인 코드가 데이터와 상호작용하는 방법의 예로 Fabric 샘플 저장소의 fabcar 체인코드를 사용할 수 있습니다. 스마트 계약이 인스턴스화될 때 네임스페이스가 작성됩니다. 일부 체인코드는 체인코드가 인스턴스화될 때 키 값 쌍 인수 세트를 허용하고 이 데이터를 사용하여 네임스페이스를 초기화합니다. Fabric 샘플 저장소의 fabcar 체인코드는 초기화될 때 어떠한 인수도 허용하지 않습니다. fabcar의 경우 initLedger 또는 createCar 함수를 사용하여 데이터를 네임스페이스에 추가해야 합니다. 예를 들면, `{"Args":["createCar",'CAR1', 'Honda', 'Accord', 'Black', 'Tom']}` 인수를 전달하면 `{Key='CAR1', value={'Honda', 'Accord', 'Black', 'Tom'}}`의 키 값 쌍은 fabcar 네임스페이스가 됩니다.
+체인코드가 데이터와 상호작용하는 방법의 예로 Fabric 샘플 저장소의 fabcar 체인코드를 사용할 수 있습니다. 스마트 계약이 인스턴스화될 때 네임스페이스가 작성됩니다. 일부 체인코드는 체인코드가 인스턴스화될 때 키 값 쌍 인수 세트를 허용하고 이 데이터를 사용하여 네임스페이스를 초기화합니다. Fabric 샘플 저장소의 fabcar 체인코드는 초기화될 때 어떠한 인수도 허용하지 않습니다. fabcar의 경우 initLedger 또는 createCar 함수를 사용하여 데이터를 네임스페이스에 추가해야 합니다. 예를 들면, `{"Args":["createCar",'CAR1', 'Honda', 'Accord', 'Black', 'Tom']}` 인수를 전달하면 `{Key='CAR1', value={'Honda', 'Accord', 'Black', 'Tom'}}`의 키 값 쌍은 fabcar 네임스페이스가 됩니다.
 
 fabcar 체인코드만 이 데이터를 변경할 수 있습니다. 사용자가 아래 changeCarOwner 함수를 사용하여 자동차를 새 소유자에게 양도하려고 한다고 가정하십시오.
 ```
@@ -90,7 +90,7 @@ Write Set: `{Key='CAR1', value[3]='Mark'}`
 체인코드와 데이터 간의 1-1 관계는 네트워크와 애플리케이션을 개발하는 데 필요한 중요한 고려사항을 작성합니다. 체인코드 소프트웨어는 새 체인코드를 사용하는 대신 동일한 이름과 다른 버전의 체인코드를 설치하여 업데이트해야 합니다. 이 업데이트 프로시저는 체인코드 네임스페이스를 유지하고 기존 데이터를 계속 사용할 수 있도록 합니다. 또한 다른 체인코드를 사용하여 민감한 데이터에 대한 액세스를 제한하거나 데이터를 병렬로 읽고 쓸 수도 있습니다.
 
 ## 교차 체인코드 트랜잭션
-{: #cross-chaincode-transactions}
+{: #develop-smart-contracts-cross-chaincode}
 
 체인코드를 사용하여 다른 체인코드를 호출할 수 있습니다. 이를 통해 체인코드는 네임스페이스 외부의 데이터를 조회하고 쓸 수 있습니다. 체인코드는 동일한 채널에서 인스턴스화된 체인코드를 사용하여 데이터를 읽고 업데이트할 수 있습니다. 그러나 다른 채널의 체인코드를 사용하여 데이터를 조회할 수만 있습니다. 원래 체인코드를 호출하는 조직은 트랜잭션 대상인 체인코드를 호출할 권한이 부여되어 있어야 합니다.
 
@@ -128,18 +128,10 @@ Write Set: `{Key='CAR1', value[3]='Joe'}`
 
 `fabcar`가 `newContract`와 동일한 채널에 있으므로 `crossChaincodeChangeCarOwner` 함수는 `fabcar` 네임스페이스에 쓸 수 있습니다. 새 `fabcar` 네임스페이스는 `{Key='CAR1', value='Honda', 'Accord', 'Black', 'Joe'}`가 됩니다.
 
-## 개인용 데이터
-{: #private-data}
-
-개인용 데이터 콜렉션은 버전 1.2 이상의 Hyperledger Fabric 네트워크 기능입니다. 채널은 데이터를 다른 조직에 노출하지 않고 거래하기 위해 조직의 세트에서 사용됩니다. 그러나 조직에서는 데이터를 채널의 다른 멤버에게 노출시키지 않고 민감한 정보를 비공개적으로 유지하려고 할 수 있습니다. 이 경우 개인용 데이터 콜렉션을 사용하여 데이터가 필요한 조직의 피어에만 정보를 저장할 수 있습니다. 예를 들면, 도매업자와 농장은 판매 증명을 위해 다른 농장과 같은 채널을 사용하고자 할 수 있습니다. 그러나, 개인용 콜렉션을 사용하여 판매의 민감한 요소(예: 가격, 비공개)를 보관할 수 있습니다. Blockchain 내의 개인용 데이터를 사용하는 방법에 대해 자세히 알아 보려면 Fabric 문서의 [개인용 데이터 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/latest/chaincode4ade.html "개인용 데이터") 개념 항목을 참조하십시오.
-
-네트워크가 Fabric 버전 1.2 이상인 경우 {{site.data.keyword.blockchainfull_notm}} 플랫폼에서 개인용 데이터를 사용할 수 있습니다. 사용자의 피어에 설치하기 전에 개인용 데이터 콜렉션 구성 파일을 사용자의 체인코드에 추가할 수 있습니다. 그런 다음 개인용 데이터 특정 체인코드 API를 사용하여 콜렉션에서 데이터를 입력하고 검색할 수 있습니다.
-
-체인코드에 개인용 데이터 콜렉션을 사용하는 방법에 대한 자세한 내용은 Fabric 문서에서 [개인용 데이터 사용 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/latest/private_data_tutorial.html "개인용 데이터 사용")을 참조하십시오. 네트워크 모니터를 사용하여 콜렉션 구성 파일로 체인코드를 설치할 수 없습니다. 그러나 Fabric SDK를 사용하여 개인용 데이터를 사용하는 체인코드를 설치, 인스턴스화하거나 업데이트할 수 있습니다. 자세한 정보는 Node SDK 문서에서 [개인용 데이터 사용 방법 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://fabric-sdk-node.github.io/release-1.3/tutorial-private-data.html "개인용 데이터 사용 방법")을 참조하십시오. SDK를 사용하여 사용자의 피어에 체인코드를 설치하고 인스턴스화하려면 SDK의 signCert를 {{site.data.keyword.blockchainfull_notm}} Platform으로 업로드해야 하는 **참고**입니다. Fabric SDK를 사용하여 네트워크와 상호작용하고 네트워크를 운영하는 방법에 대한 자세한 정보는 [SDK를 사용하여 애플리케이션 개발](../v10_application.html) 및 [네트워크 운영](../v10_application.html#operate-sdk)을 참조하십시오.
 
 ## CouchDB에서 인덱스 사용
-{: #indexes}
+{: #develop-smart-contracts-indexes}
 
-원장 데이터가 CouchDB에 저장된 경우 CouchDB 조회를 위한 인덱스를 작성하여 체인코드에 사용하는 것이 좋습니다. 인덱스를 사용하면 애플리케이션에서 네트워크가 세계 상태에 트랜잭션의 추가 블록 및 항목을 추가할 때 효율적으로 데이터를 검색할 수 있습니다. 또한 CouchDB를 통해 채널 원장의 데이터에 대해 사용자의 체인코드에서 다양한 데이터 조회를 수행할 수 있습니다.
+CouchDB를 상태 데이터베이스로 사용하는 경우, 채널의 상태 데이터에 대해 체인코드에서 JSON 데이터 조회를 시작할 수 있습니다. JSON 조회를 위한 색인을 작성한 후 체인코드에서 해당 색인을 사용할 것을 적극 권장합니다. 색인을 사용하는 경우 네트워크에서 트랜잭션 및 항목의 추가 블록을 세계 상태로 추가하기 때문에 애플리케이션에서 효율적으로 데이터를 검색할 수 있습니다.
 
-CouchDB에 관한 자세한 정보와 인덱스 작성 방법은 Hyperledger Fabric 문서에서 [상태 데이터베이스로서의 CouchDB![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/couchdb_as_state_database.html "상태 데이터베이스로서의 CouchDB"){:new_window}를 참조하십시오. [Fabric CouchDB 튜토리얼 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/couchdb_tutorial.html)에서 체인코드와 인텍스를 사용하는 예도 찾을 수 있습니다. 애플리케이션에서 데이터를 조회하는 방법에 대한 자세한 정보는 애플리케이션 개발 튜토리얼의 [CouchDB 사용 시의 우수 사례](../v10_application.html#couchdb-indices)를 참조하십시오.
+CouchDB에 관한 자세한 정보와 인덱스 작성 방법은 Hyperledger Fabric 문서에서 [상태 데이터베이스로서의 CouchDB![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/couchdb_as_state_database.html "상태 데이터베이스로서의 CouchDB"){:new_window}를 참조하십시오. [Fabric CouchDB 튜토리얼 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/couchdb_tutorial.html)에서 체인코드와 인텍스를 사용하는 예도 찾을 수 있습니다. 애플리케이션에서 데이터를 조회하는 방법에 대한 자세한 정보는 애플리케이션 개발 튜토리얼의 [CouchDB 사용 시의 우수 사례](/docs/services/blockchain/v10_application.html#dev-app-couchdb-indices)를 참조하십시오.
