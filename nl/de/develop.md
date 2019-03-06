@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-12-07"
+lastupdated: "2018-12-08"
 
 ---
 
@@ -16,6 +16,7 @@ lastupdated: "2018-12-07"
 # Unternehmensnetze entwickeln
 {: #develop-the-network}
 
+**IBM empfiehlt die Verwendung von Hyperledger Composer ausschließlich für Demonstrationszwecke und Machbarkeitsnachweise. IBM bietet keinen Support für Netze, die Hyperledger Composer in Produktionsumgebungen nutzen, inklusive Composer-Befehlszeilenschnittstelle, JavaScript-APIs, REST-Server und Web Playground.**
 
 ***[Ist diese Seite hilfreich? Teilen Sie uns Ihre Meinung mit.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
@@ -23,7 +24,7 @@ lastupdated: "2018-12-07"
 Bei der Entwicklung von Blockchain-Lösungen mithilfe von {{site.data.keyword.blockchainfull}} Platform kann das quelloffene Hyperledger Composer-Entwicklungstoolset genutzt werden. Hyperledger Composer verwendet eine speziell entwickelte Modellierungssprache, die in Kombination mit JavaScript-Transaktionen und Zugriffssteuerungsregeln zum Modellieren eines vollständigen Blockchain-Unternehmensnetzes _vor_ der Bereitstellung in einem realen Blockchain-Netz verwendet wird.
 {:shortdesc}
 
-**Anmerkung:** Mit dem Starter Plan werden Beispielanwendungen bereitgestellt, die Sie ausprobieren und zum Lernen verwenden können. Sie können Beispielanwendungen im Starter Plan ausführen, bevor Sie ein angepasstes Unternehmensnetz entwickeln. Weitere Informationen finden Sie unter [Informationen zum Starter Plan](/docs/services/blockchain/starter_plan.html).
+**Anmerkung:** Mit dem Starter Plan werden Beispielanwendungen bereitgestellt, die Sie ausprobieren und zum Lernen verwenden können. Sie können Beispielanwendungen im Starter Plan ausführen, bevor Sie ein angepasstes Unternehmensnetz entwickeln. Weitere Informationen finden Sie unter [Informationen zum Starter Plan](starter_plan.html).
 
 Dieses Lernprogramm führt Sie durch die Entwicklung einer {{site.data.keyword.blockchain}}-Lösung, bei der zu Beginn ein Unternehmensnetz erstellt und modelliert und anschließend diese Lösung in einem aktiven Blockchain-Netz bereitgestellt wird.
 
@@ -39,7 +40,7 @@ Die folgenden Schritte beschreiben kurz die grundlegende Entwicklung einer {{sit
 
 ## Vorbemerkungen
 
-Stellen Sie sicher, dass Sie die Entwicklungstools von [{{site.data.keyword.blockchainfull_notm}}: Develop](/docs/services/blockchain/develop_install.html) installiert haben.
+Stellen Sie sicher, dass Sie die Entwicklungstools von [{{site.data.keyword.blockchainfull_notm}}: Develop](./develop_install.html) installiert haben.
 
 ## Schritt 1: Unternehmensnetzstruktur erstellen
 
@@ -179,6 +180,6 @@ Durch die Ausführung des Befehls wird eine Unternehmensnetzarchivdatei (`tutori
 
 ## Schritt 4: Unternehmensnetz bereitstellen und REST-Server generieren
 
-Stellen Sie das Unternehmensnetz auf der {{site.data.keyword.blockchainfull_notm}} Platform bereit, indem Sie den [Starter Plan](/docs/services/blockchain/develop_starter.html) oder den [Enterprise Plan](/docs/services/blockchain/develop_enterprise.html) verwenden.
+Stellen Sie das Unternehmensnetz auf der {{site.data.keyword.blockchainfull_notm}} Platform bereit, indem Sie den [Starter Plan](./develop_starter.html) oder den [Enterprise Plan](./develop_enterprise.html) verwenden.
 
 Nach der Bereitstellung des Unternehmensnetzes auf der {{site.data.keyword.blockchainfull_notm}} Platform kann ein spezieller REST-Server generiert werden. Der REST-Server untersucht den Inhalt des Unternehmensnetzes und erstellt REST-konforme API-Aufrufe, Transaktionen und Teilnehmer des Netzes. Die Anweisungen zum Generieren eines REST-Servers sind in der [Hyperledger Composer-Dokumentation](https://hyperledger.github.io/composer/latest/integrating/getting-started-rest-api) enthalten.

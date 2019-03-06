@@ -1,14 +1,17 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-12-07"
+  years: 2018, 2019
+lastupdated: "2019-02-08"
 ---
 
 {:new_window: target="_blank"}
 {:shortdesc: .shortdesc}
 {:codeblock: .codeblock}
 {:screen: .screen}
+{:note: .note}
+{:important: .important}
+{:tip: .tip}
 {:pre: .pre}
 
 # Operando uma autoridade de certificação no {{site.data.keyword.cloud_notm}} Private
@@ -23,33 +26,32 @@ Cada organização em uma rede de blockchain multi-cloud deve implementar sua pr
 
 É necessário executar algumas etapas de pré-requisito para operar sua Autoridade de Certificação:
 
-- [Configurar suas CLIs](#ca-kubectl-configure)
-- [Recuperar a URL de sua autoridade de certificação](#ca-url)
-- [Faça download de seu certificado TLS da CA](#ca-tls)
-- [Configurar o cliente da CA do Fabric](#fabric-ca-client)
-- [Gerar certificados com seu administrador de CA](#enroll-admin)
+- [Configurar suas CLIs](/docs/services/blockchain/howto/CA_operate.html#ca-operate-kubectl-configure)
+- [Recuperar a URL de sua autoridade de certificação](/docs/services/blockchain/howto/CA_operate.html#ca-operate-url)
+- [Faça download de seu certificado TLS da CA](/docs/services/blockchain/howto/CA_operate.html#ca-operate-tls)
+- [Configurar o cliente da CA do Fabric](/docs/services/blockchain/howto/CA_operate.html#ca-operate-fabric-ca-client)
+- [Gerar certificados com seu administrador de CA](/docs/services/blockchain/howto/CA_operate.html#ca-operate-enroll-admin)
 
 Depois de concluir as etapas de pré-requisito, é possível usar sua CA para registrar novas identidades na rede com sua organização e gerar certificados que seus aplicativos poderão usar.
 
-- [Usando a CA para implementar um solicitador ou peer](#deploy-orderer-peer)
-<!-- [Register and enroll client applications](#register-enroll-app)-->
+- [Usando a CA para implementar um solicitador ou peer](/docs/services/blockchain/howto/CA_operate.html#ca-operate-deploy-orderer-peer)
 
 Este guia também fornece algumas informações conceituais importantes sobre como operar sua CA e como usar seus certificados para gerenciar uma rede de blockchain.
 
-- [Fornecedores de serviço de associação (MSPs)](#msp)
-- [Certificados TLS](#tls)
+- [Fornecedores de serviço de associação (MSPs)](/docs/services/blockchain/howto/CA_operate.html#ca-operate-msp)
+- [Certificados TLS](/docs/services/blockchain/howto/CA_operate.html#ca-operate-tls)
 
 ## Pré-requisitos
-{: #prerequisites}
+{: #ca-operate-prerequisites}
 
 Se você estiver fundando ou associando uma rede, será necessário concluir essas etapas de pré-requisitos para usar sua CA e implementar outros componentes e identidades que pertencem à sua organização.
 
 ### Configurando as CLIs
-{: #ca-kubectl-configure}
+{: #ca-operate-kubectl-configure}
 
-É necessário usar a ferramenta de linha de comandos **kubectl** para se conectar ao contêiner da CA que é executado no ICP.
+É necessário usar a ferramenta de linha de comandos **kubectl** para se conectar ao contêiner de CA que é executado no {{site.data.keyword.cloud_notm}} Private.
 
-1. Efetue login na IU do cluster do ICP. Navegue para a guia **Ferramentas de linha de comandos** e clique em **CLI do Cloud Private**. Você verá as ferramentas a seguir que podem ser transferidas por download.
+1. Efetue login na IU do cluster do {{site.data.keyword.cloud_notm}} Private. Navegue para a guia **Ferramentas de linha de comandos** e clique em **CLI do Cloud Private**. Você verá as ferramentas a seguir que podem ser transferidas por download.
 
    * Instalar a CLI e os plug-ins do IBM Cloud Private
    * Instalar a CLI Kubectl
@@ -88,9 +90,9 @@ Se você estiver fundando ou associando uma rede, será necessário concluir ess
 
   Agora você está pronto para usar a ferramenta **kubectl** para obter a URL da CA.
 
-3. Opcionalmente, se você desejar usar **Helm**, conclua algumas etapas adicionais. Observe que o Helm é opcional para ser instalado e você não precisa usá-lo nestas instruções. No entanto, pode ser útil gerenciar suas liberações do Helm e criar seus próprios archives para implementar no ICP.
+3. Opcionalmente, se você desejar usar **Helm**, conclua algumas etapas adicionais. Observe que o Helm é opcional para ser instalado e você não precisa usá-lo nestas instruções. No entanto, pode ser útil gerenciar suas liberações do Helm e criar seus próprios archives para implementação no {{site.data.keyword.cloud_notm}} Private.
 
-  1. Clique em "Instalar o Helm" e execute o comando `curl` por meio da UI do ICP.
+  1. Clique em "Instalar Helm" e execute o comando `curl` por meio da IU do {{site.data.keyword.cloud_notm}} Private.
   2. Descompacte o arquivo `tar` executando o comando a seguir:  
     ```
     tar -xzvf helm-darwin-amd64<suffix>
@@ -105,15 +107,15 @@ Se você estiver fundando ou associando uma rede, será necessário concluir ess
   É possível executar o comando `helm help` para confirmar se o Helm está instalado com êxito.
 
 ### Recuperando a URL da autoridade de certificação
-{: #ca-url}
+{: #ca-operate-url}
 
-É necessário destinar a URL da CA para solicitações para gerar certificados ou registrar-se com uma nova identidade. É possível localizar sua URL de CA usando a IU do console do ICP. Você precisará ser um [Administrador de cluster ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Funções e ações do administrador de cluster") para concluir as etapas a seguir:
+É necessário destinar a URL da CA para solicitações para gerar certificados ou registrar-se com uma nova identidade. É possível localizar sua URL de CA usando sua IU do console do {{site.data.keyword.cloud_notm}} Private. Você precisará ser um [Administrador de cluster ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Funções e ações do administrador de cluster") para concluir as etapas a seguir:
 
-1. Efetue login no console do ICP e clique no ícone **Menu** no canto superior esquerdo.
+1. Efetue login no console do {{site.data.keyword.cloud_notm}} Private e clique no ícone **Menu** no canto superior esquerdo.
 2. Clique em **Carga de trabalho** > **Liberações do Helm**.
 3. Localize o nome de sua Liberação do Helm e abra o painel de detalhes da Liberação do Helm.
 4. Role para baixo até a seção **Notas** na parte inferior do painel. Na seção **Notas**, é possível ver um conjunto de comandos para ajudar a operar sua implementação de CA.
-5. Se ainda não tiver feito isso, siga as etapas para configurar a [CLI kubectl](#ca-kubectl-configure), que você precisa usar para interagir com seu contêiner de CA.
+5. Se ainda não tiver feito isso, siga as etapas para configurar a [CLI kubectl](/docs/services/blockchain/howto/CA_operate.html#ca-operate-kubectl-configure), que você precisa usar para interagir com seu contêiner de CA.
 6. Em sua CLI, execute o primeiro comando na nota, que segue **1. Obtenha a URL do aplicativo executando estes comandos:** Esse comando imprime a URL da CA e a porta, que é semelhante ao exemplo a seguir. Salve esse valor como a URL do aplicativo a ser usada com os comandos subsequentes.
 
   ```
@@ -124,15 +126,15 @@ Se você estiver fundando ou associando uma rede, será necessário concluir ess
 
 
 ### Recuperando o certificado TLS da CA
-{: #ca-tls}
+{: #ca-operate-tls}
 
 É necessário fazer download de seu certificado TLS da CA e transmiti-lo junto com seus comandos para se comunicar com sua CA a partir de um cliente remoto.
 
-1. Efetue login no console do ICP. Clique no ícone **Menu** no canto superior esquerdo.
+1. Efetue login em seu console privado do  {{site.data.keyword.cloud_notm}} . Clique no ícone **Menu** no canto superior esquerdo.
 2. Clique em **Carga de trabalho** > **Liberações do Helm**.
 3. Localize o nome de sua Liberação do Helm e abra o painel de detalhes da Liberação do Helm.
 4. Role para baixo até a seção **Notas** na parte inferior do painel. Na seção **Notas**, é possível ver um conjunto de comandos para ajudar a operar sua implementação de CA.
-5. Se ainda não tiver feito isso, siga as etapas para configurar a [CLI kubectl](#ca-kubectl-configure), que você precisa usar para interagir com seu contêiner de CA.
+5. Se ainda não tiver feito isso, siga as etapas para configurar a [CLI kubectl](/docs/services/blockchain/howto/CA_operate.html#ca-operate-kubectl-configure), que você precisa usar para interagir com seu contêiner de CA.
 6. Em sua CLI, execute os comandos na terceira nota, que segue **3. Obter certificado TLS:** Esse comando salva seu certificado TLS como o arquivo `tls.pem` em seu diretório local. É necessário referenciar esse certificado em um comando futuro. Tome nota de sua localização.
 7. O comando também converte o certificado no formato base64 e o imprime. O resultado é semelhante à sequência abaixo:
 
@@ -140,10 +142,11 @@ Se você estiver fundando ou associando uma rede, será necessário concluir ess
     LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUVsRENDQTN5Z0F3SUJBZ0lRQWYyajYyN0tkY2lJUTR0eVM4KzhrVEFOQmdrcWhraUc5dzBCQVFzRkFBkOHRiUWsKQ0FVdzdDMjlDNzlGdjFDNXFmUHJtQUVTcmNpSXhwZzBYNDBLUE1icDFaV1ZiZDQ9Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0KCg==
   ```
 
-  **Importante:** é necessário copiar essa sequência e salvá-la como seu `ICP CA TLS certificate`. Você a usará quando implementar componentes adicionais.
+  É necessário copiar essa sequência e salvá-la como seu certificado TLS de CA do **{{site.data.keyword.cloud_notm}} Private**. Você a usará quando implementar componentes adicionais.
+  {:important}
 
 ### Configurando o cliente Fabric CA
-{: #fabric-ca-client}
+{: #ca-operate-fabric-ca-client}
 
 É possível usar o cliente Fabric CA para operar sua CA. Essas instruções explicam como usar o cliente Fabric CA para inscrever-se e registrar identidades para outros componentes que pertencem à sua organização. Também é possível usar os SDKs do Fabric para concluir as etapas de pré-requisito.
 
@@ -179,7 +182,7 @@ Se você estiver fundando ou associando uma rede, será necessário concluir ess
   ```
   {:codeblock}
 
-4. Configure o valor da variável de ambiente `$FABRIC_CA_CLIENT_HOME` para que seja o caminho em que o cliente de CA armazenará os certificados [MSP](#msp) gerados. Assegure-se de remover o material de configuração que pode ser criado por tentativas anteriores. Se você não executou o comando `enroll` antes, a pasta `msp` e o arquivo `.yaml` não existem.
+4. Configure o valor da variável de ambiente `$FABRIC_CA_CLIENT_HOME` para que seja o caminho em que o cliente de CA armazenará os certificados [MSP](/docs/services/blockchain/howto/CA_operate.html#ca-operate-msp) gerados. Assegure-se de remover o material de configuração que pode ser criado por tentativas anteriores. Se você não executou o comando `enroll` antes, a pasta `msp` e o arquivo `.yaml` não existem.
 
   ```
   export FABRIC_CA_CLIENT_HOME=$HOME/fabric-ca-client/ca-admin
@@ -188,7 +191,7 @@ Se você estiver fundando ou associando uma rede, será necessário concluir ess
   ```
   {:codeblock}
 
-5. Copie o certificado TLS que você [transferiu por download do ICP](#ca-tls) para um diretório no qual é possível referenciá-lo em comandos futuros. Assegure-se de que você esteja em seu diretório `$HOME/fabric-ca-client`.
+5. Copie o certificado TLS [transferido por download do {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/howto/CA_operate.html#ca-operate-tls) para um diretório no qual é possível referenciá-lo em comandos futuros. Assegure-se de que você esteja em seu diretório `$HOME/fabric-ca-client`.
 
   ```
   cd $HOME/fabric-ca-client
@@ -198,13 +201,13 @@ Se você estiver fundando ou associando uma rede, será necessário concluir ess
   {:codeblock}
 
 ### Gerando certificados com seu administrador de CA
-{: #enroll-ca-admin}
+{: #ca-operate-enroll-ca-admin}
 
 Antes de implementar componentes ou aplicativos clientes com sua CA, é necessário gerar certificados que autenticam você como um administrador com a capacidade de registrar novos usuários. O processo de geração dos certificados necessários, sua chave privada e seu certificado público (também conhecido como seu certificado de inscrição ou signCert), é chamado de **inscrição**.
 
 É possível gerar certificados apenas usando identidades que foram registradas com sua Autoridade de Certificação. Forneça o nome da identidade e o segredo para gerar certificados. Uma identidade do **administrador de CA** foi registrada automaticamente para você quando você implementou sua CA. Agora é possível usar esse nome de administrador e senha para emitir um comando `enroll` com o cliente Fabric CA para gerar uma pasta MSP com certificados que são, então, usados para registrar outras identidades de peer ou solicitador.
 
-1. Assegure-se de concluir as etapas para [configurar o cliente Fabric CA](#fabric-ca-client) e que `$FABRIC_CA_CLIENT_HOME` esteja configurado no diretório no qual você deseja armazenar seus certificados de administrador de CA.
+1. Assegure-se de concluir as etapas para [configurar o cliente Fabric CA](/docs/services/blockchain/howto/CA_operate.html#ca-operate-fabric-ca-client) e que `$FABRIC_CA_CLIENT_HOME` esteja configurado no diretório no qual você deseja armazenar seus certificados de administrador de CA.
 
   ```
   echo $FABRIC_CA_CLIENT_HOME
@@ -219,9 +222,9 @@ Antes de implementar componentes ou aplicativos clientes com sua CA, é necessá
   ```
   {:codeblock}
 
-  O `<enroll_id>` e `<enroll_password>` no comando são o [Nome e a senha do usuário administrador de CA](CA_deploy_icp.html#admin-secret) que você passou para o segredo de Kubernetes quando implementou a Autoridade de certificação. Insira a [URL da CA](#ca-url) dentro da `<ca_url_with_port>`. Deixe fora o `http://` no início. O `<ca_name>` é o valor que você forneceu para o campo `CA Name` ao implementar a CA.
+  O `<enroll_id>` e `<enroll_password>` no comando são o [Nome e a senha do usuário administrador de CA](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-admin-secret) que você passou para o segredo de Kubernetes quando implementou a Autoridade de certificação. Insira a [URL da CA](/docs/services/blockchain/howto/CA_operate.html#ca-operate-url) dentro da `<ca_url_with_port>`. Deixe fora o `http://` no início. O `<ca_name>` é o valor que você forneceu para o campo `CA Name` ao implementar a CA.
 
-  O `<ca_tls_cert_path>` é o caminho completo de seu [certificado TLS da CA](#ca-tls).
+  O `<ca_tls_cert_path>` é o caminho completo de seu [certificado TLS da CA](/docs/services/blockchain/howto/CA_operate.html#ca-operate-tls).
 
   Uma chamada real pode ser semelhante ao comando de exemplo a seguir:
 
@@ -229,9 +232,16 @@ Antes de implementar componentes ou aplicativos clientes com sua CA, é necessá
   fabric-ca-client enroll -u https://admin:adminpw@9.30.94.174:30167 --caname org1CA --tls.certfiles $HOME/fabric-ca-client/catls/tls.pem
   ```
 
-  O comando `enroll` gera um conjunto completo de certificados, que é conhecido como uma pasta Membership Service Provider (MSP), que está localizada dentro do diretório no qual você configura o caminho `$HOME` para seu cliente Fabric CA. Por exemplo, `$HOME/fabric-ca-client/ca-admin`. Para obter mais informações sobre MSPs e o que a pasta MSP contém, consulte [Membership Service Providers](#msp).
+  **Dica:** se o valor da URL de inscrição, o valor de parâmetro `-u`, contiver um caractere especial, será necessário codificá-lo ou circundar a URL com as aspas simples. Por exemplo, `!` torna-se `%21` ou o comando é semelhante a:
 
-  Se o comando `enroll` falhar, consulte o [tópico de Resolução de Problemas](#ca-enroll-error) para obter as possíveis causas.
+  ```
+  ./fabric-ca-client enroll -u 'https://admin:C25A06287!0@ash-zbc07c.4.secure.blockchain.ibm.com:21241' --tls.certfiles $HOME/fabric-ca-remote/cert.pem --caname PeerOrg1CA
+  ```
+  {:codeblock}
+
+  O comando `enroll` gera um conjunto completo de certificados, que é conhecido como uma pasta Membership Service Provider (MSP), que está localizada dentro do diretório no qual você configura o caminho `$HOME` para seu cliente Fabric CA. Por exemplo, `$HOME/fabric-ca-client/ca-admin`. Para obter mais informações sobre MSPs e o que a pasta MSP contém, consulte [Membership Service Providers](/docs/services/blockchain/howto/CA_operate.html#ca-operate-msp).
+
+  Se o comando `enroll` falhar, consulte o [tópico de Resolução de Problemas](/docs/services/blockchain/howto/CA_operate.html#ca-operate-enroll-error) para obter as possíveis causas.
 
 É possível executar um comando de árvore para verificar se você concluiu todas as etapas de pré-requisito. Navegue para o diretório no qual você armazenou seus certificados. Um comando de árvore deve gerar um resultado semelhante à estrutura a seguir:
 
@@ -250,21 +260,21 @@ tree
 │       │   └── cert.pem
 │       └── user
 └── catls
-    └── tls.pem
+    └── tls.pem    
 ```
 
 ## Usando a CA para implementar um solicitador ou peer
-{: #deploy-orderer-peer}
+{: #ca-operate-deploy-orderer-peer}
 
 Antes de implementar um solicitador ou peer, é necessário criar um arquivo JSON de configuração que contenha informações importantes sobre a identidade do componente e sua CA. Em seguida, é necessário passar esse arquivo para o gráfico do Helm durante a configuração usando um objeto [Segredo do Kubernetes ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://kubernetes.io/docs/concepts/configuration/secret/). Esse arquivo permite que seu solicitador ou peer obtenha os certificados necessários da CA para ingressar em uma rede de blockchain. Esse arquivo também contém um certificado de administrador que permite que você opere seu componente como um usuário administrador.
 
-As instruções a seguir fornecem a você um [arquivo de configuração JSON de modelo](#config-file-template) que pode ser editado e salvo em seu sistema de arquivos local e o instruem sobre como usar sua CA para concluir este arquivo.
+As instruções a seguir fornecem a você um [arquivo de configuração JSON de modelo](/docs/services/blockchain/howto/CA_operate.html#ca-operate-config-file-template) que pode ser editado e salvo em seu sistema de arquivos local e o instruem sobre como usar sua CA para concluir este arquivo.
 
-- Siga as instruções abaixo se estiver implementando um solicitador no ICP ou implementando um peer para se conectar a um consórcio que está hospedado no ICP.
-- Se você deseja implementar um peer para se conectar ao Starter Plan ou ao Enterprise Plan, siga as instruções em [Implementando peers no IBM Cloud Private para conectar-se ao Starter Plan ou ao Enterprise Plan](/docs/services/blockchain/peer_deploy_ibp.html). Essas etapas o instruem sobre como usar a CA no {{site.data.keyword.blockchainfull_notm}} Platform para implementar nosso peer no ICP.
+- Siga as instruções abaixo se estiver implementando um solicitador no {{site.data.keyword.cloud_notm}} Private ou implementando um peer para se conectar a um consórcio que está hospedado no {{site.data.keyword.cloud_notm}} Private.
+- Se você deseja implementar um peer para se conectar ao Starter Plan ou ao Enterprise Plan, siga as instruções em [Implementando peers no IBM Cloud Private para conectar-se ao Starter Plan ou ao Enterprise Plan](/docs/services/blockchain/howto/peer_deploy_icp.html#icp-peer-deploy). Essas etapas orientam você sobre como usar a CA no {{site.data.keyword.blockchainfull_notm}} Platform para implementar nosso peer no {{site.data.keyword.cloud_notm}} Private.
 
 ### Arquivo de configuração
-{: #config-file-template}
+{: #ca-operate-config-file-template}
 
 O modelo para o arquivo de configuração pode ser localizado abaixo:
 ```
@@ -289,11 +299,11 @@ Copie esse arquivo inteiro em um editor de texto no qual é possível editá-lo 
 
 ### Informações de conexão da CA
 
-Primeiro, precisamos fornecer as informações de conexão de sua CA no ICP. Use as informações a seguir para concluir valores na seção `"component"` do arquivo:
+Primeiro, precisamos fornecer as informações de conexão de sua CA no {{site.data.keyword.cloud_notm}} Private. Use as informações a seguir para concluir valores na seção `"component"` do arquivo:
 
-- Os valores `"cahost"` e `"caport"` são a URL e a porta da [URL da CA](#ca-url). Por exemplo, se sua URL da CA for http://9.30.94.174:30167, o valor de `"cahost"` será `9.30.94.174` e a `"caport"` será `30167`.
-- O `"caname"` é o nome da CA que foi especificado quando você implementou o gráfico Helm da CA. Você referenciou o nome da CA em seu comando quando se inscreveu usando a [identidade do administrador da CA](#enroll-admin).
-- O `"cacert"` é o certificado TLS codificado em base64 de sua CA. [Recupere o certificado TLS de sua CA](#ca-tls) a partir de seu console do ICP usando a nota em sua liberação do Helm e insira a saída base64 dos comandos de nota na seção a seguir.
+- Os valores `"cahost"` e `"caport"` são a URL e a porta da [URL da CA](/docs/services/blockchain/howto/CA_operate.html#ca-operate-url). Por exemplo, se sua URL da CA for http://9.30.94.174:30167, o valor de `"cahost"` será `9.30.94.174` e a `"caport"` será `30167`.
+- O `"caname"` é o nome da CA que foi especificado quando você implementou o gráfico Helm da CA. Você referenciou o nome da CA em seu comando quando se inscreveu usando a [identidade do administrador da CA](/docs/services/blockchain/howto/CA_operate.html#ca-operate-enroll-admin).
+- O `"cacert"` é o certificado TLS codificado em base64 de sua CA. [Recupere o certificado TLS de sua CA](/docs/services/blockchain/howto/CA_operate.html#ca-operate-tls) por meio do console do {{site.data.keyword.cloud_notm}} Private usando a nota em sua liberação do Helm e insira a saída base64 dos comandos de nota na seção a seguir.
   ```
   "catls": {
     "cacert": ""
@@ -320,18 +330,18 @@ Primeiro, precisamos fornecer as informações de conexão de sua CA no ICP. Use
 
 Depois de recuperar as informações de conexão da Autoridade de Certificação, é necessário usar o cliente Fabric CA para concluir várias etapas operacionais:
 
-1. [Registre o novo componente com sua CA](#register-component).
+1. [Registre o novo componente com sua CA](/docs/services/blockchain/howto/CA_operate.html#ca-operate-register-component).
 
-2. Também é necessário [registrar um administrador de componente](#register-admin) e, em seguida, [gerar certificados para o administrador do componente](#enroll-admin) dentro de uma pasta MSP. Não será necessário concluir essa etapa se você já tiver registrado um administrador para implementar outro componente.
+2. Também é necessário [registrar um administrador de componente](/docs/services/blockchain/howto/CA_operate.html#ca-operate-register-admin) e, em seguida, [gerar certificados para o administrador do componente](/docs/services/blockchain/howto/CA_operate.html#ca-operate-enroll-admin) dentro de uma pasta MSP. Não será necessário concluir essa etapa se você já tiver registrado um administrador para implementar outro componente.
 
-3. [Registre o novo componente com sua CA TLS](#tls-register-component).
+3. [Registre o novo componente com sua CA TLS](/docs/services/blockchain/howto/CA_operate.html#ca-operate-tls-register-component).
 
 ### Registrando a identidade do componente com a CA
-{: #register-component}
+{: #ca-operate-register-component}
 
 Se você deseja localizar um consórcio implementando um serviço de ordenação e incluindo organizações nele, ou para implementar os peers e associá-los aos canais, primeiro é necessário registrar a identidade do componente com sua CA. Sua implementação de componente pode, então, gerar certificados que são necessários para que o peer ou o solicitador participe de uma rede.
 
-1. [Gere certificados com seu administrador de CA](#enroll-ca-admin) usando o cliente Fabric CA. Use esses certificados de administrador para emitir os comandos a seguir. Assegure-se de que `$FABRIC_CA_CLIENT_HOME` esteja configurado como `$HOME/fabric-ca-client/ca-admin`.
+1. [Gere certificados com seu administrador de CA](/docs/services/blockchain/howto/CA_operate.html#ca-operate-enroll-ca-admin) usando o cliente Fabric CA. Use esses certificados de administrador para emitir os comandos a seguir. Assegure-se de que `$FABRIC_CA_CLIENT_HOME` esteja configurado como `$HOME/fabric-ca-client/ca-admin`.
 
   ```
   echo $FABRIC_CA_CLIENT_HOME
@@ -366,7 +376,7 @@ Se você deseja localizar um consórcio implementando um serviço de ordenação
   Crie um nome e uma senha para o componente e, em seguida, use-os para substituir `name` e `secret`. **Importante:** anote essas informações. Configure o `--id.type` como `orderer` se você estiver implementando um solicitador ou configure-o como `peer` se estiver implementando um peer. O comando pode ser semelhante ao exemplo a seguir:
 
   ```
-  fabric-ca-client register --caname org1CA --id.affiliation org1.department1 --id.name peer --id.secret peerpw --id.type peer --tls.certfiles $HOME/fabric-ca-client/catls/tls.pem
+  fabric-ca-client register --caname org1CA --id.affiliation org1.department1 --id.name peer1 --id.secret peer1pw --id.type peer --tls.certfiles $HOME/fabric-ca-client/catls/tls.pem
   ```
 
   Depois de executar esse comando, é necessário inserir o `name` e `secret` como o `"enrollid"` e `"enrollsecret"` no arquivo de configuração, na seção `"component"`:
@@ -375,7 +385,7 @@ Se você deseja localizar um consórcio implementando um serviço de ordenação
   "component": {...
     },
     "enrollid": "peer1",
-    "enrollsecret": "peerpw",
+    "enrollsecret": "peer1pw",
   ```
 
   É possível registrar uma identidade apenas uma vez. Se você tiver algum problema, tente um comando com um novo nome do usuário e senha. Como uma medida de segurança, use cada identidade e o enrollID e segredo associados para implementar somente um peer. Embora seja possível usar uma identidade de **administrador** para vários componentes (essa é a nossa estratégia de implementação recomendada), não reutilize IDs de peer e senhas.
@@ -390,7 +400,7 @@ Se você deseja localizar um consórcio implementando um serviço de ordenação
   ```
 
 #### Registrando o administrador
-{: #register-admin}
+{: #ca-operate-register-admin}
 
 Depois de registrar o componente, também é necessário criar uma identidade de administrador que possa ser usada para operar o componente. Primeiro, é necessário registrar essa nova identidade com sua CA e usá-la para gerar uma pasta MSP. Em seguida, é necessário incluir o signCert dos usuários administrativos no arquivo de configuração, no qual ele se tornará um certificado de administrador do solicitador ou peer durante a implementação. Isso permite que você use os certificados da identidade do administrador para operar sua rede de blockchain, como iniciando um novo canal ou instalando o chaincode em seus peers.
 
@@ -420,7 +430,7 @@ fabric-ca-client register --caname org1CA --id.name peeradmin --id.affiliation o
 **Importante:** anote essas informações. Você usará esse `name` e `secret` para gerar a pasta MSP usando o comando `enroll`.
 
 #### Gerando a pasta MSP do administrador
-{: #enroll-admin}
+{: #ca-operate-enroll-admin}
 
 Após o registro do administrador do componente, é possível gerar os certificados usando o comando a seguir:
 
@@ -436,6 +446,7 @@ fabric-ca-client enroll -u https://peeradmin:peeradminpw@9.30.94.174:30167 --can
 ```
 
 Depois que esse comando for concluído com êxito, ele gerará uma nova pasta MSP no diretório que você especificou usando o sinalizador `-M`. Esse diretório contém os certificados que serão usados para operar seus componentes. É possível verificar se o comando enroll funcionou usando um comando de árvore. Navegue para o diretório no qual você armazenou seus certificados. Um comando de árvore deve gerar um resultado semelhante à estrutura a seguir:
+
 
 ```
 cd $HOME/fabric-ca-client
@@ -483,6 +494,7 @@ tree
         └── user
 ```
 
+
 Neste diretório MSP, abra o arquivo signCert do novo usuário e converta-o para o formato base64 usando os comandos a seguir:
 
 ```
@@ -523,7 +535,7 @@ LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUNuRENDQWtPZ0F3SUJBZ0lVTXF5VDhUdnlwY3lY
 Copie essa sequência para o campo `"admincerts"` na seção do componente no arquivo de configuração.
 
 #### Registrando a identidade do componente com a CA do TLS
-{: #tls-register-component}
+{: #ca-operate-tls-register-component}
 
 Também é necessário registrar o solicitador ou peer com a CA do TLS. Para fazer isso, primeiro será necessário se inscrever usando o administrador da CA do TLS. Mude `$FABRIC_CA_CLIENT_HOME` para um diretório no qual você deseja armazenar seus certificados de administrador da CA do TLS.
 
@@ -534,7 +546,7 @@ export FABRIC_CA_CLIENT_HOME=$HOME/fabric-ca-client/tlsca-admin
 ```
 {:codeblock}
 
-Execute o comando abaixo para se inscrever como seu administrador com relação à CA do TLS. O comando é o mesmo que você usou para se inscrever como seu [administrador da CA](#enroll-ca-admin), você apenas usará o nome da instância do TLS da CA que foi especificado durante sua [configuração da CA.](CA_deploy_icp.html#icp-ca-configuration-parms) Certifique-se de usar o mesmo `ca-admin-name` e `ca-admin-password` em seu segredo de CA.
+Execute o comando abaixo para se inscrever como seu administrador com relação à CA do TLS. O comando é o mesmo que você usou para se inscrever como seu [administrador da CA](/docs/services/blockchain/howto/CA_operate.html#ca-operate-enroll-ca-admin), você apenas usará o nome da instância do TLS da CA que foi especificado durante sua [configuração da CA.](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-configuration-parms) Certifique-se de usar o mesmo `ca-admin-name` e `ca-admin-password` em seu segredo de CA.
 
 ```
 fabric-ca-client enroll -u https://<enroll_id>:<enroll_password>@<ca_url_with_port> --caname <tls_ca_name> --tls.certfiles <ca_tls_cert_path>
@@ -547,8 +559,7 @@ Uma chamada real pode ser semelhante ao exemplo a seguir:
 fabric-ca-client enroll -u https://admin:adminpw@9.30.94.174:30167 --caname org1tlsca --tls.certfiles $HOME/fabric-ca-client/catls/tls.pem
 ```
 
-Depois de se inscrever, você terá os certificados necessários para registrar seu componente com a CA do TLS.
-Execute o comando a seguir para registrar o solicitador ou peer:
+Depois de se inscrever, você terá os certificados necessários para registrar seu componente com a CA do TLS. Execute o comando a seguir para registrar o solicitador ou peer:
 
 ```
 fabric-ca-client register --caname <ca_name> --id.name <name> --id.affiliation org1.department1 --id.type peer --id.secret <password> --tls.certfiles <ca_tls_cert_path>
@@ -571,15 +582,15 @@ Copie os valores de `name` e `secret` para `"enrollid"` e `"enrollsecret"` sob a
 ```
 
 ### Hosts de CSR (Solicitação de Assinatura de Certificado)
-{: #csr-hosts}
+{: #ca-operate-csr-hosts}
 
 É necessário fornecer um nome do host CSR para implementar um solicitador ou peer. Esse nome do host inclui o endereço IP do proxy do cluster no qual você implementará o componente e o `service host name` que é gerado quando o gráfico Helm é implementado.
 
 #### Localizando o valor do endereço IP do proxy do cluster
 
-Se você deseja implementar um solicitador ou peer no mesmo cluster ICP no qual implementou sua CA, assegure-se de que tenha uma função [Administrador de cluster ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Funções e ações do administrador de cluster") no cluster ICP em que o solicitador ou o peer será implementado. Em seguida, insira o mesmo IP de proxy que você usou quando [configurou para sua CA](CA_deploy_icp.html#icp-ca-configuration-parms). Se desejar implementar o solicitador ou peer em um cluster diferente, será possível recuperar o valor do endereço IP do proxy do cluster a partir do console do ICP, concluindo as etapas a seguir:
+Se desejar implementar um solicitador ou peer no mesmo cluster do {{site.data.keyword.cloud_notm}} Private no qual você implementou sua CA, assegure-se de que tenha uma função [ Administrador de cluster ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Funções e ações do administrador de cluster") no cluster do {{site.data.keyword.cloud_notm}} Private no qual o solicitador ou peer será implementado. Em seguida, insira o mesmo IP de proxy que você usou quando [configurou para sua CA](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-configuration-parms). Se deseja implementar o solicitador ou peer em um cluster diferente, é possível recuperar o valor do endereço IP do proxy do cluster por meio do console do {{site.data.keyword.cloud_notm}} Privado concluindo as etapas a seguir:
 
-1. Efetue login no console do ICP. No painel de navegação à esquerda, clique em **Plataforma** e, em seguida, em **Nós** para visualizar os nós que estão definidos no cluster.
+1. Efetue login no console do {{site.data.keyword.cloud_notm}} Private. No painel de navegação à esquerda, clique em **Plataforma** e, em seguida, em **Nós** para visualizar os nós que estão definidos no cluster.
 2. Clique no nó com a função `proxy` e, em seguida, copie o valor do `IP do host` da tabela.
 3. Insira o `Host IP` como o valor para `"hosts"` na seção `"csr"` do arquivo de configuração abaixo:
 
@@ -622,6 +633,7 @@ Um `service host name` é gerado quando um gráfico Helm é implementado. Ele é
 
 Depois de concluir todas as etapas acima, seu arquivo de configuração atualizado poderá ser semelhante ao exemplo a seguir:
 
+
 ```
 {
     "enrollment": {
@@ -632,8 +644,8 @@ Depois de concluir todas as etapas acima, seu arquivo de configuração atualiza
             "catls": {
                 "cacert": "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUNGakNDQWIyZ0F3SUJBZ0lVTmlUbkdTandSdU1JVXhpWGcwMGZZWXhPSndJd0NnWUlLb1pJemowRUF3SXcKYURFTE1Ba0dBMVVFQmhNQ1ZWTXhGekFWQmdOVkJBZ1REazV2Y25Sb0lFTmhjbTlzYVc1aE1SUXdFZ1lEVlFRSwpFd3RJZVhCbGNteGxaR2RsY2pFUE1BMEdBMVVFQ3hNR1JtRmljbWxqTVJ0Z3WURWUVFERXhCbVlXSnlhV010ClkyRXRjMlZ5ZG1WeU1CNFhEVEU0TVRFeE5qRTJNVEF3TUZvWERUTXpNVEV4TWpFMk1UQXdNRm93YURFTE1Ba0cKQTFVRUJoTUNWVk14RnpBVkJnTlZCQWdURGs1dmNuUm9JRU5oY205c2FXNWhNUlF3RWdZRFZRUUtFd3RJZVhCbApjbXhsWkdkbGNqRVBNQTBHQTFVRUN4TUdSbUZpY21sak1Sa3dGd1lEVlFRREV4Qm1ZV0p5YVdNdFkyRXRjMlZ5CmRtVnlNRmt3RXdZSEtvWkl6ajBDQVFZSUtvWkl6ajBEQVFjRFFnQUU1dlBucDJUNTdkY2hTOGRLNExsMFJRZEEKd284RmJsMzBPcnBGdWFHUld5TFl4eGcxcVFTemhUY3hTcGtHZjh3a1FzVDVFb01lSWcrRytldjBOU01FUTZORgpNRU13RGdZRFZSMFBBUUgvQkFRREFnRUdNQklHQTFVZEV3RUIvd1FJTUFZQkFmOENBUUV3SFFZRFZSME9CQllFCkZMd2d1N0J3Uk9lQ2hzV2hWQWptMTdmalh1eVBNQW9HQ0NxR1NNNDlCQU1DQTBjQU1FUUNJR0FCRmNSdXhtSkIKY3c4OTJJOXhPS3YxVmYyT0JHZUh5N2pFQzRBRm5najFBaUJqdHFvdjBXMXdxZjhwcGttYkxIQkJoWW1vS3ZqRwo4bDQyeVQ5bWYxWVQrZz09Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K"
             },
-            "enrollid": "peer",
-            "enrollsecret": "peerpw",
+            "enrollid": "peer1",
+            "enrollsecret": "peer1pw",
             "admincerts": [
                 "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUMzRENDQW9PZ0F3SUJBZ0lVS2Vib0drZEJqenM5bllRbkVQTWp0VG56YTVrd0NnWUlLb1pJemowRUF3SXcKYURFTE1Ba0dBMVVFQmhNQ1ZWTXhGekFWQmdOVkJBZ1REazV2Y25Sb0lFTmhjbTlzYVc1aE1SUXdFZ1lEVlFRSwpFd3RJZVhCbGNteGxaR2RsY2pFUE1BMEdBMVVFQ3hNR1JtRmljbWxqTVJrd0Z3WURWUVFERXhCbVlXSnlhV010ClkyRXRjMlZ5ZG1WeU1CNFhEVEU0TVRFeE9URTNNRE13TUZvWERURTVNVEV4T1RFM01EZ3dNRm93ZmpFTE1BaKQTFVRUJoTUNWVk14RnpBVkJnTlZCQWdURGs1dmNuUm9JRU5oY205c2FXNWhNUlF3RWdZRFZRUUtFd3RJZVhCbApjbXhsWkdkbGNqRXVNQXNHQTFVRUN4TUVkWE5sY2pBTEJnTlZCQXNUQkc5eVp6RXdFZ1lEVlFRTEV3dGtaWEJoCmNuUnRaVzUwTVRFUU1BNEdBMVVFQXhNSFlXUnRhVzR4Y0RCWk1CTUdCeXFHU000OUFnRUdDQ3FHU000OUF3RUgKQTBJQUJLbjUwdEU5TmpZb0RFNDBqalh6RUJ2T2c3Y3RtOElRd0laMnRkS29iNEwwVVhKdSs1Tkt5S2dyUk9vbApWcjBmQmg5cWZWMjl4Nms0T2dmMFNiVklBZWlqZ2ZRd2dmRXdEZ1lEVlIwUEFRSC9CQVFEQWdlQU1Bd0dBMVVkCkV3RUIvd1FDTUFBd0hRWURWUjBPQkJZRUZOYWFkV0VzcGp2Smk1akpiVktiS2M3ZU1wUmhNQjhHQTFVZEl3UVkKTUJhQUZMd2d1N0J3Uk9lQ2hzV2hWQWptMTdmalh1eVBNQ2NHQTFVZEVRUWdNQjZDSEdOb1lXNWtjbUZ6TFcxaQpjQzV5WVd4bGFXZG9MbWxpYlM1amIyMHdhQVlJS2dNRUJRWUhDQUVFWEhzaVlYUjBjbk1pT25zaWFHWXVRV1ptCmFXeHBZWFJwYjI0aU9pSnZjbWN4TG1SbGNHRnlkRzFsYm5ReElpd2lhR1l1Ulc1eWIyeHNiV1Z1ZEVsRUlqb2kKWVdSdGFXNHhjQ0lzSW1obUxsUjVjR1VpT2lKMWMyVnlJbjE5TUFvR0NDcUdTTTQ5QkFNQ0EwY0FNRVFDSURGeApDYzE1bDZUZ1dqYnhSZzlmNjczOGV0K0NZZ1I3VVpGR200VHdoQk5jQWlBNmtUMFFwbDV6WnBUN3BzM0dySXlVCmEydDRHSTQ5ZTdjUm5PMmdrSzl6Z3c9PQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg=="
             ]
@@ -659,10 +671,12 @@ Depois de concluir todas as etapas acima, seu arquivo de configuração atualiza
 ```
 {:codeblock}
 
-É possível deixar os outros campos em branco. Salve esse arquivo e você precisará utilizá-lo ao implementar um [solicitador](/docs/services/blockchain/howto/orderer_deploy_icp.html) ou [peer](/docs/services/blockchain/howto/peer_deploy_icp.html).
+
+
+É possível deixar os outros campos em branco. Salve esse arquivo e você precisará utilizá-lo ao implementar um [solicitador](/docs/services/blockchain/howto/orderer_deploy_icp.html) ou [peer](/docs/services/blockchain/howto/peer_deploy_ibp.html).
 
 ## Fornecedores de serviço de associação (MSPs)
-{: #msp}
+{: #ca-operate-msp}
 
 Os componentes do {{site.data.keyword.blockchainfull_notm}} Platform consomem identidades via Membership Service Providers (MSPs). Os MSPs associam os certificados que as autoridades de certificação emitem com permissões e funções. Para obter mais informações sobre MSPs, consulte [o tópico Associação na documentação do Hyperledger Fabric ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://hyperledger-fabric.readthedocs.io/en/latest/membership/membership.html "o tópico Associação na documentação do Hyperledger Fabric").
 
@@ -670,12 +684,12 @@ As pastas MSP devem ter uma estrutura definida para ser usada pelos componentes 
 
 - **cacerts:** contém o certificado da CA raiz de sua rede.
 - **intermediatecerts:** esses são os certificados de quaisquer autoridades de certificação intermediárias em sua cadeia de confiança (levando de volta a uma autoridade de certificação raiz ou autoridades de certificação). Cada organização do Plano corporativo tem duas autoridades de certificação intermediárias para failover e alta disponibilidade.
-- **signCerts:** essa pasta contém seu certificado de assinatura pública, também conhecido como seu signCert ou certificado de inscrição. Esse certificado é anexado às suas chamadas à rede (uma chamada de chaincode, por exemplo) quando você referencia o seu diretório do MSP por meio da linha de comandos ou constrói um objeto de contexto do usuário com os SDKs. É possível fazer upload desse certificado para o IBP se desejar operar uma rede a partir do SDK ou da linha de comandos.
+- **signCerts:** essa pasta contém seu certificado de assinatura pública, também conhecido como seu signCert ou certificado de inscrição. Esse certificado é anexado às suas chamadas à rede (uma chamada de chaincode, por exemplo) quando você referencia o seu diretório do MSP por meio da linha de comandos ou constrói um objeto de contexto do usuário com os SDKs. É possível fazer upload desse certificado para o {{site.data.keyword.blockchainfull_notm}} Platform se você deseja operar uma rede por meio do SDK ou da linha de comandos.
 - **keystore:** essa pasta contém sua chave privada. Essa chave é usada para assinar chamadas para a rede quando você referencia seu diretório MSP a partir da linha de comandos ou constrói um objeto de contexto do usuário com os SDKs, mas ela não é anexada às chamadas da maneira como o signCert é. É **crucial** que essa chave seja mantida segura. Se ela ficar comprometida, poderá ser usada para personificar sua identidade.
 
 Também é possível construir uma pasta MSP que o fabric-ca-client pode referenciar usando o Monitor de Rede e as APIs do Swagger.
 
-- **cacerts** e **intermediatecerts**: é possível buscar esses certificados com as [APIs do Swagger](/docs/services/blockchain/howto/swagger_apis.html) emitindo uma solicitação `Get` para a API do MSP.
+- **cacerts** e **intermediatecerts**: é possível buscar esses certificados com as [APIs do Swagger](/docs/services/blockchain/howto/swagger_apis.html#ibp-swagger) emitindo uma solicitação `Get` para a API do MSP.
 - **signCerts** e **keystore**: é possível gerar esses certificados clicando no botão **Gerar certificados** no painel "Autoridade de Certificação". Uma janela pop-up é aberta com dois certificados listados. Copie e armazene o **Certificado** em signCerts e a **Chave Privada** no keystore. Mantenha esses certificados em um local seguro porque eles não ficam armazenados na plataforma.
 
 Muitos componentes do Fabric contêm informações adicionais dentro de sua pasta MSP. Por exemplo, se você operar um peer remoto, poderá ver as pastas a seguir:
@@ -689,7 +703,7 @@ Para obter mais informações sobre a estrutura de MSPs, consulte [Associação 
 ## Visualizando os logs de CA
 {: #ca-operate-view-logs}
 
-Os logs de componentes podem ser visualizados por meio da linha de comandos, usando os [`kubectl CLI commands`](#ca-kubectl-configure) ou por meio do [Kibana ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://www.elastic.co/products/kibana "Sua janela no Elastic Search"), que está incluído em seu cluster do ICP.
+Os logs de componentes podem ser visualizados na linha de comandos usando os [`kubectl CLI commands`](/docs/services/blockchain/howto/CA_operate.html#ca-operate-kubectl-configure) ou por meio do [Kibana ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://www.elastic.co/products/kibana "Sua janela no Elastic Search"), que está incluído no cluster do {{site.data.keyword.cloud_notm}} Private.
 
 - Use o comando `kubectl logs` para visualizar os logs do contêiner dentro do pod. Se você não tiver certeza de seu nome do pod, execute o comando a seguir para visualizar sua lista de pods.
 
@@ -707,15 +721,15 @@ Os logs de componentes podem ser visualizados por meio da linha de comandos, usa
 
    Para obter mais informações sobre o comando `kubectl logs`, veja [Documentação do Kubernetes ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs “Getting Started”)
 
-- Como alternativa, é possível acessar eventos de implementação e logs usando o [console de gerenciamento de cluster do ICP](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/troubleshoot/events.html), que abre os logs no Kibana.
+- Como alternativa, é possível acessar eventos de implementação e logs usando o [console de gerenciamento de cluster do {{site.data.keyword.cloud_notm}} Private](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/troubleshoot/events.html), que abre os logs no Kibana.
 
-  **Nota:** ao visualizar seus logs no Kibana, você pode receber a resposta `No results found`. Essa condição poderá ocorrer se o ICP usar o endereço IP do nó do trabalhador como seu nome do host. Para resolver esse problema, remova o filtro que inicia com `node.hostname.keyword` na parte superior do painel e os logs se tornarão visíveis.
+  **Nota:** ao visualizar seus logs no Kibana, você pode receber a resposta `No results found`. Essa condição poderá ocorrer se o {{site.data.keyword.cloud_notm}} Private usar o endereço IP do nó do trabalhador como seu nome do host. Para resolver esse problema, remova o filtro que inicia com `node.hostname.keyword` na parte superior do painel e os logs se tornarão visíveis.
 
 ## Detecção de problemas
 {: #ca-operate-troubleshooting}
 
 ### **Problema:** erro ao executar o comando `enroll`
-{: #ca-enroll-error}
+{: #ca-operate-enroll-error}
 
 Ao executar o comando de inscrição do cliente Fabric CA, é possível que o comando falhe com o erro a seguir:
 
@@ -733,3 +747,25 @@ Esse erro pode ocorrer quando o cliente Fabric CA tenta se inscrever, mas não p
 - O nome do usuário ou senha está incorreto.
 
 Revise os parâmetros especificados em seu comando `enroll` e assegure que nenhuma dessas condições existam.
+
+### **Problema:** erro com a URL da CA ao executar o comando `enroll`
+{: #ca-operate-enroll-error}
+
+O comando de inscrição do cliente Fabric CA poderá falhar se a URL de inscrição, o valor de parâmetro `-u`, contiver um caractere especial. Por exemplo, o comando a seguir com o ID de inscrição e a senha de `admin:C25A06287!0`,
+
+```
+./fabric-ca-client enroll -u https://admin:C25A06287!0@ash-zbc07c.4.secure.blockchain.ibm.com:21241 --tls.certfiles $HOME/fabric-ca-remote/cert.pem --caname PeerOrg1CA
+```
+
+falhará e produzirá o erro a seguir:
+
+```
+!pw@9.12.19.115: evento não localizado
+```
+
+### **Solução:**
+É necessário codificar o caractere especial ou circundar a URL com as aspas simples. Por exemplo, `!` torna-se `%21` ou o comando é semelhante a:
+
+```
+./fabric-ca-client enroll -u 'https://admin:C25A06287!0@ash-zbc07c.4.secure.blockchain.ibm.com:21241' --tls.certfiles $HOME/fabric-ca-remote/cert.pem --caname PeerOrg1CA
+```

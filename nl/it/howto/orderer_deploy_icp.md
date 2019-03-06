@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-12-07"
+  years: 2018, 2019
+lastupdated: "2019-02-08"
 
 ---
 
@@ -13,19 +13,19 @@ lastupdated: "2018-12-07"
 {:pre: .pre}
 
 # Distribuzione di un ordinante in {{site.data.keyword.cloud_notm}} Private
-{: #orderer-deploy}
+{: #icp-orderer-deploy}
 
 ***[Questa pagina è utile? Faccelo sapere.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
-Gli ordinanti autenticano i client, ordinano le transazioni ed eseguono il broadcast delle transazioni in una rete blockchain con il componente ordinante. Per ulteriori informazioni sugli ordinanti e sul loro ruolo in una rete blockchain, consulta [Panoramica sui componenti blockchain](/docs/services/blockchain/blockchain_component_overview.html).
+Gli ordinanti autenticano i client, ordinano le transazioni ed eseguono il broadcast delle transazioni in una rete blockchain con il componente ordinante. Per ulteriori informazioni sugli ordinanti e sul loro ruolo in una rete blockchain, consulta [Panoramica sui componenti blockchain](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview).
 {:shortdesc}
 
-Prima di distribuire un servizio ordini, rivedi [Considerazioni e limitazioni](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-considerations).
+Prima di distribuire un servizio ordini, rivedi [Considerazioni e limitazioni](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-about-considerations).
 
 ## Risorse richieste
-{: #ca-resources-required}
+{: #icp-orderer-deploy-resources-required}
 
-Assicurati che il tuo sistema ICP soddisfi i requisiti della risorsa di hardware minimi:
+Assicurati che il sistema {{site.data.keyword.cloud_notm}} Private soddisfi i requisiti di risorse hardware minimi:
 
 | Componente | CPU virtuale | RAM | Disco per l'archiviazione di dati |
 |-----------|------|-----|-----------------------|
@@ -33,36 +33,36 @@ Assicurati che il tuo sistema ICP soddisfi i requisiti della risorsa di hardware
 
 
  **Note:**
- - Una CPU virtuale è un core virtuale assegnato a una macchina virtuale o un core di processore fisico se il server non è partizionato per le macchine virtuali. Devi considerare i requisiti della CPU virtuale quando decidi il VPC (virtual processor core) per la tua distribuzione in ICP. VPC è un'unità di misura per determinare il costo di licenza dei prodotti IBM. Per ulteriori informazioni sugli scenari per decidere VPC, vedi [Virtual processor core (VPC) ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/en/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_virtual_processor_core_licenses.html).
+ - Una CPU virtuale è un core virtuale assegnato a una macchina virtuale o un core di processore fisico se il server non è partizionato per le macchine virtuali. Devi considerare i requisiti di CPU virtuale quando decidi il VPC (virtual processor core) per la tua distribuzione in {{site.data.keyword.cloud_notm}} Private. VPC è un'unità di misura per determinare il costo di licenza dei prodotti IBM. Per ulteriori informazioni sugli scenari per decidere il VPC, vedi [Virtual processor core (VPC) ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/en/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_virtual_processor_core_licenses.html).
  - Questi livelli minimi di risorse sono sufficienti per l'esecuzione di test e la sperimentazione. Per un ambiente con un grande volume di transazioni, è importante assegnare una quantità sufficientemente grande di archiviazione; ad esempio 500 GB per il tuo servizio ordini. La quantità di archiviazione da utilizzare dipenderà dal numero di transazioni e dal numero di firme richiesti dalla tua rete. Se stai per esaurire l'archiviazione sul tuo ordinante, devi distribuire un nuovo ordinante con un file system più grande e consentirgli di eseguire la sincronizzazione tramite i tuoi altri componenti sugli stessi canali.
 
 ## Archiviazione
-{: #storage}
+{: #icp-orderer-deploy-storage}
 
-Devi determinare l'archiviazione che verrà utilizzata dal tuo ordinante. Se utilizzi le impostazioni predefinite, il grafico Helm creerà una nuova attestazione di volume persistente (PVC) di 8 Gi con il nome di `my-data-pvc` per i tuoi dati dell'ordinante e un'altra PVC di 8 Gi con il nome di `statedb-pvc` per il tuo database dello stato.
+Devi determinare l'archiviazione che verrà utilizzata dal tuo ordinante. Se utilizzi le impostazioni predefinite, il grafico Helm creerà una nuova attestazione di volume persistente (PVC) di 8 Gi con il nome di `orderer-data` per i tuoi dati dell'ordinante.
 
-Se non vuoi utilizzare le impostazioni di archiviazione predefinite, assicurati che venga configurata una *nuova* `storageClass` durante l'installazione di ICP o che l'amministratore di sistema Kubernetes debba creare una nuova storageClass prima della tua distribuzione.
+Se non vuoi utilizzare le impostazioni di archiviazione predefinite, assicurati che venga configurata una *nuova* `storageClass` durante l'installazione di {{site.data.keyword.cloud_notm}} Private, altrimenti l'amministratore di sistema Kubernetes deve creare una nuova storageClass prima della tua distribuzione.
 
-Puoi scegliere di distribuire l'ordinante sulle piattaforme amd64 o s390x. Tuttavia, tieni presente che il [Provisioning dinamico](https://kubernetes.io/docs/concepts/storage/dynamic-provisioning/) è disponibile solo per i nodi amd64 in ICP. Se il tuo cluster include una combinazione di nodi di lavoro s390x e amd64, non è possibile utilizzare il provisioning dinamico.
+Puoi scegliere di distribuire l'ordinante sulle piattaforme amd64 o s390x. Tuttavia, tieni presente che [il provisioning dinamico ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://kubernetes.io/docs/concepts/storage/dynamic-provisioning/ "Provisioning del volume dinamico") è disponibile solo per i nodi AMD64 in {{site.data.keyword.cloud_notm}} Private. Se il tuo cluster include una combinazione di nodi di lavoro s390x e amd64, non è possibile utilizzare il provisioning dinamico.
 
-Se non utilizzi il provisioning dinamico, devono essere creati e configurati dei [Volumi persistenti](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) con etichette che possono essere utilizzati per perfezionare il processo di bind della PVC Kubernetes.
+Se non utilizzi il provisioning dinamico, [i volumi persistenti ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://kubernetes.io/docs/concepts/storage/persistent-volumes/ "Volumi persistenti") devono essere creati e configurati con etichette che possono essere utilizzate per perfezionare il processo di bind della PVC Kubernetes.
 
 
 ## Prerequisiti per la distribuzione di un ordinante
-{: #prerequisites-orderer-icp}
+{: #icp-orderer-deploy-prerequisites}
 
-1. Prima di poter installare un ordinante su ICP, devi [installare ICP](/docs/services/blockchain/ICP_setup.html) e [installare il grafico Helm di {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/howto/helm_install_icp.html).
+1. Prima di poter installare un ordinante su {{site.data.keyword.cloud_notm}} Private, devi [installare {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/ICP_setup.html#icp-setup) e [installare il grafico Helm di {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/howto/helm_install_icp.html#helm-install).
 
-2. Se utilizzi la Community Edition e vuoi eseguire questo grafico Helm su un cluster ICP senza la connettività Internet, devi creare degli archivi su una macchina collegata a Internet prima di poter installare gli archivi sul tuo cluster ICP. Per ulteriori informazioni, consulta [Adding featured applications to clusters without Internet connectivity ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_package_offline.html "Adding featured applications to clusters without Internet connectivity"){:new_window}. Tieni presente che puoi trovare il file della specifica `manifest.yaml` in ibm-blockchain-platform-dev/ibm_cloud_pak nel grafico Helm.
+2. Se utilizzi la Community Edition e vuoi eseguire questo grafico Helm su un cluster {{site.data.keyword.cloud_notm}} Private senza la connettività Internet, devi creare degli archivi su una macchina connessa a Internet prima di poter installare gli archivi sul tuo cluster {{site.data.keyword.cloud_notm}} Private. Per ulteriori informazioni, consulta [Adding featured applications to clusters without Internet connectivity ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_package_offline.html "Adding featured applications to clusters without Internet connectivity"){:new_window}. Tieni presente che puoi trovare il file della specifica `manifest.yaml` in ibm-blockchain-platform-dev/ibm_cloud_pak nel grafico Helm.
 
-3. Richiama il valore dell'indirizzo IP proxy del cluster della tua CA dalla console ICP. **Nota:** dovrai essere un [Amministratore del cluster ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Cluster administrator roles and actions") per accedere al tuo IP proxy. Accedi al cluster ICP. Nel pannello di navigazione di sinistra, fai clic su **Piattaforma** e quindi su **Nodi** per visualizzare i nodi definiti nel cluster. Fai clic sul nodo con il ruolo `proxy` e copia il valore dell'`IP host` dalla tabella. **Importante:** salva questo valore perché lo utilizzerai quando configuri il campo `Proxy IP` del grafico Helm.
+3. Richiama il valore dell'indirizzo IP proxy del cluster della tua CA dalla console {{site.data.keyword.cloud_notm}} Private. **Nota:** dovrai essere un [Amministratore del cluster ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Cluster administrator roles and actions") per accedere al tuo IP proxy. Accedi al cluster {{site.data.keyword.cloud_notm}} Private. Nel pannello di navigazione di sinistra, fai clic su **Piattaforma** e quindi su **Nodi** per visualizzare i nodi definiti nel cluster. Fai clic sul nodo con il ruolo `proxy` e copia il valore dell'`IP host` dalla tabella. **Importante:** salva questo valore perché lo utilizzerai quando configuri il campo `Proxy IP` del grafico Helm.
 
-4. Crea un [file di configurazione dell'ordinante e archivialo come un segreto Kubernetes in ICP](#orderer-config-file).
+4. Crea un [file di configurazione dell'ordinante e archivialo come un segreto Kubernetes in {{site.data.keyword.cloud_notm}} Private.](/docs/services/blockchain/howto/orderer_deploy_icp.html#icp-orderer-deploy-config-file).
 
 ## Creazione di un file di configurazione dell'ordinante
-{: #orderer-config-file}
+{: #icp-orderer-deploy-config-file}
 
-Prima di distribuire un ordinante, devi creare un file di configurazione che contiene le informazioni importanti sull'identità dell'ordinante e la tua CA. Successivamente, devi passare questo file al grafico Helm durante la configurazione utilizzando un oggetto [segreto Kubernetes ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://kubernetes.io/docs/concepts/configuration/secret/). Questo file consentirà all'ordinante di ottenere i certificati di cui ha bisogno dalla CA per aderire a una rete blockchain. Contiene inoltre un certificato di gestione che ti consentirà di utilizzare l'ordinante come un utente amministratore. Attieniti alle istruzioni sull'[utilizzo della CA per distribuire un ordinante o un peer](/docs/services/blockchain/howto/CA_operate.html#deploy-orderer-peer) prima di configurare l'ordinante.
+Prima di distribuire un ordinante, devi creare un file di configurazione che contiene le informazioni importanti sull'identità dell'ordinante e la tua CA. Successivamente, devi passare questo file al grafico Helm durante la configurazione utilizzando un oggetto [segreto Kubernetes ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://kubernetes.io/docs/concepts/configuration/secret/). Questo file consentirà all'ordinante di ottenere i certificati di cui ha bisogno dalla CA per aderire a una rete blockchain. Contiene inoltre un certificato di amministrazione che ti consentirà di utilizzare l'ordinante come un utente amministratore. Attieniti alle istruzioni sull'[utilizzo della CA per distribuire un ordinante o un peer](/docs/services/blockchain/howto/CA_operate.html#ca-operate-deploy-orderer-peer) prima di configurare l'ordinante.
 
 Devi fornire i nomi host CSR al file di configurazione. È incluso il nome host del servizio (`service host name`) che si baserà sul nome della release Helm (`helm release name`) che specifichi durante la distribuzione. Il nome host del servizio (`service host name`) è il nome della release Helm (`helm_release_name`) che specifichi con la stringa `-orderer` aggiunta alla fine. Ad esempio, se specifichi un nome della release Helm (`helm release name`) di `orderer1`, puoi inserire il seguente valore nella sezione `"csr"` del file:
 
@@ -75,7 +75,7 @@ Devi fornire i nomi host CSR al file di configurazione. È incluso il nome host 
 }
 ```
 
-Dopo aver salvato il file di configurazione, devi codificarlo nel formato base64 prima di fornire il file a ICP come un oggetto segreto. Un segreto Kubernetes ti consente di proteggere e condividere le informazioni senza doverle passare direttamente alla distribuzione.
+Dopo aver salvato il file di configurazione, devi codificarlo nel formato base64 prima di fornire il file a {{site.data.keyword.cloud_notm}} Private come un oggetto segreto. Un segreto Kubernetes ti consente di proteggere e condividere le informazioni senza doverle passare direttamente alla distribuzione.
 
 1. Codifica il file di configurazione nel formato base64 immettendo i seguenti comandi da una finestra terminale:
 
@@ -102,31 +102,32 @@ Dopo aver salvato il file di configurazione, devi codificarlo nel formato base64
 
   Salva l'output risultante per il seguente passo 4.
 
-2. Accedi alla console ICP. Nel pannello di navigazione di sinistra, fai clic su **Configurazione** e quindi su **Segreti**. Fai clic sul pulsante **Crea segreto** per aprire un pannello a comparsa che ti consente di generare un nuovo oggetto segreto.
+2. Accedi alla console {{site.data.keyword.cloud_notm}} Private. Nel pannello di navigazione di sinistra, fai clic su **Configurazione** e quindi su **Segreti**. Fai clic sul pulsante **Crea segreto** per aprire un pannello a comparsa che ti consente di generare un nuovo oggetto segreto.
 
 3. Nella scheda **Generale**, completa i seguenti campi:
   - **Nome:** fornisci al tuo segreto un nome univoco all'interno del tuo cluster. Utilizzerai questo nome quando distribuisci il tuo ordinante. Il nome deve essere tutto in minuscolo.  
   **Nota:** quando distribuisci un ordinante, viene automaticamente generato un nuovo segreto dalla distribuzione con il nome di `<helm_release_name>-orderer-mspsecret`. Pertanto, quando dai un nome al tuo segreto, assicurati che sia diverso da `<helm_release_name>-orderer-mspsecret`. Altrimenti, la distribuzione del grafico Helm avrà esito negativo perché il segreto che tenta di creare esiste già.
-  - **Namespace:** lo spazio dei nomi per aggiungere il tuo segreto. Seleziona lo spazio dei nomi (`namespace`) a cui vuoi distribuire il tuo ordinante.
-  - **Tipo:** immetti il valore `Opaque`.
+  - **Spazio dei nomi** lo spazio dei nomi per aggiungere il tuo segreto. Seleziona lo spazio dei nomi (`namespace`) a cui vuoi distribuire il tuo ordinante.
+  - **Tipo** immetti il valore `Opaque`.
 
-4. Fai clic sulla scheda **Dati** nel pannello di navigazione di sinistra di questa finestra. Nei campi `Name`, specifica `secret.json` e nel campo del valore incolla la stringa codificata `base64` del tuo file di configurazione.
+4. Fai clic sulla scheda **Dati** nel pannello di navigazione di sinistra di questa finestra. Nei campi `Nome`, specifica `secret.json` e nel campo del valore incolla la stringa codificata `base64` del tuo file di configurazione.
 
 5. Fai clic su **Crea** per salvare il tuo oggetto segreto.
 
-**Nota:** il segreto di configurazione dell'ordinante non sarà rimosso dal tuo cluster ICP quando elimini la tua release Helm. Se elimini il tuo ordinante, devi eliminare anche questo segreto.
+**Nota:** il segreto di configurazione dell'ordinante non sarà rimosso dal tuo cluster {{site.data.keyword.cloud_notm}} Private quando elimini la tua release Helm. Se elimini il tuo ordinante, devi eliminare anche questo segreto.
 
 ## Configurazione
-{: #orderer-configuration}
+{: #icp-orderer-deploy-configuration}
 
-Dopo aver creato il tuo oggetto segreto di configurazione dell'ordinante, puoi configurare e installare il tuo ordinante in ICP con la seguente procedura. Puoi installare solo un ordinante alla volta.
 
-1. Accedi alla console ICP e fai clic su **Catalogo** nell'angolo superiore destro.
+Dopo aver creato il tuo oggetto segreto di configurazione dell'ordinante, puoi configurare e installare il tuo ordinante in {{site.data.keyword.cloud_notm}} Private con la seguente procedura. Puoi installare solo un ordinante alla volta.
+
+1. Accedi alla console {{site.data.keyword.cloud_notm}} Private e fai clic su **Catalogo** nell'angolo superiore destro.
 2. Fai clic su `Blockchain` nel pannello di navigazione di sinistra per individuare il tile etichettato `ibm-blockchain-platform-prod` o `ibm-blockchain-platform-dev` se hai scaricato la Community edition. Fai clic sul tile per aprirlo e per visualizzare un file Readme che include le informazioni sull'installazione e la configurazione del grafico Helm.
 3. Fai clic sulla scheda **Configurazione** all'inizio del pannello oppure fai clic sul pulsante **Configura** nell'angolo in basso a destra.
-4. Specifica i valori per i [Parametri di configurazione generali](#orderer-global-parameters) e accetta il contratto di licenza.
-5. Apri la forma a triangolo `Tutti i parametri` e specifica il valore per i [Parametri di configurazione globali](#orderer-global-parameters).
-6. Scorri fino alla sezione **Configurazione dell'ordinante**. Seleziona la casella di spunta `Installa ordinante` e completa le [impostazioni di configurazione](#orderer-parameters) per l'ordinante.
+4. Specifica i valori per i [Parametri di configurazione generali](/docs/services/blockchain/howto/orderer_deploy_icp.html#icp-orderer-configuration-parms) e accetta il contratto di licenza.
+5. Apri la forma a triangolo `Tutti i parametri` e specifica il valore per i [Parametri di configurazione globali](/docs/services/blockchain/howto/orderer_deploy_icp.html#icp-orderer-deploy-global-parameters).
+6. Scorri fino alla sezione **Configurazione dell'ordinante**. Seleziona la casella di spunta `Installa ordinante` e completa le [impostazioni di configurazione](/docs/services/blockchain/howto/orderer_deploy_icp.html#icp-orderer-deploy-parameters) per l'ordinante.
 7. Fai clic su **Installa**.
 
 
@@ -147,22 +148,22 @@ Questo comando deve essere eseguito sul sistema da cui viene fornito il file sys
 La seguente tabella elenca i parametri configurabili di {{site.data.keyword.blockchainfull_notm}} Platform, **specifici per il componente ordinante** e i relativi valori predefiniti. **Anche se l'IU del grafico Helm indica che non è necessaria dell'altra configurazione, devi immettere alcuni parametri per distribuire un ordinante.**
 
 #### Parametri di configurazione generali e globali
-{: #orderer-global-parameters}
+{: #icp-orderer-deploy-global-parameters}
 
 |  Parametro     | Descrizione    | Valore predefinito  | Obbligatorio |
 | --------------|-----------------|-------|------- |
-| `Helm release name`| Il nome della tua release di helm. Deve iniziare con una lettera minuscola e terminare con un qualsiasi carattere alfanumerico, deve contenere solo trattini e caratteri alfanumerici minuscoli. Devi utilizzare un nome della release Helm univoco ogni volta che tenti di installare un componente. **Importante:** questo valore deve corrispondere a quello utilizzato per generare il 'nome host del servizio' per il campo "hosts" nel tuo [file del segreto JSON.](#orderer-config-file) | nessuno | sì  |
+| `Helm release name`| Il nome della tua release di helm. Deve iniziare con una lettera minuscola e terminare con un qualsiasi carattere alfanumerico, deve contenere solo trattini e caratteri alfanumerici minuscoli. Devi utilizzare un nome della release Helm univoco ogni volta che tenti di installare un componente. **Importante:** questo valore deve corrispondere a quello utilizzato per generare il 'nome host del servizio' per il campo "hosts" nel tuo [file del segreto JSON.](/docs/services/blockchain/howto/orderer_deploy_icp.html#icp-orderer-deploy-config-file) | nessuno | sì  |
 | `Target namespace`| Scegli lo spazio dei nomi Kubernetes per installare il grafico Helm. | nessuno | sì |
 |**Configurazione globale**| Parametri che si applicano a tutti i componenti nel grafico Helm.|||
 | `Service account name`| Immetti il nome dell'[account del servizio ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/) che utilizzerai per eseguire il pod. | valore predefinito | no |
 
 #### Parametri di configurazione dell'ordinante
-{: #orderer-parameters}
+{: #icp-orderer-deploy-parameters}
 
 |  Parametro     | Descrizione    | Valore predefinito  | Obbligatorio |
 | --------------|-----------------|-------|------- |
 | `Install Orderer`| Seleziona per installare un ordinante. | non selezionato | sì, se vuoi distribuire un ordinante |
-| `Orderer worker node architecture`| Seleziona la tua architettura del nodo di lavoro ICP (AMD64 o S390X). | Architettura rilevata automaticamente in base al tuo nodo master | sì |
+| `Orderer worker node architecture`| Seleziona la tua architettura del nodo di lavoro {{site.data.keyword.cloud_notm}} Private (AMD64 o S390X). | Architettura rilevata automaticamente in base al tuo nodo master | sì |
 | `Orderer configuration`| Puoi personalizzare la configurazione dell'ordinante incollando il tuo file di configurazione `orderer.yaml` in questo campo. Per vedere un file `orderer.yaml` di esempio, consulta [`orderer.yaml` sample config ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://github.com/hyperledger/fabric/blob/release-1.2/sampleconfig/orderer.yaml) **Solo per utenti esperti**. | nessuno | no |
 | `Organization MSP secret (Required)`| Specifica il nome dell'oggetto segreto che contiene le chiavi e i certificati MSP dell'organizzazione. | nessuno | sì |
 | `Orderer data persistence enabled` | I dati saranno disponibili al riavvio del contenitore. Se non selezionato, tutti i dati andranno persi in caso di failover o di riavvio del pod. | verificato | no |
@@ -172,7 +173,7 @@ La seguente tabella elenca i parametri configurabili di {{site.data.keyword.bloc
 | `Orderer consensus type`| Il tipo di consenso del servizio ordini. | SOLO | sì |
 | `Orderer organization name`| Specifica il nome che vorresti utilizzare per l'organizzazione dell'ordinante. Se pensi anche di distribuire i peer, assicurati di utilizzare un nome diverso rispetto a quello che fornirai ai tuoi peer. Ad esempio, fornisci alla tua organizzazione dell'ordinante un nome come `ordererOrg` | nessuno | sì |
 | `Orderer Org MSP ID`| Specifica il nome che vuoi utilizzare per l'ID MSP dell'organizzazione dell'ordinante. Deve essere lo stesso nome che dai alla tua organizzazione dell'ordinante e sarà impostato come una variabile di ambiente dal processo di distribuzione. Prendi nota di questo valore perché dovrai utilizzarlo successivamente. | nessuno | sì |
-| `Orderer storage class name`| Specifica un nome della classe di archiviazione per l'ordinante. | nessuno | Dipende dal modo in cui viene configurato il cluster ICP. Verifica con il tuo amministratore del cluster |
+| `Orderer storage class name`| Specifica un nome della classe di archiviazione per l'ordinante. | nessuno | Dipende dal modo in cui viene configurato il cluster {{site.data.keyword.cloud_notm}} Private. Verifica con il tuo amministratore del cluster |
 | `Orderer existing volume claim`| Specifica il nome di un'attestazione di volume esistente e lascia vuoti tutti gli altri campi. | nessuno | no |
 | `Orderer selector label`| [Etichetta del selettore ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) per la tua PVC. | nessuno | no |
 | `Orderer selector value`| [Valore del selettore ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) per la tua PVC. | nessuno | no |
@@ -185,7 +186,7 @@ La seguente tabella elenca i parametri configurabili di {{site.data.keyword.bloc
 | `Orderer memory limit`| Specifica la quantità massima di memoria da assegnare all'ordinante. | 2Gi | sì |
 
 ### Utilizzo della riga di comando Helm per installare la release Helm
-{: #icp-helm-cli}
+{: #icp-orderer-deploy-helm-cli}
 
 In alternativa, puoi utilizzare la CLI Helm per installare la release Helm. Prima di eseguire il comando `helm install`, assicurati di [aggiungere il repository Helm del tuo cluster all'ambiente CLI Helm ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_int_helm_repo_to_cli.html "Adding the internal Helm repository to Helm CLI").
 
@@ -215,13 +216,14 @@ helm install --name jnchart2 mycluster/ibm-blockchain-platform \
 --tls
 ```
 
-Puoi creare un nuovo file `yaml` modificando il `values.yaml` incluso nel file di archivio scaricato, che include tutti i parametri necessari con le rispettive impostazioni. 
+Puoi creare un nuovo file `yaml` modificando il `values.yaml` incluso nel file di archivio scaricato, che include tutti i parametri necessari con le rispettive impostazioni.
 
 ## Verifica dell'installazione dell'ordinante
+{: #icp-orderer-deploy-verify-install}
 
-Una volta che hai terminato il tuo lavoro con i parametri di configurazione, fai clic sul pulsante **Installa** e sul pulsante **Visualizza release Helm** per visualizzare la tua distribuzione. Se l'azione è stata eseguita correttamente, dovresti vedere il valore 1 nei campi `DESIRED`, `CURRENT`, `UP TO DATE` e `AVAILABLE` nella tabella Distribuzione. Potresti dover fare clic su Aggiorna e attendere l'aggiornamento della tabella. Puoi anche trovare la tabella Distribuzione facendo clic sull'icona **Menu** nell'angolo in alto a sinistra nella console ICP. Dall'elenco di menu, fai clic su **Workload** e poi su **Release Helm**.
+Una volta che hai terminato il tuo lavoro con i parametri di configurazione, fai clic sul pulsante **Installa** e sul pulsante **Visualizza release Helm** per visualizzare la tua distribuzione. Se l'azione è stata eseguita correttamente, dovresti vedere il valore 1 nei campi `DESIRED`, `CURRENT`, `UP TO DATE` e `AVAILABLE` nella tabella Distribuzione. Potresti dover fare clic su Aggiorna e attendere l'aggiornamento della tabella. Puoi anche trovare la tabella Distribuzione facendo clic sull'icona **Menu** nell'angolo in alto a sinistra nella console {{site.data.keyword.cloud_notm}} Private. Dall'elenco di menu, fai clic su **Workload** e poi su **Release Helm**.
 
 ## Visualizzazione dei log dell'ordinante
-{: #orderer-view-logs}
+{: #icp-orderer-deploy-view-logs}
 
-È possibile visualizzare i log del componente dalla riga di comando utilizzando i [`comandi della CLI kubectl`](/docs/services/blockchain/howto/orderer_operate.html#orderer-kubectl-configure) o tramite [Kibana ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.elastic.co/products/kibana "Your window into the Elastic Search"), che è incluso nel tuo cluster ICP. Per ulteriori informazioni, consulta queste [istruzioni per l'accesso ai log](/docs/services/blockchain/howto/orderer_operate.html#orderer-view-logs).
+È possibile visualizzare i log del componente dalla riga di comando utilizzando i [`comandi della CLI kubectl`](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-kubectl-configure) o tramite [Kibana ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.elastic.co/products/kibana "Your window into the Elastic Search"), che è incluso nel tuo cluster {{site.data.keyword.cloud_notm}} Private. Per ulteriori informazioni, consulta queste [istruzioni per l'accesso ai log](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-orderer-view-logs).

@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-09-27"
+  years: 2017, 2019
+lastupdated: "2019-02-08"
 
 ---
 
@@ -13,6 +13,7 @@ lastupdated: "2018-09-27"
 {:pre: .pre}
 
 # Criando ou atualizando um canal
+{: #ibp-create-channel}
 
 
 ***[Esta página é útil? Diga-nos.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
@@ -25,6 +26,8 @@ para privacidade de dados. Apenas membros do mesmo canal podem acessar os dados 
 Para garantir a segurança do canal, a política de atualização do canal é configurada para definir o número de operadores de canal que precisam concordar com a solicitação de criação ou atualização do canal antes de um canal ser criado ou atualizado.
 
 ## Criando um canal
+{: #ibp-create-channel-creating-a-channel}
+
 Clique no botão **Novo canal** na tela "Canais" de seu Monitor de Rede e conclua as etapas a seguir para enviar uma solicitação de criação de canal:
 1. Escolha um nome refletivo do objetivo de negócios do canal, inclua uma descrição, se desejar, e clique em **Avançar**. O nome do canal deve ser exclusivo em uma rede de Blockchain. Ele deve iniciar com uma letra e pode conter apenas caracteres minúsculos, números ou traços.
   ![Criar canal 1](../images/create_channel.png "Criar um painel de canal 1")
@@ -56,6 +59,8 @@ Em mercados de câmbio estrangeiros altamente regulados, para usar um exemplo, p
 Nesse caso, o terceiro confiável se tornaria o único "Operador" para um canal e designaria outros membros como "Gravadores". Isso daria ao terceiro a autoridade exclusiva para editar o canal enquanto ainda fornece aos dois bancos a capacidade de chamar transações. Um canal gerenciado "somente leitura" também poderia ser criado configurando outros membros como "Leitores".
 
 ## Atualizando um canal
+{: #ibp-create-channel-updating-a-channel}
+
 Se você desejar modificar a configuração de um canal, por exemplo, incluir ou remover membros do canal ou mudar a política de atualização do canal, será possível enviar uma solicitação de atualização do canal. Na tela "Canais" de seu Monitor de rede, localize o canal que você deseja modificar e selecione **Editar canal** na lista suspensa sob o cabeçalho **Ação**. Navegue pelos painéis para fazer mudanças nas entidades desejadas e clique em **Enviar solicitação** para iniciar uma solicitação de atualização do canal.
 
 Todos os membros do canal receberão notificações por e-mail na solicitação de atualização do canal:
@@ -72,5 +77,5 @@ Todos os membros do canal receberão notificações por e-mail na solicitação 
 
 Quando operadores de canal suficientes concordarem com a solicitação, qualquer membro do canal poderá clicar no botão **Enviar solicitação** e o canal será atualizado. Todos os membros do canal poderão localizar o canal atualizado na tela "Canais" do Monitor de rede.
 
-**Importante:**
-As políticas de endosso não são atualizadas automaticamente quando novas organizações se associam ao canal e instalam o chaincode. Por exemplo, se a política requerer duas de cinco organizações para endossar uma transação, a política não será atualizada para requerer duas de seis organizações quando uma nova organização se associar ao canal. Em vez disso, a nova organização não será listada na política e eles não serão capazes de endossar transações. É possível incluir uma nova organização em uma política de endosso [atualizando o chaincode relevante](/docs/services/blockchain/howto/install_instantiate_chaincode.html#updating-a-chaincode). Para obter mais informações, consulte [Especificando políticas de endosso do chaincode](/docs/services/blockchain/howto/install_instantiate_chaincode.html#endorsement-policy).
+As políticas de endosso não são atualizadas automaticamente quando novas organizações se associam ao canal e instalam o chaincode. Por exemplo, se a política requerer duas de cinco organizações para endossar uma transação, a política não será atualizada para requerer duas de seis organizações quando uma nova organização se associar ao canal. Em vez disso, a nova organização não será listada na política e eles não serão capazes de endossar transações. É possível incluir uma nova organização em uma política de endosso [atualizando o chaincode relevante](/docs/services/blockchain/howto/install_instantiate_chaincode.html#install-instantiate-chaincode-update-cc). Para obter mais informações, consulte [Especificando políticas de endosso do chaincode](/docs/services/blockchain/howto/install_instantiate_chaincode.html#install-instantiate-chaincode-endorsement-policy).
+{:important}

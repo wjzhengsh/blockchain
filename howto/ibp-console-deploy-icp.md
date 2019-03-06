@@ -2,7 +2,9 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -17,8 +19,6 @@ lastupdated: "2019-02-08"
 
 # Deploying {{site.data.keyword.blockchainfull_notm}} Platform console on {{site.data.keyword.cloud_notm}} Private
 {: #ibp-console-deploy-icp}
-
-***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 These instructions describe how to deploy an {{site.data.keyword.blockchainfull}} Platform console in your own infrastructure through {{site.data.keyword.cloud_notm}} Private. You do not have to deploy the console in the same environment as your other blockchain components.
 {:shortdesc}
@@ -72,13 +72,13 @@ You also need to install or configure the following dependencies before you depl
 ### Registering with App ID service
 {: #ibp-console-icp-prereq-app-id}
 
-[App ID ![External link icon](../images/external_link.svg "External link icon")](https://console.bluemix.net/docs/services/appid/index.html#gettingstarted "App ID") is a user management service provided by {{site.data.keyword.cloud_notm}}. The {{site.data.keyword.blockchainfull_notm}} Platform console uses the App ID service to manage who will be able to use the dashboard and operate your blockchain network. This allows users of the UI to use credentials issued by your own organization or by third parties such as Google or Facebook, without them needing to have IBM ID's. Only the user who deploys the console will need an {{site.data.keyword.IBM_notm}} ID to register with the service.
+[App ID ![External link icon](../images/external_link.svg "External link icon")](https://cloud.ibm.com/docs/services/appid/index.html#gettingstarted "App ID") is a user management service provided by {{site.data.keyword.cloud_notm}}. The {{site.data.keyword.blockchainfull_notm}} Platform console uses the App ID service to manage who will be able to use the dashboard and operate your blockchain network. This allows users of the UI to use credentials issued by your own organization or by third parties such as Google or Facebook, without them needing to have IBM ID's. Only the user who deploys the console will need an {{site.data.keyword.IBM_notm}} ID to register with the service.
 
 Before you deploy the console, you need to get an IBM ID to perform an one-time registration with the App ID Cloud Directory. Then, you need to fetch the APP ID service credentials to pass to the console. Use the following steps to register with the service and get your service credentials.
 
 1. If you do not already have one, you need to create an [{{site.data.keyword.IBM_notm}} ID ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/account/reg/us-en/signup?formid=urx-19776&target=https%3A%2F%2Fidaas.iam.ibm.com%2Fidaas%2Foidc%2Fendpoint%2Fdefault%2Fauthorize%3Fresponse_type%3Dcode%26client_id%3Dmyibmlondonprod%26state%3DbfAvZHoYtGHytcifRjeE%26redirect_uri%3Dhttps%3A%2F%2Fmyibm.ibm.com%2Fmymga%2Foidcclient%2Fredirect%2Famapp-runtime-BlueIDProd%26scope%3Dopenid).
 
-2. Use your {{site.data.keyword.IBM_notm}} ID to log in or sign up for [{{site.data.keyword.cloud_notm}} ![External link icon](../images/external_link.svg "External link icon")](https://console.bluemix.net/catalog/services/app-id "IBM Cloud App ID"). Then, go to the [App ID ![External link icon](../images/external_link.svg "External link icon")](https://console.bluemix.net/catalog/services/app-id "IBM Cloud App ID") service in the Catalog. Select the `Lite` plan or the `Graduated tier` depending on your service needs. Then, click the **Create** button to launch the "Welcome" screen.
+2. Use your {{site.data.keyword.IBM_notm}} ID to log in or sign up for [{{site.data.keyword.cloud_notm}} ![External link icon](../images/external_link.svg "External link icon")](https://cloud.ibm.com/catalog/services/app-id  "IBM Cloud App ID"). Then, go to the [App ID ![External link icon](../images/external_link.svg "External link icon")](https://cloud.ibm.com/catalog/services/app-id  "IBM Cloud App ID") service in the Catalog. Select the `Lite` plan or the `Graduated tier` depending on your service needs. Then, click the **Create** button to launch the "Welcome" screen.
 
 3. When you are in the "Welcome" screen, Click the **Manage** link on the left navigation panel to view or update the preferred identity providers. These can be third party providers, such as Google, or your organizations own identity service.
 
@@ -180,7 +180,7 @@ In the client machine where you want to access the console, add entries in `/etc
 3. In your web browser, access the console with the hostname that you configured in {{site.data.keyword.cloud_notm}} Private. For the first login, you will see the console setup panels.
   1. On the **Authentication** tab, enter your App ID.
   2. On the **Configuration** tab, paste the App ID service credentials that you copied in [Step One: Register with App ID service](/docs/services/blockchain/howto/ibp-console-deploy-icp.html#ibp-console-icp-prereq-app-id).
-  3. On the **Add Users** tab, specify a list of email addresses of `Admin` and `General` users that are authorized to the console. The email domains are restricted to the set of identity providers, such as corporate, Google or Facebook, which are selected when the App ID service was registered in {{site.data.keyword.cloud_notm}}.
+  3. On the **Add Users** tab, specify a list of email addresses of `Admin` and `General` users that are authorized to the console. The email domains are restricted to the set of identity providers, such as your corporate, Google, or Facebook, which are selected when the App ID service was registered in {{site.data.keyword.cloud_notm}}.
     - The `Admin` role is required to be able to add new users or remove existing users from the console authorization list.   **Tip:** If you will be the person administering the console, remember to include your own email address in the list.
     - The `General` role allows users **view only** access to the components in the console.
 

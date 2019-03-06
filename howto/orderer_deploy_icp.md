@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -14,8 +16,6 @@ lastupdated: "2019-02-08"
 
 # Deploying an orderer in {{site.data.keyword.cloud_notm}} Private
 {: #icp-orderer-deploy}
-
-***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 Orderers authenticate clients, order transactions, and broadcast transactions in a blockchain network with the orderer component. For more information about orderers and the role that they play in a blockchain network, see [Overview on blockchain components](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview).
 {:shortdesc}

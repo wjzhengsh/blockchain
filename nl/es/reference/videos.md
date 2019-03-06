@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2018-08-31"
+lastupdated: "2019-02-08"
 
 ---
 
@@ -23,7 +23,7 @@ lastupdated: "2018-08-31"
 ***[¿Le resulta útil esta página? Indíquenos su opinión.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 
-Vea la siguiente serie de vídeos para obtener más información sobre la plataforma {{site.data.keyword.blockchainfull}} y sobre cómo empezar a desarrollar una red blockchain.
+Vea la siguiente serie de vídeos para obtener más información sobre {{site.data.keyword.blockchainfull}} Platform y sobre cómo empezar a desarrollar una red blockchain.
 
 **Nota**: la serie de vídeos está en una lista de reproducción y los vídeos se reproducen continuamente en el marco de vídeo de abajo. También puede pulsar el icono de menú en la esquina superior izquierda del vídeo para abrir la lista de reproducción y cambiar a otro vídeo.
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-31"
+lastupdated: "2018-12-08"
 ---
 
 {:new_window: target="_blank"}
@@ -15,6 +15,7 @@ lastupdated: "2018-08-31"
 # Hyperledger Composer
 {: #hyperledger-composer}
 
+**IBM empfiehlt die Verwendung von Hyperledger Composer ausschließlich für Demonstrationszwecke und Machbarkeitsnachweise. IBM bietet keinen Support für Netze, die Hyperledger Composer in Produktionsumgebungen nutzen, inklusive Composer-Befehlszeilenschnittstelle, JavaScript-APIs, REST-Server und Web Playground.**
 
 ***[Ist diese Seite hilfreich? Teilen Sie uns Ihre Meinung mit.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
@@ -29,7 +30,7 @@ Hyperledger Composer besteht aus einer Laufzeit, einer Befehlszeilenschnittstell
 
 Mit Hyperledger Composer können Sie schnell Ihr aktuelles Unternehmensnetz modellieren, das Ihre vorhandenen Assets und die zugehörigen Transaktionen enthält. Als Assets werden hier materielle oder immaterielle Güter, Services oder Liegenschaften bezeichnet. In Ihrem Unternehmensnetzmodell definieren Sie die Transaktionen, die mit Assets interagieren. Unternehmensnetze können darüber hinaus die Teilnehmer einschließen, die mit ihnen interagieren und die über mehrere Unternehmensnetze hinweg jeweils einer eindeutigen Identität zugeordnet werden können.
 
-Weitere Informationen zur Erstellung von Unternehmensnetzen finden Sie unter [Unternehmensnetze entwickeln](/docs/services/blockchain/develop.html) oder in der [Hyperledger Composer-Dokumentation ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://hyperledger.github.io/composer/latest/introduction/introduction.html).
+Weitere Informationen zur Erstellung von Unternehmensnetzen finden Sie unter [Unternehmensnetze entwickeln](../develop.html) oder in der [Hyperledger Composer-Dokumentation ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://hyperledger.github.io/composer/latest/introduction/introduction.html).
 
 ## Abfragen
 

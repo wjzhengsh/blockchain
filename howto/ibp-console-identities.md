@@ -2,7 +2,9 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -17,9 +19,9 @@ lastupdated: "2019-02-08"
 # Creating and managing identities
 {: #ibp-console-identities}
 
-***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+The nodes of the {{site.data.keyword.blockchainfull_notm}} Platform are based on Hyperledger Fabric and builds permissioned blockchain networks. This means that all participants of the blockchain consortium need to have identities that are continuously verified by Public Key Infrastructure. The {{site.data.keyword.blockchainfull_notm}} Platform console allows you to create these identities by using your organization's Certificate Authorities (CAs). You need to store these identities in your console wallet so you can use them to operate your network.
 
-The nodes of the {{site.data.keyword.blockchainfull_notm}} Platform are based on Hyperledger Fabric and builds permissioned blockchain networks. This means that all participants of the blockchain consortium need to have identities that are continuously verified by Public Key Infrastructure. The {{site.data.keyword.blockchainfull_notm}} Platform console allows you to create these identities by your organization's Certificate Authorities (CAs). You can then use the console wallet to store these identities and use them to operate your network.
+**Target audience:** This topic is designed for network operators who are responsible for creating, monitoring, and managing the blockchain network.
 
 ## Managing Certificate Authorities
 {: #ibp-console-identities-manage-ca}
@@ -42,7 +44,7 @@ You can use the console to create these identities by using the [registration pr
 
 Before working with identities, you need to set the identity of the CA admin, either by using the admin identity created during the creation of the CA or by establishing a new one. Open the CA on the **Nodes** tab. The enroll ID of the currently active identity is visible next to the CA name at the top of the panel. You can use that admin identity to create other identities by using the **Register** button to register identities that will become org admins and node identities, or to use the **Enroll** button to generate an identity and export it to the wallet.
 
-To set an identity as a CA admin, click the **Settings** icon and then click **Set Identity** in the slider. You can specify an identity that exists in the wallet using the **Existing identity** tab. Alternatively, you can use the **New identity** tab to either paste certificates for the admin, or to upload a JSON file containing the certificates.
+To switch to a different identity to use as the CA admin, click the **Settings** icon and then click **Set Identity** in the slider. You can specify an identity that exists in the wallet using the **Existing identity** tab. Alternatively, you can use the **New identity** tab to either paste certificates for a new admin, or to upload a JSON file containing the certificates.
 
 Not all identities have the ability to register new users. For more information, including how to establish an additional CA admin, see [Creating new CA admins](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-ca-admin).
 {: note}
@@ -81,24 +83,26 @@ On Side panel 4, click the **Add Attribute** button. Provide an **attribute name
 ## Enrolling an identity
 {: #ibp-console-identities-enroll}
 
-You can generate the public and private key for each identity that has been registered with your CA. You can generate keys for one of your admin identities when you [create your organization MSP](/docs/services/blockchain/howto/ibp-console-organizations.html#console-organizations-create-msp), and provide additional certificates to the MSP for other admins that have already been enrolled using your CA.
+You can generate the public certificate and private key for each identity that has been registered with your CA. If you have registered additional admin identities with your CA, you can generate the keys for the admin identity and then additionally include it when you [create your organization MSP](/docs/services/blockchain/howto/ibp-console-organizations.html#console-organizations-create-msp).
 
-Be sure that you have [set the identity](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-ca-identity) that the CA uses to create the keys. After setting the identity, you can click the **Enroll Identity** button, and displays the keys and display them in a side panel in base64 format.
-  - The public key is displayed in the **Certificate** field. This certificate is also referred to as your enrollment certificate, signing certificate, or signCert.
-  - You can find the corresponding private key in the **Private Key** field.
+Before enrolling an identity, you need to [set the identity](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-ca-identity) to be able to operate the CA. Normally you would set it to the admin identity that was specified when you created the CA. You can confirm your CA is set to that identity by examining the CA details page and viewing the enroll ID of the currently active identity next to the CA name. After confirming the identity is set to your admin identity, click  **Enroll identity** on the user's overflow menu to generate the certificate and key for any user registered with the CA.
 
-Each key pair created by clicking **Enroll Identity** is only generated once and not stored by the console or your browser. Clicking the **Enroll Identity** button will also be counted against the maximum number of enrollments that you have set for the CA admin. After enrollment, you should store the key pair by downloading the identity to your local file system or adding it to your console wallet. Enter a new name for this public and private key pair into the **Name** field in order to retrieve them.
-  - Click **Export Identity** to download these certificates to your local file system in JSON format.
-  - Click **Add Identity to Wallet** to add these certificates to the console wallet. You can then find the name and keys of this identity in a new tile in your [wallet tab](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-wallet)
+- Enter the user's `Enroll secret`.
+- On the next step, the generated keys are displayed.
+  - The public key is displayed in the **Certificate** field. This certificate is also referred to as your enrollment certificate, signing certificate, or signCert. You need to export the signCert to a file on your local system so it can be used when creating a client application with the VSCode extension.
+  - You can find the corresponding private key in the **Private Key** field. Again, you need to export the private key to your local system for use with a client application created with the VSCode extension.
+  - The certificate and private key created by clicking **Enroll Identity** is only generated once and not stored by the console or your browser. Clicking the **Enroll Identity** button will also be counted against the maximum number of enrollments that you have set for the CA admin. As part of this enroll enrollment, you should store the key pair by downloading the identity to your local file system or adding it to your console wallet. Enter a new name for this public and private key pair into the **Name** field in order to retrieve them.
+- **Important:** Click **Export identity** to download the certificate and key to your local file system  as a single file in JSON format. You are responsible for securing and managing these keys.
+- Click **Add identity to wallet** to add these certificates to the console wallet. You can then find the name and keys of this identity in a new tile in your [wallet tab](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-wallet)
 
-You can also use the Fabric CA client or Fabric SDKs to enroll the identities you have created in the console. The console provides you with all of the information that will need to compete these steps. Ensure you have saved the **Enroll ID** and **Enroll Secret** that you specified during registration.
+You can also use the Fabric CA client or Fabric SDKs to enroll the identities you have created in the console. The console provides you with all of the information that will need to compete these steps. Ensure you have saved the **Enroll ID** and **Enroll secret** that you specified during registration.
 
 ## Using your TLS CA
 {: #ibp-console-identities-tlsca}
 
 The communication within your network is secured by TLS certificates. TLS encrypts the communication between your nodes and between your nodes and your applications. Using TLS prevents attackers from disrupting the communication between your nodes or reading the transactions submitted from your applications. The keys and certificates used for TLS are different than the certificates used to sign and validate your transactions and are issued by a separate Certificate Authority.
 
-Each CA created by the {{site.data.keyword.blockchainfull_notm}} Platform console contains a root CA and a TLS CA. You can view both of these CAs under the same display name in the nodes tab of your console. Click your CA overview panel and then click **TLS Certificate Authority** to operate your TLS CA. Your TLS CA has the [same registration](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-register) and [enrollment process](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-enroll) as your root CA. Both CAs are deployed with the same CA admin ID and secret.
+Each CA created by the {{site.data.keyword.blockchainfull_notm}} Platform console contains a root CA and a TLS CA. You can view both of these CAs under the same display name in the nodes tab of your console. Click on your CA overview panel and then click **TLS Certificate Authority** to operate your TLS CA. Your TLS CA has the [same registration](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-register) and [enrollment process](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-enroll) as your root CA. Both CAs are deployed with the same CA admin ID and secret.
 
 Each peer or orderer node that you deploy needs to generate a public TLS certificate. When creating a node using the console, you are asked to provide an enroll ID and secret of an identity registered with your TLS CA. The [Build your network tutorial](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network) uses the CA admin identity for convenience. However, it is a best practice to register a unique identity with your TLS CA for each node. The node will use this identity to generate its TLS certificate during deployment. This certificate will be required by any application that needs to communicate with the orderer or peer. You can find the TLS certificate of a node by navigating to the node overview panel and clicking Settings. You can also find the TLS Certs of your peers and orderers in the connection profile that can be downloaded [from the smart contracts tab](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-connect-to-SDK).
 

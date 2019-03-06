@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -18,14 +20,12 @@ lastupdated: "2019-02-08"
 # About Starter Plan
 {: #starter-plan-about}
 
-***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 {{site.data.keyword.blockchainfull}} Platform Starter Plan is an entry level option that enables organizations to simulate multi-organization blockchain networks, quickly develop applications, and work with sample smart contracts and business networks. It also boasts the same UI experience as other membership options, helping to eliminate any learning curve. New Starter Plan networks that are created after October 04, 2018 are built on Hyperledger Fabric V1.2.1. Older Starter Plan networks remain at Fabric V1.1.0 level.
 {:shortdesc}
 
 **Starter Plan** is an environment for those who want to get started developing blockchain networks or start learning about blockchain technology. You can use Starter Plan as a development or test environment that will allow you to start small and scale your network's membership or transaction volume before moving to a production environment.
 
- To deploy a Starter Plan network, sign up now for your [Starter membership ![External link icon](images/external_link.svg "External link icon")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps) on {{site.data.keyword.cloud_notm}}. When you are ready to start developing your network, visit [getting started with Starter Plan](/docs/services/blockchain/get_start_starter_plan.html#getting-started-with-starter-plan).
+ To deploy a Starter Plan network, sign up now for your [Starter membership ![External link icon](images/external_link.svg "External link icon")](https://cloud.ibm.com/catalog/services/ibm-blockchain-5-prod) on {{site.data.keyword.cloud_notm}}. When you are ready to start developing your network, visit [getting started with Starter Plan](/docs/services/blockchain/get_start_starter_plan.html#getting-started-with-starter-plan).
 
 
 **Notes:**

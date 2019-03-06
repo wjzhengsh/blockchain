@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-09-27"
+  years: 2017, 2019
+lastupdated: "2019-02-08"
 
 ---
 
@@ -13,6 +13,7 @@ lastupdated: "2018-09-27"
 {:pre: .pre}
 
 # Creazione o aggiornamento di un canale
+{: #ibp-create-channel}
 
 
 ***[Questa pagina è utile? Faccelo sapere.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
@@ -25,6 +26,8 @@ la privacy dei dati. Solo i membri dello stesso canale possono accedere ai dati 
 Per garantire la sicurezza del canale, la politica di aggiornamento del canale è configurata per definire il numero di operatori del canale che devono concordare sulla richiesta di creazione o di aggiornamento del canale prima che un canale venga creato o aggiornato.
 
 ## Creazione di un canale
+{: #ibp-create-channel-creating-a-channel}
+
 Fai clic sul pulsante **Nuovo canale** nella schermata "Canali" del tuo Monitoraggio della rete e completa la seguente procedura per inoltrare una richiesta di creazione di un canale.
 1. Scegli un nome che rifletta l'obiettivo di business del canale, aggiungi una descrizione facoltativa e fai clic su **Avanti**. Il nome del canale deve essere univoco in una rete Blockchain. Deve iniziare con una lettera e può contenere solo caratteri minuscoli, numeri, o trattini.
 ![Creazione di un canale 1](../images/create_channel.png "Creazione di un canale pannello 1")
@@ -56,6 +59,8 @@ In mercati di cambio di valute estere altamente regolamentati, per usare un esem
 In questo caso, la terza parte attendibile renderebbe se stessa il solo "Operatore" per un canale e assegnerebbe gli altri membri come "Scrittori". Ciò darebbe alla terza parte l'autorizzazione esclusiva a modificare il canale concedendo al tempo stesso alle due banche la possibilità di richiamare delle transazioni. Potrebbe essere creato anche un canale di "sola lettura" impostando gli altri membri come "Lettori".
 
 ## Aggiornamento di un canale
+{: #ibp-create-channel-updating-a-channel}
+
 Se vuoi modificare la configurazione di un canale, ad esempio aggiungere o rimuovere dei membri del canale o modificare la politica di aggiornamento del canale, puoi inoltrare una richiesta di aggiornamento del canale. Nella schermata "Canali" del tuo Monitoraggio della rete, individua il canale che vuoi modificare e seleziona **Modifica canale** dall'elenco a discesa sotto l'intestazione **Azione**. Spostati tra i vari pannelli per apportare le modifiche alle entità desiderate e fai clic su **Invia richiesta** per avviare una richiesta di aggiornamento del canale.
 
 Tutti i membri del canale riceveranno notifiche email relative alla richiesta di aggiornamento del canale:
@@ -72,5 +77,5 @@ Tutti i membri del canale riceveranno notifiche email relative alla richiesta di
 
 Quando un numero sufficiente di operatori del canale concorda sulla richiesta, uno qualsiasi dei membri del canale può fare clic sul pulsante **Invia richiesta** e il canale viene aggiornato. Tutti i membri del canale possono trovare il canale aggiornato nella schermata "Canali" del Monitoraggio della rete.
 
-**Importante:**
-Le politiche di approvazione non vengono aggiornate automaticamente quando delle nuove organizzazioni si uniscono al canale e installano il chaincode. Ad esempio, se la politica richiede due delle cinque organizzazioni per approvare una transazione, la politica non sarà aggiornata per richiedere due delle sei organizzazioni quando una nuova organizzazione si unisce al canale. Invece, la nuova organizzazione non sarà elencata sulla politica e non potrà approvare le transazioni. Puoi aggiungere una nuova organizzazione a una politica di approvazione [aggiornando il chaincode pertinente](/docs/services/blockchain/howto/install_instantiate_chaincode.html#updating-a-chaincode). Per ulteriori informazioni, vedi [Specifica delle politiche di approvazione del chaincode](/docs/services/blockchain/howto/install_instantiate_chaincode.html#endorsement-policy).
+Le politiche di approvazione non vengono aggiornate automaticamente quando delle nuove organizzazioni si uniscono al canale e installano il chaincode. Ad esempio, se la politica richiede due delle cinque organizzazioni per approvare una transazione, la politica non sarà aggiornata per richiedere due delle sei organizzazioni quando una nuova organizzazione si unisce al canale. Invece, la nuova organizzazione non sarà elencata sulla politica e non potrà approvare le transazioni. Puoi aggiungere una nuova organizzazione a una politica di approvazione [aggiornando il chaincode pertinente](/docs/services/blockchain/howto/install_instantiate_chaincode.html#install-instantiate-chaincode-update-cc). Per ulteriori informazioni, vedi [Specifica delle politiche di approvazione del chaincode](/docs/services/blockchain/howto/install_instantiate_chaincode.html#install-instantiate-chaincode-endorsement-policy).
+{:important}

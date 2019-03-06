@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-08-31"
+  years: 2018,2019
+lastupdated: "2019-02-08"
 
 ---
 
@@ -13,6 +13,7 @@ lastupdated: "2018-08-31"
 {:pre: .pre}
 
 # Interazione con la rete utilizzando le API Swagger
+{: #ibp-swagger}
 
 
 ***[Questa pagina è utile? Faccelo sapere.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
@@ -26,8 +27,7 @@ Prima di iniziare, devi creare un'istanza del servizio [{{site.data.keyword.bloc
 
 
 ## Richiamo delle credenziali di rete
-
-{: #retrieving-network-credentials}
+{: #ibp-swagger-retrieving-network-credentials}
 
 Accedi al Monitoraggio della rete della tua rete Blockchain e apri la schermata "API" dal navigatore a sinistra. Puoi visualizzare le tue credenziali di rete per le API REST. Autorizzerai successivamente le API utilizzando i valori di "key" e "secret" qui visualizzati ed eseguirai le API con il "network_id" come parametro. Fai clic su **Show secret** per visualizzare il valore del campo segreto. Copia i valori dei campi key, secret e network_id, che puoi utilizzare successivamente nell'IU Swagger.
 
@@ -44,6 +44,7 @@ La **Figura 2** mostra come passare da un'organizzazione all'altra:
 
 
 ## Autorizzazione delle API Swagger
+{: #ibp-swagger-authorizing-swagger}
 
 Fai clic sul link **IU Swagger** nella schermata "API" per aprire l'IU Swagger.  
 <!-- remove this line because the link is different depending on if you are starter or enterprise plan
@@ -61,6 +62,7 @@ La **Figura 3** mostra il processo per autorizzare le API Swagger:
 
 
 ## Prova delle API
+{: #ibp-swagger-try-out}
 
 Fai clic sulla API REST che vuoi eseguire e fai clic sul pulsante **Provalo adesso**.
 
@@ -84,9 +86,14 @@ La **Figura 6** mostra il comando CURL, l'URL e il corpo della risposta della AP
 *Figura 6. Risposta della API*    
 
 ## Suggerimenti per la soluzione dei problemi
+{: #ibp-swagger-troubleshooting}
 
 ### 401 Non autorizzato  
-  Assicurati di disporre delle autorizzazioni necessarie per la API REST fornendo le tue credenziali di rete. Per ulteriori informazioni, vedi [Autorizzazione delle API Swagger](#authorizing-swagger-apis).
+{: #ibp-swagger-401}
+
+  Assicurati di disporre delle autorizzazioni necessarie per la API REST fornendo le tue credenziali di rete. Per ulteriori informazioni, vedi [Autorizzazione delle API Swagger](/docs/services/blockchain/howto/swagger_apis.html#ibp-swagger-authorizing-swagger).
 
 ### Errore 400: Richiesta non valida
+{: #ibp-swagger-400}
+
   Alcune API potrebbero prendere un argomento nel corpo della richiesta che funge da filtro per visualizzare i risultati solo per uno specifico peer. Nel corpo viene fornito un frammento di esempio che, se utilizzato, deve essere modificato per specificare il peer o l'elenco di peer su cui desiderare applicare il filtro. Per evitare questo errore, modificare il frammento per specificare un peer nella tua rete oppure rimuovere del tutto il frammento.

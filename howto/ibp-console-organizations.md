@@ -2,7 +2,9 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -15,11 +17,11 @@ lastupdated: "2019-02-08"
 # Managing organizations
 {: #ibp-console-organizations}
 
-***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 You can use the {{site.data.keyword.blockchainfull}} Platform console to create a formal organization definition known as a Membership Services Provider (MSP). Your organization's MSP definition allows other members of the blockchain consortium to verify the identity of your nodes and applications. Your MSP definition also contains your organization's admin certificates.
 
-You can use the console to manage which organizations are members of your network. The administrator of the ordering service can use the organizations tab to add members to the blockchain [consortium](/docs/services/blockchain/glossary.html#glossary-consortium). Members of the consortium can then use the console to add members to new or existing channels.
+You can also use the console to manage which organizations are members of your network. The administrator of the ordering service can use the organizations tab to add members to the blockchain [consortium](/docs/services/blockchain/glossary.html#glossary-consortium). Members of the consortium can then use the console to add members to new or existing channels.
+
+**Target audience:** This topic is designed for network operators who are responsible for creating, monitoring, and managing the blockchain network.
 
 ## Understanding MSPs
 {: #console-organizations-about-msp}
@@ -74,7 +76,7 @@ After you have selected your root CA, MSP ID, and created your admin certs, clic
 
 Only the orderer admin can add new organizations to the consortium. If you are the orderer admin, you will need to collect the MSP definitions of all the organizations who have been invited to the consortium and import the MSPs into the console. You can then add the MSPs to the ordering service, by using the orderer node.
 
-After an administrator creates an MSP definition, they can use the Organizations tab to download the MSP in JSON format to their local filesystem. They can then send you the MSP JSON file in an out of band operation. Navigate to the **Organizations** tab and use **Import MSP Definition** to import the MSP file into your console. Once an MSP definition is visible in the **Available organizations** section, you can then navigate to your orderer node to [add the organization to the consortium](docs/services/blockchain/howto/ibp-console-organizations.html#console-organizations-add-consortium).
+After an administrator creates an MSP definition, they can use the Organizations tab to download the MSP in JSON format to their local filesystem. They can then send you the MSP JSON file in an out of band operation. Navigate to the **Organizations** tab and use **Import MSP Definition** to import the MSP file into your console. Once an MSP definition is visible in the **Available organizations** section, you can then navigate to your orderer node to [add the organization to the consortium](/docs/services/blockchain/howto/ibp-console-organizations.html#console-organizations-add-consortium).
 
 
 ## Adding an organization to a consortium
@@ -82,16 +84,16 @@ After an administrator creates an MSP definition, they can use the Organizations
 
 The consortium of organizations is hosted by the ordering service.
 
-If you are the administrator of the ordering service, you can use the console to add an organization to the consortium. Navigate to the **Nodes** tab and click the ordering node. On the ordering node panel, under **Consortium members**, click **Add organization**. This will open a side panel that will allow you to select from the list of available MSP definitions that you have [imported into your organizations tab](/docs/services/blockchain/howto/ibp-console-organizations.html#console-organizations-import-msp). You can also use the **Upload JSON** option to import the MSP definition file created by another org directly.
+If you are the administrator of the ordering service, you can use the console to add an organization to the consortium. Navigate to the **Nodes** tab and click on the ordering node. On the ordering node panel, under **Consortium members**, click **Add organization**. This will open a side panel that will allow you to select from the list of available MSP definitions that you have [imported into your organizations tab](/docs/services/blockchain/howto/ibp-console-organizations.html#console-organizations-import-msp). You can also use the **Upload JSON** option to import the MSP definition file created by another org directly.
 
 ## Creating and editing a channel
 
-Once an organization has been added to the consortium, they can use the ordering service to create a new channel or be added to a channel. The information that allows you to participate in a channel, such joining your peers to the channel, instantiating smart contracts, and submitting transactions, is provided by using the MSP definitions.
+After an organization is added to the consortium, the organization can use the ordering service to create a new channel or can be added to an existing channel. The information that allows you to participate in a channel, such as joining your peers to the channel, instantiating smart contracts, and submitting transactions, is provided by using the MSP definitions.
 
-After an organization has been added to a consortium, they can create a channel by using the following steps:
+After your organization is added to a consortium, you can create a channel by using the following steps:
 
-1. Import the ordering node that hosts the consortium into their console. They do not need to be an administrator of the ordering node. But their console needs to have the orderer name and endpoint information.
-2. Import the MSPs of organizations they want to add to the new channel into their console using the organizations tab. **Note** that organizations need to be added to the consortium before they can be added to a channel.
-3. Navigate to the **Channels** tab and click **Create channel**. This will open a side panel that will allow you to specify the channel name, membership, and channel policies. You can add any organizations that have been added to the consortium to the new channel.
+1. Import the ordering node that hosts the consortium into your console. You do not need to be an administrator of the ordering node; but you need to provide the orderer node name and endpoint information in your console.
+2. Import the MSPs of organizations that you want to add to the new channel into your console in the **Organizations** tab. **Note** that organizations need to be added to the consortium before they can be added to a channel.
+3. Navigate to the **Channels** tab and click **Create channel**. This will open a side panel that allows you to specify the channel name, membership, and channel policies. You can add any organizations that have been added to the consortium to the new channel.
 
-For more information about these steps, see [creating a channel](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-create-channel1) in the Build a network tutorial.
+For more information about these steps, see [creating a channel](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-create-channel1) in the **Build a network** tutorial.

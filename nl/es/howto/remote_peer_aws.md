@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-11-27"
+  years: 2017, 2019
+lastupdated: "2019-02-08"
 
 ---
 
@@ -10,26 +10,38 @@ lastupdated: "2018-11-27"
 {:shortdesc: .shortdesc}
 {:screen: .screen}
 {:codeblock: .codeblock}
+{:note: .note}
+{:important: .important}
+{:tip: .tip}
 {:pre: .pre}
 
-# Despliegue de la plataforma {{site.data.keyword.blockchainfull_notm}} para AWS
+# Iniciación a {{site.data.keyword.blockchainfull_notm}} Platform para AWS
 {: #remote-peer-aws}
 
 
 ***[¿Le resulta útil esta página? Indíquenos su opinión.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 
-En estas instrucciones se describe cómo utilizar una plantilla de inicio rápido de Amazon Web Services (AWS) para crear un igual de la plataforma {{site.data.keyword.blockchainfull}} para AWS y, a continuación, conectarlo a una red en una plataforma {{site.data.keyword.blockchainfull_notm}}.
+En estas instrucciones se describe cómo utilizar una plantilla de inicio rápido de Amazon Web Services (AWS) para crear un igual de {{site.data.keyword.blockchainfull}} Platform para AWS y, a continuación, conectarlo a una red en una plataforma {{site.data.keyword.blockchainfull_notm}}.
 {:shortdesc}
 
 Para obtener más información sobre AWS, consulte el [documento de visión general de AWS ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://d1.awsstatic.com/whitepapers/aws-overview.pdf "Documento de visión general de AWS").
 
-Antes de desplegar iguales de la plataforma {{site.data.keyword.blockchainfull_notm}} para AWS, revise las [consideraciones de igual](/docs/services/blockchain/howto/remote_peer.html#remote-peer-limitations).
+{{site.data.keyword.blockchainfull_notm}} Platform para AWS permite que los iguales puedan aprovechar el perfil de conexión, las entidades emisoras de certificados (CA) de Hyperledger Fabric y el servicio de ordenación de una red existente del Plan inicial o empresarial en {{site.data.keyword.cloud_notm}} para procesar transacciones a través de una plantilla de Inicio rápido de AWS. El Inicio rápido le permite desplegar iguales utilizando plantillas de AWS CloudFormation. Esta plantilla está pensada para los responsables de la toma de decisiones sobre la infraestructura de TI y los administradores del sistema que deseen configurar, desplegar y ejecutar rápidamente iguales de {{site.data.keyword.blockchainfull_notm}} Platform alojados en AWS que estén conectados a una red de Plan inicial o Plan empresarial. Puede utilizar la plantilla para crear una nueva nube privada virtual (VPC) en AWS, o desplegar el igual en una VPC existente.
+
+El Inicio rápido completa las configuraciones siguientes:
+ * Una arquitectura de alta disponibilidad que abarca dos zonas de disponibilidad.
+ * Una VPC configurada con subredes públicas de acuerdo con las prácticas recomendadas por AWS. Esto le proporciona su propia red virtual en AWS.
+ * Una pasarela de Internet para permitir el acceso a Internet.
+ * En las subredes públicas, dos iguales en dos zonas de disponibilidad (un igual en cada subred).
+ * En cada subred pública, un contenedor de igual con una base de datos LevelDB incorporada o un contenedor de CouchDB secundario.
+
+Antes de desplegar iguales de {{site.data.keyword.blockchainfull_notm}} Platform para AWS, revise las [consideraciones de igual](/docs/services/blockchain/howto/remote_peer.html#remote-peer-aws-about-limitations).
 
 ## Requisitos previos
-{: #prerequisites-aws}
+{: #remote-peer-aws-prerequisites}
 
-Para utilizar un igual de la plataforma {{site.data.keyword.blockchainfull_notm}} para AWS (igual), debe tener una organización que sea miembro de una red blockchain que esté alojada en la plataforma IBM Blockchain. Es necesario utilizar el supervisor de red en IBM Cloud para acceder a las credenciales de red y a los puntos finales de API de la red. Si no es miembro de ninguna red blockchain, tiene que crear o unirse a una red. Para obtener más información, consulte [Creación de una red](/docs/services/blockchain/get_start.html#creating-a-network) o [Cómo unirse a una red](/docs/services/blockchain/get_start.html#joining-a-network).
+Para utilizar un igual de {{site.data.keyword.blockchainfull_notm}} Platform para AWS (igual remoto), debe tener una organización que sea miembro de una red blockchain que esté alojada en la plataforma IBM Blockchain. Es necesario utilizar el supervisor de red en IBM Cloud para acceder a las credenciales de red y a los puntos finales de API de la red. Si no es miembro de ninguna red blockchain, tiene que crear o unirse a una red. Para obtener más información, consulte [Creación de una red](/docs/services/blockchain/get_start.html#getting-started-with-enterprise-plan-create-network) o [Cómo unirse a una red](/docs/services/blockchain/get_start.html#getting-started-with-enterprise-plan-join-nw).
 
 El tipo de instancia de VPC predeterminado para el igual es `m4.xlarge`.  Debe optimizar el tipo de instancia que elija en función de sus requisitos de CPU, memoria y almacenamiento. El igual necesita al menos:  
 -	2x CPU
@@ -37,7 +49,7 @@ El tipo de instancia de VPC predeterminado para el igual es `m4.xlarge`.  Debe o
 -	4 GB de espacio para el código de encadenamiento
 -	10 GB de espacio para el libro mayor con capacidad para crecer a medida que se expanda el libro mayor.
 
-Estos niveles mínimos de recursos son suficientes para pruebas y experimentación. Para un entorno de producción, es importante asignar una cantidad de almacenamiento lo suficientemente grande, por ejemplo de 100GB. La cantidad de almacenamiento utilizada dependerá del número de transacciones y del número de firmas necesarias de la red. Si agota el almacenamiento en el igual, <!-- either expand the storage or --> despliegue un nuevo igual con un sistema de archivos mayor y deje que se sincronice a través de los demás iguales en los mismos canales.
+Estos niveles mínimos de recursos son suficientes para pruebas y experimentación. Para un entorno de producción, es importante asignar una cantidad de almacenamiento lo suficientemente grande, por ejemplo de 100 GB. La cantidad de almacenamiento utilizada dependerá del número de transacciones y del número de firmas necesarias de la red. Si agota el almacenamiento en el igual, <!-- either expand the storage or --> despliegue un nuevo igual con un sistema de archivos mayor y deje que se sincronice a través de los demás iguales en los mismos canales.
 
 
 ## Opciones de despliegue
@@ -45,11 +57,11 @@ Estos niveles mínimos de recursos son suficientes para pruebas y experimentaci�
 
 El Inicio rápido proporciona dos opciones de despliegue:
 
-* Despliegue la plataforma {{site.data.keyword.blockchainfull_notm}} para AWS dentro de un nuevo VPC (despliegue de extremo a extremo). Esta opción crea un nuevo entorno de AWS que consta del VPC, subredes, pasarelas NAT, grupos de seguridad, hosts de bastiones y otros componentes de infraestructura y, a continuación, despliega el igual en este nuevo VPC.
+* Despliegue {{site.data.keyword.blockchainfull_notm}} Platform para AWS dentro de un nuevo VPC (despliegue de extremo a extremo). Esta opción crea un nuevo entorno de AWS que consta del VPC, subredes, pasarelas NAT, grupos de seguridad, hosts de bastiones y otros componentes de infraestructura y, a continuación, despliega el igual en este nuevo VPC.
 
-* Despliegue la plataforma {{site.data.keyword.blockchainfull_notm}} para AWS en un VPC existente. Esta opción suministra el igual de la plataforma {{site.data.keyword.blockchainfull_notm}} para AWS en la infraestructura existente de AWS. Hay plantillas independientes para estas opciones en las que puede configurar bloques CIDR, tipos de instancias y valores de igual, tal como se explica más adelante en esta guía.
+* Despliegue {{site.data.keyword.blockchainfull_notm}} Platform para AWS en un VPC existente. Esta opción suministra el igual de {{site.data.keyword.blockchainfull_notm}} Platform para AWS en la infraestructura existente de AWS. Hay plantillas independientes para estas opciones en las que puede configurar bloques CIDR, tipos de instancias y valores de igual, tal como se explica más adelante en esta guía.
 
-## Paso uno: prepare la cuenta de AWS
+## Paso uno: preparar la cuenta de AWS
 {: #remote-peer-aws-account}
 
 1. Si aún no tiene una cuenta de AWS, cree una [aquí ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://aws.amazon.com "https//aws/amazon.com") siguiendo las instrucciones en pantalla.
@@ -60,8 +72,8 @@ El Inicio rápido proporciona dos opciones de despliegue:
 
 4. Si es necesario, solicite un aumento del límite de servicio para el tipo de instancia Amazon EC2 <type>. Es posible que necesite hacer esto si ya tiene un despliegue existente que utilice este tipo de instancia y piensa que podría superar el límite predeterminado con este despliegue.
 
-## Paso dos: recupere la información de configuración del igual remoto
-{: #aws-network-endpoints}
+## Paso dos: recuperar la información de configuración del igual remoto
+{: #remote-peer-aws-network-endpoints}
 
 Debe proporcionar los puntos finales de API de la red a su igual durante la configuración. Estos puntos finales permiten que un igual encuentre y se conecte a la red en la plataforma {{site.data.keyword.blockchainfull_notm}}. En la pantalla **Visión general** de su supervisor de red, pulse el botón **Configuración de igual remoto**.
 
@@ -77,6 +89,9 @@ Se abre una ventana emergente que muestra los valores de los campos siguientes. 
 
 Puede copiar y pegar cada campo directamente en la plantilla de inicio rápido, o guardarlos en un archivo JSON pulsando el enlace **Descargar**.
 
+La plantilla de inicio rápido espera que el certificado TLS esté formateado con saltos de línea `\r\n`. Si utiliza un navegador con el Supervisor de red en un sistema operativo `*NIX`, tiene que volver a formatear el certificado que copia desde la interfaz de usuario. Sustituya todas las apariciones de `\n` por `\r\n` y pegue la serie resultante en el campo `Certificate Authority (CA) TLS Certificate Chain`.
+{:important}
+
 **Nota:** si descarga la información en JSON, tiene que convertir el certificado TLS en formato PEM antes de proporcionarlo al igual. Convierta el **certificado TLS de la entidad emisora de certificados (CA)** del archivo JSON que ha descargado al formato PEM emitiendo el mandato siguiente:
 ```
 echo -e "<CERT>" > admin.pem
@@ -85,14 +100,14 @@ echo -e "<CERT>" > admin.pem
 
 Sustituya `<CERT>` por el valor del **certificado TLS de la entidad emisora de certificados (CA)**. A continuación, cuando se le solicite el **certificado TLS de la entidad emisora de certificados (CA)** en la plantilla de inicio rápido, utilice `cat` con el archivo admin.pem y copie y pegue el contenido en el campo.  
 
-## Paso tres: registre un igual de la plataforma {{site.data.keyword.blockchainfull_notm}} para AWS
-{: #aws-register-peer}
+## Paso tres: registrar un igual de {{site.data.keyword.blockchainfull_notm}} Platform para AWS
+{: #remote-peer-aws-register-peer}
 
-Tiene que añadir una nueva identidad de igual a la red en la plataforma {{site.data.keyword.blockchainfull_notm}} para que el igual de la plataforma {{site.data.keyword.blockchainfull_notm}} para AWS se pueda unir a la red. Realice los pasos siguientes para registrar un igual.
+Tiene que añadir una nueva identidad de igual a la red en {{site.data.keyword.blockchainfull_notm}} Platform para que el igual de {{site.data.keyword.blockchainfull_notm}} Platform para AWS se pueda unir a la red. Realice los pasos siguientes para registrar un igual.
 
 **Nota:** para obtener una alta disponibilidad, la plantilla de inicio rápido crea dos nodos de igual en dos zonas de disponibilidad. Por lo tanto, se necesitan dos ID de inscripción y dos secretos. **Repita este proceso dos veces para generar dos ID de inscripción y dos secretos**
 
-1. Inicie sesión en el supervisor de su red en la plataforma {{site.data.keyword.blockchainfull_notm}}. En la pantalla "Entidad emisora de certificados" del supervisor de red, puede ver todas las identidades que se han registrado con la red, como las aplicaciones de administrador o cliente. ![Pantalla CA](../images/CA_screen_starter.png "Pantalla CA")
+1. Inicie sesión en el supervisor de su red en {{site.data.keyword.blockchainfull_notm}} Platform. En la pantalla "Entidad emisora de certificados" del supervisor de red, puede ver todas las identidades que se han registrado con la red, como las aplicaciones de administrador o cliente. ![Pantalla CA](../images/CA_screen_starter.png "Pantalla CA")
   *Figura 2. Pantalla CA*
 
 2. Pulse el botón **Añadir usuario** del panel. Se abrirá una pantalla emergente que le permite registrar el igual en la red tras rellenar los campos que se indican a continuación. **Guarde el valor del ID y el secreto para utilizarlos más adelante cuando configure el igual en la plantilla de inicio rápido.**
@@ -111,16 +126,16 @@ Es responsable del coste de los servicios de AWS que utilice mientras ejecuta es
 
 1. Elija una de las opciones siguientes para iniciar la plantilla de AWS CloudFormation en su cuenta de AWS. Para obtener ayuda para elegir una opción, consulte las opciones de despliegue que se han descrito con anterioridad en esta guía. Cada despliegue tarda en finalizar unos 10 minutos.  
 
-  * [Despliegue la plataforma {{site.data.keyword.blockchainfull_notm}} para AWS en un nuevo VPC en AWS ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://fwd.aws/v43nk "Despliegue la plataforma {{site.data.keyword.blockchainfull_notm}} para AWS en un nuevo VPC en AWS").  
+  * [Despliegue {{site.data.keyword.blockchainfull_notm}} Platform para AWS en un nuevo VPC en AWS ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://fwd.aws/v43nk "Despliegue la plataforma {{site.data.keyword.blockchainfull_notm}} para AWS en un nuevo VPC en AWS").  
 
-  * [Despliegue la plataforma {{site.data.keyword.blockchainfull_notm}} para AWS en un VPC existente en AWS ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://fwd.aws/zrP4g "Despliegue la plataforma {{site.data.keyword.blockchainfull_notm}} para AWS en un VPC existente en AWS").
+  * [Despliegue {{site.data.keyword.blockchainfull_notm}} Platform para AWS en un VPC existente en AWS ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://fwd.aws/zrP4g "Despliegue la plataforma {{site.data.keyword.blockchainfull_notm}} para AWS en un VPC existente en AWS").
 
   **Importante:**     
-  Si va a desplegar la plataforma {{site.data.keyword.blockchainfull_notm}} para AWS en un VPC existente, asegúrese de que el VPC tiene dos subredes públicas en distintas zonas de disponibilidad para las instancias de la base de datos. Estas subredes requieren pasarelas NAT o instancias de NAT en sus tablas de rutas, para permitir que las instancias puedan descargar paquetes y software sin exponerlos a Internet. También necesitará tener la opción de nombre de dominio configurada en las opciones de DHCP, tal como se explica en la documentación de VPC de Amazon.  
+  Si va a desplegar {{site.data.keyword.blockchainfull_notm}} Platform para AWS en un VPC existente, asegúrese de que el VPC tiene dos subredes públicas en distintas zonas de disponibilidad para las instancias de la base de datos. Estas subredes requieren pasarelas NAT o instancias de NAT en sus tablas de rutas, para permitir que las instancias puedan descargar paquetes y software sin exponerlos a Internet. También necesitará tener la opción de nombre de dominio configurada en las opciones de DHCP, tal como se explica en la documentación de VPC de Amazon.  
 
   Además, asegúrese de crear un grupo de seguridad enlazado con su VPC existente y de añadir reglas de entrada en los puertos 22 y 7051 para este grupo de seguridad. Las conexiones TCP en el puerto 22 permiten el acceso SSH a la instancia generada, mientras que las conexiones TCP en el puerto 7051 permiten el acceso gRPC externo a la instancia del igual (necesario para trabajar con el igual utilizando la CLI de herramientas de Fabric y los SDK de Fabric). Se le solicitarán estos valores de VPC al iniciar el Inicio rápido.
 
-2. Compruebe la región que aparece en la esquina superior derecha de la barra de navegación y cámbiela si es necesario. Es aquí donde se creará la infraestructura de red para el igual. La plantilla se lanza en la región EE.UU. este (Ohio) de forma predeterminada.
+2. Compruebe la región que aparece en la esquina superior derecha de la barra de navegación y cámbiela si es necesario. Es aquí donde se creará la infraestructura de red para el igual. La plantilla se lanza en la región EE. UU. este (Ohio) de forma predeterminada.
 
 3. En la página Seleccionar plantilla, mantenga el valor predeterminado para el URL de plantilla y, a continuación, selecciona `Siguiente`.
 
@@ -128,11 +143,11 @@ Es responsable del coste de los servicios de AWS que utilice mientras ejecuta es
 
 En las tablas siguientes, se muestran los parámetros por categoría y se describen de forma independiente para las dos opciones de despliegue:
 
-  * [Parámetros para desplegar la plataforma {{site.data.keyword.blockchainfull_notm}} para AWS en un nuevo VPC](#remote-peer-aws-parameters-newvpc)
+  * [Parámetros para desplegar {{site.data.keyword.blockchainfull_notm}} Platform para AWS en un nuevo VPC](/docs/services/blockchain/howto/remote_peer_aws.html#remote-peer-aws-parameters-newvpc)
 
-  * [Parámetros para desplegar la plataforma {{site.data.keyword.blockchainfull_notm}} para AWS en un VPC existente](#remote-peer-aws-parameters-existvpc).
+  * [Parámetros para desplegar {{site.data.keyword.blockchainfull_notm}} Platform para AWS en un VPC existente](/docs/services/blockchain/howto/remote_peer_aws.html#remote-peer-aws-parameters-existvpc).
 
-### Parámetros para desplegar la plataforma {{site.data.keyword.blockchainfull_notm}} para AWS en un nuevo VPC
+### Parámetros para desplegar {{site.data.keyword.blockchainfull_notm}} Platform para AWS en un nuevo VPC
 {: #remote-peer-aws-parameters-newvpc}
 
 En la tabla siguiente se muestran los parámetros configurables del diagrama de AWS y sus valores predeterminados. Todos los valores son necesarios.
@@ -180,10 +195,10 @@ En la tabla siguiente se muestran los parámetros configurables del diagrama de 
 5. Utilice la información mostrada en el separador Salidas de la pila para ver los recursos que se han creado.
 
 
-### Parámetros para desplegar un igual de la plataforma {{site.data.keyword.blockchainfull_notm}} en un VPC existente
+### Parámetros para desplegar un igual de {{site.data.keyword.blockchainfull_notm}} Platform en un VPC existente
 {: #remote-peer-aws-parameters-existvpc}
 
-Si va a desplegar el igual de la plataforma {{site.data.keyword.blockchainfull_notm}} para AWS en un VPC existente, debe tener en cuenta las consideraciones siguientes:
+Si va a desplegar el igual de {{site.data.keyword.blockchainfull_notm}} Platform para AWS en un VPC existente, debe tener en cuenta las consideraciones siguientes:
 
  - Asegúrese de que el VPC tiene dos subredes privadas en distintas zonas de disponibilidad para las instancias de la base de datos. Estas subredes requieren pasarelas NAT o instancias de NAT en sus tablas de rutas, para permitir que las instancias puedan descargar paquetes y software sin exponerlos a Internet.
 
@@ -191,7 +206,7 @@ Si va a desplegar el igual de la plataforma {{site.data.keyword.blockchainfull_n
 
 - Cree un grupo de seguridad enlazado con su VPC existente y de añadir reglas de entrada en los puertos 22 y 7051 para este grupo de seguridad. Las conexiones TCP en el puerto 22 permiten el acceso SSH a la instancia generada, mientras que las conexiones TCP en el puerto 7051 permiten el acceso gRPC externo a la instancia del igual (necesario para trabajar con el igual utilizando la CLI de herramientas de Fabric y los SDK de Fabric). Se le solicitarán estos valores de VPC al iniciar el Inicio rápido.
 
- Al desplegar un igual de la plataforma {{site.data.keyword.blockchainfull_notm}} para AWS en un VPC existente, los parámetros siguientes sustituyen a los parámetros de las secciones [anteriores](#remote-peer-aws-parameters-newvpc) correspondientes:
+ Al desplegar un igual de {{site.data.keyword.blockchainfull_notm}} Platform para AWS en un VPC existente, los parámetros siguientes sustituyen a los parámetros de las secciones [anteriores](/docs/services/blockchain/howto/remote_peer_aws.html#remote-peer-aws-parameters-newvpc) correspondientes:
 
 |  Parámetro    | Descripción | Valor predeterminado |
 | --------------|-------------|---------|
@@ -207,13 +222,13 @@ Si va a desplegar el igual de la plataforma {{site.data.keyword.blockchainfull_n
 | `KeyPairName` |	Nombre de un par de claves EC2 existente dentro de la región de AWS. Debe generar esto. | |
 | `SecurityGroup` | ID de un grupo de seguridad de EC2 existente dentro de la región de AWS. Debe permitir conexiones de TCP entrantes en los puertos 22 y 7051. |	| |
 
-## Paso cinco: pruebe el despliegue
+## Paso cinco: probar el despliegue
 {: #remote-peer-aws-test}
 
-Cuando la plantilla de AWS CloudFormation haya creado con éxito la pila, se ejecutarán dos instancias de igual de la plataforma {{site.data.keyword.blockchainfull_notm}} para AWS en la cuenta de AWS. El nombre de las instancias estará basado en una combinación los valores de `Organization MSP` y de `Peer enroll id` que se especifican en la plantilla de Inicio rápido. Por ejemplo, `org1-remotepeer1`.  
+Cuando la plantilla de AWS CloudFormation haya creado con éxito la pila, se ejecutarán dos instancias de igual de {{site.data.keyword.blockchainfull_notm}} Platform para AWS en la cuenta de AWS. El nombre de las instancias estará basado en una combinación los valores de `Organization MSP` y de `Peer enroll id` que se especifican en la plantilla de Inicio rápido. Por ejemplo, `org1-remotepeer1`.  
 
-![Instancias AWS EC2 de igual](../images/remote_peer_AWS_EC2_instances.png "Instancias de AWS EC2 de igual")  
-*Figura 3. Igual remoto en instancias AWS EC2*
+![Igual en instancias de AWS EC2](../images/remote_peer_AWS_EC2_instances.png "Igual en instancias de AWS EC2")  
+*Figura 3. Igual en instancias de AWS EC2*
 
 Para verificar que el igual está en ejecución:
 
@@ -229,7 +244,9 @@ Para verificar que el igual está en ejecución:
 
   * Puede crear una sesión de shell dentro del contenedor del igual ejecutando `docker exec -it peer sh`.
 
-Además, para verifica que funciona la conexión del igual con la red de la plataforma {{site.data.keyword.blockchainfull_notm}}, puede ejecutar un mandato de CLI de igual (peer) dentro del contenedor del igual. Ejecute el mandato de CLI `peer channel fetch` para recuperar el bloque de origen del canal:
+De forma opcional, si desea realizar una verificación adicional de que la conexión del igual está trabajando en la red de {{site.data.keyword.blockchainfull_notm}} Platform, puede ejecutar el mandato de CLI `peer channel fetch` desde dentro del contenedor del igual. De lo contrario, puede pasar a las instrucciones sobre [Funcionamiento del igual](/docs/services/blockchain/howto/remote_peer_operate_aws.html#remote-peer-aws-operate).  
+
+Ejecute el mandato de CLI `peer channel fetch` para recuperar el bloque de origen del canal:
 
 1. Recupere la información de configuración del `Perfil de conexión` disponible en el panel Visión general del supervisor de red. Pulse **Perfil de conexión** y luego **Descargar**.
 
@@ -249,7 +266,7 @@ Además, para verifica que funciona la conexión del igual con la red de la plat
    ```
    {:codeblock}
 
-   - Copie el certificado TLS de los clasificadores del perfil de conexiones en el igual. Vaya a la sección **clasificadores**. Copie el certificado que sigue a "pem:", que comienza por -----BEGIN CERTIFICATE----- y termina por -----END CERTIFICATE-----. No incluya las comillas. Ejecute el mandato siguiente desde la línea de mandatos, sustituyendo `<orderer cert>` por el contenido que ha copiado del archivo creds.json.
+   - Copie el certificado TLS del clasificador del perfil de conexiones en el igual. Vaya a la sección **clasificadores**. Copie el certificado que sigue a "pem:", que comienza por -----BEGIN CERTIFICATE----- y termina por -----END CERTIFICATE-----. No incluya las comillas. Ejecute el mandato siguiente desde la línea de mandatos, sustituyendo `<orderer cert>` por el contenido que ha copiado del archivo creds.json.
 
    ```
    echo -e "<orderer cert>" > /etc/hyperledger/<PEER_ENROLL_ID>/orderer_tlscacert.pem
@@ -260,9 +277,9 @@ Además, para verifica que funciona la conexión del igual con la red de la plat
 
 2. Es necesario añadir la organización a un canal de la red para poder capturar el bloque de origen.
 
-  - Puede iniciar un nuevo canal para el igual. Como iniciador de canal, puede incluir automáticamente su organización durante la [creación del canal](/docs/services/blockchain/howto/create_channel.html#creating-a-channel).
+  - Puede iniciar un nuevo canal para el igual. Como iniciador de canal, puede incluir automáticamente su organización durante la [creación del canal](/docs/services/blockchain/howto/create_channel.html#ibp-create-channel-creating-a-channel).
 
-  - Otro miembro de la red blockchain también puede añadir su organización a un canal existente mediante una [actualización de canal](/docs/services/blockchain/howto/create_channel.html#updating-a-channel).
+  - Otro miembro de la red blockchain también puede añadir su organización a un canal existente mediante una [actualización de canal](/docs/services/blockchain/howto/create_channel.html#ibp-create-channel-updating-a-channel).
 
   - Una vez que la organización se haya añadido a un canal, deberá añadir el certificado de firma del igual al canal. El igual carga el certificado de firma durante la instalación, de modo que solo necesita sincronizar el certificado con el canal. En la pantalla "Canales" del supervisor de red, localice el canal al que se ha unido su organización y seleccione **Sincronizar certificado** en la lista desplegable bajo la cabecera **Acción**. Esta acción sincroniza los certificados entre todos los iguales del canal.
 
@@ -321,9 +338,9 @@ Además, para verifica que funciona la conexión del igual con la red de la plat
    defaultchannel_0.block
    ```
 
-   Enhorabuena. El igual de la plataforma {{site.data.keyword.blockchainfull_notm}} para AWS se ha conectado correctamente a la red de la plataforma {{site.data.keyword.blockchainfull_notm}}.
+   Enhorabuena. El igual de {{site.data.keyword.blockchainfull_notm}} Platform para AWS se ha conectado correctamente a la red de la plataforma {{site.data.keyword.blockchainfull_notm}}.
 
-## Preguntas más frecuentes (FAQ)
+## Preguntas más frecuentes
 {: #remote-peer-aws-faq}
 
 * **P**. He recibido un error CREATE_FAILED al iniciar el Inicio rápido.
@@ -336,15 +353,15 @@ Además, para verifica que funciona la conexión del igual con la red de la plat
 * **R**. Se recomienda que inicie las plantillas de Inicio rápido desde la ubicación que hemos proporcionado o desde otro grupo de S3. Si despliega las plantillas desde una copia local en su sistema o desde una ubicación que no sea S3, es posible que encuentre limitaciones de tamaño de plantilla al crear la pila. Para obtener más información sobre los límites de AWS CloudFormation, consulte la [documentación de AWS ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cloudformation-limits.html "Límites de AWS CloudFormation").
 
 ## Qué hacer a continuación
-{: #whats-next-aws}
+{: #remote-peer-aws-whats-next}
 
-Tras configurar el igual en AWS, puede realizar varios pasos operativos antes de enviar transacciones y leer el libro mayor distribuido de la red blockchain. Para obtener más información, consulte [Funcionamiento de un igual en AWS](/docs/services/blockchain/howto/remote_peer_operate_aws.html#remote-peer-operate-aws).
+Tras configurar el igual en AWS, puede realizar varios pasos operativos antes de enviar transacciones y leer el libro mayor distribuido de la red blockchain. Para obtener más información, consulte [Funcionamiento de iguales en AWS](/docs/services/blockchain/howto/remote_peer_operate_aws.html#remote-peer-aws-operate).
 
 ## Alta disponibilidad (HA)
-{: #aws-high-availability}
+{: #remote-peer-aws-high-availability}
 
 De forma predeterminada, para el soporte de la alta disponibilidad, la plantilla de Inicio rápido despliega dos instancias del igual, en dos zonas de disponibilidad distintas.
-Para aprovechar este soporte de alta disponibilidad, también debe configurar las [aplicaciones cliente para la alta disponibilidad](/docs/services/blockchain/v10_application.html#ha-app).
+Para aprovechar este soporte de alta disponibilidad, también debe configurar las [aplicaciones cliente para la alta disponibilidad](/docs/services/blockchain/v10_application.html#dev-app-ha-app).
 
 ## Consideraciones sobre seguridad
 {: #remote-peer-aws-security}
@@ -367,54 +384,55 @@ Solo se puede acceder al usuario root en los nodos del clúster mediante la clav
 Un grupo de seguridad actúa como un cortafuegos que controla el tráfico para una o más instancias. Al iniciar una instancia, asocie uno o más grupos de seguridad a la instancia. Añada reglas a cada grupo de seguridad que permitan el tráfico con sus instancias asociadas. Puede modificar las reglas de un grupo de seguridad en cualquier momento. Las nuevas reglas se aplicarán automáticamente a todas las instancias asociadas con el grupo de seguridad. Los grupos de seguridad creados y asignados a las instancias individuales como parte de esta solución están restringidos en la medida de lo posible, al tiempo que permiten el acceso a las diversas funciones que necesita el igual. Se recomienda revisar los grupos de seguridad para restringir aún más el acceso según sea necesario una vez que el clúster esté activo y en ejecución.
 
 ### Seguridad del igual
-{: #aws-security}
+{: #remote-peer-aws-peer-security}
 
 Los iguales se despliegan fuera de la plataforma {{site.data.keyword.blockchainfull_notm}}; por lo tanto, usted será responsable de gestionar la seguridad del igual. Esto incluye áreas importantes de seguridad que proporcionan las redes de Plan empresarial, como la gestión de claves y el cifrado de datos. Examine los temas siguientes cuando tenga en cuenta la seguridad para los iguales.
 
 #### Seguridad de datos
-{: #aws-security-data}
+{: #remote-peer-aws-security-data}
 
-El plan empresarial de la plataforma {{site.data.keyword.blockchainfull_notm}} utiliza el cifrado de disco completo que se basa en el [cifrado de claves simétricas ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/en/SSB23S_1.1.0.14/gtps7/s7symm.html "Cifrado simétrico") para proteger todos los datos que utilizan las redes. Debe seguir pasos similares en su propio entorno para proteger los datos de los iguales.
+El Plan empresarial de {{site.data.keyword.blockchainfull_notm}} Platform utiliza el cifrado de disco completo que se basa en el [cifrado simétrico de claves ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/en/SSB23S_1.1.0.14/gtps7/s7symm.html "Cifrado simétrico") para proteger todos los datos que utilizan las redes. Debe seguir pasos similares en su propio entorno para proteger los datos de los iguales.
 
 Los datos de la base de datos de estado, independientemente de si utiliza levelDB o couchDB, no se cifran. Puede utilizar un cifrado a nivel de aplicación para proteger los datos en reposo en la base de datos de estado.
 
 #### Residencia de datos
-{: #aws-security-data-residency}
+{: #remote-peer-aws-data-residency}
 
 La residencia de los datos impone que el proceso y el almacenamiento de todos los datos del libro mayor de blockchain permanezcan dentro de los límites de un solo país.
-Para obtener más detalles sobre cómo se puede conseguir esto, consulte este [tema](/docs/services/blockchain/howto/remote_peer.html#data-residency).
+Para obtener más información sobre cómo conseguirlo, consulte [Residencia de los datos](/docs/services/blockchain/howto/remote_peer.html#remote-peer-aws-about-data-residency).
 
 #### Gestión de claves
-{: #aws-security-key-management}
+{: #remote-peer-aws-security-key-management}
 
-La gestión de claves es un aspecto crítico de la seguridad del igual. Si una clave privada se ve comprometida o se pierde, es posible que usuarios hostiles accedan a los datos y a las funciones del igual. El plan de empresa de la plataforma {{site.data.keyword.blockchainfull_notm}} utiliza [Módulos de seguridad de hardware](/docs/services/blockchain/glossary.html#hsm) (HSM) para almacenar las claves privadas de la red. HSM es un dispositivo físico que evita que otro accedan a su clave privada. 
+La gestión de claves es un aspecto crítico de la seguridad del igual. Si una clave privada se ve comprometida o se pierde, es posible que usuarios hostiles accedan a los datos y a las funciones del igual. El plan empresarial de {{site.data.keyword.blockchainfull_notm}} Platform utiliza [Módulos de seguridad de hardware](/docs/services/blockchain/glossary.html#glossary-hsm) (HSM) para almacenar las claves privadas de la red. HSM es un dispositivo físico que evita que otro accedan a su clave privada.
 
-Cuando despliega un igual en AWS, usted es el responsable de gestionar las claves privadas. Aunque la plataforma {{site.data.keyword.blockchainfull_notm}} genera sus claves privadas, dichas claves no se almacenan en la plataforma. Resulta esencial asegurarse de que las claves se almacenan en una ubicación segura para que no se vean comprometidas. Encontrará la clave privada de su igual en la carpeta de almacén de claves de MSP del igual, en el directorio `/etc/hyperledger/<PEER_ENROLL_ID>/msp/keystore/` dentro del contenedor del igual. Para obtener más información sobre los certificados del igual, consulte la sección [Proveedor de servicios de pertenencia](/docs/services/blockchain/certificates.html#msp) del tema [Gestión de certificados en la plataforma {{site.data.keyword.blockchainfull_notm}}](/docs/services/blockchain/certificates.html).
+Cuando despliega un igual en AWS, usted es el responsable de gestionar las claves privadas. Aunque {{site.data.keyword.blockchainfull_notm}} Platform genera sus claves privadas, dichas claves no se almacenan en la plataforma. Resulta esencial asegurarse de que las claves se almacenan
+en una ubicación segura para que no se vean comprometidas. Encontrará la clave privada de su igual en la carpeta del almacén de claves del MSP del igual, en el directorio `/etc/hyperledger/<PEER_ENROLL_ID>/msp/keystore/` dentro del contenedor del igual. Para obtener más información sobre los certificados que hay dentro de su igual, consulte la sección [Proveedor de servicios de pertenencia](/docs/services/blockchain/certificates.html#managing-certificates-msp) del tema sobre [Gestión de certificados en {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/certificates.html#managing-certificates).
 
 Puede utilizar Key Escrow para recuperar claves privadas perdidas. Esto hay que hacerlo antes de perder ninguna clave. Si una clave privada no se puede recuperar, tiene que obtener nuevas claves privadas obteniendo un nuevo signCert de la entidad emisora de certificados. También debe eliminar y sustituir el certificado de administrador de cualquier canal al que se haya unido.
 
 <!---
-In IBP when a private key is created, two sets of independent key material is generated, in custody of two different entities. Those two sets of key materials are then combined to create the private key.
+In {{site.data.keyword.blockchainfull_notm}} Platform when a private key is created, two sets of independent key material is generated, in custody of two different entities. Those two sets of key materials are then combined to create the private key.
 --->
 
 #### TLS
-{: #aws-security-tls}
+{: #remote-peer-aws-security-tls}
 
-[La seguridad de capa de transporte ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/en/SSFKSJ_7.1.0/com.ibm.mq.doc/sy10660_.htm "Una visión general del reconocimiento SSL o TLS") (TLS) está integrada en el modelo de confianza de Hyperledger Fabric. Todos los componentes de la plataforma {{site.data.keyword.blockchainfull_notm}} utilizan TLS para autenticarse y comunicarse entre sí. Por lo tanto, los componentes de red de la plataforma {{site.data.keyword.blockchainfull_notm}} deben ser capaces de completar un reconocimiento de TLS con sus iguales. Una implicación de este enfoque es que necesita activar el paso a través, usando por ejemplo una lista blanca, en el cortafuegos de las apps cliente a su igual.
+[La seguridad de capa de transporte ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/en/SSFKSJ_7.1.0/com.ibm.mq.doc/sy10660_.htm "Una visión general del reconocimiento SSL o TLS") (TLS) está integrada en el modelo de confianza de Hyperledger Fabric. Todos los componentes de {{site.data.keyword.blockchainfull_notm}} Platform utilizan TLS para autenticarse y comunicarse entre sí. Por lo tanto, los componentes de red de {{site.data.keyword.blockchainfull_notm}} Platform deben ser capaces de completar un reconocimiento de TLS con sus iguales. Una implicación de este enfoque es que necesita activar el paso a través, usando por ejemplo una lista blanca, en el cortafuegos de las apps cliente a su igual.
 
 
 #### Configuración del proveedor de servicios de pertenencia
-{: #aws-security-MSP}
+{: #remote-peer-aws-security-MSP}
 
-Los componentes de la plataforma IBM Blockchain consumen identidades a través de proveedores de servicios de pertenencia (MSP). Los MSP asocian los certificados que emiten las entidades emisoras de certificados con roles de red y de canal. Consulte este [tema](/docs/services/blockchain/certificates.html#msp) para obtener más información sobre cómo trabajan los MSP con el igual.
+Los componentes de la plataforma IBM Blockchain consumen identidades a través de proveedores de servicios de pertenencia (MSP). Los MSP asocian los certificados que emiten las entidades emisoras de certificados con roles de red y de canal. Consulte este [tema](/docs/services/blockchain/certificates.html#managing-certificates-msp) para obtener más información sobre cómo trabajan los MSP con el igual.
 
 #### Seguridad de las aplicaciones
-{: #aws-security-appl}
+{: #remote-peer-aws-security-appl}
 
 Puesto que todas las invocaciones de código de encadenamiento están firmadas, Fabric gestiona la seguridad de las aplicaciones. Además, Fabric también incluye comprobaciones de nivel de aplicación basadas en ACL.
 
 ## Licencias y precios
-{: #license-pricing-aws}
+{: #remote-peer-aws-license-pricing-aws}
 
-Debe aceptar una versión de la licencia de Community Edition de la plataforma {{site.data.keyword.blockchainfull_notm}} para AWS para poder utilizar la solución de despliegue habilitada por el Inicio rápido. El uso de la plataforma {{site.data.keyword.blockchainfull_notm}} para AWS (incluidos todos los paquetes proporcionados a través de la oferta de Inicio rápido y los paquetes derivados de estos) no está pensado que sea para producción. IBM puede decidir desautorizar el acceso al código, y al uso de este código, en cualquier momento.
-El acuerdo de licencia de software de la plataforma {{site.data.keyword.blockchainfull_notm}} para AWS contiene más detalles sobre los términos de la licencia. Al iniciar el Inicio rápido, se le solicitará que lea y acepte los términos del acuerdo.
+Debe aceptar una versión de la licencia de Community Edition de {{site.data.keyword.blockchainfull_notm}} Platform para AWS para poder utilizar la solución de despliegue habilitada por el Inicio rápido. El uso de {{site.data.keyword.blockchainfull_notm}} Platform para AWS (incluidos todos los paquetes proporcionados a través de la oferta de Inicio rápido y los paquetes derivados de estos) no está pensado que sea para producción. IBM puede decidir desautorizar el acceso al código, y al uso de este código, en cualquier momento.
+El acuerdo de licencia de software de {{site.data.keyword.blockchainfull_notm}} Platform para AWS contiene más detalles sobre los términos de la licencia. Al iniciar el Inicio rápido, se le solicitará que lea y acepte los términos del acuerdo.

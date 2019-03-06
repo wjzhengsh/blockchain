@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-12-07"
+  years: 2017, 2019
+lastupdated: "2019-02-08"
 
 ---
 
@@ -10,16 +10,19 @@ lastupdated: "2018-12-07"
 {:shortdesc: .shortdesc}
 {:screen: .screen}
 {:codeblock: .codeblock}
+{:note: .note}
+{:important: .important}
+{:tip: .tip}
 {:pre: .pre}
 
 # Instalando o {{site.data.keyword.blockchainfull_notm}} Platform no {{site.data.keyword.cloud_notm}} Private
-{: #remote-peer-icp}
+{: #helm-install}
 
-O {{site.data.keyword.blockchainfull}} Platform for {{site.data.keyword.cloud_notm}} Private é entregue como um arquivo de gráfico Helm que pode ser instalado em um cluster ICP local. Depois de instalar o gráfico do Helm, é possível localizar o {{site.data.keyword.blockchainfull_notm}} Platform como um aplicativo no catálogo do ICP.
+O {{site.data.keyword.blockchainfull}} Platform for {{site.data.keyword.cloud_notm}} Private é fornecido como um arquivo de gráfico do Helm que pode ser instalado em um cluster local do {{site.data.keyword.cloud_notm}} Private. Depois de instalar o gráfico do Helm, é possível localizar o {{site.data.keyword.blockchainfull_notm}} Platform como um aplicativo no catálogo do {{site.data.keyword.cloud_notm}} Private.
 
-Antes de instalar o {{site.data.keyword.blockchainfull_notm}} Platform for ICP, revise as [Considerações e limitações](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-considerations). Para obter mais informações sobre como implementar os componentes de blockchain que estão incluídos no gráfico Helm, na precificação e no suporte, consulte [Sobre o {{site.data.keyword.blockchainfull_notm}} Platform for ICP](/docs/services/blockchain/ibp-for-icp-about.html).
+Antes de instalar o {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private, revise as [Considerações e limitações](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-about-considerations). Para obter mais informações sobre como implementar os componentes de blockchain que estão incluídos no gráfico do Helm, a precificação e o suporte, veja [Sobre o {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-about).
 
-O {{site.data.keyword.blockchainfull_notm}} Platform for ICP entrega duas edições:
+O {{site.data.keyword.blockchainfull_notm}}  Platform for  {{site.data.keyword.cloud_notm}}  Private fornece duas edições:
 
 - O {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private é entregue por meio do Passport Advantage (PPA). É necessário ter a licença necessária para acessar o [Passport Advantage Online ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://www.ibm.com/software/passportadvantage/pao_customer.html "Passport Advantage Online"). Mediante a compra, o suporte técnico para o {{site.data.keyword.blockchainfull_notm}} Platform é incluído.
 
@@ -28,14 +31,14 @@ O {{site.data.keyword.blockchainfull_notm}} Platform for ICP entrega duas ediç�
 ## Pré-requisitos para instalar o gráfico Helm
 {: #helm-install-prereqs}
 
-Antes de instalar o gráfico Helm, deve-se ter configurado um cluster ICP. Revise as instruções para [instalar e configurar um cluster ICP](/docs/services/blockchain/ICP_setup.html).
+Antes de instalar o gráfico do Helm, deve-se ter configurado um cluster do {{site.data.keyword.cloud_notm}} Private. Revise as instruções para [definir e configurar um cluster do {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/ICP_setup.html#icp-setup).
 
 ## Instalando o {{site.data.keyword.blockchainfull_notm}} Platform atrás de um firewall
 {: #helm-install-prereqs-firewall}
 
 É possível implementar os componentes do {{site.data.keyword.blockchainfull_notm}} Platform atrás de um firewall sem conectividade com a Internet. O pacote PPA inclui todas as imagens do Docker do componente do Fabric que o {{site.data.keyword.blockchainfull_notm}} Platform usará e não é necessário fazer download do DockerHub durante a implementação.
 
-No entanto, o gráfico Helm da Community Edition não inclui as imagens do Docker do componente Fabric necessárias porque essa edição está configurada para fazer download dessas imagens a partir do DockerHub durante a implementação. A implementação falhará se não houver conectividade com a Internet disponível. Portanto, é necessário concluir etapas extras para criar archives em uma máquina conectada à Internet antes de poder instalar os archives em seu cluster ICP. As imagens a seguir são necessárias:
+No entanto, o gráfico Helm da Community Edition não inclui as imagens do Docker do componente Fabric necessárias porque essa edição está configurada para fazer download dessas imagens a partir do DockerHub durante a implementação. A implementação falhará se não houver conectividade com a Internet disponível. Portanto, é necessário concluir etapas extras para criar archives em uma máquina conectada à Internet antes de poder instalar os archives em seu cluster do {{site.data.keyword.cloud_notm}} Private. As imagens a seguir são necessárias:
 - [Peer do Farbic ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://hub.docker.com/r/ibmcom/ibp-fabric-peer/ "Peer do Farbic")
 - [Fabric CA ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://hub.docker.com/r/ibmcom/ibp-fabric-ca/ "Fabric CA")
 - [ Solicitador do Fabric ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://hub.docker.com/r/ibmcom/ibp-fabric-orderer/ "Solicitador do Fabric")
@@ -45,11 +48,11 @@ No entanto, o gráfico Helm da Community Edition não inclui as imagens do Docke
 
 Para obter mais informações sobre como usar essas imagens, consulte [Incluindo aplicativos qualificados em clusters sem conectividade com a Internet ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_package_offline.html). Observe que é possível localizar o arquivo de especificação `manifest.yaml` no diretório `ibm-blockchain-platform-dev/ibm_cloud_pak` no gráfico Helm.
 
-## Importando o gráfico Helm para o ICP
+## Importando o gráfico Helm para  {{site.data.keyword.cloud_notm}}  Privado
 
-1. Faça download do arquivo do gráfico Helm do IBM Blockchain Platform for ICP a partir do [Passport Advantage Online ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://www.ibm.com/software/passportadvantage/pao_customer.html "Passport Advantage Online") ou para a Community Edition gratuita a partir do [GitHub ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://github.com/IBM/charts/blob/master/repo/stable/ibm-blockchain-platform-dev-1.0.0.tgz "IBM/charts"). Esse pacote de gráficos Helm contém três subgráficos Helm para a CA, solicitador e peer.
+1. Faça download do arquivo de gráfico do Helm do IBM Blockchain Platform for {{site.data.keyword.cloud_notm}} Private por meio do [Passport Advantage Online ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://www.ibm.com/software/passportadvantage/pao_customer.html "Passport Advantage Online") ou da edição Community gratuita por meio do [GitHub ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://github.com/IBM/charts/blob/master/repo/stable/ibm-blockchain-platform-dev-1.0.0.tgz "IBM/charts"). Esse pacote de gráficos Helm contém três subgráficos Helm para a CA, solicitador e peer.
 
-2. Se você ainda não tiver feito, efetue login em seu cluster ICP.
+2. Caso ainda não tenha feito isso, efetue login em seu cluster do {{site.data.keyword.cloud_notm}} Private.
 
   ```
   cloudctl login -a https://<cluster_CA_domain>:8443 --skip-ssl-validation
@@ -62,7 +65,7 @@ Para obter mais informações sobre como usar essas imagens, consulte [Incluindo
   ```
   {:codeblock}
 
-5. Localize o nome do repositório no ICP para fazer upload de seu gráfico Helm usando o comando a seguir:
+5. Localize o nome do repositório no {{site.data.keyword.cloud_notm}} Private para fazer upload de seu gráfico do Helm usando o comando a seguir:
   ```
   cloudctl catalog repos
   ```
@@ -76,7 +79,7 @@ Para obter mais informações sobre como usar essas imagens, consulte [Incluindo
   - **{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private**
 
     Siga essas instruções se você transferiu por download o gráfico Helm a partir do PPA.
-    No diretório no qual você armazenou o pacote de gráfico Helm transferido por download do PPA, execute o comando a seguir na CLI do ICP para importar o gráfico Helm para seu cluster de ICP.
+    No diretório em que você armazenou o pacote de gráfico do Helm transferido por download do PPA, execute o comando a seguir na CLI do {{site.data.keyword.cloud_notm}} Private para importar o gráfico do Helm para seu cluster do {{site.data.keyword.cloud_notm}} Private.
 
     ```
     cloudctl catalog load-archive --archive <archive-name> --registry <cluster_CA_domain>:8500 --repo <repo-name>
@@ -85,10 +88,12 @@ Para obter mais informações sobre como usar essas imagens, consulte [Incluindo
 
     Substitua os seguintes valores:
     - `<archive-name>` pelo nome do arquivo `.tgz` transferido por download.
-    - `<cluster_CA_domain>:8500` pelo domínio que você usa para efetuar login em seu cluster de ICP.
+    - `<cluster_CA_domain>:8500` pelo domínio que você usa para efetuar login em seu cluster do {{site.data.keyword.cloud_notm}} Private.
     - `<repo-name>` com o repositório do helm no qual você deseja fazer upload do gráfico. Execute 'cloudctl catalog repos' para listar seus repositórios.
 
     Quando esse comando for concluído com êxito, você verá algo semelhante às informações a seguir:
+
+    <details><summary>Helm install output</summary>
     ```
     Expanding archive
     OK
@@ -171,7 +176,7 @@ Para obter mais informações sobre como usar essas imagens, consulte [Incluindo
   - **Community edition transferida por download a partir do GitHub**
     Siga essas instruções se você transferiu por download o gráfico Helm a partir do GitHub.
 
-    No diretório em que você armazenou o pacote de gráficos Helm transferido por download do GitHub, execute o comando a seguir na CLI do ICP para importar o gráfico Helm para seu cluster de ICP. Para importar o gráfico Helm transferido por download do GitHub, execute o comando a seguir:
+    No diretório em que você armazenou o pacote de gráfico do Helm transferido por download do GitHub, execute o comando a seguir na CLI do {{site.data.keyword.cloud_notm}} Private para importar o gráfico do Helm para seu cluster do {{site.data.keyword.cloud_notm}} Private. Para importar o gráfico Helm transferido por download do GitHub, execute o comando a seguir:
     ```
     cloudctl catalog load-chart --archive <helm_chart_from_github> --repo <repo-name>
     ```
@@ -191,12 +196,12 @@ Para obter mais informações sobre como usar essas imagens, consulte [Incluindo
     OK
     ```
 
-Clique no botão **Catálogo** no console do ICP e, em seguida, clique em **Blockchain** no painel de navegação esquerdo para verificar se a importação foi bem-sucedida. Se sim, o tile **ibm-blockchain-platform-prod** ou **ibm-blockchain-platform-dev** deverá estar visível na página do Catálogo do ICP.
+Clique no botão **Catálogo** no console do {{site.data.keyword.cloud_notm}} Private e, em seguida, clique em **Blockchain** no painel de navegação à esquerda para verificar se a importação foi bem-sucedida. Se sim, o tile **ibm-blockchain-platform-prod** ou **ibm-blockchain-platform-dev** deve estar visível na página Catálogo do {{site.data.keyword.cloud_notm}} Private.
 
 
 ## Requisitos de PodSecurityPolicy
 
-Depois de importar o gráfico Helm para o {{site.data.keyword.cloud_notm}} Private, é necessário ligar um [PodSecurityPolicy ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://kubernetes.io/docs/concepts/policy/pod-security-policy/ "Políticas de segurança de pod") ao espaço de nomes de destino antes de instalar os componentes. Escolha um PodSecurityPolicy predefinido ou peça que o administrador de cluster crie um PodSecurityPolicy customizado para você:
+Depois de importar o gráfico Helm para o {{site.data.keyword.cloud_notm}} Private, é necessário ligar um [PodSecurityPolicy ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://kubernetes.io/docs/concepts/policy/pod-security-policy/ "Políticas de segurança de pod") ao espaço de nomes de destino antes de instalar os componentes.  Escolha um PodSecurityPolicy predefinido ou peça que o administrador de cluster crie um PodSecurityPolicy customizado para você:
 - Nome do PodSecurityPolicy predefinido: [`ibm-privileged-psp`](https://ibm.biz/cpkspec-psp)
 - Definição de PodSecurityPolicy customizado:
   ```
@@ -281,10 +286,10 @@ Depois de importar o gráfico Helm para o {{site.data.keyword.cloud_notm}} Priva
 
 ## Implementando componentes individuais
 
-Depois de instalar o gráfico Helm, clique no tile **ibm-blockchain-platform-prod** ou **ibm-blockchain-platform-dev** em seu catálogo ICP para abri-lo. É possível usar a página de configuração para implementar qualquer um dos componentes individuais de sua rede de blockchain. Para obter mais detalhes sobre os componentes que são necessários para a sua solução de blockchain e a ordem na qual eles devem ser implementados, consulte [Guia de implementação do {{site.data.keyword.blockchainfull_notm}} Platform for ICP](/docs/services/blockchain/ibp_for_icp_deployment_guide.html).
+Após instalar o gráfico do Helm, clique no tile **ibm-blockchain-platform-prod** ou **ibm-blockchain-platform-dev** em seu catálogo do {{site.data.keyword.cloud_notm}} Private para abri-lo. É possível usar a página de configuração para implementar qualquer um dos componentes individuais de sua rede de blockchain. Para obter mais detalhes sobre os componentes que são necessários para a sua solução de blockchain e a ordem na qual eles devem ser implementados, veja [Introdução ao {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/ibp_for_icp_deployment_guide.html#get-started-icp).
 
 Em seguida, implemente os componentes individuais:
 
-- Se você estiver implementando um solicitador, primeiro será necessário configurar uma Autoridade de Certificação para o solicitador. A CA gerará certificados que serão usados por outros componentes em sua organização. Para obter mais informações, consulte [Implementando uma autoridade de certificação do {{site.data.keyword.blockchainfull_notm}} Platform no ICP](/docs/services/blockchain/howto/CA_deploy_icp.html). Em seguida, é possível implementar o solicitador que será a ligação comum da rede. Para obter mais informações, consulte [Implementando um solicitador do {{site.data.keyword.blockchainfull_notm}} Platform no ICP](/docs/services/blockchain/howto/orderer_deploy_icp.html)
+- Se você estiver implementando um solicitador, primeiro será necessário configurar uma Autoridade de Certificação para o solicitador. A CA gerará certificados que serão usados por outros componentes em sua organização. Para obter mais informações, consulte [Implementando uma Autoridade de certificação do {{site.data.keyword.blockchainfull_notm}} Platform no {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy). Em seguida, é possível implementar o solicitador que será a ligação comum da rede. Para obter mais informações, veja [Implementando um solicitador do {{site.data.keyword.blockchainfull_notm}} Platform no {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/howto/orderer_deploy_icp.html#icp-orderer-deploy)
 
-- Se você estiver implementando um peer, primeiro será necessário configurar uma Autoridade de Certificação para o peer. A CA gerará certificados que serão usados pelo peer. Para obter mais informações, consulte [Implementando uma autoridade de certificação do {{site.data.keyword.blockchainfull_notm}} Platform no ICP](/docs/services/blockchain/howto/CA_deploy_icp.html). Em seguida, quando você estiver pronto para associar-se a uma rede, será possível implementar os peers que unirão canais, endossarão transações e armazenarão seus dados. Para obter mais informações, consulte [Implementando um peer do {{site.data.keyword.blockchainfull_notm}} no ICP](/docs/services/blockchain/howto/peer_deploy_icp.html) ou [Implementando um peer do {{site.data.keyword.blockchainfull_notm}} para uma rede Starter ou Enterprise Plan](/docs/services/blockchain/howto/peer_deploy_ibp.html), dependendo de a qual rede de blockchain o peer se associará.
+- Se você estiver implementando um peer, primeiro será necessário configurar uma Autoridade de Certificação para o peer. A CA gerará certificados que serão usados pelo peer. Para obter mais informações, consulte [Implementando uma Autoridade de certificação do {{site.data.keyword.blockchainfull_notm}} Platform no {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy). Em seguida, quando você estiver pronto para associar-se a uma rede, será possível implementar os peers que unirão canais, endossarão transações e armazenarão seus dados. Para obter mais informações, veja [Implementando um peer do {{site.data.keyword.blockchainfull_notm}} no {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/howto/peer_deploy_icp.html#icp-peer-deploy) ou [Implementando um peer do {{site.data.keyword.blockchainfull_notm}} para uma rede do Starter ou do Enterprise Plan](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy), dependendo da rede de blockchain à qual o peer se associará.

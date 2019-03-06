@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-12-07"
+  years: 2018,2019
+lastupdated: "2019-02-08"
 ---
 
 {:new_window: target="_blank"}
@@ -10,8 +10,8 @@ lastupdated: "2018-12-07"
 {:codeblock: .codeblock}
 {:screen: .screen}
 {:pre: .pre}
-
 # Instalando e instanciando, e atualizar um chaincode
+{: #install-instantiate-chaincode}
 
 
 ***[Esta página é útil? Diga-nos.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
@@ -27,7 +27,7 @@ Após o chaincode ser instalado nos peers, um único membro de rede o instancia 
 A combinação de **instalação e instanciação** é um recurso poderoso porque permite que um peer use um único chaincode em vários canais. Os peers podem querer associar vários canais que usam o mesmo chaincode, mas com conjuntos diferentes de membros de rede capazes de acessar os dados. Um peer pode instalar o chaincode uma vez e, em seguida, usar o mesmo contêiner de chaincode em qualquer canal no qual ele tenha sido instanciado. Essa abordagem leve economiza espaço de cálculo e armazenamento, além de ajudar a escalar sua rede.
 
 ## Instalando um chaincode
-{: #installchaincode}
+{: #install-instantiate-chaincode-install-cc}
 
 Deve-se instalar o chaincode em cada peer que executará esse chaincode. Conclua as etapas a seguir para instalar um chaincode:
 1. Na tela "Instalar código" de seu Monitor de rede, selecione um peer na lista suspensa no qual instalar o chaincode. Clique no botão **Instalar chaincode**.
@@ -37,11 +37,14 @@ Deve-se instalar o chaincode em cada peer que executará esse chaincode. Conclua
 
 2. No painel pop-up **Instalar chaincode**, insira o nome e a versão de seu chaincode. **Observe que** as sequências de nome e de versões serão usadas em aplicativos para interagir com o chaincode instalado. Clique no botão **Navegar** e navegue por seu sistema de arquivos local para onde quer que os seus arquivos de origem de chaincode estejam armazenados. Selecione um ou mais arquivos de origem de chaincode para instalar no peer. Em seguida, selecione a sua linguagem do chaincode na lista suspensa **Tipo de chaincode**.
 
-É possível instalar o chaincode fazendo o upload de um arquivo ou de múltiplos arquivos GO ou NODE ou é possível fazer upload do chaincode dentro de um arquivo .zip. Usar um arquivo .zip manterá o seu chaincode com uma estrutura de diretório completa. Isso será útil se você quiser incluir pacotes de dependências ou usar índices com o CouchDB. Para obter mais informações sobre o CouchDB e como configurar os índices, consulte [Melhores práticas ao usar o CouchDB](../v10_application.html#couchdb-indices) no tutorial Desenvolvendo aplicativos. Também é possível localizar informações sobre [gerenciamento de dependências externas para o chaincode gravado no GO ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/chaincode4ade.html#managing-external-dependencies-for-chaincode-written-in-go){:new_window} na documentação do Hyperledger Fabric.
+É possível instalar o chaincode fazendo o upload de um arquivo ou de múltiplos arquivos GO ou NODE ou é possível fazer upload do chaincode dentro de um arquivo .zip. Usar um arquivo .zip manterá o seu chaincode com uma estrutura de diretório completa. Isso será útil se você quiser incluir pacotes de dependências ou usar índices com o CouchDB. Para obter mais informações sobre o CouchDB e como configurar os índices, consulte [Melhores práticas ao usar o CouchDB](/docs/services/blockchain/v10_application.html#dev-app-couchdb-indices) no tutorial Desenvolvendo aplicativos. Também é possível localizar informações sobre [gerenciamento de dependências externas para o chaincode gravado no GO ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/chaincode4ade.html#managing-external-dependencies-for-chaincode-written-in-go){:new_window} na documentação do Hyperledger Fabric.
 
   ![Instalar chaincode](../images/chaincode_install.png "Instalar chaincode")
 
 ## Instancie um chaincode
+{: #install-instantiate-chaincode-instantiate-cc}
+
+
 Após um chaincode ser instalado no sistema de arquivos de cada peer que se associa a um canal, o chaincode deverá, então, ser instanciado no canal para que os peers possam interagir com o livro-razão por meio do contêiner de chaincode. A instanciação executa qualquer inicialização necessária do chaincode. Isso envolverá muitas vezes a configuração dos pares chave-valor que compõem o estado mundial inicial de um chaincode.
 
 Você precisa ter a autoridade de **Operador** ou **Escritor** no canal para instanciar o chaincode. O chaincode que tem o mesmo nome e versão em peers diferentes precisa ser instanciado apenas uma vez para implementar o contêiner de chaincode. Conclua as etapas a seguir para instanciar um chaincode:
@@ -55,14 +58,15 @@ Você precisa ter a autoridade de **Operador** ou **Escritor** no canal para ins
   ![Instantiate Chaincode panel](../images/chaincode_instantiate_panel.png "Instantiate Chaincode panel")
 -->
 
-3. Especifique a sua [política de aprovação](../glossary.html#endorsement-policy) do chaincode. É possível aprender mais sobre como configurar as políticas de aprovação na [próxima seção](#specifying-chaincode-endorsement-policies).
+3. Especifique a sua [política de aprovação](/docs/services/blockchain/glossary.html#glossary-endorsement-policy) do chaincode. É possível aprender mais sobre como configurar as políticas de aprovação na [próxima seção](/docs/services/blockchain/howto/install-instantiate-chaincode.html#install-instantiate-chaincode-endorsement-policy).
+
 
 ## Especificando as políticas de aprovação de chaincode
-{: #endorsement-policy}
+{: #install-instantiate-chaincode-endorsement-policy}
 
 É possível usar políticas de aprovação para especificar qual conjunto de peers precisa validar uma nova transação. Por exemplo, uma política de aprovação pode especificar que uma transação será incluída no livro-razão apenas se uma maioria dos membros no canal endossar a transação.
 
-A política de aprovação é configurada quando um chaincode é instanciado em um canal. A organização que instancia o chaincode pode selecionar entre os membros do canal que instalaram o chaincode para se tornarem validadores e configura a política de aprovação para todos os membros do canal. É possível atualizar a sua política de aprovação seguindo as etapas para [atualizar o seu chaincode](#updating-a-chaincode), em seguida, especificar uma nova política ao reinstanciar o seu chaincode na segunda etapa.
+A política de aprovação é configurada quando um chaincode é instanciado em um canal. A organização que instancia o chaincode pode selecionar entre os membros do canal que instalaram o chaincode para se tornarem validadores e configura a política de aprovação para todos os membros do canal. É possível atualizar a sua política de aprovação seguindo as etapas para [atualizar o seu chaincode](/docs/services/blockchain/howto/install_instantiate_chaincode.html#install-instantiate-chaincode-update-cc), em seguida, especificar uma nova política ao reinstanciar o seu chaincode na segunda etapa.
 
 Quando você usar o Monitor de rede para configurar a sua política de aprovação, poderá usar a UI para especificar uma **Política simples** ou usar JSON para especificar uma **Política avançada**.
 
@@ -79,10 +83,11 @@ Quando você usar o Monitor de rede para configurar a sua política de aprovaç�
 As políticas de endosso não são atualizadas automaticamente quando novas organizações se associam ao canal e instalam o chaincode. Por exemplo, se a política requerer duas de cinco organizações para endossar uma transação, a política não será atualizada para requerer duas de seis organizações quando uma nova organização se associar ao canal. Em vez disso, a nova organização não será listada na política e eles não serão capazes de endossar transações. É possível incluir uma nova organização em uma política de endosso atualizando o chaincode relevante.
 
 ## Atualizando um chaincode
+{: #install-instantiate-chaincode-update-cc}
 
 É possível atualizar um chaincode para mudar a programação do chaincode, mantendo o seu relacionamento com os ativos no livro-razão. Devido à combinação de instalação e instanciação, será necessário atualizar o chaincode em todos os peers que estiverem no canal com esse chaincode. Conclua as etapas a seguir para atualizar o seu chaincode.
 
-1. Instale um chaincode com o mesmo nome que o seu antigo chaincode, mas com uma versão diferente. É possível seguir as mesmas etapas que [Instalando um chaincode](#installchaincode). Certifique-se de selecionar o mesmo canal que o seu chaincode original.
+1. Instale um chaincode com o mesmo nome que o seu antigo chaincode, mas com uma versão diferente. É possível seguir as mesmas etapas que [Instalando um chaincode](/docs/services/blockchain/howto/install_instantiate_chaincode.html#install-instantiate-chaincode-install-cc). Certifique-se de selecionar o mesmo canal que o seu chaincode original.
 
   ![Update Chaincode](../images/upgrade_chaincode.png "Update Chaincode")
 

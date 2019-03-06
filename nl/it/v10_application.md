@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-12-07"
+  years: 2017, 2019
+lastupdated: "2019-02-08"
 
 ---
 
@@ -10,28 +10,33 @@ lastupdated: "2018-12-07"
 {:shortdesc: .shortdesc}
 {:codeblock: .codeblock}
 {:screen: .screen}
+{:note: .note}
+{:important: .important}
+{:tip: .tip}
 {:pre: .pre}
 
 # Sviluppo di applicazioni con gli SDK Fabric
-{: #dev_app}
+{: #dev-app}
 
 
 ***[Questa pagina è utile? Faccelo sapere.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 
-{{site.data.keyword.blockchainfull}} Platform fornisce le API che puoi utilizzare per connettere applicazioni alla tua rete blockchain. Puoi utilizzare gli endpoint API di rete nel profilo di connessione per richiamare il tuo chaincode e aggiornare o interrogare tramite query il libro mastro specifico del canale sui tuoi peer. Puoi anche utilizzare le API nella [IU Swagger](/docs/services/blockchain/howto/swagger_apis.html) per gestire i nodi, i canali e i membri della tua rete.
+{{site.data.keyword.blockchainfull}} Platform fornisce le API che puoi utilizzare per connettere applicazioni alla tua rete blockchain. Puoi utilizzare gli endpoint API di rete nel profilo di connessione per richiamare il tuo chaincode e aggiornare o interrogare tramite query il libro mastro specifico del canale sui tuoi peer. Puoi anche utilizzare le API nella [IU Swagger](/docs/services/blockchain/howto/swagger_apis.html#ibp-swagger) per gestire i nodi, i canali e i membri della tua rete.
 {:shortdesc}
 
 Puoi utilizzare questa esercitazione per apprendere in che modo accedere alle API di {{site.data.keyword.blockchainfull_notm}} Platform e utilizzarle per iscrivere e registrare l'applicazione con la rete. Imparerai anche come interagire con la tua rete ed emettere transazioni dalla tua applicazione. L'esercitazione è basata sull'esercitazione [Writing Your First Application ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/write_first_app.html "writing your first application"){:new_window} nella documentazione di Hyperledger Fabric. Utilizzerai molti degli stessi file e comandi dell'esercitazione **Writing Your First Application**, ma li userai per interagire con una rete in {{site.data.keyword.blockchainfull_notm}} Platform. Questa esercitazione descrive ogni fase dello sviluppo di applicazioni utilizzando l'SDK Node di Fabric Hyperledger. Imparerai inoltre come iscrivere e registrare gli utenti utilizzando il client CA Fabric come alternativa all'utilizzo dell'SDK.
 
-Oltre a questa esercitazione, puoi utilizzare le applicazioni e il chaincode di esempio che {{site.data.keyword.blockchainfull_notm}} Platform fornisce come template quando crei le tue soluzioni di business. Per ulteriori informazioni, vedi [Distribuzione di applicazioni di esempio](/docs/services/blockchain/howto/prebuilt_samples.html).
+Oltre a questa esercitazione, puoi utilizzare le applicazioni e il chaincode di esempio che {{site.data.keyword.blockchainfull_notm}} Platform fornisce come template quando crei le tue soluzioni di business. Per ulteriori informazioni, vedi [Distribuzione di applicazioni di esempio](/docs/services/blockchain/howto/prebuilt_samples.html#deploying-sample-applications).
 
 ## Prerequisiti
+{: #dev-app-prerequisites}
+
 Prima di utilizzare l'esercitazione **Writing Your First Application** su {{site.data.keyword.blockchainfull_notm}} Platform, devi avere i seguenti prerequisiti.
 
-- Se non hai una rete blockchain su {{site.data.keyword.cloud_notm}}, devi crearne una con un piano di adesione Starter o Enterprise. Per ulteriori informazioni, vedi [Creazione di una rete piano Starter](/docs/services/blockchain/get_start_starter_plan.html#creating-a-network) o [Creazione di una rete piano Enterprise](/docs/services/blockchain/get_start.html#creating-a-network).
+- Se non hai una rete blockchain su {{site.data.keyword.cloud_notm}}, devi crearne una con un piano di adesione Starter o Enterprise. Per ulteriori informazioni, vedi [Creazione di una rete piano Starter](/docs/services/blockchain/get_start_starter_plan.html#getting-started-with-starter-plan-creating-a-network) oppure [Creazione di una rete piano Enterprise](/docs/services/blockchain/get_start.html
 
-  Dopo aver eseguito l'accesso al Monitoraggio della rete della tua rete, aggiungi almeno un peer per la tua organizzazione nella schermata "Panoramica". Quindi, crea almeno un canale nella tua rete. Per ulteriori informazioni, vedi [Creazione di un canale](/docs/services/blockchain/howto/create_channel.html#creating-a-channel). **Nota** che se utilizzi una rete piano Starter, la tua rete dispone già di un canale con il nome di `defaultchannel` che puoi usare per distribuire il chaincode.
+  Dopo aver eseguito l'accesso al Monitoraggio della rete della tua rete, aggiungi almeno un peer per la tua organizzazione nella schermata "Panoramica". Quindi, crea almeno un canale nella tua rete. Per ulteriori informazioni, vedi [Creazione di un canale](/docs/services/blockchain/howto/create_channel.html#ibp-create-channel-creating-a-channel). **Nota** che se utilizzi una rete piano Starter, la tua rete dispone già di un canale con il nome di `defaultchannel` che puoi usare per distribuire il chaincode.
 
 - Installa gli strumenti richiesti per scaricare gli esempi di Fabric Hyperledger e per utilizzare l'SDK Node.
   * [Curl ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/prereqs.html#install-curl "Curl") o [Git ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git "Git"){:new_window}
@@ -40,7 +45,7 @@ Prima di utilizzare l'esercitazione **Writing Your First Application** su {{site
 - Installa gli esempi di Hyperledger Fabric scaricando la directory `fabric-samples`. Puoi attenerti a quanto indicato nella [guida Getting Started ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/install.html "guida Getting Started"){:new_window} nella documentazione di Hyperledger Fabric.
 
 - Vai alla directory `fabric-samples` sulla tua macchina locale.
-  * Usa il comando `git checkout` per usare il ramo che corrisponde alla versione di Hyperledger Fabric delle tue reti. Puoi trovare la tua versione Fabric aprendo la [finestra Preferenze della rete](/docs/services/blockchain/v10_dashboard.html#network-preferences) nel tuo Monitoraggio della rete.
+  * Usa il comando `git checkout` per usare il ramo che corrisponde alla versione di Hyperledger Fabric delle tue reti. Puoi trovare la tua versione Fabric aprendo la [finestra Preferenze della rete](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-network-preferences) nel tuo Monitoraggio della rete.
     - Se la tua rete si trova su Fabric versione 1.2, puoi utilizzare il ramo principale.
     - Se la tua rete si trova su Fabric versione 1.1, esegui `git checkout v1.1.0`.
     - Se la tua rete si trova su Fabric versione 1.0, esegui `git checkout v1.0.6`.
@@ -49,21 +54,21 @@ Prima di utilizzare l'esercitazione **Writing Your First Application** su {{site
 
   * Nella directory `fabcar`, esegui il comando `npm install` per installare i pacchetti necessari per l'utilizzo dell'SDK Fabric, tra cui `fabric-client` e `fabric-ca-client`.
 
-- Installa e istanzia il chaincode fabcar sul tuo canale utilizzando il [Monitoraggio della rete](/docs/services/blockchain/howto/install_instantiate_chaincode.html#installchaincode). Puoi trovare il chaincode fabcar nella cartella `fabric-samples` sotto `fabric-samples > chaincode > fabcar > go`.
+- Installa e istanzia il chaincode fabcar sul tuo canale utilizzando il [Monitoraggio della rete](/docs/services/blockchain/howto/install_instantiate_chaincode.html#install-instantiate-chaincode-install-cc). Puoi trovare il chaincode fabcar nella cartella `fabric-samples` sotto `fabric-samples > chaincode > fabcar > go`.
 
 - Richiama il profilo di connessione della tua rete nella schermata "Panoramica" del Monitoraggio della rete. Salva il profilo di connessione nella directory `fabcar` e rinominalo in `creds.json`.
 
 ## Utilizzo degli SDK Fabric
-{: #using-the-fabric-sdks}
+{: #dev-app-fabric-sdks}
 
 Gli SDK Hyperledger Fabric forniscono una potente serie di API che consentono alle applicazioni di interagire con le reti blockchain. Puoi trovare l'elenco più aggiornato dei linguaggi supportati nella [Documentazione della community Hyperledger Fabric SDK ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/getting_started.html#hyperledger-fabric-sdks "Documentazione della community Hyperledger Fabric SDK"){:new_window}. Si consiglia di utilizzare l'SDK Node o l'SDK Java con {{site.data.keyword.blockchainfull_notm}} Platform. Puoi ottenere ulteriori informazioni sulle API fornite dagli SDK nei singoli repository dell'SDK.
 
 Questa esercitazione utilizza l'[SDK Node ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://fabric-sdk-node.github.io/ "SDK Node"){:new_window} per registrare e iscrivere la tua applicazione e quindi utilizza l'applicazione per emettere le transazioni richiamando e interrogando il chaincode. Questa esercitazione descrive le informazioni che devi fornire all'SDK in modo che la tua applicazione possa connettersi alla rete blockchain. Introduce inoltre alcune delle API che puoi utilizzare e il modo in cui l'SDK interagisce con le transazioni e le invia alla tua rete blockchain.
 
 ## Aggiunta di endpoint API di rete alla tua applicazione
-{: #api-endpoints}
+{: #dev-app-api-endpoints}
 
-Devi fornire alla tua applicazione gli endpoint API di specifiche risorse di rete, tra cui ordinante, CA e nodi peer, nella rete blockchain su {{site.data.keyword.cloud_notm}}. La tua applicazione può interagire con la rete tramite questi endpoint API. Puoi trovare gli endpoint API nel Profilo di connessione della tua rete. Il profilo di connessione è in formato JSON e contiene le informazioni sull'endpoint API e gli ID di registrazione (enrollID) e i segreti per le tue risorse di rete.
+Devi fornire alla tua applicazione gli endpoint API di specifiche risorse di rete, tra cui ordinante, CA e nodi peer, nella rete blockchain su {{site.data.keyword.cloud_notm}}. La tua applicazione può interagire con la rete tramite questi endpoint API. Puoi trovare gli endpoint API nel Profilo di connessione della tua rete. Il profilo di connessione è in formato JSON e contiene le informazioni sull'endpoint API e gli ID di iscrizione (enrollID) e i segreti per le tue risorse di rete.
 
 1. Richiama le informazioni sull'endpoint API delle tue risorse di rete dal tuo Monitoraggio della rete con uno dei seguenti metodi:
   * Nella schermata "Panoramica", fai clic su **Profilo connessione**. Il profilo di connessione contiene un insieme completo di informazioni sull'endpoint API di tutte le tue risorse di rete.
@@ -81,28 +86,28 @@ Devi fornire alla tua applicazione gli endpoint API di specifiche risorse di ret
                   ...
   ```
 
-  **Nota**: ti potresti voler occupare delle risorse di rete al di fuori della tua organizzazione con la tua applicazione. Ad esempio, se una [politica di approvazione](/docs/services/blockchain/howto/install_instantiate_chaincode.html#endorsement-policy) del chaincode richiede approvazioni da altre organizzazioni sul canale, dovrai ottenere le informazioni sull'endpoint dei loro peer e dei certificati TLS associati. Puoi trovare queste informazioni nella sezione peer del profilo di connessione. Tuttavia, devi contattare l'amministratore delle altre organizzazioni in merito ai peer che hanno aggiunto a determinati canali.
+Ti potresti voler occupare delle risorse di rete al di fuori della tua organizzazione con la tua applicazione. Ad esempio, se una [politica di approvazione](/docs/services/blockchain/howto/install_instantiate_chaincode.html#install-instantiate-chaincode-endorsement-policy) del chaincode richiede approvazioni da altre organizzazioni nel canale, devi inviare la transazione a un numero sufficiente di peer di tali organizzazioni per conformarti alla politica. [Il rilevamento dei servizi (Service Discovery) ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/discovery-overview.html "Rilevamento dei servizi") in Hyperledger Fabric non è supportato per il piano Starter o il piano Enterprise. Dovrai ottenere le informazioni sull'endpount dei peer e i certificati TLS di accompagnamento delle altre organizzazioni utilizzando la sezione "peer" del tuo profilo di connessione. Puoi contattare gli amministratori delle altre organizzazioni in merito a quali peer hanno unito a determinati canali.{:note}
 
 3. Inserisci le informazioni sull'endpoint API in un file di configurazione della tua applicazione come mostrato nel seguente esempio:
   ```
   grpcs://n7413e3b503174a58b112d30f3af55016-orderer.us3.blockchain.ibm.com:31001
   ```
 
-  Puoi anche inviare [richieste HEAD](/docs/services/blockchain/howto/monitor_network.html#monitor-nodes) a questi endpoint per verificare la disponibilità delle tue risorse di rete.
+  Puoi anche inviare [richieste HEAD](/docs/services/blockchain/howto/monitor_network.html#monitor-blockchain-network-monitor-nodes) a questi endpoint per verificare la disponibilità delle tue risorse di rete.
 
-  Se utilizzi gli SDK Fabric, puoi anche connetterti alla rete utilizzando il profilo di connessione. Questa esercitazione fornisce manualmente le informazioni sull'endpoint della tua rete all'SDK. Tuttavia, puoi trovare un'esercitazione e una guida sull'[utilizzo del tuo profilo di connessione con l'SDK](#using-your-connection-profile-with-the-sdk) in una sezione successiva.
+  Se utilizzi gli SDK Fabric, puoi anche connetterti alla rete utilizzando il profilo di connessione. Questa esercitazione fornisce manualmente le informazioni sull'endpoint della tua rete all'SDK. Tuttavia, puoi trovare un'esercitazione e una guida sull'[utilizzo del tuo profilo di connessione con l'SDK](/docs/services/blockchain/v10_application.html#dev-app-connection-profile) in una sezione successiva.
 
 ## Iscrizione della tua applicazione
-{: #enroll-app}
+{: #dev-app-enroll}
 
-Prima di connettere un'applicazione alla tua rete su {{site.data.keyword.blockchainfull_notm}} Platform, devi provare l'autenticità della tua applicazione alla rete. Non approfondiremo i dettagli dei certificati x509 e dell'infrastruttura di chiavi pubbliche, anche se puoi scoprire di più visitando l'esercitazione [Gestione dei certificati su {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/certificates.html). In poche parole, i flussi di comunicazione in Fabric utilizzano le operazioni di firma/verifica su ogni touchpoint. Pertanto, qualsiasi applicazione che invia chiamate, come query o aggiornamenti del libro mastro, alla rete deve firmare i payload con la chiave privata e allegare un certificato x509 correttamente firmato a scopo di verifica. L'**iscrizione** è il processo di generazione delle chiavi e dei certificati necessari dall'Autorità di certificazione appropriata. Dopo l'iscrizione, la tua applicazione è pronta per comunicare con la rete.
+Prima di connettere un'applicazione alla tua rete su {{site.data.keyword.blockchainfull_notm}} Platform, devi provare l'autenticità della tua applicazione alla rete. Non approfondiremo i dettagli dei certificati x509 e dell'infrastruttura di chiavi pubbliche, anche se puoi scoprire di più visitando l'esercitazione [Gestione dei certificati su {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/certificates.html#managing-certificates). In poche parole, i flussi di comunicazione in Fabric utilizzano le operazioni di firma/verifica su ogni touchpoint. Pertanto, qualsiasi applicazione che invia chiamate, come query o aggiornamenti del libro mastro, alla rete deve firmare i payload con la chiave privata e allegare un certificato x509 correttamente firmato a scopo di verifica. L'**iscrizione** è il processo di generazione delle chiavi e dei certificati necessari dall'Autorità di certificazione appropriata. Dopo l'iscrizione, la tua applicazione è pronta per comunicare con la rete.
 
-Questa sezione spiega come richiamare le chiavi e i certificati con l'SDK Node di Fabric utilizzando il codice di esempio che fa parte dell'esercitazione **Writing Your First Application**. Puoi generare i certificati solo utilizzando un'identità che è stata registrata presso la tua CA (Certificate Authority, Autorità di certificazione). L'esercitazione di seguito esegue prima l'iscrizione utilizzando un'identità di amministratore che è già stata registrata presso la tua CA. Utilizza quindi questi certificati per registrare una nuova identità client. L'esercitazione esegue nuovamente l'iscrizione utilizzando la nuova identità e utilizza questi certificati per inoltrare le transazioni alla rete.<!---You can find an illustration of how the developing applications tutorial interacts with your organization CA in the diagram below.--->
+Questa sezione spiega come richiamare le chiavi e i certificati con l'SDK Node di Fabric utilizzando il codice di esempio che fa parte dell'esercitazione **Writing Your First Application**. Puoi generare i certificati solo utilizzando un'identità che è stata registrata presso la tua CA (Certificate Authority, Autorità di certificazione). L'esercitazione di seguito esegue prima l'iscrizione utilizzando un'identità amministratore che è già stata registrata presso la tua CA. Utilizza quindi questi certificati per registrare una nuova identità client. L'esercitazione esegue nuovamente l'iscrizione utilizzando la nuova identità e utilizza questi certificati per inoltrare le transazioni alla rete.<!---You can find an illustration of how the developing applications tutorial interacts with your organization CA in the diagram below.--->
 
-Puoi anche utilizzare la schermata "CA (Certificate Authority)" del Monitoraggio della rete per generare i certificati e utilizzare tali certificati per interagire con la rete. Per scoprire come, visita [Generazione di certificati utilizzando il Monitoraggio della rete](#enroll-panel). Puoi anche imparare come utilizzare il [client CA Fabric](/docs/services/blockchain/certificates.html#enroll-register-caclient) dalla riga di comando per generare i certificati e registrare gli utenti nell'esercitazione [Gestione certificati](/docs/services/blockchain/certificates.html).
+Puoi anche utilizzare la schermata "CA (Certificate Authority)" del Monitoraggio della rete per generare i certificati e utilizzare tali certificati per interagire con la rete. Per scoprire come, visita [Generazione di certificati utilizzando il Monitoraggio della rete](/docs/services/blockchain/v10_application.html#dev-app-enroll-panel). Puoi anche imparare come utilizzare il [client CA Fabric](/docs/services/blockchain/certificates.html#managing-certificates-enroll-register-caclient) dalla riga di comando per generare i certificati e registrare gli utenti nell'esercitazione [Gestione certificati](/docs/services/blockchain/certificates.html#managing-certificates).
 
 ### Iscrizione mediante l'SDK Fabric
-{: #enroll-app-sdk}
+{: #dev-app-enroll-sdk}
 
 Dalla directory `fabcar` nella tua cartella `fabric-samples`, apri il file `enrollAdmin.js` in un editor di testo.
 
@@ -178,17 +183,17 @@ node enrollAdmin.js
 ```
 {:codeblock}
 
-Il comando di iscrizione genera il signCert e lo esporta in una cartella denominata `hfc-key-store`. I file futuri in questa esercitazione cercheranno i tuoi certificati in questa cartella. Se riesci trovare i certificati di gestione nella cartella `hfc-key-store`, il comando di iscrizione funziona.
+Il comando di iscrizione genera il signCert e lo esporta in una cartella denominata `hfc-key-store`. I file futuri in questa esercitazione cercheranno i tuoi certificati in questa cartella. Se riesci trovare i certificati di amministrazione nella cartella `hfc-key-store`, il comando di iscrizione funziona.
 
-Se vuoi [gestire la tua rete utilizzando l'SDK](#operate-sdk), devi caricare il signCert amministratore in {{site.data.keyword.blockchainfull_notm}} Platform. Puoi trovare il signCert amministratore nella cartella `hfc-key-store`. Apri il file `admin` e copia il certificato all'interno delle virgolette dopo il campo `certificate`. Utilizza uno strumento o un editor di testo per convertire il certificato in formato PEM. Puoi quindi caricare il certificato di gestione nella tua rete blockchain dal Monitoraggio della rete. Per ulteriori informazioni sull'aggiunta di certificati, vedi [la scheda "Certificati" della schermata "Membro"](/docs/services/blockchain/v10_dashboard.html#members) nel Monitoraggio della rete. Questa operazione non è necessaria se stai utilizzando l'SDK solo per richiamare o interrogare il chaincode.
+Se vuoi [gestire la tua rete utilizzando l'SDK](/docs/services/blockchain/v10_application.html#dev-app-operate-sdk), devi caricare il signCert amministratore in {{site.data.keyword.blockchainfull_notm}} Platform. Puoi trovare il signCert amministratore nella cartella `hfc-key-store`. Apri il file `admin` e copia il certificato all'interno delle virgolette dopo il campo `certificate`. Utilizza uno strumento o un editor di testo per convertire il certificato in formato PEM. Puoi quindi caricare il certificato di amministrazione nella tua rete blockchain dal Monitoraggio della rete. Per ulteriori informazioni sull'aggiunta di certificati, vedi [la scheda "Certificati" della schermata "Membro"](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-members) nel Monitoraggio della rete. Questa operazione non è necessaria se stai utilizzando l'SDK solo per richiamare o interrogare il chaincode.
 
 ## Registrazione della tua applicazione
-{: #register-app}
+{: #dev-app-register}
 
 Dopo aver generato i certificati lato client. devi registrare la tua applicazione con l'Autorità di certificazione della rete. La registrazione aggiunge la tua applicazione all'elenco dei componenti che la rete può riconoscere. Una procedura ottimale è registrare la tua applicazione come identità separata piuttosto che utilizzare `admin` per firmare le richieste.
 
 ### Registrazione utilizzando l'SDK
-{: #register-app-sdk}
+{: #dev-app-register-sdk}
 
 Puoi utilizzare il file `registerUser.js` per registrare e iscrivere l'applicazione come `user1` utilizzando il tuo signCert `admin`. Apri `registerUser.js` in un editor di testo.
 
@@ -232,10 +237,10 @@ Esegui il comando `node registerUser.js` per registrare e iscrivere `user1`. Se 
 
 ### Registrazione utilizzando il Monitoraggio della rete
 
-In alternativa, puoi registrare e iscrivere la tua applicazione client utilizzando la scheda **CA (Certificate Authority)** del Monitoraggio della rete. Per ulteriori istruzioni, fai riferimento a queste [informazioni](/docs/services/blockchain/v10_dashboard.html#ca).
+In alternativa, puoi registrare e iscrivere la tua applicazione client utilizzando la scheda **CA (Certificate Authority)** del Monitoraggio della rete. Per ulteriori istruzioni, fai riferimento a queste [informazioni](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-ca).
 
 ## Emissione di transazioni richiamando e interrogando il chaincode
-{: #invoke-query}
+{: #dev-app-invoke-query}
 
 La tua applicazione deve interagire con l'intera rete blockchain per inviare una transazione.
 
@@ -243,12 +248,12 @@ La tua applicazione deve interagire con l'intera rete blockchain per inviare una
 2. I peer di approvazione restituiscono la transazione approvata all'applicazione.
 3. L'applicazione invia la transazione approvata al servizio ordini per aggiungere la transazione al libro mastro.
 
-Per ulteriori informazioni sul flusso completo della transazione, vedi [Flusso di transazioni ![Icona link esterno](images/external_link.svg "Icona link esterno")]( https://hyperledger-fabric.readthedocs.io/en/release-1.2/txflow.html "Flusso di transazioni"){:new_window} nella documentazione di Hyperledger Fabric. Dopo aver iniziato con questa esercitazione, consulta la sezione [Connettività e disponibilità delle applicazioni](#app-connectivity-availability) per suggerimenti sulla gestione di come il tuo SDK interagisce con la rete.
+Per ulteriori informazioni sul flusso completo della transazione, vedi [Flusso di transazioni ![Icona link esterno](images/external_link.svg "Icona link esterno")]( https://hyperledger-fabric.readthedocs.io/en/release-1.2/txflow.html "Flusso di transazioni"){:new_window} nella documentazione di Hyperledger Fabric. Dopo aver iniziato con questa esercitazione, consulta la sezione [Connettività e disponibilità delle applicazioni](/docs/services/blockchain/v10_application.html#dev-app-connectivity-availability) per suggerimenti sulla gestione di come il tuo SDK interagisce con la rete.
 
-I seguenti esempi dimostrano come l'SDK Node imposta la topologia di rete, definisce la proposta di transazione e quindi invia la transazione alla rete. Puoi utilizzare il file `invoke.js` per richiamare le funzioni all'interno del chaincode `fabcar`. Queste funzioni ti consentono di creare e trasferire gli asset sul libro mastro blockchain. Questa esercitazione utilizza la funzione `initLedger` per aggiungere nuovi dati al tuo canale e quindi utilizza il file `query.js` per eseguire la query dei dati.
+I seguenti esempi dimostrano come l'SDK Node imposta la topologia di rete, definisce la proposta di transazione e quindi invia la transazione alla rete. Puoi utilizzare il file `invoke.js` per richiamare le funzioni all'interno del chaincode `fabcar`. Queste funzioni ti consentono di creare e trasferire gli asset nel libro mastro blockchain. Questa esercitazione utilizza la funzione `initLedger` per aggiungere nuovi dati al tuo canale e quindi utilizza il file `query.js` per eseguire la query dei dati.
 
 ### Richiamo del chaincode
-{: #invoke}
+{: #dev-app-invoke}
 
 Apri il file `invoke.js` in un editor di testo.
 
@@ -265,7 +270,7 @@ Apri il file `invoke.js` in un editor di testo.
   ```
   {:codeblock}
 
-  Le nuove variabili peer e orderer (ordinante) aprono connessioni GRPC alla tua rete blockchain. Per ulteriori informazioni sulla gestione di queste connessioni, consulta [Apertura e chiusura di connessioni di rete](#connections).
+  Le nuove variabili peer e orderer (ordinante) aprono connessioni GRPC alla tua rete blockchain. Per ulteriori informazioni sulla gestione di queste connessioni, consulta [Apertura e chiusura di connessioni di rete](/docs/services/blockchain/v10_application.html#dev-app-connections).
 
   Quando aggiungi l'URL peer al metodo `fabric_client.newPeer`, importi anche i certificati TLS pertinenti dal tuo profilo di connessione utilizzando il frammento di codice riportato di seguito. Hai fatto lo stesso quando hai aggiunto l'URL del servizio ordini. Devi utilizzare questi certificati TLS per autenticare la comunicazione con la tua rete.
   ```
@@ -275,7 +280,7 @@ Apri il file `invoke.js` in un editor di testo.
 
   Se la politica di approvazione richiede che le transazioni siano approvate da altre organizzazioni nel canale, devi aggiungere tali peer di organizzazioni utilizzando i metodi `newPeer()` e `channel.addPeer()` quando configuri la rete. Le organizzazioni devono inviarti l'elenco dei peer che hanno unito a un particolare canale. Le informazioni sull'endpoint e i certificati TLS saranno disponibili nel profilo di connessione. L'SDK invierà la transazione a tutti i peer aggiunti al canale.
 
-  Puoi anche aggiungere ulteriori peer appartenenti alla tua organizzazione che sono uniti al canale come passo per [rendere la tua applicazione altamente disponibile](#ha-app). Ciò fornirà all'SDK un failover nel caso in cui uno dei tuoi peer venga interrotto.
+  Puoi anche aggiungere ulteriori peer appartenenti alla tua organizzazione che sono uniti al canale come passo per [rendere la tua applicazione altamente disponibile](/docs/services/blockchain/v10_application.html#dev-app-ha-app). Ciò fornirà all'SDK un failover nel caso in cui uno dei tuoi peer venga interrotto.
 
 3. Dopo aver impostato la rete fabric e importato l'identità dell'applicazione e il signCert dal passo di registrazione, il file `invoke.js` definisce la proposta che invierai alla rete. Puoi utilizzare la funzione `initLedger` nel chaincode `fabcar` per aggiungere alcuni dati iniziali al libro mastro. Puoi anche modificare il blocco di codice per richiamare altre funzioni che puoi trovare nel chaincode `fabcar`.
   ```
@@ -299,7 +304,7 @@ Apri il file `invoke.js` in un editor di testo.
   ```
   {:codeblock}
 
-  Sebbene l'esempio utilizzi un servizio eventi basato sul peer, devi utilizzare un listener basato sul canale. Puoi saperne di più nella sezione relativa alla [gestione delle transazioni](#managing-transactions) e nella [documentazione di SDK Node ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://fabric-sdk-node.github.io/tutorial-channel-events.html "servizio eventi basato sul canale"){:new_window}.
+  Sebbene l'esempio utilizzi un servizio eventi basato sul peer, devi utilizzare un listener basato sul canale. Puoi saperne di più nella sezione relativa alla [gestione delle transazioni](/docs/services/blockchain/v10_application.html#dev-app-managing-transactions) e nella [documentazione di SDK Node ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://fabric-sdk-node.github.io/tutorial-channel-events.html "servizio eventi basato sul canale"){:new_window}.
 
 5. Per impostazione predefinita, `invoke.js` invia la transazione come `user1`. Puoi modificare il file `invoke.js` se hai registrato un nome diverso.
 
@@ -311,7 +316,7 @@ Successfully sent Proposal and received ProposalResponse: Status - 200, message 
 Ciò indica che l'applicazione ha richiamato correttamente il tuo chaincode e che ha aggiunto i dati al libro mastro.
 
 ### Esecuzione della query del chaincode
-{: #query}
+{: #dev-app-query}
 
 Adesso puoi utilizzare `query.js` per leggere il libro mastro. Apri il file `query.js` in un editor di testo.
 
@@ -337,7 +342,7 @@ Response is
 Per ulteriori informazioni sull'applicazione fabcar e sulle funzioni che utilizza, puoi consultare l'esercitazione completa di [Writing Your First Application ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/write_first_app.html "writing your first application"){:new_window} nella documentazione di Hyperledger Fabric.
 
 ## Utilizzo del tuo profilo di connessione con l'SDK
-{: #using-your-connection-profile-with-the-sdk}
+{: #dev-app-connection-profile}
 
 Invece di importare manualmente le informazioni sull'endpoint della tua rete, puoi fare in modo che l'SDK si connetta alla rete utilizzando il **Profilo connessione** dalla schermata **Panoramica** del tuo Monitoraggio della rete. Ciò semplifica il processo di connessione alla tua Certificate Authority (Autorità di certificazione) per l'iscrizione e la registrazione. Inoltre, elimina la necessità di definire la tua rete fabric prima di inviare una transazione. L'SDK troverà i peer e gli ordinanti sul canale pertinente direttamente dal profilo di connessione. Puoi trovare ulteriori informazioni su come utilizzare il profilo di connessione nella [documentazione di SDK Node ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://fabric-sdk-node.github.io/tutorial-network-config.html "esercitazione sul profilo di connessione"){:new_window}.
 
@@ -356,14 +361,14 @@ var channel = fabric_client.newChannel('defaultchannel');
 
 L'SDK aggiunge quindi i peer e il servizio ordini definiti sul canale utilizzando il profilo di connessione. Ciò rende più efficienti le applicazioni di scrittura e semplifica l'aggiornamento delle applicazioni man mano che i membri della rete si uniscono, escono e avviano nuovi canali. Fai riferimento all'[esercitazione sul profilo di connessione ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://fabric-sdk-node.github.io/tutorial-network-config.html "esercitazione sul profilo di connessione"){:new_window} nella documentazione di SDK Node per conoscere i passi aggiuntivi coinvolti. Puoi utilizzare questa [versione dell'esercitazione di fabcar ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://www.ibm.com/developerworks/cloud/library/cl-deploy-fabcar-sample-application-ibm-blockchain-starter-plan/index.html){:new_window} che usa un profilo di connessione anziché connessioni endpoint manuali.
 
-Puoi inviare transazioni da approvare ai peer al di fuori della tua organizzazione modificando il tuo profilo di connessione. Il profilo di connessione contiene già le informazioni sull'endpoint e i certificati TLS di peer delle altre organizzazioni sulla tua rete {{site.data.keyword.blockchainfull_notm}} Platform. Aggiungi il nome del peer al canale pertinente nella sezione `channels` del profilo per aggiungere il peer al canale.
+[Il rilevamento dei servizi (Service Discovery) ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/discovery-overview.html "Rilevamento dei servizi") per una politica di approvazione in Hyperledger Fabric non è supportato per il piano Starter o il piano Enterprise. Tuttavia, puoi inviare le transazioni ai peer al di fuori della tua organizzazione per l'approvazione modificando il tuo profilo di connessione. Il profilo di connessione contiene già le informazioni sull'endpoint e i certificati TLS di peer delle altre organizzazioni sulla tua rete {{site.data.keyword.blockchainfull_notm}} Platform. Aggiungi il nome del peer al canale pertinente nella sezione "channels" del profilo per aggiungere il peer al canale. Dovrai contattare gli amministratori delle altre organizzazioni in merito a quali peer hanno unito a determinati canali.
 
 ## Generazione dei certificati utilizzando il Monitoraggio della rete
-{: #enroll-panel}
+{: #dev-app-enroll-panel}
 
-Puoi utilizzare il Monitoraggio della rete per generare i certificati utilizzando l'identità di amministratore e passare quindi tali certificati direttamente all'SDK. Ciò significa che puoi iniziare a interagire con la rete rapidamente, senza dover generare i certificati utilizzando l'SDK.
+Puoi utilizzare il Monitoraggio della rete per generare i certificati utilizzando l'identità amministratore e passare quindi tali certificati direttamente all'SDK. Ciò significa che puoi iniziare a interagire con la rete rapidamente, senza dover generare i certificati utilizzando l'SDK.
 
-Vai al pannello "CA (Certificate Authority)" nel tuo Monitoraggio della rete. Fai clic sul pulsante **Genera certificato** accanto alla tua identità di amministratore per ottenere un nuovo signCert e una nuova chiave privata dalla tua CA. Il campo **Certificato** contiene il signCert, appena sopra **Chiave privata**. Puoi fare clic sull'icona di copia alla fine di ogni campo per copiare il valore. Salva questi certificati in un'ubicazione dove puoi fornirli alla tua applicazione. **Nota** che {{site.data.keyword.blockchainfull_notm}} Platform non memorizza questi certificati. Devi salvarli e memorizzarli in modo sicuro.
+Vai al pannello "CA (Certificate Authority)" nel tuo Monitoraggio della rete. Fai clic sul pulsante **Genera certificato** accanto alla tua identità amministratore per ottenere un nuovo signCert e una nuova chiave privata dalla tua CA. Il campo **Certificato** contiene il signCert, appena sopra **Chiave privata**. Puoi fare clic sull'icona di copia alla fine di ogni campo per copiare il valore. Salva questi certificati in un'ubicazione dove puoi fornirli alla tua applicazione. **Nota** che {{site.data.keyword.blockchainfull_notm}} Platform non memorizza questi certificati. Devi salvarli e memorizzarli in modo sicuro.
 
 Il signCert e la chiave privata sono sufficienti per formare un contesto utente che può firmare le richieste all'interno dell'SDK Node. Usa il metodo [createUser ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://fabric-sdk-node.github.io/Client.html#createUser__anchor "crea utente"){:new_window} della classe Client per creare l'oggetto di contesto utente. All'interno del metodo `creatUser`, passa nome identità e mspid all'oggetto [user ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://fabric-sdk-node.github.io/global.html#UserOpts "user"){:new_window}, insieme ai percorsi alla chiave privata e al signCert all'oggetto [CryptoContent ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://fabric-sdk-node.github.io/global.html#CryptoContent "CryptoContent"){:new_window}.
 
@@ -373,7 +378,7 @@ Salva la tua chiave privata come privateKey.pem e il tuo signCert come certifica
 ```
 var fs = require('fs');
 ```
-Sostituisci la seguente riga che importa il contesto utente dalla persistenza.
+Sostituisci la seguente riga che importa il contesto utente dalla persistenza,
 ```
 return fabric_client.getUserContext('user1', true);
 ```
@@ -390,14 +395,14 @@ return fabric_client.createUser({
 Il frammento di codice qui in alto legge i tuoi certificati direttamente alla classe `cryptoContent` come file PEM. Il nome utente sarà `admin`, poiché i certificati sono stati generati utilizzando l'identità `admin`. Puoi trovare il tuo mspid nella sezione `certificateAuthorites` del tuo profilo di connessione. Salva il file e immetti il comando `node query.js`. Se ha esito positivo, la query restituirà gli stessi risultati di prima.
 
 ## Prassi ottimali per connettività e disponibilità delle applicazioni
-{: #app-connectivity-availability}
+{: #dev-app-connectivity-availability}
 
 Il [Flusso di transazioni ![Icona link esterno](images/external_link.svg "Icona link esterno")]( https://hyperledger-fabric.readthedocs.io/en/release-1.2/txflow.html "Flusso di transazioni"){:new_window} di Hyperledger Fabric si estende su più componenti, dove le applicazioni client svolgono un ruolo unico. L'SDK invia le proposte di transazione ai peer per ottenere l'approvazione. Dopo raccoglie le proposte approvate da inviare al servizio ordini, che quindi invia blocchi di transazioni ai peer da aggiungere ai libri mastro del canale. Gli sviluppatori di applicazioni di produzione devono essere preparati a gestire le interazioni tra l'SDK e le loro reti per l'efficienza e la disponibilità.
 
 ### Gestione delle transazioni
-{: #managing-transactions}
+{: #dev-app-managing-transactions}
 
-I client dell'applicazione devono garantire che le loro proposte di transazione siano convalidate e vengano completate correttamente. Una proposta può essere ritardata o persa per diversi motivi, ad esempio un'interruzione della rete o un guasto di un componente. Devi preparare la tua applicazione per l'[alta disponibilità](#ha-app) per gestire i guasti dei componenti. Puoi anche [aumentare i valori di timeout](#set-timeout-in-sdk) nella tua applicazione per impedire che le proposte scadano prima che la rete possa rispondere.
+I client dell'applicazione devono garantire che le loro proposte di transazione siano convalidate e vengano completate correttamente. Una proposta può essere ritardata o persa per diversi motivi, ad esempio un'interruzione della rete o un guasto di un componente. Devi preparare la tua applicazione per l'[alta disponibilità](/docs/services/blockchain/v10_application.html#dev-app-ha-app) per gestire i guasti dei componenti. Puoi anche [aumentare i valori di timeout](/docs/services/blockchain/v10_application.html#dev-app-set-timeout-in-sdk) nella tua applicazione per impedire che le proposte scadano prima che la rete possa rispondere.
 
 Se un chaincode non è in esecuzione, la prima proposta di transazione inviata a questo chaincode avvierà il chaincode. Mentre il chaincode viene avviato, tutte le altre proposte vengono rifiutate con un errore che indica che il chaincode è attualmente in fase di avvio. Questo è diverso dall'invalidità della transazione. Se una proposta viene rifiutata mentre il chaincode è in fase di avvio, i client dell'applicazione devono inviare nuovamente le proposte rifiutate dopo l'avvio del chaincode. I client dell'applicazione possono utilizzare una coda messaggi per evitare di perdere le proposte di transazione.
 
@@ -408,7 +413,7 @@ Ti consigliamo di utilizzare channelEventHub invece della vecchia classe eventHu
 **Nota:** l'eventhub peer verrà dichiarato obsoleto in una release futura dell'SDK Fabric. Se hai delle applicazioni esistenti che utilizzano l'eventhub peer, aggiorna le tue applicazioni per utilizzare l'eventhub di canale. Per ulteriori informazioni, vedi [How to use the channel-based event service ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://fabric-sdk-node.github.io/tutorial-channel-events.html "How to use the channel-based event service"){:new_window} nella documentazione dell'SDK Node.
 
 ### Apertura e chiusura di connessioni di rete
-{: #connections}
+{: #dev-app-connections}
 
 Quando crei oggetti peer e orderer (ordinante) con l'SDK prima di inoltrare le proposte di transazione, stai aprendo una connessione gRPC tra la tua applicazione e il componente di rete. Ad esempio, il seguente comando apre una connessione a `org1-peer1`. Questa connessione continua a essere attiva mentre la tua applicazione è in esecuzione.
 
@@ -434,43 +439,43 @@ Quando gestisci le connessioni tra la tua applicazione e la tua rete, potresti p
   ```
   {:codeblock}
 
-  Puoi anche trovare queste variabili con le impostazioni suggerite nella sezione `"peers"` del tuo profilo di connessione di rete. Le opzioni suggerite verranno importate nella tua applicazione automaticamente se utilizzi il [profilo di connessione con l'SDK](#using-your-connection-profile-with-the-sdk) per stabilire una connessione ai tuoi endpoint di rete.
+  Puoi anche trovare queste variabili con le impostazioni suggerite nella sezione `"peers"` del tuo profilo di connessione di rete. Le opzioni suggerite verranno importate nella tua applicazione automaticamente se utilizzi il [profilo di connessione con l'SDK](/docs/services/blockchain/v10_application.html#dev-app-connection-profile) per stabilire una connessione ai tuoi endpoint di rete.
 
 - Se una connessione non è più necessaria, usa i comandi `peer.close()` e `orderer.close()` per liberare risorse e impedire una riduzione delle prestazioni. Per ulteriori informazioni, vedi le classi [close di peer ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://fabric-sdk-node.github.io/Peer.html#close__anchor "close di peer") e [close di orderer![Icona link esterno](images/external_link.svg "Icona link esterno")](https://fabric-sdk-node.github.io/Orderer.html#close__anchor "close di orderer") nella documentazione dell'SDK Node. Se hai bisogno di un profilo di connessione per aggiungere peer e ordinanti a un oggetto canale, puoi chiudere tutte le connessioni assegnate a tale canale utilizzando il comando `channel.close()`.
 
 ### Applicazioni altamente disponibili
-{: #ha-app}
+{: #dev-app-ha-app}
 
-Come procedura ottimale per l'alta disponibilità, si consiglia vivamente di distribuire almeno due peer per ogni organizzazione per il failover. Devi anche adattare le tue applicazioni per l'alta disponibilità. Installa il chaincode su entrambi i peer e aggiungili ai tuoi canali. Quindi, preparati a [inviare le proposte di transazione](#invoke) a entrambi gli endpoint del peer durante l'impostazione della rete e la creazione dell'elenco di destinazione del peer. Le reti piano Enterprise hanno più ordinanti per failover, il che consente alla tua applicazione client di inviare transazioni approvate a un ordinante differente nel caso in cui un ordinante non sia disponibile. Se utilizzi il tuo [profilo di connessione](#using-your-connection-profile-with-the-sdk) invece di aggiungere gli endpoint di rete manualmente, assicurati che il tuo profilo sia aggiornato e che i peer e gli ordinanti supplementari siano stati aggiunti al canale pertinente nella sezione `channels` del profilo. L'SDK può quindi aggiungere i componenti uniti al canale utilizzando il profilo di connessione.
+Come procedura ottimale per l'alta disponibilità, si consiglia vivamente di distribuire almeno due peer per ogni organizzazione per il failover. Devi anche adattare le tue applicazioni per l'alta disponibilità. Installa il chaincode su entrambi i peer e aggiungili ai tuoi canali. Quindi, preparati a [inviare le proposte di transazione](/docs/services/blockchain/v10_application.html#dev-app-invoke) a entrambi gli endpoint del peer durante l'impostazione della rete e la creazione dell'elenco di destinazione del peer. Le reti piano Enterprise hanno più ordinanti per failover, il che consente alla tua applicazione client di inviare transazioni approvate a un ordinante differente nel caso in cui un ordinante non sia disponibile. Se utilizzi il tuo [profilo di connessione](/docs/services/blockchain/v10_application.html#dev-app-connection-profile) invece di aggiungere gli endpoint di rete manualmente, assicurati che il tuo profilo sia aggiornato e che i peer e gli ordinanti supplementari siano stati aggiunti al canale pertinente nella sezione `channels` del profilo. L'SDK può quindi aggiungere i componenti uniti al canale utilizzando il profilo di connessione.
 
 ## Abilitazione di TLS reciproco
-{: #mutual-tls}
+{: #dev-app-mutual-tls}
 
-Se esegui le reti piano Enterprise a livello di Fabric V1.1, hai la possibilità di [abilitare il TLS reciproco](/docs/services/blockchain/v10_dashboard.html#network-preferences) per le tue applicazioni. Se abiliti il TLS reciproco, devi aggiornare le tue applicazioni per supportare questa funzione. In caso contrario, le tue applicazioni non possono comunicare con la tua rete.
+Se esegui le reti piano Enterprise a livello di Fabric V1.1, hai la possibilità di [abilitare il TLS reciproco](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-network-preferences) per le tue applicazioni. Se abiliti il TLS reciproco, devi aggiornare le tue applicazioni per supportare questa funzione. In caso contrario, le tue applicazioni non possono comunicare con la tua rete.
 
 Nel profilo di connessione, individua la sezione `certificateAuthorities` dove puoi trovare i seguenti attributi che sono necessari per registrare e ottenere i certificati per comunicare con la tua rete utilizzando il TLS reciproco.
 
 - `url`: l'URL per il collegamento alla CA che può fornire i certificati del TLS reciproco
-- `enrollId`: l'ID di registrazione da utilizzare per ottenere un certificato
-- `enrollSecret`: il segreto di registrazione da utilizzare per ottenere un certificato
+- `enrollId`: l'ID di iscrizione da utilizzare per ottenere un certificato
+- `enrollSecret`: il segreto di iscrizione da utilizzare per ottenere un certificato
 - `x-tlsCAName`: il nome CA da utilizzare per ottenere il certificato che consente all'applicazione di comunicare con il TLS reciproco.
 
 Per ulteriori informazioni sull'aggiornamento delle tue applicazioni in modo che supportino il TLS reciproco, vedi [How to configure mutual TLS ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://fabric-sdk-node.github.io/tutorial-mutual-tls.html "tls reciproco"){:new_window}.
 
 ## (Facoltativo) Gestione della tua rete utilizzando l'SDK
-{: #operate-sdk}
+{: #dev-app-operate-sdk}
 
-Puoi anche utilizzare l'SDK per gestire la tua rete blockchain. Questa esercitazione spiega come puoi utilizzare l'SDK per unire i tuoi peer ai canali, installare il chaincode sui peer e istanziare il chaincode sui canali. Questi passi sono facoltativi perché puoi eseguire queste operazioni utilizzando anche il Monitoraggio della rete o le API nell'[IU Swagger](/docs/services/blockchain/howto/swagger_apis.html) se tutti i tuoi peer sono in esecuzione su {{site.data.keyword.blockchainfull_notm}} Platform.
+Puoi anche utilizzare l'SDK per gestire la tua rete blockchain. Questa esercitazione spiega come puoi utilizzare l'SDK per unire i tuoi peer ai canali, installare il chaincode sui peer e istanziare il chaincode sui canali. Questi passi sono facoltativi perché puoi eseguire queste operazioni utilizzando anche il Monitoraggio della rete o le API nell'[IU Swagger](/docs/services/blockchain/howto/swagger_apis.html#ibp-swagger) se tutti i tuoi peer sono in esecuzione su {{site.data.keyword.blockchainfull_notm}} Platform.
 
-Per completare questi passi, devi caricare il tuo signCert amministratore in {{site.data.keyword.blockchainfull_notm}} Platform. Puoi trovare le istruzioni su come caricare il tuo signCert alla fine della [sezione di iscrizione](#enroll-app-sdk)
+Per completare questi passi, devi caricare il tuo signCert amministratore in {{site.data.keyword.blockchainfull_notm}} Platform. Puoi trovare le istruzioni su come caricare il tuo signCert alla fine della [sezione di iscrizione](/docs/services/blockchain/v10_application.html#dev-app-enroll-sdk)
 
 ### Unione a un canale
-{: #join-channel-sdk}
+{: #dev-app-join-channel-sdk}
 
 Dopo che la tua organizzazione ha creato o si è unita a un canale utilizzando il Monitoraggio della rete oppure le API, puoi utilizzare l'SDK per unire il tuo peer al canale.
 
-1. [Recupera il blocco genesi ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://fabric-sdk-node.github.io/Channel.html#getGenesisBlock "recupera il blocco genesi"){:new_window} del canale dal servizio ordini.
-2. Passa il blocco genesi al metodo [unione al canale![Icona link esterno](images/external_link.svg "Icona link esterno")](https://fabric-sdk-node.github.io/Channel.html#joinChannel "joinChannel"){:new_window} per unire il tuo peer al canale.
+1. [Recupera il blocco di genesi ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://fabric-sdk-node.github.io/Channel.html#getGenesisBlock "recupera il blocco di genesi"){:new_window} del canale dal servizio ordini.
+2. Passa il blocco di genesi al metodo [unione al canale![Icona link esterno](images/external_link.svg "Icona link esterno")](https://fabric-sdk-node.github.io/Channel.html#joinChannel "joinChannel"){:new_window} per unire il tuo peer al canale.
 
 Per utilizzare l'esempio `fabcar` per unire un canale, usa il file `invoke.js` come punto di partenza. Devi inviare questa richiesta come amministratore anziché come applicazione, quindi sostituisci `user1` con `admin` nel metodo `getUserContext`. A partire dal punto in cui definisci la richiesta di richiamo del chaincode in `var request = {`, sostituisci il flusso della transazione con una richiesta di unione del canale basata sul frammento di codice sottostante fornito nella [documentazione di SDK Node ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://fabric-sdk-node.github.io/tutorial-channel-create.html "mutual tls"){:new_window}.
   ```
@@ -498,10 +503,10 @@ Per utilizzare l'esempio `fabcar` per unire un canale, usa il file `invoke.js` c
   });
   ```
 
-Il tuo signCert deve essere aggiunto al canale prima che tu possa recuperare il blocco genesi. Se hai generato dei certificati dopo che la tua organizzazione si è unita al canale, devi caricare il tuo signCert sulla piattaforma e fare quindi clic sul pulsante **Sincronizza certificati** nella schermata "Canali". Potresti dover attendere qualche minuto perché la sincronizzazione dei canali venga completata prima di immettere il comando di unione al canale. Per ulteriori informazioni, vedi [Caricamento dei certificati di firma in {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/certificates.html#upload-certs) nell'esercitazione [Gestione dei certificati](/docs/services/blockchain/certificates.html).
+Il tuo signCert deve essere aggiunto al canale prima che tu possa recuperare il blocco di genesi. Se hai generato dei certificati dopo che la tua organizzazione si è unita al canale, devi caricare il tuo signCert sulla piattaforma e fare quindi clic sul pulsante **Sincronizza certificati** nella schermata "Canali". Potresti dover attendere qualche minuto perché la sincronizzazione dei canali venga completata prima di immettere il comando di unione al canale. Per ulteriori informazioni, vedi [Caricamento dei certificati di firma in {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/certificates.html#managing-certificates-upload-certs) nell'esercitazione [Gestione dei certificati](/docs/services/blockchain/certificates.html#managing-certificates).
 
 ### Installazione di un chaincode
-{: #install-cc-sdk}
+{: #dev-app-install-cc-sdk}
 
 Puoi utilizzare il metodo [install chaincode ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://fabric-sdk-node.github.io/Client.html#installChaincode "installChaincode"){:new_window} dalla classe [Client Fabric ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://fabric-sdk-node.github.io/Client.html "Client Fabric"){:new_window} per installare il chaincode sul tuo peer.
 
@@ -521,7 +526,7 @@ var request = {
 Invia questo oggetto a `return fabric_client.installChaincode(request);`, anziché alla riga `return channel.queryByChaincode(request);` attualmente presente nel file.
 
 ### Istanziazione di un chaincode
-{: #instantiate-cc-sdk}
+{: #dev-app-instantiate-cc-sdk}
 
 Per istanziare il chaincode, devi inviare una [proposta di istanziazione ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://fabric-sdk-node.github.io/Channel.html#sendInstantiateProposal "sendInstantiateProposal"){:new_window} al peer e quindi inviare una [richiesta di transazione ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://fabric-sdk-node.github.io/Channel.html#sendTransaction "sendTransaction){:new_window} al servizio ordini.
 
@@ -539,12 +544,12 @@ var request = {
 ```
 {:codeblock}
 
-Invia questa richiesta a `return channel.sendInstantiateProposal(request);` anziché alla riga `return channel.sendTransactionProposal(request);` attualmente presente nel file. Dopo aver inviato la richiesta di istanziazione al canale, devi inviare la proposta approvata sotto forma di transazione al servizio ordini. Per questa operazione vengono utilizzati gli stessi metodi usati per inviare una transazione, per cui puoi mantenere invariato il resto del file. Potresti voler [aumentare il valore di timeout](#set-timeout-in-sdk) nella proposta di istanziazione. In caso contrario, la richiesta potrebbe scadere prima che la piattaforma possa avviare il contenitore chaincode.
+Invia questa richiesta a `return channel.sendInstantiateProposal(request);` anziché alla riga `return channel.sendTransactionProposal(request);` attualmente presente nel file. Dopo aver inviato la richiesta di istanziazione al canale, devi inviare la proposta approvata sotto forma di transazione al servizio ordini. Per questa operazione vengono utilizzati gli stessi metodi usati per inviare una transazione, per cui puoi mantenere invariato il resto del file. Potresti voler [aumentare il valore di timeout](/docs/services/blockchain/v10_application.html#dev-app-set-timeout-in-sdk) nella proposta di istanziazione. In caso contrario, la richiesta potrebbe scadere prima che la piattaforma possa avviare il contenitore chaincode.
 
-Il tuo signCert deve essere aggiunto al canale prima che tu possa istanziare il chaincode. Se hai generato dei certificati dopo che ti sei unito al canale, devi caricare il tuo signCert sulla piattaforma e fare quindi clic sul pulsante **Sincronizza certificati** nella schermata "Canali". Potresti dover attendere qualche minuto perché la sincronizzazione dei canali venga completata prima di immettere il comando di istanziazione del chaincode. Per saperne di più, vedi [Caricamento dei certificati di firma in {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/certificates.html#upload-certs) nell'esercitazione [Gestione dei certificati](/docs/services/blockchain/certificates.html).
+Il tuo signCert deve essere aggiunto al canale prima che tu possa istanziare il chaincode. Se hai generato dei certificati dopo che ti sei unito al canale, devi caricare il tuo signCert sulla piattaforma e fare quindi clic sul pulsante **Sincronizza certificati** nella schermata "Canali". Potresti dover attendere qualche minuto perché la sincronizzazione dei canali venga completata prima di immettere il comando di istanziazione del chaincode. Per saperne di più, vedi [Caricamento dei certificati di firma in {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/certificates.html#managing-certificates-upload-certs) nell'esercitazione [Gestione dei certificati](/docs/services/blockchain/certificates.html#managing-certificates).
 
 ## (Facoltativo) Impostazione dei valori di timeout negli SDK Fabric
-{: #set-timeout-in-sdk}
+{: #dev-app-set-timeout-in-sdk}
 
 Gli SDK Fabric impostano i valori di timeout predefiniti nelle applicazioni client per gli eventi nella rete di blockchain. Consulta il seguente esempio sulle impostazioni di timeout predefinite nell'SDK Java Fabric. Il percorso file è `src\main\java\org\hyperledger\fabric\sdk\helper\Config.java`.
 
@@ -605,22 +610,22 @@ channel.sendInstantiateProposal(request, 300000);
 {:codeblock}
 
 ## Prassi ottimali quando si utilizza CouchDB
-{: #couchdb-indices}
+{: #dev-app-couchdb-indices}
 
-Se i tuoi dati di libro mastro sono archiviati in CouchDB, ti suggeriamo vivamente di creare degli indici per le tue query CouchDB e di usarli nel tuo chaincode. Gli indici consentono alle tue applicazioni di richiamare in modo efficiente i dati mentre la tua rete aggiunge blocchi aggiuntivi di transazioni e voci nello stato globale. Inoltre, CouchDB ti consente di eseguire query di dati avanzate dal tuo chaincode sui dati in un libro mastro del canale.
+Se utilizzi CouchDB come tuo database dello stato, puoi eseguire le query di dati JSON dal tuo chaincode sui dati di stato del canale. Ti consigliamo vivamente di creare indici per le tue query JSON e di utilizzarli nel tuo chaincode. Gli indici consentono alle tue applicazioni di richiamare in modo efficiente i dati quando la tua rete aggiunge blocchi aggiuntivi di transazioni e voci nello stato globale.
 
 Per ulteriori informazioni su CouchDB e su come configurare gli indici, vedi [CouchDB as the State Database ![Icona link esterno](images/external_link.svg "Icona link esterno")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/couchdb_as_state_database.html "CouchDB as the State Database"){:new_window} nella documentazione di Hyperledger Fabric. Puoi anche trovare un esempio che utilizza un indice con il chaincode nell'[esercitazione di CouchDB di Fabric ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/couchdb_tutorial.html).
 
-Evita di usare il chaincode per le query che produrranno una scansione dell'intero database CouchDB. Delle scansioni del database complete comporteranno dei tempi di risposta lunghi e ridurranno le prestazioni della tua rete. Per evitare delle query lunghe, puoi eseguire alcuni dei seguenti passi:
+Evita di usare il chaincode per le query che produrranno una scansione dell'intero database CouchDB. Delle scansioni del database complete comporteranno dei tempi di risposta lunghi e ridurranno le prestazioni della tua rete. Per evitare e gestire delle query di grandi dimensioni, puoi eseguire alcuni dei seguenti passi:
 - Configura gli indici con il tuo chaincode.
-- Se stai immettendo delle query JSON avanzate, evita gli operatori che comporteranno una scansione dell'intero database, come ad esempio `$or`, `$in` e `$regex`.
-- Devi utilizzare un queryLimit per evitare la restituzione di un insieme di dati di grandi dimensioni, che provocherà una condizione di timeout della tua query. Puoi quindi usare più query per eseguire una ricerca in tutto il database con il limite implementato. Se stai utilizzando una query di intervallo, inizia la query successiva con l'ultima chiave restituita dalla query precedente. Se stai usando query JSON avanzate, ordina la tua query utilizzando una delle variabili nei tuoi dati. Usa quindi i risultati per filtrare la tua successiva query utilizzando la stessa variabile.
-- Non eseguire una query dell'intero database per fini di aggregazione o di creazione di report. Se vuoi creare un dashboard o raccogliere dati come parte della tua applicazione, puoi eseguire una query di un database fuori dalla catena che replica i dati dalla tua rete blockchain. Ciò ti consentirà di comprendere i dati nella blockchain senza ridurre le prestazioni della tua rete o interrompere le transazioni.
+- Se stai immettendo delle query JSON avanzate, evita gli operatori che comporteranno una scansione dell'intero database o dell'intero indice, come ad esempio `$or`, `$in` e `$regex`.
+- I peer su {{site.data.keyword.blockchainfull_notm}} Platform hanno un queryLimit impostato e restituiranno solo 10.000 voci dal database dello stato. Se la tua query raggiunge il queryLimit, puoi utilizzare più query per ottenere i rimanenti risultati. Se hai bisogno di più risultati da una query di intervallo, inizia le query successive con l'ultima chiave restituita dalla query precedente. Se hai bisogno di più risultati dalle query JSON, ordina la tua query utilizzando una delle variabili nei tuoi dati e utilizza quindi l'ultimo valore dalla query precedente in un filtro 'greater than' per la query successiva.
+- Non eseguire una query dell'intero database per fini di aggregazione o di creazione di report. Se vuoi creare un dashboard o raccogliere grandi quantità di dati come parte della tua applicazione, puoi eseguire una query di un database fuori dalla catena che replica i dati dalla tua rete blockchain. Ciò ti consentirà di comprendere i dati nella blockchain senza ridurre le prestazioni della tua rete o interrompere le transazioni.
 
-  Puoi utilizzare il Channel Event Hub fornito dall'SDK Fabric per creare un archivio dati fuori dalla catena. Ad esempio, puoi utilizzare un listener di blocco per ottenere le transazioni più recenti aggiunte a un libro mastro del canale. Gli insiemi di lettura e scrittura di transazioni possono quindi essere utilizzati per aggiornare una copia dello stato globale che è stato archiviato in un database separato. Per ulteriori informazioni, vedi [How to use the channel-based event service ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://fabric-sdk-node.github.io/tutorial-channel-events.html "How to use the channel-based event service"){:new_window} nella documentazione dell'SDK Node.
+  Puoi utilizzare il client dei servizi eventi basato sul canale fornito dagli SDK Fabric per creare un archivio dati fuori dalla catena. Ad esempio, puoi utilizzare un listener di blocco per ottenere le transazioni più recenti aggiunte a un libro mastro del canale. Gli insiemi di lettura e scrittura di transazioni dalle transazioni valide possono quindi essere utilizzati per aggiornare una copia dello stato globale che è stato archiviato in un database separato. Per ulteriori informazioni, vedi [How to use the channel-based event service ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://fabric-sdk-node.github.io/tutorial-channel-events.html "How to use the channel-based event service"){:new_window} nella documentazione dell'SDK Node.
 
 ## Host di applicazioni
-{: #host-app}
+{: #dev-app-host-app}
 
 Puoi ospitare la tua applicazione sul tuo file system locale oppure eseguirne il push a {{site.data.keyword.Bluemix_notm}}. Per eseguire il push della tua applicazione a{{site.data.keyword.Bluemix_notm}}, completa la seguente procedura:
 1. Installa il [programma di installazione della riga di comando Cloud Foundry ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://github.com/cloudfoundry/cli/releases).  Verifica la tua installazione con il comando `cf`.
@@ -642,10 +647,10 @@ Puoi ospitare la tua applicazione sul tuo file system locale oppure eseguirne il
 	* `> cf logs IL_NOME_DELLA_TUA_APPLICAZIONE_QUI --recent`
 
 ## Disconnessione della tua applicazione dalla rete
-{: #disconnect-app}
+{: #dev-app-disconnect-app}
 
 Completa la seguente procedura per rimuovere la connessione tra la tua applicazione e la rete blockchain su {{site.data.keyword.cloud_notm}}.
-1. Rimuovi le informazioni sull'endpoint API dal file di configurazione della tua applicazione. Per informazioni di riferimento, vedi [Aggiunta di endpoint API di rete alla tua applicazione](#api-endpoints).
+1. Rimuovi le informazioni sull'endpoint API dal file di configurazione della tua applicazione. Per informazioni di riferimento, vedi [Aggiunta di endpoint API di rete alla tua applicazione](/docs/services/blockchain/v10_application.html#dev-app-api-endpoints).
 2. Elimina il tuo contenitore chaincode.
   1. Nella schermata "Canale" del Monitoraggio della rete, individua il canale dove è installato il tuo chaincode.
   2. Nella schermata dello specifico canale, individua il chaincode che vuoi disabilitare.

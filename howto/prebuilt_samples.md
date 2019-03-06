@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018.2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -15,10 +17,6 @@ lastupdated: "2019-02-08"
 
 # Deploying sample applications
 {: #deploying-sample-applications}
-
-
-***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 
 {{site.data.keyword.blockchainfull}} Platform provides sample applications that you can deploy and test, so that you can get a better understanding of blockchain networks and application development.
 {:shortdesc}

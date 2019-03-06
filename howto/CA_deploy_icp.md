@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -17,8 +19,6 @@ lastupdated: "2019-02-08"
 
 # Deploying a Certificate Authority on {{site.data.keyword.cloud_notm}} Private
 {: #ca-deploy}
-
-***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 After you import the {{site.data.keyword.blockchainfull}} Platform on {{site.data.keyword.cloud_notm}} Private Helm chart, you can deploy the individual components. The Certificate Authority (CA) is the root of trust for your organization and allows you to generate credentials for the other components you will deploy. As a result, you need to deploy a CA before you deploy the other components. Each organization in a multi-cloud blockchain network must deploy its own CA.  For more information about CAs and the role that they play in a blockchain network, see [Certificate Authorities](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview-ca).
 {:shortdesc}

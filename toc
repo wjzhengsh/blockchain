@@ -23,6 +23,7 @@ IBM Blockchain Platform
 		howto/remote_peer.md
 
 	whats_new.md
+	howto/ibp-v2-faq.md
 	blockchain_component_overview.md
 	needtoknow.md
 	{: .navgroup-end}
@@ -60,6 +61,7 @@ IBM Blockchain Platform
 		howto/ibp-console-identities.md
 		howto/ibp-console-organizations.md
 		howto/ibp-console-manage.md
+		howto/ibp-v2-troubleshooting.md
 
 	{: .topicgroup}
 	IBM Blockchain Platform on IBM Cloud Private

@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -14,10 +16,9 @@ lastupdated: "2019-02-08"
 {:important: .important}
 {:tip: .tip}
 {:pre: .pre}
+
 # Operating peers on {{site.data.keyword.cloud_notm}} Private with Starter Plan or Enterprise Plan
 {: #ibp-peer-operate}
-
-***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 After you set up an {{site.data.keyword.blockchainfull}} Platform on {{site.data.keyword.cloud_notm}} Private peer, you need to complete several operational steps before your peer can submit transactions to a Starter Plan or Enterprise Plan network. The steps include adding your organization to a channel, joining your peer to the channel, installing chaincode on your peer, instantiating chaincode on the channel, and connecting applications to your peer.
 {:shortdesc}
@@ -578,8 +579,7 @@ Component logs can be viewed from the command line by using the [`kubectl` CLI c
 {: #ibp-peer-operate-troubleshooting}
 
 ### **Problem:** Invoke command fails on peer with a `chaincode fingerprint mismatch` error
-{: #ibp-peer-operate
--install-error}
+{: #ibp-peer-operate-install-error}
 
 It is possible to receive a `chaincode fingerprint mismatch` error when you run a `peer chaincode invoke` request on a peer that is running in {{site.data.keyword.cloud_notm}} Private:
 

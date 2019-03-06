@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-12-07"
+lastupdated: "2018-12-08"
 
 ---
 
@@ -16,6 +16,7 @@ lastupdated: "2018-12-07"
 # ビジネス・ネットワーク開発環境のインストール
 {: #installing-a-development-environment}
 
+**デモおよび概念検証のみに Hyperledger Composer を使用することをお勧めします。 IBM では、実動の Hyperledger Composer を使用するネットワークをサポートしていません。これには Composer CLI、JavaScript API、REST サーバー、および Web Playground が含まれます。**
 
 ***[このページは参考になりましたか。 ご意見をお聞かせください。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
@@ -42,7 +43,7 @@ VSCode を使用している場合は、Hyperledger Composer VSCode 拡張機能
 
 ## ステップ 1: コマンド・ライン・ツールのインストール
 
-コマンド・ライン・ツールには、**composer-cli**、メインの {{site.data.keyword.blockchainfull_notm}} Platform:Develop コマンド・ライン・モジュール、**generator-hyperledger-composer**、**composer-rest-server**、**Yeoman** が含まれます。これらのモジュールは、ビジネス・ネットワーク、カスタム REST サーバー、Angular アプリケーションの生成に使用されます。 インストールするバージョンは、スターター・プランまたはエンタープライズ・プランが実行されている Hyperledger Fabric のバージョンによって異なります。Fabric のバージョンは、ネットワーク・モニターで[「ネットワーク設定 (Network preferences)」ウィンドウ](/docs/services/blockchain/v10_dashboard.html#network-preferences)を開くことで確認できます。
+コマンド・ライン・ツールには、**composer-cli**、メインの {{site.data.keyword.blockchainfull_notm}} Platform:Develop コマンド・ライン・モジュール、**generator-hyperledger-composer**、**composer-rest-server**、**Yeoman** が含まれます。これらのモジュールは、ビジネス・ネットワーク、カスタム REST サーバー、Angular アプリケーションの生成に使用されます。 インストールするバージョンは、スターター・プランまたはエンタープライズ・プランが実行されている Hyperledger Fabric のバージョンによって異なります。 Fabric のバージョンは、ネットワーク・モニターで[「ネットワーク設定 (Network preferences)」ウィンドウ](../v10_dashboard.html#network-preferences)を開くことで確認できます。
 
 1. Hyperledger Fabric v1.2.1 を実行しているスターター・プランの新規インスタンスで使用する場合は、以下のコマンドを使用して **composer-cli** をインストールします。
 
