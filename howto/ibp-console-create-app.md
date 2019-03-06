@@ -73,7 +73,7 @@ Starting with Fabric v1.4, users can take advantage of a simplified application 
 
 If you want to continue to use your existing smart contract and application code, or use the other Fabric SDK languages provided by the Hyperledger community, you can use the [low level Fabric SDK APIs](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-low-level) to connect to your network.
 
-## Register an application identity
+## Registering an application identity
 {: #ibp-console-app-identities}
 
 Applications need to sign the transactions they submit to {{site.data.keyword.blockchainfull_notm}} nodes, and attach a public key that is used by nodes to verify that the transactions are being sent by the proper party. This ensures that transactions are submitted by the organizations that have permission to participate.
@@ -88,7 +88,7 @@ echo <base64_string> | base64 --decode $FLAG > <key>.pem
 ```
 {:codeblock}
 
-## Download your connection profile
+## Downloading your connection profile
 {: #ibp-console-app-profile}
 
 Applications are able to submit transactions only to the smart contracts that have been instantiated on channels. As a result, the information you need to connect to interact with a smart contract can be found in the list of instantiated smart contracts in your console. This means you must have already installed and instantiated your smart contract.
@@ -99,7 +99,7 @@ If you configured anchor peers when creating a channel, you can take advantage o
 
 Navigate to the smart contracts tab in your platform console. Next to each instantiated smart contract, navigate to the overflow menu. Click on the button named **Connect with SDK**. This will open a side panel that will allow you to build and download your connection profile. First, you need to select the CA of your organization that you used to register your application identity. You will also need to select your organization MSP definition. You will then be able to download the connection profile that you can use to generate certificates and invoke the smart contract.
 
-## Enroll using the SDK
+## Enrolling by using the SDK
 {: #ibp-console-app-enroll}
 
 Once the network operator provides the enroll ID and secret of the application identity and the network connection profile, an application developer can use the Fabric SDKs or the Fabric CA client to generate client side certificates. You can use the following steps to enroll an application identity using the [Fabric SDK for Node.js ![External link icon](../images/external_link.svg "External link icon")](https://fabric-sdk-node.github.io/ "Fabric SDK for Node.js").
@@ -169,7 +169,7 @@ Once the network operator provides the enroll ID and secret of the application i
 The wallets used by the Fabric SDKs are different from the wallet in the {{site.data.keyword.blockchainfull_notm}} Platform console. The identities stored in your console wallet cannot be directly used by the SDK.
 {: note}
 
-## Invoke a smart contract using the SDK
+## Invoking a smart contract by using the SDK
 {: #ibp-console-app-invoke}
 
 After you have generated the application public and private key and stored them in a wallet, you are ready to submit a transaction. You need to know the name of the smart contract and the name of the channel it was instantiated on. You can use the steps below to invoke a smart contract using the [Fabric SDK for Node.js ![External link icon](../images/external_link.svg "External link icon")](https://fabric-sdk-node.github.io/ "Fabric SDK for Node.js").
@@ -238,7 +238,7 @@ After you have generated the application public and private key and stored them 
   If you navigate to you channel using the console, you will be able to see another block added by the transaction.
 
 
-## Connecting with the IBM Blockchain VScode extension
+## Connecting with the {{site.data.keyword.blockchainfull_notm}} VScode extension
 {: #ibp-console-app-vscode}
 
 The {{site.data.keyword.blockchainfull_notm}} Platform Visual Studio Code extension provides an environment within Visual Studio Code for developing, packaging, and deploying smart contract packages. Be sure you have your connection profile and the set of key files generated using your CA. You can then use the VScode extension to connect to a network you are managing using your console.
@@ -258,7 +258,7 @@ Once you have created the new project, you can connect directly to your network 
 Once you are connected from VScode, you will be able to see the list of peers from your organization and channels they have joined in the blockchain connections pane. You will be able to see the list of installed smart contracts under each peers. To install a new smart contract from your project on your network, first right click a peer and select **Install smart contract**. You can then instantiate that smart contract by right clicking on a channel and select **Install smart contract**. You can use learn more about using the {{site.data.keyword.blockchainfull_notm}} Platform extension by visiting the documentation in the [Visual Studio code marketplace ![External link icon](../images/external_link.svg "External link icon")](https://marketplace.visualstudio.com/items?itemName=IBMBlockchain.ibm-blockchain-platform#overview "VScode extension").
 
 
-## Run the Commercial Paper sample
+## Runing the Commercial Paper sample
 {: #ibp-console-app-commercial-paper}
 
 The [commercial paper tutorial ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/tutorial/commercial_paper.html "commercial paper tutorial") in the Hyperledger Fabric documentation takes developers through a use case in which multiple parties buy, sell and redeem commercial paper. It extends the [Developing applications topic ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/developapps/developing_applications.html "developing applications") by providing sample  smart contract and application code that allows you to create and trade assets on a local instance of Fabric.
@@ -437,7 +437,7 @@ Successfully enrolled client "user1" and imported it into the wallet
 
 You can find the wallet that was created in the `identity` folder of the `magnetocorp` directory.
 
-### Step four: Using the connection profile to build a fabric gateway
+### Step four: Use the connection profile to build a fabric gateway
 
 The Hyperledger Fabric [Transaction Flow ![External link icon](../images/external_link.svg "External link icon")]( https://hyperledger-fabric.readthedocs.io/en/release-1.4/txflow.html "Transaction Flow"){:new_window} spans multiple components, with the client applications playing a unique role. Your application needs to connect to the peers that need to endorse the transaction and needs to connect to the ordering service that will order the transaction and add it into a block. You can provide the endpoints of these nodes to your application by using your connection profile to construct a Fabric Gateway. The Gateway then conducts the low level interactions with your fabric network. To learn more, visit the [Fabric gateway ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/developapps/gateway.html "Fabric gateway") topic in the Fabric Documentation.
 
@@ -490,7 +490,7 @@ await gateway.connect(connectionProfile, connectionOptions);
 
 This code snippet uses the gateway to open GRPC connections to the peer and orderer nodes, and interact with your network.
 
-### Step five: Invoking the smart contract
+### Step five: Invoke the smart contract
 
 After configuring the gateway to connect to the network managed by your console, we will edit the portion of the `issue.js` file that connects to the commercial paper smart contract. You will need to provide the gateway the contract name and the channel on which you instantiated the smart contract.
 
