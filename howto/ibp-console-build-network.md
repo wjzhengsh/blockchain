@@ -3,7 +3,7 @@
 copyright:
   years: 2019
 
-lastupdated: "2019-03-05"
+lastupdated: "2019-03-12"
 
 subcollection: blockchain
 
@@ -50,6 +50,7 @@ You can use the steps in these tutorials to build a network with multiple organi
 If you complete all the steps in the **Build a network** and **Join a network** tutorials, your network will resemble the one in the illustration below:
 ![Sample basic network structure](../images/ibp-v2-build-network.png "Sample basic network structure")  
 *Figure 1. Sample basic network structure*  
+
 This configuration is sufficient for testing applications and smart contracts. The network contains the following components:
 
 * **Two peer organizations**: `Org1` and `Org2`  
@@ -71,6 +72,7 @@ This configuration isn't mandatory. The {{site.data.keyword.blockchainfull_notm}
 In this **Build a network** tutorial, we build only a portion of the network above, a simple network that can be used to host an orderer and a single peer organization and peer on a single channel. The following illustration shows the portion of the network above that we will build:
 ![Simple network structure](../images/ibp2-simple-network.png "Simple network structure")  
 *Figure 2. Simple network structure*  
+
 This configuration is useful for quickly getting started and testing a smart contract but is not very meaningful until you add other organizations to transact with, creating a truly distributed ledger.  Therefore, in the subsequent [Join a network](/docs/services/blockchain/howto/ibp-console-join-network.html#ibp-console-join-network) tutorial, we show you how to create additional peer organizations and peers, and how to add a new organization to the channel.  
 
 Throughout this tutorial we supply **recommended values** for some of the fields in the console. This allows the names and identities to be easier to recognize in the tabs and drop-down lists. These values are not mandatory, but you will find them helpful. We provide a table of the recommended values after each task.
@@ -82,6 +84,11 @@ Throughout this tutorial we supply **recommended values** for some of the fields
 For each organization that you want to create with the console, you should deploy at least one CA. A CA is the node that issues certificates to all network participants (peers, orderers, clients, and so on). These certificates, which include a public and private key pair, allow network participants to communicate, authenticate, and ultimately transact. These CAs will create all of the identities and certificates that belong to your organization, in addition to defining the organization itself. You can then use those identities to deploy nodes, operate your network, and submit transactions to the blockchain. For more information about your CA and the identities that you will need to create, see [Managing identities](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities).
 
 In this tutorial, we create two organizations, one which will own a peer and another which will own an orderer. Each organization needs a CA to issue it's certificates, therefore we need to create **two CAs**. For the purpose of this tutorial, **we will create only one CA at a time**.
+
+Watch the following video to learn about the process to create the peer's organization and the peer.
+
+<iframe class="embed-responsive-item" id="youtubeplayer" title="IBM Blockchain Platform free 2.0 beta video - deployment tutorial" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/JZj43n_JKIY" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
+*Video 1. Create the peer's organization and the peer*
 
 ### Creating your peer organization CA
 {: #ibp-console-build-network-create-CA-org1CA}
@@ -103,7 +110,7 @@ Perform the following steps from your console:
   | ------------------------- |-----------|-----------|-----------|
   | **Create CA** | Org1 CA  | admin | adminpw |
 
-*Figure 3. Creating the peer organization CA*
+  *Figure 3. Creating the peer organization CA*
 
 After you deploy the CA, you will use it when you create your organization MSP, register users, and to create your entry point to a network, the **peer**.
 
@@ -120,7 +127,7 @@ To generate these certificates, we'll need to complete the following steps:
 1. In the console, use the **Nodes** tab to navigate to the `Org1 CA` you created.
 2. After selecting your CA, you will need to register an admin for our first organization, `org1`, in addition to an identity for the peer itself. You should already see an identity on this page; it's the admin that you created for the CA. To register our new users, click the **Register User** button.
 3. For the organization admin, give an enroll ID of `org1admin`. You can use any secret, but we suggest `org1adminpw` to help you follow along. Click **Next**.
-4. On the next step, set the Type for this identity as `client` and select from any of the affiliated organizations from the drop-down list. The affiliation field is for advanced users and is not used by the tutorial. Items in the list are default affiliations from the Fabric CA. If you want to learn more about how affiliations are used by the Fabric CA see this topic on [Registering a new identity ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/users-guide.html#registering-a-new-identity). For now, select any affiliation from the list, for example `org1` and click **Next**.
+4. On the next step, set the Type for this identity as `client` and you must select from any of the affiliated organizations from the drop-down list. The affiliation field is for advanced users and is not used by the tutorial, but is a required field for the panel. Items in the list are default affiliations from the Fabric CA. If you want to learn more about how affiliations are used by the Fabric CA see this topic on [Registering a new identity ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/users-guide.html#registering-a-new-identity). For now, select any affiliation from the list, for example `org1` and click **Next**.
 5. Feel free to leave the **Maximum enrollments** and **Add Attributes** fields blank. They are not used by this tutorial, but you can learn more about what they are for in this topic on [Registering identities](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-register).
 6. After the organization admin has been registered, repeat this same process, using the same `Org1 CA`, for the identity of the peer, giving an enroll ID of `peer1` and any secret you want. As before, we recommend a secret of `peer1pw`. This is a node identity, so select `peer` as the **Type** on the next step. Select any **Affiliation**. Then, ignore **Maximum enrollments** and **Attributes**.
 
@@ -131,7 +138,7 @@ To generate these certificates, we'll need to complete the following steps:
   | **Register users** |  Org1 admin | org1admin | org1adminpw |
   | | Peer identity |  peer1 | peer1pw |
 
-*Figure 4. Using your CA to register users*
+  *Figure 4. Using your CA to register users*
 
 ### Creating the peer organization MSP definition
 {: #ibp-console-build-network-create-peers-org1}
@@ -232,6 +239,11 @@ Orderers are key components in a network because they perform a few essential fu
 
 Just as with the peer, before we can create an orderer, we need to create a CA to supply the identities and the MSP of our orderer organization.
 
+Watch the following video to learn about the process to create the orderer's organization and the orderer.
+
+<iframe class="embed-responsive-item" id="youtubeplayer" title="IBM Blockchain Platform free 2.0 beta video - deployment tutorial" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/Gomkn-JtNe8" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
+*Video 2. Create the orderer's organization and the orderer*
+
 ### Ordering in the console
 {: #ibp-console-build-network-ordering-console}
 
@@ -259,7 +271,7 @@ As we did with the peer, we need to register two identities with our orderer CA.
 1. In the console, click the **Nodes** tab and click the `Orderer CA` you created.
 2. When the admin identity you just create is visible in the table,  click the **Register User** button to register our new users.
 3. For the organization admin, give an enroll ID of `ordereradmin`. We recommend a secret of `ordereradminpw`.
-4. On the next step, set the Type for this identity as `client` and select from any of the affiliated organizations from the drop-down list. The affiliation field is for advanced users and is not used by the tutorial. Items in the list are default affiliations from the Fabric CA. If you want to learn more about how affiliations are used by the Fabric CA see this topic on [Registering a new identity ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/users-guide.html#registering-a-new-identity). For now, select any affiliation from the list and click **Next**.
+4. On the next step, set the Type for this identity as `client` and you must select from any of the affiliated organizations from the drop-down list. The affiliation field is for advanced users and is not used by the tutorial, but is a required field for the panel. Items in the list are default affiliations from the Fabric CA. If you want to learn more about how affiliations are used by the Fabric CA see this topic on [Registering a new identity ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/users-guide.html#registering-a-new-identity). For now, select any affiliation from the list and click **Next**.
 5. Feel free to leave the **Maximum enrollments** and **Add Attributes** fields blank. They are not used by this tutorial, but you can learn more about what they are for in this topic on [Registering identities](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-register) in the console.
 6. After the organization admin has been registered, repeat this same process, using the same `Orderer CA`, for the identity of the orderer, giving an enroll ID of `orderer1`. You can enter any secret that you want, but we recommend `orderer1pw` to help you follow along in the tutorial. This is a node identity, so select `peer` as the **Type** on the next step. Then, ignore **Maximum enrollments** and **Attributes** as before.
 
@@ -271,7 +283,7 @@ As we did with the peer, we need to register two identities with our orderer CA.
   | **Register users** | Orderer admin | ordereradmin | ordereradminpw |
   |  | Orderer identity |  orderer1 | orderer1pw |
 
-  *Figure 8. Create a CA and register users*
+*Figure 8. Create a CA and register users*
 
 ### Creating the orderer organization MSP definition
 {: #ibp-console-build-network-create-orderer-org-msp}
@@ -348,7 +360,12 @@ After the orderer has been created, you are able to see it on the **Nodes** pane
 As we noted earlier, a peer organization must be a member of an orderer's consortium before it can create or join a channel. This is because channels are, at a technical level, **messaging paths** between peers through the orderer. Just as a peer can be joined to multiple channels without information passing from one channel to another, so too can an orderer have multiple channels running through it without exposing data to organizations on other channels.
 
 Because only orderer admins can add peer organizations to the consortium, you will either need to **be** the orderer admin or **send** MSP information to the orderer admin.
-<!-- More on the latter at the LINK. -->
+
+Watch the following video to learn about the process to add the organization to the consortium, create the channel, and join your peer to the channel.
+
+<iframe class="embed-responsive-item" id="youtubeplayer" title="IBM Blockchain Platform free 2.0 beta video - deployment tutorial" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/jO3V4K9DYpY" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
+*Video 3. Add the organization to the consortium, create the channel, and join your peer to the channel*               
+
 Because you are the orderer admin, this process is relatively straightforward:
 1. Navigate to the **Nodes** tab.
 2. Scroll down to the orderer you created and click on it to open it.
@@ -368,6 +385,9 @@ Although the members of a network are usually related business entities that wan
 As noted above, to join a peer from `org1` to a channel, `org1` must first be added to the consortium. If the organization is not a member of the consortium at channel creation time, it's possible to create the channel and add the organization later by clicking the **Settings** button on the page of the relevant channel and going through the **Update Channel** flow.
 
 For more information about channels and how to use them, see the [Hyperledger Fabric documentation ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/channels.html).
+
+Watch Video 3 above to learn about the process to create channel and join your peer to the channel.
+
 
 <!--
 Note that even though the {{site.data.keyword.blockchainfull_notm}} Platform 2.0 uses Hyperledger Fabric v1.4 binaries, because the [gossip protocol ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/gossip.html) is not being used with the console, Fabric functionalities that leverage gossip, such as [Private Data ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/private-data/private-data.html)] and [Service Discovery ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/discovery-overview.html)], are not available.
