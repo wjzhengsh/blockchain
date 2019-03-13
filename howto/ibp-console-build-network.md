@@ -87,7 +87,8 @@ In this tutorial, we create two organizations, one which will own a peer and ano
 
 Watch the following video to learn about the process to create the peer's organization and the peer.
 
-<iframe class="embed-responsive-item" id="youtubeplayer" title="IBM Blockchain Platform free 2.0 beta video - deployment tutorial" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/JZj43n_JKIY" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
+<iframe class="embed-responsive-item" id="youtubeplayer" title="IBM Blockchain Platform free 2.0 beta video - deployment tutorial" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/JZj43n_JKIY" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>  
+
 *Video 1. Create the peer's organization and the peer*
 
 ### Creating your peer organization CA
@@ -241,7 +242,8 @@ Just as with the peer, before we can create an orderer, we need to create a CA t
 
 Watch the following video to learn about the process to create the orderer's organization and the orderer.
 
-<iframe class="embed-responsive-item" id="youtubeplayer" title="IBM Blockchain Platform free 2.0 beta video - deployment tutorial" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/Gomkn-JtNe8" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
+<iframe class="embed-responsive-item" id="youtubeplayer" title="IBM Blockchain Platform free 2.0 beta video - deployment tutorial" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/Gomkn-JtNe8" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>  
+
 *Video 2. Create the orderer's organization and the orderer*
 
 ### Ordering in the console
@@ -363,7 +365,8 @@ Because only orderer admins can add peer organizations to the consortium, you wi
 
 Watch the following video to learn about the process to add the organization to the consortium, create the channel, and join your peer to the channel.
 
-<iframe class="embed-responsive-item" id="youtubeplayer" title="IBM Blockchain Platform free 2.0 beta video - deployment tutorial" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/jO3V4K9DYpY" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
+<iframe class="embed-responsive-item" id="youtubeplayer" title="IBM Blockchain Platform free 2.0 beta video - deployment tutorial" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/jO3V4K9DYpY" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>  
+
 *Video 3. Add the organization to the consortium, create the channel, and join your peer to the channel*               
 
 Because you are the orderer admin, this process is relatively straightforward:
