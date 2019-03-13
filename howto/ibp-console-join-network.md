@@ -3,7 +3,7 @@
 copyright:
   years: 2019
 
-lastupdated: "2019-03-05"
+lastupdated: "2019-03-13"
 
 subcollection: blockchain
 
@@ -104,7 +104,7 @@ To generate these certificates, complete the following steps:
 1. In the console, use the **Nodes** tab to navigate to the `Org2 CA` you created.
 2. After you select your CA, you will need to register an admin for this organization, `org2`, in addition to an identity for the peer itself. You should already see an identity on this page; it's the admin that you created for the CA. To register our new users, click the **Register User** button.
 3. For the organization admin, give it an enroll ID of `org2admin`. You can use any secret, but we suggest `org2adminpw` to help you follow along. Click **Next**.
-4. On the next step, set the Type for this identity as `client` and select from any of the affiliated organizations from the drop-down list. The affiliation field is for advanced users and is not used by the tutorial. Items in the list are default affiliations from the Fabric CA. If you want to learn more about how affiliations are used by the Fabric CA see this topic on [Registering a new identity ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/users-guide.html#registering-a-new-identity). For now, select any affiliation from the list, for example `org2` and click **Next**.
+4. On the next step, set the Type for this identity as `client` and you must select from any of the affiliated organizations from the drop-down list. The affiliation field is for advanced users and is not used by the tutorial, but is a required field for the panel. Items in the list are default affiliations from the Fabric CA. If you want to learn more about how affiliations are used by the Fabric CA see this topic on [Registering a new identity ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/users-guide.html#registering-a-new-identity). For now, select any affiliation from the list, for example `org2` and click **Next**.
 5. Feel free to leave the **Maximum enrollments** and **Add Attributes** fields blank. They are not used by this tutorial, but you can learn more about what they are for in this topic on [Registering identities](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-register).
 6. After the organization admin has been registered, repeat step two to step five for the identity of the peer, using the same `Org2 CA`, by giving it an enroll ID of `peer2`. As before, we recommend a secret of `peer2pw` to help you follow along. This is a node identity, so select `peer` as the **Type** on the next step. Then, ignore **Maximum enrollments** and **Attributes** as before.
 
