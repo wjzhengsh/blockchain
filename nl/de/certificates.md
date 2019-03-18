@@ -2,7 +2,10 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
+
 ---
 
 {:new_window: target="_blank"}
@@ -14,10 +17,6 @@ lastupdated: "2019-02-08"
 
 # Zertifikate in {{site.data.keyword.blockchainfull_notm}} Platform verwalten
 {: #managing-certificates}
-
-
-***[Ist diese Seite hilfreich? Teilen Sie uns Ihre Meinung mit.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 
 {{site.data.keyword.blockchainfull}} Platform basiert auf Hyperledger Fabric und dient zur Erstellung genehmigter Blockchain-Netze. Die Teilnehmer werden als Mitglieder des Netzes bezeichnet und ihre Aktivitäten und Zugriffsaktionen auf die Netzressourcen werden kontinuierlich überprüft. Die Identität eines Teilnehmers wird in Form eines anerkannten digitalen x509-Zertifikats bereitgestellt. Die Verifizierung wird über eine zugrunde liegende PKI (PKI = Public Key Infrastructure) sowie über Signier- und Verifizierungsoperationen bereitgestellt, mit denen die Transaktionen und das Management innerhalb des Netzes gesichert werden.
 {:shortdesc}

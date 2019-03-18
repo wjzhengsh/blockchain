@@ -2,7 +2,10 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
+
 ---
 
 {:new_window: target="_blank"}
@@ -16,8 +19,6 @@ lastupdated: "2019-02-08"
 
 # {{site.data.keyword.cloud_notm}} Private에서 인증 기관 작동
 {: #ca-operate}
-
-***[이 페이지가 도움이 되었습니까? 알려주십시오.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 인증 기관(CA)은 네트워크 상의 ID를 제공합니다. CA는 복수의 당사자 간에 신뢰를 설정하기 위해 사용되는 공개적으로 신뢰할 수 있는 공증인과 유사한 것으로 간주할 수 있습니다. 네트워크에 있는 각각의 엔티티에는 엔티티의 디지털 ID를 캡슐화하기 위해 루트 CA에서 서명하는 인증서가 지정됩니다. 이 인증서는 네트워크에서 수행되는 모든 서명 및 확인 오퍼레이션을 위한 신뢰 루트입니다.
 {:shortdesc}
@@ -44,7 +45,7 @@ lastupdated: "2019-02-08"
 ## 전제조건
 {: #ca-operate-prerequisites}
 
-네트워크를 작성하는지 또는 가입하는지 여부에 관계 없이 CA를 사용하여 조직에 속한 기타 컴포넌트 및 ID를 배치하려면 다음과 같은 전제조건 단계를 완료해야 합니다.
+네트워크를 작성하는지 또는 참여하는지 여부에 관계 없이 CA를 사용하여 조직에 속한 기타 컴포넌트 및 ID를 배치하려면 다음과 같은 전제조건 단계를 완료해야 합니다.
 
 ### CLI 구성
 {: #ca-operate-kubectl-configure}
@@ -170,7 +171,7 @@ Fabric CA 클라이언트를 사용하여 CA를 작동시킬 수 있습니다. �
   ```
   {:codeblock}
 
-  예를 들어, 홈 디렉토리에 바이너리를 설치한 경우 다음과 같이 `PATH`를 설정할 수 있습니다.
+  예를 들어, 홈 디렉토리에 바이너리를 설치한 경우 다음과 같이 `PATH`를 설정할 수 있습니다..
 
   ```
   export PATH=$PATH:$HOME/bin
@@ -184,7 +185,7 @@ Fabric CA 클라이언트를 사용하여 CA를 작동시킬 수 있습니다. �
   ```
   {:codeblock}
 
-4. `$FABRIC_CA_CLIENT_HOME` 환경 변수의 값을 CA 클라이언트에서 생성된 [MSP](/docs/services/blockchain/howto/CA_operate.html#ca-operate-msp) 인증서를 저장할 경로로 설정하십시오. 이전 시도에서 작성된 구성 자료를 제거했는지 확인하십시오. 이전에 `enroll` 명령을 실행하지 않은 경우 `msp` 폴더 및 `.yaml` 파일이 존재하지 않습니다.
+4. `$FABRIC_CA_CLIENT_HOME` 환경 변수의 값을 CA 클라이언트에서 생성된 [MSP](/docs/services/blockchain/howto/CA_operate.html#ca-operate-msp) 인증서를 저장할 경로로 설정하십시오. 이전 시도에서 작성된 구성 자료를 제거했는지 확인하십시오. `enroll` 명령을 처음 실행하는 경우 `msp` 폴더와 `.yaml` 파일이 없습니다.
 
   ```
   export FABRIC_CA_CLIENT_HOME=$HOME/fabric-ca-client/ca-admin
@@ -243,7 +244,7 @@ CA를 사용하여 컴포넌트 또는 클라이언트 애플리케이션을 배
 
   `enroll` 명령은 Fabric CA 클라이언트에 대한 `$HOME` 경로로 설정한 디렉토리 내에 있는 MSP(Membership Service Provider) 폴더로 알려진 전체 인증서 세트를 생성합니다. 예를 들면 `$HOME/fabric-ca-client/ca-admin`입니다. MSP에 대한 자세한 정보 및 MSP 폴더에 포함되는 항목은 [MSP(Membership Service Provider)](/docs/services/blockchain/howto/CA_operate.html#ca-operate-msp)를 참조하십시오.
 
-  `enroll` 명령이 실패하는 경우 가능한 원인은 [문제점 해결 주제](/docs/services/blockchain/howto/CA_operate.html#ca-operate-enroll-error)를 참조하십시오.
+  `enroll` 명령이 실패하는 경우 가능한 원인은 [문제점 해결 주제](/docs/services/blockchain/howto/CA_operate.html#ca-operate-troubleshooting)를 참조하십시오.
 
 tree 명령을 실행하여 모든 전제조건 단계를 완료했는지 확인할 수 있습니다. 인증서를 저장한 디렉토리로 이동하십시오. 트리 명령은 다음 구조와 유사한 결과를 생성해야 합니다.
 
@@ -268,7 +269,7 @@ tree
 ## CA를 사용하여 순서 지정자 또는 피어 배치
 {: #ca-operate-deploy-orderer-peer}
 
-순서 지정자 또는 피어를 배치하려면 먼저 컴포넌트 ID 및 CA에 대한 중요한 정보가 포함된 구성 JSON 파일을 작성해야 합니다. 그런 다음 [Kubernetes 시크릿 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://kubernetes.io/docs/concepts/configuration/secret/) 오브젝트를 사용하여 구성 중에 이 파일을 Helm 차트에 전달해야 합니다. 이 파일을 통해 순서 지정자 또는 피어가 블록체인 네트워크에 가입하기 위해 CA에서 받아야 하는 인증서를 가져올 수 있습니다. 이 파일에는 관리자로 컴포넌트를 작동시킬 수 있도록 해주는 관리자 인증서도 포함되어 있습니다.
+순서 지정자 또는 피어를 배치하려면 먼저 컴포넌트 ID 및 CA에 대한 중요한 정보가 포함된 구성 JSON 파일을 작성해야 합니다. 그런 다음 [Kubernetes 시크릿 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://kubernetes.io/docs/concepts/configuration/secret/) 오브젝트를 사용하여 구성 중에 이 파일을 Helm 차트에 전달해야 합니다. 이 파일을 통해 순서 지정자 또는 피어가 블록체인 네트워크에 참여하기 위해 CA에서 받아야 하는 인증서를 가져올 수 있습니다. 이 파일에는 관리자로 컴포넌트를 작동시킬 수 있도록 해주는 관리자 인증서도 포함되어 있습니다.
 
 다음 지시사항은 편집하여 로컬 파일 시스템에 저장할 수 있는 [템플리트 JSON 구성 파일](/docs/services/blockchain/howto/CA_operate.html#ca-operate-config-file-template)을 제공하며 이 파일을 완성하기 위해 CA를 사용하는 방법에 대해 설명합니다.
 
@@ -355,7 +356,7 @@ tree
 ### CA를 사용하여 컴포넌트 ID 등록
 {: #ca-operate-register-component}
 
-순서 지정 서비스를 배치한 후 해당 서비스에 조직을 추가하여 컨소시엄을 작성하거나 피어를 배치한 후 해당 피어를 채널에 배치하려는 경우 먼저 CA를 사용하여 컴포넌트 ID를 등록해야 합니다. 이 경우 컴포넌트 배치 시 네트워크에 참여할 피어 또는 순서 지정자에게 필요한 인증서가 생성됩니다.
+순서 지정 서비스를 배치한 후 해당 서비스에 조직을 추가하여 컨소시엄을 작성하거나 피어를 배치한 후 해당 피어를 채널에 배치하려는 경우 먼저 CA에 컴포넌트 ID를 등록해야 합니다. 이 경우 컴포넌트 배치 시 네트워크에 참여할 피어 또는 순서 지정자에게 필요한 인증서가 생성됩니다.
 
 1. Fabric CA 클라이언트를 사용하여 [CA 관리자로 인증서를 생성](/docs/services/blockchain/howto/CA_operate.html#ca-operate-enroll-ca-admin)하십시오. 이 관리자 인증서를 사용하여 다음 명령을 실행하십시오. `$FABRIC_CA_CLIENT_HOME`이 `$HOME/fabric-ca-client/ca-admin`으로 설정되어 있는지 확인하십시오.
 
@@ -720,7 +721,7 @@ MSP의 구조에 관한 자세한 정보는 Hyperledger Fabric 문서에서 [멤
 ## CA 로그 보기
 {: #ca-operate-view-logs}
 
-컴포넌트 로그는 [`kubectl CLI 명령`](/docs/services/blockchain/howto/CA_operate.html#ca-operate-kubectl-configure)을 사용하거나 {{site.data.keyword.cloud_notm}} Private 클러스터에 포함된 [Kibana ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.elastic.co/products/kibana "Elastic Search에 대한 창")를 통해 표시될 수 있습니다. 
+컴포넌트 로그는 [`kubectl CLI 명령`](/docs/services/blockchain/howto/CA_operate.html#ca-operate-kubectl-configure)을 사용하거나 {{site.data.keyword.cloud_notm}} Private 클러스터에 포함된 [Kibana ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.elastic.co/products/kibana "Elastic Search에 대한 창")를 통해 표시될 수 있습니다.
 
 - `kubectl logs` 명령을 실행하여 팟(Pod) 내부의 컨테이너 로그를 보십시오. 팟(Pod) 이름이 확실하지 않은 경우 다음 명령을 실행하여 팟(Pod)의 목록을 보십시오.
 
@@ -740,13 +741,18 @@ MSP의 구조에 관한 자세한 정보는 Hyperledger Fabric 문서에서 [멤
 
 - 또는 Kibana에서 로그를 여는 [{{site.data.keyword.cloud_notm}}Private 클러스터 관리 콘솔](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/troubleshoot/events.html)을 사용하여 배치 이벤트 및 로그에 액세스할 수 있습니다.
 
-  **참고:** Kibana에서 로그인이 표시되면 `No results found`의 응답을 수신할 수 있습니다. 이 상태는 {{site.data.keyword.blockchainfull_notm}} Private이 호스트 이름으로 작업자 노드 IP 주소를 사용하는 경우 발생할 수 있습니다. 이 문제점을 해결하려면 패널 상단에서 `node.hostname.keyword`로 시작하는 필터를 제거하십시오. 그런 다음 로그가 표시됩니다.
+  **참고:** Kibana에서 로그인이 표시되면 `No results found`의 응답을 수신할 수 있습니다. 이 상태는 {{site.data.keyword.cloud_notm}} Private이 호스트 이름으로 작업자 노드 IP 주소를 사용하는 경우 발생할 수 있습니다. 이 문제점을 해결하려면 패널 상단에서 `node.hostname.keyword`로 시작하는 필터를 제거하십시오. 그런 다음 로그가 표시됩니다.
+
+## 보안
+{: #ca-operate-security}
+
+추가 보안을 보장하고 CA 키 자료의 손상을 방지하기 위해 제한된 수의 인증서(예: Node.js 서버, 클라이언트 애플리케이션)가 발행된 경우에만 CA를 오프라인으로 유지할 수 있습니다. 그러나 요청 시 사용자에게 인증서를 발행해야 하는 경우에는 CA가 온라인 상태여야 합니다. 가능하면 [HSM](https://console.test.cloud.ibm.com/docs/services/blockchain/glossary.html#glossary-hsm)을 사용하여 CA 관리자 개인 키를 보안 설정할 것을 적극 권장합니다. 
 
 ## 문제점 해결
 {: #ca-operate-troubleshooting}
 
 ### **문제점:** `enroll` 명령을 실행할 때 오류가 발생합니다.
-{: #ca-operate-enroll-error}
+{: #ca-operate-enroll-error1}
 
 Fabric CA 클라이언트 enroll 명령을 실행할 때 다음 오류로 인해 명령이 실패할 수 있습니다.
 
@@ -766,9 +772,9 @@ Error: Failed to read config file at '/Users/chandra/fabric-ca-client/ca-admin/f
 `enroll` 명령에 지정된 매개변수를 검토하여 이러한 조건이 존재하지 않는지 확인하십시오.
 
 ### **문제점:** `enroll` 명령을 실행할 때 CA URL에 오류가 발생합니다.
-{: #ca-operate-enroll-error}
+{: #ca-operate-enroll-error2}
 
-등록 url, `-u` 매개변수값에 특수 문자가 포함된 경우, Fabric CA 클라이언트 등록 명령이 실패할 수 있습니다. 예를 들어, 등록 ID 및 비밀번호가 `admin:C25A06287!0`인 다음 명령의 경우, 
+등록 url, `-u` 매개변수값에 특수 문자가 포함된 경우, Fabric CA 클라이언트 등록 명령이 실패할 수 있습니다. 예를 들어, 등록 ID 및 비밀번호가 `admin:C25A06287!0`인 다음 명령의 경우,
 
 ```
 ./fabric-ca-client enroll -u https://admin:C25A06287!0@ash-zbc07c.4.secure.blockchain.ibm.com:21241 --tls.certfiles $HOME/fabric-ca-remote/cert.pem --caname PeerOrg1CA

@@ -2,7 +2,11 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-11"
+lastupdated: "2019-03-05"
+
+keywords: blockchain components, ca, certificate authorities, peer, ordering service, orderer, channel, smart contract, applications
+
+subcollection: blockchain
 
 ---
 
@@ -22,11 +26,11 @@ lastupdated: "2019-02-11"
 
 Fabric 네트워크의 더욱 포괄적인 보기와 이를 포함하는 컴포넌트의 연관성에 대해 알아보려면 네트워크 시작과 발전 방법을 보여주는 Fabric 커뮤니티 문서의 [블록체인 네트워크의 구조에 대한 문서](https://hyperledger-fabric.readthedocs.io/en/release-1.2/network/network.html)를 참조하십시오.
 
-Fabric을 기반으로 하는 네트워크의 컴포넌트에 대한 상위 레벨 개요는 아래 비디오를 확인하십시오.
+Fabric을 기반으로 하는 네트워크의 컴포넌트에 대한 상위 레벨 개요는 아래 동영상을 확인하십시오.
 
 <iframe class="embed-responsive-item" id="youtubeplayer" title="스타터 플랜 동영상" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/sJaT2L99BUo" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
 
-*이 비디오는 스타터 및 엔터프라이즈 네트워크의 관점에서 컴포넌트에 중점을 두고 있으나, 이 정보는 계속해서 {{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}} Private의 고객 관리 솔루션과 높은 관련성을 유지합니다.*
+*이 동영상은 스타터 및 엔터프라이즈 네트워크의 관점에서 컴포넌트에 중점을 두고 있으나, 이 정보는 계속해서 {{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}} Private의 고객 관리 솔루션과 높은 관련성을 유지합니다.*
 
 이 개요의 목적으로 인증 기관(CA), 순서 지정자, 피어, 스마트 계약 및 애플리케이션에 중점을 둡니다. [{{site.data.keyword.blockchainfull_notm}} Platform 2.0 네트워크 빌드 안내서](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network) 및 [{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private 배치 안내서](/docs/services/blockchain/ibp_for_icp_deployment_guide.html#get-started-icp) 주제에서 확인할 수 있듯이 이 순서는 임의적이지 않으며, Fabric 기반 네트워크의 컴포넌트가 배치되는 순서를 반영합니다.
 
@@ -70,7 +74,7 @@ Fabric 기반 블록체인 네트워크의 기본 요소는 ID 및 권한입니�
 
 {{site.data.keyword.blockchainfull_notm}} Platform과 같은 Fabric 기반 네트워크의 클라이언트 애플리케이션은 기본 인프라(예: API, SDK 및 스마트 계약)를 활용하여 더 높은 추상화 레벨에서 클라이언트 상호작용(호출 및 조회)을 허용합니다.
 
-애플리케이션이 Fabric 기반 네트워크와 상호작용하는 방법을 보려면 [첫 번째 애플리케이션 작성과 관련된 문서![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/write_first_app.html "첫 번째 애플리케이션 작성")를 참조하십시오. 또한 Fabric v1.4의 경우, {{site.data.keyword.blockchainfull_notm}} Platform 2.0에서 사용 가능한 영역이 지속적으로 개선되고 있습니다. 자세한 정보는 [애플리케이션 개발![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/developapps/developing_applications.html "애플리케이션 개발")에서 Hyperledger Fabric 주제를 참조하십시오. 계약 클래스와 같은 이러한 직접적인 기능은 Fabric v1.2(Starter Plan 및 {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private의 현재 버전)와 호환되지 않지만, 여기에는 개념적 정보와 애플리케이션 디자인의 요소로 사용할 가치가 있고 미래를 대비할 수 있는 기타 유용한 팁들이 포함되어 있습니다.
+애플리케이션이 Fabric 기반 네트워크와 상호작용하는 방법을 보려면 [첫 번째 애플리케이션 작성과 관련된 문서![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/write_first_app.html "첫 번째 애플리케이션 작성")를 참조하십시오.  또한 Fabric v1.4의 경우, {{site.data.keyword.blockchainfull_notm}} Platform 2.0에서 사용 가능한 영역이 지속적으로 개선되고 있습니다. 자세한 정보는 [애플리케이션 개발![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/developapps/developing_applications.html "애플리케이션 개발")에서 Hyperledger Fabric 주제를 참조하십시오.  계약 클래스와 같은 이러한 직접적인 기능은 Fabric v1.2(Starter Plan 및 {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private의 현재 버전)와 호환되지 않지만, 여기에는 개념적 정보와 애플리케이션 디자인의 요소로 사용할 가치가 있고 미래를 대비할 수 있는 기타 유용한 팁들이 포함되어 있습니다.
 
 애플리케이션이 Fabric 기반 네트워크와 상호작용하는 방법을 보려면 [애플리케이션 작성](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app)을 참조하십시오.
 

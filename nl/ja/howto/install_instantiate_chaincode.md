@@ -2,7 +2,10 @@
 
 copyright:
   years: 2018,2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
+
 ---
 
 {:new_window: target="_blank"}
@@ -10,11 +13,9 @@ lastupdated: "2019-02-08"
 {:codeblock: .codeblock}
 {:screen: .screen}
 {:pre: .pre}
+
 # チェーンコードのインストール、インスタンス化、および更新
 {: #install-instantiate-chaincode}
-
-
-***[このページは参考になりましたか。 ご意見をお聞かせください。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 
 チェーンコードとは、台帳内の資産を作成および変更するためのビジネス・ロジックとトランザクション命令をカプセル化したソフトウェアです。 チェーンコードはさまざまな言語で作成でき、{{site.data.keyword.blockchainfull}} Platform は Go および Node.js チェーンコードをサポートしています。 チェーンコードは、これと対話する必要のある任意のピアに関連付けられた Docker コンテナーで実行されます。 チェーンコードの開発方法について詳しくは、[Chaincode Tutorials ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](http://hyperledger-fabric.readthedocs.io/en/release-1.2/chaincode.html) を参照してください。

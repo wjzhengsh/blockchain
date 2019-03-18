@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-12-07"
+lastupdated: "2018-12-08"
 
 ---
 
@@ -16,6 +16,7 @@ lastupdated: "2018-12-07"
 # Déploiement d'un réseau d'entreprise dans un plan Enterprise
 {: #deploying-a-business-network}
 
+**IBM recommande d'utiliser Hyperledger Composer uniquement pour les démonstrations et les validations de concept. IBM n'assure pas de support pour les réseaux utilisant Hyperledger Composer en production, y compris l'interface CLI Composer, les API JavaScript, le serveur REST et l'aire de jeu Web.**
 
 ***[Cette page est-elle utile ? Dites-nous.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
@@ -26,9 +27,9 @@ Ce tutoriel concerne l'étape suivante du cycle de vie d'un réseau d'entreprise
 
 ## Avant de commencer
 
-Vous devez vérifier que vous avez installé l'environnement de développeur de {{site.data.keyword.blockchainfull_notm}}.  Vous devez aussi savoir comment développer et déployer des réseaux d'entreprise. Pour plus de détails sur la création de réseaux d'entreprise, vous pouvez consulter la [documentation Hyperledger Composer](https://hyperledger.github.io/composer/latest/business-network/business-network-index).
+Vous devez vérifier que vous avez installé l'environnement de développeur de {{site.data.keyword.blockchainfull_notm}}. Vous devez aussi savoir comment développer et déployer des réseaux d'entreprise. Pour plus de détails sur la création de réseaux d'entreprise, vous pouvez consulter la [documentation Hyperledger Composer](https://hyperledger.github.io/composer/latest/business-network/business-network-index).
 
-Vous devez accéder à une instance du plan Enterprise d'{{site.data.keyword.blockchainfull_notm}} Platform et vous devez avoir créé vos homologues au préalable. Pour plus d'informations sur le plan Enterprise d'{{site.data.keyword.blockchainfull_notm}} Platform, voir [Présentation du plan Enterprise](/docs/services/blockchain/enterprise_plan.html).
+Vous devez accéder à une instance du plan Enterprise d'{{site.data.keyword.blockchainfull_notm}} Platform et vous devez avoir créé vos homologues au préalable. Pour plus d'informations sur le plan Enterprise d'{{site.data.keyword.blockchainfull_notm}} Platform, voir [Présentation du plan Enterprise](./enterprise_plan.html).
 
 ## Etape 1 : Créer un profil de connexion pour {{site.data.keyword.blockchainfull_notm}} Platform
 
@@ -78,7 +79,7 @@ Dans le profil de connexion sous **certificateAuthorities** figure un attribut *
         ],
  ```
 
-1. Créez une carte réseau d'entreprise pour l'autorité de certification à l'aide de la commande suivante : 
+1. Créez une carte réseau d'entreprise pour l'autorité de certification à l'aide de la commande suivante :
 
     ```
     composer card create -f ca.card -p bmx-hlfv11 -u admin -s PA55W0RD12
@@ -131,7 +132,7 @@ Dans le profil de connexion sous **certificateAuthorities** figure un attribut *
 
 ## Etape 6 : Créer une nouvelle identité pour administrer votre réseau d'entreprise
 
-Créer une carte de réseau d'entreprise à l'aide des certificats demandés. Cette carte de réseau d'entreprise doit avoir le droit d'installer du code blockchain sur les homologues qui comportent votre certificat public téléchargé et il s'agira d'un émetteur pour les autorités de certification.
+Créez une carte de réseau d'entreprise à l'aide des certificats demandés. Cette carte de réseau d'entreprise doit avoir le droit d'installer du code blockchain sur les homologues qui comportent votre certificat public téléchargé et il s'agira d'un émetteur pour les autorités de certification.
 
 1. Pour créer la carte, exécutez la commande suivante :
 
@@ -140,7 +141,7 @@ Créer une carte de réseau d'entreprise à l'aide des certificats demandés. Ce
     ```
     {:codeblock}
 
-    Où `bmx-hlfv11` est le nom du profil que vous avez préalablement créé. 
+    Où `bmx-hlfv11` est le nom du profil que vous avez préalablement créé.
 
 2. Une fois la carte créée, importez-la à l'aide de la commande suivante :
 

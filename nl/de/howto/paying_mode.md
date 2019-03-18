@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018,2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -15,10 +17,6 @@ lastupdated: "2019-02-08"
 # Zahlungsmodus
 {: #paying-mode}
 
-
-***[Ist diese Seite hilfreich? Teilen Sie uns Ihre Meinung mit.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
-
 Für {{site.data.keyword.blockchainfull}} Platform werden monatliche Mitgliedsgebühren und Peer-Gebühren in Rechnung gestellt. Netzmitglieder können ihre Rechnung über ihre {{site.data.keyword.cloud_notm}}-Konten bezahlen, die den Bereich zum Erstellen der Netzinstanz enthalten. Alternativ hierzu kann ein Netzmitglied die Rechnung für andere (oder auch alle) Mitglieder im Netz übernehmen und für das gesamte Netz bezahlen. Der Zahler kann die Abrechnungen bei Bedarf auch an andere Mitglieder zurückübertragen.
 {:shortdesc}
 
@@ -30,7 +28,7 @@ Hinweis: Wenn mehrere Organisationen ein Konsortium erstellen, wird empfohlen, d
 ## Voraussetzungen
 {: #paying-mode-prereq}
 
-Jedes Netzmitglied muss über ein gebührenpflichtiges {{site.data.keyword.cloud_notm}}-Konto verfügen, z. B. ein **nutzungsabhängiges** Konto. Dadurch ist es möglich, {{site.data.keyword.blockchainfull_notm}} Platform-Serviceinstanzen unter {{site.data.keyword.cloud_notm}} zu erstellen. Wenn Sie über kein Konto verfügen, [registrieren](https://console.bluemix.net/registration/) Sie sich für ein Konto und führen Sie ein Upgrade auf ein gebührenpflichtiges Konto durch. Für ein Upgrade Ihres Kontos auf ein nutzungsabhängiges Konto rufen Sie **Verwalten** > **Abrechnung und Nutzung** > **Abrechnung** in der {{site.data.keyword.cloud_notm}}-Konsole auf und klicken Sie auf **Kreditkarte hinzufügen**.
+Jedes Netzmitglied muss über ein gebührenpflichtiges {{site.data.keyword.cloud_notm}}-Konto verfügen, z. B. ein **nutzungsabhängiges** Konto. Dadurch ist es möglich, {{site.data.keyword.blockchainfull_notm}} Platform-Serviceinstanzen unter {{site.data.keyword.cloud_notm}} zu erstellen. Wenn Sie über kein Konto verfügen, [registrieren](https://cloud.ibm.com/registration/) Sie sich für ein Konto und führen Sie ein Upgrade auf ein gebührenpflichtiges Konto durch. Für ein Upgrade Ihres Kontos auf ein nutzungsabhängiges Konto rufen Sie **Verwalten** > **Abrechnung und Nutzung** > **Abrechnung** in der {{site.data.keyword.cloud_notm}}-Konsole auf und klicken Sie auf **Kreditkarte hinzufügen**.
 
 
 ## Eigene Gebühren bezahlen
@@ -79,7 +77,7 @@ Ein Mitglied innerhalb eines Netzes kann die Gebühren für einzelne oder mehrer
 {: #paying-mode-limitation}
 - Da sich alle Mitglieder innerhalb des {{site.data.keyword.cloud_notm}}-Kontos des Zahlers befinden, hat der Zahler Zugriff auf die Blockchain-Instanzen aller Mitglieder und kann deren Identität annehmen. Daher wird dieser Zahlungsmodus am besten für PoC-Umgebungen (PoC = Proof of Concept; Machbarkeitsnachweis) oder in Fällen verwendet, in denen der Zahlungspflichtige das gesamte Management für {{site.data.keyword.blockchainfull_notm}} Platform abwickelt und den Mitgliedern lediglich eine Anwendung bereitgestellt wird.  
 - Für alle Mitglieder in der Cloud Foundry-Organisation des Zahlers sind alle Bereiche in der Organisation sichtbar.  Allerdings können die Mitglieder die Organisationen nicht bearbeiten oder ändern, da sie nicht die entsprechenden Berechtigungen haben.  
-- Beachten Sie, dass jedes Mitglied in der Cloud Foundry-Organisation des Zahlers die IBM Cloud-IDs anderer Mitglieder in derselben Cloud Foundry-Organisation sehen kann.   
+- Beachten Sie, dass jedes Mitglied in der Cloud Foundry-Organisation des Zahlers die IBM Cloud-IDs anderer Mitglieder in derselben Cloud Foundry-Organisation sehen kann.  
 - Wenn der Zahler alle Mitglieder zum {{site.data.keyword.cloud_notm}}-Konto des Zahlers hinzugefügt und ihnen Zugriff zum Bereitstellen von Blockchain-Instanzen erteilt hat und die Mitglieder dem Netz beigetreten sind, erteilt der Zahler den Mitgliedern auch Zugriff zum Erstellen weiterer Services, die zusätzliche Gebühren verursachen können. Alle Mitglieder können eine Vereinbarung unterzeichnen, in der festgehalten wird, dass diese Mitglieder keine nicht autorisierten Services in ihren Konten erstellen werden und so zusätzliche Kosten für das Konto des Zahlers verursachen.  
 
 ## Mitglied bezahlen lassen

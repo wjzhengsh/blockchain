@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -17,9 +19,6 @@ lastupdated: "2019-02-08"
 
 # 스마트 계약을 위한 도구
 {: #develop-vscode}
-
-***[이 페이지가 도움이 되었습니까? 알려주십시오.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 
 {{site.data.keyword.blockchainfull}} Platform Visual Studio Code 확장은 스마트 계약 패키지의 개발, 패키지 및 배치를 위해 Visual Studio Code 내에 환경을 제공합니다. 확장에는 간소화된 로컬 스마트 계약 개발을 위해 Hyperledger Fabric의 사전 구성된 로컬 인스턴스를 설정할 명령도 포함됩니다.
 
@@ -129,13 +128,13 @@ Hyperledger Fabric 컨테이너가 중지되고 다시 시작됩니다.
 
 **참고:** 현재 확장은 {{site.data.keyword.blockchainfull_notm}} Platform 엔터프라이즈 플랜과 호환 가능하지 않습니다.
 
-1. {{site.data.keyword.blockchainfull_notm}} Platform 스타터 플랜의 인스턴스가 없으면 [작성 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://console.bluemix.net/catalog/services/blockchain)하십시오.
+1. {{site.data.keyword.blockchainfull_notm}} Platform 스타터 플랜의 인스턴스가 없으면 [작성 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://cloud.ibm.com/catalog/services/ibm-blockchain-5-prod)하십시오.
 2. **실행**을 클릭하여 {{site.data.keyword.blockchainfull_notm}} Platform UI를 여십시오.
 3. **개요** > **연결 프로파일** > **다운로드**를 클릭하여 연결 프로파일을 검색하십시오.
 4. **인증 기관** > **인증서 생성**을 클릭하고 인증서 및 개인 키를 파일 시스템에 저장하여 필요한 관리자 인증서를 생성하십시오.
 5. **멤버** > **인증서** > **인증서 추가**를 클릭하고 이전 단계에서 작성된 인증서를 선택하여 인증서를 {{site.data.keyword.blockchainfull_notm}} Platform 스타터 플랜 인스턴스에 추가하십시오.
 6. Visual Studio Code에서 {{site.data.keyword.blockchainfull_notm}} Platform 확장 보기를 열고 **새 연결 추가**를 클릭하십시오.
-7. 연결 이름 및 연결 프로파일에 대한 경로를 입력하고 기존 파일 시스템 [지갑 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/developapps/wallet.html "지갑")을 선택하거나 인증서 및 개인 키를 사용하여 새 지갑을 작성하십시오.
+7. 연결 이름 및 연결 프로파일에 대한 경로를 입력하고 파일 시스템에서 기존 [지갑![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/developapps/wallet.html "지갑")을 선택하거나 인증서 및 개인 키를 사용하여 새 지갑을 작성하십시오. 
 
 ### 고유한 Hyperledger Fabric 인스턴스에 연결
 {: #develop-vscode-connecting-to-own-Fabric-instance}

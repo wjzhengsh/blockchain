@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -17,10 +19,6 @@ lastupdated: "2019-02-08"
 
 # Introdução ao {{site.data.keyword.blockchainfull_notm}} Platform for AWS
 {: #remote-peer-aws}
-
-
-***[Esta página é útil? Diga-nos.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 
 Estas instruções descrevem como usar um modelo de Iniciação Rápida do Amazon Web Services (AWS) para criar um peer do {{site.data.keyword.blockchainfull}} Platform for AWS e, em seguida, conectá-lo a uma rede em um {{site.data.keyword.blockchainfull_notm}} Platform.
 {:shortdesc}
@@ -257,7 +255,7 @@ Execute o comando da CLI `peer channel fetch` para buscar o bloco genesis do can
    ash-zbc07b.4.secure.blockchain.ibm.com:21239
    ```
 
-   - Localize o nome de sua organização procurando **organizações**. Essa deve ser a mesma organização que você usa para registrar seu peer. É possível localizar o nome de sua organização junto com seu `mspid` associado. Esse valor também está disponível no painel Visão geral do Monitor de Rede. Clique no botão **Configuração de peer remoto**. O valor é exibido em `Organization MSP`. Anote o valor de `mspid`.
+   - Localize o nome de sua organização procurando **organizações**. Essa deve ser a mesma organização que você usa para registrar seu peer. É possível localizar o nome de sua organização junto com seu `mspid` associado. Esse valor também está disponível no painel Visão geral do Monitor de Rede. Clique no botão **Configuração do peer remoto**. O valor é exibido em `Organization MSP`. Anote o valor de `mspid`.
 
    - Se você ainda não tiver feito isso, crie uma sessão de shell dentro do contêiner de peer executando `docker exec -it peer sh`.
 

@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018,2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -15,15 +17,11 @@ lastupdated: "2019-02-08"
 # Swagger API를 사용하여 네트워크와 상호작용
 {: #ibp-swagger}
 
-
-***[이 페이지가 도움이 되었습니까? 알려주십시오.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
-
 {{site.data.keyword.blockchainfull_notm}} Platform은 네트워크의 노드, 채널, 피어 및 구성원을 관리하는 데 사용할 수 있는 Swagger의 여러 REST API를 노출합니다. 애플리케이션은 이러한 API를 사용하여 네트워크 모니터를 사용하지 않고 중요한 네트워크 리소스를 제어할 수 있습니다.
 
 {:shortdesc}
 
-시작하기 전에 {{site.data.keyword.Bluemix_notm}}에서 [{{site.data.keyword.blockchain}} Platform 서비스 인스턴스 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://console.bluemix.net/catalog/services/blockchain)를 작성하고 스타터 플랜 <!--or Enterprise Plan -->블록체인 네트워크를 작성하거나 가입해야 합니다.
+시작하기 전에 {{site.data.keyword.cloud_notm}}에서 [{{site.data.keyword.blockchain}} Platform 서비스 인스턴스 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://cloud.ibm.com/catalog/services/ibm-blockchain-5-prod)를 작성하고 스타터 플랜 <!--or Enterprise Plan -->블록체인 네트워크를 작성하거나 참여해야 합니다.
 
 
 ## 네트워크 인증 정보 검색
@@ -47,9 +45,6 @@ lastupdated: "2019-02-08"
 {: #ibp-swagger-authorizing-swagger}
 
 "API" 화면에서 **Swagger UI** 링크를 클릭하여 Swagger UI를 여십시오.  
-<!-- remove this line because the link is different depending on if you are starter or enterprise plan
-You can also open the Swagger UI with the URL in the connection profiles. For example, `http://blockchain-swagger-dev.stage1.mybluemix.net`.
--->
 
 Swagger UI에서 **권한 부여** 단추를 클릭하면 권한 부여 창이 팝업됩니다. 네트워크 인증 정보에 "키" 및 "시크릿"의 값을 사용자 이름 및 비밀번호로 입력하고 **권한 부여** 및 **완료**를 차례로 클릭하십시오. 이제 API를 실행할 준비가 되었습니다. 브라우저를 새로 고치면 인증 정보를 사용하여 다시 권한 부여해야 합니다.
 

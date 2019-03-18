@@ -2,7 +2,10 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
+
 ---
 
 {:new_window: target="_blank"}
@@ -14,10 +17,6 @@ lastupdated: "2019-02-08"
 
 # {{site.data.keyword.blockchainfull_notm}} Platform の証明書の管理
 {: #managing-certificates}
-
-
-***[このページは参考になりましたか。 ご意見をお聞かせください。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 
 Hyperledger Fabric をベースとする {{site.data.keyword.blockchainfull}} Platform は、許可制ブロックチェーン・ネットワークを構築します。 参加者はネットワークのメンバーとして認識され、ネットワーク・リソースに対する参加者のアクティビティーやアクセスは絶えず検証されます。 参加者の ID は、信頼できる x509 デジタル証明書の形式で提供されます。 検証は、基礎を成す Public Key Infrastructure と、ネットワーク内のトランザクションや管理を保護する署名操作/検証操作によって実装されています。
 {:shortdesc}
@@ -76,9 +75,9 @@ Hyperledger Fabric をベースとする {{site.data.keyword.blockchainfull}} Pl
 ### 証明書の有効期限
 {: #managing-certificates-expiration}
 
-CA が {{site.data.keyword.blockchainfull_notm}} Platform で生成する証明書は、1 年または 3 年後に有効期限が切れます。この有効期限は、Fabric SDK、Fabric CA クライアント、または[ネットワーク・モニター](/docs/services/blockchain/v10_application.html#dev-app-enroll-panel)を使用して生成される証明書の有効期限と同じです。証明書の有効期限が切れると、アプリケーションはネットワークと対話できなくなります。新しい証明書を生成するために再エンロールする必要があります。ユーザーのエンロール制限に達している場合は、新規ユーザーを登録してエンロールすることができます。以前の証明書を使用してネットワークを操作していた場合は、新しい証明書をプラットフォームにアップロードする必要もあります。
+CA が {{site.data.keyword.blockchainfull_notm}} Platform で生成する証明書は、1 年または 3 年後に有効期限が切れます。 この有効期限は、Fabric SDK、Fabric CA クライアント、または[ネットワーク・モニター](/docs/services/blockchain/v10_application.html#dev-app-enroll-panel)を使用して生成される証明書の有効期限と同じです。 証明書の有効期限が切れると、アプリケーションはネットワークと対話できなくなります。 新しい証明書を生成するために再エンロールする必要があります。 ユーザーのエンロール制限に達している場合は、新規ユーザーを登録してエンロールすることができます。 以前の証明書を使用してネットワークを操作していた場合は、新しい証明書をプラットフォームにアップロードする必要もあります。
 
-コマンド・ラインを使用して、証明書の有効期限日付を確認できます。以下のコマンドを実行して、人間が読める形式で証明書を表示します。
+コマンド・ラインを使用して、証明書の有効期限日付を確認できます。 以下のコマンドを実行して、人間が読める形式で証明書を表示します。
 ```
 openssl x509 -in <certificate file> -text
 ```

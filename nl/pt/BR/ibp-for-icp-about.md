@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -17,8 +19,6 @@ lastupdated: "2019-02-08"
 
 # Sobre o {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private
 {: #ibp-icp-about}
-
-***[Esta página é útil? Diga-nos.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 O {{site.data.keyword.blockchainfull}} Platform libera o {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private, que é uma plataforma de aplicativo para desenvolver e gerenciar aplicativos conteinerizados. A oferta {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private é baseada no Kubernetes, que permite que os usuários implementem Autoridades de Certificação (CAs), solicitadores e peers no x86, LinuxONE e IBM Z. O {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private é baseado no Hyperledger Fabric v1.2.1 e é implementado usando gráficos do Helm do Kubernetes.
 {:shortdesc}
@@ -176,9 +176,9 @@ Os planos Starter e Enterprise do {{site.data.keyword.blockchainfull_notm}} Plat
 Os dados em seu banco de dados de estado, se você usa LevelDB ou CouchDB, não são criptografados. É possível usar a criptografia de nível do aplicativo para proteger os dados em repouso em seu banco de dados de estado.
 
 ### Residência de dados
-{: #ibp-icp-about-data-residency}
+{: #ibp-icp-about-security-data-residency}
 
-Os requisitos de residência de dados podem exigir que o processamento e armazenamento de todos os dados do livro-razão do blockchain permaneçam dentro da fronteira de um único país (ou dentro de algum outro limite definido). Para obter mais informações sobre como a residência de dados pode ser realizada, consulte [Residência de dados](/docs/services/blockchain/howto/remote_peer.html#remote-peer-aws-about-data-residency).
+Os requisitos de residência de dados podem exigir que o processamento e armazenamento de todos os dados do livro-razão do blockchain permaneçam dentro da fronteira de um único país (ou dentro de algum outro limite definido). Para obter mais informações sobre como a residência de dados pode ser realizada, consulte [Residência de dados](#ibp-icp-about-data-residency).
 
 ### Gerenciamento de chave
 {: #ibp-icp-about-security-key-management}

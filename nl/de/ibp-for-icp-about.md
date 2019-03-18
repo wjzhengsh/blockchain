@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -17,8 +19,6 @@ lastupdated: "2019-02-08"
 
 # Informationen zu {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private
 {: #ibp-icp-about}
-
-***[Ist diese Seite hilfreich? Teilen Sie uns Ihre Meinung mit.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 {{site.data.keyword.blockchainfull}} Platform gibt {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private frei, bei der es sich um eine Anwendungsplattform zur Entwicklung und zum Management containerisierter Anwendungen handelt. Das {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private-Angebot basiert auf Kubernetes, sodass Benutzer Zertifizierungsstellen (CAs), Anordnungsknoten und Peers unter x86, LinuxONE und IBM Z bereitstellen können. {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private basiert auf Hyperledger Fabric v1.2.1 und wird unter Verwendung von Kubernetes-Helm-Diagrammen bereitgestellt.
 {:shortdesc}
@@ -41,7 +41,8 @@ Mit {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.c
 
 Die Ausführung der {{site.data.keyword.blockchainfull_notm}} Platform-Komponenten außerhalb von {{site.data.keyword.cloud_notm}} bietet ein höheres Maß an Flexibilität in Bezug auf die Vergrößerung eines Blockchain-Netzes sowie hinsichtlich der Teilnahme an einem Blockchain-Netz. Netzgründer werden bei der Vergrößerung ihrer eigenen Netze unterstützt, indem neue Mitglieder unter Verwendung der Plattform ihrer Wahl teilnehmen können. Organisationen, die an der Teilnahme an Blockchain-Netzen Interesse haben, können ihre Peers mit ihren vorhandenen Anwendungen zusammenfassen oder bei ihren Systems of Record integrieren.
 
-Der Prozess für die Bereitstellung von {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private ist komplex und setzt ein großes Fachwissen über Fabric voraus. Wenn Sie Fabric, {{site.data.keyword.cloud_notm}} Private oder {{site.data.keyword.blockchainfull_notm}} Platform noch nicht kennen und eine Machbarkeitsnachweis- oder Entwicklungsumgebung einrichten wollen, sollten Sie stattdessen die Verwendung des [Starter Plans](/docs/services/blockchain/starter_plan.html#starter-plan-about) erwägen. Bitte beachten Sie außerdem, dass nicht jede potenzielle Bereitstellungskonfiguration in {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private unterstützt wird.{:improtant}
+Der Prozess für die Bereitstellung von {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private ist komplex und setzt ein großes Fachwissen über Fabric voraus. Wenn Sie Fabric, {{site.data.keyword.cloud_notm}} Private oder {{site.data.keyword.blockchainfull_notm}} Platform noch nicht kennen und eine Machbarkeitsnachweis- oder Entwicklungsumgebung einrichten wollen, sollten Sie stattdessen die Verwendung des [Starter Plans](/docs/services/blockchain/starter_plan.html#starter-plan-about) erwägen. Bitte beachten Sie außerdem, dass nicht jede potenzielle Bereitstellungskonfiguration in {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private unterstützt wird.
+{:improtant}
 
 Benutzer dieses Angebots verwalten ihre Sicherheit und Infrastruktur selbst. {{site.data.keyword.cloud_notm}} stellt diese Services nicht zur Verfügung. Lesen Sie vor Beginn die [Hinweise und Einschränkungen](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-about-considerations) im nächsten Abschnitt.
 
@@ -175,9 +176,9 @@ Der Starter Plan und der Enterprise Plan von {{site.data.keyword.blockchainfull_
 Die Daten in Ihrer Statusdatenbank werden nicht verschlüsselt; hierbei ist es ohne Belang, ob Sie LevelDB oder CouchDB verwenden. Mithilfe der Verschlüsselung auf Anwendungsebene können Sie ruhende Daten in Ihrer Statusdatenbank schützen.
 
 ### Datenspeicherort
-{: #ibp-icp-about-data-residency}
+{: #ibp-icp-about-security-data-residency}
 
-Die Anforderungen an den Datenspeicherort können es erforderlich machen, dass die Verarbeitung und Speicherung aller Blockchain-Ledgerdaten innerhalb der Grenzen eines bestimmten Landes stattfinden (bzw. innerhalb anderer definierten Grenzen). Weitere Informationen zur Erfüllung der Kriterien für den Datenspeicherort finden Sie unter [Datenspeicherort](/docs/services/blockchain/howto/remote_peer.html#remote-peer-aws-about-data-residency).
+Die Anforderungen an den Datenspeicherort können es erforderlich machen, dass die Verarbeitung und Speicherung aller Blockchain-Ledgerdaten innerhalb der Grenzen eines bestimmten Landes stattfinden (bzw. innerhalb anderer definierten Grenzen). Weitere Informationen zur Erfüllung der Kriterien für den Datenspeicherort finden Sie unter [Datenspeicherort](#ibp-icp-about-data-residency).
 
 ### Schlüsselmanagement
 {: #ibp-icp-about-security-key-management}

@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -17,10 +19,6 @@ lastupdated: "2019-02-08"
 
 # Desarrollo de aplicaciones con los SDK de Fabric
 {: #dev-app}
-
-
-***[¿Le resulta útil esta página? Indíquenos su opinión.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 
 {{site.data.keyword.blockchainfull}} Platform proporciona API que puede utilizar para conectar aplicaciones con la red blockchain. Puede utilizar los puntos finales de API en el perfil de conexión para invocar el código de encadenamiento y actualizar o consultar el libro mayor específicos del canal en sus iguales. También puede utilizar las API en [la interfaz de usuario de Swagger](/docs/services/blockchain/howto/swagger_apis.html#ibp-swagger) para gestionar nodos, canales y miembros de la red.
 {:shortdesc}
@@ -79,7 +77,7 @@ Debe proporcionar la aplicación los puntos finales de API de recursos de red es
   * En la pantalla "Visión general", pulse **Perfil de conexión**. El perfil de conexión contiene un conjunto completo de información de punto final de API de todos los recursos de red.
     ![Perfil de conexión en el supervisor de red](images/service_credentials.png "Perfil de conexión en el supervisor de red")
 
-  * Si tiene código de encadenamiento en ejecución en la red, puede obtener la información de punto final de la API que es específica del código de encadenamiento. En la pantalla "Canales", pulse la fila del canal en el que se ejecuta el código de encadenamiento para abrir la pantalla de canal específica. Luego localice el código de encadenamiento y pulse el botón **JSON**.
+  * Si tiene código de encadenamiento en ejecución en la red, puede obtener la información de punto final de la API que es específica del código de encadenamiento. En la pantalla "Canales", pulse la fila del canal en la que se ejecuta el código de encadenamiento para abrir la pantalla de canal específica. Luego localice el código de encadenamiento y pulse el botón **JSON**.
     ![Puntos finales de API por código de encadenamiento](images/channel_chaincode.png "Puntos finales de API por código de encadenamiento")
 
 2. Localice la información de punto final de API de los recursos de red, que es similar al URL de la fila `peer1-org1` en el ejemplo siguiente:
@@ -640,17 +638,17 @@ Evite el uso del código de encadenamiento en consultas que vayan a resultar en 
 ## Alojamiento de aplicaciones
 {: #dev-app-host-app}
 
-Puede alojar la aplicación en el sistema de archivos local o enviarla a {{site.data.keyword.Bluemix_notm}}. Para enviar la aplicación a {{site.data.keyword.Bluemix_notm}}, siga estos pasos:
+Puede alojar la aplicación en el sistema de archivos local o enviarla a {{site.data.keyword.cloud_notm}}. Para enviar la aplicación a {{site.data.keyword.cloud_notm}}, siga estos pasos:
 1. Instale el [instalador de línea de mandatos de Cloud Foundry ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://github.com/cloudfoundry/cli/releases).  Pruebe la instalación con el mandato `cf`.
     * Si la instalación es satisfactoria, debería ver salida de texto en el terminal.
     * Si ve "command not found", significa que la instalación no se ha realizado correctamente o que CF no se ha añadido a la vía de acceso del sistema.
-2. Configure el punto final de API e inicie sesión con su ID y contraseña de {{site.data.keyword.Bluemix_notm}} emitiendo los mandatos siguientes:
+2. Configure el punto final de API e inicie sesión con su ID y contraseña de {{site.data.keyword.cloud_notm}} emitiendo los mandatos siguientes:
     ```
     > cf api https://api.ng.bluemix.net
     > cf login
     ```
     {:codeblock}
-3. Examine el directorio de la aplicación y envíe la aplicación emitiendo el siguiente mandato. Esto puede tardar varios minutos dependiendo del tamaño de la aplicación. Puede ver los registros de {{site.data.keyword.Bluemix_notm}} en el terminal. Los registros cesan cuando la aplicación se inicia correctamente.
+3. Examine el directorio de la aplicación y envíe la aplicación emitiendo el siguiente mandato. Esto puede tardar varios minutos dependiendo del tamaño de la aplicación. Puede ver los registros de {{site.data.keyword.cloud_notm}} en el terminal. Los registros cesan cuando la aplicación se inicia correctamente.
 	```
 	> cf push YOUR_APP_NAME_HERE
 	```

@@ -2,7 +2,9 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -17,9 +19,9 @@ lastupdated: "2019-02-08"
 # Identitäten erstellen und verwalten
 {: #ibp-console-identities}
 
-***[Ist diese Seite hilfreich? Teilen Sie uns Ihre Meinung mit.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+Die Knoten von {{site.data.keyword.blockchainfull_notm}} Platform basieren auf Hyperledger Fabric und dienen zur Erstellung genehmigter Blockchain-Netze. Dies bedeutet, dass alle Teilnehmer des Blockchain-Konsortiums Identitäten haben müssen, die ständig von einer Public Key Infrastructure überprüft werden. In der {{site.data.keyword.blockchainfull_notm}} Platform-Konsole können Sie diese Identitäten mithilfe der Zertifizierungsstellen (Certificate Authorities, CAs) Ihrer Organisation erstellen. Sie müssen diese Identitäten in Ihrer Konsolenwallet speichern, damit Sie sie für den Betrieb Ihres Netzes verwendet werden können. 
 
-Die Knoten von {{site.data.keyword.blockchainfull_notm}} Platform basieren auf Hyperledger Fabric und dienen zur Erstellung genehmigter Blockchain-Netze. Dies bedeutet, dass alle Teilnehmer des Blockchain-Konsortiums Identitäten haben müssen, die ständig von einer Public Key Infrastructure überprüft werden. In der {{site.data.keyword.blockchainfull_notm}} Platform-Konsole können Sie diese Identitäten von den Zertifizierungsstellen der Organisation (CAs) erstellen. Sie können dann die Konsolenwallet verwenden, um diese Identitäten zu speichern und sie zum Betrieb Ihres Netzes zu verwenden.
+**Zielgruppe:** Dieser Abschnitt richtet sich an Netzoperatoren, die für die Erstellung, Überwachung und Verwaltung des Blockchain-Netzes verantwortlich sind.
 
 ## Zertifizierungsstellen verwalten
 {: #ibp-console-identities-manage-ca}
@@ -42,7 +44,7 @@ Sie können diese Identitäten über die Konsole mithilfe des [Registrierungspro
 
 Bevor Sie mit Identitäten arbeiten, müssen Sie die Identität des CA-Administrators festlegen, indem Sie entweder die Administratoridentität verwenden, die während der Erstellung der Zertifizierungsstelle erstellt wurde, oder indem Sie eine neue Identität erstellen. Öffnen Sie die Zertifizierungsstelle auf der Registerkarte **Knoten**. Die Eintragungs-ID der aktuell aktiven Identität wird neben dem Namen der Zertifizierungsstelle oben in der Anzeige angezeigt. Sie können diese Administratoridentität verwenden, um andere Identitäten zu erstellen, indem Sie über die Schaltfläche **Registrieren** Identitäten registrieren, die zu Organisationsadministratoren und Knotenidentitäten werden, oder über die Schaltfläche **Eintragen** Identitäten generieren und sie in die Wallet exportieren.
 
-Wenn Sie eine Identität als CA-Administrator festlegen möchten, klicken Sie auf das Symbol **Einstellungen** und anschließend auf **Identität festlegen** im Schieberegler. Sie können über die Registerkarte **Vorhandene Identität** eine Identität angeben, die in der Wallet vorhanden ist. Alternativ können Sie die Registerkarte **Neue Identität** verwenden, um entweder Zertifikate für den Administrator einzufügen oder eine JSON-Datei mit den Zertifikaten hochzuladen.
+Wenn Sie eine andere Identität als CA-Administrator festlegen möchten, klicken Sie auf das Symbol **Einstellungen** und anschließend in der Auswahlleiste auf **Identität festlegen**. Sie können über die Registerkarte **Vorhandene Identität** eine Identität angeben, die in der Wallet vorhanden ist. Alternativ können Sie die Registerkarte **Neue Identität** verwenden, um entweder Zertifikate für einen neuen Administrator einzufügen oder eine JSON-Datei mit den Zertifikaten hochzuladen. 
 
 Nicht alle Identitäten haben die Möglichkeit, neue Benutzer zu registrieren. Weitere Informationen, einschließlich der Vorgehensweise zum Erstellen eines weitere CA-Administrators, finden Sie im Abschnitt zum [Erstellen neuer CA-Administratoren](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-ca-admin).
 {: note}
@@ -80,40 +82,42 @@ Klicken Sie in der Seitenanzeige 4 auf die Schaltfläche **Attribut hinzufügen*
 ## Identität eintragen
 {: #ibp-console-identities-enroll}
 
-Sie können den öffentlichen und den privaten Schlüssel für jede Identität generieren, die bei Ihrer Zertifizierungsstelle registriert wurde. Sie können Schlüssel für eine Ihrer Administratoridentitäten generieren, wenn Sie [den MSP für Ihre Organisation generieren](/docs/services/blockchain/howto/ibp-console-organizations.html#console-organizations-create-msp), und dem MSP zusätzliche Zertifikate für andere Administratoren bereitstellen, die bereits über Ihre Zertifizierungsstelle eingetragen wurden.
+Sie können den öffentlichen und den privaten Schlüssel für jede Identität generieren, die bei Ihrer Zertifizierungsstelle registriert wurde. Wenn Sie zusätzliche Administratoridentitäten bei Ihrer Zertifizierungsstelle registriert haben, können Sie die Schlüssel für die Administratoridentitäten erstellen und anschließend zusätzlich einschließen, wenn Sie die [MSP der Organisation erstellen](/docs/services/blockchain/howto/ibp-console-organizations.html#console-organizations-create-msp).
 
-Stellen Sie sicher, dass Sie [die Identität festgelegt haben](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-ca-identity), die die Zertifizierungsstelle zum Erstellen der Schlüssel verwendet. Nachdem Sie die Identität festgelegt haben, können Sie auf die Schaltfläche **Eintragungs-ID** klicken und die Schlüssel in einer Seitenanzeige im Base64-Format anzeigen.
-  - Der öffentliche Schlüssel wird im Feld **Zertifikat** angezeigt. Dieses Zertifikat wird auch als Eintragungszertifizikat, Signierzertifikat oder signCert-Zertifikat bezeichnet.
-  - Der entsprechende private Schlüssel befindet sich im Feld **Privater Schlüssel**.
+Bevor Sie eine Identität eintragen, müssen Sie die [Identität festlegen](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-ca-identity), damit die Zertifizierungsstelle betrieben werden kann. Normalerweise wird die Administratoridentität festgelegt, die Sie beim Erstellen der Zertifizierungsstelle angegeben haben. Sie können bestätigen, dass diese Identität für die Zertifizierungsstelle (Certificate Authority, CA) festgelegt ist, indem Sie die Seite mit CA-Details überprüfen und die Eintragungs-ID der momentan aktiven Identität neben dem CA-Namen anzeigen. Nachdem Sie bestätigt haben, dass Ihre Administrator-ID als Identität festgelegt ist, klicken Sie im Überlaufmenü des Benutzers auf **Eintragungs-ID**, um das Zertifikat und den Schlüssel für einen beliebigen Benutzer zu generieren, der bei der CA registriert ist.
 
-Jedes Schlüsselpaar, das durch Klicken auf **Eintragungs-ID** erstellt wird, wird nur einmal generiert und nicht von der Konsole oder vom Browser gespeichert. Das Klicken auf die Schaltfläche **Eintragungs-ID** wird auch für die maximale Anzahl der Eintragungen berücksichtigt, die Sie für den CA-Administrator festgelegt haben. Nach der Registrierung sollten Sie das Schlüsselpaar speichern, indem Sie die Identität in Ihr lokales Dateisystem herunterladen oder sie zu Ihrer Konsolenwallet hinzufügen. Geben Sie einen neuen Namen für dieses Schlüsselpaar aus öffentlichem und privatem Schlüssel im Feld **Name** ein, um diese Schlüssel abzurufen.
-  - Klicken Sie auf **Identität exportieren**, um diese Zertifikate in Ihr lokales Dateisystem im JSON-Format herunterzuladen.
-  - Klicken Sie auf **Identität zu Wallet hinzufügen**, um diese Zertifikate zur Konsolenwallet hinzuzufügen. Der Name und die Schlüssel für diese Identität befinden sich dann in einer neuen Kachel auf der [Registerkarte für das Wallet](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-wallet).
+- Geben Sie den `geheimen Eintragungsschlüssel` des Benutzers ein.
+- Im nächsten Schritt werden die generierten Schlüssel angezeigt. 
+  - Der öffentliche Schlüssel wird im Feld **Zertifikat** angezeigt. Dieses Zertifikat wird auch als Eintragungszertifikat, Signierzertifikat oder signCert-Zertifikat bezeichnet. Sie müssen das signCert-Zertifikat in eine Datei auf Ihrem lokalen System exportieren, damit es beim Erstellen einer Clientanwendung mit der VSCode-Erweiterung verwendet werden kann.
+  - Der entsprechende private Schlüssel befindet sich im Feld **Privater Schlüssel**. Sie müssen den privaten Schlüssel in Ihr lokales Dateisystem exportieren, damit er für eine Clientanwendung verwendet werden kann, die mit der VSCode-Erweiterung erstellt wurde. 
+  - Das Paar aus Zertifikat und privatem Schlüssel, das durch Klicken auf **Eintragungs-ID** erstellt wurde, wird nur einmal generiert und weder von der Konsole noch von Ihrem Browser gespeichert. Das Klicken auf die Schaltfläche **Eintragungs-ID** wird auch für die maximale Anzahl der Eintragungen berücksichtigt, die Sie für den CA-Administrator festgelegt haben. Im Rahmen dieser Eintragung sollten Sie das Schlüsselpaar speichern, indem Sie die Identität in Ihr lokales Dateisystem herunterladen oder zu Ihrer Konsolenwallet hinzufügen. Geben Sie einen neuen Namen für dieses Schlüsselpaar aus öffentlichem und privatem Schlüssel im Feld **Name** ein, um diese Schlüssel abzurufen.
+- **Wichtig:** Klicken Sie auf **Identität exportieren**, um das Zertifikat und den Schlüssel als einzelne JSON-Datei in Ihr lokales Dateisystem herunterzuladen. Sie sind für den Schutz und die Verwaltung dieser Schlüssel verantwortlich. 
+- Klicken Sie auf **Identität zu Wallet hinzufügen**, um diese Zertifikate zur Konsolenwallet hinzuzufügen. Der Name und die Schlüssel für diese Identität befinden sich dann in einer neuen Kachel auf der [Registerkarte für das Wallet](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-wallet).
 
-Sie können auch den Fabric-CA-Client oder die Fabric-SDKs verwenden, um die Identitäten einzutragen, die Sie in der Konsole erstellt haben. Die Konsole bietet Ihnen alle Informationen, die Sie benötigen, um diese Schritte auszuführen. Stellen Sie sicher, dass Sie die **Eintragungs-ID** und den **geheimen Eintragungsschlüssel** gespeichert haben, die Sie bei der Registrierung angegeben haben.
+Sie können auch den Fabric-CA-Client oder die Fabric-SDKs verwenden, um die Identitäten einzutragen, die Sie in der Konsole erstellt haben. Die Konsole bietet Ihnen alle Informationen, die Sie benötigen, um diese Schritte auszuführen. Stellen Sie sicher, dass Sie die **Eintragungs-ID** und den **geheimen Eintragungsschlüssel** gespeichert haben, die Sie während der Registrierung angegeben haben.
 
 ## TLS-Zertifizierungsstelle verwenden
 {: #ibp-console-identities-tlsca}
 
 Die Kommunikation innerhalb Ihres Netzes wird durch TLS-Zertifikate geschützt. TLS verschlüsselt die Kommunikation zwischen Ihren Knoten und zwischen Ihren Knoten und Ihren Anwendungen. Die Verwendung von TLS verhindert, dass Angreifer die Kommunikation zwischen Ihren Knoten unterbrechen oder die Transaktionen lesen, die von Ihren Anwendungen übergeben wurden. Die Schlüssel und Zertifikate, die für TLS verwendet werden, unterscheiden sich von den Zertifikaten, die zum Signieren und Prüfen Ihrer Transaktionen verwendet werden, und werden von einer separaten Zertifizierungsstelle ausgegeben.
 
-Jede von der {{site.data.keyword.blockchainfull_notm}} Platform-Konsole erstellte Zertifizierungsstelle enthält eine Stammzertifizierungsstelle und eine TLS-Zertifizierungsstelle. Sie können beide Zertifizierungsstellen unter dem gleichen Anzeigenamen auf der Registerkarte "Knoten" Ihrer Konsole anzeigen. Klicken Sie auf die Übersichtanzeige der Zertifizierungsstelle und dann auf **TLS-Zertifizierungsstelle**, um Ihre TLS-Zertifizierungsstelle zu betreiben. Ihre TLS-Zertifizierungsstelle verfügt über die [gleiche Registrierung](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-register) und den gleichen [Eintragungsprozess](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-enroll) wie die Stammzertifizierungsstelle. Beide Zertifizierungsstellen werden mit der gleichen ID und dem gleichen geheimen Schlüssel des CA-Administrators bereitgestellt.
+Jede von der {{site.data.keyword.blockchainfull_notm}} Platform-Konsole erstellte Zertifizierungsstelle enthält eine Stammzertifizierungsstelle und eine TLS-Zertifizierungsstelle. Sie können beide Zertifizierungsstellen unter dem gleichen Anzeigenamen auf der Registerkarte "Knoten" Ihrer Konsole anzeigen. Klicken Sie auf die Übersichtsanzeige der Zertifizierungsstelle und dann auf **TLS-Zertifizierungsstelle**, um Ihre TLS-Zertifizierungsstelle zu betreiben. Ihre TLS-Zertifizierungsstelle verfügt über die [gleiche Registrierung](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-register) und den gleichen [Eintragungsprozess](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-enroll) wie die Stammzertifizierungsstelle. Beide Zertifizierungsstellen werden mit der gleichen ID und dem gleichen geheimen Schlüssel des CA-Administrators bereitgestellt.
 
 Jeder Peer oder Anordnungsknoten, den Sie implementieren, muss ein öffentliches TLS-Zertifikat generieren. Bei der Erstellung des Knotens über die Konsole werden Sie zur Angabe einer Eintragungs-ID und eines geheimen Schlüssels einer Identität aufgefordert, die für Ihre TLS-Zertifizierungsstelle registriert ist. Im [Lernprogramm zum Erstellen des Netzes](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network) wird die Identität des CA-Administrators verwendet. Es ist jedoch Best Practice, für jeden Knoten eine eindeutige Identität mit Ihrer TLS-Zertifizierungsstelle zu registrieren. Der Knoten verwendet diese Identität, um das TLS-Zertifikat während der Implementierung zu generieren. Dieses Zertifikat wird von jeder Anwendung benötigt, die mit dem Anordnungsknoten oder Peer kommunizieren muss. Sie können das TLS-Zertifikat eines Knotens finden, indem Sie zur Übersichtsanzeige des Knotens navigieren und auf "Einstellungen" klicken. Die TLS-Zertifikate für Ihre Peers und Anordnungsknoten befinden sich im Verbindungsprofil, das Sie von [der Registerkarte mit den Smart Contracts](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-connect-to-SDK) herunterladen können.
 
-Beim Erstellen eines Peers oder Anordnungsknotens über die Konsole können Sie über die TLS-Zertifizierungsstelle auch einen zusätzlichen Domänenname für jeden Knoten angeben. Geben Sie bei der Bereitstellung des Peers oder Anwendungsknotens den neuen Domänennamen in das Feld **TLS-CSR-Hostname** ein. Dieser Hostname wird der Liste der allgemeinen Namen in dem TLS-Zertifikat hinzugefügt, das an den Knoten ausgegeben wird.
+Beim Erstellen eines Peers oder Anordnungsknotens über die Konsole können Sie über die TLS-Zertifizierungsstelle auch einen zusätzlichen Domänenname für jeden Knoten angeben. Geben Sie bei der Bereitstellung des Peers oder Anordnungsknotens den neuen Domänennamen in das Feld **TLS-CSR-Hostname** ein. Dieser Hostname wird der Liste der allgemeinen Namen in dem TLS-Zertifikat hinzugefügt, das an den Knoten ausgegeben wird.
 
 
 ## Ablauf von Zertifikaten
 {: #ibp-console-identities-expiration}
 
-Zertifikate, die mithilfe von {{site.data.keyword.blockchainfull_notm}} Platform 2.0-Zertifizierungsstellen generiert werden, laufen nach einem Jahr ab. Der Ablaufzeitraum ist derselbe für Zertifikate, die mit den Fabric-SDKs, dem Fabric-CA-Client oder über die Konsole generiert werden. Wenn die Zertifikate ablaufen, können Ihre Anwendungen nicht mehr mit Ihrem Netz interagieren und Sie müssen zum Generieren neuer Zertifikate eine erneute Eintragung vornehmen. Wenn Sie das Eintragungslimit für einen Benutzer erreicht haben, können Sie einen neuen Benutzer registrieren und dann eintragen. 
+Zertifikate, die mithilfe von {{site.data.keyword.blockchainfull_notm}} Platform 2.0-Zertifizierungsstellen generiert werden, laufen nach einem Jahr ab. Der Ablaufzeitraum ist derselbe für Zertifikate, die mit den Fabric-SDKs, dem Fabric-CA-Client oder über die Konsole generiert werden. Wenn die Zertifikate ablaufen, können Ihre Anwendungen nicht mehr mit Ihrem Netz interagieren und Sie müssen zum Generieren neuer Zertifikate eine erneute Eintragung vornehmen. Wenn Sie das Eintragungslimit für einen Benutzer erreicht haben, können Sie einen neuen Benutzer registrieren und dann eintragen.
 
 Sie können das Ablaufdatum für Ihre Zertifikate über die Befehlszeile überprüfen. Zunächst müssen Sie Zertifikate, die im Base64-Format vorliegen, in das PEM-Format konvertieren, indem Sie auf Ihrer lokalen Maschine den folgenden Befehl ausführen:
 
 ```
 export FLAG=$(if [ "$(uname -s)" == "Linux" ]; then echo "-w 0"; else echo "-b 0"; fi)
-cat $HOME/<path-to-certificate>/cert.pem | base64 $FLAG
+cat $HOME/<pfad-zum-zertifikat>/cert.pem | base64 $FLAG
 ```
 {:codeblock}
 
@@ -176,7 +180,7 @@ Sie können auch eine Identität hinzufügen, indem Sie eine JSON-Datei in dem u
 Wenn Sie eine Identität mit dem Fabric-CA-Client oder mit den Fabric-SDKs eingetragen haben, müssen Ihre Schlüssel vom PEM-Format in das Base64-Format konvertiert werden. Sie können Zertifikate in das Base64-Format konvertieren, indem Sie den folgenden Befehl auf Ihrer lokalen Maschine ausführen:
 ```
 export FLAG=$(if [ "$(uname -s)" == "Linux" ]; then echo "-w 0"; else echo "-b 0"; fi)
-cat $HOME/<pfad_zum_zertifikat>/cert.pem | base64 $FLAG
+cat $HOME/<pfad-zum-zertifikat>/cert.pem | base64 $FLAG
 ```
 {:codeblock}
 

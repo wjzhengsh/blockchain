@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -17,8 +19,6 @@ lastupdated: "2019-02-08"
 
 # Funcionamiento de iguales en {{site.data.keyword.cloud_notm}} Private con una red multinube
 {: #icp-peer-operate}
-
-***[¿Le resulta útil esta página? Indíquenos su opinión.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 Después de configurar {{site.data.keyword.blockchainfull}} Platform en el igual de {{site.data.keyword.cloud_notm}} Private, tiene que llevar a cabo varios pasos operativos para que el igual pueda enviar transacciones para consultar e invocar el libro mayor de la red blockchain. Los pasos incluyen añadir su organización a un canal, unir el igual al canal, instalar el código de encadenamiento en el igual,
 crear una instancia del código de encadenamiento en el canal y conectar aplicaciones al igual. Si desea conectar el igual a una red del Plan inicial o del Plan empresarial, consulte
@@ -190,7 +190,7 @@ Localice los certificados que ha creado al [inscribir el administrador de igual]
 <!-- You can also use the SDK to generate the peer admin signCert and private key using the endpoint information of CA on Starter Plan or Enterprise Plan and your [peer admin username and password](/docs/services/blockchain/howto/CA_operate.html#ca-operate-register-admin). -->
 
 ### Cómo pasar el certificado TLS del igual al SDK
-{: #icp-peer-operate-download-tlscert}
+{: #icp-peer-operate-download-peer-tlscert}
 
 Necesita hacer referencia al certificado TLS del igual para autenticar la comunicación desde el SDK. Localice el certificado TLS que [ha descargado desde el contenedor del igual](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-tls-cert) y guárdelo en un lugar donde la aplicación pueda hacer referencia al mismo. Si ha utilizado los mandatos de ejemplo, puede encontrar el certificado TLS del igual en `$HOME/fabric-ca-client/peer-tls/peertls.pem`. Luego puede importar el certificado TLS en la aplicación con un sencillo mandato de lectura de archivo.
 
@@ -216,7 +216,7 @@ You need to specify a `ssl-target-name-override` of `<something>.blockchain.com`
 Si tiene una red grande, con varios iguales que pertenecen a distintas organizaciones que deben aprobar las transacciones, es posible que desee trabajar con el consorcio para [crear un perfil de conexión común ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://fabric-sdk-node.github.io/tutorial-network-config.html "perfil de conexión común")
 
 ### Cómo pasar el certificado TLS del clasificador al SDK
-{: #icp-peer-operate-download-tlscert}
+{: #icp-peer-operate-download-orderer-tlscert}
 
 También necesita el certificado TLS del clasificador del consorcio para unirse a los canales y enviar transacciones. Si es el administrador del clasificador, siga las instrucciones para [descargar el certificado TLS del clasificador](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-tls-cert).  Si ha utilizado los mandatos de ejemplo, puede encontrar el certificado TLS del igual en `$HOME/fabric-ca-client/orderer-tls/orderertls.pem`. Si el clasificador está controlado por otra organización, deberán proporcionarle el certificado TLS en una operación fuera de banda. A continuación, puede importar el certificado TLS en la aplicación.
 
@@ -226,7 +226,7 @@ var ordererTLSCert = fs.readFileSync(path.join(__dirname, './orderertls.pem'));
 {:codeblock}
 
 ### Cómo proporcionar la información del clasificador al SDK
-{: #icp-peer-operate-SDK-endpoints}
+{: #icp-peer-operate-orderer-SDK-endpoints}
 
 Para utilizar el SDK, necesitará también la información de punto final de los clasificadores del consorcio. Si es el administrador del clasificador, puede utilizar las instrucciones para [Recuperar la información del punto final del clasificador](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-orderer-endpoint). Si el clasificador está controlado por otra organización, deberán proporcionarle el URL del clasificador en una operación fuera de banda. En el ejemplo siguiente se define un clasificador como punto final y se pasa el certificado TLS del clasificador.
 

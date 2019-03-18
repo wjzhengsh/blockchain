@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -17,8 +19,6 @@ lastupdated: "2019-02-08"
 
 # Operando peers no {{site.data.keyword.cloud_notm}} Private com uma rede multinuvem
 {: #icp-peer-operate}
-
-***[Esta página é útil? Diga-nos.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 Depois de configurar um {{site.data.keyword.blockchainfull}} Platform no peer do {{site.data.keyword.cloud_notm}} Private, é necessário concluir várias etapas operacionais antes que seu peer possa emitir transações para consultar e chamar o livro-razão da rede de blockchain. As etapas envolvem incluir sua organização em um canal, associar seu peer ao canal, instalar o chaincode em seu peer, instanciar o chaincode no canal e conectar aplicativos a seu peer. Se você deseja conectar seu peer a uma rede do Starter Plan ou do Enterprise Plan, veja [Operando peers no {{site.data.keyword.cloud_notm}} Private com o Starter Plan ou o Enterprise Plan](/docs/services/blockchain/howto/peer_operate_ibp.html#ibp-peer-operate).
 {:shortdesc}
@@ -173,14 +173,14 @@ npm install fabric-client@1.2
 Seu peer foi implementado com o signCert de seu administrador de peer interno. Isso permitirá que você use os certificados do administrador de peer e a pasta MSP para operar o peer.
 
 Localize os certificados que você criou quando [inscreveu seu administrador de peer](/docs/services/blockchain/howto/CA_operate.html#ca-operate-enroll-admin). Se você usou os comandos de exemplo, é possível localizar sua pasta MSP do administrador de peer em `$HOME/fabric-ca-client/peer-admin`.
-  - É possível construir o contexto do usuário administrador de peer com o SDK usando a chave signCert (chave pública) e a chave privada na pasta MSP. É possível localizar essas chaves nos locais a seguir:
+  - É possível construir o contexto do usuário administrador de peer com o SDK usando o signCert (chave pública) e a chave privada na pasta MSP. É possível localizar essas chaves nos locais a seguir:
     - O signCert pode ser localizado na pasta **signcerts**: `$HOME/fabric-ca-client/peer-admin/msp/signcerts`
     - A chave privada pode ser localizada na pasta **keystore:**: ` $HOME/fabric-ca-client/peer-admin/msp/keystore`
 
 <!-- You can also use the SDK to generate the peer admin signCert and private key using the endpoint information of CA on Starter Plan or Enterprise Plan and your [peer admin username and password](/docs/services/blockchain/howto/CA_operate.html#ca-operate-register-admin). -->
 
 ### Passando o certificado TLS de seu peer para o SDK
-{: #icp-peer-operate-download-tlscert}
+{: #icp-peer-operate-download-peer-tlscert}
 
 É necessário referenciar o certificado TLS de seu peer para autenticar a comunicação de seu SDK. Localize o certificado TLS que você [transferiu por download de seu contêiner de peer](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-tls-cert) e salve-o onde ele possa ser referenciado por seu aplicativo. Se você usou os comandos de exemplo, é possível localizar o certificado TLS de peer em `$HOME/fabric-ca-client/peer-tls/peertls.pem`. Em seguida, é possível importar o certificado TLS para seu aplicativo usando um comando de arquivo de leitura simples.
 
@@ -206,7 +206,7 @@ You need to specify a `ssl-target-name-override` of `<something>.blockchain.com`
 Se você tiver uma rede grande, com vários peers pertencentes a diferentes organizações que precisem endossar suas transações, talvez você deseje trabalhar com seu consórcio para [construir um perfil de conexão comum ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://fabric-sdk-node.github.io/tutorial-network-config.html "perfil de conexão comum")
 
 ### Transmitindo o certificado TLS de seu solicitador para o SDK
-{: #icp-peer-operate-download-tlscert}
+{: #icp-peer-operate-download-orderer-tlscert}
 
 Também é necessário o certificado TLS do solicitador de seu consórcio para associar canais e enviar transações. Se você for o administrador do solicitador, siga as instruções para [fazer download do certificado TLS do solicitador](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-tls-cert).  Se você usou os comandos de exemplo, é possível localizar o certificado TLS do peer em `$HOME/fabric-ca-client/orderer-tls/orderertls.pem`. Se o solicitador for controlado por outra organização, eles precisarão fornecer a você o certificado TLS em uma operação dentro e fora da banda. Em seguida, é possível importar o certificado TLS para seu aplicativo.
 
@@ -216,7 +216,7 @@ var ordererTLSCert = fs.readFileSync(path.join(__dirname, './orderertls.pem'));
 {:codeblock}
 
 ### Fornecendo informações do solicitador para o SDK
-{: #icp-peer-operate-SDK-endpoints}
+{: #icp-peer-operate-orderer-SDK-endpoints}
 
 Para usar o SDK, também são necessárias as informações sobre terminais dos solicitadores em seu consórcio. Se você for o administrador do solicitador, será possível usar essas instruções para [Recuperar as informações sobre terminais do solicitador](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-orderer-endpoint). Se o solicitador for governado por outra organização, eles precisarão fornecer a você a URL do solicitador na operação dentro e fora da banda. O exemplo a seguir define um solicitador como um terminal e o transmite como um certificado TLS do solicitador.
 

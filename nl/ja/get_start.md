@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -15,10 +17,6 @@ lastupdated: "2019-02-08"
 
 # エンタープライズ・プランの概説
 {: #getting-started-with-enterprise-plan}
-
-
-***[このページは参考になりましたか。 ご意見をお聞かせください。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 
 {{site.data.keyword.blockchainfull}} Platform エンタープライズ・プランは、高いセキュリティー、完全性、スケーラビリティー、パフォーマンスを備えたブロックチェーン・ネットワークを提供します。 機能を完備したネットワークを迅速にプロビジョンし、ネットワーク・モニター (GUI ダッシュボード) を使用して[チェーンコード](/docs/services/blockchain/glossary.html#glossary-chaincode)とアプリケーションをすぐに実行できます。ネットワークを最初から設計して構成する必要はありません。
 {:shortdesc}
@@ -38,14 +36,14 @@ lastupdated: "2019-02-08"
 ## ネットワークの作成
 {: #getting-started-with-enterprise-plan-create-network}
 
-始める前に、{{site.data.keyword.Bluemix_notm}} で [{{site.data.keyword.blockchain}} Platform サービス・インスタンス ![外部リンク・アイコン ](images/external_link.svg "外部リンク・アイコン")](https://console.bluemix.net/catalog/services/blockchain) を作成しておく必要があります。 {{site.data.keyword.Bluemix_notm}} ID でログインする必要があります。 ID がない場合は、**「登録して作成」**ボタンをクリックします。 インスタンスのサービスと資格情報の名前は、見分けやすいものに変更してください。 {{site.data.keyword.blockchain}} ネットワークをデプロイする {{site.data.keyword.Bluemix_notm}} の地域、組織、スペースを選択します。 次に、料金設定プランの表から**「エンタープライズ・メンバーシップ・プラン」**を選択し、**「作成」**ボタンをクリックします。
+始める前に、{{site.data.keyword.cloud_notm}} で [{{site.data.keyword.blockchain}} Platform サービス・インスタンス ![外部リンク・アイコン ](images/external_link.svg "外部リンク・アイコン")](https://cloud.ibm.com/catalog/services/ibm-blockchain-5-prod) を作成しておく必要があります。 {{site.data.keyword.cloud_notm}} ID でログインする必要があります。 ID がない場合は、**「登録して作成」**ボタンをクリックします。 インスタンスのサービスと資格情報の名前は、見分けやすいものに変更してください。 {{site.data.keyword.blockchain}} ネットワークをデプロイする {{site.data.keyword.cloud_notm}} の地域、組織、スペースを選択します。 次に、料金設定プランの表から**「エンタープライズ・メンバーシップ・プラン」**を選択し、**「作成」**ボタンをクリックします。
 
-{{site.data.keyword.blockchain}} Platform サービス・インスタンスが、[{{site.data.keyword.Bluemix_notm}} サービス・ダッシュボード ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://console.bluemix.net/dashboard/services "{{site.data.keyword.Bluemix_notm}} サービス・ダッシュボード") に表示されます。
+{{site.data.keyword.blockchain}} Platform サービス・インスタンスが、[{{site.data.keyword.cloud_notm}} サービス・ダッシュボード ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://cloud.ibm.com/resources "{{site.data.keyword.cloud_notm}} サービス・ダッシュボード") に表示されます。
 
 ネットワーク・イニシエーターである場合は、**「ネットワークの作成」**ボタンをクリックして {{site.data.keyword.blockchain}} ネットワークを開始します。 ウィザードに従って、ネットワークとリソースの基本的な構成を完了します。
 ![「ネットワークの作成」ウィザード](images/create_network_name.png "「ネットワークの作成」ウィザード")
 
-1. 「始めに」画面で、ネットワークの名前を指定し、{{site.data.keyword.Bluemix_notm}} 組織の場所を選択し、機関の名前を追加します。 他のネットワーク・メンバーを招待する場合、招待されたメンバーはこのネットワーク名を探して参加することになります。 **「次へ」**をクリックします。
+1. 「始めに」画面で、ネットワークの名前を指定し、{{site.data.keyword.cloud_notm}} 組織の場所を選択し、機関の名前を追加します。 他のネットワーク・メンバーを招待する場合、招待されたメンバーはこのネットワーク名を探して参加することになります。 **「次へ」**をクリックします。
 2. (オプション) 「メンバーの招待」画面で、ネットワークに招待する機関の名前と E メール・アドレスを入力します。 指定する機関の名前は、正式なタイトルではありません。 この名前は、機関を簡単に識別できるようにするためのもので、機関がネットワークに参加するときに変更できます。 ネットワークに参加できるメンバーは、自分を含めて最大で 15 メンバーであることに注意してください。 この手順はオプションです。ネットワークへのメンバーの招待は、後でネットワーク・モニターから行うことができます。 **「次へ」**をクリックします。
 	ネットワークの作成手順をすべて終えると、招待されたメンバーは、招待に関する E メール通知を受け取ります。
 3. 「ガバナンス・ルールの定義」画面で、メンバーシップ、チャネル作成、チェーンコードについてのポリシーを設定します。 デフォルトでは、すべてのネットワーク・メンバーが、ネットワークへの他のメンバーの招待、チャネルの作成、チェーンコードのインスタンス化を行えます。 現在、デフォルトのガバナンス・ポリシーをネットワークで使用しています。 **「次へ」**をクリックします。
@@ -66,9 +64,9 @@ lastupdated: "2019-02-08"
 ## ネットワークへの参加
 {: #getting-started-with-enterprise-plan-join-nw}
 
-ネットワークを作成する場合と同じように、{{site.data.keyword.Bluemix_notm}} で [{{site.data.keyword.blockchain}} Platform サービス・インスタンス ![外部リンク・アイコン ](images/external_link.svg "外部リンク・アイコン")](https://console.bluemix.net/catalog/services/blockchain) を作成する必要があります。 {{site.data.keyword.Bluemix_notm}} ID でログインする必要があります。 ID がない場合は、**「登録して作成」**ボタンをクリックします。 インスタンスのサービスと資格情報の名前は、見分けやすいものに変更してください。 {{site.data.keyword.blockchain}} ネットワークをデプロイする {{site.data.keyword.Bluemix_notm}} の地域、組織、スペースを選択します。 次に、料金設定プランの表から**「エンタープライズ・メンバーシップ・プラン」**を選択し、**「作成」**ボタンをクリックします。
+ネットワークを作成する場合と同じように、{{site.data.keyword.cloud_notm}} で [{{site.data.keyword.blockchain}} Platform サービス・インスタンス ![外部リンク・アイコン ](images/external_link.svg "外部リンク・アイコン")](https://cloud.ibm.com/catalog/services/ibm-blockchain-5-prod) を作成する必要があります。 {{site.data.keyword.cloud_notm}} ID でログインする必要があります。 ID がない場合は、**「登録して作成」**ボタンをクリックします。 インスタンスのサービスと資格情報の名前は、見分けやすいものに変更してください。 {{site.data.keyword.blockchain}} ネットワークをデプロイする {{site.data.keyword.cloud_notm}} の地域、組織、スペースを選択します。 次に、料金設定プランの表から**「エンタープライズ・メンバーシップ・プラン」**を選択し、**「作成」**ボタンをクリックします。
 
-{{site.data.keyword.blockchain}} Platform サービス・インスタンスが、[{{site.data.keyword.Bluemix_notm}} サービス・ダッシュボード ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://console.bluemix.net/dashboard/services "{{site.data.keyword.Bluemix_notm}} サービス・ダッシュボード") に表示されます。
+{{site.data.keyword.blockchain}} Platform サービス・インスタンスが、[{{site.data.keyword.cloud_notm}} サービス・ダッシュボード ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://cloud.ibm.com/resources "{{site.data.keyword.cloud_notm}} サービス・ダッシュボード") に表示されます。
 
 招待されたネットワーク・メンバーである場合は、**「保留中の招待 ->」**ボタンをクリックして、ドロップダウン・リストから参加するネットワークを選択し、**「ネットワークへの参加!」**ボタンをクリックします。 ウィザードに従って、ネットワークの基本的な構成を確認し、自分のネットワーク・リソースを構成します。
 ![「ネットワークへの参加」ウィザード](images/join_network_name.png "「ネットワークへの参加」ウィザード")
@@ -100,7 +98,7 @@ lastupdated: "2019-02-08"
 
 ### サービス・インスタンス・ページからの取得
 {: #getting-started-with-enterprise-plan-retrieve-svc-ins}
-サービス・インスタンスを作成した直後に、サービス・インスタンス・ページが表示されます。 また、[{{site.data.keyword.cloud_notm}} サービス・ダッシュボード ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://console.bluemix.net/dashboard/services "{{site.data.keyword.cloud_notm}} サービス・ダッシュボード") でサービスをクリックして、サービス・インスタンス・ページを開くこともできます。
+サービス・インスタンスを作成した直後に、サービス・インスタンス・ページが表示されます。 また、[{{site.data.keyword.cloud_notm}} サービス・ダッシュボード ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://cloud.ibm.com/resources "{{site.data.keyword.cloud_notm}} サービス・ダッシュボード") でサービスをクリックして、サービス・インスタンス・ページを開くこともできます。
 
 以下の手順でサービス資格情報を取得します。
 1. サービス・インスタンス・ページで、左側のナビゲーターの**「サービス資格情報」**をクリックして、「サービス資格情報」画面を表示します。
@@ -116,7 +114,7 @@ lastupdated: "2019-02-08"
 
 ## アプリケーションがネットワークと対話できるようにする
 {: #getting-started-with-enterprise-plan-enable-apps}
-アプリケーションは SDK API を活用して、{{site.data.keyword.blockchain}} ネットワークのリソースと対話します。 アプリケーションがトランザクション要求で最終的にピアをターゲットにできるように、ネットワーク・リソースの API エンドポイントの情報をアプリケーションに追加する必要があります。 その後、その API エンドポイントの情報をネットワーク・モニターから追加することができます。 アプリケーションは、ローカル・ファイル・システムまたは {{site.data.keyword.Bluemix_notm}} でホストできます。 詳しくは、
+アプリケーションは SDK API を活用して、{{site.data.keyword.blockchain}} ネットワークのリソースと対話します。 アプリケーションがトランザクション要求で最終的にピアをターゲットにできるように、ネットワーク・リソースの API エンドポイントの情報をアプリケーションに追加する必要があります。 その後、その API エンドポイントの情報をネットワーク・モニターから追加することができます。 アプリケーションは、ローカル・ファイル・システムまたは {{site.data.keyword.cloud_notm}} でホストできます。 詳しくは、
 [アプリケーションの開発](/docs/services/blockchain/v10_application.html#dev-app)を参照してください。
 
 ## ネットワーク・リソースのモニター
@@ -125,7 +123,7 @@ lastupdated: "2019-02-08"
 
 ## ネットワークからの離脱
 {: #getting-started-with-enterprise-plan-leave-nw}
-ネットワークから離脱する場合は、ブロックチェーン・サービス・インスタンスを {{site.data.keyword.Bluemix_notm}} ダッシュボードから削除します。
+ネットワークから離脱する場合は、ブロックチェーン・サービス・インスタンスを {{site.data.keyword.cloud_notm}} ダッシュボードから削除します。
 
 ネットワークから離脱する前に、ネットワークのいずれのチャネルのメンバーでもないことを確認してください。 そうでない場合、ネットワークを離脱する際にエラーが発生します。 チャネル・メンバーを除去する場合は、チャネル更新処理を実行する必要があります。 チャネル更新処理について詳しくは、[チャネルの更新](/docs/services/blockchain/howto/create_channel.html#ibp-create-channel-updating-a-channel)を参照してください。
 {:note}

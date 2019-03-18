@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -14,9 +16,6 @@ lastupdated: "2019-02-08"
 
 # 채널 작성 또는 업데이트
 {: #ibp-create-channel}
-
-
-***[이 페이지가 도움이 되었습니까? 알려주십시오.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 
 채널은 데이터의 파티션을 지정하고 분리하는 믿을 수 없을 정도로 강력한 메커니즘이며 데이터 개인정보 보호정책에 대한 기반을 제공합니다. 같은 채널의 구성원만 이 채널의 데이터에 액세스할 수 있습니다.

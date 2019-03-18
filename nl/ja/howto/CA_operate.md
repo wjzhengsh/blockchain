@@ -2,7 +2,10 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
+
 ---
 
 {:new_window: target="_blank"}
@@ -16,8 +19,6 @@ lastupdated: "2019-02-08"
 
 # {{site.data.keyword.cloud_notm}} Private での認証局の操作
 {: #ca-operate}
-
-***[このページは参考になりましたか。 ご意見をお聞かせください。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 認証局 (CA) は、ネットワーク上の ID を提供します。 CA は、複数の団体の間で信頼を確立するために使用される、信頼できる公証人のようなものと考えることができます。 ネットワーク内の各エンティティーには、ルート CA がエンティティーのデジタル ID をカプセル化するために署名する証明書が与えられます。 この証明書が、ネットワーク上で実行されるすべての署名操作と検証操作のトラスト・ルートです。
 {:shortdesc}
@@ -224,7 +225,7 @@ CA を使用してコンポーネントまたはクライアント・アプリ�
   ```
   {:codeblock}
 
-  このコマンドの `<enroll_id>` および `<enroll_password>` は、認証局のデプロイ時に Kubernetes シークレットに渡した [CA 管理者ユーザーの名前とパスワード](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-admin-secret)です。`<ca_url_with_port>` 内に [CA URL](/docs/services/blockchain/howto/CA_operate.html#ca-operate-url) を挿入します。 先頭の `http://` は省略します。 `<ca_name>` は、CA のデプロイ時に`「CA 名 (CA Name)」`フィールドで指定した値です。
+  このコマンドの `<enroll_id>` および `<enroll_password>` は、認証局のデプロイ時に Kubernetes シークレットに渡した [CA 管理者ユーザーの名前とパスワード](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-admin-secret)です。 `<ca_url_with_port>` 内に [CA URL](/docs/services/blockchain/howto/CA_operate.html#ca-operate-url) を挿入します。 先頭の `http://` は省略します。 `<ca_name>` は、CA のデプロイ時に`「CA 名 (CA Name)」`フィールドで指定した値です。
 
   `<ca_tls_cert_path>` は、[CA TLS 証明書](/docs/services/blockchain/howto/CA_operate.html#ca-operate-tls)の絶対パスです。
 
@@ -234,7 +235,8 @@ CA を使用してコンポーネントまたはクライアント・アプリ�
   fabric-ca-client enroll -u https://admin:adminpw@9.30.94.174:30167 --caname org1CA --tls.certfiles $HOME/fabric-ca-client/catls/tls.pem
   ```
 
-  **ヒント:** 登録 url の値 (`-u` パラメーターの値) に特殊文字が含まれている場合は、特殊文字をエンコードするか、url を単一引用符で囲む必要があります。例えば、`!` を `%21` にするか、コマンドを次のように入力します。
+  **ヒント:** 登録 url の値 (`-u` パラメーターの値) に特殊文字が含まれている場合は、特殊文字をエンコードするか、url を単一引用符で囲む必要があります。 例えば、`!` を `%21` にするか、コマンドを次のように入力します。
+
   ```
   ./fabric-ca-client enroll -u 'https://admin:C25A06287!0@ash-zbc07c.4.secure.blockchain.ibm.com:21241' --tls.certfiles $HOME/fabric-ca-remote/cert.pem --caname PeerOrg1CA
   ```
@@ -242,7 +244,7 @@ CA を使用してコンポーネントまたはクライアント・アプリ�
 
   `enroll` コマンドは、メンバーシップ・サービス・プロバイダー (MSP) フォルダーと呼ばれる、証明書の完全なセットを生成します。これは、Fabric CA クライアントの `$HOME` パスに設定したディレクトリー内にあります。 例えば、`$HOME/fabric-ca-client/ca-admin` です。 MSP および MSP フォルダーの内容について詳しくは、[メンバーシップ・サービス・プロバイダー](/docs/services/blockchain/howto/CA_operate.html#ca-operate-msp)を参照してください。
 
-  `enroll` コマンドが失敗した場合は、考えられる原因について[トラブルシューティングのトピック](/docs/services/blockchain/howto/CA_operate.html#ca-operate-enroll-error)を参照してください。
+  `enroll` コマンドが失敗した場合は、考えられる原因について[トラブルシューティングのトピック](/docs/services/blockchain/howto/CA_operate.html#ca-operate-troubleshooting)を参照してください。
 
 tree コマンドを実行して、すべての前提条件ステップを完了したことを確認できます。 証明書を格納したディレクトリーにナビゲートします。 tree コマンドを実行すると、以下の構造に似た結果が生成されます。
 
@@ -354,7 +356,7 @@ tree
 ### CA へのコンポーネント ID の登録
 {: #ca-operate-register-component}
 
-順序付けサービスをデプロイし、それに組織を追加して共同事業体を設立する場合、またはピアをデプロイしてチャネルに参加させる場合は、最初にコンポーネント ID を CA に登録する必要があります。 登録すると、コンポーネント・デプロイメントで、ピアまたは順序付けプログラムがネットワークに参加するために必要な証明書を生成できるようになります。
+順序付けサービスをデプロイし、それに組織を追加して共同事業体を形成する場合、またはピアをデプロイしてチャネルに参加させる場合は、最初にコンポーネント ID を CA に登録する必要があります。 登録すると、コンポーネント・デプロイメントで、ピアまたは順序付けプログラムがネットワークに参加するために必要な証明書を生成できるようになります。
 
 1. Fabric CA クライアントを使用して、[CA 管理者で証明書を生成します](/docs/services/blockchain/howto/CA_operate.html#ca-operate-enroll-ca-admin)。 これらの管理者証明書を使用して、以下のコマンドを実行します。 `$FABRIC_CA_CLIENT_HOME` が `$HOME/fabric-ca-client/ca-admin` に設定されていることを確認してください。
 
@@ -742,11 +744,16 @@ MSP の構造について詳しくは、Hyperledger Fabric 資料で[メンバ�
 
   **注:** Kibana でログを表示する場合、`「No results found」`という応答を受け取ることがあります。 この状態は、{{site.data.keyword.cloud_notm}} Private がワーカー・ノードの IP アドレスをそのホスト名として使用する場合に起こることがあります。 この問題を解決するには、パネルの上部で `node.hostname.keyword` で始まるフィルターを削除すると、ログが表示されるようになります。
 
+## セキュリティー
+{: #ca-operate-security}
+
+発行する証明書の数が限られる場合 (ピア、Node.js サーバー、クライアント・アプリケーションだけなど) は、 CA をオフラインのままにすることにより、セキュリティーを強化し、CA 鍵素材の暗号漏えいを防ぐことができます。しかし、証明書をユーザーにオンデマンドで発行する必要がある場合は、CA をオンラインにする必要があります。可能な場合は、[HSM](https://console.test.cloud.ibm.com/docs/services/blockchain/glossary.html#glossary-hsm) を使用して CA 管理者秘密鍵を保護することを強くお勧めします。
+
 ## トラブルシューティング
 {: #ca-operate-troubleshooting}
 
 ### **問題:** `enroll` コマンド実行時のエラー
-{: #ca-operate-enroll-error}
+{: #ca-operate-enroll-error1}
 
 Fabric CA クライアントの enroll コマンドを実行すると、コマンドが以下のエラーで失敗することがあります。
 
@@ -766,9 +773,9 @@ Error: Failed to read config file at '/Users/chandra/fabric-ca-client/ca-admin/f
 `enroll` コマンドで指定したパラメーターを確認し、これらのいずれの状況も存在しないことを確認してください。
 
 ### **問題:** `enroll` コマンド実行時の CA URL に関するエラー
-{: #ca-operate-enroll-error}
+{: #ca-operate-enroll-error2}
 
-登録 URL (`-u` パラメーターの値) に特殊文字が含まれている場合は、Fabric CA クライアントの enroll コマンドが正常に実行されないことがあります。例えば、次のコマンドでは登録 ID とパスワードとして `admin:C25A06287!0` を指定しています。
+登録 URL (`-u` パラメーターの値) に特殊文字が含まれている場合は、Fabric CA クライアントの enroll コマンドが正常に実行されないことがあります。 例えば、次のコマンドでは登録 ID とパスワードとして `admin:C25A06287!0` を指定しています。
 
 ```
 ./fabric-ca-client enroll -u https://admin:C25A06287!0@ash-zbc07c.4.secure.blockchain.ibm.com:21241 --tls.certfiles $HOME/fabric-ca-remote/cert.pem --caname PeerOrg1CA
@@ -781,7 +788,7 @@ Error: Failed to read config file at '/Users/chandra/fabric-ca-client/ca-admin/f
 ```
 
 ### **解決策:**
-特殊文字をコード表現するか、URL を単一引用符で囲む必要があります。例えば、`!` を `%21` にするか、コマンドを次のように入力します。
+特殊文字をコード表現するか、URL を単一引用符で囲む必要があります。 例えば、`!` を `%21` にするか、コマンドを次のように入力します。
 
 ```
 ./fabric-ca-client enroll -u 'https://admin:C25A06287!0@ash-zbc07c.4.secure.blockchain.ibm.com:21241' --tls.certfiles $HOME/fabric-ca-remote/cert.pem --caname PeerOrg1CA

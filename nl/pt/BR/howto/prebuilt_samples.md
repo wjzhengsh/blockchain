@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018.2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -15,10 +17,6 @@ lastupdated: "2019-02-08"
 
 # Implementando aplicativos de amostra
 {: #deploying-sample-applications}
-
-
-***[Esta página é útil? Diga-nos.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 
 O {{site.data.keyword.blockchainfull}} Platform fornece aplicativos de amostra que é possível implementar e testar, para que seja possível obter um melhor entendimento de redes de blockchain e desenvolvimento de aplicativos.
 {:shortdesc}

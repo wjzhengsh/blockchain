@@ -2,7 +2,10 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
+
 ---
 
 {:new_window: target="_blank"}
@@ -17,13 +20,13 @@ lastupdated: "2019-02-08"
 # Bekannte Probleme
 {: #known-issues}
 
-***[Ist diese Seite hilfreich? Teilen Sie uns Ihre Meinung mit.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
+Auf dieser Seite werden bekannte Probleme beschrieben, die bei der Verwendung von Starter Plan- oder Enterprise Plan-Instanzen auftreten können.
+{:shortdesc}
 
 Die folgenden Probleme sind bereits dokumentiert:
 - **Das Konfigurieren einer externen Zertifizierungsstelle (CA) wird noch nicht unterstützt**. Als Alternative können Sie Administratorzertifikate über den Network Monitor generieren und hochladen. Weitere Informationen finden Sie unter [Clientseitige Zertifikate generieren](/docs/services/blockchain/v10_application.html#dev-app-enroll-panel) und in der Beschreibung auf [der Registerkarte "Zertifikate" der Anzeige "Mitglied"](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-members) im Network Monitor.
 - Wenn Sie im Network Monitor eines Starter Plan-Netzes auf **Protokolle anzeigen** für die in der Anzeige "Übersicht" aufgeführten Knoten klicken, wird die Kibana-Schnittstelle für {{site.data.keyword.cloud}} Logging geöffnet. **Standardmäßig ist Kibana so vorkonfiguriert, dass Protokolle zu den Aktivitäten der letzten 30 Tage angezeigt werden**. Wenn in den letzten 30 Tagen keine Aktivitäten stattgefunden haben, wird die Nachricht *Keine Ergebnisse gefunden* angezeigt. Wenn Sie andere Protokolle anzeigen möchten, können Sie auf das Zeitgebersymbol in der rechten oberen Ecke unterhalb Ihres Benutzernamens klicken und einen längeren Zeitraum festlegen, z. B. Zeiträume wie *Laufendes Jahr bis zum aktuellen Datum*.
-- Die Protokolle des Starter Plan-Netzes werden vom [{{site.data.keyword.cloud_notm}} Log Analysis-Service ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://console.bluemix.net/catalog/services/log-analysis) erfasst. Standardmäßig werden Ihre Protokolle über den Lite Plan des Log Analysis-Service erfasst. Dieser Plan ist kostenfrei und **ermöglicht Ihnen lediglich ein Durchsuchen der ersten 500 MB Ihrer Protokolle pro Tag**. Umfassen Ihre Netzprotokolle mehr als 500 MB können neue Protokolle nicht in Kibana angezeigt werden. Werden in Ihrem Netz Protokolle mit einem Gesamtumfang über 500 MB generiert, können Sie ein Upgrade auf eine gebührenpflichtige Version des Log Analysis-Service durchführen.
+- Die Protokolle des Starter Plan-Netzes werden vom [{{site.data.keyword.cloud_notm}} Log Analysis-Service ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://cloud.ibm.com/catalog/services/log-analysis) erfasst. Standardmäßig werden Ihre Protokolle über den Lite Plan des Log Analysis-Service erfasst. Dieser Plan ist kostenfrei und **ermöglicht Ihnen lediglich ein Durchsuchen der ersten 500 MB Ihrer Protokolle pro Tag**. Umfassen Ihre Netzprotokolle mehr als 500 MB können neue Protokolle nicht in Kibana angezeigt werden. Werden in Ihrem Netz Protokolle mit einem Gesamtumfang über 500 MB generiert, können Sie ein Upgrade auf eine gebührenpflichtige Version des Log Analysis-Service durchführen.
 - Da der Starter Plan keine Produktionsumgebung bereitstellt, **können Anwendungen Netzressourcen möglicherweise nicht sofort erreichen**.
   - Ist dies der Fall, empfiehlt es sich, zunächst die Standardzeitlimitwerte im Fabric-SDK zu erhöhen. Weitere Informationen zum Festlegen von Zeitlimitwerten finden Sie in [Zeitlimitwerte in Fabric-SDKs festlegen](/docs/services/blockchain/v10_application.html#dev-app-set-timeout-in-sdk).
   - Sie können auch versuchen, Ihre Anforderung auf der Anwendungsebene auszuführen.

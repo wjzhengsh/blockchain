@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -14,8 +16,6 @@ lastupdated: "2019-02-08"
 
 # Implementando um solicitador no {{site.data.keyword.cloud_notm}} Private
 {: #icp-orderer-deploy}
-
-***[Esta página é útil? Diga-nos.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 Os solicitadores autenticam clientes, transações de pedidos e transações de transmissão em uma rede de blockchain com o componente solicitador. Para obter mais informações sobre os solicitadores e a função que eles desempenham em uma rede de blockchain, consulte [Visão geral sobre componentes de blockchain](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview).
 {:shortdesc}

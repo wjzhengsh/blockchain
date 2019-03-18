@@ -2,7 +2,9 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -17,9 +19,9 @@ lastupdated: "2019-02-08"
 # Creación y gestión de identidades
 {: #ibp-console-identities}
 
-***[¿Le resulta útil esta página? Indíquenos su opinión.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+Los nodos de {{site.data.keyword.blockchainfull_notm}} Platform se basan en Hyperledger Fabric y crean redes blockchain con permisos. Esto significa que todos los participantes del consorcio de blockchain necesitan tener identidades que sean verificadas continuamente por la infraestructura de claves públicas. La consola de {{site.data.keyword.blockchainfull_notm}} Platform le permite crear estas identidades mediante las entidades emisoras de certificados (CA) de la organización. Debe almacenar estas identidades en la cartera de la consola para poderlas utilizar cuando trabaje con la red.
 
-Los nodos de {{site.data.keyword.blockchainfull_notm}} Platform se basan en Hyperledger Fabric y crean redes blockchain con permisos. Esto significa que todos los participantes del consorcio de blockchain necesitan tener identidades que sean verificadas continuamente por la infraestructura de claves públicas. La consola de {{site.data.keyword.blockchainfull_notm}} Platform le permite crear estas identidades mediante las entidades emisoras de certificados (CA) de la organización. Luego puede utilizar la cartera de la consola para almacenar estas identidades y utilizarlas para trabajar con la red.
+**Audiencia de destino:** este tema está diseñado para los operadores de red responsables de crear, supervisar y gestionar la red blockchain.
 
 ## Gestión de entidades emisoras de certificados
 {: #ibp-console-identities-manage-ca}
@@ -42,7 +44,7 @@ Puede utilizar la consola para crear estas identidades siguiendo el [proceso de 
 
 Antes de trabajar con identidades, tiene que establecer la identidad del administrador de CA, ya sea utilizando la identidad de administrador creada durante la creación de la CA o estableciendo una nueva. Abra la CA en el separador **Nodos**. El ID de inscripción de la identidad activa actualmente aparece junto al nombre de la CA en la parte superior del panel. Puede utilizar esta identidad de administrador para crear otras identidades con el botón **Registrar** para registrar identidades que se convertirán en administradores de organización e identidades de nodo o puede utilizar el botón **Inscribir** para generar una identidad y exportarla a la cartera.
 
-Para establecer una identidad como administrador de CA, pulse el icono **Valores** y pulse **Establecer identidad** en la barra deslizante. Puede especificar una identidad existente en la cartera mediante el separador **Identidad existente**. Como alternativa, puede utilizar el separador **Nueva identidad** para pegar certificados para el administrador o para cargar un archivo JSON que contenga los certificados.
+Para cambiar de identidad utilizada como administrador de CA, pulse el icono **Valores** y pulse **Establecer identidad** en la barra deslizante. Puede especificar una identidad existente en la cartera mediante el separador **Identidad existente**. Como alternativa, puede utilizar el separador **Nueva identidad** para pegar certificados para un nuevo administrador o para cargar un archivo JSON que contenga los certificados.
 
 No todas las identidades tienen la capacidad de registrar nuevos usuarios. Para obtener más información, incluida la forma de establecer un administrador de CA adicional, consulte [Creación
 de nuevos administradores de CA](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-ca-admin).
@@ -84,16 +86,17 @@ En el panel lateral 4, pulse el botón **Añadir atributo**. Especifique el **no
 ## Inscripción de una identidad
 {: #ibp-console-identities-enroll}
 
-Puede generar la clave pública y privada para cada identidad que se haya registrado con la CA. Puede generar claves para una de las identidades de administrador cuando [cree su MSP de organización](/docs/services/blockchain/howto/ibp-console-organizations.html#console-organizations-create-msp) y proporcione certificados adicionales al MSP para otros administradores que ya se hayan inscrito utilizando la CA.
+Puede generar el certificado público y la clave privada para cada identidad que se haya registrado con la CA. Si ha registrado identidades de administrador adicionales con la CA, puede generar las claves para la identidad de administrador y luego incluirlas adicionalmente cuando [cree la organización MSP](/docs/services/blockchain/howto/ibp-console-organizations.html#console-organizations-create-msp).
 
-Asegúrese de que ha [establecido la identidad](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-ca-identity) que utiliza la CA para crear las claves. Después de establecer la identidad, puede pulsar el botón **Inscribir identidad**
-para visualizar las claves y mostrarlas en un panel lateral en formato base64.
-  - La clave pública se muestra en el campo **Certificado**. Este certificado también se conoce como certificado de inscripción, certificado de firma o signCert.
-  - Encontrará la clave privada correspondiente en el campo **Clave privada**.
+Antes de inscribir una identidad, debe [establecer la identidad](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-ca-identity) para poder trabajar con la CA. Normalmente, se establece en la identidad de administrador que se ha especificado al crear la CA. Puede confirmar que la CA se ha establecido en dicha identidad examinando la página de detalles de la CA y viendo el ID de inscripción de la identidad actualmente activa que hay junto al nombre de CA. Después de confirmar que la identidad está establecida en la identidad del administrador, pulse **Inscribir identidad** en el menú de desbordamiento del usuario para generar el certificado y la clave para cualquier usuario registrado con la CA.
 
-Cada par de claves creado pulsando **Inscribir identidad** solo se genera una vez y no se almacena ni en la consola ni en el navegador. Cuando se pulsa el botón **Inscribir identidad**, se contabiliza en el número máximo de inscripciones establecido para el administrador de CA. Después de la inscripción, debe almacenar el par de claves descargando la identidad en el sistema de archivos local o añadiendo la identidad a la cartera de la consola. Especifique un nuevo nombre para este par de claves pública y privada en el campo **Nombre** para poder recuperarlos.
-  - Pulse **Exportar identidad** para descargar estos certificados en el sistema de archivos local en formato JSON.
-  - Pulse **Añadir identidad a cartera** para añadir estos certificados a la cartera de la consola. Luego podrá encontrar el nombre y las claves de esta identidad en un nuevo mosaico en el [separador cartera](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-wallet)
+- Especifique el `Secreto de inscripción` del usuario.
+- En el paso siguiente se muestran las claves generadas.
+  - La clave pública se muestra en el campo **Certificado**. Este certificado también se conoce como certificado de inscripción, certificado de firma o signCert. Debe exportar el signCert a un archivo en el sistema local para que se pueda utilizar al crear una aplicación cliente con la extensión VSCode.
+  - Encontrará la clave privada correspondiente en el campo **Clave privada**. De nuevo, tiene que exportar la clave privada al sistema local para utilizarla con una aplicación cliente creada con la extensión VSCode.
+  - El certificado y la clave privada que se han creado pulsando **Inscribir identidad** solo se generan una vez y no se almacenan ni en la consola ni en el navegador. Cuando se pulsa el botón **Inscribir identidad**, se contabiliza en el número máximo de inscripciones establecido para el administrador de CA. Como parte de este proceso de inscripción, debe almacenar el par de claves descargando la identidad en el sistema de archivos local o añadiendo la identidad a la cartera de la consola. Especifique un nuevo nombre para este par de claves pública y privada en el campo **Nombre** para poder recuperarlos.
+- **Importante:** pulse **Exportar identidad** para descargar el certificado y la clave en el sistema de archivos local como un solo archivo en formato JSON. Usted es el responsable de proteger y gestionar estas claves.
+- Pulse **Añadir identidad a la cartera** para añadir estos certificados a la cartera de la consola. Luego podrá encontrar el nombre y las claves de esta identidad en un nuevo mosaico en el [separador cartera](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-wallet)
 
 También puede utilizar el cliente CA de Fabric o los SDK de Fabric para inscribir las identidades que ha creado en la consola. La consola le proporciona toda la información que necesitará para poder competir en estos pasos. Asegúrese de que ha guardado el **ID de inscripción**
 y el **Secreto de inscripción** que ha especificado durante el registro.

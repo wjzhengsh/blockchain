@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -17,9 +19,6 @@ lastupdated: "2019-02-08"
 
 # {{site.data.keyword.cloud_notm}} Private でのピアのデプロイ
 {: #icp-peer-deploy}
-
-
-***[このページは参考になりましたか。 ご意見をお聞かせください。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 以下の手順では、{{site.data.keyword.cloud_notm}} Private に {{site.data.keyword.blockchainfull}} Platform ピアをデプロイする方法を説明します。 これらの手順に従って、{{site.data.keyword.cloud_notm}} Private 上の {{site.data.keyword.blockchainfull_notm}} Platform に接続できます。 {{site.data.keyword.cloud_notm}} 上のスターター・プラン・ネットワークまたはエンタープライズ・プラン・ネットワークにピアを接続するには、[スターター・プランまたはエンタープライズ・プランに接続するためのピアのデプロイ](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy)を参照してください。
 {:shortdesc}
@@ -46,9 +45,9 @@ lastupdated: "2019-02-08"
 
 ピアが使用するストレージを設定する必要があります。 デフォルト設定を使用する場合、Helm チャートによって、ピア・データ用に `my-data-pvc` という名前の新規 8 Gi Persistent Volume Claim (PVC) と、状態データベース用に `statedb-pvc` という名前の別の 8 Gi PVC が作成されます。
 
-デフォルトのストレージ設定を使用しない場合は、{{site.data.keyword.cloud_notm}} Private のインストール時に*新しい* `storageClass` がセットアップされたことを確認します。セットアップされていない場合は、デプロイの前に Kubernetes システム管理者が storageClass を作成する必要があります。
+デフォルトのストレージ設定を使用しない場合は、{{site.data.keyword.cloud_notm}} Private のインストール時に新しい `storageClass` がセットアップされたことを確認します。セットアップされていない場合は、{{site.data.keyword.blockchainfull_notm}} Platform をデプロイする前に Kubernetes システム管理者が `storageClass` を作成する必要があります。
 
-ピアのデプロイ先として、amd64 または s390x のプラットフォームを選択できます。 ただし、[動的プロビジョニング ![外部リンク・アイコン ](../images/external_link.svg "外部リンク・アイコン")](https://kubernetes.io/docs/concepts/storage/dynamic-provisioning/ "Dynamic Volume Provisioning") は、{{site.data.keyword.cloud_notm}} Private の amd64 ノードでのみ使用可能であることに注意してください。クラスターに s390x と amd64 ワーカー・ノードが混在している場合は、動的プロビジョニングを使用できません。
+ピアのデプロイ先として、amd64 または s390x のプラットフォームを選択できます。 ただし、[動的プロビジョニング ![外部リンク・アイコン ](../images/external_link.svg "外部リンク・アイコン")](https://kubernetes.io/docs/concepts/storage/dynamic-provisioning/ "Dynamic Volume Provisioning") は、{{site.data.keyword.cloud_notm}} Private の amd64 ノードでのみ使用可能であることに注意してください。 クラスターに s390x と amd64 ワーカー・ノードが混在している場合は、動的プロビジョニングを使用できません。
 
 動的プロビジョニングを使用しない場合は、[永続ボリューム ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://kubernetes.io/docs/concepts/storage/persistent-volumes/ "永続ボリューム") を作成し、Kubernetes PVC バインド処理を改善するために使用できるラベルを使用してセットアップする必要があります。
 

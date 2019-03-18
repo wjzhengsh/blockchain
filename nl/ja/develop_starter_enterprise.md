@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -16,8 +18,6 @@ lastupdated: "2019-02-08"
 
 # スターター・プランおよびエンタープライズ・プランへのビジネス・ネットワークのデプロイ
 {: #deploying-a-business-network}
-
-*[このページは参考になりましたか。 ご意見をお聞かせください。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)*
 
 {{site.data.keyword.IBM}} では、実動の Hyperledger Composer を使用するネットワークをサポートしていません。これには Composer CLI、JavaScript API、REST サーバー、および Web Playground が含まれます。
 {:note}
@@ -86,7 +86,7 @@ Fabric のバージョンは、ネットワーク・モニターで[「ネット
 ### ステップ 3: スターター・プラン・インスタンスへの証明書の追加
 {: #deploying-a-business-network-add-certs-to-starter-plan}
 
-証明書をスターター・プラン・ネットワークに追加する必要があります。 追加するには、{{site.data.keyword.blockchainfull_notm}} Platform のネットワーク・モニターを使用すると便利です。証明書を追加し、ピアを再始動してから、証明書をチャネル上で同期させる必要があります。 必要な証明書は、前のコマンドで生成された `admin-pub.pem` ファイルです。これは、`credentials` ディレクトリーにあります。
+証明書をスターター・プラン・ネットワークに追加する必要があります。 追加するには、{{site.data.keyword.blockchainfull_notm}} Platform のネットワーク・モニターを使用すると便利です。 証明書を追加し、ピアを再始動してから、証明書をチャネル上で同期させる必要があります。 必要な証明書は、前のコマンドで生成された `admin-pub.pem` ファイルです。これは、`credentials` ディレクトリーにあります。
 
 1. スターター・プランのネットワーク・モニターで、**「メンバー」**タブ、**「証明書」**、**「証明書の追加」**の順にクリックします。 `credentials` ディレクトリーに移動し、証明書ボックス内の `admin-pub.pem` ファイルの内容をコピー・アンド・ペーストします。 証明書を送信し、ピアを再始動します。 注: ピアの再始動には 1 分ほどかかります。
 

@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -14,9 +16,6 @@ lastupdated: "2019-02-08"
 
 # Criando ou atualizando um canal
 {: #ibp-create-channel}
-
-
-***[Esta página é útil? Diga-nos.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 
 Os canais são um mecanismo muito poderoso para particionamento e isolamento de dados e eles fornecem a base principal
@@ -35,7 +34,7 @@ Clique no botão **Novo canal** na tela "Canais" de seu Monitor de Rede e conclu
 2. Convide qualquer combinação de seus membros de rede selecionando membros de rede e clicando no botão **Incluir membro**. Customize as permissões designando funções para cada um dos membros convidados e clique em **Avançar**.
   ![Criar canal 2](../images/create_channel_2.png "Criar um painel de canal 2")
 
-    * Um operador de canal pode consultar ou atualizar o livro-razão do canal. Um operador de canal tem a autoridade para **Aceitar** ou **Recusar** uma solicitação de criação de canal e para enviar uma solicitação de atualização de canal. Deve haver pelo menos um **Operador** em cada canal.
+    * Um operador de canal pode consultar ou atualizar o livro razão do canal. Um operador de canal tem a autoridade para **Aceitar** ou **Recusar** uma solicitação de criação de canal e para enviar uma solicitação de atualização de canal. Deve haver pelo menos um **Operador** em cada canal.
     * Um gravador de canal pode atualizar o livro-razão, chamando uma função de chaincode, por exemplo. Um gravador de canal também pode instanciar um chaincode em um canal.
     * Um leitor de canal pode apenas consultar o livro-razão do canal, chamando uma função de chaincode somente leitura, por exemplo.
 

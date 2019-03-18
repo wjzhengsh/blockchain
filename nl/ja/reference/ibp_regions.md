@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -19,11 +21,7 @@ lastupdated: "2019-02-08"
 # {{site.data.keyword.blockchainfull_notm}} Platform のロケーション
 {: #ibp-regions-locations}
 
-
-***[このページは参考になりましたか。 ご意見をお聞かせください。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
-
-{{site.data.keyword.cloud}} は、世界中のさまざまなロケーションでホストされています。これらのロケーションは、エンドポイントを介してアクセスされる地理的領域内のデータ・センターです。{{site.data.keyword.blockchainfull_notm}} Platform では、さまざまなロケーションにある {{site.data.keyword.cloud_notm}} 内でグローバルにメンバーシップ・プランを提供しています。 {{site.data.keyword.cloud_notm}} に {{site.data.keyword.blockchainfull_notm}} Platform サービス・インスタンスを作成すると、ブロックチェーン・ネットワークとネットワーク・リソースは、サービス・インスタンスを作成した {{site.data.keyword.cloud_notm}} のロケーションに作成および格納されます。
+{{site.data.keyword.cloud}} は、世界中のさまざまなロケーションでホストされています。 これらのロケーションは、エンドポイントを介してアクセスされる地理的領域内のデータ・センターです。 {{site.data.keyword.blockchainfull_notm}} Platform では、さまざまなロケーションにある {{site.data.keyword.cloud_notm}} 内でグローバルにメンバーシップ・プランを提供しています。 {{site.data.keyword.cloud_notm}} に {{site.data.keyword.blockchainfull_notm}} Platform サービス・インスタンスを作成すると、ブロックチェーン・ネットワークとネットワーク・リソースは、サービス・インスタンスを作成した {{site.data.keyword.cloud_notm}} のロケーションに作成および格納されます。
 {:shortdesc}
 
 {{site.data.keyword.cloud_notm}} のロケーションごとに異なる {{site.data.keyword.blockchainfull_notm}} Platform オファリングが使用可能です。 {{site.data.keyword.blockchainfull_notm}} Platform プランが使用可能な {{site.data.keyword.cloud_notm}} のロケーションにのみブロックチェーン・ネットワークを作成することができます。

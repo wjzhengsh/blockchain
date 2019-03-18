@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -18,14 +20,12 @@ lastupdated: "2019-02-08"
 # Sobre o Starter Plan
 {: #starter-plan-about}
 
-***[Esta página é útil? Diga-nos.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 O {{site.data.keyword.blockchainfull}} Platform Starter Plan é uma opção de nível de entrada que permite que as organizações simulem redes de blockchain de múltiplas organizações, desenvolvam aplicativos rapidamente e trabalhem com contratos inteligentes de amostra e redes de negócios. Ele também possui a mesma experiência de UI que outras opções de associação, ajudando a eliminar qualquer curva de aprendizado. As novas redes do Starter Plan que forem criadas após 4 de outubro de 2018 serão construídas no Hyperledger Fabric V1.2.1. As redes mais antigas do Starter Plan permanecem no nível do Fabric V1.1.0.
 {:shortdesc}
 
 **Starter Plan** é um ambiente para aqueles que desejam começar a desenvolver redes de blockchain ou começar a aprender sobre a tecnologia de blockchain. É possível usar o Starter Plan como um ambiente de desenvolvimento ou de teste que permitirá iniciar em pequeno porte e escalar a associação de sua rede ou o volume de transação antes de mover-se para um ambiente de produção.
 
- Para implementar uma rede do Starter Plan, inscreva-se agora para a sua [associação do Starter ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps) no {{site.data.keyword.cloud_notm}}. Quando você estiver pronto para começar a desenvolver sua rede, visite [introdução ao Starter Plan](/docs/services/blockchain/get_start_starter_plan.html#getting-started-with-starter-plan).
+ Para implementar uma rede do Starter Plan, inscreva-se agora para a sua [associação do Starter ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://cloud.ibm.com/catalog/services/ibm-blockchain-5-prod) no {{site.data.keyword.cloud_notm}}. Quando você estiver pronto para começar a desenvolver sua rede, visite [introdução ao Starter Plan](/docs/services/blockchain/get_start_starter_plan.html#getting-started-with-starter-plan).
 
 
 **Notas:**

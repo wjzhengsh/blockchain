@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -15,10 +17,6 @@ lastupdated: "2019-02-08"
 
 # Introdução ao Plano Corporativo
 {: #getting-started-with-enterprise-plan}
-
-
-***[Esta página é útil? Diga-nos.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 
 O {{site.data.keyword.blockchainfull}} Platform Enterprise Plan fornece uma rede de blockchain com alta segurança, integridade, escalabilidade e desempenho. É possível provisionar rapidamente uma rede totalmente funcional e usar o Monitor de rede, que é um painel da GUI, para executar imediatamente o [chaincode](/docs/services/blockchain/glossary.html#glossary-chaincode) e aplicativos sem a necessidade de projetar e configurar uma rede do zero.
 {:shortdesc}
@@ -38,14 +36,14 @@ As etapas a seguir indicam o fluxo básico para ativar uma rede de Enterprise Pl
 ## Criando uma rede
 {: #getting-started-with-enterprise-plan-create-network}
 
-Antes de iniciar, é necessário criar uma instância de serviço do [{{site.data.keyword.blockchain}} Platform ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://console.bluemix.net/catalog/services/blockchain) no {{site.data.keyword.Bluemix_notm}}. É necessário efetuar login com o seu ID do {{site.data.keyword.Bluemix_notm}}. Se você não tiver um ID, clique no botão **Inscreva-se para criar**. Renomeie o serviço e os nomes de credenciais para sua instância para que você possa reconhecê-lo facilmente no futuro. Selecione a região, a organização e o espaço do {{site.data.keyword.Bluemix_notm}}, na qual é possível implementar sua rede do {{site.data.keyword.blockchain}}. Em seguida, selecione **Plano de associação corporativa** na tabela de planos de precificação e clique no botão **Criar**.
+Antes de iniciar, é necessário criar uma instância de serviço do [{{site.data.keyword.blockchain}} Platform ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://cloud.ibm.com/catalog/services/ibm-blockchain-5-prod) no {{site.data.keyword.cloud_notm}}. É necessário efetuar login com o seu ID do {{site.data.keyword.cloud_notm}}. Se você não tiver um ID, clique no botão **Inscreva-se para criar**. Renomeie o serviço e os nomes de credenciais para sua instância para que você possa reconhecê-lo facilmente no futuro. Selecione a região, a organização e o espaço do {{site.data.keyword.cloud_notm}}, na qual é possível implementar sua rede do {{site.data.keyword.blockchain}}. Em seguida, selecione **Plano de associação corporativa** na tabela de planos de precificação e clique no botão **Criar**.
 
-É possível localizar a instância de serviço do {{site.data.keyword.blockchain}} Platform em seu painel de serviços do [{{site.data.keyword.Bluemix_notm}} painel de serviços ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://console.bluemix.net/dashboard/services "{{site.data.keyword.Bluemix_notm}} ").
+É possível localizar sua instância de serviço do {{site.data.keyword.blockchain}} Platform no painel de serviço do [ painel de serviço do {{site.data.keyword.cloud_notm}} ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://cloud.ibm.com/resources "{{site.data.keyword.cloud_notm}} ").
 
 Se você for um inicializador de rede, clique no botão **Criar rede** para iniciar uma rede do {{site.data.keyword.blockchain}}. Siga o assistente para concluir a configuração básica de sua rede e de seus recursos.
 ![Assistente de criação de rede](images/create_network_name.png "Assistente de criação de rede")
 
-1. Na tela "Vamos começar", forneça um nome para sua rede, escolha o local de sua organização do {{site.data.keyword.Bluemix_notm}} e inclua o nome de sua instituição. Quando você convidar outros membros de rede, eles procurarão por este nome de rede para participar. Clique em **Avançar**.
+1. Na tela "Vamos começar", forneça um nome para sua rede, escolha o local de sua organização do {{site.data.keyword.cloud_notm}} e inclua o nome de sua instituição. Quando você convidar outros membros de rede, eles procurarão por este nome de rede para participar. Clique em **Avançar**.
 2. (Opcional) Na tela "Convidar membros", insira o nome da instituição e o endereço de e-mail do membro que você deseja convidar para a sua rede. O nome da instituição que você designa não é um título oficial. Ele simplesmente permite que a instituição seja reconhecida facilmente e pode ser mudado quando eles se juntam à rede. Observe que uma rede pode ter até 15 membros, incluindo você. Esta etapa é opcional e você pode convidar membros para sua rede posteriormente no Monitor de Rede. Clique em **Avançar**.
 	Os membros que você convidar receberão uma notificação por e-mail sobre seu convite após você concluir todas as etapas para criar a rede.
 3. Na tela "Definir Regras de Controle", estabeleça as políticas para associação, criação de canal e chaincode. Por padrão, todos os membros de rede podem convidar outros membros para participarem da rede, criar canais e instanciar chaincode. Atualmente, a sua rede usa as políticas de controle padrão. Clique em **Avançar**.
@@ -66,9 +64,9 @@ Agora você implementar com êxito uma rede do {{site.data.keyword.blockchain}} 
 ## Participando de uma rede
 {: #getting-started-with-enterprise-plan-join-nw}
 
-Semelhante à criação de uma rede, é necessário criar uma instância de serviço do [{{site.data.keyword.blockchain}} Platform ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://console.bluemix.net/catalog/services/blockchain) no {{site.data.keyword.Bluemix_notm}}. É necessário efetuar login com o seu ID do {{site.data.keyword.Bluemix_notm}}. Se você não tiver um ID, clique no botão **Inscreva-se para criar**. Renomeie o serviço e os nomes de credenciais para sua instância para que você possa reconhecê-lo facilmente no futuro. Selecione a região, a organização e o espaço do {{site.data.keyword.Bluemix_notm}}, na qual é possível implementar sua rede do {{site.data.keyword.blockchain}}. Em seguida, selecione **Plano de associação corporativa** na tabela de planos de precificação e clique no botão **Criar**.
+Semelhante à criação de uma rede, é necessário criar uma instância de serviço do [{{site.data.keyword.blockchain}} Platform ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://cloud.ibm.com/catalog/services/ibm-blockchain-5-prod) no {{site.data.keyword.cloud_notm}}. É necessário efetuar login com o seu ID do {{site.data.keyword.cloud_notm}}. Se você não tiver um ID, clique no botão **Inscreva-se para criar**. Renomeie o serviço e os nomes de credenciais para sua instância para que você possa reconhecê-lo facilmente no futuro. Selecione a região, a organização e o espaço do {{site.data.keyword.cloud_notm}}, na qual é possível implementar sua rede do {{site.data.keyword.blockchain}}. Em seguida, selecione **Plano de associação corporativa** na tabela de planos de precificação e clique no botão **Criar**.
 
-É possível localizar a sua instância de serviço do {{site.data.keyword.blockchain}} Platform no [ painel de serviço do {{site.data.keyword.Bluemix_notm}} ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://console.bluemix.net/dashboard/services "{{site.data.keyword.Bluemix_notm}} painel de serviço").
+É possível localizar sua instância de serviço do {{site.data.keyword.blockchain}} Platform no painel de serviço do [ painel de serviço do {{site.data.keyword.cloud_notm}} ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://cloud.ibm.com/resources "{{site.data.keyword.cloud_notm}} ").
 
 Se você for um membro de rede convidado, clique no botão **Convite pendente ->**, selecione a rede à qual você deseja se associar na lista suspensa e clique no botão **Associar-se à rede!** . Siga o assistente para visualizar a configuração básica de sua rede e configure os seus próprios recursos de rede.
 ![Assistente Associar-se à rede](images/join_network_name.png "Assistente Associar-se à rede")
@@ -86,7 +84,7 @@ Se você for um membro de rede convidado, clique no botão **Convite pendente ->
 
 1. Entre em seu Monitor de Rede após criar ou participar de uma rede do {{site.data.keyword.blockchain}}. O Monitor de rede é um painel da GUI no qual é possível gerenciar e controlar informações de status da rede. Para obter mais informações, consulte [Monitor de Rede](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard).
 2. Inclua seus próprios peers na rede. Se você já incluiu peers suficientes, ignore esta etapa. Os peers executam chaincode e eles são o terminal para interagir com seus aplicativos. Clique em **Incluir peers** na tela "Visão Geral" e selecione a quantidade e o tamanho de seus peers. Para obter mais informações, consulte  [ Visão Geral ](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-overview).
-3. Configure um canal. Todos os membros no mesmo canal recebem um livro-razão específico do canal, o que fornece isolamento e confidencialidade dos dados. Para obter mais informações sobre como criar um canal, veja [Criando um canal](/docs/services/blockchain/howto/create_channel.html#ibp-create-channel-creating-a-channel). Se você for um membro do canal convidado a se associar a um canal, receberá uma notificação por e-mail com um link para o assistente que permite que se associe ao canal.
+3. Configure um canal. Todos os membros no mesmo canal recebem um livro razão específico do canal, o que fornece isolamento e confidencialidade dos dados. Para obter mais informações sobre como criar um canal, veja [Criando um canal](/docs/services/blockchain/howto/create_channel.html#ibp-create-channel-creating-a-channel). Se você for um membro do canal convidado a se associar a um canal, receberá uma notificação por e-mail com um link para o assistente que permite que se associe ao canal.
 4. Associe peers ao canal. Apenas peers que estão associados ao canal podem acessar seu livro-razão. Para obter mais informações, consulte [Canais](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-channels).
 5. Instale e instancie o chaincode. Todos os membros do canal precisam instalar o mesmo chaincode com o mesmo nome e versão em cada peer que executará o chaincode. Após você instalar o chaincode, precisará instanciá-lo no canal antes de poder usá-lo. Para obter mais informações, veja [Instalando, instanciando e atualizando um chaincode](/docs/services/blockchain/howto/install_instantiate_chaincode.html#install-instantiate-chaincode).
 
@@ -100,7 +98,7 @@ Após você criar uma rede de Enterprise Plan no {{site.data.keyword.cloud_notm}
 
 ### Recuperando por meio da página da instância de serviço
 {: #getting-started-with-enterprise-plan-retrieve-svc-ins}
-Você estará na página da instância de serviço logo após criar uma instância de serviço. Também é possível clicar em seu serviço no [painel do serviço do {{site.data.keyword.cloud_notm}}![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://console.bluemix.net/dashboard/services "{{site.data.keyword.cloud_notm}} painel do serviço") para abrir a página da instância de serviço.
+Você estará na página da instância de serviço logo após criar uma instância de serviço. Também é possível clicar no serviço no painel de serviço do [{{site.data.keyword.cloud_notm}} ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://cloud.ibm.com/resources "{{site.data.keyword.cloud_notm}} painel de serviço do ") para abrir a página da sua instância de serviço.
 
 Recupere as suas credenciais de serviço com as etapas a seguir:
 1. Na página da instância de serviço, clique em **Credenciais de serviço** no navegador esquerdo para mostrar a tela "Credenciais de serviço".
@@ -116,7 +114,7 @@ Recupere as suas credenciais de serviço com as etapas a seguir:
 
 ## Ativando aplicativos para interagirem com a rede
 {: #getting-started-with-enterprise-plan-enable-apps}
-Os aplicativos alavancam as APIs do SDK para interagirem com os seus recursos de rede do {{site.data.keyword.blockchain}}. É necessário incluir as informações do terminal de API de seus recursos de rede em seu aplicativo para que o aplicativo possa finalmente direcionar os seus peers com solicitações de transação. É possível, então, incluir as informações do terminal de API no Monitor de Rede. Os aplicativos podem ser hospedados em seu sistema de arquivos local ou em {{site.data.keyword.Bluemix_notm}}. Para obter mais informações, consulte [Desenvolvendo aplicativos](/docs/services/blockchain/v10_application.html#dev-app).
+Os aplicativos alavancam as APIs do SDK para interagirem com os seus recursos de rede do {{site.data.keyword.blockchain}}. É necessário incluir as informações do terminal de API de seus recursos de rede em seu aplicativo para que o aplicativo possa finalmente direcionar os seus peers com solicitações de transação. É possível, então, incluir as informações do terminal de API no Monitor de Rede. Os aplicativos podem ser hospedados em seu sistema de arquivos local ou em {{site.data.keyword.cloud_notm}}. Para obter mais informações, consulte [Desenvolvendo aplicativos](/docs/services/blockchain/v10_application.html#dev-app).
 
 ## Monitorando recursos de rede
 {: #getting-started-with-enterprise-plan-monitor-resources}
@@ -124,7 +122,7 @@ Após uma transação ser acionada por meio de seu aplicativo, será possível v
 
 ## Sair de uma rede
 {: #getting-started-with-enterprise-plan-leave-nw}
-Se você desejar sair de uma rede, exclua a instância de serviço de blockchain do painel do {{site.data.keyword.Bluemix_notm}}.
+Se você desejar sair de uma rede, exclua a instância de serviço de blockchain do painel do {{site.data.keyword.cloud_notm}}.
 
 Antes de sair de uma rede, assegure-se de que você não seja um membro em nenhum canal da rede. Caso contrário, você receberá mensagens de erro quando sair da rede. Uma remoção de membros do canal é necessária para concluir o processo de atualização do canal. Para obter mais informações sobre o processo de atualização do canal, consulte [Atualizando um canal](/docs/services/blockchain/howto/create_channel.html#ibp-create-channel-updating-a-channel).
 {:note}

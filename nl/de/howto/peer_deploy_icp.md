@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -17,9 +19,6 @@ lastupdated: "2019-02-08"
 
 # Peers in {{site.data.keyword.cloud_notm}} Private bereitstellen
 {: #icp-peer-deploy}
-
-
-***[Ist diese Seite hilfreich? Teilen Sie uns Ihre Meinung mit.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 In den folgenden Anweisungen wird die Vorgehensweise zur Bereitstellung eines Peers für {{site.data.keyword.blockchainfull}} Platform unter {{site.data.keyword.cloud_notm}} Private beschrieben. Mit diesen Anweisungen können Sie außerdem eine Verbindung zu einer Instanz von {{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}} Private herstellen. Falls Sie einen Peer mit einem Starter Plan- oder Enterprise Plan-Netz unter {{site.data.keyword.cloud_notm}} verbinden wollen, finden Sie im Abschnitt [Peers bereitstellen und mit Starter Plan- oder Enterprise Plan-Netz verbinden](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy) weitere Informationen.
 {:shortdesc}
@@ -46,7 +45,7 @@ Stellen Sie sicher, dass Ihr {{site.data.keyword.cloud_notm}} Private-System die
 
 Sie müssen den Speicher ermitteln, der von Ihrem Peer benutzt werden soll. Falls Sie die Standardeinstellungen verwenden, erstellt das Helm-Diagramm eine neue Anforderung für einen persistenten Datenträger mit 8 Gi namens `my-data-pvc` für Ihre Peerdaten und einen weitere Anforderung für einen persistenten Datenträger mit 8 Gi namens `statedb-pvc` für Ihre Statusdatenbank.
 
-Wenn Sie nicht mit den Standardspeichereinstellungen arbeiten wollen, dann vergewissern Sie sich, dass während der {{site.data.keyword.cloud_notm}} Private-Installation eine *neue* Speicherklasse (`storageClass`) eingerichtet wird. Andernfalls muss der Kubernetes-Systemadministrator eine Speicherklasse erstellen, bevor Sie die Bereitstellung vornehmen können.
+Wenn Sie nicht mit den Standardspeichereinstellungen arbeiten wollen, dann vergewissern Sie sich, dass während der {{site.data.keyword.cloud_notm}} Private-Installation eine neue Speicherklasse (`storageClass`) eingerichtet wird. Andernfalls muss der Kubernetes-Systemadministrator eine Speicherklasse (`storageClass`) erstellen, bevor Sie {{site.data.keyword.blockchainfull_notm}} Platform bereitstellen.
 
 Für die Bereitstellung des Peers stehen die Plattformen amd64 oder s390x zur Auswahl. Es ist jedoch zu beachten, dass die [dynamische Bereitstellung ![External link icon](../images/external_link.svg "External link icon")](https://kubernetes.io/docs/concepts/storage/dynamic-provisioning/ "Dynamische Datenträgerbereitstellung") nur für amd64-Knoten in {{site.data.keyword.cloud_notm}} Private verfügbar ist. Wenn in Ihrem Cluster eine Kombination aus s390x- und amd64-Workerknoten eingesetzt wird, kann die dynamische Bereitstellung nicht verwendet werden.
 

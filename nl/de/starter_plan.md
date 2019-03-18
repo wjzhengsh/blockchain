@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -18,14 +20,12 @@ lastupdated: "2019-02-08"
 # Informationen zu Starter Plan
 {: #starter-plan-about}
 
-***[Ist diese Seite hilfreich? Teilen Sie uns Ihre Meinung mit.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 Der {{site.data.keyword.blockchainfull}} Platform Starter Plan ist eine Einstiegsoption, die Organisationen befähigt, Blockchain-Netze für mehrere Organisationen zu simulieren, schnell Anwendungen zu entwickeln und mit Smart Contracts und Unternehmensnetzen zu arbeiten. Dabei verfügt die Plattform über dieselbe Benutzerschnittstellenbedienung wie andere Mitgliedschaftsoptionen, um den Einarbeitungsaufwand zu minimieren. Nach dem 4. Oktober 2018 werden neue Starter Plan-Netze auf der Basis von Hyperledger Fabric Version 1.2.1 erstellt. Ältere Starter Plan-Netze behalten Fabric Version 1.1.0 bei.
 {:shortdesc}
 
 **Starter Plan** ist eine Umgebung für diejenigen, die Blockchain-Netze entwickeln möchten oder mehr zur Blockchain-Technologie erfahren möchten. Sie können den Starter Plan als Entwicklungs- oder Testumgebung verwenden, mit dem Sie klein anfangen und das Mitgliedschafts- oder Transaktionsvolumen Ihres Netzes skalieren können, bevor Sie in eine Produktionsumgebung wechseln.
 
- Wenn Sie ein Starter Plan-Netz bereitstellen möchten, melden Sie sich jetzt für Ihre [Starter-Mitgliedschaft ![External link icon](images/external_link.svg "External link icon")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps) unter {{site.data.keyword.cloud_notm}} an. Wenn Sie mit der Entwicklung Ihres Netzes beginnen möchten, besuchen Sie [Einführung in den Starter Plan](/docs/services/blockchain/get_start_starter_plan.html#getting-started-with-starter-plan).
+ Wenn Sie ein Starter Plan-Netz bereitstellen möchten, melden Sie sich jetzt für Ihre [Starter-Mitgliedschaft ![External link icon](images/external_link.svg "External link icon")](https://cloud.ibm.com/catalog/services/ibm-blockchain-5-prod) unter {{site.data.keyword.cloud_notm}} an. Wenn Sie mit der Entwicklung Ihres Netzes beginnen möchten, besuchen Sie [Einführung in den Starter Plan](/docs/services/blockchain/get_start_starter_plan.html#getting-started-with-starter-plan).
 
 
 **Hinweise:**
@@ -36,7 +36,7 @@ Der {{site.data.keyword.blockchainfull}} Platform Starter Plan ist eine Einstieg
 {: #starter-plan-about-what-starter-plan-offers}
 
 - **_Netzbereitschaft mit einem Klick_**
-    Der Starter Plan stellt mit einem einzigen Klick ein Live-Blockchain-Netz bereit. Jedes Netz ist mit Zertifizierungsstellen, einem Anordnungsservice, zwei Organisationen (mit jeweils einem Peer pro Organisation) und einem Standardkanal ausgestattet, über den Chaincode bereitgestellt wird und Transaktionen ausgeführt werden. {{site.data.keyword.blockchainfull_notm}} Platform übernimmt die Erstellung und Konfiguration dieses Netzes (Sie können es nach der Live-Bereitstellung aktualisieren), sodass Sie sich ganz auf die Entwicklung konzentrieren können. Starter Plan-Netze basieren auf Fabric Version 1.2 und verwenden CouchDB als Statusdatenbank. 
+    Der Starter Plan stellt mit einem einzigen Klick ein Live-Blockchain-Netz bereit. Jedes Netz ist mit Zertifizierungsstellen, einem Anordnungsservice, zwei Organisationen (mit jeweils einem Peer pro Organisation) und einem Standardkanal ausgestattet, über den Chaincode bereitgestellt wird und Transaktionen ausgeführt werden. {{site.data.keyword.blockchainfull_notm}} Platform übernimmt die Erstellung und Konfiguration dieses Netzes (Sie können es nach der Live-Bereitstellung aktualisieren), sodass Sie sich ganz auf die Entwicklung konzentrieren können. Starter Plan-Netze basieren auf Fabric Version 1.2 und verwenden CouchDB als Statusdatenbank.
 - **_Kosteneffizienz_**
     Die Option der Starter Plan-Mitgliedschaft stellt viele der Blockchain-Funktionen bereit, die auch durch die Optionen der Enterprise Plan-Mitgliedschaft bereitgestellt werden, jedoch zu geringeren Kosten. Weitere Informationen zu diesem Thema finden Sie im Abschnitt zur [Starter Plan-Preisstruktur](/docs/services/blockchain/howto/pricing.html#ibp-pricing-starter-pricing).
 - **_Simulation von Netzen mit mehreren Organisationen_**

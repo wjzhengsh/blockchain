@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -18,9 +20,8 @@ lastupdated: "2019-02-08"
 # Einführung in {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private
 {: #get-started-icp}
 
-***[Ist diese Seite hilfreich? Teilen Sie uns Ihre Meinung mit.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
-{{site.data.keyword.blockchainfull}} Platform for {{site.data.keyword.cloud_notm}} Private ermöglicht Benutzern das Bereitstellen von Zertifizierungsstellen (CAs), Anordnungsknoten und Peers auf x86-, LinuxONE- und IBM Z-Systemen mit Kubernetes-Helm-Diagrammen in einer On-Premises-Umgebung, wie z. B. {{site.data.keyword.cloud_notm}} Private, und verbinden Sie sie mit Komponenten, die in mehreren Cloud-Umgebungen gehostet werden. {{site.data.keyword.cloud_notm}} Private ist eine Anwendungsplattform für die Entwicklung und Verwaltung von lokaler und containerisierten Anwendungen. Es handelt sich um eine integrierte Umgebung für die Verwaltung von Containern, die den Container-Orchestrator Kubernetes, eine private Image-Registry, eine Managementkonsole und Überwachungsframeworks enthalten.{:shortdesc}
+{{site.data.keyword.blockchainfull}} Platform for {{site.data.keyword.cloud_notm}} Private ermöglicht Benutzern das Bereitstellen von Zertifizierungsstellen (CAs), Anordnungsknoten und Peers auf x86-, LinuxONE- und IBM Z-Systemen mit Kubernetes-Helm-Diagrammen in einer On-Premises-Umgebung, wie z. B. {{site.data.keyword.cloud_notm}} Private, und verbinden Sie sie mit Komponenten, die in mehreren Cloud-Umgebungen gehostet werden. {{site.data.keyword.cloud_notm}} Private ist eine Anwendungsplattform für die Entwicklung und Verwaltung von lokaler und containerisierten Anwendungen. Es handelt sich um eine integrierte Umgebung für die Verwaltung von Containern, die den Container-Orchestrator Kubernetes, eine private Image-Registry, eine Managementkonsole und Überwachungsframeworks enthalten.
+{:shortdesc}
 
 Blockchain-Netze, die auf [Hyperledger Fabric](https://hyperledger-fabric.readthedocs.io/en/release-1.2/) basieren, können in einer quasi unbegrenzten Vielzahl von Konfigurationen zur Unterstützung ebenso vieler Anwendungsfälle bereitgestellt werden. Ungeachtet dieser Vielseitigkeit gibt es eine Reihe von Best Practices, insbesondere hinsichtlich der ordnungsgemäßen **Reihenfolge** bei der Konfiguration und Bereitstellung von Netzkomponenten.
 

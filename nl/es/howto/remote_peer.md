@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -17,8 +19,6 @@ lastupdated: "2019-02-08"
 
 # Acerca de {{site.data.keyword.blockchainfull_notm}} Platform para Amazon Web Services
 {: #remote-peer-aws-about}
-
-***[¿Le resulta útil esta página? Indíquenos su opinión.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 **Nota:** el programa de igual remoto de {{site.data.keyword.blockchainfull}} Platform en {{site.data.keyword.cloud_notm}} Private (Beta) ha finalizado. Si todavía desea ejecutar iguales en su entorno de {{site.data.keyword.cloud_notm}} Private, utilice la oferta de la **{{site.data.keyword.blockchainfull_notm}} Platform para {{site.data.keyword.cloud_notm}} Private** en su lugar. Para obtener más información, consulte [Acerca de los iguales en {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-about-peer).
 
@@ -45,7 +45,7 @@ Puede ejecutar el igual de {{site.data.keyword.blockchainfull_notm}} Platform en
 ## Requisitos previos
 {: #remote-peer-aws-about-prereq}
 
-Para utilizar un igual de {{site.data.keyword.blockchainfull_notm}} Platform para AWS, debe tener una organización que sea miembro de una red del Plan inicial o del Plan empresarial en la plataforma {{site.data.keyword.blockchainfull_notm}}. El igual de {{site.data.keyword.blockchainfull_notm}} Platform para AWS aprovecha los puntos finales de API, las CA de Hyperledger Fabric y el servicio de ordenación de la red de {{site.data.keyword.blockchainfull_notm}} Platform para funcionar. Si no es miembro de ninguna red blockchain, tiene que crear o unirse a una red. Para obtener más información, consulte [Creación de una red](/docs/services/blockchain/get_start.html#getting-started-with-enterprise-plan-create-network) o [Cómo unirse a una red](/docs/services/blockchain/get_start.html#getting-started-with-enterprise-plan-join-nw).
+Para utilizar un igual de {{site.data.keyword.blockchainfull_notm}} Platform para AWS, debe tener una organización que sea miembro de una red del Plan inicial o del Plan empresarial en la plataforma {{site.data.keyword.blockchainfull_notm}}. El igual de {{site.data.keyword.blockchainfull_notm}} Platform para AWS aprovecha los puntos finales de API, las CA de Hyperledger Fabric y el servicio de ordenación de la red de la plataforma {{site.data.keyword.blockchainfull_notm}} para funcionar. Si no es miembro de ninguna red blockchain, tiene que crear o unirse a una red. Para obtener más información, consulte [Creación de una red](/docs/services/blockchain/get_start.html#getting-started-with-enterprise-plan-create-network) o [Cómo unirse a una red](/docs/services/blockchain/get_start.html#getting-started-with-enterprise-plan-join-nw).
 
 ## Licencias y precios
 {: #remote-peer-aws-about-license-pricing}

@@ -2,7 +2,10 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
+
 ---
 
 {:new_window: target="_blank"}
@@ -16,8 +19,6 @@ lastupdated: "2019-02-08"
 
 # Operando uma autoridade de certificação no {{site.data.keyword.cloud_notm}} Private
 {: #ca-operate}
-
-***[Esta página é útil? Diga-nos.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 As autoridades de certificação (CAs) fornecem identidades na rede. Uma CA pode ser considerada como sendo semelhante a um tabelião público confiável que é usado para estabelecer a confiança entre várias partes. Cada entidade na rede recebe um certificado que uma CA raiz sinaliza para encapsular a identidade digital da entidade. Esse certificado é a raiz de confiança para todas as operações de assinatura e de verificação que são executadas na rede.
 {:shortdesc}
@@ -241,7 +242,7 @@ Antes de implementar componentes ou aplicativos clientes com sua CA, é necessá
 
   O comando `enroll` gera um conjunto completo de certificados, que é conhecido como uma pasta Membership Service Provider (MSP), que está localizada dentro do diretório no qual você configura o caminho `$HOME` para seu cliente Fabric CA. Por exemplo, `$HOME/fabric-ca-client/ca-admin`. Para obter mais informações sobre MSPs e o que a pasta MSP contém, consulte [Membership Service Providers](/docs/services/blockchain/howto/CA_operate.html#ca-operate-msp).
 
-  Se o comando `enroll` falhar, consulte o [tópico de Resolução de Problemas](/docs/services/blockchain/howto/CA_operate.html#ca-operate-enroll-error) para obter as possíveis causas.
+  Se o comando `enroll` falhar, consulte o [tópico de Resolução de Problemas](/docs/services/blockchain/howto/CA_operate.html#ca-operate-troubleshooting) para obter as possíveis causas.
 
 É possível executar um comando de árvore para verificar se você concluiu todas as etapas de pré-requisito. Navegue para o diretório no qual você armazenou seus certificados. Um comando de árvore deve gerar um resultado semelhante à estrutura a seguir:
 
@@ -339,7 +340,7 @@ Depois de recuperar as informações de conexão da Autoridade de Certificação
 ### Registrando a identidade do componente com a CA
 {: #ca-operate-register-component}
 
-Se você deseja localizar um consórcio implementando um serviço de ordenação e incluindo organizações nele, ou para implementar os peers e associá-los aos canais, primeiro é necessário registrar a identidade do componente com sua CA. Sua implementação de componente pode, então, gerar certificados que são necessários para que o peer ou o solicitador participe de uma rede.
+Se você deseja formar um consórcio implementando um serviço de pedido e incluindo organizações nele, ou deseja implementar peers e associá-los a canais, primeiro é necessário registrar a identidade do componente com a sua autoridade de certificação. Sua implementação de componente pode, então, gerar certificados que são necessários para que o peer ou o solicitador participe de uma rede.
 
 1. [Gere certificados com seu administrador de CA](/docs/services/blockchain/howto/CA_operate.html#ca-operate-enroll-ca-admin) usando o cliente Fabric CA. Use esses certificados de administrador para emitir os comandos a seguir. Assegure-se de que `$FABRIC_CA_CLIENT_HOME` esteja configurado como `$HOME/fabric-ca-client/ca-admin`.
 
@@ -725,11 +726,16 @@ Os logs de componentes podem ser visualizados na linha de comandos usando os [`k
 
   **Nota:** ao visualizar seus logs no Kibana, você pode receber a resposta `No results found`. Essa condição poderá ocorrer se o {{site.data.keyword.cloud_notm}} Private usar o endereço IP do nó do trabalhador como seu nome do host. Para resolver esse problema, remova o filtro que inicia com `node.hostname.keyword` na parte superior do painel e os logs se tornarão visíveis.
 
+## Segurança
+{: #ca-operate-security}
+
+Para garantir segurança adicional e evitar o comprometimento de materiais de chave da autoridade de certificação, ela pode ser mantida off-line se apenas um número limitado de certificados for emitido, por exemplo, apenas peers, servidor Node.js e aplicativos clientes. No entanto, a autoridade de certificação deverá estar on-line quando a emissão on demand de certificados para os usuários for necessária. É altamente recomendável que você proteja sua chave privada do administrador de autoridade de certificação com [HSM](https://console.test.cloud.ibm.com/docs/services/blockchain/glossary.html#glossary-hsm), se possível.
+
 ## Detecção de problemas
 {: #ca-operate-troubleshooting}
 
 ### **Problema:** erro ao executar o comando `enroll`
-{: #ca-operate-enroll-error}
+{: #ca-operate-enroll-error1}
 
 Ao executar o comando de inscrição do cliente Fabric CA, é possível que o comando falhe com o erro a seguir:
 
@@ -749,7 +755,7 @@ Esse erro pode ocorrer quando o cliente Fabric CA tenta se inscrever, mas não p
 Revise os parâmetros especificados em seu comando `enroll` e assegure que nenhuma dessas condições existam.
 
 ### **Problema:** erro com a URL da CA ao executar o comando `enroll`
-{: #ca-operate-enroll-error}
+{: #ca-operate-enroll-error2}
 
 O comando de inscrição do cliente Fabric CA poderá falhar se a URL de inscrição, o valor de parâmetro `-u`, contiver um caractere especial. Por exemplo, o comando a seguir com o ID de inscrição e a senha de `admin:C25A06287!0`,
 

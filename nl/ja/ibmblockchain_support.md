@@ -2,7 +2,10 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
+
 ---
 
 {:new_window: target="_blank"}
@@ -17,8 +20,6 @@ lastupdated: "2019-02-08"
 # サポートについて
 {: #blockchain-support}
 
-***[このページは参考になりましたか。 ご意見をお聞かせください。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 {{site.data.keyword.blockchainfull}} Platform は、問題をトラブルシューティングしたりサポートを利用したりするための手段を、{{site.data.keyword.blockchainfull_notm}} Platform オファリング別にいくつか用意しています。
 {:shortdesc}
 
@@ -26,10 +27,10 @@ lastupdated: "2019-02-08"
 
 いずれの[無料デジタル・サポート・リソース](/docs/services/blockchain/ibmblockchain_support.html#blockchain-support-resources)でも問題を解決できない場合は、以下の方法を検討して、使用するオファリングのサポートを依頼してください。
 - **{{site.data.keyword.cloud_notm}} のスターター・プランおよびエンタープライズ・プラン **
-  {{site.data.keyword.cloud_notm}} からサポート・ケースを送信してください。詳しくは、[サポート・ケースの送信](/docs/services/blockchain/ibmblockchain_support.html#blockchain-support-cases)を参照してください。
+  {{site.data.keyword.cloud_notm}} からサポート・ケースを送信してください。 詳しくは、[サポート・ケースの送信](/docs/services/blockchain/ibmblockchain_support.html#blockchain-support-cases)を参照してください。
 
 - **{{site.data.keyword.blockchainfull_notm}} Platform 2.0 無料ベータ版**
-  {{site.data.keyword.cloud_notm}} からサポート・ケースを送信してください。**ベータ期間中のサポートは制限されます。** 詳しくは、[サポート・ケースの送信](/docs/services/blockchain/ibmblockchain_support.html#blockchain-support-cases)を参照してください。
+  {{site.data.keyword.cloud_notm}} からサポート・ケースを送信してください。 **ベータ期間中のサポートは制限されます。** 詳しくは、[サポート・ケースの送信](/docs/services/blockchain/ibmblockchain_support.html#blockchain-support-cases)を参照してください。
 
 - **{{site.data.keyword.blockchainfull_notm}} Platform Visual Studio Code 機能拡張**
      [{{site.data.keyword.blockchainfull_notm}} Platform Visual Studio Code 機能拡張](https://github.com/IBM-Blockchain/blockchain-vscode-extension/issues "{{site.data.keyword.blockchainfull_notm}} Platform Visual Studio Code extension")で問題を送信してください。
@@ -75,15 +76,15 @@ lastupdated: "2019-02-08"
 Hyperledger Fabric チェーンコード、Hyperledger Composer、またはアプリケーションについて支援が必要な場合は、上記のコミュニティー・リソースを活用するか、[{{site.data.keyword.blockchainfull_notm}} サービス ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/blockchain/services "Blockchain 戦略を {{site.data.keyword.blockchainfull_notm}} サービスでビジネス上の結果に変える") を使用してください。 Hyperledger Composer は、デモおよび PoC にのみ使用することをお勧めします。 {{site.data.keyword.IBM_notm}} では、実動の Hyperledger Composer を使用するネットワークをサポートしていません。これには Composer CLI、JavaScript API、REST サーバー、および Web Playground が含まれます。
 {:note}
 
-サポート・ケースへの応答は、[{{site.data.keyword.cloud_notm}} サポート・プラン ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://console.bluemix.net/docs/get-support/index.html#support-plans "サポート・プラン") によって異なります。
+サポート・ケースへの応答は、[{{site.data.keyword.cloud_notm}} サポート・プラン ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://cloud.ibm.com/docs/get-support/index.html#support-plans "サポート・プラン") によって異なります。
 
-- **プレミアム・サポート**または**拡張サポート**を購入している場合は、チケットでの重大度レベルを Sev-1 から Sev-4 に指定できます。 重大度の最高レベルは Sev-1 です。 重大度レベルの高いサポート・ケースは緊急度が高いことを示し、サポート・チームがより迅速に応答します。 詳しくは、[{{site.data.keyword.cloud_notm}} サポート・プラン・オファリング ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://console.bluemix.net/docs/get-support/index.html#support-plans "サポート・プラン") を参照してください。  
+- **プレミアム・サポート**または**拡張サポート**を購入している場合は、チケットでの重大度レベルを Sev-1 から Sev-4 に指定できます。 重大度の最高レベルは Sev-1 です。 重大度レベルの高いサポート・ケースは緊急度が高いことを示し、サポート・チームがより迅速に応答します。 詳しくは、[{{site.data.keyword.cloud_notm}} サポート・プラン・オファリング ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://cloud.ibm.com/docs/get-support/index.html#support-plans "サポート・プラン") を参照してください。  
 - サポートを購入しない場合、{{site.data.keyword.cloud_notm}} 従量課金 (PAYG) またはサブスクリプション・アカウントに無料の**基本サポート**・プランが付随しています。 この場合、サポート・ケースは自動的に Sev-4 に登録されます。
 
 **ベータ版オファリング**では、一般提供リリースと比べて、利用できるサポートは制限されます。
 - サポート・ケースは低い重大度レベル (通常は、Sev-4 または Sev-3) で登録されます。
-- サポートは、週 5 日 24 時間ベースで提供されます。週末のサポートは提供されません。
-- 詳しくは、[ベータ版サービスの {{site.data.keyword.cloud_notm}} サポート](https://console.bluemix.net/docs/get-support/servicessupport.html#support-different-services "{{site.data.keyword.IBM_notm}} ベータ版サービス")を参照してください。
+- サポートは、週 5 日 24 時間ベースで提供されます。 週末のサポートは提供されません。
+- 詳しくは、[ベータ版サービスの {{site.data.keyword.cloud_notm}} サポート](https://cloud.ibm.com/docs/get-support/servicessupport.html#support-different-services "{{site.data.keyword.IBM_notm}} ベータ版サービス")を参照してください。
 
 サポート・ケースを送信するには、以下の手順に従います。
 

@@ -2,7 +2,10 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
+
 ---
 
 {:new_window: target="_blank"}
@@ -14,10 +17,6 @@ lastupdated: "2019-02-08"
 
 # Gestión de certificados en la plataforma {{site.data.keyword.blockchainfull_notm}}
 {: #managing-certificates}
-
-
-***[¿Le resulta útil esta página? Indíquenos su opinión.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 
 {{site.data.keyword.blockchainfull}} Platform se basa en Hyperledger Fabric y crea redes blockchain con permisos. Los participantes reciben el nombre de miembros de la red, y sus actividades y su acceso a los recursos de la red se verifican continuamente. La identidad de un participante se proporciona en forma de un certificado digital x509 de confianza. La verificación se proporciona mediante una infraestructura de claves públicas subyacente y operaciones de firma/verificación que protegen las transacciones y la gestión dentro de la red.
 {:shortdesc}

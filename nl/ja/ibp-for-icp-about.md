@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -18,9 +20,7 @@ lastupdated: "2019-02-08"
 # {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private について
 {: #ibp-icp-about}
 
-***[このページは参考になりましたか。 ご意見をお聞かせください。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
-{{site.data.keyword.blockchainfull}} Platform は、{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private をリリースしました。これは、コンテナー化されたアプリケーションを開発および管理するためのアプリケーション・プラットフォームです。{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private オファリングは Kubernetes をベースとしています。そのため、ユーザーは、認証局 (CA)、順序付けプログラム、およびピアを x86、LinuxONE、および IBM Z にデプロイできます。{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private は、Hyperledger Fabric v1.2.1 をベースとしており、Kubernetes Helm チャートを使用してデプロイされます。
+{{site.data.keyword.blockchainfull}} Platform は、{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private をリリースしました。これは、コンテナー化されたアプリケーションを開発および管理するためのアプリケーション・プラットフォームです。 {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private オファリングは Kubernetes をベースとしています。そのため、ユーザーは、認証局 (CA)、順序付けプログラム、およびピアを x86、LinuxONE、および IBM Z にデプロイできます。{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private は、Hyperledger Fabric v1.2.1 をベースとしており、Kubernetes Helm チャートを使用してデプロイされます。
 {:shortdesc}
 
 {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private は、{{site.data.keyword.cloud_notm}} Private を使用して独自のインフラストラクチャーでブロックチェーン・ネットワークを実行するために必要なコンポーネントを提供します。 コンポーネントには、Kubernetes Helm チャートを使用してデプロイ、管理、セットアップする Hyperledger Fabric、認証局 (CA)、順序付けプログラム、およびピアが含まれます。 **このオファリングは、Hyperledger Fabric の経験が豊富なお客様を対象としています。**
@@ -35,7 +35,7 @@ lastupdated: "2019-02-08"
 
 ## {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private の提供内容
 
-{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private では、Hyperledger Fabric ブロックチェーンのすべての基礎コンポーネント (認証局、順序付けサービス、およびピア) をデプロイできます。これにより、ビジネス・ニーズに応じて、さまざまなコンポーネントを柔軟にデプロイできます。 {{site.data.keyword.blockchainfull_notm}} for {{site.data.keyword.cloud_notm}} Private を使用すると、組織をブロックチェーン共同事業体にバインドする順序付けサービスをデプロイおよび構成することにより、ブロックチェーン・ネットワークを開始できます。 また、ピアをデプロイし、Fabric に基づくコンポーネントを使用するその他のネットワーク ({{site.data.keyword.cloud_notm}} Private を使用してクラウド間にデプロイされた {{site.data.keyword.blockchainfull_notm}} Platform ネットワークや、IBM Cloud でホストされているスターター・プラン・ネットワークおよびエンタープライズ・プラン・ネットワークなど) に参加することもできます。 Hyperledger Fabric ネットワークのビルディング・ブロックについて詳しくは、[ブロックチェーン・コンポーネントの概要](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview)を参照してください。
+{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private では、Hyperledger Fabric ブロックチェーンのすべての基礎コンポーネント (認証局、順序付けサービス、およびピア) をデプロイできます。 これにより、ビジネス・ニーズに応じて、さまざまなコンポーネントを柔軟にデプロイできます。 {{site.data.keyword.blockchainfull_notm}} for {{site.data.keyword.cloud_notm}} Private を使用すると、組織をブロックチェーン共同事業体にバインドする順序付けサービスをデプロイおよび構成することにより、ブロックチェーン・ネットワークを開始できます。 また、ピアをデプロイし、Fabric に基づくコンポーネントを使用するその他のネットワーク ({{site.data.keyword.cloud_notm}} Private を使用してクラウド間にデプロイされた {{site.data.keyword.blockchainfull_notm}} Platform ネットワークや、IBM Cloud でホストされているスターター・プラン・ネットワークおよびエンタープライズ・プラン・ネットワークなど) に参加することもできます。 Hyperledger Fabric ネットワークのビルディング・ブロックについて詳しくは、[ブロックチェーン・コンポーネントの概要](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview)を参照してください。
 
 ## {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private の使用に適した状況
 
@@ -176,9 +176,9 @@ CA は、ID を検証し、デプロイする必要があるネットワーク�
 状態データベース内のデータは、LevelDB と CouchDB のどちらを使用するかに関係なく、暗号化されません。 アプリケーション・レベルの暗号化によって、状態データベースに保管されているデータを保護できます。
 
 ### データの常駐
-{: #ibp-icp-about-data-residency}
+{: #ibp-icp-about-security-data-residency}
 
-データの常駐要件により、すべてのブロックチェーン台帳データの処理および保管を 1 つの国 (または定義された他の境界内) にとどめることを義務付けることができます。 データの常駐の実現方法について詳しくは、[データの常駐](/docs/services/blockchain/howto/remote_peer.html#remote-peer-aws-about-data-residency)を参照してください。
+データの常駐要件により、すべてのブロックチェーン台帳データの処理および保管を 1 つの国 (または定義された他の境界内) にとどめることを義務付けることができます。 データの常駐の実現方法について詳しくは、[データの常駐](#ibp-icp-about-data-residency)を参照してください。
 
 ### 鍵管理
 {: #ibp-icp-about-security-key-management}

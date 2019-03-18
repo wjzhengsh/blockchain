@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -15,8 +17,6 @@ lastupdated: "2019-02-08"
 
 # 스타터 플랜 시작하기
 {: #getting-started-with-starter-plan}
-
-***[이 페이지가 도움이 되었습니까? 알려주십시오.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 {{site.data.keyword.blockchainfull}} Platform 스타터 플랜은 한 번의 클릭으로 사전 구성된 블록체인 네트워크를 제공합니다. 스타터 플랜은 기본적으로 두 개의 [조직](/docs/services/blockchain/glossary.html#glossary-organization), 각각의 조직당 하나의 [피어](/docs/services/blockchain/glossary.html#glossary-peer) 및 하나의 [채널](/docs/services/blockchain/glossary.html#glossary-channel)이 구성되어 있는 권한 부여된 네트워크를 프로비저닝합니다. 네트워크가 작성된 후에는 조직 및 피어를 스케일링하고 네트워크에 추가할 수 있습니다. 이러한 네트워크는 {{site.data.keyword.blockchainfull_notm}} Platform을 처음 사용하는 초보 사용자용입니다. <!--Note that it might cause extra cost if you exceed the default resource limits of two organizations and two peers.-->
 {:shortdesc}
@@ -38,7 +38,7 @@ lastupdated: "2019-02-08"
 - [조직을 네트워크에 초대](/docs/services/blockchain/get_start_starter_plan.html#getting-started-with-starter-plan-inviting-members)
 - [스타터 플랜 네트워크에 가입](/docs/services/blockchain/get_start_starter_plan.html#getting-started-with-starter-plan-joining-a-network)
 
-네트워크에 가입한 조직의 컨소시엄 내에서 채널을 작성하여 개인적으로 해당 조직 세트와 관련된 트랜잭션을 수행할 수 있습니다.
+네트워크에 참여한 조직의 컨소시엄 내에서 채널을 작성하여 개인적으로 해당 조직 세트와 관련된 트랜잭션을 수행할 수 있습니다.
 
 - [채널 작성](/docs/services/blockchain/get_start_starter_plan.html#getting-started-with-starter-plan-create-channels)
 
@@ -70,43 +70,43 @@ lastupdated: "2019-02-08"
 
 {{site.data.keyword.blockchainfull_notm}} Platform 서비스 인스턴스를 작성한 후 즉시 기본 구성의 스타터 플랜 [네트워크](/docs/services/blockchain/glossary.html#glossary-network)를 가져올 수 있습니다.
 
-1. {{site.data.keyword.cloud_notm}} 카탈로그에서 [Blockchain 서비스 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://console.bluemix.net/catalog/services/blockchain)를 찾으십시오.
+1. {{site.data.keyword.cloud_notm}} 카탈로그에서 [Blockchain 서비스 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://cloud.ibm.com/catalog/services/ibm-blockchain-5-prod)를 찾으십시오.
     **참고**: {{site.data.keyword.cloud_notm}} 유료 계정으로 로그인해야 합니다. 계정이 없는 경우, **회원가입하기** 단추를 클릭하십시오. 무료 평가판 계정을 작성한 후 {{site.data.keyword.cloud_notm}} 콘솔에서 **관리** > **청구 및 사용량** > **청구**로 이동하고 **신용카드 추가**를 클릭하여 **종량과금제** 유형으로 업그레이드하십시오.
 2. 네트워크를 작성할 {{site.data.keyword.cloud_notm}}의 지역을 선택하십시오.
 3. 네트워크를 작성할 Cloud Foundry 조직 및 영역을 선택하십시오.
 4. 가격 플랜 테이블에서 **스타터 멤버십 플랜**을 선택하십시오.
-5. **작성** 단추를 클릭하십시오. 네트워크에 가입하도록 초대되면 팝업 환영 패널을 볼 수 있습니다. 네트워크를 작성하려면 **네트워크 진행**을 선택하고 **계속**을 클릭하십시오. 네트워크에 가입하려면 [네트워크 가입](/docs/services/blockchain/get_start_starter_plan.html#getting-started-with-starter-plan-joining-a-network)의 5단계를 참조하십시오.
+5. **작성** 단추를 클릭하십시오. 네트워크에 참여하도록 초대되면 팝업 환영 패널을 볼 수 있습니다. 네트워크를 작성하려면 **네트워크 진행**을 선택하고 **계속**을 클릭하십시오. 네트워크에 참여하려면 [네트워크 참여](/docs/services/blockchain/get_start_starter_plan.html#getting-started-with-starter-plan-joining-a-network)의 5단계를 참조하십시오.
   이제 기본 구성의 스타터 플랜 네트워크를 사용할 준비가 되었습니다. 네트워크는 하나의 순서 지정자("SOLO" 순서 지정 서비스로 알려짐), 두 개의 조직, 하나의 CA 및 각 조직당 하나의 피어와 함께 실행됩니다. 기본 채널도 작성됩니다.
 6. **실행** 단추를 클릭하십시오.
 
-[{{site.data.keyword.Bluemix_notm}} 서비스 대시보드 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://console.bluemix.net/dashboard/services "{{site.data.keyword.Bluemix_notm}} 서비스 대시보드")에서 블록체인 서비스 인스턴스를 찾을 수 있습니다.
+[{{site.data.keyword.cloud_notm}} 서비스 대시보드 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://cloud.ibm.com/resources "{{site.data.keyword.cloud_notm}} 서비스 대시보드")에서 블록체인 서비스 인스턴스를 찾을 수 있습니다.
 
 
 ## 구성원 초대
 {: #getting-started-with-starter-plan-inviting-members}
 
-스타터 플랜 네트워크에 [구성원](/docs/services/blockchain/glossary.html#glossary-member)으로 가입하도록 다른 [조직](/docs/services/blockchain/glossary.html#glossary-organization)을 초대하여 서로 [트랜잭션](/docs/services/blockchain/glossary.html#glossary-transaction)을 수행할 수 있게 합니다. 또한 스타터 플랜을 학습 및 테스트용으로 사용하려는 경우 네트워크에 스스로 구성원을 추가하여 다중 조직 네트워크를 시뮬레이션할 수 있습니다.
+스타터 플랜 네트워크에 [구성원](/docs/services/blockchain/glossary.html#glossary-member)으로 참여하도록 다른 [조직](/docs/services/blockchain/glossary.html#glossary-organization)을 초대하여 서로 [트랜잭션](/docs/services/blockchain/glossary.html#glossary-transaction)을 수행할 수 있게 합니다. 또한 스타터 플랜을 학습 및 테스트용으로 사용하려는 경우 네트워크에 스스로 구성원을 추가하여 다중 조직 네트워크를 시뮬레이션할 수 있습니다.
 
 1. 네트워크 모니터의 "구성원" 화면에서 **구성원 초대** 단추를 클릭하십시오.
 2. "구성원 초대" 창이 열립니다.
-    - 다른 조직을 초대하려는 경우 "구성원 초대"를 선택하십시오.  초대할 조직의 이름 및 운영자 이메일 주소를 지정하십시오.  또한 "참고 추가" 필드에 초대에 포함할 추가 정보를 입력할 수 있습니다.  **초대 전송** 단추를 클릭하십시오.  초대된 조직은 초대 이메일을 수신한 다음 이메일의 지시사항에 따라 네트워크에 가입할 수 있습니다.
+    - 다른 조직을 초대하려는 경우 "구성원 초대"를 선택하십시오.  초대할 조직의 이름 및 운영자 이메일 주소를 지정하십시오.  또한 "참고 추가" 필드에 초대에 포함할 추가 정보를 입력할 수 있습니다.  **초대 전송** 단추를 클릭하십시오.  초대된 조직은 초대 이메일을 수신한 다음 이메일의 지시사항에 따라 네트워크에 참여할 수 있습니다.
     - 채널에 추가할 수 있는 조직을 추가하려면 "구성원 추가"를 선택하십시오.  새 조직의 이름을 지정하십시오. 선택적으로 새 조직에 피어를 추가하거나 네트워크 모니터에서 나중에 수행할 수 있습니다.  **작성** 단추를 클릭하십시오. 새 조직의 피어를 추가하는 경우 피어를 보려면 이 새 조직으로 전환해야 합니다. 상단 오른쪽 모서리를 클릭하여 다른 조직으로 전환하고 **조직 전환** 섹션 아래의 드롭 다운 목록에서 대상 조직을 선택할 수 있습니다.
 
 
 ## 네트워크 가입
 {: #getting-started-with-starter-plan-joining-a-network}
 
-네트워크 개시자에게 초대된 경우 네트워크 가입 방법에 대한 지시사항이 포함된 이메일 알림을 수신합니다. 이메일의 지시사항을 따르십시오. 그러면 네트워크의 구성원 중 하나가 됩니다.
+네트워크 개시자에게 초대된 경우 네트워크 참여 방법에 대한 지시사항이 포함된 이메일 알림을 수신합니다. 이메일의 지시사항을 따르십시오. 그러면 네트워크의 구성원 중 하나가 됩니다.
 
-{{site.data.keyword.cloud_notm}}의 스타터 플랜 멤버십 옵션을 사용하여 [{{site.data.keyword.blockchain}} Platform 서비스 인스턴스 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://console.bluemix.net/catalog/services/blockchain)를 작성해야 합니다.
+{{site.data.keyword.cloud_notm}}에서 스타터 플랜 멤버십 옵션을 사용하여 [{{site.data.keyword.blockchainfull_notm}} Platform 서비스 인스턴스![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://cloud.ibm.com/catalog/services/ibm-blockchain-5-prod)를 작성해야 합니다. 
 
 1. {{site.data.keyword.cloud_notm}} 계정으로 로그인하십시오. 계정이 없는 경우, **회원가입하기** 단추를 클릭하십시오.
 2. {{site.data.keyword.blockchain}} 네트워크를 저장할 Cloud Foundry 조직을 선택하십시오.
 3. 가격 플랜 테이블에서 **스타터 멤버십 플랜**을 선택하십시오.
-4. **작성** 단추를 클릭하십시오. 서비스 인스턴스 페이지는 팝업 환영 패널에서 열립니다. 네트워크에 가입하거나 계속 고유 네트워크를 작성하도록 선택할 수 있습니다. 네트워크를 작성하려면 [네트워크 작성](/docs/services/blockchain/get_start_starter_plan.html#getting-started-with-starter-plan-creating-a-network)의 4단계를 참조하십시오.
-5. 환영 패널에서 **기존 네트워크 가입**을 선택하고 드롭 다운 목록에서 가입할 네트워크를 선택한 다음 **계속**을 클릭하십시오.
+4. **작성** 단추를 클릭하십시오. 서비스 인스턴스 페이지는 팝업 환영 패널에서 열립니다. 네트워크에 참여하거나 계속 고유 네트워크를 작성하도록 선택할 수 있습니다. 네트워크를 작성하려면 [네트워크 작성](/docs/services/blockchain/get_start_starter_plan.html#getting-started-with-starter-plan-creating-a-network)의 4단계를 참조하십시오.
+5. 환영 패널에서 **기존 네트워크 참여**를 선택하고 드롭 다운 목록에서 참여할 네트워크를 선택한 다음 **계속**을 클릭하십시오.
 
-[{{site.data.keyword.cloud_notm}} 서비스 대시보드 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://console.bluemix.net/dashboard/services "{{site.data.keyword.cloud_notm}} 서비스 대시보드")에서 블록체인 서비스 인스턴스를 찾을 수 있습니다.
+[{{site.data.keyword.cloud_notm}} 서비스 대시보드 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://cloud.ibm.com/resources "{{site.data.keyword.cloud_notm}} 서비스 대시보드")에서 블록체인 서비스 인스턴스를 찾을 수 있습니다.
 
 
 ## 채널 작성
@@ -160,7 +160,7 @@ lastupdated: "2019-02-08"
 ### 서비스 인스턴스 페이지에서 검색
 {: #getting-started-with-starter-plan-retrieve-service-instance}
 
-서비스 인스턴스를 작성하면 바로 서비스 인스턴스 페이지가 나타납니다. 또한 [{{site.data.keyword.cloud_notm}} 서비스 대시보드 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://console.bluemix.net/dashboard/services "{{site.data.keyword.cloud_notm}} 서비스 대시보드")에서 서비스를 클릭하여 서비스 인스턴스 페이지를 열 수 있습니다.
+서비스 인스턴스를 작성하면 바로 서비스 인스턴스 페이지가 나타납니다. 또한 [{{site.data.keyword.cloud_notm}} 서비스 대시보드 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://cloud.ibm.com/resources "{{site.data.keyword.cloud_notm}} 서비스 대시보드")에서 서비스를 클릭하여 서비스 인스턴스 페이지를 열 수 있습니다.
 
 다음 단계에 따라 서비스 인증 정보를 검색하십시오.
 1. 서비스 인스턴스 페이지의 왼쪽 네비게이터에서 **서비스 인증 정보**를 클릭하여 "서비스 인증 정보" 화면을 표시하십시오.
@@ -208,5 +208,4 @@ As you can see in [Deploying sample applications](/docs/services/blockchain/howt
 
 네트워크를 삭제하거나 나가려는 경우, {{site.data.keyword.cloud_notm}} 대시보드에서 블록체인 서비스 인스턴스를 삭제할 수 있습니다.
 
-네트워크를 나가기 전에 네트워크 내의 채널의 구성원이 아닌지 확인하십시오. 구성원이면 네트워크를 나갈 때 오류가 발생합니다. 채널 업데이트 프로세스를 완료하려면 채널 구성원을 제거해야 합니다. 채널 업데이트 프로세스에 대한 자세한 정보는 [채널 업데이트](/docs/services/blockchain/howto/create_channel.html#ibp-create-channel-updating-a-channel)를 참조하십시오.
-{:note}
+네트워크를 나가기 전에 네트워크 내의 채널의 구성원이 아닌지 확인하십시오. 구성원이면 네트워크를 나갈 때 오류가 발생합니다. 채널 업데이트 프로세스를 완료하려면 채널 구성원을 제거해야 합니다. 채널 업데이트 프로세스에 대한 자세한 정보는 [채널 업데이트](/docs/services/blockchain/howto/create_channel.html#ibp-create-channel-updating-a-channel)를 참조하십시오.{:note}

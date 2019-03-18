@@ -1,8 +1,11 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-10-30"
+  years: 2017, 2019
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
+
 ---
 
 {:new_window: target="_blank"}
@@ -10,32 +13,33 @@ lastupdated: "2018-10-30"
 {:codeblock: .codeblock}
 {:screen: .screen}
 {:pre: .pre}
-
+{:note: .note}
+{:important: .important}
+{:tip: .tip}
 
 # Clause de protection
-{: #disclainer}
-
-
-***[Cette page est-elle utile ? Dites-nous.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
+{: #disclaimer}
 
 **ATTENTION :** Vous devez prendre connaissance des informations suivantes avant d'utiliser des plans {{site.data.keyword.blockchainfull}}.
 
 ## Déclaration du support IBM
+{: #disclaimer-support-statement}
 
-IBM est depuis longtemps chef de file en matière d'innovation, et cela se poursuit avec les offres du plan {{site.data.keyword.blockchainfull_notm}} sur {{site.data.keyword.Bluemix_notm}}. {{site.data.keyword.blockchain}} est une technologie qui connaît un essor rapide et qui devrait engendrer des perturbations dans le secteur financier, les chaînes d'approvisionnement locales et globales, ainsi que le soutien logistique dans un certain nombre d'espaces professionnels. Dans le cadre de programmes d'adoption précoces, les clients et partenaires commerciaux IBM étudient la blockchain en tant que solution industrielle. {{site.data.keyword.blockchainfull_notm}} on {{site.data.keyword.Bluemix_notm}} est l'un de ces programmes. **Comme pour toute nouvelle technologie, les utilisateurs d'{{site.data.keyword.blockchainfull_notm}} on {{site.data.keyword.Bluemix_notm}} doivent se préparer à des changements rapides et essentiels**.  
+{{site.data.keyword.IBM}} est depuis longtemps chef de file en matière d'innovation, et cela se poursuit avec les offres {{site.data.keyword.blockchainfull_notm}} Platform sur {{site.data.keyword.cloud_notm}}. La blockchain est une technologie qui connaît un essor rapide et qui devrait engendrer des perturbations dans le secteur financier, les chaînes d'approvisionnement locales et globales, ainsi que le soutien logistique dans un certain nombre d'espaces professionnels. Dans le cadre de programmes d'adoption précoces, les clients et partenaires commerciaux {{site.data.keyword.IBM_notm}} étudient la blockchain en tant que solution industrielle. {{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}} est l'un de ces programmes. **Comme pour toute nouvelle technologie, les utilisateurs d'{{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}} doivent se préparer à des changements rapides et essentiels**.
 {:shortdesc}
 
-L'architecture d'{{site.data.keyword.blockchainfull_notm}} repose sur le projet Hyperledger Fabric de Linux Foundation. Chaque contribution de communauté en open source améliore Hyperledger Fabric mais peut représenter un défi en termes d'adoption. **IBM met en garde contre toute définition ou échange d'actifs financiers<!--, or any assets of value,-->, directement sur un réseau de blockchain Hyperledger Fabric**.  
+L'architecture d'{{site.data.keyword.blockchainfull_notm}} repose sur le projet Hyperledger Fabric de Linux Foundation. Chaque contribution de communauté en open source améliore Hyperledger Fabric mais peut représenter un défi en termes d'adoption. **{{site.data.keyword.IBM_notm}} met en garde contre toute définition ou échange d'actifs financiers<!--, or any assets of value,-->, directement sur un réseau de blockchain Hyperledger Fabric**.
 
-Ibm recommande d'utiliser Hyperledger Composer uniquement pour les démonstrations et les validations de concept.
-**IBM n'assure pas de support pour les réseaux utilisant Hyperledger Composer en production, y compris l'interface CLI Composer, les API JavaScript, le serveur REST et l'aire de jeu Web**.
+{{site.data.keyword.IBM_notm}} n'assure pas de support pour les réseaux utilisant Hyperledger Composer en production, y compris l'interface CLI Composer, les API JavaScript, le serveur REST et l'aire de jeu Web.
+{:note}
 
 ## Déclaration Open source
+{: #disclaimer-open-source-statement}
 
-Les plans de l'offre {{site.data.keyword.blockchainfull_notm}} on {{site.data.keyword.Bluemix_notm}} reposent sur la pile Hyperledger Fabric de Linux Foundation. Les membres du projet Hyperledger, y compris IBM, continuent à contribuer aux différents sous-projets sous l'égide de Hyperledger.  Toutes les contributions sont passées en revue, certifiées et testées par la communauté.
+Les plans de l'offre {{site.data.keyword.blockchainfull_notm}} on {{site.data.keyword.cloud_notm}} reposent sur la pile Hyperledger Fabric de Linux Foundation. Les membres du projet Hyperledger, y compris {{site.data.keyword.IBM_notm}}, continuent à contribuer aux différents sous-projets sous l'égide de Hyperledger.  Toutes les contributions sont passées en revue, certifiées et testées par la communauté.
 
 ## Déclaration du support du code blockchain
+{: #disclaimer-chaincode-support-statement}
 
 Les pratiques de codage suivantes NE sont PAS prises en charge sur les réseaux {{site.data.keyword.blockchainfull_notm}} :
 
@@ -44,10 +48,6 @@ Les pratiques de codage suivantes NE sont PAS prises en charge sur les réseaux 
 3. Ecriture de code blockchain dangereux (query et invoke peuvent être appelés en parallèle).
 4. Substitution de mémoire globale ou de mémoire cache pour les variables d'état de registre dans le code blockchain.
 5. Accès à des services externes, comme les bases de données, directement depuis le code blockchain.
-6. Utilisation de bibliothèques ou de variables globales qui pourraient introduire du non déterminisme (utilisation de "random" ou "time", par exemple).  
+6. Utilisation de bibliothèques ou de variables globales qui pourraient introduire du non déterminisme (utilisation de "random" ou "time", par exemple).
 
-En outre, il n'est pas recommandé d'écrire du code blockchain non déterministe, car cela présente un risque pour la cohérence et l'intégrité des données.  Il est à noter que l'architecture Hyperledger Fabric est conçue pour contrer le code blockchain non déterministe via une série de vérifications d'adhésion et de validation. Cependant, vous êtes quand même fortement encouragé à coder des fonctions déterministes qui ne reposent pas sur des variables globales non statiques (par exemple, le temps).  
-
----
-
-*[Cette page est-elle utile ? Dites-nous.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)*
+En outre, il n'est pas recommandé d'écrire du code blockchain non déterministe, car cela présente un risque pour la cohérence et l'intégrité des données. Il est à noter que l'architecture Hyperledger Fabric est conçue pour contrer le code blockchain non déterministe via une série de vérifications d'adhésion et de validation. Cependant, vous êtes quand même fortement encouragé à coder des fonctions déterministes qui ne reposent pas sur des variables globales non statiques (par exemple, le temps).

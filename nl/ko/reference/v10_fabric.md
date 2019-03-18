@@ -1,8 +1,11 @@
 ---
 
 copyright:
-  years: 2017, 2018, 2019
-lastupdated: "2019-02-08"
+  years: 2017, 2019
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
+
 ---
 
 {:new_window: target="_blank"}
@@ -14,8 +17,6 @@ lastupdated: "2019-02-08"
 
 # Hyperledger Fabric
 {: #hyperledger-fabric}
-
-***[이 페이지가 도움이 되었습니까? 알려주십시오.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 {{site.data.keyword.blockchainfull}} 네트워크는 Linux Foundation의 Hyperledger Project 내 블록체인 프로젝트 중 하나인 Hyperledger Fabric 스택에 빌드됩니다. 모든 사용자 및 컴포넌트에 알려진 ID가 있는 "권한 부여된" 네트워크입니다. 서명/확인 로직이 모든 통신 터치포인트마다 구현되어 있으며, 트랜잭션이 일련의 보증 및 유효성 검증 검사를 통해 승인되었습니다. 이런 의미에서 익명성을 승격하고 트랜잭션의 유효성을 검증하기 위해 암호화된 화폐 및 과도한 컴퓨팅 의무에 의존하도록 되어 있는 기존 블록체인 구현과 크게 다릅니다.
 {:shortdesc}
@@ -33,7 +34,7 @@ Hyperledger Fabric은 확장성 및 성능을 확장하기 위해 모듈식 아�
 {: #hyperledger-fabric-certificate-authority}
 
 **권한 부여된** 블록체인 네트워크용 플랫폼으로서 Hyperledger Fabric에는 모든 구성원 조직 및 해당 사용자의 네트워크 ID를 관리하기 위한 모듈식 **Certificate Authority(CA)** 컴포넌트가 포함되어 있습니다. 모든 사용자에 대한 권한 부여된 ID의 요구사항은 네트워크 활동을 통해 ACL 기반 제어를 사용 가능하게 하며, 모든 트랜잭션이 결국 등록된 사용자에게 추적 가능함을 보장합니다.
-* CA는 루트 인증서(**rootCert**)를 네트워크에 가입하도록 권한 부여된 각 **구성원**(조직 또는 개인)에게 발행합니다.
+* CA는 루트 인증서(**rootCert**)를 네트워크에 참여하도록 권한 부여된 각 **구성원**(조직 또는 개인)에게 발행합니다.
 * CA는 등록접수 인증서(**eCert**)를 각 구성원 컴포넌트, 서버 측 애플리케이션 및 때때로 사용자에게 발행합니다.
 * 각 등록접수된 사용자는 트랜잭션 인증서(**tCerts**)의 할당이 허용됩니다. 각 **tCert**는 하나의 네트워크 트랜잭션 권한을 부여합니다.
 

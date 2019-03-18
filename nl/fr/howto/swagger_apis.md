@@ -1,8 +1,10 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-08-31"
+  years: 2018,2019
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -13,21 +15,17 @@ lastupdated: "2018-08-31"
 {:pre: .pre}
 
 # Interaction avec le réseau à l'aide d'API Swagger
-
-
-***[Cette page est-elle utile ? Dites-nous.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
+{: #ibp-swagger}
 
 {{site.data.keyword.blockchainfull_notm}} Platform expose dans Swagger un certain nombre d'API REST que vous pouvez utiliser pour gérer les noeuds, les homologues et les membres de votre réseau. Vos applications peuvent recourir à ces API pour gérer d'importantes ressources réseau sans utiliser le moniteur réseau.
 
 {:shortdesc}
 
-Avant de commencer, vous devez créer une [instance de service {{site.data.keyword.blockchain}} Platform ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://console.bluemix.net/catalog/services/blockchain) sur {{site.data.keyword.Bluemix_notm}} et créer ou rejoindre le réseau de <!--or Enterprise Plan -->blockchain d'un plan Starter.
+Avant de commencer, vous devez créer une [instance de service {{site.data.keyword.blockchain}} Platform ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://cloud.ibm.com/catalog/services/ibm-blockchain-5-prod) sur {{site.data.keyword.cloud_notm}} et créer ou rejoindre le réseau de <!--or Enterprise Plan -->blockchain d'un plan Starter.
 
 
 ## Extraction des données d'identification réseau
-
-{: #retrieving-network-credentials}
+{: #ibp-swagger-retrieving-network-credentials}
 
 Accédez au Moniteur réseau de votre réseau de blockchain et ouvrez l'écran "API" dans le navigateur de gauche. Vous pouvez voir vos données d'identification réseau pour les API REST. Vous pourrez autoriser ultérieurement les API à l'aide des valeurs de "key" et "secret" affichées ici, puis exécuter les API avec "network_id" comme paramètre. Cliquez sur **Afficher le secret** pour afficher la valeur de la zone de valeur confidentielle. Copiez les valeurs des zones key, secret et network_id, que vous pouvez utiliser plus tard dans l'interface utilisateur Swagger.
 
@@ -44,11 +42,9 @@ La **Figure 2** illustre le basculement entre organisations :
 
 
 ## Autorisation d'API Swagger
+{: #ibp-swagger-authorizing-swagger}
 
 Cliquez sur le lien **Interface utilisateur swagger** sur l'écran "API" pour ouvrir l'interface utilisateur swagger.  
-<!-- remove this line because the link is different depending on if you are starter or enterprise plan
-You can also open the Swagger UI with the URL in the connection profiles. For example, `http://blockchain-swagger-dev.stage1.mybluemix.net`.
--->
 
 Dans l'interface utilisateur swagger, cliquez sur le bouton **Autoriser** afin d'ouvrir la fenêtre d'autorisation. Entrez la valeur de "key" et "secret" dans vos données d'identification réseau en tant que nom d'utilisateur et mot de passe, puis cliquez sur **Autoriser** et **Terminé**. Vous êtes maintenant prêt à exécuter les API. Notez que si vous actualisez votre navigateur, vous devez autoriser de nouveau avec vos données d'identification.
 
@@ -61,6 +57,7 @@ La **Figure 3** illustre la procédure d'autorisation d'API Swagger :
 
 
 ## Test des API
+{: #ibp-swagger-try-out}
 
 Cliquez sur l'API REST que vous voulez exécuter puis sur le bouton **Essayez**.
 
@@ -84,9 +81,14 @@ La **Figure 6** illustre le corps de la réponse de l'API, l'URL, et la commande
 *Figure 6. Réponse d'API*    
 
 ## Conseils pour l'identification et la résolution des problèmes
+{: #ibp-swagger-troubleshooting}
 
 ### 401 non autorisé  
-  Vérifiez que vous avez autorisé les API REST en indiquant vos données d'identification réseau. Pour plus de détails, voir [Autorisation d'API Swagger](#authorizing-swagger-apis).
+{: #ibp-swagger-401}
+
+  Vérifiez que vous avez autorisé les API REST en indiquant vos données d'identification réseau. Pour plus de détails, voir [Autorisation d'API Swagger](/docs/services/blockchain/howto/swagger_apis.html#ibp-swagger-authorizing-swagger).
 
 ### 400 Erreur : Demande incorrecte
+{: #ibp-swagger-400}
+
   Certaines API peuvent prendre un argument dans le corps de la demande qui fait office de filtre pour afficher les résultats uniquement pour un homologue spécifique. Un exemple de fragment est fourni dans le corps, lequel s'il est utilisé, doit être édité pour indiquer l'homologue ou la liste des homologues sur lesquels vous voulez filtrer. Pour éviter cette erreur, éditez le fragment afin d'indiquer un homologue de votre réseau ou de retirer le fragment dans son intégralité.

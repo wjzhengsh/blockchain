@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -14,10 +16,9 @@ lastupdated: "2019-02-08"
 {:important: .important}
 {:tip: .tip}
 {:pre: .pre}
+
 # 스타터 플랜 또는 엔터프라이즈 플랜으로 {{site.data.keyword.cloud_notm}} Private에서 피어 운영
 {: #ibp-peer-operate}
-
-***[이 페이지가 도움이 되었습니까? 알려주십시오.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 {{site.data.keyword.cloud_notm}} Private 피어에 {{site.data.keyword.blockchainfull}} Platform을 설정한 후 여러 작업 단계를 완료해야 피어에서 스타터 플랜 또는 엔터프라이즈 플랜 네트워크에 트랜잭션을 제출할 수 있습니다. 이 단계에는 채널에 조직을 추가하고 피어가 채널에 가입하며 피어에 체인코드를 설치하고 채널에서 체인코드를 인스턴스화하며 애플리케이션을 피어에 연결하는 단계가 포함됩니다.
 {:shortdesc}
@@ -170,7 +171,7 @@ npm install fabric-client@1.2
 
 Node SDK 버전 1.2를 사용하는 것이 좋습니다.
 
-### 피어와 작업하기 위해 SDK 준비
+### 피어에서 작동하도록 SDK 준비
 {: #ibp-peer-operate-prepare-node-sdk}
 
 피어는 내부에 피어 관리자의 signCert와 함께 배치됩니다. 이를 통해 피어 관리자의 인증서와 MSP 폴더를 사용하여 피어를 운영할 수 있습니다.
@@ -214,7 +215,7 @@ var peer = fabric_client.newPeer('grpcs://9.30.94.174:30167', { pem:  Buffer.fro
 You need to specify a `ssl-target-name-override` of `<something>.blockchain.com` in order for the peer to resolve the DNS request.
 -->
 
-**참고:** 피어가 {{site.data.keyword.cloud_notm}} 외부에 있으므로 {{site.data.keyword.blockchainfull_notm}} Platform 네트워크의 기타 조직은 연결 프로파일에서 피어의 엔드포인트 정보를 찾을 수 없습니다. 다른 조직에서 인증할 트랜잭션을 피어에 보내면 대역 내외 오퍼레이션에서 피어 url을 제공해야 합니다.
+**참고:** 피어가 {{site.data.keyword.cloud_notm}} 외부에 있으므로 {{site.data.keyword.blockchainfull_notm}} Platform 네트워크의 기타 조직은 연결 프로파일에서 피어의 엔드포인트 정보를 찾을 수 없습니다. 다른 조직에서 인증할 트랜잭션을 피어에 보내면 대역 외 오퍼레이션에서 피어 url을 제공해야 합니다.
 
 ### SDK를 사용하여 채널에 가입
 {: #ibp-peer-operate-peer-join-channel-sdk}
@@ -383,7 +384,7 @@ tree
 
   - **조직**을 검색하여 조직의 이름을 찾으십시오. 이 조직은 피어를 등록하는 데 사용하는 조직과 같아야 합니다. 연관된 `mspid`와 함께 조직의 이름을 찾을 수 있습니다. `mspid`의 값을 기록해 두십시오.
 
-2. [피어의 엔드포인트 정보 찾기](/docs/services/blockchain/howto/peer_operate_ibp.html#ibp-peer-operate-endpoint). `PEERADDR` 환경 변수를 설정하려면 피어 엔드포인트를 사용해야 합니다. 시작 부분에 `http://`를 제외해야 합니다.
+2. [피어의 엔드포인트 정보 찾기](/docs/services/blockchain/howto/peer_operate_ibp.html#ibp-peer-operate-endpoint). `PEERADDR` 환경 변수를 설정하려면 피어 엔드포인트를 사용해야 합니다. 시작 부분에서 `http://`를 제외해야 합니다.
 
 3. 다음 명령을 실행하여 환경 변수를 설정하십시오.
 
@@ -572,14 +573,13 @@ peer chaincode instantiate -o ${ORDERER_1} -C ${CHANNEL} -n ${CC_NAME} -v v0 -c 
 
 - 또는 Kibana에서 로그를 여는 [{{site.data.keyword.cloud_notm}}Private 클러스터 관리 콘솔](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/troubleshoot/events.html)을 사용하여 로그에 액세스할 수 있습니다.
 
-   **참고:** Kibana에서 로그인이 표시되면 `No results found`의 응답을 수신할 수 있습니다. 이 상태는 {{site.data.keyword.blockchainfull_notm}} Private이 호스트 이름으로 작업자 노드 IP 주소를 사용하는 경우 발생할 수 있습니다. 이 문제점을 해결하려면 패널 상단에서 `node.hostname.keyword`로 시작하는 필터를 제거하십시오. 그런 다음 로그가 표시됩니다.
+   **참고:** Kibana에서 로그인이 표시되면 `No results found`의 응답을 수신할 수 있습니다. 이 상태는 {{site.data.keyword.cloud_notm}} Private이 호스트 이름으로 작업자 노드 IP 주소를 사용하는 경우 발생할 수 있습니다. 이 문제점을 해결하려면 패널 상단에서 `node.hostname.keyword`로 시작하는 필터를 제거하십시오. 그런 다음 로그가 표시됩니다.
 
 ## 문제점 해결
 {: #ibp-peer-operate-troubleshooting}
 
 ### **문제점:** 호출 명령이 피어에서 실패했고 `chaincode fingerprint mismatch` 오류가 발생함
-{: #ibp-peer-operate
--install-error}
+{: #ibp-peer-operate-install-error}
 
 {{site.data.keyword.cloud_notm}} Private에서 실행 중인 피어에 `peer chaincode invoke` 요청을 실행하는 경우 `chaincode fingerprint mismatch` 오류를 수신할 수 있습니다.
 

@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -17,8 +19,6 @@ lastupdated: "2019-02-08"
 
 # Configuración de {{site.data.keyword.cloud_notm}} Private
 {: #icp-setup}
-
-***[¿Le resulta útil esta página? Indíquenos su opinión.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 Antes de desplegar componentes de {{site.data.keyword.blockchainfull}} Platform y crear la red blockchain en
 {{site.data.keyword.cloud_notm}} Private, debe configurar {{site.data.keyword.cloud_notm}} Private en su propio entorno.

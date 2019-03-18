@@ -2,19 +2,23 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2018-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
+
 ---
 
 {:new_window: target="_blank"}
 {:shortdesc: .shortdesc}
 {:codeblock: .codeblock}
 {:screen: .screen}
+{:note: .note}
+{:important: .important}
+{:tip: .tip}
 {:pre: .pre}
 
 # Smart Contracts schreiben
 {: #develop-smart-contracts}
-
-***[Ist diese Seite hilfreich? Teilen Sie uns Ihre Meinung mit.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 Chaincode, auch unter der Bezeichnung "Smart Contracts" bekannt, ist eine Software, die Ihnen das Lesen und Aktualisieren von Daten im Blockchain-Ledger ermöglicht. Chaincode kann Geschäftslogik in ein ausführbares Programm umwandeln, das alle Mitglieder im Blockchain-Netz vereinbart und verifiziert haben. Die Geschäftslogik enthält die Definition von Assets, die zwischen Parteien gehandelt werden. Sie besteht außerdem aus den Bedingungen, die für die Ausführung einer Transaktion erforderlich sind. Wenn diese Regeln in eine Blockchain umgewandelt werden, können Unternehmen Geschäftsprozesse und -überwachung optimieren sowie manuelle und papierbasierte Prozesse erheblich reduzieren.
 
@@ -35,7 +39,10 @@ Das Lernprogramm stellt außerdem wichtige Strukturaspekte vor, die durch Chainc
 
 Chaincode kann in mehreren Sprachen geschrieben werden; {{site.data.keyword.blockchainfull_notm}} Platform unterstützt Chaincode, der in Go und Node.js geschrieben ist. Mittels Chaincode können Benutzer Daten abfragen und ändern, die in der Blockchain gespeichert sind. Dies erfolgt unter Verwendung von APIs, die von der Fabric-Chaincodeschnittstelle bereitgestellt werden. Die Daten der Blockchain werden in Schlüssel/Wert-Paaren im World-Status des Kanal-[Ledgers ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/ledger/ledger.html "Ledger") gespeichert. Chaincode verwendet GET-Befehle zum Abrufen von Werten und PUT-Befehle zum Erstellen oder Aktualisieren von Werten. Mit diesen Basisoperationen können Sie Funktionen erstellen, die die Geschäftsregeln Ihres Netzes definieren. Diese Funktionen können durch Ihre Anwendungen aufgerufen und für die  Benutzer des Netzes zugänglich gemacht werden. Im Fall des Fahrzeugnetzbeispiels bedeutet dies, dass Sie eine Funktion erstellen können, die die Verwendung eines PUT-Befehls durch einen Fahrzeughändler zum Hinzufügen eines neuen Fahrzeugs zum Ledger nur dann zulässt, wenn hierbei eine gültige Fahrzeugidentnummer angegeben wird.
 
-Der Einstieg in das Schreiben von Chaincode ist im [Lernprogramm über Chaincode für Entwickler ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric.readthedocs.io/en/latest/chaincode4ade.html "Chaincode for developers tutorial") in der Dokumentation der Hyperledger Fabric-Community beschrieben. Das Lernprogramm führt Sie durch die Erstellung eines einfachen Chaincodes, der Assets erstellt und liest, und stellt die APIs vor, die im Prozess verwendet werden. Außerdem können Sie das API-Referenzhandbuch für alle Chaincodesprachen hinzuziehen. Zusätzliche Beispiele sind im Chaincodeordner des [Fabric-Beispielrepositorys ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://github.com/hyperledger/fabric-samples "Fabric-Beispiele") verfügbar.
+Der Einstieg in das Schreiben von Chaincode ist im [Lernprogramm über Chaincode für Entwickler ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric.readthedocs.io/en/latest/chaincode4ade.html "Chaincode for developers tutorial") in der Dokumentation der Hyperledger Fabric-Community beschrieben. Das Lernprogramm führt Sie durch die Erstellung eines einfachen Chaincodes, der Assets erstellt und liest, und stellt die APIs vor, die im Prozess verwendet werden. Außerdem können Sie das API-Referenzhandbuch für alle Chaincodesprachen hinzuziehen. Zusätzliche Beispiele sind im Chaincodeordner des [Fabric-Beispielrepositorys ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://github.com/hyperledger/fabric-samples "Fabric-Beispiele") verfügbar.  
+
+Ein Smart Contract ermöglicht in der Regel das Prüfen von Anforderungen, das Anwenden von Geschäftsregeln und die Rückgabe eines deterministischen Ergebnisses. Es können jedoch Situationen auftreten, in denen entweder zusätzliche Angaben erforderlich sind oder in denen das Unternehmensnetz sicherstellen möchte, dass die von den Clients bereitgestellten Informationen korrekt sind. Hyperledger Fabric verhindert nicht externe Aufrufe der Smart Contracts an Systeme anderer Anbieter. Der Entwickler des Smart Contract muss jedoch sicherstellen, dass die resultierenden Lese-/Schreibsätze deterministisch sind.
+{:note}
 
 ## Chaincode installieren
 {: #develop-smart-contracts-install}

@@ -1,8 +1,11 @@
 ---
 
 copyright:
-  years: 2018
-lastupdated: "2018-12-07"
+  years: 2018, 2019
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
+
 ---
 
 {:new_window: target="_blank"}
@@ -12,31 +15,30 @@ lastupdated: "2018-12-07"
 {:pre: .pre}
 
 # Utilisation d'un service de tri sur {{site.data.keyword.cloud_notm}} Private
-{: #orderer-operate}
+{: #icp-orderer-operate}
 
-***[Cette page est-elle utile ? Dites-nous.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
-Une fois que vous avez installé un service de tri {{site.data.keyword.blockchainfull}} Platform dans ICP,  une configmap est créée et elle contient les paramètres par défaut des variables d'environnement. Vous pouvez ensuite changer ou ajouter des variables d'environnement pour le service de tri afin de configurer son comportement.
+Une fois que vous avez installé un service de tri {{site.data.keyword.blockchainfull}} Platform dans {{site.data.keyword.cloud_notm}} Private,  une configmap est créée et elle contient les paramètres par défaut des variables d'environnement. Vous pouvez ensuite changer ou ajouter des variables d'environnement pour le service de tri afin de configurer son comportement.
 
 En règle générale, les administrateurs du service de tri sont responsables de l'amorçage et de la gestion des services de tri, mais cela n'est pas nécessaire dans un déploiement SOLO où il existe un seul service de tri. Dans un déploiement SOLO, l'admin du service de tri est responsable de l'ajout de nouvelles organisations au canal système du service de tri.
 
 ## Prérequis
+{: #icp-orderer-operate-prerequisites}
 
-Vous devez effectuer quelques étapes préalables depuis votre cluster ICP pour exploiter votre service de tri.
+Vous devez effectuer quelques étapes préalables depuis votre cluster {{site.data.keyword.cloud_notm}} Private pour exploiter votre service de tri.
 
 **Etapes préalables :**
-- [Configurer vos interfaces de ligne de commande](#orderer-kubectl-configure)
-- [Extraire des informations de noeud final de votre service de tri](#orderer-endpoint)
-- [Télécharger le certificat TLS de votre service de tri](#orderer-tls)
+- [Configurer vos interfaces de ligne de commande](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-kubectl-configure)
+- [Extraire des informations de noeud final de votre service de tri](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-orderer-endpoint)
+- [Télécharger le certificat TLS de votre service de tri](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-tls-cert)
 
 Vous pouvez ensuite utiliser les instructions de cette rubrique pour utiliser votre service de tri. Notez que vous allez utiliser votre service de tri via la ligne de commande, ce qui implique d'obtenir le binaire CLI `peer`. Le binaire CLI `peer` est téléchargé avec les autres binaires, par exemple `configtxlator`. Par conséquent, le nom de la plupart des commandes de cette rubrique commence par "peer". Il n'utilise pas réellement l'homologue, il s'agit juste du nom du binaire.
 
 ### Configuration des interfaces de ligne de commande
-{: #orderer-kubectl-configure}
+{: #icp-orderer-operate-kubectl-configure}
 
-Vous devez utiliser l'outil de ligne de commande **kubectl** pour vous connecter au conteneur de service de tri qui s'exécute dans ICP.
+Vous devez utiliser l'outil de ligne de commande **kubectl** pour vous connecter au conteneur de service de tri qui s'exécute dans {{site.data.keyword.cloud_notm}} Private.
 
-1. Connectez-vous à l'interface utilisateur de votre cluster ICP. Accédez à l'onglet **Outils de ligne de commande** et cliquez sur **Interface de ligne de commande Cloud Private**. Vous verrez les outils suivants que vous pouvez télécharger.
+1. Connectez-vous à l'interface utilisateur de votre cluster {{site.data.keyword.cloud_notm}} Private. Accédez à l'onglet **Outils de ligne de commande** et cliquez sur **Interface de ligne de commande Cloud Private**. Vous verrez les outils suivants que vous pouvez télécharger.
 
    * Installer l'interface CLI et les plug-ins IBM Cloud Private
    * Installer l'interface CLI Kubectl
@@ -68,7 +70,7 @@ Vous devez utiliser l'outil de ligne de commande **kubectl** pour vous connecter
   ```
   {:codeblock}
 
-  Si l'opération aboutit, la commande doit renvoyer une réponse qui est similaire à l'exemple suivant, où `orderer-6cf85f6687-hcxpl` est le nom du conteneur de service de tri. 
+  Si l'opération aboutit, la commande doit renvoyer une réponse qui est similaire à l'exemple suivant, où `orderer-6cf85f6687-hcxpl` est le nom du conteneur de service de tri.
 
   ```
   NAME                                 READY      STATUS             RESTARTS   AGE
@@ -77,9 +79,9 @@ Vous devez utiliser l'outil de ligne de commande **kubectl** pour vous connecter
 
   Vous êtes maintenant prêt à utiliser l'outil **kubectl** pour obtenir les informations de noeud final du service de tri.
 
-3. Si vous le souhaitez, vous pouvez utiliser **Helm** pour effectuer quelques étapes supplémentaires. Notez que Helm est un outil dont l'installation est facultative et il n'est pas nécessaire de l'utiliser dans ces instructions. Il peut toutefois être utile pour gérer vos éditions Helm et créer vos propres archives à déployer dans ICP.
+3. Si vous le souhaitez, vous pouvez utiliser **Helm** pour effectuer quelques étapes supplémentaires. Notez que Helm est un outil dont l'installation est facultative et il n'est pas nécessaire de l'utiliser dans ces instructions. Il peut toutefois être utile pour gérer vos éditions Helm et créer vos propres archives à déployer dans {{site.data.keyword.cloud_notm}} Private.
 
-  1. Cliquez sur "Installer Helm" et exécutez la commande `curl` depuis l'interface utilisateur ICP.
+  1. Cliquez sur "Installer Helm" et exécutez la commande `curl` depuis l'interface utilisateur {{site.data.keyword.cloud_notm}} Private.
   2. Décompressez le fichier `tar` en exécutant la commande suivante :
 
     ```
@@ -87,7 +89,7 @@ Vous devez utiliser l'outil de ligne de commande **kubectl** pour vous connecter
     ```
     {:codeblock}
 
-  3. Exécutez la commande `sudo mv` en ajoutant `/helm` à  `darwin-amd64`. Notez qu'il n'est pas nécessaire d'exécuter la commande `chmod` pour Helm. Par exemple :
+  3. Exécutez la commande `sudo mv` en ajoutant `/helm` à `darwin-amd64`. Notez qu'il n'est pas nécessaire d'exécuter la commande `chmod` pour Helm. Par exemple :
 
     ```
     sudo mv darwin-amd64/helm/ /usr/local/bin/helm
@@ -97,15 +99,15 @@ Vous devez utiliser l'outil de ligne de commande **kubectl** pour vous connecter
   Vous pouvez exécuter la commande `helm help` pour confirmer que Helm est bien installé.
 
 ### Extraction des informations de noeud final du service de tri
-{: #orderer-endpoint}
+{: #icp-orderer-operate-orderer-endpoint}
 
 Vous devez cibler le noeud final de votre service de tri afin d'apporter des mises à jour au canal système du service de tri. Vous devrez être [administrateur de cluster![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Rôles et actions de l'administrateur de cluster") pour effectuer les étapes suivantes :
 
-1. Connectez-vous à la console ICP et cliquez sur l'icône **Menu ** dans l'angle supérieur gauche.
-2. Cliquez sur **Charge de travail** > **Editions Helm**. 
+1. Connectez-vous à la console {{site.data.keyword.cloud_notm}} Private et cliquez sur l'icône **Menu ** dans l'angle supérieur gauche.
+2. Cliquez sur **Charge de travail** > **Editions Helm**.
 3. Recherchez le nom de votre édition Helm et ouvrez l'écran des détails de l'édition Helm.
 4. Faites défiler jusqu'à la section **Remarques** au bas de la fenêtre. Dans la section  La section **Remarques** inclut un ensemble de commandes pour vous aider à effectuer le déploiement de votre service de tri.
-5. Si vous ne l'avez pas déjà, suivez les instructions pour configurer  l'[interface CLI kubeclt](#orderer-kubectl-configure). Vous devez l'utiliser pour interagir avec le conteneur de votre service de tri.
+5. Si ce n'est déjà fait, suivez les étapes permettant de configurer l'[interface CLI de kubectl](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-kubectl-configure). Vous devez l'utiliser pour interagir avec le conteneur de votre service de tri.
 6. Dans votre interface de ligne de commande, exécutez la première commande de la note, qui suit **1. Get the application URL by running these commands:** Cette commande produira l'URL et le port du service de tri, comme dans l'exemple suivant. Sauvegardez cette URL et vous devez l'utiliser dans d'autres commandes futures pour définir l'adresse et le port de noeud externe de votre proxy.
 
   ```
@@ -114,19 +116,19 @@ Vous devez cibler le noeud final de votre service de tri afin d'apporter des mis
 
 Dans cet exemple, l'adresse IP proxy est `9.30.94.174` et le port de noeud externe qui correspond à 7050 est `30159`.  
 
-**Remarque :** Si vous déployez votre service de tri derrière un pare-feu, vous devez ouvrir un passe-système afin de permettre au réseau sur la plateforme d'effectuer cette tâche. 
+**Remarque :** Si vous déployez votre service de tri derrière un pare-feu, vous devez ouvrir un passe-système afin de permettre au réseau sur la plateforme d'effectuer cette tâche.
 
 ### Téléchargement du certificat TLS de votre service de tri
-{: #orderer-tls}
+{: #icp-orderer-operate-tls-cert}
 
-Vous devez télécharger le certificat TLS de votre service de tri et le transmettre à vos commandes afin de pouvoir communiquer avec votre service de tri homologue depuis un client distant.Vous devrez être [administrateur de cluster![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Rôles et actions de l'administrateur de cluster") pour effectuer les étapes suivantes :
+Vous devez télécharger le certificat TLS de votre service de tri et le transmettre à vos commandes afin de pouvoir communiquer avec votre service de tri homologue depuis un client distant. Vous devrez être [administrateur de cluster![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Rôles et actions de l'administrateur de cluster") pour effectuer les étapes suivantes :
 
-1. Connectez-vous à la console ICP et cliquez sur l'icône **Menu ** dans l'angle supérieur gauche.
-2. Cliquez sur **Charge de travail** > **Editions Helm**. 
+1. Connectez-vous à la console {{site.data.keyword.cloud_notm}} Private et cliquez sur l'icône **Menu ** dans l'angle supérieur gauche.
+2. Cliquez sur **Charge de travail** > **Editions Helm**.
 3. Recherchez le nom de votre édition Helm et ouvrez l'écran des détails de l'édition Helm.
 4. Faites défiler jusqu'à la section **Remarques** au bas de la fenêtre. Dans la section  La section **Remarques** inclut un ensemble de commandes pour vous aider à effectuer le déploiement de votre service de tri.
-5. Si vous ne l'avez pas déjà, suivez les instructions pour configurer  l'[interface CLI kubeclt](#ca-kubectl-configure). Vous devez l'utiliser pour interagir avec le conteneur de votre service de tri.
-6. Dans votre interface de ligne de commande, exécutez la troisième commande de la note, qui suit **3. Get orderer TLS root cert file**. Cette commande permet de sauvegarder votre certificat TLS sous le nom de fichier `cert.pem` sur votre machine locale.
+5. Si ce n'est déjà fait, suivez les étapes permettant de configurer l'[interface CLI de kubectl](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-kubectl-configure). Vous devez l'utiliser pour interagir avec le conteneur de votre service de tri.
+6. Dans votre interface de ligne de commande, exécutez la troisième commande de la note, qui suit **3. Get orderer TLS root cert file**.  Cette commande permet de sauvegarder votre certificat TLS sous le nom de fichier `cert.pem` sur votre machine locale.
 
   **Remarque :** avant d'exécuter les commandes, vous pouvez supprimer `app=orderer` comme indiqué dans la commande ci-dessous :
 
@@ -148,7 +150,7 @@ Vous devez télécharger le certificat TLS de votre service de tri et le transme
 
 Accédez au répertoire où le dossier MSP admin du service de tri est généré. Selon que vous avez suivi les étapes en exemple décrites dans cette documentation, ou le nombre de composants que vous déployez, vous pouvez rechercher le dossier MSP dans `$HOME/fabric-ca-client/orderer-admin/msp` ou `$HOME/fabric-ca-client/peer-admin/msp`
 
-Avant d'utiliser le service de tri, vous devez procéder à quelques opérations de gestion des certificats sur votre machine locale. Vous devez également vous assurer que vous pouvez accéder aux certificats TLS à partir du service de tri. Pour plus d'informations sur les certificats à utiliser, voir [Fournisseur de services aux membres (MSP)](/docs/services/blockchain/howto/CA_operate.html#msp) dans [Exploitation d'une autorité de certification sur {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/howto/CA_operate.html).
+Avant d'utiliser le service de tri, vous devez procéder à quelques opérations de gestion des certificats sur votre machine locale. Vous devez également vous assurer que vous pouvez accéder aux certificats TLS à partir du service de tri. Pour plus d'informations sur les certificats à utiliser, voir [Fournisseur de services aux membres (MSP)](/docs/services/blockchain/howto/CA_operate.html#ca-operate-msp) dans [Exploitation d'une autorité de certification sur {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/howto/CA_operate.html#ca-operate).
 
 1. Déplacez le certificat signCert de l'admin de votre service de tri vers un nouveau dossier nommé `admincerts` :
 
@@ -159,7 +161,7 @@ Avant d'utiliser le service de tri, vous devez procéder à quelques opérations
   ```
   {:codeblock}
 
-2. Vérifiez que vous avez [téléchargé le certificat TLS de votre service de tri](#orderer-tls) et que vous pouvez le référencer à partir de la ligne de commande. Si vous avez suivi les exemples de commandes figurant dans cette documentation, vous pouvez trouver ce certificat dans le fichier `$HOME/fabric-ca-client/orderer-tls/orderertls.pem`.
+2. Vérifiez que vous avez [téléchargé le certificat TLS de votre service de tri](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-tls-cert) et que vous pouvez le référencer à partir de la ligne de commande. Si vous avez suivi les exemples de commandes figurant dans cette documentation, vous pouvez trouver ce certificat dans le fichier `$HOME/fabric-ca-client/orderer-tls/orderertls.pem`.
 
 Vous pouvez exécuter une commande tree pour vérifier que vous avez effectué ces étapes. Accédez au répertoire dans lequel vous avez stocké vos certificats. Une commande tree doit générer un résultat similaire à la structure suivante :
 ```
@@ -204,11 +206,11 @@ tree
 ```
 
 ## Ajout d'organisations au canal système du service de tri
-{: #add-organizations-to-consortium}
+{: #icp-orderer-operate-add-organizations-to-consortium}
 
 **Remarque :** Si vous prévoyez de déployer un homologue et de le connecter à un réseau de plan Starter ou Enterprise, vous pouvez omettre cette étape.
 
-Lorsque vous déployez un service de tri à l'aide de d'une charte Helm {{site.data.keyword.blockchainfull_notm}} Platform for ICP, le bloc d'origine est automatiquement créé avec l'organisation du service de tri en tant que seul administrateur du canal système. Cela signifie que l'admin de l'organisation du service de tri est le seul avec la capacité d'ajouter des organisations au consortium. Les règles qui régissent cela, appelées `mod_policy` pour le canal système du service de tri, ne doivent pas être modifiées après que les nouvelles organisations sont ajoutées au canal système du service de tri.
+Lorsque vous déployez un service de tri à l'aide de d'une charte Helm {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private, le bloc d'origine est automatiquement créé avec l'organisation du service de tri en tant que seul administrateur du canal système. Cela signifie que l'admin de l'organisation du service de tri est le seul avec la capacité d'ajouter des organisations au consortium. Les règles qui régissent cela, appelées `mod_policy` pour le canal système du service de tri, ne doivent pas être modifiées après que les nouvelles organisations sont ajoutées au canal système du service de tri.
 
 L'ajout d'organisations au canal système du service de tri fait de celles-ci une partie "du consortium", c'est-à-dire la liste des membres qui peuvent, par défaut, créer des canaux. En tant que membre du consortium, il est également plus facile d'être ajouté à un canal à l'aide de certificats et d'informations qui sont répertoriées dans le canal système.
 
@@ -216,20 +218,20 @@ La mise à jour du canal système du service de tri est effectuée via la "confi
 
 L'ajout d'organisations au canal système du service de tri est essentiellement identique au flux de mise à jour de la configuration de canal pour l'ajout d'une organisation. Toutefois, vous devez apporter quelques changements car le canal à mettre à jour n'est pas un canal d'application et l'admin approprié est l'admin du service de tri au lieu d'une organisation d'homologue.
 
-Notez que vous pouvez ajouter une organisation à un canal sans d'abord rejoindre le canal système. Pour plus d'informations, voir le [tutoriel d'ajout d'une  organisation à un canal](https://hyperledger-fabric.readthedocs.io/en/release-1.2/channel_update_tutorial.html) dans la documentation Hyperledger Fabric.
+Notez que vous pouvez ajouter une organisation à un canal sans d'abord rejoindre le canal système. Pour plus d'informations, voir le [Tutoriel d'ajout d'une  organisation à un canal![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/channel_update_tutorial.html "Ajouter une organisation à un canal") dans la documentation Hyperledger Fabric.
 
 La liste suivante présente les étapes générales et les tâches qui seront effectuées par différents ensembles d'organisations de votre consortium.
 
-1. Chaque organisation qui souhaite rejoindre le consortium doit [préparer une définition d'organisation](/docs/services/blockchain/howto/peer_operate_icp.html#organization-definition).
-2. L'admin de l'organisation du service de tri [forme le consortium](#consortium) par l'ajout d'organisations au canal système du service de tri.
-3. Toute organisation du consortium peut [créer un nouveau canal](/docs/services/blockchain/howto/peer_operate_icp.html#peer-icp-channeltx) par la préparation d'une transaction de configuration de canal.
+1. Chaque organisation qui souhaite rejoindre le consortium doit [préparer une définition d'organisation](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-organization-definition).
+2. L'admin de l'organisation du service de tri [forme le consortium](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-consortium) par l'ajout d'organisations au canal système du service de tri.
+3. Toute organisation du consortium peut [créer un nouveau canal](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-channeltx) par la préparation d'une transaction de configuration de canal.
 
 ## Obtention des outils Fabric
-{: #get-fabric-tools}
+{: #icp-orderer-operate-get-fabric-tools}
 
 Vous devez télécharger les outils Hyperledger Fabric ci-après pour mettre à jour le canal système.
-- [peer](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/peercommand.html), qui vous permettra d'extraire le bloc d'origine et de mettre à jour le canal système.
-- [configtxlator](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/configtxlator.html), qui convertit le format protobuf d'une configuration de canal au format JSON qui est plus facile à lire et à mettre à jour. 
+- [peer ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/peercommand.html), qui vous permettra d'extraire le bloc d'origine et de mettre à jour le canal système.
+- [configtxlator ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/configtxlator.html), qui convertit le format protobuf d'une configuration de canal au format JSON qui est plus facile à lire et à mettre à jour.
 
 1. Indiquez où vous souhaitez stocker les outils et exécutez cette commande :
 
@@ -252,7 +254,7 @@ Vous devez télécharger les outils Hyperledger Fabric ci-après pour mettre à 
   ```
   {:codeblock}
 
-3. Le téléchargement des binaires va créer un dossier config contenant un fichier core.yaml, orderer.yaml et configtx.yaml. Définissez le chemin de configuration Fabric sur ce chemin de configuration :
+3. Le téléchargement des binaires va créer un dossier config contenant un fichier core.yaml, orderer.yaml et configtx.yaml. Définissez le chemin de configuration Fabric sur ce répertoire config :
 
   ```
   export FABRIC_CFG_PATH=<full_path_to_config_folder>
@@ -266,21 +268,21 @@ Vous devez télécharger les outils Hyperledger Fabric ci-après pour mettre à 
   {:codeblock}
 
 ## Création d'une définition d'organisation
-{: #org-definition}
+{: #icp-orderer-operate-org-definition}
 
-La **définition** d'une organisation contient le nom de l'organisation (ID MSP) et les certificats pertinents. Le canal système et les canaux d'application vont utiliser cette définition pour inclure votre organisation dans les règles qui contrôlent la création de canal, les mises à jour et la validation de transaction. Chaque organisation qui souhaite rejoindre le consortium doit effectuer cette étape. Pour en savoir plus, voir la section relative à la [préparation d'une définition d'organisation](/docs/services/blockchain/howto/peer_operate_icp.html#organization-definition).
+La **définition** d'une organisation contient le nom de l'organisation (ID MSP) et les certificats pertinents. Le canal système et les canaux d'application vont utiliser cette définition pour inclure votre organisation dans les règles qui contrôlent la création de canal, les mises à jour et la validation de transaction. Chaque organisation qui souhaite rejoindre le consortium doit effectuer cette étape. Pour en savoir plus, voir la section relative à la [préparation d'une définition d'organisation](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-organization-definition).
 
 ## Formation du consortium
-{: #consortium}
+{: #icp-orderer-operate-consortium}
 
 Rappelez le flux de haut niveau pour la formation d'un consortium :
 
-1. Le canal système du service de tri est formé par uniquement l'organisation du service de tri en tant que membre du canal système. Cette organisation peut effectuer des mises à jour sans que des signatures supplémentaires soient nécessaires. 
+1. Le canal système du service de tri est formé par uniquement l'organisation du service de tri en tant que membre du canal système. Cette organisation peut effectuer des mises à jour sans que des signatures supplémentaires soient nécessaires.
 2. L'admin de l'organisation du service de tri reçoit des définitions d'organisation de membres qui souhaitent rejoindre le consortium. L'organisation du service de tri utilise les définitions d'organisation pour mettre à jour la configuration du canal système du service de tri.
 
 ### Obtention des définitions d'organisation
 
-Le service de tri doit recevoir les [définitionsd'organisation](/docs/services/blockchain/howto/peer_operate_icp.html#organization-definition) de membres qui souhaitent rejoindre le consortium. Cela doit être effectué dans une opération hors bande avec d'autres membres qui vous envoient des fichiers JSON qui incluent leur ID MSP et le matériel cryptographique. Pour la référence dans les commandes ci-dessous, on suppose que vous avez créé un dossier nommé `org-definitions` et placé tous les fichiers pertinents dans ce répertoire.
+Le service de tri doit recevoir les [définitionsd'organisation](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-organization-definition) de membres qui souhaitent rejoindre le consortium. Cela doit être effectué dans une opération hors bande avec d'autres membres qui vous envoient des fichiers JSON qui incluent leur ID MSP et le matériel cryptographique. Pour la référence dans les commandes ci-dessous, on suppose que vous avez créé un dossier nommé `org-definitions` et placé tous les fichiers pertinents dans ce répertoire.
 
 ### Extraction du bloc d'origine du canal système
 
@@ -317,8 +319,8 @@ Le service de tri doit recevoir les [définitionsd'organisation](/docs/services/
 
     - Remplacez `<CORE_PEER_MSPCONFIGPATH>` parle chemin d'accès au dossier MSP admin de l'organisation du service de tri.
     - Remplacez `<CORE_PEER_TLS_ROOTCERT_FILE>` par le chemin d'accès au certificat de l'autorité de certification TLS.
-    - Remplacez `<PROXY_IP>` par l'adresse IP proxy des [informations de noeud final du service de tri](#orderer-endpoint)
-    - Remplacez `<EXTERNAL_NODE_PORT>` par le port de noeud externe des [informations de noeud final du service de tri](#orderer-endpoint)
+    - Remplacez `<PROXY_IP>` par l'adresse IP proxy des [informations de noeud final du service de tri](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-orderer-endpoint)
+    - Remplacez `<EXTERNAL_NODE_PORT>` par le port de noeud externe des [informations de noeud final du service de tri](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-orderer-endpoint)
 
   Vos variables d'environnement peuvent ressembler à l'exemple suivant :
 
@@ -354,7 +356,7 @@ Le service de tri doit recevoir les [définitionsd'organisation](/docs/services/
   ```
   {:codeblock}
 
-  Remplacez `<orderer_TLS_root_cert_file>` par le chemin d'accès au fichier `orderertls.pem` que vous avez créé dans cette [étape](#orderer-tls). Par exemple, la commande peut ressembler à l'exemple suivant :
+  Remplacez `<orderer_TLS_root_cert_file>` par le chemin d'accès au fichier `orderertls.pem` que vous avez créé dans cette [étape](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-tls-cert). Par exemple, la commande peut ressembler à l'exemple suivant :
 
   ```
   peer channel fetch config ./configupdate/genesis.pb -o $PROXY:$ORDERER_PORT -c $CHANNEL_NAME --tls  --cafile $HOME/fabric-ca-client/orderer-tls/orderertls.pem
@@ -371,13 +373,13 @@ Le service de tri doit recevoir les [définitionsd'organisation](/docs/services/
   Vous pouvez également trouver ensuite le bloc `genesis.pb` dans votre système de fichiers.
 
 ### Création de la mise à jour du canal système
-{: #system-channel-update}
+{: #icp-orderer-operate-system-channel-update}
 
-L'[outil Fabric](#get-fabric-tools) `configtxtlator` téléchargé convertit le format protobuf d'une configuration de canal au format JSON, et inversement.
+L'[outil Fabric](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-get-fabric-tools) `configtxtlator` téléchargé convertit le format protobuf d'une configuration de canal au format JSON, et inversement.
 
-Ces étapes suivent le flux général du tutoriel de mise à jour de canal sur la[conversion du bloc au format JSON]( https://hyperledger-fabric.readthedocs.io/en/release-1.2/channel_update_tutorial.html#convert-the-configuration-to-json-and-trim-it-down). Vous devez apporter certaines modifications aux commandes dans ce tutoriel pour refléter le fait que vous mettez à jour le canal système du service de tri et non un canal d'application. Vous pouvez consulter le tutoriel pour plus de détails sur ce processus. Cette section fournit simplement les commandes.
+Ces étapes suivent le flux général du tutoriel de mise à jour de canal sur la [conversion du bloc au format JSON![Icône de lien externe](../images/external_link.svg "Icône de lien externe")]( https://hyperledger-fabric.readthedocs.io/en/release-1.2/channel_update_tutorial.html#convert-the-configuration-to-json-and-trim-it-down "Convertir la configuration au format JSON et la découper"). Vous devez apporter certaines modifications aux commandes dans ce tutoriel pour refléter le fait que vous mettez à jour le canal système du service de tri et non un canal d'application. Vous pouvez consulter le tutoriel pour plus de détails sur ce processus. Cette section fournit simplement les commandes.
 
-1. Copiez le fichier JSON de la définition d'organisation du dossier où vous avez [créé votre organisation](/docs/services/blockchain/howto/peer_operate_icp.html#organization-definition) vers le dossier `configupdate`. Dans l'exemple de commande ci-dessous, le fichier JSON de la définition d'organisation est `org1definition.json` :
+1. Copiez le fichier JSON de la définition d'organisation du dossier où vous avez [créé votre organisation](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-organization-definition) vers le dossier `configupdate`. Dans l'exemple de commande ci-dessous, le fichier JSON de la définition d'organisation est `org1definition.json` :
 
    ```
    cp <path_to_config_folder>/org1definition.json $HOME/fabric-ca-client/org-definitions/configupdate
@@ -393,7 +395,7 @@ Ces étapes suivent le flux général du tutoriel de mise à jour de canal sur l
   ```
   {:codeblock}
 
-3. Exécutez la commande suivante pour ajouter le matériel cryptographique d'une organisation à la configuration du consortium. Remplacez <NEWORGMSP> par l'ID MSO de l'organisation pour l'[organisation que vous avez créée](/docs/services/blockchain/howto/peer_operate_icp.html#organization-definition).
+3. Exécutez la commande suivante pour ajouter le matériel cryptographique d'une organisation à la configuration du consortium. Remplacez <NEWORGMSP> par l'ID MSP de l'organisation pour l'[organisation que vous avez créée](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-organization-definition).
 
   ```
   jq -s '.[0] * {"channel_group":{"groups":{"Consortiums":{"groups":{"SampleConsortium":{"groups": {"<NEWORGMSP>":.[1]}}}}}}}' config.json ./orgdefinition.json > modified_config.json
@@ -444,8 +446,8 @@ la commande suivante :
 
 ```
 export ORDERER_CA=<path and file name of the orderer TLS CA cert>
-export PROXY = <proxy ip address from [orderer endpoint information](#orderer-endpoint)>
-export ORDERER_PORT = <external node port from [orderer endpoint information](#orderer-endpoint)>
+export PROXY = <proxy ip address from [orderer endpoint information](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-orderer-endpoint)>
+export ORDERER_PORT = <external node port from [orderer endpoint information](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-orderer-endpoint)>
 ```
 {:codeblock}
 
@@ -478,11 +480,11 @@ Cette commande signe simultanément la demande de mise à jour et l'envoie au se
 Il est possible d'inclure plusieurs définitions d'organisation dans la mise à jour de configuration d'un seul canal système de service de tri, mais il est recommandé de mettre à jour le canal avec une organisation à la fois et de vérifier que la mise à jour a abouti.
 
 ## Affichage des journaux du service de tri
-{: #orderer-view-logs}
+{: #icp-orderer-operate-orderer-view-logs}
 
-Les journaux de composant peuvent être affichés à partir de la ligne de commande à l'aide de [`commandes de l'interface CLI kubectl`](#ca-kubectl-configure) ou via [Kibana ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://www.elastic.co/products/kibana "Votre fenêtre dans Elastic Search"), qui est inclus dans votre cluster ICP. 
+Les journaux de composant peuvent être affichés à partir de la ligne de commande à l'aide de [`commandes de l'interface CLI kubectl`](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-kubectl-configure) ou via [Kibana ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://www.elastic.co/products/kibana "Votre fenêtre dans Elastic Search"), qui est inclus dans votre cluster {{site.data.keyword.cloud_notm}} Private.
 
-- Utilisez la commande `kubectl logs` pour afficher les journaux de conteneur dans le  pod. Si vous avez des doutes quant à votre nom de pod, exécutez la commande suivante pour afficher la liste des pods.
+- Utilisez la commande `kubectl logs` pour afficher les journaux de conteneur dans le pod. Si vous avez des doutes quant à votre nom de pod, exécutez la commande suivante pour afficher la liste des pods.
 
   ```
   kubectl get pods
@@ -498,15 +500,15 @@ Les journaux de composant peuvent être affichés à partir de la ligne de comma
 
   Pour plus d'informations sur la commande `kubectl logs`, consultez la [documentation Kubernetes ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs “Getting Started”)
 
-- Vous pouvez aussi accéder aux journaux en utilisant la   [console de gestion de cluster ICP](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/troubleshoot/events.html), qui ouvre les journaux dans Kibana.
+- Vous pouvez aussi accéder aux journaux en utilisant la [console de gestion de cluster {{site.data.keyword.cloud_notm}} Private![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/troubleshoot/events.html), qui ouvre les journaux dans Kibana.
 
-  **Remarque :** Lorsque vous affichez vos journaux dans Kibana, vous pouvez recevoir la réponse  `No results found`. Cette condition peut se produire si ICP utilise l'adresse IP de votre noeud worker comme nom d'hôte. Pour résoudre ce problème, supprimez le filtre qui commence par `node.hostname.keyword` en haut de l'écran et les journaux deviennent visibles.
+  **Remarque :** Lorsque vous affichez vos journaux dans Kibana, vous pouvez recevoir la réponse `No results found`. Cette condition peut se produire si {{site.data.keyword.cloud_notm}} Private utilise l'adresse IP de votre noeud worker comme nom d'hôte. Pour résoudre ce problème, supprimez le filtre qui commence par `node.hostname.keyword` en haut de l'écran et les journaux deviennent visibles.
 
 ## Traitement des incidents
-{: #orderer-troubleshooting}
+{: #icp-orderer-operate-troubleshooting}
 
 ### **Problème : la commande ** `peer channel update` échoue avec une erreur.
-{: #orderer-peer-channel-update-error}
+{: #icp-orderer-operate-peer-channel-update-error}
 
 Il est possible de recevoir l'erreur suivante lorsque vous exécutez une commande `peer channel update` :
 

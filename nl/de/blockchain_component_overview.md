@@ -2,7 +2,11 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-11"
+lastupdated: "2019-03-05"
+
+keywords: blockchain components, ca, certificate authorities, peer, ordering service, orderer, channel, smart contract, applications
+
+subcollection: blockchain
 
 ---
 
@@ -70,9 +74,9 @@ Während Verträge in der Geschäftswelt unter Hinzuziehung von Anwaltskanzleien
 
 Clientanwendungen in einem Fabric-basierten Netz wie {{site.data.keyword.blockchainfull_notm}} Platform nutzen die zugrunde liegenden Infrastrukturen (z. B. APIs, SDKs und Smart Contracts), um Clientinteraktionen (Aufrufe und Abfragen) mit einer höheren Abstraktionsebene zu ermöglichen.
 
-Eine Beschreibung der Interaktion von Anwendungen mit einem auf Fabric basierenden Netz können Sie dem [Dokument über das Schreiben einer ersten eigenen Anwendung ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/write_first_app.html "Writing Your First Application") entnehmen. Beachten Sie außerdem, dass in diesem Bereich in Fabric v1.4 erhebliche Verbesserungen vorgenommen werden, die in {{site.data.keyword.blockchainfull_notm}} Platform 2.0 verfügbar sind. Weitere Informationen finden Sie im Hyperledger Fabric-Thema zum [Entwickeln von Anwendungen ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/developapps/developing_applications.html "Developing Applications"). Diese direkten Funktionen, z. B. die Vertragsklasse, sind nicht kompatibel mit Fabric v1.2. Dies ist die aktuelle Version von Starter Plan und {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private, die konzeptionelle Informationen und andere nützliche Tipps enthält, die Sie bei Ihrem Anwendungsdesign beachten sollten, damit Sie bereit für die Zukunft sind.
+Eine Beschreibung der Interaktion von Anwendungen mit einem auf Fabric basierenden Netz können Sie dem [Dokument über das Schreiben einer ersten eigenen Anwendung ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/write_first_app.html "Writing Your First Application") entnehmen.  Beachten Sie außerdem, dass in diesem Bereich in Fabric v1.4 erhebliche Verbesserungen vorgenommen werden, die in {{site.data.keyword.blockchainfull_notm}} Platform 2.0 verfügbar sind. Weitere Informationen finden Sie im Hyperledger Fabric-Thema zum [Entwickeln von Anwendungen ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/developapps/developing_applications.html "Developing Applications").  Diese direkten Funktionen, z. B. die Vertragsklasse, sind nicht kompatibel mit Fabric v1.2. Dies ist die aktuelle Version von Starter Plan und {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private, die konzeptionelle Informationen und andere nützliche Tipps enthält, die Sie bei Ihrem Anwendungsdesign beachten sollten, damit Sie bereit für die Zukunft sind.
 
-Eine Beschreibung der Interaktion einer Anwendung mit einem auf Fabric basierenden Netz können Sie der Dokumentation zum [Erstellen von Anwendungen](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app) entnehmen. 
+Eine Beschreibung der Interaktion einer Anwendung mit einem auf Fabric basierenden Netz können Sie der Dokumentation zum [Erstellen von Anwendungen](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app) entnehmen.
 
 ## Beispielnetz
 {: #blockchain-component-overview-example-network}

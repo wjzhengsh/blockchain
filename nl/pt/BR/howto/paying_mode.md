@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018,2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -15,10 +17,6 @@ lastupdated: "2019-02-08"
 # Modo de pagamento
 {: #paying-mode}
 
-
-***[Esta página é útil? Diga-nos.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
-
 O {{site.data.keyword.blockchainfull}} Platform cobra mensalmente com taxas de associação e taxas de peer. Os membros da rede podem pagar suas faturas com suas contas do {{site.data.keyword.cloud_notm}} que contêm o espaço para criar a instância de rede. Como alternativa, um membro de rede pode cobrir a conta de outros membros na rede, ou mesmo todos os membros, para pagar a rede inteira. O pagador também pode transferir os faturamentos de volta para outros membros, se necessário.
 {:shortdesc}
 
@@ -30,7 +28,7 @@ Observe que quando várias organizações constroem um consórcio, recomenda-se 
 ## Pré-requisitos
 {: #paying-mode-prereq}
 
-Cada membro de rede deve ter uma conta paga do {{site.data.keyword.cloud_notm}}, por exemplo, uma conta do tipo **Pré-pago**, para que seja possível criar as instâncias de serviço do {{site.data.keyword.blockchainfull_notm}} Platform no {{site.data.keyword.cloud_notm}}. Se você não tiver uma conta, [registre](https://console.bluemix.net/registration/) uma e faça upgrade dela para uma conta paga. Para fazer upgrade de sua conta para um tipo Pré-pago, acesse **Gerenciar** > **Faturamento e uso** > **Faturamento** no console do {{site.data.keyword.cloud_notm}} e clique em **Incluir cartão de crédito**.
+Cada membro de rede deve ter uma conta paga do {{site.data.keyword.cloud_notm}}, por exemplo, uma conta do tipo **Pré-pago**, para que seja possível criar as instâncias de serviço do {{site.data.keyword.blockchainfull_notm}} Platform no {{site.data.keyword.cloud_notm}}. Se você não tiver uma conta, [registre](https://cloud.ibm.com/registration/) uma e faça upgrade dela para uma conta paga. Para fazer upgrade de sua conta para um tipo Pré-pago, acesse **Gerenciar** > **Faturamento e uso** > **Faturamento** no console do {{site.data.keyword.cloud_notm}} e clique em **Incluir cartão de crédito**.
 
 
 ## Pagando as suas próprias taxas

@@ -2,7 +2,10 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
+
 ---
 
 {:new_window: target="_blank"}
@@ -13,8 +16,6 @@ lastupdated: "2019-02-08"
 
 # Operando um solicitador no {{site.data.keyword.cloud_notm}} Private
 {: #icp-orderer-operate}
-
-***[Esta página é útil? Diga-nos.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 Após a instalação do solicitador do {{site.data.keyword.blockchainfull}} Platform no {{site.data.keyword.cloud_notm}} Private, um configmap será criado e conterá configurações padrão para variáveis de ambiente. Em seguida, é possível mudar ou incluir variáveis de ambiente para o solicitador para configurar seu comportamento.
 

@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -14,10 +16,6 @@ lastupdated: "2019-02-08"
 
 # AWS でのピアの操作
 {: #remote-peer-aws-operate}
-
-
-***[このページは参考になりましたか。 ご意見をお聞かせください。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 
 AWS 内で {{site.data.keyword.blockchainfull}} Platform ピアをセットアップした後に、いくつかの操作ステップを実行する必要があります。その後、ブロックチェーン・ネットワークの台帳を照会および呼び出すためのトランザクションをピアから発行できるようになります。 このステップでは、チャネルへの組織の追加、チャネルへのピアの参加、ピアでのチェーンコードのインストール、チャネルでのチェーンコードのインスタンス化、およびピアへのアプリケーションの接続を行います。 [Fabric SDK](/docs/services/blockchain/howto/remote_peer_operate_aws.html#remote-peer-aws-operate-with-sdk) または[コマンド・ライン](/docs/services/blockchain/howto/remote_peer_operate_aws.html#remote-peer-aws-operate-cli-operate)を使用して、これらの操作ステップを実行できます。 推奨されるパスは Fabric SDK ですが、この手順では、SDK の操作に精通していることが前提となっています。
 
@@ -181,7 +179,7 @@ Fabric CA クライアントおよび Fabric ツール・コンテナーを使�
     ```
     {:codeblock}
 
-    **ヒント:** 登録 url の値 (`-u` パラメーターの値) に特殊文字が含まれている場合は、特殊文字をエンコードするか、url を単一引用符で囲む必要があります。例えば、`!` を `%21` にするか、コマンドを次のように入力します。
+    **ヒント:** 登録 url の値 (`-u` パラメーターの値) に特殊文字が含まれている場合は、特殊文字をエンコードするか、url を単一引用符で囲む必要があります。 例えば、`!` を `%21` にするか、コマンドを次のように入力します。
 
     ```
     ./fabric-ca-client enroll -u 'https://admin:C25A06287!0@ash-zbc07c.4.secure.blockchain.ibm.com:21241' --tls.certfiles $HOME/fabric-ca-remote/cert.pem --caname PeerOrg1CA
@@ -290,7 +288,7 @@ Fabric CA クライアントおよび Fabric ツール・コンテナーを使�
 ### Fabric ツール・コンテナーのセットアップ
 {: #remote-peer-aws-operate-fabric-cli}
 
-すべての証明書を必要な場所に移動したら、Fabric ツール・コンテナーを Docker からインストールして使用できます。 これらのコマンドは、マシン上でローカルに実行するように設計されています。これらのコマンドは、必ず MSP フォルダーを保管したディレクトリーから実行してください。 これらのステップを実行する前に、[Git ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git "Getting Started - Installing Git") をローカル・マシンにインストールする必要があります。   
+すべての証明書を必要な場所に移動したら、Fabric ツール・コンテナーを Docker からインストールして使用できます。 これらのコマンドは、マシン上でローカルに実行するように設計されています。 これらのコマンドは、必ず MSP フォルダーを保管したディレクトリーから実行してください。 これらのステップを実行する前に、[Git ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git "Getting Started - Installing Git") をローカル・マシンにインストールする必要があります。   
 
 以下のコマンドを使用して、Fabric ツールの Docker イメージをダウンロードします。
 
@@ -301,7 +299,7 @@ docker pull ibmblockchain/fabric-tools:1.2.1
 
 #### コンテナー用のリソースの収集    
 
-`fabcar` サンプルを格納するためのいくつかのフォルダーをローカル・マシン上にセットアップする必要があります。このサンプルは、後でチェーンコードをインストールしてインスタンス化するときに使用します。以下のコマンドを実行して、サンプルのチェーンコードのフォルダー構造をセットアップしてから、Git を使用してダウンロードします。
+`fabcar` サンプルを格納するためのいくつかのフォルダーをローカル・マシン上にセットアップする必要があります。このサンプルは、後でチェーンコードをインストールしてインスタンス化するときに使用します。 以下のコマンドを実行して、サンプルのチェーンコードのフォルダー構造をセットアップしてから、Git を使用してダウンロードします。
 
 ```
 mkdir toolsrc
@@ -315,7 +313,7 @@ git clone https://github.com/hyperledger/fabric.git
 
 **注:** 独自のチェーンコード・ファイルがある場合は、そのファイルを `mycc` フォルダーに格納すれば、ピアの CLI コマンドでも使用できるようになります。  
 
-以下のコマンドを実行して、Fabric ツール・コンテナーを開始します。 2 番目のコマンドにより、MSP フォルダーと fabric サンプルのフォルダーがツール・コンテナー内部にマウントされます。これらのコマンドは、必ず MSP フォルダーを保管したディレクトリーから実行してください。
+以下のコマンドを実行して、Fabric ツール・コンテナーを開始します。 2 番目のコマンドにより、MSP フォルダーと fabric サンプルのフォルダーがツール・コンテナー内部にマウントされます。 これらのコマンドは、必ず MSP フォルダーを保管したディレクトリーから実行してください。
 
 ```
 docker network create blockchain.com

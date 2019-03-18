@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -16,8 +18,6 @@ lastupdated: "2019-02-08"
 
 # Unternehmensnetze im Starter und Enterprise Plan bereitstellen
 {: #deploying-a-business-network}
-
-*[Ist diese Seite hilfreich? Teilen Sie uns Ihre Meinung mit.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)*
 
 {{site.data.keyword.IBM}} bietet keinen Support für Netze, die Hyperledger Composer in Produktionsumgebungen nutzen, inklusive Composer-Befehlszeilenschnittstelle, JavaScript-APIs, REST-Server und Web Playground.
 {:note}
@@ -88,7 +88,7 @@ Der im vorherigen Schritt abgerufene geheime Schlüssel wird zum Erstellen einer
 
 Die Zertifikate müssen zum Starter Plan-Netz hinzugefügt werden. Zur Vereinfachung können Sie sie mit dem {{site.data.keyword.blockchainfull_notm}} Platform Network Monitor hinzufügen. Die Zertifikate müssen hinzugefügt werden. Anschließend müssen die Peers erneut gestartet werden und dann müssen die Zertifikate im Kanal synchronisiert werden. Das benötigte Zertifikat ist die Datei `admin-pub.pem`, die durch die Ausführung des vorherigen Befehls generiert wurde und die sich im Verzeichnis `credentials` befindet.
 
-1. Klicken Sie im Netzwork Monitor des Starter-Plans auf die Registerkarte **Mitglieder**, dann auf **Zertifikate** und anschließend auf **Zertifikat hinzufügen**. Rufen Sie das Verzeichnis `credentials` auf. Kopieren Sie den Inhalt der Datei `admin-pub.pem` und fügen Sie ihn in das Zertifikatsfeld ein. Übergeben Sie das Zertifikat und starten Sie die Peers erneut. Hinweis: Der Neustart der Peers nimmt eine Minute in Anspruch.
+1. Klicken Sie in Starter Plan Network Monitor auf die Registerkarte **Mitglieder**, dann auf **Zertifikate** und anschließend auf **Zertifikat hinzufügen**. Rufen Sie das Verzeichnis `credentials` auf. Kopieren Sie den Inhalt der Datei `admin-pub.pem` und fügen Sie ihn in das Zertifikatsfeld ein. Übergeben Sie das Zertifikat und starten Sie die Peers erneut. Hinweis: Der Neustart der Peers nimmt eine Minute in Anspruch.
 
     ![Zertifikate hinzufügen](images/add_cert.gif "Zertifikate hinzufügen")
 

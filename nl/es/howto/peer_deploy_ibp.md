@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -17,9 +19,6 @@ lastupdated: "2019-02-08"
 
 # Despliegue de iguales en {{site.data.keyword.cloud_notm}} Private y conexión con el Plan inicial o Plan empresarial
 {: #ibp-peer-deploy}
-
-
-***[¿Le resulta útil esta página? Indíquenos su opinión.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 En las instrucciones siguientes se describe cómo desplegar un igual de {{site.data.keyword.blockchainfull}} Platform en {{site.data.keyword.cloud_notm}} Private y cómo conectar el igual a la red del Plan inicial o del Plan empresarial en {{site.data.keyword.cloud_notm}} o en {{site.data.keyword.cloud_notm}} Private local.
 {:shortdesc}
@@ -275,7 +274,7 @@ Tras registrar la identidad de administrador, debe generar la carpeta de MSP de 
     - Sídney: [aus01.blockchain.ibm.com.cert ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://blockchain-certs.mybluemix.net/aus01.blockchain.ibm.com.cert "aus01.blockchain.ibm.com.cert");
   - [Certificado TLS para el Plan empresarial ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://blockchain-certs.mybluemix.net/3.secure.blockchain.ibm.com.rootcert)
 
-  Guarde el contenido en un directorio donde pueda hacer referencia al mismo en mandatos posteriores.
+  Guarde el contenido en un directorio donde pueda hacer referencia a él en mandatos posteriores.
 
     ```
     mkdir tls-ibp
@@ -291,7 +290,7 @@ Tras registrar la identidad de administrador, debe generar la carpeta de MSP de 
   {:codeblock}
 
   Los valores de `<enroll_id>` y `<enroll_password>` anteriores son el **ID** y el
-**Secreto** del administrador de igual que se ha [registrado utilizando el supervisor de red](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-register-admin). El valor de `<ca_name>` y `<ca_url_with_port>` son los valores de `caName` y `url` del perfil de conexión. Excluya la parte de `http://` al principio del URL de CA.
+**Secreto** del administrador de igual que se ha [registrado utilizando el supervisor de red](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-register-admin). Los valores de `<ca_name>` y `<ca_url_with_port>` son los valores de `caName` y `url` del perfil de conexión. Excluya la parte de `http://` al principio del URL de CA.
 
   Una llamada real es similar al siguiente mandato de ejemplo:
 

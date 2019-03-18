@@ -2,7 +2,10 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
+
 ---
 
 {:new_window: target="_blank"}
@@ -17,13 +20,13 @@ lastupdated: "2019-02-08"
 # 既知の問題
 {: #known-issues}
 
-***[このページは参考になりましたか。 ご意見をお聞かせください。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
+このページでは、スターター・プランかエンタープライズ・プランの使用時に発生する可能性のある既知の問題について説明します。
+{:shortdesc}
 
 以下の問題が既に報告されています。
 - **外部 CA の構成は現時点ではサポートされていません**。 代わりに、ネットワーク・モニターから管理者証明書を生成してアップロードできます。 詳しくは、[クライアント・サイドの証明書の生成](/docs/services/blockchain/v10_application.html#dev-app-enroll-panel)、およびネットワーク・モニターの[「メンバー」画面の「証明書」タブ](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-members)に関する説明を参照してください。
 - スターター・プラン・ネットワークのネットワーク・モニターでは、「概要」画面にリストされているノードに対して**「ログの表示 (View Logs)」**をクリックすると、「{{site.data.keyword.cloud}} Logging」Kibana インターフェースが開きます。 **デフォルトでは、Kibana は直近 30 日間のアクティビティーのログを表示するように事前構成されています**。 直近 30 日間にアクティビティーがない場合は、「*No results found*」というメッセージが表示されます。 他のログを表示するには、ユーザー名の下の右上隅にあるタイマー・アイコンをクリックし、*過去 1 年間* などの広い時刻範囲を設定します。
-- スターター・プラン・ネットワークのログは、[{{site.data.keyword.cloud_notm}} Log Analysis サービス ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://console.bluemix.net/catalog/services/log-analysis) によって収集されます。 デフォルトでは、ログは Log Analysis サービスのライト・プランで収集されます。 このプランは無料であり、**1 日にログの最初の 500 MB の検索のみが可能**です。 ネットワークのログが 500 MB を超えている場合、Kibana で新規ログを表示することができません。 ネットワークで 500 MB より大きいログが生成される場合は、有料版の Log Analysis サービスにアップグレードすることができます。
+- スターター・プラン・ネットワークのログは、[{{site.data.keyword.cloud_notm}} Log Analysis サービス ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://cloud.ibm.com/catalog/services/log-analysis) によって収集されます。 デフォルトでは、ログは Log Analysis サービスのライト・プランで収集されます。 このプランは無料であり、**1 日にログの最初の 500 MB の検索のみが可能**です。 ネットワークのログが 500 MB を超えている場合、Kibana で新規ログを表示することができません。 ネットワークで 500 MB より大きいログが生成される場合は、有料版の Log Analysis サービスにアップグレードすることができます。
 - スターター・プランは実稼働環境ではないため、**アプリケーションが即座にネットワーク・リソースに到達できない場合があります**。
   - これが発生する場合は、最初のステップとして、Fabric SDK でデフォルトのタイムアウト値を大きくすることをお勧めします。 タイムアウト値の設定方法について詳しくは、[Fabric SDK でのタイムアウト値の設定](/docs/services/blockchain/v10_application.html#dev-app-set-timeout-in-sdk)を参照してください。
   - アプリケーション・レベルで要求を再試行することもできます。

@@ -2,19 +2,23 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2018-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
+
 ---
 
 {:new_window: target="_blank"}
 {:shortdesc: .shortdesc}
 {:codeblock: .codeblock}
 {:screen: .screen}
+{:note: .note}
+{:important: .important}
+{:tip: .tip}
 {:pre: .pre}
 
 # Cómo escribir contratos inteligentes
 {: #develop-smart-contracts}
-
-***[¿Le resulta útil esta página? Indíquenos su opinión.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 El código de encadenamiento, al que también se hace referencia como contratos inteligentes, es software que le permite leer y actualizar datos en el libro mayor de blockchain. El código de encadenamiento puede convertir la lógica empresarial en un programa ejecutable acordado y verificado por todos los miembros de la red blockchain. La lógica empresarial incluye la definición de activos negociados entre las partes. También incluye los términos y condiciones necesarios para que se ejecute una transacción. La transformación de estas reglas en código en blockchain permite que las empresas puedan optimizar los procesos empresariales y auditorías, así como reducir en gran medida el procesamiento manual y el papeleo.
 
@@ -40,6 +44,9 @@ El código de encadenamiento se puede escribir en varios lenguajes, y {{site.dat
 Puede obtener información sobre cómo empezar a escribir código de encadenamiento consultando la
 [Guía de aprendizaje de código de encadenamiento para desarrolladores ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/latest/chaincode4ade.html "Guía de aprendizaje de código de encadenamiento para desarrolladores") en la documentación de la comunidad de Hyperledger Fabric. La guía de aprendizaje le guiará a través de la construcción de un código de encadenamiento simple que crea y lee activos, y le presentará las API que se utilizan en el proceso. También puede encontrar la guía de referencia de API del código de encadenamiento para todos los lenguajes de código de encadenamiento. Hay ejemplos adicionales en la carpeta de código de encadenamiento del [repositorio de ejemplos de Fabric
 ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://github.com/hyperledger/fabric-samples "Ejemplos de Fabric").
+
+Un contrato inteligente suele ser capaz de validar las solicitudes, aplicar las reglas de negocio y devolver un resultado determinista. Sin embargo, en algunas situaciones se necesitan hechos adicionales o bien la red empresarial desea asegurarse de que la información proporcionada por los clientes son hechos reales. Hyperledger Fabric no impide llamadas externas a sistemas de terceros desde los contratos inteligentes. Sin embargo, es responsabilidad del desarrollador del contrato inteligente asegurarse de que los conjuntos de lectura y escritura resultantes sean deterministas.
+{:note}
 
 ## Instalación de código de encadenamiento
 {: #develop-smart-contracts-install}

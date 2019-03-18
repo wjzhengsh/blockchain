@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -17,10 +19,6 @@ lastupdated: "2019-02-08"
 
 # Einführung in {{site.data.keyword.blockchainfull_notm}} Platform for AWS
 {: #remote-peer-aws}
-
-
-***[Ist diese Seite hilfreich? Teilen Sie uns Ihre Meinung mit.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 
 Die Anweisungen in diesem Abschnitt beschreiben, wie Sie mit einer Schnelleinstiegsvorlage für Amazon Web Services (AWS) einen Peer von {{site.data.keyword.blockchainfull}}  Platform for AWS erstellen und anschließend mit einem  Netz unter {{site.data.keyword.blockchainfull_notm}} Platform verbinden können.
 {:shortdesc}
@@ -89,7 +87,8 @@ In einem daraufhin geöffneten Popup-Fenster werden die Werte der folgenden Feld
 
 Sie können jedes Feld kopieren und direkt in der Schnelleinstiegsvorlage einfügen oder die Felder als JSON-Datei speichern, indem Sie auf den Link **Download** klicken.
 
-Die Schnelleinstiegsvorlage erwartet, dass das TLS-Zertifikat mit den Zeilenumbrüchen `\r\n` formatiert wird. Wenn Sie einen Browser mit Network Monitor auf einem `*NIX`-Betriebssystem verwenden, müssen Sie das Zertifikat, das Sie von der Benutzerschnittstelle kopieren, neu formatieren. Ersetzen Sie alle Vorkommen von `\n` global durch `\r\n`, und fügen Sie die resultierende Zeichenfolge in das Feld `Certificate Authority (CA) TLS Certificate Chain` ein.{:important}
+Die Schnelleinstiegsvorlage erwartet, dass das TLS-Zertifikat mit den Zeilenumbrüchen `\r\n` formatiert wird. Wenn Sie einen Browser mit Network Monitor auf einem `*NIX`-Betriebssystem verwenden, müssen Sie das Zertifikat, das Sie von der Benutzerschnittstelle kopieren, neu formatieren. Ersetzen Sie alle Vorkommen von `\n` global durch `\r\n`, und fügen Sie die resultierende Zeichenfolge in das Feld `Certificate Authority (CA) TLS Certificate Chain` ein.
+{:important}
 
 **Hinweis:** Falls Sie die Informationen in eine JSON-Datei herunterladen, müssen Sie das TLS-Zertifikat ins PEM-Format konvertieren, bevor Sie es für den Peer bereitstellen. Konvertieren Sie das **TLS-Zertifikat der Zertifizierungsstelle (CA)** in der heruntergeladenen JSON-Datei mit dem folgenden Befehl in das PEM-Format:
 ```
@@ -256,7 +255,7 @@ Führen Sie den CLI-Befehl `peer channel fetch` aus, um den Genesis-Block aus de
    ash-zbc07b.4.secure.blockchain.ibm.com:21239
    ```
 
-   - Suchen Sie den Namen Ihrer Organisation, indem Sie bei der Suche **organizations** angeben. Hierbei sollte es sich um dieselbe Organisation handeln, die Sie zum Registrieren Ihres Peers verwenden. Der Name Ihrer Organisation wird mit dem zugehörigen Wert für `mspid` angezeigt. Dieser Wert ist ebenfalls in der Network Monitor-Anzeige "Übersicht" verfügbar. Klicken Sie auf die Schaltfläche **Konfiguration des fernen Peers**. Der Wert wird unter `MSP der Organisation` angezeigt. Notieren Sie den Wert für `mspid`.
+   - Suchen Sie den Namen Ihrer Organisation, indem Sie bei der Suche **organizations** angeben. Hierbei sollte es sich um dieselbe Organisation handeln, die Sie zum Registrieren Ihres Peers verwenden. Der Name Ihrer Organisation wird mit dem zugehörigen Wert für `mspid` angezeigt. Dieser Wert ist ebenfalls in der Network Monitor-Anzeige "Übersicht" verfügbar. Klicken Sie auf die Schaltfläche **Konfiguration ferner Peers**. Der Wert wird unter `MSP der Organisation` angezeigt. Notieren Sie den Wert für `mspid`.
 
    - Erstellen Sie, sofern noch nicht geschehen, eine Shellsitzung innerhalb des Peer-Containers, indem Sie den Befehl `docker exec -it peer sh` ausführen.
 

@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -15,10 +17,6 @@ lastupdated: "2019-02-08"
 # Swagger API を使用したネットワークの作成または参加
 {: #swagger-network}
 
-
-***[このページは参考になりましたか。 ご意見をお聞かせください。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
-
 {{site.data.keyword.blockchainfull}} Platform では、{{site.data.keyword.cloud_notm}} でブロックチェーン・ネットワークの作成または参加に使用できるように、さまざまな REST API が公開されています。 これらの API を、ネットワークに関連付けられた [Swagger UI](/docs/services/blockchain/howto/swagger_apis.html#ibp-swagger) を使用して試すことができます。
 {:shortdesc}
 
@@ -26,11 +24,11 @@ lastupdated: "2019-02-08"
 ## API の基本認証資格情報の取得
 {: #swagger-network-retrieve-id-token}
 
-始める前に、{{site.data.keyword.cloud_notm}} でスターター・プランまたはエンタープライズ・プランを使用して [{{site.data.keyword.blockchainfull_notm}} Platform サービス・インスタンス ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://console.bluemix.net/catalog/services/blockchain) を作成する必要があります
+始める前に、{{site.data.keyword.cloud_notm}} でスターター・プランまたはエンタープライズ・プランを使用して [{{site.data.keyword.blockchainfull_notm}} Platform サービス・インスタンス ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://cloud.ibm.com/catalog/services/ibm-blockchain-5-prod) を作成する必要があります
 
 Swagger API を使用してネットワークの作成または参加を行うには、{{site.data.keyword.cloud_notm}} のサービス・インスタンスに確実にアクセスできるようにするために基本認証資格情報が必要です。
 
-1. [{{site.data.keyword.cloud_notm}} ダッシュボード ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://console.bluemix.net/dashboard/apps/) で、作成したサービス・インスタンスを開きます。
+1. [{{site.data.keyword.cloud_notm}} ダッシュボード ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://cloud.ibm.com/resources) で、作成したサービス・インスタンスを開きます。
 2. 左側のナビゲーターで**「サービス資格情報」**をクリックします。
 3. **「サービス資格情報」**ページの「新規資格情報」ボタンをクリックして、新規資格情報を作成します。
     1. 資格情報に *CreateJoin* などの名前を付けます。
@@ -53,13 +51,13 @@ Swagger API を使用してネットワークの作成または参加を行う�
 
     ```
     {
-      "PeerOrg1": {
-        "url": "https://ibmblockchain_xyz.ng.bluemix.net",
-        "network_id": "92d511f7e587413c8a9848fdae595ef2",
-        "key": "PeerOrg1",
-        "secret": "T8eUA65l-qtznUHL10KzQ7IK-3BVWWfHu5-hpCiDdXCRQyNfeyIm1p5NT7g17l6U"
-      }
-    }
+      "org1": {
+        "url": "https://ibp-sp.us-south.ibm-blockchain-5-prod.cloud.ibm.com",
+        "network_id": "n5edf19260c998940c5933daca2be76974a",
+        "key": "org1",
+        "secret": "A8YeuUuNvKVbN5cVGOlwprpaaHCVxYiP0uEN0fviQB2W9_ldJLtMSOSHqkUpkqysMA"
+        }
+    }    
     ```
 
     **注**: **Invite** API の場合は、`key` が基本認証ユーザー ID として機能し、`secret` が基本認証パスワードとして機能します。

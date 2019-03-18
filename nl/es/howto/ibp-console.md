@@ -2,7 +2,9 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-02-11"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -17,8 +19,6 @@ lastupdated: "2019-02-11"
 
 # Acerca de {{site.data.keyword.blockchainfull_notm}} Platform gratuita 2.0 beta
 {: #ibp-console-overview}
-
-***[¿Le resulta útil esta página? Indíquenos su opinión.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 La versión {{site.data.keyword.blockchainfull_notm}} Platform gratuita 2.0 beta constituye la próxima generación de ofertas de {{site.data.keyword.blockchainfull_notm}} Platform, que le ofrecen un control total sobre sus despliegues y certificados. Esta versión gratuita beta incluye la nueva consola de {{site.data.keyword.blockchainfull_notm}} Platform, una interfaz de usuario que puede simplificar y acelerar el proceso de despliegue de componentes en un servicio Kubernetes de {{site.data.keyword.cloud_notm}} gestionado y controlado por usted.
 {:shortdesc}
@@ -51,7 +51,9 @@ La versión {{site.data.keyword.blockchainfull_notm}} Platform gratuita 2.0 beta
 **Escalabilidad y flexibilidad**
 - **Elija su capacidad de cálculo.** Tiene flexibilidad para decidir la cantidad de CPU, de memoria y de almacenamiento que desea suministrar en el clúster de Kubernetes.
 - **Escale** al alza o a la baja los recursos del clúster de Kubernetes y pague solo lo que necesite.
-- **Recuperación en caso de error y alta disponibilidad multizona.** Esta opción duplica el despliegue de Kubernetes entre zonas, ofreciendo alta disponibilidad (HA) de sus componentes y recuperación en caso de error (DR).
+- **Recuperación tras desastre y alta disponibilidad multizona.** Esta opción duplica el despliegue de Kubernetes entre zonas, ofreciendo alta disponibilidad (HA) de sus componentes y recuperación tras desastre (DR).  
+
+Consulte este [blog ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/blogs/blockchain/2019/02/taking-the-next-step-towards-deploying-blockchain-anywhere "Siguiente paso para desplegar blockchain para la empresa en cualquier sitio") para realizar el siguiente paso para desplegar blockchain para la empresa en cualquier sitio.  
 
 Esta oferta es para usuarios experimentados de Fabric que deseen crear y gestionar sus propias redes. Próximamente se incorporará la capacidad para desplegar una red completa con una simple pulsación. Mientras tanto, para desplegar una red con una sola pulsación que utilice una configuración estándar, consulte nuestra documentación sobre el [Plan inicial](/docs/services/blockchain/get_start_starter_plan.html#getting-started-with-starter-plan).
 
@@ -63,21 +65,21 @@ Antes de desplegar la consola, asegúrese de que comprende las consideraciones s
 - {{site.data.keyword.blockchainfull_notm}} Platform gratuita 2.0 beta se basa en Hyperledger Fabric v1.4.
 - Todos los iguales desplegados con la versión beta 2.0 gratuita utilizan CouchDB como base de datos de estado.
 - Tiene la opción de utilizar un clúster de Kubernetes gratuito para la evaluación de la oferta beta; sin embargo, la capacidad y el rendimiento están limitados, no se pueden migrar datos y el clúster se suprime después de 30 días.
-- El usuario es responsable de gestionar la supervisión del estado, la seguridad y el registro del clúster de Kubernetes. Consulte esta [información ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://console.bluemix.net/docs/containers/cs_responsibilities.html#your-responsibilities-by-using-ibm-cloud-kubernetes-service "Responsabilidades de gestión del clúster") para ver detalles sobre lo que gestiona {{site.data.keyword.cloud_notm}} y sobre cuáles son sus responsabilidades.
-- También es responsable de supervisar el uso de recursos del clúster de Kubernetes utilizando el panel de control de Kubernetes. Si tiene que aumentar la capacidad de almacenamiento o el rendimiento del clúster, consulte esta información sobre cómo [modificar el volumen existente ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://console.bluemix.net/docs/containers/cs_storage_file.html#change_storage_configuration "Cambiar el tamaño y el IOPS del dispositivo de almacenamiento existente").
+- El usuario es responsable de gestionar la supervisión del estado, la seguridad y el registro del clúster de Kubernetes. Consulte esta [información ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://cloud.ibm.com/docs/containers/cs_responsibilities.html#your-responsibilities-by-using-ibm-cloud-kubernetes-service "Responsabilidades de gestión del clúster") para ver detalles sobre lo que gestiona {{site.data.keyword.cloud_notm}} y sobre cuáles son sus responsabilidades.
+- También es responsable de supervisar el uso de recursos del clúster de Kubernetes utilizando el panel de control de Kubernetes. Si tiene que aumentar la capacidad de almacenamiento o el rendimiento del clúster, consulte esta información sobre cómo [modificar el volumen existente ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://cloud.ibm.com/docs/containers/cs_storage_file.html#change_storage_configuration "Cambiar el tamaño y el IOPS del dispositivo de almacenamiento existente").
 - Es responsable de gestionar y proteger sus certificados, sus claves públicas y privadas. {{site.data.keyword.IBM_notm}} no almacena los certificados en el clúster de Kubernetes ni en la consola. Solo se conservan en el almacenamiento local del navegador. Si cambia de navegador, tendrá que importar las identidades creadas en dicho navegador.
-- La oferta gratuita 2.0 beta solo está disponible en la región **Dallas** de {{site.data.keyword.cloud_notm}}. Por lo tanto, todos los componentes de blockchain residirán en el centro de datos de Dallas. No se despliegan en ningún otro sitio.
+- La oferta gratuita 2.0 beta solo está disponible en la región **Dallas** del servicio Kubernetes de {{site.data.keyword.cloud_notm}}. Esta región incluye centros de datos en Dallas, San José, Houston y Brasil. Por lo tanto, todos los componentes de blockchain pueden residir en cualquiera de estos cuatro centros de datos. No se despliegan en ningún otro sitio.
 - Aunque la oferta beta de {{site.data.keyword.blockchainfull_notm}} Platform 2.0 es gratuita, si elige un clúster de Kubernetes de pago en lugar del clúster gratuito limitado, incurrirá en cargos en su cuenta de {{site.data.keyword.cloud_notm}}.
 - Kubernetes debe tener la versión 1.11 o superior en el clúster de Kubernetes de {{site.data.keyword.cloud_notm}}. Utilice estas instrucciones para [actualizar los clústeres nuevos y existentes](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks-updating-kubernetes) a esta versión.
 
 ## Migración
 {: #ibp-console-overview-migration}
 
-No se da soporte a la migración a {{site.data.keyword.blockchainfull_notm}} Platform gratuita 2.0 beta. Pero se podrá migrar a un release de disponibilidad general (GA) en los siguientes casos:
-- Los clientes del plan empresarial podrán migrar a {{site.data.keyword.blockchainfull_notm}} Platform 2.0 cuando esté disponible a nivel general.
-- Si utiliza un servicio Kubernetes de {{site.data.keyword.cloud_notm}} de pago, podrá migrar la red {{site.data.keyword.blockchainfull_notm}} Platform gratuita 2.0 beta al release de disponibilidad general (GA).
+No puede migrar desde cualquier oferta de la plataforma {{site.data.keyword.blockchainfull_notm}} a {{site.data.keyword.blockchainfull_notm}} Platform gratuita 2.0 **beta**.  
 
-Los despliegues del servicio Kubernetes de {{site.data.keyword.cloud_notm}} gratuito no se migrarán, ni habrá migraciones desde el plan inicial.
+En el futuro, podrá migrar de un release del Plan empresarial a {{site.data.keyword.blockchainfull_notm}} Platform 2.0 cuando esté disponible a nivel general (GA).   
+
+Las instancias de servicio de {{site.data.keyword.blockchainfull_notm}} Platform gratuita 2.0 beta no se migrarán a la versión GA y las instancias del Plan inicial no se puede migrar a versión GA 2.0.
 
 ## Licencias y precios
 {: #ibp-console-overview-license-and-pricing}
@@ -115,14 +117,12 @@ Observe cómo se crea una única instancia de la consola, también conocida como
 | **Iguales, CA, clasificadores** | Son los nodos que se crean mediante el despliegue de los diagramas de Helm subyacentes. Nota: estos nodos también se pueden importar desde otras instancias del servicio de clúster de Kubernetes. Puesto que {{site.data.keyword.IBM_notm}} nunca almacena las claves, cada nodo igual y clasificador incluye un proxy web gRPC que permite que la consola se comunique con cada nodo utilizando las claves de la cartera de la consola. |
 | **RBAC** | Control de acceso basado en roles.  {{site.data.keyword.blockchainfull_notm}} Platform configura [RBAC de Kubernetes ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://kubernetes.io/docs/reference/access-authn-authz/rbac/ "Utilización de la autorización de RBAC") en el clúster, necesario para gestionar los componentes de blockchain en el clúster.  |
 
-## Alta disponibilidad (HA) y recuperación en caso de error (DR)
+## Alta disponibilidad (HA) y recuperación tras desastre (DR)
 {: #ibp-console-overview-hadr}
 
-El almacenamiento multizona debe estar habilitado en el clúster Kubernetes de IBM Cloud de pago si necesita HA y DR. Hay varias [opciones
-de almacenamiento de Kubernetes](https://console.bluemix.net/docs/containers/cs_storage_planning.html#persistent_storage_overview) disponibles. Próximamente IBM Cloud dará soporte a la solución de almacenamiento Portworx, que es la solución recomendada. Hasta entonces, si se necesitan HA y DR para una implementación, es necesario traer su propia solución de almacenamiento.
+El almacenamiento multizona debe estar habilitado en el clúster Kubernetes de IBM Cloud de pago si necesita HA y DR. Hay varias [opciones de almacenamiento de Kubernetes](https://cloud.ibm.com/docs/containers/cs_storage_planning.html#persistent_storage_overview) disponibles. Próximamente IBM Cloud dará soporte a la solución de almacenamiento Portworx, que es la solución recomendada. Hasta entonces, si se necesitan HA y DR para una implementación, es necesario traer su propia solución de almacenamiento.  
 
-Para añadir su propia solución de almacenamiento, tendrá que crear una clase de almacenamiento personalizada. Consulte cómo [añadir
-una clase de almacenamiento](https://console.bluemix.net/docs/containers/cs_storage_basics.html#storageclasses) para la solución. IBP utiliza el [suministro de volumen dinámico](https://console.bluemix.net/docs/containers/cs_storage_basics.html#dynamic_provisioning) con la clase de almacenamiento predeterminada. Por lo tanto, para cambiar la clase de almacenamiento predeterminada, ejecute el mandato siguiente:
+Para añadir su propia solución de almacenamiento, tendrá que crear una clase de almacenamiento personalizada. Consulte cómo [añadir una clase de almacenamiento](https://cloud.ibm.com/docs/containers/cs_storage_basics.html#storageclasses) para la solución. IBP utiliza el [suministro de volumen dinámico](https://cloud.ibm.com/docs/containers/cs_storage_basics.html#dynamic_provisioning) con la clase de almacenamiento `predeterminada`. Por lo tanto, para cambiar la clase de almacenamiento predeterminada, ejecute el mandato siguiente:
 ```
 kubectl patch storageclass <storageclass> -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
 ```

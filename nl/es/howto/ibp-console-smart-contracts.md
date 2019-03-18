@@ -2,7 +2,9 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -18,11 +20,23 @@ lastupdated: "2019-02-08"
 # Guía de aprendizaje sobre despliegue de un contrato inteligente en la red
 {: #ibp-console-smart-contracts}
 
-***[¿Le resulta útil esta página? Indíquenos su opinión.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
-
-Un contrato inteligente es el código, al que a veces se hace referencia como código de encadenamiento, que le permite leer y actualizar datos en el libro mayor de blockchain. El contrato inteligente puede convertir la lógica empresarial en un programa ejecutable acordado y verificado por todos los miembros de una red blockchain. Esta guía de aprendizaje es la tercera parte de la [serie de guías de aprendizaje de red de ejemplo](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-sample-tutorial) y en ella se describe cómo desplegar contratos inteligentes para iniciar transacciones en la red blockchain. En las dos guías de aprendizaje anteriores se describe cómo crear componentes en la consola de {{site.data.keyword.blockchainfull_notm}} Platform y cómo conectarlos a componentes creados en otros clústeres para crear una red blockchain realmente **distribuida**
+Un contrato inteligente es el código, al que a veces se hace referencia como código de encadenamiento, que le permite leer y actualizar datos en el libro mayor de blockchain. El contrato inteligente puede convertir la lógica empresarial en un programa ejecutable acordado y verificado por todos los miembros de una red blockchain. Esta guía de aprendizaje es la tercera parte de la [serie de guías de aprendizaje de red de ejemplo](/docs/services/blockchain/howto/ibp-console-smart-contracts.md.html#ibp-console-smart-contracts-structure) y en ella se describe cómo desplegar contratos inteligentes para iniciar transacciones en la red blockchain.
 {:shortdesc}
+
+**Audiencia de destino:** este tema está diseñado para los operadores de red responsables de crear, supervisar y gestionar la red blockchain. Además, los desarrolladores de aplicaciones pueden estar interesados en las secciones que hacen referencia a la forma de crear un contrato inteligente.
+
+## Serie de guías de aprendizajes de red de ejemplo
+{: #ibp-console-smart-contracts-structure}
+
+Esta serie de guías de aprendizaje de tres partes le guía por el proceso de creación e interconexión de una red Hyperledger Fabric de varios nodos relativamente sencilla utilizando la consola de {{site.data.keyword.blockchainfull_notm}} Platform 2.0 para desplegar una red en el clúster de Kubernetes e instalar y crear una instancia de un contrato inteligente.
+
+* La [guía de aprendizaje sobre cómo crear una red](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network) le ayuda en el proceso de alojar una red mediante la creación de un clasificador y un igual.
+* En la [guía de aprendizaje sobre cómo unirse a una red](/docs/services/blockchain/howto/ibp-console-join-network.html#ibp-console-join-network) se explica el proceso de unirse a una red existente creando un igual y uniéndolo a un canal.
+* **Desplegar un contrato inteligente en la red** esta guía de aprendizaje contiene información sobre cómo escribir un contrato inteligente y cómo desplegarlo en la red.
+
+Puede seguir los pasos de estas guías de aprendizaje para crear una red con varias organizaciones en un clúster con fines de desarrollo y prueba. Utilice la guía de aprendizaje sobre cómo **crear una red** si desea formar un consorcio de blockchain mediante la creación de un nodo clasificador y la adición de organizaciones. Utilice la guía de aprendizaje sobre cómo **unirse a una red** para conectar un igual a la red. Si sigue las guías de aprendizaje con distintos miembros del consorcio puede crear una red blockchain verdaderamente **distribuida**.  
+
+La última guía de aprendizaje está pensada para mostrar cómo se crea y se empaqueta un contrato inteligente, cómo se instala el contrato inteligente en un igual y cómo se crea una instancia del contrato inteligente en un canal.  
 
 Los contratos inteligentes se instalan en los iguales y luego se crean instancias de los mismos en los canales. **Todos los miembros que desean enviar transacciones o leer datos utilizando un contrato inteligente tienen que instalar el contrato en su igual.** Un contrato inteligente se define por su nombre y versión. Por lo tanto, tanto el nombre como la versión del contrato instalado deben ser coherentes entre los iguales de un canal que vayan a ejecutar el contrato inteligente.
 
@@ -38,7 +52,7 @@ En esta guía de aprendizaje se muestran los pasos para utilizar la consola de {
 - [Actualizar el código y las políticas del contrato inteligente](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-upgrade).
 
 
-**Antes de empezar**
+## Antes de empezar
 
 Para poder instalar un contrato inteligente, asegúrese de que tiene preparado lo siguiente.
 
@@ -53,8 +67,8 @@ La consola de {{site.data.keyword.blockchainfull_notm}} gestiona el *despliegue*
 - Para obtener información sobre cómo se pueden utilizar los contratos inteligentes para realizar transacciones entre varias partes, consulte el tema [tema sobre desarrollo de aplicaciones ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/developapps/developing_applications.html "tema sobre desarrollo de aplicaciones") de la documentación de Hyperledger Fabric.
 - Para obtener una guía de aprendizaje completa sobre el uso de una aplicación para interactuar con contratos inteligentes, consulte la [guía de aprendizaje del documento comercial de Hyperledger Fabric ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/tutorial/commercial_paper.html "guía de aprendizaje del documento comercial de Hyperledger Fabric").
 - Para obtener información sobre cómo incorporar mecanismos de control de accesos al contrato inteligente, consulte el tema sobre [Código de encadenamiento para desarrolladores ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/chaincode4ade.html#chaincode-access-control "Código de encadenamiento para desarrolladores").
-- Cuando esté listo para empezar a crear contratos inteligentes, puede utilizar la [extensión de código {{site.data.keyword.blockchainfull_notm}} Visual Studio ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://marketplace.visualstudio.com/items?itemName=IBMBlockchain.ibm-blockchain-platform "{{site.data.keyword.blockchainfull_notm}} Platform - Visual Studio Marketplace") para comenzar a crear su propio proyecto de contrato inteligente. También puede utilizar dicha extensión para [conectarse directamente a la red desde el código de Visual Studio](docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-vscode).
-- Cuando esté listo para instalar, el contrato inteligente se debe empaquetar en [formato .cds ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/latest/chaincode4noah.html#packaging "empaquetado de contratos inteligentes") para que se pueda instalar en iguales. Para obtener más información, consulte [Empaquetado de contratos inteligentes](/docs/services/blockchain/vscode-extension.html#packaging-a-smart-contract).
+- Cuando esté listo para empezar a crear contratos inteligentes, puede utilizar la [extensión de código {{site.data.keyword.blockchainfull_notm}} Visual Studio ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://marketplace.visualstudio.com/items?itemName=IBMBlockchain.ibm-blockchain-platform "{{site.data.keyword.blockchainfull_notm}} Platform - Visual Studio Marketplace") para comenzar a crear su propio proyecto de contrato inteligente. También puede utilizar dicha extensión para [conectarse directamente a la red desde el código de Visual Studio](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-vscode).
+- Cuando esté listo para instalar, el contrato inteligente se debe empaquetar en [formato .cds ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/latest/chaincode4noah.html#packaging "empaquetado de contratos inteligentes") para que se pueda instalar en iguales. Para obtener más información, consulte [Empaquetado de contratos inteligentes](/docs/services/blockchain/vscode-extension.html#packaging-a-smart-contract). Como alternativa, puede utilizar el [mandatos cli peer ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/peerchaincode.html#peer-chaincode-package "paquete de código de encadenamiento de igual") para crear el paquete.
 <!-- Update the tutorial link to release1-4 when it is published -->
 
 
@@ -84,7 +98,7 @@ Se crean instancias de los contratos inteligentes en un canal. Cualquier miembro
 Utilice la consola para seguir estos pasos:
 
 1. En el separador de contratos inteligentes, busque el contrato inteligente en la lista instalada en sus iguales y pulse **Crear instancia** en el menú de desbordamiento de la parte derecha de la fila.
-2. En el panel lateral que se abre, seleccione un canal, `channel1`, en el que crear la instancia del contrato inteligente, y seleccione el clasificador en el que reside el canal, `Clasificador`, si está siguiendo la nomenclatura de esta guía de aprendizaje. Pulse **Siguiente**.
+2. En el panel lateral que se abre, seleccione un canal en el que crear la instancia del contrato inteligente y seleccione el clasificador en el que reside el canal. Puede seleccionar el canal, llamado `channel1`, y el nodo clasificador, llamado `Orderer`, que ha creado. A continuación, pulse **Siguiente**.
 3. Especifique la [política de aprobación para el contrato inteligente](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-endorse), que se describe en la sección siguiente.
 4. También tiene que seleccionar los miembros de la organización que se incluirán en la política. Si sigue la guía de aprendizaje, sería `org1msp` y posiblemente `org2msp` si ha completado las guías de aprendizaje sobre **cómo crear una red** y **cómo unirse a una red**.
 5. En el último panel se le solicitará que especifique la función de contrato inteligente que desea ejecutar cuando se inicie el contrato inteligente, junto con los argumentos asociados para pasar a dicha función.
@@ -170,7 +184,7 @@ Los datos privados son una característica de las redes de Hyperledger Fabric en
 Para poder utilizar datos privados con {{site.data.keyword.blockchainfull_notm}} Platform gratuita 2.0 beta, se deben cumplir las tres condiciones siguientes:  
 1. **Defina la recopilación de datos privados.** Se puede añadir un archivo de recopilación de datos privado a su contrato inteligente. Luego, en el momento de la ejecución, la aplicación cliente puede utilizar las API del código de encadenamiento específicos de los datos privados para especificar y recuperar datos de la recopilación. Para obtener más información sobre cómo utilizar recopilaciones de datos privados con su contrato inteligente, consulte la guía de aprendizaje sobre [Utilización de datos privados ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/latest/private_data_tutorial.html "Utilización de datos privados") en la documentación de Fabric.  
 
-2. **Instale y crea una instancia del contrato inteligente.** Una vez que se haya definido la recopilación de datos privados del contrato inteligente, deberá instalar el contrato inteligente en los iguales miembros del canal. Cuando cree una instancia del contrato inteligente en el canal, debe especificar la configuración de la recopilación. La consola de {{site.data.keyword.blockchainfull_notm}} no proporciona actualmente ninguna forma de especificar una definición de colección **durante** la creación de una instancia del contrato inteligente. No obstante, puede utilizar el SDK de Fabric para instalar, crear una instancia o actualizar un contrato inteligente que utilice datos privados. Para obtener más información, consulte [Cómo utilizar datos privados
+2. **Instale y crea una instancia del contrato inteligente.** Una vez que se haya definido la recopilación de datos privados del contrato inteligente, deberá instalar el contrato inteligente en los iguales que son miembros del canal. Cuando cree una instancia del contrato inteligente en el canal, debe especificar la configuración de la recopilación. La consola de {{site.data.keyword.blockchainfull_notm}} no proporciona actualmente ninguna forma de especificar una definición de colección **durante** la creación de una instancia del contrato inteligente. No obstante, puede utilizar el SDK de Fabric para instalar, crear una instancia o actualizar un contrato inteligente que utilice datos privados. Para obtener más información, consulte [Cómo utilizar datos privados
 ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://fabric-sdk-node.github.io/release-1.4/tutorial-private-data.html "Cómo utilizar datos privados") en la documentación del SDK de nodo.
 
  **Nota:** un cliente debe ser un administrador de su igual para poder instalar o crear una instancia de un contrato inteligente. Por lo tanto, tiene que descargar los certificados de la identidad de administrador del igual desde la cartera de la consola y pasar la clave pública y privada del administrador del igual directamente al SDK en lugar de crear una identidad de aplicación. Para ver un ejemplo de cómo pasar un par de claves al SDK, consulte [Conexión a la red utilizando las API de SDK de Fabric SDK de bajo nivel](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-low-level).  
@@ -182,9 +196,6 @@ Para poder utilizar datos privados con {{site.data.keyword.blockchainfull_notm}}
  - Seleccione al menos un igual de cada organización de la definición de recopilación que desee que sirva como igual de ancla para la organización. Por motivos de redundancia, tenga en cuenta la posibilidad de seleccionar más de un igual desde cada organización de la recopilación.
 
 Ahora el canal está configurado para utilizar datos privados.
-
-## Resolución de problemas
-{: #console-operate-troubleshooting}
 
 **Problema:** la instalación, creación de una instancia o actualización de un contrato inteligente falla con un error en la consola.  
 **Solución:** si una de estas acciones sobre un contrato inteligente falla, [consulte los registros del nodo](/docs/services/blockchain/howto/ibp-console-manage.html#ibp-console-manage-console-node-logs) para ver los errores.

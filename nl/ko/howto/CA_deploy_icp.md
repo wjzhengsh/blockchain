@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -17,8 +19,6 @@ lastupdated: "2019-02-08"
 
 # {{site.data.keyword.cloud_notm}} Private에 인증 기관 배치
 {: #ca-deploy}
-
-***[이 페이지가 도움이 되었습니까? 알려주십시오.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 {{site.data.keyword.cloud_notm}} Private Helm 차트에 {{site.data.keyword.blockchainfull}} Platform을 가져오면 개별 컴포넌트를 배치할 수 있습니다. 인증 기관(CA)은 조직의 신뢰 루트이며 배치할 다른 컴포넌트에 대한 인증서를 생성할 수 있도록 합니다. 결과적으로 다른 컴포넌트를 배치하기 전에 CA를 배치해야 합니다. 여러 클라우드 블록체인 네트워크의 각 조직에서는 자체 CA를 배치해야 합니다.  CA와 블록체인 네트워크에서 수행하는 역할에 대한 자세한 정보는 [인증 기관](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview-ca)을 참조하십시오.
 {:shortdesc}
@@ -48,7 +48,7 @@ CA에서 사용할 스토리지를 결정해야 합니다. 기본 설정을 사�
 
 AMD64 또는 S390X 플랫폼에 CA를 배치하도록 선택할 수 있습니다. 단, [동적 프로비저닝![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://kubernetes.io/docs/concepts/storage/dynamic-provisioning/)은 {{site.data.keyword.cloud_notm}} Private의 AMD64 노드에서만 사용할 수 있습니다. 클러스터에 S390X와 AMD64 작업자 노드가 혼합되어 있는 경우 동적 프로비저닝을 사용할 수 없습니다.
 
-동적 프로비저닝을 사용하지 않는 경우 [지속적 볼륨 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)>을 작성하여 Kubernetes PVC 바인드 프로세스를 세분화하는 데 사용할 수 있는 레이블로 설정해야 합니다.
+동적 프로비저닝을 사용하지 않는 경우 [지속적 볼륨 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)을 작성하여 Kubernetes PVC 바인드 프로세스를 세분화하는 데 사용할 수 있는 레이블로 설정해야 합니다.
 
 ## CA 배치에 필요한 전제조건
 {: #ca-deploy-prerequisites}
@@ -185,7 +185,7 @@ helm install --name <helm_release_name>  <helm_chart> \
 - `<helm_chart_version>`은 카탈로그에 가져온 Helm 차트의 버전을 표시합니다.
 - `<customvalues.yaml>`은 구성 매개변수가 포함된 yaml 파일의 이름입니다.
 
-예를 들면 다음과 같습니다.
+예를 들어, 다음과 같습니다.
 
 ```
 helm install --name jnchart2 mycluster/ibm-blockchain-platform \

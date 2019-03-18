@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -14,10 +16,6 @@ lastupdated: "2019-02-08"
 
 # Operando peers no AWS
 {: #remote-peer-aws-operate}
-
-
-***[Esta página é útil? Diga-nos.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 
 Depois de configurar peers do {{site.data.keyword.blockchainfull}} Platform no AWS, é necessário concluir várias etapas operacionais antes que seu peer possa emitir transações para consultar e chamar o livro-razão da rede de blockchain. As etapas envolvem incluir sua organização em um canal, associar seu peer ao canal, instalar o chaincode em seu peer, instanciar o chaincode no canal e conectar aplicativos a seu peer. É possível usar os [SDKs do Fabric](/docs/services/blockchain/howto/remote_peer_operate_aws.html#remote-peer-aws-operate-with-sdk) ou a [linha de comandos](/docs/services/blockchain/howto/remote_peer_operate_aws.html#remote-peer-aws-operate-cli-operate) para concluir essas etapas operacionais. Os SDKs do Fabric são o caminho recomendado, embora as instruções assumam familiaridade com a operação do SDK.
 
@@ -532,7 +530,7 @@ A criação de pilha é concluída com êxito, mas os logs do Docker contêm o e
 **Solução:**  
 Esse erro pode ser causado por negligência ao especificar uma porta no CAUrl quando o modelo de Iniciação Rápida foi implementado.
 O CAUrl deve ser semelhante a `https://<network>-org1-ca.stage.blockchain.ibm.com:31011`.
-Reimplemente o modelo de Iniciação rápida, tendo cuidado para especificar o valor adequado para o CAUrl.
+Reimplemente o modelo de Iniciação Rápida, tendo cuidado de especificar o valor apropriado para o CAUrl.
 
 ### **Problema:** a instanciação de chaincode falha com erro
 {: #remote-peer-aws-operate-problem-2}

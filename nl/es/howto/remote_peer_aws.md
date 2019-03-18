@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -18,11 +20,7 @@ lastupdated: "2019-02-08"
 # Iniciación a {{site.data.keyword.blockchainfull_notm}} Platform para AWS
 {: #remote-peer-aws}
 
-
-***[¿Le resulta útil esta página? Indíquenos su opinión.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
-
-En estas instrucciones se describe cómo utilizar una plantilla de inicio rápido de Amazon Web Services (AWS) para crear un igual de {{site.data.keyword.blockchainfull}} Platform para AWS y, a continuación, conectarlo a una red en una plataforma {{site.data.keyword.blockchainfull_notm}}.
+En estas instrucciones se describe cómo utilizar una plantilla de inicio rápido de Amazon Web Services (AWS) para crear un igual de la plataforma {{site.data.keyword.blockchainfull}} para AWS y, a continuación, conectarlo a una red en una plataforma {{site.data.keyword.blockchainfull_notm}}.
 {:shortdesc}
 
 Para obtener más información sobre AWS, consulte el [documento de visión general de AWS ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://d1.awsstatic.com/whitepapers/aws-overview.pdf "Documento de visión general de AWS").
@@ -113,7 +111,7 @@ Tiene que añadir una nueva identidad de igual a la red en {{site.data.keyword.b
 2. Pulse el botón **Añadir usuario** del panel. Se abrirá una pantalla emergente que le permite registrar el igual en la red tras rellenar los campos que se indican a continuación. **Guarde el valor del ID y el secreto para utilizarlos más adelante cuando configure el igual en la plantilla de inicio rápido.**
   - **ID de inscripción:** nombre que desea utilizar para el igual, al que se hace referencia como `enroll ID` al configurar el igual. **Guarde este valor** para utilizarlo más adelante.
   - **Secreto de inscripción:** contraseña que desea utilizar para el igual, a la que se hace referencia como `enroll Secret` al configurar el igual. **Guarde este valor** para utilizarlo más adelante.
-  - **Tipo:** seleccione `igual` para este campo.
+  - **Tipo:** seleccione `peer` para este campo.
   - **Afiliación:** es la afiliación bajo su organización, por ejemplo `org1`, a la que pertenece el igual. Puede especificar una nueva afiliación o utilizar una existente.
   - **Número máximo de inscripciones:** puede utilizar este campo para limitar el número de veces que puede inscribir o generar certificados utilizando esta identidad. Si no se especifica, el valor predeterminado es un número ilimitado de inscripciones.
 
@@ -126,9 +124,9 @@ Es responsable del coste de los servicios de AWS que utilice mientras ejecuta es
 
 1. Elija una de las opciones siguientes para iniciar la plantilla de AWS CloudFormation en su cuenta de AWS. Para obtener ayuda para elegir una opción, consulte las opciones de despliegue que se han descrito con anterioridad en esta guía. Cada despliegue tarda en finalizar unos 10 minutos.  
 
-  * [Despliegue {{site.data.keyword.blockchainfull_notm}} Platform para AWS en un nuevo VPC en AWS ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://fwd.aws/v43nk "Despliegue la plataforma {{site.data.keyword.blockchainfull_notm}} para AWS en un nuevo VPC en AWS").  
+  * [Despliegue {{site.data.keyword.blockchainfull_notm}} Platform para AWS en un nuevo VPC en AWS ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://fwd.aws/v43nk "Despliegue {{site.data.keyword.blockchainfull_notm}} Platform para AWS en un nuevo VPC en AWS").  
 
-  * [Despliegue {{site.data.keyword.blockchainfull_notm}} Platform para AWS en un VPC existente en AWS ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://fwd.aws/zrP4g "Despliegue la plataforma {{site.data.keyword.blockchainfull_notm}} para AWS en un VPC existente en AWS").
+  * [Despliegue {{site.data.keyword.blockchainfull_notm}} Platform para AWS en un VPC existente en AWS ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://fwd.aws/zrP4g "Despliegue {{site.data.keyword.blockchainfull_notm}} Platform para AWS en un VPC existente en AWS").
 
   **Importante:**     
   Si va a desplegar {{site.data.keyword.blockchainfull_notm}} Platform para AWS en un VPC existente, asegúrese de que el VPC tiene dos subredes públicas en distintas zonas de disponibilidad para las instancias de la base de datos. Estas subredes requieren pasarelas NAT o instancias de NAT en sus tablas de rutas, para permitir que las instancias puedan descargar paquetes y software sin exponerlos a Internet. También necesitará tener la opción de nombre de dominio configurada en las opciones de DHCP, tal como se explica en la documentación de VPC de Amazon.  

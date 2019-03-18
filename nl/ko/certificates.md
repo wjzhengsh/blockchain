@@ -2,7 +2,10 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
+
 ---
 
 {:new_window: target="_blank"}
@@ -14,10 +17,6 @@ lastupdated: "2019-02-08"
 
 # {{site.data.keyword.blockchainfull_notm}} Platform에서 인증서 관리
 {: #managing-certificates}
-
-
-***[이 페이지가 도움이 되었습니까? 알려주십시오.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 
 {{site.data.keyword.blockchainfull}} Platform은 Hyperledger Fabric을 기반으로 하고 권한이 부여된 블록체인 네트워크를 빌드합니다. 참여자는 네트워크 구성원으로 알려져 있으며 해당 활동과 네트워크 리소스에 대한 액세스 권한이 계속 검증됩니다. 참여자의 ID는 신뢰할 수 있는 x509 디지털 인증서의 양식으로 제공됩니다. 검증은 네트워크 내에서의 트랜잭션과 관리에 대해 보안을 제공하는 서명/검증 오퍼레이션과 기본 공개 키 인프라를 통해 제공됩니다.
 {:shortdesc}
@@ -63,7 +62,7 @@ lastupdated: "2019-02-08"
 ### {{site.data.keyword.blockchainfull_notm}} Platform에 서명 인증서 업로드
 {: #managing-certificates-upload-certs}
 
-애플리케이션에는 네트워크에 트랜잭션을 제출하기 위한 올바른 signCert만 필요합니다. 그러나 피어에 체인코드를 설치하거나 채널에 피어를 가입하는 식으로 클라이언트에서 네트워크를 운영하려는 경우 클라이언트가 관리자로 인식되어야 합니다. 각 컴포넌트는 관리자가 소유하는 signCert 세트를 인식합니다. 클라이언트에서 네트워크를 운영해야 하는 경우 signCert를 업로드하여 관리자 인증서 목록에 추가해야 합니다. 네트워크 모니터 ["개요" 패널](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-members)의 **인증서** 탭에서 signCert를 업로드하여 플랫폼에서 이 작업을 수행할 수 있습니다. 업로드 후 표시되는 다시 시작 단추를 누르면 이 인증서가 피어와 동기화됩니다. 그런 다음 클라이언트에서 네트워크를 운영할 수 있습니다. 관리자 인증서를 추가하려면 [Swagger API](/docs/services/blockchain/howto/swagger_apis.html#ibp-swagger)를 사용하여 사용자의 signCert를 업로드할 수도 있습니다.
+애플리케이션에는 네트워크에 트랜잭션을 제출하기 위한 올바른 signCert만 필요합니다. 그러나 피어에 체인코드를 설치하거나 채널에 피어를 가입시키는 식으로 클라이언트에서 네트워크를 운영하려는 경우 클라이언트가 관리자로 인식되어야 합니다. 각 컴포넌트는 관리자가 소유하는 signCert 세트를 인식합니다. 클라이언트에서 네트워크를 운영해야 하는 경우 signCert를 업로드하여 관리자 인증서 목록에 추가해야 합니다. 네트워크 모니터 ["개요" 패널](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-members)의 **인증서** 탭에서 signCert를 업로드하여 플랫폼에서 이 작업을 수행할 수 있습니다. 업로드 후 표시되는 다시 시작 단추를 누르면 이 인증서가 피어와 동기화됩니다. 그런 다음 클라이언트에서 네트워크를 운영할 수 있습니다. 관리자 인증서를 추가하려면 [Swagger API](/docs/services/blockchain/howto/swagger_apis.html#ibp-swagger)를 사용하여 사용자의 signCert를 업로드할 수도 있습니다.
 
 채널은 채널에서 체인코드를 인스턴스화할 수 있는 것을 포함하여 채널을 조작할 수 있는 ID로부터 관리자 인증서 세트도 인식합니다. 원격 클라이언트에서 새 signCert를 사용하는 경우 체인코드를 인스턴스화하기 전에 인증서를 채널에 동기화해야 합니다. 인증서를 채널에 추가하려면 네트워크 모니터에서 다음 단계를 수행하십시오.
 
@@ -267,7 +266,7 @@ Fabric CA client를 사용하여 등록하고 생성된 인증서를 사용하�
   ```
   {:codeblock}
 
-  피어의 이름과 비밀번호를 지정하고 `name`과 `password`를 사용자의 이름과 비밀번호로 바꾸십시오. 이 정보를 기록하십시오. 이 정보는 피어를 구성할 때 필요합니다. 예를 들면 다음과 같습니다.
+  피어의 이름과 비밀번호를 지정하고 `name`과 `password`를 사용자의 이름과 비밀번호로 바꾸십시오. 이 정보를 기록하십시오. 이 정보는 피어를 구성할 때 필요합니다. 예를 들어, 다음과 같습니다.
   ```
   ./fabric-ca-client register --id.name user1 --id.affiliation ibp.PeerOrg1 --id.secret userpw  --tls.certfiles $HOME/tls/us2.blockchain.ibm.com.cert
   ```

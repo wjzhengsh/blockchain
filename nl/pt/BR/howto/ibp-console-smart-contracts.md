@@ -2,7 +2,9 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -18,11 +20,23 @@ lastupdated: "2019-02-08"
 # Tutorial de implementação de um contrato inteligente na rede
 {: #ibp-console-smart-contracts}
 
-***[Esta página é útil? Diga-nos.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
-
-Um contrato inteligente é o código, às vezes referido como chaincode, que permite ler e atualizar dados no livro-razão de blockchain. Um contrato inteligente pode transformar a lógica de negócios em um programa executável acordado e verificado por todos os membros de uma rede de blockchain. Este tutorial é a terceira parte na [série de tutorial de rede de amostra](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-sample-tutorial) e descreve como implementar contratos inteligentes para iniciar transações na rede de blockchain. Os dois tutoriais anteriores descrevem como criar componentes no console do {{site.data.keyword.blockchainfull_notm}} Platform e conectá-los a componentes que são criados em outros clusters para criar uma rede de blockchain verdadeiramente **distribuída**
+Um contrato inteligente é o código, às vezes referido como chaincode, que permite ler e atualizar dados no livro-razão de blockchain. Um contrato inteligente pode transformar a lógica de negócios em um programa executável acordado e verificado por todos os membros de uma rede de blockchain. Este tutorial é a terceira parte na [série de tutorial de rede de amostra](/docs/services/blockchain/howto/ibp-console-smart-contracts.md.html#ibp-console-smart-contracts-structure) e descreve como implementar contratos inteligentes para iniciar transações na rede de blockchain.
 {:shortdesc}
+
+**Público-alvo:** este tópico é projetado para operadores de rede que são responsáveis por criar, monitorar e gerenciar a rede de blockchain. Além disso, os desenvolvedores de aplicativos podem estar interessados nas seções que mencionam como criar um contrato inteligente.
+
+## Amostra de séries do tutorial de rede
+{: #ibp-console-smart-contracts-structure}
+
+Esta série de tutorial de três partes orienta você durante o processo de criação e interconexão de uma rede relativamente simples e de múltiplos nós do Hyperledger Fabric usando o console do {{site.data.keyword.blockchainfull_notm}} Platform 2.0 para implementar uma rede em seu cluster do Kubernetes e instalar e instanciar um contrato inteligente.
+
+* [Construir um tutorial de rede](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network) fornece orientação durante o processo de hospedagem de uma rede ao criar um solicitador e um peer.
+* [Associar-se a um tutorial de rede](/docs/services/blockchain/howto/ibp-console-join-network.html#ibp-console-join-network) fornece orientação durante o processo de junção de uma rede existente ao criar um peer e associá-lo a um canal.
+* **Implementar um contrato inteligente na rede** Esse tutorial atual fornece informações sobre como gravar um contrato inteligente e implementá-lo em sua rede.
+
+É possível usar as etapas nestes tutoriais para construir uma rede com várias organizações em um cluster para propósitos de desenvolvimento e teste. Use o tutorial **Construir uma rede** se você desejar formar um consórcio de blockchain criando um nó do solicitador e incluindo organizações. Use o tutorial **Associar-se a uma rede** para conectar um peer à rede. Seguir os tutoriais com membros de consórcio diferentes permite criar uma rede de blockchain realmente **distribuída**.  
+
+Este tutorial final é destinado a mostrar como criar e empacotar um contrato inteligente, como instalar o contrato inteligente em um peer e como instanciar o contrato inteligente em um canal.  
 
 Os contratos inteligentes são instalados em peers e, em seguida, instanciados em canais. **Todos os membros que desejam enviar transações ou ler dados usando um contrato inteligente precisam instalar o contrato em seu peer.** Um contrato inteligente é definido por seu nome e versão. Portanto, tanto o nome quanto a versão do contrato instalado precisam ser consistentes em todos os peers no canal que planejam executar o contrato inteligente.
 
@@ -38,7 +52,7 @@ Neste tutorial, vamos percorrer as etapas para usar o console do {{site.data.key
 - [Faça upgrade das políticas e do código de contrato inteligente](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-upgrade).
 
 
-**Antes de iniciar**
+## Antes de iniciar
 
 Antes de poder instalar um contrato inteligente, assegure-se de que você tenha as coisas a seguir prontas.
 
@@ -53,8 +67,8 @@ O console do {{site.data.keyword.blockchainfull_notm}} gerencia a *implementaç�
 - Para saber como os contratos inteligentes podem ser usados para realizar transações entre múltiplas partes, veja o [ tópico Desenvolvendo aplicativos ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/developapps/developing_applications.html "tópico Desenvolvendo aplicativos") na documentação do Hyperledger Fabric.
 - Para obter um tutorial completo de ponta a ponta sobre como usar um aplicativo para interagir com contratos inteligentes, veja o [tutorial Papel comercial do Hyperledger Fabric ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/tutorial/commercial_paper.html "tutorial Papel comercial do Hyperledger Fabric").
 - Para aprender sobre como incorporar os mecanismos de controle de acesso em seu contrato inteligente, veja [Chaincode for Developers ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/chaincode4ade.html#chaincode-access-control "Chaincode for Developers").
-- Quando você estiver pronto para começar a construir contratos inteligentes, será possível usar a [Extensão do {{site.data.keyword.blockchainfull_notm}}Visual Studio Code ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://marketplace.visualstudio.com/items?itemName=IBMBlockchain.ibm-blockchain-platform "{{site.data.keyword.blockchainfull_notm}} Platform - Visual Studio Marketplace") para começar a construir seu próprio projeto de contrato inteligente. Também é possível usar essa extensão para [conectar-se diretamente à sua rede por meio do Visual Studio Code](docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-vscode).
-- Quando você estiver pronto para instalar, o contrato inteligente deverá ser empacotado em [Formato .cds ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://hyperledger-fabric.readthedocs.io/en/latest/chaincode4noah.html#packaging "empacotando contratos inteligentes") para que ele possa ser instalado nos peers. Para obter mais informações, veja [Empacotando contratos inteligentes](/docs/services/blockchain/vscode-extension.html#packaging-a-smart-contract).
+- Quando você estiver pronto para começar a construir contratos inteligentes, será possível usar a [Extensão do {{site.data.keyword.blockchainfull_notm}}Visual Studio Code ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://marketplace.visualstudio.com/items?itemName=IBMBlockchain.ibm-blockchain-platform "{{site.data.keyword.blockchainfull_notm}} Platform - Visual Studio Marketplace") para começar a construir seu próprio projeto de contrato inteligente. Também é possível usar essa extensão para [conectar-se diretamente à sua rede por meio do Visual Studio Code](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-vscode).
+- Quando você estiver pronto para instalar, o contrato inteligente deverá ser empacotado em [Formato .cds ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://hyperledger-fabric.readthedocs.io/en/latest/chaincode4noah.html#packaging "empacotando contratos inteligentes") para que ele possa ser instalado nos peers. Para obter mais informações, veja [Empacotando contratos inteligentes](/docs/services/blockchain/vscode-extension.html#packaging-a-smart-contract). Como alternativa, é possível usar os [comandos da CLI do peer ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/peerchaincode.html#peer-chaincode-package "pacote de chaincode do peer") para construir o pacote.
 <!-- Update the tutorial link to release1-4 when it is published -->
 
 
@@ -84,7 +98,7 @@ Contratos inteligentes são instanciados em um canal. Qualquer membro do console
 Use seu console para executar estas etapas:
 
 1. Na guia de contratos inteligentes, localize o contrato inteligente na lista instalada em seus peers e clique em **Instanciar** no menu overflow no lado direito da linha.
-2. No painel lateral que se abre, selecione um canal, `channel1`, no qual instanciar o contrato inteligente e selecione o solicitador no qual o canal reside, `Orderer`, se você estiver seguindo adiante no tutorial. Clique em **Avançar**.
+2. No painel lateral que é aberto, selecione um canal no qual instanciar o contrato inteligente e selecione o solicitador no qual o canal reside. É possível selecionar o canal chamado `channel1` e o nó do solicitador, chamado `Orderer`, que você criou. Em seguida, clique em  ** Avançar **.
 3. Especifique a [política de endosso para o contrato inteligente](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-endorse), descrito na seção a seguir.
 4. Também é necessário selecionar os membros da organização a serem incluídos na política. Se estiver seguindo adiante no tutorial, isso será `org1msp` e possivelmente `org2msp` se você tiver concluído os tutoriais **Construir uma rede** e **Associar-se a uma rede**.
 5. No último painel, você é solicitado a especificar a função de contrato inteligente que deseja executar quando o contrato inteligente é iniciado, juntamente com os argumentos associados a serem passados para essa função.
@@ -167,7 +181,7 @@ Os dados privados são um recurso de redes do Hyperledger Fabric na versão 1.2 
 Para usar dados privados com o beta 2.0 grátis do {{site.data.keyword.blockchainfull_notm}} Platform, as três condições a seguir devem ser satisfeitas:  
 1. **Defina a coleta de dados privados.** Um arquivo de coleta de dados privados pode ser incluído em seu contrato inteligente. Em seguida, no tempo de execução, seu aplicativo cliente pode usar as APIs de chaincode específicas de dados privados para inserir e recuperar dados da coleta. Para obter mais informações sobre como usar coletas de dados privados com o seu contrato inteligente, veja o tutorial em [Usando dados privados ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://hyperledger-fabric.readthedocs.io/en/latest/private_data_tutorial.html "Usando dados privados") na documentação do Fabric.  
 
-2. **Instale e instancie o contrato inteligente.** Depois que a coleta de dados privados do contrato inteligente tiver sido definida, será necessário instalar o contrato inteligente nos peers dos membros do canal. Quando você instanciar o contrato inteligente no canal, será necessário especificar a configuração de coleta. O console do {{site.data.keyword.blockchainfull_notm}} não fornece atualmente uma maneira de especificar uma definição de coleção **durante** a instanciação de contrato inteligente. No entanto, é possível usar o SDK do Fabric para instalar, instanciar ou atualizar um contrato inteligente que use dados privados. Para obter mais informações, consulte [Como usar dados privados ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://fabric-sdk-node.github.io/release-1.4/tutorial-private-data.html "como usar dados privados") na documentação do Node SDK.  
+2. **Instale e instancie o contrato inteligente.** Depois que a coleta de dados privados do contrato inteligente tiver sido definida, será necessário instalar o contrato inteligente nos peers que forem membros do canal. Quando você instanciar o contrato inteligente no canal, será necessário especificar a configuração de coleta. O console do {{site.data.keyword.blockchainfull_notm}} não fornece atualmente uma maneira de especificar uma definição de coleção **durante** a instanciação de contrato inteligente. No entanto, é possível usar o SDK do Fabric para instalar, instanciar ou atualizar um contrato inteligente que use dados privados. Para obter mais informações, consulte [Como usar dados privados ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://fabric-sdk-node.github.io/release-1.4/tutorial-private-data.html "como usar dados privados") na documentação do Node SDK.  
 
  **Nota:** um cliente precisa ser um administrador de seu peer a fim de instalar ou instanciar um contrato inteligente. Portanto, é necessário fazer download dos certificados da identidade de administrador de peer por meio de sua carteira eletrônica do console e passar a chave pública e privada do administrador do peer diretamente para o SDK em vez de criar uma identidade de aplicativo. Para obter um exemplo de como passar um par de chaves para o SDK, veja [Conectando-se à sua rede usando APIs do SDK do Fabric de nível inferior](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-low-level).  
 
@@ -178,9 +192,6 @@ Para usar dados privados com o beta 2.0 grátis do {{site.data.keyword.blockchai
  - Selecione pelo menos um peer de cada organização na definição de coleção que você deseja que sirva como o peer de âncora para a organização. Por motivos de redundância, é possível considerar a seleção de mais de um peer de cada organização na coleta.
 
 Seu canal agora está configurado para usar dados privados.
-
-## Detecção de problemas
-{: #console-operate-troubleshooting}
 
 **Problema:** a instalação, a instanciação ou o upgrade de um contrato inteligente falha com um erro no console.  
 **Solução:** se uma dessas ações em um contrato inteligente falhar, [verifique seus logs de nó](/docs/services/blockchain/howto/ibp-console-manage.html#ibp-console-manage-console-node-logs) quanto a erros.

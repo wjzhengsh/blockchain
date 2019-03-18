@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -17,10 +19,6 @@ lastupdated: "2019-02-08"
 
 # Anwendungen mit Fabric-SDKs entwickeln
 {: #dev-app}
-
-
-***[Ist diese Seite hilfreich? Teilen Sie uns Ihre Meinung mit.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 
 {{site.data.keyword.blockchainfull}} Platform stellt APIs bereit, die Sie verwenden können, um eine Verbindung zwischen Anwendungen und Ihrem Blockchain-Netz herzustellen. Sie können die API-Endpunkte des Netzes im Verbindungsprofil verwenden, um Ihren Chaincode aufzurufen und das kanalspezifische Ledger auf Ihren Peers zu aktualisieren oder abzufragen. Außerdem können Sie die APIs in der [Swagger-Benutzerschnittstelle](/docs/services/blockchain/howto/swagger_apis.html#ibp-swagger) verwenden, um Knoten, Kanäle und die Mitglieder des Netzes zu verwalten.
 {:shortdesc}
@@ -85,7 +83,7 @@ Sie müssen für Ihre Anwendung die API-Endpunkte bestimmter Netzressourcen (ein
                   ...
   ```
 
-In bestimmten Fällen kann es erforderlich sein, Netzressourcen außerhalb Ihrer Organisation mit Ihrer Anwendung zu adressieren. Wenn beispielsweise eine [Bewilligungsrichtlinie](/docs/services/blockchain/howto/install_instantiate_chaincode.html#install-instantiate-chaincode-endorsement-policy) für den Chaincode Bewilligungen von anderen Organisationen auf dem Kanal erforderlich sind, dann müssen Sie die Transaktion an eine ausreichende Anzahl von Peers der Organisation senden, um die Richtlinie einzuhalten. Die [Serviceerkennung ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/discovery-overview.html "Service discovery") in Hyperledger Fabric wird für den Starter Plan oder Enterprise Plan nicht unterstützt. Sie müssen die Endpunktinformationen von Peers und die zugehörigen TLS-Zertifikate anderer Organisationen unter Verwendung des Abschnitts "Peers" Ihres Verbindungsprofils abrufen. Sie können sich an die Administratoren der anderen Organisationen wenden, um in Erfahrung zu bringen, welche Peers den jeweiligen Kanälen hinzugefügt wurden. {:note}
+In bestimmten Fällen kann es erforderlich sein, Netzressourcen außerhalb Ihrer Organisation mit Ihrer Anwendung zu adressieren. Wenn beispielsweise eine [Bewilligungsrichtlinie](/docs/services/blockchain/howto/install_instantiate_chaincode.html#install-instantiate-chaincode-endorsement-policy) für den Chaincode Bewilligungen von anderen Organisationen auf dem Kanal erforderlich sind, dann müssen Sie die Transaktion an eine ausreichende Anzahl von Peers der Organisation senden, um die Richtlinie einzuhalten. Die [Serviceerkennung ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/discovery-overview.html "Service discovery") in Hyperledger Fabric wird für den Starter Plan oder Enterprise Plan nicht unterstützt. Sie müssen die Endpunktinformationen von Peers und die zugehörigen TLS-Zertifikate anderer Organisationen unter Verwendung des Abschnitts "Peers" Ihres Verbindungsprofils abrufen. Sie können sich an die Administratoren der anderen Organisationen wenden, um in Erfahrung zu bringen, welche Peers den jeweiligen Kanälen hinzugefügt wurden.{:note}
 
 3. Fügen Sie die API-Endpunktinformationen in eine Konfigurationsdatei Ihrer Anwendung ein, wie aus folgendem Beispiel hervorgeht:
   ```
@@ -360,7 +358,7 @@ var channel = fabric_client.newChannel('defaultchannel');
 
 Das SDK fügt dann die Peers und den Anordnungsservice hinzu, die über das Verbindungsprofil auf dem Kanal definiert werden. Auf diese Weise kann das Schreiben von Anwendungen effizienter gestaltet und das Aktualisieren Ihrer Anwendungen vereinfacht werden, wenn Netzmitglieder zu Kanälen hinzugefügt, aus diesen entfernt oder wenn neue Kanäle gestartet werden sollen. Informationen zu den zusätzlich auszuführenden Schritten finden Sie im [Lernprogramm zum Verbindungsprofil ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://fabric-sdk-node.github.io/tutorial-network-config.html "Connection profile tutorial"){:new_window} in der Node-SDK-Dokumentation. Sie können diese [Version des fabcar-Lernprogramms ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://www.ibm.com/developerworks/cloud/library/cl-deploy-fabcar-sample-application-ibm-blockchain-starter-plan/index.html){:new_window} verwenden, das anstelle von manuellen Endpunktverbindungen mit dem Verbindungsprofil arbeitet.
 
-Die [Serviceerkennung ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/discovery-overview.html "Service discovery") für eine Bewilligungsrichtlinie in Hyperledger Fabric wird für den Starter Plan oder Enterprise Plan nicht unterstützt. Sie können jedoch Transaktionen zur Bewilligung an Peers senden, die sich außerhalb Ihrer Organisation befinden. Hierzu bearbeiten Sie das Verbindungsprofil. Das Verbindungsprofil enthält bereits die Endpunktinformationen und TLS-Zertifikate der Peers aus anderen Organisationen, die sich im {{site.data.keyword.blockchainfull_notm}} Platform-Netz befinden. Fügen Sie im Abschnitt "channels" des Profils den Namen des Peers zum relevanten Kanal hinzu, um den Peer zum Kanal hinzuzufügen. Sie müssen sich an die Administratoren der anderen Organisationen wenden, um in Erfahrung zu bringen, welche Peers den jeweiligen Kanälen hinzugefügt wurden. 
+Die [Serviceerkennung ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/discovery-overview.html "Service discovery") für eine Bewilligungsrichtlinie in Hyperledger Fabric wird für den Starter Plan oder Enterprise Plan nicht unterstützt. Sie können jedoch Transaktionen zur Bewilligung an Peers senden, die sich außerhalb Ihrer Organisation befinden. Hierzu bearbeiten Sie das Verbindungsprofil. Das Verbindungsprofil enthält bereits die Endpunktinformationen und TLS-Zertifikate der Peers aus anderen Organisationen, die sich im {{site.data.keyword.blockchainfull_notm}} Platform-Netz befinden. Fügen Sie im Abschnitt "channels" des Profils den Namen des Peers zum relevanten Kanal hinzu, um den Peer zum Kanal hinzuzufügen. Sie müssen sich an die Administratoren der anderen Organisationen wenden, um in Erfahrung zu bringen, welche Peers den jeweiligen Kanälen hinzugefügt wurden.
 
 ## Zertifikate mit Network Monitor generieren
 {: #dev-app-enroll-panel}
@@ -611,7 +609,7 @@ channel.sendInstantiateProposal(request, 300000);
 ## Best Practices bei der Verwendung von CouchDB
 {: #dev-app-couchdb-indices}
 
-Wenn Sie die "CouchDB" als Statusdatenbank verwenden, können Sie JSON-Daten-Abfragen aus Ihrem Chaincode für die Statusdaten des Kanals ausführen. Es wird dringend empfohlen, Indizes für Ihre JSON-Abfragen zu erstellen und in Ihrem Chaincode zu verwenden. Mithilfe von Indizes können Ihre Anwendungen Daten effizient abrufen, während das Netz zusätzliche Blöcke von Transaktionen und Einträgen im World-Status hinzufügt. 
+Wenn Sie die "CouchDB" als Statusdatenbank verwenden, können Sie JSON-Daten-Abfragen aus Ihrem Chaincode für die Statusdaten des Kanals ausführen. Es wird dringend empfohlen, Indizes für Ihre JSON-Abfragen zu erstellen und in Ihrem Chaincode zu verwenden. Mithilfe von Indizes können Ihre Anwendungen Daten effizient abrufen, während das Netz zusätzliche Blöcke von Transaktionen und Einträgen im World-Status hinzufügt.
 
 Weitere Informationen zu CouchDB und zum Konfigurieren von Indizes enthält der Abschnitt über [CouchDB als Statusdatenbank![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/couchdb_as_state_database.html "CouchDB as the State Database"){:new_window} in der Hyperledger Fabric-Dokumentation. Im [Fabric-Lernprogramm für CouchDB ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/couchdb_tutorial.html) finden Sie außerdem ein Beispiel, das einen Index mit Chaincode verwendet.
 
@@ -626,17 +624,17 @@ Verwenden Sie Chaincode nach Möglichkeit nicht für Abfragen, die das Durchsuch
 ## Anwendungen hosten
 {: #dev-app-host-app}
 
-Sie können Ihre Anwendung auf Ihrem lokalen Dateisystem hosten oder sie mit einer Push-Operation an {{site.data.keyword.Bluemix_notm}} übertragen. Um Ihre Anwendung mit einer Push-Operation an {{site.data.keyword.Bluemix_notm}} zu übertragen, führen Sie die folgenden Schritte aus:
+Sie können Ihre Anwendung auf Ihrem lokalen Dateisystem hosten oder sie mit einer Push-Operation an {{site.data.keyword.cloud_notm}} übertragen. Um Ihre Anwendung mit einer Push-Operation an {{site.data.keyword.cloud_notm}} zu übertragen, führen Sie die folgenden Schritte aus:
 1. Installieren Sie das [Cloud Foundry-Befehlszeileninstallationsprogramm ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://github.com/cloudfoundry/cli/releases).  Testen Sie Ihre Installation mit dem Befehl `cf`.
     * Wenn die Installation erfolgreich war, sollte eine entsprechende Textausgabe auf Ihrem Terminal angezeigt werden.
     * Wenn "Befehl nicht gefunden" angezeigt wird, war Ihre Installation entweder nicht erfolgreich oder CF ist nicht in Ihrem Systempfad enthalten.
-2. Richten Sie den API-Endpunkt ein und melden Sie sich mit Ihrer {{site.data.keyword.Bluemix_notm}}-ID und dem Kennwort an, indem Sie die folgenden Befehle eingeben:
+2. Richten Sie den API-Endpunkt ein und melden Sie sich mit Ihrer {{site.data.keyword.cloud_notm}}-ID und dem Kennwort an, indem Sie die folgenden Befehle eingeben:
     ```
     > cf api https://api.ng.bluemix.net
     > cf login
     ```
     {:codeblock}
-3. Wechseln Sie in das Verzeichnis Ihrer Anwendung und führen Sie eine Push-Operation für Ihre Anwendung durch, indem Sie den folgenden Befehl eingeben. Dies kann einige Minuten je nach Größe Ihrer Anwendung dauern. Sie können die Protokolle aus {{site.data.keyword.Bluemix_notm}} an Ihrem Terminal anzeigen. Die Protokolle werden ausgeblendet, wenn die Anwendung erfolgreich gestartet wurde.
+3. Wechseln Sie in das Verzeichnis Ihrer Anwendung und führen Sie eine Push-Operation für Ihre Anwendung durch, indem Sie den folgenden Befehl eingeben. Dies kann einige Minuten je nach Größe Ihrer Anwendung dauern. Sie können die Protokolle aus {{site.data.keyword.cloud_notm}} an Ihrem Terminal anzeigen. Die Protokolle werden ausgeblendet, wenn die Anwendung erfolgreich gestartet wurde.
 	```
 	> cf push NAME_IHRER_APP
 	```

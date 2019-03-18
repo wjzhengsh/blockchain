@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018,2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -15,22 +17,18 @@ lastupdated: "2019-02-08"
 # 支払いモード
 {: #paying-mode}
 
-
-***[このページは参考になりましたか。 ご意見をお聞かせください。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
-
 {{site.data.keyword.blockchainfull}} プラットフォームは、メンバーシップ料金とピア料金が毎月課金されます。 各ネットワーク・メンバーは、ネットワーク・インスタンスを作成するスペースを所有する {{site.data.keyword.cloud_notm}} アカウントで請求料金を支払うことができます。 または、1 つのネットワーク・メンバーがネットワーク内の他のメンバーの請求をカバーしたり、すべてのメンバーの請求をカバーしてネットワーク全体の支払いを行ったりすることもできます。 支払者は、必要に応じて、請求を他のメンバーに転送することもできます。
 {:shortdesc}
 
 選択するネットワーク・プランと使用するリソースの量に応じて、支払いは異なります。 料金について詳しくは、[料金](/docs/services/blockchain/howto/pricing.html#ibp-pricing)を参照してください。
 
-複数の組織で 1 つのコンソーシアムを構築する場合は、ネットワークを作成する際に組織用の E メール・アドレスを使用することを参加組織にお勧めします。そうすれば、一個人の都合によってネットワークの利用可否が左右されることがありません。
+複数の組織で 1 つのコンソーシアムを構築する場合は、ネットワークを作成する際に組織用の E メール・アドレスを使用することを参加組織にお勧めします。 そうすれば、一個人の都合によってネットワークの利用可否が左右されることがありません。
 
 
 ## 前提条件
 {: #paying-mode-prereq}
 
-すべてのネットワーク・メンバーは、{{site.data.keyword.cloud_notm}} で {{site.data.keyword.blockchainfull_notm}} Platform サービス・インスタンスを作成できるようにするため、**従量課金 (PAYG)** アカウントなどの有料 {{site.data.keyword.cloud_notm}} アカウントを持っている必要があります。 アカウントがない場合は[登録](https://console.bluemix.net/registration/)し、そのアカウントを有料アカウントにアップグレードします。 アカウントを従量課金タイプにアップグレードするには、{{site.data.keyword.cloud_notm}} コンソールで**「管理」** > **「請求および使用量」** > **「請求処理」**に移動し、**「クレジット・カードの追加」**をクリックします。
+すべてのネットワーク・メンバーは、{{site.data.keyword.cloud_notm}} で {{site.data.keyword.blockchainfull_notm}} Platform サービス・インスタンスを作成できるようにするため、**従量課金 (PAYG)** アカウントなどの有料 {{site.data.keyword.cloud_notm}} アカウントを持っている必要があります。 アカウントがない場合は[登録](https://cloud.ibm.com/registration/)し、そのアカウントを有料アカウントにアップグレードします。 アカウントを従量課金タイプにアップグレードするには、{{site.data.keyword.cloud_notm}} コンソールで**「管理」** > **「請求および使用量」** > **「請求処理」**に移動し、**「クレジット・カードの追加」**をクリックします。
 
 
 ## 独自で料金を支払う場合

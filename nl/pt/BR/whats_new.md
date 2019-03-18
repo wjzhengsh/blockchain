@@ -2,7 +2,10 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
+
 ---
 
 {:new_window: target="_blank"}
@@ -16,8 +19,6 @@ lastupdated: "2019-02-08"
 
 # o quê há de novo
 {: #whats-new}
-
-***[Esta página é útil? Diga-nos.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 ## 8 de fevereiro de 2019
 {: #whats-new-2-08-2019}
@@ -42,12 +43,12 @@ O {{site.data.keyword.blockchainfull}} Platform libera um beta 2.0 grátis, a pr
 *	Conecte facilmente um único peer a múltiplas redes de segmentos de mercado
 *	Comece pequeno, pague conforme crescer por aquilo que você usar sem investimento antecipado e faça upgrade facilmente por meio do Kubernetes
 
-- Mais informações sobre o beta 2.0 grátis do {{site.data.keyword.blockchainfull_notm}} Platform estão disponíveis em [Sobre o beta 2.0 grátis do {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/howto/ibp-console.html#ibp-console-overview).
-- Instruções sobre como implementar a liberação beta 2.0 grátis em um cluster do {{site.data.keyword.IBM_notm}} Kubernetes Service estão disponíveis em [Introdução ao beta 2.0 grátis do {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks).
+- Mais informações sobre o {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta estão disponíveis em [Sobre o {{site.data.keyword.blockchainfull_notm}} Platform 2.0](/docs/services/blockchain/howto/ibp-console.html#ibp-console-overview).
+- Instruções sobre como implementar a liberação free 2.0 beta em um cluster do {{site.data.keyword.IBM_notm}} Kubernetes Service estão disponíveis em [Introdução ao {{site.data.keyword.blockchainfull_notm}} Platform 2.0](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks).
 - Novos tutoriais para usar o beta 2.0 grátis do {{site.data.keyword.blockchainfull_notm}} Platform estão disponíveis na subseção **{{site.data.keyword.blockchainfull_notm}} Platform 2.0** sob a categoria **COMO**.
   * [Construir um tutorial de rede](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network) fornece orientação durante o processo de hospedagem de uma rede ao criar um solicitador e um peer.
   * O [tutorial Associar-se a uma rede](/docs/services/blockchain/howto/ibp-console-join-network.html#ibp-console-join-network) explica como se associar a uma rede existente criando um peer e associando-o a um canal.
-  * [Implementar um contrato inteligente no tutorial de rede ](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts) fornece informações sobre como gravar um contrato inteligente e implementá-lo em sua rede.
+  * [Implementar um contrato inteligente na rede](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts) fornece informações sobre como gravar um contrato inteligente e implementá-lo em sua rede.
 - A oferta beta 2.0 grátis do {{site.data.keyword.blockchainfull_notm}} Platform é baseada no Hyperledger Fabric v1.4 e suporta gossip de ponto a ponto, descoberta de serviço e dados privados. Visite este [tópico](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-private-data) para saber como configurar dados privados em sua rede.
 
 - A extensão do {{site.data.keyword.blockchainfull_notm}} Visual Studio Code está disponível por meio do Mercado do Visual Studio Code. Os desenvolvedores podem usar a extensão para criar, testar e implementar contratos inteligentes em uma instância do Hyperledger Fabric. A extensão é compatível com o Hyperledger Fabric 1.3 e superior. Para obter informações sobre como usar a extensão do VS Code, veja [Ferramentas para contratos inteligentes](/docs/services/blockchain/vscode-extension.html#develop-vscode).  

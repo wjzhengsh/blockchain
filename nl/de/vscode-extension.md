@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -17,9 +19,6 @@ lastupdated: "2019-02-08"
 
 # Tools für Smart Contracts
 {: #develop-vscode}
-
-***[Ist diese Seite hilfreich? Teilen Sie uns Ihre Meinung mit.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 
 Die {{site.data.keyword.blockchainfull}} Platform-Erweiterung für Visual Studio Code stellt innerhalb von Visual Studio Code eine Umgebung für die Entwicklung, Erstellung und Bereitstellung von Smart-Contract-Paketen zur Verfügung. Die Erweiterung enthält außerdem Befehle, mit denen eine vorkonfigurierte Instanz von Hyperledger Fabric für eine vereinfachte lokale Smart-Contract-Entwicklung eingerichtet werden kann.
 
@@ -95,7 +94,7 @@ Vergewissern Sie sich beim Herstellen einer Verbindung zur vorkonfigurierten Hyp
 
 So starten Sie die Laufzeit für `local_fabric` erneut:
 
-1. Klicken Sie mit der rechten Maustaste auf die Verbindung zu `local_fabric`, nachdem diese aufgebaut worden ist.
+1. Klicken Sie mit der rechten Maustaste auf die Verbindung `local_fabric`, nachdem diese eingerichtet worden ist.
 2. Wählen Sie die Option **Fabric-Laufzeit erneut starten** aus.
 
 Die Hyperledger Fabric-Container werden daraufhin gestoppt und erneut gestartet.
@@ -105,7 +104,7 @@ Die Hyperledger Fabric-Container werden daraufhin gestoppt und erneut gestartet.
 
 So rüsten Sie die Laufzeit für `local_fabric` um:
 
-1. Klicken Sie mit der rechten Maustaste auf die Verbindung zu `local_fabric`, nachdem diese aufgebaut worden ist.
+1. Klicken Sie mit der rechten Maustaste auf die Verbindung `local_fabric`, nachdem diese eingerichtet worden ist.
 2. Wählen Sie die Option **Fabric-Laufzeit umrüsten** aus.
 
 Bei einer Umrüstung des Netzes für `local_fabric` werden alle Hyperledger Fabric-Container geschlossen. **Hinweis:** Hierdurch gehen die Ledgerdaten und die Daten für den World-Status verloren.
@@ -117,7 +116,7 @@ Beim normalen Betrieb wird durch einen Peer ein Chaincode-Container erstellt und
 
 So aktivieren Sie den Entwicklungsmodus für die vorkonfigurierte Hyperledger Fabric-Laufzeit:
 
-1. Klicken Sie mit der rechten Maustaste auf die Verbindung zu `local_fabric`, nachdem diese aufgebaut worden ist.
+1. Klicken Sie mit der rechten Maustaste auf die Verbindung `local_fabric`, nachdem diese eingerichtet worden ist.
 2. Wählen Sie die Option **Entwicklungsmodus ein-/ausschalten** aus.
 
 Der Entwicklungsmodus muss aktiviert sein, damit die Debugfunktion der Erweiterung verwendet werden kann.
@@ -129,13 +128,13 @@ Mit der {{site.data.keyword.blockchainfull_notm}} Platform-Erweiterung für Visu
 
 **Hinweis:** Mit dem Enterprise Plan von  {{site.data.keyword.blockchainfull_notm}} Platform ist die Erweiterung gegenwärtig nicht kompatibel.
 
-1. alls Sie keine Starter Plan-Instanz von {{site.data.keyword.blockchainfull_notm}} Platform verfügen können Sie eine [erstellen ![External link icon](images/external_link.svg "External link icon")](https://console.bluemix.net/catalog/services/blockchain).
+1. alls Sie keine Starter Plan-Instanz von {{site.data.keyword.blockchainfull_notm}} Platform verfügen können Sie eine [erstellen ![External link icon](images/external_link.svg "External link icon")](https://cloud.ibm.com/catalog/services/ibm-blockchain-5-prod).
 2. Öffnen Sie die {{site.data.keyword.blockchainfull_notm}} Platform-Benutzerschnittstelle, indem Sie auf **Starten** klicken.
 3. Klicken Sie auf **Übersicht** > **Verbindungsprofil** > **Herunterladen**, um Ihr Verbindungsprofil abzurufen.
 4. Generieren Sie die erforderlichen Administratorzertifikate; klicken Sie hierzu auf **Zertifizierungsstelle** > **Zertifikat generieren** und speichern Sie anschließend das Zertifikat und den privaten Schlüssel in Ihrem Dateisystem.
 5. Fügen Sie die Zertifikate zu Ihrer Starter Plan-Instanz von  {{site.data.keyword.blockchainfull_notm}} Platform hinzu, indem Sie auf **Mitglieder** > **Zertifikate** > **Zertifikat hinzufügen** klicken und das im vorherigen Schritt erstellte Zertifikat auswählen.
 6. Öffnen Sie in Visual Studio Code die Ansicht für die {{site.data.keyword.blockchainfull_notm}} Platform-Erweiterung und klicken Sie auf **Neue Verbindung hinzufügen**.
-7. Geben Sie den Verbindungsnamen und den Pfad zum Verbindungsprofil ein, und wählen Sie entweder die vorhandene Wallet auf dem Dateisystem [Wallet ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/developapps/wallet.html "Wallet")aus, oder erstellen Sie mit einem Zertifikat und einem privaten Schlüssel eine neue elektronische Brieftasche (Wallet).
+7. Geben Sie den Namen der Verbindung und den Pfad zum Verbindungsprofil ein und wählen Sie entweder eine vorhandene [Wallet![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/developapps/wallet.html "Wallet") in Ihrem Dateisystem aus oder erstellen Sie mit einem Zertifikat und einem privaten Schlüssel eine neue Wallet.
 
 ### Verbindung zu einer eigenen Hyperledger Fabric-Instanz herstellen
 {: #develop-vscode-connecting-to-own-Fabric-instance}
@@ -184,7 +183,7 @@ Durch die Bearbeitung einer Verbindung können Sie den Dateipfad für das Verbin
 
 So bearbeiten Sie eine Verbindung:
 
-1. Klicken Sie in der Erweiterung in der linken unteren Ecke auf die Verbindung, die Sie bearbeiten wollen. Daraufhin wird ein Kontextmenü mit Optionen für das Hinzufügen einer Identität, das Bearbeiten der Verbindung oder das Löschen der Verbindung geöffnet.
+1. Klicken Sie in der linken unteren Ecke der Erweiterung mit der rechten Maustaste auf die Verbindung, die Sie bearbeiten möchten. Daraufhin wird ein Kontextmenü mit Optionen zum Hinzufügen einer Identität sowie zum Bearbeiten und zum Löschen der Verbindung geöffnet. 
 2. Wählen Sie **Verbindung bearbeiten** aus.
 3. Die Seite **Benutzereinstellungen** wird geöffnet; hierbei sind die Verbindungsdetails hervorgehoben.
 4. Nehmen Sie die gewünschten Änderungen vor und speichern Sie die Seite mit den Einstellungen.
@@ -194,7 +193,7 @@ So bearbeiten Sie eine Verbindung:
 
 Verbindungen können wie folgt gelöscht werden:
 
-1. Klicken Sie in der Erweiterung in der linken unteren Ecke auf die Verbindung, die Sie bearbeiten wollen. Daraufhin wird ein Kontextmenü mit Optionen für das Hinzufügen einer Identität, das Bearbeiten der Verbindung oder das Löschen der Verbindung geöffnet.
+1. Klicken Sie in der linken unteren Ecke der Erweiterung mit der rechten Maustaste auf die Verbindung, die Sie bearbeiten möchten. Daraufhin wird ein Kontextmenü mit Optionen zum Hinzufügen einer Identität sowie zum Bearbeiten und zum Löschen der Verbindung geöffnet. 
 2. Wählen Sie **Verbindung löschen** aus.
 3. Nun wird ein Dialogfeld angezeigt, in dem das Löschen der Verbindung bestätigt werden muss. Klicken Sie auf **Ja**.
 
@@ -207,7 +206,7 @@ Wenn Sie eine Verbindung hinzufügen, müssen Sie entweder eine vorhandene elekt
 
 So fügen Sie eine Identität zu einer bereits eingerichteten Verbindung hinzu:
 
-1. Klicken Sie in der Erweiterung in der linken unteren Ecke auf die Verbindung, die Sie bearbeiten wollen. Daraufhin wird ein Kontextmenü mit Optionen für das Hinzufügen einer Identität, das Bearbeiten der Verbindung oder das Löschen der Verbindung geöffnet.
+1. Klicken Sie in der linken unteren Ecke der Erweiterung mit der rechten Maustaste auf die Verbindung, die Sie bearbeiten möchten. Daraufhin wird ein Kontextmenü mit Optionen zum Hinzufügen einer Identität sowie zum Bearbeiten und zum Löschen der Verbindung geöffnet. 
 2. Wählen Sie **Identität hinzufügen** aus.
 3. Wählen Sie eine vorhandene elektronische Brieftasche (Wallet) aus, die die Identität enthält, die hinzugefügt werden soll, oder erstellen Sie eine neue elektronische Brieftasche, indem Sie die Dateipfade der Zertifikate und des privaten Schlüssels angeben.
 
@@ -224,7 +223,7 @@ Die Verbindungsdetails, die zum Herstellen der Verbindung für `local_fabric` er
 So exportieren Sie die Verbindungsdetails für `local_fabric`:
 
 1. Starten Sie die vorkonfigurierte Hyperledger Fabric-Laufzeit.
-2. Klicken Sie mit der rechten Maustaste auf die Verbindung für `local_fabric` und wählen Sie die Option **Verbindungsdetails exportieren** aus.
+2. Klicken Sie mit der rechten Maustaste auf die Verbindung `local_fabric` und wählen Sie die Option **Verbindungsdetails exportieren** aus.
 
 Die Verbindungsdetails werden in einem Verzeichnis namens `local_fabric` gespeichert, das in Ihrem aktuellen Projektverzeichnis enthalten ist.
 
@@ -250,7 +249,7 @@ Nachdem Sie eine Verbindung zu einer Hyperledger Fabric-Instanz hergestellt habe
 Damit ein installiertes Smart-Contract-Paket auf einem Kanal ausgeführt werden kann, muss es zunächst instanziiert werden.
 
 1. Stellen Sie eine Verbindung zu der Hyperledger Fabric-Instanz her, auf der das Smart-Contract-Paket installiert ist.
-2. Klicken Sie mit der rechten Maustaste auf den Kanal, auf dem das Smart-Contract-Paket instanziiert werden soll, und klicken Sie dann auf die Option **Smart Contract instanziieren**.
+2. Klicken Sie mit der rechten Maustaste auf den Kanal, in dem Sie das Smart-Contract-Paket instanziieren möchten, und klicken Sie dann auf **Smart Contract instanziieren**.
 3. Wählen Sie das Smart-Contract-Paket und die Version für die Instanziierung aus. Das Smart-Contract-Paket muss auf einem Peer installiert sein, der Mitglied dieses Kanals ist.
 4. Geben Sie den Namen der Instanzerstellungsfunktion in Ihrem Smart Contract ein.
 5. Geben Sie alle gegebenenfalls von der Instanzerstellungsfunktion benötigten Argumente ein.
@@ -281,7 +280,7 @@ Nachdem ein Smart Contract instanziiert wurde, können Tests für einen Smart Co
 So generieren Sie Tests für Smart Contracts:
 
 1. Vergewissern Sie sich, dass der Smart Contract instanziiert wurde.
-2. Klicken Sie unter **Instanziierte Smart Contracts** mit der rechten Maustaste auf den Smart Contract, für den Tests generiert werden sollen.
+2. Klicken Sie unter **Smart Contracts instanziieren** mit der rechten Maustaste auf den Smart Contract, für den Tests generiert werden sollen.
 3. Wählen Sie die Option **Tests für Smart Contract generieren** aus.
 4. Wählen Sie jetzt die Sprache für die Testdatei aus (entweder  **JavaScript** oder **TypeScript**). Die {{site.data.keyword.blockchainfull_notm}} Platform-Erweiterung installiert daraufhin erforderliche npm-Module und erstellt die Testdatei.
 

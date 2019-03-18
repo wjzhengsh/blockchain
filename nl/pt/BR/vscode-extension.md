@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -17,9 +19,6 @@ lastupdated: "2019-02-08"
 
 # Ferramentas para contratos inteligentes
 {: #develop-vscode}
-
-***[Esta página é útil? Diga-nos.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 
 A extensão do {{site.data.keyword.blockchainfull}} Platform Visual Studio Code fornece um ambiente no Visual Studio Code para desenvolvimento, empacotamento e implementação de pacotes de contratos inteligentes. A extensão também inclui comandos para configurar uma instância local pré-configurada do Hyperledger Fabric para o desenvolvimento de contratos inteligentes locais simplificados.
 
@@ -129,13 +128,13 @@ A extensão do {{site.data.keyword.blockchainfull_notm}} Platform Visual Studio 
 
 **Nota:** atualmente, a extensão não é compatível com o {{site.data.keyword.blockchainfull_notm}} Platform Enterprise Plan.
 
-1. Se você não tiver uma instância do {{site.data.keyword.blockchainfull_notm}} Platform Starter Plan, [crie uma ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://console.bluemix.net/catalog/services/blockchain).
+1. Se você não tiver uma instância do {{site.data.keyword.blockchainfull_notm}} Platform Starter Plan, [crie uma ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://cloud.ibm.com/catalog/services/ibm-blockchain-5-prod).
 2. Abra a IU do {{site.data.keyword.blockchainfull_notm}} Platform clicando em **Ativar**.
 3. Recupere seu perfil de conexão clicando em **Visão geral** > **Perfil de conexão** > **Download**.
 4. Gere os certificados de administrador necessários clicando em **Autoridade de certificação** > **Gerar certificado** e salvando o certificado e a chave privada em seu sistema de arquivos.
 5. Inclua os certificados para sua instância do {{site.data.keyword.blockchainfull_notm}} Platform Starter Plan clicando em **Membros** > **Certificados** > **Incluir certificado** e selecionando o certificado criado na etapa precedente.
 6. No Visual Studio Code, abra a visualização de extensão do {{site.data.keyword.blockchainfull_notm}} Platform e clique em **Incluir nova conexão**.
-7. Insira o nome de conexão, o caminho para o perfil de conexão e selecione uma [carteira eletrônica ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/developapps/wallet.html "Carteira eletrônica") do sistema de arquivos existente ou crie uma nova carteira eletrônica usando um certificado e uma chave privada.
+7. Insira o nome da conexão, o caminho para o perfil da conexão e selecione uma carteira eletrônica existente [![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/developapps/wallet.html "Carteira eletrônica") em seu sistema de arquivos ou crie uma nova carteira eletrônica usando um certificado e uma chave privada.
 
 ### Conectando-se à sua própria instância do Hyperledger Fabric
 {: #develop-vscode-connecting-to-own-Fabric-instance}
@@ -184,7 +183,7 @@ Ao editar uma conexão, é possível mudar o caminho de arquivo para o perfil de
 
 Para editar uma conexão:
 
-1. Na extensão, clique com o botão direito na conexão para editar na parte inferior esquerda; isso abre um menu contextual com as opções para incluir uma identidade, editar ou excluir a conexão.
+1. Na extensão, clique com o botão direito na conexão para editar na parte inferior esquerda, isso abre um menu contextual com as opções para incluir uma identidade, editar a conexão ou excluir a conexão.
 2. Selecione **Editar conexão**.
 3. A página **Configurações do usuário** será aberta, com os detalhes da conexão destacados.
 4. Faça quaisquer mudanças e salve a página de configurações.
@@ -194,7 +193,7 @@ Para editar uma conexão:
 
 As conexões podem ser excluídas por:
 
-1. Na extensão, clique com o botão direito na conexão para editar na parte inferior esquerda; isso abre um menu contextual com as opções para incluir uma identidade, editar ou excluir a conexão.
+1. Na extensão, clique com o botão direito na conexão para editar na parte inferior esquerda, isso abre um menu contextual com as opções para incluir uma identidade, editar a conexão ou excluir a conexão.
 2. Selecione **Excluir conexão**.
 3. Uma caixa de diálogo aparece para confirmar a exclusão da conexão. Clique em **Sim**.
 
@@ -207,7 +206,7 @@ Ao incluir uma conexão, deve-se selecionar uma carteira eletrônica existente q
 
 Para incluir uma identidade em uma conexão que já está estabelecida:
 
-1. Na extensão, clique com o botão direito na conexão para editar na parte inferior esquerda; isso abre um menu contextual com as opções para incluir uma identidade, editar ou excluir a conexão.
+1. Na extensão, clique com o botão direito na conexão para editar na parte inferior esquerda, isso abre um menu contextual com as opções para incluir uma identidade, editar a conexão ou excluir a conexão.
 2. Selecione **Incluir uma identidade**.
 3. Selecione uma carteira eletrônica existente que contenha a identidade a ser incluída ou crie uma nova carteira eletrônica fornecendo os caminhos de arquivo dos certificados e da chave privada.
 
@@ -250,7 +249,7 @@ Depois de se conectar a uma instância do Hyperledger Fabric, será possível in
 Para iniciar a execução em um canal, um pacote de contrato inteligente instalado deve primeiro ser instanciado.
 
 1. Conecte-se à instância do Hyperledger Fabric na qual o pacote de contrato inteligente está instalado.
-2. Clique com o botão direito no canal em que você deseja instanciar o pacote de contrato inteligente e clique em **Instanciar contrato inteligente**.
+2. Clique com o botão direito do mouse no canal no qual você deseja instanciar o pacote de contrato inteligente e clique em **Instanciar contrato inteligente**.
 3. Selecione o pacote de contrato inteligente e a versão a serem instanciados. O pacote de contrato inteligente deve ser instalado em um peer que seja um membro desse canal.
 4. Insira o nome da função de instanciação em seu contrato inteligente.
 5. Insira quaisquer argumentos requeridos por sua função de instanciação.

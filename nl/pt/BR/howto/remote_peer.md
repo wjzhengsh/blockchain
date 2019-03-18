@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -17,8 +19,6 @@ lastupdated: "2019-02-08"
 
 # Sobre o {{site.data.keyword.blockchainfull_notm}} Platform for Amazon Web Services
 {: #remote-peer-aws-about}
-
-***[Esta página é útil? Diga-nos.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 **Nota:** o peer remoto do {{site.data.keyword.blockchainfull}} Platform no programa {{site.data.keyword.cloud_notm}} Private (Beta) foi terminado. Se você ainda desejar executar peers em seu ambiente do {{site.data.keyword.cloud_notm}} Private, use a oferta ** {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private**. Para obter mais informações, veja [Sobre peers no {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-about-peer).
 
@@ -36,7 +36,7 @@ O {{site.data.keyword.blockchainfull_notm}} Platform for AWS não tem acesso à 
 - É possível conectar seus peers do {{site.data.keyword.blockchainfull_notm}} Platform for AWS apenas às redes de blockchain que estão no nível do Fabric v1.1 ou v1.2.1. É possível localizar a versão do Fabric abrindo a [janela Preferências de rede](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-network-preferences) em seu Network Monitor.
 - O tipo de banco de dados do peer do {{site.data.keyword.blockchainfull_notm}} Platform for AWS deve corresponder ao tipo de banco de dados de sua rede de blockchain, LevelDB ou CouchDB.
 - A interface do CouchDB Fauxton não está disponível no peer do AWS.
-- Peers do [Gossip](/docs/services/blockchain/glossary.html#glossary-gossip) for AWS não são suportados atualmente. Isso significa que os recursos do Fabric que dependem do gossip, como [dados privados ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/private-data-arch.html "dados privados") e [descoberta de serviço ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/discovery-overview.html "descoberta de serviço") também não são suportados.
+- Peers do [Gossip](/docs/services/blockchain/glossary.html#glossary-gossip) for AWS não são suportados atualmente. Isso significa que os recursos do Fabric que dependem do gossip, como [dados privados ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/private-data-arch.html "dados privados") e [descoberta de serviço ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/discovery-overview.html "descoberta de serviço"), também não são suportados.
 
 ## Pré-requisitos
 {: #remote-peer-aws-about-prereq}

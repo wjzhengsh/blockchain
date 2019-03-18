@@ -2,7 +2,10 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-02-08"
+
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -18,26 +21,28 @@ lastupdated: "2019-02-08"
 # Lernprogramm zum Erstellen eines Netzes
 {: #ibp-console-build-network}
 
-***[Ist diese Seite hilfreich? Teilen Sie uns Ihre Meinung mit.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
-{{site.data.keyword.blockchainfull}} Platform ist ein Blockchain-as-a-Service-Angebot, mit dem Sie Blockchain-Anwendungen und -Netze entwickeln, bereitstellen und betreiben können. In der [Übersicht zu den Blockchain-Komponenten](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview) erfahren Sie mehr zu den Blockchain-Komponenten und darüber, wie sie miteinander interagieren. Dieses Lernprogramm ist der erste Teil in der [Lernprogrammreihe für Beispielnetze](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-sample-tutorial), in dem die Verwendungsweise der {{site.data.keyword.blockchainfull_notm}} Platform-Konsole beschrieben wird, die in {{site.data.keyword.cloud_notm}} bereitgestellt wird, um ein voll funktionsfähiges Netz in einem {{site.data.keyword.cloud_notm}}-Kubernetes-Service zu erstellen.
+{{site.data.keyword.blockchainfull}} Platform ist ein Blockchain-as-a-Service-Angebot, mit dem Sie Blockchain-Anwendungen und -Netze entwickeln, bereitstellen und betreiben können. In der [Übersicht zu den Blockchain-Komponenten](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview) erfahren Sie mehr zu den Blockchain-Komponenten und darüber, wie sie miteinander interagieren. Dieses Lernprogramm ist der erste Teil in der [Lernprogrammreihe für Beispielnetze](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-sample-tutorial) und beschreibt, wie Sie mit der {{site.data.keyword.blockchainfull_notm}} Platform-Konsole ein voll funktionsfähiges Netz in einem einzelnen {{site.data.keyword.cloud_notm}} Kubernetes-Service erstellen können.
 {:shortdesc}
 
-Wenn Sie die Konsole noch nicht für einen Kubernetes-Cluster unter Verwendung des {{site.data.keyword.cloud_notm}}-Kubernetes-Service implementiert haben, lesen Sie den Abschnitt [Einführung in {{site.data.keyword.blockchainfull_notm}} Platform 2.0](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks). Sie können einen neuen Kubernetes-Cluster für die Konsolenimplementierung erstellen oder einen vorhandenen Kubernetes-Cluster in Ihrem {{site.data.keyword.cloud_notm}}-Konto verwenden. Nachdem Sie die {{site.data.keyword.blockchainfull}} Platform-Instanz in Ihrem Kubernetes-Cluster implementiert haben, können Sie die Konsole starten, um Ihre Blockchain-Komponenten zu erstellen und zu verwalten.
+**Zielgruppe:** Dieser Abschnitt richtet sich an Netzoperatoren, die für die Erstellung, Überwachung und Verwaltung des Blockchain-Netzes verantwortlich sind.   
+
+Wenn Sie die Konsole noch nicht für einen Kubernetes-Cluster unter Verwendung des {{site.data.keyword.cloud_notm}}-Kubernetes-Service implementiert haben, lesen Sie den Abschnitt [Einführung in {{site.data.keyword.blockchainfull_notm}} Platform 2.0](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks). Sie können einen neuen Kubernetes-Cluster für die Konsolenimplementierung erstellen oder einen vorhandenen Kubernetes-Cluster in Ihrem {{site.data.keyword.cloud_notm}}-Konto verwenden.  Nachdem Sie die {{site.data.keyword.blockchainfull}} Platform-Instanz in Ihrem Kubernetes-Cluster implementiert haben, können Sie die Konsole starten, um Ihre Blockchain-Komponenten zu erstellen und zu verwalten.
 
 Unabhängig davon, ob Sie einen bezahlten oder kostenlosen Kubernetes-Cluster bereitstellen, verwenden Sie das Kubernetes-Dashboard, um bei der Bereitstellung von Knoten und Erstellung von Kanälen ein besonderes Augenmerk auf die Ihnen zur Verfügung stehenden Ressourcen zu legen. Es liegt in Ihrer Verantwortung, Ihren Kubernetes-Cluster zu verwalten und bei Bedarf zusätzliche Ressourcen zu implementieren. Obwohl Komponenten erfolgreich in einem kostenlosen Cluster bereitgestellt werden können, gilt dennoch Folgendes: Je mehr Komponenten Sie hinzufügen, desto langsamer werden die Komponenten ausgeführt.
 {: note}
 
+
 ## Lernprogrammreihe für Beispielnetze
 {: #ibp-console-build-network-sample-tutorial}
 
-Diese dreiteilige Lernprogrammreihe führt Sie durch den Prozess der Erstellung und Verbindung eines relativ einfachen {{site.data.keyword.blockchainfull_notm}} Platform 2.0-Netzes mit mehreren Knoten, indem Sie die Konsole verwenden und Ihre Kubernetes-Implementierung nutzen.
+Diese dreiteilige Lernprogrammreihe führt Sie durch den Prozess der Erstellung und Verbindung eines relativ einfachen Hyperledger Fabric-Netzes mit mehreren Knoten, indem Sie mithilfe der {{site.data.keyword.blockchainfull_notm}} Platform 2.0-Konsole ein Netz in Ihrem Kubernetes-Cluster installieren und einen Smart Contract instanziieren.
 
-* Im [Lernprogramm zum Erstellen eines Netzes](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network) erfahren Sie, wie Sie durch das Erstellen eines Anordnungsknotens und eines Peers ein Netz hosten.
+* Im **Lernprogramm zum Erstellen eines Netzes** erfahren Sie, wie Sie durch das Erstellen eines Anordnungsknotens und eines Peers ein Netz hosten. 
 * Im [Lernprogramm zum Teilnehmen an einem Netz](/docs/services/blockchain/howto/ibp-console-join-network.html#ibp-console-join-network) erfahren Sie, wie Sie einem vorhandenen Netz beitreten können, indem Sie einen Peer erstellen und diesen mit einem Kanal verknüpfen.
-* Im [Lernprogramm zum Bereitstellen eines Smart Contract im Netz](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts) erfahren Sie, wie Sie einen Smart Contract schreiben und ihn in Ihrem Netz bereitstellen.
+* Im [Lernprogramm zum Bereitstellen eines Smart Contract im Netz](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts) erfahren Sie, wie Sie einen Smart Contract schreiben und in Ihrem Netz bereitstellen.
 
-Sie können die Schritte in diesen Lernprogrammen verwenden, um ein Netz mit mehreren Organisationen in einem Cluster für Entwicklungs- und Testzwecke zu erstellen. Verwenden Sie das Lernprogramm zum **Erstellen eines Netzes**, wenn Sie ein Blockchain-Konsortium gründen möchten und andere Mitglieder das Lernprogramm zum **Teilnehmen an einem Netz** verwenden, um eine Verbindung von einem anderen Cluster herzustellen. Indem Sie die Lernprogramme mit unterschiedlichen Konsortiumsmitgliedern durchführen, können Sie ein wirklich **verteiltes** Blockchain-Netz erstellen.
+Sie können die Schritte in diesen Lernprogrammen verwenden, um ein Netz mit mehreren Organisationen in einem Cluster für Entwicklungs- und Testzwecke zu erstellen. Verwenden Sie das Lernprogramm zum **Erstellen eines Netzes**, wenn Sie ein Blockchain-Konsortium gründen möchten, indem Sie einen Anordnungsknoten erstellen und Organisationen hinzufügen. Verwenden Sie das Lernprogramm zum **Teilnehmen an einem Netz**, um einen Peer mit dem Netz zu verbinden. Indem Sie die Lernprogramme mit unterschiedlichen Konsortiumsmitgliedern durchführen, können Sie ein wirklich **verteiltes** Blockchain-Netz erstellen.  
+
 
 ### Struktur dieses Netzes
 {: #ibp-console-build-network-structure}
@@ -50,7 +55,7 @@ Diese Konfiguration ist für das Testen von Anwendungen und Smart Contracts. Das
 * **Zwei Peerorganisationen**: `Org1` und `Org2`  
   In der Lernprogrammreihe wird beschrieben, wie zwei Peerorganisationen und zwei zugeordnete Peers erstellt werden. Sehen Sie dabei Organisationen in einem Blockchain-Netz beispielsweise als zwei Banken an, die Transaktionen untereinander ausführen. Sie erstellen die MSP-Definition (MSP, Membership Services Provider) für 'Org1' und 'Org2', die die Organisationen `Org1` und `Org2` definiert.
 * **Eine Organisation des Anordnungsknotens**: `Orderer Org`  
-  Da Sie ein verteiltes Ledger erstellen, sollten die Peers und Anordnungsknoten verschiedenen Organisationen angehören. Daher wird für den Anordnungsknoten eine separate Organisation erstellt. Unter anderem ordnet ein Anordnungsknoten die Blöcke von Transaktionen an, die an die Peers gesendet werden, damit sie in die entsprechenden Ledger geschrieben werden und somit die Blockchain bilden. Sie erstellen die MSP-Definition (MSP, Membership Services Provider) für den Anordnungsknoten, die die Organisation `Orderer Org` definiert.
+  Da Sie ein verteiltes Ledger erstellen, sollten die Peers und Anordnungsknoten verschiedenen Organisationen angehören. Daher wird für den Anordnungsknoten eine separate Organisation erstellt.  Unter anderem ordnet ein Anordnungsknoten die Blöcke von Transaktionen an, die an die Peers gesendet werden, damit sie in die entsprechenden Ledger geschrieben werden und somit die Blockchain bilden. Sie erstellen die MSP-Definition (MSP, Membership Services Provider) für den Anordnungsknoten, die die Organisation `Orderer Org` definiert.
 * **Drei Zertifizierungsstellen**: `Org1 CA, Org2 CA, Orderer CA`   
   Eine Zertifizierungsstelle (CA) ist der Knoten, der Zertifikate für alle Organisationsmitglieder ausgibt. Da als Best Practice eine Zertifizierungsstelle pro Organisation bereitgestellt wird, implementieren Sie insgesamt drei Zertifizierungsstellen: eine Stelle für jede Peerorganisation und eine für die Organisation des Anordnungsknotens. Außerdem verwenden Sie die Zertifizierungsstellen zum Erstellen aller Knoten, Identitäten und Organisationsdefinitionen für jede Organisation.
 * **Ein Anordnungsknoten:** `Orderer`  
@@ -60,13 +65,13 @@ Diese Konfiguration ist für das Testen von Anwendungen und Smart Contracts. Das
 * **Ein Kanal**: `channel1`  
   Kanäle bieten Datenschutz. Sie ermöglichen es Gruppen von Organisationen, Transaktionen auszuführen, ohne ihre Daten den Organisationen zugänglich zu machen, die keine Mitglieder des Kanals sind. Jeder Kanal verfügt über ein eigenes Blockchain-Ledger, das von den mit dem Kanal verknüpften Peers gemeinsam genutzt wird. Im Rahmen des Lernprogramms wird ein Kanal erstellt, der durch beide Organisationen verbunden ist, und ein Smart Contract für den Kanal instanziiert, über den die Organisationen Transaktionen ausführen können.
 
-Diese Konfiguration ist nicht obligatorisch. {{site.data.keyword.blockchainfull_notm}} Platform 2.0 ist extrem anpassbar. Wenn in Ihrem Kubernetes-Cluster Ressourcen verfügbar sind, können Sie über die Konsole ein Konsortium mit vielen Peerorganisationen gründen. Sie können auch eine Peerorganisation erstellen, die eine Verbindung zu mehreren Anordnungsservices herstellt. Dieses Lernprogramm enthält die Schritte, die Sie zum Erstellen eines eigenen Netzes benötigen, und Verweise auf Themen, die einen tieferen Einblick in {{site.data.keyword.blockchainfull_notm}} Platform und die Konsole bieten.
+Diese Konfiguration ist nicht obligatorisch. {{site.data.keyword.blockchainfull_notm}} Platform 2.0 ist extrem anpassbar. Wenn in Ihrem Kubernetes-Cluster Ressourcen verfügbar sind, können Sie über die Konsole einen Anordnungsknoten bereitstellen und Organisationen zu diesem Knoten hinzufügen (dieser Vorgang wird auch als 'Gründen eines Konsortiums' bezeichnet). Darüber hinaus können Sie eine Peerorganisation erstellen, die Verbindungen zu mehreren Anordnungsservices herstellt. Dieses Lernprogramm enthält die Schritte, die Sie zum Erstellen eines eigenen Netzes benötigen, und Verweise auf Themen, die einen tieferen Einblick in {{site.data.keyword.blockchainfull_notm}} Platform und die Konsole bieten.
 
 
 In diesem Lernprogramm zum **Erstellen eines Netzes** erstellen Sie nur einen Teil des obigen Netzes, ein einfaches Netz, in dem ein Anordnungsknoten und eine einzelne Peerorganisation und ein Peer in einem einzigen Kanal gehostet werden können. Die folgende Abbildung veranschaulicht den Teil des obigen Netzes, den Sie erstellen:
 ![Einfache Netzstruktur](../images/ibp2-simple-network.png "Einfache Netzstruktur")  
 *Abbildung 2. Einfache Netzstruktur*  
-Diese Konfiguration ist als schnelle Einführung hilfreich und unterstützt Sie beim Testen eines Smart Contract. Sie ist jedoch erst dann aussagekräftig, wenn Sie weitere Organisationen für den Austausch von Transaktionen hinzufügen und so ein wirklich verteiltes Ledger erstellen. Daher wird im nachfolgenden Lernprogramm zum [Teilnehme an einem Netz](/docs/services/blockchain/howto/ibp-console-join-network.html#ibp-console-join-network) gezeigt, wie zusätzliche Peerorganisationen und Peers erstellt werden und wie dem Kanal eine neue Organisation hinzugefügt wird.  
+Diese Konfiguration ist als schnelle Einführung hilfreich und unterstützt Sie beim Testen eines Smart Contract. Sie ist jedoch erst dann aussagekräftig, wenn Sie weitere Organisationen für den Austausch von Transaktionen hinzufügen und so ein wirklich verteiltes Ledger erstellen.  Daher wird im nachfolgenden Lernprogramm zum [Teilnehme an einem Netz](/docs/services/blockchain/howto/ibp-console-join-network.html#ibp-console-join-network) gezeigt, wie zusätzliche Peerorganisationen und Peers erstellt werden und wie dem Kanal eine neue Organisation hinzugefügt wird.  
 
 In diesem Lernprogramm werden **empfohlene Werte** für einige der Felder in der Konsole angegeben. Auf diese Weise können Sie die Namen und Identitäten in den Registerkarten und Dropdown-Listen leichter erkennen. Diese Werte sind zwar nicht obligatorisch, Sie werden sie jedoch als hilfreich empfinden. Nach jeder Tasks finden Sie eine Tabelle mit den empfohlenen Werten.
 {:tip}
@@ -90,13 +95,13 @@ Führen Sie die folgenden Schritte in der Konsole aus:
 2. Klicken Sie auf **{{site.data.keyword.cloud_notm}}** unter **Zertifizierungsstelle erstellen** und dann auf **Weiter**.
 3. Verwenden Sie die zweite Seitenanzeige, um der Zertifizierungsstelle einen **Anzeigename** zu geben. Der empfohlener Wert für diese Zertifizierungsstelle ist `Org1 CA`.
 4. Geben Sie in der nächsten Anzeige die Administratorberechtigungsnachweise für die Zertifizierungsstelle an, indem als **Administrator-ID** den Wert `admin` festlegen und alle von Ihnen benötigten geheimen Schlüssel angeben. Es wird empfohlen, im Rahmen des Lernprogramms `adminpw` zu verwenden.
-5. Klicken Sie auf **Übergeben**.
+5. Klicken Sie auf **Weiter** und anschließend auf **Zertifizierungsstelle hinzufügen**.
 
 **Task: Zertifizierungsstelle für die Peerorganisation erstellen**
 
   | **Feld** | **Anzeigename** | **Eintragungs-ID** | **Geheimer Schlüssel** |
   | ------------------------- |-----------|-----------|-----------|
-  | **CA erstellen** | Org1 CA  | admin | adminpw |
+  | **Zertifizierungsstelle erstellen** | Org1 CA  | admin | adminpw |
 
 *Abbildung 3. Zertifizierungsstelle für die Peerorganisation erstellen*
 
@@ -121,7 +126,7 @@ Um diese Zertifikate zu generieren, müssen Sie die folgenden Schritte ausführe
 
 **Task: Benutzer registrieren**
 
-  | **Feld** | **Beschreibung** | **Eintragungs-ID** | **Geheimer Schlüssel** |
+  |  **Feld** | **Beschreibung** | **Eintragungs-ID** | **Geheimer Schlüssel** |
   | ------------------------- |-----------|-----------|-----------|-----------|
   | **Benutzer registrieren** |  Org1 admin | org1admin | org1adminpw |
   | | Peeridentität |  peer1 | peer1pw |
@@ -136,14 +141,14 @@ Nachdem Sie nun die Zertifizierungsstelle des Peers erstellt und diese zum **Reg
 1. Navigieren Sie zur Registerkarte **Organisationen** in der linken Navigationsleiste und klicken Sie auf **MSP-Definition erstellen**.
 2. Geben Sie für den MSP den Anzeigenamen `Org1 MSP` und die MSP-ID `org1msp` an. Wenn Sie in diesem Feld eine eigene MSP-ID angeben möchten, müssen Sie die Spezifikationen zu den Einschränkungen für diesen Namen in der QuickInfo befolgen.
 3. Geben Sie unter den **Details für die Stammzertifizierungsstelle** die Zertifizierungsstelle des Peers an, die Sie als Stammzertifizierungsstelle für Ihre Organisation erstellt haben. Wenn Sie dieses Lernprogramm zum ersten Mal verwenden, sollten Sie nur eine Zertifizierungsstelle sehen: `Org1 CA`.
-4. Die Felder **Eintragungs-ID** und **Geheimer Eintragungsschlüssel** darunter werden automatisch mit der Eintragungs-ID und dem geheimen Schlüssel für den ersten Benutzer gefüllt, den Sie mit der Zertifizierungsstelle erstellt haben. Verwenden Sie diese Werte nicht. Geben Sie stattdessen die Eintragungs-ID und den geheimen Schlüssel für Ihren Organisationsadministrator (`org1admin` und `org1adminpw`) an. Geben Sie dann dieser Identität einen Anzeigenamen (`Org1 Admin`).
+4. Die Felder **Eintragungs-ID** und **Geheimer Eintragungsschlüssel** darunter werden automatisch mit der Eintragungs-ID und dem geheimen Schlüssel für den ersten Benutzer gefüllt, den Sie mit der Zertifizierungsstelle erstellt haben. Sie können diese Werte zwar verwenden, aber es wird nicht empfohlen, Ihre CA-Administratoridentität als Organisationsadministrator zu verwenden. Aus Sicherheitsgründen wird stattdessen empfohlen, die separate Eintragungs-ID mit dem geheimen Schlüssel einzugeben, die Sie für Ihren Organisationsadministrator erstellt haben (`org1admin` und `org1adminpw`). Geben Sie dann dieser Identität einen Anzeigenamen (`Org1 Admin`).
 5. Klicken Sie auf die Schaltfläche **Generieren**, um diese Identität als Administrator Ihrer Organisation einzutragen und die Identität in die Wallet zu exportieren, wo sie verwendet wird, wenn Sie den Peer und einen Kanal erstellen.
-6. Klicken Sie auf **Exportieren**, um die Administratorzertifikate in Ihr Dateisystem zu exportieren. Wie bereits oben erwähnt, wird diese Identität nicht in Ihrem Cluster gespeichert oder von {{site.data.keyword.IBM_notm}} verwaltet. Sie wird nur in Ihrem Browser gespeichert.
+6. Klicken Sie auf **Exportieren**, um die Administratorzertifikate in Ihr Dateisystem zu exportieren, damit Sie die Datei verwalten können. Wie bereits oben erwähnt, wird diese Identität nicht in Ihrem Cluster gespeichert oder von {{site.data.keyword.IBM_notm}} verwaltet. Sie wird nur in Ihrem Browser gespeichert. Wenn Sie zu einem anderen Browser wechseln, müssen Sie diese Identität in Ihre Konsolenwallet importieren, damit Sie den Peer verwalten können.
 7. Klicken Sie auf **MSP-Definition erstellen**.
 
 **Task: MSP-Definition für die Peerorganisation erstellen**
 
-  |  | **Anzeigename** | **MSP-ID** | **Eintragungs-ID** | **Geheimer Schlüssel** |
+  |  | **Anzeigename** | **MSP-ID** | **Eintragungs-ID**  | **Geheimer Schlüssel** |
   | ------------------------- |-----------|-----------|-----------|-----------|
   | **Organisation erstellen** | Org1 MSP | org1msp |||
   | **Stammzertifizierungsstelle** | Org1 CA ||||
@@ -156,9 +161,9 @@ Nachdem Sie den MSP erstellt haben, sollten Sie den Administrator der Peerorgani
 
 **Task: Konsolenwallet überprüfen**
 
-  | **Feld** | **Anzeigename** | **Beschreibung** |
+  | **Feld** |  **Anzeigename** | **Beschreibung** |
   | ------------------------- |-----------|----------|
-  | **Identität** | Org1 Admin | Identität von 'Org1 Admin' |
+  | **Identität** | Org1 Admin |Identität von 'Org1 Admin' |
 
   *Abbildung 6. Konsolenwallet überprüfen*
 
@@ -198,7 +203,7 @@ Verwenden Sie die Konsole, um die folgenden Schritte auszuführen:
   - Geben Sie die **TLS-Eintragungs-ID** (`admin`) und den geheimen Schlüssel (`adminpw`) an. Diese entsprechen den Werten der Eintragungs-ID und des geheimen Schlüssels, die Sie beim Erstellen der Zertifizierungsstelle angegeben haben.
   - Der **TLS-CSR-Hostname** ist für fortgeschrittener Benutzer zum Angeben eines angepassten Domänennamens für den Peerendpunkt. Lassen Sie den Wert für **TLS-CSR-Hostname** jetzt leer, da er in diesem Lernprogramm nicht verwendet wird.
 6. In der letzten Seitenanzeige werden Sie zum **Zuordnen einer Identität** aufgefordert, die Sie als Administrator des Peers festlegen können. Wählen Sie `Org1 Admin` als Administratoridentität für den Peer aus.
-7. Überprüfen Sie die Zusammenfassung und klicken Sie auf **Übergeben**.
+7. Überprüfen Sie die Zusammenfassung und klicken Sie auf **Peer hinzufügen**.
 
 **Task: Peer bereitstellen**
 
@@ -241,14 +246,15 @@ In diesem Lernprogramm erstellen Sie nur einen einzigen Anordnungsknoten.
 
 Der Prozess für die Erstellung einer Zertifizierungsstelle für einen Anordnungsknoten ist identisch mit dem Erstellen einer Zertifizierungsstelle für einen Peer.
 1. Navigieren Sie zur Registerkarte **Knoten** und klicken Sie auf **Zertifizierungsstelle hinzufügen**.
-2. Klicken Sie auf **{{site.data.keyword.cloud_notm}}** unter **Zertifizierungsstelle erstellen** und dann auf **Weiter**.
+2. Klicken Sie auf **{{site.data.keyword.cloud_notm}}** unter **Neue Zertifizierungsstelle erstellen** und dann auf **Weiter**
 3. Geben Sie dieser Zertifizierungsstelle einen eindeutigen Anzeigenamen (`Orderer CA`).
 4. Sie können die **Eintragungs-ID**, die Sie für die andere Zertifizierungsstelle (`admin`) angegeben haben, wiederverwenden und dann einen beliebigen geheimen Schlüssel angeben; es wird jedoch empfohlen, `adminpw` zu verwenden.
+5. Klicken Sie auf **Weiter** und dann auf **Zertifizierungsstelle hinzufügen**.
 
 ### Zertifizierungsstelle zum Registrieren von Administratorenidentitäten für den Anordnungsknoten verwenden
 {: #ibp-console-build-network-use-CA-orderer}
 
-Wie beim Peer auch müssen Sie zwei Identitäten für die Zertifizierungsstelle des Anordnungsknoten registrieren. Nachdem Sie Ihre Zertifizierungsstelle ausgewählt haben, müssen Sie einen Administrator für die Organisation sowie eine Identität für den Anordnungsknoten selbst registrieren. Wie zuvor sollten Sie eine Identität auf der Registerkarte `Orderer CA` sehen; es handelt sich hierbei um den von Ihnen für die Zertifizierungsstelle erstellen Administrator.
+Wie beim Peer auch müssen Sie zwei Identitäten für die Zertifizierungsstelle des Anordnungsknoten registrieren.  Nachdem Sie Ihre Zertifizierungsstelle ausgewählt haben, müssen Sie einen Administrator für die Organisation sowie eine Identität für den Anordnungsknoten selbst registrieren. Wie zuvor sollten Sie eine Identität auf der Registerkarte `Orderer CA` sehen; es handelt sich hierbei um den von Ihnen für die Zertifizierungsstelle erstellen Administrator.
 
 1. Klicken Sie in der Konsole auf die Registerkarte **Knoten** und klicken Sie auf die erstellte Zertifizierungsstelle des Anordnungsknotens (`Orderer CA`).
 2. Wenn die von Ihnen soeben erstellbare Administratoridentität in der Tabelle sichtbar ist, klicken Sie auf die Schaltfläche **Benutzer registrieren**, um die neuen Benutzer zu registrieren.
@@ -275,14 +281,14 @@ Erstellen Sie die MSP-Definition der Organisation des Anordnungsknotens und gebe
 1. Navigieren Sie zur Registerkarte **Organisationen** in der linken Navigationsleiste und klicken Sie auf **MSP-Definition erstellen**.
 2. Geben Sie der MSP-Definition einen Anzeigenamen, beispielsweise `Orderer MSP`, und eine ID, wie `orderermsp`. Stellen Sie dabei sicher, dass Sie die Spezifikationen zu den Einschränkungen für diesen Namen in der QuickInfo befolgen.
 3. Wählen Sie unter den **Details für die Stammzertifizierungsstelle** die von Ihnen erstellte Zertifizierungsstelle des Anordnungsknotens (`Orderer CA`) aus.
-4. Die Felder **Eintragungs-ID** und **Geheimer Eintragungsschlüssel** darunter werden automatisch mit der Eintragungs-ID und dem geheimen Schlüssel für den ersten Benutzer gefüllt, den Sie mit der Zertifizierungsstelle erstellt haben. Verwenden Sie diese Werte nicht. Geben Sie stattdessen die Eintragungs-ID und den geheimen Schlüssel für Ihren Organisationsadministrator (`ordereradmin` und alle gewünschten geheimen Schlüssel an. Im Rahmen des Lernprogramms wird jedoch die Verwendung von `ordereradminpw` empfohlen. Geben Sie dann dieser Identität einen Anzeigenamen, z. B. `Orderer Admin`.
+4. Die Felder **Eintragungs-ID** und **Geheimer Eintragungsschlüssel** darunter werden automatisch mit der Eintragungs-ID und dem geheimen Schlüssel für den ersten Benutzer gefüllt, den Sie mit der Zertifizierungsstelle erstellt haben. Sie können diese Werte zwar verwenden, aber es wird nicht empfohlen, Ihre CA-Administratoridentität als Organisationsadministrator zu verwenden. Aus Sicherheitsgründen wird stattdessen empfohlen, die separate Eintragungs-ID mit dem geheimen Schlüssel einzugeben, die Sie für Ihren Organisationsadministrator erstellt haben (`ordereradmin` und `ordereradminpw`). Geben Sie dann dieser Identität einen Anzeigenamen, z. B. `Orderer Admin`.
 5. Klicken Sie auf die Schaltfläche **Generieren**, um diese Identität als Administrator Ihrer Organisation einzutragen und die Identität zum Konsolenwallet hinzuzufügen, wo sie beim Erstellen des Anordnungsknotens verwendet wird.
-6. Klicken Sie auf **Exportieren**, um die Administratoridentität für die Organisation des Anordnungsknotens in Ihr Dateisystem zu exportieren. Wie bereits oben erwähnt, wird diese Identität nicht in Ihrem Cluster gespeichert oder von {{site.data.keyword.IBM_notm}} verwaltet. Sie wird nur im lokalen Speicher Ihres Browsers gespeichert.
+6. Klicken Sie auf **Exportieren**, um die Administratoridentität für die Organisation des Anordnungsknotens in Ihr Dateisystem zu exportieren. Wie bereits oben erwähnt, wird diese Identität nicht in Ihrem Cluster gespeichert oder von {{site.data.keyword.IBM_notm}} verwaltet. Sie wird nur im lokalen Speicher Ihres Browsers gespeichert.  Wenn Sie zu einem anderen Browser wechseln, müssen Sie diese Identität in Ihre Konsolenwallet importieren, damit Sie den Anordnungsknoten verwalten können.
 7. Klicken Sie auf **MSP-Definition erstellen**.
 
 **Task: MSP-Definition der Organisation des Anforderungsknotens erstellen**
 
-  |  | **Anzeigename** | **MSP-ID** | **Eintragungs-ID** | **Geheimer Schlüssel** |
+  |  | **Anzeigename** | **MSP-ID** | **Eintragungs-ID**  | **Geheimer Schlüssel** |
   | ------------------------- |-----------|-----------|-----------|-----------|
   | **Organisation erstellen** | Orderer MSP | orderermsp |||
   | **Stammzertifizierungsstelle** | Orderer CA ||||
@@ -295,17 +301,18 @@ Nachdem Sie den MSP erstellt haben, sollten Sie den Administrator der Organisati
 
 **Task: Konsolenwallet überprüfen**
 
-  | **Feld** | **Anzeigename** | **Beschreibung** |
+  | **Feld** |  **Anzeigename** | **Beschreibung** |
   | ------------------------- |-----------|----------|
-  | **Identität** | Org1 Admin | Org1 admin identity |
+  | **Identität** | Org1 Admin |Identität von 'Org1 Admin' |
   | **Identität** | Orderer Admin | Orderer admin identity |
 
   *Abbildung 10. MSP-Definition der Organisation des Anordnungsknotens erstellen*
 
-Das Exportieren der Identität des Organisationsadministrators ist wichtig, da Sie für die Verwaltung und Sicherung dieser Zertifikate verantwortlich sind. Wenn Sie den Anordnungsknoten und die MSP-Definition des Anordnungsknotens exportieren, können sie in eine andere Konsole importiert werden, in der ein anderer Bediener neue Kanäle im Anordnungsknoten erstellen oder Peers mit dem Kanal verknüpfen kann.{:tip}
+Das Exportieren der Identität des Organisationsadministrators ist wichtig, da Sie für die Verwaltung und Sicherung dieser Zertifikate verantwortlich sind. Wenn Sie den Anordnungsknoten und die MSP-Definition des Anordnungsknotens exportieren, können sie in eine andere Konsole importiert werden, in der ein anderer Bediener neue Kanäle im Anordnungsknoten erstellen oder Peers mit dem Kanal verknüpfen kann.
+{:tip}
 
 ### Anordnungsknoten erstellen
-{: #ibp-console-build-network-create-orderer}
+{: #ibp-console-build-network-create-an-orderer}
 
 Führen Sie die folgenden Schritte in der Konsole aus:
 
@@ -315,9 +322,9 @@ Führen Sie die folgenden Schritte in der Konsole aus:
 4. Wählen Sie in der nächsten Anzeige die Option `Orderer CA` als Zertifizierungsstelle aus. Geben Sie dann die Eintragungs-ID und den geheimen Schlüssel für die Anordnungsidentität an, die Sie für den Anordnungsknoten erstellt haben (`orderer1` und `orderer1pw`). Wählen Sie anschließend in der Dropdown-Liste Ihren MSP (`Orderer MSP`) aus und klicken Sie auf **Weiter**.
 5. In der nächsten Seitenanzeige werden Informationen zur TLS-Zertifizierungsstelle abgefragt. Es ist zwar möglich, separate Benutzer für die TLS-Zertifizierungsstelle zu erstellen, die mit Ihrer Zertifizierungsstelle implementiert ist; dies ist jedoch nicht zwingend erforderlich.
    - Geben Sie die **TLS-Eintragungs-ID** (`admin`) und den geheimen Schlüssel (`adminpw`) an. Diese entsprechen den Werten der Eintragungs-ID und des geheimen Schlüssels, die Sie beim Erstellen der Zertifizierungsstelle angegeben haben.
-   - Der **TLS-CSR-Hostname** ist für fortgeschrittener Benutzer zum Angeben eines angepassten Domänennamens für den Endpunkt des Anwendungsknoten. Lassen Sie den Wert für **TLS-CSR-Hostname** jetzt leer, da er in diesem Lernprogramm nicht verwendet wird.
+   - Der **TLS-CSR-Hostname** ist für fortgeschrittener Benutzer zum Angeben eines angepassten Domänennamens für den Endpunkt des Anordnungsknotens bestimmt. Lassen Sie den Wert für **TLS-CSR-Hostname** jetzt leer, da er in diesem Lernprogramm nicht verwendet wird.
 6. Mit dem Schritt **Identität zuordnen** können Sie einen Administrator für Ihren Anordnungsknoten auswählen. Wählen Sie wie zuvor `Orderer Admin` aus und klicken Sie auf **Weiter**.
-7. Überprüfen Sie die Zusammenfassung und klicken Sie auf **Übergeben**.
+7. Überprüfen Sie die Zusammenfassung und klicken Sie auf **Anordnungsknoten hinzufügen**.
 
 **Task: Anordnungsknoten erstellen**
 
@@ -325,7 +332,7 @@ Führen Sie die folgenden Schritte in der Konsole aus:
   | ------------------------- |-----------|-----------|-----------|-----------|
   | **Anordnungsknoten erstellen** | Orderer | orderermsp |||
   | **Zertifizierungsstelle** | Orderer CA ||||
-  | **Anordnungsknotenidentität** | |  | ordereradmin | ordereradminpw |
+  | **Anordnungsknotenidentität** | |  | orderer1 | orderer1pw |
   | **Administratorzertifikat** | Orderer MSP ||||
   | **TLS-Zertifizierungsstelle** | Orderer CA ||||
   | **ID der TLS-Zertifizierungsstelle** | || admin | adminpw |
@@ -338,20 +345,20 @@ Nachdem der Anordnungsknoten erstellt wurde, wird er in der Anzeige **Knoten** a
 ## Schritt 3: Organisation zur Liste der Organisationen hinzufügen, die Transaktionen durchführen können
 {: #ibp-console-build-network-add-org}
 
-Wie bereits erwähnt, muss eine Peerorganisation Mitglied des Konsortiums eines Anordnungsknotens sein, bevor sie einen Kanal erstellen oder mit ihm verknüpft werden kann. Dies liegt daran, dass Kanäle technisch gesehen **Nachrichtenübertragungswege** zwischen Peers über einen Anwendungsknoten sind. So wie ein Peer mit mehreren Kanälen verknüpft werden kann, ohne dass Informationen von einem Kanal zu einem anderen Kanal übergeben werden, kann ein Anordnungsknoten von mehreren Kanälen durchzogen sein, ohne dass Daten an Organisationen auf anderen Kanälen offengelegt werden.
+Wie bereits erwähnt, muss eine Peerorganisation Mitglied des Konsortiums eines Anordnungsknotens sein, bevor sie einen Kanal erstellen oder mit ihm verknüpft werden kann. Dies liegt daran, dass Kanäle technisch gesehen **Nachrichtenübertragungswege** zwischen Peers über einen Anordnungsknoten sind. So wie ein Peer mit mehreren Kanälen verknüpft werden kann, ohne dass Informationen von einem Kanal zu einem anderen Kanal übergeben werden, kann ein Anordnungsknoten von mehreren Kanälen durchzogen sein, ohne dass Daten an Organisationen auf anderen Kanälen offengelegt werden.
 
 Da nur Administratoren von Anordnungsknoten Peerorganisationen zum Konsortium hinzufügen können, müssen Sie entweder ein solcher Administrator **sein** oder MSP-Informationen an den Administrator des Anordnungsknotens **senden**.
 <!-- More on the latter at the LINK. -->
-Da Sie der Administrator der Anwendungsknoten sind, ist dieser Prozess relativ einfach:
+Da Sie der Administrator der Anordnungsknoten sind, ist dieser Prozess relativ einfach:
 1. Navigieren Sie zur Registerkarte **Knoten**.
-2. Blättern Sie zu dem Anordnungsknoten, den Sie erstellt haben, und klicken Sie auf den Knoten, um ihn zu öffnen.
+2. Blättern Sie abwärts zu dem Anfordnungsknoten und klicken Sie auf den Knoten, um ihn zu öffnen. 
 3. Klicken Sie unter **Konsortiumsmitglieder** auf **Organisation hinzufügen**.
 4. Wählen Sie in der Dropdown-Liste `Org1 MSP` aus, da es sich hier um den MSP handelt, der die Organisation `org1` des Peers darstellt.
-5. Klicken Sie auf **Übergeben**.
+5. Klicken Sie auf **Organisation hinzufügen**.
 
 Wenn dieser Prozess abgeschlossen ist, kann `org1` einen Kanal erstellen oder mit einem Kanal verknüpft werden, der auf Ihrem `Anordnungsknoten` gehostet ist.
 
-In diesem Lernprogramm können Sie ohne großen Aufwand auf den `Org1 MSP` zugreifen, da sowohl die Peerorganisation als auch die Organisation des Anordnungsknoten in derselben Konsole erstellt wurden. Wenn eine Peerorganisation in einer anderen Konsole oder einem anderen Cluster erstellt wird und an Ihrem Konsortium teilnehmen möchte, muss sie Ihnen die MSP-Definition in einer externen Operation senden. Außerdem müssen Sie den Anordnungsknoten in die Konsole der entsprechenden Organisation exportieren, damit sie einem Kanal beitreten oder einen Kanal erstellen kann. Dieser Prozess ist im Lernprogramm zum Teilnehmen an einem Netz unter [Organisationsinformationen exportieren](/docs/services/blockchain/howto/ibp-console-join-network.html#ibp-console-join-network-add-org2-remote) beschrieben.
+In diesem Lernprogramm können Sie ohne großen Aufwand auf den `Org1 MSP` zugreifen, da sowohl die Peerorganisation als auch die Organisation des Anordnungsknoten in derselben Konsole erstellt wurden. In einem realen Szenario werden die MSP-Definitionen anderer Organisationen von verschiedenen Netzoperatoren in ihrem eigenen Cluster und mit ihrer eigenen {{site.data.keyword.blockchainfull_notm}}-Konsole erstellt. Wenn die Organisation (z. B. eine Peerorganisation) später Ihrem Konsortium beitreten möchte, muss Ihnen der Netzoperator die MSP-Definition der Organisation in einer externen Operation senden. Außerdem müssen Sie Ihren Anordnungsknoten exportieren, damit er vom Netzoperator in dessen Konsole importiert werden kann, um einen Peer einem Kanal zuzuordnen oder einen neuen Kanal zu erstellen. Dieser Prozess ist im Lernprogramm zum Teilnehmen an einem Netz unter [Organisationsinformationen exportieren](/docs/services/blockchain/howto/ibp-console-join-network.html#ibp-console-join-network-add-org2-remote) beschrieben.
 
 ## Schritt 4: Kanal erstellen
 {: #ibp-console-build-network-create-channel}
@@ -389,11 +396,11 @@ Führen Sie die folgenden Schritte in der Konsole aus:
 5. Geben Sie die Identität des Erstellers des Kanals an. Während im Schritt für den MSP oben die Organisation angegeben wird, die den Kanal erstellt hat, wird in diesem Schritt **Ihre** Administratoridentität `Org1 Admin` angegeben.
 6. Wählen Sie die Organisationen aus, die dem Kanal beitreten sollen, und die Berechtigungen, die diese Organisationen haben sollen. Obwohl Sie `Org1 MSP (org1msp)` als Kanalersteller eingegeben haben, müssen Sie den Wert hier auch auswählen. Klicken Sie auf **Hinzufügen** und legen Sie für Ihre Organisation eine Berechtigungsstufe fest. In der Praxis müssen Sie als Kanalersteller Berechtigungen entsprechend den Anforderungen der Organisationen, die dem Kanal beitreten, mit Sorgfalt auswählen. Da Sie einen Kanal mit einem einzigen Mitglied erstellen und jeder Kanal über mindestens einen Operator verfügen muss, machen Sie Ihre Organisation zu einem **Operator**.
 
-Wenn Sie bereit sind, klicken Sie auf **Erstellen**. Dadurch sollten Sie zur Registerkarte "Kanäle" zurückkehren.
+Wenn Sie bereit sind, klicken Sie auf **Kanal erstellen**. Dadurch sollten Sie zur Registerkarte "Kanäle" zurückkehren.
 
 **Task: Kanal erstellen**
 
-  | **Feld** | **Name** |
+  |  **Feld** | **Name** |
   | ------------------------- |-----------|
   | **Kanalname** | channel1 |
   | **Anordnungsknoten** | Orderer |
@@ -419,7 +426,7 @@ Führen Sie die folgenden Schritte in der Konsole aus:
 2. Wählen Sie den Anordnungsknoten `Orderer` aus und klicken Sie auf **Weiter**.
 3. Geben Sie den Namen des von Ihnen soeben erstellten Kanals ein (`channel1`) und klicken Sie auf **Weiter**.
 4. Wählen Sie die Peers aus, die dem Kanal beitreten sollen. Klicken Sie im Rahmen dieses Lernprogramms auf `Peer Org1`.
-5. Klicken Sie auf **Übergeben**.
+5. Klicken Sie auf **Kanal beitreten**.
 
 ## Nächste Schritte
 {: #ibp-console-build-network-next-steps}
@@ -427,19 +434,7 @@ Führen Sie die folgenden Schritte in der Konsole aus:
 Nachdem Sie einen Peer erstellt und ihn mit einem Kanal verknüpft haben, verfügen Sie über eine voll funktionsfähiges, grundlegendes Blockchain-Netz, das Sie zu Entwicklungs- und Testzwecken verwenden können. Verwenden Sie die folgenden Schritte, um einen Smart Contract bereitzustellen und mit der Übertragung von Transaktionen an die Blockchain zu beginnen:
 
 - [Stellen Sie einen Smart Contract in Ihrem Netz bereit](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts). Verwenden Sie dazu die Konsole.
-- Nachdem Sie Ihren Smart Contract installiert und instanziiert haben, können Sie [Transaktionen mit Ihrer Clientanwendung übergeben](docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-connect-to-SDK).
+- Nachdem Sie Ihren Smart Contract installiert und instanziiert haben, können Sie [Transaktionen mit Ihrer Clientanwendung übergeben](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-connect-to-SDK).
 - Verwenden Sie das [Wertpapier-Beispiel (commercial-paper)](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-commercial-paper), um einen beispielhaften Smart Contract bereitzustellen und Transaktionen mithilfe von Anwendungscode zu übergeben.
 
 Sie können auch eine weitere Peerorganisation erstellen, indem Sie das [Lernprogramm zum Teilnehmen an einem Netz](/docs/services/blockchain/howto/ibp-console-join-network.html#ibp-console-join-network-structure) verwenden. Sie können die zweite Organisation Ihrem Kanal hinzufügen, um ein verteiltes Netz mit zwei Peers zu simulieren, die ein einziges Kanalledger gemeinsam nutzen.
-
-## Fehlerbehebung
-{: #ibp-console-build-network-troubleshooting}
-
-**Problem:** Es treten Fehler auf, wenn ich versuche, einen Knoten zu betreiben.  
-
-**Lösung:** Wenn beim Betreiben eines Knotens in der Konsole Fehler auftreten, [überprüfen Sie die Knotenprotokolle](/docs/services/blockchain/howto/ibp-console-manage.html#ibp-console-manage-console-node-logs) auf Fehler.  
-
-
-**Problem:** Das Kubernetes-Dashboard zeigt, dass der Peer nicht gestartet werden kann, und die Protokolle für den Peer enthalten den Fehler `2019-02-06 19 :43:24.159 UTC [ main] InitCmd-> ERRO 001 Peer kann nicht ausgeführt werden, da die Verschlüsselung nicht möglich ist. Der Ordner "/certs/msp" ist nicht vorhanden.`
-
-**Lösung:** Stellen Sie sicher, dass die bei der Erstellung der MSP-Definition der Peerorganisation angegebene Eintragungs-ID und der geheime Schlüssel einer Identität des Typs `client` und nicht `peer` entsprechen.

@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -15,9 +17,7 @@ lastupdated: "2019-02-08"
 # 엔터프라이즈 플랜 정보
 {: #enterprise-plan-about}
 
-***[이 페이지가 도움이 되었습니까? 알려주십시오.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
-{{site.data.keyword.blockchainfull}} Platform 엔터프라이즈 플랜은 실제 비즈니스용 블록체인 네트워크를 작성하거나 가입할 조직을 위한 프로덕션 준비가 된 오퍼링입니다. 이 플랜은 보안성이 높고 프로덕션 준비가 된 네트워크를 쉽게 시작하기 위한 도구 및 지원과 함께 핵심 인프라를 제공합니다. 엔터프라이즈 플랜은 2018년 5월 15일에 Hyperledger Fabric V1.0에서 V1.1로 업그레이드되었습니다. 2018년 5월 15일 이후에 작성된 모든 네트워크는 Fabric V1.1 레벨입니다. 그러나 이전에 작성된 네트워크는 Fabric V1.0 레벨로 유지됩니다.
+{{site.data.keyword.blockchainfull}} Platform 엔터프라이즈 플랜은 실제 비즈니스용 블록체인 네트워크를 작성하거나 참여할 조직을 위한 프로덕션 준비가 된 오퍼링입니다. 이 플랜은 보안성이 높고 프로덕션 준비가 된 네트워크를 쉽게 시작하기 위한 도구 및 지원과 함께 핵심 인프라를 제공합니다. 엔터프라이즈 플랜은 2018년 5월 15일에 Hyperledger Fabric V1.0에서 V1.1로 업그레이드되었습니다. 2018년 5월 15일 이후에 작성된 모든 네트워크는 Fabric V1.1 레벨입니다. 그러나 이전에 작성된 네트워크는 Fabric V1.0 레벨로 유지됩니다.
 {:shortdesc}
 
 **엔터프라이즈 플랜**은 상위 레벨의 보안 및 지원을 제공하는 프로덕션 환경입니다. 네트워크를 엔터프라이즈 플랜에 배치하면 다음 기능을 이용할 수 있습니다.
@@ -42,7 +42,7 @@ lastupdated: "2019-02-08"
 
 네트워크를 시작하려는 구성원을 위해 IBM에서는 네트워크를 설정하고 프로비저닝하기 위한 주요 단계를 통해 네트워크 개시자를 안내하는 그래픽 사용자 인터페이스를 제공합니다. 여기에는 다른 구성원 초대 및 통제 규칙 설정이 포함됩니다. 자세한 정보는 [엔터프라이즈 플랜 네트워크 통제](/docs/services/blockchain/get_start.html#getting-started-with-enterprise-plan)를 참조하십시오. 네트워크가 배치된 후, 대화식 그래픽 사용자 인터페이스인 네트워크 모니터는 네트워크의 상태 및 활동을 모니터링하고 새 배치, 구성원 추가 또는 제거, 체인코드 라이프사이클 및 채널 관리를 포함하는 주요 네트워크 활동을 관리하며 기술 지원을 찾을 수 있습니다. 자세한 정보는 [네트워크 모니터 사용](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard)을 참조하십시오.
 
-[{{site.data.keyword.blockchainfull_notm}} 멤버십 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps)에 지금 가입하십시오.
+[{{site.data.keyword.blockchainfull_notm}} 멤버십 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://cloud.ibm.com/catalog/services/ibm-blockchain-5-prod)에 지금 가입하십시오.
 
 {{site.data.keyword.blockchainfull_notm}} Platform은 인증 기관(CA) 및 1개 이상의 피어(최대 6개)를 포함하는 주요 Hyperledger Fabric 컴포넌트와 함께 빌드됩니다.  또한 엔터프라이즈 플랜은 네트워크 구성원에게 충돌 결함 허용(CFT) Kafka 순서 지정 서비스를 제공합니다.
 

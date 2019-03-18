@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -17,9 +19,6 @@ lastupdated: "2019-02-08"
 
 # スマート・コントラクトのツール
 {: #develop-vscode}
-
-***[このページは参考になりましたか。 ご意見をお聞かせください。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 
 {{site.data.keyword.blockchainfull}} Platform Visual Studio Code 拡張機能は、スマート・コントラクト・パッケージを開発、パッケージ化、およびデプロイするための、Visual Studio Code 内の環境を提供します。 この拡張機能には、簡素化されたローカル・スマート・コントラクト開発用の Hyperledger Fabric の事前構成済みローカル・インスタンスをセットアップするためのコマンドも含まれています。
 
@@ -129,13 +128,13 @@ Hyperledger Fabric コンテナーが停止し、再始動します。
 
 **注:** 現在、この拡張機能は {{site.data.keyword.blockchainfull_notm}} Platform エンタープライズ・プランと互換性がありません。
 
-1. {{site.data.keyword.blockchainfull_notm}} Platform スターター・プランのインスタンスがない場合は、[インスタンスを作成します ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://console.bluemix.net/catalog/services/blockchain)。
+1. {{site.data.keyword.blockchainfull_notm}} Platform スターター・プランのインスタンスがない場合は、[インスタンスを作成します ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://cloud.ibm.com/catalog/services/ibm-blockchain-5-prod)。
 2. **「起動」**をクリックして {{site.data.keyword.blockchainfull_notm}} Platform UI を開きます。
 3. **「概説」**>**「接続プロファイル」** > **「ダウンロード」**をクリックして、接続プロファイルを取得します。
 4. **「認証局」** > **「証明書の生成」**をクリックし、証明書と秘密鍵をファイル・システムに保存して、必要な管理証明書を生成します。
 5. **「メンバー」** > **「証明書」** > **「証明書の追加」**をクリックし、前の手順で作成した証明書を選択して、{{site.data.keyword.blockchainfull_notm}} Platform Starter Plan インスタンスに証明書を追加します。
 6. Visual Studio Code で {{site.data.keyword.blockchainfull_notm}} Platform 拡張機能ビューを開き、**「Add new connection」**をクリックします。
-7. 接続名および接続プロファイルへのパスを入力し、既存のファイル・システムの [ウォレット ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/developapps/wallet.html "Wallet") を選択するか、証明書と秘密鍵を使用して新しいウォレットを作成します。
+7. 接続名と、接続プロファイルへのパスを入力し、ファイル・システム上の既存の [ウォレット ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/developapps/wallet.html "Wallet") を選択するか、証明書と秘密鍵を使用して新しいウォレットを作成します。
 
 ### 独自の Hyperledger Fabric インスタンスへの接続
 {: #develop-vscode-connecting-to-own-Fabric-instance}
@@ -149,7 +148,7 @@ Hyperledger Fabric コンテナーが停止し、再始動します。
 3. 接続の名前を入力します。 この名前は、**「{{site.data.keyword.blockchainfull_notm}} Platform」**ペインに表示されます。
 4. Hyperledger Fabric 接続プロファイルの完全修飾ファイル・パスを入力します。
 5. 既存のファイル・システムの[ウォレット ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/developapps/wallet.html "Wallet") を選択するか、Fabric ID の証明書と秘密鍵のファイル・パスを入力して、新しいファイル・システム・ウォレットを作成します。
-6. 接続リストの `local_fabric` の下に接続が表示されます。接続する接続名をダブルクリックします。
+6. 接続リストの `local_fabric` の下に接続が表示されます。 接続する接続名をダブルクリックします。
 
 バージョン 1.3.0 以降の既存の Hyperledger Fabric インスタンスがない場合は、事前構成済み Hyperledger Fabric インスタンスを使用して接続するか、以下のコマンドを実行してバージョン 1.3.0 イメージを取得し、タグ付けすることができます。
 
@@ -203,7 +202,7 @@ docker tag nexus3.hyperledger.org:10001/hyperledger/fabric-ccenv:amd64-1.3.0-sta
 ## ID の追加
 {: #develop-vscode-adding-identities}
 
-接続を追加するときに、使用する ID が含まれた既存のウォレットを選択するか、ID の証明書と秘密鍵を使用して新規ウォレットを作成する必要があります。ウォレットについて詳しくは、Fabric 資料の[ウォレットに関するトピック ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/developapps/wallet.html "Wallet") を参照してください。
+接続を追加するときに、使用する ID が含まれた既存のウォレットを選択するか、ID の証明書と秘密鍵を使用して新規ウォレットを作成する必要があります。 ウォレットについて詳しくは、Fabric 資料の[ウォレットに関するトピック ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/developapps/wallet.html "Wallet") を参照してください。
 
 既に確立されている接続に ID を追加するには、以下の手順を実行します。
 
@@ -290,7 +289,7 @@ Hyperledger Fabric のインスタンスに接続した後、ピアにスマー�
 ## 事前構成済み Hyperledger Fabric ランタイムを使用したスマート・コントラクトのデバッグ
 {: #develop-vscode-debugging}
 
-スマート・コントラクトをローカルでデバッグできるので、スマート・コントラクトの開発者は、スマート・コントラクトの機能の修正を繰り返し、バグを修正してから、インスタンス化して機能を呼び出すことができます。スマート・コントラクトをデバッグすると、ブレークポイントおよび出力を使用してスマート・コントラクト・トランザクションを実行できるため、トランザクションが意図したとおりに動作することを確認できます。 スマート・コントラクトをデバッグするには、以下の手順を実行します。
+スマート・コントラクトをローカルでデバッグできるので、スマート・コントラクトの開発者は、スマート・コントラクトの機能の修正を繰り返し、バグを修正してから、インスタンス化して機能を呼び出すことができます。 スマート・コントラクトをデバッグすると、ブレークポイントおよび出力を使用してスマート・コントラクト・トランザクションを実行できるため、トランザクションが意図したとおりに動作することを確認できます。 スマート・コントラクトをデバッグするには、以下の手順を実行します。
 
 1. 開発モードの `local_fabric` 接続に接続していることを確認します。
 2. スマート・コントラクト・プロジェクトを開きます。

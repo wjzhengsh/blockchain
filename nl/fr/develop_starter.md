@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-12-07"
+lastupdated: "2018-12-08"
 
 ---
 
@@ -16,6 +16,7 @@ lastupdated: "2018-12-07"
 # Déploiement d'un réseau d'entreprise dans un plan Starter
 {: #deploying-a-business-network}
 
+**IBM recommande d'utiliser Hyperledger Composer uniquement pour les démonstrations et les validations de concept. IBM n'assure pas de support pour les réseaux utilisant Hyperledger Composer en production, y compris l'interface CLI Composer, les API JavaScript, le serveur REST et l'aire de jeu Web.**
 
 *[Cette page est-elle utile ? Dites-nous.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)*
 
@@ -27,14 +28,14 @@ Avec l'environnement développeur, vous pouvez rapidement modéliser et tester d
 
 ## Avant de commencer
 
-Lisez les sections [A propos du plan Starter](/docs/services/blockchain/starter_plan.html) et [Mise en route avec le plan Starter](/docs/services/blockchain/get_start_starter_plan.html). Assurez-vous également d'avoir installé l'environnement développeur d'[{{site.data.keyword.blockchainfull_notm}} Platform: Develop](/docs/services/blockchain/develop_install.html) et d'avoir créé une instance du plan Starter d'{{site.data.keyword.blockchainfull_notm}} Platform en suivant les instructions de la section [Gouvernance d'un réseau de plan Starter](/docs/services/blockchain/get_start_starter_plan.html).
+Lisez les sections [A propos du plan Starter](./starter_plan.html) et [Mise en route avec le plan Starter](./get_start_starter_plan.html). Assurez-vous également d'avoir installé l'environnement développeur d'[{{site.data.keyword.blockchainfull_notm}} Platform: Develop](./develop_install.html) et d'avoir créé une instance du plan Starter d'{{site.data.keyword.blockchainfull_notm}} Platform en suivant les instructions de la section [Gouvernance d'un réseau de plan Starter](./get_start_starter_plan.html).
 
 Assurez-vous de disposer de Node v8.9 ou supérieur, npm v5.x et Hyperledger Composer :
 
 - Si votre réseau est en version 1.2 de Fabric, utilisez Hyperledger Composer v0.20.x.
 - Si votre réseau est en version 1.1 de Fabric, utilisez Hyperledger Composer v0.19.x.  
 
-Pour connaître votre version Fabric, ouvriez la [fenêtre Préférences réseau](/docs/services/blockchain/v10_dashboard.html#network-preferences) dans votre Moniteur réseau.
+Pour connaître votre version Fabric, ouvriez la [fenêtre Préférences réseau](../v10_dashboard.html#network-preferences) dans votre Moniteur réseau.
 
 
 ## Etape 1 : Extraire la valeur confidentielle admin
@@ -113,7 +114,7 @@ A présent que les certificats corrects sont synchronisés avec les homologues, 
 
 Ensuite, la carte créée à l'étape précédente peut être utilisée pour installer et démarrer un réseau d'entreprise. Dans le cadre de ce guide, nous allons installer l'exemple réseau de fabrication de véhicules, utiliser cet exemple ou installer votre propre réseau d'entreprise, mais en nous assurant de modifier les noms de réseau d'entreprise spécifiés dans les commandes. La commande utilisée pour démarrer un réseau d'entreprise crée également une carte. Pour le plan Starter, cette carte doit être supprimée ; l'exemple de commande nomme cette carte `delete_me.card`, il est donc facile de le repérer.
 
-1. Installez l'environnement installer Hyperledger Composer à l'aide de la commande suivante :
+1. Installez l'environnement d'exécution Hyperledger Composer à l'aide de la commande suivante :
 
    ```
    composer network install -c adminCard -a vehicle-manufacture-network.bna
@@ -156,6 +157,6 @@ Exécutez la commande suivante pour effectuer un ping du réseau d'entreprise :
    ```
    {:codeblock}
 
-Pour consulter les jours de code blockchain, cliquez sur **Canaux**, puis sélectionnez votre canal. <!-- Click the dropdown arrow to view the logs, or the Actions symbol to view in more detail. --> Cliquez sur l'onglet **Code blockchain**. Développez la ligne de code blockchain, puis cliquez sur le bouton **JSON** ou **Journaux**.
+Pour consulter les journaux de code blockchain, cliquez sur **Canaux**, puis sélectionnez votre canal. <!-- Click the dropdown arrow to view the logs, or the Actions symbol to view in more detail. --> Cliquez sur l'onglet **Code blockchain**. Développez la ligne de code blockchain, puis cliquez sur le bouton **JSON** ou **Journaux**.
 
 <!-- [fN-Yuj](https://i.makeagif.com/media/4-13-2018/fN-Yuj.gif) -->

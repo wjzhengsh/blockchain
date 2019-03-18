@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -18,11 +20,10 @@ lastupdated: "2019-02-08"
 # Informationen zu {{site.data.keyword.blockchainfull_notm}} Platform for Amazon Web Services
 {: #remote-peer-aws-about}
 
-***[Ist diese Seite hilfreich? Teilen Sie uns Ihre Meinung mit.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 **Hinweis:** Die Betaversion {{site.data.keyword.blockchainfull}} Platform Remote Peer in {{site.data.keyword.cloud_notm}} Private wurde eingestellt. Wenn Sie weiterhin Peers in Ihrer {{site.data.keyword.cloud_notm}} Private-Umgebung ausführen wollen, verwenden Sie stattdessen das **{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private**-Angebot. Weitere Angaben enthält der Abschnitt [Informationen zu Peers in {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-about-peer).
 
-Sie können den Peer von {{site.data.keyword.blockchainfull_notm}} Platform in der AWS-Cloud ausführen, nachdem Sie dafür eine Verbindung zu einem vorhandenen Blockchain-Netz in {{site.data.keyword.cloud_notm}} hergestellt haben. Die Ausführung von fernen Peers außerhalb von {{site.data.keyword.cloud_notm}} bietet ein höheres Maß an Flexibilität in Bezug auf die Vergrößerung eines Blockchain-Netzes sowie in Bezug auf den Beitritt zu einem Blockchain-Netz, während gleichzeitig die Vorteile eines bereits vorhandenen Netzes in {{site.data.keyword.cloud_notm}} genutzt werden können. Ihre fernen Peers in der AWS-Cloud nutzen die Zertifizierungsstellen (CAs) und den Anordnungsservice der Plattform, ermöglichen Ihnen jedoch die gemeinsame Verwendung Ihrer Peers mit anderen Anwendungen außerhalb von {{site.data.keyword.cloud_notm}}. {:shortdesc}
+Sie können den Peer von {{site.data.keyword.blockchainfull_notm}} Platform in der AWS-Cloud ausführen, nachdem Sie dafür eine Verbindung zu einem vorhandenen Blockchain-Netz in {{site.data.keyword.cloud_notm}} hergestellt haben. Die Ausführung von fernen Peers außerhalb von {{site.data.keyword.cloud_notm}} bietet ein höheres Maß an Flexibilität in Bezug auf die Vergrößerung eines Blockchain-Netzes sowie in Bezug auf den Beitritt zu einem Blockchain-Netz, während gleichzeitig die Vorteile eines bereits vorhandenen Netzes in {{site.data.keyword.cloud_notm}} genutzt werden können. Ihre fernen Peers in der AWS-Cloud nutzen die Zertifizierungsstellen (CAs) und den Anordnungsservice der Plattform, ermöglichen Ihnen jedoch die gemeinsame Verwendung Ihrer Peers mit anderen Anwendungen außerhalb von {{site.data.keyword.cloud_notm}}.
+{:shortdesc}
 
 
 ## Wichtige Hinweise

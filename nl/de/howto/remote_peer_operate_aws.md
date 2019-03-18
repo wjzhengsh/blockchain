@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -14,10 +16,6 @@ lastupdated: "2019-02-08"
 
 # Peers in AWS betreiben
 {: #remote-peer-aws-operate}
-
-
-***[Ist diese Seite hilfreich? Teilen Sie uns Ihre Meinung mit.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 
 Nach der Einrichtung von Peers unter {{site.data.keyword.blockchainfull}} Platform in AWS müssen Sie verschiedene operative Schritte ausführen, bevor Ihr Peer Transaktionen zum Abfragen und Aufrufen des Ledgers für das Blockchain-Netz absetzen kann. Die Schritte umfassen das Hinzufügen Ihrer Organisation zu einem Kanal, das Hinzufügen Ihres Peers zum Kanal, das Installieren des Chaincodes auf dem Peer, die Instanziierung des Chaincodes auf dem Kanal und die Verbindung von Anwendungen mit dem Peer. Sie können entweder die [Fabric-SDKs](/docs/services/blockchain/howto/remote_peer_operate_aws.html#remote-peer-aws-operate-with-sdk) oder die [Befehlszeile](/docs/services/blockchain/howto/remote_peer_operate_aws.html#remote-peer-aws-operate-cli-operate) verwenden, um diese Arbeitsschritte auszuführen. Die Fabric-SDKs stellen den empfohlenen Pfad dar, wobei in den Anweisungen davon ausgegangen wird, dass Sie bereits mit dem Betrieb des SDK vertraut sind.
 
@@ -530,7 +528,7 @@ Der Stack wird erfolgreich erstellt, aber Docker-Protokolle enthalten den folgen
 **Lösung:**  
 Dieser Fehler kann dadurch verursacht werden, dass bei der Bereitstellung der Schnelleinstiegsvorlage kein Port in der URL für die Zertifizierungsstelle angegeben wurde.
 Die URL für die Zertifizierungsstelle sollte ungefähr wie folgt aussehen: `https://<network>-org1-ca.stage.blockchain.ibm.com:31011`.
-Stellen Sie die Schnelleinstiegsvorlage erneut bereit und achten Sie darauf, den richtigen Wert als URL für die Zertifizierungsstelle anzugeben.
+Stellen Sie die Schnelleistiegsvorlage erneut bereit und achten Sie darauf, den richtigen Wert als URL für die Zertifizierungsstelle anzugeben.
 
 ### **Problem:** Instanziieren von Chaincode schlägt mit Fehler fehl
 {: #remote-peer-aws-operate-problem-2}

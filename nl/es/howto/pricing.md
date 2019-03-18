@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -16,10 +18,7 @@ lastupdated: "2018-02-08"
 {: #ibp-pricing}
 
 
-***[¿Le resulta útil esta página? Indíquenos su opinión.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
-
-Esta guía le ayuda a comprender los precios de los planes de suscripción a la plataforma de {{site.data.keyword.blockchainfull}}, y cuánto se pagará a medida que desarrolle y haga crecer la red blockchain.  
+Esta guía le ayuda a comprender los precios de los planes de suscripción a {{site.data.keyword.blockchainfull}} Platform, y cuánto se pagará a medida que desarrolle y haga crecer la red blockchain.  
 {:shortdesc}
 
 {{site.data.keyword.blockchainfull_notm}} Platform carga mensualmente las tarifas de suscripción y de iguales a las organizaciones que crean redes de blockchain. Las tarifas son diferentes dependiendo del plan de suscripción que elija y de los recursos de red que utilice la red. La tabla siguiente muestra una visión general de los precios de la plataforma de {{site.data.keyword.blockchainfull_notm}}.
@@ -37,16 +36,16 @@ La cuota mensual se factura prorrateada por día. Por ejemplo, un miembro (cuota
 ## Componentes básicos de la red
 {: #ibp-pricing-components}
 
-Para entender los precios, necesitamos empezar con una introducción a los componentes básicos de una red. {{site.data.keyword.blockchainfull_notm}} Platform permite la creación de una red blockchain que se basa en Hyperledger Fabric. En un nivel alto, una red blockchain de Fabric consta de los siguientes componentes básicos:
+Para entender los precios, necesitamos empezar con una introducción a los componentes básicos de una red. La plataforma de {{site.data.keyword.blockchainfull_notm}} permite la creación de una red blockchain que se basa en Hyperledger Fabric. En un nivel alto, una red blockchain de Fabric consta de los siguientes componentes básicos:
 
 -	**Organizaciones**: Cualquier entidad que necesite mantener una copia del libro mayor de blockchain y que necesite validar las transacciones. Puede haber varias organizaciones de blockchain para una sola compañía.
 -	**Iguales**: El nodo asociado con una organización que contiene el libro mayor de blockchain y que valida transacciones. Los iguales están asociados con una organización de blockchain individual.
 -	**Servicio de ordenación**: Compuesto por un clasificador único (SOLO) o una recopilación de clasificadores. El servicio de ordenación secuencia transacciones, crea bloques y envía bloques a iguales para su validación.
 -	**Entidad emisora de certificados (CA)**: Emite certificados digitales para fines de identificación a cualquier componente de red interactivo.
 
-{{site.data.keyword.blockchainfull_notm}} Platform ofrece dos planes de suscripción, el **Plan inicial** y el **Plan empresarial**, que puede elegir en {{site.data.keyword.cloud_notm}}. Ambos planes le permiten crear organizaciones y le proporcionan una entidad emisora de certificados. Los planes difieren entre iguales, CA y el servicio de ordenación.
+La plataforma de {{site.data.keyword.blockchainfull_notm}} ofrece dos planes de suscripción, el **Plan inicial** y el **Plan empresarial**, que puede elegir en {{site.data.keyword.cloud_notm}}. Ambos planes le permiten crear organizaciones y le proporcionan una entidad emisora de certificados. Los planes difieren entre iguales, CA y el servicio de ordenación.
 
-El Plan empresarial le proporciona CA e iguales altamente disponibles con un servicio de ordenación tolerante a errores de bloqueo. El Plan inicial no tiene opciones de alta disponibilidad y utiliza un servicio de ordenación básico SOLO. Por este motivo, el Plan inicial está diseñado para ser el punto de entrada de {{site.data.keyword.blockchainfull_notm}} Platform para los entornos de desarrollo, de pruebas y de pruebas de concepto. El Plan empresarial es la opción para las redes que están listas para los entornos piloto y de producción.
+El Plan empresarial le proporciona CA e iguales altamente disponibles con un servicio de ordenación tolerante a errores de bloqueo. El Plan inicial no tiene opciones de alta disponibilidad y utiliza un servicio de ordenación básico SOLO. Por este motivo, el Plan inicial está diseñado para ser el punto de entrada de la plataforma de {{site.data.keyword.blockchainfull_notm}} para los entornos de desarrollo, de pruebas y de pruebas de concepto. El Plan empresarial es la opción para las redes que están listas para los entornos piloto y de producción.
 
 ## Elementos clave de precios
 {: #ibp-pricing-key-elements}

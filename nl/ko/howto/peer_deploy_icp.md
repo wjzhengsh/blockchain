@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -17,9 +19,6 @@ lastupdated: "2019-02-08"
 
 # {{site.data.keyword.cloud_notm}} Private에 피어 배치
 {: #icp-peer-deploy}
-
-
-***[이 페이지가 도움이 되었습니까? 알려주십시오.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 다음 지시사항은 {{site.data.keyword.cloud_notm}} Private에 {{site.data.keyword.blockchainfull}} Platform 피어를 배치하는 방법에 대해 설명합니다. 이 지시사항을 통해 {{site.data.keyword.cloud_notm}} Private의 {{site.data.keyword.blockchainfull_notm}} Platform에 연결할 수 있습니다. 피어를 {{site.data.keyword.cloud_notm}}의 스타터 플랜 또는 엔터프라이즈 플랜 네트워크에 연결할 경우 [스타터 플랜 또는 엔터프라이즈 플랜에 연결하도록 피어 배치](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy)를 참조하십시오.
 {:shortdesc}
@@ -46,7 +45,7 @@ lastupdated: "2019-02-08"
 
 피어에서 사용할 스토리지를 결정해야 합니다. 기본 설정을 사용하는 경우 Helm 차트에서 피어 데이터의 새로운 8 Gi 지속적 볼륨 청구(PVC)를 `my-data-pvc`라는 이름으로 작성하고, 상태 데이터베이스의 다른 8 Gi PVC를 `statedb-pvc`라는 이름으로 작성합니다.
 
-기본 스토리지 설정을 사용하지 않으려면 {{site.data.keyword.cloud_notm}} Private 설치 중에 *새* `storageClass`가 설정되었는지 확인하거나 배치하기 전에 Kubernetes 시스템 관리자가 storageClass를 작성해야 합니다.
+기본 스토리지 설정을 사용하지 않으려면 {{site.data.keyword.cloud_notm}} Private 설치 중에 새 `storageClass`가 설정되었는지 확인하거나, Kubernetes 시스템 관리자가 {{site.data.keyword.blockchainfull_notm}} Platform을 배치하기 전에 `storageClass`를 작성했는지 확인하십시오. 
 
 amd64 또는 s390x 플랫폼에 피어를 배치하도록 선택할 수 있습니다. 단, [동적 프로비저닝 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://kubernetes.io/docs/concepts/storage/dynamic-provisioning/ "동적 볼륨 프로비저닝")은 {{site.data.keyword.cloud_notm}} Private의 amd64 노드에 대해서만 사용 가능합니다. 클러스터에 s390x와 amd64 작업자 노드가 혼합되어 있는 경우 동적 프로비저닝을 사용할 수 없습니다.
 
@@ -67,7 +66,7 @@ amd64 또는 s390x 플랫폼에 피어를 배치하도록 선택할 수 있습�
 ## 피어 구성 시크릿 작성
 {: #icp-peer-deploy-config-file}
 
-피어를 배치하려면 피어 ID 및 인증 기관에 대한 중요한 정보가 포함된 구성 파일을 작성해야 합니다. 그런 다음 [Kubernetes 시크릿 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://kubernetes.io/docs/concepts/configuration/secret/) 오브젝트를 사용하여 구성 중에 이 파일을 Helm 차트에 전달해야 합니다. 이 파일을 통해 피어는 블록체인 네트워크에 가입하기 위해 인증 기관에서 필요한 인증서를 가져올 수 있습니다. 이 파일에는 사용자가 피어를 운영할 수 있는 관리자 인증서도 포함됩니다. 피어 구성 전에 [CA를 사용하여 순서 지정자 또는 피어 배치](/docs/services/blockchain/howto/CA_operate.html#ca-operate-deploy-orderer-peer)에 대한 지시사항을 따르십시오.
+피어를 배치하려면 피어 ID 및 인증 기관에 대한 중요한 정보가 포함된 구성 파일을 작성해야 합니다. 그런 다음 [Kubernetes 시크릿 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://kubernetes.io/docs/concepts/configuration/secret/) 오브젝트를 사용하여 구성 중에 이 파일을 Helm 차트에 전달해야 합니다. 이 파일을 통해 피어는 블록체인 네트워크에 참여하기 위해 인증 기관에서 필요한 인증서를 가져올 수 있습니다. 이 파일에는 사용자가 피어를 운영할 수 있는 관리자 인증서도 포함됩니다. 피어 구성 전에 [CA를 사용하여 순서 지정자 또는 피어 배치](/docs/services/blockchain/howto/CA_operate.html#ca-operate-deploy-orderer-peer)에 대한 지시사항을 따르십시오.
 
 CSR 호스트 이름을 구성 파일에 제공해야 합니다. 여기에는 배치 중에 지정하는 `helm release name`과 동일한 값이 되는 `service host name`이 포함됩니다. 예를 들어, `org1peer1`의 `helm release name`을 지정하는 경우 파일의 `"csr"` 섹션에 다음 값을 삽입해야 합니다.
 ```
@@ -116,7 +115,7 @@ WVRBbFZUDQpNUlV3RXdZRFZRUUtFd3hFYVdkcFEyVnlkQ0JKYm1NeEp6QWxCZ05WQkFNVEhrUnBa
   - **유형:** `Opaque` 값을 입력하십시오.
 
 4. 이 창의 왼쪽 탐색 분할창에서 **데이터** 탭을 클릭하십시오.
-  - `Name` 필드에서 `secret.json`을 지정하고 해당 값 필드에 구성 파일의 `base64`로 인코딩된 문자열을 붙여넣으십시오.
+  - `Name` 필드에서 `secret.json`을 지정하고 값 필드에서 구성 파일의 `base64`로 인코딩된 문자열에 붙여넣으십시오.
 
 5. (선택사항) 상태 데이터베이스로 `CouchDB`를 사용할 계획인 경우 두 개의 추가 값을 이 시크릿 오브젝트에 추가해야 합니다. **데이터** 탭에서 **데이터 추가** 단추를 클릭하여 컨테이너가 배치될 때 데이터베이스에 사용할 CouchDB 사용자 ID 및 비밀번호를 추가하십시오.
   1. 사용자 이름 및 비밀번호를 작성하고 base64 형식으로 이 값을 인코딩하십시오. 터미널 창에서 다음 명령을 실행하고 `admin` 및 `adminpw`를 사용할 값으로 대체하십시오.

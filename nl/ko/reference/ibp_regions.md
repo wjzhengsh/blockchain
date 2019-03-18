@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -18,10 +20,6 @@ lastupdated: "2019-02-08"
 
 # {{site.data.keyword.blockchainfull_notm}} Platform 위치
 {: #ibp-regions-locations}
-
-
-***[이 페이지가 도움이 되었습니까? 알려주십시오.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 
 {{site.data.keyword.cloud}}는 전 세계의 다양한 위치에서 호스팅됩니다. 위치는 엔드포인트에서 액세스되는 지리적 영역 내의 데이터 센터입니다. {{site.data.keyword.blockchainfull_notm}} Platform은 여러 위치의 {{site.data.keyword.cloud_notm}} 내에 글로벌로 멤버십 플랜을
 제공합니다. {{site.data.keyword.cloud_notm}}에서 {{site.data.keyword.blockchainfull_notm}} Platform 서비스 인스턴스를 작성할 때 블록체인 네트워크 및 네트워크 리소스가 사용자가 서비스 인스턴스를 작성하는 {{site.data.keyword.cloud_notm}} 위치에서 작성되고 저장됩니다.

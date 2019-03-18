@@ -2,7 +2,10 @@
 
 copyright:
   years: 2018,2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
+
 ---
 
 {:new_window: target="_blank"}
@@ -10,11 +13,9 @@ lastupdated: "2019-02-08"
 {:codeblock: .codeblock}
 {:screen: .screen}
 {:pre: .pre}
+
 # Chaincode installieren, instanziieren und aktualisieren
 {: #install-instantiate-chaincode}
-
-
-***[Ist diese Seite hilfreich? Teilen Sie uns Ihre Meinung mit.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 
 Bei Chaincode handelt es sich um Software, die die Geschäftslogik und transaktionsorientierten Anweisungen zum Erstellen und Ändern von Assets im Ledger zusammenfasst. Chaincode kann in unterschiedlichen Sprachen geschrieben werden. {{site.data.keyword.blockchainfull}} Platform bietet Unterstützung für Chaincode, der auf Go und Node.js basiert. Chaincode wird in einem Docker-Container ausgeführt, der den Peers zugeordnet ist, die mit diesem Container interagieren müssen. Weitere Informationen zum Entwickeln von Chaincode finden Sie in den [Chaincode-Lernprogrammen ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](http://hyperledger-fabric.readthedocs.io/en/release-1.2/chaincode.html).

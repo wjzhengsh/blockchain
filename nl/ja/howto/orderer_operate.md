@@ -2,7 +2,10 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
+
 ---
 
 {:new_window: target="_blank"}
@@ -13,8 +16,6 @@ lastupdated: "2019-02-08"
 
 # {{site.data.keyword.cloud_notm}} Private での順序付けプログラムの操作
 {: #icp-orderer-operate}
-
-***[このページは参考になりましたか。 ご意見をお聞かせください。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 {{site.data.keyword.blockchainfull}} Platform の順序付けプログラムを {{site.data.keyword.cloud_notm}} Private にインストールした後、configmap が作成されます。これには、環境変数のデフォルト設定が含まれます。 順序付けプログラムの環境変数を変更したり追加したりして、順序付けプログラムの動作を構成できます。
 
@@ -376,7 +377,7 @@ tree
 
 ダウンロードした [Fabric ツール](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-get-fabric-tools)の `configtxtlator` によって、protobuf フォーマットのチャネル構成が JSON フォーマット、またはその逆に変換されます。
 
-これらの手順は、チャネル更新チュートリアルの [JSON 形式へのブロックの変換 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")]( https://hyperledger-fabric.readthedocs.io/en/release-1.2/channel_update_tutorial.html#convert-the-configuration-to-json-and-trim-it-down "Convert the Configuration to JSON and Trim It Down") の大まかな手順と同じです。ただし、更新しているのがアプリケーション・チャネルではなく順序付けプログラムのシステム・チャネルであるという事実が反映されるように、いくつかの変更をチュートリアルのコマンドに対して行う必要があります。 このプロセスについて詳しくは、チュートリアルを参照してください。 このセクションは単にコマンドを示します。
+これらの手順は、チャネル更新チュートリアルの [JSON 形式へのブロックの変換 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")]( https://hyperledger-fabric.readthedocs.io/en/release-1.2/channel_update_tutorial.html#convert-the-configuration-to-json-and-trim-it-down "Convert the Configuration to JSON and Trim It Down") の大まかな手順と同じです。 ただし、更新しているのがアプリケーション・チャネルではなく順序付けプログラムのシステム・チャネルであるという事実が反映されるように、いくつかの変更をチュートリアルのコマンドに対して行う必要があります。 このプロセスについて詳しくは、チュートリアルを参照してください。 このセクションは単にコマンドを示します。
 
 1. [組織を作成した](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-organization-definition)フォルダーから `configupdate` フォルダーに、組織定義の JSON ファイルをコピーします。 以下のコマンド例では、組織定義の JSON ファイルは `org1definition.json` です。
 

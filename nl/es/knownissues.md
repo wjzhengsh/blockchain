@@ -2,7 +2,10 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
+
 ---
 
 {:new_window: target="_blank"}
@@ -17,13 +20,13 @@ lastupdated: "2019-02-08"
 # Problemas conocidos
 {: #known-issues}
 
-***[¿Le resulta útil esta página? Indíquenos su opinión.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
+En esta página se describen los problemas conocidos que se pueden encontrar al utilizar el Plan inicial o el Plan empresarial.
+{:shortdesc}
 
 Los siguientes problemas ya se han notificado:
 - **Todavía no se admite la configuración de una entidad emisora de certificados externa**. Como alternativa, puede generar y subir los certificados de administración a través del Supervisor de red. Para obtener más información, consulte [Generación de certificados del lado del cliente](/docs/services/blockchain/v10_application.html#dev-app-enroll-panel) y la descripción del [separador "Certificados" de la pantalla "Miembros"](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-members) del supervisor de red.
 - En el Supervisor de red de una red de Plan inicial, al pulsar **Ver registros** en los nodos que se listan en la pantalla "Visión general", se abrirá la interfaz Registro de Kibana de {{site.data.keyword.cloud}}. **De forma predeterminada, kibana está preconfigurado para mostrar registros de los últimos 30 días de actividad**. Si no ha habido actividad en los últimos 30 días, verá un mensaje que indica que *No se han encontrado resultados*. Para ver otros registros, puede pulsar el icono de temporizador en la esquina superior derecha bajo el nombre de usuario y establecer un rango de tiempo más amplio, por ejemplo *Año hasta la fecha*
-- Los registros de la red del Plan inicial los recopila el [servicio {{site.data.keyword.cloud_notm}} Log Analysis ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://console.bluemix.net/catalog/services/log-analysis). De forma predeterminada, los registros los recopila el Plan Lite del servicio Log Analysis. Este plan es gratuito y **solo le permite buscar los primeros 500 MB de sus registros por día**. Si los registros de la red superan los 500 MB, no podrá ver registros nuevos en Kibana. Si la red genera más de 500 MB de registros, puede actualizar a una versión de pago del servicio Log Analysis.
+- Los registros de la red del Plan inicial los recopila el [servicio {{site.data.keyword.cloud_notm}} Log Analysis ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://cloud.ibm.com/catalog/services/log-analysis). De forma predeterminada, los registros los recopila el Plan Lite del servicio Log Analysis. Este plan es gratuito y **solo le permite buscar los primeros 500 MB de sus registros por día**. Si los registros de la red superan los 500 MB, no podrá ver registros nuevos en Kibana. Si la red genera más de 500 MB de registros, puede actualizar a una versión de pago del servicio Log Analysis.
 - Dado que el Plan inicial no es un entorno de producción, **las aplicaciones podrían no llegar inmediatamente a un recurso de red**.
   - Si esto sucede, se recomienda como primer paso aumentar los valores de tiempo de espera predeterminados en el SDK de Fabric. Para obtener más información sobre cómo establecer valores de tiempo de espera, consulte [Establecimiento de valores de tiempo de espera en los SDK de Fabric](/docs/services/blockchain/v10_application.html#dev-app-set-timeout-in-sdk).
   - También puede volver a intentar la solicitud a nivel de aplicación.

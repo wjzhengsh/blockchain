@@ -1,8 +1,10 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-08-31"
+  years: 2017, 2019
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -13,23 +15,20 @@ lastupdated: "2018-08-31"
 {:pre: .pre}
 
 # Création ou association à un réseau à l'aide d'API Swagger
+{: #swagger-network}
 
-
-***[Cette page est-elle utile ? Dites-nous.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
-
-{{site.data.keyword.blockchainfull}} Platform expose un certain nombre d'API REST que vous pouvez utiliser pour créer ou rejoindre un réseau de blockchain sur {{site.data.keyword.cloud_notm}}. Vous pouvez essayer ces API à l'aide de l'[Interface utilisateur swagger](/docs/services/blockchain/howto/swagger_apis.html) qui est associée à votre réseau.
+{{site.data.keyword.blockchainfull}} Platform expose un certain nombre d'API REST que vous pouvez utiliser pour créer ou rejoindre un réseau de blockchain sur {{site.data.keyword.cloud_notm}}. Vous pouvez essayer ces API à l'aide de l'[Interface utilisateur swagger](/docs/services/blockchain/howto/swagger_apis.html#ibp-swagger) qui est associée à votre réseau.
 {:shortdesc}
 
 
 ## Extraction de données d'identification de base pour l'API
-{: #retrieve-id-token}
+{: #swagger-network-retrieve-id-token}
 
-Avant de commencer, vous devez créer une [instance de service {{site.data.keyword.blockchainfull_notm}} Platform ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://console.bluemix.net/catalog/services/blockchain) avec un plan Starter ou un plan Enterprise dans {{site.data.keyword.cloud_notm}}.
+Avant de commencer, vous devez créer une instance de service [{{site.data.keyword.blockchainfull_notm}} Platform ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://cloud.ibm.com/catalog/services/ibm-blockchain-5-prod) avec un plan Starter ou un plan Enterprise dans {{site.data.keyword.cloud_notm}}.
 
 Pour utiliser des API Swagger afin de créer ou de rejoindre un réseau, vous avez besoin de données d'identification de base afin de garantir que vous avez accès à l'instance de service dans {{site.data.keyword.cloud_notm}}.
 
-1. Dans votre tableau de bord [{{site.data.keyword.cloud_notm}} ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://console.bluemix.net/dashboard/apps/), ouvrez l'instance de service que vous avez créée.
+1. Dans votre tableau de bord [{{site.data.keyword.cloud_notm}} ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://cloud.ibm.com/resources), ouvrez l'instance de service que vous avez créée.
 2. Cliquez sur **Données d'identification du service** dans le navigateur de gauche.
 3. Cliquez sur le bouton "Nouvelles données d'identification" dans la page **Données d'identification du service** pour créer de nouvelles données d'identification.
     1. Attribuez un nom à ces données d'identification, par exemple *CreateJoin*.
@@ -45,7 +44,6 @@ Pour utiliser des API Swagger afin de créer ou de rejoindre un réseau, vous av
       "description": "This token can be used with the IBP APIs to create or join a network. It can only be used once."
     }
     ```
-    {:codeblock}
 
     `service_instance_id` fait office d'ID utilisateur d'authentification de base et `service_instance_token` fait office de mot de passe d'authentification de base. Utilisez ces valeurs comme données d'identification de base lorsque vous appelez les API **Créer un réseau** ou **Rejoindre le réseau**.
 
@@ -53,21 +51,20 @@ Pour utiliser des API Swagger afin de créer ou de rejoindre un réseau, vous av
 
     ```
     {
-      "PeerOrg1": {
-        "url": "https://ibmblockchain_xyz.ng.bluemix.net",
-        "network_id": "92d511f7e587413c8a9848fdae595ef2",
-        "key": "PeerOrg1",
-        "secret": "T8eUA65l-qtznUHL10KzQ7IK-3BVWWfHu5-hpCiDdXCRQyNfeyIm1p5NT7g17l6U"
-      }
-    }
+      "org1": {
+        "url": "https://ibp-sp.us-south.ibm-blockchain-5-prod.cloud.ibm.com",
+        "network_id": "n5edf19260c998940c5933daca2be76974a",
+        "key": "org1",
+        "secret": "A8YeuUuNvKVbN5cVGOlwprpaaHCVxYiP0uEN0fviQB2W9_ldJLtMSOSHqkUpkqysMA"
+        }
+    }    
     ```
-    {:codeblock}
 
     **Remarque **: Pour l'API **Invite**, la `clé` fait office d'ID utilisateur d'authentification de base et `secret` fait office de mot de passe d'authentification de base.
 
 
 ## Vérification des emplacements réseau disponibles
-{: #check-location}
+{: #swagger-network-check-location}
 
 Vous pouvez utiliser les API pour créer des réseaux de blockchain dans les emplacements disponibles uniquement. Avant de créer un réseau, utilisez l'API suivante pour obtenir la liste actuelle des emplacements réseau disponibles. L'exécution de cette API ne requiert pas de données d'identification.
 
@@ -76,7 +73,7 @@ https://ibmblockchain-v2.ng.bluemix.net/api/v1/network-locations/available
 ```
 {:codeblock}
 
-La liste des emplacements réseau retournée sera similaire à ceci :
+La liste des emplacements réseau retournée sera similaire à l'exemple suivant :
 
 ```
 {
@@ -100,9 +97,8 @@ La liste des emplacements réseau retournée sera similaire à ceci :
   }
 }
 ```
-{:codeblock}
 
-Si vous comptez créer un réseau, sélectionnez dans la liste renvoyée par l'API l'emplacement où vous désirez le créer. Prenez note des valeurs ``location_id`` et ``swagger_url`` associées à cet emplacement.  
+Si vous comptez créer un réseau, sélectionnez dans la liste renvoyée par l'API l'emplacement où vous désirez le créer. Prenez note des valeurs ``location_id`` et ``swagger_url`` associées à cet emplacement.
 
 Si vous comptez rejoindre un réseau, prenez note de la valeur ``swagger_url`` associée à l'élément ``location_id`` spécifiée dans votre courrier électronique d'invitation.
 
@@ -115,9 +111,9 @@ L'élément ``swagger_url`` représente le noeud final d'API à utiliser lorsque
 
 Si vous utilisez un plan Enterprise, vous devez suivre deux étapes pour créer un réseau avec des API.
 
-1. Créez une instance de service de blockchain sur {{site.data.keyword.cloud_notm}} avec le plan Enterprise<!-- or Enterprise Plus Plan-->.  Procédez à l'extraction de votre ID et jeton d'instance de service en tant que nom d'utilisateur et mot de passe d'authentification de base. Pour plus d'informations, voir [Extraction de données d'identification de base pour l'API](#retrieve-id-token).
+1. Créez une instance de service de blockchain sur {{site.data.keyword.cloud_notm}} avec le plan Enterprise<!-- or Enterprise Plus Plan-->.  Procédez à l'extraction de votre ID et jeton d'instance de service en tant que nom d'utilisateur et mot de passe d'authentification de base. Pour plus d'informations, voir [Extraction de données d'identification de base pour l'API](/docs/services/blockchain/howto/create_join_network_with_apis.html#swagger-network-retrieve-id-token).
 
-2. Appelez l'API **Create network** à l''aide de ces données d'identification du service. Lancez à nouveau cette API vis à vis de l'élément ``swagger_url`` extrait lors de l'étape [Vérification des emplacements réseau disponibles](#check-location). Accédez au ``lien swagger_url`` afin d'utiliser l'interface utilisateur Swagger pour lancer l'API Create Network, ou soumettez la commande par voie de programmation à l'aide de l'adresse URL sans ``/api-docs``. Par exemple,
+2. Appelez l'API **Create network** à l''aide de ces données d'identification du service. Lancez à nouveau cette API vis à vis de l'élément ``swagger_url`` extrait lors de l'étape [Vérification des emplacements réseau disponibles](/docs/services/blockchain/howto/create_join_network_with_apis.html#swagger-network-check-location). Accédez au ``lien swagger_url`` afin d'utiliser l'interface utilisateur Swagger pour lancer l'API Create Network, ou soumettez la commande par voie de programmation à l'aide de l'adresse URL sans ``/api-docs``. Par exemple,
 
     ```
     https://ibmblockchain-v2-tor.1.secure.blockchain.ibm.com/api/v1/networks
@@ -125,7 +121,7 @@ Si vous utilisez un plan Enterprise, vous devez suivre deux étapes pour créer 
     {:codeblock}
 
 **Paramètres** :
-- `location_id`: ID d'un emplacement réseau disponible. Spécifiez la valeur de `location_id` que vous avez notée lors de la [Vérification des emplacements réseau disponibles](#check-location).
+- `location_id`: ID d'un emplacement réseau disponible. Spécifiez la valeur de `location_id` que vous avez notée lors de la [Vérification des emplacements réseau disponibles](/docs/services/blockchain/howto/create_join_network_with_apis.html#swagger-network-check-location).
 - `company_name` : votre identificateur en tant que membre sur le réseau.
 - `email` : votre adresse e-mail pour la réception des notifications.
 - `peers` : nombre d'homologues que vous voulez créer pour ce membre. Les valeurs valides vont de 0 à 6. Vous pouvez également créer des homologues pour votre membre ultérieurement dans l'interface utilisateur du moniteur réseau.
@@ -134,7 +130,7 @@ Si vous utilisez un plan Enterprise, vous devez suivre deux étapes pour créer 
 
 ## Invitation de nouveaux membres sur un réseau
 
-Après avoir créé un réseau de blockchain, vous pouvez inviter d'autres membres à rejoindre votre réseau. Vous devez spécifier l'ID du réseau que vous voulez inviter des membres à rejoindre. Les données d'identification d'authentification de base qui sont nécessaires pour inviter un membre sont différentes de celles qui sont utilisées dans l'API **Créer un réseau**. <!--In order to get the basic auth information you will need to follow the same steps in "Retrieving basic auth information for API". --> Vous pouvez obtenir les données d'identification pour inviter un membre à l'aide de l'API d'**extraction des données d'identification réseau** dans l'[interface utilisateur Swagger](/docs/services/blockchain/howto/swagger_apis.html#retrieving-network-credentials) ou [extraire les informations d'authentification de base pour l'API](#retrieve-id-token) à partir de votre instance de service dans {{site.data.keyword.cloud_notm}}.
+Après avoir créé un réseau de blockchain, vous pouvez inviter d'autres membres à rejoindre votre réseau. Vous devez spécifier l'ID du réseau que vous voulez inviter des membres à rejoindre. Les données d'identification d'authentification de base qui sont nécessaires pour inviter un membre sont différentes de celles qui sont utilisées dans l'API **Créer un réseau**. <!--In order to get the basic auth information, you need to follow the same steps in "Retrieving basic auth information for API". --> Vous pouvez obtenir les données d'identification pour inviter un membre à l'aide de l'API d'**extraction des données d'identification réseau** dans l'[interface utilisateur Swagger](/docs/services/blockchain/howto/swagger_apis.html#ibp-swagger-retrieving-network-credentials) ou [extraire les informations d'authentification de base pour l'API](/docs/services/blockchain/howto/create_join_network_with_apis.html#swagger-network-retrieve-id-token) à partir de votre instance de service dans {{site.data.keyword.cloud_notm}}.
 
 ```
 /networks/{networkID}/invite
@@ -152,9 +148,9 @@ Le membre invité recevra une invitation par e-mail avec les instructions pour r
 
 Si vous êtes invité à rejoindre un réseau Blockchain, vous recevrez un e-mail d'invitation contenant les éléments `location_id` et `network id`.
 
-1. Avant de joindre le réseau, vous devez créer une instance du service {{site.data.keyword.blockchainfull_notm}} Platform et extraire l'ID de votre instance de service avec votre nom d'utilisateur et mot de passe d'authentification de base. Pour plus d'informations, voir [Extraction des informations d'authentification de base pour l'API](#retrieve-id-token).
+1. Avant de joindre le réseau, vous devez créer une instance du service {{site.data.keyword.blockchainfull_notm}} Platform et extraire l'ID de votre instance de service avec votre nom d'utilisateur et mot de passe d'authentification de base. Pour plus d'informations, voir [Extraction des informations d'authentification de base pour l'API](/docs/services/blockchain/howto/create_join_network_with_apis.html#swagger-network-retrieve-id-token).
 
-2. [Vérifiez les emplacements réseau disponibles](#check-location) pour recevoir dans votre e-mail d'invitation la valeur de `swagger_url` pour l'élément `location_id`. Elle devrait être similaire à ceci :
+2. [Vérifiez les emplacements réseau disponibles](/docs/services/blockchain/howto/create_join_network_with_apis.html#swagger-network-check-location) pour recevoir dans votre e-mail d'invitation la valeur de `swagger_url` pour l'élément `location_id`. Elle devrait être similaire à ceci :
 
     ```
     https://ibmblockchain-v2-tor.1.secure.blockchain.ibm.com/api-docs

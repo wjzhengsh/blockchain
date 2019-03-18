@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018,2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -14,10 +16,6 @@ lastupdated: "2019-02-08"
 
 # 블록체인 네트워크 모니터링
 {: #monitor-blockchain-network}
-
-
-***[이 페이지가 도움이 되었습니까? 알려주십시오.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 
 이 튜토리얼은 {{site.data.keyword.cloud_notm}}에서 {{site.data.keyword.blockchain}} 네트워크의 상태 정보를 보고 모니터링하는 방법을 보여줍니다.
 {:shortdesc}
@@ -60,7 +58,7 @@ curl: (7) Failed to connect to fft-zbc02b.4.secure.blockchain.ibm.com:20190: Con
 ## 네트워크 로그 사용
 {: #monitor-blockchain-network-using-logs}
 
-네트워크 모니터의 "개요" 화면에는 인증 기관, 순서 지정 서비스 및 피어 상태가 표시됩니다. **조치** 헤더의 드롭다운 목록에서 **로그 보기**를 클릭하여 특정 네트워크 컴포넌트의 로그를 보십시오. 엔터프라이즈 플랜 네트워크를 사용하는 경우 텍스트 파일 형식으로 컴포넌트 로그를 볼 수 있습니다. 스타터 플랜 네트워크를 사용하는 경우 [{{site.data.keyword.cloud_notm}} 로그 분석 서비스 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://console.bluemix.net/catalog/services/log-analysis)를 통해 컴포넌트 로그를 수집하며 [Kibana](/docs/services/blockchain/howto/monitor_network.html#monitor-blockchain-network-viewing-kibana-logs)에서 로그를 볼 수 있습니다.
+네트워크 모니터의 "개요" 화면에는 인증 기관, 순서 지정 서비스 및 피어 상태가 표시됩니다. **조치** 헤더의 드롭다운 목록에서 **로그 보기**를 클릭하여 특정 네트워크 컴포넌트의 로그를 보십시오. 엔터프라이즈 플랜 네트워크를 사용하는 경우 텍스트 파일 형식으로 컴포넌트 로그를 볼 수 있습니다. 스타터 플랜 네트워크를 사용하는 경우 [{{site.data.keyword.cloud_notm}} 로그 분석 서비스 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://cloud.ibm.com/catalog/services/log-analysis)를 통해 컴포넌트 로그를 수집하며 [Kibana](/docs/services/blockchain/howto/monitor_network.html#monitor-blockchain-network-viewing-kibana-logs)에서 로그를 볼 수 있습니다.
 
 각 컴포넌트는 여러 다른 활동에서 로그를 생성합니다. 그 이유는 각 컴포넌트가 Hyperledger Fabric [네트워크 아키텍처 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/network/network.html) 및 [트랜잭션 플로우 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.1/txflow.html)에서 여러 다른 역할을 수행하기 때문입니다.
 
@@ -78,11 +76,11 @@ Hyperledger Fabric에서는 메시지 심각도에 따라 여러 다른 [로깅 
 ## 스타터 플랜에서 Kibana의 로그 보기
 {: #monitor-blockchain-network-viewing-kibana-logs}
 
-스타터 플랜 네트워크의 로그는 [{{site.data.keyword.cloud_notm}} 로그 분석 서비스 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://console.bluemix.net/catalog/services/log-analysis "로그 분석 서비스")에서 수집합니다. 기본적으로 로그는 로그 분석 서비스의 Lite 플랜에서 수집됩니다. 이 플랜은 무료이고 버리기 전에 **3일 동안 로그를 저장**합니다. **매일 로그의 처음 500MB만 검색**할 수도 있습니다. 네트워크 로그가 500MB를 초과하면 Kibana에서 새 로그를 볼 수 없습니다. 네트워크가 500MB를 넘는 로그를 생성하거나 3일이 넘게 로그를 유지하려는 경우 로그 분석 서비스의 유료 버전으로 업그레이드할 수 있습니다.
+스타터 플랜 네트워크의 로그는 [{{site.data.keyword.cloud_notm}} 로그 분석 서비스 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://cloud.ibm.com/catalog/services/log-analysis "로그 분석 서비스")에서 수집합니다. 기본적으로 로그는 로그 분석 서비스의 Lite 플랜에서 수집됩니다. 이 플랜은 무료이고 버리기 전에 **3일 동안 로그를 저장**합니다. **매일 로그의 처음 500MB만 검색**할 수도 있습니다. 네트워크 로그가 500MB를 초과하면 Kibana에서 새 로그를 볼 수 없습니다. 네트워크가 500MB를 넘는 로그를 생성하거나 3일이 넘게 로그를 유지하려는 경우 로그 분석 서비스의 유료 버전으로 업그레이드할 수 있습니다.
 
 네트워크 모니터의 "개요" 화면에서 **조치** 헤더의 드롭다운 목록에서 **로그 보기**를 클릭하여 Kibana 인터페이스에서 각 네트워크 컴포넌트 로그를 여십시오. Kibana가 열리면 맨 위 검색 표시줄에서 필터링한 로그가 표시됩니다. 예를 들어 피어 로그를 보기 위해 클릭하면 네트워크 ID와 피어 ID(`NETWORK_ID_str:"nf8389d520c243004bb21ff5d70fc8939" && NODE_NAME_str:"org1-peer1"`)별로 검색이 필터링됩니다. 특정 로그를 더 보려면 검색 표시줄에서 추가 필드를 입력할 수 있습니다. 예를 들어 `&& "marbles"`를 추가하여 `"marbles"` 체인코드의 로그를 표시할 수 있습니다. 특정 컴포넌트 용어를 삭제하고 네트워크 ID로만 검색하면(예: `NETWORK_ID_str:"nf8389d520c243004bb21ff5d70fc8939"`) 모든 네트워크 컴포넌트에서 로그를 표시합니다.
 
-오른쪽 상단에 있는 시간 범위 단추를 사용하여 로그가 표시되는 기간을 변경할 수 있습니다. 화면 왼쪽의 탭을 사용하여 검색에서 필드를 제거하고 추가할 수 있습니다. 표시할 가장 중요한 필드는 메시지 필드입니다. 시간소인 없이 메시지를 검색하면 해당 메시지 로그의 모든 인스턴스를 찾는 데 도움이 될 수 있습니다. **저장** 단추를 눌러 현재 검색을 저장하고 특정 보기로 돌아가십시오. Kibana에 데이터를 표시하는 데 관한 자세한 정보는 [Kibana 사용자 안내서 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.elastic.co/guide/en/kibana/6.2/index.html "Kibana 사용자 안내서")를 참조하십시오. 로그 분석 CLI를 사용하여 로컬 파일 시스템에 [로그를 다운로드](https://console.bluemix.net/docs/services/CloudLogAnalysis/how-to/manage-logs/downloading_logs_cloud.html#downloading_logs)할 수 있습니다.
+오른쪽 상단에 있는 시간 범위 단추를 사용하여 로그가 표시되는 기간을 변경할 수 있습니다. 화면 왼쪽의 탭을 사용하여 검색에서 필드를 제거하고 추가할 수 있습니다. 표시할 가장 중요한 필드는 메시지 필드입니다. 시간소인 없이 메시지를 검색하면 해당 메시지 로그의 모든 인스턴스를 찾는 데 도움이 될 수 있습니다. **저장** 단추를 눌러 현재 검색을 저장하고 특정 보기로 돌아가십시오. Kibana에 데이터를 표시하는 데 관한 자세한 정보는 [Kibana 사용자 안내서 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.elastic.co/guide/en/kibana/6.2/index.html "Kibana 사용자 안내서")를 참조하십시오. 로그 분석 CLI를 사용하여 로컬 파일 시스템에 [로그를 다운로드](https://cloud.ibm.com/docs/services/CloudLogAnalysis/how-to/manage-logs/downloading_logs_cloud.html#downloading_logs)할 수 있습니다.
 
 **참고:** 기본적으로 Kibana는 30일 동안의 활동 로그를 표시하도록 사전 구성됩니다. 최근 30일 동안 활동이 없으면 *결과를 찾을 수 없음*이라는 메시지가 표시됩니다. 다른 로그를 보려면 오른쪽 상단에 있는 사용자 이름 아래의 타이머 아이콘을 클릭하고 보다 넓은 시간 범위(예: *올해 초부터 지금까지*)를 설정할 수 있습니다.
 

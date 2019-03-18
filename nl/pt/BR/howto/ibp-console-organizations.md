@@ -2,7 +2,9 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -15,11 +17,11 @@ lastupdated: "2019-02-08"
 # Gerenciando organizações
 {: #ibp-console-organizations}
 
-***[Esta página é útil? Diga-nos.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 É possível usar o console do {{site.data.keyword.blockchainfull}} Platform para criar uma definição de organização formal conhecida como um Membership Services Provider (MSP). A definição de MSP da sua organização permite que outros membros do consórcio de blockchain verifiquem a identidade de seus nós e aplicativos. Sua definição de MSP também contém os certificados de administrador de sua organização.
 
-É possível usar o console para gerenciar quais organizações são membros de sua rede. O administrador do serviço de pedido pode usar a guia de organizações para incluir membros no [consórcio](/docs/services/blockchain/glossary.html#glossary-consortium) de blockchain. Os membros do consórcio podem, então, usar o console para incluir membros em canais novos ou existentes.
+Também é possível usar o console para gerenciar quais organizações são membros de sua rede. O administrador do serviço de pedido pode usar a guia de organizações para incluir membros no [consórcio](/docs/services/blockchain/glossary.html#glossary-consortium) de blockchain. Os membros do consórcio podem, então, usar o console para incluir membros em canais novos ou existentes.
+
+**Público-alvo:** este tópico é projetado para operadores de rede que são responsáveis por criar, monitorar e gerenciar a rede de blockchain.
 
 ## Entendendo os MSPs
 {: #console-organizations-about-msp}
@@ -74,7 +76,7 @@ Depois de ter selecionado sua CA raiz, o ID do MSP e criado seus certificados de
 
 Somente o administrador do solicitador pode incluir novas organizações no consórcio. Se você for o administrador do solicitador, será necessário coletar as definições de MSP de todas as organizações que foram convidadas para o consórcio e importar os MSPs para o console. Em seguida, será possível incluir os MSPs no serviço de pedido usando o nó do solicitador.
 
-Depois que um administrador cria uma definição de MSP, ele pode usar a guia Organizações para fazer download do MSP no formato JSON para seu sistema de arquivos local. Ele podem, então, enviar o arquivo JSON do MSP em uma operação fora da banda. Navegue para a guia **Organizações** e use **Importar definição de MSP** para importar o arquivo MSP para seu console. Quando uma definição de MSP estiver visível na seção **Organizações disponíveis**, será possível navegar para seu nó do solicitador para [incluir a organização no consórcio](docs/services/blockchain/howto/ibp-console-organizations.html#console-organizations-add-consortium).
+Depois que um administrador cria uma definição de MSP, ele pode usar a guia Organizações para fazer download do MSP no formato JSON para seu sistema de arquivos local. Ele podem, então, enviar o arquivo JSON do MSP em uma operação fora da banda. Navegue para a guia **Organizações** e use **Importar definição de MSP** para importar o arquivo MSP para seu console. Quando uma definição de MSP estiver visível na seção **Organizações disponíveis**, será possível navegar para seu nó do solicitador para [incluir a organização no consórcio](/docs/services/blockchain/howto/ibp-console-organizations.html#console-organizations-add-consortium).
 
 
 ## Incluindo uma organização em um consórcio
@@ -86,12 +88,12 @@ Se você for o administrador do serviço de pedido, será possível usar o conso
 
 ## Criando e editando um canal
 
-Depois que uma organização tiver sido incluída no consórcio, ela poderá usar o serviço de pedido para criar um novo canal ou ser incluída em um canal. As informações que permitem que você participe de um canal, como associar seus peers ao canal, instanciar contratos inteligentes e enviar transações, são fornecidas usando as definições de MSP.
+Após uma organização ser incluída no consórcio, ela pode usar o serviço de pedido para criar um novo canal ou pode ser incluída em um canal existente. As informações que permitem que você participe de um canal, como associar seus peers ao canal, instanciar contratos inteligentes e enviar transações, são fornecidas usando as definições de MSP.
 
-Depois que uma organização tiver sido incluída em um consórcio, ela poderá criar um canal usando as etapas a seguir:
+Depois que sua organização for incluída em um consórcio, será possível criar um canal usando as etapas a seguir:
 
-1. Importe o nó de pedido que hospeda o consórcio para o seu console. Ele não precisa ser um administrador do nó de pedido. Mas seu console precisa ter o nome do solicitador e as informações sobre terminais.
-2. Importe os MSPs de organizações que eles desejam incluir no novo canal em seu console usando a guia de organizações. **Observe** que as organizações precisam ser incluídas no consórcio antes que possam ser incluídas em um canal.
-3. Navegue para a guia **Canais** e clique em **Criar canal**. Isso abrirá um painel lateral que permitirá que você especifique o nome de canal, a associação e as políticas de canal. É possível incluir quaisquer organizações que tenham sido incluídas no consórcio para o novo canal.
+1. Importe o nó de pedido que hospeda o consórcio em seu console. Não é necessário ser um administrador do nó de pedido, mas é necessário fornecer as informações sobre o nome do nó e do terminal do solicitador em seu console.
+2. Importe os MSPs de organizações que você deseja incluir no novo canal em seu console na guia **Organizações**. **Observe** que as organizações precisam ser incluídas no consórcio antes que possam ser incluídas em um canal.
+3. Navegue para a guia **Canais** e clique em **Criar canal**. Isso abrirá um painel lateral que permite especificar o nome do canal, a associação e as políticas de canal. É possível incluir quaisquer organizações que tenham sido incluídas no consórcio para o novo canal.
 
-Para obter mais informações sobre essas etapas, veja [criando um canal](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-create-channel1) no tutorial Construir uma rede.
+Para obter mais informações sobre essas etapas, consulte [Criando um canal](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-create-channel1) no tutorial **Construir uma rede**.

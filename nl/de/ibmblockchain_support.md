@@ -2,7 +2,10 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
+
 ---
 
 {:new_window: target="_blank"}
@@ -17,15 +20,14 @@ lastupdated: "2019-02-08"
 # Support anfordern
 {: #blockchain-support}
 
-***[Ist diese Seite hilfreich? Teilen Sie uns Ihre Meinung mit.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 {{site.data.keyword.blockchainfull}} Platform bietet verschiedene Möglichkeiten, um Probleme zu beheben und Support zu erhalten, die von den von Ihnen verwendeten {{site.data.keyword.blockchainfull_notm}} Platform-Angeboten abhängen.
 {:shortdesc}
 
 Bei allen {{site.data.keyword.blockchainfull_notm}} Platform-Angeboten wird empfohlen, zunächst die [kostenlosen digitalen Unterstützungsressourcen](/docs/services/blockchain/ibmblockchain_support.html#blockchain-support-resources) zu nutzen, um Fehler zu beheben und Hilfe von {{site.data.keyword.IBM_notm}} sowie der Hyperledger Fabric-Community zu erhalten. Falls Sie ein Starter Plan- oder Enterprise Plan-Netz verwenden, können Sie zur Network Monitor-Anzeige "Support" navigieren, die Links zu diesen Ressourcen enthält.
 
 Wenn sich Ihr Problem nicht mithilfe der [kostenlosen digitalen Unterstützungsressourcen](/docs/services/blockchain/ibmblockchain_support.html#blockchain-support-resources) lösen lässt, können Sie mit den folgenden Strategien Support für die verwendeten Produktangebote erhalten.
-- **Starter Plan und Enterprise Plan in {{site.data.keyword.cloud_notm}}**: Übergeben Sie einen Supportfall an {{site.data.keyword.cloud_notm}}. Weitere Informationen finden Sie unter [Supportfälle einreichen](/docs/services/blockchain/ibmblockchain_support.html#blockchain-support-cases).
+- **Starter Plan und Enterprise Plan in {{site.data.keyword.cloud_notm}}**
+  Übergeben Sie einen Support-Fall mit Hilfe von {{site.data.keyword.cloud_notm}}. Weitere Informationen finden Sie unter [Supportfälle einreichen](/docs/services/blockchain/ibmblockchain_support.html#blockchain-support-cases).
 
 - **{{site.data.keyword.blockchainfull_notm}} Platform Free 2.0 Beta**
   Übergeben Sie einen Support-Fall mit Hilfe von {{site.data.keyword.cloud_notm}}. **Der Support ist nur auf die Betaphase beschränkt.** Weitere Informationen finden Sie unter [Supportfälle einreichen](/docs/services/blockchain/ibmblockchain_support.html#blockchain-support-cases).
@@ -74,15 +76,15 @@ Bei Problemen im Zusammenhang mit dem Starter Plan oder Enterprise Plan können 
 Wenn Sie Hilfe zum Hyperledger Fabric-Chaincode, zu Hyperledger Composer oder Ihren Anwendungen benötigen, nutzen Sie die oben genannten Community-Ressourcen oder verwenden Sie die [{{site.data.keyword.blockchainfull_notm}}-Services ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://www.ibm.com/blockchain/services "Turn your blockchain strategy into business outcomes with {{site.data.keyword.blockchainfull_notm}} Services"). Es wird empfohlen, Hyperledger Composer ausschließlich für Demos und Machbarkeitsnachweise zu verwenden. {{site.data.keyword.IBM_notm}} bietet keinen Support für Netze, die Hyperledger Composer in Produktionsumgebungen nutzen, inklusive Composer-Befehlszeilenschnittstelle, JavaScript-APIs, REST-Server und Web Playground.
 {:note}
 
-Die Antwort auf Ihren Supportfall richtet sich nach Ihrem [{{site.data.keyword.cloud_notm}}-Supportplan ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://console.bluemix.net/docs/get-support/index.html#support-plans "Supportpläne").
+Die Antwort auf Ihren Supportfall richtet sich nach Ihrem [{{site.data.keyword.cloud_notm}}-Supportplan ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://cloud.ibm.com/docs/get-support/index.html#support-plans "Supportpläne").
 
-- Falls Sie **Premium Support** oder **Advanced Support** gekauft haben, können Sie für Ihr Ticket eine Prioritätsstufe von 1 bis 4 angeben. Die Stufe 1 ist für die höchste Priorität bestimmt. Supportfälle mit höheren Prioritätsstufen weisen auf größere Dringlichkeit hin und werden durch das Support-Team schneller beantwortet. Weitere Informationen finden Sie auf der Seite für die [verfügbaren {{site.data.keyword.cloud_notm}}-Supportpläne ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://console.bluemix.net/docs/get-support/index.html#support-plans "Supportpläne").  
+- Falls Sie **Premium Support** oder **Advanced Support** gekauft haben, können Sie für Ihr Ticket eine Prioritätsstufe von 1 bis 4 angeben. Die Stufe 1 ist für die höchste Priorität bestimmt. Supportfälle mit höheren Prioritätsstufen weisen auf größere Dringlichkeit hin und werden durch das Support-Team schneller beantwortet. Weitere Informationen finden Sie auf der Seite für [{{site.data.keyword.cloud_notm}}-Supportpläne![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://cloud.ibm.com/docs/get-support/index.html#support-plans "Supportpläne").  
 - Falls Sie keinen Support kaufen, wird Ihr nutzungsabhängiges oder Abonnementkonto für {{site.data.keyword.cloud_notm}} mit einem kostenlosen Plan des Typs **Basic Support** bereitgestellt. In diesem Fall wird Ihr Supportfall automatisch mit der Prioritätsstufe 4 registriert.
 
 **Beta-Angebote** werden mit einem eingeschränkteren Support bereitgestellt als im Allgemeinen verfügbare Releases.
 - Supportfälle werden mit einer niedrigeren Dringlichkeitsstufe registriert, normalerweise Sev-4 oder Sev-3.
 - Die Unterstützung wird auf der Basis von 5 Tagen zu je 24 Stunden bereitgestellt. Am Wochenende wird kein Support bereitgestellt.
-- Weitere Informationen finden Sie in [{{site.data.keyword.cloud_notm}} Support für Beta-Services](https://console.bluemix.net/docs/get-support/servicessupport.html#support-different-services "{{site.data.keyword.IBM_notm}} Beta service").
+- Weitere Informationen finden Sie in [{{site.data.keyword.cloud_notm}} Support für Beta-Services](https://cloud.ibm.com/docs/get-support/servicessupport.html#support-different-services "{{site.data.keyword.IBM_notm}} Beta service").
 
 Führen Sie die folgenden Schritte aus, um einen Supportfall zu übergeben.
 

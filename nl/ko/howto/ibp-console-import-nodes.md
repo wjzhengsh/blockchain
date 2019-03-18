@@ -2,7 +2,9 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -18,10 +20,10 @@ lastupdated: "2019-02-08"
 # 노드 가져오기
 {: #ibp-console-import-nodes}
 
-***[이 페이지가 도움이 되었습니까? 알려주십시오.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 콘솔에는 다른 {{site.data.keyword.blockchainfull}} Platform 콘솔을 사용하여 작성된 노드를 가져오는 옵션이 포함되어 있습니다.
 {:shortdesc}  
+
+**대상 독자:** 이 주제는 블록체인 네트워크를 작성, 모니터링 및 관리할 책임이 있는 네트워크 운영자를 위해 설계되었습니다. 
 
 ## 노드를 가져오는 이유
 
@@ -46,7 +48,7 @@ CA, 순서 지정자 및 피어 노드를 가져오십니다. 예를 들어, 콘
  콘솔에 노드를 가져온 후 노드의 **설정** 탭을 사용하여 연결 정보를 수정할 수도 있습니다.
 
 {: note}
-노드를 콘솔에 가져오기 전에 노드가 작성된 {{site.data.keyword.blockchainfull_notm}} Platform 콘솔에서 노드를 내보내야 합니다. 콘솔에서
+노드를 콘솔에 가져오기 전에 노드가 작성된 {{site.data.keyword.blockchainfull_notm}} Platform 콘솔에서 노드를 내보내야 합니다.  콘솔에서
 `JSON` 파일로 노드 정보를 내보내고 콘솔의 노드 가져오기 사이드 패널 단계에서 `JSON 업로드` 단추를 사용하여
 생성된 파일을 가져오십시오.
 
@@ -74,6 +76,7 @@ CA를 {{site.data.keyword.blockchainfull_notm}} Platform 콘솔로
 가져오면 새로운 사용자를 등록하고 [ID를 등록](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-enroll)할 수 있습니다.
 
 ### 시작하기 전에
+{: #ibp-console-import-ca-before-you-begin}
 
 - CA의 관리자 ID JSON 파일을 콘솔 지갑으로 가져왔는지 확인하십시오.
 - 작성된 콘솔에서 내보낸 CA JSON 파일이 사용 가능한지 확인하십시오.
@@ -87,6 +90,8 @@ CA 가져오기는 **노드** 탭에서 수행됩니다. 인증 기관 섹션에
 - **JSON 업로드** 단추를 클릭하여 정보의 수동 입력을 건너뛰고
 CA가 작성된 콘솔에서 내보낸 JSON 파일을 찾아보십시오.
 - **기존 ID**를 클릭하여 CA의 관리자 ID를 설정하고, 콘솔 지갑에서 CA 관리자 ID를 선택하십시오.
+
+선택적으로 CA를 가져올 때 추가 TLS CA(포함된 경우)에 대한 인증 정보를 지정할 수도 있습니다.   
 
 CA를 콘솔에 가져온 후에 CA를 사용하여 새 ID를 작성하고 필요한 인증서를 생성하여 컴포넌트를 작동시키고 트랜잭션을 네트워크에
 제출할 수 있습니다. 자세한 정보를 보려면 [인증 기관 관리](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-manage-ca)를 참조하십시오.
@@ -118,6 +123,7 @@ CA를 콘솔에 가져온 후에 CA를 사용하여 새 ID를 작성하고 필�
 순서 지정자를 콘솔로 가져오면 피어에 대한 새 채널을 작성하여 개인적으로 거래할 수 있습니다.
 
 ### 시작하기 전에
+{: #ibp-console-import-orderer-before-you-begin}
 
 - 순서 지정자의 관리자 ID JSON 파일을 콘솔 지갑으로 가져왔는지 확인하십시오.
 - 작성된 콘솔에서 내보낸 순서 지정자 JSON 파일이 사용 가능한지 확인하십시오.
@@ -137,7 +143,7 @@ CA를 콘솔에 가져온 후에 CA를 사용하여 새 ID를 작성하고 필�
 {: #ibp-console-import-peer}
 
 피어 노드는 원장을 유지보수하고 원장에 대한 조회 및 업데이트 조작을 수행하기 위해 스마트 계약을 실행하는 블록체인 컴포넌트입니다. 조직
-구성원은 피어를 소유하고 유지보수합니다. 컨소시엄에 가입하는 각 조직은 하나 이상의 피어를 배치해야 합니다. [블록체인 컴포넌트 개요](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview-peer)에서
+구성원은 피어를 소유하고 유지보수합니다.  컨소시엄에 가입하는 각 조직은 하나 이상의 피어를 배치해야 합니다. [블록체인 컴포넌트 개요](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview-peer)에서
 피어에 대해 자세히 볼 수 있습니다.  
 
 피어를 콘솔로 가져온 후에 피어에 스마트 계약을 설치하고 블록체인의 다른 채널에 피어를 가입시킬 수 있습니다.
@@ -146,6 +152,7 @@ CA를 콘솔에 가져온 후에 CA를 사용하여 새 ID를 작성하고 필�
 피어의 CA를 가져와 해당 CA를 사용하여 조작을 수행해야 합니다.
 
 ### 시작하기 전에
+{: #ibp-console-import-peer-before-you-begin}
 
 피어를 가져오려면 먼저 다음 정보 및 인증서를 수집해야 합니다.
 

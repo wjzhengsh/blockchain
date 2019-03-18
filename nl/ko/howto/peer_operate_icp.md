@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -18,9 +20,7 @@ lastupdated: "2019-02-08"
 # 다중 클라우드 네트워크에서 {{site.data.keyword.cloud_notm}} Private 운영
 {: #icp-peer-operate}
 
-***[이 페이지가 도움이 되었습니까? 알려주십시오.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
-{{site.data.keyword.cloud_notm}} Private 피어에 {{site.data.keyword.blockchainfull}} Platform을 설정한 다음 여러 작업 단계를 완료해야 피어가 블록체인 네트워크의 원장을 조회하고 호출하기 위한 트랜잭션을 발행할 수 있습니다. 이 단계에는 채널에 조직을 추가하고 피어에 채널이 가입하며 피어에 체인코드를 설치하고 채널에서 체인코드를 인스턴스화하며 애플리케이션을 피어에 연결하는 단계가 포함됩니다. 네트워크를 스타터 플랜 또는 엔터프라이즈 플랜 네트워크에 연결하려면 [스타터 플랜 또는 엔터프라이즈 플랜 네트워크로 {{site.data.keyword.cloud_notm}} Private에서 피어 운영](/docs/services/blockchain/howto/peer_operate_ibp.html#ibp-peer-operate)을 참조하십시오.
+{{site.data.keyword.cloud_notm}} Private 피어에 {{site.data.keyword.blockchainfull}} Platform을 설정한 다음 여러 작업 단계를 완료해야 피어가 블록체인 네트워크의 원장을 조회하고 호출하기 위한 트랜잭션을 발행할 수 있습니다. 이 단계에는 채널에 조직을 추가하고 피어가 채널에 가입하며 피어에 체인코드를 설치하고 채널에서 체인코드를 인스턴스화하며 애플리케이션을 피어에 연결하는 단계가 포함됩니다. 네트워크를 스타터 플랜 또는 엔터프라이즈 플랜 네트워크에 연결하려면 [스타터 플랜 또는 엔터프라이즈 플랜 네트워크로 {{site.data.keyword.cloud_notm}} Private에서 피어 운영](/docs/services/blockchain/howto/peer_operate_ibp.html#ibp-peer-operate)을 참조하십시오.
 {:shortdesc}
 
 피어를 작동시키려면 {{site.data.keyword.cloud_notm}} Private 클러스터에서 몇 가지 전제조건 단계를 완료해야 합니다.
@@ -171,20 +171,20 @@ npm install fabric-client@1.2
 
 Node SDK 버전 1.2를 사용하는 것이 좋습니다.
 
-### 피어와 작업하기 위해 SDK 준비
+### 피어에서 작동하도록 SDK 준비
 {: #icp-peer-operate-node-sdk}
 
 피어가 내부에서 피어 관리자의 signCert로 배치됩니다. 이를 통해 사용자는 피어가 운영되도록 피어 관리자의 인증서 및 MSP 폴더를 사용할 수 있습니다.
 
 [피어 관리자를 등록](/docs/services/blockchain/howto/CA_operate.html#ca-operate-enroll-admin)할 때 작성한 인증서를 찾으십시오. 예제 명령을 사용한 경우 `$HOME/fabric-ca-client/peer-admin`에서 피어 관리자 MSL 폴더를 찾을 수 있습니다.
-  - MSP 폴더에서 signCert(공용 키)과 개인 키를 사용하여 SDK로 피어 관리자 컨텍스트를 빌드할 수 있습니다. 다음 위치에서 해당 키를 찾을 수 있습니다.
+  - MSP 폴더의 signCert(공개 키) 및 개인 키를 사용하여 SDK로 피어 관리자 컨텍스트를 빌드할 수 있습니다. 다음 위치에서 해당 키를 찾을 수 있습니다.
     - `$HOME/fabric-ca-client/peer-admin/msp/signcerts`의 **signcerts** 폴더에서 signCert를 찾을 수 있습니다.
     - 개인 키는 **키 저장소:** 폴더(`$HOME/fabric-ca-client/peer-admin/msp/keystore`)에 있습니다.
 
 <!-- You can also use the SDK to generate the peer admin signCert and private key using the endpoint information of CA on Starter Plan or Enterprise Plan and your [peer admin username and password](/docs/services/blockchain/howto/CA_operate.html#ca-operate-register-admin). -->
 
 ### 피어의 TLS 인증서를 SDK에 전달
-{: #icp-peer-operate-download-tlscert}
+{: #icp-peer-operate-download-peer-tlscert}
 
 SDK에서 통신을 인증하려면 피어의 TLS 인증서를 참조해야 합니다. [피어 컨테이너에서 다운로드한](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-tls-cert) TLS 인증서를 찾고 애플리케이션으로 참조될 수 있는 위치에 TLS 인증서를 저장하십시오. 예제 명령을 사용한 경우 `$HOME/fabric-ca-client/peer-tls/peertls.pem`에서 피어 TLS 인증서를 찾을 수 있습니다. 그런 다음 간단한 읽기 파일 명령을 사용하여 TLS 인증서를 애플리케이션에 가져올 수 있습니다.
 
@@ -210,9 +210,9 @@ You need to specify a `ssl-target-name-override` of `<something>.blockchain.com`
 트랜잭션을 보증해야 하는 다른 조직에 속하는 다중 피어가 포함된 대형 네트워크가 있는 경우 [공통 연결 프로파일을 빌드![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://fabric-sdk-node.github.io/tutorial-network-config.html "공통 연결 프로파일")하기 위해 컨소시엄과 작업하려고 할 수 있습니다.
 
 ### 순서 지정자의 TLS 인증서를 SDK에 전달
-{: #icp-peer-operate-download-tlscert}
+{: #icp-peer-operate-download-orderer-tlscert}
 
-채널에 가입하고 트랜잭션을 제출하려면 컨소시엄의 순서 지정자에 대한 TLS 인증서도 필요합니다. 순서 지정자의 관리자인 경우 지시사항에 따라 [순서 지정자 TLS 인증서를 다운로드](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-tls-cert)하십시오.  예제 명령을 사용한 경우 `$HOME/fabric-ca-client/orderer-tls/orderertls.pem`에서 피어 TLS 인증서를 찾을 수 있습니다. 다른 조직에서 순서 지정자를 관리하는 경우 사용자에게 대역 내외 오퍼레이션에서 TLS 인증서를 제공해야 합니다. 그런 다음 TLS 인증서를 애플리케이션에 가져올 수 있습니다.
+채널에 가입하고 트랜잭션을 제출하려면 컨소시엄의 순서 지정자에 대한 TLS 인증서도 필요합니다. 순서 지정자의 관리자인 경우 지시사항에 따라 [순서 지정자 TLS 인증서를 다운로드](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-tls-cert)하십시오.  예제 명령을 사용한 경우 `$HOME/fabric-ca-client/orderer-tls/orderertls.pem`에서 피어 TLS 인증서를 찾을 수 있습니다. 다른 조직에서 순서 지정자를 관리하는 경우 사용자에게 대역 외 오퍼레이션에서 TLS 인증서를 제공해야 합니다. 그런 다음 TLS 인증서를 애플리케이션에 가져올 수 있습니다.
 
 ```
 var ordererTLSCert = fs.readFileSync(path.join(__dirname, './orderertls.pem'));
@@ -220,9 +220,9 @@ var ordererTLSCert = fs.readFileSync(path.join(__dirname, './orderertls.pem'));
 {:codeblock}
 
 ### SDK에 순서 지정자 정보 제공
-{: #icp-peer-operate-SDK-endpoints}
+{: #icp-peer-operate-orderer-SDK-endpoints}
 
-SDK를 사용하려면 컨소시엄에서 순서 지정자의 엔드포인트 정보도 필요합니다. 순서 지정자의 관리자인 경우 이 지시사항을 사용하여 [순서 지정자 엔드포인트 정보를 검색](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-orderer-endpoint)할 수 있습니다. 다른 조직에서 순서 지정자를 관리하는 경우 사용자에게 대역 내외 오퍼레이션에서 순서 지정자 URL을 제공해야 합니다. 다음 예제는 엔드포인트로서 순서 지정자를 정의하고 이를 순서 지정자 TLS 인증서에 전달합니다.
+SDK를 사용하려면 컨소시엄에서 순서 지정자의 엔드포인트 정보도 필요합니다. 순서 지정자의 관리자인 경우 이 지시사항을 사용하여 [순서 지정자 엔드포인트 정보를 검색](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-orderer-endpoint)할 수 있습니다. 다른 조직에서 순서 지정자를 관리하는 경우 사용자에게 대역 외 오퍼레이션에서 순서 지정자 URL을 제공해야 합니다. 다음 예제는 엔드포인트로서 순서 지정자를 정의하고 이를 순서 지정자 TLS 인증서에 전달합니다.
 
 ```
 var orderer = fabric_client.newOrderer('grpcs://9.30.94.174:30167', { pem:  Buffer.from(ordererTLSCert).toString(), 'ssl-target-name-override': null});
@@ -317,7 +317,7 @@ cd $HOME/fabric-ca-client/peer-admin/msp
 
 2. [피어 TLS 인증서를 다운로드](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-tls-cert)하고 명령행에서 이를 참조할 수 있는지 확인하십시오. 이 문서에 있는 예제 명령을 따른 경우 `$HOME/fabric-ca-client/peer-tls/peertls.pem` 파일에서 이 TLS 인증서를 찾을 수 있습니다.
 
-3. 순서 지정자의 TLS 인증서도 참조해야 합니다. 순서 지정자의 관리자인 경우 지시사항에 따라 [순서 지정자 TLS 인증서를 다운로드](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-tls-cert)하십시오. 다른 조직에서 순서 지정자를 관리하는 경우 사용자에게 대역 내외 오퍼레이션에서 TLS 인증서를 제공해야 합니다. 이후 명령에서 이 인증서를 참조할 수 있는 위치에 이 인증서를 저장하십시오.
+3. 순서 지정자의 TLS 인증서도 참조해야 합니다. 순서 지정자의 관리자인 경우 지시사항에 따라 [순서 지정자 TLS 인증서를 다운로드](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-tls-cert)하십시오. 다른 조직에서 순서 지정자를 관리하는 경우 사용자에게 대역 외 오퍼레이션에서 TLS 인증서를 제공해야 합니다. 이후 명령에서 이 인증서를 참조할 수 있는 위치에 이 인증서를 저장하십시오.
 
 트리 명령을 실행하여 이 단계를 완료했는지 확인할 수 있습니다. 인증서를 저장한 디렉토리로 이동하십시오. 트리 명령은 다음 구조와 유사한 결과를 생성해야 합니다.
 ```
@@ -379,7 +379,7 @@ tree
 
     이 변수를 설정하면 디렉토리에 있는 피어 클라이언트를 사용하여 명령을 실행할 수 있습니다.
 
-3. 순서 지정자의 엔드포인트 정보가 필요합니다. 순서 지정자의 관리자인 경우 이 지시사항을 사용하여 [순서 지정자 엔드포인트 정보를 검색](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-orderer-endpoint)할 수 있습니다. 다른 조직에서 순서 지정자를 관리하는 경우 사용자에게 대역 내외 오퍼레이션에서 순서 지정자 URL을 제공해야 합니다.
+3. 순서 지정자의 엔드포인트 정보가 필요합니다. 순서 지정자의 관리자인 경우 이 지시사항을 사용하여 [순서 지정자 엔드포인트 정보를 검색](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-orderer-endpoint)할 수 있습니다. 다른 조직에서 순서 지정자를 관리하는 경우 사용자에게 대역 외 오퍼레이션에서 순서 지정자 URL을 제공해야 합니다.
 
 4. [피어 엔드포인트 정보를 검색](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-peer-endpoint)하십시오. 이 URL을 사용하여 `PEERADDR` 환경 변수를 설정합니다. 시작 부분에 `http://`를 포함하지 않아야 합니다.
 
@@ -605,7 +605,7 @@ export PATH=$PATH:$HOME/bin
 ## 조직 정의 준비
 {: #icp-peer-operate-organization-definition}
 
-컴포넌트를 배치했으면 조직이 조직 정의 파일을 준비하여 컨소시엄에 가입할 수 있습니다. 정의에는 컨소시엄 통제에 참여해야 하는 모든 정보가 포함됩니다(예: 새 채널 작성 또는 가입, 채널에 피어 추가 또는 체인코드 인스턴스화). 정의에는 조직 이름, MSPID 및 MSP 인증서가 포함됩니다. 모든 조직은 이 단계를 완료해야 합니다.
+컴포넌트를 배치했으면 조직이 조직 정의 파일을 준비하여 컨소시엄에 가입할 수 있습니다. 정의에는 컨소시엄 통제에 참여하는 데 필요한 모든 정보가 포함됩니다(예: 새 채널 작성 또는 가입, 채널에 피어 추가 또는 체인코드 인스턴스화). 정의에는 조직 이름, MSPID 및 MSP 인증서가 포함됩니다. 모든 조직은 이 단계를 완료해야 합니다.
 
 ### Crypto 자료 준비
 {: #icp-peer-operate-prepare-crypto}
@@ -719,7 +719,7 @@ configtxgen -printOrg org1 > $HOME/fabric-ca-client/org-definitions/org1definiti
 ```
 {:codeblock}
 
-명령이 성공하면 `configtxgen`은 JSON 형식으로 조직 정의를 출력합니다. 컨소시엄에 가입하려면 대역 내외 오퍼레이션에서 이 파일을 순서 지정자 조직에 전송해야 합니다. 그런 다음 순서 지정자 조직은 정의를 시스템 채널에 추가하여 [컨소시엄을 형성하거나 기존 컨소시엄에 추가](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-consortium)될 수 있습니다.
+명령이 성공하면 `configtxgen`은 JSON 형식으로 조직 정의를 출력합니다. 컨소시엄에 가입하려면 대역 외 오퍼레이션에서 이 파일을 순서 지정자 조직에 전송해야 합니다. 그런 다음 순서 지정자 조직은 정의를 시스템 채널에 추가하여 [컨소시엄을 형성하거나 기존 컨소시엄에 추가](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-consortium)될 수 있습니다.
 
 ## 채널 트랜잭션 작성
 {: #icp-peer-operate-channeltx}
@@ -902,7 +902,7 @@ Node Fabric SDK API를 사용하여 단일 트랜잭션에서 서명 및 제출�
 ## 피어 로그 보기
 {: #icp-peer-operate-view-logs}
 
-컴포넌트 로그는 [`kubectl CLI 명령`](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-kubectl-configure)을 사용하거나 {{site.data.keyword.cloud_notm}} Private 클러스터에 포함된 [Kibana ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.elastic.co/products/kibana "Elastic Search에 대한 창")를 통해 표시될 수 있습니다. 
+컴포넌트 로그는 [`kubectl CLI 명령`](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-kubectl-configure)을 사용하거나 {{site.data.keyword.cloud_notm}} Private 클러스터에 포함된 [Kibana ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.elastic.co/products/kibana "Elastic Search에 대한 창")를 통해 표시될 수 있습니다.
 
 - `kubectl logs` 명령을 실행하여 팟(Pod) 내부의 컨테이너 로그를 보십시오. 팟(Pod) 이름이 확실하지 않은 경우 다음 명령을 실행하여 팟(Pod)의 목록을 보십시오.
 
@@ -922,7 +922,7 @@ Node Fabric SDK API를 사용하여 단일 트랜잭션에서 서명 및 제출�
 
 - 또는 Kibana에서 로그를 여는 [{{site.data.keyword.cloud_notm}} Private 클러스터 관리 콘솔 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/troubleshoot/events.html "이벤트 및 로그")을 사용하여 로그에 액세스할 수 있습니다.
 
-  **참고:** Kibana에서 로그인이 표시되면 `No results found`의 응답을 수신할 수 있습니다. 이 상태는 {{site.data.keyword.blockchainfull_notm}} Private이 호스트 이름으로 작업자 노드 IP 주소를 사용하는 경우 발생할 수 있습니다. 이 문제점을 해결하려면 패널 상단에서 `node.hostname.keyword`로 시작하는 필터를 제거하십시오. 그런 다음 로그가 표시됩니다.
+  **참고:** Kibana에서 로그인이 표시되면 `No results found`의 응답을 수신할 수 있습니다. 이 상태는 {{site.data.keyword.cloud_notm}} Private이 호스트 이름으로 작업자 노드 IP 주소를 사용하는 경우 발생할 수 있습니다. 이 문제점을 해결하려면 패널 상단에서 `node.hostname.keyword`로 시작하는 필터를 제거하십시오. 그런 다음 로그가 표시됩니다.
 
 
 ## 문제점 해결
