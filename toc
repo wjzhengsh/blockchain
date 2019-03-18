@@ -68,7 +68,6 @@ IBM Blockchain Platform
 		ibp_for_icp_deployment_guide.md
 		ICP_setup.md
 		howto/helm_install_icp.md
-		howto/ibp-console-deploy-icp.md
 
 	{: .topicgroup}
 	-- Certificate Authorities on IBM Cloud Private
