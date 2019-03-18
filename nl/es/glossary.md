@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -15,8 +17,6 @@ lastupdated: "2019-02-08"
 
 # Glosario
 {: #glossary}
-
-***[¿Le resulta útil esta página? Indíquenos su opinión.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 En este tema se definen términos específicos de {{site.data.keyword.blockchainfull}} Platform que aparecen en esta documentación. Para estudiar los términos con más detalle y ver un glosario de términos relacionados con los conceptos de Hyperledger Fabric, consulte el [Glosario de Hyperledger Fabric
 ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](http://hyperledger-fabric.readthedocs.io/en/release-1.2/glossary.html).

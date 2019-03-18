@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-31"
+lastupdated: "2018-12-08"
 ---
 
 {:new_window: target="_blank"}
@@ -15,6 +15,7 @@ lastupdated: "2018-08-31"
 # Hyperledger Composer
 {: #hyperledger-composer}
 
+**IBM recommande d'utiliser Hyperledger Composer uniquement pour les démonstrations et les validations de concept. IBM n'assure pas de support pour les réseaux utilisant Hyperledger Composer en production, y compris l'interface CLI Composer, les API JavaScript, le serveur REST et l'aire de jeu Web.**
 
 ***[Cette page est-elle utile ? Dites-nous.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
@@ -29,7 +30,7 @@ Hyperledger Composer se compose d'un environnement d'exécution, d'une interface
 
 Hyperledger Composer vous permet de rapidement modéliser votre réseau d'entreprise existant, lequel contient vos ressources existantes et les transactions qui leur sont associées ; les ressources sont des biens matériels ou immatériels, services ou propriétés. Dans le cadre de votre modèle de réseau d'entreprise, vous définissez les transactions qui peuvent interagir avec les ressources. Les réseaux d'entreprise incluent également les participants qui interagissent avec eux, chacun d'eux pouvant être associé à une identité unique, au sein de plusieurs réseaux d'entreprise.
 
-Pour plus d'informations sur la génération de réseaux d'entreprise, voir [Développement de réseaux d'entreprise](/docs/services/blockchain/develop.html) ou consultez la [documentation Hyperledger Composer ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger.github.io/composer/latest/introduction/introduction.html).
+Pour plus d'informations sur la génération de réseaux d'entreprise, voir [Développement de réseaux d'entreprise](../develop.html) ou consultez la [documentation Hyperledger Composer ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger.github.io/composer/latest/introduction/introduction.html).
 
 ## Requêtes
 

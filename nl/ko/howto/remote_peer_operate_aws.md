@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -14,10 +16,6 @@ lastupdated: "2019-02-08"
 
 # AWS에서 피어 운영
 {: #remote-peer-aws-operate}
-
-
-***[이 페이지가 도움이 되었습니까? 알려주십시오.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 
 AWS에 {{site.data.keyword.blockchainfull}} Platform 피어를 설정한 다음 여러 작업 단계를 완료해야 피어가 블록체인 네트워크의 원장을 조회하고 호출하기 위한 트랜잭션을 발행할 수 있습니다. 이 단계에는 채널에 조직을 추가하고 피어가 채널에 가입하며 피어에 체인코드를 설치하고 채널에서 체인코드를 인스턴스화하며 애플리케이션을 피어에 연결하는 단계가 포함됩니다. [Fabric SDK](/docs/services/blockchain/howto/remote_peer_operate_aws.html#remote-peer-aws-operate-with-sdk) 또는 [명령행](/docs/services/blockchain/howto/remote_peer_operate_aws.html#remote-peer-aws-operate-cli-operate)을 사용하여 이러한 작업 단계를 완료할 수 있습니다. 지시사항에서는 SDK 오퍼레이션에 익숙하다고 가정하지만 Fabric SDK 경로를 사용하는 것이 좋습니다.
 
@@ -43,7 +41,7 @@ npm install fabric-client@1.2
 
 Node SDK 버전 1.2를 사용하는 것이 좋습니다.
 
-### 피어와 작업하기 위해 SDK 준비
+### 피어에서 작동하도록 SDK 준비
 {: #remote-peer-aws-operate-sdk}
 
 SDK를 사용하여 피어를 운영하기 전에 애플리케이션이 {{site.data.keyword.blockchainfull_notm}} Platform과 피어에서 네트워크와 통신하는 데 필요한 인증서(등록)를 생성해야 합니다. **admin** ID를 사용하여 [SDK에 등록](/docs/services/blockchain/v10_application.html#dev-app-enroll-sdk)하는 단계를 수행하십시오. [애플리케이션 개발](/docs/services/blockchain/v10_application.html#dev-app) 튜토리얼에서도 **admin**으로 등록하므로 샘플 코드를 수정하지 않아도 됩니다.
@@ -101,7 +99,7 @@ var peer = fabric_client.newPeer('grpcs://<AWS_EC2_dashboard_Public_DNS>:7051', 
 ```
 {:codeblock}
 
-**참고:** 피어가 원격이므로 {{site.data.keyword.blockchainfull_notm}} Platform 네트워크의 기타 조직은 연결 프로파일에서 피어의 엔드포인트 정보를 찾을 수 없습니다. 다른 조직에서 인증할 트랜잭션을 피어에 보내면 대역 내외 오퍼레이션에서 공용 IP와 TLS 인증서를 제공해야 합니다.
+**참고:** 피어가 원격이므로 {{site.data.keyword.blockchainfull_notm}} Platform 네트워크의 기타 조직은 연결 프로파일에서 피어의 엔드포인트 정보를 찾을 수 없습니다. 다른 조직에서 인증할 트랜잭션을 피어에 보내면 대역 외 오퍼레이션에서 공용 IP와 TLS 인증서를 제공해야 합니다.
 
 ### SDK를 사용하여 채널에 가입
 {: #remote-peer-aws-operate-join-channel-sdk}
@@ -223,7 +221,7 @@ Fabric CA Client 및 Fabric 도구 컨테이너를 사용하여 명령행에서 
    ```
    {:codeblock}
 
-2. {{site.data.keyword.blockchainfull_notm}} Platform의 순서 지정자 TLS 인증서를 MSP 폴더에 복사하십시오. 연결 프로파일에 필요한 인증서가 포함되어 있습니다. 네트워크 모니터의 "개요" 화면에서 **연결 프로파일** 단추를 클릭하고 네트워크 인증 정보가 포함된 JSON 파일을 여십시오.`orderers` 섹션으로 이동하십시오. `-----BEGIN CERTIFICATE-----`로 시작하고 `-----END CERTIFICATE----- `로 종료되는 `"pem:"` 다음에 오는 인증서를 복사하십시오. 따옴표를 포함하지 마십시오.
+2. {{site.data.keyword.blockchainfull_notm}} Platform의 순서 지정자 TLS 인증서를 MSP 폴더에 복사하십시오. 연결 프로파일에 필요한 인증서가 포함되어 있습니다. 네트워크 모니터의 "개요" 화면에서 **연결 프로파일** 단추를 클릭하고 네트워크 인증 정보가 포함된 JSON 파일을 여십시오. `orderers` 섹션으로 이동하십시오. `-----BEGIN CERTIFICATE-----`로 시작하고 `-----END CERTIFICATE----- `로 종료되는 `"pem:"` 다음에 오는 인증서를 복사하십시오. 따옴표를 포함하지 마십시오.
 
     터미널 창에서 다음 명령을 실행하십시오.
     ```
@@ -319,7 +317,7 @@ git clone https://github.com/hyperledger/fabric.git
 **참고:** 자체 체인코드 파일이 있는 경우, 해당 파일도 피어 CLI 명령에 사용되도록 `mycc` 폴더에
 배치할 수 있습니다.  
 
-다음 명령을 실행하여 Fabric 도구 컨테이너를 시작하십시오. 두 번째 명령은 MSP 및 Fabric 샘플 폴더를 도구 컨테이너에 마운트합니다.사용자의 MSP 폴더를 저장한 디렉토리에서 이러한 명령을 실행했는지 확인하십시오.
+다음 명령을 실행하여 Fabric 도구 컨테이너를 시작하십시오. 두 번째 명령은 MSP 및 Fabric 샘플 폴더를 도구 컨테이너에 마운트합니다. 사용자의 MSP 폴더를 저장한 디렉토리에서 이러한 명령을 실행했는지 확인하십시오.
 
 ```
 docker network create blockchain.com

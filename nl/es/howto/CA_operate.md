@@ -2,7 +2,10 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
+
 ---
 
 {:new_window: target="_blank"}
@@ -16,8 +19,6 @@ lastupdated: "2019-02-08"
 
 # Funcionamiento de una entidad emisora de certificados en {{site.data.keyword.cloud_notm}} Private
 {: #ca-operate}
-
-***[¿Le resulta útil esta página? Indíquenos su opinión.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 Las entidades emisoras de certificados (CA) proporcionan las identidades en la red. Una CA se puede considerar como un notario público de confianza que se utiliza para establecer la confianza entre varias partes. Se proporciona un certificado a cada entidad de la red, que una CA raíz firmará para encapsular la identidad digital de la entidad. Este certificado es la raíz de la confianza para todas las operaciones de firma y verificación que se realizan en la red.
 {:shortdesc}
@@ -229,10 +230,10 @@ Solo puede generar certificados utilizando identidades que se hayan registrado c
   ```
   {:codeblock}
 
-  Los valores de `<enroll_id>` y `<enroll_password>` en el mandato son [el nombre de usuario y la contraseña del administrador de CA](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-admin-secret) que ha pasado al secreto de Kubernetes al desplegar la entidad emisora de certificados. Inserte el [URL de CA](/docs/services/blockchain/howto/CA_operate.html#ca-operate-url) dentro de `<ca_url_with_port>`. Excluya la parte de `http://` al principio. El valor de `<ca_name>` es el que ha proporcionado en el campo
+  El valor de `<enroll_id>` y `<enroll_password>` en el mandato son [el nombre de usuario y la contraseña del administrador de CA](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-admin-secret) que ha pasado al secreto de Kubernetes al desplegar la entidad emisora de certificados. Inserte el [URL de CA](/docs/services/blockchain/howto/CA_operate.html#ca-operate-url) dentro de `<ca_url_with_port>`. Excluya la parte de `http://` al principio. El valor de `<ca_name>` es el que ha proporcionado en el campo
 `CA Name` al desplegar la CA.
 
-  `<ca_tls_cert_path>` es la vía de acceso completa al [certificado TLS de CA](/docs/services/blockchain/howto/CA_operate.html#ca-operate-tls).
+  El valor de `<ca_tls_cert_path>` es la vía de acceso completa al [certificado TLS de CA](/docs/services/blockchain/howto/CA_operate.html#ca-operate-tls).
 
   Una llamada real es similar al siguiente mandato de ejemplo:
 
@@ -250,7 +251,7 @@ Solo puede generar certificados utilizando identidades que se hayan registrado c
   El mandato `enroll` genera un conjunto completo de certificados, que se conoce como carpeta de proveedor de servicios de pertenencia (MSP), ubicado dentro del directorio donde ha establecido la vía de acceso `$HOME` del cliente de CA de Fabric. Por ejemplo, `$HOME/fabric-ca-client/ca-admin`. Para obtener más información sobre los MSP y el contenido de la carpeta de MSP, consulte
 [Proveedores de servicios de pertenencia](/docs/services/blockchain/howto/CA_operate.html#ca-operate-msp).
 
-  Si el mandato `enroll` falla, consulte el [Tema de resolución de problemas](/docs/services/blockchain/howto/CA_operate.html#ca-operate-enroll-error) para ver las causas posibles.
+  Si el mandato `enroll` falla, consulte el [Tema de resolución de problemas](/docs/services/blockchain/howto/CA_operate.html#ca-operate-troubleshooting) para ver las causas posibles.
 
 Puede ejecutar un mandato de árbol (tree) para verificar que se han completado todos los pasos de requisito previo. Vaya al directorio donde ha almacenado los certificados. Un mandato tree debe generar un resultado similar a la estructura siguiente:
 
@@ -367,7 +368,7 @@ Tras recuperar la información de conexión de la entidad emisora de certificado
 ### Registro de la identidad de componente con la CA
 {: #ca-operate-register-component}
 
-Si desea encontrar un consorcio desplegando un servicio de ordenación y añadiendo organizaciones al mismo, o desplegar iguales y hacer que se unan a canales, en primer lugar debe registrar la identidad del componente con la CA. A continuación, el despliegue del componente puede generar los certificados necesarios para que el igual o el clasificador pueda participar en una red.
+Si desea formar un consorcio desplegando un servicio de ordenación y añadiendo organizaciones al mismo, o desplegar iguales y hacer que se unan a canales, en primer lugar debe registrar la identidad del componente con la CA. A continuación, el despliegue del componente puede generar los certificados necesarios para que el igual o el clasificador pueda participar en una red.
 
 1. [Genere certificados con el administrador de CA](/docs/services/blockchain/howto/CA_operate.html#ca-operate-enroll-ca-admin) utilizando el cliente de CA de Fabric. Utilice estos certificados de administrador para emitir los mandatos siguientes. Asegúrese de que `$FABRIC_CA_CLIENT_HOME` esté establecido en
 `$HOME/fabric-ca-client/ca-admin`.
@@ -771,11 +772,16 @@ Los registros de los componentes se pueden consultar desde la línea de mandatos
   **Nota:** al visualizar los registros en Kibana, es posible que reciba la respuesta `No results found`. Esta
 condición se puede producir si {{site.data.keyword.cloud_notm}} Private utiliza la dirección IP del nodo trabajador como su nombre de host. Para resolver este problema, elimine el filtro que comienza por `node.hostname.keyword` al principio del panel y los registros se volverán visibles.
 
+## Seguridad
+{: #ca-operate-security}
+
+La CA se puede mantener fuera de línea si solo se emiten un número limitado de certificados, por ejemplo solo iguales, servidor Node.js, aplicaciones cliente, para garantizar una mayor seguridad y no comprometer el material de claves de CA. Sin embargo, la CA debería estar en línea cuando se tengan que emitir solicitudes de certificados bajo demanda a los usuarios. Se recomienda encarecidamente proteger la clave privada del administrador de CA con [HSM](https://console.test.cloud.ibm.com/docs/services/blockchain/glossary.html#glossary-hsm) si es posible.
+
 ## Resolución de problemas
 {: #ca-operate-troubleshooting}
 
 ### **Problema:** error al ejecutar el mandato `enroll`
-{: #ca-operate-enroll-error}
+{: #ca-operate-enroll-error1}
 
 Al ejecutar el mandato enroll del cliente de CA de Fabric, es posible que el mandato falle con el error siguiente:
 
@@ -795,7 +801,7 @@ Este error se puede producir cuando el cliente de CA de Fabric intenta inscribir
 Revise los parámetros que ha especificado en el mandato `enroll` y asegúrese de que no exista ninguna de estas condiciones.
 
 ### **Problema:** error con el URL de CA al ejecutar el mandato `enroll`
-{: #ca-operate-enroll-error}
+{: #ca-operate-enroll-error2}
 
 Es posible que el mandato de inscripción del cliente de CA de Fabric falle si el URL de inscripción, el valor del parámetro `-u`, contiene un carácter especial. Por ejemplo, el mandato siguiente con el ID de inscripción y la contraseña `admin:C25A06287!0`,
 

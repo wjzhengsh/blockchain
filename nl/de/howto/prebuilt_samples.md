@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018.2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -15,10 +17,6 @@ lastupdated: "2019-02-08"
 
 # Beispielanwendungen bereitstellen
 {: #deploying-sample-applications}
-
-
-***[Ist diese Seite hilfreich? Teilen Sie uns Ihre Meinung mit.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 
 {{site.data.keyword.blockchainfull}} Platform stellt Beispielanwendungen zur Verfügung, die Sie bereitstellen und testen können, um sich mit Blockchain-Netzen und der Anwendungsentwicklung besser vertraut zu machen.
 {:shortdesc}

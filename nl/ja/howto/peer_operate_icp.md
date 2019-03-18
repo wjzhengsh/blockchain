@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -17,8 +19,6 @@ lastupdated: "2019-02-08"
 
 # マルチクラウド・ネットワークを使用した {{site.data.keyword.cloud_notm}} Private でのピアの操作
 {: #icp-peer-operate}
-
-***[このページは参考になりましたか。 ご意見をお聞かせください。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 {{site.data.keyword.blockchainfull}} Platform on {{site.data.keyword.cloud_notm}} Private ピアをセットアップした後、ピアでブロックチェーン・ネットワークの台帳の照会と呼び出しのためのトランザクションを発行できるようにするには、いくつかの操作ステップを実行する必要があります。 このステップでは、チャネルへの組織の追加、チャネルへのピアの参加、ピアでのチェーンコードのインストール、チャネルでのチェーンコードのインスタンス化、およびピアへのアプリケーションの接続を行います。 ピアをスターター・プランまたはエンタープライズ・プランのネットワークに接続する必要がある場合は、[スターター・プランまたはエンタープライズ・プランを使用した {{site.data.keyword.cloud_notm}} Private でのピアの操作](/docs/services/blockchain/howto/peer_operate_ibp.html#ibp-peer-operate)を参照してください。
 {:shortdesc}
@@ -184,9 +184,9 @@ npm install fabric-client@1.2
 <!-- You can also use the SDK to generate the peer admin signCert and private key using the endpoint information of CA on Starter Plan or Enterprise Plan and your [peer admin username and password](/docs/services/blockchain/howto/CA_operate.html#ca-operate-register-admin). -->
 
 ### SDK へのピアの TLS 証明書の引き渡し
-{: #icp-peer-operate-download-tlscert}
+{: #icp-peer-operate-download-peer-tlscert}
 
-SDK からの通信を認証するには、ピアの TLS 証明書を参照する必要があります。 [ピア・コンテナーからダウンロードした](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-tls-cert) TLS 証明書を見つけて、アプリケーションから参照できる場所に保存します。コマンド例を使用した場合、ピアの TLS 証明書は `$HOME/fabric-ca-client/peer-tls/peertls.pem` にあります。 次に、単純なファイル読み取りコマンドを使用して、TLS 証明書をアプリケーションにインポートできます。
+SDK からの通信を認証するには、ピアの TLS 証明書を参照する必要があります。 [ピア・コンテナーからダウンロードした](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-tls-cert) TLS 証明書を見つけて、アプリケーションから参照できる場所に保存します。 コマンド例を使用した場合、ピアの TLS 証明書は `$HOME/fabric-ca-client/peer-tls/peertls.pem` にあります。 次に、単純なファイル読み取りコマンドを使用して、TLS 証明書をアプリケーションにインポートできます。
 
 ```
 var peerTLSCert = fs.readFileSync(path.join(__dirname, './peertls.pem'));
@@ -210,7 +210,7 @@ You need to specify a `ssl-target-name-override` of `<something>.blockchain.com`
 大規模ネットワークが存在し、トランザクションを承認する必要がある異なる組織に属する複数のピアが含まれている場合、共同事業体と連携して、[共通接続プロファイルの作成![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://fabric-sdk-node.github.io/tutorial-network-config.html "共通接続プロファイル")が必要になることがあります。
 
 ### SDK への順序付けプログラムの TLS 証明書の引き渡し
-{: #icp-peer-operate-download-tlscert}
+{: #icp-peer-operate-download-orderer-tlscert}
 
 チャネルに参加してトランザクションを送信するには、共同事業体の順序付けプログラムの TLS 証明書も必要です。 順序付けプログラムの管理者である場合は、手順に従って[順序付けプログラムの TLS 証明書をダウンロード](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-tls-cert)してください。  コマンド例を使用した場合、ピアの TLS 証明書は `$HOME/fabric-ca-client/orderer-tls/orderertls.pem` にあります。 順序付けプログラムが別の組織によって管理されている場合は、アウト・オブ・バンド操作で TLS 証明書を提供してもらう必要があります。 その後、TLS 証明書をアプリケーションにインポートできます。
 
@@ -220,7 +220,7 @@ var ordererTLSCert = fs.readFileSync(path.join(__dirname, './orderertls.pem'));
 {:codeblock}
 
 ### SDK への順序付けプログラム情報の提供
-{: #icp-peer-operate-SDK-endpoints}
+{: #icp-peer-operate-orderer-SDK-endpoints}
 
 SDK を使用するには、共同事業体の順序付けプログラムのエンドポイント情報も必要です。 順序付けプログラムの管理者である場合は、手順に従って[順序付けプログラムのエンドポイント情報を取得](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-orderer-endpoint)できます。 順序付けプログラムが別の組織によって管理されている場合は、アウト・オブ・バンド操作で順序付けプログラムの URL を提供してもらう必要があります。 以下の例では、順序付けプログラムをエンドポイントとして定義し、そのエンドポイントに順序付けプログラムの TLS 証明書を渡します。
 

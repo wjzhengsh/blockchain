@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -93,7 +95,7 @@ Helm チャートをインストールする前に、{{site.data.keyword.cloud_n
 
     このコマンドが正常に完了すると、以下のような情報が表示されます。
 
-    <details><summary>Helm install output</summary>
+    <details aria-label="Details"><summary>Helm install output</summary>
     ```
     アーカイブの解凍中
     OK

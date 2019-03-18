@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -17,8 +19,6 @@ lastupdated: "2019-02-08"
 
 # Peers in {{site.data.keyword.cloud_notm}} Private mit einem Multi-Cloud-Netz betreiben
 {: #icp-peer-operate}
-
-***[Ist diese Seite hilfreich? Teilen Sie uns Ihre Meinung mit.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 Nach der Einrichtung eines Peers unter {{site.data.keyword.blockchainfull}} Platform on {{site.data.keyword.cloud_notm}} Private müssen Sie verschiedene operative Schritte ausführen, bevor Ihr Peer Transaktionen zum Abfragen und Aufrufen des Ledgers für das Blockchain-Netz absetzen kann. Die Schritte umfassen das Hinzufügen Ihrer Organisation zu einem Kanal, das Hinzufügen Ihres Peers zum Kanal, das Installieren des Chaincodes auf dem Peer, die Instanziierung des Chaincodes auf dem Kanal und die Verbindung von Anwendungen mit dem Peer. Falls Sie Ihren Peer mit einem Starter Plan- oder Enterprise Plan-Netz verbinden wollen, lesen Sie den Abschnitt [Peers in {{site.data.keyword.cloud_notm}} Private mit Starter Plan oder Enterprise Plan betreiben](/docs/services/blockchain/howto/peer_operate_ibp.html#ibp-peer-operate).
 {:shortdesc}
@@ -184,7 +184,7 @@ Suchen Sie nach den Zertifikaten, die Sie bei der [Eintragung des Peeradministra
 <!-- You can also use the SDK to generate the peer admin signCert and private key using the endpoint information of CA on Starter Plan or Enterprise Plan and your [peer admin username and password](/docs/services/blockchain/howto/CA_operate.html#ca-operate-register-admin). -->
 
 ### TLS-Zertifikat des Peers an SDK übergeben
-{: #icp-peer-operate-download-tlscert}
+{: #icp-peer-operate-download-peer-tlscert}
 
 Sie müssen auf das TLS-Zertifikat Ihres Peers verweisen, um die Kommunikation im SDK zu authentifizieren. Ermitteln Sie die Position des TLS-Zertifikats, das Sie [aus dem Peer-Container heruntergeladen haben](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-tls-cert), und speichern Sie es an einer Position, unter der Ihre Anwendung darauf verweisen kann. Falls Sie die Beispielbefehle ausgeführt haben, finden Sie das TLS-Zertifikat an der Position `$HOME/fabric-ca-client/peer-tls/peertls.pem`. Anschließend können Sie das TLS-Zertifikat in Ihre Anwendung importieren, indem Sie einen einfachen Dateilesebefehl benutzen.
 
@@ -210,7 +210,7 @@ You need to specify a `ssl-target-name-override` of `<something>.blockchain.com`
 Falls Sie ein umfangreiches Netz verwenden, bei dem mehrere Peers zu unterschiedlichen Organisationen gehören, die Ihre Transaktionen bewilligen müssen, kann es sinnvoll sein, zusammen mit Ihrem Konsortium [ein allgemeines Verbindungsprofil zu erstellen ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://fabric-sdk-node.github.io/tutorial-network-config.html "Common connection profile").
 
 ### TLS-Zertifikat des Anordnungsknotens an SDK übergeben
-{: #icp-peer-operate-download-tlscert}
+{: #icp-peer-operate-download-orderer-tlscert}
 
 Um Kanälen beitreten und Transaktionen übergeben zu können, benötigen Sie außerdem das TLS-Zertifikat für den Anordnungsknoten Ihres Konsortiums. Befolgen Sie als Administrator des Anordnungsknotens die Anweisungen für den [Download des TLS-Zertifikats für den Anordnungsknoten](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-tls-cert).  Falls Sie die Beispielbefehle ausgeführt haben, finden Sie das TLS-Zertifikat des Peers an der Position `$HOME/fabric-ca-client/orderer-tls/orderertls.pem`. Wenn der Anordnungsknoten von einer anderen Organisation gesteuert wird, muss diese Ihnen das TLS-Zertifikat in einer externen Operation zur Verfügung stellen. Anschließend können Sie das TLS-Zertifikat in Ihre Anwendung importieren.
 
@@ -220,7 +220,7 @@ var ordererTLSCert = fs.readFileSync(path.join(__dirname, './orderertls.pem'));
 {:codeblock}
 
 ### Informationen zum Anordnungsknoten für SDK bereitstellen
-{: #icp-peer-operate-SDK-endpoints}
+{: #icp-peer-operate-orderer-SDK-endpoints}
 
 Um das SDK verwenden zu können, benötigen Sie außerdem die Endpunktinformationen der Anordnungsknoten in Ihrem Konsortium. Als Administrator des Anordnungsknotens können Sie mit diesen Anweisungen die [Endpunktinformationen des Anordnungsknotens abrufen](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-orderer-endpoint). Wenn der Anordnungsknoten von einer anderen Organisation gesteuert wird, muss diese Ihnen die URL des Anordnungsknotens in einer externen Operation zur Verfügung stellen. Im folgenden Beispiel wird ein Anordnungsknoten als Endpunkt definiert und das TLS-Zertifikat des Anordnungsknotens an ihn übergeben.
 
@@ -901,7 +901,7 @@ Mit den APIs von Node Fabric SDK können Sie Signierung und Übergabe in einer e
 ## Protokolle des Peers anzeigen
 {: #icp-peer-operate-view-logs}
 
-Komponentenprotokolle können über die Befehlszeile mit den [`Befehlen der CLI "kubectl"`](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-kubectl-configure) oder über [Kibana ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://www.elastic.co/products/kibana "Your Window into the Elastic Search") angezeigt werden, das in Ihrem {{site.data.keyword.cloud_notm}} Private-Cluster enthalten ist. 
+Komponentenprotokolle können über die Befehlszeile mit den [`Befehlen der CLI "kubectl"`](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-kubectl-configure) oder über [Kibana ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://www.elastic.co/products/kibana "Your Window into the Elastic Search") angezeigt werden, das in Ihrem {{site.data.keyword.cloud_notm}} Private-Cluster enthalten ist.
 
 - Mit dem Befehl `kubectl logs` können Sie die Containerprotokolle innerhalb des Pods anzeigen. Falls Sie den Podnamen nicht genau kennen, führen den folgenden Befehl aus, um Ihre Podliste anzuzeigen.
 

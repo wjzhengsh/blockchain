@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -18,11 +20,9 @@ lastupdated: "2019-02-08"
 # {{site.data.keyword.blockchainfull_notm}} Platform for Amazon Web Services 정보
 {: #remote-peer-aws-about}
 
-***[이 페이지가 도움이 되었습니까? 알려주십시오.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 **참고** {{site.data.keyword.blockchainfull}} Platform Remote Peer on {{site.data.keyword.cloud_notm}} Private(베타) 프로그램은 종료되었습니다. {{site.data.keyword.cloud_notm}} Private 환경에서 피어를 계속 실행하려면 **{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private** 오퍼링을 대신 사용하십시오. 자세한 정보는 [{{site.data.keyword.cloud_notm}} Private의 피어 정보](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-about-peer)를 참조하십시오.
 
-{{site.data.keyword.cloud_notm}}에서 기존 블록체인 네트워크에 연결한 후 AWS Cloud에서 {{site.data.keyword.blockchainfull_notm}} Platform 피어를 실행할 수 있습니다. {{site.data.keyword.cloud_notm}} 외부에서 원격 피어를 실행하면 {{site.data.keyword.cloud_notm}} 내부의 기존 네트워크를 활용하면서 블록체인 네트워크에 가입하고 확장할 수 있는 유연성을 제공합니다. AWS 클라우드의 원격 피어는 플랫폼에서 인증 기관(CA)과 순서 지정 서비스를 이용하지만, {{site.data.keyword.cloud_notm}} 외부의 기타 애플리케이션과 피어를 같은 위치에 배치할 수 있습니다.
+{{site.data.keyword.cloud_notm}}에서 기존 블록체인 네트워크에 연결한 후 AWS Cloud에서 {{site.data.keyword.blockchainfull_notm}} Platform 피어를 실행할 수 있습니다. {{site.data.keyword.cloud_notm}} 외부에서 원격 피어를 실행하면 {{site.data.keyword.cloud_notm}} 내부의 기존 네트워크를 활용하면서 블록체인 네트워크에 참여하고 확장할 수 있는 유연성을 제공합니다. AWS 클라우드의 원격 피어는 플랫폼에서 인증 기관(CA)과 순서 지정 서비스를 이용하지만, {{site.data.keyword.cloud_notm}} 외부의 기타 애플리케이션과 피어를 같은 위치에 배치할 수 있습니다.
 {:shortdesc}
 
 
@@ -41,7 +41,7 @@ lastupdated: "2019-02-08"
 ## 전제조건
 {: #remote-peer-aws-about-prereq}
 
-{{site.data.keyword.blockchainfull_notm}} Platform for AWS 피어를 사용하려면 {{site.data.keyword.blockchainfull_notm}} Platform의 스타터 플랜 또는 엔터프라이즈 플랜 네트워크 구성원인 조직이 있어야 합니다. {{site.data.keyword.blockchainfull_notm}} Platform for AWS 피어에서는 {{site.data.keyword.blockchainfull_notm}} Platform 네트워크의 순서 지정 서비스, Hyperledger Fabric CA 및 API 엔드포인트를 활용하여 운영합니다. 블록체인 네트워크의 구성원이 아니면 네트워크를 작성하거나 가입해야 합니다. 자세한 정보는 [네트워크 작성](/docs/services/blockchain/get_start.html#getting-started-with-enterprise-plan-create-network) 또는 [네트워크에 가입](/docs/services/blockchain/get_start.html#getting-started-with-enterprise-plan-join-nw)을 참조하십시오.
+{{site.data.keyword.blockchainfull_notm}} Platform for AWS 피어를 사용하려면 {{site.data.keyword.blockchainfull_notm}} Platform의 스타터 플랜 또는 엔터프라이즈 플랜 네트워크 구성원인 조직이 있어야 합니다. {{site.data.keyword.blockchainfull_notm}} Platform for AWS 피어에서는 {{site.data.keyword.blockchainfull_notm}} Platform 네트워크의 순서 지정 서비스, Hyperledger Fabric CA 및 API 엔드포인트를 활용하여 운영합니다. 블록체인 네트워크의 구성원이 아니면 네트워크를 작성하거나 참여해야 합니다. 자세한 정보는 [네트워크 작성](/docs/services/blockchain/get_start.html#getting-started-with-enterprise-plan-create-network) 또는 [네트워크에 가입](/docs/services/blockchain/get_start.html#getting-started-with-enterprise-plan-join-nw)을 참조하십시오.
 
 ## 라이센스 및 가격
 {: #remote-peer-aws-about-license-pricing}
@@ -64,7 +64,7 @@ AWS [빠른 시작 템플리트![외부 링크 아이콘](../images/external_lin
 <map name="home_map1" id="home_map1">
 <area href="/docs/services/blockchain/howto/remote_peer_aws.html#remote-peer-aws-account" alt="AWS 구성 또는 액세스" title="구성 또는 액세스" shape="rect" coords="157.05, 52.53, 283.62, 127.11" />
 <area href="/docs/services/blockchain/howto/remote_peer_aws.html#remote-peer-aws-account" alt="키 쌍 작성" title="키 쌍 작성" shape="rect" coords="300.97, 52.53, 427.54, 127.11" />
-<area href="/docs/services/blockchain/howto/remote_peer_aws.html#remote-peer-aws-prerequisites" alt="네트워크 작성 또는 가입" title="네트워크 작성 또는 가입" shape="rect" coords="157.05, 131.8, 283.62, 206.37" />
+<area href="/docs/services/blockchain/howto/remote_peer_aws.html#remote-peer-aws-prerequisites" alt="네트워크 작성 또는 참여" title="네트워크 작성 또는 참여" shape="rect" coords="157.05, 131.8, 283.62, 206.37" />
 <area href="/docs/services/blockchain/howto/remote_peer_operate_aws.html#remote-peer-aws-operate-sdk" alt="채널 가입" title="채널 가입" shape="rect" coords="300.97, 131.8, 427.54, 206.37" />
 <area href="/docs/services/blockchain/howto/remote_peer_aws.html#remote-peer-aws-register-peer" alt="피어 ID 등록" title="피어 ID 등록" shape="rect" coords="443.95, 131.8, 570.53, 206.37" />
 <area href="/docs/services/blockchain/howto/remote_peer_aws.html#remote-peer-aws-network-endpoints" alt="피어 구성 정보 검색" title="피어 구성 정보 검색" shape="rect" coords="585.53, 131.8, 712.1, 206.37" />

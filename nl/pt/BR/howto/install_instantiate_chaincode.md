@@ -2,7 +2,10 @@
 
 copyright:
   years: 2018,2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
+
 ---
 
 {:new_window: target="_blank"}
@@ -10,11 +13,9 @@ lastupdated: "2019-02-08"
 {:codeblock: .codeblock}
 {:screen: .screen}
 {:pre: .pre}
+
 # Instalando e instanciando, e atualizar um chaincode
 {: #install-instantiate-chaincode}
-
-
-***[Esta página é útil? Diga-nos.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 
 O chaincode é um software que encapsula a lógica de negócios e as instruções transacionais para criar e modificar ativos no livro-razão. O chaincode pode ser escrito em diferentes linguagens e o {{site.data.keyword.blockchainfull}} Platform suporta o chaincode de Go e Node.js. Um chaincode é executado em um contêiner do Docker que está associado a qualquer peer que precisa interagir com ele. Para obter informações adicionais sobre o desenvolvimento do chaincode, consulte [Tutoriais de chaincode![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](http://hyperledger-fabric.readthedocs.io/en/release-1.2/chaincode.html).

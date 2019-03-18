@@ -2,7 +2,10 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
+
 ---
 
 {:new_window: target="_blank"}
@@ -17,12 +20,10 @@ lastupdated: "2019-02-08"
 # 新機能
 {: #whats-new}
 
-***[このページは参考になりましたか。 ご意見をお聞かせください。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 ## 2019 年 2 月 8 日
 {: #whats-new-2-08-2019}
 
-{{site.data.keyword.blockchainfull}} Platform は無料の2.0 ベータ版をリリースしました。これは、ブロックチェーン・ネットワークのデプロイ、操作、モニターを可能にする次世代の {{site.data.keyword.blockchainfull_notm}} Platform ソリューションです。{{site.data.keyword.blockchainfull_notm}} Platform 2.0 無料ベータ版には、{{site.data.keyword.cloud_notm}} 上に存在するユーザーの {{site.data.keyword.IBM_notm}} Kubernetes サービス・クラスターにブロックチェーン・コンポーネントをデプロイして管理できる新しいユーザー・インターフェース・コンソールが含まれています。{{site.data.keyword.blockchainfull_notm}} Platform 2.0 無料ベータ版では、次のことが可能です。
+{{site.data.keyword.blockchainfull}} Platform は無料の2.0 ベータ版をリリースしました。これは、ブロックチェーン・ネットワークのデプロイ、操作、モニターを可能にする次世代の {{site.data.keyword.blockchainfull_notm}} Platform ソリューションです。 {{site.data.keyword.blockchainfull_notm}} Platform 2.0 無料ベータ版には、{{site.data.keyword.cloud_notm}} 上に存在するユーザーの {{site.data.keyword.IBM_notm}} Kubernetes サービス・クラスターにブロックチェーン・コンポーネントをデプロイして管理できる新しいユーザー・インターフェース・コンソールが含まれています。 {{site.data.keyword.blockchainfull_notm}} Platform 2.0 無料ベータ版では、次のことが可能です。
 
 **1 つのシームレスな操作で、自分のネットワークを素早く簡単に構築できる**
 
@@ -42,17 +43,17 @@ lastupdated: "2019-02-08"
 *	単一のピアを複数の業界ネットワークに簡単に接続できる
 *	Kubernetes を使用することで、まずは小さい規模からスタートし、前払いなしで拡張した分だけ支払い、アップグレードすることができる
 
-- {{site.data.keyword.blockchainfull_notm}} Platform 2.0 無料ベータ版については、[{{site.data.keyword.blockchainfull_notm}} Platform 2.0 無料ベータ版について](/docs/services/blockchain/howto/ibp-console.html#ibp-console-overview)で詳しく説明しています。
-- 無料の 2.0 ベータ版リリースを {{site.data.keyword.IBM_notm}} Kubernetes サービス・クラスターにデプロイする方法については、[{{site.data.keyword.blockchainfull_notm}} Platform 2.0 無料ベータ版の概説](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks)で説明しています。
-- {{site.data.keyword.blockchainfull_notm}} Platform 2.0 無料ベータ版の使用方法を学習するための新しいチュートリアルを、**「方法」**カテゴリーの「**{{site.data.keyword.blockchainfull_notm}} Platform 2.0**」サブセクションに用意しています。 
+- {{site.data.keyword.blockchainfull_notm}} Platform 2.0 無料ベータ版については、[{{site.data.keyword.blockchainfull_notm}} Platform 2.0 について](/docs/services/blockchain/howto/ibp-console.html#ibp-console-overview)で詳しく説明しています。
+- 無料の 2.0 ベータ版リリースを {{site.data.keyword.IBM_notm}} Kubernetes サービス・クラスターにデプロイする方法については、[{{site.data.keyword.blockchainfull_notm}} Platform 2.0 の概説](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks)で説明しています。
+- {{site.data.keyword.blockchainfull_notm}} Platform 2.0 無料ベータ版の使用方法を学習するための新しいチュートリアルを、**「方法」**カテゴリーの「**{{site.data.keyword.blockchainfull_notm}} Platform 2.0**」サブセクションに用意しています。
   * [ネットワーク構築チュートリアル](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network)では、順序付けプログラムとピアを作成することで、ネットワークをホストするプロセスを学習します。
   * [ネットワーク参加チュートリアル](/docs/services/blockchain/howto/ibp-console-join-network.html#ibp-console-join-network)では、ピアを作成してチャネルに参加させることで、既存のネットワークに参加する方法を学習します。
-  * [ネットワークにスマート・コントラクトをデプロイするチュートリアル](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts)では、スマート・コントラクトを作成してネットワークにデプロイする方法を学習します。
-- {{site.data.keyword.blockchainfull_notm}} Platform 2.0 無料ベータ版オファリングは、Hyperledger Fabric v1.4 をベースとしており、ピアツーピアのゴシップ、サービス・ディスカバリー、およびプライベート・データをサポートします。ネットワーク上にプライベート・データを構成する方法については、この[トピック](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-private-data)を参照してください。
+  * [ネットワークにスマート・コントラクトをデプロイする](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts)では、スマート・コントラクトを作成してネットワークにデプロイする方法を学習します。
+- {{site.data.keyword.blockchainfull_notm}} Platform 2.0 無料ベータ版オファリングは、Hyperledger Fabric v1.4 をベースとしており、ピアツーピアのゴシップ、サービス・ディスカバリー、およびプライベート・データをサポートします。 ネットワーク上にプライベート・データを構成する方法については、この[トピック](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-private-data)を参照してください。
 
-- {{site.data.keyword.blockchainfull_notm}} Visual Studio Code 機能拡張は、Visual Studio Code Marketplace から入手可能です。開発者は、この拡張機能を使用して、スマート・コントラクトを作成、テストし、Hyperledger Fabric のインスタンスにデプロイできます。この拡張機能は Hyperledger Fabric 1.3 以降と互換性があります。VS Code 拡張機能の使用方法について詳しくは、[スマート・コントラクトのツール](/docs/services/blockchain/vscode-extension.html#develop-vscode)を参照してください。  
+- {{site.data.keyword.blockchainfull_notm}} Visual Studio Code 機能拡張は、Visual Studio Code Marketplace から入手可能です。 開発者は、この拡張機能を使用して、スマート・コントラクトを作成、テストし、Hyperledger Fabric のインスタンスにデプロイできます。 この拡張機能は Hyperledger Fabric 1.3 以降と互換性があります。 VS Code 拡張機能の使用方法について詳しくは、[スマート・コントラクトのツール](/docs/services/blockchain/vscode-extension.html#develop-vscode)を参照してください。  
 
-目次の改善のために、概説のトピックがすべて**「概説チュートリアル」**というセクションにまとめられました。また、**「{{site.data.keyword.blockchainfull_notm}} Platform について」**のサブセクションとして記載されている各 {{site.data.keyword.blockchainfull_notm}} Platform オファリングについての説明が、**「詳細」**セクションに入れられました。
+目次の改善のために、概説のトピックがすべて**「概説チュートリアル」**というセクションにまとめられました。 また、**「{{site.data.keyword.blockchainfull_notm}} Platform について」**のサブセクションとして記載されている各 {{site.data.keyword.blockchainfull_notm}} Platform オファリングについての説明が、**「詳細」**セクションに入れられました。
 
 **注:** スターター・プランのユーザーは、無料のクラウド・クレジットを利用できなくなりました。
 
@@ -77,7 +78,8 @@ lastupdated: "2019-02-08"
 
 {{site.data.keyword.blockchainfull_notm}} Platform は、{{site.data.keyword.blockchainfull_notm}} Platform for Amazon Web Services (AWS) をリリースします。
 
-{{site.data.keyword.blockchainfull_notm}} Platform for AWS を使用すると、AWS Cloud でピアを実行し、ピアを {{site.data.keyword.cloud_notm}} 内の既存のブロックチェーン・ネットワークに接続できます。 AWS のピアは、既存のネットワーク内の接続プロファイルおよびその他のブロックチェーン・コンポーネントを活用できます。一方、ピアを {{site.data.keyword.cloud_notm}} の外部の他のアプリケーションとより柔軟に連携させることができます。 詳しくは、[{{site.data.keyword.blockchainfull_notm}} Platform for Amazon Web Services について](/docs/services/blockchain/howto/remote_peer_aws.html#remote-peer-aws)を参照しください。/docs/services/blockchain/howto/remote_peer_aws.html#remote-peer-aws
+{{site.data.keyword.blockchainfull_notm}} Platform for AWS を使用すると、AWS Cloud でピアを実行し、ピアを {{site.data.keyword.cloud_notm}} 内の既存のブロックチェーン・ネットワークに接続できます。 AWS のピアは、既存のネットワーク内の接続プロファイルおよびその他のブロックチェーン・コンポーネントを活用できます。一方、ピアを {{site.data.keyword.cloud_notm}} の外部の他のアプリケーションとより柔軟に連携させることができます。 詳しくは、[{{site.data.keyword.blockchainfull_notm}} Platform for Amazon Web Services について](/docs/services/blockchain/howto/remote_peer_aws.html#remote-peer-aws)を参照しください。
+/docs/services/blockchain/howto/remote_peer_aws.html#remote-peer-aws
 
 ## 2018 年 10 月 4 日
 {: #whats-new-10-4-2018}

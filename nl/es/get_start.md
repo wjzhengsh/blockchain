@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -15,10 +17,6 @@ lastupdated: "2019-02-08"
 
 # Iniciación al Plan empresarial
 {: #getting-started-with-enterprise-plan}
-
-
-***[¿Le resulta útil esta página? Indíquenos su opinión.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 
 El Plan empresarial de {{site.data.keyword.blockchainfull}} Platform proporciona una red blockchain con alta seguridad, integridad, escalabilidad y rendimiento. Puede suministrar rápidamente una red plenamente funcional y utilizar el supervisor de red, que es un panel de control de la GUI, para ejecutar con inmediatez [código de encadenamiento](/docs/services/blockchain/glossary.html#glossary-chaincode) y aplicaciones sin tener que diseñar ni configurar una red partiendo de cero.
 {:shortdesc}
@@ -38,13 +36,13 @@ En los siguientes pasos se indica el flujo básico para iniciar una red del Plan
 ## Creación de una red
 {: #getting-started-with-enterprise-plan-create-network}
 
-Antes de empezar, debe crear una instancia de servicio de la plataforma [{{site.data.keyword.blockchain}} ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://console.bluemix.net/catalog/services/blockchain) en {{site.data.keyword.Bluemix_notm}}. Debe iniciar una sesión con su ID de {{site.data.keyword.Bluemix_notm}}. Si no dispone de ID, pulse el botón **Regístrese para crear**. Cambie el nombre del servicio y los nombres de las credenciales para su instancia de manera que pueda recordarlas fácilmente en el futuro. Seleccione la región, la organización y el espacio de {{site.data.keyword.Bluemix_notm}} donde desplegar la red de {{site.data.keyword.blockchain}}. A continuación, seleccione **Plan de suscripción empresarial** en la tabla de precios de planes y pulse el botón **Crear**.
+Antes de empezar, debe crear una instancia de servicio de [{{site.data.keyword.blockchain}} Platform ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://cloud.ibm.com/catalog/services/ibm-blockchain-5-prod) en {{site.data.keyword.cloud_notm}}. Debe iniciar una sesión con su ID de {{site.data.keyword.cloud_notm}}. Si no dispone de ID, pulse el botón **Regístrese para crear**. Cambie el nombre del servicio y los nombres de las credenciales para su instancia de manera que pueda recordarlas fácilmente en el futuro. Seleccione la región, la organización y el espacio de {{site.data.keyword.cloud_notm}} donde desplegar la red de {{site.data.keyword.blockchain}}. A continuación, seleccione **Plan de suscripción empresarial** en la tabla de precios de planes y pulse el botón **Crear**.
 
-Encontrará su instancia del servicio {{site.data.keyword.blockchain}} en el [panel de control del servicio {{site.data.keyword.Bluemix_notm}} ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://console.bluemix.net/dashboard/services "panel de control del servicio {{site.data.keyword.Bluemix_notm}}").
+Encontrará su instancia de servicio de {{site.data.keyword.blockchain}} Platform en el [panel de control de servicio de {{site.data.keyword.cloud_notm}} ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://cloud.ibm.com/resources "panel de control de servicio de {{site.data.keyword.cloud_notm}}").
 
 Si es un iniciador de red, pulse el botón **Crear red** para iniciar una red de {{site.data.keyword.blockchain}}. Siga el asistente para completar la configuración básica de la red y de los recursos. ![Asistente para crear red](images/create_network_name.png "Asistente para crear red")
 
-1. En la pantalla "Empecemos", asigne un nombre a la red, elija la ubicación de su organización de {{site.data.keyword.Bluemix_notm}} y añada el nombre de la institución. Cuando invite a otros miembros, estos buscarán este nombre de red para unirse a ella. Pulse **Siguiente**.
+1. En la pantalla "Empecemos", asigne un nombre a la red, elija la ubicación de su organización de {{site.data.keyword.cloud_notm}} y añada el nombre de la institución. Cuando invite a otros miembros, estos buscarán este nombre de red para unirse a ella. Pulse **Siguiente**.
 2. (Opcional) En la pantalla "Invitar miembros", especifique el nombre de la institución y la dirección de correo electrónico del miembro que desea invitar a la red. El nombre de la institución que designe no es un título oficial. Simplemente permite que la institución se reconozca fácilmente y puede cambiarse cuando se unen a la red. Tenga en cuenta que una red puede tener hasta 15 miembros, incluido usted. Este paso es opcional y puede invitar a miembros a la red posteriormente en el Supervisor de red. Pulse **Siguiente**.
 	Los miembros que invite recibirán una notificación por correo electrónico sobre la invitación después de completar todos los pasos necesarios para crear la red.
 3. En la pantalla "Definir reglas de gobierno", establezca las políticas de pertenencia, creación de canal y código de encadenamiento. De forma predeterminada, todos los miembros de red pueden invitar a otros miembros a unirse a la red, crear canales y crear instancias de código de encadenamiento. Actualmente, su red utiliza las políticas de gobierno predeterminadas. Pulse **Siguiente**.
@@ -65,9 +63,9 @@ Ahora ha desplegado correctamente una red de {{site.data.keyword.blockchain}} qu
 ## Cómo unirse a una red
 {: #getting-started-with-enterprise-plan-join-nw}
 
-De forma parecida a la creación de una red, debe crear una instancia de servicio de la plataforma [{{site.data.keyword.blockchain}} ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://console.bluemix.net/catalog/services/blockchain) en {{site.data.keyword.Bluemix_notm}}. Debe iniciar una sesión con su ID de {{site.data.keyword.Bluemix_notm}}. Si no dispone de ID, pulse el botón **Regístrese para crear**. Cambie el nombre del servicio y los nombres de las credenciales para su instancia de manera que pueda recordarlas fácilmente en el futuro. Seleccione la región, la organización y el espacio de {{site.data.keyword.Bluemix_notm}} donde desplegar la red de {{site.data.keyword.blockchain}}. A continuación, seleccione **Plan de suscripción empresarial** en la tabla de precios de planes y pulse el botón **Crear**.
+De forma similar a cómo se crea una red, tiene que crear una [instancia de servicio de {{site.data.keyword.blockchain}} Platform ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://cloud.ibm.com/catalog/services/ibm-blockchain-5-prod) en {{site.data.keyword.cloud_notm}}. Debe iniciar una sesión con su ID de {{site.data.keyword.cloud_notm}}. Si no dispone de ID, pulse el botón **Regístrese para crear**. Cambie el nombre del servicio y los nombres de las credenciales para su instancia de manera que pueda recordarlas fácilmente en el futuro. Seleccione la región, la organización y el espacio de {{site.data.keyword.cloud_notm}} donde desplegar la red de {{site.data.keyword.blockchain}}. A continuación, seleccione **Plan de suscripción empresarial** en la tabla de precios de planes y pulse el botón **Crear**.
 
-Encontrará su instancia del servicio {{site.data.keyword.blockchain}} en el [panel de control del servicio {{site.data.keyword.Bluemix_notm}} ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://console.bluemix.net/dashboard/services "panel de control del servicio {{site.data.keyword.Bluemix_notm}}").
+Encontrará su instancia de servicio de {{site.data.keyword.blockchain}} Platform en el [panel de control de servicio de {{site.data.keyword.cloud_notm}} ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://cloud.ibm.com/resources "panel de control de servicio de {{site.data.keyword.cloud_notm}}").
 
 Si es un miembro de red invitado, pulse el botón **Invitación pendiente->**, seleccione la red desde la que desea unirse en la lista desplegable y pulse el botón **Unirse a la red** . Siga el asistente para ver la configuración básica de su red y configurar sus propios recursos de red. ![Asistente para unirse a una red](images/join_network_name.png "Asistente para unirse a una red")
 
@@ -98,7 +96,7 @@ Después de crear una red del Plan empresarial en {{site.data.keyword.cloud_notm
 
 ### Recuperación desde la página de la instancia del servicio
 {: #getting-started-with-enterprise-plan-retrieve-svc-ins}
-Se encontrará en la página de la instancia del servicio justo después de crear una instancia del servicio. También puede pulsar el servicio en el [panel de control del servicio {{site.data.keyword.cloud_notm}} ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://console.bluemix.net/dashboard/services "panel de control del servicio {{site.data.keyword.cloud_notm}}") para abrir la página de su instancia del servicio.
+Se encontrará en la página de la instancia del servicio justo después de crear una instancia del servicio. También puede pulsar el servicio en el [panel de control de servicio de {{site.data.keyword.cloud_notm}} ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://cloud.ibm.com/resources "panel de control de servicio de {{site.data.keyword.cloud_notm}}") para abrir la página de la instancia de servicio.
 
 Para recuperar sus credenciales de servicio, siga los pasos siguientes:
 1. En la página de la instancia del servicio, pulse **Credenciales de servicio** en el navegador izquierdo para ver la pantalla "Credenciales de servicio".
@@ -114,7 +112,7 @@ Puede recuperar el perfil de conexión en la pantalla "Visión general" del supe
 
 ## Habilitación de aplicaciones para que interactúen con la red
 {: #getting-started-with-enterprise-plan-enable-apps}
-Las aplicaciones utilizan las API de SDK para interactuar con los recursos de la red de {{site.data.keyword.blockchain}}. Debe añadir la información de punto final de API de los recursos de red en su aplicación, de modo que la aplicación pueda dirigir las solicitudes de transacción a los iguales. A continuación, puede añadir la información de punto final de API del Supervisor de red. Las aplicaciones pueden alojarse en el sistema de archivos local o en {{site.data.keyword.Bluemix_notm}}. Para obtener más información, consulte [Desarrollo de aplicaciones](/docs/services/blockchain/v10_application.html#dev-app).
+Las aplicaciones utilizan las API de SDK para interactuar con los recursos de la red de {{site.data.keyword.blockchain}}. Debe añadir la información de punto final de API de los recursos de red en su aplicación, de modo que la aplicación pueda dirigir las solicitudes de transacción a los iguales. A continuación, puede añadir la información de punto final de API del Supervisor de red. Las aplicaciones pueden alojarse en el sistema de archivos local o en {{site.data.keyword.cloud_notm}}. Para obtener más información, consulte [Desarrollo de aplicaciones](/docs/services/blockchain/v10_application.html#dev-app).
 
 ## Supervisión de recursos de red
 {: #getting-started-with-enterprise-plan-monitor-resources}
@@ -122,7 +120,7 @@ Después de que se desencadene una transacción desde la aplicación, podrá ver
 
 ## Cómo abandonar a una red
 {: #getting-started-with-enterprise-plan-leave-nw}
-Si desea abandonar una red, suprima la instancia del servicio blockchain del panel de control de {{site.data.keyword.Bluemix_notm}}.
+Si desea abandonar una red, suprima la instancia del servicio blockchain del panel de control de {{site.data.keyword.cloud_notm}}.
 
 Antes de abandonar una red, asegúrese de que no es miembro de ninguno de los canales de la red. De lo contrario, recibirá errores cuando abandone la red. Una eliminación de un miembro de un canal debe completar el proceso de actualización del canal. Para obtener más información sobre el proceso de actualización de un canal, consulte [Actualización de un canal](/docs/services/blockchain/howto/create_channel.html#ibp-create-channel-updating-a-channel).
 {:note}

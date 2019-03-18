@@ -2,7 +2,10 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
+
 ---
 
 {:new_window: target="_blank"}
@@ -13,8 +16,6 @@ lastupdated: "2019-02-08"
 
 # Anordnungsknoten in {{site.data.keyword.cloud_notm}} Private betreiben
 {: #icp-orderer-operate}
-
-***[Ist diese Seite hilfreich? Teilen Sie uns Ihre Meinung mit.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 Nachdem Sie den Anordnungsknoten für {{site.data.keyword.blockchainfull}} Platform in {{site.data.keyword.cloud_notm}} Private installiert haben, wird eine Konfigurationsübersicht mit Standardeinstellungen für Umgebungsvariablen erstellt. Danach können Sie Umgebungsvariablen für den Anordnungsknoten ändern oder hinzufügen, um sein Verhalten anzupassen.
 
@@ -480,7 +481,7 @@ Es ist zwar möglich, mehrere Organisationsdefinitionen in eine einzige Konfigur
 ## Protokolle des Anordnungsknotens anzeigen
 {: #icp-orderer-operate-orderer-view-logs}
 
-Komponentenprotokolle können über die Befehlszeile mit den [`Befehlen der CLI "kubectl"`](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-kubectl-configure) oder über [Kibana ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://www.elastic.co/products/kibana "Your Window into the Elastic Search") angezeigt werden, das in Ihrem {{site.data.keyword.cloud_notm}} Private-Cluster enthalten ist. 
+Komponentenprotokolle können über die Befehlszeile mit den [`Befehlen der CLI "kubectl"`](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-kubectl-configure) oder über [Kibana ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://www.elastic.co/products/kibana "Your Window into the Elastic Search") angezeigt werden, das in Ihrem {{site.data.keyword.cloud_notm}} Private-Cluster enthalten ist.
 
 - Mit dem Befehl `kubectl logs` können Sie die Containerprotokolle innerhalb des Pods anzeigen. Falls Sie den Podnamen nicht genau kennen, führen den folgenden Befehl aus, um Ihre Podliste anzuzeigen.
 

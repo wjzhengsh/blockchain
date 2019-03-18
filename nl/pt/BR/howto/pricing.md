@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -14,9 +16,6 @@ lastupdated: "2018-02-08"
 
 # Precificação
 {: #ibp-pricing}
-
-
-***[Esta página é útil? Diga-nos.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 
 Este guia ajuda a entender a precificação para os planos de associação do {{site.data.keyword.blockchainfull}} Platform e quanto você pagará à medida em que desenvolver e aumentar a sua rede de blockchain.  

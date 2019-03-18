@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -16,8 +18,6 @@ lastupdated: "2019-02-08"
 
 # 스타터 및 엔터프라이즈 플랜에 비즈니스 네트워크 배치
 {: #deploying-a-business-network}
-
-*[이 페이지가 도움이 되었습니까? 알려주십시오.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)*
 
 {{site.data.keyword.IBM}}은 Composer CLI, JavaScript API, REST 서버 및 웹 플레이그라운드를 포함하여 프로덕션에서 Hyperledger Composer를 사용하는 네트워크를 지원하지 않습니다.
 {:note}

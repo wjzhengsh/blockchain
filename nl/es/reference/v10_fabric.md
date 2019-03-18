@@ -1,8 +1,11 @@
 ---
 
 copyright:
-  years: 2017, 2018, 2019
-lastupdated: "2019-02-08"
+  years: 2017, 2019
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
+
 ---
 
 {:new_window: target="_blank"}
@@ -14,8 +17,6 @@ lastupdated: "2019-02-08"
 
 # Hyperledger Fabric
 {: #hyperledger-fabric}
-
-***[¿Le resulta útil esta página? Indíquenos su opinión.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 La red de {{site.data.keyword.blockchainfull}} se basa en la pila de Hyperledger Fabric, uno de los proyectos de blockchain en Hyperledger Project de Linux Foundation. Es una red "autorizada" donde todos los usuarios y componentes tienen identidades conocidas. La lógica sign/verify se implementa en cada punto de encuentro de la comunicación y las transacciones acceden a través de una serie de verificaciones de aprobación y validación. En este sentido, difiere mucho de las implementaciones de blockchain tradicionales que promueven el anonimato y se ven forzadas a depender de criptomonedas y obligaciones de cálculo intenso para validar las transacciones.
 {:shortdesc}

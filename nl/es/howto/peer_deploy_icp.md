@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -17,9 +19,6 @@ lastupdated: "2019-02-08"
 
 # Despliegue de iguales en {{site.data.keyword.cloud_notm}} Private
 {: #icp-peer-deploy}
-
-
-***[¿Le resulta útil esta página? Indíquenos su opinión.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 En las instrucciones siguientes se describe cómo desplegar un igual de {{site.data.keyword.blockchainfull}} Platform en {{site.data.keyword.cloud_notm}} privado. Estas instrucciones le permiten conectarse a {{site.data.keyword.blockchainfull_notm}} Platform en {{site.data.keyword.cloud_notm}} Private. Si desea conectar un igual a una red de Plan inicial o Plan empresarial en
 {{site.data.keyword.cloud_notm}}, consulte [Despliegue de iguales para conectarse al Plan inicial o el Plan empresarial](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy).
@@ -50,7 +49,8 @@ para máquinas virtuales. Debe tener en cuenta los requisitos de vCPU cuando dec
 Debe determinar el almacenamiento que utilizará el igual. Si utiliza los valores predeterminados, el diagrama de Helm creará una nueva reclamación de volumen persistente (PVC) de 8 Gi con el nombre `my-data-pvc` para los datos del igual, y otra PVC de 8 Gi con el nombre
 `statedb-pvc` para la base de datos de estado.
 
-Si no desea utilizar los valores de almacenamiento predeterminados, asegúrese de que se configure una *nueva* `storageClass` durante la instalación de {{site.data.keyword.cloud_notm}} Private; si no es así, el administrador del sistema Kubernetes tiene que crear una storageClass antes del despliegue.
+Si no desea utilizar los valores de almacenamiento predeterminados, asegúrese de que se configure una nueva `storageClass` durante la instalación de {{site.data.keyword.cloud_notm}} Private o de que el administrador del sistema Kubernetes cree una `storageClass`
+antes de que despliegue {{site.data.keyword.blockchainfull_notm}} Platform.
 
 Puede optar por desplegar el igual en las plataformas amd64 o s390x. Sin embargo, tenga en cuenta que el [suministro dinámico ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://kubernetes.io/docs/concepts/storage/dynamic-provisioning/ "suministro de volumen dinámico") solo está disponible para los nodos amd64 en {{site.data.keyword.cloud_notm}} Private. Si el clúster incluye una combinación de nodos trabajadores s390x y amd64, el suministro dinámico no se puede utilizar.
 

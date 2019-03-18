@@ -2,7 +2,9 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -18,10 +20,10 @@ lastupdated: "2019-02-08"
 # Importando nós
 {: #ibp-console-import-nodes}
 
-***[Esta página é útil? Diga-nos.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 O console inclui a opção para importar nós que são criados usando outro console do {{site.data.keyword.blockchainfull}} Platform.
 {:shortdesc}  
+
+**Público-alvo:** este tópico é projetado para operadores de rede que são responsáveis por criar, monitorar e gerenciar a rede de blockchain.
 
 ## Por que importar um nó?
 
@@ -40,7 +42,7 @@ Ao importar um componente, é necessário fornecer suas informações de conexã
  Após a importação de um nó para o console, também é possível modificar suas informações de conexão usando a guia **Configurações** do nó.
 
 {: note}
-Antes de poder importar os nós para o console, eles precisam ser exportados do console do {{site.data.keyword.blockchainfull_notm}} Platform no qual eles foram criados. Basta exportar as informações do nó do console do console para um arquivo `JSON` e importar o arquivo gerado usando o botão `Upload JSON` na etapa do painel lateral do nó de importação do console.
+Antes de poder importar os nós para o console, eles precisam ser exportados do console do {{site.data.keyword.blockchainfull_notm}} Platform no qual eles foram criados.  Basta exportar as informações do nó do console do console para um arquivo `JSON` e importar o arquivo gerado usando o botão `Upload JSON` na etapa do painel lateral do nó de importação do console.
 
 
 ## Iniciar aqui: Reunindo Certificados ou Credenciais
@@ -57,6 +59,7 @@ Há várias razões pelas quais você pode desejar importar uma CA para seu cons
 Para importar uma CA para o console do {{site.data.keyword.blockchainfull_notm}} Platform e operá-la, deve-se já ter exportado a CA de outro {{site.data.keyword.blockchainfull_notm}} Platform. A importação de uma CA permite registrar novos usuários e [inscrever identidades](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-enroll).
 
 ### Antes de iniciar
+{: #ibp-console-import-ca-before-you-begin}
 
 - Assegure-se de que você já tenha importado o arquivo JSON de identidade de administrador da CA para sua carteira eletrônica do console.
 - Assegure-se de que o arquivo JSON de CA que foi exportado do console no qual ele foi criado esteja disponível.
@@ -67,6 +70,8 @@ A importação de uma CA é executada na guia **Nós**. Clique no sinal `+` em *
 
 - Clique no botão **Fazer upload de JSON** para ignorar a entrada manual das informações e procurar o arquivo JSON que foi exportado do console no qual a CA foi criada.
 - Configure a identidade de administrador para a CA clicando em **Identidade existente** e selecionando a identidade de administrador de CA em sua carteira eletrônica do console.
+
+Opcionalmente, ao importar uma autoridade de certificação, também é possível especificar as credenciais para a autoridade de certificação TLS adicional, se uma estiver incluída.  
 
 Após a importação da CA para o console, é possível usar sua CA para criar novas identidades e gerar os certificados necessários para operar seus componentes e enviar transações para a rede. Para saber mais, veja [Gerenciando autoridades de certificação](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-manage-ca).
 
@@ -86,6 +91,7 @@ Um nó de solicitador é o componente de blockchain que coleta transações de m
 A importação de um solicitador no console permite criar novos canais para os peers para transacionar privadamente.
 
 ### Antes de iniciar
+{: #ibp-console-import-orderer-before-you-begin}
 
 - Assegure-se de que você já tenha importado o arquivo JSON de identidade de administrador do solicitador para a sua carteira eletrônica do console.
 - Assegure-se de que o arquivo JSON do solicitador que foi exportado do console no qual ele foi criado esteja disponível.
@@ -107,6 +113,7 @@ Após a importação de um peer para o console, é possível instalar contratos 
 **Nota:** se você precisar incluir mais peers na organização de peer ou criar identidades de administrador adicionais para um peer, será necessário importar a CA do peer e, em seguida, usar essa CA para executar essas operações.
 
 ### Antes de iniciar
+{: #ibp-console-import-peer-before-you-begin}
 
 Antes de poder importar um peer, é necessário reunir as informações e os certificados a seguir:
 

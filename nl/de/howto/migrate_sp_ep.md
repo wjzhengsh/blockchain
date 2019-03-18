@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018,2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -14,10 +16,6 @@ lastupdated: "2019-02-08"
 
 # Von Starter Plan auf Enterprise Plan migrieren
 {: #migrate_starter_to_enterprise}
-
-
-***[Ist diese Seite hilfreich? Teilen Sie uns Ihre Meinung mit.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 
 {{site.data.keyword.blockchainfull}} Platform [Starter Plan](/docs/services/blockchain/starter_plan.html#starter-plan-about) bietet Ihnen eine Test- und Entwicklungsumgebung zur Ausführung Ihrer Machbarkeitsnachweise (PoC = Proof of Concept) und Demos sowie zum Testen Ihres Chaincodes und Ihrer Anwendungen. Wenn Sie bereit sind, um Ihre Entwicklungsergebnisse in eine Produktionsumgebung zu überführen, dann können Sie eine Migration von einem Starter Plan-Netz auf ein [Enterprise Plan](/docs/services/blockchain/enterprise_plan.html#enterprise-plan-about)-Netz durchführen.
 {:shortdesc}

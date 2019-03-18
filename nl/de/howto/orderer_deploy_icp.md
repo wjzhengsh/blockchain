@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -14,8 +16,6 @@ lastupdated: "2019-02-08"
 
 # Anordnungsknoten in {{site.data.keyword.cloud_notm}} Private bereitstellen
 {: #icp-orderer-deploy}
-
-***[Ist diese Seite hilfreich? Teilen Sie uns Ihre Meinung mit.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 Anordnungsknoten authentifizieren Clients, ordnen Transaktionen an und senden Transaktionen in einem Blockchain-Netz mit der Anordnungskomponente. Weitere Informationen zu Anordnungsknoten und der Rolle, die sie in einem Blockchain-Netz übernehmen, enthält der Abschnitt [Blockchain-Komponenten im Überblick](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview).
 {:shortdesc}
@@ -106,7 +106,7 @@ Nachdem Sie die Konfigurationsdatei gespeichert haben, müssen Sie sie im Base64
 
 3. Füllen Sie auf der Registerkarte **Allgemein** die folgenden Felder aus:
   - **Name:** Geben Sie für Ihren geheimen Schlüssel einen Namen ein, der in Ihrem Cluster eindeutig ist. Diesen Namen verwenden Sie beim Bereitstellen Ihres Anordnungsknotens. Der Name darf nur aus Kleinbuchstaben bestehen.  
-  **Hinweis:** Wenn Sie einen Anordnungsknoten bereitstellen, wird durch die Bereitstellung automatisch ein neuer geheimer Schlüssel namens `<helm_release_name>-orderer-mspsecret` generiert. Achten Sie daher beim Benennen des geheimen Schlüssels darauf, dass sich der Name von `<helm_release_name>-orderer-mspsecret` unterscheidet. Andernfalls schlägt die Bereitstellung des Helm-Diagramms fehl, weil der geheime Schlüssel, den sie zu erstellen versucht, bereits vorhanden ist.
+  **Hinweis:** Wenn Sie einen Anordnungsknoten bereitstellen, wird durch die Bereitstellung automatisch ein neuer geheimer Schlüssel namens `<helm_release_name>-orderer-mspsecret` generiert. Achten Sie daher beim Benennen des geheimen Schlüssels darauf, dass sich der Name von `<helm_release_name>-orderer-mspsecret` generiert. Andernfalls schlägt die Bereitstellung des Helm-Diagramms fehl, weil der geheime Schlüssel, den sie zu erstellen versucht, bereits vorhanden ist.
   - **Namensbereich:** Dies ist der Namensbereich, zu dem Ihr geheimer Schlüssel hinzugefügt werden soll. Wählen Sie den `Namensbereich` aus, in dem Sie Ihren Anordnungsknoten bereitstellen wollen.
   - **Typ:** Geben Sie den Wert `Opaque` ein.
 

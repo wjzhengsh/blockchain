@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -18,10 +20,6 @@ lastupdated: "2019-02-08"
 
 # {{site.data.keyword.blockchainfull_notm}}  Locais da plataforma
 {: #ibp-regions-locations}
-
-
-***[Esta página é útil? Diga-nos.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 
 O {{site.data.keyword.cloud}}  é hospedado em todo o mundo em vários locais. Locais são data centers em uma área geográfica que é acessada por um terminal. O {{site.data.keyword.blockchainfull_notm}} Platform oferece planos de associação dentro do {{site.data.keyword.cloud_notm}} globalmente em locais diferentes. Quando você cria a instância de serviço do {{site.data.keyword.blockchainfull_notm}} Platform no {{site.data.keyword.cloud_notm}}, sua rede de blockchain e os recursos de rede são criados e armazenados no local do {{site.data.keyword.cloud_notm}} no qual você cria a instância de serviço.
 {:shortdesc}

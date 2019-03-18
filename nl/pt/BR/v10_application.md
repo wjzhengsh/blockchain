@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -17,10 +19,6 @@ lastupdated: "2019-02-08"
 
 # Desenvolvendo aplicativos com os Fabric SDKs
 {: #dev-app}
-
-
-***[Esta página é útil? Diga-nos.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 
 O {{site.data.keyword.blockchainfull}} Platform fornece APIs que podem ser usadas para conectar aplicativos à rede de blockchain. É possível usar os terminais de API da rede no perfil de conexão para chamar seu chaincode e atualizar ou consultar o livro-razão específico do canal em seus peers. Também é possível usar APIs na [IU do Swagger](/docs/services/blockchain/howto/swagger_apis.html#ibp-swagger) para gerenciar nós, canais e membros de sua rede.
 {:shortdesc}
@@ -74,7 +72,7 @@ Este tutorial usa o [Node SDK ![Ícone de link externo](images/external_link.svg
   * Na tela "Visão geral", clique em **Perfil de conexão**. O Perfil de conexão contém um conjunto completo de informações sobre terminais de API de todos os recursos de rede.
 ![Perfil de conexão no Monitor de rede](images/service_credentials.png "Perfil de conexão no Monitor de rede")
 
-  * Se você tiver o chaincode em execução na rede, será possível obter as informações sobre terminais de API específicas para o chaincode. Na tela "Canais", clique na linha do canal na qual o chaincode está em execução para abrir a tela do canal específico. Em seguida, localize o chaincode e clique no botão **JSON**.
+  * Se você tiver o chaincode em execução na rede, será possível obter as informações sobre terminais de API específicas para o chaincode. Na tela "Canais", clique na linha do canal na qual o chaincode está em execução para abrir a tela de canal específica. Em seguida, localize o chaincode e clique no botão **JSON**.
     ![Terminais de API por chaincode](images/channel_chaincode.png "Terminais de API por chaincode")
 
 2. Localize as informações sobre terminais de API de seus recursos de rede, que são semelhantes à URL da linha `peer1-org1` no exemplo a seguir:
@@ -345,7 +343,7 @@ Para obter mais informações sobre o aplicativo fabcar e as funções usadas, �
 
 Em vez de importar as informações sobre terminais de sua rede manualmente, é possível fazer com que o SDK se conecte à sua rede usando o **Perfil de conexão** por meio da tela **Visão geral** de seu Monitor de rede. Isso simplifica o processo de conexão com a Autoridade de certificação para inscrição e registro. Também elimina a necessidade de definir sua rede de malha antes de enviar uma transação. O SDK localizará os peers e os solicitadores no canal relevante diretamente do Perfil de conexão. É possível localizar mais informações sobre como usar um Perfil de conexão na [documentação do Node SDK ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://fabric-sdk-node.github.io/tutorial-network-config.html "tutorial do perfil de conexão"){:new_window}.
 
-É possível usar o arquivo `invoke.js` como um exemplo para ver a eficiência da utilização de um Perfil de Conexão em vez de terminais manuais. É possível estabelecer uma nova instância do cliente de malha usando a classe `loadFromConfig`. Substitua `var fabric_client = new Fabric_Client();` pelo código a seguir.
+É possível usar o arquivo `invoke.js` como um exemplo para ver a eficiência da utilização de um Perfil de Conexão em vez de terminais manuais. É possível estabelecer uma nova instância do cliente de malha usando a classe`loadFromConfig`. Substitua `var fabric_client = new Fabric_Client();` pelo código a seguir.
 ```
 var fabric_client = Fabric_Client.loadFromConfig (path.join (__dirname, './connection-profile.json'));
 ```
@@ -620,22 +618,22 @@ Evite usar o chaincode para consultas que resultarão em uma varredura do banco 
 - Os peers no {{site.data.keyword.blockchainfull_notm}} Platform têm um queryLimit configurado e retornarão somente 10.000 entradas do banco de dados de estado. Se a sua consulta atingir o queryLimit, será possível usar múltiplas consultas para obter os resultados restantes. Se você precisar de mais resultados de uma consulta de intervalo, inicie as consultas subsequentes com a última chave retornada pela consulta anterior. Se você precisar de mais resultados de consultas JSON, classifique sua consulta usando uma das variáveis em seus dados, em seguida, use o último valor da consulta anterior em um filtro 'maior que' para a próxima consulta.
 - Não consulte o banco de dados inteiro com o propósito de agregação ou relatório. Se você desejar construir um painel ou coletar grandes quantias de dados como parte de seu aplicativo, será possível consultar um banco de dados fora da cadeia que replica os dados de sua rede de blockchain. Isso permitirá que você entenda os dados no blockchain sem degradar o desempenho de sua rede ou interromper transações.
 
-  É possível usar o cliente de serviços de eventos baseado em canal fornecido pelos SDKs do Fabric para construir um armazenamento de dados fora da cadeia. Por exemplo, é possível usar um listener de bloco para obter as transações mais recentes que estão sendo incluídas em um livro-razão de canal. Os conjuntos de leitura e gravação de transação das transações válidas podem então ser usados para atualizar uma cópia do estado mundial que foi armazenada em um banco de dados separado. Para obter mais informações, veja [Como usar o serviço de evento baseado em canal ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://fabric-sdk-node.github.io/tutorial-channel-events.html "Como usar o serviço de evento baseado em canal"){:new_window} na documentação do SDK do Node.
+  É possível usar o cliente de serviços de evento baseado em canal fornecido pelos SDKs do Fabric para construir um armazenamento de dados fora da cadeia. Por exemplo, é possível usar um listener de bloco para obter as transações mais recentes que estão sendo incluídas em um livro-razão de canal. Os conjuntos de leitura e gravação de transação das transações válidas podem então ser usados para atualizar uma cópia do estado mundial que foi armazenada em um banco de dados separado. Para obter mais informações, veja [Como usar o serviço de evento baseado em canal ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://fabric-sdk-node.github.io/tutorial-channel-events.html "Como usar o serviço de evento baseado em canal"){:new_window} na documentação do SDK do Node.
 
 ## Hospedando aplicativos
 {: #dev-app-host-app}
 
-É possível hospedar seu aplicativo em seu sistema de arquivos local ou enviá-lo por push para o {{site.data.keyword.Bluemix_notm}}. Para enviar seu aplicativo por push para o {{site.data.keyword.Bluemix_notm}}, conclua as etapas a seguir:
+É possível hospedar seu aplicativo em seu sistema de arquivos local ou enviá-lo por push para o {{site.data.keyword.cloud_notm}}. Para enviar seu aplicativo por push para o {{site.data.keyword.cloud_notm}}, conclua as etapas a seguir:
 1. Instale o [Cloud Foundry Command Line Installer ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://github.com/cloudfoundry/cli/releases).  Teste sua instalação com o comando `cf`.
     * Se sua instalação for bem-sucedida, você deverá ver um monte de saída de texto em seu terminal.
     * Se você vir "comando não localizado", sua instalação não foi bem-sucedida ou o CF não foi incluído em seu caminho de sistema.
-2. Configure o terminal de API e efetue login com seu ID e senha do {{site.data.keyword.Bluemix_notm}} emitindo os comandos a seguir:
+2. Configure o terminal de API e efetue login com seu ID e senha do {{site.data.keyword.cloud_notm}} emitindo os comandos a seguir:
     ```
     > cf api https://api.ng.bluemix.net
     > cf login
     ```
     {:codeblock}
-3. Procure pelo diretório de seu aplicativo e envie seu aplicativo por push emitindo o comando a seguir. Isso pode levar vários minutos, dependendo do tamanho de seu aplicativo. É possível ver logs por meio do {{site.data.keyword.Bluemix_notm}} em seu terminal. Os logs cessarão quando o aplicativo for ativado com êxito.
+3. Procure pelo diretório de seu aplicativo e envie seu aplicativo por push emitindo o comando a seguir. Isso pode levar vários minutos, dependendo do tamanho de seu aplicativo. É possível ver logs por meio do {{site.data.keyword.cloud_notm}} em seu terminal. Os logs cessarão quando o aplicativo for ativado com êxito.
 	```
 	> cf push YOUR_APP_NAME_HERE
 	```

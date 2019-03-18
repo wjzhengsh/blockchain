@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -17,8 +19,6 @@ lastupdated: "2019-02-08"
 
 # Implementando uma autoridade de certificação no {{site.data.keyword.cloud_notm}} Private
 {: #ca-deploy}
-
-***[Esta página é útil? Diga-nos.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 Após a importação do gráfico do Helm do {{site.data.keyword.blockchainfull}} Platform no {{site.data.keyword.cloud_notm}} Private, é possível implementar os componentes individuais. A Autoridade de Certificação (CA) é a raiz de confiança para sua organização e permite gerar credenciais para os outros componentes que serão implementados. Como resultado, é necessário implementar uma CA antes de implementar os outros componentes. Cada organização em uma rede de blockchain multi-cloud deve implementar sua própria CA.  Para obter mais informações sobre autoridades de certificação e a função que elas desempenham em uma rede de blockchain, consulte [Autoridades de certificação](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview-ca).
 {:shortdesc}

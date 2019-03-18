@@ -2,7 +2,9 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -15,19 +17,32 @@ lastupdated: "2019-02-08"
 {:tip: .tip}
 {:pre: .pre}
 
-# 네트워크 튜토리얼에 스마트 계약 배치
+# 네트워크에 스마트 계약 배치 튜토리얼
 {: #ibp-console-smart-contracts}
 
-***[이 페이지가 도움이 되었습니까? 알려주십시오.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
-
-스마트 계약(체인코드라고도 함)은 블록체인 원장에서 데이터를 읽고 업데이트할 수 있도록 하는 코드입니다. 스마트 계약은 비즈니스 로직을 블록체인 네트워크의 모든 구성원이 승인하고 검증한 실행 가능 프로그램으로 변환할 수 있습니다. 이 튜토리얼은 [샘플 네트워크 튜토리얼 시리즈](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-sample-tutorial)의 세 번째 부분이며 스마트 계약을 배치하여 블록체인 네트워크에서 트랜잭션을 시작하는 방법에 대해 설명합니다. 이전의 두 튜토리얼에서는 {{site.data.keyword.blockchainfull_notm}} Platform 콘솔에서 컴포넌트를 작성하여 기타 클러스터에서 작성된 컴포넌트에 이를 연결하여 진정한 의미의 **분산** 블록체인 네트워크를 작성하는 방법에 대해 설명합니다.
+스마트 계약(체인코드라고도 함)은 블록체인 원장에서 데이터를 읽고 업데이트할 수 있도록 하는 코드입니다. 스마트 계약은 비즈니스 로직을 블록체인 네트워크의 모든 구성원이 승인하고 검증한 실행 가능 프로그램으로 변환할 수 있습니다. 이 튜토리얼은 [샘플 네트워크 튜토리얼 시리즈](/docs/services/blockchain/howto/ibp-console-smart-contracts.md.html#ibp-console-smart-contracts-structure)의 세 번째 부분이며 스마트 계약을 배치하여 블록체인 네트워크에서 트랜잭션을 시작하는 방법에 대해 설명합니다.
 {:shortdesc}
+
+**대상 독자:** 이 주제는 블록체인 네트워크를 작성, 모니터링 및 관리할 책임이 있는 네트워크 운영자를 위해 설계되었습니다. 또한 애플리케이션 개발자의 경우 스마트 계약 작성 방법을 참조하는 절에 관심이 있을 수 있습니다. 
+
+## 샘플 네트워크 튜토리얼 시리즈
+{: #ibp-console-smart-contracts-structure}
+
+세 개의 파트로 구성된 이 튜토리얼 시리즈는 {{site.data.keyword.blockchainfull_notm}} Platform 2.0 콘솔에서 상대적으로 단순한 다중 노드 Hyperledger Fabric 네트워크를 작성한 후 상호 연결하여 네트워크를 Kubernetes 클러스터에 배치하고 스마트 계약을 설치하고 인스턴스화하는 프로세스를 안내합니다. 
+
+* [네트워크 빌드 튜토리얼](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network)은 순서 지정자 또는 피어를 작성하여 네트워크를 호스팅하는 프로세스를 안내합니다.
+* [네트워크 참여 튜토리얼](/docs/services/blockchain/howto/ibp-console-join-network.html#ibp-console-join-network)은 피어를 작성하고 해당 피어를 채널에 가입시켜 기존 네트워크에 참여하는 프로세스를 안내합니다.
+* **네트워크에 스마트 계약 배치**: 이 현재 튜토리얼은 스마트 계약을 작성하여 이를 네트워크에 배치하는 방법을 제공합니다. 
+
+이러한 튜토리얼의 단계를 사용하여 개발 및 테스트 목적의 한 클러스터에 다중 조직이 있는 네트워크를 빌드할 수 있습니다. 순서 지정자 노드를 작성하고 조직을 추가하여 블록체인 컨소시엄을 구성하려는 경우 **네트워크 빌드** 튜토리얼을 참조하십시오. 피어를 네트워크에 연결하려면 **네트워크 가입** 튜토리얼을
+사용하십시오. 다른 컨소시엄 구성원과 함께 튜토리얼에 따라 **분산** 블록체인 네트워크를 작성할 수 있습니다.  
+
+이 최종 튜토리얼은 스마트 계약을 작성하고 패키지하는 방법, 피어에 스마트 계약을 설치하는 방법, 채널에서 스마트 계약을 인스턴스화하는 방법을 보여줍니다.   
 
 스마트 계약은 피어에 설치된 다음 채널에서 인스턴스화됩니다. **스마트 계약을 사용하여 트랜잭션을 제출하거나 데이터를 읽으려는 모든 구성원은 피어에 계약을 설치해야 합니다.** 스마트 계약은 해당 이름과 버전으로 정의됩니다. 따라서 설치된 계약의 이름과 버전은 스마트 계약을 실행할 예정인 채널의 전체 피어에서 일관되어야 합니다.
 
 스마트 계약을 피어에 설치하고 나면 단일 네트워크 구성원이 채널에서 계약을 인스턴스화합니다. 이 조치를 수행하려면 네트워크 구성원이 채널에 가입해야 합니다. 인스턴스화를 수행하면 스마트 계약에서 사용한 초기 데이터로 원장을 업데이트한 다음 계약이 설치된 채널에 가입한 피어에서 스마트 계약 컨테이너를 시작합니다. 그런 다음 피어에서는 실행 컨테이너를 사용하여 트랜잭션을 수행할 수 있습니다.  
-- **한 네트워크 구성원만 스마트 계약을 인스턴스화하면 됩니다.** 
+- **한 네트워크 구성원만 스마트 계약을 인스턴스화하면 됩니다.**
 - **스마트 계약이 설치된 피어가 동일한 스마트 계약 버전이 이미 인스턴스화된 채널에 가입하면 스마트 계약 컨테이너가 자동으로 시작됩니다.**  
 
 이 튜토리얼에서는 단계에 따라 {{site.data.keyword.blockchainfull_notm}} Platform 콘솔을 사용하여 네트워크에서 스마트 계약의 배치를 관리합니다.
@@ -38,11 +53,11 @@ lastupdated: "2019-02-08"
 - [스마트 계약 정책 및 코드를 업그레이드](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-upgrade)하십시오.
 
 
-**시작하기 전에**
+## 시작하기 전에
 
 스마트 계약을 설치하기 전에 다음 사항이 준비되었는지 확인하십시오.
 
-- {{site.data.keyword.blockchainfull_notm}} Platform 콘솔을 사용하여 [네트워크를 빌드](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network)하거나 [네트워크에 가입](/docs/services/blockchain/howto/ibp-console-join-network.html#ibp-console-join-network)해야 합니다.
+- {{site.data.keyword.blockchainfull_notm}} Platform 콘솔을 사용하여 [네트워크를 빌드](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network)하거나 [네트워크에 참여](/docs/services/blockchain/howto/ibp-console-join-network.html#ibp-console-join-network)해야 합니다.
 - 스마트 계약이 피어에 설치되므로 콘솔에 [피어를 추가](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-create-peer-org1)했는지 확인하십시오.  
 - 스마트 계약은 채널에서 인스턴스화됩니다. 따라서 콘솔을 사용하여 [채널을 작성](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-create-channel)하거나 [채널에 가입](/docs/services/blockchain/howto/ibp-console-join-network.html#ibp-console-join-network-join-peer-org2)해야 합니다.
 
@@ -53,8 +68,8 @@ lastupdated: "2019-02-08"
 - 다중 당사자 간에 트랜잭션을 수행하기 위해 스마트 계약을 사용하는 방법을 배우려면 Hyperledger Fabric 문서에서 [애플리케이션 개발 주제 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/developapps/developing_applications.html "애플리케이션 개발 주제")를 참조하십시오.
 - 애플리케이션을 사용하여 스마트 계약과 상호작용하는 데 필요한 전체 엔드-투-엔드 튜토리얼을 보려면 [Hyperledger Fabric 상업 어음 튜토리얼![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/tutorial/commercial_paper.html "Hyperledger Fabric 상업 어음 튜토리얼")을 참조하십시오.
 - 스마트 계약에 액세스 제어 메커니즘을 통합하는 방법에 대해 배우려면 [개발자용 체인코드 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/chaincode4ade.html#chaincode-access-control "개발자용 체인코드")를 참조하십시오.
-- 스마트 계약 빌드를 시작할 준비가 되면 [{{site.data.keyword.blockchainfull_notm}} Visual Studio 코드 확장 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://marketplace.visualstudio.com/items?itemName=IBMBlockchain.ibm-blockchain-platform "{{site.data.keyword.blockchainfull_notm}} Platform - Visual Studio 마켓플레이스")을 사용하여 자체 스마트 계약 프로젝트 빌드를 시작하십시오. 또한 해당 확장을 사용하여 [Visual Studio에서 사용자의 네트워크로 직접 연결](docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-vscode)할 수 있습니다.
-- 설치할 준비가 되면 스마트 계약을 피어에 설치할 수 있도록 [.cds 형식 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/latest/chaincode4noah.html#packaging "스마트 계약 패키지")으로 패키지해야 합니다. 자세한 정보는 [스마트 계약 패키지](/docs/services/blockchain/vscode-extension.html#packaging-a-smart-contract)를 참조하십시오.
+- 스마트 계약 빌드를 시작할 준비가 되면 [{{site.data.keyword.blockchainfull_notm}} Visual Studio 코드 확장 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://marketplace.visualstudio.com/items?itemName=IBMBlockchain.ibm-blockchain-platform "{{site.data.keyword.blockchainfull_notm}} Platform - Visual Studio 마켓플레이스")을 사용하여 자체 스마트 계약 프로젝트 빌드를 시작하십시오. 또한 해당 확장을 사용하여 [Visual Studio에서 사용자의 네트워크로 직접 연결](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-vscode)할 수 있습니다.
+- 설치할 준비가 되면 스마트 계약을 피어에 설치할 수 있도록 [.cds 형식 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/latest/chaincode4noah.html#packaging "스마트 계약 패키지")으로 패키지해야 합니다. 자세한 정보는 [스마트 계약 패키지](/docs/services/blockchain/vscode-extension.html#packaging-a-smart-contract)를 참조하십시오. 또는 [피어 cli 명령![외부 링크아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/peerchaincode.html#peer-chaincode-package "피어 체인코드 패키지")을 사용하여 패키지를 빌드할 수 있습니다. 
 <!-- Update the tutorial link to release1-4 when it is published -->
 
 
@@ -84,7 +99,7 @@ lastupdated: "2019-02-08"
 콘솔을 사용하여 다음 단계를 수행하십시오.
 
 1. 스마트 계약 탭에 표시되는 피어에 설치된 목록에서 스마트 계약을 찾고 행의 오른쪽에 있는 오버플로우 메뉴에서 **인스턴스화**를 클릭하십시오.
-2. 표시되는 사이드 패널에서 채널로 `channel1`을 선택하고 해당 채널에서 스마트 계약을 인스턴스화한 다음 튜토리얼에 따른 경우 채널이 상주하는 순서 지정자인 `Orderer`를 선택하십시오. **다음**을 클릭하십시오.
+2. 열리는 사이드 패널에서 스마트 계약을 인스턴스화할 채널을 선택하고 채널이 상주하는 순서 지정자를 선택하십시오. 사용자가 작성한 `channel1` 채널과 순서 지정자 노드 `Orderer`를 선택할 수 있습니다. 그런 후 **다음**을 클릭하십시오. 
 3. 다음 절에서 설명하는 [스마트 계약에 대한 보증 정책](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-endorse)을 지정하십시오.
 4. 또한 정책에 포함시킬 조직 구성원을 선택해야 합니다. 튜토리얼에 따른 경우, `org1msp`일 것이며 **네트워크 빌드** 및 **네트워크에 가입** 튜토리얼을 둘 다 완료한 경우, `org2msp`일 것입니다.
 5. 마지막 패널에서 스마트 계약을 시작할 때 실행할 스마트 계약 함수와 해당 함수에 전달할 연관 인수를 함께 지정하도록 프롬프트됩니다.
@@ -101,7 +116,7 @@ lastupdated: "2019-02-08"
 ## 4단계: 클라이언트 애플리케이션을 사용하여 트랜잭션 전송
 {: #ibp-console-smart-contracts-connect-to-SDK}
 
-스마트 계약이 채널에서 인스턴스화된 후, 클라이언트 애플리케이션을 사용하여 네트워크의 다른 구성원과 거래할 수 있습니다. 애플리케이션은 블록체인 원장의 자산을 작성, 전송 또는 업데이트하기 위해 스마트 계약에 포함된 비즈니스 로직을 호출할 수 있습니다. 
+스마트 계약이 채널에서 인스턴스화된 후, 클라이언트 애플리케이션을 사용하여 네트워크의 다른 구성원과 거래할 수 있습니다. 애플리케이션은 블록체인 원장의 자산을 작성, 전송 또는 업데이트하기 위해 스마트 계약에 포함된 비즈니스 로직을 호출할 수 있습니다.
 
 ### SDK로 연결
 {: #ibp-console-smart-contracts-connect-to-SDK-panel}
@@ -121,7 +136,7 @@ JSON 형식으로 정책을 지정하려면 **고급** 단추를 클릭하십시
 
 원장의 자산과의 관계를 유지하면서 코드 또는 보증 정책을 변경하도록 스마트 계약을 업그레이드할 수 있습니다. 인스턴스화된 스마트 계약을 업그레이드하려는 여러 가지 이유가 있을 수 있습니다.
 1. 스마트 계약을 업그레이드하여 코드에서 기능을 추가 또는 제거하고 비즈니스 네트워크 로직에서 반복할 수 있습니다.
-2. 새 구성원이 채널에 추가될 때마다, 인스턴스화된 스마트 계약의 보증 정책이 *반드시* 채널 구성원을 포함하도록 업데이트되어야 합니다. 새 채널 구성원에 대해 작업하려면 스마트 계약 자체가 변경되지 않은 경우에도 스마트 계약이 새 버전 번호로 다시 패키징되고 채널에서 인스턴스화되어야 합니다. 그렇지 않으면 트랜잭션 보증이 성공할 수 없습니다.
+2. 새 구성원이 채널에 추가될 때마다, 인스턴스화된 스마트 계약의 보증 정책이 *반드시* 채널 구성원을 포함하도록 업데이트되어야 합니다. 새 채널 구성원에 대해 작업하려면 스마트 계약 자체가 변경되지 않은 경우에도 스마트 계약이 새 버전 번호로 다시 패키지되고 채널에서 인스턴스화되어야 합니다. 그렇지 않으면 트랜잭션 보증이 성공할 수 없습니다.
 3. 스마트 계약 초기화 인수가 변경되었습니다.
 
 **인스턴스화된 스마트 계약을 업그레이드하기 전에 스마트 계약의 이전 레벨을 실행 중인 채널의 모든 피어에 새 버전의 스마트 계약을 설치해야 합니다.**
@@ -172,15 +187,12 @@ JSON 형식으로 정책을 지정하려면 **고급** 단추를 클릭하십시
  **참고:** 스마트 계약을 설치하거나 인스턴스화하려면 클라이언트가 피어의 관리자여야 합니다. 따라서 사용자는 애플리케이션 ID를 작성하는 대신 콘솔 지갑에서 피어 관리자 ID의 인증서를 다운로드하여 피어 관리자의 공개 및 개인 키를 직접 SDK에 전달해야 합니다. 키 쌍을 SDK에 전달하는 방법에 대한 예를 보려면 [하위 레벨 Fabric SDK API를 사용하여 네트워크에 연결](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-low-level)을 참조하십시오.  
 
 3. **앵커 피어를 구성하십시오.** 개인용 데이터가 작동하려면 교차 조직의 [gossip ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/gossip.html "gossip 데이터 분배 프로토콜")을 사용할 수 있어야 하므로 콜렉션 정의 내의 각 조직에 대해 앵커 피어가 존재해야 합니다. 이 앵커 피어는 특수한 피어 **유형**이 아니라 조직을 기타 조직에 알리는 피어이므로 조직의 gossip에 교차하여 부트스트랩을 수행합니다. 따라서 콜렉션 정의 내의 각 조직에 대해 하나 이상의 [앵커 피어 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/gossip.html#anchor-peers "앵커 피어")가 정의되어야 합니다.
- - 피어가 앵커 피어가 되도록 구성하려면 **채널** 탭을 클릭하여 스마트 계약이 인스턴스화된 채널을 여십시오.  
+ - 피어를 앵커 피어로 구성하려면 **채널** 탭을 클릭하여 스마트 계약이 인스턴스화된 채널을 여십시오.   
  - **채널 세부사항** 탭을 클릭하십시오.
  - 앵커 피어 표로 스크롤하여 **앵커 피어 추가**를 클릭하십시오.
  - 콜렉션 정의 내의 각 조직에서 조직에 대한 앵커 피어 역할을 수행할 피어를 하나 이상 선택하십시오. 중복성을 확보하기 위해 콜렉션 내의 각 조직에서 둘 이상의 피어를 선택하는 것을 고려할 수 있습니다.
 
 이제 채널이 개인용 데이터를 사용하도록 구성되었습니다.
-
-## 문제점 해결
-{: #console-operate-troubleshooting}
 
 **문제점:** 콘솔의 오류로 인해 스마트 계약 설치, 인스턴스화 또는 업그레이드가 실패합니다.  
 **솔루션:** 스마트 계약에 대한 다음 조치 중 하나가 실패하면 [노드 로그에서 오류를 확인](/docs/services/blockchain/howto/ibp-console-manage.html#ibp-console-manage-console-node-logs)하십시오.

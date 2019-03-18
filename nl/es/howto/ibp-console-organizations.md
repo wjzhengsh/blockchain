@@ -2,7 +2,9 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -15,11 +17,11 @@ lastupdated: "2019-02-08"
 # Gestión de organizaciones
 {: #ibp-console-organizations}
 
-***[¿Le resulta útil esta página? Indíquenos su opinión.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 Puede utilizar la consola de {{site.data.keyword.blockchainfull}} Platform para crear una definición de organización formal conocida como Proveedor de servicios de pertenencia (MSP). La definición de MSP de su organización permite que otros miembros del consorcio de blockchain verifiquen la identidad de los nodos y de las aplicaciones. La definición de MSP también contiene los certificados de administración de la organización.
 
-Puede utilizar la consola para gestionar las organizaciones que son miembros de la red. El administrador del servicio de ordenación puede utilizar el separador Organizaciones para añadir miembros al [consorcio](/docs/services/blockchain/glossary.html#glossary-consortium) de blockchain. Luego los miembros del consorcio pueden utilizar la consola para añadir miembros a canales nuevos o existentes.
+También puede utilizar la consola para gestionar las organizaciones que son miembros de la red. El administrador del servicio de ordenación puede utilizar el separador Organizaciones para añadir miembros al [consorcio](/docs/services/blockchain/glossary.html#glossary-consortium) de blockchain. Luego los miembros del consorcio pueden utilizar la consola para añadir miembros a canales nuevos o existentes.
+
+**Audiencia de destino:** este tema está diseñado para los operadores de red responsables de crear, supervisar y gestionar la red blockchain.
 
 ## Visión general de los MSP
 {: #console-organizations-about-msp}
@@ -74,7 +76,7 @@ Una vez que haya seleccionado la CA raíz y el ID de MSP y que haya creado los c
 
 Solo el administrador del clasificador puede añadir nuevas organizaciones al consorcio. Si es el administrador del clasificador, tendrá que recopilar las definiciones de MSP de todas las organizaciones que han sido invitadas al consorcio e importar los MSP en la consola. Luego añadirá los MSP al servicio de ordenación, utilizando el nodo del clasificador.
 
-Después de que un administrador cree una definición de MSP, puede utilizar el separador Organizaciones para descargar el MSP en formato JSON en su sistema de archivos local. Luego le puede enviar el archivo JSON de MSP en una operación fuera de banda. Vaya al separador **Organizaciones** y utilice la opción **Importar definición de MSP** para importar el archivo MSP en la consola. Cuando una definición de MSP aparece en la sección **Organizaciones disponibles**, puede navegar hasta el nodo del clasificador para [añadir la organización al consorcio](docs/services/blockchain/howto/ibp-console-organizations.html#console-organizations-add-consortium).
+Después de que un administrador cree una definición de MSP, puede utilizar el separador Organizaciones para descargar el MSP en formato JSON en su sistema de archivos local. Luego le puede enviar el archivo JSON de MSP en una operación fuera de banda. Vaya al separador **Organizaciones** y utilice la opción **Importar definición de MSP** para importar el archivo MSP en la consola. Cuando una definición de MSP aparece en la sección **Organizaciones disponibles**, puede navegar hasta el nodo del clasificador para [añadir la organización al consorcio](/docs/services/blockchain/howto/ibp-console-organizations.html#console-organizations-add-consortium).
 
 
 ## Adición de una organización a un consorcio
@@ -86,12 +88,12 @@ Si es el administrador del servicio de ordenación, puede utilizar la consola pa
 
 ## Creación y edición de un canal
 
-Una vez que se ha añadido una organización al consorcio, se puede utilizar el servicio de ordenación para crear un nuevo canal o se puede añadir a un canal. La información que le permite participar en un canal, como por ejemplo unir sus iguales al canal, crear instancias de contratos inteligentes y enviar transacciones, se proporciona utilizando las definiciones de MSP.
+Una vez que se ha añadido una organización al consorcio, la organización puede utilizar el servicio de ordenación para crear un nuevo canal o bien se puede añadir a un canal existente. La información que le permite participar en un canal, como por ejemplo unir sus iguales al canal, crear instancias de contratos inteligentes y enviar transacciones, se proporciona utilizando las definiciones de MSP.
 
-Después de que se haya añadido una organización a un consorcio, se puede crear un canal siguiendo los pasos siguientes:
+Después de que se haya añadido una organización a un consorcio, puede crear un canal siguiendo los pasos siguientes:
 
-1. Importe el nodo de ordenación que aloja el consorcio en la consola. No es necesario que sea un administrador del nodo de ordenación. Sin embargo, su consola necesita tener el nombre del clasificador y la información del punto final.
-2. Importe los MSP de las organizaciones que desea añadir al nuevo canal en su consola utilizando el separador de organizaciones. **Tenga en cuenta** que las organizaciones se tienen que añadir al consorcio para que se puedan añadir a un canal.
-3. Vaya al separador **Canales** y pulse **Crear canal**. Esto abrirá un panel lateral que le permitirá especificar el nombre del canal, la pertenencia y las políticas del canal. Puede añadir al nuevo canal cualquier organización que se haya añadido al consorcio.
+1. Importe el nodo de ordenación que aloja el consorcio en la consola. No es necesario que sea un administrador del nodo de ordenación, pero tiene que proporcionar el nombre de nodo de ordenación y la información de punto final en la consola.
+2. Importe los MSP de las organizaciones que desea añadir al nuevo canal en la consola en el separador **Organizaciones**. **Tenga en cuenta** que las organizaciones se tienen que añadir al consorcio para que se puedan añadir a un canal.
+3. Vaya al separador **Canales** y pulse **Crear canal**. Esto abrirá un panel lateral que le permite especificar el nombre del canal, la pertenencia y las políticas del canal. Puede añadir al nuevo canal cualquier organización que se haya añadido al consorcio.
 
-Para obtener más información sobre estos pasos, consulte el apartado sobre [creación de un canal](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-create-channel1) de la guía de aprendizaje sobre cómo crear una red.
+Para obtener más información sobre estos pasos, consulte el apartado sobre [creación de un canal](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-create-channel1) de la guía de aprendizaje sobre cómo **Crear una red**.

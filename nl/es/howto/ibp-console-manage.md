@@ -2,7 +2,9 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -19,10 +21,10 @@ lastupdated: "2019-02-08"
 # Administración de la consola
 {: #ibp-console-manage-console}
 
-***[¿Le resulta útil esta página? Indíquenos su opinión.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 Hay varias acciones que puede realizar para gestionar el comportamiento de la consola. En este tema se describen las acciones externas a las operaciones de nodo de blockchain que le ayudan en el uso cotidiano de la consola.
 {:shortdesc}
+
+**Audiencia de destino:** este tema está diseñado para los operadores de red responsables de crear, supervisar y gestionar la red blockchain.
 
 ## Adición y eliminación de usuarios de la consola
 
@@ -42,8 +44,13 @@ Si utilizan la consola varias personas u organizaciones, se recomienda crear una
 Para actualizar la dirección de correo electrónico del administrador de la consola que se ha configurado al desplegar la consola, debe haber iniciado la sesión como administrador de la consola. Vaya al separador **Usuarios** y pulse **Configurar**
 en el mosaico **ID de IBM**. En el panel que se abre, especifique una nueva dirección de correo electrónico para el administrador de la consola.
 
+## Visualización de los registros
+{: #ibp-console-manage-logs}
 
-## Visualización de los registros de la consola
+Mientras utilice la consola de {{site.data.keyword.blockchainfull_notm}} Platform, es posible que tenga que ver los registros para poder depurar un problema.
+
+### Visualización de los registros de la consola
+{: #ibp-console-manage-console-logs}
 
 Puede acceder fácilmente a los registros de la consola si tiene que depurar los problemas que encuentre al utilizar la consola o al trabajar con los nodos. También puede aumentar o reducir la cantidad de registros recopilados por la consola estableciendo el nivel de registro. Los registros de la consola se recopilan por separado de los [registros de los nodos](/docs/services/blockchain/howto/ibp-console-manage.html#ibp-console-manage-console-node-logs),
 que recopila el servicio Kubernetes de {{site.data.keyword.IBM_notm}}.
@@ -58,23 +65,33 @@ y **Aviso** recopilan la cantidad mínima de registros, mientras que **Depuraci�
 
 Solo puede ver los registros de la consola si ha iniciado la sesión como administrador de la consola. Para ver los registros desde el separador **Valores**, sustituya la palabra `settings` en el URL del navegador por `api/v1/logs`. Por ejemplo, si el url de su consola es `localhost:3001/settings`, para ver los registros debe ir a `localhost:3001/api/v1/logs`. Los registros de cliente y de servidor se recopilan en archivos independientes. Los registros más recientes se encuentran en la parte superior de la página.
 
-
-## Visualización de los registros de la consola
+### Visualización de los registros de la consola
 {: #ibp-console-manage-console-node-logs}
 
 El servicio Kubernetes de {{site.data.keyword.IBM_notm}} recopila los registros de sus iguales, clasificadores y entidades emisoras de certificados. Siga los pasos siguientes para ver los registros de los nodos desde el clúster en el que ha desplegado la red de
 {{site.data.keyword.blockchainfull_notm}} Platform 2.0.
 
 1. Abra el [panel de control de {{site.data.keyword.cloud_notm}}
-![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://console.bluemix.net/dashboard/apps/) y vaya a la pantalla de visión general del clúster del servicio Kubernetes de {{site.data.keyword.IBM_notm}}.
+![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://cloud.ibm.com/resources) y vaya a la pantalla de visión general del clúster del servicio Kubernetes de {{site.data.keyword.IBM_notm}}.
 2. Sobre la pantalla de visión general del clúster, pulse **Panel de control de Kubernetes**.
 3. Dentro del panel de control de Kubernetes, utilice la lista desplegable de espacio de nombres del panel de navegación de la izquierda para cambiar el espacio de nombres por la instancia de servicio de {{site.data.keyword.blockchainfull_notm}} Platform. El nombre de la instancia de servicio será una serie larga de letras y números. Encontrará el nombre de la instancia de servicio al principio del URL de la consola de {{site.data.keyword.blockchainfull_notm}} Platform.
 4. En el panel de navegación izquierdo, pulse **Pods** para ver la lista de los pods de nodo que ha desplegado.
-5. Pulse un pod. Luego pulse **Ver registros** en el menú superior para abrir los registros del nodo. Sobre los registros, puede utilizar el menú desplegable que hay después de **Registros de** para ver los registros de los distintos contenedores del pod. Por ejemplo, el igual y la base de datos de estado (CouchDB, por ejemplo) se ejecutan en distintos contenedores y generan registros diferentes.
+5. Pulse sobre un pod. Luego pulse **Ver registros** en el menú superior para abrir los registros del nodo. Sobre los registros, puede utilizar el menú desplegable que hay después de **Registros de** para ver los registros de los distintos contenedores del pod. Por ejemplo, el igual y la base de datos de estado (CouchDB, por ejemplo) se ejecutan en distintos contenedores y generan registros diferentes.
 
-De forma predeterminada, los registros de los nodos se recopilan localmente dentro del clúster. También puede utilizar el servicio Log Analysis de {{site.data.keyword.cloud_notm}} o un servicio de terceros para recopilar, almacenar y analizar los registros de la red. Para obtener información, consulte [Registro y supervisión del servicio Kubernetes de {{site.data.keyword.IBM_notm}}![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://console.cloud.ibm.com/docs/containers?topic=containers-health#health "Registro y supervisión del servicio Kubernetes de {{site.data.keyword.IBM_notm}}").
+De forma predeterminada, los registros de los nodos se recopilan localmente dentro del clúster. También puede utilizar el servicio Log Analysis de {{site.data.keyword.cloud_notm}} o un servicio de terceros para recopilar, almacenar y analizar los registros de la red. Para obtener información, consulte [Registro y supervisión del servicio Kubernetes de {{site.data.keyword.IBM_notm}}![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://console.cloud.ibm.com/docs/containers?topic=containers-health#health "Registro y supervisión del servicio Kubernetes de {{site.data.keyword.IBM_notm}}"). Le recomendamos que aproveche el servicio [{{site.data.keyword.cloud_notm}} LogDNA ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://cloud.ibm.com/catalog/services/logdna "{{site.data.keyword.IBM_notm}} Log Analysis con LogDNA"), que le permite analizar fácilmente los registros en tiempo real.
+
+### Visualización de los registros de contenedor de contratos inteligentes
+{: #ibp-console-manage-console-container-logs}
+
+Si detecta problemas con el contrato inteligente, puede consultar los registros del contrato inteligente, o el código de encadenamiento, y del contenedor para depurar un problema:
+
+- Abra el panel de control de Kubernetes y pulse en el pod igual en el que se ejecuta el contrato inteligente.
+- Pulse el enlace `exec` en el panel de control para ejecutar exec sobre el pod. De forma predeterminada, apunta a un contenedor igual.
+- Cambie al contenedor `dind` seleccionándolo en la lista desplegable.
+- Ejecute el mandato `docker ps -a` para ver la lista de contenedores de código de encadenamiento.
+- Ejecute `docker logs <chaincode-container-ID>`, sustituyendo <chaincode-container-ID> por el ID de su contenedor de código de encadenamiento.
 
 
 ## Supervisión del uso de recursos
 
-Cuando se despliegan los nodos de {{site.data.keyword.cloud_notm}} Platform, se preconfiguran con valores predeterminados de CPU, memoria y almacenamiento y estos valores no se pueden modificar. Puede supervisar el uso de recursos utilizando el panel de control del servicio Kubernetes de {{site.data.keyword.IBM_notm}}. Si intenta crear un nuevo nodo en la consola de {{site.data.keyword.cloud_notm}} Platform y recibe un error que indica que tiene que ampliar el clúster de Kubernetes, puede añadir más almacenamiento al clúster de Kubernetes. Consulte esta [información ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://console.bluemix.net/docs/containers/cs_storage_file.html#change_storage_configuration "Cambio del tamaño e IPS del dispositivo de almacenamiento existente") sobre cómo aumentar la capacidad de almacenamiento o el rendimiento del volumen existente.
+Cuando se despliegan los nodos de {{site.data.keyword.cloud_notm}} Platform, se preconfiguran con valores predeterminados de CPU, memoria y almacenamiento y estos valores no se pueden modificar. Puede supervisar el uso de recursos utilizando el panel de control del servicio Kubernetes de {{site.data.keyword.IBM_notm}}. Si intenta crear un nuevo nodo en la consola de {{site.data.keyword.cloud_notm}} Platform y recibe un error que indica que tiene que ampliar el clúster de Kubernetes, puede añadir más almacenamiento al clúster de Kubernetes. Consulte esta [información ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://cloud.ibm.com/docs/containers/cs_storage_file.html#change_storage_configuration "Cambio del tamaño e IPS del dispositivo de almacenamiento existente") sobre cómo aumentar la capacidad de almacenamiento o el rendimiento del volumen existente.

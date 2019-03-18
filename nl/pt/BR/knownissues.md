@@ -2,7 +2,10 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
+
 ---
 
 {:new_window: target="_blank"}
@@ -17,13 +20,13 @@ lastupdated: "2019-02-08"
 # Problemas conhecidos
 {: #known-issues}
 
-***[Esta página é útil? Diga-nos.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
+Esta página descreve problemas conhecidos que você pode encontrar ao usar o Starter Plan ou o Enterprise Plan.
+{:shortdesc}
 
 Os problemas a seguir já foram relatados:
 - **Configuração de uma autoridade de certificação externa ainda não é suportada**. Como alternativa, é possível gerar e fazer upload de certificados administrativos por meio do Monitor de Rede. Para obter mais informações, veja [Gerando os certificados do lado do cliente](/docs/services/blockchain/v10_application.html#dev-app-enroll-panel) e a descrição na [guia "Certificados" da tela "Membro"](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-members) no Monitor de rede.
 - No Monitor de rede de uma rede do Starter Plan, quando você clicar em **Visualizar logs** nos nós listados na tela "Visão geral", a interface do {{site.data.keyword.cloud}} Log Kibana será aberta. **Por padrão, o Kibana vem pré-configurado para mostrar logs dos últimos 30 dias de atividade**. Se não houve atividade nos últimos 30 dias, você verá uma mensagem informando *Nenhum resultado localizado*. Para visualizar outros logs, é possível clicar no ícone de cronômetro no canto superior direito sob seu nome de usuário e configurar um intervalo de tempo mais amplo, como *Início do ano até hoje*
-- Os logs de sua rede do Starter Plan são reunidos pelo [Serviço {{site.data.keyword.cloud_notm}} Log Analysis![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://console.bluemix.net/catalog/services/log-analysis). Por padrão, os seus logs são coletados pelo Plano Lite do serviço de Análise do log. Esse plano é grátis e **apenas permite procurar os primeiros 500 MB de seus logs por dia**. Se os logs de sua rede excederem 500 MB, você não poderá visualizar novos logs no Kibana. Se a sua rede gerar mais de 500 MB de logs, será possível fazer upgrade para uma versão paga do Serviço de Análise do log.
+- Os logs de sua rede do Starter Plan são reunidos pelo serviço [{{site.data.keyword.cloud_notm}} Log Analysis ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://cloud.ibm.com/catalog/services/log-analysis). Por padrão, os seus logs são coletados pelo Plano Lite do serviço de Análise do log. Esse plano é grátis e **apenas permite procurar os primeiros 500 MB de seus logs por dia**. Se os logs de sua rede excederem 500 MB, você não poderá visualizar novos logs no Kibana. Se a sua rede gerar mais de 500 MB de logs, será possível fazer upgrade para uma versão paga do Serviço de Análise do log.
 - Como o Starter Plan não é um ambiente de produção, **talvez os aplicativos não possam atingir imediatamente uma rede de recursos**.
   - Se isso acontecer, recomenda-se como um primeiro passo aumentar os valores de tempo limite padrão no SDK do Fabric. Para obter mais informações sobre como configurar valores de tempo limite, veja [Configurando valores de tempo limite em SDKs do Fabric](/docs/services/blockchain/v10_application.html#dev-app-set-timeout-in-sdk).
   - Também é possível tentar novamente a sua solicitação no nível do aplicativo.

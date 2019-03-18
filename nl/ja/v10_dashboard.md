@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -17,10 +19,6 @@ lastupdated: "2019-02-08"
 
 # ネットワーク・モニターの使用
 {: #ibp-dashboard}
-
-
-***[このページは参考になりましたか。 ご意見をお聞かせください。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 
 {{site.data.keyword.blockchainfull}} Platform に用意されたネットワーク・モニターにはブロックチェーン環境の概要が示されるので、ネットワーク・リソース、メンバー、結合されたチャネル、トランザクション・パフォーマンス・データ、デプロイされたチェーンコードなどを把握できます。 また、ネットワーク・モニターにはエントリー・ポイントとしての役割もあり、そこから Swagger API を実行したり、{{site.data.keyword.blockchainfull_notm}} Platform を使用してネットワークを開発したり、サンプル・アプリケーションを試したりできます。
 {:shortdesc}
@@ -205,7 +203,7 @@ CA について詳しくは、[{{site.data.keyword.blockchainfull_notm}} Platfor
 
 {{site.data.keyword.IBM_notm}} では、実動の Hyperledger Composer を使用するネットワークをサポートしていません。これには Composer CLI、JavaScript API、REST サーバー、および Web Playground が含まれます。{:note}
 
-スターター・プランおよびエンタープライズ・プランは、業界標準のツールとテクノロジーを備えた開発環境を提供します。ネットワークを開発したら、お客様のネットワークにそのネットワークをデプロイできます。
+スターター・プランおよびエンタープライズ・プランは、業界標準のツールとテクノロジーを備えた開発環境を提供します。 ネットワークを開発したら、お客様のネットワークにそのネットワークをデプロイできます。
 
 **図 10** は、「コードの開発 (Develop code)」画面を示しています。
 
@@ -234,7 +232,7 @@ CA について詳しくは、[{{site.data.keyword.blockchainfull_notm}} Platfor
 **図 12** に「サンプルの試行」画面を示します。
 
 ![サンプルの試行](images/sample_overview_ep.png "サンプルの試行")
-*図 12. サンプル*
+*図 12. 「サンプル」*
 
 ## ヘルプの利用
 {: #ibp-dashboard-support}
@@ -366,4 +364,4 @@ If you switch to CouchDB, you need to update your chaincode to take advantage of
 **図 20** に「ネットワークのリセット」機能を示します。
 
 ![ネットワークのリセット](images/reset_network.png "ネットワークのリセット")
-*図 20. ネットワークのリセット*
+*図 20. 「ネットワークのリセット」*

@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -106,7 +108,7 @@ Para obtener más información sobre cómo utilizar estas imágenes, consulte
 
     Cuando este mandato finalice correctamente, verá algo parecido a la información siguiente:
 
-    <details><summary>Helm install output</summary>
+    <details aria-label="Details"><summary>Helm install output</summary>
     ```
     Expanding archive
     OK

@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018,2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -14,10 +16,6 @@ lastupdated: "2019-02-08"
 
 # 스타터 플랜에서 엔터프라이즈 플랜으로 마이그레이션
 {: #migrate_starter_to_enterprise}
-
-
-***[이 페이지가 도움이 되었습니까? 알려주십시오.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 
 {{site.data.keyword.blockchainfull}} Platform [스타터 플랜](/docs/services/blockchain/starter_plan.html#starter-plan-about)에서는 PoC와 데모를 실행하고 체인코드와 애플리케이션을 사용해 보는 테스트 및 개발 환경을 제공합니다. 프로덕션 환경으로 이동할 준비가 되면 스타터 플랜 네트워크에서 [엔터프라이즈 플랜](/docs/services/blockchain/enterprise_plan.html#enterprise-plan-about) 네트워크로 마이그레이션할 수 있습니다.
 {:shortdesc}

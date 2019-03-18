@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018,2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -14,10 +16,6 @@ lastupdated: "2019-02-08"
 
 # ブロックチェーン・ネットワークのモニタリング
 {: #monitor-blockchain-network}
-
-
-***[このページは参考になりましたか。 ご意見をお聞かせください。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 
 このチュートリアルでは、{{site.data.keyword.cloud_notm}} で{{site.data.keyword.blockchain}}・ネットワークの状況情報を表示し、モニターする方法を示します。
 {:shortdesc}
@@ -60,7 +58,7 @@ curl: (7) Failed to connect to fft-zbc02b.4.secure.blockchain.ibm.com:20190: Con
 ## ネットワーク・ログの使用
 {: #monitor-blockchain-network-using-logs}
 
-ネットワーク・モニターの「概要」画面には、認証局、順序付けサービス、ピアの状況が表示されます。 特定のネットワーク・コンポーネントのログを表示するには、**「アクション」**ヘッダーの下のドロップダウン・リストから**「ログの表示」**をクリックします。 エンタープライズ・プラン・ネットワークを使用している場合は、テキスト・ファイル・フォーマットでコンポーネント・ログを表示できます。 スターター・プラン・ネットワークを使用している場合は、コンポーネント・ログは [{{site.data.keyword.cloud_notm}} Log Analysis サービス ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://console.bluemix.net/catalog/services/log-analysis) によって収集され、[Kibana](/docs/services/blockchain/howto/monitor_network.html#monitor-blockchain-network-viewing-kibana-logs) でそのログを表示できます。
+ネットワーク・モニターの「概要」画面には、認証局、順序付けサービス、ピアの状況が表示されます。 特定のネットワーク・コンポーネントのログを表示するには、**「アクション」**ヘッダーの下のドロップダウン・リストから**「ログの表示」**をクリックします。 エンタープライズ・プラン・ネットワークを使用している場合は、テキスト・ファイル・フォーマットでコンポーネント・ログを表示できます。 スターター・プラン・ネットワークを使用している場合は、コンポーネント・ログは [{{site.data.keyword.cloud_notm}} Log Analysis サービス ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://cloud.ibm.com/catalog/services/log-analysis) によって収集され、[Kibana](/docs/services/blockchain/howto/monitor_network.html#monitor-blockchain-network-viewing-kibana-logs) でそのログを表示できます。
 
 コンポーネントごとに、さまざまなアクティビティーのログが生成されます。 これは、各コンポーネントが Hyperledger Fabric の[ネットワーク・アーキテクチャー ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/network/network.html) と[トランザクション・フロー ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.1/txflow.html) 内で異なる役割を担っているためです。
 
@@ -78,11 +76,11 @@ Hyperledger Fabric では、メッセージの重大度に基づくさまざま�
 ## スターター・プランの Kibana でのログ表示
 {: #monitor-blockchain-network-viewing-kibana-logs}
 
-スターター・プラン・ネットワークのログは、[{{site.data.keyword.cloud_notm}} Log Analysis サービス ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://console.bluemix.net/catalog/services/log-analysis "Log Analysis サービス") によって収集されます。 デフォルトでは、ログは Log Analysis サービスのライト・プランで収集されます。 このプランは無料であり、**ログは 3 日間保管**されてから廃棄されます。 また、**1 日当たりログの最初の 500 MB のみ検索可能**です。 ネットワーク・ログが 500 MB を超えると、Kibana で新規ログを表示することはできません。 ネットワークで 500 MB より大きいログが生成される場合や、3 日を超えてログを保持する場合は、有料版の Log Analysis サービスにアップグレードすることができます。
+スターター・プラン・ネットワークのログは、[{{site.data.keyword.cloud_notm}} Log Analysis サービス ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://cloud.ibm.com/catalog/services/log-analysis "Log Analysis サービス") によって収集されます。 デフォルトでは、ログは Log Analysis サービスのライト・プランで収集されます。 このプランは無料であり、**ログは 3 日間保管**されてから廃棄されます。 また、**1 日当たりログの最初の 500 MB のみ検索可能**です。 ネットワーク・ログが 500 MB を超えると、Kibana で新規ログを表示することはできません。 ネットワークで 500 MB より大きいログが生成される場合や、3 日を超えてログを保持する場合は、有料版の Log Analysis サービスにアップグレードすることができます。
 
 Kibana インターフェースで各ネットワーク・コンポーネントのログを開くには、ネットワーク・モニターの「概要」画面で、**「アクション」**ヘッダーの下のドロップダウン・リストから**「ログの表示」**をクリックします。 Kibana が開いて、上部の検索バーによってフィルタリングされたログが表示されます。 例えば、ピアのログをクリックして表示すると、検索はネットワーク ID とピア ID の `NETWORK_ID_str:"nf8389d520c243004bb21ff5d70fc8939" && NODE_NAME_str:"org1-peer1"` によってフィルタリングされています。 さらに具体的なログを表示する場合は、検索バーに追加のフィールドを入力できます。 例えば、`"marbles"` チェーンコードのログを表示するには、`&& "marbles"` を追加します。 特定のコンポーネント条件を削除して、ネットワーク ID でのみ検索すると (例えば、`NETWORK_ID_str:"nf8389d520c243004bb21ff5d70fc8939"`)、すべてのネットワーク・コンポーネントのログが表示されます。
 
-右上隅にある時刻範囲のボタンを使用すると、ログの表示される期間を変更できます。 画面の左側にあるタブを使用すると、検索のフィールドを追加したり削除したりすることができます。 最も重要な表示フィールドは、メッセージ・フィールドです。 タイム・スタンプなしでメッセージを検索すると、メッセージ・ログのすべてのインスタンスが検索されて便利です。 **「保存」**ボタンをクリックすると、現行の検索が保存されて、特定のビューに戻ります。 Kibana でのデータ表示について詳しくは、[Kibana User Guide ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.elastic.co/guide/en/kibana/6.2/index.html "Kibana User Guide") を参照してください。 Log Analysis CLI を使用して、ローカル・ファイル・システムに[ログをダウンロード](https://console.bluemix.net/docs/services/CloudLogAnalysis/how-to/manage-logs/downloading_logs_cloud.html#downloading_logs)することもできます。
+右上隅にある時刻範囲のボタンを使用すると、ログの表示される期間を変更できます。 画面の左側にあるタブを使用すると、検索のフィールドを追加したり削除したりすることができます。 最も重要な表示フィールドは、メッセージ・フィールドです。 タイム・スタンプなしでメッセージを検索すると、メッセージ・ログのすべてのインスタンスが検索されて便利です。 **「保存」**ボタンをクリックすると、現行の検索が保存されて、特定のビューに戻ります。 Kibana でのデータ表示について詳しくは、[Kibana User Guide ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.elastic.co/guide/en/kibana/6.2/index.html "Kibana User Guide") を参照してください。 Log Analysis CLI を使用して、ローカル・ファイル・システムに[ログをダウンロード](https://cloud.ibm.com/docs/services/CloudLogAnalysis/how-to/manage-logs/downloading_logs_cloud.html#downloading_logs)することもできます。
 
 **注:** デフォルトでは、Kibana は30 日間のアクティビティーのログを表示するように事前構成されています。 直近 30 日間にアクティビティーがない場合は、「*No results found*」というメッセージが表示されます。 他のログを表示するには、ユーザー名の下の右上隅にあるタイマー・アイコンをクリックし、*過去 1 年間* などの広い時刻範囲を設定します。
 

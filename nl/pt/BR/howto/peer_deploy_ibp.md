@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -17,9 +19,6 @@ lastupdated: "2019-02-08"
 
 # Implementando peers no {{site.data.keyword.cloud_notm}} Private e conectando-se ao Starter Plan ou ao Enterprise Plan
 {: #ibp-peer-deploy}
-
-
-***[Esta página é útil? Diga-nos.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 As instruções a seguir descrevem como implementar um peer do {{site.data.keyword.blockchainfull}} Platform no {{site.data.keyword.cloud_notm}} Private e conectar o peer à rede do Starter Plan ou Enterprise Plan no {{site.data.keyword.cloud_notm}} ou em seu {{site.data.keyword.cloud_notm}} Private local.
 {:shortdesc}
@@ -634,7 +633,7 @@ A tabela a seguir lista os parâmetros configuráveis do {{site.data.keyword.blo
 | `Peer Docker image tag`|Valor da tag associada à imagem do peer |1.2.1, preenchido automaticamente com o valor correto.|sim|
 | `Peer configuration`|É possível customizar a configuração do peer colando seu próprio arquivo de configuração `core.yaml` nesse campo. Para ver um arquivo `core.yaml` de amostra, veja a [configuração de amostra do `core.yaml` ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://github.com/hyperledger/fabric/blob/release-1.2/sampleconfig/core.yaml "hyperledger/fabric/core.yaml") **Somente para usuários avançados**. |nenhum|não|
 | `Peer configuration secret (Required)`| Nome do [Segredo de configuração do peer](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-config-file-ibp) criado no {{site.data.keyword.cloud_notm}} Private.  |nenhum|sim|
-|`Organization MSP (Required)`|Esse valor pode ser localizado no Monitor de rede (IU do Starter Plan e do Enterprise Plan) clicando em "Configuração do peer remoto" na tela Visão geral. |nenhum|sim|
+|`Organization MSP (Required)`|Esse valor pode ser localizado no Monitor de rede (IU do Starter Plan e do Enterprise Plan) clicando em "Configuração do peer remoto" na tela Visão geral.  |nenhum|sim|
 |`Peer service type`| Usado para especificar se [portas externas devem ser expostas ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types "Serviços de publicação - tipos de serviço") no peer. Selecione NodePort para expor as portas externamente (recomendado) e ClusterIP para não expor as portas. O LoadBalancer e o ExternalName não são suportados nesta liberação. | NodePort |sim|
 | `State database`| O [banco de dados de estado](/docs/services/blockchain/glossary.html#glossary-state-database) usado para armazenar o livro-razão do canal. O peer precisa usar o mesmo banco de dados que sua [rede de blockchain](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-network-preferences). | LevelDB | sim |
 |`CouchDB image repository`| Será aplicada somente se CouchDB tiver sido selecionado como o banco de dados do livro-razão. Esse campo é preenchido automaticamente para o caminho instalado. Se você estiver usando o Community Edition e não tiver acesso à Internet, ele deverá corresponder ao diretório no qual a imagem do Fabric CouchDB foi transferida por download.| ibmcom/ibp-fabric-couchdb | sim |

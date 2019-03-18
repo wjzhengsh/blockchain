@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -17,10 +19,6 @@ lastupdated: "2019-02-08"
 
 # {{site.data.keyword.blockchainfull_notm}} Platform for AWS の概説
 {: #remote-peer-aws}
-
-
-***[このページは参考になりましたか。 ご意見をお聞かせください。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 
 以下の手順では、Amazon Web Services (AWS) のクイック・スタート・テンプレートを使用して、{{site.data.keyword.blockchainfull}} Platform for AWS ピアを作成してから、このピアを {{site.data.keyword.blockchainfull_notm}} Platform 上のネットワークに接続する方法を説明します。
 {:shortdesc}
@@ -89,7 +87,7 @@ AWS について詳しくは、[AWS の概要ドキュメント ![外部リン�
 
 各フィールドの値をクイック・スタート・テンプレートに直接コピー・アンド・ペーストすることも、**「ダウンロード」**リンクをクリックしてこれらの値を JSON ファイルに保存することもできます。
 
-クイック・スタート・テンプレートには、`&#xa5;r&#xa5;n` 改行形式の TLS 証明書が必要です。`*NIX` OS でブラウザーを使用してネットワーク・モニターを表示している場合は、UI からコピーした証明書の形式を設定し直す必要があります。`&#xa5;n` をすべて `&#xa5;r&#xa5;n` に置換し、結果のストリングを`「認証局 (CA) TLS 証明書チェーン (Certificate Authority (CA) TLS Certificate Chain)」`というフィールドに貼り付けます。
+クイック・スタート・テンプレートには、`&#xa5;r&#xa5;n` 改行形式の TLS 証明書が必要です。 `*NIX` OS でブラウザーを使用してネットワーク・モニターを表示している場合は、UI からコピーした証明書の形式を設定し直す必要があります。 `&#xa5;n` をすべて `&#xa5;r&#xa5;n` に置換し、結果のストリングを`「認証局 (CA) TLS 証明書チェーン (Certificate Authority (CA) TLS Certificate Chain)」`というフィールドに貼り付けます。
 {:important}
 
 **注:** 上記の情報を JSON 形式でダウンロードする場合は、TLS 証明書を PEM 形式に変換してから、この証明書をリモート・ピアに提供する必要があります。 以下のコマンドを実行して、ダウンロードした JSON ファイル内の**認証局 (CA) TLS 証明書**を PEM 形式に変換します。
@@ -245,7 +243,7 @@ AWS CloudFormation テンプレートによってスタックが正常に作成�
 
   * `docker exec -it peer sh` を実行して、ピア・コンテナー内でシェル・セッションを作成できます。
 
-オプションで、ピア接続が {{site.data.keyword.blockchainfull_notm}} Platform ネットワークに対して機能していることを確認したい場合は、ピア・コンテナー内部から `peer channel fetch` CLI コマンドを実行できます。そうでない場合は、[ピアの操作](/docs/services/blockchain/howto/remote_peer_operate_aws.html#remote-peer-aws-operate)の説明にスキップできます。  
+オプションで、ピア接続が {{site.data.keyword.blockchainfull_notm}} Platform ネットワークに対して機能していることを確認したい場合は、ピア・コンテナー内部から `peer channel fetch` CLI コマンドを実行できます。 そうでない場合は、[ピアの操作](/docs/services/blockchain/howto/remote_peer_operate_aws.html#remote-peer-aws-operate)の説明にスキップできます。  
 
 `peer channel fetch` CLI コマンドを実行して、チャネルからジェネシス・ブロックをフェッチします。
 
@@ -405,7 +403,7 @@ levelDB または couchDB のどちらを使用している場合でも、状態
 #### 鍵管理
 {: #remote-peer-aws-security-key-management}
 
-鍵管理はピア・セキュリティーの重要な側面です。 秘密鍵が漏えいしたり、失われたりすると、悪意を持つアクターがピアのデータおよび機能にアクセスできる可能性があります。 {{site.data.keyword.blockchainfull_notm}} Platform エンタープライズ・プランでは、[ハードウェア・セキュリティー・モジュール](/docs/services/blockchain/glossary.html#glossary-hsm) (HSM) を使用して、ネットワークの秘密鍵を保管します。HSM は、他者による秘密鍵へのアクセスを防ぐ物理アプライアンスです。
+鍵管理はピア・セキュリティーの重要な側面です。 秘密鍵が漏えいしたり、失われたりすると、悪意を持つアクターがピアのデータおよび機能にアクセスできる可能性があります。 {{site.data.keyword.blockchainfull_notm}} Platform エンタープライズ・プランでは、[ハードウェア・セキュリティー・モジュール](/docs/services/blockchain/glossary.html#glossary-hsm) (HSM) を使用して、ネットワークの秘密鍵を保管します。 HSM は、他者による秘密鍵へのアクセスを防ぐ物理アプライアンスです。
 
 AWS でピアをデプロイする場合は、秘密鍵を管理する必要があります。 {{site.data.keyword.blockchainfull_notm}} Platform によって秘密鍵が生成されますが、鍵は Platform には保管されません。 鍵が漏えいしないように、安全な場所に保管することが重要です。 ピアの秘密鍵は、ピア MSP の keystore フォルダーにあります (ピア・コンテナー内の `/etc/hyperledger/<PEER_ENROLL_ID>/msp/keystore/` ディレクトリー)。 ピア内部の証明書について詳しくは、[{{site.data.keyword.blockchainfull_notm}} Platform の証明書の管理](/docs/services/blockchain/certificates.html#managing-certificates)のトピックの[メンバーシップ・サービス・プロバイダー](/docs/services/blockchain/certificates.html#managing-certificates-msp)のセクションを参照してください。
 
@@ -418,7 +416,7 @@ In {{site.data.keyword.blockchainfull_notm}} Platform when a private key is crea
 #### TLS
 {: #remote-peer-aws-security-tls}
 
-[Transport Layer Security![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/en/SSFKSJ_7.1.0/com.ibm.mq.doc/sy10660_.htm "SSL または TLS ハンドシェークの概要") (TLS) は、Hyperledger Fabric の信頼モデルに組み込まれています。 {{site.data.keyword.blockchainfull_notm}} Platform のすべてのコンポーネントは、TLS を使用して認証し、相互に通信します。したがって、{{site.data.keyword.blockchainfull_notm}} Platform のネットワーク・コンポーネントは、ピアとの TLS ハンドシェークを実行できる必要があります。 これに関連して、ホワイト・リストなどを使用して、クライアント・アプリからピアまでファイアウォールでパススルーできる必要があります。
+[Transport Layer Security![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/en/SSFKSJ_7.1.0/com.ibm.mq.doc/sy10660_.htm "SSL または TLS ハンドシェークの概要") (TLS) は、Hyperledger Fabric の信頼モデルに組み込まれています。 {{site.data.keyword.blockchainfull_notm}} Platform のすべてのコンポーネントは、TLS を使用して認証し、相互に通信します。 したがって、{{site.data.keyword.blockchainfull_notm}} Platform のネットワーク・コンポーネントは、ピアとの TLS ハンドシェークを実行できる必要があります。 これに関連して、ホワイト・リストなどを使用して、クライアント・アプリからピアまでファイアウォールでパススルーできる必要があります。
 
 
 #### メンバーシップ・サービス・プロバイダーの構成

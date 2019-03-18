@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -17,9 +19,6 @@ lastupdated: "2019-02-08"
 
 # Implementando peers no {{site.data.keyword.cloud_notm}} Private
 {: #icp-peer-deploy}
-
-
-***[Esta página é útil? Diga-nos.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 As instruções a seguir descrevem como implementar um peer do {{site.data.keyword.blockchainfull}} Platform no {{site.data.keyword.cloud_notm}} Private. Essas instruções permitem que você se conecte a um {{site.data.keyword.blockchainfull_notm}} Platform no {{site.data.keyword.cloud_notm}} Private. Se você desejar conectar um peer a uma rede do Starter Plan ou do Enterprise Plan no {{site.data.keyword.cloud_notm}}, consulte [Implementando peers para conectar-se ao Starter Plan ou ao Enterprise Plan](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy).
 {:shortdesc}
@@ -46,7 +45,7 @@ Assegure-se de que seu sistema {{site.data.keyword.cloud_notm}} Private atenda a
 
 É necessário determinar o armazenamento que seu peer usará. Se você usar as configurações padrão, o gráfico do Helm criará uma nova Solicitação de Volume Persistente (PVC) de 8 Gi com o nome de `my-data-pvc` para seus dados do peer e outra PVC de 8 Gi com o nome de `statedb-pvc` para seu banco de dados de estado.
 
-Se você não desejar usar as configurações de armazenamento padrão, assegure-se de que uma *nova* `storageClass` seja configurada durante a instalação do {{site.data.keyword.cloud_notm}} Private ou o administrador do sistema do Kubernetes precisará criar uma storageClass antes da implementação.
+Se você não deseja usar as configurações de armazenamento padrão, assegure-se de que uma nova `storageClass` seja configurada durante a instalação do {{site.data.keyword.cloud_notm}} Private ou que o administrador do sistema Kubernetes crie um `storageClass` antes que você implemente o {{site.data.keyword.blockchainfull_notm}} Platform.
 
 É possível escolher implementar o peer nas plataformas amd64 ou s390x. No entanto, esteja ciente de que o [Fornecimento dinâmico ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://kubernetes.io/docs/concepts/storage/dynamic-provisioning/ "Fornecimento de volume dinâmico") está disponível somente para nós amd64 no {{site.data.keyword.cloud_notm}} Private. Se o cluster incluir uma combinação de nós do trabalhador s390x e amd64, o fornecimento dinâmico não poderá ser usado.
 

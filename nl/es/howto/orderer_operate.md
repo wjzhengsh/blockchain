@@ -2,7 +2,10 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
+
 ---
 
 {:new_window: target="_blank"}
@@ -13,8 +16,6 @@ lastupdated: "2019-02-08"
 
 # Funcionamiento de un clasificador en {{site.data.keyword.cloud_notm}} Private
 {: #icp-orderer-operate}
-
-***[¿Le resulta útil esta página? Indíquenos su opinión.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 Después de instalar el clasificador de {{site.data.keyword.blockchainfull}} Platform en {{site.data.keyword.cloud_notm}} Private, se crea un mapa de configuración que contiene los valores predeterminados de las variables de entorno. A continuación, puede cambiar o añadir variables de entorno para el clasificador con el fin de configurar su comportamiento.
 
@@ -142,7 +143,7 @@ Necesita descargar el certificado TLS del clasificador y pasarlo a los mandatos 
   ```
   {:codeblock}
 
-7. Mueva el certificado generado a una ubicación en la que pueda hacer referencia al mismo en mandatos posteriores, y cambie su nombre a
+7. Mueva el certificado generado a una ubicación en la que pueda hacer referencia a él en mandatos posteriores, y cambie su nombre a
 `orderertls.pem`.
 
   ```

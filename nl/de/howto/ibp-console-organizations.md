@@ -2,7 +2,9 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -15,11 +17,11 @@ lastupdated: "2019-02-08"
 # Organisationen verwalten
 {: #ibp-console-organizations}
 
-***[Ist diese Seite hilfreich? Teilen Sie uns Ihre Meinung mit.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 Sie können die {{site.data.keyword.blockchainfull}} Platform-Konsole verwenden, um eine formale Organisationsdefinition zu erstellen, die als "Membership Service Provider (MSP)" bezeichnet wird. Die MSP-Definition Ihres Unternehmens ermöglicht es anderen Mitgliedern des Blockchain-Konsortiums, die Identität Ihrer Knoten und Anwendungen zu überprüfen. Ihre MSP-Definition enthält auch die Administratorzertifikate Ihrer Organisation.
 
-Sie können die Konsole verwenden, um zu verwalten, welche Organisationen Mitglieder Ihres Netzes sind. Der Administrator des Anordnungsservices kann die Registerkarte "Organisationen" verwenden, um Mitglieder zum Blockchain-[Konsortium](/docs/services/blockchain/glossary.html#glossary-consortium) hinzuzufügen. Die Mitglieder des Konsortiums können dann die Konsole verwenden, um Mitglieder zu neuen oder vorhandenen Kanälen hinzuzufügen.
+Sie können mit der Konsole auch verwalten, welche Organisationen Mitglieder Ihres Netzes sind. Der Administrator des Anordnungsservices kann die Registerkarte "Organisationen" verwenden, um Mitglieder zum Blockchain-[Konsortium](/docs/services/blockchain/glossary.html#glossary-consortium) hinzuzufügen. Die Mitglieder des Konsortiums können dann die Konsole verwenden, um Mitglieder zu neuen oder vorhandenen Kanälen hinzuzufügen.
+
+**Zielgruppe:** Dieser Abschnitt richtet sich an Netzoperatoren, die für die Erstellung, Überwachung und Verwaltung des Blockchain-Netzes verantwortlich sind.
 
 ## Informationen zu MSPs
 {: #console-organizations-about-msp}
@@ -74,7 +76,7 @@ Nachdem Sie die Stammzertifizierungsstelle und die MSP-ID ausgewählt sowie die 
 
 Nur der Anordnungsknoten-Administrator kann dem Konsortium neue Organisationen hinzufügen. Wenn Sie der Anordnungsknoten-Administrator sind, müssen Sie die MSP-Definitionen aller Organisationen erfassen, die zum Konsortium eingeladen wurden, und die MSPs in die Konsole importieren. Anschließend können Sie dem Anordnungsservice die MSPs hinzufügen, indem Sie den Anordnungsknoten verwenden.
 
-Nachdem ein Administrator eine MSP-Definition erstellt hat, kann die Registerkarte "Organisationen" verwendet werden, um den MSP im JSON-Format in das lokale Dateisystem herunterzuladen. Dann kann Ihnen die MSP-JSON-Datei in einer Out-of-Band-Operation gesendet werden. Navigieren Sie zur Registerkarte **Organisationen** und verwenden Sie die Option **MSP-Definition importieren**, um die MSP-Datei in Ihre Konsole zu importieren. Sobald eine MSP-Definition im Abschnitt **Verfügbare Organisationen** angezeigt wird, können Sie zu Ihrem Anordnungsknoten navigieren, um [dem Konsortium die Organisation hinzuzufügen](docs/services/blockchain/howto/ibp-console-organizations.html#console-organizations-add-consortium).
+Nachdem ein Administrator eine MSP-Definition erstellt hat, kann die Registerkarte "Organisationen" verwendet werden, um den MSP im JSON-Format in das lokale Dateisystem herunterzuladen. Dann kann Ihnen die MSP-JSON-Datei in einer Out-of-Band-Operation gesendet werden. Navigieren Sie zur Registerkarte **Organisationen** und verwenden Sie die Option **MSP-Definition importieren**, um die MSP-Datei in Ihre Konsole zu importieren. Sobald eine MSP-Definition im Abschnitt **Verfügbare Organisationen** angezeigt wird, können Sie zu Ihrem Anordnungsknoten navigieren, um [dem Konsortium die Organisation hinzuzufügen](/docs/services/blockchain/howto/ibp-console-organizations.html#console-organizations-add-consortium).
 
 
 ## Einem Konsortium eine Organisation hinzufügen
@@ -82,16 +84,16 @@ Nachdem ein Administrator eine MSP-Definition erstellt hat, kann die Registerkar
 
 Das Konsortium aus Organisationen wird vom Anordnungsservice gehostet.
 
-Wenn Sie der Administrator des Anordnungsservices sind, können Sie die Konsole verwenden, um dem Konsortium eine Organisation hinzuzufügen. Navigieren Sie zu der Registerkarte **Knoten**, und klicken Sie auf den Anordnungsknoten. Klicken Sie in der Anzeige des Anordnungsknotens unter **Konsortiumsmitglieder** auf **Organisation hinzufügen**. Dadurch wird ein Seitenfenster geöffnet, in dem Sie eine Auswahl aus der Liste der verfügbaren MSP-Definitionen treffen können, die Sie [in Ihre Registerkarte "Organisationen" importiert haben](/docs/services/blockchain/howto/ibp-console-organizations.html#console-organizations-import-msp). Sie können auch die Option **JSON hochladen** verwenden, um die MSP-Definitionsdatei direkt zu importieren, die von einer anderen Organisation erstellt wurde.
+Wenn Sie der Administrator des Anordnungsservices sind, können Sie die Konsole verwenden, um dem Konsortium eine Organisation hinzuzufügen. Navigieren Sie zur Registerkarte **Knoten** und klicken Sie auf den Anordndungsknoten. Klicken Sie in der Anzeige des Anordnungsknotens unter **Konsortiumsmitglieder** auf **Organisation hinzufügen**. Dadurch wird ein Seitenfenster geöffnet, in dem Sie eine Auswahl aus der Liste der verfügbaren MSP-Definitionen treffen können, die Sie [in Ihre Registerkarte "Organisationen" importiert haben](/docs/services/blockchain/howto/ibp-console-organizations.html#console-organizations-import-msp). Sie können auch die Option **JSON hochladen** verwenden, um die MSP-Definitionsdatei direkt zu importieren, die von einer anderen Organisation erstellt wurde.
 
 ## Kanal erstellen und bearbeiten
 
-Nachdem dem Konsortium eine Organisation hinzugefügt wurde, kann der Anordnungsservice verwendet werden, um einen neuen Kanal zu erstellen oder zu einem Kanal hinzuzufügen. Die Informationen, die Ihnen die Teilnahme an einem Kanal ermöglichen, z. B. die Verbindung Ihrer Peers mit dem Kanal, die Instanziierung von Smart Contracts und die Übergabe von Transaktionen, werden mithilfe der MSP-Definitionen bereitgestellt.
+Nachdem eine Organisation zum Konsortium hinzugefügt wurde, kann die Organisation den Anordnungsservice verwenden, um einen neuen Kanal zu erstellen, oder sie kann zu einem vorhandenen Kanal hinzugefügt werden. Die Informationen, die Ihnen die Teilnahme an einem Kanal ermöglichen (z. B. die Verbindung Ihrer Peers mit dem Kanal, die Instanziierung von Smart Contracts und die Übergabe von Transaktionen) werden in den MSP-Definitionen bereitgestellt.
 
-Nachdem einem Konsortium eine Organisation hinzugefügt wurde, kann ein Kanal erstellt werden, indem die folgenden Schritte ausgeführt werden:
+Nachdem Ihre Organisation zu einem Konsortium hinzugefügt wurde, können Sie einen Kanal erstellen. Führen Sie dazu die folgenden Schritte aus: 
 
-1. Importieren Sie den Anordnungsknoten, der das Konsortium hostet, in die Konsole. Sie müssen kein Administrator des Anordnungsknotens sein. Die Konsole muss jedoch den Namen und die Endpunktinformationen des Anordnungsknotens haben.
-2. Importieren Sie die MSPs von Organisationen, die dem neuen Kanal hinzufügt werden sollen, über die Registerkarte "Organisationen" in die Konsole. **Hinweis:** Organisationen müssen dem Konsortium hinzugefügt werden, bevor sie einem Kanal hinzugefügt werden können.
-3. Navigieren Sie zur Registerkarte **Kanäle** und klicken Sie auf **Kanal erstellen**. Dadurch wird ein Seitenfenster geöffnet, in dem Sie Kanalnamen, Mitgliedschaft und Kanalrichtlinien angeben können. Sie können alle Organisationen hinzufügen, die dem Konsortium zum neuen Kanal hinzugefügt wurden.
+1. Importieren Sie den Anordnungsknoten, der das Konsortium hostet, in Ihre Konsole. Sie müssen kein Administrator des Anordnungsknotens sein, aber Sie müssen den Namen das Anordnungsknotens und die Endpunktinformationen in Ihrer Konsole bereitstellen. 
+2. Importieren Sie die MSPs von Organisationen, die zu dem neuen Kanal hinzugefügt werden sollen, in die Registerkarte **Organisationen** Ihrer Konsole. **Hinweis:** Organisationen müssen dem Konsortium hinzugefügt werden, bevor sie einem Kanal hinzugefügt werden können.
+3. Navigieren Sie zur Registerkarte **Kanäle** und klicken Sie auf **Kanal erstellen**. Dadurch wird die Seitenanzeige geöffnet, in der Sie den Kanalnamen, die Mitgliedschaft und Kanalrichtlinien angeben können. Sie können alle Organisationen hinzufügen, die dem Konsortium zum neuen Kanal hinzugefügt wurden.
 
-Weitere Informationen zu diesen Schritten finden Sie im Abschnitt [Kanal erstellen](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-create-channel1) im Lernprogramm "Build a network" (Ein Netz erstellen).
+Weitere Informationen zu diesen Schritten finden Sie im Abschnitt [Kanal erstellen](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-create-channel1) im **Lernprogramm zum Erstellen eines Netzes**.

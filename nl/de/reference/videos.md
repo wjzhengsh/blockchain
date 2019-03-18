@@ -2,7 +2,11 @@
 
 copyright:
   years: 2018
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+keywords: ibm blockchain platform, free 2.0 beta, starter plan, videos, getting started
+
+subcollection: blockchain
 
 ---
 
@@ -19,11 +23,12 @@ lastupdated: "2019-02-08"
 # {{site.data.keyword.blockchainfull_notm}} Platform - Einführungsvideos
 {: #ibp-videos}
 
+Die folgende Videoreihe vermittelt Informationen zur kostenlosen Betaversion {{site.data.keyword.blockchainfull}} Platform 2.0 und zum Einstieg in die Bereitstellung der kostenlosen Betaversion {{site.data.keyword.blockchainfull_notm}} Platform 2.0.
 
-***[Ist diese Seite hilfreich? Teilen Sie uns Ihre Meinung mit.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+<iframe class="embed-responsive-item" id="youtubeplayer" title="Kostenlose Betaversion von IBM Blockchain Platform 2.0 - Anleitungsvideo für die Bereitstellung" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/gPnkVQiHRqk" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
 
 
-Die folgende Videoreihe vermittelt Informationen zu {{site.data.keyword.blockchainfull}} Platform und zum Einstieg in die Entwicklung eines Blockchain-Netzes.
+Die folgende Videoreihe vermittelt weitere Informationen zu {{site.data.keyword.blockchainfull_notm}} Platform Starter Plan und zum Einstieg in die Entwicklung eines Blockchain-Netzes.
 
 **Hinweis**: Die Videoreihe ist in einer Wiedergabeliste enthalten und wird im folgenden Videobereich fortlaufend wiedergegeben. Sie können auch auf das Menüsymbol in der oberen linken Ecke des Videos klicken, um die Wiedergabeliste zu öffnen und zu einem anderen Video zu wechseln.
 

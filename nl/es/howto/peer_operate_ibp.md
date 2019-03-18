@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -14,10 +16,9 @@ lastupdated: "2019-02-08"
 {:important: .important}
 {:tip: .tip}
 {:pre: .pre}
+
 # Funcionamiento de iguales en {{site.data.keyword.cloud_notm}} Private con el Plan inicial o el Plan empresarial
 {: #ibp-peer-operate}
-
-***[¿Le resulta útil esta página? Indíquenos su opinión.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 Después de configurar un {{site.data.keyword.blockchainfull}} Platform en el igual de {{site.data.keyword.cloud_notm}} Private, debe completar varios pasos operativos para que el igual pueda enviar transacciones a una red del Plan inicial o el Plan empresarial. Los pasos incluyen añadir su organización a un canal, unir el igual al canal, instalar el código de encadenamiento en el igual, crear una instancia del código de encadenamiento en el canal y conectar aplicaciones al igual.
 {:shortdesc}
@@ -41,7 +42,7 @@ Los SDK de Fabric son el método recomendado, aunque en las instrucciones se pre
 It is recommended that you deploy at least two instances of the peer Helm chart for [high availability](peer_icp.html#high-availability). Therefore, you need to follow these operations steps once for each peer. When you are ready to invoke and query chaincode from your application, connect to both peers to ensure that your [applications are highly available](../v10_application.html#ha-app).
 -->
 
-**Nota**: un igual de {{site.data.keyword.blockchainfull_notm}} Platform no tiene acceso a toda la funcionalidad ni al soporte de los iguales alojados en {{site.data.keyword.blockchainfull_notm}} Platform. Como resultado, no puede utilizar el supervisor de red para trabajar con un igual en {{site.data.keyword.cloud_notm}} Private. Antes de empezar a ejecutar iguales, asegúrese de revisar las [consideraciones y limitaciones](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-about-considerations).
+**Nota**: un igual de {{site.data.keyword.blockchainfull_notm}} Platform no tiene acceso a toda la funcionalidad ni al soporte de los iguales alojados en la plataforma {{site.data.keyword.blockchainfull_notm}}. Como resultado, no puede utilizar el supervisor de red para trabajar con un igual en {{site.data.keyword.cloud_notm}} Private. Antes de empezar a ejecutar iguales, asegúrese de revisar las [consideraciones y limitaciones](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-about-considerations).
 
 ## Requisitos previos
 {: #ibp-peer-operate-prerequisites}
@@ -591,8 +592,7 @@ condición se puede producir si {{site.data.keyword.cloud_notm}} Private utiliza
 {: #ibp-peer-operate-troubleshooting}
 
 ### **Problema:** el mandato de invocación falla en el igual con un error `chaincode fingerprint mismatch`
-{: #ibp-peer-operate
--install-error}
+{: #ibp-peer-operate-install-error}
 
 Es posible que reciba un error `chaincode fingerprint mismatch` al ejecutar una solicitud `peer chaincode invoke` en un igual que se ejecuta en {{site.data.keyword.cloud_notm}} Private:
 

@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -17,8 +19,6 @@ lastupdated: "2019-02-08"
 
 # Iniciación a {{site.data.keyword.blockchainfull_notm}} Platform
 {: #get-started-ibp}
-
-***[¿Le resulta útil esta página? Indíquenos su opinión.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 {{site.data.keyword.blockchainfull}} Platform proporciona una oferta de blockchain-as-a-service (BaaS) gestionada y de pila completa que le permite desplegar componentes de blockchain en los entornos que elija. El entorno puede ser {{site.data.keyword.cloud_notm}}, local a través de {{site.data.keyword.cloud_notm}} Private y nubes de terceros, como Amazon Web Services (AWS). En esta guía de aprendizaje se describe el proceso general para configurar una red de blockchain básica con {{site.data.keyword.blockchainfull_notm}} Platform.
 {:shortdesc}

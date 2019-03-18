@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -14,10 +16,6 @@ lastupdated: "2019-02-08"
 
 # Funcionamiento de iguales en AWS
 {: #remote-peer-aws-operate}
-
-
-***[¿Le resulta útil esta página? Indíquenos su opinión.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 
 Después de configurar iguales de {{site.data.keyword.blockchainfull}} Platform en AWS, tiene que llevar a cabo varios pasos operativos para que el igual pueda enviar transacciones para consultar e invocar el libro mayor de la red blockchain. Los pasos incluyen añadir su organización a un canal, unir el igual al canal, instalar el código de encadenamiento en el igual,
 crear una instancia del código de encadenamiento en el canal y conectar aplicaciones al igual. Puede utilizar los [SDK de Fabric](/docs/services/blockchain/howto/remote_peer_operate_aws.html#remote-peer-aws-operate-with-sdk) o la [línea de mandatos](/docs/services/blockchain/howto/remote_peer_operate_aws.html#remote-peer-aws-operate-cli-operate) para realizar estos pasos operativos. Los SDK de Fabric son el método recomendado, aunque en las instrucciones se presupone que está familiarizado con el funcionamiento del SDK.
@@ -103,7 +101,7 @@ var peer = fabric_client.newPeer('grpcs://<AWS_EC2_dashboard_Public_DNS>:7051', 
 ```
 {:codeblock}
 
-**Nota:** como el igual es remoto, otras organizaciones de la red de {{site.data.keyword.blockchainfull_notm}} Platform no podrán encontrar la información de punto final de su igual en el perfil de conexión. Si otras organizaciones necesitan enviar a su igual una transacción para que se apruebe, debe proporcionar los certificados IP y TLS públicos en otra operación.
+**Nota:** como el igual es remoto, otras organizaciones de la red de {{site.data.keyword.blockchainfull_notm}} Platform no podrán encontrar la información de punto final de si igual en el perfil de conexión. Si otras organizaciones necesitan enviar a su igual una transacción para que se apruebe, debe proporcionar los certificados IP y TLS públicos en otra operación.
 
 ### Utilización del SDK para unirse a un canal
 {: #remote-peer-aws-operate-join-channel-sdk}
@@ -533,7 +531,7 @@ LA creación de la pila finaliza correctamente, pero los registros de Docker con
 **Solución:**  
 Este error puede venir provocado por la omisión de la especificación de un puerto en el CAUrl cuando se desplegó la plantilla de Inicio rápido.
 El CAUrl debe tener un aspecto similar a `https://<network>-org1-ca.stage.blockchain.ibm.com:31011`.
-Vuelva a desplegar la plantilla de inicio rápido, teniendo cuidado al especificar el valor correcto para el CAUrl.
+Vuelva a desplegar la plantilla de Inicio rápido, teniendo cuidado de especificar el valor correcto para el CAUrl.
 
 ### **Problema:** la creación de la instancia del código de encadenamiento falla con un error
 {: #remote-peer-aws-operate-problem-2}

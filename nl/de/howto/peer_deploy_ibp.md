@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -18,10 +20,8 @@ lastupdated: "2019-02-08"
 # Peers in {{site.data.keyword.cloud_notm}} Private bereitstellen und mit Starter Plan oder Enterprise Plan verbinden
 {: #ibp-peer-deploy}
 
-
-***[Ist diese Seite hilfreich? Teilen Sie uns Ihre Meinung mit.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
-In den folgenden Anweisungen wird beschrieben, wie ein {{site.data.keyword.blockchainfull}} Plattform-Peer auf dem {{site.data.keyword.cloud_notm}} privaten Server bereitgestellt wird und der Peer zum Starter Plan- oder Enterprise Plan-Netz auf {{site.data.keyword.cloud_notm}} oder auf der lokalen {{site.data.keyword.cloud_notm}} Private-Instanz verbunden wird.{:shortdesc}
+In den folgenden Anweisungen wird beschrieben, wie ein {{site.data.keyword.blockchainfull}} Plattform-Peer auf dem {{site.data.keyword.cloud_notm}} privaten Server bereitgestellt wird und der Peer zum Starter Plan- oder Enterprise Plan-Netz auf {{site.data.keyword.cloud_notm}} oder auf der lokalen {{site.data.keyword.cloud_notm}} Private-Instanz verbunden wird.
+{:shortdesc}
 
 Lesen Sie vor der Bereitstellung eines Peers den Abschnitt mit [Hinweisen und Einschränkungen](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-about-considerations).
 
@@ -270,7 +270,7 @@ Nachdem Sie die Administratoridentität registriert haben, müssen Sie den MSP-O
   ```
   {:codeblock}
 
-  Die Variablen `<enroll_id>` und `<enroll_password>` im obigen Befehl stehen für die **ID** und den **geheimen Schlüssel** des Peeradministrators, der [mit Network Monitor registriert wurde](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-register-admin). Die `<ca_name>` und `<ca_url_with_port>` stehen für die Werte der Felder `caName` und `url` aus Ihrem Verbindungsprofil. Lassen Sie die Angabe `http://` am Beginn der URL für die Zertifizierungsstelle weg.
+  Die Angaben `<enroll_id>` und `<enroll_password>` im obigen Befehl stehen für die **ID** und den **geheimen Schlüssel** des Peeradministrators, der [mit Network Monitor registriert wurde](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-register-admin). Die Angaben `<ca_name>` und `<ca_url_with_port>` stehen für die Werte der Felder `caName` und `url` aus Ihrem Verbindungsprofil. Lassen Sie die Angabe `http://` am Beginn der URL für die Zertifizierungsstelle weg.
 
   Ein realer Aufruf könnte ähnlich wie im folgenden Beispiel aussehen:
 
@@ -364,9 +364,9 @@ Sie müssen Ihren Peer mit dem Fabric-CA-Client bei der TLS-Zertifizierungsstell
   ```
   {:codeblock}
 
-  `<enroll_id>` und `<enroll_password>` im Befehl stehen für [den Benutzernamen und das Kennwort des CA-Administrators](/docs/services/blockchain/CA_deploy.html#ca-deploy-admin-secret), die Sie beim Bereitstellen der Zertifizierungsstelle an den geheimen Kubernetes-Schlüssel übergeben haben. Fügen Sie die [URL der Zertifizierungsstelle](/docs/services/blockchain/howto/CA_operate.html#ca-operate-url) in `<ca_url_with_port>`. Lassen Sie die Angabe `http://` am Beginn weg. Der Wert für `<tls_ca_name>` haben Sie während der [Konfiguration der Zertifizierungsstelle](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-configuration-parms) angegeben.
+  Die Angaben `<enroll_id>` und `<enroll_password>` im Befehl stehen für [den Benutzernamen und das Kennwort des CA-Administrators](/docs/services/blockchain/CA_deploy.html#ca-deploy-admin-secret), die Sie beim Bereitstellen der Zertifizierungsstelle an den geheimen Kubernetes-Schlüssel übergeben haben. Fügen Sie die [URL der Zertifizierungsstelle](/docs/services/blockchain/howto/CA_operate.html#ca-operate-url) in `<ca_url_with_port>`. Lassen Sie die Angabe `http://` am Beginn weg. Den Wert für `<tls_ca_name>` haben Sie während der [Konfiguration der Zertifizierungsstelle](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-configuration-parms) angegeben.
 
-  `<ca_tls_cert_file>` ist der Dateiname Ihres [TLS-Zertifikats der Zertifizierungsstelle](/docs/services/blockchain/howto/CA_operate.html#ca-operate-tls) mit dem vollständigen Pfad.
+  Die Angabe `<ca_tls_cert_file>` ist der Dateiname Ihres [TLS-Zertifikats der Zertifizierungsstelle](/docs/services/blockchain/howto/CA_operate.html#ca-operate-tls) mit dem vollständigen Pfad.
 
   Ein echter Aufruf könnte wie im folgenden Beispiel aussehen:
 
@@ -650,8 +650,8 @@ Die folgende Tabelle enthält eine Auflistung der **speziell für die Peerkompon
 | `Image-Repository für Peer`| Die Position des Helm-Diagramms für den Peer. In diesem Feld wird automatisch der installierte Pfad eingetragen. Falls Sie die Community Edition verwenden und kein Zugang zum Internet besteht, sollte dieser Wert mit dem Verzeichnis übereinstimmen, in das Sie das Fabric-Image für den Peer heruntergeladen haben. | ibmcom/ibp-fabric-peer | Ja |
 | `Tag für Docker-Image des Peers`|Der Wert des Tags, der dem Peer-Image zugeordnet ist. |1.2.1 (wird automatisch mit dem richtigen Wert gefüllt)|Ja|
 | `Peerkonfiguration`|Sie können die Konfiguration des Peers anpassen, indem Sie in diesem Feld eine eigene Konfigurationsdatei `core.yaml` einfügen. Eine Beispieldatei `core.yaml` finden Sie in der Beispielkonfiguration [`core.yaml` ![External link icon](../images/external_link.svg "External link icon")](https://github.com/hyperledger/fabric/blob/release-1.2/sampleconfig/core.yaml "hyperledger/fabric/core.yaml") **Nur für fortgeschrittene Benutzer**. |Nein|Nein|
-| `Geheimer Schlüssel für Peerkonfiguration (erforderlich)`|Der Name des [geheimen Schlüssels für die Peerkonfiguration](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-config-file-ibp), den Sie in {{site.data.keyword.cloud_notm}} Private erstellt haben. |Nein|Ja|
-|`MSP der Organisation (erforderlich)`| Diesen Wert finden Sie in Network Monitor (Starter Plan- und Enterprise Plan-Benutzerschnittstelle), indem Sie in der Übersichtsanzeige auf "Konfiguration des fernen Peers" klicken. |Nein|Ja|
+| `Geheimer Schlüssel für Peerkonfiguration (erforderlich)`| Der Name des [geheimen Schlüssels für die Peerkonfiguration](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-config-file-ibp), den Sie in {{site.data.keyword.cloud_notm}} Private erstellt haben.  |Nein|Ja|
+|`MSP der Organisation (erforderlich)`|Diesen Wert finden Sie in Network Monitor (Starter Plan- und Enterprise Plan-Benutzerschnittstelle), indem Sie in der Übersichtsanzeige auf "Konfiguration des fernen Peers" klicken.  |Nein|Ja|
 |`Peer-Service-Typ`| Hiermit wird angegeben, ob auf dem Peer [externe Ports zugänglich gemacht werden sollen ![External link icon](../images/external_link.svg "External link icon")](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types "Publishing services - service types"). Wählen Sie "NodePort" aus, damit die Ports extern zugänglich gemacht werden (empfohlen); wählen Sie "ClusterIP" aus, damit die Ports nicht zugänglich gemacht werden. Die Optionen "LoadBalancer" und "ExternalName" werden in diesem Release nicht unterstützt. | NodePort |Ja|
 | `Statusdatenbank`| Zur Speicherung des Kanalledgers verwendete [Statusdatenbank](/docs/services/blockchain/glossary.html#glossary-state-database). Der Peer muss dieselbe Datenbank wie das [Blockchain-Netz](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-network-preferences) verwenden. | LevelDB | Ja |
 |`Image-Repository für CouchDB`| Gilt nur, wenn CouchDB als Ledgerdatenbank ausgewählt wurde. In diesem Feld wird automatisch der installierte Pfad eingetragen. Falls Sie die Community Edition verwenden und kein Zugang zum Internet besteht, sollte dieser Wert mit dem Verzeichnis übereinstimmen, in das Sie das Fabric-Image für CouchDB heruntergeladen haben.| ibmcom/ibp-fabric-couchdb | Ja |

@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -14,8 +16,6 @@ lastupdated: "2019-02-08"
 
 # {{site.data.keyword.cloud_notm}} Private での順序付けプログラムのデプロイ
 {: #icp-orderer-deploy}
-
-***[このページは参考になりましたか。 ご意見をお聞かせください。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 順序付けプログラムは、順序付けプログラム・コンポーネントを含むブロックチェーン・ネットワーク内のクライアント、順序付けトランザクション、およびブロードキャスト・トランザクションを認証します。 順序付けプログラムと、ブロックチェーン・ネットワーク内でのその役割について詳しくは、[ブロックチェーン・コンポーネントの概要](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview)を参照してください。
 {:shortdesc}
@@ -226,4 +226,4 @@ helm install --name jnchart2 mycluster/ibm-blockchain-platform \
 ## 順序付けプログラムのログの表示
 {: #icp-orderer-deploy-view-logs}
 
-コンポーネント・ログは、コマンド・ラインから [`kubectl CLI コマンド`](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-kubectl-configure)を使用して表示することも、[Kibana ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.elastic.co/products/kibana "Your Window intothe Elastic Stack") ({{site.data.keyword.cloud_notm}} Private クラスターに含まれています) を使用して表示することもできます。詳しくは、こちらの[ログへのアクセス手順](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-orderer-view-logs)を参照してください。
+コンポーネント・ログは、コマンド・ラインから [`kubectl CLI コマンド`](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-kubectl-configure)を使用して表示することも、[Kibana ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.elastic.co/products/kibana "Your Window intothe Elastic Stack") ({{site.data.keyword.cloud_notm}} Private クラスターに含まれています) を使用して表示することもできます。 詳しくは、こちらの[ログへのアクセス手順](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-orderer-view-logs)を参照してください。

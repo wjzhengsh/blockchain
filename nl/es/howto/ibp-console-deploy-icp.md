@@ -2,7 +2,9 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -17,8 +19,6 @@ lastupdated: "2019-02-08"
 
 # Despliegue de la consola de {{site.data.keyword.blockchainfull_notm}} Platform en {{site.data.keyword.cloud_notm}} Private
 {: #ibp-console-deploy-icp}
-
-***[¿Le resulta útil esta página? Indíquenos su opinión.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 En las instrucciones siguientes se describe cómo desplegar una consola de {{site.data.keyword.blockchainfull}} Platform en su propia infraestructura mediante {{site.data.keyword.cloud_notm}} Private. No es necesario que despliegue la consola en el mismo entorno que sus otros componentes de blockchain.
 {:shortdesc}
@@ -74,13 +74,13 @@ También tiene que instalar o configurar las siguientes dependencias antes de de
 ### Registro con un servicio App ID
 {: #ibp-console-icp-prereq-app-id}
 
-[App ID ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://console.bluemix.net/docs/services/appid/index.html#gettingstarted "App ID") es un servicio de gestión de usuarios que proporciona {{site.data.keyword.cloud_notm}}. La consola de {{site.data.keyword.blockchainfull_notm}} Platform utiliza el servicio App ID para gestionar quién podrá utilizar el panel de control y trabajar con la red blockchain. Esto permite a los usuarios de la IU utilizar las credenciales emitidas por su propia organización o por terceros, como Google o Facebook, sin necesidad de que tengan ID de IBM. Solo el usuario que despliegue la consola necesitará un ID de {{site.data.keyword.IBM_notm}} para registrarse con el servicio.
+[App ID ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://cloud.ibm.com/docs/services/appid/index.html#gettingstarted "App ID") es un servicio de gestión de usuarios que proporciona {{site.data.keyword.cloud_notm}}. La consola de {{site.data.keyword.blockchainfull_notm}} Platform utiliza el servicio App ID para gestionar quién podrá utilizar el panel de control y trabajar con la red blockchain. Esto permite a los usuarios de la IU utilizar las credenciales emitidas por su propia organización o por terceros, como Google o Facebook, sin necesidad de que tengan ID de IBM. Solo el usuario que despliegue la consola necesitará un ID de {{site.data.keyword.IBM_notm}} para registrarse con el servicio.
 
 Antes de desplegar la consola, debe obtener un ID de IBM para realizar un registro de una sola vez con el directorio App ID Cloud. A continuación, debe captar las credenciales del servicio App ID para pasarlas a la consola. Siga los pasos siguientes para registrarse con el servicio y obtener las credenciales de servicio.
 
 1. Si aún no tiene uno, debe crear un [ID de {{site.data.keyword.IBM_notm}} ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/account/reg/us-en/signup?formid=urx-19776&target=https%3A%2F%2Fidaas.iam.ibm.com%2Fidaas%2Foidc%2Fendpoint%2Fdefault%2Fauthorize%3Fresponse_type%3Dcode%26client_id%3Dmyibmlondonprod%26state%3DbfAvZHoYtGHytcifRjeE%26redirect_uri%3Dhttps%3A%2F%2Fmyibm.ibm.com%2Fmymga%2Foidcclient%2Fredirect%2Famapp-runtime-BlueIDProd%26scope%3Dopenid).
 
-2. Utilice su ID de {{site.data.keyword.IBM_notm}} para iniciar una sesión o para registrarse para [{{site.data.keyword.cloud_notm}} ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://console.bluemix.net/catalog/services/app-id "IBM Cloud App ID"). A continuación, vaya al servicio [App ID ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://console.bluemix.net/catalog/services/app-id "IBM Cloud App ID") en el catálogo. Seleccione el plan `Lite` o el `Nivel graduado` en función de sus necesidades de servicio. Luego pulse el botón **Crear** para iniciar la pantalla de "Bienvenida".
+2. Utilice su ID de {{site.data.keyword.IBM_notm}} para iniciar una sesión o para registrarse para [{{site.data.keyword.cloud_notm}} ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://cloud.ibm.com/catalog/services/app-id "IBM Cloud App ID"). A continuación, vaya al servicio [App ID ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://cloud.ibm.com/catalog/services/app-id "IBM Cloud App ID") en el catálogo. Seleccione el plan `Lite` o el `Nivel graduado` en función de sus necesidades de servicio. Luego pulse el botón **Crear** para iniciar la pantalla de "Bienvenida".
 
 3. Cuando esté en la pantalla de "Bienvenida", pulse el enlace **Gestionar** en el panel de navegación izquierdo para ver o actualizar los proveedores de identidades preferidos. Pueden ser proveedores de terceros, como Google o el propio servicio de identidad de su organización.
 

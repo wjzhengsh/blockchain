@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -14,8 +16,6 @@ lastupdated: "2019-02-08"
 
 # Sobre o Enterprise Plan
 {: #enterprise-plan-about}
-
-***[Esta página é útil? Diga-nos.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 O {{site.data.keyword.blockchainfull}} Platform Enterprise Plan é uma oferta pronta para produção para organizações que gostariam de criar ou se associar a uma rede de blockchain para empresas reais. Esse plano fornece a infraestrutura chave juntamente com as ferramentas e suporte para iniciar facilmente uma rede altamente segura e pronta para produção. O Enterprise Plan foi atualizado do Hyperledger Fabric V1.0 para o V1.1 em 15 de maio de 2018. Todas as redes que foram criadas após 15 de maio de 2018 estão no nível do Fabric V1.1. No entanto, redes que foram criadas anteriormente permanecerão no nível do Fabric V1.0.
 {:shortdesc}
@@ -42,7 +42,7 @@ O Enterprise Plan é um serviço de plataforma no {{site.data.keyword.cloud_notm
 
 Para membros que irão iniciar a rede, a IBM fornece uma interface gráfica com o usuário para guiar o inicializador de rede pelas etapas principais para configurar e provisionar a rede. Isso inclui convidar outros membros e configurar regras de governança. Para obter mais informações, veja [Governar a rede do Enterprise Plan](/docs/services/blockchain/get_start.html#getting-started-with-enterprise-plan). Após a rede ser implementada, uma interface gráfica com o usuário interativa, o Monitor de rede, está disponível para monitorar o funcionamento e a atividade da rede; gerenciar atividades de rede chaves que incluem novas implementações, inclusão ou remoção de membros, ciclo de vida do chaincode e gerenciamento de canal; e buscar suporte técnico. Para obter mais informações, consulte [Usando o monitor de rede](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard).
 
-Inscreva-se agora para a sua associação do [{{site.data.keyword.blockchainfull_notm}} ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps).
+Inscreva-se agora para a sua associação do [{{site.data.keyword.blockchainfull_notm}} ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://cloud.ibm.com/catalog/services/ibm-blockchain-5-prod).
 
 O {{site.data.keyword.blockchainfull_notm}} Platform foi construído com os componentes chave do Hyperledger Fabric que incluem uma Autoridade de certificação (CA) e pelo menos 1 peer (máximo de 6).  O Enterprise Plan também fornece um serviço de ordenação do Kafka tolerante a falhas de travamento (CFT) para os membros de rede.
 

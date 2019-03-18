@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -17,8 +19,6 @@ lastupdated: "2019-02-08"
 
 # Acerca de {{site.data.keyword.blockchainfull_notm}} Platform para {{site.data.keyword.cloud_notm}} Private
 {: #ibp-icp-about}
-
-***[¿Le resulta útil esta página? Indíquenos su opinión.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 {{site.data.keyword.blockchainfull}} Platform ofrece {{site.data.keyword.blockchainfull_notm}} Platform para {{site.data.keyword.cloud_notm}} Private, que es una plataforma de aplicaciones para desarrollar y gestionar aplicaciones contenerizadas. La oferta {{site.data.keyword.blockchainfull_notm}} Platform para {{site.data.keyword.cloud_notm}} Private se basa en Kubernetes, lo que permite a los usuarios desplegar entidades emisoras de certificados (CA), clasificadores e iguales en x86, LinuxONE e IBM Z. {{site.data.keyword.blockchainfull_notm}} Platform para {{site.data.keyword.cloud_notm}} Private se basa en Hyperledger Fabric v1.2.1 y se despliega mediante diagramas de Helm de Kubernetes.
 {:shortdesc}
@@ -178,9 +178,9 @@ Los planes inicial y empresarial de {{site.data.keyword.blockchainfull_notm}} Pl
 Los datos de la base de datos de estado, independientemente de si utiliza LevelDB o CouchDB, no se cifran. Puede utilizar un cifrado a nivel de aplicación para proteger los datos en reposo en la base de datos de estado.
 
 ### Residencia de datos
-{: #ibp-icp-about-data-residency}
+{: #ibp-icp-about-security-data-residency}
 
-Los requisitos de residencia de datos pueden imponer que el proceso y el almacenamiento de todos los datos del libro mayor de blockchain permanezcan dentro de los límites de un solo país (o dentro de algún otro límite definido). Para obtener más información sobre cómo se puede conseguir la residencia de los datos, consulte [Residencia de los datos](/docs/services/blockchain/howto/remote_peer.html#remote-peer-aws-about-data-residency).
+Los requisitos de residencia de datos pueden imponer que el proceso y el almacenamiento de todos los datos del libro mayor de blockchain permanezcan dentro de los límites de un solo país (o dentro de algún otro límite definido). Para obtener más información sobre cómo se puede conseguir la residencia de los datos, consulte [Residencia de los datos](#ibp-icp-about-data-residency).
 
 ### Gestión de claves
 {: #ibp-icp-about-security-key-management}

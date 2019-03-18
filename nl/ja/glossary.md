@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -15,8 +17,6 @@ lastupdated: "2019-02-08"
 
 # 用語集
 {: #glossary}
-
-***[このページは参考になりましたか。 ご意見をお聞かせください。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 このトピックでは、この資料に記載されている {{site.data.keyword.blockchainfull}} プラットフォーム固有の用語を定義します。 用語の詳細な意味、および Hyperledger Fabric の概念に関連する用語の用語集は、[Hyperledger Fabric の用語集 ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](http://hyperledger-fabric.readthedocs.io/en/release-1.2/glossary.html) を参照してください。
 {:shortdesc}

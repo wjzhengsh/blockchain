@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -16,8 +18,6 @@ lastupdated: "2019-02-08"
 
 # Implementando redes de negócios no Starter e no Enterprise Plan
 {: #deploying-a-business-network}
-
-*[Esta página é útil? Diga-nos.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)*
 
 O {{site.data.keyword.IBM}} não fornece suporte para redes que usam o Hyperledger Composer na produção, incluindo a CLI do Composer, as APIs JavaScript, o servidor REST e o Web Playground.
 {:note}
@@ -88,7 +88,7 @@ O segredo recuperado na etapa anterior será usado para criar uma placa de rede 
 
 Os certificados devem ser incluídos na rede do Starter Plan. Por conveniência, é possível incluí-los usando o Monitor de rede do {{site.data.keyword.blockchainfull_notm}} Platform. Os certificados devem ser incluídos e, em seguida, os peers devem ser reiniciados e, então, os certificados devem ser sincronizados no canal. O certificado necessário é o arquivo `admin-pub.pem` que foi gerado por meio do comando prévio, que está no diretório `credentials`.
 
-1. No Monitor de rede do Starter Plan, clique na guia **Membros**, em seguida, **Certificados**, em seguida, **Incluir certificado**. Acesse o seu diretório `credentials` e copie e cole o conteúdo do arquivo `admin-pub.pem` na caixa de certificado. Envie o certificado e reinicie os peers. Nota: reiniciar os peers leva um minuto.
+1. No monitor de rede do Starter Plan, clique na guia **Membros**, em **Certificados** e em **Incluir certificado**. Acesse o seu diretório `credentials` e copie e cole o conteúdo do arquivo `admin-pub.pem` na caixa de certificado. Envie o certificado e reinicie os peers. Nota: reiniciar os peers leva um minuto.
 
     ![Incluir certificados](images/add_cert.gif "Incluir certificados")
 

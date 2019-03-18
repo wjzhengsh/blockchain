@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018,2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -14,10 +16,6 @@ lastupdated: "2019-02-08"
 
 # Supervisión de una red blockchain
 {: #monitor-blockchain-network}
-
-
-***[¿Le resulta útil esta página? Indíquenos su opinión.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 
 En esta guía de aprendizaje se muestra cómo visualizar la información de estado de la red de {{site.data.keyword.blockchain}} on {{site.data.keyword.cloud_notm}}.
 {:shortdesc}
@@ -61,7 +59,7 @@ La figura siguiente muestra una solicitud **HEAD** con una respuesta 200 en la a
 ## Utilización de los registros de red
 {: #monitor-blockchain-network-using-logs}
 
-La pantalla "Visión general" de su supervisor de red muestra el estado de la entidad emisora de certificados, del servicio de ordenación y de los iguales. Pulse **Ver registros** en la lista desplegable bajo la cabecera **Acciones** para ver los registros de un componente de red específico. Si utiliza redes del plan empresarial, puede ver los registros de los componentes en formato de archivo de texto. Si utiliza redes del plan inicial, los registros de los componentes se recopilan mediante el [servicio {{site.data.keyword.cloud_notm}} Log Analysis ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://console.bluemix.net/catalog/services/log-analysis) y puede ver los registros en [Kibana](/docs/services/blockchain/howto/monitor_network.html#monitor-blockchain-network-viewing-kibana-logs).
+La pantalla "Visión general" de su supervisor de red muestra el estado de la entidad emisora de certificados, del servicio de ordenación y de los iguales. Pulse **Ver registros** en la lista desplegable bajo la cabecera **Acciones** para ver los registros de un componente de red específico. Si utiliza redes del plan de empresa, puede ver los registros de los componentes en formato de archivo de texto. Si utiliza redes del plan inicial, los registros de los componentes se recopilan mediante el [servicio {{site.data.keyword.cloud_notm}} Log Analysis ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://cloud.ibm.com/catalog/services/log-analysis) y puede ver los registros en [Kibana](/docs/services/blockchain/howto/monitor_network.html#monitor-blockchain-network-viewing-kibana-logs).
 
 Cada componente genera registros de distintas actividades. Esto se debe a que cada componente juega distintos roles dentro de la [arquitectura de red ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/network/network.html) de Hyperledger Fabric y en los [flujos de transacciones ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.1/txflow.html).
 
@@ -80,11 +78,11 @@ Hyperledger Fabric ofrece distintos [niveles de registro ![Icono de enlace exter
 ## Visualización de registros en Kibana en el plan inicial
 {: #monitor-blockchain-network-viewing-kibana-logs}
 
-Los registros de la red del Plan inicial los recopila el [servicio {{site.data.keyword.cloud_notm}} Log Analysis ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://console.bluemix.net/catalog/services/log-analysis "servicio Log Analysis"). De forma predeterminada, los registros los recopila el Plan Lite del servicio Log Analysis. Este plan es gratuito y **guarda los registros durante tres días** antes de descartarlos. También le permite **buscar loso los primeros 500 MB de registros al día**. Si los registros de la red superan los 500 MB, no podrá ver registros nuevos en Kibana. Si la red genera más de 500 MB de registros, o si desea conservar los registros durante más de tres días, puede actualizar a una versión de pago del servicio Log Analysis.
+Los registros de la red del Plan inicial los recopila el [servicio {{site.data.keyword.cloud_notm}} Log Analysis ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://cloud.ibm.com/catalog/services/log-analysis "servicio Log Analysis"). De forma predeterminada, los registros los recopila el Plan Lite del servicio Log Analysis. Este plan es gratuito y **guarda los registros durante tres días** antes de descartarlos. También le permite **buscar loso los primeros 500 MB de registros al día**. Si los registros de la red superan los 500 MB, no podrá ver registros nuevos en Kibana. Si la red genera más de 500 MB de registros, o si desea conservar los registros durante más de tres días, puede actualizar a una versión de pago del servicio Log Analysis.
 
 En la pantalla "Visión general" del supervisor de red, pulse **Ver registros** en la lista desplegable que hay bajo la cabecera **Acciones** para abrir los registros de los componentes de las redes en la interfaz Kibana. Cuando se abre Kibana, muestra los registros que filtrados por una barra de búsqueda en la parte superior. Por ejemplo, si pulsa para ver los registros de iguales, la búsqueda se filtra por ID de red y por id de igual: `NETWORK_ID_str:"nf8389d520c243004bb21ff5d70fc8939" && NODE_NAME_str:"org1-peer1"`. Puede especificar un campo adicional en la barra de búsqueda si desea ver registros más específicos. Por ejemplo, puede añadir `&& "marbles"` para visualizar los registros del código de encadenamiento `"marbles"`. Si se suprime el término del componente específicos y solo se busca por el ID de red, por ejemplo `NETWORK_ID_str:"nf8389d520c243004bb21ff5d70fc8939"`, se muestran los registros procedentes de todos los componentes de la red.
 
-Puede utilizar el botón de rango de tiempo de la esquina superior derecha para desde qué periodo de tiempo se visualizan los registros. También puede utilizar el separador de la izquierda de la pantalla para añadir y eliminar campos de la búsqueda. El campo más importante que se debe visualizar es el campo de mensaje. Puede ser útil para realizar una búsqueda con un mensaje sin indicación de fecha y hora para encontrar todas las instancias de dicho registro de mensaje. Pulse el botón **Guardar** para guardar la búsqueda actual y volver a una vista específica. Para obtener más información sobre la visualización de datos en Kibana, consulte la [Guía del usuario de Kibana ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.elastic.co/guide/en/kibana/6.2/index.html "Guía del usuario de Kibana"). También puede [descargar los registros](https://console.bluemix.net/docs/services/CloudLogAnalysis/how-to/manage-logs/downloading_logs_cloud.html#downloading_logs) en su sistema de archivos local con la CLI de Log Analysis.
+Puede utilizar el botón de rango de tiempo de la esquina superior derecha para desde qué periodo de tiempo se visualizan los registros. También puede utilizar el separador de la izquierda de la pantalla para añadir y eliminar campos de la búsqueda. El campo más importante que se debe visualizar es el campo de mensaje. Puede ser útil para realizar una búsqueda con un mensaje sin indicación de fecha y hora para encontrar todas las instancias de dicho registro de mensaje. Pulse el botón **Guardar** para guardar la búsqueda actual y volver a una vista específica. Para obtener más información sobre la visualización de datos en Kibana, consulte la [Guía del usuario de Kibana ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.elastic.co/guide/en/kibana/6.2/index.html "Guía del usuario de Kibana"). También puede [descargar los registros](https://cloud.ibm.com/docs/services/CloudLogAnalysis/how-to/manage-logs/downloading_logs_cloud.html#downloading_logs) en su sistema de archivos local con la CLI de Log Analysis.
 
 **Nota:** de forma predeterminada, Kibana está preconfigurado para mostrar los registros de 30 días de actividad. Si no ha habido actividad en los últimos 30 días, verá un mensaje que indica que *No se han encontrado resultados*. Para ver otros registros, puede pulsar el icono de temporizador en la esquina superior derecha bajo el nombre de usuario y establecer un rango de tiempo más amplio, por ejemplo *Año hasta la fecha*.
 

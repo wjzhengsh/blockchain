@@ -2,7 +2,9 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -19,10 +21,10 @@ lastupdated: "2019-02-08"
 # Konsole verwalten
 {: #ibp-console-manage-console}
 
-***[Ist diese Seite hilfreich? Teilen Sie uns Ihre Meinung mit.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 Es gibt verschiedene Aktionen, die Sie ausführen können, um das Verhalten Ihrer Konsole zu verwalten. In diesem Abschnitt werden Aktionen außerhalb der Blockchain-Knotenoperationen beschrieben, die Sie bei der täglichen Verwendung der Konsole unterstützen.
 {:shortdesc}
+
+**Zielgruppe:** Dieser Abschnitt richtet sich an Netzoperatoren, die für die Erstellung, Überwachung und Verwaltung des Blockchain-Netzes verantwortlich sind.
 
 ## Benutzer zur Konsole hinzufügen und aus ihr entfernen
 
@@ -40,8 +42,13 @@ Wenn die Konsole von mehreren Personen oder Organisationen verwendet wird, wird 
 
 Um die E-Mail-Adresse des Konsolenadministrators zu aktualisieren, der konfiguriert wurde, als die Konsole implementiert wurde, müssen Sie als Konsolenadministrator angemeldet sein. Navigieren Sie zur Registerkarte **Benutzer** und klicken Sie auf der Kachel **IBM ID** auf **Konfigurieren**. Geben Sie in der Anzeige, die geöffnet wird, eine neue E-Mail-Adresse für den Konsolenadministrator an.
 
+## Protokolle anzeigen
+{: #ibp-console-manage-logs}
 
-## Konsolenprotokolle anzeigen
+Beim Arbeiten mit der {{site.data.keyword.blockchainfull_notm}} Platform-Konsole kann es wiederholt erforderlich werden, Protokolle anzuzeigen, um ein Problem zu beheben. 
+
+### Konsolenprotokolle anzeigen
+{: #ibp-console-manage-console-logs}
 
 Sie können problemlos auf die Konsolenprotokolle zugreifen, wenn Sie Fehler beheben müssen, die bei der Verwendung der Konsole und der Knoten aufgetreten sind. Sie können die Anzahl der Protokolle, die von der Konsole erfasst werden, auch erhöhen oder verringern, indem Sie die Protokollierungsstufe festlegen. Die Protokolle der Konsole werden getrennt von den [Protokollen der Knoten](/docs/services/blockchain/howto/ibp-console-manage.html#ibp-console-manage-console-node-logs) erfasst, die vom {{site.data.keyword.IBM_notm}} Kubernetes-Service erfasst werden.
 
@@ -54,21 +61,31 @@ Legen Sie die Menge der erfassten Protokolle fest, indem Sie die Dropdown-Liste 
 
 Sie können die Konsolenprotokolle nur anzeigen, wenn Sie als Konsolenadministrator angemeldet sind. Wenn Sie die Protokolle auf der Registerkarte **Einstellungen** anzeigen möchten, ersetzen Sie das Wort `settings` in der Browser-URL durch `api/v1/logs`. Wenn Ihre Konsolen-URL z. B. `localhost:3001/settings` lautet, können Sie Ihre Protokolle anzeigen, indem Sie zu `localhost:3001/api/v1/logs` navigieren. Client- und Serverprotokolle werden in separaten Dateien erfasst. Die neuesten Protokolle befinden sich oben auf der Seite.
 
-
-## Konsolenprotokolle anzeigen
+### Konsolenprotokolle anzeigen
 {: #ibp-console-manage-console-node-logs}
 
 Die Protokolle Ihrer Peers, Anordnungsknoten und Zertifizierungsstellen werden vom {{site.data.keyword.IBM_notm}} Kubernetes-Service erfasst. Führen Sie die folgenden Schritte aus, um die Protokolle Ihrer Knoten aus dem Cluster anzuzeigen, in dem Sie Ihr {{site.data.keyword.blockchainfull_notm}} Platform 2.0-Netz implementiert haben.
 
-1. Öffnen Sie das [{{site.data.keyword.cloud_notm}}-Dashboard ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://console.bluemix.net/dashboard/apps/) und navigieren Sie zu der Übersichtsanzeige Ihres {{site.data.keyword.IBM_notm}} Kubernetes-Service-Clusters.
+1. Öffnen Sie das [{{site.data.keyword.cloud_notm}}-Dashboard ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://cloud.ibm.com/resources) und navigieren Sie zu der Übersichtsanzeige Ihres {{site.data.keyword.IBM_notm}} Kubernetes-Service-Clusters.
 2. Klicken Sie oberhalb der Übersichtsanzeige für den Cluster auf **Kubernetes-Dashboard**.
 3. Verwenden Sie im Kubernetes-Dashboard die Dropdown-Liste der Namensbereiche in der linken Navigationsleiste, um den Namensbereich in die {{site.data.keyword.blockchainfull_notm}} Platform-Serviceinstanz zu ändern. Der Name der Serviceinstanz ist eine lange Zeichenfolge aus Buchstaben und Zahlen. Sie finden den Namen der Serviceinstanz am Anfang der URL für Ihre {{site.data.keyword.blockchainfull_notm}} Platform-Konsole.
 4. Klicken Sie in der linken Navigationsleiste auf **Pods**, um die Liste der von Ihnen bereitgestellten Knotenpods anzuzeigen.
 5. Klicken Sie auf einen Pod. Klicken Sie anschließend im oberen Menü auf **Protokolle anzeigen**, um die Protokolle Ihres Knotens zu öffnen. Über den Protokollen können Sie das Dropdown-Menü nach **Protokolle von** verwenden, um die Protokolle aus den verschiedenen Containern innerhalb des Pods anzuzeigen. Ihr Peer und die Statusdatenbank (z. B. CouchDB) werden beispielsweise in verschiedenen Containern ausgeführt und generieren daher unterschiedliche Protokolle.
 
-Standardmäßig werden die Protokolle Ihrer Knoten lokal in Ihrem Cluster erfasst. Sie können auch den {{site.data.keyword.cloud_notm}} Log Analysis-Service oder den Service eines Drittanbieters verwenden, um die Protokolle aus Ihrem Netz zu erfassen, zu speichern und zu analysieren. Weitere Informationen finden Sie im Abschnitt zur [Protokollierung und Überwachung für den {{site.data.keyword.IBM_notm}} Kubernetes-Service ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://console.cloud.ibm.com/docs/containers?topic=containers-health#health "Protokollierung und Überwachung für den {{site.data.keyword.IBM_notm}} Kubernetes-Service").
+Standardmäßig werden die Protokolle Ihrer Knoten lokal in Ihrem Cluster erfasst. Sie können auch den {{site.data.keyword.cloud_notm}} Log Analysis-Service oder den Service eines Drittanbieters verwenden, um die Protokolle aus Ihrem Netz zu erfassen, zu speichern und zu analysieren. Weitere Informationen finden Sie im Abschnitt zur [Protokollierung und Überwachung für den {{site.data.keyword.IBM_notm}} Kubernetes-Service ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://console.cloud.ibm.com/docs/containers?topic=containers-health#health "Protokollierung und Überwachung für den {{site.data.keyword.IBM_notm}} Kubernetes-Service"). Es wird empfohlen, den Service [{{site.data.keyword.cloud_notm}} LogDNA ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://cloud.ibm.com/catalog/services/logdna "{{site.data.keyword.IBM_notm}} Log Analysis with LogDNA") zu nutzen, der das Analysieren der Protokolle in Echtzeit ohne großen Aufwand ermöglicht.
+
+### Protokolle für Ihren Smart Contract-Container anzeigen
+{: #ibp-console-manage-console-container-logs}
+
+Bei Problemen mit Ihrem Smart Contract können Sie die Containerprotokolle für Smart Contract oder Chaincode anzeigen, um die Probleme zu beheben:
+
+- Öffnen Sie das Kubernetes-Dashboard und klicken Sie auf den Peer-Pod, in dem der Smart Contract ausgeführt wird.
+- Klicken Sie auf den Link `exec` in Ihrem Dashboard, um den Befehl 'exec' in dem Pod auszuführen. Der Link verweist standardmäßig auf den Peer-Container. 
+- Wechseln Sie in den Container `dind`, indem Sie den Container in der Dropdown-Liste auswählen.
+- Führen Sie den Befehl `docker ps -a` aus, um die Liste der Chaincode-Container anzuzeigen.
+- Führen Sie den Befehl `docker logs <chaincode-container-ID>` aus und ersetzen Sie dabei <chaincode-container-ID> durch die ID Ihres Chaincode-Containers.
 
 
 ## Ressourcennutzung überwachen
 
-Wenn die {{site.data.keyword.cloud_notm}} Platform-Knoten bereitgestellt werden, werden sie mit Standardeinstellungen für CPU, Speicher und Speicherung vordefiniert und diese Wert können nicht geändert werden. Sie können die Ressourcennutzung mithilfe des Dashboards des {{site.data.keyword.IBM_notm}} Kubernetes-Service überwachen. Wenn Sie versuchen, einen neuen Knoten in der {{site.data.keyword.cloud_notm}} Platform-Konsole zu erstellen und einen Fehler darüber erhalten, dass Sie Ihren Kubernetes-Cluster erweitern müssen, können Sie dem Kubernetes-Cluster mehr Speicher hinzufügen. Informationen darüber, wie Sie die Speicherkapazität oder Leistung Ihres bestehenden Datenträgers erhöhen können, finden Sie [hier ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://console.bluemix.net/docs/containers/cs_storage_file.html#change_storage_configuration "Größe und IOPS der vorhandenen Speichereinheit ändern").
+Wenn die {{site.data.keyword.cloud_notm}} Platform-Knoten bereitgestellt werden, werden sie mit Standardeinstellungen für CPU, Speicher und Speicherung vordefiniert und diese Wert können nicht geändert werden. Sie können die Ressourcennutzung mithilfe des Dashboards des {{site.data.keyword.IBM_notm}} Kubernetes-Service überwachen. Wenn Sie versuchen, einen neuen Knoten in der {{site.data.keyword.cloud_notm}} Platform-Konsole zu erstellen und einen Fehler darüber erhalten, dass Sie Ihren Kubernetes-Cluster erweitern müssen, können Sie dem Kubernetes-Cluster mehr Speicher hinzufügen. Informationen darüber, wie Sie die Speicherkapazität oder Leistung Ihres bestehenden Datenträgers erhöhen können, finden Sie [hier ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://cloud.ibm.com/docs/containers/cs_storage_file.html#change_storage_configuration "Größe und IOPS der vorhandenen Speichereinheit ändern").

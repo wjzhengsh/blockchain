@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -18,14 +20,12 @@ lastupdated: "2019-02-08"
 # Acerca del Plan inicial
 {: #starter-plan-about}
 
-***[¿Le resulta útil esta página? Indíquenos su opinión.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
-El Plan inicial de la plataforma de {{site.data.keyword.blockchainfull}} es una opción de nivel de entrada que permite a las organizaciones simular redes de blockchain de varias organizaciones, desarrollar aplicaciones rápidamente y trabajar con contratos digitales de ejemplo y redes empresariales. También ofrece la misma experiencia de interfaz de usuario que otras opciones de suscripción, lo que ayuda a eliminar la curva de aprendizaje. Las nuevas redes del Plan inicial creadas después del 4 de octubre de 2018 están basadas en Hyperledger Fabric V1.2.1. Las redes del Plan inicial más antiguas siguen teniendo el nivel de Fabric V1.1.0.
+El Plan inicial de {{site.data.keyword.blockchainfull}} Platform es una opción de nivel de entrada que permite a las organizaciones simular redes de blockchain de varias organizaciones, desarrollar aplicaciones rápidamente y trabajar con contratos digitales de ejemplo y redes empresariales. También ofrece la misma experiencia de interfaz de usuario que otras opciones de suscripción, lo que ayuda a eliminar la curva de aprendizaje. Las nuevas redes del Plan inicial creadas después del 4 de octubre de 2018 están basadas en Hyperledger Fabric V1.2.1. Las redes del Plan inicial más antiguas siguen teniendo el nivel de Fabric V1.1.0.
 {:shortdesc}
 
 El **Plan inicial** es un entorno para aquellos que desean empezar a desarrollar redes de blockchain o empezar a aprender sobre la tecnología de blockchain. Puede utilizar el Plan inicial como un entorno de desarrollo o de prueba que le permitirá comenzar con un entorno pequeño y escalar la pertenencia o el volumen de transacciones de la red antes de pasar a un entorno de producción.
 
- Para desplegar una red del Plan inicial, suscríbase como [miembro del plan inicial ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps) en {{site.data.keyword.cloud_notm}}. Cuando esté preparado para empezar a desarrollar su red, visite el tema sobre [iniciación al Plan inicial](/docs/services/blockchain/get_start_starter_plan.html#getting-started-with-starter-plan).
+ Para desplegar una red del Plan inicial, suscríbase como [miembro del plan inicial ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://cloud.ibm.com/catalog/services/ibm-blockchain-5-prod) en {{site.data.keyword.cloud_notm}}. Cuando esté preparado para empezar a desarrollar su red, visite el tema sobre [iniciación al Plan inicial](/docs/services/blockchain/get_start_starter_plan.html#getting-started-with-starter-plan).
 
 
 **Notas:**

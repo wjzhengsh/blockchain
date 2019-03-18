@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -15,7 +17,7 @@ lastupdated: "2019-02-08"
 {:tip: .tip}
 {:pre: .pre}
 
-# {{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}} Private installieren
+# {{site.data.keyword.blockchainfull_notm}} Platform in {{site.data.keyword.cloud_notm}} Private installieren
 {: #helm-install}
 
 {{site.data.keyword.blockchainfull}} Platform for {{site.data.keyword.cloud_notm}} Private wird als Helm-Diagrammdatei geliefert, die in einem lokalen {{site.data.keyword.cloud_notm}} Private-Cluster installiert werden kann. Nachdem Sie das Helm-Diagramm installiert haben, finden Sie {{site.data.keyword.blockchainfull_notm}} Platform als Anwendung im {{site.data.keyword.cloud_notm}} Private-Katalog.
@@ -50,7 +52,7 @@ Weitere Informationen zur Verwendung dieser Images finden Sie unter  [Ausgewähl
 
 ## Helm-Diagramm in {{site.data.keyword.cloud_notm}} Private importieren
 
-1. Laden Sie die Helm-Diagrammdatei für IBM Blockchain Platform for {{site.data.keyword.cloud_notm}} Private bei [Passport Advantage Online ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://www.ibm.com/software/passportadvantage/pao_customer.html "Passport Advantage Online") oder für die kostenlose Community Edition bei [GitHub ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://github.com/IBM/charts/blob/master/repo/stable/ibm-blockchain-platform-dev-1.0.0.tgz "IBM/charts") herunter. Dieses Helm-Diagrammpaket enthält drei untergeordnete Helm-Diagramme für die Zertifizierungsstelle, den Anordnungsknoten und den Peer.
+1. Laden Sie die Helm-Diagrammdatei für IBM Blockchain Platform for {{site.data.keyword.cloud_notm}} Private bei [Passport Advantage Online ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://www.ibm.com/software/passportadvantage/pao_customer.html "Passport Advantage Online") oder für die kostenlose Community Edition bei [GitHub ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://github.com/IBM/charts/blob/master/repo/stable/ibm-blockchain-platform-dev-1.0.0.tgz "IBM/charts") herunter.  Dieses Helm-Diagrammpaket enthält drei untergeordnete Helm-Diagramme für die Zertifizierungsstelle, den Anordnungsknoten und den Peer.
 
 2. Wenn Sie sich noch nicht angemeldet haben, melden Sie sich bei Ihrem {{site.data.keyword.cloud_notm}} Private-Cluster an.
 
@@ -93,7 +95,7 @@ Weitere Informationen zur Verwendung dieser Images finden Sie unter  [Ausgewähl
 
     Wenn dieser Befehl erfolgreich ausgeführt wird, werden Informationen ähnlich den Folgenden angezeigt:
 
-    <details><summary>Helm install output</summary>
+    <details aria-label="Details"><summary>Helm install output</summary>
     ```
     Expanding archive
     OK

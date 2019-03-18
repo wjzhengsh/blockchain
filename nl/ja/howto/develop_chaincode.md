@@ -2,19 +2,23 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2018-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
+
 ---
 
 {:new_window: target="_blank"}
 {:shortdesc: .shortdesc}
 {:codeblock: .codeblock}
 {:screen: .screen}
+{:note: .note}
+{:important: .important}
+{:tip: .tip}
 {:pre: .pre}
 
 # スマート・コントラクトの作成
 {: #develop-smart-contracts}
-
-***[このページは参考になりましたか。 ご意見をお聞かせください。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 チェーンコードはスマート・コントラクトとも呼ばれ、ブロックチェーン台帳のデータの読み取りおよび更新を可能にするソフトウェアです。 チェーンコードは、ブロックチェーン・ネットワークのすべてのメンバーによって合意および検証された実行可能プログラムにビジネス・ロジックを変換できます。 ビジネス・ロジックには、団体間で取引される資産の定義が含まれます。 また、トランザクションの実行に必要な使用条件も含まれています。 これらのルールをブロックチェーン上のコードに変換することにより、企業はビジネス・プロセスと監査を合理化して、手動処理と書類作業を大幅に削減できます。
 
@@ -35,7 +39,10 @@ lastupdated: "2018-02-08"
 
 チェーンコードは複数の言語で作成でき、{{site.data.keyword.blockchainfull_notm}} Platform は Go および Node.js で作成されたチェーンコードをサポートしています。 チェーンコードにより、ユーザーは、Fabric チェーンコード・インターフェースが提供する API を使用して、ブロックチェーンに保管されているデータを照会および変更できます。 ブロックチェーン上のデータは、チャネル[台帳 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/ledger/ledger.html "台帳") のワールド・ステートにキーと値のペアとして格納されます。 チェーンコードでは、get コマンドを使用して値を取得し、put コマンドを使用して値を作成または更新します。 これらの基本操作を使用して、ネットワークのビジネス・ルールを定義する関数を作成できます。 これらの関数は、アプリケーションから呼び出すことができ、ネットワークのエンド・ユーザーに表示されます。 引き続き車両ネットワークの例を使用すると、自動車ディーラーが有効な車両 ID 番号を提供した場合にのみ、put コマンドを使用して新しい車両を台帳に追加できるようにする関数を作成できます。
 
-Hyperledger Fabric コミュニティー資料の[開発者向けチェーンコードのチュートリアル ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/latest/chaincode4ade.html "開発者向けチェーンコードのチュートリアル") では、チェーンコードの作成方法を学習できます。 このチュートリアルでは、資産の作成と読み取りを行う単純なチェーンコードの作成を順を追って説明し、このプロセスで使用されている API を紹介しています。 すべてのチェーンコード言語のチェーンコード API リファレンス・ガイドも参照できます。 [Fabric サンプル・リポジトリー ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://github.com/hyperledger/fabric-samples "Fabric サンプル") の chaincode フォルダーに、さらにサンプルが用意されています。
+Hyperledger Fabric コミュニティー資料の[開発者向けチェーンコードのチュートリアル ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/latest/chaincode4ade.html "開発者向けチェーンコードのチュートリアル") では、チェーンコードの作成方法を学習できます。 このチュートリアルでは、資産の作成と読み取りを行う単純なチェーンコードの作成を順を追って説明し、このプロセスで使用されている API を紹介しています。 すべてのチェーンコード言語のチェーンコード API リファレンス・ガイドも参照できます。 [Fabric サンプル・リポジトリー ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://github.com/hyperledger/fabric-samples "Fabric サンプル") の chaincode フォルダーに、さらにサンプルが用意されています。  
+
+スマート・コントラクトでは通常、要求を検証したり、ビジネス・ルールを適用したり、決定論的な結果を戻したりすることができます。しかし、追加の事実情報が必要な状況や、クライアントから提供される情報が真実であることをビジネス・ネットワークで確認したい状況もあります。スマート・コントラクトからサード・パーティー・システムへの外部呼び出しが Hyperledger Fabric により妨げられることはありません。しかし、その結果の R/W 設定が決定論的であるようにすることは、スマート・コントラクトの開発者の責任です。
+{:note}
 
 ## チェーンコードのインストール
 {: #develop-smart-contracts-install}
@@ -132,6 +139,6 @@ Write Set: `{Key='CAR1', value[3]='Joe'}`
 ## CouchDB での索引の使用
 {: #develop-smart-contracts-indexes}
 
-状態データベースに CouchDB を使用している場合、チェーンコードからチャネルの状態データに対する JSON データ照会を実行できます。JSON 照会用に索引を作成してチェーンコードで使用することを強くお勧めします。索引を使用すると、ネットワークがトランザクションおよびエントリーの追加ブロックをワールド・ステートに追加するため、アプリケーションで効率的にデータを取り出すことができます。
+状態データベースに CouchDB を使用している場合、チェーンコードからチャネルの状態データに対する JSON データ照会を実行できます。 JSON 照会用に索引を作成してチェーンコードで使用することを強くお勧めします。 索引を使用すると、ネットワークがトランザクションおよびエントリーの追加ブロックをワールド・ステートに追加するため、アプリケーションで効率的にデータを取り出すことができます。
 
 CouchDB について、および索引をセットアップする方法について詳しくは、Hyperledger Fabric の資料で [CouchDB as the State Database ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/couchdb_as_state_database.html "CouchDB as the State Database"){:new_window} を参照してください。 [Fabric CouchDB チュートリアル ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/couchdb_tutorial.html) にも、索引をチェーンコードで使用する例があります。 アプリケーションからデータを照会する方法について詳しくは、アプリケーションの開発チュートリアルの [CouchDB を使用する場合のベスト・プラクティス](/docs/services/blockchain/v10_application.html#dev-app-couchdb-indices)を参照してください。

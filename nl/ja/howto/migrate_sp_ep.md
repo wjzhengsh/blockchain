@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018,2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -14,10 +16,6 @@ lastupdated: "2019-02-08"
 
 # スターター・プランからエンタープライズ・プランへのマイグレーション
 {: #migrate_starter_to_enterprise}
-
-
-***[このページは参考になりましたか。 ご意見をお聞かせください。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 
 {{site.data.keyword.blockchainfull}} Platform の[スターター・プラン](/docs/services/blockchain/starter_plan.html#starter-plan-about)は、PoC やデモを実行したり、チェーンコードやアプリケーションを試用したりするためのテスト/開発環境を提供します。 実稼働環境に移行する準備ができたら、スターター・プラン・ネットワークから[エンタープライズ・プラン](/docs/services/blockchain/enterprise_plan.html#enterprise-plan-about)・ネットワークにマイグレーションすることができます。
 {:shortdesc}
@@ -79,7 +77,6 @@ lastupdated: "2019-02-08"
 {: #migrate_starter_to_enterprise_cc}
 
 チェーンコードは、外部のローカル環境で開発するものであり、クライアント・アプリケーションによって呼び出されます。 スターター・プラン・ネットワークでテストしたチェーンコードを、エンタープライズ・プラン・ネットワークの特定のピアにインストールしてインスタンス化するには、[チェーンコードのインストール、インスタンス化、および更新](/docs/services/blockchain/howto/install_instantiate_chaincode.html#install-instantiate-chaincode-install-cc) の説明に従ってください。
-
 
 ### クライアント・アプリケーションの更新
 {: #migrate_starter_to_enterprise_app}

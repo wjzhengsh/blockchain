@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -17,9 +19,6 @@ lastupdated: "2019-02-08"
 
 # {{site.data.keyword.cloud_notm}} Private에 피어 배치 및 스타터 플랜 또는 엔터프라이즈 플랜에 연결
 {: #ibp-peer-deploy}
-
-
-***[이 페이지가 도움이 되었습니까? 알려주십시오.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 다음 지시사항은 {{site.data.keyword.blockchainfull}} Platform 피어를 {{site.data.keyword.cloud_notm}} Private에 배치하고
 피어를 {{site.data.keyword.cloud_notm}} 또는 로컬 {{site.data.keyword.cloud_notm}} Private의 스타터 플랜 또는 엔터프라이즈 플랜에 연결하는 방법에 대해 설명합니다.
@@ -36,7 +35,7 @@ lastupdated: "2019-02-08"
 
 | 컴포넌트 | vCPU | RAM | 데이터 스토리지용 디스크 |
 |-----------|------|-----|-----------------------|
-|피어 |2 |2GB | 50GB(확장 기능 포함) |
+| 피어 |2 |2GB | 50GB(확장 기능 포함) |
 | 피어를 위한 CouchDB |2|2GB | 50GB(확장 기능 포함) |
 
  **참고:**
@@ -62,7 +61,7 @@ amd64 또는 s390x 플랫폼에 피어를 배치하도록 선택할 수 있습�
 
 2. Community Edition을 사용하고 인터넷 연결 없이 {{site.data.keyword.cloud_notm}} Private 클러스터에 이 Helm 차트를 실행하려면 아카이브를 {{site.data.keyword.cloud_notm}} Private 클러스터에 설치하기 전에 인터넷에 연결된 시스템에서 아카이브를 작성해야 합니다. 자세한 정보는 [인터넷 연결 없이 클러스터에 주요 애플리케이션 추가 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_package_offline.html "인터넷 연결 없이 클러스터에 주요 애플리케이션 추가"){:new_window}를 참조하십시오. Helm 차트의 ibm-blockchain-platform-dev/ibm_cloud_pak 아래에서 스펙 파일인 manifest.yaml을 찾을 수 있습니다.
 
-3. {{site.data.keyword.cloud_notm}}에서 스타터 플랜 또는 엔터프라이즈 플랜 네트워크의 멤버인 조직이 있어야 합니다. 피어에서는 {{site.data.keyword.blockchainfull_notm}} Platform 네트워크의 순서 지정 서비스, Hyperledger Fabric CA 및 API 엔드포인트를 활용하여 운영합니다. 블록체인 네트워크의 구성원이 아니면 네트워크를 작성하거나 가입해야 합니다. 자세한 정보는 [네트워크 작성](/docs/services/blockchain/get_start.html#getting-started-with-enterprise-plan-create-network) 또는 [네트워크에 가입](/docs/services/blockchain/get_start.html#getting-started-with-enterprise-plan-join-nw)을 참조하십시오.
+3. {{site.data.keyword.cloud_notm}}에서 스타터 플랜 또는 엔터프라이즈 플랜 네트워크의 멤버인 조직이 있어야 합니다. 피어에서는 {{site.data.keyword.blockchainfull_notm}} Platform 네트워크의 순서 지정 서비스, Hyperledger Fabric CA 및 API 엔드포인트를 활용하여 운영합니다. 블록체인 네트워크의 구성원이 아니면 네트워크를 작성하거나 참여해야 합니다. 자세한 정보는 [네트워크 작성](/docs/services/blockchain/get_start.html#getting-started-with-enterprise-plan-create-network) 또는 [네트워크에 가입](/docs/services/blockchain/get_start.html#getting-started-with-enterprise-plan-join-nw)을 참조하십시오.
 
 4. 먼저 {{site.data.keyword.cloud_notm}} Private에 [CA를 배치](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy)해야 합니다. TLS CA로 이 CA를 사용합니다. 피어를 배치하기 전에 {{site.data.keyword.cloud_notm}} Private에서 CA를 운영하기 위한 [전제조건 단계](/docs/services/blockchain/howto/CA_operate.html#ca-operate-prerequisites)를 따라야 합니다. 이 단계 이상으로 진행할 필요가 없습니다.
 
@@ -272,7 +271,7 @@ amd64 또는 s390x 플랫폼에 피어를 배치하도록 선택할 수 있습�
   ```
   {:codeblock}
 
-  `<enroll_id>` 및 `<enroll_password>`는 [네트워크 모니터를 사용하여 등록](#register-admin)된 피어 관리자의 **ID** 및 **시크릿**입니다. `<ca_name>` 및 `<ca_url_with_port>`는 연결 프로파일의 `caName` 및 `url` 값입니다. CA URL의 시작 부분에 `http://`를 포함하지 않아야 합니다.
+  `<enroll_id>` 및 `<enroll_password>`는 [네트워크 모니터를 사용하여 등록](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-register-admin)된 피어 관리자의 **ID** 및 **시크릿**입니다. `<ca_name>` 및 `<ca_url_with_port>`는 연결 프로파일의 `caName` 및 `url` 값입니다. CA URL의 시작 부분에 `http://`를 포함하지 않아야 합니다.
 
   실제 호출은 다음 예제 명령과 비슷하게 보일 수 있습니다.
 
@@ -296,7 +295,7 @@ amd64 또는 s390x 플랫폼에 피어를 배치하도록 선택할 수 있습�
    ```
    LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tDQpNSUlFbERDQ0EzeWdBd0lCQWdJUUFmMmo2MjdLZGNpSVE0dHlTOCs4a1RBTkJna3Foa2lHOXcwQkFRc0ZBREJoDQpNUXN3Q1FZRFZRUUdFd0pWVXpFVk1CTUdBMVVFQ2hNTVJHbG5hVU5sY25RZ1NXNWpNUmt3RndZRFZRUUxFeEIzDQpkM2N1WkdsbmFXTmxjblF1WTI5dE1TQXdIZ1lEVlFRREV4ZEVhV2RwUTJWeWRDQkhiRzlpWVd3Z1VtOXZkQ0JEDQpRVEFlRncweE16QXpNRGd4TWpBd01EQmFGdzB5TXpBek1EZ3hNakF3TURCYU1FMHhDekFKQmdOVkJBWVRBbFZUDQpNUlV3RXdZRFZRUUtFd3hFYVdkcFEyVnlkQ0JKYm1NeEp6QWxCZ05WQkFNVEhrUnBaMmxEWlhKMElGTklRVElnDQpVMlZqZFhKbElGTmxjblpsY2lC
    ```
-   그러나 다음과 같이 표시어서는 안됩니다.
+   다음과 같이 표시되어서는 안됩니다.
 
    ```
    LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tDQpNSUlFbERDQ0EzeWdBd0lCQWdJUUFmMmo2MjdL
@@ -366,7 +365,7 @@ Fabric CA 클라이언트를 사용하여 {{site.data.keyword.cloud_notm}} Priva
   ```
   {:codeblock}
 
-  `<enroll_id>` 및 `<enroll_password>`는 인증 기관을 배치했을 때 Kubernetes 시크릿에 전달한 [CA 관리자 및 비밀번호](/docs/services/blockchain/CA_deploy.html#ca-deploy-admin-secret)입니다. `<ca_url_with_port>` 내부에 [CA URL](/docs/services/blockchain/howto/CA_operate.html#ca-operate-url)을 삽입하십시오. 시작 부분에 `http://`를 포함하지 않아야 합니다. `<tls_ca_name>`은 [CA 구성](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-configuration-parms) 중에 지정된 값입니다.
+  명령에서 `<enroll_id>` 및 `<enroll_password>`는 인증 기관을 배치했을 때 Kubernetes 시크릿에 전달한 [CA 관리자 및 비밀번호](/docs/services/blockchain/CA_deploy.html#ca-deploy-admin-secret)입니다. `<ca_url_with_port>` 내부에 [CA URL](/docs/services/blockchain/howto/CA_operate.html#ca-operate-url)을 삽입하십시오. 시작 부분에 `http://`를 포함하지 않아야 합니다. `<tls_ca_name>`은 [CA 구성](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-configuration-parms) 중에 지정된 값입니다.
 
   `<ca_tls_cert_file>`은 전체 경로가 포함된 [CA TLS 인증서](/docs/services/blockchain/howto/CA_operate.html#ca-operate-tls) 파일입니다.
 
@@ -575,7 +574,7 @@ TLS CA를 배치한 동일한 {{site.data.keyword.cloud_notm}} Private 클러스
    ```
    LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tDQpNSUlFbERDQ0EzeWdBd0lCQWdJUUFmMmo2MjdLZGNpSVE0dHlTOCs4a1RBTkJna3Foa2lHOXcwQkFRc0ZBREJoDQpNUXN3Q1FZRFZRUUdFd0pWVXpFVk1CTUdBMVVFQ2hNTVJHbG5hVU5sY25RZ1NXNWpNUmt3RndZRFZRUUxFeEIzDQpkM2N1WkdsbmFXTmxjblF1WTI5dE1TQXdIZ1lEVlFRREV4ZEVhV2RwUTJWeWRDQkhiRzlpWVd3Z1VtOXZkQ0JEDQpRVEFlRncweE16QXpNRGd4TWpBd01EQmFGdzB5TXpBek1EZ3hNakF3TURCYU1FMHhDekFKQmdOVkJBWVRBbFZUDQpNUlV3RXdZRFZRUUtFd3hFYVdkcFEyVnlkQ0JKYm1NeEp6QWxCZ05WQkFNVEhrUnBaMmxEWlhKMElGTklRVElnDQpVMlZqZFhKbElGTmxjblpsY2lC
    ```
-   그러나 다음과 같이 표시되어서는 안됩니다.
+ 다음과 같이 표시되어서는 안됩니다.
 
    ```
    LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tDQpNSUlFbERDQ0EzeWdBd0lCQWdJUUFmMmo2MjdL
@@ -652,8 +651,8 @@ TLS CA를 배치한 동일한 {{site.data.keyword.cloud_notm}} Private 클러스
 | `Peer image repository`| 피어 Helm 차트의 위치입니다. 이 필드는 설치된 경로로 자동으로 채워집니다. 커뮤니티 에디션을 사용 중이고 인터넷 액세스 권한이 없는 경우 Fabric 피어 이미지를 다운로드한 디렉토리와 일치해야 합니다. | ibmcom/ibp-fabric-peer | 예 |
 | `Peer Docker image tag`| 피어 이미지와 연관된 태그의 값입니다. |1.2.1. 값을 정정하도록 자동으로 채워집니다.| 예|
 | `Peer configuration`| 이 필드에서 고유한 `core.yaml` 구성 파일을 붙여넣어 피어의 구성을 사용자 정의할 수 있습니다. `core.yaml` 파일을 보려면 [`core.yaml` 샘플 구성 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://github.com/hyperledger/fabric/blob/release-1.2/sampleconfig/core.yaml "hyperledger/fabric/core.yaml")을 참조하십시오(**고급 사용자 전용**). |없음| 아니오|
-| `Peer configuration secret(필수)`| {{site.data.keyword.cloud_notm}} Private에 작성한 [피어 구성 시크릿](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-config-file-ibp)의 이름입니다. |없음| 예|
-|`Organization MSP(필수)`| 이 값은 개요 화면의 "원격 피어 구성"을 클릭하여 네트워크 모니터(스타터 플랜 및 엔터프라이즈 플랜 UI)에서 찾을 수 있습니다. |없음| 예|
+| `Peer configuration secret(필수)`| {{site.data.keyword.cloud_notm}} Private에 작성한 [피어 구성 시크릿](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-config-file-ibp)의 이름입니다.  |없음| 예|
+|`Organization MSP(필수)`| 이 값은 개요 화면의 "원격 피어 구성"을 클릭하여 네트워크 모니터(스타터 플랜 및 엔터프라이즈 플랜 UI)에서 찾을 수 있습니다.  |없음| 예|
 |`Peer service type`| 피어에서 [외부 포트 노출![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types "서비스 공개 - 서비스 유형") 여부를 지정하는 데 사용됩니다. 포트를 외부적으로 노출하려면(권장됨) NodePort를 선택하고 포트를 노출하지 않으려면 ClusterIP를 선택하십시오. 이 릴리스에서 LoadBalancer 및 ExternalName은 지원되지 않습니다. | NodePort | 예|
 | `State database`|채널 원장을 저장하는 데 사용한 [상태 데이터베이스](/docs/services/blockchain/glossary.html#glossary-state-database)입니다. 피어에서는 [블록체인 네트워크](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-network-preferences)와 동일한 데이터베이스를 사용해야 합니다. |LevelDB | 예 |
 |`CouchDB image repository`| CouchDB가 원장 데이터베이스로 선택된 경우에만 적용됩니다. 이 필드는 설치된 경로로 자동으로 채워집니다. 커뮤니티 에디션을 사용 중이고 인터넷 액세스 권한이 없는 경우 Fabric CouchDB 이미지를 다운로드한 디렉토리와 일치해야 합니다.| ibmcom/ibp-fabric-couchdb | 예 |
@@ -753,7 +752,7 @@ helm install --name jnchart2 mycluster/ibm-blockchain-platform \
 ### **문제점:** `enroll` 명령을 실행할 때 CA URL에 오류가 발생합니다.
 {: #ibp-peer-deploy-ca-enroll-error}
 
-등록 url, `-u` 매개변수값에 특수 문자가 포함된 경우, Fabric CA 클라이언트 등록 명령이 실패할 수 있습니다. 예를 들어, 등록 ID 및 비밀번호가 `admin:C25A06287!0`인 다음 명령의 경우, 
+등록 url, `-u` 매개변수값에 특수 문자가 포함된 경우, Fabric CA 클라이언트 등록 명령이 실패할 수 있습니다. 예를 들어, 등록 ID 및 비밀번호가 `admin:C25A06287!0`인 다음 명령의 경우,
 
 ```
 ./fabric-ca-client enroll -u https://admin:C25A06287!0@ash-zbc07c.4.secure.blockchain.ibm.com:21241 --tls.certfiles $HOME/fabric-ca-remote/cert.pem --caname PeerOrg1CA

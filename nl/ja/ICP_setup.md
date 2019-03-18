@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -17,8 +19,6 @@ lastupdated: "2019-02-08"
 
 # {{site.data.keyword.cloud_notm}} Private のセットアップ
 {: #icp-setup}
-
-***[このページは参考になりましたか。 ご意見をお聞かせください。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 {{site.data.keyword.blockchainfull}} Platform コンポーネントをデプロイし、{{site.data.keyword.cloud_notm}} Private にブロックチェーン・ネットワークを構築する前に、ご使用の環境で {{site.data.keyword.cloud_notm}} Private をセットアップする必要があります。
 {:shortdesc}

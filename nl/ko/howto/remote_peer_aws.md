@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -17,10 +19,6 @@ lastupdated: "2019-02-08"
 
 # {{site.data.keyword.blockchainfull_notm}} Platform for AWS 시작하기
 {: #remote-peer-aws}
-
-
-***[이 페이지가 도움이 되었습니까? 알려주십시오.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 
 다음 지시사항은 AWS(Amazon Web Services) 빠른 시작 템플리트를 사용하여 {{site.data.keyword.blockchainfull}}  Platform for AWS 피어를 작성한 후 {{site.data.keyword.blockchainfull_notm}} Platform의 네트워크에 연결하는 방법에 대해 설명합니다.
 {:shortdesc}
@@ -41,7 +39,7 @@ AWS에 대한 자세한 정보는 [AWS 개요 문서 ![외부 링크 아이콘](
 ## 전제조건
 {: #remote-peer-aws-prerequisites}
 
-{{site.data.keyword.blockchainfull_notm}} Platform for AWS 피어(원격 피어)를 사용하려면 IBM Blockchain Platform에서 호스팅되는 블록체인 네트워크의 구성원인 조직이 있어야 합니다. 네트워크 인증 정보 및 네트워크의 API 엔드포인트에 액세스하려면 IBM Cloud에서 네트워크 모니터를 사용해야 합니다. 블록체인 네트워크의 구성원이 아니면 네트워크를 작성하거나 가입해야 합니다. 자세한 정보는 [네트워크 작성](/docs/services/blockchain/get_start.html#getting-started-with-enterprise-plan-create-network) 또는 [네트워크에 가입](/docs/services/blockchain/get_start.html#getting-started-with-enterprise-plan-join-nw)을 참조하십시오.
+{{site.data.keyword.blockchainfull_notm}} Platform for AWS 피어(원격 피어)를 사용하려면 IBM Blockchain Platform에서 호스팅되는 블록체인 네트워크의 구성원인 조직이 있어야 합니다. 네트워크 인증 정보 및 네트워크의 API 엔드포인트에 액세스하려면 IBM Cloud에서 네트워크 모니터를 사용해야 합니다. 블록체인 네트워크의 구성원이 아니면 네트워크를 작성하거나 참여해야 합니다. 자세한 정보는 [네트워크 작성](/docs/services/blockchain/get_start.html#getting-started-with-enterprise-plan-create-network) 또는 [네트워크에 가입](/docs/services/blockchain/get_start.html#getting-started-with-enterprise-plan-join-nw)을 참조하십시오.
 
 피어에 대한 기본 VPC 인스턴스 유형은 `m4.xlarge`입니다.  CPU, 메모리 및 스토리지 요구사항에 따라 선택한 인스턴스 유형을 최적화해야 합니다. 피어를 사용하려면 최소 다음과 같은 항목이 필요합니다.  
 -	2x CPU
@@ -106,7 +104,7 @@ echo -e "<CERT>" > admin.pem
 ## 3단계: {{site.data.keyword.blockchainfull_notm}} Platform for AWS 피어 등록
 {: #remote-peer-aws-register-peer}
 
-{{site.data.keyword.blockchainfull_notm}} Platform for AWS 피어를 네트워크에 가입시키려면 먼저 {{site.data.keyword.blockchainfull_notm}} Platform의 네트워크에 새 피어 ID를 추가해야 합니다. 피어를 등록하려면 다음 단계를 완료하십시오.
+{{site.data.keyword.blockchainfull_notm}} Platform for AWS 피어를 네트워크에 참여시키려면 먼저 {{site.data.keyword.blockchainfull_notm}} Platform의 네트워크에 새 피어 ID를 추가해야 합니다. 피어를 등록하려면 다음 단계를 완료하십시오.
 
 **참고:** 고가용성의 경우 빠른 시작 템플리트에서 두 개의 가용성 구역에 두 개의 피어 노드를 작성합니다. 따라서 두 개의 등록 ID 및 시크릿이 필요합니다. **이 프로세스를 두 번 반복하여 두 개의 등록 ID 및 시크릿을 생성하십시오.**
 

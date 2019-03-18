@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -14,8 +16,6 @@ lastupdated: "2019-02-08"
 
 # {{site.data.keyword.cloud_notm}} Private에 순서 지정자 배치
 {: #icp-orderer-deploy}
-
-***[이 페이지가 도움이 되었습니까? 알려주십시오.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 순서 지정자는 블록체인 네트워크의 클라이언트, 순서 지정 트랜잭션 및 브로드캐스트 트랜잭션을 순서 지정자 컴포넌트로 인증합니다. 순서 지정자와 블록체인 네트워크에서 수행하는 역할에 대한 자세한 정보는 [blockchain 컴포넌트 개요](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview)를 참조하십시오.
 {:shortdesc}
@@ -29,7 +29,7 @@ lastupdated: "2019-02-08"
 
 | 컴포넌트 | vCPU | RAM |데이터 스토리지용 디스크 |
 |-----------|------|-----|-----------------------|
-| 순서 지정자 |2 |512MB |100GB(확장 기능 포함) |
+| Orderer |2 |512MB |100GB(확장 기능 포함) |
 
 
  **참고:**
@@ -55,14 +55,14 @@ amd64 또는 s390x 플랫폼에 순서 지정자를 배치하도록 선택할 �
 
 2. Community Edition을 사용하고 인터넷 연결 없이 {{site.data.keyword.cloud_notm}} Private 클러스터에 이 Helm 차트를 실행하려면 아카이브를 {{site.data.keyword.cloud_notm}} Private 클러스터에 설치하기 전에 인터넷에 연결된 시스템에서 아카이브를 작성해야 합니다. 자세한 정보는 [인터넷 연결 없이 클러스터에 주요 애플리케이션 추가 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_package_offline.html "인터넷 연결 없이 클러스터에 주요 애플리케이션 추가"){:new_window}를 참조하십시오. Helm 차트의 ibm-blockchain-platform-dev/ibm_cloud_pak 아래에 스펙 파일 `manifest.yaml`이 있습니다.
 
-3. {{site.data.keyword.cloud_notm}} Private 콘솔에서 CA의 클러스터 프록시 IP 주소 값을 검색하십시오. **참고:** 프록시 IP에 액세스하려면 [클러스터 관리자 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "클러스터 관리자 역할 및 조치")여야 합니다. {{site.data.keyword.cloud_notm}} Private 클러스터에 로그인하십시오. 왼쪽 탐색 패널에서 **플랫폼**, **노드**를 차례로 클릭하여 클러스터에 정의되어 있는 노드를 표시하십시오. 역할이 `proxy`인 노드를 클릭한 후 테이블에서 `Host IP`의 값을 복사하십시오. **중요:** 이 값을 저장하여 Helm 차트의 `Proxy IP` 필드를 구성할 때 사용합니다.
+3. {{site.data.keyword.cloud_notm}} Private 콘솔에서 CA의 클러스터 프록시 IP 주소 값을 검색하십시오. **참고:** 프록시 IP에 액세스하려면 [클러스터 관리자 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "클러스터 관리자 역할 및 조치")여야 합니다. {{site.data.keyword.cloud_notm}} Private 클러스터에 로그인하십시오. 왼쪽 탐색 패널에서 **플랫폼**, **노드**를 차례로 클릭하여 클러스터에 정의되어 있는 노드를 표시하십시오. 역할이 `proxy`인 노드를 클릭한 후 테이블에서 `Host IP`의 값을 복사하십시오. **중요:** 이 값을 저장하십시오. 이 값은 Helm 차트의 `Proxy IP` 필드를 구성할 때 사용하게 됩니다.
 
 4. [순서 지정자 구성 파일을 작성하여 {{site.data.keyword.cloud_notm}} Private에 Kubernetes 시크릿으로 저장](/docs/services/blockchain/howto/orderer_deploy_icp.html#icp-orderer-deploy-config-file)하십시오.
 
 ## 순서 지정자 구성 파일 작성
 {: #icp-orderer-deploy-config-file}
 
-순서 지정자를 배치하기 전에 순서 지정자 ID와 CA에 대한 중요한 정보를 포함하는 구성 파일을 작성해야 합니다. 그런 다음 [Kubernetes 시크릿 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://kubernetes.io/docs/concepts/configuration/secret/) 오브젝트를 사용하여 구성 중에 이 파일을 Helm 차트에 전달해야 합니다. 이 파일을 사용하면 순서 지정자가 블록체인 네트워크에 가입하기 위해 CA로부터 필요한 인증서를 획득할 수 있습니다. 관리자로서 순서 지정자를 운영할 수 있는 관리자 인증서도 포함되어 있습니다. 순서 지정자를 구성하기 전에 [CA를 사용하여 순서 지정자 또는 피어 배치](/docs/services/blockchain/howto/CA_operate.html#ca-operate-deploy-orderer-peer)에 대한 지시사항를 따르십시오.
+순서 지정자를 배치하기 전에 순서 지정자 ID와 CA에 대한 중요한 정보를 포함하는 구성 파일을 작성해야 합니다. 그런 다음 [Kubernetes 시크릿 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://kubernetes.io/docs/concepts/configuration/secret/) 오브젝트를 사용하여 구성 중에 이 파일을 Helm 차트에 전달해야 합니다. 이 파일을 사용하면 순서 지정자가 블록체인 네트워크에 참여하기 위해 CA로부터 필요한 인증서를 획득할 수 있습니다. 관리자로서 순서 지정자를 운영할 수 있는 관리자 인증서도 포함되어 있습니다. 순서 지정자를 구성하기 전에 [CA를 사용하여 순서 지정자 또는 피어 배치](/docs/services/blockchain/howto/CA_operate.html#ca-operate-deploy-orderer-peer)에 대한 지시사항를 따르십시오.
 
 CSR 호스트 이름을 구성 파일에 제공해야 합니다. 배치 중에 지정한 `helm release name`을 기준으로 할 `service host name`이 포함됩니다. `service host name`은 끝에 추가된 문자열 `-orderer`로 지정하는 `helm_release_name`입니다. 예를 들어, `orderer1`의 `helm release name`을 지정하려면 다음 값을 파일의 `"csr"` 섹션에 삽입할 수 있습니다.
 
@@ -154,7 +154,7 @@ NFS 파일 시스템이 제공되는 시스템에서 수행해야 합니다.
 | --------------|-----------------|-------|------- |
 | `Helm release name`| Helm 릴리스의 이름입니다. 소문자로 시작하고 영숫자 문자로 끝나야 하며 하이픈과 소문자의 영숫자 문자만 포함해야 합니다. 컴포넌트를 설치하려고 할 때마다 고유한 Helm 릴리스 이름을 사용해야 합니다. **중요:** 이 값은 [JSON 시크릿 파일](/docs/services/blockchain/howto/orderer_deploy_icp.html#icp-orderer-deploy-config-file)의 "호스트" 필드에 대한 '서비스 호스트 이름'을 생성하는 데 사용한 값과 일치해야 합니다. | 없음 | 예  |
 | `Target namespace`| Helm 차트를 설치할 Kubernetes 네임스페이스를 선택합니다. | 없음 | 예 |
-|**글로벌 구성**| Helm 차트의 모든 컴포넌트에 적용하는 매개변수입니다. |||
+|**글로벌 구성**| Helm 차트의 모든 컴포넌트에 적용하는 매개변수입니다.|||
 | `Service account name`| 팟(Pod)을 실행하는 데 사용할 [서비스 계정 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/)의 이름을 입력합니다. | 기본값 | 아니오 |
 
 #### 순서 지정자 구성 매개변수
@@ -190,7 +190,7 @@ NFS 파일 시스템이 제공되는 시스템에서 수행해야 합니다.
 
 또는 Helm CLI를 사용하여 Helm 릴리스를 설치할 수 있습니다. `helm install` 명령을 실행하기 전에 [Helm CLI 환경에 클러스터의 Helm 저장소를 추가![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_int_helm_repo_to_cli.html "Helm CLI에 내부 Helm 저장소 추가")했는지 확인하십시오.
 
-`yaml` 파일을 작성하고 이 파일을 다음 `helm install` 명령에 전달하여 설치에 필요한 매개변수를 설정할 수 있습니다.
+`yaml` 파일을 작성하고 이 파일을 `helm install` 명령에 전달하여 설치에 필요한 매개변수를 설정할 수 있습니다.
 
 ```
 helm install --name <helm_release_name>  <helm_chart> \

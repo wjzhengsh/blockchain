@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018,2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -14,10 +16,6 @@ lastupdated: "2019-02-08"
 
 # Migración de Plan inicial al Plan empresarial
 {: #migrate_starter_to_enterprise}
-
-
-***[¿Le resulta útil esta página? Indíquenos su opinión.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 
 El [Plan inicial](/docs/services/blockchain/starter_plan.html#starter-plan-about) de {{site.data.keyword.blockchainfull}} Platform le ofrece un entorno de prueba y desarrollo para ejecutar sus PoC y demos y para probar su código de encadenamiento y sus aplicaciones. Cuando esté listo para moverse a un entorno de producción, puede migrar de una red del plan inicial a una red del [Plan empresarial](/docs/services/blockchain/enterprise_plan.html#enterprise-plan-about).
 {:shortdesc}
@@ -31,7 +29,7 @@ Las redes del Plan empresarial ofrecen las siguientes características preparada
   - Secure Service Container (SSC) garantiza que la imagen de blockchain no se puede alterar y cargar en un momento determinado y que el código de dispositivo y los datos confidenciales, tanto activos como inactivos, están protegidos.
   - [Módulo seguro de hardware (HSM)](/docs/services/blockchain/glossary.html#glossary-hsm) para la gestión de claves y el almacenamiento de claves.
   - Cifrado de disco de uso generalizado.
-- Alta disponibilidad, recuperación en caso de error, tolerancia a errores de bloqueo y actualizaciones constantes.
+- Alta disponibilidad, recuperación tras desastre, tolerancia a errores de bloqueo y actualizaciones constantes.
 - Soporte avanzado opcional.
 
 ## Consideraciones

@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018,2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -15,10 +17,6 @@ lastupdated: "2019-02-08"
 # Modalidad de pago
 {: #paying-mode}
 
-
-***[¿Le resulta útil esta página? Indíquenos su opinión.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
-
 {{site.data.keyword.blockchainfull}} Platform factura mensualmente cuotas de suscripción y cuotas por igual. Los miembros de la red pueden abonar su factura con sus cuentas de {{site.data.keyword.cloud_notm}} que contienen el espacio para crear la instancia de la red. Si lo desea, un miembro de la red puede hacerse cargo de la factura de todos los miembros de la red o incluso pagar la red completa. El pagador también puede transferir las facturas a otros miembros si es necesario.
 {:shortdesc}
 
@@ -30,7 +28,7 @@ Cuando varias organizaciones creen un consorcio, se recomienda que las organizac
 ## Requisitos previos
 {: #paying-mode-prereq}
 
-Cada miembro de red debe tener una cuenta de pago de {{site.data.keyword.cloud_notm}}, por ejemplo, una cuenta de **Pago según uso**, para poder crear instancias de servicio de {{site.data.keyword.blockchainfull_notm}} Platform en {{site.data.keyword.cloud_notm}}. Si no tiene una cuenta, [registre](https://console.bluemix.net/registration/) una y actualícela a una cuenta de pago. Para actualizar su cuenta a un tipo Pago según uso, vaya a **Gestionar** > **Facturación y uso** > **Facturación** en la consola de {{site.data.keyword.cloud_notm}}, y pulse **Añadir tarjeta de crédito**.
+Cada miembro de red debe tener una cuenta de pago de {{site.data.keyword.cloud_notm}}, por ejemplo, una cuenta de **Pago según uso**, para poder crear instancias de servicio de {{site.data.keyword.blockchainfull_notm}} Platform en {{site.data.keyword.cloud_notm}}. Si no tiene una cuenta, [registre](https://cloud.ibm.com/registration/) una y actualícela a una cuenta de pago. Para actualizar su cuenta a un tipo Pago según uso, vaya a **Gestionar** > **Facturación y uso** > **Facturación** en la consola de {{site.data.keyword.cloud_notm}}, y pulse **Añadir tarjeta de crédito**.
 
 
 ## Pago de sus propias cuotas
@@ -62,7 +60,7 @@ Un miembro de la red se puede hacer cargo de las cuotas de uno o varios miembros
          - **Roles del espacio**: desarrollador.
       3. Pulse **Invitar a usuarios**.  
    **Nota**: si el pagador se hace cargo de la cuota de más de un miembro, el pagador debe repetir este paso para invitar a otros miembros y asignar acceso a cada uno de ellos.
-3. El pagador crea una {{site.data.keyword.blockchainfull_notm}} Platform de la cadena de blockchain e invita a otros miembros a la red de blockchain en el supervisor de red de la red. Para obtener más información sobre cómo invitar a miembros de la red, consulte [Miembros](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-members).
+3. El pagador crea una {{site.data.keyword.blockchainfull_notm}} Platform de red de cadena de blockchain e invita a otros miembros a la red de blockchain en el supervisor de red de la red. Para obtener más información sobre cómo invitar a miembros de la red, consulte [Miembros](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-members).
 4. Luego cada miembro recibe una notificación por correo electrónico que contiene una invitación a unirse a la red. El miembro puede seguir los pasos siguientes para unirse a la red.
    1. Pulse el botón "Continuar" en la notificación por correo electrónico, lo que le llevará a la página del servicio blockchain de {{site.data.keyword.cloud_notm}}.
    2. Inicie una sesión en {{site.data.keyword.cloud_notm}} y asegúrese de utilizar la organización y el espacio de {{site.data.keyword.cloud_notm}} correctos, que ha añadido el pagador.

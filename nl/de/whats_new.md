@@ -2,7 +2,10 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
+
 ---
 
 {:new_window: target="_blank"}
@@ -16,8 +19,6 @@ lastupdated: "2019-02-08"
 
 # Neuerungen
 {: #whats-new}
-
-***[Ist diese Seite hilfreich? Teilen Sie uns Ihre Meinung mit.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 ## 8. Februar 2019
 {: #whats-new-2-08-2019}
@@ -42,12 +43,12 @@ lastupdated: "2019-02-08"
 *	Einfache Verbindung eines einzelnen Peers mit mehreren Branchennetzen
 *	Klein anfangen und je nach Wachstum für das bezahlen, was Sie verwenden, keine Vorlaufinvestitionen und einfache Upgrades durch Kubernetes
 
-- Weitere Informationen zur kostenlosen Betaversion {{site.data.keyword.blockchainfull_notm}} Platform 2.0 ist in [Informationen zur kosten Betaversion {{site.data.keyword.blockchainfull_notm}} Platform 2.0](/docs/services/blockchain/howto/ibp-console.html#ibp-console-overview) verfügbar.
-- Anweisungen zum Bereitstellen des kostenlosen Beta-Releases 2.0 in einem {{site.data.keyword.IBM_notm}} Kubernetes Service-Cluster finden Sie unter [Einführung in die kostenlose Betaversion {{site.data.keyword.blockchainfull_notm}} Platform 2.0](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks).
+- Weitere Informationen zur kostenlosen Betaversion {{site.data.keyword.blockchainfull_notm}} Platform 2.0 sind in [Informationen zu {{site.data.keyword.blockchainfull_notm}} Platform 2.0](/docs/services/blockchain/howto/ibp-console.html#ibp-console-overview) verfügbar.
+- Anweisungen zum Bereitstellen der kostenlosen Betaversion 2.0 in einem {{site.data.keyword.IBM_notm}} Kubernetes-Servicecluster sind in [Einführung in {{site.data.keyword.blockchainfull_notm}} Platform 2.0](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks) verfügbar.
 - Neue Lernprogramme für die Verwendung der kostenlosen Betaversion {{site.data.keyword.blockchainfull_notm}} Platform 2.0 sind im Unterabschnitt zu **{{site.data.keyword.blockchainfull_notm}} Platform 2.0** unter der Kategorie **VORGEHENSWEISE** verfügbar.
   * Das [Lernprogramm zum Erstellen eines Netzes](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network) führt Sie durch das Hosten eines Netzes, indem ein Anordnungsknoten und Peer erstellt werden.
   * Das [Lernprogramm zum Teilnehmen an einem Netz](/docs/services/blockchain/howto/ibp-console-join-network.html#ibp-console-join-network) erläutert, wie Sie einem vorhandenen Netz beitreten, indem Sie einen Peer erstellen und mit einem Kanal verbinden.
-  * Das [Lernprogramm zum Bereitstellen eines Smart Contracts](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts) enthält Informationen darüber, wie ein Smart Contract geschrieben und für Ihr Netz bereitgestellt wird.
+  * Im [Lernprogramm zum Bereitstellen eines Smart Contract im Netz](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts) erfahren Sie, wie Sie einen Smart Contract schreiben und in Ihrem Netz bereitstellen.
 - Das kostenlose Beta-Angebot {{site.data.keyword.blockchainfull_notm}} Platform 2.0 basiert auf Hyperledger Fabric v1.4 und unterstützt die Peer-to-Peer-Gossip, Serviceerkennung und private Daten. Weitere Informationen zum Konfigurieren privater Daten in Ihrem Netz finden Sie in diesem [Abschnitt](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-private-data).
 
 - Die {{site.data.keyword.blockchainfull_notm}}-Erweiterung für Visual Studio Code ist über den Visual Studio Code Marketplace verfügbar. Entwickler können die Erweiterung verwenden, um für eine Instanz von Hyperledger Fabric einen Smart Contract zu erstellen, zu testen und bereitzustellen. Die Erweiterung ist mit Hyperledger Fabric 1.3 und höher kompatibel. Weitere Informationen zur Verwendung der VSCode-Erweiterung finden Sie unter [Tools für Smart Contracts](/docs/services/blockchain/vscode-extension.html#develop-vscode).  

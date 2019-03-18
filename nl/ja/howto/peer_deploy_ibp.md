@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -17,9 +19,6 @@ lastupdated: "2019-02-08"
 
 # {{site.data.keyword.cloud_notm}} Private でのピアのデプロイおよびスターター・プランまたはエンタープライズ・プランへの接続
 {: #ibp-peer-deploy}
-
-
-***[このページは参考になりましたか。 ご意見をお聞かせください。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 以下の手順では、{{site.data.keyword.blockchainfull}} Platform ピアを {{site.data.keyword.cloud_notm}} Private にデプロイして、このピアを {{site.data.keyword.cloud_notm}} 上またはローカル {{site.data.keyword.cloud_notm}} Private 上のスターター・プラン・ネットワークまたはエンタープライズ・プラン・ネットワークに接続する方法を説明します。
 {:shortdesc}
@@ -71,7 +70,7 @@ lastupdated: "2019-02-08"
 ## 構成ファイルの作成
 {: #ibp-peer-deploy-config-file}
 
-ピアをデプロイする前に、{{site.data.keyword.cloud_notm}} 上の認証局とピア ID に関する重要な情報が含まれた構成 JSON ファイルを作成する必要があります。 次に、[Kubernetes 秘密 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://kubernetes.io/docs/concepts/configuration/secret/ "秘密") オブジェクトを使用して、構成時にこのファイルを Helm チャートに渡す必要があります。このファイルによって、ピアは、スターター・プラン・ネットワークまたはエンタープライズ・プラン・ネットワークに参加するために必要な証明書を {{site.data.keyword.cloud_notm}} 上の認証局から取得できます。 このファイルには、管理者ユーザーとしてピアを操作することを可能にする管理者証明書も含まれています。
+ピアをデプロイする前に、{{site.data.keyword.cloud_notm}} 上の認証局とピア ID に関する重要な情報が含まれた構成 JSON ファイルを作成する必要があります。 次に、[Kubernetes 秘密 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://kubernetes.io/docs/concepts/configuration/secret/ "秘密") オブジェクトを使用して、構成時にこのファイルを Helm チャートに渡す必要があります。 このファイルによって、ピアは、スターター・プラン・ネットワークまたはエンタープライズ・プラン・ネットワークに参加するために必要な証明書を {{site.data.keyword.cloud_notm}} 上の認証局から取得できます。 このファイルには、管理者ユーザーとしてピアを操作することを可能にする管理者証明書も含まれています。
 
 以下の手順では、編集してローカル・ファイル・システムに保存できるテンプレート JSON が得られます。 次に、CA を使用して構成ファイルを完成させる方法について説明します。
 
@@ -271,7 +270,7 @@ lastupdated: "2019-02-08"
   ```
   {:codeblock}
 
-  上記の `<enroll_id>` と `<enroll_password>` は、[ネットワーク・モニターを使用して登録された](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-register-admin)ピア管理者の **ID** と**機密事項**です。`<ca_name>` と `<ca_url_with_port>` は、接続プロファイル内の `caName` と `url` の値です。CA URL の先頭にある `http://` は省略します。
+  上記の `<enroll_id>` と `<enroll_password>` は、[ネットワーク・モニターを使用して登録された](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-register-admin)ピア管理者の **ID** と**機密事項**です。 `<ca_name>` と `<ca_url_with_port>` は、接続プロファイル内の `caName` と `url` の値です。 CA URL の先頭にある `http://` は省略します。
 
   実際の呼び出しは以下のコマンド例のようになります。
 
@@ -365,7 +364,7 @@ export FABRIC_CA_CLIENT_HOME=$HOME/fabric-ca-client/tlsca-admin
   ```
   {:codeblock}
 
-  コマンドの `<enroll_id>` および `<enroll_password>` は、認証局のデプロイ時に Kubernetes 秘密に渡した [CA 管理者ユーザー名とパスワード](/docs/services/blockchain/CA_deploy.html#ca-deploy-admin-secret)です。`<ca_url_with_port>` 内に [CA URL](/docs/services/blockchain/howto/CA_operate.html#ca-operate-url) を挿入します。 先頭の `http://` は省略します。 `<tls_ca_name>` は、[CA の構成](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-configuration-parms)時に指定した値です。
+  コマンドの `<enroll_id>` および `<enroll_password>` は、認証局のデプロイ時に Kubernetes 秘密に渡した [CA 管理者ユーザー名とパスワード](/docs/services/blockchain/CA_deploy.html#ca-deploy-admin-secret)です。 `<ca_url_with_port>` 内に [CA URL](/docs/services/blockchain/howto/CA_operate.html#ca-operate-url) を挿入します。 先頭の `http://` は省略します。 `<tls_ca_name>` は、[CA の構成](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-configuration-parms)時に指定した値です。
 
   `<ca_tls_cert_file>` は、[CA TLS 証明書](/docs/services/blockchain/howto/CA_operate.html#ca-operate-tls)のファイル名と絶対パスです。
 
@@ -559,7 +558,7 @@ TLS CA をデプロイしたのと同じ {{site.data.keyword.cloud_notm}} Privat
 ## 構成の秘密の作成
 {: #ibp-peer-deploy-config-file-ibp}
 
-[Kubernetes 秘密 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://kubernetes.io/docs/concepts/configuration/secret/ "秘密") を使用すると、情報をデプロイメントに直接渡すことなく保護および共有できます。構成ファイルを保存したら、その構成ファイルを `base64` でエンコードする必要があります。
+[Kubernetes 秘密 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://kubernetes.io/docs/concepts/configuration/secret/ "秘密") を使用すると、情報をデプロイメントに直接渡すことなく保護および共有できます。 構成ファイルを保存したら、その構成ファイルを `base64` でエンコードする必要があります。
 
 1. 構成ファイルを base64 形式でエンコードするには、端末ウィンドウから以下のコマンドを実行します。
 
@@ -638,7 +637,7 @@ TLS CA をデプロイしたのと同じ {{site.data.keyword.cloud_notm}} Privat
 | `Helm リリース名 (Helm release name)`| Helm リリースの名前。 小文字で始まり、任意の英数字で終わる必要があり、ハイフンと小文字の英数字のみを含む必要があります。 コンポーネントのインストールを試行するたびに固有の Helm リリース名を使用する必要があります。 **重要:** この値は、[JSON 秘密ファイル](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-csr-hosts)の「hosts」フィールドで「サービス・ホスト名」を生成する際に使用した値と一致する必要があります。 | なし | はい  |
 | `ターゲット名前空間 (Target namespace)`| Helm チャートをインストールする Kubernetes 名前空間を選択します。 | なし | はい |
 |**グローバル構成 (Global configuration)**| Helm チャート内のすべてのコンポーネントに適用されるパラメーター|||
-| `サービス・アカウント名 (Service account name)`|ポッドの実行に使用する[サービス・アカウント ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/ "ポッドのサービス・アカウントの構成") の名前を入力します。 | デフォルト | いいえ |
+| `サービス・アカウント名 (Service account name)`| ポッドの実行に使用する[サービス・アカウント ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/ "ポッドのサービス・アカウントの構成") の名前を入力します。 | デフォルト | いいえ |
 
 #### ピア構成パラメーター
 {: #ibp-peer-deploy-peer-parameters}
@@ -653,7 +652,7 @@ TLS CA をデプロイしたのと同じ {{site.data.keyword.cloud_notm}} Privat
 | `ピア構成 (Peer configuration)`|独自の `core.yaml` 構成ファイルをこのフィールドに貼り付けることで、ピアの構成をカスタマイズできます。 サンプルの `core.yaml` ファイルを表示するには、[`core.yaml` のサンプル構成 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://github.com/hyperledger/fabric/blob/release-1.2/sampleconfig/core.yaml "hyperledger/fabric/core.yaml") を参照してください。**上級者専用**。 |なし|いいえ|
 | `ピア構成の秘密 (Peer configuration secret) (必須)`| {{site.data.keyword.cloud_notm}} Private 内で作成した[ピア構成の秘密](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-config-file-ibp)の名前。  |なし|はい|
 |`組織 MSP (Organization MSP) (必須)`|この値は、「概要」画面の「リモート・ピアの構成」をクリックして、ネットワーク・モニター (スターター・プランおよびエンタープライズ・プラン UI) で確認できます。  |なし|はい|
-|`ピア・サービス・タイプ (Peer service type)`| ピアで[外部ポートを公開 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types "公開サービス - サービス・タイプ") するかどうかを指定するために使用します。ポートを外部に対して公開する場合は NodePort を選択し (推奨)、ポートを公開しない場合は ClusterIP を選択します。 LoadBalancer および ExternalName はこのリリースではサポートされていません。 | NodePort |はい|
+|`ピア・サービス・タイプ (Peer service type)`| ピアで[外部ポートを公開 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types "公開サービス - サービス・タイプ") するかどうかを指定するために使用します。 ポートを外部に対して公開する場合は NodePort を選択し (推奨)、ポートを公開しない場合は ClusterIP を選択します。 LoadBalancer および ExternalName はこのリリースではサポートされていません。 | NodePort |はい|
 | `状態データベース`| チャネル台帳の保管に使用される[状態データベース](/docs/services/blockchain/glossary.html#glossary-state-database)。 ピアは、[ブロックチェーン・ネットワーク](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-network-preferences)と同じデータベースを使用する必要があります。 | LevelDB | はい |
 |`CouchDB イメージ・リポジトリー (CouchDB image repository)`| 台帳データベースとして CouchDB が選択されている場合にのみ適用されます。 このフィールドにはインストール・パスが自動入力されます。 Community Edition を使用しており、インターネットにアクセスできない場合は、このフィールドでは、Fabric CouchDB のイメージをダウンロードしたディレクトリーを指定する必要があります。| ibmcom/ibp-fabric-couchdb | はい |
 | `CouchDB Docker イメージ・タグ (CouchDB Docker image tag)`| 台帳データベースとして CouchDB が選択されている場合にのみ適用されます。 CouchDB イメージに関連付けられたタグの値。 | 正しい値が自動入力されます。| はい |
@@ -738,7 +737,7 @@ helm install --name jnchart2 mycluster/ibm-blockchain-platform \
 ## ピア・ログの表示
 {: #ibp-peer-deploy-view-logs}
 
-コンポーネント・ログは、[`kubectl CLI コマンド`](/docs/services/blockchain/howto/peer_operate_ibp.html#ibp-peer-operate-kubectl-configure)を使用してコマンド・ラインから、または [Kibana ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.elastic.co/products/kibana "Elastic Search への開かれた窓") ({{site.data.keyword.cloud_notm}} Private クラスターに含まれています) を使用して表示できます。詳しくは、こちらの[ログへのアクセス手順](/docs/services/blockchain/howto/peer_operate_ibp.html#ibp-peer-operate-view-logs)を参照してください。
+コンポーネント・ログは、[`kubectl CLI コマンド`](/docs/services/blockchain/howto/peer_operate_ibp.html#ibp-peer-operate-kubectl-configure)を使用してコマンド・ラインから、または [Kibana ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.elastic.co/products/kibana "Elastic Search への開かれた窓") ({{site.data.keyword.cloud_notm}} Private クラスターに含まれています) を使用して表示できます。 詳しくは、こちらの[ログへのアクセス手順](/docs/services/blockchain/howto/peer_operate_ibp.html#ibp-peer-operate-view-logs)を参照してください。
 
 ## 次の作業
 {: #ibp-peer-deploy-whats-next}
@@ -752,7 +751,7 @@ helm install --name jnchart2 mycluster/ibm-blockchain-platform \
 ### **問題:** `enroll` コマンド実行時の CA URL に関するエラー
 {: #ibp-peer-deploy-ca-enroll-error}
 
-登録 URL (`-u` パラメーターの値) に特殊文字が含まれている場合は、Fabric CA クライアントの enroll コマンドが正常に実行されないことがあります。例えば、次のコマンドでは登録 ID とパスワードとして `admin:C25A06287!0` を指定しています。
+登録 URL (`-u` パラメーターの値) に特殊文字が含まれている場合は、Fabric CA クライアントの enroll コマンドが正常に実行されないことがあります。 例えば、次のコマンドでは登録 ID とパスワードとして `admin:C25A06287!0` を指定しています。
 
 ```
 ./fabric-ca-client enroll -u https://admin:C25A06287!0@ash-zbc07c.4.secure.blockchain.ibm.com:21241 --tls.certfiles $HOME/fabric-ca-remote/cert.pem --caname PeerOrg1CA
@@ -765,7 +764,7 @@ helm install --name jnchart2 mycluster/ibm-blockchain-platform \
 ```
 
 ### **解決策:**
-特殊文字をコード表現するか、URL を単一引用符で囲む必要があります。例えば、`!` を `%21` にするか、コマンドを次のように入力します。
+特殊文字をコード表現するか、URL を単一引用符で囲む必要があります。 例えば、`!` を `%21` にするか、コマンドを次のように入力します。
 
 ```
 ./fabric-ca-client enroll -u 'https://admin:C25A06287!0@ash-zbc07c.4.secure.blockchain.ibm.com:21241' --tls.certfiles $HOME/fabric-ca-remote/cert.pem --caname PeerOrg1CA

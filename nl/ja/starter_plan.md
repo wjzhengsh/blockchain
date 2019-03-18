@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -18,14 +20,12 @@ lastupdated: "2019-02-08"
 # Starter Plan について
 {: #starter-plan-about}
 
-***[このページは参考になりましたか。 ご意見をお聞かせください。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 {{site.data.keyword.blockchainfull}} Platform スターター・プランは、組織が複数組織のブロックチェーン・ネットワークをシミュレートしたり、アプリケーションを迅速に開発したり、サンプルのスマート・コントラクトやビジネス・ネットワークを使用したりできるようにする、エントリー・レベルのオプションです。 また、他のメンバーシップ・オプションと同じ UI エクスペリエンスが提供されるので、効率良く習得できます。 2018 年 10 月 4 日より後に作成された新しいスターター・プラン・ネットワークは、Hyperledger Fabric V1.2.1 でビルドされます。 古いスターター・プラン・ネットワークは、Fabric V1.1.0 レベルのままです。
 {:shortdesc}
 
-**スターター・プラン**は、ブロックチェーン・ネットワークの開発を始めたいお客様や、ブロックチェーン・テクノロジーの学習を始めたいお客様向けの環境です。スターター・プランを開発環境またテスト環境として使用して、小規模な環境から開始し、ネットワークのメンバーシップまたはトランザクション・ボリュームを拡張して実稼働環境に移行できます。
+**スターター・プラン**は、ブロックチェーン・ネットワークの開発を始めたいお客様や、ブロックチェーン・テクノロジーの学習を始めたいお客様向けの環境です。 スターター・プランを開発環境またテスト環境として使用して、小規模な環境から開始し、ネットワークのメンバーシップまたはトランザクション・ボリュームを拡張して実稼働環境に移行できます。
 
- スターター・プラン・ネットワークをデプロイするには、{{site.data.keyword.cloud_notm}} の[スターター・メンバーシップ ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps) に今すぐ登録してください。ネットワークの開発を開始できる状態になったら、[スターター・プランの概説](/docs/services/blockchain/get_start_starter_plan.html#getting-started-with-starter-plan)を参照してください。
+ スターター・プラン・ネットワークをデプロイするには、{{site.data.keyword.cloud_notm}} の[スターター・メンバーシップ ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://cloud.ibm.com/catalog/services/ibm-blockchain-5-prod) に今すぐ登録してください。 ネットワークの開発を開始できる状態になったら、[スターター・プランの概説](/docs/services/blockchain/get_start_starter_plan.html#getting-started-with-starter-plan)を参照してください。
 
 
 **注:**

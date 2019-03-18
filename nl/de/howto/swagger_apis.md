@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018,2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -15,15 +17,11 @@ lastupdated: "2019-02-08"
 # Über Swagger-APIs mit dem Netz interagieren
 {: #ibp-swagger}
 
-
-***[Ist diese Seite hilfreich? Teilen Sie uns Ihre Meinung mit.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
-
 {{site.data.keyword.blockchainfull_notm}} Platform stellt eine Reihe von REST-APIs in Swagger bereit, mit denen Sie die Knoten, Kanäle, Peers und Mitglieder Ihres Netzes verwalten können. Ihre Anwendungen können mithilfe dieser APIs wichtige Netzressourcen ohne den Network Monitor steuern.
 
 {:shortdesc}
 
-Bevor Sie beginnen, müssen Sie eine [{{site.data.keyword.blockchain}} Platform-Serviceinstanz ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://console.bluemix.net/catalog/services/blockchain) in {{site.data.keyword.Bluemix_notm}} erstellen und ein Starter Plan-Blockchain-Netz erstellen oder an einem Starter Plan-<!--or Enterprise Plan -->Blockchain-Netz teilnehmen.
+Bevor Sie beginnen, müssen Sie eine [{{site.data.keyword.blockchain}} Platform-Serviceinstanz ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://cloud.ibm.com/catalog/services/ibm-blockchain-5-prod) in {{site.data.keyword.cloud_notm}} erstellen und ein Starter Plan-Blockchain-Netz erstellen oder an einem Starter Plan-<!--or Enterprise Plan -->Blockchain-Netz teilnehmen.
 
 
 ## Netzberechtigungsnachweise abrufen
@@ -47,9 +45,6 @@ Wenn Sie den Starter Plan verwenden, ist es möglich, im Network Monitor zwische
 {: #ibp-swagger-authorizing-swagger}
 
 Klicken Sie auf den Link für die **Swagger-Benutzerschnittstelle (UI)** in der Anzeige "APIs", um die Swagger-Benutzerschnittstelle zu öffnen.  
-<!-- remove this line because the link is different depending on if you are starter or enterprise plan
-You can also open the Swagger UI with the URL in the connection profiles. For example, `http://blockchain-swagger-dev.stage1.mybluemix.net`.
--->
 
 Klicken Sie in der Swagger-Benutzerschnittstelle auf die Schaltfläche **Berechtigen**. Das Berechtigungsfenster wird angezeigt. Geben Sie den Wert für den Schlüssel ("key") und den geheimen Schlüssel ("secret") in Ihren Netzberechtigungsnachweisen als Benutzername und Kennwort ein und klicken Sie auf **Berechtigen** und anschließend auf **Fertig**. Sie können jetzt die APIs ausführen. Beachten Sie, dass Sie Ihre Berechtigungsnachweise erneut berechtigen müssen, wenn Sie Ihre Browseransicht aktualisieren.
 

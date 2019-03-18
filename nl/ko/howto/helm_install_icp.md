@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -50,7 +52,7 @@ Helm 차트를 설치하기 전에 {{site.data.keyword.cloud_notm}} Private 클�
 
 ## Helm 차트를 {{site.data.keyword.cloud_notm}} Private에 가져오기
 
-1. [Passport Advantage Online ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/software/passportadvantage/pao_customer.html "Passport Advantage Online")에서 IBM Blockchain Platform for {{site.data.keyword.cloud_notm}} Private의 Helm 차트 파일을 다운로드하거나 [GitHub ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://github.com/IBM/charts/blob/master/repo/stable/ibm-blockchain-platform-dev-1.0.0.tgz "IBM/차트")에서 무료 커뮤니티 에디션의 Helm 차트 파일을 다운로드하십시오. 이 Helm 차트 패키지에는 CA, 순서 지정자 및 피어를 위한 세 가지 하위 Helm이 포함됩니다.
+1. [Passport Advantage Online ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/software/passportadvantage/pao_customer.html "Passport Advantage Online")에서 IBM Blockchain Platform for {{site.data.keyword.cloud_notm}} Private의 Helm 차트 파일을 다운로드하거나 [GitHub ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://github.com/IBM/charts/blob/master/repo/stable/ibm-blockchain-platform-dev-1.0.0.tgz "IBM/차트")에서 무료 커뮤니티 에디션의 Helm 차트 파일을 다운로드하십시오.  이 Helm 차트 패키지에는 CA, 순서 지정자 및 피어를 위한 세 가지 하위 Helm이 포함됩니다.
 
 2. 아직 로그인하지 않은 경우 {{site.data.keyword.cloud_notm}} Private 클러스터에 로그인하십시오.
 
@@ -79,7 +81,7 @@ Helm 차트를 설치하기 전에 {{site.data.keyword.cloud_notm}} Private 클�
   - **{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private**
 
     PPA에서 Helm 차트를 다운로드한 경우 이 지시사항을 따르십시오.
-    PPA에서 다운로드한 Helm 차트를 저장한 디렉토리에서 Helm 차트를 {{site.data.keyword.cloud_notm}} Private 클러스터에 가져오려면 {{site.data.keyword.cloud_notm}} Private CLI에서 다음 명령을 실행하십시오. 
+    PPA에서 다운로드한 Helm 차트를 저장한 디렉토리에서 Helm 차트를 {{site.data.keyword.cloud_notm}} Private 클러스터에 가져오려면 {{site.data.keyword.cloud_notm}} Private CLI에서 다음 명령을 실행하십시오.
 
     ```
     cloudctl catalog load-archive --archive <archive-name> --registry <cluster_CA_domain>:8500 --repo <repo-name>
@@ -93,7 +95,7 @@ Helm 차트를 설치하기 전에 {{site.data.keyword.cloud_notm}} Private 클�
 
     이 명령이 완료되면 다음 정보와 비슷한 내용이 표시됩니다.
 
-    <details><summary>Helm install output</summary>
+    <details aria-label="Details"><summary>Helm install output</summary>
     ```
     Expanding archive
     OK
@@ -292,4 +294,4 @@ Helm 차트를 설치한 후 {{site.data.keyword.cloud_notm}} Private 카탈로�
 
 - 순서 지정자를 배치하는 경우 먼저 순서 지정자의 인증 기관을 설정해야 합니다. CA가 조직의 기타 컴포넌트에서 사용되는 인증서를 생성합니다. 자세한 정보는 [{{site.data.keyword.cloud_notm}} Private에서 {{site.data.keyword.blockchainfull_notm}} Platform 인증 기관 배치](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy)를 참조하십시오. 그런 다음 네트워크의 공통 바인딩이 될 순서 지정자를 배치할 수 있습니다. 자세한 정보는 [{{site.data.keyword.cloud_notm}} Private에서 {{site.data.keyword.blockchainfull_notm}} Platform 순서 지정자 배치](/docs/services/blockchain/howto/orderer_deploy_icp.html#icp-orderer-deploy)를 참조하십시오.
 
-- 피어를 배치하는 경우 먼저 피어의 인증 기관을 설정해야 합니다. CA가 조직의 피어에서 사용되는 인증서를 생성합니다. 자세한 정보는 [{{site.data.keyword.cloud_notm}} Private에서 {{site.data.keyword.blockchainfull_notm}} Platform 인증 기관 배치](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy)를 참조하십시오. 그런 다음 네트워크에 가입할 준비가 되면 채널에 가입하고, 트랜잭션을 보증하고, 데이터를 저장하는 피어를 배치할 수 있습니다. 자세한 정보는 피어가 가입하는 블록체인 네트워크에 따라 [{{site.data.keyword.cloud_notm}} Private에서 {{site.data.keyword.blockchainfull_notm}} 피어 배치](/docs/services/blockchain/howto/peer_deploy_icp.html#icp-peer-deploy) 또는 [스타터 또는 엔터프라이즈 플랜 네트워크를 위한 {{site.data.keyword.blockchainfull_notm}} 피어 배치](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy)를 참조하십시오.
+- 피어를 배치하는 경우 먼저 피어의 인증 기관을 설정해야 합니다. CA가 조직의 피어에서 사용되는 인증서를 생성합니다. 자세한 정보는 [{{site.data.keyword.cloud_notm}} Private에서 {{site.data.keyword.blockchainfull_notm}} Platform 인증 기관 배치](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy)를 참조하십시오. 그런 다음 네트워크에 참여할 준비가 되면 채널에 가입하고, 트랜잭션을 보증하고, 데이터를 저장하는 피어를 배치할 수 있습니다. 자세한 정보는 피어가 참여하는 블록체인 네트워크에 따라 [{{site.data.keyword.cloud_notm}} Private에서 {{site.data.keyword.blockchainfull_notm}} 피어 배치](/docs/services/blockchain/howto/peer_deploy_icp.html#icp-peer-deploy) 또는 [스타터 또는 엔터프라이즈 플랜 네트워크를 위한 {{site.data.keyword.blockchainfull_notm}} 피어 배치](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy)를 참조하십시오.

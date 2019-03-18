@@ -2,7 +2,10 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
+
 ---
 
 {:new_window: target="_blank"}
@@ -13,8 +16,6 @@ lastupdated: "2019-02-08"
 
 # {{site.data.keyword.cloud_notm}} Private에서 순서 지정자 작동
 {: #icp-orderer-operate}
-
-***[이 페이지가 도움이 되었습니까? 알려주십시오.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 {{site.data.keyword.cloud_notm}} Private에 {{site.data.keyword.blockchainfull}} Platform 순서 지정자를 설치하면 환경 변수에 대한 기본 설정이 포함된 configmap이 작성됩니다. 그런 다음 해당 동작을 구성하기 위해 순서 지정자에 대한 환경 변수를 변경하거나 추가할 수 있습니다.
 
@@ -281,7 +282,7 @@ tree
 
 ### 조직 정의 가져오기
 
-순서 지정자는 컨소시엄에 가입하려는 구성원으로부터 [조직 정의](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-organization-definition)를 수신해야 합니다. 이 작업은 해당 MSP ID 및 압호화 자료가 포함된 JSON 파일을 전송하는 다른 구성원과의 대역 내외 오퍼레이션에서 완료해야 합니다. 참고로 아래의 명령에서는 `org-definitions`로 이름 지정된 폴더를 작성하여 관련된 모든 파일을 해당 디렉토리에 배치한 것으로 가정합니다.
+순서 지정자는 컨소시엄에 가입하려는 구성원으로부터 [조직 정의](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-organization-definition)를 수신해야 합니다. 이 작업은 해당 MSP ID 및 압호화 자료가 포함된 JSON 파일을 전송하는 다른 구성원과의 대역 외 오퍼레이션에서 완료해야 합니다. 참고로 아래의 명령에서는 `org-definitions`로 이름 지정된 폴더를 작성하여 관련된 모든 파일을 해당 디렉토리에 배치한 것으로 가정합니다.
 
 ### 시스템 채널의 최초 블록 페치
 
@@ -480,7 +481,7 @@ peer channel update -f config_update_in_envelope.pb -c $CHANNEL_NAME -o $PROXY:$
 ## 순서 지정자 로그 보기
 {: #icp-orderer-operate-orderer-view-logs}
 
-컴포넌트 로그는 [`kubectl CLI 명령`](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-kubectl-configure)을 사용하거나 {{site.data.keyword.cloud_notm}} Private 클러스터에 포함된 [Kibana ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.elastic.co/products/kibana "Elastic Search에 대한 창")를 통해 표시될 수 있습니다. 
+컴포넌트 로그는 [`kubectl CLI 명령`](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-kubectl-configure)을 사용하거나 {{site.data.keyword.cloud_notm}} Private 클러스터에 포함된 [Kibana ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.elastic.co/products/kibana "Elastic Search에 대한 창")를 통해 표시될 수 있습니다.
 
 - `kubectl logs` 명령을 실행하여 팟(Pod) 내부의 컨테이너 로그를 보십시오. 팟(Pod) 이름이 확실하지 않은 경우 다음 명령을 실행하여 팟(Pod)의 목록을 보십시오.
 
@@ -500,7 +501,7 @@ peer channel update -f config_update_in_envelope.pb -c $CHANNEL_NAME -o $PROXY:$
 
 - 또는 Kibana에서 로그를 여는 [{{site.data.keyword.cloud_notm}} Private 클러스터 관리 콘솔 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/troubleshoot/events.html)을 사용하여 로그에 액세스할 수 있습니다.
 
-  **참고:** Kibana에서 로그인이 표시되면 `No results found`의 응답을 수신할 수 있습니다. 이 상태는 {{site.data.keyword.blockchainfull_notm}} Private이 호스트 이름으로 작업자 노드 IP 주소를 사용하는 경우 발생할 수 있습니다. 이 문제점을 해결하려면 패널 상단에서 `node.hostname.keyword`로 시작하는 필터를 제거하십시오. 그런 다음 로그가 표시됩니다.
+  **참고:** Kibana에서 로그인이 표시되면 `No results found`의 응답을 수신할 수 있습니다. 이 상태는 {{site.data.keyword.cloud_notm}} Private이 호스트 이름으로 작업자 노드 IP 주소를 사용하는 경우 발생할 수 있습니다. 이 문제점을 해결하려면 패널 상단에서 `node.hostname.keyword`로 시작하는 필터를 제거하십시오. 그런 다음 로그가 표시됩니다.
 
 ## 문제점 해결
 {: #icp-orderer-operate-troubleshooting}

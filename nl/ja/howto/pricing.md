@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -14,9 +16,6 @@ lastupdated: "2018-02-08"
 
 # 料金
 {: #ibp-pricing}
-
-
-***[このページは参考になりましたか。 ご意見をお聞かせください。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 
 このガイドにより、{{site.data.keyword.blockchainfull}} Platform のメンバーシップ・プランの料金、およびブロックチェーン・ネットワークを開発して拡大するのに伴って生じる支払い金額を理解することができます。  

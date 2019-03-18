@@ -1,8 +1,11 @@
 ---
 
 copyright:
-  years: 2017, 2018, 2019
-lastupdated: "2019-02-08"
+  years: 2017, 2019
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
+
 ---
 
 {:new_window: target="_blank"}
@@ -14,8 +17,6 @@ lastupdated: "2019-02-08"
 
 # Hyperledger Fabric
 {: #hyperledger-fabric}
-
-***[Esta página é útil? Diga-nos.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 A rede do {{site.data.keyword.blockchainfull}} é construída na pilha do Hyperledger Fabric, um dos projetos de blockchain dentro do Hyperledger Project da Linux Foundation. Ela é uma rede "com permissão" na qual todos os usuários e componentes têm identidades conhecidas. A lógica de assinatura/verificação é implementada em cada ponto de contato de comunicação e as transações são consentidas por meio de uma série de verificações de endosso e validação. Nesse sentido, isso difere grandemente das implementações de blockchain tradicionais que promovem o anonimato e são forçadas a depender de criptomoedas e obrigações de cálculo intenso para validar transações.
 {:shortdesc}
@@ -51,7 +52,7 @@ Para obter mais informações sobre o componente Hyperledger Fabric Membership S
 ## Serviço de ordenação
 {: #hyperledger-fabric-ordering-service}
 
-Em outros blockchains distribuídos, como o Ethereum e o Bitcoin, não há autoridade central que peça transações e as envie para os peers. O Hyperledger Fabric, o blockchain no qual o {{site.data.keyword.blockchainfull_notm}} Platform se baseia, funciona de forma diferente. Ele apresenta um nó chamado **solicitador**.
+Em outros blockchains distribuídos, como o Ethereum e o Bitcoin, não há autoridade central que peça transações e as envie para os peers. O Hyperledger Fabric, blockchain no qual o {{site.data.keyword.blockchainfull_notm}} Platform se baseia, funciona de forma diferente. Ele apresenta um nó chamado **solicitador**.
 
 Solicitadores são os componentes principais em uma rede porque executam algumas funções essenciais:
 

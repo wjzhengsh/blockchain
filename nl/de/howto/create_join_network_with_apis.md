@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -15,10 +17,6 @@ lastupdated: "2019-02-08"
 # Swagger-APIs zur Netzerstellung oder Netzteilnahme verwenden
 {: #swagger-network}
 
-
-***[Ist diese Seite hilfreich? Teilen Sie uns Ihre Meinung mit.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
-
 {{site.data.keyword.blockchainfull}} Platform stellt eine Reihe von REST-APIs bereit, die Sie verwenden können, um ein Blockchain-Netz in {{site.data.keyword.cloud_notm}} zu erstellen oder daran teilzunehmen. Sie können diese APIs mithilfe der [Swagger-Benutzerschnittstelle](/docs/services/blockchain/howto/swagger_apis.html#ibp-swagger) testen, die Ihrem Netz zugeordnet ist.
 {:shortdesc}
 
@@ -26,11 +24,11 @@ lastupdated: "2019-02-08"
 ## Basisauthentifizierungsberechtigungsnachweise für die API abrufen
 {: #swagger-network-retrieve-id-token}
 
-Bevor Sie beginnen, müssen Sie eine [{{site.data.keyword.blockchainfull_notm}} Platform-Serviceinstanz ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://console.bluemix.net/catalog/services/blockchain) mit dem Starter Plan oder dem Enterprise Plan in {{site.data.keyword.cloud_notm}} erstellen.
+Bevor Sie beginnen, müssen Sie eine [{{site.data.keyword.blockchainfull_notm}} Platform-Serviceinstanz ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://cloud.ibm.com/catalog/services/ibm-blockchain-5-prod) mit dem Starter Plan oder dem Enterprise Plan in {{site.data.keyword.cloud_notm}} erstellen.
 
 Wenn Sie Swagger-APIs verwenden möchten, um ein Netz zu erstellen oder an einem Netz teilzunehmen, benötigen Sie einen Basisauthentifizierungsberechtigungsnachweis, um sicherzustellen, dass Sie über Zugriff auf die Serviceinstanz in {{site.data.keyword.cloud_notm}} verfügen.
 
-1. Öffnen Sie im [{{site.data.keyword.cloud_notm}}-Dashboard ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://console.bluemix.net/dashboard/apps/) die Serviceinstanz, die Sie erstellt haben.
+1. Öffnen Sie im [{{site.data.keyword.cloud_notm}}-Dashboard ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://cloud.ibm.com/resources) die Serviceinstanz, die Sie erstellt haben.
 2. Klicken Sie auf **Serviceberechtigungsnachweise** im linken Navigator.
 3. Klicken Sie auf die Schaltfläche "Neuer Berechtigungsnachweis" auf der Seite **Serviceberechtigungsnachweise**, um einen neuen Berechtigungsnachweis zu erstellen.
     1. Legen Sie einen Namen für den Berechtigungsnachweis fest, z. B. *CreateJoin*.
@@ -53,13 +51,13 @@ Wenn Sie Swagger-APIs verwenden möchten, um ein Netz zu erstellen oder an einem
 
     ```
     {
-      "PeerOrg1": {
-        "url": "https://ibmblockchain_xyz.ng.bluemix.net",
-        "network_id": "92d511f7e587413c8a9848fdae595ef2",
-        "key": "PeerOrg1",
-        "secret": "T8eUA65l-qtznUHL10KzQ7IK-3BVWWfHu5-hpCiDdXCRQyNfeyIm1p5NT7g17l6U"
-      }
-    }
+      "org1": {
+        "url": "https://ibp-sp.us-south.ibm-blockchain-5-prod.cloud.ibm.com",
+        "network_id": "n5edf19260c998940c5933daca2be76974a",
+        "key": "org1",
+        "secret": "A8YeuUuNvKVbN5cVGOlwprpaaHCVxYiP0uEN0fviQB2W9_ldJLtMSOSHqkUpkqysMA"
+        }
+    }    
     ```
 
     **Hinweis**: Für die API **Einladen** dient `key` als Basisauthentifizierungsbenutzer-ID und `secret` als Basisauthentifizierungskennwort.

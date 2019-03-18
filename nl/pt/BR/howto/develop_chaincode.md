@@ -2,19 +2,23 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2018-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
+
 ---
 
 {:new_window: target="_blank"}
 {:shortdesc: .shortdesc}
 {:codeblock: .codeblock}
 {:screen: .screen}
+{:note: .note}
+{:important: .important}
+{:tip: .tip}
 {:pre: .pre}
 
 # Gravando contratos inteligentes
 {: #develop-smart-contracts}
-
-***[Esta página é útil? Diga-nos.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 Chaincode, também conhecido como contratos inteligentes, é o software que permite ler e atualizar dados no livro-razão do blockchain. O chaincode pode transformar a lógica de negócios em um programa executável acordado e verificado por todos os membros da rede de blockchain. A lógica de negócios inclui a definição de ativos negociados entre partes. Ela também consiste nos termos e condições necessários para que uma transação seja executada. Transformar essas regras em código em uma blockchain permite que as empresas simplifiquem o processamento de negócios e a auditoria e reduzam grandes quantidades de processamento manual e papelada.
 
@@ -35,7 +39,10 @@ O tutorial também apresenta aspectos importantes da malha que estão acessívei
 
 O chaincode pode ser gravado em várias linguagens e o {{site.data.keyword.blockchainfull_notm}} Platform suporta o chaincode gravado em Go e Node.js. O chaincode permite que os usuários consultem e mudem dados que estão armazenados no blockchain usando APIs que a interface do Fabric Chaincode fornece. Os dados no blockchain são armazenados em pares de chave-valor no estado mundial do [livro-razão do canal ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/ledger/ledger.html "livro-razão"). O chaincode usa comandos get para recuperar valores e usa comandos put para criar ou atualizar valores. Usando essas operações básicas, é possível construir funções que definem as regras de negócios de sua rede. Essas funções podem ser chamadas por seus aplicativos e exibidas para usuários finais da rede. Para continuar a usar o exemplo de rede de veículo, é possível criar uma função que permita que uma concessionária de carros use um comando put para incluir um novo carro no livro-razão somente se for fornido um número de ID de veículo válido.
 
-É possível aprender como iniciar a gravação de chaincode visitando o tutorial [Chaincode para desenvolvedores ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://hyperledger-fabric.readthedocs.io/en/latest/chaincode4ade.html "Chaincode para desenvolvedores") na documentação da comunidade do Hyperledger Fabric. O tutorial o levará por meio da construção de um chaincode simples que cria e lê ativos e apresenta a você quais APIs são usadas no processo. Também é possível localizar o guia de referência da API do chaincode para todas as linguagens do chaincode. Há exemplos adicionais na pasta chaincode do [Repositório de amostras do Fabric ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://github.com/hyperledger/fabric-samples "Amostras do Fabric").
+É possível aprender como iniciar a gravação de chaincode visitando o tutorial [Chaincode para desenvolvedores ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://hyperledger-fabric.readthedocs.io/en/latest/chaincode4ade.html "Chaincode para desenvolvedores") na documentação da comunidade do Hyperledger Fabric. O tutorial o levará por meio da construção de um chaincode simples que cria e lê ativos e apresenta a você quais APIs são usadas no processo. Também é possível localizar o guia de referência da API do chaincode para todas as linguagens do chaincode. Há exemplos adicionais na pasta chaincode do [Repositório de amostras do Fabric ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://github.com/hyperledger/fabric-samples "Amostras do Fabric").  
+
+Geralmente, um contrato inteligente é capaz de validar solicitações, aplicar as regras de negócios e retornar um resultado determinístico. No entanto, há algumas situações em que fatos adicionais são necessários ou a rede de negócios deseja assegurar que as informações fornecidas pelos clientes sejam fatos reais. O Hyperledger Fabric não evita chamadas externas para sistemas de terceiro por meio dos contratos inteligentes. No entanto, é responsabilidade do desenvolvedor do contrato inteligente assegurar que os conjuntos de leitura/gravação resultantes sejam determinísticos.
+{:note}
 
 ## Instalando o chaincode
 {: #develop-smart-contracts-install}

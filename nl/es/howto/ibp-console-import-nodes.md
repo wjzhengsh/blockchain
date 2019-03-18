@@ -2,7 +2,9 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -18,10 +20,10 @@ lastupdated: "2019-02-08"
 # Importación de nodos
 {: #ibp-console-import-nodes}
 
-***[¿Le resulta útil esta página? Indíquenos su opinión.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 La consola incluye la opción de importar nodos que se crean utilizando otra consola de {{site.data.keyword.blockchainfull}} Platform.
 {:shortdesc}  
+
+**Audiencia de destino:** este tema está diseñado para los operadores de red responsables de crear, supervisar y gestionar la red blockchain.
 
 ## ¿Por qué importar un nodo?
 
@@ -58,6 +60,7 @@ Hay varias razones por las que puede desear importar una CA en la consola. Despu
 Para importar una CA en la consola de {{site.data.keyword.blockchainfull_notm}} Platform y trabajar con la misma, ya debe haber exportado la CA desde otra {{site.data.keyword.blockchainfull_notm}} Platform. El hecho de importar una CA le permite registrar nuevos usuarios e [inscribir identidades](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-enroll).
 
 ### Antes de empezar
+{: #ibp-console-import-ca-before-you-begin}
 
 - Asegúrese de que ya ha importado el archivo JSON de identidad de administrador de la CA en la cartera de la consola.
 - Asegúrese de que el archivo JSON de la CA que se ha exportado desde la consola donde se ha creado está disponible.
@@ -68,6 +71,8 @@ La importación de una CA se realiza desde el separador **Nodos**. Pulse **Añad
 
 - Pulse el botón **Cargar JSON** para omitir la entrada manual de la información y navegar hasta el archivo JSON que se ha exportado desde la consola en la que se ha creado la CA.
 - Establezca la identidad de administrador para la CA pulsando **Identidad existente** y seleccionando la identidad de administrador de CA desde la cartera de la consola.
+
+Si lo desea, cuando importe una CA también puede especificar las credenciales para la CA de TLS adicional si se incluye una.  
 
 Una vez que haya importado la CA en la consola, puede utilizar la CA para crear nuevas identidades y generar los certificados necesarios para trabajar con los componentes y enviar transacciones a la red. Para obtener más información, consulte [Gestión de entidades emisoras de certificados](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-manage-ca).
 
@@ -87,6 +92,7 @@ Un nodo clasificador es el componente de blockchain que recopila las transaccion
 La importación de un clasificador en la consola le permite crear nuevos canales para que los iguales realicen transacciones en privado.
 
 ### Antes de empezar
+{: #ibp-console-import-orderer-before-you-begin}
 
 - Asegúrese de que ya ha importado el archivo JSON de identidad de administrador del clasificador en la cartera de la consola.
 - Asegúrese de que el archivo JSON del clasificador que se ha exportado desde la consola donde se ha creado está disponible.
@@ -108,6 +114,7 @@ Después de importar un igual en la consola, puede instalar contratos inteligent
 **Nota:** si necesita añadir más iguales a la organización igual o crear identidades de administrador adicionales para un igual, tiene que importar la CA del igual y luego utilizar dicha CA para realizar dichas operaciones.
 
 ### Antes de empezar
+{: #ibp-console-import-peer-before-you-begin}
 
 Antes de importar un igual, debe recopilar la información y los certificados siguientes:
 

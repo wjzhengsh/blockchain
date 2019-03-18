@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018.2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -15,10 +17,6 @@ lastupdated: "2019-02-08"
 
 # 샘플 애플리케이션 배치
 {: #deploying-sample-applications}
-
-
-***[이 페이지가 도움이 되었습니까? 알려주십시오.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 
 사용자가 블록체인 네트워크 및 애플리케이션 개발을 이해할 수 있도록 {{site.data.keyword.blockchainfull}} Platform은 사용자가 배치하고 테스트할 수 있는 샘플 애플리케이션을 제공합니다.
 {:shortdesc}

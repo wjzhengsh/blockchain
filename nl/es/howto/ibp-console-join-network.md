@@ -2,7 +2,10 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-02-08"
+
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -18,10 +21,11 @@ lastupdated: "2019-02-08"
 # Guía de aprendizaje sobre cómo unirse a una red
 {: #ibp-console-join-network}
 
-***[¿Le resulta útil esta página? Indíquenos su opinión.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 {{site.data.keyword.blockchainfull}} Platform es una oferta de tipo blockchain-as-a-service que le permite desarrollar, desplegar y trabajar con redes y aplicaciones blockchain. Puede obtener más información sobre los componentes de blockchain y sobre cómo funcionan juntos en la [visión general de los componentes de blockchain](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview). Esta guía de aprendizaje es la segunda parte de la [serie de guías de aprendizaje de red de ejemplo](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-sample-tutorial) y en ella se describe cómo crear nodos en la consola de {{site.data.keyword.blockchainfull_notm}} Platform y cómo conectarlos a un consorcio de blockchain alojado en otro clúster.
 {:shortdesc}
+
+
+**Audiencia de destino:** este tema está diseñado para los operadores de red responsables de crear, supervisar y gestionar la red blockchain.  
 
 Si aún no ha desplegado la consola en un clúster de Kubernetes utilizando el servicio Kubernetes de {{site.data.keyword.cloud_notm}}, consulte [Iniciación a {{site.data.keyword.blockchainfull_notm}} Platform 2.0](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks). Puede crear un nuevo clúster de Kubernetes para el despliegue de la consola o puede utilizar uno existente en su cuenta de {{site.data.keyword.cloud_notm}}. Después de desplegar {{site.data.keyword.blockchainfull_notm}} Platform en su clúster de Kubernetes, puede iniciar la consola para crear y gestionar los componentes de blockchain.
 
@@ -31,15 +35,16 @@ Tanto si realiza el despliegue en un clúster de Kubernetes de pago como si lo h
 ## Serie de guías de aprendizajes de red de ejemplo
 {: #ibp-console-join-network-structure}
 
-En esta serie de guías de aprendizaje de tres partes se describe el proceso de crear e interconectar una red de {{site.data.keyword.blockchainfull_notm}} Platform 2.0 multinodo relativamente sencilla mediante la consola y aprovechando el despliegue de Kubernetes.
+Esta serie de guías de aprendizaje de tres partes le guía por el proceso de creación e interconexión de una red Hyperledger Fabric de varios nodos relativamente sencilla utilizando la consola de {{site.data.keyword.blockchainfull_notm}} Platform 2.0 para desplegar una red en el clúster de Kubernetes e instalar y crear una instancia de un contrato inteligente.
 
 * La [guía de aprendizaje sobre cómo crear una red](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network) le ayuda en el proceso de alojar una red mediante la creación de un clasificador y un igual.
-* En la [guía de aprendizaje sobre cómo unirse a una red](/docs/services/blockchain/howto/ibp-console-join-network.html#ibp-console-join-network) se explica el proceso de unirse a una red existente creando un igual y uniéndolo a un canal.
-* La [guía de aprendizaje sobre cómo desplegar un contrato inteligente en la red](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts) contiene información sobre cómo escribir un contrato inteligente y cómo desplegarlo en la red.
+* **Cómo unirse a una red** En esta guía de aprendizaje se explica el proceso de unirse a una red existente creando un igual y uniéndolo a un canal.
+* La guía para [Desplegar un contrato inteligente en la red](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts) contiene información sobre cómo escribir un contrato inteligente y cómo desplegarlo en la red.
 
-Puede seguir los pasos de estas guías de aprendizaje para crear una red con varias organizaciones en un clúster con fines de desarrollo y prueba. Utilice la guía de aprendizaje sobre cómo **crear una red** si desea encontrar un consorcio de blockchain. Utilice la guía de aprendizaje sobre cómo **unirse a una red** para conectar un igual a la red. Si sigue las guías de aprendizaje con distintos miembros del consorcio puede crear una red blockchain verdaderamente **distribuida**.  
+Puede seguir los pasos de estas guías de aprendizaje para crear una red con varias organizaciones en un clúster con fines de desarrollo y prueba. Utilice la guía de aprendizaje sobre cómo **crear una red** si desea formar un consorcio de blockchain mediante la creación de un nodo clasificador y la adición de organizaciones. Utilice la guía de aprendizaje sobre cómo **unirse a una red** para conectar un igual a la red. Si sigue las guías de aprendizaje con distintos miembros del consorcio puede crear una red blockchain verdaderamente **distribuida**.  
 
-Esta guía de aprendizaje está pensada para mostrar cómo unir un igual a una red **existente**. Se supone que ya existe un clasificador, que aloja la red, en el clúster o en otro clúster de {{site.data.keyword.blockchainfull_notm}} Platform. Si no dispone de una red existente a la que unirse, visite la [Guía de aprendizaje sobre cómo crear una red](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network) para aprender a crear una. La guía de aprendizaje sobre cómo **unirse a una red** le guía por el proceso de crear los siguientes componentes de blockchain de `Org2`, resaltados en el recuadro azul: ![Estructura para unirse a una red](../images/ib2-join-network.png "Estructura para unirse a una red")  
+
+Esta guía de aprendizaje está pensada para mostrar cómo unir un igual a una red **existente**. Se supone que ya existe un clasificador, que aloja la red, en el clúster o en otro clúster de {{site.data.keyword.blockchainfull_notm}} Platform. Si no dispone de una red existente a la que unirse, visite la guía de aprendizaje sobre [Creación de una red](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network) para aprender a crear una. La guía de aprendizaje sobre cómo **unirse a una red** le guía por el proceso de crear los siguientes componentes de blockchain de `Org2`, resaltados en el recuadro azul: ![Estructura para unirse a una red](../images/ib2-join-network.png "Estructura para unirse a una red")  
 *Figura 1. Estructura de unión de red*  
 Siga los pasos de la guía de aprendizaje sobre cómo **unirse a una red** para crear los siguientes componentes y realizar las siguientes acciones:
 
@@ -74,7 +79,7 @@ Siga los pasos siguientes desde la consola:
 2. Pulse **{{site.data.keyword.cloud_notm}}** en **Crear entidad emisora de certificados**.
 3. Utilice el segundo panel lateral para dar a la CA un **nombre de visualización**. El valor recomendado para esta CA es `CA de Org2`.
 4. En el panel siguiente, especifique las credenciales de administrador de CA especificando el **ID de administrador** `admin` y proporcionando el secreto que desee, aunque recomendamos utilizar `adminpw` en esta guía de aprendizaje.
-5. Pulse **Enviar**.
+5. Pulse **Siguiente** y, a continuación, **Añadir entidad emisora de certificados**.
 
 **Tarea: creación de la CA de la organización igual**
 
@@ -120,9 +125,9 @@ Ahora que hemos creado la CA del igual y la hemos utilizado para **registrar** l
 1. Vaya al separador **Organizaciones** en el panel de navegación izquierdo y pulse **Crear definición de MSP**.
 2. Asigne al MSP un nombre de visualización, como por ejemplo `MSP de Org2`, y un ID, como `org2msp`. Si desea especificar su propio ID de MSP en este campo, asegúrese de seguir las especificaciones de la herramienta de sugerencias sobre las limitaciones de este nombre.
 3. En **Detalles de la entidad emisora de certificados raíz**, especifique la CA del igual que hemos creado como la CA raíz para la organización. Si esta es su primera vez que examina esta guía de aprendizaje, solo debería ver una: `CA de Org2`. Selecciónela.
-4. Los campos **ID de inscripción** y **Secreto de inscripción** bajo la misma contendrán el ID y el secreto de inscripción del primer usuario que ha creado con la CA. No utilice estos valores. Asigne en su lugar el ID y el secreto de inscripción del administrador de la organización, `org2admin` y `org2adminpw`. A continuación, asigne a esta identidad un nombre de visualización, como por ejemplo `Admin de Org2`.
+4. Los campos **ID de inscripción** y **Secreto de inscripción** bajo la misma contendrán el ID y el secreto de inscripción del primer usuario que ha creado con la CA. Podría utilizar estos valores, pero no le recomendamos que utilice la identidad de administrador de CA como administrador de la organización.  Por motivos de seguridad, recomendamos especificar el ID y el secreto de inscripción que ha creado para el administrador de la organización, `org2admin` y `org2adminpw`. A continuación, asigne a esta identidad un nombre de visualización, como por ejemplo `Admin de Org2`.
 5. Pulse el botón **Generar** para inscribir esta identidad como administrador de la organización y exporte la identidad a la cartera, donde se utilizará cuando se cree el igual y cuando se creen canales.
-6. Pulse **Exportar** para exportar los certificados de administrador al sistema de archivos. Como se ha dicho anteriormente, esta identidad no se almacena en el clúster ni la gestiona {{site.data.keyword.IBM_notm}}. Solo se almacena en el almacenamiento local del navegador.
+6. Pulse **Exportar** para exportar los certificados de administrador al sistema de archivos. Como se ha dicho anteriormente, esta identidad no se almacena en el clúster ni la gestiona {{site.data.keyword.IBM_notm}}. Solo se almacena en el almacenamiento local del navegador. Si cambia de navegador, tiene que importar esta identidad en la cartera de la consola para poder administrar el igual.
 7. Pulse **Crear definición de MSP**.
 
 **Tarea: crear la definición de MSP de la organización igual**
@@ -173,10 +178,10 @@ Utilice la consola para seguir los pasos siguientes:
 3. Asigne a su igual el **Nombre de visualización** `Org2 igual`.
 4. En la pantalla siguiente, seleccione `CA de Org2` como CA. A continuación, especifique el ID y el secreto de inscripción que ha creado para el igual, `peer2` y `peer2pw`. Luego seleccione su MSP, `MSP de Org2`, en la lista desplegable y pulse **Siguiente**.
 5. El siguiente panel lateral solicita la información de la CA de TLS. Aunque es posible crear administradores independientes para la CA de TLS que se ha desplegado con la CA, no es necesario hacerlo.
-   - Asigne a **ID de inscripción de TLS** el valor `admin` y al secreto el valor `adminpw`, los mismos valores que el ID de inscripción y secreto de inscripción que ha asignado al crear la CA.
+   - Asigne a **ID de inscripción de TLS** el valor `admin` y al secreto el valor `adminpw`, los mismos valores que el ID de inscripción y el secreto de inscripción que ha asignado al crear la CA.
    - El **Nombre de host de CSR de TLS** es para usuarios avanzados y se utiliza para especificar un nombre de dominio personalizado que se puede utilizar para gestionar el punto final del igual. Por ahora deje el **Nombre de host de CSR de TLS** en blanco, ya que no se utiliza en esta guía de aprendizaje.
 6. El último panel lateral le solicitará que **Asocie una identidad** y la convierta en administrador de su igual. Seleccione la identidad de administrador del igual `Admin de Org2`.
-7. Revise el resumen y pulse **Enviar**.
+7. Revise el resumen y pulse **Añadir igual**.
 
 **Tarea: despliegue de un igual**
 
@@ -210,14 +215,17 @@ Puesto que solo los administradores del clasificador pueden añadir organizacion
 2. Desplácese hasta el clasificador que desea utilizar y pulse en el mismo para abrirlo.
 3. En **Miembros del consorcio**, pulse **Añadir organización**.
 4. En la lista desplegable, seleccione `MSP de Org2`, ya que este es el MSP que representa la organización igual `org2`.
-5. Pulse **Enviar**.
+5. Pulse **Añadir organización**.
 
 Ahora añada la organización igual al canal.
 1. Vaya al separador **Canales** y pulse `channel1`.
 2. Pulse el icono **Valores** para actualizar el canal y añadir la organización igual al canal.
-2. Desplácese hacia abajo hasta la sección llamada `Añadir organizaciones al canal`, abra la lista desplegable `Seleccionar un miembro de canal` y seleccione el MSP de la organización igual, `MSP de Org2` en esta guía de aprendizaje.
-5. Pulse **Añadir** y luego asigne permisos para dicha organización. Le recomendamos que la convierta en `Operador` para que pueda actualizar el canal.
-6. Pulse **Actualizar canal**.
+3. En la lista desplegable **Elegir entre los clasificadores disponibles**, asegúrese de que `Clasificador` está seleccionado.
+4. En la lista desplegable **ID de MSP de actualizador de canal**, asegúrese de que `org1MSP` está seleccionado.
+5. En la lista desplegable **Asociar identidad disponible**, asegúrese de que `Org1Admin` está seleccionado.
+6. Desplácese hacia abajo hasta la sección llamada `Añadir organizaciones al canal`, abra la lista desplegable `Seleccionar un miembro de canal` y seleccione el MSP de la organización igual, `MSP de Org2` en esta guía de aprendizaje.
+7. Pulse **Añadir** y luego asigne permisos para dicha organización. Le recomendamos que la convierta en `Operador` para que pueda actualizar el canal.
+8. Pulse **Actualizar canal**.
 
 Cuando finalice este proceso, `org2` podrá crear o unir un canal alojado en el `Clasificador`. Puede continuar con el [Paso tres: unir el igual al canal](/docs/services/blockchain/howto/ibp-console-join-network.html#ibp-console-join-network-join-peer-org2).
 
@@ -237,10 +245,13 @@ Cuando siga estos pasos, debe ser el administrador de la **organización igual**
 El administrador del clasificador tiene que importar este archivo JSON para añadir la organización a su consola:
 1. Vaya al separador **Organizaciones**, pulse el botón **Importar definición de MSP** y seleccione el archivo JSON que representa la definición del MSP de la organización igual.  
 2. Vaya a la página **Nodos** y pulse el nodo clasificador. En el panel del nodo de ordenación, en **Miembros de consorcio**, pulse **Añadir organización**. En el panel lateral que se abre, seleccione `MSP de Org2` en la lista de definiciones de MSP desde el separador **Organizaciones**.
-3. Vaya al separador **Canales**, pulse `channel1` y luego pulse el icono  **Valores** para actualizar el canal y añadir la organización igual al canal.
-4. Desplácese hacia abajo hasta la sección llamada `Añadir organizaciones al canal`, abra la lista desplegable `Seleccionar un miembro de canal` y seleccione el MSP de la organización igual, `MSP de Org2` en esta guía de aprendizaje.
-5. Pulse **Añadir** y luego asigne permisos para dicha organización. Le recomendamos que la convierta en `Operador` para que pueda actualizar el canal.
-6. Pulse **Actualizar canal**.
+3. Vaya al separador **Canales**, pulse `channel1` y luego pulse el icono **Valores** para actualizar el canal y añadir la organización igual al canal.
+4. En la lista desplegable **Elegir entre los clasificadores disponibles**, asegúrese de que `Clasificador` está seleccionado.
+5. En la lista desplegable **ID de MSP de actualizador de canal**, asegúrese de que `org1MSP` está seleccionado.
+6. En la lista desplegable **Asociar identidad disponible**, asegúrese de que `Org1Admin` está seleccionado.
+7. Desplácese hacia abajo hasta la sección llamada `Añadir organizaciones al canal`, abra la lista desplegable `Seleccionar un miembro de canal` y seleccione el MSP de la organización igual, `MSP de Org2` en esta guía de aprendizaje.
+8. Pulse **Añadir** y luego asigne permisos para dicha organización. Le recomendamos que la convierta en `Operador` para que pueda actualizar el canal.
+9. Pulse **Actualizar canal**.
 
 Después de que el administrador del clasificador haya unido la organización del igual al consorcio y al canal, deberá importar el nodo de ordenación en la consola. A continuación, puede unir los canales alojados por el servicio de ordenación. Siga los siguientes pasos para **importar** el clasificador:
 
@@ -255,7 +266,7 @@ Ahora puede seguir estos pasos si es el administrador de la **organización igua
 1. Vaya a la página **Nodos** y pulse **Añadir clasificador**.
 2. Pulse {{site.data.keyword.cloud_notm}} en **Importar un clasificador existente**.
 3. A continuación, pulse el botón **Cargar JSON** y seleccione el JSON que representa el propio nodo.
-4. En el paso siguiente, cuando se le solicite que asocie una identidad, seleccione la identidad de la organización igual. En esta guía de aprendizaje sería `Admin de Org2`; luego pulse **Enviar**.
+4. En el paso siguiente, cuando se le solicite que asocie una identidad, seleccione la identidad de la organización igual. En esta guía de aprendizaje sería `Admin de Org2`; luego pulse **Importar clasificador**.
 
 
 ## Paso tres: unir el igual al canal
@@ -269,7 +280,7 @@ Siga los pasos siguientes desde la consola:
 2. Seleccione el clasificador denominado 'Clasificador' y pulse **Siguiente**.
 3. Especifique el nombre del canal que desea unir, `channel1`, y pulse **Siguiente**.
 4. Seleccione los iguales que desea unir al canal. A efectos de esta guía de aprendizaje, pulse `Org2 igual`.
-5. Pulse **Enviar**.
+5. Pulse **Unir igual**.
 
 Si tiene intención de aprovechar las características de Hyperledger Fabric [Datos privados ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/latest/private-data/private-data.html "Datos privados") o [Service Discovery ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/latest/discovery-overview.html "Service Discovery"), debe configurar iguales de ancla en las organizaciones desde el separador **Canales**. Consulte este tema sobre [cómo configurar iguales de ancla para datos privados](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-private-data) mediante el separador **Canales** de la consola.
 
@@ -281,16 +292,5 @@ También puede crear un nuevo canal una vez que su organización sea miembro del
 Después de unir el igual a un canal, siga los pasos siguientes para desplegar un contrato inteligente y para empezar a enviar transacciones a blockchain:
 
 - [Despliegue un contrato inteligente en la red](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts) mediante la consola.
-- Una vez que haya instalado el contrato inteligente y haya creado instancias del mismo, puede [enviar transacciones utilizando la aplicación cliente](docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-connect-to-SDK).
+- Una vez que haya instalado el contrato inteligente y haya creado instancias del mismo, puede [enviar transacciones utilizando la aplicación cliente](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-connect-to-SDK).
 - Utilice [el ejemplo de documento comercial](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-commercial-paper) para desplegar un contrato inteligente de ejemplo y enviar transacciones desde el código de aplicación de ejemplo.
-
-## Resolución de problemas
-{: #ibp-console-join-network-troubleshooting}
-
-**Problema:** se producen errores cuando intento trabajar con un nodo.    
-
-**Solución:** si recibe errores al trabajar con un nodo en la consola, [revise los registros del nodo](/docs/services/blockchain/howto/ibp-console-manage.html#ibp-console-manage-console-node-logs) para ver si hay errores.  
-
-**Problema:** el panel de control de Kubernetes muestra que el igual no se inicial y los registros del igual incluyen `2019-02-06 19:43:24.159 UTC [main] InitCmd -> ERRO 001 No se puede ejecutar el igual porque la carpeta de init crypto “/certs/msp” no existe`
-
-**Solución:** asegúrese de que al crear la definición de MSP de la organización igual, el ID y el secreto de inscripción especificados corresponden a una identidad de tipo `cliente`, no `igual`.

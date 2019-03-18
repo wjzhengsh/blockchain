@@ -2,7 +2,10 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-02-08"
+
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -18,26 +21,28 @@ lastupdated: "2019-02-08"
 # Guía de aprendizaje sobre cómo crear una red
 {: #ibp-console-build-network}
 
-***[¿Le resulta útil esta página? Indíquenos su opinión.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
-{{site.data.keyword.blockchainfull}} Platform es una oferta de tipo blockchain-as-a-service que le permite desarrollar, desplegar y trabajar con redes y aplicaciones blockchain. Puede obtener más información sobre los componentes de blockchain y sobre cómo funcionan juntos en la [visión general de los componentes de blockchain](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview). Esta guía de aprendizaje es la primera parte de la [serie de guías de aprendizaje de red de ejemplo](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-sample-tutorial) y describe cómo utilizar la consola de {{site.data.keyword.blockchainfull_notm}} Platform que se despliega en {{site.data.keyword.cloud_notm}} para crear una red totalmente funcional en un solo servicio Kubernetes de {{site.data.keyword.cloud_notm}}.
+{{site.data.keyword.blockchainfull}} Platform es una oferta de tipo blockchain-as-a-service que le permite desarrollar, desplegar y trabajar con redes y aplicaciones blockchain. Puede obtener más información sobre los componentes de blockchain y sobre cómo funcionan juntos en la [visión general de los componentes de blockchain](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview). Esta guía de aprendizaje es la primera parte de la [serie de guías de aprendizaje de red de ejemplo](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-sample-tutorial) y describe cómo utilizar la consola de {{site.data.keyword.blockchainfull_notm}} Platform para crear una red totalmente funcional en un solo servicio Kubernetes de {{site.data.keyword.cloud_notm}}.
 {:shortdesc}
+
+**Audiencia de destino:** este tema está diseñado para los operadores de red responsables de crear, supervisar y gestionar la red blockchain.   
 
 Si aún no ha desplegado la consola en un clúster de Kubernetes utilizando el servicio Kubernetes de {{site.data.keyword.cloud_notm}}, consulte [Iniciación a {{site.data.keyword.blockchainfull_notm}} Platform 2.0](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks). Puede crear un nuevo clúster de Kubernetes para el despliegue de la consola o puede utilizar uno existente en su cuenta de {{site.data.keyword.cloud_notm}}.  Después de desplegar {{site.data.keyword.blockchainfull}} Platform en su clúster de Kubernetes, puede iniciar la consola para crear y gestionar los componentes de blockchain.
 
 Tanto si realiza el despliegue en un clúster de Kubernetes de pago como si lo hace en uno gratuito, utilice el panel de control de Kubernetes para descubrir los recursos disponibles cuando elija desplegar nodos y crear canales. Es su responsabilidad gestionar el clúster de Kubernetes y desplegar recursos adicionales si es necesario. Aunque los componentes se desplegarán correctamente en un clúster gratuito, cuantos más componentes añada más lenta será su ejecución.
 {: note}
 
+
 ## Serie de guías de aprendizajes de red de ejemplo
 {: #ibp-console-build-network-sample-tutorial}
 
-En esta serie de guías de aprendizaje de tres partes se describe el proceso de crear e interconectar una red de {{site.data.keyword.blockchainfull_notm}} Platform 2.0 multinodo relativamente sencilla mediante la consola y aprovechando el despliegue de Kubernetes.
+Esta serie de guías de aprendizaje de tres partes le guía por el proceso de creación e interconexión de una red Hyperledger Fabric de varios nodos relativamente sencilla utilizando la consola de {{site.data.keyword.blockchainfull_notm}} Platform 2.0 para desplegar una red en el clúster de Kubernetes e instalar y crear una instancia de un contrato inteligente.
 
-* La [guía de aprendizaje sobre cómo crear una red](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network) le ayuda en el proceso de alojar una red mediante la creación de un clasificador y un igual.
+* **Guía de aprendizaje sobre cómo crear una red** Esta guía de aprendizaje le ayuda en el proceso de alojar una red mediante la creación de un clasificador y un igual.
 * En la [guía de aprendizaje sobre cómo unirse a una red](/docs/services/blockchain/howto/ibp-console-join-network.html#ibp-console-join-network) se explica el proceso de unirse a una red existente creando un igual y uniéndolo a un canal.
-* La [guía de aprendizaje sobre cómo desplegar un contrato inteligente en la red](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts) contiene información sobre cómo escribir un contrato inteligente y cómo desplegarlo en la red.
+* La guía para [Desplegar un contrato inteligente en la red](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts) contiene información sobre cómo escribir un contrato inteligente y cómo desplegarlo en la red.
 
-Puede seguir los pasos de estas guías de aprendizaje para crear una red con varias organizaciones en un clúster con fines de desarrollo y prueba. Utilice la guía de aprendizaje sobre cómo **crear una red** si desea encontrar un consorcio de blockchain y hacer que otros miembros utilicen la guía de aprendizaje sobre cómo **unirse a una red** para conectarse desde otro clúster. Si sigue las guías de aprendizaje con distintos miembros del consorcio puede crear una red blockchain verdaderamente **distribuida**.
+Puede seguir los pasos de estas guías de aprendizaje para crear una red con varias organizaciones en un clúster con fines de desarrollo y prueba. Utilice la guía de aprendizaje sobre cómo **crear una red** si desea formar un consorcio de blockchain mediante la creación de un nodo clasificador y la adición de organizaciones. Utilice la guía de aprendizaje sobre cómo **unirse a una red** para conectar un igual a la red. Si sigue las guías de aprendizaje con distintos miembros del consorcio puede crear una red blockchain verdaderamente **distribuida**.  
+
 
 ### La estructura de esta red
 {: #ibp-console-build-network-structure}
@@ -60,7 +65,7 @@ Esta configuración es suficiente para probar aplicaciones y contratos inteligen
 * **Un canal**: `channel1`  
   Los canales proporcionan privacidad de datos. Permiten que los conjuntos de organizaciones realicen transacciones sin exponer sus datos a organizaciones que no sean miembros del canal. Cada canal tiene su propio libro mayor de blockchain, compartido entre los iguales que se han unido a dicho canal. En la guía de aprendizaje se crea un canal unido por ambas organizaciones, y crea una instancia del contrato inteligente en el canal que las organizaciones pueden utilizar para realizar transacciones.
 
-Esta configuración no es obligatoria. {{site.data.keyword.blockchainfull_notm}} Platform 2.0 permite un alto grado de personalización. Si tiene recursos disponibles en el clúster de Kubernetes, puede utilizar la consola para encontrar un consorcio con muchas organizaciones iguales. También puede crear una organización igual que se conecte a varios servicios de ordenación. En esta guía de aprendizaje se muestran los pasos a seguir para crear su propia red, con referencias a temas que proporcionan información más detallada sobre {{site.data.keyword.blockchainfull_notm}} Platform y sobre la consola.
+Esta configuración no es obligatoria. {{site.data.keyword.blockchainfull_notm}} Platform 2.0 permite un alto grado de personalización. Si tiene recursos disponibles en el clúster de Kubernetes, puede utilizar la consola para desplegar un nodo clasificador y añadirle organizaciones, lo que también se conoce como formar un consorcio. También puede crear una organización igual que se conecte a varios servicios de ordenación. En esta guía de aprendizaje se muestran los pasos a seguir para crear su propia red, con referencias a temas que proporcionan información más detallada sobre {{site.data.keyword.blockchainfull_notm}} Platform y sobre la consola.
 
 
 En esta guía de aprendizaje sobre cómo **crear una red**, solo creamos una parte de la red anterior, una red simple que se puede utilizar para alojar un clasificador y una sola organización igual y un igual en un solo canal. En la siguiente ilustración se muestra la parte de la red anterior que vamos a crear: ![Estructura de una red simple](../images/ibp2-simple-network.png "Estructura de una red simple")  
@@ -89,7 +94,7 @@ Siga los pasos siguientes desde la consola:
 2. Pulse **{{site.data.keyword.cloud_notm}}** en **Crear entidad emisora de certificados** y pulse **Siguiente**.
 3. Utilice el segundo panel lateral para dar a la CA un **nombre de visualización**. El valor recomendado para esta CA es `CA de Org1`.
 4. En el panel siguiente, especifique las credenciales de administrador de CA especificando el **ID de administrador** `admin` y proporcionando el secreto que desee. Recomendamos utilizar `adminpw` para ayudarle a seguir esta guía de aprendizaje.
-5. Pulse **Enviar**.
+5. Pulse **Siguiente** y, a continuación, **Añadir entidad emisora de certificados**.
 
 **Tarea: creación de la CA de la organización igual**
 
@@ -137,9 +142,9 @@ Ahora que hemos creado la CA del igual y la hemos utilizado para **registrar** l
 1. Vaya al separador **Organizaciones** en el panel de navegación izquierdo y pulse **Crear definición de MSP**.
 2. Asigne a su MSP el nombre de visualización `MSP de Org1` y el ID de MSP `org1msp`. Si desea especificar su propio ID de MSP en este campo, asegúrese de seguir las especificaciones de la herramienta de sugerencias sobre las limitaciones de este nombre.
 3. En **Detalles de la entidad emisora de certificados raíz**, especifique la CA del igual que hemos creado como la CA raíz para la organización. Si esta es su primera vez que examina esta guía de aprendizaje, solo debería ver una: `CA de Org1`.
-4. Los campos **ID de inscripción** y **Secreto de inscripción** bajo la misma contendrán el ID y el secreto de inscripción del primer usuario que ha creado con la CA. No utilice estos valores. Asigne en su lugar el ID y el secreto de inscripción del administrador de la organización, `org1admin` y `org1adminpw`. A continuación, asigne a esta identidad un nombre de visualización, `Admin de Org1`.
+4. Los campos **ID de inscripción** y **Secreto de inscripción** bajo la misma contendrán el ID y el secreto de inscripción del primer usuario que ha creado con la CA. Podría utilizar estos valores, pero no le recomendamos que utilice la identidad de administrador de CA como administrador de la organización.  Por motivos de seguridad, recomendamos especificar el ID y el secreto de inscripción que ha creado para el administrador de la organización, `org1admin` y `org1adminpw`. A continuación, asigne a esta identidad un nombre de visualización, `Admin de Org1`.
 5. Pulse el botón **Generar** para inscribir esta identidad como administrador de la organización y exporte la identidad a la cartera, donde se utilizará cuando se cree el igual y cuando se cree un canal.
-6. Pulse **Exportar** para exportar los certificados de administrador al sistema de archivos. Como se ha dicho anteriormente, esta identidad no se almacena en el clúster ni la gestiona {{site.data.keyword.IBM_notm}}. Solo se almacena en el navegador.
+6. Pulse **Exportar** para exportar los certificados de administrador al sistema de archivos para poder gestionar el archivo. Como se ha dicho anteriormente, esta identidad no se almacena en el clúster ni la gestiona {{site.data.keyword.IBM_notm}}. Solo se almacena en el navegador. Si cambia de navegador, tiene que importar esta identidad en la cartera de la consola para poder administrar el igual.
 7. Pulse **Crear definición de MSP**.
 
 **Tarea: crear el MSP de la organización igual**
@@ -199,7 +204,7 @@ Utilice la consola para seguir los pasos siguientes:
   - Asigne a **ID de inscripción de TLS** el valor `admin` y al secreto el valor `adminpw`, los mismos valores que el ID de inscripción y secreto de inscripción que ha asignado al crear la CA.
   - El **Nombre de host de CSR de TLS** sirve para que usuarios avanzados especifiquen un nombre de dominio personalizado que se puede utilizar para gestionar el punto final del igual. Por ahora deje el **Nombre de host de CSR de TLS** en blanco, ya que no se utiliza en esta guía de aprendizaje.
 6. El último panel lateral le solicitará que **Asocie una identidad** y la convierta en administrador de su igual. Seleccione la identidad de administrador del igual `Admin de Org1`.
-7. Revise el resumen y pulse **Enviar**.
+7. Revise el resumen y pulse **Añadir igual**.
 
 **Tarea: despliegue de un igual**
 
@@ -242,9 +247,10 @@ En esta guía de aprendizaje, solo crearemos un clasificador.
 
 El proceso de creación de una CA para un clasificador es idéntico al proceso de creación de la misma para un igual.
 1. Vaya a separador **Nodos** y pulse **Añadir entidad emisora de certificados**.
-2. Pulse **{{site.data.keyword.cloud_notm}}** en **Crear entidad emisora de certificados** y pulse **Siguiente**
+2. Pulse **{{site.data.keyword.cloud_notm}}** en **Crear una nueva entidad emisora de certificados** y pulse **Siguiente**
 3. Asigne a esta CA un nombre de visualización exclusivo, `CA de clasificador`.
 4. Puede utilizar el **ID de inscripción** que ha asignado a la otra CA, `admin`, y luego especificar el secreto que desee, aunque recomendamos utilizar `adminpw`.
+5. Pulse **Siguiente** y, a continuación, **Añadir entidad emisora de certificados**.
 
 ### Utilización de la CA para registrar las identidades del clasificador y del administrador del clasificador
 {: #ibp-console-build-network-use-CA-orderer}
@@ -280,9 +286,9 @@ que hemos registrado como administrador de nuestra organización.
 2. Asigne a la definición de MSP un nombre de visualización como `MSP de clasificador` y un ID como `orderermsp`,
 asegurándose de seguir las especificaciones sobre las limitaciones de este nombre que se muestran en la herramienta de sugerencias.
 3. En **Detalles de la entidad emisora de certificados raíz**, seleccione la `CA de clasificador` que hemos creado.
-4. Los campos **ID de inscripción** y **Secreto de inscripción** bajo la misma contendrán el ID y el secreto de inscripción del primer usuario que ha creado con la CA. No utilice estos valores. Asigne en su lugar el ID y el secreto de inscripción del administrador de la organización, `ordereradmin` y el secreto que desee, aunque recomendamos utilizar `ordereradminpw` para facilitar el seguimiento de la guía de aprendizaje. A continuación, asigne a esta identidad un nombre de visualización, como por ejemplo `Admin de clasificador`.
+4. Los campos **ID de inscripción** y **Secreto de inscripción** bajo la misma contendrán el ID y el secreto de inscripción del primer usuario que ha creado con la CA. Podría utilizar estos valores, pero no le recomendamos que utilice la identidad de administrador de CA como administrador de la organización.  Por motivos de seguridad, recomendamos especificar el ID y el secreto de inscripción que ha creado para el administrador de la organización, `ordereradmin` y `ordereradminpw`. A continuación, asigne a esta identidad un nombre de visualización, como por ejemplo `Admin de clasificador`.
 5. Pulse el botón **Generar** para inscribir esta identidad como administrador de la organización y añada la identidad a la cartera de la consola, donde se utilizará cuando se cree el clasificador.
-6. Pulse **Exportar** para exportar la identidad del administrador de la organización del clasificador al sistema de archivos. Como se ha dicho anteriormente, esta identidad no se almacena en el clúster ni la gestiona {{site.data.keyword.IBM_notm}}. Solo se almacena en el almacenamiento local del navegador.
+6. Pulse **Exportar** para exportar la identidad del administrador de la organización del clasificador al sistema de archivos. Como se ha dicho anteriormente, esta identidad no se almacena en el clúster ni la gestiona {{site.data.keyword.IBM_notm}}. Solo se almacena en el almacenamiento local del navegador.  Si cambia de navegador, tiene que importar esta identidad en la cartera de la consola para poder administrar el clasificador.
 7. Pulse **Crear definición de MSP**.
 
 **Tarea: crear la definición de MSP de la organización del clasificador**
@@ -311,7 +317,7 @@ Es importante exportar la identidad del administrador de la organización porque
 {:tip}
 
 ### Creación de un clasificador
-{: #ibp-console-build-network-create-orderer}
+{: #ibp-console-build-network-create-an-orderer}
 
 Siga los pasos siguientes desde la consola:
 
@@ -323,7 +329,7 @@ Siga los pasos siguientes desde la consola:
    - Asigne a **ID de inscripción de TLS** el valor `admin` y al secreto el valor `adminpw`. Son los valores de ID de inscripción y secreto de inscripción que ha asignado al crear la CA.
    - El **Nombre de host de CSR de TLS** sirve para que usuarios avanzados especifiquen un nombre de dominio personalizado que se puede utilizar para gestionar el punto final del clasificador. Por ahora deje el **Nombre de host de CSR de TLS** en blanco, ya que no se utiliza en esta guía de aprendizaje.
 6. El paso **Asociar identidad** le permite elegir un administrador para el clasificador. Seleccione `Administrador del clasificador` como antes y pulse **Siguiente**.
-7. Revise el resumen y pulse **Enviar**.
+7. Revise el resumen y pulse **Añadir clasificador**.
 
 **Tarea: crear un clasificador**
 
@@ -331,7 +337,7 @@ Siga los pasos siguientes desde la consola:
   | ------------------------- |-----------|-----------|-----------|-----------|
   | **Crear clasificador** | Clasificador | orderermsp |||
   | **CA** | CA de clasificador ||||
-  | **Identidad del clasificador** | |  | ordereradmin | ordereradminpw |
+  | **Identidad del clasificador** | |  | orderer1 | orderer1pw |
   | **Certificado de administrador** | MSP de clasificador ||||
   | **CA de TLS** | CA de clasificador ||||
   | **ID de CA de TLS** | || admin | adminpw |
@@ -353,11 +359,11 @@ Como es el administrador del clasificador, este proceso es relativamente sencill
 2. Desplácese hasta el clasificador que ha creado y pulse en el mismo para abrirlo.
 3. En **Miembros del consorcio**, pulse **Añadir organización**.
 4. En la lista desplegable, seleccione `MSP de Org1`, ya que este es el MSP que representa la organización igual `org1`.
-5. Pulse **Enviar**.
+5. Pulse **Añadir organización**.
 
 Cuando finalice este proceso, `org1` podrá crear o unir un canal alojado en el `Clasificador`.
 
-En esta guía de aprendizaje, podemos acceder fácilmente al `MSP de Org1` porque tanto la organización igual como la organización del clasificador se han creado en la misma consola. Cuando una organización igual se crea en otra consola o clúster y desea unirse a su consorcio, hay que enviar su definición de MSP en una operación fuera de banda. También hay que exportar el nodo clasificador a su consola para que se pueda unir a un canal o se pueda crear uno. Este proceso se describe en la guía de aprendizaje sobre cómo unirse a una red, bajo [Exportación de la información de la organización](/docs/services/blockchain/howto/ibp-console-join-network.html#ibp-console-join-network-add-org2-remote).
+En esta guía de aprendizaje, podemos acceder fácilmente al `MSP de Org1` porque tanto la organización igual como la organización del clasificador se han creado en la misma consola. En un escenario real, se crearían otras definiciones de MSP mediante distintos operadores de red en su propio clúster utilizando su propia consola de {{site.data.keyword.blockchainfull_notm}}. Posteriormente, cuando la organización, como por ejemplo una organización igual, deseara unirse a su consorcio, el operador de red tendría que enviarle su definición de MSP de organización en una operación fuera de banda. Además, tendría que exportar el nodo clasificador para que lo importaran en su consola para que pudieran unir un igual a un canal o crear un nuevo canal. Este proceso se describe en la guía de aprendizaje sobre cómo unirse a una red, bajo [Exportación de la información de la organización](/docs/services/blockchain/howto/ibp-console-join-network.html#ibp-console-join-network-add-org2-remote).
 
 ## Paso cuatro: crear un canal
 {: #ibp-console-build-network-create-channel}
@@ -395,7 +401,7 @@ Siga los pasos siguientes desde la consola:
 5. Especifique la identidad del creador del canal. Donde el paso anterior de MSP utiliza la organización que ha creado el canal, este paso utiliza **su** identidad de administrador, `Admin de Org1`.
 6. Seleccione las organizaciones que desea unir al canal y los permisos que desea que tengan. Aunque ha especificado `MSP de Org1 (org1msp)` como creador del canal, también tiene que seleccionarlo aquí. Pulse **Añadir** y, a continuación, otorgue a su organización un nivel de permisos. En escenarios del mundo real, como creador del canal deseará elegir los permisos detenidamente, para que se ajusten a los requisitos de las organizaciones que se unen al canal. Como está creando un canal con un solo miembro, y cada canal debe tener al menos un operador, convierta su organización en **Operador**.
 
-Cuando esté preparado, pulse **Crear**. Debería volver al separador Canales.
+Cuando esté preparado, pulse **Crear canal**. Debería volver al separador Canales.
 
 **Tarea: crear un canal**
 
@@ -425,7 +431,7 @@ Siga los pasos siguientes desde la consola:
 2. Seleccione el `Clasificador` y pulse **Siguiente**.
 3. Especifique el nombre del canal que acaba de crear, `channel1`, y pulse **Siguiente**.
 4. Seleccione los iguales que desea unir al canal. A efectos de esta guía de aprendizaje, pulse `Org1 igual`.
-5. Pulse **Enviar**.
+5. Pulse **Unir canal**.
 
 ## Siguientes pasos
 {: #ibp-console-build-network-next-steps}
@@ -433,19 +439,7 @@ Siga los pasos siguientes desde la consola:
 Después de crear un canal y de unir un igual al mismo, tiene una red de blockchain básica totalmente funcional que puede utilizar para desarrollo y pruebas. Siga los pasos siguientes para desplegar un contrato inteligente y para empezar a enviar transacciones a blockchain:
 
 - [Despliegue un contrato inteligente en la red](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts) mediante la consola.
-- Una vez que haya instalado el contrato inteligente y haya creado instancias del mismo, puede [enviar transacciones utilizando la aplicación cliente](docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-connect-to-SDK).
+- Una vez que haya instalado el contrato inteligente y haya creado instancias del mismo, puede [enviar transacciones utilizando la aplicación cliente](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-connect-to-SDK).
 - Utilice [el ejemplo de documento comercial](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-commercial-paper) para desplegar un contrato inteligente de ejemplo y enviar transacciones utilizando el código de aplicación de ejemplo.
 
 También puede crear otra organización igual utilizando la [guía de aprendizaje sobre cómo unirse a una red](/docs/services/blockchain/howto/ibp-console-join-network.html#ibp-console-join-network-structure). Puede añadir una segunda organización al canal para simular una red distribuida, con dos iguales que comparten un libro mayor de un solo canal.
-
-## Resolución de problemas
-{: #ibp-console-build-network-troubleshooting}
-
-**Problema:** se producen errores cuando intento trabajar con un nodo.  
-
-**Solución:** si recibe errores al trabajar con un nodo en la consola, [revise los registros del nodo](/docs/services/blockchain/howto/ibp-console-manage.html#ibp-console-manage-console-node-logs) para ver si hay errores.  
-
-
-**Problema:** el panel de control de Kubernetes muestra que el igual no se inicial y los registros del igual incluyen `2019-02-06 19:43:24.159 UTC [main] InitCmd -> ERRO 001 No se puede ejecutar el igual porque la carpeta de init crypto “/certs/msp” no existe`
-
-**Solución:** asegúrese de que al crear la definición de MSP de la organización igual, el ID y el secreto de inscripción especificados corresponden a una identidad de tipo `cliente`, no `igual`.

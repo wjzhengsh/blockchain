@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -18,8 +20,6 @@ lastupdated: "2019-02-08"
 # 스타터 플랜 정보
 {: #starter-plan-about}
 
-***[이 페이지가 도움이 되었습니까? 알려주십시오.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 {{site.data.keyword.blockchainfull}} Platform 스타터 플랜은 조직이 다중 조직 블록체인 네트워크를 시뮬레이션하고 신속하게 애플리케이션을 개발하며 샘플 스마트 계약 및 비즈니스 네트워크에 대한 작업을 수행할 수 있도록 하는 엔트리 레벨 옵션입니다. 또한 다른 멤버십 옵션과 동일한 UI 경험을 제공하여 학습 과정을 줄여줍니다. 2018년 10월 4일 이후에 작성된 새 스타터 플랜 네트워크는 Hyperledger Fabric V1.2.1에 빌드됩니다. 이전 스타터 플랜 네트워크는 Fabric V1.1.0 레벨로 유지됩니다.
 {:shortdesc}
 
@@ -28,7 +28,7 @@ lastupdated: "2019-02-08"
 테스트 환경으로 사용하여 소규모로
 네트워크의 멤버십 또는 트랜잭션 볼륨을 시작할 수 있습니다.
 
- 스타터 플랜 네트워크를 배치하려면 {{site.data.keyword.cloud_notm}}에서 [스타터 멤버십 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps)에
+ 스타터 플랜 네트워크를 배치하려면 {{site.data.keyword.cloud_notm}}에서 [스타터 멤버십 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://cloud.ibm.com/catalog/services/ibm-blockchain-5-prod)에
 가입하십시오. 네트워크 개발을 시작할 준비가 되었을 때 [스타터 플랜 시작하기](/docs/services/blockchain/get_start_starter_plan.html#getting-started-with-starter-plan)를 방문하십시오.
 
 
@@ -44,7 +44,7 @@ lastupdated: "2019-02-08"
 - **_비용 효율성_**
    스타터 플랜 멤버십 옵션은 엔터프라이즈 플랜 멤버십 옵션과 동일한 여러 블록체인 기능을 적은 비용으로 제공합니다. 자세한 정보는 [스타터 플랜 가격](/docs/services/blockchain/howto/pricing.html#ibp-pricing-starter-pricing)을 참조하십시오.
 - **_다중 조직 네트워크 시뮬레이션_**
-   스타터 플랜을 사용하여 다중 조직의 네트워크 빌드를 시뮬레이션할 수 있습니다. 실제로 네트워크에 다른 조직을 초대할 필요는 없지만 다른 조직의 역할을 할 수는 있습니다. 이 메커니즘을 통해 새 조직이 네트워크에 가입하는 방법, 여러 조직이 네트워크에서 함께 작업하는 방법 등을 학습할 수 있습니다. 네트워크 모니터에서 조직 간에 전환하여 여러 조직의 보기를 통해 네트워크를 보고 관리할 수 있습니다.
+   스타터 플랜을 사용하여 다중 조직의 네트워크 빌드를 시뮬레이션할 수 있습니다. 실제로 네트워크에 다른 조직을 초대할 필요는 없지만 다른 조직의 역할을 할 수는 있습니다. 이 메커니즘을 통해 새 조직이 네트워크에 참여하는 방법, 여러 조직이 네트워크에서 함께 작업하는 방법 등을 학습할 수 있습니다. 네트워크 모니터에서 조직 간에 전환하여 여러 조직의 보기를 통해 네트워크를 보고 관리할 수 있습니다.
 
 {{site.data.keyword.IBM_notm}}은 Composer CLI, JavaScript API, REST 서버 및 웹 플레이그라운드를 포함하여 프로덕션에서 Hyperledger Composer를 사용하는 네트워크를 지원하지 않습니다.
 {:note}

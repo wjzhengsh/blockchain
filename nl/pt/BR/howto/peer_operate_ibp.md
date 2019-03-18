@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -14,10 +16,9 @@ lastupdated: "2019-02-08"
 {:important: .important}
 {:tip: .tip}
 {:pre: .pre}
+
 # Operando peers no {{site.data.keyword.cloud_notm}} Private com Starter Plan ou Enterprise Plan
 {: #ibp-peer-operate}
-
-***[Esta página é útil? Diga-nos.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 Depois de configurar um {{site.data.keyword.blockchainfull}} Platform no peer do {{site.data.keyword.cloud_notm}} Private, é necessário concluir várias etapas operacionais antes que seu peer possa enviar transações para uma rede do Starter Plan ou do Enterprise Plan. As etapas envolvem incluir sua organização em um canal, associar seu peer ao canal, instalar o chaincode em seu peer, instanciar o chaincode no canal e conectar aplicativos a seu peer.
 {:shortdesc}
@@ -574,7 +575,7 @@ Os logs de componentes podem ser visualizados na linha de comandos usando os [co
 {: #ibp-peer-operate-troubleshooting}
 
 ### **Problema:** o comando Invoke falha no peer com um erro `chaincode fingerprint inmatch`
-{
+{: #ibp-peer-operate-install-error}
 
 É possível receber um erro `chaincode fingerprint mismatch` ao executar uma solicitação `peer chaincode invoke` em um peer que está em execução no {{site.data.keyword.cloud_notm}} Private:
 

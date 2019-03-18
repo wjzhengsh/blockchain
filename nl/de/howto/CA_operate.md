@@ -2,7 +2,10 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
+
 ---
 
 {:new_window: target="_blank"}
@@ -16,8 +19,6 @@ lastupdated: "2019-02-08"
 
 # Zertifizierungsstelle in {{site.data.keyword.cloud_notm}} Private betreiben
 {: #ca-operate}
-
-***[Ist diese Seite hilfreich? Teilen Sie uns Ihre Meinung mit.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 Zertifizierungsstellen (CAs) stellen Identitäten im Netz zur Verfügung. Eine Zertifizierungsstelle ist mit einem öffentlich anerkannten Notar vergleichbar, der zwischen mehreren Parteien als Vertrauensperson fungiert. Jede Entität im Netz erhält ein von der Stammzertifizierungsstelle (Root-CA) signiertes Zertifikat, in dem die digitale Identität der Entität enthalten ist. Dieses Zertifikat stellt die Vertrauensgrundlage für alle Signier- und Verifizierungsoperationen dar, die innerhalb des Netzes ausgeführt werden.
 {:shortdesc}
@@ -224,9 +225,9 @@ Die Generierung von Zertifikaten ist nur unter Verwendung von Identitäten mögl
   ```
   {:codeblock}
 
-  Die Angaben `<enroll_id>` und `<enroll_password>` im Befehl stehen für [den Benutzernamen und das Kennwort des CA-Administrators](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-admin-secret), die Sie beim Bereitstellen der Zertifizierungsstelle an den geheimen Kubernetes-Schlüssel übergeben haben. Fügen Sie die [URL der Zertifizierungsstelle](/docs/services/blockchain/howto/CA_operate.html#ca-operate-url) in `<ca_url_with_port>`. Lassen Sie die Angabe `http://` am Beginn weg. `<ca_name>` steht für den Wert, den Sie beim Bereitstellen der Zertifizierungsstelle im Feld `CA-Name` angegeben haben.
+  Die Angaben `<enroll_id>` und `<enroll_password>` im Befehl stehen für [den Benutzernamen und das Kennwort des CA-Administrators](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-admin-secret), die Sie beim Bereitstellen der Zertifizierungsstelle an den geheimen Kubernetes-Schlüssel übergeben haben. Fügen Sie die [URL der Zertifizierungsstelle](/docs/services/blockchain/howto/CA_operate.html#ca-operate-url) in `<ca_url_with_port>`. Lassen Sie die Angabe `http://` am Beginn weg. Die Angabe `<ca_name>` steht für den Wert, den Sie beim Bereitstellen der Zertifizierungsstelle im Feld `CA-Name` angegeben haben.
 
-  `<ca_tls_cert_path>` steht für den vollständigen Pfad des [TLS-Zertifikats der Zertifizierungsstelle](/docs/services/blockchain/howto/CA_operate.html#ca-operate-tls).
+  Die Angabe `<ca_tls_cert_path>` steht für den vollständigen Pfad des [TLS-Zertifikats der Zertifizierungsstelle](/docs/services/blockchain/howto/CA_operate.html#ca-operate-tls).
 
   Ein realer Aufruf könnte ähnlich wie im folgenden Beispiel aussehen:
 
@@ -234,7 +235,7 @@ Die Generierung von Zertifikaten ist nur unter Verwendung von Identitäten mögl
   fabric-ca-client enroll -u https://admin:adminpw@9.30.94.174:30167 --caname org1CA --tls.certfiles $HOME/fabric-ca-client/catls/tls.pem
   ```
 
-  **Tipp:** Wenn der Wert der Registrierungs-URL, der Wert des Parameters `-u`, ein Sonderzeichen enthält, müssen Sie entweder das Sonderzeichen codieren oder die URL in einfache Anführungszeichen einschließen. Beispielsweise wird `!` zu `%21` oder der Befehl sieht folgendermaßen aus:
+  **Tipp:** Wenn der Wert der Registrierungs-URL, der Wert des Parameters `-u`, ein Sonderzeichen enthält, müssen Sie entweder das Sonderzeichen codieren oder die URL in einfache Anführungszeichen einschließen. Beispiel: `!` wird zu `%21` oder der Befehl sieht wie folgt aus:
 
   ```
   ./fabric-ca-client enroll -u 'https://admin:C25A06287!0@ash-zbc07c.4.secure.blockchain.ibm.com:21241' --tls.certfiles $HOME/fabric-ca-remote/cert.pem --caname PeerOrg1CA
@@ -243,7 +244,7 @@ Die Generierung von Zertifikaten ist nur unter Verwendung von Identitäten mögl
 
   Der Befehl `enroll` generiert einen vollständigen Satz von Zertifikaten, der auch als "MSP-Ordner" (MSP = Membership Service Provider) bezeichnet wird und sich innerhalb des Verzeichnisses befindet, das Sie als Pfad von `$HOME` für Ihren Fabric-CA-Client festgelegt haben. Beispiel: `$HOME/fabric-ca-client/ca-admin`. Weitere Informationen zu MSPs und zum Inhalt des MSP-Ordners finden Sie unter [Membership Service Providers (MSPs)](/docs/services/blockchain/howto/CA_operate.html#ca-operate-msp).
 
-  Falls der Befehl `enroll` fehlschlägt, finden Sie unter [Fehlerbehebung](/docs/services/blockchain/howto/CA_operate.html#ca-operate-enroll-error) Informationen zu möglichen Ursachen.
+  Falls der Befehl `enroll` fehlschlägt, finden Sie unter [Fehlerbehebung](/docs/services/blockchain/howto/CA_operate.html#ca-operate-troubleshooting) Informationen zu möglichen Ursachen.
 
 Durch einen Befehl "tree" können Sie prüfen, ob Sie alle vorausgesetzten Schritte ausgeführt haben. Navigieren Sie zu dem Verzeichnis, in dem Sie Ihre Zertifikate gespeichert haben. Der Befehl "tree" sollte ein Ergebnis ähnlich der folgenden Struktur generieren:
 
@@ -355,7 +356,7 @@ Nachdem Sie die Verbindungsinformationen für die Zertifizierungsstelle abrufen 
 ### Komponentenidentität bei der Zertifizierungsstelle registrieren
 {: #ca-operate-register-component}
 
-Falls Sie ein Konsortium gründen wollen, indem Sie einen Anordnungsservice bereitstellen und diesem dann Organisationen hinzufügen, oder falls Sie Peers bereitstellen und diese an Kanälen teilnehmen lassen wollen, müssen Sie zuerst die Komponentenidentität bei Ihrer Zertifizierungsstelle registrieren. Ihre Komponentenbereitstellung kann anschließend Zertifikate generieren, die der Peer oder Anordnungsknoten zur Teilnahme an einem Netz benötigt.
+Falls Sie ein Konsortium gründen möchten, indem Sie einen Anordnungsservice bereitstellen und diesem Organisationen hinzufügen, oder falls Sie Peers bereitstellen und diese Kanälen zuordnen möchten, müssen Sie zuerst die Komponentenidentität bei Ihrer Zertifizierungsstelle registrieren. Ihre Komponentenbereitstellung kann anschließend Zertifikate generieren, die der Peer oder Anordnungsknoten zur Teilnahme an einem Netz benötigt.
 
 1. [Generieren Sie Zertifikate als CA-Administrator](/docs/services/blockchain/howto/CA_operate.html#ca-operate-enroll-ca-admin); hierzu verwenden Sie den Fabric-CA-Client. Verwenden Sie diese Administratorzertifikate, um die folgenden Befehle auszugeben. Stellen Sie sicher, dass für `$FABRIC_CA_CLIENT_HOME` der Wert `$HOME/fabric-ca-client/ca-admin` festgelegt ist.
 
@@ -720,7 +721,7 @@ Weitere Informationen zur Struktur der MSPs finden Sie im Abschnitt zur [Mitglie
 ## Protokolle der Zertifizierungsstelle anzeigen
 {: #ca-operate-view-logs}
 
-Komponentenprotokolle können über die Befehlszeile mit den [`Befehlen der CLI "kubectl"`](/docs/services/blockchain/howto/CA_operate.html#ca-operate-kubectl-configure) oder über [Kibana ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://www.elastic.co/products/kibana "Fenster zu Elasticsearch") angezeigt werden, das in Ihrem {{site.data.keyword.cloud_notm}} Private-Cluster enthalten ist. 
+Komponentenprotokolle können über die Befehlszeile mit den [`Befehlen der CLI "kubectl"`](/docs/services/blockchain/howto/CA_operate.html#ca-operate-kubectl-configure) oder über [Kibana ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://www.elastic.co/products/kibana "Fenster zu Elasticsearch") angezeigt werden, das in Ihrem {{site.data.keyword.cloud_notm}} Private-Cluster enthalten ist.
 
 - Mit dem Befehl `kubectl logs` können Sie die Containerprotokolle innerhalb des Pods anzeigen. Falls Sie den Podnamen nicht genau kennen, führen den folgenden Befehl aus, um Ihre Podliste anzuzeigen.
 
@@ -742,11 +743,16 @@ Komponentenprotokolle können über die Befehlszeile mit den [`Befehlen der CLI 
 
   **Hinweis:** Wenn Sie Ihre Protokolle in Kibana anzeigen, empfangen Sie möglicherweise die Antwort `Keine Ergebnisse gefunden`. Diese Bedingung kann auftreten, wenn {{site.data.keyword.cloud_notm}} Private die IP-Adresse Ihres Workerknotens als Hostnamen verwendet. Entfernen Sie zur Lösung dieses Problems oben in der Anzeige den Filter, der mit `node.hostname.keyword` beginnt. Anschließend sind die Protokolle sichtbar.
 
+## Sicherheit
+{: #ca-operate-security}
+
+Die Zertifizierungsstelle bleibt möglicherweise offline, wenn nur eine begrenzte Anzahl von Zertifikaten ausgegeben wird (z. B. für Peers, Node.js-Server und Clientanwendungen), um die Sicherheit weiterhin zu gewährleisten und die Manipulation von Schlüsselinformationen der Zertifizierungsstelle zu verhindern. Die Zertifizierungsstelle sollte jedoch online sein, wenn die bedarfsgesteuerte Ausgabe von Zertifikaten an Benutzer erforderlich ist. Es wird dringend empfohlen, den privaten Schlüssel des Administrators der Zertifizierungsstelle mit [HSM](https://console.test.cloud.ibm.com/docs/services/blockchain/glossary.html#glossary-hsm) zu schützen, falls möglich.
+
 ## Fehlerbehebung
 {: #ca-operate-troubleshooting}
 
 ### **Problem:** Fehler bei Ausführung des Befehls `enroll`
-{: #ca-operate-enroll-error}
+{: #ca-operate-enroll-error1}
 
 Bei der Ausführung des Befehls "enroll" im Fabric-CA-Client schlägt der Befehl möglicherweise mit dem folgenden Fehler fehl:
 
@@ -766,7 +772,7 @@ Dieser Fehler kann auftreten, wenn der Fabric-CA-Client versucht, eine Eintragun
 Prüfen Sie die Parameter, die Sie im Befehl `enroll` angegeben haben, und stellen Sie sicher, dass keine dieser Bedingungen vorliegt.
 
 ### **Problem:** Fehler bei der URL der Zertifizierungsstelle bei Ausführung des Befehls `enroll`
-{: #ca-operate-enroll-error}
+{: #ca-operate-enroll-error2}
 
 Der Befehl zum Eintragen des Fabric-CA-Clients ('fabric-ca-client enroll') kann fehlschlagen, wenn die Eintragungs-URL (der Wert des Parameters `-u`) ein Sonderzeichen enthält. Beispiel: Der folgende Befehl mit der Eintragungs-ID und dem Kennwort `admin:C25A06287!0`
 
@@ -781,7 +787,7 @@ schlägt fehl und führt zu folgendem Fehler:
 ```
 
 ### **Lösung:**
-Sie müssen entweder das Sonderzeichen codieren oder die URL in einfache Anführungszeichen einschließen. Beispielsweise wird `!` zu `%21` oder der Befehl sieht folgendermaßen aus:
+Sie müssen entweder das Sonderzeichen codieren oder die URL in einfache Anführungszeichen einschließen. Beispiel: `!` wird zu `%21` oder der Befehl sieht wie folgt aus:
 
 ```
 ./fabric-ca-client enroll -u 'https://admin:C25A06287!0@ash-zbc07c.4.secure.blockchain.ibm.com:21241' --tls.certfiles $HOME/fabric-ca-remote/cert.pem --caname PeerOrg1CA

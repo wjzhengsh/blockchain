@@ -2,7 +2,9 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -19,10 +21,10 @@ lastupdated: "2019-02-08"
 # 콘솔 관리
 {: #ibp-console-manage-console}
 
-***[이 페이지가 도움이 되었습니까? 알려주십시오.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 콘솔 동작을 관리하기 위해 수행할 수 있는 다양한 조치가 있습니다. 이 주제에서는 콘솔의 일상적인 사용에 도움이 되는 블록체인 노드 조작 외부의 조치에 대해 설명합니다.
 {:shortdesc}
+
+**대상 독자:** 이 주제는 블록체인 네트워크를 작성, 모니터링 및 관리할 책임이 있는 네트워크 운영자를 위해 설계되었습니다. 
 
 ## 콘솔에서 사용자 추가 및 제거
 
@@ -51,8 +53,13 @@ lastupdated: "2019-02-08"
 콘솔이 배치될 때 구성된 콘솔 관리자의 이메일 주소를 업데이트하려면 콘솔 관리자로 로그인해야 합니다. **사용자** 탭으로
 이동하여 **IBM ID** 타일에서 **구성**을 클릭하십시오. 열리는 패널에서 콘솔 관리자의 새 이메일 주소를 지정하십시오.
 
+## 로그 보기
+{: #ibp-console-manage-logs}
 
-## 콘솔 로그 보기
+{{site.data.keyword.blockchainfull_notm}} Platform 콘솔을 사용하는 동안 문제를 디버깅하기 위해 로그를 확인해야 할 수도 있습니다. 
+
+### 콘솔 로그 보기
+{: #ibp-console-manage-console-logs}
 
 콘솔을 사용하거나 노드를 작동할 때 발생하는 문제점을 디버그해야 하는 경우 쉽게 콘솔 로그에 액세스할 수 있습니다. 로깅 레벨을 설정하여 콘솔에서 수집하는 로그의 양을 늘리거나 줄일 수도
 있습니다. 콘솔의 로그는 {{site.data.keyword.IBM_notm}} Kubernetes 서비스가 수집하는 [노드의 로그](/docs/services/blockchain/howto/ibp-console-manage.html#ibp-console-manage-console-node-logs)와
@@ -72,17 +79,16 @@ lastupdated: "2019-02-08"
 콘솔 URL이 `localhost:3001/settings`인 경우, `localhost:3001/api/v1/logs`로 이동하면
 로그를 볼 수 있습니다. 클라이언트 및 서버 로그는 별도의 파일에 수집됩니다. 최신 로그는 페이지 맨 위에 있습니다.
 
-
-## 노드 로그 보기
+### 노드 로그 보기
 {: #ibp-console-manage-console-node-logs}
 
 피어, 순서 지정자 및 인증 기관의 로그는 {{site.data.keyword.IBM_notm}} Kubernetes 서비스에 의해 수집됩니다. 아래
 단계에 따라 {{site.data.keyword.blockchainfull_notm}} Platform 2.0 네트워크를 배치한
 클러스터에서 노드의 로그를 볼 수 있습니다.
 
-1. [{{site.data.keyword.cloud_notm}} 대시보드 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://console.bluemix.net/dashboard/apps/)를
+1. [{{site.data.keyword.cloud_notm}} 대시보드 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://cloud.ibm.com/resources)를
 열고 {{site.data.keyword.IBM_notm}} Kubernetes 서비스 클러스터의 개요 화면으로 이동하십시오.
-2. 위의 클러스터 개요 화면에서 **Kubernetes 대시보드**를 클릭하십시오.
+2. 위의 클러스터 개요 화면에서 **Kubernetes 대시보드**를 클릭하십시오. 
 3. Kubernetes 대시보드 내에서 왼쪽 탐색 네임스페이스 드롭 다운 목록을
 사용하여 네임스페이스를 {{site.data.keyword.blockchainfull_notm}} Platform 서비스 인스턴스로
 변경하십시오. 서비스 인스턴스 이름은 문자 및 숫자로 구성된 긴 문자열입니다. {{site.data.keyword.blockchainfull_notm}} Platform 콘솔의
@@ -94,7 +100,18 @@ URL의 시작 부분에서 서비스 인스턴스 이름을 찾을 수 있습니
 다른 컨테이너에서 실행되어 다른 로그를 생성합니다.
 
 기본적으로 노드의 로그는 클러스터 내에서 로컬로 수집됩니다. 또한 {{site.data.keyword.cloud_notm}} Log Analysis 서비스
-또는 서드파티 서비스를 사용하여 네트워크로부터 로그를 수집, 저장 및 분석할 수 있습니다. 자세한 정보는 [{{site.data.keyword.IBM_notm}} Kubernetes 서비스에 대한 로깅 및 모니터링 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://console.cloud.ibm.com/docs/containers?topic=containers-health#health "{{site.data.keyword.IBM_notm}} Kubernetes 서비스에 대한 로깅 및 모니터링")을 참조하십시오.
+또는 서드파티 서비스를 사용하여 네트워크로부터 로그를 수집, 저장 및 분석할 수 있습니다. 자세한 정보는 [{{site.data.keyword.IBM_notm}} Kubernetes 서비스에 대한 로깅 및 모니터링 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://console.cloud.ibm.com/docs/containers?topic=containers-health#health "{{site.data.keyword.IBM_notm}} Kubernetes 서비스에 대한 로깅 및 모니터링")을 참조하십시오. 로그를 실시간으로 손쉽게 구문 분석해주는 [{{site.data.keyword.cloud_notm}} LogDNA ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://cloud.ibm.com/catalog/services/logdna "{{site.data.keyword.IBM_notm}} Log Analysis with LogDNA") 서비스를 이용하는 것이 좋습니다. 
+
+### 스마트 계약 컨테이너 로그 보기
+{: #ibp-console-manage-console-container-logs}
+
+스마트 계약 관련 문제가 발생할 경우 문제를 디버깅하기 위해 스마트 계약 또는 체인코드, 컨테이너 로그를 확인할 수 있습니다. 
+
+- Kubernetes 대시보드를 열고 스마트 계약이 실행 중인 피어 팟(Pod)을 클릭하십시오. 
+- 대시보드에서 `exec` 링크를 클릭하여 팟(Pod)으로 실행하십시오. 이 링크는 기본적으로 피어 컨테이너를 가리킵니다. 
+- 드롭 다운 목록에서 `dind` 컨테이너를 선택하여 해당 컨테이너로 전환하십시오. 
+- `docker ps -a` 명령을 실행하여 체인코드 컨테이너 목록을 확인하십시오. 
+- `docker logs <chaincode-container-ID>`를 실행하십시오. 이때 <chaincode-container-ID>는 체인코드 컨테이너의 ID로 바꾸십시오. 
 
 
 ## 리소스 사용량 모니터링
@@ -103,4 +120,4 @@ URL의 시작 부분에서 서비스 인스턴스 이름을 찾을 수 있습니
 기본 CPU, 메모리 및 스토리지 설정으로 사전 구성되며 이러한 값은 수정할 수 없습니다. {{site.data.keyword.IBM_notm}} Kubernetes 서비스 대시보드를
 사용하여 리소스 사용량을 모니터링할 수 있습니다. {{site.data.keyword.cloud_notm}} Platform 콘솔에서
 새 노드를 작성하려고 시도하면 Kubernetes 클러스터를 펼쳐야 하는 오류가 발생하며 Kubernetes 클러스터에
-더 많은 스토리지를 추가할 수 있습니다. 기존 볼륨의 스토리지 용량 또는 성능을 개선하는 방법에 대해서는 이 [정보 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://console.bluemix.net/docs/containers/cs_storage_file.html#change_storage_configuration "기존 스토리지 디바이스의 크기 및 IOPS  변경")를 참조하십시오.
+더 많은 스토리지를 추가할 수 있습니다. 기존 볼륨의 스토리지 용량 또는 성능을 개선하는 방법에 대해서는 이 [정보 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://cloud.ibm.com/docs/containers/cs_storage_file.html#change_storage_configuration "기존 스토리지 디바이스의 크기 및 IOPS  변경")를 참조하십시오.

@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -17,8 +19,6 @@ lastupdated: "2019-02-08"
 
 # Zertifizierungsstelle in {{site.data.keyword.cloud_notm}} Private bereitstellen
 {: #ca-deploy}
-
-***[Ist diese Seite hilfreich? Teilen Sie uns Ihre Meinung mit.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 Nachdem Sie das Helm-Diagramm für {{site.data.keyword.blockchainfull}} Platform on {{site.data.keyword.cloud_notm}} Private importiert haben, können Sie die einzelnen Komponenten bereitstellen. Die Zertifizierungsstelle (Certificate Authority, CA) ist das Stammverzeichnis der vertrauenswürdigen Elemente für Ihre Organisation und ermöglicht Ihnen die Generierung von Berechtigungsnachweisen für die anderen Komponenten, die Sie bereitstellen wollen. Infolgedessen müssen Sie eine Zertifizierungsstelle bereitstellen, bevor Sie die anderen Komponenten bereitstellen. Jede Organisation in einem Blockchain-Netz mit mehreren Clouds muss ihre eigene Zertifizierungsstelle bereitstellen.  Weitere Informationen zu Zertifizierungsstellen und der Rolle, die sie in einem Blockchain-Netz übernehmen, enthält der Abschnitt [Zertifizierungsstellen](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview-ca).
 {:shortdesc}

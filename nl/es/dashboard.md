@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -14,8 +16,5 @@ lastupdated: "2019-02-08"
 
 # Operación de la red del Plan inicial
 {: #operate-starter-plan-network}
-
-
-***[¿Le resulta útil esta página? Indíquenos su opinión.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 Consulte la guía de aprendizaje [Utilización del supervisor de red](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard) para aprender a trabajar con la red del Plan inicial.

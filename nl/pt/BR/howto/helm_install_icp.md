@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -50,7 +52,7 @@ Para obter mais informações sobre como usar essas imagens, consulte [Incluindo
 
 ## Importando o gráfico Helm para  {{site.data.keyword.cloud_notm}}  Privado
 
-1. Faça download do arquivo de gráfico do Helm do IBM Blockchain Platform for {{site.data.keyword.cloud_notm}} Private por meio do [Passport Advantage Online ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://www.ibm.com/software/passportadvantage/pao_customer.html "Passport Advantage Online") ou da edição Community gratuita por meio do [GitHub ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://github.com/IBM/charts/blob/master/repo/stable/ibm-blockchain-platform-dev-1.0.0.tgz "IBM/charts"). Esse pacote de gráficos Helm contém três subgráficos Helm para a CA, solicitador e peer.
+1. Faça download do arquivo de gráfico do Helm do IBM Blockchain Platform for {{site.data.keyword.cloud_notm}} Private por meio do [Passport Advantage Online ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://www.ibm.com/software/passportadvantage/pao_customer.html "Passport Advantage Online") ou da edição Community gratuita por meio do [GitHub ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://github.com/IBM/charts/blob/master/repo/stable/ibm-blockchain-platform-dev-1.0.0.tgz "IBM/charts").  Esse pacote de gráficos Helm contém três subgráficos Helm para a CA, solicitador e peer.
 
 2. Caso ainda não tenha feito isso, efetue login em seu cluster do {{site.data.keyword.cloud_notm}} Private.
 
@@ -93,7 +95,7 @@ Para obter mais informações sobre como usar essas imagens, consulte [Incluindo
 
     Quando esse comando for concluído com êxito, você verá algo semelhante às informações a seguir:
 
-    <details><summary>Helm install output</summary>
+    <details aria-label="Details"><summary>Helm install output</summary>
     ```
     Expanding archive
     OK

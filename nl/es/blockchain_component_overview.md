@@ -2,7 +2,11 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-11"
+lastupdated: "2019-03-05"
+
+keywords: blockchain components, ca, certificate authorities, peer, ordering service, orderer, channel, smart contract, applications
+
+subcollection: blockchain
 
 ---
 

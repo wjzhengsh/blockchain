@@ -2,7 +2,9 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -18,10 +20,10 @@ lastupdated: "2019-02-08"
 # Knoten importieren
 {: #ibp-console-import-nodes}
 
-***[Ist diese Seite hilfreich? Teilen Sie uns Ihre Meinung mit.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 Die Konsole enthält die Option zum Importieren von Knoten, die mit einer anderen {{site.data.keyword.blockchainfull}} Platform-Konsole erstellt werden.
 {:shortdesc}  
+
+**Zielgruppe:** Dieser Abschnitt richtet sich an Netzoperatoren, die für die Erstellung, Überwachung und Verwaltung des Blockchain-Netzes verantwortlich sind.
 
 ## Warum sollten Sie einen Knoten importieren?
 
@@ -40,7 +42,7 @@ Wenn Sie eine Komponente importieren, müssen Sie die zugehörigen Verbindungsin
  Nachdem Sie einen Knoten in die Konsole importiert haben, können Sie dessen Verbindungsinformationen auch über die Registerkarte **Einstellungen** des Knotens ändern.
 
 {: note}
-Bevor Sie Knoten in die Konsole importieren können, müssen sie aus der {{site.data.keyword.blockchainfull_notm}} Platform-Konsole, in der sie erstellt wurden, exportiert werden. Exportieren Sie einfach die Knoteninformationen aus der Konsole in eine `JSON`-Datei und importieren Sie die generierte Datei, indem Sie die Schaltfläche `JSON hochladen` im Schritt zum Importieren des Knotens in die Konsole im Seitenfenster verwenden.
+Bevor Sie Knoten in die Konsole importieren können, müssen sie aus der {{site.data.keyword.blockchainfull_notm}} Platform-Konsole, in der sie erstellt wurden, exportiert werden.  Exportieren Sie einfach die Knoteninformationen aus der Konsole in eine `JSON`-Datei und importieren Sie die generierte Datei, indem Sie die Schaltfläche `JSON hochladen` im Schritt zum Importieren des Knotens in die Konsole im Seitenfenster verwenden.
 
 
 ## Starten Sie hier: Zertifikate oder Berechtigungsnachweise zusammenstellen
@@ -57,6 +59,7 @@ Es gibt mehrere Gründe, warum Sie möglicherweise eine Zertifizierungsstelle in
 Um eine Zertifizierungsstelle in die {{site.data.keyword.blockchainfull_notm}} Platform-Konsole zu importieren und zu betreiben, müssen Sie die Zertifizierungsstelle bereits aus einer anderen {{site.data.keyword.blockchainfull_notm}} Platform-Instanz exportiert haben. Wenn Sie eine Zertifizierungsstelle importieren, können Sie neue Benutzer registrieren und [Identitäten eintragen](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-enroll).
 
 ### Vorbemerkungen
+{: #ibp-console-import-ca-before-you-begin}
 
 - Stellen Sie sicher, dass Sie die JSON-Datei der Administratoridentität für die Zertifizierungsstelle bereits in die Konsolenwallet importiert haben.
 - Stellen Sie sicher, dass die JSON-Datei der Zertifizierungsstelle, die aus der Konsole exportiert wurde, in der sie erstellt wurde, verfügbar ist.
@@ -67,6 +70,8 @@ Der Import einer Zertifizierungsstelle erfolgt über die Registerkarte **Knoten*
 
 - Klicken Sie auf die Schaltfläche **JSON hochladen**, um die manuelle Eingabe der Informationen zu überspringen und zu der JSON-Datei zu navigieren, die aus der Konsole exportiert wurde, in der die Zertifizierungsstelle erstellt wurde.
 - Legen Sie die Administratoridentität für die Zertifizierungsstelle fest, indem Sie auf **Vorhandene Identität** klicken und die entsprechende Identität aus der Konsolenwallet auswählen.
+
+Beim Imporieren einer Zertifizierungsstelle können Sie optional auch die Berechtigungsnachweise für die zusätzliche TLS-Zertifizierungsstelle angeben, falls eine solche vorhanden ist.  
 
 Nachdem Sie die Zertifizierungsstelle in die Konsole importiert haben, können Sie die Zertifizierungsstelle verwenden, um neue Identitäten zu erstellen und die erforderlichen Zertifikate zu generieren, um Ihre Komponenten auszuführen und Transaktionen an das Netz zu übergeben. Weitere Informationen hierzu finden Sie im Abschnitt [Zertifizierungsstellen verwalten](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-manage-ca).
 
@@ -86,6 +91,7 @@ Ein Anordnungsknoten ist die Blockchain-Komponente, die Transaktionen von Netzmi
 Wenn Sie einen Anordnungsknoten in die Konsole importieren, können Sie neue Kanäle für Peers erstellen, um Transaktionen privat auszuführen.
 
 ### Vorbemerkungen
+{: #ibp-console-import-orderer-before-you-begin}
 
 - Stellen Sie sicher, dass Sie die JSON-Datei der Administratoridentität für den Anordnungsknoten bereits in die Konsolenwallet importiert haben.
 - Stellen Sie sicher, dass die JSON-Datei des Anordnungsknotens, die aus der Konsole exportiert wurde, in der sie erstellt wurde, verfügbar ist.
@@ -100,13 +106,14 @@ Nachdem Sie den Anordnungsknoten in die Konsole importiert haben, können Sie ne
 ## Peer importieren
 {: #ibp-console-import-peer}
 
-Ein Peerknoten ist die Blockchain-Komponente, die ein Ledger verwaltet und einen Smart Contract ausführt, um Abfrage- und Aktualisierungsoperationen für das Ledger auszuführen. Organisationsmitglieder besitzen und verwalten Peers. Jede Organisation, die einem Konsortium beitritt, sollte mindestens einen Peer bereitstellen. Weitere Informationen zu Peers finden Sie in der [Übersicht zu Blockchain-Komponenten](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview-peer).  
+Ein Peerknoten ist die Blockchain-Komponente, die ein Ledger verwaltet und einen Smart Contract ausführt, um Abfrage- und Aktualisierungsoperationen für das Ledger auszuführen. Organisationsmitglieder besitzen und verwalten Peers.  Jede Organisation, die einem Konsortium beitritt, sollte mindestens einen Peer bereitstellen. Weitere Informationen zu Peers finden Sie in der [Übersicht zu Blockchain-Komponenten](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview-peer).  
 
 Nachdem Sie einen Peer in die Konsole importiert haben, können Sie Smart Contracts auf dem Peer installieren und den Peer mit anderen Kanälen in der Blockchain verknüpfen.
 
 **Hinweis:** Wenn Sie mehr Peers zur Peerorganisation hinzufügen oder zusätzliche Administratoridentitäten für einen Peer erstellen müssen, müssen Sie die Zertifizierungsstelle des Peers importieren und dann diese Zertifizierungsstelle verwenden, um diese Operationen auszuführen.
 
 ### Vorbemerkungen
+{: #ibp-console-import-peer-before-you-begin}
 
 Bevor Sie einen Peer importieren können, müssen Sie die folgenden Informationen und Zertifikate zusammenstellen:
 

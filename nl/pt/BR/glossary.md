@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -15,8 +17,6 @@ lastupdated: "2019-02-08"
 
 # Glossário
 {: #glossary}
-
-***[Esta página é útil? Diga-nos.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 Este tópico define {{site.data.keyword.blockchainfull}}Termos específicos da plataforma que aparecem nesta documentação. Para um entendimento mais profundo dos termos e para obter um glossário de termos relacionados aos conceitos do Hyperledger Fabric, consulte o [Glossário do Hyperledger Fabric ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](http://hyperledger-fabric.readthedocs.io/en/release-1.2/glossary.html).
 {:shortdesc}
@@ -33,7 +33,7 @@ Um conjunto ordenado de transações, que é criptograficamente vinculado ao blo
 {: #glossary-business-network}
 Uma definição de uma rede de blockchain, que inclui o modelo de dados, a lógica de transação e as regras de controle de acesso para a sua solução de blockchain. Definições de rede de negócios são criadas usando o [Hyperledger Composer](/docs/services/blockchain/glossary.html#glossary-composer). Definições de rede de negócios são empacotadas em arquivos **.bna** (archive de rede de negócios) implementáveis.
 
-## CA
+## Autoridade de certificação
 {: #glossary-CA}
 Uma abreviação de "Autoridade de Certificação", esse é o componente que emite certificados para todos os membros participantes. Esses certificados representam a identidade de um membro. Todas as entidades na rede (peers, solicitantes, clientes etc.) deve ter uma identidade para se comunicar, autenticar e, finalmente, transacionar. Essas identidades são necessárias para qualquer participação direta na rede de blockchain.
 

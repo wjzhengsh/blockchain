@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -18,11 +20,7 @@ lastupdated: "2019-02-08"
 # 네트워크 모니터 사용
 {: #ibp-dashboard}
 
-
-***[이 페이지가 도움이 되었습니까? 알려주십시오.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
-
-{{site.data.keyword.blockchainfull}} Platform에서는 네트워크 리소스, 구성원, 가입된 채널, 트랜잭션 성능 데이터 및 배치된 체인코드를 포함하는 블록체인 환경의 개요를 제공하기 위해 네트워크 모니터를 제공합니다. 또한 네트워크 모니터는 Swagger API를 실행하고 {{site.data.keyword.blockchainfull_notm}} Platform을 사용하여 네트워크를 개발하며 샘플 애플리케이션을 시도하기 위한 시작점을 제공합니다.
+{{site.data.keyword.blockchainfull}} Platform에서는 네트워크 리소스, 구성원, 참여된 채널, 트랜잭션 성능 데이터 및 배치된 체인코드를 포함하는 블록체인 환경의 개요를 제공하기 위해 네트워크 모니터를 제공합니다. 또한 네트워크 모니터는 Swagger API를 실행하고 {{site.data.keyword.blockchainfull_notm}} Platform을 사용하여 네트워크를 개발하며 샘플 애플리케이션을 시도하기 위한 시작점을 제공합니다.
 {:shortdesc}
 
 이 튜토리얼을 사용하여 네트워크 모니터를 통해 엔터프라이즈 플랜 또는 스타터 플랜 네트워크를 작동시키는 방법에 대해 학습할 수 있습니다. 튜토리얼에 있는 스크린샷은 대부분 엔터프라이즈 플랜용이지만 스타터 플랜의 경우에도 해당 지시사항이 유효합니다. 하나의 플랜에 대해서만 특정 기능에 액세스할 수 있는 경우 관련 섹션이 **스타터 플랜 네트워크용** 또는 **엔터프라이즈 플랜 네트워크용**으로 레이블 지정됩니다.
@@ -116,7 +114,7 @@ lastupdated: "2019-02-08"
 *그림 4. 구성원 추가*
 
 **구성원 추가**를 클릭하면 다음과 같은 두 가지 옵션이 표시됩니다.
-- **구성원 초대**. 네트워크의 구성원이 되도록 다른 조직을 초대할 수 있습니다. 그러면 초대된 조직이 네트워크에 가입하고 사용자와 협업할 수 있습니다.
+- **구성원 초대**. 네트워크의 구성원이 되도록 다른 조직을 초대할 수 있습니다. 그러면 초대된 조직이 네트워크에 참여하고 사용자와 협업할 수 있습니다.
 - **구성원 작성**. 또한 고유 이메일 주소를 사용하여 구성원을 작성할 수 있습니다. 기본적으로 스타터 플랜에서 받은 두 개의 조직의 경우와 같이 이 구성원을 제어할 수 있습니다.
 
 
@@ -203,8 +201,7 @@ CA에서 새 공용 인증서 및 개인 키를 가져오려면 관리자 ID 옆
 ## 코드 개발
 {: #ibp-dashboard-write-code}
 
-{{site.data.keyword.IBM_notm}}은 Composer CLI, JavaScript API, REST 서버 및 웹 플레이그라운드를 포함하여 프로덕션에서 Hyperledger Composer를 사용하는 네트워크를 지원하지 않습니다.
-{:note}
+{{site.data.keyword.IBM_notm}}은 Composer CLI, JavaScript API, REST 서버 및 웹 플레이그라운드를 포함하여 프로덕션에서 Hyperledger Composer를 사용하는 네트워크를 지원하지 않습니다.{:note}
 
 스타터 플랜 및 엔터프라이즈 플랜은 개발 환경에 산업 표준 도구 및 기술을 제공합니다. 네트워크를 개발한 후 이를 네트워크에 배치할 수 있습니다.
 

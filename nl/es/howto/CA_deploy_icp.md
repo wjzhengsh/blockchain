@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -17,8 +19,6 @@ lastupdated: "2019-02-08"
 
 # Despliegue de una entidad emisora de certificados en {{site.data.keyword.cloud_notm}} Private
 {: #ca-deploy}
-
-***[¿Le resulta útil esta página? Indíquenos su opinión.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 Tras importar el diagrama de Helm de {{site.data.keyword.blockchainfull}} Platform en {{site.data.keyword.cloud_notm}} Private, puede desplegar los componentes individuales. La entidad emisora de certificados (CA) es la raíz de confianza de la organización y le permite generar credenciales para los demás componentes que vaya a desplegar. Como consecuencia, debe desplegar una CA antes de desplegar los demás componentes. Cada organización de una red blockchain multinube debe desplegar su propia CA.  Para obtener más información sobre las CA y qué rol desempeñan en una red blockchain, consulte [Entidades emisoras de certificados](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview-ca).
 {:shortdesc}

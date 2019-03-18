@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -18,16 +20,14 @@ lastupdated: "2019-02-08"
 # {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private の概説
 {: #get-started-icp}
 
-***[このページは参考になりましたか。 ご意見をお聞かせください。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
-{{site.data.keyword.blockchainfull}} Platform for {{site.data.keyword.cloud_notm}} Private では、{{site.data.keyword.cloud_notm}} Private などのオンプレミス環境の x86、LinuxONE、および IBM Z に、Kubernetes Helm チャートを使用して認証局 (CA)、順序付けプログラム、およびピアをデプロイし、複数のクラウド環境にホストされているコンポーネントにそれらを接続することができます。{{site.data.keyword.cloud_notm}} Private は、オンプレミスのコンテナー化されたアプリケーションを開発して管理するためのアプリケーション・プラットフォームです。 コンテナーを管理するための統合環境を備えており、コンテナー・オーケストレーター Kubernetes、プライベート・イメージ・レジストリー、管理コンソール、およびモニタリング・フレームワークも含まれています。
+{{site.data.keyword.blockchainfull}} Platform for {{site.data.keyword.cloud_notm}} Private では、{{site.data.keyword.cloud_notm}} Private などのオンプレミス環境の x86、LinuxONE、および IBM Z に、Kubernetes Helm チャートを使用して認証局 (CA)、順序付けプログラム、およびピアをデプロイし、複数のクラウド環境にホストされているコンポーネントにそれらを接続することができます。 {{site.data.keyword.cloud_notm}} Private は、オンプレミスのコンテナー化されたアプリケーションを開発して管理するためのアプリケーション・プラットフォームです。 コンテナーを管理するための統合環境を備えており、コンテナー・オーケストレーター Kubernetes、プライベート・イメージ・レジストリー、管理コンソール、およびモニタリング・フレームワークも含まれています。
 {:shortdesc}
 
 [Hyperledger Fabric](https://hyperledger-fabric.readthedocs.io/en/release-1.2/) に基づくブロックチェーン・ネットワークは、ほぼ無数の構成にデプロイして、多くのユース・ケースをサポートできます。 このように順応性があるにもかかわらず、特にネットワーク・コンポーネントをセットアップしてデプロイするための適切な**シーケンス**については、多くのベスト・プラクティスがあります。
 
 このデプロイメント・ガイドでは、{{site.data.keyword.cloud_notm}} Private 上で機能する {{site.data.keyword.blockchainfull}} Platform ネットワークをセットアップするための適切な手順と、デプロイ時に考慮すべきベスト・プラクティスなどについて説明します。 ただし、機能する CA、順序付けプログラム、またはピアのみをセットアップする場合は、基本的なルールが適用されます。 単一の順序付けサービス・ノードのみをデプロイする SOLO 順序付けサービスは、実稼働環境用ではないことに注意してください。 SOLO を実行するネットワークまたはチャネルは、「実稼働」環境と見なすことはできません。 ただし、ピアと CA を実稼働環境にデプロイすることはできます (特に、可用性が高い場合)。
 
-{{site.data.keyword.cloud_notm}} Private に {{site.data.keyword.blockchainfull_notm}} Platform をデプロイするプロセスは難しく、Fabric に関する高度な専門知識があることを前提としています。 Fabric、{{site.data.keyword.blockchainfull_notm}} Platform、または {{site.data.keyword.cloud_notm}} Private の知識がなく、開発環境または PoC (概念検証) をセットアップすることが目標である場合は、代わりに[スターター・プラン](/docs/services/blockchain/starter_plan.html#starter-plan-about)を確認することを検討してください。 また、あらゆるデプロイメント構成がサポートされるわけではないことにも注意してください。これは難しいため、Fabric の専門家が管理職務を他の当事者に引き継ぐ前に、デプロイメントとコンポーネント接続のプロセスを行うことを前提としています。 これらの専門家は、このガイドおよび Helm チャート・コンポーネント全般の資料の対象読者です。
+{{site.data.keyword.cloud_notm}} Private に {{site.data.keyword.blockchainfull_notm}} Platform をデプロイするプロセスは難しく、Fabric に関する高度な専門知識があることを前提としています。 Fabric、{{site.data.keyword.blockchainfull_notm}} Platform、または {{site.data.keyword.cloud_notm}} Private の知識がなく、開発環境または PoC (概念検証) をセットアップすることが目標である場合は、代わりに[スターター・プラン](/docs/services/blockchain/starter_plan.html#starter-plan-about)を確認することを検討してください。 また、あらゆるデプロイメント構成がサポートされるわけではないことにも注意してください。 これは難しいため、Fabric の専門家が管理職務を他の当事者に引き継ぐ前に、デプロイメントとコンポーネント接続のプロセスを行うことを前提としています。 これらの専門家は、このガイドおよび Helm チャート・コンポーネント全般の資料の対象読者です。
 {:important}
 
 ## ステップ 1: ネットワーク構成の決定
@@ -82,7 +82,7 @@ Kubernetes 秘密が作成されると、コンポーネントをデプロイす
 
 ## 次のステップ
 
-すべてのノードをデプロイしたら、ノードの操作を開始して、トランザクションを送信できます。詳細については、以下のリンクを参照してください。
+すべてのノードをデプロイしたら、ノードの操作を開始して、トランザクションを送信できます。 詳細については、以下のリンクを参照してください。
 
 - [{{site.data.keyword.cloud_notm}} Private での認証局の操作](/docs/services/blockchain/howto/CA_operate.html#ca-operate)
 - [{{site.data.keyword.cloud_notm}} Private での順序付けプログラムの操作](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate)

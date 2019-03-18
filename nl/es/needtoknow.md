@@ -2,7 +2,10 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
+
 ---
 
 {:new_window: target="_blank"}
@@ -17,16 +20,12 @@ lastupdated: "2019-02-08"
 # Descargo de responsabilidad
 {: #disclaimer}
 
-
-***[¿Le resulta útil esta página? Indíquenos su opinión.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
-
 **ATENCIÓN:** Debe revisar la información siguiente antes de utilizar un plan de {{site.data.keyword.blockchainfull}}.
 
 ## Declaración de soporte de IBM
 {: #disclaimer-support-statement}
 
-El largo historial de liderazgo en innovación de {{site.data.keyword.IBM}} continúa con los planes de las ofertas {{site.data.keyword.blockchainfull_notm}} Platform en {{site.data.keyword.Bluemix_notm}}. Blockchain es una tecnología de progreso rápido proyectada para interrumpir la industria financiera, las cadenas de suministro locales y globales y el soporte logístico en cualquier número de espacios empresariales. Mediante varios programas de adopción anteriores, los clientes y los socios empresariales de {{site.data.keyword.IBM_notm}} han estado gestionando una estructura de Blockchain como solución empresarial. {{site.data.keyword.blockchainfull_notm}} Platform en {{site.data.keyword.cloud_notm}} es uno de estos programas. **Igual que sucede con cualquier nueva tecnología, los usuarios de {{site.data.keyword.blockchainfull_notm}} Platform en {{site.data.keyword.cloud_notm}} deben estar preparados para un cambio rápido y fundamental**.
+El largo historial de liderazgo en innovación de {{site.data.keyword.IBM}} continúa con los planes de las ofertas {{site.data.keyword.blockchainfull_notm}} Platform en {{site.data.keyword.cloud_notm}}. Blockchain es una tecnología de progreso rápido proyectada para interrumpir la industria financiera, las cadenas de suministro locales y globales y el soporte logístico en cualquier número de espacios empresariales. Mediante varios programas de adopción anteriores, los clientes y los socios empresariales de {{site.data.keyword.IBM_notm}} han estado gestionando una estructura de Blockchain como solución empresarial. {{site.data.keyword.blockchainfull_notm}} Platform en {{site.data.keyword.cloud_notm}} es uno de estos programas. **Igual que sucede con cualquier nueva tecnología, los usuarios de {{site.data.keyword.blockchainfull_notm}} Platform en {{site.data.keyword.cloud_notm}} deben estar preparados para un cambio rápido y fundamental**.
 {:shortdesc}
 
 La arquitectura que hay detrás de {{site.data.keyword.blockchainfull_notm}} es el proyecto Hyperledger Fabric de Linux Foundation. Cada contribución a la comunidad de código abierto mejora Hyperledger Fabric, pero esto puede representar retos de adopción. **{{site.data.keyword.IBM_notm}} advierte sobre la definición o intercambio de activos financieros<!--, or any assets of value,--> directamente en cualquier red de tipo Blockchain de Hyperledger Fabric.**.
@@ -37,7 +36,7 @@ La arquitectura que hay detrás de {{site.data.keyword.blockchainfull_notm}} es 
 ## Sentencia de código abierto
 {: #disclaimer-open-source-statement}
 
-Los planes de la oferta {{site.data.keyword.blockchainfull_notm}} on {{site.data.keyword.Bluemix_notm}} se han creado a partir de la pila de Hyperledger Fabric de Linux Foundation. Los miembros de Hyperledger Project, incluido {{site.data.keyword.IBM_notm}}, siguen realizando aportaciones a los varios subproyectos recogidos en Hyperledger.  La comunidad revisa, evalúa y prueba todas las aportaciones.
+Los planes de la oferta {{site.data.keyword.blockchainfull_notm}} on {{site.data.keyword.cloud_notm}} se han creado a partir de la pila de Hyperledger Fabric de Linux Foundation. Los miembros de Hyperledger Project, incluido {{site.data.keyword.IBM_notm}}, siguen realizando aportaciones a los varios subproyectos recogidos en Hyperledger.  La comunidad revisa, evalúa y prueba todas las aportaciones.
 
 ## Sentencia de soporte del código de encadenamiento
 {: #disclaimer-chaincode-support-statement}

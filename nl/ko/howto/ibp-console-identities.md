@@ -2,7 +2,9 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -17,12 +19,11 @@ lastupdated: "2019-02-08"
 # ID 작성 및 관리
 {: #ibp-console-identities}
 
-***[이 페이지가 도움이 되었습니까? 알려주십시오.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 {{site.data.keyword.blockchainfull_notm}} Platform의 노드는 Hyperledger Fabric을 기반으로 하며 권한이 있는
 블록체인 네트워크를 빌드합니다. 즉, 블록체인 컨소시엄의 모든 참가자가 공개 키 인프라에 의해 지속적으로 확인되는
-ID를 가져야 합니다. {{site.data.keyword.blockchainfull_notm}} Platform 콘솔로 인해
-사용자가 조직의 인증 기관(CA)에 의해 해당 ID를 작성할 수 있습니다. 그런 다음 콘솔 지갑을 사용하여 해당 ID를 저장하고 이를 사용하여 네트워크를 작동시킬 수 있습니다.
+ID를 가져야 합니다. 이러한 ID는 {{site.data.keyword.blockchainfull_notm}} Platform 콘솔에서 조직의 인증 기관(CA)을 통해 작성할 수 있습니다. 해당 ID는 네트워크 작동에 사용될 수 있으므로 콘솔 지갑에 저장해야 합니다. 
+
+**대상 독자:** 이 주제는 블록체인 네트워크를 작성, 모니터링 및 관리할 책임이 있는 네트워크 운영자를 위해 설계되었습니다. 
 
 ## 인증 기관 관리
 {: #ibp-console-identities-manage-ca}
@@ -69,10 +70,7 @@ ID에 대해 작업하기 전에 CA 작성 동안 작성된 관리자 ID를 사�
 ID를 생성하여 지갑으로 내보내는 **등록**
 단추를 통해 기타 ID를 작성할 수 있습니다.
 
-ID를 CA 관리자로 설정하려면 **설정** 아이콘을 클릭한 다음 후 슬라이더에서 **ID 설정**을
-클릭하십시오. **기존 ID** 탭을 사용하여 지갑에 존재하는 ID를 지정할 수 있습니다. 또는
-**새 ID** 탭을 사용하여
-관리자에 대한 인증서를 붙여넣거나 인증서를 포함하는 JSON 파일을 업로드할 수 있습니다.
+다른 ID로 전환하여 CA 관리자로 사용하려면 **설정** 아이콘을 클릭한 후 슬라이더에서 **ID 설정**을 클릭하십시오. **기존 ID** 탭을 사용하여 지갑에 존재하는 ID를 지정할 수 있습니다. 또는 **새 ID** 탭에서 새 관리자에 대한 인증서를 붙여넣거나 인증서가 포함된 JSON 파일을 업로드할 수 있습니다. 
 
 모든 ID가 새 사용자를 등록할 수 있는 것은 아닙니다. 추가 CA 관리자 설정을 포함한
 자세한 정보는 [새 CA 관리자 작성](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-ca-admin)을 참조하십시오.
@@ -134,28 +132,24 @@ CA 개요 패널에서 **사용자 등록** 단추를 클릭하여 새 사용자
 ## ID 등록
 {: #ibp-console-identities-enroll}
 
-CA에 등록된 각 ID에 대해 공개 및 개인 키를 생성할 수 있습니다. [조직 MSP를 작성](/docs/services/blockchain/howto/ibp-console-organizations.html#console-organizations-create-msp)하고
-CA를 사용하여 이미 등록된 기타 관리자에 대한 MSP에 추가 인증서를 제공할 때 관리자 ID 중 하나에 대해
-키를 생성할 수 있습니다.
+CA에 등록된 각 ID에 대해 공용 인증서와 개인 키를 생성할 수 있습니다. 추가 관리자 ID를 CA에 등록한 경우 관리자 ID에 대한 키를 생성한 후 [조직 MSP을 작성](/docs/services/blockchain/howto/ibp-console-organizations.html#console-organizations-create-msp)할 때 이 키를 추가로 포함시키십시오. 
 
-CA이 키를 작성하기 위해 사용하는 [ID를 설정](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-ca-identity)했는지
-확인하십시오. ID를 설정한 후 **ID 등록** 단추를 클릭하여
-키를 표시하고 사이드 패널에 base64 형식으로 표시할 수 있습니다.
-  - 공개 키는 **인증서** 필드에 표시됩니다. 이 인증서를 등록 인증서, 서명 인증서 또는 signCert라고도 합니다.
-  - **개인 키** 필드에서 해당되는 개인 키를 찾을 수 있습니다.
+ID를 등록하기 전에 [ID를 설정](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-ca-identity)해야 CA가 작동될 수 있습니다. 일반적으로 CA를 작성할 때 지정된 관리자 ID로 설정하십시오. CA가 해당 ID로 설정되었는지 확인하려면 CA 세부사항 페이지를 조사하고 CA 이름 옆에 있는 현재 활성 상태인 ID의 등록 ID를 확인하십시오. ID가 관리자 ID로 설정되었는지 확인한 후에는 사용자의 오버플로우 메뉴에서 **ID 등록**을 클릭하여 CA에 등록된 사용자에 대해 인증서와 키를 생성하십시오. 
 
-**ID 등록**을 클릭하여 작성된 각 키 쌍은 한 번만 생성되고 콘솔이나 브라우저에
-의해 저장되지 않습니다. **ID 등록** 단추를 클릭하면
-CA 관리자에 대해 설정한 최대 등록 수에 대해 계수됩니다. 등록 후에는
-ID를 로컬 파일 시스템에 다운로드하거나 콘솔 지갑에 추가하여 키 쌍을 저장해야 합니다. 이 공개 및 개인 키 쌍의 새 이름을
+- 사용자의 `등록 시크릿`을 입력하십시오. 
+- 다음 단계에서는 생성된 키가 표시됩니다. 
+  - 공개 키는 **인증서** 필드에 표시됩니다. 이 인증서를 등록 인증서, 서명 인증서 또는 signCert라고도 합니다. signCert는 VSCode 확장으로 클라이언트 애플리케이션을 작성할 때 사용될 수 있도록 로컬 시스템의 파일로 내보내야 합니다. 
+  - **개인 키** 필드에서 해당되는 개인 키를 찾을 수 있습니다. 마찬가지로, 개인 키도 VSCode 확장으로 작성된 클라이언트 애플리케이션에서 사용될 수 있도록 로컬 시스템으로 내보내야 합니다. 
+  - **ID 등록**을 클릭하여 작성된 인증서 및 개인 키는 한 번만 생성되고 콘솔이나 브라우저에 저장되지 않습니다. **ID 등록** 단추를 클릭하면
+CA 관리자에 대해 설정한 최대 등록 수에 대해 계수됩니다. 이 등록 과정의 일부로 ID를 로컬 파일 시스템에 다운로드하거나 콘솔 지갑에 추가하여 키 쌍을 저장해야 합니다. 이 공개 및 개인 키 쌍의 새 이름을
 검색할 수 있도록 **이름** 필드에 입력하십시오.
-  - **ID 내보내기**를 클릭하여 해당 인증서를 JSON 형식으로 로컬 파일 시스템에 다운로드하십시오.
-  - **지갑에 ID 추가**를 클릭하여 이러한 인증서를 콘솔 지갑에 추가하십시오. 그런 다음
+- **중요:** **ID 내보내기**를 클릭하여 인증서와 키를 로컬 파일 시스템에 JSON 형식의 단일 파일로 다운로드하십시오. 이러한 키를 보호하고 관리할 책임은 사용자 본인에게 있습니다. 
+- **지갑에 ID 추가**를 클릭하여 이러한 인증서를 콘솔 지갑에 추가하십시오. 그런 다음
 [지갑 탭](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-wallet)의
 새 타일에서 이 ID의 이름 및 키를 찾을 수 있습니다.
 
 또한 Fabric CA 클라이언트 또는 Fabric SDK를 사용하여 콘솔에서 작성한 ID를 등록할 수 있습니다. 콘솔은 이러한 단계를 완료하는 데 필요한 모든 정보를
-제공합니다. 등록 중에 지정한 **등록 ID** 및 **등록 시크릿**을 저장했는지 확인하십시오.
+제공합니다. 등록 중에 지정한 **등록 ID**와 **등록 시크릿**을 저장했는지 확인하십시오. 
 
 ## TLS CA 사용
 {: #ibp-console-identities-tlsca}

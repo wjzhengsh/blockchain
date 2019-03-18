@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -17,10 +19,6 @@ lastupdated: "2019-02-08"
 
 # Fabric SDK を使用したアプリケーションの開発
 {: #dev-app}
-
-
-***[このページは参考になりましたか。 ご意見をお聞かせください。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 
 {{site.data.keyword.blockchainfull}} Platform には、アプリケーションをブロックチェーン・ネットワークに接続するために使用できる API が用意されています。 接続プロファイル内にあるネットワーク API エンドポイントを使用して、チェーンコードを起動し、ピアにあるチャネル固有の台帳を更新または照会することができます。 また、[Swagger UI](/docs/services/blockchain/howto/swagger_apis.html#ibp-swagger) の API を使用して、ネットワークのノード、チャネル、およびメンバーを管理することもできます。
 {:shortdesc}
@@ -86,7 +84,7 @@ Hyperledger Fabric SDK には、アプリケーションでブロックチェー
                   ...
   ```
 
-自分の組織の外部にあるネットワーク・リソースをアプリケーションのターゲットにすることもできます。 例えば、チェーンコードの[エンドースメント・ポリシー](/docs/services/blockchain/howto/install_instantiate_chaincode.html#install-instantiate-chaincode-endorsement-policy)が、チャネルの他の組織からの承認を必須としている場合は、ポリシーに準拠するために、各組織の十分な数のピアにトランザクションを送信する必要があります。Hyperledger Fabric の[サービス・ディスカバリー ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/discovery-overview.html "Service discovery") は、スターター・プランでもエンタープライズ・プランでもサポートされていません。接続プロファイルの「ピア」セクションを使用して、他の組織のピアのエンドポイント情報とそれに付随する TLS 証明書を入手する必要があります。どのピアがどのチャネルに参加しているかについて、他の組織の管理者に問い合わせることができます。{:note}
+自分の組織の外部にあるネットワーク・リソースをアプリケーションのターゲットにすることもできます。 例えば、チェーンコードの[エンドースメント・ポリシー](/docs/services/blockchain/howto/install_instantiate_chaincode.html#install-instantiate-chaincode-endorsement-policy)が、チャネルの他の組織からの承認を必須としている場合は、ポリシーに準拠するために、各組織の十分な数のピアにトランザクションを送信する必要があります。 Hyperledger Fabric の[サービス・ディスカバリー ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/discovery-overview.html "Service discovery") は、スターター・プランでもエンタープライズ・プランでもサポートされていません。 接続プロファイルの「ピア」セクションを使用して、他の組織のピアのエンドポイント情報とそれに付随する TLS 証明書を入手する必要があります。 どのピアがどのチャネルに参加しているかについて、他の組織の管理者に問い合わせることができます。{:note}
 
 3. 次の例のように、API エンドポイント情報をアプリケーションの構成ファイルにプラグインします。
   ```
@@ -361,7 +359,7 @@ var channel = fabric_client.newChannel('defaultchannel');
 
 これにより、SDK が、接続プロファイルを使用してチャネルに定義されているピアと順序付けサービスを追加します。 これを利用すると、アプリケーションの作成効率が高まるため、ネットワーク・メンバーの参加や離脱、新しいチャネルの開始などのためのアプリケーションの更新が簡単になります。 関連する他の手順について詳しくは、Node SDK 資料の[接続プロファイルのチュートリアル ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://fabric-sdk-node.github.io/tutorial-network-config.html "接続プロファイルのチュートリアル"){:new_window} を参照してください。 手動のエンドポイント接続ではなく接続プロファイルを使用する、この[fabcar チュートリアルのバージョン ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/developerworks/cloud/library/cl-deploy-fabcar-sample-application-ibm-blockchain-starter-plan/index.html){:new_window} を使用できます。
 
-Hyperledger Fabric のエンドースメント・ポリシーの [ サービス・ディスカバリー ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/discovery-overview.html "Service discovery") は、スターター・プランでもエンタープライズ・プランでもサポートされていません。ただし、接続プロファイルを編集して、組織外のピアにトランザクションを送信して承認を受けることができます。 接続プロファイルには、{{site.data.keyword.blockchainfull_notm}} Platform ネットワーク上に存在する他の組織のピアのエンドポイント情報と TLS 証明書が既に含まれています。 ピアをチャネルに追加するには、プロファイルの「channels」セクションで、ピアの名前を該当するチャネルに追加します。 どのピアがどのチャネルに参加しているかについて、他の組織の管理者に問い合わせる必要があります。
+Hyperledger Fabric のエンドースメント・ポリシーの [ サービス・ディスカバリー ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/discovery-overview.html "Service discovery") は、スターター・プランでもエンタープライズ・プランでもサポートされていません。 ただし、接続プロファイルを編集して、組織外のピアにトランザクションを送信して承認を受けることができます。 接続プロファイルには、{{site.data.keyword.blockchainfull_notm}} Platform ネットワーク上に存在する他の組織のピアのエンドポイント情報と TLS 証明書が既に含まれています。 ピアをチャネルに追加するには、プロファイルの「channels」セクションで、ピアの名前を該当するチャネルに追加します。 どのピアがどのチャネルに参加しているかについて、他の組織の管理者に問い合わせる必要があります。
 
 ## ネットワーク・モニターを使用した証明書の生成
 {: #dev-app-enroll-panel}
@@ -612,32 +610,32 @@ channel.sendInstantiateProposal(request, 300000);
 ## CouchDB を使用する場合のベスト・プラクティス
 {: #dev-app-couchdb-indices}
 
-状態データベースに CouchDB を使用している場合、チェーンコードからチャネルの状態データに対する JSON データ照会を実行できます。JSON 照会用に索引を作成してチェーンコードで使用することを強くお勧めします。索引があれば、ネットワークがトランザクションとエントリーの追加ブロックをワールド・ステートに追加するときに、アプリケーションで効率的にデータを取得できます。
+状態データベースに CouchDB を使用している場合、チェーンコードからチャネルの状態データに対する JSON データ照会を実行できます。 JSON 照会用に索引を作成してチェーンコードで使用することを強くお勧めします。 索引があれば、ネットワークがトランザクションとエントリーの追加ブロックをワールド・ステートに追加するときに、アプリケーションで効率的にデータを取得できます。
 
 CouchDB について、および索引をセットアップする方法について詳しくは、Hyperledger Fabric の資料で [CouchDB as the State Database ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/couchdb_as_state_database.html "CouchDB as the State Database"){:new_window} を参照してください。 [Fabric CouchDB チュートリアル ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/couchdb_tutorial.html) にも、索引をチェーンコードで使用する例があります。
 
 CouchDB データベース全体をスキャンする照会にはチェーンコードを使用しないでください。 完全なデータベース・スキャンでは、応答時間が長くなり、ネットワークのパフォーマンスが低下します。 次のような手順により、長時間かかる照会を防止および対処できます。
 - チェーンコードを使用して索引をセットアップします。
 - リッチ JSON 照会を発行する場合は、`$or`、`$in`、`$regex` のようなデータベース全体のスキャンや索引全体のスキャンが行われるオペレーターは使用しないようにします。
-- {{site.data.keyword.blockchainfull_notm}} Platform 上のピアには queryLimit が設定されているため、状態データベースから返されるエントリー数は 10,000 個に制限されます。1 つの照会で queryLimit に達する場合は、複数の照会を使用することで残りの結果を取得できます。範囲照会の結果を追加で取得する必要がある場合には、前の照会で返された最後のキーを使用して次の照会を開始します。JSON 照会の結果がさらに必要な場合は、データ内のいずれかの変数で照会をソートしてから、前の照会で返された最後の値を次の照会の「より大」フィルターで使用します。
-- 集計またはレポート作成のためにデータベース全体を照会しないでください。 アプリケーションの中でダッシュボードを作成したり大量のデータを収集したりする場合は、ブロックチェーン・ネットワークのデータを複製したオフチェーン・データベースを照会します。これにより、ネットワークのパフォーマンスを低下させたり、トランザクションを中断したりすることなく、ブロックチェーン上のデータを把握できます。
+- {{site.data.keyword.blockchainfull_notm}} Platform 上のピアには queryLimit が設定されているため、状態データベースから返されるエントリー数は 10,000 個に制限されます。 1 つの照会で queryLimit に達する場合は、複数の照会を使用することで残りの結果を取得できます。 範囲照会の結果を追加で取得する必要がある場合には、前の照会で返された最後のキーを使用して次の照会を開始します。 JSON 照会の結果がさらに必要な場合は、データ内のいずれかの変数で照会をソートしてから、前の照会で返された最後の値を次の照会の「より大」フィルターで使用します。
+- 集計またはレポート作成のためにデータベース全体を照会しないでください。 アプリケーションの中でダッシュボードを作成したり大量のデータを収集したりする場合は、ブロックチェーン・ネットワークのデータを複製したオフチェーン・データベースを照会します。 これにより、ネットワークのパフォーマンスを低下させたり、トランザクションを中断したりすることなく、ブロックチェーン上のデータを把握できます。
 
-  オフチェーン・データ・ストアは、Fabric SDK に用意されているチャネル・ベースのイベント・サービス・クライアントを使用して作成できます。例えば、ブロック・リスナーを使用して、チャネル台帳に追加される最新のトランザクションを取得できます。 有効なトランザクションからのトランザクションの読み取り/書き込みセットを使用して、別のデータベースに格納されているワールド・ステートのコピーを更新できます。詳しくは、Node SDK の資料の [How to use the channel-based event service ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://fabric-sdk-node.github.io/tutorial-channel-events.html "How to use the channel-based event service"){:new_window} を参照してください。
+  オフチェーン・データ・ストアは、Fabric SDK に用意されているチャネル・ベースのイベント・サービス・クライアントを使用して作成できます。 例えば、ブロック・リスナーを使用して、チャネル台帳に追加される最新のトランザクションを取得できます。 有効なトランザクションからのトランザクションの読み取り/書き込みセットを使用して、別のデータベースに格納されているワールド・ステートのコピーを更新できます。 詳しくは、Node SDK の資料の [How to use the channel-based event service ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://fabric-sdk-node.github.io/tutorial-channel-events.html "How to use the channel-based event service"){:new_window} を参照してください。
 
 ## アプリケーションのホスティング
 {: #dev-app-host-app}
 
-アプリケーションをローカル・ファイル・システム上でホストするか、{{site.data.keyword.Bluemix_notm}} にプッシュすることができます。 アプリケーションを {{site.data.keyword.Bluemix_notm}} にプッシュするには、以下のステップを実行します。
+アプリケーションをローカル・ファイル・システム上でホストするか、{{site.data.keyword.cloud_notm}} にプッシュすることができます。 アプリケーションを {{site.data.keyword.cloud_notm}} にプッシュするには、以下のステップを実行します。
 1. [Cloud Foundry コマンド・ライン・インストーラー ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://github.com/cloudfoundry/cli/releases) をインストールします。  `cf` コマンドを使用してインストールをテストします。
     * 正常にインストールされた場合は、端末に一連のテキスト出力が表示されます。
     * 「command not found」と表示された場合は、正常にインストールされなかったか、CF がシステム・パスに追加されていません。
-2. 以下のコマンドを発行して、API エンドポイントをセットアップし、ご使用の {{site.data.keyword.Bluemix_notm}} ID とパスワードでログインします。
+2. 以下のコマンドを発行して、API エンドポイントをセットアップし、ご使用の {{site.data.keyword.cloud_notm}} ID とパスワードでログインします。
     ```
     > cf api https://api.ng.bluemix.net
     > cf login
     ```
     {:codeblock}
-3. アプリケーションのディレクトリーを参照し、以下のコマンドを発行してアプリケーションをプッシュします。 これには、アプリケーションのサイズにより数分かかることがあります。 {{site.data.keyword.Bluemix_notm}} のログを端末で表示できます。 アプリケーションが正常に起動されると、ログの出力は終了します。
+3. アプリケーションのディレクトリーを参照し、以下のコマンドを発行してアプリケーションをプッシュします。 これには、アプリケーションのサイズにより数分かかることがあります。 {{site.data.keyword.cloud_notm}} のログを端末で表示できます。 アプリケーションが正常に起動されると、ログの出力は終了します。
 	```
 	> cf push YOUR_APP_NAME_HERE
 	```

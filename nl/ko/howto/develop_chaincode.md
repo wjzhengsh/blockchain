@@ -2,19 +2,23 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2018-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
+
 ---
 
 {:new_window: target="_blank"}
 {:shortdesc: .shortdesc}
 {:codeblock: .codeblock}
 {:screen: .screen}
+{:note: .note}
+{:important: .important}
+{:tip: .tip}
 {:pre: .pre}
 
 # 스마트 계약 작성
 {: #develop-smart-contracts}
-
-***[이 페이지가 도움이 되었습니까? 알려주십시오.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 체인코드(스마트 계약이라고도 함)는 blockchain 원장에서 데이터를 읽고 업데이트할 수 있도록 하는 소프트웨어입니다. 체인코드는 비즈니스 로직을 블록체인 네트워크의 모든 구성원이 승인하고 확인한 실행 가능 프로그램으로 변환할 수 있습니다. 비즈니스 로직에는 당사자 사이에 거래된 자산의 정의가 포함됩니다. 또한 비즈니스 로직은 실행될 트랜잭션에 필요한 이용 약관으로 구성됩니다. 이러한 규칙을 블록 체인의 코드로 변환하면 비즈니스에서 비즈니스 처리와 감사를 간소화하고 대량의 수동 처리 및 서류 작업을 줄일 수 있습니다.
 
@@ -35,7 +39,10 @@ lastupdated: "2018-02-08"
 
 체인코드는 여러 언어로 작성할 수 있으며 {{site.data.keyword.blockchainfull_notm}} Platform에서는 Go와 Node.js로 작성된 체인코드를 지원합니다. 체인코드를 사용하면 Fabric 체인코드 인터페이스에서 제공하는 API를 사용하여 blockchain에 저장된 데이터를 조회하고 변경할 수 있습니다. blockchain의 데이터는 채널 [원장 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/ledger/ledger.html "원장")의 세계 상태로 키-값 쌍에 저장됩니다. 체인코드는 get 명령을 사용하여 값을 검색하고 put 명령을 사용하여 값을 작성하거나 업데이트합니다. 이러한 기본 오퍼레이션을 사용하면 네트워크의 비즈니스 규칙을 정의하는 함수를 빌드할 수 있습니다. 이러한 함수는 애플리케이션에 의해 호출되어 네트워크의 일반 사용자에게 제공될 수 있습니다. 차량 네트워크 예를 계속 사용하려면 자동차 대리점에서 올바른 차량 ID 번호를 제공하는 경우에만 put 명령을 사용하여 원장에 새 자동차를 추가할 수 있는 함수를 작성할 수 있습니다.
 
-Hyperledger Fabric 커뮤니티 문서의 [개발자용 체인코드 튜토리얼![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/latest/chaincode4ade.html "개발자용 체인코드 튜토리얼")을 참조하여 체인코드를 작성하는 방법을 학습할 수 있습니다. 이 튜토리얼에서는 자산을 작성하고 읽는 간단한 체인코드를 구현하는 과정을 안내하고 해당 프로세스에서 사용되는 API를 소개합니다. 모든 체인코드 언어에 해당하는 체인코드 API 참조 안내서를 찾을 수도 있습니다. [Fabric 샘플 저장소 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://github.com/hyperledger/fabric-samples "Fabric 샘플")의 체인코드 폴더에 추가 예제가 있습니다.
+Hyperledger Fabric 커뮤니티 문서의 [개발자용 체인코드 튜토리얼![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/latest/chaincode4ade.html "개발자용 체인코드 튜토리얼")을 참조하여 체인코드를 작성하는 방법을 학습할 수 있습니다. 이 튜토리얼에서는 자산을 작성하고 읽는 간단한 체인코드를 구현하는 과정을 안내하고 해당 프로세스에서 사용되는 API를 소개합니다. 모든 체인코드 언어에 해당하는 체인코드 API 참조 안내서를 찾을 수도 있습니다. [Fabric 샘플 저장소 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://github.com/hyperledger/fabric-samples "Fabric 샘플")의 체인코드 폴더에 추가 예제가 있습니다.  
+
+스마트 계약은 일반적으로 요청의 유효성을 검증하고 비즈니스 규칙을 적용한 후 결정적 결과를 리턴할 수 있습니다. 그러나 추가 사실이 필요한 경우나 클라이언트에서 제공하는 정보가 실제 사실인지 비즈니스 네트워크가 확인하려는 경우가 있습니다. Hyperledger Fabric은 스마트 계약에서 서드파티 시스템에 대한 외부 호출이 수행되는 것을 막지 않습니다. 그러나 그로 인해 발생하는 R/W 세트가 결정적인지 확인하는 것은 스마트 계약 개발자의 책임입니다.
+{:note}
 
 ## 체인코드 설치
 {: #develop-smart-contracts-install}

@@ -1,8 +1,11 @@
 ---
 
 copyright:
-  years: 2017, 2018, 2019
-lastupdated: "2019-02-08"
+  years: 2017, 2019
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
+
 ---
 
 {:new_window: target="_blank"}
@@ -14,8 +17,6 @@ lastupdated: "2019-02-08"
 
 # Hyperledger Fabric
 {: #hyperledger-fabric}
-
-***[Ist diese Seite hilfreich? Teilen Sie uns Ihre Meinung mit.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 Das {{site.data.keyword.blockchainfull}}-Netz basiert auf dem Hyperledger Fabric-Stack, einem der Blockchain-Projekte im Hyperledger Project der Linux Foundation. Dabei handelt es sich um ein "genehmigtes" Netz, in dem alle Benutzer und Komponenten bekannte Identitäten haben. An jeder Nahtstelle in der Kommunikation ist Signatur-/Verifizierungslogik implementiert und über die Transaktionen wird durch eine Reihe von Bewilligungs- und Validierungsprüfungen entschieden. Somit bestehen große Unterschiede zu herkömmlichen Blockchain-Implementierungen, die Anonymität unterstützen und auf Kryptowährungen und hohe Rechenleistung angewiesen sind, um Transaktionen zu validieren.
 {:shortdesc}
@@ -55,8 +56,8 @@ In anderen verteilten Blockchains wie Ethereum und Bitcoin gibt es keine zentral
 
 Anordnungsknoten sind Schlüsselkomponenten in einem Netz, da sie einige wesentliche Funktionen ausführen:
 
-- Sie übernehmen die **Anordnung** der Blöcke von Transaktionen, die an die Peers gesendet werden, um sie in die Ledgers zu schreiben. Dieser Prozess wird als "Anordnung" bezeichnet. Wenn diese Transaktionen stattdessen bei den Peers selbst gebündelt und angeordnet würden, würde dies die Möglichkeit erhöhen, dass ein Peer eine Transaktion in den zugehörigen Ledger schreibt, während dies bei einem anderen Peer nicht der Fall war. Dies könnte zu einer Statusverzweigung führen. 
-- Sie verwalten den **Anordnungsknoten-Systemkanal**, d. h., die Position, an der das **Konsortium**, die Liste der Peer-Organisationen, die Kanäle erstellen dürfen, gespeichert ist. 
+- Sie übernehmen die **Anordnung** der Blöcke von Transaktionen, die an die Peers gesendet werden, um sie in die Ledgers zu schreiben. Dieser Prozess wird als "Anordnung" bezeichnet. Wenn diese Transaktionen stattdessen bei den Peers selbst gebündelt und angeordnet würden, würde dies die Möglichkeit erhöhen, dass ein Peer eine Transaktion in den zugehörigen Ledger schreibt, während dies bei einem anderen Peer nicht der Fall war. Dies könnte zu einer Statusverzweigung führen.
+- Sie verwalten den **Anordnungsknoten-Systemkanal**, d. h., die Position, an der das **Konsortium**, die Liste der Peer-Organisationen, die Kanäle erstellen dürfen, gespeichert ist.
 - Sie führen wichtige Identitätsvalidierungsprüfungen durch. Wenn eine Organisation beispielsweise versucht, einen Kanal zu erstellen, obwohl sie kein Mitglied des Konsortiums des Anordnungsknotens ist, wird die Anforderung zurückgewiesen. Anordnungsknoten validieren auch das Verhalten in Transaktionskanälen, wie z. B. die Berechtigungen zum Ändern einer Kanalkonfiguration.
 
 Hyperledger Fabric unterstützt derzeit sowohl SOLO (ein Anordnungsknoten) als auch Kafka-basierte Anordnungsservice-Bereitstellungen. Weitere Informationen zum Hyperledger Fabric-Anordnungsservice finden Sie unter [Bringing up a Kafka-based Ordering Service ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](http://hyperledger-fabric.readthedocs.io/en/release-1.4/kafka.html){:new_window} in der [Hyperledger Fabric-Dokumentation ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](http://hyperledger-fabric.readthedocs.io/en/release-1.4/){:new_window}.
@@ -93,7 +94,7 @@ Zur Sicherstellung der Datenkonsistenz und -integrität implementiert Hyperledge
 In einem Hyperledger Fabric-Netz wird der Datenfluss für Abfragen und Transaktionen von einer clientseitigen Anwendung initiiert, die eine Transaktionsanforderung an einen Peer auf einem Kanal übergibt. Der erste Datenfluss über das Netz gilt für Abfragen und Transaktionen gemeinsam:
 
 1. Mit den im SDK enthaltenen APIs signiert und übergibt eine Clientanwendung einen Transaktionsvorschlag an die entsprechenden bewilligenden Peers auf dem angegebenen Kanal. Dieser erste Transaktionsvorschlag ist eine **Anforderung** für eine Bewilligung.
-2. Jeder Peer auf dem Kanal überprüft die Identität und Berechtigung des übergebenden Clients und (falls gültig) führt den angegebenen Chaincode für die übergebenen Eingaben aus. Auf der Grundlage der Transaktionsergebnisse und der Bewilligungsrichtlinie für den aufgerufenen Chaincode gibt jeder Peer eine signierte Antwort YES oder NO an die Anwendung zurück.  Jede signierte Antwort YES ist eine **Bewilligung** der Transaktion.
+2. Jeder Peer auf dem Kanal überprüft die Identität und Berechtigung des übergebenden Clients und (falls gültig) führt den angegebenen Chaincode für die übergebenen Eingaben aus. Auf der Grundlage der Transaktionsergebnisse und der Bewilligungsrichtlinie für den aufgerufenen Chaincode gibt jeder Peer eine signierte Antwort YES oder NO an die Anwendung zurück. Jede signierte Antwort YES ist eine **Bewilligung** der Transaktion.
 
 	An diesem Punkt im Transaktionsfluss verzweigt sich der Prozess für Abfragen und Transaktionen. Wenn der Vorschlag eine Abfragefunktion im Chaincode aufgerufen hat, gibt die Anwendung die Daten an den Client zurück. Wenn der Vorschlag eine Funktion im Chaincode zum Aktualisieren des Ledgers aufgerufen hat, wird die Anwendung mit den folgenden Schritten fortgesetzt:
 3. Die Anwendung leitet die Transaktion, die den Lese-/Schreibsatz und die Bewilligungen umfasst, an den **Anordnungsservice**weiter.

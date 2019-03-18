@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -14,9 +16,6 @@ lastupdated: "2018-02-08"
 
 # Preisstruktur
 {: #ibp-pricing}
-
-
-***[Ist diese Seite hilfreich? Teilen Sie uns Ihre Meinung mit.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 
 In diesem Abschnitt finden Sie Informationen zur Preisstruktur der Mitgliedschaftspläne für {{site.data.keyword.blockchainfull}} Platform und zu den Kosten, die beim Entwickeln und Erweitern Ihres Blockchain-Netzes entstehen.  

@@ -2,7 +2,10 @@
 
 copyright:
   years: 2018,2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
+
 ---
 
 {:new_window: target="_blank"}
@@ -10,11 +13,9 @@ lastupdated: "2019-02-08"
 {:codeblock: .codeblock}
 {:screen: .screen}
 {:pre: .pre}
+
 # 체인코드 설치, 인스턴스화 및 업데이트
 {: #install-instantiate-chaincode}
-
-
-***[이 페이지가 도움이 되었습니까? 알려주십시오.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 
 체인코드는 원장의 자산 작성 및 수정을 위한 비즈니스 로직 및 트랜잭션 명령어를 캡슐화하는 소프트웨어입니다. 체인코드는 여러 다른 언어로 쓸 수 있으며 {{site.data.keyword.blockchainfull}} Platform에서는 Go와 Node.js 체인코드를 지원합니다. 체인코드는 상호작용해야 하는 피어와 연관된 Docker 컨테이너에서 실행됩니다. 체인코드 개발에 대한 자세한 정보는 [체인코드 튜토리얼 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](http://hyperledger-fabric.readthedocs.io/en/release-1.2/chaincode.html)을 참조하십시오.

@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -18,11 +20,9 @@ lastupdated: "2019-02-08"
 # {{site.data.keyword.blockchainfull_notm}} Platform for Amazon Web Services について
 {: #remote-peer-aws-about}
 
-***[このページは参考になりましたか。 ご意見をお聞かせください。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 **注:** {{site.data.keyword.blockchainfull}} Platform Remote Peer on {{site.data.keyword.cloud_notm}} Private (ベータ) プログラムは終了しました。 引き続き {{site.data.keyword.cloud_notm}} Private 環境でピアを実行することを希望する場合は、代わりに **{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private** オファリングをご使用ください。 詳しくは、[{{site.data.keyword.cloud_notm}} Private のピアについて](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-about-peer)を参照してください。
 
-AWS クラウド内の {{site.data.keyword.blockchainfull_notm}} Platform ピアを {{site.data.keyword.cloud_notm}} 内の既存のブロックチェーン・ネットワークに接続した後に、このピアを実行できます。 {{site.data.keyword.cloud_notm}} の外部でリモート・ピアを実行すれば、{{site.data.keyword.cloud_notm}} 内部の既存のネットワークを利用しながら、より柔軟にブロックチェーン・ネットワークの拡張や参加を行えます。AWS クラウド内のリモート・ピアは、プラットフォーム上の認証局 (CA) と順序付けサービスを利用します。しかし、{{site.data.keyword.cloud_notm}} の外部にある他のアプリケーションと同じ場所にピアを配置することができます。
+AWS クラウド内の {{site.data.keyword.blockchainfull_notm}} Platform ピアを {{site.data.keyword.cloud_notm}} 内の既存のブロックチェーン・ネットワークに接続した後に、このピアを実行できます。 {{site.data.keyword.cloud_notm}} の外部でリモート・ピアを実行すれば、{{site.data.keyword.cloud_notm}} 内部の既存のネットワークを利用しながら、より柔軟にブロックチェーン・ネットワークの拡張や参加を行えます。 AWS クラウド内のリモート・ピアは、プラットフォーム上の認証局 (CA) と順序付けサービスを利用します。しかし、{{site.data.keyword.cloud_notm}} の外部にある他のアプリケーションと同じ場所にピアを配置することができます。
 {:shortdesc}
 
 
@@ -92,7 +92,7 @@ AWS ピアをデプロイした後に、ピアがネットワークにトラン�
 
 さらに、クライアント・アプリケーションは、[Fabric SDK](/docs/services/blockchain/v10_application.html#dev-app-fabric-sdks) を使用してトランザクションをピアおよび順序付けサービスに送信します。 これらのトランザクションには、台帳のキーと値のペアを含む[読み取り/書き込みセット ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/readwrite.html "読み取り/書き込みセットのセマンティクス") のデータが含まれます。
 
-国内のデータの常駐が自社業務にとっての要件である場合は、順序付けプログラム、ピア、およびクライアント・アプリケーションは同じ国に常駐している必要があります。 {{site.data.keyword.blockchainfull_notm}} Platform ネットワークが {{site.data.keyword.cloud_notm}} で作成されている場合、ネットワークのロケーションを選択することができます。 <!--For a Starter Plan network, you can select from US South, United Kingdom, and Sydney. For an Enterprise Plan network, you can select from currently available locations, which include Dallas, Frankfurt, London, Sao Paulo, Tokyo, and Toronto. -->地域とロケーションについて詳しくは、[{{site.data.keyword.blockchainfull_notm}} Platform の地域とロケーション](/docs/services/blockchain/reference/ibp_regions.html#ibp-regions-locations)を参照してください。これらのいずれかの国でデータの常駐を実現するには、ピアが {{site.data.keyword.blockchainfull_notm}} Platform ネットワークのロケーションと同じ国に常駐する必要があります。
+国内のデータの常駐が自社業務にとっての要件である場合は、順序付けプログラム、ピア、およびクライアント・アプリケーションは同じ国に常駐している必要があります。 {{site.data.keyword.blockchainfull_notm}} Platform ネットワークが {{site.data.keyword.cloud_notm}} で作成されている場合、ネットワークのロケーションを選択することができます。 <!--For a Starter Plan network, you can select from US South, United Kingdom, and Sydney. For an Enterprise Plan network, you can select from currently available locations, which include Dallas, Frankfurt, London, Sao Paulo, Tokyo, and Toronto. -->地域とロケーションについて詳しくは、[{{site.data.keyword.blockchainfull_notm}} Platform の地域とロケーション](/docs/services/blockchain/reference/ibp_regions.html#ibp-regions-locations)を参照してください。 これらのいずれかの国でデータの常駐を実現するには、ピアが {{site.data.keyword.blockchainfull_notm}} Platform ネットワークのロケーションと同じ国に常駐する必要があります。
 
 ### データの常駐のユース・ケース
 {: #remote-peer-aws-about-data-res-use-case}

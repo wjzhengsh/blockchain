@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -17,8 +19,6 @@ lastupdated: "2019-02-08"
 
 # {{site.data.keyword.blockchainfull_notm}} Platform 시작하기
 {: #get-started-ibp}
-
-***[이 페이지가 도움이 되었습니까? 알려주십시오.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 {{site.data.keyword.blockchainfull}} Platform은 사용자가
 직접 선택한 환경에서 블록체인 컴포넌트를 배치할 수 있는 관리되는 전체 스택의

@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -14,10 +16,9 @@ lastupdated: "2019-02-08"
 {:important: .important}
 {:tip: .tip}
 {:pre: .pre}
+
 # Peers in {{site.data.keyword.cloud_notm}} Private mit Starter Plan oder Enterprise Plan betreiben
 {: #ibp-peer-operate}
-
-***[Ist diese Seite hilfreich? Teilen Sie uns Ihre Meinung mit.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 Nach der Einrichtung eines Peers unter {{site.data.keyword.blockchainfull}} Platform on {{site.data.keyword.cloud_notm}} Private müssen Sie verschiedene operative Schritte ausführen, bevor Ihr Peer Transaktionen an ein Starter Plan- oder Enterprise Plan-Netz übergeben kann. Die Schritte umfassen das Hinzufügen Ihrer Organisation zu einem Kanal, das Hinzufügen Ihres Peers zum Kanal, das Installieren des Chaincodes auf dem Peer, die Instanziierung des Chaincodes auf dem Kanal und die Verbindung von Anwendungen mit dem Peer.
 {:shortdesc}
@@ -552,7 +553,7 @@ Weitere Informationen zur Verwendung der Anzeige "Code installieren" des Network
 ## Protokolle des Peers anzeigen
 {: #ibp-peer-operate-view-logs}
 
-Komponentenprotokolle können über die Befehlszeile mit den [Befehlen der CLI `"kubectl"`](/docs/services/blockchain/howto/peer_operate_ibp.html#ibp-peer-operate-kubectl-configure) oder über [Kibana ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://www.elastic.co/products/kibana "Your Window into the Elastic Search") angezeigt werden, das in Ihrem {{site.data.keyword.cloud_notm}} Private-Cluster enthalten ist. 
+Komponentenprotokolle können über die Befehlszeile mit den [Befehlen der CLI `"kubectl"`](/docs/services/blockchain/howto/peer_operate_ibp.html#ibp-peer-operate-kubectl-configure) oder über [Kibana ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://www.elastic.co/products/kibana "Your Window into the Elastic Search") angezeigt werden, das in Ihrem {{site.data.keyword.cloud_notm}} Private-Cluster enthalten ist.
 
 - Mit dem Befehl `kubectl logs` können Sie die Containerprotokolle innerhalb des Pods anzeigen. Falls Sie den Podnamen nicht genau kennen, führen den folgenden Befehl aus, um Ihre Podliste anzuzeigen.
 
@@ -578,8 +579,7 @@ Komponentenprotokolle können über die Befehlszeile mit den [Befehlen der CLI `
 {: #ibp-peer-operate-troubleshooting}
 
 ### **Problem:** Aufrufbefehl schlägt auf Peer mit der Nachricht `chaincode fingerprint mismatch` fehl
-{: #ibp-peer-operate
--install-error}
+{: #ibp-peer-operate-install-error}
 
 Möglicherweise empfangen Sie den Fehler `chaincode fingerprint mismatch`, wenn Sie eine Anforderung `peer chaincode invoke` für einen Peer ausführen, der in {{site.data.keyword.cloud_notm}} Private ausgeführt wird:
 

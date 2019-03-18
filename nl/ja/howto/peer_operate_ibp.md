@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -14,10 +16,9 @@ lastupdated: "2019-02-08"
 {:important: .important}
 {:tip: .tip}
 {:pre: .pre}
+
 # スターター・プランまたはエンタープライズ・プランを使用した {{site.data.keyword.cloud_notm}} Private でのピアの操作
 {: #ibp-peer-operate}
-
-***[このページは参考になりましたか。 ご意見をお聞かせください。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 {{site.data.keyword.blockchainfull}} Platform on {{site.data.keyword.cloud_notm}} Private ピアをセットアップした後、ピアでスターター・プランまたはエンタープライズ・プランのネットワークにトランザクションを送信できるようにするには、いくつかの操作ステップを実行する必要があります。 このステップでは、チャネルへの組織の追加、チャネルへのピアの参加、ピアでのチェーンコードのインストール、チャネルでのチェーンコードのインスタンス化、およびピアへのアプリケーションの接続を行います。
 {:shortdesc}
@@ -193,7 +194,7 @@ npm install fabric-client@1.2
 ### SDK へのピアの TLS 証明書の引き渡し
 {: #ibp-peer-operate-download-tlscert}
 
-SDK との通信を認証するには、ピアの TLS 証明書を参照する必要があります。 [ピア・コンテナーからダウンロードした](/docs/services/blockchain/howto/peer_operate_ibp.html#ibp-peer-operate-tls-cert) TLS 証明書を見つけて、アプリケーションから参照できる場所に保存します。コマンド例を使用した場合、ピアの TLS 証明書は `$HOME/fabric-ca-client/peer-tls/peertls.pem` にあります。 次に、単純なファイル読み取りコマンドを使用して、TLS 証明書をアプリケーションにインポートできます。
+SDK との通信を認証するには、ピアの TLS 証明書を参照する必要があります。 [ピア・コンテナーからダウンロードした](/docs/services/blockchain/howto/peer_operate_ibp.html#ibp-peer-operate-tls-cert) TLS 証明書を見つけて、アプリケーションから参照できる場所に保存します。 コマンド例を使用した場合、ピアの TLS 証明書は `$HOME/fabric-ca-client/peer-tls/peertls.pem` にあります。 次に、単純なファイル読み取りコマンドを使用して、TLS 証明書をアプリケーションにインポートできます。
 
 ```
 var peerTLSCert = fs.readFileSync(path.join(__dirname, './peertls.pem'));
@@ -214,7 +215,7 @@ var peer = fabric_client.newPeer('grpcs://9.30.94.174:30167', { pem:  Buffer.fro
 You need to specify a `ssl-target-name-override` of `<something>.blockchain.com` in order for the peer to resolve the DNS request.
 -->
 
-**注:** ピアは {{site.data.keyword.cloud_notm}} の外部にあるため、{{site.data.keyword.blockchainfull_notm}} Platform ネットワーク上のその他の組織は、ピアのエンドポイント情報を接続プロファイル内で見つけることができません。その他の組織がトランザクションを承認のためにピアに送信する必要がある場合は、ピア URL をアウト・オブ・バンド操作で指定する必要があります。
+**注:** ピアは {{site.data.keyword.cloud_notm}} の外部にあるため、{{site.data.keyword.blockchainfull_notm}} Platform ネットワーク上のその他の組織は、ピアのエンドポイント情報を接続プロファイル内で見つけることができません。 その他の組織がトランザクションを承認のためにピアに送信する必要がある場合は、ピア URL をアウト・オブ・バンド操作で指定する必要があります。
 
 ### SDK を使用したチャネルへの参加
 {: #ibp-peer-operate-peer-join-channel-sdk}
@@ -577,8 +578,7 @@ peer chaincode instantiate -o ${ORDERER_1} -C ${CHANNEL} -n ${CC_NAME} -v v0 -c 
 {: #ibp-peer-operate-troubleshooting}
 
 ### **問題:** 呼び出しコマンドが、ピア上で `chaincode fingerprint mismatch` というエラーで失敗する
-{: #ibp-peer-operate
--install-error}
+{: #ibp-peer-operate-install-error}
 
 {{site.data.keyword.cloud_notm}} Private で実行中のピアで `peer chaincode invoke` 要求を実行すると、`chaincode fingerprint mismatch` というエラーを受け取る可能性があります。
 

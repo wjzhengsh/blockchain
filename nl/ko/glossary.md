@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -16,11 +18,7 @@ lastupdated: "2019-02-08"
 # 용어집
 {: #glossary}
 
-***[이 페이지가 도움이 되었습니까? 알려주십시오.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
-이 주제에서는 이 문서에 나오는 {{site.data.keyword.blockchainfull}} 플랫폼 특정 용어를 정의합니다. 용어와 Hyperledger Fabric 개념과 관련된 용어의 용어집에 대해 더 자세히 알아보려면 [Hyperledger
-Fabric 용어집 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](http://hyperledger-fabric.readthedocs.io/en/release-1.2/glossary.html)을
-참조하십시오.
+이 주제에서는 이 문서에 나오는 {{site.data.keyword.blockchainfull}} 플랫폼 특정 용어를 정의합니다. 용어와 Hyperledger Fabric 개념과 관련된 용어의 용어집에 대해 더 자세히 알아보려면 [Hyperledger Fabric 용어집 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](http://hyperledger-fabric.readthedocs.io/en/release-1.2/glossary.html)을 참조하십시오.
 {:shortdesc}
 
 ## 구성원(Member)

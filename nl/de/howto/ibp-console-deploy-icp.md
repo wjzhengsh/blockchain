@@ -2,7 +2,9 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -17,8 +19,6 @@ lastupdated: "2019-02-08"
 
 # {{site.data.keyword.blockchainfull_notm}} Platform-Konsole in {{site.data.keyword.cloud_notm}} Private bereitstellen
 {: #ibp-console-deploy-icp}
-
-***[Ist diese Seite hilfreich? Teilen Sie uns Ihre Meinung mit.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 In den folgenden Anweisungen wird die Vorgehensweise zur Bereitstellung einer {{site.data.keyword.blockchainfull}} Platform-Konsole in der eigenen Infrastruktur über {{site.data.keyword.cloud_notm}} Private beschrieben. Sie müssen die Konsole nicht in derselben Umgebung wie Ihre anderen Blockchain-Komponenten bereitstellen.
 {:shortdesc}
@@ -72,13 +72,13 @@ Sie müssen zudem die folgenden Abhängigkeiten installieren oder konfigurieren,
 ### Registrierung beim Service 'App ID'
 {: #ibp-console-icp-prereq-app-id}
 
-[App ID ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://console.bluemix.net/docs/services/appid/index.html#gettingstarted "App ID") ist ein von {{site.data.keyword.cloud_notm}} bereitgestellter Benutzermanagement-Service. Die {{site.data.keyword.blockchainfull_notm}} Platform-Konsole verwendet diesen Service, um die Benutzer des Dashboards zu verwalten und das Blockchain-Netz zu betreiben. Auf diese Weise können Benutzer der Benutzerschnittstelle Berechtigungsnachweise verwenden, die von Ihrer eigenen Organisation oder von Dritten wie Google oder Facebook ausgegeben werden, ohne dass sie IBM IDs haben müssen. Nur der Benutzer, der die Konsole implementiert, benötigt eine {{site.data.keyword.IBM_notm}} ID, um sich beim Service zu registrieren.
+[App ID ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://cloud.ibm.com/docs/services/appid/index.html#gettingstarted "App ID") ist ein von {{site.data.keyword.cloud_notm}} bereitgestellter Benutzermanagement-Service. Die {{site.data.keyword.blockchainfull_notm}} Platform-Konsole verwendet diesen Service, um die Benutzer des Dashboards zu verwalten und das Blockchain-Netz zu betreiben. Auf diese Weise können Benutzer der Benutzerschnittstelle Berechtigungsnachweise verwenden, die von Ihrer eigenen Organisation oder von Dritten wie Google oder Facebook ausgegeben werden, ohne dass sie IBM IDs haben müssen. Nur der Benutzer, der die Konsole implementiert, benötigt eine {{site.data.keyword.IBM_notm}} ID, um sich beim Service zu registrieren.
 
 Bevor Sie die Konsole implementieren, müssen Sie eine IBM ID abrufen, um eine einmalige Registrierung beim Cloudverzeichnis von App ID durchzuführen. Anschließend müssen Sie die Berechtigungsnachweise für den Service 'App ID' abrufen, die an die Konsole übergeben werden sollen. Führen Sie die folgenden Schritte aus, um sich beim Service zu registrieren und die Berechtigungsnachweise für den Service abzurufen.
 
 1. Wenn Sie noch keine ID haben, müssen Sie eine [{{site.data.keyword.IBM_notm}} ID ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://www.ibm.com/account/reg/us-en/signup?formid=urx-19776&target=https%3A%2F%2Fidaas.iam.ibm.com%2Fidaas%2Foidc%2Fendpoint%2Fdefault%2Fauthorize%3Fresponse_type%3Dcode%26client_id%3Dmyibmlondonprod%26state%3DbfAvZHoYtGHytcifRjeE%26redirect_uri%3Dhttps%3A%2F%2Fmyibm.ibm.com%2Fmymga%2Foidcclient%2Fredirect%2Famapp-runtime-BlueIDProd%26scope%3Dopenid) erstellen.
 
-2. Verwenden Sie Ihre {{site.data.keyword.IBM_notm}} ID, um sich anzumelden oder für [{{site.data.keyword.cloud_notm}} ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://console.bluemix.net/catalog/services/app-id "IBM Cloud App ID") zu registrieren. Wechseln Sie dann zum Service [App ID ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://console.bluemix.net/catalog/services/app-id "IBM Cloud App ID") im Katalog. Wählen Sie abhängig von Ihren Serviceanforderungen den `Lite`-Plan oder die `gestaffelte Preisstruktur` aus. Klicken Sie anschließend auf die Schaltfläche **Erstellen**, um den Begrüßungsbildschirm zu starten.
+2. Verwenden Sie Ihre {{site.data.keyword.IBM_notm}} ID, um sich anzumelden oder für [{{site.data.keyword.cloud_notm}} ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://cloud.ibm.com/catalog/services/app-id "IBM Cloud App ID") zu registrieren. Wechseln Sie dann zum Service [App ID ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://cloud.ibm.com/catalog/services/app-id "IBM Cloud App ID") im Katalog. Wählen Sie abhängig von Ihren Serviceanforderungen den `Lite`-Plan oder die `gestaffelte Preisstruktur` aus. Klicken Sie anschließend auf die Schaltfläche **Erstellen**, um den Begrüßungsbildschirm zu starten.
 
 3. Klicken Sie in der Begrüßungsanzeige auf den Link **Verwalten** im linken Navigationsfenster, um die bevorzugten Identitätsprovider anzuzeigen oder zu aktualisieren. Dies können Drittanbieter wie Google oder Ihr eigener Identitätsservice sein.
 
@@ -153,7 +153,7 @@ In der folgenden Tabelle sind die konfigurierbaren Parameter der {{site.data.key
 | `Speicherzugriffsmodus`| Geben Sie den [Zugriffsmodus](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes "Access Modes") für den Speicher für PVC an. | ReadWriteMany | Ja |
 | `Datenträgername`| Geben Sie den Namen des PVC an. | Nein | Ja |
 | `CPU-Anforderung` | Mindestanzahl der CPUs, die der Konsole zugeordnet werden soll. | 250m | Ja |
-| `CPU-Grenzwert` | Maximale Anzahl der CPUs, die der Konsole zugeordnet werden soll. | 500m | Ja |
+| `CPU-Grenzwert` | Maximale Anzahl der CPUs, die der Konsole zugeordnet werden soll.| 500m | Ja |
 | `Speicheranforderung` | Minimale Speicherkapazität, die der Konsole zugeordnet werden soll. | 256 Mi | Ja |
 | `Speicherbegrenzung` | Maximale Speicherkapazität, die der Konsole zugeordnet werden soll. | 1Gi | Ja |
 
@@ -180,8 +180,8 @@ Fügen Sie auf der Clientmaschine, auf der Sie auf die Konsole zugreifen möchte
 3. Greifen Sie in Ihrem Webbrowser mit dem Hostnamen auf die Konsole zu, den Sie in {{site.data.keyword.cloud_notm}} Private konfiguriert haben. Bei der ersten Anmeldung werden die Anzeigen für die Konsolenkonfiguration angezeigt.
   1. Geben Sie auf der Registerkarte **Authentifizierung** Ihre App-ID ein.
   2. Fügen Sie auf der Registerkarte **Konfiguration** die Berechtigungsnachweise für den Service 'App ID' ein, die Sie in [Schritt 1: Registrierung beim Service 'App ID'](/docs/services/blockchain/howto/ibp-console-deploy-icp.html#ibp-console-icp-prereq-app-id) kopiert haben.
-  3. Geben Sie auf der Registerkarte **Benutzer hinzufügen** eine Liste der E-Mail-Adressen der `Administratoren` und `allgemeinen Benutzer` an, die für die Verwendung der Konsole berechtigt sind. Die E-Mail-Domänen sind auf die Gruppe der Identitätsprovider beschränkt, z. B. "corporate", "Google" oder "Facebook", die ausgewählt wurden, als der Service 'App ID' in {{site.data.keyword.cloud_notm}} registriert wurde.
-    - Die Rolle `Administrator` ist erforderlich, um neue Benutzer hinzufügen oder vorhandene Benutzer aus der Berechtigungsliste der Konsole entfernen zu können. **Tipp:** Wenn Sie die Person sein werden, die die Konsole verwaltet, denken Sie daran, Ihre eigene E-Mail-Adresse in die Liste aufzunehmen.
+  3. Geben Sie auf der Registerkarte **Benutzer hinzufügen** eine Liste der E-Mail-Adressen der `Administratoren` und `allgemeinen Benutzer` an, die für die Verwendung der Konsole berechtigt sind. Die E-Mail-Domänen sind auf die Gruppe der Identitätsprovider beschränkt (z. B. Ihr Unternehmen, Google oder Facebook), die beim Registrieren des Service 'App ID' in {{site.data.keyword.cloud_notm}} ausgewählt werden.
+    - Die Rolle `Administrator` ist erforderlich, um neue Benutzer hinzufügen oder vorhandene Benutzer aus der Berechtigungsliste der Konsole entfernen zu können.   **Tipp:** Wenn Sie die Person sein werden, die die Konsole verwaltet, denken Sie daran, Ihre eigene E-Mail-Adresse in die Liste aufzunehmen.
     - Mit der Rolle `Allgemein` können Benutzer die Komponenten in der Konsole **nur anzeigen**.
 
     Schließlich müssen Sie eine einzige `Kontakt-E-Mail für Administratoren` angeben, die als Kontakt-E-Mail-Adresse angezeigt wird, wenn ein nicht berechtigter Benutzer, der sich nicht in einer der oben genannten Listen befindet, versucht, auf die Konsole zuzugreifen. Diese E-Mail-Adresse muss kein Benutzer mit Administratorberechtigung in der Konsole sein. Beachten Sie, dass diese Informationen auch später auf der Registerkarte **Mitglieder** in der Konsole erstellt oder geändert werden können.

@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018,2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -15,15 +17,11 @@ lastupdated: "2019-02-08"
 # Cómo interactuar con la red con las API de Swagger
 {: #ibp-swagger}
 
-
-***[¿Le resulta útil esta página? Indíquenos su opinión.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
-
 {{site.data.keyword.blockchainfull_notm}} Platform ofrece varias API REST en Swagger que puede utilizar para gestionar los nodos, canales, iguales y miembros de la red. Las aplicaciones pueden utilizar estas API para controlar los recursos de red importantes sin utilizar el supervisor de red.
 
 {:shortdesc}
 
-Antes de empezar, debe crear una [instancia de servicio de la plataforma {{site.data.keyword.blockchain}} ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://console.bluemix.net/catalog/services/blockchain) en {{site.data.keyword.Bluemix_notm}} y crear o unir una red blockchain del Plan inicial <!--or Enterprise Plan -->.
+Antes de empezar, debe crear una [instancia de servicio de {{site.data.keyword.blockchain}} Platform ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://cloud.ibm.com/catalog/services/ibm-blockchain-5-prod) en {{site.data.keyword.cloud_notm}} y crear o unir una red blockchain del Plan inicial <!--or Enterprise Plan -->.
 
 
 ## Recuperación de credenciales de red
@@ -47,9 +45,6 @@ Si utiliza el Plan inicial, puede cambiar de organización en el supervisor de r
 {: #ibp-swagger-authorizing-swagger}
 
 Pulse el enlace **IU de Swagger** de la pantalla "API" para abrir la IU de Swagger.  
-<!-- remove this line because the link is different depending on if you are starter or enterprise plan
-You can also open the Swagger UI with the URL in the connection profiles. For example, `http://blockchain-swagger-dev.stage1.mybluemix.net`.
--->
 
 En la IU de Swagger, pulse el botón **Autorizar** y aparecerá la ventana emergente de ventana de autorización. Escriba el valor de "key" y "secret" de las credenciales de red como nombre de usuario y contraseña y pulse **Autorizar** luego **Finalizado**. Ahora está preparado para ejecutar las API. Tenga en cuenta que, si se renueve el navegador, deberá volver a autorizar con sus credenciales.
 

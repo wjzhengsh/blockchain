@@ -2,7 +2,9 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -17,8 +19,6 @@ lastupdated: "2019-02-08"
 
 # Implementando o console do  {{site.data.keyword.blockchainfull_notm}}  Platform no  {{site.data.keyword.cloud_notm}}  Private
 {: #ibp-console-deploy-icp}
-
-***[Esta página é útil? Diga-nos.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 Estas instruções descrevem como implementar um console do {{site.data.keyword.blockchainfull}} Platform em sua própria infraestrutura por meio do {{site.data.keyword.cloud_notm}} Private. Você não precisa implementar o console no mesmo ambiente que os seus outros componentes de blockchain.
 {:shortdesc}
@@ -72,13 +72,13 @@ Também é necessário instalar ou configurar as dependências a seguir antes de
 ### Registrando com o serviço App ID
 {: #ibp-console-icp-prereq-app-id}
 
-O [App ID ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://console.bluemix.net/docs/services/appid/index.html#gettingstarted "App ID") é um serviço de gerenciamento de usuários fornecido pelo {{site.data.keyword.cloud_notm}}. O console do {{site.data.keyword.blockchainfull_notm}} Platform usa o serviço App ID para gerenciar quem será capaz de usar o painel e operar sua rede de blockchain. Isso permite que os usuários da IU usem credenciais emitidas por sua própria organização ou por terceiros, como o Google ou o Facebook, sem que eles precisem ter IBMids. Somente o usuário que implementa o console precisará de um {{site.data.keyword.IBM_notm}}id para se registrar com o serviço.
+O [App ID ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://cloud.ibm.com/docs/services/appid/index.html#gettingstarted "App ID") é um serviço de gerenciamento de usuários fornecido pelo {{site.data.keyword.cloud_notm}}. O console do {{site.data.keyword.blockchainfull_notm}} Platform usa o serviço App ID para gerenciar quem será capaz de usar o painel e operar sua rede de blockchain. Isso permite que os usuários da IU usem credenciais emitidas por sua própria organização ou por terceiros, como o Google ou o Facebook, sem que eles precisem ter IBMids. Somente o usuário que implementa o console precisará de um {{site.data.keyword.IBM_notm}}id para se registrar com o serviço.
 
 Antes de implementar o console, é necessário obter um IBMid para executar um registro único com o Diretório da nuvem do App ID. Em seguida, é necessário buscar as credenciais de serviço do APP ID para passar para o console. Use as etapas a seguir para se registrar com o serviço e obter suas credenciais de serviço.
 
 1. Se você ainda não tiver um, será necessário criar um [{{site.data.keyword.IBM_notm}}id ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://www.ibm.com/account/reg/us-en/signup?formid=urx-19776&target=https%3A%2F%2Fidaas.iam.ibm.com%2Fidaas%2Foidc%2Fendpoint%2Fdefault%2Fauthorize%3Fresponse_type%3Dcode%26client_id%3Dmyibmlondonprod%26state%3DbfAvZHoYtGHytcifRjeE%26redirect_uri%3Dhttps%3A%2F%2Fmyibm.ibm.com%2Fmymga%2Foidcclient%2Fredirect%2Famapp-runtime-BlueIDProd%26scope%3Dopenid).
 
-2. Use o seu {{site.data.keyword.IBM_notm}}id para efetuar login ou se inscrever para o [{{site.data.keyword.cloud_notm}}![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://console.bluemix.net/catalog/services/app-id "IBM Cloud App ID"). Em seguida, acesse o serviço [App ID ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://console.bluemix.net/catalog/services/app-id "IBM Cloud App ID") no Catálogo. Selecione o plano `Lite` ou o `Graduated tier` dependendo de suas necessidades de serviço. Em seguida, clique no botão **Criar** para ativar a tela "Bem-vindo".
+2. Use o seu {{site.data.keyword.IBM_notm}}id para efetuar login ou se inscrever para o [{{site.data.keyword.cloud_notm}}![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://cloud.ibm.com/catalog/services/app-id "IBM Cloud App ID"). Em seguida, acesse o serviço [App ID ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://cloud.ibm.com/catalog/services/app-id "IBM Cloud App ID") no Catálogo. Selecione o plano `Lite` ou o `Graduated tier` dependendo de suas necessidades de serviço. Em seguida, clique no botão **Criar** para ativar a tela "Bem-vindo".
 
 3. Quando você estiver na tela "Bem-vindo", clique no link **Gerenciar** no painel de navegação à esquerda para visualizar ou atualizar os provedores de identidade preferenciais. Eles podem ser provedores de terceiros, como o Google, ou o próprio serviço de identidade das organizações.
 
@@ -86,7 +86,7 @@ Antes de implementar o console, é necessário obter um IBMid para executar um r
 
 5. Inclua seu endereço de e-mail no serviço para que seja possível efetuar login quando você configurar o console pela primeira vez. Clique no link **Usuários** no painel de navegação à esquerda e clique no botão **Incluir usuário**. Insira as suas informações de e-mail e clique em **Salvar**.
 
-6. Clique no link **Credenciais de serviço** no painel de navegação à esquerda. Se essa for a primeira vez que você usa o serviço, será necessário gerar credenciais clicando em **Nova credencial**. Clique em **Visualizar credenciais** para copiar as credenciais que são necessárias para acessar o serviço. Quando os detalhes para criar novas credenciais aparecerem, selecione a opção `reader` e um ID do serviço se você desejar designar à IU um nome específico. As credenciais do App ID são semelhantes aos valores JSON conforme a seguir:
+6. Clique no link **Credenciais de serviço** no painel de navegação à esquerda. Se essa for a primeira vez que você usa o serviço, será necessário gerar credenciais clicando em **Nova credencial**. Clique em **Visualizar credenciais** para copiar as credenciais que são necessárias para acessar o serviço.  Quando os detalhes para criar novas credenciais aparecerem, selecione a opção `reader` e um ID do serviço se você desejar designar à IU um nome específico. As credenciais do App ID são semelhantes aos valores JSON conforme a seguir:
 ![Credenciais de serviço](../images/service_credentials.gif "Credenciais de serviço")
 
 7. Clique no ícone Copiar e salve suas credenciais. Você as usará quando configurar o console.
@@ -151,7 +151,7 @@ A tabela a seguir lista os parâmetros configuráveis do console do {{site.data.
 | ` Rótulo do seletor `| [Rótulo do seletor ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/ "Rótulos e seletores") para seu PVC. | nenhum | não |
 | ` Valor do Seletor `| [Valor do seletor ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/ "Rótulos e seletores") para seu PVC. | nenhum | não |
 | ` Modo de acesso ao armazenamento `| Especifique o armazenamento [modo de acesso](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes "Modos de Acesso") para o PVC. | ReadWriteMany | sim |
-| ` Nome do Volume `|Especifique o nome do PVC. | nenhum | sim |
+| ` Nome do Volume `| Especifique o nome do PVC. | nenhum | sim |
 | `CPU request` | Número mínimo de CPUs a serem alocadas para o console. | 250m | sim |
 | `CPU limit` | Número máximo de CPUs a serem alocadas para o console.| 500 m | sim |
 | `Memory request` | Quantia mínima de memória a ser alocada para o console. | 256 Mi | sim |
@@ -180,8 +180,8 @@ Na máquina do cliente em que você deseja acessar o console, inclua entradas em
 3. Em seu navegador da web, acesse o console com o nome do host que você configurou no {{site.data.keyword.cloud_notm}} Private. Para o primeiro login, você verá os painéis de configuração do console.
   1. Na guia **Autenticação**, insira o seu App ID.
   2. Na guia **Configuração**, cole as credenciais de serviço do App ID que você copiou em [Etapa um: registrar com o serviço App ID](/docs/services/blockchain/howto/ibp-console-deploy-icp.html#ibp-console-icp-prereq-app-id).
-  3. Na guia **Incluir usuários**, especifique uma lista de endereços de e-mail de usuários `Admin` e `General` que estão autorizados para o console. Os domínios de e-mail são restritos ao conjunto de provedores de identidade, como corporativo, Google ou Facebook, que foram selecionados quando o serviço App ID foi registrado no {{site.data.keyword.cloud_notm}}.
-    - A função `Admin` é necessária para ser capaz de incluir novos usuários ou remover usuários existentes da lista de autorização do console. **Dica:** se você será a pessoa que administrará o console, lembre-se de incluir seu próprio endereço de e-mail na lista.
+  3. Na guia **Incluir usuários**, especifique uma lista de endereços de e-mail de usuários `Admin` e `General` que estão autorizados para o console. Os domínios de e-mail são restritos ao conjunto de provedores de identidade, como a sua empresa, o Google ou o Facebook, que são selecionados quando o serviço do ID do app é registrado no {{site.data.keyword.cloud_notm}}.
+    - A função `Admin` é necessária para ser capaz de incluir novos usuários ou remover usuários existentes da lista de autorização do console.   **Dica:** se você será a pessoa que administrará o console, lembre-se de incluir seu próprio endereço de e-mail na lista.
     - A função `General` permite aos usuários o acesso **somente visualização** para os componentes no console.
 
     Finalmente, é necessário especificar um único `Admin contact email` que é exibido como um endereço de e-mail de contato quando um usuário não autorizado, um que não está em nenhuma das listas acima, tenta acessar o console. Esse endereço de e-mail não precisa ser um usuário administrativo no console. Observe que essas informações também podem ser criadas ou modificadas posteriormente na guia **Membros** no console.

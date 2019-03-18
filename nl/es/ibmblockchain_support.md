@@ -2,7 +2,10 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
+
 ---
 
 {:new_window: target="_blank"}
@@ -16,8 +19,6 @@ lastupdated: "2019-02-08"
 
 # Obtención de soporte
 {: #blockchain-support}
-
-***[¿Le resulta útil esta página? Indíquenos su opinión.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 {{site.data.keyword.blockchainfull}} Platform ofrece varios métodos para solucionar problemas y obtener soporte, que dependen de las ofertas de {{site.data.keyword.blockchainfull_notm}} Platform que utilice.
 {:shortdesc}
@@ -42,7 +43,7 @@ Si el problema no se puede resolver mediante ninguno de los [recursos del soport
   Para problemas relacionados con {{site.data.keyword.cloud_notm}} Private, puede aprovechar el [tanto el soporte digital gratuito como el soporte de pago de {{site.data.keyword.cloud_notm}} Private
 ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/developerworks/community/blogs/fe25b4ef-ea6a-4d86-a629-6f87ccf4649e/entry/Learn_more_about_IBM_Cloud_Private_Support?lang=en_us "Soporte de IBM Cloud privado").
 
-- **Community Edition de la plataforma {{site.data.keyword.blockchainfull_notm}}**
+- **Community Edition de {{site.data.keyword.blockchainfull_notm}}** Platform
   La edición Community Edition de {{site.data.keyword.blockchainfull_notm}} Platform está pensada para fines de exploración, desarrollo y pruebas. {{site.data.keyword.IBM_notm}} no proporciona soporte para la edición Community Edition de la plataforma {{site.data.keyword.blockchainfull_notm}}.
 
 - **{{site.data.keyword.blockchainfull_notm}} Platform para AWS**
@@ -88,20 +89,16 @@ Para problemas relacionados con el Plan Inicial o el Plan empresarial, puede env
 Si necesita ayuda con el código de encadenamiento de Hyperledger Fabric, Hyperledger Composer o sus aplicaciones, utilice los recursos de la comunidad anteriores o interactúe con los [servicios de {{site.data.keyword.blockchainfull_notm}} ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/blockchain/services "Convertir su estrategia de blockchain en resultados empresariales con servicios de {{site.data.keyword.blockchainfull_notm}}"). Se recomienda el uso de Hyperledger Composer únicamente para demostraciones y pruebas de concepto. {{site.data.keyword.IBM_notm}} no proporciona soporte para redes que utilicen Hyperledger Composer en producción, incluyendo la CLI de Composer, las API de JavaScript, el servidor REST y Web Playground.
 {:note}
 
-La respuesta a su caso de soporte depende de su
-[Plan de soporte de {{site.data.keyword.cloud_notm}}
-![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://console.bluemix.net/docs/get-support/index.html#support-plans "Planes de soporte").
+La respuesta al caso de soporte depende de su [plan de soporte de {{site.data.keyword.cloud_notm}} ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://cloud.ibm.com/docs/get-support/index.html#support-plans "Planes de soporte").
 
-- Si ha adquirido el **Soporte Premium** o el **Soporte avanzado**, puede especificar un nivel de seguridad en su incidencia de Sev-1 a Sev-4. Sev-1 es el nivel de gravedad más alto. Los casos de soporte con niveles de gravedad más altos indican más urgencia y el equipo de soporte los responderá con mayor rapidez. Para obtener más información, consulte las
-[ofertas de planes de soporte de {{site.data.keyword.cloud_notm}}
-![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://console.bluemix.net/docs/get-support/index.html#support-plans "Planes de soporte").
+- Si ha adquirido el **Soporte Premium** o el **Soporte avanzado**, puede especificar un nivel de seguridad en su incidencia de Sev-1 a Sev-4. Sev-1 es el nivel de gravedad más alto. Los casos de soporte con niveles de gravedad más altos indican más urgencia y el equipo de soporte los responderá con mayor rapidez. Para obtener más información, consulte las [ofertas de plan de soporte de {{site.data.keyword.cloud_notm}} ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://cloud.ibm.com/docs/get-support/index.html#support-plans "Planes de soporte").  
 - Si no adquiere ningún soporte, su cuenta de suscripción o de pago según uso de
 {{site.data.keyword.cloud_notm}} se entrega con un plan de **soporte básico** gratuito. En este caso, el caso de soporte se registrará automáticamente con Sev-4.
 
 Se proporcionan **ofertas Beta** con un soporte más limitado que los releases disponibles a nivel general.
 - Los casos de soporte se registran con un nivel de gravedad más bajo, generalmente con Gravedad 4 o 3.
 - Se proporciona soporte 5x24. No se ofrece soporte durante el fin de semana.
-- Para obtener más información, consulte [Soporte de {{site.data.keyword.cloud_notm}} para servicios](https://console.bluemix.net/docs/get-support/servicessupport.html#support-different-services "Soporte del servicio {{site.data.keyword.IBM_notm}} Beta").
+- Para obtener más información, consulte [soporte de {{site.data.keyword.cloud_notm}} para servicios Beta](https://cloud.ibm.com/docs/get-support/servicessupport.html#support-different-services "servicio {{site.data.keyword.IBM_notm}} Beta").
 
 Siga estos pasos para enviar un caso de soporte.
 

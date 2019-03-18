@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -17,8 +19,6 @@ lastupdated: "2019-02-08"
 
 # {{site.data.keyword.cloud_notm}} Private への認証局のデプロイ
 {: #ca-deploy}
-
-***[このページは参考になりましたか。 ご意見をお聞かせください。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 {{site.data.keyword.blockchainfull}} Platform on {{site.data.keyword.cloud_notm}} Private Helm チャートをインポートすると、個別のコンポーネントをデプロイできるようになります。 認証局 (CA) は組織のトラスト・ルートであり、ユーザーがデプロイする他のコンポーネントの資格情報を生成できるようにします。 そのため、他のコンポーネントをデプロイする前に、CA をデプロイする必要があります。 マルチクラウド・ブロックチェーン・ネットワーク内の各組織は、それぞれ独自の CA をデプロイする必要があります。  CA と、それらがブロックチェーン・ネットワークで果たす役割について詳しくは、[認証局](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview-ca)を参照してください。
 {:shortdesc}
@@ -148,7 +148,7 @@ CA 管理者秘密を作成したら、以下のステップを使用して CA �
 | `CA の既存ボリューム・クレーム (CA existing volume claim)`| 既存のボリューム・クレームの名前を指定し、他のすべてのフィールドは空のままにします。 | なし | いいえ |
 | `CA セレクター・ラベル (CA selector label)`| PVC の[セレクター・ラベル ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/ "ラベルおよびセレクター")。 | なし | いいえ |
 | `CA セレクター値`| PVC の[セレクター値 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/ "ラベルおよびセレクター")。 | なし | いいえ |
-| `CA ストレージ・アクセス・モード (CA storage access mode)`| PVC のストレージ・[アクセス・モード ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes "アクセス・モード") を指定します。| ReadWriteMany | はい |
+| `CA ストレージ・アクセス・モード (CA storage access mode)`| PVC のストレージ・[アクセス・モード ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes "アクセス・モード") を指定します。 | ReadWriteMany | はい |
 | `CA ボリューム・クレーム・サイズ (CA volume claim size)`| 使用するディスクのサイズを選択します。 | 2Gi | はい |
 | `CA イメージ・リポジトリー (CA image repository)`| CA Helm チャートの場所。 | ibmcom/ibp-fabric-ca | はい |
 | `CA Docker イメージ・タグ (CA Docker image tag)`| CA イメージに関連付けられているタグの値。 このフィールドには、イメージ・バージョンが自動入力されます。 これを変更しないでください。| 1.2.1 | はい |
@@ -210,7 +210,7 @@ configmap を構成したら、変更を有効にするために CA サーバー
 ## CA ログの表示
 {: #ca-deploy-view-logs}
 
-コンポーネント・ログは、コマンド・ラインから [`kubectl CLI コマンド`](/docs/services/blockchain/howto/CA_operate.html#ca-operate-kubectl-configure)を使用して表示することも、[Kibana ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.elastic.co/products/kibana "Your Window intothe Elastic Search") ({{site.data.keyword.cloud_notm}} Private クラスターに含まれています) を使用して表示することもできます。詳しくは、こちらの[ログへのアクセス手順](/docs/services/blockchain/howto/CA_operate.html#ca-operate-view-logs)を参照してください。
+コンポーネント・ログは、コマンド・ラインから [`kubectl CLI コマンド`](/docs/services/blockchain/howto/CA_operate.html#ca-operate-kubectl-configure)を使用して表示することも、[Kibana ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.elastic.co/products/kibana "Your Window intothe Elastic Search") ({{site.data.keyword.cloud_notm}} Private クラスターに含まれています) を使用して表示することもできます。 詳しくは、こちらの[ログへのアクセス手順](/docs/services/blockchain/howto/CA_operate.html#ca-operate-view-logs)を参照してください。
 
 
 ## CA の操作

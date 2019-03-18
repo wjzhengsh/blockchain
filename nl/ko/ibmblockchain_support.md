@@ -2,7 +2,10 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
+
 ---
 
 {:new_window: target="_blank"}
@@ -16,8 +19,6 @@ lastupdated: "2019-02-08"
 
 # 지원 받기
 {: #blockchain-support}
-
-***[이 페이지가 도움이 되었습니까? 알려주십시오.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 {{site.data.keyword.blockchainfull}} Platform은 문제점을 해결하고 사용 중인
 {{site.data.keyword.blockchainfull_notm}} Platform 오퍼링과 연관된 지원을 받을 수 있는 몇 가지 방법을 제공합니다.
@@ -80,15 +81,15 @@ lastupdated: "2019-02-08"
 Hyperledger Fabric 체인코드, Hyperledger Composer 또는 애플리케이션에 관한 도움말이 필요하면 위의 커뮤니티 리소스를 사용하거나 [{{site.data.keyword.blockchainfull_notm}} 서비스 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/blockchain/services "블록체인 전략을 {{site.data.keyword.blockchainfull_notm}} 서비스를 통해 비즈니스 성과로 전환")를 이용하십시오. 데모와 PoC(Proofs of Concept)를 위해서만 Hyperledger Composer 사용을 권장합니다. {{site.data.keyword.IBM_notm}}은 Composer CLI, JavaScript API, REST 서버 및 웹 플레이그라운드를 포함하여 프로덕션에서 Hyperledger Composer를 사용하는 네트워크를 지원하지 않습니다.
 {:note}
 
-지원 케이스에 대한 응답은 [{{site.data.keyword.cloud_notm}} 지원 플랜 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://console.bluemix.net/docs/get-support/index.html#support-plans "지원 플랜")에 따라 다릅니다.
+지원 케이스에 대한 응답은 [{{site.data.keyword.cloud_notm}} 지원 플랜 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://cloud.ibm.com/docs/get-support/index.html#support-plans "지원 플랜")에 따라 다릅니다.
 
-- **프리미엄 지원** 또는 **고급 지원**을 구입한 경우, Sev-1부터 Sev-4까지 티켓에 심각도 레벨을 지정할 수 있습니다. Sev-1은 심각도의 최상위 레벨입니다. 심각도 레벨이 더 높은 지원 케이스는 더 긴급함을 나타내며 지원 팀에서 보다 신속하게 대응합니다. 자세한 정보는 [{{site.data.keyword.cloud_notm}} 지원 플랜 오퍼링 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://console.bluemix.net/docs/get-support/index.html#support-plans "지원 플랜")을 참조하십시오.  
+- **프리미엄 지원** 또는 **고급 지원**을 구입한 경우, Sev-1부터 Sev-4까지 티켓에 심각도 레벨을 지정할 수 있습니다. Sev-1은 심각도의 최상위 레벨입니다. 심각도 레벨이 더 높은 지원 케이스는 더 긴급함을 나타내며 지원 팀에서 보다 신속하게 대응합니다. 자세한 정보는 [{{site.data.keyword.cloud_notm}} 지원 플랜 오퍼링 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://cloud.ibm.com/docs/get-support/index.html#support-plans "지원 플랜")을 참조하십시오.  
 - 지원을 구입하지 않는 경우 {{site.data.keyword.cloud_notm}} 종량과금제 또는 구독 계정에 무료 **기본 지원** 플랜이 함께 제공됩니다. 이 경우, 사용자의 지원 케이스는 자동으로 Sev-4로 등록됩니다.
 
 **베타 오퍼링**은 일반적으로 사용 가능한 릴리스보다 제한된 자원을 제공합니다.
 - 지원 케이스는 낮은 심각도 레벨(일반적으로 Sev-4 또는 Sev-3)에 등록됩니다.
 - 지원은 5x24 기반으로 제공됩니다. 주말 지원은 제공되지 않습니다.
-- 자세한 정보는 [베타 서비스에 대한 {{site.data.keyword.cloud_notm}} 지원](https://console.bluemix.net/docs/get-support/servicessupport.html#support-different-services "{{site.data.keyword.IBM_notm}} 베타 서비스")을 참조하십시오.
+- 자세한 정보는 [베타 서비스에 대한 {{site.data.keyword.cloud_notm}} 지원](https://cloud.ibm.com/docs/get-support/servicessupport.html#support-different-services "{{site.data.keyword.IBM_notm}} 베타 서비스")을 참조하십시오. 
 
 지원 케이스를 제출하려면 다음 단계를 수행하십시오.
 
