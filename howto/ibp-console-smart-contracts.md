@@ -180,7 +180,7 @@ After you upgrade the smart contract, you will change the version of the contrac
 
 4. What happens when I remove an organization from my private data collection?
 
-   That organization's peers will continue to store data in the private data collection until it's ledger reaches the block that includes the change that removes it's membership from the collection. But the peers will not receive private data in any future transactions, and _clients_ of that organization will no longer be able to query the private data via chaincode from any peer.
+   The peers in that organization will continue to store data in the private data collection until it's ledger reaches the block that  that removes it's membership from the collection. But the peers will not receive private data in any future transactions, and _clients_ of that organization will no longer be able to query the private data via chaincode from any peer.
 
 ## Private data
 {: #ibp-console-smart-contracts-private-data}
