@@ -102,7 +102,7 @@ For more information about these steps, see [creating a channel](/docs/services/
 ### Updating an MSP in a channel definition
 {: #console-organizations-update-channel}
 
-Over time you may find the need to update the certificates in an MSP definition that is already associated with a channel. When that situation occurs follow these steps to update an organization's MSP definition in the channel:  
+Over time you may need to update the certificates in an MSP definition that is already associated with a channel. When that situation occurs follow these steps to update an organization's MSP definition in the channel:  
 
 1. Navigate to the **Channels** tab in your console.
 2. Click on the channel that contains the organization MSP that you want to update and open it.
