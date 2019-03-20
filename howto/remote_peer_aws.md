@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-03-20"
 
 subcollection: blockchain
 
@@ -359,7 +359,7 @@ After you set up the  peer in AWS, you can complete several operational steps be
 {: #remote-peer-aws-high-availability}
 
 By default, for HA support, the Quick Start template deploys two instances of the peer, in two different availability zones.
-To leverage this HA support, you also need to configure your [client applications for high availability](/docs/services/blockchain/v10_application.html#dev-app-ha-app).
+To leverage this HA support, you also need to configure your [client applications for high availability](/docs/services/blockchain/best_practices.html#best-practices-app-ha-app).
 
 ## Security Considerations
 {: #remote-peer-aws-security}

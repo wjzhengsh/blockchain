@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-03-20"
 
 subcollection: blockchain
 
@@ -64,7 +64,7 @@ If you do not use dynamic provisioning, [Persistent Volumes ![External link icon
 
 Before you deploy an orderer, you need to create a configuration file containing important information about the orderer identity and your CA. Then, you need to pass this file to the Helm chart during configuration by using a [Kubernetes Secret ![External link icon](../images/external_link.svg "External link icon")](https://kubernetes.io/docs/concepts/configuration/secret/) object. This file will allow the orderer to get the certificates that it needs from the CA to join a blockchain network. It also contains an admin certificate that will allow you to operate the orderer as an admin user. Follow the instructions on [using the CA to deploy an orderer or peer](/docs/services/blockchain/howto/CA_operate.html#ca-operate-deploy-orderer-peer) before you configure the orderer.
 
-You need to provide the CSR hostnames to the configuration file. This includes the `service host name` that will be based on the `helm release name` that you specify during deployment. The `service host name` is the `helm_release_name` that you specify with the string `-orderer` added at the end. For example, if you specify a `helm release name` of `orderer1`, you can insert the following value in the `"csr"` section of the file:
+You need to provide the CSR hostnames to the configuration file. The CSR hostnames include the proxy IP address of the cluster where you will deploy the component as well the service host name that will be your Helm chart host name. The `service host name` is based on the `helm release name` that you specify during deployment. The `service host name` is the `helm_release_name` that you specify with the string `-orderer` added at the end. For example, if you specify a `helm release name` of `orderer1`, you can insert the following value in the `"csr"` section of the file:
 
 ```
 "csr": {

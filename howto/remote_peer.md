@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-03-20"
 
 subcollection: blockchain
 
@@ -58,7 +58,7 @@ Use the AWS [Quick Start template ![External link icon](../images/external_link.
 
 For instructions on how to deploy {{site.data.keyword.blockchainfull_notm}} Platform for AWS, see [Deploying peers in Amazon Web Services](/docs/services/blockchain/howto/remote_peer_aws.html#remote-peer-aws).
 
-The following diagram describes the process to deploy an {{site.data.keyword.blockchainfull_notm}} Platform for AWS peer.
+The following clickable diagram describes the process to deploy an {{site.data.keyword.blockchainfull_notm}} Platform for AWS peer. You can click each step to read detailed instructions.
 
 <img usemap="#home_map1" border="0" class="image" id="image_ztx_crb_f1b2" src="../images/remote_peer_AWS_flow.png" width="750" alt="Click a box to get more details on the process." style="width:750px;" />
 <map name="home_map1" id="home_map1">

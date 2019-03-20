@@ -33,7 +33,7 @@ IBM Blockchain Platform
 	Developing smart contracts and applications
 		howto/develop_chaincode.md
 		vscode-extension.md
-		v10_application.md
+		best_practices.md
 
 
 	{: .topicgroup}
@@ -43,6 +43,7 @@ IBM Blockchain Platform
 		howto/prebuilt_samples.md
 		howto/create_channel.md
 		howto/install_instantiate_chaincode.md
+		v10_application.md
 		howto/swagger_apis.md
 		howto/create_join_network_with_apis.md
 		howto/monitor_network.md
@@ -97,6 +98,7 @@ IBM Blockchain Platform
 	reference/ibp_regions.md
 	reference/videos.md
 	reference/v10_fabric.md
+	reference/k8s.md
 	{: .navgroup-end}
 
 	{: .navgroup id="help"}

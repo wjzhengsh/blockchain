@@ -3,7 +3,7 @@
 copyright:
   years: 2019
 
-lastupdated: "2019-03-13"
+lastupdated: "2019-03-20"
 
 subcollection: blockchain
 
@@ -21,7 +21,7 @@ subcollection: blockchain
 # Join a network tutorial
 {: #ibp-console-join-network}
 
-{{site.data.keyword.blockchainfull}} Platform is a blockchain-as-a-service offering that that enables you to develop, deploy, and operate blockchain applications and networks. You can learn more about blockchain components and how they work together by visiting the [Blockchain component overview](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview). This tutorial is the second part in the [sample network tutorial series](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-sample-tutorial) and describes how to create nodes in the {{site.data.keyword.blockchainfull_notm}} Platform console and connect them a blockchain consortium hosted in another cluster.
+{{site.data.keyword.blockchainfull}} Platform is a blockchain-as-a-service offering that enables you to develop, deploy, and operate blockchain applications and networks. You can learn more about blockchain components and how they work together by visiting the [Blockchain component overview](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview). This tutorial is the second part in the [sample network tutorial series](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-sample-tutorial) and describes how to create nodes in the {{site.data.keyword.blockchainfull_notm}} Platform console and connect them a blockchain consortium hosted in another cluster.
 {:shortdesc}
 
 
@@ -272,7 +272,7 @@ You can the follow these steps if you are the admin of the **peer organization**
 ## Step three: Join your peer to the channel
 {: #ibp-console-join-network-join-peer-org2}
 
-We are almost done. Your peer can now be joined to an existing channel. You need to get the `channel name`, out-of-band, from the network operator who created the channel. In the **Build a network** tutorial we created a channel named `channel1`. If you are not already there, navigate to the **Channels** tab in the left navigation.
+We are almost done. Your peer can now be joined to an existing channel. You need to get the `channel name`, out-of-band, from the network operator who created the channel. In the **Build a network** tutorial, we created a channel named `channel1`. If you are not already there, navigate to the **Channels** tab in the left navigation.
 
 Perform the following steps from your console:
 
@@ -282,9 +282,12 @@ Perform the following steps from your console:
 4. Select which peers you want to join the channel. For purposes of this tutorial, click `Peer Org2`.
 5. Click **Join peer**.
 
-If you plan to leverage the Hyperledger Fabric [Private Data ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/latest/private-data/private-data.html "Private data") or [Service Discovery ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/latest/discovery-overview.html "Service Discovery") features, you must configure anchor peers in your organizations from the **Channels** tab. See this topic on [how to configure anchor peers for private data](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-private-data) by using the **Channels** tab in console.
+If the channel that you want to join a peer to is created by yourself and you haven't joined any peer to the channel, you can click the pending tile of the channel directly to join your peer.
+{:note}
 
-You can also create a new channel once your organization is a member of the consortium. Use the steps to [create a channel](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-create-channel) in the [Build a network tutorial](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network).
+If you plan to leverage the Hyperledger Fabric [Private Data ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/latest/private-data/private-data.html "Private data") or [Service Discovery ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/latest/discovery-overview.html "Service Discovery") features, you must configure anchor peers in your organizations from the **Channels** tab. For more information about how to configure anchor peers for private data by using the **Channels** tab in console, see [Private data](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-private-data).
+
+You can also create a new channel if your organization is a member of the consortium. Use the steps to [create a channel](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-create-channel) as described in the [Build a network tutorial](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network).
 
 ## Next steps
 {: #ibp-console-join-network-next-steps}
