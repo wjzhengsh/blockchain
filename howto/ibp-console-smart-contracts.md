@@ -161,7 +161,7 @@ When a new member that will run the smart contract joins the channel, it is mand
  {:important}
  4. (Optional) Modify the smart contract initialization argument values if the parameters have changed. If you are unsure about it, check with your smart contract developer. If they have not changed you can leave this field blank.
 
-After you upgrade the smart contract, you will change the version of the contract that is instantiated on the channel, and change the smart contract container for all the peers that have installed the new version. If you are adding private data collection, be sure you have configured anchor peers on the channel.
+After you upgrade the smart contract, you will change the version of the contract that is instantiated on the channel, and change the smart contract container for all the peers that have installed the new version. If you are using private data collections, be sure you have configured anchor peers on the channel.
 
 ### Considerations when you upgrade smart contracts
 {: #ibp-console-smart-contracts-upgrade-considerations}
