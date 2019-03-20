@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-03-20"
 
 subcollection: blockchain
 
@@ -98,3 +98,10 @@ If your goal is to set up a development environment or proof of concept, you'll 
 2. After the organization has been created, it can be added to the orderer system channel. For more information, see [Operating an Orderer](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-add-organizations-to-consortium).
 
 3. When an organization is listed on the orderer system channel, it is a member of the "consortium" and enabled to create an application channel, the kinds of channels that transactions happen on. For more information about how to create a channel, see [Creating a channel](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-create-channel).
+
+## References
+{: #get-started-icp-ref}
+
+- [Tutorial: Operate a distributed peer on {{site.data.keyword.blockchainfull_notm}} Platform](https://developer.ibm.com/tutorials/operate-distributed-peer-on-ibm-blockchain-platform/)
+- [{{site.data.keyword.cloud_notm}} Private homepage](https://www.ibm.com/cloud/private "{{site.data.keyword.cloud_notm}} Private homepage")
+- [{{site.data.keyword.cloud_notm}} Private documentation](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/kc_welcome_containers.html)

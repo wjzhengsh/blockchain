@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-03-20"
 
 subcollection: blockchain
 
@@ -87,6 +87,7 @@ The consortium of organizations is hosted by the ordering service.
 If you are the administrator of the ordering service, you can use the console to add an organization to the consortium. Navigate to the **Nodes** tab and click on the ordering node. On the ordering node panel, under **Consortium members**, click **Add organization**. This will open a side panel that will allow you to select from the list of available MSP definitions that you have [imported into your organizations tab](/docs/services/blockchain/howto/ibp-console-organizations.html#console-organizations-import-msp). You can also use the **Upload JSON** option to import the MSP definition file created by another org directly.
 
 ## Creating and editing a channel
+{: #console-organizations-create-channel}
 
 After an organization is added to the consortium, the organization can use the ordering service to create a new channel or can be added to an existing channel. The information that allows you to participate in a channel, such as joining your peers to the channel, instantiating smart contracts, and submitting transactions, is provided by using the MSP definitions.
 
@@ -97,3 +98,14 @@ After your organization is added to a consortium, you can create a channel by us
 3. Navigate to the **Channels** tab and click **Create channel**. This will open a side panel that allows you to specify the channel name, membership, and channel policies. You can add any organizations that have been added to the consortium to the new channel.
 
 For more information about these steps, see [creating a channel](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-create-channel1) in the **Build a network** tutorial.
+
+### Updating an MSP in a channel definition
+{: #console-organizations-update-channel}
+
+Over time you may need to update the certificates in an MSP definition that is already associated with a channel. When that situation occurs follow these steps to update an organization's MSP definition in the channel:  
+
+1. Navigate to the **Channels** tab in your console.
+2. Click on the channel that contains the organization MSP that you want to update and open it.
+3. Click on the **Channel details** tab.
+4. Click on the associated channel member's tile that you want to update.
+5. If you have not already imported the updated MSP definition into the console, you can upload the file here. **Note:** This action will not update the associated MSP definition in the Organizations tab. If you have already updated the MSP definition in the Organizations tab of the console, you can select it from the drop-down list.

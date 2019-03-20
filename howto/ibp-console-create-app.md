@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-03-20"
 
 subcollection: blockchain
 
@@ -95,7 +95,7 @@ Applications are able to submit transactions only to the smart contracts that ha
 
 The Hyperledger Fabric [Transaction Flow ![External link icon](../images/external_link.svg "External link icon")]( https://hyperledger-fabric.readthedocs.io/en/release-1.4/txflow.html "Transaction Flow"){:new_window} spans multiple components, with the client applications collecting endorsements from peers and sending endorsed transactions to the ordering service. The connection profile provides your application with the endpoints of the peers and ordering nodes it needs to submit a transaction. It also contains information about your organization, such your Certificate Authorities and your MSP ID. The Fabric SDKs can read the connection profile directly, without you having to write code that manages the transaction and endorsement flow.
 
-If you configured anchor peers when creating a channel, you can take advantage of the [Service Discovery ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/discovery-overview.html "Service discovery") feature of Hyperledger Fabric. Service discovery allows your application to learn which peers on the channel outside your organization need to endorse a transaction. Without service discovery, you will need to get the endpoint information of these peers out of band from other organizations and add them to your connection profile. For more information about how to configure anchor peers, see step three of the [private data topic](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-private-data) in the Deploy a smart contract tutorial.
+In order to take advantage of service the [Service Discovery ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/discovery-overview.html "Service discovery") feature of Hyperledger Fabric, you must configure anchor peers. Service discovery allows your application to learn which peers on the channel outside your organization need to endorse a transaction. Without service discovery, you will need to get the endpoint information of these peers out of band from other organizations and add them to your connection profile. For more information about how to configure anchor peers, see step three of the [private data topic](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-private-data) in the Deploy a smart contract tutorial.
 
 Navigate to the smart contracts tab in your platform console. Next to each instantiated smart contract, navigate to the overflow menu. Click on the button named **Connect with SDK**. This will open a side panel that will allow you to build and download your connection profile. First, you need to select the CA of your organization that you used to register your application identity. You will also need to select your organization MSP definition. You will then be able to download the connection profile that you can use to generate certificates and invoke the smart contract.
 
@@ -141,7 +141,7 @@ Once the network operator provides the enroll ID and secret of the application i
       // Enroll the admin user, and import the new identity into the wallet.
       const enrollment = await ca.enroll({ enrollmentID: '<app_enroll_id>', enrollmentSecret: '<app_enroll_secret>' });
       const identity = X509WalletMixin.createIdentity('<msp_id>', enrollment.certificate, enrollment.key.toBytes());
-      wallet.import('user1', identity);
+      await wallet.import('user1', identity);
       console.log('Successfully enrolled client "user1" and imported it into the wallet');
 
       } catch (error) {
@@ -378,7 +378,7 @@ Navigate to the ``/magnetocorp/application`` directory and save the following co
         // Enroll the admin user, and import the new identity into the wallet.
         const enrollment = await ca.enroll({ enrollmentID: '<app_enroll_id>', enrollmentSecret: '<app_enroll_secret>' });
         const identity = X509WalletMixin.createIdentity('<msp_id>', enrollment.certificate, enrollment.key.toBytes());
-        wallet.import('user1', identity);
+        await wallet.import('user1', identity);
         console.log('Successfully enrolled client "user1" and imported it into the wallet');
 
         } catch (error) {
@@ -475,7 +475,7 @@ const userName = 'user1';
 // Load connection profile; will be used to locate a gateway
 const ccpPath = path.resolve(__dirname, '../gateway/connection.json');
 const ccpJSON = fs.readFileSync(ccpPath, 'utf8');
-const ccp = JSON.parse(ccpJSON);
+const connectionProfile = JSON.parse(ccpJSON);
 
 // Set connection options; identity and wallet
 let connectionOptions = {
@@ -563,9 +563,10 @@ fabric_client.createUser({
 ```
 {:codeblock}
 
-If you are using low level SDK APIs to connect to your network, there are additional steps that you can take to manage the performance and availability of your application. For more information, see [Best practices for application connectivity and availability](/docs/services/blockchain/v10_application.html#dev-app-connectivity-availability).
+If you are using low level SDK APIs to connect to your network, there are additional steps that you can take to manage the performance and availability of your application. For more information, see [Best practices for application connectivity and availability](/docs/services/blockchain/best_practices.html#best-practices-app-connectivity-availability).
+
 
 ## Using indexes with CouchDB
 {: #console-app-couchdb}
 
-If you use CouchDB as your state database, you can perform JSON data queries from your smart contracts against the channel's state data. It is strongly recommended that you create indexes for your JSON queries and use them in your smart contracts. Indexes allow your applications to retrieve data efficiently when your network adds additional blocks of transactions and entries in the world state. To learn how to use indexes with your smart contracts and your applications, see [Best practices when using CouchDB](/docs/services/blockchain/v10_application.html#dev-app-couchdb-indices).
+If you use CouchDB as your state database, you can perform JSON data queries from your smart contracts against the channel's state data. It is strongly recommended that you create indexes for your JSON queries and use them in your smart contracts. Indexes allow your applications to retrieve data efficiently when your network adds additional blocks of transactions and entries in the world state. To learn how to use indexes with your smart contracts and your applications, see [Best practices when using CouchDB](/docs/services/blockchain/best_practices.html#best-practices-app-couchdb-indices).

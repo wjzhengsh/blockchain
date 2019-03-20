@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-03-20"
 
 subcollection: blockchain
 
@@ -40,7 +40,7 @@ The Fabric SDKs are the recommended path, although the instructions assume famil
 
 If your organization is not yet a member of a consortium or channel, you can use these steps to [create a channel](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-create-channel). The instructions will take you through how to [prepare an organization definition](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-organization-definition). This definition will be used to make you a member of the consortium by being added to an orderer system channel. Afterward, you will be able to form a new channel by [creating a channel transaction](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-channeltx)
 <!--
-It is recommended that you deploy at least two instances of the peer Helm chart for [high availability](peer_icp.html#high-availability). Therefore, you need to follow these operations steps once for each peer. When you are ready to invoke and query chaincode from your application, connect to both peers to ensure that your [applications are highly available](../v10_application.html#ha-app).
+It is recommended that you deploy at least two instances of the peer Helm chart for [high availability](peer_icp.html#high-availability). Therefore, you need to follow these operations steps once for each peer. When you are ready to invoke and query chaincode from your application, connect to both peers to ensure that your [applications are highly available](../best_practices.html#best-practices-app-ha-app).
 -->
 
 ## Prerequisites

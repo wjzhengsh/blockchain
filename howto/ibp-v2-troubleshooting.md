@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-03-20"
 
 subcollection: blockchain
 
@@ -26,6 +26,27 @@ subcollection: blockchain
 
 General problems may occur when using the console to manage nodes, channels, or smart contracts. In many cases, you can recover from these problems by following a few easy steps.
 
+- [My peer or orderer node status is `Status unavailable`, what does this mean?](/docs/services/blockchain/howto/ibp-v2-troubleshooting.html#ibp-v2-troubleshooting-status-unavailable)
+- [Why are my node operations failing after I create my peer or orderer?](/docs/services/blockchain/howto/ibp-v2-troubleshooting.html#ibp-console-build-network-troubleshoot-entry1)
+- [Why does my peer fail to start?](/docs/services/blockchain/howto/ibp-v2-troubleshooting.html#ibp-console-build-network-troubleshoot-entry2)
+- [Why did my smart contract installation, instantiation or upgrade fail?](/docs/services/blockchain/howto/ibp-v2-troubleshooting.html#ibp-console-smart-contracts-troubleshoot-entry1)
+- [How can I view my smart contract container logs?](/docs/services/blockchain/howto/ibp-v2-troubleshooting.html#ibp-console-smart-contracts-troubleshoot-entry2)
+- [My channel, smart contracts, and identities have disappeared from the console. How can I get them back?](/docs/services/blockchain/howto/ibp-v2-troubleshooting.html#ibp-v2-troubleshooting-browser-storage)
+- [Why am I getting the error `An error occurred when updating channel` when I try to add an organization to my channel?](/docs/services/blockchain/howto/ibp-v2-troubleshooting.html#ibp-v2-troubleshooting-update-channel)
+- [Why are the transactions I submit from VSCode failing?](/docs/services/blockchain/howto/ibp-v2-troubleshooting.html#ibp-v2-troubleshooting-anchor-peer)
+
+## My peer or orderer node status is `Status unavailable`, what does this mean?
+{: #ibp-v2-troubleshooting-status-unavailable}
+
+The node status in the tile for my peer or orderer node is grey, meaning the status of the node is not available.
+{: tsSymptoms}
+
+This condition occurs when the health checker that runs against the node cannot contact the node.
+{: tsCauses}
+
+[Examine the associated peer or orderer logs](/docs/services/blockchain/howto/ibp-console-manage.html#ibp-console-manage-console-node-logs) for errors to determine the cause.
+{: tsResolve}
+
 ## Why are my node operations failing after I create my peer or orderer?
 {: #ibp-console-build-network-troubleshoot-entry1}
 
@@ -40,7 +61,7 @@ After creating a new peer or orderer, depending on your cluster storage configur
 Check your Kubernetes dashboard and ensure the peer or node status is `Running`. Then try your action again. If you are still experiencing problems after the node is up, [check your node logs](/docs/services/blockchain/howto/ibp-console-manage.html#ibp-console-manage-console-node-logs) for errors.  
 {: tsResolve}
 
-## Why does my peer fails to start?
+## Why does my peer fail to start?
 {: #ibp-console-build-network-troubleshoot-entry2}
 
 It is possible you may experience this error under a variety of conditions.
@@ -112,4 +133,20 @@ This error occurs when the selected **Channel Updater MSP ID** on the **Update c
 {: tsCauses}
 
 On the **Update channel** panel, scroll down to the **Channel Updater MSP ID** and select the MSP ID that was specified when the channel was created or specify the MSP ID that is the admin of the channel.
+{: tsResolve}
+
+
+## Why are the transactions I submit from VSCode failing?
+{: #ibp-v2-troubleshooting-anchor-peer}
+
+Transactions submitted from VSCode fail with an error similar to:
+```
+Error submitting transaction: No endorsement plan available for {"chaincodes":[{"name":"hello-world"}]}
+```
+{: tsSymptoms}
+
+This error occurs if you are using the Fabric Service Discovery feature but did not configure any anchor peers on your channel.
+{: tsCauses}
+
+Follow step three of the [private data topic](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-private-data) in the Deploy a smart contract tutorial to configure your anchor peers.
 {: tsResolve}

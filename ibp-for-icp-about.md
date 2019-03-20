@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-03-20"
 
 subcollection: blockchain
 
@@ -57,6 +57,7 @@ Before getting started, ensure that you understand the following **consideration
 - You can deploy multiple components to a single name space in {{site.data.keyword.cloud_notm}} Private as long as they have different release names.
 - Components cannot be addressed by using the Swagger UI in the Network Monitor UI.
 - Mutual TLS is not supported.
+- The underlying technology, Hyperledger Fabric, uses containers to run chaincode and Docker to start that container. The only way for a peer to start a chaincode container is to use Docker-in-Docker which requires privileged access.
 
 **CA Considerations**
 - This Helm chart deploys a single instance of the CA. As it is considered best practice to have a separate CA for each organization, it might be necessary to deploy several CAs. For example, if you plan to deploy one orderer and three peers, you will need at least two CAs (one for the orderer organization and another for the peer organization).

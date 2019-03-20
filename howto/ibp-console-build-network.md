@@ -3,7 +3,7 @@
 copyright:
   years: 2019
 
-lastupdated: "2019-03-12"
+lastupdated: "2019-03-20"
 
 subcollection: blockchain
 
@@ -88,7 +88,6 @@ In this tutorial, we create two organizations, one which will own a peer and ano
 Watch the following video to learn about the process to create the peer's organization and the peer.
 
 <iframe class="embed-responsive-item" id="youtubeplayer" title="IBM Blockchain Platform free 2.0 beta video - deployment tutorial" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/JZj43n_JKIY" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>  
-
 *Video 1. Create the peer's organization and the peer*
 
 ### Creating your peer organization CA
@@ -243,7 +242,6 @@ Just as with the peer, before we can create an orderer, we need to create a CA t
 Watch the following video to learn about the process to create the orderer's organization and the orderer.
 
 <iframe class="embed-responsive-item" id="youtubeplayer" title="IBM Blockchain Platform free 2.0 beta video - deployment tutorial" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/Gomkn-JtNe8" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>  
-
 *Video 2. Create the orderer's organization and the orderer*
 
 ### Ordering in the console
@@ -366,7 +364,6 @@ Because only orderer admins can add peer organizations to the consortium, you wi
 Watch the following video to learn about the process to add the organization to the consortium, create the channel, and join your peer to the channel.
 
 <iframe class="embed-responsive-item" id="youtubeplayer" title="IBM Blockchain Platform free 2.0 beta video - deployment tutorial" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/jO3V4K9DYpY" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>  
-
 *Video 3. Add the organization to the consortium, create the channel, and join your peer to the channel*               
 
 Because you are the orderer admin, this process is relatively straightforward:
@@ -419,7 +416,7 @@ Perform the following steps from your console:
 5. Specify the identity of the channel creator. Where the MSP step above notes the organization that created the channel, this step notes **your** admin identity, `Org1 Admin`.
 6. Select the organizations that you want to join the channel and the permissions you want them to have. Although you entered `Org1 MSP (org1msp)` as the channel creator, you also need to select it here. Click **Add** and then give your organization a level of permissions. In real-world scenarios, as a channel creator you'll want to choose permissions carefully, matching the needs of organizations joining a channel. Because you are creating a channel with a single member, and every channel must have at least one operator, make your organization an **Operator**.
 
-When you're ready, click **Create channel**. You should be taken back to the Channels tab.
+When you're ready, click **Create channel**. You should be taken back to the Channels tab and you can see a pending tile of the channel that you just created.
 
 **Task: Create a channel**
 
@@ -433,9 +430,6 @@ When you're ready, click **Create channel**. You should be taken back to the Cha
 
 *Figure 12. Create a channel*
 
-Because creating a channel and joining a peer to a channel are two separate steps, handled by the flows behind the two buttons, you will not see your created channel on this screen until you have joined a peer to the channel.
-{:note}
-
 The next step is to join a peer to this channel.
 
 ## Step five: Join your peer to the channel
@@ -445,11 +439,9 @@ We are almost done. Joining the peer to the channel is the last step in setting 
 
 Perform the following steps from your console:
 
-1. Click **Join channel** to launch the side panels.
-2. Select your `Orderer` and click **Next**.
-3. Enter the name of the channel you just created `channel1` and click **Next**.
-4. Select which peers you want to join the channel. For purposes of this tutorial, click `Peer Org1`.
-5. Click **Join channel**.
+1. Click the pending tile for `channel1` to launch the side panels.
+2. Select which peers you want to join to the channel. For purposes of this tutorial, click `Peer Org1`.
+3. Click **Join channel**.
 
 ## Next steps
 {: #ibp-console-build-network-next-steps}

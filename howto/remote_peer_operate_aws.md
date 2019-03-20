@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-03-20"
 
 subcollection: blockchain
 
@@ -28,7 +28,7 @@ The Hyperledger Fabric SDKs provide a powerful set of APIs that enable applicati
 
 The following instructions use the [Fabric Node SDK ![External link icon](../images/external_link.svg "External link icon")](https://fabric-sdk-node.github.io/ "Hyperledger Fabric SDK for jode.js") to operate the peer and assume prior familiarity with the SDK. You can use the [developing applications tutorial](/docs/services/blockchain/v10_application.html#dev-app) to learn how to use the Node SDK before you get started, and as a guide to developing applications with your peer once you are ready to invoke and query chaincode.
 
-The {{site.data.keyword.blockchainfull_notm}} Platform Peer on AWS Quick Start creates two peers for high availability. Therefore, you need to follow the operations steps once for each peer. Once you are ready to query and invoke chaincode from your application, have your SDK connect to both peers to ensure your [applications are highly available](/docs/services/blockchain/v10_application.html#dev-app-ha-app).
+The {{site.data.keyword.blockchainfull_notm}} Platform Peer on AWS Quick Start creates two peers for high availability. Therefore, you need to follow the operations steps once for each peer. Once you are ready to query and invoke chaincode from your application, have your SDK connect to both peers to ensure your [applications are highly available](/docs/services/blockchain/best_practices.html#best-practices-app-ha-app).
 
 ### Installing the Node SDK
 {: #remote-peer-aws-operate-install-sdk}
