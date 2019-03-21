@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018,2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-03-20"
 
 subcollection: blockchain
 
@@ -38,7 +38,7 @@ You must install the chaincode on every peer that will run this chaincode. Compl
 
 2. In the **Install Chaincode** pop-up panel, enter the name and version of your chaincode. **Note** that the name and version strings will be used in applications to interact with the installed chaincode. Click the **Browse** button and navigate through your local file system to wherever your chaincode source files are stored. Select one or more chaincode source files to install on the peer. Then select your chaincode language from the **Chaincode Type** dropdown.
 
-You can install chaincode by uploading a single or multiple GO or NODE files, or you can upload chaincode inside a .zip file. Using a .zip file will maintain your chaincode with a complete directory structure. This will be helpful if you want include packages of dependencies, or use indexes with CouchDB. For more information about CouchDB and how to set up indexes, see [Best Practices when using CouchDB](/docs/services/blockchain/v10_application.html#dev-app-couchdb-indices) in the Developing applications tutorial. You can also find information on [managing external dependencies for chaincode written in GO ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/chaincode4ade.html#managing-external-dependencies-for-chaincode-written-in-go){:new_window} in the Hyperledger Fabric documentation.
+You can install chaincode by uploading a single or multiple GO or NODE files, or you can upload chaincode inside a .zip file. Using a .zip file will maintain your chaincode with a complete directory structure. This will be helpful if you want include packages of dependencies, or use indexes with CouchDB. For more information about CouchDB and how to set up indexes, see [Best Practices when using CouchDB](/docs/services/blockchain/best_practices.html#best-practices-app-couchdb-indices) in the Developing applications tutorial. You can also find information on [managing external dependencies for chaincode written in GO ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/chaincode4ade.html#managing-external-dependencies-for-chaincode-written-in-go){:new_window} in the Hyperledger Fabric documentation.
 
   ![Install Chaincode](../images/chaincode_install.png "Install Chaincode")
 

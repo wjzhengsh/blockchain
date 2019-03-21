@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-03-20"
 
 subcollection: blockchain
 
@@ -20,8 +20,10 @@ subcollection: blockchain
 # About {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta
 {: #ibp-console-overview}
 
-The {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta is the next generation of {{site.data.keyword.blockchainfull_notm}} Platform offerings, giving you total control over your deployments and certificates. This free beta includes the new {{site.data.keyword.blockchainfull_notm}} Platform console, a user interface that can simplify and accelerate the process of deploying components into a {{site.data.keyword.cloud_notm}} Kubernetes Service managed and controlled by you.
+The {{site.data.keyword.blockchainfull}} Platform free 2.0 beta is the next generation of {{site.data.keyword.blockchainfull_notm}} Platform offerings, which gives you total control over your deployments and certificates. This free beta includes the new {{site.data.keyword.blockchainfull_notm}} Platform console, a user interface that can simplify and accelerate the process of deploying components into a {{site.data.keyword.cloud_notm}} Kubernetes Service managed and controlled by you. For more information about Kubernetes and {{site.data.keyword.cloud_notm}} Kubernetes Service, see [Kubernetes](/docs/services/blockchain/reference/k8s.html "Kubernetes").
 {:shortdesc}
+
+{{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta is now upgraded to Hyperledger Fabric 1.4 code base. For more information about Hyperledger Fabric 1.4 new features, see [What's new in 1.4 ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/latest/whatsnew.html "What's new in Fabric 1.4"){:new_window}.
 
 ## What the new beta offers
 {: #ibp-console-overview-capabilities}
@@ -42,8 +44,8 @@ The {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta release inc
 **Total control of your deployments**
 - **Deploy only the components you need**. Connect a peer to multiple channels and networks, or host an ordering service that business partners can connect to.
 - **Maintain complete control of your identities**. Store and manage the keys that are used to administer your nodes without storing your private keys on the {{site.data.keyword.cloud_notm}}.
-- **Centralized operation** The {{site.data.keyword.blockchainfull_notm}} Platform console allows you to deploy and manage all of your organizations and nodes in **one central console** without having to rely on {{site.data.keyword.IBM_notm}} or other vendors to manage your orderers or Certificate Authority. You can also add or remove members from a blockchain consortium, create and join channels, and install and instantiate smart contracts from your console.
-- **Host or join a network** Deploy peers hosted in your cluster to multiple channels on multiple clouds, or invite other organizations to join your consortium or channels while the organizations manage their nodes independently across infrastructures.
+- **Centralized operation**. The {{site.data.keyword.blockchainfull_notm}} Platform console allows you to deploy and manage all of your organizations and nodes in **one central console** without having to rely on {{site.data.keyword.IBM_notm}} or other vendors to manage your orderers or Certificate Authority. You can also add or remove members from a blockchain consortium, create and join channels, and install and instantiate smart contracts from your console.
+- **Host or join a network**. Deploy peers hosted in your cluster to multiple channels on multiple clouds, or invite other organizations to join your consortium or channels while the organizations manage their nodes independently across infrastructures.
 - **Manage access** of the users who can administer or monitor your nodes.
 - **Direct access to the logs** of your nodes from the {{site.data.keyword.IBM_notm}} Kubernetes service. Use the {{site.data.keyword.cloud_notm}} Log Analysis service or a third party service to extract and analyze your logs.
 - **Interact directly with your node pods** using the Kubernetes Dashboard. Exec into your pods and containers to execute commands and update certificates from the command line.
@@ -75,11 +77,9 @@ Before you deploy the console, ensure that you understand the following consider
 ## Migration
 {: #ibp-console-overview-migration}
 
-You cannot migrate from any {{site.data.keyword.blockchainfull_notm}} platform offerring to the {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 **beta**.  
+You cannot migrate from any {{site.data.keyword.blockchainfull_notm}} platform offering to the {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 **beta**.  
 
-In the future, you will be able to migrate from an Enterprise Plan release to the {{site.data.keyword.blockchainfull_notm}} Platform 2.0 when it becomes generally available (GA).   
-
-All {{site.data.keyword.blockchainfull_notm}} platform free 2.0 beta service instances will not be migrated to the GA version, nor can Starter Plan instances be migrated to the 2.0 GA version.
+All {{site.data.keyword.blockchainfull_notm}} platform free 2.0 beta service instances will not be migrated to the GA version, nor can Starter or Enterprise Plan instances be migrated to the 2.0 GA version.
 
 ## License and pricing
 {: #ibp-console-overview-license-and-pricing}

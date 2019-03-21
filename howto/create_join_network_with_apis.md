@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-03-20"
 
 subcollection: blockchain
 
@@ -69,7 +69,7 @@ To use Swagger APIs to create or join a network, you need a basic authentication
 You can use APIs to create blockchain networks in only available network locations. Before you create a network, use the following API to get a current list of available network locations. No credentials are required to run this API.
 
 ```
-https://ibmblockchain-v2.ng.bluemix.net/api/v1/network-locations/available
+https://ibp-ep.us-south.ibm-blockchain-5-prod.cloud.ibm.com/api/v1/network-locations/available
 ```
 {:codeblock}
 

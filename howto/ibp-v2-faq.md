@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-03-20"
 
 subcollection: blockchain
 
@@ -21,6 +21,16 @@ subcollection: blockchain
 
 # FAQs
 {: #ibp-v2-faq}
+
+- [What version of Hyperledger Fabric is being used with {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta?](/docs/services/blockchain/ibp-v2-faq.html#ibp-v2-faq-fabric-version)
+- [Do I need to pay anything for the {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta?](/docs/services/blockchain/ibp-v2-faq.html#ibp-v2-faq-cost)
+- [Can I use my existing {{site.data.keyword.cloud_notm}} Kubernetes Service cluster?](/docs/services/blockchain/ibp-v2-faq.html#ibp-v2-faq-existing-cluster)
+- [What database do the Peers use for their ledger?](/docs/services/blockchain/ibp-v2-faq.html#ibp-v2-faq-couchDB)
+- [What languages are supported for smart contracts?](/docs/services/blockchain/ibp-v2-faq.html#ibp-v2-faq-cc-langs)
+- [Can I migrate from the V2.0 beta to v2.0 GA?](/docs/services/blockchain/ibp-v2-deploy-iks.html#ibp-v2-faq-migrate)
+- [Do we have access to logging services and what logs are available to me?](/docs/services/blockchain/ibp-v2-faq.html#ibp-v2-faq-logs)
+- [What is the value of using {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta over native Hyperledger Fabric?](/docs/services/blockchain/ibp-v2-faq.html#ibp-v2-faq-native-fabric)
+- [How can I maximize performance and scale my {{site.data.keyword.blockchainfull_notm}} Platform solution?](/docs/services/blockchain/ibp-v2-faq.html#ibp-v2-faq-perf-scale)
 
 ## What version of Hyperledger Fabric is being used with {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta?
 {: #ibp-v2-faq-fabric-version}
@@ -59,13 +69,13 @@ All peers are deployed with the {{site.data.keyword.blockchainfull_notm}} Platfo
 {: #ibp-v2-faq-migrate}
 {: faq}
 
-Enterprise Plan customers will be able to migrate to IBM Blockchain Platform 2.0 when it becomes generally available (GA). But you will not be able to migrate your 2.0 beta offering to the 2.0 GA offering. Also, you cannot migrate a Starter plan instance to either the 2.0 beta or to the 2.0 GA product, when it becomes available.
+You will not be able to migrate your 2.0 beta offering to the 2.0 GA offering.
 
 ## Do we have access to logging services and what logs are available to me?
 {: #ibp-v2-faq-logs}
 {: faq}
 
-With {{site.data.keyword.blockchainfull_notm}} Platform 2.0, you can now directly access your peer, CA and orderer logs from your Kubernetes dashboard. We recommend you take advantage of the [{{site.data.keyword.cloud_notm}} LogDNA ![External link icon](../images/external_link.svg "External link icon")](https://cloud.ibm.com/catalog/services/logdna "{{site.data.keyword.IBM_notm}} Log Analysis with LogDNA") service which allows you to easily parse the logs in real-time.
+With {{site.data.keyword.blockchainfull_notm}} Platform 2.0, you can now directly access your peer, CA and orderer logs from your Kubernetes dashboard. We recommend you take advantage of the [{{site.data.keyword.cloud_notm}} LogDNA ![External link icon](../images/external_link.svg "External link icon")](https://cloud.ibm.com/docs/services/Log-Analysis-with-LogDNA?topic=LogDNA-kube#kube "Managing Kubernetes cluster logs with IBM Log Analysis with LogDNA") service which allows you to easily parse the logs in real-time.
 
 ## What is the value of using {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta over native Hyperledger Fabric?
 {: #ibp-v2-faq-native-fabric}

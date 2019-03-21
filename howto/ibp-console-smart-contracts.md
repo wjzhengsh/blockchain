@@ -2,7 +2,10 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-03-05"
+
+lastupdated: "2019-03-20"
+
+keywords: smart contract, private data, private data collection, anchor peer
 
 subcollection: blockchain
 
@@ -101,14 +104,12 @@ Use your console to perform these steps:
 2. On the side panel that opens, select a channel to instantiate the smart contract on and select the orderer where the channel resides. You can select the channel, named `channel1`, and orderer node, named `Orderer`, which you created. Then, click **Next**.
 3. Specify the [endorsement policy for the smart contract](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-endorse), described in the following section.
 4. You also need to select the organization members to be included in the policy. If you are following along in the tutorial, that would be `org1msp` and possibly `org2msp` if you completed both the **Build a network** and **Join a network** tutorials.
-5. On the last panel you are prompted to specify the smart contract function that you want to run when the smart contract starts, along with the associated arguments to pass to that function.
+5. If your smart contract includes Fabric private data collections, you need to upload the associated collection configuration JSON file, otherwise you can skip this step. See this topic for more information on using [private data](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-private-data).
+6. On the last panel you are prompted to specify the smart contract function that you want to run when the smart contract starts, along with the associated arguments to pass to that function.
 
 You can view all of the smart contracts that have been instantiated on a channel by clicking the channel icon in the left navigation, selecting a channel from the table, and then clicking the **Channel details** tab.
 
 Be aware that if you use a free {{site.data.keyword.cloud_notm}} Kubernetes service cluster, instantiation can take significantly longer than in a paid cluster. Depending on the number of peers you have deployed in your cluster, this can take several minutes.
-
-If your smart contract includes a private data collection definition, the smart contract cannot be instantiated from the {{site.data.keyword.blockchainfull_notm}} console. See these [recommendations](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-private-data) for  how to instantiate a smart contract that includes private data.
-{:note}
 
 The combination of **installation and instantiation** is a powerful feature because it allows for a peer to use a single smart contract across many channels. Peers may want to join multiple channels that use the same smart contract, but with different sets of network members able to access the data. A peer can install the smart contract once, and then use the same smart contract container on any channel where it has been instantiated. This lightweight approach saves compute and storage space, and helps you scale your network.
 
@@ -133,10 +134,11 @@ Click the **Advanced** button if you want to specify a policy in JSON format. Yo
 ## Upgrading a smart contract
 {: #ibp-console-smart-contracts-upgrade}
 
-You can upgrade a smart contract to change its code or endorsement policy while maintaining its relationship to the assets on the ledger. There are a variety of reasons why you may want to upgrade an instantiated smart contract.
+You can upgrade a smart contract to change its code, endorsement policy, or private data collection while maintaining its relationship to the assets on the ledger. There are a variety of reasons why you may want to upgrade an instantiated smart contract.
 1. You can upgrade the smart contract to add or remove functionality from its code and iterate on the logic of your business network.
 2. Whenever a new member is added to a channel, the endorsement policy of the instantiated smart contracts *must* be updated to include the new channel member. In order to work with the new channel member, the smart contract must be repackaged with a new version number and instantiated on the channel, even if the smart contract itself is unchanged. Otherwise, transaction endorsement cannot succeed.
-3. The smart contract initialization arguments have changed.
+3. When a private data collection has changed, for example an organization is added or removed you need to upgrade your smart contract. Or, use this action whenever a new private data collection is added to the collection configuration JSON file.
+4. The smart contract initialization arguments have changed.
 
 **Before you upgrade an instantiated smart contract, the new version of the smart contract must be installed on all peers in the channel that are running the previous level of the smart contract.**
 
@@ -154,9 +156,12 @@ When a new member that will run the smart contract joins the channel, it is mand
 
  1. Select the smart contract version that you want to upgrade on the channel from the drop-down list.
  2. Update the endorsement policy by adding or removing channel members. You can also click **Advanced** to paste in a new JSON formatted string, which modifies the existing policy.
- 3. Optional) Modify the smart contract initialization argument values if the parameters have changed. If you are unsure about it, check with your smart contract developer. If they have not changed you can leave this field blank.
+ 3. If you want to associate a private data collection configuration file with the smart contract you can upload the JSON file. Or if you want to update an existing collection configuration, you can upload the JSON file.   
+ If the smart contract was previously instantiated with a collection configuration file, you **must** again upload the previous version or a new version of the collection configuration file during this step.  
+ {:important}
+ 4. (Optional) Modify the smart contract initialization argument values if the parameters have changed. If you are unsure about it, check with your smart contract developer. If they have not changed you can leave this field blank.
 
-After you upgrade the smart contract, you will change the version of the contract that is instantiated on the channel, and change the smart contract container for all the peers that have installed the new version.
+After you upgrade the smart contract, you will change the version of the contract that is instantiated on the channel, and change the smart contract container for all the peers that have installed the new version. If you are using private data collections, be sure you have configured anchor peers on the channel.
 
 ### Considerations when you upgrade smart contracts
 {: #ibp-console-smart-contracts-upgrade-considerations}
@@ -173,25 +178,25 @@ After you upgrade the smart contract, you will change the version of the contrac
 
   After updating the channel to use the new version of the smart contract, if there are still peers on the channel running the previous version, those peers are no longer able to endorse transactions for the smart contract. Also, you risk not having enough endorsements for transactions to be committed to the ledger, depending on how the smart contract endorsement policy is defined. However, it is possible to install the new version of the smart contract on these peers later and they will again be able to endorse transactions, effectively catching up.
 
+4. What happens when I remove an organization from my private data collection?
+
+   The peers in that organization will continue to store data in the private data collection until it's ledger reaches the block that removes it's membership from the collection. After that occurs, the peers will not receive private data in any future transactions, and _clients_ of that organization will no longer be able to query the private data via chaincode from any peer.
+
 ## Private data
 {: #ibp-console-smart-contracts-private-data}
 
 Private data is a feature of Hyperledger Fabric networks at version 1.2 or higher and is used to keep sensitive information private from other organization members **on a channel**. Data privacy is achieved through the use of [private data collections  ![External link icon")](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/private-data/private-data.html#what-is-a-private-data-collection "What is a private data collection?"). For example, several wholesalers and a set of farmers might be joined to a single channel. If a farmer and a wholesaler want to transact privately, they can create a channel for this purpose. But they can also decide to create a private data collection on the smart contract that governs their business interactions to maintain privacy over sensitive aspects of the sale, such as the price, without having to create a secondary channel. To learn more about when to use private data within a blockchain, visit the [Private Data ![External link icon")](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/private-data/private-data.html#private-data "Private data") concept article in the Fabric documentation.
 
 In order to use private data with {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta, the following three conditions must be satisfied:  
-1. **Define the private data collection.** A private data collection file can be added to your smart contract. Then, at runtime, your client application can use private data specific chaincode APIs to input and retrieve data from the collection. For more information about how to use private data collections with your smart contract, see the tutorial on [Using private data ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/latest/private_data_tutorial.html "Using private data") in the Fabric documentation.  
+1. **Define the private data collection.** A private data collection file can be added to your smart contract. Then, at runtime, your client application can use private data specific chaincode APIs to input and retrieve data from the collection. For more information about how to use private data collections with your smart contract, see the Fabric SDK tutorial on [Using private data ![External link icon](../images/external_link.svg "External link icon")](https://fabric-sdk-node.github.io/tutorial-private-data.html "How to use Private Data") in the Fabric SDK documentation.  
 
-2. **Install and instantiate the smart contract.** Once the smart contract private data collection has been defined, you need to install the smart contract on the peers that are members of the channel. When you instantiate the smart contract on the channel, you need to specify the collection configuration. The {{site.data.keyword.blockchainfull_notm}} console does not currently provide a way to specify a collection definition **during** smart contract instantiation. However, you can use the Fabric SDK to install, instantiate, and update a smart contract that uses private data. For more information, see [How to use private data ![External link icon](../images/external_link.svg "External link icon")](https://fabric-sdk-node.github.io/release-1.4/tutorial-private-data.html "how to use private data") in the Node SDK documentation.  
+2. **Install and instantiate the smart contract.** Once the smart contract private data collection has been defined, you need to install the smart contract on the peers that are members of the channel. When you instantiate the smart contract on the channel, you need to upload the collection configuration JSON file. For more information on how to [create a collection definition JSON file ![External link icon](../images/external_link.svg "External link icon")](https://fabric-sdk-node.github.io/tutorial-private-data.html "How to use private data") see the Fabric SDK documentation topic.
 
- **Note:** A client needs to be an admin of your peer in order to install or instantitate a smart contract. Therefore, you need to download the certificates of the peer admin identity from your console wallet and pass the peer admin's public and private key to directly to the SDK instead of creating an application identity. For an example of how to pass a key pair to the SDK, see [Connecting to your network using low level Fabric SDK APIs](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-low-level).  
+  Instead of using the console to install and instantiate your smart contract, you can use the Fabric SDK. Those instructions are also available under [How to use private data ![External link icon](../images/external_link.svg "External link icon")](https://fabric-sdk-node.github.io/release-1.4/tutorial-private-data.html "how to use private data") in the Node SDK documentation.  
 
-3. **Configure anchor peers.** Because cross organizational [gossip ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/gossip.html "Gossip data dissemination protocol") must be enabled for private data to work, an anchor peer must exist for each organization in the collection definition. This anchor peer is not a special **type** of peer, it is just the peer that the organization makes known to other organizations, and in so doing bootstraps cross organizational gossip. Therefore, at least one [anchor peer ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/gossip.html#anchor-peers "Anchor peers") must be defined for each organization in the collection definition.
- - To configure a peer to be an anchor peer, click the **Channels** tab and open the channel where the the smart contract was instantiated.  
- - Click the **Channel details** tab.
- - Scroll down to the Anchor peers table and click **Add anchor peer**.
- - Select at least one peer from each organization in collection definition that you want to serve as the anchor peer for the organization. For redundancy reasons, you can consider selecting more than one peer from each organization in the collection.
+  **Note:** A client needs to be an admin of your peer in order to install or instantitate a smart contract using the SDK. Therefore, you need to download the certificates of the peer admin identity from your console wallet and pass the peer admin's public and private key to directly to the SDK instead of creating an application identity. For an example of how to pass a key pair to the SDK, see [Connecting to your network using low level Fabric SDK APIs](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-low-level).  
+
+
+3. **Configure anchor peers.** Because cross organizational [gossip ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/gossip.html "Gossip data dissemination protocol") must be enabled for private data to work, an anchor peer must exist for each organization in the collection definition. Refer to this information for [how to configure anchor peers](/docs/services/blockchain/howto/ibp-console-govern.html#ibp-console-govern-channels-anchor-peers) on your network.
 
 Your channel is now configured to use private data.
-
-**Problem:** Installing, instantiating, or upgrading a smart contract fails with an error in the console.  
-**Solution:** If one of these actions on a smart contract fails, [check your node logs](/docs/services/blockchain/howto/ibp-console-manage.html#ibp-console-manage-console-node-logs) for errors.

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-03-20"
 
 subcollection: blockchain
 
@@ -141,4 +141,4 @@ Because `fabcar` is on the same channel as `newContract`, the `crossChaincodeCha
 
 If you use CouchDB as your state database, you can perform JSON data queries from your chaincode against the channel's state data. It is strongly recommended that you create indexes for your JSON queries and use them in your chaincode. Indexes allow your applications to retrieve data efficiently as your network adds additional blocks of transactions and entries in the world state.
 
-For more information about CouchDB and how to set up indexes, see [CouchDB as the State Database ![External link icon](../images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/couchdb_as_state_database.html "CouchDB as the State Database"){:new_window} in the Hyperledger Fabric documentation. You can also find an example that uses an index with chaincode in the [Fabric CouchDB tutorial ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/couchdb_tutorial.html). Visit [Best Practices when using CouchDB](/docs/services/blockchain/v10_application.html#dev-app-couchdb-indices) in the Developing applications tutorial for more information on how to query data from your applications.
+For more information about CouchDB and how to set up indexes, see [CouchDB as the State Database ![External link icon](../images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/couchdb_as_state_database.html "CouchDB as the State Database"){:new_window} in the Hyperledger Fabric documentation. You can also find an example that uses an index with chaincode in the [Fabric CouchDB tutorial ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/couchdb_tutorial.html). Visit [Best Practices when using CouchDB](/docs/services/blockchain/best_practices.html#best-practices-app-couchdb-indices) in the Developing applications tutorial for more information on how to query data from your applications.

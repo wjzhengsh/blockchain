@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2019-03-05"
+lastupdated: "2019-03-20"
 
 keywords: ibm blockchain platform, free 2.0 beta, starter plan, videos, getting started
 
