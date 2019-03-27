@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -18,10 +20,6 @@ lastupdated: "2019-02-08"
 
 # Ubicazioni di {{site.data.keyword.blockchainfull_notm}} Platform
 {: #ibp-regions-locations}
-
-
-***[Questa pagina è utile? Faccelo sapere.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 
 {{site.data.keyword.cloud}} è ospitato in tutto il mondo in diverse ubicazioni. Le ubicazioni sono i data center all'interno di un'area geografica a cui si accede da un endpoint. {{site.data.keyword.blockchainfull_notm}} Platform offre piani di adesione in {{site.data.keyword.cloud_notm}} globalmente in ubicazioni differenti. Quando crei l'istanza del servizio {{site.data.keyword.blockchainfull_notm}} Platform in {{site.data.keyword.cloud_notm}}, la tua rete blockchain e le tue risorse di rete vengono create e archiviate nell'ubicazione {{site.data.keyword.cloud_notm}} in cui crei l'istanza del servizio.
 {:shortdesc}
