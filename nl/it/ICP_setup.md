@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -17,8 +19,6 @@ lastupdated: "2019-02-08"
 
 # Configurazione di {{site.data.keyword.cloud_notm}} Private
 {: #icp-setup}
-
-***[Questa pagina è utile? Faccelo sapere.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 Prima di distribuire i componenti {{site.data.keyword.blockchainfull}} Platform e di creare la rete blockchain su {{site.data.keyword.cloud_notm}} Private, devi configurare {{site.data.keyword.cloud_notm}} Private nel tuo ambiente.
 {:shortdesc}
@@ -61,7 +61,7 @@ Assicurati che il sistema {{site.data.keyword.cloud_notm}} Private soddisfi i re
 | Componente | CPU virtuale | RAM | Disco per l'archiviazione di dati |
 |-----------|------|-----|-----------------------|
 | CA | 1 |192 MB | 1 GB |
-| Ordinante | 2 | 512 MB | 100 GB con capacità di espansione. |
+| Ordinante | 2 | 512 MB | 100 GB con capacità di espansione |
 | Peer | 2 | 2 GB | 50 GB con capacità di espansione. |
 | CouchDB per ogni peer | 2| 2 GB |50 GB con capacità di espansione. |
 

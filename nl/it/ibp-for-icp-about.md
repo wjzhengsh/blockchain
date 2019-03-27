@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -17,8 +19,6 @@ lastupdated: "2019-02-08"
 
 # Informazioni su {{site.data.keyword.blockchainfull_notm}} Platform per {{site.data.keyword.cloud_notm}} Private
 {: #ibp-icp-about}
-
-***[Questa pagina è utile? Faccelo sapere.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 {{site.data.keyword.blockchainfull}} Platform rilascia {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private, che è una piattaforma applicativa per sviluppare e gestire applicazioni inserite nel contenitore. L'offerta {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private è basata su Kubernetes, che consente agli utenti di distribuire CA (Certificate Authority, Autorità di certificazione), ordinanti e peer su x86, LinuxONE e IBM Z. {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private è basato su Hyperledger Fabric v1.2.1 e viene distribuito utilizzando grafici Helm Kubernetes.
 {:shortdesc}
@@ -41,7 +41,8 @@ lastupdated: "2019-02-08"
 
 L'esecuzione di componenti {{site.data.keyword.blockchainfull_notm}} Platform fuori da {{site.data.keyword.cloud_notm}} ti fornisce maggiore flessibilità di crescere o di unirti a una rete blockchain. Aiuta i fondatori della rete a far crescere le loro reti consentendo a nuovi membri di unirsi pur utilizzando la piattaforma di loro scelta. Consentirà alle organizzazioni interessate di unirsi alle reti blockchain per collocare i loro peer con le loro applicazioni esistenti o di integrarsi con i loro system of record.
 
-Il processo per distribuire {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private è complicato e presuppone un elevato grado di competenza in Fabric. Se non hai esperienza con Fabric, {{site.data.keyword.cloud_notm}} Private o {{site.data.keyword.blockchainfull_notm}} Platform, e il tuo obiettivo è configurare un ambiente di sviluppo o un modello di verifica (PoC, Poof of Concept), considera invece l'utilizzo del [piano Starter](/docs/services/blockchain/starter_plan.html#starter-plan-about). Nota anche che non tutte le configurazioni di distribuzione potenziali sono supportate in {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private .{:improtant}
+Il processo per distribuire {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private è complicato e presuppone un elevato grado di competenza in Fabric. Se non hai esperienza con Fabric, {{site.data.keyword.cloud_notm}} Private o {{site.data.keyword.blockchainfull_notm}} Platform, e il tuo obiettivo è configurare un ambiente di sviluppo o un modello di verifica (PoC, Poof of Concept), considera invece l'utilizzo del [piano Starter](/docs/services/blockchain/starter_plan.html#starter-plan-about). Nota anche che non tutte le configurazioni di distribuzione potenziali sono supportate in {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private .
+{:improtant}
 
 Gli utenti di questa offerta gestiranno la loro sicurezza e la loro infrastruttura. {{site.data.keyword.cloud_notm}} non fornisce tali servizi. Prima di iniziare, esamina [Considerazioni e limitazioni](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-about-considerations) nella prossima sezione.
 
@@ -175,9 +176,9 @@ I piani Starter ed Enterprise di {{site.data.keyword.blockchainfull_notm}} Platf
 I dati nel tuo database dello stato, indipendentemente dal fatto che tu usi LevelDB o CouchDB, non sono crittografati. Puoi utilizzare la crittografia a livello delle applicazioni per proteggere i dati inattivi nel tuo database dello stato.
 
 ### Residenza dei dati
-{: #ibp-icp-about-data-residency}
+{: #ibp-icp-about-security-data-residency}
 
-I requisiti di residenza dei dati possono imporre che l'elaborazione e l'archiviazione di tutti i dati del libro mastro blockchain rimangano entro i confini di un singolo paese (o entro quale altro limite definito). Per ulteriori informazioni su come completare la residenza dei dati, vedi [Residenza dei dati](/docs/services/blockchain/howto/remote_peer.html#remote-peer-aws-about-data-residency).
+I requisiti di residenza dei dati possono imporre che l'elaborazione e l'archiviazione di tutti i dati del libro mastro blockchain rimangano entro i confini di un singolo paese (o entro quale altro limite definito). Per ulteriori informazioni su come completare la residenza dei dati, vedi [Residenza dei dati](#ibp-icp-about-data-residency).
 
 ### Gestione delle chiavi
 {: #ibp-icp-about-security-key-management}
@@ -212,7 +213,7 @@ Per soddisfare i requisiti di residenza dei dati, è importante comprendere l'ar
 
 Inoltre, le applicazioni client utilizzano gli [SDK Fabric](/docs/services/blockchain/v10_application.html#dev-app-fabric-sdks) per inviare transazioni ai peer e al servizio ordini. Queste transazioni includono dati della [serie di lettura-scrittura![Icona link esterno](images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/readwrite.html "Semantica della serie di lettura-scrittura"), che contengono le coppie chiave-valore sul libro mastro.
 
-Se la residenza dei dati all'interno del paese è un requisito, l'ordinante, i peer e le applicazioni client devono risiedere nello stesso paese. Quando viene creata una rete {{site.data.keyword.blockchainfull_notm}} Platform in {{site.data.keyword.cloud_notm}}, hai la possibilità di selezionare un'ubicazione per la rete. <!--For a Starter Plan network, you can select from US South, United Kingdom, and Sydney. For an Enterprise Plan network, you can select from currently available locations, which include Dallas, Frankfurt, London, Sao Paulo, Tokyo, and Toronto. -->Per ulteriori informazioni sulle regioni e sulle ubicazioni, vedi [Regioni e ubicazioni {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/reference/ibp_regions.html#ibp-regions-locations). 
+Se la residenza dei dati all'interno del paese è un requisito, l'ordinante, i peer e le applicazioni client devono risiedere nello stesso paese. Quando viene creata una rete {{site.data.keyword.blockchainfull_notm}} Platform in {{site.data.keyword.cloud_notm}}, hai la possibilità di selezionare un'ubicazione per la rete. <!--For a Starter Plan network, you can select from US South, United Kingdom, and Sydney. For an Enterprise Plan network, you can select from currently available locations, which include Dallas, Frankfurt, London, Sao Paulo, Tokyo, and Toronto. -->Per ulteriori informazioni sulle regioni e sulle ubicazioni, vedi [Regioni e ubicazioni {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/reference/ibp_regions.html#ibp-regions-locations).
 
 ### Un caso di utilizzo per la residenza dei dati
 

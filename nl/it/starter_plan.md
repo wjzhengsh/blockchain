@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -18,14 +20,12 @@ lastupdated: "2019-02-08"
 # Informazioni sul piano Starter
 {: #starter-plan-about}
 
-***[Questa pagina è utile? Faccelo sapere.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 {{site.data.keyword.blockchainfull}} Platform piano Starter è un'opzione entry-level che consente alle organizzazioni di simulare delle reti blockchain con più organizzazioni, sviluppare rapidamente delle applicazioni e lavorare con reti di business e smart contract di esempio. Offre anche la stessa esperienza di IU delle altre opzioni di adesione, aiutando ad eliminare eventuali curve di apprendimento. Le nuove reti piano Starter create dopo il 4 ottobre 2018 sono sviluppate su Hyperledger Fabric V1.2.1. Le reti piano Starter meno recenti rimangono al livello Fabric V1.1.0.
 {:shortdesc}
 
 Il **piano Starter** è un ambiente per coloro che desiderano iniziare a lavorare allo sviluppo di reti blockchain o che desiderano iniziare ad apprendere la tecnologia blockchain. Puoi utilizzare il piano Starter come un ambiente di sviluppo o di test che ti consentirà di iniziare in piccolo e di ridimensionare il volume di transazioni o di adesioni della tua rete prima di passare a un ambiente di produzione.
 
- Per distribuire una rete piano Starter, registrati ora per la tua [adesione a Starter ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps) su {{site.data.keyword.cloud_notm}}. Quando sei pronto a iniziare a sviluppare la tua rete, visita [Introduzione al piano Starter](/docs/services/blockchain/get_start_starter_plan.html#getting-started-with-starter-plan).
+ Per distribuire una rete piano Starter, registrati ora per la tua [adesione a Starter ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://cloud.ibm.com/catalog/services/ibm-blockchain-5-prod) su {{site.data.keyword.cloud_notm}}. Quando sei pronto a iniziare a sviluppare la tua rete, visita [Introduzione al piano Starter](/docs/services/blockchain/get_start_starter_plan.html#getting-started-with-starter-plan).
 
 
 **Note:**

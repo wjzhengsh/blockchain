@@ -2,7 +2,10 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
+
 ---
 
 {:new_window: target="_blank"}
@@ -14,10 +17,6 @@ lastupdated: "2019-02-08"
 
 # Gestione dei certificati su {{site.data.keyword.blockchainfull_notm}} Platform
 {: #managing-certificates}
-
-
-***[Questa pagina è utile? Faccelo sapere.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 
 {{site.data.keyword.blockchainfull}} Platform è basato su Hyperledger Fabric e crea reti blockchain autorizzate. I partecipanti sono noti come membri della rete e le loro attività e il loro accesso alle risorse di rete vengono verificati continuamente. L'identità di un partecipante è fornita sotto forma di un certificato digitale x509 attendibile. La verifica viene fornita da un'infrastruttura a chiave pubblica sottostante e da operazioni di firma/verifica che proteggono le transazioni e la gestione all'interno della rete.
 {:shortdesc}
@@ -39,7 +38,7 @@ Puoi utilizzare il Monitoraggio della rete di {{site.data.keyword.blockchainfull
   - **Segreto di iscrizione:** questa sarà la password per la tua identità, a volte indicata come `enroll Secret`. **Salva questo valore** per quando configuri un peer remoto o ti iscrivi a una nuova applicazione.
   - **Tipo:** seleziona il tipo di identità che vuoi registrare, peer o applicazione client.
   - **Affiliazione:** questa sarà l'affiliazione all'interno della tua organizzazione, ad esempio `org1`, a cui appartiene l'identità.
-  - **Numero massimo di iscrizioni:** puoi utilizzare questo campo per limitare il numero di volte in cui puoi iscrivere o generare certificati utilizzando questa identità. Se lasci il campo vuoto, il valore predefinito è un numero illimitato di iscrizioni.
+  - **Numero massimo di iscrizioni:** puoi utilizzare questo campo per limitare il numero di volte in cui puoi iscrivere o generare certificati utilizzando questa identità. Se lasci il campo vuoto, il valore predefinito è un numero illimitato di registrazioni.
 
 Puoi utilizzare questo pannello per registrare una nuova identità peer se stai distribuendo un [peer remoto](/docs/services/blockchain/howto/remote_peer.html#remote-peer-aws-about). In alternativa, puoi registrare un client se stai sviluppando un'applicazione che può inviare transazioni alla tua rete. Consulta l'[esercitazione sullo sviluppo di applicazioni](/docs/services/blockchain/v10_application.html#dev-app) per ulteriori informazioni sull'utilizzo degli SDK Fabric con la piattaforma.
 
@@ -58,7 +57,7 @@ Puoi generare i certificati con solo le identità che sono state registrate con 
 ### Generazione dei certificati utilizzando il Monitoraggio della rete
 {: #managing-certificates-certs-panel}
 
-Puoi utilizzare il Monitoraggio della rete per generare i certificati utilizzando l'identità di amministratore e poi passarli direttamente all'SDK. Fai clic sul pulsante **Genera certificato** accanto alla tua identità di amministratore per ottenere un nuovo signCert e una nuova chiave privata dalla tua CA. Il campo **Certificato** contiene il signCert, appena sopra la **Chiave privata**. Puoi fare clic sull'icona di copia alla fine di ogni campo per copiare il valore. Devi poi salvare questi certificati in un posto da cui puoi importarli nella tua applicazione. Per ulteriori informazioni, vedi l'[esercitazione sullo sviluppo di applicazioni](/docs/services/blockchain/v10_application.html#dev-app-enroll-panel). **Nota** che {{site.data.keyword.blockchainfull_notm}} Platform non memorizza questi certificati. Devi salvarli e memorizzarli in modo sicuro.
+Puoi utilizzare il Monitoraggio della rete per generare i certificati utilizzando l'identità di amministratore e poi passarli direttamente all'SDK. Fai clic sul pulsante **Genera certificato** accanto alla tua identità amministratore per ottenere un nuovo signCert e una nuova chiave privata dalla tua CA. Il campo **Certificato** contiene il signCert, appena sopra **Chiave privata**. Puoi fare clic sull'icona di copia alla fine di ogni campo per copiare il valore. Devi poi salvare questi certificati in un posto da cui puoi importarli nella tua applicazione. Per ulteriori informazioni, vedi l'[esercitazione sullo sviluppo di applicazioni](/docs/services/blockchain/v10_application.html#dev-app-enroll-panel). **Nota** che {{site.data.keyword.blockchainfull_notm}} Platform non memorizza questi certificati. Devi salvarli e memorizzarli in modo sicuro.
 
 ### Caricamento dei certificati di firma in {{site.data.keyword.blockchainfull_notm}} Platform
 {: #managing-certificates-upload-certs}
