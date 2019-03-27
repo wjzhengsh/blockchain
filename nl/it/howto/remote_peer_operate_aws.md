@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -15,11 +17,7 @@ lastupdated: "2019-02-08"
 # Utilizzo dei peer in AWS
 {: #remote-peer-aws-operate}
 
-
-***[Questa pagina è utile? Faccelo sapere.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
-
-Dopo che hai configurato i peer {{site.data.keyword.blockchainfull}} Platform in AWS, devi completare diversi passi operativi prima che il tuo peer possa emettere transazioni per eseguire query e richiami del libro mastro della rete blockchain. I passi includono l'aggiunta della tua organizzazione a un canale, l'unione del tuo peer al canale, l'installazione del chaincode sul peer, l'istanziazione del chaincode sul canale e la connessione delle applicazioni al tuo peer. Puoi utilizzare gli [SDK Fabric](/docs/services/blockchain/howto/remote_peer_operate_aws.html#remote-peer-aws-operate-with-sdk) o la [riga di comando](/docs/services/blockchain/howto/remote_peer_operate_aws.html#remote-peer-aws-operate-cli-operate) per completare questi passi operativi. Gli SDK Fabric sono il percorso consigliato, sebbene le istruzioni presuppongano la familiarità con il funzionamento dell'SDK.
+Dopo che hai configurato i peer {{site.data.keyword.blockchainfull}} Platform in AWS, devi completare diversi passi operativi prima che il tuo peer possa emettere transazioni per eseguire query e richiami del libro mastro della rete blockchain. I passi includono l'aggiunta della tua organizzazione a un canale, l'unione del tuo peer al canale, l'installazione del chaincode sul peer, l'istanziazione del chaincode sul canale e la connessione delle applicazioni al peer. Puoi utilizzare gli [SDK Fabric](/docs/services/blockchain/howto/remote_peer_operate_aws.html#remote-peer-aws-operate-with-sdk) o la [riga di comando](/docs/services/blockchain/howto/remote_peer_operate_aws.html#remote-peer-aws-operate-cli-operate) per completare questi passi operativi. Gli SDK Fabric sono il percorso consigliato, sebbene le istruzioni presuppongano la familiarità con il funzionamento dell'SDK.
 
 **Nota**: un peer {{site.data.keyword.blockchainfull_notm}} Platform in AWS non ha accesso alla piena funzionalità o al supporto completo dei peer ospitati su {{site.data.keyword.blockchainfull_notm}} Platform. Di conseguenza, non puoi utilizzare il Monitoraggio della rete per gestire un peer. Prima di iniziare a eseguire i peer in AWS, assicurati di aver esaminato le [considerazioni](/docs/services/blockchain/howto/remote_peer.html#remote-peer-aws-about-limitations).
 
@@ -53,7 +51,7 @@ Prima di utilizzare l'SDK per gestire il peer, devi generare i certificati neces
 
 Devi caricare il tuo certificato di firma SDK sulla rete in {{site.data.keyword.blockchainfull_notm}} Platform in modo che gli altri membri possano riconoscere la tua firma digitale.
 
-- Puoi trovare il tuo certificato di firma nella directory in cui l'SDK ha generato il tuo materiale crittografico, nel file denominato admin. Copia il certificato all'interno delle virgolette dopo il campo `certificate`, che inizia con `-----BEGIN CERTIFICATE-----` e termina con `-----END CERTIFICATE-----`. Puoi utilizzare la CLI per convertire il certificato in formato PEM immettendo il comando `echo -e "<CERT>" > admin.pem`. Puoi quindi incollare il contenuto del certificato nella tua rete blockchain utilizzando il Monitoraggio della rete. Accedi alla rete su {{site.data.keyword.blockchainfull_notm}} Platform. Nella schermata "Membri" del Monitoraggio della rete, fai clic su **Certificati** > **Aggiungi certificato**. Specifica un qualsiasi nome per il certificato e incolla il contenuto nel campo **Certificato**. Fai clic su **Riavvia** quando ti viene richiesto se vuoi riavviare i tuoi peer. Questa azione deve essere eseguita prima che la tua organizzazione si unisca al canale.
+- Puoi trovare il tuo certificato di firma nella directory in cui l'SDK ha generato il tuo materiale crittografico, nel file denominato admin. Copia il certificato all'interno delle virgolette dopo il campo `certificate`, che inizia con  `-----BEGIN CERTIFICATE-----` e termina con `-----END CERTIFICATE-----`. Puoi utilizzare la CLI per convertire il certificato in formato PEM immettendo il comando `echo -e "<CERT>" > admin.pem`. Puoi quindi incollare il contenuto del certificato nella tua rete blockchain utilizzando il Monitoraggio della rete. Accedi alla rete su {{site.data.keyword.blockchainfull_notm}} Platform. Nella schermata "Membri" del Monitoraggio della rete, fai clic su **Certificati** > **Aggiungi certificato**. Specifica un qualsiasi nome per il certificato e incolla il contenuto nel campo **Certificato**. Fai clic su **Riavvia** quando ti viene richiesto se vuoi riavviare i tuoi peer. Questa azione deve essere eseguita prima che la tua organizzazione si unisca al canale.
 
 ### Caricamento di un certificato di firma sul peer
 {: #remote-peer-aws-operate-upload-signcert}
@@ -181,7 +179,7 @@ Il primo passo consiste nel generare i certificati richiesti (iscrizione) utiliz
     ```
     {:codeblock}
 
-    **Suggerimento:** se il valore dell'url di iscrizione, il valore del parametro `-u`, contiene un carattere speciale, devi codificare il carattere speciale oppure racchiudere l'url tra virgolette singole. Ad esempio, `!` diventa `%21` oppure il comando si presenta come:
+    **Suggerimento:** se il valore dell'URL di iscrizione, ossia il valore del parametro `-u`, contiene un carattere speciale, devi codificare il carattere speciale o racchiudere l'URL tra virgolette singole. Ad esempio, `!` diventa `%21` o il comando è simile a:
 
     ```
     ./fabric-ca-client enroll -u 'https://admin:C25A06287!0@ash-zbc07c.4.secure.blockchain.ibm.com:21241' --tls.certfiles $HOME/fabric-ca-remote/cert.pem --caname PeerOrg1CA

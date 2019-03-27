@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -14,9 +16,6 @@ lastupdated: "2018-02-08"
 
 # Prezzi
 {: #ibp-pricing}
-
-
-***[Questa pagina è utile? Faccelo sapere.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 
 Questo manuale ti aiuta a comprendere i prezzi per i piani di adesione {{site.data.keyword.blockchainfull}} Platform e quanto pagherai man mano che sviluppi e accresci la tua rete blockchain.  

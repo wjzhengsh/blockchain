@@ -2,7 +2,10 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-02-08"
+
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -18,12 +21,13 @@ lastupdated: "2019-02-08"
 # Esercitazione: unisciti a una rete
 {: #ibp-console-join-network}
 
-***[Questa pagina è utile? Faccelo sapere.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 {{site.data.keyword.blockchainfull}} Platform è un'offerta BaaS (blockchain-as-a-service) che ti consente di sviluppare, distribuire e gestire applicazioni e reti blockchain. Puoi scoprire di più sui componenti blockchain e su come lavorano insieme visitando la [Panoramica dei componenti blockchain](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview). Questa esercitazione è la seconda parte della [serie di esercitazioni sulla rete di esempio](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-sample-tutorial) e descrive come creare nodi nella console {{site.data.keyword.blockchainfull_notm}} Platform e connetterli a un consorzio blockchain ospitato in un altro cluster.
 {:shortdesc}
 
-Se non hai già distribuito la console in un cluster Kubernetes utilizzando {{site.data.keyword.cloud_notm}} Kubernetes Service, vedi [Introduzione a {{site.data.keyword.blockchainfull_notm}} Platform 2.0](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks). Puoi creare un nuovo cluster Kubernetes per la distribuzione della console o utilizzarne uno esistente nel tuo account {{site.data.keyword.cloud_notm}}.  Dopo aver distribuito {{site.data.keyword.blockchainfull_notm}} Platform al tuo cluster Kubernetes, puoi avviare la console per creare e gestire i tuoi componenti blockchain.
+
+**Gruppi di destinatari:** questo argomento è pensato per gli operatori di rete che sono responsabili della creazione, del monitoraggio e della gestione della rete blockchain.  
+
+Se non hai già distribuito la console in un cluster Kubernetes utilizzando {{site.data.keyword.cloud_notm}} Kubernetes Service, vedi [Introduzione a {{site.data.keyword.blockchainfull_notm}} Platform 2.0](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks). Puoi creare un nuovo cluster Kubernetes per la distribuzione della console o utilizzarne uno esistente nel tuo account {{site.data.keyword.cloud_notm}}. Dopo aver distribuito {{site.data.keyword.blockchainfull_notm}} Platform al tuo cluster Kubernetes, puoi avviare la console per creare e gestire i tuoi componenti blockchain.
 
 Sia che tu esegua la distribuzione su un cluster Kubernetes a pagamento o gratuito, utilizza il dashboard Kubernetes per prestare particolare attenzione alle risorse a tua disposizione quando scegli di distribuire nodi e creare canali. È tua responsabilità gestire il tuo cluster Kubernetes e distribuire risorse aggiuntive, laddove necessario. Sebbene i componenti verranno distribuiti correttamente su un cluster gratuito, più componenti aggiungi, più lenta sarà la loro esecuzione.
 {: note}
@@ -31,13 +35,14 @@ Sia che tu esegua la distribuzione su un cluster Kubernetes a pagamento o gratui
 ## Serie di esercitazioni sulla rete di esempio
 {: #ibp-console-join-network-structure}
 
-Questa serie di esercitazioni in tre parti ti guida attraverso il processo di creazione e interconnessione di una rete {{site.data.keyword.blockchainfull_notm}} Platform 2.0 relativamente semplice e a più nodi utilizzando la console e sfruttando la distribuzione di Kubernetes.
+Questa serie di esercitazioni in tre parti ti guida attraverso il processo di creazione e interconnessione di una rete Hyperledger Fabric a più nodi utilizzando la console {{site.data.keyword.blockchainfull_notm}} Platform 2.0 per distribuire una rete nel tuo cluster Kubernetes e installare e istanziare uno smart contract.
 
 * L'[Esercitazione: crea una rete](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network) ti guida attraverso il processo di hosting di una rete creando un ordinante e un peer.
-* L'[Esercitazione: unisciti a una rete](/docs/services/blockchain/howto/ibp-console-join-network.html#ibp-console-join-network) ti guida attraverso il processo di unione a una rete esistente creando un peer e unendolo a un canale.
-* L'[Esercitazione: distribuisci uno smart contract sulla rete](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts) fornisce informazioni su come scrivere uno smart contract e distribuirlo sulla tua rete.
+* **Esercitazione: unisciti a una rete** questa esercitazione ti guida attraverso il processo di unione a una rete esistente creando un peer e unendolo a un canale.
+* [Distribuire uno smart contract sulla rete](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts) fornisce informazioni su come scrivere uno smart contract e distribuirlo sulla tua rete.
 
-Puoi utilizzare i passi descritti in queste esercitazioni per creare una rete con più organizzazioni in un cluster per scopi di sviluppo e di test. Utilizza l'esercitazione **Crea una rete** se vuoi fondare un consorzio blockchain. Utilizza l'esercitazione **Unisciti a una rete** per connettere un peer alla rete. Seguendo le esercitazioni con diversi membri del consorzio puoi creare una rete blockchain realmente **distribuita**.  
+Puoi utilizzare i passi descritti in queste esercitazioni per creare una rete con più organizzazioni in un cluster per scopi di sviluppo e di test. Utilizza l'esercitazione **Crea una rete** se vuoi formare un consorzio blockchain creando un nodo ordinante e aggiungendo delle organizzazioni. Utilizza l'esercitazione **Unisciti a una rete** per connettere un peer alla rete. Seguendo le esercitazioni con diversi membri del consorzio puoi creare una rete blockchain realmente **distribuita**.  
+
 
 Questa esercitazione ha lo scopo di mostrare come unire un peer a una rete **esistente**. Presuppone che un ordinante, che ospita la rete, esista già nel tuo cluster o su un altro cluster di {{site.data.keyword.blockchainfull_notm}} Platform. Se non hai una rete esistente da unire, consulta l'[Esercitazione: crea una rete](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network) per imparare a crearne una. L'esercitazione **Unisciti a una rete** ti guida attraverso i passi per creare i seguenti componenti blockchain di `Org2`, evidenziati nella casella blu:
 ![Unisciti alla struttura della rete](../images/ib2-join-network.png "Unisciti alla struttura della rete")  
@@ -53,7 +58,7 @@ Esegui i passi dell'esercitazione **Unisciti a una rete** per creare i seguenti 
 * **Unione a un canale**
   L'esercitazione descrive come unirsi al canale creato dall'[Esercitazione: crea una rete](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network).
 
-Nel corso di tutta questa esercitazione, forniamo **valori consigliati** per alcuni dei campi nella console. Ciò consente di riconoscere più facilmente i nomi e le identità nelle schede e negli elenchi a discesa. Questi valori non sono obbligatori, ma li troverai utili. Forniamo una tabella dei valori consigliati dopo ogni attività.
+In tutta questa esercitazione forniamo **valori consigliati** per alcuni dei campi nella console. Ciò consente di riconoscere più facilmente i nomi e le identità nelle schede e negli elenchi a discesa. Questi valori non sono obbligatori, ma li troverai utili. Forniamo una tabella dei valori consigliati dopo ogni attività.
 {:tip}
 
 ## Passo uno: crea un'organizzazione aggiuntiva e il tuo punto di ingresso alla blockchain
@@ -75,7 +80,7 @@ Completa la seguente procedura dalla tua console:
 2. Fai clic su **{{site.data.keyword.cloud_notm}}** in **Crea autorità di certificazione**.
 3. Utilizza il secondo pannello laterale per fornire alla tua CA un **nome di visualizzazione**. Il nostro valore consigliato per questa CA è `Org2 CA`.
 4. Nel pannello successivo, fornisci le tue credenziali di amministratore CA specificando come **ID amministratore** il valore `admin` e fornendo qualsiasi segreto che preferisci, ma ti consigliamo di utilizzare `adminpw` ai fini di questa esercitazione.
-5. Fai clic su **Invia**.
+5. Fai clic su **Avanti** e poi su **Aggiungi autorità di certificazione**.
 
 **Attività: creazione della CA dell'organizzazione peer**
 
@@ -120,14 +125,14 @@ Ora che abbiamo creato la CA del peer e l'abbiamo utilizzata per **registrare** 
 1. Vai alla scheda **Organizzazioni** nel pannello di navigazione a sinistra e fai clic su **Crea definizione MSP**.
 2. Fornisci alla tua MSP un nome di visualizzazione come `Org2 MSP` e un ID come `org2msp`. Se in questo campo vuoi specificare il tuo proprio ID MSP, assicurati di seguire le specifiche sulle limitazioni per questo nome indicate nel suggerimento.
 3. In **Dettagli autorità di certificazione (CA) root**, specifica la CA del peer che abbiamo creato come CA root per la tua organizzazione. Se è la prima volta che esegui questa esercitazione, dovresti vederne solo una: `Org2 CA`. Selezionala.
-4. I campi **ID di registrazione** e **Segreto di registrazione** qui sotto verranno compilati automaticamente con l'ID e il segreto di registrazione per il primo utente che hai creato con la tua CA. Non utilizzare questi valori. Fornisci invece l'ID e il segreto di registrazione per l'amministratore della tua organizzazione, `org2admin` e `org2adminpw`. Quindi, fornisci a questa identità un nome di visualizzazione, ad esempio `Org2 Admin`.
+4. I campi **ID di registrazione** e **Segreto di registrazione** qui sotto verranno compilati automaticamente con l'ID e il segreto di registrazione per il primo utente che hai creato con la tua CA. Potresti utilizzare questi valori, ma non ti consigliamo di utilizzare la tua identità di amministratore della CA come amministratore dell'organizzazione.  Invece, per motivi di sicurezza, ti consigliamo di immettere il segreto e l'ID di registrazione separati che hai creato per l'amministratore della tua organizzazione, `org2admin` e `org2adminpw`. Quindi, fornisci a questa identità un nome di visualizzazione, ad esempio `Org2 Admin`.
 5. Fai clic sul pulsante **Genera** per registrare questa identità come amministratore della tua organizzazione ed esportare l'identità nel portafoglio, dove verrà utilizzata durante la creazione del peer e dei canali.
-6. Fai clic su **Esporta** per esportare i certificati dell'amministratore nel tuo file system. Come detto sopra, questa identità non viene memorizzata nel tuo cluster o gestita da {{site.data.keyword.IBM_notm}}. Viene memorizzata solo nell'archiviazione locale del tuo browser.
+6. Fai clic su **Esporta** per esportare i certificati dell'amministratore nel tuo file system. Come detto sopra, questa identità non viene memorizzata nel tuo cluster o gestita da {{site.data.keyword.IBM_notm}}. Viene memorizzata solo nell'archiviazione locale del tuo browser. Se cambi browser, devi importare questa identità nel tuo portafoglio della console per poter gestire il peer.
 7. Fai clic su **Crea definizione MSP**.
 
 **Attività: crea la definizione MSP dell'organizzazione peer**
 
-  |  | **Nome di visualizzazione** | **ID MSP** | **ID di registrazione** | **Segreto** |
+  |  | **Nome di visualizzazione** | **ID MSP** | **ID di registrazione**  | **Segreto** |
   | ------------------------- |-----------|-----------|-----------|-----------|
   | **Crea organizzazione** | Org2 MSP | org2msp |||
   | **CA root** | Org2 CA ||||
@@ -140,7 +145,7 @@ Dopo aver creato l'MSP, dovresti essere in grado di vedere l'amministratore dell
 
 **Attività: controlla il portafoglio della console**
 
-  | **Campo** | **Nome di visualizzazione** | **Descrizione** |
+  | **Campo** |  **Nome di visualizzazione** | **Descrizione** |
   | ------------------------- |-----------|----------|
   | **Identità** | Org2 Admin | Identità Org2 |
 
@@ -176,7 +181,7 @@ Utilizza la tua console per completare la seguente procedura:
    - Fornisci l'**ID di registrazione TLS**, `admin`, e il segreto `adminpw`, gli stessi valori sono l'ID registrazione e il segreto di registrazione che hai fornito durante la creazione della CA.
    - L'opzione **Nome host CSR TLS** è riservata ad utenti esperti ed è utilizzata per specificare un nome di dominio personalizzato che può essere utilizzato per indirizzare l'endpoint del peer. Per adesso, lascia vuoto il campo **Nome host CSR TLS** in quanto non è utilizzato in questa esercitazione.
 6. L'ultimo pannello laterale ti chiederà di **Associare un'identità** e renderla l'amministratore del tuo peer. Seleziona l'identità amministratore del tuo peer `Org2 Admin`.
-7. Riesamina il riepilogo e fai clic su **Invia**.
+7. Riesamina il riepilogo e fai clic su **Aggiungi peer**.
 
 **Attività: distribuzione di un peer**
 
@@ -210,14 +215,17 @@ Poiché solo gli amministratori dell'ordinante possono aggiungere organizzazioni
 2. Scorri verso il basso fino all'ordinante che vuoi utilizzare e fai clic su di esso per aprirlo.
 3. In **Membri del consorzio**, fai clic su **Aggiungi organizzazione**.
 4. Dall'elenco a discesa, seleziona `Org2 MSP`, in quanto questa è l'MSP che rappresenta l'organizzazione del peer `org2`.
-5. Fai clic su **Invia**.
+5. Fai clic su **Aggiungi organizzazione**.
 
 Adesso aggiungi l'organizzazione peer al canale.
 1. Vai alla scheda **Canali** e fai clic su `channel1`.
 2. Fai clic sull'icona **Impostazioni** per aggiornare il canale e aggiungere l'organizzazione peer al canale.
-2. Scorri fino alla sezione `Aggiungi organizzazioni al canale` e quindi apri l'elenco a discesa `Seleziona un membro del canale` e seleziona l'MSP dell'organizzazione peer, `Org2 MSP` per l'esercitazione.
-5. Fai clic su **Aggiungi** e quindi assegna le autorizzazioni per tale organizzazione. Ti consigliamo di renderla un `Operator` in modo che possa aggiornare il canale.
-6. Fai clic su **Aggiorna canale**.
+3. Nell'elenco a discesa **Scegli tra gli ordini disponibili**, assicurati che sia selezionato `Orderer`.
+4. Nell'elenco a discesa **ID MSP del programma di aggiornamento del canale**, assicurati che sia selezionato `org1MSP`.
+5. Nell'elenco a discesa **Associa identità disponibile**, assicurati che sia selezionato `Org1Admin`.
+6. Scorri fino alla sezione `Aggiungi organizzazioni al canale` e quindi apri l'elenco a discesa `Seleziona un membro del canale` e seleziona l'MSP dell'organizzazione peer, `Org2 MSP` per l'esercitazione.
+7. Fai clic su **Aggiungi** e quindi assegna le autorizzazioni per tale organizzazione. Ti consigliamo di renderla un `Operator` in modo che possa aggiornare il canale.
+8. Fai clic su **Aggiorna canale**.
 
 Una volta completato questo processo, `org2` può creare o unirsi a un canale ospitato sul tuo `Orderer`. Puoi procedere al [Passo tre: unisci il tuo peer al canale](/docs/services/blockchain/howto/ibp-console-join-network.html#ibp-console-join-network-join-peer-org2).
 
@@ -238,9 +246,12 @@ L'amministratore dell'ordinante deve importare questo file JSON per aggiungere l
 1. Vai alla scheda **Organizzazioni**, fai clic sul pulsante **Importa definizione MSP** e seleziona il file JSON che rappresenta la definizione MSP dell'organizzazione peer.  
 2. Vai alla pagina **Nodi** e fai clic sul tuo nodo ordinante. Nel pannello del nodo di ordinazione, sotto **Membri del consorzio**, fai clic su **Aggiungi organizzazione**. Nel pannello laterale che si apre, seleziona `Org2 MSP` dall'elenco di definizioni MSP nella scheda **Organizzazioni**.
 3. Vai alla scheda **Canali**, fai clic su `channel1` e quindi sull'icona **Impostazioni** per aggiornare il canale e aggiungere l'organizzazione peer al canale.
-4. Scorri fino alla sezione `Aggiungi organizzazioni al canale` e quindi apri l'elenco a discesa `Seleziona un membro del canale` e seleziona l'MSP dell'organizzazione peer, `Org2 MSP` per l'esercitazione.
-5. Fai clic su **Aggiungi** e quindi assegna le autorizzazioni per tale organizzazione. Ti consigliamo di renderla un `Operator` in modo che possa aggiornare il canale.
-6. Fai clic su **Aggiorna canale**.
+4. Nell'elenco a discesa **Scegli tra gli ordini disponibili**, assicurati che sia selezionato `Orderer`.
+5. Nell'elenco a discesa **ID MSP del programma di aggiornamento del canale**, assicurati che sia selezionato `org1MSP`.
+6. Nell'elenco a discesa **Associa identità disponibile**, assicurati che sia selezionato `Org1Admin`.
+7. Scorri fino alla sezione `Aggiungi organizzazioni al canale` e quindi apri l'elenco a discesa `Seleziona un membro del canale` e seleziona l'MSP dell'organizzazione peer, `Org2 MSP` per l'esercitazione.
+8. Fai clic su **Aggiungi** e quindi assegna le autorizzazioni per tale organizzazione. Ti consigliamo di renderla un `Operator` in modo che possa aggiornare il canale.
+9. Fai clic su **Aggiorna canale**.
 
 Dopo che l'amministratore dell'ordinante ha unito la tua organizzazione peer al consorzio e al canale, devi importare il nodo di ordinazione nella tua console. Puoi quindi unirti ai canali ospitati dal servizio ordini. Completa la seguente procedura per **importare** l'ordinante:
 
@@ -255,7 +266,7 @@ Puoi seguire questi passi se sei l'amministratore dell'**organizzazione peer**:
 1. Vai alla pagina **Nodi** e fai clic su **Aggiungi ordinante**.
 2. Fai clic su {{site.data.keyword.cloud_notm}} in **Importa un ordinante esistente**.
 3. Quindi, fai clic sul pulsante **Carica JSON** e seleziona il JSON che rappresenta il nodo stesso.
-4. Nel passo successivo, quando ti viene richiesto di associare un'identità, seleziona l'identità dell'organizzazione peer. Per questa esercitazione, seleziona `Org2 Admin` e fai clic su **Invia**.
+4. Nel passo successivo, quando ti viene richiesto di associare un'identità, seleziona l'identità dell'organizzazione peer. Per questa esercitazione, seleziona `Org2 Admin` e fai clic su **Importa ordinante**.
 
 
 ## Passo tre: unisci il tuo peer al canale
@@ -269,7 +280,7 @@ Completa la seguente procedura dalla tua console:
 2. Seleziona il tuo ordinante denominato 'Orderer' e fai clic su **Avanti**.
 3. Immetti il nome del canale a cui vuoi unirti, `channel1`, e fai clic su **Avanti**.
 4. Seleziona i peer che vuoi unire al canale. Ai fini di questa esercitazione, fai clic su `Peer Org2`.
-5. Fai clic su **Invia**.
+5. Fai clic su **Unisci peer**. 
 
 Se intendi utilizzare le funzioni [Dati privati ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/latest/private-data/private-data.html "Private data") o [Rilevamento di servizi ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/latest/discovery-overview.html "Service Discovery") di Hyperledger Fabric, devi configurare i peer di ancoraggio nella tua organizzazione dalla scheda **Canali**. Vedi questo argomento su [come configurare i peer di ancoraggio per i dati privati](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-private-data) utilizzando la scheda **Canali** della console.
 
@@ -281,16 +292,5 @@ Una volta che la tua organizzazione è un membro del consorzio, puoi anche crear
 Dopo aver unito il tuo peer a un canale, utilizza le seguenti procedure per distribuire uno smart contract e iniziare a inviare transazioni alla blockchain:
 
 - [Distribuisci uno smart contract sulla tua rete](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts) utilizzando la console.
-- Dopo aver installato e istanziato il tuo smart contract, puoi [inviare le transazioni utilizzando la tua applicazione client](docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-connect-to-SDK).
+- Dopo aver installato e istanziato il tuo smart contract, puoi [inviare le transazioni utilizzando la tua applicazione client](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-connect-to-SDK).
 - Utilizza [l'esempio di commercial paper](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-commercial-paper) per distribuire uno smart contract di esempio e inviare le transazioni dal codice dell'applicazione di esempio.
-
-## Risoluzione dei problemi
-{: #ibp-console-join-network-troubleshooting}
-
-**Problema:** si verificano errori quando provo a utilizzare un nodo.    
-
-**Soluzione:** se ricevi errori mentre utilizzi un nodo nella console, [controlla i log del tuo nodo](/docs/services/blockchain/howto/ibp-console-manage.html#ibp-console-manage-console-node-logs) per verificare gli errori.  
-
-**Problema:** il dashboard Kubernetes mostra che il peer non si avvia e i log del peer includono l'errore `2019-02-06 19:43:24.159 UTC [main] InitCmd -> ERRO 001 Cannot run peer because cannot init crypto, folder “/certs/msp” does not exist`
-
-**Soluzione:** assicurati che, quando hai creato la definizione MSP dell'organizzazione del peer, l'ID e il segreto di registrazione che hai specificato corrispondano a un'identità di tipo `client` e non `peer`.

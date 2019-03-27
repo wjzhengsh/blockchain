@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018,2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -15,15 +17,11 @@ lastupdated: "2019-02-08"
 # Interazione con la rete utilizzando le API Swagger
 {: #ibp-swagger}
 
-
-***[Questa pagina è utile? Faccelo sapere.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
-
 {{site.data.keyword.blockchainfull_notm}} Platform presenta diverse API REST in Swagger che puoi utilizzare per gestire i nodi, i canali, i peer e i membri della tua rete. Le tue applicazioni possono utilizzare queste API per controllare importanti risorse di rete senza usare il Monitoraggio della rete.
 
 {:shortdesc}
 
-Prima di iniziare, devi creare un'istanza del servizio [{{site.data.keyword.blockchain}} Platform ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://console.bluemix.net/catalog/services/blockchain) su {{site.data.keyword.Bluemix_notm}} e creare, o aderire a, una rete blockchain piano Starter <!--or Enterprise Plan -->.
+Prima di iniziare, devi creare un'istanza del servizio [{{site.data.keyword.blockchain}} Platform ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://cloud.ibm.com/catalog/services/ibm-blockchain-5-prod) su {{site.data.keyword.cloud_notm}} e creare, o aderire a, una rete blockchain piano Starter <!--or Enterprise Plan -->.
 
 
 ## Richiamo delle credenziali di rete
@@ -47,9 +45,6 @@ La **Figura 2** mostra come passare da un'organizzazione all'altra:
 {: #ibp-swagger-authorizing-swagger}
 
 Fai clic sul link **IU Swagger** nella schermata "API" per aprire l'IU Swagger.  
-<!-- remove this line because the link is different depending on if you are starter or enterprise plan
-You can also open the Swagger UI with the URL in the connection profiles. For example, `http://blockchain-swagger-dev.stage1.mybluemix.net`.
--->
 
 Nell'IU Swagger, fai clic sul pulsante **Autorizza**; viene visualizzata la finestra di autorizzazione. Immetti il valore di chiave (key) e segreto (secret) nelle tue credenziali di rete come nome utente e password e fai clic su **Autorizza** e quindi su **Fatto**. Ora sei pronto ad eseguire le API. Nota: se aggiorni il tuo browser, devi eseguire nuovamente l'autorizzazione con le tue credenziali.
 

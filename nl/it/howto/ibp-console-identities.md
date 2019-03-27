@@ -2,7 +2,9 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -17,9 +19,9 @@ lastupdated: "2019-02-08"
 # Creazione e gestione delle identità
 {: #ibp-console-identities}
 
-***[Questa pagina è utile? Faccelo sapere.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+I nodi di {{site.data.keyword.blockchainfull_notm}} Platform si basano su Hyperledger Fabric e creano reti blockchain autorizzate. Ciò significa che tutti i partecipanti al consorzio blockchain devono disporre di identità continuamente verificate dall'infrastruttura a chiave pubblica (PKI). La console {{site.data.keyword.blockchainfull_notm}} Platform ti consente di creare queste identità utilizzando le CA (Certificate Authority) della tua organizzazione. Devi archiviare queste identità nel tuo portafoglio della console in modo da poterle utilizzare per gestire la tua rete.
 
-I nodi di {{site.data.keyword.blockchainfull_notm}} Platform si basano su Hyperledger Fabric e creano reti blockchain autorizzate. Ciò significa che tutti i partecipanti al consorzio blockchain devono disporre di identità continuamente verificate dall'infrastruttura a chiave pubblica (PKI). La console {{site.data.keyword.blockchainfull_notm}} Platform ti consente di creare queste identità mediante le CA (Certificate Authority) della tua organizzazione. Puoi quindi utilizzare il portafoglio della console per memorizzare queste identità e utilizzarle per gestire la tua rete. 
+**Gruppi di destinatari:** questo argomento è pensato per gli operatori di rete che sono responsabili della creazione, del monitoraggio e della gestione della rete blockchain.
 
 ## Gestione delle autorità di certificazione (CA)
 {: #ibp-console-identities-manage-ca}
@@ -33,7 +35,7 @@ Quando crei i nodi, devi utilizzare la tua CA root per creare le seguenti identi
 - **Peer o ordinanti:** devi registrare un'identità per ciascuno dei peer e degli ordinanti che appartengono alla tua organizzazione. I tuoi nodi useranno quindi queste identità durante la distribuzione per generare le chiavi di cui hanno bisogno per partecipare alla rete. Per motivi di sicurezza, crea un ID e un segreto di registrazione univoco per ogni nodo che distribuisci.
 - **Amministratori del peer o dell'ordinante:** i nodi di {{site.data.keyword.blockchainfull_notm}} Platform vengono distribuiti con le chiavi pubbliche delle identità degli amministratori dei componenti al loro interno. Questi certificati consentono agli amministratori di gestire il componente da un client remoto o mediante la console.
 - **Amministratori dell'organizzazione:** quando ti unisci a un consorzio ospitato da un servizio ordini, fornisci le chiavi pubbliche delle identità che diventeranno gli amministratori della tua organizzazione. Puoi utilizzare queste identità per creare o modificare i canali.
-- **Applicazioni:** le tue applicazioni devono firmare le loro transazioni prima di inviarle per la convalida da parte della rete. Devi creare le identità che puoi utilizzare per firmare le transazioni dalle tue applicazioni client. 
+- **Applicazioni:** le tue applicazioni devono firmare le loro transazioni prima di inviarle per la convalida da parte della rete. Devi creare le identità che puoi utilizzare per firmare le transazioni dalle tue applicazioni client.
 
 Puoi utilizzare la console per creare queste identità attraverso il [processo di registrazione](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-register). Dopo aver registrato le tue identità di amministratore, devi emettere per ogni identità una chiave pubblica e privata, fornire la chiave pubblica alla definizione MSP della tua organizzazione e aggiungere l'identità al tuo portafoglio della console. Puoi completare questi passi per un'identità di amministratore quando [crei l'MSP della tua organizzazione](/docs/services/blockchain/howto/ibp-console-organizations.html#console-organizations-create-msp). Puoi utilizzare identità separate come amministratori dell'organizzazione o amministratori del nodo oppure puoi utilizzare un'identità per eseguire entrambe le attività. L'[Esercitazione: crea una rete](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network) utilizza un'identità come amministratore per ogni organizzazione creata nell'esercitazione.
 
@@ -42,7 +44,7 @@ Puoi utilizzare la console per creare queste identità attraverso il [processo d
 
 Prima di lavorare con le identità, devi impostare l'identità dell'amministratore della CA, utilizzando l'identità di amministratore creata durante la creazione della CA o stabilendone una nuova. Apri la CA nella scheda **Nodi**. L'ID di registrazione dell'identità attualmente attiva è visibile accanto al nome CA nella parte superiore del pannello. Puoi utilizzare tale identità di amministratore per creare altre identità mediante il pulsante **Registra** per registrare le identità che diventeranno amministratori dell'organizzazione e identità dei nodi o utilizzare il pulsante **Iscrivi** per generare un'identità ed esportarla nel portafoglio.
 
-Per impostare un'identità come amministratore CA, fai clic sull'icona **Impostazioni** e quindi su **Imposta identità** nel dispositivo di scorrimento. Puoi specificare un'identità esistente nel portafoglio utilizzando la scheda **Identità esistente**. In alternativa, puoi utilizzare la scheda **Nuova identità** per incollare i certificati per l'amministratore o per caricare un file JSON che contiene i certificati.
+Per passare a un'identità diversa da utilizzare come amministratore CA, fai clic sull'icona **Impostazioni** e quindi su **Imposta identità** nel dispositivo di scorrimento. Puoi specificare un'identità esistente nel portafoglio utilizzando la scheda **Identità esistente**. In alternativa, puoi utilizzare la scheda **Nuova identità** per incollare i certificati per un nuovo amministratore o per caricare un file JSON che contiene i certificati.
 
 Non tutte le identità hanno la capacità di registrare nuovi utenti. Per ulteriori informazioni, incluso come stabilire un ulteriore amministratore CA, vedi [Creazione di nuovi amministratori della CA](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-ca-admin).
 {: note}
@@ -81,15 +83,17 @@ Nel pannello laterale 4, fai clic sul pulsante **Aggiungi attributo**. Fornisci 
 ## Iscrizione di un'identità
 {: #ibp-console-identities-enroll}
 
-Puoi generare la chiave pubblica e privata per ogni identità che è stata registrata con la tua CA. Puoi generare le chiavi per una delle tue identità di amministratore quando [crei l'MSP della tua organizzazione](/docs/services/blockchain/howto/ibp-console-organizations.html#console-organizations-create-msp) e fornire ulteriori certificati all'MSP per gli altri amministratori che sono già stati iscritti utilizzando la tua CA.
+Puoi generare il certificato pubblico e la chiave privata per ogni identità che è stata registrata con la tua CA. Se hai registrato altre identità amministratore con la tua CA, puoi generare le chiavi per l'identità amministratore e poi facoltativamente includerla quando [crei l'MSP della tua organizzazione](/docs/services/blockchain/howto/ibp-console-organizations.html#console-organizations-create-msp).
 
-Assicurati di aver [impostato l'identità](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-ca-identity) utilizzata dalla CA per creare le chiavi. Dopo aver impostato l'identità, puoi fare clic sul pulsante **Iscrivi identità** per visualizzare le chiavi in un pannello laterale in formato base64.
-  - La chiave pubblica viene visualizzata nel campo **Certificato**. Questo certificato viene indicato anche come certificato di iscrizione, certificato di firma o signCert.
-  - Puoi trovare la chiave privata corrispondente nel campo **Chiave privata**.
+Prima di eseguire l'iscrizione di un'identità, devi [impostare l'identità](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-ca-identity) in modo che possa gestire la CA. Normalmente si desidera impostare l'identità amministratore specificata quando si crea la CA. Puoi confermare che la tua CA è impostata su tale identità esaminando la pagina dei dettagli della CA e visualizzando l'ID di registrazione dell'identità al momento attiva accanto al nome della CA. Dopo aver confermato che l'identità impostata è la tua identità amministratore, fai clic su **Iscrivi identità** sul menu di overflow dell'utente per generare il certificato e la chiave per tutti gli utenti registrati con la CA.
 
-Ogni coppia di chiavi creata facendo clic su **Iscrivi identità** viene generata solo una volta e non viene memorizzata dalla console o dal tuo browser. Facendo clic sul pulsante **Iscrivi identità** verrà conteggiato anche il numero massimo di iscrizioni che hai impostato per l'amministratore della CA. Dopo l'iscrizione, devi memorizzare la coppia di chiavi scaricando l'identità nel tuo file system locale o aggiungendola al tuo portafoglio della console. Immetti un nuovo nome per questa coppia di chiavi pubblica e privata nel campo **Nome** per poterle recuperare.
-  - Fai clic su **Esporta identità** per scaricare questi certificati nel tuo file system locale in formato JSON.
-  - Fai clic su **Aggiungi identità al portafoglio** per aggiungere i certificati al portafoglio della console. Puoi quindi trovare il nome e le chiavi di questa identità in un nuovo tile nella [scheda Portafoglio](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-wallet)
+- Immetti il segreto di registrazione (`Enroll secret`) dell'utente.
+- Nel passo successivo, vengono visualizzate le chiavi generate.
+  - La chiave pubblica viene visualizzata nel campo **Certificato**. Questo certificato viene indicato anche come certificato di iscrizione, certificato di firma o signCert. Devi esportare il signCert in un file nel tuo sistema locale in modo da poterlo utilizzare durante la creazione di un'applicazione client con l'estensione VSCode.
+  - Puoi trovare la chiave privata corrispondente nel campo **Chiave privata**. Devi nuovamente esportare la chiave privata nel tuo sistema locale per utilizzarla con un'applicazione client creata con l'estensione VSCode.
+  - Il certificato e la chiave privata creati facendo clic su **Iscrivi identità** vengono generati solo una volta e non vengono memorizzati dalla console o dal tuo browser. Facendo clic sul pulsante **Iscrivi identità** verrà conteggiato anche il numero massimo di iscrizioni che hai impostato per l'amministratore della CA. Come parte dell'iscrizione, devi memorizzare la coppia di chiavi scaricando l'identità nel tuo file system locale o aggiungendola al tuo portafoglio della console. Immetti un nuovo nome per questa coppia di chiavi pubblica e privata nel campo **Nome** per poterle recuperare.
+- **Importante:** fai clic su **Esporta identità** per scaricare il certificato e la chiave nel tuo sistema locale come un singolo file nel formato JSON. Sei responsabile per la protezione e la gestione di queste chiavi.
+- Fai clic su **Aggiungi identità al portafoglio** per aggiungere questi certificati al portafoglio della console. Puoi quindi trovare il nome e le chiavi di questa identità in un nuovo tile nella [scheda Portafoglio](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-wallet)
 
 Puoi anche utilizzare il client CA Fabric o gli SDK Fabric per iscrivere le identità che hai creato nella console. La console ti fornisce tutte le informazioni necessarie per completare questi passi. Assicurati di aver salvato l'**ID di registrazione** e il **Segreto di registrazione** che hai specificato durante la registrazione.
 

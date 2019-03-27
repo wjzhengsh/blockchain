@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -17,10 +19,6 @@ lastupdated: "2019-02-08"
 
 # Introduzione a {{site.data.keyword.blockchainfull_notm}} Platform for AWS
 {: #remote-peer-aws}
-
-
-***[Questa pagina è utile? Faccelo sapere.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 
 Queste istruzioni descrivono come utilizzare un template Quick Start AWS (Amazon Web Services) per creare un peer {{site.data.keyword.blockchainfull}}  Platform for AWS e connetterlo quindi a una rete su {{site.data.keyword.blockchainfull_notm}} Platform.
 {:shortdesc}
@@ -116,7 +114,7 @@ Devi aggiungere una nuova identità peer alla tua organizzazione su {{site.data.
   - **Segreto di iscrizione:** la password che vuoi utilizzare per il tuo peer, a cui si fa riferimento come `enroll Secret` quando configuri il tuo peer. **Salva questo valore** per un uso futuro.
   - **Tipo:** seleziona `peer` per questo campo.
   - **Affiliazione:** si tratta dell'affiliazione sotto la tua organizzazione, ad esempio `org1`, a cui appartiene il tuo peer. Puoi specificare una nuova affiliazione o utilizzarne una esistente.
-  - **Numero massimo di iscrizioni:** utilizza questo campo per limitare il numero di volte in cui puoi registrare o generare certificati utilizzando questa identità. Se non specificato, il valore predefinito è di registrazioni illimitate.
+  - **Numero massimo di iscrizioni:** puoi utilizzare questo campo per limitare il numero di volte in cui puoi iscrivere o generare certificati utilizzando questa identità. Se non specificato, il valore predefinito è di iscrizioni illimitate.
 
   Dopo aver completato questi campi, fai clic su **Inoltra** per registrare il peer. Il peer registrato viene quindi elencato nella tabella come identità sulla rete. Come misura di sicurezza, utilizza ogni identità, e l'ID iscrizione e il segreto di accompagnamento, per distribuire solo un singolo peer. Non riutilizzare ID e password dei peer.
 
@@ -257,7 +255,7 @@ Esegui il comando della CLI `peer channel fetch` CLI per recuperare il blocco di
    ash-zbc07b.4.secure.blockchain.ibm.com:21239
    ```
 
-   - Trova il nome della tua organizzazione ricercando le **organizzazioni**. Questa deve essere la stessa organizzazione utilizzata per registrare il tuo peer. Puoi trovare il nome della tua organizzazione insieme al suo `mspid` associato. Questo valore è anche disponibile nel pannello Panoramica del Monitoraggio della rete. Fai clic sul pulsante **Configurazione peer remoto**. Il valore è visualizzato sotto `MSP organizzazione`. Prendi nota del valore dell'`mspid`.
+   - Trova il nome della tua organizzazione ricercando le **organizzazioni**. Questa deve essere la stessa organizzazione utilizzata per registrare il tuo peer. Puoi trovare il nome della tua organizzazione insieme al suo `mspid` associato. Questo valore è anche disponibile nel pannello Panoramica del Monitoraggio della rete. Fai clic sul pulsante **Configurazione peer remota**. Il valore è visualizzato sotto `MSP organizzazione`. Prendi nota del valore dell'`mspid`.
 
    - Se non lo hai già fatto, crea una sessione shell all'interno del contenitore peer eseguendo `docker exec -it peer sh`.
 

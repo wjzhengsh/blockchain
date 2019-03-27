@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018,2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -14,10 +16,6 @@ lastupdated: "2019-02-08"
 
 # Monitoraggio di una rete blockchain
 {: #monitor-blockchain-network}
-
-
-***[Questa pagina è utile? Faccelo sapere.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 
 Questa esercitazione ti mostra come visualizzare e monitorare le informazioni sullo stato della tua rete {{site.data.keyword.blockchain}} su {{site.data.keyword.cloud_notm}}.
 {:shortdesc}
@@ -60,7 +58,7 @@ La seguente figura mostra una richiesta **HEAD** con una risposta 200 nell'appli
 ## Utilizzo dei log di rete
 {: #monitor-blockchain-network-using-logs}
 
-La schermata "Panoramica" del tuo Monitoraggio della rete visualizza lo stato della tua CA (Certificate Authority) del servizio ordini e dei peer. Fai clic su **Visualizza log** dall'elenco a discesa sotto l'intestazione **Azioni** per visualizzare i log di uno specifico componente di rete. Se utilizzi le reti piano Enterprise, puoi visualizzare i log dei componenti in un formato file di testo. Se utilizzi le reti piano Starter, i log dei componenti vengono raccolti dal [{{site.data.keyword.cloud_notm}} servizio Log Analysis ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://console.bluemix.net/catalog/services/log-analysis) e puoi visualizzare i log in [Kibana](/docs/services/blockchain/howto/monitor_network.html#monitor-blockchain-network-viewing-kibana-logs).
+La schermata "Panoramica" del tuo Monitoraggio della rete visualizza lo stato della tua CA (Certificate Authority) del servizio ordini e dei peer. Fai clic su **Visualizza log** dall'elenco a discesa sotto l'intestazione **Azioni** per visualizzare i log di uno specifico componente di rete. Se utilizzi le reti piano Enterprise, puoi visualizzare i log dei componenti in un formato file di testo. Se utilizzi le reti piano Starter, i log dei componenti vengono raccolti dal [{{site.data.keyword.cloud_notm}} servizio Log Analysis ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://cloud.ibm.com/catalog/services/log-analysis) e puoi visualizzare i log in [Kibana](/docs/services/blockchain/howto/monitor_network.html#monitor-blockchain-network-viewing-kibana-logs).
 
 Ogni componente genera log da diverse attività. Questo è dovuto al fatto che ogni componente svolge diversi ruoli all'interno dell'[architettura di rete ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/network/network.html) e dei [flussi di transazioni ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.1/txflow.html) di Hyperledger Fabric.
 
@@ -78,11 +76,11 @@ Hyperledger Fabric fornisce diversi [livelli di registrazione ![Icona link ester
 ## Visualizzazione dei log in Kibana nel piano Starter
 {: #monitor-blockchain-network-viewing-kibana-logs}
 
-I log della tua rete piano Starter vengono raccolti dal [servizio Log Analysis di {{site.data.keyword.cloud_notm}} ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://console.bluemix.net/catalog/services/log-analysis "servizio Log Analysis"). Per impostazione predefinita, i tuoi log sono raccolti dal piano Lite del servizio Log Analysis. Questo piano è gratuito e **memorizza i tuoi log per tre giorni** prima di eliminarli. Ti consente inoltre di **cercare solo i primi 500 MB di log al giorno**. Se i tuoi log di rete superano i 500 MB, non puoi visualizzare i nuovi log in Kibana. Se la tua rete genera più di 500 MB di log o se vuoi conservare i log per più di tre giorni, puoi eseguire l'upgrade a una versione a pagamento del servizio Log Analysis.
+I log della tua rete piano Starter vengono raccolti dal [Servizio {{site.data.keyword.cloud_notm}} Log Analysis ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://cloud.ibm.com/catalog/services/log-analysis "servizio Log Analysis"). Per impostazione predefinita, i tuoi log sono raccolti dal piano Lite del servizio Log Analysis. Questo piano è gratuito e **memorizza i tuoi log per tre giorni** prima di eliminarli. Ti consente inoltre di **cercare solo i primi 500 MB di log al giorno**. Se i tuoi log di rete superano i 500 MB, non puoi visualizzare i nuovi log in Kibana. Se la tua rete genera più di 500 MB di log o se vuoi conservare i log per più di tre giorni, puoi eseguire l'upgrade a una versione a pagamento del servizio Log Analysis.
 
 Nella schermata "Panoramica" del Monitoraggio della rete, fai clic su **Visualizza log** dall'elenco a discesa sotto l'intestazione **Azioni** per aprire i log di ogni componente di rete nell'interfaccia Kibana. Quando Kibana si apre, visualizza i log filtrati in base a una barra di ricerca nella parte superiore. Ad esempio, quando fai clic per visualizzare i log del tuo peer, la ricerca viene filtrata in base all'ID di rete e all'ID peer: `NETWORK_ID_str:"nf8389d520c243004bb21ff5d70fc8939" && NODE_NAME_str:"org1-peer1"`. Puoi anche immettere un campo aggiuntivo nella barra di ricerca se desideri visualizzare log più specifici. Ad esempio, puoi aggiungere `&& "marbles"` per visualizzare i log dal chaincode `"marbles"`. L'eliminazione del termine del componente specifico e la ricerca solo con l'ID di rete, ad esempio `NETWORK_ID_str:"nf8389d520c243004bb21ff5d70fc8939"`, visualizza i log provenienti da tutti i componenti di rete.
 
-Puoi utilizzare il pulsante dell'intervallo di tempo nell'angolo superiore destro per modificare il periodo di tempo in cui i log vengono visualizzati. Puoi anche utilizzare la scheda sul lato sinistro della schermata per aggiungere e rimuovere i campi dalla ricerca. Il campo più importante da visualizzare è il campo del messaggio. Potrebbe essere utile effettuare una ricerca con un messaggio senza la data/ora per trovare tutte le istanze del log di tale messaggio. Fai clic sul pulsante **Salva** per salvare la ricerca corrente e ritornare a una specifica vista. Per ulteriori informazioni sulla visualizzazione dei dati in Kibana, consulta la [Guida utente Kibana ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.elastic.co/guide/en/kibana/6.2/index.html "Guida utente Kibana"). Puoi anche [scaricare i log](https://console.bluemix.net/docs/services/CloudLogAnalysis/how-to/manage-logs/downloading_logs_cloud.html#downloading_logs) nel tuo file system locale utilizzando la CLI di Log Analysis.
+Puoi utilizzare il pulsante dell'intervallo di tempo nell'angolo superiore destro per modificare il periodo di tempo in cui i log vengono visualizzati. Puoi anche utilizzare la scheda sul lato sinistro della schermata per aggiungere e rimuovere i campi dalla ricerca. Il campo più importante da visualizzare è il campo del messaggio. Potrebbe essere utile effettuare una ricerca con un messaggio senza la data/ora per trovare tutte le istanze del log di tale messaggio. Fai clic sul pulsante **Salva** per salvare la ricerca corrente e ritornare a una specifica vista. Per ulteriori informazioni sulla visualizzazione dei dati in Kibana, consulta la [Guida utente Kibana ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.elastic.co/guide/en/kibana/6.2/index.html "Guida utente Kibana"). Puoi anche [scaricare i log](https://cloud.ibm.com/docs/services/CloudLogAnalysis/how-to/manage-logs/downloading_logs_cloud.html#downloading_logs) nel tuo file system locale utilizzando la CLI di Log Analysis.
 
 **Nota:** per impostazione predefinita, Kibana è preconfigurato per mostrare i log da 30 giorni di attività. Se non c'è stata attività negli ultimi 30 giorni, vedrai un messaggio che indica *Nessun risultato trovato*. Per visualizzare altri log, puoi fare clic sull'icona del timer nell'angolo superiore destro sotto il tuo nome utente e impostare un intervallo di tempo più ampio, ad esempio *Da inizio anno*.
 

@@ -2,7 +2,9 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -18,8 +20,6 @@ lastupdated: "2019-02-08"
 # Distribuzione della console {{site.data.keyword.blockchainfull_notm}} Platform su {{site.data.keyword.cloud_notm}} Private
 {: #ibp-console-deploy-icp}
 
-***[Questa pagina è utile? Faccelo sapere.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 Queste istruzioni descrivono come distribuire una console {{site.data.keyword.blockchainfull}} Platform nella tua infrastruttura tramite {{site.data.keyword.cloud_notm}} Private. Non è necessario distribuire la console nello stesso ambiente degli altri tuoi componenti blockchain.
 {:shortdesc}
 
@@ -28,7 +28,7 @@ Utilizzerai un grafico Helm per distribuire la console {{site.data.keyword.block
 ## Considerazioni
 {: #ibp-console-deploy-icp-considerations}
 
-Prima di distribuire la console, assicurati di comprendere le seguenti considerazioni:
+Prima di distribuire la console, assicurati di aver compreso le seguenti considerazioni:
 
 - I componenti blockchain devono essere già stati distribuiti in {{site.data.keyword.cloud_notm}} Private o AWS (Amazon Web Services). Se non lo hai già fatto, vedi [Informazioni su {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private] o Informazioni su [IBM Blockchain Platform for AWS] per ulteriori informazioni.
 - Sei responsabile della gestione del monitoraggio dell'integrità, della sicurezza, della registrazione e dell'uso delle risorse della tua console.
@@ -37,7 +37,7 @@ Prima di distribuire la console, assicurati di comprendere le seguenti considera
 ## Risorse richieste
 {: #ibp-console-deploy-icp-resources-required}
 
-Assicurati che il tuo sistema {{site.data.keyword.cloud_notm}} Private soddisfi i requisiti minimi di risorse hardware:
+Assicurati che il sistema {{site.data.keyword.cloud_notm}} Private soddisfi i requisiti di risorse hardware minimi:
 
 | Componente | CPU virtuale | RAM | Disco per l'archiviazione di dati |
 |-----------|------|-----|-----------------------|
@@ -45,7 +45,7 @@ Assicurati che il tuo sistema {{site.data.keyword.cloud_notm}} Private soddisfi 
 | CouchDB per la console IBP | 1 | 1 GB | 1 GB |
 
  **Note:**
- - Una CPU virtuale è un core virtuale assegnato a una macchina virtuale o un core di processore fisico se il server non è partizionato per le macchine virtuali. Devi considerare i requisiti della CPU virtuale quando decidi il VPC (virtual processor core) per la tua distribuzione in {{site.data.keyword.cloud_notm}} Private. VPC è un'unità di misura per determinare il costo di licenza dei prodotti IBM. Per ulteriori informazioni sugli scenari per decidere VPC, vedi [Virtual processor core (VPC) ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/en/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_virtual_processor_core_licenses.html).
+ - Una CPU virtuale è un core virtuale assegnato a una macchina virtuale o un core di processore fisico se il server non è partizionato per le macchine virtuali. Devi considerare i requisiti di CPU virtuale quando decidi il VPC (virtual processor core) per la tua distribuzione in {{site.data.keyword.cloud_notm}} Private. VPC è un'unità di misura per determinare il costo di licenza dei prodotti IBM. Per ulteriori informazioni sugli scenari per decidere il VPC, vedi [Virtual processor core (VPC) ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/en/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_virtual_processor_core_licenses.html).
  - Questi livelli minimi di risorse sono sufficienti per l'esecuzione di test e la sperimentazione. Per un ambiente con un grande volume di transazioni, è importante assegnare una quantità sufficientemente grande di archiviazione; ad esempio 250 GB per la tua console{{site.data.keyword.blockchainfull_notm}} Platform. La quantità di archiviazione da utilizzare dipenderà dal numero di transazioni e dal numero di firme richiesti dalla tua rete. Se stai per esaurire l'archiviazione sul tuo peer o sul tuo ordinante, devi distribuire una nuova console con un file system più grande e importare di nuovo i componenti di rete di conseguenza.
 
 ## Archiviazione
@@ -53,7 +53,7 @@ Assicurati che il tuo sistema {{site.data.keyword.cloud_notm}} Private soddisfi 
 
 Devi determinare l'archiviazione che verrà utilizzata dalla tua console. Se utilizzi le impostazioni predefinite, il grafico Helm creerà una nuova attestazione di volume persistente (PVC) di 8 Gi con il nome di `console-pvc` per i dati della tua console e un'altra PVC di 8 Gi con il nome di `couchdb-pvc` per il tuo CouchDB.
 
-Se non vuoi utilizzare le impostazioni di archiviazione predefinite, assicurati che venga configurata una *nuova* `storageClass` durante l'installazione di {{site.data.keyword.cloud_notm}} Private o che l'amministratore di sistema Kubernetes debba creare una storageClass prima della tua distribuzione.
+Se non vuoi utilizzare le impostazioni di archiviazione predefinite, assicurati che venga configurata una *nuova* `storageClass` durante l'installazione di {{site.data.keyword.cloud_notm}} Private o che l'amministratore di sistema Kubernetes debba creare una nuova storageClass prima della tua distribuzione.
 
 Puoi scegliere di distribuire la console sulle piattaforme AMD64 o S390X. Tuttavia, tieni presente che il [provisioning dinamico](https://kubernetes.io/docs/concepts/storage/dynamic-provisioning/) è disponibile solo per i nodi AMD64 in {{site.data.keyword.cloud_notm}} Private. Se il tuo cluster include una combinazione di nodi di lavoro S390X e AMD64, non è possibile utilizzare il provisioning dinamico.
 
@@ -72,13 +72,13 @@ Prima di distribuire la console {{site.data.keyword.blockchainfull_notm}} Platfo
 ### Registrazione al servizio App ID
 {: #ibp-console-icp-prereq-app-id}
 
-[App ID ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://console.bluemix.net/docs/services/appid/index.html#gettingstarted "App ID") è un servizio di gestione utenti fornito da {{site.data.keyword.cloud_notm}}. La console {{site.data.keyword.blockchainfull_notm}} Platform utilizza il servizio App ID per gestire chi sarà in grado di utilizzare il dashboard e gestire la tua rete blockchain. Questo permette agli utenti dell'IU di utilizzare le credenziali emesse dalla tua propria organizzazione o da terze parti come Google o Facebook, senza che abbiano bisogno di avere l'ID IBM. Solo l'utente che distribuisce la console dovrà avere un ID {{site.data.keyword.IBM_notm}} per registrarsi al servizio.
+[App ID ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://cloud.ibm.com/docs/services/appid/index.html#gettingstarted "App ID") è un servizio di gestione utenti fornito da {{site.data.keyword.cloud_notm}}. La console {{site.data.keyword.blockchainfull_notm}} Platform utilizza il servizio App ID per gestire chi sarà in grado di utilizzare il dashboard e gestire la tua rete blockchain. Questo permette agli utenti dell'IU di utilizzare le credenziali emesse dalla tua propria organizzazione o da terze parti come Google o Facebook, senza che abbiano bisogno di avere l'ID IBM. Solo l'utente che distribuisce la console dovrà avere un ID {{site.data.keyword.IBM_notm}} per registrarsi al servizio.
 
 Prima di distribuire la console, devi ottenere un ID IBM per eseguire un'unica registrazione alla directory cloud App ID. Quindi, devi recuperare le credenziali del servizio APP ID per passare alla console. Utilizza i seguenti passi per registrarti al servizio e ottenere le tue credenziali del servizio.
 
 1. Se non ne hai già uno, devi creare un [ID {{site.data.keyword.IBM_notm}} ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.ibm.com/account/reg/us-en/signup?formid=urx-19776&target=https%3A%2F%2Fidaas.iam.ibm.com%2Fidaas%2Foidc%2Fendpoint%2Fdefault%2Fauthorize%3Fresponse_type%3Dcode%26client_id%3Dmyibmlondonprod%26state%3DbfAvZHoYtGHytcifRjeE%26redirect_uri%3Dhttps%3A%2F%2Fmyibm.ibm.com%2Fmymga%2Foidcclient%2Fredirect%2Famapp-runtime-BlueIDProd%26scope%3Dopenid).
 
-2. Utilizza il tuo ID {{site.data.keyword.IBM_notm}} per accedere o registrarti a [{{site.data.keyword.cloud_notm}} ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://console.bluemix.net/catalog/services/app-id "IBM Cloud App ID"). Quindi, vai al servizio [App ID ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://console.bluemix.net/catalog/services/app-id "IBM Cloud App ID") nel catalogo. Seleziona il piano `Lite` o il `Livello progressivo` a seconda delle tue esigenze di servizio. Fai quindi clic sul pulsante **Crea** per avviare la schermata di "Benvenuto".
+2. Utilizza il tuo ID {{site.data.keyword.IBM_notm}} per accedere o registrarti a [{{site.data.keyword.cloud_notm}} ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://cloud.ibm.com/catalog/services/app-id "IBM Cloud App ID"). Quindi, vai al servizio [App ID ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://cloud.ibm.com/catalog/services/app-id "IBM Cloud App ID") nel catalogo. Seleziona il piano `Lite` o il `Livello progressivo` a seconda delle tue esigenze di servizio. Fai quindi clic sul pulsante **Crea** per avviare la schermata di "Benvenuto".
 
 3. Quando sei nella schermata di "Benvenuto" fai clic sul link **Gestisci** nel riquadro di navigazione a sinistra per visualizzare o aggiornare i provider di identità preferiti. Questi possono essere provider di terze parti, come Google, o il servizio di identità della tua organizzazione.
 
@@ -124,7 +124,7 @@ Per informazioni di riferimento, vedi [Installazione di {{site.data.keyword.bloc
 
 Dopo aver importato il grafico Helm della console {{site.data.keyword.blockchainfull_notm}} Platform, puoi utilizzare i seguenti passi per configurare e installare la tua console.
 
-1. Accedi alla console {{site.data.keyword.cloud_notm}} Private e fai clic sul link **Catalogo** nell'angolo superiore destro.
+1. Accedi alla console {{site.data.keyword.cloud_notm}} Private e fai clic su **Catalogo** nell'angolo superiore destro.
 2. Fai clic su `Blockchain` nel pannello di navigazione a sinistra per individuare il tile etichettato `ibm-blockchain-platform-ui`. Fai clic sul tile per aprirlo e per visualizzare un file Readme che include informazioni sulla configurazione e installazione del grafico Helm.
 3. Fai clic sulla scheda **Configurazione** all'inizio del pannello oppure fai clic sul pulsante **Configura** nell'angolo in basso a destra.
 4. Completa le [impostazioni di configurazione](/docs/services/blockchain/howto/ibp-console-deploy-icp.html#ibp-console-icp-parameters).

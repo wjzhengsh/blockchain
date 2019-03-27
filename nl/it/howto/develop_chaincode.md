@@ -2,19 +2,23 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2018-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
+
 ---
 
 {:new_window: target="_blank"}
 {:shortdesc: .shortdesc}
 {:codeblock: .codeblock}
 {:screen: .screen}
+{:note: .note}
+{:important: .important}
+{:tip: .tip}
 {:pre: .pre}
 
 # Scrittura degli smart contract
 {: #develop-smart-contracts}
-
-***[Questa pagina è utile? Faccelo sapere.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 Il chaincode, a cui a volte viene fatto riferimento come agli smart contract, è il software che ti consente di leggere e aggiornare i dati sul libro mastro blockchain. Il chaincode può trasformare la logica di business in un programma eseguibile accettato e verificato da tutti i membri della rete blockchain. La logica di business include la definizione degli asset scambiati tra le parti. È formata anche dai termini e dalle condizioni necessari per l'esecuzione di una transazione. La trasformazione di queste regole in codice su una blockchain consente alle attività aziendali di semplificare il processo di business e di controllare e ridurre delle grandi quantità di elaborazione e documentazione manuale.
 
@@ -35,7 +39,10 @@ L'esercitazione introduce anche degli aspetti importanti di Fabric accessibili t
 
 Il chaincode può essere scritto in più linguaggi e {{site.data.keyword.blockchainfull_notm}} Platform supporta Go e Node.js. Il chaincode consente agli utenti di eseguire query e modificare i dati archiviati nella blockchain utilizzando le API fornite dall'interfaccia di chaincode Fabric. I dati sulla blockchain sono archiviati in coppie chiave-valore nello stato globale del [libro mastro ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/ledger/ledger.html "ledger") del canale. Il chaincode utilizza i comandi get per richiamare i valori e i comandi put per creare o aggiornare i valori. Utilizzando queste operazioni di base, puoi creare delle funzioni che definiscono le regole di business della tua rete. Queste funzioni possono essere richiamate dalle tue applicazioni e sono visibili per gli utenti finali della rete. Per continuare ad utilizzare l'esempio della rete di veicoli, puoi creare una funzione che consente a un concessionario automobilistico di utilizzare un comando put per aggiungere una nuova automobile al libro mastro solo se viene fornito un numero ID del veicolo valido.
 
-Puoi imparare come iniziare a scrivere il chaincode visitando l'[esercitazione Chaincode for developers ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/latest/chaincode4ade.html "chaincode for developers tutorial") nella documentazione della community Hyperledger Fabric. L'esercitazione ti guiderà nella costruzione di un semplice chaincode che crea e legge gli asset e ti introduce quali API vengono utilizzate nel processo. Puoi anche trovare la guida di riferimento all'API chaincode per tutti i linguaggi chaincode. Esistono ulteriori esempi nella cartella chaincode del [Repository di esempi Fabric ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://github.com/hyperledger/fabric-samples "Fabric samples").
+Puoi imparare come iniziare a scrivere il chaincode visitando l'[esercitazione Chaincode for developers ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/latest/chaincode4ade.html "chaincode for developers tutorial") nella documentazione della community Hyperledger Fabric. L'esercitazione ti guiderà nella costruzione di un semplice chaincode che crea e legge gli asset e ti introduce quali API vengono utilizzate nel processo. Puoi anche trovare la guida di riferimento all'API chaincode per tutti i linguaggi chaincode. Esistono ulteriori esempi nella cartella chaincode del [Repository di esempi Fabric ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://github.com/hyperledger/fabric-samples "Fabric samples").  
+
+Uno smart contract può normalmente convalidare le richieste, applicare le regole aziendali e restituisce un risultato deterministico. Tuttavia, esistono delle situazioni in cui sono richieste delle informazioni supplementari o la rete di business vuole assicurarsi che le informazioni fornite dai client siano vere. Hyperledger Fabric non impedisce chiamate esterne a sistemi di terze parti dagli smart contract. Tuttavia, è responsabilità dello sviluppatore dello smart contract di garantire che le serie di R/W risultanti siano deterministiche.
+{:note}
 
 ## Installazione del chaincode
 {: #develop-smart-contracts-install}
@@ -132,6 +139,6 @@ Poiché il `fabcar` è sullo stesso canale di `newContract`, alla funzione `cros
 ## Utilizzo degli indici con CouchDB
 {: #develop-smart-contracts-indexes}
 
-Se utilizzi CouchDB come tuo database dello stato, puoi eseguire query di dati JSON dal tuo chaincode rispetto ai dati di stato del canale. Si consiglia vivamente di creare degli indici per le tue query JSON e di usarli nel tuo chaincode. Gli indici consentono alle tue applicazioni di richiamare in modo efficiente i dati mentre la tua rete aggiunge blocchi aggiuntivi di transazioni e voci nello stato globale.
+Se utilizzi CouchDB come tuo database dello stato, puoi eseguire le query di dati JSON dal tuo chaincode sui dati di stato del canale. Ti consigliamo vivamente di creare indici per le tue query JSON e di utilizzarli nel tuo chaincode. Gli indici consentono alle tue applicazioni di richiamare in modo efficiente i dati mentre la tua rete aggiunge blocchi aggiuntivi di transazioni e voci nello stato globale.
 
 Per ulteriori informazioni su CouchDB e su come configurare gli indici, vedi [CouchDB as the State Database ![Icona link esterno](../images/external_link.svg "Icona link esterno")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/couchdb_as_state_database.html "CouchDB as the State Database"){:new_window} nella documentazione Hyperledger Fabric. Puoi anche trovare un esempio che utilizza un indice con il chaincode nell'[esercitazione di Fabric CouchDB ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/couchdb_tutorial.html). Visita [Passi ottimali quando si utilizza CouchDB](/docs/services/blockchain/v10_application.html#dev-app-couchdb-indices) nell'esercitazione Sviluppo di applicazioni per ulteriori informazioni su come eseguire query dei dati dalle tue applicazioni.

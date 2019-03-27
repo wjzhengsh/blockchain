@@ -2,7 +2,10 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
+
 ---
 
 {:new_window: target="_blank"}
@@ -13,8 +16,6 @@ lastupdated: "2019-02-08"
 
 # Utilizzo di un ordinante su {{site.data.keyword.cloud_notm}} Private
 {: #icp-orderer-operate}
-
-***[Questa pagina è utile? Faccelo sapere.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 Dopo aver installato l'ordinante di {{site.data.keyword.blockchainfull}} Platform in {{site.data.keyword.cloud_notm}} Private, viene creata una mappa di configurazione che contiene le impostazioni predefinite per le variabili di ambiente. Successivamente puoi modificare o aggiungere delle variabili di ambiente per l'ordinante per configurarne il comportamento.
 
@@ -37,16 +38,16 @@ Puoi quindi utilizzare le istruzioni in questo argomento per utilizzare il tuo o
 
 Devi utilizzare lo strumento di riga di comando **kubectl** per il collegamento al contenitore dell'ordinante eseguito in {{site.data.keyword.cloud_notm}} Private.
 
-1. Accedi all'IU del tuo cluster {{site.data.keyword.cloud_notm}} Private. Passa alla scheda **Strumenti di riga comandi** e fai clic su **CLI di Cloud Private**. Vedrai i seguenti strumenti che puoi scaricare.
+1. Accedi all'IU del tuo cluster {{site.data.keyword.cloud_notm}} Private. Passa alla scheda **Strumenti di riga comandi** e fai clic su **CLI di Cloud Private**. Vedrai i seguenti strumenti che è possibile scaricare.
 
-   * Installa i plug-in e la CLI di IBM Cloud Private
+   * Installa la CLI e i plugin IBM Cloud Private
    * Installa la CLI Kubectl
    * Installa Helm
    * Installa la CLI Istio
 
-  Per utilizzare gli ordinanti, devi utilizzare i primi **tre** strumenti, tra cui Helm è facoltativo. Fai clic su ciascuno di essi ed esegui i comandi `curl` per il tipo di macchina che stai usando. Immetti quindi i comandi `chmod` e `sudo mv` per ciascuno strumento. Il comando `chmod` modificherà le autorizzazioni della CLI in questione per renderla eseguibile e il comando `sudo mv` sposterà il file e la rinominerà.
+  Per utilizzare gli ordinanti, devi utilizzare i primi **tre** strumenti, tra cui Helm è facoltativo. Fai clic su ognuno di essi ed esegui i comandi `curl` per il tipo di macchina che stai utilizzando. Successivamente, immetti i comandi `chmod` e `sudo mv` per ogni strumento. Il comando `chmod` modificherà l'autorizzazione della CLI in questione per renderla eseguibile e il comando `sudo mv` sposterà e ridenominerà il file.
 
-  I comandi per il primo strumento, **cloudctl**, potrebbero essere simili al seguente esempio:
+  I comandi per il primo strumento **cloudctl** possono essere simili al seguente esempio:
 
   ```
   chmod +x cloudctl-darwin-amd64<suffix of your binary>
@@ -54,7 +55,7 @@ Devi utilizzare lo strumento di riga di comando **kubectl** per il collegamento 
   ```
   {:codeblock}
 
-  I comandi per il secondo strumento, **kubectl**, potrebbero essere simili al seguente esempio:
+  I comandi per il secondo strumento **kubectl** possono essere simili al seguente esempio:
 
   ```
   chmod +x kubectl-darwin-amd64<suffix of your binary>
@@ -78,29 +79,29 @@ Devi utilizzare lo strumento di riga di comando **kubectl** per il collegamento 
 
   Sei ora pronto ad utilizzare lo strumento **kubectl** per richiamare le informazioni sull'endpoint dell'ordinante.
 
-3. Facoltativamente, se vuoi utilizzare **Helm**, completa qualche altro passo. Nota: l'installazione di Helm è facoltativa e non hai bisogno di utilizzarlo in queste istruzioni. Può tuttavia essere utile per gestire le tue release Helm e per creare dei tuoi archivi da distribuire in {{site.data.keyword.cloud_notm}} Private.
+3. Facoltativamente, se vuoi utilizzare **Helm**, completa alcuni ulteriori passi. Tieni presente che l'installazione di Helm è facoltativa e non hai bisogno di utilizzarlo in queste istruzioni. Può tuttavia essere utile per gestire le tue release Helm e per creare dei tuoi archivi da distribuire in {{site.data.keyword.cloud_notm}} Private.
 
   1. Fai clic su "Installa Helm" ed esegui il comando `curl` dall'IU {{site.data.keyword.cloud_notm}} Private.
-  2. Decomprimi il file `tar` eseguendo questo comando:
+  2. Decomprimi il file `tar` immettendo il seguente comando:
 
     ```
     tar -xzvf helm-darwin-amd64<suffix>
     ```
     {:codeblock}
 
-  3. Esegui il comando `sudo mv` accodando `/helm` a `darwin-amd64`. Nota: non hai bisogno di eseguire il comando `chmod` per Helm. Ad esempio:
+  3. Esegui il comando `sudo mv` accodando `/helm` a `darwin-amd64`. Tieni presente che non devi eseguire il comando `chmod` per Helm. Ad esempio:
 
     ```
     sudo mv darwin-amd64/helm/ /usr/local/bin/helm
     ```
     {:codeblock}
 
-  Puoi eseguire il comando `helm help` per confermare che Helm è installato correttamente.
+  Puoi eseguire il comando `helm help` per confermare che Helm sia stato installato correttamente.
 
 ### Richiamo delle informazioni sull'endpoint dell'ordinante
 {: #icp-orderer-operate-orderer-endpoint}
 
-Devi selezionare il tuo endpoint dell'ordinante per effettuare degli aggiornamenti al canale del sistema ordinante. Per completare questa procedura, dovrai essere un [amministratore del cluster ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Ruoli e azioni dell'amministratore del cluster"):
+Devi selezionare il tuo endpoint dell'ordinante per effettuare degli aggiornamenti al canale del sistema ordinante. Dovrai essere un [Amministratore del cluster ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Cluster administrator roles and actions") per completare le seguenti istruzioni:
 
 1. Accedi alla tua console {{site.data.keyword.cloud_notm}} Private e fai clic sull'icona **Menu** nell'angolo superiore sinistro.
 2. Fai clic su **Workload** > **Release Helm**.
@@ -120,7 +121,7 @@ In questo esempio, l'indirizzo IP proxy è `9.30.94.174` e la porta del nodo est
 ### Scaricamento del tuo certificato TLS dell'ordinante
 {: #icp-orderer-operate-tls-cert}
 
-Devi scaricare il tuo certificato TLS dell'ordinante e trasmetterlo ai tuoi comandi per comunicare con il tuo ordinante da un client remoto. Per completare questa procedura, dovrai essere un [amministratore del cluster ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Ruoli e azioni dell'amministratore del cluster"):
+Devi scaricare il tuo certificato TLS dell'ordinante e trasmetterlo ai tuoi comandi per comunicare con il tuo ordinante da un client remoto. Dovrai essere un [Amministratore del cluster ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Cluster administrator roles and actions") per completare le seguenti istruzioni:
 
 1. Accedi alla tua console {{site.data.keyword.cloud_notm}} Private e fai clic sull'icona **Menu** nell'angolo superiore sinistro.
 2. Fai clic su **Workload** > **Release Helm**.
@@ -136,7 +137,7 @@ Devi scaricare il tuo certificato TLS dell'ordinante e trasmetterlo ai tuoi coma
   ```
   {:codeblock}
 
-7. Sposta il certificato generato in un'ubicazione a cui puoi fare riferimento in comandi futuri e rinominalo con `orderertls.pem`.
+7. Sposta il certificato generato in un'ubicazione a cui puoi fare riferimento in comandi futuri e ridenominalo con `orderertls.pem`.
 
   ```
   mkdir $HOME/fabric-ca-client/orderer-tls
@@ -162,7 +163,7 @@ Prima di poter utilizzare l'ordinante, devi eseguire alcune operazioni di gestio
 
 2. Assicurati di [scaricare il certificato TLS del tuo ordinante](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-tls-cert) e di poter fare riferimento ad esso dalla tua riga di comando. Sei ti sei attenuto ai comandi di esempio indicati in questa documentazione, puoi trovare questo certificato TLS nel file `$HOME/fabric-ca-client/orderer-tls/orderertls.pem`.
 
-Puoi eseguire un comando tree per verificare di aver completato questa procedura. Passa alla directory dove hai archiviato i tuoi certificati. Un comando tree dovrebbe generare un risultato simile alla seguente struttura:
+Puoi eseguire un comando tree per verificare di aver completato queste istruzioni. Passa alla directory in cui hai archiviato i tuoi certificati. Un comando tree dovrebbe generare un risultato simile alla seguente struttura:
 ```
 cd $HOME/fabric-ca-client
 tree
@@ -308,7 +309,7 @@ L'ordinante deve ricevere le [definizioni dell'organizzazione](/docs/services/bl
       ```
       {:codeblock}
 
-      L'output potrebbe essere simile a:
+      L'output potrebbe essere simile al seguente:
 
       ```
       ORDERER_GENERAL_LOCALMSPID=ordererOrg
@@ -480,27 +481,27 @@ Questo comando firma simultaneamente la richiesta di aggiornamento e la invia al
 ## Visualizzazione dei log dell'ordinante
 {: #icp-orderer-operate-orderer-view-logs}
 
-È possibile visualizzare i log del componente dalla riga di comando utilizzando i [`comandi della CLI kubectl`](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-kubectl-configure) o tramite [Kibana ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.elastic.co/products/kibana "Your window into the Elastic Search"), che è incluso nel tuo cluster {{site.data.keyword.cloud_notm}} Private. 
+È possibile visualizzare i log del componente dalla riga di comando utilizzando i [`comandi della CLI kubectl`](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-kubectl-configure) o tramite [Kibana ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.elastic.co/products/kibana "Your window into the Elastic Search"), che è incluso nel tuo cluster {{site.data.keyword.cloud_notm}} Private.
 
-- Utilizza il comando `kubectl logs` per visualizzare i log dei contenitori all'interno del pod. Se non sei sicuro del tuo nome di pod, esegui questo comando per visualizzare il tuo elenco di pod.
+- Utilizza il comando `kubectl logs` per visualizzare il log del contenitore all'interno del pod. Se non sei sicuro del tuo nome del pod, immetti il seguente comando per visualizzare il tuo elenco di pod.
 
   ```
   kubectl get pods
   ```
   {:codeblock}
 
-  Successivamente, immetti il seguente comando per richiamare i log per il contenitore dell'ordinante che risiede nel pod sostituendo `<pod_name>` con il nome del tuo pod dall'output del comando in alto:
+  Successivamente, immetti il seguente comando per richiamare i log per il contenitore dell'ordinante che risiede nel pod sostituendo `<pod_name>` con il nome del tuo pod dal precedente output del comando:
 
   ```
   kubectl logs <pod_name> -c orderer
   ```
   {:codeblock}
 
-  Per ulteriori informazioni sul comando `kubectl logs`, vedi la [documentazione di Kubernetes ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs “Getting Started”)
+  Per ulteriori informazioni sul comando `kubectl logs`, consulta la [documentazione Kubernetes ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs “Getting Started”)
 
 - In alternativa, puoi accedere ai log utilizzando la [console di gestione del cluster {{site.data.keyword.cloud_notm}} Private ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/troubleshoot/events.html), che apre i log in Kibana.
 
-  **Nota:** quando visualizzi i tuoi log in Kibana, potresti ricevere la risposta `No results found`. Questa condizione può verificarsi se {{site.data.keyword.cloud_notm}} Private utilizza l'indirizzo IP del tuo nodo di lavoro come suo nome host. Per risolvere questo problema, rimuovi il filtro che inizia con `node.hostname.keyword` nella parte superiore del pannello e i log diventeranno visibili.
+  **Nota:** quando visualizzi i tuoi log in Kibana, potresti ricevere la risposta `No results found`. Questa condizione può verificarsi se {{site.data.keyword.cloud_notm}} Private utilizza l'indirizzo IP del tuo nodo di lavoro come suo nome host. Per risolvere questo problema, rimuovi il filtro che inizia con `node.hostname.keyword` all'inizio del pannello e i log diventeranno visibili.
 
 ## Risoluzione dei problemi
 {: #icp-orderer-operate-troubleshooting}

@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -18,9 +20,6 @@ lastupdated: "2019-02-08"
 # Distribuzione dei peer in {{site.data.keyword.cloud_notm}} Private e collegamento al piano Starter o Enterprise
 {: #ibp-peer-deploy}
 
-
-***[Questa pagina è utile? Faccelo sapere.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 Le seguenti istruzioni descrivono come distribuire un peer {{site.data.keyword.blockchainfull}} Platform su {{site.data.keyword.cloud_notm}} Private e connettere il peer alla rete piano Starter o piano Enterprise su {{site.data.keyword.cloud_notm}} sul tuo {{site.data.keyword.cloud_notm}} Private locale.
 {:shortdesc}
 
@@ -35,11 +34,11 @@ Assicurati che il sistema {{site.data.keyword.cloud_notm}} Private soddisfi i re
 
 | Componente | CPU virtuale | RAM | Disco per l'archiviazione di dati |
 |-----------|------|-----|-----------------------|
-| Peer | 2 | 2 GB | 50 GB con capacità di espansione. |
-| CouchDB per ogni peer | 2| 2 GB |50 GB con capacità di espansione. |
+| Peer | 2 | 2 GB | 50 GB con capacità di espansione |
+| CouchDB for Peer | 2| 2 GB |50 GB con capacità di espansione |
 
  **Note:**
- - Una CPU virtuale è un core virtuale assegnato a una macchina virtuale o un core di processore fisico se il server non è partizionato per le macchine virtuali. Devi considerare i requisiti di CPU virtuale quando decidi il VPC (virtual processor core) per la tua distribuzione in {{site.data.keyword.cloud_notm}} Private. VPC è un'unità di misura per determinare il costo di licenza dei prodotti IBM. Per ulteriori informazioni sugli scenari per decidere il VPC, vedi [Virtual processor core (VPC) ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/en/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_virtual_processor_core_licenses.html).
+ - Una CPU virtuale è un core virtuale assegnato a una macchina virtuale o un core di processore fisico se il server non è partizionato per le macchine virtuali. Devi considerare i requisiti di CPU virtuale quando decidi il VPC (virtual processor core) per la tua distribuzione in {{site.data.keyword.cloud_notm}} Private. VPC è un'unità di misura per determinare il costo di licenza dei prodotti IBM. Per ulteriori informazioni sugli scenari per decidere VPC, vedi [Virtual processor core (VPC) ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/en/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_virtual_processor_core_licenses.html).
  - Questi livelli minimi di risorse sono sufficienti per l'esecuzione di test e la sperimentazione. Per un ambiente con un grande volume di transazioni, è importante assegnare una quantità sufficientemente grande di archiviazione; ad esempio 250 GB per il tuo peer. La quantità di archiviazione da utilizzare dipenderà dal numero di transazioni e dal numero di firme richiesti dalla tua rete. Se stai per esaurire l'archiviazione sul tuo peer, devi distribuire un nuovo peer con un file system più grande e consentirgli di eseguire la sincronizzazione tramite i tuoi altri componenti sugli stessi canali.
 
 ## Archiviazione
@@ -71,7 +70,7 @@ Se non utilizzi il provisioning dinamico, [i volumi persistenti ![Icona link est
 ## Creazione del file di configurazione
 {: #ibp-peer-deploy-config-file}
 
-Prima di distribuire un peer, devi creare un file JSON di configurazione che contiene le informazioni importanti sull'identità del peer e la tua CA (Certificate Authority) su {{site.data.keyword.cloud_notm}}. Successivamente, devi passare questo file al grafico Helm durante la configurazione utilizzando un oggetto [Segreto Kubernetes ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://kubernetes.io/docs/concepts/configuration/secret/ "Secrets"). Questo file consente al tuo peer di ottenere i certificati di cui ha bisogno dalla CA (Certificate Authority) su {{site.data.keyword.cloud_notm}} per aderire a una rete del piano Starter o Enterprise. Questo file contiene inoltre un certificato di amministrazione che ti consente di utilizzare il tuo peer come un utente amministratore.
+Prima di distribuire un peer, devi creare un file JSON di configurazione che contiene le informazioni importanti sull'identità del peer e la tua CA (Certificate Authority) su {{site.data.keyword.cloud_notm}}. Successivamente, devi passare questo file al grafico Helm durante la configurazione utilizzando un oggetto [Segreto Kubernetes ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://kubernetes.io/docs/concepts/configuration/secret/ "Secrets"). Questo file consente al tuo peer di ottenere i certificati di cui ha bisogno dalla CA (Certificate Authority) su {{site.data.keyword.cloud_notm}} per aderire a una rete del piano Starter o Enterprise. Questo file contiene inoltre un certificato di gestione che ti consente di utilizzare il tuo peer come un utente amministratore.
 
 In queste istruzioni, ti forniremo un JSON template che puoi modificare e salvare sul tuo file system locale. Successivamente, ti guideremo nell'utilizzo della tua CA per completare il file di configurazione.
 
@@ -131,7 +130,7 @@ Devi inoltre completare diversi passi utilizzando il client CA Fabric e la tua C
 Per prima cosa, devi fornire le informazioni di connessione della tua CA su {{site.data.keyword.cloud_notm}} al file di configurazione. Accedi all'IU Monitoraggio della rete sul piano Starter o Enterprise. Nella schermata **Panoramica** del tuo Monitoraggio della rete, fai clic sul pulsante **Configurazione peer remoto**. Verrà aperta una finestra a comparsa che contiene le informazioni necessarie sulla tua CA.
 
 ![Configurazione peer remoto](../images/myresources_starter.png "Configurazione peer remoto")
-*Figura 1. Pannello Configurazione peer remoto*
+*Figura 1. Pannello di configurazione peer remoto*
 
 La finestra a comparsa contiene i seguenti campi:
 
@@ -184,13 +183,13 @@ Per unire i tuoi peer ai canali e installare e istanziare il chaincode, devi pri
   *Figura 2. Schermata CA*
 
 2. Fai clic sul pulsante **Aggiungi utente** sulla schermata. Si apre una schermata a comparsa che ti consente di registrare il tuo peer dopo aver compilato i seguenti campi. Salva i valori dell'ID e del segreto poiché dovrai utilizzarli quando configuri il tuo peer.
-  - **ID di iscrizione:** il nome utente del tuo peer, a cui si fa riferimento come `enroll ID` quando configuri il peer. **Salva questo valore** per il file di configurazione.
-  - **Segreto di iscrizione:** la password del tuo peer, a cui si fa riferimento come `enroll Secret` quando configuri il peer. **Salva questo valore** per il file di configurazione.
+  - **ID di registrazione:** il nome utente del tuo peer, a cui si fa riferimento come `enroll ID` quando configuri il peer. **Salva questo valore** per il file di configurazione.
+  - **Segreto di registrazione:** la password del tuo peer, a cui si fa riferimento come `enroll Secret` quando configuri il peer. **Salva questo valore** per il file di configurazione.
   - **Tipo:** seleziona `Peer` per questo campo.
   - **Affiliazione:** si tratta dell'affiliazione sotto la tua organizzazione, ad esempio `org1`, a cui apparterrà il tuo peer. Seleziona un'affiliazione esistente dall'elenco a discesa o immettine una nuova.
-  - **Numero massimo di iscrizioni:** puoi utilizzare questo campo per limitare il numero di volte in cui puoi registrare o generare certificati utilizzando questa identità. Se non specificato, il valore predefinito è di registrazioni illimitate.
+  - **Iscrizioni massime:** puoi utilizzare questo campo per limitare il numero di volte in cui puoi registrare o generare certificati utilizzando questa identità. Se non specificato, il valore predefinito è di registrazioni illimitate.
 
-  Dopo aver completato questi campi, fai clic su **Invia** per registrare il peer. Il peer registrato viene quindi elencato nella tabella come identità nella tua organizzazione. Come misura di sicurezza, utilizza ogni identità, e l'ID iscrizione e il segreto di accompagnamento, per distribuire solo un singolo peer. Non riutilizzare ID e password dei peer.
+  Dopo aver completato questi campi, fai clic su **Invia** per registrare il peer. Il peer registrato viene quindi elencato nella tabella come identità nella tua organizzazione. Come misura di sicurezza, utilizza ogni identità e l'enrollID e il segreto di accompagnamento, per distribuire solo un peer. Non riutilizzare le password e gli ID del peer.
 
 3. Nel file di configurazione nella sezione `"components"`, immetti i seguenti valori:
   - `"enrollid"` è il valore di `enroll ID` dal passo precedente.
@@ -200,7 +199,7 @@ Per unire i tuoi peer ai canali e installare e istanziare il chaincode, devi pri
 ### Creazione di un amministratore
 {: #ibp-peer-deploy-register-admin}
 
-Dopo aver registrato l'identità peer, devi anche creare un'identità amministratore che utilizzerai per gestire il peer. Per prima cosa, devi registrare questa nuova identità con la tua CA e utilizzarla per generare una cartella MSP. Successivamente, dovrai aggiungere il signCert degli utenti amministratore al file di configurazione, dove verrà creato un certificato di amministrazione del peer durante la distribuzione. Questo ti consente di utilizzare i certificati dell'identità amministratore per utilizzare la tua rete blockchain, come ad esempio per avviare un nuovo canale o per installare il chaincode sui tuoi peer.
+Dopo aver registrato l'identità peer, devi anche creare un'identità amministratore che utilizzerai per gestire il peer. Per prima cosa, devi registrare questa nuova identità con la tua CA e utilizzarla per generare una cartella MSP. Successivamente, dovrai aggiungere il signCert degli utenti amministratore al file di configurazione, dove verrà creato un certificato di gestione del peer durante la distribuzione. Questo ti consente di utilizzare i certificati dell'identità amministratore per utilizzare la tua rete blockchain, come ad esempio per avviare un nuovo canale o per installare il chaincode sui tuoi peer.
 
 Devi creare solo un'identità amministratore per i componenti che appartengono alla tua organizzazione. Se stai distribuendo più peer, devi completare questa procedura solo una volta. Puoi utilizzare il signCert che hai generato per un peer per distribuire tutti gli altri peer che appartengono alla tua organizzazione.
 
@@ -209,11 +208,11 @@ Devi creare solo un'identità amministratore per i componenti che appartengono a
   *Figura 2. Schermata CA*
 
 2. Fai clic sul pulsante **Aggiungi utente** sulla schermata. Si apre una schermata a comparsa che ti consente di registrare il tuo peer dopo aver compilato i seguenti campi. Salva i valori dell'ID e del segreto poiché dovrai utilizzarli quando configuri il tuo peer.
-  - **ID di iscrizione:** il nome utente del tuo amministratore del peer, a cui si fa riferimento come `enroll ID` quando configuri il peer. **Salva questo valore** per quando generi la cartella MSP di gestione.
-  - **Segreto di iscrizione:** la password del tuo amministratore del peer, a cui si fa riferimento come `enroll Secret` quando configuri il peer. **Salva questo valore** per quando generi la cartella MSP di gestione.
+  - **ID di registrazione:** il nome utente del tuo amministratore del peer, a cui si fa riferimento come `enroll ID` quando configuri il peer. **Salva questo valore** per quando generi la cartella MSP di gestione.
+  - **Segreto di registrazione:** la password del tuo amministratore del peer, a cui si fa riferimento come `enroll Secret` quando configuri il peer. **Salva questo valore** per quando generi la cartella MSP di gestione.
   - **Tipo:** seleziona `Peer` per questo campo.
   - **Affiliazione:** si tratta dell'affiliazione sotto la tua organizzazione, ad esempio `org1`, a cui apparterrà il tuo peer. Seleziona un'affiliazione esistente dall'elenco a discesa o immettine una nuova.
-  - **Numero massimo di iscrizioni:** puoi utilizzare questo campo per limitare il numero di volte in cui puoi registrare o generare certificati utilizzando questa identità. Se non specificato, il valore predefinito è di registrazioni illimitate.
+  - **Iscrizioni massime:** puoi utilizzare questo campo per limitare il numero di volte in cui puoi registrare o generare certificati utilizzando questa identità. Se non specificato, il valore predefinito è di registrazioni illimitate.
 
   Dopo aver immesso questi campi, fai clic su **Invia** per creare l'amministratore. L'amministratore creato viene quindi elencato nella tabella come un'identità nella tua organizzazione.
 
@@ -349,7 +348,7 @@ Devi registrare il tuo peer con la CA del TLS su {{site.data.keyword.cloud_notm}
   ```
   {:codeblock}
 
-2. Devi eseguire l'iscrizione utilizzando l'amministratore della CA del TLS. Modifica `$FABRIC_CA_CLIENT_HOME` con una directory in cui vuoi archiviare i tuoi certificati di amministrazione della CA del TLS.
+2. Devi eseguire l'iscrizione utilizzando l'amministratore della CA del TLS. Modifica `$FABRIC_CA_CLIENT_HOME` con una directory in cui vuoi archiviare i tuoi certificati di gestione della CA del TLS.
 
   ```
   cd $HOME/fabric-ca-client
@@ -426,7 +425,7 @@ export FABRIC_CA_CLIENT_HOME=$HOME/fabric-ca-client/tlsca-admin
   "enrollsecret": "peertlspw",
   ```
 
-  Puoi registrare un'entità solo una volta. Se riscontri un problema, prova un comando con un nuovo nome utente e password. Come misura di sicurezza, utilizza ogni identità, e l'ID iscrizione e il segreto di accompagnamento, per distribuire solo un singolo peer. Non riutilizzare ID e password dei peer.
+  Puoi registrare un'entità solo una volta. Se riscontri un problema, prova un comando con un nuovo nome utente e password. Come misura di sicurezza, utilizza ogni identità e l'enrollID e il segreto di accompagnamento, per distribuire solo un peer. Non riutilizzare le password e gli ID del peer.
 
   Se il comando viene completato correttamente, dovresti visualizzare informazioni simili al seguente esempio:
 
@@ -437,7 +436,7 @@ export FABRIC_CA_CLIENT_HOME=$HOME/fabric-ca-client/tlsca-admin
   Password: peertlspw
   ```
 
-Puoi eseguire un comando tree per verificare il lavoro fatto per preparare il file di configurazione. Passa alla directory dove hai archiviato i tuoi certificati. Un comando tree dovrebbe generare un risultato simile alla seguente struttura:
+Puoi eseguire un comando tree per verificare il lavoro fatto per preparare il file di configurazione. Passa alla directory in cui hai archiviato i tuoi certificati. Un comando tree dovrebbe generare un risultato simile alla seguente struttura:
 
 ```
 cd $HOME/fabric-ca-client
@@ -651,7 +650,7 @@ La seguente tabella elenca i parametri configurabili di {{site.data.keyword.bloc
 | `Peer image repository`| Ubicazione del grafico Helm del peer. Questo campo viene automaticamente compilato con il percorso installato. Se stai utilizzando la Community Edition e non hai accesso a Internet, dovrebbe corrispondere alla directory in cui hai scaricato l'immagine peer Fabric. | ibmcom/ibp-fabric-peer | sì |
 | `Peer Docker image tag`|Il valore della tag associata all'immagine peer |1.2.1, compilato automaticamente sul valore corretto.|sì|
 | `Peer configuration`|Puoi personalizzare la configurazione del peer incollando il tuo file di configurazione `core.yaml` in questo campo. Per vedere un file `core.yaml` di esempio, vedi [la configurazione di esempio `core.yaml` ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://github.com/hyperledger/fabric/blob/release-1.2/sampleconfig/core.yaml "hyperledger/fabric/core.yaml") **Solo per gli utenti avanzati**. |nessuno|no|
-| `Peer configuration secret (Required)`|Il nome del [segreto di configurazione del peer](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-config-file-ibp) che hai creato in {{site.data.keyword.cloud_notm}} Private. |nessuno|sì|
+| `Peer configuration secret (Required)`| Il nome del [segreto di configurazione del peer](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-config-file-ibp) che hai creato in {{site.data.keyword.cloud_notm}} Private.  |nessuno|sì|
 |`Organization MSP (Required)`|Questo valore può essere trovato nel Monitoraggio della rete (IU piano Starter e piano Enterprise) facendo clic su "Configurazione peer remota" sulla schermata Panoramica.  |nessuno|sì|
 |`Peer service type`| Utilizzato per specificare se [le porte esterne devono essere esposte ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types "Publishing services - service types") sul peer. Seleziona NodePort per esporre le porte esternamente (consigliato) e ClusterIP per non esporle. LoadBalancer e ExternalName non sono supportati in questa release. | NodePort |sì|
 | `State database`| Il [database dello stato](/docs/services/blockchain/glossary.html#glossary-state-database) utilizzato per memorizzare il tuo libro mastro del canale. Il peer deve utilizzare lo stesso database della tua [rete blockchain](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-network-preferences). | LevelDB | sì |
@@ -749,23 +748,23 @@ Dopo aver distribuito il peer, devi completare diversi passi operativi prima di 
 ## Risoluzione dei problemi
 {: #ibp-peer-deploy-troubleshooting}
 
-### **Problema:** errore con l'URL della CA durante l'esecuzione del comando `enroll` 
+### **Problema:** errore con l'URL della CA quando si esegue il comando `enroll`
 {: #ibp-peer-deploy-ca-enroll-error}
 
-Il comando di iscrizione del client CA Fabric potrebbe non riuscire se l'url di iscrizione, il valore del parametro `-u`, contiene un carattere speciale. Ad esempio, il seguente comando con l'ID e la password di iscrizione `admin:C25A06287!0`,
+Il comando enroll del client CA Fabric può avere esito negativo se l'URL di iscrizione, ossia il valore del parametro `-u`, contiene un carattere speciale. Ad esempio, il seguente comando con l'ID di iscrizione e la password di `admin:C25A06287!0`,
 
 ```
 ./fabric-ca-client enroll -u https://admin:C25A06287!0@ash-zbc07c.4.secure.blockchain.ibm.com:21241 --tls.certfiles $HOME/fabric-ca-remote/cert.pem --caname PeerOrg1CA
 ```
 
-non riuscirà e produrrà il seguente errore:
+avrà esito negativo e produrrà il seguente errore:
 
 ```
 !pw@9.12.19.115: event not found
 ```
 
 ### **Soluzione:**
-Devi codificare il carattere speciale o racchiudere l'url tra virgolette singole. Ad esempio, `!` diventa `%21` oppure il comando si presenta come:
+Devi codificare il carattere speciale o racchiudere l'URL tra virgolette singole. Ad esempio, `!` diventa `%21` o il comando è simile a:
 
 ```
 ./fabric-ca-client enroll -u 'https://admin:C25A06287!0@ash-zbc07c.4.secure.blockchain.ibm.com:21241' --tls.certfiles $HOME/fabric-ca-remote/cert.pem --caname PeerOrg1CA

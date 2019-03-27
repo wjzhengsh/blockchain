@@ -2,7 +2,9 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -18,11 +20,23 @@ lastupdated: "2019-02-08"
 # Esercitazione di distribuzione di uno smart contract sulla rete
 {: #ibp-console-smart-contracts}
 
-***[Questa pagina è utile? Faccelo sapere.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
-
-Uno smart contract consiste in codice, a volte indicato come chaincode, che ti consente di leggere e aggiornare i dati nel libro mastro della blockchain. Uno smart contract può trasformare la logica di business in un programma eseguibile accettato e verificato da tutti i membri di una rete blockchain. Questa esercitazione è la terza parte nella [serie di esercitazioni di rete di esempio](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-sample-tutorial) e descrive come distribuire gli smart contract per avviare le transazioni nella rete blockchain. Le due esercitazioni precedenti descrivono come creare componenti nella console {{site.data.keyword.blockchainfull_notm}} Platform e connetterli ai componenti creati in altri cluster per creare una rete blockchain veramente **distribuita**.
+Uno smart contract consiste in codice, a volte indicato come chaincode, che ti consente di leggere e aggiornare i dati nel libro mastro della blockchain. Uno smart contract può trasformare la logica di business in un programma eseguibile accettato e verificato da tutti i membri di una rete blockchain. Questa esercitazione è la terza parte nella [serie di esercitazioni di rete di esempio](/docs/services/blockchain/howto/ibp-console-smart-contracts.md.html#ibp-console-smart-contracts-structure) e descrive come distribuire gli smart contract per avviare le transazioni nella rete blockchain.
 {:shortdesc}
+
+**Gruppi di destinatari:** questo argomento è pensato per gli operatori di rete che sono responsabili della creazione, del monitoraggio e della gestione della rete blockchain. Inoltre, gli sviluppatori dell'applicazione potrebbero essere interessati alle sezioni che fanno riferimento a come creare uno smart contract.
+
+## Serie di esercitazioni sulla rete di esempio
+{: #ibp-console-smart-contracts-structure}
+
+Questa serie di esercitazioni in tre parti ti guida attraverso il processo di creazione e interconnessione di una rete Hyperledger Fabric a più nodi utilizzando la console {{site.data.keyword.blockchainfull_notm}} Platform 2.0 per distribuire una rete nel tuo cluster Kubernetes e installare e istanziare uno smart contract.
+
+* L'[Esercitazione: crea una rete](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network) ti guida attraverso il processo di hosting di una rete creando un ordinante e un peer.
+* L'[Esercitazione: unisciti a una rete](/docs/services/blockchain/howto/ibp-console-join-network.html#ibp-console-join-network) ti guida attraverso il processo di unione a una rete esistente creando un peer e unendolo a un canale.
+* **Esercitazione: distribuisci uno smart contract sulla rete** questa esercitazione fornisce informazioni su come scrivere uno smart contract e distribuirlo sulla tua rete.
+
+Puoi utilizzare i passi descritti in queste esercitazioni per creare una rete con più organizzazioni in un cluster per scopi di sviluppo e di test. Utilizza l'esercitazione **Crea una rete** se vuoi formare un consorzio blockchain creando un nodo ordinante e aggiungendo delle organizzazioni. Utilizza l'esercitazione **Unisciti a una rete** per connettere un peer alla rete. Seguendo le esercitazioni con diversi membri del consorzio puoi creare una rete blockchain realmente **distribuita**.  
+
+Questa esercitazione finale ha lo scopo di mostrarti come creare e impacchettare uno smart contract, come installarlo su un peer e come istanziarlo su un canale.  
 
 Gli smart contract sono installati sui peer e quindi istanziati sui canali. **Tutti i membri che desiderano inoltrare transazioni o leggere dati utilizzando uno smart contract devono installare il contratto sul loro peer.** Uno smart contract è definito dal suo nome e dalla sua versione. Pertanto, sia il nome che la versione del contratto installato devono essere congruenti tra tutti i peer sul canale che intendono eseguire lo smart contract.
 
@@ -38,7 +52,7 @@ In questa esercitazione, vedremo la procedura per utilizzare la console {{site.d
 - [Esegui l'upgrade del codice e delle politiche di smart contract](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-upgrade).
 
 
-**Prima di cominciare**
+## Prima di cominciare
 
 Prima di poter installare uno smart contract, assicurati di avere pronto quanto segue.
 
@@ -53,8 +67,8 @@ La console {{site.data.keyword.blockchainfull_notm}} gestisce la *distribuzione*
 - Per ulteriori informazioni su come è possibile utilizzare gli smart contract per condurre delle transazioni tra più parti, vedi l'[argomento relativo allo sviluppo di applicazioni ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/developapps/developing_applications.html "Argomento relativo allo sviluppo di applicazioni") nella documentazione di Hyperledger Fabric.
 - Per un'esercitazione end-to-end completa relativa all'utilizzo di un'applicazione per interagire con gli smart contract, vedi l'[esercitazione Commercial paper di Hyperledger Fabric ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/tutorial/commercial_paper.html "esercitazione Commercial paper di Hyperledger Fabric").
 - Per ulteriori informazioni su come incorporare i meccanismi di controllo dell'accesso nel tuo smart contract, vedi il documento relativo al [chaincode per gli sviluppatori ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/chaincode4ade.html#chaincode-access-control "chaincode per gli sviluppatori").
-- Quando sei pronto a iniziare a creare degli smart contract, puoi utilizzare l'[estensione {{site.data.keyword.blockchainfull_notm}} Visual Studio Code ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://marketplace.visualstudio.com/items?itemName=IBMBlockchain.ibm-blockchain-platform "{{site.data.keyword.blockchainfull_notm}} Platform - Visual Studio Marketplace") per iniziare a creare il tuo progetto di smart contract. Puoi anche utilizzare tale estensione per [connetterti direttamente alla tua rete da Visual Studio Code](docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-vscode).
-- Quando sei pronto ad eseguire l'installazione, lo smart contract deve essere impacchettato in [formato .cds ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/latest/chaincode4noah.html#packaging "impacchettamento di smart contract") in modo che possa essere installato sui peer. Per ulteriori informazioni, vedi [Impacchettamento di smart contract](/docs/services/blockchain/vscode-extension.html#packaging-a-smart-contract).
+- Quando sei pronto a iniziare a creare degli smart contract, puoi utilizzare l'[estensione {{site.data.keyword.blockchainfull_notm}} Visual Studio Code ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://marketplace.visualstudio.com/items?itemName=IBMBlockchain.ibm-blockchain-platform "{{site.data.keyword.blockchainfull_notm}} Platform - Visual Studio Marketplace") per iniziare a creare il tuo progetto di smart contract. Puoi anche utilizzare tale estensione per [connetterti direttamente alla tua rete da Visual Studio Code](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-vscode).
+- Quando sei pronto ad eseguire l'installazione, lo smart contract deve essere impacchettato in [formato .cds ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/latest/chaincode4noah.html#packaging "impacchettamento di smart contract") in modo che possa essere installato sui peer. Per ulteriori informazioni, vedi [Impacchettamento di smart contract](/docs/services/blockchain/vscode-extension.html#packaging-a-smart-contract). In alternativa, puoi utilizzare i [comandi peer cli ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/peerchaincode.html#peer-chaincode-package "peer chaincode package") per creare il pacchetto.
 <!-- Update the tutorial link to release1-4 when it is published -->
 
 
@@ -84,7 +98,7 @@ Gli smart contract sono istanziati su un canale. Qualsiasi membro della console 
 Utilizza la tua console per eseguire i seguenti passi:
 
 1. Nella scheda degli smart contract, trova lo smart contract dall'elenco di quelli installati sui tuoi peer e fai clic su **Istanzia** dal menu di overflow sul lato destro della riga.
-2. Nel pannello laterale che viene aperto, seleziona un canale, `channel1`, su cui istanziare lo smart contract e seleziona l'ordinante dove risiede il canale, `Ordinante`, se ti stai attenendo all'esercitazione. Fai clic su **Avanti**.
+2. Nel pannello laterale che viene aperto, seleziona un canale su cui istanziare lo smart contract e seleziona l'ordinante dove risiede il canale. Puoi selezionare il canale, denominato `channel1` e il nodo ordinante, denominato `Orderer`, che hai creato. Poi, fai clic su **Avanti**.
 3. Specifica la [politica di approvazione per lo smart contract](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-endorse) descritta nella seguente sezione.
 4. Devi anche selezionare i membri dell'organizzazione da includere nella politica. Se ti stai attenendo all'esercitazione, si tratterà di `org1msp` e forse di `org2msp` se hai completato entrambe le esercitazioni **Crea una rete** e **Unisciti a una rete**.
 5. Nell'ultimo pannello ti viene chiesto di specificare la funzione smart contract che desideri eseguire quando viene avviato lo smart contract, insieme agli argomenti associati da passare a tale funzione.
@@ -105,7 +119,7 @@ Dopo che uno smart contract è stato istanziato su un canale, puoi utilizzare un
 
 ### Connetti a SDK
 {: #ibp-console-smart-contracts-connect-to-SDK-panel}
-La scheda **Smart contract** contiene le informazioni di cui hai bisogno per connetterti a uno smart contract istanziato da un'applicazione client. Accanto a ogni smart contract istanziato, vai al menu di overflow. Fai clic sul pulsante **Connetti con il tuo SDK**. Viene aperto un pannello laterale che fornisce le informazioni di cui hai bisogno per connetterti a questo smart contract: il nome del contratto, il nome del canale e il tuo profilo di connessione. Per ulteriori informazioni, vedi [Creazione di applicazioni](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app).
+La scheda **Smart contract** contiene le informazioni di cui hai bisogno per connetterti a uno smart contract istanziato da un'applicazione client. Accanto a ciascuno smart contract istanziato, vai al menu di overflow. Fai clic sul pulsante **Connetti con il tuo SDK**. Viene aperto un pannello laterale che fornisce le informazioni di cui hai bisogno per connetterti a questo smart contract: il nome del contratto, il nome del canale e il tuo profilo di connessione. Per ulteriori informazioni, vedi [Creazione di applicazioni](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app).
 
 ## Specifica di una politica di approvazione
 {: #ibp-console-smart-contracts-endorse}
@@ -178,9 +192,6 @@ Per utilizzare i dati privati con {{site.data.keyword.blockchainfull_notm}} Plat
  - Seleziona almeno un peer da ciascuna organizzazione nella definizione della raccolta che desideri funga da peer di ancoraggio per l'organizzazione. Per motivi di ridondanza, puoi considerare la selezione di più di un peer da ciascuna organizzazione nella raccolta.
 
 Il tuo canale è ora configurato per utilizzare i dati privati.
-
-## Risoluzione dei problemi
-{: #console-operate-troubleshooting}
 
 **Problema:** l'installazione, l'istanziazione o l'upgrade di uno smart contract non riesce con un errore nella console.  
 **Soluzione:** se una di queste azioni su uno smart contract non riesce, [controlla i tuoi log del nodo](/docs/services/blockchain/howto/ibp-console-manage.html#ibp-console-manage-console-node-logs) per rilevare la presenza di eventuali errori.

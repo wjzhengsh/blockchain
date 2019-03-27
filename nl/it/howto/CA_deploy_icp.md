@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -17,8 +19,6 @@ lastupdated: "2019-02-08"
 
 # Distribuzione di una CA (Certificate Authority) su {{site.data.keyword.cloud_notm}} Private
 {: #ca-deploy}
-
-***[Questa pagina è utile? Faccelo sapere.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 Dopo aver importato il grafico Helm di {{site.data.keyword.blockchainfull}} Platform on {{site.data.keyword.cloud_notm}} Private, puoi distribuire i singoli componenti. La CA (Certificate Authority) è la radice di attendibilità per la tua organizzazione e ti consente di generare le credenziali per altri componenti che vorrai distribuire. Di conseguenza, devi distribuire una CA prima di distribuire altri componenti. Ogni organizzazione in una rete blockchain a più cloud deve distribuire la propria CA.  Per ulteriori informazioni sulle CA e sul loro ruolo in una rete blockchain, consulta [Autorità di certificazione (CA, Certificate Authority)](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview-ca).
 {:shortdesc}
@@ -35,7 +35,7 @@ Assicurati che il tuo cluster {{site.data.keyword.cloud_notm}} Private soddisfi 
 | CA | 1 |192 MB | 1 GB |
 
 **Note:**
-- Una CPU virtuale è un core virtuale assegnato a una macchina virtuale o un core di processore fisico se il server non è partizionato per le macchine virtuali. Devi considerare i requisiti della CPU virtuale quando decidi il VPC (virtual processor core) per la tua distribuzione in {{site.data.keyword.cloud_notm}} Private. VPC è un'unità di misura per determinare il costo di licenza dei prodotti IBM. Per ulteriori informazioni sugli scenari per decidere VPC, vedi [Virtual processor core (VPC) ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/en/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_virtual_processor_core_licenses.html "Virtual Processor Core").
+- Una CPU virtuale è un core virtuale assegnato a una macchina virtuale o un core di processore fisico se il server non è partizionato per le macchine virtuali. Devi considerare i requisiti di CPU virtuale quando decidi il VPC (virtual processor core) per la tua distribuzione in {{site.data.keyword.cloud_notm}} Private. VPC è un'unità di misura per determinare il costo di licenza dei prodotti IBM. Per ulteriori informazioni sugli scenari per decidere VPC, vedi [Virtual processor core (VPC) ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/en/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_virtual_processor_core_licenses.html "Virtual Processor Core").
 - Il requisito di archiviazione dei dati dipende da quante identità e certificati vengono archiviati. L'archiviazione della CA non è pesante come per l'archiviazione peer e ordinante, ma dipenderà dal caso di utilizzo. Più sono gli utenti e maggiore è l'archiviazione di cui si ha bisogno.
 - Questi livelli minimi di risorse sono sufficienti per l'esecuzione di test e la sperimentazione. Per un ambiente con un grande numero di transazioni, è importante assegnare una quantità sufficientemente grande di archiviazione alla tua CA. La quantità di archiviazione da utilizzare dipenderà dal numero di transazioni e dal numero di firme richiesti dalla tua rete. Se esaurisci l'archiviazione sulla tua CA, devi distribuire una nuova CA con un file system più grande e consentirgli di eseguire la sincronizzazione tramite le tue altre CA sugli stessi canali.
 
@@ -55,7 +55,7 @@ Se non utilizzi il provisioning dinamico, devono essere creati e configurati dei
 
 1. Prima di poter installare una CA su {{site.data.keyword.cloud_notm}} Private, devi [installare {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/ICP_setup.html#icp-setup) e [installare il grafico Helm di {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/howto/helm_install_icp.html#helm-install).
 
-2. Se utilizzi la Community Edition e vuoi eseguire questo grafico Helm su un cluster {{site.data.keyword.cloud_notm}} Private senza la connettività Internet, devi creare degli archivi su una macchina connessa a Internet prima di poter installare tali archivi sul tuo cluster {{site.data.keyword.cloud_notm}} Private. Per ulteriori informazioni, consulta [Adding featured applications to clusters without Internet connectivity ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_package_offline.html "Adding featured applications to clusters without Internet connectivity"){:new_window}. Tieni presente che puoi trovare il file della specifica manifest.yaml in ibm-blockchain-platform-dev/ibm_cloud_pak nel grafico Helm.
+2. Se utilizzi la Community Edition e vuoi eseguire questo grafico Helm su un cluster {{site.data.keyword.cloud_notm}} Private senza la connettività Internet, devi creare degli archivi su una macchina connessa a Internet prima di poter installare gli archivi sul tuo cluster {{site.data.keyword.cloud_notm}} Private. Per ulteriori informazioni, consulta [Adding featured applications to clusters without Internet connectivity ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_package_offline.html "Adding featured applications to clusters without Internet connectivity"){:new_window}. Tieni presente che puoi trovare il file della specifica manifest.yaml in ibm-blockchain-platform-dev/ibm_cloud_pak nel grafico Helm.
 
 3. Richiama il valore dell'indirizzo IP proxy del cluster dalla console {{site.data.keyword.cloud_notm}} Private. **Nota:** dovrai essere un [Amministratore del cluster ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Cluster administrator roles and actions") per accedere al tuo IP proxy. Accedi al cluster {{site.data.keyword.cloud_notm}} Private. Nel pannello di navigazione di sinistra, fai clic su **Piattaforma** e quindi su **Nodi** per visualizzare i nodi definiti nel cluster. Fai clic sul nodo con il ruolo `proxy` e copia il valore dell'`IP host` dalla tabella.
 
@@ -83,7 +83,7 @@ Quando avvii la CA per la prima volta, contiene un'identità amministratore crea
 3. Nella scheda **Generale**, completa i seguenti campi:
   - **Nome:** fornisci al tuo segreto un nome univoco all'interno del tuo cluster. Utilizzerai questo nome per configurare la tua CA. Il nome deve essere tutto in minuscolo.
   - **Namespace:** lo spazio dei nomi per aggiungere il tuo segreto. Seleziona lo spazio dei nomi (`namespace`) a cui vuoi distribuire la tua CA.
-  - **Tipo:** immetti il valore `Opaque`.
+  - **Tipo** immetti il valore `Opaque`.
 
 4. Lascia vuota la scheda **Annotazioni**.
 
@@ -108,7 +108,7 @@ Il grafico Helm CA ti richiede di utilizzare i nomi `ca-admin-name` e `ca-admin-
 
 Dopo aver creato il tuo segreto di amministrazione della CA, puoi utilizzare le seguenti istruzioni per configurare e installare la tua CA. Puoi installare solo una CA alla volta.
 
-1. Accedi alla console {{site.data.keyword.cloud_notm}} Private e fai clic sul link **Catalogo** nell'angolo superiore destro.
+1. Accedi alla console {{site.data.keyword.cloud_notm}} Private e fai clic su **Catalogo** nell'angolo superiore destro.
 2. Fai clic su `Blockchain` nel pannello di navigazione di sinistra per individuare il tile etichettato `ibm-blockchain-platform-prod` o `ibm-blockchain-platform-dev` se hai scaricato la Community edition. Fai clic sul tile per aprirlo e per visualizzare un file Readme che include le informazioni sull'installazione e la configurazione del grafico Helm.
 3. Fai clic sulla scheda **Configurazione** all'inizio del pannello oppure fai clic sul pulsante **Configura** nell'angolo in basso a destra.
 4. Specifica i valori per i [Parametri di configurazione generali](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-global-parameters) e accetta il contratto di licenza.
@@ -199,7 +199,7 @@ Puoi creare un nuovo file `yaml` modificando il `values.yaml` incluso nel file d
 ## Verifica dell'installazione della CA
 {: #verifiying-ca-installation}
 
-Una volta che hai terminato il tuo lavoro con i parametri di configurazione, fai clic sul pulsante **Installa** e sul pulsante **Visualizza release Helm** per visualizzare la tua distribuzione. Se l'azione è stata eseguita correttamente, dovresti vedere il valore 1 nei campi `DESIRED`, `CURRENT`, `UP TO DATE` e `AVAILABLE` nella tabella Distribuzione. Potresti dover fare clic su Aggiorna e attendere l'aggiornamento della tabella. Puoi anche trovare la tabella Distribuzione facendo clic sull'icona **Menu** nell'angolo superiore sinistro nella console {{site.data.keyword.cloud_notm}} Private. Dall'elenco di menu, fai clic su **Workload** e poi su **Release Helm**.
+Una volta che hai terminato il tuo lavoro con i parametri di configurazione, fai clic sul pulsante **Installa** e sul pulsante **Visualizza release Helm** per visualizzare la tua distribuzione. Se l'azione è stata eseguita correttamente, dovresti vedere il valore 1 nei campi `DESIRED`, `CURRENT`, `UP TO DATE` e `AVAILABLE` nella tabella Distribuzione. Potresti dover fare clic su Aggiorna e attendere l'aggiornamento della tabella. Puoi anche trovare la tabella Distribuzione facendo clic sull'icona **Menu** nell'angolo in alto a sinistra nella console {{site.data.keyword.cloud_notm}} Private. Dall'elenco di menu, fai clic su **Workload** e poi su **Release Helm**.
 
 Se scorri in basso fino alla sezione `Note`, puoi trovare delle informazioni importanti che utilizzerai per [utilizzare la tua CA](/docs/services/blockchain/howto/CA_operate.html#ca-operate).
 

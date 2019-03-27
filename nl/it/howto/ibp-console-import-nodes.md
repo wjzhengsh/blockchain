@@ -2,7 +2,9 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -18,10 +20,10 @@ lastupdated: "2019-02-08"
 # Importazione di nodi
 {: #ibp-console-import-nodes}
 
-***[Questa pagina è utile? Faccelo sapere.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 La console include l'opzione per importare i nodi creati utilizzando un'altra console {{site.data.keyword.blockchainfull}} Platform.
 {:shortdesc}  
+
+**Gruppi di destinatari:** questo argomento è pensato per gli operatori di rete che sono responsabili della creazione, del monitoraggio e della gestione della rete blockchain.
 
 ## Perché importare un nodo?
 
@@ -57,6 +59,7 @@ Esistono diversi motivi per cui potresti voler importare una CA nella tua consol
 Per importare una CA nella console {{site.data.keyword.blockchainfull_notm}} Platform e gestirla, devi aver già esportato la CA da un'altra {{site.data.keyword.blockchainfull_notm}} Platform. L'importazione di una CA ti consente di registrare nuovi utenti e [iscrivere le identità](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-enroll).
 
 ### Prima di cominciare
+{: #ibp-console-import-ca-before-you-begin}
 
 - Assicurati di aver già importato il file JSON dell'identità di amministratore della CA nel tuo portafoglio della console.
 - Assicurati che il file JSON della CA esportato dalla console in cui è stato creato sia disponibile.
@@ -67,6 +70,8 @@ L'importazione di una CA viene eseguita dalla scheda **Nodi**. Fai clic su **Agg
 
 - Fai clic sul pulsante **Carica JSON** per saltare l'immissione manuale delle informazioni e cercare il file JSON che è stato esportato dalla console in cui è stata creata la CA.
 - Imposta l'identità di amministratore per la CA facendo clic su **Identità esistente** e selezionando l'identità di amministratore della CA dal portafoglio della console.
+
+Facoltativamente, quando importi una CA, puoi anche specificare le credenziali per la CA TLS aggiuntiva se ne è inclusa una.  
 
 Dopo aver importato la CA nella console, puoi utilizzare la CA per creare nuove identità e generare i certificati necessari per gestire i componenti e inviare transazioni alla rete. Per ulteriori informazioni, vedi [Gestione delle autorità di certificazione (CA)](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-manage-ca).
 
@@ -86,6 +91,7 @@ Un nodo ordinante è il componente blockchain che raccoglie le transazioni dai m
 L'importazione di un ordinante nella console ti consente di creare nuovi canali in modo che i peer possano effettuare transazioni private.
 
 ### Prima di cominciare
+{: #ibp-console-import-orderer-before-you-begin}
 
 - Assicurati di aver già importato il file JSON dell'identità di amministratore dell'ordinante nel tuo portafoglio della console.
 - Assicurati che il file JSON dell'ordinante esportato dalla console in cui è stato creato sia disponibile.
@@ -107,6 +113,7 @@ Dopo aver importato un peer nella console, puoi installare gli smart contract su
 **Nota:** se hai bisogno di aggiungere altri peer all'organizzazione peer o di creare ulteriori identità di amministratore per un peer, devi importare la CA del peer e quindi utilizzare tale CA per effettuare queste operazioni.
 
 ### Prima di cominciare
+{: #ibp-console-import-peer-before-you-begin}
 
 Prima di poter importare un peer, devi raccogliere le seguenti informazioni e certificati:
 

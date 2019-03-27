@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018,2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -15,10 +17,6 @@ lastupdated: "2019-02-08"
 # Modalità di pagamento
 {: #paying-mode}
 
-
-***[Questa pagina è utile? Faccelo sapere.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
-
 {{site.data.keyword.blockchainfull}} Platform prevede un addebito mensile con costi per le adesioni e costi per i peer. I membri della rete possono pagare la fattura con i loro account {{site.data.keyword.cloud_notm}} che contengono lo spazio per creare l'istanza della rete. In alternativa, un membro della rete può coprire la fattura per altri membri nella rete o anche per tutti i membri e pagare per l'intera rete. Il pagatore può anche trasferire le fatture ad altri membri, se necessario.
 {:shortdesc}
 
@@ -30,7 +28,7 @@ Nota che, quando diverse organizzazioni creano un consorzio, si consiglia che le
 ## Prerequisiti
 {: #paying-mode-prereq}
 
-Ogni membro della rete deve avere un account {{site.data.keyword.cloud_notm}} a pagamento, ad esempio un account con **Pagamento a consumo**, in modo che possano creare istanze del servizio {{site.data.keyword.blockchainfull_notm}} Platform su {{site.data.keyword.cloud_notm}}. Se non hai un account, [registrane](https://console.bluemix.net/registration/) uno ed eseguine l'upgrade a un account a pagamento. Per eseguire l'upgrade del tuo account a un tipo Pagamento a consumo, vai a **Gestisci** > **Fatturazione e utilizzo** > **Fatturazione** nella console {{site.data.keyword.cloud_notm}} e fai clic su **Aggiungi carta di credito**.
+Ogni membro della rete deve avere un account {{site.data.keyword.cloud_notm}} a pagamento, ad esempio un account con **Pagamento a consumo**, in modo che possano creare istanze del servizio {{site.data.keyword.blockchainfull_notm}} Platform su {{site.data.keyword.cloud_notm}}. Se non hai un account, [registrane](https://cloud.ibm.com/registration/) uno ed eseguine l'upgrade a un account a pagamento. Per eseguire l'upgrade del tuo account a un tipo Pagamento a consumo, vai a **Gestisci** > **Fatturazione e utilizzo** > **Fatturazione** nella console {{site.data.keyword.cloud_notm}} e fai clic su **Aggiungi carta di credito**.
 
 
 ## Pagamento solo dei tuoi costi
