@@ -5,186 +5,183 @@
 <style type="text/css">
 	.st0{fill:none;stroke:#7DB6D6;stroke-width:1.0447;stroke-miterlimit:10;stroke-dasharray:2.0893,1.0447;}
 	.st1{fill:none;stroke:#7DB6D6;stroke-miterlimit:10;stroke-dasharray:2,1;}
-	.st2{fill:none;stroke:#2F2829;stroke-width:0.5;stroke-miterlimit:10;}
-	.st3{fill:#2F2829;}
-	.st4{font-family:'HelvNeueRomanforIBM';}
+	.st2{fill:none;stroke:#01A0C6;stroke-miterlimit:10;}
+	.st3{fill:#FFFFFF;stroke:#01A0C6;stroke-miterlimit:10;}
+	.st4{font-family:'MyriadPro-Regular';}
 	.st5{font-size:12px;}
-	.st6{fill:none;stroke:#01A0C6;stroke-miterlimit:10;}
-	.st7{fill:#FFFFFF;stroke:#01A0C6;stroke-miterlimit:10;}
-	.st8{font-family:'MyriadPro-Regular';}
-	.st9{fill:#FFFFFF;stroke:#FFFFFF;stroke-width:2;stroke-miterlimit:10;}
-	.st10{font-size:15px;}
-	.st11{fill:none;stroke:#85C964;stroke-miterlimit:10;}
-	.st12{fill:#85C964;}
-	.st13{fill:none;stroke:#80C41C;stroke-miterlimit:10;}
-	.st14{fill:#FFFFFF;stroke:#80C41C;stroke-miterlimit:10;}
-	.st15{fill:none;}
-	.st16{fill:#80C41C;}
-	.st17{fill:none;stroke:#FEA621;stroke-width:0.5;stroke-miterlimit:10;}
-	.st18{fill:#FEA621;}
-	.st19{fill:#01A0C6;}
-	.st20{font-size:14px;}
-	.st21{fill:#FFFFFF;}
-	.st22{fill:none;stroke:#80C41C;stroke-miterlimit:8;}
+	.st6{fill:#FFFFFF;stroke:#FFFFFF;stroke-width:2;stroke-miterlimit:10;}
+	.st7{font-size:15px;}
+	.st8{fill:none;stroke:#85C964;stroke-miterlimit:10;}
+	.st9{fill:#85C964;}
+	.st10{fill:none;stroke:#80C41C;stroke-miterlimit:10;}
+	.st11{fill:#FFFFFF;stroke:#80C41C;stroke-miterlimit:10;}
+	.st12{fill:none;}
+	.st13{fill:#80C41C;}
+	.st14{fill:none;stroke:#FEA621;stroke-width:0.5;stroke-miterlimit:10;}
+	.st15{fill:#FEA621;}
+	.st16{fill:#01A0C6;}
+	.st17{font-size:14px;}
+	.st18{fill:#FFFFFF;}
+	.st19{fill:none;stroke:#80C41C;stroke-miterlimit:8;}
+	.st20{fill:none;stroke:#01A0C6;stroke-miterlimit:8;}
+	.st21{fill:none;stroke:#000000;stroke-width:0.25;stroke-miterlimit:10;}
 </style>
 <path id="XMLID_55_" class="st0" d="M327.8,107"/>
 <path id="XMLID_38_" class="st1" d="M328.1,113.2"/>
-<polyline id="XMLID_88_" class="st2" points="434,22.1 676.7,22.1 676.7,488.2 21.9,488.2 21.9,22.1 262.2,22.1 "/>
-<text id="XMLID_86_" transform="matrix(1 0 0 1 266.9845 24.4638)" class="st3 st4 st5">Kubernetes architecture diagram</text>
-<rect x="53.1" y="177.4" class="st6" width="285.2" height="266.6"/>
+<rect x="53.1" y="177.4" class="st2" width="285.2" height="266.6"/>
 <g>
 	<g>
-		<path class="st7" d="M158.3,248.9H73.6c-2.6,0-4.7-2.1-4.7-4.7v-26c0-2.6,2.1-4.7,4.7-4.7h84.7c2.6,0,4.7,2.1,4.7,4.7v26
+		<path class="st3" d="M158.3,248.9H73.6c-2.6,0-4.7-2.1-4.7-4.7v-26c0-2.6,2.1-4.7,4.7-4.7h84.7c2.6,0,4.7,2.1,4.7,4.7v26
 			C163,246.8,160.9,248.9,158.3,248.9z"/>
-		<path class="st7" d="M168.4,260.3H83.7c-2.6,0-4.7-2.1-4.7-4.7v-26c0-2.6,2.1-4.7,4.7-4.7h84.7c2.6,0,4.7,2.1,4.7,4.7v26
+		<path class="st3" d="M168.4,260.3H83.7c-2.6,0-4.7-2.1-4.7-4.7v-26c0-2.6,2.1-4.7,4.7-4.7h84.7c2.6,0,4.7,2.1,4.7,4.7v26
 			C173.1,258.2,171,260.3,168.4,260.3z"/>
-		<path class="st7" d="M180.8,270.3H96c-2.6,0-4.7-2.1-4.7-4.7v-26c0-2.6,2.1-4.7,4.7-4.7h84.7c2.6,0,4.7,2.1,4.7,4.7v26
+		<path class="st3" d="M180.8,270.3H96c-2.6,0-4.7-2.1-4.7-4.7v-26c0-2.6,2.1-4.7,4.7-4.7h84.7c2.6,0,4.7,2.1,4.7,4.7v26
 			C185.4,268.2,183.3,270.3,180.8,270.3z"/>
 	</g>
-	<text transform="matrix(1 0 0 1 99.3501 249.2421)"><tspan x="0" y="0" class="st8 st5">kube-controller- </tspan><tspan x="0" y="14.4" class="st8 st5">manager</tspan></text>
+	<text transform="matrix(1 0 0 1 111.9868 249.2421)"><tspan x="0" y="0" class="st4 st5">Controller </tspan><tspan x="4.2" y="14.4" class="st4 st5">Manager</tspan></text>
 </g>
 <g>
 	<g>
-		<path class="st7" d="M295.6,251.7h-84.7c-2.6,0-4.7-2.1-4.7-4.7v-26c0-2.6,2.1-4.7,4.7-4.7h84.7c2.6,0,4.7,2.1,4.7,4.7v26
+		<path class="st3" d="M295.6,251.7h-84.7c-2.6,0-4.7-2.1-4.7-4.7v-26c0-2.6,2.1-4.7,4.7-4.7h84.7c2.6,0,4.7,2.1,4.7,4.7v26
 			C300.3,249.6,298.2,251.7,295.6,251.7z"/>
-		<path class="st7" d="M305.8,263.1H221c-2.6,0-4.7-2.1-4.7-4.7v-26c0-2.6,2.1-4.7,4.7-4.7h84.7c2.6,0,4.7,2.1,4.7,4.7v26
+		<path class="st3" d="M305.8,263.1H221c-2.6,0-4.7-2.1-4.7-4.7v-26c0-2.6,2.1-4.7,4.7-4.7h84.7c2.6,0,4.7,2.1,4.7,4.7v26
 			C310.4,261,308.3,263.1,305.8,263.1z"/>
-		<path class="st7" d="M318.1,273.1h-84.7c-2.6,0-4.7-2.1-4.7-4.7v-26c0-2.6,2.1-4.7,4.7-4.7h84.7c2.6,0,4.7,2.1,4.7,4.7v26
+		<path class="st3" d="M318.1,273.1h-84.7c-2.6,0-4.7-2.1-4.7-4.7v-26c0-2.6,2.1-4.7,4.7-4.7h84.7c2.6,0,4.7,2.1,4.7,4.7v26
 			C322.8,271,320.7,273.1,318.1,273.1z"/>
 	</g>
-	<text transform="matrix(1 0 0 1 236.6737 252.0208)"><tspan x="0" y="0" class="st8 st5">kube-controller- </tspan><tspan x="0" y="14.4" class="st8 st5">manager</tspan></text>
+	<text transform="matrix(1 0 0 1 249.3105 250.4329)"><tspan x="0" y="0" class="st4 st5">Controller </tspan><tspan x="4.2" y="14.4" class="st4 st5">Manager</tspan></text>
 </g>
 <g>
-	<ellipse class="st7" cx="116.4" cy="398.7" rx="34.3" ry="10"/>
-	<rect x="82.1" y="343.9" class="st7" width="68.6" height="54.8"/>
-	<line class="st9" x1="82.9" y1="398.7" x2="149.9" y2="398.7"/>
-	<ellipse class="st7" cx="116.4" cy="354" rx="34.3" ry="10"/>
-	<ellipse class="st7" cx="116.4" cy="348.9" rx="34.3" ry="10"/>
-	<ellipse class="st7" cx="116.4" cy="343.9" rx="34.3" ry="10"/>
+	<ellipse class="st3" cx="116.4" cy="398.7" rx="34.3" ry="10"/>
+	<rect x="82.1" y="343.9" class="st3" width="68.6" height="54.8"/>
+	<line class="st6" x1="82.9" y1="398.7" x2="149.9" y2="398.7"/>
+	<ellipse class="st3" cx="116.4" cy="354" rx="34.3" ry="10"/>
+	<ellipse class="st3" cx="116.4" cy="348.9" rx="34.3" ry="10"/>
+	<ellipse class="st3" cx="116.4" cy="343.9" rx="34.3" ry="10"/>
 </g>
-<text transform="matrix(1 0 0 1 106.8689 388.6827)" class="st8 st5">etcd</text>
-<path class="st7" d="M314.7,338.9H212.1c-5.3,0-9.7-4.4-9.7-9.7v-17.8c0-5.3,4.4-9.7,9.7-9.7h102.6c5.3,0,9.7,4.4,9.7,9.7v17.8
+<text transform="matrix(1 0 0 1 106.8689 388.6827)" class="st4 st5">etcd</text>
+<path class="st3" d="M314.7,338.9H212.1c-5.3,0-9.7-4.4-9.7-9.7v-17.8c0-5.3,4.4-9.7,9.7-9.7h102.6c5.3,0,9.7,4.4,9.7,9.7v17.8
 	C324.4,334.5,320,338.9,314.7,338.9z"/>
-<text transform="matrix(1 0 0 1 228.695 323.9105)" class="st8 st5">kube-apiserver</text>
+<text transform="matrix(1 0 0 1 238.549 323.9108)" class="st4 st5">API Server</text>
 <g>
 	<g>
-		<path class="st7" d="M294.5,395.6h-84.7c-2.6,0-4.7-2.1-4.7-4.7v-26c0-2.6,2.1-4.7,4.7-4.7h84.7c2.6,0,4.7,2.1,4.7,4.7v26
+		<path class="st3" d="M294.5,395.6h-84.7c-2.6,0-4.7-2.1-4.7-4.7v-26c0-2.6,2.1-4.7,4.7-4.7h84.7c2.6,0,4.7,2.1,4.7,4.7v26
 			C299.2,393.5,297.1,395.6,294.5,395.6z"/>
-		<path class="st7" d="M304.7,407h-84.7c-2.6,0-4.7-2.1-4.7-4.7v-26c0-2.6,2.1-4.7,4.7-4.7h84.7c2.6,0,4.7,2.1,4.7,4.7v26
+		<path class="st3" d="M304.7,407h-84.7c-2.6,0-4.7-2.1-4.7-4.7v-26c0-2.6,2.1-4.7,4.7-4.7h84.7c2.6,0,4.7,2.1,4.7,4.7v26
 			C309.3,404.9,307.2,407,304.7,407z"/>
-		<path class="st7" d="M317,417h-84.7c-2.6,0-4.7-2.1-4.7-4.7v-26c0-2.6,2.1-4.7,4.7-4.7H317c2.6,0,4.7,2.1,4.7,4.7v26
+		<path class="st3" d="M317,417h-84.7c-2.6,0-4.7-2.1-4.7-4.7v-26c0-2.6,2.1-4.7,4.7-4.7H317c2.6,0,4.7,2.1,4.7,4.7v26
 			C321.7,414.9,319.6,417,317,417z"/>
 	</g>
-	<text transform="matrix(1 0 0 1 235.5769 402.9902)" class="st8 st5">kube-scheduler</text>
+	<text transform="matrix(1 0 0 1 247.4041 402.5417)" class="st4 st5">Scheduler</text>
 </g>
-<text transform="matrix(1 0 0 1 53.1327 166.2151)" class="st8 st10">Kubernetes master node</text>
+<text transform="matrix(1 0 0 1 53.1327 171.2151)" class="st4 st7">Master node</text>
 <g>
 	<g>
 		<g id="XMLID_81_">
 			<g>
-				<path class="st11" d="M551.7,159.4c0-21.9,0-37.8,0-37.8s0,0.1,0,0.1"/>
+				<path class="st8" d="M551.7,159.4c0-21.9,0-37.8,0-37.8s0,0.1,0,0.1"/>
 				<g>
-					<polygon class="st12" points="551.7,166.5 555.8,156.5 551.7,158.9 547.6,156.5 					"/>
+					<polygon class="st9" points="551.7,166.5 555.8,156.5 551.7,158.9 547.6,156.5 					"/>
 				</g>
 			</g>
 		</g>
 		<g>
-			<rect x="391.8" y="81.5" class="st13" width="235.9" height="176.5"/>
-			<rect x="401.3" y="139.8" class="st13" width="215.4" height="104.8"/>
-			<rect x="412.3" y="167.9" class="st13" width="84.7" height="66.4"/>
-			<rect x="519.1" y="167.9" class="st13" width="84.7" height="66.4"/>
+			<rect x="391.8" y="81.5" class="st10" width="235.9" height="176.5"/>
+			<rect x="401.3" y="139.8" class="st10" width="215.4" height="104.8"/>
+			<rect x="412.3" y="167.9" class="st10" width="84.7" height="66.4"/>
+			<rect x="519.1" y="167.9" class="st10" width="84.7" height="66.4"/>
 			<g>
-				<path class="st14" d="M474.3,210.3H435c-2.6,0-4.7-2.1-4.7-4.7v-18c0-2.6,2.1-4.7,4.7-4.7h39.3c2.6,0,4.7,2.1,4.7,4.7v18
+				<path class="st11" d="M474.3,210.3H435c-2.6,0-4.7-2.1-4.7-4.7v-18c0-2.6,2.1-4.7,4.7-4.7h39.3c2.6,0,4.7,2.1,4.7,4.7v18
 					C479,208.2,476.9,210.3,474.3,210.3z"/>
-				<path class="st14" d="M479.6,219.1h-39.3c-2.6,0-4.7-2.1-4.7-4.7v-18c0-2.6,2.1-4.7,4.7-4.7h39.3c2.6,0,4.7,2.1,4.7,4.7v18
+				<path class="st11" d="M479.6,219.1h-39.3c-2.6,0-4.7-2.1-4.7-4.7v-18c0-2.6,2.1-4.7,4.7-4.7h39.3c2.6,0,4.7,2.1,4.7,4.7v18
 					C484.2,217,482.1,219.1,479.6,219.1z"/>
-				<path class="st14" d="M485.9,226.9h-39.3c-2.6,0-4.7-2.1-4.7-4.7v-18c0-2.6,2.1-4.7,4.7-4.7h39.3c2.6,0,4.7,2.1,4.7,4.7v18
+				<path class="st11" d="M485.9,226.9h-39.3c-2.6,0-4.7-2.1-4.7-4.7v-18c0-2.6,2.1-4.7,4.7-4.7h39.3c2.6,0,4.7,2.1,4.7,4.7v18
 					C490.6,224.8,488.5,226.9,485.9,226.9z"/>
 			</g>
 			<g>
-				<path class="st14" d="M581.8,210.3h-39.3c-2.6,0-4.7-2.1-4.7-4.7v-18c0-2.6,2.1-4.7,4.7-4.7h39.3c2.6,0,4.7,2.1,4.7,4.7v18
+				<path class="st11" d="M581.8,210.3h-39.3c-2.6,0-4.7-2.1-4.7-4.7v-18c0-2.6,2.1-4.7,4.7-4.7h39.3c2.6,0,4.7,2.1,4.7,4.7v18
 					C586.4,208.2,584.3,210.3,581.8,210.3z"/>
-				<path class="st14" d="M587,219.1h-39.3c-2.6,0-4.7-2.1-4.7-4.7v-18c0-2.6,2.1-4.7,4.7-4.7H587c2.6,0,4.7,2.1,4.7,4.7v18
+				<path class="st11" d="M587,219.1h-39.3c-2.6,0-4.7-2.1-4.7-4.7v-18c0-2.6,2.1-4.7,4.7-4.7H587c2.6,0,4.7,2.1,4.7,4.7v18
 					C591.7,217,589.6,219.1,587,219.1z"/>
-				<path class="st14" d="M593.4,226.9h-39.3c-2.6,0-4.7-2.1-4.7-4.7v-18c0-2.6,2.1-4.7,4.7-4.7h39.3c2.6,0,4.7,2.1,4.7,4.7v18
+				<path class="st11" d="M593.4,226.9h-39.3c-2.6,0-4.7-2.1-4.7-4.7v-18c0-2.6,2.1-4.7,4.7-4.7h39.3c2.6,0,4.7,2.1,4.7,4.7v18
 					C598,224.8,595.9,226.9,593.4,226.9z"/>
 			</g>
-			<rect x="412.3" y="95.1" class="st14" width="71.9" height="25.5"/>
-			<rect x="509.8" y="95.1" class="st14" width="94" height="25.5"/>
-			<text transform="matrix(1 0 0 1 430.3737 111.85)" class="st8 st5">kubelet</text>
-			<text transform="matrix(1 0 0 1 528.4673 111.2183)" class="st8 st5">kube-proxy</text>
-			<line class="st15" x1="435.6" y1="120.6" x2="435.6" y2="169.7"/>
-			<text transform="matrix(1 0 0 1 391.8131 74.896)" class="st8 st10">Kubernetes worker node</text>
-			<text transform="matrix(1 0 0 1 561.4567 153.7864)" class="st8 st5">Container</text>
-			<text transform="matrix(1 0 0 1 473.5824 179.3193)" class="st8 st5">Pod</text>
-			<text transform="matrix(1 0 0 1 580.2664 178.9298)" class="st8 st5">Pod</text>
+			<rect x="412.3" y="95.1" class="st11" width="71.9" height="25.5"/>
+			<rect x="509.8" y="95.1" class="st11" width="94" height="25.5"/>
+			<text transform="matrix(1 0 0 1 430.3737 111.85)" class="st4 st5">kubelet</text>
+			<text transform="matrix(1 0 0 1 538.4372 112.0789)" class="st4 st5">Proxy</text>
+			<line class="st12" x1="435.6" y1="120.6" x2="435.6" y2="169.7"/>
+			<text transform="matrix(1 0 0 1 391.8131 74.896)" class="st4 st7">Worker node</text>
+			<text transform="matrix(1 0 0 1 561.4567 153.7864)" class="st4 st5">Container</text>
+			<text transform="matrix(1 0 0 1 473.5824 179.3193)" class="st4 st5">Pod</text>
+			<text transform="matrix(1 0 0 1 580.2664 178.9298)" class="st4 st5">Pod</text>
 		</g>
 		<g id="XMLID_1_">
 			<g>
-				<path class="st11" d="M442,159.2c0-21.9,0-37.8,0-37.8s0,0.1,0,0.1"/>
+				<path class="st8" d="M442,159.2c0-21.9,0-37.8,0-37.8s0,0.1,0,0.1"/>
 				<g>
-					<polygon class="st12" points="442,166.2 446,156.3 442,158.6 437.9,156.3 					"/>
+					<polygon class="st9" points="442,166.2 446,156.3 442,158.6 437.9,156.3 					"/>
 				</g>
 			</g>
 		</g>
 	</g>
 	<g>
 		<g>
-			<line class="st13" x1="459.9" y1="121.6" x2="531.7" y2="162.7"/>
+			<line class="st10" x1="459.9" y1="121.6" x2="531.7" y2="162.7"/>
 			<g>
-				<polygon class="st16" points="537.8,166.2 527.2,164.8 531.2,162.4 531.2,157.7 				"/>
+				<polygon class="st13" points="537.8,166.2 527.2,164.8 531.2,162.4 531.2,157.7 				"/>
 			</g>
 		</g>
 	</g>
 	<g>
 		<g>
-			<line class="st13" x1="537.8" y1="120.6" x2="466" y2="162.9"/>
+			<line class="st10" x1="537.8" y1="120.6" x2="466" y2="162.9"/>
 			<g>
-				<polygon class="st16" points="459.9,166.5 466.4,157.9 466.5,162.6 470.6,164.9 				"/>
+				<polygon class="st13" points="459.9,166.5 466.4,157.9 466.5,162.6 470.6,164.9 				"/>
 			</g>
 		</g>
 	</g>
 	<g>
 		<g>
-			<line class="st17" x1="327.3" y1="304.1" x2="421.8" y2="116.6"/>
+			<line class="st14" x1="314.4" y1="295.9" x2="408.8" y2="108.4"/>
 			<g>
-				<polygon class="st18" points="325.7,307.2 329.8,303.7 327.4,303.8 326.2,301.9 				"/>
+				<polygon class="st15" points="312.8,299 316.8,295.5 314.5,295.6 313.2,293.7 				"/>
 			</g>
 			<g>
-				<polygon class="st18" points="423.3,113.4 422.9,118.8 421.6,116.8 419.3,116.9 				"/>
+				<polygon class="st15" points="410.4,105.2 410,110.6 408.7,108.6 406.3,108.8 				"/>
 			</g>
 		</g>
 	</g>
 </g>
 <g>
 	<g>
-		<line class="st6" x1="260.5" y1="271.7" x2="260.5" y2="294.1"/>
+		<line class="st2" x1="260.5" y1="271.7" x2="260.5" y2="294.1"/>
 		<g>
-			<polygon class="st19" points="260.5,301.2 256.4,291.2 260.5,293.6 264.5,291.2 			"/>
+			<polygon class="st16" points="260.5,301.2 256.4,291.2 260.5,293.6 264.5,291.2 			"/>
 		</g>
 	</g>
 </g>
 <g>
 	<g>
-		<line class="st6" x1="185.4" y1="265.6" x2="240.1" y2="296.3"/>
+		<line class="st2" x1="185.4" y1="265.6" x2="240.1" y2="296.3"/>
 		<g>
-			<polygon class="st19" points="246.3,299.7 235.6,298.4 239.7,296 239.6,291.3 			"/>
+			<polygon class="st16" points="246.3,299.7 235.6,298.4 239.7,296 239.6,291.3 			"/>
 		</g>
 	</g>
 </g>
 <g>
 	<g>
-		<line class="st6" x1="202.4" y1="329.2" x2="156.2" y2="366.9"/>
+		<line class="st2" x1="202.4" y1="329.2" x2="156.2" y2="366.9"/>
 		<g>
-			<polygon class="st19" points="150.7,371.3 155.9,361.9 156.6,366.5 161,368.2 			"/>
+			<polygon class="st16" points="150.7,371.3 155.9,361.9 156.6,366.5 161,368.2 			"/>
 		</g>
 	</g>
 </g>
 <g>
 	<g>
-		<line class="st6" x1="262.3" y1="358" x2="262.3" y2="350"/>
+		<line class="st2" x1="262.3" y1="358" x2="262.3" y2="350"/>
 		<g>
-			<polygon class="st19" points="262.3,342.9 266.4,352.9 262.3,350.5 258.2,352.9 			"/>
+			<polygon class="st16" points="262.3,342.9 266.4,352.9 262.3,350.5 258.2,352.9 			"/>
 		</g>
 	</g>
 </g>
@@ -192,280 +189,112 @@
 	<g>
 		<g id="XMLID_5_">
 			<g>
-				<path class="st11" d="M552.8,371c0-21.9,0-37.8,0-37.8s0,0.1,0,0.1"/>
+				<path class="st8" d="M552.8,371c0-21.9,0-37.8,0-37.8s0,0.1,0,0.1"/>
 				<g>
-					<polygon class="st12" points="552.8,378 556.8,368.1 552.8,370.4 548.7,368.1 					"/>
+					<polygon class="st9" points="552.8,378 556.8,368.1 552.8,370.4 548.7,368.1 					"/>
 				</g>
 			</g>
 		</g>
 		<g>
-			<rect x="392.9" y="293" class="st13" width="235.9" height="176.5"/>
-			<rect x="402.4" y="351.3" class="st13" width="215.4" height="104.8"/>
-			<rect x="413.4" y="379.5" class="st13" width="84.7" height="66.4"/>
-			<rect x="520.2" y="379.5" class="st13" width="84.7" height="66.4"/>
+			<rect x="392.9" y="293" class="st10" width="235.9" height="176.5"/>
+			<rect x="402.4" y="351.3" class="st10" width="215.4" height="104.8"/>
+			<rect x="413.4" y="379.5" class="st10" width="84.7" height="66.4"/>
+			<rect x="520.2" y="379.5" class="st10" width="84.7" height="66.4"/>
 			<g>
-				<path class="st14" d="M475.4,421.9h-39.3c-2.6,0-4.7-2.1-4.7-4.7v-18c0-2.6,2.1-4.7,4.7-4.7h39.3c2.6,0,4.7,2.1,4.7,4.7v18
+				<path class="st11" d="M475.4,421.9h-39.3c-2.6,0-4.7-2.1-4.7-4.7v-18c0-2.6,2.1-4.7,4.7-4.7h39.3c2.6,0,4.7,2.1,4.7,4.7v18
 					C480.1,419.8,478,421.9,475.4,421.9z"/>
-				<path class="st14" d="M480.6,430.7h-39.3c-2.6,0-4.7-2.1-4.7-4.7v-18c0-2.6,2.1-4.7,4.7-4.7h39.3c2.6,0,4.7,2.1,4.7,4.7v18
+				<path class="st11" d="M480.6,430.7h-39.3c-2.6,0-4.7-2.1-4.7-4.7v-18c0-2.6,2.1-4.7,4.7-4.7h39.3c2.6,0,4.7,2.1,4.7,4.7v18
 					C485.3,428.6,483.2,430.7,480.6,430.7z"/>
-				<path class="st14" d="M487,438.4h-39.3c-2.6,0-4.7-2.1-4.7-4.7v-18c0-2.6,2.1-4.7,4.7-4.7H487c2.6,0,4.7,2.1,4.7,4.7v18
+				<path class="st11" d="M487,438.4h-39.3c-2.6,0-4.7-2.1-4.7-4.7v-18c0-2.6,2.1-4.7,4.7-4.7H487c2.6,0,4.7,2.1,4.7,4.7v18
 					C491.7,436.3,489.6,438.4,487,438.4z"/>
 			</g>
 			<g>
-				<path class="st14" d="M582.9,421.9h-39.3c-2.6,0-4.7-2.1-4.7-4.7v-18c0-2.6,2.1-4.7,4.7-4.7h39.3c2.6,0,4.7,2.1,4.7,4.7v18
+				<path class="st11" d="M582.9,421.9h-39.3c-2.6,0-4.7-2.1-4.7-4.7v-18c0-2.6,2.1-4.7,4.7-4.7h39.3c2.6,0,4.7,2.1,4.7,4.7v18
 					C587.5,419.8,585.4,421.9,582.9,421.9z"/>
-				<path class="st14" d="M588.1,430.7h-39.3c-2.6,0-4.7-2.1-4.7-4.7v-18c0-2.6,2.1-4.7,4.7-4.7h39.3c2.6,0,4.7,2.1,4.7,4.7v18
+				<path class="st11" d="M588.1,430.7h-39.3c-2.6,0-4.7-2.1-4.7-4.7v-18c0-2.6,2.1-4.7,4.7-4.7h39.3c2.6,0,4.7,2.1,4.7,4.7v18
 					C592.8,428.6,590.7,430.7,588.1,430.7z"/>
-				<path class="st14" d="M594.5,438.4h-39.3c-2.6,0-4.7-2.1-4.7-4.7v-18c0-2.6,2.1-4.7,4.7-4.7h39.3c2.6,0,4.7,2.1,4.7,4.7v18
+				<path class="st11" d="M594.5,438.4h-39.3c-2.6,0-4.7-2.1-4.7-4.7v-18c0-2.6,2.1-4.7,4.7-4.7h39.3c2.6,0,4.7,2.1,4.7,4.7v18
 					C599.1,436.3,597,438.4,594.5,438.4z"/>
 			</g>
-			<rect x="413.4" y="306.7" class="st14" width="71.9" height="25.5"/>
-			<rect x="510.9" y="306.7" class="st14" width="94" height="25.5"/>
-			<text transform="matrix(1 0 0 1 431.4582 323.3967)" class="st8 st5">kubelet</text>
-			<text transform="matrix(1 0 0 1 529.5518 322.765)" class="st8 st5">kube-proxy</text>
-			<line class="st15" x1="436.7" y1="332.1" x2="436.7" y2="381.3"/>
-			<text transform="matrix(1 0 0 1 392.8976 286.4427)" class="st8 st10">Kubernetes worker node</text>
-			<text transform="matrix(1 0 0 1 562.5412 365.333)" class="st8 st5">Container</text>
-			<text transform="matrix(1 0 0 1 474.6669 390.866)" class="st8 st5">Pod</text>
-			<text transform="matrix(1 0 0 1 581.3509 390.4764)" class="st8 st5">Pod</text>
+			<rect x="413.4" y="306.7" class="st11" width="71.9" height="25.5"/>
+			<rect x="510.9" y="306.7" class="st11" width="94" height="25.5"/>
+			<text transform="matrix(1 0 0 1 431.4582 323.3967)" class="st4 st5">kubelet</text>
+			<text transform="matrix(1 0 0 1 539.4373 322.7654)" class="st4 st5">Proxy</text>
+			<line class="st12" x1="436.7" y1="332.1" x2="436.7" y2="381.3"/>
+			<text transform="matrix(1 0 0 1 392.8976 286.4427)" class="st4 st7">Worker node</text>
+			<text transform="matrix(1 0 0 1 562.5412 365.333)" class="st4 st5">Container</text>
+			<text transform="matrix(1 0 0 1 474.6669 390.866)" class="st4 st5">Pod</text>
+			<text transform="matrix(1 0 0 1 581.3509 390.4764)" class="st4 st5">Pod</text>
 		</g>
 		<g id="XMLID_3_">
 			<g>
-				<path class="st11" d="M443.1,370.7c0-21.9,0-37.8,0-37.8s0,0.1,0,0.1"/>
+				<path class="st8" d="M443.1,370.7c0-21.9,0-37.8,0-37.8s0,0.1,0,0.1"/>
 				<g>
-					<polygon class="st12" points="443.1,377.8 447.1,367.8 443.1,370.2 439,367.8 					"/>
+					<polygon class="st9" points="443.1,377.8 447.1,367.8 443.1,370.2 439,367.8 					"/>
 				</g>
 			</g>
 		</g>
 	</g>
 	<g>
 		<g>
-			<line class="st13" x1="461" y1="333.1" x2="532.8" y2="374.3"/>
+			<line class="st10" x1="461" y1="333.1" x2="532.8" y2="374.3"/>
 			<g>
-				<polygon class="st16" points="538.9,377.8 528.2,376.3 532.3,374 532.3,369.3 				"/>
+				<polygon class="st13" points="538.9,377.8 528.2,376.3 532.3,374 532.3,369.3 				"/>
 			</g>
 		</g>
 	</g>
 	<g>
 		<g>
-			<line class="st13" x1="538.9" y1="332.1" x2="467.1" y2="374.4"/>
+			<line class="st10" x1="538.9" y1="332.1" x2="467.1" y2="374.4"/>
 			<g>
-				<polygon class="st16" points="461,378 467.5,369.5 467.5,374.2 471.6,376.5 				"/>
+				<polygon class="st13" points="461,378 467.5,369.5 467.5,374.2 471.6,376.5 				"/>
 			</g>
 		</g>
 	</g>
 	<g>
 		<g>
-			<line class="st17" x1="326.6" y1="330.4" x2="409.9" y2="321.6"/>
+			<line class="st14" x1="326.6" y1="330.4" x2="409.9" y2="321.6"/>
 			<g>
-				<polygon class="st18" points="323.1,330.7 328.3,332.2 326.9,330.3 327.8,328.2 				"/>
+				<polygon class="st15" points="323.1,330.7 328.3,332.2 326.9,330.3 327.8,328.2 				"/>
 			</g>
 			<g>
-				<polygon class="st18" points="413.4,321.2 408.6,323.7 409.6,321.6 408.2,319.7 				"/>
+				<polygon class="st15" points="413.4,321.2 408.6,323.7 409.6,321.6 408.2,319.7 				"/>
 			</g>
 		</g>
 	</g>
 </g>
-<text transform="matrix(1 0 0 1 463.8213 219.9644)" class="st8 st20">......</text>
-<text transform="matrix(1 0 0 1 575.9009 221.1404)" class="st8 st20">......</text>
-<text transform="matrix(1 0 0 1 469.5468 432.6871)" class="st8 st20">......</text>
-<text transform="matrix(1 0 0 1 575.9009 432.6866)" class="st8 st20">......</text>
-<g>
-	<defs>
-		<rect id="SVGID_1_" x="237.2" y="65.9" width="103.7" height="54.7"/>
-	</defs>
-	<clipPath id="SVGID_2_">
-		<use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
-	</clipPath>
-	<g style="clip-path:url(#SVGID_2_);">
-		
-			<image style="overflow:visible;" width="220" height="154" xlink:href="data:image/png;base64,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" transform="matrix(0.4714 0 0 0.355 237.2326 65.9242)">
-		</image>
-	</g>
-</g>
-<rect x="274" y="93.9" class="st21" width="25.1" height="8.7"/>
-<text transform="matrix(1 0 0 1 273.9705 102.5203)" class="st8 st5">Cloud</text>
+<text transform="matrix(1 0 0 1 463.8213 219.9644)" class="st4 st17">......</text>
+<text transform="matrix(1 0 0 1 575.9009 221.1404)" class="st4 st17">......</text>
+<text transform="matrix(1 0 0 1 469.5468 432.6871)" class="st4 st17">......</text>
+<text transform="matrix(1 0 0 1 575.9009 432.6866)" class="st4 st17">......</text>
+<rect x="274" y="93.9" class="st18" width="25.1" height="8.7"/>
+<text transform="matrix(1 0 0 1 273.9705 102.5203)" class="st4 st5">Cloud</text>
 <g>
 	<g>
-		<line class="st6" x1="286.5" y1="213.6" x2="286.5" y2="123.9"/>
+		<line class="st2" x1="286.5" y1="213.6" x2="286.5" y2="123.9"/>
 		<g>
-			<polygon class="st19" points="286.5,116.9 290.6,126.8 286.5,124.5 282.5,126.8 			"/>
+			<polygon class="st16" points="286.5,116.9 290.6,126.8 286.5,124.5 282.5,126.8 			"/>
 		</g>
 	</g>
 </g>
-<path class="st22" d="M580.8,40.9c-0.8-4.2,3.2-8.1,8.8-8.6c2.3-0.2,4.6,0.1,6.6,1c2.1-3,7-4.1,11-2.5c0.7,0.3,1.3,0.6,1.9,1
+<path class="st19" d="M580.8,40.9c-0.8-4.2,3.2-8.1,8.8-8.6c2.3-0.2,4.6,0.1,6.6,1c2.1-3,7-4.1,11-2.5c0.7,0.3,1.3,0.6,1.9,1
 	c1.6-2.4,5.6-3.4,8.9-2.2c0.9,0.3,1.7,0.8,2.3,1.4c2.6-2.3,7.3-2.6,10.4-0.6c1.3,0.8,2.2,2,2.5,3.2c4.3,0.9,6.9,4.2,5.7,7.4
 	c-0.1,0.3-0.2,0.5-0.4,0.8c3.5,3.4,2.6,8.2-1.9,10.8c-1.4,0.8-3.1,1.3-4.8,1.5c0,3.6-4,6.5-8.9,6.5c-1.6,0-3.2-0.4-4.6-1
 	c-1.6,4.1-7.4,6.4-12.8,5.1c-2.3-0.5-4.2-1.6-5.6-3.1c-5.6,2.5-12.8,1.2-16.1-3c0-0.1-0.1-0.1-0.1-0.2c-3.6,0.3-6.9-1.6-7.4-4.3
 	c-0.2-1.4,0.4-2.9,1.7-3.9c-3.1-1.4-4.2-4.4-2.4-6.8c1.1-1.4,2.9-2.3,5-2.4L580.8,40.9z"/>
-<text transform="matrix(1 0 0 1 587.5167 48.0444)" class="st8 st5">Internet</text>
+<text transform="matrix(1 0 0 1 587.5167 48.0444)" class="st4 st5">Internet</text>
 <g>
 	<g>
-		<line class="st22" x1="605.5" y1="64.7" x2="585.9" y2="87.9"/>
+		<line class="st19" x1="605.5" y1="64.7" x2="585.9" y2="87.9"/>
 		<g>
-			<polygon class="st16" points="581.4,93.3 584.7,83 586.3,87.5 590.9,88.3 			"/>
+			<polygon class="st13" points="581.4,93.3 584.7,83 586.3,87.5 590.9,88.3 			"/>
 		</g>
 	</g>
 </g>
+<path class="st20" d="M259.7,92c-0.8-4.2,3.2-8.1,8.8-8.6c2.3-0.2,4.6,0.1,6.6,1c2.1-3,7-4.1,11-2.5c0.7,0.3,1.3,0.6,1.9,1
+	c1.6-2.4,5.6-3.4,8.9-2.2c0.9,0.3,1.7,0.8,2.3,1.4c2.6-2.3,7.3-2.6,10.4-0.6c1.3,0.8,2.2,2,2.5,3.2c4.3,0.9,6.9,4.2,5.7,7.4
+	c-0.1,0.3-0.2,0.5-0.4,0.8c3.5,3.4,2.6,8.2-1.9,10.8c-1.4,0.8-3.1,1.3-4.8,1.5c0,3.6-4,6.5-8.9,6.5c-1.6,0-3.2-0.4-4.6-1
+	c-1.6,4.1-7.4,6.4-12.8,5.1c-2.3-0.5-4.2-1.6-5.6-3.1c-5.6,2.5-12.8,1.2-16.1-3c0-0.1-0.1-0.1-0.1-0.2c-3.6,0.3-6.9-1.6-7.4-4.3
+	c-0.2-1.4,0.4-2.9,1.7-3.9c-3.1-1.4-4.2-4.4-2.4-6.8c1.1-1.4,2.9-2.3,5-2.4L259.7,92z"/>
+<rect x="16.5" y="15.5" class="st21" width="666.5" height="471.8"/>
 </svg>
