@@ -2,7 +2,9 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -15,11 +17,11 @@ lastupdated: "2019-02-08"
 # Gestione di organizzazioni
 {: #ibp-console-organizations}
 
-***[Questa pagina è utile? Faccelo sapere.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 Puoi utilizzare la console {{site.data.keyword.blockchainfull}} Platform per creare una definizione di organizzazione formale nota come MSP (Membership Services Provider). La definizione dell'MSP della tua organizzazione consente ad altri membri del consorzio blockchain di verificare l'identità dei tuoi nodi e delle tue applicazioni. La tua definizione dell'MSP contiene anche i certificati di amministrazione della tua organizzazione.
 
-Puoi utilizzare la console per gestire quali organizzazioni sono membri della tua rete. L'amministratore del servizio ordini può utilizzare la scheda delle organizzazioni per aggiungere membri al [consorzio](/docs/services/blockchain/glossary.html#glossary-consortium) blockchain. I membri del consorzio possono quindi utilizzare la console per aggiungere i membri a canali nuovi o esistenti.
+Puoi anche utilizzare la console per gestire quali organizzazioni sono membri della tua rete. L'amministratore del servizio ordini può utilizzare la scheda delle organizzazioni per aggiungere membri al [consorzio](/docs/services/blockchain/glossary.html#glossary-consortium) blockchain. I membri del consorzio possono quindi utilizzare la console per aggiungere i membri a canali nuovi o esistenti.
+
+**Gruppi di destinatari:** questo argomento è pensato per gli operatori di rete che sono responsabili della creazione, del monitoraggio e della gestione della rete blockchain.
 
 ## Descrizione degli MSP
 {: #console-organizations-about-msp}
@@ -74,7 +76,7 @@ Dopo che hai selezionato la tua CA root, l'ID MSP e creato i tuoi certificati di
 
 Solo l'amministratore ordinante può aggiungere nuove organizzazioni al consorzio. Se sei l'amministratore ordinante, dovrai raccogliere le definizioni di MSP di tutte le organizzazioni che sono state invitate al consorzio e importare gli MSP nella console. Puoi quindi aggiungere gli MSP al servizio ordini utilizzando il nodo ordinante.
 
-Dopo che l'amministratore ha creato una definizione di MSP, può utilizzare la scheda organizzazioni per scaricare l'MSP in formato JSON sul suo filesystem locale. Può quindi inviarti il file JSON MSP in un'operazione fuori banda. Vai alla scheda **Organizzazioni** e utilizza **Importa definizione dell'MSP** per importare il file MSP nella tua console. Dopo che la definizione dell'MSP è visibile nella sezione **Organizzazioni disponibili**, puoi andare al tuo nodo ordinante per [aggiungere l'organizzazione al consorzio](docs/services/blockchain/howto/ibp-console-organizations.html#console-organizations-add-consortium).
+Dopo che l'amministratore ha creato una definizione di MSP, può utilizzare la scheda organizzazioni per scaricare l'MSP in formato JSON sul suo filesystem locale. Può quindi inviarti il file JSON MSP in un'operazione fuori banda. Vai alla scheda **Organizzazioni** e utilizza **Importa definizione dell'MSP** per importare il file MSP nella tua console. Dopo che la definizione dell'MSP è visibile nella sezione **Organizzazioni disponibili**, puoi andare al tuo nodo ordinante per [aggiungere l'organizzazione al consorzio](/docs/services/blockchain/howto/ibp-console-organizations.html#console-organizations-add-consortium).
 
 
 ## Aggiunta di un'organizzazione a un consorzio
@@ -86,12 +88,12 @@ Se sei l'amministratore del servizio ordini, puoi utilizzare la console per aggi
 
 ## Creazione e modifica di un canale
 
-Dopo essere stata aggiunta al consorzio, un'organizzazione può utilizzare il servizio ordini per creare un nuovo canale o essere aggiunta a un canale. Le informazioni che ti consentono di partecipare a un canale, come l'unione dei tuoi peer al canale, l'istanziazione di smart contract e l'inoltro di transazioni, vengono fornite utilizzando le definizioni di MSP.
+Dopo essere stata aggiunta al consorzio, un'organizzazione può utilizzare il servizio ordini per creare un nuovo canale o poter essere aggiunta a un canale esistente. Le informazioni che ti consentono di partecipare a un canale, come l'unione dei tuoi peer al canale, l'istanziazione di smart contract e l'inoltro di transazioni, vengono fornite utilizzando le definizioni di MSP.
 
-Dopo che un'organizzazione è stata aggiunta a un consorzio, puoi creare un canale attenendoti alla seguente procedura:
+Dopo che la tua organizzazione è stata aggiunta a un consorzio, puoi creare un canale utilizzando la seguente procedura:
 
-1. Importa il nodo di ordinazione che ospita il consorzio nella tua console. Non devi necessariamente essere un amministratore del nodo di ordinazione. Nella tua console devi però fornire il nome nodo ordinante e le informazioni sull'endpoint.
-2. Importa gli MSP delle organizzazioni che desideri aggiungere al nuovo canale nella tua console utilizzando la scheda delle organizzazioni. **Nota** che le organizzazioni devono essere aggiunte al consorzio prima di poter essere aggiunte a un canale.
-3. Vai alla scheda **Canali** e fai clic su **Crea canale**. Questo aprirà un pannello laterale che ti consentirà di specificare il nome canale, l'adesione e le politiche del canale. Puoi aggiungere qualsiasi organizzazione che è stata aggiunta al consorzio al nuovo canale.
+1. Importa il nodo di ordinazione che ospita il consorzio nella tua console. Non devi essere un amministratore del nodo di ordinazione; ma devi fornire il nome del nodo di ordinazione e le informazioni sull'endpoint nella tua console. 
+2. Importa gli MSP delle organizzazioni che desideri aggiungere al nuovo canale nella tua console utilizzando la scheda **Organizzazioni**. **Nota** che le organizzazioni devono essere aggiunte al consorzio prima di poter essere aggiunte a un canale.
+3. Vai alla scheda **Canali** e fai clic su **Crea canale**. Questo aprirà un pannello laterale che ti consente di specificare il nome canale, l'adesione e le politiche del canale. Puoi aggiungere qualsiasi organizzazione che è stata aggiunta al consorzio al nuovo canale.
 
-Per ulteriori informazioni su questi passi, vedi la sezione relativa alla [creazione di un canale](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-create-channel1) nell'esercitazione relativa alla creazione di una rete.
+Per ulteriori informazioni su questi passi, vedi la sezione relativa alla [creazione di un canale](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-create-channel1) nell'esercitazione **Crea una rete**.

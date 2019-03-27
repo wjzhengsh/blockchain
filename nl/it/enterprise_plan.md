@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -14,8 +16,6 @@ lastupdated: "2019-02-08"
 
 # Informazioni su piano Enterprise
 {: #enterprise-plan-about}
-
-***[Questa pagina è utile? Faccelo sapere.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 {{site.data.keyword.blockchainfull}} Platform piano Enterprise è un'offerta pronta per la produzione per le organizzazioni che desiderano creare o aderire a una rete blockchain per attività aziendali reali. Questo piano fornisce l'infrastruttura chiave insieme agli strumenti e al supporto per avviare facilmente una rete blockchain pronta per la produzione e altamente sicura. In data 15 maggio 2018 viene eseguito l'upgrade del piano Enterprise da Hyperledger Fabric V1.0 alla V1.1. Tutte le reti create dopo il 15 maggio 2018 solo al livello Fabric V1.1. Tuttavia, le reti che sono state creata precedentemente rimarranno al livello V1.0.
 {:shortdesc}
@@ -38,11 +38,11 @@ Il piano Enterprise è un servizio di piattaforma su {{site.data.keyword.cloud_n
 
 **Note:**
 - {{site.data.keyword.blockchainfull_notm}} Platform piano Enterprise fornisce un ambiente di produzione. Se hai bisogno di un ambiente di sviluppo e test, vedi [Informazioni su piano Starter](/docs/services/blockchain/starter_plan.html#starter-plan-about).
-- {{site.data.keyword.blockchainfull_notm}} Platform è un servizio di piattaforma su {{site.data.keyword.cloud_notm}} e tutte le offerte di adesione seguono i [termini dei servizi {{site.data.keyword.cloud_notm}} ![Icona link esterno](images/external_link.svg "Icona link esterno")](http://www-03.ibm.com/software/sla/sladb.nsf/sla/bm "{{site.data.keyword.cloud_notm}} - Termini dei servizi") negli SLA (service level agreement). Le reti piano Enterprise vengono fornite in **più ambienti** in data center geograficamente separati.
+- {{site.data.keyword.blockchainfull_notm}} Platform è un servizio di piattaforma su {{site.data.keyword.cloud_notm}} e tutte le offerte di adesione rispettano i termini dei servizi [{{site.data.keyword.cloud_notm}} termini dei servizi ![Icona link esterno](images/external_link.svg "Icona link esterno")](http://www-03.ibm.com/software/sla/sladb.nsf/sla/bm "{{site.data.keyword.cloud_notm}}") negli SLA (service level agreement). Le reti piano Enterprise vengono fornite in **più ambienti** in data center geograficamente separati.
 
 Per i membri che inizieranno la rete, IBM fornisce un'interfaccia grafica utente (GUI) per assistere passo dopo passo l'iniziatore della rete nelle procedure chiave per configurare la rete e fornirla. Ciò include l'invito di altri membri e l'impostazione delle regole di governance. Per ulteriori informazioni, vedi [Governance della rete piano Enterprise](/docs/services/blockchain/get_start.html#getting-started-with-enterprise-plan). Dopo che la rete è stata distribuita, è disponibile un'interfaccia grafica utente (GUI), il Monitoraggio della rete, per monitorare lo stato e l'attività della rete, gestire le attività di rete chiave tra cui le nuove distribuzioni, l'aggiunta o la rimozione di membri, il ciclo di vita del chaincode e la gestione dei canali e per cercare assistenza tecnica. Per ulteriori informazioni, consulta [Utilizzo del Monitoraggio della rete](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard).
 
-Registrati ora per la tua [adesione a {{site.data.keyword.blockchainfull_notm}}![Icona link esterno](images/external_link.svg "Icona link esterno")](https://console.bluemix.net/catalog/services/blockchain?env_id=ibm:yp:us-south&taxonomyNavigation=apps).
+Registrati ora per la tua [adesione a {{site.data.keyword.blockchainfull_notm}}![Icona link esterno](images/external_link.svg "Icona link esterno")](https://cloud.ibm.com/catalog/services/ibm-blockchain-5-prod).
 
 {{site.data.keyword.blockchainfull_notm}} Platform è sviluppato con componenti Hyperledger Fabric chiave, che includono un'Autorità di certificazione (CA) e almeno 1 peer (massimo 6).  Piano Enterprise fornisce anche un servizio ordini Kafka con tolleranza di errori anomali per i membri della rete.
 

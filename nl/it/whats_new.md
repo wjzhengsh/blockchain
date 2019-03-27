@@ -2,7 +2,10 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
+
 ---
 
 {:new_window: target="_blank"}
@@ -16,8 +19,6 @@ lastupdated: "2019-02-08"
 
 # Novità
 {: #whats-new}
-
-***[Questa pagina è utile? Faccelo sapere.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 ## 8 febbraio 2019
 {: #whats-new-2-08-2019}
@@ -42,12 +43,12 @@ lastupdated: "2019-02-08"
 *	Connetti facilmente un singolo peer a molteplici reti del settore
 *	Inizia in piccolo e, man mano che cresci, paghi per quello che usi senza investimenti iniziali ed esegui facilmente un upgrade utilizzando Kubernetes.
 
-- Ulteriori informazioni su {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta sono disponibili in [Informazioni su {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta](/docs/services/blockchain/howto/ibp-console.html#ibp-console-overview).
-- Le istruzioni su come distribuire la release 2.0 beta gratuita in un cluster del servizio {{site.data.keyword.IBM_notm}} Kubernetes sono disponibili in [Introduzione a {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks).
+- Ulteriori informazioni su {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta sono disponibili in [Informazioni su {{site.data.keyword.blockchainfull_notm}} Platform 2.0](/docs/services/blockchain/howto/ibp-console.html#ibp-console-overview).
+- Le istruzioni su come distribuire la release 2.0 beta gratuita in un cluster del servizio {{site.data.keyword.IBM_notm}} Kubernetes sono disponibili in [Introduzione a {{site.data.keyword.blockchainfull_notm}} Platform 2.0](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks).
 - Delle nuove esercitazioni per utilizzare {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta sono disponibili nella sottosezione **{{site.data.keyword.blockchainfull_notm}} Platform 2.0** sotto la categoria **COME**.
-  * [L'esercitazione relativa alla creazione di una rete](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network) ti guida attraverso il processo di hosting di una rete mediante la creazione di un ordinante e di un peer.
+  * L'[Esercitazione: crea una rete](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network) ti guida attraverso il processo di hosting di una rete creando un ordinante e un peer.
   * [L'esercitazione relativa all'unione a una rete](/docs/services/blockchain/howto/ibp-console-join-network.html#ibp-console-join-network) spiega come unirsi a una rete esistente creando un peer e unendolo a un canale.
-  * [L'esercitazione relativa alla distribuzione di uno smart contract sulla rete](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts) fornisce informazioni su come scrivere uno smart contract e distribuirlo sulla tua rete.
+  * [Distribuire uno smart contract sulla rete](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts) fornisce informazioni su come scrivere uno smart contract e distribuirlo sulla tua rete.
 - L'offerta {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta è basata su Hyperledger Fabric v1.4 e supporta il gossip peer-to-peer, il rilevamento dei servizi e i dati privati. Visita questo [argomento](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-private-data) per ulteriori informazioni su come configurare i dati privati sulla tua rete.
 
 - L'estensione {{site.data.keyword.blockchainfull_notm}} Visual Studio Code è disponibile dal Visual Studio Code Marketplace. Gli sviluppatori possono utilizzare l'estensione per creare, testare e distribuire gli smart contract ad un'istanza di Hyperledger Fabric. L'estensione è compatibile con Hyperledger Fabric 1.3 e successive. Per informazioni sull'utilizzo dell'estensione VS Code, vedi [Strumenti per smart contract](/docs/services/blockchain/vscode-extension.html#develop-vscode).  

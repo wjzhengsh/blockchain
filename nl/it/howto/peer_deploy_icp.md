@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -18,9 +20,6 @@ lastupdated: "2019-02-08"
 # Distribuzione dei peer in {{site.data.keyword.cloud_notm}} Private
 {: #icp-peer-deploy}
 
-
-***[Questa pagina è utile? Faccelo sapere.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 Le seguenti istruzioni descrivono come distribuire un peer {{site.data.keyword.blockchainfull}} Platform su {{site.data.keyword.cloud_notm}} Private. Queste istruzioni ti consentono di connetterti a {{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}} Private. Se vuoi collegare un peer a una rete del piano Starter o Enterprise su {{site.data.keyword.cloud_notm}}, vedi [Distribuzione dei peer per il collegamento al piano Starter o Enterprise](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy).
 {:shortdesc}
 
@@ -34,19 +33,19 @@ Assicurati che il sistema {{site.data.keyword.cloud_notm}} Private soddisfi i re
 
 | Componente | CPU virtuale | RAM | Disco per l'archiviazione di dati |
 |-----------|------|-----|-----------------------|
-| Peer | 2 | 2 GB | 50 GB con capacità di espansione. |
-| CouchDB per ogni peer | 2| 2 GB |50 GB con capacità di espansione. |
+| Peer | 2 | 2 GB | 50 GB con capacità di espansione |
+| CouchDB for Peer | 2| 2 GB |50 GB con capacità di espansione |
 
  **Note:**
  - Una CPU virtuale è un core virtuale assegnato a una macchina virtuale o un core di processore fisico se il server non è partizionato per le macchine virtuali. Devi considerare i requisiti di CPU virtuale quando decidi il VPC (virtual processor core) per la tua distribuzione in {{site.data.keyword.cloud_notm}} Private. VPC è un'unità di misura per determinare il costo di licenza dei prodotti IBM. Per ulteriori informazioni sugli scenari per decidere il VPC, vedi [Virtual processor core (VPC) ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/en/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_virtual_processor_core_licenses.html "IBM Licence Metric Tool 9.2").
- - Questi livelli minimi di risorse sono sufficienti per l'esecuzione di test e la sperimentazione. Per un ambiente con un grande volume di transazioni, è importante assegnare una quantità sufficientemente grande di archiviazione; ad esempio 250 GB per il tuo peer. La quantità di archiviazione da utilizzare dipenderà dal numero di transazioni e dal numero di firme richiesti dalla tua rete. Se stai per esaurire l'archiviazione sul tuo peer od ordinante, devi distribuire un nuovo peer od ordinante con un file system più grande e lasciare che esegua la sincronizzazione tramite i tuoi altri componenti sugli stessi canali.
+ - Questi livelli minimi di risorse sono sufficienti per l'esecuzione di test e la sperimentazione. Per un ambiente con un grande volume di transazioni, è importante assegnare una quantità sufficientemente grande di archiviazione; ad esempio 250 GB per il tuo peer. La quantità di archiviazione da utilizzare dipenderà dal numero di transazioni e dal numero di firme richiesti dalla tua rete. Se stai per esaurire l'archiviazione sul tuo peer o ordinante, devi distribuire un nuovo peer o ordinante con un file system più grande e consentirgli di eseguire la sincronizzazione tramite i tuoi altri componenti sugli stessi canali.
 
 ## Archiviazione
 {: #icp-peer-deploy-storage}
 
 Devi determinare l'archiviazione che verrà utilizzata dal tuo peer. Se utilizzi le impostazioni predefinite, il grafico Helm creerà una nuova attestazione di volume persistente (PVC) di 8 Gi con il nome di `my-data-pvc` per i tuoi dati del peer e un'altra PVC di 8 Gi con il nome di `statedb-pvc` per il tuo database dello stato.
 
-Se non vuoi utilizzare le impostazioni di archiviazione predefinite, assicurati che venga configurata una *nuova* `storageClass` durante l'installazione di {{site.data.keyword.cloud_notm}} Private, altrimenti l'amministratore di sistema Kubernetes deve creare una nuova storageClass prima della tua distribuzione.
+Se non vuoi utilizzare le impostazioni di archiviazione predefinite, assicurati che venga configurata una nuova `storageClass` durante l'installazione di {{site.data.keyword.cloud_notm}} Private o che l'amministratore di sistema Kubernetes crei una `storageClass` prima che tu distribuisca {{site.data.keyword.blockchainfull_notm}} Platform.
 
 Puoi scegliere di distribuire il peer sulle piattaforme amd64 o s390x. Tuttavia, tieni presente che [il provisioning dinamico ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://kubernetes.io/docs/concepts/storage/dynamic-provisioning/ "Provisioning del volume dinamico") è disponibile solo per i nodi amd64 in {{site.data.keyword.cloud_notm}} Private. Se il tuo cluster include una combinazione di nodi di lavoro s390x e amd64, non è possibile utilizzare il provisioning dinamico.
 
@@ -67,7 +66,7 @@ Se non utilizzi il provisioning dinamico, [i volumi persistenti ![Icona link est
 ## Creazione del segreto di configurazione del peer
 {: #icp-peer-deploy-config-file}
 
-Per distribuire un peer, devi creare un file di configurazione che contiene le informazioni importanti sull'identità del peer e la tua CA (Certificate Authority). Successivamente, devi passare questo file al grafico Helm durante la configurazione utilizzando un oggetto [segreto Kubernetes ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://kubernetes.io/docs/concepts/configuration/secret/). Questo file consentirà al tuo peer di ottenere i certificati di cui ha bisogno dalla CA (Certificate Authority) per aderire a una rete blockchain. Contiene inoltre un certificato di amministrazione che ti consentirà di utilizzare il tuo peer. Attieniti alle istruzioni per l'[utilizzo della CA per distribuire un ordinante o un peer](/docs/services/blockchain/howto/CA_operate.html#ca-operate-deploy-orderer-peer) prima di configurare il peer.
+Per distribuire un peer, devi creare un file di configurazione che contiene le informazioni importanti sull'identità del peer e la tua CA (Certificate Authority). Successivamente, devi passare questo file al grafico Helm durante la configurazione utilizzando un oggetto [segreto Kubernetes ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://kubernetes.io/docs/concepts/configuration/secret/). Questo file consentirà al tuo peer di ottenere i certificati di cui ha bisogno dalla CA (Certificate Authority) per aderire a una rete blockchain. Contiene inoltre un certificato di gestione che ti consentirà di utilizzare il tuo peer. Attieniti alle istruzioni per l'[utilizzo della CA per distribuire un ordinante o un peer](/docs/services/blockchain/howto/CA_operate.html#ca-operate-deploy-orderer-peer) prima di configurare il peer.
 
 Devi fornire i nomi host CSR al file di configurazione. È incluso il nome host del servizio (`service host name`) che sarà lo stesso valore del nome della release Helm (`helm release name`) che specifichi durante la distribuzione. Ad esempio, se specifichi un nome della release Helm (`helm release name`) di `org1peer1`, ricorda di inserire il seguente valore nella sezione `"csr"` del file:
 ```
@@ -112,11 +111,11 @@ Salva l'output risultante per il seguente passo 4.
 3. Nella scheda **Generale**, completa i seguenti campi:
   - **Nome:** fornisci al tuo segreto un nome univoco all'interno del tuo cluster. Utilizzerai questo nome quando distribuisci il tuo peer. Il nome deve essere tutto in minuscolo.  
   **Nota:** quando distribuisci un peer, viene automaticamente generato un nuovo segreto dalla distribuzione con il nome di `<helm_release_name>-secret`. Pertanto, quando dai un nome al tuo segreto, assicurati che sia diverso da `<helm_release_name>-secret` . Altrimenti, la distribuzione del grafico Helm avrà esito negativo perché il segreto che tenta di creare esiste già.
-  - **Spazio dei nomi** lo spazio dei nomi per aggiungere il tuo segreto. Seleziona lo spazio dei nomi (`namespace`) a cui vuoi distribuire il tuo peer.
+  - **Namespace:** lo spazio dei nomi per aggiungere il tuo segreto. Seleziona lo spazio dei nomi (`namespace`) a cui vuoi distribuire il tuo peer.
   - **Tipo:** immetti il valore `Opaque`.
 
 4. Fai clic sulla scheda **Dati** nel pannello di navigazione di sinistra di questa finestra.
-  - Nei campi `Nome`, specifica `secret.json` e nel campo del valore incolla la stringa codificata `base64` del tuo file di configurazione.
+  - Nei campi `Name`, specifica `secret.json` e nel campo del valore incolla la stringa codificata `base64` del tuo file di configurazione.
 
 5. (Facoltativo) Se pensi di utilizzare `CouchDB` come tuo database dello stato, devi aggiungere due ulteriori valori a questo oggetto segreto. Nella scheda **Dati**, fai clic sul pulsante **Aggiungi dati** per aggiungere l'ID utente e la password CouchDB da utilizzare per il database quando viene distribuito il contenitore.
   1. Crea il tuo nome utente e la tua password e codifica i valori nel formato base64. Immetti il seguente comando in una finestra di terminale e sostituisci `admin` e `adminpw` con i valori che vuoi utilizzare.
@@ -259,7 +258,7 @@ Una volta che hai terminato il tuo lavoro con i parametri di configurazione, fai
 
 Se scorri in basso fino alla sezione `Note`, sono presenti delle informazioni importanti che utilizzerai per [utilizzare il tuo peer](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate).
 
-## Visualizzazione dei log di peer
+## Visualizzazione dei log del peer
 {: #icp-peer-deploy-view-logs}
 
 È possibile visualizzare i log del peer utilizzando i [comandi della CLI kubectl](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-kubectl-configure) o tramite [Kibana ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.elastic.co/products/kibana "Your window into the Elastic Search"). Per ulteriori informazioni, consulta queste [istruzioni per l'accesso ai log](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-view-logs).

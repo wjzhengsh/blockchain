@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -17,10 +19,6 @@ lastupdated: "2019-02-08"
 
 # Sviluppo di applicazioni con gli SDK Fabric
 {: #dev-app}
-
-
-***[Questa pagina è utile? Faccelo sapere.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 
 {{site.data.keyword.blockchainfull}} Platform fornisce le API che puoi utilizzare per connettere applicazioni alla tua rete blockchain. Puoi utilizzare gli endpoint API di rete nel profilo di connessione per richiamare il tuo chaincode e aggiornare o interrogare tramite query il libro mastro specifico del canale sui tuoi peer. Puoi anche utilizzare le API nella [IU Swagger](/docs/services/blockchain/howto/swagger_apis.html#ibp-swagger) per gestire i nodi, i canali e i membri della tua rete.
 {:shortdesc}
@@ -627,17 +625,17 @@ Evita di usare il chaincode per le query che produrranno una scansione dell'inte
 ## Host di applicazioni
 {: #dev-app-host-app}
 
-Puoi ospitare la tua applicazione sul tuo file system locale oppure eseguirne il push a {{site.data.keyword.Bluemix_notm}}. Per eseguire il push della tua applicazione a{{site.data.keyword.Bluemix_notm}}, completa la seguente procedura:
+Puoi ospitare la tua applicazione sul tuo file system locale oppure eseguirne il push a {{site.data.keyword.cloud_notm}}. Per eseguire il push della tua applicazione a{{site.data.keyword.cloud_notm}}, completa la seguente procedura:
 1. Installa il [programma di installazione della riga di comando Cloud Foundry ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://github.com/cloudfoundry/cli/releases).  Verifica la tua installazione con il comando `cf`.
     * Se la tua installazione viene eseguita correttamente, dovresti vedere un bel po' di output di testo nel tuo terminale.
     * Se vedi "command not found", la tua installazione non è riuscita o CF non è stato aggiunto al tuo percorso di sistema.
-2. Configura l'endpoint API ed esegui l'accesso con i tuoi ID e password {{site.data.keyword.Bluemix_notm}} immettendo i seguenti comandi:
+2. Configura l'endpoint API ed esegui l'accesso con i tuoi ID e password {{site.data.keyword.cloud_notm}} immettendo i seguenti comandi:
     ```
     > cf api https://api.ng.bluemix.net
     > cf login
     ```
     {:codeblock}
-3. Accedi alla directory della tua applicazione ed esegui il push della tua applicazione immettendo il seguente comando. Questa operazione può richiedere diversi minuti, a seconda della dimensione della tua applicazione. Puoi visualizzare i log da {{site.data.keyword.Bluemix_notm}} nel tuo terminale. I log cessano quando l'applicazione viene avviata correttamente.
+3. Accedi alla directory della tua applicazione ed esegui il push della tua applicazione immettendo il seguente comando. Questa operazione può richiedere diversi minuti, a seconda della dimensione della tua applicazione. Puoi visualizzare i log da {{site.data.keyword.cloud_notm}} nel tuo terminale. I log cessano quando l'applicazione viene avviata correttamente.
 	```
 	> cf push IL_NOME_DELLA_TUA_APPLICAZIONE_QUI
 	```

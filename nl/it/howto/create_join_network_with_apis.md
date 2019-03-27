@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -15,10 +17,6 @@ lastupdated: "2019-02-08"
 # Creazione o unione di una rete con le API Swagger
 {: #swagger-network}
 
-
-***[Questa pagina è utile? Faccelo sapere.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
-
 {{site.data.keyword.blockchainfull}} Platform presenta diverse API REST che puoi utilizzare per creare o unire una rete blockchain in {{site.data.keyword.cloud_notm}}. Puoi provare queste API utilizzando la [IU Swagger](/docs/services/blockchain/howto/swagger_apis.html#ibp-swagger) associata alla tua rete.
 {:shortdesc}
 
@@ -26,11 +24,11 @@ lastupdated: "2019-02-08"
 ## Richiamo delle credenziali di autenticazione di base della API
 {: #swagger-network-retrieve-id-token}
 
-Prima di iniziare, devi creare un'istanza del servizio [{{site.data.keyword.blockchainfull_notm}} Platform ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://console.bluemix.net/catalog/services/blockchain) con piano Starter o piano Enterprise in {{site.data.keyword.cloud_notm}}.
+Prima di iniziare, devi creare un'istanza del servizio [{{site.data.keyword.blockchainfull_notm}} Platform ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://cloud.ibm.com/catalog/services/ibm-blockchain-5-prod) con piano Starter o piano Enterprise in {{site.data.keyword.cloud_notm}}.
 
 Per utilizzare le API Swagger per creare o unire una rete, hai bisogno delle credenziali di autenticazione di base per assicurarti di avere l'accesso all'istanza del servizio in {{site.data.keyword.cloud_notm}}.
 
-1. Nel tuo [dashboard {{site.data.keyword.cloud_notm}} ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://console.bluemix.net/dashboard/apps/), apri l'istanza del servizio che hai creato.
+1. Nel tuo [dashboard {{site.data.keyword.cloud_notm}} ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://cloud.ibm.com/resources), apri l'istanza del servizio che hai creato.
 2. Fai clic su **Credenziali del servizio** dal navigator di sinistra.
 3. Fai clic sul pulsante "Nuova credenziale" nella pagina **Credenziali del servizio** per creare una nuova credenziale.
     1. Fornisci un nome alla credenziale, ad esempio *CreateJoin*.
@@ -53,13 +51,13 @@ Per utilizzare le API Swagger per creare o unire una rete, hai bisogno delle cre
 
     ```
     {
-      "PeerOrg1": {
-        "url": "https://ibmblockchain_xyz.ng.bluemix.net",
-        "network_id": "92d511f7e587413c8a9848fdae595ef2",
-        "key": "PeerOrg1",
-        "secret": "T8eUA65l-qtznUHL10KzQ7IK-3BVWWfHu5-hpCiDdXCRQyNfeyIm1p5NT7g17l6U"
-      }
-    }
+      "org1": {
+        "url": "https://ibp-sp.us-south.ibm-blockchain-5-prod.cloud.ibm.com",
+        "network_id": "n5edf19260c998940c5933daca2be76974a",
+        "key": "org1",
+        "secret": "A8YeuUuNvKVbN5cVGOlwprpaaHCVxYiP0uEN0fviQB2W9_ldJLtMSOSHqkUpkqysMA"
+        }
+    }    
     ```
 
     **Nota**: per la API **Invita**, `key` viene utilizzato come ID utente di autenticazione di base e `secret` come password.

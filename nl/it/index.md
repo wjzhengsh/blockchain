@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -18,8 +20,6 @@ lastupdated: "2019-02-08"
 # Introduzione a {{site.data.keyword.blockchainfull_notm}} Platform
 {: #get-started-ibp}
 
-***[Questa pagina è utile? Faccelo sapere.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 {{site.data.keyword.blockchainfull}} Platform fornisce un'offerta Baas (blockchain-as-a-service) gestita e full-stack che ti consente di distribuire componenti blockchain in ambienti a tua scelta. L'ambiente può essere {{site.data.keyword.cloud_notm}}, in loco tramite {{site.data.keyword.cloud_notm}} Private e cloud di terze parti, come AWS (Amazon Web Services). In questa esercitazione, ti mostreremo il processo generale di configurazione di una rete blockchain di base con {{site.data.keyword.blockchainfull_notm}} Platform.
 {:shortdesc}
 
@@ -34,7 +34,7 @@ lastupdated: "2019-02-08"
 | **Offerte** | **Cos'è incluso** | **Politica di fatturazione** | **Piattaforma cloud** |
 | ------------------------- |-----------|-----------|-----------|-----------|
 | [**piano Starter**](/docs/services/blockchain/starter_plan.html#starter-plan-about) | Rete gestita da {{site.data.keyword.IBM_notm}} con livello di servizio di base, ambiente di sviluppo e test. | Sottoscrizione mensile | {{site.data.keyword.cloud_notm}} |
-| [**piano Enterprise**](/docs/services/blockchain/enterprise_plan.html#enterprise-plan-about) |Rete gestita da {{site.data.keyword.IBM_notm}} con livelli di servizio avanzati e ambiente pronto per la produzione enterprise. | Sottoscrizione mensile | {{site.data.keyword.cloud_notm}} |
+| [**piano Enterprise**](/docs/services/blockchain/enterprise_plan.html#enterprise-plan-about) | Rete gestita da {{site.data.keyword.IBM_notm}} con livelli di servizio avanzati e ambiente pronto per la produzione enterprise. | Sottoscrizione mensile | {{site.data.keyword.cloud_notm}} |
 | [**{{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta**](/docs/services/blockchain/howto/ibp-console.html#ibp-console-overview) | Console {{site.data.keyword.blockchainfull_notm}} Platform per distribuire e gestire i componenti blockchain nel tuo cluster {{site.data.keyword.cloud_notm}} Kubernetes. | Gratuito per Beta | {{site.data.keyword.cloud_notm}} |
 | [**{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private**](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-about) | Grafici Helm CA, Ordinante e Peer distribuibili | [Prezzi VPC](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-about-pricing) e Community Edition gratuita | {{site.data.keyword.cloud_notm}} Private |
 | [**{{site.data.keyword.blockchainfull_notm}} Platform for AWS**](/docs/services/blockchain/howto/remote_peer.html#remote-peer-aws-about) | Template Quick Start AWS per distribuire i peer remoti che si trovano fuori da {{site.data.keyword.cloud_notm}} | Gratuito | AWS |

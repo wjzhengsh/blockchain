@@ -1,8 +1,11 @@
 ---
 
 copyright:
-  years: 2017, 2018, 2019
-lastupdated: "2019-02-08"
+  years: 2017, 2019
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
+
 ---
 
 {:new_window: target="_blank"}
@@ -14,8 +17,6 @@ lastupdated: "2019-02-08"
 
 # Hyperledger Fabric
 {: #hyperledger-fabric}
-
-***[Questa pagina è utile? Faccelo sapere.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 La rete {{site.data.keyword.blockchainfull}} è sviluppata sullo stack Hyperledger Fabric, uno dei progetti blockchain nell'ambito del progetto Hyperledger della Linux Foundation. Si tratta di una rete "con autorizzazioni" in cui tutti gli utenti e i componenti hanno delle identità note. Una logica di firma/verifica è implementata a ogni punto di contatto delle comunicazioni e le transazioni sono consentite tramite una serie di controlli di approvazione e di convalida. In tale senso, è molto diversa dalle implementazioni blockchain tradizionali che promuovono l'anonimato e sono costrette a fare affidamento sulle criptovalute e su pesanti obblighi di elaborazione per convalidare le transazioni.
 {:shortdesc}
@@ -51,9 +52,9 @@ Per ulteriori informazioni sul componente MSP (Membership Services Provider) di 
 ## Servizio ordini
 {: #hyperledger-fabric-ordering-service}
 
-In altre blockchain distribuite, come Ethereum e Bitcoin, non c'è alcuna autorità centrale che ordina le transazioni e le invia ai peer. Hyperledger Fabric, la blockchain su cui è basato {{site.data.keyword.blockchainfull_notm}} Platform, funziona diversamente. Presenta un nodo denominato **ordinante**.
+In altre blockchain distribuite, come Ethereum e Bitcoin, non esiste un'autorità centrale che ordini le transazioni e le invii ai peer. Hyperledger Fabric, la blockchain su cui si basa {{site.data.keyword.blockchainfull_notm}} Platform, funziona in modo diverso. Dispone di un nodo chiamato **ordinante**.
 
-Gli ordinanti sono componenti chiave in una rete perché eseguono alcune funzioni essenziali.
+Gli ordinanti sono componenti chiave di una rete perché svolgono alcune funzioni essenziali:
 
 - Essi, letteralmente, **ordinano** i blocchi di transazioni che vengono inviati ai peer per essere scritti nei loro libri mastro e questo processo è detto "ordinazione". Se queste transazioni fossero state invece raccolte e ordinate presso i peer stessi, sarebbe aumentata la possibilità di un peer che scrive una transazione nel suo libro mastro laddove un altro peer non l'ha fatto, creando quindi una biforcazione dello stato.
 - Mantengono il **canale del sistema ordinante**, il posto in cui risiede il **consorzio**, l'elenco di organizzazioni peer a cui è consentito creare canali.
@@ -92,8 +93,8 @@ La **Figura 1** illustra il flusso delle transazioni su una rete blockchain Hype
 
 Su una rete Hyperledger Fabric, il flusso di dati per le query e le transazioni è iniziato da un'applicazione lato client inoltrando una richiesta di transazione a un peer su un canale. Il flusso di dati iniziale attraverso la rete è comune sia alle query che alle transazioni:
 
-1. Utilizzando le API disponibili nell'SDK, un'applicazione client firma e inoltra una proposta di transazione agli appropriati peer di approvazione sul canale specificato.  Questa proposta di transazione iniziale è una **richiesta** di approvazione.
-2. Ciascun peer sul canale verifica l'identità e l'autorizzazione del client che ha eseguito l'inoltro e (se valide) esegue il chaincode specificato sugli input forniti. In base ai risultati della transazione e alla politica di approvazione per il chaincode richiamato, ciascun peer restituisce una risposta affermativa (YES) o negativa (NO firmata all'applicazione.  Ogni risposta affermativa (YES) firmata è un'**approvazione** della transazione.
+1. Utilizzando le API disponibili nell'SDK, un'applicazione client firma e inoltra una proposta di transazione agli appropriati peer di approvazione sul canale specificato. Questa proposta di transazione iniziale è una **richiesta** di approvazione.
+2. Ciascun peer sul canale verifica l'identità e l'autorizzazione del client che ha eseguito l'inoltro e (se valide) esegue il chaincode specificato sugli input forniti. In base ai risultati della transazione e alla politica di approvazione per il chaincode richiamato, ciascun peer restituisce una risposta affermativa (YES) o negativa (NO firmata all'applicazione. Ogni risposta affermativa (YES) firmata è un'**approvazione** della transazione.
 
 	A questo punto nel flusso delle transazioni, il processo diverge per le query e le transazioni. Se la proposta ha richiamato una funzione query nel chaincode, l'applicazione restituisce i dati al client. Se la proposta ha richiamato una funzione nel chaincode per aggiornare il libro mastro, l'applicazione continua con i seguenti passi:
 3. L'applicazione inoltra la transazione, che include l'insieme di lettura/scrittura e le approvazioni, al **servizio ordini**.

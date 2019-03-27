@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018.2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -15,10 +17,6 @@ lastupdated: "2019-02-08"
 
 # Distribuzione di applicazioni di esempio
 {: #deploying-sample-applications}
-
-
-***[Questa pagina è utile? Faccelo sapere.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 
 {{site.data.keyword.blockchainfull}} Platform fornisce applicazioni di esempio che puoi distribuire e testare in modo da poter comprendere meglio le reti blockchain e lo sviluppo delle applicazioni.
 {:shortdesc}

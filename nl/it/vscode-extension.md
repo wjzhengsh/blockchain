@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -17,9 +19,6 @@ lastupdated: "2019-02-08"
 
 # Strumenti per smart contract
 {: #develop-vscode}
-
-***[Questa pagina è utile? Faccelo sapere.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 
 L'estensione {{site.data.keyword.blockchainfull}} Platform Visual Studio Code fornisce un ambiente in Visual Studio Code per sviluppare, assemblare e distribuire pacchetti di smart contract. L'estensione include anche dei comandi per impostare un'istanza locale preconfigurata di Hyperledger Fabric per uno sviluppo di smart contract locale semplificato.
 
@@ -129,13 +128,13 @@ L'estensione {{site.data.keyword.blockchainfull_notm}} Platform Visual Studio Co
 
 **Nota:** attualmente, l'estensione non è compatibile con il piano Enterprise di {{site.data.keyword.blockchainfull_notm}} Platform.
 
-1. Se non hai un'istanza del piano Starter di {{site.data.keyword.blockchainfull_notm}} Platform, [creane una ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://console.bluemix.net/catalog/services/blockchain).
+1. Se non hai un'istanza del piano Starter di {{site.data.keyword.blockchainfull_notm}} Platform, [creane una ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://cloud.ibm.com/catalog/services/ibm-blockchain-5-prod).
 2. Apri l'IU {{site.data.keyword.blockchainfull_notm}} Platform facendo clic su **Avvia**.
 3. Richiama il tuo profilo di connessione facendo clic su **Panoramica** > **Profilo di connessione** > **Scarica**.
 4. Genera i certificati di amministrazione richiesti facendo clic su **CA (Certificate Authority)** > **Genera certificato** e salvando il certificato e la chiave privata nel tuo file system.
 5. Aggiungi i certificati alla tua istanza del piano Starter di {{site.data.keyword.blockchainfull_notm}} Platform facendo clic su **Membri** > **Certificati** > **Aggiungi certificato** e selezionando il certificato creato nel passo precedente.
 6. In Visual Studio Code, apri la vista dell'estensione {{site.data.keyword.blockchainfull_notm}} Platform e fai clic su **Add new connection**.
-7. Immetti il nome della connessione, il percorso al profilo della connessione e seleziona un [portafoglio ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/developapps/wallet.html "Wallet") di file system esistente oppure crea un nuovo portafoglio utilizzando un certificato e una chiave privata.
+7. Immetti il nome della connessione, il percorso al profilo della connessione e seleziona un [portafoglio ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/developapps/wallet.html "Wallet") esistente sul tuo file system oppure crea un nuovo portafoglio utilizzando un certificato e una chiave privata.
 
 ### Connessione alla tua istanza Hyperledger Fabric
 {: #develop-vscode-connecting-to-own-Fabric-instance}

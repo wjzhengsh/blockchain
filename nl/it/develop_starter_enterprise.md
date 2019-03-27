@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -16,8 +18,6 @@ lastupdated: "2019-02-08"
 
 # Distribuzione delle reti di business sul piano Starter ed Enterprise
 {: #deploying-a-business-network}
-
-*[Questa pagina è utile? Faccelo sapere.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)*
 
 {{site.data.keyword.IBM}} non fornisce supporto per le reti che utilizzano Hyperledger Composer in produzione, compresi la CLI Composer, le API JavaScript, il server REST e Web Playground.
 {:note}

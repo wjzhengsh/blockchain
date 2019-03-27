@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -93,7 +95,7 @@ Per ulteriori informazioni su come utilizzare queste immagini, consulta [Adding 
 
     Se questo comando viene completato correttamente, puoi visualizzare qualcosa di simile alle seguenti informazioni:
 
-    <details><summary>Helm install output</summary>
+    <details aria-label="Details"><summary>Helm install output</summary>
     ```
     Expanding archive
     OK

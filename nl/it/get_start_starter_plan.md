@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -15,8 +17,6 @@ lastupdated: "2019-02-08"
 
 # Introduzione a piano Starter
 {: #getting-started-with-starter-plan}
-
-***[Questa pagina è utile? Faccelo sapere.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 {{site.data.keyword.blockchainfull}} Platform piano Starter ti offre una rete blockchain preconfigurata con un singolo clic. Esegue il provisioning di una rete con autorizzazioni con la configurazione di due [organizzazioni](/docs/services/blockchain/glossary.html#glossary-organization), un [peer](/docs/services/blockchain/glossary.html#glossary-peer) per ciascuna organizzazione e un [canale](/docs/services/blockchain/glossary.html#glossary-channel) per impostazione predefinita. Dopo che la rete è stata creata, puoi ridimensionare e aggiungere ulteriori organizzazioni e peer alla tua rete. Queste reti sono destinate agli utenti che non hanno esperienza con {{site.data.keyword.blockchainfull_notm}} Platform. <!--Note that it might cause extra cost if you exceed the default resource limits of two organizations and two peers.-->
 {:shortdesc}
@@ -70,7 +70,7 @@ Dopo aver formato il tuo consorzio, devi scrivere il chaincode, noto anche come 
 
 Puoi ottenere una [rete](/docs/services/blockchain/glossary.html#glossary-network) piano Starter con la configurazione predefinita immediatamente dopo che hai creato un'istanza del servizio {{site.data.keyword.blockchainfull_notm}} Platform.
 
-1. Individua il [servizio blockchain ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://console.bluemix.net/catalog/services/blockchain) nel catalogo {{site.data.keyword.cloud_notm}}.
+1. Individua il [servizio blockchain ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://cloud.ibm.com/catalog/services/ibm-blockchain-5-prod) nel catalogo {{site.data.keyword.cloud_notm}}.
     **Nota**: devi accedere con il tuo account a pagamento {{site.data.keyword.cloud_notm}}. Se non hai un account, fai clic sul pulsante **Registrati per creare**. Dopo aver creato un account gratuito, aggiornalo a un tipo **Pagamento a consumo** andando in **Gestisci** > **Fatturazione e utilizzo** > **Fatturazione** nella console {{site.data.keyword.cloud_notm}} e facendo clic su **Aggiungi carta di credito**.
 2. Scegli la regione in {{site.data.keyword.cloud_notm}} per creare la rete.
 3. Seleziona la tua organizzazione e il tuo spazio Cloud Foundry per creare la rete.
@@ -79,7 +79,7 @@ Puoi ottenere una [rete](/docs/services/blockchain/glossary.html#glossary-networ
   Ora sei pronti a usare la tua rete piano Starter con la configurazione predefinita. La rete è in esecuzione con una ordinante (noto come un servizio ordini "SOLO"), due organizzazioni, una CA e un peer per ogni organizzazione. Viene anche creato un canale predefinito.
 6. Fai clic sul pulsante **Avvia**.
 
-Puoi trovare la tua istanza del servizio blockchain nel tuo [Dashboard servizio {{site.data.keyword.Bluemix_notm}} ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://console.bluemix.net/dashboard/services "{{site.data.keyword.Bluemix_notm}} dashboard servizio").
+Puoi trovare la tua istanza del servizio blockchain nel tuo [Dashboard del servizio {{site.data.keyword.cloud_notm}} ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://cloud.ibm.com/resources "{{site.data.keyword.cloud_notm}} - Dashboard del servizio").
 
 
 ## Invio di un invito ai membri
@@ -98,7 +98,7 @@ Puoi invitare altre [organizzazioni](/docs/services/blockchain/glossary.html#glo
 
 Se sei invitato da un iniziatore di rete, riceverai una notifica email con le istruzioni su come aderire alla rete. Attieniti alle istruzioni nell'email e diventerai uno dei membri nella rete.
 
-Devi creare un'istanza del servizio [{{site.data.keyword.blockchain}} Platform ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://console.bluemix.net/catalog/services/blockchain) con l'opzione di adesione piano Starter in {{site.data.keyword.cloud_notm}}.
+Devi creare un'istanza del servizio [{{site.data.keyword.blockchainfull_notm}} Platform ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://cloud.ibm.com/catalog/services/ibm-blockchain-5-prod) con l'opzione di adesione piano Starter in {{site.data.keyword.cloud_notm}}.
 
 1. Accedi con il tuo account {{site.data.keyword.cloud_notm}}. Se non hai un account, fai clic sul pulsante **Registrati per creare**.
 2. Seleziona l'organizzazione Cloud Foundry dove vuoi memorizzare la tua rete {{site.data.keyword.blockchain}}.
@@ -106,7 +106,7 @@ Devi creare un'istanza del servizio [{{site.data.keyword.blockchain}} Platform !
 4. Fai clic sul pulsante **Crea**. La pagina dell'istanza del servizio si apre con un pannello di benvenuto a comparsa. Nota: puoi scegliere di aderire a una rete o continuare a crearne una tua. Per creare una rete, vedi il passo 4 in [Creazione di una rete](/docs/services/blockchain/get_start_starter_plan.html#getting-started-with-starter-plan-creating-a-network).
 5. Nel pannello di benvenuto, scegli **Unisciti a una rete esistente**, seleziona la rete a cui aderire dall'elenco a discesa e fai clic su **Continua**.
 
-Puoi trovare la tua istanza del servizio blockchain nel dashboard del servizio [{{site.data.keyword.cloud_notm}} ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://console.bluemix.net/dashboard/services "{{site.data.keyword.cloud_notm}} - dashboard del servizio").
+Puoi trovare la tua istanza del servizio blockchain nel [Dashboard del servizio {{site.data.keyword.cloud_notm}} ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://cloud.ibm.com/resources "{{site.data.keyword.cloud_notm}} - Dashboard del servizio").
 
 
 ## Creare canali
@@ -160,7 +160,7 @@ Dopo che hai creato una rete piano Starter in {{site.data.keyword.cloud_notm}}, 
 ### Richiamo dalla pagina dell'istanza del servizio
 {: #getting-started-with-starter-plan-retrieve-service-instance}
 
-Sei nella pagina dell'istanza del servizio subito dopo aver creato un'istanza del servizio. Puoi anche fare clic sul tuo servizio nel [dashboard del servizio {{site.data.keyword.cloud_notm}} ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://console.bluemix.net/dashboard/services "{{site.data.keyword.cloud_notm}} - dashboard del servizio") per aprire la tua pagina dell'istanza del servizio.
+Sei nella pagina dell'istanza del servizio subito dopo aver creato un'istanza del servizio. Puoi anche fare clic sul tuo servizio nel [dashboard del servizio {{site.data.keyword.cloud_notm}} ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://cloud.ibm.com/resources "{{site.data.keyword.cloud_notm}} - Dashboard del servizio") per aprire la tua pagina dell'istanza del servizio.
 
 Richiama le tue credenziali del servizio attenendoti alla seguente procedura:
 1. Nella pagina dell'istanza del servizio, fai clic su **Credenziali del servizio** nel navigatore a sinistra per visualizzare la schermata "Credenziali del servizio".

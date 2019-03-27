@@ -2,7 +2,10 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
+
 ---
 
 {:new_window: target="_blank"}
@@ -16,8 +19,6 @@ lastupdated: "2019-02-08"
 
 # Richiesta di assistenza tecnica
 {: #blockchain-support}
-
-***[Questa pagina è utile? Faccelo sapere.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 {{site.data.keyword.blockchainfull}} Platform fornisce diversi modi per risolvere i problemi e richiedere assistenza, che dipendono dalle offerte {{site.data.keyword.blockchainfull_notm}} Platform che usi.
 {:shortdesc}
@@ -75,15 +76,15 @@ Per i problemi correlati al piano Starter o Enterprise, puoi inoltrare un caso d
 Se hai bisogno di assistenza con il chaincode Hyperledger Fabric, Hyperledger Composer o le tue applicazioni, utilizza le risorse della community sopra indicate o consulta [{{site.data.keyword.blockchainfull_notm}} Services ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://www.ibm.com/blockchain/services "Turn your blockchain strategy into business outcomes with {{site.data.keyword.blockchainfull_notm}} Services"). Si consiglia di utilizzare Hyperledger Composer esclusivamente per le demo e per i modelli di verifica (PoC, Proof of Concept). {{site.data.keyword.IBM_notm}} non fornisce supporto per le reti che utilizzano Hyperledger Composer in produzione, compresi la CLI Composer, le API JavaScript, il server REST e Web Playground.
 {:note}
 
-La risposta al tuo caso di supporto dipende dal tuo [Piano di supporto {{site.data.keyword.cloud_notm}} ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://console.bluemix.net/docs/get-support/index.html#support-plans "Piani di supporto").
+La risposta al tuo caso di supporto dipende dal tuo [Piano di supporto {{site.data.keyword.cloud_notm}} ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://cloud.ibm.com/docs/get-support/index.html#support-plans "Piani di supporto").
 
-- Se hai acquistato il **Supporto premium** o il **Supporto avanzato**, puoi specificare un livello di gravità nel tuo ticket da Sev-1 (Gravità 1) a Sev-4 (Gravità 4). Sev-1 è il livello più alto di gravità. I casi di supporto con i livelli di gravità più alti indicano una maggiore urgenza e riceveranno una risposta più rapidamente da parte del team di supporto. Per ulteriori informazioni, vedi le[offerte di piani di supporto di {{site.data.keyword.cloud_notm}} ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://console.bluemix.net/docs/get-support/index.html#support-plans "Piani di supporto").  
+- Se hai acquistato il **Supporto premium** o il **Supporto avanzato**, puoi specificare un livello di gravità nel tuo ticket da Sev-1 (Gravità 1) a Sev-4 (Gravità 4). Sev-1 è il livello più alto di gravità. I casi di supporto con i livelli di gravità più alti indicano una maggiore urgenza e riceveranno una risposta più rapidamente da parte del team di supporto. Per ulteriori informazioni, vedi le [Offerte di piani di supporto di {{site.data.keyword.cloud_notm}} ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://cloud.ibm.com/docs/get-support/index.html#support-plans "Piani di supporto").  
 - Se non acquisti il supporto, il tuo account Pagamento a consumo o Sottoscrizione di {{site.data.keyword.cloud_notm}} viene fornito con un piano di **Supporto di base** gratuito. In questo caso, il tuo caso di supporto verrà automaticamente registrato con una gravità 4 (Sev-4).
 
 Le **offerte Beta** sono fornite con un supporto più limitato rispetto alle release GA (Generally Available).
 - I casi di supporto sono registrati con un livello di gravità più basso, di norma Sev-4 o Sev-3.
 - Il supporto viene fornito su una base di 5 giorni a settimana, per 24 ore al giorno. Non viene fornito alcun supporto per il fine settimana.
-- Per ulteriori informazioni, vedi [il supporto {{site.data.keyword.cloud_notm}} per i servizi Beta](https://console.bluemix.net/docs/get-support/servicessupport.html#support-different-services "{{site.data.keyword.IBM_notm}} - servizio Beta").
+- Per ulteriori informazioni, vedi [Supporto {{site.data.keyword.cloud_notm}} per i servizi beta](https://cloud.ibm.com/docs/get-support/servicessupport.html#support-different-services "{{site.data.keyword.IBM_notm}} - Servizio beta").
 
 Per inoltrare un caso di supporto, attieniti alla seguente procedura:
 

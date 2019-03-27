@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -17,8 +19,6 @@ lastupdated: "2019-02-08"
 
 # Informazioni su {{site.data.keyword.blockchainfull_notm}} Platform for Amazon Web Services
 {: #remote-peer-aws-about}
-
-***[Questa pagina è utile? Faccelo sapere.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 **Nota:** il programma {{site.data.keyword.blockchainfull}} Platform Remote Peer su {{site.data.keyword.cloud_notm}} Private (Beta) è terminato. Se vuoi continuare a eseguire i peer nel tuo ambiente {{site.data.keyword.cloud_notm}} Private, utilizza invece l'offerta **{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private**. Per ulteriori informazioni, vedi [Informazioni sui peer su {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-about-peer).
 
@@ -94,7 +94,7 @@ Inoltre, le applicazioni client utilizzano gli [SDK Fabric](/docs/services/block
 
 Se la residenza dei dati all'interno del paese è un requisito per il tuo business, l'ordinante, i peer e le applicazioni client devono risiedere nello stesso paese. Quando viene creata una rete {{site.data.keyword.blockchainfull_notm}} Platform in {{site.data.keyword.cloud_notm}}, hai la possibilità di selezionare un'ubicazione per la rete. <!--For a Starter Plan network, you can select from US South, United Kingdom, and Sydney. For an Enterprise Plan network, you can select from currently available locations, which include Dallas, Frankfurt, London, Sao Paulo, Tokyo, and Toronto. -->Per ulteriori informazioni sulle regioni e sulle ubicazioni, vedi [Regioni e ubicazioni {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/reference/ibp_regions.html#ibp-regions-locations). Per ottenere la residenza dei dati in uno di questi paesi, il tuo peer deve risiedere nello stesso paese dell'ubicazione della rete di {{site.data.keyword.blockchainfull_notm}} Platform.
 
-### Un caso di utilizzo per la residenza dei dati
+### Un caso d'uso per la residenza dei dati
 {: #remote-peer-aws-about-data-res-use-case}
 
 Prendi in considerazione una rete {{site.data.keyword.blockchainfull_notm}} Platform che include l'ordinante e la CA (Certificate Authority) insieme a un consorzio di quattro organizzazioni. Le organizzazioni hanno uno o più nodi peer. Tutte e quattro le organizzazioni fanno parte di un singolo canale e tutti i componenti della rete risiedono nella regione (ad esempio Francoforte) dove è stata distribuita la rete {{site.data.keyword.blockchainfull_notm}} Platform. Infine, le applicazioni client che interagiscono con i peer risiedono anch'esse in Germania. La residenza dei dati viene mantenuta.  

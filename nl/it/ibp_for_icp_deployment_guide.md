@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -17,8 +19,6 @@ lastupdated: "2019-02-08"
 
 # Introduzione a {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private
 {: #get-started-icp}
-
-***[Questa pagina è utile? Faccelo sapere.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 {{site.data.keyword.blockchainfull}} Platform for {{site.data.keyword.cloud_notm}} Private consente agli utenti di distribuire CA (Certificate Authority, Autorità di certificazione), ordinanti e peer su x86, LinuxONE e IBM Z utilizzando grafici Helm Kubernetes in un ambiente in loco, come ad esempio {{site.data.keyword.cloud_notm}} Private, e di connetterli a componenti ospitati in più ambienti cloud. {{site.data.keyword.cloud_notm}} Private è una piattaforma applicativa per lo sviluppo e la gestione di applicazioni in loco e inserite nel contenitore. È un ambiente integrato per la gestione di contenitori che includono l'orchestrazione del contenitore Kubernetes, un registro delle immagini privato , una console di gestione e dei framework di monitoraggio.
 {:shortdesc}

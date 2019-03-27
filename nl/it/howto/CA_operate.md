@@ -2,7 +2,10 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
+
 ---
 
 {:new_window: target="_blank"}
@@ -17,12 +20,10 @@ lastupdated: "2019-02-08"
 # Utilizzo di una CA (Certificate Authority) su {{site.data.keyword.cloud_notm}} Private
 {: #ca-operate}
 
-***[Questa pagina è utile? Faccelo sapere.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
 Le Autorità di certificazione (CA, Certificate Authority) forniscono le identità sulla rete. Una CA può essere considerata in modo simile a un notaio pubblicamente affidabile e viene utilizzata per stabilire la fiducia tra più parti. A ogni entità nella rete viene fornito un certificato che una CA root firma per incapsulare l'identità digitale dell'entità. Questo certificato è la radice di attendibilità per tutte le operazioni di firma e di verifica eseguite sulla rete.
 {:shortdesc}
 
-Ogni organizzazione in una rete blockchain a più cloud dovrebbe distribuire la propria CA. La CA della tua organizzazione firmerà le richieste per i componenti utilizzati dall'organizzazione, come ad esempio il servizio ordini, i peer o le applicazioni. Pertanto, devi distribuire la tua CA prima di qualsiasi altro componente.
+Ogni organizzazione in una rete blockchain a più cloud dovrebbe distribuire la propria CA. La CA della tua organizzazione firmerà le richieste per i componenti utilizzati dalla tua organizzazione, come ad esempio il servizio di ordinazione, i peer o le applicazioni. Pertanto, devi distribuire la tua CA prima di qualsiasi altro componente.
 
 Devi eseguire alcuni passi preliminari per utilizzare la tua CA (Certificate Authority):
 
@@ -51,16 +52,16 @@ Sia che tu stia fondando o aderendo a una rete, devi completare questi passi pre
 
 Devi utilizzare lo strumento di riga di comando **kubectl** per stabilire una connessione al contenitore CA che viene eseguito in {{site.data.keyword.cloud_notm}} Private.
 
-1. Accedi alla IU del tuo cluster {{site.data.keyword.cloud_notm}} Private. Passa alla scheda **Strumenti di riga comandi** e fai clic su **CLI di Cloud Private**. Vedrai i seguenti strumenti che è possibile scaricare.
+1. Accedi all'IU del tuo cluster {{site.data.keyword.cloud_notm}} Private. Passa alla scheda **Strumenti di riga comandi** e fai clic su **CLI di Cloud Private**. Vedrai i seguenti strumenti che puoi scaricare.
 
-   * Installa la CLI e i plugin IBM Cloud Private
+   * Installa i plug-in e la CLI di IBM Cloud Private
    * Installa la CLI Kubectl
    * Installa Helm
    * Installa la CLI Istio
 
-  Per utilizzare una CA, devi utilizzare i primi **tre** strumenti, tra cui Helm è facoltativo. Fai clic su ognuno di essi ed esegui i comandi `curl` per il tipo di macchina che stai utilizzando. Successivamente, immetti i comandi `chmod` e `sudo mv` per ogni strumento. Il comando `chmod` modificherà l'autorizzazione della CLI in questione per renderla eseguibile e il comando `sudo mv` sposterà e rinominerà il file.
+  Per utilizzare una CA, devi utilizzare i primi **tre** strumenti, tra cui Helm è facoltativo. Fai clic su ciascuno di essi ed esegui i comandi `curl` per il tipo di macchina che stai usando. Immetti quindi i comandi `chmod` e `sudo mv` per ciascuno strumento. Il comando `chmod` modificherà le autorizzazioni della CLI in questione per renderla eseguibile e il comando `sudo mv` sposterà il file e la rinominerà.
 
-  I comandi per il primo strumento **cloudctl** possono essere simili al seguente esempio:
+  I comandi per il primo strumento, **cloudctl**, potrebbero essere simili al seguente esempio:
 
   ```
   chmod +x cloudctl-darwin-amd64<suffix of your binary>
@@ -68,7 +69,7 @@ Devi utilizzare lo strumento di riga di comando **kubectl** per stabilire una co
   ```
   {:codeblock}
 
-  I comandi per il secondo strumento **kubectl** possono essere simili al seguente esempio:
+  I comandi per il secondo strumento, **kubectl**, potrebbero essere simili al seguente esempio:
 
   ```
   chmod +x kubectl-darwin-amd64<suffix of your binary>
@@ -92,26 +93,26 @@ Devi utilizzare lo strumento di riga di comando **kubectl** per stabilire una co
 
   Sei ora pronto ad utilizzare lo strumento **kubectl** per richiamare l'URL della CA.
 
-3. Facoltativamente, se vuoi utilizzare **Helm**, completa alcuni ulteriori passi. Tieni presente che l'installazione di Helm è facoltativa e non hai bisogno di utilizzarlo in queste istruzioni. Tuttavia, può essere utile per gestire le tue release Helm e creare i tuoi propri archivi da distribuire in {{site.data.keyword.cloud_notm}} Private.
+3. Facoltativamente, se vuoi utilizzare **Helm**, completa qualche altro passo. Nota: l'installazione di Helm è facoltativa e non hai bisogno di utilizzarlo in queste istruzioni. Può tuttavia essere utile per gestire le tue release Helm e per creare dei tuoi archivi da distribuire in {{site.data.keyword.cloud_notm}} Private.
 
   1. Fai clic su "Installa Helm" ed esegui il comando `curl` dall'IU {{site.data.keyword.cloud_notm}} Private.
-  2. Decomprimi il file `tar` immettendo il seguente comando:  
+  2. Decomprimi il file `tar` eseguendo questo comando:  
     ```
     tar -xzvf helm-darwin-amd64<suffix>
     ```
     {:codeblock}
-  3. Esegui il comando `sudo mv` accodando `/helm` a `darwin-amd64`. Tieni presente che non devi eseguire il comando `chmod` per Helm. Ad esempio:  
+  3. Esegui il comando `sudo mv` accodando `/helm` a `darwin-amd64`. Nota: non hai bisogno di eseguire il comando `chmod` per Helm. Ad esempio:  
     ```
     sudo mv darwin-amd64/helm/ /usr/local/bin/helm
     ```
     {:codeblock}
 
-  Puoi eseguire il comando `helm help` per confermare che Helm sia stato installato correttamente.
+  Puoi eseguire il comando `helm help` per confermare che Helm è installato correttamente.
 
 ### Richiamo del tuo URL della CA (Certificate Authority)
 {: #ca-operate-url}
 
-Devi indicare l'URL della CA per le richieste per generare i certificati o la registrazione con una nuova identità. Puoi trovare l'URL della CA utilizzando l'IU della console {{site.data.keyword.cloud_notm}} Private. Dovrai essere un [Amministratore del cluster ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Cluster administrator roles and actions") per completare le seguenti istruzioni:
+Devi indicare l'URL della CA per le richieste per generare i certificati o la registrazione con una nuova identità. Puoi trovare l'URL della CA utilizzando l'IU della console {{site.data.keyword.cloud_notm}} Private. Per completare questa procedura, dovrai essere un [amministratore del cluster ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Ruoli e azioni dell'amministratore del cluster"):
 
 1. Accedi alla tua console {{site.data.keyword.cloud_notm}} Private e fai clic sull'icona **Menu** nell'angolo superiore sinistro.
 2. Fai clic su **Workload** > **Release Helm**.
@@ -243,7 +244,7 @@ Puoi generare i certificati solo utilizzando le identità che sono state registr
 
   Il comando `enroll` genera una serie completa di certificati, nota come cartella MSP (Membership Service Provider), ubicata nella directory in cui hai impostato il percorso su `$HOME` per il tuo client CA Fabric. Ad esempio, `$HOME/fabric-ca-client/ca-admin`. Per ulteriori informazioni sulle MSP e su cosa la cartella MSP contiene, consulta [MSP (Membership Service Provider)](/docs/services/blockchain/howto/CA_operate.html#ca-operate-msp).
 
-  Se il comando `enroll` ha esito negativo, consulta l'[argomento Risoluzione dei problemi](/docs/services/blockchain/howto/CA_operate.html#ca-operate-enroll-error) per le cause possibili.
+  Se il comando `enroll` ha esito negativo, consulta l'[argomento Risoluzione dei problemi](/docs/services/blockchain/howto/CA_operate.html#ca-operate-troubleshooting) per le cause possibili.
 
 Puoi eseguire un comando tree per verificare di aver completato tutti i passi preliminari. Passa alla directory dove hai archiviato i tuoi certificati. Un comando tree dovrebbe generare un risultato simile alla seguente struttura:
 
@@ -355,7 +356,7 @@ Dopo aver richiamato le tue informazioni di connessione della CA (Certificate Au
 ### Registrazione dell'identità del componente con la CA
 {: #ca-operate-register-component}
 
-Se vuoi trovare un consorzio distribuendo un sevizio ordini e aggiungendogli delle organizzazioni, oppure per distribuire i peer e unirli ai canali, devi prima registrare l'identità del componente con la tua CA. La distribuzione del tuo componente può quindi generare i certificati necessari al peer o all'ordinante per partecipare a una rete.
+Se vuoi formare un consorzio distribuendo un sevizio ordini e aggiungendogli delle organizzazioni, oppure per distribuire i peer e unirli ai canali, devi prima registrare l'identità del componente con la tua CA. La distribuzione del tuo componente può quindi generare i certificati necessari al peer o all'ordinante per partecipare a una rete.
 
 1. [Genera i certificati con il tuo amministratore CA](/docs/services/blockchain/howto/CA_operate.html#ca-operate-enroll-ca-admin) utilizzando il client CA Fabric. Utilizza questi certificati di amministrazione per emettere i seguenti comandi. Assicurati che `$FABRIC_CA_CLIENT_HOME` sia impostato su `$HOME/fabric-ca-client/ca-admin`.
 
@@ -720,7 +721,7 @@ Per ulteriori informazioni sulla struttura dei MSP, vedi [Membership ![Icona lin
 ## Visualizzazione dei log CA
 {: #ca-operate-view-logs}
 
-È possibile visualizzare i log dei componenti dalla riga di comando utilizzando i [`comandi della CLI kubectl CLI`](/docs/services/blockchain/howto/CA_operate.html#ca-operate-kubectl-configure) o tramite [Kibana ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.elastic.co/products/kibana "Your window into the Elastic Search"), che è incluso nel tuo cluster {{site.data.keyword.cloud_notm}} Private. 
+È possibile visualizzare i log dei componenti dalla riga di comando utilizzando i [`comandi della CLI kubectl CLI`](/docs/services/blockchain/howto/CA_operate.html#ca-operate-kubectl-configure) o tramite [Kibana ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.elastic.co/products/kibana "Your window into the Elastic Search"), che è incluso nel tuo cluster {{site.data.keyword.cloud_notm}} Private.
 
 - Utilizza il comando `kubectl logs` per visualizzare i log dei contenitori all'interno del pod. Se non sei sicuro del tuo nome di pod, esegui questo comando per visualizzare il tuo elenco di pod.
 
@@ -742,11 +743,16 @@ Per ulteriori informazioni sulla struttura dei MSP, vedi [Membership ![Icona lin
 
   **Nota:** quando visualizzi i tuoi log in Kibana, potresti ricevere la risposta `No results found`. Questa condizione può verificarsi se {{site.data.keyword.cloud_notm}} Private utilizza l'indirizzo IP del tuo nodo di lavoro come suo nome host. Per risolvere questo problema, rimuovi il filtro che inizia con `node.hostname.keyword` nella parte superiore del pannello e i log diventeranno visibili.
 
+## Sicurezza
+{: #ca-operate-security}
+
+La CA può essere tenuta offline se viene emesso solo un numero limitato di certificati, ad esempio solo i peer, il server Node.js, le applicazioni client, per garantire maggiore sicurezza ed evitare di compromettere il materiale chiave della CA. Tuttavia, la CA dovrebbe essere online quando è necessaria l'emissione di certificati su richiesta agli utenti. Ti consigliamo fortemente di proteggere la tua chiave privata di gestione CA con [HSM](https://console.test.cloud.ibm.com/docs/services/blockchain/glossary.html#glossary-hsm) se possibile.
+
 ## Risoluzione dei problemi
 {: #ca-operate-troubleshooting}
 
 ### **Problema** errore durante l'esecuzione del comando `enroll`
-{: #ca-operate-enroll-error}
+{: #ca-operate-enroll-error1}
 
 Quando esegui il comando enroll del client CA Fabric, è possibile che abbia esito negativo con il seguente errore:
 
@@ -766,7 +772,7 @@ Questo errore può verificarsi quando il tuo client CA Fabric tenta l'iscrizione
 Rivedi i parametri che hai specificato nel tuo comando `enroll` e assicurati che non sia presente alcuna di queste condizioni.
 
 ### **Problema:** errore con l'URL della CA quando si esegue il comando `enroll`
-{: #ca-operate-enroll-error}
+{: #ca-operate-enroll-error2}
 
 Il comando enroll del client CA Fabric può avere esito negativo se l'URL di iscrizione, ossia il valore del parametro `-u`, contiene un carattere speciale. Ad esempio, il seguente comando con l'ID di iscrizione e la password di `admin:C25A06287!0`,
 

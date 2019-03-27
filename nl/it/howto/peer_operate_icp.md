@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -17,8 +19,6 @@ lastupdated: "2019-02-08"
 
 # Utilizzo dei peer in {{site.data.keyword.cloud_notm}} Private con una rete multi-cloud
 {: #icp-peer-operate}
-
-***[Questa pagina è utile? Faccelo sapere.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 Dopo aver configurato un peer di {{site.data.keyword.blockchainfull}} Platform su {{site.data.keyword.cloud_notm}} Private, devi completare diversi passi operativi prima che il tuo peer possa emettere transazioni per eseguire query e richiamare il libro mastro della rete blockchain. I passi includono l'aggiunta della tua organizzazione a un canale, l'unione del tuo peer al canale, l'installazione del chaincode sul peer, l'istanziazione del chaincode sul canale e la connessione delle applicazioni al tuo peer. Se vuoi connettere il tuo peer a una rete piano Starter o a un piano Enterprise, vedi [Utilizzo dei peer su {{site.data.keyword.cloud_notm}} Private con piano Starter o Enterprise](/docs/services/blockchain/howto/peer_operate_ibp.html#ibp-peer-operate)
 {:shortdesc}
@@ -177,14 +177,14 @@ Si consiglia di utilizzare la versione 1.2 dell'SDK Node.
 Il tuo peer è stato distribuito con il signCert del tuo amministratore peer all'interno. Ciò ti consentirà di utilizzare la cartella MSP e i certificati dell'amministratore peer per gestire il peer.
 
 Individua i certificati che hai creato quando hai [iscritto il tuo amministratore peer](/docs/services/blockchain/howto/CA_operate.html#ca-operate-enroll-admin). Se hai usato i comandi di esempio, puoi trovare la cartella MSP del tuo amministratore peer in `$HOME/fabric-ca-client/peer-admin`.
-  - Puoi creare il contesto utente di gestione del peer con l'SDK utilizzando il signCert (chiave pubblica) e la chiave privata nella cartella MSP. Puoi trovare queste chiavi nelle seguenti ubicazioni:
+  - Puoi creare il contesto di utente amministratore peer con l'SDK utilizzando il signCert (chiave pubblica) e la chiave privata nella cartella MSP. Puoi trovare queste chiavi nelle seguenti ubicazioni:
     - Il signCert è disponibile nella cartella **signcerts**: `$HOME/fabric-ca-client/peer-admin/msp/signcerts`
     - La chiave privata è disponibile nella cartella **keystore:**:`$HOME/fabric-ca-client/peer-admin/msp/keystore`
 
 <!-- You can also use the SDK to generate the peer admin signCert and private key using the endpoint information of CA on Starter Plan or Enterprise Plan and your [peer admin username and password](/docs/services/blockchain/howto/CA_operate.html#ca-operate-register-admin). -->
 
 ### Passaggio del certificato TLS del tuo peer all'SDK
-{: #icp-peer-operate-download-tlscert}
+{: #icp-peer-operate-download-peer-tlscert}
 
 Devi fare riferimento al certificato TLS del tuo peer per autenticare le comunicazioni dal tuo SDK. Individua il certificato TLS che hai [scaricato dal tuo contenitore peer](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-tls-cert) e salvalo dove la tua applicazione può fare riferimento ad esso. Se hai utilizzato i comandi di esempio, puoi trovare il certificato TLS del tuo peer in `$HOME/fabric-ca-client/peer-tls/peertls.pem`. Puoi quindi importare il certificato TLS nella tua applicazione utilizzando un semplice comando di lettura file.
 
@@ -210,7 +210,7 @@ You need to specify a `ssl-target-name-override` of `<something>.blockchain.com`
 Se hai una rete di grandi dimensioni, con più peer che appartengono a organizzazioni differenti che devono approvare le tue transazioni, faresti meglio a lavorare con il tuo consorzio per [creare un profilo di connessione comune ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://fabric-sdk-node.github.io/tutorial-network-config.html "profilo di connessione comune")
 
 ### Trasferimento del certificato TLS del tuo ordinante all'SDK
-{: #icp-peer-operate-download-tlscert}
+{: #icp-peer-operate-download-orderer-tlscert}
 
 Ti serve anche il certificato TLS dell'ordinante del tuo consorzio per unirti ai canali e inoltrare le transazioni. Se sei l'amministratore dell'ordinante, attieniti alle istruzioni per [scaricare il certificato TLS dell'ordinante](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-tls-cert).  Se hai usato i comandi di esempio, puoi trovare il certificato TLS del tuo peer in `$HOME/fabric-ca-client/orderer-tls/orderertls.pem`. Se l'ordinante è controllato da un'altra organizzazione, è necessario che ti forniscano il certificato TLS in un'operazione fuori banda. Puoi quindi importare il certificato TLS nella tua applicazione.
 
@@ -220,7 +220,7 @@ var ordererTLSCert = fs.readFileSync(path.join(__dirname, './orderertls.pem'));
 {:codeblock}
 
 ### Trasmissione delle informazioni sull'ordinante all'SDK
-{: #icp-peer-operate-SDK-endpoints}
+{: #icp-peer-operate-orderer-SDK-endpoints}
 
 Per utilizzare l'SDK, ti servono anche le informazioni sull'endpoint degli ordinanti nel tuo consorzio. Se sei l'amministratore dell'ordinante, puoi utilizzare queste istruzioni per [richiamare le informazioni sull'endpoint dell'ordinante](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-orderer-endpoint). Se l'ordinante è controllato da un'altra organizzazione, è necessario che ti forniscano l'URL dell'ordinante in un'operazione fuori banda. Il seguente esempio definisce un ordinante come un endpoint e passa ad esso il certificato TLS dell'ordinante.
 
@@ -902,7 +902,7 @@ Puoi utilizzare le API SDK Fabric Node per completare la firma e l'inoltro in un
 ## Visualizzazione dei log di peer
 {: #icp-peer-operate-view-logs}
 
-È possibile visualizzare i log del componente dalla riga di comando utilizzando i [`comandi della CLI kubectl`](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-kubectl-configure) o tramite [Kibana ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.elastic.co/products/kibana "Your window into the Elastic Search"), che è incluso nel tuo cluster {{site.data.keyword.cloud_notm}} Private. 
+È possibile visualizzare i log del componente dalla riga di comando utilizzando i [`comandi della CLI kubectl`](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-kubectl-configure) o tramite [Kibana ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.elastic.co/products/kibana "Your window into the Elastic Search"), che è incluso nel tuo cluster {{site.data.keyword.cloud_notm}} Private.
 
 - Utilizza il comando `kubectl logs` per visualizzare i log dei contenitori all'interno del pod. Se non sei sicuro del tuo nome di pod, esegui questo comando per visualizzare il tuo elenco di pod.
 

@@ -2,7 +2,10 @@
 
 copyright:
   years: 2018,2019
-lastupdated: "2019-02-08"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
+
 ---
 
 {:new_window: target="_blank"}
@@ -10,11 +13,9 @@ lastupdated: "2019-02-08"
 {:codeblock: .codeblock}
 {:screen: .screen}
 {:pre: .pre}
+
 # Installazione, istanziazione e aggiornamento di un chaincode
 {: #install-instantiate-chaincode}
-
-
-***[Questa pagina è utile? Faccelo sapere.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 
 Il chaincode è il software che incapsula la logica di business e le istruzioni transazionali per la creazione e la modifica di asset nel libro mastro. Il chaincode può essere scritto in diversi linguaggi e {{site.data.keyword.blockchainfull}} Platform supporta il chaincode Go e Node.js. Un chaincode viene eseguito in un contenitore Docker associato a un qualsiasi peer che deve interagire con esso. Per ulteriori informazioni sullo sviluppo del chaincode, vedi le [esercitazioni per il chaincode ![Icona link esterno](../images/external_link.svg "Icona link esterno")](http://hyperledger-fabric.readthedocs.io/en/release-1.2/chaincode.html).
@@ -53,7 +54,7 @@ Dopo essere stato installato sul file system di ogni peer che aderisce a un cana
   ![Instantiate Chaincode](../images/chaincode_instantiate.png "Instantiate Chaincode")
 -->
 
-2. Nel pannello a comparsa **Crea un'istanza del chaincode**, imposta le coppie chiave/valore come argomenti per l'inizializzazione del chaincode e seleziona il canale su cui eseguire l'istanziazione.  Fai clic su **Avanti**.
+2. Nel pannello a comparsa **Crea un'istanza del chaincode**, imposta le coppie chiave/valore come argomenti per l'inizializzazione del chaincode e seleziona il canale su cui eseguire l'istanziazione.  Fai clic su **Next**.
 <!--
   ![Instantiate Chaincode panel](../images/chaincode_instantiate_panel.png "Instantiate Chaincode panel")
 -->
