@@ -3,7 +3,7 @@
 copyright:
   years: 2019
 
-lastupdated: "2019-03-20"
+lastupdated: "2019-03-25"
 
 keywords: smart contract, private data, private data collection, anchor peer
 
@@ -190,9 +190,9 @@ Private data is a feature of Hyperledger Fabric networks at version 1.2 or highe
 In order to use private data with {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta, the following three conditions must be satisfied:  
 1. **Define the private data collection.** A private data collection file can be added to your smart contract. Then, at runtime, your client application can use private data specific chaincode APIs to input and retrieve data from the collection. For more information about how to use private data collections with your smart contract, see the Fabric SDK tutorial on [Using private data ![External link icon](../images/external_link.svg "External link icon")](https://fabric-sdk-node.github.io/tutorial-private-data.html "How to use Private Data") in the Fabric SDK documentation.  
 
-2. **Install and instantiate the smart contract.** Once the smart contract private data collection has been defined, you need to install the smart contract on the peers that are members of the channel. When you instantiate the smart contract on the channel, you need to upload the collection configuration JSON file. For more information on how to [create a collection definition JSON file ![External link icon](../images/external_link.svg "External link icon")](https://fabric-sdk-node.github.io/tutorial-private-data.html "How to use private data") see the Fabric SDK documentation topic.
+2. **Install and instantiate the smart contract.** Once the smart contract private data collection has been defined, you need to install the smart contract on the peers that are members of the channel. When you instantiate the smart contract on the channel by using the console, you need to upload the collection configuration JSON file. For more information on how to [create a collection definition JSON file ![External link icon](../images/external_link.svg "External link icon")](https://fabric-sdk-node.github.io/tutorial-private-data.html "How to use private data") see the Fabric SDK documentation topic.
 
-  Instead of using the console to install and instantiate your smart contract, you can use the Fabric SDK. Those instructions are also available under [How to use private data ![External link icon](../images/external_link.svg "External link icon")](https://fabric-sdk-node.github.io/release-1.4/tutorial-private-data.html "how to use private data") in the Node SDK documentation.  
+  Instead of using the console to install and instantiate your smart contract with a collection config file, you can also use the Fabric SDK. Those instructions are also available under [How to use private data ![External link icon](../images/external_link.svg "External link icon")](https://fabric-sdk-node.github.io/release-1.4/tutorial-private-data.html "how to use private data") in the Node SDK documentation.  
 
   **Note:** A client needs to be an admin of your peer in order to install or instantitate a smart contract using the SDK. Therefore, you need to download the certificates of the peer admin identity from your console wallet and pass the peer admin's public and private key to directly to the SDK instead of creating an application identity. For an example of how to pass a key pair to the SDK, see [Connecting to your network using low level Fabric SDK APIs](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-low-level).  
 
