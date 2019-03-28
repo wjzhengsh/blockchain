@@ -55,7 +55,8 @@ Plateforme IBM Blockchain
 
 	{: .topicgroup}
 	Autorités de certification dans ICP
-		[A propos des autorités de certification](services/blockchain/ibp-for-icp-about.html#ibp-icp-ca) 		howto/CA_deploy_icp.md
+		[A propos des autorités de certification](services/blockchain/ibp-for-icp-about.html#ibp-icp-ca)
+		howto/CA_deploy_icp.md
 		howto/CA_operate.md
 
 	{: .topicgroup}
