@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-31"
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -16,32 +18,28 @@ lastupdated: "2018-08-31"
 {:download: .download}
 
 
-# {{site.data.keyword.blockchainfull_notm}} Platform 区域和位置
+# {{site.data.keyword.blockchainfull_notm}} Platform locations
 {: #ibp-regions-locations}
 
-
-***[此页面是否有用？请告诉我们。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
-
-{{site.data.keyword.cloud}} 在全球范围内托管。区域是由端点访问的地理区域，而位置是该区域内的数据中心。{{site.data.keyword.blockchainfull_notm}} Platform 在全球范围内不同区域中的 {{site.data.keyword.cloud_notm}} 中提供成员资格套餐。在 {{site.data.keyword.cloud_notm}} 中创建 {{site.data.keyword.blockchainfull_notm}} Platform 服务实例时，会在创建服务实例的 {{site.data.keyword.cloud_notm}} 区域中创建并存储区块链网络和网络资源。
+{{site.data.keyword.cloud}} is hosted worldwide in various locations. Locations are data centers within a geographic area that is accessed by an endpoint. {{site.data.keyword.blockchainfull_notm}} Platform offers membership plans within {{site.data.keyword.cloud_notm}} globally in different locations. When you create {{site.data.keyword.blockchainfull_notm}} Platform service instance in {{site.data.keyword.cloud_notm}}, your blockchain network and network resources are created and stored in the {{site.data.keyword.cloud_notm}} location where you create the service instance in.
 {:shortdesc}
 
-不同的 {{site.data.keyword.blockchainfull_notm}} Platform 产品在不同的 {{site.data.keyword.cloud_notm}} 区域中可用。您只能在 {{site.data.keyword.blockchainfull_notm}} Platform 套餐可用的 {{site.data.keyword.cloud_notm}} 区域中创建区块链网络。
+Different {{site.data.keyword.blockchainfull_notm}} Platform offerings are available in different {{site.data.keyword.cloud_notm}} locations. You can create blockchain networks in only {{site.data.keyword.cloud_notm}} locations that {{site.data.keyword.blockchainfull_notm}} Platform plans are available.
 
-表 1 和图 1 显示了 {{site.data.keyword.blockchainfull_notm}} Platform 支持的 {{site.data.keyword.cloud_notm}} 区域和位置。
+Table 1 and Figure 1 show the {{site.data.keyword.cloud_notm}} regions and locations that {{site.data.keyword.blockchainfull_notm}} Platform supports.
 
-|区域/位置|入门套餐|企业套餐|
+| Location | Starter Plan | Enterprise Plan |
 |--------|----------|----------|
-|美国南部/达拉斯|是|是|
-|英国/伦敦|是|是|
-|亚太地区北部/东京|  |是|
-|德国/法兰克福|  |是|
-|悉尼|是|  |
-|圣保罗|  |是|
-|多伦多|  |是|
+| Dallas | Y | Y |
+| London | Y | Y |
+| Tokyo |  | Y |
+| Frankfurt |  | Y |
+| Sydney | Y |  |
+| São Paulo |  | Y |
+| Toronto |  | Y |
 
-_表 1. {{site.data.keyword.blockchainfull_notm}} Platform 区域和位置_
+_Table 1. {{site.data.keyword.blockchainfull_notm}} Platform locations_
 
 
-![{{site.data.keyword.blockchainfull_notm}} Platform 区域和位置](../images/ibp_regions.png "{{site.data.keyword.blockchainfull_notm}} Platform 区域和位置")  
-_图 1. {{site.data.keyword.blockchainfull_notm}} Platform 区域和位置_
+![{{site.data.keyword.blockchainfull_notm}} Platform locations](../images/ibp_regions.png "{{site.data.keyword.blockchainfull_notm}} Platform locations")  
+_Figure 1. {{site.data.keyword.blockchainfull_notm}} Platform locations_

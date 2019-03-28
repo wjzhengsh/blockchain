@@ -1,8 +1,11 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-12-07"
+  years: 2017, 2019
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
+
 ---
 
 {:new_window: target="_blank"}
@@ -10,54 +13,103 @@ lastupdated: "2018-12-07"
 {:codeblock: .codeblock}
 {:screen: .screen}
 {:pre: .pre}
+{:note: .note}
+{:important: .important}
+{:tip: .tip}
 
-# 新增功能
-{: #whatsnew}
+# What's new
+{: #whats-new}
 
-***[此頁面有幫助嗎？請告訴我們。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+## February 8, 2019
+{: #whats-new-2-08-2019}
 
-## 2018 年 12 月 7 日
+{{site.data.keyword.blockchainfull}} Platform releases a free 2.0 beta, the next generation of {{site.data.keyword.blockchainfull_notm}} Platform solutions that enables you to deploy, operate, and monitor your blockchain network. {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta includes a new user interface console, that can be used to deploy and manage blockchain components in your own {{site.data.keyword.IBM_notm}} Kubernetes Service cluster on {{site.data.keyword.cloud_notm}}. The {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta will allow you to:
 
-*操作入門範本方案網路* 及*操作企業方案網路* 主題已合併並取代為[使用網路監視器](v10_dashboard.html)的單一指導教學。
+**Build your network faster and easier within a seamless experience**
 
-## 2018 年 11 月 27 日
+*	Smooth integration between smart contract development (VS Code) and network management
+*	Simplified DevOps allows you to move from development to test to production from a single console
+*	Support for writing smart contracts in Javascript, Java, and Go languages
 
-{{site.data.keyword.blockchainfull}} Platform 會發行 {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private (ICP)。ICP 是一種應用程式平台，用於開發及管理基於 Kubernetes 的容器化應用程式，其容許使用者在 x86、LinuxONE 及 IBM Z 上部署「憑證管理中心 (CA)」、排序節點及對等節點。{{site.data.keyword.blockchainfull_notm}} Platform for ICP 是以 Hyperledger Fabric 1.2.1 版為基礎，並使用 Kubernetes Helm 圖表進行部署。安裝 Helm 圖表之後，您可以在「ICP 型錄」中找到它作為組合服務。請注意，[此供應項目](ibp-for-icp-about.html)比較適合經驗豐富的 Fabric 使用者。
+**Operate and govern networks with total control**
 
-如需 ICP 的相關資訊，請參閱 [{{site.data.keyword.cloud_notm}} Private 3.1.0 版文件 ![外部鏈結圖示](images/external_link.svg "外部鏈結圖示")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/kc_welcome_containers.html "{{site.data.keyword.cloud_notm}} Private 3.1.0 版文件")。
+*	Deploy only the blockchain components you need (peer, ordering service, Certificate Authority)
+*	Redesigned console lets you manage network components in one place, no matter where they are deployed
+*	Maintain complete control of your identities, ledger, and smart contracts
 
-{{site.data.keyword.blockchainfull_notm}} Platform for ICP 的版本也會標示「IBM Blockchain Platform 遠端對等節點（測試版）」程式的結束。您仍然可以在 ICP 或 AWS 中部署對等節點，並將其連接至「入門範本方案」或「企業方案」網路。如需相關資訊，請參閱[針對入門範本或企業方案部署對等節點](howto/peer_deploy_ibp.html)及[在 AWS 中部署對等節點](howto/remote_peer_aws.html)。這些對等節點視為**分散式**對等節點，而非遠端對等節點，因為部署是由客戶所管理，所以沒有可成為其遠端的中央位置。
+**Grow distributed networks with ease with newly enabled multi-cloud flexibility**
 
-本版本還首次推出文件目錄的一些改進。如果您是「入門範本」或「企業」使用者，則仍然可以在**學習**、**如何**、**參照**及**說明**小節中找到您的內容，而且這些鏈結仍然相同。它可能只是位在目錄的不同子小節中。
+*	Connect to nodes running in any environment (on-premises, public, hybrid clouds)
+*	Easily connect a single peer to multiple industry networks
+*	Start small, pay as you grow for what you use with no upfront investment, and upgrade easily through Kubernetes
 
-## 2018 年 11 月 13 日
+- More information about the {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta is available in [About {{site.data.keyword.blockchainfull_notm}} Platform 2.0](/docs/services/blockchain/howto/ibp-console.html#ibp-console-overview).
+- Instructions on how to deploy the free 2.0 beta release into an {{site.data.keyword.IBM_notm}} Kubernetes Service cluster is available in [Getting started with {{site.data.keyword.blockchainfull_notm}} Platform 2.0](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks).
+- New tutorials for using the {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta are available in the **{{site.data.keyword.blockchainfull_notm}} Platform 2.0** subsection under the **HOW TO** category.
+  * [Build a network tutorial](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network) guides you through the process of hosting a network by creating an orderer and peer.
+  * [Join a network tutorial](/docs/services/blockchain/howto/ibp-console-join-network.html#ibp-console-join-network) explains how to  joining an existing network by creating a peer and joining it to a channel.
+  * [Deploy a smart contract on the network](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts) provides information on how to write a smart contract and deploy it on your network.
+- The {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta offering is based on Hyperledger Fabric v1.4 and supports peer-to-peer gossip, service discovery, and private data. Visit this [topic](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-private-data) to learn how to configure private data on your network.
 
-{{site.data.keyword.blockchainfull_notm}} Platform 會發行 {{site.data.keyword.blockchainfull_notm}} Platform for Amazon Web Services (AWS)。
+- The {{site.data.keyword.blockchainfull_notm}} Visual Studio Code extension is available from the Visual Studio Code Marketplace. Developers can use the extension to create, test, and deploy smart contracts to an instance of Hyperledger Fabric. The extension is compatible with Hyperledger Fabric 1.3 and greater. For information about using the VS Code extension, see [Tools for smart contracts](/docs/services/blockchain/vscode-extension.html#develop-vscode).  
 
-{{site.data.keyword.blockchainfull_notm}} Platform for AWS 可讓您在 AWS Cloud 中執行對等節點，並將對等節點連接至 {{site.data.keyword.cloud_notm}} 中的現有區塊鏈網路。AWS 中的對等節點可以利用連線設定檔及現有網路中的其他區塊鏈元件，同時可讓您更彈性地將對等節點與 {{site.data.keyword.cloud_notm}} 之外的其他應用程式並存。如需相關資訊，請參閱[關於 {{site.data.keyword.blockchainfull_notm}} Platform for Amazon Web Services](howto/remote_peer.html)。
+The table of contents is enhanced by grouping all getting started topics together into a section called **Getting started tutorials**. Additionally, each of the {{site.data.keyword.blockchainfull_notm}} Platform offerings are described in the **About {{site.data.keyword.blockchainfull_notm}} Platform** subsections are now contained under the **LEARN** section.
 
-## 2018 年 10 月 4 日
+**Note:** Free cloud credits are no longer available for users of Starter Plan.
 
-{{site.data.keyword.blockchainfull_notm}} Platform 會將「入門範本方案」從 Hyperledger Fabric 1.1.0 版升級至 1.2.1 版。如需相關資訊，請參閱[關於入門範本方案](starter_plan.html)。
+## December 7, 2018
+{: #whats-new-12-7-2018}
 
-**重要事項：**Fabric 1.2.1 版目前與使用 1.1.0 版對等節點的「遠端對等節點」測試版不相容。「入門範本方案」網路（其在 2018 年 10 月 4 日之前建立，並以 Fabric 1.1.0 版為基礎）不受影響，而且仍然可以與「遠端對等節點」測試版搭配使用。{{site.data.keyword.blockchainfull_notm}} Platform 會將「遠端對等節點」測試版更新成使用 1.2.1 版對等節點（其與 Fabric 1.2.1 版層次的新「入門範本」網路及 Fabric 1.1.0 版層次的「企業」網路相容）。除非「遠端對等節點」測試版更新為 Fabric 1.2.1 版，否則請不要嘗試部署使用新 1.2.1 版「入門範本」網路的 1.1.0 版遠端對等節點。
+The *Operate Starter Plan Network* and *Operate Enterprise Plan Network* topics are combined and replaced by a single tutorial about [Using the Network Monitor](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard).
 
-## 2018 年 9 月 4 日
+## November 27, 2018
+{: #whats-new-11-27-2018}
 
-{{site.data.keyword.blockchainfull_notm}} Platform 會發行「遠端對等節點」供應項目測試版。「遠端對等節點」供應項目是以 Hyperledger Fabric 1.1.0 版為基礎。使用「遠端對等節點」，即可在自己的 IBM Cloud Private (ICP) 或 Amazon Web Services (AWS) Cloud 環境中執行 {{site.data.keyword.blockchainfull_notm}} Platform 對等節點。如需相關資訊，請參閱[關於遠端對等節點](howto/remote_peer.html)。
+{{site.data.keyword.blockchainfull_notm}} Platform releases {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private. {{site.data.keyword.cloud_notm}} Private is an application platform for developing and managing containerized applications that are based on Kubernetes and it allows users to deploy Certificate Authorities (CAs), orderers, and peers on x86, LinuxONE and IBM Z. {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private is based on Hyperledger Fabric v1.2.1 and is deployed by using Kubernetes Helm charts. After you install the Helm chart, you can find it as a bundled service in the {{site.data.keyword.cloud_notm}} Private Catalog. Note that [this offering](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-about) is more suitable for experienced Fabric users.
 
-## 2018 年 6 月 15 日
+For more information about {{site.data.keyword.cloud_notm}} Private, see [{{site.data.keyword.cloud_notm}} Private v3.1.0 documentation ![External link icon](images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/kc_welcome_containers.html "{{site.data.keyword.cloud_notm}} Private v3.1.0 documentation").
 
-{{site.data.keyword.blockchainfull_notm}} Platform 發行「入門範本方案 GA 版」。如需相關資訊，請參閱[關於入門範本方案](starter_plan.html)。
+The release of {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private also marks the end of the IBM Blockchain Platform Remote Peer (Beta) program. It is still possible to deploy a peer in {{site.data.keyword.cloud_notm}} Private or in AWS and connect it to an Starter Plan or Enterprise Plan network. For more information, see [deploying a peer against Starter or Enterprise Plan](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy) and [deploying a peer in AWS](/docs/services/blockchain/howto/remote_peer_aws.html#remote-peer-aws). These peers are considered to be **distributed** peers instead of remote peers because the deployment is customer managed and as a result there is no central location to be remote from.
 
-## 2018 年 5 月 15 日
+This release also debuts some improvements to the documentation table of contents. If you are a Starter or Enterprise user, your content can still be found in the **LEARN**, **HOW TO**, **REFERENCE**, and **HELP** sections, and the links are still the same. It might just be in a different subsection in the table of contents.
 
-{{site.data.keyword.blockchainfull_notm}} Platform 會將「企業方案」從 Hyperledger Fabric 1.0.0 版升級至 1.1.0 版。如需相關資訊，請參閱[關於企業方案](enterprise_plan.html)。
+## November 13, 2018
+{: #whats-new-11-13-2018}
 
-## 2018 年 3 月 18 日
+{{site.data.keyword.blockchainfull_notm}} Platform releases {{site.data.keyword.blockchainfull_notm}} Platform for Amazon Web Services (AWS).
 
-{{site.data.keyword.blockchainfull_notm}} Platform 會發行「入門範本方案測試版」。「入門範本方案」提供開發及測試環境，以供您在 {{site.data.keyword.blockchainfull_notm}} Platform 網路中學習及練習。如需相關資訊，請參閱[關於入門範本方案](starter_plan.html)。
+{{site.data.keyword.blockchainfull_notm}} Platform for AWS enables you to run peers in the AWS Cloud and connect the peers to existing blockchain networks in {{site.data.keyword.cloud_notm}}. Your peers in AWS can leverage the connection profile and other blockchain components in the existing networks, while giving you more flexibility to colocate your peers with other applications outside {{site.data.keyword.cloud_notm}}. For more information, see [About {{site.data.keyword.blockchainfull_notm}} Platform for Amazon Web Services](/docs/services/blockchain/howto/remote_peer_aws.html#remote-peer-aws).
+/docs/services/blockchain/howto/remote_peer_aws.html#remote-peer-aws
 
-## 2017 年 8 月 11 日
+## October 4, 2018
+{: #whats-new-10-4-2018}
 
-{{site.data.keyword.blockchainfull_notm}} Platform 會取代 {{site.data.keyword.blockchainfull_notm}} on Cloud，並發行「企業方案」。如需相關資訊，請參閱[關於企業方案](enterprise_plan.html)。
+{{site.data.keyword.blockchainfull_notm}} Platform upgrades Starter Plan from Hyperledger Fabric v1.1.0 to v1.2.1. For more information, see [About Starter Plan](/docs/services/blockchain/starter_plan.html#starter-plan-about).
+
+**Important:** Fabric v1.2.1 is currently not compatible with the Remote Peer beta, which uses a v1.1.0 peer. Starter Plan networks, which are created before October 4, 2018 and are based on Fabric v1.1.0, are not impacted and can still be used with the Remote Peer beta. {{site.data.keyword.blockchainfull_notm}} Platform will update the Remote Peer beta to use the v1.2.1 peer, which will be compatible with new Starter networks, which are at Fabric v1.2.1 level, and Enterprise networks, which are at Fabric v1.1.0 level. Until the Remote Peer beta is updated to Fabric v1.2.1, do not attempt to deploy a v1.1.0 remote peer with a new v1.2.1 Starter network.
+
+## September 4, 2018
+{: #whats-new-9-4-2018}
+
+{{site.data.keyword.blockchainfull_notm}} Platform releases Remote Peer offering Beta. Remote Peer offering is based on Hyperledger Fabric v1.1.0. By using the Remote Peer, you can run {{site.data.keyword.blockchainfull_notm}} Platform peer nodes in your own {{site.data.keyword.cloud_notm}} Private or Amazon Web Services (AWS) cloud environment. For more information, see [About remote peers](/docs/services/blockchain/howto/remote_peer_aws.html#remote-peer-aws).
+
+## June 15, 2018
+{: #whats-new-6-15-2018}
+
+{{site.data.keyword.blockchainfull_notm}} Platform releases Starter Plan GA. For more information, see [About Starter Plan](/docs/services/blockchain/starter_plan.html#starter-plan-about).
+
+## May 15, 2018
+{: #whats-new-5-15-2018}
+
+{{site.data.keyword.blockchainfull_notm}} Platform upgrades Enterprise Plan from Hyperledger Fabric v1.0.0 to v1.1.0. For more information, see [About Enterprise Plan](/docs/services/blockchain/enterprise_plan.html#enterprise-plan-about).
+
+## March, 18, 2018
+{: #whats-new-3-18-2018}
+
+{{site.data.keyword.blockchainfull_notm}} Platform releases Starter Plan Beta. Starter Plan offers you a development and testing environment to learn and practice in an {{site.data.keyword.blockchainfull_notm}} Platform network. For more information, see [About Starter Plan](/docs/services/blockchain/starter_plan.html#starter-plan-about).
+
+## August 11, 2017
+{: #whats-new-8-11-2017}
+
+{{site.data.keyword.blockchainfull_notm}} Platform replaces
+{{site.data.keyword.blockchainfull_notm}} on Cloud and releases Enterprise Plan. For more information, see [About Enterprise Plan](/docs/services/blockchain/enterprise_plan.html#enterprise-plan-about).
