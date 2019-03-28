@@ -1,8 +1,10 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-12-07"
+  years: 2017, 2019
+lastupdated: "2019-03-20"
+
+subcollection: blockchain
 
 ---
 
@@ -11,305 +13,298 @@ lastupdated: "2018-12-07"
 {:codeblock: .codeblock}
 {:screen: .screen}
 {:pre: .pre}
+{:note: .note}
+{:important: .important}
+{:tip: .tip}
 
-# 使用网络监视器
-{: #v10_dashboard}
+# Using the Network Monitor
+{: #ibp-dashboard}
 
-
-***[此页面是否有用？请告诉我们。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
-
-{{site.data.keyword.blockchainfull}} Platform 中的“网络监视器”提供区块链环境的概述，包括网络资源、成员、加入的通道、事务处理性能数据和已部署的链代码。“网络监视器”还提供了入口点来运行 Swagger API，使用 {{site.data.keyword.blockchainfull_notm}} Platform: Develop 来开发网络以及试用样本应用程序。
+{{site.data.keyword.blockchainfull}} Platform brings a Network Monitor to provide an overview of your blockchain environment, including network resources, members, joined channels, transaction performance data, and deployed chaincode. The Network Monitor also offers you the entry point to run Swagger APIs, develop a network with {{site.data.keyword.blockchainfull_notm}} Platform, and try sample applications.
 {:shortdesc}
 
-使用本教程了解如何使用“网络监视器”操作企业套餐或入门套餐网络。虽然教程中的大多数屏幕快照适用于企业套餐，但指示信息对于入门套餐也是有效的。当特定功能仅可供某个套餐访问时，相关部分将标记为**适用于入门套餐网络**或**适用于企业套餐网络**。
+Use this tutorial to learn how to use your Network Monitor to operate an Enterprise Plan or Starter Plan network. Although most screen shots in the tutorial are for Enterprise Plan, the instructions are also valid for Starter Plan. When certain features are only accessible for one plan, the relevant section is labeled with **for Starter Plan networks** or **for Enterprise Plan networks**.
 
-## 左侧导航窗格
+## Left navigation pane
+{: #ibp-dashboard-left-navigation}
 
-“网络监视器”分三个部分显示以下屏幕。您可以在“网络监视器”左侧导航器中导航至各个屏幕。
-- **我的网络**部分包含“[概述](#overview)”、“[成员](#members)”、“[通道](#channels)”、“[通知](#notifications)”、“[认证中心](#ca)”和“[API](#apis)”屏幕。
-- **我的代码**部分包含“[开发代码](#write_code)”、“[安装代码](#chaincode)”和“[试用样本](#samples)”屏幕。
-- “[获取帮助](#support)”屏幕显示支持信息以及 Helios 和 Hyperledger Fabric（{{site.data.keyword.blockchainfull_notm}} Platform 基于的代码库）的发行说明。
+The Network Monitor exposes the following screens in three sections. You can navigate to each screen from the left navigator in the Network Monitor.
+- The **My network** section contains the "[Overview](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-overview)", "[Members](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-members)", "[Channels](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-channels)", "[Notifications](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-notifications)", "[Certificate Authority](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-ca)", and "[APIs](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-apis)" screens.
+- The **My code** section contains the "[Develop code](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-write_code)", "[Install code](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-chaincode)", and "[Try samples](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-samples)" screens.
+- The "[Get help](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-support)" screen shows support information as well as release notes for helios and Hyperledger Fabric (the code base the {{site.data.keyword.blockchainfull_notm}} Platform is based on).
 
-区块链网络的名称位于左侧导航窗格的顶部。您可以在“网络监视器”中[更改网络的名称](#network-name)。
+The name of your blockchain network is at the top of the left navigation pane. You can [change the name of your network](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-network-name) in the Network Monitor.
 
-可以通过“网络监视器”右上角的下拉菜单，[检查和配置网络首选项](#network-preferences)。
+You can [check and configure network preferences](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-network-preferences) from the drop-down menu on the upper right of the Network Monitor.
 
-本教程描述了上述每个屏幕和功能。
+This tutorial describes each of the above screens and functions.
 
-## 概述
-{: #overview}
+## Overview
+{: #ibp-dashboard-overview}
 
-“概述”屏幕显示有关区块链资源（包括排序者、CA 和同级节点）的实时状态信息。每个资源都显示在四个不同的标头下：**类型**、**名称**、**状态**和**操作**。在创建区块链网络期间，会自动创建三个订货人节点和两个 CA 节点。CA 特定于成员，而排序节点是整个网络中共享的公共端点。
+The "Overview" screen displays real-time status information on your blockchain resources, including the orderer, CA, and peer nodes. Each resource is displayed under four distinct headers: **Type**, **Name**, **Status**, and **Actions**. During the creation of your blockchain network, three orderer nodes and two CA nodes are automatically created. The CAs are member-specific, whereas the orderers are common endpoints that are shared across the network.
 
-**图 1** 显示“概述”屏幕：
+**Figure 1** shows the "Overview" screen:
 
-![概述屏幕](images/myresources.png "网络概述")
-*图 1. 网络概述*
+![Overview screen](images/myresources.png "Network overview")
+*Figure 1. Network overview*
 
-### 节点操作
-表的**操作**标头提供了用于启动或停止资源的按钮。您还可以通过选择多个节点，然后单击**启动所选项**或**停止所选项**按钮，来启动或停止一组节点。选择一个或多个节点时，**启动所选项**或**停止所选项**按钮将显示在表的顶部。
+### Node actions
+{: #ibp-dashboard-node-actions}
 
-“停止”和“启动”操作不可用于“排序”节点。通常，不需要在网络上停止和启动同级或 CA 节点。提供的“停止”和“启动”操作是为了满足重新启动同级的需要，例如要以全新方式启动同级时。
+The **Actions** header of the table provides buttons to start or stop your resources. You can also start or stop a group of nodes by selecting multiple nodes and then clicking the **Start Selected** or **Stop Selected** button. The **Start Selected** or **Stop Selected** button appears on top of the table when you select one or more nodes.
 
-您还可以通过单击**操作**标头下的下拉列表中的**查看日志**来检查组件日志。日志会公开在各种网络资源之间的调用，且在进行调试和故障诊断时非常有用。有关使用网络日志的更多信息，请参阅[监视区块链网络](howto/monitor_network.html)
+The Stop and Start actions are not available for an Orderer node. In general, there is no need to stop and start Peer or CA nodes on a network. The Stop and Start actions are provided in case you needed to restart a peer, for example to bring it up in a clean state.
 
-要了解启动和停止同级的效果，可通过停止同级并尝试将其设定为某个事务处理的目标来进行试验，您将在日志中看到连接错误。重新启动该同级并重试该事务处理时，您将看到连接成功。您还可以在通道继续进行事务处理时，使某个同级停止运行较长的一段时间。该同级再次启动后，您将注意到分类帐同步，因为该同级会收到在它停止运行期间提交的块。在分类帐完全同步后，您可以对其执行正常的调用和查询。
+You can also check component logs by clicking **View Logs** from the drop-down list under the **Actions** header. The logs expose the calls between the various network resources and are useful for debugging and troubleshooting. For more information on using your network logs, see [Monitoring a blockchain network](/docs/services/blockchain/howto/monitor_network.html#monitor-blockchain-network)
 
-### 远程同级配置  
+To understand the effects of starting and stopping a peer, you can experiment by stopping a peer and attempting to target it with a transaction, and you will see connectivity errors in the logs. When you restart the peer and attempt the transaction again, you will see a successful connection. You can also leave a peer down for an extended period of time as your channels continue to transact. When the peer is brought back up, you will notice a synchronization of the ledger as it receives the blocks that were committed when it was down. After the ledger is fully synchronized, you can perform normal invokes and queries against it.
 
-如果在 {{site.data.keyword.cloud_notm}} 之外部署同级，那么需要在配置期间提供网络的 API 端点信息。单击**远程同级配置**按钮以检索网络的 API 端点信息来配置同级。弹出窗口提供网络标识、组织 MSP、CA 名称、CA URL 和 CA TLS 证书的 API 端点信息。您可以单击每个字段末尾的复制图标以复制此字段的值，或者单击**下载**按钮以在 JSON 文件中保存所有字段的值。有关更多信息，请参阅[关于适用于 Amazon Web Services 的 {{site.data.keyword.blockchainfull_notm}} Platform](howto/remote_peer.html) 和[适用于 {{site.data.keyword.cloud_notm}} Private 的 {{site.data.keyword.blockchainfull_notm}} Platform](ibp-for-icp-about.html)。
+### Remote Peer Configuration
+{: #ibp-dashboard-peer-connection-information}
 
-### 连接概要文件
-{: #connection-profile}
+If you deploy a peer outside {{site.data.keyword.cloud_notm}}, you need to provide the API endpoint information of your network during configuration. Click the **Remote Peer Configuration** button to retrieve the API endpoint information of the network to configure your peer. The pop-up window provides the API endpoint information of network ID, organization MSP, CA name, CA URL, and CA TLS certificate. You can either click the copy icon at the end of each field to copy the value of that field, or click the **Download** button to save values of all fields in a JSON file. For more information, see [About {{site.data.keyword.blockchainfull_notm}} Platform for Amazon Web Services](/docs/services/blockchain/howto/remote_peer.html#remote-peer-aws-about) and [About {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-about).
 
-您可以通过单击**连接概要文件**按钮来查看有关每个资源的低级别网络信息的 JSON 文件。连接概要文件包含应用程序所需的所有配置信息。但是，由于此文件仅包含特定组件和排序者的地址，因此如果需要将更多同级设定为目标，您需要获取这些同级的端点。包含“url”的标头显示每个组件的 API 端点。需要这些端点才能以客户端应用程序的特定网络组件为目标，而其定义通常存在于应用程序随附的 JSON 模型化配置文件中。如果您要定制的应用程序需要不属于您组织的同级支持，那么您需要在带外操作中从相关操作员处检索这些同级的 IP 地址。客户端必须能够连接到它们需要从中获取响应的任何同级。
+### Connection Profile
+{: #ibp-dashboard-connection-profile}
 
+You can view the JSON file about low-level network information of each resource by clicking the **Connection Profile** button. The connection profile contains all the configuration information that you need for an application. However, because this file contains only the addresses for your specific components and the orderer, if you need to target additional peers, you need to obtain their endpoints. The header that contains "url" displays the API endpoint of each component. These endpoints are required in order to target specific network components from a client-side application and their definitions will typically live in a JSON-modeled configuration file that accompanies the app. If you are customizing an application that requires endorsement from peers that are not part of your organization, you need to retrieve the IP addresses of those peers from the relevant operators in an out-of-band operation. Clients must be able to connect to any peers from which they need a response.
 
-### 添加同级
-{: #peers}
+### Add peers
+{: #ibp-dashboard-peers}
 
-网络成员部署[同级](blockchain_component_overview.html#peer)来存储其网络分类帐副本并运行用于查询或更新分类帐的链代码。如果支持策略将某个同级定义为支持同级，那么该同级还会将支持结果返回给应用程序。
+Network members deploy [peers](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview-peer) to store their copies of network ledger and to run chaincode to query or update the ledger. If the endorsement policy defines a peer as an endorsing peer, the peer also returns endorsement results to applications.
 
-单击右上角的**添加同级**按钮，以将同级节点添加到网络。在弹出的“添加同级”面板中，选择要添加的同级节点的数目和大小。您可以根据自己的需求为组织添加更多同级。如果需要更多同级，您可能处于不同的场景中。例如，您可能希望多个同级加入同一个通道以实现冗余。每个同级都会处理该通道的事务，并写入其各自的分类帐副本。如果其中一个同级发生故障，另一个同级（或其他多个同级）可以继续处理事务和应用程序请求。您还可以在各同级之间对所有应用程序请求进行对称负载均衡，或者可以针对不同的功能将不同的同级设定为目标。例如，可以使用一个同级来查询分类账，而使用另一个同级来处理对分类帐更新的支持。
+Click the **Add Peers** button at the upper right to add peer nodes to your network. In the pop-up "Add Peers" panel, select the number and size of peer nodes you want to add. You can add more peers for your organizations based on your own requirements. You might be in different scenarios when you need more peers. For example, you might want multiple peers to join the same channel for redundancy. Each peer processes the channel's transactions and writes to their respective copies of the ledger. If one of the peers fail, the other peer (or multiple other peers) can continue processing transactions and application requests. You can also symmetrically load balance all application requests across the peers, or you could target different peers for different functions. For example, you can use one peer to query the ledger and use another peer to process endorsements for ledger updates.
 
-**入门套餐**为在缺省情况下启动网络时形成的两个组织分别创建一个同级。
+**Starter Plan** creates one peer for each of the two organizations formed when the network is started by default.
 
+### Storage (for Starter Plan networks)
+{: #ibp-dashboard-storage}
 
-### 存储（适用于入门套餐网络）
-{: #storage}
+**Figure 2** shows the "Storage" tab that displays your network's storage consumption.
 
-**图 2** 显示“存储”选项卡，其中显示网络的存储使用情况。
+![Storage tab in Overview screen](images/monitor_storage_starter.png "Storage")
+*Figure 2. Storage*
 
-![“概述”屏幕上的“存储”选项卡](images/monitor_storage_starter.png "存储")
-*图 2. 存储*
+The "Resources" diagram displays the storage space that peers and certificate authorities use. All the organizations that you create or invite to your network are included in this pool. The organizations that consume resources are listed on the screen in the second bullet.
 
-“资源”图显示了同级和认证中心使用的存储空间。您创建或邀请到网络的所有组织都包含在此池中。在屏幕的第二个项目符号上列示了使用资源的组织。
+The ordering service consumes storage from a separate resource pool. Your ordering service might consume more resources when members of the network create new channels and generate new blocks of transactions.
 
-排序服务使用来自不同资源池的存储空间。当网络成员创建新的通道并生成新的事务块时，排序服务可能会使用更多资源。
+## Members
+{: #ibp-dashboard-members}
 
+The "Members" screen contains two tabs to display network member information in the "Members" tab and certificate information in the "Certificates" tab.
 
-## 成员
-{: #members}
-“成员”屏幕包含两个选项卡，用于在“成员”选项卡中显示网络成员信息，在“证书”选项卡中显示证书信息。
+### Add members to Enterprise Plan networks
+{: #ibp-dashboard-members-tab}
 
-### 向企业套餐网络添加成员
-{: #members_tab}
+**Figure 3** shows the initial "Members" screen that displays your network members in the "Members" tab:
 
-**图 3** 显示初始“成员”屏幕，其中在“成员”选项卡中显示网络成员：
+![Members tab in Members screen](images/monitor_members.png "Network members")
+*Figure 3. Network members*
 
-![“成员”屏幕中的“成员”选项卡](images/monitor_members.png "网络成员")
-*图 3. 网络成员*
+You can invite other members in the "Members" tab to add to those that are initially invited when you create the network. To invite a member to your network, enter the institution name and operator's email address and click **Add Member**. A network can have a total of 15 members (including the network initiator). To remove a member from your network, click the "remove" symbol at the end of the member row.
 
-您可以邀请“成员”选项卡中的其他成员，以添加到创建网络时最初邀请的那些成员。要邀请成员加入您的网络，请输入机构名称和操作员的电子邮件地址，然后单击**添加成员**。网络总计可以有 15 个成员（包括网络发起者）。要从网络中除去成员，请单击成员行末尾的“除去”符号。
+### Add members to Starter Plan networks
 
-### 向入门套餐网络添加成员
+**Figure 4** shows the "Add member" window.
 
-**图 4** 显示“添加成员”窗口。
+![Add member](images/invite_member_starter.png "Add member")
+*Figure 4. Add member*
 
-![添加成员](images/invite_member_starter.png "添加成员")
-*图 4. 添加成员*
+When you click **Add Member** you will be presented with two options:
+- **Invite a member**. You can invite other organizations to become members of your network. The invited organizations can then join and collaborate with you in the network.
+- **Create member**. You can also create a member by using your own email address. You would have control of it just as you have of the two organizations that you receive with Starter Plan by default.
 
-单击**添加成员**时，将显示以下两个选项：
-- **邀请成员**。您可以邀请其他组织成为您网络的成员。随后，受邀组织可以加入网络并与您协作。
-- **创建成员**。您还可以使用自己的电子邮件地址来创建成员。您可以对成员进行控制，就像对使用入门套餐时缺省情况下收到的两个组织那样。
 
+### Certificates
+{: #ibp-dashboard-certificates}
 
-### 证书
-{: #certificates_tab}
+**Figure 5** shows the initial "Members" screen that displays member certificates in the "Certificates" tab:
 
-**图 5** 显示初始“成员”屏幕，其中在“证书”选项卡中显示成员证书：
+![Certificates tab in Members screen](images/monitor_certificates.png "Certificates")
+*Figure 5. Certificates*
 
-![“成员”屏幕中的“证书”选项卡](images/monitor_certificates.png "证书")
-*图 5. 证书*
+Operators can manage the certificates for the members in the same institution in the "Certificates" tab. Click **Add Certificate** to open the "Add Certificate" panel. Give a name to your certificate, paste your client-side certificates in PEM format to the "Key" field, and click **Submit**. You need to restart your peers before the client-side certificates can take effect.
 
-操作员可以在“证书”选项卡中管理同一机构的成员的证书。单击**添加证书**以打开“添加证书”面板。向证书提供名称、将 PEM 格式的客户机端证书粘贴到“密钥”字段，然后单击**提交**。您需要在客户机端证书生效之前重新启动同级。
+For more information about generating your certificate key, see [Enrolling your application](/docs/services/blockchain/v10_application.html#dev-app-enroll).
 
-有关生成证书密钥的更多信息，请参阅[注册应用程序](v10_application.html#enroll-app)。
+## Channels
+{: #ibp-dashboard-channels}
 
+Consisting of a subset of network members who want to transact privately, channels provide data isolation and confidentiality by allowing the members of a channel to establish specific rules and a separate ledger, which only channel members can access. Every network must have at least one channel for transactions to take place. Each channel has a unique ledger and users must be properly authenticated to perform read/write operations against this ledger. If you're not on a channel, you can't see any data.
 
-## 通道
-{: #channels}
+**Figure 6** shows the initial dashboard screen displaying an overview of all channels in your network:
 
-通道由希望以专用方式处理事务的网络成员子集构成，用于通过允许通道成员建立特定规则和单独的分类帐（只有通道成员可以访问）来提供数据隔离和机密性。每个网络都必须至少有一个通道，以便进行事务处理。每个通道具有唯一的分类帐，用户必须经过正确的认证才能对此分类帐执行读/写操作。如果您不在通道上，那么看不到任何数据。
+![Channels](images/channels.png "Channels")
+*Figure 6. Channels*
 
-**图 6** 显示初始仪表板屏幕，其中显示网络中所有通道的概述：
+Creating a channel results in the generation of a channel-specific ledger. For more information, see [Creating a channel](/docs/services/blockchain/howto/create_channel.html#ibp-create-channel).
 
-![通道](images/channels.png "通道")
-*图 6. 通道*
+You can also select an existing channel to view more precise details about the channel, membership, and active chaincode. For more information, see [Monitoring a network](/docs/services/blockchain/howto/monitor_network.html#monitor-blockchain-network).
 
-创建通道将生成特定于通道的分类帐。有关更多信息，请参阅[创建通道](howto/create_channel.html)。
+If you have uploaded a new certificate to the platform by using the ["Certificates" tab](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-certificates) of the "Members" screen, you can use this panel to add the certificate to a channel. Click **Sync Certificate** from the drop-down list under the **Actions** header next to the relevant channel. This allows you to operate the channel from a remote client, including being able to instantiate a chaincode on the channel. For more information, see [Uploading signing certificates to {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/certificates.html#managing-certificates-upload-certs) in the [Managing certificates](/docs/services/blockchain/certificates.html#managing-certificates) tutorial.
 
-您还可以选择现有通道以查看有关通道、成员资格和活动链代码的更精确详细信息。有关更多信息，请参阅[监视网络](howto/monitor_network.html)。
+## Notifications
+{: #ibp-dashboard-notifications}
 
-如果已使用“成员”屏幕的[“证书”选项卡](#certificates_tab)将新证书上传到平台，那么可以使用此面板将证书添加到通道。从相关通道旁的**操作**标头下的下拉列表中单击**同步证书**。这将允许您从远程客户机操作通道，包括能够在通道上实例化链代码。有关更多信息，请参阅[管理证书](certificates.html)教程中的[将签名证书上传到 {{site.data.keyword.blockchainfull_notm}} Platform](certificates.html#upload-certs)。
+When you create a channel or are invited to a new channel, a notification appears in the Network Monitor. You can view and respond to these requests in the "Notifications" screen.
 
+**Figure 7** shows the "Notifications" screen:
 
-## 通知
-{: #notifications}
+![Notifications](images/notifications.png "Notifications")
+*Figure 7. Notifications*
 
-在您创建通道或您受邀加入新通道时，将在“网络监视器”中出现一个通知。您可以在“通知”屏幕中查看并响应这些请求。
+The requests are grouped into "All", "Pending", and "Completed" subtabs. Numbers after the subtab header indicate the number of requests in each subtab.
+   * You can find all your requests in the "All" subtab.
+   * Requests that you have not accepted or declined, or you have not viewed, are in the "Pending" subtab. Click the **Review Request** button to view the request, which includes the channel policy and members, and voting status. If you are a channel operator, you can either **Accept** or **Decline** the request, or handle it at another time by clicking **Later**. If the request is accepted by enough channel operators, you can click **Submit Request** to activate the channel update.
+   * A submitted request will appear in the "Completed" subtab. You can click **Review Request** to view its details.
 
-**图 7** 显示“通知”屏幕：
+When you have a long list of requests, you can search for a request in the search field on the top.
 
-![通知](images/notifications.png "通知")
-*图 7. 通知*
+Pending requests can be deleted by selecting the boxes in the front of them and clicking **Delete Request**. Note that a completed request cannot be deleted.
 
-这些请求分组为“全部”、“暂挂”和“已完成”子选项卡。子选项卡标题后的数字指示每个子选项卡中的请求数。
-   * 您可以在“全部”子选项卡中找到所有请求。
-   * 未接受或拒绝的请求或尚未查看的请求在“暂挂”子选项卡中。单击**复查请求**按钮以查看请求，包括通道策略和成员，以及投票状态。如果您是通道操作员，那么您可以**接受**或**拒绝**请求，或者单击**稍后**以在其他时间对其进行处理。如果有足够多的通道操作员接受请求，那么您可以单击**提交请求**以激活通道更新。
-   * 提交的请求将显示在“已完成”子选项卡中。您可以单击**复查请求**以查看其详细信息。
+## Certificate Authority
+{: #ibp-dashboard-ca}
 
-如果有一个较长的请求列表，那么可以在顶部的搜索字段中搜索请求。
+The table on "Certificate Authority" (CA) screen displays all of the identities that have been registered with your organization, including your admin, peers, and client applications. You can also use this screen to register a new identity.
 
-通过选择暂挂请求前面的框并单击**删除请求**，可以删除暂挂请求。请注意，无法删除已完成的请求。
+**Figure 8** shows the "Certificate Authority" screen:
 
+![Certificate Authority](images/CA_screen.png "Certificate Authority")
+*Figure 8. Certificate Authority*
 
-## 认证中心
+Click the **Generate Certificate** button next to your admin identity to get a new public certificate and private key from your CA. The **Certificate** field contains the public certificate, also referred to as the signCert or enrollment cert, just above the **Private Key**. You can click the copy icon at the end of each field to copy the value. This panel can be used an alternative way to generate a public and private key pair for a client application which uses the Fabric SDK. To learn more, visit the [developing applications tutorial](/docs/services/blockchain/v10_application.html#dev-app). **Note** that {{site.data.keyword.blockchainfull_notm}} Platform doesn't store these certificates. You need to safely save and store them.
 
-{: #ca}
+Click the **Add User** button to register a new identity to your organization. In the **Add User** pop-up window, complete the following fields and then click **Submit**.
+  - **Enroll ID:** This will be the name of your new identity that is sometimes referred to as your `enroll ID`. **Save this Value** and you need to use it when you configure a remote peer or enroll a new application.
+  - **Enroll Secret:** This will be the password to your identity that is sometimes referred to as your `enroll Secret`. **Save this Value** and you need to use it when you configure a remote peer or enroll a new application.
+  - **Type:** Select the type of identity that you want to register, either peer or client application.
+  - **Affiliation:** This will be the affiliation within your organization, such as `org1` for example, that the identity will belong to.
+  - **Maximum Enrollments:** You can use this field to limit the number of times that your can enroll or generate certificates with this identity. If you leave the field blank, the value defaults to an unlimited number of enrollments.
 
-“认证中心”(CA) 屏幕上的表显示向组织注册的所有标识，包括管理员、同级和客户机应用程序。您还可以使用此屏幕来注册新身份。
+You can learn more about your CA by visiting the [Managing certificates on {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/certificates.html#managing-certificates) tutorial.
 
-**图 8** 显示“认证中心”屏幕：
+## APIs
+{: #ibp-dashboard-apis}
 
-![认证中心](images/CA_screen.png "认证中心")
-*图 8. 认证中心*
+{{site.data.keyword.blockchainfull_notm}} Platform exposes a number of REST APIs in Swagger that you can use to manage the nodes, channels, peers, and members of your network. Your applications can use these APIs to control important network resources without using the network monitor.
 
-单击您的管理员身份旁边的**生成证书**按钮，以从您的 CA 获取新的公用证书和专用密钥。**证书**字段包含公用证书，也称为 signCert 或注册证书，位于**专用密钥**正上方。您可以单击每个字段末尾的复制图标以复制值。此面板也可用作替代方法来针对使用 Fabric SDK 的客户机应用程序生成公用和专用密钥对。要了解更多信息，请参阅[开发应用程序教程](v10_application.html#enroll-panel)。**请注意**，{{site.data.keyword.blockchainfull_notm}} Platform 不存储这些证书。您需要安全地保存并存储它们。
+**Figure 9** shows the "APIs" screen:
 
-单击**添加用户**按钮以向组织注册新身份。在**添加用户**弹出窗口中，填写以下字段，然后单击**提交**。
-  - **注册标识：**这将是新身份的名称，有时也称为 `enroll ID`。**保存此值**，配置远程同级或注册新应用程序时需要使用此值。
-  - **注册密钥：**这将是您的身份的密码，有时也称为 `enroll Secret`。**保存此值**，配置远程同级或注册新应用程序时需要使用此值。  
-  - **类型：**选择想要注册的身份的类型：同级或客户机应用程序。
-  - **亲缘关系：**这将是身份所属的组织（如 `org1`）内的亲缘关系。
-  - **最大注册数：**您可以使用此字段来限制可使用此身份注册或生成证书的次数。如果保留此字段为空，那么值缺省为不限制注册数。
+![APIs](images/API_screen.png "APIs")
+*Figure 9. APIs*
 
-您可以通过访问[管理 {{site.data.keyword.blockchainfull_notm}} Platform 上的证书](certificates.html)教程来了解有关 CA 的更多信息。
+Click the **Swagger UI** link to open the Swagger UI. Note that you need to authorize the Swagger UI with your network credentials (which can be found on this APIs page) before you can run the APIs. For more information, see [Interacting with the network using Swagger APIs](/docs/services/blockchain/howto/swagger_apis.html#ibp-swagger).
 
+## Develop Code
+{: #ibp-dashboard-write-code}
 
-## API
-{: #apis}
+{{site.data.keyword.IBM_notm}} does not provide support for networks using Hyperledger Composer in production, including the Composer CLI, JavaScript APIs, REST server, and Web Playground.{:note}
 
-{{site.data.keyword.blockchainfull_notm}} Platform 公开了使用 Swagger 生成的若干 REST API，可用于管理网络中的节点、通道、同级和成员。应用程序可以使用这些 API 来控制重要的网络资源，而无需使用“网络监视器”。
+Starter Plan and Enterprise Plan provide a development environment with industry standard tools and technologies. After you develop a network, you can deploy it to your network.
 
-**图 9** 显示“API”屏幕：
+**Figure 10** shows the "Develop code" screen:
 
-![API](images/API_screen.png "API")
-*图 9. API*
+![Develop code](images/write_code.png "Develop code")
+*Figure 10. Develop code*
 
-单击 **Swagger UI** 链接以打开 Swagger UI。请注意，您需要先使用自己的网络凭证（可以在此 API 页面上找到）来授权 Swagger UI，然后才能运行 API。有关更多信息，请参阅[使用 Swagger API 与网络进行交互](howto/swagger_apis.html)。
+For more information about developing and deploying your business networks, see [Deploying business networks on Starter and Enterprise Plan](/docs/services/blockchain/develop_starter_enterprise.html#deploying-a-business-network).
 
-## 开发代码
-{: #write-code}
+## Install code
+{: #ibp-dashboard-chaincode}
 
-入门套餐和企业套餐集成了 {{site.data.keyword.blockchainfull_notm}} Platform: Develop，并提供了具有业界标准工具和技术的开发环境。您可以在该环境中以联机或本地方式开发网络。开发网络后，可以将其部署回企业套餐网络。
+Chaincode, which is also known as "smart contract", is pieces of software that contains a set of functions to query and update the ledger. They are installed on peers and instantiated on a channel.
 
-**图 10** 显示“开发代码”屏幕：
+**Figure 11** shows the "Install code" screen:
 
-![开发代码](images/write_code.png "开发代码")
-*图 10. 开发代码*
+![Install code](images/chaincode_install_overview.png "Install code")
+*Figure 11. Install code*
 
-有关使用企业套餐来开发和部署代码的更多信息，请参阅[使用企业套餐开发业务网络](develop_enterprise.html)。
+A chaincode is first installed on a peer's file system and then instantiated on a channel. For more information, see [Installing, instantiating, and updating a chaincode](/docs/services/blockchain/howto/install_instantiate_chaincode.html#install-instantiate-chaincode).
 
-## 安装代码
-{: #chaincode}
+## Try samples
+{: #ibp-dashboard-samples}
 
-链代码（也称为“智能合同”）是包含一组对分类帐进行查询和更新的函数的软件片段。链代码安装在同级上并在通道上进行实例化。
+Sample applications help you to get a better understanding of a blockchain network and application development. Follow the **View on GitHub** links to learn how to use the samples and deploy them to {{site.data.keyword.blockchainfull_notm}} Platform. For more information on how to develop and deploy your samples, see [Deploying Sample Applications](/docs/services/blockchain/howto/prebuilt_samples.html#deploying-sample-applications).
 
-**图 10** 显示“安装代码”屏幕：
+**Figure 12** shows the "Try samples" screen:
 
-![安装代码](images/chaincode_install_overview.png "安装代码")
-*图 11. 安装代码*
+![Try samples](images/sample_overview_ep.png "Try samples")
+*Figure 12. Samples*
 
-链代码首先安装在同级的文件系统上，然后在通道上进行实例化。有关更多信息，请参阅[安装、实例化和更新链代码](howto/install_instantiate_chaincode.html)。
+## Get help
+{: #ibp-dashboard-support}
 
+The "Get help" screen contains a "Support" tab that provides a list of resources for developers and a "Release Notes" tab that describes new functions on {{site.data.keyword.blockchainfull_notm}} Platform.
 
-## 试用样本
-{: #samples}
+**Figure 13** displays the information in the initial "Support" tab:
 
-样本应用程序可帮助您更好地了解区块链网络和应用程序开发。请访问**在 GitHub 上查看**链接，以了解如何使用样本并将其部署到 {{site.data.keyword.blockchainfull_notm}} Platform。有关如何开发和部署样本的更多信息，请参阅[部署样本应用程序](howto/prebuilt_samples.html)。
+![Support](images/support.png "Support")
+*Figure 13. Blockchain support*
 
-**图 12** 显示“试用样本”屏幕：
+### Blockchain resources and support forums
+{: #ibp-dashboard-support-forums}
 
-![试用样本](images/sample_overview_ep.png "试用样本")
-*图 12. 样本*
+Use the resources in the "Support" tab to troubleshoot problems and get help from {{site.data.keyword.IBM_notm}} and the Fabric community. For more information about the links on the "Support" tab, see [Resources and support forums](/docs/services/blockchain/ibmblockchain_support.html#blockchain-support-resources) in [Getting support](/docs/services/blockchain/ibmblockchain_support.html#blockchain-support).
 
+[IBM dWAnswers ![External link icon](images/external_link.svg "External link icon")](https://developer.ibm.com/answers/smartspace/blockchain/) is a community forum for users of {{site.data.keyword.blockchainfull_notm}} Platform and Hyperledger Fabric and is monitored by IBM experts. You can search for answers to previously posed questions or submit a new question. If you cannot debug your issue or ascertain an answer to your question, submit a support case in the {{site.data.keyword.cloud_notm}} Service Portal. For more information, see [Submitting support cases](/docs/services/blockchain/ibmblockchain_support.html#blockchain-support-cases).
 
-## 获取帮助
-{: #support}
 
-“获取帮助”屏幕包含“支持”选项卡（为开发人员提供资源列表）和“发行说明”（描述 {{site.data.keyword.blockchainfull}} Platform 上的新功能）。
+### Fabric release notes
+{: #ibp-dashboard-release-notes}
 
-**图 13** 显示初始“支持”选择卡中的信息：
+The "Release Notes" tab displays the latest features of your network. The "Network Monitor UI" button lists new functions and bug fixes for the {{site.data.keyword.blockchainfull_notm}} Platform user experience. The "Hyperledger Fabric" button will direct you to the release notes for your network's version of Hyperledger Fabric and the Fabric Certificate Authority.
 
-![支持](images/support.png "支持")
-*图 13. 区块链支持*
+**Figure 14** displays the release notes for the Network Monitor UI.
 
+![Release notes helios](images/releasenotes_helios.png "Release notes of Network Monitor UI")
+*Figures 14. Release notes for Network Monitor UI*
 
-### 区块链资源和支持论坛
-{: #support-forums}
+**Figure 15** displays the release notes for your networks version of Hyperledger Fabric and the Fabric Certificate Authority.
 
-使用“支持”选项卡中的资源对问题进行故障诊断，并从 {{site.data.keyword.IBM_notm}} 和 Fabric 社区获取帮助。有关“支持”选项卡上的链接的更多信息，请参阅[获取支持](ibmblockchain_support.html)中的[资源和支持论坛](ibmblockchain_support.html#resources)。
+![Release notes Fabric](images/releasenotes_Fabric.png "Release notes of Fabric")
+*Figures 15. Release notes for Fabric*
 
-[IBM dWAnswers ![外部链接图标](images/external_link.svg "外部链接图标")](https://developer.ibm.com/answers/smartspace/blockchain/) 是
-{{site.data.keyword.blockchainfull_notm}} Platform 和 Hyperledger Fabric 用户的社区论坛，由 IBM 专家监视。您可以搜索先前发布的问题的解答，也可以提交新问题。如果您无法调试问题或确定问题的答案，请在 {{site.data.keyword.cloud_notm}} 服务门户网站中提交支持案例。有关更多信息，请参阅[提交支持案例](ibmblockchain_support.html#support-cases)。
+## Network preferences
+{: #ibp-dashboard-network-preferences}
 
+Click the upper right corner and open the drop-down menu and then the **Network preferences**. The Network preferences window opens. The Network preferences window shows the basic information of your network, such as network name, Fabric version, network location in {{site.data.keyword.cloud_notm}}, and state database type.
 
-### Fabric 发行说明
-{: #release-notes}
+**Enterprise Plan networks** that are created after May 15th, 2018 will run on Hyperledger Fabric v1.1.1. If you create networks after the upgrade, you can also manage web inactivity timeout and mutual TLS for your network in the Network preferences window. These settings can be changed by the network initiator only.
 
-“发行说明”选项卡显示网络的最新功能。“网络监视器 UI”按钮列出了 {{site.data.keyword.blockchainfull}} Platform 用户体验的新功能和错误修订。“Hyperledger Fabric”按钮将引导您获取网络版本的 Hyperledger Fabric 和 Fabric 认证中心的发行说明。
+### Web inactivity timeout
+{: #ibp-dashboard-web-inactivity-timeout}
 
-**图 14** 显示“网络监视器 UI”的发行说明。
+**Note**: Only **network initiator** can change the web inactivity timeout setting. This is a network level setting and will affect all network members.
 
-![Helios 发行说明](images/releasenotes_helios.png "“网络监视器 UI”的发行说明")
-*图 14.“网络监视器 UI”的发行说明*
+The web inactivity timeout is set to **Off** by default. If you turn the web inactivity timeout to **On**, any member of the network will be logged out automatically after 10 minutes of inactivity. When the web inactivity timer reaches 10 minutes, the web inactivity timeout function ends the inactive web sessions to ensure security of the network member's account. Clicking a link or refreshing the Network Monitor resets the web inactivity timer. Before reaching 10 minutes, closing the browser window or tab also ends the web session.
 
-**图 15** 显示网络版本的 Hyperledger Fabric 和 Fabric 认证中心的发行说明。
+**Figure 16** shows the "Network preferences" window:
 
-![Fabric 发行说明](images/releasenotes_Fabric.png "Fabric 发行说明")
-*图 15. Fabric 发行说明*
+![Network preferences](images/network_preferences.gif "Network preferences")
+*Figure 16. Network preferences*
 
+### Mutual TLS (for Enterprise Plan networks)
+{: #ibp-dashboard-mutual-tls}
 
-## 网络首选项
-{: #network-preferences}
+**Enterprise Plan networks** offer you the ability to enable Mutual TLS to secure the communication between your application and your blockchain components.
 
-单击右上角并打开下拉菜单，然后选择**网络首选项**。这将打开“网络首选项”窗口。“网络首选项”窗口显示网络的基本信息，例如，网络名称、Fabric 版本、{{site.data.keyword.cloud_notm}} 中的网络位置以及状态数据库类型。
+**Note**: Only a **network initiator** can enable or disable the mutual TLS. This is a network level setting and will affect all network members.
 
-2018 年 5 月 15 日后创建的**企业套餐网络**将在 Hyperledger Fabric V1.1.1 上运行。如果在升级后创建网络，那么还可以在“网络首选项”窗口中管理网络的 Web 不活动超时和双向 TLS。只有网络发起方可更改这些设置。
+The mutual TLS button is set to **Off** by default. If you enable mutual TLS, you need to update your applications to support this function. Otherwise, your applications will not be able to communicate with your network.
 
-### Web 不活动超时
-{: #web-inactivity-timeout}
+For a Fabric 1.1 Enterprise plan network, each organization has its own mutual TLS certificate authority (CA). The information required to connect to the mutual TLS CA is available in the [Connection profile](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-connection-profile) accessible from your **Overview** screen in the Network Monitor by clicking the **Connection Profile** button. The connection profile contains the necessary information to connect to the CA and get the certificates you need to connect to your network.
 
-**注**：仅**网络发起者**可更改 Web 不活动超时设置。这是网络级别设置，将影响所有网络成员。
+In the Connection Profile, locate the `certificateAuthorities` section where you will find the following attributes that are necessary to enroll and get the certificates to communicate with your network using Mutual TLS.
 
-缺省情况下，Web 不活动超时设置为**关闭**。如果**开启** Web 不活动超时，那么任何网络成员在处于不活动状态 10 分钟后将自动注销。在 Web 不活动计时器到达 10 分钟时，Web 不活动超时功能结束处于不活动状态的 Web 会话以确保网络成员帐户的安全性。单击链接或刷新“网络监视器”会重置 Web 不活动计时器。在到达 10 分钟之前，关闭浏览器窗口或选项卡也会结束 Web 会话。
+- `url`: URL for connecting to the CA that can give out mutual TLS certificates
+- `enrollId`: Enroll ID to use for getting a certificate
+- `enrollSecret`: Enroll secret to use for getting a certificate
+- `x-tlsCAName`: CA name to use for getting certificate that will allow the application to communicate with Mutual TLS.
 
-**图 16** 显示“网络首选项”窗口：
-
-![网络首选项](images/network_preferences.gif "网络首选项")
-*图 16. 网络首选项*
-
-### 双向 TLS（用于企业套餐网络）
-{: #mutual-tls}
-
-**企业套餐网络**使您能够启用双向 TLS 来保护应用程序和区块链组件之间的通信。
-
-**注**：仅**网络发起方**可启用或禁用双向 TLS。这是网络级别设置，将影响所有网络成员。
-
-缺省情况下，双向 TLS 按钮设置为**关闭**。如果启用双向 TLS，那么需要更新应用程序以支持此功能。否则，应用程序将无法与网络进行通信。
-
-对于 Fabric 1.1 企业套餐网络，每个组织都具有其自己的双向 TLS 认证中心 (CA)。[连接概要文件](#connection-profile)中提供连接到双向 TLS CA 所需的信息，可通过从“网络监视器”的**概述**屏幕单击**连接概要文件**按钮访问连接概要文件。连接概要文件包含连接至 CA 并获取连接到网络所需的证书的必需信息。
-
-在“连接概要文件”中，找到 `certificateAuthorities` 部分，您将在其中找到注册以及获取证书以使用“双向 TLS”与网络进行通信所需的以下属性。
-
-- `url`：用于连接到可提供双向 TLS 证书的 CA 的 URL
-- `enrollId`：用于获取证书的注册标识
-- `enrollSecret`：用于获取证书的注册密钥
-- `x-tlsCAName`：用于获取将允许应用程序使用“双向 TLS”进行通信的证书的 CA 名称。
-
-有关更新应用程序以支持双向 TLS 的更多信息，请参阅[如何配置双向 TLS ![外部链接图标](images/external_link.svg "外部链接图标")](https://fabric-sdk-node.github.io/tutorial-mutual-tls.html)
+For more information about updating your applications to support mutual TLS, see [How to configure mutual TLS ![External link icon](images/external_link.svg "External link icon")](https://fabric-sdk-node.github.io/tutorial-mutual-tls.html)
 
 <!--
 
@@ -322,51 +317,51 @@ Before Enterprise Plan upgrades to Fabric v1.1, all network peers store data in 
 
 To use CouchDB, your data must be stored in a data format that can be modeled in chaincode, such as JSON. If the decision is made to migrate from LevelDB to CouchDB, the {{site.data.keyword.blockchainfull_notm}} Platform will migrate your data from key-value format to the CouchDB format automatically.
 
-If you switch to CouchDB, you need to update your chaincode to take advantage of indexes and rich queries. For more information about CouchDB and how to set up indexes, see [Best practices when using CouchDB](../v10_application.html#couchdb-indices) in the Developing applications tutorial. For more information about updating chaincode in {{site.data.keyword.blockchainfull_notm}} Platform, see [Updating a chaincode](howto/install_instantiate_chaincode.html#updating-a-chaincode).
+If you switch to CouchDB, you need to update your chaincode to take advantage of indexes and rich queries. For more information about CouchDB and how to set up indexes, see [Best practices when using CouchDB](/docs/services/blockchain/best_practices.html#best-practices-app-couchdb-indices) in the Developing applications tutorial. For more information about updating chaincode in {{site.data.keyword.blockchainfull_notm}} Platform, see [Updating a chaincode](/docs/services/blockchain/howto/install_instantiate_chaincode.html#install-instantiate-chaincode-update-cc).
 
 -->
 
-**图 17** 显示“网络首选项”窗口：
+**Figure 17** shows the "Network preferences" window:
 
-![网络首选项](images/network_preferences_ep_tmp.png "网络首选项")
-*图 17. 网络首选项*
+![Network preferences](images/network_preferences_ep_tmp.png "Network preferences")
+*Figure 17. Network preferences*
 
-## 更新网络名称
-{: #network-name}
+## Update network name
+{: #ibp-dashboard-network-name}
 
-创建入门套餐或企业套餐实例时，{{site.data.keyword.blockchainfull_notm}} Platform 会为您的网络分配名称。但是，可随时在“网络监视器”中更新此网络名称。
+When you create an instance of Starter Plan or Enterprise Plan, {{site.data.keyword.blockchainfull_notm}} Platform assigns a name to your network. However, you can update this network name at anytime in your Network Monitor.
 
-在“网络监视器”左侧导航器的顶部，单击网络名称，此字段将变为可编辑。输入要使用的新网络名称，然后按 **Enter** 键。将在几秒内更新网络名称。
+On the top of the left navigator in the Network Monitor, click the network name and the field becomes editable. Type the new network name that you want to use and press the **Enter** key. Your network name will be updated in a few seconds.
 
-**图 18** 显示将入门套餐网络名称从指定的名称更新为“入门套餐网络”的步骤。
+**Figure 18** shows the steps to update the Starter Plan network name from the assigned name to "Starter Plan Network".
 
-![更新网络名称](images/update_network_name_ep.gif "更新网络名称")
-*图 18. 更新网络名称*
-
-
-## 在网络间切换（适用于入门套餐网络）
-{: #switch-network}
-
-如果使用入门套餐创建多个网络，那么可在“网络监视器”中切换网络。
-
-在“网络监视器”左侧导航器的顶部，单击网络名称旁边的箭头图标。从下拉列表中选择并单击要切换到的网络名称。Web 浏览器将刷新并打开所切换到的网络的“网络监视器”。
-
-**图 19** 显示切换到另一个入门套餐网络的步骤。
-
-![切换网络](images/switch_network.gif "切换网络")
-*图 19. 切换网络*
+![Update network name](images/update_network_name_ep.gif "Update network name")
+*Figure 18. Update network name*
 
 
-## 重置网络（适用于入门套餐网络）
-{: #reset-network}
+## Switch between networks (for Starter Plan networks)
+{: #ibp-dashboard-switch-network}
 
-入门套餐网络提供了在不删除并重新创建网络的情况下编辑网络配置的功能。您的网络会重置为初始网络配置，其中包含两个组织（每个组织对应一个同级）以及一个缺省通道。例如，要在区块链网络上运行多轮测试时，此功能非常有用，它允许您从干净的网络重新开始。
+If you create more than one network with Starter Plan, you can switch between your networks in the Network Monitor.
 
-**注意**：重置网络后，同级、排序者和 CA 的 API 端点都会更改。您需要在应用程序中调整 API 端点信息。
+On the top of the left navigator in the Network Monitor, click the arrow icon beside your network name. Select and click the network name of which you want to switch to from the drop-down list. Your web browser will refresh and open the Network Monitor of the network that you switch to.
 
-单击右上角并打开下拉菜单。单击菜单中的**重置网络**按钮。如果已准备好重置网络，请单击**确定**以继续。“网络监视器”将刷新以反映新设置。
+**Figure 19** shows the steps to switch to another Starter Plan network.
 
-**图 20** 显示“重置网络”功能：
+![Switch network](images/switch_network.gif "Switch network")
+*Figure 19. Switch network*
 
-![重置网络](images/reset_network.png "重置网络")
-*图 20. 重置网络*
+
+## Reset network (for Starter Plan networks)
+{: #ibp-dashboard-reset-network}
+
+Starter Plan networks offer the capability to edit your network configuration without deleting and re-creating a network. Your network is reset back to the initial network configuration, which includes two organizations, one peer per each organization, and a default channel. This is useful, for example, when you are running rounds of tests on the blockchain network and need to start over from a clean network.
+
+**Caution**: After you reset the network, the API endpoints of your peers, orderer, and CA are changed. You need to adjust API endpoint information in your applications.
+
+Click the upper right corner and opens the drop-down menu. Click the **Reset Network** button in the menu. If you are ready to reset your network, click **OK** to continue. Your Network Monitor will be refreshed to reflect your new settings.
+
+**Figure 20** shows the "Reset network" function:
+
+![Reset network](images/reset_network.png "Reset Network")
+*Figure 20. Reset network*

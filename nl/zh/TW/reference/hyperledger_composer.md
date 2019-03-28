@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-31"
+lastupdated: "2018-12-08"
 ---
 
 {:new_window: target="_blank"}
@@ -15,36 +15,37 @@ lastupdated: "2018-08-31"
 # Hyperledger Composer
 {: #hyperledger-composer}
 
+**IBM recommends using Hyperledger Composer solely for demos and proof-of-concepts. IBM does not provide support for networks using Hyperledger Composer in production, including the Composer CLI, JavaScript APIs, REST server, and Web Playground.**
 
-***[此頁面有幫助嗎？請告訴我們。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 
-{{site.data.keyword.blockchainfull}} Platform: Develop 以開放程式碼 Hyperledger Composer 工具集為建置基礎，為 Linux Foundation 的 Hyperledger Project 中的專案之一。Hyperledger Composer 可讓架構師和開發人員使用對 Web 或行動應用程式公開商業邏輯的 REST API 快速建立 {{site.data.keyword.blockchain}} 解決方案，並可將區塊鏈與現有企業記錄系統整合。
+{{site.data.keyword.blockchainfull}} Platform: Develop is built on the open-source Hyperledger Composer toolset, one of the projects within the Linux Foundation's Hyperledger Project. Hyperledger Composer enables architects and developers to quickly create {{site.data.keyword.blockchain}} solutions with REST APIs that expose the business logic to web or mobile applications, as well as integrating blockchain with existing enterprise systems of record.
 {:shortdesc}
 
-Hyperledger Composer 是由運行環境、指令行介面、REST 伺服器、LoopBack 連接器、遊樂場使用者介面、Yeoman 程式碼產生器，以及 VSCode 和 Atom 編輯器外掛程式組合而成。如需 Hyperledger Composer 的相關資訊，請參閱 [Hyperledger Composer 文件 ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](https://hyperledger.github.io/composer/latest/introduction/introduction.html)
+Hyperledger Composer is composed of a runtime, a command line interface, a REST server, LoopBack connector, Playground user interface, Yeoman code generator, and VSCode and Atom editor plugins. For more information on Hyperledger Composer, see the [Hyperledger Composer documentation ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger.github.io/composer/latest/introduction/introduction.html)
 
 
-## 商業網路
+## Business networks
 
-Hyperledger Composer 可讓您將現行商業網路快速模型化，其中包含您現有的資產及其相關交易；資產是有形或無形的商品、服務或財產。在您的商業網路模型中，您要定義可以與資產互動的交易。商業網路也包括與其互動的參與者，每個參與者可與跨多個商業網路的唯一身分相關聯。
+Hyperledger Composer allows you to quickly model your current business network, which contains your existing assets and the transactions related to them; assets are tangible or intangible goods, services, or property. As part of your business network model, you define the transactions which can interact with assets. Business networks also include the participants who interact with them, each of which can be associated with a unique identity, across multiple business networks.
 
-如需建置商業網路的相關資訊，請參閱[開發商業網路](../develop.html)或 [Hyperledger Composer 文件 ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](https://hyperledger.github.io/composer/latest/introduction/introduction.html)。
+For more information on building business networks see [Developing business networks](../develop.html) or the [Hyperledger Composer documentation ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger.github.io/composer/latest/introduction/introduction.html).
 
-## 查詢
+## Queries
 
-查詢可用來傳回區塊鏈廣域狀態的相關資料。查詢定義在商業網路內，其中可包含簡單自訂作業的變數參數。利用查詢，可以從您的 {{site.data.keyword.blockchain}} 網路輕鬆擷取資料。查詢是藉由使用 [Hyperledger Composer API ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](https://hyperledger.github.io/composer/latest/api/api-doc-index) 來傳送。
+Queries are used to return data about the blockchain world-state. Queries are defined within a business network, and can include variable parameters for simple customization. By using queries, data can be easily extracted from your {{site.data.keyword.blockchain}} network. Queries are sent by using the [Hyperledger Composer API ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger.github.io/composer/latest/api/api-doc-index).
 
-如需在商業網路中使用查詢的相關資訊，請參閱[查詢及過濾商業網路資料 ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](https://hyperledger.github.io/composer/latest/tutorials/queries)。
+For more information about using queries in your business network, see [Querying and filtering business network data ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger.github.io/composer/latest/tutorials/queries).
 
-## 身分和商業網路卡
+## Identities and business network cards
 
-在商業網路中，參與者會與身分相關聯。商業網路卡是身分、連線設定檔及 meta 資料的組合，可用來連接至商業網路，以及表明交易的身分。商業網路卡簡化了連接至商業網路的處理程序，並將商業網路之外的身分概念擴展到身分的「錢包」，每個「錢包」各與特定的商業網路和連線設定檔相關聯。
+Within a business network, participants are associated with an identity. Business network cards are a combination of an identity, a connection profile, and metadata; and are used to connect to a business network and demonstrate identity for transactions. Business network cards simplify the process of connecting to a business network, and extend the concept of an identity outside the business network to a 'wallet' of identities, each associated with a specific business network and connection profile.
 
-如需身分和商業網路卡的相關資訊，請參閱[參與者和身分 ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](https://hyperledger.github.io/composer/latest/managing/participantsandidentities)。
+For more information about identities and business network cards, see [Participants and identities ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger.github.io/composer/latest/managing/participantsandidentities).
 
-## Hyperledger Composer REST 伺服器
+## Hyperledger Composer REST server
 
-Hyperledger Composer REST 伺服器會自動為商業網路產生 Swagger REST API。REST 伺服器是以 LoopBack 為基礎，並將商業網路模型轉換為 Open API 定義。在運行環境中，REST 伺服器會為資產和參與者實作「建立」、「讀取」、「更新」及「刪除」支援，並容許提交交易來進行處理或使用查詢來擷取交易。
+The Hyperledger Composer REST server automatically generates a Swagger REST API for a business network. The REST server is based on LoopBack and converts the business network model into an Open API definition. At runtime the REST server implements Create, Read, Update, and Delete support for assets and participants and allows transactions to be submitted for processing or retrieved with queries.
 
-如需 Hyperledger Composer REST 伺服器的相關資訊，請參閱[產生 REST API ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](https://hyperledger.github.io/composer/latest/integrating/getting-started-rest-api)。
+For more information about the Hyperledger Composer REST server, see [Generating a REST API ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger.github.io/composer/latest/integrating/getting-started-rest-api).

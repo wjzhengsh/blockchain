@@ -1,8 +1,10 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-12-07"
+  years: 2017, 2019
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -10,137 +12,145 @@ lastupdated: "2018-12-07"
 {:shortdesc: .shortdesc}
 {:codeblock: .codeblock}
 {:screen: .screen}
+{:note: .note}
+{:important: .important}
+{:tip: .tip}
 {:pre: .pre}
 
-# 用于智能合同的工具
-{: #overview}
+# Tools for smart contracts
+{: #develop-vscode}
 
+The {{site.data.keyword.blockchainfull}} Platform Visual Studio Code extension provides an environment within Visual Studio Code for developing, packaging, and deploying smart contract packages. The extension also includes commands to set up a preconfigured local instance of Hyperledger Fabric for simplified local smart contract development.
 
-***[此页面是否有用？请告诉我们。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+**Please note:** The {{site.data.keyword.blockchainfull_notm}} Platform extension is compatible with {{site.data.keyword.blockchainfull_notm}} Platform Starter Plan networks, and with Hyperledger Fabric versions 1.3.x and later.
 
+## Prerequisites
+{: #develop-vscode-prerequisites}
 
-{{site.data.keyword.blockchainfull}} Platform Visual Studio Code 扩展在 Visual Studio Code 中提供用于开发、打包和部署智能合同包的环境。该扩展还包括用于设置 Hyperledger Fabric 的预配置本地实例的命令，简化了本地智能合同开发。
+Before installing the {{site.data.keyword.blockchainfull_notm}} Platform Visual Studio Code extension, complete the following prerequisites.
 
-**请注意：**{{site.data.keyword.blockchainfull_notm}} Platform 扩展与 {{site.data.keyword.blockchainfull_notm}} Platform 入门套餐网络和 Hyperledger Fabric 1.3.x 兼容。
+- **Install Yeoman**
 
-## 先决条件
+  Yeoman is a generator tool used to create skeleton smart contract projects. Install Yeoman using the following command: `npm install -g yo`
 
-安装 {{site.data.keyword.blockchainfull_notm}} Platform Visual Studio Code 扩展之前，请完成以下先决条件。
+- **Install the Fabric generator for Yeoman**
 
-- **安装 Yeoman**
+  After installing Yeoman, install the Fabric generator for creating skeleton smart contract packages. Install the Fabric generator using the following command: `npm install -g generator-fabric`
 
-  Yeoman 是一种生成器工具，用于创建框架智能合同项目。使用以下命令安装 Yeoman：`npm install -g yo`
+- **Install Docker**
 
-- **为 Yeoman 安装 Fabric 生成器**
+  To run the preconfigured instance of Hyperledger Fabric, ensure you have installed [Docker ![External link icon](images/external_link.svg "External link icon")](https://www.docker.com/).
 
-  安装 Yeoman 之后，安装 Fabric 生成器以创建框架智能合同包。使用以下命令安装 Fabric 生成器：`npm install -g generator-fabric`
+- **Operating system requirements**
 
-- **安装 Docker**
+  Currently, this extension is compatible with Mac, Windows, and Linux.
 
-  要运行 Hyperledger Fabric 的预配置实例，请确保已安装 [Docker](https://www.docker.com/)。
+- **Hyperledger Fabric version requirements**
 
-- **操作系统需求**
+  This extension is compatible with Hyperledger Fabric versions 1.3.0 and later.
 
-  目前，此扩展与 Mac、Windows 和 Linux 兼容。
+- **Hyperledger Fabric version requirements**
 
-- **Hyperledger Fabric 版本需求**
+  This extension is compatible with Hyperledger Fabric versions 1.3.0 and later.
 
-  此扩展与 Hyperledger Fabric V1.3.0 和更高版本兼容。
+## Installing the extension
+{: #develop-vscode-installing-the-extension}
 
-- **Hyperledger Fabric 版本需求**
+1. Navigate to the [Visual Studio Code extension marketplace page ![External link icon](images/external_link.svg "External link icon")](https://marketplace.visualstudio.com/items?itemName=IBMBlockchain.ibm-blockchain-platform) or search for **{{site.data.keyword.blockchainfull_notm}} Platform** in the extensions panel within Visual Studio Code.
+2. Click **Install**.
+3. Restart Visual Studio Code to complete installation of the extension.
 
-  此扩展与 Hyperledger Fabric V1.3.0 和更高版本兼容。
+## Visual Studio Code command palette
+{: #develop-vscode-command-palette}
 
+This extensions adds many commands to the Visual Studio Code command palette. Many of the operations detailed in this document can also be started by running the command from the Visual Studio Code command palette.
 
-## 安装扩展
+## Creating a project
+{: #develop-vscode-creating-a-project}
 
-1. 浏览至 [Visual Studio Code 扩展市场页面](https://marketplace.visualstudio.com/items?itemName=IBMBlockchain.ibm-blockchain-platform)或在 Visual Studio Code 内的“扩展”面板中搜索 **{{site.data.keyword.blockchainfull_notm}} Platform**。
-2. 单击**安装**。
-3. 重新启动 Visual Studio Code 以完成该扩展的安装。
+To create a new project, complete the following steps:
 
-## Visual Studio Code 命令选用板
+1. Open the command palette, run the **Blockchain: Create Smart Contract Project** command.
+2. Select the language you wish to create a smart contract in, currently the options are JavaScript or TypeScript.
+3. Create a folder with the name of your project, and open it.
+4. Select how to open your new project. The project folder should now open.
 
-此扩展向 Visual Studio Code 命令选用板添加了许多命令。本文档中详细描述的许多操作也可通过在 Visual Studio Code 命令选用板中运行相关命令来启动。
+## Connecting to and disconnecting from a network
+{: #develop-vscode-connecting-and-disconnecting}
 
-## 创建项目
+When you use this extension, you install and instantiate smart contract packages on peers and channels in your Hyperledger Fabric instance. This extension can initialise a preconfigured local instance of Hyperledger Fabric using Docker.
 
-要创建新项目，请完成以下步骤：
+### Connecting to the preconfigured Hyperledger Fabric instance
+{: #develop-vscode-connecting-to-preconfigured-Fabric-instance}
 
-1. 打开命令选用板，运行**区块链：创建智能合同项目**命令。
-2. 选择要用于创建智能合同的语言，当前选项为 JavaScript 或 TypeScript。
-3. 使用项目名称创建文件夹，然后将其打开。
-4. 选择打开新项目的方式。现在项目文件夹应该已打开。
+To connect to the preconfigured Hyperledger Fabric instance, first ensure Docker is running on your machine:
 
-## 连接到网络和断开网络连接
+1. Open the **{{site.data.keyword.blockchainfull_notm}} Platform** tab in Visual Studio Code.
+2. In the **{{site.data.keyword.blockchainfull_notm}} Platform** pane, click **local_fabric**. If Docker is running, the local Hyperledger Fabric instance should be downloaded and started.
+3. After the local Hyperledger Fabric instance has been started, double click **local_fabric** to connect to it. You should now see a channel called `mychannel`.
 
-使用此扩展时，可在 Hyperledger Fabric 实例中的同级和通道上安装和实例化智能合同包。此扩展可以使用 Docker 初始化 Hyperledger Fabric 的预配置本地实例。
+#### Restarting the preconfigured Hyperledger Fabric runtime
+{: #develop-vscode-restarting-Fabric-runtime}
 
-### 连接到预配置的 Hyperledger Fabric 实例
+To restart the `local_fabric` runtime:
 
-要连接到预配置的 Hyperledger Fabric 实例，请确保 Docker 在机器上运行：
+1. Right-click on the `local_fabric` connection when it is established.
+2. Select **Restart Fabric Runtime**.
 
-1. 在 Visual Studio Code 中打开 _{{site.data.keyword.blockchainfull_notm}} Platform_ 选项卡。
-2. 在 _{{site.data.keyword.blockchainfull_notm}} Platform_ 窗格中，单击 **local_fabric**。如果 Docker 正在运行，那么应该会下载并启动本地 Hyperledger Fabric 实例。
-3. 启动本地 Hyperledger Fabric 实例后，双击 **local_fabric** 以连接到该实例。现在，您应该会看到名为 `mychannel` 的通道。
+The Hyperledger Fabric containers will be stopped and restarted.
 
-#### 重新启动预配置的 Hyperledger Fabric 运行时
+#### Teardown the Hyperledger Fabric runtime
+{: #develop-vscode-teardown-Fabric}
 
-要重新启动 `local_fabric` 运行时，请执行以下操作：
+To teardown the `local_fabric` runtime:
 
-1. 建立 `local_fabric` 连接后，右键单击该连接。
-2. 选择**重新启动 Fabric 运行时**。
+1. Right-click on the `local_fabric` connection when it is established.
+2. Select **Teardown Fabric Runtime**.
 
-Hyperledger Fabric 容器将停止并重新启动。
+Performing a teardown of the `local_fabric` network will close all Hyperledger Fabric containers. **Please note**: This will result in the loss of the ledger and world state data.
 
-#### 关闭 Hyperledger Fabric 运行时
+#### Enabling development mode on the preconfigured Hyperledger Fabric runtime
+{: #develop-vscode-enabling-development-mode-Fabric}
 
-要关闭 `local_fabric` 运行时，请执行以下操作：
+In normal operation, a peer will create and maintain a chaincode container to run instantiated smart contracts. By switching to development mode, the peer allows the chaincode container to be run manually. Running the chaincode container manually, on the command line or in a terminal, assists with iterative development and debugging of smart contracts.
 
-1. 建立 `local_fabric` 连接后，右键单击该连接。
-2. 选择**关闭 Fabric 运行时**。
+To enable development mode with the preconfigured Hyperledger Fabric runtime:
 
-执行 `local_fabric` 网络的关闭操作将关闭所有 Hyperledger Fabric 容器。**请注意**：这将导致分类帐和全局状态数据丢失。
+1. Right-click on the `local_fabric` connection when it is established.
+2. Select **Toggle Development Mode**.
 
-#### 在预配置的 Hyperledger Fabric 运行时上启用开发方式
+Development mode must be enabled in order to use the debugging feature of the extension.
 
-正常运行时，同级会创建并维护链代码容器，以用于运行实例化的智能合同。通过切换到开发方式，同级允许手动运行链代码容器。通过在命令行上或终端中手动运行链代码容器，可帮助迭代开发和调试智能合同。
+### Connecting to {{site.data.keyword.blockchainfull_notm}} Platform Starter Plan
+{: #develop-vscode-connecting-to-Starter-Plan}
 
-要对预配置的 Hyperledger Fabric 运行时启用开发方式，请执行以下操作：
+The {{site.data.keyword.blockchainfull_notm}} Platform Visual Studio Code extension can be used to connect to an instance of the {{site.data.keyword.blockchainfull_notm}} Platform Starter Plan. After connected, the extension can be used to develop and deploy smart contracts.
 
-1. 建立 `local_fabric` 连接后，右键单击该连接。
-2. 选择**切换开发方式**。
+**Note:** Currently the extension is not compatible with {{site.data.keyword.blockchainfull_notm}} Platform Enterprise Plan.
 
-必须启用开发方式才能使用扩展的调试功能。
+1. If you don't have an instance of {{site.data.keyword.blockchainfull_notm}} Platform Starter Plan, [create one ![External link icon](images/external_link.svg "External link icon")](https://cloud.ibm.com/catalog/services/ibm-blockchain-5-prod).
+2. Open the {{site.data.keyword.blockchainfull_notm}} Platform UI by clicking **Launch**.
+3. Retrieve your connection profile by clicking **Overview** > **Connection Profile** > **Download**.
+4. Generate the required admin certificates by clicking **Certificate Authority** > **Generate Certificate** and saving the certificate and private key to your file system.
+5. Add the certificates to your {{site.data.keyword.blockchainfull_notm}} Platform Starter Plan instance by clicking **Members** > **Certificates** > **Add Certificate**, and selecting the certificate created in the preceding step.
+6. In Visual Studio Code, open the {{site.data.keyword.blockchainfull_notm}} Platform extension view and click **Add new connection**.
+7. Enter the connection name, the path to the connection profile, and either select an existing [wallet![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/developapps/wallet.html "Wallet") on your file system , or create a new wallet using a certificate and private key.
 
-### 连接到 {{site.data.keyword.blockchainfull_notm}} Platform 入门套餐
+### Connecting to your own Hyperledger Fabric instance
+{: #develop-vscode-connecting-to-own-Fabric-instance}
 
-{{site.data.keyword.blockchainfull_notm}} Platform Visual Studio Code 扩展可用于连接到 {{site.data.keyword.blockchainfull_notm}} Platform 入门套餐的实例。连接后，即可使用该扩展来开发和部署智能合同。
+By using this extension, you can connect to a preconfigured local instance of Hyperledger Fabric, or you can connect to your own Hyperledger Fabric instance. If you choose to connect to your own Fabric instance, it must be Fabric 1.3.0 or later.
 
-**注：**目前，该扩展与 {{site.data.keyword.blockchainfull_notm}} Platform 企业套餐不兼容。
+To connect to your own Hyperledger Fabric instance, complete the following steps:
 
-1. 如果您没有 {{site.data.keyword.blockchainfull_notm}} Platform 入门套餐的实例，请在[此处](https://console.bluemix.net/catalog/services/blockchain)进行创建。
-2. 通过单击**启动**打开 IBP UI。
-3. 通过单击**概述** > **连接概要文件** > **下载**，检索连接概要文件。
-4. 通过单击**认证中心** > **生成证书**，并将证书和专用密钥保存到文件系统，生成所需的管理员证书。
-5. 通过单击**成员** > **证书** > **添加证书**，然后选择在先前步骤中创建的证书，将证书添加到 {{site.data.keyword.blockchainfull_notm}} Platform 入门套餐实例。
-6. 在 Visual Studio Code 中，打开 {{site.data.keyword.blockchainfull_notm}} Platform 扩展视图，然后单击**添加新连接**。
-7. 输入连接名称以及连接概要文件、证书和专用密钥的路径。
+1. Open the **{{site.data.keyword.blockchainfull_notm}} Platform** tab in Visual Studio Code.
+2. In the **{{site.data.keyword.blockchainfull_notm}} Platform** pane, click **Add new connection**.
+3. Enter a name for the connection. This name will be displayed in the **{{site.data.keyword.blockchainfull_notm}} Platform** pane.
+4. Enter the fully qualified filepath of your Hyperledger Fabric connection profile.
+5. Select either an existing file system [wallet ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/developapps/wallet.html "Wallet"), or create a new file system wallet by entering the filepaths of the certificate and private key for your fabric identity.
+6. Your connection should appear in the connections list underneath `local_fabric`. Double-click the connection name to connect.
 
-### 连接到您自己的 Hyperledger Fabric 实例
-
-通过使用此扩展，可以连接到 Hyperledger Fabric 的预配置本地实例，也可以连接到您自己的 Hyperledger Fabric 实例。如果选择连接到您自己的 Fabric 实例，那么该实例必须是 Fabric 1.3.0 或更高版本。
-
-要连接到您自己的 Hyperledger Fabric 实例，请完成以下步骤：
-
-1. 在 Visual Studio Code 中打开 _{{site.data.keyword.blockchainfull_notm}} Platform_ 选项卡。
-2. 在 _{{site.data.keyword.blockchainfull_notm}} Platform_ 窗格中，单击**添加新连接**。
-3. 输入连接的名称。此名称将显示在 _{{site.data.keyword.blockchainfull_notm}} Platform_ 窗格中。
-4. 输入 Hyperledger Fabric 连接概要文件的标准文件路径。
-5. 输入与您身份相应的证书的标准文件路径。
-6. 输入用于上一步中所提供证书的专用密钥的标准文件路径。
-7. 您的连接应该会显示在 `local_fabric` 下的连接列表中。双击连接名称以进行连接。
-
-如果您没有预先存在的 Hyperledger Fabric V1.3.0 或更高版本实例，那么可以使用预配置的 Hyperledger Fabric 实例进行连接，或运行以下命令来拉取并标记 V1.3.0 映像：
+If you don't have a preexisting Hyperledger Fabric instance of version 1.3.0 or later, you can connect using the preconfigured Hyperledger Fabric instance, or run the following commands to pull and tag the version 1.3.0 images:
 
 ```
 docker pull nexus3.hyperledger.org:10001/hyperledger/fabric-ca:amd64-1.3.0-stable
@@ -156,147 +166,162 @@ docker tag nexus3.hyperledger.org:10001/hyperledger/fabric-ccenv:amd64-1.3.0-sta
 ```
 {:codeblock}
 
-### 断开网络连接
+### Disconnecting from a network
+{: #develop-vscode-disconnecting}
 
-连接到网络时，可以通过单击“区块链连接”窗格右上角的“断开连接”图标来关闭连接。您还可以通过运行命令选用板中的**断开与区块链的连接**命令来断开连接。
+When connected to a network, you can close the connection by clicking the disconnect icon in the upper-right of the Blockchain Connections pane. You can also disconnect by running the **Disconnect from a blockchain** command from the command palette.
 
-## 编辑或删除连接
+## Editing or deleting a connection
+{: #develop-vscode-editing-or-deleting-connection}
 
-可以在“连接”窗格中编辑或删除连接。
+Connections can be edited or deleted in the connections pane.
 
-### 编辑连接
+### Editing a connection
+{: #develop-vscode-editing-connection}
 
-通过编辑连接，可以更改连接概要文件的文件路径、为连接提供的名称以及用于识别证书和专用密钥的文件路径。
+By editing a connection, you can change the filepath for the connection profile, the name given to the connection, and the filepaths to identity certificates and private keys.
 
-要编辑连接，请执行以下操作：
+To edit a connection:
 
-1. 在扩展中，右键单击左下方要编辑的连接，这将打开上下文菜单，其中包含用于添加身份、编辑连接或删除连接的选项。
-2. 选择**编辑连接**。
-3. 这将打开_用户设置_页面，其中突出显示了连接详细信息。
-4. 进行任何更改，然后保存设置页面。
+1. From the extension, right-click on the connection to edit in the lower-left, this opens a contextual menu with the options to add an identity, edit the connection, or delete the connection.
+2. Select **Edit connection**.
+3. The **User Settings** page will open, with the connection details highlighted.
+4. Make any changes, and save the settings page.
 
-### 删除连接
+### Deleting a connection
+{: #develop-vscode-deleting-connection}
 
-可以通过以下方式删除连接：
+Connections can be deleted by:
 
-1. 在扩展中，右键单击左下方要编辑的连接，这将打开上下文菜单，其中包含用于添加身份、编辑连接或删除连接的选项。
-2. 选择**删除连接**。
-3. 这将显示一个对话框，用于确认连接删除。单击**是**。
+1. From the extension, right-click on the connection to edit in the lower-left, this opens a contextual menu with the options to add an identity, edit the connection, or delete the connection.
+2. Select **Delete connection**.
+3. A dialogue box appears to confirm connection deletion. Click **Yes**.
 
-这将删除连接。
+The connection will be deleted.
 
-## 添加身份
+## Adding identities
+{: #develop-vscode-adding-identities}
 
-添加连接时，必须提交连接概要文件、证书和专用密钥。与证书/专用密钥对关联的身份将设置为在连接到该 Hyperledger Fabric 实例时要使用的缺省身份。
+When you add a connection, you must either select an existing wallet containing the identity to use, or create a new wallet by using the certificate and private key for an identity. For more information about wallets, see the [wallet topic ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/developapps/wallet.html "Wallet") in the Fabric Documentation.
 
-要向已建立的连接添加身份，请执行以下操作：
+To add an identity to a connection that is already established:
 
-1. 在扩展中，右键单击左下方要编辑的连接，这将打开上下文菜单，其中包含用于添加身份、编辑连接或删除连接的选项。
-2. 选择**添加身份**。
-3. 提供身份证书和专用密钥的文件路径。
+1. From the extension, right-click on the connection to edit in the lower-left, this opens a contextual menu with the options to add an identity, edit the connection, or delete the connection.
+2. Select **Add an identity**.
+3. Either select an existing wallet containing the identity to add, or create a new wallet by providing the filepaths of the certificates and private key.
 
-## 探索连接
+## Exploring connections
+{: #develop-vscode-exploring-connections}
 
-连接到 Hyperledger Fabric 实例后，可以在 _{{site.data.keyword.blockchainfull_notm}} Platform_ 窗格中看到这些通道中的可用通道和同级的列表。请花点时间来探索 Hyperledger Fabric 实例，以熟悉结构。最先列出的是连接中的通道，通道下是属于该通道的同级的列表，以及该通道上实例化的智能合同包的列表。在列表中的每个同级下，是该同级上安装的所有智能合同包的列表。您还可以查看已安装或已实例化的智能合同包的版本。
+After connecting to a Hyperledger Fabric instance, you can see a list of the available channels and peers in those channels in the **{{site.data.keyword.blockchainfull_notm}} Platform** pane. Spend a minute exploring your Hyperledger Fabric instance to get familiar with the structure. Listed first are the channels within a connection, under a channel is a list of the peers that are members of that channel, and a list of smart contract packages instantiated on that channel. Under each peer in the list is a list of all smart contract packages installed on that peer. You can also see the versions of smart contract packages that are installed or instantiated.
 
-### 导出预配置的 Hyperledger Fabric 运行时的连接详细信息
+### Exporting connection details for the preconfigured Hyperledger Fabric runtime
+{: #develop-vscode-exploring-connection-details}
 
-可以导出连接到 `local_fabric` 连接所需的连接详细信息。要测试旨在连接到 Hyperledger Fabric 实例或与 Hyperledger Fabric 实例进行交互的客户机应用程序，`local_fabric` 连接的连接详细信息非常有用。
+The connection details required to connect to the `local_fabric` connection can be exported. Connection details for the `local_fabric` connection are useful for testing client applications intended to connect to or interact with your Hyperledger Fabric instance.
 
-要导出 `local_fabric` 连接详细信息，请执行以下操作：
+To export the `local_fabric` connection details:
 
-1. 启动预配置的 Hyperledger Fabric 运行时。
-2. 右键单击 `local_fabric` 连接，然后选择**导出连接详细信息**。
+1. Start the preconfigured Hyperledger Fabric runtime.
+2. Right-click on the `local_fabric` connection, and select **Export Connection Details**.
 
-连接详细信息会保存到当前项目目录中所包含的名为 `local_fabric` 的目录中。
+The connection details are saved to a directory called `local_fabric` contained in your current project directory.
 
-## 打包智能合同
+## Packaging a smart contract
+{: #packaging-a-smart-contract}
 
-智能合同准备好进行部署时，必须先将其打包。要打包智能合同，请完成以下步骤：
+When a smart contract is ready to be deployed, it must first be packaged. To package a smart contract, complete the following steps:
 
-1. 在 Visual Studio Code 中，浏览至 _{{site.data.keyword.blockchainfull_notm}} Platform_ 面板。
-2. 在_智能合同包_窗格中，单击 + 图标。如果在文件查看器中打开了一个智能合同项目，那么会对其自动打包，并且该项目会显示在_智能合同包_窗格中。如果打开了多个智能合同文件夹，那么会询问您要打包哪个文件夹。如果未打开任何智能合同文件夹，那么会收到错误消息。
+1. In Visual Studio Code, navigate to the **{{site.data.keyword.blockchainfull_notm}} Platform** panel.
+2. In the **Smart Contract Packages** pane, click the + icon. If you have a smart contract project open in the file viewer, it will be automatically packaged, and will be shown in the **Smart Contract Packages** pane. If you have multiple smart contract folders open, you will be asked which one to package. If you have no smart contract folders open, you'll get an error message.
 
-## 安装智能合同包
+## Installing smart contract packages
+{: #develop-vscode-installing-smart-contract-packages}
 
-连接到 Hyperledger Fabric 的实例后，可以在同级上安装和实例化智能合同包。
+After connecting to an instance of Hyperledger Fabric, you can install and instantiate smart contract packages on the peers.
 
-1. 在 _{{site.data.keyword.blockchainfull_notm}} Platform_ 窗格中，浏览至要安装智能合同包的同级。
-2. 右键单击要安装智能合同包的同级，然后选择**安装智能合同**。
+1. In the {{site.data.keyword.blockchainfull_notm}} Platform pane, navigate to the peer you wish to install the smart contract package on.
+2. Right-click the peer to install the smart contract package on, and select **Install Smart Contract**.
 
-## 实例化智能合同包
+## Instantiating smart contract packages
+{: #develop-vscode-instantiating-smart-contract-packages}
 
-要在通道上开始运行安装的智能合同包，必须先将其实例化。
+To begin running on a channel, an installed smart contract package must first be instantiated.
 
-1. 连接到安装了智能合同包的 Hyperledger Fabric 实例。
-2. 右键单击要在其中实例化智能合同包的通道，然后单击**实例化智能合同**。
-3. 选择要实例化的智能合同包和版本。智能合同包必须安装在属于此通道的同级上。
-4. 在智能合同中输入实例化函数的名称。
-5. 输入实例化函数所需的任何自变量。
+1. Connect to the Hyperledger Fabric instance where the smart contract package is installed.
+2. Right-click on the channel you wish to instantiate the smart contract package on and click **Instantiate Smart Contract**.
+3. Select the smart contract package and version to be instantiated. The smart contract package must be installed on a peer that is a member of this channel.
+4. Enter the name of the instantiate function in your smart contract.
+5. Enter any arguments required by your instantiate function.
 
-## 导出或删除智能合同包
+## Exporting or deleting a smart contract package
+{: #develop-vscode-exporting-deleting-smart-contract-package}
 
-打包了智能合同后，可以将其导出为 `.cds` 文件，或者如果不再需要，可以将其删除。
+After a smart contract has been packaged, it can be exported as a `.cds` file or deleted if it is no longer needed.
 
-要删除智能合同包，请执行以下操作：
+To delete a smart contract package:
 
-1. 在 {{site.data.keyword.blockchainfull_notm}} Platform 扩展面板中，右键单击要删除的智能合同包。
-2. 选择**删除包**。
+1. In the {{site.data.keyword.blockchainfull_notm}} Platform extension panel, right-click the smart contract package to delete.
+2. Select **Delete Package**.
 
-现在，将删除该包，并且该包不会显示在智能合同包列表中。
+The package will now be deleted and disappear from the list of smart contract packages.
 
-要导出智能合同包，请执行以下操作：
+To export a smart contract package:
 
-1. 在 {{site.data.keyword.blockchainfull_notm}} Platform 扩展面板中，右键单击要导出的智能合同包。
-2. 选择**导出包**。
-3. 选择用于保存智能合同包文件的目录，然后单击**导出**。
+1. In the {{site.data.keyword.blockchainfull_notm}} Platform extension panel, right-click the smart contract package to export.
+2. Select **Export Package**.
+3. Choose the directory to save your smart contract package file and click **Export**.
 
-## 测试实例化的智能合同
+## Testing an instantiated smart contract
+{: #develop-vscode-testing-instantiated-smart-contract}
 
-在实例化了智能合同后，可以生成对智能合同的测试。这些测试可以生成为 JavaScript 或 TypeScript，并且可以运行或调试。
+Tests for a smart contract can be generated after the smart contract has been instantiated. The tests can be generated as either JavaScript or TypeScript, and run or debugged.
 
-要生成智能合同测试，请执行以下操作：
+To generate smart contract tests:
 
-1. 确保已对智能合同实例化。
-2. 在**实例化的智能合同**下，右键单击要为其生成测试的智能合同。
-3. 选择**生成智能合同测试**。
-4. 现在，选择测试文件的语言（**JavaScript** 或 **TypeScript**）。{{site.data.keyword.blockchainfull_notm}} Platform 扩展现在将安装必需的 npm 模块并构建测试文件。
+1. Ensure that the smart contract has been instantiated.
+2. Under **Instantiated Smart Contracts**, right-click on the smart contract to generate tests for.
+3. Select **Generate Smart Contract Tests**.
+4. Now select the language for the test file, either **JavaScript** or **TypeScript**. The {{site.data.keyword.blockchainfull_notm}} Platform extension will now install required npm modules and build the test file.
 
-构建了测试文件后，可通过单击该文件中的**运行测试**按钮来运行测试。
+After the test file has been built, the tests can be run by clicking the **Run Tests** button in the file.
 
-## 使用预配置的 Hyperledger Fabric 运行时调试智能合同
+## Debugging a smart contract using the preconfigured Hyperledger Fabric runtime
+{: #develop-vscode-debugging}
 
-通过调试智能合同，可以利用断点和输出来逐步运行智能合同事务，从而确保事务按预期进行。要调试智能合同，请执行以下操作：
+The ability to debug a smart contract locally helps a smart contract developer to iterate on their smart contract functions, and fix bugs before attempting to invoke the functions after instantiation. Debugging a smart contract allows you to run through the smart contract transactions with breakpoints and output, ensuring the transactions work as intended. To debug your smart contract:
 
-1. 确保已连接到处于开发方式的 `local_fabric` 连接。
-2. 打开智能合同项目。
-3. 在 Visual Studio Code 中使用左侧导航栏打开调试视图。
-4. 使用左上方的下拉列表来选择“调试智能合同”配置。
-5. 通过单击**播放**按钮来打包并安装智能合同。
-6. 通过单击智能合同文件中的相关行号，向智能合同添加断点。
-7. 右键单击安装的智能合同，然后选择**实例化**。现在，可以右键单击以提交事务，并且将在定义的断点处暂停执行。
+1. Ensure you are connected to the `local_fabric` connection that it is in development mode.
+2. Open your smart contract project.
+3. Open the debug view in Visual Studio Code using the left-hand navigation bar.
+4. Select the Debug Smart Contract configuration by using the dropdown in the upper-left.
+5. Package and install the smart contract by clicking the **play** button.
+6. Add breakpoints to the smart contract by clicking on the relevant line numbers in your smart contract files.
+7. Right-click on the installed smart contract and select **Instantiate**. You can now right-click to submit transactions and the execution will be paused on defined breakpoints.
 
-要在调试期间对智能合同进行更改，请在对智能合同进行更改后单击**重新启动**按钮。重新启动调试意味着您无需再次实例化合同。
+To make changes to your smart contract while debugging, click the **restart** button after making the changes to your smart contract. Restarting debugging means you don't need to instantiate the contract again.
 
-**请注意**：重新启动调试会将智能合同存储在本地内存中，如果对大型智能合同进行了大量更改，那么可能需要重新实例化智能合同。
+**Please note**: Restarting debugging stores the smart contract in local memory, for a large number of changes to large smart contracts, you may need to reinstantiate the smart contract.
 
-## 升级实例化的智能合同
+## Upgrading an instantiated smart contract
+{: #develop-vscode-upgrading-instantiated-smart-contract}
 
-智能合同在同级上安装并在通道上实例化后，可以将其升级以部署更新版本的智能合同。
+After a smart contract has been installed on a peer and instantiated on a channel, it can be upgraded to deploy a newer version of the smart contract.
 
-1. 确保要升级的智能合同已实例化。
-2. 将智能合同的新版本安装到同一网络上的同级。
-3. 右键单击实例化的智能合同，然后选择**升级智能合同**。
-4. （可选）选择在实例化新智能合同时要运行的事务。
+1. Ensure that the smart contract you wish to upgrade is instantiated.
+2. Install the new version of the smart contract to a peer on the same network.
+3. Right-click on the instantiated smart contract, and select **Upgrade Smart Contract**.
+4. Optionally, choose a transaction to run after the new smart contract is instantiated.
 
-## 提交事务
+## Submitting transactions
+{: #develop-vscode-submitting-transactions}
 
-安装并实例化智能合同后，可以在 {{site.data.keyword.blockchainfull_notm}} Platform 扩展面板的“连接”窗格中提交事务。
+After a smart contract has been installed and instantiated, the transactions can be submitted from the connections pane in the {{site.data.keyword.blockchainfull_notm}} Platform extension panel.
 
-要提交事务，请执行以下操作：
+To submit a transaction:
 
-1. 确保已安装并实例化智能合同，并且已连接到网络。
-2. 在“连接”窗格中，展开**实例化的智能合同**。
-3. 展开包含要提交的事务的智能合同。
-4. 右键单击要提交的事务，然后选择**提交事务**。
-5. 输入事务需要的任何自变量，然后按 **Enter** 键。
+1. Ensure that your smart contract is installed and instantiated, and that you're connected to the network.
+2. In the connections pane, expand the **Instantiated Smart Contracts**.
+3. Expand the smart contract that contains the transaction to be submitted.
+4. Right-click on the transaction to submit, and select **Submit Transaction**.
+5. Enter any arguments required by the transaction, and press **Enter**.
