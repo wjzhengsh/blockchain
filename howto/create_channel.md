@@ -1,8 +1,10 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-09-27"
+  years: 2017, 2019
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -13,9 +15,7 @@ lastupdated: "2018-09-27"
 {:pre: .pre}
 
 # Creating or updating a channel
-
-
-***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+{: #ibp-create-channel}
 
 
 Channels are an incredibly powerful mechanism for partitioning and isolating data, and they provide the primary foundation for data privacy. Only members of the same channel can access the data of this channel.
@@ -24,6 +24,8 @@ Channels are an incredibly powerful mechanism for partitioning and isolating dat
 To ensure channel security, the channel update policy is configured to define the number of channel operators who need to agree on the channel creation or update request before a channel is created or updated.
 
 ## Creating a channel
+{: #ibp-create-channel-creating-a-channel}
+
 Click the **New Channel** button in the "Channels" screen of your Network Monitor, and complete the following steps to submit a channel creation request:
 1. Choose a name reflective of the channel's business objective, add a description if you want, and click **Next**. The channel name must be unique in a Blockchain network. It must start with a letter and can contain only lowercase characters, numbers, or dashes.
   ![Create channel 1](../images/create_channel.png "Create a channel panel 1")
@@ -55,6 +57,8 @@ In highly regulated foreign currency exchange markets, to use one example, it mi
 In this case, the trusted third party would make themselves the only “Operator” for a channel and assign other members as “Writers”. This would give the third party sole authority to edit the channel while still giving the two banks the ability to invoke transactions. A managed "read only" channel could also be created by setting other members as "Readers".
 
 ## Updating a channel
+{: #ibp-create-channel-updating-a-channel}
+
 If you want to modify the configuration of a channel, for example, add or remove channel members, or change the channel update policy, you can submit a channel update request. In the "Channels" screen of your Network Monitor, locate the channel that you want to modify and select **Edit Channel** from the drop-down list under the **Action** header. Navigate through the panels to make changes to the desired entities, and click **Submit Request** to initiate a channel update request.
 
 All channel members will receive email notifications on the channel update request:
@@ -71,5 +75,5 @@ All channel members will receive email notifications on the channel update reque
 
 When enough channel operators agree on the request, any channel member can click the **Submit Request** button and the channel is updated. All channel members can find the updated channel in the "Channels" screen of the Network Monitor.
 
-**Important:**
-Endorsement policies are not updated automatically when new organizations join the channel and install the chaincode. For example, if the policy requires two of five organizations to endorse a transaction, the policy will not be updated to require two out of six organizations when a new organization joins the channel. Instead, the new organization will not be listed on the policy, and they will not be able to endorse transactions. You can add a new organization to an endorsement policy by [updating the relevant chaincode](install_instantiate_chaincode.html#updating-a-chaincode). For more information, see [Specifying chaincode endorsement policies](install_instantiate_chaincode.html#endorsement-policy).
+Endorsement policies are not updated automatically when new organizations join the channel and install the chaincode. For example, if the policy requires two of five organizations to endorse a transaction, the policy will not be updated to require two out of six organizations when a new organization joins the channel. Instead, the new organization will not be listed on the policy, and they will not be able to endorse transactions. You can add a new organization to an endorsement policy by [updating the relevant chaincode](/docs/services/blockchain/howto/install_instantiate_chaincode.html#install-instantiate-chaincode-update-cc). For more information, see [Specifying chaincode endorsement policies](/docs/services/blockchain/howto/install_instantiate_chaincode.html#install-instantiate-chaincode-endorsement-policy).
+{:important}

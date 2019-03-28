@@ -39,9 +39,9 @@
      inkscape:window-height="1027"
      id="namedview764"
      showgrid="false"
-     inkscape:zoom="1.3444286"
-     inkscape:cx="604.63841"
-     inkscape:cy="297.4939"
+     inkscape:zoom="0.6722143"
+     inkscape:cx="858.54851"
+     inkscape:cy="476.41025"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
@@ -121,13 +121,18 @@
       </text>
       <text
          id="App-with-SDK"
+         font-family="HelveticaNeue-Light, Helvetica Neue"
          font-size="18"
          font-weight="300"
-         style="font-weight:300;font-size:18px;font-family:HelveticaNeue-Light, 'Helvetica Neue';fill:#6e5f5f">
+         fill="#6E5F5F">
         <tspan
-           x="351.16501"
+           x="351.165"
            y="802"
-           id="tspan25">Applicazione con SDK</tspan>
+           id="tspan25">Applicazione con</tspan>
+        <tspan
+           x="367.833"
+           y="823"
+           id="tspan27">SDK</tspan>
       </text>
       <path
          d="M584.5,250.5 L584.5,771.500977"
@@ -141,33 +146,44 @@
          stroke-linecap="square" />
       <text
          id="Peers-A-+-B"
+         font-family="HelveticaNeue-Light, Helvetica Neue"
          font-size="18"
          font-weight="300"
-         style="font-weight:300;font-size:18px;font-family:HelveticaNeue-Light, 'Helvetica Neue';fill:#6e5f5f">
+         fill="#6E5F5F">
         <tspan
-           x="575.32397"
+           x="575.324"
            y="802"
-           id="tspan34">Peer A più B</tspan>
+           id="tspan34">Peer</tspan>
+        <tspan
+           x="575.423"
+           y="823"
+           id="tspan36">A + B</tspan>
       </text>
       <text
          id="Ordering-Service"
+         font-family="HelveticaNeue-Light, Helvetica Neue"
          font-size="18"
          font-weight="300"
-         style="font-weight:300;font-size:18px;font-family:HelveticaNeue-Light, 'Helvetica Neue';fill:#6e5f5f">
+         fill="#6E5F5F">
         <tspan
-           x="770.98401"
+           x="770.984"
            y="802"
-           id="tspan39">Servizio ordini</tspan>
+           id="tspan39">Servizio di </tspan>
+        <tspan
+           x="776.15"
+           y="823"
+           id="tspan41">ordinazione</tspan>
       </text>
       <text
          id="Ledger"
+         font-family="HelveticaNeue-Light, Helvetica Neue"
          font-size="18"
          font-weight="300"
-         style="font-weight:300;font-size:18px;font-family:HelveticaNeue-Light, 'Helvetica Neue';fill:#6e5f5f">
+         fill="#6E5F5F">
         <tspan
-           x="979.32001"
+           x="979.32"
            y="802"
-           id="tspan44">Registro</tspan>
+           id="tspan44">Libro mastro</tspan>
       </text>
       <g
          id="v"
@@ -1727,17 +1743,14 @@
       </g>
       <text
          id="Transaction-Flow"
+         font-family="HelveticaNeue-Light, Helvetica Neue"
          font-size="48"
          font-weight="300"
-         style="font-weight:300;font-size:48px;font-family:HelveticaNeue-Light, 'Helvetica Neue';fill:#6e5f5f">
+         fill="#6E5F5F">
         <tspan
            x="167"
            y="126"
            id="tspan621">Flusso di transazioni</tspan>
-        <tspan
-           x="167"
-           y="126"
-           id="tspan768" />
       </text>
       <g
          id="Group-5"
@@ -2045,21 +2058,23 @@
         </g>
         <text
            id="Transaction-proposal"
+           font-family="HelveticaNeue, Helvetica Neue"
            font-size="12"
            font-weight="normal"
-           style="font-weight:normal;font-size:12px;font-family:HelveticaNeue, 'Helvetica Neue';fill:#6e5f5f">
+           fill="#6E5F5F">
           <tspan
-             x="68.489998"
+             x="68.49"
              y="60"
              id="tspan734">Proposta di transazione</tspan>
         </text>
         <text
            id="Certificate"
+           font-family="HelveticaNeue, Helvetica Neue"
            font-size="12"
            font-weight="normal"
-           style="font-weight:normal;font-size:12px;font-family:HelveticaNeue, 'Helvetica Neue';fill:#6e5f5f">
+           fill="#6E5F5F">
           <tspan
-             x="68.061996"
+             x="68.062"
              y="107"
              id="tspan737">Certificato</tspan>
         </text>
@@ -2081,23 +2096,29 @@
         </g>
         <text
            id="Signature"
+           font-family="HelveticaNeue, Helvetica Neue"
            font-size="12"
            font-weight="normal"
-           style="font-weight:normal;font-size:12px;font-family:HelveticaNeue, 'Helvetica Neue';fill:#6e5f5f">
+           fill="#6E5F5F">
           <tspan
-             x="68.440002"
+             x="68.44"
              y="146"
              id="tspan746">Firma</tspan>
         </text>
         <text
            id="Ordered-Transactions"
+           font-family="HelveticaNeue, Helvetica Neue"
            font-size="12"
            font-weight="normal"
-           style="font-weight:normal;font-size:12px;font-family:HelveticaNeue, 'Helvetica Neue';fill:#474a47">
+           fill="#474A47">
           <tspan
              x="68"
              y="181"
-             id="tspan749">Transazioni ordinate</tspan>
+             id="tspan749">Transazioni </tspan>
+          <tspan
+             x="68"
+             y="195"
+             id="tspan751">ordinate</tspan>
         </text>
         <text
            id="Key"

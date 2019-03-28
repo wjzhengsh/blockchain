@@ -1,8 +1,10 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-08-31"
+  years: 2018,2019
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -15,29 +17,28 @@ lastupdated: "2018-08-31"
 # Zahlungsmodus
 {: #paying-mode}
 
-
-***[Ist diese Seite hilfreich? Teilen Sie uns Ihre Meinung mit.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
-
 Für {{site.data.keyword.blockchainfull}} Platform werden monatliche Mitgliedsgebühren und Peer-Gebühren in Rechnung gestellt. Netzmitglieder können ihre Rechnung über ihre {{site.data.keyword.cloud_notm}}-Konten bezahlen, die den Bereich zum Erstellen der Netzinstanz enthalten. Alternativ hierzu kann ein Netzmitglied die Rechnung für andere (oder auch alle) Mitglieder im Netz übernehmen und für das gesamte Netz bezahlen. Der Zahler kann die Abrechnungen bei Bedarf auch an andere Mitglieder zurückübertragen.
 {:shortdesc}
 
-Ihre Kosten sind je nach ausgewähltem Netzplan und Größe der genutzten Ressourcen unterschiedlich. Weitere Informationen zur Preisstruktur finden Sie unter [Preisstruktur](pricing.html).
+Ihre Kosten sind je nach ausgewähltem Netzplan und Größe der genutzten Ressourcen unterschiedlich. Weitere Informationen zur Preisstruktur finden Sie unter [Preisstruktur](/docs/services/blockchain/howto/pricing.html#ibp-pricing).
+
+Hinweis: Wenn mehrere Organisationen ein Konsortium erstellen, wird empfohlen, dass die teilnehmenden Organisationen eine funktionale E-Mail-Adresse verwenden, um ihr Netz zu erstellen. In diesem Fall ist der Zugriff auf das Netz nicht von der Verfügbarkeit der einzelnen Personen abhängig.
+
 
 ## Voraussetzungen
-{: #prereq}
+{: #paying-mode-prereq}
 
-Jedes Netzmitglied muss über ein gebührenpflichtiges {{site.data.keyword.cloud_notm}}-Konto verfügen, z. B. ein **nutzungsabhängiges** Konto. Dadurch ist es möglich, {{site.data.keyword.blockchainfull_notm}} Platform-Serviceinstanzen unter {{site.data.keyword.cloud_notm}} zu erstellen. Wenn Sie über kein Konto verfügen, [registrieren](https://console.bluemix.net/registration/) Sie sich für ein Konto und führen Sie ein Upgrade auf ein gebührenpflichtiges Konto durch. Für ein Upgrade Ihres Kontos auf ein nutzungsabhängiges Konto rufen Sie **Verwalten** > **Abrechnung und Nutzung** > **Abrechnung** in der {{site.data.keyword.cloud_notm}}-Konsole auf und klicken Sie auf **Kreditkarte hinzufügen**.
+Jedes Netzmitglied muss über ein gebührenpflichtiges {{site.data.keyword.cloud_notm}}-Konto verfügen, z. B. ein **nutzungsabhängiges** Konto. Dadurch ist es möglich, {{site.data.keyword.blockchainfull_notm}} Platform-Serviceinstanzen unter {{site.data.keyword.cloud_notm}} zu erstellen. Wenn Sie über kein Konto verfügen, [registrieren](https://cloud.ibm.com/registration/) Sie sich für ein Konto und führen Sie ein Upgrade auf ein gebührenpflichtiges Konto durch. Für ein Upgrade Ihres Kontos auf ein nutzungsabhängiges Konto rufen Sie **Verwalten** > **Abrechnung und Nutzung** > **Abrechnung** in der {{site.data.keyword.cloud_notm}}-Konsole auf und klicken Sie auf **Kreditkarte hinzufügen**.
 
 
 ## Eigene Gebühren bezahlen
-{: #pay-your-own}
+{: #paying-mode-pay-your-own}
 
 Nachdem Sie Blockchain-Netze erstellt oder einem Blockchain-Netz unter {{site.data.keyword.blockchainfull_notm}} Platform beigetreten sind, werden Ihre {{site.data.keyword.cloud_notm}}-Konten mit Ihrer Mitgliedschaftsgebühr und den Peergebühren belastet.
 
 
 ## Für andere Netzmitglieder bezahlen
-{: #pay-for-others}
+{: #paying-mode-pay-for-others}
 
 Ein Mitglied innerhalb eines Netzes kann die Gebühren für einzelne oder mehrere andere Netzmitglieder im selben Blockchain-Netz übernehmen. Zur Bezahlung in diesem Modus müssen der Zahler und andere Netzmitglieder die folgenden Schritte ausführen.
 
@@ -59,7 +60,7 @@ Ein Mitglied innerhalb eines Netzes kann die Gebühren für einzelne oder mehrer
          - **Bereichsrollen:** Entwickler.
       3. Klicken Sie auf **Benutzer einladen**.  
    **Hinweis**: Wenn der Zahler für mehrere Mitglieder bezahlt, dann muss er diesen Schritt wiederholen, um weitere Mitglieder einzuladen und diesen Mitgliedern Zugriff zu erteilen.
-3. Der Zahler erstellt ein Blockchain-Netz unter {{site.data.keyword.blockchainfull_notm}} Platform und lädt andere Mitglieder in das Blockchain-Netz im Network Monitor des Netzes ein. Weitere Informationen zur Einladung von Netzmitgliedern finden Sie unter [Mitglieder](https://console.bluemix.net/docs/services/blockchain/v10_dashboard.html#members).
+3. Der Zahler erstellt ein Blockchain-Netz unter {{site.data.keyword.blockchainfull_notm}} Platform und lädt andere Mitglieder in das Blockchain-Netz in der Network Monitor-Instanz des Netzes ein. Weitere Informationen zur Einladung von Netzmitgliedern finden Sie unter [Mitglieder](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-members).
 4. Jedes Mitglied empfängt eine Benachrichtigungs-E-Mail, die eine Einladung zur Teilnahme am Netz enthält. Das Mitglied kann die folgenden Schritte ausführen, um dem Netz beizutreten.
    1. Klicken Sie auf die Schaltfläche "Fortfahren" in der Benachrichtigungs-E-Mail, sodass Sie zur Blockchain-Serviceseite in {{site.data.keyword.cloud_notm}} gelangen.
    2. Melden Sie sich bei {{site.data.keyword.cloud_notm}} an und vergewissern Sie sich, dass Sie die korrekte {{site.data.keyword.cloud_notm}}-Organisation und den korrekten Bereich verwenden, zu denen Sie der Zahler hinzugefügt hat.
@@ -70,16 +71,17 @@ Ein Mitglied innerhalb eines Netzes kann die Gebühren für einzelne oder mehrer
       2. Vergewissern Sie sich, dass die Organisation und der Bereich mit der Organisation und dem Bereich übereinstimmen, zu denen Sie der Zahler hinzugefügt hat.
       3. Wählen Sie den Mitgliedschaftsplan aus, mit dem Ihre Netzinstanz erstellt werden soll. Ihr Mitgliedschaftsplan muss mit dem Mitgliedschaftsplan identisch sein, mit dem der Zahler das Netz erstellt hat.
       4. Klicken Sie auf **Erstellen**.
-   4. Befolgen Sie nach der Erstellung der Blockchain-Serviceinstanz die Anweisungen des Assistenten, um dem Netz beizutreten.  Weitere Informationen finden Sie unter [Am Netz teilnehmen](https://console.bluemix.net/docs/services/blockchain/get_start.html#joining-a-network).
+   4. Befolgen Sie nach der Erstellung der Blockchain-Serviceinstanz die Anweisungen des Assistenten, um dem Netz beizutreten.  Weitere Informationen finden Sie unter [Am Netz teilnehmen](/docs/services/blockchain/get_start.html#getting-started-with-enterprise-plan-join-nw).
 
 ### Bekannte Einschränkungen
-{: #pay-for-others-limitation}
+{: #paying-mode-limitation}
 - Da sich alle Mitglieder innerhalb des {{site.data.keyword.cloud_notm}}-Kontos des Zahlers befinden, hat der Zahler Zugriff auf die Blockchain-Instanzen aller Mitglieder und kann deren Identität annehmen. Daher wird dieser Zahlungsmodus am besten für PoC-Umgebungen (PoC = Proof of Concept; Machbarkeitsnachweis) oder in Fällen verwendet, in denen der Zahlungspflichtige das gesamte Management für {{site.data.keyword.blockchainfull_notm}} Platform abwickelt und den Mitgliedern lediglich eine Anwendung bereitgestellt wird.  
 - Für alle Mitglieder in der Cloud Foundry-Organisation des Zahlers sind alle Bereiche in der Organisation sichtbar.  Allerdings können die Mitglieder die Organisationen nicht bearbeiten oder ändern, da sie nicht die entsprechenden Berechtigungen haben.  
+- Beachten Sie, dass jedes Mitglied in der Cloud Foundry-Organisation des Zahlers die IBM Cloud-IDs anderer Mitglieder in derselben Cloud Foundry-Organisation sehen kann.  
 - Wenn der Zahler alle Mitglieder zum {{site.data.keyword.cloud_notm}}-Konto des Zahlers hinzugefügt und ihnen Zugriff zum Bereitstellen von Blockchain-Instanzen erteilt hat und die Mitglieder dem Netz beigetreten sind, erteilt der Zahler den Mitgliedern auch Zugriff zum Erstellen weiterer Services, die zusätzliche Gebühren verursachen können. Alle Mitglieder können eine Vereinbarung unterzeichnen, in der festgehalten wird, dass diese Mitglieder keine nicht autorisierten Services in ihren Konten erstellen werden und so zusätzliche Kosten für das Konto des Zahlers verursachen.  
 
 ## Mitglied bezahlen lassen
-{: #let-other-pay}
+{: #paying-mode-let-other-pay}
 
 Eine Alternative zum Hinzufügen weiterer Mitgliederkonten zum Konto des Zahlers stellt die Vorgehensweise dar, bei der weitere Mitglieder das Konto des Zahlers auch als **Abrechnungsmanager** zum eigenen Konto hinzufügen. Zur Bezahlung in diesem Modus müssen der Zahler und andere Netzmitglieder die folgenden Schritte ausführen.
 
@@ -91,17 +93,17 @@ Eine Alternative zum Hinzufügen weiterer Mitgliederkonten zum Konto des Zahlers
   4. Wählen Sie im Abschnitt **Cloud Foundry-Zugriff** in der Dropdown-Liste Ihre Organisation aus, zu der das Konto des Zahlers hinzugefügt werden soll.
   5. Wählen Sie als **Organisationsrolle** die Option **Abrechnungsmanager** aus.
   6. Konfigurieren Sie die weiteren Felder entsprechend und klicken Sie dann auf **Benutzer einladen**.  
-3. Der Zahler lädt weitere Mitglieder zum Blockchain-Netz im Network Monitor des Netzes ein. Weitere Informationen zur Einladung von Netzmitgliedern finden Sie unter [Mitglieder](https://console.bluemix.net/docs/services/blockchain/v10_dashboard.html#members).
-4. Jedes Mitglied empfängt eine Benachrichtigungs-E-Mail, die eine Einladung zur Teilnahme am Netz enthält. Das Mitglied kann dem Netz nun beitreten. Weitere Informationen finden Sie in **Schritt 4** unter [Für andere Netzmitglieder bezahlen](#pay-for-others).
+3. Der Zahler lädt weitere Mitglieder zum Blockchain-Netz in der Network Monitor-Instanz des Netzes ein. Weitere Informationen zur Einladung von Netzmitgliedern finden Sie unter [Mitglieder](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-members).
+4. Jedes Mitglied empfängt eine Benachrichtigungs-E-Mail, die eine Einladung zur Teilnahme am Netz enthält. Das Mitglied kann dem Netz nun beitreten. Weitere Informationen finden Sie in **Schritt 4** unter [Für andere Netzmitglieder bezahlen](/docs/services/blockchain/howto/paying_mode.html#paying-mode-pay-for-others).
 
 ### Bekannte Einschränkung
-{: #let-other-pay-limitation}
+{: #paying-mode-let-other-pay-limitation}
 
 Nachdem das {{site.data.keyword.cloud_notm}}-Konto des Zahlers als Abrechnungsmanager zu den Konten anderer Mitglieder hinzugefügt wurde und diese Mitglieder weitere Services über ihr Konto erworben haben, muss der Zahler die entsprechenden Gebühren ebenfalls bezahlen. Alle Mitglieder können eine Vereinbarung unterzeichnen, in der festgehalten wird, dass diese Mitglieder keine nicht autorisierten Services in ihren Konten erstellen werden und so zusätzliche Kosten für das Konto des Zahlers verursachen.  
 
 
 ## Abrechnungen an andere Mitglieder übertragen
-{: #transfer-billing}
+{: #paying-mode-transfer-billing}
 
 Während Netzmitglieder ein anderes Mitglied für sich bezahlen lassen können, können zu einem späteren Zeitpunkt andere Mitglieder die Abrechnungen übernehmen. Sie können das Konto des Zahlers aus Ihren Konten entfernen, sodass der Zahler die Bezahlung für Sie einstellen kann.
 

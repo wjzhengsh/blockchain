@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-31"
+lastupdated: "2018-12-08"
 
 ---
 
@@ -13,17 +13,18 @@ lastupdated: "2018-08-31"
 {:pre: .pre}
 {:tip: .tip}
 
-# Desarrollar la red
+# Desarrollo de redes empresariales
 {: #develop-the-network}
 
+**IBM recomienda el uso de Hyperledger Composer únicamente para demostraciones y pruebas de concepto. IBM no proporciona soporte para redes que utilicen Hyperledger Composer en producción, incluyendo la CLI de Composer, las API de JavaScript, el servidor REST y Web Playground.**
 
 ***[¿Le resulta útil esta página? Indíquenos su opinión.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 
-El desarrollo de soluciones de blockchain mediante la plataforma {{site.data.keyword.blockchainfull}} aprovecha el conjunto de herramientas de desarrollo de código abierto de Hyperledger Composer. Hyperledger Composer utiliza un lenguaje de modelado adaptado, que se combina con transacciones JavaScript y reglas de control de acceso para modelar una red empresarial de blockchain por completo _antes_ de desplegar nada en una red blockchain real.
+El desarrollo de soluciones de blockchain mediante {{site.data.keyword.blockchainfull}} Platform aprovecha el conjunto de herramientas de desarrollo de código abierto de Hyperledger Composer. Hyperledger Composer utiliza un lenguaje de modelado adaptado, que se combina con transacciones JavaScript y reglas de control de acceso para modelar una red empresarial de blockchain por completo _antes_ de desplegar nada en una red blockchain real.
 {:shortdesc}
 
-**Nota**: el Plan inicial proporciona aplicaciones de ejemplo que puede probar y de las que puede aprender. Puede ejecutar aplicaciones de ejemplo en el Plan inicial antes de desarrollar su red empresarial personalizada. Para obtener más información, consulte [Acerca del Plan inicial](starter_plan.html).
+**Nota:** el Plan inicial proporciona aplicaciones de ejemplo que puede probar y de las que puede aprender. Puede ejecutar aplicaciones de ejemplo en el Plan inicial antes de desarrollar su red empresarial personalizada. Para obtener más información, consulte [Acerca del Plan inicial](starter_plan.html).
 
 Este documento le guía por el proceso de desarrollo de una solución {{site.data.keyword.blockchain}} que empieza por crear y modelar una red empresarial y la despliega en una red blockchain en ejecución.
 
@@ -39,7 +40,7 @@ En los siguientes pasos se describe el desarrollo básico de una solución {{sit
 
 ## Antes de empezar
 
-Asegúrese de que tiene instaladas las herramientas de desarrollo de [{{site.data.keyword.blockchainfull_notm}}: Develop](./develop_install.html).
+Asegúrese de que tiene instaladas las [herramientas de desarrollo de {{site.data.keyword.blockchainfull_notm}}: Develop](./develop_install.html).
 
 ## Paso uno: Creación de la estructura de la red empresarial
 
@@ -179,6 +180,6 @@ Después de ejecutar el mandato, se crea un archivo de archivado de red empresar
 
 ## Paso cuatro: Despliegue de la red empresarial y generación de un servidor REST
 
-Despliegue la red empresarial en la plataforma {{site.data.keyword.blockchainfull_notm}} utilizando el [Plan inicial](./develop_starter.html) o el [Plan empresarial](./develop_enterprise.html).
+Despliegue la red empresarial en {{site.data.keyword.blockchainfull_notm}} Platform utilizando el [Plan inicial](./develop_starter.html) o el [Plan empresarial](./develop_enterprise.html).
 
 Después de desplegar la red empresarial en la plataforma {{site.data.keyword.blockchainfull_notm}}, se puede generar un servidor REST adaptado. El servidor REST examina el contenido de la red empresarial y crea llamadas de API RESTful para los activos, las transacciones y los participantes de la red. Encontrará instrucciones para generar un servidor REST en la [documentación de Hyperledger Composer](https://hyperledger.github.io/composer/latest/integrating/getting-started-rest-api).

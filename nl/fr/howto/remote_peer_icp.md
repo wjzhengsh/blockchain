@@ -23,7 +23,7 @@ Les instructions suivantes décrivent comment installer l'homologue distant {{si
 
 {{site.data.keyword.cloud_notm}} Private est une plateforme applicative pour le développement et la gestion d'applications conteneurisées sur site. {{site.data.keyword.blockchainfull_notm}} Platform Remote Peers sur {{site.data.keyword.cloud_notm}} est un produit {{site.data.keyword.blockchainfull_notm}} qui est intégré avec ICP pour les clients qui déploient des homologues dans leur environnement local. Une fois que vous avez installé la charte Helm de l'homologue distant, vous pouvez la trouver en tant qu'application dans le catalogue ICP. L'homologue distant pour ICP optimise les services de stockage, de sécurité, de journalisation et d'assistance d'ICP pour la gestion des homologues. Pour plus d'informations sur ICP, voir la documentation de [{{site.data.keyword.cloud_notm}} Private documentation ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0.3/kc_welcome_containers.html "{{site.data.keyword.cloud_notm}} Private").
 
-Avant d'installer des homologues distants sur ICP, passez en revue les [considérations relatives aux homologues distants](remote_peer.html#remote-peer-limitations).
+Avant d'installer des homologues distants sur ICP, passez en revue les [considérations relatives aux homologues distants](/docs/services/blockchain/howto/remote_peer.html#remote-peer-limitations).
 
 ## Prérequis
 {: #prerequisites-icp}
@@ -61,7 +61,7 @@ Avant d'installer des homologues distants sur ICP vous devez suivre les étapes 
 
 3. {{site.data.keyword.blockchainfull_notm}} Platform  
 
-  Pour utiliser un homologue distant, vous devez disposer d'une organisation qui est membre d'un réseau de blockchain hébergé sur {{site.data.keyword.blockchainfull_notm}} Platform. Vous devez utiliser le Moniteur réseau sur {{site.data.keyword.cloud_notm}} pour accéder aux données d'identification du réseau et aux noeuds finaux d'API de votre réseau. Si vous n'êtes membre d'aucun un réseau de blockchain, vous devez créer ou rejoindre un réseau. Pour plus d'informations, voir [Création d'un réseau de plan](../get_start.html#creating-a-network) ou [Rejoindre un réseau](../get_start.html#joining-a-network).
+  Pour utiliser un homologue distant, vous devez disposer d'une organisation qui est membre d'un réseau de blockchain hébergé sur {{site.data.keyword.blockchainfull_notm}} Platform. Vous devez utiliser le Moniteur réseau sur {{site.data.keyword.cloud_notm}} pour accéder aux données d'identification du réseau et aux noeuds finaux d'API de votre réseau. Si vous n'êtes membre d'aucun un réseau de blockchain, vous devez créer ou rejoindre un réseau. Pour plus d'informations, voir [Création d'un réseau de plan](/docs/services/blockchain/get_start.html#creating-a-network) ou [Rejoindre un réseau](/docs/services/blockchain/get_start.html#joining-a-network).
 
 ## Importation de la charte Helm dans ICP 
 
@@ -179,7 +179,7 @@ Le tableau suivant répertorie les paramètres configurables du graphique d'homo
 | `Peer enroll secret`| Valeur confidentielle d'inscription que vous avez entrée dans l'écran "Autorité de certification" du Moniteur réseau d'{{site.data.keyword.blockchainfull_notm}} Platform. | none | yes |
 | | | | |
 |**Remote peer database** | **Type de base de données du registre**| | |
-| `Ledger database`| [Base de données d'état](../glossary.html#state-database) utilisée pour le stockage de votre registre de canal. L'homologue distant doit utiliser la même base de données que votre [réseau de blockchain](../v10_dashboard.html#network-preferences). | none | yes |
+| `Ledger database`| [Base de données d'état](/docs/services/blockchain/glossary.html#state-database) utilisée pour le stockage de votre registre de canal. L'homologue distant doit utiliser la même base de données que votre [réseau de blockchain](/docs/services/blockchain/v10_dashboard.html#network-preferences). | none | yes |
 | `CouchDB image`| S'applique uniquement si CouchDB a été sélectionné comme base de données de registre. | Renseigné automatiquement par le chemin installé, ne modifiez pas cette valeur. | yes |
 |**Data persistence** | Activité de la capacité de persistance des données après un redémarrage ou une défaillance du cluster. Voir la section relative au [stockage dans Kubernetes ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://kubernetes.io/docs/concepts/storage/ "Volumes") pour plus de détails. | | |
 | `Data persistence enabled`| Des données d'état seront disponibles au redémarrage du conteneur. *Si ce paramètre est désélectionné, toutes les données seront perdues en cas de reprise en ligne ou de redémarrage du pod.* | checked | no |
@@ -299,7 +299,7 @@ helm CLI version on your local machine is ahead of helm cli version on your serv
 Error: incompatible versions client[v2.9.1] server[v2.7.3+icp]
 ```
 
-See the [troubleshooting topic](remote_peer_operate_icp.html#icp-troubleshooting) for instructions on resolving this error.
+See the [troubleshooting topic](/docs/services/blockchain/howto/remote_peer_operate_icp.html#icp-troubleshooting) for instructions on resolving this error.
 
 -->
 
@@ -381,13 +381,13 @@ Après avoir installé l'homologue distant, vous pouvez consulter le journal de 
 3. Pour vérifier que l'homologue distant peut se connecter au réseau d'{{site.data.keyword.blockchainfull}} Platform, vous pouvez
 exécuter une commande de l'interface CLI au sein du conteneur de l'homologue distant. Exécutez la commande d'interface CLI `peer channel fetch` pour extraire le bloc d'origine d'un canal :
 
-   1. Si vous n'êtes pas déjà connecté à votre cluster ICP, suivez ces [instructions](remote_peer_operate_icp.html#remote-peer-kubectl-configure) pour vous y connecter et utilisez l'interface CLI au sein du conteneur de l'homologue.
+   1. Si vous n'êtes pas déjà connecté à votre cluster ICP, suivez ces [instructions](/docs/services/blockchain/howto/remote_peer_operate_icp.html#remote-peer-kubectl-configure) pour vous y connecter et utilisez l'interface CLI au sein du conteneur de l'homologue.
 
    2. Votre organisation doit être ajoutée à un canal du réseau pour que vous puissiez extraire le bloc d'origine.
 
-     - Vous pouvez démarrer un nouveau canal pour l'homologue distant. En tant qu'initiateur de canal, vous pouvez inclure automatiquement votre organisation durant la [création de canal](create_channel.html#creating-a-channel). Notez que vous devez disposer d'au moins un homologue sur {{site.data.keyword.blockchainfull_notm}} Platform pour pouvoir créer un canal dans le Moniteur réseau.  
+     - Vous pouvez démarrer un nouveau canal pour l'homologue distant. En tant qu'initiateur de canal, vous pouvez inclure automatiquement votre organisation durant la [création de canal](/docs/services/blockchain/howto/create_channel.html#creating-a-channel). Notez que vous devez disposer d'au moins un homologue sur {{site.data.keyword.blockchainfull_notm}} Platform pour pouvoir créer un canal dans le Moniteur réseau.  
 
-     - Un autre membre du réseau blockchain peut également ajouter votre organisation à un canal existant en utilisant une [mise à jour de canal](create_channel.html#updating-a-channel). Un membre du canal avec des homologues sur {{site.data.keyword.blockchainfull_notm}} Platform peut utiliser le Moniteur réseau pour ajouter votre organisation au canal même si vous n'hébergez aucun homologue sur la plateforme.
+     - Un autre membre du réseau blockchain peut également ajouter votre organisation à un canal existant en utilisant une [mise à jour de canal](/docs/services/blockchain/howto/create_channel.html#updating-a-channel). Un membre du canal avec des homologues sur {{site.data.keyword.blockchainfull_notm}} Platform peut utiliser le Moniteur réseau pour ajouter votre organisation au canal même si vous n'hébergez aucun homologue sur la plateforme.
       L'homologue distant envoie par téléchargement son certificat signataire lors de l'installation, de sorte que vous devez uniquement synchroniser le certificat pour le canal. Dans l'écran "Canaux" de votre Moniteur réseau, localisez le canal rejoint par votre organisation et sélectionnez **Synchroniser le certificat** dans la liste déroulante sous l'en-tête **Action**. Cette action synchronise les certificats entre tous les homologues sur le canal.
 
    3. Extrayez les informations de configuration de votre fichier `creds.json` disponible à l'écran "Présentation" de votre Moniteur réseau. Cliquez sur **Profil de connexion**, puis sur **Télécharger**.
@@ -459,7 +459,7 @@ exécuter une commande de l'interface CLI au sein du conteneur de l'homologue di
 ## Etapes suivantes
 {: #whats-next-icp}
 
-Après que vous avez configuré l'homologue distant dans ICP, vous pouvez effectuer quelques étapes supplémentaires avant de soumettre les transactions et lire le registre partagé du réseau de blockchain. Pour plus d'informations, voir [Exploitation d'un homologue distant](remote_peer_operate_icp.html).
+Après que vous avez configuré l'homologue distant dans ICP, vous pouvez effectuer quelques étapes supplémentaires avant de soumettre les transactions et lire le registre partagé du réseau de blockchain. Pour plus d'informations, voir [Exploitation d'un homologue distant](/docs/services/blockchain/howto/remote_peer_operate_icp.html).
 
 ## Haute disponibilité
 {: #high-availability}
@@ -473,7 +473,7 @@ Pour déployer des homologues distants à haute disponibilité dans ICP, procéd
 2. Installez l'homologue plusieurs fois sur votre cluster afin de déployer des homologues sur différents noeuds worker. La charte Helm contient une règle anti-affinité qui repose sur votre ID réseau et votre OrgID. Le cluster ICP détecte si vos homologues se connectent au même réseau de la même organisation, et il essaie d'organiser ces homologues sur différents noeuds worker.  
   **Note:** Although the policy "prefers" to put peers on different worker nodes, it doesn't mandate it. Par exemple, si vous avez un seul noeud worker, tous vos homologues sont déployés sur ce même noeud.
 
-Si vous déployez au moins deux homologues, vous devez également configurer vos [applications pour la haute disponibilité](../v10_application.html#ha-app).
+Si vous déployez au moins deux homologues, vous devez également configurer vos [applications pour la haute disponibilité](/docs/services/blockchain/v10_application.html#ha-app).
 
 ## Remarques concernant la sécurité
 {: #icp-security}
@@ -494,14 +494,14 @@ Le plan Enterprise d'{{site.data.keyword.blockchainfull}} Platform utilise le ch
 {: #icp-data-residency}
 
 L'hébergement de données indique que le traitement et le stockage de l'ensemble des données de registre de blockchain demeurent à l'intérieur des frontières d'un pays unique.
-Pour plus de détails sur la mise en oeuvre de l'hébergement de données, voir [Hébergement de données](remote_peer.html#data-residency).
+Pour plus de détails sur la mise en oeuvre de l'hébergement de données, voir [Hébergement de données](/docs/services/blockchain/howto/remote_peer.html#data-residency).
 
 ### Gestion des clés
 {: #icp-security-key-management}
 
-La gestion des clés est un aspect essentiel de la sécurité de l'homologue distant. Si une clé privée est compromise ou égarée, des acteurs hostiles pourraient accéder aux données et aux fonctionnalités de votre homologue distant. Le plan Enterprise d'{{site.data.keyword.blockchainfull_notm}} Platform utilise des [modules de sécurité matérielle](../glossary.html#hsm) (HSM) pour stocker les clés privées de votre réseau. HSM est un dispositif physique qui empêche des tiers d'accéder à votre clé privée.
+La gestion des clés est un aspect essentiel de la sécurité de l'homologue distant. Si une clé privée est compromise ou égarée, des acteurs hostiles pourraient accéder aux données et aux fonctionnalités de votre homologue distant. Le plan Enterprise d'{{site.data.keyword.blockchainfull_notm}} Platform utilise des [modules de sécurité matérielle](/docs/services/blockchain/glossary.html#hsm) (HSM) pour stocker les clés privées de votre réseau. HSM est un dispositif physique qui empêche des tiers d'accéder à votre clé privée.
 
-Lorsque vous déployez un homologue distant sur ICP, vous êtes responsable de la gestion de vos clés privées. Bien qu'{{site.data.keyword.blockchainfull_notm}} Platform génère vos clés privées, ces clés ne sont pas stockées sur cette plateforme. Il est essentiel que vous stockiez vos clés dans un emplacement sécurisé afin qu'elles ne soient pas compromises. Vous pouvez trouver la clé privée de votre homologue distant dans le dossier du magasin de clés de votre MSP, dans le répertoire `/mnt/crypto/peer/peer/msp/keystore/` au sein de votre conteneur d'homologue. Pour plus d'informations sur les certificats au sein de votre homologue distant, voir la section relative au [fournisseur de services d'appartenance](../certificates.html#msp) du tutoriel [Gestion des certificats sur {{site.data.keyword.blockchainfull_notm}} Platform](../certificates.html).
+Lorsque vous déployez un homologue distant sur ICP, vous êtes responsable de la gestion de vos clés privées. Bien qu'{{site.data.keyword.blockchainfull_notm}} Platform génère vos clés privées, ces clés ne sont pas stockées sur cette plateforme. Il est essentiel que vous stockiez vos clés dans un emplacement sécurisé afin qu'elles ne soient pas compromises. Vous pouvez trouver la clé privée de votre homologue distant dans le dossier du magasin de clés de votre MSP, dans le répertoire `/mnt/crypto/peer/peer/msp/keystore/` au sein de votre conteneur d'homologue. Pour plus d'informations sur les certificats au sein de votre homologue distant, voir la section relative au [fournisseur de services d'appartenance](/docs/services/blockchain/certificates.html#msp) du tutoriel [Gestion des certificats sur {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/certificates.html).
 
 Vous pouvez utiliser Key Escrow pour récupérer des clés privées perdues. Cette opération doit être effectuée avant la perte de clés. Si une clé privée ne peut pas être récupérée, vous devez obtenir de nouvelles clés privées en enregistrant une nouvelle identité avec votre autorité de certification. Vous devez également retirer et remplacer votre signCert des canaux que vous avez rejoints.
 
@@ -514,12 +514,12 @@ Dans IBP, lorsqu'une clé privée est créée, deux ensembles de matériel de cl
 
 [Transport Layer Security ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://www.ibm.com/support/knowledgecenter/en/SSFKSJ_7.1.0/com.ibm.mq.doc/sy10660_.htm "Une présentation de l'établissement de liaison SSL ou TLS") (TLS) est intégrée au modèle de confiance d'Hyperledger Fabric. Tous les composants sur {{site.data.keyword.blockchainfull_notm}} Platform utilisent TLS pour s'authentifier et communiquer entre eux. Par conséquent, les composants réseau sur {{site.data.keyword.blockchainfull_notm}} Platform doivent pouvoir effectuer un établissement de liaison TLS avec vos homologues distants. Ceci implique entre autres que vous devez activer le passe-système, en utilisant des listes blanches par exemple, dans le pare-feu Web entre vos applications client et votre homologue.
 
-Vous pouvez utiliser TLS mutuel, qui requiert une authentification bilatérale (serveur-client) et non unilatérale (serveur uniquement), pour sécuriser la communication entre votre application et les réseaux du plan Enterprise. Vous pouvez utiliser le Moniteur réseau [pour activer TLS mutuel](../v10_dashboard.html#mutual-tls) pour les homologues sur {{site.data.keyword.blockchainfull_notm}} Platform. Pour activer TLS mutuel sur votre homologue distant, suivez les instructions relatives à la [l'activation de TLS mutuel pour les noeuds homologues![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-1.1/enable_tls.html "Sécurisation des communications avec TLS") dans la documentation Hyperledger Fabric. Il est vivement recommandé d'activer TLS mutuel pour vos applications.
+Vous pouvez utiliser TLS mutuel, qui requiert une authentification bilatérale (serveur-client) et non unilatérale (serveur uniquement), pour sécuriser la communication entre votre application et les réseaux du plan Enterprise. Vous pouvez utiliser le Moniteur réseau [pour activer TLS mutuel](/docs/services/blockchain/v10_dashboard.html#mutual-tls) pour les homologues sur {{site.data.keyword.blockchainfull_notm}} Platform. Pour activer TLS mutuel sur votre homologue distant, suivez les instructions relatives à la [l'activation de TLS mutuel pour les noeuds homologues![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-1.1/enable_tls.html "Sécurisation des communications avec TLS") dans la documentation Hyperledger Fabric. Il est vivement recommandé d'activer TLS mutuel pour vos applications.
 
 ### Configuration de Membership Service Provider (Fournisseur de services aux membres) 
 {: #icp-security-MSP}
 
-Les composants d'{{site.data.keyword.blockchainfull_notm}} Platform consomment des identités via des Fournisseur de services aux membres (MSP). Les MSP associent les certificats émis par les autorités de certification à des rôles de réseau et de canal. Pour plus d'informations sur la façon dont les MSP fonctionnent avec les homologues distants, voir [Membership Service Providers (MSP)](../certificates.html#msp).
+Les composants d'{{site.data.keyword.blockchainfull_notm}} Platform consomment des identités via des Fournisseur de services aux membres (MSP). Les MSP associent les certificats émis par les autorités de certification à des rôles de réseau et de canal. Pour plus d'informations sur la façon dont les MSP fonctionnent avec les homologues distants, voir [Membership Service Providers (MSP)](/docs/services/blockchain/certificates.html#msp).
 
 ### Sécurité des applications
 {: #icp-security-appl}

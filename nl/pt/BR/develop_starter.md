@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-31"
+lastupdated: "2018-12-08"
 
 ---
 
@@ -16,6 +16,7 @@ lastupdated: "2018-08-31"
 # Implementando uma rede de negócios no Starter Plan
 {: #deploying-a-business-network}
 
+**A IBM recomenda usar o Hyperledger Composer exclusivamente para demos e provas de conceitos. A IBM não fornece suporte para redes que usam o Hyperledger Composer na produção, incluindo a CLI do Composer, as APIs JavaScript, o servidor REST e o Web Playground.**
 
 *[Esta página é útil? Diga-nos.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)*
 
@@ -27,7 +28,14 @@ Usando o ambiente de desenvolvedor, é possível rapidamente modelar e testar re
 
 ## Antes de iniciar
 
-Leia [Sobre o Starter Plan](./starter_plan.html) e [Introdução ao Starter Plan](./get_start_starter_plan.html). Também assegure-se de que tenha instalado o ambiente do desenvolvedor do [{{site.data.keyword.blockchainfull_notm}} Platform](./develop_install.html) e tenha criado uma instância do {{site.data.keyword.blockchainfull_notm}} Platform Starter Plan seguindo as instruções em [Governar a rede do Starter Plan](./get_start_starter_plan.html). Assegure-se de ter o Node v8.9 ou superior, o npm v5.x e o Hyperledger Composer na v0.19.x.
+Leia [Sobre o Starter Plan](./starter_plan.html) e [Introdução ao Starter Plan](./get_start_starter_plan.html). Também assegure-se de que tenha instalado o ambiente do desenvolvedor do [{{site.data.keyword.blockchainfull_notm}} Platform](./develop_install.html) e tenha criado uma instância do {{site.data.keyword.blockchainfull_notm}} Platform Starter Plan seguindo as instruções em [Governar a rede do Starter Plan](./get_start_starter_plan.html).
+
+Assegure-se de ter o Node v8.9 ou superior, o npm v5.x e o Hyperledger Composer:
+
+- Se sua rede estiver no Fabric versão 1.2, use o Hyperledger Composer v0.20.x.
+- Se sua rede estiver no Fabric versão 1.1, use o Hyperledger Composer v0.19.x.  
+
+É possível localizar a versão do Fabric abrindo a [janela Preferências de rede](../v10_dashboard.html#network-preferences) em seu Network Monitor.
 
 
 ## Etapa um: Recuperar o segredo do administrador
@@ -74,7 +82,7 @@ Substitua `enrollSecret` no comando anterior pelo segredo do administrador recup
 
 Os certificados devem ser incluídos na instância do Starter Plan. Por conveniência, eles podem ser incluídos usando a IU do {{site.data.keyword.blockchainfull_notm}} Platform. Os certificados devem ser incluídos e, em seguida, os peers devem ser reiniciados e, então, os certificados devem ser sincronizados no canal. O certificado necessário é o arquivo `admin-pub.pem` que foi gerado por meio do comando prévio, que está no diretório `credentials`.
 
-1. Na IU do Starter Plan, clique na guia **Membros**, em seguida, em **Certificados**, em seguida, em **Incluir certificado**. Acesse o seu diretório `credentials` e copie e cole o conteúdo do arquivo `admin-pub.pem` na caixa de certificado. Envie o certificado e reinicie os peers. Nota: reiniciar os peers leva um minuto.
+1. Na IU do Starter Plan, clique na guia **Membros**, em seguida, em **Certificados**, em seguida, **Incluir certificado**. Acesse o seu diretório `credentials` e copie e cole o conteúdo do arquivo `admin-pub.pem` na caixa de certificado. Envie o certificado e reinicie os peers. Nota: reiniciar os peers leva um minuto.
 
     ![Incluir certificados](images/add_cert.gif "Incluir certificados")
 
@@ -140,7 +148,7 @@ Em seguida, o cartão criado na etapa anterior pode ser usado para instalar e in
 
 A rede de negócios agora está implementada na instância do Starter Plan.
 
-## Etapa seis: execute ping na rede de negócios para assegurar que ela esteja sendo executada corretamente
+## Etapa seis: executar ping na rede de negócios para assegurar que ela esteja sendo executada corretamente
 
 Execute o comando a seguir para executar ping na rede de negócios:
 

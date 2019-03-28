@@ -1,19 +1,24 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-11-13"
+  years: 2017, 2019
+lastupdated: "2019-03-20"
+
+subcollection: blockchain
+
 ---
 
 {:new_window: target="_blank"}
 {:shortdesc: .shortdesc}
 {:codeblock: .codeblock}
 {:screen: .screen}
+{:note: .note}
+{:important: .important}
+{:tip: .tip}
 {:pre: .pre}
 
-# Developing chaincode
-
-***[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+# Writing smart contracts
+{: #develop-smart-contracts}
 
 Chaincode, also referred to as smart contracts, is software that allows you to read and update data on the blockchain ledger. Chaincode can turn business logic into an executable program agreed to and verified by all members of the blockchain network. Business logic includes the definition of assets traded between parties. It also consists of the terms and conditions required for a transaction to be executed. Turning these rules into code on a blockchain allow businesses to streamline business processing and auditing and reduce large amounts of manual processing and paperwork.
 
@@ -21,35 +26,37 @@ As an example, imagine that a network of car dealerships, insurance companies an
 
 The following tutorial will take you through the basic aspects of building chaincode, including:
 
-- [How to get get started writing chaincode](#write-chaincode)
-- [The relationship between chaincode and data](#install-chaincode)
-- [Cross chaincode transactions](#cross-chaincode-transactions)
+- [How to get started writing chaincode](/docs/services/blockchain/howto/develop_chaincode.html#develop-smart-contracts-write)
+- [The relationship between chaincode and data](/docs/services/blockchain/howto/develop_chaincode.html#develop-smart-contracts-data)
+- [Cross chaincode transactions](/docs/services/blockchain/howto/develop_chaincode.html#develop-smart-contracts-cross-chaincode)
 
 The tutorial also introduces important aspects of fabric that are accessible through chaincode:
 
-- [Private Data](#private-data)
-- [Using indexes with couchDB](#indexes)
+- [Using indexes with couchDB](/docs/services/blockchain/howto/develop_chaincode.html#develop-smart-contracts-indexes)
 
 ## Writing chaincode
-{: #write-chaincode}
+{: #develop-smart-contracts-write}
 
-Chaincode can be written in multiple languages, and the {{site.data.keyword.blockchainfull_notm}} Platform supports chaincode written in Go and Node.js. Chaincode allows users query and change data stored in the blockchain using API's provided by the Fabric Chaincode interface. Data on the blockchain is stored in key-value pairs in the world state of the channel [ledger ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/ledger/ledger.html "ledger"). Chaincode uses get commands to retrieve values and use put commands to create or update values. Using these basic operations, you can build functions that define the business rules of your network. These functions can be invoked by your applications and surfaced to end users of the network. To continue using the vehicle network example, you can create a function that allows a car dealership to use a put command to add a new car to the ledger only if they provide a valid vehicle ID number.
+Chaincode can be written in multiple languages, and the {{site.data.keyword.blockchainfull_notm}} Platform supports chaincode written in Go and Node.js. Chaincode allows users query and change data that is stored in the blockchain by using APIs that the Fabric Chaincode interface provides. Data on the blockchain is stored in key-value pairs in the world state of the channel [ledger ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/ledger/ledger.html "ledger"). Chaincode uses get commands to retrieve values and use put commands to create or update values. Using these basic operations, you can build functions that define the business rules of your network. These functions can be invoked by your applications and surfaced to end users of the network. To continue using the vehicle network example, you can create a function that allows a car dealership to use a put command to add a new car to the ledger only if they provide a valid vehicle ID number.
 
-You can learn how to start writing chaincode by visiting the [Chaincode for developers tutorial ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/latest/chaincode4ade.html "chaincode for developers tutorial") in the Hyperledger Fabric community documentation. The tutorial will take you through the construction of a simple chaincode that creates and reads assets and introduces you to which API's are used in the process. You can also find the chaincode API reference guide for all chaincode languages. There are additional examples in the chaincode folder of the [Fabric samples repository ![External link icon](../images/external_link.svg "External link icon")](https://github.com/hyperledger/fabric-samples "Fabric samples").
+You can learn how to start writing chaincode by visiting the [Chaincode for developers tutorial ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/latest/chaincode4ade.html "chaincode for developers tutorial") in the Hyperledger Fabric community documentation. The tutorial will take you through the construction of a simple chaincode that creates and reads assets and introduces you to which APIs are used in the process. You can also find the chaincode API reference guide for all chaincode languages. There are additional examples in the chaincode folder of the [Fabric samples repository ![External link icon](../images/external_link.svg "External link icon")](https://github.com/hyperledger/fabric-samples "Fabric samples").  
+
+A smart contract is typically able to validate requests, apply the business rules and return a deterministic result. However, there are some situations where either additional facts are required or the business network wants to ensure that the information provided by the clients are true facts. Hyperledger Fabric does not prevent external calls to third-party systems from the smart contracts. However, it is the responsibility of the developer of the smart contract to ensure that the resulting R/W sets are deterministic.
+{:note}
 
 ## Installing Chaincode
-{: #install-chaincode}
+{: #develop-smart-contracts-install}
 
-Because chaincode provides the structure of transactions on a channel, a chaincode needs to be installed on all the peers joined to the channel that want use the chaincode to update or query the channel ledger. Then one member of the channel can then instantiate the chaincode on a channel and set the chaincode's endorsement policy. Install and instantiation of chaincode can be performed using the Network Monitor UI, the Fabric Peer command line interface, or from a client application using the [Fabric SDK](../v10_application.html#operate-sdk). To learn how to use the Network Monitor UI to deploy chaincode, see [Installing, instantiating, and updating a chaincode](install_instantiate_chaincode.html).
+Because chaincode provides the structure of transactions on a channel, a chaincode needs to be installed on all the peers joined to the channel that want use the chaincode to update or query the channel ledger. Then one member of the channel can then instantiate the chaincode on a channel and set the chaincode's endorsement policy. Install and instantiation of chaincode can be performed using the Network Monitor UI, the Fabric Peer command line interface, or from a client application using the [Fabric SDK](/docs/services/blockchain/v10_application.html#dev-app-operate-sdk). To learn how to use the Network Monitor UI to deploy chaincode, see [Installing, instantiating, and updating a chaincode](/docs/services/blockchain/howto/install_instantiate_chaincode.html#install-instantiate-chaincode).
 
 ## Chaincode and data
-{: #chaincode-data}
+{: #develop-smart-contracts-data}
 
-Each channel only has one ledger, and the data on that ledger is partitioned by a unique key and the chaincode that added the key value pair to the ledger. Members can only read or update data on the channel ledger by using the correct key and the associated chaincode. The data that can be accessed by a chaincode is referred to as that chaincode's namespace and all data on the ledger is within the namespace of one chaincode. A chaincode can interact with data outside of its namespace only by using a [cross chaincode transaction](#cross-chaincode-transactions) to the chaincode that can access the relevant data.
+Each channel only has one ledger, and the data on that ledger is partitioned by a unique key and the chaincode that added the key value pair to the ledger. Members can only read or update data on the channel ledger by using the correct key and the associated chaincode. The data that can be accessed by a chaincode is referred to as that chaincode's namespace and all data on the ledger is within the namespace of one chaincode. A chaincode can interact with data outside of its namespace only by using a [cross chaincode transaction](/docs/services/blockchain/howto/develop_chaincode.html#develop-smart-contracts-cross-chaincode) to the chaincode that can access the relevant data.
 
 We can use the fabcar chaincode from the Fabric samples repository as an example of how chaincode interacts with data. The namespace is created when the smart contract is instantiated. Some chaincode accepts a set of key value pair arguments when the chaincode is instantiated and use that data to initialize the namespace. The fabcar chaincode from the Fabric samples repository does not accept any arguments when it is instantiated. For fabcar, you need to add data to the namespace using the initLedger or createCar function. For instance, passing the argument `{"Args":["createCar",'CAR1', 'Honda', 'Accord', 'Black', 'Tom']}` will make the key value pair of `{Key='CAR1', value={'Honda', 'Accord', 'Black', 'Tom'}}` the fabcar namespace.
 
-Only the fabcar chaincode will be able to change this data. Assume the user wants to transfer the car to a new owner using the changeCarOwner function below:
+Only the fabcar chaincode can change this data. Assume that the user wants to transfer the car to a new owner by using the changeCarOwner function below:
 ```
 func (s *SmartContract) changeCarOwner(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
 
@@ -69,20 +76,28 @@ func (s *SmartContract) changeCarOwner(APIstub shim.ChaincodeStubInterface, args
 	return shim.Success(nil)
 }
 ```
-You can invoke the chaincode using the following arguments:
-`{"Args":["changeCarOwner",'CAR1','Mark']}`
+{:codeblock}
+
+You can invoke the chaincode by using the following arguments:
+```
+{"Args":["changeCarOwner",'CAR1','Mark']}
+```
+{:codeblock}
+
 The chaincode then uses the get commands to generate a read set from the chaincode namespace. It uses the put commands to create the transaction write set. The chaincode invoke also creates a unique transaction ID.
 ```
 TxId = Txid1
 Read Set: `{Key='CAR1', value[3]='Tom'}`
 Write Set: `{Key='CAR1', value[3]='Mark'}`
 ```
+{:codeblock}
+
 Each endorsing peer with the chaincode installed will simulate the transactions using the read set and the write set. If the simulations by each peer are consistent, the transactions is considered valid and can be committed to the ledger. After the transaction, the fabcar namespace will become `{Key='CAR1', value='Honda', 'Accord', 'Black', 'Mark'}`. Notice the owner has changed from Tom to Mark.
 
 The 1-1 relationship between chaincode and data creates important considerations for developing networks and applications. Chaincode software should be updated by installing a chaincode with the same name and a different version, rather than the use of a new chaincode. This update procedure preserves the chaincode namespace and will allow you to continue to use the existing data. You can also use different chaincode to restrict access to sensitive data, or read and write data in parallel.
 
 ## Cross chaincode transactions
-{: #cross-chaincode-transactions}
+{: #develop-smart-contracts-cross-chaincode}
 
 You can use a chaincode to invoke other chaincodes. This allows a chaincode to query and write to data outside of its namespace. Chaincode can both read and update data using chaincode instantiated on the same channel. However they can only query data using chaincode on different channels. The organization invoking the original chaincode needs to be authorized to invoke the chaincode that is the target of the transaction.
 
@@ -99,12 +114,16 @@ func (s *SmartContract) crossChaincodeChangeCarOwner(APIstub shim.ChaincodeStubI
 	return shim.Success(nil)
 }
 ```
+{:codeblock}
+
 If you create a new contract using this code and invoke the function `crossChaincodeChangeCarOwner`, the transaction will generate new a transaction ID and a write set.
 ```
 Contract: newContract
 TxId = Txid2
 Write Set: `{Key='CAR1', value[3]='Mark'}`
 ```
+{:codeblock}
+
 This TXid and write set will pass to the fabcar chaincode.
 ```
 Contract: fabcar
@@ -112,20 +131,14 @@ TxId = Txid2
 Read Set: `{Key='CAR1', value[3]='Mark'}`
 Write Set: `{Key='CAR1', value[3]='Joe'}`
 ```
+{:codeblock}
+
 Because `fabcar` is on the same channel as `newContract`, the `crossChaincodeChangeCarOwner` function is allowed to write to the `fabcar` namespace. The new `fabcar` namespace will be `{Key='CAR1', value='Honda', 'Accord', 'Black', 'Joe'}`.
 
-## Private data
-{: #private-data}
 
-Private data collections are a feature of Hyperledger Fabric networks at version 1.2 or higher. Channels are used by sets of organizations to transact without exposing the data to other organizations. However, organizations may want to keep sensitive information private, without exposing the data to other members of the channel. In this case, they can use private data collections to store information only on the peers of organizations that need the data. For example, a wholesaler and a farm may want to use the same channel as other farms for proof of sale. However, they could use a private collection to keep sensitive aspects of the sale, such as the price, private. To learn more using private data within a blockchain, visit the [Private Data ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/latest/chaincode4ade.html "Private data") concept article in the Fabric documentation.
+## Using indexes with CouchDB
+{: #develop-smart-contracts-indexes}
 
-You can use private data on the {{site.data.keyword.blockchainfull_notm}} platform as long as your network is at Fabric version 1.2 or higher. You can add a private data collection configuration file to your chaincode before installing it on your peer. You can then use private data specific chaincode API's to input and retrieve data from the collection.
+If you use CouchDB as your state database, you can perform JSON data queries from your chaincode against the channel's state data. It is strongly recommended that you create indexes for your JSON queries and use them in your chaincode. Indexes allow your applications to retrieve data efficiently as your network adds additional blocks of transactions and entries in the world state.
 
-For more information about how to use private data collections with your chaincode, see [Using private data ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/latest/private_data_tutorial.html "Using private data") in the Fabric documentation. You cannot use the Network Monitor to install chaincode with a collection configuration file. However, you can use the Fabric SDKs to install, instantiate, or update a chaincode that uses private data. For more information, see [How to use private data ![External link icon](../images/external_link.svg "External link icon")](https://fabric-sdk-node.github.io/release-1.3/tutorial-private-data.html "how to use private data") in the Node SDK documentation. **Note** that you need to upload the SDK's signCert to the {{site.data.keyword.blockchainfull_notm}} Platform before you can use the SDKs to install and instantiate a chaincode on your peer. For more information about how to interact with and operate your network with the Fabric SDKs, see [Developing applications](../v10_application.html) and [Operate your network using the SDK](../v10_application.html#operate-sdk).
-
-## Using Indexes with CouchDB
-{: #indexes}
-
-If your ledger data is stored in CouchDB, it is strongly recommended that you create indexes for your CouchDB queries and use them in your chaincode. Indexes allow your applications to retrieve data efficiently as your network adds additional blocks of transactions and entries in the world state. Also, CouchDB allows you to perform rich data queries  from your chaincode against on a channel ledger
-
-For more information about CouchDB and how to set up indexes, see [CouchDB as the State Database ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/couchdb_as_state_database.html "CouchDB as the State Database"){:new_window}. in the Hyperledger Fabric documentation. You can also find an example that uses an index with chaincode in this [Fabric tutorial ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/couchdb_tutorial.html)
+For more information about CouchDB and how to set up indexes, see [CouchDB as the State Database ![External link icon](../images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/couchdb_as_state_database.html "CouchDB as the State Database"){:new_window} in the Hyperledger Fabric documentation. You can also find an example that uses an index with chaincode in the [Fabric CouchDB tutorial ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/couchdb_tutorial.html). Visit [Best Practices when using CouchDB](/docs/services/blockchain/best_practices.html#best-practices-app-couchdb-indices) in the Developing applications tutorial for more information on how to query data from your applications.

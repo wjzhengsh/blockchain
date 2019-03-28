@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-31"
+lastupdated: "2018-12-08"
 
 ---
 
@@ -13,9 +13,10 @@ lastupdated: "2018-08-31"
 {:pre: .pre}
 {:tip: .tip}
 
-# Netz entwickeln
+# Unternehmensnetze entwickeln
 {: #develop-the-network}
 
+**IBM empfiehlt die Verwendung von Hyperledger Composer ausschließlich für Demonstrationszwecke und Machbarkeitsnachweise. IBM bietet keinen Support für Netze, die Hyperledger Composer in Produktionsumgebungen nutzen, inklusive Composer-Befehlszeilenschnittstelle, JavaScript-APIs, REST-Server und Web Playground.**
 
 ***[Ist diese Seite hilfreich? Teilen Sie uns Ihre Meinung mit.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 

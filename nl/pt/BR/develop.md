@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-31"
+lastupdated: "2018-12-08"
 
 ---
 
@@ -13,19 +13,20 @@ lastupdated: "2018-08-31"
 {:pre: .pre}
 {:tip: .tip}
 
-# Desenvolva a rede
+# Desenvolvendo redes de negócios
 {: #develop-the-network}
 
+**A IBM recomenda usar o Hyperledger Composer exclusivamente para demos e provas de conceitos. A IBM não fornece suporte para redes que usam o Hyperledger Composer na produção, incluindo a CLI do Composer, as APIs JavaScript, o servidor REST e o Web Playground.**
 
 ***[Esta página é útil? Diga-nos.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 
-Desenvolver soluções de blockchain usando o {{site.data.keyword.blockchainfull}} Platform alavanca o conjunto de ferramentas de desenvolvimento de software livre do Hyperledger Composer. O Hyperledger Composer usa uma linguagem de modelagem sob medida, que é combinada com transações do JavaScript e regras de controle de acesso para modelar uma rede de negócios de blockchain integralmente _antes_ de você implementar alguma coisa em uma rede de blockchain real.
+Desenvolver soluções de blockchain usando o {{site.data.keyword.blockchainfull}} Platform alavanca o conjunto de ferramentas de desenvolvimento de software livre do Hyperledger Composer. O Hyperledger Composer usa uma linguagem de modelagem personalizada, que é combinada com transações JavaScript e regras de controle de acesso para modelar uma rede de negócios blockchain por completo _antes_ de implementar qualquer coisa em uma rede de blockchain real.
 {:shortdesc}
 
-**Nota**: o Starter Plan fornece aplicativos de amostra que é possível aprender e tentar. É possível executar aplicativos de amostra no Starter Plan antes de você desenvolver a sua rede de negócios customizada. Para obter mais informações, veja [Sobre o Starter Plan](starter_plan.html).
+**Nota:** o Starter Plan fornece aplicativos de amostra que você pode aprender e experimentar. É possível executar aplicativos de amostra no Starter Plan antes de você desenvolver a sua rede de negócios customizada. Para obter mais informações, veja [Sobre o Starter Plan](starter_plan.html).
 
-Este tutorial passa pelo desenvolvimento de uma solução do {{site.data.keyword.blockchain}} que começa com a criação e a modelagem de uma rede de negócios e, então, a implementa em uma rede de blockchain em execução.
+Este tutorial passa pelo desenvolvimento de uma solução de {{site.data.keyword.blockchain}} que começa com a criação e a modelagem de uma rede de negócios e, em seguida, implementa-a em uma rede de blockchain em execução.
 
 As etapas a seguir descrevem o desenvolvimento básico de uma solução do {{site.data.keyword.blockchain}} que é hospedada no {{site.data.keyword.blockchainfull_notm}} Platform:
 

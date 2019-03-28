@@ -18,9 +18,9 @@ Vous pouvez déployer et tester des modèles d'application afin d'avoir une meil
 
 ## Avant de commencer
 
-Vérifiez que vous avez installé tous les logiciels prérequis sur votre système de fichiers local.  Pour plus d'informations, voir [Configuration de l'environnement de développement d'une application](../v10_application.html#setting-up-application-development-environment).
+Vérifiez que vous avez installé tous les logiciels prérequis sur votre système de fichiers local.  Pour plus d'informations, voir [Configuration de l'environnement de développement d'une application](/docs/services/blockchain/v10_application.html#setting-up-application-development-environment).
 
-Vous devez aussi disposer d'un réseau {{site.data.keyword.blockchain}} sur {{site.data.keyword.Bluemix_short}} avec un canal et ses homologues configurés.  Pour plus d'informations, voir [Gouvernance du réseau](../get_start.html).  Lorsque votre réseau est prêt à être utilisé, procédez à l'extraction des noeuds finaux d'API des ressources de votre réseau auxquelles votre application accédera.  Pour plus d'informations, voir [Ajout de données d'identification de service réseau à votre application](../v10_application.html#adding-network-service-credentials-to-your-application).
+Vous devez aussi disposer d'un réseau {{site.data.keyword.blockchain}} sur {{site.data.keyword.Bluemix_short}} avec un canal et ses homologues configurés.  Pour plus d'informations, voir [Gouvernance du réseau](/docs/services/blockchain/get_start.html).  Lorsque votre réseau est prêt à être utilisé, procédez à l'extraction des noeuds finaux d'API des ressources de votre réseau auxquelles votre application accédera.  Pour plus d'informations, voir [Ajout de données d'identification de service réseau à votre application](/docs/services/blockchain/v10_application.html#adding-network-service-credentials-to-your-application).
 
 
 ## Application Marbles

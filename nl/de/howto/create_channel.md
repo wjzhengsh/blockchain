@@ -1,8 +1,10 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-08-31"
+  years: 2017, 2019
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -13,9 +15,7 @@ lastupdated: "2018-08-31"
 {:pre: .pre}
 
 # Kanal erstellen oder aktualisieren
-
-
-***[Ist diese Seite hilfreich? Teilen Sie uns Ihre Meinung mit.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+{: #ibp-create-channel}
 
 
 Kanäle sind ein äußerst leistungsfähiger Mechanismus für die Partitionierung und Isolierung von Daten zum Datenschutz. Nur Mitglieder desselben Kanals können auf die Daten dieses Kanals zugreifen.
@@ -24,6 +24,8 @@ Kanäle sind ein äußerst leistungsfähiger Mechanismus für die Partitionierun
 Um die Kanalsicherheit sicherzustellen, wird eine Kanalaktualisierungsrichtlinie konfiguriert, um die Anzahl der Kanaloperatoren zu definieren, die gemeinsam eine Anforderung zur Kanalerstellung oder -aktualisierung bewilligen müssen, bevor ein Kanal erstellt oder aktualisiert wird.
 
 ## Kanal erstellen
+{: #ibp-create-channel-creating-a-channel}
+
 Klicken Sie auf die Schaltfläche **Neuer Kanal** in der Anzeige "Kanäle" Ihres Network Monitor und führen Sie die folgenden Schritte aus, um eine Anforderung zur Kanalerstellung zu übergeben:
 1. Wählen Sie einen Namen, der das Geschäftsziel des Kanals beschreibt, fügen Sie bei Bedarf eine Beschreibung hinzu und klicken Sie auf **Weiter**. Der Kanalname muss in einem Blockchain-Netz eindeutig sein. Er muss mit einem Buchstaben beginnen und darf nur Kleinbuchstaben, Ziffern oder Bindestriche enthalten.
   ![Kanalerstellung 1](../images/create_channel.png "Kanalerstellung - Anzeige 1")
@@ -31,9 +33,9 @@ Klicken Sie auf die Schaltfläche **Neuer Kanal** in der Anzeige "Kanäle" Ihres
 2. Laden Sie eine beliebige Kombination Ihrer Netzmitglieder ein, indem Sie die Netzmitglieder auswählen und auf die Schaltfläche **Mitglied hinzufügen** klicken. Passen Sie Berechtigungen an, indem Sie Rollen für die einzelnen eingeladenen Mitglieder zuordnen, und klicken Sie auf **Weiter**.
   ![Kanalerstellung 2](../images/create_channel_2.png "Kanalerstellung - Anzeige 2")
 
-    * Ein Kanaloperator kann das Ledger des Kanals abfragen oder aktualisieren. Der Kanaloperator hat die Berechtigung zum **Akzeptieren** oder **Ablehnen** einer Anforderung zur Kanalerstellung und zum Übergeben einer Anforderung zur Kanalaktualisierung. Für jeden Kanal muss es mindestens einen **Operator** geben.
-    * Ein Mitglied mit Schreibberechtigung kann das Ledger des Kanals aktualisieren.
-    * Ein Mitglied mit Leseberechtigung kann das Ledger des Kanals nur abfragen.
+    * Ein Kanaloperator kann das Ledger des Kanals abfragen oder aktualisieren. Ein Kanaloperator hat die Berechtigung zum **Akzeptieren** oder **Ablehnen** einer Anforderung zur Kanalerstellung und zum Übergeben einer Anforderung zur Kanalaktualisierung. Für jeden Kanal muss es mindestens einen **Operator** geben.
+    * Ein Mitglied mit Schreibberechtigung kann das Ledger des Kanals aktualisieren, beispielsweise durch das Aufrufen einer Chaincodefunktion. Ein Kanalmitglied mit Schreibberechtigung kann außerdem einen Chaincode auf einem Kanal instanziieren.
+    * Ein Mitglied mit Leseberechtigung kann das Ledger des Kanals lediglich abfragen, beispielsweise durch das Aufrufen einer Chaincodelesezugriffsfunktion.
 
 3. Konfigurieren Sie die Kanalaktualisierungsrichtlinie durch Auswahl der Anzahl von Kanaloperatoren, die eine Anforderung zur Kanalaktualisierung genehmigen müssen, und klicken Sie auf **Anforderung übergeben**.
   ![Kanalerstellung 3](../images/create_channel_3.png "Kanalerstellung Anzeige 3")
@@ -55,6 +57,8 @@ Auf Devisenmärkten mit strikten gesetzlichen Auflagen, um ein Beispiel zu nenne
 In diesem Fall würde sich der vertrauenswürdige Dritter zum einzigen “Operator” für einen Kanal machen und die anderen Mitglieder als “Schreibberechtigte” zuordnen. Dadurch erhielte dieser Dritte die alleinige Berechtigung, den Kanal zu bearbeiten, während die beiden Banken weiterhin die Möglichkeit haben, Transaktionen aufzurufen. Ein verwalteter "schreibgeschützter" Kanal könnte auch dadurch erstellt werden, dass die anderen Mitglieder als "Leseberechtigte" festgelegt werden.
 
 ## Kanal aktualisieren
+{: #ibp-create-channel-updating-a-channel}
+
 Wenn Sie die Konfiguration eines Kanals ändern wollen (wenn Sie z. B. Kanalmitglieder hinzufügen oder entfernen oder die Richtlinie zur Kanalaktualisierung ändern wollen), können Sie eine Anforderung zur Kanalaktualisierung übergeben. Suchen Sie in der Anzeige "Kanäle" des Network Monitor nach dem Kanal, den Sie ändern möchten, und wählen Sie **Kanal bearbeiten** in der Dropdown-Liste unter der Überschrift **Aktion** aus. Navigieren Sie durch die Anzeigen, um Änderungen an den gewünschten Entitäten vorzunehmen, und klicken Sie auf **Anforderung übergeben**, um eine Kanalaktualisierungsanforderung zu initiieren.
 
 Alle Kanalmitglieder erhalten E-Mail-Benachrichtigungen über die Anforderung zur Kanalaktualisierung:
@@ -70,3 +74,6 @@ Alle Kanalmitglieder erhalten E-Mail-Benachrichtigungen über die Anforderung zu
 * Vorhandene Schreib- oder Leseberechtigte für einen Kanal erhalten ebenfalls E-Mail-Benachrichtigungen zur Kanalaktualisierung. Sie finden die Anforderung mit dem Status _Nicht erforderlich_ in der Anzeige **Benachrichtigungen** des Network Monitor.
 
 Wenn eine ausreichende Anzahl von Kanaloperatoren der Anforderung zustimmen, kann jedes beliebige Kanalmitglied auf die Schaltfläche **Anforderung übergeben** klicken und der Kanal wird aktualisiert. Alle Kanalmitglieder finden den aktualisierten Kanal in der Anzeige "Kanäle" im Network Monitor.
+
+Bewilligungsrichtlinien werden nicht automatisch aktualisiert, wenn neue Organisationen dem Kanal beitreten und den Chaincode installieren. Falls die Richtlinie beispielsweise zwei von fünf Organisationen erforderlich macht, damit eine Transaktion bewilligt wird, wird sie nicht dahingehend aktualisiert, dass zwei von sechs Organisationen erforderlich sind, nachdem eine neue Organisation dem Kanal beigetreten ist. Stattdessen wird die neue Organisation nicht in der Richtlinie aufgeführt und ist nicht in der Lage, Transaktionen zu bewilligen. Sie können eine neue Organisation zu einer Bewilligungsrichtlinie hinzufügen, indem Sie den [entsprechenden Chaincode aktualisieren](/docs/services/blockchain/howto/install_instantiate_chaincode.html#install-instantiate-chaincode-update-cc). Weitere Informationen finden Sie im Abschnitt [Bewilligungsrichtlinien des Chaincodes angeben](/docs/services/blockchain/howto/install_instantiate_chaincode.html#install-instantiate-chaincode-endorsement-policy).
+{:important}

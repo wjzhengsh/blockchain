@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-31"
+lastupdated: "2018-12-08"
 ---
 
 {:new_window: target="_blank"}
@@ -15,6 +15,7 @@ lastupdated: "2018-08-31"
 # Hyperledger Composer
 {: #hyperledger-composer}
 
+**IBM recomienda el uso de Hyperledger Composer únicamente para demostraciones y pruebas de concepto. IBM no proporciona soporte para redes que utilicen Hyperledger Composer en producción, incluyendo la CLI de Composer, las API de JavaScript, el servidor REST y Web Playground.**
 
 ***[¿Le resulta útil esta página? Indíquenos su opinión.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 

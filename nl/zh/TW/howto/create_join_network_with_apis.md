@@ -18,14 +18,14 @@ lastupdated: "2018-08-31"
 ***[此頁面有幫助嗎？請告訴我們。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 
-「{{site.data.keyword.blockchainfull}} 平台」公開若干 REST API，可讓您用來在 {{site.data.keyword.cloud_notm}} 上建立或加入區塊鏈網路。您可以使用與您的網路相關聯的 [Swagger 使用者介面](swagger_apis.html)來嘗試這些 API。
+{{site.data.keyword.blockchainfull}} Platform 公開若干 REST API，可讓您用來在 {{site.data.keyword.cloud_notm}} 上建立或加入區塊鏈網路。您可以使用與您的網路相關聯的 [Swagger 使用者介面](swagger_apis.html)來嘗試這些 API。
 {:shortdesc}
 
 
 ## 擷取 API 的基本鑑別認證
 {: #retrieve-id-token}
 
-開始之前，您需要在 {{site.data.keyword.cloud_notm}} 中建立具有「入門範本方案」或「企業方案」的 [{{site.data.keyword.blockchainfull_notm}} 平台服務實例 ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](https://console.bluemix.net/catalog/services/blockchain)。
+開始之前，您需要在 {{site.data.keyword.cloud_notm}} 中建立具有「入門範本方案」或「企業方案」的 [{{site.data.keyword.blockchainfull_notm}} Platform 服務實例 ![外部鏈結圖示](../images/external_link.svg "外部鏈結圖示")](https://console.bluemix.net/catalog/services/blockchain)。
 
 若要使用 Swagger API 來建立或加入網路，您需要一個基本鑑別認證，以確保您可以在 {{site.data.keyword.cloud_notm}} 中存取服務實例。
 
@@ -152,7 +152,7 @@ https://ibmblockchain-v2-tor.1.secure.blockchain.ibm.com/api/v1/networks
 
 如果您受邀加入區塊鏈網路，則會收到內含 `location_id` 及 `network id` 的網路邀請電子郵件。
 
-1. 加入網路之前，您需要先建立「{{site.data.keyword.blockchainfull_notm}} 平台」服務實例，並擷取服務實例 ID 及記號作為基本鑑別使用者名稱和密碼。如需相關資訊，請參閱[擷取 API 的基本鑑別資訊](#retrieve-id-token)。
+1. 加入網路之前，您需要先建立 {{site.data.keyword.blockchainfull_notm}} Platform 服務實例，並擷取服務實例 ID 及記號作為基本鑑別使用者名稱和密碼。如需相關資訊，請參閱[擷取 API 的基本鑑別資訊](#retrieve-id-token)。
 
 2. [檢查可用的網路位置](#check-location)，以取得邀請電子郵件中 `location_id` 的 `swagger_url`。它看起來如下：
 

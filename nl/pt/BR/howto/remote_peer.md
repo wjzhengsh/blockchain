@@ -1,8 +1,10 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-09-05"
+  years: 2017, 2019
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -10,149 +12,125 @@ lastupdated: "2018-09-05"
 {:shortdesc: .shortdesc}
 {:screen: .screen}
 {:codeblock: .codeblock}
+{:note: .note}
+{:important: .important}
+{:tip: .tip}
 {:pre: .pre}
 
-# Sobre Peers Remotos
-{: #remote-peer-overview}
+# Sobre o {{site.data.keyword.blockchainfull_notm}} Platform for Amazon Web Services
+{: #remote-peer-aws-about}
 
+**Nota:** o peer remoto do {{site.data.keyword.blockchainfull}} Platform no programa {{site.data.keyword.cloud_notm}} Private (Beta) foi terminado. Se você ainda desejar executar peers em seu ambiente do {{site.data.keyword.cloud_notm}} Private, use a oferta ** {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private**. Para obter mais informações, veja [Sobre peers no {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-about-peer).
 
-***[Esta página é útil? Diga-nos.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
-
-É possível executar os peers remotos do {{site.data.keyword.blockchainfull}} Platform no {{site.data.keyword.cloud_notm}} Private (ICP) <!--[AWS]or on AWS Cloud --> depois de conectá-los a uma rede de blockchain existente. A execução de peers fora do {{site.data.keyword.cloud_notm}} fornece mais flexibilidade para aumentar ou se associar a uma rede de blockchain enquanto aproveita uma rede existente dentro do {{site.data.keyword.cloud_notm}}. Os peers remotos alavancam as Autoridades de certificação (CAs) e o Serviço de solicitação na plataforma, mas permitem que você instale seu peer com outros aplicativos fora do {{site.data.keyword.cloud_notm}}.
+É possível executar o peer do {{site.data.keyword.blockchainfull_notm}} Platform no AWS Cloud depois de conectá-lo a uma rede de blockchain existente no {{site.data.keyword.cloud_notm}}. A execução de peers remotos que estão fora do {{site.data.keyword.cloud_notm}} fornece mais flexibilidade para crescer ou se associar a uma rede de blockchain enquanto tira proveito de uma rede existente dentro do {{site.data.keyword.cloud_notm}}. Seus peers remotos na nuvem do AWS alavancam as Autoridades de Certificação (CAs) e o serviço de pedido na plataforma, mas é possível colocar seus peers com outros aplicativos fora do {{site.data.keyword.cloud_notm}}.
 {:shortdesc}
 
-<!--[AWS]Move ICP description here.-->O {{site.data.keyword.cloud_notm}} Private (ICP) é uma plataforma baseada em Kubernetes para construir uma nuvem privada em um ambiente local. É possível usar o ICP para executar um peer remoto e conectá-lo a uma rede de blockchain no {{site.data.keyword.blockchainfull_notm}} Platform. O {{site.data.keyword.blockchainfull_notm}} Platform Remote Peer for ICP alavanca o armazenamento, a segurança, a criação de log e os serviços de suporte do ICP para que você possa gerenciar os peers remotos em seu ambiente local. Para obter mais informações sobre o ICP, consulte a [documentação do {{site.data.keyword.cloud_notm}} Private ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0.3/kc_welcome_containers.html "documentação do {{site.data.keyword.cloud_notm}} Private").  
-
-**Nota:** o {{site.data.keyword.blockchainfull_notm}} Platform Remote Peer é atualmente uma oferta Beta adequada para avaliação e experimentação. **Essa edição Beta não deve ser usada para produção.** Para obter acesso e mais informações, consulte [licença e precificação](#remote-peer-license-pricing).
-
-<!--[AWS]The following cloud platforms are supported:-->
-<!--[AWS]
-|  Cloud Platform | Supported Versions |
-| ----------------|--------------------|
-| {{site.data.keyword.cloud_notm}} Private (ICP) | 2.1.0.3 |
--->
-<!--[AWS]
-|  Cloud Platform | Instance types |
-| ----------------|--------------------|
-| Amazon Web Services (AWS) | Choose from the list of available types. The minimum size is `t2.medium`, the default is `m4.xlarge`|
--->
-
-<!--[AWS]In all cases, the network on {{site.data.keyword.blockchainfull_notm}} Platform and the remote peer nodes must be running at the same **Fabric version 1.1**.
--->
-
-A edição Beta suporta a plataforma de nuvem do {{site.data.keyword.cloud_notm}} Private (ICP), v2.1.0.3. Observe que a rede no {{site.data.keyword.blockchainfull_notm}} Platform e os nós do peer remoto no ICP devem ser executados no mesmo **Fabric versão 1.1**.
 
 ## Considerações
-{: #remote-peer-limitations}
+{: #remote-peer-aws-about-limitations}
 
-Um peer remoto não tem acesso à funcionalidade completa ou ao suporte de peers hospedados no {{site.data.keyword.blockchainfull_notm}} Platform. Antes de executar peers remotos, assegure-se de entender as restrições e limitações a seguir:
-- Os peers remotos executados em outros ambientes de nuvem não ficam visíveis no Monitor de rede da rede de blockchain no {{site.data.keyword.cloud_notm}}.
-- Os peers remotos não podem ser direcionados usando a IU do Swagger na IU do Monitor de rede.
-- Você é responsável pelo gerenciamento do monitoramento de funcionamento, da segurança, da criação de log e do uso de recurso de seus peers remotos.
-- É possível conectar seus peers remotos apenas às redes de blockchain que estão no nível do Hyperledger Fabric v1.1.
-- O tipo de banco de dados do peer remoto deve corresponder ao tipo de banco de dados de sua rede de blockchain, seja LevelDB ou CouchDB.
-- A interface do CouchDB Fauxton não está disponível no peer remoto.
-- A [Fofoca](../glossary.html#gossip) para peers remotos não é suportada atualmente.
-
+O {{site.data.keyword.blockchainfull_notm}} Platform for AWS não tem acesso à funcionalidade completa ou suporte de peers que estão hospedados no {{site.data.keyword.blockchainfull_notm}} Platform. Antes de executar o {{site.data.keyword.blockchainfull_notm}} Platform for AWS, assegure-se de que você compreenda as restrições e limitações a seguir:
+- Os peers que são executados em outros ambientes de nuvem não são visíveis no Monitor de Rede da rede de blockchain no {{site.data.keyword.cloud_notm}}.
+- Os peers em execução no {{site.data.keyword.blockchainfull_notm}} Platform for AWS não podem ser tratados usando a IU do Swagger na IU do Monitor de Rede.
+- Você é responsável pelo gerenciamento do monitoramento de funcionamento, pela segurança, pela criação de log e pelo uso de recursos de seus nós de peer do {{site.data.keyword.blockchainfull_notm}} Platform for AWS.
+- É possível conectar seus peers do {{site.data.keyword.blockchainfull_notm}} Platform for AWS apenas às redes de blockchain que estão no nível do Fabric v1.1 ou v1.2.1. É possível localizar a versão do Fabric abrindo a [janela Preferências de rede](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-network-preferences) em seu Network Monitor.
+- O tipo de banco de dados do peer do {{site.data.keyword.blockchainfull_notm}} Platform for AWS deve corresponder ao tipo de banco de dados de sua rede de blockchain, LevelDB ou CouchDB.
+- A interface do CouchDB Fauxton não está disponível no peer do AWS.
+- Peers do [Gossip](/docs/services/blockchain/glossary.html#glossary-gossip) for AWS não são suportados atualmente. Isso significa que os recursos do Fabric que dependem do gossip, como [dados privados ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/private-data-arch.html "dados privados") e [descoberta de serviço ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/discovery-overview.html "descoberta de serviço"), também não são suportados.
 
 ## Pré-requisitos
-{: #remote-peer-prereq}
+{: #remote-peer-aws-about-prereq}
 
-Para usar um peer remoto, deve-se ter uma organização que seja membro de uma rede do Starter Plan ou do Enterprise Plan no {{site.data.keyword.blockchainfull_notm}} Platform. O peer remoto usa os terminais de API, as CAs do Hyperledger Fabric e o Serviço de solicitação da rede de Plano do {{site.data.keyword.blockchainfull_notm}} Platform para operar. Se você não for membro de nenhuma rede de blockchain, precisará criar ou associar-se a uma rede. Para obter mais informações, consulte [Criando uma rede](../get_start.html#creating-a-network) ou [Associando-se a uma rede](../get_start.html#joining-a-network).
-
+Para usar um peer do {{site.data.keyword.blockchainfull_notm}} Platform for AWS, deve-se ter uma organização que seja membro de uma rede Starter Plan ou Enterprise Plan no {{site.data.keyword.blockchainfull_notm}} Platform. O peer do {{site.data.keyword.blockchainfull_notm}} Platform for AWS alavanca os terminais de API, autoridades de certificação do Hyperledger Fabric e o serviço de ordenação da rede do {{site.data.keyword.blockchainfull_notm}} Platform para operar. Se você não for membro de nenhuma rede de blockchain, precisará criar ou associar-se a uma rede. Para obter mais informações, consulte [Criando uma rede](/docs/services/blockchain/get_start.html#getting-started-with-enterprise-plan-create-network) ou [Associando-se a uma rede](/docs/services/blockchain/get_start.html#getting-started-with-enterprise-plan-join-nw).
 
 ## Licença e precificação
-{: #remote-peer-license-pricing}
+{: #remote-peer-aws-about-license-pricing}
 
-<!--[AWS]To access remote peers on AWS Cloud, see [License and pricing in AWS](remote_peer_aws.html#license-pricing-icp "License and pricing in AWS"). -->Para acessar peers remotos para execução no ICP, consulte [Licença e precificação para peers remotos no ICP](remote_peer_icp.html#license-pricing-icp "Licença e precificação para peers remotos no ICP"). As licenças para a edição Beta de peers remotos são gratuitas.<!--[AWS] for both platforms.--> Posteriormente, uma oferta geralmente disponível (GA) substituirá a edição beta.
+O {{site.data.keyword.blockchainfull_notm}} Platform for AWS é atualmente oferecido como uma Community Edition, livre de encargos; no futuro, o {{site.data.keyword.blockchainfull_notm}} Platform for AWS poderá mudar para um modelo Bring-Your-Own-License (BYOL), o que requererá a compra de uma licença da IBM.
 
-A migração de Beta para GA não é suportada. É necessário fazer download e instalar novos peers remotos para usar a oferta GA, ao ser liberada. Será possível então associar novos peers remotos aos mesmos canais da mesma rede que os peers remotos Beta.
-
-**Nota:** para operar um peer remoto, deve-se ter uma organização que pertença a uma rede do Starter Plan ou do Enterprise Plan no {{site.data.keyword.blockchainfull_notm}} Platform. Isso implica que você ou outro membro na rede deve pagar a [taxa de associação](https://console.bluemix.net/docs/services/blockchain/howto/pricing.html#key-elements-of-pricing) do IBM Blockchain de sua organização. Para obter mais informações sobre o pagamento de taxas, consulte [Modo de pagamento](paying_mode.html).  
+**Nota:** para operar um peer AWS, deve-se ter uma organização que pertença a uma rede Starter Plan ou Enterprise Plan no {{site.data.keyword.blockchainfull_notm}} Platform. Isso implica que você ou outro membro na rede deve pagar a {{site.data.keyword.blockchainfull_notm}} [taxa de associação](/docs/services/blockchain/howto/pricing.html#ibp-pricing-key-elements) para sua organização. Para obter mais informações sobre o pagamento de taxas, consulte [Modo de pagamento](/docs/services/blockchain/howto/paying_mode.html#paying-mode).
 
 
-<!--[AWS]## Deploying a remote peer
-{: #deploy-remote-peer}-->
+## Implementando um peer do AWS
+{: #remote-peer-aws-about-deploy}
 
-<!--[AWS]{{site.data.keyword.blockchainfull_notm}} Platform Remote Peer currently supports two cloud environments to run remote peers: Amazon Web Services (AWS) and {{site.data.keyword.cloud_notm}} Private (ICP).-->
+Use o [Modelo de iniciação rápida do AWS ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://aws.amazon.com/quickstart/architecture/ibm-blockchain-platform/ "Modelo de iniciação rápida") para implementar facilmente o {{site.data.keyword.blockchainfull_notm}} Platform for AWS. Para obter mais informações, veja o [Guia de implementação de iniciação rápida do {{site.data.keyword.blockchainfull_notm}} Platform for AWS ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://s3.amazonaws.com/aws-quickstart/quickstart-ibm-fabric/doc/ibm-blockchain-platform-for-aws.pdf "Implementação de referência de iniciação rápida do IBM Blockchain Platform for AWS").
 
-<!--[AWS]### Amazon Web Services
-{: #aws}-->
+Para obter instruções sobre como implementar o {{site.data.keyword.blockchainfull_notm}} Platform for AWS, veja [Implementando peers no Amazon Web Services](/docs/services/blockchain/howto/remote_peer_aws.html#remote-peer-aws).
 
-<!--[AWS]*Note: Need to replace the following links with real links to AWS remote peer once they are published by AWS*
-You can use the [Quick Starts ![External link icon](../images/external_link.svg "External link icon")](https://amazonaws-china.com/quickstart/architecture/mongodb/ "Quick Start Template") to easily deploy {{site.data.keyword.blockchainfull_notm}} Platform Remote Peers on AWS. For more information about deploying a remote peer on AWS, see the [AWS Remote Peer Deployment Guide ![External link icon](../images/external_link.svg "External link icon")](https://docs.aws.amazon.com/quickstart/latest/mongodb/welcome.html "Deployment Guide").
+O diagrama a seguir descreve o processo para implementar um peer do {{site.data.keyword.blockchainfull_notm}} Platform for AWS.
 
-For more information about deploying remote peers in AWS, see [Deploying remote peers in Amazon Web Services](remote_peer_aws.html "Deploying remote peers in "Amazon Web Services).
+<img usemap="#home_map1" border="0" class="image" id="image_ztx_crb_f1b2" src="../images/remote_peer_AWS_flow.png" width="750" alt="Clique em uma caixa para obter mais detalhes sobre o processo." style="width:750px;" />
+<map name="home_map1" id="home_map1">
+<area href="/docs/services/blockchain/howto/remote_peer_aws.html#remote-peer-aws-account" alt="Configurar ou acessar o AWS" title="Configurar ou acessar" shape="rect" coords="157.05, 52.53, 283.62, 127.11" />
+<area href="/docs/services/blockchain/howto/remote_peer_aws.html#remote-peer-aws-account" alt="Criar par de chaves" title="Criar par de chaves" shape="rect" coords="300.97, 52.53, 427.54, 127.11" />
+<area href="/docs/services/blockchain/howto/remote_peer_aws.html#remote-peer-aws-prerequisites" alt="Criar ou associar-se a uma rede" title="Criar ou associar-se a uma rede" shape="rect" coords="157.05, 131.8, 283.62, 206.37" />
+<area href="/docs/services/blockchain/howto/remote_peer_operate_aws.html#remote-peer-aws-operate-sdk" alt="Associar-se a um canal" title="Associar-se a um canal" shape="rect" coords="300.97, 131.8, 427.54, 206.37" />
+<area href="/docs/services/blockchain/howto/remote_peer_aws.html#remote-peer-aws-register-peer" alt="Registrar identidade do peer" title="Registrar identidade do peer" shape="rect" coords="443.95, 131.8, 570.53, 206.37" />
+<area href="/docs/services/blockchain/howto/remote_peer_aws.html#remote-peer-aws-network-endpoints" alt="Recuperar informações de configuração de peer" title="Recuperar informações de configuração de peer" shape="rect" coords="585.53, 131.8, 712.1, 206.37" />
+<area href="/docs/services/blockchain/howto/remote_peer_aws.html#remote-peer-aws-launchqs" alt="Clicar no link" title="Clicar no link" shape="rect" coords="157.05, 258.43, 283.62, 333.48" />
+<area href="/docs/services/blockchain/howto/remote_peer_aws.html#remote-peer-aws-launchqs" alt="Configurar instâncias de peer" title="Configurar instâncias de peer" shape="rect" coords="300.97, 258.43, 427.54, 333.48" />
+<area href="/docs/services/blockchain/howto/remote_peer_aws.html#remote-peer-aws-test" alt="Verificar implementação" title="Verificar implementação" shape="rect" coords="443.95, 258.43, 570.53, 333.48" />
+<area href="/docs/services/blockchain/howto/remote_peer_operate_aws.html#remote-peer-aws-operate-sdk" alt="Usar Fabric SDK" title="Usar Fabric SDK" shape="rect" coords="157.05, 338.64, 283.62, 413" />
+<area href="/docs/services/blockchain/howto/remote_peer_operate_aws.html#remote-peer-aws-operate-cli-operate" alt="Usar CLI de ferramentas do Fabric" title="Usar CLI de ferramenta do Fabric" shape="rect" coords="443.95, 338.64, 570.53, 413" />
+</map>
 
-The following diagram describes the process to deploy an {{site.data.keyword.blockchainfull_notm}} Platform remote peer on AWS.
-
-![Remote Peer deployment flow on AWS](../images/remote_peer_AWS_flow.png "Remote Peer deployment flow on AWS")  
-*Figure 1. Remote Peer deployment flow on AWS*
--->  
-
-<!--[AWS]## Deploying a remote peer
-{: #deploy-remote-peer}-->
-
-<!--[AWS]### {{site.data.keyword.cloud_notm}} Private
-{: #icp}-->
-
-## Implementando um Período Remoto
-{: #icp}
-
-<!--[AWS]{{site.data.keyword.cloud_notm}} Private (ICP) is a Kubernetes-based platform for building a private cloud in an on-premises environment. You can use ICP to run a remote peer and connect the remote peer to a blockchain network on {{site.data.keyword.blockchainfull_notm}} Platform. {{site.data.keyword.blockchainfull_notm}} Platform Remote Peer for ICP leverages the storage, security, logging, and support services of ICP so that you can manage your remote peers in your on-premises environment. For more information about ICP, see [{{site.data.keyword.cloud_notm}} Private documentation ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/SSBS6K_2.1.0.3/kc_welcome_containers.html "{{site.data.keyword.cloud_notm}} Private documentation").-->
-
-<!--[AWS]Nancy did some re-org here by moving ICP description to the beginning of this topic as we only support ICP now. Will move it back or other places later.-->
-
-O diagrama a seguir descreve as etapas para implementar um peer remoto do {{site.data.keyword.blockchainfull_notm}} Platform no ICP. Para obter mais informações sobre como implementar peers remotos no ICP, consulte [Implementando peers remotos no {{site.data.keyword.cloud_notm}} Private](remote_peer_icp.html "Implementando peers remotos no {{site.data.keyword.cloud_notm}} Private").
-
-![Fluxo de implementação do peer remoto no ICP](../images/remote_peer_ICP_flow.png "Fluxo de implementação do peer remoto no ICP")  
-<!--[AWS]
-*Figure 2. Remote Peer deployment flow on ICP*
--->  
-*Figura 1. Fluxo de implementação do peer remoto no ICP*
+*Figura 1. {{site.data.keyword.blockchainfull_notm}} Platform para fluxo de implementação do AWS no AWS*
 
 
-## Operando um Período Remoto
-{: #operate-remote-peer}
+## Operando um peer do AWS
+{: #remote-peer-aws-about-operate-remote-peer}
 
-Depois de implementar o peer remoto, é necessário concluir várias etapas operacionais antes que seu peer possa enviar transações para a rede. As etapas operacionais incluem a inclusão de sua organização em um canal, a associação de seu peer remoto ao canal, a instalação do chaincode no peer remoto, a instanciação do chaincode no canal e a conexão de aplicativos em seu peer remoto. Para obter mais informações, consulte <!--[AWS][Operating remote peers in Amazon Web Service](remote_peer_operate_aws.html#remote-peer-operate-aws) or -->[Operando peers remotos no {{site.data.keyword.cloud_notm}} Private](remote_peer_operate_icp.html#remote-peer-operate).
+Depois de implementar o peer do AWS, é necessário concluir várias etapas operacionais antes que seu peer possa enviar transações para a rede. As etapas operacionais compreendem a inclusão de sua organização em um canal, a associação de seu peer ao canal, a instalação do chaincode em seu peer, a instanciação do chaincode no canal e a conexão de aplicativos em seu peer. Para obter mais informações, consulte [Operando peers no Amazon Web Service](/docs/services/blockchain/howto/remote_peer_operate_aws.html#remote-peer-aws-operate).
 
 ## Residência de dados
-{: #data-residency}
+{: #remote-peer-aws-about-data-residency}
 
-Requisitos de residência de dados são restrições que governam onde os dados podem residir. O requisito mais comum na residência de dados está associado às leis dentro de certos países, que determinam que todos os dados de cliente processados e armazenados em um sistema de TI devem permanecer dentro das fronteiras de um país específico. Da mesma forma, algumas empresas em indústrias altamente regulamentadas, como o governo, a assistência médica e os serviços financeiros, requerem que todos os seus dados sejam armazenados inteiramente protegidos por seu firewall. Além disso, algumas empresas têm uma política corporativa em que certos tipos de dados, geralmente, Informações pessoalmente identificáveis, devem permanecer privadas e inteiramente protegidas por seu firewall corporativo. Portanto, para alcançar a residência de dados, todos os componentes da rede de blockchain devem fazer parte do mesmo [canal](../glossary.html#channel) e residirem na fronteira de um único país.
+Como as redes de blockchain são indiferentes para o tipo de dados que são processados, etapas extras devem ser tomadas algumas vezes para manter determinados tipos de dados seguros. O requisito mais comum sobre residência de dados está associado às leis dentro de certos países, que exigem que todos os dados que são processados e armazenados num sistema de TI devem permanecer dentro das fronteiras de um país específico. Da mesma forma, algumas empresas em indústrias altamente regulamentadas, como governo, assistência médica e serviços financeiros, requerem que os dados sejam armazenados inteiramente atrás de seu firewall. Portanto, para alcançar a residência de dados, todos os componentes da rede de blockchain devem fazer parte do mesmo [canal](/docs/services/blockchain/glossary.html#glossary-channel) e residirem na fronteira de um único país.
 
-Para tratar dos requisitos de residência de dados, é importante entender a arquitetura do Hyperledger Fabric subjacente ao {{site.data.keyword.blockchainfull_notm}} Platform. A arquitetura é centrada em três componentes-chave: Serviço de solicitação, Autoridade de certificação (CA) e Peer. Um peer recebe atualizações de estado pedidas no formato de blocos do serviço de solicitação e mantém o estado e o livro-razão. Portanto, um peer e um serviço de solicitação têm um relacionamento direto. O livro-razão contém os valores mais recentes para todas as chaves e os dados que os logs de transações incluem.
+Para tratar dos requisitos de residência de dados, é importante entender a arquitetura do Hyperledger Fabric subjacente ao {{site.data.keyword.blockchainfull_notm}} Platform. A arquitetura é centrada em torno de três componentes principais: Autoridade de Certificação (CA), solicitador e peer. Um peer recebe atualizações de estado pedidas no formato de blocos do serviço de ordenação e mantém o estado e o livro-razão. Portanto, um peer e um solicitador têm um relacionamento direto. O livro-razão contém os valores mais recentes para todas as chaves e os dados que os logs de transações incluem.
 
-Além disso, os aplicativos clientes usam os [SDKs do Fabric](../v10_application.html#using-the-fabric-sdks) para enviar transações para os peers e o serviço de solicitação. Essas transações incluem dados de [conjunto de leitura/gravação ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.1/readwrite.html "Semântica de conjunto de leitura/gravação"), que contêm os pares de valor da chave no livro-razão.
+Além disso, os aplicativos clientes usam os [SDKs do Fabric](/docs/services/blockchain/v10_application.html#dev-app-fabric-sdks) para enviar transações para os peers e o serviço de ordenação. Essas transações incluem dados [Conjunto de leitura/gravação ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/readwrite.html "Semântica do conjunto de leitura/gravação"), que contém os pares de chave-valor no livro-razão.
 
-Se a residência de dados no país for um requisito para seu negócio, o serviço de solicitação, os nós do peer e o aplicativo cliente deverão residir no mesmo país. Quando uma rede do {{site.data.keyword.blockchainfull_notm}} Platform é criada no {{site.data.keyword.cloud_notm}}, você tem a opção de selecionar um local para a rede. <!--For a Starter Plan network, you can select from US South, United Kingdom, and Sydney. For an Enterprise Plan network, you can select from currently available locations, which include Dallas, Frankfurt, London, Sao Paulo, Tokyo, and Toronto. -->Para obter mais informações sobre regiões e locais, consulte [Regiões e locais do {{site.data.keyword.blockchainfull_notm}} Platform](../reference/ibp_regions.html). Para alcançar a residência de dados em um desses países, seu peer remoto deve residir no mesmo país que o local da rede do {{site.data.keyword.blockchainfull_notm}} Platform.
+Se a residência de dados no país for um requisito para seus negócios, o solicitador, os peers e os aplicativos clientes deverão residir no mesmo país. Quando uma rede do {{site.data.keyword.blockchainfull_notm}} Platform é criada no {{site.data.keyword.cloud_notm}}, você tem a opção de selecionar um local para a rede. <!--For a Starter Plan network, you can select from US South, United Kingdom, and Sydney. For an Enterprise Plan network, you can select from currently available locations, which include Dallas, Frankfurt, London, Sao Paulo, Tokyo, and Toronto. -->Para obter mais informações sobre regiões e locais, veja [Regiões e locais do {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/reference/ibp_regions.html#ibp-regions-locations). Para alcançar a residência de dados em um desses países, seu peer deve residir no mesmo país que o local da rede do {{site.data.keyword.blockchainfull_notm}} Platform.
 
-Se a rede do {{site.data.keyword.blockchainfull_notm}} Platform contiver nós do peer remoto e do serviço de solicitação nas fronteiras do país, será possível usar canais para segregar dados para um subconjunto de peers na rede. Os nós de solicitação estão sempre localizados no data center selecionado para hospedar a rede. Não é possível ter solicitadores nas fronteiras do país. Mas os peers podem ser localizados no data center ou em um local remoto fora do {{site.data.keyword.cloud_notm}}. Portanto, para alcançar a residência de dados, é possível criar um canal no qual o solicitador e todos os peers, sejam peers locais para o data center ou peers remotos, residam no mesmo país. Dessa maneira, todos os dados compartilhados pelo solicitador e pelos peers permanecem nas fronteiras de um único país. Outros canais ainda poderão existir, se necessário, nos quais o solicitador e os peers remotos estão localizados nas fronteiras dos países e a residência de dados não é necessária.
+### Um caso de uso para residência de dados
+{: #remote-peer-aws-about-data-res-use-case}
+
+Considere uma rede do {{site.data.keyword.blockchainfull_notm}} Platform que inclui o Solicitador e a Autoridade de certificação junto com um consórcio de quatro organizações. As organizações têm um ou mais nós de peer. Todas as quatro organizações fazem parte de um único canal e todos os componentes da rede residem na região (por exemplo, Frankfurt), em que a rede do {{site.data.keyword.blockchainfull_notm}} Platform foi implementada. Por último, os aplicativos clientes que interagem com os peers também residem na Alemanha. A residência de dados é mantida.  
+
+![Residência de dados quando todos os componentes estão no mesmo país](../images/remote_peer_data_res_1.png "Residência de dados quando todos os componentes estão no mesmo país")  
+*Figura 3. Residência de dados quando todos os componentes estão no mesmo país*
+
+Agora, vamos considerar as implicações quando um **peer** ingressa em uma das organizações.  Um peer pode residir na mesma região que o restante da rede ou em qualquer lugar fora da região de rede do {{site.data.keyword.blockchainfull_notm}} Platform:
+
+-	Se o peer residir no mesmo país que o restante da rede, a residência de dados será mantida. Todos os dados do livro-razão permanecem dentro da Alemanha como na **Figura 3** acima.
+-	Se o peer residir em um país diferente (como os EUA, por exemplo), a residência de dados não será mais mantida porque os dados no livro-razão de peer são compartilhados fora da fronteira do país.
+
+Para resolver esse problema, os **canais** podem ser usados para segregar dados para um subconjunto de peers na rede. Quando a rede do {{site.data.keyword.blockchainfull_notm}} Platform contém peers e solicitadores fora de fronteiras do país, os canais fornecem isolamento de dados do livro-razão de organizações com peers fora da fronteira do país.  
+
+**Nota:** os solicitadores estão sempre localizados na região do data center selecionada para hospedar a rede. Não é possível ter múltiplos solicitadores entre as fronteiras do país. No entanto, os peers podem estar localizados no data center ou em um local remoto fora do {{site.data.keyword.cloud_notm}}.
+
+![Residência de dados quando os peers estão fora do país da região do IBM Blockchain Platform](../images/remote_peer_data_res_2.png "Os peers de residência de dados residem fora do país da região do IBM Blockchain Platform")  
+*Figura 4. Os peers de Residência de Dados residem fora do país da região do IBM Blockchain Platform*
+
+Na **Figura 4**, a residência de dados não é necessária para `OrgC` e `OrgD`. Na verdade, `OrgD` agora inclui dois peers, `OrgD-peer1` e `OrgD-peer2`, que residem nos *Estados Unidos*. Portanto, para que `OrgA`, `OrgB` e seus respectivos aplicativos clientes e peers que residem na Alemanha isolem os dados do livro-razão no canal `X`, um novo canal `Y` é criado para `OrgC` e `OrgD`.
+
+Para um entendimento mais profundo do fluxo de dados na rede do {{site.data.keyword.blockchainfull_notm}} Platform, consulte a documentação do [Fabric no fluxo de transação![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/txflow.html "Fluxo de transação").
 
 No futuro, a nova tecnologia no Hyperledger Fabric melhorará a capacidade de alcançar residência de dados adicional usando as [Coletas de dados privados ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/private-data/private-data.html "Coletas de dados privados") e o Zero Knowledge Proof.
 
-- Uma Coleta de dados privados assegura que os dados privados sejam compartilhados ponto a ponto (por meio do protocolo de fofoca) apenas com peers autorizados a vê-los, por exemplo, peers que estejam dentro das fronteiras do país. Os dados são armazenados em um banco de dados privado no peer. O serviço de solicitação não está envolvido aqui e não vê os dados privados. Um hash desses dados é gravado nos livros-razão de cada peer no canal. O hash usado para validação de estado serve como evidência da transação e pode ser usado para propósitos de auditoria.
+- Uma coleta de dados privados assegura que os dados privados sejam compartilhados ponto a ponto (por meio do protocolo gossip) apenas para os peers autorizados a vê-los, por exemplo, peers que estão dentro das fronteiras do país. Os dados são armazenados em um banco de dados privado no peer.  O serviço de ordenação não está envolvido aqui e não vê os dados privados. Um hash desses dados é gravado nos livros-razão de cada peer no canal. O hash que é usado para validação de estado serve como evidência da transação e pode ser usado para propósitos de auditoria. Os dados privados estão disponíveis para redes no {{site.data.keyword.blockchainfull_notm}} Platform que estão em execução no Fabric versão 1.2.1. No entanto, o recurso de dados privados não está disponível para peers remotos.
 
 - Um Zero-Knowledge Proof (ZKP) permite que um "provador" assegure a um "verificador" que conhece um segredo sem revelar o próprio segredo. É uma maneira de mostrar que você sabe algo que satisfaz uma instrução sem mostrar o que você sabe.
 
-Para obter mais informações sobre essas tecnologias, consulte o White Paper sobre [Transações privadas e confidenciais com o Hyperledger Fabric ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://www.ibm.com/developerworks/cloud/library/cl-blockchain-private-confidential-transactions-hyperledger-fabric-zero-knowledge-proof/index.html "Transações privadas e confidenciais com o Hyperledger Fabric").
+É possível obter mais informações sobre essas tecnologias no White Paper sobre [Transações privadas e confidenciadas com o Hyperledger Fabric ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://www.ibm.com/developerworks/cloud/library/cl-blockchain-private-confidential-transactions-hyperledger-fabric-zero-knowledge-proof/index.html "Transações privadas e confidenciais com o Hyperledger Fabric").
 
 ## Obtendo Suporte
-{: #remote-peer-support}
+{: #remote-peer-aws-about-support}
 
-A edição Beta da oferta {{site.data.keyword.blockchainfull_notm}} Remote Peer deve ser usada para exploração, desenvolvimento e teste. **Não use essa edição para produção.** O {{site.data.keyword.blockchainfull_notm}} Platform não fornece suporte para essa edição. Se você encontrar problemas relacionados ao peer remoto, consulte os [recursos e os fóruns de suporte do blockchain](../v10_dashboard.html#support-forums). Também é possível visualizar os recursos de suporte na tela **Obter ajuda** do Monitor de rede.  
+O IBM Blockchain Platform não fornece suporte para esta oferta. Se você encontrar problemas relacionados ao seu peer, será possível usar recursos de desenvolvedor de blockchain gratuitos e fóruns de suporte e obter ajuda do {{site.data.keyword.IBM_notm}} e da comunidade do Fabric. Para obter mais informações, consulte [recursos de blockchain e fóruns de suporte](/docs/services/blockchain/ibmblockchain_support.html#blockchain-support-resources). Também é possível visualizar os recursos de suporte na tela **Obter ajuda** do Monitor de rede.
 
-<!--[AWS]
-- For issues that are related to AWS, you can use both [community support forums ![External link icon](../images/external_link.svg "External link icon")](https://forums.aws.amazon.com/index.jspa "AWS community support forums") and [AWS premium support ![External link icon](../images/external_link.svg "External link icon")](https://aws.amazon.com/premiumsupport/ "AWS premium support").
--->
+- Para problemas que estão relacionados ao AWS, é possível usar os [fóruns de suporte da comunidade ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://forums.aws.amazon.com/index.jspa "Fóruns de suporte da comunidade AWS") e o [Suporte premium do AWS ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://aws.amazon.com/premiumsupport/ "Suporte premium do AWS").
 
-Para problemas relacionados ao {{site.data.keyword.cloud_notm}} Private, o ICP oferece [suporte digital e suporte da Community Edition grátis ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://www.ibm.com/developerworks/community/blogs/fe25b4ef-ea6a-4d86-a629-6f87ccf4649e/entry/Learn_more_about_IBM_Cloud_Private_Support?lang=en_us "suporte digital e suporte da Community Edition grátis do ICP").
-
-<!-- add back after GA?
-If your problem cannot be solved by any of the above routes, {site.data.keyword.blockchainfull_notm}} Platform Remote Peer Enterprise Edition for ICP users can open support cases in the {{site.data.keyword.cloud_notm}} Service Portal. See [submitting support cases](../ibmblockchain_support.html#support-cases) for details on opening a support case.
--->
-
-<!-- add back at GA
-{{site.data.keyword.blockchainfull_notm}} does not support cases opened in {{site.data.keyword.cloud_notm}} relating to the {{site.data.keyword.blockchainfull_notm}} Platform Remote Peer Community Edition. The Community Edition is meant for exploration, development and testing, and should not be used for production.-->
+O {{site.data.keyword.blockchainfull_notm}} não suporta casos que são abertos no {{site.data.keyword.cloud_notm}} e que estão relacionados ao {{site.data.keyword.blockchainfull_notm}} Platform for AWS. A Community Edition está destinada à exploração, ao desenvolvimento e ao teste. Não a utilize para produção.

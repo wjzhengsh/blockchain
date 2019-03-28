@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-31"
+lastupdated: "2018-12-08"
 
 ---
 
@@ -13,16 +13,15 @@ lastupdated: "2018-08-31"
 {:pre: .pre}
 {:tip: .tip}
 
-# Entwicklungsumgebung installieren
+# Entwicklungsumgebung für Unternehmensnetze installieren
 {: #installing-a-development-environment}
 
+**IBM empfiehlt die Verwendung von Hyperledger Composer ausschließlich für Demonstrationszwecke und Machbarkeitsnachweise. IBM bietet keinen Support für Netze, die Hyperledger Composer in Produktionsumgebungen nutzen, inklusive Composer-Befehlszeilenschnittstelle, JavaScript-APIs, REST-Server und Web Playground.**
 
 ***[Ist diese Seite hilfreich? Teilen Sie uns Ihre Meinung mit.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 
 Führen Sie die nachfolgenden Anweisungen aus, um die Entwicklungstools von {{site.data.keyword.blockchainfull}} Platform: Develop zum Erstellen und Testen von Unternehmensnetzen abzurufen. Zur Bereitstellung hoher Flexibilität und der maximalen Anzahl von Entwicklungs-, Test- und Bereitstellungsszenarios werden die Entwicklungstools in Form von NPM-Modulen geliefert, die über die Befehlszeile gesteuert werden.
-
-Unterschiedliche Versionen einiger Komponenten sind zur Verwendung mit dem Starter Plan und dem Enterprise Plan erforderlich. Wenn Sie die Entwicklungsumgebung mit dem Starter Plan verwenden möchten, müssen die Module mit Version `0.19.x` installiert werden. Wenn Sie die Entwicklungsumgebung mit dem Enterprise Plan verwenden möchten, müssen die Module mit Version `0.16.x` installiert werden.
 
 ## Vorbemerkungen
 
@@ -44,49 +43,49 @@ Wenn Sie VSCode verwenden, ist eine Hyperledger Composer-Erweiterung für VSCode
 
 ## Schritt 1: Befehlszeilentools installieren
 
-Zu den Befehlszeilentools gehören **composer-cli**, das Hauptbefehlszeilenmodul von {{site.data.keyword.blockchainfull_notm}} Platform: Develop, **generator-hyperledger-composer**, **composer-rest-server** und **Yeoman**. Diese Module werden zum Generieren von Unternehmensnetzen, speziellen REST-Servern und Angular-Anwendungen verwendet.
+Zu den Befehlszeilentools gehören **composer-cli**, das Hauptbefehlszeilenmodul von {{site.data.keyword.blockchainfull_notm}} Platform: Develop, **generator-hyperledger-composer**, **composer-rest-server** und **Yeoman**. Diese Module werden zum Generieren von Unternehmensnetzen, speziellen REST-Servern und Angular-Anwendungen verwendet. Welche Version Sie installieren, ist von der Hyperledger Fabric-Version abhängig, mit der Ihr Starter Plan oder Enterprise Plan ausgeführt wird. Ihre Fabric-Version können Sie ermitteln, indem Sie das [Fenster "Netzvorgaben"](../v10_dashboard.html#network-preferences) im Network Monitor öffnen.
 
-1. Zur Verwendung mit dem Starter Plan installieren Sie **composer-cli** mit dem folgenden Befehl:
+1. Installieren Sie zur Verwendung bei neuen Starter Plan-Instanzen, die Hyperledger Fabric v1.2.1 ausführen, **composer-cli** mit dem folgenden Befehl:
+
+    ```
+    npm install -g composer-cli@0.20.x
+    ```
+    {:codeblock}
+
+  Installieren Sie zur Verwendung bei Enterprise Plan- und Starter Plan-Instanzen, die Hyperledger Fabric v1.1, ausführen,  **composer-cli** mit dem folgenden Befehl:
 
     ```
     npm install -g composer-cli@0.19.x
     ```
     {:codeblock}
 
-    Zur Verwendung mit dem Enterprise Plan installieren Sie **composer-cli** mit dem folgenden Befehl:
+2. Installieren Sie zur Verwendung bei neuen Starter Plan-Instanzen, die Hyperledger Fabric v1.2.1 ausführen,  **composer-rest-server** mit dem folgenden Befehl:
 
     ```
-    npm install -g composer-cli@0.16.x
+    npm install -g composer-rest-server@0.20.x
     ```
     {:codeblock}
 
-2. Zur Verwendung mit dem Starter Plan installieren Sie **composer-rest-server** mit dem folgenden Befehl:
+  Installieren Sie zur Verwendung bei Enterprise Plan- und Starter Plan-Instanzen, die Hyperledger Fabric v1.1, ausführen,  **composer-rest-server** mit dem folgenden Befehl:
 
     ```
     npm install -g composer-rest-server@0.19.x
     ```
     {:codeblock}
 
-    Zur Verwendung mit dem Enterprise Plan installieren Sie **composer-rest-server** mit dem folgenden Befehl:
+ Verwenden Sie das Modul **composer-rest-server** zum Erstellen eines REST-Servers auf Ihrer Maschine, um Ihre Unternehmensnetze als REST-konforme APIs verfügbar zu machen.
+
+3. Installieren Sie zur Verwendung bei neuen Starter Plan-Instanzen, die Hyperledger Fabric v1.2.1 ausführen,  **generator-hyperledger-composer** mit dem folgenden Befehl:
 
     ```
-    npm install -g composer-rest-server@0.16.x
+    npm install -g generator-hyperledger-composer@0.20.x
     ```
     {:codeblock}
 
-    Verwenden Sie das Modul **composer-rest-server** zum Erstellen eines REST-Servers auf Ihrer Maschine, um Ihre Unternehmensnetze als REST-konforme APIs verfügbar zu machen.
-
-3. Zur Verwendung mit dem Starter Plan installieren Sie **generator-hyperledger-composer** mit dem folgenden Befehl:
+  Installieren Sie zur Verwendung bei Enterprise Plan- und Starter Plan-Instanzen, die Hyperledger Fabric v1.1, ausführen,  **generator-hyperledger-composer** mit dem folgenden Befehl:
 
     ```
     npm install -g generator-hyperledger-composer@0.19.x
-    ```
-    {:codeblock}
-
-    Zur Verwendung mit dem Enterprise Plan installieren Sie **generator-hyperledger-composer** mit dem folgenden Befehl:
-
-    ```
-    npm install -g generator-hyperledger-composer@0.16.x
     ```
     {:codeblock}
 
@@ -101,21 +100,13 @@ Zu den Befehlszeilentools gehören **composer-cli**, das Hauptbefehlszeilenmodul
 
 ## Schritt 2: Lokale Playground-Umgebung installieren
 
-Hyperledger Composer Playground ist eine Benutzerschnittstelle, die mit einer realen {{site.data.keyword.blockchain}} verbunden werden kann oder als simulierte Umgebung zum Testen eines Unternehmensnetzes verwendet werden kann. Zur Verwendung mit dem Starter Plan installieren Sie die Playground-Umgebung mit dem folgenden Befehl:
+Hyperledger Composer Playground ist eine Benutzerschnittstelle, die als simulierte Umgebung zum Testen eines Unternehmensnetzes verwendet werden kann. Installieren Sie die Playground-Umgebung mit dem folgenden Befehl:
 
 ```
-npm install -g composer-playground@0.19.x
-```
-{:codeblock}
-
-
-Zur Verwendung mit dem Enterprise Plan installieren Sie die Playground-Umgebung mit dem folgenden Befehl:
-
-
-```
-npm install -g composer-playground@0.16.x
+npm install -g composer-playground@0.20.x
 ```
 {:codeblock}
+
 
 ## Optional: IDE einrichten
 
@@ -124,62 +115,6 @@ Sie können die Playground-Umgebung zum Entwickeln, Bearbeiten und Testen von Un
 1. Installieren Sie VSCode über die folgende URL: [https://code.visualstudio.com/download](https://code.visualstudio.com/download)
 
 2. Öffnen Sie VSCode, wechseln Sie zu Extensions (Erweiterungen), suchen Sie nach der Hyperledger Composer-Erweiterung im Marktplatz und installieren Sie sie.
-
-
-## Nur Enterprise Plan: Installieren Sie eine lokale Hyperledger Fabric-Instanz und stellen Sie über Playground eine Verbindung dazu her.
-
-Durch Bereitstellen einer lokalen Hyperledger Fabric-Instanz können Sie Zugriffssteuerungsregeln und Unternehmensnetze vollständig testen. Stellen Sie vor den nachfolgenden Schritten sicher, dass Docker gestartet ist.
-
-1. Erstellen Sie das Verzeichnis `fabric-tools` mit dem folgenden Befehl:
-
-   ```
-   mkdir ~/fabric-tools &&  cd ~/fabric-tools
-   ```
-   {:codeblock}
-
-Rufen Sie in ein Verzeichnis Ihrer Wahl, zum Beispiel `~/fabric-tools` die `.tar.gz`-Datei ab, die die Tools zum Installieren von Hyperledger Fabric enthält:
-
-2. Laden Sie die `tar.gz`-Datei herunter, die Tools zum Installieren von Hyperledger Fabric in einer Docker-Umgebung enthält.
-
-   ```
-   curl -O https://raw.githubusercontent.com/hyperledger/composer-tools/master/packages/fabric-dev-servers/fabric-dev-servers.tar.gz
-        tar -xvf fabric-dev-servers.tar.gz
-   ```
-   {:codeblock}
-
-    Es ist auch eine ZIP-Datei (`.zip`) verfügbar. Ersetzen Sie im vorangehenden Ausschnitt die `.tar.gz`-Datei durch die Datei `fabric-dev-servers.zip` und den Befehl `tar -xvf` durch einen Befehl `unzip`.
-
-3. Verwenden Sie die folgenden Befehle, um eine lokale Hyperledger Fabric-Laufzeitumgebung der Version 1 herunterzuladen:
-
-   ```
-   cd ~/fabric-tools
-   export FABRIC_VERSION=hlfv1
-   ./downloadFabric.sh
-   ```
-   {:codeblock}
-
-   Das Verzeichnis `fabric-tools` enthält eine Gruppe von Scripts, durch die die heruntergeladene Hyperledger Fabric-Instanz gesteuert wird. Sie müssen den Befehl `./createPeerAdminCard.sh` ausführen, um eine Unternehmensnetzkarte zu generieren, die Sie zum Bereitstellen des Unternehmensnetzes in dem Docker-Container verwenden können, der die Hyperledger Fabric-Instanz enthält.
-
-4. Führen Sie die folgenden Befehle aus, um die Hyperledger Fabric-Instanz der Version 1 zu starten:
-
-   ```
-   cd ~/fabric-tools
-   export FABRIC_VERSION=hlfv1
-   ./startFabric.sh
-   ./createPeerAdminCard.sh
-   ```
-   {:codeblock}
-
-   Verwenden Sie Hyperledger Composer Playground oder Ihre IDE, um mit der Entwicklung eines Unternehmensnetzes zu beginnen.
-
-5. Führen Sie den folgenden Befehl aus, um die Playground-Umgebung zu starten:
-
-    ```
-    composer-playground
-    ```
-    {:codeblock}
-
-    Die Playground-Umgebung wird unter der folgenden URL geöffnet: http://localhost:8080/login. Die Karte **PeerAdmin@hlfv1**, die im vorherigen Schritt erstellt wurde, kann zum Bereitstellen eines Unternehmensnetzes verwendet werden.
 
 
 ### Hyperledger Fabric starten und stoppen

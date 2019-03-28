@@ -1,8 +1,10 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2018-08-31"
+  years: 2018,2019
+lastupdated: "2019-03-05"
+
+subcollection: blockchain
 
 ---
 
@@ -13,21 +15,17 @@ lastupdated: "2018-08-31"
 {:pre: .pre}
 
 # Cómo interactuar con la red con las API de Swagger
+{: #ibp-swagger}
 
-
-***[¿Le resulta útil esta página? Indíquenos su opinión.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
-
-
-La plataforma {{site.data.keyword.blockchainfull_notm}} ofrece varias API REST en Swagger que puede utilizar para gestionar los nodos, canales, iguales y miembros de la red. Las aplicaciones pueden utilizar estas API para controlar los recursos de red importantes sin utilizar el supervisor de red.
+{{site.data.keyword.blockchainfull_notm}} Platform ofrece varias API REST en Swagger que puede utilizar para gestionar los nodos, canales, iguales y miembros de la red. Las aplicaciones pueden utilizar estas API para controlar los recursos de red importantes sin utilizar el supervisor de red.
 
 {:shortdesc}
 
-Antes de empezar, debe crear una [instancia de servicio de la plataforma {{site.data.keyword.blockchain}} ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://console.bluemix.net/catalog/services/blockchain) en {{site.data.keyword.Bluemix_notm}} y crear o unir una red blockchain del Plan inicial<!--or Enterprise Plan -->.
+Antes de empezar, debe crear una [instancia de servicio de {{site.data.keyword.blockchain}} Platform ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://cloud.ibm.com/catalog/services/ibm-blockchain-5-prod) en {{site.data.keyword.cloud_notm}} y crear o unir una red blockchain del Plan inicial <!--or Enterprise Plan -->.
 
 
 ## Recuperación de credenciales de red
-
-{: #retrieving-network-credentials}
+{: #ibp-swagger-retrieving-network-credentials}
 
 Entre en el supervisor de red de la red blockchain y abra la pantalla "API" desde el navegador izquierdo. Verá sus credenciales de red para la API REST. Luego autorizará a las API mediante los valores "key" y "secret" que se muestran aquí y ejecutará las API con el valor "network_id" como parámetro. Pulse **Mostrar secreto** para revelar el valor del campo de secreto. Copie los valores de los campos de clave, secreto e id de red, que podrá utilizar más tarde en la IU de Swagger.
 
@@ -44,11 +42,9 @@ Si utiliza el Plan inicial, puede cambiar de organización en el supervisor de r
 
 
 ## Autorización de las API de Swagger
+{: #ibp-swagger-authorizing-swagger}
 
 Pulse el enlace **IU de Swagger** de la pantalla "API" para abrir la IU de Swagger.  
-<!-- remove this line because the link is different depending on if you are starter or enterprise plan
-You can also open the Swagger UI with the URL in the connection profiles. For example, `http://blockchain-swagger-dev.stage1.mybluemix.net`.
--->
 
 En la IU de Swagger, pulse el botón **Autorizar** y aparecerá la ventana emergente de ventana de autorización. Escriba el valor de "key" y "secret" de las credenciales de red como nombre de usuario y contraseña y pulse **Autorizar** luego **Finalizado**. Ahora está preparado para ejecutar las API. Tenga en cuenta que, si se renueve el navegador, deberá volver a autorizar con sus credenciales.
 
@@ -61,6 +57,7 @@ La **Figura 3** muestra el proceso para autorizar las API de Swagger:
 
 
 ## Prueba de las API
+{: #ibp-swagger-try-out}
 
 Pulse la API REST que desea ejecutar y pulse el botón **Pruébelo**.
 
@@ -84,9 +81,14 @@ La **Figura 6** muestra el cuerpo de respuesta de la API, el URL y el mandato CU
 *Figura 6. Respuesta de API*    
 
 ## Consejos para la resolución de problemas
+{: #ibp-swagger-troubleshooting}
 
 ### 401 No autorizado  
-  Asegúrese de que tiene autorización sobre la API REST proporcionando sus credenciales de red. Para obtener más información, consulte [Autorización de las API de Swagger](#authorizing-swagger-apis).
+{: #ibp-swagger-401}
+
+  Asegúrese de que tiene autorización sobre la API REST proporcionando sus credenciales de red. Para obtener más información, consulte [Autorización de las API de Swagger](/docs/services/blockchain/howto/swagger_apis.html#ibp-swagger-authorizing-swagger).
 
 ### Error 400: Solicitud errónea
+{: #ibp-swagger-400}
+
   Algunas API acepten un argumento en el cuerpo de la solicitud que actúa como filtro para mostrar solo los resultados correspondientes a un determinado igual. Se proporciona un fragmento de código de ejemplo en el cuerpo que, si se utiliza, se debe editar para especificar el igual o la lista de iguales según los que desea filtrar. Para evitar este error, edite el fragmento de código para especificar un igual en la red o elimine el fragmento por completo.

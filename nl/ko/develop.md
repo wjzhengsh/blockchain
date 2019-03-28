@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-31"
+lastupdated: "2018-12-08"
 
 ---
 
@@ -13,9 +13,10 @@ lastupdated: "2018-08-31"
 {:pre: .pre}
 {:tip: .tip}
 
-# 네트워크 개발
+# 비즈니스 네트워크 개발
 {: #develop-the-network}
 
+**IBM은 Hyperledger Composer를 데모 및 개념 증명(POC)용으로만 사용하도록 권장합니다. IBM은 Composer CLI, JavaScript API, REST 서버 및 웹 플레이그라운드를 포함하여 프로덕션에서 Hyperledger Composer를 사용하는 네트워크를 지원하지 않습니다.**
 
 ***[이 페이지가 도움이 되었습니까? 알려주십시오.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
@@ -23,7 +24,7 @@ lastupdated: "2018-08-31"
 {{site.data.keyword.blockchainfull}} Platform을 사용하여 블록체인 솔루션을 개발할 때 Hyperledger Composer 오픈 소스 개발 도구 세트를 활용합니다. Hyperledger Composer는 맞춤형 모델링 언어를 사용하며, 이 언어는 사용자가 실제 블록체인 네트워크에 무언가를 배치하기 _전에_ JavaScript 트랜잭션 및 액세스 제어 규칙에 결합되어 블록체인 비즈니스 네트워크 전체를 모델링합니다.
 {:shortdesc}
 
-**참고**: 스타터 플랜은 사용자가 학습하고 시험 사용해 볼 수 있는 샘플 애플리케이션을 제공합니다. 사용자 정의 비즈니스 네트워크를 개발하기 전에 스타터 플랜에서 샘플 애플리케이션을 실행할 수 있습니다. 자세한 정보는 [스타터 플랜 정보](starter_plan.html)를 참조하십시오.
+**참고:** 스타터 플랜은 사용자가 학습하고 시험 사용해 볼 수 있는 샘플 애플리케이션을 제공합니다. 사용자 정의 비즈니스 네트워크를 개발하기 전에 스타터 플랜에서 샘플 애플리케이션을 실행할 수 있습니다. 자세한 정보는 [스타터 플랜 정보](starter_plan.html)를 참조하십시오.
 
 이 튜토리얼에서는 비즈니스 네트워크 작성 및 모델링으로 시작하는 {{site.data.keyword.blockchain}} 솔루션의 개발을 거친 다음 실행 중인 블록체인 네트워크에 배치합니다.
 

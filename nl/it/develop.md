@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-31"
+lastupdated: "2018-12-08"
 
 ---
 
@@ -13,9 +13,10 @@ lastupdated: "2018-08-31"
 {:pre: .pre}
 {:tip: .tip}
 
-# Sviluppare la rete
+# Sviluppo di reti di business
 {: #develop-the-network}
 
+**IBM consiglia di utilizzare Hyperledger Composer esclusivamente per le demo e per i modelli di verifica (PoC, Proof of Concept). IBM non fornisce supporto per le reti che utilizzano Hyperledger Composer in produzione, compresi la CLI Composer, le API JavaScript, il server REST e Web Playground.**
 
 ***[Questa pagina è utile? Faccelo sapere.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
@@ -23,7 +24,7 @@ lastupdated: "2018-08-31"
 Lo sviluppo di soluzioni blockchain utilizzando {{site.data.keyword.blockchainfull}} Platform si avvale del set di strumento di sviluppo open source Hyperledger Composer. Hyperledger Composer utilizza un linguaggio di modellazione su misura, che è combinato con le transazioni JavaScript e le regole di controllo dell'accesso per modellare completamente una rete di business blockchain _prima_ che tu esegua alcuna distribuzione a una rete blockchain reale.
 {:shortdesc}
 
-**Nota**: piano Starter fornisce applicazioni di esempio che puoi apprendere e provare. Puoi eseguire le applicazioni di esempio in piano Starter prima di sviluppare la tua rete di business personalizzata. Per ulteriori informazioni, vedi [Informazioni su piano Starter](starter_plan.html).
+**Nota:** il piano Starter fornisce applicazioni di esempio che puoi apprendere e provare. Puoi eseguire le applicazioni di esempio in piano Starter prima di sviluppare la tua rete di business personalizzata. Per ulteriori informazioni, vedi [Informazioni sul piano Starter](starter_plan.html).
 
 Questa esercitazione spiega lo sviluppo di una soluzione {{site.data.keyword.blockchain}} che inizia con la creazione e la modellazione di una rete di business e la distribuisce quindi a una rete blockchain in esecuzione.
 

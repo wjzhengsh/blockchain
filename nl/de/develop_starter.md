@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-31"
+lastupdated: "2018-12-08"
 
 ---
 
@@ -16,6 +16,7 @@ lastupdated: "2018-08-31"
 # Unternehmensnetz im Starter Plan bereitstellen
 {: #deploying-a-business-network}
 
+**IBM empfiehlt die Verwendung von Hyperledger Composer ausschließlich für Demonstrationszwecke und Machbarkeitsnachweise. IBM bietet keinen Support für Netze, die Hyperledger Composer in Produktionsumgebungen nutzen, inklusive Composer-Befehlszeilenschnittstelle, JavaScript-APIs, REST-Server und Web Playground.**
 
 *[Ist diese Seite hilfreich? Teilen Sie uns Ihre Meinung mit.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)*
 
@@ -27,7 +28,14 @@ In der Entwicklerumgebung können Sie {{site.data.keyword.blockchain}}-Unternehm
 
 ## Vorbemerkungen
 
-Stellen Sie sicher, dass Sie die [Informationen zum Starter Plan](./starter_plan.html) und die [Einführung in Starter Plan](./get_start_starter_plan.html) lesen. Stellen Sie außerdem sicher, dass Sie die [{{site.data.keyword.blockchainfull_notm}} Platform-Entwicklerumgebung](./develop_install.html) installiert und eine {{site.data.keyword.blockchainfull_notm}} Platform Starter Plan-Instanz nach den Anweisungen in [Starter Plan-Netz steuern](./get_start_starter_plan.html) erstellt haben. Node v8.9 oder höher, npm v5.x und Hyperledger Composer v0.19.x müssen vorhanden sein.
+Stellen Sie sicher, dass Sie die [Informationen zum Starter Plan](./starter_plan.html) und die [Einführung in Starter Plan](./get_start_starter_plan.html) lesen. Stellen Sie außerdem sicher, dass Sie die [{{site.data.keyword.blockchainfull_notm}} Platform-Entwicklerumgebung](./develop_install.html) installiert und eine {{site.data.keyword.blockchainfull_notm}} Platform Starter Plan-Instanz nach den Anweisungen in [Starter Plan-Netz steuern](./get_start_starter_plan.html) erstellt haben.
+
+Node v8.9 oder höher, npm v5.x und Hyperledger Composer müssen vorhanden sein.
+
+- Wenn Ihr Netz den Stand von Fabric Version 1.2 aufweist, verwenden Sie Hyperledger Composer v0.20.x.
+- Wenn Ihr Netz den Stand von Fabric Version 1.2 aufweist, verwenden Sie Hyperledger Composer v0.19.x.  
+
+Ihre Fabric-Version können Sie ermitteln, indem Sie das [Fenster "Netzvorgaben"](../v10_dashboard.html#network-preferences) im Network Monitor öffnen.
 
 
 ## Schritt 1: Geheimen Administratorschlüssel abrufen
@@ -74,7 +82,7 @@ Ersetzen Sie im vorangehenden Befehl `enrollSecret` durch den geheimen Administr
 
 Die Zertifikate müssen der Starter Plan-Instanz hinzugefügt werden. Aus Gründen der Bedienungsfreundlichkeit können Zertifikate mithilfe der {{site.data.keyword.blockchainfull_notm}} Platform-Benutzerschnittstelle hinzugefügt werden. Die Zertifikate müssen hinzugefügt werden. Anschließend müssen die Peers erneut gestartet werden und dann müssen die Zertifikate im Kanal synchronisiert werden. Das benötigte Zertifikat ist die Datei `admin-pub.pem`, die durch die Ausführung des vorherigen Befehls generiert wurde und die sich im Verzeichnis `credentials` befindet.
 
-1. Klicken Sie in der Starter Plan-Benutzerschnittstelle auf die Registerkarte **Mitglieder**, dann auf **Zertifikate** und dann auf **Zertifikat hinzufügen**. Rufen Sie das Verzeichnis `credentials` auf. Kopieren Sie den Inhalt der Datei `admin-pub.pem` und fügen Sie ihn in das Zertifikatsfeld ein. Übergeben Sie das Zertifikat und starten Sie die Peers erneut. Hinweis: Der Neustart der Peers nimmt eine Minute in Anspruch.
+1. Klicken Sie in der Benutzerschnittstelle des Starter-Plans auf die Registerkarte **Mitglieder**, dann auf **Zertifikate** und anschließend auf **Zertifikat hinzufügen**. Rufen Sie das Verzeichnis `credentials` auf. Kopieren Sie den Inhalt der Datei `admin-pub.pem` und fügen Sie ihn in das Zertifikatsfeld ein. Übergeben Sie das Zertifikat und starten Sie die Peers erneut. Hinweis: Der Neustart der Peers nimmt eine Minute in Anspruch.
 
     ![Zertifikate hinzufügen](images/add_cert.gif "Zertifikate hinzufügen")
 

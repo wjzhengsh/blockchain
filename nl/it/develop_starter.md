@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-31"
+lastupdated: "2018-12-08"
 
 ---
 
@@ -16,6 +16,7 @@ lastupdated: "2018-08-31"
 # Distribuzione di una rete di business su piano Starter
 {: #deploying-a-business-network}
 
+**IBM consiglia di utilizzare Hyperledger Composer esclusivamente per le demo e per i modelli di verifica (PoC, Proof of Concept). IBM non fornisce supporto per le reti che utilizzano Hyperledger Composer in produzione, compresi la CLI Composer, le API JavaScript, il server REST e Web Playground.**
 
 *[Questa pagina è utile? Faccelo sapere.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)*
 
@@ -27,12 +28,19 @@ Utilizzando l'ambiente per gli sviluppatori, puoi modellare e testare rapidament
 
 ## Prima di cominciare
 
-Assicurati di leggere [Informazioni su piano Starter](./starter_plan.html) e [Introduzione a piano Starter](./get_start_starter_plan.html). Assicurati anche di aver installato l'ambiente per sviluppatori [{{site.data.keyword.blockchainfull_notm}} Platform](./develop_install.html) e di aver creato l'istanza di {{site.data.keyword.blockchainfull_notm}} Platform piano Starter attenendoti alle istruzioni contenute in [Governance della rete piano Starter](./get_start_starter_plan.html). Assicurati di avere Node v8.9 o successivo, npm v5.x e Hyperledger Composer alla v0.19.x.
+Assicurati di leggere [Informazioni su piano Starter](./starter_plan.html) e [Introduzione a piano Starter](./get_start_starter_plan.html). Assicurati anche di aver installato l'ambiente per sviluppatori [{{site.data.keyword.blockchainfull_notm}} Platform](./develop_install.html) e di aver creato l'istanza di {{site.data.keyword.blockchainfull_notm}} Platform piano Starter attenendoti alle istruzioni contenute in [Governance della rete piano Starter](./get_start_starter_plan.html).
+
+Assicurati di avere Node v8.9 o successivo, npm v5.x e Hyperledger Composer:
+
+- Se la tua rete è alla versione 1.2 di Fabric, utilizza Hyperledger Composer v0.20.x.
+- Se la tua rete è alla versione 1.1 di Fabric, utilizza Hyperledger Composer v0.19.x.  
+
+Puoi trovare la tua versione Fabric aprendo la [finestra Preferenze della rete](../v10_dashboard.html#network-preferences) nel tuo Monitoraggio della rete.
 
 
 ## Passo uno: Richiamo del segreto di amministrazione (admin secret)
 
-1. Dalla schermata di panoramica di piano Starter, fai clic su **Profilo connessione** e scarica. Ridenomina questo file con 'connection-profile.json'.
+1. Dalla schermata di panoramica di piano Starter, fai clic su **Profilo connessione** e scarica. Rinomina questo file con 'connection-profile.json'.
 
 2. Sposta questo file nella stessa directory del tuo file `.bna`.
 
@@ -74,7 +82,7 @@ Sostituisci `enrollSecret` nel comando precedente con il segreto di amministrazi
 
 I certificati devono essere aggiunti all'istanza piano Starter. Per praticità, è possibile aggiungerli utilizzando la IU {{site.data.keyword.blockchainfull_notm}} Platform. I certificati devono essere aggiunti; i peer devono essere quindi riavviati e i certificati devono essere sincronizzati nel canale. Il certificato necessario si trova nel file `admin-pub.pem` che è stato generato dal comando precedente, che è una directory `credentials`.
 
-1. Nella IU piano Starter, fai clic sulla scheda **Membri**, su **Certificati** e **Aggiungi certificato**. Passa alla tua directory `credentials` e copia e incolla i contenuti del file `admin-pub.pem` nella casella del certificato. Invia il certificato e riavvia i peer. Nota: il riavvio dei peer necessita di un minuto.
+1. Nella IU piano Starter, fai clic sulla scheda **Membri**, quindi su **Certificati** e su **Aggiungi certificato**. Passa alla tua directory `credentials` e copia e incolla i contenuti del file `admin-pub.pem` nella casella del certificato. Invia il certificato e riavvia i peer. Nota: il riavvio dei peer necessita di un minuto.
 
     ![Aggiungi certificati](images/add_cert.gif "Aggiungi certificati")
 
@@ -82,7 +90,7 @@ I certificati devono essere aggiunti all'istanza piano Starter. Per praticità, 
 
     ![Sincronizza certificati](images/sync_cert.gif "Sincronizza certificati")
 
-## Passo quattro: Creazione di una scheda di rete di business di gestione
+## Passo quattro: Creazione di una scheda di rete di business di amministrazione
 
 Ora che i certificati corretti sono stati sincronizzati con i peer, è possibile creare schede di rete di business che hanno le autorizzazioni per installare il runtime Hyperledger Composer e avviare il chaincode.
 
@@ -140,7 +148,7 @@ Successivamente, la scheda creata nel passo precedente può essere utilizzata pe
 
 La rete di business viene ora distribuita all'istanza del piano Starter.
 
-## Passo sei: esegui il ping della rete di business per assicurarti che sia in esecuzione correttamente
+## Passo sei: Esecuzione del ping della rete di business per verificarne la corretta esecuzione
 
 Immetti il seguente comando per eseguire il ping della rete di business:
 

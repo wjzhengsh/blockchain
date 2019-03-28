@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-08-31"
+lastupdated: "2018-12-08"
 ---
 
 {:new_window: target="_blank"}
@@ -15,8 +15,9 @@ lastupdated: "2018-08-31"
 # Hyperledger Composer
 {: #hyperledger-composer}
 
+**デモおよび概念検証のみに Hyperledger Composer を使用することをお勧めします。 IBM では、実動の Hyperledger Composer を使用するネットワークをサポートしていません。これには Composer CLI、JavaScript API、REST サーバー、および Web Playground が含まれます。**
 
-***[このページは参考になりましたか。ご意見をお聞かせください。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
+***[このページは参考になりましたか。 ご意見をお聞かせください。](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)***
 
 
 {{site.data.keyword.blockchainfull}} Platform: Develop は、Linux Foundation の Hyperledger Project 内のプロジェクトの 1 つである、オープン・ソースの Hyperledger Composer ツール・セット上に構築されています。 Hyperledger Composer により、アーキテクトと開発者は、Web アプリケーションやモバイル・アプリケーションにビジネス・ロジックを公開する REST API を使用して、{{site.data.keyword.blockchain}} ソリューションを迅速に作成できるだけでなく、ブロックチェーンをレコードの既存のエンタープライズ・システムと統合できます。

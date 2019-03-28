@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2018-10-05"
+lastupdated: "2018-12-08"
 
 ---
 
@@ -16,6 +16,7 @@ lastupdated: "2018-10-05"
 # Deploying a business network on Starter Plan
 {: #deploying-a-business-network}
 
+**IBM recommends using Hyperledger Composer solely for demos and proof-of-concepts. IBM does not provide support for networks using Hyperledger Composer in production, including the Composer CLI, JavaScript APIs, REST server, and Web Playground.**
 
 *[Is this page helpful? Tell us.](https://www.surveygizmo.com/s3/4501493/IBM-Blockchain-Documentation)*
 
@@ -81,7 +82,7 @@ Replace `enrollSecret` in the preceding command with the admin secret retrieved 
 
 The certificates must be added to the Starter Plan instance. For convenience, they can be added by using the {{site.data.keyword.blockchainfull_notm}} Platform UI. The certificates must be added, then the peers must be restarted, and then the certificates must be synced on the channel. The certificate needed is the `admin-pub.pem` file that was generated from the previous command, which is in the `credentials` directory.
 
-1. In the Starter Plan UI, click on the **Members** tab, then **Certificates**, then **Add Certificate**. Go to your `credentials` directory, and copy and paste the contents of the `admin-pub.pem` file in the certificate box. Submit the certificate and restart the peers. Note: restarting the peers takes a minute.
+1. In the Starter Plan UI, click the **Members** tab, then **Certificates**, then **Add Certificate**. Go to your `credentials` directory, and copy and paste the contents of the `admin-pub.pem` file in the certificate box. Submit the certificate and restart the peers. Note: restarting the peers takes a minute.
 
     ![Add certificates](images/add_cert.gif "Add certificates")
 
