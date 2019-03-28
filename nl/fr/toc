@@ -54,20 +54,17 @@ Plateforme IBM Blockchain
 
 
 	{: .topicgroup}
-	Autorités de certification dans ICP
-		[A propos des autorités de certification](services/blockchain/ibp-for-icp-about.html#ibp-icp-ca)
+	-- Autorités de certification dans ICP
 		howto/CA_deploy_icp.md
 		howto/CA_operate.md
 
 	{: .topicgroup}
-	Services de tri dans ICP
-		[A propos des services de tri](services/blockchain/ibp-for-icp-about.html#ibp-icp-orderer)
+	-- Services de tri dans ICP
 		howto/orderer_deploy_icp.md
 		howto/orderer_operate.md
 
 	{: .topicgroup}
-	Homologues dans ICP
-		[A propos des homologues](services/blockchain/ibp-for-icp-about.html#ibp-icp-peer)
+	-- Homologues dans ICP
 		howto/peer_deploy_icp.md
 		howto/peer_operate_icp.md
 		howto/peer_deploy_ibp.md
