@@ -62,7 +62,6 @@ IBM Blockchain Platform
 		howto/ibp-console-govern.md
 		howto/ibp-console-identities.md
 		howto/ibp-console-organizations.md
-		howto/ibp-v2-operations-service.md
 		howto/ibp-console-manage.md
 		howto/ibp-v2-troubleshooting.md
 
