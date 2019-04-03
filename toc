@@ -59,8 +59,10 @@ IBM Blockchain Platform
 		howto/ibp-console-smart-contracts.md
 		howto/ibp-console-create-app.md
 		howto/ibp-console-import-nodes.md
+		howto/ibp-console-govern.md
 		howto/ibp-console-identities.md
 		howto/ibp-console-organizations.md
+		howto/ibp-v2-operations-service.md
 		howto/ibp-console-manage.md
 		howto/ibp-v2-troubleshooting.md
 
@@ -102,6 +104,7 @@ IBM Blockchain Platform
 	{: .navgroup-end}
 
 	{: .navgroup id="help"}
+	release-notes.md
 	ibmblockchain_support.md
 	knownissues.md
 	{: .navgroup-end}

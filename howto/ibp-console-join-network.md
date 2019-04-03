@@ -3,7 +3,8 @@
 copyright:
   years: 2019
 
-lastupdated: "2019-03-20"
+lastupdated: "2019-04-03"
+
 
 subcollection: blockchain
 
@@ -90,6 +91,8 @@ Perform the following steps from your console:
 
 *Figure 2. Creating the peer organization CA*  
 After you deploy the CA, you will use it when you create your organization MSP, register users, and to create your entry point to a network, the **peer**.
+
+Advanced users may already have their own CA, and not want to create a new CA in the console. If your existing CA can issue certificates in `X.509` format, you can use your own third-party CA instead of creating a new one here. See this topic on [Using a third-party CA with your peer or orderer](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-identities) for more information.
 
 ### Using your CA to register identities
 {: #ibp-console-join-network-use-CA-org2}
@@ -280,7 +283,7 @@ Perform the following steps from your console:
 2. Select your orderer named 'Orderer' and click **Next**.
 3. Enter the name of the channel you want to join,  `channel1` and click **Next**.
 4. Select which peers you want to join the channel. For purposes of this tutorial, click `Peer Org2`.
-5. Click **Join peer**.
+5. Click **Join channel**.
 
 If the channel that you want to join a peer to is created by yourself and you haven't joined any peer to the channel, you can click the pending tile of the channel directly to join your peer.
 {:note}

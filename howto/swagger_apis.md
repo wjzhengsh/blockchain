@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018,2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-03"
 
 subcollection: blockchain
 
@@ -79,6 +79,27 @@ After you click **Execute**, you can see the response of the API call against yo
 
 ![API response in Swagger UI](../images/swaggerUICurlResponse.png "API response in Swagger UI")  
 *Figure 6. API response*    
+
+## Disabling API access
+{: #ibp-swagger-turn-off}
+
+By default, all users with a non-Auditor role in IBM Cloud, can view and use the **Network credentials** visible on the Swagger APIs panel and can therefore manage your network using the APIs. However, if you prefer not to expose your Swagger API network credentials in the UI, you can copy and secure your existing key and secret values and generate new credentials that are not valid for use with the Swagger APIs. A flag, named resetCredentials, is provided that allows you to control the access by completing the following steps:
+
+1. Follow the steps to generate a new network credential as described in the [Service credentials dashboard](/docs/services/blockchain/howto/create_join_network_with_apis.html#swagger-network-retrieve-id-token).
+2. However, in the **Add Inline Configuration Parameters** box, paste in the following value:
+   ```
+   {
+     "resetCredentials": true
+   }
+   ```
+   {:codeblock}
+3. Click **Add**.
+
+Now, when any user accesses the Swagger APIs panel from the UI, the **Network credentials** information in the UI will contain a generic key and secret value that is not valid for managing your network. Any API requests submitted using those credentials will not be processed.  
+
+If, at a later time, you want to expose valid network credentials in the UI, simply repeat the steps above to generate a new credential, but this time in the **Add Inline Configuration Parameters** box, you can leave the box blank. You do not need to specify any parameters.
+
+Now, the original valid credentials are visible in the **Network credentials** information in the UI and can be used to authenticate the Swagger APIs.
 
 ## Troubleshooting tips
 {: #ibp-swagger-troubleshooting}

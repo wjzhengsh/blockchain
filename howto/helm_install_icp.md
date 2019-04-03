@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-03"
 
 subcollection: blockchain
 
@@ -33,7 +33,7 @@ Before you install {{site.data.keyword.blockchainfull_notm}} Platform for {{site
 ## Prerequisites for installing the Helm chart
 {: #helm-install-prereqs}
 
-Before you install the Helm chart, you must have configured an {{site.data.keyword.cloud_notm}} Private cluster. Review the instructions for [setting up and configuring an {{site.data.keyword.cloud_notm}} Private cluster](/docs/services/blockchain/ICP_setup.html#icp-setup).
+Before you install the Helm chart, you must have configured an {{site.data.keyword.cloud_notm}} Private cluster and created a new target namespace that is bound to a pod security policy. Review the instructions for [setting up and configuring an {{site.data.keyword.cloud_notm}} Private cluster](/docs/services/blockchain/ICP_setup.html#icp-setup).
 
 ## Installing {{site.data.keyword.blockchainfull_notm}} Platform behind a firewall
 {: #helm-install-prereqs-firewall}
@@ -51,6 +51,7 @@ However, the Community Edition Helm chart does not include the necessary Fabric 
 For more information about how to use these images, see [Adding featured applications to clusters without Internet connectivity ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_package_offline.html). Note that you can find the specification file `manifest.yaml` under the `ibm-blockchain-platform-dev/ibm_cloud_pak` directory in the Helm chart.
 
 ## Importing the Helm chart to {{site.data.keyword.cloud_notm}} Private
+{: #helm-install-importing}
 
 1. Download the Helm chart file of IBM Blockchain Platform for {{site.data.keyword.cloud_notm}} Private from [Passport Advantage Online ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/software/passportadvantage/pao_customer.html "Passport Advantage Online") or for the free Community edition from [GitHub ![External link icon](../images/external_link.svg "External link icon")](https://github.com/IBM/charts/blob/master/repo/stable/ibm-blockchain-platform-dev-1.0.0.tgz "IBM/charts").  This Helm chart package contains three sub Helm charts for the CA, orderer, and peer.
 
@@ -61,13 +62,13 @@ For more information about how to use these images, see [Adding featured applica
   ```
   {:codeblock}
 
-4. Ensure that the [Docker CLI](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/manage_images/configuring_docker_cli.html) is configured. After you configure the Docker CLI, access the image registry on your cluster by using the following command:
+3. Ensure that the [Docker CLI](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/manage_images/configuring_docker_cli.html) is configured. After you configure the Docker CLI, access the image registry on your cluster by using the following command:
   ```
   docker login <cluster_CA_domain>:8500
   ```
   {:codeblock}
 
-5. Find the name of the repository in {{site.data.keyword.cloud_notm}} Private to upload your Helm chart by using the following command:
+4. Find the name of the repository in {{site.data.keyword.cloud_notm}} Private to upload your Helm chart by using the following command:
   ```
   cloudctl catalog repos
   ```
@@ -75,7 +76,7 @@ For more information about how to use these images, see [Adding featured applica
 
   When this command completes successfully, you can see a list of repo's in your cluster. Choose the name of the target repo and save it. You need to use it in the command below.
 
-6. Import Helm chart by using the command line.
+5. Import Helm chart by using the command line.
   The command you run to import the Helm chart depends on whether the Helm chart was downloaded from Passport Advantage (PPA) or from GitHub.
 
   - **{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private**
@@ -96,7 +97,8 @@ For more information about how to use these images, see [Adding featured applica
     When this command completes successfully, you can see something that is similar to the following information:
 
     <details aria-label="Details"><summary>Helm install output</summary>
-    ```
+
+    ```  
     Expanding archive
     OK
 
@@ -173,7 +175,9 @@ For more information about how to use these images, see [Adding featured applica
     Synch charts
     Synch started
     OK
-    ```
+
+    ```  
+    </details>
 
   - **Community edition downloaded from GitHub**
     Follow these instructions if you downloaded the Helm chart from GitHub.
@@ -200,93 +204,8 @@ For more information about how to use these images, see [Adding featured applica
 
 Click the **Catalog** button in the {{site.data.keyword.cloud_notm}} Private console, and then click **Blockchain** in the left navigation panel to verify the import was successful. If yes, the **ibm-blockchain-platform-prod** or **ibm-blockchain-platform-dev** tile should be visible on the {{site.data.keyword.cloud_notm}} Private Catalog page.
 
-
-## PodSecurityPolicy Requirements
-
-After importing the Helm chart to {{site.data.keyword.cloud_notm}} Private, you need to bind a [PodSecurityPolicy ![External link icon](../images/external_link.svg "External link icon")](https://kubernetes.io/docs/concepts/policy/pod-security-policy/ "Pod Security Policies") to the target namespace prior to installing the components.  Choose either a predefined PodSecurityPolicy or have your cluster administrator create a custom PodSecurityPolicy for you:
-- Predefined PodSecurityPolicy name: [`ibm-privileged-psp`](https://ibm.biz/cpkspec-psp)
-- Custom PodSecurityPolicy definition:
-  ```
-  apiVersion: extensions/v1beta1
-  kind: PodSecurityPolicy
-  metadata:
-    name: ibm-blockchain-platform-psp
-  spec:
-    hostIPC: false
-    hostNetwork: false
-    hostPID: false
-    privileged: true
-    allowPrivilegeEscalation: true
-    readOnlyRootFilesystem: false
-    seLinux:
-      rule: RunAsAny
-    supplementalGroups:
-      rule: RunAsAny
-    runAsUser:
-      rule: RunAsAny
-    fsGroup:
-      rule: RunAsAny
-    requiredDropCapabilities:
-    - ALL
-    allowedCapabilities:
-    - NET_BIND_SERVICE
-    - CHOWN
-    - DAC_OVERRIDE
-    - SETGID
-    - SETUID
-    volumes:
-    - '*'
-  ```
-  {:codeblock}
-- Custom ClusterRole for the custom PodSecurityPolicy:
-  ```
-  apiVersion: rbac.authorization.k8s.io/v1
-  kind: ClusterRole
-  metadata:
-    annotations:
-    name: ibm-blockchain-platform-clusterrole
-  rules:
-  - apiGroups:
-    - extensions
-    resourceNames:
-    - ibm-blockchain-platform-psp
-    resources:
-    - podsecuritypolicies
-    verbs:
-    - use
-  - apiGroups:
-    - ""
-    resources:
-    - secrets
-    verbs:
-    - create
-    - delete
-    - get
-    - list
-    - patch
-    - update
-    - watch
-  ```
-  {:codeblock}
-
-- Custom ClusterRoleBinding for the custom ClusterRole:
-  ```
-  apiVersion: rbac.authorization.k8s.io/v1
-  kind: ClusterRoleBinding
-  metadata:
-   name: ibm-blockchain-platform-clusterrolebinding
-  roleRef:
-   apiGroup: rbac.authorization.k8s.io
-   kind: ClusterRole
-   name: ibm-blockchain-platform-clusterrole
-  subjects:
-  - kind: ServiceAccount
-    name: default
-    namespace: default
-  ```
-  {:codeblock}
-
 ## Deploying individual components
+{: #helm-install-deploying-components}
 
 After you install the Helm chart, click the **ibm-blockchain-platform-prod** or **ibm-blockchain-platform-dev** tile in your {{site.data.keyword.cloud_notm}} Private catalog to open it. You can use the configuration page to deploy any of the individual components of your blockchain network. For more details on the components that are required for your blockchain solution and the order in which they must be deployed, see [Getting started with {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/ibp_for_icp_deployment_guide.html#get-started-icp).
 
