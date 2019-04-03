@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-03"
 
 subcollection: blockchain
 
@@ -35,6 +35,7 @@ Table 1 and Figure 1 show the {{site.data.keyword.cloud_notm}} regions and locat
 | Tokyo |  | Y |
 | Frankfurt |  | Y |
 | Sydney | Y |  |
+| Melbourne |  | Y |
 | São Paulo |  | Y |
 | Toronto |  | Y |
 

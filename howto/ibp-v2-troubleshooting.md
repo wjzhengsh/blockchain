@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-03-20"
+lastupdated: "2019-04-03"
 
 subcollection: blockchain
 
@@ -26,25 +26,26 @@ subcollection: blockchain
 
 General problems may occur when using the console to manage nodes, channels, or smart contracts. In many cases, you can recover from these problems by following a few easy steps.
 
-- [My peer or orderer node status is `Status unavailable`, what does this mean?](/docs/services/blockchain/howto/ibp-v2-troubleshooting.html#ibp-v2-troubleshooting-status-unavailable)
+- [When I hover over my node, the status is `Status unavailable`, what does this mean?](/docs/services/blockchain/howto/ibp-v2-troubleshooting.html#ibp-v2-troubleshooting-status-unavailable)
 - [Why are my node operations failing after I create my peer or orderer?](/docs/services/blockchain/howto/ibp-v2-troubleshooting.html#ibp-console-build-network-troubleshoot-entry1)
 - [Why does my peer fail to start?](/docs/services/blockchain/howto/ibp-v2-troubleshooting.html#ibp-console-build-network-troubleshoot-entry2)
 - [Why did my smart contract installation, instantiation or upgrade fail?](/docs/services/blockchain/howto/ibp-v2-troubleshooting.html#ibp-console-smart-contracts-troubleshoot-entry1)
 - [How can I view my smart contract container logs?](/docs/services/blockchain/howto/ibp-v2-troubleshooting.html#ibp-console-smart-contracts-troubleshoot-entry2)
 - [My channel, smart contracts, and identities have disappeared from the console. How can I get them back?](/docs/services/blockchain/howto/ibp-v2-troubleshooting.html#ibp-v2-troubleshooting-browser-storage)
 - [Why am I getting the error `An error occurred when updating channel` when I try to add an organization to my channel?](/docs/services/blockchain/howto/ibp-v2-troubleshooting.html#ibp-v2-troubleshooting-update-channel)
+- [My Kubernetes cluster expired. What does this mean?](/docs/services/blockchain/howto/ibp-v2-troubleshooting.html#ibp-v2-troubleshooting-cluster-expired)
 - [Why are the transactions I submit from VSCode failing?](/docs/services/blockchain/howto/ibp-v2-troubleshooting.html#ibp-v2-troubleshooting-anchor-peer)
 
-## My peer or orderer node status is `Status unavailable`, what does this mean?
+## When I hover over my node, the status is `Status unavailable`, what does this mean?
 {: #ibp-v2-troubleshooting-status-unavailable}
 
-The node status in the tile for my peer or orderer node is grey, meaning the status of the node is not available.
+The node status in the tile for the CA,  peer, or orderer node is grey, meaning the status of the node is not available. Ideally, when you hover over any node, the node status should be `Running`.
 {: tsSymptoms}
 
-This condition occurs when the health checker that runs against the node cannot contact the node.
+This condition occurs when the health checker that runs against the node cannot contact the node. Or the request for status fails with a timeout error because the node did not respond within a specific time period.
 {: tsCauses}
 
-[Examine the associated peer or orderer logs](/docs/services/blockchain/howto/ibp-console-manage.html#ibp-console-manage-console-node-logs) for errors to determine the cause.
+[Examine the associated node logs](/docs/services/blockchain/howto/ibp-console-manage.html#ibp-console-manage-console-node-logs) for errors to determine the cause.
 {: tsResolve}
 
 ## Why are my node operations failing after I create my peer or orderer?
@@ -135,6 +136,17 @@ This error occurs when the selected **Channel Updater MSP ID** on the **Update c
 On the **Update channel** panel, scroll down to the **Channel Updater MSP ID** and select the MSP ID that was specified when the channel was created or specify the MSP ID that is the admin of the channel.
 {: tsResolve}
 
+## My Kubernetes cluster expired. What does this mean?
+{: #ibp-v2-troubleshooting-cluster-expired}
+
+I received an e-mail that my {{site.data.keyword.IBM_notm}} Kubernetes service cluster is about to expire or it's status is `Expired`. Or,  you are not able to access the console after 30 days.
+{: tsSymptoms}
+
+Free Kubernetes clusters are only valid for 30 days.
+{: tsCauses}
+
+It is not possible to migrate from a free cluster to a paid cluster. After 30 days you cannot access the console and all of your nodes and certificates are deleted. See this topic on [Kubernetes cluster expiration](/docs/services/blockchain/howto/ibp-console-manage.html#ibp-console-manage-console-cluster-expiration) for information on what is happening and what you can do.
+{: tsResolve}
 
 ## Why are the transactions I submit from VSCode failing?
 {: #ibp-v2-troubleshooting-anchor-peer}
@@ -149,4 +161,3 @@ This error occurs if you are using the Fabric Service Discovery feature but did 
 {: tsCauses}
 
 Follow step three of the [private data topic](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-private-data) in the Deploy a smart contract tutorial to configure your anchor peers.
-{: tsResolve}

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-20"
+lastupdated: "2019-04-03"
 
 subcollection: blockchain
 
@@ -479,28 +479,6 @@ var request = {
 Send this request to `return channel.sendInstantiateProposal(request);` instead of the `return channel.sendTransactionProposal(request);` currently in the file. After sending the instantiate request to the channel, you then need to send the endorsed proposal as a transaction to the ordering service. This uses the same methods as sending a transaction, so you can keep the rest of the file unchanged. You may want [increase the timeout value](/docs/services/blockchain/best_practices.html#best-practices-set-timeout-in-sdk) in the instantiate proposal. Otherwise the request may timeout before the platform can start the chaincode container.
 
 Your signCert needs to be added to the channel before you can instantiate chaincode. If you generated certificates after you joined the channel, you need to upload your signCert to the platform and then click the **Sync Certificates** button in the "Channels" screen. You may need to wait a few minutes for channel sync to complete before issuing the instantiate chaincode command. To learn more, see [Uploading signing certificates to {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/certificates.html#managing-certificates-upload-certs) in the [Managing certificates](/docs/services/blockchain/certificates.html#managing-certificates) tutorial.
-
-## Hosting applications
-{: #dev-app-host-app}
-
-You can host your application on your local file system or push it to {{site.data.keyword.cloud_notm}}. To push your application to {{site.data.keyword.cloud_notm}}, complete the following steps:
-1. Install the [Cloud Foundry Command Line Installer ![External link icon](images/external_link.svg "External link icon")](https://github.com/cloudfoundry/cli/releases).  Test your installation with the `cf` command.
-    * If your installation is successful, you should see a bunch of text output in your terminal.
-    * If you see "command not found", your installation was either not successful or CF is not added to your system path.
-2. Set up API endpoint and log in with your {{site.data.keyword.cloud_notm}} ID and password by issuing the following commands:
-    ```
-    > cf api https://api.ng.bluemix.net
-    > cf login
-    ```
-    {:codeblock}
-3. Browse to the directory of your application, and push your application by issuing the following command. This can take several minutes depending on your application size. You can see logs from {{site.data.keyword.cloud_notm}} in your terminal. The logs cease when the application is successfully launched.
-	```
-	> cf push YOUR_APP_NAME_HERE
-	```
-	{:codeblock}
-	You can check your application logs by issuing one of the following commands:
-	* `> cf logs YOUR_APP_NAME_HERE`
-	* `> cf logs YOUR_APP_NAME_HERE --recent`
 
 ## Disconnecting your application from the network
 {: #dev-app-disconnect-app}
