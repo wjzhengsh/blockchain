@@ -1,0 +1,926 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generator: Adobe Illustrator 22.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   id="Layer_1"
+   x="0px"
+   y="0px"
+   viewBox="0 0 1400 1548"
+   style="enable-background:new 0 0 1400 1548;"
+   xml:space="preserve"
+   sodipodi:docname="IBP_V2_Architecture.svg"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   inkscape:export-filename="D:\BM140\FRE\BM140ABD141\S001\translation\images\IBP_V2_Architecture.png"
+   inkscape:export-xdpi="92"
+   inkscape:export-ydpi="92"><metadata
+   id="metadata191"><rdf:RDF><cc:Work
+       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /></cc:Work></rdf:RDF></metadata><defs
+   id="defs189">
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+	
+
+		
+		
+		
+		
+		
+		
+		
+		
+	
+		
+		
+		
+		
+	
+		
+	
+		
+	
+		
+	
+		
+	
+		
+		
+		
+	
+		
+		
+		
+		
+	
+		
+		
+		
+	
+		
+		
+		
+	
+		
+		
+	
+		
+		
+		
+		
+		
+	
+	
+		
+	
+		
+		
+		
+	
+		
+		
+		
+	
+		
+			
+			
+			
+			
+		
+			
+		
+			
+			
+			
+			
+		
+			
+			
+			
+		
+			
+			
+			
+		
+			
+			
+		
+			
+			
+			
+			
+			
+		
+			
+			
+			
+			
+		
+			
+			
+		</defs><sodipodi:namedview
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   borderopacity="1"
+   objecttolerance="10"
+   gridtolerance="10"
+   guidetolerance="10"
+   inkscape:pageopacity="0"
+   inkscape:pageshadow="2"
+   inkscape:window-width="1920"
+   inkscape:window-height="1001"
+   id="namedview187"
+   showgrid="false"
+   inkscape:zoom="0.86241447"
+   inkscape:cx="622.51855"
+   inkscape:cy="1121.3636"
+   inkscape:window-x="-9"
+   inkscape:window-y="51"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="Layer_1" />
+<style
+   type="text/css"
+   id="style2">
+	.st0{fill:#FFFFFF;stroke:#979797;}
+	.st1{opacity:0.2003;}
+	.st2{fill:#DCDCDC;}
+	.st3{fill:#161515;}
+	.st4{font-family:'IBMPlexSans-Medium';}
+	.st5{font-size:21px;}
+	.st6{opacity:0.4463;}
+	.st7{opacity:0.4519;}
+	.st8{opacity:0.2022;}
+	.st9{opacity:0.2023;}
+	.st10{fill:#565656;stroke:#B4ADAD;}
+	.st11{fill:#FFFFFF;}
+	.st12{font-size:19px;}
+	.st13{fill:none;stroke:#5A5A5A;stroke-linecap:round;stroke-linejoin:round;}
+	.st14{opacity:0.4474;}
+	.st15{fill:none;stroke:#565656;stroke-linecap:round;stroke-linejoin:round;}
+	.st16{fill:#010F5E;stroke:#857B7B;}
+	.st17{fill:#FFFFFF;stroke:#857B7B;}
+	.st18{fill:#010F5E;}
+	.st19{fill:#0039C8;stroke:#857B7B;}
+	.st20{fill:#565656;}
+	.st21{fill:#08CAEB;stroke:#857B7B;}
+	.st22{fill:#979797;}
+	.st23{font-size:24px;}
+	.st24{font-family:'IBMPlexSans';}
+	.st25{font-size:20px;}
+</style>
+<title
+   id="title4">IBP_V2_Architecture</title>
+<desc
+   id="desc6">Created with Sketch.</desc>
+<rect
+   style="fill:#ffffff;stroke:#979797"
+   height="1546"
+   width="1398"
+   class="st0"
+   y="0.5"
+   x="1.5"
+   id="Rectangle" /><rect
+   id="Rectangle-Copy-8"
+   y="648"
+   class="st2"
+   width="757"
+   height="805"
+   x="165"
+   style="fill:#dcdcdc" /><text
+   class="st3 st4 st5"
+   id="text10"
+   style="font-size:21px;font-family:IBMPlexSans-Medium;fill:#161515"
+   x="165"
+   y="601">Cluster Kubernetes - </text>
+<text
+   class="st3 st4 st5"
+   id="text12"
+   style="font-size:21px;font-family:IBMPlexSans-Medium;fill:#161515"
+   x="165"
+   y="629">Instance de service 3</text>
+<rect
+   id="Rectangle-Copy-8_1_"
+   y="575"
+   class="st2"
+   width="757"
+   height="805"
+   x="311"
+   style="fill:#dcdcdc" /><text
+   class="st3 st4 st5"
+   id="text16"
+   style="font-size:21px;font-family:IBMPlexSans-Medium;fill:#161515"
+   x="311"
+   y="528">Cluster Kubernetes - </text>
+<text
+   class="st3 st4 st5"
+   id="text18"
+   style="font-size:21px;font-family:IBMPlexSans-Medium;fill:#161515"
+   x="311"
+   y="556">Instance de service 2</text>
+<rect
+   style="fill:#dcdcdc"
+   y="258"
+   x="165"
+   height="128"
+   width="757"
+   class="st2"
+   id="Rectangle_1_" /><text
+   class="st3 st4 st5"
+   id="text26"
+   style="font-size:21px;font-family:IBMPlexSans-Medium;fill:#161515"
+   x="165"
+   y="211">Cluster IBM Blockchain Platform Kubernetes - </text>
+<text
+   class="st3 st4 st5"
+   id="text28"
+   style="font-size:21px;font-family:IBMPlexSans-Medium;fill:#161515"
+   x="165"
+   y="239">Operational Tooling</text>
+<rect
+   style="fill:#565656;stroke:#b4adad"
+   height="88"
+   width="308"
+   class="st10"
+   y="276.5"
+   x="229.5"
+   id="Rectangle_2_" /><text
+   style="font-size:19px;font-family:IBMPlexSans-Medium;fill:#ffffff;-inkscape-font-specification:'IBMPlexSans-Medium, Normal';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;"
+   id="text31"
+   class="st11 st4 st12"
+   x="310"
+   y="315"><tspan
+     sodipodi:role="line"
+     id="tspan476">Instance</tspan></text>
+<text
+   style="font-size:19px;font-family:IBMPlexSans-Medium;fill:#ffffff;-inkscape-font-specification:'IBMPlexSans-Medium, Normal';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;"
+   id="text33"
+   class="st11 st4 st12"
+   x="310"
+   y="339"><tspan
+     sodipodi:role="line"
+     id="tspan474">Operational Tooling</tspan></text>
+<g
+   id="_x39_658-200"
+   transform="translate(229,276)">
+				
+					<image
+   sodipodi:absref="D:\BM140\FRE\BM140ABD141\S001\translation\images\C9FED2EB5474981B.png"
+   xlink:href="C9FED2EB5474981B.png"
+   style="overflow:visible;enable-background:new"
+   width="200"
+   height="200"
+   transform="matrix(0.135,0,0,0.135,28,31)"
+   id="image35">
+				</image>
+				<g
+   id="g38">
+					<rect
+   style="fill:#ffffff"
+   height="27"
+   width="27"
+   class="st11"
+   y="31"
+   x="28"
+   id="rect-1" />
+				</g>
+			</g><path
+   id="Path-Copy"
+   class="st13"
+   d="m 595,875 h -21.5 c -11,0 -20,-9 -20,-20 V 330 c 0,-11 -9,-20 -20,-20 H 513"
+   inkscape:connector-curvature="0"
+   style="fill:none;stroke:#5a5a5a;stroke-linecap:round;stroke-linejoin:round" /><rect
+   style="fill:#dcdcdc"
+   x="308"
+   height="128"
+   width="757"
+   class="st2"
+   y="192"
+   id="Rectangle_3_" /><text
+   style="font-size:21px;font-family:IBMPlexSans-Medium;fill:#161515"
+   id="text45"
+   class="st3 st4 st5"
+   x="308"
+   y="147">Cluster IBM Blockchain Platform Kubernetes - </text>
+<text
+   style="font-size:21px;font-family:IBMPlexSans-Medium;fill:#161515"
+   id="text47"
+   class="st3 st4 st5"
+   x="308"
+   y="175">Operational Tooling</text>
+<g
+   transform="translate(372,212)"
+   id="Group-2_1_">
+				<rect
+   style="fill:#565656;stroke:#b4adad"
+   height="88"
+   width="308"
+   class="st10"
+   y="0.5"
+   x="0.5"
+   id="Rectangle_4_" />
+				<text
+   style="font-size:19px;font-family:IBMPlexSans-Medium;fill:#ffffff;-inkscape-font-specification:'IBMPlexSans-Medium, Normal';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;"
+   id="text50"
+   class="st11 st4 st12"
+   transform="translate(81,39)"><tspan
+     sodipodi:role="line"
+     id="tspan478">Instance</tspan></text>
+
+				<text
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:19px;font-family:IBMPlexSans-Medium;-inkscape-font-specification:'IBMPlexSans-Medium, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ffffff"
+   id="text52"
+   class="st11 st4 st12"
+   transform="translate(81,63)"><tspan
+     y="0"
+     x="0"
+     id="tspan197"
+     sodipodi:role="line">Operational Tooling</tspan></text>
+
+				<g
+   id="_x39_658-200_1_">
+					
+						<image
+   sodipodi:absref="D:\BM140\FRE\BM140ABD141\S001\translation\images\C9FED2EB5474981C.png"
+   xlink:href="C9FED2EB5474981C.png"
+   style="overflow:visible;enable-background:new"
+   width="200"
+   height="200"
+   transform="matrix(0.135,0,0,0.135,28,31)"
+   id="image54">
+					</image>
+					<g
+   id="g57">
+						<rect
+   style="fill:#ffffff"
+   height="27"
+   width="27"
+   class="st11"
+   y="31"
+   x="28"
+   id="rect-2" />
+					</g>
+				</g>
+			</g><path
+   id="Path-Copy_1_"
+   class="st13"
+   d="m 738,783 h -21.5 c -11,0 -20,-9 -20,-20 V 238 c 0,-11 -9,-20 -20,-20 H 656"
+   inkscape:connector-curvature="0"
+   style="fill:none;stroke:#5a5a5a;stroke-linecap:round;stroke-linejoin:round" /><rect
+   id="Rectangle_5_"
+   y="507"
+   class="st2"
+   width="757"
+   height="805"
+   x="449"
+   style="fill:#dcdcdc" /><text
+   class="st3 st4 st5"
+   id="text65"
+   style="font-size:21px;font-family:IBMPlexSans-Medium;fill:#161515"
+   x="449"
+   y="460">Cluster Kubernetes - </text>
+<text
+   class="st3 st4 st5"
+   id="text67"
+   style="font-size:21px;font-family:IBMPlexSans-Medium;fill:#161515"
+   x="449"
+   y="488">Instance de service 1</text>
+<path
+   style="fill:none;stroke:#565656;stroke-linecap:round;stroke-linejoin:round"
+   inkscape:connector-curvature="0"
+   d="M 689,1049 V 927 c 0,-11 8.9,-20 20,-20 h 138"
+   class="st15"
+   id="Path" /><rect
+   style="fill:#010f5e;stroke:#857b7b"
+   height="104"
+   width="642"
+   class="st16"
+   y="731.5"
+   x="513.5"
+   id="Rectangle_6_" /><g
+   transform="translate(766.342,775)"
+   id="Group-4">
+				<rect
+   style="fill:#ffffff;stroke:#857b7b"
+   height="47"
+   width="135.3"
+   class="st17"
+   y="0.5"
+   x="0.5"
+   id="Rectangle-Copy-7" />
+				<text
+   style="font-size:19px;font-family:IBMPlexSans-Medium;fill:#010f5e"
+   id="text73"
+   class="st18 st4 st12"
+   transform="translate(36.311,31)">Ingress</text>
+
+			</g><text
+   style="font-size:19px;font-family:IBMPlexSans-Medium;fill:#ffffff"
+   id="text76"
+   class="st11 st4 st12"
+   x="644.92548"
+   y="766">Espace de nom de l'instance de service</text>
+<rect
+   style="fill:#0039c8;stroke:#857b7b"
+   height="104"
+   width="642"
+   class="st19"
+   y="876.5"
+   x="513.5"
+   id="Rectangle_7_" /><g
+   transform="translate(766.342,921)"
+   id="Group-5">
+				<rect
+   style="fill:#ffffff;stroke:#857b7b"
+   height="47"
+   width="135.3"
+   class="st17"
+   y="0.5"
+   x="0.5"
+   id="Rectangle-Copy-5" />
+				<text
+   style="font-size:19px;font-family:IBMPlexSans-Medium;fill:#010f5e"
+   id="text81"
+   class="st18 st4 st12"
+   transform="translate(44.3195,31)">Proxy</text>
+
+			</g><text
+   style="font-size:19px;font-family:IBMPlexSans-Medium;fill:#ffffff"
+   id="text84"
+   class="st11 st4 st12"
+   x="642.8985"
+   y="911">Espace de nom IBM Blockchain Platform </text>
+<path
+   id="Line-2"
+   class="st20"
+   d="M 834.5,867.5 V 836 835.5 h 1 v 0.5 31.5 h 4 l -4.5,9 -4.5,-9 z"
+   inkscape:connector-curvature="0"
+   style="fill:#565656" /><rect
+   id="Rectangle_8_"
+   x="895.5"
+   y="1061.5"
+   class="st19"
+   width="259"
+   height="131"
+   style="fill:#0039c8;stroke:#857b7b" /><rect
+   style="fill:#ffffff;stroke:#857b7b"
+   height="47"
+   width="105"
+   class="st17"
+   y="1134.5"
+   x="972.5"
+   id="Rectangle-Copy-6" /><text
+   style="font-size:19px;font-family:IBMPlexSans-Medium;fill:#010f5e"
+   id="text91"
+   class="st18 st4 st12"
+   x="1000.49"
+   y="1165">RBAC</text>
+<text
+   class="st11 st4 st12"
+   id="text94"
+   style="font-size:19px;font-family:IBMPlexSans-Medium;fill:#ffffff"
+   x="938.04999"
+   y="1100"><tspan
+     style="font-size:17.33333397px"
+     id="tspan498">Espace de nom de la</tspan></text>
+<text
+   class="st11 st4 st12"
+   id="text96"
+   style="font-size:19px;font-family:IBMPlexSans-Medium;fill:#ffffff"
+   x="910.3045"
+   y="1124"><tspan
+     style="font-size:17.33333397px"
+     id="tspan496">plateforme IBM Blockchain </tspan></text>
+<rect
+   style="fill:#010f5e;stroke:#857b7b"
+   height="61"
+   width="105"
+   class="st16"
+   y="1061.5"
+   x="513.5"
+   id="Rectangle_9_" /><text
+   style="font-size:19px;font-family:IBMPlexSans-Medium;fill:#ffffff"
+   id="text100"
+   class="st11 st4 st12"
+   x="516.09747"
+   y="1111"><tspan
+     style="font-size:14.66666698px"
+     id="tspan480">Homologue-1</tspan></text>
+<rect
+   style="fill:#010f5e;stroke:#857b7b"
+   height="61"
+   width="105"
+   class="st16"
+   y="1061.5"
+   x="753.5"
+   id="Rectangle_10_" /><text
+   style="font-size:19px;font-family:IBMPlexSans-Medium;fill:#ffffff"
+   id="text103"
+   class="st11 st4 st12"
+   x="755.04102"
+   y="1107"><tspan
+     style="font-size:13.33333302px"
+     id="tspan490">Service de tri-1</tspan></text>
+<rect
+   id="Rectangle-Copy-4"
+   x="856.5"
+   y="574.5"
+   class="st21"
+   width="270"
+   height="122"
+   style="fill:#08caeb;stroke:#857b7b" /><rect
+   id="Rectangle-Copy-3"
+   x="870.5"
+   y="560.5"
+   class="st21"
+   width="270"
+   height="122"
+   style="fill:#08caeb;stroke:#857b7b" /><rect
+   style="fill:#08caeb;stroke:#857b7b"
+   height="122"
+   width="270"
+   class="st21"
+   y="546.5"
+   x="884.5"
+   id="Rectangle-Copy" /><g
+   transform="translate(967,608)"
+   id="Group-3">
+				<rect
+   style="fill:#ffffff;stroke:#857b7b"
+   height="47"
+   width="105"
+   class="st17"
+   y="0.5"
+   x="0.5"
+   id="Rectangle-Copy-2" />
+				<text
+   style="font-size:19px;font-family:IBMPlexSans-Medium;fill:#010f5e"
+   id="text109"
+   class="st18 st4 st12"
+   transform="translate(31.0075,31)">Tiller</text>
+
+			</g><text
+   style="font-size:19px;font-family:IBMPlexSans-Medium;fill:#ffffff"
+   id="text112"
+   class="st11 st4 st12"
+   x="951.26001"
+   y="576">Espace de nom</text>
+<text
+   style="font-size:19px;font-family:IBMPlexSans-Medium;fill:#ffffff"
+   id="text114"
+   class="st11 st4 st12"
+   x="1076.3468"
+   y="576"> </text>
+<text
+   style="font-size:19px;font-family:IBMPlexSans-Medium;fill:#ffffff"
+   id="text116"
+   class="st11 st4 st12"
+   x="959.948"
+   y="600">kube-system</text>
+<rect
+   style="fill:#010f5e;stroke:#857b7b"
+   height="61"
+   width="105"
+   class="st16"
+   y="1131.5"
+   x="514.5"
+   id="Rectangle_11_" /><text
+   style="font-size:19px;font-family:IBMPlexSans-Medium;fill:#ffffff"
+   id="text121"
+   class="st11 st4 st12"
+   x="517.09747"
+   y="1180"><tspan
+     style="font-size:14.66666698px"
+     id="tspan482">Homologue-2</tspan></text>
+<rect
+   style="fill:#010f5e;stroke:#857b7b"
+   height="61"
+   width="105"
+   class="st16"
+   y="1200.5"
+   x="514.5"
+   id="Rectangle_12_" /><text
+   style="font-size:19px;font-family:IBMPlexSans-Medium;fill:#ffffff"
+   id="text124"
+   class="st11 st4 st12"
+   x="517.09747"
+   y="1249"><tspan
+     style="font-size:14.66666698px"
+     id="tspan484">Homologue-3</tspan></text>
+<rect
+   style="fill:#010f5e;stroke:#857b7b"
+   height="61"
+   width="105"
+   class="st16"
+   y="1061.5"
+   x="631.5"
+   id="Rectangle_13_" /><text
+   style="font-size:19px;font-family:IBMPlexSans-Medium;fill:#ffffff"
+   id="text127"
+   class="st11 st4 st12"
+   x="662.37799"
+   y="1110"><tspan
+     style="font-size:14.66666667px"
+     id="tspan486">AC-1</tspan></text>
+<rect
+   style="fill:#010f5e;stroke:#857b7b"
+   height="61"
+   width="105"
+   class="st16"
+   y="1131.5"
+   x="632.5"
+   id="Rectangle_14_" /><text
+   style="font-size:19px;font-family:IBMPlexSans-Medium;fill:#ffffff"
+   id="text130"
+   class="st11 st4 st12"
+   x="663.37799"
+   y="1179"><tspan
+     style="font-size:14.66666667px"
+     id="tspan488">AC-2</tspan></text>
+<path
+   style="fill:#565656"
+   inkscape:connector-curvature="0"
+   d="M 688.5,1051.5 V 999 998.5 h 1 v 0.5 52.5 h 4 l -4.5,9 -4.5,-9 z"
+   class="st20"
+   id="Line-2_1_" /><path
+   style="fill:none;stroke:#565656;stroke-linecap:round;stroke-linejoin:round"
+   inkscape:connector-curvature="0"
+   d="m 565,1056 v -36 c 0,-11 9,-20 20,-20 h 209 c 11.1,0 20,9 20,20 v 36"
+   class="st15"
+   id="Path_1_" /><polygon
+   id="Triangle"
+   class="st20"
+   points="0,8 0,0 8,4 "
+   style="fill:#565656"
+   transform="rotate(90,-116,933)" /><polygon
+   id="Triangle_1_"
+   class="st20"
+   points="0,8 0,0 8,4 "
+   style="fill:#565656"
+   transform="rotate(90,58,781)" /><polygon
+   id="Triangle_2_"
+   class="st20"
+   points="0,8 0,0 8,4 "
+   style="fill:#565656"
+   transform="matrix(-1,0,0,1,828,193)" /><polygon
+   id="Triangle_3_"
+   class="st20"
+   points="0,8 0,0 8,4 "
+   style="fill:#565656"
+   transform="rotate(90,-240.5,808.5)" /><image
+   sodipodi:absref="D:\BM140\FRE\BM140ABD141\S001\translation\images\C9FED2EB5474981D.png"
+   xlink:href="C9FED2EB5474981D.png"
+   y="740"
+   x="527"
+   style="overflow:visible;enable-background:new"
+   width="36.998402"
+   height="36.998402"
+   id="IBM_Cloud-Copy">
+	</image><image
+   sodipodi:absref="D:\BM140\FRE\BM140ABD141\S001\translation\images\C9FED2EB5474981F.png"
+   xlink:href="C9FED2EB5474981F.png"
+   y="1067"
+   x="553"
+   style="overflow:visible;enable-background:new"
+   width="26.0016"
+   height="26.0016"
+   id="IBM_Cloud-Copy-2">
+	</image><image
+   sodipodi:absref="D:\BM140\FRE\BM140ABD141\S001\translation\images\C9FED2EB5474981A.png"
+   xlink:href="C9FED2EB5474981A.png"
+   y="1137"
+   x="553"
+   style="overflow:visible;enable-background:new"
+   width="26.0016"
+   height="26.0016"
+   id="IBM_Cloud-Copy-5">
+	</image><image
+   sodipodi:absref="D:\BM140\FRE\BM140ABD141\S001\translation\images\C9FED2EB54749808.png"
+   xlink:href="C9FED2EB54749808.png"
+   y="1206"
+   x="553"
+   style="overflow:visible;enable-background:new"
+   width="26.0016"
+   height="26.0016"
+   id="IBM_Cloud-Copy-7">
+	</image><image
+   sodipodi:absref="D:\BM140\FRE\BM140ABD141\S001\translation\images\C9FED2EB54749809.png"
+   xlink:href="C9FED2EB54749809.png"
+   y="1065"
+   x="671"
+   style="overflow:visible;enable-background:new"
+   width="26.0016"
+   height="26.0016"
+   id="IBM_Cloud-Copy-3">
+	</image><image
+   sodipodi:absref="D:\BM140\FRE\BM140ABD141\S001\translation\images\C9FED2EB5474980A.png"
+   xlink:href="C9FED2EB5474980A.png"
+   y="1135"
+   x="671"
+   style="overflow:visible;enable-background:new"
+   width="26.0016"
+   height="26.0016"
+   id="IBM_Cloud-Copy-6">
+	</image><image
+   sodipodi:absref="D:\BM140\FRE\BM140ABD141\S001\translation\images\C9FED2EB5474980B.png"
+   xlink:href="C9FED2EB5474980B.png"
+   y="1066"
+   x="793"
+   style="overflow:visible;enable-background:new"
+   width="26.0016"
+   height="26.0016"
+   id="IBM_Cloud-Copy-4">
+	</image><rect
+   style="fill:#dcdcdc"
+   y="129"
+   x="449"
+   height="128"
+   width="757"
+   class="st2"
+   id="Rectangle_15_" /><path
+   style="fill:none;stroke:#5a5a5a;stroke-linecap:round;stroke-linejoin:round"
+   inkscape:connector-curvature="0"
+   d="m 876,758 h -21.5 c -11,0 -20,-9 -20,-20 V 213 c 0,-11 -9,-20 -20,-20 H 794"
+   class="st13"
+   id="Path_2_" /><text
+   class="st3 st4 st5"
+   id="text152"
+   style="font-size:21px;font-family:IBMPlexSans-Medium;fill:#161515"
+   x="449"
+   y="84">Cluster IBM Blockchain Platform Kubernetes - </text>
+<text
+   class="st3 st4 st5"
+   id="text154"
+   style="font-size:21px;font-family:IBMPlexSans-Medium;fill:#161515"
+   x="449"
+   y="112">Operational Tooling</text>
+<rect
+   style="fill:#565656;stroke:#b4adad"
+   height="88"
+   width="308"
+   class="st10"
+   y="149.5"
+   x="513.5"
+   id="Rectangle_16_" /><text
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:19px;font-family:IBMPlexSans-Medium;-inkscape-font-specification:'IBMPlexSans-Medium, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ffffff"
+   id="text157"
+   class="st11 st4 st12"
+   x="594"
+   y="188"><tspan
+     y="188"
+     x="594"
+     id="tspan193"
+     sodipodi:role="line">Instance</tspan></text>
+<text
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:19px;font-family:IBMPlexSans-Medium;-inkscape-font-specification:'IBMPlexSans-Medium, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ffffff"
+   id="text159"
+   class="st11 st4 st12"
+   x="594"
+   y="212"><tspan
+     y="212"
+     x="594"
+     id="tspan195"
+     sodipodi:role="line">Operational Tooling</tspan></text>
+<g
+   id="_x39_658-200_2_"
+   transform="translate(513,149)">
+				
+					<image
+   sodipodi:absref="D:\BM140\FRE\BM140ABD141\S001\translation\images\31D47C0334D9FAE4.png"
+   xlink:href="31D47C0334D9FAE4.png"
+   style="overflow:visible;enable-background:new"
+   width="200"
+   height="200"
+   transform="matrix(0.135,0,0,0.135,28,31)"
+   id="image161">
+				</image>
+				<g
+   id="g164">
+					<rect
+   style="fill:#ffffff"
+   height="27"
+   width="27"
+   class="st11"
+   y="31"
+   x="28"
+   id="rect-3" />
+				</g>
+			</g><rect
+   id="Rectangle_17_"
+   class="st22"
+   width="1308"
+   height="166"
+   x="43"
+   y="1349"
+   style="fill:#979797" /><text
+   class="st11 st4 st23"
+   id="text170"
+   style="font-size:24px;font-family:IBMPlexSans-Medium;fill:#ffffff"
+   x="64.112"
+   y="1393">Détails du cluster de l'instance de service</text>
+<text
+   class="st11 st24 st25"
+   id="text172"
+   style="font-size:20px;font-family:IBMPlexSans;fill:#ffffff"
+   x="73"
+   y="1442">- Les clusters peuvent être à zone </text>
+<text
+   class="st11 st24 st25"
+   id="text174"
+   style="font-size:20px;font-family:IBMPlexSans;fill:#ffffff"
+   x="409.43561"
+   y="1442"> </text>
+<text
+   class="st11 st24 st25"
+   id="text176"
+   style="font-size:20px;font-family:IBMPlexSans;fill:#ffffff"
+   x="73"
+   y="1469">unique ou multizone</text>
+<text
+   class="st11 st24 st25"
+   id="text178"
+   style="font-size:20px;font-family:IBMPlexSans;fill:#ffffff"
+   x="466"
+   y="1442">- Des règles anti-affinité seront utilisées</text>
+<text
+   class="st11 st24 st25"
+   id="text180"
+   style="font-size:20px;line-height:100;font-family:IBMPlexSans;fill:#ffffff"
+   x="482"
+   y="1469">pour déployer un noeud au sein d'une </text>
+<text
+   class="st11 st24 st25"
+   style="font-size:20px;font-family:IBMPlexSans;fill:#ffffff"
+   x="482"
+   y="1497"
+   id="text502">région multizone (MZR)</text>
+<text
+   class="st11 st24 st25"
+   id="text182"
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;font-family:IBMPlexSans;-inkscape-font-specification:'IBMPlexSans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ffffff"
+   x="947.42999"
+   y="1443"><tspan
+     sodipodi:role="line"
+     id="tspan504"
+     x="947.42999"
+     y="1443">- Le client met à disposition un calcul </tspan><tspan
+     sodipodi:role="line"
+     id="tspan506"
+     x="947.42999"
+     y="1468">  de son choix</tspan></text>
+
+</svg>

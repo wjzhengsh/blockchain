@@ -1,0 +1,955 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generator: Adobe Illustrator 22.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   id="Layer_1"
+   x="0px"
+   y="0px"
+   viewBox="0 0 700 500"
+   style="enable-background:new 0 0 700 500;"
+   xml:space="preserve"
+   sodipodi:docname="k8s-archi-diagram.svg"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"><metadata
+   id="metadata359"><rdf:RDF><cc:Work
+       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /></cc:Work></rdf:RDF></metadata><defs
+   id="defs357">
+	
+	
+	
+	
+
+		
+		
+		
+	
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		
+	
+	
+	
+	
+
+		
+		
+		
+	
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		
+	
+	
+
+	
+	
+</defs><sodipodi:namedview
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   borderopacity="1"
+   objecttolerance="10"
+   gridtolerance="10"
+   guidetolerance="10"
+   inkscape:pageopacity="0"
+   inkscape:pageshadow="2"
+   inkscape:window-width="1920"
+   inkscape:window-height="1017"
+   id="namedview355"
+   showgrid="false"
+   inkscape:zoom="1.7964199"
+   inkscape:cx="349.75"
+   inkscape:cy="248.60001"
+   inkscape:window-x="-8"
+   inkscape:window-y="-8"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="Layer_1" />
+<style
+   type="text/css"
+   id="style2">
+	.st0{fill:none;stroke:#7DB6D6;stroke-width:1.0447;stroke-miterlimit:10;stroke-dasharray:2.0893,1.0447;}
+	.st1{fill:none;stroke:#7DB6D6;stroke-miterlimit:10;stroke-dasharray:2,1;}
+	.st2{fill:none;stroke:#01A0C6;stroke-miterlimit:10;}
+	.st3{fill:#FFFFFF;stroke:#01A0C6;stroke-miterlimit:10;}
+	.st4{font-family:'MyriadPro-Regular';}
+	.st5{font-size:12px;}
+	.st6{fill:#FFFFFF;stroke:#FFFFFF;stroke-width:2;stroke-miterlimit:10;}
+	.st7{font-size:15px;}
+	.st8{fill:none;stroke:#85C964;stroke-miterlimit:10;}
+	.st9{fill:#85C964;}
+	.st10{fill:none;stroke:#80C41C;stroke-miterlimit:10;}
+	.st11{fill:#FFFFFF;stroke:#80C41C;stroke-miterlimit:10;}
+	.st12{fill:none;}
+	.st13{fill:#80C41C;}
+	.st14{fill:none;stroke:#FEA621;stroke-width:0.5;stroke-miterlimit:10;}
+	.st15{fill:#FEA621;}
+	.st16{fill:#01A0C6;}
+	.st17{font-size:14px;}
+	.st18{fill:#FFFFFF;}
+	.st19{fill:none;stroke:#80C41C;stroke-miterlimit:8;}
+	.st20{fill:none;stroke:#01A0C6;stroke-miterlimit:8;}
+	.st21{fill:none;stroke:#000000;stroke-width:0.25;stroke-miterlimit:10;}
+</style>
+<path
+   id="XMLID_55_"
+   class="st0"
+   d="M327.8,107" />
+<path
+   id="XMLID_38_"
+   class="st1"
+   d="M328.1,113.2" />
+<rect
+   x="53.1"
+   y="177.4"
+   class="st2"
+   width="285.2"
+   height="266.6"
+   id="rect6" />
+<g
+   id="g14">
+		<path
+   style="fill:#ffffff;stroke:#01a0c6;stroke-miterlimit:10"
+   inkscape:connector-curvature="0"
+   id="path8"
+   d="M 158.3,248.9 H 73.6 c -2.6,0 -4.7,-2.1 -4.7,-4.7 v -26 c 0,-2.6 2.1,-4.7 4.7,-4.7 h 84.7 c 2.6,0 4.7,2.1 4.7,4.7 v 26 c 0,2.6 -2.1,4.7 -4.7,4.7 z"
+   class="st3" />
+		<path
+   style="fill:#ffffff;stroke:#01a0c6;stroke-miterlimit:10"
+   inkscape:connector-curvature="0"
+   id="path10"
+   d="M 168.4,260.3 H 83.7 c -2.6,0 -4.7,-2.1 -4.7,-4.7 v -26 c 0,-2.6 2.1,-4.7 4.7,-4.7 h 84.7 c 2.6,0 4.7,2.1 4.7,4.7 v 26 c 0,2.6 -2.1,4.7 -4.7,4.7 z"
+   class="st3" />
+		<path
+   style="fill:#ffffff;stroke:#01a0c6;stroke-miterlimit:10"
+   inkscape:connector-curvature="0"
+   id="path12"
+   d="M 180.8,270.3 H 96 c -2.6,0 -4.7,-2.1 -4.7,-4.7 v -26 c 0,-2.6 2.1,-4.7 4.7,-4.7 h 84.7 c 2.6,0 4.7,2.1 4.7,4.7 v 26 c 0,2.6 -2.1,4.7 -4.6,4.7 z"
+   class="st3" />
+	</g><text
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;font-family:'MS UI Gothic';-inkscape-font-specification:'MS UI Gothic, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
+   id="text20"
+   x="107.9868"
+   y="249.2421"><tspan
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;font-family:'MS UI Gothic';-inkscape-font-specification:'MS UI Gothic, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
+     id="tspan16"
+     class="st4 st5"
+     y="249.2421"
+     x="107.9868">コントローラー・</tspan><tspan
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;font-family:'MS UI Gothic';-inkscape-font-specification:'MS UI Gothic, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
+     id="tspan18"
+     class="st4 st5"
+     y="263.64209"
+     x="112.1868">マネージャー</tspan></text>
+
+<g
+   id="g30">
+		<path
+   style="fill:#ffffff;stroke:#01a0c6;stroke-miterlimit:10"
+   inkscape:connector-curvature="0"
+   id="path24"
+   d="m 295.6,251.7 h -84.7 c -2.6,0 -4.7,-2.1 -4.7,-4.7 v -26 c 0,-2.6 2.1,-4.7 4.7,-4.7 h 84.7 c 2.6,0 4.7,2.1 4.7,4.7 v 26 c 0,2.6 -2.1,4.7 -4.7,4.7 z"
+   class="st3" />
+		<path
+   style="fill:#ffffff;stroke:#01a0c6;stroke-miterlimit:10"
+   inkscape:connector-curvature="0"
+   id="path26"
+   d="M 305.8,263.1 H 221 c -2.6,0 -4.7,-2.1 -4.7,-4.7 v -26 c 0,-2.6 2.1,-4.7 4.7,-4.7 h 84.7 c 2.6,0 4.7,2.1 4.7,4.7 v 26 c 0,2.6 -2.1,4.7 -4.6,4.7 z"
+   class="st3" />
+		<path
+   style="fill:#ffffff;stroke:#01a0c6;stroke-miterlimit:10"
+   inkscape:connector-curvature="0"
+   id="path28"
+   d="m 318.1,273.1 h -84.7 c -2.6,0 -4.7,-2.1 -4.7,-4.7 v -26 c 0,-2.6 2.1,-4.7 4.7,-4.7 h 84.7 c 2.6,0 4.7,2.1 4.7,4.7 v 26 c 0,2.6 -2.1,4.7 -4.7,4.7 z"
+   class="st3" />
+	</g><text
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;font-family:'MS UI Gothic';-inkscape-font-specification:'MS UI Gothic, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
+   id="text36"
+   x="243.3105"
+   y="252.43291"><tspan
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;font-family:'MS UI Gothic';-inkscape-font-specification:'MS UI Gothic, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
+     id="tspan32"
+     class="st4 st5"
+     y="252.43291"
+     x="243.3105">コントローラー・</tspan><tspan
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;font-family:'MS UI Gothic';-inkscape-font-specification:'MS UI Gothic, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
+     id="tspan34"
+     class="st4 st5"
+     y="266.83289"
+     x="247.5105">マネージャー</tspan></text>
+
+<g
+   id="g52">
+	<ellipse
+   class="st3"
+   cx="116.4"
+   cy="398.7"
+   rx="34.3"
+   ry="10"
+   id="ellipse40" />
+	<rect
+   x="82.1"
+   y="343.9"
+   class="st3"
+   width="68.6"
+   height="54.8"
+   id="rect42" />
+	<line
+   class="st6"
+   x1="82.9"
+   y1="398.7"
+   x2="149.9"
+   y2="398.7"
+   id="line44" />
+	<ellipse
+   class="st3"
+   cx="116.4"
+   cy="354"
+   rx="34.3"
+   ry="10"
+   id="ellipse46" />
+	<ellipse
+   class="st3"
+   cx="116.4"
+   cy="348.9"
+   rx="34.3"
+   ry="10"
+   id="ellipse48" />
+	<ellipse
+   class="st3"
+   cx="116.4"
+   cy="343.9"
+   rx="34.3"
+   ry="10"
+   id="ellipse50" />
+</g>
+<text
+   transform="matrix(1 0 0 1 106.8689 388.6827)"
+   class="st4 st5"
+   id="text54"
+   style="-inkscape-font-specification:'MS UI Gothic, Normal';font-family:'MS UI Gothic';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:12px;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;">etcd</text>
+
+<path
+   class="st3"
+   d="M314.7,338.9H212.1c-5.3,0-9.7-4.4-9.7-9.7v-17.8c0-5.3,4.4-9.7,9.7-9.7h102.6c5.3,0,9.7,4.4,9.7,9.7v17.8  C324.4,334.5,320,338.9,314.7,338.9z"
+   id="path56" />
+<text
+   transform="matrix(1 0 0 1 238.549 323.9108)"
+   class="st4 st5"
+   id="text58"
+   style="-inkscape-font-specification:'MS UI Gothic, Normal';font-family:'MS UI Gothic';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:12px;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;">API サーバー</text>
+
+<g
+   id="g70">
+	<g
+   id="g66">
+		<path
+   class="st3"
+   d="M294.5,395.6h-84.7c-2.6,0-4.7-2.1-4.7-4.7v-26c0-2.6,2.1-4.7,4.7-4.7h84.7c2.6,0,4.7,2.1,4.7,4.7v26    C299.2,393.5,297.1,395.6,294.5,395.6z"
+   id="path60" />
+		<path
+   class="st3"
+   d="M304.7,407h-84.7c-2.6,0-4.7-2.1-4.7-4.7v-26c0-2.6,2.1-4.7,4.7-4.7h84.7c2.6,0,4.7,2.1,4.7,4.7v26    C309.3,404.9,307.2,407,304.7,407z"
+   id="path62" />
+		<path
+   class="st3"
+   d="M317,417h-84.7c-2.6,0-4.7-2.1-4.7-4.7v-26c0-2.6,2.1-4.7,4.7-4.7H317c2.6,0,4.7,2.1,4.7,4.7v26    C321.7,414.9,319.6,417,317,417z"
+   id="path64" />
+	</g>
+	<text
+   transform="matrix(1 0 0 1 247.4041 402.5417)"
+   class="st4 st5"
+   id="text68"
+   style="-inkscape-font-specification:'MS UI Gothic, Normal';font-family:'MS UI Gothic';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:12px;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;">スケジューラー</text>
+
+</g>
+<text
+   transform="matrix(1 0 0 1 53.1327 171.2151)"
+   class="st4 st7"
+   id="text72"
+   style="-inkscape-font-specification:'MS UI Gothic, Normal';font-family:'MS UI Gothic';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:12px;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;">マスター・ノード</text>
+
+<g
+   id="XMLID_81_">
+			<g
+   id="g80">
+				<path
+   class="st8"
+   d="m 551.7,159.4 c 0,-21.9 0,-37.8 0,-37.8 0,0 0,0.1 0,0.1"
+   id="path74"
+   inkscape:connector-curvature="0"
+   style="fill:none;stroke:#85c964;stroke-miterlimit:10" />
+				<g
+   id="g78">
+					<polygon
+   class="st9"
+   points="551.7,166.5 555.8,156.5 551.7,158.9 547.6,156.5 "
+   id="polygon76"
+   style="fill:#85c964" />
+				</g>
+			</g>
+		</g><rect
+   style="fill:none;stroke:#80c41c;stroke-miterlimit:10"
+   id="rect83"
+   height="176.5"
+   width="235.89999"
+   class="st10"
+   y="81.5"
+   x="391.79999" /><rect
+   style="fill:none;stroke:#80c41c;stroke-miterlimit:10"
+   id="rect85"
+   height="104.8"
+   width="215.39999"
+   class="st10"
+   y="139.8"
+   x="401.29999" /><rect
+   style="fill:none;stroke:#80c41c;stroke-miterlimit:10"
+   id="rect87"
+   height="66.400002"
+   width="84.699997"
+   class="st10"
+   y="167.89999"
+   x="412.29999" /><rect
+   style="fill:none;stroke:#80c41c;stroke-miterlimit:10"
+   id="rect89"
+   height="66.400002"
+   width="84.699997"
+   class="st10"
+   y="167.89999"
+   x="519.09998" /><g
+   id="g97">
+				<path
+   style="fill:#ffffff;stroke:#80c41c;stroke-miterlimit:10"
+   inkscape:connector-curvature="0"
+   id="path91"
+   d="M 474.3,210.3 H 435 c -2.6,0 -4.7,-2.1 -4.7,-4.7 v -18 c 0,-2.6 2.1,-4.7 4.7,-4.7 h 39.3 c 2.6,0 4.7,2.1 4.7,4.7 v 18 c 0,2.6 -2.1,4.7 -4.7,4.7 z"
+   class="st11" />
+				<path
+   style="fill:#ffffff;stroke:#80c41c;stroke-miterlimit:10"
+   inkscape:connector-curvature="0"
+   id="path93"
+   d="m 479.6,219.1 h -39.3 c -2.6,0 -4.7,-2.1 -4.7,-4.7 v -18 c 0,-2.6 2.1,-4.7 4.7,-4.7 h 39.3 c 2.6,0 4.7,2.1 4.7,4.7 v 18 c -0.1,2.6 -2.2,4.7 -4.7,4.7 z"
+   class="st11" />
+				<path
+   style="fill:#ffffff;stroke:#80c41c;stroke-miterlimit:10"
+   inkscape:connector-curvature="0"
+   id="path95"
+   d="m 485.9,226.9 h -39.3 c -2.6,0 -4.7,-2.1 -4.7,-4.7 v -18 c 0,-2.6 2.1,-4.7 4.7,-4.7 h 39.3 c 2.6,0 4.7,2.1 4.7,4.7 v 18 c 0,2.6 -2.1,4.7 -4.7,4.7 z"
+   class="st11" />
+			</g><g
+   id="g105">
+				<path
+   style="fill:#ffffff;stroke:#80c41c;stroke-miterlimit:10"
+   inkscape:connector-curvature="0"
+   id="path99"
+   d="m 581.8,210.3 h -39.3 c -2.6,0 -4.7,-2.1 -4.7,-4.7 v -18 c 0,-2.6 2.1,-4.7 4.7,-4.7 h 39.3 c 2.6,0 4.7,2.1 4.7,4.7 v 18 c -0.1,2.6 -2.2,4.7 -4.7,4.7 z"
+   class="st11" />
+				<path
+   style="fill:#ffffff;stroke:#80c41c;stroke-miterlimit:10"
+   inkscape:connector-curvature="0"
+   id="path101"
+   d="m 587,219.1 h -39.3 c -2.6,0 -4.7,-2.1 -4.7,-4.7 v -18 c 0,-2.6 2.1,-4.7 4.7,-4.7 H 587 c 2.6,0 4.7,2.1 4.7,4.7 v 18 c 0,2.6 -2.1,4.7 -4.7,4.7 z"
+   class="st11" />
+				<path
+   style="fill:#ffffff;stroke:#80c41c;stroke-miterlimit:10"
+   inkscape:connector-curvature="0"
+   id="path103"
+   d="m 593.4,226.9 h -39.3 c -2.6,0 -4.7,-2.1 -4.7,-4.7 v -18 c 0,-2.6 2.1,-4.7 4.7,-4.7 h 39.3 c 2.6,0 4.7,2.1 4.7,4.7 v 18 c -0.1,2.6 -2.2,4.7 -4.7,4.7 z"
+   class="st11" />
+			</g><rect
+   style="fill:#ffffff;stroke:#80c41c;stroke-miterlimit:10"
+   id="rect107"
+   height="25.5"
+   width="71.900002"
+   class="st11"
+   y="95.099998"
+   x="412.29999" /><rect
+   style="fill:#ffffff;stroke:#80c41c;stroke-miterlimit:10"
+   id="rect109"
+   height="25.5"
+   width="94"
+   class="st11"
+   y="95.099998"
+   x="509.79999" /><text
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;font-family:'MS UI Gothic';-inkscape-font-specification:'MS UI Gothic, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
+   id="text111"
+   class="st4 st5"
+   x="430.37369"
+   y="111.85">kubelet</text>
+<text
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;font-family:'MS UI Gothic';-inkscape-font-specification:'MS UI Gothic, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
+   id="text113"
+   class="st4 st5"
+   x="538.43719"
+   y="112.0789">プロキシー</text>
+<line
+   style="fill:none"
+   id="line115"
+   y2="169.7"
+   x2="435.60001"
+   y1="120.6"
+   x1="435.60001"
+   class="st12" /><text
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;font-family:'MS UI Gothic';-inkscape-font-specification:'MS UI Gothic, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
+   id="text117"
+   class="st4 st7"
+   x="391.81311"
+   y="74.896004">ワーカー・ノード</text>
+<text
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;font-family:'MS UI Gothic';-inkscape-font-specification:'MS UI Gothic, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
+   id="text119"
+   class="st4 st5"
+   x="561.45673"
+   y="153.78641">コンテナー</text>
+<text
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;font-family:'MS UI Gothic';-inkscape-font-specification:'MS UI Gothic, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
+   id="text121"
+   class="st4 st5"
+   x="467.5824"
+   y="179.31931">ポッド</text>
+<text
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;font-family:'MS UI Gothic';-inkscape-font-specification:'MS UI Gothic, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
+   id="text123"
+   class="st4 st5"
+   x="574.26642"
+   y="178.92979">ポッド</text>
+<g
+   id="XMLID_1_">
+			<g
+   id="g133">
+				<path
+   class="st8"
+   d="m 442,159.2 c 0,-21.9 0,-37.8 0,-37.8 0,0 0,0.1 0,0.1"
+   id="path127"
+   inkscape:connector-curvature="0"
+   style="fill:none;stroke:#85c964;stroke-miterlimit:10" />
+				<g
+   id="g131">
+					<polygon
+   class="st9"
+   points="442,166.2 446,156.3 442,158.6 437.9,156.3 "
+   id="polygon129"
+   style="fill:#85c964" />
+				</g>
+			</g>
+		</g><g
+   id="g146">
+		<g
+   id="g144">
+			<line
+   style="fill:none;stroke:#80c41c;stroke-miterlimit:10"
+   id="line138"
+   y2="162.7"
+   x2="531.70001"
+   y1="121.6"
+   x1="459.89999"
+   class="st10" />
+			<g
+   id="g142">
+				<polygon
+   style="fill:#80c41c"
+   id="polygon140"
+   points="531.2,162.4 531.2,157.7 537.8,166.2 527.2,164.8 "
+   class="st13" />
+			</g>
+		</g>
+	</g><g
+   id="g156">
+		<g
+   id="g154">
+			<line
+   style="fill:none;stroke:#80c41c;stroke-miterlimit:10"
+   id="line148"
+   y2="162.89999"
+   x2="466"
+   y1="120.6"
+   x1="537.79999"
+   class="st10" />
+			<g
+   id="g152">
+				<polygon
+   style="fill:#80c41c"
+   id="polygon150"
+   points="466.5,162.6 470.6,164.9 459.9,166.5 466.4,157.9 "
+   class="st13" />
+			</g>
+		</g>
+	</g><g
+   id="g170">
+		<g
+   id="g168">
+			<line
+   style="fill:none;stroke:#fea621;stroke-width:0.5;stroke-miterlimit:10"
+   id="line158"
+   y2="108.4"
+   x2="408.79999"
+   y1="295.89999"
+   x1="314.39999"
+   class="st14" />
+			<g
+   id="g162">
+				<polygon
+   style="fill:#fea621"
+   id="polygon160"
+   points="314.5,295.6 313.2,293.7 312.8,299 316.8,295.5 "
+   class="st15" />
+			</g>
+			<g
+   id="g166">
+				<polygon
+   style="fill:#fea621"
+   id="polygon164"
+   points="408.7,108.6 406.3,108.8 410.4,105.2 410,110.6 "
+   class="st15" />
+			</g>
+		</g>
+	</g>
+<g
+   id="g182">
+	<g
+   id="g180">
+		<line
+   class="st2"
+   x1="260.5"
+   y1="271.7"
+   x2="260.5"
+   y2="294.1"
+   id="line174" />
+		<g
+   id="g178">
+			<polygon
+   class="st16"
+   points="260.5,301.2 256.4,291.2 260.5,293.6 264.5,291.2    "
+   id="polygon176" />
+		</g>
+	</g>
+</g>
+<g
+   id="g192">
+	<g
+   id="g190">
+		<line
+   class="st2"
+   x1="185.4"
+   y1="265.6"
+   x2="240.1"
+   y2="296.3"
+   id="line184" />
+		<g
+   id="g188">
+			<polygon
+   class="st16"
+   points="246.3,299.7 235.6,298.4 239.7,296 239.6,291.3    "
+   id="polygon186" />
+		</g>
+	</g>
+</g>
+<g
+   id="g202">
+	<g
+   id="g200">
+		<line
+   class="st2"
+   x1="202.4"
+   y1="329.2"
+   x2="156.2"
+   y2="366.9"
+   id="line194" />
+		<g
+   id="g198">
+			<polygon
+   class="st16"
+   points="150.7,371.3 155.9,361.9 156.6,366.5 161,368.2    "
+   id="polygon196" />
+		</g>
+	</g>
+</g>
+<g
+   id="g212">
+	<g
+   id="g210">
+		<line
+   class="st2"
+   x1="262.3"
+   y1="358"
+   x2="262.3"
+   y2="350"
+   id="line204" />
+		<g
+   id="g208">
+			<polygon
+   class="st16"
+   points="262.3,342.9 266.4,352.9 262.3,350.5 258.2,352.9    "
+   id="polygon206" />
+		</g>
+	</g>
+</g>
+<g
+   id="XMLID_5_">
+			<g
+   id="g220">
+				<path
+   class="st8"
+   d="m 552.8,371 c 0,-21.9 0,-37.8 0,-37.8 0,0 0,0.1 0,0.1"
+   id="path214"
+   inkscape:connector-curvature="0"
+   style="fill:none;stroke:#85c964;stroke-miterlimit:10" />
+				<g
+   id="g218">
+					<polygon
+   class="st9"
+   points="552.8,378 556.8,368.1 552.8,370.4 548.7,368.1 "
+   id="polygon216"
+   style="fill:#85c964" />
+				</g>
+			</g>
+		</g><rect
+   style="fill:none;stroke:#80c41c;stroke-miterlimit:10"
+   id="rect223"
+   height="176.5"
+   width="235.89999"
+   class="st10"
+   y="293"
+   x="392.89999" /><rect
+   style="fill:none;stroke:#80c41c;stroke-miterlimit:10"
+   id="rect225"
+   height="104.8"
+   width="215.39999"
+   class="st10"
+   y="351.29999"
+   x="402.39999" /><rect
+   style="fill:none;stroke:#80c41c;stroke-miterlimit:10"
+   id="rect227"
+   height="66.400002"
+   width="84.699997"
+   class="st10"
+   y="379.5"
+   x="413.39999" /><rect
+   style="fill:none;stroke:#80c41c;stroke-miterlimit:10"
+   id="rect229"
+   height="66.400002"
+   width="84.699997"
+   class="st10"
+   y="379.5"
+   x="520.20001" /><g
+   id="g237">
+				<path
+   style="fill:#ffffff;stroke:#80c41c;stroke-miterlimit:10"
+   inkscape:connector-curvature="0"
+   id="path231"
+   d="m 475.4,421.9 h -39.3 c -2.6,0 -4.7,-2.1 -4.7,-4.7 v -18 c 0,-2.6 2.1,-4.7 4.7,-4.7 h 39.3 c 2.6,0 4.7,2.1 4.7,4.7 v 18 c 0,2.6 -2.1,4.7 -4.7,4.7 z"
+   class="st11" />
+				<path
+   style="fill:#ffffff;stroke:#80c41c;stroke-miterlimit:10"
+   inkscape:connector-curvature="0"
+   id="path233"
+   d="m 480.6,430.7 h -39.3 c -2.6,0 -4.7,-2.1 -4.7,-4.7 v -18 c 0,-2.6 2.1,-4.7 4.7,-4.7 h 39.3 c 2.6,0 4.7,2.1 4.7,4.7 v 18 c 0,2.6 -2.1,4.7 -4.7,4.7 z"
+   class="st11" />
+				<path
+   style="fill:#ffffff;stroke:#80c41c;stroke-miterlimit:10"
+   inkscape:connector-curvature="0"
+   id="path235"
+   d="m 487,438.4 h -39.3 c -2.6,0 -4.7,-2.1 -4.7,-4.7 v -18 c 0,-2.6 2.1,-4.7 4.7,-4.7 H 487 c 2.6,0 4.7,2.1 4.7,4.7 v 18 c 0,2.6 -2.1,4.7 -4.7,4.7 z"
+   class="st11" />
+			</g><g
+   id="g245">
+				<path
+   style="fill:#ffffff;stroke:#80c41c;stroke-miterlimit:10"
+   inkscape:connector-curvature="0"
+   id="path239"
+   d="m 582.9,421.9 h -39.3 c -2.6,0 -4.7,-2.1 -4.7,-4.7 v -18 c 0,-2.6 2.1,-4.7 4.7,-4.7 h 39.3 c 2.6,0 4.7,2.1 4.7,4.7 v 18 c -0.1,2.6 -2.2,4.7 -4.7,4.7 z"
+   class="st11" />
+				<path
+   style="fill:#ffffff;stroke:#80c41c;stroke-miterlimit:10"
+   inkscape:connector-curvature="0"
+   id="path241"
+   d="m 588.1,430.7 h -39.3 c -2.6,0 -4.7,-2.1 -4.7,-4.7 v -18 c 0,-2.6 2.1,-4.7 4.7,-4.7 h 39.3 c 2.6,0 4.7,2.1 4.7,4.7 v 18 c 0,2.6 -2.1,4.7 -4.7,4.7 z"
+   class="st11" />
+				<path
+   style="fill:#ffffff;stroke:#80c41c;stroke-miterlimit:10"
+   inkscape:connector-curvature="0"
+   id="path243"
+   d="m 594.5,438.4 h -39.3 c -2.6,0 -4.7,-2.1 -4.7,-4.7 v -18 c 0,-2.6 2.1,-4.7 4.7,-4.7 h 39.3 c 2.6,0 4.7,2.1 4.7,4.7 v 18 c -0.1,2.6 -2.2,4.7 -4.7,4.7 z"
+   class="st11" />
+			</g><rect
+   style="fill:#ffffff;stroke:#80c41c;stroke-miterlimit:10"
+   id="rect247"
+   height="25.5"
+   width="71.900002"
+   class="st11"
+   y="306.70001"
+   x="413.39999" /><rect
+   style="fill:#ffffff;stroke:#80c41c;stroke-miterlimit:10"
+   id="rect249"
+   height="25.5"
+   width="94"
+   class="st11"
+   y="306.70001"
+   x="510.89999" /><text
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;font-family:'MS UI Gothic';-inkscape-font-specification:'MS UI Gothic, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
+   id="text251"
+   class="st4 st5"
+   x="431.45819"
+   y="323.3967">kubelet</text>
+<text
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;font-family:'MS UI Gothic';-inkscape-font-specification:'MS UI Gothic, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
+   id="text253"
+   class="st4 st5"
+   x="539.43732"
+   y="322.76541">プロキシー</text>
+<line
+   style="fill:none"
+   id="line255"
+   y2="381.29999"
+   x2="436.70001"
+   y1="332.10001"
+   x1="436.70001"
+   class="st12" /><text
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;font-family:'MS UI Gothic';-inkscape-font-specification:'MS UI Gothic, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
+   id="text257"
+   class="st4 st7"
+   x="392.89761"
+   y="286.44269">ワーカー・ノード</text>
+<text
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;font-family:'MS UI Gothic';-inkscape-font-specification:'MS UI Gothic, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
+   id="text259"
+   class="st4 st5"
+   x="562.5412"
+   y="365.33301">コンテナー</text>
+<text
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;font-family:'MS UI Gothic';-inkscape-font-specification:'MS UI Gothic, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
+   id="text261"
+   class="st4 st5"
+   x="468.6669"
+   y="390.866">ポッド</text>
+<text
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;font-family:'MS UI Gothic';-inkscape-font-specification:'MS UI Gothic, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
+   id="text263"
+   class="st4 st5"
+   x="575.35089"
+   y="390.47641">ポッド</text>
+<g
+   id="XMLID_3_">
+			<g
+   id="g273">
+				<path
+   class="st8"
+   d="m 443.1,370.7 c 0,-21.9 0,-37.8 0,-37.8 0,0 0,0.1 0,0.1"
+   id="path267"
+   inkscape:connector-curvature="0"
+   style="fill:none;stroke:#85c964;stroke-miterlimit:10" />
+				<g
+   id="g271">
+					<polygon
+   class="st9"
+   points="443.1,377.8 447.1,367.8 443.1,370.2 439,367.8 "
+   id="polygon269"
+   style="fill:#85c964" />
+				</g>
+			</g>
+		</g><g
+   id="g286">
+		<g
+   id="g284">
+			<line
+   style="fill:none;stroke:#80c41c;stroke-miterlimit:10"
+   id="line278"
+   y2="374.29999"
+   x2="532.79999"
+   y1="333.10001"
+   x1="461"
+   class="st10" />
+			<g
+   id="g282">
+				<polygon
+   style="fill:#80c41c"
+   id="polygon280"
+   points="532.3,374 532.3,369.3 538.9,377.8 528.2,376.3 "
+   class="st13" />
+			</g>
+		</g>
+	</g><g
+   id="g296">
+		<g
+   id="g294">
+			<line
+   style="fill:none;stroke:#80c41c;stroke-miterlimit:10"
+   id="line288"
+   y2="374.39999"
+   x2="467.10001"
+   y1="332.10001"
+   x1="538.90002"
+   class="st10" />
+			<g
+   id="g292">
+				<polygon
+   style="fill:#80c41c"
+   id="polygon290"
+   points="467.5,374.2 471.6,376.5 461,378 467.5,369.5 "
+   class="st13" />
+			</g>
+		</g>
+	</g><g
+   id="g310">
+		<g
+   id="g308">
+			<line
+   style="fill:none;stroke:#fea621;stroke-width:0.5;stroke-miterlimit:10"
+   id="line298"
+   y2="321.60001"
+   x2="409.89999"
+   y1="330.39999"
+   x1="326.60001"
+   class="st14" />
+			<g
+   id="g302">
+				<polygon
+   style="fill:#fea621"
+   id="polygon300"
+   points="326.9,330.3 327.8,328.2 323.1,330.7 328.3,332.2 "
+   class="st15" />
+			</g>
+			<g
+   id="g306">
+				<polygon
+   style="fill:#fea621"
+   id="polygon304"
+   points="409.6,321.6 408.2,319.7 413.4,321.2 408.6,323.7 "
+   class="st15" />
+			</g>
+		</g>
+	</g>
+<text
+   transform="matrix(1 0 0 1 463.8213 219.9644)"
+   class="st4 st17"
+   id="text314"
+   style="-inkscape-font-specification:'MS UI Gothic, Normal';font-family:'MS UI Gothic';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:12px;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;">......</text>
+
+<text
+   transform="matrix(1 0 0 1 575.9009 221.1404)"
+   class="st4 st17"
+   id="text316"
+   style="-inkscape-font-specification:'MS UI Gothic, Normal';font-family:'MS UI Gothic';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:12px;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;">......</text>
+
+<text
+   transform="matrix(1 0 0 1 469.5468 432.6871)"
+   class="st4 st17"
+   id="text318"
+   style="-inkscape-font-specification:'MS UI Gothic, Normal';font-family:'MS UI Gothic';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:12px;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;">......</text>
+
+<text
+   transform="matrix(1 0 0 1 575.9009 432.6866)"
+   class="st4 st17"
+   id="text320"
+   style="-inkscape-font-specification:'MS UI Gothic, Normal';font-family:'MS UI Gothic';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:12px;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;">......</text>
+
+<rect
+   x="274"
+   y="93.9"
+   class="st18"
+   width="25.1"
+   height="8.7"
+   id="rect322" />
+<text
+   class="st4 st5"
+   id="text324"
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:12px;font-family:'MS UI Gothic';-inkscape-font-specification:'MS UI Gothic, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start"
+   x="269.97049"
+   y="102.5203">クラウド</text>
+
+<g
+   id="g334">
+	<g
+   id="g332">
+		<line
+   class="st2"
+   x1="286.5"
+   y1="213.6"
+   x2="286.5"
+   y2="123.9"
+   id="line326" />
+		<g
+   id="g330">
+			<polygon
+   class="st16"
+   points="286.5,116.9 290.6,126.8 286.5,124.5 282.5,126.8    "
+   id="polygon328" />
+		</g>
+	</g>
+</g>
+<path
+   class="st19"
+   d="M580.8,40.9c-0.8-4.2,3.2-8.1,8.8-8.6c2.3-0.2,4.6,0.1,6.6,1c2.1-3,7-4.1,11-2.5c0.7,0.3,1.3,0.6,1.9,1  c1.6-2.4,5.6-3.4,8.9-2.2c0.9,0.3,1.7,0.8,2.3,1.4c2.6-2.3,7.3-2.6,10.4-0.6c1.3,0.8,2.2,2,2.5,3.2c4.3,0.9,6.9,4.2,5.7,7.4  c-0.1,0.3-0.2,0.5-0.4,0.8c3.5,3.4,2.6,8.2-1.9,10.8c-1.4,0.8-3.1,1.3-4.8,1.5c0,3.6-4,6.5-8.9,6.5c-1.6,0-3.2-0.4-4.6-1  c-1.6,4.1-7.4,6.4-12.8,5.1c-2.3-0.5-4.2-1.6-5.6-3.1c-5.6,2.5-12.8,1.2-16.1-3c0-0.1-0.1-0.1-0.1-0.2c-3.6,0.3-6.9-1.6-7.4-4.3  c-0.2-1.4,0.4-2.9,1.7-3.9c-3.1-1.4-4.2-4.4-2.4-6.8c1.1-1.4,2.9-2.3,5-2.4L580.8,40.9z"
+   id="path336" />
+<text
+   class="st4 st5"
+   id="text338"
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.07282448px;font-family:'MS UI Gothic';-inkscape-font-specification:'MS UI Gothic, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.92273533"
+   x="632.44501"
+   y="44.332268"
+   transform="scale(0.92273536,1.0837343)">インターネット</text>
+
+<g
+   id="g348">
+	<g
+   id="g346">
+		<line
+   class="st19"
+   x1="605.5"
+   y1="64.7"
+   x2="585.9"
+   y2="87.9"
+   id="line340" />
+		<g
+   id="g344">
+			<polygon
+   class="st13"
+   points="581.4,93.3 584.7,83 586.3,87.5 590.9,88.3    "
+   id="polygon342" />
+		</g>
+	</g>
+</g>
+<path
+   class="st20"
+   d="M259.7,92c-0.8-4.2,3.2-8.1,8.8-8.6c2.3-0.2,4.6,0.1,6.6,1c2.1-3,7-4.1,11-2.5c0.7,0.3,1.3,0.6,1.9,1  c1.6-2.4,5.6-3.4,8.9-2.2c0.9,0.3,1.7,0.8,2.3,1.4c2.6-2.3,7.3-2.6,10.4-0.6c1.3,0.8,2.2,2,2.5,3.2c4.3,0.9,6.9,4.2,5.7,7.4  c-0.1,0.3-0.2,0.5-0.4,0.8c3.5,3.4,2.6,8.2-1.9,10.8c-1.4,0.8-3.1,1.3-4.8,1.5c0,3.6-4,6.5-8.9,6.5c-1.6,0-3.2-0.4-4.6-1  c-1.6,4.1-7.4,6.4-12.8,5.1c-2.3-0.5-4.2-1.6-5.6-3.1c-5.6,2.5-12.8,1.2-16.1-3c0-0.1-0.1-0.1-0.1-0.2c-3.6,0.3-6.9-1.6-7.4-4.3  c-0.2-1.4,0.4-2.9,1.7-3.9c-3.1-1.4-4.2-4.4-2.4-6.8c1.1-1.4,2.9-2.3,5-2.4L259.7,92z"
+   id="path350" />
+<rect
+   x="16.5"
+   y="15.5"
+   class="st21"
+   width="666.5"
+   height="471.8"
+   id="rect352" />
+</svg>
