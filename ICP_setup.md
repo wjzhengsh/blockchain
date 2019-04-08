@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-03"
 
 subcollection: blockchain
 
@@ -56,7 +56,7 @@ echo "vm.max_map_count=262144” | tee -a /etc/sysctl.conf
 ### Resources required
 {: #icp-setup-resources}
 
-Ensure that your {{site.data.keyword.cloud_notm}} Private system meets the minimum hardware resource requirements:
+Ensure that your {{site.data.keyword.cloud_notm}} Private system meets the minimum hardware resource requirements for each Fabric runtime component:
 
 | Component | vCPU | RAM | Disk for data storage |
 |-----------|------|-----|-----------------------|
@@ -97,4 +97,92 @@ Complete the following steps to install and set up {{site.data.keyword.cloud_not
 
 2. Install the {{site.data.keyword.cloud_notm}} Private CLI [3.1.0 ![External link icon](images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/manage_cluster/install_cli.html) to install and operate the CA.
 
-After you install {{site.data.keyword.cloud_notm}} Private, you can continue to [import the {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private Helm chart](/docs/services/blockchain/howto/helm_install_icp.html#helm-install) into your {{site.data.keyword.cloud_notm}} Private cluster.
+3. Setup the pod security policy for the target namespace. Instructions are provided in the [next section](/docs/services/blockchain/howto/ICP_setup.html#icp-setup-psp).
+
+After you install {{site.data.keyword.cloud_notm}} Private and bind a pod security policy to a target namespace, you can continue to [import the {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private Helm chart](/docs/services/blockchain/howto/helm_install_icp.html#helm-install) into your {{site.data.keyword.cloud_notm}} Private cluster.
+
+## PodSecurityPolicy Requirements
+{: #icp-setup-psp}
+
+Before you can deploy any components using the Helm chart, you must create a new target namespace and bind a [PodSecurityPolicy ![External link icon](images/external_link.svg "External link icon")](https://kubernetes.io/docs/concepts/policy/pod-security-policy/ "Pod Security Policies") to it.  Choose either a predefined PodSecurityPolicy or have your cluster administrator create a custom PodSecurityPolicy for you:
+- Predefined PodSecurityPolicy name: [`ibm-privileged-psp`](https://ibm.biz/cpkspec-psp)
+- Custom PodSecurityPolicy definition:
+  ```
+  apiVersion: extensions/v1beta1
+  kind: PodSecurityPolicy
+  metadata:
+    name: ibm-blockchain-platform-psp
+  spec:
+    hostIPC: false
+    hostNetwork: false
+    hostPID: false
+    privileged: true
+    allowPrivilegeEscalation: true
+    readOnlyRootFilesystem: false
+    seLinux:
+      rule: RunAsAny
+    supplementalGroups:
+      rule: RunAsAny
+    runAsUser:
+      rule: RunAsAny
+    fsGroup:
+      rule: RunAsAny
+    requiredDropCapabilities:
+    - ALL
+    allowedCapabilities:
+    - NET_BIND_SERVICE
+    - CHOWN
+    - DAC_OVERRIDE
+    - SETGID
+    - SETUID
+    volumes:
+    - '*'
+  ```
+  {:codeblock}
+- Custom ClusterRole for the custom PodSecurityPolicy:
+  ```
+  apiVersion: rbac.authorization.k8s.io/v1
+  kind: ClusterRole
+  metadata:
+    annotations:
+    name: ibm-blockchain-platform-clusterrole
+  rules:
+  - apiGroups:
+    - extensions
+    resourceNames:
+    - ibm-blockchain-platform-psp
+    resources:
+    - podsecuritypolicies
+    verbs:
+    - use
+  - apiGroups:
+    - ""
+    resources:
+    - secrets
+    verbs:
+    - create
+    - delete
+    - get
+    - list
+    - patch
+    - update
+    - watch
+  ```
+  {:codeblock}
+
+- Custom ClusterRoleBinding for the custom ClusterRole:
+  ```
+  apiVersion: rbac.authorization.k8s.io/v1
+  kind: ClusterRoleBinding
+  metadata:
+   name: ibm-blockchain-platform-clusterrolebinding
+  roleRef:
+   apiGroup: rbac.authorization.k8s.io
+   kind: ClusterRole
+   name: ibm-blockchain-platform-clusterrole
+  subjects:
+  - kind: ServiceAccount
+    name: default
+    namespace: default
+  ```
+  {:codeblock}

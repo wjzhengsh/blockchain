@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-03-20"
+lastupdated: "2019-04-03"
 
 subcollection: blockchain
 
@@ -88,4 +88,17 @@ If you encounter issues with your smart contract, you can view the smart contrac
 
 ## Monitoring resource usage
 
-When the {{site.data.keyword.cloud_notm}} Platform nodes are deployed, they are pre-configured with default CPU, memory, and storage settings and these values cannot be modified. You can monitor your resource usage by using the {{site.data.keyword.IBM_notm}} Kubernetes Service dashboard. If you attempt to create a new node in the {{site.data.keyword.cloud_notm}} Platform console and get an error that you need to expand your Kubernetes cluster, it is possible to add more storage to the Kubernetes cluster. See this [information ![External link icon](../images/external_link.svg "External link icon")](https://cloud.ibm.com/docs/containers/cs_storage_file.html#change_storage_configuration "Changing the size and IOPS of your existing storage device") on how to increase storage capacity or performance of your existing volume.
+When the {{site.data.keyword.blockchainfull_notm}} Platform nodes are deployed, they are pre-configured with default CPU, memory, and storage settings and these values cannot be modified. You can monitor your resource usage by using the {{site.data.keyword.IBM_notm}} Kubernetes Service dashboard. If you attempt to create a new node in the {{site.data.keyword.cloud_notm}} Platform console and get an error that you need to expand your Kubernetes cluster, it is possible to add more storage to the Kubernetes cluster. See this [information ![External link icon](../images/external_link.svg "External link icon")](https://cloud.ibm.com/docs/containers/cs_storage_file.html#change_storage_configuration "Changing the size and IOPS of your existing storage device") on how to increase storage capacity or performance of your existing volume.
+
+## Kubernetes cluster expiration
+{: #ibp-console-manage-console-cluster-expiration}
+
+If you are using a free {{site.data.keyword.cloud_notm}} Kubernetes service cluster, it will expire after 30 days. When this happens you can no longer access your console. All of the associated nodes and certificates are deleted as well. You can only have one free cluster at a time. Therefore, before you can create another blockchain service instance, you need to ensure that the expired cluster and it's associated service instance have been deleted from {{site.data.keyword.cloud_notm}}. To confirm if they have already been deleted or to manually delete these resources, follow these steps:
+
+1. In your {{site.data.keyword.cloud_notm}} dashboard click on the hamburger menu and open the **Resource List**.
+2. Scroll to the Services twistie and expand it to view your service instance.
+3. If your instance is listed, click the action menu for the service instance, then **Delete**, to delete this service instance.
+4. Scroll to the Kubernetes Clusters twistie and expand it to view your free cluster.
+5. If your free cluster is listed, click the action menu for the cluster, then **Delete**, to delete the free cluster.
+
+When these actions are complete, you can follow the [original steps](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks) to create a new Kubernetes cluster and blockchain service instance from the IBM Cloud catalog page.

@@ -3,7 +3,8 @@
 copyright:
   years: 2019
 
-lastupdated: "2019-03-20"
+lastupdated: "2019-04-03"
+
 
 subcollection: blockchain
 
@@ -112,7 +113,9 @@ Perform the following steps from your console:
 
   *Figure 3. Creating the peer organization CA*
 
-After you deploy the CA, you will use it when you create your organization MSP, register users, and to create your entry point to a network, the **peer**.
+After you deploy the CA, you will use it when you create your organization MSP, register users, and to create your entry point to a network, the **peer**.  
+
+Advanced users may already have their own CA, and not want to create a new CA in the console. If your existing CA can issue certificates in `X.509` format, you can use your own external CA instead of creating a new one here. See this topic on [Using certificates from an external CA with your peer or orderer](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-third-party-ca) for more information.
 
 ### Using your CA to register identities
 {: #ibp-console-build-network-use-CA-org1}
@@ -262,6 +265,8 @@ The process for creating a CA for an orderer is identical to creating it for a p
 3. Give this CA a unique display name, `Orderer CA`.
 4. You're free to reuse the **Enroll ID** you gave for the other CA, `admin`, and then to specify any secret you want, but we recommend `adminpw`.
 5. Click **Next** then **Add certificate authority**.
+
+Again, advanced users may already have their own CA, and not want to create a new CA in the console. If your existing CA can issue certificates in `X.509` format, you can use your own external CA instead of creating a new one here. See this topic on [Using certificates from an external CA with your peer or orderer](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-third-party-ca) for more information.
 
 ### Using your CA to register orderer and orderer admin identities
 {: #ibp-console-build-network-use-CA-orderer}
@@ -453,3 +458,48 @@ After you have created and joined your peer to a channel, you have a fully funct
 - Use [the commercial paper sample](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-commercial-paper) to deploy an example smart contract and submit transactions by using sample application code.
 
 You can also create another peer organization by using the [Join a network tutorial](/docs/services/blockchain/howto/ibp-console-join-network.html#ibp-console-join-network-structure). You can add the second organization to your channel to simulate a distributed network, with two peers that share a single channel ledger.
+
+## Using certificates from an external CA with your peer or orderer
+{: #ibp-console-build-network-third-party-ca}
+
+Instead of using an {{site.data.keyword.blockchainfull_notm}} Platform Certificate Authority as your peer or orderer's CA, you can use certificates from an external CA, one that is not hosted by {{site.data.keyword.IBM_notm}}, as long as the CA issues certificates in [X.509 ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/identity/identity.html#digital-certificates "Digital Certificates") format.
+
+### Before you begin
+{: #ibp-console-build-network-third-party-ca-prereq}
+
+1. You need to gather the following certificate information and save it to individual files that can be uploaded to the console.   
+**Note:** The certificates inside the files can be in either `PEM` format or `base64 encoded` format.
+ * **Peer or orderer identity certificate** This is the public signing certificate from your external CA that the peer or orderer will use.
+ * **Peer or orderer identity private key**  This is your private key corresponding to the signed certificate from your third party CA that this peer or orderer will use.
+ * **Peer or Orderer organization MSP definition** You must manually generate this file using instructions provided in [Manually building an MSP JSON file](/docs/services/blockchain/howto/ibp-console-organizations.html#console-organizations-build-msp).
+ * **TLS CA certificate** This is the public signing certificate created by your external TLS CA that will be used by this peer or orderer.
+  * **TLS CA private key** This is the private key corresponding to the signed certificate from your TLS CA that will be used by this peer or orderer for secure communications with other members on the network.
+ * **TLS CA root certificate** (Optional) This is the root certificate of your external TLS CA. You must provide either a TLS CA root certificate or an intermediate TLS CA certificate, you may also provide both.
+ * **Intermediate TLS certificate**: (Optional) This is the TLS certificate if your TLS certificate is issued by an intermediate TLS CA. upload the intermediate TLS CA certificate. You must provide either a TLS CA root certificate or an intermediate TLS CA certificate, you may also provide both.
+ * **Peer or Orderer admin identity certificate** This is the public signing certificate from your external CA that the admin identity of this peer or orderer will use. This certificate is also known as your peer or orderer admin identity public key.
+ * **Peer or Orderer admin identity private key**  This is the private key corresponding to the signed certificate from your external CA that the admin identity of this peer or orderer will use.
+
+2. Import the generated peer organization MSP definition file into the console, by clicking the **Organizations** tab followed by **Import MSP definition**.
+
+### Create a new peer or orderer using certificates from an external CA
+{: #ibp-console-build-network-create-peer-orderer-third-party-ca-}
+
+Now that you have gathered all the necessary certificates, you are ready to create a peer or orderer which uses those certs. Follow these instructions to create the peer or orderer node:
+
+1. On the **Nodes** tab click **Add peer**  or **Add orderer**.
+2. After entering a display name for the node, select the option to use an external CA.
+3. Step through the panels and upload the files corresponding to the certificate information you gathered.
+4. Ensure you select the peer or orderer organization MSP definition that you imported into the console from the drop down list.
+5. On the last step when you are asked to associate an identity with your peer or orderer, you need to click **New identity**.
+6. Specify any value as the **Display name** for this identity. The display name will be visible in the console wallet after you create the node.
+7. In the **Certificate** field, upload the file that contains  the **Peer or Orderer admin identity certificate**.
+8. In the **Private key** field, upload the file that contains  the **Peer or Orderer admin identity private key**.
+9. Review the information on the Summary page and click **Add peer** or **Add orderer**.
+
+### What's next
+{: #ibp-console-build-network-third-party-ca-next}
+
+You have gathered all of your peer or orderer certificates from your third-party CA, created their corresponding organization MSP definition and created the node. If you are following along in the tutorials, you can return to the next step.
+- If you created the peer node, the next step is to [Create the node that orders transactions](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-create-orderer).
+- If you created the node to join an existing network, the next step is to [Add your organization to list of organizations that can transact](/docs/services/blockchain/howto/ibp-console-join-network#ibp-console-join-network-add-org2).
+- If you created an orderer node, the next step is to [Create a channel](/docs/services/blockchain/howto/ibp-console-build-network#ibp-console-build-network-create-channel).
