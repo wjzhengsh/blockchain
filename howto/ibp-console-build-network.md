@@ -3,7 +3,7 @@
 copyright:
   years: 2019
 
-lastupdated: "2019-04-03"
+lastupdated: "2019-04-09"
 
 
 subcollection: blockchain
@@ -99,7 +99,7 @@ As part of this tutorial, your CA issues the public and private keys for your us
 
 Perform the following steps from your console:
 
-1. Navigate to the **Nodes** tab on the left and click **Add Certificate Authority**. The four-step side panels will allow you to customize the CA that you want to create and the organization that this CA will issue keys for.
+1. Navigate to the **Nodes** tab on the left and click **Add Certificate Authority**. The side panels will allow you to customize the CA that you want to create and the organization that this CA will issue keys for.
 2. Click  **{{site.data.keyword.cloud_notm}}** under **Create Certificate Authority** and **Next**.
 3. Use the second side panel to give your CA a **display name**. Our recommended value for this CA is `Org1 CA`.
 4. On the next panel, give your CA admin credentials by specifying an **Admin ID** of `admin`, and giving any secret that you want. We recommend `adminpw` to help you follow along in this tutorial.
@@ -124,6 +124,9 @@ Each node or application that you want to create needs public and private keys t
 
 * **An organization admin** This identity allows you to operate nodes using the platform console.
 * **A peer identity** This identity allows you to deploy a peer.
+
+Depending on your cluster type, deployment of the CA can take up to ten minutes. The green square on the CA tile indicates that it is "Running" and can be used to register identities. Before proceeding with the steps below to register identities, you must wait until the CA status is "Running".
+{:important}
 
 To generate these certificates, we'll need to complete the following steps:
 
@@ -272,6 +275,9 @@ Again, advanced users may already have their own CA, and not want to create a ne
 {: #ibp-console-build-network-use-CA-orderer}
 
 As we did with the peer, we need to register two identities with our orderer CA.  After selecting your CA, you will need to register an admin for our orderer organization, in addition to an identity for the orderer itself. As before, you should see an identity on the `Orderer CA` tab; it's the admin that you created for the CA.
+
+Depending on your cluster type, deployment of the CA can take up to ten minutes. The green square on the CA tile indicates that it is "Running" and can be used to register identities. Before proceeding with the steps below to register identities, you must wait until the CA status is "Running".
+{:important}
 
 1. In the console, click the **Nodes** tab and click the `Orderer CA` you created.
 2. When the admin identity you just create is visible in the table,  click the **Register User** button to register our new users.
