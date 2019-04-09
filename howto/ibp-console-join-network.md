@@ -2,9 +2,7 @@
 
 copyright:
   years: 2019
-
-lastupdated: "2019-04-03"
-
+lastupdated: "2019-04-09"
 
 subcollection: blockchain
 
@@ -77,7 +75,7 @@ As part of this tutorial, your CA issues the public and private keys for your us
 
 Perform the following steps from your console:  
 
-1. Navigate to the **Nodes** tab on the left and click **Add Certificate Authority**. The four-step side panels will allow you to customize the CA that you want to create and the organization that this CA will issue keys for.
+1. Navigate to the **Nodes** tab on the left and click **Add Certificate Authority**. The side panels will allow you to customize the CA that you want to create and the organization that this CA will issue keys for.
 2. Click **{{site.data.keyword.cloud_notm}}** under **Create Certificate Authority**.
 3. Use the second side panel to give your CA a **display name**. Our recommended value for this CA is `Org2 CA`.
 4. On the next panel, give your CA admin credentials by specifying an **Admin ID** of `admin`, and giving any secret that you want but we recommend `adminpw` for purposed of this tutorial.
@@ -101,6 +99,9 @@ Each node or application that you want to create needs public and private keys t
 
 * **An organization admin** This Identity allow you to operate nodes using the platform console.
 * **A peer identity** This identity will allow you to deploy a peer.
+
+Depending on your cluster type, deployment of the CA can take up to ten minutes. The green square on the CA tile indicates that it is "Running" and can be used to register identities. Before proceeding with the steps below to register identities, you must wait until the CA status is "Running".
+{:important}
 
 To generate these certificates, complete the following steps:
 
@@ -288,7 +289,7 @@ Perform the following steps from your console:
 If the channel that you want to join a peer to is created by yourself and you haven't joined any peer to the channel, you can click the pending tile of the channel directly to join your peer.
 {:note}
 
-If you plan to leverage the Hyperledger Fabric [Private Data ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/latest/private-data/private-data.html "Private data") or [Service Discovery ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/latest/discovery-overview.html "Service Discovery") features, you must configure anchor peers in your organizations from the **Channels** tab. For more information about how to configure anchor peers for private data by using the **Channels** tab in console, see [Private data](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-private-data).
+If you plan to leverage the Hyperledger Fabric [Private Data ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/private-data/private-data.html "Private data") or [Service Discovery ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/discovery-overview.html "Service Discovery") features, you must configure anchor peers in your organizations from the **Channels** tab. For more information about how to configure anchor peers for private data by using the **Channels** tab in console, see [Private data](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-private-data).
 
 You can also create a new channel if your organization is a member of the consortium. Use the steps to [create a channel](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-create-channel) as described in the [Build a network tutorial](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network).
 
