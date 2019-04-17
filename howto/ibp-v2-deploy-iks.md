@@ -90,7 +90,7 @@ To deploy the {{site.data.keyword.blockchainfull_notm}} Platform console into an
 |Standard (Recommended) | Suitable for MVPs | 4 (Shared) | 16 GB (Shared)|multiple|
 |Free | Suitable for evaluation | 2 | 4 GB | 1 |  
 
-These resources are sufficient for testing and experimentation. The [Build a network tutorial]((/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network), in which you create two peers, two CAs, and an orderer, takes up approximately 1.1 CPU, allowing some additional headroom for testing purposes (for example, by creating several channels, which will each have a distinct ledger). If you use a free Kubernetes cluster, be aware that the cluster will be deleted after the 30 day trial and that all associated assets will be removed. Also, performance is significantly slower in a free cluster.
+These resources are sufficient for testing and experimentation. The [Build a network tutorial](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network), in which you create two peers, two CAs, and an orderer, takes up approximately 1.1 CPU, allowing some additional headroom for testing purposes (for example, by creating several channels, which will each have a distinct ledger). If you use a free Kubernetes cluster, be aware that the cluster will be deleted after the 30 day trial and that all associated assets will be removed. Also, performance is significantly slower in a free cluster.
 {:note}
 
 #### Paid clusters
