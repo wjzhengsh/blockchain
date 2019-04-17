@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-03-20"
+lastupdated: "2019-04-17"
 
 subcollection: blockchain
 
@@ -20,10 +20,10 @@ subcollection: blockchain
 # About {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta
 {: #ibp-console-overview}
 
-The {{site.data.keyword.blockchainfull}} Platform free 2.0 beta is the next generation of {{site.data.keyword.blockchainfull_notm}} Platform offerings, which gives you total control over your deployments and certificates. This free beta includes the new {{site.data.keyword.blockchainfull_notm}} Platform console, a user interface that can simplify and accelerate the process of deploying components into a {{site.data.keyword.cloud_notm}} Kubernetes Service managed and controlled by you. For more information about Kubernetes and {{site.data.keyword.cloud_notm}} Kubernetes Service, see [Kubernetes](/docs/services/blockchain/reference/k8s.html "Kubernetes").
+The {{site.data.keyword.blockchainfull}} Platform free 2.0 beta is the next generation of {{site.data.keyword.blockchainfull_notm}} Platform offerings, which gives you total control over your deployments and  public and private keys. This free beta includes the new {{site.data.keyword.blockchainfull_notm}} Platform console, a user interface that can simplify and accelerate the process of deploying components into a {{site.data.keyword.cloud_notm}} Kubernetes Service managed and controlled by you. For more information about Kubernetes and {{site.data.keyword.cloud_notm}} Kubernetes Service, see [Kubernetes](/docs/services/blockchain/reference/k8s.html "Kubernetes").
 {:shortdesc}
 
-{{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta is now upgraded to Hyperledger Fabric 1.4 code base. For more information about Hyperledger Fabric 1.4 new features, see [What's new in 1.4 ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/latest/whatsnew.html "What's new in Fabric 1.4"){:new_window}.
+{{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta is now upgraded to Hyperledger Fabric 1.4 code base. For more information about Hyperledger Fabric 1.4 new features, see [What's new in 1.4 ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/whatsnew.html "What's new in Fabric 1.4"){:new_window}.
 
 ## What the new beta offers
 {: #ibp-console-overview-capabilities}
@@ -39,7 +39,7 @@ The {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta release inc
   - [**Private data** collections](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-private-data) that provide increased data privacy by ensuring that ledger data is shared to only authorized peers via the gossip protocol.
   - [Service Discovery ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/discovery-overview.html "Service discovery"), allowing you to dynamically discover and update how your application interacts with your network.
   - [Channel Access Control Lists ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/access_control.html "Access Control Lists") that allow you additional control the governance of your channels and smart contracts.
-- **{{site.data.keyword.cloud_notm}} service integration.** Leverage the built in {{site.data.keyword.cloud_notm}} services, such as {{site.data.keyword.cloud_notm}} Kubernetes Service Dashboard, {{site.data.keyword.cloud_notm}} Logging and Metrics Service, and the {{site.data.keyword.cloud_notm}} Identity Service.
+- **{{site.data.keyword.cloud_notm}} service integration.** Leverage the built in {{site.data.keyword.cloud_notm}} services, such as {{site.data.keyword.cloud_notm}} Kubernetes Service Dashboard, {{site.data.keyword.IBM_notm}} Log Analysis with LogDNA, and {{site.data.keyword.cloud_notm}} Identity and Access Management (IAM).
 
 **Total control of your deployments**
 - **Deploy only the components you need**. Connect a peer to multiple channels and networks, or host an ordering service that business partners can connect to.
@@ -123,7 +123,7 @@ Notice how a single instance of the console, also known as Operational Tooling, 
 Multi-zone storage must be enabled in your paid IBM Cloud Kubernetes cluster if you require HA and DR. There are a variety of [Kubernetes storage options](https://cloud.ibm.com/docs/containers/cs_storage_planning.html#persistent_storage_overview) available. Coming soon, IBM Cloud will support the Portworx storage solution which is the recommended solution. Until then, if HA and DR are required for your implementation, you will need to bring your own storage solution.  
 
 To add your own storage solution, you will need to create a customized storage class. Read about how to
-[add a storage class](https://cloud.ibm.com/docs/containers/cs_storage_basics.html#storageclasses) for your solution. IBP uses [dynamic volume provisioning](https://cloud.ibm.com/docs/containers/cs_storage_basics.html#dynamic_provisioning) with the `default` storage class. Therefore,  to change the default storage class, run the following command:
+[add a storage class](https://cloud.ibm.com/docs/containers/cs_storage_basics.html#storageclasses) for your solution. The {{site.data.keyword.blockchainfull_notm}} Platform uses [dynamic volume provisioning](https://cloud.ibm.com/docs/containers/cs_storage_basics.html#dynamic_provisioning) with the `default` storage class. Therefore,  to change the default storage class, run the following command:
 ```
 kubectl patch storageclass <storageclass> -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
 ```

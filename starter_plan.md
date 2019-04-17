@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-17"
 
 subcollection: blockchain
 
@@ -72,7 +72,7 @@ Starter Plan is an entry point to {{site.data.keyword.blockchainfull_notm}} Plat
 - **Starter Plan versions and upgrade**
     - New Starter Plan networks that are created after October 04, 2018 are built on Hyperledger Fabric V1.2.1. Older Starter Plan networks remain at Fabric V1.1.0 level.
     - New peers that are added to older Starter Plan networks will be built on Fabric v1.2.1. The performance of your network is not affected because of backwards compatibility.
-    - You have the option of using more advanced [channel configuration ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/latest/config_update.html "channel configuration") settings and [Access Control Lists ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-v1.2/access_control.html "Access Control Lists") when you create or update a channel.
+    - You have the option of using more advanced [channel configuration ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/config_update.html "channel configuration") settings and [Access Control Lists ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/access_control.html "Access Control Lists") when you create or update a channel.
     - The [Service discovery ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/discovery-overview.html "service discovery") and [private data ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/private-data/private-data.html "private data") features of Hyperledger Fabric v1.2 are not supported on Starter Plan.
     - If you [reset](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-reset-network) an older Starter Plan network that is at Fabric V1.1.0, your new network will be at Fabric V1.2 level. If you reset your network, you need to install your chaincode or .bna files on the new network, as well as re-invite members of your old network.
 - **Network resource limitation**
