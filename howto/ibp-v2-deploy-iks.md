@@ -107,8 +107,8 @@ For a sense of how much storage and compute you will need in your cluster, refer
 | **Component** (all containers) | CPU (in millicpus) | CPU (in CPUs) | Memory (in megabytes) | Memory (in gigabytes) | Storage (in gigabytes) |
 |--------------------------------|--------------------|---------------|-----------------------|-----------------------|------------------------|
 | **Peer**                       | 1100               | 1.1           | 2200                  | 2.2                   | 200                    |
-| **CA**                         | 100                | .1            | 200                   | .2                    | 10                     |
-| **Orderer**                    | 250                | .25           | 500                   | .5                    | 100                    |
+| **CA**                         | 300                | .3            | 600                   | .6                    | 10                     |
+| **Orderer**                    | 450                | .45           | 900                   | .9                    | 100                    |
 
 ## Step one: Create a service instance in {{site.data.keyword.cloud_notm}}
 {: #ibp-v2-deploy-iks-create-service-instance}
