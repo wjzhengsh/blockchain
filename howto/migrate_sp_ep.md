@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018,2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-17"
 
 subcollection: blockchain
 
@@ -37,8 +37,7 @@ Enterprise Plan networks offer the following production-ready features to suppor
 
 Before you migrate from your Starter Plan network to an Enterprise Plan network, you might read the following considerations.
 
-- **Pricing:** The monthly fee for your organization to use an Enterprise Plan network includes $1000 membership fee on a per-instance basis and $1000 peer fee on a per-peer basis. For more information, see [Enterprise Plan pricing](/docs/services/blockchain
-/howto/pricing.html#ibp-pricing-enterprise-plan).
+- **Pricing:** The monthly fee for your organization to use an Enterprise Plan network includes $1000 membership fee on a per-instance basis and $1000 peer fee on a per-peer basis. For more information, see [Enterprise Plan pricing](/docs/services/blockchain/howto/pricing.html#ibp-pricing-enterprise-plan).
 - **Hyperledger Fabric version:** Enterprise Plan networks run on Hyperledger Fabric v1.1. Starter Plan networks run on Fabric v1.2.
 - **Resources affected:** Chaincode (smart contracts), client applications. Again, be aware of whether your chaincode is leveraging a Fabric v1.2 component or functionality that is not compatible with v1.1 networks.
 - **Time required:** It will take at least half a day to migrate a basic network from Starter Plan to Enterprise Plan.

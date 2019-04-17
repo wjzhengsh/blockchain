@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-04-09"
+lastupdated: "2019-04-17"
 
 subcollection: blockchain
 
@@ -79,7 +79,8 @@ Perform the following steps from your console:
 2. Click **{{site.data.keyword.cloud_notm}}** under **Create Certificate Authority**.
 3. Use the second side panel to give your CA a **display name**. Our recommended value for this CA is `Org2 CA`.
 4. On the next panel, give your CA admin credentials by specifying an **Admin ID** of `admin`, and giving any secret that you want but we recommend `adminpw` for purposed of this tutorial.
-5. Click **Next** then **Add certificate authority**.
+5. If you are using a paid cluster, on the next panel, you have the opportunity to configure resource allocation for the node. For purposes of this tutorial, you can accept all the defaults and click **Next**. If you want to learn more about how to allocate resources to your node, see this topic on [Allocating resources](/docs/services/blockchain?topic=blockchain-ibp-console-govern#ibp-console-govern-allocate-resources). If you are using a free cluster, you already see the **Summary** page.
+6. Review the Summary page, then click **Add certificate authority**.
 
 **Task: Creating the peer organization CA**
 
@@ -105,8 +106,8 @@ Depending on your cluster type, deployment of the CA can take up to ten minutes.
 
 To generate these certificates, complete the following steps:
 
-1. In the console, use the **Nodes** tab to navigate to the `Org2 CA` you created.
-2. After you select your CA, you will need to register an admin for this organization, `org2`, in addition to an identity for the peer itself. You should already see an identity on this page; it's the admin that you created for the CA. To register our new users, click the **Register User** button.
+1. In the console, click the **Nodes** tab. When the status indicator in the upper right corner of the `Org2 CA` is green and `Running`, click the tile to open it.
+2. After you click your CA to open it, you need to register an admin identity for this organization, `org2`, in addition to an identity for the peer itself. Wait until the `admin` identity you just created is visible in the table,  then click the **Register User** button to register our new users.
 3. For the organization admin, give it an enroll ID of `org2admin`. You can use any secret, but we suggest `org2adminpw` to help you follow along. Click **Next**.
 4. On the next step, set the Type for this identity as `client` and you must select from any of the affiliated organizations from the drop-down list. The affiliation field is for advanced users and is not used by the tutorial, but is a required field for the panel. Items in the list are default affiliations from the Fabric CA. If you want to learn more about how affiliations are used by the Fabric CA see this topic on [Registering a new identity ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/users-guide.html#registering-a-new-identity). For now, select any affiliation from the list, for example `org2` and click **Next**.
 5. Feel free to leave the **Maximum enrollments** and **Add Attributes** fields blank. They are not used by this tutorial, but you can learn more about what they are for in this topic on [Registering identities](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-register).
@@ -184,8 +185,9 @@ Use your console to perform the following steps:
 5. The next side panel asks for TLS CA information. While it is possible to create separate admins for the TLS CA that deployed with your CA, you do not need to.
    - Give the **TLS Enroll ID**, `admin`, and the secret `adminpw`, the same values as the Enroll ID and Enroll secret that you gave when creating the CA.
    - The **TLS CSR hostname** is for advanced user and is used to specify a custom domain name that can be used to address the peer endpoint. Leave the **TLS CSR hostname** blank for now, it is not used in this tutorial.
-6. The last side panel will ask you to **Associate an identity** and make it the admin of your peer. Select your peer admin identity `Org2 Admin`.
-7. Review the summary and click **Add peer**.
+6. The next side panel asks you to **Associate an identity** and make it the admin of your peer. Select your peer admin identity `Org2 Admin`.
+7. If you are using a paid cluster, on the next panel, you have the opportunity to configure resource allocation for the node. For purposes of this tutorial, you can accept all the defaults and click **Next**. If you want to learn more about how to allocate resources to your node, see this topic on [Allocating resources](/docs/services/blockchain?topic=blockchain-ibp-console-govern#ibp-console-govern-allocate-resources). If you are using a free cluster, you already see the **Summary** page.
+8. Review the Summary page, then click **Add peer**.
 
 **Task: Deploying a peer**
 

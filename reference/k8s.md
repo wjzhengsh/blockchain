@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-03-20"
+lastupdated: "2019-04-17"
 
 subcollection: blockchain
 
@@ -37,8 +37,9 @@ The following diagram explains the architecture of Kubernetes. For more explanat
 {{site.data.keyword.cloud_notm}} Kubernetes Service delivers powerful tools by combining Docker containers, the Kubernetes technology, an intuitive user experience, and built-in security and isolation to automate the deployment, operation, scaling, and monitoring of containerized apps in a cluster of compute hosts.
 
 For more information about {{site.data.keyword.cloud_notm}} Kubernetes Service, see the following topics in {{site.data.keyword.cloud_notm}} Kubernetes Service documentation:
-- [{{site.data.keyword.cloud_notm}} Kubernetes Service technology ![External link icon](../images/external_link.svg "External link icon")](https://cloud.ibm.com/docs/containers/cs_tech.html#ibm-cloud-kubernetes-service-technology "{{site.data.keyword.cloud_notm}} Kubernetes Service technology documentation")
-- [Why {{site.data.keyword.cloud_notm}} Kubernetes Service ![External link icon](../images/external_link.svg "External link icon")](https://cloud.ibm.com/docs/containers?topic=containers-cs_ov#cs_ov "Why {{site.data.keyword.cloud_notm}} Kubernetes Service documentation")
+- [{{site.data.keyword.cloud_notm}} Kubernetes Service technology ![External link icon](../images/external_link.svg "External link icon")](/docs/containers/cs_tech.html#ibm-cloud-kubernetes-service-technology "{{site.data.keyword.cloud_notm}} Kubernetes Service technology documentation")
+- [Why {{site.data.keyword.cloud_notm}} Kubernetes Service ![External link icon](../images/external_link.svg "External link icon")](/docs/containers?topic=containers-cs_ov#cs_ov "Why {{site.data.keyword.cloud_notm}} Kubernetes Service documentation")
+- [Defining your Kubernetes strategy ![External link icon](../images/external_link.svg "External link icon")](/docs/containers?topic=containers-strategy#strategy "Defining your Kubernetes strategy")
 
 
 ## Key Kubernetes objects

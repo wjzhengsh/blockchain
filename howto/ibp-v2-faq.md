@@ -22,15 +22,15 @@ subcollection: blockchain
 # FAQs
 {: #ibp-v2-faq}
 
-- [What version of Hyperledger Fabric is being used with {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta?](/docs/services/blockchain/ibp-v2-faq.html#ibp-v2-faq-fabric-version)
-- [Do I need to pay anything for the {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta?](/docs/services/blockchain/ibp-v2-faq.html#ibp-v2-faq-cost)
-- [Can I use my existing {{site.data.keyword.cloud_notm}} Kubernetes Service cluster?](/docs/services/blockchain/ibp-v2-faq.html#ibp-v2-faq-existing-cluster)
-- [What database do the Peers use for their ledger?](/docs/services/blockchain/ibp-v2-faq.html#ibp-v2-faq-couchDB)
-- [What languages are supported for smart contracts?](/docs/services/blockchain/ibp-v2-faq.html#ibp-v2-faq-cc-langs)
+- [What version of Hyperledger Fabric is being used with {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta?](#ibp-v2-faq-fabric-version)
+- [Do I need to pay anything for the {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta?](#ibp-v2-faq-cost)
+- [Can I use my existing {{site.data.keyword.cloud_notm}} Kubernetes Service cluster?](#ibp-v2-faq-existing-cluster)
+- [What database do the Peers use for their ledger?](#ibp-v2-faq-couchDB)
+- [What languages are supported for smart contracts?](#ibp-v2-faq-cc-langs)
 - [Can I migrate from the V2.0 beta to v2.0 GA?](/docs/services/blockchain/ibp-v2-deploy-iks.html#ibp-v2-faq-migrate)
-- [Do we have access to logging services and what logs are available to me?](/docs/services/blockchain/ibp-v2-faq.html#ibp-v2-faq-logs)
-- [What is the value of using {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta over native Hyperledger Fabric?](/docs/services/blockchain/ibp-v2-faq.html#ibp-v2-faq-native-fabric)
-- [How can I maximize performance and scale my {{site.data.keyword.blockchainfull_notm}} Platform solution?](/docs/services/blockchain/ibp-v2-faq.html#ibp-v2-faq-perf-scale)
+- [Do we have access to logging services and what logs are available to me?](#ibp-v2-faq-logs)
+- [What is the value of using {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta over native Hyperledger Fabric?](#ibp-v2-faq-native-fabric)
+- [How can I maximize performance and scale my {{site.data.keyword.blockchainfull_notm}} Platform solution?](#ibp-v2-faq-perf-scale)
 
 ## What version of Hyperledger Fabric is being used with {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta?
 {: #ibp-v2-faq-fabric-version}

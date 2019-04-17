@@ -3,7 +3,7 @@
 copyright:
   years: 2019
 
-lastupdated: "2019-04-09"
+lastupdated: "2019-04-17"
 
 
 subcollection: blockchain
@@ -57,7 +57,7 @@ This configuration is sufficient for testing applications and smart contracts. T
 * **Two peer organizations**: `Org1` and `Org2`  
   The tutorial series describe how to create two peer organizations and two associated peers. Think of organizations on a blockchain network to be like two different banks that need to transact with each other. We create the Org1 and Org2 Membership Services Provider (MSP) definition which defines the organizations `Org1` and `Org2`.
 * **One orderer organization**: `Orderer Org`  
-  Because we are building a distributed ledger, the peers and orderers should be part of separate organization. Therefore, a separate organization is created for the orderer.  Among other things, an orderer node orders the blocks of transactions that are sent to the peers to be written to their ledgers and become the blockchain. We create the Orderer Membership Services Provider (MSP) definition which defines the organization `Orderer Org`.
+  Because we are building a distributed ledger, the peers and orderers should be part of separate organizations. Therefore, a separate organization is created for the orderer.  Among other things, an orderer node orders the blocks of transactions that are sent to the peers to be written to their ledgers and become the blockchain. We create the Orderer Membership Services Provider (MSP) definition which defines the organization `Orderer Org`.
 * **Three Certificate Authorities (CAs)**: `Org1 CA, Org2 CA, Orderer CA`   
   A CA is the node that issues certificates to all organization members. Because it’s a best practice to deploy one CA per organization, we will deploy three CAs in total: one for each peer organization and one for the orderer organization. We will also use the CA's to create all of the nodes, identities, and organization definition for each organization.
 * **One orderer:** `Orderer`  
@@ -103,7 +103,8 @@ Perform the following steps from your console:
 2. Click  **{{site.data.keyword.cloud_notm}}** under **Create Certificate Authority** and **Next**.
 3. Use the second side panel to give your CA a **display name**. Our recommended value for this CA is `Org1 CA`.
 4. On the next panel, give your CA admin credentials by specifying an **Admin ID** of `admin`, and giving any secret that you want. We recommend `adminpw` to help you follow along in this tutorial.
-5. Click **Next** then **Add certificate authority**.
+5. If you are using a paid cluster, you have the opportunity to configure resource allocation for the node. For purposes of this tutorial, you can accept all the defaults and click **Next**. If you want to learn more about how to allocate resources to your node, see this topic on [Allocating resources](/docs/services/blockchain?topic=blockchain-ibp-console-govern#ibp-console-govern-allocate-resources). If you are using a free cluster, you already see the **Summary** page.
+6. Review the Summary page, then click **Add certificate authority**.
 
 **Task: Creating the peer organization CA**
 
@@ -130,8 +131,8 @@ Depending on your cluster type, deployment of the CA can take up to ten minutes.
 
 To generate these certificates, we'll need to complete the following steps:
 
-1. In the console, use the **Nodes** tab to navigate to the `Org1 CA` you created.
-2. After selecting your CA, you will need to register an admin for our first organization, `org1`, in addition to an identity for the peer itself. You should already see an identity on this page; it's the admin that you created for the CA. To register our new users, click the **Register User** button.
+1. In the console, click the **Nodes** tab. When the status indicator in the upper right corner of the `Org1 CA` is green and `Running`, click the tile to open it.
+2. After selecting your CA, ensure the `admin` identity that you created for the CA is visible in the table before proceeding. You need to register another admin identity for our first organization, `org1`, in addition to an identity for the peer itself.  To register our new users, click the **Register User** button.
 3. For the organization admin, give an enroll ID of `org1admin`. You can use any secret, but we suggest `org1adminpw` to help you follow along. Click **Next**.
 4. On the next step, set the Type for this identity as `client` and you must select from any of the affiliated organizations from the drop-down list. The affiliation field is for advanced users and is not used by the tutorial, but is a required field for the panel. Items in the list are default affiliations from the Fabric CA. If you want to learn more about how affiliations are used by the Fabric CA see this topic on [Registering a new identity ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/users-guide.html#registering-a-new-identity). For now, select any affiliation from the list, for example `org1` and click **Next**.
 5. Feel free to leave the **Maximum enrollments** and **Add Attributes** fields blank. They are not used by this tutorial, but you can learn more about what they are for in this topic on [Registering identities](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-register).
@@ -215,8 +216,9 @@ Use your console to perform the following steps:
 5. The next side panel asks for TLS CA information. While it is possible to create separate admins for the TLS CA that is deployed with your CA, you do not need to.
   - Give the **TLS Enroll ID**, `admin`, and the secret `adminpw`, the same values are the Enroll ID and Enroll secret that you gave when creating the CA.
   - The **TLS CSR hostname** is for advanced users to specify a custom domain name that can be used to address the peer endpoint. Leave the **TLS CSR hostname** blank for now, it is not used in this tutorial.
-6. The last side panel will ask you to **Associate an identity** and make it the admin of your peer. Select your peer admin identity `Org1 Admin`.
-7. Review the summary and click **Add peer**.
+6. The next side panel asks you to **Associate an identity** and make it the admin of your peer. Select your peer admin identity `Org1 Admin`.
+7. If you are using a paid cluster, on the next panel, you have the opportunity to configure resource allocation for the node. For purposes of this tutorial, you can accept all the defaults and click **Next**. If you want to learn more about how to allocate resources to your node, see this topic on [Allocating resources](/docs/services/blockchain?topic=blockchain-ibp-console-govern#ibp-console-govern-allocate-resources). If you are using a free cluster, you see the **Summary** page.
+8. Review the summary and click **Add peer**.
 
 **Task: Deploying a peer**
 
@@ -267,7 +269,8 @@ The process for creating a CA for an orderer is identical to creating it for a p
 2. Click  **{{site.data.keyword.cloud_notm}}** under **Create a new Certificate Authority** and **Next**
 3. Give this CA a unique display name, `Orderer CA`.
 4. You're free to reuse the **Enroll ID** you gave for the other CA, `admin`, and then to specify any secret you want, but we recommend `adminpw`.
-5. Click **Next** then **Add certificate authority**.
+5. If you are using a paid cluster, on the next panel, you have the opportunity to configure resource allocation for the node. For purposes of this tutorial, you can accept all the defaults and click **Next**. If you want to learn more about how to allocate resources to your node, see this topic on [Allocating resources](/docs/services/blockchain?topic=blockchain-ibp-console-govern#ibp-console-govern-allocate-resources). If you are using a free cluster, you already see the **Summary** page.
+6. Review the Summary page, then click **Add certificate authority**.
 
 Again, advanced users may already have their own CA, and not want to create a new CA in the console. If your existing CA can issue certificates in `X.509` format, you can use your own external CA instead of creating a new one here. See this topic on [Using certificates from an external CA with your peer or orderer](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-third-party-ca) for more information.
 
@@ -279,8 +282,8 @@ As we did with the peer, we need to register two identities with our orderer CA.
 Depending on your cluster type, deployment of the CA can take up to ten minutes. The green square on the CA tile indicates that it is "Running" and can be used to register identities. Before proceeding with the steps below to register identities, you must wait until the CA status is "Running".
 {:important}
 
-1. In the console, click the **Nodes** tab and click the `Orderer CA` you created.
-2. When the admin identity you just create is visible in the table,  click the **Register User** button to register our new users.
+1. In the console, click the **Nodes** tab. When the status indicator in the upper right corner of the `Orderer CA` is green and `Running`, click the tile to open it.
+2. Wait until the `admin` identity you just created is visible in the table,  then click the **Register User** button to register our new users.
 3. For the organization admin, give an enroll ID of `ordereradmin`. We recommend a secret of `ordereradminpw`.
 4. On the next step, set the Type for this identity as `client` and you must select from any of the affiliated organizations from the drop-down list. The affiliation field is for advanced users and is not used by the tutorial, but is a required field for the panel. Items in the list are default affiliations from the Fabric CA. If you want to learn more about how affiliations are used by the Fabric CA see this topic on [Registering a new identity ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/users-guide.html#registering-a-new-identity). For now, select any affiliation from the list and click **Next**.
 5. Feel free to leave the **Maximum enrollments** and **Add Attributes** fields blank. They are not used by this tutorial, but you can learn more about what they are for in this topic on [Registering identities](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-register) in the console.
@@ -347,7 +350,8 @@ Perform the following steps from your console:
    - Give the **TLS Enroll ID**, `admin`, and the secret `adminpw`. These values are the Enroll ID and Enroll secret that you gave when creating the CA.
    - The **TLS CSR hostname** is for advanced users to specify a custom domain name that can be used to address the orderer endpoint. Leave the **TLS CSR hostname** blank for now, it is not used in this tutorial.
 6. The **Associate identity** step allows you to choose an admin for your orderer. Select `Orderer Admin` as before and click **Next**.
-7. Review the summary and click **Add orderer**.
+7. If you are using a paid cluster, on the next panel, you have the opportunity to configure resource allocation for the node. For purposes of this tutorial, you can accept all the defaults and click **Next**. If you want to learn more about how to allocate resources to your node, see this topic on [Allocating resources](/docs/services/blockchain?topic=blockchain-ibp-console-govern#ibp-console-govern-allocate-resources). If you are using a free cluster, you already see the **Summary** page.
+7. Review the Summary page and click **Add orderer**.
 
 **Task: Create an orderer**
 
@@ -507,5 +511,5 @@ Now that you have gathered all the necessary certificates, you are ready to crea
 
 You have gathered all of your peer or orderer certificates from your third-party CA, created their corresponding organization MSP definition and created the node. If you are following along in the tutorials, you can return to the next step.
 - If you created the peer node, the next step is to [Create the node that orders transactions](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-create-orderer).
-- If you created the node to join an existing network, the next step is to [Add your organization to list of organizations that can transact](/docs/services/blockchain/howto/ibp-console-join-network#ibp-console-join-network-add-org2).
-- If you created an orderer node, the next step is to [Create a channel](/docs/services/blockchain/howto/ibp-console-build-network#ibp-console-build-network-create-channel).
+- If you created the node to join an existing network, the next step is to [Add your organization to list of organizations that can transact](/docs/services/blockchain/howto/ibp-console-join-network.html#ibp-console-join-network-add-org2).
+- If you created an orderer node, the next step is to [Create a channel](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-create-channel).

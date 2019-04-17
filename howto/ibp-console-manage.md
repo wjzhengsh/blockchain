@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-04-03"
+lastupdated: "2019-04-17"
 
 subcollection: blockchain
 
@@ -21,43 +21,89 @@ subcollection: blockchain
 # Administering your console
 {: #ibp-console-manage-console}
 
-There are various actions you can take to manage your console behavior. This topic describes actions outside of the blockchain node operations that aid you in your day-to-day usage of the console.
+There are various actions that you can take to manage your console behavior. This topic describes actions outside of the blockchain node operations that aid you in your day-to-day usage of the console.
 {:shortdesc}
 
 **Target audience:** This topic is designed for network operators who are responsible for creating, monitoring, and managing the blockchain network.
 
 ## Add and remove users from the console
+{: #ibp-console-manage-console-add-remove}
 
-This {{site.data.keyword.blockchainfull}} Platform console is provisioned with the email address of the {{site.data.keyword.IBM_notm}} owner as an administrator of the console. The administrator can then grant other users to access the console.
+The console authorization process is changing during the beta program. If you have an existing blockchain service instance that used the original {{site.data.keyword.IBM_notm}} ID authentication, you are no longer able to see your users listed in the **Users** tab. You must grant them access to the console by using the IAM process described below.
+{:important}
 
-Click **Users** in the left navigation to grant access to new users to the console via their email address. Click **Add new users** and specify a list of email addresses you want to authorize along with their user type: `Admin` or `General`. Users with the `Admin` type can add new users or delete existing users and view console logs. `General` users can log in to the console but cannot add or remove users or view the logs.
+Every user that accesses the console must be assigned an access policy with an {{site.data.keyword.cloud_notm}} Identity and Access Management (IAM) user role defined. The policy determines what actions the user can perform within the console. The {{site.data.keyword.blockchainfull}} Platform console is provisioned with the email address of the {{site.data.keyword.cloud_notm}} owner as the console administrator.  By default, this {{site.data.keyword.cloud_notm}} user is given the `Manager` role for the Blockchain Platform 2.0 service in IAM. The console administrator can then grant other users access to the console by using the IAM UI. For more information about IAM，see [What is IAM ![External link icon](../images/external_link.svg "External link icon") ](/docs/iam?topic=iam-iamoverview#iamoverview "What is IAM?").  
 
+When you [use IAM to invite users ![External link icon](../images/external_link.svg "External link icon")](/docs/iam?topic=iam-iamuserinv#iamuserinv "Use IAM to invite users"), you need to complete the following steps to configure their roles and access to the console:
+ 1. From the menu bar, click  **Manage** > **Access (IAM)** and then select **Users**.
+ 2. Click **Invite User**.
+ 3. Type in the email address of the user or users.
+ 4. From the `Services` drop-down list, select `Blockchain Platform 2.0`.
+ 5. Scroll down to `Select roles`.
+ 6. Under `Assign service access roles`, choose a role for the user, which can be `Manager`, `Writer`, and `Reader`.
+ 7. Click **Invite users**.
 
-The users listed on this panel are simply email addresses of users who can log in to the console. They have no relationship to the **Available Organizations** in the Organizations tab or the identities stored by the console wallet.
+| Role | Capabilities |
+|--------|----------|
+| Manager | As a Manager, you have permissions beyond the Writer role. You can do everything a Reader and Writer can do as well as: <ul><li>Add new components.</li><li>Delete provisioned components.</li><li>Change console logging levels.</li></ul> |
+| Writer | As a Writer, you have permissions beyond the Reader role, including: <ul><li>Import components.</li><li>Remove imported components.</li><li>Register users on a CA.</li></ul>  |
+| Reader | As a reader, you can perform read-only actions including: <ul><li>View console UI.</li><li>View console log.</li><li>Export components.</li></ul> | |
+
+ Permissions are cumulative. If you select a `Manager` role, the user will also be able to perform all `Writer` and `Reader` actions, you are not required to additionally check those roles.   Likewise, a user with the `Writer` role will be able to perform all of the actions in the `Reader` role.  For console access, you only need to select a role under the `Service Access Roles`, you do not need to select anything under the `Platform Access Roles`.
+
+![Update Kubernetes version](../images/AddICPUser.gif)
+
+After you add new users to the console, the users might not be able to view all the nodes, channels, or chaincode, which other users deploy. To work with these components, each user needs to import the associated identities into their own console wallet. For more information, see [Storing identities in your console wallet](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-wallet).
+{:important}
+
+If you need to modify a user's role:
+ 1. From the menu bar, click  **Manage** > **Access (IAM)** and then select **Users**.
+ 2. Click the Actions menu next to the user you want to modify and select **Assign access**.
+ 3. Select the tile **Assign access within a resource group**.
+ 4. From the `Services` drop-down list, select `Blockchain Platform 2.0`.
+ 5. Scroll down to `Select roles`.
+ 6. Under `Assign service access roles`, choose a role for the user, which can be `Manager`, `Writer`, and `Reader`.
+ 7. Click **Assign**.
+
+When you need to remove a user's access to the console, follow instructions in the [IAM Removing users topic ![External link icon](../images/external_link.svg "External link icon")](/docs/iam?topic=iam-remove#remove "Removing users").
+
+### Assign access roles to individual or groups of users in IAM
+{: #ibp-console-manage-console-users-groups}
+
+When you set {{site.data.keyword.cloud_notm}} IAM policies, you can assign roles to an individual user or to a group of users.
+
+<dl>
+<dt>Individual users</dt>
+<dd>You might have a specific user that needs more or less permissions than the rest of your team. You can customize permissions on an individual basis so that each person has the permissions that they need to complete their tasks. You can assign more than one {{site.data.keyword.Bluemix_notm}} IAM role to each user.</dd>
+<dt>Multiple users in an access group</dt>
+<dd>You can create a group of users and then assign permissions to that group. For example, you can group all team leaders and assign administrator access to the group. Then, you can group all developers and assign only write access to that group. You can assign more than one {{site.data.keyword.Bluemix_notm}} IAM role to each access group. When you assign permissions to a group, any user that is added or removed from that group is affected. If you add a user to the group, then they also have the additional access. If they are removed, their access is revoked.</dd>
+</dl>
+
+The users that you add in IAM are simply email addresses of users who can log in to the console. They have no relationship to the **Available Organizations** in the Organizations tab or the identities stored by the console wallet.
 {:note}
 
-## Update the administrator e-mail address
+## Update the administrator email address
 
-If the console is used by multiple people or organizations, it is recommended that you create functional email address to access your network. Using a functional email allows you to access the console if the original admin leaves your organization or has their email address suspended. If it is not possible to create a functional email, you can provide `Admin` access to multiple users to avoid a dependency on a single individual.
+If the console is used by multiple people or organizations, it is recommended that you create a functional email address to access your network. The use of a functional email allows you to continue to access the console even when the original administrator leaves your organization or has their email address suspended. Only a single email address can be used as the administrator contact.
 
-In order to update the email address of the console administrator that was configured when the console was deployed you must be logged in as a console administrator. Navigate to the **Users** tab and click **Configure** on the **IBM ID** tile. In the panel which opens specify a new email address for the console administrator.
+To update the email address of the console administrator that was configured when the console was deployed, you must be logged in as the console administrator. Navigate to the **Users** tab and click **Configure** on the **{{site.data.keyword.IBM_notm}} ID** tile. In the panel which opens specify a new email address for the console administrator.
 
 ## Viewing your logs
 {: #ibp-console-manage-logs}
 
-Throughout your use of the {{site.data.keyword.blockchainfull_notm}} Platform console, you may need to view logs in order to debug an issue.
+When you use the {{site.data.keyword.blockchainfull_notm}} Platform console, you might need to view logs to debug an issue.
 
 ### Viewing your console logs
 {: #ibp-console-manage-console-logs}
 
-You can easily access the console logs if you need to debug problems that you encounter when you use the console or operate your nodes. You can also increase or decrease the amount of logs collected by the console by setting the logging level. The logs of the console are collected separately from the [logs of your nodes](/docs/services/blockchain/howto/ibp-console-manage.html#ibp-console-manage-console-node-logs), which are collected by the {{site.data.keyword.IBM_notm}} Kubernetes service.
+You can easily access the console logs if you need to debug problems that you encounter when you use the console or operate your nodes. You can also sett the logging level to increase or decrease the amount of logs that the console collects. The console logs are collected separately from the [node logs](/docs/services/blockchain/howto/ibp-console-manage.html#ibp-console-manage-console-node-logs), which are collected by the {{site.data.keyword.cloud_notm}} Kubernetes service.
 
 Navigate to the **Settings** tab in the console browser to change the logging settings. The console logs are collected from two separate sources:
 
   * **Client logging:** These logs are collected when commands are sent from your browser to the console.
   * **Server logging:** These logs are collected when the console sends commands to your nodes and from the console deployment. These logs include the Hyperledger Fabric logging output.
 
-Set the amount of logs collected by using the drop-down list under each log type. For example, **Error** and **Warning** collect the least amount of logs, while **Debug** and **All** collect the most.
+Set the amount of collected logs by using the drop-down list under each log type. For example, **Error** and **Warning** collect the least amount of logs, while **Debug** and **All** collect the most.
 
 You can only view the console logs if you are logged in as a console administrator. To view the logs from the **Settings** tab, replace the word `settings` in the browser URL with `api/v1/logs`. For example, if your console url is `localhost:3001/settings`, you can view your logs by navigating to `localhost:3001/api/v1/logs`. Client and server logs are collected in separate files. The most recent logs are at the top of the page.
 
