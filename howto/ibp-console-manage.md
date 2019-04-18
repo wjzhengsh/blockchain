@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-04-17"
+lastupdated: "2019-04-18"
 
 subcollection: blockchain
 
@@ -130,11 +130,6 @@ If you encounter issues with your smart contract, you can view the smart contrac
 - Switch to the `dind` container by selecting it from the dropdown list.
 - Run the command `docker ps -a` to see the list of chaincode containers.
 - Run `docker logs <chaincode-container-ID>` replacing <chaincode-container-ID> with the ID of your chaincode container.
-
-
-## Monitoring resource usage
-
-When the {{site.data.keyword.blockchainfull_notm}} Platform nodes are deployed, they are pre-configured with default CPU, memory, and storage settings and these values cannot be modified. You can monitor your resource usage by using the {{site.data.keyword.IBM_notm}} Kubernetes Service dashboard. If you attempt to create a new node in the {{site.data.keyword.cloud_notm}} Platform console and get an error that you need to expand your Kubernetes cluster, it is possible to add more storage to the Kubernetes cluster. See this [information ![External link icon](../images/external_link.svg "External link icon")](https://cloud.ibm.com/docs/containers/cs_storage_file.html#change_storage_configuration "Changing the size and IOPS of your existing storage device") on how to increase storage capacity or performance of your existing volume.
 
 ## Kubernetes cluster expiration
 {: #ibp-console-manage-console-cluster-expiration}

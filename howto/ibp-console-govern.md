@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-04-17"
+lastupdated: "2019-04-18"
 
 subcollection: blockchain
 
@@ -145,7 +145,7 @@ If you want to increase the CPU and memory for a node, use the **Resource alloca
 
 The method you will use to increase storage will depend on the storage class you chose for your cluster. Refer back to the [storage options ![External link icon](../images/external_link.svg "External link icon")](/docs/containers?topic=containers-kube_concepts#kube_concepts "storage options) documentation for information about increasing your storage.
 
-Unlike CPU and memory, which can be increased using the console (if you have resources available in your {{site.data.keyword.cloud_notm}} Kubernetes Service cluster), you will need to use the SoftLayer CLI to increase the storage of your nodes. For a tutorial on how to do this, see [Changing the size and IOPS of your existing storage device ![External link icon](../images/external_link.svg "External link icon")](/docs/containers?topic=containers-file_storage#file_change_storage_configuration "Chaing the size and IOPS of your existing storage device").
+Unlike CPU and memory, which can be increased using the console (if you have resources available in your {{site.data.keyword.cloud_notm}} Kubernetes Service cluster), you will need to use the {{site.data.keyword.cloud_notm}} CLI to increase the storage of your nodes. For a tutorial on how to do this, see [Changing the size and IOPS of your existing storage device ![External link icon](../images/external_link.svg "External link icon")](/docs/containers?topic=containers-file_storage#file_change_storage_configuration "Chaing the size and IOPS of your existing storage device").
 
 ## Tuning your orderer
 {: #ibp-console-govern-orderer-tuning}
