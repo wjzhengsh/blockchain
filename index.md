@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-18"
 
 subcollection: blockchain
 
@@ -33,6 +33,7 @@ subcollection: blockchain
 
 | **Offerings** | **What's included** | **Billing policy** | **Cloud platform** |
 | ------------------------- |-----------|-----------|-----------|-----------|
+| [**{{site.data.keyword.blockchainfull_notm}} Platform Extension for VSCode**](/docs/services/blockchain?topic=blockchain-develop-vscode#develop-vscode) | Developers can start with the IDE that provides an explorer and commands accessible from the command palette for developing smart contracts quickly. | Free | Runs on your local machine |
 | [**Starter Plan**](/docs/services/blockchain/starter_plan.html#starter-plan-about) | {{site.data.keyword.IBM_notm}}-managed network with basic service levels, development, and testing environment | Monthly subscription | {{site.data.keyword.cloud_notm}} |
 | [**Enterprise Plan**](/docs/services/blockchain/enterprise_plan.html#enterprise-plan-about) | {{site.data.keyword.IBM_notm}}-managed network with advanced service levels and enterprise production ready environment | Monthly subscription | {{site.data.keyword.cloud_notm}} |
 | [**{{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta**](/docs/services/blockchain/howto/ibp-console.html#ibp-console-overview) | {{site.data.keyword.blockchainfull_notm}} Platform console to deploy and manage blockchain components in your {{site.data.keyword.cloud_notm}} Kubernetes cluster | Free for Beta | {{site.data.keyword.cloud_notm}} |
@@ -48,6 +49,10 @@ Do not use Starter Plan or the free 2.0 beta for production usage. It is a devel
 {: #get-started-ibp-step1}
 
 Ensure that you have the cloud account or PPA license to get an {{site.data.keyword.blockchainfull_notm}} Platform offering.
+
+* **{{site.data.keyword.blockchainfull_notm}} Platform Extension for VSCode**
+
+  This VSCode extension is available for free in the [Visual Studio Marketplace ![External link icon](images/external_link.svg "External link icon")](https://marketplace.visualstudio.com/items?itemName=IBMBlockchain.ibm-blockchain-platform "{{site.data.keyword.blockchainfull_notm}} Platform Extension for VSCode") and can be used to develop, debug, and test smart contracts for eventual deployment into {{site.data.keyword.blockchainfull_notm}}.
 
 * **Starter Plan**, **Enterprise Plan**, and **{{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta**
 
