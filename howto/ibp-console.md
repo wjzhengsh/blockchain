@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-04-17"
+lastupdated: "2019-04-18"
 
 subcollection: blockchain
 
@@ -23,7 +23,7 @@ subcollection: blockchain
 The {{site.data.keyword.blockchainfull}} Platform free 2.0 beta is the next generation of {{site.data.keyword.blockchainfull_notm}} Platform offerings, which gives you total control over your deployments and  public and private keys. This free beta includes the new {{site.data.keyword.blockchainfull_notm}} Platform console, a user interface that can simplify and accelerate the process of deploying components into a {{site.data.keyword.cloud_notm}} Kubernetes Service managed and controlled by you. For more information about Kubernetes and {{site.data.keyword.cloud_notm}} Kubernetes Service, see [Kubernetes](/docs/services/blockchain/reference/k8s.html "Kubernetes").
 {:shortdesc}
 
-{{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta is now upgraded to Hyperledger Fabric 1.4 code base. For more information about Hyperledger Fabric 1.4 new features, see [What's new in 1.4 ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/whatsnew.html "What's new in Fabric 1.4"){:new_window}.
+{{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta is now upgraded to Hyperledger Fabric 1.4.0 code base. For more information about Hyperledger Fabric 1.4.0 new features, see [What's new in 1.4 ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/whatsnew.html "What's new in Fabric 1.4"){:new_window}.
 
 ## What the new beta offers
 {: #ibp-console-overview-capabilities}
@@ -64,7 +64,7 @@ This offering is for experienced Fabric users who want to build and manage their
 
 Before you deploy the console, ensure that you understand the following considerations:
 
-- {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta is built with Hyperledger Fabric v1.4.
+- {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta is built with Hyperledger Fabric v1.4.0.
 - All peers deployed with the free 2.0 beta use CouchDB as their state database.
 - You have the option to use a free Kubernetes cluster for evaluation of the beta offering, however capacity and performance are limited, none of your data can be migrated, and the cluster is deleted after 30 days.
 - You are responsible for the management of health monitoring, security, and logging of your Kubernetes cluster. See this [information ![External link icon](../images/external_link.svg "External link icon")](https://cloud.ibm.com/docs/containers/cs_responsibilities.html#your-responsibilities-by-using-ibm-cloud-kubernetes-service "Cluster management responsibilities") for details on what {{site.data.keyword.cloud_notm}} manages and what you are responsible for.

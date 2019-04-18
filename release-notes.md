@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-04-17"
+lastupdated: "2019-04-18"
 
 ---
 
@@ -16,7 +16,7 @@ lastupdated: "2019-04-17"
 # Release notes
 {: #release-notes-saas-20}
 
-Use these release notes that are grouped by date to learn about the latest changes to {{site.data.keyword.blockchainfull}} Platform free 2.0 beta
+Use these release notes that are grouped by date to learn about the latest changes to {{site.data.keyword.blockchainfull}} Platform free 2.0 beta which is built on Hyperledger Fabric v1.4.0.
 {:shortdesc}
 
 
