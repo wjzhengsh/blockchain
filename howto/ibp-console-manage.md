@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-04-18"
+lastupdated: "2019-04-19"
 
 subcollection: blockchain
 
@@ -59,7 +59,7 @@ After you add new users to the console, the users might not be able to view all 
 If you need to modify a user's role:
  1. From the menu bar, click  **Manage** > **Access (IAM)** and then select **Users**.
  2. Click the Actions menu next to the user you want to modify and select **Assign access**.
- 3. Select the tile **Assign access within a resource group**.
+ 3. Select the tile **Assign access to resources**.
  4. From the `Services` drop-down list, select `Blockchain Platform 2.0`.
  5. Scroll down to `Select roles`.
  6. Under `Assign service access roles`, choose a role for the user, which can be `Manager`, `Writer`, and `Reader`.
