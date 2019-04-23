@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -112,7 +112,7 @@ You need to use the **kubectl** command line tool to connect to CA container tha
 ### Retrieving your Certificate Authority URL
 {: #ca-operate-url}
 
-You need to target the CA URL for requests to generate certificates or register with a new identity. You can find your CA URL by using your {{site.data.keyword.cloud_notm}} Private console UI. You will need to be a [Cluster administrator ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Cluster administrator roles and actions") to complete the following steps:
+You need to target the CA URL for requests to generate certificates or register with a new identity. You can find your CA URL by using your {{site.data.keyword.cloud_notm}} Private console UI. You will need to be a [Cluster administrator ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/user_management/assign_role.html "Cluster administrator roles and actions") to complete the following steps:
 
 1. Log in to your {{site.data.keyword.cloud_notm}} Private console and click the **Menu** icon in the upper left corner.
 2. Click **Workload** > **Helm Releases**.
@@ -153,12 +153,12 @@ You need to download your CA TLS certificate and pass it with along with your co
 
 You can use the Fabric CA client to operate your CA. These instructions explain how to use the Fabric CA client to enroll and register identities for other components that belong to your organization. You can also use the Fabric SDKs to complete the prerequisite steps.
 
-1. You need to download the [Fabric CA client ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric-ca.readthedocs.io/en/latest/users-guide.html#fabric-ca-client "Download Fabric CA client") to your local file system.
+1. You need to download the [Fabric CA client ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/users-guide.html#fabric-ca-client "Download Fabric CA client") to your local file system.
 
-  The easiest way to get the Fabric CA client is to download all of the Fabric tool binaries directly. Navigate to a directory where you would like to download the binaries with your command line, and fetch them by running the following [Curl ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/prereqs.html#install-curl "Curl") command.
+  The easiest way to get the Fabric CA client is to download all of the Fabric tool binaries directly. Navigate to a directory where you would like to download the binaries with your command line, and fetch them by running the following [Curl ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/prereqs.html#install-curl "Curl") command.
 
   ```
-  curl -sSL http://bit.ly/2ysbOFE | bash -s 1.2.1 1.2.1 -d -s
+  curl -sSL http://bit.ly/2ysbOFE | bash -s 1.4.0 1.4.0 -d -s
   ```
   {:codeblock}
 
@@ -257,6 +257,8 @@ tree
 │   └── msp
 │       ├── cacerts
 │       │   └── 9-30-250-70-30395-SampleOrgCA.pem
+│       ├── IssuerPublicKey
+│       ├── IssuerRevocationPublicKey
 │       ├── keystore
 │       │   └── 2a97952445b38a6e0a14db134645981b74a3f93992d9ddac54cb4b4e19cdf525_sk
 │       ├── signcerts
@@ -274,7 +276,7 @@ Before you deploy an orderer or peer, you need to create a configuration JSON fi
 The following instructions provide you a [template JSON configuration file](/docs/services/blockchain/howto/CA_operate.html#ca-operate-config-file-template) that you can edit and save to your local file system, and take you through how to use your CA to complete this file.
 
 - Follow the instructions below if you are deploying an orderer on {{site.data.keyword.cloud_notm}} Private or deploying a peer to connect to a consortium that is hosted on {{site.data.keyword.cloud_notm}} Private.
-- If you want to deploy a peer to connect to Starter Plan or Enterprise Plan, follow the instructions on [Deploying peers in IBM Cloud Private to connect to Starter Plan or Enterprise Plan](/docs/services/blockchain/howto/peer_deploy_icp.html#icp-peer-deploy) instead. Those steps take you through how to use you CA on {{site.data.keyword.blockchainfull_notm}} Platform to deploy our peer on {{site.data.keyword.cloud_notm}} Private.
+- If you want to deploy a peer to connect to Starter Plan or Enterprise Plan, follow the instructions on [Deploying peers in IBM Cloud Private to connect to Starter Plan or Enterprise Plan](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy) instead. Those steps take you through how to use you CA on {{site.data.keyword.blockchainfull_notm}} Platform to deploy our peer on {{site.data.keyword.cloud_notm}} Private.
 
 ### Configuration file
 {: #ca-operate-config-file-template}
@@ -475,6 +477,8 @@ tree
 │   └── msp
 │       ├── cacerts
 │       │   └── 9-30-250-70-30395-SampleOrgCA.pem
+│       ├── IssuerPublicKey
+│       ├── IssuerRevocationPublicKey
 │       ├── keystore
 │       │   └── 2a97952445b38a6e0a14db134645981b74a3f93992d9ddac54cb4b4e19cdf525_sk
 │       ├── signcerts
@@ -505,6 +509,8 @@ tree
     └── msp
         ├── cacerts
         │   └── 9-30-250-70-30395-tlsca.pem
+        ├── IssuerPublicKey
+        ├── IssuerRevocationPublicKey
         ├── keystore
         │   └── 45a7838b1a91ddfe3d4d22a5a7f2639b868493bcce594af3e3ceb9c07899d117_sk
         ├── signcerts
@@ -606,7 +612,7 @@ You need to provide a CSR hostname to deploy an orderer or peer. This hostname i
 
 #### Locating the value of the cluster proxy IP address
 
-If you want to deploy an orderer or peer on the same {{site.data.keyword.cloud_notm}} Private cluster on which you deployed your CA, ensure that you have a [Cluster administrator ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Cluster administrator roles and actions") role on the {{site.data.keyword.cloud_notm}} Private cluster where the orderer or peer will be deployed. Then, enter the same proxy IP that you used when you [configured for your CA](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-configuration-parms). If you want to deploy the orderer or peer on a different cluster, you can retrieve the value of the cluster proxy IP address from the {{site.data.keyword.cloud_notm}} Private console by completing the following steps:
+If you want to deploy an orderer or peer on the same {{site.data.keyword.cloud_notm}} Private cluster on which you deployed your CA, ensure that you have a [Cluster administrator ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/user_management/assign_role.html "Cluster administrator roles and actions") role on the {{site.data.keyword.cloud_notm}} Private cluster where the orderer or peer will be deployed. Then, enter the same proxy IP that you used when you [configured for your CA](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-configuration-parms). If you want to deploy the orderer or peer on a different cluster, you can retrieve the value of the cluster proxy IP address from the {{site.data.keyword.cloud_notm}} Private console by completing the following steps:
 
 1. Log in to the {{site.data.keyword.cloud_notm}} Private console. In the left navigation panel, click **Platform** and then **Nodes** to view the nodes that are defined in the cluster.
 2. Click the node with the role `proxy` and then copy the value of the `Host IP` from the table.
@@ -696,7 +702,7 @@ You can leave the other fields blank. Save this file and you need to use it when
 ## Membership Service Providers (MSPs)
 {: #ca-operate-msp}
 
-Components of {{site.data.keyword.blockchainfull_notm}} Platform consume identities via Membership Service Providers (MSPs). MSPs associate the certificates that the CAs issue with permissions and roles. For more information about MSPs, see [the Membership topic in the Hyperledger Fabric documentation ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/latest/membership/membership.html "the topic on Membership in the Hyperledger Fabric documentation").
+Components of {{site.data.keyword.blockchainfull_notm}} Platform consume identities via Membership Service Providers (MSPs). MSPs associate the certificates that the CAs issue with permissions and roles. For more information about MSPs, see [the Membership topic in the Hyperledger Fabric documentation ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/membership/membership.html "the topic on Membership in the Hyperledger Fabric documentation").
 
 MSP folders must have a defined structure to be used by Fabric components. The Fabric CA client establishes this structure by creating the following MSP folders:
 
@@ -715,7 +721,7 @@ Many Fabric components contain additional information inside their MSP folder. F
 - **admincerts:** This folder contains the list of administrators for this organization or component. You need to upload your signCert to this folder if you are operating a remote peer from the command line or the SDKs. If you use the Fabric CA client, you also need an admincerts folder in your MSP containing the corresponding signCert to be recognized as administrator certs.
 - **tls:** This is a folder where you store TLS certs that are used for communicating with other network components.
 
-For more information about the structure of MSPs, see [Membership ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/latest/membership/membership.html "Membership") and [Membership Service Providers ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/latest/msp.html "Membership Service Providers") in Hyperledger Fabric documentation.
+For more information about the structure of MSPs, see [Membership ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/membership/membership.html "Membership") and [Membership Service Providers ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/msp.html "Membership Service Providers") in Hyperledger Fabric documentation.
 
 
 ## Viewing the CA logs
@@ -739,7 +745,7 @@ Component logs can be viewed from the command line by using the [`kubectl CLI co
 
    For more information about the `kubectl logs` command, see [Kubernetes documentation ![External link icon](../images/external_link.svg "External link icon")](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs “Getting Started”)
 
-- Alternatively, you can access deployment events and logs by using the [{{site.data.keyword.cloud_notm}} Private cluster management console](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/troubleshoot/events.html), which opens the logs in Kibana.
+- Alternatively, you can access deployment events and logs by using the [{{site.data.keyword.cloud_notm}} Private cluster management console](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/troubleshoot/events.html), which opens the logs in Kibana.
 
   **Note:** When you view your logs in Kibana, you might receive the response `No results found`. This condition can occur if {{site.data.keyword.cloud_notm}} Private uses your worker node IP address as its hostname. To resolve this problem, remove the filter that begins with `node.hostname.keyword` at the top of the panel and the logs will become visible.
 

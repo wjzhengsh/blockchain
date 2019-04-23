@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-04-18"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -28,12 +28,12 @@ After creating CAs, peers, orderers, organizations, and channels, you can use th
 ## How the {{site.data.keyword.cloud_notm}} Kubernetes Service interacts with the console
 {: #ibp-console-govern-iks-console-interaction}
 
-It is the network operator's responsibility to monitor CPU, memory, and storage usage and ensure adequate resources are available **before** attempting to create or resize a node.
+It is the network operator's responsibility to monitor CPU, memory, and storage usage and ensure that adequate resources are available **before** attempting to create or resize a node.
 {:important}
 
-Because your instance of the {{site.data.keyword.blockchainfull_notm}} Platform console and the your {{site.data.keyword.cloud_notm}} Kubernetes Service cluster do not communicate directly about the resources that are available in your cluster, the process for deploying or resizing components by using the console must follow this pattern:
+Because your instance of the {{site.data.keyword.blockchainfull_notm}} Platform console and your {{site.data.keyword.cloud_notm}} Kubernetes Service cluster do not communicate directly about the resources that are available in your cluster, the process for deploying or resizing components by using the console must follow this pattern:
 
-1. **Size the deployment that you want to make**. The **Resource allocation** panels for the CA, peer and orderer in the console offer default CPU, memory and storage allocations for each node. You may need to adjust these values according to your use case. If you are unsure, start with default allocations and adjust them as you understand your needs. Similarly, the **Resource reallocation** panel displays the existing resource allocations.
+1. **Size the deployment that you want to make**. The **Resource allocation** panels for the CA, peer, and orderer in the console offer default CPU, memory, and storage allocations for each node. You may need to adjust these values according to your use case. If you are unsure, start with default allocations and adjust them as you understand your needs. Similarly, the **Resource reallocation** panel displays the existing resource allocations.
 
   For a sense of how much storage and compute you will need in your cluster, refer to the chart after this list, which contains the current defaults for the peer, orderer, and CA.
 
@@ -46,10 +46,13 @@ Because your instance of the {{site.data.keyword.blockchainfull_notm}} Platform 
 | **CA**                         | 300                | .3            | 600                   | .6                    | 10                     |
 | **Orderer**                    | 450                | .45           | 900                   | .9                    | 100                    |
 
+For cases when a user wants to minimize charges without bringing a node down completely or deleting it, it is possible to scale a node down to a minimum of 0.001 CPU (1 milliCPU). Note that the node will not be functional when using this amount of CPU.
+{:important}
+
 ## Allocating resources
 {: #ibp-console-govern-allocate-resources}
 
-While users of a free cluster **must use default sizes** for the containers associated with their nodes, users of paid clusters have the ability to set these values during the creation of their nodes.
+While users of a free cluster **must use default sizes** for the containers associated with their nodes, users of paid clusters can set these values during the creation of their nodes.
 
 The **Resource allocation** panel in the console provides default values for the various fields that are involved in creating a node. These values are chosen because they represent a good way to get started. However, every use case is different. While this topic will provide guidance for ways to think about these values, it ultimately falls to the user to monitor their nodes and find sizings that work for them. Therefore, barring situations in which users are certain that they will need values different from the defaults, a practical strategy is to use these defaults and adjust these values later. For an overview of performance and scale of Hyperledger Fabric, which the {{site.data.keyword.blockchainfull_notm}} Platform is based on, see [Answering your questions on Hyperledger Fabric performance and scale ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/blogs/blockchain/2019/01/answering-your-questions-on-hyperledger-fabric-performance-and-scale/ "Blog about Hyperledger Fabric performance and scale").
 
@@ -63,7 +66,7 @@ Every node has a gRPC web proxy container that bootstraps the communication laye
 ### Certificate Authorities (CAs)
 {: #ibp-console-govern-CA}
 
-Unlike peers and orderers, which are actively involved in the transaction process, CAs are only involved in the registration and enrollment of identities, as well in the creation of a MSP. This means they require less CPU and memory in order to function. In order to stress a CA, a user would need to overwhelm it with requests (likely using APIs and a script), or have issued so many certificates it runs out of storage. Under typical operations, neither of these things should happen, though as always, these values should reflect the needs of a particular use case.
+Unlike peers and orderers, which are actively involved in the transaction process, CAs are involved only in the registration and enrollment of identities, and in the creation of an MSP. This means that they require less CPU and memory. To stress a CA, a user would need to overwhelm it with requests (likely using APIs and a script), or have issued so many certificates it runs out of storage. Under typical operations, neither of these things should happen, though as always, these values should reflect the needs of a particular use case.
 
 The CA has only one associated container that we can adjust:
 
@@ -86,7 +89,7 @@ The peer has three associated containers that we can adjust:
 
 - **The peer itself**: Encapsulates the internal peer processes (such as validating transactions) and the blockchain (in other words, the transaction history) for all of the channels it belongs to. Note that the storage of the peer also includes the smart contracts installed on the peer.
 - **CouchDB**: Where the state databases of the peer are stored. Recall that each channel has a distinct state database.
-- **Smart contract**: Recall that during a transaction, the relevant smart contract is "invoked" (in other words, run). Note that all smart contracts you install on the peer will run in a separate container inside your smart container container, known as a Docker-in-Docker container.
+- **Smart contract**: Recall that during a transaction, the relevant smart contract is "invoked" (in other words, run). Note that all smart contracts that you install on the peer will run in a separate container inside your smart contract container, which is known as a Docker-in-Docker container.
 
 #### Sizing a peer during creation
 {: #ibp-console-govern-peers-sizing-creation}
@@ -113,7 +116,7 @@ Similar to the CA, the orderer has only one associated container that we can adj
 #### Sizing an orderer during creation
 {: #ibp-console-govern-peers-sizing-creation}
 
-As we noted in our section on [how Kubernetes interacts with the console](#ibp-console-govern-iks-console-interaction), it is recommended to use the defaults for these orderer containers and adjust them later as it become apparent how they are being utilized.
+As we noted in our section on [how Kubernetes interacts with the console](#ibp-console-govern-iks-console-interaction), it is recommended to use the defaults for these orderer containers and adjust them later as it becomes apparent how they are being utilized.
 
 | Resources | Condition to increase |
 |-----------------|-----------------------|
@@ -183,9 +186,9 @@ When you modify these parameters, you do not affect the behavior of existing cha
 ### Configuring anchor peers
 {: #ibp-console-govern-channels-anchor-peers}
 
-Because cross organizational [gossip ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/gossip.html "Gossip data dissemination protocol") must be enabled for servide discovery and private data to work, an anchor peer must exist for each organization. This anchor peer is not a special **type** of peer, it is just the peer that the organization makes known to other organizations, and in so doing bootstraps cross organizational gossip. Therefore, at least one [anchor peer ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/gossip.html#anchor-peers "Anchor peers") must be defined for each organization in the collection definition.
+Because cross organizational [gossip ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/gossip.html "Gossip data dissemination protocol") must be enabled for service discovery and private data to work, an anchor peer must exist for each organization. This anchor peer is not a special **type** of peer, but is just the peer that the organization makes known to other organizations and does bootstraps cross organizational gossip. Therefore, at least one [anchor peer ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/gossip.html#anchor-peers "Anchor peers") must be defined for each organization in the collection definition.
 
-To configure a peer to be an anchor peer, click the **Channels** tab and open the channel where the the smart contract was instantiated.
+To configure a peer to be an anchor peer, click the **Channels** tab and open the channel where the smart contract was instantiated.
  - Click the **Channel details** tab.
  - Scroll down to the Anchor peers table and click **Add anchor peer**.
  - Select at least one peer from each organization in collection definition that you want to serve as the anchor peer for the organization. For redundancy reasons, you can consider selecting more than one peer from each organization in the collection.

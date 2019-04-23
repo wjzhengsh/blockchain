@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2019
-lastupdated: "2019-03-05"
+  years: 2018, 2019
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -20,7 +20,7 @@ subcollection: blockchain
 # Deploying peers in {{site.data.keyword.cloud_notm}} Private
 {: #icp-peer-deploy}
 
-The following instructions describe how to deploy an {{site.data.keyword.blockchainfull}} Platform peer on {{site.data.keyword.cloud_notm}} Private. These instructions allow you to connect to an {{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}} Private. If you want to connect a peer to a Starter Plan or Enterprise Plan network on {{site.data.keyword.cloud_notm}}, see [Deploying peers to connect to Starter Plan or Enterprise Plan](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy).
+The following instructions describe how to deploy an {{site.data.keyword.blockchainfull}} Platform peer on {{site.data.keyword.cloud_notm}} Private. These instructions allow you to connect to {{site.data.keyword.blockchainfull_notm}} Platform components on {{site.data.keyword.cloud_notm}} Private. If you want to connect a peer to a Starter Plan or Enterprise Plan network on {{site.data.keyword.cloud_notm}}, see [Deploying peers to connect to Starter Plan or Enterprise Plan](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy).
 {:shortdesc}
 
 Before you deploy a peer, review the [Considerations and limitations](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-about-considerations).
@@ -34,7 +34,7 @@ Ensure that your {{site.data.keyword.cloud_notm}} Private system meets the minim
 | Component | vCPU | RAM | Disk for data storage |
 |-----------|------|-----|-----------------------|
 | Peer | 2 | 2 GB | 50 GB with the ability to expand |
-| CouchDB for Peer | 2| 2 GB |50 GB with the ability to expand |
+| CouchDB for Peer<br>(Applicable only if you use CouchDB) | 2| 2 GB | 50 GB with the ability to expand |
 
  **Notes:**
  - A vCPU is a virtual core that is assigned to a virtual machine or a physical processor core if the server is not partitioned for virtual machines. You need to consider vCPU requirements when you decide the virtual processor core (VPC) for your deployment in {{site.data.keyword.cloud_notm}} Private. VPC is a unit of measurement to determine the licensing cost of IBM products. For more information about scenarios to decide VPC, see [Virtual processor core (VPC) ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/en/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_virtual_processor_core_licenses.html "IBM Licence Metric Tool 9.2").
@@ -56,11 +56,11 @@ If you do not use dynamic provisioning, [Persistent Volumes ![External link icon
 
 1. Before you can install a peer on {{site.data.keyword.cloud_notm}} Private, you must [install {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/ICP_setup.html#icp-setup) and [install the {{site.data.keyword.blockchainfull_notm}} Platform Helm chart](/docs/services/blockchain/howto/helm_install_icp.html#helm-install).
 
-2. If you use the Community Edition and you want to run this Helm chart on an {{site.data.keyword.cloud_notm}} Private cluster without Internet connectivity, you need to create archives on an Internet-connected machine before you can install the archives on your {{site.data.keyword.cloud_notm}} Private cluster. For more information, see [Adding featured applications to clusters without Internet connectivity ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_package_offline.html "Adding featured applications to clusters without Internet connectivity"){:new_window}. Note that you can find the specification file `manifest.yaml` under `ibm-blockchain-platform-dev/ibm_cloud_pak` in the Helm chart.
+2. If you use the Community Edition and you want to run this Helm chart on an {{site.data.keyword.cloud_notm}} Private cluster without Internet connectivity, you need to create archives on an Internet-connected machine before you can install the archives on your {{site.data.keyword.cloud_notm}} Private cluster. For more information, see [Adding featured applications to clusters without Internet connectivity ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/app_center/add_package_offline.html "Adding featured applications to clusters without Internet connectivity"){:new_window}. Note that you can find the specification file `manifest.yaml` under `ibm-blockchain-platform-dev/ibm_cloud_pak` in the Helm chart.
 
 3. You must first [deploy a CA](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy) on {{site.data.keyword.cloud_notm}} Private. You need to use the CA to create a [peer configuration file and store it as a Kubernetes secret in {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/howto/peer_deploy_icp.html#icp-peer-deploy-config-file).
 
-4. Retrieve the value of the cluster Proxy IP address of your CA from the {{site.data.keyword.cloud_notm}} Private console. **Note:** You will need to be a [Cluster administrator ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Cluster administrator roles and actions") to access your proxy IP. Log in to the {{site.data.keyword.cloud_notm}} Private cluster. In the left navigation panel, click **Platform** and then **Nodes** to view the nodes that are defined in the cluster. Click the node with the role `proxy` and then copy the value of the `Host IP` from the table. **Important:** Save this value and you will use it when you configure the `Proxy IP` field of the Helm chart.
+4. Retrieve the value of the cluster Proxy IP address of your CA from the {{site.data.keyword.cloud_notm}} Private console. **Note:** You will need to be a [Cluster administrator ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/user_management/assign_role.html "Cluster administrator roles and actions") to access your proxy IP. Log in to the {{site.data.keyword.cloud_notm}} Private cluster. In the left navigation panel, click **Platform** and then **Nodes** to view the nodes that are defined in the cluster. Click the node with the role `proxy` and then copy the value of the `Host IP` from the table. **Important:** Save this value and you will use it when you configure the `Proxy IP` field of the Helm chart.
 
 
 ## Creating the peer configuration secret
@@ -110,7 +110,7 @@ Save the resulting output for Step 4 below.
 
 3. On the **General** tab, complete the following fields:
   - **Name:** Give your secret a unique name within your cluster. You will use this name when deploying your peer. The name must be all lowercase.  
-  **Note:** When you deploy a peer, a new secret is automatically generated by the deployment with the name `<helm_release_name>-secret`. Therefore, when you name your secret, be sure the name of the secret differs from the `<helm_release_name>-secret` . Otherwise, the helm chart deployment will fail because the secret it tries to create already exists.
+  **Note:** When you deploy a peer, a new secret is automatically generated by the deployment with the name `<helm release name you intend to use>-secret`. Therefore, when you name this secret, be sure the name of the secret differs from the `<helm release name you intend to use>-secret` . Otherwise, the helm chart deployment will fail because the secret it tries to create already exists.
   - **Namespace:** The namespace to add your secret. Select the `namespace` that you want to deploy your peer to.
   - **Type:** Enter the value `Opaque`.
 
@@ -157,8 +157,10 @@ The following table lists the configurable parameters of the {{site.data.keyword
 
 |  Parameter     | Description    | Default  | Required |
 | --------------|-----------------|-------|------- |
+|**General parameters**| Parameters that configure the Helm chart | | |
 | `Helm release name`| The name of your Helm release. Must begin with a lowercase letter and end with any alphanumeric character, must only contain hyphens and lowercase alphanumeric characters. You must use a unique Helm release name each time you attempt to install a component. **Important:** This value must match the value you used to generate the 'service host name' for the "hosts" field in your [JSON secret file.](/docs/services/blockchain/howto/peer_deploy_icp.html#icp-peer-deploy-config-file) | none | yes |
 | `Target namespace`| Choose the Kubernetes namespace to install the Helm chart. | none | yes |
+| `Target namespace policies`| Displays the pod security policies of the chosen namespace, which must include an **`ibm-privileged-psp`** policy. Otherwise, [bind a PodSecurityPolicy](/docs/services/blockchain?topic=blockchain-icp-setup#icp-setup-psp) to your namespace. | none | no |
 |**Global configuration**| Parameters which apply to all components in the Helm chart|||
 | `Service account name`| Enter the name of the [service account ![External link icon](../images/external_link.svg "External link icon")](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/) that you will use to run the pod. | default | no |
 
@@ -171,8 +173,8 @@ The following table lists the configurable parameters of the {{site.data.keyword
 | `Install Peer` | Select to install a peer|unchecked | yes, if you want to deploy a peer |
 | `Peer worker node architecture`| Select your cloud platform architecture (AMD64 or S390x)| AMD64 | yes |
 | `Peer image repository`| Location of the Peer Helm chart. This field is autofilled to the installed path. | ibmcom/ibp-fabric-peer | yes |
-| `Peer Docker image tag`|Value of the tag that is associated with the peer image. |1.2.1, autofilled to correct value.|yes|
-| `Peer configuration`| You can customize the configuration of the peer by pasting your own `core.yaml` configuration file in this field. To see a sample `core.yaml` file, see [`core.yaml` sample config ![External link icon](../images/external_link.svg "External link icon")](https://github.com/hyperledger/fabric/blob/release-1.2/sampleconfig/core.yaml) **For advanced users only**. | none | no |
+| `Peer Docker image tag`|Value of the tag that is associated with the peer image. |1.4.0, autofilled to correct value.|yes|
+| `Peer configuration`| You can customize the configuration of the peer by pasting your own `core.yaml` configuration file in this field. To see a sample `core.yaml` file, see [`core.yaml` sample config ![External link icon](../images/external_link.svg "External link icon")](https://github.com/hyperledger/fabric/blob/release-1.4/sampleconfig/core.yaml) **For advanced users only**. | none | no |
 | `Peer configuration secret (Required)`|Name of the [Peer configuration secret](/docs/services/blockchain/howto/peer_deploy_icp.html#icp-peer-deploy-config-file) you created in {{site.data.keyword.cloud_notm}} Private. | none | yes |
 |`Organization MSP (Required)`| You can create a new Organization MSPID value such as 'org1' or specify an existing Organization MSP that the peer will be part of. If you have deployed an orderer organization, ensure that any peer MSPIDs are different from your orderer MSPID. Also, make a note of this value, as you will need it for your `CORE_PEER_LOCALMSPID` and `configtx.yaml` later. | none | yes |
 |`Peer service type`| Used to specify whether [external ports should be exposed ![External link icon](../images/external_link.svg "External link icon")](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types) on the peer. Select NodePort to expose the ports externally (recommended), and ClusterIP to not expose the ports. LoadBalancer and ExternalName are not supported in this release. | NodePort | yes |
@@ -197,6 +199,14 @@ The following table lists the configurable parameters of the {{site.data.keyword
 | `State database volume claim size`| Choose the size of disk to use. | 8Gi | yes |
 | `CouchDB - Data persistence enabled`| For CouchDB container, ledger data will be available when the container restarts. *If unchecked, all data will be lost in the event of a failover or pod restart.*| checked | no |
 | `CouchDB - Use dynamic provisioning`| For CouchDB container use Kubernetes dynamic storage.| checked | no |
+| `Docker-in-Docker CPU request`| Specify the minimum number of CPUs to allocate to the container where the chaincode runs. | 1 | yes |
+| `Docker-in-Docker CPU limit`| Specify the maximum number of CPUs to allocate to the container where the chaincode runs. | 2 | yes |
+| `Docker-in-Docker memory request`| Specify the minimum amount of memory to allocate to the container where the chaincode runs. | 1Gi | yes |
+| `Docker-in-Docker memory limit`| Specify the maximum amount of memory to allocate to the container where the chaincode runs. | 4Gi | yes |
+| `gRPC web proxy CPU request`| Specify the minimum number of CPUs in millicpus (m) to allocate to the gRPC web proxy. | 100m | yes |
+| `gRPC web proxy CPU limit`| Specify the maximum number of CPUs in millicpus (m) to allocate to the gRPC web proxy. | 200m | yes |
+| `gRPC web proxy memory request`| Specify the minimum amount of memory to allocate to the gRPC web proxy. | 100Mi | yes |
+| `gRPC web proxy memory limit`| Specify the maximum amount of memory to allocate to the gRPC web proxy. | 200Mi | yes |
 | `Peer CPU request` | Minimum number of CPUs to allocate to the peer. | 1 | yes |
 | `Peer CPU limit` | Maximum number of CPUs to allocate to the peer.| 2 | yes |
 | `Peer Memory request` | Minimum amount of memory to allocate to the peer. | 1Gi | yes |
@@ -224,7 +234,7 @@ processes. This container has two volume mounts, one for the Peer PVC and the se
 ### Using the Helm command line to install the Helm release
 {: #icp-peer-deploy-helm-cli}
 
-Alternatively, you can use the `helm` CLI to install the Helm release. Before you run the `helm install` command, ensure that you [add your cluster's Helm repository to the Helm CLI environment ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_int_helm_repo_to_cli.html "Adding the internal Helm repository to Helm CLI").
+Alternatively, you can use the `helm` CLI to install the Helm release. Before you run the `helm install` command, ensure that you [add your cluster's Helm repository to the Helm CLI environment ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/app_center/add_int_helm_repo_to_cli.html "Adding the internal Helm repository to Helm CLI").
 
 You can set the parameters required for installation by creating a `yaml` file and passing it to the following `helm install` command.
 ```

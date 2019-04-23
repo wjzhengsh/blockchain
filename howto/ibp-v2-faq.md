@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-03-20"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -27,7 +27,7 @@ subcollection: blockchain
 - [Can I use my existing {{site.data.keyword.cloud_notm}} Kubernetes Service cluster?](#ibp-v2-faq-existing-cluster)
 - [What database do the Peers use for their ledger?](#ibp-v2-faq-couchDB)
 - [What languages are supported for smart contracts?](#ibp-v2-faq-cc-langs)
-- [Can I migrate from the V2.0 beta to v2.0 GA?](/docs/services/blockchain/ibp-v2-deploy-iks.html#ibp-v2-faq-migrate)
+- [Can I migrate from the V2.0 beta to v2.0 GA?](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-faq-migrate)
 - [Do we have access to logging services and what logs are available to me?](#ibp-v2-faq-logs)
 - [What is the value of using {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta over native Hyperledger Fabric?](#ibp-v2-faq-native-fabric)
 - [How can I maximize performance and scale my {{site.data.keyword.blockchainfull_notm}} Platform solution?](#ibp-v2-faq-perf-scale)
@@ -50,8 +50,8 @@ The beta release is free. But you may still incur charges for your {{site.data.k
 
 Your existing Kubernetes cluster will work with the {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta as long as it satisfies the following conditions:
 - It is in the {{site.data.keyword.cloud_notm}} Dallas region.
-- It is running Kubernetes v1.11 or higher. See these instructions for information on how to [upgrade the Kubernetes version of your cluster](/docs/services/blockchain/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks-updating-kubernetes).
-- There are enough available resources in the cluster. See this topic on [minimum resource requirements](/docs/services/blockchain/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks-resources-required) for more information.
+- It is running Kubernetes v1.11 or higher. See these instructions for information on how to [upgrade the Kubernetes version of your cluster](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks-updating-kubernetes).
+- There are enough available resources in the cluster. See this topic on [minimum resource requirements](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks-resources-required) for more information.
 
 ## What database do the Peers use for their ledger?
 {: #ibp-v2-faq-couchDB}

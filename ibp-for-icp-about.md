@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-20"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -20,8 +20,11 @@ subcollection: blockchain
 # About {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private
 {: #ibp-icp-about}
 
-{{site.data.keyword.blockchainfull}} Platform releases {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private, which is an application platform for developing and managing containerized applications. The {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private offering is based on Kubernetes, which allows users to deploy Certificate Authorities (CAs), orderers, and peers on x86, LinuxONE, and IBM Z. {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private is based on Hyperledger Fabric v1.2.1 and is deployed by using Kubernetes Helm charts.
+{{site.data.keyword.blockchainfull}} Platform releases {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private, which is an application platform for developing and managing containerized applications. The {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private offering is based on Kubernetes, which allows users to deploy Certificate Authorities (CAs), orderers, and peers on x86, LinuxONE, and IBM Z. You can deploy {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private by using Kubernetes Helm charts.
 {:shortdesc}
+
+{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private is upgraded to Hyperledger Fabric v1.4.0 on April 23, 2019. However, gossip and private data will not be supported so far.
+{:note}
 
 {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private delivers the components that you need to run a blockchain network on your own infrastructure through {{site.data.keyword.cloud_notm}} Private. The components include Hyperledger Fabric a Certificate Authority (CA), an orderer, and a peer, which you deploy, manage, and set up by using Kubernetes Helm charts. **This offering is intended for customers with advanced Hyperledger Fabric experience.**
 
@@ -31,15 +34,15 @@ subcollection: blockchain
  * Enables clients to configure Fabric on Kubernetes by using Helm charts and detailed documentation for operations.
  * Entitles clients with advanced technical support, unless you use the Community Edition.
 
-{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private is a bundled product for {{site.data.keyword.cloud_notm}} Private customers to deploy blockchain components in their local environment. After you import the Helm chart, you can find it as an {{site.data.keyword.blockchainfull_notm}} Platform tile in the {{site.data.keyword.cloud_notm}} Private Catalog. For more information about {{site.data.keyword.cloud_notm}} Private, see the documentation for [{{site.data.keyword.cloud_notm}} Private version 3.1.0 ![External link icon](images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/kc_welcome_containers.html "{{site.data.keyword.cloud_notm}} Private 3.1.0").
+{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private is a bundled product for {{site.data.keyword.cloud_notm}} Private customers to deploy blockchain components in their local environment. After you import the Helm chart, you can find it as an {{site.data.keyword.blockchainfull_notm}} Platform tile in the {{site.data.keyword.cloud_notm}} Private Catalog. For more information about {{site.data.keyword.cloud_notm}} Private, see the documentation for [{{site.data.keyword.cloud_notm}} Private version 3.1.2 ![External link icon](images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/kc_welcome_containers.html "{{site.data.keyword.cloud_notm}} Private 3.1.2").
 
 ## What {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private offers
 
-{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private allows you to deploy all of the fundamental components of a Hyperledger Fabric blockchain: A Certificate Authority, an ordering service, and peers. It provides you the flexibility to deploy different components depending on your business needs. You can use {{site.data.keyword.blockchainfull_notm}} for {{site.data.keyword.cloud_notm}} Private to start a blockchain network by deploying and configuring an ordering service that binds organizations together in a blockchain consortium. You can also deploy peers and join other networks that use components based on Fabric, including {{site.data.keyword.blockchainfull_notm}} Platform networks deployed across clouds by using {{site.data.keyword.cloud_notm}} Private, or Starter Plan and Enterprise Plan networks hosted on IBM Cloud. For more information about the building blocks of Hyperledger Fabric networks, see the [blockchain component overview](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview).
+{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private allows you to deploy all of the fundamental components of a Hyperledger Fabric blockchain: a Certificate Authority, an ordering service, and peers. It provides you the flexibility to deploy different components depending on your business needs. You can use {{site.data.keyword.blockchainfull_notm}} for {{site.data.keyword.cloud_notm}} Private to start a blockchain network by deploying and configuring an ordering service that binds organizations together in a blockchain consortium. You can also deploy peers and join other networks that use components based on Fabric, including {{site.data.keyword.blockchainfull_notm}} Platform networks deployed across clouds by using {{site.data.keyword.cloud_notm}} Private, or Starter Plan and Enterprise Plan networks hosted on IBM Cloud. For more information about the building blocks of Hyperledger Fabric networks, see the [blockchain component overview](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview).
 
 ## Is {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private suitable for you
 
-Running the {{site.data.keyword.blockchainfull_notm}} Platform components outside of {{site.data.keyword.cloud_notm}} provides you with more flexibility to grow or join a blockchain network. It helps network founders grow their networks by allowing new members to join while using the platform of their choice. It will allow organizations that are interested in joining blockchain networks to collocate their peers with their existing applications or to integrate with their systems of record.
+Running the {{site.data.keyword.blockchainfull_notm}} Platform components outside of {{site.data.keyword.cloud_notm}} provides you with more flexibility to grow or join a blockchain network. It helps network initiators grow their networks by allowing new members to join while using the platform of their choice. It will allow organizations that are interested in joining blockchain networks to collocate their peers with their existing applications or to integrate with their systems of record.
 
 The process for deploying {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private is complicated and presumes a high degree of expertise in Fabric. If you are new to Fabric, {{site.data.keyword.cloud_notm}} Private, or {{site.data.keyword.blockchainfull_notm}} Platform, and your goal is to set up a development environment or proof of concept, consider to use [Starter Plan](/docs/services/blockchain/starter_plan.html#starter-plan-about) instead. Note also that not every potential deployment configuration is supported in {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private.
 {:improtant}
@@ -57,22 +60,22 @@ Before getting started, ensure that you understand the following **consideration
 - You can deploy multiple components to a single name space in {{site.data.keyword.cloud_notm}} Private as long as they have different release names.
 - Components cannot be addressed by using the Swagger UI in the Network Monitor UI.
 - Mutual TLS is not supported.
-- The underlying technology, Hyperledger Fabric, uses containers to run chaincode and Docker to start that container. The only way for a peer to start a chaincode container is to use Docker-in-Docker which requires privileged access.
+- The underlying technology, Hyperledger Fabric, uses containers to run chaincode and Docker to start that container. The only way for a peer to start a chaincode container is to use Docker-in-Docker that requires privileged access.
 
 **CA Considerations**
 - This Helm chart deploys a single instance of the CA. As it is considered best practice to have a separate CA for each organization, it might be necessary to deploy several CAs. For example, if you plan to deploy one orderer and three peers, you will need at least two CAs (one for the orderer organization and another for the peer organization).
-- Though you might choose to run a separate MySQL database, this option is not present in the Helm chart. The Helm chart will, however, deploy an SQLite database inside the CA to handle the database necessities of the CA, which include tracking the number of enrollments per user and any revoked certificates.
+- Though you might choose to run a separate MySQL database, this option is not present in the Helm chart. However, the Helm chart will deploy an SQLite database inside the CA to handle the database necessities of the CA, which include tracking the number of enrollments per user and any revoked certificates.
 
 **Orderer Considerations**
-- The ordering service is compatible with any component at v1.2 of Hyperledger Fabric.
+- The ordering service is compatible with any component at v1.1 or higher of Hyperledger Fabric.
 - This Helm chart deploys a single instance of the SOLO ordering service (one orderer). Note that it is not possible to deploy more than one SOLO orderer on a channel to make the ordering service highly available. This is one reason why SOLO ordering services are considered to be for development, rather than production, environments. However, you can deploy multiple instances of the SOLO ordering service to different networks (that is, with a separate consortium).
 
 **Peer Considerations**
 
-- You can connect your peers only to blockchain networks that are at Fabric level v1.1 or v1.2.1. You can find your Hyperledger Fabric version by opening the [Network Preferences window](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-network-preferences) in your Network Monitor. Follow the [instructions](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-peer-connection-information) for retrieving the peer connection information from Starter or Enterprise networks.
+- You can connect your peers only to blockchain networks that are at Fabric level v1.1 or higher. You can find your Hyperledger Fabric version by opening the [Network Preferences window](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-network-preferences) in your Network Monitor. Follow the [instructions](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-peer-connection-information) for retrieving the peer connection information from Starter or Enterprise networks.
 - The database type of the peer must match the database type of your blockchain network, either LevelDB or CouchDB.
 - The CouchDB Fauxton interface is not available on the peer.
-- [Gossip](/docs/services/blockchain/glossary.html#glossary-gossip) for peers is not currently supported. This implies that Fabric features that depend on gossip, such as [private data ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/private-data-arch.html "private data") and [service discovery ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/discovery-overview.html "service discovery"), are also not supported.
+- [Gossip](/docs/services/blockchain/glossary.html#glossary-gossip) for peers is not currently supported. This implies that Fabric features that depend on gossip, such as [private data ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/private-data-arch.html "private data") and [service discovery ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/discovery-overview.html "service discovery"), are also not supported.
 
 ## System prerequisites
 {: #ibp-icp-about-prerequisites}
@@ -82,7 +85,7 @@ Before getting started, ensure that you understand the following **consideration
 - Ubuntu 18.04 LTS and 16.04 LTS
 - SUSE Linux Enterprise Server (SLES) 12 SP3
 
-The {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private Helm chart has been validated to run on {{site.data.keyword.cloud_notm}} Private v3.1.0 clusters on Ubuntu Linux by using the following worker nodes and backing storage:
+The {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private Helm chart has been validated to run on {{site.data.keyword.cloud_notm}} Private v3.1.2 clusters on Ubuntu Linux by using the following worker nodes and backing storage:
 
 - **LinuxONE and IBM Z**: z/VM and KVM, which are using NFS.
 - **x86**: Linux 64-bit that uses GlusterFS.
@@ -95,14 +98,14 @@ The {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.c
 ### License
 {: #ibp-icp-about-license}
 
-{{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}} Private delivers the components needed to run a blockchain network on your own infrastructure and is deployed as an {{site.data.keyword.cloud_notm}} Private application. You can access PPA and [download the Helm chart ](/docs/services/blockchain/howto/helm_install_icp.html#helm-install). Technical support from {{site.data.keyword.blockchainfull_notm}} is included in the purchase.
+{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private delivers the components needed to run a blockchain network on your own infrastructure and is deployed as an {{site.data.keyword.cloud_notm}} Private application. You can access PPA and [download the Helm chart](/docs/services/blockchain/howto/helm_install_icp.html#helm-install). Technical support from {{site.data.keyword.blockchainfull_notm}} is included in the purchase.
 
-{{site.data.keyword.blockchainfull_notm}} Platform on IBM Cloud Private Community Edition is a free offering that is suitable for evaluation and experimentation and is deployed as an {{site.data.keyword.cloud_notm}} Private application. Do not use the Community Edition for production. {{site.data.keyword.blockchainfull_notm}} Platform does not provide support for the Community Edition. You can access the [GitHub package ![External link icon](images/external_link.svg "External link icon")](https://github.com/IBM/charts/blob/master/repo/stable/ibm-blockchain-platform-dev-1.0.0.tgz "IBM/charts") and download the Helm chart.
+{{site.data.keyword.blockchainfull_notm}} Platform for IBM Cloud Private Community Edition is a free offering that is suitable for evaluation and experimentation and is deployed as an {{site.data.keyword.cloud_notm}} Private application. Do not use the Community Edition for production. {{site.data.keyword.blockchainfull_notm}} Platform does not provide support for the Community Edition. You can access the [GitHub package ![External link icon](images/external_link.svg "External link icon")](https://github.com/IBM/charts/blob/master/repo/stable/ibm-blockchain-platform-dev-1.0.2.tgz "IBM/charts") and download the Helm chart.
 
 ### Pricing
 {: #ibp-icp-about-pricing}
 
-The pricing of {{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}} Private is based on the number of Virtual Processor Cores (VPCs) used. A VPC can be either a virtual core that is assigned to a virtual server, or a physical processor core in a non-partitioned server. You must obtain a licensed entitlement for each VPC made available to the {{site.data.keyword.blockchainfull_notm}} Platform. <!-- A VPC is a unit of measurement by which a program can be licensed.-->
+The pricing of {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private is based on the number of Virtual Processor Cores (VPCs) used. A VPC can be either a virtual core that is assigned to a virtual server, or a physical processor core in a non-partitioned server. You must obtain a licensed entitlement for each VPC made available to the {{site.data.keyword.blockchainfull_notm}} Platform. <!-- A VPC is a unit of measurement by which a program can be licensed.-->
 
 For more information about how to determine your usage of VPCs, see this article on ["Virtual Processor Cores (VPC)" ![External link icon](images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/en/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_virtual_processor_core_licenses.html "Virtual Processor Cores (VPC's)") in {{site.data.keyword.IBM_notm}} Knowledge Center. You can use the [{{site.data.keyword.IBM_notm}} License Metric Tool](https://www.ibm.com/support/knowledgecenter/en/SS8JFY_9.2.0/com.ibm.lmt.doc/welcome/LMT_welcome.html) to configure and create a report that you can use to determine the number of VPCs that you need to get a license.
 
@@ -110,24 +113,24 @@ For more information about how to determine your usage of VPCs, see this article
 ## Installing {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private
 {: #ibp-icp-about-install}
 
-{{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}} Private is delivered as a Helm chart file that can be installed in a local {{site.data.keyword.cloud_notm}} Private cluster. After you install the Helm chart, you can find {{site.data.keyword.blockchainfull_notm}} Platform as an application in the {{site.data.keyword.cloud_notm}} Private Catalog.
+{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private is delivered as a Helm chart file that can be installed in a local {{site.data.keyword.cloud_notm}} Private cluster. After you install the Helm chart, you can find {{site.data.keyword.blockchainfull_notm}} Platform as an application in the {{site.data.keyword.cloud_notm}} Private Catalog.
 
 - {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private is delivered through Passport Advantage. You need to have the required license to access [Passport Advantage Online](https://www.ibm.com/software/passportadvantage/pao_customer.html). Upon your purchase, technical support for the {{site.data.keyword.blockchainfull_notm}} Platform is included.
 
 - {{site.data.keyword.blockchainfull_notm}} Platform Community edition is meant for exploration, development, and testing. This free version of {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private can be accessed through GitHub. **Note:** {{site.data.keyword.blockchainfull_notm}} Platform does not provide support for the Community Edition.
 
-For instructions on how to install the Helm chart and the necessary prerequisites, see [Installing {{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/howto/helm_install_icp.html#helm-install).
+For instructions on how to install the Helm chart and the necessary prerequisites, see [Installing {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/howto/helm_install_icp.html#helm-install).
 
 If you are a new user of {{site.data.keyword.cloud_notm}} Private and would like information and tips on installing and deploying {{site.data.keyword.cloud_notm}} Private, see [Setting up {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/ICP_setup.html#icp-setup).
 
-After you install {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private, you need to deploy each component of your network individually. You cannot deploy multiple components at the same time. Visit the [{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private deployment guide](/docs/services/blockchain/ibp_for_icp_deployment_guide.html#get-started-icp) to learn the best practices for founding or joining a blockchain network before getting started. Then, review the steps to deploy and operate the individual components the sections below.
+After you install {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private, you need to deploy each component of your network individually. You cannot deploy multiple components at the same time. See the [Getting started with {site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/ibp_for_icp_deployment_guide.html#get-started-icp) to learn the best practices for building or joining a blockchain network. Then, review the steps to deploy and operate the individual components the sections below.
 
 ### Installing {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private behind a firewall
 {: #ibp-icp-about-firewall}
 
 You can deploy the {{site.data.keyword.blockchainfull_notm}} Platform components behind a firewall, without having access to the public Internet. The downloaded Helm chart package includes all of the Fabric component Docker images that {{site.data.keyword.blockchainfull_notm}} Platform uses, without pulling them from DockerHub during deployment.
 
-The {{site.data.keyword.blockchainfull_notm}} Platform Community edition Helm chart package does not include the necessary Fabric component Docker images. It is configured to download those images from DockerHub during deployment and will fail without having access to the public Internet. However, you can take a few additional steps to deploy the Community Edition components behind a firewall. For more information, see [Installing the Community Edition behind a firewall](/docs/services/blockchain/howto/helm_install_icp.html#helm-install-prereqs-firewall)
+The {{site.data.keyword.blockchainfull_notm}} Platform Community edition Helm chart package does not include the necessary Fabric component Docker images. It is configured to download those images from DockerHub during deployment and will fail without having access to the public Internet. However, you can take a few additional steps to deploy the Community Edition components behind a firewall. For more information, see [Installing the Community Edition behind a firewall](/docs/services/blockchain/howto/helm_install_icp.html#helm-install-prereqs-firewall).
 
 
 ## About Certificate Authorities on {{site.data.keyword.cloud_notm}} Private
@@ -144,9 +147,9 @@ The CA will validate the identity and issue certificates for the other component
 ## About orderers on {{site.data.keyword.cloud_notm}} Private
 {: #ibp-icp-about-orderer}
 
-Orderers authenticate clients, order transactions, and broadcast transactions in a blockchain network. They are the common binding of blockchain networks based on Hyperledger Fabric. As a result, the organization that founds a network needs to deploy and start an "ordering service" (the node or collection of nodes that do the ordering) before other organizations can deploy their peers, join channels, and start transactions on the network. For more information about orderers and the role that they play in a blockchain network, see [Blockchain component overview](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview-orderer).
+Orderers authenticate clients, order transactions, and broadcast transactions in a blockchain network. They are the common binding of blockchain networks based on Hyperledger Fabric. As a result, the organization that builds a network needs to deploy and start an "ordering service" (the node or collection of nodes that do the ordering) before other organizations can deploy their peers, join channels, and start transactions on the network. For more information about orderers and the role that they play in a blockchain network, see [Blockchain component overview](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview-orderer).
 
-If you are founding a blockchain network, you need to deploy an orderer. After it has been deployed, you can invite other organizations to your consortium, which can then create channels of their own.
+If you are building a blockchain network, you need to deploy an orderer. After it has been deployed, you can invite other organizations to your consortium, which can then create channels of their own.
 
 - To learn how to configure and deploy an orderer after you install the Helm chart, see [Deploying an orderer on {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/howto/orderer_deploy_icp.html#icp-orderer-deploy).
 
@@ -161,7 +164,7 @@ Peers are a fundamental element of the network because they host ledgers and sma
 
 - After you set up the peer, you need to complete several operational steps before you can submit transactions and read the distributed ledger from the blockchain network.
 
-  - If you are connecting your peer to a {{site.data.keyword.blockchainfull_notm}} Platform deployed on {{site.data.keyword.cloud_notm}} Private, see [Operating peers on {{site.data.keyword.cloud_notm}} Private with a Multi-cloud Network](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate).
+  - If you are connecting your peer to an {{site.data.keyword.blockchainfull_notm}} Platform deployed on {{site.data.keyword.cloud_notm}} Private, see [Operating peers on {{site.data.keyword.cloud_notm}} Private with a Multi-cloud Network](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate).
   - If you are connecting your peer to a Starter Plan or Enterprise Plan network that is deployed on {{site.data.keyword.cloud_notm}}, see [Operating peers on {{site.data.keyword.cloud_notm}} Private with Starter Plan or Enterprise Plan](/docs/services/blockchain/howto/peer_operate_ibp.html#ibp-peer-operate).
 
 ## Security Considerations
@@ -179,7 +182,7 @@ The data in your state database, whether you use LevelDB or CouchDB, is not encr
 ### Data residency
 {: #ibp-icp-about-security-data-residency}
 
-Data residency requirements can mandate that the processing and storage of all blockchain ledger data remain within the border of a single country (or within some other defined boundary). For more information on how data residency can be accomplished, see [Data residency](#ibp-icp-about-data-residency).
+Data residency requirements can mandate that the processing and storage of all blockchain ledger data remain within the border of a single country (or within some other defined boundary). For more information about how data residency can be accomplished, see [Data residency](#ibp-icp-about-data-residency).
 
 ### Key management
 {: #ibp-icp-about-security-key-management}
@@ -212,7 +215,7 @@ Because blockchain networks are oblivious to the type of data that is processed,
 
 To address data residency requirements, it is important to understand the Hyperledger Fabric architecture that underlies {{site.data.keyword.blockchainfull_notm}} Platform. The architecture is centered around three key components: an ordering service (made up of orderers), Certificate Authorities (CA), and peers. A peer receives ordered state updates in the form of blocks from the ordering service and maintains the state and the ledger. Therefore, a peer and an ordering service have a direct relationship. The ledger contains the latest values for all keys and the data that the transaction logs include.
 
-Additionally, client applications use the [Fabric SDKs](/docs/services/blockchain/v10_application.html#dev-app-fabric-sdks) to send transactions to the peers and ordering service. These transactions include [read-write set ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/readwrite.html "Read-Write set semantics") data, which contains the key-value pairs on the ledger.
+Additionally, client applications use the [Fabric SDKs](/docs/services/blockchain/v10_application.html#dev-app-fabric-sdks) to send transactions to the peers and ordering service. These transactions include [read-write set ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/readwrite.html "Read-Write set semantics") data, which contains the key-value pairs on the ledger.
 
 If in-country data residency is a requirement, the orderer, peers, and client applications must reside in the same country. When an {{site.data.keyword.blockchainfull_notm}} Platform network is created in {{site.data.keyword.cloud_notm}}, you have the choice of selecting a location for the network. <!--For a Starter Plan network, you can select from US South, United Kingdom, and Sydney. For an Enterprise Plan network, you can select from currently available locations, which include Dallas, Frankfurt, London, Sao Paulo, Tokyo, and Toronto. -->For more information about regions and locations, see [{{site.data.keyword.blockchainfull_notm}} Platform regions and locations](/docs/services/blockchain/reference/ibp_regions.html#ibp-regions-locations).
 
@@ -239,15 +242,15 @@ To solve this problem **channels** can be used to segregate data to a subset of 
 
 In **Figure 2**, Data residency is not required for `OrgC` and `OrgD`. In fact, `OrgD` now includes two distributed peers, `OrgD-peer1` and `OrgD-peer2`, which reside in the *United States*. Therefore, in order for  `OrgA`, `OrgB`, and their respective client applications and peers that reside in Germany to isolate the ledger data on channel `X`, a new channel `Y` is created for `OrgC` and `OrgD`.
 
-For a deeper understanding of the flow of data on the {{site.data.keyword.blockchainfull_notm}} Platform network, see the [Fabric documentation on transaction flow![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/txflow.html "Transaction Flow").
+For a deeper understanding of the flow of data on the {{site.data.keyword.blockchainfull_notm}} Platform network, see the [Fabric documentation on transaction flow![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/txflow.html "Transaction Flow").
 
-In the future, new technology in Hyperledger Fabric will improve the ability to achieve further data residency by using [Private data collections ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/private-data/private-data.html "Private data collections") and zero knowledge proof.
+In the future, new technology in Hyperledger Fabric will improve the ability to achieve further data residency by using [Private data collections ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/private-data/private-data.html "Private data collections") and zero knowledge proof.
 
-- A private data collection ensures that the private data is shared peer-to-peer (via the gossip protocol) to only the authorized peers to see it, for example, peers that are within the country borders. The data is stored in a private database on the peer. The ordering service is not involved here and does not see the private data. A hash of that data is written to the ledgers of every peer on the channel. The hash that is used for state validation, serves as evidence of the transaction, and can be used for audit purposes. Private data is available for networks on the {{site.data.keyword.blockchainfull_notm}} Platform that are running on Fabric version 1.2.1. However, the private data feature is not available for peers running in {{site.data.keyword.cloud_notm}} Private, as {{site.data.keyword.cloud_notm}} Private networks currently do not use gossip.
+- A private data collection ensures that the private data is shared peer-to-peer (via the gossip protocol) to only the authorized peers to see it, for example, peers that are within the country borders. The data is stored in a private database on the peer. The ordering service is not involved here and does not see the private data. A hash of that data is written to the ledgers of every peer on the channel. The hash that is used for state validation, serves as evidence of the transaction, and can be used for audit purposes. Private data is available for networks on the {{site.data.keyword.blockchainfull_notm}} Platform that are running on Fabric version 1.2.1 or higher. However, the private data feature is not available for peers running in {{site.data.keyword.cloud_notm}} Private, as {{site.data.keyword.cloud_notm}} Private networks currently do not use gossip.
 
 - A zero knowledge proof (ZKP) allows a “prover” to assure a “verifier” that they have knowledge of a secret without revealing the secret itself.
 
-You can get more information about these technologies in the white paper about [Private and confidential transactions with Hyperledger Fabric ![External link icon](images/external_link.svg "External link icon")](https://www.ibm.com/developerworks/cloud/library/cl-blockchain-private-confidential-transactions-hyperledger-fabric-zero-knowledge-proof/index.html "Private and confidential transactions with Hyperledger Fabric").
+You can get more information about these technologies in the white paper about [Private and confidential transactions with Hyperledger Fabric ![External link icon](images/external_link.svg "External link icon")](https://developer.ibm.com/tutorials/cl-blockchain-private-confidential-transactions-hyperledger-fabric-zero-knowledge-proof/ "Private and confidential transactions with Hyperledger Fabric").
 
 ## Getting support
 {: #ibp-icp-about-support}

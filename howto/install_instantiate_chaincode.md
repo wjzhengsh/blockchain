@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018,2019
-lastupdated: "2019-03-20"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -59,7 +59,7 @@ You need to have **Operator** or **Writer** authority on the channel to instanti
   ![Instantiate Chaincode panel](../images/chaincode_instantiate_panel.png "Instantiate Chaincode panel")
 -->
 
-3. Specify your chaincode's [endorsement policy](/docs/services/blockchain/glossary.html#glossary-endorsement-policy). You can learn more about how to set endorsement policies in the [next section](/docs/services/blockchain/howto/install-instantiate-chaincode.html#install-instantiate-chaincode-endorsement-policy).
+3. Specify your chaincode's [endorsement policy](/docs/services/blockchain/glossary.html#glossary-endorsement-policy). You can learn more about how to set endorsement policies in the [next section](#install-instantiate-chaincode-endorsement-policy).
 
 
 ## Specifying chaincode endorsement policies
