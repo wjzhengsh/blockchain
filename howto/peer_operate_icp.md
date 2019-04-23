@@ -901,7 +901,7 @@ peer channel create -o 9.30.250.70:31507 --tls --cafile $PWD/orderer-tls/orderer
 
 When the new channel creation proposal is signed by enough organizations to meet the system channel endorsement policy, you can submit the channel update transaction to the orderer to form the new channel
 
-You can use the Node Fabric SDK APIs to complete signing and submission in a single transaction. For more information, visit the [How to create a Hyperledger Fabric Channel ![External link icon](../images/external_link.svg "External link icon")]](https://fabric-sdk-node.github.io/release-1.3/tutorial-channel-create.html) tutorial in the Node SDK documentation.
+You can use the Node Fabric SDK APIs to complete signing and submission in a single transaction. For more information, visit the [How to create a Hyperledger Fabric Channel ![External link icon](../images/external_link.svg "External link icon")]](https://fabric-sdk-node.github.io/release-1.4/tutorial-channel-create.html) tutorial in the Node SDK documentation.
 
 ## Viewing the peer logs
 {: #icp-peer-operate-view-logs}
