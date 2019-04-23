@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-04-17"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -30,7 +30,7 @@ subcollection: blockchain
 
 **Notes:**
 - {{site.data.keyword.blockchainfull_notm}} Platform Starter Plan is a development and testing environment, and is not suitable for production workloads. If you need a production environment, see [About Enterprise Plan](/docs/services/blockchain/enterprise_plan.html#enterprise-plan-about).
-- {{site.data.keyword.blockchainfull_notm}} Platform is a platform service on {{site.data.keyword.cloud_notm}} and all membership offerings follow the [{{site.data.keyword.cloud_notm}} Services terms ![External link icon](images/external_link.svg "External link icon")](http://www-03.ibm.com/software/sla/sladb.nsf/sla/bm "{{site.data.keyword.cloud_notm}} Services terms") on service level agreements (SLAs). Starter Plan networks are provisioned across **multiple environments** in geographically separated data-centers.
+- {{site.data.keyword.blockchainfull_notm}} Platform is a platform service on {{site.data.keyword.cloud_notm}} and all membership offerings follow the [{{site.data.keyword.cloud_notm}} Services terms ![External link icon](images/external_link.svg "External link icon")](http://www-03.ibm.com/software/sla/sladb.nsf/sla/bm "{{site.data.keyword.cloud_notm}} Services terms") on service level agreements (SLAs). Starter Plan are provisioned in a data center in a single geography. For a list of available geographies, see [{{site.data.keyword.blockchainfull_notm}} Platform locations](/docs/services/blockchain?topic=blockchain-ibp-regions-locations#ibp-regions-locations).
 
 ## What Starter Plan offers
 {: #starter-plan-about-what-starter-plan-offers}

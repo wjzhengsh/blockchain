@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-04-18"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -60,7 +60,7 @@ Ensure that you have the cloud account or PPA license to get an {{site.data.keyw
 
 * **{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private**
 
-  This offering is delivered as a deployable Helm chart and has both paid edition and free Community edition. You can download the Enterprise Edition from [Passport Advantage Online ![External link icon](images/external_link.svg "External link icon")](https://www.ibm.com/software/passportadvantage/pao_customer.html) or download the free Community edition from [GitHub ![External link icon](images/external_link.svg "External link icon")](https://github.com/IBM/charts/blob/master/repo/stable/ibm-blockchain-platform-dev-1.0.0.tgz).
+  This offering is delivered as a deployable Helm chart and has both paid edition and free Community edition. You can download the Enterprise Edition from [Passport Advantage Online ![External link icon](images/external_link.svg "External link icon")](https://www.ibm.com/software/passportadvantage/pao_customer.html) or download the free Community edition from [GitHub ![External link icon](images/external_link.svg "External link icon")](https://github.com/IBM/charts/blob/master/repo/stable/ibm-blockchain-platform-dev-1.0.2.tgz).
 
 * **{{site.data.keyword.blockchainfull_notm}} Platform for AWS**
 
@@ -75,7 +75,7 @@ Ensure that you have the cloud account or PPA license to get an {{site.data.keyw
 
 * **{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private**
 
-  Before you deploy a network, you need to [import the Helm chart to your {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/howto/helm_install_icp.html#helm-install). Then, you can [configure and install {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/howto/ibp-console-deploy-icp.html#ibp-console-deploy-icp).
+  Before you deploy a network, you need to [import the Helm chart to your {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/howto/helm_install_icp.html#helm-install). Then, you can [deploy your network components starting from a CA](/docs/services/blockchain/ibp_for_icp_deployment_guide.html#step-three-set-up-your-cas) to build your network.
 
 * **{{site.data.keyword.blockchainfull_notm}} Platform for AWS**
 

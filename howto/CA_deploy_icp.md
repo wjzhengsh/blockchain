@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -20,7 +20,7 @@ subcollection: blockchain
 # Deploying a Certificate Authority on {{site.data.keyword.cloud_notm}} Private
 {: #ca-deploy}
 
-After you import the {{site.data.keyword.blockchainfull}} Platform on {{site.data.keyword.cloud_notm}} Private Helm chart, you can deploy the individual components. The Certificate Authority (CA) is the root of trust for your organization and allows you to generate credentials for the other components you will deploy. As a result, you need to deploy a CA before you deploy the other components. Each organization in a multi-cloud blockchain network must deploy its own CA.  For more information about CAs and the role that they play in a blockchain network, see [Certificate Authorities](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview-ca).
+After you import the {{site.data.keyword.blockchainfull}} Platform for {{site.data.keyword.cloud_notm}} Private Helm chart, you can deploy the individual components. The Certificate Authority (CA) is the root of trust for your organization and allows you to generate credentials for the other components you will deploy. As a result, you need to deploy a CA before you deploy the other components. Each organization in a multi-cloud blockchain network must deploy its own CA.  For more information about CAs and the role that they play in a blockchain network, see [Certificate Authorities](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview-ca).
 {:shortdesc}
 
 Before you a deploy a Certificate Authority, review the [Considerations and limitations](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-about-considerations).
@@ -55,9 +55,9 @@ If you do not use dynamic provisioning, [Persistent Volumes ![External link icon
 
 1. Before you can install a CA on {{site.data.keyword.cloud_notm}} Private, you must [install {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/ICP_setup.html#icp-setup) and [install the {{site.data.keyword.blockchainfull_notm}} Platform Helm chart](/docs/services/blockchain/howto/helm_install_icp.html#helm-install).
 
-2. If you use the Community Edition and you want to run this Helm chart on an {{site.data.keyword.cloud_notm}} Private cluster without Internet connectivity, you need to create archives on an Internet-connected machine before you can install the archives on your the {{site.data.keyword.cloud_notm}} Private cluster. For more information, see [Adding featured applications to clusters without Internet connectivity ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_package_offline.html "Adding featured applications to clusters without Internet connectivity"){:new_window}. Note that you can find the specification file manifest.yaml under ibm-blockchain-platform-dev/ibm_cloud_pak in the Helm chart.
+2. If you use the Community Edition and you want to run this Helm chart on an {{site.data.keyword.cloud_notm}} Private cluster without Internet connectivity, you need to create archives on an Internet-connected machine before you can install the archives on your the {{site.data.keyword.cloud_notm}} Private cluster. For more information, see [Adding featured applications to clusters without Internet connectivity ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/app_center/add_package_offline.html "Adding featured applications to clusters without Internet connectivity"){:new_window}. Note that you can find the specification file manifest.yaml under ibm-blockchain-platform-dev/ibm_cloud_pak in the Helm chart.
 
-3. Retrieve the value of the cluster Proxy IP address from the {{site.data.keyword.cloud_notm}} Private console. **Note:** You will need to be a [Cluster administrator ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Cluster administrator roles and actions") to access your proxy IP. Log in to the {{site.data.keyword.cloud_notm}} Private cluster. In the left navigation panel, click **Platform** and then **Nodes** to view the nodes that are defined in the cluster. Click the node with the role `proxy` and then copy the value of the `Host IP` from the table.
+3. Retrieve the value of the cluster Proxy IP address from the {{site.data.keyword.cloud_notm}} Private console. **Note:** You will need to be a [Cluster administrator ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/user_management/assign_role.html "Cluster administrator roles and actions") to access your proxy IP. Log in to the {{site.data.keyword.cloud_notm}} Private cluster. In the left navigation panel, click **Platform** and then **Nodes** to view the nodes that are defined in the cluster. Click the node with the role `proxy` and then copy the value of the `Host IP` from the table.
 
   Save this value and you will use it when you configure the `Proxy IP` field of the Helm chart.
   {:important}
@@ -128,9 +128,11 @@ The following table lists the configurable parameters of the {{site.data.keyword
 
 |  Parameter     | Description    | Default  | Required |
 | --------------|-----------------|-------|------- |
+|**General parameters**| Parameters that configure the Helm chart | | |
 | `Helm release name`| The name of your Helm release. Must begin with a lowercase letter and end with any alphanumeric character, must only contain hyphens and lowercase alphanumeric characters. You must use a unique Helm release name each time you attempt to install a component. | none | yes |
 | `Target namespace`| Choose the Kubernetes namespace to install the Helm chart. | none | yes |
-|**Global configuration**| Parameters which apply to all components in the Helm chart|||
+| `Target namespace policies`| Displays the pod security policies of the chosen namespace, which must include an **`ibm-privileged-psp`** policy. Otherwise, [bind a PodSecurityPolicy](/docs/services/blockchain?topic=blockchain-icp-setup#icp-setup-psp) to your namespace. | none | no |
+|**Global configuration**| Parameters that apply to all components in the Helm chart | | |
 | `Service account name`| Enter the name of the [service account ![External link icon](../images/external_link.svg "External link icon")](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/ "Configure Service Accounts for Pods") that you will use to run the pod. | default | no |
 
 #### CA configuration parameters
@@ -151,7 +153,9 @@ The following table lists the configurable parameters of the {{site.data.keyword
 | `CA storage access mode`| Specify the storage [access mode ![External link icon](../images/external_link.svg "External link icon")](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes "Access Modes") for the PVC. | ReadWriteMany | yes |
 | `CA volume claim size`| Choose the size of disk to use. | 2Gi | yes |
 | `CA image repository`| Location of the CA Helm chart. | ibmcom/ibp-fabric-ca | yes |
-| `CA Docker image tag`| Value of the tag that is associated with the CA image. This field is autofilled to the image version. Do not change it.| 1.2.1 | yes |
+| `CA Docker image tag`| Value of the tag that is associated with the CA image. This field is autofilled to the image version. | 1.4.0 | yes |
+| `CA Init Docker image repository`| Location of the CA Init Docker image. This field is autofilled to the image location. | ibmcom/ibp-init | yes |
+| `CA Init Docker image tag`| Value of the tag that is associated with the CA Init Docker image. This field is autofilled to the image version. | 1.4.0 | yes |
 | `CA service type` | Used to specify whether [external ports should be exposed ![External link icon](../images/external_link.svg "External link icon")](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types) on the peer. Select NodePort to expose the ports externally (recommended), and ClusterIP to not expose the ports. LoadBalancer and ExternalName are not supported in this release | NodePort | yes |
 | `CA secret (Required)`| Enter the name of the Kubernetes secret object that you created for your `ca-admin-name` and `ca-admin-password`. | none | yes |
 | `CA CPU request`| Specify the minimum number of CPUs to allocate to the CA. | 1 | yes |
@@ -160,13 +164,13 @@ The following table lists the configurable parameters of the {{site.data.keyword
 | `CA memory limit`| Specify the maximum amount of memory to allocate to the CA. | 4Gi | yes |
 | `CA TLS instance name`| Specify a name of the CA TLS instance that will be used to enroll an orderer or peer. | tlsca | yes |
 | `CSR common name`| Specify the Common Name (CN) that the generated CA root cert will present when contacted. | tlsca-common | yes |
-| `Proxy IP`| Enter the [Proxy Node IP for the cluster ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/installing/install_proxy.html "IBM Cloud Private installation behind an HTTP proxy") where the CA is deployed. | 127.0.0.1 | yes |
+| `Proxy IP`| Enter the [Proxy Node IP for the cluster ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/installing/install_proxy.html "IBM Cloud Private installation behind an HTTP proxy") where the CA is deployed. | 127.0.0.1 | yes |
 
 
 ### Using the Helm command line to install the Helm release
 {: #ca-deploy-helm-cli}
 
-Alternatively, you can use the Helm CLI to install the Helm release. Before you run the `helm install` command, ensure that you [add your cluster's Helm repository to the Helm CLI environment ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_int_helm_repo_to_cli.html "Adding the internal Helm repository to Helm CLI").
+Alternatively, you can use the Helm CLI to install the Helm release. Before you run the `helm install` command, ensure that you [add your cluster's Helm repository to the Helm CLI environment ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/app_center/add_int_helm_repo_to_cli.html "Adding the internal Helm repository to Helm CLI").
 
 You can set the parameters that are required for installation by creating a `yaml` file and passing it to the following `helm install` command.
 
@@ -203,7 +207,7 @@ After you complete the configuration parameters and click the **Install** button
 
 If you scroll down to the `Notes` section, you can find important information that you will use to [operate your CA](/docs/services/blockchain/howto/CA_operate.html#ca-operate).
 
-After you install {{site.data.keyword.blockchainfull_notm}} Platform CA in {{site.data.keyword.cloud_notm}} Private, a configmap is created with default environment variables settings. You can then change or add environment variables for the CA server to configure its behavior. For more information about CA server configuration parameters, see [Fabric CA server documentation ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric-ca.readthedocs.io/en/latest/users-guide.html#fabric-ca-server "Fabric CA Server").
+After you install {{site.data.keyword.blockchainfull_notm}} Platform CA in {{site.data.keyword.cloud_notm}} Private, a configmap is created with default environment variables settings. You can then change or add environment variables for the CA server to configure its behavior. For more information about CA server configuration parameters, see [Fabric CA server documentation ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/users-guide.html#fabric-ca-server "Fabric CA Server").
 
 After you configure the configmap, you need to restart the CA server before the changes take effect. To restart the CA server, you can delete the Fabric CA server POD. {{site.data.keyword.cloud_notm}} Private will create a new POD that reflects the changes.
 

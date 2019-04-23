@@ -2,12 +2,11 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-04-03"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
 ---
-
 
 {:new_window: target="_blank"}
 {:shortdesc: .shortdesc}
@@ -26,7 +25,8 @@ subcollection: blockchain
 
 General problems may occur when using the console to manage nodes, channels, or smart contracts. In many cases, you can recover from these problems by following a few easy steps.
 
-- [When I hover over my node, the status is `Status unavailable`, what does this mean?](/docs/services/blockchain/howto/ibp-v2-troubleshooting.html#ibp-v2-troubleshooting-status-unavailable)
+- [When I hover over my node, the status is `Status unavailable`, what does this mean?](#ibp-v2-troubleshooting-status-unavailable)
+- [When I hover over my node, the status is `Status undetectable`, what does this mean?](#ibp-v2-troubleshooting-status-undetectable)
 - [Why are my node operations failing after I create my peer or orderer?](/docs/services/blockchain/howto/ibp-v2-troubleshooting.html#ibp-console-build-network-troubleshoot-entry1)
 - [Why does my peer fail to start?](/docs/services/blockchain/howto/ibp-v2-troubleshooting.html#ibp-console-build-network-troubleshoot-entry2)
 - [Why did my smart contract installation, instantiation or upgrade fail?](/docs/services/blockchain/howto/ibp-v2-troubleshooting.html#ibp-console-smart-contracts-troubleshoot-entry1)
@@ -42,10 +42,36 @@ General problems may occur when using the console to manage nodes, channels, or 
 The node status in the tile for the CA,  peer, or orderer node is grey, meaning the status of the node is not available. Ideally, when you hover over any node, the node status should be `Running`.
 {: tsSymptoms}
 
-This condition occurs when the health checker that runs against the node cannot contact the node. Or the request for status fails with a timeout error because the node did not respond within a specific time period.
+This problem can occur if the node is newly created and the deployment process has not completed. If the node is a CA, then it is likely the node is not running.
+If the node is a peer or orderer, this condition occurs when the health checker that runs against the peer or orderer nodes cannot contact the node.  The request for status can fail with a timeout error because the node did not respond within a specific time period, the node could be down, or network connectivity is down.
 {: tsCauses}
 
-[Examine the associated node logs](/docs/services/blockchain/howto/ibp-console-manage.html#ibp-console-manage-console-node-logs) for errors to determine the cause.
+If this is a new node, wait a few more minutes for the deployment to complete. If the node is not new,
+[examine the associated node logs](/docs/services/blockchain/howto/ibp-console-manage.html#ibp-console-manage-console-node-logs) for errors to determine the cause.
+{: tsResolve}
+
+## When I hover over my node, the status is `Status undetectable`, what does this mean?
+{: #ibp-v2-troubleshooting-status-undetectable}
+
+The node status in the tile for the peer or orderer node is yellow, meaning the status of the node cannot be detected. Ideally, when you hover over any node, the node status should be `Running`.
+{: tsSymptoms}
+
+This condition only occurs on peer and orderer nodes that were *imported* to the console and the health checker cannot run against the node. This status happens because an `operations_url` was not specified when the node was imported. An operations url is required for the node health checker to run. The node itself is likely `Running`, but because the operations url was not specified, it's status cannot be determined.
+{: tsCauses}
+
+You can resolve this problem by performing the following steps:
+ 1. Click the node tile to open it.
+ 2. Click the **Settings** icon.
+ 3. Click **Associate identity**, view and make note of the identity that is associated with this node. Click **Cancel** to close this panel.
+ 4. Click **Export** to generate a `JSON` file for the node.
+ 5. Edit the generated `JSON` file and enter the `operations_url` for the node. The value of the `operations_url` depends on how it was configured as well as various network settings. This value needs to be provided by the network administrator who deployed the node.
+ 6. Click **Delete**. This step removes the imported node from the console, but does not delete the actual node.
+ 7. From the **Nodes** tab, click **Add Peer** or **Add orderer** followed by **Import an existing peer** or **Import an existing orderer**.
+ 8. Click **Upload JSON** and browse to the JSON file you just edited. Click **Next**.
+ 9. Associate the same identity you noted in step three.
+ 10. Click **Add peer** or **Add orderer**.
+
+The health checker can now run against the node and report the status of the node.
 {: tsResolve}
 
 ## Why are my node operations failing after I create my peer or orderer?
@@ -109,7 +135,7 @@ Follow these instructions to [view your container logs](/docs/services/blockchai
 Your console wallet identities consist of a public and private key pair that allow you to manage your blockchain components but they are only stored in your browser local storage. You are responsible for securing and managing these identities. We recommend that you export them to your file system after you create them. Whenever you create a new node, you associate an identity from your console wallet with the node. This admin identity is what allows you to manage the node. When you switch browsers or change to a browser on a different machine, these identities are no longer in your wallet. Therefore, you are unable to manage the components.
 {: tsSymptoms}
 
-One of the new features of {{site.data.keyword.blockchainfull_notm}} Platform 2.0 is that you are now responsible for securing and managing your certificates. Therefore, they are only persisted in the browser local storage to allow you to manage the component.
+One of the new features of {{site.data.keyword.blockchainfull_notm}} Platform 2.0 is that you are now responsible for securing and managing your certificates. Therefore, they are only persisted in the browser local storage to allow you to manage the component. If you are using a private browser window and then switch to another browser or non-private browser window, the identities that you created will be gone from your console wallet in the new browser session. Therefore, it is required that you export the identities from the console wallet in your private browser session to your file system. You can then import them into your non-private browser session if thy are needed. Otherwise, there is no way to recover them.
 {: tsCauses}
 
 - Any time you create a new organization MSP definition, you generate keys for an identity that is allowed to administer the organization. Therefore, during that process you must click the **Generate** and then **Export** buttons to store the generated identity in your console wallet and then save it to your file system as a JSON file.
