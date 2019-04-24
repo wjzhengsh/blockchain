@@ -2,8 +2,7 @@
 
 copyright:
   years: 2019
-
-lastupdated: "2019-03-25"
+lastupdated: "2019-04-19"
 
 keywords: smart contract, private data, private data collection, anchor peer
 
@@ -71,7 +70,7 @@ The {{site.data.keyword.blockchainfull_notm}} console manages the *deployment* o
 - For a complete end-to-end tutorial about using an application to interact with smart contracts, see [Hyperledger Fabric Commercial Paper tutorial ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/tutorial/commercial_paper.html "Hyperledger Fabric Commercial Paper tutorial").
 - To learn about how to incorporate access control mechanisms into your smart contract, see [Chaincode for Developers ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/chaincode4ade.html#chaincode-access-control "Chaincode for Developers").
 - When you are ready to start building smart contracts, you can use the [{{site.data.keyword.blockchainfull_notm}} Visual Studio code extension ![External link icon](../images/external_link.svg "External link icon")](https://marketplace.visualstudio.com/items?itemName=IBMBlockchain.ibm-blockchain-platform "{{site.data.keyword.blockchainfull_notm}} Platform - Visual Studio Marketplace") to start building your own smart contract project. You can also use that extension to [connect directly to your network from Visual Studio code](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-vscode).
-- When you are ready to install, the smart contract must be packaged into [.cds format ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/latest/chaincode4noah.html#packaging "packaging smart contracts") so that it can be installed onto the peers. For more information, see [Packaging smart contracts](/docs/services/blockchain/vscode-extension.html#packaging-a-smart-contract). Alternatively, you can use the [peer cli commands ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/peerchaincode.html#peer-chaincode-package "peer chaincode package") to build the package.
+- When you are ready to install, the smart contract must be packaged into [.cds format ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/chaincode4noah.html#packaging "packaging smart contracts") so that it can be installed onto the peers. For more information, see [Packaging smart contracts](/docs/services/blockchain/vscode-extension.html#packaging-a-smart-contract). Alternatively, you can use the [peer cli commands ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/peerchaincode.html#peer-chaincode-package "peer chaincode package") to build the package.
 <!-- Update the tutorial link to release1-4 when it is published -->
 
 
@@ -81,7 +80,7 @@ The {{site.data.keyword.blockchainfull_notm}} console manages the *deployment* o
 Use your console to perform these steps:
 
 1. Click the **Smart contracts** tab to install one or more smart contracts.
-2. Click **Install smart contract** to upload the smart contract package file in [.cds format ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/latest/chaincode4noah.html#packaging "packaging smart contracts").
+2. Click **Install smart contract** to upload the smart contract package file in [.cds format ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/chaincode4noah.html#packaging "packaging smart contracts").
 You can use the {{site.data.keyword.blockchainfull_notm}} Visual Studio code extension to [create a smart contract package](/docs/services/blockchain/vscode-extension.html#packaging-a-smart-contract). When you install the package from the **Smart contracts** tab, you can select one or more peer nodes to install the smart contracts on.
 
 If only one peer exists in the console, the smart contract will be installed on it. You are not prompted to select a peer to install the smart contract on. You can navigate to the nodes tab and click a peer that is managed by your console to view the list of smart contracts that have been installed on an individual peer.
@@ -101,9 +100,9 @@ Smart contracts are instantiated on a channel. Any console member with peers joi
 Use your console to perform these steps:
 
 1. On the smart contracts tab, find the smart contract from the list installed on your peers and click **Instantiate** from the overflow menu on the right side of the row.
-2. On the side panel that opens, select a channel to instantiate the smart contract on and select the orderer where the channel resides. You can select the channel, named `channel1`, and orderer node, named `Orderer`, which you created. Then, click **Next**.
-3. Specify the [endorsement policy for the smart contract](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-endorse), described in the following section.
-4. You also need to select the organization members to be included in the policy. If you are following along in the tutorial, that would be `org1msp` and possibly `org2msp` if you completed both the **Build a network** and **Join a network** tutorials.
+2. On the side panel that opens, select a channel to instantiate the smart contract on. You can select the channel, named `channel1`, which you created. Then, click **Next**.
+3. Specify the [endorsement policy for the smart contract](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-endorse), dscribed in the following section. When multiple organizations are members of the channel, you have the opportunity choose how many organizations are required to endorse the smart contract transactions.
+4. You also need to select the organization members to be included in the endorsement policy. If you are following along in the tutorial, that would be `org1msp` and possibly `org2msp` if you completed both the **Build a network** and **Join a network** tutorials.
 5. If your smart contract includes Fabric private data collections, you need to upload the associated collection configuration JSON file, otherwise you can skip this step. See this topic for more information on using [private data](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-private-data).
 6. On the last panel you are prompted to specify the smart contract function that you want to run when the smart contract starts, along with the associated arguments to pass to that function.
 

@@ -124,7 +124,7 @@ In the future, new technology in Hyperledger Fabric will improve the ability to 
 
 - A Zero-Knowledge Proof (ZKP) allows a “prover” to assure a “verifier” that they have knowledge of a secret without revealing the secret itself. It's a way to show that you know something that satisfies a statement without showing what you know.
 
-You can get more information about these technologies in the white paper about [Private and confidential transactions with Hyperledger Fabric ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/developerworks/cloud/library/cl-blockchain-private-confidential-transactions-hyperledger-fabric-zero-knowledge-proof/index.html "Private and confidential transactions with Hyperledger Fabric").
+You can get more information about these technologies in the white paper about [Private and confidential transactions with Hyperledger Fabric ![External link icon](../images/external_link.svg "External link icon")](https://developer.ibm.com/tutorials/cl-blockchain-private-confidential-transactions-hyperledger-fabric-zero-knowledge-proof/ "Private and confidential transactions with Hyperledger Fabric").
 
 ## Getting support
 {: #remote-peer-aws-about-support}

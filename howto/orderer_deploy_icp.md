@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-20"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -53,9 +53,9 @@ If you do not use dynamic provisioning, [Persistent Volumes ![External link icon
 
 1. Before you can install an orderer on {{site.data.keyword.cloud_notm}} Private, you must [install {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/ICP_setup.html#icp-setup) and [install the {{site.data.keyword.blockchainfull_notm}} Platform Helm chart](/docs/services/blockchain/howto/helm_install_icp.html#helm-install).
 
-2. If you use the Community Edition and you want to run this Helm chart on an {{site.data.keyword.cloud_notm}} Private cluster without Internet connectivity, you need to create archives on an Internet-connected machine before you can install the archives on your the {{site.data.keyword.cloud_notm}} Private cluster. For more information, see [Adding featured applications to clusters without Internet connectivity ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_package_offline.html "Adding featured applications to clusters without Internet connectivity"){:new_window}. Note that you can find the specification file `manifest.yaml` under ibm-blockchain-platform-dev/ibm_cloud_pak in the Helm chart.
+2. If you use the Community Edition and you want to run this Helm chart on an {{site.data.keyword.cloud_notm}} Private cluster without Internet connectivity, you need to create archives on an Internet-connected machine before you can install the archives on your the {{site.data.keyword.cloud_notm}} Private cluster. For more information, see [Adding featured applications to clusters without Internet connectivity ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/app_center/add_package_offline.html "Adding featured applications to clusters without Internet connectivity"){:new_window}. Note that you can find the specification file `manifest.yaml` under ibm-blockchain-platform-dev/ibm_cloud_pak in the Helm chart.
 
-3. Retrieve the value of the cluster Proxy IP address of your CA from the {{site.data.keyword.cloud_notm}} Private console. **Note:** You will need to be a [Cluster administrator ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Cluster administrator roles and actions") to access your proxy IP. Log in to the {{site.data.keyword.cloud_notm}} Private cluster. In the left navigation panel, click **Platform** and then **Nodes** to view the nodes that are defined in the cluster. Click the node with the role `proxy` and then copy the value of the `Host IP` from the table. **Important:** Save this value and you will use it when you configure the `Proxy IP` field of the Helm chart.
+3. Retrieve the value of the cluster Proxy IP address of your CA from the {{site.data.keyword.cloud_notm}} Private console. **Note:** You will need to be a [Cluster administrator ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/user_management/assign_role.html "Cluster administrator roles and actions") to access your proxy IP. Log in to the {{site.data.keyword.cloud_notm}} Private cluster. In the left navigation panel, click **Platform** and then **Nodes** to view the nodes that are defined in the cluster. Click the node with the role `proxy` and then copy the value of the `Host IP` from the table. **Important:** Save this value and you will use it when you configure the `Proxy IP` field of the Helm chart.
 
 4. Create an [orderer configuration file and store it as a Kubernetes secret in {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/howto/orderer_deploy_icp.html#icp-orderer-deploy-config-file).
 
@@ -152,8 +152,10 @@ The following table lists the configurable parameters of the {{site.data.keyword
 
 |  Parameter     | Description    | Default  | Required |
 | --------------|-----------------|-------|------- |
+|**General parameters**| Parameters that configure the Helm chart | | |
 | `Helm release name`| The name of your helm release. Must begin with a lowercase letter and end with any alphanumeric character, must only contain hyphens and lowercase alphanumeric characters. You must use a unique Helm release name each time you attempt to install a component. **Important:** This value must match the value that you used to generate the 'service host name' for the "hosts" field in your [JSON secret file.](/docs/services/blockchain/howto/orderer_deploy_icp.html#icp-orderer-deploy-config-file) | none | yes  |
 | `Target namespace`| Choose the Kubernetes namespace to install the Helm chart. | none | yes |
+| `Target namespace policies`| Displays the pod security policies of the chosen namespace, which must include an **`ibm-privileged-psp`** policy. Otherwise, [bind a PodSecurityPolicy](/docs/services/blockchain?topic=blockchain-icp-setup#icp-setup-psp) to your namespace. | none | no |
 |**Global configuration**| Parameters which apply to all components in the Helm chart|||
 | `Service account name`| Enter the name of the [service account ![External link icon](../images/external_link.svg "External link icon")](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/) that you will use to run the pod. | default | no |
 
@@ -164,12 +166,12 @@ The following table lists the configurable parameters of the {{site.data.keyword
 | --------------|-----------------|-------|------- |
 | `Install Orderer`| Select to install an orderer. | unchecked | yes, if you want to deploy an orderer |
 | `Orderer worker node architecture`| Select your {{site.data.keyword.cloud_notm}} Private worker node architecture (AMD64 or S390X). | Autodetected architecture based on your master node | yes |
-| `Orderer configuration`| You can customize the configuration of the orderer by pasting your own `orderer.yaml` configuration file in this field. To see a sample `orderer.yaml` file, see [`orderer.yaml` sample config ![External link icon](../images/external_link.svg "External link icon")](https://github.com/hyperledger/fabric/blob/release-1.2/sampleconfig/orderer.yaml) **For advanced users only**. | none | no |
+| `Orderer configuration`| You can customize the configuration of the orderer by pasting your own `orderer.yaml` configuration file in this field. To see a sample `orderer.yaml` file, see [`orderer.yaml` sample config ![External link icon](../images/external_link.svg "External link icon")](https://github.com/hyperledger/fabric/blob/release-1.4/sampleconfig/orderer.yaml) **For advanced users only**. | none | no |
 | `Organization MSP secret (Required)`| Specify the name of the secret object that contains organization MSP certificates and keys. | none | yes |
 | `Orderer data persistence enabled` | Data will be available when the container restarts. If unchecked, all data will be lost in the event of a failover or pod restart. | checked | no |
 | `Orderer use dynamic provisioning` | Check to enable dynamic provisioning for storage volumes. | checked | no |
 | `Orderer image repository` | Location of the Orderer Helm chart. This field is autofilled to the installed path. If you are using the Community Edition and don't have internet access, change this field to the location where you downloaded the Fabric orderer image. | ibmcom/ibp-fabric-orderer | no |
-| `Orderer Docker image tag`| A record of the Docker image. This field is autofilled to the image version. Do not change it.| 1.2.1 | yes |
+| `Orderer Docker image tag`| A record of the Docker image. This field is autofilled to the image version. Do not change it.| 1.4.0 | yes |
 | `Orderer consensus type`| The consensus type of the ordering service. | SOLO | yes |
 | `Orderer organization name`| Specify the name you would like to use for the orderer organization. If you also plan to deploy peers, make sure to use a different name than the one you will give to your peers. For example, give your orderer org a name like `ordererOrg` | none | yes |
 | `Orderer Org MSP ID`| Specify the name you want to use for the MSP ID of the orderer organization. This should be the same name you give to your orderer organization, and will be set as an environment variable by the deployment process. Make a note of this value and you will need to reference it later. | none | yes |
@@ -179,16 +181,21 @@ The following table lists the configurable parameters of the {{site.data.keyword
 | `Orderer selector value`| [Selector value ![External link icon](../images/external_link.svg "External link icon")](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) for your PVC. | none | no |
 | `Orderer storage access mode`| Specify the storage [access mode ![External link icon](../images/external_link.svg "External link icon")](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes) for the PVC. | ReadWriteMany | yes |
 | `Orderer volume claim size`| Choose the size of disk to use, which must be at least 2 Gi. | 8 Gi | yes |
-| Orderer service type` | Used to specify whether [external ports should be exposed ![External link icon](../images/external_link.svg "External link icon")](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types) on the peer. Select NodePort to expose the ports externally (recommended), and ClusterIP to not expose the ports. LoadBalancer and ExternalName are not supported in this release | NodePort | yes |
+| `Orderer service type` | Used to specify whether [external ports should be exposed ![External link icon](../images/external_link.svg "External link icon")](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types) on the peer. Select NodePort to expose the ports externally (recommended), and ClusterIP to not expose the ports. LoadBalancer and ExternalName are not supported in this release | NodePort | yes |
 | `Orderer CPU request`| Specify the minimum number of CPUs to allocate to the Orderer. | 1 | yes |
 | `Orderer CPU limit`| Specify the maximum number of CPUs to allocate to the Orderer. | 2 | yes |
 | `Orderer memory request`| Specify the minimum amount of memory to allocate to the Orderer. | 1Gi | yes |
 | `Orderer memory limit`| Specify the maximum amount of memory to allocate to the Orderer. | 2Gi | yes |
+| `gRPC web proxy CPU request`| Specify the minimum number of CPUs in millicpus (m) to allocate to the gRPC web proxy. | 100 m | yes |
+| `gRPC web proxy CPU limit`| Specify the maximum number of CPUs in millicpus (m) to allocate to the gRPC web proxy. | 200 m | yes |
+| `gRPC web proxy memory request`| Specify the minimum amount of memory to allocate to the gRPC web proxy. | 100Mi | yes |
+| `gRPC web proxy memory limit`| Specify the maximum amount of memory to allocate to the gRPC web proxy. | 200Mi | yes |
+
 
 ### Using the Helm command line to install the Helm release
 {: #icp-orderer-deploy-helm-cli}
 
-Alternatively, you can use the Helm CLI to install the Helm release. Before you run the `helm install` command, ensure that you [add your cluster's Helm repository to the Helm CLI environment ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_int_helm_repo_to_cli.html "Adding the internal Helm repository to Helm CLI").
+Alternatively, you can use the Helm CLI to install the Helm release. Before you run the `helm install` command, ensure that you [add your cluster's Helm repository to the Helm CLI environment ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/app_center/add_int_helm_repo_to_cli.html "Adding the internal Helm repository to Helm CLI").
 
 You can set the parameters required for installation by creating a `yaml` file and passing it to the following `helm install` command.
 

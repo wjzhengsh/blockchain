@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -34,11 +34,9 @@ Operating your network on the {{site.data.keyword.blockchainfull_notm}} Platform
 * Hardened security stack with no privileged access, malware and tamper resistance, 100% encryption, and many more features for networks with sensitive data in regulated industries.
 * Enterprise networks are backed up off-site once every 24 hours. In the event of a disaster, these networks can be restored to the same site or to an alternate site.
 
-Enterprise Plan is a platform service on {{site.data.keyword.cloud_notm}} and follows the [{{site.data.keyword.cloud_notm}} Services terms ![External link icon](images/external_link.svg "External link icon")](http://www-03.ibm.com/software/sla/sladb.nsf/sla/bm "{{site.data.keyword.cloud_notm}} Services terms") on service level agreements (SLAs). Note that Enterprise Plan networks are provisioned across **multiple environments** in geographically separated data-centers.
-
 **Notes:**
-- {{site.data.keyword.blockchainfull_notm}} Platform Enterprise Plan provides a production environment. If you need a development and testing environment, see [About Starter Plan](/docs/services/blockchain/starter_plan.html#starter-plan-about).
-- {{site.data.keyword.blockchainfull_notm}} Platform is a platform service on {{site.data.keyword.cloud_notm}} and all membership offerings follow the [{{site.data.keyword.cloud_notm}} Services terms ![External link icon](images/external_link.svg "External link icon")](http://www-03.ibm.com/software/sla/sladb.nsf/sla/bm "{{site.data.keyword.cloud_notm}} Services terms") on service level agreements (SLAs). Enterprise Plan networks are provisioned across **multiple environments** in geographically separated data-centers.
+- Enterprise Plan provides a production environment. If you need a development and testing environment, see [About Starter Plan](/docs/services/blockchain/starter_plan.html#starter-plan-about).
+- {{site.data.keyword.blockchainfull_notm}} Platform is a platform service on {{site.data.keyword.cloud_notm}} and all membership offerings follow the [{{site.data.keyword.cloud_notm}} Services terms ![External link icon](images/external_link.svg "External link icon")](http://www-03.ibm.com/software/sla/sladb.nsf/sla/bm "{{site.data.keyword.cloud_notm}} Services terms") on service level agreements (SLAs). Enterprise Plan networks are provisioned in a data center in a single geography. For a list of available geographies, see [{{site.data.keyword.blockchainfull_notm}} Platform locations](/docs/services/blockchain?topic=blockchain-ibp-regions-locations#ibp-regions-locations).
 
 For members who are going to initiate the network, IBM provides a graphical user interface to guide the network initiator through key steps to set up and provision the network. This includes inviting other members and setting the governance rules. For more information, see [Govern the Enterprise Plan network](/docs/services/blockchain/get_start.html#getting-started-with-enterprise-plan). After the network is deployed, an interactive graphical user interface, the Network Monitor, is available to monitor health and activity of the network; manage key network activities that include new deployments, members addition or removal, chaincode lifecycle, and channel management; and seek technical support. For more information, see [Using the Network Monitor](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard).
 
@@ -59,7 +57,7 @@ Besides the core blockchain components, the Enterprise Membership option provide
 
 The sole aspect that must be determined is the size of the peers that the network requires. This decision is based on the number of channels that are required, plus the workload per channel, memory usage, and disk space (storage).
 
-You should use Enterprise Plan for more stable, production, or almost production level deployments. For testing purposes, use [Starter Plan](/docs/services/blockchain/starter_plan.html#starter-plan-about), or [install Docker images locally](http://hyperledger-fabric.readthedocs.io/en/release-1.1/build_network.html).
+You should use Enterprise Plan for more stable, production, or almost production level deployments. For testing purposes, use [Starter Plan](/docs/services/blockchain/starter_plan.html#starter-plan-about), or [install Docker images locally](http://hyperledger-fabric.readthedocs.io/en/release-1.2/build_network.html).
 
 <!--- The Enterprise plan provides the ordering service and CA. The membership fee is $1,000, and a per peer fee of $1,000 that is associated with the network. If you want to have high availability (HA), you must purchase an additional peer to provide the HA capabilities. For example, one organization (associated membership fee of $1,000) of two peers ($1,000 X 2 peers) with HA ($1,000 X 2 HA peers) requires a monthly charge of $5,000.  --->
 

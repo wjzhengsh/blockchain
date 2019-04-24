@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -30,7 +30,7 @@ subcollection: blockchain
 
 **Notes:**
 - {{site.data.keyword.blockchainfull_notm}} Platform Starter Plan is a development and testing environment, and is not suitable for production workloads. If you need a production environment, see [About Enterprise Plan](/docs/services/blockchain/enterprise_plan.html#enterprise-plan-about).
-- {{site.data.keyword.blockchainfull_notm}} Platform is a platform service on {{site.data.keyword.cloud_notm}} and all membership offerings follow the [{{site.data.keyword.cloud_notm}} Services terms ![External link icon](images/external_link.svg "External link icon")](http://www-03.ibm.com/software/sla/sladb.nsf/sla/bm "{{site.data.keyword.cloud_notm}} Services terms") on service level agreements (SLAs). Starter Plan networks are provisioned across **multiple environments** in geographically separated data-centers.
+- {{site.data.keyword.blockchainfull_notm}} Platform is a platform service on {{site.data.keyword.cloud_notm}} and all membership offerings follow the [{{site.data.keyword.cloud_notm}} Services terms ![External link icon](images/external_link.svg "External link icon")](http://www-03.ibm.com/software/sla/sladb.nsf/sla/bm "{{site.data.keyword.cloud_notm}} Services terms") on service level agreements (SLAs). Starter Plan are provisioned in a data center in a single geography. For a list of available geographies, see [{{site.data.keyword.blockchainfull_notm}} Platform locations](/docs/services/blockchain?topic=blockchain-ibp-regions-locations#ibp-regions-locations).
 
 ## What Starter Plan offers
 {: #starter-plan-about-what-starter-plan-offers}
@@ -72,7 +72,7 @@ Starter Plan is an entry point to {{site.data.keyword.blockchainfull_notm}} Plat
 - **Starter Plan versions and upgrade**
     - New Starter Plan networks that are created after October 04, 2018 are built on Hyperledger Fabric V1.2.1. Older Starter Plan networks remain at Fabric V1.1.0 level.
     - New peers that are added to older Starter Plan networks will be built on Fabric v1.2.1. The performance of your network is not affected because of backwards compatibility.
-    - You have the option of using more advanced [channel configuration ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/latest/config_update.html "channel configuration") settings and [Access Control Lists ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-v1.2/access_control.html "Access Control Lists") when you create or update a channel.
+    - You have the option of using more advanced [channel configuration ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/config_update.html "channel configuration") settings and [Access Control Lists ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/access_control.html "Access Control Lists") when you create or update a channel.
     - The [Service discovery ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/discovery-overview.html "service discovery") and [private data ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/private-data/private-data.html "private data") features of Hyperledger Fabric v1.2 are not supported on Starter Plan.
     - If you [reset](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-reset-network) an older Starter Plan network that is at Fabric V1.1.0, your new network will be at Fabric V1.2 level. If you reset your network, you need to install your chaincode or .bna files on the new network, as well as re-invite members of your old network.
 - **Network resource limitation**

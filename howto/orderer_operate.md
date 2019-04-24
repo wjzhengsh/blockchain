@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -101,7 +101,7 @@ You need to use the **kubectl** command line tool to connect to orderer containe
 ### Retrieving orderer endpoint information
 {: #icp-orderer-operate-orderer-endpoint}
 
-You need to target your orderer endpoint to make updates to the orderer system channel. You will need to be a [Cluster administrator ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Cluster administrator roles and actions") to complete the following steps:
+You need to target your orderer endpoint to make updates to the orderer system channel. You will need to be a [Cluster administrator ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/user_management/assign_role.html "Cluster administrator roles and actions") to complete the following steps:
 
 1. Log in to your {{site.data.keyword.cloud_notm}} Private console and click the **Menu** icon in the upper left corner.
 2. Click **Workload** > **Helm Releases**.
@@ -121,7 +121,7 @@ In this example, the Proxy IP address is `9.30.94.174` and the external node por
 ### Downloading your orderer TLS cert
 {: #icp-orderer-operate-tls-cert}
 
-You need to download your orderer TLS certificate and pass it to your commands to communicate with your orderer from a remote client. You will need to be a [Cluster administrator ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Cluster administrator roles and actions") to complete the following steps:
+You need to download your orderer TLS certificate and pass it to your commands to communicate with your orderer from a remote client. You will need to be a [Cluster administrator ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/user_management/assign_role.html "Cluster administrator roles and actions") to complete the following steps:
 
 1. Log in to your {{site.data.keyword.cloud_notm}} Private console and click the **Menu** icon in the upper left corner.
 2. Click **Workload** > **Helm Releases**.
@@ -173,6 +173,8 @@ tree
 │   └── msp
 │       ├── cacerts
 │       │   └── 9-30-250-70-30395-SampleOrgCA.pem
+│       ├── IssuerPublicKey
+│       ├── IssuerRevocationPublicKey
 │       ├── keystore
 │       │   └── 2a97952445b38a6e0a14db134645981b74a3f93992d9ddac54cb4b4e19cdf525_sk
 │       ├── signcerts
@@ -198,6 +200,8 @@ tree
     └── msp
         ├── cacerts
         │   └── 9-30-250-70-30395-tlsca.pem
+        ├── IssuerPublicKey
+        ├── IssuerRevocationPublicKey
         ├── keystore
         │   └── 45a7838b1a91ddfe3d4d22a5a7f2639b868493bcce594af3e3ceb9c07899d117_sk
         ├── signcerts
@@ -218,7 +222,7 @@ Updating the orderer system channel is achieved through "configuration update tr
 
 Adding organizations to the orderer system channel is essentially the same flow as updating any channel's configuration to add an organization. However, you need to make a few changes because the channel to update is not an application channel and the relevant admin is the orderer admin instead of a peer organization.
 
-Note that you can add an organization to a channel without joining the system channel first. For more information, see the [Adding an Org to a Channel Tutorial ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/channel_update_tutorial.html "Adding an org to a channel") in the Hyperledger Fabric documentation.
+Note that you can add an organization to a channel without joining the system channel first. For more information, see the [Adding an Org to a Channel Tutorial ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/channel_update_tutorial.html "Adding an org to a channel") in the Hyperledger Fabric documentation.
 
 The following list shows the general steps and the tasks will be performed by different sets of organizations of your consortium.
 
@@ -230,13 +234,13 @@ The following list shows the general steps and the tasks will be performed by di
 {: #icp-orderer-operate-get-fabric-tools}
 
 You need to download the following Hyperledger Fabric tools to update the system channel.
-- [peer ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/peercommand.html), which will allow you to fetch the genesis block and update the system channel.
-- [configtxlator ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/configtxlator.html), which translates the protobuf format of a channel configuration into the JSON format that is more easily to read and update.
+- [peer ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/peercommand.html), which will allow you to fetch the genesis block and update the system channel.
+- [configtxlator ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/configtxlator.html), which translates the protobuf format of a channel configuration into the JSON format that is more easily to read and update.
 
 1. Decide where you want to store the tools and then run this command:
 
   ```
-  curl -sSL http://bit.ly/2ysbOFE | bash -s 1.2.1 1.2.1 -d -s
+  curl -sSL http://bit.ly/2ysbOFE | bash -s 1.4.0 1.4.0 -d -s
   ```
   {:codeblock}
 
@@ -377,7 +381,7 @@ The orderer needs to receive the [organization definitions](/docs/services/block
 
 The downloaded [Fabric tool](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-get-fabric-tools) `configtxtlator` translates the protobuf format of a channel configuration to the JSON format, and vice vera.
 
-These steps follow the general flow of the channel update tutorial about [converting the block into JSON format ![External link icon](../images/external_link.svg "External link icon")]( https://hyperledger-fabric.readthedocs.io/en/release-1.2/channel_update_tutorial.html#convert-the-configuration-to-json-and-trim-it-down "Convert the Configuration to JSON and Trim It Down"). You need to make some changes to the commands in the tutorial to reflect the fact that you are updating the orderer system channel rather than an application channel. You can visit the tutorial for more detail on this process. This section simply provides the commands for you.
+These steps follow the general flow of the channel update tutorial about [converting the block into JSON format ![External link icon](../images/external_link.svg "External link icon")]( https://hyperledger-fabric.readthedocs.io/en/release-1.4/channel_update_tutorial.html#convert-the-configuration-to-json-and-trim-it-down "Convert the Configuration to JSON and Trim It Down"). You need to make some changes to the commands in the tutorial to reflect the fact that you are updating the orderer system channel rather than an application channel. You can visit the tutorial for more detail on this process. This section simply provides the commands for you.
 
 1. Copy the organization definition JSON file from the folder where you [created your organization](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-organization-definition) to your `configupdate` folder. In the example command below, the organization definition JSON file is `org1definition.json`:
 
@@ -499,7 +503,7 @@ Component logs can be viewed from the command line by using the [`kubectl CLI co
 
   For more information about the `kubectl logs` command, see [Kubernetes documentation ![External link icon](../images/external_link.svg "External link icon")](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs “Getting Started”)
 
-- Alternatively, you can access logs by using the  [{{site.data.keyword.cloud_notm}} Private cluster management console ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/troubleshoot/events.html), which opens the logs in Kibana.
+- Alternatively, you can access logs by using the  [{{site.data.keyword.cloud_notm}} Private cluster management console ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/troubleshoot/events.html), which opens the logs in Kibana.
 
   **Note:** When you view your logs in Kibana, you might receive the response `No results found`. This condition can occur if {{site.data.keyword.cloud_notm}} Private uses your worker node IP address as its hostname. To resolve this problem, remove the filter that begins with `node.hostname.keyword` at the top of the panel and the logs will become visible.
 
