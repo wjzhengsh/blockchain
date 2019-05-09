@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-04-18"
+lastupdated: "2019-05-06"
 
 ---
 
@@ -20,11 +20,17 @@ Use these release notes that are grouped by date to learn about the latest chang
 {:shortdesc}
 
 
+## 6 May 2019
+
+**Introducing {{site.data.keyword.blockchainfull_notm}} Platform Console APIs**
+
+APIs are now available to provision, edit, and delete peer, orderer, and CA nodes, making it possible to script the building of your blockchain network. Use the documentation in the [{{site.data.keyword.cloud_notm}} API documentation repository ![External link icon](images/external_link.svg "External link icon")](/apidocs/blockchain#introduction "Introduction") to learn more about the APIs and try them out. In addition, see the topic on [Building a network with APIs](/docs/services/blockchain?topic=blockchain-ibp-v2-apis) for instructions on how to use the APIs to build out your network.
+
 ## 17 April 2019
 
 **Ability to size and scale node resources**  
 
-When you deploy a node you now have the ability to specify the amount of CPU, memory, and storage to your containers, where applicable. You can later scale their resources up or down at a later time according to usage patterns. For more information, see [Allocating resources](/docs/services/blockchain?topic=blockchain-ibp-console-govern#ibp-console-govern-orderer-allocate-resources).
+When you deploy a node you now have the ability to specify the amount of CPU, memory, and storage to your containers, where applicable. You can later scale their resources up or down at a later time according to usage patterns. For more information, see [Allocating resources](/docs/services/blockchain?topic=blockchain-ibp-console-govern#ibp-console-govern-allocate-resources).
 
 **Use of IAM  IBM Cloud Identity and Access Management (IAM)**  
 
