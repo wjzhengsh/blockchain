@@ -61,6 +61,7 @@ IBM Blockchain Platform
 		howto/ibp-console-govern.md
 		howto/ibp-console-identities.md
 		howto/ibp-console-organizations.md
+		howto/ibp-v2-apis.md
 		howto/ibp-console-manage.md
 		howto/ibp-v2-troubleshooting.md
 
@@ -94,6 +95,7 @@ IBM Blockchain Platform
 	{: .navgroup-end}
 
 	{: .navgroup id="reference"}
+	[API reference](https://test.cloud.ibm.com/apidocs/blockchain)
 	glossary.md
 	reference/ibp_regions.md
 	reference/videos.md
