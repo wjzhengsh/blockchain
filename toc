@@ -31,10 +31,9 @@ IBM Blockchain Platform
 	{: .navgroup id="howto"}
 	{: .topicgroup}
 	Developing smart contracts and applications
-		howto/develop_chaincode.md
 		vscode-extension.md
+		howto/develop_chaincode.md
 		best_practices.md
-
 
 	{: .topicgroup}
 	Starter and Enterprise Plan
