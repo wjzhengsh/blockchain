@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-04-23"
+lastupdated: "2019-05-09"
 
 subcollection: blockchain
 
@@ -19,6 +19,25 @@ subcollection: blockchain
 
 # What's new
 {: #whats-new}
+
+## May 9, 2019
+{: #whats-new-9-08-2019}
+
+{{site.data.keyword.blockchainfull_notm}} releases version 1.0.0 of the {{site.data.keyword.blockchainfull_notm}} Platform Visual Studio (VS) Code Extension. This developer toolkit contains the following key capabilities:
+
+**A reconfigured user interface for simpler navigation**
+
+**Prescriptive and detailed tutorials that cover how to:**
+- Develop a smart contract
+- Provision an instance of the {{site.data.keyword.blockchainfull_notm}} service on {{site.data.keyword.cloud_notm}}
+- Deploy and transact with your {{site.data.keyword.blockchainfull_notm}} Platform service instance
+
+**All the popular features from previous releases, including:**
+- Ability to debug smart contracts
+- Sample code
+- Updated wallet capability
+
+For more information, see [Developing smart contracts with Visual Studio Code extension](https://test.cloud.ibm.com/docs/services/blockchain/howto?topic=blockchain-develop-vscode).
 
 ## April 23, 2019
 {: #whats-new-4-17-2019}
