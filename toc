@@ -31,10 +31,9 @@ IBM Blockchain Platform
 	{: .navgroup id="howto"}
 	{: .topicgroup}
 	Developing smart contracts and applications
-		howto/develop_chaincode.md
 		vscode-extension.md
+		howto/develop_chaincode.md
 		best_practices.md
-
 
 	{: .topicgroup}
 	Starter and Enterprise Plan
@@ -62,6 +61,7 @@ IBM Blockchain Platform
 		howto/ibp-console-govern.md
 		howto/ibp-console-identities.md
 		howto/ibp-console-organizations.md
+		howto/ibp-v2-apis.md
 		howto/ibp-console-manage.md
 		howto/ibp-v2-troubleshooting.md
 
@@ -95,6 +95,7 @@ IBM Blockchain Platform
 	{: .navgroup-end}
 
 	{: .navgroup id="reference"}
+	[API reference](https://test.cloud.ibm.com/apidocs/blockchain)
 	glossary.md
 	reference/ibp_regions.md
 	reference/videos.md
