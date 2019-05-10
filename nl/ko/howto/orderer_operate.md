@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -101,7 +101,7 @@ subcollection: blockchain
 ### 순서 지정자 엔드포인트 정보 검색
 {: #icp-orderer-operate-orderer-endpoint}
 
-순서 지정자 시스템 채널을 업데이트하려면 순서 지정자 엔드포인트를 대상으로 지정해야 합니다. 다음 단계를 완료하려면 [클러스터 관리자 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "클러스터 관리자 역할 및 조치")여야 합니다.
+순서 지정자 시스템 채널을 업데이트하려면 순서 지정자 엔드포인트를 대상으로 지정해야 합니다. 다음 단계를 완료하려면 [클러스터 관리자 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/user_management/assign_role.html "클러스터 관리자 역할 및 조치")여야 합니다.
 
 1. {{site.data.keyword.cloud_notm}} Private 콘솔에 로그인한 후 왼쪽 상단 구석에 있는 **메뉴** 아이콘을 클릭하십시오.
 2. **워크로드** > **Helm 릴리스**를 클릭하십시오.
@@ -121,7 +121,7 @@ subcollection: blockchain
 ### 순서 지정자 TLS 인증서 다운로드
 {: #icp-orderer-operate-tls-cert}
 
-원격 클라이언트에서 순서 지정자와 통신하려면 순서 지정자 TLS 인증서를 다운로드하여 해당 명령에 전달해야 합니다. 다음 단계를 완료하려면 [클러스터 관리자 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "클러스터 관리자 역할 및 조치")여야 합니다.
+원격 클라이언트에서 순서 지정자와 통신하려면 순서 지정자 TLS 인증서를 다운로드하여 해당 명령에 전달해야 합니다. 다음 단계를 완료하려면 [클러스터 관리자 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/user_management/assign_role.html "클러스터 관리자 역할 및 조치")여야 합니다.
 
 1. {{site.data.keyword.cloud_notm}} Private 콘솔에 로그인한 후 왼쪽 상단 구석에 있는 **메뉴** 아이콘을 클릭하십시오.
 2. **워크로드** > **Helm 릴리스**를 클릭하십시오.
@@ -173,6 +173,8 @@ tree
 │   └── msp
 │       ├── cacerts
 │       │   └── 9-30-250-70-30395-SampleOrgCA.pem
+│       ├── IssuerPublicKey
+│       ├── IssuerRevocationPublicKey
 │       ├── keystore
 │       │   └── 2a97952445b38a6e0a14db134645981b74a3f93992d9ddac54cb4b4e19cdf525_sk
 │       ├── signcerts
@@ -198,6 +200,8 @@ tree
     └── msp
         ├── cacerts
         │   └── 9-30-250-70-30395-tlsca.pem
+        ├── IssuerPublicKey
+        ├── IssuerRevocationPublicKey
         ├── keystore
         │   └── 45a7838b1a91ddfe3d4d22a5a7f2639b868493bcce594af3e3ceb9c07899d117_sk
         ├── signcerts
@@ -218,7 +222,7 @@ tree
 
 순서 지정자 시스템 채널에 조직을 추가하는 작업은 기본적으로 조직을 추가하기 위해 채널의 구성을 업데이트하는 작업과 동일한 플로우입니다. 하지만 업데이트할 채널이 애플리케이션 채널이 아니고 관련 관리자가 피어 조직이 아닌 순서 지정자 관리자이기 때문에 몇 가지 항목을 변경해야 합니다.
 
-시스템 채널에 먼저 가입하지 않고도 채널에 조직을 추가할 수 있습니다. 자세한 정보는 Hyperledger Fabric 문서에서 [채널에 조직 추가 튜토리얼 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/channel_update_tutorial.html "채널에 조직 추가")을 참조하십시오.
+시스템 채널에 먼저 가입하지 않고도 채널에 조직을 추가할 수 있습니다. 자세한 정보는 Hyperledger Fabric 문서에서 [채널에 조직 추가 튜토리얼 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/channel_update_tutorial.html "채널에 조직 추가")을 참조하십시오.
 
 다음 목록은 컨소시엄의 다양한 조직 세트에서 수행되는 일반 단계 및 태스크를 보여줍니다.
 
@@ -230,13 +234,13 @@ tree
 {: #icp-orderer-operate-get-fabric-tools}
 
 시스템 채널을 업데이트하려면 다음과 같은 Hyperledger Fabric 도구를 다운로드해야 합니다.
-- [peer ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/peercommand.html) - 최초 블록을 페치하고 시스템 채널을 업데이트할 수 있도록 해줍니다.
-- [configtxlator ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/configtxlator.html) - protobuf 형식의 채널 구성을 더 쉽게 읽고 업데이트할 수 있는 JSON 형식으로 변환합니다.
+- [peer ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/peercommand.html) - 최초 블록을 페치하고 시스템 채널을 업데이트할 수 있도록 해줍니다.
+- [configtxlator ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/configtxlator.html) - protobuf 형식의 채널 구성을 더 쉽게 읽고 업데이트할 수 있는 JSON 형식으로 변환합니다.
 
 1. 도구를 저장할 위치를 결정한 후 다음 명령을 실행하십시오.
 
   ```
-  curl -sSL http://bit.ly/2ysbOFE | bash -s 1.2.1 1.2.1 -d -s
+  curl -sSL http://bit.ly/2ysbOFE | bash -s 1.4.0 1.4.0 -d -s
   ```
   {:codeblock}
 
@@ -377,7 +381,7 @@ tree
 
 다운로드된 [Fabric 도구](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-get-fabric-tools)(`configtxtlator`)는 protobuf 형식의 채널 구성을 JSON 형식으로 변환하거나 반대로 변환합니다.
 
-다음 단계는 [블록을 JSON 형식으로 변환 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")]( https://hyperledger-fabric.readthedocs.io/en/release-1.2/channel_update_tutorial.html#convert-the-configuration-to-json-and-trim-it-down "구성을 JSON으로 변환하여 크기 줄이기")하는 작업과 관련된 채널 업데이트 튜토리얼의 일반 플로우를 수행합니다. 애플리케이션 채널이 아닌 순서 지정자 시스템 채널을 업데이트하고 있다는 사실을 반영하려면 튜토리얼에 있는 명령을 일부 변경해야 합니다. 해당 튜토리얼을 방문하여 이 프로세스에 대한 자세한 정보를 확인할 수 있습니다. 이 절에서는 단순히 사용자를 위한 명령만 제공합니다.
+다음 단계는 [블록을 JSON 형식으로 변환 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")]( https://hyperledger-fabric.readthedocs.io/en/release-1.4/channel_update_tutorial.html#convert-the-configuration-to-json-and-trim-it-down "구성을 JSON으로 변환하여 크기 줄이기")하는 작업과 관련된 채널 업데이트 튜토리얼의 일반 플로우를 수행합니다. 애플리케이션 채널이 아닌 순서 지정자 시스템 채널을 업데이트하고 있다는 사실을 반영하려면 튜토리얼에 있는 명령을 일부 변경해야 합니다. 해당 튜토리얼을 방문하여 이 프로세스에 대한 자세한 정보를 확인할 수 있습니다. 이 절에서는 단순히 사용자를 위한 명령만 제공합니다.
 
 1. 조직 정의 JSON 파일을 [조직을 작성한](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-organization-definition) 폴더에서 `configupdate` 폴더로 복사하십시오. 아래의 예제에서 조직 정의 JSON 파일은 `org1definition.json`입니다.
 
@@ -499,7 +503,7 @@ peer channel update -f config_update_in_envelope.pb -c $CHANNEL_NAME -o $PROXY:$
 
   `kubectl logs` 명령에 대한 자세한 정보는 [Kubernetes 문서 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs “Getting Started”)를 참조하십시오.
 
-- 또는 Kibana에서 로그를 여는 [{{site.data.keyword.cloud_notm}} Private 클러스터 관리 콘솔 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/troubleshoot/events.html)을 사용하여 로그에 액세스할 수 있습니다.
+- 또는 Kibana에서 로그를 여는 [{{site.data.keyword.cloud_notm}} Private 클러스터 관리 콘솔 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/troubleshoot/events.html)을 사용하여 로그에 액세스할 수 있습니다.
 
   **참고:** Kibana에서 로그인이 표시되면 `No results found`의 응답을 수신할 수 있습니다. 이 상태는 {{site.data.keyword.cloud_notm}} Private이 호스트 이름으로 작업자 노드 IP 주소를 사용하는 경우 발생할 수 있습니다. 이 문제점을 해결하려면 패널 상단에서 `node.hostname.keyword`로 시작하는 필터를 제거하십시오. 그런 다음 로그가 표시됩니다.
 

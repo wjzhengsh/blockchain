@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -20,8 +20,12 @@ subcollection: blockchain
 # Acerca de {{site.data.keyword.blockchainfull_notm}} Platform para {{site.data.keyword.cloud_notm}} Private
 {: #ibp-icp-about}
 
-{{site.data.keyword.blockchainfull}} Platform ofrece {{site.data.keyword.blockchainfull_notm}} Platform para {{site.data.keyword.cloud_notm}} Private, que es una plataforma de aplicaciones para desarrollar y gestionar aplicaciones contenerizadas. La oferta {{site.data.keyword.blockchainfull_notm}} Platform para {{site.data.keyword.cloud_notm}} Private se basa en Kubernetes, lo que permite a los usuarios desplegar entidades emisoras de certificados (CA), clasificadores e iguales en x86, LinuxONE e IBM Z. {{site.data.keyword.blockchainfull_notm}} Platform para {{site.data.keyword.cloud_notm}} Private se basa en Hyperledger Fabric v1.2.1 y se despliega mediante diagramas de Helm de Kubernetes.
+{{site.data.keyword.blockchainfull}} Platform ofrece {{site.data.keyword.blockchainfull_notm}} Platform para {{site.data.keyword.cloud_notm}} Private, que es una plataforma de aplicaciones para desarrollar y gestionar aplicaciones contenerizadas. La oferta {{site.data.keyword.blockchainfull_notm}} Platform para {{site.data.keyword.cloud_notm}} Private se basa en Kubernetes, que permite que los usuarios puedan desplegar entidades emisoras de certificados (CA), clasificadores e iguales en x86, LinuxONE e IBM Z. Puede desplegar
+{{site.data.keyword.blockchainfull_notm}} Platform para {{site.data.keyword.cloud_notm}} Private utilizando diagramas de Helm de Kubernetes.
 {:shortdesc}
+
+{{site.data.keyword.blockchainfull_notm}} Platform para {{site.data.keyword.cloud_notm}} Private se ha actualizado a Hyperledger Fabric v1.4.0 el 23 de abril de 2019. No obstante, no habrá soporte para datos privados y rumores (gossip) por ahora.
+{:note}
 
 {{site.data.keyword.blockchainfull_notm}} Platform para {{site.data.keyword.cloud_notm}} Private ofrece los componentes que necesita para ejecutar una red blockchain en su propia infraestructura mediante {{site.data.keyword.cloud_notm}} Private. Los componentes incluyen Hyperledger Fabric, una entidad emisora de certificados (CA), un clasificador y un igual, que puede desplegar, gestionar y configurar utilizando diagramas de Helm de Kubernetes. **Esta oferta está dirigida a los clientes que tengan un nivel alto de experiencia con Hyperledger Fabric.**
 
@@ -31,7 +35,8 @@ subcollection: blockchain
  * Permite que los clientes puedan configurar Fabric en Kubernetes utilizando diagramas de Helm y documentación detallada para las operaciones.
  * Concede a los clientes un soporte técnico avanzado, a menos que utilice Community Edition.
 
-{{site.data.keyword.blockchainfull_notm}} Platform para {{site.data.keyword.cloud_notm}} Private es un producto empaquetado para que los clientes de {{site.data.keyword.cloud_notm}} Private puedan desplegar componentes de blockchain en su entorno local. Tras importar el diagrama de Helm, puede encontrarla como un mosaico de {{site.data.keyword.blockchainfull_notm}} Platform en el catálogo de {{site.data.keyword.cloud_notm}} Private. Para obtener más información sobre {{site.data.keyword.cloud_notm}} Private, consulte la documentación de [{{site.data.keyword.cloud_notm}} Private 3.1.0 ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/kc_welcome_containers.html "{{site.data.keyword.cloud_notm}} Private 3.1.0").
+{{site.data.keyword.blockchainfull_notm}} Platform para {{site.data.keyword.cloud_notm}} Private es un producto empaquetado para que los clientes de {{site.data.keyword.cloud_notm}} Private puedan desplegar componentes de blockchain en su entorno local. Tras importar el diagrama de Helm, puede encontrarla como un mosaico de {{site.data.keyword.blockchainfull_notm}} Platform en el catálogo de {{site.data.keyword.cloud_notm}} Private. Para obtener más información sobre {{site.data.keyword.cloud_notm}} Private, consulte la documentación para
+[{{site.data.keyword.cloud_notm}} Private versión 3.1.2 ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/kc_welcome_containers.html "{{site.data.keyword.cloud_notm}} Private 3.1.2").
 
 ## Qué ofrece {{site.data.keyword.blockchainfull_notm}} Platform para {{site.data.keyword.cloud_notm}} Private
 
@@ -39,7 +44,7 @@ subcollection: blockchain
 
 ## ¿Resulta {{site.data.keyword.blockchainfull_notm}} Platform para {{site.data.keyword.cloud_notm}} Private adecuada para usted?
 
-La ejecución de componentes de {{site.data.keyword.blockchainfull_notm}} Platform fuera de {{site.data.keyword.cloud_notm}} le ofrece una mayor flexibilidad para crecer o unirse a una red blockchain. Resulta de ayuda para que los creadores de redes hagan crecer sus redes al permitir la unión de nuevos miembros mientras utilizan la plataforma que han elegido. Permitirá que las organizaciones interesadas en unirse a redes blockchain coloquen sus iguales con sus aplicaciones existentes o los integren con sus sistemas de registro.
+La ejecución de componentes de {{site.data.keyword.blockchainfull_notm}} Platform fuera de {{site.data.keyword.cloud_notm}} le ofrece una mayor flexibilidad para crecer o unirse a una red blockchain. Resulta de ayuda para que los iniciadores de red hagan crecer sus redes al permitir la unión de nuevos miembros mientras utilizan la plataforma que han elegido. Permitirá que las organizaciones interesadas en unirse a redes blockchain coloquen sus iguales con sus aplicaciones existentes o los integren con sus sistemas de registro.
 
 El proceso para desplegar {{site.data.keyword.blockchainfull_notm}} Platform para {{site.data.keyword.cloud_notm}} Private es complicado y requiere un alto nivel de experiencia en Fabric. Si es nuevo en Fabric, {{site.data.keyword.cloud_notm}} Private o {{site.data.keyword.blockchainfull_notm}} Platform y su objetivo es configurar un entorno de desarrollo o una prueba de concepto, plantéese utilizar el [Plan inicial](/docs/services/blockchain/starter_plan.html#starter-plan-about) en su lugar. Tenga también en cuenta que no todas las configuraciones de despliegue potenciales se admiten en {{site.data.keyword.blockchainfull_notm}} Platform para {{site.data.keyword.cloud_notm}} Private.
 {:improtant}
@@ -57,21 +62,22 @@ Antes de empezar, asegúrese de que entiende las **consideraciones** y **limitac
 - Puede desplegar varios componentes en un único espacio de nombres en {{site.data.keyword.cloud_notm}} Private, siempre que tengan distintos nombres de release.
 - No se pueden direccionar los componentes utilizando la interfaz de usuario de Swagger en la interfaz de usuario del supervisor de red.
 - No hay soporte para TLS mutuo.
+- La tecnología subyacente, Hyperledger Fabric, utiliza contenedores para ejecutar el código de encadenamiento y Docker para iniciar el contenedor. El único modo para que un igual inicie un contenedor de código de encadenamiento consiste en utilizar Docker-in-Docker, que requiere acceso con privilegios.
 
 **Consideraciones de la entidad emisora de certificados**
 - Este diagrama de Helm despliega una única instancia de la CA. Aunque se considera que tener una CA independiente para cada organización es el método recomendado, puede ser necesario desplegar varias CA. Por ejemplo, si tiene pensado desplegar un clasificador y tres iguales, necesitará al menos dos CA (una para la organización del clasificador y otra para la organización del igual).
 - Aunque puede optar por ejecutar una base de datos MySQL independiente, esta opción no está presente en el diagrama de Helm. No obstante, el diagrama de Helm desplegará una base de datos SQLite dentro de la CA para gestionar las necesidades de base de datos de la CA, las cuales incluyen la realización del seguimiento del número de inscripciones por usuario y los certificados revocados.
 
 **Consideraciones del clasificador**
-- El servicio de ordenación es compatible con cualquier componente en la versión 1.2 de Hyperledger Fabric.
+- El servicio de ordenación es compatible con cualquier componente en la versión 1.1 o superior de Hyperledger Fabric.
 - Este diagrama de Helm despliega una instancia individual del servicio de ordenación SOLO (un clasificador). Tenga en cuenta que no es posible desplegar más de un clasificador SOLO en un canal para hacer que el servicio de ordenación sea de alta disponibilidad. Este es uno de los motivos por los que los servicios de ordenación SOLO son adecuados para entornos de desarrollo, y no para entornos de producción. No obstante, puede desplegar varias instancias del servicio de ordenación SOLO en distintas redes (es decir, con un consorcio independiente).
 
 **Consideraciones del igual**
 
-- Puede conectar los iguales únicamente a redes blockchain que estén en el nivel v1.1 o v1.2.1 de Fabric. Puede encontrar la versión de Hyperledger Fabric abriendo la [ventana Preferencias de red](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-network-preferences) en el supervisor de red. Siga las [instrucciones](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-peer-connection-information) para recuperar la información de conexión del igual de las redes de Plan inicial o empresarial.
+- Puede conectar los iguales únicamente a redes blockchain que estén en el nivel v1.1 o superior de Fabric. Puede encontrar la versión de Hyperledger Fabric abriendo la [ventana Preferencias de red](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-network-preferences) en el supervisor de red. Siga las [instrucciones](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-peer-connection-information) para recuperar la información de conexión del igual de las redes de Plan inicial o empresarial.
 - El tipo de base de datos del igual debe coincidir con el tipo de base de datos de la red blockchain, ya sea LevelDB o CouchDB.
 - La interfaz CouchDB Fauxton no está disponible en el igual.
-- Actualmente no se da soporte a [gossip (rumor)](/docs/services/blockchain/glossary.html#glossary-gossip) para los iguales. Esto implica que tampoco hay soporte para las características de Fabric que dependen de rumores (gossip), como [datos privados ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/private-data-arch.html "datos privados") y [descubrimiento de servicios ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/discovery-overview.html "descubrimiento de servicios").
+- Actualmente no se da soporte a [gossip (rumor)](/docs/services/blockchain/glossary.html#glossary-gossip) para los iguales. Esto implica que tampoco hay soporte para las características de Fabric que dependen de rumores (gossip), como [datos privados ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/private-data-arch.html "datos privados") y [descubrimiento de servicios ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/discovery-overview.html "descubrimiento de servicios").
 
 ## Requisitos previos del sistema
 {: #ibp-icp-about-prerequisites}
@@ -81,7 +87,7 @@ Antes de empezar, asegúrese de que entiende las **consideraciones** y **limitac
 - Ubuntu 18.04 LTS y 16.04 LTS
 - SUSE Linux Enterprise Server (SLES) 12 SP3
 
-El diagrama de Helm de {{site.data.keyword.blockchainfull_notm}} Platform para {{site.data.keyword.cloud_notm}} Private se ha validado para su ejecución en clústeres de {{site.data.keyword.cloud_notm}} privado v3.1.0 en Ubuntu Linux utilizando los nodos trabajadores y el almacenamiento de reserva siguientes:
+El diagrama de Helm de {{site.data.keyword.blockchainfull_notm}} Platform para {{site.data.keyword.cloud_notm}} Private se ha validado para su ejecución en clústeres de {{site.data.keyword.cloud_notm}} Private v3.1.2 en Ubuntu Linux utilizando los nodos trabajadores y el almacenamiento de reserva siguientes:
 
 - **LinuxONE e IBM Z**: z/VM y KVM, que utilizan NFS.
 - **x86**: Linux de 64 bits que utiliza GlusterFS.
@@ -94,14 +100,14 @@ El diagrama de Helm de {{site.data.keyword.blockchainfull_notm}} Platform para {
 ### Licencia
 {: #ibp-icp-about-license}
 
-{{site.data.keyword.blockchainfull_notm}} Platform en {{site.data.keyword.cloud_notm}} Private proporciona los componentes necesarios para ejecutar una red blockchain en su propia infraestructura y se despliega como una aplicación de {{site.data.keyword.cloud_notm}} Private. Puede acceder a PPA y [descargar el diagrama de Helm](/docs/services/blockchain/howto/helm_install_icp.html#helm-install). El soporte técnico de {{site.data.keyword.blockchainfull_notm}} viene incluido con la compra.
+{{site.data.keyword.blockchainfull_notm}} Platform para {{site.data.keyword.cloud_notm}} Private proporciona los componentes necesarios para ejecutar una red blockchain en su propia infraestructura y se despliega como una aplicación de {{site.data.keyword.cloud_notm}} Private. Puede acceder a PPA y [descargar el diagrama de Helm](/docs/services/blockchain/howto/helm_install_icp.html#helm-install). El soporte técnico de {{site.data.keyword.blockchainfull_notm}} viene incluido con la compra.
 
-La edición Community Edition de {{site.data.keyword.blockchainfull_notm}} Platform en IBM Cloud Private es una oferta gratuita adecuada para la evaluación y experimentación y se despliega como una aplicación de {{site.data.keyword.cloud_notm}} Private. No utilice Community Edition para producción. {{site.data.keyword.blockchainfull_notm}} Platform no proporciona soporte para Community Edition. Puede acceder al [paquete de GitHub ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://github.com/IBM/charts/blob/master/repo/stable/ibm-blockchain-platform-dev-1.0.0.tgz "IBM/charts") y descargar el diagrama de Helm.
+La edición Community Edition de {{site.data.keyword.blockchainfull_notm}} Platform para IBM Cloud Private es una oferta gratuita adecuada para la evaluación y experimentación y se despliega como una aplicación de {{site.data.keyword.cloud_notm}} Private. No utilice Community Edition para producción. {{site.data.keyword.blockchainfull_notm}} Platform no proporciona soporte para Community Edition. Puede acceder al [paquete de GitHub ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://github.com/IBM/charts/blob/master/repo/stable/ibm-blockchain-platform-dev-1.0.2.tgz "IBM/charts") y descargar el diagrama de Helm.
 
 ### Precios
 {: #ibp-icp-about-pricing}
 
-Los precios de {{site.data.keyword.blockchainfull_notm}} Platform en {{site.data.keyword.cloud_notm}} Private se basan en el número de núcleos de procesador virtual (VPC) utilizados. Un VPC puede ser un núcleo virtual que se asigna a un servidor virtual, o un núcleo de procesador físico en un servidor no particionado. Debe obtener una titularidad de licencia para cada VPC que se ponga a disposición para la plataforma {{site.data.keyword.blockchainfull_notm}}. <!-- A VPC is a unit of measurement by which a program can be licensed.-->
+Los precios de {{site.data.keyword.blockchainfull_notm}} Platform para {{site.data.keyword.cloud_notm}} Private se basan en el número de núcleos de procesador virtual (VPC) utilizados. Un VPC puede ser un núcleo virtual que se asigna a un servidor virtual, o un núcleo de procesador físico en un servidor no particionado. Debe obtener una titularidad de licencia para cada VPC que se ponga a disposición para la plataforma {{site.data.keyword.blockchainfull_notm}}. <!-- A VPC is a unit of measurement by which a program can be licensed.-->
 
 Para obtener más información sobre cómo determinar su utilización de VPC, consulte este artículo sobre ["Núcleos de procesador virtual (VPC)" ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/en/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_virtual_processor_core_licenses.html "Núcleos de procesador virtual (VPC)") en {{site.data.keyword.IBM_notm}} Knowledge Center. Puede utilizar la herramienta [{{site.data.keyword.IBM_notm}} License Metric Tool](https://www.ibm.com/support/knowledgecenter/en/SS8JFY_9.2.0/com.ibm.lmt.doc/welcome/LMT_welcome.html) para configurar y crear un informe que puede utilizar para determinar el número de VPC para los que debe obtener una licencia.
 
@@ -115,20 +121,21 @@ Para obtener más información sobre cómo determinar su utilización de VPC, co
 
 - La edición Community Edition de {{site.data.keyword.blockchainfull_notm}} Platform está pensada para fines de exploración, desarrollo y pruebas. Se puede acceder a la versión gratuita de {{site.data.keyword.blockchainfull_notm}} Platform para {{site.data.keyword.cloud_notm}} Private a través de GitHub. **Nota:** {{site.data.keyword.blockchainfull_notm}} Platform no proporciona soporte para Community Edition.
 
-Para obtener instrucciones sobre cómo instalar el diagrama de Helm y los requisitos previos necesarios, consulte [Instalación de {{site.data.keyword.blockchainfull_notm}} Platform en {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/howto/helm_install_icp.html#helm-install).
+Para obtener instrucciones sobre cómo instalar el diagrama de Helm y los requisitos previos necesarios, consulte [Instalación de {{site.data.keyword.blockchainfull_notm}} Platform para {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/howto/helm_install_icp.html#helm-install).
 
 Si es un usuario nuevo de {{site.data.keyword.cloud_notm}} Private y desea información y sugerencias sobre cómo instalar y desplegar {{site.data.keyword.cloud_notm}} Private, consulte [Configuración de {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/ICP_setup.html#icp-setup).
 
 Después de instalar {{site.data.keyword.blockchainfull_notm}} Platform para {{site.data.keyword.cloud_notm}} Private,
-deberá desplegar cada componente de la red individualmente. No puede desplegar varios componentes al mismo tiempo. Antes de empezar, consulte la [guía de despliegue de {{site.data.keyword.blockchainfull_notm}} Platform para {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/ibp_for_icp_deployment_guide.html#get-started-icp) para ver las prácticas recomendadas para crear o unirse a una red blockchain. A continuación, revise los pasos para desplegar y trabajar con los componentes individuales en las secciones siguientes.
+deberá desplegar cada componente de la red individualmente. No puede desplegar varios componentes al mismo tiempo. Consulte
+[Iniciación a {site.data.keyword.blockchainfull_notm}} Platform para {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/ibp_for_icp_deployment_guide.html#get-started-icp) para conocer los métodos recomendados para crear o unirse a una red blockchain. A continuación, revise los pasos para desplegar y trabajar con los componentes individuales en las secciones siguientes.
 
 ### Instalación de {{site.data.keyword.blockchainfull_notm}} Platform para {{site.data.keyword.cloud_notm}} Private detrás de un cortafuegos
 {: #ibp-icp-about-firewall}
 
 Puede desplegar los componentes de {{site.data.keyword.blockchainfull_notm}} Platform detrás de un cortafuegos, sin tener que acceder a Internet público. El paquete del diagrama de Helm descargado incluye todas las imágenes de Docker de los componentes de Fabric que utiliza la plataforma {{site.data.keyword.blockchainfull_notm}}, sin obtenerlos de DockerHub durante el despliegue.
 
-El paquete del diagrama de Helm de la edición Community Edition de {{site.data.keyword.blockchainfull_notm}} Platform no incluye las imágenes de Docker de los componentes de Fabric necesarios. Está configurado para descargar dichas imágenes desde DockerHub durante el despliegue y fallará si no tiene acceso a Internet público. No obstante, puede realizar algunos pasos adicionales para desplegar los componentes de Community Edition detrás de un cortafuegos. Para obtener más información, consulte
-[Instalación de Community Edition detrás de un cortafuegos](/docs/services/blockchain/howto/helm_install_icp.html#helm-install-prereqs-firewall)
+El paquete del diagrama de Helm de la edición Community Edition de {{site.data.keyword.blockchainfull_notm}} Platform no incluye las imágenes de Docker de los componentes de Fabric necesarios. Está configurado para descargar dichas imágenes desde DockerHub durante el despliegue y fallará si no tiene acceso a Internet público. No obstante, puede realizar algunos pasos adicionales para desplegar los componentes de Community Edition detrás de un cortafuegos. Para obtener más información, consulte, consulte
+[Instalación de Community Edition detrás de un cortafuegos](/docs/services/blockchain/howto/helm_install_icp.html#helm-install-prereqs-firewall).
 
 
 ## Acerca de las entidades emisoras de certificados en {{site.data.keyword.cloud_notm}} Private
@@ -180,7 +187,7 @@ Los datos de la base de datos de estado, independientemente de si utiliza LevelD
 ### Residencia de datos
 {: #ibp-icp-about-security-data-residency}
 
-Los requisitos de residencia de datos pueden imponer que el proceso y el almacenamiento de todos los datos del libro mayor de blockchain permanezcan dentro de los límites de un solo país (o dentro de algún otro límite definido). Para obtener más información sobre cómo se puede conseguir la residencia de los datos, consulte [Residencia de los datos](#ibp-icp-about-data-residency).
+Los requisitos de residencia de datos pueden imponer que el proceso y el almacenamiento de todos los datos del libro mayor de blockchain permanezcan dentro de los límites de un solo país (o dentro de algún otro límite definido). Para obtener más información sobre cómo conseguir la residencia de datos, consulte [Residencia de los datos](#ibp-icp-about-data-residency).
 
 ### Gestión de claves
 {: #ibp-icp-about-security-key-management}
@@ -213,7 +220,7 @@ Debido a que las redes blockchain no conocen qué tipo de datos se procesa, en o
 
 Para hacer frente a los requisitos de residencia de datos, es importante comprender la arquitectura de Hyperledger Fabric subyacente a la plataforma {{site.data.keyword.blockchainfull_notm}}. La arquitectura se centra en torno a tres componentes clave: un servicio de ordenación (compuesto por clasificadores), entidades emisoras de certificados (CA) e iguales. Un igual recibe actualizaciones de estado ordenadas en forma de bloques desde el servicio de ordenación y mantiene el estado y el libro mayor. Por lo tanto, un igual y un servicio de ordenación tienen una relación directa. El libro mayor contiene los valores más recientes de todas las claves y los datos que incluyen los registros de transacciones.
 
-Además, las aplicaciones cliente utilizan los [SDK de Fabric](/docs/services/blockchain/v10_application.html#dev-app-fabric-sdks) para enviar transacciones a los iguales y al servicio de ordenación. Estas transacciones incluyen datos del [conjunto de lectura-escritura ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/readwrite.html "semántica del conjunto de lectura-escritura"), que contienen los valores de clave-valor en el libro mayor.
+Además, las aplicaciones cliente utilizan los [SDK de Fabric](/docs/services/blockchain/v10_application.html#dev-app-fabric-sdks) para enviar transacciones a los iguales y al servicio de ordenación. Estas transacciones incluyen datos del [conjunto de lectura-escritura ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/readwrite.html "semántica del conjunto de lectura-escritura"), que contienen los valores de clave-valor en el libro mayor.
 
 Si la residencia de datos en el país es un requisito, el clasificador, el igual y las aplicaciones cliente deben residir en el mismo país. Cuando se crea una red de {{site.data.keyword.blockchainfull_notm}} Platform en {{site.data.keyword.cloud_notm}}, tiene la opción de seleccionar la ubicación de la red. <!--For a Starter Plan network, you can select from US South, United Kingdom, and Sydney. For an Enterprise Plan network, you can select from currently available locations, which include Dallas, Frankfurt, London, Sao Paulo, Tokyo, and Toronto. -->Para obtener más información sobre regiones y ubicaciones, consulte el tema sobre [Regiones y ubicaciones de {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/reference/ibp_regions.html#ibp-regions-locations).
 
@@ -246,15 +253,15 @@ En la **Figura 2**, no se requiere residencia de datos para `OrgC` y `OrgD`. De 
 Para estudiar con mayor detalle el flujo de datos en la red de la plataforma
 {{site.data.keyword.blockchainfull_notm}}, consulte la
 [documentación de Fabric sobre el flujo de transacciones
-![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/txflow.html "Flujo de transacciones").
+![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/txflow.html "Flujo de transacciones").
 
-En el futuro, la nueva tecnología de Hyperledger Fabric mejorará la capacidad de obtener una mejor residencia de datos utilizando [Recopilaciones de datos privados ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/private-data/private-data.html "Recopilaciones de datos privados") y Zero Knowledge Proof.
+En el futuro, la nueva tecnología de Hyperledger Fabric mejorará la capacidad de obtener una mejor residencia de datos utilizando [Recopilaciones de datos privados ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/private-data/private-data.html "Recopilaciones de datos privados") y Zero Knowledge Proof.
 
-- Una recopilación de datos privados garantiza que los datos privados se comparten entre igual e igual (mediante el protocolo gossip) solo con los iguales que tienen autorización para verlos, por ejemplo iguales que están dentro de las fronteras del país. Los datos se almacenan en una base de datos privada en el igual. El servicio de ordenación no está implicado y no ve los datos privados. Se escribe un hash de esos datos en los libros mayores de cada igual del canal. El hash que se utiliza para la validación de estado sirve como prueba de la transacción y se puede utilizar para fines de auditoría. Los datos privados están disponibles para las redes de {{site.data.keyword.blockchainfull_notm}} Platform que se ejecutan en la versión 1.2.1 de Fabric. No obstante, la característica de datos privados no está disponible para los iguales que se ejecutan en {{site.data.keyword.cloud_notm}} Private, ya que las redes de {{site.data.keyword.cloud_notm}} Private no utilizan gossip (rumores) actualmente.
+- Una recopilación de datos privados garantiza que los datos privados se comparten entre igual e igual (mediante el protocolo gossip) solo con los iguales que tienen autorización para verlos, por ejemplo iguales que están dentro de las fronteras del país. Los datos se almacenan en una base de datos privada en el igual. El servicio de ordenación no está implicado y no ve los datos privados. Se escribe un hash de esos datos en los libros mayores de cada igual del canal. El hash que se utiliza para la validación de estado sirve como prueba de la transacción y se puede utilizar para fines de auditoría. Los datos privados están disponibles para las redes de {{site.data.keyword.blockchainfull_notm}} Platform que se ejecutan en la versión 1.2.1 o superior de Fabric. No obstante, la característica de datos privados no está disponible para los iguales que se ejecutan en {{site.data.keyword.cloud_notm}} Private, ya que las redes de {{site.data.keyword.cloud_notm}} Private no utilizan gossip (rumores) actualmente.
 
 - Una ZKP (zero knowledge proof) permite que un "comprobador" asegure a un "verificador" que conoce un secreto sin tener que revelar el propio secreto.
 
-Puede obtener más información sobre estas tecnologías en el documento técnico sobre [Transacciones privadas y confidenciales con Hyperledger Fabric ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/developerworks/cloud/library/cl-blockchain-private-confidential-transactions-hyperledger-fabric-zero-knowledge-proof/index.html "Transacciones privadas y confidenciales con Hyperledger Fabric").
+Puede obtener más información sobre estas tecnologías en el documento técnico sobre [Transacciones privadas y confidenciales con Hyperledger Fabric ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://developer.ibm.com/tutorials/cl-blockchain-private-confidential-transactions-hyperledger-fabric-zero-knowledge-proof/ "Transacciones privadas y confidenciales con Hyperledger Fabric").
 
 ## Obtención de soporte
 {: #ibp-icp-about-support}

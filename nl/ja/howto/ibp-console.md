@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-18"
 
 subcollection: blockchain
 
@@ -20,8 +20,10 @@ subcollection: blockchain
 # {{site.data.keyword.blockchainfull_notm}} Platform 2.0 無料ベータ版について
 {: #ibp-console-overview}
 
-{{site.data.keyword.blockchainfull_notm}} Platform 2.0 無料ベータ版は、デプロイメントと証明書を完全にコントロールできる次世代の {{site.data.keyword.blockchainfull_notm}} Platform オファリングです。 この無料ベータ版には、新しい {{site.data.keyword.blockchainfull_notm}} Platform コンソールが含まれています。これは、管理も制御もユーザーが行う {{site.data.keyword.cloud_notm}} Kubernetes サービスに、コンポーネントを簡単に素早くデプロイできるユーザー・インターフェースです。
+{{site.data.keyword.blockchainfull}} Platform 2.0 無料ベータ版は、デプロイメントおよび公開鍵と秘密鍵を完全にコントロールできる次世代の {{site.data.keyword.blockchainfull_notm}} Platform オファリングです。この無料ベータ版には、新しい {{site.data.keyword.blockchainfull_notm}} Platform コンソールが含まれています。これは、管理も制御もユーザーが行う {{site.data.keyword.cloud_notm}} Kubernetes サービスに、コンポーネントを簡単に素早くデプロイできるユーザー・インターフェースです。 Kubernetes と {{site.data.keyword.cloud_notm}} Kubernetes Service について詳しくは、[Kubernetes](/docs/services/blockchain/reference/k8s.html "Kubernetes") を参照してください。
 {:shortdesc}
+
+{{site.data.keyword.blockchainfull_notm}} Platform 2.0 無料ベータ版は、Hyperledger Fabric 1.4.0 コード・ベースにアップグレードされました。 Hyperledger Fabric 1.4.0 の新機能について詳しくは、[1.4 の新機能 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/whatsnew.html "Fabric 1.4 の新機能"){:new_window} を参照してください。
 
 ## 新規ベータ版が提供する機能
 {: #ibp-console-overview-capabilities}
@@ -37,13 +39,13 @@ subcollection: blockchain
   - [**プライベート・データ**・コレクション](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-private-data): ゴシップ・プロトコルにより、許可されたピアでのみ台帳データを共有することでデータ・プライバシーを向上させます。
   - [サービス・ディスカバリー ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/discovery-overview.html "Service discovery"): アプリケーションとネットワークがどのように対話しているかを動的に検出し、更新できます。
   - [チャネル・アクセス制御リスト ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/access_control.html "Access Control Lists"): チャネルおよびスマート・コントラクトのガバナンス・コントロールを強化します。
-- **{{site.data.keyword.cloud_notm}} サービス統合。** {{site.data.keyword.cloud_notm}} Kubernetes サービス・ダッシュボード、{{site.data.keyword.cloud_notm}} ロギングおよびメトリック・サービス、{{site.data.keyword.cloud_notm}} ID サービスなど、組み込みの {{site.data.keyword.cloud_notm}} サービスを活用できます。
+- **{{site.data.keyword.cloud_notm}} サービス統合。** {{site.data.keyword.cloud_notm}} Kubernetes Service ダッシュボード、{{site.data.keyword.IBM_notm}} Log Analysis with LogDNA、{{site.data.keyword.cloud_notm}} IAM (ID およびアクセス管理) など、{{site.data.keyword.cloud_notm}} の標準サービスを活用できます。
 
 **デプロイメントの完全な制御**
 - **必要なコンポーネントのみデプロイする**。 ピアを複数のチャネルおよびネットワークに接続したり、ビジネス・パートナーが接続できる順序付けサービスをホストしたりできます。
 - **ID の完全な制御を維持する**。 ノードの管理に使用する鍵を保管および管理できます。{{site.data.keyword.cloud_notm}} に秘密鍵を保管することはありません。
-- **操作を一元化できる**。{{site.data.keyword.blockchainfull_notm}} Platform コンソールにより、すべての組織とノードのデプロイおよび管理を、**中央の 1 つのコンソール**で行えるので、順序付けプログラムや認証局の管理を {{site.data.keyword.IBM_notm}} や他のベンダーに委ねる必要がありません。 また、ブロックチェーン・コンソーシアムのメンバーの追加/削除、チャネルの作成およびチャネルへの参加、スマート・コントラクトのインストールおよびインスタンス化もコンソールから行えます。
-- **ネットワークをホストする、またはネットワークに参加する**。クラスターでホストされるピアを、複数のクラウド上の複数のチャネルにデプロイできます。また、コンソーシアムやチャネルに参加するように他の組織を招待できます。それらの組織は、インフラストラクチャーをまたいで自ノードを独立して管理することができます。
+- **操作を一元化できる**。 {{site.data.keyword.blockchainfull_notm}} Platform コンソールにより、すべての組織とノードのデプロイおよび管理を、**中央の 1 つのコンソール**で行えるので、順序付けプログラムや認証局の管理を {{site.data.keyword.IBM_notm}} や他のベンダーに委ねる必要がありません。 また、ブロックチェーン・コンソーシアムのメンバーの追加/削除、チャネルの作成およびチャネルへの参加、スマート・コントラクトのインストールおよびインスタンス化もコンソールから行えます。
+- **ネットワークをホストする、またはネットワークに参加する**。 クラスターでホストされるピアを、複数のクラウド上の複数のチャネルにデプロイできます。また、コンソーシアムやチャネルに参加するように他の組織を招待できます。それらの組織は、インフラストラクチャーをまたいで自ノードを独立して管理することができます。
 - **アクセスを管理できる**。ノードを管理またはモニターできるユーザーのアクセスを管理できます。
 - **ログに直接アクセスできる**。{{site.data.keyword.IBM_notm}} Kubernetes サービスのノードのログに直接アクセスできます。  Log Analysis サービスまたはサード・パーティーのサービスを使用して、ログを抽出し、分析できます。
 - **ノード・ポッドと直接対話できる**。Kubernetes ダッシュボードを使用してノード・ポットと直接対話できます。 コマンド・ラインからポッドおよびコンテナーの中にアクセスし、コマンドを実行したり、証明書を更新したりできます。
@@ -62,13 +64,13 @@ subcollection: blockchain
 
 コンソールをデプロイする前に、以下の考慮事項を理解しておいてください。
 
-- {{site.data.keyword.blockchainfull_notm}} Platform 2.0 無料ベータ版は、Hyperledger Fabric v1.4 を使用して構築されています。
+- {{site.data.keyword.blockchainfull_notm}} Platform 2.0 無料ベータ版は、Hyperledger Fabric v1.4.0 を使用して構築されています。
 - この無料の 2.0 ベータ版でデプロイされるすべてのピアでは、状態データベースとして CouchDB が使用されます。
 - ベータ版オファリングの評価に無料の Kubernetes クラスターを使用することもできますが、キャパシティーとパフォーマンスには制限があり、データはマイグレーションできず、30 日後にクラスターは削除されます。
 - Kubernetes クラスターの正常性モニター、セキュリティー、およびロギングの管理は、お客様が行う作業です。 {{site.data.keyword.cloud_notm}} が管理する範囲と、お客様が行う作業範囲について詳しくは、こちらの[情報 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://cloud.ibm.com/docs/containers/cs_responsibilities.html#your-responsibilities-by-using-ibm-cloud-kubernetes-service "クラスター管理の責任") を参照してください。
 - Kubernetes ダッシュボードで Kubernetes クラスターのリソース使用量をモニターすることもお客様の作業です。 クラスターのストレージ容量またはパフォーマンスを向上させる必要がある場合は、[既存のボリュームの変更方法に関するこちらの情報 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://cloud.ibm.com/docs/containers/cs_storage_file.html#change_storage_configuration "既存のストレージ・デバイスのサイズと IOPS の変更") を参照してください。
 - 証明書、公開鍵、秘密鍵の管理および保護は、お客様が行う作業です。 {{site.data.keyword.IBM_notm}} は、お客様の証明書を Kubernetes クラスターにもコンソールにも保管しません。 これらはブラウザーのローカル・ストレージにしか保管されません。 ブラウザーを変更する場合は、作成した ID をそのブラウザーにインポートする必要があります。
-- 無料の 2.0 ベータ版オファリングは、{{site.data.keyword.cloud_notm}} Kubernetes サービスの**ダラス**地域でのみ利用可能です。 この地域には、ダラス、サンノゼ、ヒューストン、ブラジルのデータ・センターが含まれます。そのため、すべてのブロックチェーン・コンポーネントを、これら 4 つのデータセンターのいずれに置くこともできます。それ以外の地域にはデプロイされません。
+- 無料の 2.0 ベータ版オファリングは、{{site.data.keyword.cloud_notm}} Kubernetes サービスの**ダラス**地域でのみ利用可能です。 この地域には、ダラス、サンノゼ、ヒューストン、ブラジルのデータ・センターが含まれます。 そのため、すべてのブロックチェーン・コンポーネントを、これら 4 つのデータセンターのいずれに置くこともできます。 それ以外の地域にはデプロイされません。
 - {{site.data.keyword.blockchainfull_notm}} Platform 2.0 のベータ版オファリングは無料ですが、制限付きの無料のクラスターではなく、有料の Kubernetes クラスターを選択した場合は、{{site.data.keyword.cloud_notm}} アカウントの料金が発生します。
 - {{site.data.keyword.cloud_notm}} Kubernetes クラスターの Kubernetes のバージョンは 1.11 以上でなければなりません。 [アップグレード手順](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks-updating-kubernetes)に従って、新規および既存のクラスターをこのバージョンにアップグレードしてください。
 
@@ -77,9 +79,7 @@ subcollection: blockchain
 
 いずれの {{site.data.keyword.blockchainfull_notm}} Platform オファリングからも、{{site.data.keyword.blockchainfull_notm}} Platform 2.0 無料**ベータ版**にマイグレーションすることはできません。  
 
-今後、一般出荷可能 (GA) になった時点で、エンタープライズ・プランのリリースから {{site.data.keyword.blockchainfull_notm}} Platform 2.0 にマイグレーションできるようになります。   
-
-{{site.data.keyword.blockchainfull_notm}} Platform 2.0 無料ベータ版のサービス・インスタンスはすべて GA バージョンにマイグレーションすることはできず、またスターター・プランのインスタンスを 2.0 GA バージョンにマイグレーションすることもできません。
+{{site.data.keyword.blockchainfull_notm}} Platform 2.0 無料ベータ版のサービス・インスタンスはすべて GA バージョンにマイグレーションすることはできず、またスターター・プランまたはエンタープライズ・プランのインスタンスを 2.0 GA バージョンにマイグレーションすることもできません。
 
 ## ライセンスおよび料金
 {: #ibp-console-overview-license-and-pricing}
@@ -122,7 +122,7 @@ subcollection: blockchain
 
 HA と DR が必要な場合は、有料の IBM Cloud Kubernetes クラスターで複数ゾーンのストレージを有効にする必要があります。 さまざまな [Kubernetes ストレージ・オプション](https://cloud.ibm.com/docs/containers/cs_storage_planning.html#persistent_storage_overview)が用意されています。 近日、IBM Cloud は、推奨ソリューションである Portworx ストレージ・ソリューションをサポートする予定です。 それまでは、実装環境に HA と DR が必要な場合は、独自のストレージ・ソリューションを用意する必要があります。  
 
-独自のストレージ・ソリューションを追加するには、カスタマイズ型のストレージ・クラスを作成する必要があります。 ソリューションに[ストレージ・クラスを追加](https://cloud.ibm.com/docs/containers/cs_storage_basics.html#storageclasses)する方法を参照してください。 IBP では、`デフォルト`のストレージ・クラスで[動的ボリューム・プロビジョニング](https://cloud.ibm.com/docs/containers/cs_storage_basics.html#dynamic_provisioning)を使用します。 そのため、デフォルトのストレージ・クラスを変更するために、次のコマンドを実行してください。
+独自のストレージ・ソリューションを追加するには、カスタマイズ型のストレージ・クラスを作成する必要があります。 ソリューションに[ストレージ・クラスを追加](https://cloud.ibm.com/docs/containers/cs_storage_basics.html#storageclasses)する方法を参照してください。 {{site.data.keyword.blockchainfull_notm}} Platform では、`デフォルト`のストレージ・クラスで[動的ボリューム・プロビジョニング](https://cloud.ibm.com/docs/containers/cs_storage_basics.html#dynamic_provisioning)を使用します。 そのため、デフォルトのストレージ・クラスを変更するために、次のコマンドを実行してください。
 ```
 kubectl patch storageclass <storageclass> -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
 ```

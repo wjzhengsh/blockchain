@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -30,7 +30,7 @@ Il **piano Starter** è un ambiente per coloro che desiderano iniziare a lavorar
 
 **Note:**
 - {{site.data.keyword.blockchainfull_notm}} Platform piano Starter è un ambiente di sviluppo e test  non è adatto per i carichi di lavoro di produzione. Se ti serve un ambiente di produzione, vedi [Informazioni sul piano Enterprise](/docs/services/blockchain/enterprise_plan.html#enterprise-plan-about).
-- {{site.data.keyword.blockchainfull_notm}} Platform è un servizio di piattaforma su {{site.data.keyword.cloud_notm}} e tutte le offerte di adesione rispettano i termini dei servizi [{{site.data.keyword.cloud_notm}} termini dei servizi ![Icona link esterno](images/external_link.svg "Icona link esterno")](http://www-03.ibm.com/software/sla/sladb.nsf/sla/bm "{{site.data.keyword.cloud_notm}}") negli SLA (service level agreement). Le reti piano Starter vengono fornite in **più ambienti** in data center geograficamente separati.
+- {{site.data.keyword.blockchainfull_notm}} Platform è un servizio di piattaforma su {{site.data.keyword.cloud_notm}} e tutte le offerte di adesione rispettano i termini dei servizi [{{site.data.keyword.cloud_notm}} termini dei servizi ![Icona link esterno](images/external_link.svg "Icona link esterno")](http://www-03.ibm.com/software/sla/sladb.nsf/sla/bm "{{site.data.keyword.cloud_notm}}") negli SLA (service level agreement). Il provisioning dei piani Starter viene eseguito in un data center in una singola area geografica. Per un elenco delle aree geografiche disponibili, vedi [Ubicazioni di {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain?topic=blockchain-ibp-regions-locations#ibp-regions-locations).
 
 ## Cosa offre il piano Starter
 {: #starter-plan-about-what-starter-plan-offers}
@@ -72,7 +72,7 @@ Piano Starter è un punto d'ingresso a {{site.data.keyword.blockchainfull_notm}}
 - **Versioni e upgrade del piano Starter**
     - Le nuove reti piano Starter create dopo il 4 ottobre 2018 sono sviluppate su Hyperledger Fabric V1.2.1. Le reti piano Starter meno recenti rimangono al livello Fabric V1.1.0.
     - I nuovi peer aggiunti a reti piano Starter meno recenti saranno basati su Fabric v1.2.1. Le prestazioni della tua rete non ne risentono grazie alla compatibilità con le versioni precedenti.
-    - Hai l'opzione di utilizzare le impostazioni di [configurazione del canale![Icona link esterno](images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/latest/config_update.html "configurazione del canale") più avanzate e gli [Elenchi di controllo dell'accesso (ACL, Access Control List)![Icona link esterno](images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-v1.2/access_control.html "Elenchi di controllo dell'accesso (ACL, Access Control List)") quando crei o aggiorni un canale.
+    - Hai l'opzione di utilizzare le impostazioni di [configurazione del canale![Icona link esterno](images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/config_update.html "configurazione del canale") più avanzate e gli [Elenchi di controllo dell'accesso (ACL, Access Control List)![Icona link esterno](images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/access_control.html "Elenchi di controllo dell'accesso (ACL, Access Control List)") quando crei o aggiorni un canale.
     - le funzioni di [rilevamento dei servizi ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/discovery-overview.html "rilevamento dei servizi") e [dati privati ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/private-data/private-data.html "dati privati") di Hyperledger Fabric v1.2 non sono supportate nel piano Starter.
     - Se [reimposti](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-reset-network) una rete piano Starter meno recente che è a Fabric V1.1.0, la tua nuova rete sarà al livello Fabric V1.2. Se reimposti la tua rete, devi installare il tuo chaincode o i file .bna sulla nuova rete e invitare nuovamente i membri della tua vecchia rete.
 - **Limitazione delle risorse di rete**

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018,2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -38,7 +38,7 @@ Deve-se instalar o chaincode em cada peer que executará esse chaincode. Conclua
 
 2. No painel pop-up **Instalar chaincode**, insira o nome e a versão de seu chaincode. **Observe que** as sequências de nome e de versões serão usadas em aplicativos para interagir com o chaincode instalado. Clique no botão **Navegar** e navegue por seu sistema de arquivos local para onde quer que os seus arquivos de origem de chaincode estejam armazenados. Selecione um ou mais arquivos de origem de chaincode para instalar no peer. Em seguida, selecione a sua linguagem do chaincode na lista suspensa **Tipo de chaincode**.
 
-É possível instalar o chaincode fazendo o upload de um arquivo ou de múltiplos arquivos GO ou NODE ou é possível fazer upload do chaincode dentro de um arquivo .zip. Usar um arquivo .zip manterá o seu chaincode com uma estrutura de diretório completa. Isso será útil se você quiser incluir pacotes de dependências ou usar índices com o CouchDB. Para obter mais informações sobre o CouchDB e como configurar os índices, consulte [Melhores práticas ao usar o CouchDB](/docs/services/blockchain/v10_application.html#dev-app-couchdb-indices) no tutorial Desenvolvendo aplicativos. Também é possível localizar informações sobre [gerenciamento de dependências externas para o chaincode gravado no GO ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/chaincode4ade.html#managing-external-dependencies-for-chaincode-written-in-go){:new_window} na documentação do Hyperledger Fabric.
+É possível instalar o chaincode fazendo o upload de um arquivo ou de múltiplos arquivos GO ou NODE ou é possível fazer upload do chaincode dentro de um arquivo .zip. Usar um arquivo .zip manterá o seu chaincode com uma estrutura de diretório completa. Isso será útil se você quiser incluir pacotes de dependências ou usar índices com o CouchDB. Para obter mais informações sobre o CouchDB e como configurar os índices, consulte [Melhores práticas ao usar o CouchDB](/docs/services/blockchain/best_practices.html#best-practices-app-couchdb-indices) no tutorial Desenvolvendo aplicativos. Também é possível localizar informações sobre [gerenciamento de dependências externas para o chaincode gravado no GO ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/chaincode4ade.html#managing-external-dependencies-for-chaincode-written-in-go){:new_window} na documentação do Hyperledger Fabric.
 
   ![Instalar chaincode](../images/chaincode_install.png "Instalar chaincode")
 
@@ -59,7 +59,7 @@ Você precisa ter a autoridade de **Operador** ou **Escritor** no canal para ins
   ![Instantiate Chaincode panel](../images/chaincode_instantiate_panel.png "Instantiate Chaincode panel")
 -->
 
-3. Especifique a sua [política de aprovação](/docs/services/blockchain/glossary.html#glossary-endorsement-policy) do chaincode. É possível aprender mais sobre como configurar as políticas de aprovação na [próxima seção](/docs/services/blockchain/howto/install-instantiate-chaincode.html#install-instantiate-chaincode-endorsement-policy).
+3. Especifique a sua [política de aprovação](/docs/services/blockchain/glossary.html#glossary-endorsement-policy) do chaincode. É possível aprender mais sobre como configurar as políticas de aprovação na [próxima seção](#install-instantiate-chaincode-endorsement-policy).
 
 
 ## Especificando as políticas de aprovação de chaincode

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -29,7 +29,7 @@ Für den Betrieb Ihrer Zertifizierungsstelle sind einige vorausgesetzte Schritte
 
 - [CLIs konfigurieren](/docs/services/blockchain/howto/CA_operate.html#ca-operate-kubectl-configure)
 - [URL der Zertifizierungsstelle abrufen](/docs/services/blockchain/howto/CA_operate.html#ca-operate-url)
-- [TLS-Zertifikat der Zertifizierungsstelle herunterladen](/docs/services/blockchain/howto/CA_operate.html#ca-operate-tls)
+- [Zertifikat der TLS-Zertifizierungsstelle­ herunterladen](/docs/services/blockchain/howto/CA_operate.html#ca-operate-tls)
 - [Fabric-CA-Client einrichten](/docs/services/blockchain/howto/CA_operate.html#ca-operate-fabric-ca-client)
 - [Zertifikate als CA-Administrator generieren](/docs/services/blockchain/howto/CA_operate.html#ca-operate-enroll-admin)
 
@@ -112,7 +112,7 @@ Sie müssen mit dem Befehlszeilentool **kubectl** eine Verbindung zu dem in {{si
 ### URL der Zertifizierungsstelle abrufen
 {: #ca-operate-url}
 
-Anforderungen zum Generieren von Zertifikaten oder zum Registrieren einer neuen Identität müssen an die URL der Zertifizierungsstelle gerichtet werden. Die URL Ihrer Zertifizierungsstelle können Sie in der Benutzerschnittstelle der {{site.data.keyword.cloud_notm}} Private-Konsole ermitteln. Sie müssen die Berechtigung eines [Clusteradministrators ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Clusteradministratorrolle und -aktionen") besitzen, um die folgenden Schritte ausführen zu können:
+Anforderungen zum Generieren von Zertifikaten oder zum Registrieren einer neuen Identität müssen an die URL der Zertifizierungsstelle gerichtet werden. Die URL Ihrer Zertifizierungsstelle können Sie in der Benutzerschnittstelle der {{site.data.keyword.cloud_notm}} Private-Konsole ermitteln. Sie müssen die Berechtigung eines [Clusteradministrators ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/user_management/assign_role.html "Clusteradministratorrolle und -aktionen") besitzen, um die folgenden Schritte ausführen zu können:
 
 1. Melden Sie sich bei der {{site.data.keyword.cloud_notm}} Private-Konsole an und klicken Sie auf das **Menüsymbol** in der linken oberen Ecke.
 2. Klicken Sie auf **Workload** > **Helm-Releases**.
@@ -128,7 +128,7 @@ Anforderungen zum Generieren von Zertifikaten oder zum Registrieren einer neuen 
 **Hinweis:** Wenn Sie Ihre Zertifizierungsstelle hinter einer Firewall bereitstellen, müssen Sie einen Durchgriff öffnen, damit das Netz auf der Plattform einen TLS-Handshake mit Ihrer Zertifizierungsstelle durchführen kann. Der Durchgriff muss nur für den Port aktiviert werden, der mit der URL der Zertifizierungsstelle verkettet ist.
 
 
-### TLS-Zertifikat der Zertifizierungsstelle abrufen
+### Zertifikat der TLS-Zertifizierungsstelle­ abrufen
 {: #ca-operate-tls}
 
 Sie müssen das TLS-Zertifikat Ihrer Zertifizierungsstelle herunterladen und es zusammen mit Ihren Befehlen übergeben, damit Sie von einem fernen Client aus mit Ihrer Zertifizierungsstelle kommunizieren können.
@@ -153,12 +153,12 @@ Sie müssen das TLS-Zertifikat Ihrer Zertifizierungsstelle herunterladen und es 
 
 Zum Betrieb Ihrer Zertifizierungsstelle können Sie den Fabric-CA-Client verwenden. Die folgenden Anweisungen erläutern, wie Sie mit dem Fabric-CA-Client Identitäten für andere Komponenten eintragen und registrieren, die zu Ihrer Organisation gehören. Zur Ausführung der vorausgesetzten Schritte können Sie auch die Fabric-SDKs verwenden.
 
-1. Sie müssen den [Fabric-CA-Client ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric-ca.readthedocs.io/en/latest/users-guide.html#fabric-ca-client "Download Fabric CA client") in Ihr lokales Dateisystem herunterladen.
+1. Sie müssen den [Fabric-CA-Client ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/users-guide.html#fabric-ca-client "Download Fabric CA client") in Ihr lokales Dateisystem herunterladen.
 
-  Am einfachsten erhalten Sie den Fabric-CA-Client, indem Sie alle Binärdateien für die Fabric-Tools direkt herunterladen. Navigieren Sie zu einem Verzeichnis, in das Sie die Binärdateien mithilfe der Befehlszeile herunterladen wollen, und rufen Sie die Dateien durch die Ausführung des folgenden [curl-Befehls ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/prereqs.html#install-curl "Curl") ab.
+  Am einfachsten erhalten Sie den Fabric-CA-Client, indem Sie alle Binärdateien für die Fabric-Tools direkt herunterladen. Navigieren Sie zu einem Verzeichnis, in das Sie die Binärdateien mithilfe der Befehlszeile herunterladen wollen, und rufen Sie die Dateien durch die Ausführung des folgenden [curl-Befehls ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/prereqs.html#install-curl "Curl") ab.
 
   ```
-  curl -sSL http://bit.ly/2ysbOFE | bash -s 1.2.1 1.2.1 -d -s
+  curl -sSL http://bit.ly/2ysbOFE | bash -s 1.4.0 1.4.0 -d -s
   ```
   {:codeblock}
 
@@ -225,9 +225,9 @@ Die Generierung von Zertifikaten ist nur unter Verwendung von Identitäten mögl
   ```
   {:codeblock}
 
-  Die Angaben `<enroll_id>` und `<enroll_password>` im Befehl stehen für [den Benutzernamen und das Kennwort des CA-Administrators](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-admin-secret), die Sie beim Bereitstellen der Zertifizierungsstelle an den geheimen Kubernetes-Schlüssel übergeben haben. Fügen Sie die [URL der Zertifizierungsstelle](/docs/services/blockchain/howto/CA_operate.html#ca-operate-url) in `<ca_url_with_port>`. Lassen Sie die Angabe `http://` am Beginn weg. Die Angabe `<ca_name>` steht für den Wert, den Sie beim Bereitstellen der Zertifizierungsstelle im Feld `CA-Name` angegeben haben.
+  `<enroll_id>` und `<enroll_password>` im Befehl stehen für [Name und Kennwort des Benutzers mit Administratorberechtigung für die Zertifizierungsstelle](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-admin-secret), die Sie beim Bereitstellen der Zertifizierungsstelle an den geheimen Kubernetes-Schlüssel übergeben haben. Fügen Sie die [URL der Zertifizierungsstelle](/docs/services/blockchain/howto/CA_operate.html#ca-operate-url) in die `<ca_url_with_port>` ein. Lassen Sie die Angabe `http://` am Beginn weg. Der `<ca_name>` ist der Wert, den Sie bei der Bereitstellung der Zertifizierungsstelle im Feld `CA-Name` angegeben haben.
 
-  Die Angabe `<ca_tls_cert_path>` steht für den vollständigen Pfad des [TLS-Zertifikats der Zertifizierungsstelle](/docs/services/blockchain/howto/CA_operate.html#ca-operate-tls).
+  Der `<ca_tls_cert_path>` ist der vollständige Pfad für Ihr [Zertifikat der TLS-Zertifizierungsstelle­](/docs/services/blockchain/howto/CA_operate.html#ca-operate-tls).
 
   Ein realer Aufruf könnte ähnlich wie im folgenden Beispiel aussehen:
 
@@ -257,6 +257,8 @@ tree
 │   └── msp
 │       ├── cacerts
 │       │   └── 9-30-250-70-30395-SampleOrgCA.pem
+│       ├── IssuerPublicKey
+│       ├── IssuerRevocationPublicKey
 │       ├── keystore
 │       │   └── 2a97952445b38a6e0a14db134645981b74a3f93992d9ddac54cb4b4e19cdf525_sk
 │       ├── signcerts
@@ -274,7 +276,7 @@ Bevor Sie einen Anordnungsknoten oder einen Peer bereitstellen, müssen Sie eine
 Die folgenden Anweisungen bieten Ihnen eine [Vorlage für die JSON-Konfigurationsdatei](/docs/services/blockchain/howto/CA_operate.html#ca-operate-config-file-template), die Sie bearbeiten und in Ihrem lokalen Dateisystem speichern können. Außerdem erfahren Sie, wie Sie diese Datei mithilfe Ihrer Zertifizierungsstelle erstellen.
 
 - Befolgen Sie die nachstehenden Anweisungen, wenn Sie einen Anordnungsknoten in {{site.data.keyword.cloud_notm}} Private oder einen Peer für eine Verbindung zu einem in {{site.data.keyword.cloud_notm}} Private gehosteten Konsortium bereitstellen.
-- Falls Sie einen Peer für die Verbindung zu einem Starter Plan oder Enterprise Plan bereitstellen wollen, befolgen Sie stattdessen die Anweisungen im Abschnitt [Peers in IBM Cloud Private zur Verbindung mit Starter Plan oder Enterprise Plan bereitstellen](/docs/services/blockchain/howto/peer_deploy_icp.html#icp-peer-deploy). Diese Schritte führen Sie durch die Bereitstellung von Peers in {{site.data.keyword.cloud_notm}} Private mithilfe der Zertifizierungsstelle von {{site.data.keyword.blockchainfull_notm}} Platform.
+- Falls Sie einen Peer für die Verbindung zu einem Starter Plan oder Enterprise Plan bereitstellen wollen, befolgen Sie stattdessen die Anweisungen im Abschnitt [Peers in IBM Cloud Private zur Verbindung mit Starter Plan oder Enterprise Plan bereitstellen](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy). Diese Schritte führen Sie durch die Bereitstellung von Peers in {{site.data.keyword.cloud_notm}} Private mithilfe der Zertifizierungsstelle von {{site.data.keyword.blockchainfull_notm}} Platform.
 
 ### Konfigurationsdatei
 {: #ca-operate-config-file-template}
@@ -422,7 +424,7 @@ Falls Sie ein Konsortium gründen möchten, indem Sie einen Anordnungsservice be
 
 Nachdem Sie die Komponente registriert haben, müssen Sie außerdem eine Administratoridentität erstellen, mit der Sie die Komponente betreiben können. Diese neue Identität müssen Sie zuerst bei Ihrer Zertifizierungsstelle registrieren; anschließend verwenden Sie sie, um einen MSP-Ordner zu generieren. Danach müssen Sie das signCert-Zertifikat der Benutzer mit Administratorberechtigung zur Konfigurationsdatei hinzufügen, wo es während der Bereitstellung zum Administratorzertifikat des Anordnungsknotens oder Peers wird. Auf diese Weise können Sie die Zertifikate der Administratoridentität beim Betrieb Ihres Blockchain-Netzes verwenden, beispielsweise zum Starten eines neuen Kanals oder zum Installieren von Chaincode auf den Peers.
 
-Für die zu Ihrer Organisation gehörenden Komponenten müssen Sie nur eine einzige Administratoridentität erstellen. Falls Sie mehrere Peers oder einen Anordnungsknoten bereitstellen, müssen Sie diese Schritte nur ein einziges Mal ausführen. Sie können das signCert-Zertifikat, das Sie für eine Komponente generiert haben, zum Bereitstellen aller anderen Peers oder Anordungsknoten verwenden.
+Für die zu Ihrer Organisation gehörenden Komponenten müssen Sie nur eine einzige Administratoridentität erstellen. Falls Sie mehrere Peers oder einen Anordnungsknoten bereitstellen, müssen Sie diese Schritte nur ein einziges Mal ausführen. Sie können das signCert-Zertifikat, das Sie für eine Komponente generiert haben, zum Bereitstellen aller anderen Peers oder Anordnungsknoten verwenden.
 
 Stellen Sie sicher, dass für `$FABRIC_CA_CLIENT_HOME` der Pfad zum MSP Ihrer CA-Domäne festgelegt ist.
 
@@ -475,6 +477,8 @@ tree
 │   └── msp
 │       ├── cacerts
 │       │   └── 9-30-250-70-30395-SampleOrgCA.pem
+│       ├── IssuerPublicKey
+│       ├── IssuerRevocationPublicKey
 │       ├── keystore
 │       │   └── 2a97952445b38a6e0a14db134645981b74a3f93992d9ddac54cb4b4e19cdf525_sk
 │       ├── signcerts
@@ -505,6 +509,8 @@ tree
     └── msp
         ├── cacerts
         │   └── 9-30-250-70-30395-tlsca.pem
+        ├── IssuerPublicKey
+        ├── IssuerRevocationPublicKey
         ├── keystore
         │   └── 45a7838b1a91ddfe3d4d22a5a7f2639b868493bcce594af3e3ceb9c07899d117_sk
         ├── signcerts
@@ -606,7 +612,7 @@ Zum Bereitstellen eines Anordnungsknotens oder Peers müssen Sie einen CSR-Hostn
 
 #### Wert der Proxy-IP-Adresse für den Cluster ermitteln
 
-Falls Sie einen Anordnungsknoten oder Peer in demselben {{site.data.keyword.cloud_notm}} Private-Cluster bereitstellen wollen, in dem Sie Ihre Zertifizierungsstelle bereitgestellt haben, müssen Sie unbedingt die Rolle eines [Clusteradministrators ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Clusteradministratorrolle und -aktionen") in dem {{site.data.keyword.cloud_notm}} Private-Cluster besitzen, in dem der Anordnungsknoten bzw. Peer bereitgestellt werden soll. Geben Sie dieselbe Proxy-IP ein, die Sie bei der [Konfiguration der Zertifizierungsstelle](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-configuration-parms) verwendet haben. Wenn Sie den Anordnungsknoten oder Peer in einem anderen Cluster bereitstellen wollen, können Sie den Wert für die Proxy-IP-Adresse des Clusters über die {{site.data.keyword.cloud_notm}} Private-Konsole abrufen, indem Sie die folgenden Schritte ausführen:
+Falls Sie einen Anordnungsknoten oder Peer in demselben {{site.data.keyword.cloud_notm}} Private-Cluster bereitstellen wollen, in dem Sie Ihre Zertifizierungsstelle bereitgestellt haben, müssen Sie unbedingt die Rolle eines [Clusteradministrators ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/user_management/assign_role.html "Clusteradministratorrolle und -aktionen") in dem {{site.data.keyword.cloud_notm}} Private-Cluster besitzen, in dem der Anordnungsknoten bzw. Peer bereitgestellt werden soll. Geben Sie dieselbe Proxy-IP ein, die Sie bei der [Konfiguration der Zertifizierungsstelle](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-configuration-parms) verwendet haben. Wenn Sie den Anordnungsknoten oder Peer in einem anderen Cluster bereitstellen wollen, können Sie den Wert für die Proxy-IP-Adresse des Clusters über die {{site.data.keyword.cloud_notm}} Private-Konsole abrufen, indem Sie die folgenden Schritte ausführen:
 
 1. Melden Sie sich bei der {{site.data.keyword.cloud_notm}} Private-Konsole an. Klicken Sie im linken Navigationsfenster auf **Plattform** und anschließend auf **Knoten**, um die im Cluster definierten Knoten anzuzeigen.
 2. Klicken Sie auf den Knoten mit der Rolle `Proxy` und kopieren Sie den Wert, der in der Tabelle für die `Host-IP` angegeben ist.
@@ -696,7 +702,7 @@ Die anderen Felder können leer bleiben. Speichern Sie diese Datei; Sie benötig
 ## Membership Service Providers (MSPs)
 {: #ca-operate-msp}
 
-{{site.data.keyword.blockchainfull_notm}} Platform-Komponenten verbrauchen Identitäten über Membership Service Providers (MSPs). MSPs ordnen die Zertifikate zu, die von den Zertifizierungsstellen mit den Berechtigungen und Rollen ausgegeben werden. Weitere Informationen zu MSPs enthält der [Abschnitt über die Mitgliedschaft in der Dokumentation von Hyperledger Fabric ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric.readthedocs.io/en/latest/membership/membership.html "Abschnitt 'Membership' in der Dokumentation von Hyperledger Fabric").
+{{site.data.keyword.blockchainfull_notm}} Platform-Komponenten verbrauchen Identitäten über Membership Service Providers (MSPs). MSPs ordnen die Zertifikate zu, die von den Zertifizierungsstellen mit den Berechtigungen und Rollen ausgegeben werden. Weitere Informationen zu MSPs enthält der [Abschnitt über die Mitgliedschaft in der Dokumentation von Hyperledger Fabric ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/membership/membership.html "Abschnitt 'Membership' in der Dokumentation von Hyperledger Fabric").
 
 MSP-Ordner müssen eine definierte Struktur besitzen, damit sie von Fabric-Komponenten verwendet werden können. Der Fabric-CA-Client baut diese Struktur durch die Erstellung der folgenden MSP-Ordner auf:
 
@@ -715,7 +721,7 @@ Zahlreiche Fabric-Komponenten enthalten zusätzliche Informationen in ihrem MSP-
 - **admincerts:** Dieser Ordner enthält die Liste der Administratoren für diese Organisation oder Komponente. Sie müssen Ihr signCert-Zertifikat in diesen Ordner hochladen, wenn Sie mit einem fernen Peer über die Befehlszeile oder mithilfe der SDKs arbeiten. Wenn Sie den Fabric-CA-Client verwenden, benötigen Sie außerdem einen Ordner "admincerts" in Ihrem MSP, der das entsprechende signCert-Zertifikat enthält, das als Administratorzertifikat erkannt werden soll.
 - **tls:** In diesem Ordner werden TLS-Zertifikate gespeichert, die zur Kommunikation mit anderen Netzkomponenten verwendet werden.
 
-Weitere Informationen zur Struktur der MSPs finden Sie im Abschnitt zur [Mitgliedschaft ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric.readthedocs.io/en/latest/membership/membership.html "Membership") und im Abschnitt zu [Membership Service Providers ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric.readthedocs.io/en/latest/msp.html "Membership Service Providers") in der Hyperledger Fabric-Dokumentation.
+Weitere Informationen zur Struktur der MSPs finden Sie im Abschnitt zur [Mitgliedschaft ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/membership/membership.html "Membership") und im Abschnitt zu [Membership Service Providers ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/msp.html "Membership Service Providers") in der Hyperledger Fabric-Dokumentation.
 
 
 ## Protokolle der Zertifizierungsstelle anzeigen
@@ -739,7 +745,7 @@ Komponentenprotokolle können über die Befehlszeile mit den [`Befehlen der CLI 
 
    Weitere Informationen zum Befehl `kubectl logs` enthält die [Kubernetes-Dokumentation ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs “Getting Started”).
 
-- Alternativ können Sie auf Ereignisse und Protokolle für die Bereitstellung auch über die [{{site.data.keyword.cloud_notm}} Private-Konsole für das Cluster-Management](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/troubleshoot/events.html) zugreifen, die die Protokolle in Kibana öffnet.
+- Alternativ können Sie auf Ereignisse und Protokolle für die Bereitstellung auch über die [{{site.data.keyword.cloud_notm}} Private-Konsole für das Cluster-Management](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/troubleshoot/events.html) zugreifen, die die Protokolle in Kibana öffnet.
 
   **Hinweis:** Wenn Sie Ihre Protokolle in Kibana anzeigen, empfangen Sie möglicherweise die Antwort `Keine Ergebnisse gefunden`. Diese Bedingung kann auftreten, wenn {{site.data.keyword.cloud_notm}} Private die IP-Adresse Ihres Workerknotens als Hostnamen verwendet. Entfernen Sie zur Lösung dieses Problems oben in der Anzeige den Filter, der mit `node.hostname.keyword` beginnt. Anschließend sind die Protokolle sichtbar.
 

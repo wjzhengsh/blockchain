@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-03-20"
 
 subcollection: blockchain
 
@@ -25,7 +25,7 @@ subcollection: blockchain
 스마트 계약에 포함된 비즈니스 로직을 호출할 수 있습니다. 이 튜토리얼을 통해 클라이언트 애플리케이션을 사용하여 {{site.data.keyword.blockchainfull}} Platform 콘솔에서 관리하는 네트워크와 상호작용하는 방법을 학습할 수 있습니다.
 {:shortdesc}
 
-**대상 독자:** 이 주제는 블록체인 네트워크와 상호작용하는 클라이언트 애플리케이션을 작성하는 방법에 대해 자세히 알고자 하는 애플리케이션 개발자를 위해 설계되었습니다. 
+**대상 독자:** 이 주제는 블록체인 네트워크와 상호작용하는 클라이언트 애플리케이션을 작성하는 방법에 대해 자세히 알고자 하는 애플리케이션 개발자를 위해 설계되었습니다.
 
 ## 학습 리소스
 {: #ibp-console-app-learning-resources}
@@ -43,7 +43,7 @@ Hyperledger Fabric 문서의 [애플리케이션 개발 주제 ![외부 링크 �
 | -----------------|---------|---------|---------|
 | [FabCar ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://developer.ibm.com/patterns/write-a-smart-contract-for-the-fabcarcommercial-paper-or-iks-cluster-with-saas-v2-beta-network-think/ "Blockchain")| IKS 클러스터를 사용하여 단순 패브릭 네트워크 스마트 계약을 Blockchain Platform에 배치합니다. | 중간 | Node.js | DeveloperWorks 문서|
 | [Commercial Paper ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/tutorial/commercial_paper.html "Commercial Paper")| 상업 어음 스마트 계약을 사용하여 Hyperledger Fabric의 로컬 인스턴스에서 거래합니다. | 중간 | Node.js | Hyperledger Fabric 문서|
-| **제공 예정:** Advanced Commercial Paper |개인용 데이터 콜렉션 및 상태 기반 보증을 사용하는 소유권 및 개인정보 보호의 우수 사례가 포함된 고급 샘플입니다. | 고급 | Node.js | Hyperledger Fabric 문서|
+| **제공 예정:** Advanced Commercial Paper  |개인용 데이터 콜렉션 및 상태 기반 보증을 사용하는 소유권 및 개인정보 보호의 우수 사례가 포함된 고급 샘플입니다. | 고급 | Node.js | Hyperledger Fabric 문서|
 | [{{site.data.keyword.blockchainfull_notm}} VSCode 확장으로 상업 어음 스마트 계약 실행 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://developer.ibm.com/tutorials/run-commercial-paper-smart-contract-with-ibm-blockchain-vscode-extension/ "VSCode로 상업 어음 스마트 계약 실행")| VScode 확장을 사용하여 Hyperledger Fabric의 로컬 인스턴스에서 상업 어음 스마트 계약을 설치하고 호출하는 방법에 대해 설명합니다. | 중간 | Node.js | IBM Developer|
 | [{{site.data.keyword.blockchainfull_notm}} Platform 무료 2.0 베타에서 상업 어음 샘플 실행](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-commercial-paper)|{{site.data.keyword.blockchainfull_notm}} Platform 2.0 네트워크에서 상업 어음 계약을 배치하고 호출하는 방법에 대해 설명합니다. | 중간 | Node.js | {{site.data.keyword.blockchainfull_notm}} Platform 문서|  
 
@@ -52,7 +52,7 @@ Hyperledger Fabric 문서의 [애플리케이션 개발 주제 ![외부 링크 �
 조정이 필요할 수 있습니다.
 - **네트워크 운영자**는 {{site.data.keyword.blockchainfull_notm}} Platform 콘솔을
 사용하여 조직의 노드를 배치하고 네트워크에 스마트 계약을 설치하는 관리자입니다.
-- **애플리케이션 개발자**는 일반 사용자가 이용할 클라이언트 애플리케이션을 빌드합니다. 개발자는 [Hyperledger Fabric SDK![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/getting_started.html#hyperledger-fabric-sdks "Hyperledger Fabric SDK"){:new_window}를 사용하여 스마트 계약에 작성된 트랜잭션을 호출합니다. 
+- **애플리케이션 개발자**는 일반 사용자가 이용할 클라이언트 애플리케이션을 빌드합니다. 개발자는 [Hyperledger Fabric SDK![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/getting_started.html#hyperledger-fabric-sdks "Hyperledger Fabric SDK"){:new_window}를 사용하여 스마트 계약에 작성된 트랜잭션을 호출합니다.
 
 사용자가 **네트워크 운영자**인 경우,
 다음 단계를 완료해야만 애플리케이션 개발자가 사용자의 네트워크와 상호 작용할 수 있습니다.
@@ -66,7 +66,7 @@ Hyperledger Fabric 문서의 [애플리케이션 개발 주제 ![외부 링크 �
   - 스마트 계약이 인스턴스화되는 채널의 이름  
 
 사용자가 **애플리케이션 개발자**인 경우, 네트워크 운영자가 제공하는 정보를 사용하여 다음 단계를 완료하십시오.
-1. 사용자의 연결 프로파일 내의 CA 엔드포인트 정보와 함께 애플리케이션 ID의 등록 ID 및 시크릿을 사용하여 공개 키 및 개인 키 쌍을 생성하십시오. 
+1. 사용자의 연결 프로파일 내의 CA 엔드포인트 정보와 함께 애플리케이션 ID의 등록 ID 및 시크릿을 사용하여 공개 키 및 개인 키 쌍을 생성하십시오.
 2. 연결 프로파일, 채널 이름, 스마트 계약 및 애플리케이션 키를 사용하여 스마트 계약을 호출하십시오.  
 
 애플리케이션 개발자는 두 가지 프로그래밍 모델을 사용하여 네트워크와 상호작용할 수 있습니다.
@@ -89,7 +89,7 @@ Fabric v1.4부터는 사용자가 단순화된 애플리케이션 및 스마트 
 
 **하위 레벨 Fabric SDK API**
 
-기존 스마트 계약 및 애플리케이션 코드를 계속 사용하거나 Hyperledger 커뮤니티에서 제공하는 다른 Fabric SDK 언어를 사용하려는 경우 [하위 레벨 Fabric SDK API](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-low-level)를 사용하여 사용자의 네트워크에 연결할 수 있습니다. 
+기존 스마트 계약 및 애플리케이션 코드를 계속 사용하거나 Hyperledger 커뮤니티에서 제공하는 다른 Fabric SDK 언어를 사용하려는 경우 [하위 레벨 Fabric SDK API](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-low-level)를 사용하여 사용자의 네트워크에 연결할 수 있습니다.
 
 ## 애플리케이션 ID 등록
 {: #ibp-console-app-identities}
@@ -103,7 +103,7 @@ Fabric v1.4부터는 사용자가 단순화된 애플리케이션 및 스마트 
 그러면 애플리케이션 개발자가 해당 ID를 사용하여 공개 및 개인 키를 생성할 수 있습니다. 운영자는
 CA 엔드포인트 정보와 함께 SDK가 인증서를 생성하기 위해 사용하는
 등록 ID 및 ID의 시크릿을 제공할 수 있습니다. 애플리케이션 개발자는
-클라이언트 측에 등록함으로써 기타 당사자가 애플리케이션의 개인 키에 액세스하지 못하도록 할 수 있습니다. 등록 중 네트워크 운영자가 추가 보안을 위해 등록 한계를 설정할 수 있습니다. 애플리케이션 개발자가 등록한 후에는 등록 ID와 시크릿을 사용하여 다른 개인 키를 생성할 수 없습니다. 
+클라이언트 측에 등록함으로써 기타 당사자가 애플리케이션의 개인 키에 액세스하지 못하도록 할 수 있습니다. 등록 중 네트워크 운영자가 추가 보안을 위해 등록 한계를 설정할 수 있습니다. 애플리케이션 개발자가 등록한 후에는 등록 ID와 시크릿을 사용하여 다른 개인 키를 생성할 수 없습니다.
 
 보안을 크게 고려하지 않는 경우, 네트워크 운영자가
 [CA 탭](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-enroll)을
@@ -130,7 +130,7 @@ Hyperledger Fabric [트랜잭션 플로우![외부 링크 아이콘](../images/e
 인증 기관 및 MSP ID와 같은 조직에 관한 정보도 포함합니다. 사용자가 트랜잭션 및 보증 플로우를 관리하는 코드를
 작성할 필요 없이 Fabric SDK가 직접 연결 프로파일을 읽을 수 있습니다.
 
-채널을 작성할 때 앵커 피어를 구성한 경우, Hyperledger Fabric의 [서비스 발견 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/discovery-overview.html "서비스 발견") 기능을 사용할 수 있습니다. 서비스 발견을
+Hyperledger Fabric의 [서비스 발견 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/discovery-overview.html "서비스 발견") 기능을 사용하려면 앵커 피어를 구성해야 합니다. 서비스 발견을
 사용하면 애플리케이션이 조직 외부의 채널에 있는 피어 중 어느 피어가 트랜잭션을 보증해야 하는지 파악할 수 있습니다. 서비스 발견을
 사용하지 않으면 기타 조직에서 대역 외 피어의 엔드포인트 정보를 가져와서
 연결 프로파일에 추가해야 합니다. 앵커 피어를 구성하는 방법에 대한
@@ -138,7 +138,7 @@ Hyperledger Fabric [트랜잭션 플로우![외부 링크 아이콘](../images/e
 [개인용 데이터 주제](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-private-data)의 3단계를 참조하십시오.
 
 플랫폼 콘솔에서 스마트 계약 탭으로 이동하십시오. 인스턴스화된 각 스마트 계약 옆의 오버플로우 메뉴로 이동하십시오. **SDK로 연결**이라는 이름의 단추를 클릭하십시오. 그러면 연결 프로파일을 빌드하고 다운로드할 수 있는 사이드 패널이 열립니다. 먼저,
-애플리케이션 ID를 등록하기 위해 사용한 조직의 CA를 선택하십시오. 또한 조직 MSP 정의도 선택해야 합니다. 그러면 인증서를 생성하고 스마트 계약을 호출하는 데 사용할 수 있는 연결 프로파일을 다운로드할 수 있습니다. 
+애플리케이션 ID를 등록하기 위해 사용한 조직의 CA를 선택하십시오. 또한 조직 MSP 정의도 선택해야 합니다. 그러면 인증서를 생성하고 스마트 계약을 호출하는 데 사용할 수 있는 연결 프로파일을 다운로드할 수 있습니다.
 
 ## SDK를 사용하여 등록
 {: #ibp-console-app-enroll}
@@ -184,7 +184,7 @@ Hyperledger Fabric [트랜잭션 플로우![외부 링크 아이콘](../images/e
       // Enroll the admin user, and import the new identity into the wallet.
       const enrollment = await ca.enroll({ enrollmentID: '<app_enroll_id>', enrollmentSecret: '<app_enroll_secret>' });
       const identity = X509WalletMixin.createIdentity('<msp_id>', enrollment.certificate, enrollment.key.toBytes());
-      wallet.import('user1', identity);
+      await wallet.import('user1', identity);
       console.log('Successfully enrolled client "user1" and imported it into the wallet');
 
       } catch (error) {
@@ -199,7 +199,7 @@ Hyperledger Fabric [트랜잭션 플로우![외부 링크 아이콘](../images/e
 
 3. `enrollUser.js`를 편집하여 다음 값을 바꾸십시오.
   - ``<CA_Name>``을 사용자의 조직 CA의 이름으로 바꾸십시오. "인증 기관" 아래에서 연결 프로파일의 "조직" 섹션에서 CA 이름을 찾을 수 있습니다. "인증 기관" 섹션의 "caName"을 사용하지 마십시오.
-  - ``<app_enroll_id>``를 네트워크 운영자가 제공하는 애플리케이션 등록 ID로 바꾸십시오. 
+  - ``<app_enroll_id>``를 네트워크 운영자가 제공하는 애플리케이션 등록 ID로 바꾸십시오.
   - ``<app_enroll_secret>``을 네트워크 운영자가 제공하는 애플리케이션 등록 시크릿으로 바꾸십시오.
   - ``<msp_id>``를 조직의 MSP ID로 바꾸십시오. 연결 프로파일의 "조직" 섹션 아래에서 MSP ID를 찾을 수 있습니다.
 4. 터미널을 사용하여 `enrollUser.js`로 이동하여 `node enrollUser.js`를 실행하십시오. 명령이 성공적으로 실행되면 다음과 같은 출력이 표시되어야 합니다.
@@ -421,14 +421,14 @@ npm install
 조직을 인식하지 못하면 트랜잭션이 거부되고 오류와 함께 리턴됩니다. 상업 어음 샘플은
 사용자의 인증서를 저장하고 트랜잭션에 서명할 파일 시스템 지갑을 작성합니다. 애플리케이션이
 지갑을 사용하는 방법에 대한 자세한 정보는 Fabric 문서에서 [지갑 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/developapps/wallet.html "지갑") 주제를
-참조하십시오. Fabric SDK에 사용되는 지갑은 {{site.data.keyword.blockchainfull_notm}} Platform 콘솔의 지갑과 다릅니다. 콘솔 지갑에 저장된 ID는 SDK에서 직접 사용할 수 없습니다. 
+참조하십시오. Fabric SDK에 사용되는 지갑은 {{site.data.keyword.blockchainfull_notm}} Platform 콘솔의 지갑과 다릅니다. 콘솔 지갑에 저장된 ID는 SDK에서 직접 사용할 수 없습니다.
 
 원래 샘플은 `addToWallet.js` 파일을 사용하여
 패브릭 샘플 폴더의 인증서를 사용하는 파일 시스템 지갑을 작성합니다. 여기서는
 SDK를 사용하는 새 파일을 작성하여 클라이언트 측 인증서를 생성하고 직접 새 지갑에 저장할 것입니다.
 
 magnetocorp로서 튜토리얼을 작동하는 데 사용할 조직의 CA를 선택하십시오. 예를 들어 네트워크 빌드 튜토리얼을 완료한 경우,
-Org1을 사용할 수 있습니다. CA를 사용하여 [애플리케이션 ID를 작성](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-identities)하십시오. 등록 ID와 시크릿을 **저장**하십시오. 
+Org1을 사용할 수 있습니다. CA를 사용하여 [애플리케이션 ID를 작성](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-identities)하십시오. 등록 ID와 시크릿을 **저장**하십시오.
 
 콘솔을 사용하여 [연결 프로파일을 다운로드](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-profile)하십시오. 연결 프로파일을 로컬 파일 시스템에 저장하고 이름을 `connection.json`으로 바꾸십시오. 그 후,
 다음 명령을 사용하여 연결 프로파일을
@@ -473,7 +473,7 @@ Org1을 사용할 수 있습니다. CA를 사용하여 [애플리케이션 ID를
         // Enroll the admin user, and import the new identity into the wallet.
         const enrollment = await ca.enroll({ enrollmentID: '<app_enroll_id>', enrollmentSecret: '<app_enroll_secret>' });
         const identity = X509WalletMixin.createIdentity('<msp_id>', enrollment.certificate, enrollment.key.toBytes());
-        wallet.import('user1', identity);
+        await wallet.import('user1', identity);
         console.log('Successfully enrolled client "user1" and imported it into the wallet');
 
         } catch (error) {
@@ -515,7 +515,7 @@ console.log('Successfully enrolled client "user1" and imported it into the walle
 
 `enrollUser.js`를 **편집**하여 다음 값을 바꾸십시오.
 - `'<CA_Name>'`을 사용자의 조직 CA의 이름으로 바꾸십시오. "인증 기관" 아래에서 연결 프로파일의 "조직" 섹션에서 CA 이름을 찾을 수 있습니다. "인증 기관" 섹션의 "caName"을 사용하지 마십시오.
-- `'<app_enroll_id>`'를 네트워크 운영자가 제공하는 애플리케이션 등록 ID로 바꾸십시오. 
+- `'<app_enroll_id>`'를 네트워크 운영자가 제공하는 애플리케이션 등록 ID로 바꾸십시오.
 - `'<app_enroll_secret>'`을 네트워크 운영자가 제공하는 애플리케이션 등록 시크릿으로 바꾸십시오.
 - `'<msp_id>'`를 조직의 MSP ID로 바꾸십시오. 연결 프로파일의 "조직" 섹션 아래에서 이 MSP ID를 찾을 수 있습니다.
 
@@ -567,10 +567,10 @@ const wallet = new FileSystemWallet('../identity/user/isabella/wallet');
 {:codeblock}
 
 지갑을 가져온 후, 다음 코드를 사용하여 연결 프로파일과 지갑을 새 게이트웨이에 전달하십시오. 아래 코드 스니펫과 유사하도록 다음과 같이 코드를 **편집**해야 합니다. 간결성을 위해 로그를 인쇄하는 행이 제거되었습니다.
-- `enrollUser.js`에서 `identityLabel`에 대해 선택한 값과 일치하도록 `userName`을 업데이트하십시오. 
+- `enrollUser.js`에서 `identityLabel`에 대해 선택한 값과 일치하도록 `userName`을 업데이트하십시오.
 - 네트워크에서 서비스 발견을 활용하려면 발견 옵션을 업데이트하십시오. `discovery: { enabled: true, asLocalhost: false }`를
 설정하십시오.  
-- 연결 프로파일을 가져오는 섹션을 업데이트하십시오. 콘솔 연결 프로파일은 샘플에 사용된 YAML 파일이 아니라 JSON 형식입니다.   
+- 연결 프로파일을 가져오는 섹션을 업데이트하십시오. 콘솔 연결 프로파일은 샘플에 사용된 YAML 파일이 아니라 JSON 형식입니다.  
 
 ```
 const userName = 'user1';
@@ -578,7 +578,7 @@ const userName = 'user1';
 // Load connection profile; will be used to locate a gateway
 const ccpPath = path.resolve(__dirname, '../gateway/connection.json');
 const ccpJSON = fs.readFileSync(ccpPath, 'utf8');
-const ccp = JSON.parse(ccpJSON);
+const connectionProfile = JSON.parse(ccpJSON);
 
 // Set connection options; identity and wallet
 let connectionOptions = {
@@ -591,7 +591,7 @@ await gateway.connect(connectionProfile, connectionOptions);
 ```
 {:codeblock}
 
-이 코드 스니펫은 게이트웨이를 사용하여 피어 및 순서 지정자 노드에 대한 GRPC 연결을 열고 네트워크와 상호작용합니다. 
+이 코드 스니펫은 게이트웨이를 사용하여 피어 및 순서 지정자 노드에 대한 GRPC 연결을 열고 네트워크와 상호작용합니다.
 
 ### 5단계: 스마트 계약 호출
 
@@ -614,7 +614,7 @@ const contract = await network.getContract('papercontract-js', 'org.papernet.com
 ```
 {:codeblock}
 
-이제 게이트웨이가 트랜잭션을 제출하는 데 필요한 모든 정보를 보유하게 되었습니다. 다음 행은 새 상업 어음 자산을 정의하는 인수를 사용하여 상업 어음 계약에서 `issue` 함수를 호출합니다. 
+이제 게이트웨이가 트랜잭션을 제출하는 데 필요한 모든 정보를 보유하게 되었습니다. 다음 행은 새 상업 어음 자산을 정의하는 인수를 사용하여 상업 어음 계약에서 `issue` 함수를 호출합니다.
 
 ```
 const issueResponse = await contract.submitTransaction('issue', 'MagnetoCorp', '00001', '2020-05-31', '2020-11-30', '5000000');
@@ -685,11 +685,12 @@ fabric_client.createUser({
 {:codeblock}
 
 하위 레벨 SDK API를 사용하여 네트워크에 연결하는 경우, 애플리케이션의 성능 및 가용성을 관리하기 위해 수행해야 하는 몇 가지 추가 단계가 있습니다. 자세한 정보는
-[애플리케이션 연결성 및 가용성을 위한 우수 사례](/docs/services/blockchain/v10_application.html#dev-app-connectivity-availability)를 참조하십시오.
+[애플리케이션 연결성 및 가용성을 위한 우수 사례](/docs/services/blockchain/best_practices.html#best-practices-app-connectivity-availability)를 참조하십시오.
+
 
 ## CouchDB에서 인덱스 사용
 {: #console-app-couchdb}
 
 CouchDB를 상태 데이터베이스로 사용하는 경우, 채널의 상태 데이터에 대해 스마트 계약에서 JSON 데이터 조회를 시작할 수 있습니다. JSON 조회를 위한 색인을 작성한 후 스마트 계약에서
 해당 색인을 사용할 것을 적극 권장합니다. 색인을 사용하는 경우 네트워크에서 트랜잭션 및 항목의 추가 블록을 세계 상태로 추가할 때 애플리케이션에서 효율적으로 데이터를 검색할 수 있습니다. 스마트 계약 및 애플리케이션을
-사용하여 색인을 작성하는 방법을 배우려면 [CouchDB 사용 시의 우수 사례](/docs/services/blockchain/v10_application.html#dev-app-couchdb-indices)를 참조하십시오.
+사용하여 색인을 작성하는 방법을 배우려면 [CouchDB 사용 시의 우수 사례](/docs/services/blockchain/best_practices.html#best-practices-app-couchdb-indices)를 참조하십시오.

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-03"
 
 subcollection: blockchain
 
@@ -26,6 +26,8 @@ subcollection: blockchain
 Mithilfe des vorliegenden Lernprogramms können Sie sich mit der Vorgehensweise beim Zugriff auf die {{site.data.keyword.blockchainfull_notm}} Platform-APIs und mit der Verwendung dieser APIs zur Eintragung und Registrierung Ihrer Anwendung beim Netz vertraut machen. Hier erfahren Sie außerdem, wie Sie mit dem Netz interagieren und Transaktionen über Ihre Anwendung absetzen können. Das Lernprogramm basiert auf dem Lernprogramm  [Writing Your First Application ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/write_first_app.html "Writing your first application"){:new_window}, das in der Hyperledger Fabric-Dokumentation verfügbar ist. Sie werden häufig die gleichen Dateien und Befehle wie im Lernprogramm zum **Schreiben Ihrer ersten Anwendung** benutzen, diese jedoch zur Interaktion mit einem Netz unter {{site.data.keyword.blockchainfull_notm}} Platform einsetzen. Dieses Lernprogramm enthält Beschreibungen zu allen Schritten der Anwendungsentwicklung mit dem Hyperledger Fabric-Node-SDK. Außerdem erfahren Sie hier, wie Benutzer alternativ zur Verwendung des SDK mithilfe des Fabric-CA-Clients eingetragen und registriert werden können.
 
 Zusätzlich zu diesem Lernprogramm können Sie außerdem Beispielanwendungen und Chaincode verwenden, der von {{site.data.keyword.blockchainfull_notm}} Platform in Form von Vorlagen bereitgestellt wird, wenn Sie eigene Business Solutions erstellen. Weitere Informationen finden Sie unter [Beispielanwendungen bereitstellen](/docs/services/blockchain/howto/prebuilt_samples.html#deploying-sample-applications).
+
+Wenn Sie bereit sind, Ihre Anwendung zu skalieren, ziehen Sie die [bewährten Verfahren für die Anwendungsentwicklung](/docs/services/blockchain/best_practices.html#best-practices-app) zurate.
 
 ## Voraussetzungen
 {: #dev-app-prerequisites}
@@ -83,7 +85,7 @@ Sie müssen für Ihre Anwendung die API-Endpunkte bestimmter Netzressourcen (ein
                   ...
   ```
 
-In bestimmten Fällen kann es erforderlich sein, Netzressourcen außerhalb Ihrer Organisation mit Ihrer Anwendung zu adressieren. Wenn beispielsweise eine [Bewilligungsrichtlinie](/docs/services/blockchain/howto/install_instantiate_chaincode.html#install-instantiate-chaincode-endorsement-policy) für den Chaincode Bewilligungen von anderen Organisationen auf dem Kanal erforderlich sind, dann müssen Sie die Transaktion an eine ausreichende Anzahl von Peers der Organisation senden, um die Richtlinie einzuhalten. Die [Serviceerkennung ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/discovery-overview.html "Service discovery") in Hyperledger Fabric wird für den Starter Plan oder Enterprise Plan nicht unterstützt. Sie müssen die Endpunktinformationen von Peers und die zugehörigen TLS-Zertifikate anderer Organisationen unter Verwendung des Abschnitts "Peers" Ihres Verbindungsprofils abrufen. Sie können sich an die Administratoren der anderen Organisationen wenden, um in Erfahrung zu bringen, welche Peers den jeweiligen Kanälen hinzugefügt wurden.{:note}
+In bestimmten Fällen kann es erforderlich sein, Netzressourcen außerhalb Ihrer Organisation mit Ihrer Anwendung zu adressieren. Wenn beispielsweise eine [Bewilligungsrichtlinie](/docs/services/blockchain/howto/install_instantiate_chaincode.html#install-instantiate-chaincode-endorsement-policy) für den Chaincode Bewilligungen von anderen Organisationen auf dem Kanal erforderlich sind, dann müssen Sie die Transaktion an eine ausreichende Anzahl von Peers der Organisation senden, um die Richtlinie einzuhalten. Die [Serviceerkennung ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/discovery-overview.html "Service discovery") in Hyperledger Fabric wird für den Starter Plan oder Enterprise Plan nicht unterstützt. Sie müssen die Endpunktinformationen von Peers und die zugehörigen TLS-Zertifikate anderer Organisationen unter Verwendung des Abschnitts "Peers" Ihres Verbindungsprofils abrufen. Sie können sich an die Administratoren der anderen Organisationen wenden, um in Erfahrung zu bringen, welche Peers den jeweiligen Kanälen hinzugefügt wurden.{:note}
 
 3. Fügen Sie die API-Endpunktinformationen in eine Konfigurationsdatei Ihrer Anwendung ein, wie aus folgendem Beispiel hervorgeht:
   ```
@@ -245,7 +247,7 @@ Ihre Anwendung muss mit dem gesamten Blockchain-Netz interagieren, um eine Trans
 2. Die Peers, die die Bewilligung durchführen, geben die bewilligte Transaktion an die Anwendung zurück.
 3. Die Anwendung sendet die bewilligte Transaktion an den Anordnungsservice, um die Transaktion dem Ledger hinzuzufügen.
 
-Weitere Informationen zum vollständigen Transaktionsfluss finden Sie unter [Transaction Flows ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")]( https://hyperledger-fabric.readthedocs.io/en/release-1.2/txflow.html "Transaction Flow"){:new_window} in der Hyperledger Fabric-Dokumentation. Nachdem Sie die ersten Schritte mit diesem Lernprogramm ausgeführt haben, sollten Sie den Abschnitt zur [Anwendungskonnektivität und -verfügbarkeit](/docs/services/blockchain/v10_application.html#dev-app-connectivity-availability) aufrufen. Dort finden Sie Tipps, wie Sie die Art und Weise, in der das SDK mit dem Netz interagieren soll, verwalten können.
+Weitere Informationen zum vollständigen Transaktionsfluss finden Sie unter [Transaction Flows ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")]( https://hyperledger-fabric.readthedocs.io/en/release-1.2/txflow.html "Transaction Flow"){:new_window} in der Hyperledger Fabric-Dokumentation. Nachdem Sie die ersten Schritte mit diesem Lernprogramm ausgeführt haben, sollten Sie den Abschnitt zur [Anwendungskonnektivität und -verfügbarkeit](/docs/services/blockchain/best_practices.html#best-practices-app-connectivity-availability) aufrufen. Dort finden Sie Tipps, wie Sie die Art und Weise, in der das SDK mit dem Netz interagieren soll, verwalten können.
 
 In den folgenden Beispielen wird gezeigt, wie das Node-SDK die Netztopologie einrichtet, den Transaktionsvorschlag definiert und dann die Transaktion an das Netz übergibt. Sie können die Datei `invoke.js` verwenden, um Funktionen im `fabcar`-Chaincode aufzurufen. Diese Funktionen ermöglichen Ihnen das Erstellen und Übertragen von Assets im Blockchain-Ledger. Dieses Lernprogramm verwendet die Funktion `initLedger` zum Hinzufügen neuer Daten zu Ihrem Kanal und verwendet dann die Datei `query.js` zum Abfragen der Daten.
 
@@ -267,7 +269,7 @@ In den folgenden Beispielen wird gezeigt, wie das Node-SDK die Netztopologie ein
   ```
   {:codeblock}
 
-  Die neuen Variablen für Peers und Anordnungsknoten öffnen GRPC-Verbindungen zu Ihrem Blockchain-Netz. Weitere Informationen zum Verwalten dieser Verbindungen finden Sie im Abschnitt [Netzverbindungen öffnen und schließen](/docs/services/blockchain/v10_application.html#dev-app-connections).
+  Die neuen Variablen für Peers und Anordnungsknoten öffnen GRPC-Verbindungen zu Ihrem Blockchain-Netz. Weitere Informationen zum Verwalten dieser Verbindungen finden Sie im Abschnitt [Netzverbindungen öffnen und schließen](/docs/services/blockchain/best_practices.html#best-practices-app-connections).
 
   Wenn Sie die Peer-URL zur Methode `fabric_client.newPeer` hinzufügen, dann importieren Sie auch die relevanten TLS-Zertifikate aus Ihrem Verbindungsprofil, indem Sie das folgende Code-Snippet verwenden. Dasselbe Ergebnis erbringt die Hinzufügen der URL des Anordnungsservice. Sie müssen diese TLS-Zertifikate zur Authentifizierung der Kommunikation mit Ihrem Netz verwenden.
   ```
@@ -277,7 +279,7 @@ In den folgenden Beispielen wird gezeigt, wie das Node-SDK die Netztopologie ein
 
   Falls die Bewilligungsrichtlinie vorgibt, dass Transaktionen von anderen Organisationen auf dem Kanal bewilligt werden müssen, müssen Sie die Peers dieser Organisationen mit den Methoden `newPeer()` und `channel.addPeer()` hinzufügen, wenn Sie das Netz einrichten. Die Organisationen müssen Ihnen die Liste der Peers senden, die sie zu einem bestimmten Kanal hinzugefügt haben. Die Endpunktinformationen und TLS-Zertifikate werden im Verbindungsprofil bereitgestellt. Das SDK sendet die Transaktion an alle Peers, die zu dem Kanal hinzugefügt wurden.
 
-  Sie können auch weitere zu Ihrer Organisation gehörende Peers hinzufügen, die zum Kanal hinzugefügt wurden, um [die Anwendung hoch verfügbar zu machen](/docs/services/blockchain/v10_application.html#dev-app-ha-app). Dadurch erhält das SDK eine Failover-Möglichkeit für den Fall, dass einer Ihrer Peers ausfällt.
+  Sie können auch weitere zu Ihrer Organisation gehörende Peers hinzufügen, die zum Kanal hinzugefügt wurden, um [die Anwendung hoch verfügbar zu machen](/docs/services/blockchain/best_practices.html#best-practices-ha-app). Dadurch erhält das SDK eine Failover-Möglichkeit für den Fall, dass einer Ihrer Peers ausfällt.
 
 3. Nachdem Sie das Fabric-Netz eingerichtet und die Anwendungsidentität und das signCert-Zertifikat aus dem Registrierungsschritt importiert haben, definiert die Datei `invoke.js` den Vorschlag, den Sie ans Netz übergeben werden. Sie können die Funktion `initLedger` im `fabcar`-Chaincode verwenden, um bestimmte Anfangsdaten zum Ledger hinzuzufügen. Darüber hinaus können Sie den Codeblock bearbeiten, um weitere Funktionen aufzurufen, die im `fabcar`-Chaincode enthalten sind.
   ```
@@ -286,7 +288,7 @@ In den folgenden Beispielen wird gezeigt, wie das Node-SDK die Netztopologie ein
     chaincodeId: 'fabcar',
     fcn: 'initLedger',
     args: [''],
-    chainId: 'mychannel',
+    chainId: 'defaultchannel',
     txId: tx_id
   };
   ```
@@ -301,7 +303,7 @@ In den folgenden Beispielen wird gezeigt, wie das Node-SDK die Netztopologie ein
   ```
   {:codeblock}
 
-  Obwohl im Beispiel ein peerbasierter Ereignisservice verwendet wird, sollten Sie einen kanalbasierten Listener benutzen. Weitere Informationen erhalten Sie im Abschnitt [Transaktionen verwalten](/docs/services/blockchain/v10_application.html#dev-app-managing-transactions) und in der [Node-SDK-Dokumentation ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://fabric-sdk-node.github.io/tutorial-channel-events.html "Channel based event service"){:new_window}.
+  Obwohl im Beispiel ein peerbasierter Ereignisservice verwendet wird, sollten Sie einen kanalbasierten Listener benutzen. Weitere Informationen erhalten Sie im Abschnitt [Transaktionen verwalten](/docs/services/blockchain/best_practices.html#best-practices-managing-transactions) und in der [Node-SDK-Dokumentation ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://fabric-sdk-node.github.io/tutorial-channel-events.html "Channel based event service"){:new_window}.
 
 5. Standardmäßig übergibt `invoke.js` die Transaktion als `user1`. Wenn Sie einen anderen Namen registriert haben, können Sie die Datei  `invoke.js` entsprechend bearbeiten.
 
@@ -320,7 +322,7 @@ Nun können Sie `query.js` verwenden, um das Ledger zu lesen. Öffnen Sie die Da
 1. Fügen Sie `var creds = require('./creds.json')` oben in der Datei hinzu.
 2. Aktualisieren Sie die Datei mit dem Kanalnamen und den Endpunktinformationen des Peers. Da mit dieser Operation lediglich Daten gelesen werden, die auf dem Peer gespeichert sind, müssen Sie keine Endpunktinformationen des Anordnungsservice hinzufügen. Bei `query.js` wird außerdem davon ausgegangen, dass der Vorschlag unter `user1` gesendet wird.
   ```
-  var channel = fabric_client.newChannel('mychannel');
+  var channel = fabric_client.newChannel('defaultchannel');
   var peer = fabric_client.newPeer(creds.peers["org1-peer1"].url, { pem: creds.peers["org1-peer1"].tlsCACerts.pem , 'ssl-target-name-override': null});
   channel.addPeer(peer);
   ```
@@ -358,7 +360,7 @@ var channel = fabric_client.newChannel('defaultchannel');
 
 Das SDK fügt dann die Peers und den Anordnungsservice hinzu, die über das Verbindungsprofil auf dem Kanal definiert werden. Auf diese Weise kann das Schreiben von Anwendungen effizienter gestaltet und das Aktualisieren Ihrer Anwendungen vereinfacht werden, wenn Netzmitglieder zu Kanälen hinzugefügt, aus diesen entfernt oder wenn neue Kanäle gestartet werden sollen. Informationen zu den zusätzlich auszuführenden Schritten finden Sie im [Lernprogramm zum Verbindungsprofil ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://fabric-sdk-node.github.io/tutorial-network-config.html "Connection profile tutorial"){:new_window} in der Node-SDK-Dokumentation. Sie können diese [Version des fabcar-Lernprogramms ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://www.ibm.com/developerworks/cloud/library/cl-deploy-fabcar-sample-application-ibm-blockchain-starter-plan/index.html){:new_window} verwenden, das anstelle von manuellen Endpunktverbindungen mit dem Verbindungsprofil arbeitet.
 
-Die [Serviceerkennung ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/discovery-overview.html "Service discovery") für eine Bewilligungsrichtlinie in Hyperledger Fabric wird für den Starter Plan oder Enterprise Plan nicht unterstützt. Sie können jedoch Transaktionen zur Bewilligung an Peers senden, die sich außerhalb Ihrer Organisation befinden. Hierzu bearbeiten Sie das Verbindungsprofil. Das Verbindungsprofil enthält bereits die Endpunktinformationen und TLS-Zertifikate der Peers aus anderen Organisationen, die sich im {{site.data.keyword.blockchainfull_notm}} Platform-Netz befinden. Fügen Sie im Abschnitt "channels" des Profils den Namen des Peers zum relevanten Kanal hinzu, um den Peer zum Kanal hinzuzufügen. Sie müssen sich an die Administratoren der anderen Organisationen wenden, um in Erfahrung zu bringen, welche Peers den jeweiligen Kanälen hinzugefügt wurden.
+Die [Serviceerkennung ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/discovery-overview.html "Service discovery") für eine Bewilligungsrichtlinie in Hyperledger Fabric wird für den Starter Plan oder Enterprise Plan nicht unterstützt. Sie können jedoch Transaktionen zur Bewilligung an Peers senden, die sich außerhalb Ihrer Organisation befinden. Hierzu bearbeiten Sie das Verbindungsprofil. Das Verbindungsprofil enthält bereits die Endpunktinformationen und TLS-Zertifikate der Peers aus anderen Organisationen, die sich im {{site.data.keyword.blockchainfull_notm}} Platform-Netz befinden. Fügen Sie im Abschnitt "channels" des Profils den Namen des Peers zum relevanten Kanal hinzu, um den Peer zum Kanal hinzuzufügen. Sie müssen sich an die Administratoren der anderen Organisationen wenden, um in Erfahrung zu bringen, welche Peers den jeweiligen Kanälen hinzugefügt wurden.
 
 ## Zertifikate mit Network Monitor generieren
 {: #dev-app-enroll-panel}
@@ -390,74 +392,6 @@ return fabric_client.createUser({
 		}});
 ```
 Das obige Snippet liest Ihre Zertifikate direkt als PEM-Dateien in die Klasse `cryptoContent` ein. Der Benutzername wird   auf `admin` festgelegt, da die Zertifikate mithilfe der Identität `admin` generiert wurden. Ihre MSP-ID finden Sie im Abschnitt  `certificateAuthorites` Ihres Verbindungsprofils. Speichern Sie die Datei und geben Sie den Befehl `node query.js` aus. Bei einer erfolgreichen Ausführung gibt die Abfrage dieselben Ergebnisse wie zuvor zurück.
-
-## Best Practices für Anwendungskonnektivität und -verfügbarkeit
-{: #dev-app-connectivity-availability}
-
-Der [Transaktionsfluss![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")]( https://hyperledger-fabric.readthedocs.io/en/release-1.2/txflow.html "Transaction Flow"){:new_window} von Hyperledger Fabric umfasst mehrere Komponenten, wobei die Clientanwendungen eine zentrale Rolle einnehmen. Das SDK übergibt Transaktionsvorschläge an die Peers, um die Bewilligung zu erhalten. Anschließend erfasst es die bewilligten Vorschläge, die an den Anordnungsservice gesendet werden müssen. Dieser sendet dann Blöcke von Transaktionen an die Peers, die den Ledgern der Kanäle hinzugefügt werden müssen. Entwickler von Produktionsanwendungen sollten darauf vorbereitet sein, dass ihre Interaktionen zwischen dem SDK und ihren Netzen mit der Zielsetzung der Effizienz und Verfügbarkeit verwaltet werden müssen.
-
-### Transaktionen verwalten
-{: #dev-app-managing-transactions}
-
-Anwendungsclients müssen sicherstellen, dass ihre Transaktionsvorschläge überprüft werden und dass die Vorschläge erfolgreich abgeschlossen werden. Ein Vorschlag kann aus verschiedenen Gründen verzögert werden oder verloren gehen, z. B. durch einen Netzausfall oder einen Komponentenfehler. Sie sollten die erforderlichen Vorbereitungen für die [Hochverfügbarkeit](/docs/services/blockchain/v10_application.html#dev-app-ha-app) Ihrer Anwendung treffen, um bei Auftreten eines Komponentenfehlers handlungsfähig zu bleiben. Des Weiteren können Sie in Ihrer Anwendung die [Zeitlimitwerte erhöhen](/docs/services/blockchain/v10_application.html#dev-app-set-timeout-in-sdk), um zu verhindern, dass für Vorschläge Zeitlimitüberschreitungen auftreten, bevor das Netz reagieren kann.
-
-Wenn ein Chaincode nicht ausgeführt wird, dann wird er durch den ersten Transaktionsvorschlag gestartet, der an den Chaincode gesendet wird. Während der Chaincode gestartet wird, werden alle anderen Vorschläge mit einer Fehlernachricht zurückgewiesen, in der Sie darüber informiert werden, dass der Chaincode gerade gestartet wird. Dieser Vorgang unterscheidet sich von der Transaktionsinvalidierung. Wird ein Vorschlag zurückgewiesen, während der Chaincode gestartet wird, dann müssen die Anwendungsclients die zurückgewiesenen Vorschläge nach Abschluss des Chaincodestarts erneut senden. Anwendungsclients können eine Nachrichtenwarteschlange verwenden, um den Verlust von Transaktionsvorschlägen zu vermeiden.
-
-Sie können einen kanalbasierten Ereignisservice verwenden, um Transaktionen zu überwachen und Nachrichtenwarteschlangen zu erstellen. Die Klasse [channelEventHub ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://fabric-sdk-node.github.io/ChannelEventHub.html "channelEventHub"){:new_window} kann Listener auf Basis von Transaktions- und Blockereignissen sowie Chaincode-Ereignissen registrieren. Kanalbasierte Listener aus dem Kanalereignishub können auf mehrere Kanäle skaliert und zur Unterscheidung zwischen dem Datenverkehr unterschiedlicher Kanäle verwendet werden.
-
-Es wird empfohlen, nicht die alte Klasse "eventHub", sondern "channelEventHub" zu verwenden. Die Klasse "eventHub" ist ein Einzelthreadelement und enthält Ereignisse aus allen Kanälen, die Listener kanalübergreifend verlangsamen oder sogar blockieren könnten. Außerdem gewährleistet die Klasse "eventHub" nicht, dass ein Ereignis übermittelt wird, und bietet kein Verfahren zum Abrufen von Ereignissen aus  einer bestimmten Position wie beispielsweise einer Blocknummer, damit fehlende Ereignisse überwacht werden.
-
-**Hinweis:** Der Peerereignishub wird in einem künftigen Release des Fabric-SDK nicht mehr unterstützt. Falls Sie Anwendungen einsetzen, die den Peerereignishub verwenden, aktualisieren Sie diese Anwendungen auf die Verwendung des Kanalereignishubs. Weitere Informationen enthält der Abschnitt über die [Verwendung des kanalbasierten Ereignisservice ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://fabric-sdk-node.github.io/tutorial-channel-events.html "Verwendung des kanalbasierten Ereignisservice"){:new_window} in der Node SDK-Dokumentation.
-
-### Netzverbindungen öffnen und schließen
-{: #dev-app-connections}
-
-Wenn Sie mit dem SDK vor der Übergabe von Transaktionsvorschlägen Peer- und Anordnungsknotenobjekte erstellen, öffnen Sie eine gRPC-Verbindung zwischen Ihrer Anwendung und der Netzkomponente. Beispielsweise öffnet der folgende Befehl eine Verbindung zu `org1-peer1`. Diese Verbindung bleibt aktiv, während Ihre Anwendung ausgeführt wird.
-
-```
-var peer = fabric_client.newPeer(creds.peers["org1-peer1"].url, { pem: creds.peers["org1-peer1"].tlsCACerts.pem , 'ssl-target-name-override': null});
-```
-{:codeblock}
-
-Beim Verwalten der Verbindungen zwischen Ihrer Anwendung und Ihrem Netz sind die folgenden Empfehlungen möglicherweise für Sie von Nutzen.
-
-- Verwenden Sie bei der Interaktion mit Ihrem Netz Peer- und Anordnungsknotenobjekte wieder, statt neue Verbindungen für die Übergabe von Transaktionen zu öffnen. Die Wiederverwendung von Peer- und Anordnungsknotenobjekten kann Ressourcen sparen und ein besseres Leistungsverhalten ergeben.  
-- Verwenden Sie [gRPC-Keepalive-Pakete ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://github.com/grpc/grpc/blob/master/doc/keepalive.md "gRPC Keepalives"), um eine persistente Verbindung zu Ihren Netzkomponenten aufrecht zu erhalten. Keepalive-Pakete halten die gRPC-Verbindung aktiv und verhindern, dass eine nicht genutzte Verbindung geschlossen wird. Beim folgenden Beispiel für eine Peerverbindung werden gRPC-Optionen zum Objekt für die [Verbindungsoptionen ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://fabric-sdk-node.github.io/global.html#ConnectionOpts "Connection") hinzugefügt. Für die gRPC-Optionen werden von {{site.data.keyword.blockchainfull_notm}} Platform empfohlene Werte festgelegt.  
-  ```
-  var peer = fabric_client.newPeer(creds.peers["org1-peer1"].url, { pem: creds.peers["org1-peer1"].tlsCACerts.pem , 'ssl-target-name-override': null},
-  "grpcOptions": {
-    "grpc.keepalive_time_ms": 120000,
-    "grpc.http2.min_time_between_pings_ms": 120000,
-    "grpc.keepalive_timeout_ms": 20000,
-    "grpc.http2.max_pings_without_data": 0,
-    "grpc.keepalive_permit_without_calls": 1
-    }
-  );
-  ```
-  {:codeblock}
-
-  Diese Variablen finden Sie auch bei den empfohlenen Einstellungen im Abschnitt `"peers"` Ihres Netzverbindungsprofils. Die empfohlenen Optionen werden automatisch in Ihre Anwendung importiert, falls Sie zum Herstellen der Verbindung zu Ihren Netzendpunkten das [Verbindungsprofil mit dem SDK verwenden](/docs/services/blockchain/v10_application.html#dev-app-connection-profile).
-
-- Falls eine Verbindung nicht mehr benötigt wird, verwenden Sie die Befehle `peer.close()` und `orderer.close()`, um Ressourcen freizugeben und Leistungseinbußen zu verhindern. Weitere Informationen enthalten die Angaben über die Klassen [peer close ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://fabric-sdk-node.github.io/Peer.html#close__anchor "peer close") und [orderer close![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://fabric-sdk-node.github.io/Orderer.html#close__anchor "orderer close") in der Node SDK-Dokumentation. Falls Sie Peers und Anordnungsknoten mithilfe eines Verbindungsprofils zu einem Kanalobjekt hinzugefügt haben, können Sie alle Verbindungen, die diesem Kanal zugeordnet sind, mit einem Befehl `channel.close()` schließen.
-
-### Hoch verfügbare Anwendungen
-{: #dev-app-ha-app}
-
-Als Verfahren zur Sicherstellung der Hochverfügbarkeit hat es sich bewährt, mindestens zwei Peers pro Organisation bereitzustellen, um so die Möglichkeit zum Failover zu schaffen. Sie müssen Ihre Anwendungen ebenfalls für die Hochverfügbarkeit anpassen. Installieren Sie den Chaincode auf beiden Peers und fügen Sie sie zu Ihren Kanälen hinzu. Anschließend müssen Sie an beide Peerendpunkte [Transaktionsvorschläge übergeben](/docs/services/blockchain/v10_application.html#dev-app-invoke), wenn Sie das Netz einrichten und eine Peerzielliste erstellen. Enterprise Plan-Netze sind zum Failover mit mehreren Anordungsknoten ausgestattet, wodurch Ihre Clientanwendung bewilligte Transaktionen an einen anderen Anordungsknoten senden kann, falls einer der Anordnungsknoten nicht verfügbar ist. Falls Sie stattdessen Ihr  [Verbindungsprofil](/docs/services/blockchain/v10_application.html#dev-app-connection-profile) verwenden, um Netzendpunkte manuell hinzuzufügen, müssen Sie sicherstellen, dass Ihr Profil auf dem aktuellen Stand ist und dass die zusätzlichen Peers und Anordnungsknoten im Abschnitt `channels` des Profils zum entsprechenden Kanal hinzugefügt wurden. Das SDK kann dann die Komponenten hinzufügen, die über das Verbindungsprofil mit dem Kanal verbunden sind.
-
-## Gegenseitige TLS-Authentifizierung aktivieren
-{: #dev-app-mutual-tls}
-
-Wenn Sie Enterprise Plan-Netze ausführen, die Fabric V1.1 entsprechen, dann haben Sie die Option, für Ihre Anwendungen die [gegenseitige TLS-Authentifizierung (Mutual TLS, MTLS) zu aktivieren](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-network-preferences). Wenn Sie MTLS aktivieren, müssen Sie die Anwendungen so aktualisieren, dass sie diese Funktion unterstützen. Andernfalls können Ihre Anwendungen nicht mit dem Netz kommunizieren.
-
-Suchen Sie im Verbindungsprofil nach dem Abschnitt `certificateAuthorities`. Hier finden Sie die folgenden Attribute, die für die Eintragung und das Abrufen der Zertifikate für die Kommunikation mit dem Netz über MTLS erforderlich sind.
-
-- `url`: URL für das Herstellen einer Verbindung zur Zertifizierungsstelle, die MTLS-Zertifikate ausstellen kann.
-- `enrollId`: Eintragungs-ID für das Abrufen eines Zertifikats.
-- `enrollSecret`: Geheimer Eintragungsschlüssel für das Abrufen eines Zertifikats.
-- `x-tlsCAName`: Name der Zertifizierungsstelle für das Abrufen des Zertifikats, das der Anwendung die Kommunikation über MTLS (Mutual TLS; gegenseitige TLS-Authentifizierung) ermöglicht.
-
-Weitere Informationen zum Aktualisieren der Anwendungen für die Unterstützung von MTLS finden Sie unter [How to configure mutual TLS ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://fabric-sdk-node.github.io/tutorial-mutual-tls.html "Mutual TLS"){:new_window}.
 
 ## (Optional) Netz mithilfe des SDK betreiben
 {: #dev-app-operate-sdk}
@@ -515,7 +449,7 @@ var request = {
     chaincodeId: 'fabcar',
     chaincodeType: 'golang',
     chaincodeVersion: 'v1',
-    channelNames: 'mychannel'
+    channelNames: 'defaultchannel'
 	 };
 ```
 {:codeblock}
@@ -535,113 +469,15 @@ var request = {
     chaincodeId: 'fabcar',
     chaincodeType: 'golang',
     chaincodeVersion: 'v1',
-    channelNames: 'mychannel',
+    channelNames: 'defaultchannel',
     txId : tx_id
 };
 ```
 {:codeblock}
 
-Senden Sie diese Anforderung nicht an die Zeile `return channel.sendTransactionProposal(request);`, die sich momentan in der Datei befindet, sondern an `return channel.sendInstantiateProposal(request);`. Nach dem Senden der Instanziierungsanforderung an den Kanal müssen Sie den bewilligten Vorschlag als Transaktion an den Anordnungsservice senden. Dabei werden die gleichen Methoden wie beim Senden einer Transaktion verwendet, sodass die restliche Datei unverändert beibehalten werden kann. Möglicherweise möchten Sie im Instanziierungsvorschlag den [Zeitlimitwert erhöhen](/docs/services/blockchain/v10_application.html#dev-app-set-timeout-in-sdk). Andernfalls wird für die Anforderung eventuell das Zeitlimit überschritten, bevor die Plattform den Chaincode-Container starten kann.
+Senden Sie diese Anforderung nicht an die Zeile `return channel.sendTransactionProposal(request);`, die sich momentan in der Datei befindet, sondern an `return channel.sendInstantiateProposal(request);`. Nach dem Senden der Instanziierungsanforderung an den Kanal müssen Sie den bewilligten Vorschlag als Transaktion an den Anordnungsservice senden. Dabei werden die gleichen Methoden wie beim Senden einer Transaktion verwendet, sodass die restliche Datei unverändert beibehalten werden kann. Möglicherweise möchten Sie im Instanziierungsvorschlag den [Zeitlimitwert erhöhen](/docs/services/blockchain/best_practices.html#best-practices-set-timeout-in-sdk). Andernfalls wird für die Anforderung eventuell das Zeitlimit überschritten, bevor die Plattform den Chaincode-Container starten kann.
 
 Ihr signCert-Zertifikat muss zu dem Kanal hinzugefügt werden, bevor Sie Chaincode instanziieren können. Falls Sie Zertifikate generiert haben, nachdem Sie dem Kanal beigetreten sind, müssen Sie Ihr signCert-Zertifikat auf die Plattform hochladen und anschließend in der Anzeige "Kanäle" auf die Schaltfläche **Zertifikate synchronisieren** klicken. Möglicherweise müssen Sie einige Minuten auf den Abschluss der Kanalsynchronisation warten, bevor Sie den Befehl zum Instanziieren des Chaincodes senden. Weitere Informationen enthält der Abschnitt [Signierzertifikate in {{site.data.keyword.blockchainfull_notm}} Platform hochladen](/docs/services/blockchain/certificates.html#managing-certificates-upload-certs) im Lernprogramm [Zertifikate verwalten](/docs/services/blockchain/certificates.html#managing-certificates).
-
-## (Optional) Zeitlimitwerte in Fabric-SDKs einrichten
-{: #dev-app-set-timeout-in-sdk}
-
-Mit Fabric-SDKs werden Standardzeitlimitwerte in Clientanwendungen für Ereignisse im Blockchain-Netz festgelegt. Das folgende Beispiel veranschaulicht die Standardzeitlimiteinstellungen im Fabric-Java-SDK. Der Dateipfad lautet `src\main\java\org\hyperledger\fabric\sdk\helper\Config.java`.
-
-```
-    /**
-     * Timeout settings
-     **/
-    public static final String PROPOSAL_WAIT_TIME = "org.hyperledger.fabric.sdk.proposal.wait.time";
-    public static final String CHANNEL_CONFIG_WAIT_TIME = "org.hyperledger.fabric.sdk.channelconfig.wait_time";
-    public static final String TRANSACTION_CLEANUP_UP_TIMEOUT_WAIT_TIME = "org.hyperledger.fabric.sdk.client.transaction_cleanup_up_timeout_wait_time";
-    public static final String ORDERER_RETRY_WAIT_TIME = "org.hyperledger.fabric.sdk.orderer_retry.wait_time";
-    public static final String ORDERER_WAIT_TIME = "org.hyperledger.fabric.sdk.orderer.ordererWaitTimeMilliSecs";
-    public static final String PEER_EVENT_REGISTRATION_WAIT_TIME = "org.hyperledger.fabric.sdk.peer.eventRegistration.wait_time";
-    public static final String PEER_EVENT_RETRY_WAIT_TIME = "org.hyperledger.fabric.sdk.peer.retry_wait_time";
-    public static final String EVENTHUB_CONNECTION_WAIT_TIME = "org.hyperledger.fabric.sdk.eventhub_connection.wait_time";
-    public static final String EVENTHUB_RECONNECTION_WARNING_RATE = "org.hyperledger.fabric.sdk.eventhub.reconnection_warning_rate";
-    public static final String PEER_EVENT_RECONNECTION_WARNING_RATE = "org.hyperledger.fabric.sdk.peer.reconnection_warning_rate";
-    public static final String GENESISBLOCK_WAIT_TIME = "org.hyperledger.fabric.sdk.channel.genesisblock_wait_time";
-
-    ...
-
-    // Default values
-    /**
-     * Timeout settings
-     **/
-    defaultProperty(PROPOSAL_WAIT_TIME, "20000");
-    defaultProperty(CHANNEL_CONFIG_WAIT_TIME, "15000");
-    defaultProperty(ORDERER_RETRY_WAIT_TIME, "200");
-    defaultProperty(ORDERER_WAIT_TIME, "10000");
-    defaultProperty(PEER_EVENT_REGISTRATION_WAIT_TIME, "5000");
-    defaultProperty(PEER_EVENT_RETRY_WAIT_TIME, "500");
-    defaultProperty(EVENTHUB_CONNECTION_WAIT_TIME, "5000");
-    defaultProperty(GENESISBLOCK_WAIT_TIME, "5000");
-    /**
-     * This will NOT complete any transaction futures time out and must be kept WELL above any expected future timeout
-     * for transactions sent to the Orderer. For internal cleanup only.
-     */
-    defaultProperty(TRANSACTION_CLEANUP_UP_TIMEOUT_WAIT_TIME, "600000"); //10 min.
-```
-{:codeblock}
-
-Möglicherweise müssen Sie jedoch die Standardzeitlimitwerte in Ihrer eigenen Anwendung ändern. Beispiel: Wenn Ihre Anwendung eine Transaktion mit einer Antwortzeit von mehr als 5000 ms (Standardzeitlimitwert für eine Ereignishubverbindung) aufruft, wird ein Fehler aufgrund einer fehlgeschlagenen Transaktion ausgegeben, da das Aufrufereignis nach 5000 ms beendet wird, bevor die Transaktion abgeschlossen ist. Sie können die Systemeigenschaft so festlegen, dass die Standardwerte der Clientanwendung überschrieben werden. Da die Standardwerte vor dem Festlegen der Systemeigenschaft initialisiert werden, ist diese möglicherweise nicht wirksam. Daher müssen Sie die Systemeigenschaft für das Zeitlimit in einem statischen Konstrukt in der Clientanwendung festlegen. Das folgende Beispiel veranschaulicht das Ändern des Zeitlimitwerts für Ereignishubverbindungen in 15000 ms im Fabric-Java-SDK. Der Dateipfad lautet `src\main\java\org\hyperledger\fabric\sdk\helper\Config.java`.
-
-```
- public static final String EVENTHUB_CONNECTION_WAIT_TIME = "org.hyperledger.fabric.sdk.eventhub_connection.wait_time";
- private static final long EVENTHUB_CONNECTION_WAIT_TIME_VALUE = 15000;
-
- static {
-     System.setProperty(EVENTHUB_CONNECTION_WAIT_TIME, EVENTHUB_CONNECTION_WAIT_TIME_VALUE);
- }
-```
-{:codeblock}
-
-Wenn Sie das Node-SDK verwenden, können Sie die Zeitlimitwerte direkt in der aufgerufenen Methode angeben. Als Beispiel können Sie die folgende Zeile verwenden, um den Zeitlimitwert für die [Instanziierung eines Chaincodes ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://fabric-sdk-node.github.io/Channel.html#sendInstantiateProposal "sendInstantiateProposal") auf fünf Minuten zu erhöhen.
-```
-channel.sendInstantiateProposal(request, 300000);
-```
-{:codeblock}
-
-## Best Practices bei der Verwendung von CouchDB
-{: #dev-app-couchdb-indices}
-
-Wenn Sie die "CouchDB" als Statusdatenbank verwenden, können Sie JSON-Daten-Abfragen aus Ihrem Chaincode für die Statusdaten des Kanals ausführen. Es wird dringend empfohlen, Indizes für Ihre JSON-Abfragen zu erstellen und in Ihrem Chaincode zu verwenden. Mithilfe von Indizes können Ihre Anwendungen Daten effizient abrufen, während das Netz zusätzliche Blöcke von Transaktionen und Einträgen im World-Status hinzufügt.
-
-Weitere Informationen zu CouchDB und zum Konfigurieren von Indizes enthält der Abschnitt über [CouchDB als Statusdatenbank![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/couchdb_as_state_database.html "CouchDB as the State Database"){:new_window} in der Hyperledger Fabric-Dokumentation. Im [Fabric-Lernprogramm für CouchDB ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/couchdb_tutorial.html) finden Sie außerdem ein Beispiel, das einen Index mit Chaincode verwendet.
-
-Verwenden Sie Chaincode nach Möglichkeit nicht für Abfragen, die das Durchsuchen der gesamten CouchDB-Datenbank zur Folge haben. Vollständige Datenbankscans führen zu langen Antwortzeiten und vermindern die Leistung Ihres Netzes. Zur Vermeidung von umfangreichen Abfragen können Sie einige der folgenden Schritte ausführen:
-- Richten Sie in Ihrem Chaincode Indizes ein.
-- Vermeiden Sie bei der Ausgabe von Rich-JSON-Abfragen die Verwendung von Operatoren, die einen vollständigen Datenbankscan oder einen vollständigen Indexscan verursachen, beispielsweise `$or`, `$in` und `$regex`.
-- Peers unter {{site.data.keyword.blockchainfull_notm}} Platform haben eine festgelegte Abfragebegrenzung (queryLimit) und geben nur 10.000 Einträge aus der Statusdatenbank zurück. Wenn Ihre Abfrage die Abfragebegrenzung erreicht, können Sie mehrere Abfragen verwenden, um die restlichen Ergebnisse abzurufen. Wenn Sie mehr Ergebnisse aus einer Bereichsabfrage benötigen, beginnen Sie nachfolgende Abfragen mit dem letzten Schlüssel, der durch die vorherige Abfrage zurückgegeben wurde. Wenn Sie mehr Ergebnisse aus JSON-Abfragen benötigen, sortieren Sie Ihre Abfrage unter Verwendung einer der Variablen in Ihren Daten und verwenden Sie dann den letzten Wert aus der vorherigen Abfrage in einem "Größer-als"-Filter für die nächste Abfrage.
-- Fragen Sie zur Berichterstellung oder Aggregation nicht die gesamte Datenbank ab. Falls Sie im Rahmen Ihrer Anwendung ein Dashboard erstellen oder ein hohes Datenvolumen erfassen wollen, können Sie eine nicht zum Blockchain-Netz gehörende Datenbank abfragen, in der die Daten aus Ihrem Blockchain-Netz repliziert sind. Auf diese Weise können Sie sich über die Daten in der Blockchain informieren, ohne die Leistung Ihres Netzes zu beeinträchtigen oder Transaktionen zu unterbrechen.
-
-  Mit dem kanalbasierten Ereignisservice-Client, der in den Fabric-SDKs bereitgestellt wird, können Sie einen nicht zum Blockchain-Netz gehörenden Datenspeicher erstellen. Beispielsweise können Sie mit einem Blocklistener die letzten Transaktionen abrufen, die zu einem Kanalledger hinzugefügt wurden. Mit den Lese- und Schreibsätzen der gültigen Transaktionen kann dann eine Kopie des World-Status aktualisiert werden, die in einer separaten Datenbank gespeichert wurde. Weitere Informationen enthält der Abschnitt über die [Verwendung des kanalbasierten Ereignisservice ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://fabric-sdk-node.github.io/tutorial-channel-events.html "Verwendung des kanalbasierten Ereignisservice"){:new_window} in der Node SDK-Dokumentation.
-
-## Anwendungen hosten
-{: #dev-app-host-app}
-
-Sie können Ihre Anwendung auf Ihrem lokalen Dateisystem hosten oder sie mit einer Push-Operation an {{site.data.keyword.cloud_notm}} übertragen. Um Ihre Anwendung mit einer Push-Operation an {{site.data.keyword.cloud_notm}} zu übertragen, führen Sie die folgenden Schritte aus:
-1. Installieren Sie das [Cloud Foundry-Befehlszeileninstallationsprogramm ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://github.com/cloudfoundry/cli/releases).  Testen Sie Ihre Installation mit dem Befehl `cf`.
-    * Wenn die Installation erfolgreich war, sollte eine entsprechende Textausgabe auf Ihrem Terminal angezeigt werden.
-    * Wenn "Befehl nicht gefunden" angezeigt wird, war Ihre Installation entweder nicht erfolgreich oder CF ist nicht in Ihrem Systempfad enthalten.
-2. Richten Sie den API-Endpunkt ein und melden Sie sich mit Ihrer {{site.data.keyword.cloud_notm}}-ID und dem Kennwort an, indem Sie die folgenden Befehle eingeben:
-    ```
-    > cf api https://api.ng.bluemix.net
-    > cf login
-    ```
-    {:codeblock}
-3. Wechseln Sie in das Verzeichnis Ihrer Anwendung und führen Sie eine Push-Operation für Ihre Anwendung durch, indem Sie den folgenden Befehl eingeben. Dies kann einige Minuten je nach Größe Ihrer Anwendung dauern. Sie können die Protokolle aus {{site.data.keyword.cloud_notm}} an Ihrem Terminal anzeigen. Die Protokolle werden ausgeblendet, wenn die Anwendung erfolgreich gestartet wurde.
-	```
-	> cf push NAME_IHRER_APP
-	```
-	{:codeblock}
-	Sie können Ihre Anwendungsprotokolle prüfen, indem Sie die folgenden Befehle eingeben:
-	* `> cf logs NAME_IHRER_APP`
-	* `> cf logs NAME_IHRER_APP --recent`
 
 ## Anwendung vom Netz trennen
 {: #dev-app-disconnect-app}

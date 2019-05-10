@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -53,9 +53,9 @@ Se você não usar o fornecimento dinâmico, [Volumes persistentes ![Ícone de l
 
 1. Antes de poder instalar um solicitador no {{site.data.keyword.cloud_notm}} Private, deve-se [instalar o {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/ICP_setup.html#icp-setup) e [instalar o gráfico do Helm do {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/howto/helm_install_icp.html#helm-install).
 
-2. Se você usar a Community Edition e desejar executar esse gráfico do Helm em um cluster do {{site.data.keyword.cloud_notm}} Private sem conectividade com a Internet, será necessário criar archives em uma máquina conectada à Internet antes de ser possível instalar os archives no cluster do {{site.data.keyword.cloud_notm}} Private. Para obter mais informações, veja [Incluindo aplicativos de destaque em clusters sem conectividade à Internet ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_package_offline.html "Incluindo aplicativos de destaque em clusters sem conectividade à Internet"){:new_window}. Observe que é possível localizar o arquivo de especificação `manifest.yaml` em ibm-blockchain-platform-dev/ibm_cloud_pak no gráfico Helm.
+2. Se você usar a Community Edition e desejar executar esse gráfico do Helm em um cluster do {{site.data.keyword.cloud_notm}} Private sem conectividade com a Internet, será necessário criar archives em uma máquina conectada à Internet antes de ser possível instalar os archives no cluster do {{site.data.keyword.cloud_notm}} Private. Para obter mais informações, veja [Incluindo aplicativos de destaque em clusters sem conectividade à Internet ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/app_center/add_package_offline.html "Incluindo aplicativos de destaque em clusters sem conectividade à Internet"){:new_window}. Observe que é possível localizar o arquivo de especificação `manifest.yaml` em ibm-blockchain-platform-dev/ibm_cloud_pak no gráfico Helm.
 
-3. Recupere o valor do endereço IP do Proxy do cluster de sua CA no console do {{site.data.keyword.cloud_notm}} Private. **Nota:** você precisará ser um [Administrador de cluster ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Funções e ações de administrador de cluster") para acessar seu IP de proxy. Efetue login no cluster do {{site.data.keyword.cloud_notm}} Private. No painel de navegação à esquerda, clique em **Plataforma** e, em seguida, em **Nós** para visualizar os nós que estão definidos no cluster. Clique no nó com a função `proxy` e, em seguida, copie o valor do `IP do host` da tabela. **Importante:** salve esse valor e você o usará ao configurar o campo `Proxy IP` do gráfico do Helm.
+3. Recupere o valor do endereço IP do Proxy do cluster de sua CA no console do {{site.data.keyword.cloud_notm}} Private. **Nota:** você precisará ser um [Administrador de cluster ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/user_management/assign_role.html "Funções e ações de administrador de cluster") para acessar seu IP de proxy. Efetue login no cluster do {{site.data.keyword.cloud_notm}} Private. No painel de navegação à esquerda, clique em **Plataforma** e, em seguida, em **Nós** para visualizar os nós que estão definidos no cluster. Clique no nó com a função `proxy` e, em seguida, copie o valor do `IP do host` da tabela. **Importante:** salve esse valor e você o usará ao configurar o campo `Proxy IP` do gráfico do Helm.
 
 4. Crie um [arquivo de configuração do solicitador e armazene-o como um segredo do Kubernetes no {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/howto/orderer_deploy_icp.html#icp-orderer-deploy-config-file).
 
@@ -64,7 +64,7 @@ Se você não usar o fornecimento dinâmico, [Volumes persistentes ![Ícone de l
 
 Antes de implementar um solicitador, é necessário criar um arquivo de configuração contendo informações importantes sobre a identidade do solicitador e sua CA. Em seguida, é necessário passar esse arquivo para o gráfico do Helm durante a configuração usando um objeto [Segredo do Kubernetes ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://kubernetes.io/docs/concepts/configuration/secret/). Esse arquivo permitirá que o solicitador obtenha os certificados que ele precisa da CA para ingressar em uma rede de blockchain. Ele também contém um certificado de administrador que permitirá que você opere o solicitador como um usuário administrador. Siga as instruções em [usando a CA para implementar um solicitador ou peer](/docs/services/blockchain/howto/CA_operate.html#ca-operate-deploy-orderer-peer) antes de configurar o solicitador.
 
-É necessário fornecer os nomes de host do CSR para o arquivo de configuração. Isso inclui o `service host name` que será baseado no `helm release name` especificado durante a implementação. O `service host name` é o `helm_release_name` que você especifica com a sequência `-orderer` incluída no final. Por exemplo, se você especificar um `helm release name` igual a `orderer1`, será possível inserir o valor a seguir na seção `"csr"` do arquivo:
+É necessário fornecer os nomes de host do CSR para o arquivo de configuração. Os nomes do host do CSR incluem o endereço IP do proxy do cluster no qual você implementará o componente, assim como o nome do host do serviço que será seu nome do host do gráfico do Helm. O `service host name` é baseado no `helm release name` que você especifica durante a implementação. O `service host name` é o `helm_release_name` que você especifica com a sequência `-orderer` incluída no final. Por exemplo, se você especificar um `helm release name` igual a `orderer1`, será possível inserir o valor a seguir na seção `"csr"` do arquivo:
 
 ```
 "csr": {
@@ -106,7 +106,7 @@ Depois de salvar o arquivo de configuração, é necessário codificá-lo no for
 
 3. Na guia **Geral**, preencha os campos a seguir:
   - **Nome:** forneça ao seu segredo um nome exclusivo dentro de seu cluster. Você usará esse nome ao implementar seu solicitador. O nome deve ser todo em minúsculas.  
-  **Nota:** ao implementar um solicitador, um novo segredo é gerado automaticamente pela implementação com o nome `<helm_release_name>-orderer-mspsecret`. Portanto, ao nomear seu segredo, certifique-se de que o nome do segredo seja diferente de `<helm_release_name>-orderer-mspsecret`. Caso contrário, a implementação do gráfico do helm falhará porque o segredo que ele tenta criar já existe.
+  **Nota:** quando você implementa um solicitador, um novo segredo é gerado automaticamente pela implementação com o nome `<helm_release_name>-orderer-mspsecret`. Portanto, quando você nomear seu segredo, certifique-se de que ele seja diferente de `<helm_release_name>-orderer-mspsecret`. Caso contrário, a implementação do gráfico do helm falhará porque o segredo que ele tenta criar já existe.
   - **Namespace:** o namespace para incluir seu segredo. Selecione o `namespace` no qual você deseja implementar seu solicitador.
   - **Tipo:** insira o valor `Opaque`.
 
@@ -152,8 +152,10 @@ A tabela a seguir lista os parâmetros configuráveis do {{site.data.keyword.blo
 
 |  Parâmetro     | Descrição    | Padrão  | Requerido |
 | --------------|-----------------|-------|------- |
+|**Parâmetros gerais**| Parâmetros que configuram o gráfico do Helm | | |
 | `Helm release name`| O nome da liberação de helm. Deve iniciar com uma letra minúscula e terminar com qualquer caractere alfanumérico, deve conter apenas hifens e caracteres alfanuméricos minúsculos. Deve-se usar um nome de liberação do Helm exclusivo toda vez que tentar instalar um componente. **Importante:** esse valor deve corresponder ao valor que você usou para gerar o 'service host name' para o campo "hosts" em seu [arquivo de segredo JSON.](/docs/services/blockchain/howto/orderer_deploy_icp.html#icp-orderer-deploy-config-file) | nenhum | sim  |
 | ` Namespace de destino `| Escolha o namespace do Kubernetes para instalar o gráfico do Helm. | nenhum | sim |
+| `Políticas de namespace de destino`| Exibe as políticas de segurança de pod do namespace escolhido, que devem incluir uma política **`ibm-privileged-psp`**. Caso contrário, [ligue uma PodSecurityPolicy](/docs/services/blockchain?topic=blockchain-icp-setup#icp-setup-psp) ao seu namespace. | nenhum | não |
 |**Configuração global**| Parâmetros que se aplicam a todos os componentes no gráfico do Helm|||
 | `Service account name`| Insira o nome da [conta do serviço ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/) que você usará para executar o pod. | padrão | não |
 
@@ -164,12 +166,12 @@ A tabela a seguir lista os parâmetros configuráveis do {{site.data.keyword.blo
 | --------------|-----------------|-------|------- |
 | `Install Orderer`| Selecione para instalar um solicitador. | desmarcado | sim, se você deseja implementar um solicitador |
 | `Orderer worker node architecture`| Selecione sua arquitetura de nó do trabalhador do {{site.data.keyword.cloud_notm}} Private (AMD64 ou S390X). | Arquitetura de detecção automática com base no nó principal | sim |
-| `Orderer configuration`| É possível customizar a configuração do solicitador colando seu próprio arquivo de configuração `orderer.yaml` nesse campo. Para ver um arquivo `orderer.yaml` de amostra, veja a configuração de amostra [`orderer.yaml` ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://github.com/hyperledger/fabric/blob/release-1.2/sampleconfig/orderer.yaml)**Somente para usuários avançados**. | nenhum | não |
+| `Orderer configuration`| É possível customizar a configuração do solicitador colando seu próprio arquivo de configuração `orderer.yaml` nesse campo. Para ver um arquivo `orderer.yaml` de amostra, consulte a configuração de amostra [`orderer.yaml` ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://github.com/hyperledger/fabric/blob/release-1.4/sampleconfig/orderer.yaml)**Somente para usuários avançados**. | nenhum | não |
 | `Organization MSP secret (Required)`| Especifique o nome do objeto secreto que contém certificados MSP e chaves da organização. | nenhum | sim |
 | `Orderer data persistence enabled` | Os dados estarão disponíveis quando o contêiner for reiniciado. Se desmarcado, todos os dados serão perdidos no caso de um failover ou de uma reinicialização de pod. | marcado | não |
 | `Orderer use dynamic provisioning` | Marque para ativar o fornecimento dinâmico para volumes de armazenamento. | marcado | não |
 | `Orderer image repository` | Local do gráfico Helm do Solicitador. Esse campo é preenchido automaticamente para o caminho instalado. Se você estiver usando o Community Edition e não tiver acesso à Internet, mude esse campo para o local em que você transferiu por download a imagem do solicitador do Fabric. | ibmcom/ibp-fabric-orderer | não |
-| `Orderer Docker image tag`| Um registro da imagem do Docker. Esse campo é preenchido automaticamente para a versão de imagem. Não mude isso.| 1.2.1 | sim |
+| `Orderer Docker image tag`| Um registro da imagem do Docker. Esse campo é preenchido automaticamente para a versão de imagem. Não mude isso.| 1.4.0 | sim |
 | `Orderer consensus type`| O tipo de consenso do serviço de ordenação. | SOLO | sim |
 | `Orderer organization name`| Especifique o nome que você gostaria de usar para a organização do solicitador. Se você também planeja implementar peers, certifique-se de usar um nome diferente daquele que fornecerá aos seus peers. Por exemplo, forneça à sua organização do solicitador um nome como `ordererOrg` | nenhum | sim |
 | `Orderer Org MSP ID`| Especifique o nome que deseja usar para o ID MSP da organização do solicitador. Esse deve ser o mesmo nome que você fornece à sua organização do solicitador e será configurado como uma variável de ambiente pelo processo de implementação. Tome nota desse valor, será necessário referenciá-lo posteriormente. | nenhum | sim |
@@ -179,16 +181,21 @@ A tabela a seguir lista os parâmetros configuráveis do {{site.data.keyword.blo
 | `Orderer selector value`| [Valor do seletor ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) para seu PVC. | nenhum | não |
 | `Orderer storage access mode`| Especifique o [modo de acesso ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes) de armazenamento para o PVC. | ReadWriteMany | sim |
 | `Orderer volume claim size`| Escolha o tamanho do disco a ser usado, que deve ser pelo menos 2 Gi. | 8 Gi | sim |
-| Tipo de serviço do solicitador` | Usado para especificar se [portas externas devem ser expostas ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types) no peer. Selecione NodePort para expor as portas externamente (recomendado) e ClusterIP para não expor as portas. O LoadBalancer e o ExternalName não são suportados nesta liberação | NodePort | sim |
+| `Orderer service type` | Usado para especificar se [portas externas devem ser expostas ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types) no peer. Selecione NodePort para expor as portas externamente (recomendado) e ClusterIP para não expor as portas. O LoadBalancer e o ExternalName não são suportados nesta liberação | NodePort | sim |
 | `Orderer CPU request`| Especifique o número mínimo de CPUs a serem alocadas para o Solicitador. | 1 | sim |
 | `Orderer CPU limit`| Especifique o número máximo de CPUs a serem alocadas para o Solicitador. | 2 | sim |
 | `Orderer memory request`| Especifique a quantidade mínima de memória a ser alocada para o Solicitador. | 1 Gi | sim |
 | `Orderer memory limit`| Especifique a quantidade máxima de memória a ser alocada para o Solicitador. | 2 Gi | sim |
+| `gRPC web proxy CPU request`| Especifique o número mínimo de CPUs, em millicpus (m), a serem alocadas para o proxy da web gRPC. | 100 m | sim |
+| `gRPC web proxy CPU limit`| Especifique o número máximo de CPUs, em millicpus (m), a serem alocadas para o proxy da web gRPC. | 200 m | sim |
+| `gRPC web proxy memory request`| Especifique a quantidade mínima de memória a ser alocada para o proxy da web gRPC. | 100 Mi | sim |
+| `gRPC web proxy memory limit`| Especifique a quantidade máxima de memória a ser alocada para o proxy da web gRPC. | 200 Mi | sim |
+
 
 ### Usando a linha de comandos do Helm para instalar a liberação do Helm
 {: #icp-orderer-deploy-helm-cli}
 
-Como alternativa, é possível usar a CLI do Helm para instalar a liberação do Helm. Antes de executar o comando `helm install`, assegure-se de [incluir o repositório do Helm de seu cluster no ambiente da CLI do Helm ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_int_helm_repo_to_cli.html "Incluindo o repositório do Helm interno na CLI do Helm").
+Como alternativa, é possível usar a CLI do Helm para instalar a liberação do Helm. Antes de executar o comando `helm install`, assegure-se de [incluir o repositório do Helm de seu cluster no ambiente da CLI do Helm ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/app_center/add_int_helm_repo_to_cli.html "Incluindo o repositório do Helm interno na CLI do Helm").
 
 É possível configurar os parâmetros necessários para a instalação, criando um arquivo `yaml` e passando-o para o comando `helm install` a seguir.
 

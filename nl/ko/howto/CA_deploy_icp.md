@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -20,7 +20,7 @@ subcollection: blockchain
 # {{site.data.keyword.cloud_notm}} Private에 인증 기관 배치
 {: #ca-deploy}
 
-{{site.data.keyword.cloud_notm}} Private Helm 차트에 {{site.data.keyword.blockchainfull}} Platform을 가져오면 개별 컴포넌트를 배치할 수 있습니다. 인증 기관(CA)은 조직의 신뢰 루트이며 배치할 다른 컴포넌트에 대한 인증서를 생성할 수 있도록 합니다. 결과적으로 다른 컴포넌트를 배치하기 전에 CA를 배치해야 합니다. 여러 클라우드 블록체인 네트워크의 각 조직에서는 자체 CA를 배치해야 합니다.  CA와 블록체인 네트워크에서 수행하는 역할에 대한 자세한 정보는 [인증 기관](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview-ca)을 참조하십시오.
+{{site.data.keyword.blockchainfull}} Platform for {{site.data.keyword.cloud_notm}} Private Helm 차트를 가져오면 개별 컴포넌트를 배치할 수 있습니다. 인증 기관(CA)은 조직의 신뢰 루트이며 배치할 다른 컴포넌트에 대한 인증서를 생성할 수 있도록 합니다. 결과적으로 다른 컴포넌트를 배치하기 전에 CA를 배치해야 합니다. 여러 클라우드 블록체인 네트워크의 각 조직에서는 자체 CA를 배치해야 합니다.  CA와 블록체인 네트워크에서 수행하는 역할에 대한 자세한 정보는 [인증 기관](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview-ca)을 참조하십시오.
 {:shortdesc}
 
 인증 기관을 배치하기 전에 [고려사항 및 제한사항](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-about-considerations)을 검토하십시오.
@@ -55,9 +55,9 @@ AMD64 또는 S390X 플랫폼에 CA를 배치하도록 선택할 수 있습니다
 
 1. CA를 {{site.data.keyword.cloud_notm}} Private에 설치하기 전에 [{{site.data.keyword.cloud_notm}} Private을 설치](/docs/services/blockchain/ICP_setup.html#icp-setup)하고 [{{site.data.keyword.blockchainfull_notm}} Platform Helm 차트를 설치](/docs/services/blockchain/howto/helm_install_icp.html#helm-install)해야 합니다.
 
-2. Community Edition을 사용하고 인터넷 연결 없이 {{site.data.keyword.cloud_notm}} Private 클러스터에 이 Helm 차트를 실행하려면 아카이브를 {{site.data.keyword.cloud_notm}} Private 클러스터에 설치하기 전에 인터넷에 연결된 시스템에서 아카이브를 작성해야 합니다. 자세한 정보는 [인터넷 연결 없이 클러스터에 주요 애플리케이션 추가 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_package_offline.html "인터넷 연결 없이 클러스터에 주요 애플리케이션 추가"){:new_window}를 참조하십시오. Helm 차트의 ibm-blockchain-platform-dev/ibm_cloud_pak 아래에서 스펙 파일인 manifest.yaml을 찾을 수 있습니다.
+2. Community Edition을 사용하고 인터넷 연결 없이 {{site.data.keyword.cloud_notm}} Private 클러스터에 이 Helm 차트를 실행하려면 아카이브를 {{site.data.keyword.cloud_notm}} Private 클러스터에 설치하기 전에 인터넷에 연결된 시스템에서 아카이브를 작성해야 합니다. 자세한 정보는 [인터넷 연결 없이 클러스터에 주요 애플리케이션 추가 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/app_center/add_package_offline.html "인터넷 연결 없이 클러스터에 주요 애플리케이션 추가"){:new_window}를 참조하십시오. Helm 차트의 ibm-blockchain-platform-dev/ibm_cloud_pak 아래에서 스펙 파일인 manifest.yaml을 찾을 수 있습니다.
 
-3. 클러스터 프록시 IP 주소의 값을 {{site.data.keyword.cloud_notm}} Private 콘솔에서 검색하십시오. **참고:** 프록시 IP에 액세스하려면 [클러스터 관리자 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "클러스터 관리자 역할 및 조치")여야 합니다. {{site.data.keyword.cloud_notm}} Private 클러스터에 로그인하십시오. 왼쪽 탐색 패널에서 **플랫폼**, **노드**를 차례로 클릭하여 클러스터에 정의되어 있는 노드를 표시하십시오. 역할이 `proxy`인 노드를 클릭한 후 테이블에서 `Host IP`의 값을 복사하십시오.
+3. 클러스터 프록시 IP 주소의 값을 {{site.data.keyword.cloud_notm}} Private 콘솔에서 검색하십시오. **참고:** 프록시 IP에 액세스하려면 [클러스터 관리자 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/user_management/assign_role.html "클러스터 관리자 역할 및 조치")여야 합니다. {{site.data.keyword.cloud_notm}} Private 클러스터에 로그인하십시오. 왼쪽 탐색 패널에서 **플랫폼**, **노드**를 차례로 클릭하여 클러스터에 정의되어 있는 노드를 표시하십시오. 역할이 `proxy`인 노드를 클릭한 후 테이블에서 `Host IP`의 값을 복사하십시오.
 
   이 값을 저장하십시오. 이 값은 Helm 차트의 `Proxy IP` 필드를 구성할 때 사용하게 됩니다.
   {:important}
@@ -128,9 +128,11 @@ CA 관리자 시크릿을 작성하면 CA를 구성하고 설치하기 위한 �
 
 |매개변수     |설명    | 기본값  | 필수 |
 | --------------|-----------------|-------|------- |
+|**일반 매개변수**| Helm 차트를 구성하는 매개변수입니다.| | |
 | `Helm release name`| Helm 릴리스의 이름입니다. 소문자로 시작하고 영숫자 문자로 끝나야 하며 하이픈과 소문자의 영숫자 문자만 포함해야 합니다. 컴포넌트를 설치하려고 할 때마다 고유한 Helm 릴리스 이름을 사용해야 합니다. | 없음 | 예 |
 | `Target namespace`| Helm 차트를 설치할 Kubernetes 네임스페이스를 선택합니다. | 없음 | 예 |
-|**글로벌 구성**| Helm 차트의 모든 컴포넌트에 적용하는 매개변수입니다.|||
+| `Target namespace policies`| 선택한 네임스페이스의 팟(Pod) 보안 정책을 표시하며, 여기에는 **`ibm-privileged-psp`** 정책을 포함해야 합니다. 그렇지 않으면 네임스페이스에 [PodSecurityPolicy를 바인드](/docs/services/blockchain?topic=blockchain-icp-setup#icp-setup-psp)하십시오.| 없음 | 아니오 |
+|**글로벌 구성**| Helm 차트의 모든 컴포넌트에 적용하는 매개변수입니다.| | |
 | `Service account name`|팟(Pod)을 실행하는 데 사용할 [서비스 계정 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/ "팟(Pod)의 서비스 계정 구성")의 이름을 입력합니다. | 기본값 | 아니오 |
 
 #### CA 구성 매개변수
@@ -151,7 +153,9 @@ CA 관리자 시크릿을 작성하면 CA를 구성하고 설치하기 위한 �
 | `CA storage access mode`| PVC의 스토리지 [액세스 모드 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes "액세스 모드")를 지정하십시오. | ReadWriteMany | 예 |
 | `CA volume claim size`| 사용할 디스크 크기를 선택합니다. | 2Gi | 예 |
 | `CA image repository`| CA Helm 차트의 위치입니다. | ibmcom/ibp-fabric-ca | 예 |
-| `CA Docker image tag`| CA 이미지와 연관된 태그의 값입니다. 이 필드는 이미지 버전으로 자동 완성됩니다. 변경하지 마십시오.| 1.2.1 | 예 |
+| `CA Docker image tag`| CA 이미지와 연관된 태그의 값입니다. 이 필드는 이미지 버전으로 자동 완성됩니다. | 1.4.0 | 예 |
+| `CA Init Docker image repository`| CA Init Docker 이미지의 위치입니다. 이 필드는 이미지 위치로 자동 완성됩니다. | ibmcom/ibp-init | 예 |
+| `CA Init Docker image tag`| CA Init Docker 이미지와 연관된 태그의 값입니다. 이 필드는 이미지 버전으로 자동 완성됩니다. | 1.4.0 | 예 |
 | `CA service type` | 피어에서 [외부 포트 노출![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types) 여부를 지정하는 데 사용됩니다. 포트를 외부적으로 노출하려면(권장됨) NodePort를 선택하고 포트를 노출하지 않으려면 ClusterIP를 선택하십시오. LoadBalancer와 ExternalName은 이 릴리스에서 지원되지 않습니다 | NodePort | 예 |
 | `CA secret(Required)`|  `ca-admin-name` 및 `ca-admin-password`에 대해 작성한 Kubernetes 시크릿 오브젝트의 이름을 입력합니다. | 없음 | 예 |
 | `CA CPU request`| CA에 할당할 최소 CPU 수를 지정합니다. |   1 | 예 |
@@ -160,13 +164,13 @@ CA 관리자 시크릿을 작성하면 CA를 구성하고 설치하기 위한 �
 | `CA memory limit`| CA에 할당할 최대 메모리 크기를 지정합니다. | 4Gi | 예 |
 | `CA TLS instance name`| 순서 지정자 또는 피어를 등록하는 데 사용될 CA TLS 인스턴스의 이름을 지정합니다. | tlsca | 예 |
 | `CSR common name`| 접속될 때 생성된 CA 루트 인증서에서 표시할 CN(Common Name)을 지정합니다. | tlsca-common | 예 |
-| `Proxy IP`| CA가 배치된 [클러스터의 프록시 노드 IP ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/installing/install_proxy.html "HTTP 프록시 뒤에 IBM Cloud Private 설치")를 입력합니다. | 127.0.0.1 | 예 |
+| `Proxy IP`|CA가 배치된 [클러스터의 프록시 노드 IP ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/installing/install_proxy.html "HTTP 프록시 뒤에 IBM Cloud Private 설치")를 입력합니다. | 127.0.0.1 | 예 |
 
 
 ### Helm 명령행을 사용하여 Helm 릴리스 설치
 {: #ca-deploy-helm-cli}
 
-또는 Helm CLI를 사용하여 Helm 릴리스를 설치할 수 있습니다. `helm install` 명령을 실행하기 전에 [Helm CLI 환경에 클러스터의 Helm 저장소를 추가![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_int_helm_repo_to_cli.html "Helm CLI에 내부 Helm 저장소 추가")했는지 확인하십시오.
+또는 Helm CLI를 사용하여 Helm 릴리스를 설치할 수 있습니다. `helm install` 명령을 실행하기 전에 [Helm CLI 환경에 클러스터의 Helm 저장소를 추가![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/app_center/add_int_helm_repo_to_cli.html "Helm CLI에 내부 Helm 저장소 추가")했는지 확인하십시오.
 
 `yaml` 파일을 작성하고 이 파일을 다음 `helm install` 명령에 전달하여 설치에 필요한 매개변수를 설정할 수 있습니다.
 
@@ -185,7 +189,7 @@ helm install --name <helm_release_name>  <helm_chart> \
 - `<helm_chart_version>`은 카탈로그에 가져온 Helm 차트의 버전을 표시합니다.
 - `<customvalues.yaml>`은 구성 매개변수가 포함된 yaml 파일의 이름입니다.
 
-예를 들어, 다음과 같습니다.
+예를 들면 다음과 같습니다.
 
 ```
 helm install --name jnchart2 mycluster/ibm-blockchain-platform \
@@ -203,7 +207,7 @@ helm install --name jnchart2 mycluster/ibm-blockchain-platform \
 
 아래로 스크롤하여 `참고` 섹션으로 이동하면 [CA 운영](/docs/services/blockchain/howto/CA_operate.html#ca-operate)에 사용할 중요한 정보를 찾을 수 있습니다.
 
-{{site.data.keyword.cloud_notm}} Private에 {{site.data.keyword.blockchainfull_notm}} Platform CA를 설치하면 configmap이 기본 환경 변수 설정으로 작성됩니다. 그런 다음 CA 서버의 환경 변수를 변경하거나 추가하여 작동을 구성할 수 있습니다. CA 서버 구성 매개변수에 대한 자세한 정보는 [Fabric CA 서버 문서 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric-ca.readthedocs.io/en/latest/users-guide.html#fabric-ca-server "Fabric CA 서버")를 참조하십시오.
+{{site.data.keyword.cloud_notm}} Private에 {{site.data.keyword.blockchainfull_notm}} Platform CA를 설치하면 configmap이 기본 환경 변수 설정으로 작성됩니다. 그런 다음 CA 서버의 환경 변수를 변경하거나 추가하여 작동을 구성할 수 있습니다. CA 서버 구성 매개변수에 대한 자세한 정보는 [Fabric CA 서버 문서 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/users-guide.html#fabric-ca-server "Fabric CA 서버")를 참조하십시오.
 
 configmap을 구성한 후 변경사항이 적용되기 전에 CA 서버를 다시 시작해야 합니다. CA 서버를 다시 시작하기 위해 Fabric CA 서버 팟(Pod)을 삭제할 수 있습니다. {{site.data.keyword.cloud_notm}} Private은 변경사항을 반영하는 새 팟(Pod)을 작성합니다.
 

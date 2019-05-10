@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2019
-lastupdated: "2019-03-05"
+  years: 2018, 2019
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -35,7 +35,7 @@ Asegúrese de que el sistema {{site.data.keyword.cloud_notm}} Private cumple los
 | Componente | vCPU | RAM | Disco para almacenamiento de datos |
 |-----------|------|-----|-----------------------|
 | Igual | 2 | 2 GB | 50 GB con posibilidad de ampliación |
-| CouchDB para igual | 2| 2 GB |50 GB con posibilidad de ampliación |
+| CouchDB para igual<br>(Aplicable solo si utiliza CouchDB) | 2| 2 GB | 50 GB con posibilidad de ampliación |
 
  **Notas:**
  - Un vCPU es un núcleo virtual que se asigna a una
@@ -64,14 +64,14 @@ deben crear y configurar con etiquetas que se puedan utilizar para adaptar el pr
 
 2. Si utiliza Community Edition y desea ejecutar este diagrama de Helm en un clúster de {{site.data.keyword.cloud_notm}} Private sin conexión a Internet, debe crear archivados en una máquina conectada a Internet para poder instalar los archivados en el clúster de {{site.data.keyword.cloud_notm}} Private. Para obtener más información, consulte
 [Adición de aplicaciones destacadas a clústeres sin conexión a Internet
-![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_package_offline.html "Adición de aplicaciones destacadas a clústeres sin conexión a Internet"){:new_window}. Tenga en cuenta que puede encontrar el archivo de especificación manifest.yaml en ibm-blockchain-platform-dev/ibm_cloud_pak en el diagrama de Helm.
+![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/app_center/add_package_offline.html "Adición de aplicaciones destacadas a clústeres sin conexión a Internet"){:new_window}. Tenga en cuenta que puede encontrar el archivo de especificación manifest.yaml en ibm-blockchain-platform-dev/ibm_cloud_pak en el diagrama de Helm.
 
 3. Debe tener una organización que sea miembro de una red de Plan inicial o de Plan empresarial en {{site.data.keyword.cloud_notm}}. El igual aprovecha los puntos finales de API, las CA de Hyperledger Fabric y el servicio de ordenación de la red de {{site.data.keyword.blockchainfull_notm}} Platform para funcionar. Si no es miembro de ninguna red blockchain, tiene que crear o unirse a una red. Para obtener más información, consulte [Creación de una red](/docs/services/blockchain/get_start.html#getting-started-with-enterprise-plan-create-network) o [Cómo unirse a una red](/docs/services/blockchain/get_start.html#getting-started-with-enterprise-plan-join-nw).
 
 4. En primer lugar, debe [desplegar una CA](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy) en {{site.data.keyword.cloud_notm}} Private. Utilizará esta CA como una CA de TLS. Siga los [pasos de requisito previo](/docs/services/blockchain/howto/CA_operate.html#ca-operate-prerequisites) para trabajar con una CA en {{site.data.keyword.cloud_notm}} Private antes de desplegar el igual. No será necesario que continúe más allá de estos pasos.
 
 5. Recupere el valor de la dirección IP de proxy de clúster de la CA de TLS desde la consola de {{site.data.keyword.cloud_notm}} Private. **Nota:** necesitará ser un
-[administrador del clúster ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Acciones y roles de administrador de clúster") para acceder a la IP de proxy. Inicie sesión en el clúster de {{site.data.keyword.cloud_notm}} Private. En el panel de navegación de la izquierda, pulse
+[administrador del clúster ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/user_management/assign_role.html "Acciones y roles de administrador de clúster") para acceder a la IP de proxy. Inicie sesión en el clúster de {{site.data.keyword.cloud_notm}} Private. En el panel de navegación de la izquierda, pulse
 **Plataforma** y, a continuación, pulse **Nodos** para ver los nodos que están definidos en el clúster. Pulse sobre el nodo que tenga el rol `proxy` y, a continuación, copie el valor de `Host IP` de la tabla. **Importante:** guarde este valor, ya que lo utilizará cuando configure el campo `Proxy IP` del diagrama de Helm.
 
 6. Cree un archivo de configuración de igual y almacénelo como secreto de Kubernetes en {{site.data.keyword.cloud_notm}} Private. Puede encontrar los pasos para crear este archivo en la [siguiente sección](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-config-file).
@@ -158,7 +158,7 @@ En el archivo, en la sección `"components"`, especifique los valores siguientes
 - `"caport"` es el puerto de `"cahost"`. Por ejemplo, si el URL de CA es
 `https://ncaca9b06047b4bee966b3dec0cbb6671-org1-ca.stage.blockchain.ibm.com:31011`, `"caport"` sería
 `31011`.
-- `"cacert"` es el valor del campo **Certificado TLS de la entidad emisora de certificados (CA)**. Antes de insertar el certificado en el archivo, debe codificarlo en formato base64 ejecutando los mandatos siguientes y sustituyendo la serie `<paste in Certificate Authority (CA) TLS Certificate>` por el valor que ha copiado del supervisor de red.
+- `"cacert"` es el valor del campo **Certificado TLS de la entidad emisora de certificados (CA)**. Antes de insertar el certificado en el archivo, debe codificarlo en formato base64 ejecutando los mandatos siguientes y sustituyendo la serie `<paste in Certificate Authority (CA) TLS Certificate>` por el valor que haya copiado del supervisor de red.
 
   ```
   export FLAG=$(if [ "$(uname -s)" == "Linux" ]; then echo "-w 0"; else echo "-b 0"; fi)
@@ -266,13 +266,13 @@ Tras registrar la identidad de administrador, debe generar la carpeta de MSP de 
 `us01.blockchain.ibm.com:31011` o `us02.blockchain.ibm.com:31011` por ejemplo.
 
   - Certificado TLS para el Plan inicial
-    - EE. UU.: [us01.blockchain.ibm.com.cert ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://blockchain-certs.mybluemix.net/us01.blockchain.ibm.com.cert "us01.blockchain.ibm.com.cert"); [us02.blockchain.ibm.com.cert ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://blockchain-certs.mybluemix.net/us02.blockchain.ibm.com.cert "us02.blockchain.ibm.com.cert");
-  [us03.blockchain.ibm.com.cert ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://blockchain-certs.mybluemix.net/us03.blockchain.ibm.com.cert "us03.blockchain.ibm.com.cert"); [us04.blockchain.ibm.com.cert ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://blockchain-certs.mybluemix.net/us04.blockchain.ibm.com.cert "us04.blockchain.ibm.com.cert");
-  [us05.blockchain.ibm.com.cert ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://blockchain-certs.mybluemix.net/us05.blockchain.ibm.com.cert "us05.blockchain.ibm.com.cert"); [us06.blockchain.ibm.com.cert ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://blockchain-certs.mybluemix.net/us06.blockchain.ibm.com.cert "us06.blockchain.ibm.com.cert");
-    [us07.blockchain.ibm.com.cert ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://blockchain-certs.mybluemix.net/us07.blockchain.ibm.com.cert "us07.blockchain.ibm.com.cert"); [us08.blockchain.ibm.com.cert ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://blockchain-certs.mybluemix.net/us08.blockchain.ibm.com.cert "us08.blockchain.ibm.com.cert")
-    - Reino Unido: [uk01.blockchain.ibm.com.cert ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://blockchain-certs.mybluemix.net/uk01.blockchain.ibm.com.cert "uk01.blockchain.ibm.com.cert"); [uk02.blockchain.ibm.com.cert ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://blockchain-certs.mybluemix.net/uk02.blockchain.ibm.com.cert "uk02.blockchain.ibm.com.cert"); [uk03.blockchain.ibm.com.cert ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://blockchain-certs.mybluemix.net/uk03.blockchain.ibm.com.cert "uk03.blockchain.ibm.com.cert"); [uk04.blockchain.ibm.com.cert ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://blockchain-certs.mybluemix.net/uk04.blockchain.ibm.com.cert "uk04.blockchain.ibm.com.cert")
-    - Sídney: [aus01.blockchain.ibm.com.cert ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://blockchain-certs.mybluemix.net/aus01.blockchain.ibm.com.cert "aus01.blockchain.ibm.com.cert");
-  - [Certificado TLS para el Plan empresarial ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://blockchain-certs.mybluemix.net/3.secure.blockchain.ibm.com.rootcert)
+    - EE.UU.: [us01.blockchain.ibm.com.cert ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/us01.blockchain.ibm.com.cert "us01.blockchain.ibm.com.cert"); [us02.blockchain.ibm.com.cert ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/us02.blockchain.ibm.com.cert "us02.blockchain.ibm.com.cert");
+    [us03.blockchain.ibm.com.cert ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/us03.blockchain.ibm.com.cert "us03.blockchain.ibm.com.cert"); [us04.blockchain.ibm.com.cert ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/us04.blockchain.ibm.com.cert "us04.blockchain.ibm.com.cert");
+    [us05.blockchain.ibm.com.cert ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/us05.blockchain.ibm.com.cert "us05.blockchain.ibm.com.cert"); [us06.blockchain.ibm.com.cert ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/us06.blockchain.ibm.com.cert "us06.blockchain.ibm.com.cert");
+    [us07.blockchain.ibm.com.cert ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/us07.blockchain.ibm.com.cert "us07.blockchain.ibm.com.cert"); [us08.blockchain.ibm.com.cert ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/us08.blockchain.ibm.com.cert "us08.blockchain.ibm.com.cert")
+    - Reino Unido: [uk01.blockchain.ibm.com.cert ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/uk01.blockchain.ibm.com.cert "uk01.blockchain.ibm.com.cert"); [uk02.blockchain.ibm.com.cert ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/uk02.blockchain.ibm.com.cert "uk02.blockchain.ibm.com.cert"); [uk03.blockchain.ibm.com.cert ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/uk03.blockchain.ibm.com.cert "uk03.blockchain.ibm.com.cert"); [uk04.blockchain.ibm.com.cert ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/uk04.blockchain.ibm.com.cert "uk04.blockchain.ibm.com.cert")
+    - Sídney: [aus01.blockchain.ibm.com.cert ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/aus01.blockchain.ibm.com.cert "aus01.blockchain.ibm.com.cert");
+  - [Certificado TLS para el Plan empresarial ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/3.secure.blockchain.ibm.com.rootcert)
 
   Guarde el contenido en un directorio donde pueda hacer referencia a él en mandatos posteriores.
 
@@ -290,7 +290,8 @@ Tras registrar la identidad de administrador, debe generar la carpeta de MSP de 
   {:codeblock}
 
   Los valores de `<enroll_id>` y `<enroll_password>` anteriores son el **ID** y el
-**Secreto** del administrador de igual que se ha [registrado utilizando el supervisor de red](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-register-admin). Los valores de `<ca_name>` y `<ca_url_with_port>` son los valores de `caName` y `url` del perfil de conexión. Excluya la parte de `http://` al principio del URL de CA.
+**Secreto** del administrador de igual que se ha [registrado utilizando el supervisor de red](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-register-admin). Los valores de `<ca_name>` y `<ca_url_with_port>` son los valores de `caName` y
+`url` del perfil de conexión. Excluya la parte de `http://` al principio del URL de CA.
 
   Una llamada real es similar al siguiente mandato de ejemplo:
 
@@ -389,10 +390,11 @@ Necesita registrar el igual con la CA de TLS en {{site.data.keyword.cloud_notm}}
   ```
   {:codeblock}
 
-  Los valores de `<enroll_id>` y `<enroll_password>` en el mandato son [el nombre de usuario y la contraseña del administrador de CA](/docs/services/blockchain/CA_deploy.html#ca-deploy-admin-secret) que ha pasado al secreto de Kubernetes al desplegar la entidad emisora de certificados. Inserte el [URL de CA](/docs/services/blockchain/howto/CA_operate.html#ca-operate-url) dentro de `<ca_url_with_port>`. Excluya la parte de `http://` al principio. El valor de `<tls_ca_name>` es el que ha especificado durante la
-[configuración de CA](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-configuration-parms).
+  Los valores de `<enroll_id>` y `<enroll_password>` en el mandato son el
+[nombre de usuario administrador de CA y contraseña](/docs/services/blockchain/howto/CA_deploy.html#ca-deploy-admin-secret) que haya pasado al secreto de Kubernetes al desplegar la entidad emisora de certificados. Inserte el
+[URL de CA](/docs/services/blockchain/howto/CA_operate.html#ca-operate-url) dentro de `<ca_url_with_port>`. Excluya la parte de `http://` al principio. El `<tls_ca_name>` es el que ha especificado durante la [configuración de la CA](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-configuration-parms).
 
-  El valor de `<ca_tls_cert_file>` es el nombre de archivo del [certificado TLS de CA](/docs/services/blockchain/howto/CA_operate.html#ca-operate-tls) con su vía de acceso completa.
+  El `<ca_tls_cert_file>` es el nombre de archivo del [certificado TLS de CA](/docs/services/blockchain/howto/CA_operate.html#ca-operate-tls) con su vía de acceso completa.
 
   Una llamada real será similar al ejemplo siguiente:
 
@@ -474,6 +476,8 @@ tree
 │   └── msp
 │       ├── cacerts
 │       │   └── 9-12-19-115-31873-SampleOrgCA.pem
+│       ├── IssuerPublicKey
+│       ├── IssuerRevocationPublicKey
 │       ├── keystore
 │       │   └── c44ec1e708f84b6d0359f58ce2c9c8a289919ba81f2cf4bb5187c4ad5a43cbb0_sk
 │       └── signcerts
@@ -499,6 +503,8 @@ tree
     └── msp
         ├── cacerts
         │   └── 9-30-250-70-30395-tlsca.pem
+        ├── IssuerPublicKey
+        ├── IssuerRevocationPublicKey
         ├── keystore
         │   └── bd57fa20283dfc76ada83f989ee0f62ce23e98c94dbd26f6cd23202d8084e38e_sk
         ├── signcerts
@@ -619,7 +625,7 @@ Un [secreto de Kubernetes ![Icono de enlace externo](../images/external_link.svg
 
 3. En el separador **General**, complete los campos siguientes:
   - **Nombre:** proporcione un nombre exclusivo dentro del clúster para el secreto. Utilizará este nombre cuando despliegue el igual. El nombre debe estar en minúsculas.  
-  **Nota:** al desplegar un igual, el despliegue genera automáticamente un nuevo secreto con el nombre `<helm_release_name>-secret`. Por lo tanto, cuando establezca el nombre del secreto, asegúrese de que sea distinto a `<helm_release_name>-secret`. De lo contrario, el despliegue del diagrama de Helm fallará debido a que el secreto que intenta crear ya existe.
+  **Nota:** al desplegar un igual, el despliegue genera automáticamente un nuevo secreto con el nombre `<helm release name you intend to use>-secret`. Por lo tanto, cuando establezca el nombre de este secreto, asegúrese de que el nombre del secreto sea distinto a `<helm release name you intend to use>-secret`. De lo contrario, el despliegue del diagrama de Helm fallará debido a que el secreto que intenta crear ya existe.
   - **Espacio de nombres:** el espacio de nombres para añadir el secreto. Seleccione el `espacio de nombres` en el que desee desplegar el igual.
   - **Tipo:** especifique el valor `Opaque`.
 
@@ -666,8 +672,11 @@ En la tabla siguiente se muestran los parámetros configurables de la plataforma
 
 |  Parámetro     | Descripción    | Valor predeterminado  | Obligatorio |
 | --------------|-----------------|-------|------- |
+|**Parámetros generales**| Parámetros que configuran el diagrama de Helm | | |
 | `Nombre de release de Helm`| Nombre del release de Helm. Debe comenzar por una letra minúscula y terminar por un carácter alfanumérico, y solo debe contener guiones y caracteres alfanuméricos. Debe utilizar un nombre de release de Helm exclusivo cada vez que intente instalar un componente. **Importante:** Este valor debe coincidir con el valor que ha utilizado para generar el 'nombre de host de servicio' para el campo "hosts" del [archivo de secreto JSON.](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-csr-hosts) | ninguno | sí  |
 | `Espacio de nombres de destino`| Elija el espacio de nombres de Kubernetes para instalar el diagrama de Helm. | ninguno | sí |
+| `Políticas de espacio de nombres de destino`| Muestra las políticas de seguridad de pod del espacio de nombres elegido, que deben incluir una política **`ibm-privileged-psp`**. De lo contrario,
+[enlace una PodSecurityPolicy](/docs/services/blockchain?topic=blockchain-icp-setup#icp-setup-psp) con el espacio de nombres. | ninguno | no |
 |**Configuración global**| Parámetros que se aplican a todos los componentes del diagrama de Helm|||
 | `Nombre de cuenta de servicio`| Especifique el nombre de la [cuenta de servicio ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/ "Configurar cuentas de servicio para pods") que utilizará para ejecutar el pod. | predeterminado | no |
 
@@ -680,10 +689,12 @@ En la tabla siguiente se muestran los parámetros configurables de la plataforma
 | `Instalar igual` | Selecciónelo para instalar un igual|sin marcar | sí, si desea instalar un igual |
 | `Arquitectura del nodo trabajador de igual`| Seleccione la arquitectura de la plataforma de nube (AMD64 o S390x)| AMD64 | sí |
 | `Repositorio de imágenes de igual`| Ubicación del diagrama de Helm de igual. Este campo se rellena automáticamente con la vía de acceso instalada. Si utiliza Community Edition y no tiene acceso a Internet, debe coincidir con el directorio donde ha descargado la imagen de igual de Fabric. | ibmcom/ibp-fabric-peer | sí |
-| `Etiqueta de imagen de Docker de igual`|Valor de la etiqueta asociada con la imagen de igual |1.2.1, se rellena automáticamente con el valor correcto.|sí|
+| `Etiqueta de imagen de Docker de igual`|Valor de la etiqueta asociada con la imagen de igual |1.4.0, se rellena automáticamente con el valor correcto.|sí|
 | `Configuración de igual`|Puede personalizar la configuración del igual pegando su propio archivo de configuración
-`core.yaml` en este campo. Para ver un archivo `core.yaml` de ejemplo, consulte [la configuración de ejemplo de `core.yaml` ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://github.com/hyperledger/fabric/blob/release-1.2/sampleconfig/core.yaml "hyperledger/fabric/core.yaml") **Solo para usuarios avanzados**. |ninguno|no|
-| `Secreto de configuración de igual (obligatorio)`| Nombre del [Secreto de configuración de igual](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-config-file-ibp) que ha creado en {{site.data.keyword.cloud_notm}} Private.  |ninguno|sí|
+`core.yaml` en este campo. Para ver un archivo `core.yaml` de ejemplo, consulte la
+[configuración de ejemplo de `core.yaml`
+![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://github.com/hyperledger/fabric/blob/release-1.4/sampleconfig/core.yaml "hyperledger/fabric/core.yaml") Solo para usuarios avanzados. |ninguno|no|
+| `Secreto de configuración de igual (obligatorio)`| Nombre del [Secreto de configuración de igual](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-config-file-ibp) que ha creado en {{site.data.keyword.cloud_notm}} Private. | ninguno | sí |
 |`MSP de organización (obligatorio)`|Este valor se puede encontrar en el Supervisor de red (interfaz de usuario del Plan inicial y del Plan empresarial) pulsando "Configuración de igual remoto" en la pantalla Visión general.  |ninguno|sí|
 |`Tipo de servicio de igual`| Se utiliza para especificar si los [puertos externos deben estar expuestos ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types "Servicios de publicación - tipos de servicios") en el igual. Seleccione NodePort para exponer los puertos externamente (recomendado), y ClusterIP para no exponer los puertos. LoadBalancer y ExternalName no se admiten en este release. | NodePort |sí|
 | `Base de datos de estado`| La [base de datos de estado](/docs/services/blockchain/glossary.html#glossary-state-database) utilizada para almacenar el libro mayor del canal. El igual tiene que utilizar la misma base de datos que la [red blockchain](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-network-preferences). | LevelDB | sí |
@@ -707,6 +718,14 @@ En la tabla siguiente se muestran los parámetros configurables de la plataforma
 | `Tamaño de reclamación de volumen de base de datos de estado`| Elija el tamaño de disco a utilizar. | 8 Gi | sí |
 | `CouchDB - Persistencia de datos habilitada`| Para el contenedor de CouchDB, los datos del libro mayor estarán disponibles cuando se reinicie el contenedor. *Si no está marcada esta opción, se perderán todos los datos en el caso de una migración tras error o de un reinicio del pod.*| marcada | no |
 | `CouchDB - Utilizar suministro dinámico`| Para el contenedor de CouchDB, utilizar el almacenamiento dinámico de Kubernetes.| marcada | no |
+| `Solicitud de CPU de Docker-in-Docker`| Especifique el número mínimo de CPU a asignar al contenedor donde se ejecuta el código de encadenamiento. | 1 | sí |
+| `Límite de CPU de Docker-in-Docker`| Especifique el número máximo de CPU a asignar al contenedor donde se ejecuta el código de encadenamiento. | 2 | sí |
+| `Solicitud de memoria de Docker-in-Docker`| Especifique la cantidad mínima de memoria a asignar al contenedor donde se ejecuta el código de encadenamiento. | 1Gi | sí |
+| `Límite de memoria de Docker-in-Docker`| Especifique la cantidad máxima de memoria a asignar al contenedor donde se ejecuta el código de encadenamiento. | 4 Gi | sí |
+| `Solicitud de CPU de proxy web gRPC`| Especifique el número mínimo de CPU en milicpus (m) a asignar al proxy web gRPC. | 100m | sí |
+| `Límite de CPU de proxy web gRPC`| Especifique el número máximo de CPU en milicpus (m) a asignar al proxy web gRPC. | 200m | sí |
+| `Solicitud de memoria de proxy web gRPC`| Especifique la cantidad mínima de memoria a asignar al proxy web gRPC. | 100Mi | sí |
+| `Límite de memoria de proxy web gRPC`| Especifique la cantidad máxima de memoria a asignar al proxy web gRPC. | 200Mi | sí |
 | `Solicitud de CPU del igual` | Número mínimo de CPU que se asignarán al igual. | 1 | sí |
 | `Límite de CPU del igual` | Número máximo de CPU que se asignarán al igual.| 2 | sí |
 | `Solicitud de memoria del igual` | Cantidad mínima de memoria que se asignará al igual. | 1Gi | sí |
@@ -735,7 +754,7 @@ processes. This container has two volume mounts, one for the Peer PVC and the se
 
 Como alternativa, puede utilizar la CLI de Helm para instalar el release de Helm. Antes de ejecutar el mandato `helm install`, asegúrese de
 [añadir el repositorio de Helm del clúster al entorno de CLI de Helm
-![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_int_helm_repo_to_cli.html "Adición del repositorio interno de Helm a la CLI de Helm").
+![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/app_center/add_int_helm_repo_to_cli.html "Adición del repositorio interno de Helm a la CLI de Helm").
 
 Puede establecer los parámetros necesarios para la instalación creando un archivo
 `yaml` y pasándolo al mandato `helm install` siguiente.

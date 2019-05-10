@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-18"
 
 subcollection: blockchain
 
@@ -20,8 +20,10 @@ subcollection: blockchain
 # Acerca de {{site.data.keyword.blockchainfull_notm}} Platform gratuita 2.0 beta
 {: #ibp-console-overview}
 
-La versión {{site.data.keyword.blockchainfull_notm}} Platform gratuita 2.0 beta constituye la próxima generación de ofertas de {{site.data.keyword.blockchainfull_notm}} Platform, que le ofrecen un control total sobre sus despliegues y certificados. Esta versión gratuita beta incluye la nueva consola de {{site.data.keyword.blockchainfull_notm}} Platform, una interfaz de usuario que puede simplificar y acelerar el proceso de despliegue de componentes en un servicio Kubernetes de {{site.data.keyword.cloud_notm}} gestionado y controlado por usted.
+La versión {{site.data.keyword.blockchainfull}} Platform gratuita 2.0 beta constituye la próxima generación de ofertas de {{site.data.keyword.blockchainfull_notm}} Platform, que le ofrecen un control total sobre sus despliegues y claves públicas y privadas. Esta versión gratuita beta incluye la nueva consola de {{site.data.keyword.blockchainfull_notm}} Platform, una interfaz de usuario que puede simplificar y acelerar el proceso de despliegue de componentes en un servicio Kubernetes de {{site.data.keyword.cloud_notm}} gestionado y controlado por usted. Para obtener más información sobre Kubernetes y {{site.data.keyword.cloud_notm}} Kubernetes Service, consulte [Kubernetes](/docs/services/blockchain/reference/k8s.html "Kubernetes").
 {:shortdesc}
+
+La versión {{site.data.keyword.blockchainfull_notm}} Platform gratuita 2.0 beta se ha actualizado al código base Hyperledger Fabric 1.4.0. Para obtener más información sobre las nuevas características de Hyperledger Fabric 1.4.0, consulte [Novedades de 1.4 ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/whatsnew.html "Novedades de Fabric 1.4"){:new_window}.
 
 ## Lo que ofrece la nueva versión beta
 {: #ibp-console-overview-capabilities}
@@ -37,13 +39,15 @@ La versión {{site.data.keyword.blockchainfull_notm}} Platform gratuita 2.0 beta
   - [Recopilaciones de **datos privados**](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-private-data) que mejoran la privacidad de los datos al garantizar que los datos del libro mayor solo se comparten entre iguales autorizados mediante el protocolo gossip.
   - [Service Discovery ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/discovery-overview.html "Service Discovery"), que le permite descubrir y actualizar de forma dinámica la forma en que la aplicación interactúa con la red.
   - [Listas de control de accesos a canal ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/access_control.html "Listas de control de accesos") que le ofrecen un control adicional sobre los canales y los contratos inteligentes.
-- **Integración del servicio {{site.data.keyword.cloud_notm}}.** Aproveche los servicios integrados de {{site.data.keyword.cloud_notm}}, como el panel de control del servicio Kubernetes de {{site.data.keyword.cloud_notm}}, el servicio de registro y métricas de {{site.data.keyword.cloud_notm}} e {{site.data.keyword.cloud_notm}} Identity Service.
+- **Integración del servicio {{site.data.keyword.cloud_notm}}.** Aproveche los servicios incorporados en
+{{site.data.keyword.cloud_notm}}, como el panel de control del servicio {{site.data.keyword.cloud_notm}} Kubernetes,
+{{site.data.keyword.IBM_notm}} Log Analysis con LogDNA e {{site.data.keyword.cloud_notm}} Identity and Access Management (IAM).
 
 **Control total de sus despliegues**
 - **Despliegue solo los componentes que necesite**. Conecte un igual a varios canales y redes, o aloje un servicio de ordenación al que pueden conectarse los socios de la empresa.
 - **Mantenga un control completo de sus identidades**. Almacene y gestione las claves que se utilizan para administrar los nodos sin almacenar las claves privadas en {{site.data.keyword.cloud_notm}}.
-- **Operación centralizada** La consola de {{site.data.keyword.blockchainfull_notm}} Platform le permite desplegar y gestionar todas las organizaciones y nodos en **una consola central** sin tener que depender de {{site.data.keyword.IBM_notm}} ni de otros proveedores para gestionar los clasificadores o la entidad emisora de certificados. También puede añadir o eliminar miembros de un consorcio de blockchain, crear y unir canales e instalar y crear instancias de contratos inteligentes desde la consola.
-- **Aloje o únase a una red** Despliegue iguales alojados en el clúster en varios canales en varias nubes, o invite a otras organizaciones a unirse a su consorcio o canales mientras las organizaciones gestionan sus nodos de forma independiente entre infraestructuras.
+- **Operación centralizada**. La consola de {{site.data.keyword.blockchainfull_notm}} Platform le permite desplegar y gestionar todas las organizaciones y nodos en **una consola central** sin tener que depender de {{site.data.keyword.IBM_notm}} ni de otros proveedores para gestionar los clasificadores o la entidad emisora de certificados. También puede añadir o eliminar miembros de un consorcio de blockchain, crear y unir canales e instalar y crear instancias de contratos inteligentes desde la consola.
+- **Aloje o únase a una red**. Despliegue iguales alojados en el clúster en varios canales en varias nubes, o invite a otras organizaciones a unirse a su consorcio o canales mientras las organizaciones gestionan sus nodos de forma independiente entre infraestructuras.
 - **Gestione el acceso** de los usuarios que pueden administrar o supervisar los nodos.
 - **Acceso directo a los registros** de los nodos desde el servicio Kubernetes de {{site.data.keyword.IBM_notm}}. Utilice el servicio {{site.data.keyword.cloud_notm}} Log Analysis o un servicio de terceros para extraer y analizar los registros.
 - **Interactúe directamente con los pods de su nodo** mediante el panel de control de Kubernetes. Emita mandatos exec en los pods y contenedores para ejecutar mandatos y actualizar certificados desde la línea de mandatos.
@@ -62,7 +66,7 @@ Esta oferta es para usuarios experimentados de Fabric que deseen crear y gestion
 
 Antes de desplegar la consola, asegúrese de que comprende las consideraciones siguientes:
 
-- {{site.data.keyword.blockchainfull_notm}} Platform gratuita 2.0 beta se basa en Hyperledger Fabric v1.4.
+- {{site.data.keyword.blockchainfull_notm}} Platform gratuita 2.0 beta se basa en Hyperledger Fabric v1.4.0.
 - Todos los iguales desplegados con la versión beta 2.0 gratuita utilizan CouchDB como base de datos de estado.
 - Tiene la opción de utilizar un clúster de Kubernetes gratuito para la evaluación de la oferta beta; sin embargo, la capacidad y el rendimiento están limitados, no se pueden migrar datos y el clúster se suprime después de 30 días.
 - El usuario es responsable de gestionar la supervisión del estado, la seguridad y el registro del clúster de Kubernetes. Consulte esta [información ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://cloud.ibm.com/docs/containers/cs_responsibilities.html#your-responsibilities-by-using-ibm-cloud-kubernetes-service "Responsabilidades de gestión del clúster") para ver detalles sobre lo que gestiona {{site.data.keyword.cloud_notm}} y sobre cuáles son sus responsabilidades.
@@ -77,9 +81,7 @@ Antes de desplegar la consola, asegúrese de que comprende las consideraciones s
 
 No puede migrar desde cualquier oferta de la plataforma {{site.data.keyword.blockchainfull_notm}} a {{site.data.keyword.blockchainfull_notm}} Platform gratuita 2.0 **beta**.  
 
-En el futuro, podrá migrar de un release del Plan empresarial a {{site.data.keyword.blockchainfull_notm}} Platform 2.0 cuando esté disponible a nivel general (GA).   
-
-Las instancias de servicio de {{site.data.keyword.blockchainfull_notm}} Platform gratuita 2.0 beta no se migrarán a la versión GA y las instancias del Plan inicial no se puede migrar a versión GA 2.0.
+Las instancias de servicio de {{site.data.keyword.blockchainfull_notm}} Platform gratuita 2.0 beta no se migrarán a la versión GA, y tampoco las instancias del Plan inicial o empresarial se pueden migrar a la versión 2.0 GA.
 
 ## Licencias y precios
 {: #ibp-console-overview-license-and-pricing}
@@ -122,7 +124,7 @@ Observe cómo se crea una única instancia de la consola, también conocida como
 
 El almacenamiento multizona debe estar habilitado en el clúster Kubernetes de IBM Cloud de pago si necesita HA y DR. Hay varias [opciones de almacenamiento de Kubernetes](https://cloud.ibm.com/docs/containers/cs_storage_planning.html#persistent_storage_overview) disponibles. Próximamente IBM Cloud dará soporte a la solución de almacenamiento Portworx, que es la solución recomendada. Hasta entonces, si se necesitan HA y DR para una implementación, es necesario traer su propia solución de almacenamiento.  
 
-Para añadir su propia solución de almacenamiento, tendrá que crear una clase de almacenamiento personalizada. Consulte cómo [añadir una clase de almacenamiento](https://cloud.ibm.com/docs/containers/cs_storage_basics.html#storageclasses) para la solución. IBP utiliza el [suministro de volumen dinámico](https://cloud.ibm.com/docs/containers/cs_storage_basics.html#dynamic_provisioning) con la clase de almacenamiento `predeterminada`. Por lo tanto, para cambiar la clase de almacenamiento predeterminada, ejecute el mandato siguiente:
+Para añadir su propia solución de almacenamiento, tendrá que crear una clase de almacenamiento personalizada. Consulte cómo [añadir una clase de almacenamiento](https://cloud.ibm.com/docs/containers/cs_storage_basics.html#storageclasses) para la solución. {{site.data.keyword.blockchainfull_notm}} Platform utiliza el [suministro de volumen dinámico](https://cloud.ibm.com/docs/containers/cs_storage_basics.html#dynamic_provisioning) con la clase de almacenamiento `predeterminada`. Por lo tanto, para cambiar la clase de almacenamiento predeterminada, ejecute el mandato siguiente:
 ```
 kubectl patch storageclass <storageclass> -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
 ```

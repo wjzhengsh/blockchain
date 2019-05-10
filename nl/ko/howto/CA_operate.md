@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -112,7 +112,7 @@ subcollection: blockchain
 ### 인증 기관 URL 검색
 {: #ca-operate-url}
 
-인증서를 생성하거나 새 ID로 등록하는 요청의 경우 CA URL을 대상으로 지정해야 합니다. {{site.data.keyword.cloud_notm}} Private 콘솔 UI를 사용하여 CA URL을 찾을 수 있습니다. 다음 단계를 완료하려면 [클러스터 관리자 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "클러스터 관리자 역할 및 조치")여야 합니다.
+인증서를 생성하거나 새 ID로 등록하는 요청의 경우 CA URL을 대상으로 지정해야 합니다. {{site.data.keyword.cloud_notm}} Private 콘솔 UI를 사용하여 CA URL을 찾을 수 있습니다. 다음 단계를 완료하려면 [클러스터 관리자 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/user_management/assign_role.html "클러스터 관리자 역할 및 조치")여야 합니다.
 
 1. {{site.data.keyword.cloud_notm}} Private 콘솔에 로그인한 후 왼쪽 상단 구석에 있는 **메뉴** 아이콘을 클릭하십시오.
 2. **워크로드** > **Helm 릴리스**를 클릭하십시오.
@@ -153,12 +153,12 @@ subcollection: blockchain
 
 Fabric CA 클라이언트를 사용하여 CA를 작동시킬 수 있습니다. 다음 지시사항에서는 Fabric CA 클라이언트를 사용하여 조직에 속한 다른 컴포넌트의 ID를 등록하는 방법에 대해 설명합니다. Fabric SDK를 사용하여 전제조건 단계를 완료할 수도 있습니다.
 
-1. [Fabric CA 클라이언트 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric-ca.readthedocs.io/en/latest/users-guide.html#fabric-ca-client "Fabric CA 클라이언트 다운로드")를 로컬 파일 시스템에 다운로드해야 합니다.
+1. [Fabric CA 클라이언트 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/users-guide.html#fabric-ca-client "Fabric CA 클라이언트 다운로드")를 로컬 파일 시스템에 다운로드해야 합니다.
 
-  Fabric CA 클라이언트를 얻는 가장 간단한 방법은 모든 Fabric 도구 바이너리를 직접 다운로드하는 것입니다. 명령행을 사용하여 바이너리를 다운로드하려는 디렉토리로 이동한 후 다음 [Curl ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/prereqs.html#install-curl "Curl") 명령을 실행하여 페치하십시오.
+  Fabric CA 클라이언트를 얻는 가장 간단한 방법은 모든 Fabric 도구 바이너리를 직접 다운로드하는 것입니다. 명령행을 사용하여 바이너리를 다운로드하려는 디렉토리로 이동한 후 다음 [Curl ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/prereqs.html#install-curl "Curl") 명령을 실행하여 페치하십시오.
 
   ```
-  curl -sSL http://bit.ly/2ysbOFE | bash -s 1.2.1 1.2.1 -d -s
+  curl -sSL http://bit.ly/2ysbOFE | bash -s 1.4.0 1.4.0 -d -s
   ```
   {:codeblock}
 
@@ -225,7 +225,7 @@ CA를 사용하여 컴포넌트 또는 클라이언트 애플리케이션을 배
   ```
   {:codeblock}
 
-  `<enroll_id>` 및 `<enroll_password>`는 인증 기관을 배치했을 때 Kubernetes 시크릿에 전달한 [CA 관리자 및 비밀번호](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-admin-secret)입니다. `<ca_url_with_port>` 내부에 [CA URL](/docs/services/blockchain/howto/CA_operate.html#ca-operate-url)을 삽입하십시오. 시작 부분에 `http://`를 포함하지 않아야 합니다. `<ca_name>은 CA를 배치할 때 `CA Name` 필드에 제공한 값입니다.
+  명령의 `<enroll_id>` 및 `<enroll_password>`는 인증 기관을 배치했을 때 Kubernetes 시크릿에 전달한 [CA 관리자 및 비밀번호](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-admin-secret)입니다. `<ca_url_with_port>` 내부에 [CA URL](/docs/services/blockchain/howto/CA_operate.html#ca-operate-url)을 삽입하십시오. 시작 부분에 `http://`를 포함하지 않아야 합니다. `<ca_name>`은 CA를 배치할 때 `CA Name` 필드에 제공한 값입니다.
 
   `<ca_tls_cert_path>`는 [CA TLS 인증서](/docs/services/blockchain/howto/CA_operate.html#ca-operate-tls)에 대한 전체 경로입니다.
 
@@ -257,6 +257,8 @@ tree
 │   └── msp
 │       ├── cacerts
 │       │   └── 9-30-250-70-30395-SampleOrgCA.pem
+│       ├── IssuerPublicKey
+│       ├── IssuerRevocationPublicKey
 │       ├── keystore
 │       │   └── 2a97952445b38a6e0a14db134645981b74a3f93992d9ddac54cb4b4e19cdf525_sk
 │       ├── signcerts
@@ -274,7 +276,7 @@ tree
 다음 지시사항은 편집하여 로컬 파일 시스템에 저장할 수 있는 [템플리트 JSON 구성 파일](/docs/services/blockchain/howto/CA_operate.html#ca-operate-config-file-template)을 제공하며 이 파일을 완성하기 위해 CA를 사용하는 방법에 대해 설명합니다.
 
 - {{site.data.keyword.cloud_notm}} Private에 순서 지정자를 배치하거나 {{site.data.keyword.cloud_notm}} Private에서 호스팅되는 컨소시엄에 연결할 피어를 배치하는 경우 아래의 지시사항을 수행하십시오.
-- 스타터 플랜 또는 엔터프라이즈 플랜에 연결할 피어를 배치하려는 경우 [IBM Cloud Private에 스타터 플랜 또는 엔터프라이즈 플랜에 연결할 피어 배치](/docs/services/blockchain/howto/peer_deploy_icp.html#icp-peer-deploy)의 지시사항을 대신 수행하십시오. 이 단계는 {{site.data.keyword.blockchainfull_notm}} Platform에서 CA를 사용하여 {{site.data.keyword.cloud_notm}} Private에 피어를 배치하는 방법에 대해 설명합니다.
+- 스타터 플랜 또는 엔터프라이즈 플랜에 연결할 피어를 배치하려는 경우 [IBM Cloud Private에 스타터 플랜 또는 엔터프라이즈 플랜에 연결할 피어 배치](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy)의 지시사항을 대신 수행하십시오. 이 단계는 {{site.data.keyword.blockchainfull_notm}} Platform에서 CA를 사용하여 {{site.data.keyword.cloud_notm}} Private에 피어를 배치하는 방법에 대해 설명합니다.
 
 ### 구성 파일
 {: #ca-operate-config-file-template}
@@ -475,6 +477,8 @@ tree
 │   └── msp
 │       ├── cacerts
 │       │   └── 9-30-250-70-30395-SampleOrgCA.pem
+│       ├── IssuerPublicKey
+│       ├── IssuerRevocationPublicKey
 │       ├── keystore
 │       │   └── 2a97952445b38a6e0a14db134645981b74a3f93992d9ddac54cb4b4e19cdf525_sk
 │       ├── signcerts
@@ -505,6 +509,8 @@ tree
     └── msp
         ├── cacerts
         │   └── 9-30-250-70-30395-tlsca.pem
+        ├── IssuerPublicKey
+        ├── IssuerRevocationPublicKey
         ├── keystore
         │   └── 45a7838b1a91ddfe3d4d22a5a7f2639b868493bcce594af3e3ceb9c07899d117_sk
         ├── signcerts
@@ -606,7 +612,7 @@ fabric-ca-client register --caname tlsca --id.affiliation org1.department1 --id.
 
 #### 클러스터 프록시 IP 주소의 값 찾기
 
-순서 지정자 또는 피어를 CA를 배치한 것과 동일한 {{site.data.keyword.cloud_notm}} Private 클러스터에 배치하려는 경우 순서 지정자 또는 피어를 배치할 {{site.data.keyword.cloud_notm}} Private 클러스터에 [클러스터 관리자 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "클러스터 관리자 역할 및 조치") 역할이 있는지 확인하십시오. 그런 다음 [CA를 구성](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-configuration-parms)할 때 사용한 것과 동일한 프록시 IP를 입력하십시오. 순서 지정자 또는 피어를 다른 클러스터에 배치하려는 경우 다음 단계를 완료하여 {{site.data.keyword.cloud_notm}} Private 콘솔에서 클러스터 프록시 IP 주소의 값을 검색할 수 있습니다.
+순서 지정자 또는 피어를 CA를 배치한 것과 동일한 {{site.data.keyword.cloud_notm}} Private 클러스터에 배치하려는 경우 순서 지정자 또는 피어를 배치할 {{site.data.keyword.cloud_notm}} Private 클러스터에 [클러스터 관리자 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/user_management/assign_role.html "클러스터 관리자 역할 및 조치") 역할이 있는지 확인하십시오. 그런 다음 [CA를 구성](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-configuration-parms)할 때 사용한 것과 동일한 프록시 IP를 입력하십시오. 순서 지정자 또는 피어를 다른 클러스터에 배치하려는 경우 다음 단계를 완료하여 {{site.data.keyword.cloud_notm}} Private 콘솔에서 클러스터 프록시 IP 주소의 값을 검색할 수 있습니다.
 
 1. {{site.data.keyword.cloud_notm}} Private 콘솔에 로그인하십시오. 왼쪽 탐색 패널에서 **플랫폼**, **노드**를 차례로 클릭하여 클러스터에 정의되어 있는 노드를 표시하십시오.
 2. 역할이 `proxy`인 노드를 클릭한 후 테이블에서 `Host IP`의 값을 복사하십시오.
@@ -696,7 +702,7 @@ fabric-ca-client register --caname tlsca --id.affiliation org1.department1 --id.
 ## MSP(Membership Service Provider)
 {: #ca-operate-msp}
 
-{{site.data.keyword.blockchainfull_notm}} Platform의 컴포넌트에서는 MSP(Membership Services Provider)를 통해 ID를 이용합니다. MSP는 CA에서 발행하는 인증서를 권한 및 역할과 연관시킵니다. MSP에 대한 자세한 정보는 [Hyperledger Fabric 문서의 멤버십 주제 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/latest/membership/membership.html "Hyperledger Fabric 문서의 멤버십 주제")를 참조하십시오.
+{{site.data.keyword.blockchainfull_notm}} Platform의 컴포넌트에서는 MSP(Membership Services Provider)를 통해 ID를 이용합니다. MSP는 CA에서 발행하는 인증서를 권한 및 역할과 연관시킵니다. MSP에 대한 자세한 정보는 [Hyperledger Fabric 문서의 멤버십 주제 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/membership/membership.html "Hyperledger Fabric 문서의 멤버십 주제")를 참조하십시오.
 
 MSP 폴더에는 Fabric 컴포넌트에서 사용할 구조가 정의되어 있어야 합니다. Fabric CA 클라이언트는 다음과 같은 MSP 폴더를 작성하여 이 구조를 설정합니다.
 
@@ -715,7 +721,7 @@ MSP 폴더에는 Fabric 컴포넌트에서 사용할 구조가 정의되어 있�
 - **admincerts:** 이 폴더에는 이 조직이나 컴포넌트의 관리자 목록이 들어 있습니다. 명령행 또는 SDK에서 원격 피어를 작동시키는 경우 이 폴더에 signCert를 업로드해야 합니다. Fabric CA 클라이언트를 사용하는 경우 관리자 인증서로 인식되는 해당 signCert가 포함된 MSP에 admincerts 폴더도 있어야 합니다.
 - **tls:** 다른 네트워크 컴포넌트와 통신하는 데 사용하는 TLS 인증서를 저장하는 폴더입니다.
 
-MSP의 구조에 관한 자세한 정보는 Hyperledger Fabric 문서에서 [멤버십 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/latest/membership/membership.html "멤버십") 및 [Membership Service Providers ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/latest/msp.html "Membership Service Providers")를 참조하십시오.
+MSP의 구조에 관한 자세한 정보는 Hyperledger Fabric 문서에서 [멤버십 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/membership/membership.html "멤버십") 및 [Membership Service Providers ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/msp.html "Membership Service Providers")를 참조하십시오.
 
 
 ## CA 로그 보기
@@ -739,14 +745,14 @@ MSP의 구조에 관한 자세한 정보는 Hyperledger Fabric 문서에서 [멤
 
    `kubectl logs` 명령에 대한 자세한 정보는 [Kubernetes 문서 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs “Getting Started”)를 참조하십시오.
 
-- 또는 Kibana에서 로그를 여는 [{{site.data.keyword.cloud_notm}}Private 클러스터 관리 콘솔](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/troubleshoot/events.html)을 사용하여 배치 이벤트 및 로그에 액세스할 수 있습니다.
+- 또는 Kibana에서 로그를 여는 [{{site.data.keyword.cloud_notm}}Private 클러스터 관리 콘솔](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/troubleshoot/events.html)을 사용하여 배치 이벤트 및 로그에 액세스할 수 있습니다.
 
   **참고:** Kibana에서 로그인이 표시되면 `No results found`의 응답을 수신할 수 있습니다. 이 상태는 {{site.data.keyword.cloud_notm}} Private이 호스트 이름으로 작업자 노드 IP 주소를 사용하는 경우 발생할 수 있습니다. 이 문제점을 해결하려면 패널 상단에서 `node.hostname.keyword`로 시작하는 필터를 제거하십시오. 그런 다음 로그가 표시됩니다.
 
 ## 보안
 {: #ca-operate-security}
 
-추가 보안을 보장하고 CA 키 자료의 손상을 방지하기 위해 제한된 수의 인증서(예: Node.js 서버, 클라이언트 애플리케이션)가 발행된 경우에만 CA를 오프라인으로 유지할 수 있습니다. 그러나 요청 시 사용자에게 인증서를 발행해야 하는 경우에는 CA가 온라인 상태여야 합니다. 가능하면 [HSM](https://console.test.cloud.ibm.com/docs/services/blockchain/glossary.html#glossary-hsm)을 사용하여 CA 관리자 개인 키를 보안 설정할 것을 적극 권장합니다. 
+추가 보안을 보장하고 CA 키 자료의 손상을 방지하기 위해 제한된 수의 인증서(예: Node.js 서버, 클라이언트 애플리케이션)가 발행된 경우에만 CA를 오프라인으로 유지할 수 있습니다. 그러나 요청 시 사용자에게 인증서를 발행해야 하는 경우에는 CA가 온라인 상태여야 합니다. 가능하면 [HSM](https://console.test.cloud.ibm.com/docs/services/blockchain/glossary.html#glossary-hsm)을 사용하여 CA 관리자 개인 키를 보안 설정할 것을 적극 권장합니다.
 
 ## 문제점 해결
 {: #ca-operate-troubleshooting}

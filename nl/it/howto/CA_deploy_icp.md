@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -20,7 +20,7 @@ subcollection: blockchain
 # Distribuzione di una CA (Certificate Authority) su {{site.data.keyword.cloud_notm}} Private
 {: #ca-deploy}
 
-Dopo aver importato il grafico Helm di {{site.data.keyword.blockchainfull}} Platform on {{site.data.keyword.cloud_notm}} Private, puoi distribuire i singoli componenti. La CA (Certificate Authority) è la radice di attendibilità per la tua organizzazione e ti consente di generare le credenziali per altri componenti che vorrai distribuire. Di conseguenza, devi distribuire una CA prima di distribuire altri componenti. Ogni organizzazione in una rete blockchain a più cloud deve distribuire la propria CA.  Per ulteriori informazioni sulle CA e sul loro ruolo in una rete blockchain, consulta [Autorità di certificazione (CA, Certificate Authority)](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview-ca).
+Dopo aver importato il grafico Helm di {{site.data.keyword.blockchainfull}} Platform for {{site.data.keyword.cloud_notm}} Private, puoi distribuire i singoli componenti. La CA (Certificate Authority) è la radice di attendibilità per la tua organizzazione e ti consente di generare le credenziali per altri componenti che vorrai distribuire. Di conseguenza, devi distribuire una CA prima di distribuire altri componenti. Ogni organizzazione in una rete blockchain a più cloud deve distribuire la propria CA.  Per ulteriori informazioni sulle CA e sul loro ruolo in una rete blockchain, consulta [Autorità di certificazione (CA, Certificate Authority)](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview-ca).
 {:shortdesc}
 
 Prima di distribuire una CA (Certificate Authority), esamina [Considerazioni e limitazioni](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-about-considerations).
@@ -37,7 +37,7 @@ Assicurati che il tuo cluster {{site.data.keyword.cloud_notm}} Private soddisfi 
 **Note:**
 - Una CPU virtuale è un core virtuale assegnato a una macchina virtuale o un core di processore fisico se il server non è partizionato per le macchine virtuali. Devi considerare i requisiti di CPU virtuale quando decidi il VPC (virtual processor core) per la tua distribuzione in {{site.data.keyword.cloud_notm}} Private. VPC è un'unità di misura per determinare il costo di licenza dei prodotti IBM. Per ulteriori informazioni sugli scenari per decidere VPC, vedi [Virtual processor core (VPC) ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/en/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_virtual_processor_core_licenses.html "Virtual Processor Core").
 - Il requisito di archiviazione dei dati dipende da quante identità e certificati vengono archiviati. L'archiviazione della CA non è pesante come per l'archiviazione peer e ordinante, ma dipenderà dal caso di utilizzo. Più sono gli utenti e maggiore è l'archiviazione di cui si ha bisogno.
-- Questi livelli minimi di risorse sono sufficienti per l'esecuzione di test e la sperimentazione. Per un ambiente con un grande numero di transazioni, è importante assegnare una quantità sufficientemente grande di archiviazione alla tua CA. La quantità di archiviazione da utilizzare dipenderà dal numero di transazioni e dal numero di firme richiesti dalla tua rete. Se esaurisci l'archiviazione sulla tua CA, devi distribuire una nuova CA con un file system più grande e consentirgli di eseguire la sincronizzazione tramite le tue altre CA sugli stessi canali.
+- Questi livelli minimi di risorse sono sufficienti per l'esecuzione di test e la sperimentazione. Per un ambiente con un grande numero di transazioni, è importante allocare una quantità sufficientemente grande di archiviazione alla tua CA. La quantità di archiviazione da utilizzare dipenderà dal numero di transazioni e dal numero di firme richiesti dalla tua rete. Se esaurisci l'archiviazione sulla tua CA, devi distribuire una nuova CA con un file system più grande e consentirgli di eseguire la sincronizzazione tramite le tue altre CA sugli stessi canali.
 
 ## Archiviazione
 {: #ca-deploy-storage}
@@ -55,9 +55,9 @@ Se non utilizzi il provisioning dinamico, devono essere creati e configurati dei
 
 1. Prima di poter installare una CA su {{site.data.keyword.cloud_notm}} Private, devi [installare {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/ICP_setup.html#icp-setup) e [installare il grafico Helm di {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/howto/helm_install_icp.html#helm-install).
 
-2. Se utilizzi la Community Edition e vuoi eseguire questo grafico Helm su un cluster {{site.data.keyword.cloud_notm}} Private senza la connettività Internet, devi creare degli archivi su una macchina connessa a Internet prima di poter installare gli archivi sul tuo cluster {{site.data.keyword.cloud_notm}} Private. Per ulteriori informazioni, consulta [Adding featured applications to clusters without Internet connectivity ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_package_offline.html "Adding featured applications to clusters without Internet connectivity"){:new_window}. Tieni presente che puoi trovare il file della specifica manifest.yaml in ibm-blockchain-platform-dev/ibm_cloud_pak nel grafico Helm.
+2. Se utilizzi la Community Edition e vuoi eseguire questo grafico Helm su un cluster {{site.data.keyword.cloud_notm}} Private senza la connettività Internet, devi creare degli archivi su una macchina connessa a Internet prima di poter installare gli archivi sul tuo cluster {{site.data.keyword.cloud_notm}} Private. Per ulteriori informazioni, consulta [Adding featured applications to clusters without Internet connectivity ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/app_center/add_package_offline.html "Adding featured applications to clusters without Internet connectivity"){:new_window}. Tieni presente che puoi trovare il file della specifica manifest.yaml in ibm-blockchain-platform-dev/ibm_cloud_pak nel grafico Helm.
 
-3. Richiama il valore dell'indirizzo IP proxy del cluster dalla console {{site.data.keyword.cloud_notm}} Private. **Nota:** dovrai essere un [Amministratore del cluster ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Cluster administrator roles and actions") per accedere al tuo IP proxy. Accedi al cluster {{site.data.keyword.cloud_notm}} Private. Nel pannello di navigazione di sinistra, fai clic su **Piattaforma** e quindi su **Nodi** per visualizzare i nodi definiti nel cluster. Fai clic sul nodo con il ruolo `proxy` e copia il valore dell'`IP host` dalla tabella.
+3. Richiama il valore dell'indirizzo IP proxy del cluster dalla console {{site.data.keyword.cloud_notm}} Private. **Nota:** dovrai essere un [Amministratore del cluster ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/user_management/assign_role.html "Cluster administrator roles and actions") per accedere al tuo IP proxy. Accedi al cluster {{site.data.keyword.cloud_notm}} Private. Nel pannello di navigazione di sinistra, fai clic su **Piattaforma** e quindi su **Nodi** per visualizzare i nodi definiti nel cluster. Fai clic sul nodo con il ruolo `proxy` e copia il valore dell'`IP host` dalla tabella.
 
   Salva questo valore perché lo utilizzerai quando configuri il campo `Proxy IP` del grafico Helm.
   {:important}
@@ -128,9 +128,11 @@ La seguente tabella elenca i parametri configurabili di {{site.data.keyword.bloc
 
 |  Parametro     | Descrizione    | Valore predefinito  | Obbligatorio |
 | --------------|-----------------|-------|------- |
+|**Parametri generali**| Parametri che configurano il grafico Helm | | |
 | `Helm release name`| Il nome della tua release Helm. Deve iniziare con una lettera minuscola e terminare con un qualsiasi carattere alfanumerico, deve contenere solo trattini e caratteri alfanumerici minuscoli. Devi utilizzare un nome della release Helm univoco ogni volta che tenti di installare un componente. | nessuno | sì |
 | `Target namespace`| Scegli lo spazio dei nomi Kubernetes per installare il grafico Helm. | nessuno | sì |
-|**Configurazione globale**| Parametri che si applicano a tutti i componenti nel grafico Helm.|||
+| `Target namespace policies`| Visualizza le politiche di sicurezza del pod dello spazio dei nomi scelto, che devono includere una politica **`ibm-privileged-psp`**. Altrimenti, [associa una politica di sicurezza del pod](/docs/services/blockchain?topic=blockchain-icp-setup#icp-setup-psp) al tuo spazio dei nomi. | nessuno | no |
+|**Configurazione globale**| Parametri che si applicano a tutti i componenti nel grafico Helm | | |
 | `Service account name`| Immetti il nome dell'[account del servizio ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/ "Configure Service Accounts for Pods") che utilizzerai per eseguire il pod. | valore predefinito | no |
 
 #### Parametri di configurazione CA
@@ -151,22 +153,24 @@ La seguente tabella elenca i parametri configurabili di {{site.data.keyword.bloc
 | `CA storage access mode`| Specifica la [modalità di accesso ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes "Modalità di accesso") all'archiviazione per la PVC. | ReadWriteMany | sì |
 | `CA volume claim size`| Scegli la dimensione del disco da utilizzare. | 2Gi | sì |
 | `CA image repository`| Ubicazione del grafico Helm CA. | ibmcom/ibp-fabric-ca | sì |
-| `CA Docker image tag`| Il valore della tag associata all'immagine CA. Questo campo viene automaticamente compilato con la versione dell'immagine. Non modificarlo.| 1.2.1 | sì |
+| `CA Docker image tag`| Il valore della tag associata all'immagine CA. Questo campo viene automaticamente compilato con la versione dell'immagine. | 1.4.0 | sì |
+| `CA Init Docker image repository`| Ubicazione dell'immagine CA Init Docker. Questo campo viene automaticamente compilato con l'ubicazione dell'immagine. | ibmcom/ibp-init | sì |
+| `CA Init Docker image tag`| Il valore della tag associata all'immagine CA Init Docker. Questo campo viene automaticamente compilato con la versione dell'immagine. | 1.4.0 | sì |
 | `CA service type` | Utilizzato per specificare se le [porte esterne devono essere esposte ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types) sul peer. Seleziona NodePort per esporre le porte esternamente (consigliato) e ClusterIP per non esporle. LoadBalancer e ExternalName non sono supportati in questa release | NodePort | sì |
 | `CA secret (Required)`| Immetti il nome dell'oggetto segreto Kubernetes che hai creato per i tuoi `ca-admin-name` e `ca-admin-password`. | nessuno | sì |
-| `CA CPU request`| Specifica il numero minimo di CPU da assegnare alla CA. | 1 | sì |
-| `CA CPU limit`| Specifica il numero massimo di CPU da assegnare alla CA. | 2 | sì |
-| `CA memory request`| Specifica la quantità minima di memoria da assegnare alla CA. | 1Gi | sì |
-| `CA memory limit`| Specifica la quantità massima di memoria da assegnare alla CA. | 4 Gi | sì |
+| `CA CPU request`| Specifica il numero minimo di CPU da allocare alla CA. | 1 | sì |
+| `CA CPU limit`| Specifica il numero massimo di CPU da allocare alla CA. | 2 | sì |
+| `CA memory request`| Specifica la quantità minima di memoria da allocare alla CA. | 1Gi | sì |
+| `CA memory limit`| Specifica la quantità massima di memoria da allocare alla CA. | 4 Gi | sì |
 | `CA TLS instance name`| Specifica un nome dell'istanza TLS CA che sarà utilizzato per iscrivere un ordinante o un peer. | tlsca | sì |
 | `CSR common name`| Specifica il nome comune (CN) che sarà presentato dal certificato root CA generato quando viene contattato. | tlsca-common | sì |
-| `Proxy IP`| Immetti l'[IP del nodo proxy per il cluster ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/installing/install_proxy.html "IBM Cloud Private installation behind an HTTP proxy") dove viene distribuita la CA. | 127.0.0.1 | sì |
+| `Proxy IP`| Immetti l'[IP del nodo proxy per il cluster ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/installing/install_proxy.html "IBM Cloud Private installation behind an HTTP proxy") dove viene distribuita la CA. | 127.0.0.1 | sì |
 
 
 ### Utilizzo della riga di comando Helm per installare la release Helm
 {: #ca-deploy-helm-cli}
 
-In alternativa, puoi utilizzare la CLI Helm per installare la release Helm. Prima di eseguire il comando `helm install`, assicurati di [aggiungere il repository Helm del tuo cluster all'ambiente CLI Helm ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_int_helm_repo_to_cli.html "Adding the internal Helm repository to Helm CLI").
+In alternativa, puoi utilizzare la CLI Helm per installare la release Helm. Prima di eseguire il comando `helm install`, assicurati di [aggiungere il repository Helm del tuo cluster all'ambiente CLI Helm ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/app_center/add_int_helm_repo_to_cli.html "Adding the internal Helm repository to Helm CLI").
 
 Puoi configurare i parametri necessari per l'installazione creando un file `yaml` e passandolo al seguente comando `helm install`.
 
@@ -203,7 +207,7 @@ Una volta che hai terminato il tuo lavoro con i parametri di configurazione, fai
 
 Se scorri in basso fino alla sezione `Note`, puoi trovare delle informazioni importanti che utilizzerai per [utilizzare la tua CA](/docs/services/blockchain/howto/CA_operate.html#ca-operate).
 
-Dopo aver installato la CA di {{site.data.keyword.blockchainfull_notm}} Platform in {{site.data.keyword.cloud_notm}} Private, viene creata una mappa di configurazione con le impostazioni delle variabili di ambiente predefinite. Successivamente puoi modificare o aggiungere delle variabili di ambiente per il server CA per configurarne il comportamento. Per ulteriori informazioni sui parametri di configurazione del server CA, consulta la [documentazione del server CA ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric-ca.readthedocs.io/en/latest/users-guide.html#fabric-ca-server "Fabric CA Server").
+Dopo aver installato la CA di {{site.data.keyword.blockchainfull_notm}} Platform in {{site.data.keyword.cloud_notm}} Private, viene creata una mappa di configurazione con le impostazioni delle variabili di ambiente predefinite. Successivamente puoi modificare o aggiungere delle variabili di ambiente per il server CA per configurarne il comportamento. Per ulteriori informazioni sui parametri di configurazione del server CA, consulta la [documentazione del server CA ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/users-guide.html#fabric-ca-server "Fabric CA Server").
 
 Dopo aver configurato la mappa di configurazione, devi riavviare il server CA prima che le modifiche diventino effettive. Per riavviare il server CA, puoi eliminare il POD del server CA Fabric. {{site.data.keyword.cloud_notm}} Private creerà un nuovo POD che riflette le modifiche.
 

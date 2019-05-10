@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018,2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-03"
 
 subcollection: blockchain
 
@@ -79,6 +79,27 @@ La **Figure 6** illustre le corps de la réponse de l'API, l'URL, et la commande
 
 ![Réponse d'API dans l'interface utilisateur Swagger](../images/swaggerUICurlResponse.png "Réponse d'API dans l'interface utilisateur Swagger")  
 *Figure 6. Réponse d'API*    
+
+## Désactivation de l'accès à l'API
+{: #ibp-swagger-turn-off}
+
+Par défaut, tous les utilisateurs ayant un rôle autre que Auditeur dans IBM Cloud, peuvent afficher et utiliser les **Données d'identification réseau** visibles dans le panneau des API Swagger et par conséquent gérer votre réseau à l'aide des API. Toutefois, si vous préférez ne pas exposer vos données d'identification réseau API Swagger dans l'interface utilisateur, vous pouvez copier et sécuriser votre valeurs de clé et de secret existantes et générer de nouvelles données d'identification qui ne sont pas valides pour utilisation avec les API Swagger. Un indicateur, nommé resetCredentials, est fourni pour vous permettre de contrôler l'accès en procédant comme suit :
+
+1. Suivez les étapes permettant de générer de nouvelles données d'identification réseau, comme décrit dans le [tableau de bord des données d'identification du service](/docs/services/blockchain/howto/create_join_network_with_apis.html#swagger-network-retrieve-id-token).
+2. Toutefois, dans la zone **Ajouter des paramètres de configuration en ligne**, collez la valeur suivante :
+   ```
+   {
+     "resetCredentials": true
+   }
+   ```
+   {:codeblock}
+3. Cliquez sur **Ajouter**.
+
+Désormais, lorsqu'un utilisateur accède au panneau des API Swagger depuis l'interface utilisateur, les informations relatives aux **données d'identification réseau** dans l'interface utilisateur contiendront une valeur de clé et de secret générique qui n'est pas valide pour la gestion de votre réseau. Toutes les demandes d'API soumises à l'aide de ces données d'identification ne seront pas traitées.  
+
+Si, ultérieurement, vous souhaitez exposer des données d'identification réseau valides dans l'interface utilisateur, recommencez simplement les étapes ci-dessus afin de générer de nouvelles données d'identification, mais cette fois vous pouvez laisser à blanc la zone **Ajouter des paramètres de configuration en ligne**. Vous n'avez pas besoin d'indiquer des paramètres.
+
+A présent, les données d'identification valides d'origine sont visibles dans les informations relatives aux **données d'identification réseau** dans l'interface utilisateur et elles peuvent être utilisées pour authentifier les API Swagger.
 
 ## Conseils pour l'identification et la résolution des problèmes
 {: #ibp-swagger-troubleshooting}

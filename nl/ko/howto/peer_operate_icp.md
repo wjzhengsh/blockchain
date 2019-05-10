@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -20,7 +20,7 @@ subcollection: blockchain
 # 다중 클라우드 네트워크에서 {{site.data.keyword.cloud_notm}} Private 운영
 {: #icp-peer-operate}
 
-{{site.data.keyword.cloud_notm}} Private 피어에 {{site.data.keyword.blockchainfull}} Platform을 설정한 다음 여러 작업 단계를 완료해야 피어가 블록체인 네트워크의 원장을 조회하고 호출하기 위한 트랜잭션을 발행할 수 있습니다. 이 단계에는 채널에 조직을 추가하고 피어가 채널에 가입하며 피어에 체인코드를 설치하고 채널에서 체인코드를 인스턴스화하며 애플리케이션을 피어에 연결하는 단계가 포함됩니다. 네트워크를 스타터 플랜 또는 엔터프라이즈 플랜 네트워크에 연결하려면 [스타터 플랜 또는 엔터프라이즈 플랜 네트워크로 {{site.data.keyword.cloud_notm}} Private에서 피어 운영](/docs/services/blockchain/howto/peer_operate_ibp.html#ibp-peer-operate)을 참조하십시오.
+{{site.data.keyword.blockchainfull}} Platform for {{site.data.keyword.cloud_notm}} Private 피어를 설정한 다음 여러 작업 단계를 완료해야 피어가 블록체인 네트워크의 원장을 조회하고 호출하기 위한 트랜잭션을 발행할 수 있습니다. 이 단계에는 채널에 조직을 추가하고 피어가 채널에 가입하며 피어에 체인코드를 설치하고 채널에서 체인코드를 인스턴스화하며 애플리케이션을 피어에 연결하는 단계가 포함됩니다. 네트워크를 스타터 플랜 또는 엔터프라이즈 플랜 네트워크에 연결하려면 [스타터 플랜 또는 엔터프라이즈 플랜 네트워크로 {{site.data.keyword.cloud_notm}} Private에서 피어 운영](/docs/services/blockchain/howto/peer_operate_ibp.html#ibp-peer-operate)을 참조하십시오.
 {:shortdesc}
 
 피어를 작동시키려면 {{site.data.keyword.cloud_notm}} Private 클러스터에서 몇 가지 전제조건 단계를 완료해야 합니다.
@@ -40,7 +40,7 @@ subcollection: blockchain
 
 조직이 아직 컨소시엄 또는 채널의 멤버가 아닌 경우 이 단계를 사용하여 [채널을 작성](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-create-channel)할 수 있습니다. 지시사항은 [조직 정의 준비](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-organization-definition) 방법을 제공합니다. 이 정의는 순서 지정자 시스템 채널에 추가하여 컨소시엄의 멤버가 될 수 있도록 하는 데 사용됩니다. 그런 다음 [채널 트랜잭션을 작성](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-channeltx)하여 새 채널을 형성할 수 있습니다.
 <!--
-It is recommended that you deploy at least two instances of the peer Helm chart for [high availability](peer_icp.html#high-availability). Therefore, you need to follow these operations steps once for each peer. When you are ready to invoke and query chaincode from your application, connect to both peers to ensure that your [applications are highly available](../v10_application.html#ha-app).
+It is recommended that you deploy at least two instances of the peer Helm chart for [high availability](peer_icp.html#high-availability). Therefore, you need to follow these operations steps once for each peer. When you are ready to invoke and query chaincode from your application, connect to both peers to ensure that your [applications are highly available](../best_practices.html#best-practices-app-ha-app).
 -->
 
 ## 전제조건
@@ -116,7 +116,7 @@ SDK를 사용할지 아니면 명령행을 사용할 계획인지에 상관없�
 ### 피어 엔드포인트 정보 검색
 {: #icp-peer-operate-peer-endpoint}
 
-채널에 가입하거나 스마트 계약을 설치하려면 SDK 또는 Fabric CA 클라이언트에서 피어 엔드포인트를 대상으로 설정해야 합니다. {{site.data.keyword.cloud_notm}} Private 콘솔 UI를 사용하여 피어의 엔드포인트를 찾을 수 있습니다. 다음 단계를 완료하려면 [클러스터 관리자 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "클러스터 관리자 역할 및 조치")여야 합니다.
+채널에 가입하거나 스마트 계약을 설치하려면 SDK 또는 Fabric CA 클라이언트에서 피어 엔드포인트를 대상으로 설정해야 합니다. {{site.data.keyword.cloud_notm}} Private 콘솔 UI를 사용하여 피어의 엔드포인트를 찾을 수 있습니다. 다음 단계를 완료하려면 [클러스터 관리자 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/user_management/assign_role.html "클러스터 관리자 역할 및 조치")여야 합니다.
 
 1. {{site.data.keyword.cloud_notm}} Private 콘솔에 로그인한 후 왼쪽 상단 구석에 있는 **메뉴** 아이콘을 클릭하십시오.
 2. **워크로드** > **Helm 릴리스**를 클릭하십시오.
@@ -155,7 +155,7 @@ SDK를 사용할지 아니면 명령행을 사용할 계획인지에 상관없�
 ## Fabric SDK를 사용하여 피어 운영
 {: #icp-peer-operate-with-sdk}
 
-Hyperledger Fabric SDK에서는 애플리케이션에서 블록체인 네트워크와 상호작용하고 운영하는 데 사용할 수 있는 강력한 API 세트를 제공합니다. [Hyperledger Fabric SDK 커뮤니티 문서 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/getting_started.html#hyperledger-fabric-sdks "Hyperledger Fabric SDK 커뮤니티 문서")에서 Fabric SDK 내에서 지원되는 최신 언어 목록과 사용 가능한 전체 API 목록을 찾을 수 있습니다. Fabric SDK를 사용하여 {{site.data.keyword.blockchainfull_notm}} Platform의 채널에 피어를 가입시키고 피어에 체인코드를 설치하며 채널에서 체인코드를 인스턴스화할 수 있습니다.
+Hyperledger Fabric SDK에서는 애플리케이션에서 블록체인 네트워크와 상호작용하고 운영하는 데 사용할 수 있는 강력한 API 세트를 제공합니다. [Hyperledger Fabric SDK 커뮤니티 문서 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/getting_started.html#hyperledger-fabric-sdks "Hyperledger Fabric SDK 커뮤니티 문서")에서 Fabric SDK 내에서 지원되는 최신 언어 목록과 사용 가능한 전체 API 목록을 찾을 수 있습니다. Fabric SDK를 사용하여 {{site.data.keyword.blockchainfull_notm}} Platform의 채널에 피어를 가입시키고 피어에 체인코드를 설치하며 채널에서 체인코드를 인스턴스화할 수 있습니다.
 
 다음 지시사항에서는 [Fabric Node SDK ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://fabric-sdk-node.github.io/ "Fabric Node SDK")를 사용하여 피어를 운영하고 이미 SDK에 익숙하다고 가정합니다. [애플리케이션 개발 튜토리얼](/docs/services/blockchain/v10_application.html#dev-app)은 시작하기 전에 Node SDK를 사용하는 방법을 알아보고 체인코드를 호출하여 조회할 준비가 되었을 때 피어로 애플리케이션을 개발하기 위한 가이드로 사용할 수 있습니다.
 
@@ -165,11 +165,11 @@ Hyperledger Fabric SDK에서는 애플리케이션에서 블록체인 네트워�
 NPM을 사용하여 [Node SDK ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://fabric-sdk-node.github.io/ "Node SDK")를 설치할 수 있습니다.
 
 ```
-npm install fabric-client@1.2
+npm install fabric-client@1.4.0
 ```
 {:codeblock}
 
-Node SDK 버전 1.2를 사용하는 것이 좋습니다.
+Node SDK 버전 1.4.0을 사용하는 것이 좋습니다.
 
 ### 피어에서 작동하도록 SDK 준비
 {: #icp-peer-operate-node-sdk}
@@ -259,12 +259,12 @@ Fabric Peer 바이너리를 사용하여 명령행에서 원격 피어를 운영
 ### Fabric 피어 클라이언트 다운로드
 {: #icp-peer-operate-fabric-client}
 
-원격 클라이언트에서 피어와 상호작용하려면 [Fabric 피어 클라이언트 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/peercommand.html "Fabric 피어 명령")를 다운로드해야 합니다.
+원격 클라이언트에서 피어와 상호작용하려면 [Fabric 피어 클라이언트 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/peercommand.html "Fabric 피어 명령")를 다운로드해야 합니다.
 
-피어 클라이언트를 가져올 수 있는 가장 쉬운 방법은 Hyperledger Project에서 Fabric 도구 바이너리를 다운로드하는 것입니다. 명령행을 사용하여 바이너리를 다운로드할 디렉토리를 작성하고 다음 명령을 실행하여 바이너리를 패치하십시오. [Curl ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/prereqs.html#install-curl "Curl")을 먼저 설치해야 합니다.
+피어 클라이언트를 가져올 수 있는 가장 쉬운 방법은 Hyperledger Project에서 Fabric 도구 바이너리를 다운로드하는 것입니다. 명령행을 사용하여 바이너리를 다운로드할 디렉토리를 작성하고 다음 명령을 실행하여 바이너리를 패치하십시오. [Curl ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/prereqs.html#install-curl "Curl")을 먼저 설치해야 합니다.
 
 ```
-curl -sSL http://bit.ly/2ysbOFE | bash -s 1.2.1 1.2.1 -d -s
+curl -sSL http://bit.ly/2ysbOFE | bash -s 1.4.0 1.4.0 -d -s
 ```
 {:codeblock}
 
@@ -329,6 +329,8 @@ tree
 │   └── msp
 │       ├── cacerts
 │       │   └── 9-30-250-70-30395-SampleOrgCA.pem
+│       ├── IssuerPublicKey
+│       ├── IssuerRevocationPublicKey
 │       ├── keystore
 │       │   └── 2a97952445b38a6e0a14db134645981b74a3f93992d9ddac54cb4b4e19cdf525_sk
 │       ├── signcerts
@@ -356,6 +358,8 @@ tree
     └── msp
         ├── cacerts
         │   └── 9-30-250-70-30395-tlsca.pem
+        ├── IssuerPublicKey
+        ├── IssuerRevocationPublicKey
         ├── keystore
         │   └── 45a7838b1a91ddfe3d4d22a5a7f2639b868493bcce594af3e3ceb9c07899d117_sk
         ├── signcerts
@@ -482,7 +486,7 @@ tree
 ### CLI를 사용하여 피어에 체인코드 설치
 {: #icp-peer-operate-toolcontainer-install-cc}
 
-이제 피어에 체인코드를 설치하고 인스턴스화할 준비가 되었습니다. 이 지시사항에서 사용하기 위해 `fabric-samples` 저장소에서 `fabcar`를 설치합니다. 다음 명령을 사용하여 Github에서 `fabric-samples` 체인코드를 다운로드한 전후에 [GOPATH를 구성![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/dev-setup/devenv.html?highlight=gopath#set-your-gopath "GOPAT")했는지 확인하십시오.
+이제 피어에 체인코드를 설치하고 인스턴스화할 준비가 되었습니다. 이 지시사항에서 사용하기 위해 `fabric-samples` 저장소에서 `fabcar`를 설치합니다. 다음 명령을 사용하여 Github에서 `fabric-samples` 체인코드를 다운로드한 전후에 [GOPATH를 구성![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/dev-setup/devenv.html?highlight=gopath#set-your-gopath "GOPAT")했는지 확인하십시오.
 
   ```
   cd $GOPATH/src
@@ -523,7 +527,7 @@ peer chaincode instantiate -o ${ORDERER_1} -C ${CHANNEL} -n ${CC_NAME} -v v0 -c 
 2018-11-27 17:09:28.013 EST [chaincodeCmd] checkChaincodeCmdParams -> INFO 049 Using default vscc
 ```
 
-체인코드가 인스턴스화된 후 체인코드 조회를 사용하고 명령을 호출하여 채널 원장의 데이터를 읽고 쓸 수 있습니다. 자세한 정보는 Hyperledger Fabric 문서에서 [피어 체인코드 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/latest/commands/peerchaincode.html) 명령을 참조하십시오. 프록시 IP 및 외부 순서 지정자 포트를 사용하여 순서 지정자 엔드포인트를 호출 명령에 전달해야 합니다. 피어 엔드포인트를 조회 명령에 전달하기만 하면 됩니다.
+체인코드가 인스턴스화된 후 체인코드 조회를 사용하고 명령을 호출하여 채널 원장의 데이터를 읽고 쓸 수 있습니다. 자세한 정보는 Hyperledger Fabric 문서에서 [피어 체인코드 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/peerchaincode.html) 명령을 참조하십시오. 프록시 IP 및 외부 순서 지정자 포트를 사용하여 순서 지정자 엔드포인트를 호출 명령에 전달해야 합니다. 피어 엔드포인트를 조회 명령에 전달하기만 하면 됩니다.
 
 ## {{site.data.keyword.cloud_notm}} Private에서 피어 로그 보기
 {: #peer-log-icp}
@@ -544,7 +548,7 @@ peer chaincode instantiate -o ${ORDERER_1} -C ${CHANNEL} -n ${CC_NAME} -v v0 -c 
 1. 각 피어에서 체인코드를 업데이트하려면 클라이언트 애플리케이션이나 CLI 명령을 사용하여 피어에 체인코드를 설치하는 데 사용한 프로세스를 다시 실행하기만 하면 됩니다. 원래 사용된 이름과 동일한 체인코드 이름을 지정하십시오. 그러나 이번에는 체인코드 `Version`을 늘르십시오. 모든 피어는 같은 이름과 버전을 사용해야 합니다.
 
 2. 채널의 모든 피어에 새 체인코드를 설치한 다음
-[피어 체인코드 업그레이드 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/peerchaincode.html#peer-chaincode-upgrade) 명령을 사용하여 새 체인코드를 사용하도록 채널을 업데이트하십시오.
+[피어 체인코드 업그레이드 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/peerchaincode.html#peer-chaincode-upgrade) 명령을 사용하여 새 체인코드를 사용하도록 채널을 업데이트하십시오.
 
 ## {{site.data.keyword.cloud_notm}} Private에서 실행되는 피어 다시 시작
 {: #peer-restart}
@@ -561,7 +565,7 @@ peer chaincode instantiate -o ${ORDERER_1} -C ${CHANNEL} -n ${CC_NAME} -v v0 -c 
   4. 팟을 클릭하여 여십시오.
   5. **컨테이너** 탭을 클릭하십시오. 피어 **컨테이너** 이름을 기록해 두십시오.
 
-2. 명령행에서 다음 명령을 실행하여 피어를 다시 시작하고 `<PEER_POD_NAME>` 및 `<PEER_CONTAINER_NAME>`을 위의 값으로 바꾸십시오.
+2. 피어를 다시 시작하려면 명령행에서 `<PEER_POD_NAME>` 및 `<PEER_CONTAINER_NAME>`을 위의 값으로 대체하여 다음 명령을 실행하십시오. 
 
   ```
   kubectl exec <PEER_POD_NAME> -c <PEER_CONTAINER_NAME> /usr/sbin/killall5
@@ -580,12 +584,12 @@ peer chaincode instantiate -o ${ORDERER_1} -C ${CHANNEL} -n ${CC_NAME} -v v0 -c 
 ### configtxgen 도구 다운로드
 {: #icp-peer-operate-configtxgen}
 
-조직이 컨소시엄 또는 채널에 가입해야 하는 경우 [configtxgen ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/configtxgen.html "configtxgen") 도구를 다운로드해야 합니다.
+조직이 컨소시엄 또는 채널에 가입해야 하는 경우 [configtxgen ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/configtxgen.html "configtxgen") 도구를 다운로드해야 합니다.
 
-configtxgen을 가져올 수 있는 가장 쉬운 방법은 Hyperledger Project에서 모든 Fabric 도구 바이너리를 다운로드하는 것입니다. 명령행을 사용하여 바이너리를 다운로드할 디렉토리로 이동하고 다음 명령을 실행하여 바이너리를 패치하십시오. [Curl ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/prereqs.html#install-curl "Curl")을 먼저 설치해야 합니다.
+configtxgen을 가져올 수 있는 가장 쉬운 방법은 Hyperledger Project에서 모든 Fabric 도구 바이너리를 다운로드하는 것입니다. 명령행을 사용하여 바이너리를 다운로드할 디렉토리로 이동하고 다음 명령을 실행하여 바이너리를 패치하십시오. [Curl ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/prereqs.html#install-curl "Curl")을 먼저 설치해야 합니다.
 
 ```
-curl -sSL http://bit.ly/2ysbOFE | bash -s 1.2.1 1.2.1 -d -s
+curl -sSL http://bit.ly/2ysbOFE | bash -s 1.4.0 1.4.0 -d -s
 ```
 {:codeblock}
 
@@ -618,17 +622,17 @@ export PATH=$PATH:$HOME/bin
   cd $HOME/fabric-ca-client/peer-admin/msp
   mkdir tlscacerts
   ```
-
-  그런 다음 인증서를 작성한 `tlscacerts` 디렉토리에 복사해야 합니다.
-
-  ```
-  cp $HOME/fabric-ca-client/tlsca-admin/cacerts/<xxxx>tlsca.pem tlscacerts/
-  ```
-
-  명령은 다음과 같이 표시됩니다.
+  {:codeblock}
+그런 다음 인증서를 작성한 `tlscacerts` 디렉토리에 복사해야 합니다.
 
   ```
-  cp fabric-ca-client/tlsca-admin/cacerts/9-30-250-70-32129-tlsca.pem /tlscacerts/
+  cp $HOME/fabric-ca-client/tlsca-admin/msp/cacerts/<xxxx>tlsca.pem tlscacerts/
+  ```
+  {:codeblock}
+명령은 다음과 같이 표시됩니다.
+
+  ```
+  cp fabric-ca-client/tlsca-admin/msp/cacerts/9-30-250-70-32129-tlsca.pem /tlscacerts/
   ```
   {:codeblock}
 
@@ -724,12 +728,12 @@ configtxgen -printOrg org1 > $HOME/fabric-ca-client/org-definitions/org1definiti
 ## 채널 트랜잭션 작성
 {: #icp-peer-operate-channeltx}
 
-새 채널을 작성하기 전에 조직은 [조직 정의](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-organization-definition)를 준비하고 컨소시엄의 멤버가 되어야 합니다. [컨소시엄을 형성하거나 기존 컨소시엄에 추가](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-consortium)되어야 하는 경우 이 지시사항을 따르십시오. 조직이 이미 시스템 채널에 추가된 경우 컨소시엄의 멤버도 새 채널에 쉽게 추가될 수 있습니다. 시스템 채널의 멤버가 아닌 조직은 [채널 업데이트 요청 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/channel_update_tutorial.html) 사용을 통해 채널에 조직 정의를 추가하여 수동으로 채널에 가입할 수 있습니다. 이 단계를 사용하여 기존 채널을 업데이트할 수도 있습니다.
+새 채널을 작성하기 전에 조직은 [조직 정의](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-organization-definition)를 준비하고 컨소시엄의 멤버가 되어야 합니다. [컨소시엄을 형성하거나 기존 컨소시엄에 추가](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-consortium)되어야 하는 경우 이 지시사항을 따르십시오. 조직이 이미 시스템 채널에 추가된 경우 컨소시엄의 멤버도 새 채널에 쉽게 추가될 수 있습니다. 시스템 채널의 멤버가 아닌 조직은 [채널 업데이트 요청 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/channel_update_tutorial.html) 사용을 통해 채널에 조직 정의를 추가하여 수동으로 채널에 가입할 수 있습니다. 이 단계를 사용하여 기존 채널을 업데이트할 수도 있습니다.
 
 ### 새 채널 형성
 {: #icp-peer-operate-form-channel}
 
-새 채널을 형성하려면 조직은 [configtxgen 도구 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/configtxgen.html "configtxgen")를 사용하여 채널 작성 트랜잭션 제안을 작성해야 합니다. 이 도구는 새 채널 멤버를 정의하는 `configtx.yaml` 파일을 이용합니다. 샘플 `configtx.yaml` 파일은 아래에 제공됩니다. 이 파일의 좀 더 복잡한 버전은 [다운로드한 Fabric 피어 클라이언트](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-fabric-client)의 `/config` 폴더에서도 사용 가능합니다. 해당 파일을 편집하거나 샘플로 대체하도록 선택할 수 있습니다. 아래의 `FABRIC_CFG_PATH` 값을 설정하려면 이 `/config` 폴더의 위치를 기록해 두십시오.
+새 채널을 형성하려면 조직은 [configtxgen 도구 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/configtxgen.html "configtxgen")를 사용하여 채널 작성 트랜잭션 제안을 작성해야 합니다. 이 도구는 새 채널 멤버를 정의하는 `configtx.yaml` 파일을 이용합니다. 샘플 `configtx.yaml` 파일은 아래에 제공됩니다. 이 파일의 좀 더 복잡한 버전은 [다운로드한 Fabric 피어 클라이언트](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-fabric-client)의 `/config` 폴더에서도 사용 가능합니다. 해당 파일을 편집하거나 샘플로 대체하도록 선택할 수 있습니다. 아래의 `FABRIC_CFG_PATH` 값을 설정하려면 이 `/config` 폴더의 위치를 기록해 두십시오.
 ```
 # Copyright IBM Corp. All Rights Reserved.
 #
@@ -833,7 +837,7 @@ Profiles:
 - **조직:** 이 섹션은 컨소시엄의 모든 멤버를 정의합니다. 각 조직에는 앵커(예: `&Org1`)가 있습니다. 이 앵커 아래에서 조직의 이름, MSPID, MSP 폴더에 대한 디렉토리 및 교차 피어 gossip을 위한 조직의 앵커 피어를 찾을 수 있습니다. 다음 단계를 사용하여 각 컨소시엄 멤버마다 조직 프로파일을 채울 수 있습니다.
   1. MSPID를 사용하여 조직의 `Name` 및 `ID`를 지정하십시오. 채널을 작성하는 조직은 피어 Helm 차트가 배치될 때 지정된 MSPID를 알고 있어야 합니다.
   2. `MSPDir`에서 [조직 정의](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-organization-definition)를 작성하는 데 사용한 MSP 폴더에 대한 완전한 경로를 지정하십시오. 암호화 자료가 채널 정의 트랜잭션에 사용되지 않는다는 점에 유의하십시오. *configtxgen* 도구는 MSP의 실제 컨텐츠를 무시합니다. 해당 위치에서 폴더 하위 구조가 올바른 MSP 폴더가 예상됩니다.
-  3. `AnchorPeers` 매개변수는 각 조직이 gossip으로 내부 조직 통신에 사용하는 리드 피어를 식별하는 데 사용됩니다. 이 조직에 맞는 [앵커 피어 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/glossary.html)의 역할을 수행할 피어의 호스트 이름 및 포트를 지정하십시오. 이 값은 개인 데이터 또는 서비스 검색과 같은 기능을 사용하는 데 중요합니다. 그러나 개인 데이터 및 서비스 검색은 피어 Helm 차트에 현재 지원되지 않습니다.
+  3. `AnchorPeers` 매개변수는 각 조직이 gossip으로 내부 조직 통신에 사용하는 리드 피어를 식별하는 데 사용됩니다. 이 조직에 맞는 [앵커 피어 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/glossary.html)의 역할을 수행할 피어의 호스트 이름 및 포트를 지정하십시오. 이 값은 개인 데이터 또는 서비스 검색과 같은 기능을 사용하는 데 중요합니다. 그러나 개인 데이터 및 서비스 검색은 피어 Helm 차트에 현재 지원되지 않습니다.
 
 - **기능:** 이 섹션은 `configtx.yaml`에 있어야 하지만 변경이 필요하지 않습니다.
 
@@ -897,7 +901,7 @@ peer channel create -o 9.30.250.70:31507 --tls --cafile $PWD/orderer-tls/orderer
 
 시스템 채널 보증 정책을 충족하도록 적합한 조직에서 새 채널 작성 제안을 서명하는 경우 채널 업데이트 트랜잭션을 순서 지정자에 제출하여 새 채널을 형성할 수 있습니다.
 
-Node Fabric SDK API를 사용하여 단일 트랜잭션에서 서명 및 제출을 완료할 수 있습니다. 자세한 정보는 Node SDK 문서의 [How to create a Hyperledger Fabric Channel ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")]](https://fabric-sdk-node.github.io/release-1.3/tutorial-channel-create.html) 튜토리얼을 방문하십시오.
+Node Fabric SDK API를 사용하여 단일 트랜잭션에서 서명 및 제출을 완료할 수 있습니다. 자세한 정보는 Node SDK 문서의 [How to create a Hyperledger Fabric Channel ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")]](https://fabric-sdk-node.github.io/release-1.4/tutorial-channel-create.html) 튜토리얼을 방문하십시오.
 
 ## 피어 로그 보기
 {: #icp-peer-operate-view-logs}
@@ -920,7 +924,7 @@ Node Fabric SDK API를 사용하여 단일 트랜잭션에서 서명 및 제출�
 
   `kubectl logs` 명령에 대한 자세한 정보는 [Kubernetes 문서 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs “Getting Started”)를 참조하십시오.
 
-- 또는 Kibana에서 로그를 여는 [{{site.data.keyword.cloud_notm}} Private 클러스터 관리 콘솔 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/troubleshoot/events.html "이벤트 및 로그")을 사용하여 로그에 액세스할 수 있습니다.
+- 또는 Kibana에서 로그를 여는 [{{site.data.keyword.cloud_notm}} Private 클러스터 관리 콘솔 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/troubleshoot/events.html "이벤트 및 로그")을 사용하여 로그에 액세스할 수 있습니다.
 
   **참고:** Kibana에서 로그인이 표시되면 `No results found`의 응답을 수신할 수 있습니다. 이 상태는 {{site.data.keyword.cloud_notm}} Private이 호스트 이름으로 작업자 노드 IP 주소를 사용하는 경우 발생할 수 있습니다. 이 문제점을 해결하려면 패널 상단에서 `node.hostname.keyword`로 시작하는 필터를 제거하십시오. 그런 다음 로그가 표시됩니다.
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -30,7 +30,8 @@ El **Plan inicial** es un entorno para aquellos que desean empezar a desarrollar
 
 **Notas:**
 - El Plan inicial de {{site.data.keyword.blockchainfull_notm}} Platform es un entorno de desarrollo y de prueba, y no es adecuado para las cargas de trabajo de producción. Si necesita un entorno de producción, consulte [Acerca del Plan empresarial](/docs/services/blockchain/enterprise_plan.html#enterprise-plan-about).
-- {{site.data.keyword.blockchainfull_notm}} Platform es un servicio de plataforma de {{site.data.keyword.cloud_notm}} y todas las ofertas de pertenencia a grupo siguen las [condiciones de los servicios de {{site.data.keyword.cloud_notm}} ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](http://www-03.ibm.com/software/sla/sladb.nsf/sla/bm "condiciones de servicios de {{site.data.keyword.cloud_notm}}") de los acuerdos de nivel de servicio (SLA). Las redes de plan inicial se suministran a través de **varios entornos** en centros de datos separados geográficamente.
+- {{site.data.keyword.blockchainfull_notm}} Platform es un servicio de plataforma de {{site.data.keyword.cloud_notm}} y todas las ofertas de pertenencia a grupo siguen las [condiciones de los servicios de {{site.data.keyword.cloud_notm}} ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](http://www-03.ibm.com/software/sla/sladb.nsf/sla/bm "condiciones de servicios de {{site.data.keyword.cloud_notm}}") de los acuerdos de nivel de servicio (SLA). El Plan inicial se proporciona en un centro de datos de una única ubicación geográfica. Para ver una lista de los lugares geográficos disponibles, consulte
+[Ubicaciones de {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain?topic=blockchain-ibp-regions-locations#ibp-regions-locations).
 
 ## Qué ofrece el Plan inicial
 {: #starter-plan-about-what-starter-plan-offers}
@@ -74,8 +75,8 @@ Debe tener una cuenta de pago de {{site.data.keyword.cloud_notm}}, por ejemplo, 
     - Los iguales nuevos que se añadan a versiones anteriores de redes del Plan inicial se crearán en Fabric v1.2.1. El rendimiento de la red no se ve afectado debido a la compatibilidad con versiones anteriores.
     - Tiene la opción de utilizar valores más avanzados de
 [configuración de canal
-![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/latest/config_update.html "Configuración de canal") y [listas de control de acceso
-![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-v1.2/access_control.html "Listas de control de acceso") al crear o actualizar un canal.
+![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/config_update.html "Configuración de canal") y [listas de control de acceso
+![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/access_control.html "Listas de control de acceso") al crear o actualizar un canal.
     - Las características de [descubrimiento de servicios ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/discovery-overview.html "descubrimiento de servicios") y de [datos privados ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/private-data/private-data.html "datos privados") de Hyperledger Fabric v1.2 no reciben soporte en el Plan inicial.
     - Si [restablece](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-reset-network) una red más antigua del Plan inicial que esté en Fabric V1.1.0, la nueva red estará en el nivel V1.2 de Fabric. Si restablece la red, deberá instalar el código de encadenamiento o los archivos .bna en la nueva red, así como volver a invitar a los miembros de su anterior red.
 - **Limitación de recursos de red**

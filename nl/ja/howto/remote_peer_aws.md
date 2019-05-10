@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-03-20"
 
 subcollection: blockchain
 
@@ -360,7 +360,7 @@ AWS でピアをセットアップした後に、いくつかの操作ステッ�
 {: #remote-peer-aws-high-availability}
 
 デフォルトでは、高可用性をサポートするために、クイック・スタート・テンプレートによってピアの 2 つのインスタンスが 2 つの異なるアベイラビリティー・ゾーンにデプロイされます。
-この高可用性サポートを利用するために、[クライアント・アプリケーションを高可用性向けに](/docs/services/blockchain/v10_application.html#dev-app-ha-app)構成する必要もあります。
+この高可用性サポートを利用するために、[クライアント・アプリケーションを高可用性向けに](/docs/services/blockchain/best_practices.html#best-practices-app-ha-app)構成する必要もあります。
 
 ## セキュリティーに関する考慮事項
 {: #remote-peer-aws-security}

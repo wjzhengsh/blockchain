@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-03-20"
 
 subcollection: blockchain
 
@@ -292,7 +292,7 @@ Ejecute el mandato de CLI `peer channel fetch` para recuperar el bloque de orige
    {:codeblock}
 
    Sustituya los campos por su propia información.
-     - Sustituya `<ORDERER_URL>` por el nombre de host y el puerto del clasificador que encontrará en el archivo `creds.json`.
+     - Sustituya `<ORDERER_URL>` por el nombre de host y el puerto del clasificador del archivo `creds.json`.
      - Sustituya `<CHANNEL_NAME>` por el nombre del canal al que se unirá el igual.
      - Sustituya `<ORGANIZATION_MSP_ID>` por el nombre de la organización que encontrará en el archivo `creds.json`.
      - Sustituya `<PEER_ADDR>` por `localhost:7051`
@@ -308,7 +308,8 @@ Ejecute el mandato de CLI `peer channel fetch` para recuperar el bloque de orige
 
 4. Ejecute el mandato de CLI peer siguiente para capturar el bloque de origen del canal.
 
-   **IMPORTANTE:** en el mandato siguiente, sustituya cada aparición de `<PEER_ENROLL_ID>` por el ID de inscripción asociado con esta instancia de igual que se ha especificado en la plantilla de Inicio rápido. Este valor se puede localizar ejecutando el mandato `ls /etc/hyperledger/`. Se mostrarán dos carpetas: `fabric`, y la segunda es `<PEER_ENROLL_ID>`.
+   **IMPORTANTE:** en el mandato siguiente, sustituya cada aparición de
+`<PEER_ENROLL_ID>` por el ID de inscripción asociado con esta instancia de igual que se ha especificado en la plantilla de Inicio rápido. Este valor se puede localizar ejecutando el mandato `ls /etc/hyperledger/`. Se mostrarán dos carpetas: `fabric`, y la segunda es `<PEER_ENROLL_ID>`.
 
    ```
    CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/<PEER_ENROLL_ID>/tls/ca.crt CORE_PEER_TLS_ENABLED=true CORE_PEER_ADDRESS=${PEERADDR} CORE_PEER_LOCALMSPID=${ORGID} CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/<PEER_ENROLL_ID>/msp/ GOPATH=/ peer channel fetch 0 -o ${ORDERER_1} -c ${CHANNEL} --cafile /etc/hyperledger/<PEER_ENROLL_ID>/orderer_tlscacert.pem --tls
@@ -359,7 +360,7 @@ Tras configurar el igual en AWS, puede realizar varios pasos operativos antes de
 {: #remote-peer-aws-high-availability}
 
 De forma predeterminada, para el soporte de la alta disponibilidad, la plantilla de Inicio rápido despliega dos instancias del igual, en dos zonas de disponibilidad distintas.
-Para aprovechar este soporte de alta disponibilidad, también debe configurar las [aplicaciones cliente para la alta disponibilidad](/docs/services/blockchain/v10_application.html#dev-app-ha-app).
+Para aprovechar este soporte de alta disponibilidad, también debe configurar las [aplicaciones cliente para la alta disponibilidad](/docs/services/blockchain/best_practices.html#best-practices-app-ha-app).
 
 ## Consideraciones sobre seguridad
 {: #remote-peer-aws-security}
@@ -405,7 +406,7 @@ Para obtener más información sobre cómo conseguirlo, consulte [Residencia de 
 La gestión de claves es un aspecto crítico de la seguridad del igual. Si una clave privada se ve comprometida o se pierde, es posible que usuarios hostiles accedan a los datos y a las funciones del igual. El plan empresarial de {{site.data.keyword.blockchainfull_notm}} Platform utiliza [Módulos de seguridad de hardware](/docs/services/blockchain/glossary.html#glossary-hsm) (HSM) para almacenar las claves privadas de la red. HSM es un dispositivo físico que evita que otro accedan a su clave privada.
 
 Cuando despliega un igual en AWS, usted es el responsable de gestionar las claves privadas. Aunque {{site.data.keyword.blockchainfull_notm}} Platform genera sus claves privadas, dichas claves no se almacenan en la plataforma. Resulta esencial asegurarse de que las claves se almacenan
-en una ubicación segura para que no se vean comprometidas. Encontrará la clave privada de su igual en la carpeta del almacén de claves del MSP del igual, en el directorio `/etc/hyperledger/<PEER_ENROLL_ID>/msp/keystore/` dentro del contenedor del igual. Para obtener más información sobre los certificados que hay dentro de su igual, consulte la sección [Proveedor de servicios de pertenencia](/docs/services/blockchain/certificates.html#managing-certificates-msp) del tema sobre [Gestión de certificados en {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/certificates.html#managing-certificates).
+en una ubicación segura para que no se vean comprometidas. Encontrará la clave privada de su igual en la carpeta de almacén de claves de MSP del igual, en el directorio `/etc/hyperledger/<PEER_ENROLL_ID>/msp/keystore/` dentro del contenedor del igual. Para obtener más información sobre los certificados que hay dentro de su igual, consulte la sección [Proveedor de servicios de pertenencia](/docs/services/blockchain/certificates.html#managing-certificates-msp) del tema sobre [Gestión de certificados en {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/certificates.html#managing-certificates).
 
 Puede utilizar Key Escrow para recuperar claves privadas perdidas. Esto hay que hacerlo antes de perder ninguna clave. Si una clave privada no se puede recuperar, tiene que obtener nuevas claves privadas obteniendo un nuevo signCert de la entidad emisora de certificados. También debe eliminar y sustituir el certificado de administrador de cualquier canal al que se haya unido.
 

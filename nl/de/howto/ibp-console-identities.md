@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-03"
 
 subcollection: blockchain
 
@@ -19,7 +19,7 @@ subcollection: blockchain
 # Identitäten erstellen und verwalten
 {: #ibp-console-identities}
 
-Die Knoten von {{site.data.keyword.blockchainfull_notm}} Platform basieren auf Hyperledger Fabric und dienen zur Erstellung genehmigter Blockchain-Netze. Dies bedeutet, dass alle Teilnehmer des Blockchain-Konsortiums Identitäten haben müssen, die ständig von einer Public Key Infrastructure überprüft werden. In der {{site.data.keyword.blockchainfull_notm}} Platform-Konsole können Sie diese Identitäten mithilfe der Zertifizierungsstellen (Certificate Authorities, CAs) Ihrer Organisation erstellen. Sie müssen diese Identitäten in Ihrer Konsolenwallet speichern, damit Sie sie für den Betrieb Ihres Netzes verwendet werden können. 
+Die Knoten von {{site.data.keyword.blockchainfull_notm}} Platform basieren auf Hyperledger Fabric und dienen zur Erstellung genehmigter Blockchain-Netze. Dies bedeutet, dass alle Teilnehmer des Blockchain-Konsortiums Identitäten haben müssen, die ständig von einer Public Key Infrastructure überprüft werden. In der {{site.data.keyword.blockchainfull_notm}} Platform-Konsole können Sie diese Identitäten mithilfe der Zertifizierungsstellen (Certificate Authorities, CAs) Ihrer Organisation erstellen. Sie müssen diese Identitäten in Ihrer Konsolenwallet speichern, damit Sie sie für den Betrieb Ihres Netzes verwendet werden können.
 
 **Zielgruppe:** Dieser Abschnitt richtet sich an Netzoperatoren, die für die Erstellung, Überwachung und Verwaltung des Blockchain-Netzes verantwortlich sind.
 
@@ -44,7 +44,7 @@ Sie können diese Identitäten über die Konsole mithilfe des [Registrierungspro
 
 Bevor Sie mit Identitäten arbeiten, müssen Sie die Identität des CA-Administrators festlegen, indem Sie entweder die Administratoridentität verwenden, die während der Erstellung der Zertifizierungsstelle erstellt wurde, oder indem Sie eine neue Identität erstellen. Öffnen Sie die Zertifizierungsstelle auf der Registerkarte **Knoten**. Die Eintragungs-ID der aktuell aktiven Identität wird neben dem Namen der Zertifizierungsstelle oben in der Anzeige angezeigt. Sie können diese Administratoridentität verwenden, um andere Identitäten zu erstellen, indem Sie über die Schaltfläche **Registrieren** Identitäten registrieren, die zu Organisationsadministratoren und Knotenidentitäten werden, oder über die Schaltfläche **Eintragen** Identitäten generieren und sie in die Wallet exportieren.
 
-Wenn Sie eine andere Identität als CA-Administrator festlegen möchten, klicken Sie auf das Symbol **Einstellungen** und anschließend in der Auswahlleiste auf **Identität festlegen**. Sie können über die Registerkarte **Vorhandene Identität** eine Identität angeben, die in der Wallet vorhanden ist. Alternativ können Sie die Registerkarte **Neue Identität** verwenden, um entweder Zertifikate für einen neuen Administrator einzufügen oder eine JSON-Datei mit den Zertifikaten hochzuladen. 
+Wenn Sie eine andere Identität als CA-Administrator festlegen möchten, klicken Sie auf das Symbol **Einstellungen** und anschließend in der Auswahlleiste auf **Identität festlegen**. Sie können über die Registerkarte **Vorhandene Identität** eine Identität angeben, die in der Wallet vorhanden ist. Alternativ können Sie die Registerkarte **Neue Identität** verwenden, um für einen neuen Administrator eine Datei mit den Zertifikaten im Base64- oder PEM-Format oder eine JSON-Datei mit den Zertifikaten hochzuladen.
 
 Nicht alle Identitäten haben die Möglichkeit, neue Benutzer zu registrieren. Weitere Informationen, einschließlich der Vorgehensweise zum Erstellen eines weitere CA-Administrators, finden Sie im Abschnitt zum [Erstellen neuer CA-Administratoren](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-ca-admin).
 {: note}
@@ -87,11 +87,11 @@ Sie können den öffentlichen und den privaten Schlüssel für jede Identität g
 Bevor Sie eine Identität eintragen, müssen Sie die [Identität festlegen](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-ca-identity), damit die Zertifizierungsstelle betrieben werden kann. Normalerweise wird die Administratoridentität festgelegt, die Sie beim Erstellen der Zertifizierungsstelle angegeben haben. Sie können bestätigen, dass diese Identität für die Zertifizierungsstelle (Certificate Authority, CA) festgelegt ist, indem Sie die Seite mit CA-Details überprüfen und die Eintragungs-ID der momentan aktiven Identität neben dem CA-Namen anzeigen. Nachdem Sie bestätigt haben, dass Ihre Administrator-ID als Identität festgelegt ist, klicken Sie im Überlaufmenü des Benutzers auf **Eintragungs-ID**, um das Zertifikat und den Schlüssel für einen beliebigen Benutzer zu generieren, der bei der CA registriert ist.
 
 - Geben Sie den `geheimen Eintragungsschlüssel` des Benutzers ein.
-- Im nächsten Schritt werden die generierten Schlüssel angezeigt. 
+- Im nächsten Schritt werden die generierten Schlüssel angezeigt.
   - Der öffentliche Schlüssel wird im Feld **Zertifikat** angezeigt. Dieses Zertifikat wird auch als Eintragungszertifikat, Signierzertifikat oder signCert-Zertifikat bezeichnet. Sie müssen das signCert-Zertifikat in eine Datei auf Ihrem lokalen System exportieren, damit es beim Erstellen einer Clientanwendung mit der VSCode-Erweiterung verwendet werden kann.
-  - Der entsprechende private Schlüssel befindet sich im Feld **Privater Schlüssel**. Sie müssen den privaten Schlüssel in Ihr lokales Dateisystem exportieren, damit er für eine Clientanwendung verwendet werden kann, die mit der VSCode-Erweiterung erstellt wurde. 
+  - Der entsprechende private Schlüssel befindet sich im Feld **Privater Schlüssel**. Sie müssen den privaten Schlüssel in Ihr lokales Dateisystem exportieren, damit er für eine Clientanwendung verwendet werden kann, die mit der VSCode-Erweiterung erstellt wurde.
   - Das Paar aus Zertifikat und privatem Schlüssel, das durch Klicken auf **Eintragungs-ID** erstellt wurde, wird nur einmal generiert und weder von der Konsole noch von Ihrem Browser gespeichert. Das Klicken auf die Schaltfläche **Eintragungs-ID** wird auch für die maximale Anzahl der Eintragungen berücksichtigt, die Sie für den CA-Administrator festgelegt haben. Im Rahmen dieser Eintragung sollten Sie das Schlüsselpaar speichern, indem Sie die Identität in Ihr lokales Dateisystem herunterladen oder zu Ihrer Konsolenwallet hinzufügen. Geben Sie einen neuen Namen für dieses Schlüsselpaar aus öffentlichem und privatem Schlüssel im Feld **Name** ein, um diese Schlüssel abzurufen.
-- **Wichtig:** Klicken Sie auf **Identität exportieren**, um das Zertifikat und den Schlüssel als einzelne JSON-Datei in Ihr lokales Dateisystem herunterzuladen. Sie sind für den Schutz und die Verwaltung dieser Schlüssel verantwortlich. 
+- **Wichtig:** Klicken Sie auf **Identität exportieren**, um das Zertifikat und den Schlüssel als einzelne JSON-Datei in Ihr lokales Dateisystem herunterzuladen. Sie sind für den Schutz und die Verwaltung dieser Schlüssel verantwortlich.
 - Klicken Sie auf **Identität zu Wallet hinzufügen**, um diese Zertifikate zur Konsolenwallet hinzuzufügen. Der Name und die Schlüssel für diese Identität befinden sich dann in einer neuen Kachel auf der [Registerkarte für das Wallet](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-wallet).
 
 Sie können auch den Fabric-CA-Client oder die Fabric-SDKs verwenden, um die Identitäten einzutragen, die Sie in der Konsole erstellt haben. Die Konsole bietet Ihnen alle Informationen, die Sie benötigen, um diese Schritte auszuführen. Stellen Sie sicher, dass Sie die **Eintragungs-ID** und den **geheimen Eintragungsschlüssel** gespeichert haben, die Sie während der Registrierung angegeben haben.
@@ -162,8 +162,8 @@ Sie können Ihrer Wallet eine Administratoridentität hinzufügen, wenn Sie [den
 
 Sie können die Schaltfläche **Identität hinzufügen** in der Übersichtsanzeige verwenden, um eine Identität direkt in die Wallet zu importieren. Wenn Sie auf diese Schaltfläche klicken, wird eine Seitenanzeige geöffnet, in der Sie das Schlüsselpaar aus öffentlichem und privatem Schlüssel einer Identität hinzufügen können.
 - **Name:** Geben Sie einen Identitätsnamen ein, der nur für als Referenz verwendet wird.
-- **Öffentlicher Schlüssel:** Fügen Sie den öffentlichen Schlüssel der Identität ein, den Sie mit Ihrer Zertifizierungsstelle generiert haben.
-- **Privater Schlüssel:** Fügen Sie den privaten Schlüssel der Identität ein, den Sie mit Ihrer Zertifizierungsstelle generiert haben.
+- **Zertifikat:** Laden Sie eine Datei hoch, die den öffentlichen Schlüssel der Identität (im Base64- oder PEM-Format) enthält, den Sie mit Ihrer Zertifizierungsstelle (CA) generiert haben.
+- **Privater Schlüssel:** Laden Sie eine Datei hoch, die den privaten Schlüssel der Identität (im Base64- oder PEM-Format) enthält, den Sie mit Ihrer Zertifizierungsstelle (CA) generiert haben.
 
 
 Sie können auch eine Identität hinzufügen, indem Sie eine JSON-Datei in dem unten stehenden Format hochladen. Sie können auch die Schaltfläche **JSON hochladen** verwenden, um mehrere Identitäten auf einmal hochzuladen.

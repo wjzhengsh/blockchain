@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -20,7 +20,7 @@ subcollection: blockchain
 # 스타터 플랜 또는 엔터프라이즈 플랜으로 {{site.data.keyword.cloud_notm}} Private에서 피어 운영
 {: #ibp-peer-operate}
 
-{{site.data.keyword.cloud_notm}} Private 피어에 {{site.data.keyword.blockchainfull}} Platform을 설정한 후 여러 작업 단계를 완료해야 피어에서 스타터 플랜 또는 엔터프라이즈 플랜 네트워크에 트랜잭션을 제출할 수 있습니다. 이 단계에는 채널에 조직을 추가하고 피어가 채널에 가입하며 피어에 체인코드를 설치하고 채널에서 체인코드를 인스턴스화하며 애플리케이션을 피어에 연결하는 단계가 포함됩니다.
+{{site.data.keyword.blockchainfull}} Platform for {{site.data.keyword.cloud_notm}} Private 피어를 설정한 후 여러 작업 단계를 완료해야 피어에서 스타터 플랜 또는 엔터프라이즈 플랜 네트워크에 트랜잭션을 제출할 수 있습니다. 이 단계에는 채널에 조직을 추가하고 피어가 채널에 가입하며 피어에 체인코드를 설치하고 채널에서 체인코드를 인스턴스화하며 애플리케이션을 피어에 연결하는 단계가 포함됩니다.
 {:shortdesc}
 
 피어를 작동시키려면 {{site.data.keyword.cloud_notm}} Private 클러스터에서 몇 가지 전제조건 단계를 완료해야 합니다.
@@ -39,7 +39,7 @@ subcollection: blockchain
 지시사항에서는 SDK 오퍼레이션에 익숙하다고 가정하지만 Fabric SDK 경로를 사용하는 것이 좋습니다. 명령행을 사용하려는 경우 Fabric 피어 클라이언트를 사용할 수 있습니다.
 
 <!--
-It is recommended that you deploy at least two instances of the peer Helm chart for [high availability](peer_icp.html#high-availability). Therefore, you need to follow these operations steps once for each peer. When you are ready to invoke and query chaincode from your application, connect to both peers to ensure that your [applications are highly available](../v10_application.html#ha-app).
+It is recommended that you deploy at least two instances of the peer Helm chart for [high availability](peer_icp.html#high-availability). Therefore, you need to follow these operations steps once for each peer. When you are ready to invoke and query chaincode from your application, connect to both peers to ensure that your [applications are highly available](../best_practices.html#best-practices-app-ha-app).
 -->
 
 **참고**: {{site.data.keyword.blockchainfull_notm}} Platform 피어에서는 {{site.data.keyword.blockchainfull_notm}} Platform에서 호스팅되는 피어의 전체 기능 또는 지원에 액세스할 권한이 없습니다. 따라서 네트워크 모니터를 사용하여 {{site.data.keyword.cloud_notm}} Private의 피어를 작동시킬 수 없습니다. 피어 실행을 시작하기 전에 [고려사항 및 제한사항](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-about-considerations)을 검토하십시오.
@@ -117,7 +117,7 @@ SDK를 사용할지 아니면 명령행을 사용할 계획인지에 상관없�
 ### 피어 엔드포인트 정보 검색
 {: #ibp-peer-operate-endpoint}
 
-채널에 가입하거나 스마트 계약을 설치하려면 SDK 또는 Fabric CA 클라이언트에서 피어 엔드포인트를 대상으로 설정해야 합니다. {{site.data.keyword.cloud_notm}} Private 콘솔 UI를 사용하여 피어의 엔드포인트를 찾을 수 있습니다. 다음 단계를 완료하려면 [클러스터 관리자 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "클러스터 관리자 역할 및 조치")여야 합니다.
+채널에 가입하거나 스마트 계약을 설치하려면 SDK 또는 Fabric CA 클라이언트에서 피어 엔드포인트를 대상으로 설정해야 합니다. {{site.data.keyword.cloud_notm}} Private 콘솔 UI를 사용하여 피어의 엔드포인트를 찾을 수 있습니다. 다음 단계를 완료하려면 [클러스터 관리자 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/user_management/assign_role.html "클러스터 관리자 역할 및 조치")여야 합니다.
 
 1. {{site.data.keyword.cloud_notm}} Private 콘솔에 로그인한 후 왼쪽 상단 구석에 있는 **메뉴** 아이콘을 클릭하십시오.
 2. **워크로드** > **Helm 릴리스**를 클릭하십시오.
@@ -155,7 +155,7 @@ SDK를 사용할지 아니면 명령행을 사용할 계획인지에 상관없�
 ## Fabric SDK를 사용하여 피어 운영
 {: #ibp-peer-operate-operate-with-sdk}
 
-Hyperledger Fabric SDK에서는 애플리케이션에서 블록체인 네트워크와 상호작용하고 운영하는 데 사용할 수 있는 강력한 API 세트를 제공합니다. [Hyperledger Fabric SDK 커뮤니티 문서 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/getting_started.html#hyperledger-fabric-sdks "Hyperledger Fabric SDK 커뮤니티 문서")에서 Fabric SDK 내에서 지원되는 최신 언어 목록과 사용 가능한 전체 API 목록을 찾을 수 있습니다. Fabric SDK를 사용하여 {{site.data.keyword.blockchainfull_notm}} Platform의 채널에 피어를 가입시키고 피어에 체인코드를 설치하며 채널에서 체인코드를 인스턴스화할 수 있습니다.
+Hyperledger Fabric SDK에서는 애플리케이션에서 블록체인 네트워크와 상호작용하고 운영하는 데 사용할 수 있는 강력한 API 세트를 제공합니다. [Hyperledger Fabric SDK 커뮤니티 문서 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/getting_started.html#hyperledger-fabric-sdks "Hyperledger Fabric SDK 커뮤니티 문서")에서 Fabric SDK 내에서 지원되는 최신 언어 목록과 사용 가능한 전체 API 목록을 찾을 수 있습니다. Fabric SDK를 사용하여 {{site.data.keyword.blockchainfull_notm}} Platform의 채널에 피어를 가입시키고 피어에 체인코드를 설치하며 채널에서 체인코드를 인스턴스화할 수 있습니다.
 
 다음 지시사항에서는 [Fabric Node SDK ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://fabric-sdk-node.github.io/ "Fabric Node SDK")를 사용하여 피어를 운영하고 이미 SDK에 익숙하다고 가정합니다. [애플리케이션 개발 튜토리얼](/docs/services/blockchain/v10_application.html#dev-app)은 시작하기 전에 Node SDK를 사용하는 방법을 알아보고 체인코드를 호출하여 조회할 준비가 되었을 때 피어로 애플리케이션을 개발하기 위한 가이드로 사용할 수 있습니다.
 
@@ -165,11 +165,11 @@ Hyperledger Fabric SDK에서는 애플리케이션에서 블록체인 네트워�
 NPM을 사용하여 [Node SDK ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://fabric-sdk-node.github.io/ "Node SDK")를 설치할 수 있습니다.
 
 ```
-npm install fabric-client@1.2
+npm install fabric-client@1.4.0
 ```
 {:codeblock}
 
-Node SDK 버전 1.2를 사용하는 것이 좋습니다.
+Node SDK 버전 1.4.0을 사용하는 것이 좋습니다.
 
 ### 피어에서 작동하도록 SDK 준비
 {: #ibp-peer-operate-prepare-node-sdk}
@@ -252,10 +252,10 @@ Fabric `peer` client를 사용하여 명령행에서 피어를 운영할 수도 
 ### Fabric 피어 클라이언트 다운로드
 {: #ibp-peer-operate-download-fabric-client}
 
-피어 클라이언트를 확보하는 가장 쉬운 방법은 Hyperledger에서 모든 Fabric 도구 바이너리를 다운로드하는 것입니다. 명령행을 사용하여 바이너리를 다운로드할 디렉토리로 이동하고 아래 명령을 실행하여 페치하십시오. [Curl ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/prereqs.html#install-curl "Curl")을 설치하지 않은 경우 먼저 설치해야 합니다.
+피어 클라이언트를 확보하는 가장 쉬운 방법은 Hyperledger에서 모든 Fabric 도구 바이너리를 다운로드하는 것입니다. 명령행을 사용하여 바이너리를 다운로드할 디렉토리로 이동하고 아래 명령을 실행하여 페치하십시오. [Curl ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/prereqs.html#install-curl "Curl")을 설치하지 않은 경우 먼저 설치해야 합니다.
 
 ```
-curl -sSL http://bit.ly/2ysbOFE | bash -s 1.2.1 1.2.1 -d -s
+curl -sSL http://bit.ly/2ysbOFE | bash -s 1.4.0 1.4.0 -d -s
 ```
 {:codeblock}
 
@@ -333,6 +333,8 @@ tree
 │   └── msp
 │       ├── cacerts
 │       │   └── 9-12-19-115-31873-SampleOrgCA.pem
+│       ├── IssuerPublicKey
+│       ├── IssuerRevocationPublicKey
 │       ├── keystore
 │       │   └── c44ec1e708f84b6d0359f58ce2c9c8a289919ba81f2cf4bb5187c4ad5a43cbb0_sk
 │       └── signcerts
@@ -362,6 +364,8 @@ tree
     └── msp
         ├── cacerts
         │   └── 9-30-250-70-30395-tlsca.pem
+        ├── IssuerPublicKey
+        ├── IssuerRevocationPublicKey
         ├── keystore
         │   └── bd57fa20283dfc76ada83f989ee0f62ce23e98c94dbd26f6cd23202d8084e38e_sk
         ├── signcerts
@@ -492,7 +496,7 @@ tree
 ### CLI를 사용하여 피어에 체인코드 설치
 {: #ibp-peer-operate-toolcontainer-install-cc}
 
-이제 피어에 체인코드를 설치하고 인스턴스화할 준비가 되었습니다. 이 지시사항에서 사용하기 위해 `fabric-samples` 저장소에서 `fabcar`를 설치합니다. 다음 명령을 사용하여 Github에서 `fabric-samples` 체인코드를 다운로드한 전후에 [GOPATH를 구성![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/dev-setup/devenv.html?highlight=gopath#set-your-gopath "GOPAT")했는지 확인하십시오.
+이제 피어에 체인코드를 설치하고 인스턴스화할 준비가 되었습니다. 이 지시사항에서 사용하기 위해 `fabric-samples` 저장소에서 `fabcar`를 설치합니다. 다음 명령을 사용하여 Github에서 `fabric-samples` 체인코드를 다운로드한 전후에 [GOPATH를 구성![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/dev-setup/devenv.html?highlight=gopath#set-your-gopath "GOPAT")했는지 확인하십시오.
 
 ```
 cd $GOPATH/src
@@ -534,7 +538,7 @@ peer chaincode instantiate -o ${ORDERER_1} -C ${CHANNEL} -n ${CC_NAME} -v v0 -c 
 2018-07-06 18:43:15.066 UTC [chaincodeCmd] checkChaincodeCmdParams -> INFO 002 Using default vscc
 ```
 
-체인코드가 인스턴스화된 후 체인코드 조회를 사용하고 명령을 호출하여 채널 원장의 데이터를 읽고 쓸 수 있습니다. 자세한 정보는 Hyperledger Fabric 문서에서 [피어 체인코드 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/latest/commands/peerchaincode.html) 명령을 참조하십시오. 프록시 IP와 외부 순서 지정자 포트를 사용하여 순서 지정자 엔드포인트를 호출 명령에 전달해야 합니다. 피어 엔드포인트를 조회 명령에 전달하기만 하면 됩니다.
+체인코드가 인스턴스화된 후 체인코드 조회를 사용하고 명령을 호출하여 채널 원장의 데이터를 읽고 쓸 수 있습니다. 자세한 정보는 Hyperledger Fabric 문서에서 [피어 체인코드 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/peerchaincode.html) 명령을 참조하십시오. 프록시 IP와 외부 순서 지정자 포트를 사용하여 순서 지정자 엔드포인트를 호출 명령에 전달해야 합니다. 피어 엔드포인트를 조회 명령에 전달하기만 하면 됩니다.
 
 ## 체인코드 업데이트
 {: #ibp-peer-operate-update-chaincode}
@@ -546,7 +550,7 @@ peer chaincode instantiate -o ${ORDERER_1} -C ${CHANNEL} -n ${CC_NAME} -v v0 -c 
 1. 각 피어에서 체인코드를 업데이트하려면 클라이언트 애플리케이션이나 CLI 명령을 사용하여 피어에 체인코드를 설치하는 데 사용한 프로세스를 다시 실행하기만 하면 됩니다. 원래 사용된 이름과 동일한 체인코드 이름을 지정하십시오. 그러나 이번에는 체인코드 `Version`을 늘르십시오. 모든 피어는 같은 체인코드 이름과 버전을 사용해야 합니다.
 
 2. 채널의 모든 피어에 새 체인코드를 설치한 다음 네트워크 모니터 또는
-[피어 체인코드 업그레이드 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/peerchaincode.html#peer-chaincode-upgrade) 명령을 사용하여 새 체인코드를 사용하도록 채널을 업데이트하십시오.
+[피어 체인코드 업그레이드 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/peerchaincode.html#peer-chaincode-upgrade) 명령을 사용하여 새 체인코드를 사용하도록 채널을 업데이트하십시오.
 
 네트워크 모니터의 "코드 설치" 패널을 사용하여 채널에서 체인코드를 업데이트하는 데 관한 자세한 정보는 해당 [지시사항](/docs/services/blockchain/howto/install_instantiate_chaincode.html#install-instantiate-chaincode-update-cc) 중 2단계를 참조하십시오.
 
@@ -571,7 +575,7 @@ peer chaincode instantiate -o ${ORDERER_1} -C ${CHANNEL} -n ${CC_NAME} -v v0 -c 
 
   `kubectl logs` 명령에 대한 자세한 정보는 [Kubernetes 문서 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs “Getting Started”)를 참조하십시오.
 
-- 또는 Kibana에서 로그를 여는 [{{site.data.keyword.cloud_notm}}Private 클러스터 관리 콘솔](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/troubleshoot/events.html)을 사용하여 로그에 액세스할 수 있습니다.
+- 또는 Kibana에서 로그를 여는 [{{site.data.keyword.cloud_notm}}Private 클러스터 관리 콘솔](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/troubleshoot/events.html)을 사용하여 로그에 액세스할 수 있습니다.
 
    **참고:** Kibana에서 로그인이 표시되면 `No results found`의 응답을 수신할 수 있습니다. 이 상태는 {{site.data.keyword.cloud_notm}} Private이 호스트 이름으로 작업자 노드 IP 주소를 사용하는 경우 발생할 수 있습니다. 이 문제점을 해결하려면 패널 상단에서 `node.hostname.keyword`로 시작하는 필터를 제거하십시오. 그런 다음 로그가 표시됩니다.
 
@@ -597,13 +601,13 @@ Error: Error endorsing invoke: rpc error: code = Unknown desc = error executing 
 네트워크 모니터 UI가 스타터 또는 엔터프라이즈 계획에서 실행 중인 피어에 체인코드를 설치하고 인스턴스화하는 데 사용된 후 {{site.data.keyword.cloud_notm}} Private에서 실행 중인 피어에 체인코드를 설치하면 이 오류가 발생할 수 있습니다. 피어의 결과 체인코드 경로가 다르기 때문에 `호출` 요청에서 오류가 발생합니다.
 
 **솔루션:**
-{{site.data.keyword.cloud_notm}}(예: 스타터 또는 엔터프라이즈 플랜) 및 {{site.data.keyword.cloud_notm}} Private 둘 다에서 피어에 체인코드를 실행하려면 네트워크 모니터 UI를 사용하여 체인코드를 설치하지 마십시오. 대신 [`peer chaincode package`![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/peerchaincode.html?highlight=peer%20chaincode%20package#peer-chaincode-package) 명령으로 체인코드를 패키지한 다음 [`peer chaincode install`](/docs/services/blockchain/howto/peer_operate_ibp.html#ibp-peer-operate-toolcontainer-install-cc) 명령을 실행하여 모든 피어에 패키지를 설치하십시오.
+{{site.data.keyword.cloud_notm}}(예: 스타터 또는 엔터프라이즈 플랜) 및 {{site.data.keyword.cloud_notm}} Private 둘 다에서 피어에 체인코드를 실행하려면 네트워크 모니터 UI를 사용하여 체인코드를 설치하지 마십시오. 대신 [`peer chaincode package`![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/peerchaincode.html?highlight=peer%20chaincode%20package#peer-chaincode-package) 명령으로 체인코드를 패키지한 다음 [`peer chaincode install`](/docs/services/blockchain/howto/peer_operate_ibp.html#ibp-peer-operate-toolcontainer-install-cc) 명령을 실행하여 모든 피어에 패키지를 설치하십시오.
 
 체인코드가 채널에 이미 설치되고 인스턴스화된 경우 {{site.data.keyword.cloud_notm}} Private 피어에 체인코드를 설치하기 전에 해당 문제를 방지하려면 다음 단계를 완료해야 합니다.
 
-1. [`peer chaincode package`![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/peerchaincode.html?highlight=peer%20chaincode%20package#peer-chaincode-package) 명령을 사용하여 체인코드를 패키지하십시오.
+1. [`peer chaincode package`![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/peerchaincode.html?highlight=peer%20chaincode%20package#peer-chaincode-package) 명령을 사용하여 체인코드를 패키지하십시오.
 2. `peer chaincode install` 명령을 실행하여 {{site.data.keyword.cloud_notm}} Private에서 실행되는 피어에 체인코드 패키지를 설치하십시오.
-3. 플랫폼 특정 바이너리가 있는 경우 [`peer chaincode upgrade`![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/peerchaincode.html?highlight=peer%20chaincode%20package#peer-chaincode-upgrade) 명령을 실행하여 체인코드 패키지를 사용하는 스타터 또는 엔터프라이즈 플랜 피어에서 실행 중인 체인코드를 업그레이드할 수 있습니다.
+3. 플랫폼 특정 바이너리가 있는 경우 [`peer chaincode upgrade`![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/peerchaincode.html?highlight=peer%20chaincode%20package#peer-chaincode-upgrade) 명령을 실행하여 체인코드 패키지를 사용하는 스타터 또는 엔터프라이즈 플랜 피어에서 실행 중인 체인코드를 업그레이드할 수 있습니다.
 4. 네트워크 모니터 UI 또는 CLI를 사용하여 채널에 새로 설치된 체인코드를 인스턴스화하십시오.
 
-체인코드를 업그레이드할 수 있는 프로세스는 Hyperledger Fabric 문서의 [`Chaincode for Operators`![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/chaincode4noah.html)에서 찾을 수 있습니다.
+체인코드를 업그레이드할 수 있는 프로세스는 Hyperledger Fabric 문서의 [`Chaincode for Operators`![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/chaincode4noah.html)에서 찾을 수 있습니다.

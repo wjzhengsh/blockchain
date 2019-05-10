@@ -2,7 +2,9 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-19"
+
+keywords: smart contract, private data, private data collection, anchor peer
 
 subcollection: blockchain
 
@@ -68,7 +70,7 @@ La console {{site.data.keyword.blockchainfull_notm}} gestisce la *distribuzione*
 - Per un'esercitazione end-to-end completa relativa all'utilizzo di un'applicazione per interagire con gli smart contract, vedi l'[esercitazione Commercial paper di Hyperledger Fabric ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/tutorial/commercial_paper.html "esercitazione Commercial paper di Hyperledger Fabric").
 - Per ulteriori informazioni su come incorporare i meccanismi di controllo dell'accesso nel tuo smart contract, vedi il documento relativo al [chaincode per gli sviluppatori ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/chaincode4ade.html#chaincode-access-control "chaincode per gli sviluppatori").
 - Quando sei pronto a iniziare a creare degli smart contract, puoi utilizzare l'[estensione {{site.data.keyword.blockchainfull_notm}} Visual Studio Code ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://marketplace.visualstudio.com/items?itemName=IBMBlockchain.ibm-blockchain-platform "{{site.data.keyword.blockchainfull_notm}} Platform - Visual Studio Marketplace") per iniziare a creare il tuo progetto di smart contract. Puoi anche utilizzare tale estensione per [connetterti direttamente alla tua rete da Visual Studio Code](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-vscode).
-- Quando sei pronto ad eseguire l'installazione, lo smart contract deve essere impacchettato in [formato .cds ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/latest/chaincode4noah.html#packaging "impacchettamento di smart contract") in modo che possa essere installato sui peer. Per ulteriori informazioni, vedi [Impacchettamento di smart contract](/docs/services/blockchain/vscode-extension.html#packaging-a-smart-contract). In alternativa, puoi utilizzare i [comandi peer cli ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/peerchaincode.html#peer-chaincode-package "peer chaincode package") per creare il pacchetto.
+- Quando sei pronto ad eseguire l'installazione, lo smart contract deve essere impacchettato in [formato .cds ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/chaincode4noah.html#packaging "impacchettamento di smart contract") in modo che possa essere installato sui peer. Per ulteriori informazioni, vedi [Impacchettamento di smart contract](/docs/services/blockchain/vscode-extension.html#packaging-a-smart-contract). In alternativa, puoi utilizzare i [comandi peer cli ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/peerchaincode.html#peer-chaincode-package "peer chaincode package") per creare il pacchetto.
 <!-- Update the tutorial link to release1-4 when it is published -->
 
 
@@ -78,7 +80,7 @@ La console {{site.data.keyword.blockchainfull_notm}} gestisce la *distribuzione*
 Utilizza la tua console per eseguire i seguenti passi:
 
 1. Fai clic sulla scheda **Smart contract** per installare uno o più smart contract.
-2. Fai clic su **Installa smart contract** per caricare il file di pacchetto di smart contract in [formato .cds ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/latest/chaincode4noah.html#packaging "impacchettamento di smart contract").
+2. Fai clic su **Installa smart contract** per caricare il file di pacchetto di smart contract in [formato .cds ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/chaincode4noah.html#packaging "impacchettamento di smart contract").
 Puoi utilizzare l'estensione {{site.data.keyword.blockchainfull_notm}} Visual Studio Code per [creare un pacchetto di smart contract](/docs/services/blockchain/vscode-extension.html#packaging-a-smart-contract). Quando installi il pacchetto dalla scheda **Smart contract**, puoi selezionare uno o più nodi peer su cui installare gli smart contract.
 
 Se nella console esiste solo un singolo peer, lo smart contract verrà installato su di esso. Non ti viene richiesto di selezionare un peer su cui installare lo smart contract. Puoi andare alla scheda dei nodi e fare clic su un peer gestito dalla tua console per visualizzare l'elenco degli smart contract che sono stati installati su un singolo peer.
@@ -98,17 +100,15 @@ Gli smart contract sono istanziati su un canale. Qualsiasi membro della console 
 Utilizza la tua console per eseguire i seguenti passi:
 
 1. Nella scheda degli smart contract, trova lo smart contract dall'elenco di quelli installati sui tuoi peer e fai clic su **Istanzia** dal menu di overflow sul lato destro della riga.
-2. Nel pannello laterale che viene aperto, seleziona un canale su cui istanziare lo smart contract e seleziona l'ordinante dove risiede il canale. Puoi selezionare il canale, denominato `channel1` e il nodo ordinante, denominato `Orderer`, che hai creato. Poi, fai clic su **Avanti**.
-3. Specifica la [politica di approvazione per lo smart contract](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-endorse) descritta nella seguente sezione.
-4. Devi anche selezionare i membri dell'organizzazione da includere nella politica. Se ti stai attenendo all'esercitazione, si tratterà di `org1msp` e forse di `org2msp` se hai completato entrambe le esercitazioni **Crea una rete** e **Unisciti a una rete**.
-5. Nell'ultimo pannello ti viene chiesto di specificare la funzione smart contract che desideri eseguire quando viene avviato lo smart contract, insieme agli argomenti associati da passare a tale funzione.
+2. Nel pannello laterale che viene aperto, seleziona un canale su cui istanziare lo smart contract. Puoi selezionare il canale, denominato `channel1`, che hai creato. Poi, fai clic su **Avanti**.
+3. Specifica la [politica di approvazione per lo smart contract](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-endorse) descritta nella seguente sezione. Quando più organizzazioni sono membri del canale, hai l'opportunità di scegliere quante organizzazioni sono necessarie per approvare le transazioni di smart contract.
+4. Devi anche selezionare i membri dell'organizzazione da includere nella politica di approvazione. Se ti stai attenendo all'esercitazione, si tratterà di `org1msp` e forse di `org2msp` se hai completato entrambe le esercitazioni **Crea una rete** e **Unisciti a una rete**.
+5. Se il tuo smart contract include delle raccolte di dati privati Fabric, devi caricare il file JSON di configurazione della raccolta associata, altrimenti puoi ignorare questo passo. Vedi questo argomento per ulteriori informazioni sull'utilizzo dei [dati privati](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-private-data).
+6. Nell'ultimo pannello ti viene chiesto di specificare la funzione smart contract che desideri eseguire quando viene avviato lo smart contract, insieme agli argomenti associati da passare a tale funzione.
 
 Puoi visualizzare tutti gli smart contract che sono stati istanziati su un canale facendo clic sull'icona di canale nella navigazione di sinistra, selezionando un canale dalla tabella e facendo quindi clic sulla scheda **Dettagli del canale**.
 
-Tieni presente che, se utilizzi un cluster del servizio {{site.data.keyword.cloud_notm}} Kubernetes gratuito, l'istanziazione può richiedere molto più tempo che in un cluster a pagamento. A seconda del numero di peer che hai distribuito nel tuo cluster, questa operazione può richiedere diversi minuti.
-
-Se il tuo smart contract include una definizione di raccolta di dati privati, lo smart contract non può essere istanziato dalla console {{site.data.keyword.blockchainfull_notm}}. Vedi questi [suggerimenti](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-private-data) relativi alla modalità di istanziazione di uno smart contract che include dei dati privati.
-{:note}
+Tieni presente che, se utilizzi un cluster {{site.data.keyword.cloud_notm}} Kubernetes Service gratuito, l'istanziazione può richiedere molto più tempo che in un cluster a pagamento. A seconda del numero di peer che hai distribuito nel tuo cluster, questa operazione può richiedere diversi minuti.
 
 La combinazione di **installazione e istanziazione** è una potente funzione perché consente a un peer di utilizzare un singolo smart contract su molti canali. I peer possono volersi unire a più canali che utilizzano lo stesso smart contract ma con insiemi di membri della rete differenti in grado di accedere ai dati. Un peer può installare lo smart contract una sola volta e utilizzare quindi lo stesso contenitore smart contract su qualsiasi canale dove è stato istanziato. Questo approccio leggero consente di risparmiare spazio di calcolo e di archiviazione e ti aiuta a ridimensionare la tua rete.
 
@@ -133,10 +133,11 @@ Fai clic sul pulsante **Avanzate** se desideri specificare una politica in forma
 ## Upgrade di uno smart contract
 {: #ibp-console-smart-contracts-upgrade}
 
-Puoi eseguire l'upgrade di uno smart contract per modificarne il codice o la politica di approvazione conservandone al tempo stesso la sua relazione con gli asset nel libro mastro. Potresti voler eseguire l'upgrade di uno smart contract istanziato per diversi motivi.
+Puoi eseguire l'upgrade di uno smart contract per modificarne il codice, la politica di approvazione o la raccolta di dati privati conservandone al tempo stesso la sua relazione con gli asset nel libro mastro. Potresti voler eseguire l'upgrade di uno smart contract istanziato per diversi motivi.
 1. Puoi eseguire l'upgrade dello smart contract per aggiungere o rimuovere funzionalità dal suo codice e ad eseguire iterazioni sulla logica della tua rete di business.
 2. Ogni volta che un nuovo membro viene aggiunto a un canale, la politica di approvazione degli smart contract istanziati *deve* essere aggiornata per includere il nuovo membro del canale. Per lavorare con il nuovo membro del canale, lo smart contract deve essere reimpacchettato con un nuovo numero di versione e istanziato sul canale, anche se lo smart contract stesso è invariato. In caso contrario, l'approvazione della transazione non può avere esito positivo.
-3. Gli argomenti di inizializzazione dello smart contract sono stati modificati.
+3. Quando viene modificata una raccolta di dati privati, ad esempio viene aggiunta o rimossa un'organizzazione, devi eseguire l'upgrade del tuo smart contract. Oppure, utilizzare questa azione se viene aggiunta una nuova raccolta di dati privati al file JSON di configurazione della raccolta.
+4. Gli argomenti di inizializzazione dello smart contract sono stati modificati.
 
 **Prima di eseguire l'upgrade di uno smart contract istanziato, la nuova versione dello smart contract deve essere installata su tutti i peer nel canale che stanno eseguendo il livello precedente dello smart contract.**
 
@@ -154,9 +155,12 @@ Quando un nuovo membro che eseguirà lo smart contract si unisce al canale, è o
 
  1. Seleziona la versione dello smart contract di cui desideri eseguire l'upgrade sul canale dall'elenco a discesa.
  2. Aggiorna la politica di approvazione aggiungendo o rimuovendo membri del canale. Puoi anche fare clic su **Avanzate** per incollare una nuova stringa con formattazione JSON, che modifica la politica esistente.
- 3. (Facoltativo) Modifica i valori di argomento di inizializzazione dello smart contract se i parametri hanno subito variazioni. Se non ne sei sicuro, controlla con il tuo sviluppatore dello smart contract. Se non hanno subito variazioni, puoi lasciare questo campo vuoto.
+ 3. Se vuoi associare il file di configurazione della raccolta di dati privati allo smart contract, puoi caricare il file JSON. Oppure se vuoi aggiornare una configurazione della raccolta esistente, puoi caricare il file JSON.   
+ Se lo smart contract era stato precedentemente istanziato con un file di configurazione della raccolta, **devi** caricare nuovamente la precedente versione o una nuova versione del file di configurazione della raccolta durante questo passo.  
+ {:important}
+ 4. (Facoltativo) Modifica i valori di argomento di inizializzazione dello smart contract se i parametri hanno subito variazioni. Se non ne sei sicuro, controlla con il tuo sviluppatore dello smart contract. Se non hanno subito variazioni, puoi lasciare questo campo vuoto.
 
-Dopo che hai eseguito l'upgrade dello smart contract, modificherai la versione del contratto istanziato sul canale e modificherai il contenitore smart contract per tutti i peer che hanno installato la nuova versione.
+Dopo che hai eseguito l'upgrade dello smart contract, modificherai la versione del contratto istanziato sul canale e modificherai il contenitore smart contract per tutti i peer che hanno installato la nuova versione. Se stai utilizzando le raccolte di dati privati, assicurati di aver configurato dei peer di ancoraggio sul canale.
 
 ### Considerazioni quando esegui l'upgrade di smart contract
 {: #ibp-console-smart-contracts-upgrade-considerations}
@@ -173,25 +177,25 @@ Dopo che hai eseguito l'upgrade dello smart contract, modificherai la versione d
 
   Dopo l'aggiornamento del canale per utilizzare la nuova versione dello smart contract, se ci sono ancora dei peer sul canale che eseguono la versione precedente, tali peer non possono più approvare transazioni per lo smart contract. Rischi inoltre di non disporre di un numero sufficiente di approvazioni perché venga eseguito il commit delle transazioni sul libro mastro, a seconda di come è definita la politica di approvazione dello smart contract. Tuttavia, è possibile installare la nuova versione dello smart contract su questi peer in un secondo momento e potranno nuovamente approvare le transazioni, effettivamente rimettendosi al passo.
 
+4. Cosa succede quando rimuovo un'organizzazione dalla mia raccolta di dati privati?
+
+   I peer in tale organizzazione continueranno ad archiviare i dati nella raccolta di dati privati finché il relativo libro mastro raggiunge il blocco che rimuove la sua appartenenza dalla raccolta. Dopo che questo si verifica, i peer non riceveranno i dati privati in alcuna transazione futura e i _client_ di tale organizzazione non potranno più eseguire query dei dati privati tramite il chaincode da tutti i peer.
+
 ## Dati privati
 {: #ibp-console-smart-contracts-private-data}
 
 I dati privati sono una funzione delle reti Hyperledger Fabric alla versione 1.2 o superiore e sono utilizzati per mantenere private le informazioni sensibili rispetto agli altri membri dell'organizzazione **in un canale**. La riservatezza dei dati viene ottenuta mediante l'uso di [raccolte di dati privati ![Icona link esterno")](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/private-data/private-data.html#what-is-a-private-data-collection "What is a private data collection?"). Ad esempio, diversi grossisti e un gruppo di agricoltori potrebbero essere uniti a un singolo canale. Se un agricoltore e un grossista vogliono eseguire transazioni in privato, possono creare un canale a questo scopo. Possono però anche decidere di creare una raccolta di dati privati sullo smart contract che regola le loro interazioni commerciali per mantenere la riservatezza sugli aspetti sensibili della vendita, come ad esempio il prezzo, senza dover creare un canale secondario. Per ulteriori informazioni su quando utilizzare i dati privati all'interno di una blockchain, visita l'articolo relativo al concetto di [dati privati![Icona link esterno")](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/private-data/private-data.html#private-data "dati privati") nella documentazione di Fabric.
 
 Per utilizzare i dati privati con {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta, devono essere soddisfatte le tre condizioni di seguito indicate.  
-1. **Definisci la raccolta di dati privati.** Un file di raccolta di dati privati può essere aggiunto al tuo smart contract. Quindi, al runtime, la tua applicazione client può utilizzare le API di chaincode specifiche per i dati privati per immettere e richiamare dati dalla raccolta. Per ulteriori informazioni su come utilizzare le raccolte di dati privati con il tuo smart contract, vedi l'esercitazione relativa all'[utilizzo di dati privati ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/latest/private_data_tutorial.html "utilizzo di dati privati") nella documentazione di Fabric.  
+1. **Definisci la raccolta di dati privati.** Un file di raccolta di dati privati può essere aggiunto al tuo smart contract. Quindi, al runtime, la tua applicazione client può utilizzare le API di chaincode specifiche per i dati privati per immettere e richiamare dati dalla raccolta. Per ulteriori informazioni su come utilizzare le raccolte di dati privati con il tuo smart contract, vedi l'esercitazione dell'SDK Fabric su [Utilizzo dei dati privati ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://fabric-sdk-node.github.io/tutorial-private-data.html "How to use Private Data") nella documentazione dell'SDK Fabric.  
 
-2. **Installa e istanzia lo smart contract.** Dopo che la raccolta di dati privati dello smart contract è stata definita, devi installare lo smart contract sui peer che sono membri del canale. Quando istanzi lo smart contract sul canale, devi specificare la configurazione della raccolta. La console {{site.data.keyword.blockchainfull_notm}} attualmente non fornisce un modo per specificare una definizione della raccolta **durante** l'istanziazione dello smart contract. Tuttavia, puoi utilizzare l'SDK Fabric per installare, istanziare e aggiornare uno smart contract che utilizza i dati privati. Per ulteriori informazioni, consulta [How to use private data ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://fabric-sdk-node.github.io/release-1.4/tutorial-private-data.html "how to use private data") nella documentazione SDK Node.  
+2. **Installa e istanzia lo smart contract.** Dopo che la raccolta di dati privati dello smart contract è stata definita, devi installare lo smart contract sui peer che sono membri del canale. Quando istanzi lo smart contract sul canale utilizzando la console, devi caricare il file JSON di configurazione della raccolta. Per ulteriori informazioni su come [creare un file JSON di definizione della raccolta ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://fabric-sdk-node.github.io/tutorial-private-data.html "How to use private data") vedi l'argomento della documentazione dell'SDK Fabric.
 
- **Nota:** un client deve essere un amministratore del tuo peer per installare o istanziare uno smart contract. Pertanto, devi scaricare i certificati dell'identità amministratore del peer dal tuo portafoglio della console e passare la chiave privata e quella pubblica dell'amministratore del peer direttamente all'SDK invece di creare un'identità dell'applicazione. Per un esempio di come passare una coppia di chiavi all'SDK, vedi [Connessione alla tua rete utilizzando API SDK Fabric di basso livello](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-low-level).  
+  Invece di utilizzare la console per installare e istanziare il tuo smart contract con un file di configurazione della raccolta, puoi anche utilizzare l'SDK Fabric. Queste istruzioni sono disponibili anche in [How to use private data ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://fabric-sdk-node.github.io/release-1.4/tutorial-private-data.html "how to use private data") nella documentazione dell'SDK Node.  
 
-3. **Configura i peer di ancoraggio.** Poiché il [gossip ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/gossip.html "Gossip data dissemination protocol") tra le organizzazioni deve essere abilitato perché i dati privati funzionino, deve esistere un peer di ancoraggio per ciascuna organizzazione nella definizione della raccolta. Questo peer di ancoraggio non è un **tipo** di peer speciale; è solo il peer che l'organizzazione rende noto alle altre organizzazioni, eseguendo così il bootstrap del gossip tra le organizzazioni. Pertanto, deve essere definito almeno un [peer di ancoraggio ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/gossip.html#anchor-peers "Anchor peers") per ciascuna organizzazione nella definizione della raccolta.
- - Per configurare un peer in modo che sia un peer di ancoraggio, fai clic sulla scheda **Canali** e apri il canale dove era stato istanziato lo smart contract.  
- - Fai clic sulla scheda **Dettagli del canale**.
- - Scorri verso il basso fino alla tabella Peer di ancoraggio e fai clic su **Aggiungi peer di ancoraggio**.
- - Seleziona almeno un peer da ciascuna organizzazione nella definizione della raccolta che desideri funga da peer di ancoraggio per l'organizzazione. Per motivi di ridondanza, puoi considerare la selezione di più di un peer da ciascuna organizzazione nella raccolta.
+  **Nota:** un client deve essere un amministratore del tuo peer per installare o istanziare uno smart contract utilizzando l'SDK. Pertanto, devi scaricare i certificati dell'identità amministratore del peer dal tuo portafoglio della console e passare la chiave privata e quella pubblica dell'amministratore del peer direttamente all'SDK invece di creare un'identità dell'applicazione. Per un esempio di come passare una coppia di chiavi all'SDK, vedi [Connessione alla tua rete utilizzando API SDK Fabric di basso livello](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-low-level).  
+
+
+3. **Configura i peer di ancoraggio.** Poiché il [gossip ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/gossip.html "Gossip data dissemination protocol") tra le organizzazioni deve essere abilitato perché i dati privati funzionino, deve esistere un peer di ancoraggio per ciascuna organizzazione nella definizione della raccolta. Fai riferimento a queste informazioni su [come configurare i peer di ancoraggio](/docs/services/blockchain/howto/ibp-console-govern.html#ibp-console-govern-channels-anchor-peers) sulla tua rete.
 
 Il tuo canale è ora configurato per utilizzare i dati privati.
-
-**Problema:** l'installazione, l'istanziazione o l'upgrade di uno smart contract non riesce con un errore nella console.  
-**Soluzione:** se una di queste azioni su uno smart contract non riesce, [controlla i tuoi log del nodo](/docs/services/blockchain/howto/ibp-console-manage.html#ibp-console-manage-console-node-logs) per rilevare la presenza di eventuali errori.

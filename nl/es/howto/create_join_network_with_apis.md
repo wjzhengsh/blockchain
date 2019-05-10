@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-03-20"
 
 subcollection: blockchain
 
@@ -69,7 +69,7 @@ Para utilizar API de Swagger para crear o unirse a una red, necesita una credenc
 Puede utilizar API para crear redes de blockchain solo en ubicaciones de red disponibles. Antes de crear una red, utilice la API siguiente para obtener una lista actual de las ubicaciones de red disponibles. No se necesitan credenciales para ejecutar esta API.
 
 ```
-https://ibmblockchain-v2.ng.bluemix.net/api/v1/network-locations/available
+https://ibp-ep.us-south.ibm-blockchain-5-prod.cloud.ibm.com/api/v1/network-locations/available
 ```
 {:codeblock}
 

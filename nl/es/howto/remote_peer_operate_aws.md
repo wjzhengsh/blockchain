@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-03-20"
 
 subcollection: blockchain
 
@@ -29,7 +29,7 @@ Los SDK de Hyperledger Fabric ofrecen un potente conjunto de API que permiten a 
 
 En las siguientes instrucciones se utiliza el [Node SDK de Fabric ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://fabric-sdk-node.github.io/ "SDK de Hyperledger Fabric para node.js") para trabajar con el igual y se da por supuesto que está familiarizado con el SDK. Puede utilizar la [guía de aprendizaje sobre desarrollo de aplicaciones](/docs/services/blockchain/v10_application.html#dev-app) para aprender a utilizar Node SDK antes de empezar y como guía para desarrollar aplicaciones con el igual cuando esté listo para invocar el código de encadenamiento de la consulta.
 
-El Inicio rápido del igual de {{site.data.keyword.blockchainfull_notm}} Platform en AWS crea dos iguales para obtener alta disponibilidad. Por lo tanto, tiene que seguir los pasos operativos para cada igual. Una vez que esté listo para consultar e invocar código de encadenamiento desde su aplicación, haga que el SDK se conecte a ambos iguales para garantizar que las [aplicaciones tengan alta disponibilidad](/docs/services/blockchain/v10_application.html#dev-app-ha-app).
+El Inicio rápido del igual de {{site.data.keyword.blockchainfull_notm}} Platform en AWS crea dos iguales para obtener alta disponibilidad. Por lo tanto, tiene que seguir los pasos operativos para cada igual. Una vez que esté listo para consultar e invocar código de encadenamiento desde su aplicación, haga que el SDK se conecte a ambos iguales para garantizar que las [aplicaciones tengan alta disponibilidad](/docs/services/blockchain/best_practices.html#best-practices-app-ha-app).
 
 ### Instalación de Node SDK
 {: #remote-peer-aws-operate-install-sdk}
@@ -161,7 +161,7 @@ El primer paso consiste en generar los certificados necesarios (inscripciones) u
 
 4.  También tendrá que recuperar un certificado TLS de {{site.data.keyword.blockchainfull_notm}} Platform para comunicarse con la CA. Las credenciales de red anteriores incluyen el certificado necesario. En la sección `certificateAuthorities` del archivo de perfil de conexión, copie el certificado que hay tras `"pem:"`, que empieza por `-----BEGIN CERTIFICATE-----` y termina por `-----END CERTIFICATE----- `. **No incluya las comillas**.
 
-    Ejecute el siguiente mandato desde una ventana de terminal, sustituyendo `<certificate>` por el certificado que ha copiado.
+    Ejecute el siguiente mandato desde una ventana de terminal, sustituyendo `<certificate>` por el certificado copiado.
     ```
     echo -e "<certificate>" > $HOME/fabric-ca-remote/cert.pem
     ```
@@ -251,8 +251,7 @@ En la máquina local, abra un terminal de mandatos y vaya al directorio al ha mo
 
       **Nota:** de forma predeterminada, la plantilla de Inicio rápido de AWS crea dos instancias del igual en dos zonas de disponibilidad distintas. Si ya ha realizado estos pasos para uno de estos iguales, cuando realice estos pasos para la segunda instancia, el archivo cacert.pem ya existirá. Continúe y sustitúyalo por el certificado del segundo igual.
 
-4. Para otorgar a la CLI la autorización para instalar código de encadenamiento en el igual, cargue el signCert generado por el cliente de CA de Fabric en la carpeta de administración del igual y reinicie el igual. Por lo tanto, copie el certificado
-`admincert/cert.pem` de la máquina local en el directorio `/etc/hyperledger/<PEER_ENROLL_ID>/msp/admincerts/` del contenedor del igual como `cert2.pem`.
+4. Para otorgar a la CLI la autorización para instalar código de encadenamiento en el igual, cargue el signCert generado por el cliente de CA de Fabric en la carpeta de administración del igual y reinicie el igual. Por lo tanto, copie el certificado `admincert/cert.pem` de la máquina local en el directorio `/etc/hyperledger/<PEER_ENROLL_ID>/msp/admincerts/` del contenedor del igual como `cert2.pem`.
 
     - En la máquina local, ejecute los mandatos siguientes:
 
@@ -378,9 +377,9 @@ Para poder ejecutar los mandatos de CLI para unir el igual a un canal, la organi
     {:codeblock}
 
     Sustituya los campos por su propia información.
-      - Sustituya `<ORDERER_URL>` por el nombre de host y el puerto del clasificador que encontrará en el archivo `creds.json`.
+      - Sustituya `<ORDERER_URL>` por el nombre de host y el puerto del clasificador del archivo `creds.json`.
       - Sustituya `<CHANNEL_NAME>` por el nombre del canal al que se une el igual.
-      - Sustituya `<CC_NAME>` por cualquier nombre que haga referencia a su código de encadenamiento.
+      - Sustituya `<CC_NAME>` por cualquier nombre que haga referencia al código de encadenamiento.
       - Sustituya `<ORGANIZATION_MSP_ID>` por el nombre de la organización que encontrará en el archivo `creds.json`.
       - Sustituya `<PEER_ADDR>` por el valor que ha construido en el paso anterior.  
 
@@ -522,7 +521,7 @@ Consulte el paso dos de estas [instrucciones](/docs/services/blockchain/howto/in
 ### **Problema:** el igual remoto no se puede conectar a la red blockchain
 {: #remote-peer-aws-operate-problem-1}
 
-LA creación de la pila finaliza correctamente, pero los registros de Docker contienen el error:
+La creación de la pila finaliza correctamente, pero los registros de Docker contienen el error:
 
 ```
 [main] main -> ERRO 001 Cannot run peer because error when setting up MSP of type bccsp from directory /etc/hyperledger/awspeer1/msp: Setup error: nil conf reference

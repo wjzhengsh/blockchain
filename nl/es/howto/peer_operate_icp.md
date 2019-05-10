@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -20,7 +20,7 @@ subcollection: blockchain
 # Funcionamiento de iguales en {{site.data.keyword.cloud_notm}} Private con una red multinube
 {: #icp-peer-operate}
 
-Después de configurar {{site.data.keyword.blockchainfull}} Platform en el igual de {{site.data.keyword.cloud_notm}} Private, tiene que llevar a cabo varios pasos operativos para que el igual pueda enviar transacciones para consultar e invocar el libro mayor de la red blockchain. Los pasos incluyen añadir su organización a un canal, unir el igual al canal, instalar el código de encadenamiento en el igual,
+Después de configurar un igual de {{site.data.keyword.blockchainfull}} Platform para {{site.data.keyword.cloud_notm}} Private, tiene que llevar a cabo varios pasos operativos para que el igual pueda enviar transacciones para consultar e invocar el libro mayor de la red blockchain. Los pasos incluyen añadir su organización a un canal, unir el igual al canal, instalar el código de encadenamiento en el igual,
 crear una instancia del código de encadenamiento en el canal y conectar aplicaciones al igual. Si desea conectar el igual a una red del Plan inicial o del Plan empresarial, consulte
 [Funcionamiento de iguales en {{site.data.keyword.cloud_notm}} Private con el Plan inicial o el Plan empresarial](/docs/services/blockchain/howto/peer_operate_ibp.html#ibp-peer-operate).
 {:shortdesc}
@@ -43,7 +43,7 @@ Los SDK de Fabric son el método recomendado, aunque en las instrucciones se pre
 Si la organización aún no es miembro de un consorcio o canal, puede utilizar estos pasos para [crear un canal](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-create-channel). Las instrucciones le indicarán cómo [preparar la definición de una organización](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-organization-definition). Esta definición se utilizará para convertirle en miembro del consorcio al añadirle a un canal de sistema de clasificador. Más adelante, podrá formar un nuevo canal mediante la
 [creación de una transacción de canal](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-channeltx)
 <!--
-It is recommended that you deploy at least two instances of the peer Helm chart for [high availability](peer_icp.html#high-availability). Therefore, you need to follow these operations steps once for each peer. When you are ready to invoke and query chaincode from your application, connect to both peers to ensure that your [applications are highly available](../v10_application.html#ha-app).
+It is recommended that you deploy at least two instances of the peer Helm chart for [high availability](peer_icp.html#high-availability). Therefore, you need to follow these operations steps once for each peer. When you are ready to invoke and query chaincode from your application, connect to both peers to ensure that your [applications are highly available](../best_practices.html#best-practices-app-ha-app).
 -->
 
 ## Requisitos previos
@@ -122,7 +122,7 @@ Necesitará utilizar la herramienta de línea de mandatos **kubectl** para conec
 {: #icp-peer-operate-peer-endpoint}
 
 Debe establecer como objetivo el punto final de igual desde el SDK o el cliente de CA de Fabric para unirse al canal o instalar contratos inteligentes. Puede encontrar el punto final del igual utilizando la interfaz de usuario de la consola de {{site.data.keyword.cloud_notm}} Private. Necesitará ser un
-[administrador del clúster ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Acciones y roles de administrador de clúster") para realizar los pasos siguientes:
+[administrador del clúster ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/user_management/assign_role.html "Acciones y roles de administrador de clúster") para realizar los pasos siguientes:
 
 1. Inicie sesión en la consola de {{site.data.keyword.cloud_notm}} Private y pulse el icono **Menú** en la esquina superior izquierda.
 2. Pulse **Carga de trabajo** > **Releases de Helm**.
@@ -161,7 +161,7 @@ Necesita descargar el certificado TLS del igual y pasarlo a los mandatos para co
 ## Utilización de los SDK de Fabric para trabajar con el igual
 {: #icp-peer-operate-with-sdk}
 
-Los SDK de Hyperledger Fabric ofrecen un potente conjunto de API que permiten a las aplicaciones interactuar con las redes blockchain. Encontrará la lista más reciente de lenguajes soportados y una lista de las API disponibles en los SDK de Fabric en la [documentación de la comunidad de SDK de Hyperledger Fabric ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/getting_started.html#hyperledger-fabric-sdks "documentación de la comunidad de SDK de Hyperledger Fabric"). Puede utilizar los SDK de Fabric para unir su igual a un canal en {{site.data.keyword.blockchainfull_notm}} Platform, instalar un código de encadenamiento en el igual y crear una instancia del código de encadenamiento en un canal.
+Los SDK de Hyperledger Fabric ofrecen un potente conjunto de API que permiten a las aplicaciones interactuar con las redes blockchain. Encontrará la lista más reciente de lenguajes soportados y una lista de las API disponibles en los SDK de Fabric en la [documentación de la comunidad de SDK de Hyperledger Fabric ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/getting_started.html#hyperledger-fabric-sdks "documentación de la comunidad de SDK de Hyperledger Fabric"). Puede utilizar los SDK de Fabric para unir su igual a un canal en {{site.data.keyword.blockchainfull_notm}} Platform, instalar un código de encadenamiento en el igual y crear una instancia del código de encadenamiento en un canal.
 
 En las siguientes instrucciones se utiliza el [Node SDK de Fabric ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://fabric-sdk-node.github.io/ "Node SDK de Fabric") para trabajar con el igual y se da por supuesto que está familiarizado con el SDK. Puede utilizar la [guía de aprendizaje sobre desarrollo de aplicaciones](/docs/services/blockchain/v10_application.html#dev-app) para aprender a utilizar Node SDK antes de empezar y como guía para desarrollar aplicaciones con el igual cuando esté listo para invocar el código de encadenamiento de la consulta.
 
@@ -171,11 +171,11 @@ En las siguientes instrucciones se utiliza el [Node SDK de Fabric ![Icono de enl
 Puede utilizar NPM para instalar [Node SDK ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://fabric-sdk-node.github.io/ "Node SDK"):
 
 ```
-npm install fabric-client@1.2
+npm install fabric-client@1.4.0
 ```
 {:codeblock}
 
-Se recomienda utilizar la versión 1.2 de Node SDK.
+Se recomienda utilizar la versión 1.4.0 de Node SDK.
 
 ### Preparación del SDK para que trabaje con el igual
 {: #icp-peer-operate-node-sdk}
@@ -268,12 +268,12 @@ El igual se ha desplegado con el signCert del administrador de igual incluido, p
 {: #icp-peer-operate-fabric-client}
 
 Para interactuar con el igual desde un cliente remoto, necesitará descargar el
-[cliente de igual de Fabric ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/peercommand.html "Mandato de igual de Fabric").
+[cliente de igual de Fabric ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/peercommand.html "Mandato de igual de Fabric").
 
-La forma más fácil de obtener el cliente de igual es descargar los binarios de la herramienta de Fabric desde Hyperledger Project. Cree un directorio en el que desee descargar los binarios con la línea de mandatos, y obténgalos emitiendo el mandato que se indica a continuación. Necesitará instalar [Curl ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/prereqs.html#install-curl "Curl") en primer lugar.
+La forma más fácil de obtener el cliente de igual es descargar los binarios de la herramienta de Fabric desde Hyperledger Project. Cree un directorio en el que desee descargar los binarios con la línea de mandatos, y obténgalos emitiendo el mandato que se indica a continuación. Necesitará instalar [Curl ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/prereqs.html#install-curl "Curl") en primer lugar.
 
 ```
-curl -sSL http://bit.ly/2ysbOFE | bash -s 1.2.1 1.2.1 -d -s
+curl -sSL http://bit.ly/2ysbOFE | bash -s 1.4.0 1.4.0 -d -s
 ```
 {:codeblock}
 
@@ -341,6 +341,8 @@ tree
 │   └── msp
 │       ├── cacerts
 │       │   └── 9-30-250-70-30395-SampleOrgCA.pem
+│       ├── IssuerPublicKey
+│       ├── IssuerRevocationPublicKey
 │       ├── keystore
 │       │   └── 2a97952445b38a6e0a14db134645981b74a3f93992d9ddac54cb4b4e19cdf525_sk
 │       ├── signcerts
@@ -368,6 +370,8 @@ tree
     └── msp
         ├── cacerts
         │   └── 9-30-250-70-30395-tlsca.pem
+        ├── IssuerPublicKey
+        ├── IssuerRevocationPublicKey
         ├── keystore
         │   └── 45a7838b1a91ddfe3d4d22a5a7f2639b868493bcce594af3e3ceb9c07899d117_sk
         ├── signcerts
@@ -409,7 +413,7 @@ Después de mover todos los certificados a la ubicación necesaria, se necesitan
 
   Sustituya los campos por su propia información.
     - Sustituya `<CHANNEL_NAME>` por el nombre del canal al que se une el igual.
-    - Sustituya `<CC_NAME>` por cualquier nombre que haga referencia a su código de encadenamiento.
+    - Sustituya `<CC_NAME>` por cualquier nombre que haga referencia al código de encadenamiento.
     - Sustituya `<PEERADDR>` por el nombre de host y puerto del punto final de igual del paso anterior.
     - Sustituya `<ORDERER_URL>` por el nombre de host y puerto del clasificador del consorcio.
     - Sustituya `<PATH_TO_ADMIN_MSP>` por la vía de acceso a la carpeta de MSP del administrador de igual.
@@ -496,7 +500,7 @@ La organización necesita ser miembro de un canal para que pueda unirse al canal
 {: #icp-peer-operate-toolcontainer-install-cc}
 
 Ahora estamos listos para instalar y crear una instancia de código de encadenamiento en el igual. En estas instrucciones, instalaremos el código de encadenamiento `fabcar` desde el repositorio `fabric-samples`. Asegúrese de haber
-[configurado GOPATH ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/dev-setup/devenv.html?highlight=gopath#set-your-gopath "Configure GOPATH") con anterioridad y, a continuación, descargue el código de encadenamiento `fabric-samples` desde github utilizando los mandatos siguientes:
+[configurado GOPATH ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/dev-setup/devenv.html?highlight=gopath#set-your-gopath "Configure GOPATH") con anterioridad y, a continuación, descargue el código de encadenamiento `fabric-samples` desde github utilizando los mandatos siguientes:
 
   ```
   cd $GOPATH/src
@@ -542,7 +546,7 @@ Cuando este mandato finalice correctamente, verá algo parecido a esto:
 
 Después de que se haya creado una instancia del código de encadenamiento, puede utilizar los mandatos de consulta e invocación del código de encadenamiento para leer y escribir datos en el libro mayor del canal. Para obtener más información, consulte los mandatos de
 [código de encadenamiento de igual
-![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/latest/commands/peerchaincode.html) en la documentación de Hyperledger Fabric. Necesitará pasar el punto final del clasificador a los mandatos de invocación utilizando la IP de proxy y el puerto de clasificador externo. Solo tiene que pasar el punto final de igual a un mandato de consulta.
+![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/peerchaincode.html) en la documentación de Hyperledger Fabric. Necesitará pasar el punto final del clasificador a los mandatos de invocación utilizando la IP de proxy y el puerto de clasificador externo. Solo tiene que pasar el punto final de igual a un mandato de consulta.
 
 ## Visualización de los registros del igual en {{site.data.keyword.cloud_notm}} Private
 {: #peer-log-icp}
@@ -562,7 +566,7 @@ Siga los pasos siguientes para actualizar el código de encadenamiento:
 
 1. Para actualizar el código de encadenamiento en cada igual, simplemente vuelva a ejecutar el proceso que ha utilizado para instalar el código de encadenamiento en los iguales, utilizando una aplicación cliente o un mandato de CLI. Asegúrese de especificar el nombre de código de encadenamiento que se ha utilizado originalmente. Sin embargo, esta vez incremente la `Versión` del código de encadenamiento. Todos los iguales necesitan utilizar el mismo nombre y versión de código de encadenamiento.
 
-2. Después de instalar el nuevo código de encadenamiento en todos los iguales del canal, utilice el mandato de [actualización de código de encadenamiento del igual ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/peerchaincode.html#peer-chaincode-upgrade) para actualizar el canal para que utilice el nuevo código de encadenamiento.
+2. Después de instalar el nuevo código de encadenamiento en todos los iguales del canal, utilice el mandato de [actualización de código de encadenamiento del igual ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/peerchaincode.html#peer-chaincode-upgrade) para actualizar el canal para que utilice el nuevo código de encadenamiento.
 
 ## Reinicio de un igual que se ejecuta en {{site.data.keyword.cloud_notm}} Private
 {: #peer-restart}
@@ -600,12 +604,12 @@ Si ya se ha unido al consorcio, deberá completar únicamente el paso de prepara
 {: #icp-peer-operate-configtxgen}
 
 Si la organización necesita unirse a un consorcio o canal, deberá descargar la herramienta
-[configtxgen ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/configtxgen.html "configtxgen").
+[configtxgen ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/configtxgen.html "configtxgen").
 
-La forma más fácil de obtener configtxgen es descargar todos los binarios de herramientas de Fabric desde Hyperledger Project. Vaya al directorio en el que desee descargar los binarios con la línea de mandatos, y obténgalos emitiendo el mandato que se indica a continuación. Necesitará instalar [Curl ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/prereqs.html#install-curl "Curl") en primer lugar.
+La forma más fácil de obtener configtxgen es descargar todos los binarios de herramientas de Fabric desde Hyperledger Project. Vaya al directorio en el que desee descargar los binarios con la línea de mandatos, y obténgalos emitiendo el mandato que se indica a continuación. Necesitará instalar [Curl ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/prereqs.html#install-curl "Curl") en primer lugar.
 
 ```
-curl -sSL http://bit.ly/2ysbOFE | bash -s 1.2.1 1.2.1 -d -s
+curl -sSL http://bit.ly/2ysbOFE | bash -s 1.4.0 1.4.0 -d -s
 ```
 {:codeblock}
 
@@ -640,17 +644,17 @@ Antes de preparar una definición de organización, necesita registrar e inscrib
   cd $HOME/fabric-ca-client/peer-admin/msp
   mkdir tlscacerts
   ```
-
+  {:codeblock}
   A continuación, deberá copiar el certificado en el directorio `tlscacerts` que ha creado:
 
   ```
-  cp $HOME/fabric-ca-client/tlsca-admin/cacerts/<xxxx>tlsca.pem tlscacerts/
+  cp $HOME/fabric-ca-client/tlsca-admin/msp/cacerts/<xxxx>tlsca.pem tlscacerts/
   ```
-
+  {:codeblock}
   El mandato puede tener un aspecto similar al siguiente:
 
   ```
-  cp fabric-ca-client/tlsca-admin/cacerts/9-30-250-70-32129-tlsca.pem /tlscacerts/
+  cp fabric-ca-client/tlsca-admin/msp/cacerts/9-30-250-70-32129-tlsca.pem /tlscacerts/
   ```
   {:codeblock}
 
@@ -752,14 +756,14 @@ Si el mandato se ejecuta correctamente, `configtxgen` imprimirá la definición 
 {: #icp-peer-operate-channeltx}
 
 Para poder crear un nuevo canal, la organización debe haber preparado una [definición de organización](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-organization-definition) y haberse convertido en miembro del consorcio. Siga estas instrucciones si necesita [formar un consorcio o incorporarse a uno](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-consortium). También se posible que se añadan fácilmente miembros del consorcio a nuevos canales, si su organización se ha añadido ya al canal del sistema. Las organizaciones que no sean miembro del canal del sistema solo se puede unir a un canal de forma manual, añadiendo su definición de organización al canal utilizando una [solicitud de actualización de canal
-![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/channel_update_tutorial.html). También puede utilizar estos pasos para actualizar un canal existente.
+![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/channel_update_tutorial.html). También puede utilizar estos pasos para actualizar un canal existente.
 
 ### Formación de un nuevo canal
 {: #icp-peer-operate-form-channel}
 
 Para formar un nuevo canal, una organización tiene que crear una propuesta de transacción de creación de canal utilizando la
 [herramienta configtxgen
-![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/configtxgen.html "configtxgen"). Esta herramienta consume un archivo configtx.yaml que define los miembros del nuevo canal. A continuación se proporciona un archivo
+![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/configtxgen.html "configtxgen"). Esta herramienta consume un archivo configtx.yaml que define los miembros del nuevo canal. A continuación se proporciona un archivo
 `configtx.yaml` de ejemplo. También hay disponible una versión más compleja de este archivo en la carpeta `/config` del [cliente de igual de Fabric que ha descargado](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-fabric-client). Puede optar por editar dicho archivo, o sustituirlo por el del ejemplo. Tenga en cuenta la ubicación de esta carpeta
 `/config` para establecer el valor de la variable
 `FABRIC_CFG_PATH` siguiente.
@@ -871,7 +875,7 @@ Las tres secciones relevantes para la creación de un nuevo canal son
 [definición de organización](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-organization-definition). Tenga en cuenta que su material criptográfico no se ha utilizado en la transacción de creación del canal. La herramienta *configtxgen* pasará por alto el contenido real del MSP. No obstante, espera una carpeta de MSP en dicha ubicación, con la subestructura de carpetas adecuada.
   3. El parámetro `AnchorPeers` se utiliza para identificar el igual de referencia que utiliza cada organización para la comunicación dentro de la organización mediante rumores. Especifique el nombre de host y el puerto del igual que actuará como
 [igual de ancla
-![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/glossary.html) para esta organización. Este valor es importante para el uso de características como el descubrimiento de servicios o los datos privados;
+![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/glossary.html) para esta organización. Este valor es importante para el uso de características como el descubrimiento de servicios o los datos privados;
 no obstante, el diagrama de Helm del igual no tiene soporte actualmente para el descubrimiento de servicios y datos privados.
 
 - **Capabilities:** es necesario que esta sección esté en el archivo `configtx.yaml`, pero no se necesita realizar ningún cambio.
@@ -918,8 +922,8 @@ peer channel create -o <orderer_url> --tls --cafile <orderer_tls_cert> -c <chann
 ```
 {:codeblock}
 
-Donde `<ORG_MSPID>` es el MSPID de la organización y `<PATH_TO_ADMIN_MSP>` es la vía de acceso a la carpeta de MSP del administrador de igual. Dentro del mandato, `<orderer_url>` es el URL del clasificador que creará el canal y
-`<orderer_tls_cert>` es la vía de acceso al certificado TLS del clasificador. Un mandato real puede tener un aspecto similar al ejemplo siguiente:
+Donde `<ORG_MSPID>` es el MSPID de la organización y `<PATH_TO_ADMIN_MSP>` es la vía de acceso a la carpeta de MSP del administrador del igual. Dentro del mandato, `<orderer_url>` es el URL del clasificador que va a crear el canal y
+`<orderer_tls_cert>` es la vía de acceso al certificado TLS de los clasificadores. Un mandato real puede tener un aspecto similar al ejemplo siguiente:
 ```
 export CORE_PEER_LOCALMSPID=org1
 export CORE_PEER_MSPCONFIGPATH=$HOME/fabric-ca-client/peer-admin/msp/
@@ -937,7 +941,7 @@ peer channel create -o 9.30.250.70:31507 --tls --cafile $PWD/orderer-tls/orderer
 
 Cuando la propuesta de creación del nuevo canal la firma el número suficiente de organizaciones para cumplir la política de aprobación del canal del sistema, puede enviar la transacción de actualización de canal al clasificador para formar el nuevo canal
 
-Puede utilizar API de SDK de Node Fabric para completar la firma y el envío en una sola transacción. Para obtener más información, consulte la guía de aprendizaje [Cómo crear un canal de Hyperledger Fabric ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")]](https://fabric-sdk-node.github.io/release-1.3/tutorial-channel-create.html) en la documentación del SDK de Node.
+Puede utilizar API de SDK de Node Fabric para completar la firma y el envío en una sola transacción. Para obtener más información, consulte la guía de aprendizaje [Cómo crear un canal de Hyperledger Fabric ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")]](https://fabric-sdk-node.github.io/release-1.4/tutorial-channel-create.html) en la documentación del SDK de Node.
 
 ## Visualización de los registros de igual
 {: #icp-peer-operate-view-logs}
@@ -952,7 +956,7 @@ Los registros de los componentes se pueden consultar desde la línea de mandatos
   {:codeblock}
 
   A continuación, ejecute el mandato siguiente para recuperar los registros del contenedor de igual que se encuentra dentro del pod sustituyendo
-`<pod_name>` por el nombre del pod en la salida del mandato anterior:
+`<pod_name>` por el nombre del pod de la salida del mandato anterior:
 
   ```
   kubectl logs <pod_name> -c peer
@@ -963,7 +967,7 @@ Los registros de los componentes se pueden consultar desde la línea de mandatos
 [Documentación de Kubernetes
 ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs “Getting Started”)
 
-- Como alternativa, puede acceder a los registros mediante la [consola de gestión de clústeres de {{site.data.keyword.cloud_notm}} Private ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/troubleshoot/events.html "Sucesos y registros"), que abre los registros en Kibana.
+- Como alternativa, puede acceder a los registros mediante la [consola de gestión de clústeres de {{site.data.keyword.cloud_notm}} Private ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/troubleshoot/events.html "Events and Logs"), que abre los registros en Kibana.
 
   **Nota:** al visualizar los registros en Kibana, es posible que reciba la respuesta `No results found`. Esta
 condición se puede producir si {{site.data.keyword.cloud_notm}} Private utiliza la dirección IP del nodo trabajador como su nombre de host. Para resolver este problema, elimine el filtro que comienza por `node.hostname.keyword` al principio del panel y los registros se volverán visibles.

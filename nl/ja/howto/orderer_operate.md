@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -101,7 +101,7 @@ subcollection: blockchain
 ### 順序付けプログラムのエンドポイント情報の取得
 {: #icp-orderer-operate-orderer-endpoint}
 
-順序付けプログラムのシステム・チャネルに対して更新を行うには、順序付けプログラムのエンドポイントをターゲットにする必要があります。 以下のステップを実行するには、[クラスター管理者 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "クラスター管理者役割とアクション") である必要があります。
+順序付けプログラムのシステム・チャネルに対して更新を行うには、順序付けプログラムのエンドポイントをターゲットにする必要があります。 以下のステップを実行するには、[クラスター管理者 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/user_management/assign_role.html "クラスター管理者役割とアクション") である必要があります。
 
 1. {{site.data.keyword.cloud_notm}} Private コンソールにログインし、左上隅の**「メニュー」**アイコンをクリックします。
 2. **「ワークロード (Workload)」** > **「Helm リリース」**をクリックします。
@@ -121,7 +121,7 @@ subcollection: blockchain
 ### 順序付けプログラムの TLS 証明書のダウンロード
 {: #icp-orderer-operate-tls-cert}
 
-リモート・クライアントから順序付けプログラムと通信するためには、順序付けプログラムの TLS 証明書をダウンロードして、コマンドにこれを渡す必要があります。 以下のステップを実行するには、[クラスター管理者 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "クラスター管理者役割とアクション") である必要があります。
+リモート・クライアントから順序付けプログラムと通信するためには、順序付けプログラムの TLS 証明書をダウンロードして、コマンドにこれを渡す必要があります。 以下のステップを実行するには、[クラスター管理者 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/user_management/assign_role.html "クラスター管理者役割とアクション") である必要があります。
 
 1. {{site.data.keyword.cloud_notm}} Private コンソールにログインし、左上隅の**「メニュー」**アイコンをクリックします。
 2. **「ワークロード (Workload)」** > **「Helm リリース」**をクリックします。
@@ -173,6 +173,8 @@ tree
 │   └── msp
 │       ├── cacerts
 │       │   └── 9-30-250-70-30395-SampleOrgCA.pem
+│       ├── IssuerPublicKey
+│       ├── IssuerRevocationPublicKey
 │       ├── keystore
 │       │   └── 2a97952445b38a6e0a14db134645981b74a3f93992d9ddac54cb4b4e19cdf525_sk
 │       ├── signcerts
@@ -198,6 +200,8 @@ tree
     └── msp
         ├── cacerts
         │   └── 9-30-250-70-30395-tlsca.pem
+        ├── IssuerPublicKey
+        ├── IssuerRevocationPublicKey
         ├── keystore
         │   └── 45a7838b1a91ddfe3d4d22a5a7f2639b868493bcce594af3e3ceb9c07899d117_sk
         ├── signcerts
@@ -218,7 +222,7 @@ tree
 
 順序付けプログラムのシステム・チャネルに組織を追加することは、基本的に、チャネルの構成を更新して組織を追加するフローと同じです。 ただし、更新対象のチャネルがアプリケーション・チャネルではないこと、および関連管理がピア組織ではなく順序付けプログラム管理であることから、いくつかの変更を行う必要があります。
 
-最初にシステム・チャネルに参加しなくても、チャネルに組織を追加することができます。 詳しくは、Hyperledger Fabric の資料で[チャネルへの組織の追加に関するチュートリアル ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/channel_update_tutorial.html "チャネルへの組織の追加")を参照してください。
+最初にシステム・チャネルに参加しなくても、チャネルに組織を追加することができます。 詳しくは、Hyperledger Fabric の資料で[チャネルへの組織の追加に関するチュートリアル ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/channel_update_tutorial.html "チャネルへの組織の追加")を参照してください。
 
 以下のリストに、全般的なステップと、共同事業体のさまざまな組織セットによって実行されるタスクを示します。
 
@@ -230,13 +234,13 @@ tree
 {: #icp-orderer-operate-get-fabric-tools}
 
 システム・チャネルを更新するには、以下の Hyperledger Fabric ツールをダウンロードする必要があります。
-- [peer ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/peercommand.html)。これを使用すると、起源ブロックをフェッチし、システム・チャネルを更新できるようになります。
-- [configtxlator ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/configtxlator.html)。これにより、protobuf フォーマットのチャネル構成が JSON フォーマットに変換され、読み取りや更新がより簡単になります。
+- [peer ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/peercommand.html)。これを使用すると、起源ブロックをフェッチし、システム・チャネルを更新できるようになります。
+- [configtxlator ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/configtxlator.html)。これにより、protobuf フォーマットのチャネル構成が JSON フォーマットに変換され、読み取りや更新がより簡単になります。
 
 1. ツールを保管する場所を決定し、以下のコマンドを実行します。
 
   ```
-  curl -sSL http://bit.ly/2ysbOFE | bash -s 1.2.1 1.2.1 -d -s
+  curl -sSL http://bit.ly/2ysbOFE | bash -s 1.4.0 1.4.0 -d -s
   ```
   {:codeblock}
 
@@ -377,7 +381,7 @@ tree
 
 ダウンロードした [Fabric ツール](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-get-fabric-tools)の `configtxtlator` によって、protobuf フォーマットのチャネル構成が JSON フォーマット、またはその逆に変換されます。
 
-これらの手順は、チャネル更新チュートリアルの [JSON 形式へのブロックの変換 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")]( https://hyperledger-fabric.readthedocs.io/en/release-1.2/channel_update_tutorial.html#convert-the-configuration-to-json-and-trim-it-down "Convert the Configuration to JSON and Trim It Down") の大まかな手順と同じです。 ただし、更新しているのがアプリケーション・チャネルではなく順序付けプログラムのシステム・チャネルであるという事実が反映されるように、いくつかの変更をチュートリアルのコマンドに対して行う必要があります。 このプロセスについて詳しくは、チュートリアルを参照してください。 このセクションは単にコマンドを示します。
+これらの手順は、チャネル更新チュートリアルの [JSON 形式へのブロックの変換 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")]( https://hyperledger-fabric.readthedocs.io/en/release-1.4/channel_update_tutorial.html#convert-the-configuration-to-json-and-trim-it-down "Convert the Configuration to JSON and Trim It Down") の大まかな手順と同じです。 ただし、更新しているのがアプリケーション・チャネルではなく順序付けプログラムのシステム・チャネルであるという事実が反映されるように、いくつかの変更をチュートリアルのコマンドに対して行う必要があります。 このプロセスについて詳しくは、チュートリアルを参照してください。 このセクションは単にコマンドを示します。
 
 1. [組織を作成した](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-organization-definition)フォルダーから `configupdate` フォルダーに、組織定義の JSON ファイルをコピーします。 以下のコマンド例では、組織定義の JSON ファイルは `org1definition.json` です。
 
@@ -499,7 +503,7 @@ peer channel update -f config_update_in_envelope.pb -c $CHANNEL_NAME -o $PROXY:$
 
   `kubectl logs` コマンドについて詳しくは、[Kubernetes の資料 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs “Getting Started”) を参照してください。
 
-- または、[{{site.data.keyword.cloud_notm}} Private クラスター管理コンソール ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/troubleshoot/events.html) を使用してログにアクセスすることもできます。この場合、ログは Kibana で開きます。
+- または、[{{site.data.keyword.cloud_notm}} Private クラスター管理コンソール ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/troubleshoot/events.html) を使用してログにアクセスすることもできます。この場合、ログは Kibana で開きます。
 
   **注:** Kibana でログを表示する場合、`「No results found」`という応答を受け取ることがあります。 この状態は、{{site.data.keyword.cloud_notm}} Private がワーカー・ノードの IP アドレスをそのホスト名として使用する場合に起こることがあります。 この問題を解決するには、パネルの上部で `node.hostname.keyword` で始まるフィルターを削除すると、ログが表示されるようになります。
 

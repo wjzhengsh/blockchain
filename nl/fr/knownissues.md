@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-03-20"
 
 subcollection: blockchain
 
@@ -28,7 +28,7 @@ Les problèmes suivants ont été signalés :
 - Dans le Moniteur réseau d'un réseau du plan Starter, lorsque vous cliquez sur **Afficher les journaux** sur les noeuds répertoriés à l'écran "Présentation", l'interface kibana {{site.data.keyword.cloud}} Logging s'ouvre. **Par défaut, Kibana est préconfigurée pour afficher les journaux des 30 derniers jours d'activité**. Si aucune activité n'est intervenue dans les 30 derniers jours, un message indique *Aucun résultat trouvé*. Pour afficher tous les journaux, vous pouvez cliquer sur l'icône temporisateur dans l'angle supérieur droit sous votre nom d'utilisateur et définir un intervalle de temps plus large, comme *date année*.
 - Les journaux de votre réseau du plan Starter sont collectés par le service [{{site.data.keyword.cloud_notm}} Log Analysis ![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://cloud.ibm.com/catalog/services/log-analysis). Par défaut, les journaux sont collectés par le plan Lite du service Log Analysis. Ce plan est gratuit et **ne vous permet d'effectuer une recherche que sur les premiers 500 Mo de vos journaux par jour**. Si les journaux de votre réseau dépassent 500 Mo, vous ne pouvez pas visualiser de nouveaux journaux dans Kibana. Si votre réseau génère plus de 500 Mo de journaux, vous pouvez effectuer une mise à niveau vers une version payante du service Log Analysis.
 - Etant donné que le plan Starter n'est pas destiné à un environnement de production, **il se peut que des applications ne puissent pas accéder immédiatement à une ressource réseau**.
-  - Si ceci se produit, il est recommandé en premier lieu d'augmenter les valeurs de délai d'attente dans le SDK Fabric. Pour plus d'informations sur la définition des valeurs de délai, voir [Définition de valeurs de délai dans les kits SDK Fabric](/docs/services/blockchain/v10_application.html#dev-app-set-timeout-in-sdk).
+  - Si ceci se produit, il est recommandé en premier lieu d'augmenter les valeurs de délai d'attente dans le SDK Fabric. Pour plus d'informations sur la définition des valeurs de délai, voir [Définition de valeurs de délai dans les kits SDK Fabric](/docs/services/blockchain/best_practices.html#best-practices-app-set-timeout-in-sdk).
   - Vous pouvez également relancer votre demande au niveau de l'application.
 - **Les conteneurs de Code blockchain peuvent parfois être arrêtés** par un problème réseau en arrière-plan et doivent éventuellement être régénérés et redémarrés après avoir été appelés par un utilisateur. Si ceci se produit, votre code blockchain peut demander quelques minutes pour répondre.
 - En raison de la limitation des ressources dans le réseau du plan Starter, (à savoir 1 UC et 4 Go de RAM pour chaque homologue), **vous pourriez rencontrer une erreur `REQUEST_TIMEOUT` lors de l'instanciation du code blockchain**. Dans ce cas, relancez l'étape d'instanciation. Si l'erreur persiste, vous pouvez augmenter le délai d'attente de l'instanciation du code blockchain. Dans le profil de connexion, le délai d'attente d'instanciation du code blockchain est fixé à 300 secondes.

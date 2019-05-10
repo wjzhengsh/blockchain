@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-03-20"
 
 subcollection: blockchain
 
@@ -28,7 +28,7 @@ Hyperledger Fabric SDK에서는 애플리케이션에서 블록체인 네트워�
 
 다음 지시사항에서는 [Fabric Node SDK ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://fabric-sdk-node.github.io/ "Hyperledger Fabric SDK for jode.js")를 사용하여 피어를 운영하고 이미 SDK에 익숙하다고 가정합니다. [애플리케이션 개발 튜토리얼](/docs/services/blockchain/v10_application.html#dev-app)은 시작하기 전에 Node SDK를 사용하는 방법을 알아보고 체인코드를 호출하여 조회할 준비가 되었을 때 피어로 애플리케이션을 개발하기 위한 안내서로 사용할 수 있습니다.
 
-AWS 빠른 시작의 {{site.data.keyword.blockchainfull_notm}} Platform 피어는 고가용성을 위해 두 개의 피어를 작성합니다. 따라서 피어마다 해당 오퍼레이션 단계를 한 번씩 수행해야 합니다. 애플리케이션에서 체인코드를 조회하고 호출할 준비가 되면 [애플리케이션의 고가용성](/docs/services/blockchain/v10_application.html#dev-app-ha-app)을 위해 SDK를 두 피어 모두에 연결하십시오.
+AWS 빠른 시작의 {{site.data.keyword.blockchainfull_notm}} Platform 피어는 고가용성을 위해 두 개의 피어를 작성합니다. 따라서 피어마다 해당 오퍼레이션 단계를 한 번씩 수행해야 합니다. 애플리케이션에서 체인코드를 조회하고 호출할 준비가 되면 [애플리케이션의 고가용성](/docs/services/blockchain/best_practices.html#best-practices-app-ha-app)을 위해 SDK를 두 피어 모두에 연결하십시오.
 
 ### Node SDK 설치
 {: #remote-peer-aws-operate-install-sdk}
@@ -535,7 +535,7 @@ docker logs peer
 
 **솔루션:**  
 이 오류는 빠른 시작 템플리트를 배치할 때 CAUrl에 포트를 지정하지 않아 발생합니다.
-CAUrl은 `https://<network>-org1-ca.stage.blockchain.ibm.com:31011`과 유사해야 합니다.
+CAUrl은 `https://<network>-org1-ca.stage.blockchain.ibm.com:31011`과 유사하게 표시되어야 합니다.
 CAUrl에 올바른 값을 지정하도록 주의하면서 빠른 시작 템플리트를 다시 배치하십시오.
 
 ### **문제점:** 체인코드 인스턴스화가 실패하고 오류가 발생함

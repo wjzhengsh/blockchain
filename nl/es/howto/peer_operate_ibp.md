@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -20,7 +20,7 @@ subcollection: blockchain
 # Funcionamiento de iguales en {{site.data.keyword.cloud_notm}} Private con el Plan inicial o el Plan empresarial
 {: #ibp-peer-operate}
 
-Después de configurar un {{site.data.keyword.blockchainfull}} Platform en el igual de {{site.data.keyword.cloud_notm}} Private, debe completar varios pasos operativos para que el igual pueda enviar transacciones a una red del Plan inicial o el Plan empresarial. Los pasos incluyen añadir su organización a un canal, unir el igual al canal, instalar el código de encadenamiento en el igual, crear una instancia del código de encadenamiento en el canal y conectar aplicaciones al igual.
+Después de configurar un igual de {{site.data.keyword.blockchainfull}} Platform para {{site.data.keyword.cloud_notm}} Private, debe completar varios pasos operativos para que el igual pueda enviar transacciones a una red del Plan inicial o el Plan empresarial. Los pasos incluyen añadir su organización a un canal, unir el igual al canal, instalar el código de encadenamiento en el igual, crear una instancia del código de encadenamiento en el canal y conectar aplicaciones al igual.
 {:shortdesc}
 
 Es necesario completar algunos pasos de requisito previo desde el clúster de {{site.data.keyword.cloud_notm}} Private para trabajar con el igual.
@@ -39,7 +39,7 @@ Luego puede utilizar uno de los métodos siguientes para utilizar el igual.
 Los SDK de Fabric son el método recomendado, aunque en las instrucciones se presupone que está familiarizado con el funcionamiento del SDK. Si prefiere utilizar la línea de mandatos, puede utilizar el cliente de igual de Fabric.
 
 <!--
-It is recommended that you deploy at least two instances of the peer Helm chart for [high availability](peer_icp.html#high-availability). Therefore, you need to follow these operations steps once for each peer. When you are ready to invoke and query chaincode from your application, connect to both peers to ensure that your [applications are highly available](../v10_application.html#ha-app).
+It is recommended that you deploy at least two instances of the peer Helm chart for [high availability](peer_icp.html#high-availability). Therefore, you need to follow these operations steps once for each peer. When you are ready to invoke and query chaincode from your application, connect to both peers to ensure that your [applications are highly available](../best_practices.html#best-practices-app-ha-app).
 -->
 
 **Nota**: un igual de {{site.data.keyword.blockchainfull_notm}} Platform no tiene acceso a toda la funcionalidad ni al soporte de los iguales alojados en la plataforma {{site.data.keyword.blockchainfull_notm}}. Como resultado, no puede utilizar el supervisor de red para trabajar con un igual en {{site.data.keyword.cloud_notm}} Private. Antes de empezar a ejecutar iguales, asegúrese de revisar las [consideraciones y limitaciones](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-about-considerations).
@@ -117,7 +117,8 @@ Necesitará utilizar la herramienta de línea de mandatos **kubectl** para conec
 ### Recuperación de la información de punto final de igual
 {: #ibp-peer-operate-endpoint}
 
-Debe establecer como objetivo el punto final de igual desde el SDK o el cliente de CA de Fabric para unirse al canal o instalar contratos inteligentes. Puede encontrar el punto final del igual utilizando la interfaz de usuario de la consola de {{site.data.keyword.cloud_notm}} Private. Necesitará ser un [administrador del clúster ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Acciones y roles de administrador de clúster") para realizar los pasos siguientes:
+Debe establecer como objetivo el punto final de igual desde el SDK o el cliente de CA de Fabric para unirse al canal o instalar contratos inteligentes. Puede encontrar el punto final del igual utilizando la interfaz de usuario de la consola de {{site.data.keyword.cloud_notm}} Private. Necesitará ser un
+[administrador del clúster ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/user_management/assign_role.html "Acciones y roles de administrador de clúster") para realizar los pasos siguientes:
 
 1. Inicie sesión en la consola de {{site.data.keyword.cloud_notm}} Private y pulse el icono **Menú** en la esquina superior izquierda.
 2. Pulse **Carga de trabajo** > **Releases de Helm**.
@@ -155,7 +156,7 @@ Necesita descargar el certificado TLS del igual y pasarlo a los mandatos para co
 ## Utilización de los SDK de Fabric para trabajar con el igual
 {: #ibp-peer-operate-operate-with-sdk}
 
-Los SDK de Hyperledger Fabric ofrecen un potente conjunto de API que permiten a las aplicaciones interactuar con las redes blockchain. Encontrará la lista más reciente de lenguajes soportados y una lista de las API disponibles en los SDK de Fabric en la [documentación de la comunidad de SDK de Hyperledger Fabric ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/getting_started.html#hyperledger-fabric-sdks "documentación de la comunidad de SDK de Hyperledger Fabric"). Puede utilizar los SDK de Fabric para unir su igual a un canal en {{site.data.keyword.blockchainfull_notm}} Platform, instalar un código de encadenamiento en el igual y crear una instancia del código de encadenamiento en un canal.
+Los SDK de Hyperledger Fabric ofrecen un potente conjunto de API que permiten a las aplicaciones interactuar con las redes blockchain. Encontrará la lista más reciente de lenguajes soportados y una lista de las API disponibles en los SDK de Fabric en la [documentación de la comunidad de SDK de Hyperledger Fabric ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/getting_started.html#hyperledger-fabric-sdks "documentación de la comunidad de SDK de Hyperledger Fabric"). Puede utilizar los SDK de Fabric para unir su igual a un canal en {{site.data.keyword.blockchainfull_notm}} Platform, instalar un código de encadenamiento en el igual y crear una instancia del código de encadenamiento en un canal.
 
 En las siguientes instrucciones se utiliza el [Node SDK de Fabric ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://fabric-sdk-node.github.io/ "Node SDK de Fabric") para trabajar con el igual y se da por supuesto que está familiarizado con el SDK. Puede utilizar la [guía de aprendizaje sobre desarrollo de aplicaciones](/docs/services/blockchain/v10_application.html#dev-app) para aprender a utilizar Node SDK antes de empezar y como guía para desarrollar aplicaciones con el igual cuando esté listo para invocar el código de encadenamiento de la consulta.
 
@@ -165,11 +166,11 @@ En las siguientes instrucciones se utiliza el [Node SDK de Fabric ![Icono de enl
 Puede utilizar NPM para instalar [Node SDK ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://fabric-sdk-node.github.io/ "Node SDK"):
 
 ```
-npm install fabric-client@1.2
+npm install fabric-client@1.4.0
 ```
 {:codeblock}
 
-Se recomienda utilizar la versión 1.2 de Node SDK.
+Se recomienda utilizar la versión 1.4.0 de Node SDK.
 
 ### Preparación del SDK para que trabaje con el igual
 {: #ibp-peer-operate-prepare-node-sdk}
@@ -253,10 +254,10 @@ El igual se ha desplegado con el signCert del administrador de igual incluido, p
 ### Descarga del cliente de igual de Fabric
 {: #ibp-peer-operate-download-fabric-client}
 
-La forma más fácil de obtener el cliente de igual es descargar todos los binarios de herramientas de Fabric desde Hyperledger. Vaya al directorio en el que desee descargar los binarios con la línea de mandatos y obténgalos emitiendo el mandato que se indica a continuación. Si no ha instalado [Curl ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/prereqs.html#install-curl "Curl"), necesitará instalarlo en primer lugar.
+La forma más fácil de obtener el cliente de igual es descargar todos los binarios de herramientas de Fabric desde Hyperledger. Vaya al directorio en el que desee descargar los binarios con la línea de mandatos y obténgalos emitiendo el mandato que se indica a continuación. Si no ha instalado [Curl ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/prereqs.html#install-curl "Curl"), necesitará instalarlo en primer lugar.
 
 ```
-curl -sSL http://bit.ly/2ysbOFE | bash -s 1.2.1 1.2.1 -d -s
+curl -sSL http://bit.ly/2ysbOFE | bash -s 1.4.0 1.4.0 -d -s
 ```
 {:codeblock}
 
@@ -336,6 +337,8 @@ tree
 │   └── msp
 │       ├── cacerts
 │       │   └── 9-12-19-115-31873-SampleOrgCA.pem
+│       ├── IssuerPublicKey
+│       ├── IssuerRevocationPublicKey
 │       ├── keystore
 │       │   └── c44ec1e708f84b6d0359f58ce2c9c8a289919ba81f2cf4bb5187c4ad5a43cbb0_sk
 │       └── signcerts
@@ -365,6 +368,8 @@ tree
     └── msp
         ├── cacerts
         │   └── 9-30-250-70-30395-tlsca.pem
+        ├── IssuerPublicKey
+        ├── IssuerRevocationPublicKey
         ├── keystore
         │   └── bd57fa20283dfc76ada83f989ee0f62ce23e98c94dbd26f6cd23202d8084e38e_sk
         ├── signcerts
@@ -405,9 +410,9 @@ Después de mover todos los certificados a la ubicación necesaria, es necesario
 
   Sustituya los campos por su propia información.
     - Sustituya `<full_path_to_config_folder>` por la carpeta de configuración que se ha creado al
-[descargar el cliente igual](/docs/services/blockchain/howto/peer_operate_ibp.html#ibp-peer-operate-download-fabric-client).
+[descargar el cliente de igual](/docs/services/blockchain/howto/peer_operate_ibp.html#ibp-peer-operate-download-fabric-client).
     - Sustituya `<CHANNEL_NAME>` por el nombre del canal al que se une el igual.
-    - Sustituya `<CC_NAME>` por cualquier nombre que haga referencia a su código de encadenamiento.
+    - Sustituya `<CC_NAME>` por cualquier nombre que haga referencia al código de encadenamiento.
     - Sustituya `<PEERADDR>` por el punto final de igual del paso anterior para el igual que esté utilizando actualmente.
     - Sustituya `<ORDERER_URL>` por el nombre de host y el puerto del clasificador del perfil de conexión.
     - Sustituya `<PATH_TO_ADMIN_MSP>` por la vía de acceso a la carpeta de MSP del administrador de igual.
@@ -498,7 +503,7 @@ Para poder ejecutar los mandatos de CLI para unir el igual a un canal, la organi
 {: #ibp-peer-operate-toolcontainer-install-cc}
 
 Ahora estamos listos para instalar y crear una instancia de código de encadenamiento en el igual. En estas instrucciones, instalaremos el código de encadenamiento `fabcar` desde el repositorio `fabric-samples`. Asegúrese de haber
-[configurado GOPATH ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/dev-setup/devenv.html?highlight=gopath#set-your-gopath "Configure GOPATH") con anterioridad y, a continuación, descargue el código de encadenamiento `fabric-samples` desde github utilizando los mandatos siguientes:
+[configurado GOPATH ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/dev-setup/devenv.html?highlight=gopath#set-your-gopath "Configure GOPATH") con anterioridad y, a continuación, descargue el código de encadenamiento `fabric-samples` desde github utilizando los mandatos siguientes:
 
 ```
 cd $GOPATH/src
@@ -543,7 +548,7 @@ Cuando este mandato finalice correctamente, verá algo parecido a esto:
 
 Después de que se haya creado una instancia del código de encadenamiento, puede utilizar los mandatos de consulta e invocación del código de encadenamiento para leer y escribir datos en el libro mayor del canal. Para obtener más información, consulte los mandatos de
 [código de encadenamiento de igual
-![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/latest/commands/peerchaincode.html) en la documentación de Hyperledger Fabric. Necesitará pasar el punto final del clasificador a los mandatos de invocación utilizando la IP de proxy y el puerto de clasificador externo. Solo tiene que pasar el punto final de igual a un mandato de consulta.
+![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/peerchaincode.html) en la documentación de Hyperledger Fabric. Necesitará pasar el punto final del clasificador a los mandatos de invocación utilizando la IP de proxy y el puerto de clasificador externo. Solo tiene que pasar el punto final de igual a un mandato de consulta.
 
 ## Actualización del código de encadenamiento
 {: #ibp-peer-operate-update-chaincode}
@@ -554,7 +559,7 @@ Siga los pasos siguientes para actualizar el código de encadenamiento:
 
 1. Para actualizar el código de encadenamiento en cada igual, simplemente vuelva a ejecutar el proceso que ha utilizado para instalar el código de encadenamiento en los iguales, utilizando una aplicación cliente o un mandato de CLI. Asegúrese de especificar el nombre de código de encadenamiento que se ha utilizado originalmente. Sin embargo, esta vez incremente la `Versión` del código de encadenamiento. Todos los iguales necesitan utilizar el mismo nombre y versión de código de encadenamiento.
 
-2. Después de instalar el nuevo código de encadenamiento en todos los iguales del canal, utilice el supervisor de red o el mandato de [actualización de código de encadenamiento del igual ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/peerchaincode.html#peer-chaincode-upgrade) para utilizar el nuevo código de encadenamiento.
+2. Después de instalar el nuevo código de encadenamiento en todos los iguales del canal, utilice el supervisor de red o el mandato de [actualización de código de encadenamiento del igual ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/peerchaincode.html#peer-chaincode-upgrade) para utilizar el nuevo código de encadenamiento.
 
 Consulte el paso dos de estas [instrucciones](/docs/services/blockchain/howto/install_instantiate_chaincode.html#install-instantiate-chaincode-update-cc) para obtener más información sobre cómo utilizar el panel "Instalar código" del supervisor de red para actualizar el código de encadenamiento en el canal.
 
@@ -571,7 +576,7 @@ Los registros de los componentes se pueden consultar desde la línea de mandatos
   {:codeblock}
 
   A continuación, ejecute el mandato siguiente para recuperar los registros del contenedor de igual que se encuentra dentro del pod sustituyendo
-`<pod_name>` por el nombre del pod en la salida del mandato anterior:
+`<pod_name>` por el nombre del pod de la salida del mandato anterior:
 
   ```
   kubectl logs <pod_name> -c peer
@@ -583,7 +588,7 @@ Los registros de los componentes se pueden consultar desde la línea de mandatos
 ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs “Getting Started”)
 
 - Como alternativa, puede acceder a los registros utilizando la
-[consola de gestión de clúster de {{site.data.keyword.cloud_notm}} Private](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/troubleshoot/events.html), que abre los registros en Kibana.
+[consola de gestión de clúster de {{site.data.keyword.cloud_notm}} Private](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/troubleshoot/events.html), que abre los registros en Kibana.
 
    **Nota:** al visualizar los registros en Kibana, es posible que reciba la respuesta `No results found`. Esta
 condición se puede producir si {{site.data.keyword.cloud_notm}} Private utiliza la dirección IP del nodo trabajador como su nombre de host. Para resolver este problema, elimine el filtro que comienza por `node.hostname.keyword` al principio del panel y los registros se volverán visibles.
@@ -611,16 +616,16 @@ Este error se puede producir si se ha utilizado la interfaz de usuario del super
 `invoke` debido a que las vías de acceso resultantes del código de encadenamiento en los iguales son distintas.
 
 **Solución:** si desea ejecutar código de encadenamiento en iguales tanto en
-{{site.data.keyword.cloud_notm}}, como el Plan inicial o empresarial, como en {{site.data.keyword.cloud_notm}} Private, no utilice la interfaz de usuario del supervisor de red para instalar el código de encadenamiento. En su lugar, empaquete el código de encadenamiento con el mandato [`peer chaincode package`![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/peerchaincode.html?highlight=peer%20chaincode%20package#peer-chaincode-package) y, a continuación, instale el paquete en todos los iguales ejecutando el mandato [`peer chaincode install`](/docs/services/blockchain/howto/peer_operate_ibp.html#ibp-peer-operate-toolcontainer-install-cc).
+{{site.data.keyword.cloud_notm}}, como el Plan inicial o empresarial, como en {{site.data.keyword.cloud_notm}} Private, no utilice la interfaz de usuario del supervisor de red para instalar el código de encadenamiento. En su lugar, empaquete el código de encadenamiento con el mandato [`peer chaincode package`![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/peerchaincode.html?highlight=peer%20chaincode%20package#peer-chaincode-package) y, a continuación, instale el paquete en todos los iguales ejecutando el mandato [`peer chaincode install`](/docs/services/blockchain/howto/peer_operate_ibp.html#ibp-peer-operate-toolcontainer-install-cc).
 
 Si el código de encadenamiento ya se ha instalado y se ha creado una instancia del mismo en un canal antes de intentar instalar el código de encadenamiento en un igual de {{site.data.keyword.cloud_notm}} Private, deberá realizar los pasos siguientes para evitar el problema:
 
-1. Empaquete el código de encadenamiento con el mandato [`peer chaincode package`![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/peerchaincode.html?highlight=peer%20chaincode%20package#peer-chaincode-package).
+1. Empaquete el código de encadenamiento con el mandato [`peer chaincode package`![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/peerchaincode.html?highlight=peer%20chaincode%20package#peer-chaincode-package).
 2. Instale el paquete del código de encadenamiento en el igual que se ejecuta en
 {{site.data.keyword.cloud_notm}} Private ejecutando el mandato `peer chaincode install`.
 3. Si tiene los binarios específicos de la plataforma, puede ejecutar el mandato
-[`peer chaincode upgrade`![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/peerchaincode.html?highlight=peer%20chaincode%20package#peer-chaincode-upgrade) para actualizar el código de encadenamiento que se ejecuta en el igual del Plan inicial o el Plan empresarial, que utiliza el paquete de código de encadenamiento.
+[`peer chaincode upgrade`![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/peerchaincode.html?highlight=peer%20chaincode%20package#peer-chaincode-upgrade) para actualizar el código de encadenamiento que se ejecuta en el igual del Plan inicial o el Plan empresarial, que utiliza el paquete de código de encadenamiento.
 4. Cree una instancia del código de encadenamiento recién instalado en el canal utilizando la interfaz de usuario del supervisor de red o la CLI.
 
 El proceso para actualizar el código de encadenamiento también se puede encontrar en
-[`Código de encadenamiento para operadores`![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/chaincode4noah.html) en la documentación de Hyperledger Fabric.
+[`Código de encadenamiento para operadores`![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/chaincode4noah.html) en la documentación de Hyperledger Fabric.

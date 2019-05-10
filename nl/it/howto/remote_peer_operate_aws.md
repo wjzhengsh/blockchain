@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-03-20"
 
 subcollection: blockchain
 
@@ -28,7 +28,7 @@ Gli SDK Hyperledger Fabric forniscono una potente serie di API che consentono al
 
 Le seguenti istruzioni utilizzano l'[SDK Node di Fabric ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://fabric-sdk-node.github.io/ "SDK Hyperledger Fabric per jode.js") per gestire il peer e presumono una precedente dimestichezza con l'SDK. Puoi utilizzare l'[esercitazione sullo sviluppo di applicazioni](/docs/services/blockchain/v10_application.html#dev-app) per imparare a utilizzare l'SDK Node prima di iniziare e come guida allo sviluppo di applicazioni con il tuo peer quando sei pronto ad eseguire richiami e query del chaincode.
 
-Il peer {{site.data.keyword.blockchainfull_notm}} Platform su Quick Start AWS crea due peer per l'alta disponibilità. Pertanto, devi seguire i passi operativi una volta per ogni peer. Quando sei pronto ad eseguire query e richiami del chaincode dalla tua applicazione, fai in modo che il tuo SDK si connetta a entrambi i peer per garantire che le tue [applicazioni siano altamente disponibili](/docs/services/blockchain/v10_application.html#dev-app-ha-app).
+Il peer {{site.data.keyword.blockchainfull_notm}} Platform su Quick Start AWS crea due peer per l'alta disponibilità. Pertanto, devi seguire i passi operativi una volta per ogni peer. Quando sei pronto ad eseguire query e richiami del chaincode dalla tua applicazione, fai in modo che il tuo SDK si connetta a entrambi i peer per garantire che le tue [applicazioni siano altamente disponibili](/docs/services/blockchain/best_practices.html#best-practices-app-ha-app).
 
 ### Installazione dell'SDK Node
 {: #remote-peer-aws-operate-install-sdk}
@@ -67,7 +67,7 @@ echo -e "<CERT.PEM>" > cert2.pem
 ```
 {:codeblock}
 
-- Sostituisci `<PEER_ENROLL_ID>` con l'ID di iscrizione specificato nel template Quick Start e associato a questa istanza del peer remoto.  
+- Sostituisci `<PEER_ENROLL_ID>` con l'ID di iscrizione specificato nel template Quick Start e associato a questa istanza peer remota.  
 - Sostituisci `<CERT.PEM>` con il tuo certificato di firma, che inizia con `-----BEGIN CERTIFICATE-----` e finisce con `-----END CERTIFICATE-----`.    
 
   **Nota:** se il file `cert.pem` esiste, non sovrascriverlo ma crea un nuovo file, ad esempio `cert2.pem`.
@@ -77,7 +77,7 @@ Poiché aggiungi un nuovo certificato, devi riavviare il contenitore affinché i
 ### Passaggio del certificato TLS del tuo peer all'SDK
 {: #remote-peer-aws-operate-download-tlscert}
 
-Devi copiare il contenuto del `cacert.pem` TLS dal contenitore peer alla tua applicazione per autenticare la comunicazione dal tuo SDK. Esegui il seguente comando nel contenitore del peer. Sostituisci `<PEER_ENROLL_ID>` con il nome dello stack del peer remoto specificato nel template Quick Start. (Ricordati che vengono create due istanze VPC).
+Devi copiare il contenuto del `cacert.pem` TLS dal contenitore peer alla tua applicazione per autenticare la comunicazione dal tuo SDK. Esegui il seguente comando nel contenitore del peer. Sostituisci `<PEER_ENROLL_ID>` con il nome dello stack del peer remoto che hai specificato nel template Quick Start. (Ricordati che vengono create due istanze VPC).
 ```
 cat /etc/hyperledger/<PEER_ENROLL_ID>/tls/ca.crt
 ```
@@ -159,7 +159,7 @@ Il primo passo consiste nel generare i certificati richiesti (iscrizione) utiliz
 
 4.  Dovrai anche richiamare un certificato TLS da {{site.data.keyword.blockchainfull_notm}} Platform per comunicare con la CA. Le credenziali di rete sopra riportate includono il certificato necessario. Nella sezione `certificateAuthorities` del file Profilo connessione, copia il certificato che segue `"pem:"`, che inizia con `-----BEGIN CERTIFICATE-----` e termina con `-----END CERTIFICATE----- `. **Non includere le virgolette**.
 
-    Immetti il seguente comando da una finestra di terminale, sostituendo `<certificate>` con il certificato che hai copiato.
+    Esegui questo comando da una finestra del terminale, sostituendo `<certificate>` con il tuo certificato copiato.
     ```
     echo -e "<certificate>" > $HOME/fabric-ca-remote/cert.pem
     ```
@@ -238,12 +238,12 @@ Sulla tua macchina locale, apri un terminale di comando e passa alla directory i
 
       Copia negli appunti l'intero testo del file `cacert.pem`, che inizia con il primo `-----BEGIN CERTIFICATE-----` e termina con l'ultimo `-----END CERTIFICATE-----`.
 
-    - Torna alla tua macchina locale e immetti i seguenti comandi. Sostituisci il testo `<CACERT.PEM>` con il testo che hai copiato negli appunti.
+    - Torna alla tua macchina locale e immetti i seguenti comandi. Sostituisci il testo `<CACERT.PEM>` con il testo dagli appunti.
       ```
       cd /$FABRIC_CA_CLIENT_HOME/msp
-    mkdir tls
-    cd tls/
-    echo -e "<CACERT.PEM>" > cacert.pem
+      mkdir tls
+      cd tls/
+      echo -e "<CACERT.PEM>" > cacert.pem
       ```
       {:codeblock}
 
@@ -261,7 +261,7 @@ Sulla tua macchina locale, apri un terminale di comando e passa alla directory i
 
     - Copia negli appunti il testo del file `cert.pem` che inizia con `-----BEGIN CERTIFICATE-----` e termina con `-----END CERTIFICATE-----`.
 
-    - Torna al contenitore Peer e immetti i seguenti comandi per aggiungere cert.pem ai certificati peer. Sostituisci il testo `<CERT.PEM>` con il testo che hai copiato negli appunti.
+    - Torna al contenitore Peer e immetti i seguenti comandi per aggiungere cert.pem ai certificati peer. Sostituire il testo `<CERT.PEM>` con il testo dagli appunti.
 
       ```
       cd /etc/hyperledger/<PEER_ENROLL_ID>/msp/admincerts/
@@ -377,7 +377,7 @@ Prima di poter eseguire i comandi della CLI per unire il peer a un canale, è ne
     Sostituisci i campi con le tue proprie informazioni.
       - Sostituisci `<ORDERER_URL>` con il nome host e la porta dell'ordinante dal file `creds.json`.
       - Sostituisci `<CHANNEL_NAME>` con il nome del canale a cui si unisce il peer.
-      - Sostituisci `<CC_NAME>` con qualsiasi nome che si riferisca al tuo chaincode.
+      - Sostituisci `<CC_NAME>` con qualsiasi nome che si riferisce al tuo chaincode.
       - Sostituisci `<ORGANIZATION_MSP_ID>` con il nome dell'organizzazione dal file `creds.json`.
       - Sostituisci `<PEER_ADDR>` con il valore che hai creato nel passo precedente.  
 
@@ -392,7 +392,7 @@ Prima di poter eseguire i comandi della CLI per unire il peer a un canale, è ne
     ```
     {:codeblock}
 
-3. Recupera il blocco di genesi del canale per creare il libro mastro del canale sul tuo peer. Esegui prima `cd` alla tua directory root ed esegui quindi il comando per recuperare il blocco di genesi.
+3. Recupera il blocco genesi del canale per creare il libro mastro del canale sul tuo peer. Esegui prima `cd` alla tua directory root ed esegui quindi il comando per recuperare il blocco genesi.
 
   ```
   cd /
@@ -408,21 +408,21 @@ Prima di poter eseguire i comandi della CLI per unire il peer a un canale, è ne
   /mnt/crypto/peer/peer/msp/intermediatecerts/<intermediate cert name>.pem: no pem content for file  /mnt/crypto/peer/peer/msp/intermediatecerts/<intermediate cert name>.pem
   ```
 
-  Immetti il seguente comando per verificare che il blocco di genesi sia stato aggiunto correttamente al tuo contenitore peer:
+  Immetti il seguente comando per verificare che il blocco genesi sia stato aggiunto correttamente al tuo contenitore peer:
 
   ```
   ls *.block
   ```
   {:codeblock}
 
-  Dopo che il blocco di genesi è stato aggiunto correttamente, dovresti vedere qualcosa di simile al seguente esempio:
+  Dopo che il blocco genesi è stato aggiunto correttamente, dovresti vedere qualcosa di simile al seguente esempio:
   ```
   defaultchannel_0.block
   ```
   <!-- removing the code block since this is a result and not an executable command
   {:codeblock}
   -->
-4. Ora unisci il peer al canale, passando il blocco di genesi con il seguente comando:
+4. Ora unisci il peer al canale, passando il blocco genesi con il seguente comando:
 
   ```
   GOPATH=/ CORE_PEER_TLS_ROOTCERT_FILE=/mnt/msp/tls/cacert.pem CORE_PEER_TLS_ENABLED=true CORE_PEER_ADDRESS=${PEERADDR} CORE_PEER_LOCALMSPID=${ORGID} CORE_PEER_MSPCONFIGPATH=/mnt/msp/ GOPATH=/ peer channel join -b ${CHANNEL}_0.block
@@ -437,7 +437,7 @@ Prima di poter eseguire i comandi della CLI per unire il peer a un canale, è ne
   2018-07-06 18:32:09.992 UTC [main] main -> INFO 003 Exiting.....
   ```
 
-### Utilizzo del contenitore degli strumenti Fabric per installare il chaincode sul peer
+### Utilizzo del contenitore di strumenti Fabric per installare il chaincode sul peer
 {: #aws-toolcontainer-install-cc}
 
 A questo punto, siamo pronti per installare e istanziare il chaincode sul peer. Per queste istruzioni, installeremo il chaincode `fabcar` dal repository `fabric-samples` Hyperledger che dovresti aver scaricato sulla tua macchina locale quando hai [configurato il tuo contenitore degli strumenti Fabric](/docs/services/blockchain/howto/remote_peer_operate_aws.html#remote-peer-aws-operate-cli-operate).  

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018,2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-03"
 
 subcollection: blockchain
 
@@ -79,6 +79,27 @@ In **Abbildung 6** sind der Hauptteil der API-Antwort, die URL und der cURL-Befe
 
 ![API-Antwort in der Swagger-Benutzerschnittstelle](../images/swaggerUICurlResponse.png "API-Antwort in der Swagger-Benutzerschnittstelle")  
 *Abbildung 6. API-Antwort*    
+
+## API-Zugriff inaktivieren
+{: #ibp-swagger-turn-off}
+
+Standardmäßig können alle Benutzer mit einer Nicht-Auditorrolle in IBM Cloud die **Netzberechtigungsnachweise** anzeigen und verwenden, die in der Swagger-API-Anzeige sichtbar sind, und somit Ihr Netz mittels der APIs verwalten. Wenn Sie jedoch Ihre Swagger-API-Netzberechtigungsnachweise nicht in der Benutzerschnittstelle bereitstellen möchten, können Sie Ihre vorhandenen Werte für Schlüssel und geheimen Schlüssel kopieren und sichern und neue Berechtigungsnachweise generieren, die für die Verwendung mit Swagger-APIs nicht gültig sind. Ein Flag mit dem Namen "resetCredentials" wird bereitgestellt, mit dem Sie anhand der folgenden Schritte den Zugriff steuern können:
+
+1. Befolgen Sie die Schritte zum Generieren eines neuen Netzberechtigungsnachweises, wie im [Dashboard für Serviceberechtigungsnachweise](/docs/services/blockchain/howto/create_join_network_with_apis.html#swagger-network-retrieve-id-token) beschrieben.
+2. Fügen Sie jedoch im Feld **Inline-Konfigurationsparameter hinzufügen** den folgenden Wert ein:
+   ```
+   {
+     "resetCredentials": true
+   }
+   ```
+   {:codeblock}
+3. Klicken Sie auf **Hinzufügen**.
+
+Wenn nun ein beliebiger Benutzer über die Benutzerschnittstelle auf die Swagger-API-Anzeige zugreift, enthalten die **Netzberechtigungsnachweis**-Informationen einen generischen Schlüssel und einen Wert für einen geheimen Schlüssel, der für die Verwaltung des Netzes ungültig ist. API-Anforderungen, die mit diesen Berechtigungsnachweisen übergeben werden, werden nicht verarbeitet.  
+
+Wenn Sie zu einem späteren Zeitpunkt gültige Netzberechtigungsnachweise in der Benutzerschnittstelle zugänglich machen möchten, wiederholen Sie einfach die oben beschriebenen Schritte, um einen neuen Berechtigungsnachweis zu generieren. Dieses Mal können Sie jedoch das Feld **Inline-Konfigurationsparameter hinzufügen** leer lassen. Sie müssen keine Parameter angeben.
+
+Nun werden die ursprünglichen gültigen Berechtigungsnachweise in den **Netzberechtigungsnachweis**-Informationen in der Benutzerschnittstelle angezeigt und können zur Authentifizierung der Swagger-APIs verwendet werden.
 
 ## Tipps zur Fehlerbehebung
 {: #ibp-swagger-troubleshooting}

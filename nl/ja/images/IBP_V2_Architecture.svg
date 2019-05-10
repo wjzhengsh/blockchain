@@ -18,10 +18,7 @@
    style="enable-background:new 0 0 1400 1548;"
    xml:space="preserve"
    sodipodi:docname="IBP_V2_Architecture.svg"
-   inkscape:version="0.92.3 (2405546, 2018-03-11)"
-   inkscape:export-filename="D:\_work\IBM\BM140\BM140ABD141_001\UT_kumi_BM\04_toPM\images\IBP_V2_Architecture.png"
-   inkscape:export-xdpi="68.620445"
-   inkscape:export-ydpi="68.620445"><metadata
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"><metadata
    id="metadata1517"><rdf:RDF><cc:Work
        rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
          rdf:resource="http://purl.org/dc/dcmitype/StillImage" /></cc:Work></rdf:RDF></metadata><defs
@@ -128,7 +125,7 @@
    id="namedview1513"
    showgrid="false"
    inkscape:zoom="0.77521209"
-   inkscape:cx="126.11299"
+   inkscape:cx="341.53791"
    inkscape:cy="530.69277"
    inkscape:window-x="-8"
    inkscape:window-y="-8"
@@ -195,13 +192,11 @@
    transform="translate(0,22)">Kubernetes クラスター - </text>
 
 
-
 		<text
    style="font-size:19.83333333px;font-family:'MS UI Gothic';fill:#161515;-inkscape-font-specification:'MS UI Gothic, Normal';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;"
    id="text1338"
    class="st3 st4 st5"
    transform="translate(0,50)">サービス・インスタンス 3</text>
-
 
 
 	</g><g
@@ -224,13 +219,11 @@
    transform="translate(0,22)">Kubernetes クラスター - </text>
 
 
-
 		<text
    style="font-size:19.83333333px;font-family:'MS UI Gothic';fill:#161515;-inkscape-font-specification:'MS UI Gothic, Normal';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;"
    id="text1344"
    class="st3 st4 st5"
    transform="translate(0,50)">サービス・インスタンス 2</text>
-
 
 
 	</g><g
@@ -270,13 +263,11 @@
    transform="translate(0,22)">IBM Blockchain Platform Kubernetes クラスター - </text>
 
 
-
 		<text
    style="font-size:19.83333333px;font-family:'MS UI Gothic';fill:#161515;-inkscape-font-specification:'MS UI Gothic, Normal';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;"
    id="text1354"
    class="st3 st4 st5"
    transform="translate(0,50)"> 操作ツール </text>
-
 
 
 		<g
@@ -297,7 +288,6 @@
    transform="translate(81,39)"> 操作ツール </text>
 
 
-
 			<text
    style="font-size:19.83333333px;font-family:'MS UI Gothic';fill:#ffffff;-inkscape-font-specification:'MS UI Gothic, Normal';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;"
    id="text1359"
@@ -305,18 +295,17 @@
    transform="translate(81,63)">インスタンス</text>
 
 
-
 			<g
    id="_x39_658-200">
 				
 					<image
-   sodipodi:absref="D:\_work\IBM\BM140\BM140ABD141_001\UT_kumi_BM\04_toPM\images\C9FED2EB5474981B.png"
+   sodipodi:absref="D:\_work\IBM\BM140\BM140ABD141_001\UT_kumi_BM\01_work\_Art\01_New\jpn\C9FED2EB5474981B.png"
    xlink:href="C9FED2EB5474981B.png"
-   style="overflow:visible;enable-background:new"
-   width="200"
-   height="200"
+   id="image1361"
    transform="matrix(0.135,0,0,0.135,28,31)"
-   id="image1361">
+   height="200"
+   width="200"
+   style="overflow:visible;enable-background:new">
 				</image>
 				<g
    id="g1364">
@@ -359,13 +348,11 @@
    transform="translate(0,22)">IBM Blockchain Platform Kubernetes クラスター - </text>
 
 
-
 			<text
    style="font-size:19.83333333px;font-family:'MS UI Gothic';fill:#161515;-inkscape-font-specification:'MS UI Gothic, Normal';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;"
    id="text1373"
    class="st3 st4 st5"
    transform="translate(0,50)"> 操作ツール </text>
-
 
 
 			<g
@@ -386,7 +373,6 @@
    transform="translate(81,39)"> 操作ツール </text>
 
 
-
 				<text
    style="font-size:19.83333333px;font-family:'MS UI Gothic';fill:#ffffff;-inkscape-font-specification:'MS UI Gothic, Normal';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;"
    id="text1378"
@@ -394,18 +380,17 @@
    transform="translate(81,63)">インスタンス</text>
 
 
-
 				<g
    id="_x39_658-200_1_">
 					
 						<image
-   sodipodi:absref="D:\_work\IBM\BM140\BM140ABD141_001\UT_kumi_BM\04_toPM\images\C9FED2EB5474981C.png"
+   sodipodi:absref="D:\_work\IBM\BM140\BM140ABD141_001\UT_kumi_BM\01_work\_Art\01_New\jpn\C9FED2EB5474981C.png"
    xlink:href="C9FED2EB5474981C.png"
-   style="overflow:visible;enable-background:new"
-   width="200"
-   height="200"
+   id="image1380"
    transform="matrix(0.135,0,0,0.135,28,31)"
-   id="image1380">
+   height="200"
+   width="200"
+   style="overflow:visible;enable-background:new">
 					</image>
 					<g
    id="g1383">
@@ -448,13 +433,11 @@
    transform="translate(0,22)">Kubernetes クラスター - </text>
 
 
-
 		<text
    style="font-size:19.83333333px;font-family:'MS UI Gothic';fill:#161515;-inkscape-font-specification:'MS UI Gothic, Normal';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;"
    id="text1393"
    class="st3 st4 st5"
    transform="translate(0,50)">サービス・インスタンス 1</text>
-
 
 
 	</g><path
@@ -491,14 +474,12 @@
    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:19.83333397px;font-family:'MS UI Gothic';-inkscape-font-specification:'MS UI Gothic, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#010f5e">Ingress</text>
 
 
-
 			</g>
 			<text
    transform="translate(199.9255,35)"
    class="st11 st4 st12"
    id="text1402"
    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:19.83333397px;font-family:'MS UI Gothic';-inkscape-font-specification:'MS UI Gothic, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ffffff">サービス・インスタンス名前空間</text>
-
 
 
 		</g><rect
@@ -522,14 +503,12 @@
    x="796.6615"
    y="952">プロキシー</text>
 
-
 <text
    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:19.83333397px;font-family:'MS UI Gothic';-inkscape-font-specification:'MS UI Gothic, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ffffff"
    id="text1410"
    class="st11 st4 st12"
    x="676.8985"
    y="911">IBM Blockchain Platform 名前空間</text>
-
 
 <path
    id="Line-2"
@@ -565,7 +544,6 @@
    transform="translate(28.49,31)">RBAC</text>
 
 
-
 		</g>
 		<text
    style="font-size:19.83333333px;font-family:'MS UI Gothic';fill:#ffffff;-inkscape-font-specification:'MS UI Gothic, Normal';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;"
@@ -574,13 +552,11 @@
    transform="translate(63.05,39)">IBM Blockchain </text>
 
 
-
 		<text
    style="font-size:19.83333333px;font-family:'MS UI Gothic';fill:#ffffff;-inkscape-font-specification:'MS UI Gothic, Normal';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;"
    id="text1422"
    class="st11 st4 st12"
    transform="translate(41.3045,63)">Platform 名前空間</text>
-
 
 
 	</g><rect
@@ -596,7 +572,6 @@
    class="st11 st4 st12"
    x="536.09747"
    y="1111">ピア-1</text>
-
 
 <rect
    style="fill:#010f5e;stroke:#857b7b"
@@ -622,7 +597,6 @@
      x="680.2951"
      y="1270.6592"
      style="stroke-width:0.70326728">プログラム-1</tspan></text>
-
 
 <g
    transform="translate(856,546)"
@@ -668,14 +642,12 @@
    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:19.83333397px;font-family:'MS UI Gothic';-inkscape-font-specification:'MS UI Gothic, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#010f5e">Tiller</text>
 
 
-
 			</g><text
    class="st11 st4 st12"
    id="text1438"
    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:19.83333397px;font-family:'MS UI Gothic';-inkscape-font-specification:'MS UI Gothic, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ffffff"
    x="107.26"
    y="30">kube-system</text>
-
 
 <text
    class="st11 st4 st12"
@@ -684,14 +656,12 @@
    x="220.3468"
    y="30"> </text>
 
-
 <text
    class="st11 st4 st12"
    id="text1442"
    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:19.83333397px;font-family:'MS UI Gothic';-inkscape-font-specification:'MS UI Gothic, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ffffff"
    x="113.948"
    y="54">名前空間</text>
-
 
 
 	</g><rect
@@ -708,7 +678,6 @@
    x="537.09747"
    y="1180">ピア-2</text>
 
-
 <rect
    style="fill:#010f5e;stroke:#857b7b"
    height="61"
@@ -722,7 +691,6 @@
    class="st11 st4 st12"
    x="537.09747"
    y="1249">ピア-3</text>
-
 
 <rect
    style="fill:#010f5e;stroke:#857b7b"
@@ -738,7 +706,6 @@
    x="662.37799"
    y="1110">CA-1</text>
 
-
 <rect
    style="fill:#010f5e;stroke:#857b7b"
    height="61"
@@ -752,7 +719,6 @@
    class="st11 st4 st12"
    x="663.37799"
    y="1179">CA-2</text>
-
 
 <path
    style="fill:#565656"
@@ -797,68 +763,68 @@
    class="st20"
    id="Triangle_3_" />
 	</g><image
-   sodipodi:absref="D:\_work\IBM\BM140\BM140ABD141_001\UT_kumi_BM\04_toPM\images\C9FED2EB5474981D.png"
+   sodipodi:absref="D:\_work\IBM\BM140\BM140ABD141_001\UT_kumi_BM\01_work\_Art\01_New\jpn\C9FED2EB5474981D.png"
    xlink:href="C9FED2EB5474981D.png"
-   y="740"
-   x="527"
-   style="overflow:visible;enable-background:new"
-   width="36.998402"
+   id="IBM_Cloud-Copy"
    height="36.998402"
-   id="IBM_Cloud-Copy">
+   width="36.998402"
+   style="overflow:visible;enable-background:new"
+   x="527"
+   y="740">
 	</image><image
-   sodipodi:absref="D:\_work\IBM\BM140\BM140ABD141_001\UT_kumi_BM\04_toPM\images\C9FED2EB5474981F.png"
+   sodipodi:absref="D:\_work\IBM\BM140\BM140ABD141_001\UT_kumi_BM\01_work\_Art\01_New\jpn\C9FED2EB5474981F.png"
    xlink:href="C9FED2EB5474981F.png"
-   y="1067"
-   x="553"
-   style="overflow:visible;enable-background:new"
-   width="26.0016"
+   id="IBM_Cloud-Copy-2"
    height="26.0016"
-   id="IBM_Cloud-Copy-2">
+   width="26.0016"
+   style="overflow:visible;enable-background:new"
+   x="553"
+   y="1067">
 	</image><image
-   sodipodi:absref="D:\_work\IBM\BM140\BM140ABD141_001\UT_kumi_BM\04_toPM\images\C9FED2EB5474981A.png"
+   sodipodi:absref="D:\_work\IBM\BM140\BM140ABD141_001\UT_kumi_BM\01_work\_Art\01_New\jpn\C9FED2EB5474981A.png"
    xlink:href="C9FED2EB5474981A.png"
-   y="1137"
-   x="553"
-   style="overflow:visible;enable-background:new"
-   width="26.0016"
+   id="IBM_Cloud-Copy-5"
    height="26.0016"
-   id="IBM_Cloud-Copy-5">
+   width="26.0016"
+   style="overflow:visible;enable-background:new"
+   x="553"
+   y="1137">
 	</image><image
-   sodipodi:absref="D:\_work\IBM\BM140\BM140ABD141_001\UT_kumi_BM\04_toPM\images\C9FED2EB54749808.png"
+   sodipodi:absref="D:\_work\IBM\BM140\BM140ABD141_001\UT_kumi_BM\01_work\_Art\01_New\jpn\C9FED2EB54749808.png"
    xlink:href="C9FED2EB54749808.png"
-   y="1206"
+   id="IBM_Cloud-Copy-7"
+   height="26.0016"
+   width="26.0016"
+   style="overflow:visible;enable-background:new"
    x="553"
-   style="overflow:visible;enable-background:new"
-   width="26.0016"
-   height="26.0016"
-   id="IBM_Cloud-Copy-7">
+   y="1206">
 	</image><image
-   sodipodi:absref="D:\_work\IBM\BM140\BM140ABD141_001\UT_kumi_BM\04_toPM\images\C9FED2EB54749809.png"
+   sodipodi:absref="D:\_work\IBM\BM140\BM140ABD141_001\UT_kumi_BM\01_work\_Art\01_New\jpn\C9FED2EB54749809.png"
    xlink:href="C9FED2EB54749809.png"
-   y="1065"
-   x="671"
-   style="overflow:visible;enable-background:new"
-   width="26.0016"
+   id="IBM_Cloud-Copy-3"
    height="26.0016"
-   id="IBM_Cloud-Copy-3">
+   width="26.0016"
+   style="overflow:visible;enable-background:new"
+   x="671"
+   y="1065">
 	</image><image
-   sodipodi:absref="D:\_work\IBM\BM140\BM140ABD141_001\UT_kumi_BM\04_toPM\images\C9FED2EB5474980A.png"
+   sodipodi:absref="D:\_work\IBM\BM140\BM140ABD141_001\UT_kumi_BM\01_work\_Art\01_New\jpn\C9FED2EB5474980A.png"
    xlink:href="C9FED2EB5474980A.png"
-   y="1135"
+   id="IBM_Cloud-Copy-6"
+   height="26.0016"
+   width="26.0016"
+   style="overflow:visible;enable-background:new"
    x="671"
-   style="overflow:visible;enable-background:new"
-   width="26.0016"
-   height="26.0016"
-   id="IBM_Cloud-Copy-6">
+   y="1135">
 	</image><image
-   sodipodi:absref="D:\_work\IBM\BM140\BM140ABD141_001\UT_kumi_BM\04_toPM\images\C9FED2EB5474980B.png"
+   sodipodi:absref="D:\_work\IBM\BM140\BM140ABD141_001\UT_kumi_BM\01_work\_Art\01_New\jpn\C9FED2EB5474980B.png"
    xlink:href="C9FED2EB5474980B.png"
-   y="1066"
-   x="793"
-   style="overflow:visible;enable-background:new"
-   width="26.0016"
+   id="IBM_Cloud-Copy-4"
    height="26.0016"
-   id="IBM_Cloud-Copy-4">
+   width="26.0016"
+   style="overflow:visible;enable-background:new"
+   x="793"
+   y="1066">
 	</image><g
    id="Group_2_"
    transform="translate(449,131)">
@@ -883,14 +849,12 @@
    x="449"
    y="84">IBM Blockchain Platform Kubernetes クラスター - </text>
 
-
 <text
    class="st3 st4 st5"
    id="text1480"
    style="font-size:19.83333333px;font-family:'MS UI Gothic';fill:#161515;-inkscape-font-specification:'MS UI Gothic, Normal';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;"
    x="449"
    y="112"> 操作ツール </text>
-
 
 <g
    id="Group-2_2_"
@@ -910,7 +874,6 @@
    style="font-size:19.83333333px;font-family:'MS UI Gothic';fill:#ffffff;-inkscape-font-specification:'MS UI Gothic, Normal';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;"> 操作ツール </text>
 
 
-
 			<text
    transform="translate(81,63)"
    class="st11 st4 st12"
@@ -918,18 +881,17 @@
    style="font-size:19.83333333px;font-family:'MS UI Gothic';fill:#ffffff;-inkscape-font-specification:'MS UI Gothic, Normal';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;">インスタンス</text>
 
 
-
 			<g
    id="_x39_658-200_2_">
 				
 					<image
-   sodipodi:absref="D:\_work\IBM\BM140\BM140ABD141_001\UT_kumi_BM\04_toPM\images\31D47C0334D9FAE4.png"
+   sodipodi:absref="D:\_work\IBM\BM140\BM140ABD141_001\UT_kumi_BM\01_work\_Art\01_New\jpn\31D47C0334D9FAE4.png"
    xlink:href="31D47C0334D9FAE4.png"
-   id="image1487"
-   transform="matrix(0.135,0,0,0.135,28,31)"
-   height="200"
+   style="overflow:visible;enable-background:new"
    width="200"
-   style="overflow:visible;enable-background:new">
+   height="200"
+   transform="matrix(0.135,0,0,0.135,28,31)"
+   id="image1487">
 				</image>
 				<g
    id="g1490">
@@ -956,35 +918,30 @@
    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:19.83333397px;font-family:'MS UI Gothic';-inkscape-font-specification:'MS UI Gothic, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ffffff"
    x="64.112"
    y="1393">サービス・インスタンス・クラスターの詳細</text>
-
 <text
    class="st11 st24 st25"
    id="text1498"
    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:19.83333397px;font-family:'MS UI Gothic';-inkscape-font-specification:'MS UI Gothic, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ffffff"
    x="73"
    y="1442">- クラスターは単一ゾーンまたは</text>
-
 <text
    class="st11 st24 st25"
    id="text1500"
    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:19.83333397px;font-family:'MS UI Gothic';-inkscape-font-specification:'MS UI Gothic, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ffffff"
    x="409.43561"
    y="1442"> </text>
-
 <text
    class="st11 st24 st25"
    id="text1502"
    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:19.83333397px;font-family:'MS UI Gothic';-inkscape-font-specification:'MS UI Gothic, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ffffff"
    x="89"
    y="1469">マルチゾーンにすることができます</text>
-
 <text
    class="st11 st24 st25"
    id="text1504"
    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:19.83333397px;font-family:'MS UI Gothic';-inkscape-font-specification:'MS UI Gothic, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ffffff"
    x="506"
    y="1442">- マルチゾーン・リージョン (MZR) にノードを</text>
-
 <text
    class="st11 st24 st25"
    id="text1506"
@@ -999,13 +956,11 @@
      id="tspan950"
      x="522"
      y="1493.7916">使用されます</tspan></text>
-
 <text
    class="st11 st24 st25"
    id="text1508"
    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:19.83333397px;font-family:'MS UI Gothic';-inkscape-font-specification:'MS UI Gothic, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#ffffff"
    x="947.42999"
    y="1443">- お客様は選択したコンピュートをプロビジョンします</text>
-
 
 </svg>

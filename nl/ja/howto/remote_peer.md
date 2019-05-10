@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-03-20"
 
 subcollection: blockchain
 
@@ -58,7 +58,7 @@ AWS [クイック・スタート・テンプレート ![外部リンク・アイ
 
 {{site.data.keyword.blockchainfull_notm}} Platform for AWS のデプロイ方法については、[Amazon Web Services でのピアのデプロイ](/docs/services/blockchain/howto/remote_peer_aws.html#remote-peer-aws)を参照してください。
 
-以下の図は、{{site.data.keyword.blockchainfull_notm}} Platform for AWS ピアをデプロイするプロセスを説明しています。
+以下の図は、{{site.data.keyword.blockchainfull_notm}} Platform for AWS ピアをデプロイするプロセスを説明しています。クリック操作が可能です。 各ステップをクリックすると、詳しい説明を読むことができます。
 
 <img usemap="#home_map1" border="0" class="image" id="image_ztx_crb_f1b2" src="../images/remote_peer_AWS_flow.png" width="750" alt="ボックスをクリックすると、プロセスの詳細が表示されます。" style="width:750px;" />
 <map name="home_map1" id="home_map1">
@@ -124,7 +124,7 @@ AWS ピアをデプロイした後に、ピアがネットワークにトラン�
 
 - ゼロ知識証明 (ZKP) により、「証明者」は「検証者」に、機密事項自体を示すことなく、機密事項に関する知識があることを保証できます。 何を知っているかを示すことなく、何かを知っていることを示してステートメントを満たす方法です。
 
-これらのテクノロジーについて詳しくは、[Hyperledger Fabric を使用したプライベートおよび機密トランザクション ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/developerworks/cloud/library/cl-blockchain-private-confidential-transactions-hyperledger-fabric-zero-knowledge-proof/index.html "Hyperledger Fabric を使用したプライベートおよび機密トランザクション") に関するホワイト・ペーパーを参照してください。
+これらのテクノロジーについて詳しくは、[Hyperledger Fabric を使用したプライベートおよび機密トランザクション ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://developer.ibm.com/tutorials/cl-blockchain-private-confidential-transactions-hyperledger-fabric-zero-knowledge-proof/ "Hyperledger Fabric を使用したプライベートおよび機密トランザクション") に関するホワイト・ペーパーを参照してください。
 
 ## サポートについて
 {: #remote-peer-aws-about-support}

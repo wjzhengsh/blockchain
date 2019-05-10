@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-03"
 
 subcollection: blockchain
 
@@ -35,6 +35,7 @@ In Tabelle 1 und Abbildung 1 sind die {{site.data.keyword.cloud_notm}}-Regionen 
 | Tokio |  | J |
 | Frankfurt |  | J |
 | Sydney | J |  |
+| Melbourne |  | J |
 | São Paulo |  | J |
 | Toronto |  | J |
 

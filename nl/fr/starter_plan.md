@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -30,7 +30,7 @@ Le **Plan Starter** est un environnement pour ceux qui souhaitent démarrer avec
 
 **Remarques :**
 - Le plan Starter d'{{site.data.keyword.blockchainfull_notm}} Platform est un environnement de tests et de développement, et il ne convient pas pour des charges de travail de production. Si vous avez besoin d'un environnement de production, consultez la section [A propos du plan Enterprise](/docs/services/blockchain/enterprise_plan.html#enterprise-plan-about).
-- {{site.data.keyword.blockchainfull_notm}} Platform est un service de plateforme sur {{site.data.keyword.cloud_notm}} et toutes les offres d'appartenance suivent les [Dispositions des services {{site.data.keyword.cloud_notm}} ![Icône de lien externe](images/external_link.svg "Icône de lien externe")](http://www-03.ibm.com/software/sla/sladb.nsf/sla/bm "Dispositions des services {{site.data.keyword.cloud_notm}}") relatives aux accords sur les niveaux de licence (SLA). Les réseaux du plan Starter sont mis à disposition dans **plusieurs environnements** dans des centres de données géographiquement distincts.
+- {{site.data.keyword.blockchainfull_notm}} Platform est un service de plateforme sur {{site.data.keyword.cloud_notm}} et toutes les offres d'appartenance suivent les [Dispositions des services {{site.data.keyword.cloud_notm}} ![Icône de lien externe](images/external_link.svg "Icône de lien externe")](http://www-03.ibm.com/software/sla/sladb.nsf/sla/bm "Dispositions des services {{site.data.keyword.cloud_notm}}") relatives aux accords sur les niveaux de licence (SLA). Le plan Starter est mis en service dans un centre de données dans une zone géographique unique. Pour obtenir la liste des zones géographiques disponibles, voir [Emplacements {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain?topic=blockchain-ibp-regions-locations#ibp-regions-locations).
 
 ## Que propose le plan Starter ?
 {: #starter-plan-about-what-starter-plan-offers}
@@ -72,7 +72,7 @@ Le plan Starter constitue un point d'entrée d'{{site.data.keyword.blockchainful
 - **Versions et mise à niveau du plan Starter**
     - Les nouveaux réseaux de plan Starter qui sont créés après le 4 octobre 2018 sont basés sur Hyperledger Fabric version 1.2.1. Les réseaux de plan Starter plus anciens demeurent au niveau de version Fabric 1.1.0.
     - Les nouveaux homologues qui sont ajoutés à des réseaux de plan Starter plus anciens seront basés sur Fabric v1.2.1. Les performances de votre réseau ne sont pas affectées en raison de la compatibilité amont.
-    - Vous avez la possibilité d'utiliser des paramètres de [configuration de canal ![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/latest/config_update.html "Configuration de canal") plus avancés et des [listes de contrôle d'accès![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-v1.2/access_control.html "Listes de contrôle d'accès") lors de la création ou de la mise à jour d'un canal.
+    - Vous avez la possibilité d'utiliser des paramètres de [configuration de canal ![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/config_update.html "Configuration de canal") plus avancés et des [listes de contrôle d'accès![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/access_control.html "Listes de contrôle d'accès") lors de la création ou de la mise à jour d'un canal.
     - La [Reconnaissance de service ![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/discovery-overview.html "reconnaissance de service") et la fonction de [données privées ![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/private-data/private-data.html "données privées") d'Hyperledger Fabric version 1.2 ne sont pas prises en charge dans le plan Starter.
     - Si vous [réinitialisez](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-reset-network) un ancien réseau de plan Starter qui est en version 1.1.0 de Fabric, votre nouveau réseau sera u niveau 1.2 de Fabric. Si vous réinitialisez votre réseau, vous devez installer votre code blockchain ou les fichiers .bna sur le nouveau réseau, mais également re-inviter des membres de votre ancien réseau.
 - **Limitation des ressources réseau**

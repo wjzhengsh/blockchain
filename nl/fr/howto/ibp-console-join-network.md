@@ -2,8 +2,7 @@
 
 copyright:
   years: 2019
-
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -76,11 +75,12 @@ Dans le cadre de ce tutoriel, votre AC émet les clés publiques et privées pou
 
 Procédez comme suit depuis votre console :  
 
-1. Accédez à l'onglet **Noeuds** sur la gauche et cliquez sur **Ajouter une autorité de certification**. Les panneaux latéraux à quatre étapes vous permettent de personnaliser l'autorité de certification que vous voulez créer et l'organisation pour laquelle cette autorité de certification va émettre des clés.
+1. Accédez à l'onglet **Noeuds** sur la gauche et cliquez sur **Ajouter une autorité de certification**. Les panneaux latéraux vous permettent de personnaliser l'autorité de certification que vous voulez créer et l'organisation pour laquelle cette autorité de certification va émettre des clés.
 2. Cliquez sur **{{site.data.keyword.cloud_notm}}** sous **Créer une autorité de certification**.
 3. Utilisez le second panneau latéral pour affecter un **nom d'affichage** à votre autorité de certification. Notre valeur recommandée pour cette autorité de certification est `AC Org2`.
 4. Sur le panneau suivant, affectez des données d'identification à l'admin de votre autorité de certification en indiquant **admin** comme `ID admin`, ainsi que le secret de votre choix, mais nous recommandons la valeur `adminpw` pour les besoins de ce tutoriel.
-5. Cliquez sur **Suivant** et sur **Ajouter une autorité de certification**.
+5. Si vous utilisez un cluster payant, sur le panneau suivant vous avez la possibilité de configurer l'allocation de ressource pour le noeud. Pour les besoins de ce tutoriel, vous pouvez accepter toutes les valeurs par défaut et cliquer sur **Suivant**. Si vous souhaitez en savoir davantage sur l'allocation de ressources à votre noeud, consultez la rubrique relative à l'[allocation de ressources](/docs/services/blockchain?topic=blockchain-ibp-console-govern#ibp-console-govern-allocate-resources). Si vous utilisez un cluster gratuit, vous voyez déjà la page **Récapitulatif**.
+6. Passez en revue la page Récapitulatif, puis cliquez sur **Ajouter une autorité de certification**.
 
 **Tâche : Créer l'autorité de certification de l'organisation homologue**
 
@@ -91,6 +91,8 @@ Procédez comme suit depuis votre console :
 *Figure 2. Création de l'autorité de certification de l'organisation homologue*  
 Une fois l'autorité de certification déployée, vous allez l'utiliser lors de la création de la définition MSP de votre organisation, de l'enregistrement des utilisateurs, ainsi que pour créer votre point d'entrée sur un réseau, l'**homologue**.
 
+Les utilisateurs expérimentés ont peut-être déjà leur propre autorité de certification et ils ne souhaitent pas en créer une nouvelle sur la console. Si votre autorité de certification existant peut émettre des certificats au format `X.509`, vous pouvez utiliser votre propre autorité de certification tiers au lieu d'en créer une nouvelle ici. Pour plus d'informations, consultez la rubrique relative à l'[utilisation de certificats d'une autorité de certification tierce avec votre homologue ou service de tri](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-identities).
+
 ### Utilisation de votre autorité de certification pour enregistrer des identités
 {: #ibp-console-join-network-use-CA-org2}
 
@@ -99,12 +101,15 @@ Chaque noeud ou application que vous souhaitez créer a besoin de clés publique
 * **Un admin d'organisation** Cette identité vous permet d'exploiter des noeuds à l'aide de la console de plateforme.
 * **Une identité homologue** Cette identité vous permet de déployer un homologue.
 
+Selon le type de votre cluster, le déploiement de l'autorité de certification peut prendre jusqu'à dix minutes. Le carré vert situé sur la vignette de l'autorité de certification indique qu'elle est "En cours d'exécution" et qu'elle peut être utilisée pour enregistrer des identités. Avant de passer aux étapes ci-dessous pour enregistrer des identités, vous devez attendre que l'autorité de certification passe à l'état "En cours d'exécution".
+{:important}
+
 Pour générer ces certificats, effectuez les étapes suivantes :
 
-1. Sur la console, utilisez l'onglet **Noeuds** pour accéder à l'autorité de certification `AC Org2` que vous avez créée.
-2. Une fois l'autorité de certification sélectionnée, vous devrez enregistrer un admin pour cette organisation, `org2`, ainsi qu'une identité pour l'homologue lui-même. Vous devez déjà voir une identité sur cette page ; il s'agit de l'admin que vous avez créé pour l'autorité de certification. Pour enregistrer nos nouveaux utilisateurs, cliquez sur le bouton **Enregistrement d'utilisateur**.
+1. Sur la console, cliquez sur l'onglet **Noeuds**. Lorsque le voyant d'état dans l'angle supérieur gauche de l'`AC Org2` devient vert et affiche l'état `En cours d'exécution`, cliquez sur la vignette afin de l'ouvrir.
+2. Après avoir cliqué sur votre autorité de certification pour l'ouvrir, vous devez enregistrer une identité admin pour cette organisation, `org2`, en plus d'une identité pour l'homologue lui-même. Patientez jusqu'à ce que l'identité `admin` que vous venez de créer soit visible dans la table, puis cliquez sur le bouton **Enregistrement d'utilisateur** pour enregistrer vos nouveaux utilisateurs.
 3. Affectez l'ID d'inscription `org2admin` à l'admin de l'organisation. Vous pouvez utiliser n'importe quel secret, mais nous suggérons `org2adminpw` pour plus de commodité. Cliquez sur **Suivant**.
-4. A l'étape suivante, définissez le Type de cette identité sur `client` et sélectionnez l'une des organisations affiliées dans la liste déroulante. La zone d'affiliation est destinée aux utilisateurs expérimentés et elle n'est pas utilisée dans le cadre de ce tutoriel. Les éléments de la liste sont les affiliations par défaut de l'autorité de certification Fabric. Si vous souhaitez en savoir davantage sur l'utilisation des affiliations par l'autorité de certification Fabric, consultez la rubrique relative à l'[enregistrement d'une nouvelle identité ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/users-guide.html#registering-a-new-identity). Pour l'instant, sélectionnez une affiliation à partir de la liste, par exemple `org2` et cliquez sur **Suivant**.
+4. A l'étape suivante, définissez le Type de cette identité sur `client` et sélectionnez l'une des organisations affiliées dans la liste déroulante. La zone d'affiliation est destinée aux utilisateurs expérimentés et elle n'est pas utilisée dans le cadre de ce tutoriel, mais il s'agit d'une zone obligatoire. Les éléments de la liste sont les affiliations par défaut de l'autorité de certification Fabric. Si vous souhaitez en savoir davantage sur l'utilisation des affiliations par l'autorité de certification Fabric, consultez la rubrique relative à l'[enregistrement d'une nouvelle identité ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/users-guide.html#registering-a-new-identity). Pour l'instant, sélectionnez une affiliation à partir de la liste, par exemple `org2` et cliquez sur **Suivant**.
 5. Vous n'êtes pas tenu de compléter les zones **Nombre maximal d'inscriptions** et **Ajouter des attributs**. Elles ne sont pas utilisées dans le cadre de ce tutoriel, mais vous pouvez en apprendre plus sur leurs fonctions dans la rubrique relative à l'[enregistrement des identités](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-register).
 6. Une fois l'admin de l'organisation enregistré, recommencez les étapes 2 à 5 pour l'identité de l'homologue, à l'aide de la même autorité de certification `AC Org2`, en lui attribuant l'ID d'inscription `peer2`. Comme précédemment, nous recommandons le secret `peer2pw` pour des raisons de commodité. Il s'agit d'une identité de noeud, vous devez donc sélectionner `homologue` comme **Type** à l'étape suivante. Ensuite, ignorez les zones **Nombre maximal d'inscriptions** et **Attributs**, comme précédemment.
 
@@ -180,8 +185,9 @@ Utilisez votre console pour effectuer les étapes suivantes :
 5. Le panneau latéral suivant vous invite à entrer des informations sur l'autorité de certification TLS. Bien qu'il soit possible de créer des admins distincts pour l'autorité de certification TLS qui est déployée avec votre autorité de certification, cela n'est pas obligatoire.
    - Affectez l'**ID d'inscription TLS**, l'`admin` et le secret `adminpw`, identiques aux valeurs indiquées pour l'ID d'inscription et le secret d'inscription lors de la création de l'autorité de certification.
    - Le **nom d'hôte CSR TLS** est réservé aux utilisateurs expérimentés pour indiquer un nom de domaine personnalisé qui peut être utilisé pour adresser le noeud final d'homologue. N'indiquez rien pour l'instant dans la zone **Nom d'hôte CSR TLS**, elle n'est pas utilisée dans le cadre de ce tutoriel.
-6. Le dernier panneau latéral vous invite à **Associer une identité** et à la définir en tant qu'admin de votre homologue. Sélectionnez votre identité admin homologue `Admin Org2`.
-7. Passez en revue le récapitulatif et cliquez sur **Ajouter un homologue**.
+6. Le panneau latéral suivant vous invite à **Associer une identité** et à la définir en tant qu'admin de votre homologue. Sélectionnez votre identité admin homologue `Admin Org2`.
+7. Si vous utilisez un cluster payant, sur le panneau suivant vous avez la possibilité de configurer l'allocation de ressource pour le noeud. Pour les besoins de ce tutoriel, vous pouvez accepter toutes les valeurs par défaut et cliquer sur **Suivant**. Si vous souhaitez en savoir davantage sur l'allocation de ressources à votre noeud, consultez la rubrique relative à l'[allocation de ressources](/docs/services/blockchain?topic=blockchain-ibp-console-govern#ibp-console-govern-allocate-resources). Si vous utilisez un cluster gratuit, vous voyez déjà la page **Récapitulatif**.
+8. Passez en revue la page Récapitulatif, puis cliquez sur **Ajouter un homologue**.
 
 **Tâche : Déployer un homologue**
 
@@ -215,7 +221,7 @@ Etant donné que seuls les admin de service de tri peuvent ajouter des organisat
 2. Faites défiler jusqu'au service de tri que vous voulez utiliser et cliquez sur ce dernier pour l'ouvrir.
 3. Sous **Membres du consortium**, cliquez sur **Ajouter une organisation**.
 4. Dans la liste déroulante, sélectionnez `MSP Org2`, car il s'agit du MSP qui représente l'organisation de l'homologue `org2`.
-5. Cliquez sur **Ajouter une organisation**. 
+5. Cliquez sur **Ajouter une organisation**.
 
 Ajoutez maintenant l'organisation homologue au canal.
 1. Accédez à l'onglet **Canaux**, cliquez sur `canal1`.
@@ -280,11 +286,14 @@ Procédez comme suit depuis votre console :
 2. Sélectionnez votre service de tri nommé 'Service de tri' et cliquez sur **Suivant**.
 3. Entrez le nom du canal que vous voulez rejoindre, `canal1` et cliquez sur **Suivant**.
 4. Sélectionnez les homologues qui doivent rejoindre le canal. Pour les besoins de ce tutoriel, cliquez sur `Org2 homologue`.
-5. Cliquez sur **Joindre des homologues**.
+5. Cliquez sur **Joindre un canal**.
 
-Si vous prévoyez d'optimiser les fonctions [Données privées ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/latest/private-data/private-data.html "Données privées") ou [Reconnaissance de service ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/latest/discovery-overview.html "Reconnaissance de service") d'Hyperledger Fabric, vous devez configurer des homologues d'ancrage dans vos organisations depuis l'onglet **Canaux**. Consultez la rubrique relative à la [configuration des homologues d'ancrage pour les données privées](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-private-data) à l'aide de l'onglet **Canaux** sur la console.
+Si le canal auquel vous voulez joindre un homologue doit être créé par vous et que vous n'avez joint aucun joint aucun homologue au canal, vous pouvez cliquer sur la vignette en attente du canal directement pour joindre votre homologue.
+{:note}
 
-Vous pouvez également créer un nouveau canal dès que votre organisation est membre du consortium. Utilisez les étapes relatives à la [création d'un canal](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-create-channel) dans le [tutoriel Générer un réseau](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network).
+Si vous prévoyez d'optimiser les fonctions [Données privées ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/private-data/private-data.html "Données privées") ou [Reconnaissance de service ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/discovery-overview.html "Reconnaissance de service") d'Hyperledger Fabric, vous devez configurer des homologues d'ancrage dans vos organisations depuis l'onglet **Canaux**. Pour plus d'informations sur la configuration des homologues d'ancrage pour les données privées à l'aide de l'onglet **Canaux** sur la console, voir [Données privées](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-private-data).
+
+Vous pouvez également créer un nouveau canal si votre organisation est membre du consortium. Utilisez les étapes relatives à la [création d'un canal](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-create-channel) dans le [tutoriel Générer un réseau](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network).
 
 ## Etapes suivantes
 {: #ibp-console-join-network-next-steps}

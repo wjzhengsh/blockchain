@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -20,7 +20,7 @@ subcollection: blockchain
 # Despliegue de una entidad emisora de certificados en {{site.data.keyword.cloud_notm}} Private
 {: #ca-deploy}
 
-Tras importar el diagrama de Helm de {{site.data.keyword.blockchainfull}} Platform en {{site.data.keyword.cloud_notm}} Private, puede desplegar los componentes individuales. La entidad emisora de certificados (CA) es la raíz de confianza de la organización y le permite generar credenciales para los demás componentes que vaya a desplegar. Como consecuencia, debe desplegar una CA antes de desplegar los demás componentes. Cada organización de una red blockchain multinube debe desplegar su propia CA.  Para obtener más información sobre las CA y qué rol desempeñan en una red blockchain, consulte [Entidades emisoras de certificados](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview-ca).
+Tras importar el diagrama de Helm de {{site.data.keyword.blockchainfull}} Platform para {{site.data.keyword.cloud_notm}} Private, puede desplegar los componentes individuales. La entidad emisora de certificados (CA) es la raíz de confianza de la organización y le permite generar credenciales para los demás componentes que vaya a desplegar. Como consecuencia, debe desplegar una CA antes de desplegar los demás componentes. Cada organización de una red blockchain multinube debe desplegar su propia CA.  Para obtener más información sobre las CA y qué rol desempeñan en una red blockchain, consulte [Entidades emisoras de certificados](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview-ca).
 {:shortdesc}
 
 Antes de desplegar una entidad emisora de certificados, revise las [Consideraciones y limitaciones](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-about-considerations).
@@ -60,10 +60,10 @@ Si no utiliza el suministro dinámico, deberán crearse [volúmenes persistentes
 
 2. Si utiliza Community Edition y desea ejecutar este diagrama de Helm en un clúster de {{site.data.keyword.cloud_notm}} Private sin conexión a Internet, debe crear archivados en una máquina conectada a Internet para poder instalar los archivados en el clúster de {{site.data.keyword.cloud_notm}} Private. Para obtener más información, consulte
 [Adición de aplicaciones destacadas a clústeres sin conexión a Internet
-![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_package_offline.html "Adición de aplicaciones destacadas a clústeres sin conexión a Internet"){:new_window}. Tenga en cuenta que puede encontrar el archivo de especificación manifest.yaml en ibm-blockchain-platform-dev/ibm_cloud_pak en el diagrama de Helm.
+![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/app_center/add_package_offline.html "Adición de aplicaciones destacadas a clústeres sin conexión a Internet"){:new_window}. Tenga en cuenta que puede encontrar el archivo de especificación manifest.yaml en ibm-blockchain-platform-dev/ibm_cloud_pak en el diagrama de Helm.
 
 3. Recupere el valor de la dirección IP de proxy de clúster desde la consola de {{site.data.keyword.cloud_notm}} Private. **Nota:** necesitará ser un
-[administrador del clúster ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Acciones y roles de administrador de clúster") para acceder a la IP de proxy. Inicie sesión en el clúster de {{site.data.keyword.cloud_notm}} Private. En el panel de navegación de la izquierda, pulse
+[administrador del clúster ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/user_management/assign_role.html "Acciones y roles de administrador de clúster") para acceder a la IP de proxy. Inicie sesión en el clúster de {{site.data.keyword.cloud_notm}} Private. En el panel de navegación de la izquierda, pulse
 **Plataforma** y, a continuación, pulse **Nodos** para ver los nodos que están definidos en el clúster. Pulse sobre el nodo que tenga el rol `proxy` y, a continuación, copie el valor de `Host IP` de la tabla.
 
   Guarde este valor, ya que lo utilizará cuando configure el campo `Proxy IP` del diagrama de Helm.
@@ -140,9 +140,12 @@ En la tabla siguiente se muestran los parámetros configurables de la plataforma
 
 |  Parámetro     | Descripción    | Valor predeterminado  | Obligatorio |
 | --------------|-----------------|-------|------- |
+|**Parámetros generales**| Parámetros que configuran el diagrama de Helm | | |
 | `Nombre de release de Helm`| Nombre del release de Helm. Debe comenzar por una letra minúscula y terminar por un carácter alfanumérico, y solo debe contener guiones y caracteres alfanuméricos. Debe utilizar un nombre de release de Helm exclusivo cada vez que intente instalar un componente. | ninguno | sí |
 | `Espacio de nombres de destino`| Elija el espacio de nombres de Kubernetes para instalar el diagrama de Helm. | ninguno | sí |
-|**Configuración global**| Parámetros que se aplican a todos los componentes del diagrama de Helm|||
+| `Políticas de espacio de nombres de destino`| Muestra las políticas de seguridad de pod del espacio de nombres elegido, que deben incluir una política **`ibm-privileged-psp`**. De lo contrario,
+[enlace una PodSecurityPolicy](/docs/services/blockchain?topic=blockchain-icp-setup#icp-setup-psp) con el espacio de nombres. | ninguno | no |
+|**Configuración global**| Parámetros que se aplican a todos los componentes del diagrama de Helm | | |
 | `Nombre de cuenta de servicio`| Especifique el nombre de la
 [cuenta de servicio ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/ "Configurar cuentas de servicio para pods") que utilizará para ejecutar el pod. | predeterminado | no |
 
@@ -164,7 +167,9 @@ En la tabla siguiente se muestran los parámetros configurables de la plataforma
 | `Modalidad de acceso de almacenamiento de CA`| Especifique la [modalidad de acceso ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes "modalidad de acceso") al almacenamiento para la PVC. | ReadWriteMany | sí |
 | `Tamaño de reclamación de volumen de CA`| Elija el tamaño de disco a utilizar. | 2Gi | sí |
 | `Repositorio de imágenes de CA`| Ubicación del diagrama de Helm de CA. | ibmcom/ibp-fabric-ca | sí |
-| `Etiqueta de imagen de Docker de CA`| Valor de la etiqueta asociada con la imagen de CA. Este campo se rellena automáticamente con la versión de la imagen. No lo modifique.| 1.2.1 | sí |
+| `Etiqueta de imagen de Docker de CA`| Valor de la etiqueta asociada con la imagen de CA. Este campo se rellena automáticamente con la versión de la imagen. | 1.4.0 | sí |
+| `Repositorio de imágenes Init Docker de CA`| Ubicación de la imagen Init Docker de CA. Este campo se rellena automáticamente con la ubicación de la imagen. | ibmcom/ibp-init | sí |
+| `Etiqueta de imagen Init Docker de CA`| Valor de la etiqueta asociada con la imagen Init Docker de CA. Este campo se rellena automáticamente con la versión de la imagen. | 1.4.0 | sí |
 | `Tipo de servicio de CA` | Se usa para especificar si los
 [puertos externos se deben exponer
 ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types) en el igual. Seleccione NodePort para exponer los puertos externamente (recomendado), y ClusterIP para no exponer los puertos. LoadBalancer y ExternalName no se admiten en este release | NodePort | sí |
@@ -178,7 +183,7 @@ En la tabla siguiente se muestran los parámetros configurables de la plataforma
 | `Nombre común de CSR`| Especifique el nombre común (CN) que presentará el certificado raíz de CA generado cuando se establezca contacto con él. | tlsca-common | sí |
 | `IP de proxy`| Especifique la
 [IP de nodo de proxy para el clúster
-![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/installing/install_proxy.html "Instalación de IBM Cloud Private detrás de un proxy HTTP") donde está desplegada la CA. | 127.0.0.1 | sí |
+![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/installing/install_proxy.html "Instalación de IBM Cloud Private detrás de un proxy HTTP") donde está desplegada la CA. | 127.0.0.1 | sí |
 
 
 ### Utilización de la línea de mandatos de Helm para instalar el release de Helm
@@ -186,7 +191,7 @@ En la tabla siguiente se muestran los parámetros configurables de la plataforma
 
 Como alternativa, puede utilizar la CLI de Helm para instalar el release de Helm. Antes de ejecutar el mandato `helm install`, asegúrese de
 [añadir el repositorio de Helm del clúster al entorno de CLI de Helm
-![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_int_helm_repo_to_cli.html "Adición del repositorio interno de Helm a la CLI de Helm").
+![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/app_center/add_int_helm_repo_to_cli.html "Adición del repositorio interno de Helm a la CLI de Helm").
 
 Puede establecer los parámetros necesarios para la instalación creando un archivo
 `yaml` y pasándolo al mandato `helm install` siguiente.
@@ -229,7 +234,7 @@ Si se desplaza hacia abajo hasta la sección `Notas`, puede encontrar informaci�
 [trabajar con la CA](/docs/services/blockchain/howto/CA_operate.html#ca-operate).
 
 Tras instalar la CA de {{site.data.keyword.blockchainfull_notm}} Platform en {{site.data.keyword.cloud_notm}} Private, se crea un mapa de configuración con los valores predeterminados de las variables de entorno. A continuación, puede cambiar o añadir variables de entorno para el servidor de CA con el fin de configurar su comportamiento. Para obtener más información sobre los parámetros de configuración del servidor de CA, consulte
-[la documentación del servidor de CA de Fabric ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric-ca.readthedocs.io/en/latest/users-guide.html#fabric-ca-server "Servidor de CA de Fabric").
+[la documentación del servidor de CA de Fabric ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/users-guide.html#fabric-ca-server "Servidor de CA de Fabric").
 
 Tras configurar el mapa de configuración, debe reiniciar el servidor de CA para que los cambios entren en vigor. Para reiniciar el servidor de CA, puede suprimir el POD del servidor de CA de Fabric. {{site.data.keyword.cloud_notm}} Private creará un nuevo POD que refleje los cambios.
 

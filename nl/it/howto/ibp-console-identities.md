@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-03"
 
 subcollection: blockchain
 
@@ -44,7 +44,7 @@ Puoi utilizzare la console per creare queste identità attraverso il [processo d
 
 Prima di lavorare con le identità, devi impostare l'identità dell'amministratore della CA, utilizzando l'identità di amministratore creata durante la creazione della CA o stabilendone una nuova. Apri la CA nella scheda **Nodi**. L'ID di registrazione dell'identità attualmente attiva è visibile accanto al nome CA nella parte superiore del pannello. Puoi utilizzare tale identità di amministratore per creare altre identità mediante il pulsante **Registra** per registrare le identità che diventeranno amministratori dell'organizzazione e identità dei nodi o utilizzare il pulsante **Iscrivi** per generare un'identità ed esportarla nel portafoglio.
 
-Per passare a un'identità diversa da utilizzare come amministratore CA, fai clic sull'icona **Impostazioni** e quindi su **Imposta identità** nel dispositivo di scorrimento. Puoi specificare un'identità esistente nel portafoglio utilizzando la scheda **Identità esistente**. In alternativa, puoi utilizzare la scheda **Nuova identità** per incollare i certificati per un nuovo amministratore o per caricare un file JSON che contiene i certificati.
+Per passare a un'identità diversa da utilizzare come amministratore CA, fai clic sull'icona **Impostazioni** e quindi su **Imposta identità** nel dispositivo di scorrimento. Puoi specificare un'identità esistente nel portafoglio utilizzando la scheda **Identità esistente**. In alternativa, puoi utilizzare la scheda **Nuova identità** per caricare un file che contiene i certificato, in formato base64 o PEM, per un nuovo amministratore, oppure caricare un file JSON che contiene i certificati.
 
 Non tutte le identità hanno la capacità di registrare nuovi utenti. Per ulteriori informazioni, incluso come stabilire un ulteriore amministratore CA, vedi [Creazione di nuovi amministratori della CA](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-ca-admin).
 {: note}
@@ -163,8 +163,8 @@ Puoi aggiungere un'identità di amministratore al tuo portafoglio quando [crei l
 
 Puoi utilizzare il pulsante **Aggiungi identità** nella schermata di panoramica per importare un'identità direttamente nel portafoglio. Facendo clic su questo pulsante si aprirà un pannello laterale che ti consente di aggiungere la coppia di chiavi pubblica e privata di un'identità.
 - **Nome:** immetti un nome di identità che viene utilizzato solo come riferimento.
-- **Certificato:** incolla la chiave pubblica dell'identità che hai generato tramite la tua CA.
-- **Chiave privata:** incolla la chiave privata dell'identità che hai generato tramite la tua CA.
+- **Certificato:** carica un file che contiene la chiave pubblica dell'identità (in formato base64 o PEM) che hai generato utilizzando la tua CA.
+- **Chiave privata:** carica un file che contiene la chiave privata dell'identità (in formato base64 o PEM) che hai generato utilizzando la tua CA.
 
 
 Puoi anche aggiungere un'identità caricando un file JSON nel seguente formato. Puoi inoltre utilizzare il pulsante **Carica JSON** per caricare più identità alla volta.

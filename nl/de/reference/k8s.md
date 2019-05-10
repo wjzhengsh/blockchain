@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-03-20"
+lastupdated: "2019-04-17"
 
 subcollection: blockchain
 
@@ -37,8 +37,9 @@ Im folgenden Diagramm wird die Architektur von Kubernetes erläutert. Weitere Er
 Der {{site.data.keyword.cloud_notm}} Kubernetes-Service stellt leistungsfähige Tools bereit und kombiniert dabei Docker-Container, die Kubernetes-Technologie, eine intuitive Funktionalität für Benutzer mit integrierter Sicherheit und Isolation, um die Bereitstellung, den Betrieb, die Skalierung sowie die Überwachung containerisierter Apps in einem Cluster von Rechenhosts zu automatisieren.
 
 Weitere Informationen zum {{site.data.keyword.cloud_notm}} Kubernetes-Service finden Sie in den folgenden Themen der Dokumentation zum {{site.data.keyword.cloud_notm}} Kubernetes-Service:
-- [{{site.data.keyword.cloud_notm}} Kubernetes-Service-Technologie ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://cloud.ibm.com/docs/containers/cs_tech.html#ibm-cloud-kubernetes-service-technology "Dokumentation zur {{site.data.keyword.cloud_notm}} Kubernetes-Service-Technologie")
-- [Warum {{site.data.keyword.cloud_notm}} Kubernetes-Service ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://cloud.ibm.com/docs/containers?topic=containers-cs_ov#cs_ov "Dokumentation 'Warum {{site.data.keyword.cloud_notm}} Kubernetes-Service'")
+- [Technologie des {{site.data.keyword.cloud_notm}} Kubernetes-Service![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](/docs/containers/cs_tech.html#ibm-cloud-kubernetes-service-technology "Dokumentation zur Technologie des {{site.data.keyword.cloud_notm}} Kubernetes-Service")
+- [Warum {{site.data.keyword.cloud_notm}} Kubernetes-Service ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](/docs/containers?topic=containers-cs_ov#cs_ov "Dokumentation 'Warum {{site.data.keyword.cloud_notm}} Kubernetes-Service'")
+- [Kubernetes-Strategie definieren ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](/docs/containers?topic=containers-strategy#strategy "Kubernetes-Strategie definieren")
 
 
 ## Zentrale Kubernetes-Objekte

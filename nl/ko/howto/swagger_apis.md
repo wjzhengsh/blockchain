@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018,2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-03"
 
 subcollection: blockchain
 
@@ -79,6 +79,27 @@ Swagger UI에서 **권한 부여** 단추를 클릭하면 권한 부여 창이 �
 
 ![Swagger UI의 API 응답](../images/swaggerUICurlResponse.png "Swagger UI의 API 응답")  
 *그림 6. API 응답*    
+
+## API 액세스 사용 안함
+{: #ibp-swagger-turn-off}
+
+기본적으로 IBM Cloud에서 감사자 역할을 제외한 모든 사용자는 Swagger API 패널에 표시되는 **네트워크 인증 정보**를 보고 사용할 수 있으며, 이에 따라 API를 사용하여 네트워크를 관리할 수 있습니다. 그러나 UI에서 Swagger API 네트워크 인증 정보를 노출하지 않으려면 기존 키 및 시크릿 값을 복사하고 보안 설정하며 Swagger API에 사용할 수 없는 새 인증서를 생성할 수 있습니다. 다음 단계를 완료하여 액세스를 제어할 수 있도록 resetCredentials라는 플래그가 제공됩니다. 
+
+1. [서비스 인증 정보 대시보드](/docs/services/blockchain/howto/create_join_network_with_apis.html#swagger-network-retrieve-id-token)에 설명된 대로 새 네트워크 인증 정보를 생성하려면 다음 단계를 따르십시오.
+2. 그러나 **인라인 구성 매개변수 추가** 상자에 다음 값을 붙여넣으십시오. 
+   ```
+   {
+     "resetCredentials": true
+   }
+   ```
+   {:codeblock}
+3. **추가**를 클릭하십시오.
+
+이제 사용자가 UI의 Swagger API 패널에 액세스하면 UI의 **네트워크 인증 정보**에는 네트워크 관리에 사용할 수 없는 일반 키 및 시크릿 값이 포함됩니다. 해당 인증 정보를 사용하여 제출된 API 요청은 처리되지 않습니다.   
+
+나중에 UI에서 올바른 네트워크 인증 정보를 노출하려는 경우 새 인증 정보를 생성하려면 위의 단계만 반복하면 되지만 **인라인 구성 매개변수 추가** 상자의 경우에는 상자를 비어 있는 상태로 둘 수 있습니다. 매개변수를 지정할 필요가 없습니다.
+
+이제 원래의 유효한 인증 정보가 UI의 **새 인증 정보**에 표시되며 Swagger API를 인증하는 데 사용될 수 있습니다. 
 
 ## 문제점 해결 팁
 {: #ibp-swagger-troubleshooting}

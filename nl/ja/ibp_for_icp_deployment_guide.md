@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -23,11 +23,11 @@ subcollection: blockchain
 {{site.data.keyword.blockchainfull}} Platform for {{site.data.keyword.cloud_notm}} Private では、{{site.data.keyword.cloud_notm}} Private などのオンプレミス環境の x86、LinuxONE、および IBM Z に、Kubernetes Helm チャートを使用して認証局 (CA)、順序付けプログラム、およびピアをデプロイし、複数のクラウド環境にホストされているコンポーネントにそれらを接続することができます。 {{site.data.keyword.cloud_notm}} Private は、オンプレミスのコンテナー化されたアプリケーションを開発して管理するためのアプリケーション・プラットフォームです。 コンテナーを管理するための統合環境を備えており、コンテナー・オーケストレーター Kubernetes、プライベート・イメージ・レジストリー、管理コンソール、およびモニタリング・フレームワークも含まれています。
 {:shortdesc}
 
-[Hyperledger Fabric](https://hyperledger-fabric.readthedocs.io/en/release-1.2/) に基づくブロックチェーン・ネットワークは、ほぼ無数の構成にデプロイして、多くのユース・ケースをサポートできます。 このように順応性があるにもかかわらず、特にネットワーク・コンポーネントをセットアップしてデプロイするための適切な**シーケンス**については、多くのベスト・プラクティスがあります。
+[Hyperledger Fabric ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/) に基づくブロックチェーン・ネットワークは、ほぼ無数の構成にデプロイして、多くのユース・ケースをサポートできます。 このように順応性があるにもかかわらず、特にネットワーク・コンポーネントをセットアップしてデプロイするための適切な**シーケンス**については、多くのベスト・プラクティスがあります。
 
 このデプロイメント・ガイドでは、{{site.data.keyword.cloud_notm}} Private 上で機能する {{site.data.keyword.blockchainfull}} Platform ネットワークをセットアップするための適切な手順と、デプロイ時に考慮すべきベスト・プラクティスなどについて説明します。 ただし、機能する CA、順序付けプログラム、またはピアのみをセットアップする場合は、基本的なルールが適用されます。 単一の順序付けサービス・ノードのみをデプロイする SOLO 順序付けサービスは、実稼働環境用ではないことに注意してください。 SOLO を実行するネットワークまたはチャネルは、「実稼働」環境と見なすことはできません。 ただし、ピアと CA を実稼働環境にデプロイすることはできます (特に、可用性が高い場合)。
 
-{{site.data.keyword.cloud_notm}} Private に {{site.data.keyword.blockchainfull_notm}} Platform をデプロイするプロセスは難しく、Fabric に関する高度な専門知識があることを前提としています。 Fabric、{{site.data.keyword.blockchainfull_notm}} Platform、または {{site.data.keyword.cloud_notm}} Private の知識がなく、開発環境または PoC (概念検証) をセットアップすることが目標である場合は、代わりに[スターター・プラン](/docs/services/blockchain/starter_plan.html#starter-plan-about)を確認することを検討してください。 また、あらゆるデプロイメント構成がサポートされるわけではないことにも注意してください。 これは難しいため、Fabric の専門家が管理職務を他の当事者に引き継ぐ前に、デプロイメントとコンポーネント接続のプロセスを行うことを前提としています。 これらの専門家は、このガイドおよび Helm チャート・コンポーネント全般の資料の対象読者です。
+{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private をデプロイするプロセスは難しく、Fabric に関する高度な専門知識があることを前提としています。 Fabric、{{site.data.keyword.blockchainfull_notm}} Platform、または {{site.data.keyword.cloud_notm}} Private の知識がなく、開発環境または PoC (概念検証) をセットアップすることが目標である場合は、代わりに[スターター・プラン](/docs/services/blockchain/starter_plan.html#starter-plan-about)を確認することを検討してください。 また、あらゆるデプロイメント構成がサポートされるわけではないことにも注意してください。 これは難しいため、Fabric の専門家が管理職務を他の当事者に引き継ぐ前に、デプロイメントとコンポーネント接続のプロセスを行うことを前提としています。 これらの専門家は、このガイドおよび Helm チャート・コンポーネント全般の資料の対象読者です。
 {:important}
 
 ## ステップ 1: ネットワーク構成の決定
@@ -36,17 +36,21 @@ subcollection: blockchain
 
 * **開発環境**のセットアップ
 
-  このために[スターター・プラン](/docs/services/blockchain/starter_plan.html#starter-plan-about)が構築されていますが、開発環境で独自のコンポーネントを管理する場合は、順序付けプログラムとピア (さらに組織ごとに 1 つの CA) で構成される基本構成が必要になります。 組織ごとに、[fabcar ネットワーク](https://hyperledger-fabric.readthedocs.io/en/release-1.2/understand_fabcar_network.html)の構成と同様の 1 つの順序付けプログラムと 1 つのピアのみ含めることを決定できます。 同様に、コンポーネントごとに別々のユーザーを作成するのではなく、これらのすべてのコンポーネントに対して 1 つの管理ユーザーのみ必要とするように決定できます。
+  このために[スターター・プラン](/docs/services/blockchain/starter_plan.html#starter-plan-about)が構築されていますが、開発環境で独自のコンポーネントを管理する場合は、順序付けプログラムとピア (さらに組織ごとに 1 つの CA) で構成される基本構成が必要になります。 組織ごとに、[fabcar ネットワーク ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/understand_fabcar_network.html) の構成と同様の 1 つの順序付けプログラムと 1 つのピアのみ含めることを決定できます。 同様に、コンポーネントごとに別々のユーザーを作成するのではなく、これらのすべてのコンポーネントに対して 1 つの管理ユーザーのみ必要とするように決定できます。
 
 * 新規ネットワークまたは既存のネットワークへの**実動コンポーネント**のデプロイ
 
   実動コンポーネントと実動ネットワークのニーズは、開発環境や PoC (概念検証) とは異なります。 例えば、高可用性が優先されます。 単一の順序付けプログラムのみが含まれる (したがって単一障害点となる) SOLO 順序付けサービスは、定義上は実稼働環境用ではありません。
 
-**注:** このデプロイメント・ガイドでは、すべての反復および可能性のあるネットワーク構成については説明しませんが、考慮すべき一般的なガイドラインとルールを示します。
+このデプロイメント・ガイドでは、すべての反復および可能性のあるネットワーク構成については説明しませんが、考慮すべき一般的なガイドラインとルールを示します。
+{:note}
 
 ## ステップ 2: {{site.data.keyword.cloud_notm}} Private での Kubernetes クラスターのセットアップ
 
 ネットワーク構造を決定したら、ユース・ケースに対応するように {{site.data.keyword.cloud_notm}} Private 上に Kubernetes クラスターをセットアップします。 詳しくは、[{{site.data.keyword.cloud_notm}} Private のセットアップ](/docs/services/blockchain/ICP_setup.html#icp-setup)を参照してください。
+
+{{site.data.keyword.IBM_notm}} Secure Service Container を {{site.data.keyword.cloud_notm}} Private のホストとして使用し、Secure Service Container のセキュリティー機能を利用して内部や外部の脅威から重要なデータを保護することもできます。詳しくは、[{{site.data.keyword.IBM_notm}} Secure Service Container for {{site.data.keyword.cloud_notm}} Private の使用](/docs/services/howto/ibp-ssc-for-icp.html "{{site.data.keyword.IBM_notm}} Secure Service Container for {{site.data.keyword.cloud_notm}} Private の使用")を参照してください。
+{:note}
 
 ## ステップ 3: CA のセットアップ
 
@@ -60,13 +64,13 @@ CA の無限回帰 (すべての CA を別の CA に無限にリンクする必�
 
 すべての組織に、エンロール用の CA と TLS CA が必要です。  {{site.data.keyword.cloud_notm}} Private に CA をデプロイすると、TLS CA もデフォルトで同じコンテナーにデプロイされます。 この TLS CA によって、TLS 証明書が生成され、管理されます。 スターターまたはエンタープライズ・プラン・ネットワーク上の CA には TLS CA は含まれていませんが、エンロールに使用される CA は含まれています。 したがって、ピアをスターターまたはエンタープライズ・プラン・ネットワークに接続する場合は、ピアをデプロイする前に、そのピアの TLS CA として機能する [{{site.data.keyword.cloud_notm}} Private に CA をデプロイ](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy)する必要もあります。 [{{site.data.keyword.cloud_notm}} Private ピアを {{site.data.keyword.blockchainfull_notm}} Platform に接続するための前提条件](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-prerequisites)も参照してください。 TLS CA は証明書の発行にのみ使用され、そのアクティビティーの完了時にシャットダウンできます。
 
-TLS について詳しくは、Hyperledger Fabric の資料で [Securing Communication With Transport Layer Security (TLS) ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.3/enable_tls.html "Securing Communication With Transport Layer Security (TLS)") を参照してください。
+TLS について詳しくは、Hyperledger Fabric の資料で [Securing Communication With Transport Layer Security (TLS) ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/enable_tls.html "Securing Communication With Transport Layer Security (TLS)") を参照してください。
 
 ### 順序付けプログラムおよびピア用の MSPS の準備
 
-{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private プロセスは非常に複雑であるため、初期セットアップ時にすべてのネットワーク・コンポーネント・ノードの管理者として単一の管理ユーザー ID を使用することをお勧めします。 これにより、1 人のユーザーがさまざまなコンポーネント間の構成および接続をセットアップして、正しく機能することを確認することで、デプロイメントおよび接続エラーを削減できます。 ただし、各コンポーネントに異なる証明書があることが非常に重要です。 ここでの違いは、見落としやすい場合があります。 トランザクション提案に署名するエンティティーはピアの管理者ではなく、**ピア自体**です。 したがって、ピアはエンロールされている必要があり、その操作に付加する証明書と特定の種類の署名を生成するために使用できる秘密鍵を持っている必要があります。 Fabric ベースのブロックチェーン・ネットワークにおける ID および許可について詳しくは、Fabric の資料で [Identity ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.3/identity/identity.html "Identity") および [Membership ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.3/membership/membership.html "Membership") を参照してください。
+{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private プロセスは非常に複雑であるため、初期セットアップ時にすべてのネットワーク・コンポーネント・ノードの管理者として単一の管理ユーザー ID を使用することをお勧めします。 これにより、1 人のユーザーがさまざまなコンポーネント間の構成および接続をセットアップして、正しく機能することを確認することで、デプロイメントおよび接続エラーを削減できます。 ただし、各コンポーネントに異なる証明書があることが非常に重要です。 ここでの違いは、見落としやすい場合があります。 トランザクション提案に署名するエンティティーはピアの管理者ではなく、**ピア自体**です。 したがって、ピアはエンロールされている必要があり、その操作に付加する証明書と特定の種類の署名を生成するために使用できる秘密鍵を持っている必要があります。 Fabric ベースのブロックチェーン・ネットワークにおける ID および許可について詳しくは、Fabric の資料で [Identity ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/identity/identity.html "Identity") および [Membership ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/membership/membership.html "Membership") を参照してください。
 
-[CA の操作に関する文書](/docs/services/blockchain/howto/CA_operate.html#ca-operate-fabric-ca-client)の指示に従ってインストールする必要がある Fabric CA クライアントを使用して、ID を登録およびエンロールします。 この ID は、デプロイするネットワーク・コンポーネントの管理者であり、構成の変更およびコンポーネントの接続を可能にします。 これらのコンポーネントの管理を後で他のユーザーに転送する場合は、これらのコンポーネントの新規管理者を登録してエンロールし、必要に応じて管理者として自分自身を削除できます。
+[CA の操作](/docs/services/blockchain/howto/CA_operate.html#ca-operate-fabric-ca-client)の指示に従ってインストールする必要がある Fabric CA クライアントを使用して、ID を登録およびエンロールします。 この ID は、デプロイするネットワーク・コンポーネントの管理者であり、構成の変更およびコンポーネントの接続を可能にします。 これらのコンポーネントの管理を後で他のユーザーに転送する場合は、これらのコンポーネントの新規管理者を登録してエンロールし、必要に応じて管理者として自分自身を削除できます。
 
 順序付けプログラムまたはピアがデプロイされると、順序付けプログラムまたはピアに関連付けられた `init` コンテナーは、Kubernetes 秘密オブジェクトを使用してコンポーネントの MSP を作成します。 秘密オブジェクトの作成方法については、[CA の操作](/docs/services/blockchain/howto/CA_operate.html#ca-operate)を参照してください。 前述したように、組織ごとに CA をセットアップし、このフローを繰り返す必要があります。
 
@@ -98,3 +102,10 @@ Kubernetes 秘密が作成されると、コンポーネントをデプロイす
 2. 組織は、作成後に順序付けシステム・チャネルに追加できます。 詳しくは、[順序付けプログラムの操作](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-add-organizations-to-consortium)を参照してください。
 
 3. 順序付けシステム・チャネルに組織がリストされる場合、その組織は「共同事業体」のメンバーであり、アプリケーション・チャネル (トランザクションが発生するチャネルの種類) を作成できるようになります。 チャネルの作成方法について詳しくは、[チャネルの作成](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-create-channel)を参照してください。
+
+## 参照資料
+{: #get-started-icp-ref}
+
+- [Tutorial: Operate a distributed peer on {{site.data.keyword.blockchainfull_notm}} Platform](https://developer.ibm.com/tutorials/operate-distributed-peer-on-ibm-blockchain-platform/)
+- [{{site.data.keyword.cloud_notm}} Private のホーム・ページ](https://www.ibm.com/cloud/private "{{site.data.keyword.cloud_notm}} Private のホーム・ページ")
+- [{{site.data.keyword.cloud_notm}} Private の資料](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/kc_welcome_containers.html)

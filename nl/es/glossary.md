@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-17"
 
 subcollection: blockchain
 
@@ -19,7 +19,7 @@ subcollection: blockchain
 {: #glossary}
 
 En este tema se definen términos específicos de {{site.data.keyword.blockchainfull}} Platform que aparecen en esta documentación. Para estudiar los términos con más detalle y ver un glosario de términos relacionados con los conceptos de Hyperledger Fabric, consulte el [Glosario de Hyperledger Fabric
-![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](http://hyperledger-fabric.readthedocs.io/en/release-1.2/glossary.html).
+![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](http://hyperledger-fabric.readthedocs.io/en/release-1.4/glossary.html).
 {:shortdesc}
 
 ## Activo
@@ -29,10 +29,6 @@ Bienes, servicios o propiedades tangibles o intangibles que se representan como 
 ## Bloque
 {: #glossary-block}
 Conjunto ordenado de transacciones, que está vinculado criptográficamente al bloque anterior en un canal.
-
-## Red empresarial
-{: #glossary-business-network}
-Definición de una red blockchain, que incluye modelo de datos, lógica de transacción y reglas de control de acceso de la solución blockchain. Las definiciones de red empresarial se crean mediante [Hyperledger Composer](/docs/services/blockchain/glossary.html#glossary-composer). Las definiciones de la Red empresarial se empaquetan en archivos **.bna** (Business Network Archive) que se pueden desplegar.
 
 ## CA
 {: #glossary-CA}
@@ -94,20 +90,15 @@ El bloque de configuración que inicializa una red blockchain o canal, y que tam
 
 ## Gossip
 {: #glossary-gossip}
-Hyperledger Fabric permite a los iguales recopilar información de red importante entre sí sin tener que depender del servicio de ordenación. El [protocolo de diseminación de datos de rumores (gossip)![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.1/gossip.html) ofrece una forma segura, fiable y escalable de intercambiar mensajes entre sí. Por ejemplo, si los iguales pierden algunos bloques debido a retrasos, cortes de red u otras razones, pueden sincronizarse con el estado del libro mayor actual utilizando la mensajería de rumores para ponerse en contacto con otros iguales que están en posesión de estos bloques que faltan.
+Hyperledger Fabric permite a los iguales recopilar información de red importante entre sí sin tener que depender del servicio de ordenación. El [protocolo de diseminación de datos de rumores (gossip)![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/gossip.html) ofrece una forma segura, fiable y escalable de intercambiar mensajes entre sí. Por ejemplo, si los iguales pierden algunos bloques debido a retrasos, cortes de red u otras razones, pueden sincronizarse con el estado del libro mayor actual utilizando la mensajería de rumores para ponerse en contacto con otros iguales que están en posesión de estos bloques que faltan.
 
 ## HSM
 {: #glossary-hsm}
 Módulo de seguridad de hardware (Hardware Security Module). Proporciona funciones de cifrado bajo demanda, gestión de claves y almacenamiento de claves como un servicio gestionado. HSM es un dispositivo físico que maneja las tareas que consumen muchos recursos del proceso de cifrado y que reduce la latencia para las aplicaciones. Para obtener más información, consulte [Módulo de seguridad de hardware ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/cloud/hardware-security-module)
 
-## Hyperledger Composer
-{: #glossary-composer}
-**IBM no proporciona soporte para redes que utilicen Hyperledger Composer en producción, incluyendo la CLI de Composer, las API de JavaScript, el servidor REST y Web Playground.**
-[Hyperledger Composer ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://hyperledger.github.io/composer/latest/introduction/introduction.html) es un conjunto de herramientas de desarrollo de código abierto. Utiliza un lenguaje de modelado adaptado, que se combina con las transacciones JavaScript, y reglas de control de acceso para modelar una red empresarial de blockchain en su totalidad. Puede utilizar Hyperledger Composer para integrar los sistemas y datos existentes con la aplicación blockchain antes de desplegar nada en un blockchain real.
-
 ## Hyperledger Fabric
 {: #glossary-hyperledger-fabric}
-[Hyperledger Fabric ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/) es una infraestructura de blockchain empresarial que aloja Linux Foundation para que actúe como base para desarrollar aplicaciones blockchain o soluciones con una arquitectura modular. Los componentes de Hyperledger Fabric, como los servicios de consenso y de pertenencia, son de tipo conectar y listo.
+[Hyperledger Fabric ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](http://hyperledger-fabric.readthedocs.io/en/release-1.4/) es una infraestructura de blockchain empresarial que aloja Linux Foundation para que actúe como base para desarrollar aplicaciones blockchain o soluciones con una arquitectura modular. Los componentes de Hyperledger Fabric, como los servicios de consenso y de pertenencia, son de tipo conectar y listo.
 
 ## Instalar
 {: #glossary-install}
@@ -204,4 +195,4 @@ Un usuario es un participante en una red blockchain que tiene acceso indirecto a
 
 ## Escenario mundial
 {: #glossary-world-state}
-Consulte [Estado actual]((/docs/services/blockchain/glossary.html#glossary-current-state).
+Consulte [Estado actual](/docs/services/blockchain/glossary.html#glossary-current-state).

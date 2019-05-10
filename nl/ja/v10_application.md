@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-03"
 
 subcollection: blockchain
 
@@ -25,7 +25,9 @@ subcollection: blockchain
 
 このチュートリアルを使用して、{{site.data.keyword.blockchainfull_notm}} Platform API にアクセスし、それらを使用してアプリケーションをネットワークにエンロールおよび登録する方法を学習できます。 また、ネットワークと対話する方法や、アプリケーションからトランザクションを発行する方法を学習することもできます。 このチュートリアルは、Hyperledger Fabric の資料の [Writing Your First Application ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/write_first_app.html "writing your first application"){:new_window} チュートリアルに基づいています。 使用するファイルとコマンドの多くは **Writing Your First Application** チュートリアルのものと同じですが、それらを {{site.data.keyword.blockchainfull_notm}} Platform 上のネットワークと対話するために使用します。 このチュートリアルでは、Hyperledger Fabric Node SDK を使用してアプリケーションを開発する手順について 1 つずつ説明します。 また、SDK を使用する代わりに Fabric CA クライアントを使用してユーザーのエンロールおよび登録を行う方法についても学習します。
 
-独自のビジネス・ソリューションを作成するときには、このチュートリアルに加えて、{{site.data.keyword.blockchainfull_notm}} Platform に用意されているサンプルのアプリケーションとチェーンコードをテンプレートとして使用できます。 詳しくは、[サンプル・アプリケーションの開発](/docs/services/blockchain/howto/prebuilt_samples.html#deploying-sample-applications)を参照してください。
+独自のビジネス・ソリューションを作成するときには、このチュートリアルに加えて、{{site.data.keyword.blockchainfull_notm}} Platform に用意されているサンプルのアプリケーションとチェーンコードをテンプレートとして使用できます。 詳しくは、[サンプル・アプリケーションのデプロイ](/docs/services/blockchain/howto/prebuilt_samples.html#deploying-sample-applications)を参照してください。
+
+アプリケーションを拡大する準備が整ったら、[アプリケーション開発のベスト・プラクティス](/docs/services/blockchain/best_practices.html#best-practices-app)にアクセスしてください。
 
 ## 前提条件
 {: #dev-app-prerequisites}
@@ -246,7 +248,7 @@ node enrollAdmin.js
 2. エンドース・ピアが、承認されたトランザクションをアプリケーションに返します。
 3. アプリケーションが、トランザクションを台帳に追加するために、承認されたトランザクションを順序付けサービスに送信します。
 
-トランザクション・フローの全体について詳しくは、Hyperledger Fabric の資料で [トランザクション・フロー ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")]( https://hyperledger-fabric.readthedocs.io/en/release-1.2/txflow.html "トランザクション・フロー"){:new_window} を参照してください。 このチュートリアルを開始した後に、[アプリケーションの接続性と可用性](/docs/services/blockchain/v10_application.html#dev-app-connectivity-availability)のセクションを参照することにより、SDK がネットワークと対話する方法の管理に関するヒントを学べます。
+トランザクション・フローの全体について詳しくは、Hyperledger Fabric の資料で [トランザクション・フロー ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")]( https://hyperledger-fabric.readthedocs.io/en/release-1.2/txflow.html "トランザクション・フロー"){:new_window} を参照してください。 このチュートリアルを開始した後に、[アプリケーションの接続性と可用性](/docs/services/blockchain/best_practices.html#best-practices-app-connectivity-availability)のセクションを参照することにより、SDK がネットワークと対話する方法の管理に関するヒントを学べます。
 
 次のサンプルでは、Node SDK でネットワーク・トポロジーをセットアップし、トランザクション提案を定義し、トランザクションをネットワークに送信する方法を示しています。 `invoke.js` ファイルを使用して、`fabcar` チェーンコード内の関数を呼び出せます。 それらの関数により、ブロックチェーン台帳上に資産を作成および転送できます。 このチュートリアルでは、`initLedger` 関数を使用して新しいデータをチャネルに追加してから、`query.js` ファイルを使用してそのデータを照会します。
 
@@ -268,7 +270,7 @@ node enrollAdmin.js
   ```
   {:codeblock}
 
-  新しいピアと順序付けプログラムの変数により、ブロックチェーン・ネットワークへの GRPC 接続がオープンされます。 これらの接続の管理について詳しくは、[ネットワーク接続のオープンとクローズ](/docs/services/blockchain/v10_application.html#dev-app-connections)を参照してください。
+  新しいピアと順序付けプログラムの変数により、ブロックチェーン・ネットワークへの GRPC 接続がオープンされます。 これらの接続の管理について詳しくは、[ネットワーク接続のオープンとクローズ](/docs/services/blockchain/best_practices.html#best-practices-app-connections)を参照してください。
 
   ピア URL を `fabric_client.newPeer` メソッドに追加するときには、以下のコード・スニペットを使用して、該当する TLS 証明書も接続プロファイルからインポートします。 これは、順序付けサービス URL を追加したときにも行っています。 これらの TLS 証明書は、ネットワークとの通信を認証するために必要です。
   ```
@@ -278,7 +280,7 @@ node enrollAdmin.js
 
   エンドースメント・ポリシーでトランザクションにチャネル内の他の組織からの承認が必要であることを規定する場合は、ネットワークをセットアップするときに、`newPeer()` および `channel.addPeer()` メソッドを使用してそれらの組織ピアを追加する必要があります。 各組織が特定のチャネルに参加させているピアのリストを、対象組織から送信してもらう必要があります。 エンドポイント情報と TLS 証明書は接続プロファイル内にあります。 SDK はチャネルに追加されているすべてのピアにトランザクションを送信します。
 
-  [アプリケーションの可用性を高める](/docs/services/blockchain/v10_application.html#dev-app-ha-app)ための手順として、組織に属し、チャネルに参加するピアを追加することもできます。 これにより、SDK は、いずれかのピアに問題が発生した場合にフェイルオーバーを実行できます。
+  [アプリケーションの可用性を高める](/docs/services/blockchain/best_practices.html#best-practices-ha-app)ための手順として、組織に属し、チャネルに参加するピアを追加することもできます。 これにより、SDK は、いずれかのピアに問題が発生した場合にフェイルオーバーを実行できます。
 
 3. Fabric ネットワークをセットアップし、登録手順で生成したアプリケーション ID と署名付き証明書をインポートしたら、`invoke.js` ファイルでネットワークに送信する提案を定義します。 `fabcar` チェーンコード内の `initLedger` 関数を使用して、いくつかの初期データを台帳に追加できます。 また、コード・ブロックを編集して、`fabcar` チェーンコード内にある他の関数を呼び出すこともできます。
   ```
@@ -287,7 +289,7 @@ node enrollAdmin.js
     chaincodeId: 'fabcar',
     fcn: 'initLedger',
     args: [''],
-    chainId: 'mychannel',
+    chainId: 'defaultchannel',
     txId: tx_id
   };
   ```
@@ -302,7 +304,7 @@ node enrollAdmin.js
   ```
   {:codeblock}
 
-  このサンプルではピア・ベースのイベント・サービスを使用していますが、実際にはチャネル・ベースのリスナーを使用する必要があります。 詳しくは、[トランザクションの管理](/docs/services/blockchain/v10_application.html#dev-app-managing-transactions)のセクション、および [Node SDK の資料 ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://fabric-sdk-node.github.io/tutorial-channel-events.html "チャネル・ベースのイベント・サービス"){:new_window} を参照してください。
+  このサンプルではピア・ベースのイベント・サービスを使用していますが、実際にはチャネル・ベースのリスナーを使用する必要があります。 詳しくは、[トランザクションの管理](/docs/services/blockchain/best_practices.html#best-practices-managing-transactions)のセクション、および [Node SDK の資料 ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://fabric-sdk-node.github.io/tutorial-channel-events.html "チャネル・ベースのイベント・サービス"){:new_window} を参照してください。
 
 5. デフォルトでは、`invoke.js` はトランザクションを `user1` として送信します。 別の名前を登録した場合は、`invoke.js` ファイルを編集できます。
 
@@ -321,7 +323,7 @@ Successfully sent Proposal and received ProposalResponse: Status - 200, message 
 1. ファイルの先頭に `var creds = require('./creds.json')` を追加します。
 2. ピアのチャネル名とエンドポイント情報を使用してファイルを更新します。 この操作ではピアに保管されたデータだけを読み取るので、順序付けサービスのエンドポイント情報を追加する必要はありません。 また、`query.js` では、提案が `user1` として送信されることを想定しています。
   ```
-  var channel = fabric_client.newChannel('mychannel');
+  var channel = fabric_client.newChannel('defaultchannel');
   var peer = fabric_client.newPeer(creds.peers["org1-peer1"].url, { pem: creds.peers["org1-peer1"].tlsCACerts.pem , 'ssl-target-name-override': null});
   channel.addPeer(peer);
   ```
@@ -392,74 +394,6 @@ return fabric_client.createUser({
 ```
 上記のスニペットは、証明書を PEM ファイルとして `cryptoContent` クラスに直接読み取ります。 証明書は `admin` ID を使用して生成されたため、ユーザー名は `admin` になります。 mspid は、接続プロファイルの `certificateAuthorites` セクションにあります。 ファイルを保存し、`node query.js` コマンドを実行します。 成功した場合、照会により以前と同じ結果が返されます。
 
-## アプリケーションの接続性と可用性のベスト・プラクティス
-{: #dev-app-connectivity-availability}
-
-Hyperledger Fabric の[トランザクション・フロー ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")]( https://hyperledger-fabric.readthedocs.io/en/release-1.2/txflow.html "トランザクション・フロー"){:new_window} には複数のコンポーネントが関わり、その中でクライアント・アプリケーションはユニークな役割を果たします。 SDK は、承認を受けるためにトランザクション提案をピアに送信します。 その後、SDK は、承認された提案を収集して順序付けサービスに送信します。すると、順序付けサービスが、トランザクションのブロックをチャネル台帳に追加するためにピアに送信します。 実動アプリケーションの開発者は、SDK とネットワークの間の対話を管理して効率性と可用性を確保しておく必要があります。
-
-### トランザクションの管理
-{: #dev-app-managing-transactions}
-
-アプリケーション・クライアントは、トランザクション提案が検証されたこと、および提案が正常に完了したことを確認する必要があります。 提案は、ネットワーク障害やコンポーネント障害などのさまざまな原因によって遅延したり消失したりする可能性があります。 コンポーネント障害に対応できるように、アプリケーションの[高可用性](/docs/services/blockchain/v10_application.html#dev-app-ha-app)を確保しておく必要があります。 また、ネットワークが応答する前に提案がタイムアウトにならないように、アプリケーションの[タイムアウト値を大きくする](/docs/services/blockchain/v10_application.html#dev-app-set-timeout-in-sdk)こともできます。
-
-チェーンコードが実行されていない場合は、そのチェーンコードに送信された最初のトランザクション提案によって、チェーンコードが開始されます。 チェーンコードの開始中は、他のすべての提案は、チェーンコードが現在開始中であることを示すエラーを受け取り、拒否されます。 これはトランザクションの無効化とは異なります。 チェーンコードの開始中に提案が拒否された場合、アプリケーション・クライアントは、チェーンコードが開始された後に、拒否された提案を再送信する必要があります。 アプリケーション・クライアントは、メッセージ・キューを使用してトランザクション提案の消失を防止できます。
-
-チャネル・ベースのイベント・サービスを使用して、トランザクションのモニターやメッセージ・キューの作成を行うことができます。 [channelEventHub ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://fabric-sdk-node.github.io/ChannelEventHub.html "channelEventHub"){:new_window} クラスは、トランザクション、ブロック、およびチェーンコードのイベントに基づいてリスナーを登録できます。 チャネル eventhub のチャネル・ベースのリスナーは、複数のチャネルに拡張したり、チャネルが異なるトラフィックを区別したりできます。
-
-古い eventHub クラスではなく channelEventHub を使用することをお勧めします。 eventHub は単一スレッドであり、チャネル全体のリスナーをスローダウンまたはハングさせる可能性があるすべてのチャネルからのイベントが含まれます。 eventHub クラスは、イベントが配信されることを保証しません。また、欠落したイベントを追跡するために、特定のポイント (ブロック番号など) からイベントを取得する方法も提供しません。
-
-ピア eventHub は、Fabric SDK の今後のリリースで非推奨となります。**** ピア eventHub を使用する既存のアプリケーションがある場合は、チャネル eventHub を使用するようにアプリケーションを更新してください。 詳しくは、Node SDK の資料の [How to use the channel-based event service ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://fabric-sdk-node.github.io/tutorial-channel-events.html "How to use the channel-based event service"){:new_window} を参照してください。
-
-### ネットワーク接続のオープンとクローズ
-{: #dev-app-connections}
-
-トランザクション・プロポーザルを送信する前に SDK を使用してピア・オブジェクトと順序付けプログラム・オブジェクトを作成すると、アプリケーションとネットワーク・コンポーネントの間に gRPC 接続がオープンします。 例えば、以下のコマンドは `org1-peer1` への接続をオープンします。 この接続は、アプリケーションの実行中はアクティブなままです。
-
-```
-var peer = fabric_client.newPeer(creds.peers["org1-peer1"].url, { pem: creds.peers["org1-peer1"].tlsCACerts.pem , 'ssl-target-name-override': null});
-```
-{:codeblock}
-
-アプリケーションとネットワークの間の接続を管理する際には、以下の推奨事項を考慮してください。
-
-- 新規接続をオープンしてトランザクションを送信する代わりに、ネットワークと対話するときにピア・オブジェクトと順序付けプログラム・オブジェクトを再利用します。 ピア・オブジェクトと順序付けプログラム・オブジェクトを再利用すると、リソースを節約でき、パフォーマンスが向上します。  
-- ネットワーク・コンポーネントへの永続的な接続を維持するには、[gRPC キープアライブ ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://github.com/grpc/grpc/blob/master/doc/keepalive.md "gRPC キープアライブ") を使用します。 キープアライブは gRPC 接続をアクティブのままにし、「未使用」接続がクローズされないようにします。 以下のピア接続の例では、gRPC オプションを [ConnectionOpts ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://fabric-sdk-node.github.io/global.html#ConnectionOpts "接続") オブジェクトに追加します。 gRPC オプションは、{{site.data.keyword.blockchainfull_notm}} Platform が推奨する値に設定されます。  
-  ```
-  var peer = fabric_client.newPeer(creds.peers["org1-peer1"].url, { pem: creds.peers["org1-peer1"].tlsCACerts.pem , 'ssl-target-name-override': null},
-  "grpcOptions": {
-    "grpc.keepalive_time_ms": 120000,
-    "grpc.http2.min_time_between_pings_ms": 120000,
-    "grpc.keepalive_timeout_ms": 20000,
-    "grpc.http2.max_pings_without_data": 0,
-    "grpc.keepalive_permit_without_calls": 1
-    }
-  );
-  ```
-  {:codeblock}
-
-  推奨値が設定されたこれらの変数は、ネットワーク接続プロファイルの `"peers"` セクションにもあります。 [SDK で接続プロファイル](/docs/services/blockchain/v10_application.html#dev-app-connection-profile)を使用してネットワーク・エンドポイントに接続すると、推奨オプションがアプリケーションに自動的にインポートされます。
-
-- 接続が不要になった場合は、`peer.close()` コマンドと `orderer.close()` コマンドを使用してリソースを解放し、パフォーマンスの低下を防ぎます。 詳しくは、Node SDK の資料の[ピアの close ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://fabric-sdk-node.github.io/Peer.html#close__anchor "ピアの close") クラスと[順序付けプログラムの close![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://fabric-sdk-node.github.io/Orderer.html#close__anchor "順序付けプログラムの close") クラスを参照してください。 接続プロファイルを使用してピアおよび順序付けプログラムをチャネル・オブジェクトに追加した場合は、`channel.close()` コマンドを使用して、そのチャネルに割り当てられているすべての接続をクローズできます。
-
-### 可用性の高いアプリケーション
-{: #dev-app-ha-app}
-
-高可用性を実現するためのベスト・プラクティスとして、フェイルオーバーできるように組織ごとに少なくとも 2 つのピアをデプロイすることを強くお勧めします。 また、アプリケーションも高可用性のために調整する必要があります。 両方のピアにチェーンコードをインストールして、それらをチャネルに追加します。 そして、ネットワークをセットアップしてピア・ターゲット・リストを作成するときに、両方のピア・エンドポイントに[トランザクション提案を送信する](/docs/services/blockchain/v10_application.html#dev-app-invoke)ようにします。 エンタープライズ・プラン・ネットワークにはフェイルオーバーのために複数の順序付けプログラムがあるため、ある順序付けプログラムが使用不可になっても、クライアント・アプリケーションは承認されたトランザクションを別の順序付けプログラムに送信できます。 ネットワーク・エンドポイントを手動で追加するのではなく[接続プロファイル](/docs/services/blockchain/v10_application.html#dev-app-connection-profile)を使用する場合は、プロファイルが最新のものであること、また、追加のピアと順序付けプログラムがプロファイルの `channels` セクションの該当するチャネルに追加されていることを確認してください。 これにより、SDK は、接続プロファイルを使用して、チャネルに参加するコンポーネントを追加できます。
-
-## 相互 TLS を有効にする
-{: #dev-app-mutual-tls}
-
-Fabric V1.1 レベルのエンタープライズ・プラン・ネットワークを実行する場合は、アプリケーションで[相互 TLS を有効にする](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-network-preferences)ことができます。 相互 TLS を有効にする場合は、この機能をサポートするようにアプリケーションを更新する必要があります。 そうしないと、アプリケーションはネットワークと通信できません。
-
-接続プロファイルで `certificateAuthorities` セクションを見つけます。このセクションに、相互 TLS を使用してネットワークと通信するための証明書をエンロールして取得するのに必要な以下の属性があります。
-
-- `url`: 相互 TLS 証明書を提供できる CA に接続するための URL
-- `enrollId`: 証明書を取得するために使用する登録 ID
-- `enrollSecret`: 証明書を取得するために使用する登録シークレット
-- `x-tlsCAName`: アプリケーションでの相互 TLS を使用した通信を可能にするための証明書を取得する際に使用する CA 名。
-
-相互 TLS をサポートするようにアプリケーションを更新する方法について詳しくは、[How to configure mutual TLS ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://fabric-sdk-node.github.io/tutorial-mutual-tls.html "相互 tls"){:new_window} を参照してください。
-
 ## (オプション) SDK を使用したネットワークの操作
 {: #dev-app-operate-sdk}
 
@@ -516,7 +450,7 @@ var request = {
     chaincodeId: 'fabcar',
     chaincodeType: 'golang',
     chaincodeVersion: 'v1',
-    channelNames: 'mychannel'
+    channelNames: 'defaultchannel'
 	 };
 ```
 {:codeblock}
@@ -536,113 +470,15 @@ var request = {
     chaincodeId: 'fabcar',
     chaincodeType: 'golang',
     chaincodeVersion: 'v1',
-    channelNames: 'mychannel',
+    channelNames: 'defaultchannel',
     txId : tx_id
 };
 ```
 {:codeblock}
 
-この要求を、現在ファイル内にある `return channel.sendTransactionProposal(request);` ではなく、`return channel.sendInstantiateProposal(request);` に送信します。 インスタンス化要求をチャネルに送信した後に、承認された提案をトランザクションとして順序付けサービスに送信する必要があります。 これにはトランザクションの送信と同じ方式が使用されるので、ファイルの他の部分を変更する必要はありません。 インスタンス化提案で、[タイムアウト値を大きくする](/docs/services/blockchain/v10_application.html#dev-app-set-timeout-in-sdk)ことができます。 そうしないと、プラットフォームがチェーンコード・コンテナーを開始する前に要求がタイムアウトになる可能性があります。
+この要求を、現在ファイル内にある `return channel.sendTransactionProposal(request);` ではなく、`return channel.sendInstantiateProposal(request);` に送信します。 インスタンス化要求をチャネルに送信した後に、承認された提案をトランザクションとして順序付けサービスに送信する必要があります。 これにはトランザクションの送信と同じ方式が使用されるので、ファイルの他の部分を変更する必要はありません。 インスタンス化提案で、[タイムアウト値を大きくする](/docs/services/blockchain/best_practices.html#best-practices-set-timeout-in-sdk)ことができます。 そうしないと、プラットフォームがチェーンコード・コンテナーを開始する前に要求がタイムアウトになる可能性があります。
 
 チェーンコードをインスタンス化するには、まず、署名付き証明書をチャネルに追加する必要があります。 チャネルに参加した後に証明書を生成した場合は、署名付き証明書をプラットフォームにアップロードしてから、「チャネル」画面で**「証明書の同期」**ボタンをクリックする必要があります。 チャネル同期が完了するまで数分待ってから、チェーンコードのインスタンス化コマンドを実行する必要がある場合があります。 詳しくは、[証明書の管理](/docs/services/blockchain/certificates.html#managing-certificates)チュートリアルの[署名付き証明書の {{site.data.keyword.blockchainfull_notm}} Platform へのアップロード](/docs/services/blockchain/certificates.html#managing-certificates-upload-certs)を参照してください。
-
-## (オプション) Fabric SDK でのタイムアウト値の設定
-{: #dev-app-set-timeout-in-sdk}
-
-Fabric SDK は、クライアント・アプリケーションにブロックチェーン・ネットワーク内のイベントについてのデフォルトのタイムアウト値を設定します。 Fabric Java SDK でのデフォルトのタイムアウト設定については、次の例を参照してください。 ファイル・パスは `src&#xa5;main&#xa5;java&#xa5;org&#xa5;hyperledger&#xa5;fabric&#xa5;sdk&#xa5;helper&#xa5;Config.java` です。
-
-```
-    /**
-     * Timeout settings
-     **/
-    public static final String PROPOSAL_WAIT_TIME = "org.hyperledger.fabric.sdk.proposal.wait.time";
-    public static final String CHANNEL_CONFIG_WAIT_TIME = "org.hyperledger.fabric.sdk.channelconfig.wait_time";
-    public static final String TRANSACTION_CLEANUP_UP_TIMEOUT_WAIT_TIME = "org.hyperledger.fabric.sdk.client.transaction_cleanup_up_timeout_wait_time";
-    public static final String ORDERER_RETRY_WAIT_TIME = "org.hyperledger.fabric.sdk.orderer_retry.wait_time";
-    public static final String ORDERER_WAIT_TIME = "org.hyperledger.fabric.sdk.orderer.ordererWaitTimeMilliSecs";
-    public static final String PEER_EVENT_REGISTRATION_WAIT_TIME = "org.hyperledger.fabric.sdk.peer.eventRegistration.wait_time";
-    public static final String PEER_EVENT_RETRY_WAIT_TIME = "org.hyperledger.fabric.sdk.peer.retry_wait_time";
-    public static final String EVENTHUB_CONNECTION_WAIT_TIME = "org.hyperledger.fabric.sdk.eventhub_connection.wait_time";
-    public static final String EVENTHUB_RECONNECTION_WARNING_RATE = "org.hyperledger.fabric.sdk.eventhub.reconnection_warning_rate";
-    public static final String PEER_EVENT_RECONNECTION_WARNING_RATE = "org.hyperledger.fabric.sdk.peer.reconnection_warning_rate";
-    public static final String GENESISBLOCK_WAIT_TIME = "org.hyperledger.fabric.sdk.channel.genesisblock_wait_time";
-
-    ...
-
-    // Default values
-    /**
-     * Timeout settings
-     **/
-    defaultProperty(PROPOSAL_WAIT_TIME, "20000");
-    defaultProperty(CHANNEL_CONFIG_WAIT_TIME, "15000");
-    defaultProperty(ORDERER_RETRY_WAIT_TIME, "200");
-    defaultProperty(ORDERER_WAIT_TIME, "10000");
-    defaultProperty(PEER_EVENT_REGISTRATION_WAIT_TIME, "5000");
-    defaultProperty(PEER_EVENT_RETRY_WAIT_TIME, "500");
-    defaultProperty(EVENTHUB_CONNECTION_WAIT_TIME, "5000");
-    defaultProperty(GENESISBLOCK_WAIT_TIME, "5000");
-    /**
-     * This will NOT complete any transaction futures time out and must be kept WELL above any expected future timeout
-     * for transactions sent to the Orderer. For internal cleanup only.
-     */
-    defaultProperty(TRANSACTION_CLEANUP_UP_TIMEOUT_WAIT_TIME, "600000"); //10 min.
-```
-{:codeblock}
-
-しかし、独自のアプリケーションでデフォルトのタイムアウト値を変更しなければならない場合があります。 例えば、応答に要する時間が 5000 ミリ秒 (イベント・ハブ接続のデフォルトのタイムアウト値) を超えるトランザクションをアプリケーションが呼び出すと、トランザクションが完了する前に 5000 ミリ秒で呼び出しイベントが終了するため、失敗エラーを受け取ります。 システム・プロパティーを設定して、クライアント・アプリケーションのデフォルト値を上書きできます。 システム・プロパティーを設定する前にデフォルト値が初期設定されるため、システム・プロパティーが有効にならない場合があります。 したがって、クライアント・アプリケーション内の静的構造でタイムアウトのシステム・プロパティーを設定する必要があります。 Fabric Java SDK でイベント・ハブ接続のタイムアウト値を 15000 ミリ秒に変更する場合の以下の例を参照してください。 ファイル・パスは `src&#xa5;main&#xa5;java&#xa5;org&#xa5;hyperledger&#xa5;fabric&#xa5;sdk&#xa5;helper&#xa5;Config.java` です。
-
-```
- public static final String EVENTHUB_CONNECTION_WAIT_TIME = "org.hyperledger.fabric.sdk.eventhub_connection.wait_time";
- private static final long EVENTHUB_CONNECTION_WAIT_TIME_VALUE = 15000;
-
- static {
-     System.setProperty(EVENTHUB_CONNECTION_WAIT_TIME, EVENTHUB_CONNECTION_WAIT_TIME_VALUE);
- }
-```
-{:codeblock}
-
-Node SDK を使用する場合は、呼び出されるメソッド内にタイムアウト値を直接指定できます。 例えば、以下の行を使用して、[チェーンコードのインスタンス化 ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://fabric-sdk-node.github.io/Channel.html#sendInstantiateProposal "sendInstantiateProposal") のタイムアウト値を 5 分に拡大できます。
-```
-channel.sendInstantiateProposal(request, 300000);
-```
-{:codeblock}
-
-## CouchDB を使用する場合のベスト・プラクティス
-{: #dev-app-couchdb-indices}
-
-状態データベースに CouchDB を使用している場合、チェーンコードからチャネルの状態データに対する JSON データ照会を実行できます。 JSON 照会用に索引を作成してチェーンコードで使用することを強くお勧めします。 索引があれば、ネットワークがトランザクションとエントリーの追加ブロックをワールド・ステートに追加するときに、アプリケーションで効率的にデータを取得できます。
-
-CouchDB について、および索引をセットアップする方法について詳しくは、Hyperledger Fabric の資料で [CouchDB as the State Database ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/couchdb_as_state_database.html "CouchDB as the State Database"){:new_window} を参照してください。 [Fabric CouchDB チュートリアル ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/couchdb_tutorial.html) にも、索引をチェーンコードで使用する例があります。
-
-CouchDB データベース全体をスキャンする照会にはチェーンコードを使用しないでください。 完全なデータベース・スキャンでは、応答時間が長くなり、ネットワークのパフォーマンスが低下します。 次のような手順により、長時間かかる照会を防止および対処できます。
-- チェーンコードを使用して索引をセットアップします。
-- リッチ JSON 照会を発行する場合は、`$or`、`$in`、`$regex` のようなデータベース全体のスキャンや索引全体のスキャンが行われるオペレーターは使用しないようにします。
-- {{site.data.keyword.blockchainfull_notm}} Platform 上のピアには queryLimit が設定されているため、状態データベースから返されるエントリー数は 10,000 個に制限されます。 1 つの照会で queryLimit に達する場合は、複数の照会を使用することで残りの結果を取得できます。 範囲照会の結果を追加で取得する必要がある場合には、前の照会で返された最後のキーを使用して次の照会を開始します。 JSON 照会の結果がさらに必要な場合は、データ内のいずれかの変数で照会をソートしてから、前の照会で返された最後の値を次の照会の「より大」フィルターで使用します。
-- 集計またはレポート作成のためにデータベース全体を照会しないでください。 アプリケーションの中でダッシュボードを作成したり大量のデータを収集したりする場合は、ブロックチェーン・ネットワークのデータを複製したオフチェーン・データベースを照会します。 これにより、ネットワークのパフォーマンスを低下させたり、トランザクションを中断したりすることなく、ブロックチェーン上のデータを把握できます。
-
-  オフチェーン・データ・ストアは、Fabric SDK に用意されているチャネル・ベースのイベント・サービス・クライアントを使用して作成できます。 例えば、ブロック・リスナーを使用して、チャネル台帳に追加される最新のトランザクションを取得できます。 有効なトランザクションからのトランザクションの読み取り/書き込みセットを使用して、別のデータベースに格納されているワールド・ステートのコピーを更新できます。 詳しくは、Node SDK の資料の [How to use the channel-based event service ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://fabric-sdk-node.github.io/tutorial-channel-events.html "How to use the channel-based event service"){:new_window} を参照してください。
-
-## アプリケーションのホスティング
-{: #dev-app-host-app}
-
-アプリケーションをローカル・ファイル・システム上でホストするか、{{site.data.keyword.cloud_notm}} にプッシュすることができます。 アプリケーションを {{site.data.keyword.cloud_notm}} にプッシュするには、以下のステップを実行します。
-1. [Cloud Foundry コマンド・ライン・インストーラー ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://github.com/cloudfoundry/cli/releases) をインストールします。  `cf` コマンドを使用してインストールをテストします。
-    * 正常にインストールされた場合は、端末に一連のテキスト出力が表示されます。
-    * 「command not found」と表示された場合は、正常にインストールされなかったか、CF がシステム・パスに追加されていません。
-2. 以下のコマンドを発行して、API エンドポイントをセットアップし、ご使用の {{site.data.keyword.cloud_notm}} ID とパスワードでログインします。
-    ```
-    > cf api https://api.ng.bluemix.net
-    > cf login
-    ```
-    {:codeblock}
-3. アプリケーションのディレクトリーを参照し、以下のコマンドを発行してアプリケーションをプッシュします。 これには、アプリケーションのサイズにより数分かかることがあります。 {{site.data.keyword.cloud_notm}} のログを端末で表示できます。 アプリケーションが正常に起動されると、ログの出力は終了します。
-	```
-	> cf push YOUR_APP_NAME_HERE
-	```
-	{:codeblock}
-	以下のいずれかのコマンドを発行して、アプリケーション・ログを確認できます。
-	* `> cf logs YOUR_APP_NAME_HERE`
-	* `> cf logs YOUR_APP_NAME_HERE --recent`
 
 ## ネットワークからのアプリケーションの切断
 {: #dev-app-disconnect-app}

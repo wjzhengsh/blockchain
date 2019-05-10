@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-03-20"
 
 subcollection: blockchain
 
@@ -69,7 +69,7 @@ Wenn Sie Swagger-APIs verwenden möchten, um ein Netz zu erstellen oder an einem
 Sie können APIs verwenden, um Blockchain-Netze ausschließlich an verfügbaren Netzadressen zu erstellen. Verwenden Sie vor dem Erstellen eines Netzes die folgende API, um eine aktuelle Liste mit verfügbaren Netzadressen abzurufen. Für diese API sind keine Berechtigungsnachweise erforderlich.
 
 ```
-https://ibmblockchain-v2.ng.bluemix.net/api/v1/network-locations/available
+https://ibp-ep.us-south.ibm-blockchain-5-prod.cloud.ibm.com/api/v1/network-locations/available
 ```
 {:codeblock}
 

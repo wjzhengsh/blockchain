@@ -34,7 +34,7 @@
 <rect id="Rectangle_2_" x="369.5" y="138.5" class="st6" width="105" height="35"/>
 <text transform="matrix(1 0 0 1 392.176 162)" class="st7 st4 st8">CA de Org1</text>
 <rect id="Rectangle_3_" x="311.5" y="206.5" class="st6" width="105" height="55"/>
-<text transform="matrix(1 0 0 1 326.368 230)" class="st7 st4 st8">Definición de</text>
+<text transform="matrix(1 0 0 1 326.368 230)" class="st7 st4 st8">Definición de </text>
 <text transform="matrix(1 0 0 1 329.616 250)" class="st7 st4 st8">MSP de Org1</text>
 <rect id="Rectangle_4_" x="107.5" y="204.5" class="st6" width="105" height="61"/>
 <text transform="matrix(1 0 0 1 120.124 241)" class="st7 st4 st8">Org1 igual</text>
@@ -46,7 +46,7 @@
 <rect id="Rectangle_6_" x="780.5" y="295.5" class="st6" width="105" height="35"/>
 <text transform="matrix(1 0 0 1 791.34 319)" class="st7 st4 st8">CA de clasific.</text>
 <rect id="Rectangle_7_" x="694.5" y="361.5" class="st6" width="124" height="55"/>
-<text transform="matrix(1 0 0 1 711.92 385)" class="st7 st4 st8">Defin. de MSP</text>
+<text transform="matrix(1 0 0 1 711.92 385)" class="st7 st4 st8">Defin. de MSP </text>
 <text transform="matrix(1 0 0 1 725.616 405)" class="st7 st4 st8">de clasificador</text>
 <g id="Group-3" transform="translate(208.000000, 227.000000)">
 	<g id="Clip-2">

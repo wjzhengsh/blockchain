@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -110,7 +110,7 @@ Se você estiver fundando ou associando uma rede, será necessário concluir ess
 ### Recuperando a URL da autoridade de certificação
 {: #ca-operate-url}
 
-É necessário destinar a URL da CA para solicitações para gerar certificados ou registrar-se com uma nova identidade. É possível localizar sua URL de CA usando sua IU do console do {{site.data.keyword.cloud_notm}} Private. Você precisará ser um [Administrador de cluster ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Funções e ações do administrador de cluster") para concluir as etapas a seguir:
+É necessário destinar a URL da CA para solicitações para gerar certificados ou registrar-se com uma nova identidade. É possível localizar sua URL de CA usando sua IU do console do {{site.data.keyword.cloud_notm}} Private. Você precisará ser um [Administrador de cluster ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/user_management/assign_role.html "Funções e ações do administrador de cluster") para concluir as etapas a seguir:
 
 1. Efetue login no console do {{site.data.keyword.cloud_notm}} Private e clique no ícone **Menu** no canto superior esquerdo.
 2. Clique em **Carga de trabalho** > **Liberações do Helm**.
@@ -151,12 +151,12 @@ Se você estiver fundando ou associando uma rede, será necessário concluir ess
 
 É possível usar o cliente Fabric CA para operar sua CA. Essas instruções explicam como usar o cliente Fabric CA para inscrever-se e registrar identidades para outros componentes que pertencem à sua organização. Também é possível usar os SDKs do Fabric para concluir as etapas de pré-requisito.
 
-1. É necessário fazer download do [cliente Fabric CA ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://hyperledger-fabric-ca.readthedocs.io/en/latest/users-guide.html#fabric-ca-client "Fazer download do cliente Fabric CA") para seu sistema de arquivos local.
+1. É necessário fazer download do [cliente Fabric CA ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/users-guide.html#fabric-ca-client "Fazer download do cliente Fabric CA") para seu sistema de arquivos local.
 
-  A maneira mais fácil de obter o cliente Fabric CA é fazer download de todos os binários da ferramenta Fabric diretamente. Navegue para um diretório no qual gostaria de fazer download dos binários com sua linha de comandos e busque-os executando o comando [Curl ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/prereqs.html#install-curl "Curl") a seguir.
+  A maneira mais fácil de obter o cliente Fabric CA é fazer download de todos os binários da ferramenta Fabric diretamente. Navegue para um diretório no qual gostaria de fazer download dos binários com sua linha de comandos e busque-os executando o comando [Curl ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/prereqs.html#install-curl "Curl") a seguir.
 
   ```
-  curl -sSL http://bit.ly/2ysbOFE | bash -s 1.2.1 1.2.1 -d -s
+  curl -sSL http://bit.ly/2ysbOFE | bash -s 1.4.0 1.4.0 -d -s
   ```
   {:codeblock}
 
@@ -223,7 +223,7 @@ Antes de implementar componentes ou aplicativos clientes com sua CA, é necessá
   ```
   {:codeblock}
 
-  O `<enroll_id>` e `<enroll_password>` no comando são o [Nome e a senha do usuário administrador de CA](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-admin-secret) que você passou para o segredo de Kubernetes quando implementou a Autoridade de certificação. Insira a [URL da CA](/docs/services/blockchain/howto/CA_operate.html#ca-operate-url) dentro da `<ca_url_with_port>`. Deixe fora o `http://` no início. O `<ca_name>` é o valor que você forneceu para o campo `CA Name` ao implementar a CA.
+  No comando, o `<enroll_id>` e a `<enroll_password>` são o [nome de usuário e a senha do administrador da CA](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-admin-secret) transmitidos ao segredo do Kubernetes quando você implementou a Autoridade de Certificação. Insira a [URL da CA](/docs/services/blockchain/howto/CA_operate.html#ca-operate-url) dentro do `<ca_url_with_port>`. Deixe fora o `http://` no início. O `<ca_name>` é o valor fornecido para o campo `CA Name` quando você a implementou.
 
   O `<ca_tls_cert_path>` é o caminho completo de seu [certificado TLS da CA](/docs/services/blockchain/howto/CA_operate.html#ca-operate-tls).
 
@@ -255,6 +255,8 @@ tree
 │   └── msp
 │       ├── cacerts
 │       │   └── 9-30-250-70-30395-SampleOrgCA.pem
+│       ├── IssuerPublicKey
+│       ├── IssuerRevocationPublicKey
 │       ├── keystore
 │       │   └── 2a97952445b38a6e0a14db134645981b74a3f93992d9ddac54cb4b4e19cdf525_sk
 │       ├── signcerts
@@ -272,7 +274,7 @@ Antes de implementar um solicitador ou peer, é necessário criar um arquivo JSO
 As instruções a seguir fornecem a você um [arquivo de configuração JSON de modelo](/docs/services/blockchain/howto/CA_operate.html#ca-operate-config-file-template) que pode ser editado e salvo em seu sistema de arquivos local e o instruem sobre como usar sua CA para concluir este arquivo.
 
 - Siga as instruções abaixo se estiver implementando um solicitador no {{site.data.keyword.cloud_notm}} Private ou implementando um peer para se conectar a um consórcio que está hospedado no {{site.data.keyword.cloud_notm}} Private.
-- Se você deseja implementar um peer para se conectar ao Starter Plan ou ao Enterprise Plan, siga as instruções em [Implementando peers no IBM Cloud Private para conectar-se ao Starter Plan ou ao Enterprise Plan](/docs/services/blockchain/howto/peer_deploy_icp.html#icp-peer-deploy). Essas etapas orientam você sobre como usar a CA no {{site.data.keyword.blockchainfull_notm}} Platform para implementar nosso peer no {{site.data.keyword.cloud_notm}} Private.
+- Se você deseja implementar um peer para se conectar ao Starter Plan ou ao Enterprise Plan, siga as instruções em [Implementando peers no IBM Cloud Private para conectar-se ao Starter Plan ou ao Enterprise Plan](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy). Essas etapas orientam você sobre como usar a CA no {{site.data.keyword.blockchainfull_notm}} Platform para implementar nosso peer no {{site.data.keyword.cloud_notm}} Private.
 
 ### Arquivo de configuração
 {: #ca-operate-config-file-template}
@@ -458,6 +460,8 @@ tree
 │   └── msp
 │       ├── cacerts
 │       │   └── 9-30-250-70-30395-SampleOrgCA.pem
+│       ├── IssuerPublicKey
+│       ├── IssuerRevocationPublicKey
 │       ├── keystore
 │       │   └── 2a97952445b38a6e0a14db134645981b74a3f93992d9ddac54cb4b4e19cdf525_sk
 │       ├── signcerts
@@ -488,6 +492,8 @@ tree
     └── msp
         ├── cacerts
         │   └── 9-30-250-70-30395-tlsca.pem
+        ├── IssuerPublicKey
+        ├── IssuerRevocationPublicKey
         ├── keystore
         │   └── 45a7838b1a91ddfe3d4d22a5a7f2639b868493bcce594af3e3ceb9c07899d117_sk
         ├── signcerts
@@ -589,7 +595,7 @@ Copie os valores de `name` e `secret` para `"enrollid"` e `"enrollsecret"` sob a
 
 #### Localizando o valor do endereço IP do proxy do cluster
 
-Se desejar implementar um solicitador ou peer no mesmo cluster do {{site.data.keyword.cloud_notm}} Private no qual você implementou sua CA, assegure-se de que tenha uma função [ Administrador de cluster ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Funções e ações do administrador de cluster") no cluster do {{site.data.keyword.cloud_notm}} Private no qual o solicitador ou peer será implementado. Em seguida, insira o mesmo IP de proxy que você usou quando [configurou para sua CA](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-configuration-parms). Se deseja implementar o solicitador ou peer em um cluster diferente, é possível recuperar o valor do endereço IP do proxy do cluster por meio do console do {{site.data.keyword.cloud_notm}} Privado concluindo as etapas a seguir:
+Se desejar implementar um solicitador ou peer no mesmo cluster do {{site.data.keyword.cloud_notm}} Private no qual você implementou sua CA, assegure-se de que tenha uma função [ Administrador de cluster ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/user_management/assign_role.html "Funções e ações do administrador de cluster") no cluster do {{site.data.keyword.cloud_notm}} Private no qual o solicitador ou peer será implementado. Em seguida, insira o mesmo IP de proxy que você usou quando [configurou para sua CA](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-configuration-parms). Se deseja implementar o solicitador ou peer em um cluster diferente, é possível recuperar o valor do endereço IP do proxy do cluster por meio do console do {{site.data.keyword.cloud_notm}} Privado concluindo as etapas a seguir:
 
 1. Efetue login no console do {{site.data.keyword.cloud_notm}} Private. No painel de navegação à esquerda, clique em **Plataforma** e, em seguida, em **Nós** para visualizar os nós que estão definidos no cluster.
 2. Clique no nó com a função `proxy` e, em seguida, copie o valor do `IP do host` da tabela.
@@ -679,7 +685,7 @@ Depois de concluir todas as etapas acima, seu arquivo de configuração atualiza
 ## Fornecedores de serviço de associação (MSPs)
 {: #ca-operate-msp}
 
-Os componentes do {{site.data.keyword.blockchainfull_notm}} Platform consomem identidades via Membership Service Providers (MSPs). Os MSPs associam os certificados que as autoridades de certificação emitem com permissões e funções. Para obter mais informações sobre MSPs, consulte [o tópico Associação na documentação do Hyperledger Fabric ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://hyperledger-fabric.readthedocs.io/en/latest/membership/membership.html "o tópico Associação na documentação do Hyperledger Fabric").
+Os componentes do {{site.data.keyword.blockchainfull_notm}} Platform consomem identidades via Membership Service Providers (MSPs). Os MSPs associam os certificados que as autoridades de certificação emitem com permissões e funções. Para obter mais informações sobre MSPs, consulte [o tópico Associação na documentação do Hyperledger Fabric ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/membership/membership.html "o tópico Associação na documentação do Hyperledger Fabric").
 
 As pastas MSP devem ter uma estrutura definida para ser usada pelos componentes do Fabric. O cliente da CA do Fabric estabelece essa estrutura criando as pastas MSP a seguir:
 
@@ -698,7 +704,7 @@ Muitos componentes do Fabric contêm informações adicionais dentro de sua past
 - **admincerts:** essa pasta contém a lista de administradores para essa organização ou esse componente. Será necessário fazer upload de seu signCert para essa pasta se você estiver operando um peer remoto por meio da linha de comandos ou dos SDKs. Se você usar o cliente Fabric CA, também precisará de uma pasta admincerts em seu MSP que contenha o signCert correspondente a ser reconhecido como certificados do administrador.
 - **tls:** essa é uma pasta na qual você armazena os certificados TLS usados para comunicação com outros componentes de rede.
 
-Para obter mais informações sobre a estrutura de MSPs, consulte [Associação ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://hyperledger-fabric.readthedocs.io/en/latest/membership/membership.html "Associação") e [Membership Service Providers ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://hyperledger-fabric.readthedocs.io/en/latest/msp.html "Membership Service Providers") na documentação do Hyperledger Fabric.
+Para obter mais informações sobre a estrutura de MSPs, consulte [Associação ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/membership/membership.html "Associação") e [Membership Service Providers ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/msp.html "Membership Service Providers") na documentação do Hyperledger Fabric.
 
 
 ## Visualizando os logs de CA
@@ -722,7 +728,7 @@ Os logs de componentes podem ser visualizados na linha de comandos usando os [`k
 
    Para obter mais informações sobre o comando `kubectl logs`, veja [Documentação do Kubernetes ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs “Getting Started”)
 
-- Como alternativa, é possível acessar eventos de implementação e logs usando o [console de gerenciamento de cluster do {{site.data.keyword.cloud_notm}} Private](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/troubleshoot/events.html), que abre os logs no Kibana.
+- Como alternativa, é possível acessar eventos e logs de implementação usando o [console de gerenciamento de cluster do {{site.data.keyword.cloud_notm}} Private](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/troubleshoot/events.html), que abre os logs no Kibana.
 
   **Nota:** ao visualizar seus logs no Kibana, você pode receber a resposta `No results found`. Essa condição poderá ocorrer se o {{site.data.keyword.cloud_notm}} Private usar o endereço IP do nó do trabalhador como seu nome do host. Para resolver esse problema, remova o filtro que inicia com `node.hostname.keyword` na parte superior do painel e os logs se tornarão visíveis.
 

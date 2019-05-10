@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-03-20"
 
 subcollection: blockchain
 
@@ -95,7 +95,7 @@ Las aplicaciones solo pueden enviar transacciones a los contratos inteligentes d
 
 El [flujo de transacciones ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")]( https://hyperledger-fabric.readthedocs.io/en/release-1.4/txflow.html "Flujo de transacciones"){:new_window} de Hyperledger Fabric abarca varios componentes; las aplicaciones cliente recopilan aprobaciones de los iguales y envían transacciones aprobadas al servicio de ordenación. El perfil de conexión proporciona a la aplicación los puntos finales de los iguales y los nodos de ordenación que necesita para enviar una transacción. También contiene información sobre la organización, como las entidades emisoras de certificados y el ID de MSP. Los SDK de Fabric pueden leer el perfil de conexión directamente, sin tener que escribir código que gestione el flujo de transacciones y aprobaciones.
 
-Si ha configurado iguales de ancla al crear un canal, puede aprovechar la característica [Service Discovery ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/discovery-overview.html "Service Discovery") de Hyperledger Fabric. Service Discovery permite a la aplicación saber qué iguales del canal externo a la organización necesitan aprobar una transacción. Sin el descubrimiento de servicios, tendrá que obtener la información de punto final de estos iguales fuera de banda de otras organizaciones y añadirla al perfil de conexión. Para obtener más información sobre cómo configurar iguales de ancla, consulte el paso tres del [tema sobre datos privados](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-private-data) de la guía de aprendizaje sobre cómo desplegar un contrato inteligente.
+Para aprovechar el servicio de la característica [Service Discovery ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/discovery-overview.html "Service Discovery") de Hyperledger Fabric, debe configurar iguales de ancla. Service Discovery permite a la aplicación saber qué iguales del canal externo a la organización necesitan aprobar una transacción. Sin el descubrimiento de servicios, tendrá que obtener la información de punto final de estos iguales fuera de banda de otras organizaciones y añadirla al perfil de conexión. Para obtener más información sobre cómo configurar iguales de ancla, consulte el paso tres del [tema sobre datos privados](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-private-data) de la guía de aprendizaje sobre cómo desplegar un contrato inteligente.
 
 Vaya al separador de contratos inteligentes de la consola de la plataforma. Junto a cada contrato inteligente del que se ha creado una instancia, vaya al menú de desbordamiento. Pulse el botón **Conectar con SDK**. Se abrirá un panel lateral que le permitirá crear y descargar el perfil de conexión. En primer lugar, debe seleccionar la CA de la organización que ha utilizado para registrar la identidad de la aplicación. También tendrá que seleccionar la definición de MSP de la organización. Luego podrá descargar el perfil de conexión que puede utilizar para generar certificados y para invocar el contrato inteligente.
 
@@ -141,7 +141,7 @@ Una vez que el operador de red proporciona el ID y el secreto de inscripción de
       // Inscribir el usuario administrador e importar la nueva identidad en la cartera.
       const enrollment = await ca.enroll({ enrollmentID: '<app_enroll_id>', enrollmentSecret: '<app_enroll_secret>' });
       const identity = X509WalletMixin.createIdentity('<msp_id>', enrollment.certificate, enrollment.key.toBytes());
-      wallet.import('user1', identity);
+      await wallet.import('user1', identity);
       console.log('Successfully enrolled client "user1" and imported it into the wallet');
 
       } catch (error) {
@@ -328,7 +328,7 @@ npm install
 
 Encontrará el contrato inteligente del documento comercial dentro de la carpeta `contract` del directorio `digibank` y del directorio `magnetocorp`. Debe instalar este contrato inteligente en todos los iguales de las organizaciones siguiendo la guía de aprendizaje. A continuación, tendrá que crear una instancia del contrato del documento comercial en un canal. El contrato inteligente se debe empaquetar en [formato .cds ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/latest/chaincode4noah.html#packaging "empaquetado de contratos inteligentes") para que se pueda instalar mediante la consola.
 
-Puede utilizar la [extensión VScode de IBM Blockchain](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-vscode) para empaquetar el contrato inteligente. Después de instalar la extensión, utilice Visual Studio Code para abrir la carpeta `contacts` en el espacio de trabajo. Abra el separador _{{site.data.keyword.blockchainfull_notm}} Platform_. En el panel _{{site.data.keyword.blockchainfull_notm}} Platform_, vaya a la sección de paquetes de contratos inteligentes y pulse **Empaquetar un proyecto de contrato inteligente**. La extensión VScode utilizará los archivos de la carpeta `contracts` para crear un nuevo paquete llamado `papernet-js@.0.0.1.cds`. Pulse con el botón derecho del ratón en este paquete para exportarlo al sistema de archivos local. Luego podrá utilizar la consola para [instalar los contratos inteligentes en sus iguales](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-install) y, a continuación, [crear una instancia del contrato inteligente en un canal](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-instantiate).
+Puede utilizar la [extensión VScode de IBM Blockchain](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-vscode) para empaquetar el contrato inteligente. Después de instalar la extensión, utilice Visual Studio Code para abrir la carpeta `contracts` en el espacio de trabajo. Abra el separador _{{site.data.keyword.blockchainfull_notm}} Platform_. En el panel _{{site.data.keyword.blockchainfull_notm}} Platform_, vaya a la sección de paquetes de contratos inteligentes y pulse **Empaquetar un proyecto de contrato inteligente**. La extensión VScode utilizará los archivos de la carpeta `contracts` para crear un nuevo paquete llamado `papernet-js@.0.0.1.cds`. Pulse con el botón derecho del ratón en este paquete para exportarlo al sistema de archivos local. Luego podrá utilizar la consola para [instalar los contratos inteligentes en sus iguales](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-install) y, a continuación, [crear una instancia del contrato inteligente en un canal](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-instantiate).
 
 ### Paso tres: generar certificados para la cartera
 
@@ -379,7 +379,7 @@ Vaya al directorio `/magnetocorp/application` y guarde el siguiente bloque de c�
         // Inscribir el usuario administrador e importar la nueva identidad en la cartera.
         const enrollment = await ca.enroll({ enrollmentID: '<app_enroll_id>', enrollmentSecret: '<app_enroll_secret>' });
         const identity = X509WalletMixin.createIdentity('<msp_id>', enrollment.certificate, enrollment.key.toBytes());
-        wallet.import('user1', identity);
+        await wallet.import('user1', identity);
         console.log('Successfully enrolled client "user1" and imported it into the wallet');
 
         } catch (error) {
@@ -474,10 +474,10 @@ en `enrollUser.js`.
 ```
 const userName = 'user1';
 
-// Cargar perfil de conexión; se utilizará para localizar una pasarela
+// Load connection profile; will be used to locate a gateway
 const ccpPath = path.resolve(__dirname, '../gateway/connection.json');
 const ccpJSON = fs.readFileSync(ccpPath, 'utf8');
-const ccp = JSON.parse(ccpJSON);
+const connectionProfile = JSON.parse(ccpJSON);
 
 // Establecer opciones de conexión; identidad y cartera
 let connectionOptions = {
@@ -567,9 +567,10 @@ fabric_client.createUser({
 ```
 {:codeblock}
 
-Si utiliza las API de SDK de bajo nivel para conectarse a la red, hay pasos adicionales que puede realizar para gestionar el rendimiento y la disponibilidad de la aplicación. Para obtener más información, consulte [Prácticas recomendadas para la conectividad y la disponibilidad de aplicaciones](/docs/services/blockchain/v10_application.html#dev-app-connectivity-availability).
+Si utiliza las API de SDK de bajo nivel para conectarse a la red, hay pasos adicionales que puede realizar para gestionar el rendimiento y la disponibilidad de la aplicación. Para obtener más información, consulte [Prácticas recomendadas para la conectividad y la disponibilidad de aplicaciones](/docs/services/blockchain/best_practices.html#best-practices-app-connectivity-availability).
+
 
 ## Utilización de índices con CouchDB
 {: #console-app-couchdb}
 
-Si utiliza CouchDB como base de datos de estado, puede realizar consultas de datos JSON desde sus contratos inteligentes sobre los datos de estado del canal. Se recomienda encarecidamente crear índices para las consultas de JSON y utilizarlos en los contratos inteligentes. Los índices permiten que sus aplicaciones puedan recuperar datos de forma eficiente cuando la red añade bloques adicionales de transacciones y entradas en el escenario mundial. Para obtener información sobre cómo utilizar índices con sus contratos inteligentes y sus aplicaciones, consulte [Prácticas recomendadas al utilizar CouchDB](/docs/services/blockchain/v10_application.html#dev-app-couchdb-indices).
+Si utiliza CouchDB como base de datos de estado, puede realizar consultas de datos JSON desde sus contratos inteligentes sobre los datos de estado del canal. Se recomienda encarecidamente crear índices para las consultas de JSON y utilizarlos en los contratos inteligentes. Los índices permiten que sus aplicaciones puedan recuperar datos de forma eficiente cuando la red añade bloques adicionales de transacciones y entradas en el escenario mundial. Para obtener información sobre cómo utilizar índices con sus contratos inteligentes y sus aplicaciones, consulte [Prácticas recomendadas al utilizar CouchDB](/docs/services/blockchain/best_practices.html#best-practices-app-couchdb-indices).

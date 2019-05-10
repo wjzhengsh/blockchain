@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018,2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-17"
 
 subcollection: blockchain
 
@@ -37,8 +37,7 @@ As redes do Enterprise Plan oferecem os recursos prontos para produção a segui
 
 Antes de migrar da rede do Starter Plan para uma rede do Enterprise Plan, é possível ler as considerações a seguir.
 
-- **Precificação:** a taxa mensal de sua organização para usar uma rede do Enterprise Plan inclui a taxa de associação de US$ 1000 por instância e a taxa de US$ 1000 por peer de acordo com o peer. Para obter mais informações, consulte [Precificação do Enterprise Plan](/docs/services/blockchain
-/howto/pricing.html#ibp-pricing-enterprise-plan).
+- **Precificação:** a taxa mensal de sua organização para usar uma rede do Enterprise Plan inclui a taxa de associação de US$ 1000 por instância e a taxa de US$ 1000 por peer de acordo com o peer. Para obter mais informações, consulte [Precificação do Enterprise Plan](/docs/services/blockchain/howto/pricing.html#ibp-pricing-enterprise-plan).
 - **Versão do Hyperledger Fabric:** as redes do Enterprise Plan são executadas no Hyperledger Fabric v1.1. As redes do Starter Plan são executadas no Fabric v1.2.
 - **Recursos afetados:** chaincode (contratos inteligentes), aplicativos clientes. Novamente, esteja ciente de que seu chaincode está alavancando um componente do Fabric v1.2 ou uma funcionalidade que não é compatível com redes v1.1.
 - **Tempo necessário:** Levará pelo menos metade de um dia para migrar uma rede básica do Starter Plan para o Enterprise Plan.

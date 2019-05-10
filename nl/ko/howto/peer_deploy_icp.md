@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2019
-lastupdated: "2019-03-05"
+  years: 2018, 2019
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -20,7 +20,7 @@ subcollection: blockchain
 # {{site.data.keyword.cloud_notm}} Private에 피어 배치
 {: #icp-peer-deploy}
 
-다음 지시사항은 {{site.data.keyword.cloud_notm}} Private에 {{site.data.keyword.blockchainfull}} Platform 피어를 배치하는 방법에 대해 설명합니다. 이 지시사항을 통해 {{site.data.keyword.cloud_notm}} Private의 {{site.data.keyword.blockchainfull_notm}} Platform에 연결할 수 있습니다. 피어를 {{site.data.keyword.cloud_notm}}의 스타터 플랜 또는 엔터프라이즈 플랜 네트워크에 연결할 경우 [스타터 플랜 또는 엔터프라이즈 플랜에 연결하도록 피어 배치](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy)를 참조하십시오.
+다음 지시사항은 {{site.data.keyword.cloud_notm}} Private에 {{site.data.keyword.blockchainfull}} Platform 피어를 배치하는 방법에 대해 설명합니다. 이 지시사항을 통해 {{site.data.keyword.cloud_notm}} Private의 {{site.data.keyword.blockchainfull_notm}} Platform 컴포넌트에 연결할 수 있습니다. 피어를 {{site.data.keyword.cloud_notm}}의 스타터 플랜 또는 엔터프라이즈 플랜 네트워크에 연결할 경우 [스타터 플랜 또는 엔터프라이즈 플랜에 연결하도록 피어 배치](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy)를 참조하십시오.
 {:shortdesc}
 
 피어를 배치하기 전에 [고려사항 및 제한사항](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-about-considerations)을 검토하십시오.
@@ -34,7 +34,7 @@ subcollection: blockchain
 | 컴포넌트 | vCPU | RAM | 데이터 스토리지용 디스크 |
 |-----------|------|-----|-----------------------|
 | 피어 |2 |2GB | 50GB(확장 기능 포함) |
-| 피어를 위한 CouchDB |2|2GB | 50GB(확장 기능 포함) |
+| 피어를 위한 CouchDB<br>(CouchDB를 사용하는 경우에만 적용 가능) |2|2GB | 50GB(확장 기능 포함) |
 
  **참고:**
  - vCPU는 서버가 가상 머신에 대해 파티션되지 않은 경우 가상 머신 또는 실제 프로세서 코어에 지정되는 가상 코어입니다. {{site.data.keyword.cloud_notm}} Private에서 배치를 위해 가상 프로세서 코어(VPC)를 결정할 때 vCPU 요구사항을 고려해야 합니다. VPC는 IBM 제품의 라이센싱 비용을 판별하는 측정 단위입니다. VPC를 결정하는 시나리오에 대한 자세한 정보는 [가상 프로세서 코어(VPC) ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/en/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_virtual_processor_core_licenses.html "IBM Licence Metric Tool 9.2")를 참조하십시오.
@@ -45,7 +45,7 @@ subcollection: blockchain
 
 피어에서 사용할 스토리지를 결정해야 합니다. 기본 설정을 사용하는 경우 Helm 차트에서 피어 데이터의 새로운 8 Gi 지속적 볼륨 청구(PVC)를 `my-data-pvc`라는 이름으로 작성하고, 상태 데이터베이스의 다른 8 Gi PVC를 `statedb-pvc`라는 이름으로 작성합니다.
 
-기본 스토리지 설정을 사용하지 않으려면 {{site.data.keyword.cloud_notm}} Private 설치 중에 새 `storageClass`가 설정되었는지 확인하거나, Kubernetes 시스템 관리자가 {{site.data.keyword.blockchainfull_notm}} Platform을 배치하기 전에 `storageClass`를 작성했는지 확인하십시오. 
+기본 스토리지 설정을 사용하지 않으려면 {{site.data.keyword.cloud_notm}} Private 설치 중에 새 `storageClass`가 설정되었는지 확인하거나, Kubernetes 시스템 관리자가 {{site.data.keyword.blockchainfull_notm}} Platform을 배치하기 전에 `storageClass`를 작성했는지 확인하십시오.
 
 amd64 또는 s390x 플랫폼에 피어를 배치하도록 선택할 수 있습니다. 단, [동적 프로비저닝 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://kubernetes.io/docs/concepts/storage/dynamic-provisioning/ "동적 볼륨 프로비저닝")은 {{site.data.keyword.cloud_notm}} Private의 amd64 노드에 대해서만 사용 가능합니다. 클러스터에 s390x와 amd64 작업자 노드가 혼합되어 있는 경우 동적 프로비저닝을 사용할 수 없습니다.
 
@@ -56,11 +56,11 @@ amd64 또는 s390x 플랫폼에 피어를 배치하도록 선택할 수 있습�
 
 1. 피어를 {{site.data.keyword.cloud_notm}} Private에 설치하기 전에 [{{site.data.keyword.cloud_notm}} Private을 설치](/docs/services/blockchain/ICP_setup.html#icp-setup)하고 [{{site.data.keyword.blockchainfull_notm}} Platform Helm 차트를 설치](/docs/services/blockchain/howto/helm_install_icp.html#helm-install)해야 합니다.
 
-2. Community Edition을 사용하고 인터넷 연결 없이 {{site.data.keyword.cloud_notm}} Private 클러스터에 이 Helm 차트를 실행하려면 아카이브를 {{site.data.keyword.cloud_notm}} Private 클러스터에 설치하기 전에 인터넷에 연결된 시스템에서 아카이브를 작성해야 합니다. 자세한 정보는 [인터넷 연결 없이 클러스터에 주요 애플리케이션 추가 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_package_offline.html "인터넷 연결 없이 클러스터에 주요 애플리케이션 추가"){:new_window}를 참조하십시오. Helm 차트의 `ibm-blockchain-platform-dev/ibm_cloud_pak` 아래에서 스펙 파일 `manifest.yaml`을 찾을 수 있습니다.
+2. Community Edition을 사용하고 인터넷 연결 없이 {{site.data.keyword.cloud_notm}} Private 클러스터에 이 Helm 차트를 실행하려면 아카이브를 {{site.data.keyword.cloud_notm}} Private 클러스터에 설치하기 전에 인터넷에 연결된 시스템에서 아카이브를 작성해야 합니다. 자세한 정보는 [인터넷 연결 없이 클러스터에 주요 애플리케이션 추가 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/app_center/add_package_offline.html "인터넷 연결 없이 클러스터에 주요 애플리케이션 추가"){:new_window}를 참조하십시오. Helm 차트의 `ibm-blockchain-platform-dev/ibm_cloud_pak` 아래에서 스펙 파일 `manifest.yaml`을 찾을 수 있습니다.
 
 3. 먼저 {{site.data.keyword.cloud_notm}} Private에 [CA를 배치](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy)해야 합니다. CA를 사용하여 [피어 구성 파일을 작성하고 {{site.data.keyword.cloud_notm}} Private에서 Kubernetes 시크릿으로 이를 저장](/docs/services/blockchain/howto/peer_deploy_icp.html#icp-peer-deploy-config-file)해야 합니다.
 
-4. {{site.data.keyword.cloud_notm}} Private 콘솔에서 CA의 클러스터 프록시 IP 주소 값을 검색하십시오. **참고:** 프록시 IP에 액세스하려면 [클러스터 관리자 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "클러스터 관리자 역할 및 조치")여야 합니다. {{site.data.keyword.cloud_notm}} Private 클러스터에 로그인하십시오. 왼쪽 탐색 패널에서 **플랫폼**, **노드**를 차례로 클릭하여 클러스터에 정의되어 있는 노드를 표시하십시오. 역할이 `proxy`인 노드를 클릭한 후 테이블에서 `Host IP`의 값을 복사하십시오. **중요:** 이 값을 저장하십시오. 이 값은 Helm 차트의 `Proxy IP` 필드를 구성할 때 사용하게 됩니다.
+4. {{site.data.keyword.cloud_notm}} Private 콘솔에서 CA의 클러스터 프록시 IP 주소 값을 검색하십시오. **참고:** 프록시 IP에 액세스하려면 [클러스터 관리자 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/user_management/assign_role.html "클러스터 관리자 역할 및 조치")여야 합니다. {{site.data.keyword.cloud_notm}} Private 클러스터에 로그인하십시오. 왼쪽 탐색 패널에서 **플랫폼**, **노드**를 차례로 클릭하여 클러스터에 정의되어 있는 노드를 표시하십시오. 역할이 `proxy`인 노드를 클릭한 후 테이블에서 `Host IP`의 값을 복사하십시오. **중요:** 이 값을 저장하십시오. 이 값은 Helm 차트의 `Proxy IP` 필드를 구성할 때 사용하게 됩니다.
 
 
 ## 피어 구성 시크릿 작성
@@ -110,7 +110,7 @@ WVRBbFZUDQpNUlV3RXdZRFZRUUtFd3hFYVdkcFEyVnlkQ0JKYm1NeEp6QWxCZ05WQkFNVEhrUnBa
 
 3. **일반** 탭에서 다음 필드를 완료하십시오.
   - **이름:** 클러스터 내에서 시크릿에 고유한 이름을 지정하십시오. 피어를 배치할 때 이 이름을 사용합니다. 이름은 모두 소문자여야 합니다.  
-  **참고:** 피어를 배치할 때 새 시크릿은 새 시크릿은 이름이 `<helm_release_name>-secret`인 배치로 자동 생성됩니다. 그러므로 시크릿의 이름을 지정하는 경우 시크릿의 이름은 `<helm_release_name>-secret`과 달라야 합니다. 그렇지 않으면 작성을 시도하는 시크릿이 이미 존재하므로 Helm 차트 배치에 실패합니다.
+  **참고:** 피어를 배치할 때 새 시크릿은 새 시크릿은 이름이 `<helm release name you intend to use>-secret`인 배치로 자동 생성됩니다. 그러므로 시크릿의 이름을 지정하는 경우 시크릿의 이름은 `<helm release name you intend to use>-secret`과 달라야 합니다. 그렇지 않으면 작성을 시도하는 시크릿이 이미 존재하므로 Helm 차트 배치에 실패합니다.
   - **네임스페이스:** 시크릿을 추가할 네임스페이스입니다. 피어를 배치할 `namespace`를 선택하십시오.
   - **유형:** `Opaque` 값을 입력하십시오.
 
@@ -157,8 +157,10 @@ WVRBbFZUDQpNUlV3RXdZRFZRUUtFd3hFYVdkcFEyVnlkQ0JKYm1NeEp6QWxCZ05WQkFNVEhrUnBa
 
 |매개변수     |설명    | 기본값  | 필수 |
 | --------------|-----------------|-------|------- |
+|**일반 매개변수**| Helm 차트를 구성하는 매개변수입니다.| | |
 | `Helm release name`| Helm 릴리스의 이름입니다. 소문자로 시작하고 영숫자 문자로 끝나야 하며 하이픈과 소문자의 영숫자 문자만 포함해야 합니다. 컴포넌트를 설치하려고 할 때마다 고유한 Helm 릴리스 이름을 사용해야 합니다. **중요:** 이 값은 [JSON 시크릿 파일](/docs/services/blockchain/howto/peer_deploy_icp.html#icp-peer-deploy-config-file)의 "호스트" 필드에 대한 '서비스 호스트 이름'을 생성하는 데 사용한 값과 일치해야 합니다. | 없음 | 예 |
 | `Target namespace`| Helm 차트를 설치할 Kubernetes 네임스페이스를 선택합니다. | 없음 | 예 |
+| `Target namespace policies`| 선택한 네임스페이스의 팟(Pod) 보안 정책을 표시하며, 여기에는 **`ibm-privileged-psp`** 정책을 포함해야 합니다. 그렇지 않으면 네임스페이스에 [PodSecurityPolicy를 바인드](/docs/services/blockchain?topic=blockchain-icp-setup#icp-setup-psp)하십시오.| 없음 | 아니오 |
 |**글로벌 구성**| Helm 차트의 모든 컴포넌트에 적용하는 매개변수입니다.|||
 | `Service account name`| 팟(Pod)을 실행하는 데 사용할 [서비스 계정 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/)의 이름을 입력합니다. | 기본값 | 아니오 |
 
@@ -171,8 +173,8 @@ WVRBbFZUDQpNUlV3RXdZRFZRUUtFd3hFYVdkcFEyVnlkQ0JKYm1NeEp6QWxCZ05WQkFNVEhrUnBa
 | `Install Peer` | 피어를 설치하도록 선택합니다.|선택 취소 | 예(피어를 배치할 경우) |
 | `Peer worker node architecture`| 클라우드 플랫폼 아키텍처(AMD64 또는 S390x)를 선택합니다.| AMD64 | 예 |
 | `Peer image repository`| 피어 Helm 차트의 위치입니다. 이 필드는 설치된 경로로 자동으로 채워집니다. | ibmcom/ibp-fabric-peer | 예 |
-| `Peer Docker image tag`| 피어 이미지와 연관된 태그의 값입니다. |1.2.1. 값을 정정하도록 자동으로 채워집니다.| 예|
-| `Peer configuration`| 이 필드에서 고유한 `core.yaml` 구성 파일을 붙여넣어 피어의 구성을 사용자 정의할 수 있습니다. 샘플 `core.yaml` 파일을 보려면 [`core.yaml` 샘플 구성 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://github.com/hyperledger/fabric/blob/release-1.2/sampleconfig/core.yaml)을 참조하십시오(**고급 사용자 전용**). | 없음 | 아니오 |
+| `Peer Docker image tag`| 피어 이미지와 연관된 태그의 값입니다. |1.4.0. 값을 정정하도록 자동으로 채워집니다.| 예|
+| `Peer configuration`| 이 필드에서 고유한 `core.yaml` 구성 파일을 붙여넣어 피어의 구성을 사용자 정의할 수 있습니다. 샘플 `core.yaml` 파일을 보려면 [`core.yaml` 샘플 구성 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://github.com/hyperledger/fabric/blob/release-1.4/sampleconfig/core.yaml)을 참조하십시오(**고급 사용자 전용**). | 없음 | 아니오 |
 | `Peer configuration secret(필수)`| {{site.data.keyword.cloud_notm}} Private에 작성한 [피어 구성 시크릿](/docs/services/blockchain/howto/peer_deploy_icp.html#icp-peer-deploy-config-file)의 이름입니다. | 없음 | 예 |
 |`Organization MSP(필수)`| 새 조직 MSPID 값(예: 'org1')을 작성하거나 피어가 일부가 되는 기존 조직 MSP를 지정할 수 있습니다. 순서 지정자 조직을 배치한 경우 피어 MSPID가 순서 지정자 MSPID와 다른지 확인하십시오. 또한 나중에 `CORE_PEER_LOCALMSPID` 및 `configtx.yaml`에 필요하므로 이 값을 기록해 두십시오. | 없음 | 예 |
 |`Peer service type`| 피어에서 [외부 포트 노출![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types) 여부를 지정하는 데 사용됩니다. 포트를 외부적으로 노출하려면(권장됨) NodePort를 선택하고 포트를 노출하지 않으려면 ClusterIP를 선택하십시오. 이 릴리스에서 LoadBalancer 및 ExternalName은 지원되지 않습니다. | NodePort | 예 |
@@ -197,6 +199,14 @@ WVRBbFZUDQpNUlV3RXdZRFZRUUtFd3hFYVdkcFEyVnlkQ0JKYm1NeEp6QWxCZ05WQkFNVEhrUnBa
 | `State database volume claim size`| 사용할 디스크 크기를 선택합니다. | 8Gi | 예 |
 | `CouchDB - Data persistence enabled`| CouchDB 컨테이너의 경우 컨테이너 다시 시작 시 원장 데이터를 사용할 수 있습니다. *선택하지 않으면 장애 복구 또는 팟(Pod) 다시 시작 시 모든 데이터가 유실됩니다.*| 선택됨 | 아니오 |
 | `CouchDB - Use dynamic provisioning`| CouchDB 컨테이너의 경우 Kubernetes 동적 스토리지를 사용합니다.| 선택됨 | 아니오 |
+| `Docker-in-Docker CPU request`| 체인코드가 실행되는 컨테이너에 할당할 최소 CPU 수를 지정합니다. |1 | 예 |
+| `Docker-in-Docker CPU limit`| 체인코드가 실행되는 컨테이너에 할당할 최대 CPU 수를 지정합니다. |2 | 예 |
+| `Docker-in-Docker memory request`| 체인코드가 실행되는 컨테이너에 할당할 최소 메모리 양을 지정합니다. | 1Gi | 예 |
+| `Docker-in-Docker memory limit`| 체인코드가 실행되는 컨테이너에 할당할 최대 메모리 양을 지정합니다. | 4Gi | 예 |
+| `gRPC web proxy CPU request`| gRPC 웹 프록시에 할당할 최소 CPU(millicpus) 수를 지정합니다. | 100m | 예 |
+| `gRPC web proxy CPU limit`| gRPC 웹 프록시에 할당할 최대 CPU(millicpus) 수를 지정합니다. | 200m | 예 |
+| `gRPC web proxy memory request`| gRPC 웹 프록시에 할당할 최소 메모리 크기를 지정합니다. | 100Mi | 예 |
+| `gRPC web proxy memory limit`| gRPC 웹 프록시에 할당할 최대 메모리 크기를 지정합니다. | 200Mi | 예 |
 | `Peer CPU request` | 피어에 할당할 최소 CPU 수입니다. |1 | 예 |
 | `Peer CPU limit` | 피어에 할당할 최대 CPU 수입니다.|2 | 예 |
 | `Peer Memory request` | 피어에 할당할 최소 메모리 크기입니다. | 1Gi | 예 |
@@ -224,7 +234,7 @@ processes. This container has two volume mounts, one for the Peer PVC and the se
 ### Helm 명령행을 사용하여 Helm 릴리스 설치
 {: #icp-peer-deploy-helm-cli}
 
-또는 Helm CLI를 사용하여 `helm` 릴리스를 설치할 수 있습니다. `helm install` 명령을 실행하기 전에 [Helm CLI 환경에 클러스터의 Helm 저장소를 추가![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_int_helm_repo_to_cli.html "Helm CLI에 내부 Helm 저장소 추가")했는지 확인하십시오.
+또는 Helm CLI를 사용하여 `helm` 릴리스를 설치할 수 있습니다. `helm install` 명령을 실행하기 전에 [Helm CLI 환경에 클러스터의 Helm 저장소를 추가![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/app_center/add_int_helm_repo_to_cli.html "Helm CLI에 내부 Helm 저장소 추가")했는지 확인하십시오.
 
 `yaml` 파일을 작성하고 이 파일을 `helm install` 명령에 전달하여 설치에 필요한 매개변수를 설정할 수 있습니다.
 ```

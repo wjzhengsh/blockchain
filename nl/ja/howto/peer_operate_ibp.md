@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -20,7 +20,7 @@ subcollection: blockchain
 # スターター・プランまたはエンタープライズ・プランを使用した {{site.data.keyword.cloud_notm}} Private でのピアの操作
 {: #ibp-peer-operate}
 
-{{site.data.keyword.blockchainfull}} Platform on {{site.data.keyword.cloud_notm}} Private ピアをセットアップした後、ピアでスターター・プランまたはエンタープライズ・プランのネットワークにトランザクションを送信できるようにするには、いくつかの操作ステップを実行する必要があります。 このステップでは、チャネルへの組織の追加、チャネルへのピアの参加、ピアでのチェーンコードのインストール、チャネルでのチェーンコードのインスタンス化、およびピアへのアプリケーションの接続を行います。
+{{site.data.keyword.blockchainfull}} Platform for {{site.data.keyword.cloud_notm}} Private ピアをセットアップした後、ピアでスターター・プランまたはエンタープライズ・プランのネットワークにトランザクションを送信できるようにするには、いくつかの操作ステップを実行する必要があります。 このステップでは、チャネルへの組織の追加、チャネルへのピアの参加、ピアでのチェーンコードのインストール、チャネルでのチェーンコードのインスタンス化、およびピアへのアプリケーションの接続を行います。
 {:shortdesc}
 
 ピアを操作するには、{{site.data.keyword.cloud_notm}} Private クラスターからいくつかの前提条件ステップを実行する必要があります。
@@ -39,7 +39,7 @@ subcollection: blockchain
 推奨されるパスは Fabric SDK ですが、この手順では、SDK の操作に精通していることが前提となっています。 コマンド・ラインを使用する場合は、Fabric ピア・クライアントを使用できます。
 
 <!--
-It is recommended that you deploy at least two instances of the peer Helm chart for [high availability](peer_icp.html#high-availability). Therefore, you need to follow these operations steps once for each peer. When you are ready to invoke and query chaincode from your application, connect to both peers to ensure that your [applications are highly available](../v10_application.html#ha-app).
+It is recommended that you deploy at least two instances of the peer Helm chart for [high availability](peer_icp.html#high-availability). Therefore, you need to follow these operations steps once for each peer. When you are ready to invoke and query chaincode from your application, connect to both peers to ensure that your [applications are highly available](../best_practices.html#best-practices-app-ha-app).
 -->
 
 **注**: {{site.data.keyword.blockchainfull_notm}} Platform ピアには、{{site.data.keyword.blockchainfull_notm}} Platform でホストされるピアのすべての機能およびサポートへのアクセス権限があるわけではありません。 結果として、ネットワーク・モニターを使用して {{site.data.keyword.cloud_notm}} Private 上のピアを操作することはできません。 ピアの実行を開始する前に、必ず[考慮事項と制限](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-about-considerations)を確認してください。
@@ -117,7 +117,7 @@ SDK またはコマンド・ラインのどちらを使用する予定である�
 ### ピアのエンドポイント情報の取得
 {: #ibp-peer-operate-endpoint}
 
-チャネルに参加したり、スマート・コントラクトをインストールしたりするには、SDK または Fabric CA クライアントからピア・エンドポイントをターゲットにする必要があります。 ピアのエンドポイントを見つけるには、{{site.data.keyword.cloud_notm}} Private コンソール UI を使用します。 以下のステップを実行するには、[クラスター管理者 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "クラスター管理者役割とアクション") である必要があります。
+チャネルに参加したり、スマート・コントラクトをインストールしたりするには、SDK または Fabric CA クライアントからピア・エンドポイントをターゲットにする必要があります。 ピアのエンドポイントを見つけるには、{{site.data.keyword.cloud_notm}} Private コンソール UI を使用します。 以下のステップを実行するには、[クラスター管理者 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/user_management/assign_role.html "クラスター管理者役割とアクション") である必要があります。
 
 1. {{site.data.keyword.cloud_notm}} Private コンソールにログインし、左上隅の**「メニュー」**アイコンをクリックします。
 2. **「ワークロード (Workload)」** > **「Helm リリース」**をクリックします。
@@ -155,7 +155,7 @@ SDK またはコマンド・ラインのどちらを使用する予定である�
 ## Fabric SDK を使用したピアの操作
 {: #ibp-peer-operate-operate-with-sdk}
 
-Hyperledger Fabric SDK には強力な API のセットが用意されており、これらの API により、アプリケーションはブロックチェーン・ネットワークと対話したりこれを操作したりすることができます。 サポートされている言語の最新リストおよび Fabric SDK 内で使用可能な API の完全なリストについては、[Hyperledger Fabric SDK コミュニティーの資料 ![外部リンク・アイコン](../images/external_link.svg " 外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/getting_started.html#hyperledger-fabric-sdks "Hyperledger Fabric SDK コミュニティーの資料") を参照してください。 Fabric SDK を使用して、ピアを {{site.data.keyword.blockchainfull_notm}} Platform 上のチャネルに参加させたり、チェーンコードをピアにインストールしたり、チェーンコードをチャネル上でインスタンス化したりできます。
+Hyperledger Fabric SDK には強力な API のセットが用意されており、これらの API により、アプリケーションはブロックチェーン・ネットワークと対話したりこれを操作したりすることができます。 サポートされている言語の最新リストおよび Fabric SDK 内で使用可能な API の完全なリストについては、[Hyperledger Fabric SDK コミュニティーの資料 ![外部リンク・アイコン](../images/external_link.svg " 外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/getting_started.html#hyperledger-fabric-sdks "Hyperledger Fabric SDK コミュニティーの資料") を参照してください。 Fabric SDK を使用して、ピアを {{site.data.keyword.blockchainfull_notm}} Platform 上のチャネルに参加させたり、チェーンコードをピアにインストールしたり、チェーンコードをチャネル上でインスタンス化したりできます。
 
 以下の手順では、[Fabric Node SDK ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://fabric-sdk-node.github.io/ "Fabric Node SDK") を使用してピアを操作するため、事前に SDK に精通していることが前提となっています。 開始前に Node SDK の使用方法を学習するために、およびチェーンコードを呼び出して照会する準備ができたら、ピアを使用してアプリケーションを開発する際のガイドとして、[アプリケーションの開発チュートリアル](/docs/services/blockchain/v10_application.html#dev-app)を使用できます。
 
@@ -165,11 +165,11 @@ Hyperledger Fabric SDK には強力な API のセットが用意されており�
 NPM を使用して [Node SDK ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://fabric-sdk-node.github.io/ "Node SDK") をインストールできます。
 
 ```
-npm install fabric-client@1.2
+npm install fabric-client@1.4.0
 ```
 {:codeblock}
 
-バージョン 1.2 の Node SDK を使用することをお勧めします。
+バージョン 1.4.0 の Node SDK を使用することをお勧めします。
 
 ### ピアを使用するための SDK の準備
 {: #ibp-peer-operate-prepare-node-sdk}
@@ -252,10 +252,10 @@ You need to specify a `ssl-target-name-override` of `<something>.blockchain.com`
 ### Fabric ピア・クライアントのダウンロード
 {: #ibp-peer-operate-download-fabric-client}
 
-ピア・クライアントを入手するには、Hyperledger からすべての Fabric ツール・バイナリーをダウンロードする方法が最も簡単です。 コマンド・ラインでバイナリーをダウンロードするディレクトリーにナビゲートし、次のコマンドを発行して、これらのバイナリーをフェッチします。 [Curl ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/prereqs.html#install-curl "Curl") をインストールしていない場合は、最初にインストールする必要があります。
+ピア・クライアントを入手するには、Hyperledger からすべての Fabric ツール・バイナリーをダウンロードする方法が最も簡単です。 コマンド・ラインでバイナリーをダウンロードするディレクトリーにナビゲートし、次のコマンドを発行して、これらのバイナリーをフェッチします。 [Curl ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/prereqs.html#install-curl "Curl") をインストールしていない場合は、最初にインストールする必要があります。
 
 ```
-curl -sSL http://bit.ly/2ysbOFE | bash -s 1.2.1 1.2.1 -d -s
+curl -sSL http://bit.ly/2ysbOFE | bash -s 1.4.0 1.4.0 -d -s
 ```
 {:codeblock}
 
@@ -333,6 +333,8 @@ tree
 │   └── msp
 │       ├── cacerts
 │       │   └── 9-12-19-115-31873-SampleOrgCA.pem
+│       ├── IssuerPublicKey
+│       ├── IssuerRevocationPublicKey
 │       ├── keystore
 │       │   └── c44ec1e708f84b6d0359f58ce2c9c8a289919ba81f2cf4bb5187c4ad5a43cbb0_sk
 │       └── signcerts
@@ -362,6 +364,8 @@ tree
     └── msp
         ├── cacerts
         │   └── 9-30-250-70-30395-tlsca.pem
+        ├── IssuerPublicKey
+        ├── IssuerRevocationPublicKey
         ├── keystore
         │   └── bd57fa20283dfc76ada83f989ee0f62ce23e98c94dbd26f6cd23202d8084e38e_sk
         ├── signcerts
@@ -492,7 +496,7 @@ CLI コマンドを実行してピアをチャネルに参加させる前に、�
 ### CLI を使用したピアへのチェーンコードのインストール
 {: #ibp-peer-operate-toolcontainer-install-cc}
 
-これで、ピアにチェーンコードをインストールおよびインスタンス化する準備ができました。 これらの手順のために、`fabcar` チェーンコードを `fabric-samples` リポジトリーからインストールします。 [GOPATH の構成 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/dev-setup/devenv.html?highlight=gopath#set-your-gopath "Set your GOPATH") が完了していることを確認してから、次のコマンドを使用して、GitHub から `fabric-samples` をダウンロードします。
+これで、ピアにチェーンコードをインストールおよびインスタンス化する準備ができました。 これらの手順のために、`fabcar` チェーンコードを `fabric-samples` リポジトリーからインストールします。 [GOPATH の構成 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/dev-setup/devenv.html?highlight=gopath#set-your-gopath "Set your GOPATH") が完了していることを確認してから、次のコマンドを使用して、GitHub から `fabric-samples` をダウンロードします。
 
 ```
 cd $GOPATH/src
@@ -534,7 +538,7 @@ peer chaincode instantiate -o ${ORDERER_1} -C ${CHANNEL} -n ${CC_NAME} -v v0 -c 
 2018-07-06 18:43:15.066 UTC [chaincodeCmd] checkChaincodeCmdParams -> INFO 002 Using default vscc
 ```
 
-チェーンコードをインスタンス化した後、チェーンコード照会を使用してコマンドを呼び出し、チャネル台帳に対してデータの読み取りと書き込みを行うことができます。 詳しくは、Hyperledger Fabric の資料で [peer chaincode ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/latest/commands/peerchaincode.html) コマンドを参照してください。 プロキシー IP および外部順序付けプログラム・ポートを使用して、呼び出しコマンドに順序付けプログラム・エンドポイントを渡す必要があります。 ピア・エンドポイントを照会コマンドに渡すだけで済みます。
+チェーンコードをインスタンス化した後、チェーンコード照会を使用してコマンドを呼び出し、チャネル台帳に対してデータの読み取りと書き込みを行うことができます。 詳しくは、Hyperledger Fabric の資料で [peer chaincode ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/peerchaincode.html) コマンドを参照してください。 プロキシー IP および外部順序付けプログラム・ポートを使用して、呼び出しコマンドに順序付けプログラム・エンドポイントを渡す必要があります。 ピア・エンドポイントを照会コマンドに渡すだけで済みます。
 
 ## チェーンコードの更新
 {: #ibp-peer-operate-update-chaincode}
@@ -545,7 +549,7 @@ peer chaincode instantiate -o ${ORDERER_1} -C ${CHANNEL} -n ${CC_NAME} -v v0 -c 
 
 1. 各ピアでチェーンコードを更新するには、クライアント・アプリケーションまたは CLI コマンドを使用して、チェーンコードをピアにインストールする際に使用した処理を再実行するだけです。 必ず、当初使用したものと同じチェーンコード名を指定してください。 ただし、今回は、チェーンコードの `Version` を増分します。 すべてのピアで、同じチェーンコード名とバージョンを使用する必要があります。
 
-2. チャネル内のすべてのピアに新しいチェーンコードをインストールした後、ネットワーク・モニターまたは [peer chaincode upgrade ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/peerchaincode.html#peer-chaincode-upgrade) コマンドを使用して、新しいチェーンコードを使用するようにチャネルを更新します。
+2. チャネル内のすべてのピアに新しいチェーンコードをインストールした後、ネットワーク・モニターまたは [peer chaincode upgrade ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/peerchaincode.html#peer-chaincode-upgrade) コマンドを使用して、新しいチェーンコードを使用するようにチャネルを更新します。
 
 ネットワーク・モニターの「コードのインストール」パネルを使用してチェーンコードをチャネルで更新する方法について詳しくは、これらの[手順](/docs/services/blockchain/howto/install_instantiate_chaincode.html#install-instantiate-chaincode-update-cc)のステップ 2 を参照してください。
 
@@ -570,7 +574,7 @@ peer chaincode instantiate -o ${ORDERER_1} -C ${CHANNEL} -n ${CC_NAME} -v v0 -c 
 
   `kubectl logs` コマンドについて詳しくは、[Kubernetes の資料 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs “Getting Started”) を参照してください。
 
-- または、[{{site.data.keyword.cloud_notm}} Private クラスター管理コンソール](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/troubleshoot/events.html)を使用してログにアクセスすることもできます。この場合、ログは Kibana で開きます。
+- または、[{{site.data.keyword.cloud_notm}} Private クラスター管理コンソール](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/troubleshoot/events.html)を使用してログにアクセスすることもできます。この場合、ログは Kibana で開きます。
 
    **注:** Kibana でログを表示する場合、`「No results found」`という応答を受け取ることがあります。 この状態は、{{site.data.keyword.cloud_notm}} Private がワーカー・ノードの IP アドレスをそのホスト名として使用する場合に起こることがあります。 この問題を解決するには、パネルの上部で `node.hostname.keyword` で始まるフィルターを削除すると、ログが表示されるようになります。
 
@@ -596,13 +600,13 @@ Error: Error endorsing invoke: rpc error: code = Unknown desc = error executing 
 このエラーは、スターター・プランまたはエンタープライズ・プランで実行中のピア上でネットワーク・モニター UI を使用してチェーンコードをインストールおよびインスタンス化した後、{{site.data.keyword.cloud_notm}} Private で実行中のピア上にチェーンコードをインストールすると、発生する可能性があります。 このエラーは、`invoke` 要求時に、生成されるピア上のチェーンコード・パスが異なるために発生します。
 
 **解決策:**
-{{site.data.keyword.cloud_notm}} (スターター・プランやエンタープライズ・プランなど) と {{site.data.keyword.cloud_notm}} Private の両方で、チェーンコードをピア上で実行する場合は、チェーンコードのインストールにネットワーク・モニター UI を使用しないでください。 代わりに、[`peer chaincode package `![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/peerchaincode.html?highlight=peer%20chaincode%20package#peer-chaincode-package) コマンドを使用してチェーンコードをパッケージ化してから、[`peer chaincode install`](/docs/services/blockchain/howto/peer_operate_ibp.html#ibp-peer-operate-toolcontainer-install-cc) コマンドを実行して、すべてのピア上にこのパッケージをインストールします。
+{{site.data.keyword.cloud_notm}} (スターター・プランやエンタープライズ・プランなど) と {{site.data.keyword.cloud_notm}} Private の両方で、チェーンコードをピア上で実行する場合は、チェーンコードのインストールにネットワーク・モニター UI を使用しないでください。 代わりに、[`peer chaincode package `![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/peerchaincode.html?highlight=peer%20chaincode%20package#peer-chaincode-package) コマンドを使用してチェーンコードをパッケージ化してから、[`peer chaincode install`](/docs/services/blockchain/howto/peer_operate_ibp.html#ibp-peer-operate-toolcontainer-install-cc) コマンドを実行して、すべてのピア上にこのパッケージをインストールします。
 
 チェーンコードが既にチャネル上でインストールおよびインスタンス化されている場合は、{{site.data.keyword.cloud_notm}} Private ピア上にチェーンコードをインストールしようとする前に、以下のステップを実行して問題を回避する必要があります。
 
-1. [`peer chaincode package `![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/peerchaincode.html?highlight=peer%20chaincode%20package#peer-chaincode-package) コマンドを使用して、チェーンコードをパッケージ化します。
+1. [`peer chaincode package `![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/peerchaincode.html?highlight=peer%20chaincode%20package#peer-chaincode-package) コマンドを使用して、チェーンコードをパッケージ化します。
 2. `peer chaincode install` コマンドを実行して、{{site.data.keyword.cloud_notm}} Private で実行中のピア上にチェーンコード・パッケージをインストールします。
-3. プラットフォーム固有のバイナリーが存在する場合は、[`peer chaincode upgrade `![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン ")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/peerchaincode.html?highlight=peer%20chaincode%20package#peer-chaincode-upgrade) コマンドを実行して、チェーンコード・パッケージを使用する、スターター・プランまたはエンタープライズ・プランのピアで実行中のチェーンコードをアップグレードできます。
+3. プラットフォーム固有のバイナリーが存在する場合は、[`peer chaincode upgrade `![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン ")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/peerchaincode.html?highlight=peer%20chaincode%20package#peer-chaincode-upgrade) コマンドを実行して、チェーンコード・パッケージを使用する、スターター・プランまたはエンタープライズ・プランのピアで実行中のチェーンコードをアップグレードできます。
 4. ネットワーク・モニター UI または CLI のいずれかを使用して、チャネル上に新しくインストールされたチェーンコードをインスタンス化します。
 
-チェーンコードをアップグレードするためのプロセスについては、Hyperledger Fabric の資料の [`Chaincode for Operators `![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/chaincode4noah.html) も参照してください。
+チェーンコードをアップグレードするためのプロセスについては、Hyperledger Fabric の資料の [`Chaincode for Operators `![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/chaincode4noah.html) も参照してください。

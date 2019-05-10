@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-03-20"
 
 subcollection: blockchain
 
@@ -58,7 +58,7 @@ Utilisez le [modèle de démarrage rapide AWS ![Icône de lien externe](../image
 
 Pour plus de détails sur le déploiement de {{site.data.keyword.blockchainfull_notm}} Platform for AWS, voir [Déploiement d'homologues dans Amazon Web Services](/docs/services/blockchain/howto/remote_peer_aws.html#remote-peer-aws).
 
-Le diagramme suivant décrit le processus de déploiement d'un homologue {{site.data.keyword.blockchainfull_notm}} Platform for AWS.
+Le diagramme cliquable suivant décrit le processus de déploiement d'un homologue {{site.data.keyword.blockchainfull_notm}} Platform for AWS. Vous pouvez cliquer sur chaque étape pour afficher les instructions détaillées.
 
 <img usemap="#home_map1" border="0" class="image" id="image_ztx_crb_f1b2" src="../images/remote_peer_AWS_flow.png" width="750" alt="Cliquez sur une zone pour afficher davantage de détails sur le processus." style="width:750px;" />
 <map name="home_map1" id="home_map1">
@@ -124,7 +124,7 @@ A l'avenir, la nouvelle technologie dans Hyperledger Fabric améliorera la capac
 
 - Une preuve ZKP (Zero-Knowledge Proof) permet à un “approbateur” de garantir à un “vérificateur” qu'ils ont la connaissance d'une valeur confidentielle sans révéler la valeur confidentielle elle-même. Il s'agit d'un moyen de montrer que vous savez quelque chose qui répond à une instruction sans afficher ce que vous savez.
 
-Vous trouverez davantage d'informations sur ces technologies dans le livre blanc sur les [transactions privées et confidentielles avec Hyperledger Fabric ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://www.ibm.com/developerworks/cloud/library/cl-blockchain-private-confidential-transactions-hyperledger-fabric-zero-knowledge-proof/index.html "Transactions privées et confidentielles avec Hyperledger Fabric").
+Vous trouverez davantage d'informations sur ces technologies dans le livre blanc sur les [transactions privées et confidentielles avec Hyperledger Fabric ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://developer.ibm.com/tutorials/cl-blockchain-private-confidential-transactions-hyperledger-fabric-zero-knowledge-proof/ "Transactions privées et confidentielles avec Hyperledger Fabric").
 
 ## Support
 {: #remote-peer-aws-about-support}

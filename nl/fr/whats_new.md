@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -19,6 +19,15 @@ subcollection: blockchain
 
 # Nouveautés
 {: #whats-new}
+
+## 23 avril 2019
+{: #whats-new-4-17-2019}
+
+{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private présente la version 1.0.2, qui utilise la base de code Hyperledger Fabric version 1.4.0 et prend en charge le déploiement sur {{site.data.keyword.cloud_notm}} Private version 3.1.2.
+
+Si vous voulez mettre à niveau votre version existante de {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private vers la version 1.0.2, voir [Mise à niveau de la charte Helm sur {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/howto/helm_install_icp.html#helm-install-upgrading).
+
+Pour plus d'informations sur Hyperledger Fabric version 1.4.0, consultez la [documentation Hyperledger Fabric ![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/ "Documentation Hyperledger Fabric version 1.4"). Pour plus d'informations sur {{site.data.keyword.cloud_notm}} Private, consultez la [documentation {{site.data.keyword.cloud_notm}} Private version 3.1.2 ![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/kc_welcome_containers.html "{{site.data.keyword.cloud_notm}} Private v3.1.2 documentation").
 
 ## 8 Février 2019
 {: #whats-new-2-08-2019}
@@ -78,7 +87,7 @@ Cette édition introduit également des améliorations apportées à la table de
 
 {{site.data.keyword.blockchainfull_notm}} Platform présente {{site.data.keyword.blockchainfull_notm}} Platform for Amazon Web Services (AWS).
 
-{{site.data.keyword.blockchainfull_notm}} Platform for AWS vous permet d'exécuter des homologues dans le cloud AWS et de connecter les homologues à des réseaux de blockchain existants dans {{site.data.keyword.cloud_notm}}. Vos homologues dans AWS peuvent optimiser le profil de connexion et d'autres composants de blockchain des réseaux existants, tout en vous offrant davantage de souplesse pour colocaliser vos homologues avec d'autres applications situées à l'extérieur de {{site.data.keyword.cloud_notm}}. Pour plus d'informations, voir  [A propos de {{site.data.keyword.blockchainfull_notm}} Platform pour Amazon Web Services](/docs/services/blockchain/howto/remote_peer_aws.html#remote-peer-aws).
+{{site.data.keyword.blockchainfull_notm}} Platform for AWS vous permet d'exécuter des homologues dans le cloud AWS et de connecter les homologues à des réseaux de blockchain existants dans {{site.data.keyword.cloud_notm}}. Vos homologues dans AWS peuvent optimiser le profil de connexion et d'autres composants de blockchain des réseaux existants, tout en vous offrant davantage de souplesse pour colocaliser vos homologues avec d'autres applications situées à l'extérieur de {{site.data.keyword.cloud_notm}}. Pour plus d'informations, voir [A propos de {{site.data.keyword.blockchainfull_notm}} Platform pour Amazon Web Services](/docs/services/blockchain/howto/remote_peer_aws.html#remote-peer-aws).
 /docs/services/blockchain/howto/remote_peer_aws.html#remote-peer-aws
 
 ## 4 octobre 2018

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-17"
 
 subcollection: blockchain
 
@@ -60,13 +60,13 @@ subcollection: blockchain
 {{site.data.keyword.blockchainfull_notm}} Platform으로 시작하는 방법에 관한 가이드라인을 제공합니다. 왼쪽 네비게이터에서 해당 주제를 찾거나 맨 위에 있는 검색 기능으로 용어를 검색할 수 있습니다.
 
 **{{site.data.keyword.IBM_notm}} dWAnswers**
-  [{{site.data.keyword.IBM_notm}} dWAnswers ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://developer.ibm.com/answers/smartspace/blockchain/ "블록체인 영역의 질문과 답변")는 {{site.data.keyword.IBM_notm}}의 전문가가 모니터링하는 {{site.data.keyword.blockchainfull_notm}} Platform과 Hyperledger Fabric 사용자를 위한 커뮤니티 포럼입니다. 이전 질문에 대한 답변을 검색하거나 새 질문을 제출할 수 있습니다. 새 질문에 키워드 **blockchain**을 포함하십시오.
+  [{{site.data.keyword.IBM_notm}} dWAnswers ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://developer.ibm.com/answers/smartspace/blockchain/index.html "블록체인 영역의 질문과 답변")는 {{site.data.keyword.IBM_notm}}의 전문가가 모니터링하는 {{site.data.keyword.blockchainfull_notm}} Platform과 Hyperledger Fabric 사용자를 위한 커뮤니티 포럼입니다. 이전 질문에 대한 답변을 검색하거나 새 질문을 제출할 수 있습니다. 새 질문에 키워드 **blockchain**을 포함하십시오.
 
 **샘플 애플리케이션**
 **Blockchain 샘플 애플리케이션** 아래의 [샘플 애플리케이션![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://github.com/ibm-blockchain "IBM Blockchain 샘플 애플리케이션")은 애플리케이션 개발을 지원하는 안내 및 샘플 코드 스니펫을 제공합니다.
 
 **Hyperledger Fabric 리소스**
-[Hyperledger Fabric 문서 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/latest/ "Hyperledger Fabric"), [Fabric 커뮤니티 위키 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://wiki.hyperledger.org/projects/fabric "Fabric 커뮤니티 위키") 및 [Fabric Jira 대시보드 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://jira.hyperledger.org/secure/Dashboard.jspa?selectPageId=10104 "Fabric Jira 대시보드")는 Fabric 스택에 대한 자세한 정보를 제공합니다.
+[Hyperledger Fabric 문서 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/ "Hyperledger Fabric"), [Fabric 커뮤니티 위키 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://wiki.hyperledger.org/projects/fabric "Fabric 커뮤니티 위키") 및 [Fabric Jira 대시보드 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://jira.hyperledger.org/secure/Dashboard.jspa?selectPageId=10104 "Fabric Jira 대시보드")는 Fabric 스택에 대한 자세한 정보를 제공합니다.
 
   [Rocket.Chat ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://chat.hyperledger.org/channel/fabric "Fabric Rocket.Chat 채널")에서 Fabric 전문가와 상담하여 Fabric에 대한 질문에 답변을 얻을 수도 있습니다.
 
@@ -76,7 +76,7 @@ subcollection: blockchain
 ## 지원 케이스 제출
 {: #blockchain-support-cases}
 
-스타터 또는 엔터프라이즈 플랜과 관련된 문제의 경우 [{{site.data.keyword.cloud_notm}} 서비스 포털 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://ibm.biz/ibmcloudsupport "IBM Cloud 서비스 포털")에서 지원 케이스를 제출할 수 있습니다.
+스타터 또는 엔터프라이즈 플랜과 관련된 문제의 경우 [{{site.data.keyword.cloud_notm}} 서비스 포털 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://cloud.ibm.com/unifiedsupport/supportcenter "지원")에서 지원 케이스를 제출할 수 있습니다.
 
 Hyperledger Fabric 체인코드, Hyperledger Composer 또는 애플리케이션에 관한 도움말이 필요하면 위의 커뮤니티 리소스를 사용하거나 [{{site.data.keyword.blockchainfull_notm}} 서비스 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/blockchain/services "블록체인 전략을 {{site.data.keyword.blockchainfull_notm}} 서비스를 통해 비즈니스 성과로 전환")를 이용하십시오. 데모와 PoC(Proofs of Concept)를 위해서만 Hyperledger Composer 사용을 권장합니다. {{site.data.keyword.IBM_notm}}은 Composer CLI, JavaScript API, REST 서버 및 웹 플레이그라운드를 포함하여 프로덕션에서 Hyperledger Composer를 사용하는 네트워크를 지원하지 않습니다.
 {:note}
@@ -89,11 +89,11 @@ Hyperledger Fabric 체인코드, Hyperledger Composer 또는 애플리케이션�
 **베타 오퍼링**은 일반적으로 사용 가능한 릴리스보다 제한된 자원을 제공합니다.
 - 지원 케이스는 낮은 심각도 레벨(일반적으로 Sev-4 또는 Sev-3)에 등록됩니다.
 - 지원은 5x24 기반으로 제공됩니다. 주말 지원은 제공되지 않습니다.
-- 자세한 정보는 [베타 서비스에 대한 {{site.data.keyword.cloud_notm}} 지원](https://cloud.ibm.com/docs/get-support/servicessupport.html#support-different-services "{{site.data.keyword.IBM_notm}} 베타 서비스")을 참조하십시오. 
+- 자세한 정보는 [베타 서비스에 대한 {{site.data.keyword.cloud_notm}} 지원](https://cloud.ibm.com/docs/get-support/servicessupport.html#support-different-services "{{site.data.keyword.IBM_notm}} 베타 서비스")을 참조하십시오.
 
 지원 케이스를 제출하려면 다음 단계를 수행하십시오.
 
-1. {{site.data.keyword.IBM_notm}} ID로 [{{site.data.keyword.cloud_notm}} 서비스 포털 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://ibm.biz/ibmcloudsupport "IBM Cloud 서비스 포털")에 로그인하십시오.
+1. {{site.data.keyword.IBM_notm}} ID로 [{{site.data.keyword.cloud_notm}} 서비스 포털 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://cloud.ibm.com/unifiedsupport/supportcenter "지원")에 로그인하십시오.
 2. 페이지의 오른쪽에 있는 **더 많은 지원이 필요하십니까?** 아래에서 **케이스 작성**을 클릭하십시오.
 3. 다음 필드에 대해 적어도 사용자 정보로 **케이스 작성** 양식을 채우십시오.
   - 케이스 유형으로 **기술**을 선택하십시오.

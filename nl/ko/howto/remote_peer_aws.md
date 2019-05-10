@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-03-20"
 
 subcollection: blockchain
 
@@ -364,7 +364,7 @@ AWS에 피어가 설정된 후 트랜잭션을 제출하고 블록체인 네트�
 {: #remote-peer-aws-high-availability}
 
 기본적으로 빠른 시작 템플리트는 HA 지원을 위해 서로 다른 두 개의 가용성 구역에 두 개의 피어 인스턴스를 배치합니다.
-이 HA 지원을 활용하려면 [고가용성을 위한 클라이언트 애플리케이션](/docs/services/blockchain/v10_application.html#dev-app-ha-app)도 구성해야 합니다.
+이 HA 지원을 활용하려면 [고가용성을 위한 클라이언트 애플리케이션](/docs/services/blockchain/best_practices.html#best-practices-app-ha-app)도 구성해야 합니다.
 
 ## 보안 고려사항
 {: #remote-peer-aws-security}

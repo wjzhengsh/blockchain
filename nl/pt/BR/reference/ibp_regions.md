@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-03"
 
 subcollection: blockchain
 
@@ -35,6 +35,7 @@ A Tabela 1 e a Figura 1 mostram as regiões e os locais do {{site.data.keyword.c
 | Tóquio |  | S |
 | Frankfurt |  | S |
 | Sydney | S |  |
+| Melbourne |  | S |
 | São Paulo |  | S |
 | Toronto |  | S |
 

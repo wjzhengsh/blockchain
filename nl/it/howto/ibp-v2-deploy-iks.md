@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -20,12 +20,12 @@ subcollection: blockchain
 # Introduzione a {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta
 {: #ibp-v2-deploy-iks}
 
-{{site.data.keyword.blockchainfull}} Platform 2.0 è una release beta gratuita che include la console {{site.data.keyword.blockchainfull_notm}} Platform, una GUI che può semplificare e accelerare le operazioni da te eseguite per distribuire e gestire i componenti blockchain. Questa esercitazione descrive come iniziare a lavorare con {{site.data.keyword.blockchainfull_notm}} Platform 2.0 e utilizzare la console per distribuire e gestire componenti blockchain nel tuo cluster del servizio {{site.data.keyword.IBM_notm}} Kubernetes su {{site.data.keyword.cloud_notm}}.
+{{site.data.keyword.blockchainfull}} Platform 2.0 è una release beta gratuita che include la console {{site.data.keyword.blockchainfull_notm}} Platform, una GUI che può semplificare e accelerare le operazioni da te eseguite per distribuire e gestire i componenti blockchain. Questa esercitazione descrive come iniziare a lavorare con {{site.data.keyword.blockchainfull_notm}} Platform 2.0 e utilizzare la console per distribuire e gestire componenti blockchain nel tuo cluster {{site.data.keyword.cloud_notm}} Kubernetes Service su {{site.data.keyword.cloud_notm}}. Per ulteriori informazioni su Kubernetes e sul servizio {{site.data.keyword.cloud_notm}} Kubernetes, vedi [Kubernetes](/docs/services/blockchain/reference/k8s.html "Kubernetes").
 {:shortdesc}
 
-**Gruppi di destinatari:** questo argomento è pensato per gli amministratori del sistema che sono responsabili della configurazione di un cluster Kubernetes in {{site.data.keyword.IBM_notm}} e per la distribuzione di {{site.data.keyword.blockchainfull_notm}} Platform.
+**Gruppi di destinatari:** questo argomento è pensato per gli amministratori del sistema che sono responsabili della configurazione di un cluster Kubernetes su {{site.data.keyword.cloud_notm}} e per la distribuzione di {{site.data.keyword.blockchainfull_notm}} Platform.
 
- Dopo che hai distribuito {{site.data.keyword.blockchainfull}} Platform al tuo cluster Kubernetes, puoi avviare la console per creare e gestire i tuoi componenti blockchain. Utilizzando un cluster del servizio {{site.data.keyword.IBM_notm}} Kubernetes per distribuire {{site.data.keyword.blockchainfull_notm}} Platform 2.0, riscontri i seguenti importanti vantaggi:
+Dopo aver collegato {{site.data.keyword.blockchainfull_notm}} Platform al tuo cluster Kubernetes {{site.data.keyword.cloud_notm}}, puoi avviare la console per creare e gestire i tuoi componenti blockchain. Utilizzando un cluster Kubernetes Service per distribuire {{site.data.keyword.blockchainfull_notm}} Platform 2.0, riscontri i seguenti importanti vantaggi:
 
 - **Controllo:** controlli e gestisci i tuoi certificati e i tuoi componenti blockchain da una singola console centrale. Distribuisci solo i componenti necessari per la tua attività di business e ne aggiungi altri man mano che le tue esigenze aumentano.
 - **Distribuzione basata su Kubernetes flessibile:** puoi avvalerti delle opzioni di calcolo (CPU, memoria, archiviazione) per il tuo cluster Kubernetes e sfruttare le opzioni HA e DR integrate.
@@ -58,14 +58,15 @@ Guarda il seguente video per saperne di più su {{site.data.keyword.blockchainfu
 
 Prima di cominciare:
 
-- Assicurati di avere un [account a pagamento {{site.data.keyword.cloud_notm}} ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://console.cloud.ibm.com/catalog/services/blockchain "Catalogo"). Se non hai un account:
-1. Fai clic sul pulsante **Registrazione**.
-2. Dopo aver creato un account gratuito, aggiornalo a un tipo **Pagamento a consumo** andando in **Gestisci** > **Fatturazione e utilizzo** > **Fatturazione** nella console {{site.data.keyword.cloud_notm}} e facendo clic su **Aggiungi carta di credito**.
+- Assicurati di avere un [account a pagamento {{site.data.keyword.cloud_notm}} ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://cloud.ibm.com/catalog/services/blockchain "Catalogo"). Se non hai un account:
+   1. Fai clic sul pulsante **Registrazione**.
+   2. Dopo aver creato un account gratuito, aggiornalo a un tipo **Pagamento a consumo** andando in **Gestisci** > **Fatturazione e utilizzo** > **Fatturazione** nella console {{site.data.keyword.cloud_notm}} e facendo clic su **Aggiungi carta di credito**.
+   3. Assicurati che l'utente abbia entrambi i ruoli di Amministratore e Gestore per il cluster Kubernetes a cui collegherà la sua istanza del servizio blockchain. Per ulteriori informazioni, vedi la seguente procedura su [come assegnare i ruoli di accesso Kubernetes](#ibp-v2-deploy-iks-k8x-access-roles).
 
 Quando intendi utilizzare l'istanza del servizio nel contesto di una più ampia soluzione a livello dell'organizzazione, si consiglia che le organizzazioni partecipanti utilizzino un indirizzo email funzionale per creare la loro rete. In questo caso, l'accesso alla rete non dipende dalla disponibilità di alcun singolo utente.
 {:tip}  
 
-- Se intendi utilizzare un cluster del servizio {{site.data.keyword.cloud_notm}} Kubernetes esistente, controlla la versione di Kubernetes ed eseguine l'upgrade alla versione 1.11 o successiva, se necessario. Per ulteriori informazioni su come determinare quale sia la versione di Kubernetes che il tuo cluster sta eseguendo e su come eseguire un upgrade della versione, vedi [Aggiornamento della versione di Kubernetes del tuo cluster](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks-updating-kubernetes).
+- Se intendi utilizzare un cluster {{site.data.keyword.cloud_notm}} Kubernetes Service esistente, controlla la versione di Kubernetes ed eseguine l'upgrade alla versione 1.11 o successiva, se necessario. Per ulteriori informazioni su come determinare quale sia la versione di Kubernetes che il tuo cluster sta eseguendo e su come eseguire un upgrade della versione, vedi [Aggiornamento della versione di Kubernetes del tuo cluster](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks-updating-kubernetes).
 
 ### Browser
 {: #ibp-v2-deploy-iks-browsers}
@@ -74,26 +75,49 @@ Il seguente elenco specifica il software browser richiesto minimo per la console
 - Chrome: la versione più recente per il tuo sistema operativo
 - Firefox: le versioni regolari (non ESR) più recenti per il tuo sistema operativo
 - Safari: la versione più recente per Mac
+- Edge: v44.17763.1.0 o superiore
 
 ### Risorse richieste
 {: #ibp-v2-deploy-iks-resources-required}
 
-Per distribuire la console {{site.data.keyword.blockchainfull_notm}} Platform in un cluster del servizio {{site.data.keyword.cloud_notm}} Kubernetes, devi assicurarti che il tuo cluster Kubernetes soddisfi i requisiti minimi relativi alle risorse hardware:
+#### Cluster gratuiti
+{: #ibp-v2-deploy-iks-resources-required-free}
+
+Per distribuire la console {{site.data.keyword.blockchainfull_notm}} Platform in un cluster {{site.data.keyword.cloud_notm}} Kubernetes Service, devi assicurarti che il tuo cluster Kubernetes soddisfi i requisiti minimi relativi alle risorse hardware:
 
 |Tipo di cluster Kubernetes | Caso di utilizzo | CPU | RAM | Nodi di lavoro |
 |-----------|------|-----|-----------------------|
 |Standard (consigliato) | Adatto per MVP | 4 (condivisa) | 16 GB (condivisa)|multipli|
 |Gratuito | Adatto per la valutazione | 2 | 4 GB | 1 |  
 
-Queste risorse sono sufficienti per l'esecuzione di test e la sperimentazione. Se utilizzi un cluster Kubernetes gratuito, tieni presente che il cluster verrà eliminato dopo il periodo di prova di 30 giorni e tutti gli asset associati verranno rimossi. Le prestazioni sono significativamente più lente in un cluster gratuito.
+Queste risorse sono sufficienti per l'esecuzione di test e la sperimentazione. L'[esercitazione Crea una rete](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network), in cui hai creato due peer, due CA e un ordinante, richiede circa 1,1 CPU, consentendo del margine aggiuntivo per scopi di test (ad esempio creando diversi canali, ciascuno dei quali con un libro mastro distinto). Se utilizzi un cluster Kubernetes gratuito, tieni presente che il cluster verrà eliminato dopo il periodo di prova di 30 giorni e tutti gli asset associati verranno rimossi. Inoltre, le prestazioni sono significativamente più lente in un cluster gratuito.
 {:note}
+
+#### Cluster a pagamento
+{: #ibp-v2-deploy-iks-resources-required-paid}
+
+Le distribuzioni a livello di produzione di {{site.data.keyword.blockchainfull_notm}} Platform saranno distribuite a un cluster a pagamento del servizio {{site.data.keyword.cloud_notm}} Kubernetes. La dimensione e la configurazione di questo cluster dipenderanno dalle esigenze del tuo specifico caso d'uso. Le distribuzioni più grandi dovranno necessariamente essere distribuite su cluster più grandi. Sta a te decidere di quanto il tuo cluster debba essere più grande della tua distribuzione prevista. È opportuno avere almeno un po' di margine poiché consentirà ai peer e agli ordinanti di unirsi ad ulteriori canali e assumersi una velocità effettiva maggiore senza dover distribuire ulteriori risorse nel tuo cluster Kubernetes **prima** di regolare la dimensione dei tuoi nodi. Per ulteriori informazioni su come vengono regolati questi valori, vedi [Riallocazione di risorse](/docs/services/blockchain/howto/ibp-console-govern.html#ibp-console-govern-reallocate-resources).
+
+La creazione di una distribuzione iniziale di dimensioni sufficienti per consentire la crescita è particolarmente importante per gli utenti che sceglieranno di non utilizzare il [programma di ridimensionamento automatico del servizio {{site.data.keyword.cloud_notm}} Kubernetes ![Icona link esterno](../images/external_link.svg "Icona link esterno")](/docs/containers?topic=containers-ca#ca "{{site.data.keyword.cloud_notm}} Kubernetes - programma di ridimensionamento automatico offerto dal servizio"), che si può assumere una parte del carico derivante dalla distribuzione di ulteriori nodi e pod per l'utente.
+
+Se da una parte è più semplice avere abbastanza risorse distribuite al servizio {{site.data.keyword.cloud_notm}} Kubernetes e poter espandere i tuoi pod e nodi di lavoro come ritieni adatto senza dover prima aumentare la tua distribuzione cluster Kubernetes, dall'altra è vero che delle distribuzioni cluster Kubernetes più grandi costeranno di più. Gli utenti dovranno valutare con attenzione le loro opzioni e riconoscere i compromessi che stanno facendo indipendentemente dall'opzione che scelgono.
+
+Per avere un'idea di che quantità di archiviazione e calcolo avrai bisogno nel tuo cluster, fai riferimento a questo grafico, che contiene i valori predefiniti correnti per peer, ordinante e CA:
+
+| **Componente** (tutti i contenitori) | CPU (in millicpu) | CPU (in CPU) | Memoria (in megabyte) | Memoria (in gigabyte) | Archiviazione (in gigabyte) |
+|--------------------------------|--------------------|---------------|-----------------------|-----------------------|------------------------|
+| **Peer**                       | 1100               | 1,1           | 2200                  | 2,2                   | 200                    |
+| **CA**                         | 300                | .3            | 600                   | .6                    | 10                     |
+| **Ordinante**                  | 450                | .45           | 900                   | .9                    | 100                    |
+
+
 
 ## Fase uno: Crea un'istanza del servizio in {{site.data.keyword.cloud_notm}}
 {: #ibp-v2-deploy-iks-create-service-instance}
 
 Utilizza la seguente procedura per creare un'istanza del servizio di {{site.data.keyword.blockchainfull_notm}} Platform 2.0 su {{site.data.keyword.cloud_notm}}.
 
-1. Individua il [servizio blockchain ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://console.cloud.ibm.com/catalog/services/blockchain) nel catalogo {{site.data.keyword.cloud_notm}} oppure cerca `Blockchain` nella tua pagina del catalogo {{site.data.keyword.cloud_notm}}.
+1. Individua il [servizio blockchain ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://cloud.ibm.com/catalog/services/blockchain) nel catalogo {{site.data.keyword.cloud_notm}} oppure cerca `Blockchain` nella tua pagina del catalogo {{site.data.keyword.cloud_notm}}.
 2. Puoi, facoltativamente, rinominare il **Nome servizio** per la tua istanza in modo che tu possa riconoscerla facilmente in futuro.
 3. Per Beta, **Dallas** è la sola regione disponibile e non può essere modificata.
 4. Puoi lasciare i campi relativi alle tag e ai gruppi di risorse invariate.
@@ -104,12 +128,12 @@ Utilizza la seguente procedura per creare un'istanza del servizio di {{site.data
 
 Puoi attenerti alle istruzioni per distribuire {{site.data.keyword.blockchainfull_notm}} Platform 2.0 immediatamente dopo che hai creato l'istanza del servizio.
 
-1. Il passo **Benvenuti e prerequisiti**. Se già hai un cluster del servizio {{site.data.keyword.IBM_notm}} Kubernetes esistente nella regione **Dallas** e vuoi utilizzarlo per il tuo servizio blockchain, seleziona la casella di spunta. **Se utilizzi un cluster esistente, puoi saltare il prossimo passo; ma assicurati che la versione Kubernetes sia alla v1.11 o successiva**. Fai clic su **Continua**.
-2. Il passo **Crea cluster**. Se selezioni la casella di spunta nel passo 1 per utilizzare un cluster Kubernetes esistente, questo passo viene tralasciato. Altrimenti, fai clic su **Crea un nuovo cluster**, che avvia il dashboard Kubernetes {{site.data.keyword.cloud_notm}} per creare un cluster. Per ulteriori informazioni, vedi [Introduzione al servizio {{site.data.keyword.cloud_notm}} Kubernetes ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://cloud.ibm.com/docs/containers/container_index.html). Prevedi del tempo supplementare per il completamento di questo processo.
+1. Il passo **Benvenuti e prerequisiti**. Se già hai un cluster {{site.data.keyword.IBM_notm}} Kubernetes Service esistente nella regione **Dallas** e vuoi utilizzarlo per il tuo servizio blockchain, seleziona la casella di spunta. **Se utilizzi un cluster esistente, puoi saltare il prossimo passo; ma assicurati che la versione Kubernetes sia alla v1.11 o successiva**. Fai clic su **Continua**.
+2. Il passo **Crea cluster**. Se selezioni la casella di spunta nel passo 1 per utilizzare un cluster Kubernetes esistente, questo passo viene tralasciato. Altrimenti, fai clic su **Crea un nuovo cluster**, che avvia il dashboard Kubernetes {{site.data.keyword.cloud_notm}} per creare un cluster. Per ulteriori informazioni, vedi [Introduzione al servizio {{site.data.keyword.cloud_notm}} Kubernetes ![Icona link esterno](../images/external_link.svg "Icona link esterno")](/docs/containers/container_index.html). Prevedi del tempo supplementare per il completamento di questo processo.
   - Indipendentemente dal tipo di cluster che scegli, devi selezionare l'ubicazione del cluster Kubernetes di **Dallas** per la release Beta.
-  - Scegli **Cluster standard (consigliato):**  se hai bisogno di un'opzione a più lungo termine che include più nodi per l'elevata disponibilità e che può essere migrata dall'offerta Beta all'offerta GA quando è disponibile. **Assicurati di scegliere la versione Kubernetes v1.11 o successiva.**
-  - Scegli **Cluster gratuito.** se intendi utilizzare il cluster per meno di 30 giorni. **Nota** che non è possibile eseguire la migrazione da un cluster gratuito a un cluster a pagamento. Il tipo di cluster gratuito offre un'archiviazione e una velocità effettiva delle transazioni limitate.
-  - Per ulteriori informazioni sulle differenze tra i cluster Kubernetes gratuito e a pagamento su {{site.data.keyword.cloud_notm}}, vedi [Confronto tra i cluster standard e gratuito![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://console.cloud.ibm.com/docs/containers?topic=containers-cluster_types#cluster_types "Confronto tra i cluster standard e gratuito").  
+  - Scegli **Cluster standard (consigliato)** se hai bisogno di un'opzione a più lungo termine che include più nodi per l'alta disponibilità. **Assicurati di scegliere la versione Kubernetes v1.11 o successiva.** Per distribuire un cluster a pagamento, vedi il documento relativo alla [creazione di un cluster standard ![Icona link esterno](../images/external_link.svg "Icona link esterno")](/docs/containers?topic=containers-clusters#clusters_ui_standard "Creazione di un cluster standard"). Nota: se desideri l'alta disponibilità o il ripristino di emergenza, dovrai prendere una decisione in merito alla classe di archiviazione che stai utilizzando. La classe di archiviazione predefinita (`default`) sul cluster verrà utilizzata dal provisioning dinamico. Quindi, i clienti possono impostare qualsiasi classe di archiviazione come quella predefinita. Per ulteriori informazioni, vedi [Decisioni relative alla configurazione dell'archiviazione file![Icona link esterno](../images/external_link.svg "Icona link esterno")](/docs/containers?topic=containers-file_storage#file_predefined_storageclass "Decisioni relative alla configurazione dell'archiviazione file").
+  - Scegli **Cluster gratuito.** se intendi utilizzare il cluster per meno di 30 giorni. **Nota** che non è possibile eseguire la migrazione da un cluster gratuito a un cluster a pagamento. Il tipo di cluster gratuito offre un'archiviazione e una velocità effettiva delle transazioni limitate. Per istruzioni su cosa fare quando scade il tuo cluster Kubernetes, vedi questo argomento relativo alla [scadenza del cluster Kubernetes](/docs/services/blockchain/howto/ibp-console-manage.html#ibp-console-manage-console-cluster-expiration).
+  - Per ulteriori informazioni sulle differenze tra i cluster Kubernetes gratuito e a pagamento su {{site.data.keyword.cloud_notm}}, vedi [Confronto tra i cluster standard e gratuito![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://cloud.ibm.com/docs/containers?topic=containers-cluster_types#cluster_types "Confronto tra i cluster standard e gratuito").  
 
    Devi ritornare a questa scheda nel tuo browser dopo che hai creato il cluster in modo da poter completare il processo di distribuzione di {{site.data.keyword.blockchainfull_notm}} Platform 2.0.  
    {:important}  
@@ -128,12 +152,7 @@ Puoi attenerti alle istruzioni per distribuire {{site.data.keyword.blockchainful
 ## (Facoltativo) Aggiungi ulteriori utenti alla console
 {: #ibp-v2-deploy-iks-add-users}
 
-Per impostazione predefinita, la console utilizza [l'ID {{site.data.keyword.IBM_notm}} ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://cloud.ibm.com/docs/iam/index.html#iamoverview "IBM Cloud Identity and Access Management") come provider del servizio di identità. Il provisioning della tua console {{site.data.keyword.blockchainfull_notm}} Platform viene eseguito configurando l'indirizzo email del proprietario {{site.data.keyword.IBM_notm}} come amministratore della console. Come amministratore, questo utente è autorizzato a concedere ad altri utenti l'accesso alla console tramite i loro indirizzi email.  
-
-### Come aggiungere un nuovo utente
-{: #ibp-v2-deploy-iks-add-users-howto}
-
-Fai clic sull'icona **Utenti** nella navigazione di sinistra per visualizzare l'elenco di utenti che possono eseguire l'accesso alla console. Se sei collegato come un amministratore della console, puoi fare clic su **Aggiungi nuovi utenti** per autorizzare i nuovi utenti alla console e concedere loro l'accesso di **Admin** o quello **General**. Gli utenti con il ruolo **Amministratore** può aggiungere o eliminare gli utenti.
+Per impostazione predefinita, la console utilizza [{{site.data.keyword.cloud_notm}} IAM (Identity and Access Management) ![Icona link esterno](../images/external_link.svg "Icona link esterno")](/docs/iam?topic=iam-iamoverview#iamoverview "IBM Cloud Identity and Access Management") come provider del servizio di identità {{site.data.keyword.cloud_notm}}. Il provisioning della tua console {{site.data.keyword.blockchainfull_notm}} Platform viene eseguito configurando l'indirizzo email del proprietario {{site.data.keyword.IBM_notm}} come amministratore della console. Come amministratore, questo utente è autorizzato a concedere ad altri utenti l'accesso alla console tramite i loro indirizzi email.  Per ulteriori informazioni, vedi queste istruzioni su come [aggiungere e rimuovere utenti dalla console](/docs/services/blockchain?topic=blockchain-ibp-console-manage-console#ibp-console-manage-console-add-remove).
 
 ## Passi successivi
 {: #ibp-v2-deploy-iks-next-steps}
@@ -143,9 +162,9 @@ Ora che la tua console è pronta per l'utilizzo, puoi procedere con l'[Esercitaz
 ## Aggiornamento della versione di Kubernetes del tuo cluster
 {: #ibp-v2-deploy-iks-updating-kubernetes}
 
-Se utilizzi un cluster del servizio {{site.data.keyword.cloud_notm}} Kubernetes esistente, assicurati che Kubernetes sia alla versione 1.11 o successiva.
+Se utilizzi un cluster {{site.data.keyword.cloud_notm}} Kubernetes Service esistente, assicurati che Kubernetes sia alla versione 1.11 o successiva.
 
-Puoi controllare la versione di Kubernetes del tuo cluster nella [pagina dei cluster Kubernetes ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://console.cloud.ibm.com/containers-kubernetes/clusters) su {{site.data.keyword.cloud_notm}}, che elenca tutti i tuoi cluster in una tabella.
+Puoi controllare la versione di Kubernetes del tuo cluster nella [pagina dei cluster Kubernetes ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://cloud.ibm.com/kubernetes/clusters) su {{site.data.keyword.cloud_notm}}, che elenca tutti i tuoi cluster in una tabella.
 
 Se la versione di Kubernetes non è alla versione 1.11 o successiva, devi completare la seguente procedura per aggiornare la versione di Kubernetes del tuo cluster.
 
@@ -158,9 +177,26 @@ Se la versione di Kubernetes non è alla versione 1.11 o successiva, devi comple
 
 ![Aggiorna versione Kubernetes](../images/update_k8s_version.gif)
 
-per ulteriori informazioni sull'aggiornamento della versione di Kubernetes per un cluster del servizio {{site.data.keyword.IBM_notm}} Kubernetes e i nodi di lavoro, vedi, [Aggiornamento dei cluster, dei nodi di lavoro e degli elementi aggiuntivi ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://cloud.ibm.com/docs/containers/cs_cluster_update.html#update).  
+Per ulteriori informazioni sull'aggiornamento della versione di Kubernetes per un cluster {{site.data.keyword.IBM_notm}} Kubernetes Service e i nodi di lavoro, vedi, [Aggiornamento dei cluster, dei nodi di lavoro e degli elementi aggiuntivi ![Icona link esterno](../images/external_link.svg "Icona link esterno")](/docs/containers?topic=containers-update#update).  
 
 Devi attendere il completamento dell'aggiornamento prima di poter [riprendere la distribuzione di {{site.data.keyword.blockchainfull_notm}} Platform 2.0](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks-steps).
+
+## Come assegnare i ruoli di accesso Kubernetes
+{: #ibp-v2-deploy-iks-k8x-access-roles}
+
+L'utente che collega l'istanza del servizio blockchain al cluster Kubernetes deve disporre dei ruoli di Amministratore e Gestore in Kubernetes.
+Per configurare questo accesso, devi completare la seguente procedura:
+   1. Nel dashboard {{site.data.keyword.cloud_notm}}, fai clic sull'elenco a discesa **Gestisci** e quindi su **Accesso(IAM)**.
+   2. Nel menu di navigazione, fai clic su **Utenti** e fai clic sull'ID dell'utente che collegherà l'istanza del servizio al cluster Kubernetes.
+   3. Fai clic su **Politiche di accesso** e quindi su **Assegna accesso**.
+   4. Fai clic sul tile **Assegna l'accesso alle risorse**.
+   5. Nell'elenco a discesa **Servizi**, seleziona **Servizio Kubernetes**.
+   6. Seleziona i ruoli **Amministratore** e **Gestore** per questo utente.
+   7. Fai clic su **Assegna**.
+
+![Aggiorna versione Kubernetes](../images/k8sAccess.gif)
+
+Per ulteriori informazioni sul controllo dell'accesso Kubernetes, vedi il documento relativo a [come scegliere la politica di accesso e il ruolo corretti per i tuoi utenti](/docs/containers?topic=containers-users#access_roles).
 
 ## Eliminazione di un'istanza del servizio
 {: #ibp-v2-deploy-iks-delete-service-instance}

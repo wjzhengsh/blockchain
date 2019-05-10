@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -40,7 +40,7 @@ Les logiciels SDK Fabric sont recommandés. Cependant, les instructions supposen
 
 Si votre organisation n'est pas encore membre d'un consortium ou d'un canal, vous pouvez utiliser ces étapes pour [créer un canal](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-create-channel). Les instructions vous guident tout au long de la [préparation d'une définition d'organisation](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-organization-definition). Cette définition sera utilisée pour faire de vous un membre du consortium par l'ajout à un canal système de service de tri. Par la suite, vous pourrez former un nouveau canal par la [création d'une transaction de canal](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-channeltx)
 <!--
-It is recommended that you deploy at least two instances of the peer Helm chart for [high availability](peer_icp.html#high-availability). Therefore, you need to follow these operations steps once for each peer. When you are ready to invoke and query chaincode from your application, connect to both peers to ensure that your [applications are highly available](../v10_application.html#ha-app).
+It is recommended that you deploy at least two instances of the peer Helm chart for [high availability](peer_icp.html#high-availability). Therefore, you need to follow these operations steps once for each peer. When you are ready to invoke and query chaincode from your application, connect to both peers to ensure that your [applications are highly available](../best_practices.html#best-practices-app-ha-app).
 -->
 
 ## Prérequis
@@ -116,7 +116,7 @@ Vous devez utiliser l'outil de ligne de commande **kubectl** pour vous connecter
 ### Extraction des informations de noeud final de votre homologue
 {: #icp-peer-operate-peer-endpoint}
 
-Vous devez cibler le noeud final de votre homologue à partir du logiciel SDK ou du client d'autorité de certification Fabric pour rejoindre le canal ou installer des contrats intelligents. Pour trouver le noeud final de votre homologue, vous pouvez utiliser l'interface utilisateur de votre console {{site.data.keyword.cloud_notm}} Private. Vous devrez être [administrateur de cluster![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Rôles et actions de l'administrateur de cluster") pour effectuer les étapes suivantes :
+Vous devez cibler le noeud final de votre homologue à partir du logiciel SDK ou du client d'autorité de certification Fabric pour rejoindre le canal ou installer des contrats intelligents. Pour trouver le noeud final de votre homologue, vous pouvez utiliser l'interface utilisateur de votre console {{site.data.keyword.cloud_notm}} Private. Vous devrez être [administrateur de cluster![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/user_management/assign_role.html "Rôles et actions de l'administrateur de cluster") pour effectuer les étapes suivantes :
 
 1. Connectez-vous à la console {{site.data.keyword.cloud_notm}} Private et cliquez sur l'icône **Menu ** dans l'angle supérieur gauche.
 2. Cliquez sur **Charge de travail** > **Editions Helm**.
@@ -155,7 +155,7 @@ Vous devez télécharger votre certificat TLS homologue et le transmettre à vos
 ## Utilisation de SDK Fabric pour l'exploitation de votre homologue
 {: #icp-peer-operate-with-sdk}
 
-Les logiciels SDK Hyperledger Fabric fournissent un puissant jeu d'API qui permettent aux applications d'interagir et d'exploiter les réseaux de blockchain. Vous pouvez obtenir la liste la plus récente des langages pris en charge et la liste complète des API disponibles au sein des logiciels SDK Fabric dans la [documentation Hyperledger Fabric SDK community![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/getting_started.html#hyperledger-fabric-sdks "documentation Hyperledger Fabric SDK Community"). Vous pouvez utiliser les logiciels SDK Fabric pour associer votre homologue à un canal sur {{site.data.keyword.blockchainfull_notm}} Platform, installer un code blockchain sur votre homologue, et instancier le code blockchain sur un canal.
+Les logiciels SDK Hyperledger Fabric fournissent un puissant jeu d'API qui permettent aux applications d'interagir et d'exploiter les réseaux de blockchain. Vous pouvez obtenir la liste la plus récente des langages pris en charge et la liste complète des API disponibles au sein des logiciels SDK Fabric dans la [documentation Hyperledger Fabric SDK community![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/getting_started.html#hyperledger-fabric-sdks "documentation Hyperledger Fabric SDK Community"). Vous pouvez utiliser les logiciels SDK Fabric pour associer votre homologue à un canal sur {{site.data.keyword.blockchainfull_notm}} Platform, installer un code blockchain sur votre homologue, et instancier le code blockchain sur un canal.
 
 Les instructions suivantes utilisent le [Logiciel SDK Fabric Node![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://fabric-sdk-node.github.io/ "Logiciel SDK Fabric Node") pour exploiter l'homologue et supposent une connaissance préalable du logiciel SDK. Vous pouvez utiliser le [tutoriel de développement d'applications](/docs/services/blockchain/v10_application.html#dev-app) pour en savoir plus sur l'utilisation du logiciel SDK Node avant de commencer, et comme guide pour le développement d'applications avec votre homologue lorsque vous êtes prêt à appeler et à interroger le code blockchain.
 
@@ -165,11 +165,11 @@ Les instructions suivantes utilisent le [Logiciel SDK Fabric Node![Icône de lie
 Vous pouvez utiliser NPM pour installer le [Logiciel SDK Node ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://fabric-sdk-node.github.io/ "Logiciel SDK Node") :
 
 ```
-npm install fabric-client@1.2
+npm install fabric-client@1.4.0
 ```
 {:codeblock}
 
-Il est recommandé d'utiliser la version 1.2 du logiciel SDK Node.
+Il est recommandé d'utiliser la version 1.4.0 du logiciel SDK Node.
 
 ### Préparation du logiciel SDK pour l'utilisation de l'homologue
 {: #icp-peer-operate-node-sdk}
@@ -259,12 +259,12 @@ Votre homologue a été déployé avec le certificat signCert de votre admin hom
 ### Téléchargement du client homologue Fabric
 {: #icp-peer-operate-fabric-client}
 
-Pour interagir avec votre homologue depuis un client distant, vous devez télécharger le [client homologue Fabric![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/peercommand.html "commande homologue Fabric").
+Pour interagir avec votre homologue depuis un client distant, vous devez télécharger le [client homologue Fabric![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/peercommand.html "commande homologue Fabric").
 
-Le moyen le plus simple d'obtenir le client homologue est de télécharger les binaires de l'outil Fabric du projet Hyperledger. Créez un répertoire dans lequel vous souhaitez télécharger les binaires à partir de votre ligne de commande, puis procédez à leur extraction en exécutant la commande ci-dessous. Vous devez d'abord installer [Curl ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/prereqs.html#install-curl "Curl").
+Le moyen le plus simple d'obtenir le client homologue est de télécharger les binaires de l'outil Fabric du projet Hyperledger. Créez un répertoire dans lequel vous souhaitez télécharger les binaires à partir de votre ligne de commande, puis procédez à leur extraction en exécutant la commande ci-dessous. Vous devez d'abord installer [Curl ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/prereqs.html#install-curl "Curl").
 
 ```
-curl -sSL http://bit.ly/2ysbOFE | bash -s 1.2.1 1.2.1 -d -s
+curl -sSL http://bit.ly/2ysbOFE | bash -s 1.4.0 1.4.0 -d -s
 ```
 {:codeblock}
 
@@ -329,6 +329,8 @@ tree
 │   └── msp
 │       ├── cacerts
 │       │   └── 9-30-250-70-30395-SampleOrgCA.pem
+│       ├── IssuerPublicKey
+│       ├── IssuerRevocationPublicKey
 │       ├── keystore
 │       │   └── 2a97952445b38a6e0a14db134645981b74a3f93992d9ddac54cb4b4e19cdf525_sk
 │       ├── signcerts
@@ -356,6 +358,8 @@ tree
     └── msp
         ├── cacerts
         │   └── 9-30-250-70-30395-tlsca.pem
+        ├── IssuerPublicKey
+        ├── IssuerRevocationPublicKey
         ├── keystore
         │   └── 45a7838b1a91ddfe3d4d22a5a7f2639b868493bcce594af3e3ceb9c07899d117_sk
         ├── signcerts
@@ -397,11 +401,11 @@ Après avoir déplacé tous nos certificats vers l'emplacement nécessaire, nous
 
   Remplacez les zones par vos informations.
     - Remplacez `<CHANNEL_NAME>` par le nom du canal que rejoint l'homologue.
-    - Remplacez `<CC_NAME>` par un nom pour faire référence à votre code blockchain.
+    - Remplacez `<CC_NAME>` par un nom pour faire référence à votre code blockchain. 
     - Remplacez `<PEERADDR>` par le nom d'hôte et le port du noeud final d'homologue de l'étape précédente.
-    - Remplacez `<ORDERER_URL>` par le nom d'hôte et le port du service de tri de votre consortium.
+    - Remplacez `<ORDERER_URL>` par le nom d'hôte et le port du service de tri de votre consortium. 
     - Remplacez `<PATH_TO_ADMIN_MSP>` par le chemin d'accès au dossier MSP de l'admin de votre homologue.
-    - Remplacez `<MSPID_OF_PEER_BEING_USED>` par le MSPID d'organisation de l'homologue que vous utilisez pour extraire un bloc d'origine, rejoindre un canal ou installer un code blockchain. Cette valeur a été fournie lors du déploiement de la charte Helm.
+    - Remplacez `<MSPID_OF_PEER_BEING_USED>` par le MSPID d'organisation de l'homologue que vous utilisez pour extraire un bloc d'origine, rejoindre un canal ou installer un code blockchain.Cette valeur a été fournie lors du déploiement de la charte Helm.
 
   Par exemple :
 
@@ -482,7 +486,7 @@ Votre organisation doit être membre d'un canal pour que vous puissiez rejoindre
 ### Utilisation de l'interface de ligne de commande pour installer le code blockchain sur l'homologue
 {: #icp-peer-operate-toolcontainer-install-cc}
 
-Nous sommes maintenant prêts à installer et à instancier le code blockchain sur l'homologue. Dans le cadre des présentes instructions, nous installons le code blockchain `fabcar` du référentiel `fabric-samples`. Assurez-vous de [d'avoir configuré votre GOPATH ![Icône de lien externe](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/dev-setup/devenv.html?highlight=gopath#set-your-gopath "Définition de votre GOPATH") au préalable, puis téléchargez code blockchain `fabric-samples` depuis github à l'aide des commandes suivantes :
+Nous sommes maintenant prêts à installer et à instancier le code blockchain sur l'homologue. Dans le cadre des présentes instructions, nous installons le code blockchain `fabcar` du référentiel `fabric-samples`. Assurez-vous de [d'avoir configuré votre GOPATH ![Icône de lien externe](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/dev-setup/devenv.html?highlight=gopath#set-your-gopath "Définition de votre GOPATH") au préalable, puis téléchargez code blockchain `fabric-samples` depuis github à l'aide des commandes suivantes :
 
   ```
   cd $GOPATH/src
@@ -523,7 +527,7 @@ Lorsque cette commande est exécutée correctement, vous devriez voir un quelque
 2018-11-27 17:09:28.013 EST [chaincodeCmd] checkChaincodeCmdParams -> INFO 049 Using default vscc
 ```
 
-Une fois le code blockchain instancié, vous pouvez utiliser une requête de code blockchain et appeler des commandes pour lire et écrire des données dans le registre de canal. Pour plus d'informations, voir les [code blockchain homologue![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/latest/commands/peerchaincode.html) dans la documentation Hyperledger Fabric. Vous devrez transmettre le noeud fin du service de tri à vos commandes d'appel en utilisant l'IP proxy et le porte de service de tri externe. Il vous suffit de transmettre le noeud final homologue à une commande de requête.
+Une fois le code blockchain instancié, vous pouvez utiliser une requête de code blockchain et appeler des commandes pour lire et écrire des données dans le registre de canal. Pour plus d'informations, voir les [code blockchain homologue![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/peerchaincode.html) dans la documentation Hyperledger Fabric. Vous devrez transmettre le noeud fin du service de tri à vos commandes d'appel en utilisant l'IP proxy et le porte de service de tri externe. Il vous suffit de transmettre le noeud final homologue à une commande de requête.
 
 ## Consultation des journaux d'homologue dans {{site.data.keyword.cloud_notm}} Private
 {: #peer-log-icp}
@@ -543,7 +547,7 @@ Procédez comme suit pour mettre à jour votre code blockchain :
 
 1. Pour mettre à jour le code blockchain sur chaque homologue, relancez simplement le processus utilisé pour installer le code blockchain sur les homologues, au moyen d'une application client ou d'une commande d'interface de ligne de commande. Veillez à indiquer le même nom de code blockchain que celui utilisé initialement. Toutefois, cette fois incrémentez la `version` de code blockchain. Tous les homologues doivent utiliser le même nom et la même version de code blockchain.
 
-2. Une fois le nouveau code blockchain installé sur tous les homologues du canal, utilisez la commande [peer chaincode upgrade ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/peerchaincode.html#peer-chaincode-upgrade) pour mettre à jour le canal qui va utiliser le nouveau code blockchain.
+2. Une fois le nouveau code blockchain installé sur tous les homologues du canal, utilisez la commande [peer chaincode upgrade ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/peerchaincode.html#peer-chaincode-upgrade) pour mettre à jour le canal qui va utiliser le nouveau code blockchain.
 
 ## Redémarrage d'un homologue qui s'exécute dans {{site.data.keyword.cloud_notm}} Private
 {: #peer-restart}
@@ -579,12 +583,12 @@ Si vous avez déjà rejoint le consortium, vous devez effectuer uniquement l'ét
 ### Téléchargement de l'outil configtxgen
 {: #icp-peer-operate-configtxgen}
 
-Si votre organisation doit rejoindre un consortium ou un canal, vous devez télécharger l'outil [configtxgen ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/configtxgen.html "configtxgen").
+Si votre organisation doit rejoindre un consortium ou un canal, vous devez télécharger l'outil [configtxgen ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/configtxgen.html "configtxgen").
 
-Le moyen le plus simple d'obtenir l'outil configtxgen est de télécharger tous les binaires de l'outil Fabric du projet Hyperledger. Accédez à un répertoire dans lequel vous souhaitez télécharger les binaires à partir de votre ligne de commande, puis procédez à leur extraction en exécutant la commande ci-dessous. Vous devez d'abord installer [Curl ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/prereqs.html#install-curl "Curl").
+Le moyen le plus simple d'obtenir l'outil configtxgen est de télécharger tous les binaires de l'outil Fabric du projet Hyperledger. Accédez à un répertoire dans lequel vous souhaitez télécharger les binaires à partir de votre ligne de commande, puis procédez à leur extraction en exécutant la commande ci-dessous. Vous devez d'abord installer [Curl ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/prereqs.html#install-curl "Curl").
 
 ```
-curl -sSL http://bit.ly/2ysbOFE | bash -s 1.2.1 1.2.1 -d -s
+curl -sSL http://bit.ly/2ysbOFE | bash -s 1.4.0 1.4.0 -d -s
 ```
 {:codeblock}
 
@@ -617,17 +621,17 @@ Avant de préparer une définition d'organisation, vous devez enregistrer et ins
   cd $HOME/fabric-ca-client/peer-admin/msp
   mkdir tlscacerts
   ```
-
+  {:codeblock}
   Ensuite, vous devrez copier le certificat dans le répertoire `tlscacerts` que vous avez créé :
 
   ```
-  cp $HOME/fabric-ca-client/tlsca-admin/cacerts/<xxxx>tlsca.pem tlscacerts/
+  cp $HOME/fabric-ca-client/tlsca-admin/msp/cacerts/<xxxx>tlsca.pem tlscacerts/
   ```
-
+  {:codeblock}
   Votre commande peut ressembler à l'exemple suivant :
 
   ```
-  cp fabric-ca-client/tlsca-admin/cacerts/9-30-250-70-32129-tlsca.pem /tlscacerts/
+  cp fabric-ca-client/tlsca-admin/msp/cacerts/9-30-250-70-32129-tlsca.pem /tlscacerts/
   ```
   {:codeblock}
 
@@ -676,7 +680,7 @@ Ce fichier contient des informations qui définissent votre organisation au sein
 
 - `Nom :` peut être le nom que vous souhaitez utiliser pour votre organisation.
 
-- `ID :` valeur de votre MSPID, qui devient l'identificateur unique de votre organisation. La valeur MSP de cette organisation a été spécifiée lors du déploiement de la charte Helm de votre homologue. Elle est également visible dans le conteneur d'homologue en exécutant les commandes suivantes, dans lesquelles `<peer pod name>` est remplacé par la valeur du pod de votre homologue :
+- `ID :` valeur de votre MSPID, qui devient l'identificateur unique de votre organisation. La valeur MSP de cette organisation a été spécifiée lors du déploiement de la charte Helm de votre homologue. Elle est également visible dans le conteneur d'homologue en exécutant les commandes suivantes, en remplaçant `<peer pod name>` par la valeur du pod de votre homologue :
 
   ```
   kubectl exec -it <peer pod name> -c peer sh
@@ -723,12 +727,12 @@ Si cette commande aboutit, l'outil `configtxgen` imprime la définition d'organi
 ## Création de la transaction de canal
 {: #icp-peer-operate-channeltx}
 
-Pour que vous puissiez créer un nouveau canal, votre organisation doit avoir préparé une [définition d'organisation](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-organization-definition) et être devenue membre du consortium. Suivez les instructions ci-après si vous devez [former un consortium ou être ajouté à l'un d'eux](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-consortium). Les membres du consortium peuvent également être facilement ajoutés à de nouveaux canaux, si leur organisation a déjà été ajoutée au canal  système. Les organisations qui ne sont pas membres du canal système peuvent uniquement rejoindre un canal manuellement, par l'ajout de leur définition d'organisation au canal à l'aide d'une [demande de mise à jour de canal![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/channel_update_tutorial.html). Vous pouvez également utiliser ces étapes pour mettre à jour un canal existant.
+Pour que vous puissiez créer un nouveau canal, votre organisation doit avoir préparé une [définition d'organisation](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-organization-definition) et être devenue membre du consortium. Suivez les instructions ci-après si vous devez [former un consortium ou être ajouté à l'un d'eux](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-consortium). Les membres du consortium peuvent également être facilement ajoutés à de nouveaux canaux, si leur organisation a déjà été ajoutée au canal  système. Les organisations qui ne sont pas membres du canal système peuvent uniquement rejoindre un canal manuellement, par l'ajout de leur définition d'organisation au canal à l'aide d'une [demande de mise à jour de canal![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/channel_update_tutorial.html). Vous pouvez également utiliser ces étapes pour mettre à jour un canal existant.
 
 ### Formation d'un nouveau canal
 {: #icp-peer-operate-form-channel}
 
-Pour former un nouveau canal, une organisation doit créer une proposition de transaction de création de canal à l'aide de l'outil [outil configtxgen![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/configtxgen.html "configtxgen"). Cet outil utile un fichier a `configtx.yaml` qui définit les membres du nouveau canal. Un exemple de fichier `configtx.yaml` est fourni ci-après. Une version plus complexe de ce fichier est également disponible dans le dossier `/config` du [client d'homologue Fabric que vous avez téléchargé](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-fabric-client). Vous pouvez choisir de modifier ce fichier, ou de le remplacer par l'exemple. Notez l'emplacement de ce dossier `/config` afin de définir la valeur de `FABRIC_CFG_PATH` ci-dessous.
+Pour former un nouveau canal, une organisation doit créer une proposition de transaction de création de canal à l'aide de l'outil [outil configtxgen![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/configtxgen.html "configtxgen"). Cet outil utile un fichier a `configtx.yaml` qui définit les membres du nouveau canal. Un exemple de fichier `configtx.yaml` est fourni ci-après. Une version plus complexe de ce fichier est également disponible dans le dossier `/config` du [client d'homologue Fabric que vous avez téléchargé](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-fabric-client). Vous pouvez choisir de modifier ce fichier, ou de le remplacer par l'exemple. Notez l'emplacement de ce dossier `/config` afin de définir la valeur de `FABRIC_CFG_PATH` ci-dessous.
 ```
 # Copyright IBM Corp. All Rights Reserved.
 #
@@ -832,7 +836,7 @@ Les trois sections qui sont pertinentes pour la création d'un nouveau canal son
 - **Organizations :** Cette section définit tous les membres du consortium. Chaque organisation a une ancre, par exemple `&Org1`. Sous cette ancre, vous pouvez trouver le nom de l'organisation, le MSPID, le répertoire d'accès à son dossier MSP ainsi que les homologues d'ancrage de leurs organisations pour les communications entre homologues. Vous pouvez compléter le profil de l'organisation pour chaque membre du consortium avec les étapes suivantes :
   1. Indiquez le `Nom` et l'`ID` de l'organisation en utilisant son MSPID. L'organisation qui crée le canal doit connaître le MSPID qui a été spécifié lors du déploiement de la charte Helm de l'homologue.
   2. Dans `MSPDir`, indiquez le chemin d'accès complet au dossier MSP que vous avez utilisé pour créer votre [définition d'organisation](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-organization-definition). Notez qu'aucun de vos matériels cryptographiques n'est utilisé dans la transaction de création de canal. L'outil *configtxgen* ignorera le contenu réel du MSP. Cependant, il attend un dossier MSP à cet emplacement, avec la sous-structure de dossier correcte.
-  3. Le paramètre `AnchorPeers` est utilisé pour identifier le principal homologue utilisé par chaque organisation pour la communication entre organisations. Indiquez le nom d'hôte et le port de l'homologue qui fera office d'[homologue d'ancrage![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/glossary.html) pour cette organisation. Cette valeur est importante pour l'utilisation de fonctions telles que les données privées ou la reconnaissance de service ; toutefois, les données privées et la reconnaissance de service ne sont pas actuellement pris en charge par la charte Helm de l'homologue.
+  3. Le paramètre `AnchorPeers` est utilisé pour identifier le principal homologue utilisé par chaque organisation pour la communication entre organisations. Indiquez le nom d'hôte et le port de l'homologue qui fera office d'[homologue d'ancrage![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/glossary.html) pour cette organisation. Cette valeur est importante pour l'utilisation de fonctions telles que les données privées ou la reconnaissance de service ; toutefois, les données privées et la reconnaissance de service ne sont pas actuellement pris en charge par la charte Helm de l'homologue.
 
 - **Capabilities :** Cette section doit figurer dans le fichier `configtx.yaml` mais aucune modification n'est nécessaire.
 
@@ -896,7 +900,7 @@ peer channel create -o 9.30.250.70:31507 --tls --cafile $PWD/orderer-tls/orderer
 
 Lorsque la proposition de création de nouveau canal est signée par suffisamment d'organisations pour respecter la règle d'adhésion du canal système, vous pouvez soumettre la transaction de mise à jour de canal au service de tri pour former le nouveau canal
 
-Vous pouvez utiliser les API de logiciel SDK Node Fabric pour terminer la signature et la soumission en une seule transaction. Pour plus d'informations, consultez le  [Comment créer un canal Hyperledger Fabric ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")]](https://fabric-sdk-node.github.io/release-1.3/tutorial-channel-create.html) dans la documentation du logiciel SDK Node.
+Vous pouvez utiliser les API de logiciel SDK Node Fabric pour terminer la signature et la soumission en une seule transaction. Pour plus d'informations, consultez le tutoriel [How to create a Hyperledger Fabric Channel ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")]](https://fabric-sdk-node.github.io/release-1.4/tutorial-channel-create.html) dans la documentation Node SDK.
 
 ## Affichage des journaux de l'homologue
 {: #icp-peer-operate-view-logs}
@@ -910,7 +914,7 @@ Les journaux de composant peuvent être affichés à partir de la ligne de comma
   ```
   {:codeblock}
 
-  Ensuite, exécutez la commande suivante pour extraire les journaux pour le conteneur d'homologue qui réside dans le pod en  replaçant  `<pod_name>` par le nom de votre pod de la sortie de commande plus haut :
+  Ensuite, exécutez la commande suivante pour extraire les journaux pour le conteneur d'homologues qui réside dans le pod en remplaçant `<pod_name>` par le nom de votre pod à partir du résultat de la commande ci-dessus :
 
   ```
   kubectl logs <pod_name> -c peer
@@ -919,7 +923,7 @@ Les journaux de composant peuvent être affichés à partir de la ligne de comma
 
   Pour plus d'informations sur la commande `kubectl logs`, consultez la [documentation Kubernetes ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs “Getting Started”)
 
-- Vous pouvez aussi accéder aux journaux en utilisant la [console de gestion de cluster {{site.data.keyword.cloud_notm}} Private![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/troubleshoot/events.html "Events and Logs"), qui ouvre les journaux dans Kibana.
+- Vous pouvez aussi accéder aux journaux en utilisant la [console de gestion de cluster {{site.data.keyword.cloud_notm}} Private ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/troubleshoot/events.html "Evénements et journaux"), qui ouvre les journaux dans Kibana.
 
   **Remarque :** Lorsque vous affichez vos journaux dans Kibana, vous pouvez recevoir la réponse `No results found`. Cette condition peut se produire si {{site.data.keyword.cloud_notm}} Private utilise l'adresse IP de votre noeud worker comme nom d'hôte. Pour résoudre ce problème, supprimez le filtre qui commence par `node.hostname.keyword` en haut de l'écran et les journaux deviennent visibles.
 

@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2019
-lastupdated: "2019-03-05"
+  years: 2018, 2019
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -20,7 +20,7 @@ subcollection: blockchain
 # Distribuzione dei peer in {{site.data.keyword.cloud_notm}} Private
 {: #icp-peer-deploy}
 
-Le seguenti istruzioni descrivono come distribuire un peer {{site.data.keyword.blockchainfull}} Platform su {{site.data.keyword.cloud_notm}} Private. Queste istruzioni ti consentono di connetterti a {{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}} Private. Se vuoi collegare un peer a una rete del piano Starter o Enterprise su {{site.data.keyword.cloud_notm}}, vedi [Distribuzione dei peer per il collegamento al piano Starter o Enterprise](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy).
+Le seguenti istruzioni descrivono come distribuire un peer {{site.data.keyword.blockchainfull}} Platform su {{site.data.keyword.cloud_notm}} Private. Queste istruzioni ti consentono di connetterti ai componenti {{site.data.keyword.blockchainfull_notm}} Platform su {{site.data.keyword.cloud_notm}} Private. Se vuoi collegare un peer a una rete del piano Starter o Enterprise su {{site.data.keyword.cloud_notm}}, vedi [Distribuzione dei peer per il collegamento al piano Starter o Enterprise](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy).
 {:shortdesc}
 
 Prima di distribuire un peer, rivedi [Considerazioni e limitazioni](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-about-considerations).
@@ -34,11 +34,11 @@ Assicurati che il sistema {{site.data.keyword.cloud_notm}} Private soddisfi i re
 | Componente | CPU virtuale | RAM | Disco per l'archiviazione di dati |
 |-----------|------|-----|-----------------------|
 | Peer | 2 | 2 GB | 50 GB con capacità di espansione |
-| CouchDB for Peer | 2| 2 GB |50 GB con capacità di espansione |
+| CouchDB for Peer<br>(Applicabile solo se utilizzi CouchDB) | 2| 2 GB | 50 GB con capacità di espansione |
 
  **Note:**
  - Una CPU virtuale è un core virtuale assegnato a una macchina virtuale o un core di processore fisico se il server non è partizionato per le macchine virtuali. Devi considerare i requisiti di CPU virtuale quando decidi il VPC (virtual processor core) per la tua distribuzione in {{site.data.keyword.cloud_notm}} Private. VPC è un'unità di misura per determinare il costo di licenza dei prodotti IBM. Per ulteriori informazioni sugli scenari per decidere il VPC, vedi [Virtual processor core (VPC) ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/en/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_virtual_processor_core_licenses.html "IBM Licence Metric Tool 9.2").
- - Questi livelli minimi di risorse sono sufficienti per l'esecuzione di test e la sperimentazione. Per un ambiente con un grande volume di transazioni, è importante assegnare una quantità sufficientemente grande di archiviazione; ad esempio 250 GB per il tuo peer. La quantità di archiviazione da utilizzare dipenderà dal numero di transazioni e dal numero di firme richiesti dalla tua rete. Se stai per esaurire l'archiviazione sul tuo peer o ordinante, devi distribuire un nuovo peer o ordinante con un file system più grande e consentirgli di eseguire la sincronizzazione tramite i tuoi altri componenti sugli stessi canali.
+ - Questi livelli minimi di risorse sono sufficienti per l'esecuzione di test e la sperimentazione. Per un ambiente con un grande volume di transazioni, è importante allocare una quantità sufficientemente grande di archiviazione; ad esempio 250 GB per il tuo peer. La quantità di archiviazione da utilizzare dipenderà dal numero di transazioni e dal numero di firme richiesti dalla tua rete. Se stai per esaurire l'archiviazione sul tuo peer o ordinante, devi distribuire un nuovo peer o ordinante con un file system più grande e consentirgli di eseguire la sincronizzazione tramite i tuoi altri componenti sugli stessi canali.
 
 ## Archiviazione
 {: #icp-peer-deploy-storage}
@@ -56,11 +56,11 @@ Se non utilizzi il provisioning dinamico, [i volumi persistenti ![Icona link est
 
 1. Prima di poter installare un peer su {{site.data.keyword.cloud_notm}} Private, devi [installare {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/ICP_setup.html#icp-setup) e [installare il grafico Helm di {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/howto/helm_install_icp.html#helm-install).
 
-2. Se utilizzi la Community Edition e vuoi eseguire questo grafico Helm su un cluster {{site.data.keyword.cloud_notm}} Private senza la connettività Internet, devi creare degli archivi su una macchina connessa a Internet prima di poter installare gli archivi sul tuo cluster {{site.data.keyword.cloud_notm}} Private. Per ulteriori informazioni, consulta [Adding featured applications to clusters without Internet connectivity ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_package_offline.html "Adding featured applications to clusters without Internet connectivity"){:new_window}. Tieni presente che puoi trovare il file della specifica `manifest.yaml` in `ibm-blockchain-platform-dev/ibm_cloud_pak` nel grafico Helm.
+2. Se utilizzi la Community Edition e vuoi eseguire questo grafico Helm su un cluster {{site.data.keyword.cloud_notm}} Private senza la connettività Internet, devi creare degli archivi su una macchina connessa a Internet prima di poter installare gli archivi sul tuo cluster {{site.data.keyword.cloud_notm}} Private. Per ulteriori informazioni, consulta [Adding featured applications to clusters without Internet connectivity ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/app_center/add_package_offline.html "Adding featured applications to clusters without Internet connectivity"){:new_window}. Tieni presente che puoi trovare il file della specifica `manifest.yaml` in `ibm-blockchain-platform-dev/ibm_cloud_pak` nel grafico Helm.
 
 3. Devi prima [distribuire una CA](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy) su {{site.data.keyword.cloud_notm}} Private. Devi utilizzare la CA per creare un [file di configurazione del peer e archiviarlo come un segreto Kubernetes in {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/howto/peer_deploy_icp.html#icp-peer-deploy-config-file).
 
-4. Richiama il valore dell'indirizzo IP proxy del cluster della tua CA dalla console {{site.data.keyword.cloud_notm}} Private. **Nota:** dovrai essere un [Amministratore del cluster ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Cluster administrator roles and actions") per accedere al tuo IP proxy. Accedi al cluster {{site.data.keyword.cloud_notm}} Private. Nel pannello di navigazione di sinistra, fai clic su **Piattaforma** e quindi su **Nodi** per visualizzare i nodi definiti nel cluster. Fai clic sul nodo con il ruolo `proxy` e copia il valore dell'`IP host` dalla tabella. **Importante:** salva questo valore perché lo utilizzerai quando configuri il campo `Proxy IP` del grafico Helm.
+4. Richiama il valore dell'indirizzo IP proxy del cluster della tua CA dalla console {{site.data.keyword.cloud_notm}} Private. **Nota:** dovrai essere un [Amministratore del cluster ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/user_management/assign_role.html "Cluster administrator roles and actions") per accedere al tuo IP proxy. Accedi al cluster {{site.data.keyword.cloud_notm}} Private. Nel pannello di navigazione di sinistra, fai clic su **Piattaforma** e quindi su **Nodi** per visualizzare i nodi definiti nel cluster. Fai clic sul nodo con il ruolo `proxy` e copia il valore dell'`IP host` dalla tabella. **Importante:** salva questo valore perché lo utilizzerai quando configuri il campo `Proxy IP` del grafico Helm.
 
 
 ## Creazione del segreto di configurazione del peer
@@ -110,8 +110,8 @@ Salva l'output risultante per il seguente passo 4.
 
 3. Nella scheda **Generale**, completa i seguenti campi:
   - **Nome:** fornisci al tuo segreto un nome univoco all'interno del tuo cluster. Utilizzerai questo nome quando distribuisci il tuo peer. Il nome deve essere tutto in minuscolo.  
-  **Nota:** quando distribuisci un peer, viene automaticamente generato un nuovo segreto dalla distribuzione con il nome di `<helm_release_name>-secret`. Pertanto, quando dai un nome al tuo segreto, assicurati che sia diverso da `<helm_release_name>-secret` . Altrimenti, la distribuzione del grafico Helm avrà esito negativo perché il segreto che tenta di creare esiste già.
-  - **Namespace:** lo spazio dei nomi per aggiungere il tuo segreto. Seleziona lo spazio dei nomi (`namespace`) a cui vuoi distribuire il tuo peer.
+  **Nota:** quando distribuisci un peer, viene automaticamente generato un nuovo segreto dalla distribuzione con il nome `<helm release name you intend to use>-secret`. Pertanto, quando denomini questo segreto, assicurati che sia diverso da `<helm release name you intend to use>-secret` . Altrimenti, la distribuzione del grafico Helm avrà esito negativo perché il segreto che tenta di creare esiste già.
+  - **Spazio dei nomi** lo spazio dei nomi per aggiungere il tuo segreto. Seleziona lo spazio dei nomi (`namespace`) a cui vuoi distribuire il tuo peer.
   - **Tipo:** immetti il valore `Opaque`.
 
 4. Fai clic sulla scheda **Dati** nel pannello di navigazione di sinistra di questa finestra.
@@ -157,8 +157,10 @@ La seguente tabella elenca i parametri configurabili di {{site.data.keyword.bloc
 
 |  Parametro     | Descrizione    | Valore predefinito  | Obbligatorio |
 | --------------|-----------------|-------|------- |
+|**Parametri generali**| Parametri che configurano il grafico Helm | | |
 | `Helm release name`| Il nome della tua release Helm. Deve iniziare con una lettera minuscola e terminare con un qualsiasi carattere alfanumerico, deve contenere solo trattini e caratteri alfanumerici minuscoli. Devi utilizzare un nome della release Helm univoco ogni volta che tenti di installare un componente. **Importante:** questo valore deve corrispondere a quello utilizzato per generare il 'nome host del servizio' per il campo "hosts" nel tuo [file del segreto JSON.](/docs/services/blockchain/howto/peer_deploy_icp.html#icp-peer-deploy-config-file) | nessuno | sì |
 | `Target namespace`| Scegli lo spazio dei nomi Kubernetes per installare il grafico Helm. | nessuno | sì |
+| `Target namespace policies`| Visualizza le politiche di sicurezza del pod dello spazio dei nomi scelto, che devono includere una politica **`ibm-privileged-psp`**. Altrimenti, [associa una politica di sicurezza del pod](/docs/services/blockchain?topic=blockchain-icp-setup#icp-setup-psp) al tuo spazio dei nomi. | nessuno | no |
 |**Configurazione globale**| Parametri che si applicano a tutti i componenti nel grafico Helm.|||
 | `Service account name`| Immetti il nome dell'[account del servizio ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/) che utilizzerai per eseguire il pod. | valore predefinito | no |
 
@@ -171,8 +173,8 @@ La seguente tabella elenca i parametri configurabili di {{site.data.keyword.bloc
 | `Install Peer` | Seleziona per installare un peer.|non selezionato | sì, se vuoi distribuire un peer |
 | `Peer worker node architecture`| Seleziona l'architettura della tua piattaforma cloud (AMD64 o S390x)| AMD64 | sì |
 | `Peer image repository`| Ubicazione del grafico Helm del peer. Questo campo viene automaticamente compilato con il percorso installato. | ibmcom/ibp-fabric-peer | sì |
-| `Peer Docker image tag`|Il valore della tag associata all'immagine peer. |1.2.1, compilato automaticamente sul valore corretto.|sì|
-| `Peer configuration`| Puoi personalizzare la configurazione del peer incollando il tuo file di configurazione `core.yaml` in questo campo. Per vedere un file `core.yaml` di esempio, consulta [`core.yaml` sample config ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://github.com/hyperledger/fabric/blob/release-1.2/sampleconfig/core.yaml) **Solo per utenti esperti**. | nessuno | no |
+| `Peer Docker image tag`|Il valore della tag associata all'immagine peer. |1.4.0, compilato automaticamente sul valore corretto.|sì|
+| `Peer configuration`| Puoi personalizzare la configurazione del peer incollando il tuo file di configurazione `core.yaml` in questo campo. Per vedere un file `core.yaml` di esempio, consulta [`core.yaml` sample config ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://github.com/hyperledger/fabric/blob/release-1.4/sampleconfig/core.yaml) **Solo per utenti esperti**. | nessuno | no |
 | `Peer configuration secret (Required)`|Il nome del [segreto di configurazione del peer](/docs/services/blockchain/howto/peer_deploy_icp.html#icp-peer-deploy-config-file) che hai creato in {{site.data.keyword.cloud_notm}} Private. | nessuno | sì |
 |`Organization MSP (Required)`| Puoi creare un nuovo valore MSPID dell'organizzazione come ad esempio 'org1' o specificare una MSP dell'organizazione esistente di cui farà parte il peer. Se hai distribuito un'organizzazione ordinante, assicurati che tutti gli MSPID del peer siano diversi dall'MSPID dell'ordinante. Inoltre, prendi nota di questo valore, perché ne avrai in seguito bisogno per `CORE_PEER_LOCALMSPID` e `configtx.yaml`. | nessuno | sì |
 |`Peer service type`| Utilizzato per specificare se le [porte esterne devono essere esposte ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types) sul peer. Seleziona NodePort per esporre le porte esternamente (consigliato) e ClusterIP per non esporle. LoadBalancer e ExternalName non sono supportati in questa release. | NodePort | sì |
@@ -197,14 +199,22 @@ La seguente tabella elenca i parametri configurabili di {{site.data.keyword.bloc
 | `State database volume claim size`| Scegli la dimensione del disco da utilizzare. | 8 Gi | sì |
 | `CouchDB - Data persistence enabled`| Per il contenitore CouchDB, i dati del libro mastro saranno disponibili al riavvio del contenitore. *Se non selezionato, tutti i dati andranno persi in caso di failover o di riavvio del pod.*| verificato | no |
 | `CouchDB - Use dynamic provisioning`| Per il contenitore CouchDB utilizza l'archiviazione dinamica di Kubernetes.| verificato | no |
-| `Peer CPU request` | Numero minimo di CPU da assegnare al peer. | 1 | sì |
-| `Peer CPU limit` | Numero massimo di CPU da assegnare al peer.| 2 | sì |
-| `Peer Memory request` | Quantità minima di memoria da assegnare al peer. | 1Gi | sì |
-| `Peer Memory limit` | Quantità massima di memoria da assegnare al peer. | 4 Gi | sì |
-| `CouchDB CPU request` | Numero minimo di CPU da assegnare a CouchDB.| 1 | sì |
-| `CouchDB CPU limit` | Numero massimo di CPU da assegnare a CouchDB. | 2 | sì |
-| `CouchDB Memory request` | Quantità minima di memoria da assegnare a CouchDB.| 1Gi | sì |
-| `CouchDB Memory limit` | Quantità massima di memoria da assegnare a CouchDB. | 4 Gi | sì |
+| `Docker-in-Docker CPU request`| Specifica il numero minimo di CPU da allocare al contenitore in cui viene eseguito il chaincode. | 1 | sì |
+| `Docker-in-Docker CPU limit`| Specifica il numero massimo di CPU da allocare al contenitore in cui viene eseguito il chaincode. | 2 | sì |
+| `Docker-in-Docker memory request`| Specifica la quantità minima di memoria da allocare al contenitore in cui viene eseguito il chaincode. | 1Gi | sì |
+| `Docker-in-Docker memory limit`| Specifica la quantità massima di memoria da allocare al contenitore in cui viene eseguito il chaincode. | 4 Gi | sì |
+| `gRPC web proxy CPU request`| Specifica il numero minimo di CPU in millicpu (m) da allocare al proxy web gRP. | 100m | sì |
+| `gRPC web proxy CPU limit`| Specifica il numero massimo di CPU in millicpu (m) da allocare al proxy web gRP. | 200m | sì |
+| `gRPC web proxy memory request`| Specifica la quantità minima di memoria da allocare al proxy web gRPC. | 100Mi | sì |
+| `gRPC web proxy memory limit`| Specifica la quantità massima di memoria da allocare al proxy web gRPC. | 200Mi | sì |
+| `Peer CPU request` | Numero minimo di CPU da allocare al peer. | 1 | sì |
+| `Peer CPU limit` | Numero massimo di CPU da allocare al peer.| 2 | sì |
+| `Peer Memory request` | Quantità minima di memoria da allocare al peer. | 1Gi | sì |
+| `Peer Memory limit` | Quantità massima di memoria da allocare al peer. | 4 Gi | sì |
+| `CouchDB CPU request` | Numero minimo di CPU da allocare a CouchDB.| 1 | sì |
+| `CouchDB CPU limit` | Numero massimo di CPU da allocare a CouchDB. | 2 | sì |
+| `CouchDB Memory request` | Quantità minima di memoria da allocare a CouchDB.| 1Gi | sì |
+| `CouchDB Memory limit` | Quantità massima di memoria da allocare a CouchDB. | 4 Gi | sì |
 
 
 Quando si seleziona CouchDB come database peer, nel pod vengono creati due contenitori, uno per il peer e uno per CouchDB.
@@ -224,7 +234,7 @@ processes. This container has two volume mounts, one for the Peer PVC and the se
 ### Utilizzo della riga di comando Helm per installare la release Helm
 {: #icp-peer-deploy-helm-cli}
 
-In alternativa, puoi utilizzare la CLI `helm` per installare la release Helm. Prima di eseguire il comando `helm install`, assicurati di [aggiungere il repository Helm del tuo cluster all'ambiente CLI Helm ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_int_helm_repo_to_cli.html "Adding the internal Helm repository to Helm CLI").
+In alternativa, puoi utilizzare la CLI `helm` per installare la release Helm. Prima di eseguire il comando `helm install`, assicurati di [aggiungere il repository Helm del tuo cluster all'ambiente CLI Helm ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/app_center/add_int_helm_repo_to_cli.html "Adding the internal Helm repository to Helm CLI").
 
 Puoi configurare i parametri necessari per l'installazione creando un file `yaml` e passandolo al seguente comando `helm install`.
 ```

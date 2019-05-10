@@ -74,7 +74,7 @@ Se sei un membro della rete invitato, fai clic sul pulsante **Invito in attesa -
 1. Nella schermata "Introduzione", immetti il nome della tua organizzazione e fai clic su **Avanti**.
 2. Nella schermata "Rivedi le regole di governance", visualizza le politiche di governance di adesione, creazione del canale e chaincode. Fai clic su **Next**.
 3. (Facoltativo) Nella schermata "Aggiungi peer", scegli la quantità di peer che vuoi aggiungere. Fai clic su **Next**. Ogni membro in una rete può aggiungere fino a tre peer. Questo passo è facoltativo e puoi aggiungere i tuoi peer in un secondo momento nel Network Monitor. Per ulteriori informazioni sui peer, vedi [Aggiungi peer](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-peers).
-4. Nella schermata "Rivedi riepilogo di rete", verifica la configurazione di rete. Se vuoi apportare modifiche, fare clic su **Precedente** per tornare alle schermate precedenti. Dopo che hai completato la configurazione delle risorse, fai clic su **Fatto**. Sarai informato che la tua adesione alla rete è riuscita. Puoi quindi fare clic su **Entra nel monitoraggio** per aprire il Monitoraggio della rete.
+4. Nella schermata "Rivedi riepilogo di rete", verifica la configurazione di rete. Se vuoi apportare modifiche, fai clic su **Precedente** per tornare alle schermate precedenti. Dopo che hai completato la configurazione delle risorse, fai clic su **Fatto**. Sarai informato che la tua adesione alla rete è riuscita. Puoi quindi fare clic su **Entra nel monitoraggio** per aprire il Monitoraggio della rete.
 
 <!-- or click **Create a Channel** to initiate a channel creation request. You can create channels later in the Network Monitor. For more information, see [Channels](v10_dashboard.html#channels).  -->
 
@@ -88,7 +88,7 @@ Se sei un membro della rete invitato, fai clic sul pulsante **Invito in attesa -
 4. Unisci i peer al canale. Solo i peer associati al canale possono accedere al suo libro mastro. Per ulteriori informazioni, vedi [Canali](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-channels).
 5. Installa e istanzia il chaincode. Tutti i membri del canale devono installare lo stesso chaincode con lo stesso nome e la stessa versione su ogni peer che eseguirà il chaincode. Dopo aver installato il chaincode, devi istanziarlo sul canale prima di poterlo utilizzare. Per ulteriori informazioni, vedi [Installazione, istanziazione e aggiornamento di un chaincode](/docs/services/blockchain/howto/install_instantiate_chaincode.html#install-instantiate-chaincode).
 
-**Nota**: per ottenere un'elevata disponibilità, ciascuna organizzazione deve acquistare almeno due peer e, in un canale, ogni membro partecipante deve unire almeno due peer.
+**Nota**: per ottenere un'alta disponibilità, ciascuna organizzazione deve acquistare almeno due peer e, in un canale, ogni membro partecipante deve unire almeno due peer.
 
 
 ## Richiamo delle credenziali di rete e profilo di connessione

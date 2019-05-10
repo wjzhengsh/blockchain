@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018,2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -39,7 +39,7 @@ Vous devez installer le code blockchain sur chaque homologue qui va exécuter le
 
 2. Dans la fenêtre contextuelle **Installer le code blockchain**, entrez le nom et la version de votre code blockchain. **Notez** que les chaînes de nom et de version seront utilisées dans les applications pour interagir avec le code blockchain installé. Cliquez sur le bouton **Parcourir** et parcourez votre code système de fichiers local jusqu'à l'emplacement de stockage de la source de votre code blockchain. Sélectionnez un ou plusieurs fichiers source de code blockchain à installer sur votre homologue. Sélectionnez ensuite votre langage de code blockchain dans le menu déroulant **Type de code blockchain**.
 
-Vous pouvez installer le code blockchain en téléchargeant un ou plusieurs fichiers GO ou NODE , ou encore télécharger le code blockchain dans un fichier .zip. L'utilisation d'un fichier .zip préserve votre code blockchain avec la structure de répertoire complète. Ceci s'avère utile si vous désirez inclure des modules de dépendances, ou utiliser les index avec CouchDB. Pour plus d'informations sur CouchDB et la façon de définir des index, voir  [Meilleurs pratiques lors de l'utilisation de CouchDB](/docs/services/blockchain/v10_application.html#dev-app-couchdb-indices) dans le tutoriel Développement d'applications. Vous pouvez également trouver des informations sur la [gestion de dépendances externes pour code blockchain rédigé en GO ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/chaincode4ade.html#managing-external-dependencies-for-chaincode-written-in-go){:new_window} dans la documentation Hyperledger Fabric.
+Vous pouvez installer le code blockchain en téléchargeant un ou plusieurs fichiers GO ou NODE , ou encore télécharger le code blockchain dans un fichier .zip. L'utilisation d'un fichier .zip préserve votre code blockchain avec la structure de répertoire complète. Ceci s'avère utile si vous désirez inclure des modules de dépendances, ou utiliser les index avec CouchDB. Pour plus d'informations sur CouchDB et la façon de définir des index, voir [Meilleurs pratiques lors de l'utilisation de CouchDB](/docs/services/blockchain/best_practices.html#best-practices-app-couchdb-indices) dans le tutoriel Développement d'applications. Vous pouvez également trouver des informations sur la [gestion de dépendances externes pour code blockchain rédigé en GO ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/chaincode4ade.html#managing-external-dependencies-for-chaincode-written-in-go){:new_window} dans la documentation Hyperledger Fabric.
 
   ![Installer le code blockchain](../images/chaincode_install.png "Installer le code blockchain")
 
@@ -60,7 +60,7 @@ Vous devez posséder les droits **Opérateur** ou **Rédacteur** sur le canal po
   ![Instantiate Chaincode panel](../images/chaincode_instantiate_panel.png "Instantiate Chaincode panel")
 -->
 
-3. Spécifiez la [règle de validation](/docs/services/blockchain/glossary.html#glossary-endorsement-policy) de votre code blockchain. Plus d'informations sur la définition de règles de validation figurent dans la [section suivante](/docs/services/blockchain/howto/install-instantiate-chaincode.html#install-instantiate-chaincode-endorsement-policy).
+3. Spécifiez la [règle de validation](/docs/services/blockchain/glossary.html#glossary-endorsement-policy) de votre code blockchain. Plus d'informations sur la définition de règles de validation figurent dans la [section suivante](#install-instantiate-chaincode-endorsement-policy).
 
 
 ## Spécification de règles de validation pour le code blockchain

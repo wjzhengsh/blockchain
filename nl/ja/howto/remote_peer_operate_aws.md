@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-03-20"
 
 subcollection: blockchain
 
@@ -28,7 +28,7 @@ Hyperledger Fabric SDK には強力な API のセットが用意されており�
 
 以下の手順では、[Fabric Node SDK ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://fabric-sdk-node.github.io/ "jode.js 用の Hyperledger Fabric SDK") を使用してピアを操作するため、事前に SDK に精通していることが前提となっています。 [アプリケーションの開発チュートリアル](/docs/services/blockchain/v10_application.html#dev-app)を使用して、作業を開始する前に Node SDK の使用方法を学習できます。このチュートリアルは、チェーンコードを呼び出して照会する準備ができたときに、ピアを使用してアプリケーションを開発する際のガイドとしても活用できます。
 
-{{site.data.keyword.blockchainfull_notm}} Platform Peer on AWS のクイック・スタートでは、高可用性を実現するために 2 つのピアが作成されます。 したがって、ピアごとに 1 回、操作ステップに従う必要があります。 ご使用のアプリケーションからチェーンコードを照会して呼び出す準備ができたら、SDK を両方のピアに接続することで、ご使用の[アプリケーションの高可用性を確保](/docs/services/blockchain/v10_application.html#dev-app-ha-app)してください。
+{{site.data.keyword.blockchainfull_notm}} Platform Peer on AWS のクイック・スタートでは、高可用性を実現するために 2 つのピアが作成されます。 したがって、ピアごとに 1 回、操作ステップに従う必要があります。 ご使用のアプリケーションからチェーンコードを照会して呼び出す準備ができたら、SDK を両方のピアに接続することで、ご使用の[アプリケーションの高可用性を確保](/docs/services/blockchain/best_practices.html#best-practices-app-ha-app)してください。
 
 ### Node SDK のインストール
 {: #remote-peer-aws-operate-install-sdk}

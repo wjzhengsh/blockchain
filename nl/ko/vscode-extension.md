@@ -134,7 +134,7 @@ Hyperledger Fabric 컨테이너가 중지되고 다시 시작됩니다.
 4. **인증 기관** > **인증서 생성**을 클릭하고 인증서 및 개인 키를 파일 시스템에 저장하여 필요한 관리자 인증서를 생성하십시오.
 5. **멤버** > **인증서** > **인증서 추가**를 클릭하고 이전 단계에서 작성된 인증서를 선택하여 인증서를 {{site.data.keyword.blockchainfull_notm}} Platform 스타터 플랜 인스턴스에 추가하십시오.
 6. Visual Studio Code에서 {{site.data.keyword.blockchainfull_notm}} Platform 확장 보기를 열고 **새 연결 추가**를 클릭하십시오.
-7. 연결 이름 및 연결 프로파일에 대한 경로를 입력하고 파일 시스템에서 기존 [지갑![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/developapps/wallet.html "지갑")을 선택하거나 인증서 및 개인 키를 사용하여 새 지갑을 작성하십시오. 
+7. 연결 이름 및 연결 프로파일에 대한 경로를 입력하고 파일 시스템에서 기존 [지갑![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/developapps/wallet.html "지갑")을 선택하거나 인증서 및 개인 키를 사용하여 새 지갑을 작성하십시오.
 
 ### 고유한 Hyperledger Fabric 인스턴스에 연결
 {: #develop-vscode-connecting-to-own-Fabric-instance}

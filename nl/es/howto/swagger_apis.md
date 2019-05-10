@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018,2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-03"
 
 subcollection: blockchain
 
@@ -79,6 +79,29 @@ La **Figura 6** muestra el cuerpo de respuesta de la API, el URL y el mandato CU
 
 ![Respuesta de API en la IU de Swagger](../images/swaggerUICurlResponse.png "Respuesta de API en la IU de Swagger")  
 *Figura 6. Respuesta de API*    
+
+## Inhabilitación del acceso de API
+{: #ibp-swagger-turn-off}
+
+De forma predeterminada, todos los usuarios que tengan un rol que no sea Auditor en IBM Cloud, pueden ver y utilizar las
+**credenciales de red** visibles en el panel de API de Swagger y, por lo tanto, pueden gestionar la red utilizando las API. No obstante, si prefiere no exponer las credenciales de red de la API de Swagger en la interfaz de usuario, puede copiar y proteger los valores de clave y de secreto existentes y generar nuevas credenciales que sean válidas para su uso con las API de Swagger. Se proporciona un distintivo, denominado resetCredentials, que le permite controlar el acceso realizando los pasos siguientes:
+
+1. Siga los pasos para generar una nueva credencial de red tal como se describe en el
+[Panel de control de credenciales de servicio](/docs/services/blockchain/howto/create_join_network_with_apis.html#swagger-network-retrieve-id-token).
+2. No obstante, en el recuadro **Añadir parámetros de configuración en línea**, pegue el valor siguiente:
+   ```
+   {
+     "resetCredentials": true
+   }
+   ```
+   {:codeblock}
+3. Pulse **Añadir**.
+
+Ahora, cuando cualquier usuario acceda al panel de API de Swagger desde la interfaz de usuario, la información de **Credenciales de red** de la interfaz de usuario incluirá un valor de clave y de secreto genérico que no es válido para gestionar la red. Las solicitudes de API enviadas utilizando estas credenciales no se procesarán.  
+
+Si, posteriormente, desea exponer credenciales de red válidas en la interfaz de usuario, repita simplemente los pasos anteriores para generar una credencial nueva, pero deje en blanco el recuadro **Añadir parámetros de configuración en línea** en esta ocasión. No es necesario que especifique ningún parámetro.
+
+Ahora, las credenciales válidas originales serán visibles en la información de **Credenciales de red** de la interfaz de usuario y se podrán utilizar para autenticar las API de Swagger.
 
 ## Consejos para la resolución de problemas
 {: #ibp-swagger-troubleshooting}

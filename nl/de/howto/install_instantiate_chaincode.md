@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018,2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -38,7 +38,7 @@ Sie müssen den Chaincode auf allen Peers installieren, auf denen dieser Chainco
 
 2. Geben Sie in der Popup-Anzeige **Chaincode** den Namen und die Version Ihres Chaincodes ein. **Hinweis:** Die Zeichenfolgen für den Namen und die Version werden in Anwendungen für die Interaktion mit dem installierten Chaincode verwendet. Klicken Sie auf die Schaltfläche **Durchsuchen**, um im lokalen Dateisystem zur Speicherposition der Chaincode-Quellendateien zu navigieren. Wählen Sie mindestens eine Chaincode-Quellendatei aus, die für den Peer installiert werden soll. Wählen Sie dann die Chaincode-Sprache in der Dropdown-Liste **Chaincode-Typ** aus.
 
-Sie können Chaincode installieren, indem Sie GO- oder NODE-Dateien hochladen. Sie können auch Chaincode in einer ZIP-Datei hochladen. Wenn Sie eine ZIP-Datei verwenden, wird der Chaincode mit der gesamten Verzeichnisstruktur beibehalten. Dies ist hilfreich, wenn Pakete mit Abhängigkeiten berücksichtigt oder Indizes mit CouchDB verwendet werden sollen. Weitere Angaben über CouchDB und das Konfigurieren von Indizes enthält der Abschnitt [Best Practices bei der Verwendung von CouchDB](/docs/services/blockchain/v10_application.html#dev-app-couchdb-indices) im Lernprogramm "Anwendungen entwickeln". Informationen finden Sie außerdem im Abschnitt über das [Management von externen Abhängigkeiten für in GO geschriebenen Chaincode ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/chaincode4ade.html#managing-external-dependencies-for-chaincode-written-in-go){:new_window} in der Hyperledger Fabric-Dokumentation.
+Sie können Chaincode installieren, indem Sie GO- oder NODE-Dateien hochladen. Sie können auch Chaincode in einer ZIP-Datei hochladen. Wenn Sie eine ZIP-Datei verwenden, wird der Chaincode mit der gesamten Verzeichnisstruktur beibehalten. Dies ist hilfreich, wenn Pakete mit Abhängigkeiten berücksichtigt oder Indizes mit CouchDB verwendet werden sollen. Weitere Angaben über CouchDB und das Konfigurieren von Indizes enthält der Abschnitt [Best Practices bei der Verwendung von CouchDB](/docs/services/blockchain/best_practices.html#best-practices-app-couchdb-indices) im Lernprogramm "Anwendungen entwickeln". Informationen finden Sie außerdem im Abschnitt über das [Management von externen Abhängigkeiten für in GO geschriebenen Chaincode ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/chaincode4ade.html#managing-external-dependencies-for-chaincode-written-in-go){:new_window} in der Hyperledger Fabric-Dokumentation.
 
   ![Chaincode installieren](../images/chaincode_install.png "Chaincode installieren")
 
@@ -59,7 +59,7 @@ Sie müssen über die Berechtigung **Operator** oder **Schreibberechtigter** fü
   ![Instantiate Chaincode panel](../images/chaincode_instantiate_panel.png "Instantiate Chaincode panel")
 -->
 
-3. Geben Sie die [Bewilligungsrichtlinie](/docs/services/blockchain/glossary.html#glossary-endorsement-policy) Ihres Chaincodes an. Anleitungen zum Festlegen von Bewilligungsrichtlinien finden Sie im [nächsten Abschnitt](/docs/services/blockchain/howto/install-instantiate-chaincode.html#install-instantiate-chaincode-endorsement-policy).
+3. Geben Sie die [Bewilligungsrichtlinie](/docs/services/blockchain/glossary.html#glossary-endorsement-policy) Ihres Chaincodes an. Anleitungen zum Festlegen von Bewilligungsrichtlinien finden Sie im [nächsten Abschnitt](#install-instantiate-chaincode-endorsement-policy).
 
 
 ## Bewilligungsrichtlinien des Chaincodes angeben

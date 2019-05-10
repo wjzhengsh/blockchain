@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-03-20"
 
 subcollection: blockchain
 
@@ -150,4 +150,4 @@ Si utiliza CouchDB como base de datos de estado, puede realizar consultas de dat
 
 Para obtener más información sobre CouchDB y cómo configurar índices, consulte
 [CouchDB como base de datos de estado ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/couchdb_as_state_database.html "CouchDB como base de datos de estado"){:new_window} en la documentación de Hyperledger Fabric. También encontrará un ejemplo que utiliza un índice con código de encadenamiento en la [guía de aprendizaje de CouchDB de Fabric ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/couchdb_tutorial.html). Consulte
-[Prácticas recomendadas al utilizar CouchDB](/docs/services/blockchain/v10_application.html#dev-app-couchdb-indices) en la guía de aprendizaje de desarrollo de aplicaciones para obtener más información sobre cómo consultar datos desde sus aplicaciones.
+[Prácticas recomendadas al utilizar CouchDB](/docs/services/blockchain/best_practices.html#best-practices-app-couchdb-indices) en la guía de aprendizaje de desarrollo de aplicaciones para obtener más información sobre cómo consultar datos desde sus aplicaciones.

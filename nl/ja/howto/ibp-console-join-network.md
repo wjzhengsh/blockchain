@@ -2,8 +2,7 @@
 
 copyright:
   years: 2019
-
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -21,7 +20,7 @@ subcollection: blockchain
 # ネットワーク参加のチュートリアル
 {: #ibp-console-join-network}
 
-{{site.data.keyword.blockchainfull}} Platform は、ブロックチェーンのアプリケーションとネットワークを開発、デプロイ、および操作することを可能にする、サービスとしてのブロックチェーン・オファリングです。 ブロックチェーンの各コンポーネントの概要およびコンポーネント同士の連携について詳しくは、[ブロックチェーン・コンポーネントの概要](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview)を参照してください。 このチュートリアルは、[サンプル・ネットワーク・チュートリアル・シリーズ](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-sample-tutorial)の第 2 部であり、{{site.data.keyword.blockchainfull_notm}} Platform コンソールでノードを作成して、これらを別のクラスターでホストされているブロックチェーン共同事業体に接続する方法について説明しています。
+{{site.data.keyword.blockchainfull}} Platform は、ブロックチェーンのアプリケーションとネットワークを開発、デプロイ、運用できるようにする Blockchain as a Service オファリングです。 ブロックチェーンの各コンポーネントの概要およびコンポーネント同士の連携について詳しくは、[ブロックチェーン・コンポーネントの概要](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview)を参照してください。 このチュートリアルは、[サンプル・ネットワーク・チュートリアル・シリーズ](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-sample-tutorial)の第 2 部であり、{{site.data.keyword.blockchainfull_notm}} Platform コンソールでノードを作成して、これらを別のクラスターでホストされているブロックチェーン共同事業体に接続する方法について説明しています。
 {:shortdesc}
 
 
@@ -42,10 +41,10 @@ subcollection: blockchain
 * [ネットワークにスマート・コントラクトをデプロイする](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts)では、スマート・コントラクトを作成してネットワークにデプロイする方法を学習します。
 
 これらのチュートリアルの手順を使用すれば、複数の組織が参加する開発テスト用のネットワークを 1 つのクラスター内に構築できます。 順序付けサービス・ノードを作成して組織を追加することで、
-ブロックチェーン・コンソーシアムを形成する場合は、**ネットワーク構築**のチュートリアルを使用してください。ピアをネットワークに接続するには、**ネットワーク参加**のチュートリアルを使用してください。 さまざまなコンソーシアム・メンバーと一緒にこれらのチュートリアルを進めると、実際に**分散した**ブロックチェーン・ネットワークを作成できます。  
+ブロックチェーン・コンソーシアムを形成する場合は、**ネットワーク構築**のチュートリアルを使用してください。 ピアをネットワークに接続するには、**ネットワーク参加**のチュートリアルを使用してください。 さまざまなコンソーシアム・メンバーと一緒にこれらのチュートリアルを進めると、実際に**分散した**ブロックチェーン・ネットワークを作成できます。  
 
 
-このチュートリアルの目的は、**既存の**ネットワークにピアを参加させる方法を示すことです。 このチュートリアルでは、ネットワークをホストする順序付けプログラムが、ご使用のクラスター上または別の {{site.data.keyword.blockchainfull_notm}} Platform クラスター上に既に存在しているものと想定しています。 参加先となる既存のネットワークがない場合は、[ネットワーク構築チュートリアル](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network)のチュートリアルを参照してネットワークの作成方法を確認してください。**ネットワーク参加**のチュートリアルでは、以下の図で青い四角枠で強調表示している `Org2` ブロックチェーン・コンポーネントを作成するステップを説明します。
+このチュートリアルの目的は、**既存の**ネットワークにピアを参加させる方法を示すことです。 このチュートリアルでは、ネットワークをホストする順序付けプログラムが、ご使用のクラスター上または別の {{site.data.keyword.blockchainfull_notm}} Platform クラスター上に既に存在しているものと想定しています。 参加先となる既存のネットワークがない場合は、[ネットワーク構築チュートリアル](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network)のチュートリアルを参照してネットワークの作成方法を確認してください。 **ネットワーク参加**のチュートリアルでは、以下の図で青い四角枠で強調表示している `Org2` ブロックチェーン・コンポーネントを作成するステップを説明します。
 ![ネットワーク参加の構造](../images/ib2-join-network.png "ネットワーク参加の構造")  
 *図 1. ネットワーク参加の構造*  
 **ネットワーク参加**のチュートリアルのステップを実行して、以下のコンポーネントを作成し、以下のアクションを実行してください。
@@ -77,11 +76,12 @@ subcollection: blockchain
 
 コンソールから以下の手順を実行します。  
 
-1. 左側の**「ノード」**タブにナビゲートし、**「認証局の追加 (Add Certificate Authority)」**をクリックします。 4 つのステップからなるサイド・パネルを使用して、作成する CA をカスタマイズできるとともに、この CA によって鍵が発行される対象となる組織をカスタマイズできます。
+1. 左側の**「ノード」**タブにナビゲートし、**「認証局の追加 (Add Certificate Authority)」**をクリックします。 サイド・パネルを使用して、作成する CA をカスタマイズできるとともに、この CA によって鍵が発行される対象となる組織をカスタマイズできます。
 2. **「認証局の作成 (Create Certificate Authority)」**の下の**「{{site.data.keyword.cloud_notm}}」**をクリックします。
 3. 2 つ目のサイド・パネルを使用して、CA に**表示名**を付けます。 この CA の推奨値は `Org2 CA` です。
 4. 次のパネルで、CA 管理者に資格情報を割り当てます。このためには、**「管理者 ID (Admin ID)」**として `admin` を指定して、希望する任意の秘密を付与します (ただし、このチュートリアルの推奨値は `adminpw`)。
-5. **「次へ」**をクリックして、**「認証局の追加 (Add certificate authority)**」をクリックします。
+5. 有料クラスターを使用している場合は、次のパネルで、ノードのリソース割り振りを構成できます。このチュートリアルでは、すべてのデフォルトを受け入れ、**「次へ」**をクリックしてかまいません。リソースをノードに割り振る方法について詳しくは、[リソースの割り振り](/docs/services/blockchain?topic=blockchain-ibp-console-govern#ibp-console-govern-allocate-resources)のトピックを参照してください。無料クラスターを使用している場合は、既に**「サマリー」**ページが表示されています。
+6. 「サマリー」ページを確認し、**「認証局の追加 (Add certificate authority)」**をクリックします。
 
 **タスク: ピア組織の CA の作成**
 
@@ -92,6 +92,8 @@ subcollection: blockchain
 *図 2. ピア組織の CA の作成*  
 CA をデプロイした後に、組織 MSP の作成時やユーザーの登録時にその CA を使用するとともに、ネットワークへのエントリー・ポイント (**ピア**) を作成するためにその CA を使用します。
 
+既に独自の CA を所有している上級ユーザーは、コンソールで CA を新規作成する必要はない可能性があります。既存の CA が `X.509` 形式の証明書を発行できる場合は、ここで新規 CA を作成せずに、その独自のサード・パーティー CA を使用できます。詳しくは、[サード・パーティー CA をピアまたは順序付けプログラムに使用する方法](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-identities)を参照してください。
+
 ### CA を使用して ID を登録する
 {: #ibp-console-join-network-use-CA-org2}
 
@@ -100,12 +102,15 @@ CA をデプロイした後に、組織 MSP の作成時やユーザーの登録
 * **組織管理者** このアイデンティティーを使用すると、プラットフォーム・コンソールを使用してノードを操作できます。
 * **ピア・アイデンティティー** このアイデンティティーを使用すると、ピアをデプロイできます。
 
+クラスターのタイプによっては、CA のデプロイメントに最大 10 分かかることがあります。CA タイルの緑色の正方形は、CA が「実行中」であり、ID の登録に使用できることを意味します。ID を登録する下記の手順を始める前に、CA の状況が「実行中」になるまで待つ必要があります。
+{:important}
+
 これらの証明書を生成するには、以下のステップを実行します。
 
-1. コンソールで、**「ノード」**タブを使用して、作成した `Org2 CA` にナビゲートします。
-2. CA を選択した後に、ピア自体のアイデンティティーに加えて、この組織 (`org2`) の管理者を登録する必要があります。 このページには ID が既に表示されています。これは CA のために作成した管理者です。 新規ユーザーを登録するには、**「ユーザーの登録」**ボタンをクリックします。
+1. コンソールで、**「ノード」**タブをクリックします。`Org2 CA` の右上隅にある状況標識が緑色で`「実行中」`になっていれば、タイルをクリックして開きます。
+2. CA をクリックして開いたら、ピア自体のための ID に加えて、この組織 `org2` のための管理者 ID も登録する必要があります。作成したばかりの `admin` ID が表に表示されるまで待ってから、**「ユーザーの登録」**ボタンをクリックして新規ユーザーを登録します。
 3. 組織管理者については、`org2admin` という登録 ID を付与します。 任意の機密事項を使用できますが、チュートリアルをわかりやすくするために `org2adminpw` という値を推奨します。 **「次へ」**をクリックします。
-4. 次のステップで、この ID の「タイプ」を`クライアント`に設定し、ドロップダウン・リストから任意の所属団体組織を選択します。 「アフィリエーション」フィールドは上級ユーザー向けであり、このチュートリアルでは使用しません。 リストの項目は Fabric CA 内のデフォルトのアフィリエーションです。 Fabric CA によるアフィリエーションの使用方法について詳しくは、[Registering a new identity ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/users-guide.html#registering-a-new-identity) のトピックを参照してください。 ここでは、リストから任意のアフィリエーションを選択して (`org2` など)、**「次へ」**をクリックします。
+4. 次のステップで、この ID の「タイプ」を`クライアント`に設定し、ドロップダウン・リストから任意の所属団体組織を選択する必要があります。 「アフィリエーション」フィールドは上級ユーザー向けであり、このチュートリアルでは使用しませんが、このパネルの必須フィールドです。 リストの項目は Fabric CA 内のデフォルトのアフィリエーションです。 Fabric CA によるアフィリエーションの使用方法について詳しくは、[Registering a new identity ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/users-guide.html#registering-a-new-identity) のトピックを参照してください。 ここでは、リストから任意のアフィリエーションを選択して (`org2` など)、**「次へ」**をクリックします。
 5. **「最大エンロール回数 (Maximum Enrollments)」**フィールドと**「属性の追加 (Add Attributes)」**フィールドはブランクのままでかまいません。 このチュートリアルでは使用しません。ただし、これらの使用方法については、[ID の登録](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-register)のトピックで詳しく説明しています。
 6. 組織管理者が登録された後に、ピアのアイデンティティーについてステップ 2 からステップ 5 を繰り返します。ここでは、同じ `Org2 CA` を使用して、`peer2` という登録 ID をピアに割り当てます。 先ほどと同じように、チュートリアルをわかりやすくするために `peer2pw` という機密事項を使用することを推奨します。 これはノード ID なので、次のステップでは**「タイプ」**に`ピア`を選択します。 そして、前と同じく、**「最大エンロール回数 (Maximum Enrollments)」**および**「属性 (Attributes)」**は無視します。
 
@@ -126,7 +131,7 @@ CA をデプロイした後に、組織 MSP の作成時やユーザーの登録
 1. 左側ナビゲーションの**「組織」**タブにナビゲートし、**「MSP 定義の作成 (Create MSP definition)」**をクリックします。
 2. MSP に表示名 (`Org2 MSP` など) と ID (`org2msp` など) を割り当てます。 このフィールドで独自の MSP ID を指定する場合は、ツールチップに表示されるこの名前の制限事項に関する指定内容に従ってください。
 3. **「ルート認証局の詳細 (Root Certificate Authority details)」**で、作成したピアの CA を組織のルート CA として指定します。 このチュートリアルを今回初めて実行する場合は、`Org2 CA` という 1 つの CA のみが表示されます。 これを選択します。
-4. これの下の**「登録 ID」**フィールドと**「機密事項の登録」**フィールドには、CA を使用して作成した最初のユーザーの登録 ID と機密事項が自動的に入力されます。 それらの値を使用することもできますが、CA 管理者 ID を組織管理者として使用することは推奨されていません。セキュリティー上の理由で、代わりに組織管理者の作成済みの登録 ID と機密事項、`org2admin` と `org2adminpw` を入力することをお勧めします。次に、このアイデンティティーに表示名 (`Org2 Admin` など) を割り当てます。
+4. これの下の**「登録 ID」**フィールドと**「機密事項の登録」**フィールドには、CA を使用して作成した最初のユーザーの登録 ID と機密事項が自動的に入力されます。 それらの値を使用することもできますが、CA 管理者 ID を組織管理者として使用することは推奨されていません。  セキュリティー上の理由で、代わりに組織管理者の作成済みの登録 ID と機密事項、`org2admin` と `org2adminpw` を入力することをお勧めします。 次に、このアイデンティティーに表示名 (`Org2 Admin` など) を割り当てます。
 5. **「生成 (Generate)」**ボタンをクリックして、このアイデンティティーを組織の管理者として登録して、このアイデンティティーをウォレットにエクスポートします。これは、ピアの作成時やチャネルの作成時に使用されます。
 6. **「エクスポート」**をクリックして、管理者の証明書をファイル・システムにエクスポートします。 前述のように、この ID はクラスターに保管されることも {{site.data.keyword.IBM_notm}} によって管理されることもありません。 これはブラウザーのローカル・ストレージのみに保管されます。 ブラウザーを変更する場合は、ピアを管理できるようにするために、この ID をコンソール・ウォレットにインポートする必要があります。
 7. **「MSP 定義の作成 (Create MSP definition)」**をクリックします。
@@ -181,8 +186,9 @@ MSP をエクスポートして保存することは重要です。これによ�
 5. 次のサイド・パネルでは、TLS CA 情報が求められます。 CA を使用してデプロイした TLS CA の別個の管理者を作成することは可能ですが、その必要はありません。
    - **「TLS 登録 ID (TLS Enroll ID)」**として `admin` を指定して、機密事項として `adminpw` を指定します。これらは、CA の作成時に指定した登録 ID や登録機密事項と同じ値です。
    - **「TLS CSR ホスト名 (TLS CSR hostname)」**は上級ユーザー向けであり、ピア・エンドポイントのアドレスを指定するために使用できるカスタム・ドメイン名を指定する場合に使用されます。 ここでは**「TLS CSR ホスト名 (TLS CSR hostname)」**はブランクのままにします。これはこのチュートリアルでは使用しません。
-6. 最後のサイド・パネルでは、**ID を関連付けて**、ピアの管理者にすることを要求されます。 ピア管理者アイデンティティーとして `Org2 Admin` を選択します。
-7. 要約を確認し、**「ピアの追加」**をクリックします。
+6. 次のサイド・パネルでは、**ID を関連付けて**、ピアの管理者にすることを要求されます。ピア管理者アイデンティティーとして `Org2 Admin` を選択します。
+7. 有料クラスターを使用している場合は、次のパネルで、ノードのリソース割り振りを構成できます。このチュートリアルでは、すべてのデフォルトを受け入れ、**「次へ」**をクリックしてかまいません。リソースをノードに割り振る方法について詳しくは、[リソースの割り振り](/docs/services/blockchain?topic=blockchain-ibp-console-govern#ibp-console-govern-allocate-resources)のトピックを参照してください。無料クラスターを使用している場合は、既に**「サマリー」**ページが表示されています。
+8. 「サマリー」ページで、**「ピアの追加」**をクリックします。
 
 **タスク: ピアのデプロイ**
 
@@ -281,11 +287,14 @@ MSP をエクスポートして保存することは重要です。これによ�
 2. 「Orderer」という名前の順序付けプログラムを選択して、**「次へ」**をクリックします。
 3. 参加するチャネルの名前 (`channel1`) を入力して、**「次へ」**をクリックします。
 4. チャネルに参加させるピアを選択します。 このチュートリアルでは、`Peer Org2` をクリックします。
-5. **「ピアへの参加 (Join peer)」**をクリックします。
+5. **「チャネルへの参加 (Join channel)」**をクリックします。
 
-Hyperledger Fabric の [Private Data ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/latest/private-data/private-data.html "Private Data") または [Service Discovery ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/latest/discovery-overview.html "Service Discovery") の機能を利用する予定の場合は、組織内のアンカー・ピアを**「チャネル」**タブで構成する必要があります。 コンソールの**「チャネル」**タブを使用して[プライベート・データ用のアンカー・ピアを構成する方法](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-private-data)に関するトピックを参照してください。
+ピアを参加させるチャネルを自分で作成した場合に、まだそのチャネルにどのピアも参加させていなければ、そのチャネルの処理中のタイルを直接クリックして、ピアを参加させることができます。
+{:note}
 
-組織が共同事業体のメンバーになったら、新しいチャネルを作成することもできます。 [Build a network tutorial](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network) に記載されている[チャネルを作成](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-create-channel)するためのステップを実行してください。
+Hyperledger Fabric の [Private Data ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/private-data/private-data.html "Private Data") または [Service Discovery ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/discovery-overview.html "Service Discovery") の機能を利用する予定の場合は、組織内のアンカー・ピアを**「チャネル」**タブで構成する必要があります。 コンソールの**「チャネル」**タブを使用してプライベート・データ用のアンカー・ピアを構成する方法について詳しくは、[プライベート・データ](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-private-data)を参照してください。
+
+組織がコンソーシアムのメンバーになっている場合は、新しいチャネルを作成することもできます。 [ネットワーク構築チュートリアル](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network)で説明されている[チャネルを作成する](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-create-channel)手順を実行してください。
 
 ## 次のステップ
 {: #ibp-console-join-network-next-steps}

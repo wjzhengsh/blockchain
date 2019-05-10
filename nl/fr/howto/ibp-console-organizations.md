@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-03"
 
 subcollection: blockchain
 
@@ -71,6 +71,85 @@ Comme vos certificats admin sont transmis à vos noeuds et canaux à l'aide de l
 
 Une fois que vous avez sélectionné votre autorité de certification racine, l'ID MSP et créé vos certificats admin, cliquez sur **Créer une définition MSP** pour créer la définition MSP. Elle est désormais répertoriée en tant qu'organisation sous l'onglet Organisations. Vous utiliserez cette définition MSP lorsque vous déploierez vos noeuds et rejoindrez un consortium de blockchain.
 
+## Génération manuelle d'un fichier JSON MSP
+{: #console-organizations-build-msp}
+
+**Cette option est destinée aux utilisateurs expérimentés uniquement qui connaissent bien l'utilisation des certificats dans la gestion des identités de blockchain.**
+
+Si vous préférez utiliser des certificats pour votre homologue ou service de tri à partir d'une **autorité de certification externe**, qui n'est pas hébergée par {{site.data.keyword.IBM_notm}}, vous devez générer un fichier JSON de définition MSP qui représente la définition MSP de l'organisation de l'homologue ou service de tri. Créez un fichier JSON en utilisant le format suivant :
+
+```
+{
+    "name": "<organization_name>",
+    "msp_id": "<organization_id>",
+    "type": "msp",
+    "root_certs": [
+        "<root_certs>"
+    ],
+     "intermediate_certs": [
+         "<intermediate_certs>"
+     ],
+    "admins": [
+        "<admins>"
+    ],
+    "tls_root_certs": [
+        "<tls_root_certs>"
+    ],
+    "tls_intermediate_certs": [
+        "<tls_intermediate_certs>"
+    ]
+}
+```
+{:codeblock}
+
+- **organization_name** : indiquez un nom à utiliser pour identifier cette définition MSP sur la console.
+- **organization_id** : indiquez un ID utilisé pour représenter cet MSP en interne sur la console.
+- **root_certs** : (facultatif) collez un tableau contenant un ou plusieurs certificats racines à partir de l'autorité de certification externe au format `base64`. Vous devez fournir un certificat racine d'autorité de certification ou un certificat d'autorité de certification intermédiaire ; vous pouvez aussi fournir les deux.
+- **intermediate_certs** : (facultatif) collez un tableau contenant un ou plusieurs certificats à partir de l'autorité de certification intermédiaire externe au format `base64`. Vous devez fournir un certificat racine d'autorité de certification ou un certificat d'autorité de certification intermédiaire ; vous pouvez aussi fournir les deux.
+- **admins** : collez le certificat signataire de l'admin de l'organisation au format `base64`.
+- **tls_root_certs**: (facultatif) collez un tableau contenant un ou plusieurs certificats racines à partir de l'autorité de certification TLS au format `base64`. Vous devez fournir un certificat racine d'autorité de certification TLS externe ou un certificat d'autorité de certification TLS intermédiaire externe ; vous pouvez aussi fournir les deux.
+- **tls_intermediate_certs** : (facultatif) collez un tableau contenant un ou plusieurs certificats de l'autorité de certification TLS intermédiaire au format `base64`. Vous devez fournir un certificat racine d'autorité de certification TLS externe ou un certificat d'autorité de certification TLS intermédiaire externe ; vous pouvez aussi fournir les deux.  
+
+Les zones supplémentaires suivantes sont également disponibles dans votre définition MSP mais elles ne sont pas obligatoires :
+- **organizational_unit_identifiers** : liste des unités organisationnelles que les membres valides de cet MSP doivent inclure dans leur certificat X.509. Il s'agit d'un paramètre de configuration facultatif qui est utilisé lorsque plusieurs organisations optimisent la même racine de confiance et des autorités de certification intermédiaires, et qu'elles ont réservé une zone d'unité organisationnelle pour leurs membres. Une organisation est souvent divisée en plusieurs unités organisationnelles, chacune ayant un certain nombre de responsabilités. Par exemple, l'organisation ORG1 peuvent avoir les unités organisationnelles ORG1-MANUFACTURING et ORG1-DISTRIBUTION pour refléter ces différents secteurs d'activité. Lorsqu'une autorité de certification émet des certificats X.509, la zone Unité organisationnelle du certificat indique le secteur d'activité auquel appartient l'identité. Pour plus d'informations, consultez cette rubrique dans la Fabric [Identity Classification ![Icône de lien externe](../images/external_link.svg "Icône de lien externe") ](https://hyperledger-fabric.readthedocs.io/en/latest/msp.html#identity-classification "Identity Classification").  
+- **fabric_node_OUs** : unités organisationnelles spécifiques à Fabric qui permettent la classification des identités. `NodeOUs` contient des informations sur la manière de distinguer les clients, les homologues et les services de tri en fonction de l'unité organisationnelle. Si la vérification est imposée, par la définition de Activé sur true, le MSP considère qu'une identité est valide s'il s'agit de l'identité d'un `client`, d'un `homologue` ou d'un `service de tri`. Une identité doit avoir uniquement l'une de ces unités organisationnelles spéciales. Consultez la rubrique contenant un exemple d'indication de `fabric_node_OU` dans un MSP dans la [documentation Fabric Service Discovery![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/latest/discovery-cli.html#configuration-query).
+- **revocation_list** : liste des certificats qui ne sont plus valides. Pour les identités basées sur X.509, ces identificateurs sont des paires de chaînes, appelées identificateur de clé de sujet (SKI) et identificateur d'accès de droits (AKI), et ils sont activés chaque fois que le certificat X.509 est utilisé pour vérifier que le certificat n'est pas révoqué. Consultez la documentation Fabric pour plus d'informations sur les [listes de révocation de certificat![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/users-guide.html?highlight=revocation%20list#revoking-a-certificate-or-identity "Revoking a certificate or identity").
+
+Par exemple, votre fichier JSON peut ressembler à ceci :
+
+```
+{
+    "name": "Org1 MSP",
+    "msp_id": "org1msp",
+    "type": "msp",
+    "root_certs": [
+        "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUNGakNDQWIyZ0F3SUJBZ0lVZFhUcWNZVVhRS3U3WHVQWmcxUHBsekpFVFlNd0NnWUlLb1pJemowRUF3SXcKYURFTE1Ba0dBMVVFQmhNQ1ZWTXhGekFWQmdOVkJBZ1REazV2Y25Sb0lFTmhjbTlzYVc1aE1SUXdFZ1lEVlFRSwpFd3RJZVhCbGNteGxaR2RsY2pFUE1BMEdBMVVFQ3hNR1JtRmljbWxqTS0K"
+    ],
+    "admins": [
+        "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tDQpNSUlDWHpDQ0FnYWdBd0lCQWdJVVp6NFdQdWwxRXRVOUNIcTl4NFg0Y2QwakNpNHdDZ1lJS29aSXpqMEVBd0l3DQphREVMTUFrR0ExVUVCaE1DVlZNeEZ6QVZCZ05WQkFnVERrNXZjblJvSUVOaGNtOXNhVzVoTVJRd0VnWURWUVFLDQpFd3RJZVhCbGNteGxaR2RsY2pFUE1BMEdBMVVFQ3hNR1JtRmljbFLS0tLS0NCg=="
+    ],
+    "tls_root_certs": [
+        "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUNHRENDQWI2Z0F3SUJBZ0lVTzVhWU9WbjNwTkRMZGVLTFlIanRIUEtNTnY4d0NnWUlLb1pJemowRUF3SXcKWFRFTE1Ba0dBMVVFQmhNQ1ZWTXhGekFWQmdOVkJBZ1REazV2Y25Sb0lFTmhjbTlzYVc1aE1SUXdFZ1lEVlFRSwpFd3RJZVhCbGNteGxaR2RsY2pFUE1BMEdBMVVFQ3hNR1JtRmljbWxqTVE0d0RBWamd5TURRM01EQmFNRjB4Q3pBSkJnTlZCQVlUQWxWVE1SY3cKRlFZRFZRUUlFdztLS0K"
+    ]
+}
+```
+{:codeblock}
+
+Notez que tous les certificats doivent être codés au format base64.
+{:important}
+
+Vous pouvez convertir le contenu de votre fichier certificat, `<cert.pem>` du format `PEM` en une chaîne base64, en exécutant la commande suivante sur votre machine locale :
+
+```
+export FLAG=$(if [ "$(uname -s)" == "Linux" ]; then echo "-w 0"; else echo "-b 0"; fi)
+cat <cert.pem> | base64 $FLAG
+```
+{:codeblock}
+
+Sauvegardez cette définition dans un fichier `JSON`.  
+
+Vous avez créé une définition MSP, qui définit l'organisation des noeuds de votre homologue ou service de tri et utilisé les certificats d'une autorité de certification externe. Vous pouvez maintenant revenir aux instructions qui décrivent [Comment utiliser les certificats d'une autorité de certification externe avec votre homologue ou service de tri](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-third-party-ca).
+
 ## Importation d'une définition MSP
 {: #console-organizations-import-msp}
 
@@ -87,13 +166,25 @@ Le consortium des organisations est hébergé par le service de tri.
 Si vous êtes l'administrateur du noeud de service de tri, vous pouvez utiliser la console pour ajouter une organisation au consortium. Accédez à l'onglet **Noeuds** et cliquez sur le noeud de service de tri. Sur le panneau du noeud de service de tri, sous **Membres du consortium**, cliquez sur **Ajouter une organisation**. Un panneau latéral s'affiche qui vous permet d'effectuer votre sélection dans la liste des définitions MSP disponibles que vous avez [importées dans votre onglet Organizations](/docs/services/blockchain/howto/ibp-console-organizations.html#console-organizations-import-msp). Vous pouvez également utiliser l'option **Télécharger JSON** pour importer le fichier de définition MSP créé par une autre organisation directement.
 
 ## Création et édition d'un canal
+{: #console-organizations-create-channel}
 
 Une fois qu'une organisation est ajoutée au consortium, elle peut utiliser le service de tri pour créer un nouveau canal ou être ajoutée à un canal. Les informations qui vous permettent de participer à un canal, comme joindre vos homologues au canal, l'instanciation de contrats intelligents, et la soumission de transactions, sont fournies à l'aide de définitions MSP.
 
 Une fois que votre organisation est ajoutée à un consortium, vous pouvez créer un canal à l'aide de la procédure suivante :
 
-1. Importez le noeud de service de tri qui héberge le consortium sur votre console. Il n'est pas nécessaire que vous soyez administrateur du noeud de service de tri, mais vous devez fournir le nom du noeud de service de tri et les informations de noeud final sur votre console. 
+1. Importez le noeud de service de tri qui héberge le consortium sur votre console. Il n'est pas nécessaire que vous soyez administrateur du noeud de service de tri, mais vous devez fournir le nom du noeud de service de tri et les informations de noeud final sur votre console.
 2. Importez les définitions MSP des organisations que vous voulez ajuter au nouveau canal sur votre console à partir de l'onglet **Organisations**. **Remarque ** : Ces organisations doivent être ajoutées au consortium pour pouvoir être ajoutées à un canal.
 3. Accédez à l'onglet **Canaux** et cliquez sur **Créer un canal**. Un panneau latéral s'affiche qui vous permet d'indiquer le nom du canal, l'appartenance et les règles de canal. Vous pouvez ajouter des organisations qui ont été ajoutées au consortium sur le nouveau canal.
 
 Pour plus d'informations sur ces étapes, voir la section relative à la [création d'un canal](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-create-channel1) dans le tutoriel **Générer un réseau**.
+
+### Mise à jour d'un MSP dans une définition de canal
+{: #console-organizations-update-channel}
+
+Au fil du temps, vous devrez peut-être mettre à jour les certificats dans une définition MSP qui est déjà associée à un canal. Lorsque cette situation se présentera, suivez les étapes de mise à jour de la définition MSP d'une organisation dans le canal :  
+
+1. Accédez à l'onglet **Canaux** sur votre console.
+2. Cliquez sur le canal qui contient le MSP d'organisation que vous voulez partition de service de transfert et ouvrez-le.
+3. Cliquez sur l'onglet **Détails du canal**.
+4. Cliquez sur la vignette du membre de canal associé que vous voulez mettre à jour.
+5. Si vous n'avez pas déjà importé la définition MSP mise à jour sur la console, vous pouvez télécharger le fichier ici. **Remarque :** Cette action ne mettra pas à jour la définition MSP associée sous l'onglet Organisations. Si vous avez déjà mis à jour la définition MSP sous l'onglet Organisations de la console, vous pouvez la sélectionner dans la liste déroulante.

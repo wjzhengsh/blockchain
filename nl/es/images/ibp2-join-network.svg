@@ -59,7 +59,7 @@
 <rect id="Rectangle_2_" x="363" y="133" class="st4" width="106" height="36"/>
 <text transform="matrix(1 0 0 1 386.176 157)" class="st10 st8 st11">CA de Org1</text>
 <rect id="Rectangle_3_" x="305" y="201" class="st4" width="106" height="56"/>
-<text transform="matrix(1 0 0 1 322.256 225)" class="st10 st8 st11">Definición de</text>
+<text transform="matrix(1 0 0 1 322.256 225)" class="st10 st8 st11">Definición de </text>
 <text transform="matrix(1 0 0 1 323.616 245)" class="st10 st8 st11">MSP de Org1</text>
 <rect id="Rectangle_4_" x="78.5" y="466.5" class="st12" width="347" height="151"/>
 <text transform="matrix(1 0 0 1 97.206 501)" class="st1 st8 st9">Org 2</text>
@@ -68,7 +68,7 @@
 <rect id="Rectangle_6_" x="361.5" y="454.5" class="st13" width="105" height="35"/>
 <text transform="matrix(1 0 0 1 384.176 478)" class="st14 st8 st11">CA de Org2</text>
 <rect id="Rectangle_7_" x="305.5" y="525.5" class="st13" width="105" height="55"/>
-<text transform="matrix(1 0 0 1 322.256 549)" class="st14 st8 st11">Definición de</text>
+<text transform="matrix(1 0 0 1 322.256 549)" class="st14 st8 st11">Definición de </text>
 <text transform="matrix(1 0 0 1 323.616 569)" class="st14 st8 st11">MSP de Org2</text>
 <rect id="Rectangle_8_" x="101" y="199" class="st4" width="106" height="62"/>
 <text transform="matrix(1 0 0 1 114.124 236)" class="st10 st8 st11">Org1 igual</text>
@@ -98,6 +98,6 @@
 <text transform="matrix(1 0 0 1 511.447 337)" class="st1 st8 st9">Org de clasificador</text>
 <rect id="Rectangle_11_" x="688" y="356" class="st4" width="125" height="56"/>
 <rect id="Rectangle-Copy" x="518" y="355" class="st4" width="125" height="56"/>
-<text transform="matrix(1 0 0 1 707.308 380)" class="st10 st8 st11">MSP de clasif.</text>
+<text transform="matrix(1 0 0 1 707.308 380)" class="st10 st8 st11">MSP de clasif. </text>
 <text transform="matrix(1 0 0 1 552.324 379)" class="st10 st8 st11">Clasificador</text>
 </svg>

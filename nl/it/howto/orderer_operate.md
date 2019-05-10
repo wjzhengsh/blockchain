@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -101,7 +101,7 @@ Devi utilizzare lo strumento di riga di comando **kubectl** per il collegamento 
 ### Richiamo delle informazioni sull'endpoint dell'ordinante
 {: #icp-orderer-operate-orderer-endpoint}
 
-Devi selezionare il tuo endpoint dell'ordinante per effettuare degli aggiornamenti al canale del sistema ordinante. Dovrai essere un [Amministratore del cluster ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Cluster administrator roles and actions") per completare le seguenti istruzioni:
+Devi selezionare il tuo endpoint dell'ordinante per effettuare degli aggiornamenti al canale del sistema ordinante. Dovrai essere un [Amministratore del cluster ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/user_management/assign_role.html "Cluster administrator roles and actions") per completare le seguenti istruzioni:
 
 1. Accedi alla tua console {{site.data.keyword.cloud_notm}} Private e fai clic sull'icona **Menu** nell'angolo superiore sinistro.
 2. Fai clic su **Workload** > **Release Helm**.
@@ -121,7 +121,7 @@ In questo esempio, l'indirizzo IP proxy è `9.30.94.174` e la porta del nodo est
 ### Scaricamento del tuo certificato TLS dell'ordinante
 {: #icp-orderer-operate-tls-cert}
 
-Devi scaricare il tuo certificato TLS dell'ordinante e trasmetterlo ai tuoi comandi per comunicare con il tuo ordinante da un client remoto. Dovrai essere un [Amministratore del cluster ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Cluster administrator roles and actions") per completare le seguenti istruzioni:
+Devi scaricare il tuo certificato TLS dell'ordinante e trasmetterlo ai tuoi comandi per comunicare con il tuo ordinante da un client remoto. Dovrai essere un [Amministratore del cluster ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/user_management/assign_role.html "Cluster administrator roles and actions") per completare le seguenti istruzioni:
 
 1. Accedi alla tua console {{site.data.keyword.cloud_notm}} Private e fai clic sull'icona **Menu** nell'angolo superiore sinistro.
 2. Fai clic su **Workload** > **Release Helm**.
@@ -173,6 +173,8 @@ tree
 │   └── msp
 │       ├── cacerts
 │       │   └── 9-30-250-70-30395-SampleOrgCA.pem
+│       ├── IssuerPublicKey
+│       ├── IssuerRevocationPublicKey
 │       ├── keystore
 │       │   └── 2a97952445b38a6e0a14db134645981b74a3f93992d9ddac54cb4b4e19cdf525_sk
 │       ├── signcerts
@@ -198,6 +200,8 @@ tree
     └── msp
         ├── cacerts
         │   └── 9-30-250-70-30395-tlsca.pem
+        ├── IssuerPublicKey
+        ├── IssuerRevocationPublicKey
         ├── keystore
         │   └── 45a7838b1a91ddfe3d4d22a5a7f2639b868493bcce594af3e3ceb9c07899d117_sk
         ├── signcerts
@@ -218,7 +222,7 @@ L'aggiornamento del canale del sistema ordinante viene eseguito tramite le "tran
 
 L'aggiunta di organizzazioni al canale del sistema ordinante è essenzialmente lo stesso flusso dell'aggiornamento della configurazione di ogni canale per aggiungere un'organizzazione. Tuttavia, devi apportare alcune modifiche perché il canale da aggiornare non è un canale dell'applicazione e l'amministratore pertinente è quello dell'ordinante invece di quello di un'organizzazione peer.
 
-Tieni presente che puoi aggiungere un'organizzazione a un canale senza aderire prima al canale del sistema. Per ulteriori informazioni, vedi l'[esercitazione Adding an Org to a Channel ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/channel_update_tutorial.html "Adding an org to a channel") nella documentazione di Hyperledger Fabric.
+Tieni presente che puoi aggiungere un'organizzazione a un canale senza aderire prima al canale del sistema. Per ulteriori informazioni, vedi l'[esercitazione Adding an Org to a Channel ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/channel_update_tutorial.html "Adding an org to a channel") nella documentazione di Hyperledger Fabric.
 
 Il seguente elenco mostra i passi e le attività generali che saranno eseguite da serie diverse di organizzazioni del tuo consorzio.
 
@@ -230,13 +234,13 @@ Il seguente elenco mostra i passi e le attività generali che saranno eseguite d
 {: #icp-orderer-operate-get-fabric-tools}
 
 Devi scaricare i seguenti strumenti Hyperledger Fabric per aggiornare il canale del sistema.
-- [peer ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/peercommand.html), che ti consentirà di recuperare il blocco di genesi e aggiornare il canale del sistema.
-- [configtxlator ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/configtxlator.html), che converte il formato protobuf di una configurazione di canale nel formato JSON che è più facile da leggere e aggiornare.
+- [peer ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/peercommand.html), che ti consentirà di recuperare il blocco di genesi e aggiornare il canale del sistema.
+- [configtxlator ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/configtxlator.html), che converte il formato protobuf di una configurazione di canale nel formato JSON che è più facile da leggere e aggiornare.
 
 1. Decidi dove vuoi archiviare gli strumenti ed esegui quindi questo comando:
 
   ```
-  curl -sSL http://bit.ly/2ysbOFE | bash -s 1.2.1 1.2.1 -d -s
+  curl -sSL http://bit.ly/2ysbOFE | bash -s 1.4.0 1.4.0 -d -s
   ```
   {:codeblock}
 
@@ -301,7 +305,7 @@ L'ordinante deve ricevere le [definizioni dell'organizzazione](/docs/services/bl
 
   Sostituisci i campi con le tue proprie informazioni.
 
-    - Sostituisci `<CORE_PEER_LOCALMSPID>` con l'ID MSP della tua organizzazione ordinante. È visibile anche all'interno del contenitore ordinante immettendo i seguenti comandi, sostituendo `<orderer pod name>` con il valore del pod del tuo ordinante:
+    - Sostituisci `<CORE_PEER_LOCALMSPID>` con l'ID MSP della tua organizzazione ordinante. È visibile anche all'interno del contenitore ordinante eseguendo questi comandi, sostituendo `<orderer pod name>` con il valore del pod del tuo ordinante.
 
       ```
       kubectl exec -it <orderer pod name> -c orderer sh
@@ -377,7 +381,7 @@ L'ordinante deve ricevere le [definizioni dell'organizzazione](/docs/services/bl
 
 Lo [strumento Fabric](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-get-fabric-tools) `configtxtlator` scaricato, traduce il formato protobuf di una configurazione del canale nel formato JSON e viceversa.
 
-Questi passi seguono il flusso generale dell'esercitazione di aggiornamento del canale circa la [conversione del blocco in formato JSON ![Icona link esterno](../images/external_link.svg "Icona link esterno")]( https://hyperledger-fabric.readthedocs.io/en/release-1.2/channel_update_tutorial.html#convert-the-configuration-to-json-and-trim-it-down "Convert the Configuration to JSON and Trim It Down"). Devi apportare alcune modifiche ai comandi nell'esercitazione per tener conto del fatto che stai aggiornando il canale del sistema ordinante invece di un canale dell'applicazione. Puoi visitare l'esercitazione per ulteriori dettagli su questo processo. Questa sezione ti fornisce semplicemente i comandi.
+Questi passi seguono il flusso generale dell'esercitazione di aggiornamento del canale circa la [conversione del blocco in formato JSON ![Icona link esterno](../images/external_link.svg "Icona link esterno")]( https://hyperledger-fabric.readthedocs.io/en/release-1.4/channel_update_tutorial.html#convert-the-configuration-to-json-and-trim-it-down "Convert the Configuration to JSON and Trim It Down"). Devi apportare alcune modifiche ai comandi nell'esercitazione per tener conto del fatto che stai aggiornando il canale del sistema ordinante invece di un canale dell'applicazione. Puoi visitare l'esercitazione per ulteriori dettagli su questo processo. Questa sezione ti fornisce semplicemente i comandi.
 
 1. Copia il file JSON della definizione dell'organizzazione dalla cartella in cui hai [creato la tua organizzazione](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-organization-definition) nella tua cartella `configupdate`. Nel seguente comando di esempio, il file JSON della definizione dell'organizzazione è `org1definition.json`:
 
@@ -490,7 +494,7 @@ Questo comando firma simultaneamente la richiesta di aggiornamento e la invia al
   ```
   {:codeblock}
 
-  Successivamente, immetti il seguente comando per richiamare i log per il contenitore dell'ordinante che risiede nel pod sostituendo `<pod_name>` con il nome del tuo pod dal precedente output del comando:
+  Successivamente, esegui questo comando per richiamare i log per il contenitore orderer che risiede all'interno del pod sostituendo `pod_name` con il nome del tuo pod dal precedente output del comando:
 
   ```
   kubectl logs <pod_name> -c orderer
@@ -499,7 +503,7 @@ Questo comando firma simultaneamente la richiesta di aggiornamento e la invia al
 
   Per ulteriori informazioni sul comando `kubectl logs`, consulta la [documentazione Kubernetes ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs “Getting Started”)
 
-- In alternativa, puoi accedere ai log utilizzando la [console di gestione del cluster {{site.data.keyword.cloud_notm}} Private ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/troubleshoot/events.html), che apre i log in Kibana.
+- In alternativa, puoi accedere ai log utilizzando la [console di gestione del cluster {{site.data.keyword.cloud_notm}} Private ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/troubleshoot/events.html), che apre i log in Kibana.
 
   **Nota:** quando visualizzi i tuoi log in Kibana, potresti ricevere la risposta `No results found`. Questa condizione può verificarsi se {{site.data.keyword.cloud_notm}} Private utilizza l'indirizzo IP del tuo nodo di lavoro come suo nome host. Per risolvere questo problema, rimuovi il filtro che inizia con `node.hostname.keyword` all'inizio del pannello e i log diventeranno visibili.
 

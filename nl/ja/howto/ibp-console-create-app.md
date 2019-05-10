@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-03-20"
 
 subcollection: blockchain
 
@@ -34,11 +34,11 @@ subcollection: blockchain
 
 |  サンプル  |  説明    |  難易度    | 言語 | ロケーション |
 | -----------------|---------|---------|---------|
-| [FabCar ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://developer.ibm.com/patterns/write-a-smart-contract-for-the-fabcarcommercial-paper-or-iks-cluster-with-saas-v2-beta-network-think/ "Blockchain")| IKS クラスターを使用して、単純な Fabric ネットワーク・スマート・コントラクトを Blockchain Platform 上にデプロイします。| 中級 | Node.js | DeveloperWorks 資料|
-| [コマーシャル・ペーパー ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/tutorial/commercial_paper.html "Commercial Paper")| コマーシャル・ペーパーのスマート・コントラクトを使用して、Hyperledger Fabric のローカル・インスタンスで取引します。| 中級 | Node.js | Hyperledger Fabric の資料|
-| **近日公開:** 上級コマーシャル・ペーパー  | プライベート・データ・コレクションと状態ベースの承認を使用した所有権とプライバシーのベスト・プラクティスがある、上級向けのサンプル。| 上級 | Node.js | Hyperledger Fabric の資料|
-| [{{site.data.keyword.blockchainfull_notm}} VSCode を使用したコマーシャル・ペーパーのスマート・コントラクトの実行 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://developer.ibm.com/tutorials/run-commercial-paper-smart-contract-with-ibm-blockchain-vscode-extension/ "Run a commercial paper smart contract with VSCode")|  VScode 拡張機能を使用して、Hyperledger Fabric のローカル・インスタンス上でコマーシャル・ペーパーのスマート・コントラクトを呼び出します。| 中級 | Node.js | IBM Developer|
-| [{{site.data.keyword.blockchainfull_notm}} Platform 2.0 無料ベータ版でのコマーシャル・ペーパーのサンプルの実行](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-commercial-paper)| {{site.data.keyword.blockchainfull_notm}} Platform 2.0 ネットワーク上でコマーシャル・ペーパーのコントラクトをデプロイして呼び出すことについて学習します。| 中級 |  Node.js | {{site.data.keyword.blockchainfull_notm}} Platform の資料|  
+| [FabCar ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://developer.ibm.com/patterns/write-a-smart-contract-for-the-fabcarcommercial-paper-or-iks-cluster-with-saas-v2-beta-network-think/ "Blockchain")| IKS クラスターを使用して、単純な Fabric ネットワーク・スマート・コントラクトを Blockchain Platform 上にデプロイします。 | 中級 | Node.js | DeveloperWorks 資料|
+| [コマーシャル・ペーパー ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/tutorial/commercial_paper.html "Commercial Paper")| コマーシャル・ペーパーのスマート・コントラクトを使用して、Hyperledger Fabric のローカル・インスタンスで取引します。 | 中級 | Node.js | Hyperledger Fabric の資料|
+| **近日公開:** 上級コマーシャル・ペーパー  | プライベート・データ・コレクションと状態ベースの承認を使用した所有権とプライバシーのベスト・プラクティスがある、上級向けのサンプル。 | 上級 | Node.js | Hyperledger Fabric の資料|
+| [{{site.data.keyword.blockchainfull_notm}} VSCode を使用したコマーシャル・ペーパーのスマート・コントラクトの実行 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://developer.ibm.com/tutorials/run-commercial-paper-smart-contract-with-ibm-blockchain-vscode-extension/ "Run a commercial paper smart contract with VSCode")|  VScode 拡張機能を使用して、Hyperledger Fabric のローカル・インスタンス上でコマーシャル・ペーパーのスマート・コントラクトを呼び出します。 | 中級 | Node.js | IBM Developer|
+| [{{site.data.keyword.blockchainfull_notm}} Platform 2.0 無料ベータ版でのコマーシャル・ペーパーのサンプルの実行](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-commercial-paper)| {{site.data.keyword.blockchainfull_notm}} Platform 2.0 ネットワーク上でコマーシャル・ペーパーのコントラクトをデプロイして呼び出すことについて学習します。 | 中級 |  Node.js | {{site.data.keyword.blockchainfull_notm}} Platform の資料|  
 
 アプリケーションを開発するときには、ネットワーク・オペレーターとアプリケーション開発者というまったく異なる 2 人のネットワーク・ユーザー間の調整が必要になる場合があります。
 - **ネットワーク・オペレーター**は、{{site.data.keyword.blockchainfull_notm}} Platform コンソールを使用して組織のノードをデプロイしたり、ネットワークにスマート・コントラクトをインストールしたりする管理者です。
@@ -78,7 +78,7 @@ Fabric v1.4 以降、ユーザーはシンプルになったアプリケーシ�
 
 アプリケーションは、{{site.data.keyword.blockchainfull_notm}} ノードに送信するトランザクションに署名し、公開鍵を添付する必要があります。ノードは、この公開鍵を使用して、トランザクションを送信しているのが正当な関係者であることを検証します。 これにより、参加権限を持つ組織がトランザクションを送信していることが確認されます。
 
-ネットワーク・オペレーターは、組織の CA を使用してアプリケーション ID を登録する必要があります。アプリケーション開発者は、その登録された ID を使用して、公開鍵と秘密鍵を生成できます。 オペレーターは、ID の登録 ID およびシークレットを CA エンドポイント情報と一緒に渡すことができます。SDK でこれらを使用して証明書を生成できます。 アプリケーション開発者がクライアント・サイドでエンロールすれば、他の団体は一切そのアプリケーションの秘密鍵にアクセスできません。 セキュリティーを強化するために、ネットワーク・オペレーターは登録時のエンロール制限を 1 に設定できます。アプリケーション開発者がエンロールした後に、同じ登録 ID とシークレットを使用して別の秘密鍵を生成することはできません。
+ネットワーク・オペレーターは、組織の CA を使用してアプリケーション ID を登録する必要があります。アプリケーション開発者は、その登録された ID を使用して、公開鍵と秘密鍵を生成できます。 オペレーターは、ID の登録 ID およびシークレットを CA エンドポイント情報と一緒に渡すことができます。SDK でこれらを使用して証明書を生成できます。 アプリケーション開発者がクライアント・サイドでエンロールすれば、他の団体は一切そのアプリケーションの秘密鍵にアクセスできません。 セキュリティーを強化するために、ネットワーク・オペレーターは登録時のエンロール制限を 1 に設定できます。 アプリケーション開発者がエンロールした後に、同じ登録 ID とシークレットを使用して別の秘密鍵を生成することはできません。
 
 セキュリティーについてあまり心配していない場合は、ネットワーク・オペレーターが [CA タブ](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-enroll)を使用してアプリケーション ID をエンロールしてもかまいません。 その後、オペレーターは ID をダウンロードするか、コンソール・ウォレットにエクスポートすることができます。 SDK の証明書を使用するには、鍵を base64 形式から PEM 形式にデコードする必要があります。 ローカル・マシン上で以下のコマンドを実行すると、証明書をデコードできます。
 
@@ -95,9 +95,9 @@ echo <base64_string> | base64 --decode $FLAG > <key>.pem
 
 Hyperledger Fabric の[トランザクション・フロー ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")]( https://hyperledger-fabric.readthedocs.io/en/release-1.4/txflow.html "Transaction Flow"){:new_window} には複数のコンポーネントが関わります。その中でクライアント・アプリケーションは複数のピアから承認を収集し、承認されたトランザクションを順序付けサービスに送信します。 接続プロファイルによって、アプリケーションは、トランザクションを送信するために必要なピアと順序付けノードのエンドポイントを取得します。 このプロファイルには、認証局や MSP ID などのユーザー組織に関する情報も含まれています。 Fabric SDK が接続プロファイルを直接読み取るので、ユーザーがトランザクションと承認のフローを管理するコードを作成する必要はありません。
 
-チャネルの作成時にアンカー・ピアを構成した場合は、Hyperledger Fabric の [サービス・ディスカバリー ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/discovery-overview.html "Service discovery") 機能を利用できます。 サービス・ディスカバリーを使用すると、アプリケーションが、チャネル上の自分の組織外のピアのうちトランザクションを承認する必要があるものを識別できるようになります。 サービス・ディスカバリーを使用しない場合は、他の組織から帯域外の方法でこれらのピアのエンドポイント情報を取得し、接続プロファイルに追加する必要があります。 アンカー・ピアを構成する方法について詳しくは、スマート・コントラクトのデプロイ・チュートリアルの[「プライベート・データ」トピック](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-private-data)の 3 つの手順を参照してください。
+Hyperledger Fabric の[サービス・ディスカバリー ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/discovery-overview.html "Service Discovery") フィーチャーを利用するためには、アンカー・ピアを構成する必要があります。 サービス・ディスカバリーを使用すると、アプリケーションが、チャネル上の自分の組織外のピアのうちトランザクションを承認する必要があるものを識別できるようになります。 サービス・ディスカバリーを使用しない場合は、他の組織から帯域外の方法でこれらのピアのエンドポイント情報を取得し、接続プロファイルに追加する必要があります。 アンカー・ピアを構成する方法について詳しくは、スマート・コントラクトのデプロイ・チュートリアルの[「プライベート・データ」トピック](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-private-data)の 3 つの手順を参照してください。
 
-Platform コンソールでスマート・コントラクトのタブにナビゲートします。 インスタンス化された各スマート・コントラクトの隣にあるオーバーフロー・メニューにナビゲートします。 **「SDK を使用した接続 (Connect with SDK)」**というボタンをクリックします。クリックすると、接続プロファイルを作成してダウンロードできるサイド・パネルが開きます。 まず、アプリケーション ID の登録に使用した組織の CA を選択する必要があります。 また、組織の MSP 定義を選択する必要もあります。 それにより、証明書の生成やスマート・コントラクトの呼び出しに使用できる接続プロファイルをダウンロードできるようになります。
+Platform コンソールでスマート・コントラクトのタブにナビゲートします。 インスタンス化された各スマート・コントラクトの隣にあるオーバーフロー・メニューにナビゲートします。 **「SDK を使用した接続 (Connect with SDK)」**というボタンをクリックします。 クリックすると、接続プロファイルを作成してダウンロードできるサイド・パネルが開きます。 まず、アプリケーション ID の登録に使用した組織の CA を選択する必要があります。 また、組織の MSP 定義を選択する必要もあります。 それにより、証明書の生成やスマート・コントラクトの呼び出しに使用できる接続プロファイルをダウンロードできるようになります。
 
 ## SDK を使用したエンロール
 {: #ibp-console-app-enroll}
@@ -141,7 +141,7 @@ Platform コンソールでスマート・コントラクトのタブにナビ�
       // Enroll the admin user, and import the new identity into the wallet.
       const enrollment = await ca.enroll({ enrollmentID: '<app_enroll_id>', enrollmentSecret: '<app_enroll_secret>' });
       const identity = X509WalletMixin.createIdentity('<msp_id>', enrollment.certificate, enrollment.key.toBytes());
-      wallet.import('user1', identity);
+      await wallet.import('user1', identity);
       console.log('Successfully enrolled client "user1" and imported it into the wallet');
 
       } catch (error) {
@@ -166,7 +166,7 @@ Platform コンソールでスマート・コントラクトのタブにナビ�
   ```
   SDK は、証明書を作成し、このコマンドで作成される `wallet/user1/` ディレクトリー内に保管します。 このディレクトリーが、将来のトランザクションの送信に使用されるファイル・システム・ウォレットになります。
 
-Fabric SDK で使用されるウォレットは、{{site.data.keyword.blockchainfull_notm}} Platform コンソール内のウォレットとは異なります。コンソールのウォレット内に保管される ID を、直接 SDK で使用することはできません。
+Fabric SDK で使用されるウォレットは、{{site.data.keyword.blockchainfull_notm}} Platform コンソール内のウォレットとは異なります。 コンソールのウォレット内に保管される ID を、直接 SDK で使用することはできません。
 {: note}
 
 ## SDK を使用したスマート・コントラクトの呼び出し
@@ -331,7 +331,7 @@ npm install
 
 ### 手順 3: ウォレットの証明書を生成する
 
-アプリケーションは、Fabric コンポーネントに送信する要求に署名する必要があります。 トランザクションを送信した組織がコンポーネントに認識されないと、トランザクションは拒否され、エラーが戻されます。 コマーシャル・ペーパーのサンプルでは、ファイル・システム・ウォレットが作成されます。このウォレットによって証明書が保管され、トランザクションに署名が付けられます。 アプリケーションでどのようにウォレットが使用されるかについて詳しくは、Fabric 資料内の [ウォレット ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/developapps/wallet.html "Wallet") のトピックを参照してください。 Fabric SDK で使用されるウォレットは、{{site.data.keyword.blockchainfull_notm}} Platform コンソール内のウォレットとは異なります。コンソールのウォレット内に保管される ID を、直接 SDK で使用することはできません。
+アプリケーションは、Fabric コンポーネントに送信する要求に署名する必要があります。 トランザクションを送信した組織がコンポーネントに認識されないと、トランザクションは拒否され、エラーが戻されます。 コマーシャル・ペーパーのサンプルでは、ファイル・システム・ウォレットが作成されます。このウォレットによって証明書が保管され、トランザクションに署名が付けられます。 アプリケーションでどのようにウォレットが使用されるかについて詳しくは、Fabric 資料内の [ウォレット ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/developapps/wallet.html "Wallet") のトピックを参照してください。 Fabric SDK で使用されるウォレットは、{{site.data.keyword.blockchainfull_notm}} Platform コンソール内のウォレットとは異なります。 コンソールのウォレット内に保管される ID を、直接 SDK で使用することはできません。
 
 オリジナルのサンプルでは、`addToWallet.js` ファイルで、Fabric サンプルのフォルダーにある証明書を使用してファイル・システム・ウォレットを作成しています。 ここでは、新たにファイルを作成し、SDK を使用してクライアント・サイドの証明書を生成して新しいウォレット内に直接格納します。
 
@@ -377,9 +377,9 @@ magnetocorp としてチュートリアルを進めるために使用する組�
 
         // Enroll the admin user, and import the new identity into the wallet.
         const enrollment = await ca.enroll({ enrollmentID: '<app_enroll_id>', enrollmentSecret: '<app_enroll_secret>' });
-        const identity = X509WalletMixin.createIdentity('<msp_id>', enrollment.certificate, enrollment.key.toBytes());
-        wallet.import('user1', identity);
-        console.log('Successfully enrolled client "user1" and imported it into the wallet');
+      const identity = X509WalletMixin.createIdentity('<msp_id>', enrollment.certificate, enrollment.key.toBytes());
+      await wallet.import('user1', identity);
+      console.log('Successfully enrolled client "user1" and imported it into the wallet');
 
         } catch (error) {
           console.error(`Failed to enroll "user1": ${error}`);
@@ -439,7 +439,7 @@ Successfully enrolled client "user1" and imported it into the wallet
 
 ### 手順 4: 接続プロファイルを使用して Fabric ゲートウェイを作成する
 
-Hyperledger Fabric の[トランザクション・フロー ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")]( https://hyperledger-fabric.readthedocs.io/en/release-1.4/txflow.html "トランザクション・フロー"){:new_window} には複数のコンポーネントが関わり、その中でクライアント・アプリケーションはユニークな役割を果たします。 アプリケーションは、トランザクションの承認を行うピアと、トランザクションを順序付けしてブロックに追加する順序付けサービスとに接続する必要があります。これらのノードのエンドポイントをアプリケーションに提供するために、接続プロファイルを使用して Fabric ゲートウェイを構成します。 そうすると、そのゲートウェイが Fabric ネットワークとの低水準の対話を実行します。 詳細については、Fabric 資料内の [Fabric ゲートウェイ ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/developapps/gateway.html "Fabric gateway") のトピックを参照してください。
+Hyperledger Fabric の[トランザクション・フロー ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")]( https://hyperledger-fabric.readthedocs.io/en/release-1.4/txflow.html "トランザクション・フロー"){:new_window} には複数のコンポーネントが関わり、その中でクライアント・アプリケーションはユニークな役割を果たします。 アプリケーションは、トランザクションの承認を行うピアと、トランザクションを順序付けしてブロックに追加する順序付けサービスとに接続する必要があります。 これらのノードのエンドポイントをアプリケーションに提供するために、接続プロファイルを使用して Fabric ゲートウェイを構成します。 そうすると、そのゲートウェイが Fabric ネットワークとの低水準の対話を実行します。 詳細については、Fabric 資料内の [Fabric ゲートウェイ ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/developapps/gateway.html "Fabric gateway") のトピックを参照してください。
 
 既に接続プロファイルをダウンロードし、組織の認証局に接続するために使用しています。 これから、この接続プロファイルを使用してゲートウェイを作成します。
 
@@ -464,7 +464,7 @@ const wallet = new FileSystemWallet('../identity/user/isabella/wallet');
 ```
 {:codeblock}
 
-ウォレットのインポート後に、以下のコードを使用して、接続プロファイルとウォレットを新しいゲートウェイに渡します。下記のようなコード・スニペットになるように、コードに次のような**編集**を行う必要があります。ログを出力する行は、簡略化のために省略しています。
+ウォレットのインポート後に、以下のコードを使用して、接続プロファイルとウォレットを新しいゲートウェイに渡します。 下記のようなコード・スニペットになるように、コードに次のような**編集**を行う必要があります。 ログを出力する行は、簡略化のために省略しています。
 - `enrollUser.js` の `identityLabel` で選択した値と一致するように、`userName` を更新します。
 - ネットワークでサービス・ディスカバリーを利用するには、ディスカバリー・オプションを更新します。 `discovery: { enabled: true, asLocalhost: false }` を設定してください。  
 - この接続プロファイルをインポートするセクションを更新します。 コンソールの接続プロファイルは、サンプルで使用される YAML ファイルではなく、JSON 形式です。  
@@ -475,7 +475,7 @@ const userName = 'user1';
 // Load connection profile; will be used to locate a gateway
 const ccpPath = path.resolve(__dirname, '../gateway/connection.json');
 const ccpJSON = fs.readFileSync(ccpPath, 'utf8');
-const ccp = JSON.parse(ccpJSON);
+const connectionProfile = JSON.parse(ccpJSON);
 
 // Set connection options; identity and wallet
 let connectionOptions = {
@@ -563,9 +563,10 @@ fabric_client.createUser({
 ```
 {:codeblock}
 
-低水準の SDK API を使用してネットワークに接続する場合は、アプリケーションのパフォーマンスと可用性を管理するために追加の手順を取る必要があります。 詳しくは、[アプリケーションの接続性と可用性のためのベスト・プラクティス](/docs/services/blockchain/v10_application.html#dev-app-connectivity-availability) を参照してください。
+低水準の SDK API を使用してネットワークに接続する場合は、アプリケーションのパフォーマンスと可用性を管理するために追加の手順を取る必要があります。 詳しくは、[アプリケーションの接続性と可用性のためのベスト・プラクティス](/docs/services/blockchain/best_practices.html#best-practices-app-connectivity-availability) を参照してください。
+
 
 ## CouchDB での索引の使用
 {: #console-app-couchdb}
 
-CouchDB を状態データベースとして使用すると、スマート・コントラクトからチャネルの状態データに対して JSON データ照会を実行できます。 JSON 照会用に索引を作成してスマート・コントラクトで使用することを強くお勧めします。 索引があれば、ネットワークがトランザクションとエントリーの追加ブロックをワールド・ステートに追加するときに、アプリケーションで効率的にデータを取得できます。 スマート・コントラクトやアプリケーションで索引を使用する方法について詳しくは、[CouchDB を使用する場合のベスト・プラクティス](/docs/services/blockchain/v10_application.html#dev-app-couchdb-indices)を参照してください。
+CouchDB を状態データベースとして使用すると、スマート・コントラクトからチャネルの状態データに対して JSON データ照会を実行できます。 JSON 照会用に索引を作成してスマート・コントラクトで使用することを強くお勧めします。 索引があれば、ネットワークがトランザクションとエントリーの追加ブロックをワールド・ステートに追加するときに、アプリケーションで効率的にデータを取得できます。 スマート・コントラクトやアプリケーションで索引を使用する方法について詳しくは、[CouchDB を使用する場合のベスト・プラクティス](/docs/services/blockchain/best_practices.html#best-practices-app-couchdb-indices)を参照してください。

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-03-20"
 
 subcollection: blockchain
 
@@ -28,7 +28,7 @@ Os SDKs do Hyperledger Fabric fornecem um conjunto poderoso de APIs que permitem
 
 As instruções a seguir usam o [SDK do Node Fabric ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://fabric-sdk-node.github.io/ "Hyperledger Fabric SDK para jode.js") para operar o peer e assumir a familiaridade prévia com o SDK. É possível usar o [tutorial de desenvolvimento de aplicativos](/docs/services/blockchain/v10_application.html#dev-app) para aprender a usar o Node SDK antes de iniciar e como um guia para desenvolver aplicativos com seu peer uma vez que esteja pronto para chamar e consultar o chaincode.
 
-O Peer do {{site.data.keyword.blockchainfull_notm}} Platform na Iniciação Rápida do AWS cria dois peers para alta disponibilidade. Portanto, é necessário seguir as etapas de operações uma vez para cada peer. Quando estiver pronto para consultar e chamar o chaincode de seu aplicativo, o SDK se conectará a ambos os peers para assegurar que seus [aplicativos estejam altamente disponíveis](/docs/services/blockchain/v10_application.html#dev-app-ha-app).
+O Peer do {{site.data.keyword.blockchainfull_notm}} Platform na Iniciação Rápida do AWS cria dois peers para alta disponibilidade. Portanto, é necessário seguir as etapas de operações uma vez para cada peer. Quando estiver pronto para consultar e chamar o chaincode de seu aplicativo, o SDK se conectará a ambos os peers para assegurar que seus [aplicativos estejam altamente disponíveis](/docs/services/blockchain/best_practices.html#best-practices-app-ha-app).
 
 ### Instalando o SDK do Nó
 {: #remote-peer-aws-operate-install-sdk}
@@ -51,7 +51,7 @@ Antes de usar o SDK para operar o peer, é necessário gerar os certificados nec
 
 É necessário fazer upload de seu certificado de assinatura SDK para a rede no {{site.data.keyword.blockchainfull_notm}} Platform para que outros membros possam reconhecer sua assinatura digital.
 
-- É possível localizar seu certificado de assinatura no diretório que o SDK gerou seu material de criptografia, no arquivo denominado administrador. Copie o certificado dentro das aspas depois do campo `certificate`, iniciando com `-----BEGIN CERTIFICATE-----` e terminando com `-----END CERTIFICATE-----`. É possível usar a CLI para converter o certificado no formato PEM, emitindo o comando `echo -e "<CERT>" > admin.pem`. Em seguida, é possível colar o conteúdo do certificado em sua rede de blockchain usando o Monitor de Rede. Efetue login na rede no {{site.data.keyword.blockchainfull_notm}} Platform. Na tela "Membros" do Monitor de rede, clique em **Certificados** > **Incluir certificado**. Especifique qualquer nome para o seu certificado e cole o conteúdo no campo **Certificado**. Clique em **Reiniciar** quando for perguntado se você deseja reiniciar os peers. Essa ação deve ser executada antes que sua organização se associe ao canal.
+- É possível localizar seu certificado de assinatura no diretório que o SDK gerou seu material de criptografia, no arquivo denominado administrador. Copie o certificado dentro das aspas depois do campo `certificate`, iniciando com `-----BEGIN CERTIFICATE-----` e terminando com `-----END CERTIFICATE-----`. É possível usar a CLI para converter o certificado para o formato PEM, emitindo o comando `echo -e "<CERT>" > admin.pem`. Em seguida, é possível colar o conteúdo do certificado em sua rede de blockchain usando o Monitor de Rede. Efetue login na rede no {{site.data.keyword.blockchainfull_notm}} Platform. Na tela "Membros" do Monitor de rede, clique em **Certificados** > **Incluir certificado**. Especifique qualquer nome para o seu certificado e cole o conteúdo no campo **Certificado**. Clique em **Reiniciar** quando for perguntado se você deseja reiniciar os peers. Essa ação deve ser executada antes que sua organização se associe ao canal.
 
 ### Fazendo upload de um signcert para o peer
 {: #remote-peer-aws-operate-upload-signcert}
@@ -67,7 +67,7 @@ echo -e "<CERT.PEM>" > cert2.pem
 ```
 {:codeblock}
 
-- Substitua `<PEER_ENROLL_ID>` pelo ID de inscrição que está especificado no modelo de Iniciação Rápida e associado com essa instância do peer remoto.  
+- Substitua `<PEER_ENROLL_ID>` pelo ID de inscrição especificado no modelo de Iniciação Rápida e associado a essa instância de peer remoto.  
 - Substitua `<CERT.PEM>` por seu signcert, que começa com `-----BEGIN CERTIFICATE-----` e termina com `-----END CERTIFICATE-----`.    
 
   **Nota:** se o arquivo `cert.pem` existir, não o sobrescreva, mas crie um novo arquivo, por exemplo, `cert2.pem`.
@@ -77,7 +77,7 @@ Como você inclui um novo certificado, é necessário reiniciar o contêiner par
 ### Passando o certificado TLS de seu peer para o SDK
 {: #remote-peer-aws-operate-download-tlscert}
 
-É necessário copiar o conteúdo do `cacert.pem` do TLS do contêiner de peer para seu aplicativo para autenticar a comunicação do SDK. Execute o comando a seguir no contêiner de peer. Substitua `<PEER_ENROLL_ID>` pelo nome da pilha do peer remoto que você especificou no modelo de Iniciação Rápida. (Lembre-se de que duas instâncias do VPC são criadas).
+É necessário copiar o conteúdo do `cacert.pem` do TLS do contêiner de peer para seu aplicativo para autenticar a comunicação do SDK. Execute o comando a seguir no contêiner de peer. Substitua `<PEER_ENROLL_ID>` pelo nome da pilha do peer remoto especificado no modelo de Iniciação Rápida. (Lembre-se de que duas instâncias do VPC são criadas).
 ```
 cat /etc/hyperledger/<PEER_ENROLL_ID>/tls/ca.crt
 ```
@@ -159,7 +159,7 @@ A primeira etapa é gerar os certificados necessários (inscrição) usando o Fa
 
 4.  Também será necessário recuperar um certificado TLS do {{site.data.keyword.blockchainfull_notm}} Platform para se comunicar com a CA. As credenciais de rede acima incluem o certificado necessário. Na seção `certificateAuthorities` do arquivo de Perfil de conexão, copie o certificado que segue `"pem:"`, que começa com `-----BEGIN CERTIFICATE-----` e termina com `-----END CERTIFICATE-----`. ** Não inclua as aspas **.
 
-    Execute o comando a seguir por meio de uma janela do terminal, substituindo `<certificate>` pelo certificado copiado.
+    Execute o comando a seguir em uma janela do terminal, substituindo `<certificate>` por seu certificado copiado.
     ```
     echo -e "< certificate>" > $HOME/fabric-ca-remote/cert.pem
     ```
@@ -238,7 +238,7 @@ Na máquina local, abra um terminal de comando e navegue para o diretório para 
 
       Copie o texto inteiro do arquivo `cacert.pem` para sua área de transferência, iniciando com o primeiro `-----BEGIN CERTIFICATE-----` e terminando com o último `-----END CERTIFICATE-----`.
 
-    - Altere novamente para a máquina local e execute os comandos a seguir. Substitua o texto  `<CACERT.PEM>`  com o texto da área de transferência.
+    - Altere novamente para a máquina local e execute os comandos a seguir. Substitua o texto `<CACERT.PEM>` pelo texto da área de transferência.
       ```
       cd /$FABRIC_CA_CLIENT_HOME/msp
     mkdir tls
@@ -261,7 +261,7 @@ Na máquina local, abra um terminal de comando e navegue para o diretório para 
 
     - Copie o texto do arquivo `cert.pem` para a área de transferência iniciando com `-----BEGIN CERTIFICATE-----` e terminando com `-----END CERTIFICATE-----`.
 
-    - Alterne novamente para o contêiner Peer e execute os comandos a seguir para incluir o cert.pem nos certificados de peer. Substitua o texto  `<CERT.PEM>`  com o texto da área de transferência.
+    - Alterne novamente para o contêiner Peer e execute os comandos a seguir para incluir o cert.pem nos certificados de peer. Substitua o texto `<CERT.PEM>` pelo texto da área de transferência.
 
       ```
       cd /etc/hyperledger/<PEER_ENROLL_ID>/msp/admincerts/
@@ -376,11 +376,11 @@ valor de `PEERADDR` seja semelhante a:
     {:codeblock}
 
     Substitua os campos por suas próprias informações.
-      - Substitua `<ORDERER_URL>` pelo nome do host e a porta do solicitador do arquivo `creds.json`.
-      - Substitua `<CHANNEL_NAME>` pelo nome do canal associado ao peer.
-      - Substitua `<CC_NAME>` por qualquer nome que se refira ao chaincode.
-      - Substitua `<ORGANIZATION_MSP_ID>` pelo nome da organização do arquivo `creds.json`.
-      - Substitua `<PEER_ADDR>` pelo valor que você construiu na etapa anterior.  
+      - Substitua `<ORDERER_URL>` pelo nome de host e pela porta do solicitador no arquivo `creds.json`.
+      - Substitua `<CHANNEL_NAME>` pelo nome do canal ao qual o peer se associa.
+      - Substitua `<CC_NAME>` por qualquer nome que se refira ao seu chaincode.
+      - Substitua `<ORGANIZATION_MSP_ID>` pelo nome da organização no arquivo `creds.json`.
+      - Substitua `<PEER_ADDR>` pelo valor construído na etapa anterior.  
 
   Por exemplo:
 

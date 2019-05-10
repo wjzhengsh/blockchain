@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -115,7 +115,7 @@ Necesitará utilizar la herramienta de línea de mandatos **kubectl** para conec
 {: #ca-operate-url}
 
 Deberá hacer referencia al URL de CA para que las solicitudes puedan generar certificados o registrarse con una nueva identidad. Puede encontrar el URL de CA utilizando la interfaz de usuario de la consola de {{site.data.keyword.cloud_notm}} Private. Necesitará ser un
-[administrador del clúster ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Acciones y roles de administrador de clúster") para realizar los pasos siguientes:
+[administrador del clúster ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/user_management/assign_role.html "Acciones y roles de administrador de clúster") para realizar los pasos siguientes:
 
 1. Inicie sesión en la consola de {{site.data.keyword.cloud_notm}} Private y pulse el icono **Menú** en la esquina superior izquierda.
 2. Pulse **Carga de trabajo** > **Releases de Helm**.
@@ -156,12 +156,12 @@ Necesita descargar el certificado TLS de CA y pasarlo con los mandatos para comu
 
 Puede utilizar el cliente de CA de Fabric para trabajar con la CA. En estas instrucciones se explica cómo utilizar el cliente de CA de Fabric para inscribir y registrar identidades para otros componentes que pertenezcan a la organización. También puede utilizar los SDK de Fabric para completar los pasos de requisito previo.
 
-1. Debe descargar el [cliente de CA de Fabric ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric-ca.readthedocs.io/en/latest/users-guide.html#fabric-ca-client "Descargar el cliente de CA de Fabric") en el sistema de archivos local.
+1. Debe descargar el [cliente de CA de Fabric ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/users-guide.html#fabric-ca-client "Descargar el cliente de CA de Fabric") en el sistema de archivos local.
 
-  La forma más fácil de obtener el cliente de CA de Fabric es descargar todos los binarios de herramientas de Fabric directamente. Vaya al directorio en el que desee descargar los binarios con la línea de mandatos, y obténgalos ejecutando el mandato [Curl ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/prereqs.html#install-curl "Curl") siguiente.
+  La forma más fácil de obtener el cliente de CA de Fabric es descargar todos los binarios de herramientas de Fabric directamente. Vaya al directorio en el que desee descargar los binarios con la línea de mandatos, y obténgalos ejecutando el mandato [Curl ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/prereqs.html#install-curl "Curl") siguiente.
 
   ```
-  curl -sSL http://bit.ly/2ysbOFE | bash -s 1.2.1 1.2.1 -d -s
+  curl -sSL http://bit.ly/2ysbOFE | bash -s 1.4.0 1.4.0 -d -s
   ```
   {:codeblock}
 
@@ -230,10 +230,12 @@ Solo puede generar certificados utilizando identidades que se hayan registrado c
   ```
   {:codeblock}
 
-  El valor de `<enroll_id>` y `<enroll_password>` en el mandato son [el nombre de usuario y la contraseña del administrador de CA](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-admin-secret) que ha pasado al secreto de Kubernetes al desplegar la entidad emisora de certificados. Inserte el [URL de CA](/docs/services/blockchain/howto/CA_operate.html#ca-operate-url) dentro de `<ca_url_with_port>`. Excluya la parte de `http://` al principio. El valor de `<ca_name>` es el que ha proporcionado en el campo
+  Los valores de `<enroll_id>` y `<enroll_password>` en el mandato son el
+[nombre de usuario administrador de CA y contraseña](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-admin-secret) que haya pasado al secreto de Kubernetes al desplegar la entidad emisora de certificados. Inserte el
+[URL de CA](/docs/services/blockchain/howto/CA_operate.html#ca-operate-url) dentro de `<ca_url_with_port>`. Excluya la parte de `http://` al principio. `<ca_name>` es el valor que ha proporcionado en el campo
 `CA Name` al desplegar la CA.
 
-  El valor de `<ca_tls_cert_path>` es la vía de acceso completa al [certificado TLS de CA](/docs/services/blockchain/howto/CA_operate.html#ca-operate-tls).
+  `<ca_tls_cert_path>` es la vía de acceso completa al [certificado TLS de CA](/docs/services/blockchain/howto/CA_operate.html#ca-operate-tls).
 
   Una llamada real es similar al siguiente mandato de ejemplo:
 
@@ -264,6 +266,8 @@ tree
 │   └── msp
 │       ├── cacerts
 │       │   └── 9-30-250-70-30395-SampleOrgCA.pem
+│       ├── IssuerPublicKey
+│       ├── IssuerRevocationPublicKey
 │       ├── keystore
 │       │   └── 2a97952445b38a6e0a14db134645981b74a3f93992d9ddac54cb4b4e19cdf525_sk
 │       ├── signcerts
@@ -283,7 +287,7 @@ En las instrucciones siguientes se proporciona un [archivo de configuración JSO
 
 - Siga las instrucciones que se muestran a continuación si va a desplegar un clasificador en {{site.data.keyword.cloud_notm}} Private o va a desplegar un igual para conectarse a un consorcio que se aloja en {{site.data.keyword.cloud_notm}} Private.
 - Si desea desplegar un igual para conectarse a un Plan inicial o un Plan empresarial, siga las instrucciones de
-[Despliegue de iguales en IBM Cloud Private para conectarse a un Plan inicial o un Plan empresarial](/docs/services/blockchain/howto/peer_deploy_icp.html#icp-peer-deploy) en su lugar. Estos pasos le indicarán cómo utilizar la CA en {{site.data.keyword.blockchainfull_notm}} Platform para desplegar el igual en {{site.data.keyword.cloud_notm}} Private.
+[Despliegue de iguales en IBM Cloud Private para conectarse a un Plan inicial o un Plan empresarial](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy) en su lugar. Estos pasos le indicarán cómo utilizar la CA en {{site.data.keyword.blockchainfull_notm}} Platform para desplegar el igual en {{site.data.keyword.cloud_notm}} Private.
 
 ### Archivo de configuración
 {: #ca-operate-config-file-template}
@@ -491,6 +495,8 @@ tree
 │   └── msp
 │       ├── cacerts
 │       │   └── 9-30-250-70-30395-SampleOrgCA.pem
+│       ├── IssuerPublicKey
+│       ├── IssuerRevocationPublicKey
 │       ├── keystore
 │       │   └── 2a97952445b38a6e0a14db134645981b74a3f93992d9ddac54cb4b4e19cdf525_sk
 │       ├── signcerts
@@ -521,6 +527,8 @@ tree
     └── msp
         ├── cacerts
         │   └── 9-30-250-70-30395-tlsca.pem
+        ├── IssuerPublicKey
+        ├── IssuerRevocationPublicKey
         ├── keystore
         │   └── 45a7838b1a91ddfe3d4d22a5a7f2639b868493bcce594af3e3ceb9c07899d117_sk
         ├── signcerts
@@ -624,7 +632,7 @@ Debe proporcionar un nombre de host de CSR para desplegar un clasificador o un i
 #### Localización del valor de la dirección IP de proxy del clúster
 
 Si desea desplegar un clasificador o un igual en el mismo clúster de {{site.data.keyword.cloud_notm}} Private en el que ha desplegado la CA, asegúrese de tener un rol de
-[administrador de clúster ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Acciones y roles de administrador de clúster") en el clúster de {{site.data.keyword.cloud_notm}} Private donde se va a desplegar el clasificador o el igual. A continuación, especifique la misma IP de proxy que ha utilizado en la [configuración para la CA](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-configuration-parms). Si desea desplegar el clasificador o el igual en un clúster distinto, puede recuperar el valor de la dirección IP de proxy del clúster desde la consola de {{site.data.keyword.cloud_notm}} Private realizando los pasos siguientes:
+[administrador de clúster ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/user_management/assign_role.html "Acciones y roles de administrador de clúster") en el clúster de {{site.data.keyword.cloud_notm}} Private donde se va a desplegar el clasificador o el igual. A continuación, especifique la misma IP de proxy que ha utilizado en la [configuración para la CA](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-configuration-parms). Si desea desplegar el clasificador o el igual en un clúster distinto, puede recuperar el valor de la dirección IP de proxy del clúster desde la consola de {{site.data.keyword.cloud_notm}} Private realizando los pasos siguientes:
 
 1. Inicie sesión en la consola de {{site.data.keyword.cloud_notm}} Private. En el panel de navegación de la izquierda, pulse
 **Plataforma** y, a continuación, pulse **Nodos** para ver los nodos que están definidos en el clúster.
@@ -721,7 +729,7 @@ blanco. Guarde este archivo, ya que necesitará utilizarlo al desplegar un
 {: #ca-operate-msp}
 
 Los componentes de {{site.data.keyword.blockchainfull_notm}} Platform consumen identidades a través de proveedores de servicios de pertenencia (MSP). Los MSP asocian los certificados que emiten las entidades emisoras de certificados con permisos y roles. Para obtener más información sobre los MSP, consulte [el tema Pertenencia de la documentación de Hyperledger Fabric
-![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/latest/membership/membership.html "el tema sobre Pertenencia en la documentación de Hyperledger Fabric").
+![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/membership/membership.html "el tema sobre Pertenencia en la documentación de Hyperledger Fabric").
 
 Las carpetas de MSP deben tener una estructura definida para que las utilicen los componentes de Fabric. El cliente de CA de Fabric establece esta estructura creando las carpetas de MSP siguientes:
 
@@ -741,7 +749,7 @@ Muchos componentes de Fabric contienen información adicional dentro de su carpe
 administrador.
 - **tls:** esta es una carpeta donde se almacenan los certificados TLS que se utilizan para comunicarse con otros componentes de la red.
 
-Para obtener más información sobre la estructura de los MSP, consulte [Pertenencia ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/latest/membership/membership.html "Pertenencia") y [Proveedores de servicios de pertenencia ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/latest/msp.html "Proveedores de servicios de pertenencia") en la documentación de Hyperledger Fabric.
+Para obtener más información sobre la estructura de los MSP, consulte [Pertenencia ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/membership/membership.html "Pertenencia") y [Proveedores de servicios de pertenencia ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/msp.html "Proveedores de servicios de pertenencia") en la documentación de Hyperledger Fabric.
 
 
 ## Visualización de los registros de CA
@@ -767,7 +775,7 @@ Los registros de los componentes se pueden consultar desde la línea de mandatos
 [Documentación de Kubernetes
 ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs “Getting Started”)
 
-- Como alternativa, puede acceder a los sucesos y registros de despliegue mediante la [consola de gestión del clúster de {{site.data.keyword.cloud_notm}} Private](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/troubleshoot/events.html), que abre los registros en Kibana.
+- Como alternativa, puede acceder a los sucesos y registros de despliegue mediante la [consola de gestión del clúster de {{site.data.keyword.cloud_notm}} Private](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/troubleshoot/events.html), que abre los registros en Kibana.
 
   **Nota:** al visualizar los registros en Kibana, es posible que reciba la respuesta `No results found`. Esta
 condición se puede producir si {{site.data.keyword.cloud_notm}} Private utiliza la dirección IP del nodo trabajador como su nombre de host. Para resolver este problema, elimine el filtro que comienza por `node.hostname.keyword` al principio del panel y los registros se volverán visibles.

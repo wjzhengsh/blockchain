@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018,2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -39,7 +39,7 @@ Debe instalar el código de encadenamiento en cada igual que vaya a ejecutar dic
 2. En el panel emergente **Instalar código de encadenamiento**, especifique el nombre y la versión. **Observe** que las series de nombre y versión se utilizarán en las aplicaciones para que interactúen con el código de encadenamiento instalado. Pulse el botón **Examinar** y navegue por el sistema de archivos hasta el lugar en el que se han guardado los archivos de origen del código de encadenamiento. Seleccione uno o varios archivos de origen de código de encadenamiento para instalarlos en el igual. A continuación, seleccione el lenguaje del código de encadenamiento desde el desplegable **Tipo de código de encadenamiento**.
 
 Puede instalar el código de encadenamiento cargando un único o varios archivos GO o NODE, o puede cargar código de encadenamiento en un archivo .zip. Utilizar un archivo .zip mantendrá el código de encadenamiento con una estructura de directorios completa. Esto será útil si desea incluir paquetes de dependencias, o utilizar índices con CouchDB. Para obtener más información sobre CouchDB y cómo configurar índices, consulte
-[Prácticas recomendadas al utilizar CouchDB](/docs/services/blockchain/v10_application.html#dev-app-couchdb-indices) en la guía de aprendizaje de desarrollo de aplicaciones. También puede encontrar información sobre la [gestión de dependencias externas para el código de encadenamiento escrito en GO ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/chaincode4ade.html#managing-external-dependencies-for-chaincode-written-in-go){:new_window} en la documentación de Hyperledger Fabric.
+[Prácticas recomendadas al utilizar CouchDB](/docs/services/blockchain/best_practices.html#best-practices-app-couchdb-indices) en la guía de aprendizaje de desarrollo de aplicaciones. También puede encontrar información sobre la [gestión de dependencias externas para el código de encadenamiento escrito en GO ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/chaincode4ade.html#managing-external-dependencies-for-chaincode-written-in-go){:new_window} en la documentación de Hyperledger Fabric.
 
   ![Instalar código de encadenamiento](../images/chaincode_install.png "Instalar código de encadenamiento")
 
@@ -60,7 +60,7 @@ Debe tener permiso de **Operador** o **Escritor** en el canal para crear la inst
   ![Instantiate Chaincode panel](../images/chaincode_instantiate_panel.png "Instantiate Chaincode panel")
 -->
 
-3. Especifique la [política de aprobación](/docs/services/blockchain/glossary.html#glossary-endorsement-policy) del código de encadenamiento. Puede obtener más información sobre cómo establecer políticas de aprobación en la [sección siguiente](/docs/services/blockchain/howto/install-instantiate-chaincode.html#install-instantiate-chaincode-endorsement-policy).
+3. Especifique la [política de aprobación](/docs/services/blockchain/glossary.html#glossary-endorsement-policy) del código de encadenamiento. Puede obtener más información sobre cómo establecer políticas de aprobación en la [sección siguiente](#install-instantiate-chaincode-endorsement-policy).
 
 
 ## Especificación de las políticas de aprobación del código de encadenamiento

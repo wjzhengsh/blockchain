@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018,2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-17"
 
 subcollection: blockchain
 
@@ -38,7 +38,6 @@ Enterprise Plan-Netze umfassen die folgenden produktionsbereiten Funktionen, um 
 Bevor Sie die Migration Ihres Starter Plan-Netzes auf ein Enterprise Plan-Netz durchführen, sollten Sie die folgenden wichtigen Hinweise lesen.
 
 - **Preisstruktur:** Die monatliche Gebühr Ihrer Organisation für die Nutzung eines Enterprise Plan-Netzes umfasst eine pro Instanz berechnete Mitgliedschaftsgebühr von 1000 Dollar und eine pro Peer berechnete Peergebühr von ebenfalls 1000 Dollar. Weitere Informationen zu diesem Thema finden Sie im Abschnitt zur [Enterprise Plan-Preisstruktur](/docs/services/blockchain/howto/pricing.html#ibp-pricing-enterprise-plan).
-
 - **Hyperledger Fabric-Version:** Enterprise Plan-Netze arbeiten mit Hyperledger Fabric v1.1. Starter Plan-Netze werden unter Hyperledger Fabric v1.2 ausgeführt.
 - **Betroffene Ressourcen:** Chaincode (Smart Contracts), Clientanwendungen. Achten Sie auch hier darauf, ob Ihr Chaincode eine Komponente oder Funktionalität von Fabric v1.2 nutzt, die nicht mit Netzen von v1.1 kompatibel ist.
 - **Erforderliche Zeit:** Die Migration eines Basisnetzes von der Starter Plan-Version auf die Enterprise Plan-Version nimmt mindestens einen halben Tag in Anspruch.

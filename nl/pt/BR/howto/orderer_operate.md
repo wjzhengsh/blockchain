@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -99,7 +99,7 @@ Em seguida, é possível usar as instruções neste tópico para operar seu soli
 ### Recuperando informações sobre terminais do solicitador
 {: #icp-orderer-operate-orderer-endpoint}
 
-É necessário destinar o terminal do solicitador para fazer atualizações no canal do sistema do solicitador. Você precisará ser um [Administrador de cluster ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Funções e ações do administrador de cluster") para concluir as etapas a seguir:
+É necessário destinar o terminal do solicitador para fazer atualizações no canal do sistema do solicitador. Você precisará ser um [Administrador de cluster ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/user_management/assign_role.html "Funções e ações do administrador de cluster") para concluir as etapas a seguir:
 
 1. Efetue login no console do {{site.data.keyword.cloud_notm}} Private e clique no ícone **Menu** no canto superior esquerdo.
 2. Clique em **Carga de trabalho** > **Liberações do Helm**.
@@ -119,7 +119,7 @@ Nesse exemplo, o endereço IP do Proxy é `9.30.94.174` e a porta externa do nó
 ### Fazendo download de seu certificado TLS do solicitador
 {: #icp-orderer-operate-tls-cert}
 
-É necessário fazer download do certificado TLS do solicitador e transmiti-lo para seus comandos para comunicar-se com seu solicitador a partir de um cliente remoto. Você precisará ser um [Administrador de cluster ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Funções e ações do administrador de cluster") para concluir as etapas a seguir:
+É necessário fazer download do certificado TLS do solicitador e transmiti-lo para seus comandos para comunicar-se com seu solicitador a partir de um cliente remoto. Você precisará ser um [Administrador de cluster ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/user_management/assign_role.html "Funções e ações do administrador de cluster") para concluir as etapas a seguir:
 
 1. Efetue login no console do {{site.data.keyword.cloud_notm}} Private e clique no ícone **Menu** no canto superior esquerdo.
 2. Clique em **Carga de trabalho** > **Liberações do Helm**.
@@ -171,6 +171,8 @@ tree
 │   └── msp
 │       ├── cacerts
 │       │   └── 9-30-250-70-30395-SampleOrgCA.pem
+│       ├── IssuerPublicKey
+│       ├── IssuerRevocationPublicKey
 │       ├── keystore
 │       │   └── 2a97952445b38a6e0a14db134645981b74a3f93992d9ddac54cb4b4e19cdf525_sk
 │       ├── signcerts
@@ -196,6 +198,8 @@ tree
     └── msp
         ├── cacerts
         │   └── 9-30-250-70-30395-tlsca.pem
+        ├── IssuerPublicKey
+        ├── IssuerRevocationPublicKey
         ├── keystore
         │   └── 45a7838b1a91ddfe3d4d22a5a7f2639b868493bcce594af3e3ceb9c07899d117_sk
         ├── signcerts
@@ -216,7 +220,7 @@ A atualização do canal do sistema do solicitador é obtida por meio de "transa
 
 A inclusão de organizações no canal do sistema do solicitador é essencialmente o mesmo fluxo que a atualização de qualquer configuração de canal para incluir uma organização. No entanto, é necessário fazer algumas mudanças porque o canal a ser atualizado não é um canal de aplicativo e o administrador relevante é o administrador do solicitador em vez de uma organização peer.
 
-Observe que é possível incluir uma organização em um canal sem primeiro associar-se ao canal do sistema. Para obter mais informações, veja o [Tutorial Incluindo uma organização em um canal ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/channel_update_tutorial.html "Incluindo uma organização em um canal") na documentação do Hyperledger Fabric.
+Observe que é possível incluir uma organização em um canal sem primeiro associar-se ao canal do sistema. Para obter mais informações, veja o [Tutorial Incluindo uma organização em um canal ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/channel_update_tutorial.html "Incluindo uma organização em um canal") na documentação do Hyperledger Fabric.
 
 A lista a seguir mostra as etapas gerais e as tarefas serão executadas por conjuntos diferentes de organizações de seu consórcio.
 
@@ -228,13 +232,13 @@ A lista a seguir mostra as etapas gerais e as tarefas serão executadas por conj
 {: #icp-orderer-operate-get-fabric-tools}
 
 É necessário fazer download das ferramentas do Hyperledger Fabric a seguir para atualizar o canal do sistema.
-- [peer ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/peercommand.html), que permitirá buscar o bloco genesis e atualizar o canal do sistema.
-- [configtxlator ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/configtxlator.html), que converte o formato protobuf de uma configuração de canal para o formato JSON que é mais fácil de ler e atualizar.
+- [peer ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/peercommand.html), que permitirá buscar o bloco genesis e atualizar o canal do sistema.
+- [configtxlator ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/configtxlator.html), que converte o formato protobuf de uma configuração de canal para o formato JSON que é mais fácil de ler e atualizar.
 
 1. Decida onde você deseja armazenar as ferramentas e, em seguida, execute este comando:
 
   ```
-  curl -sSL http://bit.ly/2ysbOFE | bash -s 1.2.1 1.2.1 -d -s
+  curl -sSL http://bit.ly/2ysbOFE | bash -s 1.4.0 1.4.0 -d -s
   ```
   {:codeblock}
 
@@ -299,7 +303,7 @@ O solicitador precisa receber as [definições de organização](/docs/services/
 
   Substitua os campos por suas próprias informações.
 
-    - Substitua `<CORE_PEER_LOCALMSPID>` pelo ID do MSP de sua organização do solicitador. Ele também fica visível dentro do contêiner do solicitador executando os comandos a seguir, substituindo `<orderer pod name>` pelo valor do pod de seu solicitador:
+    - Substitua `<CORE_PEER_LOCALMSPID>` pelo ID do MSP da organização de seu solicitador. Ela também é visível dentro do contêiner do solicitador com a execução dos comandos a seguir, substituindo `<orderer pod name>` pelo valor do pod de seu solicitador:
 
       ```
       kubectl exec -it <orderer pod name> -c orderer sh
@@ -315,8 +319,8 @@ O solicitador precisa receber as [definições de organização](/docs/services/
 
       Portanto, o `CORE_PEER_LOCALMSPID` é ordererOrg.
 
-    - Substitua `<CORE_PEER_MSPCONFIGPATH>` pelo caminho para a pasta MSP do administrador da organização do solicitador.
-    - Substitua `<CORE_PEER_TLS_ROOTCERT_FILE>` pelo caminho para o certificado da CA do TLS.
+    - Substitua `<CORE_PEER_MSPCONFIGPATH>` pelo caminho para a pasta do MSP do administrador da organização do solicitador.
+    - Substitua `<CORE_PEER_TLS_ROOTCERT_FILE>` pelo caminho para o certificado TLS da CA.
     - Substitua `<PROXY_IP>` pelo endereço IP do proxy das [informações do terminal do solicitador](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-orderer-endpoint)
     - Substitua `<EXTERNAL_NODE_PORT>` pela porta do nó externo das [informações do terminal do solicitador](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-orderer-endpoint)
 
@@ -354,7 +358,7 @@ O solicitador precisa receber as [definições de organização](/docs/services/
   ```
   {:codeblock}
 
-  Substitua `<orderer_TLS_root_cert_file>` pelo caminho para o arquivo `orderertls.pem` que você criou nesta [etapa](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-tls-cert). Por exemplo, seu comando pode ser semelhante ao exemplo a seguir:
+  Substitua `<orderer_TLS_root_cert_file>` pelo caminho para o arquivo `orderertls.pem` criado nessa [etapa](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-tls-cert). Por exemplo, seu comando pode ser semelhante ao exemplo a seguir:
 
   ```
   peer channel fetch config ./configupdate/genesis.pb -o $PROXY:$ORDERER_PORT -c $CHANNEL_NAME --tls  --cafile $HOME/fabric-ca-client/orderer-tls/orderertls.pem
@@ -375,7 +379,7 @@ O solicitador precisa receber as [definições de organização](/docs/services/
 
 A [ferramenta do Fabric](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-get-fabric-tools) transferida por download `configtxtlator` converte o formato protobuf de uma configuração de canal para o formato JSON e vice-versa.
 
-Estas etapas seguem o fluxo geral do tutorial de atualização de canal sobre [como converter o bloco em formato JSON ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")]( https://hyperledger-fabric.readthedocs.io/en/release-1.2/channel_update_tutorial.html#convert-the-configuration-to-json-and-trim-it-down "Converter a configuração para JSON e reduzi-la"). É necessário fazer algumas mudanças nos comandos no tutorial para refletir o fato de que você está atualizando o canal do sistema solicitador em vez de um canal de aplicativo. É possível visitar o tutorial para obter mais detalhes sobre esse processo. Esta seção simplesmente fornece os comandos para você.
+Estas etapas seguem o fluxo geral do tutorial de atualização de canal sobre [como converter o bloco em formato JSON ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")]( https://hyperledger-fabric.readthedocs.io/en/release-1.4/channel_update_tutorial.html#convert-the-configuration-to-json-and-trim-it-down "Converter a configuração para JSON e reduzi-la"). É necessário fazer algumas mudanças nos comandos no tutorial para refletir o fato de que você está atualizando o canal do sistema solicitador em vez de um canal de aplicativo. É possível visitar o tutorial para obter mais detalhes sobre esse processo. Esta seção simplesmente fornece os comandos para você.
 
 1. Copie o arquivo JSON de definição de organização da pasta em que você [criou sua organização](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-organization-definition) para a pasta `configupdate`. No exemplo de comando abaixo, o arquivo JSON de definição da organização é `org1definition.json`:
 
@@ -488,7 +492,7 @@ Os logs de componentes podem ser visualizados na linha de comandos usando os [`k
   ```
   {:codeblock}
 
-  Em seguida, execute o comando a seguir para recuperar os logs para o contêiner do solicitador que reside dentro do pod, substituindo `<pod_name>` com o nome de seu pod da saída de comando acima:
+  Em seguida, execute o comando a seguir para recuperar os logs para o contêiner do solicitador que reside dentro do pod, substituindo `<pod_name>` pelo nome de seu pod da saída de comando acima:
 
   ```
   kubectl logs <pod_name> -c orderer
@@ -497,7 +501,7 @@ Os logs de componentes podem ser visualizados na linha de comandos usando os [`k
 
   Para obter mais informações sobre o comando `kubectl logs`, veja [Documentação do Kubernetes ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs “Getting Started”)
 
-- Como alternativa, é possível acessar logs usando o [console de gerenciamento de cluster do {{site.data.keyword.cloud_notm}} Private ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/troubleshoot/events.html), que abre os logs no Kibana.
+- Como alternativa, é possível acessar logs usando o console de gerenciamento de cluster do [{{site.data.keyword.cloud_notm}} Private ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/troubleshoot/events.html), que abre os logs no Kibana.
 
   **Nota:** ao visualizar seus logs no Kibana, você pode receber a resposta `No results found`. Essa condição poderá ocorrer se o {{site.data.keyword.cloud_notm}} Private usar o endereço IP do nó do trabalhador como seu nome do host. Para resolver esse problema, remova o filtro que inicia com `node.hostname.keyword` na parte superior do painel e os logs se tornarão visíveis.
 
@@ -513,8 +517,8 @@ Os logs de componentes podem ser visualizados na linha de comandos usando os [`k
 INFO 001 Endorser and orderer connections initialized Error: got unexpected status: BAD_REQUEST -- initializing channelconfig failed: could not create channel Consortiums sub-group config: Attempted to define two different versions of MSP: Org1
 ```
 
-Esse erro pode ser causado quando o peer está usando o mesmo ID de MSP da organização que o solicitador.  
+Esse erro pode ser causado quando o peer está usando o mesmo ID do MSP da organização que o solicitador.  
 
 **Solução:**  
 
-Para resolver esse problema, é necessário reimplementar seu peer especificando um ID de MSP da Organização que seja diferente do que foi usado quando o solicitador foi implementado.
+Para resolver esse problema, é necessário reimplementar seu peer especificando um ID do MSP da Organização que seja diferente do que foi usado quando o solicitador foi implementado.

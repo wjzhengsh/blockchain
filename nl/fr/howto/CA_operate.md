@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -112,7 +112,7 @@ Vous devez utiliser l'outil de ligne de commande **kubectl** pour vous connecter
 ### Extraction de l'URL de votre autorité de certification
 {: #ca-operate-url}
 
-Vous devez cibler l'URL de l'autorité de certification pour les demandes de génération de certificats ou d'enregistrement avec une nouvelle identité. Pour trouver l'URL de votre autorité de certification, vous pouvez utiliser l'interface utilisateur de votre console {{site.data.keyword.cloud_notm}} Private. Vous devrez être [administrateur de cluster![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Rôles et actions de l'administrateur de cluster") pour effectuer les étapes suivantes :
+Vous devez cibler l'URL de l'autorité de certification pour les demandes de génération de certificats ou d'enregistrement avec une nouvelle identité. Pour trouver l'URL de votre autorité de certification, vous pouvez utiliser l'interface utilisateur de votre console {{site.data.keyword.cloud_notm}} Private. Vous devrez être [administrateur de cluster![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/user_management/assign_role.html "Rôles et actions de l'administrateur de cluster") pour effectuer les étapes suivantes :
 
 1. Connectez-vous à la console {{site.data.keyword.cloud_notm}} Private et cliquez sur l'icône **Menu ** dans l'angle supérieur gauche.
 2. Cliquez sur **Charge de travail** > **Editions Helm**.
@@ -153,12 +153,12 @@ Vous devez télécharger le certificat TLS de votre autorité de certification e
 
 Vous pouvez recourir au client de l'autorité de certification Fabric pour utiliser votre autorité de certification. Les présentes instructions vous expliquent comment utiliser le client d'autorité de certification Fabric pour inscrire et enregistrer les identités d'autres composants appartenant à votre organisation. Vous pouvez également utiliser les logiciels SDK Fabric pour effectuer les étapes prérequises.
 
-1. Vous devez télécharger le [client d'autorité de certification Fabric![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric-ca.readthedocs.io/en/latest/users-guide.html#fabric-ca-client "Téléchargement du client d'autorité de certification Fabric") sur votre système de fichiers local.
+1. Vous devez télécharger le [client d'autorité de certification Fabric![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/users-guide.html#fabric-ca-client "Téléchargement du client d'autorité de certification Fabric") sur votre système de fichiers local.
 
-  Le moyen le plus simple d'obtenir le client d'autorité de certification Fabric est de télécharger tous les binaires de l'outil Fabric directement. Accédez à un répertoire dans lequel vous souhaitez télécharger les binaires à partir de votre ligne de commande, puis procédez à leur extraction en exécutant la commande [Curl ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/prereqs.html#install-curl "Curl") suivante.
+  Le moyen le plus simple d'obtenir le client d'autorité de certification Fabric est de télécharger tous les binaires de l'outil Fabric directement. Accédez à un répertoire dans lequel vous souhaitez télécharger les binaires à partir de votre ligne de commande, puis procédez à leur extraction en exécutant la commande [Curl ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/prereqs.html#install-curl "Curl") suivante.
 
   ```
-  curl -sSL http://bit.ly/2ysbOFE | bash -s 1.2.1 1.2.1 -d -s
+  curl -sSL http://bit.ly/2ysbOFE | bash -s 1.4.0 1.4.0 -d -s
   ```
   {:codeblock}
 
@@ -225,7 +225,7 @@ Vous pouvez générer des certificats uniquement à l'aide d'identités qui ont 
   ```
   {:codeblock}
 
-  `<enroll_id>` et `<enroll_password>` dans la commande sont le [nom d'utilisateur et le mot de passe admin d'autorité de certification](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-admin-secret) que vous avez transmis au secret Kubernetes lors du déploiement de l'autorité de certification. Insérez l'[URL d'autorité de certification](/docs/services/blockchain/howto/CA_operate.html#ca-operate-url) dans le `<ca_url_with_port>`. Retirez `http://` au début. Le `<ca_name>` est la valeur que vous avez fournie dans la zone `Nom de l'autorité de certification` lors du déploiement de l'autorité de certification.
+  Le `<enroll_id>`et le `<enroll_password>` dans la commande sont le [nom d'utilisateur et le mot de passe admin d'autorité de certification](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-admin-secret) que vous avez transmis au secret Kubernetes lors du déploiement de l'autorité de certification. Insérez l'[URL d'autorité de certification](/docs/services/blockchain/howto/CA_operate.html#ca-operate-url) dans le `<ca_url_with_port>`. Retirez `http://` au début. Le `<ca_name>` est la valeur que vous avez fournie dans la zone `Nom de l'autorité de certification` lors du déploiement de l'autorité de certification.
 
   Le `<ca_tls_cert_path>` est le chemin d'accès complet au [certificat TLS de votre autorité de certification](/docs/services/blockchain/howto/CA_operate.html#ca-operate-tls).
 
@@ -257,6 +257,8 @@ tree
 │   └── msp
 │       ├── cacerts
 │       │   └── 9-30-250-70-30395-SampleOrgCA.pem
+│       ├── IssuerPublicKey
+│       ├── IssuerRevocationPublicKey
 │       ├── keystore
 │       │   └── 2a97952445b38a6e0a14db134645981b74a3f93992d9ddac54cb4b4e19cdf525_sk
 │       ├── signcerts
@@ -274,7 +276,7 @@ Avant de déployer un service de tri ou un homologue, vous devez créer un fichi
 les instructions suivantes vous fournissent un [modèle de fichier de configuration JSON](/docs/services/blockchain/howto/CA_operate.html#ca-operate-config-file-template) que vous pouvez éditer et sauvegarder sur votre système de fichiers local, et elles vous guident tout au long de l'utilisation de votre autorité de certification pour compléter ce fichier.
 
 - Suivez les instructions ci-dessous si vous déployez un service de tri sur {{site.data.keyword.cloud_notm}} Private ou si vous déployez un homologue pour la connexion à un consortium hébergé sur {{site.data.keyword.cloud_notm}} Private.
-- Si vous voulez déployer un homologue pour la connexion à un Starter Plan ou un Enterprise Plan, suivez plutôt les instructions relatives au [Déploiement d'homologues dans IBM Cloud Private pour la connexion à un Starter Plan ou un Enterprise Plan](/docs/services/blockchain/howto/peer_deploy_icp.html#icp-peer-deploy). Ces étapes vous guident tout au long de l'utilisation de votre autorité de certification sur {{site.data.keyword.blockchainfull_notm}} Platform pour déployer notre homologue sur {{site.data.keyword.cloud_notm}} Private.
+- Si vous voulez déployer un homologue pour la connexion à un Starter Plan ou un Enterprise Plan, suivez plutôt les instructions relatives au [Déploiement d'homologues dans IBM Cloud Private pour la connexion à un Starter Plan ou un Enterprise Plan](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy). Ces étapes vous guident tout au long de l'utilisation de votre autorité de certification sur {{site.data.keyword.blockchainfull_notm}} Platform pour déployer notre homologue sur {{site.data.keyword.cloud_notm}} Private.
 
 ### Fichier de configuration
 {: #ca-operate-config-file-template}
@@ -475,6 +477,8 @@ tree
 │   └── msp
 │       ├── cacerts
 │       │   └── 9-30-250-70-30395-SampleOrgCA.pem
+│       ├── IssuerPublicKey
+│       ├── IssuerRevocationPublicKey
 │       ├── keystore
 │       │   └── 2a97952445b38a6e0a14db134645981b74a3f93992d9ddac54cb4b4e19cdf525_sk
 │       ├── signcerts
@@ -505,6 +509,8 @@ tree
     └── msp
         ├── cacerts
         │   └── 9-30-250-70-30395-tlsca.pem
+        ├── IssuerPublicKey
+        ├── IssuerRevocationPublicKey
         ├── keystore
         │   └── 45a7838b1a91ddfe3d4d22a5a7f2639b868493bcce594af3e3ceb9c07899d117_sk
         ├── signcerts
@@ -606,7 +612,7 @@ Vous devez fournir un nom d'hôte CSR pour déployer un service de tri ou un hom
 
 #### Recherche de la valeur de l'adresse IP proxy du cluster
 
-Si vous voulez déployer un service de tri ou un homologue sur le même cluster {{site.data.keyword.cloud_notm}} Private que celui sur lequel vous avez déployé un rôle [Administrateur de cluster ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Rôles et actions de l'administrateur de cluster") sur le cluster {{site.data.keyword.cloud_notm}} Private où le service de tri ou l'homologue va être déployé. Ensuite, entrez la même IP proxy que celle utilisée lorsque vous avez [configuré votre autorité de certification](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-configuration-parms). Si vous voulez déployer le service de tri ou l'homologue sur un autre cluster, vous pouvez extraire la valeur de l'adresse IP proxy du cluster à partir de la console {{site.data.keyword.cloud_notm}} Private.
+Si vous voulez déployer un service de tri ou un homologue sur le même cluster {{site.data.keyword.cloud_notm}} Private que celui sur lequel vous avez déployé un rôle [Administrateur de cluster ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/user_management/assign_role.html "Rôles et actions de l'administrateur de cluster") sur le cluster {{site.data.keyword.cloud_notm}} Private où le service de tri ou l'homologue va être déployé. Ensuite, entrez la même IP proxy que celle utilisée lorsque vous avez [configuré votre autorité de certification](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-configuration-parms). Si vous voulez déployer le service de tri ou l'homologue sur un autre cluster, vous pouvez extraire la valeur de l'adresse IP proxy du cluster à partir de la console {{site.data.keyword.cloud_notm}} Private.
 
 1. Connectez-vous à la console {{site.data.keyword.cloud_notm}} Private. Dans le panneau de navigation gauche, cliquez sur **Plateforme** puis sur **Noeuds** pour afficher les noeuds qui sont définis dans le cluster.
 2. Cliquez sur le noeud avec le rôle `proxy`, puis copiez la valeur de l'`IP hôte` de la table.
@@ -696,7 +702,7 @@ Vous pouvez laisser les autres zones vides. Sauvegardez ce fichier et vous devre
 ## Fournisseur de services aux membres (MSP)
 {: #ca-operate-msp}
 
-Les composants d'{{site.data.keyword.blockchainfull_notm}} Platform consomment des identités via des Fournisseur de services aux membres (MSP). Les MSP associent les certificats émis par les autorités de certification à des droits et des rôles. Pour plus d'informations sur les MSP, consultez [la rubrique relative à l'appartenance dans la documentation Hyperledger Fabric![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/latest/membership/membership.html "la rubrique relative à l'appartenance dans la documentation Hyperledger Fabric").
+Les composants d'{{site.data.keyword.blockchainfull_notm}} Platform consomment des identités via des Fournisseur de services aux membres (MSP). Les MSP associent les certificats émis par les autorités de certification à des droits et des rôles. Pour plus d'informations sur les MSP, consultez [la rubrique relative à l'appartenance dans la documentation Hyperledger Fabric![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/membership/membership.html "la rubrique relative à l'appartenance dans la documentation Hyperledger Fabric").
 
 Les dossiers MSP doivent avoir une structure définie pour pouvoir être utilisés par les composants Fabric. Le client d'autorité de certification Fabric établit cette structure en créant les dossiers MSP suivants :
 
@@ -715,7 +721,7 @@ De nombreux composants Fabric contiennent des informations supplémentaires dans
 - **admincerts :** Ce dossier contient la liste des administrateurs pour cette organisation ou ce composant. Vous devrez envoyer par téléchargement votre certificat signCert dans ce dossier si vous exploitez un homologue distant à partir de la ligne de commande ou de logiciels SDK. Si vous utilisez le client d'autorité de certification Fabric, vous avez également besoin d'un dossier admincerts dans votre MSP qui contienne le certificat signCert correspondant qui doit être reconnu en tant que certificat administrateur.
 - **tls :** Il s'agit d'un dossier dans lequel vous stockez les certificats TLS utilisés pour communiquer avec d'autres composants réseau.
 
-Pour plus d'informations sur la structure des MSP, voir [Appartenance ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/latest/membership/membership.html "Appartenance") et [Fournisseur de services aux membres (MSP)![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/latest/msp.html "Fournisseur de services aux membres (MSP)") dans la documentation Hyperledger Fabric.
+Pour plus d'informations sur la structure des MSP, voir [Appartenance ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/membership/membership.html "Appartenance") et [Fournisseur de services aux membres (MSP)![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/msp.html "Fournisseur de services aux membres (MSP)") dans la documentation Hyperledger Fabric.
 
 
 ## Affichage des journaux de l'autorité de certification
@@ -730,7 +736,7 @@ Les journaux de composant peuvent être affichés à partir de la ligne de comma
    ```
    {:codeblock}
 
-   Ensuite, exécutez la commande suivante pour extraire les journaux pour le conteneur d'autorité de certification qui réside dans le pod en remplaçant `pod_name` par le nom de votre pod à partir de la sortie de commande ci-dessus :
+   Ensuite, exécutez la commande suivante pour extraire les journaux pour le conteneur d'autorité de certification qui réside dans le pod en remplaçant `pod_name` par le nom de votre pod à partir du résultat de la commande ci-dessus :
 
    ```
    kubectl logs <pod_name> -c ca
@@ -739,7 +745,7 @@ Les journaux de composant peuvent être affichés à partir de la ligne de comma
 
    Pour plus d'informations sur la commande `kubectl logs`, consultez la [documentation Kubernetes ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs “Getting Started”)
 
-- Vous pouvez aussi accéder aux événements de déploiement et aux journaux en utilisant la [console de gestion de cluster {{site.data.keyword.cloud_notm}} Private](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/troubleshoot/events.html), qui ouvre les journaux dans Kibana.
+- Vous pouvez aussi accéder aux événements de déploiement et aux journaux en utilisant la [console de gestion de cluster {{site.data.keyword.cloud_notm}} Private](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/troubleshoot/events.html), qui ouvre les journaux dans Kibana. 
 
   **Remarque :** Lorsque vous affichez vos journaux dans Kibana, vous pouvez recevoir la réponse `No results found`. Cette condition peut se produire si {{site.data.keyword.cloud_notm}} Private utilise l'adresse IP de votre noeud worker comme nom d'hôte. Pour résoudre ce problème, supprimez le filtre qui commence par `node.hostname.keyword` en haut de l'écran et les journaux deviennent visibles.
 

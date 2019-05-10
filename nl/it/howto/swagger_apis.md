@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018,2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-03"
 
 subcollection: blockchain
 
@@ -27,7 +27,7 @@ Prima di iniziare, devi creare un'istanza del servizio [{{site.data.keyword.bloc
 ## Richiamo delle credenziali di rete
 {: #ibp-swagger-retrieving-network-credentials}
 
-Accedi al Monitoraggio della rete della tua rete Blockchain e apri la schermata "API" dal navigatore a sinistra. Puoi visualizzare le tue credenziali di rete per le API REST. Autorizzerai successivamente le API utilizzando i valori di "key" e "secret" qui visualizzati ed eseguirai le API con il "network_id" come parametro. Fai clic su **Show secret** per visualizzare il valore del campo segreto. Copia i valori dei campi key, secret e network_id, che puoi utilizzare successivamente nell'IU Swagger.
+Accedi al Monitoraggio della rete della tua rete Blockchain e apri la schermata "API" dal navigatore a sinistra. Puoi visualizzare le tue credenziali di rete per le API REST. Autorizzerai successivamente le API utilizzando i valori di chiave ("key") e segreto ("secret") qui visualizzati ed eseguirai le API con il "network_id" come parametro. Fai clic su **Show secret** per visualizzare il valore del campo segreto. Copia i valori dei campi key, secret e network_id, che puoi utilizzare successivamente nell'IU Swagger.
 
 La **Figura 1** mostra la schermata "API":
 ![Schermata API](../images/API_screen_starter.png "Schermata API")
@@ -70,7 +70,7 @@ Dopo che hai fatto clic sul pulsante **Try it out**, puoi immettere i parametri 
 
 La **Figura 5** mostra i parametri nella "IU Swagger":
 
-![Parametri nella UI Swagger](../images/swaggerUIParams.png "Parametri nella UI Swagger")  
+![Parametri nell'IU Swagger](../images/swaggerUIParams.png "Parametri nell'IU Swagger")  
 *Figura 5. Immissione dei parametri*  
 
 Dopo che hai fatto clic su **Esegui**, puoi vedere la risposta della chiamata API sulla tua rete. Puoi anche vedere un comando CURL che può richiamare la API direttamente dalla tua riga di comando.
@@ -79,6 +79,27 @@ La **Figura 6** mostra il comando CURL, l'URL e il corpo della risposta della AP
 
 ![Risposta della API nell'IU Swagger](../images/swaggerUICurlResponse.png "Risposta della API nell'IU Swagger")  
 *Figura 6. Risposta della API*    
+
+## Disabilitazione dell'accesso API
+{: #ibp-swagger-turn-off}
+
+Per impostazione predefinita, tutti gli utenti con un ruolo non Revisore in IBM Cloud possono visualizzare e utilizzare le **Credenziali di rete** visibili nel pannello API Swagger e possono pertanto gestire la loro rete utilizzando le API. Tuttavia, se preferisci non esporre le tue credenziali di rete API Swagger nell'IU, puoi copiare e proteggere i tuoi valori di chiave e segreto esistenti e generare delle nuove credenziali che non sono valide per l'uso con le API Swagger. Viene fornito un indicatore denominato resetCredentials che ti consente di controllare l'accesso completando la seguente procedura:
+
+1. Attieniti alla procedura per generare delle nuove credenziali di rete, come descritto nel [dashboard Credenziali del servizio](/docs/services/blockchain/howto/create_join_network_with_apis.html#swagger-network-retrieve-id-token).
+2. Tuttavia, nella casella **Aggiungi parametri di configurazione inline**, incolla il seguente valore:
+   ```
+   {
+     "resetCredentials": true
+   }
+   ```
+   {:codeblock}
+3. Fai clic su **Aggiungi**.
+
+Ora, quando un utente accede al pannello API Swagger dall'IU, le informazioni **Credenziali di rete** nell'IU conterranno un valore di chiave e segreto generico che non è valido per gestire la tua rete. Le eventuali richieste API inoltrate utilizzando queste credenziali non verranno elaborate.  
+
+Se in un secondo momento desideri esporre delle credenziali di rete valide nell'IU, ti basta ripetere la procedura sopra indicata per generare delle nuove credenziali lasciando però questa volta vuota la casella **Aggiungi parametri di configurazione inline**. Non hai bisogno di specificare alcun parametro.
+
+Ora, le credenziali valide originali sono visibili nelle informazioni **Credenziali di rete** nell'IU e possono essere utilizzate per autenticare le API Swagger.
 
 ## Suggerimenti per la soluzione dei problemi
 {: #ibp-swagger-troubleshooting}

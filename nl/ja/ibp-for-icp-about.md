@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -20,8 +20,11 @@ subcollection: blockchain
 # {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private について
 {: #ibp-icp-about}
 
-{{site.data.keyword.blockchainfull}} Platform は、{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private をリリースしました。これは、コンテナー化されたアプリケーションを開発および管理するためのアプリケーション・プラットフォームです。 {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private オファリングは Kubernetes をベースとしています。そのため、ユーザーは、認証局 (CA)、順序付けプログラム、およびピアを x86、LinuxONE、および IBM Z にデプロイできます。{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private は、Hyperledger Fabric v1.2.1 をベースとしており、Kubernetes Helm チャートを使用してデプロイされます。
+{{site.data.keyword.blockchainfull}} Platform は、{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private をリリースしました。これは、コンテナー化されたアプリケーションを開発および管理するためのアプリケーション・プラットフォームです。 {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private オファリングは Kubernetes をベースとしています。そのため、ユーザーは、認証局 (CA)、順序付けプログラム、ピアを x86、LinuxONE、IBM Z にデプロイできます。{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private は、Kubernetes Helm チャートを使用してデプロイできます。
 {:shortdesc}
+
+{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private は、2019 年 4 月 23 日に Hyperledger Fabric v1.4.0 にアップグレードされます。ただし、現時点では、ゴシップ・データや個人データがサポートされる予定はありません。
+{:note}
 
 {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private は、{{site.data.keyword.cloud_notm}} Private を使用して独自のインフラストラクチャーでブロックチェーン・ネットワークを実行するために必要なコンポーネントを提供します。 コンポーネントには、Kubernetes Helm チャートを使用してデプロイ、管理、セットアップする Hyperledger Fabric、認証局 (CA)、順序付けプログラム、およびピアが含まれます。 **このオファリングは、Hyperledger Fabric の経験が豊富なお客様を対象としています。**
 
@@ -31,7 +34,7 @@ subcollection: blockchain
  * クライアントが Helm チャートと操作に関する詳細な資料を使用して Kubernetes 上で Fabric を構成できるようにします。
  * Community Edition を使用している場合を除き、クライアントに拡張テクニカル・サポートを提供します。
 
-{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private は、{{site.data.keyword.cloud_notm}} Private のお客様がブロックチェーン・コンポーネントをローカル環境にデプロイするためのバンドル製品です。 Helm チャートをインポートすると、{{site.data.keyword.cloud_notm}} Private カタログに {{site.data.keyword.blockchainfull_notm}} Platform タイルとして表示されます。 {{site.data.keyword.cloud_notm}} Private について詳しくは、[{{site.data.keyword.cloud_notm}} Private バージョン 3.1.0 ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/kc_welcome_containers.html "{{site.data.keyword.cloud_notm}} Private 3.1.0") の資料を参照してください。
+{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private は、{{site.data.keyword.cloud_notm}} Private のお客様がブロックチェーン・コンポーネントをローカル環境にデプロイするためのバンドル製品です。 Helm チャートをインポートすると、{{site.data.keyword.cloud_notm}} Private カタログに {{site.data.keyword.blockchainfull_notm}} Platform タイルとして表示されます。 {{site.data.keyword.cloud_notm}} Private について詳しくは、[{{site.data.keyword.cloud_notm}} Private バージョン 3.1.2 ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/kc_welcome_containers.html "{{site.data.keyword.cloud_notm}} Private 3.1.2") の資料を参照してください。
 
 ## {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private の提供内容
 
@@ -39,7 +42,7 @@ subcollection: blockchain
 
 ## {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private の使用に適した状況
 
-{{site.data.keyword.cloud_notm}} 外部で {{site.data.keyword.blockchainfull_notm}} Platform コンポーネントを実行すると、ブロックチェーン・ネットワークの拡張や参加をより柔軟に行うことができます。 これは、新規メンバーが自分で選択したプラットフォームを使用しながら参加できるようにすることで、ネットワーク設立者がネットワークを拡張するのに役立ちます。 これにより、ブロックチェーン・ネットワークへの参加に関心のある組織は、ピアを既存のアプリケーションと同じ場所に置いたり、組織の記録システムと統合したりできます。
+{{site.data.keyword.cloud_notm}} 外部で {{site.data.keyword.blockchainfull_notm}} Platform コンポーネントを実行すると、ブロックチェーン・ネットワークの拡張や参加をより柔軟に行うことができます。 これを使用すると、新規メンバーが各自のプラットフォームを使用したまま参加できるようになるので、ネットワーク・イニシエーターはネットワークの拡張を促進できます。これにより、ブロックチェーン・ネットワークへの参加に関心のある組織は、ピアを既存のアプリケーションと同じ場所に置いたり、組織の記録システムと統合したりできます。
 
 {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private をデプロイするプロセスは複雑であり、Fabric について高度な専門知識があることを想定しています。 Fabric、{{site.data.keyword.cloud_notm}} Private、または {{site.data.keyword.blockchainfull_notm}} Platform を使用するのが初めてで、開発環境や PoC (概念検証) の設定が目標である場合は、代わりに[スターター・プラン](/docs/services/blockchain/starter_plan.html#starter-plan-about)を使用することを検討してください。 また、すべての潜在的なデプロイメント構成が {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private でサポートされるわけではないことにも注意してください。
 {:improtant}
@@ -57,21 +60,22 @@ subcollection: blockchain
 - コンポーネントのリリース名が異なる場合、複数のコンポーネントを {{site.data.keyword.cloud_notm}} Private 内の単一の名前空間にデプロイできます。
 - ネットワーク・モニター UI で Swagger UI を使用してコンポーネントをアドレス指定することはできません。
 - 相互 TLS はサポートされていません。
+- 基礎になっているテクノロジー (Hyperledger Fabric) では、コンテナーを使用してチェーンコードを実行し、Docker を使用してそのコンテナーを開始します。 ピアがチェーンコード・コンテナーを開始する唯一の方法は、Docker-in-Docker を使用することです。そのためには、特権アクセスが必要になります。
 
 **CA に関する考慮事項**
 - この Helm チャートは、CA の単一インスタンスをデプロイします。 組織ごとに個別の CA を設定することがベスト・プラクティスであると考えられるため、複数の CA をデプロイすることが必要になる場合があります。 例えば、1 つの順序付けプログラムと 3 つのピアをデプロイする予定である場合、少なくとも 2 つの CA が必要になります (順序付けプログラム組織用とピア組織用にそれぞれ 1 つずつ)。
-- 別の MySQL データベースを実行することもできますが、Helm チャートにはこのオプションはありません。 ただし、Helm チャートでは、CA 内に SQLite データベースをデプロイして、ユーザー当たりのエンロール数や取り消された証明書のトラッキングなど、CA のデータベースでの必須作業を処理します。
+- 別の MySQL データベースを実行することもできますが、Helm チャートにはこのオプションはありません。 ただし、Helm チャートでは、CA 内に SQLite データベースをデプロイして、ユーザーあたりのエンロール数や失効した証明書を記録するなどの CA のデータベース作業を処理します。
 
 **順序付けプログラムに関する考慮事項**
-- 順序付けサービスは、Hyperledger Fabric の v1.2 のすべてのコンポーネントと互換性があります。
+- 順序付けサービスは、Hyperledger Fabric の v1.1 以降のすべてのコンポーネントと互換性があります。
 - この Helm チャートは、SOLO 順序付けサービス (1 つの順序付けプログラム) の単一インスタンスをデプロイします。 順序付けサービスの可用性を高めるために、チャネル上に複数の SOLO 順序付けプログラムをデプロイすることはできません。 これは、SOLO 順序付けサービスが実動環境用ではなく開発環境用であると見なされる 1 つの理由です。 ただし、SOLO 順序付けサービスの複数のインスタンスを異なるネットワーク (つまり、別個の共同事業体) にデプロイできます。
 
 **ピアに関する考慮事項**
 
-- ピアは Fabric レベル v1.1 または v1.2.1 のブロックチェーン・ネットワークにのみ接続できます。 Hyperledger Fabric のバージョンを確認するには、ネットワーク・モニターで[「ネットワーク設定 (Network Preferences)」ウィンドウ](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-network-preferences)を開きます。 [手順](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-peer-connection-information)に従って、スターター・ネットワークまたはエンタープライズ・ネットワークからピア接続情報を取得します。
+- ピアは Fabric レベル v1.1 以降のブロックチェーン・ネットワークにのみ接続できます。 Hyperledger Fabric のバージョンを確認するには、ネットワーク・モニターで[「ネットワーク設定 (Network Preferences)」ウィンドウ](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-network-preferences)を開きます。 [手順](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-peer-connection-information)に従って、スターター・ネットワークまたはエンタープライズ・ネットワークからピア接続情報を取得します。
 - ピアのデータベース・タイプがブロックチェーン・ネットワークのデータベース・タイプと一致する必要があります (LevelDB または CouchDB)。
 - CouchDB Fauxton インターフェースは、ピアでは使用できません。
-- ピアの[ゴシップ](/docs/services/blockchain/glossary.html#glossary-gossip)は現在サポートされていません。 これは、[プライベート・データ ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/private-data-arch.html "プライベート・データ") や [サービス・ディスカバリー ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/discovery-overview.html "サービス・ディスカバリー") などのゴシップに依存する Fabric 機能もサポートされていないことを意味します。
+- ピアの[ゴシップ](/docs/services/blockchain/glossary.html#glossary-gossip)は現在サポートされていません。 これは、[プライベート・データ ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/private-data-arch.html "プライベート・データ") や [サービス・ディスカバリー ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/discovery-overview.html "サービス・ディスカバリー") などのゴシップに依存する Fabric 機能もサポートされていないことを意味します。
 
 ## システム前提条件
 {: #ibp-icp-about-prerequisites}
@@ -81,7 +85,7 @@ subcollection: blockchain
 - Ubuntu 18.04 LTS および 16.04 LTS
 - SUSE Linux Enterprise Server (SLES) 12 SP3
 
-{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private Helm チャートは、以下のワーカー・ノードおよび補助ストレージを使用して、Ubuntu Linux 上の {{site.data.keyword.cloud_notm}} Private v3.1.0 クラスターで稼働することが検証されました。
+{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private Helm チャートは、以下のワーカー・ノードおよび補助ストレージを使用して、Ubuntu Linux 上の {{site.data.keyword.cloud_notm}} Private v3.1.2 クラスターで稼働することが検証されました。
 
 - **LinuxONE および IBM Z**: NFS を使用する z/VM および KVM
 - **x86**: GlusterFS を使用する Linux 64 ビット
@@ -94,14 +98,14 @@ subcollection: blockchain
 ### 使用許諾条件
 {: #ibp-icp-about-license}
 
-{{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}} Private は、独自のインフラストラクチャーでブロックチェーン・ネットワークを実行するために必要なコンポーネントを提供しており、{{site.data.keyword.cloud_notm}} Private アプリケーションとしてデプロイされます。 PPA にアクセスして、[Helm チャートをダウンロード](/docs/services/blockchain/howto/helm_install_icp.html#helm-install)できます。 {{site.data.keyword.blockchainfull_notm}} からの技術サポートが購入内容に含まれています。
+{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private は、独自のインフラストラクチャーでブロックチェーン・ネットワークを実行するために必要なコンポーネントを提供しており、{{site.data.keyword.cloud_notm}} Private アプリケーションとしてデプロイされます。 PPA にアクセスして、[Helm チャートをダウンロード](/docs/services/blockchain/howto/helm_install_icp.html#helm-install)できます。 {{site.data.keyword.blockchainfull_notm}} からの技術サポートが購入内容に含まれています。
 
-{{site.data.keyword.blockchainfull_notm}} Platform on IBM Cloud Private Community Edition は、評価および試験に適した無料のオファリングであり、{{site.data.keyword.cloud_notm}} Private アプリケーションとしてデプロイされます。 実動には、Community Edition を使用しないでください。 {{site.data.keyword.blockchainfull_notm}} Platform では、Community Edition をサポートしていません。 [GitHub パッケージ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://github.com/IBM/charts/blob/master/repo/stable/ibm-blockchain-platform-dev-1.0.0.tgz "IBM/charts") にアクセスし、Helm チャートをダウンロードできます。
+{{site.data.keyword.blockchainfull_notm}} Platform for IBM Cloud Private Community Edition は、評価および試験に適した無料のオファリングであり、{{site.data.keyword.cloud_notm}} Private アプリケーションとしてデプロイされます。 実動には、Community Edition を使用しないでください。 {{site.data.keyword.blockchainfull_notm}} Platform では、Community Edition をサポートしていません。 [GitHub パッケージ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://github.com/IBM/charts/blob/master/repo/stable/ibm-blockchain-platform-dev-1.0.2.tgz "IBM/charts") にアクセスし、Helm チャートをダウンロードできます。
 
 ### 料金
 {: #ibp-icp-about-pricing}
 
-{{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}} Private の料金は、使用される仮想プロセッサー・コア (VPC) の数に基づきます。 VPC は、仮想サーバーに割り当てられた仮想コアか、非パーティション化サーバーの物理プロセッサー・コアのいずれかです。 {{site.data.keyword.blockchainfull_notm}} Platform で使用可能な VPC ごとに、ライセンス交付を受けた使用権を取得する必要があります。<!-- A VPC is a unit of measurement by which a program can be licensed.-->
+{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private の料金は、使用される仮想プロセッサー・コア (VPC) の数に基づきます。 VPC は、仮想サーバーに割り当てられた仮想コアか、非パーティション化サーバーの物理プロセッサー・コアのいずれかです。 {{site.data.keyword.blockchainfull_notm}} Platform で使用可能な VPC ごとに、ライセンス交付を受けた使用権を取得する必要があります。<!-- A VPC is a unit of measurement by which a program can be licensed.-->
 
 VPC の使用法の判別方法について詳しくは、{{site.data.keyword.IBM_notm}} Knowledge Center の [Virtual Processor Cores (VPC) ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/en/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_virtual_processor_core_licenses.html "Virtual Processor Cores (VPC's)") に関するこの記事を参照してください。 [{{site.data.keyword.IBM_notm}} License Metric Tool](https://www.ibm.com/support/knowledgecenter/en/SS8JFY_9.2.0/com.ibm.lmt.doc/welcome/LMT_welcome.html) を使用して、ライセンスを取得するために必要な VPC の数を判別するために使用できるレポートを構成および作成できます。
 
@@ -109,17 +113,17 @@ VPC の使用法の判別方法について詳しくは、{{site.data.keyword.IB
 ## {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private のインストール
 {: #ibp-icp-about-install}
 
-{{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}} Private は、ローカル {{site.data.keyword.cloud_notm}} Private クラスターにインストール可能な Helm チャート・ファイルとして提供されます。 Helm チャートをインストールすると、{{site.data.keyword.cloud_notm}} Private カタログで {{site.data.keyword.blockchainfull_notm}} Platform をアプリケーションとして見つけることができます。
+{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private は、ローカル {{site.data.keyword.cloud_notm}} Private クラスターにインストール可能な Helm チャート・ファイルとして提供されます。Helm チャートをインストールすると、{{site.data.keyword.cloud_notm}} Private カタログで {{site.data.keyword.blockchainfull_notm}} Platform をアプリケーションとして見つけることができます。
 
 - {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private は、パスポート・アドバンテージによって提供されます。 [パスポート・アドバンテージ・オンライン](https://www.ibm.com/software/passportadvantage/pao_customer.html)にアクセスするには、そのためのライセンスが必要です。 購入内容には、{{site.data.keyword.blockchainfull_notm}} Platform の技術サポートが含まれています。
 
 - {{site.data.keyword.blockchainfull_notm}} Platform Community Edition は、探索、開発、およびテスト用です。 この {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private の無料バージョンには、GitHub からアクセスできます。 **注:** {{site.data.keyword.blockchainfull_notm}} Platform では、Community Edition をサポートしていません。
 
-Helm チャートのインストール方法に関する手順および必要な前提条件については、[{{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}} Private のインストール](/docs/services/blockchain/howto/helm_install_icp.html#helm-install)を参照してください。
+Helm チャートのインストール方法に関する手順および必要な前提条件については、[{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private のインストール](/docs/services/blockchain/howto/helm_install_icp.html#helm-install)を参照してください。
 
 {{site.data.keyword.cloud_notm}} Private の新規ユーザーであり、{{site.data.keyword.cloud_notm}} Private のインストールおよびデプロイに関する情報とヒントが必要な場合は、[{{site.data.keyword.cloud_notm}} Private のセットアップ](/docs/services/blockchain/ICP_setup.html#icp-setup)を参照してください。
 
-{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private をインストールした後、ネットワークの各コンポーネント個別にデプロイする必要があります。 一度に複数のコンポーネントをデプロイすることはできません。 開始する前に、ブロックチェーン・ネットワークを設立または参加するためのベスト・プラクティスについて学習するために、[{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private デプロイメント・ガイド](/docs/services/blockchain/ibp_for_icp_deployment_guide.html#get-started-icp)を参照してください。 その後、以下のセクションで、個別のコンポーネントをデプロイおよび操作するためのステップを確認します。
+{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private をインストールした後、ネットワークの各コンポーネント個別にデプロイする必要があります。 一度に複数のコンポーネントをデプロイすることはできません。 ブロックチェーン・ネットワークの構築またはブロックチェーン・ネットワークへの参加のためのベスト・プラクティスについては、[{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private の概説](/docs/services/blockchain/ibp_for_icp_deployment_guide.html#get-started-icp)を参照してください。その後、以下のセクションで、個別のコンポーネントをデプロイおよび操作するためのステップを確認します。
 
 ### ファイアウォールの内側での {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private のインストール
 {: #ibp-icp-about-firewall}
@@ -145,7 +149,7 @@ CA は、ID を検証し、デプロイする必要があるネットワーク�
 
 順序付けプログラムは、ブロックチェーン・ネットワーク内のクライアント、順序付けトランザクション、およびブロードキャスト・トランザクションを認証します。 これらは、Hyperledger Fabric に基づくブロックチェーン・ネットワークの共通バインディングです。 そのため、他の組織がピアをデプロイし、チャネルに参加して、ネットワーク上でトランザクションを開始できるようにするには、まず、ネットワークを構築する組織が、「順序付けサービス」(順序付けを行うノードまたはノードの集合) をデプロイして開始する必要があります。 順序付けプログラムと、ブロックチェーン・ネットワーク内でのその役割について詳しくは、[ブロックチェーン・コンポーネントの概要](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview-orderer)を参照してください。
 
-ブロックチェーン・ネットワークを設立する場合、順序付けプログラムをデプロイする必要があります。 順序付けプログラムをデプロイした後、他の組織を共同事業体に招待してから、共同事業体で独自のチャネルを作成できます。
+ブロックチェーン・ネットワークを構築する場合、順序付けプログラムをデプロイする必要があります。 順序付けプログラムをデプロイした後、他の組織を共同事業体に招待してから、共同事業体で独自のチャネルを作成できます。
 
 - Helm チャートのインストール後に順序付けプログラムを構成してデプロイする方法については、[{{site.data.keyword.cloud_notm}} Private への順序付けプログラムのデプロイ](/docs/services/blockchain/howto/orderer_deploy_icp.html#icp-orderer-deploy)を参照してください。
 
@@ -211,7 +215,7 @@ CA は、ID を検証し、デプロイする必要があるネットワーク�
 
 データの常駐要件に対応するには、{{site.data.keyword.blockchainfull_notm}} Platform の基礎となっている Hyperledger Fabric アーキテクチャーを理解することが重要です。 このアーキテクチャーは、順序付けサービス (順序付けプログラムで構成)、認証局 (CA)、およびピアという 3 つの主要コンポーネントを中核としています。 ピアは順序付けサービスから順序付け状態の更新をブロックの形式で受け取り、状態および台帳を維持します。 したがって、ピアと順序付けサービスには直接的な関係があります。 台帳には、トランザクション・ログに含まれるすべてのキーおよびデータの最新の値が含まれます。
 
-さらに、クライアント・アプリケーションは、[Fabric SDK](/docs/services/blockchain/v10_application.html#dev-app-fabric-sdks) を使用してトランザクションをピアおよび順序付けサービスに送信します。 これらのトランザクションには、台帳のキーと値のペアを含む[読み取り/書き込みセット ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/readwrite.html "読み取り/書き込みセットのセマンティクス") のデータが含まれます。
+さらに、クライアント・アプリケーションは、[Fabric SDK](/docs/services/blockchain/v10_application.html#dev-app-fabric-sdks) を使用してトランザクションをピアおよび順序付けサービスに送信します。 これらのトランザクションには、台帳のキーと値のペアを含む[読み取り/書き込みセット ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/readwrite.html "読み取り/書き込みセットのセマンティクス") のデータが含まれます。
 
 データの国内常駐が要件となっている場合、順序付けプログラム、ピア、およびクライアント・アプリケーションが同じ国に常駐する必要があります。 {{site.data.keyword.blockchainfull_notm}} Platform ネットワークが {{site.data.keyword.cloud_notm}} で作成されている場合、ネットワークのロケーションを選択することができます。 <!--For a Starter Plan network, you can select from US South, United Kingdom, and Sydney. For an Enterprise Plan network, you can select from currently available locations, which include Dallas, Frankfurt, London, Sao Paulo, Tokyo, and Toronto. -->地域とロケーションについて詳しくは、[{{site.data.keyword.blockchainfull_notm}} Platform の地域とロケーション](/docs/services/blockchain/reference/ibp_regions.html#ibp-regions-locations)を参照してください。
 
@@ -238,15 +242,15 @@ CA は、ID を検証し、デプロイする必要があるネットワーク�
 
 **図 2** では、`OrgC` および `OrgD` にデータの常駐は必要ありません。 実際、`OrgD` には現在、*米国*に常駐する `OrgD-peer1` と `OrgD-peer2` の 2 つの分散ピアが含まれています。 したがって、`OrgA`、`OrgB`、およびドイツに常駐するそれぞれのクライアント・アプリケーションとピアがチャネル `X` の元帳データを分離できるように、新規チャネル `Y` が `OrgC` および `OrgD` 用に作成されます。
 
-{{site.data.keyword.blockchainfull_notm}} Platform ネットワーク上のデータのフローについて詳しくは、[トランザクション・フローに関する Fabric の資料 ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/txflow.html "Transaction Flow") を参照してください。
+{{site.data.keyword.blockchainfull_notm}} Platform ネットワーク上のデータのフローについて詳しくは、[トランザクション・フローに関する Fabric の資料 ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/txflow.html "Transaction Flow") を参照してください。
 
-今後、Hyperledger Fabric の新しいテクノロジーによって、[プライベート・データ・コレクション ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/private-data/private-data.html "プライベート・データ・コレクション") およびゼロ知識証明を使用して、さらなるデータの常駐を実現する機能が改善されます。
+今後、Hyperledger Fabric の新しいテクノロジーによって、[プライベート・データ・コレクション ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/private-data/private-data.html "プライベート・データ・コレクション") およびゼロ知識証明を使用して、さらなるデータの常駐を実現する機能が改善されます。
 
-- プライベート・データ・コレクションによって、プライベート・データが、国内のピアなど、表示を許可されたピアにのみピアツーピアで共有されます (ゴシップ・プロトコルによって)。 データはピアのプライベート・データベースに保管されます。 順序付けサービスは、ここでは関与しません。またプライベート・データを認識することもありません。 チャネルのすべてのピアの台帳にこのデータのハッシュが書き込まれます。 状態検証で使用されるハッシュは、トランザクションの証拠として機能し、監査目的で使用することができます。 プライベート・データは、Fabric バージョン 1.2.1 上で稼働している {{site.data.keyword.blockchainfull_notm}} Platform 上のネットワークで使用できます。 ただし、{{site.data.keyword.cloud_notm}} Private ネットワークでは現在ゴシップを使用していないため、{{site.data.keyword.cloud_notm}} Private で実行されているピアに対してプライベート・データ機能を使用することはできません。
+- プライベート・データ・コレクションによって、プライベート・データが、国内のピアなど、表示を許可されたピアにのみピアツーピアで共有されます (ゴシップ・プロトコルによって)。 データはピアのプライベート・データベースに保管されます。 順序付けサービスは、ここでは関与しません。またプライベート・データを認識することもありません。 チャネルのすべてのピアの台帳にこのデータのハッシュが書き込まれます。 状態検証で使用されるハッシュは、トランザクションの証拠として機能し、監査目的で使用することができます。 プライベート・データは、Fabric バージョン 1.2.1 以降上で稼働している {{site.data.keyword.blockchainfull_notm}} Platform 上のネットワークで使用できます。 ただし、{{site.data.keyword.cloud_notm}} Private ネットワークでは現在ゴシップを使用していないため、{{site.data.keyword.cloud_notm}} Private で実行されているピアに対してプライベート・データ機能を使用することはできません。
 
 - ゼロ知識証明 (ZKP) により、「証明者」は「検証者」に、機密事項自体を示すことなく、機密事項に関する知識があることを保証できます。
 
-これらのテクノロジーについて詳しくは、[Hyperledger Fabric を使用したプライベートおよび機密トランザクション ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/developerworks/cloud/library/cl-blockchain-private-confidential-transactions-hyperledger-fabric-zero-knowledge-proof/index.html "Hyperledger Fabric を使用したプライベートおよび機密トランザクション") に関するホワイト・ペーパーを参照してください。
+これらのテクノロジーについて詳しくは、[Hyperledger Fabric を使用したプライベートおよび機密トランザクション ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://developer.ibm.com/tutorials/cl-blockchain-private-confidential-transactions-hyperledger-fabric-zero-knowledge-proof/ "Hyperledger Fabric を使用したプライベートおよび機密トランザクション") に関するホワイト・ペーパーを参照してください。
 
 ## サポートについて
 {: #ibp-icp-about-support}

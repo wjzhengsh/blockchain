@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-03"
 
 subcollection: blockchain
 
@@ -32,7 +32,7 @@ Cada organización del consorcio tiene que trabajar con su propia entidad emisor
 
 Para que su organización pueda unirse a un consorcio, tiene que crear una definición de organización conocida como **Proveedor de servicios de pertenencia (MSP)**. El MSP contiene la información siguiente:
 - Certificado firmado por la **entidad emisora de certificados raíz**. Este certificado se utiliza para verificar la identidad de los nodos, de los canales y de las aplicaciones.
-- Certificado firmado por la **CA de TLS**. Un certificado de TLS raíz permite que los iguales participen en el protocolo gossip de la organización, lo cual es necesario para aprovechar las características de recopilaciones de [datos privados ****](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-private-data) y [Service Discovery ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/discovery-overview.html "Service discovery") de Hyperledger Fabric.
+- Certificado firmado por la **CA de TLS**. Un certificado de TLS raíz permite que los iguales participen en el protocolo gossip de la organización, lo cual es necesario para aprovechar las características de recopilaciones de [datos privados ****](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-private-data) y [Service Discovery ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/discovery-overview.html "Service Discovery") de Hyperledger Fabric.
 - El **ID de MSP**. El ID de MSP es el nombre formal de su organización dentro del consorcio. Tiene que recordar el ID de MSP para sus nodos y aplicaciones.
 - **Certificados de administración** de las identidades **Admin igual** y **Admin de org**. Estos certificados se pasan al servicio de ordenación y se utilizan para verificar qué identidades de la organización tienen permiso para crear o editar canales. Cuando utilice la consola para crear un clasificador o un igual, los certificados de administrador del MSP se despliegan dentro del nuevo nodo. Luego estos certificados se pueden utilizar para trabajar con los iguales o con los clasificadores desde la consola o desde una aplicación cliente.
 
@@ -71,6 +71,95 @@ Puesto que los certificados de administrador se pasan a los nodos y a los canale
 
 Una vez que haya seleccionado la CA raíz y el ID de MSP y que haya creado los certificados de administrador, pulse **Crear definición de MSP** para crear la definición de MSP. Ahora aparecerá como una organización en el separador Organizaciones. Utilizará la definición de MSP cuando despliegue los nodos y se una a un consorcio de blockchain.
 
+## Creación manual de un archivo JSON de MSP
+{: #console-organizations-build-msp}
+
+**Esta opción es solo para usuarios avanzados que estén familiarizados con la manera en que se utilizan los certificados en la gestión de identidades de blockchain.**
+
+Si prefiere utilizar certificados para el igual o el clasificador de una **CA externa**, una que no esté alojada en
+{{site.data.keyword.IBM_notm}}, debe crear un archivo JSON de definición MSP que represente la definición MSP de la organización del igual o el clasificador.  Cree un archivo JSON utilizando el formato siguiente:
+
+```
+{
+    "name": "<organization_name>",
+    "msp_id": "<organization_id>",
+    "type": "msp",
+    "root_certs": [
+        "<root_certs>"
+    ],
+     "intermediate_certs": [
+         "<intermediate_certs>"
+     ],
+    "admins": [
+        "<admins>"
+    ],
+    "tls_root_certs": [
+        "<tls_root_certs>"
+    ],
+    "tls_intermediate_certs": [
+        "<tls_intermediate_certs>"
+    ]
+}
+```
+{:codeblock}
+
+- **organization_name**: especifique el nombre a utilizar para identificar esta definición MSP en la consola.
+- **organization_id**: especifique un ID utilizado para representar este MSP internamente en la consola.
+- **root_certs**: (opcional) pegue una matriz que contenga uno o más certificados raíz de la CA externa en formato
+`base64`. Debe proporcionar un certificado raíz de CA o un certificado de CA intermedio, o ambos.
+- **intermediate_certs**: (opcional) pegue una matriz que contenga uno o más certificados de la CA intermedia externa en formato `base64`. Debe proporcionar un certificado raíz de CA o un certificado de CA intermedio, o ambos.
+- **admins**: pegue el signcert del administrador de la organización en formato `base64`.
+- **tls_root_certs**: (opcional) pegue una matriz que contenga uno o más certificados raíz de la CA de TLS en formato
+`base64`. Debe proporcionar un certificado raíz de CA TLS externo o un certificado de CA TLS intermedio externo, o ambos.
+- **tls_intermediate_certs**: (opcional) pegue una matriz que contenga uno o más certificados de la CA TLS intermedia en formato `base64`. Debe proporcionar un certificado raíz de CA TLS externo o un certificado de CA TLS intermedio externo, o ambos.  
+
+Los campos adicionales siguientes también están disponibles en la definición de MSP, pero no son obligatorios:
+- **organizational_unit_identifiers**: una lista de unidades organizativas (OU) que los miembros válidos de este MSP deben incluir en su certificado X.509. Este es un parámetro de configuración opcional que se utiliza cuando varias organizaciones hacen uso de la misma raíz de confianza y las mismas CA intermedias, y han reservado un campo de OU para sus miembros. Con frecuencia, una organización se divide en varias unidades organizativas (OU), cada una de las cuales tiene un conjunto de responsabilidades determinado. Por ejemplo, la organización ORG1 puede tener las OU ORG1-MANUFACTURING y ORG1-DISTRIBUTION para reflejar estas líneas de negocio independientes. Cuando una CA emite certificados X.509, el campo de OU en el certificado especifica la línea de negocio a la que pertenece la identidad. Consulte este tema en la documentación de Fabric sobre
+[Clasificación de identidades ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo") ](https://hyperledger-fabric.readthedocs.io/en/latest/msp.html#identity-classification "Clasificación de identidades") para obtener más información.  
+- **fabric_node_OUs**: unidades organizativas específicas de Fabric que permiten la clasificación de identidades. `NodeOUs` contienen información sobre cómo distinguir clientes, iguales y clasificadores en función de su unidad organizativa. Si se fuerza la comprobación, estableciendo Enabled en true, el MSP considerará válida una identidad si es una identidad de un
+`cliente`, un `igual` o un `clasificador`. Una identidad debe tener solo una de estas unidades organizativas especiales. Consulte este tema para ver un ejemplo de cómo especificar
+`fabric_node_OU` en un MSP en la
+[Documentación de Fabric Service Discovery
+![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/latest/discovery-cli.html#configuration-query).
+- **revocation_list**: una lista de certificados que ya no son válidos. Para las identidades basadas en X.509, estos identificadores son pares de series conocidas como Identificador clave de asunto (SKI) e Identificador de acceso de autorización (AKI), y se comprueban siempre que se utilice el certificado X.509 para asegurarse de que el certificado no se ha revocado. Consulte este tema de la documentación de Fabric para obtener más información sobre
+[Listas de revocación de certificados ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/users-guide.html?highlight=revocation%20list#revoking-a-certificate-or-identity "Revocación de un certificado o identidad").
+
+Por ejemplo, el archivo JSON tendrá un aspecto similar a:
+
+```
+{
+    "name": "Org1 MSP",
+    "msp_id": "org1msp",
+    "type": "msp",
+    "root_certs": [
+        "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUNGakNDQWIyZ0F3SUJBZ0lVZFhUcWNZVVhRS3U3WHVQWmcxUHBsekpFVFlNd0NnWUlLb1pJemowRUF3SXcKYURFTE1Ba0dBMVVFQmhNQ1ZWTXhGekFWQmdOVkJBZ1REazV2Y25Sb0lFTmhjbTlzYVc1aE1SUXdFZ1lEVlFRSwpFd3RJZVhCbGNteGxaR2RsY2pFUE1BMEdBMVVFQ3hNR1JtRmljbWxqTS0K"
+    ],
+    "admins": [
+        "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tDQpNSUlDWHpDQ0FnYWdBd0lCQWdJVVp6NFdQdWwxRXRVOUNIcTl4NFg0Y2QwakNpNHdDZ1lJS29aSXpqMEVBd0l3DQphREVMTUFrR0ExVUVCaE1DVlZNeEZ6QVZCZ05WQkFnVERrNXZjblJvSUVOaGNtOXNhVzVoTVJRd0VnWURWUVFLDQpFd3RJZVhCbGNteGxaR2RsY2pFUE1BMEdBMVVFQ3hNR1JtRmljbFLS0tLS0NCg=="
+    ],
+    "tls_root_certs": [
+        "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUNHRENDQWI2Z0F3SUJBZ0lVTzVhWU9WbjNwTkRMZGVLTFlIanRIUEtNTnY4d0NnWUlLb1pJemowRUF3SXcKWFRFTE1Ba0dBMVVFQmhNQ1ZWTXhGekFWQmdOVkJBZ1REazV2Y25Sb0lFTmhjbTlzYVc1aE1SUXdFZ1lEVlFRSwpFd3RJZVhCbGNteGxaR2RsY2pFUE1BMEdBMVVFQ3hNR1JtRmljbWxqTVE0d0RBWamd5TURRM01EQmFNRjB4Q3pBSkJnTlZCQVlUQWxWVE1SY3cKRlFZRFZRUUlFdztLS0K"
+    ]
+}
+```
+{:codeblock}
+
+Tenga en cuenta que todos los certificados deben estar codificados en formato base64.
+{:important}
+
+Puede convertir el contenido del archivo de certificado, `<cert.pem>`, del formato `PEM` a una serie base64 ejecutando el mandato siguiente en la máquina local:
+
+```
+export FLAG=$(if [ "$(uname -s)" == "Linux" ]; then echo "-w 0"; else echo "-b 0"; fi)
+cat <cert.pem> | base64 $FLAG
+```
+{:codeblock}
+
+Guarde esta definición como un archivo `JSON`.  
+
+Ha construido una definición de MSP, que define la organización para los nodos de igual o de clasificador, que utiliza certificados de una CA externa. Ahora puede volver a las instrucciones que describen
+[Cómo utilizar certificados de una CA externa con su igual o clasificador](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-third-party-ca).
+
 ## Importación de un MSP
 {: #console-organizations-import-msp}
 
@@ -87,6 +176,7 @@ El consorcio de organizaciones se aloja en el servicio de ordenación.
 Si es el administrador del servicio de ordenación, puede utilizar la consola para añadir una organización al consorcio. Vaya al separador **Nodos** y pulse el nodo de ordenación. En el panel del nodo de ordenación, en **Miembros de consorcio**, pulse **Añadir organización**. Esto abrirá un panel lateral que le permitirá seleccionar en la lista de definiciones de MSP disponibles que ha [importado en el separador de organizaciones](/docs/services/blockchain/howto/ibp-console-organizations.html#console-organizations-import-msp). También puede utilizar la opción **Cargar JSON** para importar directamente el archivo de definición de MSP creado por otra organización.
 
 ## Creación y edición de un canal
+{: #console-organizations-create-channel}
 
 Una vez que se ha añadido una organización al consorcio, la organización puede utilizar el servicio de ordenación para crear un nuevo canal o bien se puede añadir a un canal existente. La información que le permite participar en un canal, como por ejemplo unir sus iguales al canal, crear instancias de contratos inteligentes y enviar transacciones, se proporciona utilizando las definiciones de MSP.
 
@@ -97,3 +187,14 @@ Después de que se haya añadido una organización a un consorcio, puede crear u
 3. Vaya al separador **Canales** y pulse **Crear canal**. Esto abrirá un panel lateral que le permite especificar el nombre del canal, la pertenencia y las políticas del canal. Puede añadir al nuevo canal cualquier organización que se haya añadido al consorcio.
 
 Para obtener más información sobre estos pasos, consulte el apartado sobre [creación de un canal](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-create-channel1) de la guía de aprendizaje sobre cómo **Crear una red**.
+
+### Actualización de un MSP en una definición de canal
+{: #console-organizations-update-channel}
+
+Con el tiempo, puede que necesite actualizar los certificados en una definición de MSP que ya está asociada a un canal. Si se produce esta situación, siga los pasos que se describen a continuación para actualizar la definición de MSP de una organización en el canal:  
+
+1. Vaya al separador **Canales** de la consola.
+2. Pulse sobre el canal que contiene el MSP de la organización que desea actualizar y ábralo.
+3. Pulse sobre el separador **Detalles del canal**.
+4. Pulse sobre el mosaico del miembro de canal asociado que desea actualizar.
+5. Si todavía no ha importado la definición de MSP actualizada a la consola, puede cargar el archivo aquí. **Nota:** mediante esta acción no se actualizará la definición de MSP asociado en el separador Organizaciones. Si ya ha actualizado la definición de MSP en el separador Organizaciones de la consola, puede seleccionarlo de la lista desplegable.

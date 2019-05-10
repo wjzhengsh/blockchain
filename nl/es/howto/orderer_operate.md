@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -105,7 +105,7 @@ Necesitará utilizar la herramienta de línea de mandatos **kubectl** para conec
 {: #icp-orderer-operate-orderer-endpoint}
 
 Debe tener como objetivo el punto final de clasificador para realizar actualizaciones en el canal del sistema del clasificador. Necesitará ser un
-[administrador del clúster ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Acciones y roles de administrador de clúster") para realizar los pasos siguientes:
+[administrador del clúster ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/user_management/assign_role.html "Acciones y roles de administrador de clúster") para realizar los pasos siguientes:
 
 1. Inicie sesión en la consola de {{site.data.keyword.cloud_notm}} Private y pulse el icono **Menú** en la esquina superior izquierda.
 2. Pulse **Carga de trabajo** > **Releases de Helm**.
@@ -127,7 +127,7 @@ En este ejemplo, la dirección IP de proxy es `9.30.94.174` y el puerto de nodo 
 {: #icp-orderer-operate-tls-cert}
 
 Necesita descargar el certificado TLS del clasificador y pasarlo a los mandatos para comunicarse con el clasificador desde un cliente remoto. Necesitará ser un
-[administrador del clúster ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Acciones y roles de administrador de clúster") para realizar los pasos siguientes:
+[administrador del clúster ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/user_management/assign_role.html "Acciones y roles de administrador de clúster") para realizar los pasos siguientes:
 
 1. Inicie sesión en la consola de {{site.data.keyword.cloud_notm}} Private y pulse el icono **Menú** en la esquina superior izquierda.
 2. Pulse **Carga de trabajo** > **Releases de Helm**.
@@ -184,6 +184,8 @@ tree
 │   └── msp
 │       ├── cacerts
 │       │   └── 9-30-250-70-30395-SampleOrgCA.pem
+│       ├── IssuerPublicKey
+│       ├── IssuerRevocationPublicKey
 │       ├── keystore
 │       │   └── 2a97952445b38a6e0a14db134645981b74a3f93992d9ddac54cb4b4e19cdf525_sk
 │       ├── signcerts
@@ -209,6 +211,8 @@ tree
     └── msp
         ├── cacerts
         │   └── 9-30-250-70-30395-tlsca.pem
+        ├── IssuerPublicKey
+        ├── IssuerRevocationPublicKey
         ├── keystore
         │   └── 45a7838b1a91ddfe3d4d22a5a7f2639b868493bcce594af3e3ceb9c07899d117_sk
         ├── signcerts
@@ -229,7 +233,7 @@ La actualización del canal del sistema del clasificador se realiza a través de
 
 La adición de organizaciones al canal del sistema del clasificador es básicamente el mismo flujo que la actualización de la configuración de cualquier canal para añadir una organización. No obstante, necesita realizar algunos cambios, ya que el canal a actualizar no es un canal de aplicación y el administrador apropiado es el administrador del clasificador en lugar de una organización de igual.
 
-Tenga en cuenta que puede añadir una organización a un canal sin unirse al canal del sistema en primer lugar. Para obtener más información, consulte la [guía de aprendizaje sobre cómo añadir una organización a un canal ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/channel_update_tutorial.html "Adición de una organización a un canal") en la documentación de Hyperledger Fabric.
+Tenga en cuenta que puede añadir una organización a un canal sin unirse al canal del sistema en primer lugar. Para obtener más información, consulte la [guía de aprendizaje sobre cómo añadir una organización a un canal ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/channel_update_tutorial.html "Adición de una organización a un canal") en la documentación de Hyperledger Fabric.
 
 En la lista siguiente se muestran los pasos y tareas generales que realizarán distintos grupos de organizaciones del consorcio.
 
@@ -241,13 +245,13 @@ En la lista siguiente se muestran los pasos y tareas generales que realizarán d
 {: #icp-orderer-operate-get-fabric-tools}
 
 Debe descargar las herramientas de Hyperledger Fabric siguientes para actualizar el canal del sistema.
-- [peer ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/peercommand.html), que le permitirá captar el bloque inicial y actualizar el canal del sistema.
-- [configtxlator ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/configtxlator.html), que convierte el formato protobuf de una configuración de canal al formato JSON, que resulta más fácil de leer y de actualizar.
+- [peer ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/peercommand.html), que le permitirá captar el bloque inicial y actualizar el canal del sistema.
+- [configtxlator ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/configtxlator.html), que convierte el formato protobuf de una configuración de canal al formato JSON, que resulta más fácil de leer y de actualizar.
 
 1. Decida dónde desea almacenar las herramientas y, a continuación, ejecute este mandato:
 
   ```
-  curl -sSL http://bit.ly/2ysbOFE | bash -s 1.2.1 1.2.1 -d -s
+  curl -sSL http://bit.ly/2ysbOFE | bash -s 1.4.0 1.4.0 -d -s
   ```
   {:codeblock}
 
@@ -392,7 +396,7 @@ El clasificador necesita recibir las [definiciones de organización](/docs/servi
 
 La [herramienta de Fabric](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-get-fabric-tools) `configtxtlator` descargada convierte el formato protobuf de una configuración de canal al formato JSON, y viceversa.
 
-En estos pasos se sigue el flujo general de la guía de aprendizaje de actualización de canal acerca de [convertir el bloque al formato JSON ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")]( https://hyperledger-fabric.readthedocs.io/en/release-1.2/channel_update_tutorial.html#convert-the-configuration-to-json-and-trim-it-down "Convertir la configuración a JSON y abreviarla"). Deberá realizar algunos cambios en los mandatos de la guía de aprendizaje para reflejar el hecho de que está actualizando el canal del sistema del clasificador en lugar de un canal de aplicación. Puede visitar la guía de aprendizaje para obtener más detalles sobre este proceso. En esta sección simplemente se proporcionan los mandatos.
+En estos pasos se sigue el flujo general de la guía de aprendizaje de actualización de canal acerca de [convertir el bloque al formato JSON ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")]( https://hyperledger-fabric.readthedocs.io/en/release-1.4/channel_update_tutorial.html#convert-the-configuration-to-json-and-trim-it-down "Convertir la configuración a JSON y abreviarla"). Deberá realizar algunos cambios en los mandatos de la guía de aprendizaje para reflejar el hecho de que está actualizando el canal del sistema del clasificador en lugar de un canal de aplicación. Puede visitar la guía de aprendizaje para obtener más detalles sobre este proceso. En esta sección simplemente se proporcionan los mandatos.
 
 1. Copie el archivo JSON de la definición de organización de la carpeta donde haya [creado la organización](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-organization-definition) a la carpeta `configupdate`. En el mandato de ejemplo que se muestra a continuación, el archivo JSON de la definición de organización es `org1definition.json`:
 
@@ -509,7 +513,7 @@ Los registros de los componentes se pueden consultar desde la línea de mandatos
   {:codeblock}
 
   A continuación, ejecute el mandato siguiente para recuperar los registros del contenedor de clasificador que se encuentra dentro del pod sustituyendo
-`<pod_name>` por el nombre del pod en la salida del mandato anterior:
+`<pod_name>` por el nombre del pod de la salida del mandato anterior:
 
   ```
   kubectl logs <pod_name> -c orderer
@@ -520,7 +524,7 @@ Los registros de los componentes se pueden consultar desde la línea de mandatos
 [Documentación de Kubernetes
 ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs “Getting Started”)
 
-- Como alternativa, puede acceder a los registros mediante la [consola de gestión de clústeres de {{site.data.keyword.cloud_notm}} Private ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/troubleshoot/events.html), que abre los registros en Kibana.
+- Como alternativa, puede acceder a los registros mediante la [consola de gestión de clústeres de {{site.data.keyword.cloud_notm}} Private ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/troubleshoot/events.html), que abre los registros en Kibana.
 
   **Nota:** al visualizar los registros en Kibana, es posible que reciba la respuesta `No results found`. Esta
 condición se puede producir si {{site.data.keyword.cloud_notm}} Private utiliza la dirección IP del nodo trabajador como su nombre de host. Para resolver este problema, elimine el filtro que comienza por `node.hostname.keyword` al principio del panel y los registros se volverán visibles.

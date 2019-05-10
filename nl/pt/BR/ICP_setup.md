@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-03"
 
 subcollection: blockchain
 
@@ -56,7 +56,7 @@ echo "vm.max_map_count=262144” | tee -a /etc/sysctl.conf
 ### Recursos necessários
 {: #icp-setup-resources}
 
-Assegure-se de que seu sistema {{site.data.keyword.cloud_notm}} Private atenda aos requisitos mínimos de recurso de hardware:
+Certifique-se de que seu sistema do {{site.data.keyword.cloud_notm}} Private atenda aos requisitos mínimos de recurso de hardware para cada componente de tempo de execução do Fabric:
 
 | Componente | vCPU | RAM | Disco para armazenamento de dados |
 |-----------|------|-----|-----------------------|
@@ -97,4 +97,92 @@ Conclua as etapas a seguir para instalar e configurar o {{site.data.keyword.clou
 
 2. Instale o {{site.data.keyword.cloud_notm}} Private CLI [3.1.0 ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/manage_cluster/install_cli.html) para instalar e operar a CA.
 
-Depois de instalar o {{site.data.keyword.cloud_notm}} Private, será possível continuar a [importar o gráfico do Helm do {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/howto/helm_install_icp.html#helm-install) para o seu cluster do {{site.data.keyword.cloud_notm}} Private.
+3. Configure a política de segurança do pod para o namespace de destino. Instruções são fornecidas na [próxima seção](/docs/services/blockchain/howto/ICP_setup.html#icp-setup-psp).
+
+Depois de instalar o {{site.data.keyword.cloud_notm}} Private e ligar uma política de segurança de pod a um namespace de destino, será possível continuar a [importação do gráfico do Helm do {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/howto/helm_install_icp.html#helm-install) em seu cluster do {{site.data.keyword.cloud_notm}} Private.
+
+## Requisitos de PodSecurityPolicy
+{: #icp-setup-psp}
+
+Antes de ser possível implementar qualquer componente usando o gráfico do Helm, deve-se criar um novo namespace de destino e ligar uma [PodSecurityPolicy ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://kubernetes.io/docs/concepts/policy/pod-security-policy/ "Políticas de segurança de Pod") a ele.  Escolha um PodSecurityPolicy predefinido ou peça que o administrador de cluster crie um PodSecurityPolicy customizado para você:
+- Nome do PodSecurityPolicy predefinido: [`ibm-privileged-psp`](https://ibm.biz/cpkspec-psp)
+- Definição de PodSecurityPolicy customizado:
+  ```
+  apiVersion: extensions/v1beta1
+  kind: PodSecurityPolicy
+  metadata:
+    name: ibm-blockchain-platform-psp
+  spec:
+    hostIPC: false
+    hostNetwork: false
+    hostPID: false
+    privileged: true
+    allowPrivilegeEscalation: true
+    readOnlyRootFilesystem: false
+    seLinux:
+      rule: RunAsAny
+    supplementalGroups:
+      rule: RunAsAny
+    runAsUser:
+      rule: RunAsAny
+    fsGroup:
+      rule: RunAsAny
+    requiredDropCapabilities:
+    - ALL
+    allowedCapabilities:
+    - NET_BIND_SERVICE
+    - CHOWN
+    - DAC_OVERRIDE
+    - SETGID
+    - SETUID
+    volumes:
+    - '*'
+  ```
+  {:codeblock}
+- ClusterRole customizado para o PodSecurityPolicy customizado:
+  ```
+  apiVersion: rbac.authorization.k8s.io/v1
+  kind: ClusterRole
+  metadata:
+    annotations:
+    name: ibm-blockchain-platform-clusterrole
+  rules:
+  - apiGroups:
+    - extensions
+    resourceNames:
+    - ibm-blockchain-platform-psp
+    resources:
+    - podsecuritypolicies
+    verbs:
+    - use
+  - apiGroups:
+    - ""
+    resources:
+    - secrets
+    verbs:
+    - create
+    - delete
+    - get
+    - list
+    - patch
+    - update
+    - watch
+  ```
+  {:codeblock}
+
+- ClusterRoleBinding customizado para o ClusterRole customizado:
+  ```
+  apiVersion: rbac.authorization.k8s.io/v1
+  kind: ClusterRoleBinding
+  metadata:
+   name: ibm-blockchain-platform-clusterrolebinding
+  roleRef:
+   apiGroup: rbac.authorization.k8s.io
+   kind: ClusterRole
+   name: ibm-blockchain-platform-clusterrole
+  subjects:
+  - kind: ServiceAccount
+    name: default
+    namespace: default
+  ```
+  {:codeblock}

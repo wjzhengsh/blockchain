@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2019
-lastupdated: "2019-03-05"
+  years: 2018, 2019
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -35,11 +35,11 @@ Assicurati che il sistema {{site.data.keyword.cloud_notm}} Private soddisfi i re
 | Componente | CPU virtuale | RAM | Disco per l'archiviazione di dati |
 |-----------|------|-----|-----------------------|
 | Peer | 2 | 2 GB | 50 GB con capacità di espansione |
-| CouchDB for Peer | 2| 2 GB |50 GB con capacità di espansione |
+| CouchDB for Peer<br>(Applicabile solo se utilizzi CouchDB) | 2| 2 GB | 50 GB con capacità di espansione |
 
  **Note:**
  - Una CPU virtuale è un core virtuale assegnato a una macchina virtuale o un core di processore fisico se il server non è partizionato per le macchine virtuali. Devi considerare i requisiti di CPU virtuale quando decidi il VPC (virtual processor core) per la tua distribuzione in {{site.data.keyword.cloud_notm}} Private. VPC è un'unità di misura per determinare il costo di licenza dei prodotti IBM. Per ulteriori informazioni sugli scenari per decidere VPC, vedi [Virtual processor core (VPC) ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/en/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_virtual_processor_core_licenses.html).
- - Questi livelli minimi di risorse sono sufficienti per l'esecuzione di test e la sperimentazione. Per un ambiente con un grande volume di transazioni, è importante assegnare una quantità sufficientemente grande di archiviazione; ad esempio 250 GB per il tuo peer. La quantità di archiviazione da utilizzare dipenderà dal numero di transazioni e dal numero di firme richiesti dalla tua rete. Se stai per esaurire l'archiviazione sul tuo peer, devi distribuire un nuovo peer con un file system più grande e consentirgli di eseguire la sincronizzazione tramite i tuoi altri componenti sugli stessi canali.
+ - Questi livelli minimi di risorse sono sufficienti per l'esecuzione di test e la sperimentazione. Per un ambiente con un grande volume di transazioni, è importante allocare una quantità sufficientemente grande di archiviazione; ad esempio 250 GB per il tuo peer. La quantità di archiviazione da utilizzare dipenderà dal numero di transazioni e dal numero di firme richiesti dalla tua rete. Se stai per esaurire l'archiviazione sul tuo peer, devi distribuire un nuovo peer con un file system più grande e consentirgli di eseguire la sincronizzazione tramite i tuoi altri componenti sugli stessi canali.
 
 ## Archiviazione
 {: #ibp-peer-deploy-storage}
@@ -57,13 +57,13 @@ Se non utilizzi il provisioning dinamico, [i volumi persistenti ![Icona link est
 
 1. Prima di poter installare un peer su {{site.data.keyword.cloud_notm}} Private, devi [installare {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/ICP_setup.html#icp-setup) e [installare il grafico Helm di {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/howto/helm_install_icp.html#helm-install).
 
-2. Se utilizzi la Community Edition e vuoi eseguire questo grafico Helm su un cluster {{site.data.keyword.cloud_notm}} Private senza la connettività Internet, devi creare degli archivi su una macchina connessa a Internet prima di poter installare gli archivi sul tuo cluster {{site.data.keyword.cloud_notm}} Private. Per ulteriori informazioni, consulta [Adding featured applications to clusters without Internet connectivity ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_package_offline.html "Adding featured applications to clusters without Internet connectivity"){:new_window}. Tieni presente che puoi trovare il file della specifica manifest.yaml in ibm-blockchain-platform-dev/ibm_cloud_pak nel grafico Helm.
+2. Se utilizzi la Community Edition e vuoi eseguire questo grafico Helm su un cluster {{site.data.keyword.cloud_notm}} Private senza la connettività Internet, devi creare degli archivi su una macchina connessa a Internet prima di poter installare gli archivi sul tuo cluster {{site.data.keyword.cloud_notm}} Private. Per ulteriori informazioni, consulta [Adding featured applications to clusters without Internet connectivity ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/app_center/add_package_offline.html "Adding featured applications to clusters without Internet connectivity"){:new_window}. Tieni presente che puoi trovare il file della specifica manifest.yaml in ibm-blockchain-platform-dev/ibm_cloud_pak nel grafico Helm.
 
 3. Devi disporre di un'organizzazione che sia un membro di una rete del piano Starter o piano Enterprise su {{site.data.keyword.cloud_notm}}. Per operare, il peer si avvale degli endpoint API, delle CA Hyperledger Fabric e del servizio ordini della rete di {{site.data.keyword.blockchainfull_notm}} Platform. Se non sei membro di alcuna rete blockchain, devi creare o aderire a una rete. Per ulteriori informazioni, vedi [Creazione di una rete](/docs/services/blockchain/get_start.html#getting-started-with-enterprise-plan-create-network) o [Adesione a una rete](/docs/services/blockchain/get_start.html#getting-started-with-enterprise-plan-join-nw).
 
 4. Devi prima [distribuire una CA](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy) su {{site.data.keyword.cloud_notm}} Private. Utilizzerai questa CA come una CA TLS. Attieniti ai [passi prerequisiti](/docs/services/blockchain/howto/CA_operate.html#ca-operate-prerequisites) per utilizzare una CA su {{site.data.keyword.cloud_notm}} Private prima di distribuire il tuo peer. Non dovrai procedere oltre con questa procedura.
 
-5. Richiama il valore dell'indirizzo IP proxy del cluster della tua CA TLS dalla console {{site.data.keyword.cloud_notm}} Private. **Nota:** devi essere un [Amministratore del cluster ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Cluster administrator roles and actions") per accedere al tuo IP proxy. Accedi al cluster {{site.data.keyword.cloud_notm}} Private. Nel pannello di navigazione di sinistra, fai clic su **Piattaforma** e quindi su **Nodi** per visualizzare i nodi definiti nel cluster. Fai clic sul nodo con il ruolo `proxy` e copia il valore dell'`IP host` dalla tabella. **Importante:** salva questo valore perché lo utilizzerai quando configuri il campo `Proxy IP` del grafico Helm.
+5. Richiama il valore dell'indirizzo IP proxy del cluster della tua CA TLS dalla console {{site.data.keyword.cloud_notm}} Private. **Nota:** devi essere un [Amministratore del cluster ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/user_management/assign_role.html "Cluster administrator roles and actions") per accedere al tuo IP proxy. Accedi al cluster {{site.data.keyword.cloud_notm}} Private. Nel pannello di navigazione di sinistra, fai clic su **Piattaforma** e quindi su **Nodi** per visualizzare i nodi definiti nel cluster. Fai clic sul nodo con il ruolo `proxy` e copia il valore dell'`IP host` dalla tabella. **Importante:** salva questo valore perché lo utilizzerai quando configuri il campo `Proxy IP` del grafico Helm.
 
 6. Crea un file di configurazione del peer e archivialo come un segreto Kubernetes in {{site.data.keyword.cloud_notm}} Private. Puoi trovare le istruzioni per creare questo file nella [prossima sezione](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-config-file).
 
@@ -130,7 +130,7 @@ Devi inoltre completare diversi passi utilizzando il client CA Fabric e la tua C
 Per prima cosa, devi fornire le informazioni di connessione della tua CA su {{site.data.keyword.cloud_notm}} al file di configurazione. Accedi all'IU Monitoraggio della rete sul piano Starter o Enterprise. Nella schermata **Panoramica** del tuo Monitoraggio della rete, fai clic sul pulsante **Configurazione peer remoto**. Verrà aperta una finestra a comparsa che contiene le informazioni necessarie sulla tua CA.
 
 ![Configurazione peer remoto](../images/myresources_starter.png "Configurazione peer remoto")
-*Figura 1. Pannello di configurazione peer remoto*
+*Figura 1. Pannello Configurazione peer remoto*
 
 La finestra a comparsa contiene i seguenti campi:
 
@@ -143,7 +143,7 @@ Nel file nella sezione `"components"`, immetti i seguenti valori dal passo prece
 - `"caname"` è il valore del **Nome CA (Certificate Authority)**
 - `"cahost"` è il nome host dell'URL della CA. Ad esempio se l'URL della CA è `https://ncaca9b06047b4bee966b3dec0cbb6671-org1-ca.stage.blockchain.ibm.com:31011`, il valore di `"cahost"` sarà `ncaca9b06047b4bee966b3dec0cbb6671-org1-ca.stage.blockchain.ibm.com`
 - `"caport"` è la porta da `"cahost"`. Ad esempio se l'URL della CA è `https://ncaca9b06047b4bee966b3dec0cbb6671-org1-ca.stage.blockchain.ibm.com:31011`, `"caport"` sarà `31011`.
-- `"cacert"` è il valore dal campo **Certificato TLS CA (Certificate Authority)**. Prima di inserire il certificato nel file, devi codificarlo nel formato base64 immettendo i seguenti comandi e sostituendo la stringa `<paste in Certificate Authority (CA) TLS Certificate>` con il valore che hai copiato dal tuo Monitoraggio della rete.
+- `"cacert"` è il valore dal campo **Certificato TLS CA (Certificate Authority)**. Prima di inserire il certificato nel file, devi codificarlo in formato base64 eseguendo questi comandi e sostituendo la stringa `<paste in Certificate Authority (CA) TLS Certificate>` con il valore che hai copiato dal tuo Monitoraggio della rete.
 
   ```
   export FLAG=$(if [ "$(uname -s)" == "Linux" ]; then echo "-w 0"; else echo "-b 0"; fi)
@@ -246,14 +246,14 @@ Dopo aver registrato l'identità di gestione, devi generare il signCert e la car
 5. Scarica i certificati TLS da {{site.data.keyword.cloud_notm}} a seconda del piano di servizi, dell'ubicazione e del cluster che utilizzi. Puoi trovare il tuo cluster in base al nome del dominio del tuo URL della CA (Certificate Authority): ad esempio `us01.blockchain.ibm.com:31011` o `us02.blockchain.ibm.com:31011`.
 
   - Certificato TLS per piano Starter
-    - US: [us01.blockchain.ibm.com.cert ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://blockchain-certs.mybluemix.net/us01.blockchain.ibm.com.cert "us01.blockchain.ibm.com.cert"); [us02.blockchain.ibm.com.cert ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://blockchain-certs.mybluemix.net/us02.blockchain.ibm.com.cert "us02.blockchain.ibm.com.cert");
-    [us03.blockchain.ibm.com.cert ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://blockchain-certs.mybluemix.net/us03.blockchain.ibm.com.cert "us03.blockchain.ibm.com.cert"); [us04.blockchain.ibm.com.cert ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://blockchain-certs.mybluemix.net/us04.blockchain.ibm.com.cert "us04.blockchain.ibm.com.cert");
-    [us05.blockchain.ibm.com.cert ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://blockchain-certs.mybluemix.net/us05.blockchain.ibm.com.cert "us05.blockchain.ibm.com.cert"); [us06.blockchain.ibm.com.cert ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://blockchain-certs.mybluemix.net/us06.blockchain.ibm.com.cert "us06.blockchain.ibm.com.cert");
-    [us07.blockchain.ibm.com.cert ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://blockchain-certs.mybluemix.net/us07.blockchain.ibm.com.cert "us07.blockchain.ibm.com.cert"); [us08.blockchain.ibm.com.cert ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://blockchain-certs.mybluemix.net/us08.blockchain.ibm.com.cert "us08.blockchain.ibm.com.cert")
-    - UK: [uk01.blockchain.ibm.com.cert ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://blockchain-certs.mybluemix.net/uk01.blockchain.ibm.com.cert "uk01.blockchain.ibm.com.cert"); [uk02.blockchain.ibm.com.cert ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://blockchain-certs.mybluemix.net/uk02.blockchain.ibm.com.cert "uk02.blockchain.ibm.com.cert");
-    [uk03.blockchain.ibm.com.cert ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://blockchain-certs.mybluemix.net/uk03.blockchain.ibm.com.cert "uk03.blockchain.ibm.com.cert"); [uk04.blockchain.ibm.com.cert ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://blockchain-certs.mybluemix.net/uk04.blockchain.ibm.com.cert "uk04.blockchain.ibm.com.cert")
-    - Sydney: [aus01.blockchain.ibm.com.cert ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://blockchain-certs.mybluemix.net/aus01.blockchain.ibm.com.cert "aus01.blockchain.ibm.com.cert");
-  - [TLS Cert for Enterprise Plan ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://blockchain-certs.mybluemix.net/3.secure.blockchain.ibm.com.rootcert)
+    - US: [us01.blockchain.ibm.com.cert ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/us01.blockchain.ibm.com.cert "us01.blockchain.ibm.com.cert"); [us02.blockchain.ibm.com.cert ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/us02.blockchain.ibm.com.cert "us02.blockchain.ibm.com.cert");
+  [us03.blockchain.ibm.com.cert ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/us03.blockchain.ibm.com.cert "us03.blockchain.ibm.com.cert"); [us04.blockchain.ibm.com.cert ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/us04.blockchain.ibm.com.cert "us04.blockchain.ibm.com.cert");
+  [us05.blockchain.ibm.com.cert ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/us05.blockchain.ibm.com.cert "us05.blockchain.ibm.com.cert"); [us06.blockchain.ibm.com.cert ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/us06.blockchain.ibm.com.cert "us06.blockchain.ibm.com.cert");
+  [us07.blockchain.ibm.com.cert ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/us07.blockchain.ibm.com.cert "us07.blockchain.ibm.com.cert"); [us08.blockchain.ibm.com.cert ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/us08.blockchain.ibm.com.cert "us08.blockchain.ibm.com.cert")
+    - UK: [uk01.blockchain.ibm.com.cert ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/uk01.blockchain.ibm.com.cert "uk01.blockchain.ibm.com.cert"); [uk02.blockchain.ibm.com.cert ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/uk02.blockchain.ibm.com.cert "uk02.blockchain.ibm.com.cert");
+    [uk03.blockchain.ibm.com.cert ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/uk03.blockchain.ibm.com.cert "uk03.blockchain.ibm.com.cert"); [uk04.blockchain.ibm.com.cert ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/uk04.blockchain.ibm.com.cert "uk04.blockchain.ibm.com.cert")
+    - Sydney: [aus01.blockchain.ibm.com.cert ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/aus01.blockchain.ibm.com.cert "aus01.blockchain.ibm.com.cert");
+  - [TLS Cert for Enterprise Plan ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/3.secure.blockchain.ibm.com.rootcert)
 
   Salva i contenuti in una directory a cui puoi fare riferimento nei comandi futuri.
 
@@ -270,7 +270,7 @@ Dopo aver registrato l'identità di gestione, devi generare il signCert e la car
   ```
   {:codeblock}
 
-  `<enroll_id>` e `<enroll_password>` sono l'**ID** e il **Segreto** dell'amministratore del peer che è stato [registrato utilizzando il Monitoraggio della rete](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-register-admin). `<ca_name>` e `<ca_url_with_port>` sono i valori di `caName` e `url` dal tuo profilo di connessione. Tralascia il `http://` all'inizio dell'URL della CA.
+  `<enroll_id>` e `<enroll_password>` di cui sopra sono l'**ID** e il **Segreto** dell'amministratore del peer che è stato [registrato utilizzando il Monitoraggio della rete](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-register-admin). `<ca_name>` e `<ca_url_with_port>` sono i valori di `caName` e `url` dal tuo profilo di connessione. Tralascia il `http://` all'inizio dell'URL della CA.
 
   Una vera chiamata potrebbe essere simile al seguente comando di esempio:
 
@@ -364,9 +364,9 @@ export FABRIC_CA_CLIENT_HOME=$HOME/fabric-ca-client/tlsca-admin
   ```
   {:codeblock}
 
-  `<enroll_id>` e `<enroll_password>` nel comando sono [il nome utente e la password dell'amministratore CA](/docs/services/blockchain/CA_deploy.html#ca-deploy-admin-secret) che hai passato al segreto Kubernetes quando hai distribuito la CA (Certificate Authority). Immetti l'[URL della CA](/docs/services/blockchain/howto/CA_operate.html#ca-operate-url) in `<ca_url_with_port>`. Tralascia il `http://` all'inizio. `<tls_ca_name>` è quello che hai specificato durante la [configurazione della CA](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-configuration-parms).
+  `<enroll_id>` e `<enroll_password>` nel comando sono [il nome utente e la password dell'amministratore CA](/docs/services/blockchain/howto/CA_deploy.html#ca-deploy-admin-secret) che hai passato al segreto Kubernetes quando hai distribuito la CA (Certificate Authority). Inserisci l'[URL della CA](/docs/services/blockchain/howto/CA_operate.html#ca-operate-url) in `<ca_url_with_port>`. Tralascia il `http://` all'inizio. `<tls_ca_name>` è quello che hai specificato durante la [configurazione della CA](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-configuration-parms).
 
-  `<ca_tls_cert_file>` è il tuo nome del file del [certificato TLS CA](/docs/services/blockchain/howto/CA_operate.html#ca-operate-tls) con il proprio percorso completo.
+  `<ca_tls_cert_file>` è il tuo nome del file del [certificato TLS CA](/docs/services/blockchain/howto/CA_operate.html#ca-operate-tls) con il suo percorso completo.
 
   Una chiamata reale potrebbe essere simile al seguente esempio:
 
@@ -425,7 +425,7 @@ export FABRIC_CA_CLIENT_HOME=$HOME/fabric-ca-client/tlsca-admin
   "enrollsecret": "peertlspw",
   ```
 
-  Puoi registrare un'entità solo una volta. Se riscontri un problema, prova un comando con un nuovo nome utente e password. Come misura di sicurezza, utilizza ogni identità e l'enrollID e il segreto di accompagnamento, per distribuire solo un peer. Non riutilizzare le password e gli ID del peer.
+  Puoi registrare un'entità solo una volta. Se riscontri un problema, prova un comando con un nuovo nome utente e password. Come misura di sicurezza, utilizza ogni identità, e l'ID iscrizione e il segreto di accompagnamento, per distribuire solo un singolo peer. Non riutilizzare ID e password dei peer.
 
   Se il comando viene completato correttamente, dovresti visualizzare informazioni simili al seguente esempio:
 
@@ -447,6 +447,8 @@ tree
 │   └── msp
 │       ├── cacerts
 │       │   └── 9-12-19-115-31873-SampleOrgCA.pem
+│       ├── IssuerPublicKey
+│       ├── IssuerRevocationPublicKey
 │       ├── keystore
 │       │   └── c44ec1e708f84b6d0359f58ce2c9c8a289919ba81f2cf4bb5187c4ad5a43cbb0_sk
 │       └── signcerts
@@ -472,6 +474,8 @@ tree
     └── msp
         ├── cacerts
         │   └── 9-30-250-70-30395-tlsca.pem
+        ├── IssuerPublicKey
+        ├── IssuerRevocationPublicKey
         ├── keystore
         │   └── bd57fa20283dfc76ada83f989ee0f62ce23e98c94dbd26f6cd23202d8084e38e_sk
         ├── signcerts
@@ -589,7 +593,7 @@ Un [segreto Kubernetes ![Icona link esterno](../images/external_link.svg "Icona 
 
 3. Nella scheda **Generale**, completa i seguenti campi:
   - **Nome:** fornisci al tuo segreto un nome univoco all'interno del tuo cluster. Utilizzerai questo nome quando distribuisci il tuo peer. Il nome deve essere tutto in minuscolo.  
-  **Nota:** quando distribuisci un peer, viene automaticamente generato un nuovo segreto dalla distribuzione con il nome di `<helm_release_name>-secret`. Pertanto, quando dai un nome al tuo segreto, assicurati che sia diverso da `<helm_release_name>-secret` . Altrimenti, la distribuzione del grafico Helm avrà esito negativo perché il segreto che tenta di creare esiste già.
+  **Nota:** quando distribuisci un peer, viene automaticamente generato un nuovo segreto dalla distribuzione con il nome `<helm release name you intend to use>-secret`. Pertanto, quando denomini questo segreto, assicurati che sia diverso da `<helm release name you intend to use>-secret` . Altrimenti, la distribuzione del grafico Helm avrà esito negativo perché il segreto che tenta di creare esiste già.
   - **Spazio dei nomi** lo spazio dei nomi per aggiungere il tuo segreto. Seleziona lo spazio dei nomi (`namespace`) a cui vuoi distribuire il tuo peer.
   - **Tipo** immetti il valore `Opaque`.
 
@@ -634,8 +638,10 @@ La seguente tabella elenca i parametri configurabili di {{site.data.keyword.bloc
 
 |  Parametro     | Descrizione    | Valore predefinito  | Obbligatorio |
 | --------------|-----------------|-------|------- |
+|**Parametri generali**| Parametri che configurano il grafico Helm | | |
 | `Helm release name`| Il nome della tua release Helm. Deve iniziare con una lettera minuscola e terminare con un qualsiasi carattere alfanumerico, deve contenere solo trattini e caratteri alfanumerici minuscoli. Devi utilizzare un nome della release Helm univoco ogni volta che tenti di installare un componente. **Importante:** questo valore deve corrispondere a quello utilizzato per generare il 'nome host del servizio' per il campo "hosts" nel tuo [file del segreto JSON.](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-csr-hosts) | nessuno | sì  |
 | `Target namespace`| Scegli lo spazio dei nomi Kubernetes per installare il grafico Helm. | nessuno | sì |
+| `Target namespace policies`| Visualizza le politiche di sicurezza del pod dello spazio dei nomi scelto, che devono includere una politica **`ibm-privileged-psp`**. Altrimenti, [associa una politica di sicurezza del pod](/docs/services/blockchain?topic=blockchain-icp-setup#icp-setup-psp) al tuo spazio dei nomi. | nessuno | no |
 |**Configurazione globale**| Parametri che si applicano a tutti i componenti nel grafico Helm.|||
 | `Service account name`| Immetti il nome dell'[account del servizio ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/ "Configure Service Accounts for Pods") che utilizzerai per eseguire il pod. | valore predefinito | no |
 
@@ -648,9 +654,9 @@ La seguente tabella elenca i parametri configurabili di {{site.data.keyword.bloc
 | `Install Peer` | Seleziona per installare un peer.|non selezionato | sì, se vuoi installare un peer |
 | `Peer worker node architecture`| Seleziona l'architettura della tua piattaforma cloud (AMD64 o S390x)| AMD64 | sì |
 | `Peer image repository`| Ubicazione del grafico Helm del peer. Questo campo viene automaticamente compilato con il percorso installato. Se stai utilizzando la Community Edition e non hai accesso a Internet, dovrebbe corrispondere alla directory in cui hai scaricato l'immagine peer Fabric. | ibmcom/ibp-fabric-peer | sì |
-| `Peer Docker image tag`|Il valore della tag associata all'immagine peer |1.2.1, compilato automaticamente sul valore corretto.|sì|
-| `Peer configuration`|Puoi personalizzare la configurazione del peer incollando il tuo file di configurazione `core.yaml` in questo campo. Per vedere un file `core.yaml` di esempio, vedi [la configurazione di esempio `core.yaml` ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://github.com/hyperledger/fabric/blob/release-1.2/sampleconfig/core.yaml "hyperledger/fabric/core.yaml") **Solo per gli utenti avanzati**. |nessuno|no|
-| `Peer configuration secret (Required)`| Il nome del [segreto di configurazione del peer](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-config-file-ibp) che hai creato in {{site.data.keyword.cloud_notm}} Private.  |nessuno|sì|
+| `Peer Docker image tag`|Il valore della tag associata all'immagine peer |1.4.0, compilato automaticamente sul valore corretto.|sì|
+| `Peer configuration`|Puoi personalizzare la configurazione del peer incollando il tuo file di configurazione `core.yaml` in questo campo. Per vedere un file `core.yaml` di esempio, vedi [la configurazione di esempio `core.yaml` ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://github.com/hyperledger/fabric/blob/release-1.4/sampleconfig/core.yaml "hyperledger/fabric/core.yaml") **Solo per gli utenti avanzati**. |nessuno|no|
+| `Peer configuration secret (Required)`| Il nome del [segreto di configurazione del peer](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-config-file-ibp) che hai creato in {{site.data.keyword.cloud_notm}} Private. | nessuno | sì |
 |`Organization MSP (Required)`|Questo valore può essere trovato nel Monitoraggio della rete (IU piano Starter e piano Enterprise) facendo clic su "Configurazione peer remota" sulla schermata Panoramica.  |nessuno|sì|
 |`Peer service type`| Utilizzato per specificare se [le porte esterne devono essere esposte ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types "Publishing services - service types") sul peer. Seleziona NodePort per esporre le porte esternamente (consigliato) e ClusterIP per non esporle. LoadBalancer e ExternalName non sono supportati in questa release. | NodePort |sì|
 | `State database`| Il [database dello stato](/docs/services/blockchain/glossary.html#glossary-state-database) utilizzato per memorizzare il tuo libro mastro del canale. Il peer deve utilizzare lo stesso database della tua [rete blockchain](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-network-preferences). | LevelDB | sì |
@@ -674,14 +680,22 @@ La seguente tabella elenca i parametri configurabili di {{site.data.keyword.bloc
 | `State database volume claim size`| Scegli la dimensione del disco da utilizzare. | 8 Gi | sì |
 | `CouchDB - Data persistence enabled`| Per il contenitore CouchDB, i dati del libro mastro saranno disponibili al riavvio del contenitore. *Se non selezionato, tutti i dati andranno persi in caso di failover o di riavvio del pod.*| verificato | no |
 | `CouchDB - Use dynamic provisioning`| Per il contenitore CouchDB utilizza l'archiviazione dinamica di Kubernetes.| verificato | no |
-| `Peer CPU request` | Numero minimo di CPU da assegnare al peer. | 1 | sì |
-| `Peer CPU limit` | Numero massimo di CPU da assegnare al peer.| 2 | sì |
-| `Peer Memory request` | Quantità minima di memoria da assegnare al peer. | 1Gi | sì |
-| `Peer Memory limit` | Quantità massima di memoria da assegnare al peer. | 4 Gi | sì |
-| `CouchDB CPU request` | Numero minimo di CPU da assegnare a CouchDB.| 1 | sì |
-| `CouchDB CPU limit` | Numero massimo di CPU da assegnare a CouchDB. | 2 | sì |
-| `CouchDB Memory request` | Quantità minima di memoria da assegnare a CouchDB.| 1Gi | sì |
-| `CouchDB Memory limit` | Quantità massima di memoria da assegnare a CouchDB. | 4 Gi | sì |
+| `Docker-in-Docker CPU request`| Specifica il numero minimo di CPU da allocare al contenitore in cui viene eseguito il chaincode. | 1 | sì |
+| `Docker-in-Docker CPU limit`| Specifica il numero massimo di CPU da allocare al contenitore in cui viene eseguito il chaincode. | 2 | sì |
+| `Docker-in-Docker memory request`| Specifica la quantità minima di memoria da allocare al contenitore in cui viene eseguito il chaincode. | 1Gi | sì |
+| `Docker-in-Docker  memory limit`| Specifica la quantità massima di memoria da allocare al contenitore in cui viene eseguito il chaincode. | 4 Gi | sì |
+| `gRPC web proxy CPU request`| Specifica il numero minimo di CPU in millicpu (m) da allocare al proxy web gRP. | 100m | sì |
+| `gRPC web proxy CPU limit`| Specifica il numero massimo di CPU in millicpu (m) da allocare al proxy web gRP. | 200m | sì |
+| `gRPC web proxy memory request`| Specifica la quantità minima di memoria da allocare al proxy web gRPC. | 100Mi | sì |
+| `gRPC web proxy memory limit`| Specifica la quantità massima di memoria da allocare al proxy web gRPC. | 200Mi | sì |
+| `Peer CPU request` | Numero minimo di CPU da allocare al peer. | 1 | sì |
+| `Peer CPU limit` | Numero massimo di CPU da allocare al peer.| 2 | sì |
+| `Peer Memory request` | Quantità minima di memoria da allocare al peer. | 1Gi | sì |
+| `Peer Memory limit` | Quantità massima di memoria da allocare al peer. | 4 Gi | sì |
+| `CouchDB CPU request` | Numero minimo di CPU da allocare a CouchDB.| 1 | sì |
+| `CouchDB CPU limit` | Numero massimo di CPU da allocare a CouchDB. | 2 | sì |
+| `CouchDB Memory request` | Quantità minima di memoria da allocare a CouchDB.| 1Gi | sì |
+| `CouchDB Memory limit` | Quantità massima di memoria da allocare a CouchDB. | 4 Gi | sì |
 
 
 Quando si seleziona CouchDB come database peer, nel pod vengono creati due contenitori, uno per il peer e uno per CouchDB. Il contenitore peer include un singolo montaggio del volume sulla PVC del peer che memorizza i blocchi e le transazioni sul file system. Il contenitore CouchDB monta la PVC del database dello stato del peer che contiene i dati del libro mastro.
@@ -700,7 +714,7 @@ processes. This container has two volume mounts, one for the Peer PVC and the se
 ### Utilizzo della riga di comando Helm per installare la release Helm
 {: #ibp-peer-deploy-helm-cli}
 
-In alternativa, puoi utilizzare la CLI Helm per installare la release Helm. Prima di eseguire il comando `helm install`, assicurati di [aggiungere il repository Helm del tuo cluster all'ambiente CLI Helm ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_int_helm_repo_to_cli.html "Adding the internal Helm repository to Helm CLI").
+In alternativa, puoi utilizzare la CLI Helm per installare la release Helm. Prima di eseguire il comando `helm install`, assicurati di [aggiungere il repository Helm del tuo cluster all'ambiente CLI Helm ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/app_center/add_int_helm_repo_to_cli.html "Adding the internal Helm repository to Helm CLI").
 
 Puoi configurare i parametri necessari per l'installazione creando un file `yaml` e passandolo al seguente comando `helm install`.
 

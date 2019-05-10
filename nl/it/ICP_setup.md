@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-03"
 
 subcollection: blockchain
 
@@ -56,7 +56,7 @@ echo "vm.max_map_count=262144” | tee -a /etc/sysctl.conf
 ### Risorse richieste
 {: #icp-setup-resources}
 
-Assicurati che il sistema {{site.data.keyword.cloud_notm}} Private soddisfi i requisiti di risorse hardware minimi:
+Assicurati che il tuo sistema {{site.data.keyword.cloud_notm}} Private soddisfi i requisiti di risorse hardware minimi per ogni componente di runtime Fabric.
 
 | Componente | CPU virtuale | RAM | Disco per l'archiviazione di dati |
 |-----------|------|-----|-----------------------|
@@ -67,7 +67,7 @@ Assicurati che il sistema {{site.data.keyword.cloud_notm}} Private soddisfi i re
 
  **Note:**
  - Una CPU virtuale è un core virtuale assegnato a una macchina virtuale o un core di processore fisico se il server non è partizionato per le macchine virtuali. Devi considerare i requisiti di CPU virtuale quando decidi il VPC (virtual processor core) per la tua distribuzione in {{site.data.keyword.cloud_notm}} Private. VPC è un'unità di misura per determinare il costo di licenza dei prodotti {{site.data.keyword.IBM_notm}}. Per ulteriori informazioni sugli scenari per decidere il VPC, vedi [Virtual processor core (VPC) ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/en/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_virtual_processor_core_licenses.html).
- - Questi livelli minimi di risorse sono sufficienti per l'esecuzione di test e la sperimentazione. Per un ambiente con un elevato volume di transazioni, è importante assegnare una quantità sufficientemente grande di archiviazione, ad esempio 250 GB per il tuo peer e 500 GB per il tuo servizio ordini. La quantità di archiviazione da utilizzare dipenderà dal numero di transazioni e dal numero di firme richiesti dalla tua rete. Se stai per esaurire l'archiviazione sul tuo peer od ordinante, devi distribuire un nuovo peer od ordinante con un file system più grande e lasciare che esegua la sincronizzazione tramite i tuoi altri componenti sugli stessi canali.
+ - Questi livelli minimi di risorse sono sufficienti per l'esecuzione di test e la sperimentazione. Per un ambiente con un elevato volume di transazioni, è importante allocare una quantità sufficientemente grande di archiviazione, ad esempio 250 GB per il tuo peer e 500 GB per il tuo servizio ordini. La quantità di archiviazione da utilizzare dipenderà dal numero di transazioni e dal numero di firme richiesti dalla tua rete. Se stai per esaurire l'archiviazione sul tuo peer od ordinante, devi distribuire un nuovo peer od ordinante con un file system più grande e lasciare che esegua la sincronizzazione tramite i tuoi altri componenti sugli stessi canali.
 
 #### Considerazioni sull'archiviazione
 {: #icp-setup-storage-considerations}
@@ -97,4 +97,92 @@ Completa la seguente procedura per installare e configurare {{site.data.keyword.
 
 2. Installa la CLI di {{site.data.keyword.cloud_notm}} Private [3.1.0 ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/manage_cluster/install_cli.html) per installare e gestire la CA.
 
-Dopo che hai installato {{site.data.keyword.cloud_notm}} Private, puoi continuare a [importare il grafico Helm {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/howto/helm_install_icp.html#helm-install) nel tuo cluster {{site.data.keyword.cloud_notm}} Private.
+3. Configura la politica di sicurezza del pod per lo spazio dei nomi di destinazione. Le istruzioni sono fornite nella [prossima sezione](/docs/services/blockchain/howto/ICP_setup.html#icp-setup-psp).
+
+Dopo che hai installato {{site.data.keyword.cloud_notm}} Private e associato una politica di sicurezza del pod a uno spazio dei nomi di destinazione, puoi continuare a [importare il grafico Helm {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/howto/helm_install_icp.html#helm-install) nel tuo cluster {{site.data.keyword.cloud_notm}} Private.
+
+## Requisiti PodSecurityPolicy
+{: #icp-setup-psp}
+
+Prima di poter distribuire dei componenti utilizzando il grafico Helm, devi creare un nuovo spazio dei nomi di destinazione e associare ad esso una [politica di sicurezza del pod![Iconal link esterno](images/external_link.svg "Icona link esterno")](https://kubernetes.io/docs/concepts/policy/pod-security-policy/ "Politiche di sicurezza del pod"). Scegli una PodSecurityPolicy predefinita o chiedi al tuo amministratore del cluster di crearti una PodSecurityPolicy personalizzata:
+- Nome PodSecurityPolicy predefinita: [`ibm-privileged-psp`](https://ibm.biz/cpkspec-psp)
+- Definizione della PodSecurityPolicy personalizzata:
+  ```
+  apiVersion: extensions/v1beta1
+  kind: PodSecurityPolicy
+  metadata:
+    name: ibm-blockchain-platform-psp
+  spec:
+    hostIPC: false
+    hostNetwork: false
+    hostPID: false
+    privileged: true
+    allowPrivilegeEscalation: true
+    readOnlyRootFilesystem: false
+    seLinux:
+      rule: RunAsAny
+    supplementalGroups:
+      rule: RunAsAny
+    runAsUser:
+      rule: RunAsAny
+    fsGroup:
+      rule: RunAsAny
+    requiredDropCapabilities:
+    - ALL
+    allowedCapabilities:
+    - NET_BIND_SERVICE
+    - CHOWN
+    - DAC_OVERRIDE
+    - SETGID
+    - SETUID
+    volumes:
+    - '*'
+  ```
+  {:codeblock}
+- Il ClusterRole personalizzato per la PodSecurityPolicy personalizzata:
+  ```
+  apiVersion: rbac.authorization.k8s.io/v1
+  kind: ClusterRole
+  metadata:
+    annotations:
+    name: ibm-blockchain-platform-clusterrole
+  rules:
+  - apiGroups:
+    - extensions
+    resourceNames:
+    - ibm-blockchain-platform-psp
+    resources:
+    - podsecuritypolicies
+    verbs:
+    - use
+  - apiGroups:
+    - ""
+    resources:
+    - secrets
+    verbs:
+    - create
+    - delete
+    - get
+    - list
+    - patch
+    - update
+    - watch
+  ```
+  {:codeblock}
+
+- Il ClusterRoleBinding per il ClusterRole personalizzato:
+  ```
+  apiVersion: rbac.authorization.k8s.io/v1
+  kind: ClusterRoleBinding
+  metadata:
+   name: ibm-blockchain-platform-clusterrolebinding
+  roleRef:
+   apiGroup: rbac.authorization.k8s.io
+   kind: ClusterRole
+   name: ibm-blockchain-platform-clusterrole
+  subjects:
+  - kind: ServiceAccount
+    name: default
+    namespace: default
+  ```
+  {:codeblock}

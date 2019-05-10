@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-03-20"
 
 subcollection: blockchain
 
@@ -83,20 +83,20 @@ In einem daraufhin geöffneten Popup-Fenster werden die Werte der folgenden Feld
 - **MSP der Organisation**
 - **Name der Zertifizierungsstelle (CA)**
 - **URL der Zertifizierungsstelle (CA)**
-- **TLS-Zertifikat der Zertifizierungsstelle (CA)**
+- **Zertifikat der TLS-Zertifizierungsstelle­ (CA)**
 
 Sie können jedes Feld kopieren und direkt in der Schnelleinstiegsvorlage einfügen oder die Felder als JSON-Datei speichern, indem Sie auf den Link **Download** klicken.
 
 Die Schnelleinstiegsvorlage erwartet, dass das TLS-Zertifikat mit den Zeilenumbrüchen `\r\n` formatiert wird. Wenn Sie einen Browser mit Network Monitor auf einem `*NIX`-Betriebssystem verwenden, müssen Sie das Zertifikat, das Sie von der Benutzerschnittstelle kopieren, neu formatieren. Ersetzen Sie alle Vorkommen von `\n` global durch `\r\n`, und fügen Sie die resultierende Zeichenfolge in das Feld `Certificate Authority (CA) TLS Certificate Chain` ein.
 {:important}
 
-**Hinweis:** Falls Sie die Informationen in eine JSON-Datei herunterladen, müssen Sie das TLS-Zertifikat ins PEM-Format konvertieren, bevor Sie es für den Peer bereitstellen. Konvertieren Sie das **TLS-Zertifikat der Zertifizierungsstelle (CA)** in der heruntergeladenen JSON-Datei mit dem folgenden Befehl in das PEM-Format:
+**Hinweis:** Falls Sie die Informationen in eine JSON-Datei herunterladen, müssen Sie das TLS-Zertifikat ins PEM-Format konvertieren, bevor Sie es für den Peer bereitstellen. Konvertieren Sie das **Zertifikat der TLS-Zertifizierungsstelle­ (CA)** in der heruntergeladenen JSON-Datei mit dem folgenden Befehl in das PEM-Format:
 ```
 echo -e "<CERT>" > admin.pem
 ```
 {:codeblock}
 
-Ersetzen Sie `<CERT>` durch den Wert für das **TLS-Zertifikat der Zertifizierungsstelle**. Wenn Sie anschließend zur Angabe des **TLS-Zertifikats der Zertifizierungsstelle** in der Schnelleinstiegsvorlage aufgefordert werden, `schneiden` Sie die Datei "admin.pem" aus und kopieren Sie anschließend den Inhalt und fügen Sie ihn im Feld ein.  
+Ersetzen Sie `<CERT>` durch den Wert im Feld **Zertifikat der TLS-Zertifizierungsstelle­ (CA)**. Wenn Sie anschließend zur Angabe des **Zertifikats der TLS-Zertifizierungsstelle** in der Schnelleinstiegsvorlage aufgefordert werden, `schneiden` Sie die Datei "admin.pem" aus und kopieren Sie anschließend den Inhalt und fügen Sie ihn im Feld ein.  
 
 ## Schritt 3: Peer von {{site.data.keyword.blockchainfull_notm}} Platform for AWS registrieren
 {: #remote-peer-aws-register-peer}
@@ -177,7 +177,7 @@ In der folgenden Tabelle sind die konfigurierbaren Parameter des AWS-Diagramms u
 | `MSP der Organisation` | Diesen Wert finden Sie in der Benutzerschnittstelle von IBM Blockchain Platform. Klicken Sie auf die Schaltfläche "Konfiguration ferner Peers" in der Anzeige "Übersicht", kopieren Sie die Informationen und fügen Sie sie hier ein. | |
 | `Name der Zertifizierungsstelle (CA)` | Diesen Wert finden Sie in der Benutzerschnittstelle von IBM Blockchain Platform. Klicken Sie auf die Schaltfläche "Konfiguration ferner Peers" in der Anzeige "Übersicht", kopieren Sie die Informationen und fügen Sie sie hier ein.| |
 | `URL der Zertifizierungsstelle (CA)` | Diesen Wert finden Sie in der Benutzerschnittstelle von IBM Blockchain Platform. Klicken Sie auf die Schaltfläche "Konfiguration ferner Peers" in der Anzeige "Übersicht", kopieren Sie die Informationen (inklusive Port) und fügen Sie sie hier ein. Falls kein Port angegeben ist, wird als Standardport Port 443 verwendet. | |
-| `TLS-Zertifikat der Zertifizierungsstelle (CA)`| Diesen Wert finden Sie in der Benutzerschnittstelle von IBM Blockchain Platform. Klicken Sie auf die Schaltfläche "Konfiguration ferner Peers" in der Anzeige "Übersicht", kopieren Sie die Informationen und fügen Sie sie hier ein.| |
+| `Zertifikat der TLS-Zertifizierungsstelle­ (CA)`| Diesen Wert finden Sie in der Benutzerschnittstelle von IBM Blockchain Platform. Klicken Sie auf die Schaltfläche "Konfiguration ferner Peers" in der Anzeige "Übersicht", kopieren Sie die Informationen und fügen Sie sie hier ein.| |
 | | | |
 |**Weitere Parameter**| | |
 | `QSS3BucketName` | Der S3-Bucketname für die Schnelleinstiegsassets. Der Bucketname für den Schnelleinstieg kann Zahlen, Kleinbuchstaben, Großbuchstaben und Bindestriche (-) enthalten. Er darf nicht mit einem Bindestrich (-) beginnen oder enden. | `aws-quickstart` |
@@ -264,7 +264,7 @@ Führen Sie den CLI-Befehl `peer channel fetch` aus, um den Genesis-Block aus de
    ```
    {:codeblock}
 
-   - Kopieren Sie das TLS-Zertifikat des Anordnungsknotens aus dem Verbindungsprofil in den Peer. Navigieren Sie zum Abschnitt **orderers**. Kopieren Sie das Zertifikat, das auf "pem:" folgt; es beginnt mit -----BEGIN CERTIFICATE----- und endet mit -----END CERTIFICATE-----. Beziehen Sie nicht die Anführungszeichen ein. Führen Sie den folgenden Befehl über die Befehlszeile aus; ersetzen Sie hierbei `<orderer cert>` durch den Inhalt, den Sie aus der Datei "creds.json" kopiert haben.
+   - Kopieren Sie das TLS-Zertifikat des Anordnungsknotens aus dem Verbindungsprofil in den Peer. Navigieren Sie zum Abschnitt **orderers**. Kopieren Sie das Zertifikat, das auf "pem:" folgt; es beginnt mit -----BEGIN CERTIFICATE----- und endet mit -----END CERTIFICATE-----. Beziehen Sie nicht die Anführungszeichen ein. Führen Sie den folgenden Befehl über die Befehlszeile aus und ersetzen Sie hierbei `<orderer cert>` durch den Inhalt, den Sie aus der Datei "creds.json" kopiert haben.
 
    ```
    echo -e "<orderer cert>" > /etc/hyperledger/<PEER_ENROLL_ID>/orderer_tlscacert.pem
@@ -293,9 +293,9 @@ Führen Sie den CLI-Befehl `peer channel fetch` aus, um den Genesis-Block aus de
 
    Ersetzen Sie die Feldinhalte durch Ihre eigenen Angaben.
      - Ersetzen Sie `<ORDERER_URL>` durch den Hostnamen und den Port des Anordnungsknotens aus der Datei `creds.json`.
-     - Ersetzen Sie `<CHANNEL_NAME>` durch den Namen des Kanals, an dem der Peer teilnimmt.
+     - Ersetzen Sie `<CHANNEL_NAME>` durch den Namen des Kanals, dem der Peer beitreten soll.
      - Ersetzen Sie `<ORGANIZATION_MSP_ID>` durch den Namen der Organisation aus der Datei `creds.json`.
-     - Ersetzen Sie `<PEER_ADDR>` durch `localhost:7051`.
+     - Ersetzen Sie `<PEER_ADDR>` durch `localhost:7051`
 
    Beispiel:
 
@@ -308,7 +308,7 @@ Führen Sie den CLI-Befehl `peer channel fetch` aus, um den Genesis-Block aus de
 
 4. Führen Sie den folgenden Befehl der CLI "peer" aus, um den Genesis-Block des Kanals abzurufen.
 
-   **WICHTIG:** Ersetzen Sie im folgenden Befehl jedes Vorkommen von `<PEER_ENROLL_ID>` durch die Eintragungs-ID, die dieser Peerinstanz zugeordnet ist und in der Schnelleinstiegsvorlage angegeben wurde. Diesen Wert können Sie durch Ausführung des Befehls `ls /etc/hyperledger/` ermitteln. Der Befehl listet zwei Ordner auf. Der erste Ordner ist `fabric` und der zweite Ordner ist Ihr Wert für `<PEER_ENROLL_ID>`.
+   **WICHTIG:** Ersetzen Sie im folgenden Befehl jedes Vorkommen von `<PEER_ENROLL_ID>` durch die  Eintragungs-ID, die dieser Peerinstanz zugeordnet ist und in der Schnelleinstiegsvorlage angegeben wurde. Diesen Wert können Sie durch Ausführung des Befehls `ls /etc/hyperledger/` ermitteln. Es werden zwei Ordner aufgelistet: Der erste ist `fabric`, der zweite ist Ihr Wert für `<PEER_ENROLL_ID>`.
 
    ```
    CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/<PEER_ENROLL_ID>/tls/ca.crt CORE_PEER_TLS_ENABLED=true CORE_PEER_ADDRESS=${PEERADDR} CORE_PEER_LOCALMSPID=${ORGID} CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/<PEER_ENROLL_ID>/msp/ GOPATH=/ peer channel fetch 0 -o ${ORDERER_1} -c ${CHANNEL} --cafile /etc/hyperledger/<PEER_ENROLL_ID>/orderer_tlscacert.pem --tls
@@ -358,7 +358,7 @@ Nachdem Sie nun den Peer in AWS eingerichtet haben, können Sie verschiedene ope
 {: #remote-peer-aws-high-availability}
 
 Zur Unterstützung der Hochverfügbarkeit stellt die Schnelleinstiegsvorlage standardmäßig zwei Instanzen des Peers in zwei verschiedenen Verfügbarkeitszonen bereit.
-Zur Nutzung dieser Unterstützung für die Hochverfügbarkeit müssen Sie auch Ihre [Clientanwendungen für die Hochverfügbarkeit](/docs/services/blockchain/v10_application.html#dev-app-ha-app) konfigurieren.
+Zur Nutzung dieser Unterstützung für die Hochverfügbarkeit müssen Sie auch Ihre [Clientanwendungen für die Hochverfügbarkeit](/docs/services/blockchain/best_practices.html#best-practices-app-ha-app) konfigurieren.
 
 ## Hinweise zur Sicherheit
 {: #remote-peer-aws-security}
@@ -403,7 +403,7 @@ Weitere Informationen dazu, wie dies ausgeführt werden kann, finden Sie unter [
 
 Das Schlüsselmanagement stellt einen kritischen Aspekt für die Peersicherheit dar. Wenn ein privater Schlüssel manipuliert wird oder verloren geht, dann können feindliche Akteure möglicherweise auf Daten und Funktionalität Ihres Peers zugreifen. {{site.data.keyword.blockchainfull_notm}} Platform Enterprise Plan verwendet [Hardware Security Modules](/docs/services/blockchain/glossary.html#glossary-hsm) (HSM), um die privaten Schlüssel Ihres Netzes zu speichern. Bei HSM handelt es sich um eine physische Appliance, die verhindert, dass andere Parteien auf Ihren privaten Schlüssel zugreifen können.
 
-Wenn Sie einen Peer unter AWS bereitstellen, dann sind Sie für das Management Ihrer privaten Schlüssel verantwortlich. Obwohl {{site.data.keyword.blockchainfull_notm}} Platform Ihre privaten Schlüssel generiert, werden diese Schlüssel nicht auf der Plattform gespeichert. Es ist wichtig sicherzustellen, dass Ihre Schlüssel an einem sicheren Ort gespeichert werden, damit sie nicht manipuliert werden können. Sie finden den privaten Schlüssel Ihres Peers im Keystore-Ordner des Peer-MSP im Verzeichnis `/etc/hyperledger/<PEER_ENROLL_ID>/msp/keystore/` innerhalb des Peer-Containers. Weitere Informationen zu den Zertifikaten im Peer finden Sie im Abschnitt zum [Membership Services Provider](/docs/services/blockchain/certificates.html#managing-certificates-msp) unter [Zertifikate unter {{site.data.keyword.blockchainfull_notm}} Platform verwalten](/docs/services/blockchain/certificates.html#managing-certificates).
+Wenn Sie einen Peer unter AWS bereitstellen, dann sind Sie für das Management Ihrer privaten Schlüssel verantwortlich. Obwohl {{site.data.keyword.blockchainfull_notm}} Platform Ihre privaten Schlüssel generiert, werden diese Schlüssel nicht auf der Plattform gespeichert. Es ist wichtig sicherzustellen, dass Ihre Schlüssel an einem sicheren Ort gespeichert werden, damit sie nicht manipuliert werden können. Sie finden den privaten Schlüssel Ihres Peers im Keystore-Ordner des Peer-MSP im Verzeichnis `/etc/hyperledger/<PEER_ENROLL_ID>/msp/keystore/` innerhalb Ihres Peer-Containers. Weitere Informationen zu den Zertifikaten im Peer finden Sie im Abschnitt zum [Membership Services Provider](/docs/services/blockchain/certificates.html#managing-certificates-msp) unter [Zertifikate unter {{site.data.keyword.blockchainfull_notm}} Platform verwalten](/docs/services/blockchain/certificates.html#managing-certificates).
 
 Sie können Key Escrow verwenden, um verloren gegangene private Schlüssel wiederherzustellen. Der entsprechende Arbeitsschritt muss ausgeführt werden, bevor Sie einen Schlüssel verlieren. Wenn ein privater Schlüssel nicht wiederhergestellt werden kann, dann müssen Sie neue private Schlüssel anfordern. Hierzu müssen Sie ein neues signCert-Zertifikat bei Ihrer Zertifizierungsstelle abrufen. Außerdem sollten Sie in diesem Fall das Administratorzertifikat von allen Kanälen entfernen, denen Sie beigetreten sind, oder es auf diesen Kanälen ersetzen.
 

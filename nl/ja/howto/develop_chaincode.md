@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-03-20"
 
 subcollection: blockchain
 
@@ -41,7 +41,7 @@ subcollection: blockchain
 
 Hyperledger Fabric コミュニティー資料の[開発者向けチェーンコードのチュートリアル ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/latest/chaincode4ade.html "開発者向けチェーンコードのチュートリアル") では、チェーンコードの作成方法を学習できます。 このチュートリアルでは、資産の作成と読み取りを行う単純なチェーンコードの作成を順を追って説明し、このプロセスで使用されている API を紹介しています。 すべてのチェーンコード言語のチェーンコード API リファレンス・ガイドも参照できます。 [Fabric サンプル・リポジトリー ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://github.com/hyperledger/fabric-samples "Fabric サンプル") の chaincode フォルダーに、さらにサンプルが用意されています。  
 
-スマート・コントラクトでは通常、要求を検証したり、ビジネス・ルールを適用したり、決定論的な結果を戻したりすることができます。しかし、追加の事実情報が必要な状況や、クライアントから提供される情報が真実であることをビジネス・ネットワークで確認したい状況もあります。スマート・コントラクトからサード・パーティー・システムへの外部呼び出しが Hyperledger Fabric により妨げられることはありません。しかし、その結果の R/W 設定が決定論的であるようにすることは、スマート・コントラクトの開発者の責任です。
+スマート・コントラクトでは通常、要求を検証したり、ビジネス・ルールを適用したり、決定論的な結果を戻したりすることができます。 しかし、追加の事実情報が必要な状況や、クライアントから提供される情報が真実であることをビジネス・ネットワークで確認したい状況もあります。 スマート・コントラクトからサード・パーティー・システムへの外部呼び出しが Hyperledger Fabric により妨げられることはありません。 しかし、その結果の R/W 設定が決定論的であるようにすることは、スマート・コントラクトの開発者の責任です。
 {:note}
 
 ## チェーンコードのインストール
@@ -141,4 +141,4 @@ Write Set: `{Key='CAR1', value[3]='Joe'}`
 
 状態データベースに CouchDB を使用している場合、チェーンコードからチャネルの状態データに対する JSON データ照会を実行できます。 JSON 照会用に索引を作成してチェーンコードで使用することを強くお勧めします。 索引を使用すると、ネットワークがトランザクションおよびエントリーの追加ブロックをワールド・ステートに追加するため、アプリケーションで効率的にデータを取り出すことができます。
 
-CouchDB について、および索引をセットアップする方法について詳しくは、Hyperledger Fabric の資料で [CouchDB as the State Database ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/couchdb_as_state_database.html "CouchDB as the State Database"){:new_window} を参照してください。 [Fabric CouchDB チュートリアル ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/couchdb_tutorial.html) にも、索引をチェーンコードで使用する例があります。 アプリケーションからデータを照会する方法について詳しくは、アプリケーションの開発チュートリアルの [CouchDB を使用する場合のベスト・プラクティス](/docs/services/blockchain/v10_application.html#dev-app-couchdb-indices)を参照してください。
+CouchDB について、および索引をセットアップする方法について詳しくは、Hyperledger Fabric の資料で [CouchDB as the State Database ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/couchdb_as_state_database.html "CouchDB as the State Database"){:new_window} を参照してください。 [Fabric CouchDB チュートリアル ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/couchdb_tutorial.html) にも、索引をチェーンコードで使用する例があります。 アプリケーションからデータを照会する方法について詳しくは、アプリケーションの開発チュートリアルの [CouchDB を使用する場合のベスト・プラクティス](/docs/services/blockchain/best_practices.html#best-practices-app-couchdb-indices)を参照してください。

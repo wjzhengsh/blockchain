@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -39,7 +39,7 @@ Vous pouvez ensuite utiliser l'une des méthodes suivantes pour exploiter votre 
 Les logiciels SDK Fabric sont recommandés. Cependant, les instructions supposent que vous avez une bonne connaissance du fonctionnement du logiciel SDK. Si vous préférez utiliser la ligne de commande, vous pouvez utiliser le client homologue Fabric.
 
 <!--
-It is recommended that you deploy at least two instances of the peer Helm chart for [high availability](peer_icp.html#high-availability). Therefore, you need to follow these operations steps once for each peer. When you are ready to invoke and query chaincode from your application, connect to both peers to ensure that your [applications are highly available](../v10_application.html#ha-app).
+It is recommended that you deploy at least two instances of the peer Helm chart for [high availability](peer_icp.html#high-availability). Therefore, you need to follow these operations steps once for each peer. When you are ready to invoke and query chaincode from your application, connect to both peers to ensure that your [applications are highly available](../best_practices.html#best-practices-app-ha-app).
 -->
 
 **Remarque **: L'homologue {{site.data.keyword.blockchainfull_notm}} Platform n'a pas accès à toutes les fonctionnalités ou à la prise en charge des homologues qui sont hébergés sur {{site.data.keyword.blockchainfull_notm}} Platform. Par conséquent, vous ne pouvez pas utiliser le moniteur réseau pour exploiter un homologue sur {{site.data.keyword.cloud_notm}} Private. Avant de commencer à lancer des homologues, assurez-vous d'avoir passé en revue les [considérations et limitations](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-about-considerations).
@@ -117,7 +117,7 @@ Vous devez utiliser l'outil de ligne de commande **kubectl** pour vous connecter
 ### Extraction des informations de noeud final de votre homologue
 {: #ibp-peer-operate-endpoint}
 
-Vous devez cibler le noeud final de votre homologue à partir du logiciel SDK ou du client d'autorité de certification Fabric pour rejoindre le canal ou installer des contrats intelligents. Pour trouver le noeud final de votre homologue, vous pouvez utiliser l'interface utilisateur de votre console {{site.data.keyword.cloud_notm}} Private. Vous devrez être [administrateur de cluster![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Rôles et actions de l'administrateur de cluster") pour effectuer les étapes suivantes :
+Vous devez cibler le noeud final de votre homologue à partir du logiciel SDK ou du client d'autorité de certification Fabric pour rejoindre le canal ou installer des contrats intelligents. Pour trouver le noeud final de votre homologue, vous pouvez utiliser l'interface utilisateur de votre console {{site.data.keyword.cloud_notm}} Private. Vous devrez être [administrateur de cluster![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/user_management/assign_role.html "Rôles et actions de l'administrateur de cluster") pour effectuer les étapes suivantes :
 
 1. Connectez-vous à la console {{site.data.keyword.cloud_notm}} Private et cliquez sur l'icône **Menu ** dans l'angle supérieur gauche.
 2. Cliquez sur **Charge de travail** > **Editions Helm**.
@@ -155,7 +155,7 @@ Vous devez télécharger votre certificat TLS homologue et le transmettre à vos
 ## Utilisation de SDK Fabric pour l'exploitation de votre homologue
 {: #ibp-peer-operate-operate-with-sdk}
 
-Les logiciels SDK Hyperledger Fabric fournissent un puissant jeu d'API qui permettent aux applications d'interagir et d'exploiter les réseaux de blockchain. Vous pouvez obtenir la liste la plus récente des langages pris en charge et la liste complète des API disponibles au sein des logiciels SDK Fabric dans la [documentation Hyperledger Fabric SDK community![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/getting_started.html#hyperledger-fabric-sdks "documentation Hyperledger Fabric SDK Community"). Vous pouvez utiliser les logiciels SDK Fabric pour associer votre homologue à un canal sur {{site.data.keyword.blockchainfull_notm}} Platform, installer un code blockchain sur votre homologue, et instancier le code blockchain sur un canal.
+Les logiciels SDK Hyperledger Fabric fournissent un puissant jeu d'API qui permettent aux applications d'interagir et d'exploiter les réseaux de blockchain. Vous pouvez obtenir la liste la plus récente des langages pris en charge et la liste complète des API disponibles au sein des logiciels SDK Fabric dans la [documentation Hyperledger Fabric SDK community![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/getting_started.html#hyperledger-fabric-sdks "documentation Hyperledger Fabric SDK Community"). Vous pouvez utiliser les logiciels SDK Fabric pour associer votre homologue à un canal sur {{site.data.keyword.blockchainfull_notm}} Platform, installer un code blockchain sur votre homologue, et instancier le code blockchain sur un canal.
 
 Les instructions suivantes utilisent le [Logiciel SDK Fabric Node![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://fabric-sdk-node.github.io/ "Logiciel SDK Fabric Node") pour exploiter l'homologue et supposent une connaissance préalable du logiciel SDK. Vous pouvez utiliser le [tutoriel de développement d'applications](/docs/services/blockchain/v10_application.html#dev-app) pour en savoir plus sur l'utilisation du logiciel SDK Node avant de commencer, et comme guide pour le développement d'applications avec votre homologue lorsque vous êtes prêt à appeler et à interroger le code blockchain.
 
@@ -165,11 +165,11 @@ Les instructions suivantes utilisent le [Logiciel SDK Fabric Node![Icône de lie
 Vous pouvez utiliser NPM pour installer le [Logiciel SDK Node ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://fabric-sdk-node.github.io/ "Logiciel SDK Node") :
 
 ```
-npm install fabric-client@1.2
+npm install fabric-client@1.4.0
 ```
 {:codeblock}
 
-Il est recommandé d'utiliser la version 1.2 du logiciel SDK Node.
+Il est recommandé d'utiliser la version 1.4.0 du logiciel SDK Node.
 
 ### Préparation du logiciel SDK pour l'utilisation de l'homologue
 {: #ibp-peer-operate-prepare-node-sdk}
@@ -252,10 +252,10 @@ Votre homologue a été déployé avec le certificat signCert de votre admin hom
 ### Téléchargement du client homologue Fabric
 {: #ibp-peer-operate-download-fabric-client}
 
-Le moyen le plus simple d'obtenir le client homologue est de télécharger tous les binaires de l'outil Fabric du projet Hyperledger. Accédez au répertoire dans lequel vous souhaitez télécharger les binaires à partir de votre ligne de commande, puis procédez à leur extraction en exécutant la commande ci-dessous. Si vous n'avez pas encore installé [Curl ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/prereqs.html#install-curl "Curl"), vous devez d'abord effectuer cette opération en premier.
+Le moyen le plus simple d'obtenir le client homologue est de télécharger tous les binaires de l'outil Fabric du projet Hyperledger. Accédez au répertoire dans lequel vous souhaitez télécharger les binaires à partir de votre ligne de commande, puis procédez à leur extraction en exécutant la commande ci-dessous. Si vous n'avez pas encore installé [Curl ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/prereqs.html#install-curl "Curl"), vous devez d'abord effectuer cette opération en premier.
 
 ```
-curl -sSL http://bit.ly/2ysbOFE | bash -s 1.2.1 1.2.1 -d -s
+curl -sSL http://bit.ly/2ysbOFE | bash -s 1.4.0 1.4.0 -d -s
 ```
 {:codeblock}
 
@@ -296,7 +296,7 @@ cd $HOME/fabric-ca-client/peer-admin/msp
 ```
 {:codeblock}
 
-Avant d'exploiter l'homologue, vous devez procéder à quelques opérations de gestion des certificats sur votre machine locale. Par exemple, vous devez télécharger le certificat signCert admin vers Starter Plan ou Enterprise Plan et vous assurer que vous pouvez accéder aux certificats TLS à partir de l'homologue et votre réseau sur {{site.data.keyword.cloud_notm}}. Pour plus d'informations sur les certificats à utiliser et les tâches à exécuter, voir  [Gestion des  certificats sur {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/certificates.html#managing-certificates).
+Avant d'exploiter l'homologue, vous devez procéder à quelques opérations de gestion des certificats sur votre machine locale. Par exemple, vous devez télécharger le certificat signCert admin vers Starter Plan ou Enterprise Plan et vous assurer que vous pouvez accéder aux certificats TLS à partir de l'homologue et votre réseau sur {{site.data.keyword.cloud_notm}}. Pour plus d'informations sur les certificats à utiliser et les tâches à exécuter, voir [Gestion des  certificats sur {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/certificates.html#managing-certificates).
 
 1. Déplacez le certificat signCert de l'admin de votre homologue vers un nouveau dossier nommé `admincerts` :
 
@@ -333,6 +333,8 @@ tree
 │   └── msp
 │       ├── cacerts
 │       │   └── 9-12-19-115-31873-SampleOrgCA.pem
+│       ├── IssuerPublicKey
+│       ├── IssuerRevocationPublicKey
 │       ├── keystore
 │       │   └── c44ec1e708f84b6d0359f58ce2c9c8a289919ba81f2cf4bb5187c4ad5a43cbb0_sk
 │       └── signcerts
@@ -362,6 +364,8 @@ tree
     └── msp
         ├── cacerts
         │   └── 9-30-250-70-30395-tlsca.pem
+        ├── IssuerPublicKey
+        ├── IssuerRevocationPublicKey
         ├── keystore
         │   └── bd57fa20283dfc76ada83f989ee0f62ce23e98c94dbd26f6cd23202d8084e38e_sk
         ├── signcerts
@@ -403,11 +407,11 @@ Après avoir déplacé tous vos certificats vers l'emplacement nécessaire, vous
   Remplacez les zones par vos informations.
     - Remplacez `<full_path_to_config_folder>` par le dossier config qui a été créé lorsque vous avez [téléchargé le client homologue](/docs/services/blockchain/howto/peer_operate_ibp.html#ibp-peer-operate-download-fabric-client).
     - Remplacez `<CHANNEL_NAME>` par le nom du canal que rejoint l'homologue.
-    - Remplacez `<CC_NAME>` par un nom pour faire référence à votre code blockchain.
+    - Remplacez `<CC_NAME>` par un nom pour faire référence à votre code blockchain. 
     - Remplacez `<PEERADDR>` par le noeud final d'homologue de l'étape précédente pour l'homologue que vous utilisez actuellement.
-    - Remplacez `<ORDERER_URL>` par le nom d'hôte et le port du service de tri de votre profil de connexion.
+    - Remplacez `<ORDERER_URL>` par le nom d'hôte et le port du service de tri de votre profil de connexion. 
     - Remplacez `<PATH_TO_ADMIN_MSP>` par le chemin d'accès au dossier MSP de l'admin de votre homologue.
-    - Remplacez `<PATH_TO_PEER_TLS_CERT>` par le chemin d'accès au certificat TLS homologue que vous avez téléchargé.
+    - Remplacez `<PATH_TO_PEER_TLS_CERT>` par le chemin d'accès au certificat TLS homologue que vous avez téléchargé. 
     - Remplacez `<MSPID_OF_PEER_BEING_USED>` par le MSPID d'organisation de l'homologue que vous utilisez pour extraire un bloc d'origine, rejoindre un canal ou installer un code blockchain.
 
   Par exemple :
@@ -492,7 +496,7 @@ Avant d'exécuter les commandes d'interface CLI pour joindre l'homologue à un c
 ### Utilisation de l'interface de ligne de commande pour installer le code blockchain sur l'homologue
 {: #ibp-peer-operate-toolcontainer-install-cc}
 
-Nous sommes maintenant prêts à installer et à instancier le code blockchain sur l'homologue. Dans le cadre des présentes instructions, nous installons le code blockchain `fabcar` du référentiel `fabric-samples`. Assurez-vous de [d'avoir configuré votre GOPATH ![Icône de lien externe](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/dev-setup/devenv.html?highlight=gopath#set-your-gopath "Définition de votre GOPATH") au préalable, puis téléchargez code blockchain `fabric-samples` depuis github à l'aide des commandes suivantes :
+Nous sommes maintenant prêts à installer et à instancier le code blockchain sur l'homologue. Dans le cadre des présentes instructions, nous installons le code blockchain `fabcar` du référentiel `fabric-samples`. Assurez-vous de [d'avoir configuré votre GOPATH ![Icône de lien externe](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/dev-setup/devenv.html?highlight=gopath#set-your-gopath "Définition de votre GOPATH") au préalable, puis téléchargez code blockchain `fabric-samples` depuis github à l'aide des commandes suivantes :
 
 ```
 cd $GOPATH/src
@@ -534,7 +538,7 @@ Lorsque cette commande est exécutée correctement, vous devriez voir un quelque
 2018-07-06 18:43:15.066 UTC [chaincodeCmd] checkChaincodeCmdParams -> INFO 002 Using default vscc
 ```
 
-Une fois le code blockchain instancié, vous pouvez utiliser une requête de code blockchain et appeler des commandes pour lire et écrire des données dans le registre de canal. Pour plus d'informations, voir les [code blockchain homologue![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/latest/commands/peerchaincode.html) dans la documentation Hyperledger Fabric. Vous devrez transmettre le noeud fin du service de tri à vos commandes d'appel en utilisant l'IP proxy et le porte de service de tri externe. Il vous suffit de transmettre le noeud final homologue à une commande de requête.
+Une fois le code blockchain instancié, vous pouvez utiliser une requête de code blockchain et appeler des commandes pour lire et écrire des données dans le registre de canal. Pour plus d'informations, voir les [code blockchain homologue![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/peerchaincode.html) dans la documentation Hyperledger Fabric. Vous devrez transmettre le noeud fin du service de tri à vos commandes d'appel en utilisant l'IP proxy et le porte de service de tri externe. Il vous suffit de transmettre le noeud final homologue à une commande de requête.
 
 ## Mise à jour du code blockchain
 {: #ibp-peer-operate-update-chaincode}
@@ -546,7 +550,7 @@ Procédez comme suit pour mettre à jour votre code blockchain :
 1. Pour mettre à jour le code blockchain sur chaque homologue, relancez simplement le processus utilisé pour installer le code blockchain sur les homologues, au moyen d'une application client ou d'une commande d'interface de ligne de commande. Veillez à indiquer le même nom de code blockchain que celui utilisé initialement. Toutefois, cette fois incrémentez la `version` de code blockchain. Tous les homologues doivent utiliser le même nom et la même version de code blockchain.
 
 2. Une fois le nouveau code blockchain installé sur tous les homologues du canal, utilisez le Moniteur réseau ou la commande
-[peer chaincode upgrade ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/peerchaincode.html#peer-chaincode-upgrade) pour mettre à jour le canal qui va utiliser le nouveau code blockchain.
+[peer chaincode upgrade ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/peerchaincode.html#peer-chaincode-upgrade) pour mettre à jour le canal qui va utiliser le nouveau code blockchain.
 
 Consultez l'étape 2 des présentes [instructions](/docs/services/blockchain/howto/install_instantiate_chaincode.html#install-instantiate-chaincode-update-cc) pour plus d'informations sur l'utilisation du panneau "Installer le code" du Moniteur réseau pour la mise à jour du code blockchain sur le canal.
 
@@ -562,7 +566,7 @@ Les journaux de composant peuvent être affichés à partir de la ligne de comma
   ```
   {:codeblock}
 
-  Ensuite, exécutez la commande suivante pour extraire les journaux pour le conteneur d'homologue qui réside dans le pod en  replaçant  `<pod_name>` par le nom de votre pod de la sortie de commande plus haut :
+  Ensuite, exécutez la commande suivante pour extraire les journaux pour le conteneur d'homologues qui réside dans le pod en remplaçant `<pod_name>` par le nom de votre pod à partir du résultat de la commande ci-dessus :
 
   ```
   kubectl logs <pod_name> -c peer
@@ -571,7 +575,7 @@ Les journaux de composant peuvent être affichés à partir de la ligne de comma
 
   Pour plus d'informations sur la commande `kubectl logs`, consultez la [documentation Kubernetes ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs “Getting Started”)
 
-- Vous pouvez aussi accéder aux journaux en utilisant la [{{site.data.keyword.cloud_notm}}console de gestion de cluster ICP](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/troubleshoot/events.html), qui ouvre les journaux dans Kibana.
+- Vous pouvez aussi accéder aux journaux en utilisant la [{{site.data.keyword.cloud_notm}}console de gestion de cluster ICP](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/troubleshoot/events.html), qui ouvre les journaux dans Kibana.
 
    **Remarque :** Lorsque vous affichez vos journaux dans Kibana, vous pouvez recevoir la réponse `No results found`. Cette condition peut se produire si {{site.data.keyword.cloud_notm}} Private utilise l'adresse IP de votre noeud worker comme nom d'hôte. Pour résoudre ce problème, supprimez le filtre qui commence par `node.hostname.keyword` en haut de l'écran et les journaux deviennent visibles.
 
@@ -597,13 +601,13 @@ Cette erreur peut être due à la présence d'une incohérence entre homologues 
 Cette erreur peut se produire si l'utilisation du Moniteur réseau a été utilisée pour installer et instancier du code blockchain sur un homologue s'exécutant dans un plan Starter Plan Enterprise Plan, et que vous installez ultérieurement le code blockchain sur un homologue s'exécutant sur {{site.data.keyword.cloud_notm}} Private. L'erreur se produit dans la demande `invoke` car les chemins d'accès au code blockchain résultant sur les homologues sont différents.
 
 **Solution :**
-Si vous voulez exécuter du code blockchain sur des homologues à la fois dans {{site.data.keyword.cloud_notm}}, comme Starter ou Enterprise Plan, et {{site.data.keyword.cloud_notm}} Private, n'utilisez pas l'interface utilisateur du Moniteur réseau pour installer le code blockchain. Créez plutôt un package du code blockchain avec la commande [`peer chaincode package`![Icône de lien externe](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/peerchaincode.html?highlight=peer%20chaincode%20package#peer-chaincode-package), puis installez le package sur tous les homologues en exécutant la commande [`peer chaincode install`](/docs/services/blockchain/howto/peer_operate_ibp.html#ibp-peer-operate-toolcontainer-install-cc).
+Si vous voulez exécuter du code blockchain sur des homologues à la fois dans {{site.data.keyword.cloud_notm}}, comme Starter ou Enterprise Plan, et {{site.data.keyword.cloud_notm}} Private, n'utilisez pas l'interface utilisateur du Moniteur réseau pour installer le code blockchain. Créez plutôt un package du code blockchain avec la commande [`peer chaincode package`![Icône de lien externe](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/peerchaincode.html?highlight=peer%20chaincode%20package#peer-chaincode-package), puis installez le package sur tous les homologues en exécutant la commande [`peer chaincode install`](/docs/services/blockchain/howto/peer_operate_ibp.html#ibp-peer-operate-toolcontainer-install-cc).
 
 Si le code blockchain est déjà installé et instancié sur un canal avant que vous n'essayiez d'installer le code blockchain sur un homologue {{site.data.keyword.cloud_notm}} Private, vous devez effectuer les étapes suivantes pour éviter ce problème :
 
-1. Créez plutôt un package du code blockchain avec la commande [`peer chaincode package`![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/peerchaincode.html?highlight=peer%20chaincode%20package#peer-chaincode-package).
+1. Créez plutôt un package du code blockchain avec la commande [`peer chaincode package`![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/peerchaincode.html?highlight=peer%20chaincode%20package#peer-chaincode-package).
 2. Installez le package de code blockchain sur l'homologue qui s'exécute sur {{site.data.keyword.cloud_notm}} Private en exécutant la commande `peer chaincode installer`.
-3. Si vous avez des binaires spécifiques à la plateforme, vous pouvez exécuter la commande [`peer chaincode upgrade`![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/peerchaincode.html?highlight=peer%20chaincode%20package#peer-chaincode-upgrade) pour mettre à niveau le code blockchain s'exécutant sur l'homologue Starter Plan ou Enterprise Plan, qui utilise le package de code blockchain.
+3. Si vous avez des binaires spécifiques à la plateforme, vous pouvez exécuter la commande [`peer chaincode upgrade`![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/peerchaincode.html?highlight=peer%20chaincode%20package#peer-chaincode-upgrade) pour mettre à niveau le code blockchain s'exécutant sur l'homologue Starter Plan ou Enterprise Plan, qui utilise le package de code blockchain.
 4. Instanciez le code blockchain nouvellement installé sur le canal en utilisant l'interface utilisateur du Moniteur réseau ou l'interface CLI.
 
-Le processus de mise à niveau du code blockchain est également accessible dans [`Chaincode for Operators`![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/chaincode4noah.html) dans la documentation Hyperledger Fabric.
+Le processus de mise à niveau du code blockchain est également accessible dans [`Chaincode for Operators`![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/chaincode4noah.html) dans la documentation Hyperledger Fabric.

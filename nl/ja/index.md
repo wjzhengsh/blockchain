@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -33,6 +33,7 @@ subcollection: blockchain
 
 | **オファリング** | **組み込まれている機能** | **請求ポリシー** | **クラウド・プラットフォーム** |
 | ------------------------- |-----------|-----------|-----------|-----------|
+| [**{{site.data.keyword.blockchainfull_notm}} Platform Extension for VSCode**](/docs/services/blockchain?topic=blockchain-develop-vscode#develop-vscode) | 開発者は、スマート・コントラクトを短時間で開発するために、コマンド・パレットからアクセスできるコマンドやエクスプローラーを備えた IDE を使用して作業を開始できます。| 無料 | ローカル・マシンで実行 |
 | [**Starter Plan**](/docs/services/blockchain/starter_plan.html#starter-plan-about) | 基本サービス・レベル、開発/テスト環境の {{site.data.keyword.IBM_notm}} 管理のネットワーク | 月単位のサブスクリプション | {{site.data.keyword.cloud_notm}} |
 | [**Enterprise Plan**](/docs/services/blockchain/enterprise_plan.html#enterprise-plan-about) | 拡張サービス・レベル、エンタープライズ実稼働対応環境の {{site.data.keyword.IBM_notm}} 管理のネットワーク | 月単位のサブスクリプション | {{site.data.keyword.cloud_notm}} |
 | [**{{site.data.keyword.blockchainfull_notm}} Platform 2.0 無料ベータ版**](/docs/services/blockchain/howto/ibp-console.html#ibp-console-overview) | ユーザーの {{site.data.keyword.cloud_notm}} Kubernetes クラスターにブロックチェーン・コンポーネントをデプロイして管理できる {{site.data.keyword.blockchainfull_notm}} Platform コンソール | 無料のベータ版 | {{site.data.keyword.cloud_notm}} |
@@ -49,13 +50,17 @@ subcollection: blockchain
 
 {{site.data.keyword.blockchainfull_notm}} Platform オファリングを取得するためのクラウド・アカウントまたは PPA ライセンスを持っていることを確認します。
 
+* **{{site.data.keyword.blockchainfull_notm}} Platform Extension for VSCode**
+
+  この VSCode 拡張機能は、[Visual Studio Marketplace ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://marketplace.visualstudio.com/items?itemName=IBMBlockchain.ibm-blockchain-platform "{{site.data.keyword.blockchainfull_notm}} Platform Extension for VSCode") から無料で入手できます。この拡張機能を使用すれば、最終的に {{site.data.keyword.blockchainfull_notm}} にデプロイするスマート・コントラクトの開発、デバッグ、テストを行えます。
+
 * **スターター・プラン**、**エンタープライズ・プラン**、および **{{site.data.keyword.blockchainfull_notm}} Platform 2.0 無料ベータ版**
 
   これらのオファリングは {{site.data.keyword.cloud_notm}} で提供されています。{{site.data.keyword.cloud_notm}} の[「カタログ」ダッシュボード ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://cloud.ibm.com/catalog "カタログ") にあります。
 
 * **{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private**
 
-  このオファリングは、デプロイ可能な Helm チャートとして提供され、有料版と無料のコミュニティー版の両方が用意されています。 Enterprise Edition を[パスポート・アドバンテージ・オンライン ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/software/passportadvantage/pao_customer.html) からダウンロードするか、無料のコミュニティー版を [GitHub ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://github.com/IBM/charts/blob/master/repo/stable/ibm-blockchain-platform-dev-1.0.0.tgz) からダウンロードできます。
+  このオファリングは、デプロイ可能な Helm チャートとして提供され、有料版と無料のコミュニティー版の両方が用意されています。 Enterprise Edition を[パスポート・アドバンテージ・オンライン ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/software/passportadvantage/pao_customer.html) からダウンロードするか、無料のコミュニティー版を [GitHub ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://github.com/IBM/charts/blob/master/repo/stable/ibm-blockchain-platform-dev-1.0.2.tgz) からダウンロードできます。
 
 * **{{site.data.keyword.blockchainfull_notm}} Platform for AWS**
 
@@ -70,7 +75,7 @@ subcollection: blockchain
 
 * **{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private**
 
-  ネットワークをデプロイする前に、[Helm チャートを {{site.data.keyword.cloud_notm}} Private にインポート](/docs/services/blockchain/howto/helm_install_icp.html#helm-install)する必要があります。 その後、[{{site.data.keyword.blockchainfull_notm}} Platform を構成およびインストール](/docs/services/blockchain/howto/ibp-console-deploy-icp.html#ibp-console-deploy-icp)することができます。
+  ネットワークをデプロイする前に、[Helm チャートを {{site.data.keyword.cloud_notm}} Private にインポート](/docs/services/blockchain/howto/helm_install_icp.html#helm-install)する必要があります。 その後、[まずは CA からネットワーク・コンポーネントをデプロイしていき](/docs/services/blockchain/ibp_for_icp_deployment_guide.html#step-three-set-up-your-cas)、ネットワークを構築できます。
 
 * **{{site.data.keyword.blockchainfull_notm}} Platform for AWS**
 

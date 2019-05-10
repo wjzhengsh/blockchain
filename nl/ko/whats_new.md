@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -20,10 +20,19 @@ subcollection: blockchain
 # 새로운 기능
 {: #whats-new}
 
+## 2019년 4월 23일
+{: #whats-new-4-17-2019}
+
+{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private v1.0.2가 릴리스되었습니다. 이 릴리스는 Hyperledger Fabric v1.4.0 코드 베이스를 사용하고 {{site.data.keyword.cloud_notm}} Private v3.1.2에 대한 배치를 지원합니다.
+
+기존 {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private을 v1.0.2로 업그레이드하려면 [{{site.data.keyword.cloud_notm}} Private의 Helm 차트 업그레이드](/docs/services/blockchain/howto/helm_install_icp.html#helm-install-upgrading)를 참조하십시오.
+
+Hyperledger Fabric v1.4.0에 대한 자세한 정보는 [Hyperledger Fabric 문서 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/ "Hyperledger Fabric v1.4 문서")를 참조하십시오. {{site.data.keyword.cloud_notm}} Private에 대한 자세한 정보는 [{{site.data.keyword.cloud_notm}} Private v3.1.2 문서 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/kc_welcome_containers.html "{{site.data.keyword.cloud_notm}} Private v3.1.2 문서")를 참조하십시오. 
+
 ## 2019년 2월 8일
 {: #whats-new-2-08-2019}
 
-{{site.data.keyword.blockchainfull}} Platform에서는 블록체인 네트워크를 배치, 작동 및 모니터링할 수 있도록 해주는 차세대 {{site.data.keyword.blockchainfull_notm}} Platform 솔루션인 무료 2.0 베타를 릴리스합니다. {{site.data.keyword.blockchainfull_notm}} Platform 무료 2.0 베타에는 {{site.data.keyword.cloud_notm}}의 {{site.data.keyword.IBM_notm}} Kubernetes 서비스 클러스터에서 블록체인 컴포넌트를 배치하고 관리하는 데 사용될 수 있는 새 사용자 인터페이스 콘솔이 포함됩니다. {{site.data.keyword.blockchainfull_notm}} Platform 무료 2.0 베타는 다음과 같은 기능을 제공합니다.
+{{site.data.keyword.blockchainfull}} Platform에서는 블록체인 네트워크를 배치, 작동 및 모니터링할 수 있도록 해주는 차세대 {{site.data.keyword.blockchainfull_notm}} Platform 솔루션인 무료 2.0 베타를 릴리스합니다. {{site.data.keyword.blockchainfull_notm}} Platform 무료 2.0 베타에는 {{site.data.keyword.cloud_notm}}의 {{site.data.keyword.IBM_notm}} Kubernetes Service 클러스터에서 블록체인 컴포넌트를 배치하고 관리하는 데 사용될 수 있는 새 사용자 인터페이스 콘솔이 포함됩니다. {{site.data.keyword.blockchainfull_notm}} Platform 무료 2.0 베타는 다음과 같은 기능을 제공합니다.
 
 **원활한 경험을 통해 네트워크를 더 빠르고 쉽게 구축**
 
@@ -43,12 +52,12 @@ subcollection: blockchain
 *	단일 피어를 다중 업계 네트워크에 쉽게 연결
 *	소규모로 시작하여 선불 투자 없이 사용량 증가에 따라 지불하고 Kubernetes를 통해 쉽게 업그레이드 가능
 
-- {{site.data.keyword.blockchainfull_notm}} Platform 무료 2.0 베타에 대한 자세한 정보는 [{{site.data.keyword.blockchainfull_notm}} Platform 2.0 정보](/docs/services/blockchain/howto/ibp-console.html#ibp-console-overview)에서 제공합니다. 
-- 무료 2.0 베타 릴리스를 {{site.data.keyword.IBM_notm}} Kubernetes 서비스 클러스터에 배치하는 방법에 대한 지시사항은 [{{site.data.keyword.blockchainfull_notm}} Platform 2.0 시작하기](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks)에서 제공합니다. 
+- {{site.data.keyword.blockchainfull_notm}} Platform 무료 2.0 베타에 대한 자세한 정보는 [{{site.data.keyword.blockchainfull_notm}} Platform 2.0 정보](/docs/services/blockchain/howto/ibp-console.html#ibp-console-overview)에서 제공합니다.
+- 무료 2.0 베타 릴리스를 {{site.data.keyword.IBM_notm}} Kubernetes Service 클러스터에 배치하는 방법에 대한 지시사항은 [{{site.data.keyword.blockchainfull_notm}} Platform 2.0 시작하기](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks)에서 제공합니다.
 - {{site.data.keyword.blockchainfull_notm}} Platform 무료 2.0 베타 사용에 대한 새 튜토리얼은 **HOW TO** 카테고리 아래의 **{{site.data.keyword.blockchainfull_notm}} Platform 2.0** 하위 섹션에서 사용 가능합니다.
   * [네트워크 빌드 튜토리얼](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network)은 순서 지정자 또는 피어를 작성하여 네트워크를 호스팅하는 프로세스를 안내합니다.
   * [네트워크 참여 튜토리얼](/docs/services/blockchain/howto/ibp-console-join-network.html#ibp-console-join-network)은 피어를 작성하고 해당 피어를 채널에 가입시켜 기존 네트워크에 참여하는 방법을 설명합니다.
-  * [네트워크에 스마트 계약 배치](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts)는 스마트 계약을 작성하여 이를 네트워크에 배치하는 방법을 제공합니다. 
+  * [네트워크에 스마트 계약 배치](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts)는 스마트 계약을 작성하여 이를 네트워크에 배치하는 방법을 제공합니다.
 - {{site.data.keyword.blockchainfull_notm}} Platform 무료 2.0 베타 오퍼링은 Hyperledger Fabric v1.4을 기반으로 하며 피어 투 피어 gossip, 서비스 발견 및 개인용 데이터를 지원합니다. 네트워크에서 개인용 데이터를 구성하는 방법을 학습하려면 이 [주제](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-private-data)를 방문하십시오.
 
 - {{site.data.keyword.blockchainfull_notm}} Visual Studio Code 확장은 Visual Studio Code 마켓플레이스에서 사용 가능합니다. 개발자는 확장을 사용하여 Hyperledger Fabric의 인스턴스에 스마트 계약을 작성, 테스트 및 배치할 수 있습니다. 확장은 Hyperledger Fabric 1.3 이상과 호환 가능합니다. VS Code 확장에 대한 정보는 [스마트 계약을 위한 도구](/docs/services/blockchain/vscode-extension.html#develop-vscode)를 참조하십시오.  

@@ -23,6 +23,7 @@ IBM Blockchain Platform
 		howto/remote_peer.md
 
 	whats_new.md
+	howto/ibp-v2-faq.md
 	blockchain_component_overview.md
 	needtoknow.md
 	{: .navgroup-end}
@@ -32,16 +33,17 @@ IBM Blockchain Platform
 	Desarrollo de contratos inteligentes y de aplicaciones
 		howto/develop_chaincode.md
 		vscode-extension.md
-		v10_application.md
+		best_practices.md
 
 
 	{: .topicgroup}
-	Plan inicial y de empresa
+	Plan inicial y empresarial
 		v10_dashboard.md
 		develop_starter_enterprise.md
 		howto/prebuilt_samples.md
 		howto/create_channel.md
 		howto/install_instantiate_chaincode.md
+		v10_application.md
 		howto/swagger_apis.md
 		howto/create_join_network_with_apis.md
 		howto/monitor_network.md
@@ -57,16 +59,17 @@ IBM Blockchain Platform
 		howto/ibp-console-smart-contracts.md
 		howto/ibp-console-create-app.md
 		howto/ibp-console-import-nodes.md
+		howto/ibp-console-govern.md
 		howto/ibp-console-identities.md
 		howto/ibp-console-organizations.md
 		howto/ibp-console-manage.md
+		howto/ibp-v2-troubleshooting.md
 
 	{: .topicgroup}
-	IBM Blockchain Platform on IBM Cloud Private
+	IBM Blockchain Platform para IBM Cloud Private
 		ibp_for_icp_deployment_guide.md
 		ICP_setup.md
 		howto/helm_install_icp.md
-		howto/ibp-console-deploy-icp.md
 
 	{: .topicgroup}
 	-- Entidades emisoras de certificados en IBM Cloud Private
@@ -96,9 +99,11 @@ IBM Blockchain Platform
 	reference/ibp_regions.md
 	reference/videos.md
 	reference/v10_fabric.md
+	reference/k8s.md
 	{: .navgroup-end}
 
 	{: .navgroup id="help"}
+	release-notes.md
 	ibmblockchain_support.md
 	knownissues.md
 	{: .navgroup-end}

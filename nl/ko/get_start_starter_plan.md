@@ -98,7 +98,7 @@ subcollection: blockchain
 
 네트워크 개시자에게 초대된 경우 네트워크 참여 방법에 대한 지시사항이 포함된 이메일 알림을 수신합니다. 이메일의 지시사항을 따르십시오. 그러면 네트워크의 구성원 중 하나가 됩니다.
 
-{{site.data.keyword.cloud_notm}}에서 스타터 플랜 멤버십 옵션을 사용하여 [{{site.data.keyword.blockchainfull_notm}} Platform 서비스 인스턴스![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://cloud.ibm.com/catalog/services/ibm-blockchain-5-prod)를 작성해야 합니다. 
+{{site.data.keyword.cloud_notm}}에서 스타터 플랜 멤버십 옵션을 사용하여 [{{site.data.keyword.blockchainfull_notm}} Platform 서비스 인스턴스![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://cloud.ibm.com/catalog/services/ibm-blockchain-5-prod)를 작성해야 합니다.
 
 1. {{site.data.keyword.cloud_notm}} 계정으로 로그인하십시오. 계정이 없는 경우, **회원가입하기** 단추를 클릭하십시오.
 2. {{site.data.keyword.blockchain}} 네트워크를 저장할 Cloud Foundry 조직을 선택하십시오.
