@@ -20,7 +20,7 @@ Use these release notes that are grouped by date to learn about the latest chang
 {:shortdesc}
 
 
-## 6 May 2019
+## 9 May 2019
 
 **Introducing {{site.data.keyword.blockchainfull_notm}} Platform Console APIs**
 

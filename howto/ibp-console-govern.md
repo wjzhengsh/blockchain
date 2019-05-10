@@ -23,9 +23,6 @@ subcollection: blockchain
 After creating CAs, peers, orderers, organizations, and channels, you can use the console to update these components.
 {:shortdesc}
 
-If you are using the beta version of IBM Blockchain Platform, it is likely that some panels in your console will not match the current documentation, which is kept to date with the generally available service instance. To gain the benefits of all the latest functionality, you are encouraged at this time to provision a new GA service instance. To learn how to do that, see [Getting started with {{site.data.keyword.blockchainfull_notm}} Platform 2.0](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks).
-{: important}
-
 **Target audience:** This topic is designed for network operators who are responsible for creating, monitoring, and managing the blockchain network.
 
 ## How the {{site.data.keyword.cloud_notm}} Kubernetes Service interacts with the console
@@ -130,11 +127,6 @@ As we noted in our section on [How the {{site.data.keyword.cloud_notm}} Kubernet
 
 Making the CPU and memory of your ordering nodes roughly double the size of your peers, while not mandatory, is considered a best practice. If a Solo ordering node is overstressed, it might hit timeouts and start dropping transactions, requiring transactions to be resubmitted. This causes much greater harm to a network than a single peer struggling to keep up.
 {:important}
-
-<!--
-Making the CPU and memory of your ordering nodes roughly double the size of your peers, while not mandatory, is considered a best practice. If a Solo ordering node is overstressed, it might hit timeouts and start dropping transactions, requiring transactions to be resubmitted. This causes much greater harm to a network than a single peer struggling to keep up. In a Raft ordering service configuration, an overstressed leader node might stop sending heartbeat messages, triggering a leader election, and a temporary cessation of transaction ordering. Likewise, a follower node might miss messages and attempt to trigger a leader election where none is needed.
-{:important}
--->
 
 ## Reallocating resources
 {: #ibp-console-govern-reallocate-resources}
