@@ -21,7 +21,7 @@ subcollection: blockchain
 {: #whats-new}
 
 ## May 9, 2019
-{: #whats-new-9-08-2019}
+{: #whats-new-5-09-2019}
 
 {{site.data.keyword.blockchainfull_notm}} releases version 1.0.0 of the {{site.data.keyword.blockchainfull_notm}} Platform Visual Studio (VS) Code Extension. This developer toolkit contains the following key capabilities:
 
