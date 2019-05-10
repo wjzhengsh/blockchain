@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-05-09"
+lastupdated: "2019-05-06"
 
 ---
 
@@ -20,13 +20,15 @@ Use these release notes that are grouped by date to learn about the latest chang
 {:shortdesc}
 
 
-## 6 May 2019
+## 9 May 2019
+{: #05-09-2019}
 
 **Introducing {{site.data.keyword.blockchainfull_notm}} Platform Console APIs**
 
 APIs are now available to provision, edit, and delete peer, orderer, and CA nodes, making it possible to script the building of your blockchain network. Use the documentation in the [{{site.data.keyword.cloud_notm}} API documentation repository ![External link icon](images/external_link.svg "External link icon")](/apidocs/blockchain#introduction "Introduction") to learn more about the APIs and try them out. In addition, see the topic on [Building a network with APIs](/docs/services/blockchain?topic=blockchain-ibp-v2-apis) for instructions on how to use the APIs to build out your network.
 
 ## 17 April 2019
+{: #04-17-2019}
 
 **Ability to size and scale node resources**  
 
