@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -112,7 +112,7 @@ subcollection: blockchain
 ### 認証局 URL の取得
 {: #ca-operate-url}
 
-証明書を生成する要求および新規 ID を登録する要求では、CA URL をターゲットにする必要があります。 ご使用の CA URL は、{{site.data.keyword.cloud_notm}} Private コンソール UI を使用して見つけることができます。 以下のステップを実行するには、[クラスター管理者 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "クラスター管理者役割とアクション") である必要があります。
+証明書を生成する要求および新規 ID を登録する要求では、CA URL をターゲットにする必要があります。 ご使用の CA URL は、{{site.data.keyword.cloud_notm}} Private コンソール UI を使用して見つけることができます。 以下のステップを実行するには、[クラスター管理者 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/user_management/assign_role.html "クラスター管理者役割とアクション") である必要があります。
 
 1. {{site.data.keyword.cloud_notm}} Private コンソールにログインし、左上隅の**「メニュー」**アイコンをクリックします。
 2. **「ワークロード (Workload)」** > **「Helm リリース」**をクリックします。
@@ -153,12 +153,12 @@ subcollection: blockchain
 
 Fabric CA クライアントを使用して CA を操作できます。 ここでは、Fabric CA クライアントを使用して、組織に属する他のコンポーネントの ID をエンロールおよび登録する方法について説明します。 また、Fabric SDK を使用して前提条件ステップを実行することもできます。
 
-1. [Fabric CA クライアント ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric-ca.readthedocs.io/en/latest/users-guide.html#fabric-ca-client "Fabric CA クライアントのダウンロード") をローカル・ファイル・システムにダウンロードする必要があります。
+1. [Fabric CA クライアント ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/users-guide.html#fabric-ca-client "Fabric CA クライアントのダウンロード") をローカル・ファイル・システムにダウンロードする必要があります。
 
-  Fabric CA クライアントを入手する最も簡単な方法は、すべての Fabric ツール・バイナリーを直接ダウンロードすることです。 コマンド・ラインを使用してバイナリーをダウンロードするディレクトリーにナビゲートし、以下の [Curl ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/prereqs.html#install-curl "Curl") コマンドを実行して、バイナリーを取り出します。
+  Fabric CA クライアントを入手する最も簡単な方法は、すべての Fabric ツール・バイナリーを直接ダウンロードすることです。 コマンド・ラインを使用してバイナリーをダウンロードするディレクトリーにナビゲートし、以下の [Curl ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/prereqs.html#install-curl "Curl") コマンドを実行して、バイナリーを取り出します。
 
   ```
-  curl -sSL http://bit.ly/2ysbOFE | bash -s 1.2.1 1.2.1 -d -s
+  curl -sSL http://bit.ly/2ysbOFE | bash -s 1.4.0 1.4.0 -d -s
   ```
   {:codeblock}
 
@@ -257,6 +257,8 @@ tree
 │   └── msp
 │       ├── cacerts
 │       │   └── 9-30-250-70-30395-SampleOrgCA.pem
+│       ├── IssuerPublicKey
+│       ├── IssuerRevocationPublicKey
 │       ├── keystore
 │       │   └── 2a97952445b38a6e0a14db134645981b74a3f93992d9ddac54cb4b4e19cdf525_sk
 │       ├── signcerts
@@ -274,7 +276,7 @@ tree
 以下の手順では、編集してローカル・ファイル・システムに保存できる[テンプレート JSON 構成ファイル](/docs/services/blockchain/howto/CA_operate.html#ca-operate-config-file-template)を示します。また、CA を使用してこのファイルを完成させる方法について順を追って説明します。
 
 - {{site.data.keyword.cloud_notm}} Private に順序付けプログラムをデプロイする場合、または {{site.data.keyword.cloud_notm}} Private でホストされている共同事業体に接続するためにピアをデプロイする場合は、以下の手順に従ってください。
-- スターター・プランまたはエンタープライズ・プランに接続するためにピアをデプロイする場合は、代わりに[スターター・プランまたはエンタープライズ・プランに接続するための IBM Cloud Private でのピアのデプロイ](/docs/services/blockchain/howto/peer_deploy_icp.html#icp-peer-deploy)の手順に従ってください。 この手順のステップでは、{{site.data.keyword.blockchainfull_notm}} Platform で CA を使用して {{site.data.keyword.cloud_notm}} Private にピアをデプロイする方法について順を追って説明しています。
+- スターター・プランまたはエンタープライズ・プランに接続するためにピアをデプロイする場合は、代わりに[スターター・プランまたはエンタープライズ・プランに接続するために IBM Cloud Private でピアをデプロイする手順](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy)に従ってください。この手順のステップでは、{{site.data.keyword.blockchainfull_notm}} Platform で CA を使用して {{site.data.keyword.cloud_notm}} Private にピアをデプロイする方法について順を追って説明しています。
 
 ### 構成ファイル
 {: #ca-operate-config-file-template}
@@ -475,6 +477,8 @@ tree
 │   └── msp
 │       ├── cacerts
 │       │   └── 9-30-250-70-30395-SampleOrgCA.pem
+│       ├── IssuerPublicKey
+│       ├── IssuerRevocationPublicKey
 │       ├── keystore
 │       │   └── 2a97952445b38a6e0a14db134645981b74a3f93992d9ddac54cb4b4e19cdf525_sk
 │       ├── signcerts
@@ -505,6 +509,8 @@ tree
     └── msp
         ├── cacerts
         │   └── 9-30-250-70-30395-tlsca.pem
+        ├── IssuerPublicKey
+        ├── IssuerRevocationPublicKey
         ├── keystore
         │   └── 45a7838b1a91ddfe3d4d22a5a7f2639b868493bcce594af3e3ceb9c07899d117_sk
         ├── signcerts
@@ -606,7 +612,7 @@ fabric-ca-client register --caname tlsca --id.affiliation org1.department1 --id.
 
 #### クラスター・プロキシー IP アドレスの値の取得
 
-CA をデプロイした同じ {{site.data.keyword.cloud_notm}} Private クラスターに順序付けプログラムまたはピアをデプロイする場合は、順序付けプログラムまたはピアがデプロイされる {{site.data.keyword.cloud_notm}} Private クラスターに対する[クラスター管理者 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "クラスター管理者役割とアクション") 役割を持っていることを確認してください。 それから、[CA の構成](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-configuration-parms)時に使用したものと同じプロキシー IP を入力します。 順序付けプログラムまたはピアを別のクラスターにデプロイする場合は、以下のステップを実行して、{{site.data.keyword.cloud_notm}} Private コンソールからクラスター・プロキシー IP アドレスの値を取得できます。
+CA をデプロイした同じ {{site.data.keyword.cloud_notm}} Private クラスターに順序付けプログラムまたはピアをデプロイする場合は、順序付けプログラムまたはピアがデプロイされる {{site.data.keyword.cloud_notm}} Private クラスターに対する[クラスター管理者 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/user_management/assign_role.html "クラスター管理者役割とアクション") 役割を持っていることを確認してください。 それから、[CA の構成](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-configuration-parms)時に使用したものと同じプロキシー IP を入力します。 順序付けプログラムまたはピアを別のクラスターにデプロイする場合は、以下のステップを実行して、{{site.data.keyword.cloud_notm}} Private コンソールからクラスター・プロキシー IP アドレスの値を取得できます。
 
 1. {{site.data.keyword.cloud_notm}} Private コンソールにログインします。 左側のナビゲーション・パネルで**「プラットフォーム」**、**「ノード」**の順にクリックし、クラスターで定義されているノードを表示します。
 2. `proxy` 役割を持つノードをクリックし、テーブルから`「ホスト IP」`の値をコピーします。
@@ -696,7 +702,7 @@ CA をデプロイした同じ {{site.data.keyword.cloud_notm}} Private クラ�
 ## メンバーシップ・サービス・プロバイダー (MSP)
 {: #ca-operate-msp}
 
-{{site.data.keyword.blockchainfull_notm}} Platform のコンポーネントは、メンバーシップ・サービス・プロバイダー (MSP) を介して ID を使用します。 MSP は、CA が発行する証明書を許可および役割に関連付けます。 MSP について詳しくは、[Hyperledger Fabric 資料のメンバーシップのトピック ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/latest/membership/membership.html "Hyperledger Fabric 資料のメンバーシップのトピック") を参照してください。
+{{site.data.keyword.blockchainfull_notm}} Platform のコンポーネントは、メンバーシップ・サービス・プロバイダー (MSP) を介して ID を使用します。 MSP は、CA が発行する証明書を許可および役割に関連付けます。 MSP について詳しくは、[Hyperledger Fabric 資料のメンバーシップのトピック ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/membership/membership.html "Hyperledger Fabric 資料のメンバーシップのトピック") を参照してください。
 
 MSP フォルダーには、Fabric コンポーネントで使用される定義済みの構造が必要です。 Fabric CA クライアントは、以下の MSP フォルダーを作成することにより、この構造を確立します。
 
@@ -715,7 +721,7 @@ MSP フォルダーには、Fabric コンポーネントで使用される定義
 - **admincerts:** このフォルダーには、この組織またはコンポーネントの管理者のリストが含まれています。 コマンド・ラインまたは SDK からリモート・ピアを操作する場合は、署名付き証明書をこのフォルダーにアップロードする必要があります。 Fabric CA クライアントを使用する場合は、MSP に、管理者証明書として認識される対応する署名付き証明書を含む admincerts フォルダーも必要です。
 - **tls:** その他のネットワーク・コンポーネントとの通信に使用する TLS 証明書を、このフォルダーに格納します。
 
-MSP の構造について詳しくは、Hyperledger Fabric 資料で[メンバーシップ ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/latest/membership/membership.html "メンバーシップ") および[メンバーシップ・サービス・プロバイダー ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/latest/msp.html "メンバーシップ・サービス・プロバイダー") について参照してください。
+MSP の構造について詳しくは、Hyperledger Fabric 資料で[メンバーシップ ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/membership/membership.html "メンバーシップ") および[メンバーシップ・サービス・プロバイダー ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/msp.html "メンバーシップ・サービス・プロバイダー") について参照してください。
 
 
 ## CA ログの表示
@@ -740,14 +746,14 @@ MSP の構造について詳しくは、Hyperledger Fabric 資料で[メンバ�
 
    `kubectl logs` コマンドについて詳しくは、[Kubernetes の資料 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs “Getting Started”) を参照してください。
 
-- または、[{{site.data.keyword.cloud_notm}} Private クラスター管理コンソール](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/troubleshoot/events.html)を使用して、デプロイメント・イベントおよびログにアクセスすることもできます。この場合、ログは Kibana で開きます。
+- または、[{{site.data.keyword.cloud_notm}} Private クラスター管理コンソール](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/troubleshoot/events.html)を使用して、デプロイメント・イベントおよびログにアクセスすることもできます。この場合、ログは Kibana で開きます。
 
   **注:** Kibana でログを表示する場合、`「No results found」`という応答を受け取ることがあります。 この状態は、{{site.data.keyword.cloud_notm}} Private がワーカー・ノードの IP アドレスをそのホスト名として使用する場合に起こることがあります。 この問題を解決するには、パネルの上部で `node.hostname.keyword` で始まるフィルターを削除すると、ログが表示されるようになります。
 
 ## セキュリティー
 {: #ca-operate-security}
 
-発行する証明書の数が限られる場合 (ピア、Node.js サーバー、クライアント・アプリケーションだけなど) は、 CA をオフラインのままにすることにより、セキュリティーを強化し、CA 鍵素材の暗号漏えいを防ぐことができます。しかし、証明書をユーザーにオンデマンドで発行する必要がある場合は、CA をオンラインにする必要があります。可能な場合は、[HSM](https://console.test.cloud.ibm.com/docs/services/blockchain/glossary.html#glossary-hsm) を使用して CA 管理者秘密鍵を保護することを強くお勧めします。
+発行する証明書の数が限られる場合 (ピア、Node.js サーバー、クライアント・アプリケーションだけなど) は、 CA をオフラインのままにすることにより、セキュリティーを強化し、CA 鍵素材の暗号漏えいを防ぐことができます。 しかし、証明書をユーザーにオンデマンドで発行する必要がある場合は、CA をオンラインにする必要があります。 可能な場合は、[HSM](https://console.test.cloud.ibm.com/docs/services/blockchain/glossary.html#glossary-hsm) を使用して CA 管理者秘密鍵を保護することを強くお勧めします。
 
 ## トラブルシューティング
 {: #ca-operate-troubleshooting}

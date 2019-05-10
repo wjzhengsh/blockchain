@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -34,11 +34,9 @@ subcollection: blockchain
 * 권한 부여 없는 액세스, 악성코드 및 변조 저항, 100% 암호화 및 규제 산업의 민감한 데이터가 있는 네트워크에 대한 더 많은 기능으로 강화된 보안 스택.
 * 24시간마다 엔터프라이즈 네트워크가 오프사이트로 백업됩니다. 재해 발생 시, 이러한 네트워크가 동일한 사이트 또는 대체 사이트로 복원될 수 있습니다.
 
-엔터프라이즈 플랜은 {{site.data.keyword.cloud_notm}}의 플랫폼 서비스이며 서비스 레벨 계약(SLA)의 [{{site.data.keyword.cloud_notm}} 서비스 이용 약관![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](http://www-03.ibm.com/software/sla/sladb.nsf/sla/bm "{{site.data.keyword.cloud_notm}} 서비스 이용 약관")을 준수합니다. 엔터프라이즈 플랜 네트워크는 지리적으로 구분된 데이터 센터의 **여러 환경** 간에 프로비저닝됩니다.
-
 **참고:**
-- {{site.data.keyword.blockchainfull_notm}} Platform 엔터프라이즈 플랜에서는 프로덕션 환경을 제공합니다. 개발 및 테스트 환경이 필요한 경우 [스타터 플랜 정보](/docs/services/blockchain/starter_plan.html#starter-plan-about)를 참조하십시오.
-- {{site.data.keyword.blockchainfull_notm}} Platform은 {{site.data.keyword.cloud_notm}}의 플랫폼 서비스이며 모든 멤버십 오퍼링은 서비스 레벨 계약(SLA)의 [{{site.data.keyword.cloud_notm}} 서비스 이용 약관 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](http://www-03.ibm.com/software/sla/sladb.nsf/sla/bm "{{site.data.keyword.cloud_notm}} 서비스 이용 약관")을 따릅니다. 엔터프라이즈 플랜 네트워크는 지리적으로 구분된 데이터 센터의 **여러 환경** 간에 프로비저닝됩니다.
+- 엔터프라이즈 플랜에서는 프로덕션 환경을 제공합니다. 개발 및 테스트 환경이 필요한 경우 [스타터 플랜 정보](/docs/services/blockchain/starter_plan.html#starter-plan-about)를 참조하십시오.
+- {{site.data.keyword.blockchainfull_notm}} Platform은 {{site.data.keyword.cloud_notm}}의 플랫폼 서비스이며 모든 멤버십 오퍼링은 서비스 레벨 계약(SLA)의 [{{site.data.keyword.cloud_notm}} 서비스 이용 약관 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](http://www-03.ibm.com/software/sla/sladb.nsf/sla/bm "{{site.data.keyword.cloud_notm}} 서비스 이용 약관")을 따릅니다. 엔터프라이즈 플랜 네트워크는 단일 지역의 데이터 센터에서 프로비저닝됩니다. 사용 가능한 지역의 목록은 [{{site.data.keyword.blockchainfull_notm}} Platform 위치](/docs/services/blockchain?topic=blockchain-ibp-regions-locations#ibp-regions-locations)를 참조하십시오.
 
 네트워크를 시작하려는 구성원을 위해 IBM에서는 네트워크를 설정하고 프로비저닝하기 위한 주요 단계를 통해 네트워크 개시자를 안내하는 그래픽 사용자 인터페이스를 제공합니다. 여기에는 다른 구성원 초대 및 통제 규칙 설정이 포함됩니다. 자세한 정보는 [엔터프라이즈 플랜 네트워크 통제](/docs/services/blockchain/get_start.html#getting-started-with-enterprise-plan)를 참조하십시오. 네트워크가 배치된 후, 대화식 그래픽 사용자 인터페이스인 네트워크 모니터는 네트워크의 상태 및 활동을 모니터링하고 새 배치, 구성원 추가 또는 제거, 체인코드 라이프사이클 및 채널 관리를 포함하는 주요 네트워크 활동을 관리하며 기술 지원을 찾을 수 있습니다. 자세한 정보는 [네트워크 모니터 사용](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard)을 참조하십시오.
 
@@ -59,7 +57,7 @@ Fabric CA는 엔터프라이즈 플랜이 제공되는 인증 기관입니다. �
 
 결정해야 하는 유일한 요소는 네트워크에 필요한 피어의 크기입니다. 이 결정은 필요한 채널의 수와 함께 채널당 워크로드, 메모리 사용량 및 디스크 공간(스토리지)을 기반으로 합니다.
 
-안정된 프로덕션 또는 거의 프로덕션 레벨인 배치를 위해 엔터프라이즈 플랜을 사용해야 합니다. 테스트를 위해서는 [스타터 플랜](/docs/services/blockchain/starter_plan.html#starter-plan-about) 또는 [로컬로 Docker 이미지 설치](http://hyperledger-fabric.readthedocs.io/en/release-1.1/build_network.html)를 사용하십시오.
+안정된 프로덕션 또는 거의 프로덕션 레벨인 배치를 위해 엔터프라이즈 플랜을 사용해야 합니다. 테스트를 위해서는 [스타터 플랜](/docs/services/blockchain/starter_plan.html#starter-plan-about) 또는 [로컬로 Docker 이미지 설치](http://hyperledger-fabric.readthedocs.io/en/release-1.2/build_network.html)를 사용하십시오.
 
 <!--- The Enterprise plan provides the ordering service and CA. The membership fee is $1,000, and a per peer fee of $1,000 that is associated with the network. If you want to have high availability (HA), you must purchase an additional peer to provide the HA capabilities. For example, one organization (associated membership fee of $1,000) of two peers ($1,000 X 2 peers) with HA ($1,000 X 2 HA peers) requires a monthly charge of $5,000.  --->
 

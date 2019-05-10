@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018,2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-17"
 
 subcollection: blockchain
 
@@ -37,7 +37,8 @@ Las redes del Plan empresarial ofrecen las siguientes características preparada
 
 Antes de migrar su red del Plan inicia a una red del Plan empresarial, lea las siguientes consideraciones.
 
-- **Precios:** el coste mensual para su organización de utilizar una red del Plan empresarial incluye 1000 $ de cuota de miembro por instancia a y 1000 $ de cuota por igual. Para obtener más información, consulte [Precios del Plan empresarial](/docs/services/blockchain/howto/pricing.html#ibp-pricing-enterprise-plan).
+- **Precios:** el coste mensual para su organización de utilizar una red del Plan empresarial incluye 1000 $ de cuota de miembro por instancia a y 1000 $ de cuota por igual. Para obtener más información, consulte
+[Precios del Plan empresarial](/docs/services/blockchain/howto/pricing.html#ibp-pricing-enterprise-plan).
 - **Versión de Hyperledger Fabric:** las redes del Plan empresarial se ejecutan en Hyperledger Fabric v1.1. Las redes del Plan inicial se ejecutan en Fabric v1.2.
 - **Recursos afectados:** código de encadenamiento (contratos inteligentes), aplicaciones cliente. De nuevo, tenga en cuenta si el código de encadenamiento hace uso de un componente de Fabric v1.2 o de una función que no es compatible con las redes v1.1.
 - **Tiempo necesario:** tardará al menos medio día en migrar una red básica del Plan inicial a un Plan empresarial.

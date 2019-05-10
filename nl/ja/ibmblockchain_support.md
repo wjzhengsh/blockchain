@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-17"
 
 subcollection: blockchain
 
@@ -55,13 +55,13 @@ subcollection: blockchain
   [{{site.data.keyword.blockchainfull_notm}} Service の資料](/docs/services/blockchain/index.html#get-started-ibp)では、{{site.data.keyword.blockchainfull_notm}} Platform を開始する方法を説明しています。 左側のナビゲーターから対応するトピックを見つけるか、上部の検索機能を使用して用語を検索できます。
 
 **{{site.data.keyword.IBM_notm}} dWAnswers**
-[{{site.data.keyword.IBM_notm}} dWAnswers ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://developer.ibm.com/answers/smartspace/blockchain/ "Blockchain 領域での質問と回答") は、{{site.data.keyword.blockchainfull_notm}} Platform と Hyperledger Fabric のユーザーのコミュニティー・フォーラムであり、主に {{site.data.keyword.IBM_notm}} の専門家によって監視されています。 過去に投稿された質問への回答を探したり、新しい質問を送信したりできます。 新しい質問には必ずキーワード **blockchain** を含めてください。
+[{{site.data.keyword.IBM_notm}} dWAnswers ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://developer.ibm.com/answers/smartspace/blockchain/index.html "Blockchain 領域での質問と回答") は、{{site.data.keyword.blockchainfull_notm}} Platform と Hyperledger Fabric のユーザーのコミュニティー・フォーラムであり、主に {{site.data.keyword.IBM_notm}} の専門家によって監視されています。 過去に投稿された質問への回答を探したり、新しい質問を送信したりできます。 新しい質問には必ずキーワード **blockchain** を含めてください。
 
 **サンプル・アプリケーション**
 [サンプル・アプリケーション ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://github.com/ibm-blockchain "IBM Blockchain サンプル・アプリケーション") の **Blockchain サンプル・アプリケーション**には、アプリケーションの開発を支援するガイダンスおよびサンプル・コード・スニペットが用意されています。
 
 **Hyperledger Fabric リソース**
-[Hyperledger Fabric の資料 ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/latest/ "Hyperledger Fabric")、[Fabric コミュニティー Wiki ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://wiki.hyperledger.org/projects/fabric "Fabric コミュニティー Wiki")、および [Fabric Jira ダッシュボード ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://jira.hyperledger.org/secure/Dashboard.jspa?selectPageId=10104 "Fabric Jira ダッシュボード") で、Fabric スタックに関する詳細を提供します。
+  [Hyperledger Fabric の資料 ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/ "Hyperledger Fabric")、[Fabric コミュニティー Wiki ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://wiki.hyperledger.org/display/fabric "Fabric コミュニティー Wiki")、および [Fabric Jira ダッシュボード ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://jira.hyperledger.org/secure/Dashboard.jspa?selectPageId=10104 "Fabric Jira ダッシュボード") で、Fabric スタックに関する詳細を提供します。
 
   また、[Rocket.Chat ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://chat.hyperledger.org/channel/fabric "Fabric Rocket.Chat チャネル") で Fabric の専門家と対話して、Fabric に関する質問への回答を得ることもできます。
 
@@ -71,7 +71,7 @@ subcollection: blockchain
 ## サポート Case の送信
 {: #blockchain-support-cases}
 
-スターター・プランまたはエンタープライズ・プランに関連する問題の場合は、[{{site.data.keyword.cloud_notm}} サービス・ポータル ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://ibm.biz/ibmcloudsupport "IBM Cloud サービス・ポータル") でサポート・ケースを送信できます。
+スターター・プランまたはエンタープライズ・プランに関連する問題の場合は、[{{site.data.keyword.cloud_notm}} サービス・ポータル ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://cloud.ibm.com/unifiedsupport/supportcenter "サポート") でサポート・ケースを送信できます。
 
 Hyperledger Fabric チェーンコード、Hyperledger Composer、またはアプリケーションについて支援が必要な場合は、上記のコミュニティー・リソースを活用するか、[{{site.data.keyword.blockchainfull_notm}} サービス ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/blockchain/services "Blockchain 戦略を {{site.data.keyword.blockchainfull_notm}} サービスでビジネス上の結果に変える") を使用してください。 Hyperledger Composer は、デモおよび PoC にのみ使用することをお勧めします。 {{site.data.keyword.IBM_notm}} では、実動の Hyperledger Composer を使用するネットワークをサポートしていません。これには Composer CLI、JavaScript API、REST サーバー、および Web Playground が含まれます。
 {:note}
@@ -88,7 +88,7 @@ Hyperledger Fabric チェーンコード、Hyperledger Composer、またはア�
 
 サポート・ケースを送信するには、以下の手順に従います。
 
-1. {{site.data.keyword.IBM_notm}} ID を使用して、[{{site.data.keyword.cloud_notm}} サービス・ポータル ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://ibm.biz/ibmcloudsupport "IBM Cloud サービス・ポータル") にログインします。
+1. {{site.data.keyword.IBM_notm}} ID を使用して、[{{site.data.keyword.cloud_notm}} サービス・ポータル ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://cloud.ibm.com/unifiedsupport/supportcenter "サポート") にログインします。
 2. ページの右側の**「お困りですか? (Need more help?)」**で、**「ケースの作成 (Create a Case)」**をクリックします。
 3. **「Create Case」**フォームの、少なくとも以下のフィールドに情報を入力します。
   - ケースのタイプには**「テクニカル (Technical)」**を選択します。

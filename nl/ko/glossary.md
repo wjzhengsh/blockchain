@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-17"
 
 subcollection: blockchain
 
@@ -18,7 +18,7 @@ subcollection: blockchain
 # 용어집
 {: #glossary}
 
-이 주제에서는 이 문서에 나오는 {{site.data.keyword.blockchainfull}} 플랫폼 특정 용어를 정의합니다. 용어와 Hyperledger Fabric 개념과 관련된 용어의 용어집에 대해 더 자세히 알아보려면 [Hyperledger Fabric 용어집 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](http://hyperledger-fabric.readthedocs.io/en/release-1.2/glossary.html)을 참조하십시오.
+이 주제에서는 이 문서에 나오는 {{site.data.keyword.blockchainfull}} 플랫폼 특정 용어를 정의합니다. 용어와 Hyperledger Fabric 개념과 관련된 용어의 용어집에 대해 더 자세히 알아보려면 [Hyperledger Fabric 용어집 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](http://hyperledger-fabric.readthedocs.io/en/release-1.4/glossary.html)을 참조하십시오.
 {:shortdesc}
 
 ## 구성원(Member)
@@ -58,10 +58,6 @@ subcollection: blockchain
 {: #glossary-block}
 순서 지정된 트랜잭션 세트이며, 체인의 이전 블록에 암호를 사용하여 링크되어 있습니다.
 
-## 비즈니스 네트워크(Business network)
-{: #glossary-business-network}
-블록체인 네트워크의 정의이며, 블록체인 솔루션을 위한 데이터 모델, 트랜잭션 로직 및 액세스 제어 규칙이 포함됩니다. [Hyperledger Composer](/docs/services/blockchain/glossary.html#glossary-composer)를 사용하여 비즈니스 네트워크 정의를 작성합니다. 비즈니스 네트워크 정의는 배치 가능 **.bna**(비즈니스 네트워크 아카이브) 파일로 패키지됩니다.
-
 ## 사용자(User)
 {: #glossary-user}
 사용자는 기존 구성원에 대한 신뢰 관계를 통해 원장에 간접적으로 액세스할 수 있는 블록체인 네트워크의 참가자입니다.
@@ -80,7 +76,7 @@ subcollection: blockchain
 
 ## 세계 상태(World state)
 {: #glossary-world-state}
-[현재 상태(Current state)]((/docs/services/blockchain/glossary.html#glossary-current-state)를 참조하십시오.
+[현재 상태(Current state)](/docs/services/blockchain/glossary.html#glossary-current-state)를 참조하십시오.
 
 ## 순서 지정자(Orderer)
 {: #glossary-orderer}
@@ -167,20 +163,15 @@ subcollection: blockchain
 
 ## Gossip
 {: #glossary-gossip}
-Hyperledger Fabric을 사용하면 피어가 순서 지정 서비스에 의존하지 않고 서로 중요한 네트워크 정보를 수집할 수 있습니다. [gossip 데이터 전파 프로코톨 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.1/gossip.html)에서는 피어에서 서로 메시지를 교환하는 안전하고 신뢰할 수 있으며 확장 가능한 방법을 제공합니다. 예를 들어, 지연, 네트워크 가동 중단 또는 다른 이유로 인해 피어에서 일부 블록이 누락된 경우 gossip 메시징을 사용하여 누락된 블록을 보유하고 있는 다른 피어와 연락하여 현재 원장 상태와 동기화할 수 있습니다.
+Hyperledger Fabric을 사용하면 피어가 순서 지정 서비스에 의존하지 않고 서로 중요한 네트워크 정보를 수집할 수 있습니다. [gossip 데이터 전파 프로코톨 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/gossip.html)에서는 피어에서 서로 메시지를 교환하는 안전하고 신뢰할 수 있으며 확장 가능한 방법을 제공합니다. 예를 들어, 지연, 네트워크 가동 중단 또는 다른 이유로 인해 피어에서 일부 블록이 누락된 경우 gossip 메시징을 사용하여 누락된 블록을 보유하고 있는 다른 피어와 연락하여 현재 원장 상태와 동기화할 수 있습니다.
 
 ## HSM
 {: #glossary-hsm}
 하드웨어 보안 모듈(Hardware Security Module)입니다. On-Demand 암호화, 키 관리 및 키 스토리지를 관리 서비스로 제공합니다. HSM은 암호화 처리의 리소스 집약적 태스크를 처리하는 물리적 어플라이언스이며 애플리케이션에 대한 대기 시간을 줄입니다. 자세한 정보는 [하드웨어 보안 모듈 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/cloud/hardware-security-module)을 참조하십시오.
 
-## Hyperledger Composer
-{: #glossary-composer}
-**IBM은 Composer CLI, JavaScript API, REST 서버 및 웹 플레이그라운드를 포함하여 프로덕션에서 Hyperledger Composer를 사용하는 네트워크를 지원하지 않습니다.**
-[Hyperledger Composer ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://hyperledger.github.io/composer/latest/introduction/introduction.html)는 오픈 소스 개발 도구 세트입니다. 이는 맞춤형 모델링 언어를 사용하며, 이 언어는 JavaScript 트랜잭션 및 액세스 제어 규칙과 결합되어 전체 블록체인 비즈니스 네트워크를 모델링합니다. 실제 블록체인에 무언가를 배치하기 전에 Hyperledger Composer를 사용하여 기존 시스템 및 데이터를 블록체인 애플리케이션과 통합할 수 있습니다.
-
 ## Hyperledger Fabric
 {: #glossary-hyperledger-fabric}
-[Hyperledger Fabric ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/)은 모듈식 아키텍처로 블록체인 애플리케이션 또는 솔루션을 개발하기 위한 기초적인 역할을 하도록 Linux Foundation이 호스팅하는 비즈니스 블록체인 프레임워크입니다. 합의 및 멤버십 서비스와 같은 Hyperledger Fabric 컴포넌트는 플러그 앤 플레이입니다.
+[Hyperledger Fabric ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](http://hyperledger-fabric.readthedocs.io/en/release-1.4/)은 모듈식 아키텍처로 블록체인 애플리케이션 또는 솔루션을 개발하기 위한 기초적인 역할을 하도록 Linux Foundation이 호스팅하는 비즈니스 블록체인 프레임워크입니다. 합의 및 멤버십 서비스와 같은 Hyperledger Fabric 컴포넌트는 플러그 앤 플레이입니다.
 
 ## Kafka
 {: #glossary-kafka}

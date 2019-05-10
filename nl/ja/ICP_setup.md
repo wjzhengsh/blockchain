@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-03"
 
 subcollection: blockchain
 
@@ -47,7 +47,7 @@ echo "vm.max_map_count=262144” | tee -a /etc/sysctl.conf
 
 - {{site.data.keyword.cloud_notm}} Private は [Kubernetes ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://kubernetes.io/docs/tutorials/kubernetes-basics/ "Learn Kubernetes Basics") を使用してコンテナー化アプリケーションを管理します。 各ノードの `/etc/hosts` ファイルでホスト名が構成されていない場合、Kubernetes ドメイン・ネーム・サーバー (DNS) は失敗します。 [クラスター内の各ノードの IP アドレス、ホスト名、および短縮名 ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/installing/prep_cluster.html "クラスターの構成") を各ノードの `/etc/hosts` ファイルに挿入します。
 
-- [IPv6 は {{site.data.keyword.cloud_notm}} Private ではサポートされません ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/getting_started/known_issues.html#ipv6 "IPv6 はサポートされない")。 {{site.data.keyword.cloud_notm}} Private クラスター内の DNS サービスに関する問題を回避するには、以下の行の先頭に `#` 記号を付けてこの行をコメント化し、各ノードの `/etc/hosts` ファイルの IPv6 設定を無効にします。
+- [IPv6 は {{site.data.keyword.cloud_notm}} Private ではサポートされません ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/getting_started/known_issues.html#ipv6 "IPv6 はサポートされない")。 {{site.data.keyword.cloud_notm}} Private クラスター内の DNS サービスに関する問題を回避するには、以下のように行の先頭に `#` 記号を付けてこの行をコメント化し、各ノードの `/etc/hosts` ファイルの IPv6 設定を無効にします。
   ```
   #::1  localhost ip6-localhost ip6-loopback
   ```
@@ -56,7 +56,7 @@ echo "vm.max_map_count=262144” | tee -a /etc/sysctl.conf
 ### 必要なリソース
 {: #icp-setup-resources}
 
-{{site.data.keyword.cloud_notm}} Private システムが最小ハードウェア・リソース要件を満たしていることを確認します。
+{{site.data.keyword.cloud_notm}} Private システムが各 Fabric ランタイム・コンポーネントの最小ハードウェア・リソース要件を満たしていることを確認します。
 
 | コンポーネント | vCPU | RAM | データ・ストレージ用ディスク |
 |-----------|------|-----|-----------------------|
@@ -72,7 +72,7 @@ echo "vm.max_map_count=262144” | tee -a /etc/sysctl.conf
 #### ストレージについての考慮事項
 {: #icp-setup-storage-considerations}
 
-* コンポーネントが使用するストレージを設定する必要があります。 デフォルト設定を使用すると、ピアの Helm チャートによって、ピア・データ用に `my-data-pvc` という名前の新しい Persistent Volume Claim が作成されます。 台帳データベースとして CouchDB を選択すると、Helm チャートによって、台帳データベース用に `statedb-pvc` という名前の別の Persistent Volume Claim が作成されます。
+* コンポーネントが使用するストレージを設定する必要があります。 デフォルト設定を使用すると、ピアの Helm チャートによって、ピア・データ用に `my-data-pvc` という名前の新しい永続ボリューム・クレームが作成されます。 台帳データベースとして CouchDB を選択すると、Helm チャートによって、台帳データベース用に `statedb-pvc` という名前の別の永続ボリューム・クレームが作成されます。
 * デフォルトのストレージ設定を使用しない場合は、{{site.data.keyword.cloud_notm}} Private のインストール時に*新しい* storageClass がセットアップされたことを確認します。セットアップされていない場合は、デプロイの前に Kubernetes システム管理者が storageClass を作成する必要があります。
 * [動的プロビジョニング ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://kubernetes.io/docs/concepts/storage/dynamic-provisioning/ "動的ボリューム・プロビジョニング") は、{{site.data.keyword.cloud_notm}} Private の amd64 ノードにのみ使用可能です。 したがって、クラスターに s390x と amd64 ワーカー・ノードが混在している場合は、動的プロビジョニングを使用できません。
 * 動的プロビジョニングを使用しない場合は、[永続ボリューム ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://kubernetes.io/docs/concepts/storage/persistent-volumes/ "永続ボリューム") を作成し、Kubernetes Persistent Volume Claim (PVC) バインド処理を改善するために使用できるラベルを使用してセットアップする必要があります。
@@ -97,4 +97,92 @@ echo "vm.max_map_count=262144” | tee -a /etc/sysctl.conf
 
 2. {{site.data.keyword.cloud_notm}} Private CLI [3.1.0 ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/manage_cluster/install_cli.html) をインストールして、CA をインストールし、操作します。
 
-{{site.data.keyword.cloud_notm}} Private のインストール後、[{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private Helm チャート](/docs/services/blockchain/howto/helm_install_icp.html#helm-install)を {{site.data.keyword.cloud_notm}} Private クラスターに引き続きインポートできます。
+3. ターゲット名前空間のポッド・セキュリティー・ポリシーをセットアップします。[次のセクション](/docs/services/blockchain/howto/ICP_setup.html#icp-setup-psp)に説明があります。
+
+{{site.data.keyword.cloud_notm}} Private をインストールして、ポッド・セキュリティー・ポリシーをターゲット名前空間にバインドしたら、[{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private Helm チャート](/docs/services/blockchain/howto/helm_install_icp.html#helm-install)を {{site.data.keyword.cloud_notm}} Private クラスターにインポートする作業に進むことができます。
+
+## PodSecurityPolicy の要件
+{: #icp-setup-psp}
+
+Helm チャートを使用してコンポーネントをデプロイする前に、新しいターゲット名前空間を作成し、[PodSecurityPolicy ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://kubernetes.io/docs/concepts/policy/pod-security-policy/ "ポッド・セキュリティー・ポリシー") をその名前空間にバインドする必要があります。事前定義された PodSecurityPolicy を選択するか、クラスター管理者にカスタム PodSecurityPolicy の作成を依頼してください。
+- 事前定義された PodSecurityPolicy 名: [`ibm-privileged-psp`](https://ibm.biz/cpkspec-psp)
+- カスタム PodSecurityPolicy 定義:
+  ```
+  apiVersion: extensions/v1beta1
+  kind: PodSecurityPolicy
+  metadata:
+    name: ibm-blockchain-platform-psp
+  spec:
+    hostIPC: false
+    hostNetwork: false
+    hostPID: false
+    privileged: true
+    allowPrivilegeEscalation: true
+    readOnlyRootFilesystem: false
+    seLinux:
+      rule: RunAsAny
+    supplementalGroups:
+      rule: RunAsAny
+    runAsUser:
+      rule: RunAsAny
+    fsGroup:
+      rule: RunAsAny
+    requiredDropCapabilities:
+    - ALL
+    allowedCapabilities:
+    - NET_BIND_SERVICE
+    - CHOWN
+    - DAC_OVERRIDE
+    - SETGID
+    - SETUID
+    volumes:
+    - '*'
+  ```
+  {:codeblock}
+- カスタム PodSecurityPolicy のカスタム ClusterRole:
+  ```
+  apiVersion: rbac.authorization.k8s.io/v1
+  kind: ClusterRole
+  metadata:
+    annotations:
+    name: ibm-blockchain-platform-clusterrole
+  rules:
+  - apiGroups:
+    - extensions
+    resourceNames:
+    - ibm-blockchain-platform-psp
+    resources:
+    - podsecuritypolicies
+    verbs:
+    - use
+  - apiGroups:
+    - ""
+    resources:
+    - secrets
+    verbs:
+    - create
+    - delete
+    - get
+    - list
+    - patch
+    - update
+    - watch
+  ```
+  {:codeblock}
+
+- カスタム ClusterRole のカスタム ClusterRoleBinding:
+  ```
+  apiVersion: rbac.authorization.k8s.io/v1
+  kind: ClusterRoleBinding
+  metadata:
+   name: ibm-blockchain-platform-clusterrolebinding
+  roleRef:
+   apiGroup: rbac.authorization.k8s.io
+   kind: ClusterRole
+   name: ibm-blockchain-platform-clusterrole
+  subjects:
+  - kind: ServiceAccount
+    name: default
+    namespace: default
+  ```
+  {:codeblock}

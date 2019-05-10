@@ -2,8 +2,7 @@
 
 copyright:
   years: 2019
-
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -75,11 +74,12 @@ Como parte de esta guía de aprendizaje, su CA emite las claves públicas y priv
 
 Siga los pasos siguientes desde la consola:  
 
-1. Vaya a separador **Nodos** de la izquierda y pulse **Añadir entidad emisora de certificados**. Los paneles laterales de cuatro pasos le permitirán personalizar la CA que desea crear y la organización para la que esta CA emitirá claves.
+1. Vaya a separador **Nodos** de la izquierda y pulse **Añadir entidad emisora de certificados**. Los paneles laterales le permitirán personalizar la CA que desea crear y la organización para la que esta CA emitirá claves.
 2. Pulse **{{site.data.keyword.cloud_notm}}** en **Crear entidad emisora de certificados**.
 3. Utilice el segundo panel lateral para dar a la CA un **nombre de visualización**. El valor recomendado para esta CA es `CA de Org2`.
 4. En el panel siguiente, especifique las credenciales de administrador de CA especificando el **ID de administrador** `admin` y proporcionando el secreto que desee, aunque recomendamos utilizar `adminpw` en esta guía de aprendizaje.
-5. Pulse **Siguiente** y, a continuación, **Añadir entidad emisora de certificados**.
+5. Si utiliza un clúster de pago, en el panel siguiente, tendrá la oportunidad de configurar la asignación de recursos del nodo. A efectos de esta guía de aprendizaje, puede aceptar todos los valores predeterminados y pulsar **Siguiente**. Si desea obtener más información sobre cómo asignar recursos al nodo, consulte este tema sobre [Asignación de recursos](/docs/services/blockchain?topic=blockchain-ibp-console-govern#ibp-console-govern-allocate-resources). Si utiliza un clúster gratuito, ya podrá ver la página **Resumen**.
+6. Revise la página Resumen y luego pulse **Añadir entidad emisora de certificados**.
 
 **Tarea: creación de la CA de la organización igual**
 
@@ -90,6 +90,9 @@ Siga los pasos siguientes desde la consola:
 *Figura 2. Creación de la CA de la organización igual*  
 Después de desplegar la CA, la utilizará cuando cree el MSP de la organización, registre usuarios y cree su punto de entrada en una red, el **igual**.
 
+Es posible que los usuarios avanzados tengan ya su propia CA y que no deseen crear una nueva CA en la consola. Si la CA existente puede emitir certificados en formato `X.509`, puede utilizar su propia CA de terceros en lugar de crear una nueva aquí. Consulte este tema sobre la
+[Utilización de una CA de terceros con su igual o clasificador](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-identities) para obtener más información.
+
 ### Utilización de la CA para registrar identidades
 {: #ibp-console-join-network-use-CA-org2}
 
@@ -98,12 +101,16 @@ Cada nodo o aplicación que desee crear necesita claves públicas y privadas par
 * **Un administrador de la organización** Esta identidad le permite trabajar con nodos utilizando la consola de la plataforma.
 * **Una identidad igual** Esta identidad le permitirá desplegar un igual.
 
+En función de su tipo de clúster, el despliegue de la CA puede tardar hasta diez minutos. El cuadrado de color verde en el mosaico de la CA indica que está "En ejecución" y que se puede utilizar para registrar identidades. Antes de continuar con los pasos siguientes para registrar identidades, debe esperar a que el estado de la CA sea "En ejecución".
+{:important}
+
 Para generar estos certificados, siga los pasos siguientes:
 
-1. En la consola, utilice el separador **Nodos** para ir a la `CA de Org2` que ha creado.
-2. Después de seleccionar la CA, tendrá que registrar un administrador para esta organización, `org2`, además de una identidad para el propio igual. Ya debería ver una identidad en esta página; es el administrador que ha creado para la CA. Para registrar nuestros nuevos usuarios, pulse el botón **Registrar usuario**.
+1. En la consola, pulse el separador **Nodos**. Cuando el indicador de estado de la esquina superior derecha de `Org2 CA` sea de color verde y `En ejecución`, pulse sobre el mosaico para abrirlo.
+2. Después de pulsar sobre la CA para abrirla, deberá registrar una identidad de administrador para esta organización, `org2`, además de una identidad para el propio igual. Espere a que la identidad `admin` que acaba de crear sea visible en la tabla y, a continuación, pulse el botón
+**Registrar usuario** para registrar los nuevos usuarios.
 3. Para el administrador de la organización, asígnele el ID de inscripción `org2admin`. Puede utilizar cualquier secreto, pero le recomendamos utilizar `org2adminpw` para seguir esta guía. Pulse **Siguiente**.
-4. En el siguiente paso, defina el Tipo de esta identidad como `cliente` y seleccione entre las organizaciones afiliadas de la lista desplegable. El campo de afiliación es para usuarios avanzados y no se utiliza en la guía de aprendizaje. Los elementos de la lista son las afiliaciones predeterminadas de la CA de Fabric. Si desea obtener más información sobre cómo utiliza la CA de Fabric las afiliaciones, consulte este tema en [Registro de
+4. En el siguiente paso, defina el Tipo de esta identidad como `cliente` y seleccione entre las organizaciones afiliadas de la lista desplegable. El campo de afiliación es para usuarios avanzados y no se utiliza en la guía de aprendizaje, pero es un campo obligatorio para el panel. Los elementos de la lista son las afiliaciones predeterminadas de la CA de Fabric. Si desea obtener más información sobre cómo utiliza la CA de Fabric las afiliaciones, consulte este tema en [Registro de
 una nueva identidad ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/users-guide.html#registering-a-new-identity). Por ahora, seleccione cualquier afiliación de la lista, por ejemplo org2, y pulse Siguiente.
 5. Puede dejar los campos **Número máximo de inscripciones** y **Añadir atributos** en blanco. No se utilizan en esta guía de aprendizaje, pero puede obtener más información sobre su función en este tema sobre [Registro de identidades](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-register).
 6. Una vez que se haya registrado el administrador de la organización, repita los pasos del dos al cinco para la identidad del igual, utilizando la misma `CA de Org2`, proporcionándole el ID de inscripción `peer2`. Como antes, recomendamos utilizar el secreto `peer2pw` como ayuda para seguir esta guía. Se trata de una identidad de nodo, de modo que seleccione `igual` como **Tipo** en el paso siguiente. Como antes, pase por alto **Número máximo de inscripciones** y **Atributos**.
@@ -180,8 +187,9 @@ Utilice la consola para seguir los pasos siguientes:
 5. El siguiente panel lateral solicita la información de la CA de TLS. Aunque es posible crear administradores independientes para la CA de TLS que se ha desplegado con la CA, no es necesario hacerlo.
    - Asigne a **ID de inscripción de TLS** el valor `admin` y al secreto el valor `adminpw`, los mismos valores que el ID de inscripción y el secreto de inscripción que ha asignado al crear la CA.
    - El **Nombre de host de CSR de TLS** es para usuarios avanzados y se utiliza para especificar un nombre de dominio personalizado que se puede utilizar para gestionar el punto final del igual. Por ahora deje el **Nombre de host de CSR de TLS** en blanco, ya que no se utiliza en esta guía de aprendizaje.
-6. El último panel lateral le solicitará que **Asocie una identidad** y la convierta en administrador de su igual. Seleccione la identidad de administrador del igual `Admin de Org2`.
-7. Revise el resumen y pulse **Añadir igual**.
+6. El siguiente panel lateral le solicita **Asociar una identidad** y convertirla en el administrador del igual. Seleccione la identidad de administrador del igual `Admin de Org2`.
+7. Si utiliza un clúster de pago, en el panel siguiente, tendrá la oportunidad de configurar la asignación de recursos del nodo. A efectos de esta guía de aprendizaje, puede aceptar todos los valores predeterminados y pulsar **Siguiente**. Si desea obtener más información sobre cómo asignar recursos al nodo, consulte este tema sobre [Asignación de recursos](/docs/services/blockchain?topic=blockchain-ibp-console-govern#ibp-console-govern-allocate-resources). Si utiliza un clúster gratuito, ya podrá ver la página **Resumen**.
+8. Revise la página Resumen y luego pulse **Añadir igual**.
 
 **Tarea: despliegue de un igual**
 
@@ -280,11 +288,14 @@ Siga los pasos siguientes desde la consola:
 2. Seleccione el clasificador denominado 'Clasificador' y pulse **Siguiente**.
 3. Especifique el nombre del canal que desea unir, `channel1`, y pulse **Siguiente**.
 4. Seleccione los iguales que desea unir al canal. A efectos de esta guía de aprendizaje, pulse `Org2 igual`.
-5. Pulse **Unir igual**.
+5. Pulse **Unir canal**.
 
-Si tiene intención de aprovechar las características de Hyperledger Fabric [Datos privados ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/latest/private-data/private-data.html "Datos privados") o [Service Discovery ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/latest/discovery-overview.html "Service Discovery"), debe configurar iguales de ancla en las organizaciones desde el separador **Canales**. Consulte este tema sobre [cómo configurar iguales de ancla para datos privados](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-private-data) mediante el separador **Canales** de la consola.
+Si usted mismo crea el canal al que quiere unir un igual y aún no ha unido ningún igual al canal, puede pulsar directamente sobre el mosaico pendiente del canal para unir el igual.
+{:note}
 
-También puede crear un nuevo canal una vez que su organización sea miembro del consorcio. Siga los pasos para [crear un canal](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-create-channel) de la [guía de aprendizaje sobre cómo crear una red](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network).
+Si tiene intención de aprovechar las características de Hyperledger Fabric [Datos privados ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/private-data/private-data.html "Datos privados") o [Service Discovery ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/discovery-overview.html "Service Discovery"), debe configurar iguales de ancla en las organizaciones desde el separador **Canales**. Para obtener más información sobre cómo configurar iguales de ancla para datos privados utilizando el separador **Canales** en la consola, consulte [Datos privados](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-private-data).
+
+También puede crear un nuevo canal si su organización es miembro del consorcio. Utilice los pasos para [crear un canal](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-create-channel) que se describen en la [guía de aprendizaje sobre cómo crear una red](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network).
 
 ## Siguientes pasos
 {: #ibp-console-join-network-next-steps}

@@ -144,7 +144,7 @@ subcollection: blockchain
 スターター・プランを使用すると、数回のクリックだけでサンプル・アプリケーションをネットワークにデプロイできます。 これらのサンプルを使用して、チェーンコードについての詳細を学習し、これらを独自の開発の開始点として使用することができます。
 
 詳しくは、
-[サンプル・アプリケーションの開発](/docs/services/blockchain/howto/prebuilt_samples.html#deploying-sample-applications)を参照してください。
+[サンプル・アプリケーションのデプロイ](/docs/services/blockchain/howto/prebuilt_samples.html#deploying-sample-applications)を参照してください。
 
 
 ## ネットワーク・リソースのモニター
@@ -201,7 +201,7 @@ subcollection: blockchain
 As you can see in [Deploying sample applications](/docs/services/blockchain/howto/prebuilt_samples.html#deploying-sample-applications), Starter Plan makes it easy to get a sample application integrated with your network by using Toolchain. This setup also allows for continuous integration by automatically updating your sample application whenever your forked application repo is changed. If you want to deploy this application into an Enterprise Plan network, you can copy your forked application repo into a new repo and then follow the instructions in [Deploying sample applications manually](/docs/services/blockchain/howto/prebuilt_samples.html#deploying-sample-applications#deploy_sample_applications_manually).
 -->
 
-スターター・プラン・ネットワークにサンプル・アプリケーションをデプロイし、そのアプリケーションをエンタープライズ・プラン・ネットワークにデプロイする場合は、fork したアプリケーション・リポジトリーを新規リポジトリーにコピーしてから、サンプル・アプリケーションの説明に従ってエンタープライズ・プラン・ネットワークにデプロイすることができます。
+スターター・プラン・ネットワークにサンプル・アプリケーションをデプロイし、そのアプリケーションをエンタープライズ・プラン・ネットワークにデプロイする場合は、フォークしたアプリケーション・リポジトリーを新規リポジトリーにコピーしてから、サンプル・アプリケーションの説明に従ってエンタープライズ・プラン・ネットワークにデプロイすることができます。
 
 
 ## ネットワークの削除または離脱

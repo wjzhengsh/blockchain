@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-03"
 
 subcollection: blockchain
 
@@ -35,6 +35,7 @@ La tabella 1 e la figura 1 mostrano le regioni e le ubicazioni di {{site.data.ke
 | Tokyo |  | S |
 | Francoforte |  | S |
 | Sydney | S |  |
+| Melbourne |  | S |
 | São Paulo |  | S |
 | Toronto |  | S |
 

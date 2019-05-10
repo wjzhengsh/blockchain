@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-17"
 
 ---
 
@@ -101,14 +101,9 @@ Ressource de réseau blockchain qui fournit les services permettant d'exécuter 
 {: #glossary-hsm}
 Module de sécurité matérielle (HSM). Permet un chiffrement à la demande, la gestion des clés et le stockage de clés en tant que service géré. HSM est un dispositif physique qui gère les tâches gourmandes en ressources de chiffrement et réduit le temps de latence des applications. Pour plus d'informations, voir [Module de sécurité matérielle ![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://www.ibm.com/cloud/hardware-security-module)
 
-## Hyperledger Composer
-{: #glossary-composer}
-**IBM n'assure pas de support pour les réseaux utilisant Hyperledger Composer en production, y compris l'interface CLI Composer, les API JavaScript, le serveur REST et l'aire de jeu Web.**
-[Hyperledger Composer ![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://hyperledger.github.io/composer/latest/introduction/introduction.html) est un jeu d'outils de développement en open source. Il utilise un langage de modélisation spécifique, qui est associé à des transactions JavaScript, ainsi qu'à des règles de contrôle d'accès pour modéliser un réseau d'entreprise de modèle en totalité. Vous pouvez utiliser Hyperledger Composer pour intégrer des systèmes et données existants à votre application de blockchain avant de déployer quoi que ce soit dans une véritable blockchain.
-
 ## Hyperledger Fabric
 {: #glossary-hyperledger-fabric}
-[Hyperledger Fabric ![Icône de lien externe](images/external_link.svg "Icône de lien externe")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/) est une architecture de blockchain d'entreprise hébergée par Linux Foundation pour servir de base au développement d'applications ou de solutions blockchain avec une architecture modulaire. Les composants Hyperledger Fabric comme les services de consensus et d'appartenance sont de type plug-and-play.
+[Hyperledger Fabric ![Icône de lien externe](images/external_link.svg "Icône de lien externe")](http://hyperledger-fabric.readthedocs.io/en/release-1.4/) est une architecture de blockchain d'entreprise hébergée par Linux Foundation pour servir de base au développement d'applications ou de solutions blockchain avec une architecture modulaire. Les composants Hyperledger Fabric comme les services de consensus et d'appartenance sont de type plug-and-play.
 
 ## Installer
 {: #glossary-install}
@@ -167,10 +162,6 @@ Définit les noeuds homologue sur un canal qui doivent exécuter des transaction
 {: #glossary-network}
 Instance d'un service {{site.data.keyword.blockchainfull_notm}} Platform sur {{site.data.keyword.cloud_notm}}.
 
-## Réseau d'entreprise
-{: #glossary-business-network}
-Définition d'un réseau de blockchain, qui inclut le modèle de données, la logique de transaction et les règles de contrôle d'accès de votre solution blockchain. Les définitions de réseau d'entreprise sont créées à l'aide de [Hyperledger Composer](/docs/services/blockchain/glossary.html#glossary-composer). Les définitions de réseau d'entreprise sont regroupées dans des fichiers **.bna** (business network archive) déployables.
-
 ## Ressource
 {: #glossary-asset}
 Biens matériels ou immatériels, services ou propriété représentés en tant qu'élément qui fait l'objet d'une transaction sur le réseau de blockchain.
@@ -201,4 +192,4 @@ Un utilisateur a le rôle d'un participant au sein d'un réseau de blockchain et
 
 ## World state
 {: #glossary-world-state}
-Voir [Etat en cours]((/docs/services/blockchain/glossary.html#glossary-current-state).
+Voir [Etat en cours](/docs/services/blockchain/glossary.html#glossary-current-state).

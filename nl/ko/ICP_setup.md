@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-03"
 
 subcollection: blockchain
 
@@ -57,7 +57,7 @@ echo "vm.max_map_count=262144” | tee -a /etc/sysctl.conf
 ### 필수 리소스
 {: #icp-setup-resources}
 
-사용자의 {{site.data.keyword.cloud_notm}} Private 시스템이 최소 하드웨어 리소스 요구사항을 충족하는지 확인하십시오.
+각 Fabric 런타임 컴포넌트마다 사용자의 {{site.data.keyword.cloud_notm}} Private 시스템이 최소 하드웨어 리소스 요구사항을 충족하는지 확인하십시오.
 
 |컴포넌트 | vCPU | RAM | 데이터 스토리지용 디스크 |
 |-----------|------|-----|-----------------------|
@@ -98,4 +98,92 @@ echo "vm.max_map_count=262144” | tee -a /etc/sysctl.conf
 
 2. CA를 설치하고 작동시키기 위해 {{site.data.keyword.cloud_notm}} Private CLI [3.1.0 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/manage_cluster/install_cli.html)을 설치하십시오.
 
-{{site.data.keyword.cloud_notm}} Private을 설치한 후에도 계속 {{site.data.keyword.cloud_notm}} Private 클러스터로 [{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private Helm 차트를 가져올](/docs/services/blockchain/howto/helm_install_icp.html#helm-install) 수 있습니다.
+3. 대상 네임스페이스에 대한 팟(Pod) 보안 정책을 설정합니다. 지시사항은 [다음 절](/docs/services/blockchain/howto/ICP_setup.html#icp-setup-psp)에서 제공됩니다.
+
+{{site.data.keyword.cloud_notm}} Private을 설치하고 팟(Pod) 보안 정책을 대상 네임스페이스에 바인드한 후에도 계속 {{site.data.keyword.cloud_notm}} Private 클러스터로 [{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private Helm 차트를 가져올](/docs/services/blockchain/howto/helm_install_icp.html#helm-install) 수 있습니다.
+
+## PodSecurityPolicy 요구사항
+{: #icp-setup-psp}
+
+Helm 차트를 사용하여 컴포넌트를 배치하려면 새 대상 네임스페이스를 작성하고 [PodSecurityPolicy ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://kubernetes.io/docs/concepts/policy/pod-security-policy/ "Pod Security Policies")를 네임스페이스에 바인드해야 합니다. 사전 정의된 PodSecurityPolicy를 선택하거나 클러스터 관리자가 사용자를 위해 사용자 정의 PodSecurityPolicy를 작성하도록 하십시오.
+- 사전 정의된 PodSecurityPolicy 이름: [`ibm-privileged-psp`](https://ibm.biz/cpkspec-psp)
+- 사용자 정의 PodSecurityPolicy 정의:
+  ```
+  apiVersion: extensions/v1beta1
+  kind: PodSecurityPolicy
+  metadata:
+    name: ibm-blockchain-platform-psp
+  spec:
+    hostIPC: false
+    hostNetwork: false
+    hostPID: false
+    privileged: true
+    allowPrivilegeEscalation: true
+    readOnlyRootFilesystem: false
+    seLinux:
+      rule: RunAsAny
+    supplementalGroups:
+      rule: RunAsAny
+    runAsUser:
+      rule: RunAsAny
+    fsGroup:
+      rule: RunAsAny
+    requiredDropCapabilities:
+    - ALL
+    allowedCapabilities:
+    - NET_BIND_SERVICE
+    - CHOWN
+    - DAC_OVERRIDE
+    - SETGID
+    - SETUID
+    volumes:
+    - '*'
+  ```
+  {:codeblock}
+- 사용자 정의 PodSecurityPolicy를 위한 사용자 정의 ClusterRole:
+  ```
+  apiVersion: rbac.authorization.k8s.io/v1
+  kind: ClusterRole
+  metadata:
+    annotations:
+    name: ibm-blockchain-platform-clusterrole
+  rules:
+  - apiGroups:
+    - extensions
+    resourceNames:
+    - ibm-blockchain-platform-psp
+    resources:
+    - podsecuritypolicies
+    verbs:
+    - use
+  - apiGroups:
+    - ""
+    resources:
+    - secrets
+    verbs:
+    - create
+    - delete
+    - get
+    - list
+    - patch
+    - update
+    - watch
+  ```
+  {:codeblock}
+
+- 사용자 정의 ClusterRole을 위한 사용자 정의 ClusterRoleBinding:
+  ```
+  apiVersion: rbac.authorization.k8s.io/v1
+  kind: ClusterRoleBinding
+  metadata:
+   name: ibm-blockchain-platform-clusterrolebinding
+  roleRef:
+   apiGroup: rbac.authorization.k8s.io
+   kind: ClusterRole
+   name: ibm-blockchain-platform-clusterrole
+  subjects:
+  - kind: ServiceAccount
+    name: default
+    namespace: default
+  ```
+  {:codeblock}

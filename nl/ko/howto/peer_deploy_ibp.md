@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2019
-lastupdated: "2019-03-05"
+  years: 2018, 2019
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -36,7 +36,7 @@ subcollection: blockchain
 | 컴포넌트 | vCPU | RAM | 데이터 스토리지용 디스크 |
 |-----------|------|-----|-----------------------|
 | 피어 |2 |2GB | 50GB(확장 기능 포함) |
-| 피어를 위한 CouchDB |2|2GB | 50GB(확장 기능 포함) |
+| 피어를 위한 CouchDB<br>(CouchDB를 사용하는 경우에만 적용 가능) |2|2GB | 50GB(확장 기능 포함) |
 
  **참고:**
  - vCPU는 서버가 가상 머신에 대해 파티션되지 않은 경우 가상 머신 또는 실제 프로세서 코어에 지정되는 가상 코어입니다. {{site.data.keyword.cloud_notm}} Private에서 배치를 위해 가상 프로세서 코어(VPC)를 결정할 때 vCPU 요구사항을 고려해야 합니다. VPC는 IBM 제품의 라이센싱 비용을 판별하는 측정 단위입니다. VPC를 결정하기 위한 시나리오에 대한 자세한 정보는 [가상 프로세서 코어(VPC) ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/en/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_virtual_processor_core_licenses.html)를 참조하십시오.
@@ -59,13 +59,13 @@ amd64 또는 s390x 플랫폼에 피어를 배치하도록 선택할 수 있습�
 
 1. 피어를 {{site.data.keyword.cloud_notm}} Private에 설치하기 전에 [{{site.data.keyword.cloud_notm}} Private을 설치](/docs/services/blockchain/ICP_setup.html#icp-setup)하고 [{{site.data.keyword.blockchainfull_notm}} Platform Helm 차트를 설치](/docs/services/blockchain/howto/helm_install_icp.html#helm-install)해야 합니다.
 
-2. Community Edition을 사용하고 인터넷 연결 없이 {{site.data.keyword.cloud_notm}} Private 클러스터에 이 Helm 차트를 실행하려면 아카이브를 {{site.data.keyword.cloud_notm}} Private 클러스터에 설치하기 전에 인터넷에 연결된 시스템에서 아카이브를 작성해야 합니다. 자세한 정보는 [인터넷 연결 없이 클러스터에 주요 애플리케이션 추가 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_package_offline.html "인터넷 연결 없이 클러스터에 주요 애플리케이션 추가"){:new_window}를 참조하십시오. Helm 차트의 ibm-blockchain-platform-dev/ibm_cloud_pak 아래에서 스펙 파일인 manifest.yaml을 찾을 수 있습니다.
+2. Community Edition을 사용하고 인터넷 연결 없이 {{site.data.keyword.cloud_notm}} Private 클러스터에 이 Helm 차트를 실행하려면 아카이브를 {{site.data.keyword.cloud_notm}} Private 클러스터에 설치하기 전에 인터넷에 연결된 시스템에서 아카이브를 작성해야 합니다. 자세한 정보는 [인터넷 연결 없이 클러스터에 주요 애플리케이션 추가 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/app_center/add_package_offline.html "인터넷 연결 없이 클러스터에 주요 애플리케이션 추가"){:new_window}를 참조하십시오. Helm 차트의 ibm-blockchain-platform-dev/ibm_cloud_pak 아래에서 스펙 파일인 manifest.yaml을 찾을 수 있습니다.
 
 3. {{site.data.keyword.cloud_notm}}에서 스타터 플랜 또는 엔터프라이즈 플랜 네트워크의 멤버인 조직이 있어야 합니다. 피어에서는 {{site.data.keyword.blockchainfull_notm}} Platform 네트워크의 순서 지정 서비스, Hyperledger Fabric CA 및 API 엔드포인트를 활용하여 운영합니다. 블록체인 네트워크의 구성원이 아니면 네트워크를 작성하거나 참여해야 합니다. 자세한 정보는 [네트워크 작성](/docs/services/blockchain/get_start.html#getting-started-with-enterprise-plan-create-network) 또는 [네트워크에 가입](/docs/services/blockchain/get_start.html#getting-started-with-enterprise-plan-join-nw)을 참조하십시오.
 
 4. 먼저 {{site.data.keyword.cloud_notm}} Private에 [CA를 배치](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy)해야 합니다. TLS CA로 이 CA를 사용합니다. 피어를 배치하기 전에 {{site.data.keyword.cloud_notm}} Private에서 CA를 운영하기 위한 [전제조건 단계](/docs/services/blockchain/howto/CA_operate.html#ca-operate-prerequisites)를 따라야 합니다. 이 단계 이상으로 진행할 필요가 없습니다.
 
-5. {{site.data.keyword.cloud_notm}} Private 콘솔에서 TLS CA의 클러스터 프록시 IP 주소 값을 검색하십시오. **참고:** 프록시 IP에 액세스하려면 [클러스터 관리자 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "클러스터 관리자 역할 및 조치")여야 합니다. {{site.data.keyword.cloud_notm}} Private 클러스터에 로그인하십시오. 왼쪽 탐색 패널에서 **플랫폼**, **노드**를 차례로 클릭하여 클러스터에 정의되어 있는 노드를 표시하십시오. 역할이 `proxy`인 노드를 클릭한 후 테이블에서 `Host IP`의 값을 복사하십시오. **중요:** 이 값을 저장하십시오. 이 값은 Helm 차트의 `Proxy IP` 필드를 구성할 때 사용하게 됩니다.
+5. {{site.data.keyword.cloud_notm}} Private 콘솔에서 TLS CA의 클러스터 프록시 IP 주소 값을 검색하십시오. **참고:** 프록시 IP에 액세스하려면 [클러스터 관리자 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/user_management/assign_role.html "클러스터 관리자 역할 및 조치")여야 합니다. {{site.data.keyword.cloud_notm}} Private 클러스터에 로그인하십시오. 왼쪽 탐색 패널에서 **플랫폼**, **노드**를 차례로 클릭하여 클러스터에 정의되어 있는 노드를 표시하십시오. 역할이 `proxy`인 노드를 클릭한 후 테이블에서 `Host IP`의 값을 복사하십시오. **중요:** 이 값을 저장하십시오. 이 값은 Helm 차트의 `Proxy IP` 필드를 구성할 때 사용하게 됩니다.
 
 6. 피어 구성 파일을 작성하고 {{site.data.keyword.cloud_notm}} Private에서 Kubernetes 시크릿으로 이를 저장하십시오. [다음 섹션](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-config-file)에서 이 파일을 작성하기 위한 단계를 찾을 수 있습니다.
 
@@ -248,13 +248,13 @@ amd64 또는 s390x 플랫폼에 피어를 배치하도록 선택할 수 있습�
 5. 사용하는 서비스 플랜, 위치 및 클러스터에 따라 {{site.data.keyword.cloud_notm}}에서 TLS 인증서를 다운로드하십시오. 인증 기관 URL(예: `us01.blockchain.ibm.com:31011` 또는 `us02.blockchain.ibm.com:31011`)의 도메인 이름을 기반으로 클러스터를 찾을 수 있습니다.
 
   - 스타터 플랜의 TLS 인증서
-    - 미국: [us01.blockchain.ibm.com.cert ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://blockchain-certs.mybluemix.net/us01.blockchain.ibm.com.cert "us01.blockchain.ibm.com.cert"); [us02.blockchain.ibm.com.cert ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://blockchain-certs.mybluemix.net/us02.blockchain.ibm.com.cert "us02.blockchain.ibm.com.cert");
-  [us03.blockchain.ibm.com.cert ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://blockchain-certs.mybluemix.net/us03.blockchain.ibm.com.cert "us03.blockchain.ibm.com.cert"); [us04.blockchain.ibm.com.cert ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://blockchain-certs.mybluemix.net/us04.blockchain.ibm.com.cert "us04.blockchain.ibm.com.cert");
-  [us05.blockchain.ibm.com.cert ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://blockchain-certs.mybluemix.net/us05.blockchain.ibm.com.cert "us05.blockchain.ibm.com.cert"); [us06.blockchain.ibm.com.cert ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://blockchain-certs.mybluemix.net/us06.blockchain.ibm.com.cert "us06.blockchain.ibm.com.cert");
-  [us07.blockchain.ibm.com.cert ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://blockchain-certs.mybluemix.net/us07.blockchain.ibm.com.cert "us07.blockchain.ibm.com.cert"); [us08.blockchain.ibm.com.cert ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://blockchain-certs.mybluemix.net/us08.blockchain.ibm.com.cert "us08.blockchain.ibm.com.cert")
-    - 영국: [uk01.blockchain.ibm.com.cert ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://blockchain-certs.mybluemix.net/uk01.blockchain.ibm.com.cert "uk01.blockchain.ibm.com.cert"); [uk02.blockchain.ibm.com.cert ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://blockchain-certs.mybluemix.net/uk02.blockchain.ibm.com.cert "uk02.blockchain.ibm.com.cert"); [uk03.blockchain.ibm.com.cert ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://blockchain-certs.mybluemix.net/uk03.blockchain.ibm.com.cert "uk03.blockchain.ibm.com.cert"); [uk04.blockchain.ibm.com.cert ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://blockchain-certs.mybluemix.net/uk04.blockchain.ibm.com.cert "uk04.blockchain.ibm.com.cert")
-    - 시드니: [aus01.blockchain.ibm.com.cert ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://blockchain-certs.mybluemix.net/aus01.blockchain.ibm.com.cert "aus01.blockchain.ibm.com.cert");
-  - [엔터프라이즈 플랜의 TLS 인증서 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://blockchain-certs.mybluemix.net/3.secure.blockchain.ibm.com.rootcert)
+    - 미국: [us01.blockchain.ibm.com.cert ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/us01.blockchain.ibm.com.cert "us01.blockchain.ibm.com.cert"); [us02.blockchain.ibm.com.cert ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/us02.blockchain.ibm.com.cert "us02.blockchain.ibm.com.cert");
+    [us03.blockchain.ibm.com.cert ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/us03.blockchain.ibm.com.cert "us03.blockchain.ibm.com.cert"); [us04.blockchain.ibm.com.cert ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/us04.blockchain.ibm.com.cert "us04.blockchain.ibm.com.cert");
+    [us05.blockchain.ibm.com.cert ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/us05.blockchain.ibm.com.cert "us05.blockchain.ibm.com.cert"); [us06.blockchain.ibm.com.cert ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/us06.blockchain.ibm.com.cert "us06.blockchain.ibm.com.cert");
+    [us07.blockchain.ibm.com.cert ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/us07.blockchain.ibm.com.cert "us07.blockchain.ibm.com.cert"); [us08.blockchain.ibm.com.cert ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/us08.blockchain.ibm.com.cert "us08.blockchain.ibm.com.cert")
+    - 영국: [uk01.blockchain.ibm.com.cert ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/uk01.blockchain.ibm.com.cert "uk01.blockchain.ibm.com.cert"); [uk02.blockchain.ibm.com.cert ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/uk02.blockchain.ibm.com.cert "uk02.blockchain.ibm.com.cert"); [uk03.blockchain.ibm.com.cert ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/uk03.blockchain.ibm.com.cert "uk03.blockchain.ibm.com.cert"); [uk04.blockchain.ibm.com.cert ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/uk04.blockchain.ibm.com.cert "uk04.blockchain.ibm.com.cert")
+    - 시드니: [aus01.blockchain.ibm.com.cert ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/aus01.blockchain.ibm.com.cert "aus01.blockchain.ibm.com.cert");
+  - [엔터프라이즈 플랜의 TLS 인증서 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/3.secure.blockchain.ibm.com.rootcert)
 
   이후 명령에서 이 인증서를 참조할 수 있는 디렉토리에 컨텐츠를 저장하십시오.
 
@@ -271,7 +271,7 @@ amd64 또는 s390x 플랫폼에 피어를 배치하도록 선택할 수 있습�
   ```
   {:codeblock}
 
-  `<enroll_id>` 및 `<enroll_password>`는 [네트워크 모니터를 사용하여 등록](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-register-admin)된 피어 관리자의 **ID** 및 **시크릿**입니다. `<ca_name>` 및 `<ca_url_with_port>`는 연결 프로파일의 `caName` 및 `url` 값입니다. CA URL의 시작 부분에 `http://`를 포함하지 않아야 합니다.
+  위의 `<enroll_id>` 및 `<enroll_password>`는 [네트워크 모니터를 사용하여 등록](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-register-admin)된 피어 관리자의 **ID** 및 **시크릿**입니다. `<ca_name>` 및 `<ca_url_with_port>`는 연결 프로파일의 `caName` 및 `url` 값입니다. CA URL의 시작 부분에 `http://`를 포함하지 않아야 합니다.
 
   실제 호출은 다음 예제 명령과 비슷하게 보일 수 있습니다.
 
@@ -295,7 +295,7 @@ amd64 또는 s390x 플랫폼에 피어를 배치하도록 선택할 수 있습�
    ```
    LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tDQpNSUlFbERDQ0EzeWdBd0lCQWdJUUFmMmo2MjdLZGNpSVE0dHlTOCs4a1RBTkJna3Foa2lHOXcwQkFRc0ZBREJoDQpNUXN3Q1FZRFZRUUdFd0pWVXpFVk1CTUdBMVVFQ2hNTVJHbG5hVU5sY25RZ1NXNWpNUmt3RndZRFZRUUxFeEIzDQpkM2N1WkdsbmFXTmxjblF1WTI5dE1TQXdIZ1lEVlFRREV4ZEVhV2RwUTJWeWRDQkhiRzlpWVd3Z1VtOXZkQ0JEDQpRVEFlRncweE16QXpNRGd4TWpBd01EQmFGdzB5TXpBek1EZ3hNakF3TURCYU1FMHhDekFKQmdOVkJBWVRBbFZUDQpNUlV3RXdZRFZRUUtFd3hFYVdkcFEyVnlkQ0JKYm1NeEp6QWxCZ05WQkFNVEhrUnBaMmxEWlhKMElGTklRVElnDQpVMlZqZFhKbElGTmxjblpsY2lC
    ```
-   다음과 같이 표시되어서는 안됩니다.
+ 다음과 같이 표시되어서는 안됩니다.
 
    ```
    LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tDQpNSUlFbERDQ0EzeWdBd0lCQWdJUUFmMmo2MjdL
@@ -365,7 +365,7 @@ Fabric CA 클라이언트를 사용하여 {{site.data.keyword.cloud_notm}} Priva
   ```
   {:codeblock}
 
-  명령에서 `<enroll_id>` 및 `<enroll_password>`는 인증 기관을 배치했을 때 Kubernetes 시크릿에 전달한 [CA 관리자 및 비밀번호](/docs/services/blockchain/CA_deploy.html#ca-deploy-admin-secret)입니다. `<ca_url_with_port>` 내부에 [CA URL](/docs/services/blockchain/howto/CA_operate.html#ca-operate-url)을 삽입하십시오. 시작 부분에 `http://`를 포함하지 않아야 합니다. `<tls_ca_name>`은 [CA 구성](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-configuration-parms) 중에 지정된 값입니다.
+  명령의 `<enroll_id>` 및 `<enroll_password>`는 인증 기관을 배치했을 때 Kubernetes 시크릿에 전달한 [CA 관리자 및 비밀번호](/docs/services/blockchain/howto/CA_deploy.html#ca-deploy-admin-secret)입니다. `<ca_url_with_port>` 내부에 [CA URL](/docs/services/blockchain/howto/CA_operate.html#ca-operate-url)을 삽입하십시오. 시작 부분에 `http://`를 포함하지 않아야 합니다. `<tls_ca_name>`은 [CA 구성](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-configuration-parms) 중에 지정된 값입니다.
 
   `<ca_tls_cert_file>`은 전체 경로가 포함된 [CA TLS 인증서](/docs/services/blockchain/howto/CA_operate.html#ca-operate-tls) 파일입니다.
 
@@ -448,6 +448,8 @@ tree
 │   └── msp
 │       ├── cacerts
 │       │   └── 9-12-19-115-31873-SampleOrgCA.pem
+│       ├── IssuerPublicKey
+│       ├── IssuerRevocationPublicKey
 │       ├── keystore
 │       │   └── c44ec1e708f84b6d0359f58ce2c9c8a289919ba81f2cf4bb5187c4ad5a43cbb0_sk
 │       └── signcerts
@@ -473,6 +475,8 @@ tree
     └── msp
         ├── cacerts
         │   └── 9-30-250-70-30395-tlsca.pem
+        ├── IssuerPublicKey
+        ├── IssuerRevocationPublicKey
         ├── keystore
         │   └── bd57fa20283dfc76ada83f989ee0f62ce23e98c94dbd26f6cd23202d8084e38e_sk
         ├── signcerts
@@ -505,7 +509,7 @@ TLS CA를 배치한 동일한 {{site.data.keyword.cloud_notm}} Private 클러스
 `service host name`은 배치 중에 지정하는 `helm release name`이 됩니다. 클러스터 IP 프록시 주소가 "9.42.134.44"이고 `helm release name`이 `org1peer1`인 경우 파일의 `"csr"` 섹션을 삽입합니다.
 
 ```
-"csr": {
+  "csr": {
   "hosts": [
      "9.42.134.44",
      "org1peer1"
@@ -590,7 +594,7 @@ TLS CA를 배치한 동일한 {{site.data.keyword.cloud_notm}} Private 클러스
 
 3. **일반** 탭에서 다음 필드를 완료하십시오.
   - **이름:** 클러스터 내에서 시크릿에 고유한 이름을 지정하십시오. 피어를 배치할 때 이 이름을 사용합니다. 이름은 모두 소문자여야 합니다.  
-  **참고:** 피어를 배치할 때 새 시크릿은 새 시크릿은 이름이 `<helm_release_name>-secret`인 배치로 자동 생성됩니다. 그러므로 시크릿의 이름을 지정하는 경우 시크릿의 이름은 `<helm_release_name>-secret`과 달라야 합니다. 그렇지 않으면 작성을 시도하는 시크릿이 이미 존재하므로 Helm 차트 배치에 실패합니다.
+  **참고:** 피어를 배치할 때 새 시크릿은 새 시크릿은 이름이 `<helm release name you intend to use>-secret`인 배치로 자동 생성됩니다. 그러므로 시크릿의 이름을 지정하는 경우 시크릿의 이름은 `<helm release name you intend to use>-secret`과 달라야 합니다. 그렇지 않으면 작성을 시도하는 시크릿이 이미 존재하므로 Helm 차트 배치에 실패합니다.
   - **네임스페이스:** 시크릿을 추가할 네임스페이스입니다. 피어를 배치할 `namespace`를 선택하십시오.
   - **유형:** `Opaque` 값을 입력하십시오.
 
@@ -635,8 +639,10 @@ TLS CA를 배치한 동일한 {{site.data.keyword.cloud_notm}} Private 클러스
 
 |매개변수     |설명    | 기본값  | 필수 |
 | --------------|-----------------|-------|------- |
+|**일반 매개변수**| Helm 차트를 구성하는 매개변수입니다.| | |
 | `Helm release name`| Helm 릴리스의 이름입니다. 소문자로 시작하고 영숫자 문자로 끝나야 하며 하이픈과 소문자의 영숫자 문자만 포함해야 합니다. 컴포넌트를 설치하려고 할 때마다 고유한 Helm 릴리스 이름을 사용해야 합니다. **중요:** 이 값은 [JSON 시크릿 파일](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-csr-hosts)의 "호스트" 필드에 대한 '서비스 호스트 이름'을 생성하는 데 사용한 값과 일치해야 합니다. | 없음 | 예  |
 | `Target namespace`| Helm 차트를 설치할 Kubernetes 네임스페이스를 선택합니다. | 없음 | 예 |
+| `Target namespace policies`| 선택한 네임스페이스의 팟(Pod) 보안 정책을 표시하며, 여기에는 **`ibm-privileged-psp`** 정책을 포함해야 합니다. 그렇지 않으면 네임스페이스에 [PodSecurityPolicy를 바인드](/docs/services/blockchain?topic=blockchain-icp-setup#icp-setup-psp)하십시오.| 없음 | 아니오 |
 |**글로벌 구성**| Helm 차트의 모든 컴포넌트에 적용하는 매개변수입니다.|||
 | `Service account name`| 팟(Pod)을 실행하는 데 사용할 [서비스 계정 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/ "팟(Pod)의 서비스 계정 구성")의 이름을 입력합니다. | 기본값 | 아니오 |
 
@@ -649,9 +655,9 @@ TLS CA를 배치한 동일한 {{site.data.keyword.cloud_notm}} Private 클러스
 | `Install Peer` | 피어를 설치하도록 선택합니다.|선택 취소 | 예(피어를 설치할 경우) |
 | `Peer worker node architecture`| 클라우드 플랫폼 아키텍처(AMD64 또는 S390x)를 선택합니다.| AMD64 | 예 |
 | `Peer image repository`| 피어 Helm 차트의 위치입니다. 이 필드는 설치된 경로로 자동으로 채워집니다. 커뮤니티 에디션을 사용 중이고 인터넷 액세스 권한이 없는 경우 Fabric 피어 이미지를 다운로드한 디렉토리와 일치해야 합니다. | ibmcom/ibp-fabric-peer | 예 |
-| `Peer Docker image tag`| 피어 이미지와 연관된 태그의 값입니다. |1.2.1. 값을 정정하도록 자동으로 채워집니다.| 예|
-| `Peer configuration`| 이 필드에서 고유한 `core.yaml` 구성 파일을 붙여넣어 피어의 구성을 사용자 정의할 수 있습니다. `core.yaml` 파일을 보려면 [`core.yaml` 샘플 구성 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://github.com/hyperledger/fabric/blob/release-1.2/sampleconfig/core.yaml "hyperledger/fabric/core.yaml")을 참조하십시오(**고급 사용자 전용**). |없음| 아니오|
-| `Peer configuration secret(필수)`| {{site.data.keyword.cloud_notm}} Private에 작성한 [피어 구성 시크릿](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-config-file-ibp)의 이름입니다.  |없음| 예|
+| `Peer Docker image tag`| 피어 이미지와 연관된 태그의 값입니다. |1.4.0. 값을 정정하도록 자동으로 채워집니다.| 예|
+| `Peer configuration`| 이 필드에서 고유한 `core.yaml` 구성 파일을 붙여넣어 피어의 구성을 사용자 정의할 수 있습니다. 샘플 `core.yaml` 파일을 보려면 [`core.yaml` 샘플 구성 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://github.com/hyperledger/fabric/blob/release-1.4/sampleconfig/core.yaml "hyperledger/fabric/core.yaml")을 참조하십시오(**고급 사용자 전용**). |없음| 아니오|
+| `Peer configuration secret(필수)`| {{site.data.keyword.cloud_notm}} Private에 작성한 [피어 구성 시크릿](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-config-file-ibp)의 이름입니다. | 없음 | 예 |
 |`Organization MSP(필수)`| 이 값은 개요 화면의 "원격 피어 구성"을 클릭하여 네트워크 모니터(스타터 플랜 및 엔터프라이즈 플랜 UI)에서 찾을 수 있습니다.  |없음| 예|
 |`Peer service type`| 피어에서 [외부 포트 노출![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types "서비스 공개 - 서비스 유형") 여부를 지정하는 데 사용됩니다. 포트를 외부적으로 노출하려면(권장됨) NodePort를 선택하고 포트를 노출하지 않으려면 ClusterIP를 선택하십시오. 이 릴리스에서 LoadBalancer 및 ExternalName은 지원되지 않습니다. | NodePort | 예|
 | `State database`|채널 원장을 저장하는 데 사용한 [상태 데이터베이스](/docs/services/blockchain/glossary.html#glossary-state-database)입니다. 피어에서는 [블록체인 네트워크](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-network-preferences)와 동일한 데이터베이스를 사용해야 합니다. |LevelDB | 예 |
@@ -675,6 +681,14 @@ TLS CA를 배치한 동일한 {{site.data.keyword.cloud_notm}} Private 클러스
 | `State database volume claim size`| 사용할 디스크 크기를 선택합니다. | 8Gi | 예 |
 | `CouchDB - Data persistence enabled`| CouchDB 컨테이너의 경우 컨테이너 다시 시작 시 원장 데이터를 사용할 수 있습니다. *선택하지 않으면 장애 복구 또는 팟(Pod) 다시 시작 시 모든 데이터가 유실됩니다.*| 선택됨 | 아니오 |
 | `CouchDB - Use dynamic provisioning`| CouchDB 컨테이너의 경우 Kubernetes 동적 스토리지를 사용합니다.| 선택됨 | 아니오 |
+| `Docker-in-Docker CPU request`| 체인코드가 실행되는 컨테이너에 할당할 최소 CPU 수를 지정합니다. |1 | 예 |
+| `Docker-in-Docker CPU limit`| 체인코드가 실행되는 컨테이너에 할당할 최대 CPU 수를 지정합니다. |2 | 예 |
+| `Docker-in-Docker memory request`| 체인코드가 실행되는 컨테이너에 할당할 최소 메모리 양을 지정합니다. | 1Gi | 예 |
+| `Docker-in-Docker  memory limit`| 체인코드가 실행되는 컨테이너에 할당할 최대 메모리 양을 지정합니다. | 4Gi | 예 |
+| `gRPC web proxy CPU request`| gRPC 웹 프록시에 할당할 최소 CPU(millicpus) 수를 지정합니다. | 100m | 예 |
+| `gRPC web proxy CPU limit`| gRPC 웹 프록시에 할당할 최대 CPU(millicpus) 수를 지정합니다. | 200m | 예 |
+| `gRPC web proxy memory request`| gRPC 웹 프록시에 할당할 최소 메모리 크기를 지정합니다. | 100Mi | 예 |
+| `gRPC web proxy memory limit`| gRPC 웹 프록시에 할당할 최대 메모리 크기를 지정합니다. | 200Mi | 예 |
 | `Peer CPU request` | 피어에 할당할 최소 CPU 수입니다. |1 | 예 |
 | `Peer CPU limit` | 피어에 할당할 최대 CPU 수입니다.|2 | 예 |
 | `Peer Memory request` | 피어에 할당할 최소 메모리 크기입니다. | 1Gi | 예 |
@@ -701,7 +715,7 @@ processes. This container has two volume mounts, one for the Peer PVC and the se
 ### Helm 명령행을 사용하여 Helm 릴리스 설치
 {: #ibp-peer-deploy-helm-cli}
 
-또는 Helm CLI를 사용하여 Helm 릴리스를 설치할 수 있습니다. `helm install` 명령을 실행하기 전에 [Helm CLI 환경에 클러스터의 Helm 저장소를 추가![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_int_helm_repo_to_cli.html "Helm CLI에 내부 Helm 저장소 추가")했는지 확인하십시오.
+또는 Helm CLI를 사용하여 Helm 릴리스를 설치할 수 있습니다. `helm install` 명령을 실행하기 전에 [Helm CLI 환경에 클러스터의 Helm 저장소를 추가![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/app_center/add_int_helm_repo_to_cli.html "Helm CLI에 내부 Helm 저장소 추가")했는지 확인하십시오.
 
 `yaml` 파일을 작성하고 이 파일을 `helm install` 명령에 전달하여 설치에 필요한 매개변수를 설정할 수 있습니다.
 

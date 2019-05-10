@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-03-20"
 
 subcollection: blockchain
 
@@ -28,7 +28,7 @@ Antes de iniciar, é necessário criar uma instância de serviço do [{{site.dat
 
 Para usar APIs do Swagger para criar ou se associar a uma rede, é necessária uma credencial de autenticação básica para assegurar que você tenha acesso à instância de serviço no {{site.data.keyword.cloud_notm}}.
 
-1. No painel do [ {{site.data.keyword.cloud_notm}} ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://cloud.ibm.com/resources), abra a instância de serviço que você criou.
+1. No painel de seu [{{site.data.keyword.cloud_notm}} ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://cloud.ibm.com/resources), abra a instância de serviço criada.
 2. Clique em **Credenciais de serviço** no navegador esquerdo.
 3. Clique no botão "Nova credencial" na página **Credenciais de serviço** para criar uma nova credencial.
     1. Dê à credencial um nome, por exemplo, *CreateJoin*.
@@ -69,7 +69,7 @@ Para usar APIs do Swagger para criar ou se associar a uma rede, é necessária u
 É possível usar APIs para criar redes de blockchain apenas em locais de rede disponíveis. Antes de criar uma rede, use a API a seguir para obter uma lista atual de locais de rede disponíveis. Nenhuma credencial é necessária para executar esta API.
 
 ```
-https://ibmblockchain-v2.ng.bluemix.net/api/v1/network-locations/available
+https://ibp-ep.us-south.ibm-blockchain-5-prod.cloud.ibm.com/api/v1/network-locations/available
 ```
 {:codeblock}
 

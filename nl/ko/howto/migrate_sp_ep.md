@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018,2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-17"
 
 subcollection: blockchain
 
@@ -38,7 +38,6 @@ subcollection: blockchain
 스타터 플랜 네트워크에서 엔터프라이즈 플랜 네트워크로 마이그레이션하기 전에 다음 고려사항을 읽으십시오.
 
 - **가격:** 엔터프라이즈 플랜 네트워크를 사용하는 조직의 월별 요금은 인스턴스당 $1000 멤버십 요금과 피어당 $1000 피어 요금이 포함됩니다. 자세한 정보는 [엔터프라이즈 플랜 가격](/docs/services/blockchain/howto/pricing.html#ibp-pricing-enterprise-plan)을 참조하십시오.
-
 - **Hyperledger Fabric 버전:** 엔터프라이즈 플랜 네트워크는 Hyperledger Fabric v1.1에서 실행됩니다. 스타터 플랜 네트워크는 Fabric v1.2에서 실행됩니다.
 - **영향 받는 리소스:** 체인코드(스마트 계약), 클라이언트 애플리케이션. 다시 한 번, 체인코드가 v1.1 네트워크와 호환되지 않는 Fabric v1.2 컴포넌트 또는 기능을 활용하고 있는지 여부를 확인하십시오.
 - **필요한 시간:** 스타터 플랜에서 엔터프라이즈 플랜으로 기본 네트워크를 마이그레이션하는 데 최소 한나절이 소요될 수 있습니다.

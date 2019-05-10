@@ -39,7 +39,7 @@
 <rect id="Rectangle_2_" x="369.5" y="138.5" class="st6" width="105" height="35"/>
 <text transform="matrix(1 0 0 1 392.176 162)" class="st7 st4 st8">CA de Org1</text>
 <rect id="Rectangle_3_" x="311.5" y="206.5" class="st6" width="105" height="55"/>
-<text transform="matrix(1 0 0 1 326.368 230)" class="st7 st4 st8">Definición de</text>
+<text transform="matrix(1 0 0 1 326.368 230)" class="st7 st4 st8">Definición de </text>
 <text transform="matrix(1 0 0 1 329.616 250)" class="st7 st4 st8">MSP de Org1</text>
 <rect id="Rectangle_4_" x="84.5" y="471.5" class="st2" width="347" height="151"/>
 <text transform="matrix(1 0 0 1 103.206 506)" class="st3 st4 st5">Org 2</text>
@@ -48,7 +48,7 @@
 <rect id="Rectangle_6_" x="367.5" y="459.5" class="st6" width="105" height="35"/>
 <text transform="matrix(1 0 0 1 390.176 483)" class="st7 st4 st8">CA de Org2</text>
 <rect id="Rectangle_7_" x="311.5" y="530.5" class="st6" width="105" height="55"/>
-<text transform="matrix(1 0 0 1 326.368 554)" class="st7 st4 st8">Definición de</text>
+<text transform="matrix(1 0 0 1 326.368 554)" class="st7 st4 st8">Definición de </text>
 <text transform="matrix(1 0 0 1 329.616 574)" class="st7 st4 st8">MSP de Org2</text>
 <rect id="Rectangle_8_" x="107.5" y="204.5" class="st6" width="105" height="61"/>
 <g id="Group-3" transform="translate(208.000000, 227.000000)">
@@ -95,7 +95,7 @@
 <rect id="Rectangle_10_" x="780.5" y="295.5" class="st6" width="105" height="35"/>
 <text transform="matrix(1 0 0 1 791.34 319)" class="st7 st4 st8">CA de clasif.</text>
 <rect id="Rectangle_11_" x="694.5" y="360.5" class="st6" width="124" height="55"/>
-<text transform="matrix(1 0 0 1 711.92 385)" class="st7 st4 st8">Defin. de MSP</text>
+<text transform="matrix(1 0 0 1 711.92 385)" class="st7 st4 st8">Defin. de MSP </text>
 <text transform="matrix(1 0 0 1 725.616 405)" class="st7 st4 st8">de clasificador</text>
 <rect id="Rectangle_12_" x="526" y="402" class="st15" width="10" height="10"/>
 <g id="Group-18" transform="translate(518.000000, 357.000000)">

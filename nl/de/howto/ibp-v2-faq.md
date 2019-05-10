@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -22,6 +22,16 @@ subcollection: blockchain
 # Häufig gestellte Fragen
 {: #ibp-v2-faq}
 
+- [Welche Version von Hyperledger Fabric wird in der kostenlosen Betaversion {{site.data.keyword.blockchainfull_notm}} Platform 2.0 verwendet?](#ibp-v2-faq-fabric-version)
+- [Entstehen für die kostenlose Betaversion {{site.data.keyword.blockchainfull_notm}} Platform 2.0 irgendwelche Gebühren?](#ibp-v2-faq-cost)
+- [Kann ich meinen bestehenden {{site.data.keyword.cloud_notm}} Kubernetes-Service-Cluster verwenden?](#ibp-v2-faq-existing-cluster)
+- [Welche Datenbank verwenden die Peers für ihre Ledger?](#ibp-v2-faq-couchDB)
+- [Welche Sprachen werden für Smart Contracts unterstützt?](#ibp-v2-faq-cc-langs)
+- [Kann ich von der Betaversion 2.0 auf die allgemein verfügbare Version 2.0 migrieren? ](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-faq-migrate)
+- [Besteht Zugriff auf Protokollierungsservices und welche Protokolle sind für mich verfügbar?](#ibp-v2-faq-logs)
+- [Welchen Mehrwert bietet die kostenlose Betaversion {{site.data.keyword.blockchainfull_notm}} Platform 2.0 im Vergleich zum nativen Produkt Hyperledger Fabric?](#ibp-v2-faq-native-fabric)
+- [Wie kann ich die Leistung maximieren und meine {{site.data.keyword.blockchainfull_notm}} Platform-Lösung skalieren?](#ibp-v2-faq-perf-scale)
+
 ## Welche Version von Hyperledger Fabric wird in der kostenlosen Betaversion {{site.data.keyword.blockchainfull_notm}} Platform 2.0 verwendet?
 {: #ibp-v2-faq-fabric-version}
 {: faq}
@@ -32,16 +42,16 @@ Die kostenlose Betaversion {{site.data.keyword.blockchainfull_notm}} Platform 2.
 {: #ibp-v2-faq-cost}
 {: faq}
 
-Die Betaversion ist kostenlos. Es können jedoch Gebühren für Ihren {{site.data.keyword.cloud_notm}} Kubernetes-Cluster anfallen, sofern Sie keinen kostenlosen Cluster ausgewählt haben. Beachten Sie, dass der kostenlose Cluster gemäß der {{site.data.keyword.cloud_notm}} Kubernetes-Servicerichtlinie nach 30 Tagen automatisch gelöscht wird und eine begrenzte Leistung und Kapazität bietet. Wenn Ihr Service auch nach Ablauf von 30 Tagen bestehen bleiben soll, müssen Sie sich für eine kostenpflichtige Standardinstanz des Kubernetes-Service entscheiden. 
+Die Betaversion ist kostenlos. Es können jedoch Gebühren für Ihren {{site.data.keyword.cloud_notm}} Kubernetes-Cluster anfallen, sofern Sie keinen kostenlosen Cluster ausgewählt haben.  Beachten Sie, dass der kostenlose Cluster gemäß der {{site.data.keyword.cloud_notm}} Kubernetes-Servicerichtlinie nach 30 Tagen automatisch gelöscht wird und eine begrenzte Leistung und Kapazität bietet.  Wenn Ihr Service auch nach Ablauf von 30 Tagen bestehen bleiben soll, müssen Sie sich für eine kostenpflichtige Standardinstanz des Kubernetes-Service entscheiden. 
 
 ## Kann ich meinen bestehenden {{site.data.keyword.cloud_notm}} Kubernetes Service-Cluster verwenden?
 {: #ibp-v2-faq-existing-cluster}
 {: faq}
 
-Ihr bestehender Kubernetes-Cluster kann mit der kostenlosen Betaversion {{site.data.keyword.blockchainfull_notm}} Platform 2.0 verwendet werden, wenn die folgenden Bedingungen erfüllt sind: 
+Ihr bestehender Kubernetes-Cluster kann mit der kostenlosen Betaversion {{site.data.keyword.blockchainfull_notm}} Platform 2.0 verwendet werden, wenn die folgenden Bedingungen erfüllt sind:
 - Der Cluster befindet sich in der {{site.data.keyword.cloud_notm}}-Region 'Dallas'.
-- Auf dem Cluster wird Kubernetes v1.11 oder höher ausgeführt. Weitere Informationen finden Sie im Abschnitt [Kubernetes-Version Ihres Clusters aktualisieren](/docs/services/blockchain/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks-updating-kubernetes).
-- Im Cluster sind genügend verfügbare Ressourcen vorhanden. Weitere Informationen finden Sie im Abschnitt [Mindestvoraussetzungen für Ressourcen](/docs/services/blockchain/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks-resources-required).
+- Auf dem Cluster wird Kubernetes v1.11 oder höher ausgeführt. Weitere Informationen finden Sie im Abschnitt [Kubernetes-Version Ihres Clusters aktualisieren](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks-updating-kubernetes).
+- Im Cluster sind genügend verfügbare Ressourcen vorhanden. Weitere Informationen finden Sie im Abschnitt [Mindestvoraussetzungen für Ressourcen](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks-resources-required).
 
 ## Welche Datenbank verwenden die Peers für ihre Ledger?
 {: #ibp-v2-faq-couchDB}
@@ -59,13 +69,13 @@ Alle Peers, die mit der kostenlosen Betaversion {{site.data.keyword.blockchainfu
 {: #ibp-v2-faq-migrate}
 {: faq}
 
-Kunden mit Enterprise Plan können auf IBM Blockchain Platform 2.0 migrieren, sobald das Produkt allgemein verfügbar ist. Es wird jedoch nicht die Möglichkeit geben, Ihre Betaversion 2.0 auf die allgemein verfügbare Produktversion 2.0 zu migrieren. Außerdem kann eine Starter Plan-Instanz weder auf die Betaversion 2.0 noch auf die künftige, allgemein verfügbare Produktversion 2.0 migriert werden.
+Sie können Ihre Betaversion 2.0 nicht auf die allgemein verfügbare Produktversion 2.0 migrieren.
 
 ## Besteht Zugriff auf Protokollierungsservices und welche Protokolle sind für mich verfügbar?
 {: #ibp-v2-faq-logs}
 {: faq}
 
-Mit {{site.data.keyword.blockchainfull_notm}} Platform 2.0, können Sie jetzt über das Kubernetes-Dashboard direkt auf Ihre Peer-, CA- und Anordnungsknotenprotokolle zugreifen. Es wird empfohlen, den Service [{{site.data.keyword.cloud_notm}} LogDNA ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://cloud.ibm.com/catalog/services/logdna "{{site.data.keyword.IBM_notm}} Log Analysis with LogDNA") zu nutzen, der das Analysieren der Protokolle in Echtzeit ohne großen Aufwand ermöglicht.
+Mit {{site.data.keyword.blockchainfull_notm}} Platform 2.0, können Sie jetzt über das Kubernetes-Dashboard direkt auf Ihre Peer-, CA- und Anordnungsknotenprotokolle zugreifen. Es wird empfohlen, den Service [{{site.data.keyword.cloud_notm}} LogDNA ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://cloud.ibm.com/docs/services/Log-Analysis-with-LogDNA?topic=LogDNA-kube#kube "Managing Kubernetes cluster logs with IBM Log Analysis with LogDNA") zu nutzen, der das Analysieren der Protokolle in Echtzeit ohne großen Aufwand ermöglicht.
 
 ## Welchen Mehrwert bietet die kostenlose Betaversion {{site.data.keyword.blockchainfull_notm}} Platform 2.0 im Vergleich zum nativen Produkt Hyperledger Fabric?
 {: #ibp-v2-faq-native-fabric}

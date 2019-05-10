@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-03-20"
 
 subcollection: blockchain
 
@@ -130,7 +130,7 @@ La **Figure 5** présente l'écran "Membres" initial qui affiche les certificats
 
 Les opérateurs peuvent gérer les certificats des membres d'une même institution sous l'onglet "Certificats". Cliquez sur **Ajouter le certificat** pour afficher l'écran "Ajouter le certificat". Donnez un nom à votre certificat, collez vos certificats côté client au format PEM dans la zone "Clé", puis cliquez sur **Soumettre**. Vous devez redémarrer vos homologues pour que les certificats côté client puissent être pris en compte.
 
-Pour plus d'informations sur la génération de votre clé de certificat, voir  [Inscription de votre application](/docs/services/blockchain/v10_application.html#dev-app-enroll).
+Pour plus d'informations sur la génération de votre clé de certificat, voir [Inscription de votre application](/docs/services/blockchain/v10_application.html#dev-app-enroll).
 
 ## Canaux
 {: #ibp-dashboard-channels}
@@ -249,9 +249,9 @@ La **Figure 13** affiche des informations sous l'onglet "Support" initial :
 ### Ressources de blockchain et forums de support
 {: #ibp-dashboard-support-forums}
 
-Utilisez les ressources de l'onglet "Support" pour résoudre les problèmes et obtenir de l'aide auprès de {{site.data.keyword.IBM_notm}} et de la communauté  Fabric. Pour plus d'informations sur les liens de l'onglet "Support", voir  [Ressources et forums de support](/docs/services/blockchain/ibmblockchain_support.html#blockchain-support-resources) dans [Support](/docs/services/blockchain/ibmblockchain_support.html#blockchain-support).
+Utilisez les ressources de l'onglet "Support" pour résoudre les problèmes et obtenir de l'aide auprès de {{site.data.keyword.IBM_notm}} et de la communauté  Fabric. Pour plus d'informations sur les liens de l'onglet "Support", voir [Ressources et forums de support](/docs/services/blockchain/ibmblockchain_support.html#blockchain-support-resources) dans [Support](/docs/services/blockchain/ibmblockchain_support.html#blockchain-support).
 
-[IBM dWAnswers ![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://developer.ibm.com/answers/smartspace/blockchain/) est un forum de communauté pour les utilisateurs de {{site.data.keyword.blockchainfull_notm}} Platform et d'Hyperledger Fabric et il est surveillé par des experts IBM. Vous pouvez rechercher des réponses à des questions préalablement posées ou soumettre une nouvelle question. Si vous ne parvenez pas à déboguer votre problème ou à obtenir une réponse à votre question, soumettez un cas sur le portail de service {{site.data.keyword.cloud_notm}}. Pour plus d'informations, voir  [Soumission de cas de support](/docs/services/blockchain/ibmblockchain_support.html#blockchain-support-cases).
+[IBM dWAnswers ![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://developer.ibm.com/answers/smartspace/blockchain/index.html) est un forum de communauté pour les utilisateurs de {{site.data.keyword.blockchainfull_notm}} Platform et d'Hyperledger Fabric et il est surveillé par des experts IBM. Vous pouvez rechercher des réponses à des questions préalablement posées ou soumettre une nouvelle question. Si vous ne parvenez pas à déboguer votre problème ou à obtenir une réponse à votre question, soumettez un cas sur le portail de service {{site.data.keyword.cloud_notm}}. Pour plus d'informations, voir [Soumission de cas de support](/docs/services/blockchain/ibmblockchain_support.html#blockchain-support-cases).
 
 
 ### Notes sur l'édition de Fabric
@@ -319,7 +319,7 @@ Before Enterprise Plan upgrades to Fabric v1.1, all network peers store data in 
 
 To use CouchDB, your data must be stored in a data format that can be modeled in chaincode, such as JSON. If the decision is made to migrate from LevelDB to CouchDB, the {{site.data.keyword.blockchainfull_notm}} Platform will migrate your data from key-value format to the CouchDB format automatically.
 
-If you switch to CouchDB, you need to update your chaincode to take advantage of indexes and rich queries. For more information about CouchDB and how to set up indexes, see [Best practices when using CouchDB](/docs/services/blockchain/v10_application.html#couchdb-indices) in the Developing applications tutorial. For more information about updating chaincode in {{site.data.keyword.blockchainfull_notm}} Platform, see [Updating a chaincode](/docs/services/blockchain/howto/install_instantiate_chaincode.html#install-instantiate-chaincode-update-cc).
+If you switch to CouchDB, you need to update your chaincode to take advantage of indexes and rich queries. For more information about CouchDB and how to set up indexes, see [Best practices when using CouchDB](/docs/services/blockchain/best_practices.html#best-practices-app-couchdb-indices) in the Developing applications tutorial. For more information about updating chaincode in {{site.data.keyword.blockchainfull_notm}} Platform, see [Updating a chaincode](/docs/services/blockchain/howto/install_instantiate_chaincode.html#install-instantiate-chaincode-update-cc).
 
 -->
 

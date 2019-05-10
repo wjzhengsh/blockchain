@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2019
-lastupdated: "2019-03-05"
+  years: 2018, 2019
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -35,11 +35,11 @@ Vérifiez que votre système {{site.data.keyword.cloud_notm}} Private respecte l
 | Composant | vCPU | RAM | Disque pour le stockage de données |
 |-----------|------|-----|-----------------------|
 | Homologue | 2 | 2 Go | 50 Go avec possibilité d'extension |
-| CouchDB for Peer | 2| 2 Go |50 Go avec possibilité d'extension |
+| CouchDB for Peer<br>(Applicable uniquement si vous utilisez CouchDB) | 2| 2 Go | 50 Go avec possibilité d'extension |
 
  **Remarques :**
  - Une unité vCPU est un coeur virtuel qui est affecté à une machine virtuelle ou à un coeur de processeur physique si le serveur n'est pas partitionné pour les machines virtuelles. Vous devez tenir compte des exigences vCPU lorsque vous décidez d'utiliser le coeur de processeur virtuel (VPC) pour votre déploiement dans {{site.data.keyword.cloud_notm}} Private. VPC est une unité de mesure pour déterminer les coûts de licences des produits IBM. Pour plus d'informations sur les scénarios VPC, voir[Virtual processor core (VPC) ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://www.ibm.com/support/knowledgecenter/en/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_virtual_processor_core_licenses.html).
- - Ces niveaux de ressources minimum sont suffisants pour les tests et l'expérimentation. Pour un environnement avec un gros volume de transactions, il est important d'allouer une quantité de mémoire suffisamment important ; 250 Go pour votre homologue par  exemple. La quantité de stockage à utiliser dépend du nombre de transactions et du nombre de signatures qui sont nécessaires depuis votre réseau. Si vous êtes sur le point d'épuiser la mémoire de votre homologue, vous devez déployer un nouvel homologue avec un système de fichiers plus important et le laisser se synchroniser par l'intermédiaire de vos autres composants sur les mêmes canaux.
+ - Ces niveaux de ressources minimum sont suffisants pour les tests et l'expérimentation. Pour un environnement avec un gros volume de transactions, il est important d'allouer une quantité de mémoire suffisamment important ; 250 Go pour votre homologue par exemple. La quantité de stockage à utiliser dépend du nombre de transactions et du nombre de signatures qui sont nécessaires depuis votre réseau. Si vous êtes sur le point d'épuiser la mémoire de votre homologue, vous devez déployer un nouvel homologue avec un système de fichiers plus important et le laisser se synchroniser par l'intermédiaire de vos autres composants sur les mêmes canaux.
 
 ## Stockage
 {: #ibp-peer-deploy-storage}
@@ -57,20 +57,20 @@ Si vous n'utilisez pas la mise à disposition dynamique, des [Volumes permanents
 
 1. Avant d'installer un homologue sur {{site.data.keyword.cloud_notm}} Private, vous devez [installer {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/ICP_setup.html#icp-setup) et [installer la Charte Helm de {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/howto/helm_install_icp.html#helm-install).
 
-2. Si vous utilisez Community Edition et souhaitez exécuter cette charte Helm sur un cluster {{site.data.keyword.cloud_notm}} Private sans connectivité Internet, vous devez créer des archives sur une machine connectée à Internet avant d'installer les archives sur votre cluster {{site.data.keyword.cloud_notm}} Private. Pour plus d'informations, voir [Adding featured applications to clusters without Internet connectivity ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_package_offline.html "Adding featured applications to clusters without Internet connectivity"){:new_window}. Remarque : Vous pouvez trouver le fichier de spécification manifest.yaml sous ibm-blockchain-platform-dev/ibm_cloud_pak dans la charte Helm.
+2. Si vous utilisez Community Edition et souhaitez exécuter cette charte Helm sur un cluster {{site.data.keyword.cloud_notm}} Private sans connectivité Internet, vous devez créer des archives sur une machine connectée à Internet avant d'installer les archives sur votre cluster {{site.data.keyword.cloud_notm}} Private. Pour plus d'informations, voir [Adding featured applications to clusters without Internet connectivity ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/app_center/add_package_offline.html "Adding featured applications to clusters without Internet connectivity"){:new_window}. Remarque : Vous pouvez trouver le fichier de spécification manifest.yaml sous ibm-blockchain-platform-dev/ibm_cloud_pak dans la charte Helm.
 
 3. Vous devez disposer d'une organisation qui est membre d'un réseau de plan Starter ou Enterprise sur {{site.data.keyword.cloud_notm}}. L'homologue optimise les noeuds finaux d'API, les autorités de certification Hyperledger Fabric et le service de tri du réseau {{site.data.keyword.blockchainfull_notm}} Platform à exploiter. Si vous n'êtes membre d'aucun un réseau de blockchain, vous devez créer ou rejoindre un réseau. Pour plus d'informations, voir [Création d'un réseau de plan](/docs/services/blockchain/get_start.html#getting-started-with-enterprise-plan-create-network) ou [Rejoindre un réseau](/docs/services/blockchain/get_start.html#getting-started-with-enterprise-plan-join-nw).
 
 4. Vous devez d'abord [déployer une autorité de certification](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy) sur {{site.data.keyword.cloud_notm}} Private. Vous utiliserez cette autorité de certification en tant qu'autorité de certification TLS. Suivez les [étapes prérequises](/docs/services/blockchain/howto/CA_operate.html#ca-operate-prerequisites) pour l'utilisation d'une autorité de certification sur {{site.data.keyword.cloud_notm}} Private avant de déployer votre homologue. Vous n'aurez pas besoin d'effectuer des étapes supplémentaires.
 
-5. Procédez à l'extraction de la valeur de l'adresse IP proxy du cluster de votre autorité de certification TLS depuis la console {{site.data.keyword.cloud_notm}} Private. **Remarque :** Vous devez être [administrateur de cluster![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Cluster administrator roles and actions") pour accéder à votre IP de proxy. Connectez-vous au cluster {{site.data.keyword.cloud_notm}} Private. Dans le panneau de navigation gauche, cliquez sur **Plateforme** puis sur **Noeuds** pour afficher les noeuds qui sont définis dans le cluster. Cliquez sur le noeud avec le rôle `proxy`, puis copiez la valeur de l'`IP hôte` de la table. **Important :** Conservez cette valeur car vous allez l'utiliser lors de la configuration de la zone `Adresse IP du proxy` de la charte Helm.
+5. Procédez à l'extraction de la valeur de l'adresse IP proxy du cluster de votre autorité de certification TLS depuis la console {{site.data.keyword.cloud_notm}} Private. **Remarque :** Vous devez être [administrateur de cluster![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/user_management/assign_role.html "Cluster administrator roles and actions") pour accéder à votre IP de proxy. Connectez-vous au cluster {{site.data.keyword.cloud_notm}} Private. Dans le panneau de navigation gauche, cliquez sur **Plateforme** puis sur **Noeuds** pour afficher les noeuds qui sont définis dans le cluster. Cliquez sur le noeud avec le rôle `proxy`, puis copiez la valeur de l'`IP hôte` de la table. **Important :** Conservez cette valeur car vous allez l'utiliser lors de la configuration de la zone `Adresse IP du proxy` de la charte Helm.
 
 6. Créez un fichier de configuration d'homologue et stockez-le en tant que valeur confidentielle Kubernetes dans {{site.data.keyword.cloud_notm}} Private. Vous trouverez les étapes de création de ce fichier dans la [section suivante](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-config-file).
 
 ## Génération du fichier de configuration
 {: #ibp-peer-deploy-config-file}
 
-Avant de déployer un homologue, vous devez créer un fichier JSON de configuration contenant d'importantes informations relatives à l'identité de l'homologue et à votre autorité de certification sur {{site.data.keyword.cloud_notm}}. Vous devez ensuite transmettre ce fichier à la charte Helm  pendant la configuration à l'aide d'un objet [Secret Kubernetes![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://kubernetes.io/docs/concepts/configuration/secret/ "Secrets"). Ce fichier permet à votre homologue d'obtenir les certificats dont il a besoin auprès de l'autorité de certification sur {{site.data.keyword.cloud_notm}} pour rejoindre un réseau Starter Plan ou Enterprise Plan. Ce fichier contient également un certificat admin qui vous permet d'utiliser votre homologue en tant qu'utilisateur admin.
+Avant de déployer un homologue, vous devez créer un fichier JSON de configuration contenant d'importantes informations relatives à l'identité de l'homologue et à votre autorité de certification sur {{site.data.keyword.cloud_notm}}. Vous devez ensuite transmettre ce fichier à la charte Helm pendant la configuration à l'aide d'un objet [Secret Kubernetes![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://kubernetes.io/docs/concepts/configuration/secret/ "Secrets"). Ce fichier permet à votre homologue d'obtenir les certificats dont il a besoin auprès de l'autorité de certification sur {{site.data.keyword.cloud_notm}} pour rejoindre un réseau Starter Plan ou Enterprise Plan. Ce fichier contient également un certificat admin qui vous permet d'utiliser votre homologue en tant qu'utilisateur admin.
 
 Nous fournissons dans ces instructions un exemple de fichier JSON que vous pouvez éditer et sauvegarder sur votre système de fichiers local. Nous vous guiderons ensuite au cours des étapes d'utilisation de votre autorité de certification pour compléter le fichier de configuration.
 
@@ -142,8 +142,8 @@ La fenêtre en incrustation contient les zones suivantes :
 Dans le fichier, sous la section `"components"`, entrez les valeurs suivantes indiquées plus haut :
 - `"caname"` est la valeur du **Nom de l'autorité de certification (AC)**
 - `"cahost"` est le nom d’hôte de l'URL de l'autorité de certification. Par exemple, si l'URL de l'autorité de certification est `https://ncaca9b06047b4bee966b3dec0cbb6671-org1-ca.stage.blockchain.ibm.com:31011`, la valeur de `"cahost"` serait `ncaca9b06047b4bee966b3dec0cbb6671-org1-ca.stage.blockchain.ibm.com`
-- `"caport"` est le port de `"cahost"`. Par exemple, si l'URL de l'autorité de certification est `https://ncaca9b06047b4bee966b3dec0cbb6671-org1-ca.stage.blockchain.ibm.com:31011`, la valeur de  `"caport"` serait `31011`.
-- `"cacert"`  est la valeur de la zone **Certificat TLS de l'autorité de certification (AC)**. Avant d'insérer le certificat dans le fichier, vous devez l'encoder au format base64 en exécutant les commandes suivantes et en remplaçant la chaîne `<paste in Certificate Authority (CA) TLS Certificate>` par la valeur que vous avez copiée de votre Moniteur réseau.
+- `"caport"` est le port de `"cahost"`. Par exemple, si l'URL de l'autorité de certification est `https://ncaca9b06047b4bee966b3dec0cbb6671-org1-ca.stage.blockchain.ibm.com:31011`, la valeur de `"caport"` serait `31011`.
+- `"cacert"`  est la valeur de la zone **Certificat TLS de l'autorité de certification (AC)**. Avant d'insérer le certificat dans le fichier, vous devez le coder au format base64 en exécutant les commandes suivantes et en remplaçant la chaîne `<paste in Certificate Authority (CA) TLS Certificate>` par la valeur que vous avez copiée depuis votre Moniteur réseau.
 
   ```
   export FLAG=$(if [ "$(uname -s)" == "Linux" ]; then echo "-w 0"; else echo "-b 0"; fi)
@@ -199,7 +199,7 @@ Pour joindre vos homologues à des canaux, installer et instancier du code block
 ### Création d'un administrateur
 {: #ibp-peer-deploy-register-admin}
 
-Après enregistrement de l'identité de l'homologue, vous devez aussi créer une identité administrateur que vous utiliserez pour exploiter l'homologue. Vous devez d'abord enregistrer cette nouvelle identité auprès de votre autorité de certification, puis  l'utiliser pour générer un dossier MSP. Vous ajoutez ensuite ajouter le certificat signCert des administrateurs au fichier de configuration, où il deviendra un certificat admin de l'homologue lors du déploiement. Cela vous permet d'utiliser les certificats de l'identité admin pour faire fonctionner votre réseau blockchain, comme le démarrage d'un nouveau canal ou l'installation d'un code blockchain sur vos homologues.
+Après enregistrement de l'identité de l'homologue, vous devez aussi créer une identité administrateur que vous utiliserez pour exploiter l'homologue. Vous devez d'abord enregistrer cette nouvelle identité auprès de votre autorité de certification, puis l'utiliser pour générer un dossier MSP. Vous ajoutez ensuite ajouter le certificat signCert des administrateurs au fichier de configuration, où il deviendra un certificat admin de l'homologue lors du déploiement. Cela vous permet d'utiliser les certificats de l'identité admin pour faire fonctionner votre réseau blockchain, comme le démarrage d'un nouveau canal ou l'installation d'un code blockchain sur vos homologues.
 
 Il vous suffit de créer une identité admin pour les composants appartenant à votre organisation. Si vous déployez plusieurs homologues, vous ne devez effectuer ces étapes qu'une seule fois. Vous pouvez utiliser le certificat signCert généré pour un homologue pour déployer d'autres homologues appartenant à votre organisation.
 
@@ -246,13 +246,13 @@ Une fois l'identité admin enregistrée, vous devez générer le dossier MSP adm
 5. Téléchargez les certificats TLS depuis {{site.data.keyword.cloud_notm}} en fonction du plan de service, de l'emplacement et du cluster que vous utilisez. Vous pouvez rechercher votre cluster en fonction du nom de domaine de l'URL de votre autorité de certification : `us01.blockchain.ibm.com:31011` ou `us02.blockchain.ibm.com:31011` par exemple.
 
   - Certificat TLS racine pour le plan Starter
-    - Etats-Unis : [us01.blockchain.ibm.com.cert ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://blockchain-certs.mybluemix.net/us01.blockchain.ibm.com.cert "us01.blockchain.ibm.com.cert"); [us02.blockchain.ibm.com.cert ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://blockchain-certs.mybluemix.net/us02.blockchain.ibm.com.cert "us02.blockchain.ibm.com.cert");
-  [us03.blockchain.ibm.com.cert ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://blockchain-certs.mybluemix.net/us03.blockchain.ibm.com.cert "us03.blockchain.ibm.com.cert"); [us04.blockchain.ibm.com.cert ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://blockchain-certs.mybluemix.net/us04.blockchain.ibm.com.cert "us04.blockchain.ibm.com.cert");
-  [us05.blockchain.ibm.com.cert ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://blockchain-certs.mybluemix.net/us05.blockchain.ibm.com.cert "us05.blockchain.ibm.com.cert"); [us06.blockchain.ibm.com.cert ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://blockchain-certs.mybluemix.net/us06.blockchain.ibm.com.cert "us06.blockchain.ibm.com.cert");
-    [us07.blockchain.ibm.com.cert ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://blockchain-certs.mybluemix.net/us07.blockchain.ibm.com.cert "us07.blockchain.ibm.com.cert"); [us08.blockchain.ibm.com.cert ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://blockchain-certs.mybluemix.net/us08.blockchain.ibm.com.cert "us08.blockchain.ibm.com.cert")
-    - Royaume-Uni :  [uk01.blockchain.ibm.com.cert ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://blockchain-certs.mybluemix.net/uk01.blockchain.ibm.com.cert "uk01.blockchain.ibm.com.cert"); [uk02.blockchain.ibm.com.cert ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://blockchain-certs.mybluemix.net/uk02.blockchain.ibm.com.cert "uk02.blockchain.ibm.com.cert"); [uk03.blockchain.ibm.com.cert ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://blockchain-certs.mybluemix.net/uk03.blockchain.ibm.com.cert "uk03.blockchain.ibm.com.cert"); [uk04.blockchain.ibm.com.cert ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://blockchain-certs.mybluemix.net/uk04.blockchain.ibm.com.cert "uk04.blockchain.ibm.com.cert")
-    - Sydney : [aus01.blockchain.ibm.com.cert ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://blockchain-certs.mybluemix.net/aus01.blockchain.ibm.com.cert "aus01.blockchain.ibm.com.cert");
-  - [Certificat TLS pour le plan Enterprise![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://blockchain-certs.mybluemix.net/3.secure.blockchain.ibm.com.rootcert)
+    - Etats-Unis : [us01.blockchain.ibm.com.cert ![External link icon](../images/external_link.svg "External link icon")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/us01.blockchain.ibm.com.cert "us01.blockchain.ibm.com.cert"); [us02.blockchain.ibm.com.cert ![External link icon](../images/external_link.svg "External link icon")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/us02.blockchain.ibm.com.cert "us02.blockchain.ibm.com.cert");
+  [us03.blockchain.ibm.com.cert ![External link icon](../images/external_link.svg "External link icon")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/us03.blockchain.ibm.com.cert "us03.blockchain.ibm.com.cert"); [us04.blockchain.ibm.com.cert ![External link icon](../images/external_link.svg "External link icon")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/us04.blockchain.ibm.com.cert "us04.blockchain.ibm.com.cert");
+  [us05.blockchain.ibm.com.cert ![External link icon](../images/external_link.svg "External link icon")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/us05.blockchain.ibm.com.cert "us05.blockchain.ibm.com.cert"); [us06.blockchain.ibm.com.cert ![External link icon](../images/external_link.svg "External link icon")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/us06.blockchain.ibm.com.cert "us06.blockchain.ibm.com.cert");
+  [us07.blockchain.ibm.com.cert ![External link icon](../images/external_link.svg "External link icon")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/us07.blockchain.ibm.com.cert "us07.blockchain.ibm.com.cert"); [us08.blockchain.ibm.com.cert ![External link icon](../images/external_link.svg "External link icon")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/us08.blockchain.ibm.com.cert "us08.blockchain.ibm.com.cert")
+    - Royaume-Uni :  [uk01.blockchain.ibm.com.cert ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/uk01.blockchain.ibm.com.cert "uk01.blockchain.ibm.com.cert"); [uk02.blockchain.ibm.com.cert ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/uk02.blockchain.ibm.com.cert "uk02.blockchain.ibm.com.cert"); [uk03.blockchain.ibm.com.cert ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/uk03.blockchain.ibm.com.cert "uk03.blockchain.ibm.com.cert"); [uk04.blockchain.ibm.com.cert ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/uk04.blockchain.ibm.com.cert "uk04.blockchain.ibm.com.cert")
+    - Sydney : [aus01.blockchain.ibm.com.cert ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/aus01.blockchain.ibm.com.cert "aus01.blockchain.ibm.com.cert");
+  - [Certificat TLS pour le plan Enterprise![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/3.secure.blockchain.ibm.com.rootcert)
 
   Sauvegardez ce contenu dans un répertoire où vous pouvez y faire référence dans les commandes futures.
 
@@ -269,7 +269,7 @@ Une fois l'identité admin enregistrée, vous devez générer le dossier MSP adm
   ```
   {:codeblock}
 
-  `<enroll_id>` et `<enroll_password>` ci-dessus sont l'**ID** et le  **secret** de l'admin homologue qui a été [enregistré à l'aide du Moniteur réseau](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-register-admin). Le `<ca_name>` et `<ca_url_with_port>` sont les valeurs de  `caName` et  `url` de votre profil de connexion. Laissez `http://` au début de l'URL de l'autorité de certification.
+  Le `<enroll_id>` et le `<enroll_password>` ci-dessus sont l'**ID** et le **Secret** de l'admin homologue qui a été [enregistré à l'aide du Moniteur réseau](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-register-admin). Le `<ca_name>` et le `<ca_url_with_port>` sont les valeurs de `caName` et `url` de votre profil de connexion. Laissez `http://` au début de l'URL de l'autorité de certification.
 
   Un appel réel doit ressembler à ce qui suit dans l'exemple de commande :
 
@@ -363,7 +363,7 @@ Vous devez enregistrer votre homologue auprès de l'autorité de certification T
   ```
   {:codeblock}
 
-  `<enroll_id>` et `<enroll_password>` dans la commande sont le [nom d'utilisateur et le mot de passe admin d'autorité de certification](/docs/services/blockchain/CA_deploy.html#ca-deploy-admin-secret) que vous avez transmis au secret Kubernetes lors du déploiement de l'autorité de certification. Insérez l'[URL d'autorité de certification](/docs/services/blockchain/howto/CA_operate.html#ca-operate-url) dans le `<ca_url_with_port>`. Retirez `http://` au début. Le `<tls_ca_name>` est celui que vous avez spécifié lors de la [configuration de l'autorité de certification](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-configuration-parms).
+  Le `<enroll_id>`et le `<enroll_password>` dans la commande sont le [nom d'utilisateur et le mot de passe admin d'autorité de certification](/docs/services/blockchain/howto/CA_deploy.html#ca-deploy-admin-secret) que vous avez transmis au secret Kubernetes lors du déploiement de l'autorité de certification. Insérez l'[URL d'autorité de certification](/docs/services/blockchain/howto/CA_operate.html#ca-operate-url) dans le `<ca_url_with_port>`. Retirez `http://` au début. Le `<tls_ca_name>` est celui que vous avez spécifié lors de la [configuration de l'autorité de certification](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-configuration-parms).
 
   Le `<ca_tls_cert_file>` est le nom de fichier de votre [certification TLS d'autorité de certification](/docs/services/blockchain/howto/CA_operate.html#ca-operate-tls) avec son chemin d'accès complet.
 
@@ -446,6 +446,8 @@ tree
 │   └── msp
 │       ├── cacerts
 │       │   └── 9-12-19-115-31873-SampleOrgCA.pem
+│       ├── IssuerPublicKey
+│       ├── IssuerRevocationPublicKey
 │       ├── keystore
 │       │   └── c44ec1e708f84b6d0359f58ce2c9c8a289919ba81f2cf4bb5187c4ad5a43cbb0_sk
 │       └── signcerts
@@ -471,6 +473,8 @@ tree
     └── msp
         ├── cacerts
         │   └── 9-30-250-70-30395-tlsca.pem
+        ├── IssuerPublicKey
+        ├── IssuerRevocationPublicKey
         ├── keystore
         │   └── bd57fa20283dfc76ada83f989ee0f62ce23e98c94dbd26f6cd23202d8084e38e_sk
         ├── signcerts
@@ -588,7 +592,7 @@ Un [Secret Kubernetes ![Icône de lien externe](../images/external_link.svg "Ic�
 
 3. Sous l'onglet **Général**, remplissez les zones suivantes :
   - **Nom :** Donnez un nom unique à votre secret au sein de votre cluster. Ce nom sera utilisé lors du déploiement de votre homologue. Il doit être entièrement en minuscules.  
-  **Remarque :** Lorsque vous déployez un homologue, un nouveau secret est automatiquement généré par le déploiement sous le nom `<helm_release_name>-secret`. Par conséquent, lorsque vous nommez votre secret, assurez-vous que son nom soit  différent de `<helm_release_name>-secret` . Sinon, le déploiement de la charte Help échouera car le secret qu'il essaie de créer existe déjà.
+  **Remarque :** Lorsque vous déployez un homologue, un nouveau secret est automatiquement généré par le déploiement sous le nom `<helm release name you intend to use>-secret`. Par conséquent, lorsque vous nommez ce secret, assurez-vous que son nom soit différent de `<helm release name you intend to use>-secret` . Sinon, le déploiement de la charte Help échouera car le secret qu'il essaie de créer existe déjà.
   - **Espace de nom :** espace de nom pour l'ajout de votre secret. Sélectionnez l'`espace de nom` dans lequel vous voulez déployer votre homologue.
   - **Type :** entrez la valeur `Opaque`.
 
@@ -633,8 +637,10 @@ Le tableau suivant répertorie les paramètres configurables de {{site.data.keyw
 
 |  Paramètre     | Description    | Val. déf  | Requis |
 | --------------|-----------------|-------|------- |
+| **Paramètres généraux**| Paramètres qui configurent la charte Helm | | |
 | `Helm release name`| Nom de votre édition Helm. Doit commencer par une lettre minuscule et se terminer par une caractère alphanumérique, doit contenir uniquement des traits d'union et des caractère alphanumérique minuscules. Vous devez utiliser un nom d'édition Helm unique chaque fois que vous essayez d'installer un composant. **Important :** Cette valeur doit correspondre à la valeur que vous avez utilisée pour générer le 'nom d'hôte de service' pour la zone "hosts" dans votre [fichier de secret JSON.](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-csr-hosts) | aucune | oui  |
 | `Target namespace`| Choisissez l'espace de nom Kubernetes pour installer la charte Helm. | aucune | oui |
+| `Target namespace policies`| Affiche les règles de sécurité de pod de l'espace de nom choisi, lequel doit inclure une règle **`ibm-privileged-psp`**. Sinon, une règle [bind a PodSecurityPolicy](/docs/services/blockchain?topic=blockchain-icp-setup#icp-setup-psp) est lié à votre espace de nom. | aucune | non |
 |**Global configuration**| Paramètres qui s'appliquent à tous les composants de la charte Helm|||
 | `Service account name`| Entrez le nom du compte de service [ ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/ "Configure service accounts for pods") que vous allez utiliser pour lancer le pod. | default | non |
 
@@ -647,9 +653,9 @@ Le tableau suivant répertorie les paramètres configurables de {{site.data.keyw
 | `Install Peer` | Sélectionner pour installer un homologue|non sélectionné | oui, si vous souhaitez installer un homologue |
 | `Peer worker node architecture`| Sélectionnez votre architecture de plateforme cloud (AMD64 ou S390x).| AMD64 | oui |
 | `Peer image repository`| Emplacement de la charte Helm de votre homologue. Cette zone est remplie automatiquement par le chemin installé. Si vous utilisez Community Edition et ne disposez pas d'un accès Internet, il doit s'agir du répertoire où vous avez téléchargé l'image d'homologue Fabric. | ibmcom/ibp-fabric-peer | oui |
-| `Peer Docker image tag`|Valeur de la balise associée à l'image de l'homologue |1.2.1, renseigné automatiquement avec la valeur correcte.|oui|
-| `Peer configuration`|Vous pouvez personnaliser la configuration de l'homologue en collant votre propre fichier de configuration `core.yaml` dans cette zone. Pour voir un exemple de fichier `core.yaml`, voir l'exemple de config [`core.yaml` ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://github.com/hyperledger/fabric/blob/release-1.2/sampleconfig/core.yaml "hyperledger/fabric/core.yaml") **Pour les utilisateurs avancés uniquement**. |aucune|non|
-| `Peer configuration secret (Required)`| Nom du [secret de configuration d'homologue](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-config-file-ibp) que vous avez créé dans {{site.data.keyword.cloud_notm}} Private.  |aucune|oui|
+| `Peer Docker image tag`|Valeur de la balise associée à l'image de l'homologue |1.4.0, renseigné automatiquement avec la valeur correcte.|oui|
+| `Peer configuration`|Vous pouvez personnaliser la configuration de l'homologue en collant votre propre fichier de configuration `core.yaml` dans cette zone. Pour voir un exemple de fichier `core.yaml`, voir l'exemple de config [`core.yaml` ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://github.com/hyperledger/fabric/blob/release-1.4/sampleconfig/core.yaml "hyperledger/fabric/core.yaml") **Pour les utilisateurs avancés uniquement**. |aucune|non|
+| `Peer configuration secret (Required)`| Nom du [secret de configuration d'homologue](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-config-file-ibp) que vous avez créé dans {{site.data.keyword.cloud_notm}} Private. | aucune | oui |
 |`Organization MSP (Required)`|Cette valeur peut être trouvée dans le Moniteur réseau (interface utilisateur de plan Starter et Enterprise) en cliquant sur "Configuration de l'homologue distant" sur l'écran Présentation.  |aucune|oui|
 |`Peer service type`| Utilisé pour indiquer si des [ports externes doivent être exposés![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types "Publication de services - types de service") sur l'homologue. Sélectionnez NodePort pour exposer les ports en externe (recommandé), et ClusterIP pour ne pas exposer les ports. LoadBalancer et ExternalName ne sont pas pris en charge dans cette édition. | NodePort |oui|
 | `State database`| [Base de données d'état](/docs/services/blockchain/glossary.html#glossary-state-database) utilisée pour le stockage de votre registre de canal. L'homologue doit utiliser la même base de données que votre [réseau de blockchain](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-network-preferences). | LevelDB | oui |
@@ -673,6 +679,14 @@ Le tableau suivant répertorie les paramètres configurables de {{site.data.keyw
 | `State database volume claim size`| Choisissez la taille de disque à utiliser. | 8Gi | oui |
 | `CouchDB - Data persistence enabled`| Pour le conteneur CouchDB, les données de registre seront disponibles au redémarrage du conteneur. *Si ce paramètre est désélectionné, toutes les données seront perdues en cas de reprise en ligne ou de redémarrage du pod.*| sélectionné | non |
 | `CouchDB - Use dynamic provisioning`| Pour le conteneur CouchDB, utilisation de la mémoire dynamique Kubernetes.| sélectionné | non |
+| `Docker-in-Docker CPU request`| Indiquez le nombre minimum d'UC à allouer au conteneur dans lequel s'exécute le code blockchain. | 1 | oui |
+| `Docker-in-Docker CPU limit`| Indiquez le nombre maximum d'UC à allouer au conteneur dans lequel s'exécute le code blockchain. | 2 | oui |
+| `Docker-in-Docker memory request`|  Indiquez la quantité minimum de mémoire à allouer au conteneur dans lequel s'exécute le code blockchain. | 1 Gi | oui |
+| `Docker-in-Docker  memory limit`|  Indiquez la quantité maximum de mémoire à allouer au conteneur dans lequel s'exécute le code blockchain. | 4 Gi | oui |
+| `gRPC web proxy CPU request`| Indiquez le nombre minimum d'UC en millicpus (m) à allouer au proxy Web gRPC. | 100 m | oui |
+| `gRPC web proxy CPU limit`| Indiquez le nombre maximum d'UC en millicpus (m) à allouer au proxy Web gRPC. | 200 m | oui |
+| `gRPC web proxy memory request`| Indiquez la quantité minimum de mémoire à allouer au proxy Web gRPC. | 100 Mi | oui |
+| `gRPC web proxy memory limit`| Indiquez la quantité maximum de mémoire à allouer au proxy Web gRPC. | 200 Mi | oui |
 | `Peer CPU request` | Nombre minimum d'UC à allouer à l'homologue. | 1 | oui |
 | `Peer CPU limit` | Nombre maximum d'UC à allouer à l'homologue.| 2 | oui |
 | `Peer Memory request` | Quantité minimum de mémoire à allouer à l'homologue. | 1 Gi | oui |
@@ -699,7 +713,7 @@ processes. This container has two volume mounts, one for the Peer PVC and the se
 ### Utilisation de la ligne de commande Helm pour installer l'édition Helm
 {: #ibp-peer-deploy-helm-cli}
 
-Vous pouvez aussi utiliser l'interface de ligne de commande Helm pour installer l'édition Helm. Avant d'exécuter la commande `helm install`, assurez-vous [d'ajouter le référentiel Helm de votre cluster à l'environnement de l'interface de ligne de commande Helm![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_int_helm_repo_to_cli.html "Adding the internal Helm repository to Helm CLI").
+Vous pouvez aussi utiliser l'interface de ligne de commande Helm pour installer l'édition Helm. Avant d'exécuter la commande `helm install`, assurez-vous [d'ajouter le référentiel Helm de votre cluster à l'environnement de l'interface de ligne de commande Helm![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/app_center/add_int_helm_repo_to_cli.html "Adding the internal Helm repository to Helm CLI").
 
 Vous pouvez définir les paramètres requis pour l'installation en créant un fichier `yaml` et en le transmettant à la commande `helm install` suivante.
 
@@ -741,7 +755,7 @@ Les journaux de composant peuvent être affichés à partir de la ligne de comma
 ## Etapes suivantes
 {: #ibp-peer-deploy-whats-next}
 
-Après que vous avez déployé l'homologue, vous devez effectuer quelques étapes supplémentaires avant de soumettre des transactions et lire le registre partagé depuis le réseau de blockchain. Pour plus d'informations, voir  [Exploitation des homologues avec Starter Plan ou Enterprise Plan](/docs/services/blockchain/howto/peer_operate_ibp.html#ibp-peer-operate).
+Après que vous avez déployé l'homologue, vous devez effectuer quelques étapes supplémentaires avant de soumettre des transactions et lire le registre partagé depuis le réseau de blockchain. Pour plus d'informations, voir [Exploitation des homologues avec Starter Plan ou Enterprise Plan](/docs/services/blockchain/howto/peer_operate_ibp.html#ibp-peer-operate).
 
 
 ## Traitement des incidents

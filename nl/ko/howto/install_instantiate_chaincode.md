@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018,2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -38,7 +38,7 @@ subcollection: blockchain
 
 2. **체인코드 설치** 팝업 패널에서 체인코드의 이름과 버전을 입력하십시오. 설치된 체인코드와 상호작용할 애플리케이션에서 이름 및 버전 문자열이 사용된다는 점을 **참고**하십시오. **찾아보기** 단추를 클릭하고 체인코드 소스 파일이 저장되는 로컬 파일 시스템으로 이동하십시오. 피어에 설치할 하나 이상의 체인코드 소스 파일을 선택하십시오. 그런 다음 **체인코드 유형** 드롭 다운에서 체인코드 언어를 선택하십시오.
 
-단일 또는 다중 GO 또는 NODE 파일을 업로드하여 체인코드를 설치하거나 .zip 파일 내에 체인코드를 업로드할 수 있습니다. .zip 파일 사용 시 완전한 디렉토리 구조로 체인코드를 유지보수합니다. 이는 종속 항목 패키지를 포함하거나 CouchDB에서 인덱스를 사용하려는 경우에 유용합니다. CouchDB에 관한 자세한 정보와 인덱스 설정 방법은 애플리케이션 개발 튜토리얼의 [CouchDB 사용 시의 우수 사례](/docs/services/blockchain/v10_application.html#dev-app-couchdb-indices)를 참조하십시오. Hyperledger Fabric 문서의 [Go로 작성된 체인코드의 외부 종속 항목 관리![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/chaincode4ade.html#managing-external-dependencies-for-chaincode-written-in-go){:new_window}에서 정보를 찾을 수도 있습니다.
+단일 또는 다중 GO 또는 NODE 파일을 업로드하여 체인코드를 설치하거나 .zip 파일 내에 체인코드를 업로드할 수 있습니다. .zip 파일 사용 시 완전한 디렉토리 구조로 체인코드를 유지보수합니다. 이는 종속 항목 패키지를 포함하거나 CouchDB에서 인덱스를 사용하려는 경우에 유용합니다. CouchDB에 관한 자세한 정보와 인덱스 설정 방법은 애플리케이션 개발 튜토리얼의 [CouchDB 사용 시의 우수 사례](/docs/services/blockchain/best_practices.html#best-practices-app-couchdb-indices)를 참조하십시오. Hyperledger Fabric 문서의 [Go로 작성된 체인코드의 외부 종속 항목 관리![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/chaincode4ade.html#managing-external-dependencies-for-chaincode-written-in-go){:new_window}에서 정보를 찾을 수도 있습니다.
 
   ![체인코드 설치](../images/chaincode_install.png "체인코드 설치")
 
@@ -59,7 +59,7 @@ subcollection: blockchain
   ![Instantiate Chaincode panel](../images/chaincode_instantiate_panel.png "Instantiate Chaincode panel")
 -->
 
-3. 체인코드의 [보증 정책](/docs/services/blockchain/glossary.html#glossary-endorsement-policy)을 지정하십시오. [다음 절](/docs/services/blockchain/howto/install-instantiate-chaincode.html#install-instantiate-chaincode-endorsement-policy)에서 보증 정책을 설정하는 방법에 대해 자세히 알아볼 수 있습니다.
+3. 체인코드의 [보증 정책](/docs/services/blockchain/glossary.html#glossary-endorsement-policy)을 지정하십시오. [다음 절](#install-instantiate-chaincode-endorsement-policy)에서 보증 정책을 설정하는 방법에 대해 자세히 알아볼 수 있습니다.
 
 
 ## 체인코드 보증 정책 지정

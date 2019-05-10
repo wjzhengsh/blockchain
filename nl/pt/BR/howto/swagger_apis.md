@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018,2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-03"
 
 subcollection: blockchain
 
@@ -79,6 +79,27 @@ A **Figura 6** mostra o corpo de resposta da API, a URL e o comando CURL:
 
 ![Resposta da API na UI do Swagger](../images/swaggerUICurlResponse.png "Resposta da API na UI do Swagger")  
 *Figura 6. Resposta da API*    
+
+## Desativando o acesso à API
+{: #ibp-swagger-turn-off}
+
+Por padrão, todos os usuários com uma função que não seja de Auditor no IBM Cloud podem visualizar e usar as **Credenciais de rede** visíveis no painel de APIs do Swagger e, portanto, podem gerenciar sua rede usando as APIs. No entanto, se você preferir não expor suas credenciais de rede da API do Swagger na IU, será possível copiar e proteger seus valores de chave e segredo existentes e gerar novas credenciais que não sejam válidas para uso com as APIs do Swagger. Um sinalizador, denominado resetCredentials, é fornecido para permitir que você controle o acesso concluindo as etapas a seguir:
+
+1. Siga as etapas para gerar uma nova credencial de rede, conforme descrito no [Painel de credenciais de serviço](/docs/services/blockchain/howto/create_join_network_with_apis.html#swagger-network-retrieve-id-token).
+2. No entanto, na caixa **Incluir parâmetros de configuração sequencial**, cole o valor a seguir:
+   ```
+   {
+     "resetCredentials": true
+   }
+   ```
+   {:codeblock}
+3. Clique em **Incluir**.
+
+Agora, quando qualquer usuário acessar o painel de APIs do Swagger por meio da IU, as informações de **Credenciais de rede** na IU conterão uma chave genérica e um valor secreto que não será válido para gerenciar sua rede. Qualquer solicitação de API enviada usando essas credenciais não será processada.  
+
+Se, posteriormente, você desejar expor as credenciais de rede válidas na IU, basta repetir as etapas acima para gerar uma nova credencial. No entanto, desta vez, será possível deixar a caixa **Incluir parâmetros de configuração sequencial** em branco. Não é necessário especificar parâmetros.
+
+Agora, as credenciais válidas originais serão visíveis nas informações de **Credenciais de rede** da IU e poderão ser usadas para autenticar as APIs do Swagger.
 
 ## Dicas de resolução de problemas
 {: #ibp-swagger-troubleshooting}

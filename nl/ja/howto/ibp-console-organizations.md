@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-03"
 
 subcollection: blockchain
 
@@ -19,7 +19,7 @@ subcollection: blockchain
 
 {{site.data.keyword.blockchainfull}} Platform コンソールを使用して、メンバーシップ・サービス・プロバイダー (MSP) と呼ばれる正式な組織定義を作成できます。 組織の MSP 定義を作成すれば、ブロックチェーン・コンソーシアムの他のメンバーが、この組織のノードやアプリケーションのアイデンティティーを確認できるようになります。 MSP 定義には組織の管理者の証明書も含まれています。
 
-コンソールを使用して、ネットワークのメンバーとして参加する組織を管理することもできます。順序付けサービスの管理者は、組織タブを使用してブロックチェーン・[コンソーシアム](/docs/services/blockchain/glossary.html#glossary-consortium)にメンバーを追加できます。 その後は、コンソーシアムのメンバーが、コンソールを使用して新規チャネルまたは既存のチャネルにメンバーを追加できます。
+コンソールを使用して、ネットワークのメンバーとして参加する組織を管理することもできます。 順序付けサービスの管理者は、組織タブを使用してブロックチェーン・[コンソーシアム](/docs/services/blockchain/glossary.html#glossary-consortium)にメンバーを追加できます。 その後は、コンソーシアムのメンバーが、コンソールを使用して新規チャネルまたは既存のチャネルにメンバーを追加できます。
 
 **対象者:** このトピックは、ブロックチェーン・ネットワークの作成、モニター、管理を担当するネットワーク・オペレーターを対象に設計されています。
 
@@ -65,11 +65,90 @@ Hyperledger Fabric をベースとする {{site.data.keyword.blockchainfull_notm
   2. **「生成」**をクリックします。 これにより、公開鍵と秘密鍵の新しいセットが生成され、それらの鍵がコンソール・ウォレットに自動的に追加されます。 ウォレットでは、管理者 ID はこのパネルで選択した名前で表示されます。 これらの鍵は、ブラウザーのローカル・ストレージにしか保管されないので、ブラウザーを変更すると、コンソール・ウォレットに表示されなくなります。 元のブラウザーから ID をエクスポートし、新しいブラウザーのコンソール・ウォレットにインポートする必要があります。
   3. 次に、**「エクスポート」**をクリックしてファイル・システムに鍵ペアをダウンロードし、安全な場所に保管します。
 
-- サイド・パネルの**「管理者 (オプション) (Administrators (Optional))」**セクションに管理者の公開鍵が含まれています。 **「組織管理者証明書の生成 (Generate organization admin certificate)」**セクションを使用して生成した証明書は、**「管理者証明書 (admin certificate)」**フィールドの最初の行にあります。 複数の管理者 ID を使用してネットワークを操作する場合、追加のノード管理者または組織管理者の証明書を**「管理者証明書 (admin certificate)」**フィールドに貼り付けることができます。
+- サイド・パネルの**「管理者 (オプション) (Administrators (Optional))」**セクションに管理者の公開鍵が含まれています。 **「組織管理者証明書の生成 (Generate organization admin certificate)」**セクションを使用して生成した証明書は、**「管理者証明書 (admin certificate)」**フィールドの最初の行にあります。複数の管理者 ID を使用してネットワークを操作する場合、追加のノード管理者または組織管理者の証明書を**「管理者証明書 (admin certificate)」**フィールドに貼り付けることができます。
 
 管理者証明書は MSP 定義を使用してノードおよびチャネルに渡されるので、ノード管理者と組織管理者の各証明書が MSP に保管されていることを確認する必要があります。 コンソールを使用して順序付けプログラム、ピア、またはチャネルを作成するときに、コンソール・ウォレットにエクスポートしたいずれかの ID を、MSP 定義に指定されている管理者証明書に**関連付ける**必要があります。 **「ID の関連付け (Associate identity)」**セクションまたはパネルが表示されたら、MSP 定義の作成時に生成してウォレットに保存した ID を選択します。
 
 ルート CA、MSP ID、および作成した管理者証明書を選択したら、**「MSP 定義の作成 (Create MSP definition)」**をクリックして、MSP 定義を作成します。 定義が、「組織」タブに組織としてリストされるようになります。 ノードをデプロイして、ブロックチェーン・コンソーシアムに参加するときには、この MSP 定義を使用することになります。
+
+## MSP の JSON ファイルの手動作成
+{: #console-organizations-build-msp}
+
+**これは、ブロックチェーンの ID 管理における証明書の使用方法に詳しい上級者ユーザー向けのオプションです。**
+
+**外部 CA** ({{site.data.keyword.IBM_notm}} がホストする CA ではないもの) で作成された証明書をピアまたは順序付けプログラムに使用する場合は、ピア組織または順序付けプログラム組織の MSP 定義を表す MSP 定義 JSON ファイルを作成する必要があります。以下の形式を使用して JSON ファイルを作成します。
+
+```
+{
+    "name": "<organization_name>",
+    "msp_id": "<organization_id>",
+    "type": "msp",
+    "root_certs": [
+        "<root_certs>"
+    ],
+     "intermediate_certs": [
+         "<intermediate_certs>"
+     ],
+    "admins": [
+        "<admins>"
+    ],
+    "tls_root_certs": [
+        "<tls_root_certs>"
+    ],
+    "tls_intermediate_certs": [
+        "<tls_intermediate_certs>"
+    ]
+}
+```
+{:codeblock}
+
+- **organization_name**: コンソールでこの MSP 定義を識別するために使用する名前を指定します。
+- **organization_id**: コンソールでこの MSP を内部的に表すために使用する ID を指定します。
+- **root_certs**: (オプション) 外部 CA で作成された `base64` 形式のルート証明書を 1 つ以上含む配列を貼り付けます。CA ルート証明書または中間 CA 証明書のどちらかを指定する必要があります。両方を指定することもできます。
+- **intermediate_certs**: (オプション) 外部の中間 CA で作成された `base64` 形式の証明書を 1 つ以上含む配列を貼り付けます。CA ルート証明書または中間 CA 証明書のどちらかを指定する必要があります。両方を指定することもできます。
+- **admins**: 組織管理者の `base64` 形式の署名付き証明書を貼り付けます。
+- **tls_root_certs**: (オプション) TLS CA で作成された `base64` 形式のルート証明書を 1 つ以上含む配列を貼り付けます。外部 TLS CA のルート証明書または外部中間 TLS の CA 証明書のどちらかを指定する必要があります。両方を指定することもできます。
+- **tls_intermediate_certs**: (オプション) 中間 TLS CA で作成された `base64` 形式の証明書を 1 つ以上含む配列を貼り付けます。外部 TLS CA のルート証明書または外部中間 TLS の CA 証明書のどちらかを指定する必要があります。両方を指定することもできます。  
+
+MSP 定義では、以下の追加フィールドも使用できますが、必須ではありません。
+- **organizational_unit_identifiers**: この MSP の有効なメンバーの各 X.509 証明書に含める必要がある組織単位 (OU) のリスト。これは、複数の組織で同じトラスト・ルートと中間 CA を利用し、組織ごとに自組織メンバーのために OU フィールドを予約している場合に使用するオプションの構成パラメーターです。多くの場合、組織は職務ごとに複数の組織単位 (OU) に分割されます。例えば、ORG1 組織には、製造業務と販売業務という別々の基幹業務を表す ORG1-MANUFACTURING と ORG1-DISTRIBUTION という OU があるかもしれません。CA が発行する X.509 証明書の OU フィールドには、そのアイデンティティーが属する基幹業務が指定されます。詳しくは、Fabric の資料の [Identity Classification ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/latest/msp.html#identity-classification "Identity Classification") のトピックを参照してください。  
+- **fabric_node_OUs**: アイデンティティー分類を可能にする Fabric 固有の OU。`NodeOUs` には、クライアント、ピア、順序付けプログラムをそれぞれの OU に基づいて区別する方法についての情報が含まれます。Enabled を true に設定してチェックを実施する場合、MSP は、アイデンティティーが `client`、`peer`、または `orderer` のアイデンティティーである場合に、そのアイデンティティーを有効と見なします。アイデンティティーには、このような特別な OU のうちの 1 つだけを指定する必要があります。MSP で `fabric_node_OU` を指定する方法の例については、[Fabric Service Discovery の資料 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/latest/discovery-cli.html#configuration-query) のトピックを参照してください。
+- **revocation_list**: 有効でなくなった証明書のリスト。X.509 ベースのアイデンティティーの場合、これらのアイデンティティーは、Subject Key Identifier (SKI) および Authority Access Identifier (AKI) と呼ばれるストリングのペアであり、X.509 証明書を使用するときには、必ず、証明書が失効していないかどうかを確認するためにチェックされます。 [証明書失効リスト ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/users-guide.html?highlight=revocation%20list#revoking-a-certificate-or-identity "証明書またはアイデンティティーの失効") について詳しくは、Fabric の資料のトピックを参照してください。
+
+例えば、以下のような JSON ファイルになります。
+
+```
+{
+    "name": "Org1 MSP",
+    "msp_id": "org1msp",
+    "type": "msp",
+    "root_certs": [
+        "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUNGakNDQWIyZ0F3SUJBZ0lVZFhUcWNZVVhRS3U3WHVQWmcxUHBsekpFVFlNd0NnWUlLb1pJemowRUF3SXcKYURFTE1Ba0dBMVVFQmhNQ1ZWTXhGekFWQmdOVkJBZ1REazV2Y25Sb0lFTmhjbTlzYVc1aE1SUXdFZ1lEVlFRSwpFd3RJZVhCbGNteGxaR2RsY2pFUE1BMEdBMVVFQ3hNR1JtRmljbWxqTS0K"
+    ],
+    "admins": [
+        "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tDQpNSUlDWHpDQ0FnYWdBd0lCQWdJVVp6NFdQdWwxRXRVOUNIcTl4NFg0Y2QwakNpNHdDZ1lJS29aSXpqMEVBd0l3DQphREVMTUFrR0ExVUVCaE1DVlZNeEZ6QVZCZ05WQkFnVERrNXZjblJvSUVOaGNtOXNhVzVoTVJRd0VnWURWUVFLDQpFd3RJZVhCbGNteGxaR2RsY2pFUE1BMEdBMVVFQ3hNR1JtRmljbFLS0tLS0NCg=="
+    ],
+    "tls_root_certs": [
+        "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUNHRENDQWI2Z0F3SUJBZ0lVTzVhWU9WbjNwTkRMZGVLTFlIanRIUEtNTnY4d0NnWUlLb1pJemowRUF3SXcKWFRFTE1Ba0dBMVVFQmhNQ1ZWTXhGekFWQmdOVkJBZ1REazV2Y25Sb0lFTmhjbTlzYVc1aE1SUXdFZ1lEVlFRSwpFd3RJZVhCbGNteGxaR2RsY2pFUE1BMEdBMVVFQ3hNR1JtRmljbWxqTVE0d0RBWamd5TURRM01EQmFNRjB4Q3pBSkJnTlZCQVlUQWxWVE1SY3cKRlFZRFZRUUlFdztLS0K"
+    ]
+}
+```
+{:codeblock}
+
+証明書はすべて base64 形式でエンコードしたものでなければならないことに注意してください。
+{:important}
+
+`PEM` 形式の証明書ファイル `<cert.pem>` の内容を base64 ストリングに変換するには、ローカル・マシンで次のコマンドを実行します。
+
+```
+export FLAG=$(if [ "$(uname -s)" == "Linux" ]; then echo "-w 0"; else echo "-b 0"; fi)
+cat <cert.pem> | base64 $FLAG
+```
+{:codeblock}
+
+この定義を `JSON` ファイルとして保存します。  
+
+外部 CA からの証明書を使用してピア・ノードまたは順序付けプログラム・ノードの組織を定義する MSP 定義を構成しました。これで、[外部 CA からの証明書をピアまたは順序付けプログラムに使用する手順](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-third-party-ca)に戻ることができます。
 
 ## MSP のインポート
 {: #console-organizations-import-msp}
@@ -87,13 +166,25 @@ Hyperledger Fabric をベースとする {{site.data.keyword.blockchainfull_notm
 順序付けサービスの管理者は、コンソールを使用して組織をコンソーシアムに追加することができます。 **「ノード」**タブに移動し、順序付けノードをクリックします。 順序付けノード・パネルの**「コンソーシアム・メンバー (Consortium members)」**で、**「組織の追加 (Add organization)」**をクリックします。 [組織タブにインポートした](/docs/services/blockchain/howto/ibp-console-organizations.html#console-organizations-import-msp) MSP 定義のリストから MSP 定義を選択できるサイド・パネルが開きます。 **「JSON のアップロード (Upload JSON)」**オプションを使用して、他の組織で作成された MSP 定義ファイルを直接インポートすることもできます。
 
 ## チャネルの作成および編集
+{: #console-organizations-create-channel}
 
-組織がコンソーシアムに追加されたら、組織は順序付けサービスを使用して新しいチャネルを作成したり、既存のチャネルに自身を追加したりできます。チャネルへの参加 (チャネルにピアを参加させる、スマート・コントラクトをインスタンス化する、トランザクションを送信するなど) に必要な情報は、MSP 定義を使用して提供されます。
+組織がコンソーシアムに追加されたら、組織は順序付けサービスを使用して新しいチャネルを作成したり、既存のチャネルに自身を追加したりできます。 チャネルへの参加 (チャネルにピアを参加させる、スマート・コントラクトをインスタンス化する、トランザクションを送信するなど) に必要な情報は、MSP 定義を使用して提供されます。
 
 コンソーシアムに追加された組織は、以下の手順を使用してチャネルを作成できます。
 
-1. コンソーシアムをホストしている順序付けノードを、自分のコンソールにインポートします。その順序付けノードの管理者になる必要はありませんが、自分のコンソールで順序付けプログラム・ノードの名前とエンドポイント情報を指定する必要があります。
-2. **「組織」**タブで、新しいチャネルに追加する組織の MSP をコンソールにインポートします。組織をチャネルに追加するには、まず、その組織をコンソーシアムに追加する必要があることに**注意してください**。
+1. コンソーシアムをホストしている順序付けノードを、自分のコンソールにインポートします。 その順序付けノードの管理者になる必要はありませんが、自分のコンソールで順序付けプログラム・ノードの名前とエンドポイント情報を指定する必要があります。
+2. **「組織」**タブで、新しいチャネルに追加する組織の MSP をコンソールにインポートします。 組織をチャネルに追加するには、まず、その組織をコンソーシアムに追加する必要があることに**注意してください**。
 3. **「チャネル」**タブに移動し、**「チャネルの作成 (Create channel)」**をクリックします。 チャネル名、メンバーシップ、およびチャネル・ポリシーを指定できるサイド・パネルが開きます。 コンソーシアムに追加されている任意の組織を新規チャネルに追加できます。
 
 これらの手順の詳細については、**ネットワーク構築**チュートリアルの[チャネルの作成](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-create-channel1)を参照してください。
+
+### チャネル定義の MSP の更新
+{: #console-organizations-update-channel}
+
+時間が経過すると、チャネルに既に関連付けられている MSP 定義の証明書を更新しなければならなくなることがあります。 そのような状態になった場合は、以下の手順を実行して、そのチャネルに属する組織の MSP 定義を更新します。  
+
+1. コンソールの**「チャネル」**タブにナビゲートします。
+2. 更新する組織の MSP が属するチャネルをクリックして開きます。
+3. **「チャネルの詳細 (Channel details)」**タブをクリックします。
+4. 更新する関連チャネル・メンバーのタイルをクリックします。
+5. 更新した MSP 定義をまだコンソールにインポートしていない場合は、ここでファイルをアップロードできます。 **注:** この操作を実行しても、「組織」タブに表示される関連 MSP 定義は更新されません。 コンソールの「組織」タブで MSP 定義を既に更新している場合は、ドロップダウン・リストからその定義を選択できます。

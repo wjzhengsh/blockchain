@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-17"
 
 subcollection: blockchain
 
@@ -18,7 +18,7 @@ subcollection: blockchain
 # Glossar
 {: #glossary}
 
-In diesem Abschnitt werden spezielle Begriffe von {{site.data.keyword.blockchainfull}} definiert, die in der vorliegenden Dokumentation Verwendung finden. Eine eingehendere Erläuterung der Begriffe sowie ein Glossar der Begriffe, die im Zusammenhang mit den Konzepten von Hyperledger Fabric verwendet werden, enthält das [Glossar für Hyperledger Fabric ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](http://hyperledger-fabric.readthedocs.io/en/release-1.2/glossary.html).
+In diesem Abschnitt werden spezielle Begriffe von {{site.data.keyword.blockchainfull}} definiert, die in der vorliegenden Dokumentation Verwendung finden. Eine eingehendere Erläuterung der Begriffe sowie ein Glossar der Begriffe, die im Zusammenhang mit den Konzepten von Hyperledger Fabric verwendet werden, enthält das [Glossar für Hyperledger Fabric ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](http://hyperledger-fabric.readthedocs.io/en/release-1.4/glossary.html).
 {:shortdesc}
 
 ## Aktueller Status
@@ -77,20 +77,15 @@ Der Konfigurationsblock, der ein Blockchain-Netz oder einen Blockchain-Kanal ini
 
 ## Gossip
 {: #glossary-gossip}
-Hyperledger Fabric ermöglicht Peers die Zusammenstellung wichtiger Netzinformationen anderer Peers, ohne dass hierzu der Anordnungsservice benötigt wird. Das [Gossip-Datenverteilungsprotokoll ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric.readthedocs.io/en/release-1.1/gossip.html) bietet eine sichere, zuverlässige und skalierbare Möglichkeit, mit deren Hilfe Peers Nachrichten austauschen können. Wenn Peers beispielsweise bestimmte Blöcke nicht erhalten, weil es zu Verzögerungen, Netzausfällen oder anderen Problemen gekommen ist, können Sie sich auf den aktuellen Ledgerstatus synchronisieren, indem Sie über den Gossip-Nachrichtenaustausch Kontakt zu anderen Peers aufnehmen, die über die fehlenden Blöcke verfügen.
+Hyperledger Fabric ermöglicht Peers die Zusammenstellung wichtiger Netzinformationen anderer Peers, ohne dass hierzu der Anordnungsservice benötigt wird. Das [Gossip-Datenverteilungsprotokoll ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/gossip.html) bietet eine sichere, zuverlässige und skalierbare Möglichkeit, mit deren Hilfe Peers Nachrichten austauschen können. Wenn Peers beispielsweise bestimmte Blöcke nicht erhalten, weil es zu Verzögerungen, Netzausfällen oder anderen Problemen gekommen ist, können Sie sich auf den aktuellen Ledgerstatus synchronisieren, indem Sie über den Gossip-Nachrichtenaustausch Kontakt zu anderen Peers aufnehmen, die über die fehlenden Blöcke verfügen.
 
 ## HSM
 {: #glossary-hsm}
 Hardwaresicherheitsmodul (Hardware Security Module). Stellt Verschlüsselung, Schlüsselmanagement und Schlüsselspeicher als verwalteten Service auf Anforderung zur Verfügung. HSM ist eine physische Einheit (Appliance), die die ressourcenintensiven Tasks der Verschlüsselungsverarbeitung abwickelt und die Latenz für Anwendungen verringert. Weitere Informationen finden Sie unter [Hardware Security Module ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://www.ibm.com/cloud/hardware-security-module).
 
-## Hyperledger Composer
-{: #glossary-composer}
-**IBM bietet keinen Support für Netze, die Hyperledger Composer in Produktionsumgebungen nutzen, inklusive Composer-Befehlszeilenschnittstelle, JavaScript-APIs, REST-Server und Web Playground.**
-[Hyperledger Composer ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://hyperledger.github.io/composer/latest/introduction/introduction.html) ist ein quelloffenes Entwicklungstoolset. Es verwendet eine spezielle Modellierungssprache, die mit JavaScript-Transaktionen und Zugriffssteuerungsregeln kombiniert wird, um ein Blockchain-Unternehmensnetz vollständig zu modellieren. Sie können Hyperledger Composer für die Integration vorhandener Systeme und Daten in Ihre Blockchain-Anwendung verwenden, bevor Sie irgendwelche Elemente in einer realen Blockchain-Instanz bereitstellen.
-
 ## Hyperledger Fabric
 {: #glossary-hyperledger-fabric}
-[Hyperledger Fabric ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/) ist ein unternehmensorientiertes Blockchain-Framework, das von der Linux Foundation als Basis für die Entwicklung von Blockchain-Anwendungen oder -Lösungen mit einer modularen Architektur zur Verfügung gestellt wird. Hyperledger Fabric-Komponenten wie Konsens- und Mitgliedschaftsservices sind Plug-and-play-fähig.
+[Hyperledger Fabric ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](http://hyperledger-fabric.readthedocs.io/en/release-1.4/) ist ein unternehmensorientiertes Blockchain-Framework, das von der Linux Foundation als Basis für die Entwicklung von Blockchain-Anwendungen oder -Lösungen mit einer modularen Architektur zur Verfügung gestellt wird. Hyperledger Fabric-Komponenten wie Konsens- und Mitgliedschaftsservices sind Plug-and-play-fähig.
 
 ## Installation
 {: #glossary-install}
@@ -189,17 +184,13 @@ Eine Organisation, Einzelperson, Anwendung oder Einheit (Gerät), die mit dem Bl
 {: #glossary-transaction}
 Der Mechanismus, über den Teilnehmer im Blockchain-Netz mit Assets interagieren. Eine Transaktion erstellt entweder einen neuen Chaincode oder ruft eine Operation in einem vorhanden Chaincode auf.
 
-## Unternehmensnetz
-{: #glossary-business-network}
-Eine Definition eines Blockchain-Netzes, die das Datenmodell, die Transaktionslogik und Zugriffssteuerungsregeln für Ihre Blockchain-Lösung enthält. Unternehmensnetzdefinitionen werden mit [Hyperledger Composer](/docs/services/blockchain/glossary.html#glossary-composer) erstellt. Unternehmensnetzdefinitionen werden in bereitstellbare BNA-Dateien (**.bna** - business network archive) gepackt.
-
 ## Verbindungsprofil
 {: #glossary-connection-profile}
 Das Verbindungsprofil ist in der Anzeige "Übersicht" im Network Monitor sichtbar, wenn Sie auf die Schaltfläche **Verbindungsprofil** klicken. Die Informationen sind im JSON-Format verfügbar und enthalten die Informationen zu den API-Endpunkten sowie die Eintrags-IDs (enrollIDs) und die geheimen Schlüssel (secrets) für Ihre Netzressourcen, das heißt für Peers, Anordnungsknoten und Zertifizierungsstellen (CA). Ihre Anwendung interagiert mit Netzressourcen über diese API-Endpunkte.
 
 ## World-Status
 {: #glossary-world-state}
-Siehe [Aktueller Status]((/docs/services/blockchain/glossary.html#glossary-current-state).
+Siehe [Aktueller Status](/docs/services/blockchain/glossary.html#glossary-current-state).
 ## Zertifizierungsstelle (CA)
 {: #glossary-CA}
 CA steht als Abkürzung für den englischen Begriff "Certificate Authority", zu Deutsch "Zertifizierungsstelle". Hierbei handelt es sich um die Komponente, die Zertifikate an alle teilnehmenden Mitglieder ausgibt. Diese Zertifikate stellen die Identität eines Mitglieds dar. Alle Entitäten im Netz (Peers, Anordnungsknoten, Clients usw.) müssen eine Identität haben, um kommunizieren, sich authentifizieren und letztlich Transaktionen ausführen zu können. Diese Identitäten sind für jede direkte Teilnahme am Blockchain-Netz erforderlich.

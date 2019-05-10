@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-03-20"
 
 subcollection: blockchain
 
@@ -141,4 +141,4 @@ Write Set: `{Key='CAR1', value[3]='Joe'}`
 
 CouchDB를 상태 데이터베이스로 사용하는 경우, 채널의 상태 데이터에 대해 체인코드에서 JSON 데이터 조회를 시작할 수 있습니다. JSON 조회를 위한 색인을 작성한 후 체인코드에서 해당 색인을 사용할 것을 적극 권장합니다. 색인을 사용하는 경우 네트워크에서 트랜잭션 및 항목의 추가 블록을 세계 상태로 추가하기 때문에 애플리케이션에서 효율적으로 데이터를 검색할 수 있습니다.
 
-CouchDB에 관한 자세한 정보와 인덱스 작성 방법은 Hyperledger Fabric 문서에서 [상태 데이터베이스로서의 CouchDB![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/couchdb_as_state_database.html "상태 데이터베이스로서의 CouchDB"){:new_window}를 참조하십시오. [Fabric CouchDB 튜토리얼 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/couchdb_tutorial.html)에서 체인코드와 인텍스를 사용하는 예도 찾을 수 있습니다. 애플리케이션에서 데이터를 조회하는 방법에 대한 자세한 정보는 애플리케이션 개발 튜토리얼의 [CouchDB 사용 시의 우수 사례](/docs/services/blockchain/v10_application.html#dev-app-couchdb-indices)를 참조하십시오.
+CouchDB에 관한 자세한 정보와 인덱스 작성 방법은 Hyperledger Fabric 문서에서 [상태 데이터베이스로서의 CouchDB![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/couchdb_as_state_database.html "상태 데이터베이스로서의 CouchDB"){:new_window}를 참조하십시오. [Fabric CouchDB 튜토리얼 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/couchdb_tutorial.html)에서 체인코드와 인텍스를 사용하는 예도 찾을 수 있습니다. 애플리케이션에서 데이터를 조회하는 방법에 대한 자세한 정보는 애플리케이션 개발 튜토리얼의 [CouchDB 사용 시의 우수 사례](/docs/services/blockchain/best_practices.html#best-practices-app-couchdb-indices)를 참조하십시오.

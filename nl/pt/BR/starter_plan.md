@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -30,7 +30,7 @@ O {{site.data.keyword.blockchainfull}} Platform Starter Plan é uma opção de n
 
 **Notas:**
 - O {{site.data.keyword.blockchainfull_notm}} Platform Starter Plan é um ambiente de desenvolvimento e teste e não é adequado para cargas de trabalho de produção. Se você precisar de um ambiente de produção, veja [Sobre o Enterprise Plan](/docs/services/blockchain/enterprise_plan.html#enterprise-plan-about).
-- O {{site.data.keyword.blockchainfull_notm}} Platform é um serviço de plataforma no {{site.data.keyword.cloud_notm}} e todas as ofertas de associação seguem os [Termos de serviços do {{site.data.keyword.cloud_notm}} ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](http://www-03.ibm.com/software/sla/sladb.nsf/sla/bm "Termos de serviços do {{site.data.keyword.cloud_notm}}") em acordos de nível de serviço (SLAs). As redes do Starter Plan são provisionadas em **diversos ambientes** em data centers separados geograficamente.
+- O {{site.data.keyword.blockchainfull_notm}} Platform é um serviço de plataforma no {{site.data.keyword.cloud_notm}} e todas as ofertas de associação seguem os [Termos de serviços do {{site.data.keyword.cloud_notm}} ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](http://www-03.ibm.com/software/sla/sladb.nsf/sla/bm "Termos de serviços do {{site.data.keyword.cloud_notm}}") em acordos de nível de serviço (SLAs). O Starter Plan é provisionado em um data center de local único. Para obter uma lista de locais disponíveis, consulte [Locais do {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain?topic=blockchain-ibp-regions-locations#ibp-regions-locations).
 
 ## O que o Starter Plan oferece
 {: #starter-plan-about-what-starter-plan-offers}
@@ -72,7 +72,7 @@ O Starter Plan é um ponto de entrada para o {{site.data.keyword.blockchainfull_
 - **Versões e upgrade do Starter Plan**
     - As novas redes do Starter Plan que forem criadas após 4 de outubro de 2018 serão construídas no Hyperledger Fabric V1.2.1. As redes mais antigas do Starter Plan permanecem no nível do Fabric V1.1.0.
     - Novos peers que são incluídos nas redes do Starter Plan mais antigas serão construídos no Fabric v1.2.1. O desempenho de sua rede não é afetado devido à compatibilidade com versões anteriores.
-    - Você tem a opção de usar [configuração do canal ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://hyperledger-fabric.readthedocs.io/en/latest/config_update.html "configuração do canal") mais avançada e [Listas de Controle de Acesso ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://hyperledger-fabric.readthedocs.io/en/release-v1.2/access_control.html "Listas de Controle de Acesso") ao criar ou atualizar um canal.
+    - Você tem a opção de usar [configuração do canal ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/config_update.html "configuração do canal") mais avançada e [Listas de Controle de Acesso ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/access_control.html "Listas de Controle de Acesso") ao criar ou atualizar um canal.
     - Os recursos de [Descoberta de serviço ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/discovery-overview.html "descoberta de serviço") e [dados privados ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/private-data/private-data.html "dados privados") do Hyperledger Fabric v1.2 não são suportados no Starter Plan.
     - Se você [reconfigurar](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-reset-network) uma rede mais antiga do Starter Plan que está no Fabric V1.1.0, sua nova rede estará no nível do Fabric V1.2. Se você reconfigurar sua rede, será necessário instalar os arquivos chaincode ou .bna na nova rede, bem como convidar novamente membros de sua rede antiga.
 - **Limitação de recurso de rede**

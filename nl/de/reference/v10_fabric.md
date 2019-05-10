@@ -26,9 +26,9 @@ Hyperledger Fabric bietet eine modulare Architektur zur Erhöhung von Skalierbar
 ## Peers
 {: #hyperledger-fabric-peer}
 
-Physisch gesehen besteht ein Blockchain-Netz primär aus Peerknoten (kurz "Peers" genannt). Peers sind ein grundlegendes Element des Netzes, da sie Ledger und Smart Contracts hosten (die in so genannten ["Chaincodes" ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/developapps/chaincodenamespace.html "Chaincode namespace") enthalten sind). Genauer gesagt hosten die Peers **Instanzen** des Ledgers und **Instanzen** von Smart Contracts. Da Smart Contracts und Ledgers eingesetzt werden, um die gemeinsam genutzten Prozesse bzw. Informationen in einem Netz zu kapseln, sind diese Aspekte eines Peers ein guter Ansatzpunkt für das Verständnis dessen, was ein Fabric-Netz eigentlich ausführt.
+Physisch gesehen besteht ein Blockchain-Netz primär aus Peerknoten (kurz "Peers" genannt). Peers sind ein grundlegendes Element des Netzes, da sie Ledger und Smart Contracts hosten (die in so genannten ["Chaincodes" ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/developapps/chaincodenamespace.html "Chaincode namespace") enthalten sind). Genauer gesagt hosten die Peers **Instanzen** des Ledgers und **Instanzen** von Smart Contracts. Da Smart Contracts und Ledgers eingesetzt werden, um die gemeinsam genutzten Prozesse bzw. Informationen in einem Netz zu kapseln, sind diese Aspekte eines Peers ein guter Ansatzpunkt für das Verständnis dessen, was ein Fabric-Netz eigentlich ausführt.
 
-Weitere spezielle Informationen zu Peers enthält das [Dokument über Peers![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/peers/peers.html) in der Dokumentation der Fabric-Community.
+Weitere spezielle Informationen zu Peers enthält das [Dokument über Peers![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/peers/peers.html) in der Dokumentation der Fabric-Community.
 
 ## Zertifizierungsstelle (CA)
 {: #hyperledger-fabric-certificate-authority}

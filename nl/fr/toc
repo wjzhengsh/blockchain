@@ -59,13 +59,14 @@ Plateforme IBM Blockchain
 		howto/ibp-console-smart-contracts.md
 		howto/ibp-console-create-app.md
 		howto/ibp-console-import-nodes.md
+		howto/ibp-console-govern.md
 		howto/ibp-console-identities.md
 		howto/ibp-console-organizations.md
 		howto/ibp-console-manage.md
 		howto/ibp-v2-troubleshooting.md
 
 	{: .topicgroup}
-	IBM Blockchain Platform on IBM Cloud Private
+	IBM Blockchain Platform for IBM Cloud Private
 		ibp_for_icp_deployment_guide.md
 		ICP_setup.md
 		howto/helm_install_icp.md
@@ -102,6 +103,7 @@ Plateforme IBM Blockchain
 	{: .navgroup-end}
 
 	{: .navgroup id="help"}
+	release-notes.md
 	ibmblockchain_support.md
 	knownissues.md
 	{: .navgroup-end}

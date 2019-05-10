@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -20,10 +20,19 @@ subcollection: blockchain
 # Novità
 {: #whats-new}
 
+## 23 aprile 2019
+{: #whats-new-4-17-2019}
+
+{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private rilascia la v1.0.2, che utilizza la base di codice Hyperledger Fabric v1.4.0 e supporta la distribuzione su {{site.data.keyword.cloud_notm}} Private v3.1.2.
+
+Se desideri eseguire un upgrade del tuo {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private esistente alla v1.0.2, vedi [Upgrade del grafico Helm su {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/howto/helm_install_icp.html#helm-install-upgrading).
+
+Per ulteriori informazioni su Hyperledger Fabric v1.4.0, vedi la [documentazione di Hyperledger Fabric ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/ "documentazione di Hyperledger Fabric v1.4"). Per ulteriori informazioni su {{site.data.keyword.cloud_notm}} Private, vedi la [documentazione di {{site.data.keyword.cloud_notm}} Private v3.1.2 ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/kc_welcome_containers.html "{{site.data.keyword.cloud_notm}} Private v3.1.2 - documentazione").
+
 ## 8 febbraio 2019
 {: #whats-new-2-08-2019}
 
-{{site.data.keyword.blockchainfull}} Platform rilascia una versione beta 2.0 gratuita, la prossima generazione di soluzioni {{site.data.keyword.blockchainfull_notm}} Platform che ti consente di distribuire, gestire e monitorare la tua rete blockchain. {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta include una nuova console di interfaccia utente che può essere utilizzata per distribuire e gestire i componenti della blockchain nel tuo cluster del servizio {{site.data.keyword.IBM_notm}} Kubernetes su {{site.data.keyword.cloud_notm}}. {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta ti consentirà di:
+{{site.data.keyword.blockchainfull}} Platform rilascia una versione beta 2.0 gratuita, la prossima generazione di soluzioni {{site.data.keyword.blockchainfull_notm}} Platform che ti consente di distribuire, gestire e monitorare la tua rete blockchain. {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta include una nuova console di interfaccia utente che può essere utilizzata per distribuire e gestire i componenti della blockchain nel tuo cluster {{site.data.keyword.IBM_notm}} Kubernetes Service su {{site.data.keyword.cloud_notm}}. {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta ti consentirà di:
 
 **Creare la tua rete in modo più rapido e facile all'interno di un'esperienza senza soluzione di continuità**
 
@@ -44,7 +53,7 @@ subcollection: blockchain
 *	Inizia in piccolo e, man mano che cresci, paghi per quello che usi senza investimenti iniziali ed esegui facilmente un upgrade utilizzando Kubernetes.
 
 - Ulteriori informazioni su {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta sono disponibili in [Informazioni su {{site.data.keyword.blockchainfull_notm}} Platform 2.0](/docs/services/blockchain/howto/ibp-console.html#ibp-console-overview).
-- Le istruzioni su come distribuire la release 2.0 beta gratuita in un cluster del servizio {{site.data.keyword.IBM_notm}} Kubernetes sono disponibili in [Introduzione a {{site.data.keyword.blockchainfull_notm}} Platform 2.0](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks).
+- Le istruzioni su come distribuire la release 2.0 beta gratuita in un cluster {{site.data.keyword.IBM_notm}} Kubernetes Service sono disponibili in [Introduzione a {{site.data.keyword.blockchainfull_notm}} Platform 2.0](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks).
 - Delle nuove esercitazioni per utilizzare {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta sono disponibili nella sottosezione **{{site.data.keyword.blockchainfull_notm}} Platform 2.0** sotto la categoria **COME**.
   * L'[Esercitazione: crea una rete](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network) ti guida attraverso il processo di hosting di una rete creando un ordinante e un peer.
   * [L'esercitazione relativa all'unione a una rete](/docs/services/blockchain/howto/ibp-console-join-network.html#ibp-console-join-network) spiega come unirsi a una rete esistente creando un peer e unendolo a un canale.

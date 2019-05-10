@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2019
-lastupdated: "2019-03-05"
+  years: 2018, 2019
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -20,7 +20,8 @@ subcollection: blockchain
 # Despliegue de iguales en {{site.data.keyword.cloud_notm}} Private
 {: #icp-peer-deploy}
 
-En las instrucciones siguientes se describe cómo desplegar un igual de {{site.data.keyword.blockchainfull}} Platform en {{site.data.keyword.cloud_notm}} privado. Estas instrucciones le permiten conectarse a {{site.data.keyword.blockchainfull_notm}} Platform en {{site.data.keyword.cloud_notm}} Private. Si desea conectar un igual a una red de Plan inicial o Plan empresarial en
+En las instrucciones siguientes se describe cómo desplegar un igual de {{site.data.keyword.blockchainfull}} Platform en {{site.data.keyword.cloud_notm}} privado. Estas instrucciones le permiten conectarse a los componentes de
+{{site.data.keyword.blockchainfull_notm}} Platform en {{site.data.keyword.cloud_notm}} Private. Si desea conectar un igual a una red de Plan inicial o Plan empresarial en
 {{site.data.keyword.cloud_notm}}, consulte [Despliegue de iguales para conectarse al Plan inicial o el Plan empresarial](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy).
 {:shortdesc}
 
@@ -35,7 +36,7 @@ Asegúrese de que el sistema {{site.data.keyword.cloud_notm}} Private cumple los
 | Componente | vCPU | RAM | Disco para almacenamiento de datos |
 |-----------|------|-----|-----------------------|
 | Igual | 2 | 2 GB | 50 GB con posibilidad de ampliación |
-| CouchDB para igual | 2| 2 GB |50 GB con posibilidad de ampliación |
+| CouchDB para igual<br>(Aplicable solo si utiliza CouchDB) | 2| 2 GB | 50 GB con posibilidad de ampliación |
 
  **Notas:**
  - Un vCPU es un núcleo virtual que se asigna a una
@@ -64,13 +65,13 @@ se deben crear y configurar con etiquetas que se puedan utilizar para adaptar el
 
 2. Si utiliza Community Edition y desea ejecutar este diagrama de Helm en un clúster de {{site.data.keyword.cloud_notm}} Private sin conexión a Internet, debe crear archivados en una máquina conectada a Internet para poder instalar los archivados en el clúster de {{site.data.keyword.cloud_notm}} Private. Para obtener más información, consulte
 [Adición de aplicaciones destacadas a clústeres sin conexión a Internet
-![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_package_offline.html "Adición de aplicaciones destacadas a clústeres sin conexión a Internet"){:new_window}. Tenga en cuenta que puede encontrar el archivo de especificación manifest.yaml en ibm-blockchain-platform-dev/ibm_cloud_pak en el diagrama de Helm.
+![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/app_center/add_package_offline.html "Adición de aplicaciones destacadas a clústeres sin conexión a Internet"){:new_window}. Tenga en cuenta que puede encontrar el archivo de especificación manifest.yaml en ibm-blockchain-platform-dev/ibm_cloud_pak en el diagrama de Helm.
 
 3. En primer lugar, debe [desplegar una CA](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy) en {{site.data.keyword.cloud_notm}} Private. Debe utilizar la CA para crear un
 [archivo de configuración de igual y almacenarlo como secreto de Kubernetes en {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/howto/peer_deploy_icp.html#icp-peer-deploy-config-file).
 
 4. Recupere el valor de la dirección IP de proxy de clúster de la CA desde la consola de {{site.data.keyword.cloud_notm}} Private. **Nota:** necesitará ser un
-[administrador del clúster ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Acciones y roles de administrador de clúster") para acceder a la IP de proxy. Inicie sesión en el clúster de {{site.data.keyword.cloud_notm}} Private. En el panel de navegación de la izquierda, pulse
+[administrador del clúster ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/user_management/assign_role.html "Acciones y roles de administrador de clúster") para acceder a la IP de proxy. Inicie sesión en el clúster de {{site.data.keyword.cloud_notm}} Private. En el panel de navegación de la izquierda, pulse
 **Plataforma** y, a continuación, pulse **Nodos** para ver los nodos que están definidos en el clúster. Pulse sobre el nodo que tenga el rol `proxy` y, a continuación, copie el valor de `Host IP` de la tabla. **Importante:** guarde este valor, ya que lo utilizará cuando configure el campo `Proxy IP` del diagrama de Helm.
 
 
@@ -126,7 +127,7 @@ Guarde la salida resultante para el Paso 4.
 
 3. En el separador **General**, complete los campos siguientes:
   - **Nombre:** proporcione un nombre exclusivo dentro del clúster para el secreto. Utilizará este nombre cuando despliegue el igual. El nombre debe estar en minúsculas.  
-  **Nota:** al desplegar un igual, el despliegue genera automáticamente un nuevo secreto con el nombre `<helm_release_name>-secret`. Por lo tanto, cuando establezca el nombre del secreto, asegúrese de que sea distinto a `<helm_release_name>-secret`. De lo contrario, el despliegue del diagrama de Helm fallará debido a que el secreto que intenta crear ya existe.
+  **Nota:** al desplegar un igual, el despliegue genera automáticamente un nuevo secreto con el nombre `<helm release name you intend to use>-secret`. Por lo tanto, cuando establezca el nombre de este secreto, asegúrese de que el nombre del secreto sea distinto a `<helm release name you intend to use>-secret`. De lo contrario, el despliegue del diagrama de Helm fallará debido a que el secreto que intenta crear ya existe.
   - **Espacio de nombres:** el espacio de nombres para añadir el secreto. Seleccione el `espacio de nombres` en el que desee desplegar el igual.
   - **Tipo:** especifique el valor `Opaque`.
 
@@ -176,8 +177,11 @@ En la tabla siguiente se muestran los parámetros configurables de la plataforma
 
 |  Parámetro     | Descripción    | Valor predeterminado  | Obligatorio |
 | --------------|-----------------|-------|------- |
+|**Parámetros generales**| Parámetros que configuran el diagrama de Helm | | |
 | `Nombre de release de Helm`| Nombre del release de Helm. Debe comenzar por una letra minúscula y terminar por un carácter alfanumérico, y solo debe contener guiones y caracteres alfanuméricos. Debe utilizar un nombre de release de Helm exclusivo cada vez que intente instalar un componente. **Importante:** Este valor debe coincidir con el valor que ha utilizado para generar el 'nombre de host de servicio' para el campo "hosts" del [archivo de secreto JSON.](/docs/services/blockchain/howto/peer_deploy_icp.html#icp-peer-deploy-config-file) | ninguno | sí |
 | `Espacio de nombres de destino`| Elija el espacio de nombres de Kubernetes para instalar el diagrama de Helm. | ninguno | sí |
+| `Políticas de espacio de nombres de destino`| Muestra las políticas de seguridad de pod del espacio de nombres elegido, que deben incluir una política **`ibm-privileged-psp`**. De lo contrario,
+[enlace una PodSecurityPolicy](/docs/services/blockchain?topic=blockchain-icp-setup#icp-setup-psp) con el espacio de nombres. | ninguno | no |
 |**Configuración global**| Parámetros que se aplican a todos los componentes del diagrama de Helm|||
 | `Nombre de cuenta de servicio`| Especifique el nombre de la
 [cuenta de servicio
@@ -192,11 +196,11 @@ En la tabla siguiente se muestran los parámetros configurables de la plataforma
 | `Instalar igual` | Selecciónelo para instalar un igual|sin marcar | sí, si desea desplegar un igual |
 | `Arquitectura del nodo trabajador de igual`| Seleccione la arquitectura de la plataforma de nube (AMD64 o S390x)| AMD64 | sí |
 | `Repositorio de imágenes de igual`| Ubicación del diagrama de Helm de igual. Este campo se rellena automáticamente con la vía de acceso instalada. | ibmcom/ibp-fabric-peer | sí |
-| `Etiqueta de imagen de Docker de igual`|Valor de la etiqueta asociada con la imagen de igual. |1.2.1, se rellena automáticamente con el valor correcto.|sí|
+| `Etiqueta de imagen de Docker de igual`|Valor de la etiqueta asociada con la imagen de igual. |1.4.0, se rellena automáticamente con el valor correcto.|sí|
 | `Configuración de igual`| Puede personalizar la configuración del igual pegando su propio archivo de configuración
 `core.yaml` en este campo. Para ver un archivo `core.yaml` de ejemplo, consulte la
 [configuración de ejemplo de `core.yaml`
-![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://github.com/hyperledger/fabric/blob/release-1.2/sampleconfig/core.yaml) Solo para usuarios avanzados. | ninguno | no |
+![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://github.com/hyperledger/fabric/blob/release-1.4/sampleconfig/core.yaml) Solo para usuarios avanzados. | ninguno | no |
 | `Secreto de configuración de igual (obligatorio)`|Nombre del [Secreto de configuración de igual](/docs/services/blockchain/howto/peer_deploy_icp.html#icp-peer-deploy-config-file) que ha creado en {{site.data.keyword.cloud_notm}} Private. | ninguno | sí |
 |`MSP de organización (obligatorio)`| Puede crear un nuevo valor de MSPID de organización como 'org1', o especificar un MSP de una organización existente de la que formará parte el igual. Si ha desplegado una organización de clasificador, asegúrese de que los MSPID de los iguales son distintos al MSPID del clasificador. Además, tome nota de este valor, ya que lo necesitará para
 `CORE_PEER_LOCALMSPID` y el archivo `configtx.yaml` más adelante. | ninguno | sí |
@@ -224,6 +228,14 @@ En la tabla siguiente se muestran los parámetros configurables de la plataforma
 | `Tamaño de reclamación de volumen de base de datos de estado`| Elija el tamaño de disco a utilizar. | 8 Gi | sí |
 | `CouchDB - Persistencia de datos habilitada`| Para el contenedor de CouchDB, los datos del libro mayor estarán disponibles cuando se reinicie el contenedor. *Si no está marcada esta opción, se perderán todos los datos en el caso de una migración tras error o de un reinicio del pod.*| marcada | no |
 | `CouchDB - Utilizar suministro dinámico`| Para el contenedor de CouchDB, utilizar el almacenamiento dinámico de Kubernetes.| marcada | no |
+| `Solicitud de CPU de Docker-in-Docker`| Especifique el número mínimo de CPU a asignar al contenedor donde se ejecuta el código de encadenamiento. | 1 | sí |
+| `Límite de CPU de Docker-in-Docker`| Especifique el número máximo de CPU a asignar al contenedor donde se ejecuta el código de encadenamiento. | 2 | sí |
+| `Solicitud de memoria de Docker-in-Docker`| Especifique la cantidad mínima de memoria a asignar al contenedor donde se ejecuta el código de encadenamiento. | 1Gi | sí |
+| `Límite de memoria de Docker-in-Docker`| Especifique la cantidad máxima de memoria a asignar al contenedor donde se ejecuta el código de encadenamiento. | 4 Gi | sí |
+| `Solicitud de CPU de proxy web gRPC`| Especifique el número mínimo de CPU en milicpus (m) a asignar al proxy web gRPC. | 100m | sí |
+| `Límite de CPU de proxy web gRPC`| Especifique el número máximo de CPU en milicpus (m) a asignar al proxy web gRPC. | 200m | sí |
+| `Solicitud de memoria de proxy web gRPC`| Especifique la cantidad mínima de memoria a asignar al proxy web gRPC. | 100Mi | sí |
+| `Límite de memoria de proxy web gRPC`| Especifique la cantidad máxima de memoria a asignar al proxy web gRPC. | 200Mi | sí |
 | `Solicitud de CPU del igual` | Número mínimo de CPU que se asignarán al igual. | 1 | sí |
 | `Límite de CPU del igual` | Número máximo de CPU que se asignarán al igual.| 2 | sí |
 | `Solicitud de memoria del igual` | Cantidad mínima de memoria que se asignará al igual. | 1Gi | sí |
@@ -253,7 +265,7 @@ processes. This container has two volume mounts, one for the Peer PVC and the se
 
 Como alternativa, puede utilizar la CLI de `helm` para instalar el release de Helm. Antes de ejecutar el mandato `helm install`, asegúrese de
 [añadir el repositorio de Helm del clúster al entorno de CLI de Helm
-![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_int_helm_repo_to_cli.html "Adición del repositorio interno de Helm a la CLI de Helm").
+![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/app_center/add_int_helm_repo_to_cli.html "Adición del repositorio interno de Helm a la CLI de Helm").
 
 Puede establecer los parámetros necesarios para la instalación creando un archivo
 `yaml` y pasándolo al mandato `helm install` siguiente.

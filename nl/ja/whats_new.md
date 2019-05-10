@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -19,6 +19,15 @@ subcollection: blockchain
 
 # 新機能
 {: #whats-new}
+
+## 2019 年 4 月 23 日
+{: #whats-new-4-17-2019}
+
+{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private リリース v1.0.2 は、Hyperledger Fabric v1.4.0 コード・ベースを使用していて、{{site.data.keyword.cloud_notm}} Private v3.1.2 でのデプロイメントに対応しています。
+
+既存の {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private を v1.0.2 にアップグレードする場合は、[{{site.data.keyword.cloud_notm}} Private での Helm チャートのアップグレード](/docs/services/blockchain/howto/helm_install_icp.html#helm-install-upgrading)を参照してください。
+
+Hyperledger Fabric v1.4.0 の詳細については、[Hyperledger Fabric の資料 ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/ "Hyperledger Fabric v1.4 の資料") を参照してください。{{site.data.keyword.cloud_notm}} Private について詳しくは、[{{site.data.keyword.cloud_notm}} Private v3.1.2 の資料 ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン") を参照してください。](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/kc_welcome_containers.html "{{site.data.keyword.cloud_notm}} Private v3.1.2 の資料")
 
 ## 2019 年 2 月 8 日
 {: #whats-new-2-08-2019}

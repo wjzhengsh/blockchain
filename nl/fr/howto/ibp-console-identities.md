@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-03"
 
 subcollection: blockchain
 
@@ -44,7 +44,7 @@ Vous pouvez utiliser la console pour créer ces identités au moyen du [processu
 
 Avant de gérer des identités, vous devez définir l'identité de l'admin de l'autorité d'administration, à l'aide de l'identité admin créée lors de la création de l'autorité de certification ou en établissant une nouvelle identité. Ouvrez l'autorité de certification sous l'onglet **Noeuds**. L'ID d'inscription de l'identité actuellement active est visible en regard du nom de l'autorité de certification dans la partie supérieure du panneau. Vous pouvez utiliser cette identité admin pour créer d'autres identités en utilisant le bouton **Enregistrer** pour enregistrer des identités qui deviendront des admin org et des identités de noeud, ou utiliser le bouton **Inscrire** pour générer une identité et l'exporter dans le portefeuille.
 
-Pour basculer vers une identité différente à utiliser en tant qu'admin d'autorité de certification, cliquez sur l'icône **Paramètres**, puis cliquez sur **Définir l'identité** sur la règle. Vous pouvez spécifier une identité qui existe dans le portefeuille à partir de l'onglet **Identité existante**. Vous pouvez aussi utiliser l'onglet **Nouvelle identité** pour coller des certificats pour l'admin, ou pour télécharger un JSON contenant les certificats.
+Pour basculer vers une identité différente à utiliser en tant qu'admin d'autorité de certification, cliquez sur l'icône **Paramètres**, puis cliquez sur **Définir l'identité** sur la règle. Vous pouvez spécifier une identité qui existe dans le portefeuille à partir de l'onglet **Identité existante**. Vous pouvez aussi utiliser l'onglet **Nouvelle identité** pour télécharger un fichier contenant les certificats, au format base64 ou PEM, pour l'admin, ou pour télécharger un fichier JSON contenant les certificats.
 
 Certaines identités ne peuvent pas enregistrer de nouveaux utilisateurs. Pour plus d'informations, notamment sur l'établissement d'une autorité d'administration supplémentaire, voir [Création de nouveaux admin d'autorité de certification](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-ca-admin).
 {: note}
@@ -162,8 +162,8 @@ Vous pouvez ajouter une identité admin à votre portefeuille lorsque vous [cré
 
 Vous pouvez utiliser le bouton **Ajouter une identité** sur l'écran de présentation pour importer une identité directement dans le portefeuille. Si vous cliquez sur ce bouton, un panneau latéral s'affiche dans lequel vous pouvez ajouter la paire de clés publiques et privées d'une identité.
 - **Nom :** Entrez le nom d'une identité qui est utilisé à des fins de référence uniquement.
-- **Certificat :** Collez ici la clé publique de l'identité que vous avez générée à l'aide de votre autorité de certification.
-- **Clé privée :** Collez ici la clé privée de l'identité que vous avez générée à l'aide de votre autorité de certification.
+- **Certificat :** Téléchargez un fichier contenant la clé publique de l'identité (au format base64 ou PEM) que vous avez générée à l'aide de votre autorité de certification.
+- **Clé privée :** Téléchargez un fichier contenant la clé privée de l'identité (au format base64 ou PEM) que vous avez générée à l'aide de votre autorité de certification.
 
 
 Vous pouvez également ajouter une identité en téléchargeant un fichier JSON au format ci-dessous. Vous pouvez également utiliser le bouton **Télécharger JSON** pour télécharger plusieurs identités en une seule opération.

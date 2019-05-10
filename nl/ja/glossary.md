@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-17"
 
 subcollection: blockchain
 
@@ -18,7 +18,7 @@ subcollection: blockchain
 # 用語集
 {: #glossary}
 
-このトピックでは、この資料に記載されている {{site.data.keyword.blockchainfull}} プラットフォーム固有の用語を定義します。 用語の詳細な意味、および Hyperledger Fabric の概念に関連する用語の用語集は、[Hyperledger Fabric の用語集 ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](http://hyperledger-fabric.readthedocs.io/en/release-1.2/glossary.html) を参照してください。
+このトピックでは、この資料に記載されている {{site.data.keyword.blockchainfull}} プラットフォーム固有の用語を定義します。 用語の詳細な意味、および Hyperledger Fabric の概念に関連する用語の用語集は、[Hyperledger Fabric の用語集 ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](http://hyperledger-fabric.readthedocs.io/en/release-1.4/glossary.html) を参照してください。
 {:shortdesc}
 
 ## 資産
@@ -28,10 +28,6 @@ subcollection: blockchain
 ## ブロック
 {: #glossary-block}
 順序付けられたトランザクション集合。チャネル上の先行ブロックに暗号的にリンクされます。
-
-## ビジネス・ネットワーク
-{: #glossary-business-network}
-ブロックチェーン・ネットワークの定義。これには、ブロックチェーン・ソリューションのデータ・モデル、トランザクション・ロジック、およびアクセス制御ルールが含まれます。 ビジネス・ネットワーク定義は、[Hyperledger Composer](/docs/services/blockchain/glossary.html#glossary-composer) を使用して作成されます。 ビジネス・ネットワーク定義は、デプロイ可能な **.bna** (ビジネス・ネットワーク・アーカイブ) ファイルにパッケージ化されます。
 
 ## CA
 {: #glossary-CA}
@@ -93,20 +89,15 @@ subcollection: blockchain
 
 ## Gossip
 {: #glossary-gossip}
-Hyperledger Fabric では、順序付けサービスに依存せずに、ピアどうしで重要なネットワーク情報を収集できます。 [ゴシップ・データ配布プロトコル ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.1/gossip.html) により、安全、確実、スケーラブルなピア間のメッセージ交換が可能になっています。 例えば、遅延、ネットワーク障害、その他の理由でいくつかのブロックがピアに存在しない場合、ピアは、ゴシップ・メッセージングを使用して、欠落ブロックを所有している他のピアと通信し、最新の台帳状態に同期できます。
+Hyperledger Fabric では、順序付けサービスに依存せずに、ピアどうしで重要なネットワーク情報を収集できます。 [ゴシップ・データ配布プロトコル ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/gossip.html) により、安全、確実、スケーラブルなピア間のメッセージ交換が可能になっています。 例えば、遅延、ネットワーク障害、その他の理由でいくつかのブロックがピアに存在しない場合、ピアは、ゴシップ・メッセージングを使用して、欠落ブロックを所有している他のピアと通信し、最新の台帳状態に同期できます。
 
 ## HSM
 {: #glossary-hsm}
 ハードウェア・セキュリティー・モジュール。 オンデマンド暗号化、鍵管理、および鍵格納をマネージド・サービスとして提供します。 HSM は、リソース集中型の暗号化処理タスクを処理し、アプリケーションの待ち時間を削減する物理アプライアンスです。 詳しくは、[ハードウェア・セキュリティー・モジュール![「外部リンク」アイコン](images/external_link.svg "「外部リンク」アイコン」")](https://www.ibm.com/cloud/hardware-security-module) を参照してください。
 
-## Hyperledger Composer
-{: #glossary-composer}
-**IBM では、実動の Hyperledger Composer を使用するネットワークをサポートしていません。これには Composer CLI、JavaScript API、REST サーバー、および Web Playground が含まれます。**
-[Hyperledger Composer ![「外部リンク」アイコン](images/external_link.svg "「外部リンク」アイコン")](https://hyperledger.github.io/composer/latest/introduction/introduction.html) は、オープン・ソースの開発ツール・セットです。 これは、JavaScript トランザクションと結合された bespoke モデリング言語と、ブロックチェーン・ビジネス・ネットワークを完全にモデル化するためのアクセス制御ルールを使用します。 Hyperledger Composer を使用して、既存のシステムおよびデータをブロックチェーン・アプリケーションと統合してから、実際のブロックチェーンにデプロイすることができます。
-
 ## Hyperledger Fabric
 {: #glossary-hyperledger-fabric}
-[Hyperledger Fabric ![「外部リンク」アイコン](images/external_link.svg "「外部リンク」アイコン")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/) は Linux Foundation がホストするビジネス・ブロックチェーン・フレームワークで、ブロックチェーン・アプリケーションまたはソリューションを、モジュラー・アーキテクチャーで開発するための基盤として機能します。 コンセンサス・サービスやメンバーシップ・サービスなどの Hyperledger Fabric コンポーネントは、プラグ・アンド・プレイです。
+[Hyperledger Fabric ![「外部リンク」アイコン](images/external_link.svg "「外部リンク」アイコン")](http://hyperledger-fabric.readthedocs.io/en/release-1.4/) は Linux Foundation がホストするビジネス・ブロックチェーン・フレームワークで、ブロックチェーン・アプリケーションまたはソリューションを、モジュラー・アーキテクチャーで開発するための基盤として機能します。 コンセンサス・サービスやメンバーシップ・サービスなどの Hyperledger Fabric コンポーネントは、プラグ・アンド・プレイです。
 
 ## インストール
 {: #glossary-install}
@@ -203,4 +194,4 @@ Hyperledger Fabric は 2 つの Software Development Kit (SDK) をサポート�
 
 ## ワールド・ステート
 {: #glossary-world-state}
-[現在の状態]((/docs/services/blockchain/glossary.html#glossary-current-state)を参照してください。
+[現在の状態](/docs/services/blockchain/glossary.html#glossary-current-state)を参照してください。

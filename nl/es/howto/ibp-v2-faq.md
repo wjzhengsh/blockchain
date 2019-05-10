@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -22,6 +22,16 @@ subcollection: blockchain
 # Preguntas más frecuentes
 {: #ibp-v2-faq}
 
+- [¿Qué versión de Hyperledger Fabric se está utilizando con {{site.data.keyword.blockchainfull_notm}} Platform gratuita 2.0 beta?](#ibp-v2-faq-fabric-version)
+- [¿Tengo que pagar algo por {{site.data.keyword.blockchainfull_notm}} Platform gratuita 2.0 beta?](#ibp-v2-faq-cost)
+- [¿Puedo utilizar mi clúster existente del servicio Kubernetes de {{site.data.keyword.cloud_notm}}?](#ibp-v2-faq-existing-cluster)
+- [¿Qué base de datos utilizan los iguales para su libro mayor?](#ibp-v2-faq-couchDB)
+- [¿Qué lenguajes se admiten para los contratos inteligentes?](#ibp-v2-faq-cc-langs)
+- [¿Puedo migrar desde la versión V2.0 beta a la versión v2.0 GA?](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-faq-migrate)
+- [¿Tenemos acceso a servicios de registro y qué registros tengo disponibles?](#ibp-v2-faq-logs)
+- [¿Cuál es la ventaja de utilizar {{site.data.keyword.blockchainfull_notm}} Platform gratuita 2.0 beta sobre Hyperledger Fabric nativo?](#ibp-v2-faq-native-fabric)
+- [¿Cómo puedo maximizar el rendimiento y escalar mi solución {{site.data.keyword.blockchainfull_notm}} Platform?](#ibp-v2-faq-perf-scale)
+
 ## ¿Qué versión de Hyperledger Fabric se está utilizando con {{site.data.keyword.blockchainfull_notm}} Platform gratuita 2.0 beta?
 {: #ibp-v2-faq-fabric-version}
 {: faq}
@@ -34,15 +44,15 @@ subcollection: blockchain
 
 El release beta es gratuito. Pero es posible que incurra en cargos por el clúster de Kubernetes de {{site.data.keyword.cloud_notm}}, a menos que haya seleccionado un clúster gratuito.  Sin embargo, tenga en cuenta que el clúster gratuito se suprime automáticamente transcurridos 30 días por política del servicio Kubernetes de {{site.data.keyword.cloud_notm}} y que el rendimiento y la capacidad están limitados.  Si desea conservar el servicio transcurridos los 30 días, deberá pagar una instancia estándar del servicio Kubernetes. 
 
-## ¿Puedo utilizar mi clúster existentes del servicio Kubernetes de {{site.data.keyword.cloud_notm}}?
+## ¿Puedo utilizar mi clúster existente del servicio Kubernetes de {{site.data.keyword.cloud_notm}}?
 {: #ibp-v2-faq-existing-cluster}
 {: faq}
 
 Su clúster de Kubernetes funcionará con {{site.data.keyword.blockchainfull_notm}} Platform gratuita 2.0 beta siempre que cumpla las siguientes condiciones:
 - Esté en la región Dallas de {{site.data.keyword.cloud_notm}}.
-- Ejecute Kubernetes v1.11 o posterior. Consulte estas instrucciones para obtener información sobre cómo [actualizar la versión de Kubernetes de un clúster](/docs/services/blockchain/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks-updating-kubernetes).
+- Ejecute Kubernetes v1.11 o posterior. Consulte estas instrucciones para obtener información sobre cómo [actualizar la versión de Kubernetes de un clúster](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks-updating-kubernetes).
 - Haya suficientes recursos disponibles en el clúster. Consulte este tema sobre
-[requisitos mínimos de recursos](/docs/services/blockchain/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks-resources-required) para obtener más información.
+[requisitos mínimos de recursos](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks-resources-required) para obtener más información.
 
 ## ¿Qué base de datos utilizan los iguales para su libro mayor?
 {: #ibp-v2-faq-couchDB}
@@ -60,13 +70,13 @@ Todos los iguales que se despliegan con {{site.data.keyword.blockchainfull_notm}
 {: #ibp-v2-faq-migrate}
 {: faq}
 
-Los clientes del Plan empresarial podrán migrar a IBM Blockchain Platform 2.0 cuando esté disponible a nivel general (GA). Sin embargo, no podrá migrar la oferta 2.0 beta a la oferta 2.0 GA. Tampoco podrá migrar una instancia del Plan inicial a la versión 2.0 beta ni a la versión 2.0 GA del producto cuando esté disponible.
+No podrá migrar la oferta 2.0 beta a la oferta 2.0 GA.
 
 ## ¿Tenemos acceso a servicios de registro y qué registros tengo disponibles?
 {: #ibp-v2-faq-logs}
 {: faq}
 
-Con {{site.data.keyword.blockchainfull_notm}} Platform 2.0, ahora puede acceder directamente a los registros del igual, de la CA y del clasificador desde el panel de control de Kubernetes. Le recomendamos que aproveche el servicio [{{site.data.keyword.cloud_notm}} LogDNA ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://cloud.ibm.com/catalog/services/logdna "{{site.data.keyword.IBM_notm}} Log Analysis con LogDNA"), que le permite analizar fácilmente los registros en tiempo real.
+Con {{site.data.keyword.blockchainfull_notm}} Platform 2.0, ahora puede acceder directamente a los registros del igual, de la CA y del clasificador desde el panel de control de Kubernetes. Le recomendamos que aproveche el servicio [{{site.data.keyword.cloud_notm}} LogDNA ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://cloud.ibm.com/docs/services/Log-Analysis-with-LogDNA?topic=LogDNA-kube#kube "Gestión de registros de clúster de Kubernetes con IBM Log Analysis con LogDNA"), que le permite analizar fácilmente los registros en tiempo real.
 
 ## ¿Cuál es la ventaja de utilizar {{site.data.keyword.blockchainfull_notm}} Platform gratuita 2.0 beta sobre Hyperledger Fabric nativo?
 {: #ibp-v2-faq-native-fabric}

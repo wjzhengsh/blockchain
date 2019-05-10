@@ -2,8 +2,7 @@
 
 copyright:
   years: 2019
-
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -56,7 +55,7 @@ Führen Sie die Schritte im Lernprogramm zum **Teilnehmen an einem Netz** aus, u
 * **Eine Zertifizierungsstelle (CA)** `Org2 CA`
   Eine Zertifizierungsstelle (CA) ist der Knoten, der Zertifikate für alle Organisationsmitglieder ausgibt. Sie erstellen eine Zertifizierungsstelle für die Peerorganisation `Org2`.
 * **Einem Kanal beitreten**
-  Dieses Lernprogramm beschreibt die Vorgehensweise zum Beitreten zu einem Kanal, der im Rahmen des [Lernprogramms zum Erstellen eines Netzes](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network) erstellt wurde. 
+  Dieses Lernprogramm beschreibt die Vorgehensweise zum Beitreten zu einem Kanal, der im Rahmen des [Lernprogramms zum Erstellen eines Netzes](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network) erstellt wurde.
 
 In diesem Lernprogramm werden **empfohlene Werte** für einige der Felder in der Konsole angegeben. Auf diese Weise können Sie die Namen und Identitäten in den Registerkarten und Dropdown-Listen leichter erkennen. Diese Werte sind zwar nicht obligatorisch, Sie werden sie jedoch als hilfreich empfinden. Nach jeder Tasks finden Sie eine Tabelle mit den empfohlenen Werten.
 {:tip}
@@ -76,11 +75,12 @@ Im Rahmen dieses Lernprogramms gibt Ihre Zertifizierungsstelle die öffentlichen
 
 Führen Sie die folgenden Schritte in der Konsole aus:  
 
-1. Navigieren Sie zu der Registerkarte **Knoten** auf der linken Seite und klicken Sie auf **Zertifizierungsstelle hinzufügen**. In den sich aus vier Schritten zusammensetzenden Seitenanzeigen können Sie die Zertifizierungsstelle anpassen, die Sie erstellen möchten, und die Organisation, für die die Zertifizierungsstelle Schlüssel ausgibt.
+1. Navigieren Sie zu der Registerkarte **Knoten** auf der linken Seite und klicken Sie auf **Zertifizierungsstelle hinzufügen**. In den Seitenanzeigen können Sie die Zertifizierungsstelle anpassen, die Sie erstellen möchten, und die Organisation, für die die Zertifizierungsstelle Schlüssel ausgibt.
 2. Klicken Sie auf **{{site.data.keyword.cloud_notm}}** unter **Zertifizierungsstelle erstellen**.
 3. Verwenden Sie die zweite Seitenanzeige, um der Zertifizierungsstelle einen **Anzeigename** zu geben. Der empfohlener Wert für diese Zertifizierungsstelle ist `Org2 CA`.
 4. Geben Sie in der nächsten Anzeige die Administratorberechtigungsnachweise für die Zertifizierungsstelle an, indem als **Administrator-ID** den Wert `admin` festlegen und alle von Ihnen benötigten geheimen Schlüssel angeben. Im Rahmen dieses Lernprogramms wird jedoch die Verwendung von `adminpw`.
-5. Klicken Sie auf **Weiter** und anschließend auf **Zertifizierungsstelle hinzufügen**.
+5. Wenn Sie einen kostenpflichtigen Cluster verwenden, haben Sie auf der nächsten Anzeige die Möglichkeit, die Ressourcenzuordnung für den Knoten zu konfigurieren. Im Rahmen dieses Lernprogramms können Sie alle Standardeinstellungen akzeptieren und auf **Weiter** klicken. Weitere Informationen über die Zuordnung von Ressourcen zu Ihrem Knoten finden Sie in diesem Thema zur [Ressourcenzuordnung](/docs/services/blockchain?topic=blockchain-ibp-console-govern#ibp-console-govern-allocate-resources). Wenn Sie einen kostenlosen Cluster verwenden, wird Ihnen die Seite **Zusammenfassung** bereits angezeigt.
+6. Überprüfen Sie die Seite "Zusammenfassung" und klicken Sie dann **Zertifizierungsstelle hinzufügen**.
 
 **Task: Zertifizierungsstelle für die Peerorganisation erstellen**
 
@@ -91,6 +91,8 @@ Führen Sie die folgenden Schritte in der Konsole aus:
 *Abbildung 2. Zertifizierungsstelle für die Peerorganisation erstellen*  
 Nach der Bereitstellung der Zertifizierungsstelle verwenden Sie diese zum Erstellen des MSP für Ihre Organisation, zum Registrieren von Benutzern und zum Erstellen des Einstiegspunkts für ein Netz (den **Peer**).
 
+Fortgeschrittene Benutzer verfügen möglicherweise bereits über eine eigene Zertifizierungsstelle und möchten keine neue Zertifizierungsstelle in der Konsole erstellen. Wenn Ihre vorhandene Zertifizierungsstelle Zertifikate im Format `X.509` ausgeben kann, können Sie Ihre eigene unabhängige Zertifizierungsstelle verwenden, anstatt hier eine neue zu erstellen. Lesen Sie dazu dieses Thema über die [Verwendung einer unabhängigen Zertifizierungsstelle mit Ihrem Peer oder Anordnungsknoten](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-identities).
+
 ### Zertifizierungsstelle zum Registrieren von Identitäten verwenden
 {: #ibp-console-join-network-use-CA-org2}
 
@@ -99,12 +101,15 @@ Jeder Knoten oder jede Anwendung, die Sie erstellen möchten, benötigt öffentl
 * **Organisationsadministrator** Diese Identität ermöglicht es Ihnen, Knoten über die Platform-Konsole zu bedienen.
 * **Peeridentität** Diese Identität ermöglicht Ihnen die Implementierung eines Peers.
 
+Je nach Ihrem Clustertyp kann die Bereitstellung der Zertifizierungsstelle bis zu zehn Minuten dauern. Das grüne Quadrat auf der Kachel der Zertifizierungsstelle zeigt an, dass der Status "Aktiv" ist und Identitäten registriert werden können. Bevor Sie mit den Schritten zur Registrierung von Identitäten fortfahren können, müssen Sie warten, bis der Status der Zertifizierungsstelle "Aktiv" lautet.
+{:important}
+
 Führen Sie die folgenden Schritte aus, um diese Zertifikate zu generieren:
 
-1. Navigieren Sie in der Konsole auf der Registerkarte **Knoten** zu der von Ihnen erstellten Zertifizierungsstelle `Org2 CA`.
-2. Nachdem Sie Ihre Zertifizierungsstelle ausgewählt haben, müssen Sie einen Administrator für diese Organisation (`Org2`) sowie eine Identität für den Peer selbst registrieren. Sie sollten bereits eine Identität auf dieser Seite sehen; es ist der Administrator, den Sie für die Zertifizierungsstelle erstellt haben. Um die neuen Benutzer zu registrieren, klicken Sie auf die Schaltfläche **Benutzer registrieren**.
+1. Klicken Sie in der Konsole auf die Registerkarte **Knoten**. Wenn der Statusanzeiger in der oberen rechten Ecke von `Org2 CA` grün ist und `Aktiv` anzeigt, klicken Sie auf die Kachel, um sie zu öffnen.
+2. Nachdem Sie auf Ihre Zertifizierungsstelle geklickt haben, um sie zu öffnen, müssen Sie zusätzlich zu einer Identität für den Peer selbst auch für diese Organisation, `org2`, eine Administrator-ID registrieren. Warten Sie, bis die soeben erstellte `Administrator`-ID in der Tabelle angezeigt wird, und klicken Sie dann auf die Schaltfläche **Benutzer registrieren**, um die neuen Benutzer zu registrieren.
 3. Geben Sie für den Organisationsadministrator die Eintragungs-ID `org2admin` an. Sie können jeden beliebigen Schlüssel verwenden, es wird jedoch im Rahmen des Lernprogramms die Verwendung von `org2adminpw` empfohlen. Klicken Sie auf **Weiter**.
-4. Geben Sie im nächsten Schritt den Typ für diese Identität als `client` an und wählen Sie in der Dropdown-Liste eine der verbundenen Organisationen aus. Das Feld für die Zugehörigkeit (affiliation) ist für erweiterte Benutzer und wird in diesem Lernprogramm nicht verwendet. Die Einträge in der Liste sind Standardzugehörigkeiten von der Fabric-Zertifizierungsstelle. Wenn Sie mehr darüber erfahren möchten, wie Zugehörigkeiten von der Fabric-Zertifizierungsstelle verwendet werden, lesen Sie die Informationen im Abschnitt zum [Registrieren einer neuen Identität ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/users-guide.html#registering-a-new-identity). Wählen Sie für jetzt eine beliebige Zugehörigkeit aus der Liste aus, z. B. `org2`, und klicken Sie auf **Weiter**.
+4. Geben Sie im nächsten Schritt den Typ für diese Identität als `client` an und wählen Sie in der Dropdown-Liste eine der verbundenen Organisationen aus. Das Feld für die Zugehörigkeit (affiliation) ist für fortgeschrittene Benutzer und wird in diesem Lernprogramm nicht verwendet; es ist jedoch für die Anzeige ein erforderliches Feld. Die Einträge in der Liste sind Standardzugehörigkeiten von der Fabric-Zertifizierungsstelle. Wenn Sie mehr darüber erfahren möchten, wie Zugehörigkeiten von der Fabric-Zertifizierungsstelle verwendet werden, lesen Sie die Informationen im Abschnitt zum [Registrieren einer neuen Identität ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/users-guide.html#registering-a-new-identity). Wählen Sie für jetzt eine beliebige Zugehörigkeit aus der Liste aus, z. B. `org2`, und klicken Sie auf **Weiter**.
 5. Sie können die Felder **Maximale Anzahl der Eintragungen** und **Attribute hinzufügen** leer lassen. Sie werden von diesem Lernprogramm nicht verwendet. Im Abschnitt zum [Registrieren von Identitäten](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-register) finden Sie jedoch Informationen zur Verwendung dieser Felder.
 6. Nachdem der Organisationsadministrator registriert wurde, wiederholen Sie die Schritte zwei bis fünf für die Identität des Peers mit derselben Zertifizierungsstelle (`Org2 CA`). Weisen Sie dem Peer jedoch die Eintragungs-ID `peer2` zu. Wie zuvor wird Ihnen im Rahmen des Lernprogramms die Verwendung des geheimen Schlüssels `peer2pw` empfohlen. Dies ist eine Knotenidentität. Wählen Sie daher `Peer` als **Typ** für den nächsten Schritt aus. Ignorieren Sie dann wie bereits vorher die Felder **Maximale Anzahl der Eintragungen** und **Attribute**.
 
@@ -125,7 +130,7 @@ Nachdem Sie nun die Zertifizierungsstelle des Peers erstellt und diese zum **Reg
 1. Navigieren Sie zur Registerkarte **Organisationen** in der linken Navigationsleiste und klicken Sie auf **MSP-Definition erstellen**.
 2. Geben Sie Ihrem MSP einen Anzeigenamen, wie z. B. `Org2 MSP`, und eine ID, wie `org2msp`. Wenn Sie in diesem Feld eine eigene MSP-ID angeben möchten, müssen Sie die Spezifikationen zu den Einschränkungen für diesen Namen in der QuickInfo befolgen.
 3. Geben Sie unter den **Details für die Stammzertifizierungsstelle** die Zertifizierungsstelle des Peers an, die Sie als Stammzertifizierungsstelle für Ihre Organisation erstellt haben. Wenn Sie dieses Lernprogramm zum ersten Mal verwenden, sollten Sie nur eine Zertifizierungsstelle sehen: `Org2 CA`. Wählen Sie sie aus.
-4. Die Felder **Eintragungs-ID** und **Geheimer Eintragungsschlüssel** darunter werden automatisch mit der Eintragungs-ID und dem geheimen Schlüssel für den ersten Benutzer gefüllt, den Sie mit der Zertifizierungsstelle erstellt haben. Sie können diese Werte zwar verwenden, aber es wird nicht empfohlen, Ihre CA-Administratoridentität als Organisationsadministrator zu verwenden. Aus Sicherheitsgründen wird stattdessen empfohlen, die separate Eintragungs-ID mit dem geheimen Schlüssel einzugeben, die Sie für Ihren Organisationsadministrator erstellt haben (`org2admin` und `org2adminpw`). Geben Sie dann dieser Identität einen Anzeigenamen, z. B. `Org2 Admin`.
+4. Die Felder **Eintragungs-ID** und **Geheimer Eintragungsschlüssel** darunter werden automatisch mit der Eintragungs-ID und dem geheimen Schlüssel für den ersten Benutzer gefüllt, den Sie mit der Zertifizierungsstelle erstellt haben. Sie können diese Werte zwar verwenden, aber es wird nicht empfohlen, Ihre CA-Administratoridentität als Organisationsadministrator zu verwenden.  Aus Sicherheitsgründen wird stattdessen empfohlen, die separate Eintragungs-ID mit dem geheimen Schlüssel einzugeben, die Sie für Ihren Organisationsadministrator erstellt haben (`org2admin` und `org2adminpw`). Geben Sie dann dieser Identität einen Anzeigenamen, z. B. `Org2 Admin`.
 5. Klicken Sie auf die Schaltfläche **Generieren**, um diese Identität als Administrator Ihrer Organisation einzutragen und die Identität in die Wallet zu exportieren, wo sie verwendet wird, wenn Sie den Peer und Kanäle erstellen.
 6. Klicken Sie auf **Exportieren**, um die Administratorzertifikate in Ihr Dateisystem zu exportieren. Wie bereits oben erwähnt, wird diese Identität nicht in Ihrem Cluster gespeichert oder von {{site.data.keyword.IBM_notm}} verwaltet. Sie wird nur im lokalen Speicher Ihres Browsers gespeichert. Wenn Sie zu einem anderen Browser wechseln, müssen Sie diese Identität in Ihre Konsolenwallet importieren, damit Sie den Peer verwalten können.
 7. Klicken Sie auf **MSP-Definition erstellen**.
@@ -180,8 +185,9 @@ Verwenden Sie die Konsole, um die folgenden Schritte auszuführen:
 5. In der nächsten Seitenanzeige werden Informationen zur TLS-Zertifizierungsstelle abgefragt. Es ist zwar möglich, separate Administratoren für die TLS-Zertifizierungsstelle zu erstellen, die mit Ihrer Zertifizierungsstelle implementiert ist; dies ist jedoch nicht zwingend erforderlich.
    - Verwenden Sie für die **TLS-Eintragungs-ID** (`admin`) und den geheimen Schlüssel (`adminpw`) dieselben Werte wie für die Eintragungs-ID und den zugehörigen geheimen Schlüssel, die Sie beim Erstellen der Zertifizierungsstelle angegeben haben.
    - Der **TLS-CSR-Hostname** ist für fortgeschrittener Benutzer zum Angeben eines angepassten Domänennamens für den Peerendpunkt. Lassen Sie den Wert für **TLS-CSR-Hostname** jetzt leer, da er in diesem Lernprogramm nicht verwendet wird.
-6. In der letzten Seitenanzeige werden Sie zum **Zuordnen einer Identität** aufgefordert, die Sie als Administrator des Peers festlegen können. Wählen Sie `Org2 Admin` als Administratoridentität für den Peer aus.
-7. Überprüfen Sie die Zusammenfassung und klicken Sie auf **Peer hinzufügen**.
+6. Auf der nächsten Seitenanzeige erhalten Sie die Aufforderung **Identität zuordnen**, um diese als Administrator Ihres Peers festzulegen. Wählen Sie `Org2 Admin` als Administratoridentität für den Peer aus.
+7. Wenn Sie einen kostenpflichtigen Cluster verwenden, haben Sie auf der nächsten Anzeige die Möglichkeit, die Ressourcenzuordnung für den Knoten zu konfigurieren. Im Rahmen dieses Lernprogramms können Sie alle Standardeinstellungen akzeptieren und auf **Weiter** klicken. Weitere Informationen über die Zuordnung von Ressourcen zu Ihrem Knoten finden Sie in diesem Thema zur [Ressourcenzuordnung](/docs/services/blockchain?topic=blockchain-ibp-console-govern#ibp-console-govern-allocate-resources). Wenn Sie einen kostenlosen Cluster verwenden, wird Ihnen die Seite **Zusammenfassung** bereits angezeigt.
+8. Überprüfen Sie die Seite "Zusammenfassung" und klicken Sie dann auf **Peer hinzufügen**.
 
 **Task: Peer bereitstellen**
 
@@ -212,7 +218,7 @@ Da nur Administratoren von Anordnungsknoten Peerorganisationen zum Konsortium hi
 Da nur Administratoren von Anordnungsknoten Peerorganisationen zum Konsortium hinzufügen können, müssen Sie der Administrator des Anordnungsknotens sein, was bedeutet, dass die Administratoridentität der Organisation des Anordnungsknotens in Ihrer Konsolenwallet vorhanden sein muss.  
 
 1. Navigieren Sie zur Registerkarte **Knoten**.
-2. Blättern Sie abwärts zu dem Anordungsknoten, den Sie verwenden möchten, und klicken Sie auf den Knoten, um ihn zu öffnen.
+2. Blättern Sie abwärts zu dem Anordnungsknoten, den Sie verwenden möchten, und klicken Sie auf den Knoten, um ihn zu öffnen.
 3. Klicken Sie unter **Konsortiumsmitglieder** auf **Organisation hinzufügen**.
 4. Wählen Sie in der Dropdown-Liste `Org2 MSP` aus, da es sich hier um den MSP handelt, der die Organisation `org2` des Peers darstellt.
 5. Klicken Sie auf **Organisation hinzufügen**.
@@ -280,11 +286,14 @@ Führen Sie die folgenden Schritte in der Konsole aus:
 2. Wählen Sie den Anordnungsknoten mit dem Namen 'Orderer' aus und klicken Sie auf **Weiter**.
 3. Geben Sie den Namen des Kanals ein, dem Sie beitreten möchten (`channel1`), und klicken Sie auf **Weiter**.
 4. Wählen Sie die Peers aus, die dem Kanal beitreten sollen. Klicken Sie im Rahmen dieses Lernprogramms auf `Peer Org2`.
-5. Klicken Sie auf **Peer zuordnen**.
+5. Klicken Sie auf **Kanal beitreten**.
 
-Wenn Sie die Funktion [Private Data ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric.readthedocs.io/en/latest/private-data/private-data.html "Private Data") oder [Service Discovery ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric.readthedocs.io/en/latest/discovery-overview.html "Service Discovery") von Hyperledger Fabric nutzen möchten, müssen Sie Ankerpeers in Ihren Organisationen über die Registerkarte **Kanäle** konfigurieren. In diesem Thema finden Sie Informationen darüber, [wie Sie Ankerpeers für private Daten](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-private-data) über die Registerkarte **Kanäle** in der Konsole konfigurieren können.
+Wenn der Kanal, den Sie mit einem Peer verknüpfen möchten, von Ihnen selbst erstellt wird und Sie dem Kanal noch keinen Peer zugeordnet haben, können Sie direkt auf die offene Kachel des Kanals klicken, um den Peer zuzuordnen.
+{:note}
 
-Sie können auch einen neuen Kanal erstellen, sobald Ihre Organisation Mitglied des Konsortiums ist. Führen Sie die Schritte zum [Erstellen eines Kanals](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-create-channel) im [Lernprogramm zum Erstellen eines Netzes](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network) aus.
+Wenn Sie die Funktion [Private Data ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/private-data/private-data.html "Private Data") oder [Service Discovery ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/discovery-overview.html "Service Discovery") von Hyperledger Fabric nutzen möchten, müssen Sie Ankerpeers in Ihren Organisationen über die Registerkarte **Kanäle** konfigurieren. Weitere Informationen zum Konfigurieren von Ankerpeers für private Daten über die Registerkarte **Kanäle** in der Konsole finden Sie unter [Private Daten](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-private-data).
+
+Sie können auch einen neuen Kanal erstellen, wenn Ihre Organisation Mitglied des Konsortiums ist. Führen Sie die Schritte zum [Erstellen eines Kanals](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-create-channel) im [Lernprogramm zum Erstellen eines Netzes](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network) aus.
 
 ## Nächste Schritte
 {: #ibp-console-join-network-next-steps}

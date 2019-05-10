@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -17,7 +17,7 @@ subcollection: blockchain
 {:tip: .tip}
 {:pre: .pre}
 
-# Instalación de {{site.data.keyword.blockchainfull_notm}} Platform en {{site.data.keyword.cloud_notm}} Private
+# Instalación de {{site.data.keyword.blockchainfull_notm}} Platform para {{site.data.keyword.cloud_notm}} Private
 {: #helm-install}
 
 {{site.data.keyword.blockchainfull}} Platform para {{site.data.keyword.cloud_notm}} Private se entrega como un archivo de diagrama de Helm que se puede instalar en un clúster de {{site.data.keyword.cloud_notm}} Private local. Después de instalar el diagrama de Helm, encontrará {{site.data.keyword.blockchainfull_notm}} Platform como una plataforma en el catálogo de {{site.data.keyword.cloud_notm}} Private.
@@ -38,7 +38,7 @@ Antes de instalar {{site.data.keyword.blockchainfull_notm}} Platform para {{site
 ## Requisitos previos para la instalación del diagrama de Helm
 {: #helm-install-prereqs}
 
-Antes de instalar el diagrama de Helm, debe haber configurado un clúster de {{site.data.keyword.cloud_notm}} Private. Consulte las instrucciones para
+Antes de instalar el diagrama de Helm, debe haber configurado un clúster de {{site.data.keyword.cloud_notm}} Private y haber creado un nuevo espacio de nombres de destino enlazado a una política de seguridad de pod. Consulte las instrucciones para
 [configurar un clúster de {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/ICP_setup.html#icp-setup).
 
 ## Instalación de {{site.data.keyword.blockchainfull_notm}} Platform detrás de un cortafuegos
@@ -60,12 +60,13 @@ No obstante, el diagrama de Helm de Community Edition no incluye las imágenes d
 - [Imagen Docker-in-Docker (DinD) utilizada por los iguales para ejecutar contenedores de código de encadenamiento ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hub.docker.com/r/ibmcom/ibp-dind/)
 
 Para obtener más información sobre cómo utilizar estas imágenes, consulte
-[Adición de aplicaciones destacadas a clústeres sin conexión a Internet ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_package_offline.html). Tenga en cuenta que puede encontrar el archivo de especificación `manifest.yaml` en el directorio
+[Adición de aplicaciones destacadas a clústeres sin conexión a Internet ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/app_center/add_package_offline.html). Tenga en cuenta que puede encontrar el archivo de especificación `manifest.yaml` en el directorio
 `ibm-blockchain-platform-dev/ibm_cloud_pak` del diagrama de Helm.
 
 ## Importación del diagrama de Helm en {{site.data.keyword.cloud_notm}} Private
+{: #helm-install-importing}
 
-1. Descargue el archivo del diagrama de Helm en IBM Blockchain Platform para {{site.data.keyword.cloud_notm}} Private desde [Passport Advantage Online ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/software/passportadvantage/pao_customer.html "Passport Advantage Online") o para la edición gratuita Community desde [GitHub ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://github.com/IBM/charts/blob/master/repo/stable/ibm-blockchain-platform-dev-1.0.0.tgz "IBM/charts").  Este paquete de diagramas de Helm contiene tres subdiagramas de Helm para la CA, el clasificador y el igual.
+1. Descargue el archivo del diagrama de Helm en IBM Blockchain Platform para {{site.data.keyword.cloud_notm}} Private desde [Passport Advantage Online ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/software/passportadvantage/pao_customer.html "Passport Advantage Online") o para la edición gratuita Community desde [GitHub ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://github.com/IBM/charts/blob/master/repo/stable/ibm-blockchain-platform-dev-1.0.2.tgz "IBM/charts").  Este paquete de diagramas de Helm contiene tres subdiagramas de Helm para la CA, el clasificador y el igual.
 
 2. Si aún no lo ha hecho, inicie sesión en el clúster de {{site.data.keyword.cloud_notm}} Private.
 
@@ -74,13 +75,13 @@ Para obtener más información sobre cómo utilizar estas imágenes, consulte
   ```
   {:codeblock}
 
-4. Asegúrese de configurar la [CLI de Docker](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/manage_images/configuring_docker_cli.html). Tras configurar la CLI de Docker, acceda al registro de imágenes del clúster utilizando el mandato siguiente:
+3. Asegúrese de configurar la [CLI de Docker](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/manage_images/configuring_docker_cli.html). Tras configurar la CLI de Docker, acceda al registro de imágenes del clúster utilizando el mandato siguiente:
   ```
   docker login <cluster_CA_domain>:8500
   ```
   {:codeblock}
 
-5. Busque el nombre del repositorio en {{site.data.keyword.cloud_notm}} Private para cargar el diagrama de Helm utilizando el mandato siguiente:
+4. Busque el nombre del repositorio en {{site.data.keyword.cloud_notm}} Private para cargar el diagrama de Helm utilizando el mandato siguiente:
   ```
   cloudctl catalog repos
   ```
@@ -88,7 +89,7 @@ Para obtener más información sobre cómo utilizar estas imágenes, consulte
 
   Cuando este mandato finalice correctamente, podrá ver una lista de repositorios del clúster. Elija el nombre del repositorio de destino y guárdelo. Necesitará utilizarlo en el mandato siguiente.
 
-6. Importe el diagrama de Helm utilizando la línea de mandatos.
+5. Importe el diagrama de Helm utilizando la línea de mandatos.
   El mandato que ejecute para importar el diagrama de Helm dependerá de si el diagrama de Helm se ha descargado de Passport Advantage (PPA) o de GitHub.
 
   - **{{site.data.keyword.blockchainfull_notm}} Platform para {{site.data.keyword.cloud_notm}} Private**
@@ -103,81 +104,71 @@ Para obtener más información sobre cómo utilizar estas imágenes, consulte
 
     Sustituya los valores siguientes:
     - `<archive-name>` por el nombre del archivo `.tgz` descargado.
-    - `<cluster_CA_domain>:8500` por el dominio que utilice para iniciar sesión en el clúster de {{site.data.keyword.cloud_notm}} Private.
+    - `<cluster_CA_domain>:8500` por el dominio que utilice para iniciar sesión en el clúster de
+{{site.data.keyword.cloud_notm}} Private.
     - `<repo-name>` por el repositorio de Helm donde desee cargar el diagrama. Ejecute 'cloudctl catalog repos' para ver una lista de los repositorios.
 
     Cuando este mandato finalice correctamente, verá algo parecido a la información siguiente:
 
-    <details aria-label="Details"><summary>Helm install output</summary>
-    ```
+    ```  
     Expanding archive
     OK
 
     Importing docker images
-      Processing image: ibmblockchain/hlfabric-orderer-amd64:1.2.1
+      Processing image: ibmcom/ibp-fabric-orderer-amd64:1.4.0
       Loading Image
       Tagging Image
-      Pushing image as: mycluster.icp:8500/bcaas-usa/ibmblockchain/hlfabric-orderer-amd64:1.2.1
-    Pushing image mycluster.icp:8500/bcaas-usa/ibmblockchain/hlfabric-orderer-amd64:1.2.1
-      Processing image: ibmblockchain/hlfabric-orderer-s390x:1.2.1
+      Pushing image as: mycluster.icp:8500/bcaas-usa/ibmcom/ibp-fabric-orderer-amd64:1.4.0
+    Pushing image mycluster.icp:8500/bcaas-usa/ibmcom/ibp-fabric-orderer-amd64:1.4.0
+      Processing image: ibmcom/ibp-fabric-orderer-s390x:1.4.0
       Loading Image
       Tagging Image
-      Pushing image as: mycluster.icp:8500/bcaas-usa/ibmblockchain/hlfabric-orderer-s390x:1.2.1
-    Pushing image mycluster.icp:8500/bcaas-usa/ibmblockchain/hlfabric-orderer-s390x:1.2.1
-      Processing image: ibmblockchain/hlfabric-ca-amd64:1.2.1
+      Pushing image as: mycluster.icp:8500/bcaas-usa/ibmcom/ibp-fabric-orderer-s390x:1.4.0
+    Pushing image mycluster.icp:8500/bcaas-usa/ibmcom/ibp-fabric-orderer-s390x:1.4.0
+      Processing image: ibmcom/ibp-fabric-ca-amd64:1.4.0
       Loading Image
       Tagging Image
-      Pushing image as: mycluster.icp:8500/bcaas-usa/ibmblockchain/hlfabric-ca-amd64:1.2.1
-    Pushing image mycluster.icp:8500/bcaas-usa/ibmblockchain/hlfabric-ca-amd64:1.2.1
-      Processing image: ibmblockchain/hlfabric-ca-s390x:1.2.1
+      Pushing image as: mycluster.icp:8500/bcaas-usa/ibmcom/ibp-fabric-ca-amd64:1.4.0
+    Pushing image mycluster.icp:8500/bcaas-usa/ibmcom/ibp-fabric-ca-amd64:1.4.0
+      Processing image: ibmcom/ibp-fabric-ca-s390x:1.4.0
       Loading Image
       Tagging Image
-      Pushing image as: mycluster.icp:8500/bcaas-usa/ibmblockchain/hlfabric-ca-s390x:1.2.1
-    Pushing image mycluster.icp:8500/bcaas-usa/ibmblockchain/hlfabric-ca-s390x:1.2.1
-      Processing image: ibmblockchain/v1fabric-peer-amd64:1.2.1
+      Pushing image as: mycluster.icp:8500/bcaas-usa/ibmcom/ibp-fabric-ca-s390x:1.4.0
+    Pushing image mycluster.icp:8500/bcaas-usa/ibmcom/ibp-fabric-ca-s390x:1.4.0
+      Processing image: ibmcom/ibp-fabric-peer-amd64:1.4.0
       Loading Image
       Tagging Image
-      Pushing image as: mycluster.icp:8500/bcaas-usa/ibmblockchain/v1fabric-peer-amd64:1.2.1
-    Pushing image mycluster.icp:8500/bcaas-usa/ibmblockchain/v1fabric-peer-amd64:1.2.1
-      Processing image: ibmblockchain/v1fabric-peer-s390x:1.2.1
+      Pushing image as: mycluster.icp:8500/bcaas-usa/ibmcom/ibp-fabric-peer-amd64:1.4.0
+    Pushing image mycluster.icp:8500/bcaas-usa/ibmcom/ibp-fabric-peer-amd64:1.4.0
+      Processing image: ibmcom/ibp-fabric-peer-s390x:1.4.0
       Loading Image
       Tagging Image
-      Pushing image as: mycluster.icp:8500/bcaas-usa/ibmblockchain/v1fabric-peer-s390x:1.2.1
-    Pushing image mycluster.icp:8500/bcaas-usa/ibmblockchain/v1fabric-peer-s390x:1.2.1
-      Processing image: ibmblockchain/fabric-couchdb-amd64:1.2.1
+      Pushing image as: mycluster.icp:8500/bcaas-usa/ibmcom/ibp-fabric-peer-s390x:1.4.0
+    Pushing image mycluster.icp:8500/bcaas-usa/ibmcom/ibp-fabric-peer-s390x:1.4.0
+      Processing image: ibmcom/ibp-couchdb-amd64:1.4.0
       Loading Image
       Tagging Image
-      Pushing image as: mycluster.icp:8500/bcaas-usa/ibmblockchain/fabric-couchdb-amd64:1.2.1
-    Pushing image mycluster.icp:8500/bcaas-usa/ibmblockchain/fabric-couchdb-amd64:1.2.1
-      Processing image: ibmblockchain/fabric-couchdb-s390x:1.2.1
+      Pushing image as: mycluster.icp:8500/bcaas-usa/ibmcom/ibp-couchdb-amd64:1.4.0
+    Pushing image mycluster.icp:8500/bcaas-usa/ibmcom/ibp-couchdb-amd64:1.4.0
+      Processing image: ibmcom/ibp-couchdb-s390x:1.4.0
       Loading Image
       Tagging Image
-      Pushing image as: mycluster.icp:8500/bcaas-usa/ibmblockchain/fabric-couchdb-s390x:1.2.1
-    Pushing image mycluster.icp:8500/bcaas-usa/ibmblockchain/fabric-couchdb-s390x:1.2.1
-      Processing image: ibmcom/icp-dind-amd64:1.2.1
+      Pushing image as: mycluster.icp:8500/bcaas-usa/ibmcom/ibp-couchdb-s390x:1.4.0
+    Pushing image mycluster.icp:8500/bcaas-usa/ibmcom/ibp-couchdb-s390x:1.4.0
+      Processing image: ibmcom/ibp-dind-amd64:1.4.0
       Loading Image
       Tagging Image
-      Pushing image as: mycluster.icp:8500/bcaas-usa/ibmcom/icp-dind-amd64:1.2.1
-    Pushing image mycluster.icp:8500/bcaas-usa/ibmcom/icp-dind-amd64:1.2.1
-      Processing image: ibmcom/icp-dind-s390x:1.2.1
+      Pushing image as: mycluster.icp:8500/bcaas-usa/ibmcom/ibp-dind-amd64:1.4.0
+    Pushing image mycluster.icp:8500/bcaas-usa/ibmcom/ibp-dind-amd64:1.4.0
+      Processing image: ibmcom/ibp-dind-s390x:1.4.0
       Loading Image
       Tagging Image
-      Pushing image as: mycluster.icp:8500/bcaas-usa/ibmcom/icp-dind-s390x:1.2.1
-    Pushing image mycluster.icp:8500/bcaas-usa/ibmcom/icp-dind-s390x:1.2.1
-      Processing image: ibmcom/icp-busybox-s390x:1.2.1
-      Loading Image
-      Tagging Image
-      Pushing image as: mycluster.icp:8500/bcaas-usa/ibmcom/icp-busybox-s390x:1.2.1
-    Pushing image mycluster.icp:8500/bcaas-usa/ibmcom/icp-busybox-s390x:1.2.1
-      Processing image: ibmcom/icp-busybox-amd64:1.2.1
-      Loading Image
-      Tagging Image
-      Pushing image as: mycluster.icp:8500/bcaas-usa/ibmcom/icp-busybox-amd64:1.2.1
-    Pushing image mycluster.icp:8500/bcaas-usa/ibmcom/icp-busybox-amd64:1.2.1
+      Pushing image as: mycluster.icp:8500/bcaas-usa/ibmcom/ibp-dind-s390x:1.4.0
+    Pushing image mycluster.icp:8500/bcaas-usa/ibmcom/ibp-dind-s390x:1.4.0
     OK
 
     Uploading helm charts
-      Processing chart: charts/ibm-blockchain-platform-0.1.5.tgz
+      Processing chart: charts/ibm-blockchain-platform-1.0.2.tgz
       Updating chart values.yaml
       Uploading chart
     Loaded helm chart
@@ -186,7 +177,8 @@ Para obtener más información sobre cómo utilizar estas imágenes, consulte
     Synch charts
   Synch started
   OK
-    ```
+    ```  
+    </details>
 
   - **Community Edition descargada desde GitHub**
     Siga estas instrucciones si ha descargado el diagrama de Helm de GitHub.
@@ -213,95 +205,8 @@ Para obtener más información sobre cómo utilizar estas imágenes, consulte
 
 Pulse el botón **Catálogo** de la consola de {{site.data.keyword.cloud_notm}} Private y, a continuación, pulse **Blockchain** en el panel de navegación de la izquierda para verificar que la importación se ha realizado correctamente. Si es así, el mosaico **ibm-blockchain-platform-prod** o el mosaico **ibm-blockchain-platform-dev** debe estar visible en la página Catálogo de {{site.data.keyword.cloud_notm}} Private.
 
-
-## Requisitos de PodSecurityPolicy
-
-Tras importar el diagrama de Helm en {{site.data.keyword.cloud_notm}} Private, deberá enlazar una política
-[PodSecurityPolicy
-![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://kubernetes.io/docs/concepts/policy/pod-security-policy/ "Políticas de seguridad de pod") con el espacio de nombres de destino antes de instalar los componentes.  Elija una política de seguridad de pod (PodSecurityPolicy) predefinida o solicite al administrador del clúster que cree una PodSecurityPolicy personalizada:
-- Nombre de PodSecurityPolicy predefinida: [`ibm-privileged-psp`](https://ibm.biz/cpkspec-psp)
-- Nombre de PodSecurityPolicy personalizada:
-  ```
-  apiVersion: extensions/v1beta1
-  kind: PodSecurityPolicy
-  metadata:
-    name: ibm-blockchain-platform-psp
-  spec:
-    hostIPC: false
-    hostNetwork: false
-    hostPID: false
-    privileged: true
-    allowPrivilegeEscalation: true
-    readOnlyRootFilesystem: false
-    seLinux:
-      rule: RunAsAny
-    supplementalGroups:
-      rule: RunAsAny
-    runAsUser:
-      rule: RunAsAny
-    fsGroup:
-      rule: RunAsAny
-    requiredDropCapabilities:
-    - ALL
-    allowedCapabilities:
-    - NET_BIND_SERVICE
-    - CHOWN
-    - DAC_OVERRIDE
-    - SETGID
-    - SETUID
-    volumes:
-    - '*'
-  ```
-  {:codeblock}
-- ClusterRole (rol de clúster) personalizado para la PodSecurityPolicy personalizada:
-  ```
-  apiVersion: rbac.authorization.k8s.io/v1
-  kind: ClusterRole
-  metadata:
-    annotations:
-    name: ibm-blockchain-platform-clusterrole
-  rules:
-  - apiGroups:
-    - extensions
-    resourceNames:
-    - ibm-blockchain-platform-psp
-    resources:
-    - podsecuritypolicies
-    verbs:
-    - use
-  - apiGroups:
-    - ""
-    resources:
-    - secrets
-    verbs:
-    - create
-    - delete
-    - get
-    - list
-    - patch
-    - update
-    - watch
-  ```
-  {:codeblock}
-
-- ClusterRoleBinding (enlace de rol de clúster) personalizado para el ClusterRole personalizado:
-  ```
-  apiVersion: rbac.authorization.k8s.io/v1
-  kind: ClusterRoleBinding
-  metadata:
-   name: ibm-blockchain-platform-clusterrolebinding
-  roleRef:
-   apiGroup: rbac.authorization.k8s.io
-   kind: ClusterRole
-   name: ibm-blockchain-platform-clusterrole
-  subjects:
-  - kind: ServiceAccount
-    name: default
-    namespace: default
-  ```
-  {:codeblock}
-
 ## Despliegue de componentes individuales
+{: #helm-install-deploying-components}
 
 Después de instalar el diagrama de Helm, pulse el mosaico **ibm-blockchain-platform-prod** o **ibm-blockchain-platform-dev** en el catálogo de {{site.data.keyword.cloud_notm}} Private para abrirlo. Puede utilizar la página de configuración para desplegar cualquiera de los componentes individuales de la red blockchain. Para obtener más detalles sobre los componentes necesarios para la solución de blockchain y sobre el orden en el que deben desplegarse, consulte [Iniciación a {{site.data.keyword.blockchainfull_notm}} Platform para {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/ibp_for_icp_deployment_guide.html#get-started-icp).
 
@@ -310,3 +215,67 @@ A continuación, despliegue los componentes individuales:
 - Si va a desplegar un clasificador, en primer lugar debe configurar una entidad emisora de certificados para el clasificador. La CA generará certificados que utilizarán los demás componentes de la organización. Para obtener más información, consulte [Despliegue de una entidad emisora de certificados de {{site.data.keyword.blockchainfull_notm}} Platform en {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy). A continuación, puede desplegar el clasificador, que será el enlace común de la red. Para obtener más información, consulte [Despliegue de un clasificador de {{site.data.keyword.blockchainfull_notm}} Platform en {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/howto/orderer_deploy_icp.html#icp-orderer-deploy)
 
 - Si va a desplegar un igual, en primer lugar debe configurar una entidad emisora de certificados para el igual. La CA generará los certificados que utilizará el igual. Para obtener más información, consulte [Despliegue de una entidad emisora de certificados de {{site.data.keyword.blockchainfull_notm}} Platform en {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy). A continuación, cuando esté listo para unirse a una red, puede desplegar los iguales que se unirán a canales, aprobarán transacciones y almacenarán los datos. Para obtener más información, consulte [Despliegue de un igual de {{site.data.keyword.blockchainfull_notm}} en {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/howto/peer_deploy_icp.html#icp-peer-deploy) o [Despliegue de un igual de {{site.data.keyword.blockchainfull_notm}} para una red de Plan inicial o Plan empresarial](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy), dependiendo de la red blockchain a la que se vaya a unir el igual.
+
+## Actualización del diagrama de Helm en {{site.data.keyword.cloud_notm}} Private
+{: #helm-install-upgrading}
+
+Si utiliza {{site.data.keyword.blockchainfull_notm}} Platform para {{site.data.keyword.cloud_notm}} Private v1.0.1, puede actualizar el diagrama de Helm a {{site.data.keyword.blockchainfull_notm}} Platform para {{site.data.keyword.cloud_notm}} Private v1.0.2 siguiendo las instrucciones de
+[Actualización de productos empaquetados ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/installing/upgrade_helm.html "Actualización de productos empaquetados") de la documentación de {{site.data.keyword.cloud_notm}} Private. Además del mandato `helm upgrade` de las instrucciones, también puede
+[utilizar la consola de {{site.data.keyword.cloud_notm}} Private para actualizar el release de Helm](/docs/services/blockchain/howto/helm_install_icp.html#helm-install-upgrading-ui).
+
+Debe tener el rol de **administrador de clúster** o **administrador de equipo** en
+{{site.data.keyword.cloud_notm}} Private para poder actualizar un diagrama de Helm.
+{:note}
+
+No hay soporte para la retrotracción de {{site.data.keyword.blockchainfull_notm}} Platform para {{site.data.keyword.cloud_notm}} Private v1.0.2 a v1.0.1.
+
+### Actualización del release de Helm desde la consola de {{site.data.keyword.cloud_notm}} Private
+{: #helm-install-upgrading-ui}
+
+Al actualizar el release de Helm de un componente desde la consola de
+{{site.data.keyword.cloud_notm}} Private, debe marcar `Reutilizar valores` y no cambiar ningún parámetro.
+{:important}  
+
+Realice los pasos siguientes para actualizar el release de Helm desde la consola de
+{{site.data.keyword.cloud_notm}} Private:
+1. En la barra de menús, pulse **Cargas de trabajo** > **Releases de Helm**.
+2. Seleccione el release de Helm que desee actualizar.
+3. Compruebe el número de versión en `Versión disponible`, en la sección **Detalles y actualizaciones**.
+4. Pulse **ReadMe** bajo el número de versión para revisar las notas del release para ver si hay cambios importantes.
+5. Pulse en **Actualizar** y, a continuación, seleccione el repositorio correcto y la versión adecuada en la lista desplegable.
+6. Asegúrese de que `Reutilizar valores` esté seleccionado.
+7. Pulse **Actualizar**.
+
+Espere a que aparezca el mensaje de confirmación y la actualización del estado del release junto al nombre del release en la esquina superior izquierda de la consola.
+
+### Realización de pasos adicionales para actualizar un igual
+{: #helm-install-upgrading-peer}
+
+Tras actualizar un igual, existen algunos pasos adicionales que debe realizar para completar el proceso de actualización. En la página del release de Helm del igual, puede ver dos pods de igual en la sección **Pod**:
+- El nuevo pod de igual con el estado `CrashLoopBackOff`
+- El pod de igual original con el estado `Running`
+
+Anote los nombres de igual asociados, ya que deberá utilizarlos en los pasos posteriores.
+{:tip}
+
+Realice los pasos siguientes desde la CLI para completar el proceso de actualización del igual:
+1. Inicie sesión en el clúster desde la CLI de {{site.data.keyword.cloud_notm}} Private y ejecute el mandato
+`kubectl get replicaset`.
+   ```
+   cloudctl login -a https://<Cluster Master Host>:<Cluster Master API Port> --skip-ssl-validation
+   kubectl get replicaset
+   ```
+   {:codeblock}
+2. Localice el conjunto de réplicas de igual que corresponda al igual original. El nombre del conjunto de réplicas de igual debe coincidir con la parte del principio del nombre del igual en la sección **Pod** de la consola de {{site.data.keyword.cloud_notm}} Private.
+3. Suprima el conjunto de réplicas de igual.
+   ```
+   kubectl delete rs <peer replicaset name>
+   ```
+   {:codeblock}
+4. Suprima el nuevo pod de igual. Este es el pod de igual que tiene el estado `CrashLoopBackOff` en la interfaz de usuario.
+   ```
+   kubectl delete po <new peer pod name>
+   ```
+   {:codeblock}
+
+El igual se habrá actualizado correctamente cuando vea que se ha creado un nuevo pod de igual con el estado `Running` (en ejecución).

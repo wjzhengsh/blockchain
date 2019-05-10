@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-03-20"
+lastupdated: "2019-04-17"
 
 subcollection: blockchain
 
@@ -38,8 +38,9 @@ O diagrama a seguir explica a arquitetura do Kubernetes. Para obter mais explica
 O {{site.data.keyword.cloud_notm}} Kubernetes Service entrega ferramentas poderosas combinando contêineres do Docker, a tecnologia do Kubernetes, uma experiência do usuário interativa e segurança e isolamento integrados para automatizar a implementação, a operação, o ajuste de escala e o monitoramento de apps conteinerizados em um cluster de hosts de cálculo.
 
 Para obter mais informações sobre o {{site.data.keyword.cloud_notm}} Kubernetes Service, consulte os tópicos a seguir na documentação do {{site.data.keyword.cloud_notm}} Kubernetes Service:
-- [Tecnologia do {{site.data.keyword.cloud_notm}} Kubernetes Service ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://cloud.ibm.com/docs/containers/cs_tech.html#ibm-cloud-kubernetes-service-technology "Documentação da tecnologia do {{site.data.keyword.cloud_notm}} Kubernetes Service")
-- [Por que o {{site.data.keyword.cloud_notm}} Kubernetes Service ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://cloud.ibm.com/docs/containers?topic=containers-cs_ov#cs_ov "Documentação Por que o {{site.data.keyword.cloud_notm}} Kubernetes Service")
+- Tecnologia do serviço [{{site.data.keyword.cloud_notm}} Kubernetes ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](/docs/containers/cs_tech.html#ibm-cloud-kubernetes-service-technology "Documentação da tecnologia do serviço {{site.data.keyword.cloud_notm}} Kubernetes")
+- [Por que o {{site.data.keyword.cloud_notm}} Kubernetes Service ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](/docs/containers?topic=containers-cs_ov#cs_ov "Documentação Por que o {{site.data.keyword.cloud_notm}} Kubernetes Service")
+- [Definindo sua estratégia do Kubernetes ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](/docs/containers?topic=containers-strategy#strategy "Definindo sua estratégia do Kubernetes")
 
 
 ## Objetos principais do Kubernetes

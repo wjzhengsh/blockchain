@@ -1,8 +1,8 @@
-﻿---
+---
 
 copyright:
   years: 2018,2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-17"
 
 subcollection: blockchain
 
@@ -37,9 +37,7 @@ Les réseaux de plan Enterprise offrent les fonctionnalités prêtes pour la pro
 
 Avant de migrer depuis votre réseau de plan Starter vers un réseau de plan Enterprise, vous devez lire les remarques suivantes.
 
-- **Tarification :** Les frais mensuels de votre organisation pour l'utilisation d'un réseau de plan Enterprise inclut des frais d'appartenance de 1000 $ par instance et des frais d'homologue de 1000 $ par homologue. Pour plus d'informations, voir [A propos du plan Enterprise](/docs/services/blockchain
-/howto/pricing.html#ibp-pricing-enterprise-plan).
-
+- **Tarification :** Les frais mensuels de votre organisation pour l'utilisation d'un réseau de plan Enterprise inclut des frais d'appartenance de 1000 $ par instance et des frais d'homologue de 1000 $ par homologue. Pour plus d'informations, voir [A propos du plan Enterprise](/docs/services/blockchain/howto/pricing.html#ibp-pricing-enterprise-plan).
 - **Version d'Hyperledger Fabric :** Les réseaux de plan Enterprise s'exécutent sur Hyperledger Fabric v1.1. Les réseaux Starter Plan s'exécutent dans la version 1.2 de Fabric.
 - **Ressources affectées :** Code blockchain (contrats intelligents), applications client. Tenez compte également du fait que votre code blockchain optimise composant en version 1.2 de Fabric ou une fonctionnalité qui n'est pas compatible avec les réseaux en version 1.1.
 - **Temps nécessaire :** Une demi-journée est au moins nécessaire pour migrer un réseau de base d'un plan Starter vers un plan Enterprise.

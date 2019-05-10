@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -34,11 +34,9 @@ subcollection: blockchain
 * 厳しい規制がかけられている業界の機密データをやり取りするネットワークに対応した堅牢なセキュリティー・スタック。特権的なアクセス権はなく、マルウェアや改ざんへの対策や 100% の暗号化などの多彩な機能が盛り込まれています。
 * エンタープライズ・ネットワークは、24 時間に 1 回、オフサイトにバックアップされます。 災害が発生した場合、これらのネットワークは、同じサイトまたは別のサイトにリストアできます。
 
-エンタープライズ・プランは {{site.data.keyword.cloud_notm}} のプラットフォーム・サービスであり、サービス・レベル・アグリーメント (SLA) に関する [{{site.data.keyword.cloud_notm}} サービスのご利用条件![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](http://www-03.ibm.com/software/sla/sladb.nsf/sla/bm "{{site.data.keyword.cloud_notm}} サービスのご利用条件") に従います。 エンタープライズ・プランのネットワークは、**複数の環境**にまたがり、地理的に別々のデータ・センターにプロビジョンされることに注意してください。
-
 **注:**
-- {{site.data.keyword.blockchainfull_notm}} Platform エンタープライズ・プランは実稼働環境を提供します。 開発/テスト用の環境が必要な場合は、[スターター・プランについて](/docs/services/blockchain/starter_plan.html#starter-plan-about)を参照してください。
-- {{site.data.keyword.blockchainfull_notm}} Platform は {{site.data.keyword.cloud_notm}} のプラットフォーム・サービスであり、すべてのメンバーシップ・オファリングはサービス・レベル・アグリーメント (SLA) に関する [{{site.data.keyword.cloud_notm}} サービスのご利用条件 ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](http://www-03.ibm.com/software/sla/sladb.nsf/sla/bm "{{site.data.keyword.cloud_notm}} サービスのご利用条件") に従っています。 エンタープライズ・プラン・ネットワークは、**複数の環境**にまたがり、地理的に別々のデータ・センターにプロビジョンされます。
+- エンタープライズ・プランは実稼働環境を提供します。 開発/テスト用の環境が必要な場合は、[スターター・プランについて](/docs/services/blockchain/starter_plan.html#starter-plan-about)を参照してください。
+- {{site.data.keyword.blockchainfull_notm}} Platform は {{site.data.keyword.cloud_notm}} のプラットフォーム・サービスであり、すべてのメンバーシップ・オファリングはサービス・レベル・アグリーメント (SLA) に関する [{{site.data.keyword.cloud_notm}} サービスのご利用条件 ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](http://www-03.ibm.com/software/sla/sladb.nsf/sla/bm "{{site.data.keyword.cloud_notm}} サービスのご利用条件") に従っています。 エンタープライズ・プランのネットワークは、単一の地域の 1 つのデータ・センターにプロビジョンされます。使用可能な地域のリストについては、[{{site.data.keyword.blockchainfull_notm}} Platform のロケーション](/docs/services/blockchain?topic=blockchain-ibp-regions-locations#ibp-regions-locations)を参照してください。
 
 ネットワークを始めようとしているメンバーのために、IBM は、ネットワークをセットアップしてプロビジョンするための重要な手順をネットワーク・イニシエーターに案内するグラフィカル・ユーザー・インターフェースを用意しています。 例えば、他のメンバーを招待したり、ガバナンス・ルールを設定したりする手順を案内します。 詳しくは、[エンタープライズ・プラン・ネットワークの管理](/docs/services/blockchain/get_start.html#getting-started-with-enterprise-plan)を参照してください。 ネットワークをデプロイした後、ネットワーク・モニターという対話式グラフィカル・ユーザー・インターフェースを使用すると、ネットワークの正常性とアクティビティーをモニターしたり、主要なネットワーク・アクティビティー (新規デプロイメント、メンバーの追加/削除、チェーンコードのライフサイクル、チャネル管理などの作業) を管理したり、技術サポートを利用したりできます。 詳しくは、[ネットワーク・モニターの使用](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard)を参照してください。
 
@@ -59,7 +57,7 @@ Fabric CA は、エンタープライズ・プランで提供される認証局�
 
 決定する必要がある唯一の点は、ネットワークに必要なピアのサイズです。 これは、必要なチャネルの数、1 チャネルあたりのワークロード、メモリー使用量、ディスク・スペース (ストレージ) に基づいて決定します。
 
-より安定した実動レベルまたは実動に近いレベルのデプロイメントには、エンタープライズ・プランを使用してください。 テストを目的とする場合は、[スターター・プラン](/docs/services/blockchain/starter_plan.html#starter-plan-about)を使用するか、[Docker イメージをローカルにインストール](http://hyperledger-fabric.readthedocs.io/en/release-1.1/build_network.html)します。
+より安定した実動レベルまたは実動に近いレベルのデプロイメントには、エンタープライズ・プランを使用してください。 テストを目的とする場合は、[スターター・プラン](/docs/services/blockchain/starter_plan.html#starter-plan-about)を使用するか、[Docker イメージをローカルにインストール](http://hyperledger-fabric.readthedocs.io/en/release-1.2/build_network.html)します。
 
 <!--- The Enterprise plan provides the ordering service and CA. The membership fee is $1,000, and a per peer fee of $1,000 that is associated with the network. If you want to have high availability (HA), you must purchase an additional peer to provide the HA capabilities. For example, one organization (associated membership fee of $1,000) of two peers ($1,000 X 2 peers) with HA ($1,000 X 2 HA peers) requires a monthly charge of $5,000.  --->
 

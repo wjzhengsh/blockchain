@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -20,7 +20,7 @@ subcollection: blockchain
 # Zertifizierungsstelle in {{site.data.keyword.cloud_notm}} Private bereitstellen
 {: #ca-deploy}
 
-Nachdem Sie das Helm-Diagramm für {{site.data.keyword.blockchainfull}} Platform on {{site.data.keyword.cloud_notm}} Private importiert haben, können Sie die einzelnen Komponenten bereitstellen. Die Zertifizierungsstelle (Certificate Authority, CA) ist das Stammverzeichnis der vertrauenswürdigen Elemente für Ihre Organisation und ermöglicht Ihnen die Generierung von Berechtigungsnachweisen für die anderen Komponenten, die Sie bereitstellen wollen. Infolgedessen müssen Sie eine Zertifizierungsstelle bereitstellen, bevor Sie die anderen Komponenten bereitstellen. Jede Organisation in einem Blockchain-Netz mit mehreren Clouds muss ihre eigene Zertifizierungsstelle bereitstellen.  Weitere Informationen zu Zertifizierungsstellen und der Rolle, die sie in einem Blockchain-Netz übernehmen, enthält der Abschnitt [Zertifizierungsstellen](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview-ca).
+Nachdem Sie das Helm-Diagramm für {{site.data.keyword.blockchainfull}} Platform for {{site.data.keyword.cloud_notm}} Private importiert haben, können Sie die einzelnen Komponenten bereitstellen. Die Zertifizierungsstelle (Certificate Authority, CA) ist das Stammverzeichnis der vertrauenswürdigen Elemente für Ihre Organisation und ermöglicht Ihnen die Generierung von Berechtigungsnachweisen für die anderen Komponenten, die Sie bereitstellen wollen. Infolgedessen müssen Sie eine Zertifizierungsstelle bereitstellen, bevor Sie die anderen Komponenten bereitstellen. Jede Organisation in einem Blockchain-Netz mit mehreren Clouds muss ihre eigene Zertifizierungsstelle bereitstellen.  Weitere Informationen zu Zertifizierungsstellen und der Rolle, die sie in einem Blockchain-Netz übernehmen, enthält der Abschnitt [Zertifizierungsstellen](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview-ca).
 {:shortdesc}
 
 Lesen Sie vor der Bereitstellung einer Zertifizierungsstelle den Abschnitt mit [Hinweisen und Einschränkungen](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-about-considerations).
@@ -55,9 +55,9 @@ Wenn Sie nicht mit der dynamischen Bereitstellung arbeiten, müssen [persistente
 
 1. Bevor Sie in {{site.data.keyword.cloud_notm}} Private eine Zertifizierungsstelle installieren können, müssen Sie [{{site.data.keyword.cloud_notm}} Private installieren](/docs/services/blockchain/ICP_setup.html#icp-setup) und das [Helm-Diagramm für {{site.data.keyword.blockchainfull_notm}} Platform installieren](/docs/services/blockchain/howto/helm_install_icp.html#helm-install).
 
-2. Falls Sie die Community Edition verwenden und dieses Helm-Diagramm in einem {{site.data.keyword.cloud_notm}} Private-Cluster ohne Internetkonnektivität ausführen wollen, müssen Sie auf einer mit dem Internet verbundenen Maschine Archive erstellen, bevor Sie die Archive im {{site.data.keyword.cloud_notm}} Private-Cluster installieren können. Weitere Informationen finden Sie unter [Ausgewählte Anwendungen ohne Internetverbindung zu Clustern hinzufügen ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_package_offline.html "Ausgewählte Anwendungen ohne Internetverbindung zu Clustern hinzufügen"){:new_window}. Die Spezifikationsdatei "manifest.yaml" ist im Helm-Diagramm unter "ibm-blockchain-platform-dev/ibm_cloud_pak" zu finden.
+2. Falls Sie die Community Edition verwenden und dieses Helm-Diagramm in einem {{site.data.keyword.cloud_notm}} Private-Cluster ohne Internetkonnektivität ausführen wollen, müssen Sie auf einer mit dem Internet verbundenen Maschine Archive erstellen, bevor Sie die Archive im {{site.data.keyword.cloud_notm}} Private-Cluster installieren können. Weitere Informationen finden Sie unter [Ausgewählte Anwendungen ohne Internetverbindung zu Clustern hinzufügen ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/app_center/add_package_offline.html "Ausgewählte Anwendungen ohne Internetverbindung zu Clustern hinzufügen"){:new_window}. Die Spezifikationsdatei "manifest.yaml" ist im Helm-Diagramm unter "ibm-blockchain-platform-dev/ibm_cloud_pak" zu finden.
 
-3. Rufen Sie den Wert für die Proxy-IP-Adresse des Clusters in der {{site.data.keyword.cloud_notm}} Private-Konsole ab. **Hinweis:** Sie müssen die Berechtigung eines [Clusteradministrators ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Clusteradministratorrolle und -aktionen") besitzen, um auf Ihre Proxy-IP-Adresse zugreifen zu können. Melden Sie sich am {{site.data.keyword.cloud_notm}} Private Cluster an. Klicken Sie im linken Navigationsfenster auf **Plattform** und anschließend auf **Knoten**, um die im Cluster definierten Knoten anzuzeigen. Klicken Sie auf den Knoten mit der Rolle `Proxy` und kopieren Sie den Wert, der in der Tabelle für die `Host-IP` angegeben ist.
+3. Rufen Sie den Wert für die Proxy-IP-Adresse des Clusters in der {{site.data.keyword.cloud_notm}} Private-Konsole ab. **Hinweis:** Sie müssen die Berechtigung eines [Clusteradministrators ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/user_management/assign_role.html "Clusteradministratorrolle und -aktionen") besitzen, um auf Ihre Proxy-IP-Adresse zugreifen zu können. Melden Sie sich am {{site.data.keyword.cloud_notm}} Private Cluster an. Klicken Sie im linken Navigationsfenster auf **Plattform** und anschließend auf **Knoten**, um die im Cluster definierten Knoten anzuzeigen. Klicken Sie auf den Knoten mit der Rolle `Proxy` und kopieren Sie den Wert, der in der Tabelle für die `Host-IP` angegeben ist.
 
   Speichern Sie diesen Wert. Sie benötigen ihn, wenn Sie das Feld für die `Proxy-IP-Adresse` des Helm-Diagramms konfigurieren.
   {:important}
@@ -128,9 +128,11 @@ Die folgende Tabelle enthält eine Auflistung der **speziell für die CA-Kompone
 
 |  Parameter     | Beschreibung    | Standardwert  | Erforderlich |
 | --------------|-----------------|-------|------- |
+|**Allgemeine Parameter**| Parameter zur Konfiguration des Helm-Diagramms | | |
 | `Helm-Releasename`| Der Name Ihres Helm-Release. Er muss mit einem Kleinbuchstaben beginnen und mit einem alphanumerischen Zeichen enden, darf jedoch ausschließlich Bindestriche und alphanumerische Zeichen in Kleinschreibung enthalten. Bei jedem Versuch, eine Komponente zu installieren, müssen Sie einen eindeutigen Namen für das Helm-Release verwenden. | Nein | Ja |
 | `Zielnamensbereich`| Wählen Sie den Kubernetes-Namensbereich für die Installation des Helm-Diagramms aus. | Nein | Ja |
-|**Globale Konfiguration**| Diese Parameter gelten für alle Komponenten im Helm-Diagramm.|||
+| `Richtlinien für den Zielnamensbereich`| Zeigt die Pod-Sicherheitsrichtlinien des ausgewählten Namensbereichs an, die eine Richtlinie **`ibm-privileged-psp`** beinhalten müssen. Andernfalls [binden Sie eine Pod-Sicherheitsrichtlinie](/docs/services/blockchain?topic=blockchain-icp-setup#icp-setup-psp) an Ihren Namensbereich. | Nein | Nein |
+|**Globale Konfiguration**| Parameter, die für alle Komponenten im Helm-Diagramm gelten | | |
 | `Name des Servicekontos`| Geben Sie den Namen des [Servicekontos ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/ "Configure Service Accounts for Pods") ein, das Sie für die Ausführung des Pods verwenden wollen. | Standardwert | Nein |
 
 #### Konfigurationsparameter für Zertifizierungsstellen
@@ -151,7 +153,9 @@ Die folgende Tabelle enthält eine Auflistung der **speziell für die CA-Kompone
 | `CA-Speicherzugriffsmodus`| Angeben des [Zugriffsmodus ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes "Access Modes") des Speichers für den PVC. | ReadWriteMany | Ja |
 | `Volume Claim-Größe für CA`| Wählen Sie die Größe der zu verwendenden Platte aus. | 2Gi | Ja |
 | `CA-Image-Repository`| Die Position des Helm-Diagramms für die Zertifizierungsstelle. | ibmcom/ibp-fabric-ca | Ja |
-| `Tag für CA-Docker-Image`| Der Wert des Tags, das dem Image der Zertifizierungsstelle zugeordnet ist. Dieses Feld wird automatisch mit der Imageversion gefüllt. Ändern Sie den Wert nicht.| 1.2.1 | Ja |
+| `Tag für CA-Docker-Image`| Der Wert des Tags, das dem Image der Zertifizierungsstelle zugeordnet ist. Dieses Feld wird automatisch mit der Imageversion gefüllt. | 1.4.0 | Ja |
+| `Repository für Docker-Image zur CA-Initialisierung`| Position des Docker-Image für die CA-Initialisierung. Dieses Feld wird automatisch mit der Imageposition gefüllt. | ibmcom/ibp-init | Ja |
+| `Tag für Docker-Image zur CA-Initialisierung`| Wert des Tags, der dem Docker-Image für die CA-Initialisierung zugeordnet ist. Dieses Feld wird automatisch mit der Imageversion gefüllt. | 1.4.0 | Ja |
 | `CA-Servicetyp` | Hiermit wird angegeben, ob auf dem Peer [externe Ports zugänglich gemacht werden sollen ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types). Wählen Sie "NodePort" aus, damit die Ports extern zugänglich gemacht werden (empfohlen); wählen Sie "ClusterIP" aus, damit die Ports nicht zugänglich gemacht werden. Die Optionen "LoadBalancer" und "ExternalName" werden in diesem Release nicht unterstützt. | NodePort | Ja |
 | `Geheimer Schlüssel für CA (erforderlich)`| Geben Sie den Namen des Kubernetes-Objekts für den geheimen Schlüssel ein, das Sie für `ca-admin-name` und `ca-admin-password` erstellt haben. | Nein | Ja |
 | `CA-CPU-Anforderung`| Geben Sie die Mindestanzahl der CPUs an, die der Zertifizierungsstelle zugeordnet werden sollen. | 1 | Ja |
@@ -160,13 +164,13 @@ Die folgende Tabelle enthält eine Auflistung der **speziell für die CA-Kompone
 | `CA-Speicherbegrenzung`| Geben Sie den Höchstumfang des Speichers an, der der Zertifizierungsstelle zugeordnet werden soll. | 4Gi | Ja |
 | `Name der CA-TLS-Instanz`| Geben Sie den Namen der CA-TLS-Instanz an, die zum Eintragen eines Anordnungsknotens oder Peers verwendet wird. | tlsca | Ja |
 | `Allgemeiner CSR-Name`| Geben Sie den allgemeinen Namen an, den das generierte CA-Stammzertifikat bei der Kontaktaufnahme angibt. | tlsca-common | Ja |
-| `Proxy-IP`| Geben Sie die [IP-Adresse des Proxy-Knotens für den Cluster ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/installing/install_proxy.html "IBM Cloud Private-Installation hinter einem HTTP-Proxy") an, auf dem die Zertifizierungsstelle bereitgestellt wird. | 127.0.0.1 | Ja |
+| `Proxy-IP`| Geben Sie die [IP-Adresse des Proxy-Knotens für den Cluster ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/installing/install_proxy.html "IBM Cloud Private-Installation hinter einem HTTP-Proxy") an, auf dem die Zertifizierungsstelle bereitgestellt wird. | 127.0.0.1 | Ja |
 
 
 ### Helm-Release mit der Helm-Befehlszeile installieren
 {: #ca-deploy-helm-cli}
 
-Zur Installation des Helm-Release können Sie alternativ auch die Helm-CLI verwenden. Stellen Sie vor Ausführung des Befehls `helm install` sicher, dass Sie [das Helm-Repository Ihres Clusters zur Helm-CLI-Umgebung hinzugefügt haben ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_int_helm_repo_to_cli.html "Internes Helm-Repository zur Helm-CLI hinzufügen").
+Zur Installation des Helm-Release können Sie alternativ auch die Helm-CLI verwenden. Stellen Sie vor Ausführung des Befehls `helm install` sicher, dass Sie [das Helm-Repository Ihres Clusters zur Helm-CLI-Umgebung hinzugefügt haben ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/app_center/add_int_helm_repo_to_cli.html "Internes Helm-Repository zur Helm-CLI hinzufügen").
 
 Die für die Installation erforderlichen Parameter können Sie festlegen, indem Sie eine Datei `yaml` erstellen und sie an den folgenden Befehl `helm install` übergeben.
 
@@ -203,7 +207,7 @@ Nachdem Sie die Konfigurationsparameter ausgefüllt und auf die Schaltfläche **
 
 Wenn Sie bis zum Abschnitt `Hinweise` vorblättern, finden Sie wichtige Informationen, die Sie zum [Betrieb der Zertifizierungsstelle](/docs/services/blockchain/howto/CA_operate.html#ca-operate) verwenden.
 
-Nachdem Sie die Zertifizierungsstelle für {{site.data.keyword.blockchainfull_notm}} Platform in {{site.data.keyword.cloud_notm}} Private installiert haben, wird eine Konfigurationsübersicht mit Standardeinstellungen für Umgebungsvariablen erstellt. Danach können Sie Umgebungsvariablen für den Server der Zertifizierungsstelle ändern oder hinzufügen, um sein Verhalten anzupassen. Weitere Informationen zu den Konfigurationsparametern für den Server der Zertifizierungsstelle enthält die [Dokumentation zum Fabric-CA-Server ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric-ca.readthedocs.io/en/latest/users-guide.html#fabric-ca-server "Fabric CA Server").
+Nachdem Sie die Zertifizierungsstelle für {{site.data.keyword.blockchainfull_notm}} Platform in {{site.data.keyword.cloud_notm}} Private installiert haben, wird eine Konfigurationsübersicht mit Standardeinstellungen für Umgebungsvariablen erstellt. Danach können Sie Umgebungsvariablen für den Server der Zertifizierungsstelle ändern oder hinzufügen, um sein Verhalten anzupassen. Weitere Informationen zu den Konfigurationsparametern für den Server der Zertifizierungsstelle enthält die [Dokumentation zum Fabric-CA-Server ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/users-guide.html#fabric-ca-server "Fabric CA Server").
 
 Nachdem Sie die Konfigurationsübersicht konfiguriert haben, müssen Sie den Server der Zertifizierungsstelle erneut starten, damit die Änderungen wirksam werden. Zum Neustart des Servers der Zertifizierungsstelle können Sie den Pod für den Fabric-CA-Server löschen. {{site.data.keyword.cloud_notm}} Private erstellt einen neuen Pod, der die Änderungen abbildet.
 

@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2019
-lastupdated: "2019-03-05"
+  years: 2018, 2019
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -20,7 +20,7 @@ subcollection: blockchain
 # Déploiement d'homologues dans {{site.data.keyword.cloud_notm}} Private
 {: #icp-peer-deploy}
 
-Les instructions suivantes décrivent comment déployer un homologue {{site.data.keyword.blockchainfull}} Platform peer on {{site.data.keyword.cloud_notm}} Private. Ces instructions vous permettent de vous connecter à une plateforme {{site.data.keyword.blockchainfull_notm}} sur {{site.data.keyword.cloud_notm}} Private. Si vous voulez connecter un homologue à un réseau Starter Plan ou Enterprise Plan sur {{site.data.keyword.cloud_notm}}, voir [Déploiement d'homologues pour la connexion à un réseau Starter Plan ou Enterprise Plan](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy).
+Les instructions suivantes décrivent comment déployer un homologue {{site.data.keyword.blockchainfull}} Platform peer on {{site.data.keyword.cloud_notm}} Private. Elles vous permettent de vous connecter aux composants {{site.data.keyword.blockchainfull_notm}} Platform sur {{site.data.keyword.cloud_notm}} Private. Si vous voulez connecter un homologue à un réseau Starter Plan ou Enterprise Plan sur {{site.data.keyword.cloud_notm}}, voir [Déploiement d'homologues pour la connexion à un réseau Starter Plan ou Enterprise Plan](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy).
 {:shortdesc}
 
 Avant de déployer un homologue, passez en revue la section [Considérations et limitations](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-about-considerations).
@@ -34,7 +34,7 @@ Vérifiez que votre système {{site.data.keyword.cloud_notm}} Private respecte l
 | Composant | vCPU | RAM | Disque pour le stockage de données |
 |-----------|------|-----|-----------------------|
 | Homologue | 2 | 2 Go | 50 Go avec possibilité d'extension |
-| CouchDB for Peer | 2| 2 Go |50 Go avec possibilité d'extension |
+| CouchDB for Peer<br>(Applicable uniquement si vous utilisez CouchDB) | 2| 2 Go | 50 Go avec possibilité d'extension |
 
  **Remarques :**
  - Une unité vCPU est un coeur virtuel qui est affecté à une machine virtuelle ou à un coeur de processeur physique si le serveur n'est pas partitionné pour les machines virtuelles. Vous devez tenir compte des exigences vCPU lorsque vous décidez d'utiliser le coeur de processeur virtuel (VPC) pour votre déploiement dans {{site.data.keyword.cloud_notm}} Private. VPC est une unité de mesure pour déterminer les coûts de licences des produits IBM. Pour plus d'informations sur les scénarios VPC, voir [Virtual processor core (VPC) ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://www.ibm.com/support/knowledgecenter/en/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_virtual_processor_core_licenses.html "IBM Licence Metric Tool 9.2").
@@ -56,11 +56,11 @@ Si vous n'utilisez pas la mise à disposition dynamique, des [Volumes permanents
 
 1. Avant d'installer un homologue sur {{site.data.keyword.cloud_notm}} Private, vous devez [installer {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/ICP_setup.html#icp-setup) et [installer la Charte Helm de {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/howto/helm_install_icp.html#helm-install).
 
-2. Si vous utilisez Community Edition et souhaitez exécuter cette charte Helm sur un cluster {{site.data.keyword.cloud_notm}} Private sans connectivité Internet, vous devez créer des archives sur une machine connectée à Internet avant d'installer les archives sur votre cluster {{site.data.keyword.cloud_notm}} Private. Pour plus d'informations, voir [Adding featured applications to clusters without Internet connectivity ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_package_offline.html "Adding featured applications to clusters without Internet connectivity"){:new_window}. Remarque : Vous pouvez trouver le fichier de spécification `manifest.yaml` sous `ibm-blockchain-platform-dev/ibm_cloud_pak` dans la charte Helm.
+2. Si vous utilisez Community Edition et souhaitez exécuter cette charte Helm sur un cluster {{site.data.keyword.cloud_notm}} Private sans connectivité Internet, vous devez créer des archives sur une machine connectée à Internet avant d'installer les archives sur votre cluster {{site.data.keyword.cloud_notm}} Private. Pour plus d'informations, voir [Adding featured applications to clusters without Internet connectivity ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/app_center/add_package_offline.html "Adding featured applications to clusters without Internet connectivity"){:new_window}. Remarque : Vous pouvez trouver le fichier de spécification `manifest.yaml` sous `ibm-blockchain-platform-dev/ibm_cloud_pak` dans la charte Helm.
 
 3. Vous devez d'abord [déployer une autorité de certification](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy) sur {{site.data.keyword.cloud_notm}} Private. Vous devez utiliser l'autorité de certification pour créer un [fichier de configuration homologue et le stocker en tant que secret Kubernetes dans {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/howto/peer_deploy_icp.html#icp-peer-deploy-config-file).
 
-4. Procédez à l'extraction de la valeur de l'adresse IP proxy du cluster de votre autorité de certification depuis la console {{site.data.keyword.cloud_notm}} Private. **Remarque :** Vous devrez être [administrateur de cluster![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Cluster administrator roles and actions") pour accéder à votre IP de proxy. Connectez-vous au cluster {{site.data.keyword.cloud_notm}} Private. Dans le panneau de navigation gauche, cliquez sur **Plateforme** puis sur **Noeuds** pour afficher les noeuds qui sont définis dans le cluster. Cliquez sur le noeud avec le rôle `proxy`, puis copiez la valeur de l'`IP hôte` de la table. **Important :** Conservez cette valeur car vous allez l'utiliser lors de la configuration de la zone `Adresse IP du proxy` de la charte Helm.
+4. Procédez à l'extraction de la valeur de l'adresse IP proxy du cluster de votre autorité de certification depuis la console {{site.data.keyword.cloud_notm}} Private. **Remarque :** Vous devrez être [administrateur de cluster![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/user_management/assign_role.html "Cluster administrator roles and actions") pour accéder à votre IP de proxy. Connectez-vous au cluster {{site.data.keyword.cloud_notm}} Private. Dans le panneau de navigation gauche, cliquez sur **Plateforme** puis sur **Noeuds** pour afficher les noeuds qui sont définis dans le cluster. Cliquez sur le noeud avec le rôle `proxy`, puis copiez la valeur de l'`IP hôte` de la table. **Important :** Conservez cette valeur car vous allez l'utiliser lors de la configuration de la zone `Adresse IP du proxy` de la charte Helm.
 
 
 ## Création du secret de configuration de l'homologue
@@ -110,7 +110,7 @@ Sauvegardez la sortie obtenue à l'étape 4 ci-dessous.
 
 3. Sous l'onglet **Général**, remplissez les zones suivantes :
   - **Nom :** Donnez un nom unique à votre secret au sein de votre cluster. Vous utiliserez ce nom lors du  déploiement de votre homologue. Il doit être entièrement en minuscules.  
-  **Remarque :** Lorsque vous déployez un homologue, un nouveau secret est automatiquement généré par le déploiement sous le nom `<helm_release_name>-secret`. Par conséquent, lorsque vous nommez votre secret, assurez-vous que son nom soit  différent de `<helm_release_name>-secret` . Sinon, le déploiement de la charte Help échouera car le secret qu'il essaie de créer existe déjà.
+  **Remarque :** Lorsque vous déployez un homologue, un nouveau secret est automatiquement généré par le déploiement sous le nom `<helm release name you intend to use>-secret`. Par conséquent, lorsque vous nommez ce secret, assurez-vous que son nom soit différent de `<helm release name you intend to use>-secret` . Sinon, le déploiement de la charte Help échouera car le secret qu'il essaie de créer existe déjà.
   - **Espace de nom :** espace de nom pour l'ajout de votre secret. Sélectionnez l'`espace de nom` dans lequel vous voulez déployer votre homologue.
   - **Type :** entrez la valeur `Opaque`.
 
@@ -147,7 +147,7 @@ Après avoir créé votre objet secret de configuration de l'homologue, vous pou
 6. Faites défiler vers le bas jusqu'à la section **Configuration de l'homologue**. Sélectionnez la case à cocher relative à l'`installation de l'homologue` et remplissez les  [paramètres de configuration](/docs/services/blockchain/howto/peer_deploy_icp.html#icp-peer-deploy-parameters) de l'homologue.
 7. Cliquez sur **Installer**.
 
-### Paramètres de configuration 
+### Paramètres de configuration
 {: #icp-peer-deploy-configuration-parms}
 
 Le tableau suivant répertorie les paramètres configurables de {{site.data.keyword.blockchainfull_notm}} Platform, **spécifiques au composant de l'homologue**, ainsi que leurs valeurs par défaut. Si vous découvrez l'homologue ou si vous démarrez, utilisez les valeurs par défaut des paramètres de base de données et de stockage. Faites défiler jusqu'à la section relative au composant de l'homologue pour sélectionner la case relative à l'`installation de l'homologue` et fournissez les informations de configuration pour ce composant uniquement. **Même si l'interface utilisateur de la charte Helm indique qu'aucune configuration supplémentaire n'est nécessaire, vous devez entrer certains paramètres pour déployer un homologue.**
@@ -157,8 +157,10 @@ Le tableau suivant répertorie les paramètres configurables de {{site.data.keyw
 
 |  Paramètre     | Description    | Val. déf  | Requis |
 | --------------|-----------------|-------|------- |
+| **Paramètres généraux**| Paramètres qui configurent la charte Helm | | |
 | `Helm release name`| Nom de votre édition Helm. Doit commencer par une lettre minuscule et se terminer par une caractère alphanumérique, doit contenir uniquement des traits d'union et des caractère alphanumérique minuscules. Vous devez utiliser un nom d'édition Helm unique chaque fois que vous essayez d'installer un composant. **Important :** Cette valeur doit correspondre à la valeur que vous avez utilisée pour générer le 'nom d'hôte de service' pour la zone "hosts" dans votre [fichier de secret JSON.](/docs/services/blockchain/howto/peer_deploy_icp.html#icp-peer-deploy-config-file) | aucune | oui |
 | `Target namespace`| Choisissez l'espace de nom Kubernetes pour installer la charte Helm. | aucune | oui |
+| `Target namespace policies`| Affiche les règles de sécurité de pod de l'espace de nom choisi, lequel doit inclure une règle **`ibm-privileged-psp`**. Sinon, une règle [bind a PodSecurityPolicy](/docs/services/blockchain?topic=blockchain-icp-setup#icp-setup-psp) est lié à votre espace de nom. | aucune | non |
 |**Global configuration**| Paramètres qui s'appliquent à tous les composants de la charte Helm|||
 | `Service account name`| Entrez le nom du compte de service  [![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/) que vous allez utiliser pour exécuter le pod. | default | non |
 
@@ -171,8 +173,8 @@ Le tableau suivant répertorie les paramètres configurables de {{site.data.keyw
 | `Install Peer` | Sélectionner pour installer un homologue|non sélectionné | Oui, si vous souhaitez déployer un homologue |
 | `Peer worker node architecture`| Sélectionnez votre architecture de plateforme cloud (AMD64 ou S390x).| AMD64 | oui |
 | `Peer image repository`| Emplacement de la charte Helm de votre homologue. Cette zone est remplie automatiquement par le chemin installé. | ibmcom/ibp-fabric-peer | oui |
-| `Peer Docker image tag`|Valeur de la balise associée à l'image de l'homologue. |1.2.1, renseigné automatiquement avec la valeur correcte.|oui|
-| `Peer configuration`| Vous pouvez personnaliser la configuration de l'homologue en collant votre propre fichier de configuration `core.yaml` dans cette zone. Pour voir un exemple de fichier `core.yaml`, voir l'exemple de config [`core.yaml` ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://github.com/hyperledger/fabric/blob/release-1.2/sampleconfig/core.yaml) **Pour les utilisateurs avancés uniquement**. | aucune | non |
+| `Peer Docker image tag`|Valeur de la balise associée à l'image de l'homologue. |1.4.0, renseigné automatiquement avec la valeur correcte.|oui|
+| `Peer configuration`| Vous pouvez personnaliser la configuration de l'homologue en collant votre propre fichier de configuration `core.yaml` dans cette zone. Pour voir un exemple de fichier `core.yaml`, voir l'exemple de config [`core.yaml` ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://github.com/hyperledger/fabric/blob/release-1.4/sampleconfig/core.yaml) **Pour les utilisateurs avancés uniquement**. | aucune | non |
 | `Peer configuration secret (Required)`|Nom du [secret de configuration d'homologue](/docs/services/blockchain/howto/peer_deploy_icp.html#icp-peer-deploy-config-file) que vous avez créé dans {{site.data.keyword.cloud_notm}} Private. | aucune | oui |
 |`Organization MSP (Required)`| Vous pouvez créer une nouvelle valeur MSPID d'organisation, telle que 'org1' ou spécifier un MSP d'organisation existante dont l'homologue fera partie. Si vous avez déployé l'organisation d'un service de tri, vérifiez que les MSPID d'homologue sont différents du MSPID de votre service de tri. Notez également cette valeur, car vous en aurez besoin ultérieurement pour `CORE_PEER_LOCALMSPID` et `configtx.yaml`. | aucune | oui |
 |`Peer service type`| Utilisé pour indiquer si des[ports externes doivent être exposés ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types) sur l'homologue. Sélectionnez NodePort pour exposer les ports en externe (recommandé), et ClusterIP pour ne pas exposer les ports. LoadBalancer et ExternalName ne sont pas pris en charge dans cette édition. | NodePort | oui |
@@ -197,6 +199,14 @@ Le tableau suivant répertorie les paramètres configurables de {{site.data.keyw
 | `State database volume claim size`| Choisissez la taille de disque à utiliser. | 8Gi | oui |
 | `CouchDB - Data persistence enabled`| Pour le conteneur CouchDB, les données de registre seront disponibles au redémarrage du conteneur. *Si ce paramètre est désélectionné, toutes les données seront perdues en cas de reprise en ligne ou de redémarrage du pod.*| sélectionné | non |
 | `CouchDB - Use dynamic provisioning`| Pour le conteneur CouchDB, utilisation de la mémoire dynamique Kubernetes.| sélectionné | non |
+| `Docker-in-Docker CPU request`| Indiquez le nombre minimum d'UC à allouer au conteneur dans lequel s'exécute le code blockchain. | 1 | oui |
+| `Docker-in-Docker CPU limit`| Indiquez le nombre maximum d'UC à allouer au conteneur dans lequel s'exécute le code blockchain. | 2 | oui |
+| `Docker-in-Docker memory request`| Indiquez la quantité minimum de mémoire à allouer au conteneur dans lequel s'exécute le code blockchain. | 1 Gi | oui |
+| `Docker-in-Docker memory limit`|  Indiquez la quantité maximum de mémoire à allouer au conteneur dans lequel s'exécute le code blockchain. | 4 Gi | oui |
+| `gRPC web proxy CPU request`| Indiquez le nombre minimum d'UC en millicpus (m) à allouer au proxy Web gRPC. | 100 m | oui |
+| `gRPC web proxy CPU limit`| Indiquez le nombre maximum d'UC en millicpus (m) à allouer au proxy Web gRPC. | 200 m | oui |
+| `gRPC web proxy memory request`| Indiquez la quantité minimum de mémoire à allouer au proxy Web gRPC. | 100 Mi | oui |
+| `gRPC web proxy memory limit`| Indiquez la quantité maximum de mémoire à allouer au proxy Web gRPC. | 200 Mi | oui |
 | `Peer CPU request` | Nombre minimum d'UC à allouer à l'homologue. | 1 | oui |
 | `Peer CPU limit` | Nombre maximum d'UC à allouer à l'homologue.| 2 | oui |
 | `Peer Memory request` | Quantité minimum de mémoire à allouer à l'homologue. | 1 Gi | oui |
@@ -224,7 +234,7 @@ processes. This container has two volume mounts, one for the Peer PVC and the se
 ### Utilisation de la ligne de commande Helm pour installer l'édition Helm
 {: #icp-peer-deploy-helm-cli}
 
-Vous pouvez aussi utiliser l'interface de ligne de commande `helm` pour installer l'édition Helm. Avant d'exécuter la commande `helm install`, assurez-vous  [d'ajouter le référentiel Helm de votre cluster à l'environnement de l'interface de ligne de commande Helm![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_int_helm_repo_to_cli.html "Adding the internal Helm repository to Helm CLI").
+Vous pouvez aussi utiliser l'interface de ligne de commande `helm` pour installer l'édition Helm. Avant d'exécuter la commande `helm install`, assurez-vous [d'ajouter le référentiel Helm de votre cluster à l'environnement de l'interface de ligne de commande Helm![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/app_center/add_int_helm_repo_to_cli.html "Adding the internal Helm repository to Helm CLI").
 
 Vous pouvez définir les paramètres requis pour l'installation en créant un fichier `yaml` et en le transmettant à la commande `helm install` suivante.
 ```
@@ -266,4 +276,4 @@ Les journaux d'homologue peuvent être affichés à l'aide de [commandes de l'in
 ## Etapes suivantes
 {: #icp-peer-deploy-next-steps}
 
-Après que vous avez déployé l'homologue, vous devez effectuer quelques étapes supplémentaires avant de soumettre des transactions et lire le registre partagé depuis le réseau de blockchain. Pour plus d'informations, voir  [Exploitation d'homologues dans un réseau multi-cloud](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate).
+Après que vous avez déployé l'homologue, vous devez effectuer quelques étapes supplémentaires avant de soumettre des transactions et lire le registre partagé depuis le réseau de blockchain. Pour plus d'informations, voir [Exploitation d'homologues dans un réseau multi-cloud](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate).

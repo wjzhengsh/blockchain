@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-03"
 
 subcollection: blockchain
 
@@ -35,6 +35,7 @@ Le Tableau 1 et la Figure 1 présentent les emplacements {{site.data.keyword.clo
 | Tokyo |  | O |
 | Francfort |  | O |
 | Sydney | O |  |
+| Melbourne |  | O |
 | São Paulo |  | O |
 | Toronto |  | O |
 

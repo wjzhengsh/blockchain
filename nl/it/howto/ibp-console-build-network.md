@@ -3,7 +3,8 @@
 copyright:
   years: 2019
 
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-23"
+
 
 subcollection: blockchain
 
@@ -26,7 +27,7 @@ subcollection: blockchain
 
 **Gruppi di destinatari:** questo argomento è pensato per gli operatori di rete che sono responsabili della creazione, del monitoraggio e della gestione della rete blockchain.   
 
-Se non hai già distribuito la console in un cluster Kubernetes utilizzando {{site.data.keyword.cloud_notm}} Kubernetes Service, vedi [Introduzione a {{site.data.keyword.blockchainfull_notm}} Platform 2.0](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks). Puoi creare un nuovo cluster Kubernetes per la distribuzione della console o utilizzarne uno esistente nel tuo account {{site.data.keyword.cloud_notm}}.  Dopo aver distribuito {{site.data.keyword.blockchainfull}} Platform al tuo cluster Kubernetes, puoi avviare la console per creare e gestire i tuoi componenti blockchain.
+Se non hai già distribuito la console in un cluster Kubernetes utilizzando il servizio {{site.data.keyword.cloud_notm}} Kubernetes, vedi [Introduzione a {{site.data.keyword.blockchainfull_notm}} Platform 2.0](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks). Puoi creare un nuovo cluster Kubernetes per la distribuzione della console o utilizzarne uno esistente nel tuo account {{site.data.keyword.cloud_notm}}.  Dopo aver distribuito {{site.data.keyword.blockchainfull}} Platform al tuo cluster Kubernetes, puoi avviare la console per creare e gestire i tuoi componenti blockchain.
 
 Sia che tu esegua la distribuzione su un cluster Kubernetes a pagamento o gratuito, utilizza il dashboard Kubernetes per prestare particolare attenzione alle risorse a tua disposizione quando scegli di distribuire nodi e creare canali. È tua responsabilità gestire il tuo cluster Kubernetes e distribuire risorse aggiuntive, laddove necessario. Sebbene i componenti verranno distribuiti correttamente su un cluster gratuito, più componenti aggiungi, più lenta sarà la loro esecuzione.
 {: note}
@@ -50,12 +51,13 @@ Puoi utilizzare i passi descritti in queste esercitazioni per creare una rete co
 Se completi tutti i passi nelle esercitazioni **Crea una rete** e **Unisciti a una rete**, la tua rete sarà simile a quella della seguente illustrazione:
 ![Struttura della rete di base di esempio](../images/ibp-v2-build-network.png "Struttura della rete di base di esempio")  
 *Figura 1. Struttura della rete di base di esempio*  
+
 Questa configurazione è sufficiente per testare applicazioni e smart contract. La rete contiene i seguenti componenti:
 
 * **Due organizzazioni peer**: `Org1` e `Org2`  
   Le serie di esercitazioni descrivono come creare due organizzazioni peer e due peer associati. Pensa che le organizzazioni su una rete blockchain siano come due banche diverse che devono effettuare transazioni tra loro. Creiamo la definizione MSP (Membership Services Provider) di Org1 e Org2 che definisce le organizzazioni `Org1` e `Org2`.
 * **Una organizzazione ordinante**: `Orderer Org`  
-  Poiché stiamo creando un libro mastro distribuito, i peer e gli ordinanti devono far parte di un'organizzazione separata. Pertanto, viene creata un'organizzazione separata per l'ordinante.  Tra le altre cose, un nodo ordinante ordina i blocchi di transazioni che vengono inviati ai peer per essere scritti nei loro libri mastro e diventare la blockchain. Creiamo la definizione MSP (Membership Services Provider) di Ordinante che definisce l'organizzazione `Orderer Org`.
+  Poiché stiamo creando un libro mastro distribuito, i peer e gli ordinanti devono far parte di organizzazioni separate. Pertanto, viene creata un'organizzazione separata per l'ordinante.  Tra le altre cose, un nodo ordinante ordina i blocchi di transazioni che vengono inviati ai peer per essere scritti nei loro libri mastro e diventare la blockchain. Creiamo la definizione MSP (Membership Services Provider) di Ordinante che definisce l'organizzazione `Orderer Org`.
 * **Tre Autorità di certificazione (CA)**: `Org1 CA, Org2 CA, Orderer CA`   
   Una CA è il nodo che rilascia i certificati a tutti i membri dell'organizzazione. Poiché è una prassi ottimale distribuire una CA per organizzazione, distribuiremo tre CA in totale: una per ogni organizzazione peer e una per l'organizzazione ordinante. Inoltre, useremo le CA per creare tutti i nodi, le identità e la definizione di organizzazione per ciascuna organizzazione.
 * **Un ordinante:** `Orderer`  
@@ -71,6 +73,7 @@ Questa configurazione non è obbligatoria. {{site.data.keyword.blockchainfull_no
 In questa esercitazione **Crea una rete**, creiamo solo una parte della rete illustrata in precedenza, una rete semplice che può essere utilizzata per ospitare un ordinante e una singola organizzazione peer e un peer su un singolo canale. La seguente illustrazione mostra la parte della rete precedente che creeremo:
 ![Struttura della rete semplice](../images/ibp2-simple-network.png "Struttura della rete semplice")  
 *Figura 2. Struttura della rete semplice*  
+
 Questa configurazione è utile per iniziare a utilizzare e testare rapidamente uno smart contract, ma non è molto significativa finché non aggiungi altre organizzazioni con cui effettuare transazioni, creando un libro mastro realmente distribuito.  Pertanto, nella successiva esercitazione [Unisciti a una rete](/docs/services/blockchain/howto/ibp-console-join-network.html#ibp-console-join-network), ti mostriamo come creare ulteriori organizzazioni peer e peer e come aggiungere una nuova organizzazione al canale.  
 
 In tutta questa esercitazione forniamo **valori consigliati** per alcuni dei campi nella console. Ciò consente di riconoscere più facilmente i nomi e le identità nelle schede e negli elenchi a discesa. Questi valori non sono obbligatori, ma li troverai utili. Forniamo una tabella dei valori consigliati dopo ogni attività.
@@ -83,6 +86,11 @@ Per ogni organizzazione che vuoi creare con la console, devi distribuire almeno 
 
 In questa esercitazione creiamo due organizzazioni, una che possiederà un peer e un'altra che possiederà un ordinante. Ogni organizzazione ha bisogno di una CA per emettere i propri certificati, quindi dobbiamo creare **due CA**. Ai fini di questa esercitazione, **creeremo solo una CA alla volta**.
 
+Guarda il seguente video per informazioni sul processo di creazione del peer e dell'organizzazione del peer.
+
+<iframe class="embed-responsive-item" id="youtubeplayer" title="Video di IBM Blockchain Platform free 2.0 beta - esercitazione di distribuzione" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/JZj43n_JKIY" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>  
+*Video 1. Crea il peer e l'organizzazione del peer*
+
 ### Creazione della CA della tua organizzazione peer
 {: #ibp-console-build-network-create-CA-org1CA}
 
@@ -91,11 +99,12 @@ Come parte di questa esercitazione, la CA emette le chiavi pubbliche e private p
 
 Completa la seguente procedura dalla tua console:
 
-1. Vai alla scheda **Nodi** sulla sinistra e fai clic su **Aggiungi autorità di certificazione**. I pannelli laterali a quattro fasi ti consentiranno di personalizzare la CA che vuoi creare e l'organizzazione per cui questa CA emetterà le chiavi.
+1. Vai alla scheda **Nodi** sulla sinistra e fai clic su **Aggiungi autorità di certificazione**. I pannelli laterali ti consentiranno di personalizzare la CA che vuoi creare e l'organizzazione per cui questa CA emetterà le chiavi.
 2. Fai clic su **{{site.data.keyword.cloud_notm}}** in **Crea autorità di certificazione** e quindi su **Avanti**.
 3. Utilizza il secondo pannello laterale per fornire alla tua CA un **nome di visualizzazione**. Il nostro valore consigliato per questa CA è `Org1 CA`.
 4. Nel pannello successivo, fornisci le tue credenziali di amministratore CA specificando come **ID amministratore** il valore `admin` e fornendo qualsiasi segreto che preferisci. Ti consigliamo `adminpw` per aiutarti a seguire questa esercitazione.
-5. Fai clic su **Avanti** e poi su **Aggiungi autorità di certificazione**.
+5. Se stai utilizzando un cluster a pagamento, hai l'opportunità di configurare l'allocazione di risorse per il nodo. Ai fini di questa esercitazione, puoi accettare tutti i valori predefiniti e fare clic su **Avanti**. Se vuoi saperne di più su come allocare risorse al tuo nodo, vedi questo argomento sull'[allocazione delle risorse](/docs/services/blockchain?topic=blockchain-ibp-console-govern#ibp-console-govern-allocate-resources). Se stai utilizzando un cluster gratuito, già vedi la pagina **Riepilogo**.
+6. Esamina la pagina Riepilogo e fai quindi clic su **Aggiungi autorità di certificazione**.
 
 **Attività: creazione della CA dell'organizzazione peer**
 
@@ -103,9 +112,11 @@ Completa la seguente procedura dalla tua console:
   | ------------------------- |-----------|-----------|-----------|
   | **Crea CA** | Org1 CA  | admin | adminpw |
 
-*Figura 3. Creazione della CA dell'organizzazione peer*
+  *Figura 3. Creazione della CA dell'organizzazione peer*
 
-Dopo aver distribuito la CA, la utilizzerai per creare l'MSP dell'organizzazione, registrare gli utenti e creare il tuo punto di ingresso a una rete, ossia il **peer**.
+Dopo aver distribuito la CA, la utilizzerai per creare l'MSP dell'organizzazione, registrare gli utenti e creare il tuo punto di ingresso a una rete, ossia il **peer**.  
+
+Gli utenti avanzati possono già avere una loro CA e non vogliono creare una nuova CA nella console. Se la tua CA esistente può emettere certificati in formato `X.509`, puoi utilizzare la tua CA esterna invece di crearne una nuova qui. Per ulteriori informazioni, vedi questo argomento sull'[utilizzo di certificati da una CA esterna con il tuo peer od ordinante](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-third-party-ca).
 
 ### Utilizzo della tua CA per registrare le identità
 {: #ibp-console-build-network-use-CA-org1}
@@ -115,12 +126,14 @@ Ogni nodo o applicazione che vuoi creare necessita di chiavi pubbliche e private
 * **Un amministratore dell'organizzazione**: questa identità ti consente di utilizzare i nodi servendoti della console della piattaforma.
 * **Un'identità peer**: questa identità ti consente di distribuire un peer.
 
+A seconda del tuo tipo di cluster, la distribuzione della CA può richiedere fino a dieci minuti. Il quadrato verde sul tile della CA indica che è in esecuzione ("Running")" e può essere utilizzato per registrare le identità. Prima di procedere con i passi indicati di seguito per registrare le identità, devi attendere che lo stato della CA sia "Running". {:important}
+
 Per generare questi certificati, dovremo completare la seguente procedura:
 
-1. Nella console, utilizza la scheda **Nodi** per passare alla `Org1 CA` che hai creato.
-2. Dopo aver selezionato la tua CA, dovrai registrare un amministratore per la nostra prima organizzazione, `org1`, oltre a un'identità per il peer stesso. Dovresti già vedere un'identità su questa pagina; è l'amministratore che hai creato per la CA. Per registrare i nostri nuovi utenti, fai clic sul pulsante **Registra utente**.
+1. Nella console, fai clic sulla scheda **Nodi**. Quando l'indicatore di stato nell'angolo superiore destro di `Org1 CA` è verde e indica `Running`, fai clic sul tile per aprirlo.
+2. Dopo che hai selezionato la tua CA, assicurati che l'identità `admin` che hai creato per la CA sia visibile nella tabella prima di procedere. Devi registrare un'altra identità amministratore per la nostra prima organizzazione, `org1`, in aggiunta a un'identità per il peer stesso. Per registrare i nostri nuovi utenti, fai clic sul pulsante **Registra utente**.
 3. Per l'amministratore dell'organizzazione, fornisci l'ID di registrazione `org1admin`. Puoi usare qualsiasi segreto, ma ti suggeriamo `org1adminpw` per aiutarti a proseguire. Fai clic su **Avanti**.
-4. Nel passo successivo, imposta il tipo per questa identità su `client` e seleziona una delle organizzazioni affiliate dall'elenco a discesa. Il campo di affiliazione è per utenti esperti e non è utilizzato nell'esercitazione. Gli elementi nell'elenco sono le affiliazioni predefinite dalla CA Fabric. Se vuoi saperne di più su come vengono utilizzate le affiliazioni dalla CA Fabric, consulta questo argomento su [Registering a new identity ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/users-guide.html#registering-a-new-identity). Per ora, seleziona una qualsiasi affiliazione dall'elenco, ad esempio `org1`, e fai clic su **Avanti**.
+4. Nel passo successivo, imposta il tipo per questa identità su `client` e devi selezionare una delle organizzazioni affiliate dall'elenco a discesa. Il campo di affiliazione è per utenti esperti e non è utilizzato nell'esercitazione, ma è obbligatorio per il pannello. Gli elementi nell'elenco sono le affiliazioni predefinite dalla CA Fabric. Se vuoi saperne di più su come vengono utilizzate le affiliazioni dalla CA Fabric, consulta questo argomento su [Registering a new identity ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/users-guide.html#registering-a-new-identity). Per ora, seleziona una qualsiasi affiliazione dall'elenco, ad esempio `org1` e fai clic su **Avanti**.
 5. Sentiti libero di lasciare vuoti i campi **Numero massimo di iscrizioni** e **Aggiungi attributi**. Non vengono utilizzati in questa esercitazione, ma puoi trovare una descrizione del loro utilizzo nell'argomento [Registrazione delle identità](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-register).
 6. Dopo che l'amministratore dell'organizzazione è stato registrato, ripeti lo stesso processo, utilizzando la stessa `Org1 CA`, per l'identità del peer, fornendo l'ID di registrazione `peer1` e il segreto che preferisci. Come prima, ti consigliamo di utilizzare il segreto `peer1pw`. Questa è un'identità del nodo, quindi seleziona `peer` per il **Tipo** nel passo successivo. Seleziona una qualsiasi **Affiliazione**. Quindi, ignora i campi **Numero massimo di iscrizioni** e **Attributi**.
 
@@ -131,7 +144,7 @@ Per generare questi certificati, dovremo completare la seguente procedura:
   | **Registra utenti** |  Org1 Admin | org1admin | org1adminpw |
   | | Identità peer |  peer1 | peer1pw |
 
-*Figura 4. Utilizzo della tua CA per registrare gli utenti*
+  *Figura 4. Utilizzo della tua CA per registrare gli utenti*
 
 ### Creazione della definizione MSP dell'organizzazione peer
 {: #ibp-console-build-network-create-peers-org1}
@@ -150,7 +163,7 @@ Ora che abbiamo creato la CA del peer e l'abbiamo utilizzata per **registrare** 
 
   |  | **Nome di visualizzazione** | **ID MSP** | **ID di registrazione**  | **Segreto** |
   | ------------------------- |-----------|-----------|-----------|-----------|
-  | **Crea organizzazione** | Definizione | org1msp |||
+  | **Crea organizzazione** | Org1 MSP | org1msp |||
   | **CA root** | Org1 CA ||||
   | **Certificato amministratore dell'organizzazione** | |  | org1admin | org1adminpw |
   | **Identità** | Org1 Admin |||||
@@ -202,8 +215,9 @@ Utilizza la tua console per completare la seguente procedura:
 5. Il pannello laterale successivo richiede informazioni sulla CA TLS. Sebbene sia possibile creare amministratori separati per la CA TLS distribuita con la tua CA, non è necessario farlo.
   - Fornisci l'**ID di registrazione TLS**, `admin`, e il segreto `adminpw`, gli stessi valori sono l'ID registrazione e il segreto di registrazione che hai fornito durante la creazione della CA.
   - L'opzione **Nome host CSR TLS** è riservata ad utenti esperti per specificare un nome di dominio personalizzato che può essere utilizzato per indirizzare l'endpoint del peer. Per adesso, lascia vuoto il campo **Nome host CSR TLS** in quanto non è utilizzato in questa esercitazione.
-6. L'ultimo pannello laterale ti chiederà di **Associare un'identità** e renderla l'amministratore del tuo peer. Seleziona l'identità amministratore del tuo peer `Org1 Admin`.
-7. Riesamina il riepilogo e fai clic su **Aggiungi peer**.
+6. Il successivo pannello laterale ti chiede di **Associare un'identità** e renderla l'amministratore del tuo peer. Seleziona l'identità amministratore del tuo peer `Org1 Admin`.
+7. Se stai utilizzando un cluster a pagamento, nel pannello successivo hai l'opportunità di configurare l'allocazione di risorse per il nodo. Ai fini di questa esercitazione, puoi accettare tutti i valori predefiniti e fare clic su **Avanti**. Se vuoi saperne di più su come allocare risorse al tuo nodo, vedi questo argomento sull'[allocazione delle risorse](/docs/services/blockchain?topic=blockchain-ibp-console-govern#ibp-console-govern-allocate-resources). Se stai utilizzando un cluster gratuito, vedi la pagina **Riepilogo**.
+8. Riesamina il riepilogo e fai clic su **Aggiungi peer**.
 
 **Attività: distribuzione di un peer**
 
@@ -232,6 +246,11 @@ Gli ordinanti sono componenti chiave di una rete perché svolgono alcune funzion
 
 Proprio come con il peer, prima di poter creare un ordinante, dobbiamo creare una CA per fornire le identità e l'MSP della nostra organizzazione ordinante.
 
+Guarda il seguente video per informazioni sul processo di creazione dell'ordinante e dell'organizzazione dell'ordinante.
+
+<iframe class="embed-responsive-item" id="youtubeplayer" title="Video di IBM Blockchain Platform free 2.0 beta - esercitazione di distribuzione" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/Gomkn-JtNe8" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>  
+*Video 2. Crea l'ordinante e l'organizzazione dell'ordinante*
+
 ### Ordine nella console
 {: #ibp-console-build-network-ordering-console}
 
@@ -249,17 +268,22 @@ Il processo di creazione di una CA per un ordinante è identico a quello utilizz
 2. Fai clic su **{{site.data.keyword.cloud_notm}}** in **Crea una nuova autorità di certificazione** e quindi su **Avanti**
 3. Fornisci a questa CA un nome di visualizzazione univoco, `Orderer CA`.
 4. Sei libero di riutilizzare l'**ID di registrazione** che avevi fornito per l'altra CA, `admin`, e quindi di specificare il segreto che preferisci, ma noi ti consigliamo `adminpw`.
-5. Fai clic su **Avanti** e poi su **Aggiungi autorità di certificazione**.
+5. Se stai utilizzando un cluster a pagamento, nel pannello successivo hai l'opportunità di configurare l'allocazione di risorse per il nodo. Ai fini di questa esercitazione, puoi accettare tutti i valori predefiniti e fare clic su **Avanti**. Se vuoi saperne di più su come allocare risorse al tuo nodo, vedi questo argomento sull'[allocazione delle risorse](/docs/services/blockchain?topic=blockchain-ibp-console-govern#ibp-console-govern-allocate-resources). Se stai utilizzando un cluster gratuito, già vedi la pagina **Riepilogo**.
+6. Esamina la pagina Riepilogo e fai quindi clic su **Aggiungi autorità di certificazione**.
+
+Ancora, gli utenti avanzati possono già avere una loro CA e non vogliono creare una nuova CA nella console. Se la tua CA esistente può emettere certificati in formato `X.509`, puoi utilizzare la tua CA esterna invece di crearne una nuova qui. Per ulteriori informazioni, vedi questo argomento sull'[utilizzo di certificati da una CA esterna con il tuo peer od ordinante](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-third-party-ca).
 
 ### Utilizzo della tua CA per registrare le identità di ordinante e amministratore dell'ordinante
 {: #ibp-console-build-network-use-CA-orderer}
 
 Come abbiamo fatto con il peer, dobbiamo registrare due identità con la nostra CA ordinante.  Dopo aver selezionato la tua CA, dovrai registrare un amministratore per la nostra organizzazione ordinante, oltre a un'identità per l'ordinante stesso. Come prima, dovresti vedere un'identità sulla scheda `Orderer CA`; è l'amministratore che hai creato per la CA.
 
-1. Nella console, fai clic sulla scheda **Nodi** e quindi sulla `Orderer CA` che hai creato.
-2. Quando l'identità di amministratore che hai appena creato è visibile nella tabella, fai clic sul pulsante **Registra utente** per registrare i nostri nuovi utenti.
+A seconda del tuo tipo di cluster, la distribuzione della CA può richiedere fino a dieci minuti. Il quadrato verde sul tile della CA indica che è in esecuzione ("Running")" e può essere utilizzato per registrare le identità. Prima di procedere con i passi indicati di seguito per registrare le identità, devi attendere che lo stato della CA sia "Running". {:important}
+
+1. Nella console, fai clic sulla scheda **Nodi**. Quando l'indicatore di stato nell'angolo superiore destro di `Orderer CA` è verde e indica `Running`, fai clic sul tile per aprirlo.
+2. Attendi che l'identità `admin` che hai appena creato sia visibile nella tabella e fai quindi clic sul pulsante **Registra utente** per registrare i nostri nuovi utenti.
 3. Per l'amministratore dell'organizzazione, fornisci l'ID di registrazione `ordereradmin`. Consigliamo il segreto `ordereradminpw`.
-4. Nel passo successivo, imposta il tipo per questa identità su `client` e seleziona una delle organizzazioni affiliate dall'elenco a discesa. Il campo di affiliazione è per utenti esperti e non è utilizzato nell'esercitazione. Gli elementi nell'elenco sono le affiliazioni predefinite dalla CA Fabric. Se vuoi saperne di più su come vengono utilizzate le affiliazioni dalla CA Fabric, consulta questo argomento su [Registering a new identity ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/users-guide.html#registering-a-new-identity). Per ora, seleziona una qualsiasi affiliazione dall'elenco e fai clic su **Avanti**.
+4. Nel passo successivo, imposta il tipo per questa identità su `client` e devi selezionare una delle organizzazioni affiliate dall'elenco a discesa. Il campo di affiliazione è per utenti esperti e non è utilizzato nell'esercitazione, ma è obbligatorio per il pannello. Gli elementi nell'elenco sono le affiliazioni predefinite dalla CA Fabric. Se vuoi saperne di più su come vengono utilizzate le affiliazioni dalla CA Fabric, consulta questo argomento su [Registering a new identity ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/users-guide.html#registering-a-new-identity). Per ora, seleziona una qualsiasi affiliazione dall'elenco e fai clic su **Avanti**.
 5. Sentiti libero di lasciare vuoti i campi **Numero massimo di iscrizioni** e **Aggiungi attributi**. Non vengono utilizzati in questa esercitazione, ma puoi trovare una descrizione del loro utilizzo nell'argomento [Registrazione delle identità](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-register) nella console.
 6. Dopo che l'amministratore dell'organizzazione è stato registrato, ripeti lo stesso processo, utilizzando la stessa `Orderer CA`, per l'identità dell'ordinante, e fornendo l'ID di registrazione `orderer1`. Puoi immettere il segreto che preferisci, ma consigliamo di immettere `orderer1pw` per aiutarti a seguire l'esercitazione. Questa è un'identità del nodo, quindi seleziona `peer` per il **Tipo** nel passo successivo. Quindi, ignora i campi **Numero massimo di iscrizioni** e **Attributi** come hai fatto prima.
 
@@ -271,7 +295,7 @@ Come abbiamo fatto con il peer, dobbiamo registrare due identità con la nostra 
   | **Registra utenti** | Orderer admin | ordereradmin | ordereradminpw |
   |  | Identità ordinante |  orderer1 | orderer1pw |
 
-  *Figura 8. Crea una CA e registra gli utenti*
+*Figura 8. Crea una CA e registra gli utenti*
 
 ### Creazione della definizione MSP dell'organizzazione ordinante
 {: #ibp-console-build-network-create-orderer-org-msp}
@@ -324,7 +348,8 @@ Completa la seguente procedura dalla tua console:
    - Fornisci l'**ID di registrazione TLS**, `admin`, e il segreto `adminpw`. Questi valori sono l'ID e il segreto di registrazione che hai fornito durante la creazione della CA.
    - L'opzione **Nome host CSR TLS** è riservata ad utenti esperti per specificare un nome di dominio personalizzato che può essere utilizzato per indirizzare l'endpoint dell'ordinante. Per adesso, lascia vuoto il campo **Nome host CSR TLS** in quanto non è utilizzato in questa esercitazione.
 6. Il passo **Associa identità** ti consente di scegliere un amministratore per il tuo ordinante. Seleziona `Orderer Admin` come prima e fai clic su **Avanti**.
-7. Riesamina il riepilogo e fai clic su **Aggiungi ordinante**.
+7. Se stai utilizzando un cluster a pagamento, nel pannello successivo hai l'opportunità di configurare l'allocazione di risorse per il nodo. Ai fini di questa esercitazione, puoi accettare tutti i valori predefiniti e fare clic su **Avanti**. Se vuoi saperne di più su come allocare risorse al tuo nodo, vedi questo argomento sull'[allocazione delle risorse](/docs/services/blockchain?topic=blockchain-ibp-console-govern#ibp-console-govern-allocate-resources). Se stai utilizzando un cluster gratuito, già vedi la pagina **Riepilogo**.
+7. Riesamina la pagina Riepilogo e fai clic su **Aggiungi ordinante**.
 
 **Attività: crea un ordinante**
 
@@ -348,13 +373,18 @@ Una volta che l'ordinante è stato creato, puoi vederlo nel pannello **Nodi**.
 Come notato in precedenza, un'organizzazione peer deve essere un membro del consorzio di un ordinante prima di poter creare o unirsi a un canale. Questo perché, a un livello tecnico, i canali sono dei **percorsi di messaggistica** tra i peer attraverso l'ordinante. Proprio come un peer può essere unito a più canali senza che le informazioni passino da un canale a un altro, così un ordinante può disporre di più canali in esecuzione al suo interno senza esporre i dati alle organizzazioni su altri canali.
 
 Poiché solo gli amministratori dell'ordinante possono aggiungere organizzazioni peer al consorzio, dovrai **essere** l'amministratore dell'ordinante o dovrai **inviare** le informazioni MSP all'amministratore dell'ordinante.
-<!-- More on the latter at the LINK. -->
+
+Guarda il seguente video per informazioni sul processo per aggiungere l'organizzazione al consorzio, creare il canale e unire il tuo peer al canale.
+
+<iframe class="embed-responsive-item" id="youtubeplayer" title="Video di IBM Blockchain Platform free 2.0 beta - esercitazione di distribuzione" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/jO3V4K9DYpY" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>  
+*Video 3. Aggiungere l'organizzazione al consorzio, creare il canale e unire il tuo peer al canale*               
+
 Poiché sei l'amministratore dell'ordinante, questo processo è relativamente semplice:
 1. Vai alla scheda **Nodi**.
 2. Scorri verso il basso fino all'ordinante che hai creato e fai clic su di esso per aprirlo.
 3. In **Membri del consorzio**, fai clic su **Aggiungi organizzazione**.
 4. Dall'elenco a discesa, seleziona `Org1 MSP`, in quanto questa è l'MSP che rappresenta l'organizzazione del peer `org1`.
-5. Fai clic su **Aggiungi organizzazione**. 
+5. Fai clic su **Aggiungi organizzazione**.
 
 Una volta completato questo processo, `org1` può creare o unirsi a un canale ospitato sul tuo `Orderer`.
 
@@ -368,6 +398,9 @@ Sebbene i membri di una rete siano in genere entità di business correlate che d
 Come notato in precedenza, per unire un peer da `org1` a un canale, è necessario prima aggiungere `org1` al consorzio. Se l'organizzazione non è un membro del consorzio al momento della creazione del canale, è possibile creare il canale e aggiungere l'organizzazione in un secondo momento facendo clic sul pulsante **Impostazioni** nella pagina del canale pertinente e passando attraverso il flusso di **aggiornamento del canale**.
 
 Per ulteriori informazioni sui canali e su come utilizzarli, consulta la [documentazione di Hyperledger Fabric ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/channels.html).
+
+Guarda il precedente video 3 per informazioni sul processo per creare il canale e unire il tuo peer ad esso.
+
 
 <!--
 Note that even though the {{site.data.keyword.blockchainfull_notm}} Platform 2.0 uses Hyperledger Fabric v1.4 binaries, because the [gossip protocol ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/gossip.html) is not being used with the console, Fabric functionalities that leverage gossip, such as [Private Data ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/private-data/private-data.html)] and [Service Discovery ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/discovery-overview.html)], are not available.
@@ -396,7 +429,7 @@ Completa la seguente procedura dalla tua console:
 5. Specifica l'identità del creatore del canale. Laddove il passo MSP sopra riportato nota l'organizzazione che ha creato il canale, questo passo nota la **tua** identità di amministratore, `Org1 Admin`.
 6. Seleziona le organizzazioni che vuoi unire al canale e le autorizzazioni che vuoi che abbiano. Anche se hai immesso `Org1 MSP (org1msp)` come creatore del canale, devi selezionarlo anche qui. Fai clic su **Aggiungi** e fornisci alla tua organizzazione un livello di autorizzazioni. Negli scenari del mondo reale, come creatore di canali, dovrai scegliere attentamente le autorizzazioni, allo scopo di soddisfare le esigenze delle organizzazioni che si uniscono a un canale. Poiché stai creando un canale con un singolo membro e ogni canale deve avere almeno un operatore, rendi la tua organizzazione un **Operatore**.
 
-Quando sei pronto, fai clic su **Crea canale**. Dovresti ritornare alla scheda Canali.
+Quando sei pronto, fai clic su **Crea canale**. Dovresti ritornare alla scheda Canali e vedere un tile in sospeso del canale che hai appena creato.
 
 **Attività: crea un canale**
 
@@ -404,14 +437,11 @@ Quando sei pronto, fai clic su **Crea canale**. Dovresti ritornare alla scheda C
   | ------------------------- |-----------|
   | **Nome canale** | channel1 |
   | **Ordinante** | Ordinante |
-  | **MSP creatore canale** | Definizione |
+  | **MSP creatore canale** | Org1 MSP |
   | **Associa identità disponibile** | Org1 Admin|
   | **Membri del canale** | Org1 MSP|
 
 *Figura 12. Crea un canale*
-
-Poiché la creazione di un canale e l'unione di un peer a un canale sono due passi separati, gestiti dai flussi dietro i due pulsanti, non vedrai il tuo canale creato su questa schermata finché non avrai unito un peer al canale.
-{:note}
 
 Il prossimo passo è quello di unire un peer a questo canale.
 
@@ -422,11 +452,9 @@ Abbiamo quasi finito. L'unione del peer al canale è l'ultimo passo per la confi
 
 Completa la seguente procedura dalla tua console:
 
-1. Fai clic su **Unisci a canale** per avviare i pannelli laterali.
-2. Seleziona il tuo `Orderer` e fai clic su **Avanti**.
-3. Immetti il nome del canale che hai appena creato `channel1` e fai clic su **Avanti**.
-4. Seleziona i peer che vuoi unire al canale. Ai fini di questa esercitazione, fai clic su `Peer Org1`.
-5. Fai clic su **Unisci a canale**. 
+1. Fai clic sul tile in sospeso `channel1` per avviare i pannelli laterali.
+2. Seleziona i peer che vuoi unire al canale. Ai fini di questa esercitazione, fai clic su `Peer Org1`.
+3. Fai clic su **Unisci a canale**.
 
 ## Passi successivi
 {: #ibp-console-build-network-next-steps}
@@ -438,3 +466,48 @@ Dopo aver creato e unito il tuo peer a un canale, hai una rete blockchain di bas
 - Utilizza [l'esempio di commercial paper](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-commercial-paper) per distribuire uno smart contract di esempio e inviare le transazioni utilizzando il codice dell'applicazione di esempio.
 
 Puoi anche creare un'altra organizzazione peer utilizzando l'[Esercitazione: unisciti a una rete](/docs/services/blockchain/howto/ibp-console-join-network.html#ibp-console-join-network-structure). Puoi aggiungere la seconda organizzazione al tuo canale per simulare una rete distribuita, con due peer che condividono un singolo libro mastro del canale.
+
+## Utilizzo di certificati da una CA esterna con il tuo peer od ordinante
+{: #ibp-console-build-network-third-party-ca}
+
+Invece di utilizzare una CA (Certificate Authority) {{site.data.keyword.blockchainfull_notm}} Platform come CA del tuo peer od ordinante, puoi utilizzare i certificati da una CA esterna, una che non è ospitata da {{site.data.keyword.IBM_notm}}, a condizione che emetta certificati in formato [X.509 ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/identity/identity.html#digital-certificates "Certificati digitali").
+
+### Prima di cominciare
+{: #ibp-console-build-network-third-party-ca-prereq}
+
+1. Devi raccogliere le seguenti informazioni sui certificati e salvarle in singoli file che possono essere caricati nella console.   
+**Nota:** i certificati all'interno dei file possono essere in formato `PEM` o in formato con codifica base64 (`base64 encoded`).
+ * **Certificato d'identità peer od ordinante** Questo è il certificato di firma pubblico dalla tua CA esterna che verrà utilizzato dal tuo peer od ordinante.
+ * **Chiave privata d'identità peer od ordinante**  Questa è la chiave privata corrispondente al certificato firmato dalla tua CA di terze parti che verrà utilizzato da questo peer od ordinante.
+ * **Definizione MSP dell'organizzazione peer od ordinante** devi generare manualmente questo file utilizzando le istruzioni fornite in [Creazione manuale di un file JSON MSP](/docs/services/blockchain/howto/ibp-console-organizations.html#console-organizations-build-msp).
+ * **Certificato CA TLS** Questo è il certificato di firma pubblico creato dalla tua CA TLS esterna che verrà utilizzato da questo peer od ordinante.
+  * **Chiave privata CA TLS** Questa è la chiave privata corrispondente al certificato firmato dalla tua CA TLS che verrà utilizzato da questo peer od ordinante per proteggere le comunicazioni con altri membri sulla rete.
+ * **Certificato root CA TLS** (Facoltativo) Questo è il certificato della tua CA TLS esterna. Devi fornire un certificato root CA TLS o un certificato CA TLS intermedio; puoi anche fornire entrambi.
+ * **Certificato TLS intermedio**: (Facoltativo) Questo è il certificato TLS se il tuo certificato TLS viene emesso da una CA TLS intermedia. Carica il certificato CA TLS intermedio. Devi fornire un certificato root CA TLS o un certificato CA TLS intermedio; puoi anche fornire entrambi.
+ * **Certificato d'identità amministratore peer od ordinante** Questo è il certificato di firma pubblico dalla tua CA esterna che verrà utilizzato dall'identità amministratore su questo peer od ordinante. Questo certificato è noto anche come tua chiave pubblica d'identità amministratore peer od ordinante.
+ * **Chiave privata d'identità amministratore peer od ordinante**  Questa è la chiave privata corrispondente al certificato firmato dalla tua CA esterna che verrà utilizzato dall'identità amministratore di questo peer od ordinante.
+
+2. Importa il file di definizione MSP organizzazione peer generato nella console facendo clic sulla scheda **Organizzazioni** seguito da **Importa definizione dell'MSP**.
+
+### Crea un nuovo peer od ordinante utilizzando i certificati da una CA esterna
+{: #ibp-console-build-network-create-peer-orderer-third-party-ca-}
+
+Nota che hai raccolto tutti i certificati necessari, sei pronto a creare un peer o un ordinante che utilizza tali certificati. Attieniti alle istruzioni per creare il nodo peer od ordinante:
+
+1. Nella scheda **Nodi**, fai clic su **Aggiungi peer**  o **Aggiungi ordinante**.
+2. Dopo aver immesso un nome di visualizzazione per il nodo, seleziona l'opzione per utilizzare una CA esterna.
+3. Scorri i pannelli e carica i file corrispondenti alle informazioni sul certificato che hai raccolto.
+4. Assicurati di selezionare la definizione MSP dell'organizzazione peer od ordinante che hai importato nella console dall'elenco a discesa.
+5. Nell'ultimo passo, quando ti viene chiesto di associare un'identità al tuo peer od ordinate, devi fare clic su **Nuova identità**.
+6. Specifica qualsiasi valore come **Nome di visualizzazione** per questa identità. Il nome di visualizzazione sarà visibile nel portafoglio della console dopo che hai creato il nodo.
+7. Nel campo **Certificati**, carica il file che contiene il **Certificato d'identità amministratore peer od ordinante**.
+8. Nel campo **Chiave privata**, carica il file che contiene la **Chiave privata d'identità amministratore peer od ordinante**.
+9. Esamina le informazioni nella pagina Riepilogo e fai clic su **Aggiungi peer** o **Aggiungi ordinante**.
+
+### Operazioni successive
+{: #ibp-console-build-network-third-party-ca-next}
+
+Hai raccolto tutti i tuoi certificati peer od ordinante dalla tua CA di terze parti, creato la loro definizione MSP dell'organizzazione corrispondente e creato il nodo. Se ti stai attenendo all'ordine indicato nelle esercitazioni, puoi andare al passo successivo.
+- Se hai creato il nodo peer, il passo successivo consiste nel [creare il nodo che ordina le transazioni](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-create-orderer).
+- Se hai creato il nodo per unirti a una rete esistente, il passo successivo consiste nell'[aggiungere la tua organizzazione all'elenco di organizzazioni che possono effettuare transazioni](/docs/services/blockchain/howto/ibp-console-join-network.html#ibp-console-join-network-add-org2).
+- Se hai creato un nodo ordinante, il passo successivo consiste nel [creare un canale](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-create-channel).

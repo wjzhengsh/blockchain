@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-03"
 
 subcollection: blockchain
 
@@ -37,14 +37,14 @@ Quando você cria seus nós, é necessário usar sua CA raiz para criar as ident
 - **Administradores de organização:** ao se associar a um consórcio hospedado por um serviço de pedido, você fornece as chaves públicas de identidades que se tornarão os administradores para sua organização. É possível usar essas identidades para criar ou editar canais.
 - **Aplicativos:** seus aplicativos precisam assinar suas transações antes de enviá-las para serem validadas pela rede. É necessário criar identidades que podem ser usadas para assinar transações de seus aplicativos clientes.
 
-É possível usar o console para criar essas identidades usando o [processo de registro](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-register). Depois de registrar suas identidades de administrador, é necessário emitir para cada identidade uma chave privada e pública, fornecer a chave pública para sua definição de MSP da organização e incluir a identidade na carteira eletrônica do console. É possível concluir essas etapas para uma identidade de administrador ao [criar seu MSP da organização](/docs/services/blockchain/howto/ibp-console-organizations.html#console-organizations-create-msp). É possível usar identidades separadas como administradores de organização ou administradores de nó ou é possível usar uma identidade para executar ambas as tarefas. O [tutorial Construir uma rede](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network) usa uma identidade para ser um administrador para cada organização criada no tutorial.
+É possível usar o console para criar essas identidades usando o [processo de registro](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-register). Depois de registrar suas identidades de administrador, é necessário emitir para cada identidade uma chave privada e pública, fornecer a chave pública para sua definição do MSP da organização e incluir a identidade na carteira eletrônica do console. É possível concluir essas etapas para uma identidade de administrador ao [criar seu MSP da organização](/docs/services/blockchain/howto/ibp-console-organizations.html#console-organizations-create-msp). É possível usar identidades separadas como administradores de organização ou administradores de nó ou é possível usar uma identidade para executar ambas as tarefas. O [tutorial Construir uma rede](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network) usa uma identidade para ser um administrador para cada organização criada no tutorial.
 
 ## Configurando uma identidade de CA
 {: #ibp-console-identities-ca-identity}
 
 Antes de trabalhar com identidades, é necessário configurar a identidade do administrador de CA, usando a identidade de administrador criada durante a criação da CA ou estabelecendo uma nova. Abra a CA na guia **Nós**. O ID de inscrição da identidade atualmente ativa está visível ao lado do nome da CA na parte superior do painel. É possível usar essa identidade de administrador para criar outras identidades usando o botão **Registrar** para registrar identidades que se tornarão administradores de organização e identidades de nó ou para usar o botão **Inscrever** para gerar uma identidade e exportá-la para a carteira eletrônica.
 
-Para alternar para uma identidade diferente para ser usada como o administrador da autoridade de certificação, clique no ícone **Configurações** e, em seguida, clique em **Configurar identidade** na régua de controle. É possível especificar uma identidade que exista na carteira eletrônica usando a guia **Identidade existente**. Como alternativa, é possível usar a guia **Nova identidade** para colar certificados para um novo administrador ou para fazer upload de um arquivo JSON que contém os certificados.
+Para alternar para uma identidade diferente para ser usada como o administrador da autoridade de certificação, clique no ícone **Configurações** e, em seguida, clique em **Configurar identidade** na régua de controle. É possível especificar uma identidade que exista na carteira eletrônica usando a guia **Identidade existente**. Como alternativa, é possível usar a guia **Nova identidade** para fazer upload de um arquivo JSON, base64 ou PEM que contenha os certificados para um novo administrador.
 
 Nem todas as identidades têm a capacidade de registrar novos usuários. Para obter mais informações, incluindo como estabelecer um administrador de CA adicional, veja [ Criando novos administradores de CA](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-ca-admin).
 {: note}
@@ -154,8 +154,8 @@ A carteira eletrônica é um componente do console e não um serviço separado. 
 
 É possível usar o botão **Incluir identidade** na tela de visão geral para importar uma identidade diretamente para a carteira eletrônica. Clicar nesse botão abrirá um painel lateral que permite incluir o par de chaves pública e privada de uma identidade.
 - **Nome:** insira um nome de identidade que é usado somente para sua referência.
-- **Certificado:** cole a chave pública da identidade que você gerou usando sua CA.
-- **Chave privada:** Cole a chave privada da identidade que você gerou usando sua CA.
+- **Certificado:** faça upload de um arquivo que contenha a chave pública da identidade (no formato base64 ou PEM) gerada usando sua CA.
+- **Chave privada:** faça upload de um arquivo que contenha a chave privada da identidade (no formato base64 ou PEM) gerada usando sua CA.
 
 
 Também é possível incluir uma identidade fazendo upload de um arquivo JSON no formato abaixo. Também é possível usar o botão **Fazer upload do JSON** para fazer upload de múltiplas identidades de uma vez.
@@ -185,6 +185,6 @@ Clicar em uma identidade abre um painel lateral que exibe as suas chaves públic
 ## Associando identidades
 {: #ibp-console-identities-associate-admin}
 
-É necessário fornecer a chave pública de seus administradores de organização e de nó [para a definição de MSP da organização](/docs/services/blockchain/howto/ibp-console-organizations.html#console-organizations-create-msp). Os nós ou canais criados pelo console usam os certificados da definição de MSP para verificar quem é um administrador válido. Como resultado, o mesmo par de chaves privada e pública que você usou para incluir um certificado de administrador na definição de MSP precisa ser armazenado dentro de sua carteira eletrônica do console.
+É necessário fornecer a chave pública de seus administradores de organização e de nó [para a definição do MSP da organização](/docs/services/blockchain/howto/ibp-console-organizations.html#console-organizations-create-msp). Os nós ou canais criados pelo console usam os certificados da definição do MSP para verificar quem é um administrador válido. Como resultado, o mesmo par de chaves privada e pública que você usou para incluir um certificado de administrador na definição do MSP precisa ser armazenado dentro de sua carteira eletrônica do console.
 
-Quando usar o console para criar um solicitador ou peer, você encontrará um painel **Associar identidade**. Selecione uma identidade na carteira eletrônica cujo certificado também está dentro de sua definição de MSP da organização. Você também precisará selecionar uma identidade de administrador na seção **Associar identidade** quando criar ou editar um canal. Isso permitirá que o console saiba qual identidade usar quando se comunicar com seus peers, solicitadores e consórcio de serviço de pedido.
+Quando usar o console para criar um solicitador ou peer, você encontrará um painel **Associar identidade**. Selecione uma identidade na carteira eletrônica cujo certificado também está dentro de sua definição do MSP da organização. Você também precisará selecionar uma identidade de administrador na seção **Associar identidade** quando criar ou editar um canal. Isso permitirá que o console saiba qual identidade usar quando se comunicar com seus peers, solicitadores e consórcio de serviço de pedido.

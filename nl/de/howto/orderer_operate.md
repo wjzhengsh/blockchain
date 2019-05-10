@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -101,7 +101,7 @@ Sie müssen mit dem Befehlszeilentool **kubectl** eine Verbindung zu dem in {{si
 ### Endpunktinformationen des Anordnungsknotens abrufen
 {: #icp-orderer-operate-orderer-endpoint}
 
-Um Aktualisierungen am Systemkanal des Anordnungsknotens vorzunehmen, müssen Sie den Endpunkt des Anordnungsknotens als Ziel angeben. Sie müssen die Berechtigung eines [Clusteradministrators ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Clusteradministratorrolle und -aktionen") besitzen, um die folgenden Schritte ausführen zu können:
+Um Aktualisierungen am Systemkanal des Anordnungsknotens vorzunehmen, müssen Sie den Endpunkt des Anordnungsknotens als Ziel angeben. Sie müssen die Berechtigung eines [Clusteradministrators ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/user_management/assign_role.html "Clusteradministratorrolle und -aktionen") besitzen, um die folgenden Schritte ausführen zu können:
 
 1. Melden Sie sich bei der {{site.data.keyword.cloud_notm}} Private-Konsole an und klicken Sie auf das **Menüsymbol** in der linken oberen Ecke.
 2. Klicken Sie auf **Workload** > **Helm-Releases**.
@@ -121,7 +121,7 @@ In diesem Beispiel ist `9.30.94.174` die Proxy-IP-Adresse; der externe Knotenpor
 ### TLS-Zertifikat des Anordnungsknotens herunterladen
 {: #icp-orderer-operate-tls-cert}
 
-Sie müssen das TLS-Zertifikat Ihres Anordnungsknotens herunterladen und es an Ihre Befehlen übergeben, damit Sie von einem fernen Client aus mit Ihrem Anordnungsknoten kommunizieren können. Sie müssen die Berechtigung eines [Clusteradministrators ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Clusteradministratorrolle und -aktionen") besitzen, um die folgenden Schritte ausführen zu können:
+Sie müssen das TLS-Zertifikat Ihres Anordnungsknotens herunterladen und es an Ihre Befehlen übergeben, damit Sie von einem fernen Client aus mit Ihrem Anordnungsknoten kommunizieren können. Sie müssen die Berechtigung eines [Clusteradministrators ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/user_management/assign_role.html "Clusteradministratorrolle und -aktionen") besitzen, um die folgenden Schritte ausführen zu können:
 
 1. Melden Sie sich bei der {{site.data.keyword.cloud_notm}} Private-Konsole an und klicken Sie auf das **Menüsymbol** in der linken oberen Ecke.
 2. Klicken Sie auf **Workload** > **Helm-Releases**.
@@ -173,6 +173,8 @@ tree
 │   └── msp
 │       ├── cacerts
 │       │   └── 9-30-250-70-30395-SampleOrgCA.pem
+│       ├── IssuerPublicKey
+│       ├── IssuerRevocationPublicKey
 │       ├── keystore
 │       │   └── 2a97952445b38a6e0a14db134645981b74a3f93992d9ddac54cb4b4e19cdf525_sk
 │       ├── signcerts
@@ -198,6 +200,8 @@ tree
     └── msp
         ├── cacerts
         │   └── 9-30-250-70-30395-tlsca.pem
+        ├── IssuerPublicKey
+        ├── IssuerRevocationPublicKey
         ├── keystore
         │   └── 45a7838b1a91ddfe3d4d22a5a7f2639b868493bcce594af3e3ceb9c07899d117_sk
         ├── signcerts
@@ -218,7 +222,7 @@ Die Aktualisierung des Systemkanals des Anordnungsknotens wird durch Transaktion
 
 Das Hinzufügen von Organisationen zum Systemkanal des Anordnungsknotens folgt im Wesentlichen demselben Ablauf wie das Aktualisieren der Konfiguration eines beliebigen Kanals zum Hinzufügen einer Organisation. Sie müssen jedoch einige wenige Änderungen vornehmen, da der zu aktualisierende Kanal kein Anwendungskanal und der relevante Administrator der Administrator des Anordnungsknotens und nicht einer Peerorganisation ist.
 
-Sie können übrigens eine Organisation zu einem Kanal hinzufügen, ohne zuvor dem Systemkanal beitreten zu müssen. Weitere Informationen finden Sie in der Dokumentation zu Hyperledger Fabric im Lernprogramm [Adding an Org to a Channel Tutorial ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/channel_update_tutorial.html "Adding an org to a channel") .
+Sie können übrigens eine Organisation zu einem Kanal hinzufügen, ohne zuvor dem Systemkanal beitreten zu müssen. Weitere Informationen finden Sie in der Dokumentation zu Hyperledger Fabric im Lernprogramm [Adding an Org to a Channel Tutorial ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/channel_update_tutorial.html "Adding an org to a channel") .
 
 In der folgenden Liste sind die allgemeinen Schritte angegeben; ausgeführt werden die Tasks durch unterschiedliche Gruppen von Organisationen in Ihrem Konsortium.
 
@@ -230,13 +234,13 @@ In der folgenden Liste sind die allgemeinen Schritte angegeben; ausgeführt werd
 {: #icp-orderer-operate-get-fabric-tools}
 
 Zum Aktualisieren des Systemkanals müsssen Sie die folgenden Tools von Hyperledger Fabric herunterladen.
-- [peer ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/peercommand.html): Damit können Sie den Genesis-Block abrufen und den Systemkanal aktualisieren.
-- [configtxlator ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/configtxlator.html): Dieses Tool setzt das Protobuf-Format einer Kanalkonfiguration in das JSON-Format um, das einfacher zu lesen und zu aktualisieren ist.
+- [peer ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/peercommand.html): Damit können Sie den Genesis-Block abrufen und den Systemkanal aktualisieren.
+- [configtxlator ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/configtxlator.html): Dieses Tool setzt das Protobuf-Format einer Kanalkonfiguration in das JSON-Format um, das einfacher zu lesen und zu aktualisieren ist.
 
 1. Legen Sie fest, wo Sie die Tools speichern wollen, und führen Sie dann den folgenden Befehl aus:
 
   ```
-  curl -sSL http://bit.ly/2ysbOFE | bash -s 1.2.1 1.2.1 -d -s
+  curl -sSL http://bit.ly/2ysbOFE | bash -s 1.4.0 1.4.0 -d -s
   ```
   {:codeblock}
 
@@ -286,7 +290,7 @@ Der Anordnungsknoten muss die [Organisationsdefinitionen](/docs/services/blockch
 
 ### Genesis-Block des Systemkanals abrufen
 
-1. Legen Sie unter Verwendung des MSP-Namens für die Organisation Ihres Anordnungsknotens, der während der Bereitstellung eingerichtet wird, die folgenden Umgebungsvariablen, den Pfad zum MSP Ihres Anordnungsknotens und den Pfad zum TLS-Zertifikat der Zertifizierungsstelle für Ihren Anordnungsknoten fest.
+1. Legen Sie unter Verwendung des MSP-Namens für die Organisation Ihres Anordnungsknotens, der während der Bereitstellung eingerichtet wird, die folgenden Umgebungsvariablen, den Pfad zum MSP Ihres Anordnungsknotens und den Pfad zum Zertifikat der TLS-Zertifizierungsstelle­ für Ihren Anordnungsknoten fest.
 
   ```
   export FABRIC_CFG_PATH=<PATH_TO_/config_FOLDER>
@@ -301,7 +305,7 @@ Der Anordnungsknoten muss die [Organisationsdefinitionen](/docs/services/blockch
 
   Ersetzen Sie die Feldinhalte durch Ihre eigenen Angaben.
 
-    - Ersetzen Sie `<CORE_PEER_LOCALMSPID>` durch die MSP-ID für die Organisation Ihres Anordnungsknotens. Diese ist auch innerhalb des Containers für Anforderungsknoten sichtbar, wenn Sie die folgenden Befehle ausführen und hierbei `<orderer pod name>` durch den Wert für den Pod Ihres Anordnungsknotens ersetzen:
+    - Ersetzen Sie `<CORE_PEER_LOCALMSPID>` durch die MSP-ID für die Organisation Ihres Anordnungsknotens. Diese ist auch innerhalb des Containers für Anordnungsknoten sichtbar, wenn Sie die folgenden Befehle ausführen und hierbei `<orderer pod name>` durch den Wert für den Pod Ihres Anordnungsknotens ersetzen:
 
       ```
       kubectl exec -it <orderer pod name> -c orderer sh
@@ -318,7 +322,7 @@ Der Anordnungsknoten muss die [Organisationsdefinitionen](/docs/services/blockch
       Der Wert für `CORE_PEER_LOCALMSPID` lautet somit "ordererOrg".
 
     - Ersetzen Sie `<CORE_PEER_MSPCONFIGPATH>` durch den Pfad zum MSP-Ordner des Administrators für die Organisation des Anordnungsknotens.
-    - Ersetzen Sie `<CORE_PEER_TLS_ROOTCERT_FILE>` durch den Pfad zum TLS-Zertifikat der Zertifizierungsstelle.
+    - Ersetzen Sie `<CORE_PEER_TLS_ROOTCERT_FILE>` durch den Pfad zum Zertifikat der TLS-Zertifizierungsstelle­.
     - Ersetzen Sie `<PROXY_IP>` durch die Proxy-IP-Adresse aus den [Endpunktinformationen des Anordnungsknotens](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-orderer-endpoint).
     - Ersetzen Sie `<EXTERNAL_NODE_PORT>` durch den externen Knotenport aus den [Endpunktinformationen des Anordnungsknotens](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-orderer-endpoint).
 
@@ -377,7 +381,7 @@ Der Anordnungsknoten muss die [Organisationsdefinitionen](/docs/services/blockch
 
 Das heruntergeladene [Fabric-Tool](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-get-fabric-tools) `configtxtlator` setzt das Protobuf-Format einer Kanalkonfiguration in das JSON-Format um (und umgekehrt).
 
-Diese Schritte folgen dem allgemeinen Ablauf des Lernprogramms zur Kanalaktualisierung zum [Konvertieren des Genesis-Blocks in das JSON-Format ![External link icon](../images/external_link.svg "External link icon")]( https://hyperledger-fabric.readthedocs.io/en/release-1.2/channel_update_tutorial.html#convert-the-configuration-to-json-and-trim-it-down "Convert the Configuration to JSON and Trim It Down"). Sie müssen einige Änderungen an den Befehlen im Lernprogramm vornehmen, um die Tatsache zu berücksichtigen, dass Sie den Kanal des Anordnungsknotens und nicht einen Anwendungskanal aktualisieren. Weitere Details zu diesem Prozess können Sie dem Lernprogramm entnehmen. Im vorliegenden Abschnitt sind lediglich die von Ihnen auszuführenden Befehle angegeben.
+Diese Schritte folgen dem allgemeinen Ablauf des Lernprogramms zur Kanalaktualisierung zum [Konvertieren des Genesis-Blocks in das JSON-Format ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")]( https://hyperledger-fabric.readthedocs.io/en/release-1.4/channel_update_tutorial.html#convert-the-configuration-to-json-and-trim-it-down "Convert the Configuration to JSON and Trim It Down"). Sie müssen einige Änderungen an den Befehlen im Lernprogramm vornehmen, um die Tatsache zu berücksichtigen, dass Sie den Kanal des Anordnungsknotens und nicht einen Anwendungskanal aktualisieren. Weitere Details zu diesem Prozess können Sie dem Lernprogramm entnehmen. Im vorliegenden Abschnitt sind lediglich die von Ihnen auszuführenden Befehle angegeben.
 
 1. Kopieren Sie die JSON-Datei mit der Organisationsdefinition aus dem Ordner, in dem Sie [Ihre Organisation erstellt haben](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-organization-definition), in den Ordner `configupdate`. Im folgenden Beispielbefehl heißt die JSON-Datei mit der Organisationsdefinition `org1definition.json`:
 
@@ -490,7 +494,7 @@ Komponentenprotokolle können über die Befehlszeile mit den [`Befehlen der CLI 
   ```
   {:codeblock}
 
-  Rufen Sie anschließend mit dem folgenden Befehl die Protokolle des Containers für Anordnungsknoten ab, der sich im Pod befindet; ersetzen Sie hierbei `<pod_name>` durch den Namen Ihres Pods aus der obigen Befehlsausgabe:
+  Rufen Sie anschließend mit dem folgenden Befehl die Protokolle des Anordnungsknoten-Containers ab, der sich im Pod befindet; ersetzen Sie hierbei `<pod_name>` durch den Namen Ihres Pods, der in der Ausgabe des obigen Befehls aufgeführt ist:
 
   ```
   kubectl logs <pod_name> -c orderer
@@ -499,7 +503,7 @@ Komponentenprotokolle können über die Befehlszeile mit den [`Befehlen der CLI 
 
   Weitere Informationen zum Befehl `kubectl logs` enthält die [Kubernetes-Dokumentation ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs “Getting Started”).
 
-- Alternativ können Sie auf die Protokolle zugreifen, indem Sie die [{{site.data.keyword.cloud_notm}} Private Cluster-Managementkonsole ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/troubleshoot/events.html) verwenden, die die Protokolle in Kibana öffnet.
+- Alternativ können Sie auf die Protokolle zugreifen, indem Sie die [{{site.data.keyword.cloud_notm}} Private Cluster-Managementkonsole ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/troubleshoot/events.html) verwenden, die die Protokolle in Kibana öffnet.
 
   **Hinweis:** Wenn Sie Ihre Protokolle in Kibana anzeigen, empfangen Sie möglicherweise die Antwort `Keine Ergebnisse gefunden`. Diese Bedingung kann auftreten, wenn {{site.data.keyword.cloud_notm}} Private die IP-Adresse Ihres Workerknotens als Hostnamen verwendet. Entfernen Sie zur Lösung dieses Problems oben in der Anzeige den Filter, der mit `node.hostname.keyword` beginnt. Anschließend sind die Protokolle sichtbar.
 

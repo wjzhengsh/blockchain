@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-03-20"
 
 subcollection: blockchain
 
@@ -28,7 +28,7 @@ Los siguientes problemas ya se han notificado:
 - En el Supervisor de red de una red de Plan inicial, al pulsar **Ver registros** en los nodos que se listan en la pantalla "Visión general", se abrirá la interfaz Registro de Kibana de {{site.data.keyword.cloud}}. **De forma predeterminada, kibana está preconfigurado para mostrar registros de los últimos 30 días de actividad**. Si no ha habido actividad en los últimos 30 días, verá un mensaje que indica que *No se han encontrado resultados*. Para ver otros registros, puede pulsar el icono de temporizador en la esquina superior derecha bajo el nombre de usuario y establecer un rango de tiempo más amplio, por ejemplo *Año hasta la fecha*
 - Los registros de la red del Plan inicial los recopila el [servicio {{site.data.keyword.cloud_notm}} Log Analysis ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://cloud.ibm.com/catalog/services/log-analysis). De forma predeterminada, los registros los recopila el Plan Lite del servicio Log Analysis. Este plan es gratuito y **solo le permite buscar los primeros 500 MB de sus registros por día**. Si los registros de la red superan los 500 MB, no podrá ver registros nuevos en Kibana. Si la red genera más de 500 MB de registros, puede actualizar a una versión de pago del servicio Log Analysis.
 - Dado que el Plan inicial no es un entorno de producción, **las aplicaciones podrían no llegar inmediatamente a un recurso de red**.
-  - Si esto sucede, se recomienda como primer paso aumentar los valores de tiempo de espera predeterminados en el SDK de Fabric. Para obtener más información sobre cómo establecer valores de tiempo de espera, consulte [Establecimiento de valores de tiempo de espera en los SDK de Fabric](/docs/services/blockchain/v10_application.html#dev-app-set-timeout-in-sdk).
+  - Si esto sucede, se recomienda como primer paso aumentar los valores de tiempo de espera predeterminados en el SDK de Fabric. Para obtener más información sobre cómo establecer valores de tiempo de espera, consulte [Establecimiento de valores de tiempo de espera en los SDK de Fabric](/docs/services/blockchain/best_practices.html#best-practices-app-set-timeout-in-sdk).
   - También puede volver a intentar la solicitud a nivel de aplicación.
 - **Los contenedores de código de encadenamiento pueden detenerse a veces** mediante un problema de red en segundo plano y pueden necesitar reconstruirse y reiniciarse una vez invocados por un usuario. Si sucede esto, su código de encadenamiento puede tardar unos minutos en responder.
 - Dado a la limitación de recursos en la red del Plan inicial, es decir, 1 CPU y 4 Gi de RAM para cada igual, **puede encontrar un error `REQUEST_TIMEOUT` durante la instanciación del código de encadenamiento**. Si esto ocurre, vuelva a intentar el paso de instanciación. Si el error continúa, puede aumentar el tiempo de espera de la instanciación del código de encadenamiento. En el perfil de conexión, el tiempo de espera de la instanciación del código de encadenamiento se establece en 300 segundos.

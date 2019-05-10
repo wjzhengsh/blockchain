@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -20,7 +20,7 @@ subcollection: blockchain
 # マルチクラウド・ネットワークを使用した {{site.data.keyword.cloud_notm}} Private でのピアの操作
 {: #icp-peer-operate}
 
-{{site.data.keyword.blockchainfull}} Platform on {{site.data.keyword.cloud_notm}} Private ピアをセットアップした後、ピアでブロックチェーン・ネットワークの台帳の照会と呼び出しのためのトランザクションを発行できるようにするには、いくつかの操作ステップを実行する必要があります。 このステップでは、チャネルへの組織の追加、チャネルへのピアの参加、ピアでのチェーンコードのインストール、チャネルでのチェーンコードのインスタンス化、およびピアへのアプリケーションの接続を行います。 ピアをスターター・プランまたはエンタープライズ・プランのネットワークに接続する必要がある場合は、[スターター・プランまたはエンタープライズ・プランを使用した {{site.data.keyword.cloud_notm}} Private でのピアの操作](/docs/services/blockchain/howto/peer_operate_ibp.html#ibp-peer-operate)を参照してください。
+{{site.data.keyword.blockchainfull}} Platform for {{site.data.keyword.cloud_notm}} Private ピアをセットアップした後、ピアでブロックチェーン・ネットワークの台帳の照会と呼び出しのためのトランザクションを発行できるようにするには、いくつかの操作ステップを実行する必要があります。 このステップでは、チャネルへの組織の追加、チャネルへのピアの参加、ピアでのチェーンコードのインストール、チャネルでのチェーンコードのインスタンス化、およびピアへのアプリケーションの接続を行います。 ピアをスターター・プランまたはエンタープライズ・プランのネットワークに接続する必要がある場合は、[スターター・プランまたはエンタープライズ・プランを使用した {{site.data.keyword.cloud_notm}} Private でのピアの操作](/docs/services/blockchain/howto/peer_operate_ibp.html#ibp-peer-operate)を参照してください。
 {:shortdesc}
 
 ピアを操作するには、{{site.data.keyword.cloud_notm}} Private クラスターからいくつかの前提条件ステップを実行する必要があります。
@@ -40,7 +40,7 @@ subcollection: blockchain
 
 組織がまだ共同事業体またはチャネルのメンバーでない場合は、以下のステップを使用して、[チャネルを作成](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-create-channel)できます。 この手順では、[組織定義を準備する](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-organization-definition)方法について説明します。 この定義は、ユーザーを順序付けプログラムのシステム・チャネルに追加して共同事業体のメンバーにする際に使用されます。 その後、[チャネル・トランザクションを作成](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-channeltx)することで、新しいチャネルを形成できます。
 <!--
-It is recommended that you deploy at least two instances of the peer Helm chart for [high availability](peer_icp.html#high-availability). Therefore, you need to follow these operations steps once for each peer. When you are ready to invoke and query chaincode from your application, connect to both peers to ensure that your [applications are highly available](../v10_application.html#ha-app).
+It is recommended that you deploy at least two instances of the peer Helm chart for [high availability](peer_icp.html#high-availability). Therefore, you need to follow these operations steps once for each peer. When you are ready to invoke and query chaincode from your application, connect to both peers to ensure that your [applications are highly available](../best_practices.html#best-practices-app-ha-app).
 -->
 
 ## 前提条件
@@ -116,7 +116,7 @@ SDK またはコマンド・ラインのどちらを使用する予定である�
 ### ピアのエンドポイント情報の取得
 {: #icp-peer-operate-peer-endpoint}
 
-チャネルに参加したり、スマート・コントラクトをインストールしたりするには、SDK または Fabric CA クライアントからピア・エンドポイントをターゲットにする必要があります。 ピアのエンドポイントを見つけるには、{{site.data.keyword.cloud_notm}} Private コンソール UI を使用します。 以下のステップを実行するには、[クラスター管理者 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "クラスター管理者役割とアクション") である必要があります。
+チャネルに参加したり、スマート・コントラクトをインストールしたりするには、SDK または Fabric CA クライアントからピア・エンドポイントをターゲットにする必要があります。 ピアのエンドポイントを見つけるには、{{site.data.keyword.cloud_notm}} Private コンソール UI を使用します。 以下のステップを実行するには、[クラスター管理者 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/user_management/assign_role.html "クラスター管理者役割とアクション") である必要があります。
 
 1. {{site.data.keyword.cloud_notm}} Private コンソールにログインし、左上隅の**「メニュー」**アイコンをクリックします。
 2. **「ワークロード (Workload)」** > **「Helm リリース」**をクリックします。
@@ -155,7 +155,7 @@ SDK またはコマンド・ラインのどちらを使用する予定である�
 ## Fabric SDK を使用したピアの操作
 {: #icp-peer-operate-with-sdk}
 
-Hyperledger Fabric SDK には強力な API のセットが用意されており、これらの API により、アプリケーションはブロックチェーン・ネットワークと対話したりこれを操作したりすることができます。 サポートされている言語の最新リストおよび Fabric SDK 内で使用可能な API の完全なリストについては、[Hyperledger Fabric SDK コミュニティーの資料 ![外部リンク・アイコン](../images/external_link.svg " 外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/getting_started.html#hyperledger-fabric-sdks "Hyperledger Fabric SDK コミュニティーの資料") を参照してください。 Fabric SDK を使用して、ピアを {{site.data.keyword.blockchainfull_notm}} Platform 上のチャネルに参加させたり、チェーンコードをピアにインストールしたり、チェーンコードをチャネル上でインスタンス化したりできます。
+Hyperledger Fabric SDK には強力な API のセットが用意されており、これらの API により、アプリケーションはブロックチェーン・ネットワークと対話したりこれを操作したりすることができます。 サポートされている言語の最新リストおよび Fabric SDK 内で使用可能な API の完全なリストについては、[Hyperledger Fabric SDK コミュニティーの資料 ![外部リンク・アイコン](../images/external_link.svg " 外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/getting_started.html#hyperledger-fabric-sdks "Hyperledger Fabric SDK コミュニティーの資料") を参照してください。 Fabric SDK を使用して、ピアを {{site.data.keyword.blockchainfull_notm}} Platform 上のチャネルに参加させたり、チェーンコードをピアにインストールしたり、チェーンコードをチャネル上でインスタンス化したりできます。
 
 以下の手順では、[Fabric Node SDK ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://fabric-sdk-node.github.io/ "Fabric Node SDK") を使用してピアを操作するため、事前に SDK に精通していることが前提となっています。 開始前に Node SDK の使用方法を学習するために、およびチェーンコードを呼び出して照会する準備ができたら、ピアを使用してアプリケーションを開発する際のガイドとして、[アプリケーションの開発チュートリアル](/docs/services/blockchain/v10_application.html#dev-app)を使用できます。
 
@@ -165,11 +165,11 @@ Hyperledger Fabric SDK には強力な API のセットが用意されており�
 NPM を使用して [Node SDK ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://fabric-sdk-node.github.io/ "Node SDK") をインストールできます。
 
 ```
-npm install fabric-client@1.2
+npm install fabric-client@1.4.0
 ```
 {:codeblock}
 
-バージョン 1.2 の Node SDK を使用することをお勧めします。
+バージョン 1.4.0 の Node SDK を使用することをお勧めします。
 
 ### ピアを使用するための SDK の準備
 {: #icp-peer-operate-node-sdk}
@@ -259,12 +259,12 @@ You need to specify a `ssl-target-name-override` of `<something>.blockchain.com`
 ### Fabric ピア・クライアントのダウンロード
 {: #icp-peer-operate-fabric-client}
 
-リモート・クライアントからピアと対話するには、[Fabric ピア・クライアント ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/peercommand.html "Fabric ピア・コマンド") をダウンロードする必要があります。
+リモート・クライアントからピアと対話するには、[Fabric ピア・クライアント ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/peercommand.html "Fabric ピア・コマンド") をダウンロードする必要があります。
 
-ピア・クライアントを入手する最も簡単な方法は、Fabric ツール・バイナリーを Hyperledger プロジェクトからダウンロードすることです。 コマンド・ラインでバイナリーをダウンロードするディレクトリーを作成し、以下のコマンドを発行して、これらのバイナリーをフェッチします。 最初に [Curl ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/prereqs.html#install-curl "Curl") をインストールする必要があります。
+ピア・クライアントを入手する最も簡単な方法は、Fabric ツール・バイナリーを Hyperledger プロジェクトからダウンロードすることです。 コマンド・ラインでバイナリーをダウンロードするディレクトリーを作成し、以下のコマンドを発行して、これらのバイナリーをフェッチします。 最初に [Curl ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/prereqs.html#install-curl "Curl") をインストールする必要があります。
 
 ```
-curl -sSL http://bit.ly/2ysbOFE | bash -s 1.2.1 1.2.1 -d -s
+curl -sSL http://bit.ly/2ysbOFE | bash -s 1.4.0 1.4.0 -d -s
 ```
 {:codeblock}
 
@@ -329,6 +329,8 @@ tree
 │   └── msp
 │       ├── cacerts
 │       │   └── 9-30-250-70-30395-SampleOrgCA.pem
+│       ├── IssuerPublicKey
+│       ├── IssuerRevocationPublicKey
 │       ├── keystore
 │       │   └── 2a97952445b38a6e0a14db134645981b74a3f93992d9ddac54cb4b4e19cdf525_sk
 │       ├── signcerts
@@ -356,6 +358,8 @@ tree
     └── msp
         ├── cacerts
         │   └── 9-30-250-70-30395-tlsca.pem
+        ├── IssuerPublicKey
+        ├── IssuerRevocationPublicKey
         ├── keystore
         │   └── 45a7838b1a91ddfe3d4d22a5a7f2639b868493bcce594af3e3ceb9c07899d117_sk
         ├── signcerts
@@ -482,7 +486,7 @@ tree
 ### CLI を使用したピアへのチェーンコードのインストール
 {: #icp-peer-operate-toolcontainer-install-cc}
 
-これで、ピアにチェーンコードをインストールおよびインスタンス化する準備ができました。 これらの手順のために、`fabcar` チェーンコードを `fabric-samples` リポジトリーからインストールします。 [GOPATH の構成 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/dev-setup/devenv.html?highlight=gopath#set-your-gopath "Set your GOPATH") が完了していることを確認してから、次のコマンドを使用して、GitHub から `fabric-samples` をダウンロードします。
+これで、ピアにチェーンコードをインストールおよびインスタンス化する準備ができました。 これらの手順のために、`fabcar` チェーンコードを `fabric-samples` リポジトリーからインストールします。 [GOPATH の構成 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/dev-setup/devenv.html?highlight=gopath#set-your-gopath "Set your GOPATH") が完了していることを確認してから、次のコマンドを使用して、GitHub から `fabric-samples` をダウンロードします。
 
   ```
   cd $GOPATH/src
@@ -523,7 +527,7 @@ peer chaincode instantiate -o ${ORDERER_1} -C ${CHANNEL} -n ${CC_NAME} -v v0 -c 
 2018-11-27 17:09:28.013 EST [chaincodeCmd] checkChaincodeCmdParams -> INFO 049 Using default vscc
 ```
 
-チェーンコードをインスタンス化した後、チェーンコード照会を使用してコマンドを呼び出し、チャネル台帳に対してデータの読み取りと書き込みを行うことができます。 詳しくは、Hyperledger Fabric の資料で [peer chaincode ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/latest/commands/peerchaincode.html) コマンドを参照してください。 プロキシー IP および外部順序付けプログラム・ポートを使用して、呼び出しコマンドに順序付けプログラム・エンドポイントを渡す必要があります。 ピア・エンドポイントを照会コマンドに渡すだけで済みます。
+チェーンコードをインスタンス化した後、チェーンコード照会を使用してコマンドを呼び出し、チャネル台帳に対してデータの読み取りと書き込みを行うことができます。 詳しくは、Hyperledger Fabric の資料で [peer chaincode ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/peerchaincode.html) コマンドを参照してください。 プロキシー IP および外部順序付けプログラム・ポートを使用して、呼び出しコマンドに順序付けプログラム・エンドポイントを渡す必要があります。 ピア・エンドポイントを照会コマンドに渡すだけで済みます。
 
 ## {{site.data.keyword.cloud_notm}} Private でのピアのログの表示
 {: #peer-log-icp}
@@ -544,7 +548,7 @@ peer chaincode instantiate -o ${ORDERER_1} -C ${CHANNEL} -n ${CC_NAME} -v v0 -c 
 1. 各ピアでチェーンコードを更新するには、クライアント・アプリケーションまたは CLI コマンドを使用して、チェーンコードをピアにインストールする際に使用した処理を再実行するだけです。 必ず、当初使用したものと同じチェーンコード名を指定してください。 ただし、今回は、チェーンコードの `Version` を増分します。 すべてのピアで、同じチェーンコード名とバージョンを使用する必要があります。
 
 2. チャネル内のすべてのピアに新しいチェーンコードをインストールした後、
-[peer chaincode upgrade ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/peerchaincode.html#peer-chaincode-upgrade) コマンドを使用して、新しいチェーンコードを使用するようにチャネルを更新します。
+[peer chaincode upgrade ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/peerchaincode.html#peer-chaincode-upgrade) コマンドを使用して、新しいチェーンコードを使用するようにチャネルを更新します。
 
 ## {{site.data.keyword.cloud_notm}} Private で実行されるピアの再始動
 {: #peer-restart}
@@ -580,12 +584,12 @@ peer chaincode instantiate -o ${ORDERER_1} -C ${CHANNEL} -n ${CC_NAME} -v v0 -c 
 ### configtxgen ツールのダウンロード
 {: #icp-peer-operate-configtxgen}
 
-組織が共同事業体またはチャネルに参加する必要がある場合は、[configtxgen ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/configtxgen.html "configtxgen") ツールをダウンロードする必要があります。
+組織が共同事業体またはチャネルに参加する必要がある場合は、[configtxgen ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/configtxgen.html "configtxgen") ツールをダウンロードする必要があります。
 
-configtxgen を入手する最も簡単な方法は、すべての Fabric ツール・バイナリーを Hyperledger プロジェクトからダウンロードすることです。 コマンド・ラインでバイナリーをダウンロードするディレクトリーにナビゲートし、以下のコマンドを発行して、これらのバイナリーをフェッチします。 最初に [Curl ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/prereqs.html#install-curl "Curl") をインストールする必要があります。
+configtxgen を入手する最も簡単な方法は、すべての Fabric ツール・バイナリーを Hyperledger プロジェクトからダウンロードすることです。 コマンド・ラインでバイナリーをダウンロードするディレクトリーにナビゲートし、以下のコマンドを発行して、これらのバイナリーをフェッチします。 最初に [Curl ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/prereqs.html#install-curl "Curl") をインストールする必要があります。
 
 ```
-curl -sSL http://bit.ly/2ysbOFE | bash -s 1.2.1 1.2.1 -d -s
+curl -sSL http://bit.ly/2ysbOFE | bash -s 1.4.0 1.4.0 -d -s
 ```
 {:codeblock}
 
@@ -618,17 +622,17 @@ export PATH=$PATH:$HOME/bin
   cd $HOME/fabric-ca-client/peer-admin/msp
   mkdir tlscacerts
   ```
-
+  {:codeblock}
   次に、作成した `tlscacerts` ディレクトリーにこの証明書をコピーする必要があります。
 
   ```
-  cp $HOME/fabric-ca-client/tlsca-admin/cacerts/<xxxx>tlsca.pem tlscacerts/
+  cp $HOME/fabric-ca-client/tlsca-admin/msp/cacerts/<xxxx>tlsca.pem tlscacerts/
   ```
-
+  {:codeblock}
   コマンドは以下のようになります。
 
   ```
-  cp fabric-ca-client/tlsca-admin/cacerts/9-30-250-70-32129-tlsca.pem /tlscacerts/
+  cp fabric-ca-client/tlsca-admin/msp/cacerts/9-30-250-70-32129-tlsca.pem /tlscacerts/
   ```
   {:codeblock}
 
@@ -724,12 +728,12 @@ configtxgen -printOrg org1 > $HOME/fabric-ca-client/org-definitions/org1definiti
 ## チャネル・トランザクションの作成
 {: #icp-peer-operate-channeltx}
 
-新規チャネルを作成する前に、組織は[組織定義](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-organization-definition)を準備し、共同事業体のメンバーとなる必要があります。 [共同事業体を形成するか、共同事業体に追加してもらう](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-consortium)必要がある場合は、以下の手順に従います。 組織が既にシステム・チャネルに追加されている場合は、共同事業体のメンバーを簡単に新規チャネルに追加することもできます。 システム・チャネルのメンバーでない組織は、[チャネル更新要求 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/channel_update_tutorial.html) を使用してその組織定義をチャネルに追加することで、手動でのみチャネルに参加できます。 これらのステップを使用して、既存のチャネルを更新することもできます。
+新規チャネルを作成する前に、組織は[組織定義](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-organization-definition)を準備し、共同事業体のメンバーとなる必要があります。 [共同事業体を形成するか、共同事業体に追加してもらう](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-consortium)必要がある場合は、以下の手順に従います。 組織が既にシステム・チャネルに追加されている場合は、共同事業体のメンバーを簡単に新規チャネルに追加することもできます。 システム・チャネルのメンバーでない組織は、[チャネル更新要求 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/channel_update_tutorial.html) を使用してその組織定義をチャネルに追加することで、手動でのみチャネルに参加できます。 これらのステップを使用して、既存のチャネルを更新することもできます。
 
 ### 新規チャネルの形成
 {: #icp-peer-operate-form-channel}
 
-新規チャネルを形成するには、組織は [configtxgen ツール ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/configtxgen.html "configtxgen") を使用して、チャネル作成トランザクション・プロポーザルを作成する必要があります。 このツールでは、新規チャネル・メンバーを定義する `configtx.yaml` ファイルを使用します。 サンプルの `configtx.yaml` ファイルを以下に示します。 このファイルより複雑なバージョンは、[ダウンロードした Fabric ピア・クライアント](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-fabric-client)の、`/config` フォルダーにもあります。 このファイルを編集することも、サンプルに置き換えることもできます。 この `/config` フォルダーの場所をメモして、以下の `FABRIC_CFG_PATH` の値を設定します。
+新規チャネルを形成するには、組織は [configtxgen ツール ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/configtxgen.html "configtxgen") を使用して、チャネル作成トランザクション・プロポーザルを作成する必要があります。 このツールでは、新規チャネル・メンバーを定義する `configtx.yaml` ファイルを使用します。 サンプルの `configtx.yaml` ファイルを以下に示します。 このファイルより複雑なバージョンは、[ダウンロードした Fabric ピア・クライアント](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-fabric-client)の、`/config` フォルダーにもあります。 このファイルを編集することも、サンプルに置き換えることもできます。 この `/config` フォルダーの場所をメモして、以下の `FABRIC_CFG_PATH` の値を設定します。
 ```
 # Copyright IBM Corp. All Rights Reserved.
 #
@@ -833,7 +837,7 @@ Profiles:
 - **Organizations:** このセクションでは、共同事業体のすべてのメンバーを定義します。 各組織には、`&Org1` などのアンカーが含まれます。 このアンカーの下に、組織の名前、MSPID、MSP フォルダーへのディレクトリー、および相互ピア・ゴシップのための組織のアンカー・ピアがあります。 以下のステップに従って、各共同事業体メンバーの組織プロファイルに入力できます。
   1. 組織の `Name` と `ID` をその MSPID を使用して指定します。 チャネルを作成する組織は、ピアの Helm チャートのデプロイ時に指定された MSPID を認識している必要があります。
   2. `MSPDir` では、[組織定義](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-organization-definition)の作成に使用した MSP フォルダーへの完全修飾パスを指定します。 チャネル作成トランザクションでは、暗号化情報は一切使用されないことに注意してください。 *configtxgen* ツールでは、 MSP の実際の内容は無視されます。 ただし、MSP フォルダーが適切なフォルダー副構造とともにその場所に存在する必要があります。
-  3. `AnchorPeers` パラメーターは、各組織がゴシップによる組織間通信に使用するリード・ピアを識別するために使用されます。 この組織の[アンカー・ピア ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/glossary.html) として機能するピアのホスト名およびポートを指定します。 この値は、プライベート・データやサービス・ディスカバリーなどの機能を使用する際に重要です。ただし、プライベート・データおよびサービス・ディスカバリーは、ピアの Helm チャートでは現在サポートされていません。
+  3. `AnchorPeers` パラメーターは、各組織がゴシップによる組織間通信に使用するリード・ピアを識別するために使用されます。 この組織の[アンカー・ピア ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/glossary.html) として機能するピアのホスト名およびポートを指定します。 この値は、プライベート・データやサービス・ディスカバリーなどの機能を使用する際に重要です。ただし、プライベート・データおよびサービス・ディスカバリーは、ピアの Helm チャートでは現在サポートされていません。
 
 - **Capabilities:** このセクションは `configtx.yaml` に含まれている必要がありますが、変更する必要はありません。
 
@@ -897,7 +901,7 @@ peer channel create -o 9.30.250.70:31507 --tls --cafile $PWD/orderer-tls/orderer
 
 新規チャネル作成プロポーザルが、システム・チャネルのエンドースメント・ポリシーを満たすのに十分な組織によって署名されている場合、チャネル更新トランザクションを順序付けプログラムに送信して、新規チャネルを形成できます。
 
-Node Fabric SDK API を使用して、単一トランザクションで署名と送信を実行できます。 詳しくは、Node SDK の資料で [How to create a Hyperledger Fabric Channel ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")]](https://fabric-sdk-node.github.io/release-1.3/tutorial-channel-create.html) チュートリアルを参照してください。
+Node Fabric SDK API を使用して、単一トランザクションで署名と送信を実行できます。 詳しくは、Node SDK の資料で [How to create a Hyperledger Fabric Channel ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")]](https://fabric-sdk-node.github.io/release-1.4/tutorial-channel-create.html) チュートリアルを参照してください。
 
 ## ピア・ログの表示
 {: #icp-peer-operate-view-logs}
@@ -920,7 +924,7 @@ Node Fabric SDK API を使用して、単一トランザクションで署名と
 
   `kubectl logs` コマンドについて詳しくは、[Kubernetes の資料 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs “Getting Started”) を参照してください。
 
-- また、[{{site.data.keyword.cloud_notm}} Private クラスター管理コンソール ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/troubleshoot/events.html "イベントおよびログ") を使用してログにアクセスすることもできます。この場合、ログは Kibana で開きます。
+- また、[{{site.data.keyword.cloud_notm}} Private クラスター管理コンソール ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/troubleshoot/events.html "イベントおよびログ") を使用してログにアクセスすることもできます。この場合、ログは Kibana で開きます。
 
   **注:** Kibana でログを表示する場合、`「No results found」`という応答を受け取ることがあります。 この状態は、{{site.data.keyword.cloud_notm}} Private がワーカー・ノードの IP アドレスをそのホスト名として使用する場合に起こることがあります。 この問題を解決するには、パネルの上部で `node.hostname.keyword` で始まるフィルターを削除すると、ログが表示されるようになります。
 

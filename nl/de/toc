@@ -6,7 +6,7 @@ IBM Blockchain Platform
 
 	{: .navgroup id="learn"}
 	{: .topicgroup}
-	Getting started tutorials
+	Lernprogramme zur Einführung
 		index.md
 		get_start_starter_plan.md
 		get_start.md
@@ -15,7 +15,7 @@ IBM Blockchain Platform
 		howto/remote_peer_aws.md
 
 	{: .topicgroup}
-	About IBM Blockchain Platform
+	Informationen zu IBM Blockchain Platform
 		starter_plan.md
 		enterprise_plan.md
 		howto/ibp-console.md
@@ -23,25 +23,27 @@ IBM Blockchain Platform
 		howto/remote_peer.md
 
 	whats_new.md
+	howto/ibp-v2-faq.md
 	blockchain_component_overview.md
 	needtoknow.md
 	{: .navgroup-end}
 
 	{: .navgroup id="howto"}
 	{: .topicgroup}
-	Developing smart contracts and applications
+	Smart Contracts und Anwendungen entwickeln
 		howto/develop_chaincode.md
 		vscode-extension.md
-		v10_application.md
+		best_practices.md
 
 
 	{: .topicgroup}
-	Starter and Enterprise Plan
+	Starter und Enterprise Plan
 		v10_dashboard.md
 		develop_starter_enterprise.md
 		howto/prebuilt_samples.md
 		howto/create_channel.md
 		howto/install_instantiate_chaincode.md
+		v10_application.md
 		howto/swagger_apis.md
 		howto/create_join_network_with_apis.md
 		howto/monitor_network.md
@@ -57,36 +59,37 @@ IBM Blockchain Platform
 		howto/ibp-console-smart-contracts.md
 		howto/ibp-console-create-app.md
 		howto/ibp-console-import-nodes.md
+		howto/ibp-console-govern.md
 		howto/ibp-console-identities.md
 		howto/ibp-console-organizations.md
 		howto/ibp-console-manage.md
+		howto/ibp-v2-troubleshooting.md
 
 	{: .topicgroup}
-	IBM Blockchain Platform on IBM Cloud Private
+	IBM Blockchain Platform for IBM Cloud Private
 		ibp_for_icp_deployment_guide.md
 		ICP_setup.md
 		howto/helm_install_icp.md
-		howto/ibp-console-deploy-icp.md
 
 	{: .topicgroup}
-	-- Certificate Authorities on IBM Cloud Private
+	-- Zertifizierungsstellen bei IBM Cloud Private
 		howto/CA_deploy_icp.md
 		howto/CA_operate.md
 
 	{: .topicgroup}
-	-- Ordering services on IBM Cloud Private
+	-- Bestellservices bei IBM Cloud Private
 		howto/orderer_deploy_icp.md
 		howto/orderer_operate.md
 
 	{: .topicgroup}
-	-- Peers on IBM Cloud Private
+	-- Peers bei IBM Cloud Private
 		howto/peer_deploy_icp.md
 		howto/peer_operate_icp.md
 		howto/peer_deploy_ibp.md
 		howto/peer_operate_ibp.md
 
 	{: .topicgroup}
-	IBM Blockchain Platform for Amazon Web Services
+	IBM Blockchain Platform für Amazon Web Services
 		howto/remote_peer_aws.md
 		howto/remote_peer_operate_aws.md
 	{: .navgroup-end}
@@ -96,9 +99,11 @@ IBM Blockchain Platform
 	reference/ibp_regions.md
 	reference/videos.md
 	reference/v10_fabric.md
+	reference/k8s.md
 	{: .navgroup-end}
 
 	{: .navgroup id="help"}
+	release-notes.md
 	ibmblockchain_support.md
 	knownissues.md
 	{: .navgroup-end}

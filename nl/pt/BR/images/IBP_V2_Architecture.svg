@@ -123,8 +123,8 @@
 			<rect id="Rectangle-Copy-6" x="0.5" y="0.5" class="st17" width="105" height="47"/>
 			<text transform="matrix(1 0 0 1 28.49 31)" class="st18 st4 st12">RBAC</text>
 		</g>
-		<text transform="matrix(1 0 0 1 63.05 39)" class="st11 st4 st12">Namespace do IBM Blockchain </text>
-		<text transform="matrix(1 0 0 1 41.3045 63)" class="st11 st4 st12">Platform</text>
+		<text transform="matrix(1 0 0 1 63.05 39)" class="st11 st4 st12">IBM Blockchain </text>
+		<text transform="matrix(1 0 0 1 41.3045 63)" class="st11 st4 st12">Namespace da plataforma</text>
 	</g>
 	<rect id="Rectangle_9_" x="513.5" y="1061.5" class="st16" width="105" height="61"/>
 	<text transform="matrix(1 0 0 1 536.0975 1111)" class="st11 st4 st12">Peer-1</text>

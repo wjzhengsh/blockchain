@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -112,7 +112,7 @@ Devi utilizzare lo strumento di riga di comando **kubectl** per stabilire una co
 ### Richiamo del tuo URL della CA (Certificate Authority)
 {: #ca-operate-url}
 
-Devi indicare l'URL della CA per le richieste per generare i certificati o la registrazione con una nuova identità. Puoi trovare l'URL della CA utilizzando l'IU della console {{site.data.keyword.cloud_notm}} Private. Per completare questa procedura, dovrai essere un [amministratore del cluster ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Ruoli e azioni dell'amministratore del cluster"):
+Devi indicare l'URL della CA per le richieste per generare i certificati o la registrazione con una nuova identità. Puoi trovare l'URL della CA utilizzando l'IU della console {{site.data.keyword.cloud_notm}} Private. Dovrai essere un [Amministratore del cluster ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/user_management/assign_role.html "Cluster administrator roles and actions") per completare le seguenti istruzioni:
 
 1. Accedi alla tua console {{site.data.keyword.cloud_notm}} Private e fai clic sull'icona **Menu** nell'angolo superiore sinistro.
 2. Fai clic su **Workload** > **Release Helm**.
@@ -153,12 +153,12 @@ Devi scaricare il tuo certificato TLS CA e trasmetterlo insieme ai tuoi comandi 
 
 Puoi utilizzare il client CA Fabric per utilizzare la tua CA. Queste istruzioni spiegano come utilizzare il client CA Fabric per iscrivere e registrare le identità per altri componenti che appartengono alla tua organizzazione. Puoi anche utilizzare gli SDK Fabric per completare i passi preliminari.
 
-1. Devi scaricare il [Fabric CA client ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric-ca.readthedocs.io/en/latest/users-guide.html#fabric-ca-client "Download Fabric CA client") sul tuo file system locale.
+1. Devi scaricare il [Fabric CA client ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/users-guide.html#fabric-ca-client "Download Fabric CA client") sul tuo file system locale.
 
-  Il modo più semplice per ottenere il client CA Fabric consiste nello scaricare direttamente tutti i file binari dello strumento Fabric. Passa a una directory dove vuoi scaricare i file binari con la tua riga di comando e recuperali immettendo il seguente comando [Curl ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/prereqs.html#install-curl "Curl").
+  Il modo più semplice per ottenere il client CA Fabric consiste nello scaricare direttamente tutti i file binari dello strumento Fabric. Passa a una directory dove vuoi scaricare i file binari con la tua riga di comando e recuperali immettendo il seguente comando [Curl ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/prereqs.html#install-curl "Curl").
 
   ```
-  curl -sSL http://bit.ly/2ysbOFE | bash -s 1.2.1 1.2.1 -d -s
+  curl -sSL http://bit.ly/2ysbOFE | bash -s 1.4.0 1.4.0 -d -s
   ```
   {:codeblock}
 
@@ -225,7 +225,7 @@ Puoi generare i certificati solo utilizzando le identità che sono state registr
   ```
   {:codeblock}
 
-  `<enroll_id>` e `<enroll_password>` nel comando sono [il nome utente e la password dell'amministratore CA](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-admin-secret) che hai passato al segreto Kubernetes quando hai distribuito la CA (Certificate Authority). Immetti l'[URL della CA](/docs/services/blockchain/howto/CA_operate.html#ca-operate-url) in `<ca_url_with_port>`. Tralascia il `http://` all'inizio. `<ca_name>` è il valore che hai fornito al campo `CA Name` quando hai distribuito la CA.
+  `<enroll_id>` e `<enroll_password>` nel comando sono [il nome utente e la password dell'amministratore CA](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-admin-secret) che hai passato al segreto Kubernetes quando hai distribuito la CA (Certificate Authority). Inserisci l'[URL della CA](/docs/services/blockchain/howto/CA_operate.html#ca-operate-url) in `<ca_url_with_port>`. Tralascia il `http://` all'inizio.  `<ca_name>` è il valore che hai fornito al campo `CA Name` quando hai distribuito la CA.
 
   `<ca_tls_cert_path>` è il percorso completo del tuo [certificato TLS CA](/docs/services/blockchain/howto/CA_operate.html#ca-operate-tls).
 
@@ -257,6 +257,8 @@ tree
 │   └── msp
 │       ├── cacerts
 │       │   └── 9-30-250-70-30395-SampleOrgCA.pem
+│       ├── IssuerPublicKey
+│       ├── IssuerRevocationPublicKey
 │       ├── keystore
 │       │   └── 2a97952445b38a6e0a14db134645981b74a3f93992d9ddac54cb4b4e19cdf525_sk
 │       ├── signcerts
@@ -269,12 +271,12 @@ tree
 ## Utilizzo della CA per distribuire un ordinante o un peer
 {: #ca-operate-deploy-orderer-peer}
 
-Prima di distribuire un ordinante o un peer, devi creare un file JSON di configurazione che contiene le informazioni importanti sull'identità del componente e la tua CA. Successivamente, devi passare questo file al grafico Helm durante la configurazione utilizzando un oggetto [segreto Kubernetes ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://kubernetes.io/docs/concepts/configuration/secret/). Questo file consente al tuo ordinante o peer di ottenere i certificati di cui ha bisogno dalla CA per aderire a una rete blockchain. Questo file contiene inoltre un certificato di amministrazione che ti consente di utilizzare il tuo componente come un utente amministratore.
+Prima di distribuire un ordinante o un peer, devi creare un file JSON di configurazione che contiene le informazioni importanti sull'identità del componente e la tua CA. Successivamente, devi passare questo file al grafico Helm durante la configurazione utilizzando un oggetto [segreto Kubernetes ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://kubernetes.io/docs/concepts/configuration/secret/). Questo file consente al tuo ordinante o peer di ottenere i certificati di cui ha bisogno dalla CA per aderire a una rete blockchain. Questo file contiene inoltre un certificato di gestione che ti consente di utilizzare il tuo componente come un utente amministratore.
 
 Le seguenti istruzioni ti forniscono un [file di configurazione JSON template](/docs/services/blockchain/howto/CA_operate.html#ca-operate-config-file-template) che puoi modificare e salvare sul tuo file system locale e che ti guida su come utilizzare la tua CA per completare questo file.
 
 - Attieniti alle seguenti istruzioni se stai distribuendo un ordinante su {{site.data.keyword.cloud_notm}} Private o un peer per la connessione a un consorzio ospitato su {{site.data.keyword.cloud_notm}} Private.
-- Se vuoi distribuire un peer per la connessione al piano Starter o Enterprise, segui invece le istruzioni sulla [Distribuzione dei peer in IBM Cloud Private per il collegamento al piano Starter o Enterprise](/docs/services/blockchain/howto/peer_deploy_icp.html#icp-peer-deploy). Questi passi illustrano come utilizzare la CA su {{site.data.keyword.blockchainfull_notm}} Platform per distribuire il nostro peer su {{site.data.keyword.cloud_notm}} Private.
+- Se vuoi distribuire un peer per la connessione al piano Starter o Enterprise, segui invece le istruzioni sulla [Distribuzione dei peer in IBM Cloud Private per il collegamento al piano Starter o Enterprise](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy). Questi passi illustrano come utilizzare la CA su {{site.data.keyword.blockchainfull_notm}} Platform per distribuire il nostro peer su {{site.data.keyword.cloud_notm}} Private.
 
 ### File di configurazione
 {: #ca-operate-config-file-template}
@@ -358,7 +360,7 @@ Dopo aver richiamato le tue informazioni di connessione della CA (Certificate Au
 
 Se vuoi formare un consorzio distribuendo un sevizio ordini e aggiungendogli delle organizzazioni, oppure per distribuire i peer e unirli ai canali, devi prima registrare l'identità del componente con la tua CA. La distribuzione del tuo componente può quindi generare i certificati necessari al peer o all'ordinante per partecipare a una rete.
 
-1. [Genera i certificati con il tuo amministratore CA](/docs/services/blockchain/howto/CA_operate.html#ca-operate-enroll-ca-admin) utilizzando il client CA Fabric. Utilizza questi certificati di amministrazione per emettere i seguenti comandi. Assicurati che `$FABRIC_CA_CLIENT_HOME` sia impostato su `$HOME/fabric-ca-client/ca-admin`.
+1. [Genera i certificati con il tuo amministratore CA](/docs/services/blockchain/howto/CA_operate.html#ca-operate-enroll-ca-admin) utilizzando il client CA Fabric. Utilizza questi certificati di gestione per emettere i seguenti comandi. Assicurati che `$FABRIC_CA_CLIENT_HOME` sia impostato su `$HOME/fabric-ca-client/ca-admin`.
 
   ```
   echo $FABRIC_CA_CLIENT_HOME
@@ -406,7 +408,7 @@ Se vuoi formare un consorzio distribuendo un sevizio ordini e aggiungendogli del
     "enrollsecret": "peer1pw",
   ```
 
-  Puoi registrare un'entità solo una volta. Se riscontri un problema, prova un comando con un nuovo nome utente e password. Come misura di sicurezza, utilizza ogni identità, e l'ID registrazione e il segreto di accompagnamento, per distribuire solo un singolo peer. Mentre puoi utilizzare un'identità **amministratore** per diversi componenti (questa è la nostra strategia di distribuzione consigliata), non riutilizzare gli ID e le password del peer.
+  Puoi registrare un'entità solo una volta. Se riscontri un problema, prova un comando con un nuovo nome utente e password. Come misura di sicurezza, utilizza ogni identità e l'enrollID e il segreto di accompagnamento, per distribuire solo un peer. Mentre puoi utilizzare un'identità **amministratore** per diversi componenti (questa è la nostra strategia di distribuzione consigliata), non riutilizzare gli ID e le password del peer.
 
   Se il comando viene completato correttamente, dovresti visualizzare informazioni simili al seguente esempio:
 
@@ -420,7 +422,7 @@ Se vuoi formare un consorzio distribuendo un sevizio ordini e aggiungendogli del
 #### Registrazione dell'amministratore
 {: #ca-operate-register-admin}
 
-Dopo aver registrato il componente, devi anche creare un'identità amministratore che puoi utilizzare per gestire il componente. Per prima cosa, devi registrare questa nuova identità con la tua CA e utilizzarla per generare una cartella MSP. Successivamente, devi aggiungere il signCert degli utenti amministratore al file di configurazione, dove verrà creato un certificato di amministrazione dell'ordinante o del peer durante la distribuzione. Questo ti consente di utilizzare i certificati dell'identità amministratore per utilizzare la tua rete blockchain, come ad esempio per avviare un nuovo canale o per installare il chaincode sui tuoi peer.
+Dopo aver registrato il componente, devi anche creare un'identità amministratore che puoi utilizzare per gestire il componente. Per prima cosa, devi registrare questa nuova identità con la tua CA e utilizzarla per generare una cartella MSP. Successivamente, devi aggiungere il signCert degli utenti amministratore al file di configurazione, dove verrà creato un certificato di gestione dell'ordinante o del peer durante la distribuzione. Questo ti consente di utilizzare i certificati dell'identità amministratore per utilizzare la tua rete blockchain, come ad esempio per avviare un nuovo canale o per installare il chaincode sui tuoi peer.
 
 Devi creare solo un'identità amministratore per i componenti che appartengono alla tua organizzazione. Se stai distribuendo più peer o un ordinante, devi completare questa procedura solo una volta. Puoi utilizzare il signCert che hai generato per un componente per distribuire tutti i peer o l'ordinante.
 
@@ -463,7 +465,7 @@ Ad esempio:
 fabric-ca-client enroll -u https://peeradmin:peeradminpw@9.30.94.174:30167 --caname org1CA -M $HOME/fabric-ca-client/peer-admin/msp --tls.certfiles $HOME/fabric-ca-client/catls/tls.pem
 ```
 
-Dopo che questo comando è stato completato correttamente, genera una nuova cartella MSP nella directory che hai specificato utilizzando l'indicatore `-M`. Questa directory contiene i certificati che utilizzerai per gestire i tuoi componenti. Puoi verificare che il comando enroll abbia funzionato correttamente utilizzando un comando tree. Passa alla directory dove hai archiviato i tuoi certificati. Un comando tree dovrebbe generare un risultato simile alla seguente struttura:
+Dopo che questo comando è stato completato correttamente, genera una nuova cartella MSP nella directory che hai specificato utilizzando l'indicatore `-M`. Questa directory contiene i certificati che utilizzerai per gestire i tuoi componenti. Puoi verificare che il comando enroll abbia funzionato correttamente utilizzando un comando tree. Passa alla directory in cui hai archiviato i tuoi certificati. Un comando tree dovrebbe generare un risultato simile alla seguente struttura:
 
 
 ```
@@ -475,6 +477,8 @@ tree
 │   └── msp
 │       ├── cacerts
 │       │   └── 9-30-250-70-30395-SampleOrgCA.pem
+│       ├── IssuerPublicKey
+│       ├── IssuerRevocationPublicKey
 │       ├── keystore
 │       │   └── 2a97952445b38a6e0a14db134645981b74a3f93992d9ddac54cb4b4e19cdf525_sk
 │       ├── signcerts
@@ -505,6 +509,8 @@ tree
     └── msp
         ├── cacerts
         │   └── 9-30-250-70-30395-tlsca.pem
+        ├── IssuerPublicKey
+        ├── IssuerRevocationPublicKey
         ├── keystore
         │   └── 45a7838b1a91ddfe3d4d22a5a7f2639b868493bcce594af3e3ceb9c07899d117_sk
         ├── signcerts
@@ -606,7 +612,7 @@ Devi fornire un nome host della CSR per distribuire un ordinante o un peer. Ques
 
 #### Individuazione del valore dell'indirizzo IP proxy del cluster
 
-Se vuoi distribuire un ordinante o un peer sullo stesso cluster {{site.data.keyword.cloud_notm}} Private in cui hai distribuito la tua CA, assicurati di avere il ruolo di [Amministratore del cluster ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Cluster administrator roles and actions") sul cluster {{site.data.keyword.cloud_notm}} Private in cui sarà distribuito il peer o l'ordinante. Successivamente, immetti lo stesso IP proxy che hai utilizzato quando [hai configurato la tua CA](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-configuration-parms). Se vuoi distribuire l'ordinante o il peer su un cluster diverso, puoi richiamare il valore dell'indirizzo IP proxy del cluster dalla console {{site.data.keyword.cloud_notm}} Private completando la seguente procedura:
+Se vuoi distribuire un ordinante o un peer sullo stesso cluster {{site.data.keyword.cloud_notm}} Private in cui hai distribuito la tua CA, assicurati di avere il ruolo di [Amministratore del cluster ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/user_management/assign_role.html "Cluster administrator roles and actions") sul cluster {{site.data.keyword.cloud_notm}} Private in cui sarà distribuito il peer o l'ordinante. Successivamente, immetti lo stesso IP proxy che hai utilizzato quando [hai configurato la tua CA](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-configuration-parms). Se vuoi distribuire l'ordinante o il peer su un cluster diverso, puoi richiamare il valore dell'indirizzo IP proxy del cluster dalla console {{site.data.keyword.cloud_notm}} Private completando la seguente procedura:
 
 1. Accedi alla console {{site.data.keyword.cloud_notm}} Private. Nel pannello di navigazione di sinistra, fai clic su **Piattaforma** e quindi su **Nodi** per visualizzare i nodi definiti nel cluster.
 2. Fai clic sul nodo con il ruolo `proxy` e copia il valore dell'`IP host` dalla tabella.
@@ -696,7 +702,7 @@ Puoi lasciare gli altri campi vuoti. Salva questo file perché ne hai bisogno qu
 ## Membership Service Provider (MSP)
 {: #ca-operate-msp}
 
-I componenti di {{site.data.keyword.blockchainfull_notm}} Platform utilizzano le identità tramite gli MSP (Membership Service Provider). Le MSP associano i certificati emessi dalle CA ai ruoli e alle autorizzazioni. Per ulteriori informazioni sulle MSP, vedi [l'argomento sull'appartenenza nella documentazione di Hyperledger Fabric ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/latest/membership/membership.html "l'argomento sull'appartenenza nella documentazione di Hyperledger Fabric").
+I componenti di {{site.data.keyword.blockchainfull_notm}} Platform utilizzano le identità tramite gli MSP (Membership Service Provider). Le MSP associano i certificati emessi dalle CA ai ruoli e alle autorizzazioni. Per ulteriori informazioni sulle MSP, vedi [l'argomento sull'appartenenza nella documentazione di Hyperledger Fabric ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/membership/membership.html "l'argomento sull'appartenenza nella documentazione di Hyperledger Fabric").
 
 Le cartelle MSP devono avere una struttura definita in modo da essere utilizzate dai componenti Fabric. Il client CA Fabric stabilisce questa struttura creando le seguenti cartelle MSP:
 
@@ -715,7 +721,7 @@ Molti componenti Fabric contengono informazioni aggiuntive all'interno della pro
 - **admincerts:** questa cartella contiene l'elenco di amministratori per questa organizzazione o questo componente. Devi caricare il tuo signCert in questa cartella se stai gestendo un peer remoto dalla riga di comando o dagli SDK. Se utilizzi il client CA Fabric, hai bisogno anche di una cartella admincerts nella tua MSP che contiene il signCert corrispondente che deve essere riconosciuto come certificato di amministrazione.
 - **tls:** questa è una cartella in cui memorizzi i certificati TLS utilizzati per la comunicazione con altri componenti di rete.
 
-Per ulteriori informazioni sulla struttura dei MSP, vedi [Membership ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/latest/membership/membership.html "Membership") e [Membership Service Providers ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/latest/msp.html "Membership Service Providers") nella documentazione di Hyperledger Fabric.
+Per ulteriori informazioni sulla struttura dei MSP, vedi [Membership ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/membership/membership.html "Membership") e [Membership Service Providers ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/msp.html "Membership Service Providers") nella documentazione di Hyperledger Fabric.
 
 
 ## Visualizzazione dei log CA
@@ -739,7 +745,7 @@ Per ulteriori informazioni sulla struttura dei MSP, vedi [Membership ![Icona lin
 
    Per ulteriori informazioni sul comando `kubectl logs`, vedi la [documentazione di Kubernetes ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#logs “Getting Started”)
 
-- In alternativa, puoi accedere ai log e agli eventi di distribuzione utilizzando la [console di gestione del cluster {{site.data.keyword.cloud_notm}} Private](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/troubleshoot/events.html), che apre i log in Kibana.
+- In alternativa, puoi accedere ai log e agli eventi di distribuzione utilizzando la [console di gestione del cluster {{site.data.keyword.cloud_notm}} Private](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/troubleshoot/events.html), che apre i log in Kibana.
 
   **Nota:** quando visualizzi i tuoi log in Kibana, potresti ricevere la risposta `No results found`. Questa condizione può verificarsi se {{site.data.keyword.cloud_notm}} Private utilizza l'indirizzo IP del tuo nodo di lavoro come suo nome host. Per risolvere questo problema, rimuovi il filtro che inizia con `node.hostname.keyword` nella parte superiore del pannello e i log diventeranno visibili.
 

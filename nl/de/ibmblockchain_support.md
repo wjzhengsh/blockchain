@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-17"
 
 subcollection: blockchain
 
@@ -36,7 +36,7 @@ Wenn sich Ihr Problem nicht mithilfe der [kostenlosen digitalen Unterstützungsr
     Reichen Sie Probleme in die [{{site.data.keyword.blockchainfull_notm}} Platform-Erweiterung für Visual Studio Code](https://github.com/IBM-Blockchain/blockchain-vscode-extension/issues "{{site.data.keyword.blockchainfull_notm}} Platform Visual Studio Code extension") ein.
 
 - **{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private**
-  Falls Sie eine Lizenz für {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private erworben haben und sich mit der Kundenunterstützung in Verbindung setzen wollen, erhalten Sie unter [Zugreifen auf IBM Support Community und Öffnen eines Support-Tickets ![External link icon](images/external_link.svg "External link icon")](http://www.ibm.com/support/docview.wss?uid=ibm10740041 "{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private Support") mehr Informationen.
+  Falls Sie eine Lizenz für {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private erworben haben und sich mit der Kundenunterstützung in Verbindung setzen wollen, erhalten Sie unter [Zugreifen auf IBM Support Community und Öffnen eines Support-Tickets ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](http://www.ibm.com/support/docview.wss?uid=ibm10740041 "{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private Support") mehr Informationen.
 
   Bei Problemen im Zusammenhang mit {{site.data.keyword.cloud_notm}} Private können Sie [sowohl den kostenlosen als auch den gebührenpflichtigen Support von {{site.data.keyword.cloud_notm}} Private ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://www.ibm.com/developerworks/community/blogs/fe25b4ef-ea6a-4d86-a629-6f87ccf4649e/entry/Learn_more_about_IBM_Cloud_Private_Support?lang=en_us "IBM Cloud Private - Support") nutzen.
 
@@ -54,14 +54,14 @@ Wenn sich Ihr Problem nicht mithilfe der [kostenlosen digitalen Unterstützungsr
 **{{site.data.keyword.blockchainfull_notm}}-Servicedokumente**
   Die [{{site.data.keyword.blockchainfull_notm}}-Servicedokumente](/docs/services/blockchain/index.html#get-started-ibp) bieten Anleitungen für den Einstieg in {{site.data.keyword.blockchainfull_notm}} Platform. Die entsprechenden Themen können Sie über den Navigator auf der linken Seite aufrufen oder Sie können in der Suchfunktion im oberen Bereich einen Suchbegriff eingeben.
 
-**{{site.data.keyword.IBM_notm}} dWAnswers**:
-[{{site.data.keyword.IBM_notm}} dWAnswers ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://developer.ibm.com/answers/smartspace/blockchain/ "Fragen und Antworten zu Blockchains") ist ein Community-Forum für Benutzer von {{site.data.keyword.blockchainfull_notm}} Platform und Hyperledger Fabric, das unter anderem durch {{site.data.keyword.IBM_notm}} Experten betreut wird. Sie können in diesem Forum nach Antworten auf bereits gestellte Fragen suchen oder eine neue Frage stellen. Achten Sie darauf, das Stichwort **blockchain** in Ihrer neuen Frage zu verwenden.
+**{{site.data.keyword.IBM_notm}} dWAnswers**
+  [{{site.data.keyword.IBM_notm}} dWAnswers ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://developer.ibm.com/answers/smartspace/blockchain/index.html "Fragen und Antworten zu Blockchains") ist ein Community-Forum für Benutzer von {{site.data.keyword.blockchainfull_notm}} Platform und Hyperledger Fabric, das unter anderem von {{site.data.keyword.IBM_notm}} Experten betreut wird. Sie können in diesem Forum nach Antworten auf bereits gestellte Fragen suchen oder eine neue Frage stellen. Achten Sie darauf, das Stichwort **blockchain** in Ihrer neuen Frage zu verwenden.
 
 **Beispielanwendungen**:
 Der Abschnitt [Beispielanwendungen ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://github.com/ibm-blockchain "IBM Blockchain-Beispielanwendungen") unter **Blockchain-Beispielanwendungen** bietet Anleitungen und Beispielcodeausschnitte, die Sie bei der Entwicklung von Anwendungen unterstützen.
 
-**Hyperledger Fabric-Ressourcen**:
-Die [Hyperledger Fabric-Dokumentation ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric.readthedocs.io/en/latest/ "Hyperledger Fabric"), das [Fabric-Community-Wiki ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://wiki.hyperledger.org/projects/fabric "Fabric Community Wiki") und das [Fabric-Jira-Dashboard ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://jira.hyperledger.org/secure/Dashboard.jspa?selectPageId=10104 "Fabric Jira Dashboard") stellen weitere Details über den Fabric-Stack zur Verfügung.
+**Hyperledger Fabric-Ressourcen**
+  [Dokumentation zu Hyperledger Fabric ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/ "Hyperledger Fabric"), das [Fabric-Community-Wiki ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://wiki.hyperledger.org/display/fabric "Fabric-Community-Wiki") und das [Fabric Jira-Dashboard ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://jira.hyperledger.org/secure/Dashboard.jspa?selectPageId=10104 "Fabric Jira-Dashboard") bieten weitere Details zum Fabric-Stack.
 
   Auf dem Kanal [Rocket.Chat ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://chat.hyperledger.org/channel/fabric "Fabric-Kanal 'Rocket.Chat'") können Sie sich auch mit einem Fabric-Experten in Verbindung setzen und Antworten auf Fragen über Fabric erhalten.
 
@@ -71,7 +71,7 @@ Da {{site.data.keyword.IBM_notm}} für die Verwendung von Hyperledger Composer z
 ## Supportfälle einreichen
 {: #blockchain-support-cases}
 
-Bei Problemen im Zusammenhang mit dem Starter Plan oder Enterprise Plan können Sie im [Serviceportal von {{site.data.keyword.cloud_notm}} ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://ibm.biz/ibmcloudsupport "Serviceportal von IBM Cloud") einen Supportfall einreichen.
+Bei Problemen im Zusammenhang mit dem Starter oder Enterprise Plan können Sie unter [{{site.data.keyword.cloud_notm}}-Serviceportal ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://cloud.ibm.com/unifiedsupport/supportcenter "Support") einen Supportfall übergeben.
 
 Wenn Sie Hilfe zum Hyperledger Fabric-Chaincode, zu Hyperledger Composer oder Ihren Anwendungen benötigen, nutzen Sie die oben genannten Community-Ressourcen oder verwenden Sie die [{{site.data.keyword.blockchainfull_notm}}-Services ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://www.ibm.com/blockchain/services "Turn your blockchain strategy into business outcomes with {{site.data.keyword.blockchainfull_notm}} Services"). Es wird empfohlen, Hyperledger Composer ausschließlich für Demos und Machbarkeitsnachweise zu verwenden. {{site.data.keyword.IBM_notm}} bietet keinen Support für Netze, die Hyperledger Composer in Produktionsumgebungen nutzen, inklusive Composer-Befehlszeilenschnittstelle, JavaScript-APIs, REST-Server und Web Playground.
 {:note}
@@ -88,7 +88,7 @@ Die Antwort auf Ihren Supportfall richtet sich nach Ihrem [{{site.data.keyword.c
 
 Führen Sie die folgenden Schritte aus, um einen Supportfall zu übergeben.
 
-1. Melden Sie sich beim [Serviceportal von {{site.data.keyword.cloud_notm}} ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://ibm.biz/ibmcloudsupport "Serviceportal von IBM Cloud") mit Ihrer {{site.data.keyword.IBM_notm}} an.
+1. Melden Sie sich mit Ihrer {{site.data.keyword.IBM_notm}}-ID unter [{{site.data.keyword.cloud_notm}}-Serviceportal ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://cloud.ibm.com/unifiedsupport/supportcenter "Support") an.
 2. Klicken Sie unter **Sie benötigen weitere Hilfe?** auf der rechten Seite der Seite auf **Erstellen Sie einen Fall**.
 3. Füllen Sie das Formular **Fall erstellen** mit Ihren Informationen mindestens in den folgenden Feldern aus.
   - Wählen Sie als Falltyp **Technisch** aus.

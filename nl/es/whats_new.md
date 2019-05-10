@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -19,6 +19,18 @@ subcollection: blockchain
 
 # Novedades
 {: #whats-new}
+
+## 23 de abril de 2019
+{: #whats-new-4-17-2019}
+
+Se publica la v1.0.2 de {{site.data.keyword.blockchainfull_notm}} Platform para {{site.data.keyword.cloud_notm}} Private, que utiliza el código base de Hyperledger Fabric v1.4.0 y admite el despliegue en {{site.data.keyword.cloud_notm}} Private v3.1.2.
+
+Si desea actualizar la {{site.data.keyword.blockchainfull_notm}} Platform para
+{{site.data.keyword.cloud_notm}} Private existente a v1.0.2, consulte [Actualización del diagrama de Helm en {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/howto/helm_install_icp.html#helm-install-upgrading).
+
+Para obtener más información sobre Hyperledger Fabric v1.4.0, consulte
+[Documentación de Hyperledger Fabric ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/ "Documentación de Hyperledger Fabric v1.4"). Para obtener más información sobre {{site.data.keyword.cloud_notm}} Private, consulte
+[Documentación de {{site.data.keyword.cloud_notm}} Private v3.1.2 ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/kc_welcome_containers.html "Documentación de {{site.data.keyword.cloud_notm}} Private v3.1.2").
 
 ## 8 de febrero de 2019
 {: #whats-new-2-08-2019}

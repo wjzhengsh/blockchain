@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2019
-lastupdated: "2019-03-05"
+  years: 2018, 2019
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -20,7 +20,7 @@ subcollection: blockchain
 # {{site.data.keyword.cloud_notm}} Private でのピアのデプロイ
 {: #icp-peer-deploy}
 
-以下の手順では、{{site.data.keyword.cloud_notm}} Private に {{site.data.keyword.blockchainfull}} Platform ピアをデプロイする方法を説明します。 これらの手順に従って、{{site.data.keyword.cloud_notm}} Private 上の {{site.data.keyword.blockchainfull_notm}} Platform に接続できます。 {{site.data.keyword.cloud_notm}} 上のスターター・プラン・ネットワークまたはエンタープライズ・プラン・ネットワークにピアを接続するには、[スターター・プランまたはエンタープライズ・プランに接続するためのピアのデプロイ](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy)を参照してください。
+以下の手順では、{{site.data.keyword.cloud_notm}} Private に {{site.data.keyword.blockchainfull}} Platform ピアをデプロイする方法を説明します。 これらの手順に従って、{{site.data.keyword.cloud_notm}} Private 上の {{site.data.keyword.blockchainfull_notm}} Platform コンポーネントに接続できます。 {{site.data.keyword.cloud_notm}} 上のスターター・プラン・ネットワークまたはエンタープライズ・プラン・ネットワークにピアを接続するには、[スターター・プランまたはエンタープライズ・プランに接続するためのピアのデプロイ](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy)を参照してください。
 {:shortdesc}
 
 ピアをデプロイする前に、[考慮事項と制限](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-about-considerations)を確認してください。
@@ -34,7 +34,7 @@ subcollection: blockchain
 | コンポーネント | vCPU | RAM | データ・ストレージ用ディスク |
 |-----------|------|-----|-----------------------|
 | ピア | 2 | 2 GB | 50 GB (拡張可能であること) |
-| ピア用 CouchDB | 2| 2 GB |50 GB (拡張可能であること) |
+| ピア用 CouchDB<br>(CouchDB を使用する場合だけに該当) | 2| 2 GB | 50 GB (拡張可能であること) |
 
  **注:**
  - vCPU は仮想マシンに割り当てられる仮想コアであるか、サーバーが仮想マシン用にパーティション化されていない場合は物理プロセッサー・コアです。 {{site.data.keyword.cloud_notm}} Private でのデプロイメントの仮想プロセッサー・コア (VPC) を決定する場合は、vCPU 要件を考慮する必要があります。 VPC は IBM 製品のライセンス交付コストを決定する単位です。 VPC を決定するシナリオについて詳しくは、[仮想プロセッサー・コア (VPC) ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/en/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_virtual_processor_core_licenses.html "IBM Licence Metric Tool 9.2") を参照してください。
@@ -56,11 +56,11 @@ subcollection: blockchain
 
 1. {{site.data.keyword.cloud_notm}} Private にピアをインストールするには、その前に[{{site.data.keyword.cloud_notm}} Private をインストール](/docs/services/blockchain/ICP_setup.html#icp-setup)し、[{{site.data.keyword.blockchainfull_notm}} Platform Helm チャートをインストール](/docs/services/blockchain/howto/helm_install_icp.html#helm-install)する必要があります。
 
-2. Community Edition を使用しており、インターネットに接続されていない {{site.data.keyword.cloud_notm}} Private クラスター上でこの Helm チャートを実行する場合は、アーカイブを {{site.data.keyword.cloud_notm}} Private クラスターにインストールするためには、インターネットに接続されたマシン上でそれらのアーカイブを事前に作成する必要があります。 詳しくは、[インターネット接続がないクラスターへのフィーチャー・アプリケーションの追加 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_package_offline.html "インターネット接続がないクラスターへのフィーチャー・アプリケーションの追加"){:new_window} を参照してください。 仕様ファイル `manifest.yaml` は、Helm チャート内の `ibm-blockchain-platform-dev/ibm_cloud_pak` にあります。
+2. Community Edition を使用しており、インターネットに接続されていない {{site.data.keyword.cloud_notm}} Private クラスター上でこの Helm チャートを実行する場合は、アーカイブを {{site.data.keyword.cloud_notm}} Private クラスターにインストールするためには、インターネットに接続されたマシン上でそれらのアーカイブを事前に作成する必要があります。 詳しくは、[インターネット接続がないクラスターへのフィーチャー・アプリケーションの追加 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/app_center/add_package_offline.html "インターネット接続がないクラスターへのフィーチャー・アプリケーションの追加"){:new_window} を参照してください。 仕様ファイル `manifest.yaml` は、Helm チャート内の `ibm-blockchain-platform-dev/ibm_cloud_pak` にあります。
 
 3. まず {{site.data.keyword.cloud_notm}} Private に [CA をデプロイ](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy)する必要があります。 この CA を使用して[ピア構成ファイルを作成して、このファイルを Kubernetes 秘密として {{site.data.keyword.cloud_notm}} Private に保管](/docs/services/blockchain/howto/peer_deploy_icp.html#icp-peer-deploy-config-file)する必要があります。
 
-4. {{site.data.keyword.cloud_notm}} Private コンソールから、CA のクラスター・プロキシー IP アドレスの値を取得します。 **注:** プロキシー IP にアクセスするには、[クラスター管理者 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "クラスター管理者役割とアクション") である必要があります。 {{site.data.keyword.cloud_notm}} Private クラスターにログインします。 左側のナビゲーション・パネルで**「プラットフォーム」**、**「ノード」**の順にクリックし、クラスターで定義されているノードを表示します。 `proxy` 役割を持つノードをクリックし、テーブルから`「ホスト IP」`の値をコピーします。 **重要:** この値を保存して、Helm チャートの`「プロキシー IP (Proxy IP)」`フィールドを構成する際に使用します。
+4. {{site.data.keyword.cloud_notm}} Private コンソールから、CA のクラスター・プロキシー IP アドレスの値を取得します。 **注:** プロキシー IP にアクセスするには、[クラスター管理者 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/user_management/assign_role.html "クラスター管理者役割とアクション") である必要があります。 {{site.data.keyword.cloud_notm}} Private クラスターにログインします。 左側のナビゲーション・パネルで**「プラットフォーム」**、**「ノード」**の順にクリックし、クラスターで定義されているノードを表示します。 `proxy` 役割を持つノードをクリックし、テーブルから`「ホスト IP」`の値をコピーします。 **重要:** この値を保存して、Helm チャートの`「プロキシー IP (Proxy IP)」`フィールドを構成する際に使用します。
 
 
 ## ピア構成の秘密の作成
@@ -110,7 +110,7 @@ LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tDQpNSUlFbERDQ0EzeWdBd0lCQWdJUUFmMmo2MjdL
 
 3. **「一般」**タブで、以下のフィールドに次のように入力します。
   - **名前:** 秘密にクラスター内で固有の名前を付けます。 この名前は、ピアをデプロイするときに使用します。 名前はすべて小文字でなければなりません。  
-  **注:** ピアをデプロイすると、デプロイメントによって `<helm_release_name>-secret` という名前で新規秘密が自動的に生成されます。 したがって、秘密には、`<helm_release_name>-secret` とは異なる名前を指定するようにしてください。 そうしないと、作成しようとする秘密が既に存在するため Helm チャートのデプロイメントが失敗します。
+  **注:** ピアをデプロイすると、デプロイメントによって `<helm release name you intend to use>-secret` という名前で新規秘密が自動的に生成されます。 したがって、この秘密には、`<helm release name you intend to use>-secret` とは異なる名前を指定するようにしてください。 そうしないと、作成しようとする秘密が既に存在するため Helm チャートのデプロイメントが失敗します。
   - **名前空間:** 秘密を追加する名前空間。 ピアのデプロイ先となる `namespace` を選択します。
   - **タイプ:** 値`「不透明 (Opaque)」`を入力します。
 
@@ -157,8 +157,10 @@ LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tDQpNSUlFbERDQ0EzeWdBd0lCQWdJUUFmMmo2MjdL
 
 |  パラメーター     | 説明    | デフォルト  | 必須 |
 | --------------|-----------------|-------|------- |
+|**一般パラメーター**| Helm チャートを構成するパラメーター | | |
 | `Helm リリース名 (Helm release name)`| Helm リリースの名前。 小文字で始まり、任意の英数字で終わる必要があり、ハイフンと小文字の英数字のみを含む必要があります。 コンポーネントのインストールを試行するたびに固有の Helm リリース名を使用する必要があります。 **重要:** この値は、[JSON 秘密ファイル](/docs/services/blockchain/howto/peer_deploy_icp.html#icp-peer-deploy-config-file)の「hosts」フィールドで「サービス・ホスト名」を生成する際に使用した値と一致する必要があります。 | なし | はい |
 | `ターゲット名前空間 (Target namespace)`| Helm チャートをインストールする Kubernetes 名前空間を選択します。 | なし | はい |
+| `ターゲット名前空間のポリシー (Target namespace policies)`| 選択した名前空間のポッド・セキュリティー・ポリシーが表示されます。**`ibm-privileged-psp`** ポリシーが含まれているはずです。そうでない場合は、その名前空間に [PodSecurityPolicy をバインド](/docs/services/blockchain?topic=blockchain-icp-setup#icp-setup-psp)してください。| なし | いいえ |
 |**グローバル構成 (Global configuration)**| Helm チャート内のすべてのコンポーネントに適用されるパラメーター|||
 | `サービス・アカウント名 (Service account name)`| ポッドの実行に使用する[サービス・アカウント ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/) の名前を入力します。 | デフォルト | いいえ |
 
@@ -171,8 +173,8 @@ LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tDQpNSUlFbERDQ0EzeWdBd0lCQWdJUUFmMmo2MjdL
 | `ピアのインストール (Install Peer)` | ピアをインストールするために選択します。|チェック・マークなし | はい (ピアをデプロイする場合) |
 | `ピア・ワーカー・ノード・アーキテクチャー (Peer worker node architecture)`| クラウド・プラットフォーム・アーキテクチャーを選択します (AMD64 または S390x)| AMD64 | はい |
 | `ピア・イメージ・リポジトリー (Peer image repository)`| ピア Helm チャートの場所。 このフィールドにはインストール・パスが自動入力されます。 | ibmcom/ibp-fabric-peer | はい |
-| `ピア Docker イメージ・タグ (Peer Docker image tag)`|ピア・イメージに関連付けられたタグの値。 |1.2.1 (正しい値が自動入力されます)|はい|
-| `ピア構成 (Peer configuration)`| 独自の `core.yaml` 構成ファイルをこのフィールドに貼り付けることで、ピアの構成をカスタマイズできます。 サンプルの `core.yaml` ファイルを表示するには、[`core.yaml` のサンプル構成 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://github.com/hyperledger/fabric/blob/release-1.2/sampleconfig/core.yaml) を参照してください。**上級者専用**。 | なし | いいえ |
+| `ピア Docker イメージ・タグ (Peer Docker image tag)`|ピア・イメージに関連付けられたタグの値。 |1.4.0 (正しい値が自動入力されます)|はい|
+| `ピア構成 (Peer configuration)`| 独自の `core.yaml` 構成ファイルをこのフィールドに貼り付けることで、ピアの構成をカスタマイズできます。 サンプルの `core.yaml` ファイルを表示するには、[`core.yaml` のサンプル構成 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://github.com/hyperledger/fabric/blob/release-1.4/sampleconfig/core.yaml) を参照してください。**上級者専用**。 | なし | いいえ |
 | `ピア構成の秘密 (Peer configuration secret) (必須)`|{{site.data.keyword.cloud_notm}} Private 内で作成した[ピア構成の秘密](/docs/services/blockchain/howto/peer_deploy_icp.html#icp-peer-deploy-config-file)の名前。 | なし | はい |
 |`組織 MSP (Organization MSP) (必須)`| 「org1」などの新しい組織 MSPID 値を作成することも、ピアの所属先となる既存の組織 MSP を指定することもできます。 順序付けプログラム組織をデプロイした場合は、どのピアの MSPID も順序付けプログラムの MSPID とは異なる値になるようにしてください。 また、この値は後で `CORE_PEER_LOCALMSPID` および `configtx.yaml` 用に必要になるため、この値をメモしておいてください。 | なし | はい |
 |`ピア・サービス・タイプ (Peer service type)`| ピアで[外部ポートを公開 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types) するかどうかを指定するために使用します。 ポートを外部に対して公開する場合は NodePort を選択し (推奨)、ポートを公開しない場合は ClusterIP を選択します。 LoadBalancer および ExternalName はこのリリースではサポートされていません。 | NodePort | はい |
@@ -197,6 +199,14 @@ LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tDQpNSUlFbERDQ0EzeWdBd0lCQWdJUUFmMmo2MjdL
 | `状態データベースのボリューム・クレーム・サイズ (State database volume claim size)`| 使用するディスクのサイズを選択します。 | 8Gi | はい |
 | `CouchDB - データの永続性が有効 (CouchDB - Data persistence enabled)`| CouchDB コンテナーの場合は、コンテナーの再始動時に台帳データが使用可能になります。 *チェック・マークを外すと、フェイルオーバーやポッドの再始動の場合にすべてのデータが失われます。*| オン | いいえ |
 | `CouchDB - 動的プロビジョニングを使用 (CouchDB - Use dynamic provisioning)`| CouchDB コンテナーの場合は、Kubernetes 動的ストレージを使用します。| オン | いいえ |
+| `Docker-in-Docker CPU 要求 (Docker-in-Docker CPU request)`| チェーンコードを実行するコンテナーに割り振る CPU の最小数を指定します。| 1 | はい |
+| `Docker-in-Docker CPU 制限 (Docker-in-Docker CPU limit)`| チェーンコードを実行するコンテナーに割り振る CPU の最大数を指定します。| 2 | はい |
+| `Docker-in-Docker メモリー要求 (Docker-in-Docker memory request)`| チェーンコードを実行するコンテナーに割り振るメモリーの最小量を指定します。| 1Gi | はい |
+| `Docker-in-Docker メモリー制限 (Docker-in-Docker memory limit)`| チェーンコードを実行するコンテナーに割り振るメモリーの最大量を指定します。| 4Gi | はい |
+| `gRPC Web プロキシー CPU 要求 (gRPC web proxy CPU request)`| gRPC Web プロキシーに割り振る CPU の最小数 (millicpu (m) 単位) を指定します。| 100m | はい |
+| `gRPC Web プロキシー CPU 制限 (gRPC web proxy CPU limit)`| gRPC Web プロキシーに割り振る CPU の最大数 (millicpu (m) 単位) を指定します。| 200m | はい |
+| `gRPC Web プロキシー・メモリー要求 (gRPC web proxy memory request)`| gRPC Web プロキシーに割り振る最小メモリー量を指定します。 | 100Mi | はい |
+| `gRPC Web プロキシー・メモリー制限 (gRPC web proxy memory limit)`| gRPC Web プロキシーに割り振る最大メモリー量を指定します。 | 200Mi | はい |
 | `ピア CPU 要求 (Peer CPU request)` | ピアに割り当てる CPU の最小数。 | 1 | はい |
 | `ピア CPU 制限 (Peer CPU limit)` | ピアに割り当てる CPU の最大数。| 2 | はい |
 | `ピア・メモリー要求 (Peer Memory request)` | ピアに割り当てるメモリーの最小量。 | 1Gi | はい |
@@ -224,7 +234,7 @@ processes. This container has two volume mounts, one for the Peer PVC and the se
 ### Helm コマンド・ラインを使用した Helm リリースのインストール
 {: #icp-peer-deploy-helm-cli}
 
-また、`helm` CLI を使用して Helm リリースをインストールすることもできます。 `helm install` コマンドを実行する前に、[Helm CLI 環境にクラスターの Helm リポジトリーを追加 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_int_helm_repo_to_cli.html "Helm CLI への内部 Helm リポジトリーの追加") してください。
+また、`helm` CLI を使用して Helm リリースをインストールすることもできます。 `helm install` コマンドを実行する前に、[Helm CLI 環境にクラスターの Helm リポジトリーを追加 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/app_center/add_int_helm_repo_to_cli.html "Helm CLI への内部 Helm リポジトリーの追加") してください。
 
 インストールに必要なパラメーターを設定するには、`yaml` ファイルを作成し、以下の `helm install` コマンドにこれを渡します。
 ```

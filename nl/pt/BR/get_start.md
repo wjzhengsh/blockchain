@@ -38,7 +38,7 @@ As etapas a seguir indicam o fluxo básico para ativar uma rede de Enterprise Pl
 
 Antes de iniciar, é necessário criar uma instância de serviço do [{{site.data.keyword.blockchain}} Platform ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://cloud.ibm.com/catalog/services/ibm-blockchain-5-prod) no {{site.data.keyword.cloud_notm}}. É necessário efetuar login com o seu ID do {{site.data.keyword.cloud_notm}}. Se você não tiver um ID, clique no botão **Inscreva-se para criar**. Renomeie o serviço e os nomes de credenciais para sua instância para que você possa reconhecê-lo facilmente no futuro. Selecione a região, a organização e o espaço do {{site.data.keyword.cloud_notm}}, na qual é possível implementar sua rede do {{site.data.keyword.blockchain}}. Em seguida, selecione **Plano de associação corporativa** na tabela de planos de precificação e clique no botão **Criar**.
 
-É possível localizar sua instância de serviço do {{site.data.keyword.blockchain}} Platform no painel de serviço do [ painel de serviço do {{site.data.keyword.cloud_notm}} ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://cloud.ibm.com/resources "{{site.data.keyword.cloud_notm}} ").
+É possível localizar sua instância de serviço do {{site.data.keyword.blockchain}} Platform em seu painel do serviço [{{site.data.keyword.cloud_notm}} ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://cloud.ibm.com/resources "Painel do serviço {{site.data.keyword.cloud_notm}}").
 
 Se você for um inicializador de rede, clique no botão **Criar rede** para iniciar uma rede do {{site.data.keyword.blockchain}}. Siga o assistente para concluir a configuração básica de sua rede e de seus recursos.
 ![Assistente de criação de rede](images/create_network_name.png "Assistente de criação de rede")
@@ -66,7 +66,7 @@ Agora você implementar com êxito uma rede do {{site.data.keyword.blockchain}} 
 
 Semelhante à criação de uma rede, é necessário criar uma instância de serviço do [{{site.data.keyword.blockchain}} Platform ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://cloud.ibm.com/catalog/services/ibm-blockchain-5-prod) no {{site.data.keyword.cloud_notm}}. É necessário efetuar login com o seu ID do {{site.data.keyword.cloud_notm}}. Se você não tiver um ID, clique no botão **Inscreva-se para criar**. Renomeie o serviço e os nomes de credenciais para sua instância para que você possa reconhecê-lo facilmente no futuro. Selecione a região, a organização e o espaço do {{site.data.keyword.cloud_notm}}, na qual é possível implementar sua rede do {{site.data.keyword.blockchain}}. Em seguida, selecione **Plano de associação corporativa** na tabela de planos de precificação e clique no botão **Criar**.
 
-É possível localizar sua instância de serviço do {{site.data.keyword.blockchain}} Platform no painel de serviço do [ painel de serviço do {{site.data.keyword.cloud_notm}} ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://cloud.ibm.com/resources "{{site.data.keyword.cloud_notm}} ").
+É possível localizar sua instância de serviço do {{site.data.keyword.blockchain}} Platform no painel do serviço [{{site.data.keyword.cloud_notm}} ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://cloud.ibm.com/resources "Painel do serviço {{site.data.keyword.cloud_notm}}").
 
 Se você for um membro de rede convidado, clique no botão **Convite pendente ->**, selecione a rede à qual você deseja se associar na lista suspensa e clique no botão **Associar-se à rede!** . Siga o assistente para visualizar a configuração básica de sua rede e configure os seus próprios recursos de rede.
 ![Assistente Associar-se à rede](images/join_network_name.png "Assistente Associar-se à rede")
@@ -98,7 +98,7 @@ Após você criar uma rede de Enterprise Plan no {{site.data.keyword.cloud_notm}
 
 ### Recuperando por meio da página da instância de serviço
 {: #getting-started-with-enterprise-plan-retrieve-svc-ins}
-Você estará na página da instância de serviço logo após criar uma instância de serviço. Também é possível clicar no serviço no painel de serviço do [{{site.data.keyword.cloud_notm}} ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://cloud.ibm.com/resources "{{site.data.keyword.cloud_notm}} painel de serviço do ") para abrir a página da sua instância de serviço.
+Você estará na página da instância de serviço logo após criar uma instância de serviço. Também é possível clicar em seu serviço no painel do serviço [{{site.data.keyword.cloud_notm}} ![Ícone de link externo](images/external_link.svg "Ícone de link externo")](https://cloud.ibm.com/resources "Painel do serviço {{site.data.keyword.cloud_notm}}") para abrir a página de sua instância de serviço.
 
 Recupere as suas credenciais de serviço com as etapas a seguir:
 1. Na página da instância de serviço, clique em **Credenciais de serviço** no navegador esquerdo para mostrar a tela "Credenciais de serviço".

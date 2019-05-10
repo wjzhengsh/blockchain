@@ -39,7 +39,7 @@ Vor der Installation der {{site.data.keyword.blockchainfull_notm}} Platform-Erwe
 
 - **Installation von Docker**
 
-  Damit die vorkonfigurierte Instanz von Hyperledger Fabric ausgeführt werden kann, müssen Sie sicherstellen, dass [Docker ![External link icon](images/external_link.svg "External link icon")](https://www.docker.com/) installiert ist.
+  Damit die vorkonfigurierte Instanz von Hyperledger Fabric ausgeführt werden kann, müssen Sie sicherstellen, dass [Docker ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://www.docker.com/) installiert ist.
 
 - **Betriebssystemvoraussetzungen**
 
@@ -56,7 +56,7 @@ Vor der Installation der {{site.data.keyword.blockchainfull_notm}} Platform-Erwe
 ## Erweiterung installieren
 {: #develop-vscode-installing-the-extension}
 
-1. Navigieren Sie zur [Seite mit dem Marktplatz für Visual Studio Code-Erweiterungen ![External link icon](images/external_link.svg "External link icon")](https://marketplace.visualstudio.com/items?itemName=IBMBlockchain.ibm-blockchain-platform) oder suchen Sie in der Visual Studio Code-Anzeige für Erweiterungen nach **{{site.data.keyword.blockchainfull_notm}} Platform**.
+1. Navigieren Sie zur [Seite mit dem Marktplatz für Visual Studio Code-Erweiterungen ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://marketplace.visualstudio.com/items?itemName=IBMBlockchain.ibm-blockchain-platform) oder suchen Sie in der Visual Studio Code-Anzeige für Erweiterungen nach **{{site.data.keyword.blockchainfull_notm}} Platform**.
 2. Klicken Sie auf **Installieren**.
 3. Starten Sie Visual Studio Code erneut, um die Installation der Erweiterung vollständig abzuschließen.
 
@@ -128,7 +128,7 @@ Mit der {{site.data.keyword.blockchainfull_notm}} Platform-Erweiterung für Visu
 
 **Hinweis:** Mit dem Enterprise Plan von  {{site.data.keyword.blockchainfull_notm}} Platform ist die Erweiterung gegenwärtig nicht kompatibel.
 
-1. alls Sie keine Starter Plan-Instanz von {{site.data.keyword.blockchainfull_notm}} Platform verfügen können Sie eine [erstellen ![External link icon](images/external_link.svg "External link icon")](https://cloud.ibm.com/catalog/services/ibm-blockchain-5-prod).
+1. alls Sie keine Starter Plan-Instanz von {{site.data.keyword.blockchainfull_notm}} Platform verfügen können Sie eine [erstellen ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://cloud.ibm.com/catalog/services/ibm-blockchain-5-prod).
 2. Öffnen Sie die {{site.data.keyword.blockchainfull_notm}} Platform-Benutzerschnittstelle, indem Sie auf **Starten** klicken.
 3. Klicken Sie auf **Übersicht** > **Verbindungsprofil** > **Herunterladen**, um Ihr Verbindungsprofil abzurufen.
 4. Generieren Sie die erforderlichen Administratorzertifikate; klicken Sie hierzu auf **Zertifizierungsstelle** > **Zertifikat generieren** und speichern Sie anschließend das Zertifikat und den privaten Schlüssel in Ihrem Dateisystem.
@@ -147,7 +147,7 @@ Führen Sie zum Herstellen einer Verbindung zu Ihrer eigenen Hyperledger Fabric-
 2. Klicken Sie in der Anzeige **{{site.data.keyword.blockchainfull_notm}} Platform** auf **Neue Verbindung hinzufügen**.
 3. Geben Sie einen Namen für die Verbindung ein. Dieser Name wird in der Anzeige **{{site.data.keyword.blockchainfull_notm}} Platform** angezeigt.
 4. Geben Sie den vollständig qualifizierten Dateipfad Ihres Hyperledger Fabric-Verbindungsprofils ein.
-5. Wählen Sie entweder das vorhandene Dateisystem [Wallet ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/developapps/wallet.html "Wallet")aus, oder erstellen Sie ein neues Dateisystem "Wallet", indem Sie die Dateipfade des Zertifikats und des privaten Schlüssels für Ihre Fabric-Identität eingeben.
+5. Wählen Sie entweder das vorhandene Dateisystem [Wallet ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/developapps/wallet.html "Wallet")aus, oder erstellen Sie ein neues Dateisystem "Wallet", indem Sie die Dateipfade des Zertifikats und des privaten Schlüssels für Ihre Fabric-Identität eingeben.
 6. Ihre Verbindung sollte unter `local_fabric` in der Verbindungsliste angezeigt werden. Doppelklicken Sie auf den Verbindungsnamen, um eine Verbindung herzustellen.
 
 Falls noch keine Hyperledger Fabric-Instanz der Version 1.3.0 oder höher vorhanden ist, können Sie zum Herstellen der Verbindung die vorkonfigurierte Hyperledger Fabric-Instanz verwenden oder die folgenden Befehle ausführen, um die Images für Version 1.3.0 mit dem Befehl "pull" zu aktualisieren und mit dem Befehl "tag" Tags für das aktualisierte Image hinzuzufügen:
@@ -183,7 +183,7 @@ Durch die Bearbeitung einer Verbindung können Sie den Dateipfad für das Verbin
 
 So bearbeiten Sie eine Verbindung:
 
-1. Klicken Sie in der linken unteren Ecke der Erweiterung mit der rechten Maustaste auf die Verbindung, die Sie bearbeiten möchten. Daraufhin wird ein Kontextmenü mit Optionen zum Hinzufügen einer Identität sowie zum Bearbeiten und zum Löschen der Verbindung geöffnet. 
+1. Klicken Sie in der linken unteren Ecke der Erweiterung mit der rechten Maustaste auf die Verbindung, die Sie bearbeiten möchten. Daraufhin wird ein Kontextmenü mit Optionen zum Hinzufügen einer Identität sowie zum Bearbeiten und zum Löschen der Verbindung geöffnet.
 2. Wählen Sie **Verbindung bearbeiten** aus.
 3. Die Seite **Benutzereinstellungen** wird geöffnet; hierbei sind die Verbindungsdetails hervorgehoben.
 4. Nehmen Sie die gewünschten Änderungen vor und speichern Sie die Seite mit den Einstellungen.
@@ -193,7 +193,7 @@ So bearbeiten Sie eine Verbindung:
 
 Verbindungen können wie folgt gelöscht werden:
 
-1. Klicken Sie in der linken unteren Ecke der Erweiterung mit der rechten Maustaste auf die Verbindung, die Sie bearbeiten möchten. Daraufhin wird ein Kontextmenü mit Optionen zum Hinzufügen einer Identität sowie zum Bearbeiten und zum Löschen der Verbindung geöffnet. 
+1. Klicken Sie in der linken unteren Ecke der Erweiterung mit der rechten Maustaste auf die Verbindung, die Sie bearbeiten möchten. Daraufhin wird ein Kontextmenü mit Optionen zum Hinzufügen einer Identität sowie zum Bearbeiten und zum Löschen der Verbindung geöffnet.
 2. Wählen Sie **Verbindung löschen** aus.
 3. Nun wird ein Dialogfeld angezeigt, in dem das Löschen der Verbindung bestätigt werden muss. Klicken Sie auf **Ja**.
 
@@ -202,11 +202,11 @@ Die Verbindung wird gelöscht.
 ## Identitäten hinzufügen
 {: #develop-vscode-adding-identities}
 
-Wenn Sie eine Verbindung hinzufügen, müssen Sie entweder eine vorhandene elektronische Brieftasche (Wallet) mit der Identität auswählen, die verwendet werden soll, oder eine neue elektronische Brieftasche erstellen, indem Sie das Zertifikat und den privaten Schlüssel für eine Identität verwenden. Weitere Informationen zu Wallets finden Sie im [Wallet-Abschnitt ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/developapps/wallet.html "Wallet") in der Fabric-Dokumentation.
+Wenn Sie eine Verbindung hinzufügen, müssen Sie entweder eine vorhandene elektronische Brieftasche (Wallet) mit der Identität auswählen, die verwendet werden soll, oder eine neue elektronische Brieftasche erstellen, indem Sie das Zertifikat und den privaten Schlüssel für eine Identität verwenden. Weitere Informationen zu Wallets finden Sie im [Wallet-Abschnitt ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/developapps/wallet.html "Wallet") in der Fabric-Dokumentation.
 
 So fügen Sie eine Identität zu einer bereits eingerichteten Verbindung hinzu:
 
-1. Klicken Sie in der linken unteren Ecke der Erweiterung mit der rechten Maustaste auf die Verbindung, die Sie bearbeiten möchten. Daraufhin wird ein Kontextmenü mit Optionen zum Hinzufügen einer Identität sowie zum Bearbeiten und zum Löschen der Verbindung geöffnet. 
+1. Klicken Sie in der linken unteren Ecke der Erweiterung mit der rechten Maustaste auf die Verbindung, die Sie bearbeiten möchten. Daraufhin wird ein Kontextmenü mit Optionen zum Hinzufügen einer Identität sowie zum Bearbeiten und zum Löschen der Verbindung geöffnet.
 2. Wählen Sie **Identität hinzufügen** aus.
 3. Wählen Sie eine vorhandene elektronische Brieftasche (Wallet) aus, die die Identität enthält, die hinzugefügt werden soll, oder erstellen Sie eine neue elektronische Brieftasche, indem Sie die Dateipfade der Zertifikate und des privaten Schlüssels angeben.
 

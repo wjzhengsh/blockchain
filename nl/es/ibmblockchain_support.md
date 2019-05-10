@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-17"
 
 subcollection: blockchain
 
@@ -62,7 +62,7 @@ Si el problema no se puede resolver mediante ninguno de los [recursos del soport
 **Documentación del servicio {{site.data.keyword.blockchainfull_notm}}**
   La [documentación del servicio {{site.data.keyword.blockchainfull_notm}}](/docs/services/blockchain/index.html#get-started-ibp) proporciona una guía para comenzar a trabajar con {{site.data.keyword.blockchainfull_notm}} Platform. Encontrará los temas correspondientes en el navegador izquierdo o buscando un término con la función de búsqueda situada en la parte superior.
 
-**{{site.data.keyword.IBM_notm}} dWAnswers** [{{site.data.keyword.IBM_notm}} dWAnswers ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://developer.ibm.com/answers/smartspace/blockchain/ "Preguntas y respuestas en el espacio de Blockchain") es un foro de la comunidad para usuarios de {{site.data.keyword.blockchainfull_notm}} Platform y de Hyperledger Fabric, supervisado por expertos de {{site.data.keyword.IBM_notm}} entre otros. Puede buscar respuestas a preguntas realizadas anteriormente o enviar una nueva pregunta. Asegúrese de incluir la palabra clave **blockchain** en la nueva pregunta.
+**{{site.data.keyword.IBM_notm}} dWAnswers** [{{site.data.keyword.IBM_notm}} dWAnswers ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://developer.ibm.com/answers/smartspace/blockchain/index.html "Preguntas y respuestas en el espacio de Blockchain") es un foro de la comunidad para usuarios de {{site.data.keyword.blockchainfull_notm}} Platform y de Hyperledger Fabric, supervisado por expertos de {{site.data.keyword.IBM_notm}} entre otros. Puede buscar respuestas a preguntas realizadas anteriormente o enviar una nueva pregunta. Asegúrese de incluir la palabra clave **blockchain** en la nueva pregunta.
 
 **Aplicaciones de ejemplo**
 Las [aplicaciones de ejemplo
@@ -70,7 +70,12 @@ Las [aplicaciones de ejemplo
 **Aplicaciones de ejemplo de Blockchain** proporcionan orientación y fragmentos de código de ejemplo que resultan de ayuda en el desarrollo de aplicaciones.
 
 **Recursos de Hyperledger Fabric**
-La [documentación de Hyperledger Fabric ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/latest/ "Hyperledger Fabric"), la [wiki de la comunidad de Fabric ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://wiki.hyperledger.org/projects/fabric "Wiki de la comunidad de Fabric") y el [panel de control Jira de Fabric ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://jira.hyperledger.org/secure/Dashboard.jspa?selectPageId=10104 "Panel de control Jira de Fabric") proporcionan más detalles sobre la pila de Fabric.
+  [Documentación de Hyperledger Fabric
+![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/ "Hyperledger Fabric"), la
+[Wiki de la comunidad de Fabric
+![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://wiki.hyperledger.org/display/fabric "Wiki de la comunidad de Fabric") y el
+[Panel de control de Fabric Jira
+![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://jira.hyperledger.org/secure/Dashboard.jspa?selectPageId=10104 "Panel de control de Fabric Jira") proporcionan más detalles sobre la pila de Fabric.
 
   También puede hablar con un experto en Fabric en
 [Rocket.Chat ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://chat.hyperledger.org/channel/fabric "Canal Rocket.Chat de Fabric") para obtener respuestas a preguntas sobre Fabric.
@@ -84,7 +89,7 @@ Debido a que {{site.data.keyword.IBM_notm}} no ofrece soporte para el uso de Hyp
 
 Para problemas relacionados con el Plan Inicial o el Plan empresarial, puede enviar un caso de soporte en el
 [Portal de servicio de {{site.data.keyword.cloud_notm}}
-![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://ibm.biz/ibmcloudsupport "Portal de servicio de IBM Cloud").
+![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://cloud.ibm.com/unifiedsupport/supportcenter "Soporte").
 
 Si necesita ayuda con el código de encadenamiento de Hyperledger Fabric, Hyperledger Composer o sus aplicaciones, utilice los recursos de la comunidad anteriores o interactúe con los [servicios de {{site.data.keyword.blockchainfull_notm}} ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/blockchain/services "Convertir su estrategia de blockchain en resultados empresariales con servicios de {{site.data.keyword.blockchainfull_notm}}"). Se recomienda el uso de Hyperledger Composer únicamente para demostraciones y pruebas de concepto. {{site.data.keyword.IBM_notm}} no proporciona soporte para redes que utilicen Hyperledger Composer en producción, incluyendo la CLI de Composer, las API de JavaScript, el servidor REST y Web Playground.
 {:note}
@@ -102,7 +107,7 @@ Se proporcionan **ofertas Beta** con un soporte más limitado que los releases d
 
 Siga estos pasos para enviar un caso de soporte.
 
-1. Inicie una sesión en el [portal de servicio de {{site.data.keyword.cloud_notm}} ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://ibm.biz/ibmcloudsupport "Portal de servicio de IBM Cloud") con su ID de {{site.data.keyword.IBM_notm}}.
+1. Inicie una sesión en el [portal de servicio de {{site.data.keyword.cloud_notm}} ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://cloud.ibm.com/unifiedsupport/supportcenter "Soporte") con su ID de {{site.data.keyword.IBM_notm}}.
 2. En **¿Necesita más ayuda?** en la parte derecha de la página, pulse **Crear un caso**.
 3. Rellene el formulario **Crear caso** con su información, como mínimo para los siguientes campos.
   - Seleccione **Técnico** como tipo de caso.

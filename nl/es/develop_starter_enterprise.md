@@ -166,7 +166,7 @@ Ejecute el mandato siguiente para hacer ping en la red empresarial:
    ```
    {:codeblock}
 
-Para ver los registros del código de encadenamiento, pulse **Canales** y seleccione su canal. <!-- Click the dropdown arrow to view the logs, or the Actions symbol to view in more detail. --> Pulse el separador **Código de encadenamiento**. Amplíe la fina del código de encadenamiento y pulse el botón **JSON** o **Registros**.
+Para ver los registros del código de encadenamiento, pulse **Canales** y seleccione su canal. <!-- Click the dropdown arrow to view the logs, or the Actions symbol to view in more detail. --> Pulse el separador **Código de encadenamiento**. Amplíe la fila del código de encadenamiento y pulse el botón **JSON** o **Registros**.
 
 <!-- [fN-Yuj](https://i.makeagif.com/media/4-13-2018/fN-Yuj.gif) -->
 

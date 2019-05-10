@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2018
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-03"
 
 subcollection: blockchain
 
@@ -38,6 +38,7 @@ subcollection: blockchain
 | 도쿄 |  | Y |
 | 프랑크푸르트 |  | Y |
 | 시드니 | Y |  |
+| 멜버른 |  | Y |
 | 상파울루 |  | Y |
 | 토론토 |  | Y |
 

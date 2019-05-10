@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -17,7 +17,7 @@ subcollection: blockchain
 # A propos du plan Enterprise
 {: #enterprise-plan-about}
 
-Le plan Enterprise d'{{site.data.keyword.blockchainfull}} Platform est une offre prête pour la production pour les organisations qui souhaitent trouver ou rejoindre un réseau d'entreprise de type Blockchain pour de vraies activités. Ce plan fournit l'infrastructure de base ainsi que les outils et le support nécessaires à un démarrage d'un réseau hautement sécurisé et prêt pour la production. Le plan Enterprise a été mis à niveau de Hyperledger Fabric V1.0 vers la version V1.1 le 15 mai 2018. Tous les réseaux créés après le 15 mai 208 sont au niveau Fabric V1.1. Toutefois, les réseaux qui ont été créés précédemment resteront au niveau Fabric V1.0.
+Le plan Enterprise d'{{site.data.keyword.blockchainfull}} Platform est une offre prête pour la production pour les organisations qui souhaitent trouver ou rejoindre un réseau d'entreprise de type Blockchain pour de vraies activités. Ce plan fournit l'infrastructure de base ainsi que les outils et le support nécessaires à un démarrage d'un réseau hautement sécurisé et prêt pour la production. Le plan Enterprise a été mis à niveau de Hyperledger Fabric V1.0 vers la version V1.1 le 15 mai 2018. Tous les réseaux créés après le 15 mai 2018 sont au niveau Fabric V1.1. Toutefois, les réseaux qui ont été créés précédemment resteront au niveau Fabric V1.0.
 {:shortdesc}
 
 Le **plan Enterprise** constitue un environnement de production offrant de hauts niveaux de sécurité et de support. Le déploiement de votre réseau dans le plan Enterprise vous permet de tirer parti des fonctionnalités suivantes :
@@ -34,11 +34,9 @@ L'exploitation de votre réseau sur {{site.data.keyword.blockchainfull_notm}} Pl
 * Pile de sécurité renforcée sans aucun accès privilégié, résistance aux logiciels malveillants et aux tentatives de sabotage, chiffrement à 100 % et bien d'autres fonctions pour les réseaux comportant des données sensibles dans les secteurs réglementés.
 * Réseaux d'entreprise sauvegardés hors site une fois toutes les 24 heures. En cas de sinistre, ces réseaux peuvent être restaurés sur le même site ou sur un site secondaire.
 
-Le plan Enterprise est un service de plateforme sur {{site.data.keyword.cloud_notm}} et il suit les [Dispositions des services {{site.data.keyword.cloud_notm}} ![Icône de lien externe](images/external_link.svg "Icône de lien externe")](http://www-03.ibm.com/software/sla/sladb.nsf/sla/bm "Dispositions des services {{site.data.keyword.cloud_notm}}") relatives aux accords sur les niveaux de licence (SLA). Notez que les réseaux du plan Enterprise sont mis à disposition dans **plusieurs environnements** dans des centres de données géographiquement distincts.
-
 **Remarques :**
-- Le plan Enterprise d'{{site.data.keyword.blockchainfull_notm}} Platform fournit un environnement de production. Si vous avez besoin d'un environnement de tests et de développement, voir [A propos du plan Starter](/docs/services/blockchain/starter_plan.html#starter-plan-about).
-- {{site.data.keyword.blockchainfull_notm}} Platform est un service de plateforme sur {{site.data.keyword.cloud_notm}} et toutes les offres d'appartenance suivent les [Dispositions des services {{site.data.keyword.cloud_notm}} ![Icône de lien externe](images/external_link.svg "Icône de lien externe")](http://www-03.ibm.com/software/sla/sladb.nsf/sla/bm "Dispositions des services {{site.data.keyword.cloud_notm}}") relatives aux accords sur les niveaux de licence (SLA). Les réseaux du plan Enterprise sont mis à disposition dans **plusieurs environnements** dans des centres de données géographiquement distincts.
+- Le plan Enterprise fournit un environnement de production. Si vous avez besoin d'un environnement de tests et de développement, voir [A propos du plan Starter](/docs/services/blockchain/starter_plan.html#starter-plan-about).
+- {{site.data.keyword.blockchainfull_notm}} Platform est un service de plateforme sur {{site.data.keyword.cloud_notm}} et toutes les offres d'appartenance suivent les [Dispositions des services {{site.data.keyword.cloud_notm}} ![Icône de lien externe](images/external_link.svg "Icône de lien externe")](http://www-03.ibm.com/software/sla/sladb.nsf/sla/bm "Dispositions des services {{site.data.keyword.cloud_notm}}") relatives aux accords sur les niveaux de licence (SLA). Les réseaux de plan Enterprise sont mis en service dans un centre de données dans une zone géographique unique. Pour obtenir la liste des zones géographiques disponibles, voir [Emplacements {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain?topic=blockchain-ibp-regions-locations#ibp-regions-locations).
 
 IBM met à disposition des membres qui vont démarrer le réseau une interface graphique qui guide l'initiateur du réseau au cours des étapes de configuration et de mise à disposition du réseau. Cette interface comporte des fonctions permettant d'inviter d'autres membres et de définir des règles de gouvernance. Pour plus d'informations, voir [Gouvernance du réseau de plan Enterprise](/docs/services/blockchain/get_start.html#getting-started-with-enterprise-plan). Une fois le réseau déployé, une interface graphique interactive, le Moniteur réseau, est disponible pour surveiller la santé et l'activité du réseau, gérer les principales activités en réseau, comme les nouveaux déploiements, l'ajout ou le retrait de membres, le cycle de vie du code blockchain, ainsi que la gestion des canaux et la recherche d'un support technique. Pour plus d'informations, voir [Utilisation du Moniteur réseau](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard).
 
@@ -60,7 +58,7 @@ fournit une infrastructure avec un stockage de données et des communications s�
 
 Le seul élément qui doit être défini est la taille des homologues nécessaires au réseau. Ce choix dépend du nombre de canaux requis, ainsi que de la charge de travail par canal, de l'utilisation de la mémoire et de l'espace disque (stockage).
 
-Vous devez utiliser le plan Enterprise pour des déploiements de production, ou ayant quasiment atteint le niveau production, plus stables. A des fins de test, utilisez le [plan Starter](/docs/services/blockchain/starter_plan.html#starter-plan-about) ou [installez des images Docker en local](http://hyperledger-fabric.readthedocs.io/en/release-1.1/build_network.html).
+Vous devez utiliser le plan Enterprise pour des déploiements de production, ou ayant quasiment atteint le niveau production, plus stables. A des fins de test, utilisez le [plan Starter](/docs/services/blockchain/starter_plan.html#starter-plan-about) ou [installez des images Docker en local](http://hyperledger-fabric.readthedocs.io/en/release-1.2/build_network.html).
 
 <!--- The Enterprise plan provides the ordering service and CA. The membership fee is $1,000, and a per peer fee of $1,000 that is associated with the network. If you want to have high availability (HA), you must purchase an additional peer to provide the HA capabilities. For example, one organization (associated membership fee of $1,000) of two peers ($1,000 X 2 peers) with HA ($1,000 X 2 HA peers) requires a monthly charge of $5,000.  --->
 

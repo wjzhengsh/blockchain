@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-03-20"
 
 subcollection: blockchain
 
@@ -41,7 +41,8 @@ Le code blockchain peut être écrit dans différents langages et le {{site.data
 
 Pour apprendre à commencer à écrire du code blockchain, consultez le [tutoriel Chaincode for developers![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/latest/chaincode4ade.html "tutoriel Chaincode for developers") dans la documentation Hyperledger Fabric Community. Ce tutoriel vous guide tout au long des étapes de construction d'un exemple de code blockchain qui crée et lit des ressources et vous présente les API qui sont utilisées au cours du processus. Vous pouvez également trouver le guide de référence des API de code blockchain pour tous les langages de code blockchain. Des exemples supplémentaires sont fournis dans le dossier chaincode du référentiel [Référentiel Fabric samples![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://github.com/hyperledger/fabric-samples "Fabric samples").  
 
-Un contrat intelligent est généralement en mesure de valider des demandes, d'appliquer les règles métier et de retourner un résultat déterministe. Cependant, il peut arriver que des faits supplémentaires soient nécessaires ou que le réseau métier souhaite s'assurer que les informations fournies par les clients sont des faits réels. Hyperledger Fabric n'empêche pas les appels externes à des systèmes tiers depuis les contrats intelligents. Il est toutefois de la responsabilité du développeur du contrat intelligent de garantir que les ensembles de lecture/écriture résultants sont déterministes. {:note}
+Un contrat intelligent est généralement en mesure de valider des demandes, d'appliquer les règles métier et de retourner un résultat déterministe. Cependant, il peut arriver que des faits supplémentaires soient nécessaires ou que le réseau métier souhaite s'assurer que les informations fournies par les clients sont des faits réels. Hyperledger Fabric n'empêche pas les appels externes à des systèmes tiers depuis les contrats intelligents. Il est toutefois de la responsabilité du développeur du contrat intelligent de garantir que les ensembles de lecture/écriture résultants sont déterministes.
+{:note}
 
 ## Installation du code blockchain
 {: #develop-smart-contracts-install}
@@ -140,4 +141,4 @@ Etant donné que `fabcar` est sur le même canal que `newContract`, la fonction 
 
 Si vous utilisez CouchDB comme base de données d'état, vous pouvez exécuter des requêtes de données JSON depuis votre code blockchain sur les données d'état du canal. Nous vous recommandons fortement de créer des index pour vos requêtes JSON et de les utiliser dans votre code blockchain. Les index permettent à vos applications d'extraire les données de manière aussi efficace que votre réseau ajoute des blocs de transaction et des entrées supplémentaires dans le World State.
 
-Pour plus d'informations sur CouchDB et la façon de définir des index, voir [CouchDB as the State Database ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/couchdb_as_state_database.html "CouchDB as the State Database"){:new_window} dans la documentation Hyperledger Fabric. Vous trouverez également un exemple utilisant un index avec un code blockchain dans le[tutoriel Fabric CouchDB![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/couchdb_tutorial.html). Consultez la section relative aux [meilleures pratiques lors de l'utilisation de CouchDB](/docs/services/blockchain/v10_application.html#dev-app-couchdb-indices) dans le tutoriel Développement d'applications pour plusd'informations sur l'interrogation de données depuis vos applications.
+Pour plus d'informations sur CouchDB et la façon de définir des index, voir [CouchDB as the State Database ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/couchdb_as_state_database.html "CouchDB as the State Database"){:new_window} dans la documentation Hyperledger Fabric. Vous trouverez également un exemple utilisant un index avec un code blockchain dans le[tutoriel Fabric CouchDB![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/couchdb_tutorial.html). Consultez la section relative aux [meilleures pratiques lors de l'utilisation de CouchDB](/docs/services/blockchain/best_practices.html#best-practices-app-couchdb-indices) dans le tutoriel Développement d'applications pour plusd'informations sur l'interrogation de données depuis vos applications.

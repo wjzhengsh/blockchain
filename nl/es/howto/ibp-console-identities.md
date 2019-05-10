@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-03"
 
 subcollection: blockchain
 
@@ -44,7 +44,7 @@ Puede utilizar la consola para crear estas identidades siguiendo el [proceso de 
 
 Antes de trabajar con identidades, tiene que establecer la identidad del administrador de CA, ya sea utilizando la identidad de administrador creada durante la creación de la CA o estableciendo una nueva. Abra la CA en el separador **Nodos**. El ID de inscripción de la identidad activa actualmente aparece junto al nombre de la CA en la parte superior del panel. Puede utilizar esta identidad de administrador para crear otras identidades con el botón **Registrar** para registrar identidades que se convertirán en administradores de organización e identidades de nodo o puede utilizar el botón **Inscribir** para generar una identidad y exportarla a la cartera.
 
-Para cambiar de identidad utilizada como administrador de CA, pulse el icono **Valores** y pulse **Establecer identidad** en la barra deslizante. Puede especificar una identidad existente en la cartera mediante el separador **Identidad existente**. Como alternativa, puede utilizar el separador **Nueva identidad** para pegar certificados para un nuevo administrador o para cargar un archivo JSON que contenga los certificados.
+Para cambiar de identidad utilizada como administrador de CA, pulse el icono **Valores** y pulse **Establecer identidad** en la barra deslizante. Puede especificar una identidad existente en la cartera mediante el separador **Identidad existente**. Como alternativa, puede utilizar el separador **Nueva identidad** para cargar un archivo que contiene los certificados, en formato base64 o PEM, para un administrador nuevo, o para cargar un archivo JSON que contiene los certificados.
 
 No todas las identidades tienen la capacidad de registrar nuevos usuarios. Para obtener más información, incluida la forma de establecer un administrador de CA adicional, consulte [Creación
 de nuevos administradores de CA](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-ca-admin).
@@ -167,8 +167,8 @@ Puede añadir una identidad de administrador a la cartera cuando [cree su MSP de
 
 Puede utilizar el botón **Añadir identidad** en la pantalla de visión general para importar una identidad directamente en la cartera. Al pulsar este botón, se abrirá un panel lateral que le permite añadir el par de claves pública y privada de una identidad.
 - **Nombre:** especifique un nombre de identidad que se utiliza únicamente para la referencia.
-- **Certificado:** pegue la clave pública de la identidad que ha generado con la CA.
-- **Clave privada:** pegue la clave privada de la identidad que ha generado con la CA.
+- **Certificado:** cargue un archivo que contenga la clave pública de la identidad (en formato base64 o PEM) que haya generado utilizando la CA.
+- **Clave privada:** cargue un archivo que contenga la clave privada de la identidad (en formato base64 o PEM) que haya generado utilizando la CA.
 
 
 También puede añadir una identidad cargando un archivo JSON en el formato siguiente. También puede utilizar el botón **Cargar JSON**

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-03-20"
+lastupdated: "2019-04-17"
 
 subcollection: blockchain
 
@@ -37,8 +37,10 @@ En el siguiente diagrama se expone la arquitectura de Kubernetes. Para obtener m
 El servicio Kubernetes de {{site.data.keyword.cloud_notm}} proporciona potentes herramientas que combinan contenedores Docker, la tecnología Kubernetes, una experiencia del usuario intuitiva, seguridad integrada y aislamiento para automatizar el despliegue, el funcionamiento, el escalado y la supervisión de apps contenerizadas en un clúster de hosts de cálculo.
 
 Para obtener más información sobre el servicio Kubernetes de {{site.data.keyword.cloud_notm}}, consulte los siguientes temas de la documentación del servicio Kubernetes de {{site.data.keyword.cloud_notm}}:
-- [Tecnología del servicio Kubernetes de {{site.data.keyword.cloud_notm}} ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://cloud.ibm.com/docs/containers/cs_tech.html#ibm-cloud-kubernetes-service-technology "{{site.data.keyword.cloud_notm}} Documentación sobre la tecnología del servicio Kubernetes")
-- [Por qué elegir el servicio Kubernetes de {{site.data.keyword.cloud_notm}}![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://cloud.ibm.com/docs/containers?topic=containers-cs_ov#cs_ov "Documentación Por qué elegir el servicio Kubernetes de {{site.data.keyword.cloud_notm}}")
+- [Tecnología del servicio {{site.data.keyword.cloud_notm}} Kubernetes
+![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](/docs/containers/cs_tech.html#ibm-cloud-kubernetes-service-technology "Documentación de tecnología del servicio {{site.data.keyword.cloud_notm}} Kubernetes")
+- [Por qué elegir el servicio {{site.data.keyword.cloud_notm}} Kubernetes ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](/docs/containers?topic=containers-cs_ov#cs_ov "Documentación Por qué elegir el servicio {{site.data.keyword.cloud_notm}} Kubernetes")
+- [Definición de la estrategia de Kubernetes ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](/docs/containers?topic=containers-strategy#strategy "Definición de la estrategia de Kubernetes")
 
 
 ## Objetos de Kubernetes clave

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-03-20"
 
 subcollection: blockchain
 
@@ -249,7 +249,7 @@ CA에서 새 공용 인증서 및 개인 키를 가져오려면 관리자 ID 옆
 
 문제점을 해결하고 {{site.data.keyword.IBM_notm}} 및 Fabric 커뮤니티에서 도움을 받으려면 "지원" 탭의 리소스를 사용하십시오. "지원" 탭에 있는 링크에 대한 자세한 정보는 [지원 받기](/docs/services/blockchain/ibmblockchain_support.html#blockchain-support)의 [리소스 및 지원 포럼](/docs/services/blockchain/ibmblockchain_support.html#blockchain-support-resources)을 참조하십시오.
 
-[IBM dWAnswers ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://developer.ibm.com/answers/smartspace/blockchain/)는 {{site.data.keyword.blockchainfull_notm}} Platform 및 Hyperledger Fabric 사용자를 위한 커뮤니티 포럼이며 IBM 전문가가 모니터합니다. 이전 질문에 대한 답변을 검색하거나 새 질문을 제출할 수 있습니다. 문제를 디버깅하거나 질문에 대한 답변을 확인할 수 없는 경우 {{site.data.keyword.cloud_notm}} 서비스 포털에 지원 케이스를 제출하십시오. 자세한 정보는 [지원 케이스 제출](/docs/services/blockchain/ibmblockchain_support.html#blockchain-support-cases)을 참조하십시오.
+[IBM dWAnswers ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://developer.ibm.com/answers/smartspace/blockchain/index.html)는 {{site.data.keyword.blockchainfull_notm}} Platform 및 Hyperledger Fabric 사용자를 위한 커뮤니티 포럼이며 IBM 전문가가 모니터합니다. 이전 질문에 대한 답변을 검색하거나 새 질문을 제출할 수 있습니다. 문제를 디버깅하거나 질문에 대한 답변을 확인할 수 없는 경우 {{site.data.keyword.cloud_notm}} 서비스 포털에 지원 케이스를 제출하십시오. 자세한 정보는 [지원 케이스 제출](/docs/services/blockchain/ibmblockchain_support.html#blockchain-support-cases)을 참조하십시오.
 
 
 ### Fabric 릴리스 정보
@@ -317,7 +317,7 @@ Before Enterprise Plan upgrades to Fabric v1.1, all network peers store data in 
 
 To use CouchDB, your data must be stored in a data format that can be modeled in chaincode, such as JSON. If the decision is made to migrate from LevelDB to CouchDB, the {{site.data.keyword.blockchainfull_notm}} Platform will migrate your data from key-value format to the CouchDB format automatically.
 
-If you switch to CouchDB, you need to update your chaincode to take advantage of indexes and rich queries. For more information about CouchDB and how to set up indexes, see [Best practices when using CouchDB](/docs/services/blockchain/v10_application.html#couchdb-indices) in the Developing applications tutorial. For more information about updating chaincode in {{site.data.keyword.blockchainfull_notm}} Platform, see [Updating a chaincode](/docs/services/blockchain/howto/install_instantiate_chaincode.html#install-instantiate-chaincode-update-cc).
+If you switch to CouchDB, you need to update your chaincode to take advantage of indexes and rich queries. For more information about CouchDB and how to set up indexes, see [Best practices when using CouchDB](/docs/services/blockchain/best_practices.html#best-practices-app-couchdb-indices) in the Developing applications tutorial. For more information about updating chaincode in {{site.data.keyword.blockchainfull_notm}} Platform, see [Updating a chaincode](/docs/services/blockchain/howto/install_instantiate_chaincode.html#install-instantiate-chaincode-update-cc).
 
 -->
 

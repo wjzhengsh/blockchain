@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-17"
 
 subcollection: blockchain
 
@@ -18,7 +18,7 @@ subcollection: blockchain
 # Glossario
 {: #glossary}
 
-Questo argomento definisce i termini specifici di {{site.data.keyword.blockchainfull}} Platform che compaiono in questa documentazione. Per una comprensione più approfondita dei termini e per un glossario dei termini correlati ai concetti di Hyperledger Fabric, fai riferimento a [Hyperledger Fabric glossary ![Icona link esterno](images/external_link.svg "Icona link esterno")](http://hyperledger-fabric.readthedocs.io/en/release-1.2/glossary.html).
+Questo argomento definisce i termini specifici di {{site.data.keyword.blockchainfull}} Platform che compaiono in questa documentazione. Per una comprensione più approfondita dei termini e per un glossario dei termini correlati ai concetti di Hyperledger Fabric, fai riferimento a [Hyperledger Fabric glossary ![Icona link esterno](images/external_link.svg "Icona link esterno")](http://hyperledger-fabric.readthedocs.io/en/release-1.4/glossary.html).
 {:shortdesc}
 
 ## Asset
@@ -28,10 +28,6 @@ Beni, servizi o proprietà tangibili o intangibili rappresentati come un element
 ## Blocco
 {: #glossary-block}
 Un set ordinato di transazioni, che è crittograficamente collegato al precedente blocco su un canale.
-
-## Rete di business
-{: #glossary-business-network}
-Una definizione di una rete blockchain che include il modello di dati, la logica di transazione e le regole di controllo dell'accesso per la tua soluzione blockchain. Le BND (Business Network Definition) vengono create utilizzando [Hyperledger Composer](/docs/services/blockchain/glossary.html#glossary-composer). Le BND (Business Network Definition) sono assemblate in file **.bna** (business network archive) distribuibili.
 
 ## CA
 {: #glossary-CA}
@@ -93,20 +89,15 @@ Il blocco di configurazione che inizializza un canale o una rete blockchain e ch
 
 ## Gossip
 {: #glossary-gossip}
-Hyperledger Fabric consente ai peer di raccogliere, reciprocamente, importanti informazioni sulla rete senza dover fare affidamento sul servizio ordini. Il [protocollo di diffusione dei dati gossip ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.1/gossip.html) fornisce ai peer un modo sicuro, affidabile e scalabile per scambiare messaggi tra loro. Ad esempio, se i peer perdono alcuni blocchi a causa di ritardi, interruzioni di rete o altri motivi, possono sincronizzarsi con lo stato attuale del libro mastro utilizzando la messaggistica gossip per contattare altri peer in possesso di questi blocchi mancanti.
+Hyperledger Fabric consente ai peer di raccogliere, reciprocamente, importanti informazioni sulla rete senza dover fare affidamento sul servizio ordini. Il [protocollo di diffusione dei dati gossip ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/gossip.html) fornisce ai peer un modo sicuro, affidabile e scalabile per scambiare messaggi tra loro. Ad esempio, se i peer perdono alcuni blocchi a causa di ritardi, interruzioni di rete o altri motivi, possono sincronizzarsi con lo stato attuale del libro mastro utilizzando la messaggistica gossip per contattare altri peer in possesso di questi blocchi mancanti.
 
 ## HSM
 {: #glossary-hsm}
 Hardware Security Module. Fornisce gestione delle chiavi, archiviazione delle chiavi e crittografia on-demand come un servizio gestito. HSM è un dispositivo fisico che gestisce le attività a elevato utilizzo di risorse dell'elaborazione di crittografia e riduce la latenza per le applicazioni. Per ulteriori informazioni, vedi [Hardware Security Module ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://www.ibm.com/cloud/hardware-security-module)
 
-## Hyperledger Composer
-{: #glossary-composer}
-**IBM non fornisce supporto per le reti che utilizzano Hyperledger Composer in produzione, compresi la CLI Composer, le API JavaScript, il server REST e Web Playground.**
-[Hyperledger Composer ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://hyperledger.github.io/composer/latest/introduction/introduction.html) è un set di strumento di sviluppo open source. Utilizza un linguaggio di modellazione su misura, che è combinato con le transazioni JavaScript e le regole di controllo dell'accesso per modellare completamente una rete di business blockchain. Puoi utilizzare Hyperledger Composer per integrare i sistemi e i dati esistenti con la tua applicazione blockchain prima di eseguire qualsiasi distribuzione a una vera blockchain.
-
 ## Hyperledger Fabric
 {: #glossary-hyperledger-fabric}
-[Hyperledger Fabric ![Icona link esterno](images/external_link.svg "Icona link esterno")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/) è un framework blockchain di business ospitato da Linux Foundation che funge da base per lo sviluppo di applicazioni o soluzioni blockchain con un'architettura modulare. I componenti di Hyperledger Fabric quali i servizi di consenso e adesione sono plug-and-play.
+[Hyperledger Fabric ![Icona link esterno](images/external_link.svg "Icona link esterno")](http://hyperledger-fabric.readthedocs.io/en/release-1.4/) è un framework blockchain di business ospitato da Linux Foundation che funge da base per lo sviluppo di applicazioni o soluzioni blockchain con un'architettura modulare. I componenti di Hyperledger Fabric quali i servizi di consenso e adesione sono plug-and-play.
 
 ## Installare
 {: #glossary-install}
@@ -203,4 +194,4 @@ Un utente è un partecipante in una rete blockchain che ha accesso indiretto al 
 
 ## Stato globale
 {: #glossary-world-state}
-Consulta [Stato corrente]((/docs/services/blockchain/glossary.html#glossary-current-state).
+Consulta [Stato corrente](/docs/services/blockchain/glossary.html#glossary-current-state).

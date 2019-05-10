@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-03-20"
 
 subcollection: blockchain
 
@@ -28,7 +28,7 @@ Depois de instalar contratos inteligentes e implementar seus nós, é possível 
 ## Recursos de Aprendiz
 {: #ibp-console-app-learning-resources}
 
-É possível aprender mais sobre como os aplicativos e os contratos inteligentes trabalham juntos, visitando o [tópico Desenvolvendo aplicativos ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/developapps/developing_applications.html "desenvolvendo aplicativos") na documentação do Hyperledger Fabric. O tópico explora um caso de uso hipotético em que os bancos e as corporações trocam papel comercial e descreve como as transações são codificadas em contratos inteligentes. O [tutorial de papel comercial ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/tutorial/commercial_paper.html "tutorial de papel comercial") amplia esse tópico permitindo que você implemente os contratos inteligentes na rede de malha e use o código do aplicativo de amostra para criar e transferir o papel comercial entre os membros de rede.
+É possível aprender mais sobre como os aplicativos e os contratos inteligentes trabalham juntos, visitando o [tópico Desenvolvendo aplicativos ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/developapps/developing_applications.html "desenvolvendo aplicativos") na documentação do Hyperledger Fabric. O tópico explora um caso de uso hipotético em que os bancos e as corporações trocam papel comercial e descreve como as transações são codificadas em contratos inteligentes. O [tutorial de papel comercial ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/tutorial/commercial_paper.html "tutorial de papel comercial") amplia este tópico permitindo que você implemente os contratos inteligentes na rede de malha e use o código do aplicativo de amostra para criar e transferir o papel comercial entre os membros de rede.
 
 ** Amostras de aplicativo e tutoriais **
 
@@ -95,9 +95,9 @@ Os aplicativos são capazes de enviar transações somente para os contratos int
 
 O Hyperledger Fabric [Fluxo de transação ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")]( https://hyperledger-fabric.readthedocs.io/en/release-1.4/txflow.html "Fluxo de transação"){:new_window} abrange múltiplos componentes, com os aplicativos clientes coletando endossos de peers e enviando transações endossadas para o serviço de pedido. O perfil de conexão fornece a seu aplicativo os terminais dos peers e os nós de pedido que ele precisa para enviar uma transação. Ele também contém informações sobre sua organização, como Autoridades de Certificação e seu ID do MSP. Os SDKs do Fabric podem ler o perfil de conexão diretamente, sem você ter que gravar o código que gerencia o fluxo de transação e endosso.
 
-Se você configurou peers de âncora ao criar um canal, é possível aproveitar o recurso [Descoberta de serviço ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/discovery-overview.html "Descoberta de serviço") do Hyperledger Fabric. A descoberta de serviço permite que seu aplicativo aprenda quais peers no canal fora de sua organização precisam endossar uma transação. Sem a descoberta de serviço, você precisará obter as informações sobre terminais desses peers fora da banda de outras organizações e incluí-las em seu perfil de conexão. Para obter mais informações sobre como configurar os peers de âncora, veja a etapa três do [tópico de dados privados](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-private-data) no tutorial Implementar um contrato inteligente.
+Para aproveitar o serviço do recurso [Descoberta de serviço ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/discovery-overview.html "Descoberta de serviço") do Hyperledger Fabric, deve-se configurar peers de âncora. A descoberta de serviço permite que seu aplicativo aprenda quais peers no canal fora de sua organização precisam endossar uma transação. Sem a descoberta de serviço, você precisará obter as informações sobre terminais desses peers fora da banda de outras organizações e incluí-las em seu perfil de conexão. Para obter mais informações sobre como configurar os peers de âncora, veja a etapa três do [tópico de dados privados](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-private-data) no tutorial Implementar um contrato inteligente.
 
-Navegue para a guia de contratos inteligentes em seu console da plataforma. Próximo a cada contrato inteligente instanciado, navegue para o menu overflow. Clique no botão chamado **Conectar com SDK**. Isso abrirá um painel lateral que permitirá que você construa e faça download de seu perfil de conexão. Primeiro, é necessário selecionar a CA de sua organização que você usou para registrar sua identidade de aplicativo. Você também precisará selecionar a sua definição de MSP da organização. Então, você será capaz de fazer download do perfil de conexão que pode ser usado para gerar certificados e chamar o contrato inteligente.
+Navegue para a guia de contratos inteligentes em seu console da plataforma. Próximo a cada contrato inteligente instanciado, navegue para o menu overflow. Clique no botão chamado **Conectar com SDK**. Isso abrirá um painel lateral que permitirá que você construa e faça download de seu perfil de conexão. Primeiro, é necessário selecionar a CA de sua organização que você usou para registrar sua identidade de aplicativo. Você também precisará selecionar a sua definição do MSP da organização. Então, você será capaz de fazer download do perfil de conexão que pode ser usado para gerar certificados e chamar o contrato inteligente.
 
 ## Inrolando usando o SDK
 {: #ibp-console-app-enroll}
@@ -132,7 +132,10 @@ Depois que o operador de rede fornece o ID de inscrição e o segredo da identid
         console.log('An identity for "user1" already exists in the wallet'); return; }
 
       // Enroll the admin user, and import the new identity into the wallet.
-      const enrollment = await ca.enroll({ enrollmentID: '<app_enroll_id>', enrollmentSecret: '<app_enroll_secret>' }); const identity = X509WalletMixin.createIdentity('<msp_id>', enrollment.certificate, enrollment.key.toBytes()); wallet.import('user1', identity); console.log('Successfully enrolled client "user1" and imported it into the wallet');
+      const enrollment = await ca.enroll({ enrollmentID: '<app_enroll_id>', enrollmentSecret: '<app_enroll_secret>' });
+      const identity = X509WalletMixin.createIdentity('<msp_id>', enrollment.certificate, enrollment.key.toBytes());
+      await wallet.import('user1', identity);
+      console.log('Successfully enrolled client "user1" and imported it into the wallet');
 
       } catch (error) { catch (error) {
         console.error(`Failed to enroll "user1": ${error}`); process.exit(1); }
@@ -144,8 +147,8 @@ Depois que o operador de rede fornece o ID de inscrição e o segredo da identid
 
 3. Edite `enrollUser.js` para substituir os valores a seguir:
   - Substitua ``<CA_Name>`` pelo nome de sua CA de organizações. É possível localizar o nome de sua CA na seção "organizações" de seu perfil de conexão em "Autoridades de certificação". Não use o "caName" na seção "Autoridades de certificação".
-  - Substitua ``<app_enroll_id>`` com o ID de inscrição do aplicativo fornecido por seu operador de rede.
-  - Substitua ``<app_enroll_secret>`` pelo segredo de inscrição do aplicativo fornecido por seu operador de rede.
+  - Substitua ``<app_enroll_id>`` pelo ID de inscrição de aplicativo fornecido por seu operador de rede.
+  - Substitua ``<app_enroll_secret>`` pelo segredo de inscrição de aplicativo fornecido por seu operador de rede.
   - Substitua ``<msp_id>`` pelo ID do MSP de sua organização. É possível localizar seu ID do MSP sob a seção "organizações" de seu perfil de conexão.
 4. Navegue para `enrollUser.js` usando um terminal e execute `node enrollUser.js`. Se o comando for executado com êxito, você verá a saída a seguir:
 
@@ -212,7 +215,7 @@ Depois de ter gerado as chaves pública e privada do aplicativo e armazená-las 
     {:codeblock}
 
 2. Edite o `invoke.js` para substituir os valores a seguir:
-  - Substitua ``<channel_name>`` pelo nome do canal em que o contrato inteligente foi instanciado. É possível localizar seu nome de CA sob a seção "Autoridades de certificação" de seu perfil de conexão.
+  - Substitua ``<channel_name>`` pelo nome do canal no qual o contrato inteligente foi instanciado. É possível localizar seu nome de CA sob a seção "Autoridades de certificação" de seu perfil de conexão.
   - Substitua ``<smart_contract_name>`` pelo nome do contrato inteligente instalado. É possível obter esse valor de seu operador de rede.
   - Edite os conteúdos de `submitTransaction` para chamar uma função dentro de seu contrato inteligente. O arquivo `invoke.js` é gravado para chamar o [contrato inteligente fabcar ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://github.com/hyperledger/fabric-samples/tree/release-1.4/chaincode/fabcar). Se você desejar executar o arquivo abaixo para enviar uma transação, instale o fabcar e instancie o contrato inteligente em um de seus canais.
 
@@ -354,7 +357,10 @@ Navegue para o diretório `/magnetocorp/application` e salve o bloco de códigos
           console.log('An identity for "user1" already exists in the wallet'); return; }
 
         // Enroll the admin user, and import the new identity into the wallet.
-        const enrollment = await ca.enroll({ enrollmentID: '<app_enroll_id>', enrollmentSecret: '<app_enroll_secret>' }); const identity = X509WalletMixin.createIdentity('<msp_id>', enrollment.certificate, enrollment.key.toBytes()); wallet.import('user1', identity); console.log('Successfully enrolled client "user1" and imported it into the wallet');
+        const enrollment = await ca.enroll({ enrollmentID: '<app_enroll_id>', enrollmentSecret: '<app_enroll_secret>' });
+        const identity = X509WalletMixin.createIdentity('<msp_id>', enrollment.certificate, enrollment.key.toBytes());
+        await wallet.import('user1', identity);
+        console.log('Successfully enrolled client "user1" and imported it into the wallet');
 
         } catch (error) { catch (error) {
           console.error(`Failed to enroll "user1": ${error}`); process.exit(1); }
@@ -386,9 +392,9 @@ const enrollment = await ca.enroll({ enrollmentID: '<app_enroll_id>', enrollment
 {:codeblock}
 
 **Edite** `enrollUser.js` para substituir os valores a seguir:
-- Substitua  ` '<CA_Name>'` pelo nome de sua CA de organizações. É possível localizar o nome de sua CA na seção "organizações" de seu perfil de conexão em "Autoridades de certificação". Não use o "caName" na seção "Autoridades de certificação".
-- Substitua `'<app_enroll_id>` com o ID de inscrição do aplicativo fornecido por seu operador de rede.
-- Substitua `'<app_enroll_secret>'` pelo segredo de inscrição do aplicativo fornecido por seu operador de rede.
+- Substitua `'<CA_Name>'` pelo nome de sua CA de organizações. É possível localizar o nome de sua CA na seção "organizações" de seu perfil de conexão em "Autoridades de certificação". Não use o "caName" na seção "Autoridades de certificação".
+- Substitua `'<app_enroll_id>` pelo ID de inscrição de aplicativo fornecido por seu operador de rede.
+- Substitua `'<app_enroll_secret>'` pelo segredo de inscrição de aplicativo fornecido por seu operador de rede.
 - Substitua `'<msp_id>'` pelo ID do MSP de sua organização. É possível localizar esse ID do MSP sob a seção "organizações" de seu perfil de conexão.
 
 Salve  ` enrollUser.js `  e feche-o. No diretório `magnetocorp`, execute o comando a seguir:
@@ -444,7 +450,7 @@ const userName = 'user1 ';
 // Load connection profile; will be used to locate a gateway
 const ccpPath = path.resolve(__dirname, '../gateway/connection.json');
 const ccpJSON = fs.readFileSync(ccpPath, 'utf8');
-const ccp = JSON.parse(ccpJSON);
+const connectionProfile = JSON.parse(ccpJSON);
 
 // Set connection options; identity and wallet let connectionOptions = {
   identity: userName,
@@ -531,9 +537,10 @@ fabric_client.createUser({
 ```
 {:codeblock}
 
-Se você estiver usando APIs do SDK de baixo nível para se conectar à sua rede, há etapas adicionais que podem ser tomadas para gerenciar o desempenho e a disponibilidade de seu aplicativo. Para obter mais informações, veja [Melhores práticas para conectividade do aplicativo e disponibilidade](/docs/services/blockchain/v10_application.html#dev-app-connectivity-availability).
+Se você estiver usando APIs do SDK de baixo nível para se conectar à sua rede, há etapas adicionais que podem ser tomadas para gerenciar o desempenho e a disponibilidade de seu aplicativo. Para obter mais informações, veja [Melhores práticas para conectividade do aplicativo e disponibilidade](/docs/services/blockchain/best_practices.html#best-practices-app-connectivity-availability).
+
 
 ## Usando índices com o CouchDB
 {: #console-app-couchdb}
 
-Se você usar o CouchDB como o banco de dados de estado, será possível executar consultas de dados JSON de seus contratos inteligentes com relação aos dados de estado do canal. É altamente recomendável que você crie índices para suas consultas JSON e use-os em seus contratos inteligentes. Os índices permitem que seus aplicativos recuperem dados de forma eficiente quando sua rede inclui blocos de transações e entradas adicionais no estado mundial. Para saber como usar índices com seus contratos inteligentes e seus aplicativos, veja [Melhores práticas ao usar o CouchDB](/docs/services/blockchain/v10_application.html#dev-app-couchdb-indices).
+Se você usar o CouchDB como o banco de dados de estado, será possível executar consultas de dados JSON de seus contratos inteligentes com relação aos dados de estado do canal. É altamente recomendável que você crie índices para suas consultas JSON e use-os em seus contratos inteligentes. Os índices permitem que seus aplicativos recuperem dados de forma eficiente quando sua rede inclui blocos de transações e entradas adicionais no estado mundial. Para saber como usar índices com seus contratos inteligentes e seus aplicativos, veja [Melhores práticas ao usar o CouchDB](/docs/services/blockchain/best_practices.html#best-practices-app-couchdb-indices).

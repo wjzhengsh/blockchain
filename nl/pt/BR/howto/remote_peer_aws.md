@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-03-20"
 
 subcollection: blockchain
 
@@ -96,7 +96,7 @@ echo -e "<CERT>" > admin.pem
 ```
 {:codeblock}
 
-Substitua `<CERT>` pelo valor do **Certificado TLS da autoridade de certificação (CA)**. Em seguida, quando solicitado para o ** Certificado TLS da autoridade de certificação (CA)** no modelo de Iniciação Rápida, `cat` o arquivo admin.pem e, em seguida, copie e cole o conteúdo no campo.  
+Substitua `<CERT>` pelo valor do **Certificado TLS da Autoridade de Certificação (CA)**. Em seguida, quando solicitado para o ** Certificado TLS da autoridade de certificação (CA)** no modelo de Iniciação Rápida, `cat` o arquivo admin.pem e, em seguida, copie e cole o conteúdo no campo.  
 
 ## Etapa três: registrar um peer do {{site.data.keyword.blockchainfull_notm}} Platform for AWS
 {: #remote-peer-aws-register-peer}
@@ -264,14 +264,14 @@ Execute o comando da CLI `peer channel fetch` para buscar o bloco genesis do can
    ```
    {:codeblock}
 
-   - Copie o certificado TLS do solicitador do perfil de conexão para o peer. Navegue para a seção **solicitadores**. Copie o certificado que segue "pem:", começando com -----BEGIN CERTIFICATE----- e terminando com -----END CERTIFICATE -----. Não inclua as aspas. Execute o comando a seguir a partir da linha de comandos, substituindo `<orderer cert>` pelo conteúdo copiado do arquivo creds.json.
+   - Copie o certificado TLS do solicitador do perfil de conexão para o peer. Navegue para a seção **solicitadores**. Copie o certificado que segue "pem:", começando com -----BEGIN CERTIFICATE----- e terminando com -----END CERTIFICATE -----. Não inclua as aspas. Execute o comando a seguir por meio da linha de comandos, substituindo `<orderer cert>` pelo conteúdo copiado do arquivo creds.json.
 
    ```
    echo -e "<orderer cert>" > /etc/hyperledger/<PEER_ENROLL_ID>/orderer_tlscacert.pem
    ```
    {:codeblock}
 
-   Substitua `<PEER_ENROLL_ID>` pelo ID de inscrição que está especificado no modelo de Iniciação Rápida e está associado a essa instância de peer.
+   Substitua `<PEER_ENROLL_ID>` pelo ID de inscrição especificado no modelo de Iniciação Rápida e associado a essa instância de peer.
 
 2. Sua organização precisa ser incluída em um canal na rede antes que você possa buscar o bloco genesis.
 
@@ -292,9 +292,9 @@ Execute o comando da CLI `peer channel fetch` para buscar o bloco genesis do can
    {:codeblock}
 
    Substitua os campos por suas próprias informações.
-     - Substitua `<ORDERER_URL>` pelo nome do host e a porta do solicitador do arquivo `creds.json`.
+     - Substitua `<ORDERER_URL>` pelo nome de host e pela porta do solicitador no arquivo `creds.json`.
      - Substitua `<CHANNEL_NAME>` pelo nome do canal ao qual o peer se associará.
-     - Substitua `<ORGANIZATION_MSP_ID>` pelo nome da organização do arquivo `creds.json`.
+     - Substitua `<ORGANIZATION_MSP_ID>` pelo nome da organização no arquivo `creds.json`.
      - Substitua `<PEER_ADDR>` por `localhost:7051`
 
    Por exemplo:
@@ -308,7 +308,7 @@ Execute o comando da CLI `peer channel fetch` para buscar o bloco genesis do can
 
 4. Execute o comando da CLI de peer a seguir para buscar o bloco genesis do canal.
 
-   **IMPORTANTE:** no comando a seguir, substitua cada ocorrência de `<PEER_ENROLL_ID>` pelo ID de inscrição associado a essa instância de peer que foi especificado no modelo de Iniciação Rápida. Esse valor pode ser localizado executando o comando `ls /etc/hyperledger/`. Haverá duas pastas listadas: `fabric` e a segunda é o seu `<PEER_ENROLL_ID>`.
+   **IMPORTANTE:** no comando a seguir, substitua cada ocorrência de `<PEER_ENROLL_ID>` pelo ID de inscrição associado a essa instância de peer e especificado no modelo de Iniciação Rápida. Esse valor pode ser localizado executando o comando `ls /etc/hyperledger/`. Haverá duas pastas listadas: a primeira é `fabric` e a segunda é a sua `<PEER_ENROLL_ID>`.
 
    ```
    CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/<PEER_ENROLL_ID>/tls/ca.crt CORE_PEER_TLS_ENABLED=true CORE_PEER_ADDRESS=${PEERADDR} CORE_PEER_LOCALMSPID=${ORGID} CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/<PEER_ENROLL_ID>/msp/ GOPATH=/ peer channel fetch 0 -o ${ORDERER_1} -c ${CHANNEL} --cafile /etc/hyperledger/<PEER_ENROLL_ID>/orderer_tlscacert.pem --tls
@@ -359,7 +359,7 @@ Depois de configurar o peer no AWS, é possível concluir várias etapas operaci
 {: #remote-peer-aws-high-availability}
 
 Por padrão, para o suporte de HA, o modelo de Iniciação Rápida implementa duas instâncias do peer, em duas zonas de disponibilidade diferentes.
-Para alavancar esse suporte de HA, também é necessário configurar seus [aplicativos clientes para alta disponibilidade](/docs/services/blockchain/v10_application.html#dev-app-ha-app).
+Para alavancar esse suporte de HA, também é necessário configurar seus [aplicativos clientes para alta disponibilidade](/docs/services/blockchain/best_practices.html#best-practices-app-ha-app).
 
 ## Considerações de segurança
 {: #remote-peer-aws-security}
@@ -404,7 +404,7 @@ Para obter mais informações sobre como isso pode ser realizado, veja [Residên
 
 O gerenciamento de chaves é um aspecto crítico da segurança do peer. Se uma chave privada for comprometida ou perdida, agentes hostis poderão acessar os dados e a funcionalidade de seu peer. O Enterprise Plan do {{site.data.keyword.blockchainfull_notm}} Platform usa os [Hardware Security Modules](/docs/services/blockchain/glossary.html#glossary-hsm) (HSM) para armazenar as chaves privadas de sua rede. O HSM é um dispositivo físico que evita que outras partes acessem a sua chave privada.
 
-Ao implementar um peer no AWS, você é responsável por gerenciar suas chaves privadas. Embora o {{site.data.keyword.blockchainfull_notm}} Platform gere suas chaves privadas, essas chaves não são armazenadas na Plataform. É essencial assegurar-se de que você armazene suas chaves em um local seguro para que elas não sejam comprometidas. É possível localizar a chave privada de seu peer na pasta de keystore de seu peer MSP, no diretório `/etc/hyperledger/<PEER_ENROLL_ID>/msp/keystore/` dentro de seu contêiner de peer. Para obter mais informações sobre os certificados dentro de seu peer, visite a seção [Membership Services Provider](/docs/services/blockchain/certificates.html#managing-certificates-msp) do tópico [Gerenciando certificados no {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/certificates.html#managing-certificates).
+Ao implementar um peer no AWS, você é responsável por gerenciar suas chaves privadas. Embora o {{site.data.keyword.blockchainfull_notm}} Platform gere suas chaves privadas, essas chaves não são armazenadas na Plataform. É essencial assegurar-se de que você armazene suas chaves em um local seguro para que elas não sejam comprometidas. É possível localizar a chave privada de seu peer na pasta de keystore de seu peer do MSP, no diretório `/etc/hyperledger/<PEER_ENROLL_ID>/msp/keystore/` dentro do contêiner de seu peer. Para obter mais informações sobre os certificados dentro de seu peer, visite a seção [Membership Services Provider](/docs/services/blockchain/certificates.html#managing-certificates-msp) do tópico [Gerenciando certificados no {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/certificates.html#managing-certificates).
 
 É possível usar o Key Escrow para recuperar chaves privadas perdidas. Isso precisa ser executado antes da perda de qualquer chave. Se uma chave privada não puder ser recuperada, será necessário obter novas chaves privadas obtendo um novo signCert da Autoridade de Certificação. Deve-se também remover e substituir seu certificado de administrador em quaisquer canais aos quais você esteja associado.
 

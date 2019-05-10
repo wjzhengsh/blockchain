@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-03-20"
 
 subcollection: blockchain
 
@@ -28,12 +28,12 @@ Les logiciels SDK Hyperledger Fabric fournissent un puissant jeu d'API qui perme
 
 Les instructions suivantes utilisent le [logiciel SDK Fabric Node![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://fabric-sdk-node.github.io/ "Logiciel SDK Hyperledger Fabric for jode.js") pour exploiter l'homologue et supposent une connaissance préalable du logiciel SDK. Vous pouvez utiliser le [tutoriel de développement d'applications](/docs/services/blockchain/v10_application.html#dev-app) pour en savoir plus sur l'utilisation du logiciel SDK Node avant de commencer, et comme guide pour le développement d'applications avec votre homologue lorsque vous êtes prêt à appeler et à interroger le code blockchain.
 
-Le démarrage rapide de l'homologue {{site.data.keyword.blockchainfull_notm}} Platform on AWS crée deux homologues pour la haute disponibilité. Par conséquent, vous devez suivre ces opérations une fois pour chaque homologue. Lorsque vous êtes prêt à appeler et à interroger le code blockchain depuis votre application, utilisez le logiciel SDK pour la connexion aux deux homologues pour vous assurer que les [applications sont hautement disponibles](/docs/services/blockchain/v10_application.html#dev-app-ha-app).
+Le démarrage rapide de l'homologue {{site.data.keyword.blockchainfull_notm}} Platform on AWS crée deux homologues pour la haute disponibilité. Par conséquent, vous devez suivre ces opérations une fois pour chaque homologue. Lorsque vous êtes prêt à appeler et à interroger le code blockchain depuis votre application, utilisez le logiciel SDK pour la connexion aux deux homologues pour vous assurer que les [applications sont hautement disponibles](/docs/services/blockchain/best_practices.html#best-practices-app-ha-app).
 
 ### Installation du logiciel SDK Node
 {: #remote-peer-aws-operate-install-sdk}
 
-Vous pouvez utiliser NPM pour installer le [le logiciel SDK Node![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://fabric-sdk-node.github.io/ "Logiciel SDK Hyperledger Fabric pour jode.js"):
+Vous pouvez utiliser NPM pour installer le [logiciel SDK Node![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://fabric-sdk-node.github.io/ "Logiciel SDK Hyperledger Fabric pour jode.js"):
 ```
 npm install fabric-client@1.2
 ```
@@ -51,7 +51,7 @@ Avant d'utiliser le logiciel SDK pour exploiter l'homologue, vous devez génére
 
 Vous devez envoyer par téléchargement le certificat signataire de votre logiciel SDK au réseau sur {{site.data.keyword.blockchainfull_notm}} Platform afin que les autres membres puissent reconnaître votre signature numérique.
 
-- Le certificat signataire se trouve dans le répertoire où votre logiciel SDK a généré votre matériel cryptographique, dans le fichier nommé admin. Copiez le certificat figurant entre guillemets après le champ `certificate`, commençant par `-----BEGIN CERTIFICATE-----` et se terminant par `-----END CERTIFICATE-----`. Vous pouvez utiliser l'interface CLI pour convertir le certificat au format PEM à l'aide de la commande `echo -e "<CERT>" > admin.pem`. Vous pouvez ensuite coller le contenu du certificat dans votre réseau de blockchain à l'aide du moniteur de réseau. Connectez-vous au réseau sur {{site.data.keyword.blockchainfull_notm}} Platform. A l'écran "Membres" du Moniteur réseau, cliquez sur **Certificats** > **Ajouter un certificat**. Indiquez un nom pour votre certificat et collez le contenu dans le champ **Certificat**. Cliquez sur **Redémarrer** lorsque vous êtes invité à indiquer si vous voulez redémarrer vos homologues. Cette opération doit être effectuée avant que votre organisation ne rejoigne le canal.
+- Le certificat signataire se trouve dans le répertoire où votre logiciel SDK a généré votre matériel cryptographique, dans le fichier nommé admin. Copiez le certificat figurant entre guillemets après la zone `certificate`, commençant par `-----BEGIN CERTIFICATE-----` et se terminant par `-----END CERTIFICATE-----`. Vous pouvez utiliser l'interface CLI pour convertir le certificat au format PEM à l'aide de la commande `echo -e "<CERT>" > admin.pem`. Vous pouvez ensuite coller le contenu du certificat dans votre réseau de blockchain à l'aide du moniteur de réseau. Connectez-vous au réseau sur {{site.data.keyword.blockchainfull_notm}} Platform. A l'écran "Membres" du Moniteur réseau, cliquez sur **Certificats** > **Ajouter un certificat**. Indiquez un nom pour votre certificat et collez le contenu dans le champ **Certificat**. Cliquez sur **Redémarrer** lorsque vous êtes invité à indiquer si vous voulez redémarrer vos homologues. Cette opération doit être effectuée avant que votre organisation ne rejoigne le canal.
 
 ### Envoi par téléchargement d'un certificat signataire à l'homologue
 {: #remote-peer-aws-operate-upload-signcert}
@@ -219,7 +219,7 @@ Sur votre machine locale, ouvrez un terminal de commandes et accédez au répert
    ```
    {:codeblock}
 
-2. Copiez le certificat TLS de vos services de tri de {{site.data.keyword.blockchainfull_notm}} Platform dans le dossier MSP. Votre profil de connexions contient le certificat nécessaire. A l'écran "Présentation" de votre Moniteur réseau, cliquez sur le bouton **Profil de connexion** et ouvrez le fichier JSON qui contient les données d'identification réseau. Accédez à la section `orderers`. Copiez le certificate qui suit `"pem:"`, commençant par `-----BEGIN CERTIFICATE-----` et se terminant par `-----END CERTIFICATE----- `. N'incluez pas les apostrophes.
+2. Copiez le certificat TLS de vos services de tri de {{site.data.keyword.blockchainfull_notm}} Platform dans le dossier MSP. Votre profil de connexions contient le certificat nécessaire. A l'écran "Présentation" de votre Moniteur réseau, cliquez sur le bouton **Profil de connexion** et ouvrez le fichier JSON qui contient les données d'identification réseau. Accédez à la section `orderers`. Copiez le certificat qui suit `"pem:"`, commençant par `-----BEGIN CERTIFICATE-----` et se terminant par `-----END CERTIFICATE----- `. N'incluez pas les apostrophes.
 
     Depuis votre fenêtre de terminal, exécutez les commandes suivantes :
     ```
@@ -249,7 +249,7 @@ Sur votre machine locale, ouvrez un terminal de commandes et accédez au répert
 
       **Remarque :** Par défaut, le modèle de démarrage rapide AWS crée deux instances homologue dans deux zones de disponibilité différentes. Si vous avez déjà exécuté ces étapes pour l'un de ces homologues, lorsque vous exécutez les étapes de la deuxième instance, le fichier cacert.pem file existe déjà. Continuez et remplacez-le par le certificat du second homologue.
 
-4. Pour donner à votre interface CLI l'autorisation d'installer le code blockchain sur l'homologue, envoyez par téléchargement le certificat signataire généré par le client CA Fabric dans le dossier admin de l'homologue et redémarrez ce dernier. Par conséquent, copiez le certificat `admincert/cert.pem` de votre machine locale dans le répertoire `/etc/hyperledger/<PEER_ENROLL_ID>/msp/admincerts/` du conteneur homologue sous le nom `cert2.pem`.
+4. Pour donner à votre interface CLI l'autorisation d'installer le code blockchain sur l'homologue, envoyez par téléchargement le certificat signataire généré par le client CA Fabric dans le dossier admin de l'homologue et redémarrez ce dernier. Par conséquent, copiez le certificat `admincert/cert.pem` de votre machine locale dans le répertoire `/etc/hyperledger/<PEER_ENROLL_ID>/msp/admincerts/` dans le conteneur d'homologues container en tant que `cert2.pem`.
 
     - Sur votre machine locale, exécutez les commandes suivantes :
 
@@ -378,7 +378,7 @@ la valeur de `PEERADDR` serait similaire à ceci :
     Remplacez les zones par vos informations.
       - Remplacez `<ORDERER_URL>` par le nom d'hôte et le port du service de tri du fichier `creds.json`.
       - Remplacez `<CHANNEL_NAME>` par le nom du canal que rejoint l'homologue.
-      - Remplacez `<CC_NAME>` par un nom pour faire référence à votre code blockchain.
+      - Remplacez `<CC_NAME>` par un nom pour faire référence à votre code blockchain. 
       - Remplacez `<ORGANIZATION_MSP_ID>` par le nom de l'organisation du fichier `creds.json`.
       - Remplacez `<PEER_ADDR>` par la valeur que vous avez construite à l'étape précédente.  
 

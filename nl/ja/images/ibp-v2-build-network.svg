@@ -18,7 +18,7 @@
    xml:space="preserve"
    sodipodi:docname="ibp-v2-build-network.svg"
    inkscape:version="0.92.3 (2405546, 2018-03-11)"
-   inkscape:export-filename="D:\_work\IBM\BM140\BM140ABD141_001\UT_kumi_BM\01_work\_Art\01_New\jpn\ibp-v2-build-network.png"
+   inkscape:export-filename="D:\_work\IBM\BM140\BM140ABD141_004\UT_kumi\01_work\_Art\01_New\jpn\ibp-v2-build-network.png"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96"><metadata
    id="metadata130"><rdf:RDF><cc:Work
@@ -38,7 +38,7 @@
    id="namedview126"
    showgrid="false"
    inkscape:zoom="1.5446266"
-   inkscape:cx="377.88326"
+   inkscape:cx="269.76652"
    inkscape:cy="386.5"
    inkscape:window-x="-8"
    inkscape:window-y="-8"
@@ -107,6 +107,7 @@
    style="-inkscape-font-specification:'MS UI Gothic, Normal';font-family:'MS UI Gothic';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:16px;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;">Org 1</text>
 
 
+
 <rect
    id="Rectangle_2_"
    x="369.5"
@@ -119,6 +120,7 @@
    class="st7 st4 st8"
    id="text16"
    style="-inkscape-font-specification:'MS UI Gothic, Normal';font-family:'MS UI Gothic';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:16px;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;">Org1 CA</text>
+
 
 
 <rect
@@ -135,11 +137,13 @@
    style="-inkscape-font-specification:'MS UI Gothic, Normal';font-family:'MS UI Gothic';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:16px;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;">Org1 MSP </text>
 
 
+
 <text
    transform="matrix(1 0 0 1 329.616 250)"
    class="st7 st4 st8"
    id="text21"
    style="-inkscape-font-specification:'MS UI Gothic, Normal';font-family:'MS UI Gothic';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:16px;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;">定義</text>
+
 
 
 <rect
@@ -156,6 +160,7 @@
    style="-inkscape-font-specification:'MS UI Gothic, Normal';font-family:'MS UI Gothic';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:16px;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;">Org 2</text>
 
 
+
 <rect
    id="Rectangle_5_"
    x="103.5"
@@ -168,6 +173,7 @@
    class="st7 st4 st8"
    id="text27"
    style="-inkscape-font-specification:'MS UI Gothic, Normal';font-family:'MS UI Gothic';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:16px;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;">Peer Org2</text>
+
 
 
 <rect
@@ -184,6 +190,7 @@
    style="-inkscape-font-specification:'MS UI Gothic, Normal';font-family:'MS UI Gothic';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:16px;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;">Org2 CA</text>
 
 
+
 <rect
    id="Rectangle_7_"
    x="311.5"
@@ -198,11 +205,13 @@
    style="-inkscape-font-specification:'MS UI Gothic, Normal';font-family:'MS UI Gothic';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:16px;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;">Org2 MSP </text>
 
 
+
 <text
    transform="matrix(1 0 0 1 329.616 574)"
    class="st7 st4 st8"
    id="text35"
    style="-inkscape-font-specification:'MS UI Gothic, Normal';font-family:'MS UI Gothic';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:16px;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;">定義</text>
+
 
 
 <rect
@@ -305,6 +314,7 @@
    style="-inkscape-font-specification:'MS UI Gothic, Normal';font-family:'MS UI Gothic';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:16px;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;">Peer Org1</text>
 
 
+
 <text
    transform="matrix(1 0 0 1 213 251)"
    class="st3 st4 st13"
@@ -312,11 +322,13 @@
    style="-inkscape-font-specification:'MS UI Gothic, Normal';font-family:'MS UI Gothic';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:16px;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;">台帳</text>
 
 
+
 <text
    transform="matrix(1 0 0 1 256.6936 251)"
    class="st3 st4 st13"
    id="text66"
    style="-inkscape-font-specification:'MS UI Gothic, Normal';font-family:'MS UI Gothic';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:16px;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;"> </text>
+
 
 
 <text
@@ -327,6 +339,7 @@
    y="266">X</text>
 
 
+
 <text
    transform="matrix(1 0 0 1 207 582)"
    class="st3 st4 st13"
@@ -334,11 +347,13 @@
    style="-inkscape-font-specification:'MS UI Gothic, Normal';font-family:'MS UI Gothic';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:16px;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;">台帳</text>
 
 
+
 <text
    transform="matrix(1 0 0 1 250.6936 582)"
    class="st3 st4 st13"
    id="text72"
    style="-inkscape-font-specification:'MS UI Gothic, Normal';font-family:'MS UI Gothic';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:16px;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;"> </text>
+
 
 
 <text
@@ -349,6 +364,7 @@
    y="597"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96">X</text>
+
 
 
 <ellipse
@@ -365,6 +381,7 @@
    style="-inkscape-font-specification:'MS UI Gothic, Normal';font-family:'MS UI Gothic';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:16px;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;">Channel 1</text>
 
 
+
 <rect
    id="Rectangle_9_"
    x="497.5"
@@ -377,6 +394,7 @@
    class="st3 st4 st5"
    id="text80"
    style="-inkscape-font-specification:'MS UI Gothic, Normal';font-family:'MS UI Gothic';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:16px;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;">Orderer Org</text>
+
 
 
 <rect
@@ -393,6 +411,7 @@
    style="-inkscape-font-specification:'MS UI Gothic, Normal';font-family:'MS UI Gothic';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:16px;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;">Orderer CA</text>
 
 
+
 <rect
    id="Rectangle_11_"
    x="694.5"
@@ -407,11 +426,13 @@
    style="-inkscape-font-specification:'MS UI Gothic, Normal';font-family:'MS UI Gothic';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:16px;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;">Orderer MSP </text>
 
 
+
 <text
    transform="matrix(1 0 0 1 725.616 405)"
    class="st7 st4 st8"
    id="text88"
    style="-inkscape-font-specification:'MS UI Gothic, Normal';font-family:'MS UI Gothic';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:16px;text-anchor:start;text-align:start;writing-mode:lr;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;">定義</text>
+
 
 
 <rect
@@ -525,6 +546,7 @@
    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16px;font-family:'MS UI Gothic';-inkscape-font-specification:'MS UI Gothic, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;fill:#010f5e"
    x="524.32397"
    y="379">順序付けプログラム</text>
+
 
 
 <g

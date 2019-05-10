@@ -98,7 +98,7 @@ Sie können andere [Organisationen](/docs/services/blockchain/glossary.html#glos
 
 Wenn Sie von einem Netzinitiator eingeladen werden, empfangen Sie eine E-Mail-Benachrichtigung mit Anweisungen, wie Sie an dem Netz teilnehmen. Führen Sie die Anweisungen in der E-Mail aus, sodass Sie zu einem der Mitglieder in dem Netz werden.
 
-Sie müssen eine [{{site.data.keyword.blockchainfull_notm}} Platform-Serviceinstanz ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://cloud.ibm.com/catalog/services/ibm-blockchain-5-prod) mit der Option für Starter Plan-Mitgliedschaft in {{site.data.keyword.cloud_notm}} erstellen. 
+Sie müssen eine [{{site.data.keyword.blockchainfull_notm}} Platform-Serviceinstanz ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://cloud.ibm.com/catalog/services/ibm-blockchain-5-prod) mit der Option für Starter Plan-Mitgliedschaft in {{site.data.keyword.cloud_notm}} erstellen.
 
 1. Melden Sie sich mit Ihrem {{site.data.keyword.cloud_notm}}-Konto an. Wenn Sie kein Konto haben, klicken Sie auf die Schaltfläche **Für Erstellung registrieren**.
 2. Wählen Sie die Cloud Foundry-Organisation aus, in der Sie Ihr {{site.data.keyword.blockchain}}-Netz speichern wollen.

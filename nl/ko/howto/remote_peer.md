@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-03-20"
 
 subcollection: blockchain
 
@@ -58,7 +58,7 @@ AWS [빠른 시작 템플리트![외부 링크 아이콘](../images/external_lin
 
 {{site.data.keyword.blockchainfull_notm}} Platform for AWS를 배치하는 방법에 대한 지시사항은 [Amazon Web Services에서 피어 배치](/docs/services/blockchain/howto/remote_peer_aws.html#remote-peer-aws)를 참조하십시오.
 
-다음 다이어그램에서는 {{site.data.keyword.blockchainfull_notm}} Platform for AWS 피어를 배치하는 프로세스를 설명합니다.
+다음 클릭 가능한 다이어그램에서는 {{site.data.keyword.blockchainfull_notm}} Platform for AWS 피어를 배치하는 프로세스를 설명합니다. 각 단계를 클릭하여 자세한 지시사항을 읽을 수 있습니다.
 
 <img usemap="#home_map1" border="0" class="image" id="image_ztx_crb_f1b2" src="../images/remote_peer_AWS_flow.png" width="750" alt="프로세스에 대한 세부사항을 보려면 상자를 클릭하십시오." style="width:750px;" />
 <map name="home_map1" id="home_map1">
@@ -124,7 +124,7 @@ AWS 피어를 배치한 다음 여러 작업 단계를 완료해야 피어에서
 
 - ZKP(Zero-Knowledge Proof)를 사용하면 “승인자”가 시크릿 자체를 노출하지 않고 시크릿을 알고 있음을 “확인자”에게 보증할 수 있습니다. 이 방식을 사용하면 알고 있는 내용을 표시하지 않고도 규정이 충족됨을 알고 있다고 표시할 수 있습니다.
 
-이 기술에 관한 자세한 정보는 [Hyperledger Fabric을 사용한 개인 및 기밀 트랜잭션 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/developerworks/cloud/library/cl-blockchain-private-confidential-transactions-hyperledger-fabric-zero-knowledge-proof/index.html "Hyperledger Fabric을 사용한 개인 및 기밀 트랜잭션")에서 얻을 수 있습니다.
+이 기술에 관한 자세한 정보는 [Hyperledger Fabric을 사용한 개인 및 기밀 트랜잭션 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://developer.ibm.com/tutorials/cl-blockchain-private-confidential-transactions-hyperledger-fabric-zero-knowledge-proof/ "Hyperledger Fabric을 사용한 개인 및 기밀 트랜잭션")에서 얻을 수 있습니다.
 
 ## 지원 받기
 {: #remote-peer-aws-about-support}

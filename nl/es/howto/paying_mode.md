@@ -88,11 +88,11 @@ Como alternativa a la adición de cuentas de otros miembros a la cuenta del paga
 1. El pagador crea una {{site.data.keyword.blockchainfull_notm}} Platform de la cadena de blockchain con la cuenta del pagador.
 2. Otros miembros añaden la cuenta del pagador a su cuenta de {{site.data.keyword.cloud_notm}} como **Gestor de facturación**.
   1. En la barra de menús de la parte superior de la consola de {{site.data.keyword.cloud_notm}}, pulse **Gestionar** > **Cuenta** > **Usuarios**.
-  2. En la página **Usuarios**, pulse el botón **Invitar usuarios**.
+  2. En la página **Usuarios**, pulse el botón **Invitar a usuarios**.
   3. Añada la cuenta del pagador bajo el campo **Dirección de correo electrónico**.
   4. En la sección **Acceso de Cloud Foundry**, elija la organización a la que desea añadir la cuenta del pagador en la lista desplegable.
   5. Seleccione **Gestor de facturación** como **Roles de la organización**.
-  6. Configure otros campos como corresponda y luego pulse **Invitar usuarios**.  
+  6. Configure otros campos como corresponda y luego pulse **Invitar a usuarios**.  
 3. El pagador invita a otros miembros a la red de blockchain en el supervisor de red de la red. Para obtener más información sobre cómo invitar a miembros de la red, consulte [Miembros](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-members).
 4. Luego cada miembro recibe una notificación por correo electrónico que contiene una invitación a unirse a la red. A continuación, el miembro puede unirse a la red. Para obtener más información, consulte el **paso 4** de la sección [Cómo pagar por otros miembros de la red](/docs/services/blockchain/howto/paying_mode.html#paying-mode-pay-for-others).
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-03-20"
 
 subcollection: blockchain
 
@@ -69,7 +69,7 @@ Swagger API を使用してネットワークの作成または参加を行う�
 使用可能なネットワーク・ロケーションでのみ、API を使用してブロックチェーン・ネットワークを作成できます。 ネットワークを作成する前に、以下の API を使用して、使用可能なネットワーク・ロケーションの現行リストを取得します。 この API を実行するのに資格情報は必要ありません。
 
 ```
-https://ibmblockchain-v2.ng.bluemix.net/api/v1/network-locations/available
+https://ibp-ep.us-south.ibm-blockchain-5-prod.cloud.ibm.com/api/v1/network-locations/available
 ```
 {:codeblock}
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-03-20"
 
 subcollection: blockchain
 
@@ -164,7 +164,7 @@ Le tableau suivant répertorie les paramètres configurables du graphique AWS et
 | `InstanceType` | Type d'instance EC2 pour les instances homologues. | m4.xlarge |
 | `KeyPairName` | Nom d'une paire de clés EC2 existante au sein de la région AWS. Vous devez la générer. | |
 | | | |
-| ** Configuration IBM Blockchain** | |
+|** Configuration IBM Blockchain** | |
 | `IBMBlockchainVersion` | Version IBM Blockchain à déployer. | 1.2.1 |
 | `StateDatabase` | Type de base de données à utiliser pour stocker l'état blockchain. Cette sélection doit correspondre au type de base de données d'état utilisé par le reste du réseau. | CouchDB|
 | `PeerVolumeSize` | Taille du volume EBS utilisé pour stocker les données persistantes (registre, base de données d'état, MSP) pour l'homologue, en Go. | 100 |
@@ -173,13 +173,13 @@ Le tableau suivant répertorie les paramètres configurables du graphique AWS et
 | `Peer 2 enroll ID` | ID d'inscription que vous avez entré dans votre écran relatif à l'autorité de certification de l'interface utilisateur d'IBM Blockchain Platform pour votre second homologue. | |
 | `Peer 2 enroll secret` | Secret d'inscription que vous avez entré dans votre écran relatif à l'autorité de certification de l'interface utilisateur d'IBM Blockchain Platform pour votre second homologue. | |
 | | | |
-| **Données d'identification du service du service IBM Blockchain**| | |
+|**Données d'identification du service du service IBM Blockchain**| | |
 | `Organization MSP` | Cette valeur peut se trouver dans l'interface utilisateur d'IBM Blockchain Platform. Cliquez sur le bouton Configuration de l'homologue distant de l'écran Présentation, puis copiez et collez ces informations ici. | |
 | `Certificate Authority (CA) Name` | Cette valeur peut se trouver dans l'interface utilisateur d'IBM Blockchain Platform. Cliquez sur le bouton Configuration de l'homologue distant de l'écran Présentation, puis copiez et collez ces informations ici.| |
 | `Certificate Authority (CA) URL` | Cette valeur peut se trouver dans l'interface utilisateur d'IBM Blockchain Platform. Cliquez sur le bouton Configuration de l'homologue distant de l'écran Présentation, puis copiez et collez ces informations ici, port compris. Si rien n'est indiqué, le port par défaut est 443. | |
 | `Certificate Authority (CA)  TLS Certificate`| Cette valeur peut se trouver dans l'interface utilisateur d'IBM Blockchain Platform. Cliquez sur le bouton Configuration de l'homologue distant de l'écran Présentation, puis copiez et collez ces informations ici.| |
 | | | |
-| **Autres paramètres**| | |
+|**Autres paramètres**| | |
 | `QSS3BucketName` | Nom du compartiment S3 pour les ressources de démarrage rapide. Ce nom e compartiment peut inclure des nombres, des lettres minuscules, des lettres majuscules et des traits d'union (-). Il ne peut pas commencer ou se terminer par un trait d'union (-). | `aws-quickstart` |
 | `QSS3KeyPrefix` | Préfixe de clé S3 pour les ressources de démarrage rapide. Ce préfixe de clé peut inclure des nombres, des lettres minuscules, des lettres majuscules, des traits d'union (-) et une barre oblique (/). | `quickstart-ibm-fabric/` |
 
@@ -264,7 +264,7 @@ Exécutez la commande de l'interface CLI `peer channel fetch` pour extraire le b
    ```
    {:codeblock}
 
-   - Copiez le certificat TLS des services de tri du profil de connexion vers l'homologue. Accédez à la section **orderers**. Copiez le certificate qui suit "pem:", commençant par -----BEGIN CERTIFICATE----- et se terminant par -----END CERTIFICATE-----. N'incluez pas les apostrophes. Exécutez la commande suivante depuis la ligne de commande, en remplaçant `<orderer cert>` par le contenu que vous avez copié depuis le fichier creds.json.
+   - Copiez le certificat TLS des services de tri du profil de connexion vers l'homologue. Accédez à la section **orderers**. Copiez le certificat qui suit "pem:", commençant par -----BEGIN CERTIFICATE----- et se terminant par -----END CERTIFICATE-----. N'incluez pas les apostrophes. Exécutez la commande suivante depuis la ligne de commande, en remplaçant `<orderer cert>` par le contenu que vous avez copié depuis le fichier creds.json.
 
    ```
    echo -e "<orderer cert>" > /etc/hyperledger/<PEER_ENROLL_ID>/orderer_tlscacert.pem
@@ -293,7 +293,7 @@ Exécutez la commande de l'interface CLI `peer channel fetch` pour extraire le b
 
    Remplacez les zones par vos informations.
      - Remplacez `<ORDERER_URL>` par le nom d'hôte et le port du service de tri du fichier `creds.json`.
-     - Remplacez `<CHANNEL_NAME>` par le nom du canal que va rejoindre l'homologue.
+     - Remplacez `<CHANNEL_NAME>` par le nom du canal que va rejoindre l'homologue. 
      - Remplacez `<ORGANIZATION_MSP_ID>` par le nom de l'organisation du fichier `creds.json`.
      - Remplacez `<PEER_ADDR>` par `localhost:7051`
 
@@ -308,7 +308,7 @@ Exécutez la commande de l'interface CLI `peer channel fetch` pour extraire le b
 
 4. Exécutez la commande d'interface CLI d'homologue suivante pour extraire le bloc d'origine du canal.
 
-   **IMPORTANT :** Dans la commande suivante, remplacez chaque occurrence de `<PEER_ENROLL_ID>` par l'ID d'inscription associé à cette instance homologue qui a été spécifiée dans le modèle de démarrage rapide. Cette valeur peut être trouvée en exécutant la commande `ls /etc/hyperledger/`. Deux dossiers doivent être répertoriés :`fabric`, et le second est votre `<PEER_ENROLL_ID>`.
+   **IMPORTANT :** Dans la commande suivante, remplacez chaque occurrence de `<PEER_ENROLL_ID>` par l'ID d'inscription associé à cette instance homologue qui a été spécifiée dans le modèle de démarrage rapide. Cette valeur peut être trouvée en exécutant la commande `ls /etc/hyperledger/`. Deux dossiers doivent être répertoriés :`fabric`, et le second est votre `<PEER_ENROLL_ID>`. 
 
    ```
    CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/<PEER_ENROLL_ID>/tls/ca.crt CORE_PEER_TLS_ENABLED=true CORE_PEER_ADDRESS=${PEERADDR} CORE_PEER_LOCALMSPID=${ORGID} CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/<PEER_ENROLL_ID>/msp/ GOPATH=/ peer channel fetch 0 -o ${ORDERER_1} -c ${CHANNEL} --cafile /etc/hyperledger/<PEER_ENROLL_ID>/orderer_tlscacert.pem --tls
@@ -344,7 +344,7 @@ Exécutez la commande de l'interface CLI `peer channel fetch` pour extraire le b
 * **Q**. Une erreur CREATE_FAILED s'est affichée lors du lancement du démarrage rapide.
 * **R**. Si AWS CloudFormation ne parvient pas à créer la pile, nous vous conseillons de relancer le modèle avec Rollback on failure défini sur `No`. (Ce paramètre figure sous Advanced dans la console AWS CloudFormation, page Options.) Avec ce paramètre, l'état de la pile est maintenu et l'instance continue de s'exécuter, de manière à vous permettre de résoudre le problème. (Consultez les fichiers journaux dans `%ProgramFiles%\Amazon\EC2ConfigService` et `C:\cfn\log`.)
 
-  - Lorsque vous définissez Rollback on failure sur `No`, des frais AWS continuent à vous être imputés pour cette pile. Veillez à supprimer la pile lorsque vous avez terminé l'identification et résolution des problèmes. Pour plus d'informations, voir  [Troubleshooting AWS CloudFormation ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/troubleshooting.html "Troubleshooting AWS CloudFormation") sur le site Web d'AWS.
+  - Lorsque vous définissez Rollback on failure sur `No`, des frais AWS continuent à vous être imputés pour cette pile. Veillez à supprimer la pile lorsque vous avez terminé l'identification et résolution des problèmes. Pour plus d'informations, voir [Troubleshooting AWS CloudFormation ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/troubleshooting.html "Troubleshooting AWS CloudFormation") sur le site Web d'AWS.
 
 * **Q**. Une erreur de limitation de taille s'est affichée lors du déploiement de modèles AWS Cloudformation.
 * **R**. Nous vous recommandons de lancer les modèles de démarrage rapide depuis l'emplacement fourni ou depuis un autre compartiment S3. Si vous déployez les modèles depuis une copie locale sur votre ordinateur ou à partir d'un emplacement non S3, vous risquez de rencontrer des limitations de taille de modèle lors de la création de modèle de la pile. Pour plus d'informations sur les limites AWS CloudFormation, voir la [documentation AWS![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cloudformation-limits.html "Limites AWS CloudFormation").
@@ -352,13 +352,13 @@ Exécutez la commande de l'interface CLI `peer channel fetch` pour extraire le b
 ## Etapes suivantes
 {: #remote-peer-aws-whats-next}
 
-Après que vous avez configuré l'homologue dans AWS, vous pouvez effectuer quelques étapes supplémentaires avant de soumettre les transactions et lire le registre partagé du réseau de blockchain. Pour plus d'informations, voir  [Exploitation des homologues dans AWS](/docs/services/blockchain/howto/remote_peer_operate_aws.html#remote-peer-aws-operate).
+Après que vous avez configuré l'homologue dans AWS, vous pouvez effectuer quelques étapes supplémentaires avant de soumettre les transactions et lire le registre partagé du réseau de blockchain. Pour plus d'informations, voir [Exploitation des homologues dans AWS](/docs/services/blockchain/howto/remote_peer_operate_aws.html#remote-peer-aws-operate).
 
 ## Haute disponibilité (HA)
 {: #remote-peer-aws-high-availability}
 
 Par défaut, pour la prise en charge de la haute disponibilité, le modèle de démarrage rapide déploie deux instances d'homologue, dans deux zones de disponibilité différentes.
-Pour optimiser cette prise en charge de la haute disponibilité, vous devez également configurer vos [applications client pour la haute disponibilité](/docs/services/blockchain/v10_application.html#dev-app-ha-app).
+Pour optimiser cette prise en charge de la haute disponibilité, vous devez également configurer vos [applications client pour la haute disponibilité](/docs/services/blockchain/best_practices.html#best-practices-app-ha-app).
 
 ## Remarques sur la sécurité
 {: #remote-peer-aws-security}
@@ -403,7 +403,7 @@ Pour plus de détails sur la mise en oeuvre de cette opération, voir [Hébergem
 
 La gestion des clés est un aspect essentiel de la sécurité de l'homologue. Si une clé privée est compromise ou égarée, des acteurs hostiles pourraient accéder aux données et aux fonctionnalités de votre homologue. Le plan Enterprise d'{{site.data.keyword.blockchainfull_notm}} Platform utilise des [modules de sécurité matérielle](/docs/services/blockchain/glossary.html#glossary-hsm) (HSM) pour stocker les clés privées de votre réseau. HSM est un dispositif physique qui empêche des tiers d'accéder à votre clé privée.
 
-Lorsque vous déployez un homologue distant sur AWS, vous êtes responsable de la gestion de vos clés privées. Bien qu'{{site.data.keyword.blockchainfull_notm}} Platform génère vos clés privées, ces clés ne sont pas stockées sur cette plateforme. Il est essentiel que vous stockiez vos clés dans un emplacement sécurisé afin qu'elles ne soient pas compromises. Vous pouvez trouver la clé privée de votre homologue dans le dossier du magasin de clés de votre MSP, dans le répertoire  `/etc/hyperledger/<PEER_ENROLL_ID>/msp/keystore/` au sein de votre conteneur d'homologue. Pour plus d'informations sur les certificats au sein de votre homologue distant, voir la section relative [Membership Services Provider](/docs/services/blockchain/certificates.html#managing-certificates-msp) de la rubrique [Gestion des certificats sur {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/certificates.html#managing-certificates).
+Lorsque vous déployez un homologue distant sur AWS, vous êtes responsable de la gestion de vos clés privées. Bien qu'{{site.data.keyword.blockchainfull_notm}} Platform génère vos clés privées, ces clés ne sont pas stockées sur cette plateforme. Il est essentiel que vous stockiez vos clés dans un emplacement sécurisé afin qu'elles ne soient pas compromises. Vous pouvez trouver la clé privée de votre homologue dans le dossier du magasin de clés de votre MSP, dans le répertoire `/etc/hyperledger/<PEER_ENROLL_ID>/msp/keystore/` au sein de votre conteneur d'homologues. Pour plus d'informations sur les certificats au sein de votre homologue distant, voir la section relative [Membership Services Provider](/docs/services/blockchain/certificates.html#managing-certificates-msp) de la rubrique [Gestion des certificats sur {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/certificates.html#managing-certificates).
 
 Vous pouvez utiliser Key Escrow pour récupérer des clés privées perdues. Cette opération doit être effectuée avant la perte de clés. Si une clé privée ne peut pas être récupérée, vous devez obtenir de nouvelles clés privées en obtenant un nouveau certificat SignCert auprès de votre autorité de certification. Vous devez également retirer et remplacer votre certificat admin des canaux que vous avez rejoints.
 

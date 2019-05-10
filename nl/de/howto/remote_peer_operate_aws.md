@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-03-20"
 
 subcollection: blockchain
 
@@ -28,7 +28,7 @@ Die Hyperledger Fabric-SDKs stellen eine leistungsstarke Gruppe von APIs zur Ver
 
 Die folgenden Anweisungen verwenden das [Fabric Node-SDK ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://fabric-sdk-node.github.io/ "Hyperledger Fabric SDK for jode.js"), um den Peer zu betreiben. Dabei wird davon ausgegangen, dass Sie bereits über Kenntnisse zu dem SDK verfügen. Sie können das [Lernprogramm "Anwendungen entwickeln"](/docs/services/blockchain/v10_application.html#dev-app) benutzen, um sich mit der Vorgehensweise zur Verwendung des Node-SDK vertraut zu machen. Außerdem dient es als Leitfaden für die Entwicklung von Anwendungen mit dem Peer, sobald Sie zum Aufrufen und Abfragen des Chaincodes bereit sind.
 
-Der Schnelleinstieg für Peers von {{site.data.keyword.blockchainfull_notm}} Platform in AWS erstellt zwei Peers für die Hochverfügbarkeit. Aus diesem Grund müssen Sie die operativen Schritte einmal pro Peer ausführen. Sobald Sie zum Abfragen und Aufrufen des Chaincodes über Ihre Anwendung bereit sind, dann stellen Sie für beide Peers vom SDK eine Verbindung her, um sicherzustellen, dass Ihre [Anwendungen hoch verfügbar](/docs/services/blockchain/v10_application.html#dev-app-ha-app) sind.
+Der Schnelleinstieg für Peers von {{site.data.keyword.blockchainfull_notm}} Platform in AWS erstellt zwei Peers für die Hochverfügbarkeit. Aus diesem Grund müssen Sie die operativen Schritte einmal pro Peer ausführen. Sobald Sie zum Abfragen und Aufrufen des Chaincodes über Ihre Anwendung bereit sind, dann stellen Sie für beide Peers vom SDK eine Verbindung her, um sicherzustellen, dass Ihre [Anwendungen hoch verfügbar](/docs/services/blockchain/best_practices.html#best-practices-app-ha-app) sind.
 
 ### Node-SDK installieren
 {: #remote-peer-aws-operate-install-sdk}
@@ -68,7 +68,7 @@ echo -e "<CERT.PEM>" > cert2.pem
 {:codeblock}
 
 - Ersetzen Sie `<PEER_ENROLL_ID>` durch die Eintragungs-ID, die in der Schnelleinstiegsvorlage angegeben wurde und dieser fernen Peerinstanz zugeordnet ist.  
-- Ersetzen Sie `<CERT.PEM>` durch Ihr signCert-Zertifikat. Es beginnt mit der Zeichenfolge `-----BEGIN CERTIFICATE-----` und endet mit der Zeichenfolge `-----END CERTIFICATE-----`.    
+- Ersetzen Sie `<CERT.PEM>` durch Ihr signCert-Zertifikat; dieses beginnt mit `-----BEGIN CERTIFICATE-----` und endet mit `-----END CERTIFICATE-----`.    
 
   **Hinweis:** Falls die Datei `cert.pem` vorhanden ist, überschreiben Sie sie nicht, sondern erstellen Sie eine neue Datei, beispielsweise `cert2.pem`.
 
@@ -133,7 +133,7 @@ Sie können den Peer auch über die Befehlszeile betreiben, indem Sie den Fabric
 ### Eintragung unter Verwendung des Fabric-CA-Clients durchführen
 {: #remote-peer-aws-operate-client-enroll}
 
-Der erste Schritt umfasst das Generieren der erforderlichen Zertifikate (Eintragung) mithilfe des Fabric-CA-Clients. Sie müssen zuerst den Fabric-CA-Client installieren. Laden Sie [fabric-ca-Binärkomponenten v1.2.1 für Ihre Plattform ![External link icon](../images/external_link.svg "External link icon")](https://nexus.hyperledger.org/content/repositories/releases/org/hyperledger/fabric-ca/hyperledger-fabric-ca/ "Index der Repositorys") auf Ihr lokales System herunter und extrahieren Sie sie. Verschieben Sie sie in einen Ordner wie z. B. `$HOME/fabric-ca-remote/`.
+Der erste Schritt umfasst das Generieren der erforderlichen Zertifikate (Eintragung) mithilfe des Fabric-CA-Clients. Sie müssen zuerst den Fabric-CA-Client installieren. Laden Sie [fabric-ca-Binärkomponenten v1.2.1 für Ihre Plattform ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://nexus.hyperledger.org/content/repositories/releases/org/hyperledger/fabric-ca/hyperledger-fabric-ca/ "Index der Repositorys") auf Ihr lokales System herunter und extrahieren Sie sie. Verschieben Sie sie in einen Ordner wie z. B. `$HOME/fabric-ca-remote/`.
 
 1.  Bereiten Sie Ihre Umgebung zur Verwendung des Fabric-CA-Clients vor. Wechseln Sie in das Verzeichnis, in das Sie die Clientbinärkomponenten verschoben haben, sodass Sie in Ihren Befehlen direkt darauf verweisen können.
     ```
@@ -249,7 +249,7 @@ Bevor Sie einen Peer betreiben können, müssen verschiedene Managementschritte 
 
       **Hinweis:** Die AWS-Schnelleinstiegsvorlage erstellt standardmäßig zwei Peerknoten in unterschiedlichen Verfügbarkeitszonen. Wenn Sie diese Schritte für einen der Peers bereits ausgeführt haben, ist die Datei "cacert.pem" beim Durchführen der Schritte für die zweite Instanz bereits vorhanden. Fahren Sie fort und ersetzen Sie sie durch das Zertifikat aus dem zweiten Peer.
 
-4. Um Ihrer Befehlszeilenschnittstelle die Berechtigung zur Installation des Chaincodes auf dem Peer zu erteilen, laden Sie das signCert-Zertifikat, das vom Fabric-CA-Client generiert wurde, in den Administratorordner (admin) des Peers hoch und starten Sie den Peer erneut. Kopieren Sie deshalb das Zertifikat `admincert/cert.pem` vom lokalen System in das Verzeichnis `/etc/hyperledger/<PEER_ENROLL_ID>/msp/admincerts/` im Peer-Container; verwenden Sie für die Kopie den Namen `cert2.pem`.
+4. Um Ihrer Befehlszeilenschnittstelle die Berechtigung zur Installation des Chaincodes auf dem Peer zu erteilen, laden Sie das signCert-Zertifikat, das vom Fabric-CA-Client generiert wurde, in den Administratorordner (admin) des Peers hoch und starten Sie den Peer erneut. Kopieren Sie deshalb das Zertifikat `admincert/cert.pem` vom lokalen System in das Verzeichnis `/etc/hyperledger/<PEER_ENROLL_ID>/msp/admincerts/` im Peer-Container las `cert2.pem`.
 
     - Führen Sie auf dem lokalen System die folgenden Befehle aus:
 
@@ -288,7 +288,7 @@ Bevor Sie einen Peer betreiben können, müssen verschiedene Managementschritte 
 ### Fabric-Container für Tools einrichten
 {: #remote-peer-aws-operate-fabric-cli}
 
-Nachdem alle Zertifikate an die erforderliche Position verschoben wurden, können Sie den Fabric-Container für Tools aus Docker installieren und verwenden. Diese Befehle sollten lokal auf Ihrer Maschine ausgeführt werden. Denken Sie daran, die Befehle in dem Verzeichnis auszuführen, in dem der MSP-Ordner gespeichert wurde. Bevor Sie diese Schritte ausführen, sollte [Git ![External link icon](../images/external_link.svg "External link icon")](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git "Getting Started - Installing Git") auf Ihrer lokalen Maschine installiert sein.   
+Nachdem alle Zertifikate an die erforderliche Position verschoben wurden, können Sie den Fabric-Container für Tools aus Docker installieren und verwenden. Diese Befehle sollten lokal auf Ihrer Maschine ausgeführt werden. Denken Sie daran, die Befehle in dem Verzeichnis auszuführen, in dem der MSP-Ordner gespeichert wurde. Bevor Sie diese Schritte ausführen, sollte [Git ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git "Getting Started - Installing Git") auf Ihrer lokalen Maschine installiert sein.   
 
 Laden Sie das Docker-Image der Fabric-Tools mit dem folgenden Befehl herunter:
 
@@ -377,7 +377,7 @@ Bevor Sie die CLI-Befehle für den Beitritt des Peers zu einem Kanal ausführen 
     Ersetzen Sie die Feldinhalte durch Ihre eigenen Angaben.
       - Ersetzen Sie `<ORDERER_URL>` durch den Hostnamen und den Port des Anordnungsknotens aus der Datei `creds.json`.
       - Ersetzen Sie `<CHANNEL_NAME>` durch den Namen des Kanals, an dem der Peer teilnimmt.
-      - Ersetzen Sie `<CC_NAME>` durch einen Namen, mit dem auf Ihren Chaincode verwiesen wird.
+      - Ersetzen Sie `<CC_NAME>` durch einen Namen, der auf Ihren Chaincode verweist.
       - Ersetzen Sie `<ORGANIZATION_MSP_ID>` durch den Namen der Organisation aus der Datei `creds.json`.
       - Ersetzen Sie `<PEER_ADDR>` durch den Wert, den Sie im vorherigen Schritt erstellt haben.  
 
@@ -527,8 +527,8 @@ Der Stack wird erfolgreich erstellt, aber Docker-Protokolle enthalten den folgen
 
 **Lösung:**  
 Dieser Fehler kann dadurch verursacht werden, dass bei der Bereitstellung der Schnelleinstiegsvorlage kein Port in der URL für die Zertifizierungsstelle angegeben wurde.
-Die URL für die Zertifizierungsstelle sollte ungefähr wie folgt aussehen: `https://<network>-org1-ca.stage.blockchain.ibm.com:31011`.
-Stellen Sie die Schnelleistiegsvorlage erneut bereit und achten Sie darauf, den richtigen Wert als URL für die Zertifizierungsstelle anzugeben.
+Die URL der Zertifizierungsstelle sollte etwa folgendermaßen aussehen: `https://<network>-org1-ca.stage.blockchain.ibm.com:31011`.
+Stellen Sie die Schnelleinstiegsvorlage erneut bereit und achten Sie darauf, den richtigen Wert als URL für die Zertifizierungsstelle anzugeben.
 
 ### **Problem:** Instanziieren von Chaincode schlägt mit Fehler fehl
 {: #remote-peer-aws-operate-problem-2}

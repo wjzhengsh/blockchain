@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -54,9 +54,12 @@ se deben crear y configurar con etiquetas que se puedan utilizar para adaptar el
 
 1. Para poder instalar un clasificador en {{site.data.keyword.cloud_notm}} Private, debe [instalar {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/ICP_setup.html#icp-setup) e [instalar el diagrama de Helm de {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/howto/helm_install_icp.html#helm-install).
 
-2. Si utiliza Community Edition y desea ejecutar este diagrama de Helm en un clúster de {{site.data.keyword.cloud_notm}} Private sin conexión a Internet, debe crear archivados en una máquina conectada a Internet para poder instalar los archivados en el clúster de {{site.data.keyword.cloud_notm}} Private. Para obtener más información, consulte [Adición de aplicaciones destacadas a clústeres sin conexión a Internet ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_package_offline.html "Adición de aplicaciones destacadas a clústeres sin conexión a Internet"){:new_window}. Tenga en cuenta que puede encontrar el archivo de especificación `manifest.yaml` en ibm-blockchain-platform-dev/ibm_cloud_pak en el diagrama de Helm.
+2. Si utiliza Community Edition y desea ejecutar este diagrama de Helm en un clúster de {{site.data.keyword.cloud_notm}} Private sin conexión a Internet, debe crear archivados en una máquina conectada a Internet para poder instalar los archivados en el clúster de {{site.data.keyword.cloud_notm}} Private. Para obtener más información, consulte
+[Adición de aplicaciones destacadas a clústeres sin conexión a Internet
+![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/app_center/add_package_offline.html "Adición de aplicaciones destacadas a clústeres sin conexión a Internet"){:new_window}. Tenga en cuenta que puede encontrar el archivo de especificación manifest.yaml en ibm-blockchain-platform-dev/ibm_cloud_pak en el diagrama de Helm.
 
-3. Recupere el valor de la dirección IP de proxy de clúster de la CA desde la consola de {{site.data.keyword.cloud_notm}} Private. **Nota:** necesitará ser un [administrador del clúster ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Acciones y roles de administrador de clúster") para acceder a la IP de proxy. Inicie sesión en el clúster de {{site.data.keyword.cloud_notm}} Private. En el panel de navegación de la izquierda, pulse **Plataforma** y, a continuación, pulse **Nodos** para ver los nodos que están definidos en el clúster. Pulse sobre el nodo que tenga el rol `proxy` y, a continuación, copie el valor de `Host IP` de la tabla. **Importante:** guarde este valor, ya que lo utilizará cuando configure el campo `Proxy IP` del diagrama de Helm.
+3. Recupere el valor de la dirección IP de proxy de clúster de la CA desde la consola de {{site.data.keyword.cloud_notm}} Private. **Nota:** necesitará ser un
+[administrador del clúster ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/user_management/assign_role.html "Acciones y roles de administrador de clúster") para acceder a la IP de proxy. Inicie sesión en el clúster de {{site.data.keyword.cloud_notm}} Private. En el panel de navegación de la izquierda, pulse **Plataforma** y, a continuación, pulse **Nodos** para ver los nodos que están definidos en el clúster. Pulse sobre el nodo que tenga el rol `proxy` y, a continuación, copie el valor de `Host IP` de la tabla. **Importante:** guarde este valor, ya que lo utilizará cuando configure el campo `Proxy IP` del diagrama de Helm.
 
 4. Cree un [archivo de configuración de clasificador y almacénelo como secreto de Kubernetes en {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/howto/orderer_deploy_icp.html#icp-orderer-deploy-config-file).
 
@@ -65,7 +68,7 @@ se deben crear y configurar con etiquetas que se puedan utilizar para adaptar el
 
 Para desplegar un clasificador, primero debe crear un archivo de configuración que contiene información importante sobre la identidad del clasificador y su CA. A continuación, debe pasar este archivo al diagrama de Helm durante la configuración utilizando un objeto de [secreto de Kubernetes ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://kubernetes.io/docs/concepts/configuration/secret/). Este archivo permitirá que el clasificador pueda obtener los certificados que necesita de la CA para unirse a una red blockchain. También contiene un certificado de administrador que le permitirá trabajar con el clasificador como usuario administrador. Siga las instrucciones para [utilizar la CA para desplegar un clasificador o igual](/docs/services/blockchain/howto/CA_operate.html#ca-operate-deploy-orderer-peer) antes de la configuración del clasificador.
 
-Debe proporcionar los nombres de host de CSR en el archivo de configuración. Esto incluye el `nombre de host de servicio`, que estará basado en el `nombre de release de Helm` que especifique durante el despliegue. El `nombre de host de servicio` es el `helm_release_name` que especifique con la serie `-orderer` añadida al final. Por ejemplo, si especifica un `nombre de release de Helm` de `orderer1`, puede insertar el valor siguiente en la sección `"csr"` del archivo:
+Debe proporcionar los nombres de host de CSR en el archivo de configuración. Los nombres de host de CSR incluyen la dirección IP de proxy del clúster donde va a desplegar el componente, así como el nombre de host de servicio que será el nombre de host del diagrama de Helm. El `nombre de host de servicio` se basa en el `nombre de release de Helm` que especifique durante el despliegue. El `nombre de host de servicio` es el `helm_release_name` que especifique con la serie `-orderer` añadida al final. Por ejemplo, si especifica un `nombre de release de Helm` de `orderer1`, puede insertar el valor siguiente en la sección `"csr"` del archivo:
 
 ```
 "csr": {
@@ -153,8 +156,11 @@ En la tabla siguiente se muestran los parámetros configurables de la plataforma
 
 |  Parámetro     | Descripción    | Valor predeterminado  | Obligatorio |
 | --------------|-----------------|-------|------- |
+|**Parámetros generales**| Parámetros que configuran el diagrama de Helm | | |
 | `Nombre de release de Helm`| Nombre del release de Helm. Debe comenzar por una letra minúscula y terminar por un carácter alfanumérico, y solo debe contener guiones y caracteres alfanuméricos. Debe utilizar un nombre de release de Helm exclusivo cada vez que intente instalar un componente. **Importante:** Este valor debe coincidir con el valor que ha utilizado para generar el 'nombre de host de servicio' para el campo "hosts" del [archivo de secreto JSON.](/docs/services/blockchain/howto/orderer_deploy_icp.html#icp-orderer-deploy-config-file) | ninguno | sí  |
 | `Espacio de nombres de destino`| Elija el espacio de nombres de Kubernetes para instalar el diagrama de Helm. | ninguno | sí |
+| `Políticas de espacio de nombres de destino`| Muestra las políticas de seguridad de pod del espacio de nombres elegido, que deben incluir una política **`ibm-privileged-psp`**. De lo contrario,
+[enlace una PodSecurityPolicy](/docs/services/blockchain?topic=blockchain-icp-setup#icp-setup-psp) con el espacio de nombres. | ninguno | no |
 |**Configuración global**| Parámetros que se aplican a todos los componentes del diagrama de Helm|||
 | `Nombre de cuenta de servicio`| Especifique el nombre de la [cuenta de servicio ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/) que utilizará para ejecutar el pod. | predeterminado | no |
 
@@ -165,12 +171,12 @@ En la tabla siguiente se muestran los parámetros configurables de la plataforma
 | --------------|-----------------|-------|------- |
 | `Instalar clasificador`| Selecciónelo para instalar un clasificador. | sin marcar | sí, si desea desplegar un clasificador |
 | `Arquitectura del nodo trabajador de clasificador`| Seleccione su arquitectura de nodo trabajador de {{site.data.keyword.cloud_notm}} Private (AMD64 o S390X). | Arquitectura autodetectada basada en el nodo maestro | sí |
-| `Configuración de clasificador`| Puede personalizar la configuración del clasificador pegando su propio archivo de configuración `orderer.yaml` en este campo. Para ver un archivo `orderer.yaml` de ejemplo, consulte la [configuración de ejemplo de `orderer.yaml` ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://github.com/hyperledger/fabric/blob/release-1.2/sampleconfig/orderer.yaml) **Solo para usuarios avanzados**. | ninguno | no |
+| `Configuración de clasificador`| Puede personalizar la configuración del clasificador pegando su propio archivo de configuración `orderer.yaml` en este campo. Para ver un archivo `orderer.yaml` de ejemplo, consulte la [configuración de ejemplo de `orderer.yaml` ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://github.com/hyperledger/fabric/blob/release-1.4/sampleconfig/orderer.yaml) **Solo para usuarios avanzados**. | ninguno | no |
 | `Secreto de MSP de organización (obligatorio)`| Especifique el nombre del objeto de secreto que contiene las claves y los certificados de MSP de organización. | ninguno | sí |
 | `Persistencia de datos de clasificador habilitada` | Los datos estarán disponibles cuando se reinicie el contenedor. Si no está marcada esta opción, se perderán todos los datos en el caso de una migración tras error o de un reinicio del pod. | marcada | no |
 | `Utilizar suministro dinámico de clasificador` | Marcar para habilitar el suministro dinámico para volúmenes de almacenamiento. | marcada | no |
 | `Repositorio de imágenes de clasificador` | Ubicación del diagrama de Helm de clasificador. Este campo se rellena automáticamente con la vía de acceso instalada. Si utiliza Community Edition y no tiene acceso a Internet, cambie este campo a la ubicación donde haya descargado la imagen de clasificador de Fabric. | ibmcom/ibp-fabric-orderer | no |
-| `Etiqueta de imagen de Docker de clasificador`| Un registro de la imagen de Docker. Este campo se rellena automáticamente con la versión de la imagen. No lo modifique.| 1.2.1 | sí |
+| `Etiqueta de imagen de Docker de clasificador`| Un registro de la imagen de Docker. Este campo se rellena automáticamente con la versión de la imagen. No lo modifique.| 1.4.0 | sí |
 | `Tipo de consenso de clasificador`| El tipo de consenso del servicio de ordenación. | SOLO | sí |
 | `Nombre de organización de clasificador`| Especifique el nombre que desee utilizar para la organización del clasificador. Si también tiene pensado desplegar iguales, asegúrese de utilizar un nombre distinto al que vaya a proporcionar para los iguales. Por ejemplo, proporcione a la organización de clasificador un nombre como `ordererOrg` | ninguno | sí |
 | `ID de MSP de organización de clasificador`| Especifique el nombre que desee utilizar para el ID de MSP de la organización del clasificador. Debe ser el mismo nombre que proporcione a la organización del clasificador, y se establecerá como una variable de entorno en el proceso de despliegue. Tome nota de este valor, ya que necesitará hacer referencia al mismo más adelante. | ninguno | sí |
@@ -180,16 +186,23 @@ En la tabla siguiente se muestran los parámetros configurables de la plataforma
 | `Valor de selector de clasificador`| [Valor de selector ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) para la PVC. | ninguno | no |
 | `Modalidad de acceso de almacenamiento de clasificador`| Especifique la [modalidad de acceso ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes) al almacenamiento para la PVC. | ReadWriteMany | sí |
 | `Tamaño de reclamación de volumen de clasificador`| Elija el tamaño de disco a utilizar, que debe ser al menos de 2 Gi. | 8 Gi | sí |
-| Tipo de servicio de clasificador | Se usa para especificar si los [puertos externos se deben exponer ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types) en el igual. Seleccione NodePort para exponer los puertos externamente (recomendado), y ClusterIP para no exponer los puertos. LoadBalancer y ExternalName no se admiten en este release | NodePort | sí |
+| `Tipo de servicio de clasificador` | Se usa para especificar si los [puertos externos se deben exponer ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types) en el igual. Seleccione NodePort para exponer los puertos externamente (recomendado), y ClusterIP para no exponer los puertos. LoadBalancer y ExternalName no se admiten en este release | NodePort | sí |
 | `Solicitud de CPU de clasificador`| Especifique el número mínimo de CPU a asignar al clasificador. | 1 | sí |
 | `Límite de CPU de clasificador`| Especifique el número máximo de CPU a asignar al clasificador. | 2 | sí |
 | `Solicitud de memoria de clasificador`| Especifique la cantidad mínima de memoria a asignar al clasificador. | 1Gi | sí |
 | `Límite de memoria de clasificador`| Especifique la cantidad máxima de memoria a asignar al clasificador. | 2Gi | sí |
+| `Solicitud de CPU de proxy web gRPC`| Especifique el número mínimo de CPU en milicpus (m) a asignar al proxy web gRPC. | 100 m | sí |
+| `Límite de CPU de proxy web gRPC`| Especifique el número máximo de CPU en milicpus (m) a asignar al proxy web gRPC. | 200 m | sí |
+| `Solicitud de memoria de proxy web gRPC`| Especifique la cantidad mínima de memoria a asignar al proxy web gRPC. | 100Mi | sí |
+| `Límite de memoria de proxy web gRPC`| Especifique la cantidad máxima de memoria a asignar al proxy web gRPC. | 200Mi | sí |
+
 
 ### Utilización de la línea de mandatos de Helm para instalar el release de Helm
 {: #icp-orderer-deploy-helm-cli}
 
-Como alternativa, puede utilizar la CLI de Helm para instalar el release de Helm. Antes de ejecutar el mandato `helm install`, asegúrese de [añadir el repositorio de Helm del clúster al entorno de CLI de Helm ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_int_helm_repo_to_cli.html "Adición del repositorio interno de Helm a la CLI de Helm").
+Como alternativa, puede utilizar la CLI de Helm para instalar el release de Helm. Antes de ejecutar el mandato `helm install`, asegúrese de
+[añadir el repositorio de Helm del clúster al entorno de CLI de Helm
+![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/app_center/add_int_helm_repo_to_cli.html "Adición del repositorio interno de Helm a la CLI de Helm").
 
 Puede establecer los parámetros necesarios para la instalación creando un archivo `yaml` y pasándolo al mandato `helm install` siguiente.
 

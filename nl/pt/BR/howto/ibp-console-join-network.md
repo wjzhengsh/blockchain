@@ -2,8 +2,7 @@
 
 copyright:
   years: 2019
-
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -21,7 +20,7 @@ subcollection: blockchain
 # Associar-se a um tutorial de rede
 {: #ibp-console-join-network}
 
-O {{site.data.keyword.blockchainfull}} Platform é uma oferta blockchain-as-a-service que permite desenvolver, implementar e operar aplicativos e redes de blockchain. É possível obter mais informações sobre os componentes de blockchain e como eles trabalham juntos visitando a [Visão geral do componente Blockchain](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview). Este tutorial é a segunda parte na [série de tutorial de rede de amostra](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-sample-tutorial) e descreve como criar nós no console do {{site.data.keyword.blockchainfull_notm}} Platform e conectá-los a um consórcio de blockchain hospedado em outro cluster.
+O {{site.data.keyword.blockchainfull}} Platform é uma oferta de blockchain-as-a-service que permite que você desenvolva, implemente e opere aplicativos e redes de blockchain. É possível obter mais informações sobre os componentes de blockchain e como eles trabalham juntos visitando a [Visão geral do componente Blockchain](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview). Este tutorial é a segunda parte na [série de tutorial de rede de amostra](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-sample-tutorial) e descreve como criar nós no console do {{site.data.keyword.blockchainfull_notm}} Platform e conectá-los a um consórcio de blockchain hospedado em outro cluster.
 {:shortdesc}
 
 
@@ -67,7 +66,7 @@ Para cada organização que você deseja criar usando o console, é necessário 
 
 Neste tutorial, criaremos uma organização e criaremos **uma CA**.
 
-### Criando sua CA de organização do peer
+### Criando sua CA da organização do peer
 {: #ibp-console-join-network-create-CA-org2CA}
 
 Como parte deste tutorial, sua CA emite as chaves públicas e privadas para seus usuários e nós. Essas identidades não são gerenciadas pela {{site.data.keyword.IBM_notm}} e as chaves não são armazenadas no cluster Kubernetes ou no console. Eles são armazenados somente no armazenamento local de seu navegador. Portanto, certifique-se de exportar suas identidades e o MSP da organização. Se você tentar acessar o console de uma máquina diferente ou de um navegador diferente, será necessário importar essas identidades e definições de organização.  
@@ -75,11 +74,12 @@ Como parte deste tutorial, sua CA emite as chaves públicas e privadas para seus
 
 Execute as etapas a seguir em seu console:  
 
-1. Navegue para a guia **Nós** à esquerda e clique em **Incluir Autoridade de certificação**. Os painéis laterais de quatro etapas permitirão que você customize a CA que você deseja criar e a organização para a qual essa CA emitirá chaves.
+1. Navegue para a guia **Nós** à esquerda e clique em **Incluir Autoridade de certificação**. Os painéis laterais permitirão que você customize a CA que deseja criar e a organização para a qual ela emitirá chaves.
 2. Clique em  ** {{site.data.keyword.cloud_notm}} **  em  ** Criar autoridade de certificação **.
 3. Use o segundo painel lateral para fornecer à sua CA um **nome de exibição**. Nosso valor recomendado para essa CA é `Org2 CA`.
 4. No próximo painel, forneça suas credenciais de administrador de CA especificando um **ID de administrador** de `admin` e fornecendo qualquer segredo que você desejar, mas recomendamos `adminpw` para o propósito deste tutorial.
-5. Clique em  ** Avançar **  e, em seguida,  ** Incluir autoridade de certificação **.
+5. Se estiver usando um cluster pago, no próximo painel, você terá a oportunidade de configurar a alocação de recurso para o nó. Para os propósitos desse tutorial, é possível aceitar todos os padrões e clicar em **Avançar**. Se desejar saber mais sobre como alocar recursos para seu nó, consulte este tópico em [Alocando recursos](/docs/services/blockchain?topic=blockchain-ibp-console-govern#ibp-console-govern-allocate-resources). Se estiver usando um cluster gratuito, a página **Resumo** já estará visível.
+6. Revise a página Resumo e, em seguida, clique em **Incluir autoridade de certificação**.
 
 **Tarefa: criando a CA da organização de peer**
 
@@ -90,6 +90,8 @@ Execute as etapas a seguir em seu console:
 *Figura 2. Criando a CA da organização de peer*  
 Depois de implementar a CA, você a usará quando criar o MSP de sua organização, registrar usuários e criar seu ponto de entrada para uma rede, o **peer**.
 
+Os usuários avançados podem já ter sua própria CA e não desejar criar uma nova no console. Se a sua CA existente puder emitir certificados no formato `X.509`, será possível usá-la em vez de criar uma nova aqui. Consulte este tópico em [Usando uma CA de terceiro com seu peer ou solicitador](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-identities) para obter mais informações.
+
 ### Usando sua CA para registrar identidades
 {: #ibp-console-join-network-use-CA-org2}
 
@@ -98,12 +100,15 @@ Cada nó ou aplicativo que você deseja criar precisa de chaves públicas e priv
 * **Um administrador de organização** Essa Identidade permite que você opere os nós usando o console da plataforma.
 * **Uma identidade de peer** Essa identidade permitirá que você implemente um peer.
 
+Dependendo de seu tipo de cluster, a implementação da CA poderá levar até dez minutos. O quadrado verde no quadro da CA indicará que ela está "Em execução" e poderá ser usada para registrar identidades. Antes de continuar com as etapas abaixo para registrar identidades, deve-se aguardar até que o status da CA seja "Em execução".
+{:important}
+
 Para gerar esses certificados, conclua as etapas a seguir:
 
-1. No console, use a guia **Nós** para navegar para o `Org2 CA` que você criou.
-2. Depois de selecionar sua CA, será necessário registrar um administrador para esta organização, `org2`, além de uma identidade para o próprio peer. Você já deve ter visto uma identidade nessa página; é o administrador que você criou para a autoridade de certificação. Para registrar nossos novos usuários, clique no botão **Registrar usuário**.
+1. No console, clique na guia **Nós**. Quando o indicador de status no canto superior direito da `Org2 CA` estiver verde e `Running`, clique no quadro para abri-lo.
+2. Depois de clicar em sua CA para abri-la, será necessário registrar uma identidade do administrador para essa organização, `org2`, além de uma identidade para o próprio peer. Aguarde até que a identidade `admin` que você acabou de criar esteja visível na tabela e, em seguida, clique no botão **Registrar usuário** para registrar nossos novos usuários.
 3. Para o administrador da organização, forneça um ID de inscrição de `org2admin`. É possível usar qualquer segredo, mas sugerimos `org2adminpw` para ajudá-lo a seguir adiante. Clique em **Avançar**.
-4. Na próxima etapa, configure o Tipo para essa identidade como `client` e selecione uma das organizações afiliadas na lista suspensa. O campo de afiliação é para usuários avançados e não é usado pelo tutorial. Os itens na lista são afiliações padrão do Fabric CA. Se desejar obter mais informações sobre como as afiliações são usadas pelo Fabric CA, consulte este tópico em [Registrando uma nova identidade ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/users-guide.html#registering-a-new-identity). Por enquanto, selecione qualquer afiliação na lista, por exemplo, `org2` e clique em **Avançar**.
+4. Na próxima etapa, configure o Tipo dessa identidade como `client` e deve-se selecionar qualquer uma das organizações afiliadas na lista suspensa. O campo de afiliação é para usuários avançados e não é usado pelo tutorial, mas é um campo necessário para o painel. Os itens na lista são afiliações padrão do Fabric CA. Se desejar obter mais informações sobre como as afiliações são usadas pelo Fabric CA, consulte este tópico em [Registrando uma nova identidade ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/users-guide.html#registering-a-new-identity). Por enquanto, selecione qualquer afiliação na lista, por exemplo, `org2` e clique em **Avançar**.
 5. Sinta-se à vontade para deixar os campos **Inscrições máximas** e **Incluir atributos** em branco. Eles não são usados por este tutorial, mas é possível obter mais informações sobre o que eles são neste tópico em [Registrando identidades](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-register).
 6. Após o administrador da organização ter sido registrado, repita a etapa dois até a etapa cinco para a identidade do peer, usando o mesmo `Org2 CA`, fornecendo a ele um ID de inscrição de `peer2`. Como antes, recomendamos um segredo de `peer2pw` para ajudá-lo a seguir adiante. Essa é uma identidade do nó, portanto, selecione `peer` como o **Tipo** na próxima etapa. Em seguida, ignore **Inscrições máximas** e **Atributos** como antes.
 
@@ -121,15 +126,15 @@ Para gerar esses certificados, conclua as etapas a seguir:
 
 Agora que criamos a CA do peer e a usamos para **registrar** nossas identidades de organização, precisamos criar uma definição formal da organização de peer, que é conhecida como definição de Membership Services Provider (MSP). Muitos peers podem pertencer a uma organização. **Você não precisa criar uma nova organização toda vez que criar um peer.** Como essa é a primeira vez que passamos pelo tutorial, criaremos o ID do MSP para essa organização. Durante o processo de criação do MSP, nós vamos gerar certificados para a identidade `org2admin` e incluí-los em nossa carteira eletrônica do console.
 
-1. Navegue para a guia **Organizações** na navegação esquerda e clique em **Criar definição de MSP**.
+1. Navegue para a guia **Organizações** na navegação esquerda e clique em **Criar definição do MSP**.
 2. Forneça ao seu MSP um nome de exibição como `Org2 MSP` e um ID como `org2msp`. Se desejar especificar seu próprio ID do MSP nesse campo, certifique-se de seguir as especificações sobre as limitações para esse nome na dica de ferramenta.
 3. Em **Detalhes da autoridade de certificação raiz**, especifique a CA do peer que criamos como sua CA raiz para sua organização. Se essa for sua primeira vez neste tutorial, você deverá ver somente um: `Org2 CA`. Selecione-o.
-4. Os campos **ID de inscrição** e **Segredo de inscrição** abaixo disso serão preenchidos automaticamente com o ID de inscrição e o segredo do primeiro usuário criado com sua CA. É possível usar esses valores, mas não recomendamos que você use a sua identidade de administrador de CA como o seu administrador de organização.  Em vez disso, por motivos de segurança, recomendamos inserir o ID de inscrição e o segredo separados do criado para o administrador da organização, `org2admin` e `org2adminpw`. Em seguida, forneça a essa identidade um nome de exibição, tal como `Org2 Admin`.
+4. Os campos **ID de inscrição** e **Segredo de inscrição** abaixo disso serão preenchidos automaticamente com o ID de inscrição e o segredo do primeiro usuário criado com sua CA. É possível usar esses valores, mas não recomendamos que você use a sua identidade do administrador de CA como o seu administrador de organização.  Em vez disso, por motivos de segurança, recomendamos inserir o ID de inscrição e o segredo separados do criado para o administrador da organização, `org2admin` e `org2adminpw`. Em seguida, forneça a essa identidade um nome de exibição, tal como `Org2 Admin`.
 5. Clique no botão **Gerar** para inscrever essa identidade como o administrador de sua organização e exportar a identidade para a carteira eletrônica, na qual ela será usada ao criar o peer e ao criar canais.
 6. Clique em **Exportar** para exportar os certificados de administrador para o sistema de arquivos. Como dissemos acima, essa identidade não é armazenada no cluster ou gerenciada pelo {{site.data.keyword.IBM_notm}}. Ela é armazenada somente em seu armazenamento local do navegador. Se você mudar os navegadores, será necessário importar essa identidade para a sua carteira eletrônica do console para ser capaz de administrar o peer.
-7. Clique em **Criar definição de MSP**.
+7. Clique em **Criar definição do MSP**.
 
-**Tarefa: criar a definição de MSP da organização de peer**
+**Tarefa: criar a definição do MSP da organização de peer**
 
   |  | **Nome de exibição** | **ID do MSP** | **ID de inscrição**  | **Segredo** |
   | ------------------------- |-----------|-----------|-----------|-----------|
@@ -138,7 +143,7 @@ Agora que criamos a CA do peer e a usamos para **registrar** nossas identidades 
   | **Certificado do administrador da organização** | |  | org2admin | org2adminpw |
   | **Identidade** | Administrador da Org2 |||||
 
-  *Figura 4. Criar a definição de MSP da organização de peer*  
+  *Figura 4. Criar a definição do MSP da organização de peer*  
 
 Depois de criar o MSP, você conseguirá ver o administrador da organização de peer em sua carteira eletrônica do console.
 
@@ -179,8 +184,9 @@ Use seu console para executar as etapas a seguir:
 5. O próximo painel lateral solicita informações de CA do TLS. Embora seja possível criar administradores separados para a CA TLS que foi implementada com sua CA, isso não é necessário.
    - Forneça o **ID de inscrição do TLS**, o `admin` e o segredo `adminpw`. Os mesmos valores são o ID de inscrição e o segredo de inscrição que você forneceu ao criar a autoridade de certificação.
    - O **Nome do host do CSR TLS** destina a um usuário avançado e é usado para especificar um nome de domínio customizado que pode ser usado para direcionar o terminal de peer. Deixe o **Nome do host de TLS CSR** em branco por enquanto, ele não é usado neste tutorial.
-6. O último painel lateral solicitará para **Associar uma identidade** e torná-la a administradora de seu peer. Selecione sua identidade de administrador de peer `Org2 Admin`.
-7. Revise o resumo e clique em **Incluir peer**.
+6. O próximo painel lateral solicita **Associar uma identidade** e torná-la o administrador de seu peer. Selecione sua identidade do administrador de peer `Org2 Admin`.
+7. Se estiver usando um cluster pago, no próximo painel, você terá a oportunidade de configurar a alocação de recurso para o nó. Para os propósitos desse tutorial, é possível aceitar todos os padrões e clicar em **Avançar**. Se desejar saber mais sobre como alocar recursos para seu nó, consulte este tópico em [Alocando recursos](/docs/services/blockchain?topic=blockchain-ibp-console-govern#ibp-console-govern-allocate-resources). Se estiver usando um cluster gratuito, a página **Resumo** já estará visível.
+8. Revise a página Resumo e, em seguida, clique em **Incluir peer**.
 
 **Tarefa: implementando um peer**
 
@@ -201,14 +207,14 @@ Use seu console para executar as etapas a seguir:
 
 Conforme observamos anteriormente, uma organização peer deve ser um membro de um consórcio do solicitador antes que possa criar ou se associar a um canal. Isso é porque os canais são, em um nível técnico, **caminhos de sistema de mensagens** entre peers por meio do solicitador. Assim como um peer pode ser associado a vários canais sem informações passando de um canal para outro, um solicitador também pode ter vários canais em execução por meio dele sem expor dados às organizações em outros canais.
 
-Como somente administradores de solicitadores podem incluir organizações peer no consórcio, você precisará **ser** o administrador do solicitador ou **enviar** informações de MSP para o administrador do solicitador. Neste tutorial, é possível **incluir a organização de peer no solicitador em seu console**, se você estiver hospedando o solicitador. Ou você precisa **exportar suas informações de organização** e fornecê-las ao administrador do solicitador, que criou a rede na qual o solicitador reside. O administrador do solicitador pode, então, importar sua organização e incluí-la no consórcio.
+Como somente administradores de solicitadores podem incluir organizações peer no consórcio, você precisará **ser** o administrador do solicitador ou **enviar** informações do MSP para o administrador do solicitador. Neste tutorial, é possível **incluir a organização de peer no solicitador em seu console**, se você estiver hospedando o solicitador. Ou você precisa **exportar suas informações de organização** e fornecê-las ao administrador do solicitador, que criou a rede na qual o solicitador reside. O administrador do solicitador pode, então, importar sua organização e incluí-la no consórcio.
 
 ### Incluir a organização do peer no solicitador em meu console
 {: #ibp-console-join-network-add-org2-local}
 
 **Siga estas etapas somente se o seu console já inclui o solicitador e o canal aos quais você deseja se associar.** Caso contrário, continue com [Exportar suas informações da organização](/docs/services/blockchain/howto/ibp-console-join-network.html#ibp-console-join-network-add-org2-remote).  
 
-Como somente os administradores do solicitador podem incluir organizações de peer no consórcio, será necessário ser o administrador do solicitador, o que significa que você tem a identidade de administrador da organização do orderer em sua carteira eletrônica do console.  
+Como somente os administradores do solicitador podem incluir organizações de peer no consórcio, será necessário ser o administrador do solicitador, o que significa que você tem a identidade do administrador da organização do orderer em sua carteira eletrônica do console.  
 
 1. Navegue para a guia **Nós**.
 2. Role para baixo para o solicitador que você deseja usar e clique nele para abri-lo.
@@ -233,17 +239,17 @@ Quando esse processo estiver concluído, será possível que o `org2` crie ou se
 
 **Siga estas etapas somente se o solicitador e o canal ao qual seu peer se associará residirem em outra instância de serviço do {{site.data.keyword.blockchainfull_notm}} Platform.** Caso contrário, será possível ir para a [Etapa três: associar seu peer ao canal](/docs/services/blockchain/howto/ibp-console-join-network.html#ibp-console-join-network-join-peer-org2).
 
-É necessário enviar sua definição de MSP da organização para o administrador do solicitador e ser incluído no consórcio usando as etapas abaixo.  
+É necessário enviar sua definição do MSP da organização para o administrador do solicitador e ser incluído no consórcio usando as etapas abaixo.  
 
-Ao seguir estas etapas, é necessário ser o administrador da **organização de peer**, o que significa que você tem a identidade de administrador da organização de peer em sua carteira eletrônica do console:  
+Ao seguir estas etapas, é necessário ser o administrador da **organização de peer**, o que significa que você tem a identidade do administrador da organização de peer em sua carteira eletrônica do console:  
 1. Navegue para a guia **Organizações**. É possível ver as organizações disponíveis para exportação serem listadas em **Organizações disponíveis**. Clique no botão **download** dentro do tile da organização para fazer download do arquivo de configuração JSON que representa o MSP da organização de peer.
 2. Envie esse arquivo para o administrador do solicitador em uma operação fora da banda.
 
 ### Importar a definição de organização
 {: #ibp-console-join-network-import-remote-msp}
 O administrador do solicitador precisa importar esse arquivo de JSON para incluir sua organização em seu console:
-1. Navegue para a guia **Organizações**, clique no botão **Importar definição de MSP** e selecione o arquivo JSON que representa a definição de MSP da organização de peer.  
-2. Navegue para a página **Nós** e clique em seu nó do solicitador. No painel do nó de pedido, em **Membros do consórcio**, clique em **Incluir organização**. No painel lateral que é aberto, selecione `Org2 MSP` na lista de definições de MSP de sua guia **Organizações**.
+1. Navegue para a guia **Organizações**, clique no botão **Importar definição do MSP** e selecione o arquivo JSON que representa a definição do MSP da organização de peer.  
+2. Navegue para a página **Nós** e clique em seu nó do solicitador. No painel do nó de pedido, em **Membros do consórcio**, clique em **Incluir organização**. No painel lateral que é aberto, selecione `Org2 MSP` na lista de definições do MSP de sua guia **Organizações**.
 3. Navegue para a guia **Canais**, clique em `channel1` e, em seguida, clique no ícone **Configurações** para atualizar o canal e incluir a organização peer nele.
 4. Na lista suspensa **Escolher por meio dos solicitadores disponíveis**, assegure-se de que `Orderer` esteja selecionado.
 5. Na lista suspensa **ID do MSP do atualizador de canais**, assegure-se de que `org1MSP` esteja selecionado.
@@ -271,7 +277,7 @@ Será possível seguir estas etapas se você for o administrador da **organizaç
 ## Etapa três: associar seu peer ao canal
 {: #ibp-console-join-network-join-peer-org2}
 
-Estamos quase acabando. Seu peer pode agora ser associado a um canal existente. É necessário obter o `channel name`, fora da banda, por meio do operador de rede que criou o canal. No tutorial **Construir uma rede**, criamos um canal denominado `channel1`. Se você ainda não estiver lá, navegue para a guia **Canais** na navegação esquerda.
+Estamos quase acabando. Seu peer pode agora ser associado a um canal existente. É necessário obter o `channel name`, fora da banda, por meio do operador de rede que criou o canal. No tutorial **Construir uma rede**, criamos um canal chamado `channel1`. Se você ainda não estiver lá, navegue para a guia **Canais** na navegação esquerda.
 
 Execute as etapas a seguir em seu console:
 
@@ -279,11 +285,14 @@ Execute as etapas a seguir em seu console:
 2. Selecione seu solicitador denominado 'Solicitador' e clique em **Avançar**.
 3. Insira o nome do canal ao qual você deseja se associar, `channel1` e clique em **Avançar**.
 4. Selecione quais peers você deseja associar ao canal. Para propósitos deste tutorial, clique em `Peer Org2`.
-5. Clique em  ** Juntar peer **.
+5. Clique em  ** Associar canal **.
 
-Se você planeja alavancar os recursos [Dados privados ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://hyperledger-fabric.readthedocs.io/en/latest/private-data/private-data.html "Dados privados") ou [Descoberta de serviço ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://hyperledger-fabric.readthedocs.io/en/latest/discovery-overview.html "Descoberta de serviço") do Hyperledger Fabric, deve-se configurar os peers de âncora em suas organizações na guia **Canais**. Veja este tópico em [como configurar peers de âncora para dados privados](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-private-data) usando a guia **Canais** no console.
+Se o canal ao qual desejar associar um peer for criado por você mesmo e você não tiver associado nenhum peer ao canal, será possível clicar no bloco pendente do canal diretamente para associar seu peer.
+{:note}
 
-Também é possível criar um novo canal quando sua organização é membro do consórcio. Use as etapas para [criar um canal](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-create-channel) no [tutorial Construir uma rede](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network).
+Se você planeja alavancar os recursos [Dados privados ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/private-data/private-data.html "Dados privados") ou [Descoberta de serviço ![Ícone de link externo](../images/external_link.svg "Ícone de link externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/discovery-overview.html "Descoberta de serviço") do Hyperledger Fabric, deve-se configurar os peers de âncora em suas organizações na guia **Canais**. Para obter mais informações sobre como configurar peers de âncora para dados privados usando a guia **Canais** no console, consulte [Dados privados](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-private-data).
+
+Também será possível criar um novo canal se sua organização for um membro do consórcio. Use as etapas para [criar um canal](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-create-channel) conforme descrito no [tutorial Construir uma rede](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network).
 
 ## Próximas etapas
 {: #ibp-console-join-network-next-steps}

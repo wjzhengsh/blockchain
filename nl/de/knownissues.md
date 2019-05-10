@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-03-20"
 
 subcollection: blockchain
 
@@ -28,7 +28,7 @@ Die folgenden Probleme sind bereits dokumentiert:
 - Wenn Sie im Network Monitor eines Starter Plan-Netzes auf **Protokolle anzeigen** für die in der Anzeige "Übersicht" aufgeführten Knoten klicken, wird die Kibana-Schnittstelle für {{site.data.keyword.cloud}} Logging geöffnet. **Standardmäßig ist Kibana so vorkonfiguriert, dass Protokolle zu den Aktivitäten der letzten 30 Tage angezeigt werden**. Wenn in den letzten 30 Tagen keine Aktivitäten stattgefunden haben, wird die Nachricht *Keine Ergebnisse gefunden* angezeigt. Wenn Sie andere Protokolle anzeigen möchten, können Sie auf das Zeitgebersymbol in der rechten oberen Ecke unterhalb Ihres Benutzernamens klicken und einen längeren Zeitraum festlegen, z. B. Zeiträume wie *Laufendes Jahr bis zum aktuellen Datum*.
 - Die Protokolle des Starter Plan-Netzes werden vom [{{site.data.keyword.cloud_notm}} Log Analysis-Service ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://cloud.ibm.com/catalog/services/log-analysis) erfasst. Standardmäßig werden Ihre Protokolle über den Lite Plan des Log Analysis-Service erfasst. Dieser Plan ist kostenfrei und **ermöglicht Ihnen lediglich ein Durchsuchen der ersten 500 MB Ihrer Protokolle pro Tag**. Umfassen Ihre Netzprotokolle mehr als 500 MB können neue Protokolle nicht in Kibana angezeigt werden. Werden in Ihrem Netz Protokolle mit einem Gesamtumfang über 500 MB generiert, können Sie ein Upgrade auf eine gebührenpflichtige Version des Log Analysis-Service durchführen.
 - Da der Starter Plan keine Produktionsumgebung bereitstellt, **können Anwendungen Netzressourcen möglicherweise nicht sofort erreichen**.
-  - Ist dies der Fall, empfiehlt es sich, zunächst die Standardzeitlimitwerte im Fabric-SDK zu erhöhen. Weitere Informationen zum Festlegen von Zeitlimitwerten finden Sie in [Zeitlimitwerte in Fabric-SDKs festlegen](/docs/services/blockchain/v10_application.html#dev-app-set-timeout-in-sdk).
+  - Ist dies der Fall, empfiehlt es sich, zunächst die Standardzeitlimitwerte im Fabric-SDK zu erhöhen. Weitere Informationen zum Festlegen von Zeitlimitwerten finden Sie in [Zeitlimitwerte in Fabric-SDKs festlegen](/docs/services/blockchain/best_practices.html#best-practices-app-set-timeout-in-sdk).
   - Sie können auch versuchen, Ihre Anforderung auf der Anwendungsebene auszuführen.
 - **Chaincode-Container werden unter Umständen zeitweise gestoppt**, weil im Hintergrund ein Netzproblem vorliegt, und müssen möglicherweise nach dem Aufruf durch einen Benutzer erneut erstellt und gestartet werden. Wenn dies geschieht, kann es einige Minuten dauern, bis der Chaincode antwortet.
 - Aufgrund der Ressourcenbegrenzung in Starter Plan-Netzen auf 1 CPU und 4 Gi RAM pro Peer **kann ein `REQUEST_TIMEOUT`-Fehler bei der Chaincode-Instanziierung auftreten**. Ist dies der Fall, wiederholen Sie den für die Instanziierung erforderlichen Schritt. Tritt der Fehler weiterhin auf, können Sie das Zeitlimit für die Chaincode-Instanziierung erhöhen. Im Verbindungsprofil ist das Zeitlimit für die Chaincode-Instanziierung mit 300 Sekunden definiert.

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-03-20"
 
 subcollection: blockchain
 
@@ -47,7 +47,7 @@ Il tipo di istanza VPC predefinito per il peer è `m4.xlarge`.  Devi ottimizzare
 -	4 GB di spazio per il chaincode
 -	10 GB di spazio per il libro mastro con capacità di crescere man mano che il libro mastro si espande
 
-Questi livelli minimi di risorse sono sufficienti per l'esecuzione di test e la sperimentazione. Per un ambiente di produzione, è importante assegnare una quantità sufficientemente grande di archiviazione, 100GB ad esempio. La quantità di archiviazione utilizzata dipenderà dal numero di transazioni e dal numero di firme richiesti dalla tua rete. Se esaurisci l'archiviazione sul tuo peer, devi <!-- either expand the storage or --> distribuire un nuovo peer con un file system più grande e consentirgli di eseguire la sincronizzazione tramite il tuo altro peer (o i tuoi altri peer) sullo stesso canale (o sugli stessi canali).
+Questi livelli minimi di risorse sono sufficienti per l'esecuzione di test e la sperimentazione. Per un ambiente di produzione, è importante allocare una quantità sufficientemente grande di archiviazione, 100GB ad esempio. La quantità di archiviazione utilizzata dipenderà dal numero di transazioni e dal numero di firme richiesti dalla tua rete. Se esaurisci l'archiviazione sul tuo peer, devi <!-- either expand the storage or --> distribuire un nuovo peer con un file system più grande e consentirgli di eseguire la sincronizzazione tramite il tuo altro peer (o i tuoi altri peer) sullo stesso canale (o sugli stessi canali).
 
 
 ## Opzioni di distribuzione
@@ -358,7 +358,7 @@ Dopo aver configurato il peer in AWS, devi completare diversi passi operativi pr
 {: #remote-peer-aws-high-availability}
 
 Per impostazione predefinita, per supportare l'HA, il template Quick Start distribuisce due istanze del peer, in due zone di disponibilità differenti.
-Per avvalerti di questo supporto HA, devi anche configurare le tue [applicazioni client per l'elevata disponibilità](/docs/services/blockchain/v10_application.html#dev-app-ha-app).
+Per avvalerti di questo supporto HA, devi anche configurare le tue [applicazioni client per l'alta disponibilità](/docs/services/blockchain/best_practices.html#best-practices-app-ha-app).
 
 ## Considerazioni sulla sicurezza
 {: #remote-peer-aws-security}

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -17,7 +17,7 @@ subcollection: blockchain
 {:tip: .tip}
 {:pre: .pre}
 
-# {{site.data.keyword.cloud_notm}} Private への {{site.data.keyword.blockchainfull_notm}} Platform のインストール
+# {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private のインストール
 {: #helm-install}
 
 {{site.data.keyword.blockchainfull}} Platform for {{site.data.keyword.cloud_notm}} Private は、ローカル {{site.data.keyword.cloud_notm}} Private クラスターにインストールできる Helm チャート・ファイルとして提供されます。 Helm チャートをインストールすると、{{site.data.keyword.cloud_notm}} Private カタログで {{site.data.keyword.blockchainfull_notm}} Platform をアプリケーションとして見つけることができます。
@@ -33,7 +33,7 @@ subcollection: blockchain
 ## Helm チャートをインストールするための前提条件
 {: #helm-install-prereqs}
 
-Helm チャートをインストールする前に、{{site.data.keyword.cloud_notm}} Private クラスターを構成しておく必要があります。 [{{site.data.keyword.cloud_notm}} Private クラスターのセットアップおよび構成](/docs/services/blockchain/ICP_setup.html#icp-setup)手順を確認してください。
+Helm チャートをインストールする前に、{{site.data.keyword.cloud_notm}} Private クラスターを構成し、ポッド・セキュリティー・ポリシーにバインドされた新しいターゲット名前空間を作成しておく必要があります。[{{site.data.keyword.cloud_notm}} Private クラスターのセットアップおよび構成](/docs/services/blockchain/ICP_setup.html#icp-setup)手順を確認してください。
 
 ## ファイアウォールの内側での {{site.data.keyword.blockchainfull_notm}} Platform のインストール
 {: #helm-install-prereqs-firewall}
@@ -48,11 +48,12 @@ Helm チャートをインストールする前に、{{site.data.keyword.cloud_n
 - [MSP フォルダーを含む、コンポーネントのブートストラップおよび構成に使用される `Init` イメージ ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hub.docker.com/r/ibmcom/ibp-init/)
 - [チェーンコード・コンテナーを実行するためにピアによって使用される Docker-in-Docker (DinD) イメージ ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hub.docker.com/r/ibmcom/ibp-dind/)
 
-これらのイメージの使用方法について詳しくは、[インターネット接続がないクラスターへのフィーチャー・アプリケーションの追加 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_package_offline.html) を参照してください。 仕様ファイル `manifest.yaml` は、Helm チャート内の `ibm-blockchain-platform-dev/ibm_cloud_pak` ディレクトリーにあります。
+これらのイメージの使用方法について詳しくは、[インターネット接続がないクラスターへのフィーチャー・アプリケーションの追加 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/app_center/add_package_offline.html) を参照してください。 仕様ファイル `manifest.yaml` は、Helm チャート内の `ibm-blockchain-platform-dev/ibm_cloud_pak` ディレクトリーにあります。
 
 ## {{site.data.keyword.cloud_notm}} Private への Helm チャートのインポート
+{: #helm-install-importing}
 
-1. IBM Blockchain Platform for {{site.data.keyword.cloud_notm}} Private の Helm チャート・ファイルを[パスポート・アドバンテージ・オンライン ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/software/passportadvantage/pao_customer.html "パスポート・アドバンテージ・オンライン") からダウンロードします。無料の Community Edition の場合は、[GitHub ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://github.com/IBM/charts/blob/master/repo/stable/ibm-blockchain-platform-dev-1.0.0.tgz "IBM/charts") からダウンロードします。  この Helm チャート・パッケージには、CA、順序付けプログラム、およびピア用の 3 つのサブ Helm チャートが含まれています。
+1. IBM Blockchain Platform for {{site.data.keyword.cloud_notm}} Private の Helm チャート・ファイルを[パスポート・アドバンテージ・オンライン ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/software/passportadvantage/pao_customer.html "パスポート・アドバンテージ・オンライン") からダウンロードします。無料の Community Edition の場合は、[GitHub ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://github.com/IBM/charts/blob/master/repo/stable/ibm-blockchain-platform-dev-1.0.2.tgz "IBM/charts") からダウンロードします。  この Helm チャート・パッケージには、CA、順序付けプログラム、およびピア用の 3 つのサブ Helm チャートが含まれています。
 
 2. {{site.data.keyword.cloud_notm}} Private クラスターにまだログインしていない場合は、ログインします。
 
@@ -61,13 +62,13 @@ Helm チャートをインストールする前に、{{site.data.keyword.cloud_n
   ```
   {:codeblock}
 
-4. [Docker CLI](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/manage_images/configuring_docker_cli.html) が構成されていることを確認します。 Docker CLI を構成したら、以下のコマンドを使用してクラスター上のイメージ・レジストリーにアクセスします。
+3. [Docker CLI](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/manage_images/configuring_docker_cli.html) が構成されていることを確認します。 Docker CLI を構成したら、以下のコマンドを使用してクラスター上のイメージ・レジストリーにアクセスします。
   ```
   docker login <cluster_CA_domain>:8500
   ```
   {:codeblock}
 
-5. 以下のコマンドを使用して、Helm チャートをアップロードする {{site.data.keyword.cloud_notm}} Private 内のリポジトリーの名前を見つけます。
+4. 以下のコマンドを使用して、Helm チャートをアップロードする {{site.data.keyword.cloud_notm}} Private 内のリポジトリーの名前を見つけます。
   ```
   cloudctl catalog repos
   ```
@@ -75,7 +76,7 @@ Helm チャートをインストールする前に、{{site.data.keyword.cloud_n
 
   このコマンドが正常に完了すると、クラスター内のリポジトリーのリストが表示されます。 ターゲット・リポジトリーの名前を選択して保存します。 これは、以下のコマンドで使用する必要があります。
 
-6. コマンド・ラインを使用して Helm チャートをインポートします。
+5. コマンド・ラインを使用して Helm チャートをインポートします。
   Helm チャートをインポートするために実行するコマンドは、Helm チャートがパスポート・アドバンテージ (PPA) または GitHub のどちらからダウンロードされたかによって異なります。
 
   - **{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private**
@@ -95,76 +96,65 @@ Helm チャートをインストールする前に、{{site.data.keyword.cloud_n
 
     このコマンドが正常に完了すると、以下のような情報が表示されます。
 
-    <details aria-label="Details"><summary>Helm install output</summary>
-    ```
+    ```  
     アーカイブの解凍中
     OK
 
     Docker イメージのインポート中
-      イメージの処理中: ibmblockchain/hlfabric-orderer-amd64:1.2.1
+      イメージの処理中: ibmcom/ibp-fabric-orderer-amd64:1.4.0
       イメージのロード中
       イメージのタグ付け中
-      以下としてイメージをプッシュ中 (Pushing image as): mycluster.icp:8500/bcaas-usa/ibmblockchain/hlfabric-orderer-amd64:1.2.1
-    イメージのプッシュ中 (Pushing image) mycluster.icp:8500/bcaas-usa/ibmblockchain/hlfabric-orderer-amd64:1.2.1
-      イメージの処理中: ibmblockchain/hlfabric-orderer-s390x:1.2.1
+      イメージを mycluster.icp:8500/bcaas-usa/ibmcom/ibp-fabric-orderer-amd64:1.4.0 としてプッシュ中
+    イメージの mycluster.icp:8500/bcaas-usa/ibmcom/ibp-fabric-orderer-amd64:1.4.0 のプッシュ中
+      イメージの処理中: ibmcom/ibp-fabric-orderer-s390x:1.4.0
       イメージのロード中
       イメージのタグ付け中
-      以下としてイメージをプッシュ中 (Pushing image as): mycluster.icp:8500/bcaas-usa/ibmblockchain/hlfabric-orderer-s390x:1.2.1
-    イメージのプッシュ中 (Pushing image) mycluster.icp:8500/bcaas-usa/ibmblockchain/hlfabric-orderer-s390x:1.2.1
-      イメージの処理中: ibmblockchain/hlfabric-ca-amd64:1.2.1
+      イメージを mycluster.icp:8500/bcaas-usa/ibmcom/ibp-fabric-orderer-s390x:1.4.0 としてプッシュ中
+    イメージの mycluster.icp:8500/bcaas-usa/ibmcom/ibp-fabric-orderer-s390x:1.4.0 のプッシュ中
+      イメージの処理中: ibmcom/ibp-fabric-ca-amd64:1.4.0
       イメージのロード中
       イメージのタグ付け中
-      以下としてイメージをプッシュ中 (Pushing image as): mycluster.icp:8500/bcaas-usa/ibmblockchain/hlfabric-ca-amd64:1.2.1
-    イメージのプッシュ中 (Pushing image) mycluster.icp:8500/bcaas-usa/ibmblockchain/hlfabric-ca-amd64:1.2.1
-      イメージの処理中: ibmblockchain/hlfabric-ca-s390x:1.2.1
+      イメージを mycluster.icp:8500/bcaas-usa/ibmcom/ibp-fabric-ca-amd64:1.4.0 としてプッシュ中
+    イメージの mycluster.icp:8500/bcaas-usa/ibmcom/ibp-fabric-ca-amd64:1.4.0 のプッシュ中
+      イメージの処理中: ibmcom/ibp-fabric-ca-s390x:1.4.0
       イメージのロード中
       イメージのタグ付け中
-      以下としてイメージをプッシュ中 (Pushing image as): mycluster.icp:8500/bcaas-usa/ibmblockchain/hlfabric-ca-s390x:1.2.1
-    イメージのプッシュ中 (Pushing image) mycluster.icp:8500/bcaas-usa/ibmblockchain/hlfabric-ca-s390x:1.2.1
-      イメージの処理中: ibmblockchain/v1fabric-peer-amd64:1.2.1
+      イメージを mycluster.icp:8500/bcaas-usa/ibmcom/ibp-fabric-ca-s390x:1.4.0 としてプッシュ中
+    イメージの mycluster.icp:8500/bcaas-usa/ibmcom/ibp-fabric-ca-s390x:1.4.0 のプッシュ中
+      イメージの処理中: ibmcom/ibp-fabric-peer-amd64:1.4.0
       イメージのロード中
       イメージのタグ付け中
-      以下としてイメージをプッシュ中 (Pushing image as): mycluster.icp:8500/bcaas-usa/ibmblockchain/v1fabric-peer-amd64:1.2.1
-    イメージのプッシュ中 (Pushing image) mycluster.icp:8500/bcaas-usa/ibmblockchain/v1fabric-peer-amd64:1.2.1
-      イメージの処理中: ibmblockchain/v1fabric-peer-s390x:1.2.1
+      イメージを mycluster.icp:8500/bcaas-usa/ibmcom/ibp-fabric-peer-amd64:1.4.0 としてプッシュ中
+    イメージの mycluster.icp:8500/bcaas-usa/ibmcom/ibp-fabric-peer-amd64:1.4.0 のプッシュ中
+      イメージの処理中: ibmcom/ibp-fabric-peer-s390x:1.4.0
       イメージのロード中
       イメージのタグ付け中
-      以下としてイメージをプッシュ中 (Pushing image as): mycluster.icp:8500/bcaas-usa/ibmblockchain/v1fabric-peer-s390x:1.2.1
-    イメージのプッシュ中 (Pushing image) mycluster.icp:8500/bcaas-usa/ibmblockchain/v1fabric-peer-s390x:1.2.1
-      イメージの処理中: ibmblockchain/fabric-couchdb-amd64:1.2.1
+      イメージを mycluster.icp:8500/bcaas-usa/ibmcom/ibp-fabric-peer-s390x:1.4.0 としてプッシュ中
+    イメージ mycluster.icp:8500/bcaas-usa/ibmcom/ibp-fabric-peer-s390x:1.4.0 のプッシュ中
+      イメージの処理中: ibmcom/ibp-couchdb-amd64:1.4.0
       イメージのロード中
       イメージのタグ付け中
-      以下としてイメージをプッシュ中 (Pushing image as): mycluster.icp:8500/bcaas-usa/ibmblockchain/fabric-couchdb-amd64:1.2.1
-    イメージのプッシュ中 (Pushing image) mycluster.icp:8500/bcaas-usa/ibmblockchain/fabric-couchdb-amd64:1.2.1
-      イメージの処理中: ibmblockchain/fabric-couchdb-s390x:1.2.1
+      イメージを mycluster.icp:8500/bcaas-usa/ibmcom/ibp-couchdb-amd64:1.4.0 としてプッシュ中
+    イメージ mycluster.icp:8500/bcaas-usa/ibmcom/ibp-couchdb-amd64:1.4.0 のプッシュ中
+      イメージの処理中: ibmcom/ibp-couchdb-s390x:1.4.0
       イメージのロード中
       イメージのタグ付け中
-      以下としてイメージをプッシュ中 (Pushing image as): mycluster.icp:8500/bcaas-usa/ibmblockchain/fabric-couchdb-s390x:1.2.1
-    イメージのプッシュ中 (Pushing image) mycluster.icp:8500/bcaas-usa/ibmblockchain/fabric-couchdb-s390x:1.2.1
-      イメージの処理中: ibmcom/icp-dind-amd64:1.2.1
+      イメージを mycluster.icp:8500/bcaas-usa/ibmcom/ibp-couchdb-s390x:1.4.0 としてプッシュ中
+    イメージ mycluster.icp:8500/bcaas-usa/ibmcom/ibp-couchdb-s390x:1.4.0 のプッシュ中
+      イメージの処理中: ibmcom/ibp-dind-amd64:1.4.0
       イメージのロード中
       イメージのタグ付け中
-      以下としてイメージをプッシュ中 (Pushing image as): mycluster.icp:8500/bcaas-usa/ibmcom/icp-dind-amd64:1.2.1
-    イメージのプッシュ中 (Pushing image) mycluster.icp:8500/bcaas-usa/ibmcom/icp-dind-amd64:1.2.1
-      イメージの処理中: ibmcom/icp-dind-s390x:1.2.1
+      イメージを mycluster.icp:8500/bcaas-usa/ibmcom/ibp-dind-amd64:1.4.0 としてプッシュ中
+    イメージ mycluster.icp:8500/bcaas-usa/ibmcom/ibp-dind-amd64:1.4.0 のプッシュ中
+      イメージの処理中: ibmcom/ibp-dind-s390x:1.4.0
       イメージのロード中
       イメージのタグ付け中
-      以下としてイメージをプッシュ中 (Pushing image as): mycluster.icp:8500/bcaas-usa/ibmcom/icp-dind-s390x:1.2.1
-    イメージのプッシュ中 (Pushing image) mycluster.icp:8500/bcaas-usa/ibmcom/icp-dind-s390x:1.2.1
-      イメージの処理中: ibmcom/icp-busybox-s390x:1.2.1
-      イメージのロード中
-      イメージのタグ付け中
-      以下としてイメージをプッシュ中 (Pushing image as): mycluster.icp:8500/bcaas-usa/ibmcom/icp-busybox-s390x:1.2.1
-    イメージのプッシュ中 (Pushing image) mycluster.icp:8500/bcaas-usa/ibmcom/icp-busybox-s390x:1.2.1
-      イメージの処理中: ibmcom/icp-busybox-amd64:1.2.1
-      イメージのロード中
-      イメージのタグ付け中
-      以下としてイメージをプッシュ中 (Pushing image as): mycluster.icp:8500/bcaas-usa/ibmcom/icp-busybox-amd64:1.2.1
-    イメージのプッシュ中 (Pushing image) mycluster.icp:8500/bcaas-usa/ibmcom/icp-busybox-amd64:1.2.1
+      イメージを mycluster.icp:8500/bcaas-usa/ibmcom/ibp-dind-s390x:1.4.0 としてプッシュ中
+    イメージ mycluster.icp:8500/bcaas-usa/ibmcom/ibp-dind-s390x:1.4.0 のプッシュ中
     OK
 
     Helm チャートのアップロード中
-      チャートの処理中: charts/ibm-blockchain-platform-0.1.5.tgz
+      チャートの処理中: charts/ibm-blockchain-platform-1.0.2.tgz
       チャートの values.yaml を更新中
       チャートのアップロード中
     ロードされた Helm チャート
@@ -173,7 +163,8 @@ Helm チャートをインストールする前に、{{site.data.keyword.cloud_n
     チャートの同期
   同期が開始されました
   OK
-    ```
+    ```  
+    </details>
 
   - **GitHub からダウンロードした Community Edition**
     GitHub から Helm チャートをダウンロードした場合は、以下の手順に従います。
@@ -200,93 +191,8 @@ Helm チャートをインストールする前に、{{site.data.keyword.cloud_n
 
 {{site.data.keyword.cloud_notm}} Private コンソールで**「カタログ」**ボタンをクリックし、左側のナビゲーション・パネルで**「ブロックチェーン」**をクリックして、インポートが成功したことを確認します。 成功した場合は、**ibm-blockchain-platform-prod** タイルまたは **ibm-blockchain-platform-dev** タイルが「{{site.data.keyword.cloud_notm}} Private カタログ ({{site.data.keyword.cloud_notm}} Private Catalog)」ページに表示されます。
 
-
-## PodSecurityPolicy の要件
-
-Helm チャートを {{site.data.keyword.cloud_notm}} Private にインポートしたら、コンポーネントをインストールする前に、[PodSecurityPolicy ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://kubernetes.io/docs/concepts/policy/pod-security-policy/ "ポッド・セキュリティー・ポリシー") をターゲット名前空間にバインドする必要があります。  事前定義された PodSecurityPolicy を選択するか、クラスター管理者にカスタム PodSecurityPolicy の作成を依頼してください。
-- 事前定義された PodSecurityPolicy 名: [`ibm-privileged-psp`](https://ibm.biz/cpkspec-psp)
-- カスタム PodSecurityPolicy 定義:
-  ```
-  apiVersion: extensions/v1beta1
-  kind: PodSecurityPolicy
-  metadata:
-    name: ibm-blockchain-platform-psp
-  spec:
-    hostIPC: false
-    hostNetwork: false
-    hostPID: false
-    privileged: true
-    allowPrivilegeEscalation: true
-    readOnlyRootFilesystem: false
-    seLinux:
-      rule: RunAsAny
-    supplementalGroups:
-      rule: RunAsAny
-    runAsUser:
-      rule: RunAsAny
-    fsGroup:
-      rule: RunAsAny
-    requiredDropCapabilities:
-    - ALL
-    allowedCapabilities:
-    - NET_BIND_SERVICE
-    - CHOWN
-    - DAC_OVERRIDE
-    - SETGID
-    - SETUID
-    volumes:
-    - '*'
-  ```
-  {:codeblock}
-- カスタム PodSecurityPolicy のカスタム ClusterRole:
-  ```
-  apiVersion: rbac.authorization.k8s.io/v1
-  kind: ClusterRole
-  metadata:
-    annotations:
-    name: ibm-blockchain-platform-clusterrole
-  rules:
-  - apiGroups:
-    - extensions
-    resourceNames:
-    - ibm-blockchain-platform-psp
-    resources:
-    - podsecuritypolicies
-    verbs:
-    - use
-  - apiGroups:
-    - ""
-    resources:
-    - secrets
-    verbs:
-    - create
-    - delete
-    - get
-    - list
-    - patch
-    - update
-    - watch
-  ```
-  {:codeblock}
-
-- カスタム ClusterRole のカスタム ClusterRoleBinding:
-  ```
-  apiVersion: rbac.authorization.k8s.io/v1
-  kind: ClusterRoleBinding
-  metadata:
-   name: ibm-blockchain-platform-clusterrolebinding
-  roleRef:
-   apiGroup: rbac.authorization.k8s.io
-   kind: ClusterRole
-   name: ibm-blockchain-platform-clusterrole
-  subjects:
-  - kind: ServiceAccount
-    name: default
-    namespace: default
-  ```
-  {:codeblock}
-
 ## 個々のコンポーネントのデプロイ
+{: #helm-install-deploying-components}
 
 Helm チャートをインストールしたら、{{site.data.keyword.cloud_notm}} Private カタログ内の **ibm-blockchain-platform-prod** タイルまたは **ibm-blockchain-platform-dev** タイルをクリックして開きます。 構成ページを使用して、ブロックチェーン・ネットワークの個々のコンポーネントをデプロイできます。 ブロックチェーン・ソリューションに必要なコンポーネント、およびそれらをデプロイする順序について詳しくは、[{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private の概説](/docs/services/blockchain/ibp_for_icp_deployment_guide.html#get-started-icp)を参照してください。
 
@@ -295,3 +201,61 @@ Helm チャートをインストールしたら、{{site.data.keyword.cloud_notm
 - 順序付けプログラムをデプロイする場合は、まず順序付けプログラムの認証局をセットアップする必要があります。 CA は、組織内の他のコンポーネントによって使用される証明書を生成します。 詳しくは、[{{site.data.keyword.cloud_notm}} Private への {{site.data.keyword.blockchainfull_notm}} Platform 認証局のデプロイ](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy)を参照してください。 その後、ネットワークの共通バインディングとなる順序付けプログラムをデプロイできます。 詳しくは、[{{site.data.keyword.cloud_notm}} Private での {{site.data.keyword.blockchainfull_notm}} Platform 順序付けプログラムのデプロイ](/docs/services/blockchain/howto/orderer_deploy_icp.html#icp-orderer-deploy)を参照してください。
 
 - ピアをデプロイする場合は、まずピアの認証局をセットアップする必要があります。 CA は、ピアによって使用される証明書を生成します。 詳しくは、[{{site.data.keyword.cloud_notm}} Private への {{site.data.keyword.blockchainfull_notm}} Platform 認証局のデプロイ](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy)を参照してください。 その後、ネットワークに参加する準備ができたら、チャネルに参加し、トランザクションを承認し、データを保管するピアをデプロイできます。 詳しくは、ピアが参加するブロックチェーン・ネットワークに応じて、[{{site.data.keyword.cloud_notm}} Private での {{site.data.keyword.blockchainfull_notm}} ピアのデプロイ](/docs/services/blockchain/howto/peer_deploy_icp.html#icp-peer-deploy)または[スターター・プランまたはエンタープライズ・プラン・ネットワークのための {{site.data.keyword.blockchainfull_notm}} ピアのデプロイ](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy)を参照してください。
+
+## {{site.data.keyword.cloud_notm}} Private での Helm チャートのアップグレード
+{: #helm-install-upgrading}
+
+{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private v1.0.1 を使用している場合は、{{site.data.keyword.cloud_notm}} Private の資料の [バンドルされた製品のアップグレード ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/installing/upgrade_helm.html "バンドルされた製品のアップグレード") の手順に従い、Helm チャートを {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private v1.0.2 にアップグレードできます。その手順の `helm upgrade` コマンドのほかにも、[{{site.data.keyword.cloud_notm}} Private コンソールを使用して Helm リリースをアップグレードする](/docs/services/blockchain/howto/helm_install_icp.html#helm-install-upgrading-ui)こともできます。
+
+Helm チャートをアップグレードするためには、{{site.data.keyword.cloud_notm}} Private に対する**クラスター管理者**役割または**チーム管理者**役割が必要です。
+{:note}
+
+{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private v1.0.2 から v1.0.1 へのロールバックはサポートされていません。
+
+### {{site.data.keyword.cloud_notm}} Private コンソールからの Helm リリースのアップグレード
+{: #helm-install-upgrading-ui}
+
+コンポーネントの Helm リリースを {{site.data.keyword.cloud_notm}} Private コンソールからアップグレードする場合は、`「値を再利用する (Reuse values)」`にチェックを入れて、パラメーターを変更しないようにする必要があります。
+{:important}  
+
+Helm リリースを {{site.data.keyword.cloud_notm}} Private コンソールからアップグレードするには、以下の手順を実行します。
+1. メニュー・バーから、**「ワークロード」** > **「Helm リリース」**をクリックします。
+2. アップグレードする Helm リリースを選択します。
+3. **「詳細およびアップグレード」**セクションで、`「使用可能バージョン」`の下のバージョン番号を確認します。
+4. バージョン番号の下の**「ReadMe」**をクリックし、リリース・ノートを参照して重大な変更がないか確認します。
+5. **「アップグレード」**をクリックし、ドロップダウン・リストからリポジトリーおよびバージョンを正確に選択します。
+6. `「値を再利用する (Reuse values)」`が選択されていることを確認します。
+7. **「アップグレード」**をクリックします。
+
+確認メッセージが表示され、コンソールの左上隅のリリース名の横に表示されるリリース状況が更新されるまで待ってください。
+
+### ピアをアップグレードするための追加手順の実行
+{: #helm-install-upgrading-peer}
+
+アップグレード・プロセスを完了するためには、ピアをアップグレードした後にいくつかの追加の手順を実行する必要があります。ピアの Helm リリースのページの**「ポッド」**セクションの下に、以下の 2 つのピア・ポッドが表示されています。
+- 状況が `CrashLoopBackOff` の新しいピア・ポッド
+- 状況が `Running` の元のピア・ポッド
+
+関連付けられているピア名をメモしてください。以下の手順で使用する必要があります。
+{:tip}
+
+ピアのアップグレード・プロセスを完了するために、CLI から以下の手順を実行します。
+1. {{site.data.keyword.cloud_notm}} Private CLI からクラスターにログインして、`kubectl get replicaset` コマンドを実行します。
+   ```
+   cloudctl login -a https://<Cluster Master Host>:<Cluster Master API Port> --skip-ssl-validation
+   kubectl get replicaset
+   ```
+   {:codeblock}
+2. 元のピアに対応するピアのレプリカセットを見つけます。ピアのレプリカセットの名前は、{{site.data.keyword.cloud_notm}} Private コンソールの**「ポッド」**セクションに表示されるピア名の先頭部分と一致している必要があります。
+3. ピアのレプリカセットを削除します。
+   ```
+   kubectl delete rs <peer replicaset name>
+   ```
+   {:codeblock}
+4. 新しいピア・ポッドを削除します。これは UI で状況が `CrashLoopBackOff` のピア・ポッドです。
+   ```
+   kubectl delete po <new peer pod name>
+   ```
+   {:codeblock}
+
+新しいピア・ポッドが作成され、状況が `Running` と表示されたら、ピアは正常にアップグレードされています。

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -34,7 +34,7 @@ Vérifiez que votre système {{site.data.keyword.cloud_notm}} Private respecte l
 
  **Remarques :**
  - Une unité vCPU est un coeur virtuel qui est affecté à une machine virtuelle ou à un coeur de processeur physique si le serveur n'est pas partitionné pour les machines virtuelles. Vous devez tenir compte des exigences vCPU lorsque vous décidez d'utiliser le coeur de processeur virtuel (VPC) pour votre déploiement dans {{site.data.keyword.cloud_notm}} Private. VPC est une unité de mesure pour déterminer les coûts de licences des produits IBM. Pour plus d'informations sur les scénarios VPC, voir [Virtual processor core (VPC) ![Icône de lien externe](images/external_link.svg "Icône de lien externe")](https://www.ibm.com/support/knowledgecenter/en/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_virtual_processor_core_licenses.html).
- - Ces niveaux de ressources minimum sont suffisants pour les tests et l'expérimentation. Pour un environnement avec un gros volume de transactions, il est important d'allouer une quantité de mémoire suffisamment important ; 500 Go pour votre service de tri par  exemple. La quantité de stockage à utiliser dépend du nombre de transactions et du nombre de signatures qui sont nécessaires depuis votre réseau. Si vous êtes sur le point d'épuiser la mémoire de votre service de tri, vous devez déployer un nouveau service de tri avec un système de fichiers plus important et le laisser se synchroniser par l'intermédiaire de vos autres composants sur les mêmes canaux.
+ - Ces niveaux de ressources minimum sont suffisants pour les tests et l'expérimentation. Pour un environnement avec un gros volume de transactions, il est important d'allouer une quantité de mémoire suffisamment important ; 500 Go pour votre service de tri par exemple. La quantité de stockage à utiliser dépend du nombre de transactions et du nombre de signatures qui sont nécessaires depuis votre réseau. Si vous êtes sur le point d'épuiser la mémoire de votre service de tri, vous devez déployer un nouveau service de tri avec un système de fichiers plus important et le laisser se synchroniser par l'intermédiaire de vos autres composants sur les mêmes canaux.
 
 ## Stockage
 {: #icp-orderer-deploy-storage}
@@ -53,9 +53,9 @@ Si vous n'utilisez pas la mise à disposition dynamique, des [Volumes permanents
 
 1. Avant d'installer un service de tri sur {{site.data.keyword.cloud_notm}} Private, vous devez [installer {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/ICP_setup.html#icp-setup) et [installer la Charte Helm de {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/howto/helm_install_icp.html#helm-install).
 
-2. Si vous utilisez Community Edition et souhaitez exécuter cette charte Helm sur un cluster {{site.data.keyword.cloud_notm}} Private sans connectivité Internet, vous devez créer des archives sur une machine connectée à Internet avant d'installer les archives sur votre cluster {{site.data.keyword.cloud_notm}} Private. Pour plus d'informations, voir [Adding featured applications to clusters without Internet connectivity ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_package_offline.html "Adding featured applications to clusters without Internet connectivity"){:new_window}. Remarque : Vous pouvez trouver le fichier de spécification `manifest.yaml` sous ibm-blockchain-platform-dev/ibm_cloud_pak dans la charte Helm.
+2. Si vous utilisez Community Edition et souhaitez exécuter cette charte Helm sur un cluster {{site.data.keyword.cloud_notm}} Private sans connectivité Internet, vous devez créer des archives sur une machine connectée à Internet avant d'installer les archives sur votre cluster {{site.data.keyword.cloud_notm}} Private. Pour plus d'informations, voir [Adding featured applications to clusters without Internet connectivity ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/app_center/add_package_offline.html "Adding featured applications to clusters without Internet connectivity"){:new_window}. Remarque : Vous pouvez trouver le fichier de spécification `manifest.yaml` sous ibm-blockchain-platform-dev/ibm_cloud_pak dans la charte Helm.
 
-3. Procédez à l'extraction de la valeur de l'adresse IP proxy du cluster de votre autorité de certification depuis la console {{site.data.keyword.cloud_notm}} Private. **Remarque :** Vous devrez être [administrateur de cluster![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Cluster administrator roles and actions") pour accéder à votre IP de proxy. Connectez-vous au cluster {{site.data.keyword.cloud_notm}} Private. Dans le panneau de navigation gauche, cliquez sur **Plateforme** puis sur **Noeuds** pour afficher les noeuds qui sont définis dans le cluster. Cliquez sur le noeud avec le rôle `proxy`, puis copiez la valeur de l'`IP hôte` de la table. **Important :** Conservez cette valeur car vous allez l'utiliser lors de la configuration de la zone `Adresse IP du proxy` de la charte Helm.
+3. Procédez à l'extraction de la valeur de l'adresse IP proxy du cluster de votre autorité de certification depuis la console {{site.data.keyword.cloud_notm}} Private. **Remarque :** Vous devrez être [administrateur de cluster![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/user_management/assign_role.html "Cluster administrator roles and actions") pour accéder à votre IP de proxy. Connectez-vous au cluster {{site.data.keyword.cloud_notm}} Private. Dans le panneau de navigation gauche, cliquez sur **Plateforme** puis sur **Noeuds** pour afficher les noeuds qui sont définis dans le cluster. Cliquez sur le noeud avec le rôle `proxy`, puis copiez la valeur de l'`IP hôte` de la table. **Important :** Conservez cette valeur car vous allez l'utiliser lors de la configuration de la zone `Adresse IP du proxy` de la charte Helm.
 
 4. Créez un [fichier de configuration de service de tri et stockez-le en tant que secret Kubernetes dans {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/howto/orderer_deploy_icp.html#icp-orderer-deploy-config-file).
 
@@ -64,7 +64,7 @@ Si vous n'utilisez pas la mise à disposition dynamique, des [Volumes permanents
 
 Avant de déployer un service de tri, vous devez créer un fichier de configuration contenant d'importantes informations relatives à l'identité du service de tri et à votre autorité de certification. Vous devez ensuite transmettre ce fichier à la charte Helm pendant la configuration à l'aide d'un objet [Valeur confidentielle de Kubernetes![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://kubernetes.io/docs/concepts/configuration/secret/). Ce fichier permettra au service de tri d'obtenir les certificats dont il a besoin auprès de l'autorité de certification pour rejoindre un réseau de blockchain. Il contient également un certificat admin qui vous permet d'utiliser le service de tri en tant qu'utilisateur admin. Suivez les instructions relatives à l'[utilisation de l'autorité de certification pour déployer un service de tri ou un homologue](/docs/services/blockchain/howto/CA_operate.html#ca-operate-deploy-orderer-peer) avant de configurer le service de tri.
 
-Vous devez fournir les noms d'hôte CSR dans le fichier de configuration. Cela inclut le `nom d'hôte de service` qui sera basé sur le `nom d'édition Helm` que vous indiquez durant le déploiement. Le `nom d'hôte de service` est la valeur `helm_release_name` que vous spécifiez avec la chaîne `-orderer` ajoutée à la fin. Par exemple, si vous indiquez le `nom d'édition Helm` `orderer1`, vous pouvez insérer la valeur suivante dans la section `"csr"` du fichier :
+Vous devez fournir les noms d'hôte CSR dans le fichier de configuration. Les noms d'hôte CSR incluent l'adresse IP proxy du cluster où vous déployez le composant ainsi que le nom d'hôte de service qui sera le nom d’hôte de votre charte Helm. Le `nom de l'hôte de service` repose sur le `nom de l'édition Helm` que vous indiquez lors du déploiement. Le `nom d'hôte de service` est la valeur `helm_release_name` que vous spécifiez avec la chaîne `-orderer` ajoutée à la fin. Par exemple, si vous indiquez le `nom d'édition Helm` `orderer1`, vous pouvez insérer la valeur suivante dans la section `"csr"` du fichier :
 
 ```
 "csr": {
@@ -105,7 +105,7 @@ Une fois le fichier de configuration sauvegardé, vous devez l'encoder dans le f
 2. Connectez-vous à la console {{site.data.keyword.cloud_notm}} Private. Dans le panneau de navigation gauche, cliquez sur **Configuration** puis sur **Secrets**. Cliquez sur le bouton **Créer Secret** pour ouvrir un panneau en incrustation qui vous permet de générer un nouvel objet secret.
 
 3. Sous l'onglet **Général**, remplissez les zones suivantes :
-  - **Nom :** Donnez un nom unique à votre secret au sein de votre cluster. Vous utiliserez ce nom lors du  déploiement de votre service de tri. Il doit être entièrement en minuscules.  
+  - **Nom :** Donnez un nom unique à votre secret au sein de votre cluster. Vous utiliserez ce nom lors du déploiement de votre service de tri. Il doit être entièrement en minuscules.  
   **Remarque :** Lorsque vous déployez un service de tri, un nouveau secret est automatiquement généré par le déploiement sous le nom `<helm_release_name>-orderer-mspsecret`. Par conséquent, lorsque vous nommez votre secret, assurez-vous que son nom soit différent de `<helm_release_name>-orderer-mspsecret`. Sinon, le déploiement de la charte Help échouera car le secret qu'il essaie de créer existe déjà.
   - **Espace de nom :** espace de nom pour l'ajout de votre secret. Sélectionnez l'`espace de nom` dans lequel vous voulez déployer votre service de tri.
   - **Type :** entrez la valeur `Opaque`.
@@ -152,10 +152,12 @@ Le tableau suivant répertorie les paramètres configurables de {{site.data.keyw
 
 |  Paramètre     | Description    | Val. déf  | Requis |
 | --------------|-----------------|-------|------- |
+| **Paramètres généraux**| Paramètres qui configurent la charte Helm | | |
 | `Helm release name`| Nom de votre édition Helm. Doit commencer par une lettre minuscule et se terminer par une caractère alphanumérique, doit contenir uniquement des traits d'union et des caractère alphanumérique minuscules. Vous devez utiliser un nom d'édition Helm unique chaque fois que vous essayez d'installer un composant. **Important :** Cette valeur doit correspondre à la valeur que vous avez utilisée pour générer le 'nom d'hôte de service' pour la zone "hosts" dans votre [fichier de secret JSON.](/docs/services/blockchain/howto/orderer_deploy_icp.html#icp-orderer-deploy-config-file) | aucune | oui  |
 | `Target namespace`| Choisissez l'espace de nom Kubernetes pour installer la charte Helm. | aucune | oui |
+| `Target namespace policies`| Affiche les règles de sécurité de pod de l'espace de nom choisi, lequel doit inclure une règle **`ibm-privileged-psp`**. Sinon, une règle [bind a PodSecurityPolicy](/docs/services/blockchain?topic=blockchain-icp-setup#icp-setup-psp) est lié à votre espace de nom. | aucune | non |
 |**Global configuration**| Paramètres qui s'appliquent à tous les composants de la charte Helm|||
-| `Service account name`| Entrez le nom du compte de service  [![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/) que vous allez utiliser pour exécuter le pod. | default | non |
+| `Service account name`| Entrez le nom du compte de service [![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/) que vous allez utiliser pour exécuter le pod. | default | non |
 
 #### Paramètres de configuration du service de tri
 {: #icp-orderer-deploy-parameters}
@@ -164,12 +166,12 @@ Le tableau suivant répertorie les paramètres configurables de {{site.data.keyw
 | --------------|-----------------|-------|------- |
 | `Install Orderer`| Sélectionner pour installer un service de tri. | non sélectionné | oui, si vous souhaitez déployer un service de tri |
 | `Orderer worker node architecture`| Sélectionnez l'architecture de votre noeud worker {{site.data.keyword.cloud_notm}} Private (AMD64 ou S390X). | Architecture détectée automatiquement en fonction de votre noeud principal | oui |
-| `Orderer configuration`| Vous pouvez personnaliser la configuration du service de tri en collant votre propre fichier de configuration `orderer.yaml` dans cette zone. Pour voir un exemple de fichier `orderer.yaml`, voir l'exemple de config [`orderer.yaml` ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://github.com/hyperledger/fabric/blob/release-1.2/sampleconfig/orderer.yaml) **Pour les utilisateurs avancés uniquement**. | aucune | non |
+| `Orderer configuration`| Vous pouvez personnaliser la configuration du service de tri en collant votre propre fichier de configuration `orderer.yaml` dans cette zone. Pour voir un exemple de fichier `orderer.yaml`, voir l'exemple de config [`orderer.yaml` ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://github.com/hyperledger/fabric/blob/release-1.4/sampleconfig/orderer.yaml) **Pour les utilisateurs avancés uniquement**. | aucune | non |
 | `Organization MSP secret (Required)`| Indiquez le nom de l'objet secret qui contient les certificats et les clés MSP de l'organisation. | aucune | oui |
 | `Orderer data persistence enabled` | Des données seront disponibles au redémarrage du conteneur. Si ce paramètre est désélectionné, toutes les données seront perdues en cas de reprise en ligne ou de redémarrage du pod. | sélectionné | non |
 | `Orderer use dynamic provisioning` | Sélectionnez pour activer la mise à disposition dynamique pour les volumes de stockage. | sélectionné | non |
 | `Orderer image repository` | Emplacement de la charte Helm du service de tri. Cette zone est remplie automatiquement par le chemin installé. Si vous utilisez l'édition Community et ne disposez pas d'un accès Internet, définissez cette zone sur l'emplacement où vous avez téléchargé l'image de service de tri Fabric. | ibmcom/ibp-fabric-orderer | non |
-| `Orderer Docker image tag`| Enregistrement de l'image Docker. Cette zone est remplie automatiquement par la version de l'image. Ne la modifiez pas.| 1.2.1 | oui |
+| `Orderer Docker image tag`| Enregistrement de l'image Docker. Cette zone est remplie automatiquement par la version de l'image. Ne la modifiez pas.| 1.4.0 | oui |
 | `Orderer consensus type`| Type de consensus du service de tri. | SOLO | oui |
 | `Orderer organization name`| Indiquez le nom que vous souhaitez utiliser pour l'organisation du service de tri. Si vous souhaitez également déployer des homologues, vérifiez que vous utilisez un nom différent de celui que vous allez donner à vos homologues. Par exemple, donnez à l'organisation de votre service de tri un nom comme `ordererOrg` | aucune | oui |
 | `Orderer Org MSP ID`| Indiquez le nom que vous souhaitez utiliser pour l'ID MSP de l'organisation du service de tri. Ce doit être le même nom que celui que vous avez donné à l'organisation de votre service de tri, et il sera défini comme variable d'environnement par le processus de déploiement. Notez cette valeur car vous devrez y faire référence ultérieurement. | aucune | oui |
@@ -179,16 +181,21 @@ Le tableau suivant répertorie les paramètres configurables de {{site.data.keyw
 | `Orderer selector value`| [Valeur de sélecteur ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) pour votre Réservation de volume persistant. | aucune | non |
 | `Orderer storage access mode`| Indiquez le mode d'accès au stockage [![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes) pour le PVC. | ReadWriteMany | oui |
 | `Orderer volume claim size`| Choisissez la taille de disque à utiliser, qui doit être d'au moins 2 Gi. | 8 Gi | oui |
-| Orderer service type` | Utilisé pour indiquer si des[ports externes doivent être exposés ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types) sur l'homologue. Sélectionnez NodePort pour exposer les ports en externe (recommandé), et ClusterIP pour ne pas exposer les ports. LoadBalancer et ExternalName ne sont pas pris en charge dans cette édition. | NodePort | oui |
+| `Orderer service type` | Utilisé pour indiquer si des [ports externes doivent être exposés ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types) sur l'homologue. Sélectionnez NodePort pour exposer les ports en externe (recommandé), et ClusterIP pour ne pas exposer les ports. LoadBalancer et ExternalName ne sont pas pris en charge dans cette édition. | NodePort | oui |
 | `Orderer CPU request`| Indiquez le nombre maximum d'UC à allouer au service de tri. | 1 | oui |
 | `Orderer CPU limit`| Indiquez le nombre minimum d'UC à allouer au service de tri. | 2 | oui |
 | `Orderer memory request`| Indiquez la quantité minimum de mémoire à allouer au service de tri. | 1 Gi | oui |
 | `Orderer memory limit`| Indiquez la quantité minimum de mémoire à allouer au service de tri. | 2 Gi | oui |
+| `gRPC web proxy CPU request`| Indiquez le nombre minimum d'UC en millicpus (m) à allouer au proxy Web gRPC. | 100 m | oui |
+| `gRPC web proxy CPU limit`| Indiquez le nombre maximum d'UC en millicpus (m) à allouer au proxy Web gRPC. | 200 m | oui |
+| `gRPC web proxy memory request`| Indiquez la quantité minimum de mémoire à allouer au proxy Web gRPC. | 100 Mi | oui |
+| `gRPC web proxy memory limit`| Indiquez la quantité maximum de mémoire à allouer au proxy Web gRPC. | 200 Mi | oui |
+
 
 ### Utilisation de la ligne de commande Helm pour installer l'édition Helm
 {: #icp-orderer-deploy-helm-cli}
 
-Vous pouvez aussi utiliser l'interface de ligne de commande Helm pour installer l'édition Helm. Avant d'exécuter la commande `helm install`, assurez-vous [d'ajouter le référentiel Helm de votre cluster à l'environnement de l'interface de ligne de commande Helm![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_int_helm_repo_to_cli.html "Adding the internal Helm repository to Helm CLI").
+Vous pouvez aussi utiliser l'interface de ligne de commande Helm pour installer l'édition Helm. Avant d'exécuter la commande `helm install`, assurez-vous [d'ajouter le référentiel Helm de votre cluster à l'environnement de l'interface de ligne de commande Helm![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/app_center/add_int_helm_repo_to_cli.html "Adding the internal Helm repository to Helm CLI").
 
 Vous pouvez définir les paramètres requis pour l'installation en créant un fichier `yaml` et en le transmettant à la commande `helm install` suivante.
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -20,7 +20,7 @@ subcollection: blockchain
 # Déploiement d'une autorité de certification sur {{site.data.keyword.cloud_notm}} Private
 {: #ca-deploy}
 
-Une fois que vous avez importé la charte Helm d'{{site.data.keyword.blockchainfull}} Platform on {{site.data.keyword.cloud_notm}} Private, vous pouvez déployer les composants individuels. L'autorité de certification est la racine de confiance de votre entreprise et elle vous permet de générer des données d'identification pour les autres composants à déployer. Par conséquent, vous devez déployer une autorité de certification avant de déployer les autres composants. Chaque organisation dans un réseau de blockchain multi-cloud doit déployer sa propre autorité de certification.  Pour plus d'informations sur les autorités de certification et leur rôle dans un réseau de blockchain, voir [Autorités de certification](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview-ca).
+Une fois que vous avez importé la charte Helm d'{{site.data.keyword.blockchainfull}} Platform for {{site.data.keyword.cloud_notm}} Private, vous pouvez déployer les composants individuels. L'autorité de certification est la racine de confiance de votre entreprise et elle vous permet de générer des données d'identification pour les autres composants à déployer. Par conséquent, vous devez déployer une autorité de certification avant de déployer les autres composants. Chaque organisation dans un réseau de blockchain multi-cloud doit déployer sa propre autorité de certification.  Pour plus d'informations sur les autorités de certification et leur rôle dans un réseau de blockchain, voir [Autorités de certification](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview-ca).
 {:shortdesc}
 
 Avant de déployer une autorité de certification, passez en revue la section [Considérations et limitations](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-about-considerations).
@@ -55,9 +55,9 @@ Si vous n'utilisez pas la mise à disposition dynamique, des[Volumes permanents 
 
 1. Avant d'installer un homologue sur {{site.data.keyword.cloud_notm}} Private, vous devez [installer {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/ICP_setup.html#icp-setup) et [installer la Charte Helm de {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/howto/helm_install_icp.html#helm-install).
 
-2. Si vous utilisez Community Edition et souhaitez exécuter cette charte Helm sur un cluster {{site.data.keyword.cloud_notm}} Private sans connectivité Internet, vous devez créer des archives sur une machine connectée à Internet avant d'installer les archives sur votre cluster {{site.data.keyword.cloud_notm}} Private. Pour plus d'informations, voir [Adding featured applications to clusters without Internet connectivity ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_package_offline.html "Adding featured applications to clusters without Internet connectivity"){:new_window}. Remarque : Vous pouvez trouver le fichier de spécification manifest.yaml sous ibm-blockchain-platform-dev/ibm_cloud_pak dans la charte Helm.
+2. Si vous utilisez Community Edition et souhaitez exécuter cette charte Helm sur un cluster {{site.data.keyword.cloud_notm}} Private sans connectivité Internet, vous devez créer des archives sur une machine connectée à Internet avant d'installer les archives sur votre cluster {{site.data.keyword.cloud_notm}} Private. Pour plus d'informations, voir [Adding featured applications to clusters without Internet connectivity ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/app_center/add_package_offline.html "Adding featured applications to clusters without Internet connectivity"){:new_window}. Remarque : Vous pouvez trouver le fichier de spécification manifest.yaml sous ibm-blockchain-platform-dev/ibm_cloud_pak dans la charte Helm.
 
-3. Procédez à l'extraction de la valeur de l'adresse IP proxy du cluster depuis la console {{site.data.keyword.cloud_notm}} Private. **Remarque :** Vous devrez être [administrateur de cluster![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "Cluster administrator roles and actions") pour accéder à votre IP de proxy. Connectez-vous au cluster {{site.data.keyword.cloud_notm}} Private. Dans le panneau de navigation gauche, cliquez sur **Plateforme** puis sur **Noeuds** pour afficher les noeuds qui sont définis dans le cluster. Cliquez sur le noeud avec le rôle `proxy`, puis copiez la valeur de l'`IP hôte` de la table.
+3. Procédez à l'extraction de la valeur de l'adresse IP proxy du cluster depuis la console {{site.data.keyword.cloud_notm}} Private. **Remarque :** Vous devrez être [administrateur de cluster![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/user_management/assign_role.html "Cluster administrator roles and actions") pour accéder à votre IP de proxy. Connectez-vous au cluster {{site.data.keyword.cloud_notm}} Private. Dans le panneau de navigation gauche, cliquez sur **Plateforme** puis sur **Noeuds** pour afficher les noeuds qui sont définis dans le cluster. Cliquez sur le noeud avec le rôle `proxy`, puis copiez la valeur de l'`IP hôte` de la table.
 
   Conservez cette valeur car vous allez l'utiliser lors de la configuration de la zone `Adresse IP du proxy` de la charte Helm.
   {:important}
@@ -128,9 +128,11 @@ Le tableau suivant répertorie les paramètres configurables de {{site.data.keyw
 
 |  Paramètre     | Description    | Val. déf  | Requis |
 | --------------|-----------------|-------|------- |
+| **Paramètres généraux**| Paramètres qui configurent la charte Helm | | |
 | `Helm release name`| Nom de votre édition Helm. Doit commencer par une lettre minuscule et se terminer par une caractère alphanumérique, doit contenir uniquement des traits d'union et des caractère alphanumérique minuscules. Vous devez utiliser un nom d'édition Helm unique chaque fois que vous essayez d'installer un composant. | aucune | oui |
 | `Target namespace`| Choisissez l'espace de nom Kubernetes pour installer la charte Helm. | aucune | oui |
-|**Global configuration**| Paramètres qui s'appliquent à tous les composants de la charte Helm|||
+| `Target namespace policies`| Affiche les règles de sécurité de pod de l'espace de nom choisi, lequel doit inclure une règle **`ibm-privileged-psp`**. Sinon, une règle [bind a PodSecurityPolicy](/docs/services/blockchain?topic=blockchain-icp-setup#icp-setup-psp) est lié à votre espace de nom. | aucune | non |
+| **Global configuration**| Paramètres qui s'appliquent à la tous les composants de la charte Helm | | |
 | `Service account name`| Entrez le nom du compte de service [ ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/ "Configure Service Accounts for Pods") que vous allez utiliser pour lancer le pod. | default | non |
 
 #### Paramètres de configuration de l'autorité de certification
@@ -151,7 +153,9 @@ Le tableau suivant répertorie les paramètres configurables de {{site.data.keyw
 | `CA storage access mode`| Indication du [mode d'accès![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes "Modes d'accès") au stockage pour la Réservation de volume persistant. | ReadWriteMany | oui |
 | `CA volume claim size`| Choisissez la taille de disque à utiliser. | 2 Gi | oui |
 | `CA image repository`| Emplacement de la charte Helm de votre autorité de certification. | ibmcom/ibp-fabric-ca | oui |
-| `CA Docker image tag`| Valeur de la balise associée à l'image de l'autorité de certification. Cette zone est remplie automatiquement par la version de l'image. Ne la modifiez pas.| 1.2.1 | oui |
+| `CA Docker image tag`| Valeur de la balise associée à l'image de l'autorité de certification. Cette zone est remplie automatiquement par la version de l'image. | 1.4.0 | oui |
+| `CA Init Docker image repository`| Emplacement de l'image CA Init Docker. Cette zone est remplie automatiquement par l'emplacement de l'image. | ibmcom/ibp-init | oui |
+| `CA Init Docker image tag`| Valeur de la balise associée à l'image CA Init Docker. Cette zone est remplie automatiquement par la version de l'image. | 1.4.0 | oui |
 | `CA service type` | Utilisé pour indiquer si des [ports externes doivent être exposés ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types) sur l'homologue. Sélectionnez NodePort pour exposer les ports en externe (recommandé), et ClusterIP pour ne pas exposer les ports. LoadBalancer et ExternalName ne sont pas pris en charge dans cette édition. | NodePort | oui |
 | `CA secret (Required)`| Entrez le nom de l'objet secret Kubernetes que vous avez créé pour `ca-admin-name` et `ca-admin-password`. | aucune | oui |
 | `CA CPU request`| Indiquez le nombre minimum d'UC à allouer à l'autorité de certification. | 1 | oui |
@@ -160,13 +164,13 @@ Le tableau suivant répertorie les paramètres configurables de {{site.data.keyw
 | `CA memory limit`| Indiquez la quantité maximum de mémoire à allouer à l'autorité de certification. | 4 Gi | oui |
 | `CA TLS instance name`| Indiquez un nom pour l'instance TLS de l'autorité de certification qui sera utilisé pour enregistrer un service de tri ou un homologue. | tlsca | oui |
 | `CSR common name`| Indiquez le nom usuel (CN) que le certificat racine généré par l'autorité de certification va présenter lorsqu'il sera contacté. | tlsca-common | oui |
-| `Proxy IP`| Entrez l'[IP de noeud proxy pour le cluster![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/installing/install_proxy.html "IBM Cloud Private installation behind an HTTP proxy") ou l'autorité de certification est déployée. | 127.0.0.1 | oui |
+| `Proxy IP`| Entrez l'[IP de noeud proxy pour le cluster![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/installing/install_proxy.html "IBM Cloud Private installation behind an HTTP proxy") ou l'autorité de certification est déployée. | 127.0.0.1 | oui |
 
 
 ### Utilisation de la ligne de commande Helm pour installer l'édition Helm
 {: #ca-deploy-helm-cli}
 
-Vous pouvez aussi utiliser l'interface de ligne de commande Helm pour installer l'édition Helm. Avant d'exécuter la commande `helm install`, assurez-vous [d'ajouter le référentiel Helm de votre cluster à l'environnement de l'interface de ligne de commande Helm![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_int_helm_repo_to_cli.html "Adding the internal Helm repository to Helm CLI").
+Vous pouvez aussi utiliser l'interface de ligne de commande Helm pour installer l'édition Helm. Avant d'exécuter la commande `helm install`, assurez-vous [d'ajouter le référentiel Helm de votre cluster à l'environnement de l'interface de ligne de commande Helm![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/app_center/add_int_helm_repo_to_cli.html "Adding the internal Helm repository to Helm CLI").
 
 Vous pouvez définir les paramètres requis pour l'installation en créant un fichier `yaml` et en le transmettant à la commande `helm install` suivante.
 
@@ -203,7 +207,7 @@ Une fois que vous avez entré les paramètres de configuration et cliqué sur le
 
 Si vous faites défiler jusqu'à la section `Remarques`, vous verrez des informations importantes relatives à l'[exploitation de votre autorité de certification](/docs/services/blockchain/howto/CA_operate.html#ca-operate).
 
-Une fois que vous avez installé une autorité de certification {{site.data.keyword.blockchainfull_notm}} Platform dans {{site.data.keyword.cloud_notm}} Private, un configmap est créé avec les paramètres de variables d'environnement par défaut. Vous pouvez ensuite changer ou ajouter des variables d'environnement pour l'autorité de certification afin de configurer son comportement. Pour plus d'informations sur les paramètres de configuration du serveur de l'autorité de certification, voir [la documentation du serveur d'autorité de certification Fabric![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric-ca.readthedocs.io/en/latest/users-guide.html#fabric-ca-server "Fabric CA Server").
+Une fois que vous avez installé une autorité de certification {{site.data.keyword.blockchainfull_notm}} Platform dans {{site.data.keyword.cloud_notm}} Private, un configmap est créé avec les paramètres de variables d'environnement par défaut. Vous pouvez ensuite changer ou ajouter des variables d'environnement pour l'autorité de certification afin de configurer son comportement. Pour plus d'informations sur les paramètres de configuration du serveur de l'autorité de certification, voir [la documentation du serveur d'autorité de certification Fabric![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/users-guide.html#fabric-ca-server "Fabric CA Server").
 
 Après avoir configuré configmap, vous devez redémarrer le serveur de l'autorité de certification pour que les modifications prennent effet. Pour redémarrer le serveur d'autorité de certification, vous pouvez supprimer le pod du serveur d'autorité de certification Fabric. {{site.data.keyword.cloud_notm}} Private créera un nouveau pod reflétant les modifications.
 

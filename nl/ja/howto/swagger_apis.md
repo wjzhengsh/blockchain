@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018,2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-03"
 
 subcollection: blockchain
 
@@ -27,7 +27,7 @@ subcollection: blockchain
 ## ネットワーク資格情報の取得
 {: #ibp-swagger-retrieving-network-credentials}
 
-ブロックチェーン・ネットワークのネットワーク・モニターに入り、左側のナビゲーターから「API」画面を開きます。 REST API のネットワーク資格情報が表示されます。 後で、ここに表示された「key」と「secret」の値を使用して API を許可し、「network_id」をパラメーターとして使用して API を実行します。 **「secret の表示 (Show secret)」**をクリックして secret フィールドの値を表示します。 key、secret、および network_id フィールドの値をコピーします。これらの値は、後で Swagger UI で使用できます。
+ブロックチェーン・ネットワークのネットワーク・モニターに入り、左側のナビゲーターから「API」画面を開きます。 REST API のネットワーク資格情報が表示されます。 後で、ここに表示された「key」と「secret」の値を使用して API を許可し、「network_id」をパラメーターとして使用して API を実行します。 **「secret の表示 (Show secret)」**をクリックして secret フィールドの値を表示します。 key、secret、および network_id の各フィールドの値をコピーします。これらの値は、後で Swagger UI で使用できます。
 
 **図 1** に「API」画面を示します。
 ![「API」画面](../images/API_screen_starter.png "「API」画面")
@@ -48,7 +48,7 @@ Starter Plan を使用している場合は、ネットワーク・モニター�
 
 Swagger UI で、**「許可 (Authorize)」**ボタンをクリックします。許可ウィンドウがポップアップ表示されます。 ネットワーク資格情報の「key」と「secret」の値をユーザー名とパスワードとして入力し、**「許可 (Authorize)」**をクリックしてから**「完了」**をクリックします。 これで、API を実行する準備ができました。 ブラウザーを最新表示すると、資格情報を使用して再許可する必要があることに注意してください。
 
-認証として「基本認証」を使用した場合、「許可 (Authorize)」ウィンドウで指定した資格情報は、**「許可 (Authorize)」**ボタンをクリックしてから**「完了」**ボタンをすると保管され、各 REST API 呼び出しで渡されます。
+認証として「基本認証」を使用した場合、「許可 (Authorize)」ウィンドウで指定した資格情報は、**「許可 (Authorize)」**ボタンをクリックしてから**「完了」**ボタンをクリックすると保管され、各 REST API 呼び出しで渡されます。
 
 **図 3** は、Swagger API を許可するプロセスを示しています。
 
@@ -61,24 +61,45 @@ Swagger UI で、**「許可 (Authorize)」**ボタンをクリックします�
 
 実行する REST API をクリックして、**「試行する」**ボタンをクリックします。
 
-**図 4** に、「Swagger UI」での「Try it out」ボタンを示します。
+**図 4** に、「Swagger UI」での「試行する」ボタンを示します。
 
-![Swagger UI での「Try it out」ボタン](../images/swaggerUITryItOut.png "Swagger UI での「Try it out」ボタン")  
-*図 4. 「Swagger UI」での「Try it out」ボタン*
+![Swagger UI での「試行する」ボタン](../images/swaggerUITryItOut.png "Swagger UI での「試行する」ボタン")  
+*図 4. 「Swagger UI」での「試行する」ボタン*
 
-**「Try it out」**ボタンをクリックした後、API を使用するための必須パラメーターを入力することができます。 `networkID` はネットワーク資格情報で、その他のパラメーターはネットワーク・モニターで見つけることができます。 パラメーターを入力したら、**「Execute」**をクリックしてネットワークに対して REST API 呼び出しを実行します。
+**「Try it out」**ボタンをクリックした後、API を使用するための必須パラメーターを入力することができます。 `networkID` はネットワーク資格情報で、その他のパラメーターはネットワーク・モニターで見つけることができます。 パラメーターを入力したら、**「実行」**をクリックしてネットワークに対して REST API 呼び出しを実行します。
 
 **図 5** に「Swagger UI」でのパラメーターを示します。
 
 ![Swagger UI でのパラメーター](../images/swaggerUIParams.png "Swagger UI でのパラメーター")  
 *図 5. パラメーターの入力*  
 
-**「Execute」**をクリックすると、ネットワークに対する API 呼び出しの応答を確認することができます。 また、コマンド・ラインから直接 API を呼び出すことができる CURL コマンドも確認することができます。
+**「Execute」**をクリックすると、ネットワークに対する API 呼び出しの応答を確認することができます。 また、コマンド・ラインから API を直接呼び出すことができる CURL コマンドも確認することができます。
 
 **図 6** に、API 応答本文、URL、および CURL コマンドを示します。
 
 ![Swagger UI での API 応答](../images/swaggerUICurlResponse.png "Swagger UI での API 応答")  
 *図 6. API 応答*    
+
+## API アクセスの無効化
+{: #ibp-swagger-turn-off}
+
+デフォルトでは、IBM Cloud の監査員以外の役割を持つすべてのユーザーが、Swagger API パネルに表示される**ネットワーク資格情報**を参照および使用できるので、Swagger API を使用してネットワークを管理できます。しかし、Swagger API のネットワーク資格情報を UI で公開したくない場合は、既存のキーとシークレットの値をコピーして安全に保管したうえで、Swagger API を使用できない資格情報を新たに生成することもできます。このアクセスを制御できるように resetCredentials という名前のフラグが用意されています。制御する手順は以下のとおりです。
+
+1. [サービス資格情報ダッシュボード](/docs/services/blockchain/howto/create_join_network_with_apis.html#swagger-network-retrieve-id-token)に記載している手順で、新しいネットワーク資格情報を生成します。
+2. ただし、**「インラインの構成パラメーターの追加」**ボックスには以下の値を貼り付けます。
+   ```
+   {
+     "resetCredentials": true
+   }
+   ```
+   {:codeblock}
+3. **「追加」**をクリックします。
+
+これで、ユーザーが UI から Swagger API パネルにアクセスすると、UI の**ネットワーク資格情報**には、ネットワークを管理できない汎用的なキーとシークレット値が表示されるようになります。その資格情報を使用して API 要求を送信しても、処理されません。  
+
+後から有効なネットワーク資格情報を UI で公開したくなった場合は、単に上記の手順を繰り返して新しい資格情報を生成します。ただし、そのときは**「インラインの構成パラメーターの追加」**ボックスをブランクのままにします。パラメーターを指定する必要はありません。
+
+これで、元の有効な資格情報が UI の**ネットワーク資格情報**に表示され、Swagger API の認証に使用できるようになります。
 
 ## トラブルシューティングのヒント
 {: #ibp-swagger-troubleshooting}

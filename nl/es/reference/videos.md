@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018
-lastupdated: "2019-03-05"
+lastupdated: "2019-03-20"
 
 keywords: ibm blockchain platform, free 2.0 beta, starter plan, videos, getting started
 
@@ -23,13 +23,24 @@ subcollection: blockchain
 # Vídeos de inicio de la plataforma de {{site.data.keyword.blockchainfull_notm}}
 {: #ibp-videos}
 
-Vea el vídeo siguiente para obtener más información sobre {{site.data.keyword.blockchainfull}} Platform gratuita 2.0 beta y sobre cómo empezar a trabajar para desplegar {{site.data.keyword.blockchainfull_notm}} Platform gratuita 2.0 beta.
+Puede ver los vídeos de iniciación para aprender a utilizar {{site.data.keyword.blockchainfull}} Platform.
+{:shortdesc}
 
-<iframe class="embed-responsive-item" id="youtubeplayer" title="Vídeo de IBM Blockchain Platform gratuita 2.0 beta - guía de aprendizaje para el despliegue" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/gPnkVQiHRqk" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
+Los vídeos están en una lista de reproducción y se reproducen continuamente en el marco de vídeo de abajo. También puede pulsar el icono de menú en la esquina superior izquierda del vídeo para abrir la lista de reproducción y cambiar a otro vídeo.
+{:note}
 
+## Iniciación a {{site.data.keyword.blockchainfull_notm}} Platform gratuita 2.0 beta
+{: #ibp-videos-ibp-v2}
+
+Vea la siguiente serie de vídeos para obtener más información sobre {{site.data.keyword.blockchainfull_notm}} Platform gratuita 2.0 beta y sobre cómo empezar a crear su propia red.
+
+<iframe class="embed-responsive-item" id="youtubeplayer" title="Vídeos del plan inicial" type="text/html" width="640" height="390" src="https://www.youtube.com/embed?listType=playlist&list=PL7LSy0eQMvjtIJkNRCJZC7mGfB5K49lrX" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
+*Vídeo 1. Iniciación a {{site.data.keyword.blockchainfull_notm}} Platform gratuita 2.0 beta*
+
+## Iniciación al plan inicial de {{site.data.keyword.blockchainfull_notm}} Platform
+{: #ibp-videos-starter}
 
 Vea la siguiente serie de vídeos para obtener más información sobre el Plan inicial de {{site.data.keyword.blockchainfull_notm}} Platform y sobre cómo empezar a desarrollar una red blockchain.
 
-**Nota**: la serie de vídeos está en una lista de reproducción y los vídeos se reproducen continuamente en el marco de vídeo de abajo. También puede pulsar el icono de menú en la esquina superior izquierda del vídeo para abrir la lista de reproducción y cambiar a otro vídeo.
-
 <iframe class="embed-responsive-item" id="youtubeplayer" title="Vídeos del plan inicial" type="text/html" width="640" height="390" src="https://www.youtube.com/embed?listType=playlist&list=PL7LSy0eQMvjvBdal2mm74JlcNGMXYSGOe" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
+*Vídeo 2. Iniciación al plan inicial de {{site.data.keyword.blockchainfull_notm}} Platform*

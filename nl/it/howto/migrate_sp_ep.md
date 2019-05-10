@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018,2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-17"
 
 subcollection: blockchain
 
@@ -39,7 +39,6 @@ Prima di migrare dalla tua rete piano Starter a una rete piano Enterprise, esami
 
 - **Prezzi:** per la tua organizzazione, la tariffa mensile per l'utilizzo di una rete piano Enterprise include un costo di adesione di $1000 in base alle singole istanze e un costo peer di $1000 in base ai singoli peer. Per ulteriori informazioni, vedi
 [Prezzi del piano Enterprise](/docs/services/blockchain/howto/pricing.html#ibp-pricing-enterprise-plan).
-
 - **Versione di Hyperledger Fabric:** le reti piano Enterprise vengono eseguite su Hyperledger Fabric v1.1. Le reti piano Starter sono eseguite su Fabric v1.2.
 - **Risorse interessate:** chaincode (smart contract), applicazioni client. Ancora una volta, fai attenzione se il tuo chaincode sta utilizzando un componente o una funzionalità Fabric v1.2 che non è compatibile con le reti v1.1.
 - **Tempo richiesto:** la migrazione di una rete di base dal piano Starter al piano Enterprise richiederà almeno mezza giornata.

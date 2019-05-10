@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -34,11 +34,10 @@ El funcionamiento de la red en {{site.data.keyword.blockchainfull_notm}} Platfor
 * Pila de seguridad reforzada sin acceso privilegiado, malware y a prueba de manipulación, cifrada completamente y con muchas más características para redes con datos sensibles en los sectores regulados.
 * Se realiza una copia de seguridad externa de las redes de empresa cada 24 horas. En el caso de que se produzca un desastre, estas redes se pueden restaurar en el mismo sitio o en un sitio alternativo.
 
-El Plan empresarial es un servicio de plataforma de {{site.data.keyword.cloud_notm}} y sigue las [condiciones de los servicios de {{site.data.keyword.cloud_notm}} ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](http://www-03.ibm.com/software/sla/sladb.nsf/sla/bm "condiciones de los servicios de {{site.data.keyword.cloud_notm}}") de los acuerdos de nivel de servicio (SLA). Tenga en cuenta que las redes del plan empresarial se suministran en **varios entornos** en centros de datos separados geográficamente.
-
 **Notas:**
-- El Plan empresarial de {{site.data.keyword.blockchainfull_notm}} Platform proporciona un entorno de producción. Si necesita un entorno de desarrollo y pruebas, consulte [Acerca del Plan inicial](/docs/services/blockchain/starter_plan.html#starter-plan-about).
-- {{site.data.keyword.blockchainfull_notm}} Platform es un servicio de plataforma de {{site.data.keyword.cloud_notm}} y todas las ofertas de pertenencia a grupo siguen las [condiciones de los servicios de {{site.data.keyword.cloud_notm}} ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](http://www-03.ibm.com/software/sla/sladb.nsf/sla/bm "condiciones de servicios de {{site.data.keyword.cloud_notm}}") de los acuerdos de nivel de servicio (SLA). Las redes del plan empresarial se suministran en **varios entornos** en centros de datos separados geográficamente.
+- El Plan empresarial proporciona un entorno de producción. Si necesita un entorno de desarrollo y pruebas, consulte [Acerca del Plan inicial](/docs/services/blockchain/starter_plan.html#starter-plan-about).
+- {{site.data.keyword.blockchainfull_notm}} Platform es un servicio de plataforma de {{site.data.keyword.cloud_notm}} y todas las ofertas de pertenencia a grupo siguen las [condiciones de los servicios de {{site.data.keyword.cloud_notm}} ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](http://www-03.ibm.com/software/sla/sladb.nsf/sla/bm "condiciones de servicios de {{site.data.keyword.cloud_notm}}") de los acuerdos de nivel de servicio (SLA). Las redes del Plan empresarial se proporcionan en un centro de datos de una única ubicación geográfica. Para ver una lista de los lugares geográficos disponibles, consulte
+[Ubicaciones de {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain?topic=blockchain-ibp-regions-locations#ibp-regions-locations).
 
 Para los miembros que van a iniciar la red, IBM proporciona una interfaz gráfica de usuario para guiar al iniciador de la red a través de los pasos clave para establecer y suministrar la red. Ello incluye invitar a otros miembros y definir las reglas de gobierno. Para obtener más información, consulte [Gobierno de la red del Plan empresarial](/docs/services/blockchain/get_start.html#getting-started-with-enterprise-plan). Una vez desplegada la red, dispondrá de una interfaz gráfica de usuario, el supervisor de red, para supervisar la actividad y el estado de la red, gestionar las actividades de red clave (que incluyen nuevos despliegues, adición o eliminación de miembros, ciclo de vida del código de encadenamiento y gestión de canales) y buscar soporte técnico. Para obtener más información, consulte [Utilización del supervisor de red](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard).
 
@@ -59,7 +58,7 @@ Además de los componentes principales de blockchain, la opción de pertenencia 
 
 El único aspecto que se debe determinar es el tamaño de los iguales que necesita la red. Esta decisión se basa en el número de canales necesarios, además de la carga por canal, el uso de memoria y el espacio en disco (almacenamiento).
 
-Debe utilizar el Plan empresarial para despliegues más estables, de producción o casi de nivel de producción. A efectos de prueba, utilice el [Plan inicial](/docs/services/blockchain/starter_plan.html#starter-plan-about) o [instale imágenes de Docker localmente](http://hyperledger-fabric.readthedocs.io/en/release-1.1/build_network.html).
+Debe utilizar el Plan empresarial para despliegues más estables, de producción o casi de nivel de producción. A efectos de prueba, utilice el [Plan inicial](/docs/services/blockchain/starter_plan.html#starter-plan-about) o [instale imágenes de Docker localmente](http://hyperledger-fabric.readthedocs.io/en/release-1.2/build_network.html).
 
 <!--- The Enterprise plan provides the ordering service and CA. The membership fee is $1,000, and a per peer fee of $1,000 that is associated with the network. If you want to have high availability (HA), you must purchase an additional peer to provide the HA capabilities. For example, one organization (associated membership fee of $1,000) of two peers ($1,000 X 2 peers) with HA ($1,000 X 2 HA peers) requires a monthly charge of $5,000.  --->
 

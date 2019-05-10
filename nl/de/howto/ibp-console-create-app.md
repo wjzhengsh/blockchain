@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-03-20"
 
 subcollection: blockchain
 
@@ -32,13 +32,13 @@ Weitere Informationen darüber, wie Anwendungen und Smart Contracts miteinander 
 
 **Anwendungsbeispiele und Lernprogramme**
 
-|  Beispiel |  Beschreibung    |  Komplexität   | Sprache   | Standort |
+|  Beispiel  |  Beschreibung    |  Komplexität    | Sprache | Standort |
 | -----------------|---------|---------|---------|
 | [FabCar ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://developer.ibm.com/patterns/write-a-smart-contract-for-the-fabcarcommercial-paper-or-iks-cluster-with-saas-v2-beta-network-think/ "Blockchain")| Verwenden Sie einen IKS-Cluster, um einen einfachen Smart Contract für ein Fabric-Netz in Blockchain Platform bereitzustellen. | Mittel | Node.js | DeveloperWorks-Dokumentation|
 | [Commercial Paper ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/tutorial/commercial_paper.html "Commercial Paper")| Verwenden Sie den Smart Contract für Wertpapiere (commercial paper) für den Handel mit einer lokalen Instanz von Hyperledger Fabric. | Mittel | Node.js | Hyperledger Fabric-Dokumentation|
 | **Demnächst verfügbar:** Advanced Commercial Paper  | Erweitertes Beispiel mit bewährten Verfahren für Besitz und Datenschutz unter Verwendung privater Datensammlungen und statusbasierter Billigung. | Hoch | Node.js | Hyperledger Fabric-Dokumentation|
 | [Run a commercial paper smart contract with the {{site.data.keyword.blockchainfull_notm}} VSCode extension ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://developer.ibm.com/tutorials/run-commercial-paper-smart-contract-with-ibm-blockchain-vscode-extension/ "Run a commercial paper smart contract with VSCode")|  Erfahren Sie, wie Sie die VScode-Erweiterung zum Installieren und Aufrufen des Smart Contract für Wertpapiere in einer lokalen Instanz von Hyperledger Fabric verwenden können. | Mittel | Node.js | IBM Developer|
-| [Run the commercial paper sample on the {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-commercial-paper)| Erfahren Sie, wie Sie den Smart Contract für Wertpapiere in einem {{site.data.keyword.blockchainfull_notm}} Platform 2.0-Netz aufrufen können. | Mittel | Node.js | {{site.data.keyword.blockchainfull_notm}} Platform-Dokumentation|  
+| [Run the commercial paper sample on the {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-commercial-paper)| Erfahren Sie, wie Sie den Smart Contract für Wertpapiere in einem {{site.data.keyword.blockchainfull_notm}} Platform 2.0-Netz aufrufen können. | Mittel |  Node.js | {{site.data.keyword.blockchainfull_notm}} Platform-Dokumentation|  
 
 Für die Entwicklung einer Anwendung ist möglicherweise eine Koordination zwischen zwei verschiedenen Benutzern (dem Netzoperator und dem Anwendungsentwickler) erforderlich:
 - **Der Netzoperator** ist der Administrator, der die {{site.data.keyword.blockchainfull_notm}} Platform-Konsole verwendet, um die Knoten Ihrer Organisation zu implementieren und die Smart Contracts in Ihrem Netz einzurichten.
@@ -63,13 +63,13 @@ Der Anwendungsentwickler kann zwei Programmiermodelle für die Interaktion mit d
 
 Ab Fabric Version 1.4 können Benutzer ein Programmiermodell für vereinfachte Anwendungen und Smart Contracts nutzen. Das neue Modell reduziert die Anzahl der Schritte und den Umfang des Codes, der für die Übergabe einer Transaktion erforderlich ist. Dieses Modell wird nur für Anwendungen unterstützt, die in **Node.js** geschrieben sind. Wenn Sie das neue Modell nutzen möchten, können Sie dieses Lernprogramm verwenden, um die folgenden Aktionen in einem {{site.data.keyword.blockchainfull_notm}} Platform 2.0-Netz auszuführen:
 
-- [Zertifikate für die Anwendung](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-enroll) mithilfe des SDKs generieren.
+- [Zertifikate für die Anwendung](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-enroll) mithilfe des SDK generieren.
 - [Smart Contract über das SDK aufrufen](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-invoke).
 - [IBM Blockchain-Erweiterung für VSCode](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-vscode) zum Schreiben, Bereitstellen und interaktivem Entwickeln und Testen von Smart Contracts verwenden.
 - Mehr zur Anwendungsentwicklung durch das Bereitstellen des [Wertpapier-Lernprogramms (commercial-paper)](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-commercial-paper) auf den Knoten erfahren, die von der Konsole aus verwaltet werden. Dieses Lernprogramm enthält weitere Hintergrundinformationen zur Verwendung von Fabric-Wallets und -Gateways.
 
 
-**Untergeordnete APIs des Fabric-SDKs**
+**Untergeordnete APIs des Fabric-SDK**
 
 Wenn Sie weiterhin Ihren bestehenden Smart Contract und Anwendungscode verwenden oder die anderen, von der Hyperledger-Community bereitgestellten Fabric-SDK-Sprachen nutzen möchten, können Sie mit den [untergeordneten APIs des Fabric-SDK](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-low-level) eine Verbindung zu Ihrem Netz herstellen.
 
@@ -78,7 +78,7 @@ Wenn Sie weiterhin Ihren bestehenden Smart Contract und Anwendungscode verwenden
 
 Anwendungen müssen die Transaktionen signieren, die sie an {{site.data.keyword.blockchainfull_notm}}-Knoten übergeben, und einen öffentlichen Schlüssel zuordnen, der von Knoten verwendet wird, um zu überprüfen, ob die Transaktionen von der richtigen Partei gesendet werden. Dadurch wird sichergestellt, dass Transaktionen von den teilnahmeberechtigten Organisationen übergeben werden.
 
-Der Netzoperator muss die Zertifizierungsstelle der Organisation verwenden, um eine Anwendungsidentität zu registrieren, die dann vom Anwendungsentwickler für die Generierung eines öffentlichen und privaten Schlüssels verwendet werden kann. Der Operator kann die Eintragungs-ID und den geheimen Schlüssel der Identität gemeinsam mit den Endpunktinformationen der Zertifizierungsstelle bereitstellen, die vom SDK zur Generierung von Zertifikaten verwendet werden sollen. Durch das Eintragen auf der Clientseite stellt der Anwendungsentwickler sicher, dass keine andere Partei Zugriff auf den privaten Schlüssel der Anwendung hat. Für zusätzliche Sicherheit kann der Netzoperator während der Registrierung das Eintragungslimit '1' eingeben. Nachdem sich der Anwendungsentwickler eingetragen hat, können die Eintragungs-ID und der geheime Schlüssel nicht mehr zum Generieren eines weiteren privaten Schlüssels verwendet werden. 
+Der Netzoperator muss die Zertifizierungsstelle der Organisation verwenden, um eine Anwendungsidentität zu registrieren, die dann vom Anwendungsentwickler für die Generierung eines öffentlichen und privaten Schlüssels verwendet werden kann. Der Operator kann die Eintragungs-ID und den geheimen Schlüssel der Identität gemeinsam mit den Endpunktinformationen der Zertifizierungsstelle bereitstellen, die vom SDK zur Generierung von Zertifikaten verwendet werden sollen. Durch das Eintragen auf der Clientseite stellt der Anwendungsentwickler sicher, dass keine andere Partei Zugriff auf den privaten Schlüssel der Anwendung hat. Für zusätzliche Sicherheit kann der Netzoperator während der Registrierung das Eintragungslimit '1' eingeben. Nachdem sich der Anwendungsentwickler eingetragen hat, können die Eintragungs-ID und der geheime Schlüssel nicht mehr zum Generieren eines weiteren privaten Schlüssels verwendet werden.
 
 Wenn Sie der Sicherheit eher eine untergeordnete Rolle zuschreiben, kann der Netzoperator über die [Registerkarte "Zertifizierungsstelle"](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-enroll) eine Anwendungsidentität eintragen. Der Operator kann dann die Identität herunterladen oder in die Konsolenwallet exportieren. Um die Zertifikate aus dem SDK verwenden zu können, müssen die Schlüssel von Base64 in das PEM-Format decodiert werden. Sie können die Zertifikate decodieren, indem Sie den folgenden Befehl auf Ihrer lokalen Maschine ausführen:
 
@@ -95,9 +95,9 @@ Anwendungen können Transaktionen nur an die Smart Contracts übergeben, die auf
 
 Der [Transaktionsfluss ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")]( https://hyperledger-fabric.readthedocs.io/en/release-1.4/txflow.html "Transaktionsfluss"){:new_window} von Hyperledger Fabric umfasst mehrere Komponenten, wobei die Clientanwendungen Bewilligungen von Peers erfassen und bewilligte Transaktionen an den Anordnungsservice senden. Das Verbindungsprofil stellt Ihre Anwendung mit den Endpunkten der Peers und Anordnungsknoten bereit, die für die Übergabe einer Transaktion benötigt werden. Es enthält außerdem Informationen zu Ihrer Organisation, zu Ihren Zertifizierungsstellen und zu Ihrer MSP-ID. Die Fabric-SDKs können das Verbindungsprofil direkt lesen, ohne dass Sie Code schreiben müssen, der den Transaktions- und Bewilligungsablauf verwaltet.
 
-Wenn Sie beim Erstellen eines Kanals Ankerpeers konfiguriert haben, können Sie die Vorteile der Funktion zur [Serviceerkennung ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/discovery-overview.html "Serviceerkennung") von Hyperledger Fabric nutzen. Mit dieser Funktion kann die Anwendung lernen, welche Peers im Kanal außerhalb Ihrer Organisation eine Transaktion bewilligen müssen. Ohne Serviceerkennung müssen Sie die Endpunktinformationen dieser Peers von anderen Organisationen in einer externen Operation abrufen und sie zu Ihrem Verbindungsprofil hinzufügen. Weitere Informationen zum Konfigurieren von Ankerpeers finden Sie in Schritt 3 des Abschnitts zu [privaten Daten](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-private-data) im Lernprogramm zur Bereitstellung von Smart Contracts.
+Um die Vorteile der Funktion zur [Serviceerkennung ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/discovery-overview.html "Service discovery") von Hyperledger Fabric nutzen zu können, müssen Sie Ankerpeers konfigurieren. Mit dieser Funktion kann die Anwendung lernen, welche Peers im Kanal außerhalb Ihrer Organisation eine Transaktion bewilligen müssen. Ohne Serviceerkennung müssen Sie die Endpunktinformationen dieser Peers von anderen Organisationen in einer externen Operation abrufen und sie zu Ihrem Verbindungsprofil hinzufügen. Weitere Informationen zum Konfigurieren von Ankerpeers finden Sie in Schritt 3 des Abschnitts zu [privaten Daten](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-private-data) im Lernprogramm zur Bereitstellung von Smart Contracts.
 
-Navigieren Sie zur Registerkarte 'Smart Contracs' in der Platform-Konsole. Navigieren Sie neben jedem instanziierten Smart Contract zum Überlaufmenü. Klicken Sie auf die Schaltfläche **Verbindung zum SDK herstellen**. Dadurch wird ein Seitenfenster geöffnet, in dem Sie Ihr Verbindungsprofil erstellen und herunterladen können. Zuerst müssen Sie die Zertifizierungsstelle Ihrer Organisation auswählen, die Sie zum Registrieren Ihrer Anwendungsidentität verwendet haben. Sie müssen außerdem die MSP-Definition Ihres Unternehmens auswählen. Anschließend können Sie das Verbindungsprofil herunterladen, das Sie zum Generieren von Zertifikaten und zum Aufrufen des Smart Contract verwenden können.
+Navigieren Sie zur Registerkarte 'Smart Contracts' in der Platform-Konsole. Navigieren Sie neben jedem instanziierten Smart Contract zum Überlaufmenü. Klicken Sie auf die Schaltfläche **Verbindung zum SDK herstellen**. Dadurch wird ein Seitenfenster geöffnet, in dem Sie Ihr Verbindungsprofil erstellen und herunterladen können. Zuerst müssen Sie die Zertifizierungsstelle Ihrer Organisation auswählen, die Sie zum Registrieren Ihrer Anwendungsidentität verwendet haben. Sie müssen außerdem die MSP-Definition Ihres Unternehmens auswählen. Anschließend können Sie das Verbindungsprofil herunterladen, das Sie zum Generieren von Zertifikaten und zum Aufrufen des Smart Contract verwenden können.
 
 ## Mithilfe des SDK eintragen
 {: #ibp-console-app-enroll}
@@ -139,9 +139,9 @@ Sobald der Netzoperator die Eintragungs-ID und den geheimen Schlüssel der Anwen
       }
 
       // Benutzer mit Administratorberechtigung eintragen und die neue Identität in die Wallet importieren.
-      const enrollment = await ca.enroll({ enrollmentID: '<eintragungs-id_der_app>', enrollmentSecret: '<geheimer_eintragungsschlüssel_der_app>' });
-      const identity = X509WalletMixin.createIdentity('<msp-id>', enrollment.certificate, enrollment.key.toBytes());
-      wallet.import('user1', identity);
+      const enrollment = await ca.enroll({ enrollmentID: '<app_enroll_id>', enrollmentSecret: '<app_enroll_secret>' });
+      const identity = X509WalletMixin.createIdentity('<msp_id>', enrollment.certificate, enrollment.key.toBytes());
+      await wallet.import('user1', identity);
       console.log('Successfully enrolled client "user1" and imported it into the wallet');
 
       } catch (error) {
@@ -155,10 +155,10 @@ Sobald der Netzoperator die Eintragungs-ID und den geheimen Schlüssel der Anwen
     {:codeblock}
 
 3. Bearbeiten Sie die Datei `enrollUser.js`, um die folgenden Werte zu ersetzen:
-  - Ersetzen Sie '`<CA_Name>'` durch den Namen der Zertifizierungsstelle der Organisation. Der Name der Zertifizierungsstelle befindet sich im Abschnitt "Organisationen" Ihres Verbindungsprofils unter "Zertifizierungsstellen". Verwenden Sie nicht den Wert für "caName" im Abschnitt "Zertifizierungsstellen".
-  - Ersetzen Sie '`<app_enroll_id>'` durch die Eintragungs-ID der Anwendung, die von Ihrem Netzoperator bereitgestellt wird. 
-  - Ersetzen Sie '`<app_enroll_secret>'` durch den geheimen Eintragungsschlüssel der Anwendung, der von Ihrem Netzoperator bereitgestellt wird.
-  - Ersetzen Sie '`<msp_id>'` durch die MSP-ID Ihrer Organisation. Sie finden Ihre MSP-ID unter dem Abschnitt "Organisationen" Ihres Verbindungsprofils.
+  - Ersetzen Sie ``<CA_Name>`` durch den Namen der Zertifizierungsstelle (CA) Ihrer Organisation. Der Name der Zertifizierungsstelle befindet sich im Abschnitt "Organisationen" Ihres Verbindungsprofils unter "Zertifizierungsstellen". Verwenden Sie nicht den Wert für "caName" im Abschnitt "Zertifizierungsstellen".
+  - Ersetzen Sie ``<app_enroll_id>`` durch die Eintragungs-ID der Anwendung, die von Ihrem Netzoperator bereitgestellt wird.
+  - Ersetzen Sie ``<app_enroll_secret>`` durch den geheimen Eintragungsschlüssel der Anwendung, der von Ihrem Netzoperator bereitgestellt wird.
+  - Ersetzen Sie ``<msp_id>`` durch die MSP-ID Ihrer Organisation. Sie finden Ihre MSP-ID unter dem Abschnitt "Organisationen" Ihres Verbindungsprofils.
 4. Navigieren Sie mit einem Terminal zu `enrollUser.js` und führen Sie den Befehl `node enrollUser.js` aus. Wenn der Befehl erfolgreich ausgeführt wird, sollte die folgende Ausgabe angezeigt werden:
 
   ```
@@ -225,8 +225,8 @@ Nachdem Sie den öffentlichen und den privaten Schlüssel der Anwendung generier
     {:codeblock}
 
 2. Bearbeiten Sie `invoke.js`, um die folgenden Werte zu ersetzen:
-  - Ersetzen Sie '`<channel_name>'` durch den Namen des Kanals, auf dem der Smart Contract instanziiert wurde. Sie finden den Namen der Zertifizierungsstelle unter dem Abschnitt "Zertifizierungsstellen" Ihres Verbindungsprofils.
-  - Ersetzen Sie '`<smart_contract_name>'` durch den Namen des installierten Smart Contract. Sie können diesen Wert von Ihrem Netzoperator erfragen.
+  - Ersetzen Sie ``<channel_name>`` durch den Namen des Kanals, auf dem der Smart Contract instanziiert wurde. Sie finden den Namen der Zertifizierungsstelle unter dem Abschnitt "Zertifizierungsstellen" Ihres Verbindungsprofils.
+  - Ersetzen Sie ``<smart_contract_name>`` durch den Namen des installierten Smart Contract. Sie können diesen Wert von Ihrem Netzoperator erfragen.
   - Bearbeiten Sie den Inhalt von `submitTransaction`, um eine Funktion innerhalb Ihres Smart Contract aufzurufen. Die Datei `invoke.js` wird geschrieben, um den [fabcar-Chaincode (Smart Contract) ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://github.com/hyperledger/fabric-samples/tree/release-1.4/chaincode/fabcar) aufzurufen. Wenn Sie die nachstehende Datei zum Übergeben einer Transaktion ausführen möchten, installieren Sie 'fabcar' und instanziieren Sie den Smart Contract in einem Ihrer Kanäle.
 
 3. Navigieren Sie mit einem Terminal zu `invoke.js` und führen Sie den Befehl `node invoke.js` aus. Wenn der Befehl erfolgreich ausgeführt wird, sollte die folgende Ausgabe angezeigt werden:
@@ -333,10 +333,9 @@ Zum Paktieren des Smart Contract können Sie die [IBM Blockchain-Erweiterung fü
 
 Anwendungen müssen die Anforderungen signieren, die sie an Fabric-Komponenten senden. Wenn die Komponenten die Organisationen, die die Transaktionen übergeben, nicht erkennen, werden die Transaktionen zurückgewiesen und mit einem Fehler zurückgegeben. Im Rahmen des Wertpapier-Beispiels wird ein Dateisystemwallet erstellt, in dem die Zertifikate gespeichert und die Transaktionen signiert werden. Weitere Informationen dazu, wie Anwendungen Wallets verwenden, finden Sie im Abschnitt zu [Wallets ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/developapps/wallet.html "Wallet") in der Fabric-Dokumentation. Die von den Fabric-SDKs verwendeten Wallets unterscheiden sich von der Wallet in der {{site.data.keyword.blockchainfull_notm}} Platform-Konsole. Die in Ihrer Konsolenwallet gespeicherten Identitäten können nicht direkt vom SDK verwendet werden.
 
-
 Das ursprüngliche Beispiel verwendet die Datei `addToWallet.js`, um eine Dateisystemwallet mit Zertifikaten aus dem Fabric-Beispielordner zu erstellen. Sie erstellen eine neue Datei, die das SDK verwendet, um clientseitige Zertifikate zu generieren und sie direkt in einer neuen Wallet zu speichern.
 
-Wählen Sie die Zertifizierungsstelle der Organisation 'magnetocorp' aus, die Sie im Lernprogramm verwenden möchten. Sie können z. B. 'Org1' verwenden, wenn Sie das Lernprogramm zum Erstellen eines Netzes abgeschlossen haben. Verwenden Sie die Zertifizierungsstelle, um [eine Anwendungsidentität zu erstellen](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-identities). **Speichern** Sie die Eintragungs-ID und den geheimen Schlüssel. 
+Wählen Sie die Zertifizierungsstelle der Organisation 'magnetocorp' aus, die Sie im Lernprogramm verwenden möchten. Sie können z. B. 'Org1' verwenden, wenn Sie das Lernprogramm zum Erstellen eines Netzes abgeschlossen haben. Verwenden Sie die Zertifizierungsstelle, um [eine Anwendungsidentität zu erstellen](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-identities). **Speichern** Sie die Eintragungs-ID und den geheimen Schlüssel.
 
 Verwenden Sie die Konsole, um [das Verbindungsprofil herunterzuladen](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-profile). Speichern Sie das Verbindungsprofil auf Ihrem lokalen Dateisystem und benennen Sie es in `connection.json` um. Verwenden Sie anschließend den folgenden Befehl, um das Verbindungsprofil in ein Verzeichnis zu versetzen, in dem es von zukünftigen Befehlen referenziert wird.
 
@@ -377,10 +376,10 @@ Navigieren Sie zum Verzeichnis `/magnetocorp/application` und speichern Sie den 
         }
 
         // Benutzer mit Administratorberechtigung eintragen und die neue Identität in die Wallet importieren.
-        const enrollment = await ca.enroll({ enrollmentID: '<eintragungs-id_der_app>', enrollmentSecret: '<geheimer_eintragungsschlüssel_der_app>' });
-      const identity = X509WalletMixin.createIdentity('<msp-id>', enrollment.certificate, enrollment.key.toBytes());
-      wallet.import('user1', identity);
-      console.log('Successfully enrolled client "user1" and imported it into the wallet');
+        const enrollment = await ca.enroll({ enrollmentID: '<app_enroll_id>', enrollmentSecret: '<app_enroll_secret>' });
+        const identity = X509WalletMixin.createIdentity('<msp_id>', enrollment.certificate, enrollment.key.toBytes());
+        await wallet.import('user1', identity);
+        console.log('Successfully enrolled client "user1" and imported it into the wallet');
 
         } catch (error) {
           console.error(`Failed to enroll "user1": ${error}`);
@@ -418,8 +417,8 @@ console.log('Successfully enrolled client "user1" and imported it into the walle
 {:codeblock}
 
 **Bearbeiten** Sie die Datei `enrollUser.js`, um die folgenden Werte zu ersetzen:
-- Ersetzen Sie `'<CA_Name>'` durch den Namen der Zertifizierungsstelle der Organisation. Der Name der Zertifizierungsstelle befindet sich im Abschnitt "Organisationen" Ihres Verbindungsprofils unter "Zertifizierungsstellen". Verwenden Sie nicht den Wert für "caName" im Abschnitt "Zertifizierungsstellen".
-- Ersetzen Sie `'<app_enroll_id>'` durch die Eintragungs-ID der Anwendung, die von Ihrem Netzoperator bereitgestellt wird. 
+- Ersetzen Sie `'<CA_Name>'` durch den Namen der Zertifizierungsstelle (CA) Ihrer Organisation. Der Name der Zertifizierungsstelle befindet sich im Abschnitt "Organisationen" Ihres Verbindungsprofils unter "Zertifizierungsstellen". Verwenden Sie nicht den Wert für "caName" im Abschnitt "Zertifizierungsstellen".
+- Ersetzen Sie `'<app_enroll_id>` durch die Eintragungs-ID der Anwendung, die von Ihrem Netzoperator bereitgestellt wird.
 - Ersetzen Sie `'<app_enroll_secret>'` durch den geheimen Eintragungsschlüssel der Anwendung, der von Ihrem Netzoperator bereitgestellt wird.
 - Ersetzen Sie `'<msp_id>'` durch die MSP-ID Ihrer Organisation. Sie finden diese MSP-ID unter dem Abschnitt "Organisationen" Ihres Verbindungsprofils.
 
@@ -440,7 +439,7 @@ Die erstellte Wallet befindet sich im Verzeichnis `magnetocorp` im Ordner `ident
 
 ### Schritt 4: Verbindungsprofil zum Erstellen eines Fabric-Gateways verwenden
 
-Der [Transaktionsfluss![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")]( https://hyperledger-fabric.readthedocs.io/en/release-1.4/txflow.html "Transaktionsfluss"){:new_window} von Hyperledger Fabric umfasst mehrere Komponenten, wobei die Clientanwendungen eine zentrale Rolle einnehmen. Ihre Anwendung muss eine Verbindung zu den Peers herstellen, die die Transaktion zulassen, und zu dem Anordnungsservice, der die Transaktion anordnet und einem Block hinzufügt. Sie können die Endpunkte dieser Knoten für Ihre Anwendung bereitstellen, indem Sie Ihr Verbindungsprofil verwenden, um ein Fabric-Gateway zu erstellen. Das Gateway führt dann die Interaktionen auf niedriger Ebene mit Ihrem Fabric-Netz durch. Weitgere Informationen finden Sie im Abschnitt zum [Fabric-Gateway ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/developapps/gateway.html "Fabric-ateway") in der Fabric-Dokumentation.
+Der [Transaktionsfluss![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")]( https://hyperledger-fabric.readthedocs.io/en/release-1.4/txflow.html "Transaktionsfluss"){:new_window} von Hyperledger Fabric umfasst mehrere Komponenten, wobei die Clientanwendungen eine zentrale Rolle einnehmen. Ihre Anwendung muss eine Verbindung zu den Peers herstellen, die die Transaktion zulassen, und zu dem Anordnungsservice, der die Transaktion anordnet und einem Block hinzufügt. Sie können die Endpunkte dieser Knoten für Ihre Anwendung bereitstellen, indem Sie Ihr Verbindungsprofil verwenden, um ein Fabric-Gateway zu erstellen. Das Gateway führt dann die Interaktionen auf niedriger Ebene mit Ihrem Fabric-Netz durch. Weitere Informationen finden Sie im Abschnitt zum [Fabric-Gateway ![Symbol für externen Link](../images/external_link.svg "Symbol für externen Link")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/developapps/gateway.html "Fabric gateway") in der Fabric-Dokumentation.
 
 Sie haben Ihr Verbindungsprofil bereits heruntergeladen und verwendet, um eine Verbindung zur Zertifizierungsstelle Ihres Unternehmens herzustellen. Jetzt verwenden Sie das Verbindungsprofil, um ein Gateway zu erstellen.
 
@@ -473,10 +472,10 @@ Verwenden Sie nach dem Importieren Ihrer Wallet den folgenden Code, um Ihr Verbi
 ```
 const userName = 'user1';
 
-// Verbindungsprofil laden; wird zum Suchen nach einem Gateway verwendet
+// Load connection profile; will be used to locate a gateway
 const ccpPath = path.resolve(__dirname, '../gateway/connection.json');
 const ccpJSON = fs.readFileSync(ccpPath, 'utf8');
-const ccp = JSON.parse(ccpJSON);
+const connectionProfile = JSON.parse(ccpJSON);
 
 // Verbindungsoptionen festlegen; Identität und Wallet
 let connectionOptions = {
@@ -489,7 +488,7 @@ await gateway.connect(connectionProfile, connectionOptions);
 ```
 {:codeblock}
 
-Dieses Code-Snippet verwendet das Gateway, um GRPC-Verbindungen zu den Peer- und Anforderungsknoten zu öffnen und mit Ihrem Netz zu interagieren. 
+Dieses Code-Snippet verwendet das Gateway, um GRPC-Verbindungen zu den Peer- und Anordnungsknoten zu öffnen und mit Ihrem Netz zu interagieren.
 
 ### Schritt 5: Smart Contract aufrufen
 
@@ -564,9 +563,10 @@ fabric_client.createUser({
 ```
 {:codeblock}
 
-Wenn Sie über die untergeordneten SDK-APIs eine Verbindung zu Ihrem Netz herstellen, können Sie zusätzliche Schritte ausführen, um die Leistung und die Verfügbarkeit Ihrer Anwendung zu verwalten. Weitere Informationen finden Sie im Abschnitt mit den [Best Practices für Anwendungskonnektivität und -verfügbarkeit](/docs/services/blockchain/v10_application.html#dev-app-connectivity-availability).
+Wenn Sie über die untergeordneten SDK-APIs eine Verbindung zu Ihrem Netz herstellen, können Sie zusätzliche Schritte ausführen, um die Leistung und die Verfügbarkeit Ihrer Anwendung zu verwalten. Weitere Informationen finden Sie im Abschnitt mit den [Best Practices für Anwendungskonnektivität und -verfügbarkeit](/docs/services/blockchain/best_practices.html#best-practices-app-connectivity-availability).
+
 
 ## Indizes mit CouchDB verwenden
 {: #console-app-couchdb}
 
-Wenn Sie CouchDB als Statusdatenbank verwenden, können Sie JSON-Datenabfragen aus dem Smart Contract für die Statusdaten des Kanals ausführen. Es wird dringend empfohlen, Indizes für die JSON-Abfragen zu erstellen und sie in den Smart Contracts zu verwenden. Mithilfe von Indizes können Ihre Anwendungen Daten effizient abrufen, wenn das Netz zusätzliche Blöcke von Transaktionen und Einträgen im World-Status hinzufügt. Informationen zum Verwenden von Indizes mit Ihren Smart Contracts und Anwendungen finden Sie im Abschnitt zu den [Best Practices bei der Verwendung von CouchDB](/docs/services/blockchain/v10_application.html#dev-app-couchdb-indices).
+Wenn Sie CouchDB als Statusdatenbank verwenden, können Sie JSON-Datenabfragen aus dem Smart Contract für die Statusdaten des Kanals ausführen. Es wird dringend empfohlen, Indizes für die JSON-Abfragen zu erstellen und sie in den Smart Contracts zu verwenden. Mithilfe von Indizes können Ihre Anwendungen Daten effizient abrufen, wenn das Netz zusätzliche Blöcke von Transaktionen und Einträgen im World-Status hinzufügt. Informationen zum Verwenden von Indizes mit Ihren Smart Contracts und Anwendungen finden Sie im Abschnitt zu den [Best Practices bei der Verwendung von CouchDB](/docs/services/blockchain/best_practices.html#best-practices-app-couchdb-indices).

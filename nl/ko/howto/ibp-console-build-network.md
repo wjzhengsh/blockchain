@@ -3,7 +3,8 @@
 copyright:
   years: 2019
 
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-23"
+
 
 subcollection: blockchain
 
@@ -24,12 +25,12 @@ subcollection: blockchain
 {{site.data.keyword.blockchainfull}} Platform은
 블록체인 애플리케이션 및 네트워크를 개발, 배치 및 운영할 수 있게 해주는 블록체인 서비스 제공
 오퍼링입니다. [블록체인 컴포넌트 개요](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview)를
-방문하여 블록체인 컴포넌트 및 함께 작동하는 방법에 대해 배울 수 있습니다. 이 튜토리얼은 [샘플 네트워크 튜토리얼 시리즈](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-sample-tutorial)의 첫 번째 파트이며, {{site.data.keyword.blockchainfull_notm}} Platform 콘솔을 사용하여 완전한 기능의 네트워크를 단일 {{site.data.keyword.cloud_notm}} Kubernetes 서비스에서 빌드하는 방법에 대해 설명합니다.
+방문하여 블록체인 컴포넌트 및 함께 작동하는 방법에 대해 배울 수 있습니다. 이 튜토리얼은 [샘플 네트워크 튜토리얼 시리즈](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-sample-tutorial)의 첫 번째 파트이며, {{site.data.keyword.blockchainfull_notm}} Platform 콘솔을 사용하여 완전한 기능의 네트워크를 단일 {{site.data.keyword.cloud_notm}} Kubernetes Service에서 빌드하는 방법에 대해 설명합니다.
 {:shortdesc}
 
-**대상 독자:** 이 주제는 블록체인 네트워크를 작성, 모니터링 및 관리할 책임이 있는 네트워크 운영자를 위해 설계되었습니다.    
+**대상 독자:** 이 주제는 블록체인 네트워크를 작성, 모니터링 및 관리할 책임이 있는 네트워크 운영자를 위해 설계되었습니다.   
 
-아직 {{site.data.keyword.cloud_notm}} Kubernetes 서비스를 사용하여 Kubernetes 클러스터에 콘솔을 배치하지 않은 경우, [{{site.data.keyword.blockchainfull_notm}} Platform 2.0으로 시작하기](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks)를 참조하십시오. 콘솔 배치를 위해 새 Kubernetes 클러스터를 작성하거나 {{site.data.keyword.cloud_notm}} 계정 내의 기존 클러스터를 사용할 수 있습니다.  {{site.data.keyword.blockchainfull}} Platform을 Kubernetes 클러스터에 배치한 후에 콘솔을 실행하여 블록체인 컴포넌트를 작성하고 관리할 수 있습니다.
+아직 {{site.data.keyword.cloud_notm}} Kubernetes Service를 사용하여 Kubernetes 클러스터에 콘솔을 배치하지 않은 경우, [{{site.data.keyword.blockchainfull_notm}} Platform 2.0으로 시작하기](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks)를 참조하십시오. 콘솔 배치를 위해 새 Kubernetes 클러스터를 작성하거나 {{site.data.keyword.cloud_notm}} 계정 내의 기존 클러스터를 사용할 수 있습니다.  {{site.data.keyword.blockchainfull}} Platform을 Kubernetes 클러스터에 배치한 후에 콘솔을 실행하여 블록체인 컴포넌트를 작성하고 관리할 수 있습니다.
 
 유료 또는 무료 Kubernetes 클러스터에 배치했는지에 상관없이, Kubernetes 대시보드를 사용하여 노드를 배치하고 채널을 작성할 때 원하는 대로 사용 가능한 리소스에 세심한 주의를 기울이십시오. Kubernetes 클러스터를 관리하고 필요에 따라 추가 리소스를 배치하는 것은 사용자의 책임입니다. 컴포넌트가 무료 클러스터에 성공적으로 배치되었으나 사용자가 더 많은 컴포넌트를 추가하면 컴포넌트 실행이 느려질 수 있습니다.
 {: note}
@@ -38,11 +39,11 @@ subcollection: blockchain
 ## 샘플 네트워크 튜토리얼 시리즈
 {: #ibp-console-build-network-sample-tutorial}
 
-세 개의 파트로 구성된 이 튜토리얼 시리즈는 {{site.data.keyword.blockchainfull_notm}} Platform 2.0 콘솔에서 상대적으로 단순한 다중 노드 Hyperledger Fabric 네트워크를 작성한 후 상호 연결하여 네트워크를 Kubernetes 클러스터에 배치하고 스마트 계약을 설치하고 인스턴스화하는 프로세스를 안내합니다. 
+세 개의 파트로 구성된 이 튜토리얼 시리즈는 {{site.data.keyword.blockchainfull_notm}} Platform 2.0 콘솔에서 상대적으로 단순한 다중 노드 Hyperledger Fabric 네트워크를 작성한 후 상호 연결하여 네트워크를 Kubernetes 클러스터에 배치하고 스마트 계약을 설치하고 인스턴스화하는 프로세스를 안내합니다.
 
 * **네트워크 빌드 튜토리얼**: 이 현재 튜토리얼은 순서 지정자 및 피어를 작성하여 네트워크를 호스팅하는 프로세스를 안내합니다.
 * [네트워크 참여 튜토리얼](/docs/services/blockchain/howto/ibp-console-join-network.html#ibp-console-join-network)은 피어를 작성하고 해당 피어를 채널에 가입시켜 기존 네트워크에 참여하는 프로세스를 안내합니다.
-* [네트워크에 스마트 계약 배치](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts)는 스마트 계약을 작성하여 이를 네트워크에 배치하는 방법을 제공합니다. 
+* [네트워크에 스마트 계약 배치](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts)는 스마트 계약을 작성하여 이를 네트워크에 배치하는 방법을 제공합니다.
 
 이러한 튜토리얼의 단계를 사용하여 개발 및 테스트 목적의 한 클러스터에 다중 조직이 있는 네트워크를 빌드할 수 있습니다. 순서 지정자 노드를 작성하고 조직을 추가하여 블록체인 컨소시엄을 구성하려는 경우 **네트워크 빌드** 튜토리얼을 참조하십시오. 피어를 네트워크에 연결하려면 **네트워크 가입** 튜토리얼을
 사용하십시오. 다른 컨소시엄 구성원과 함께 튜토리얼에 따라 **분산** 블록체인 네트워크를 작성할 수 있습니다.  
@@ -55,6 +56,7 @@ subcollection: blockchain
 모두 완료했으면 네트워크가 아래 그림 중 하나와 유사하게 표시됩니다.
 ![샘플 기본 네트워크 구조](../images/ibp-v2-build-network.png "샘플 기본 네트워크 구조")  
 *그림 1. 샘플 기본 네트워크 구조*  
+
 이 구성은 애플리케이션 및 스마트 계약을 테스트하는 데 충분합니다. 네트워크는 다음 컴포넌트를 포함합니다.
 
 * **두 개의 피어 조직**: `조직1` 및 `조직2`(`Org1` 및 `Org2`)  
@@ -100,6 +102,7 @@ CA를 사용하여 각 조직에 대한 모든 노드, ID 및 조직 정의를 �
 일부만 빌드합니다. 다음은 빌드할 위 네트워크의 일부를 표시합니다. </br>
 ![단순 네트워크 구조](../images/ibp2-simple-network.png "단순 네트워크 구조")  
 *그림 2. 단순 네트워크 구조*  
+
 이 구성은 스마트 계약을 신속하게 시작하고 테스트하는 데 유용하지만 사용자가 완전한 분산 원장을 작성하여
 거래할 기타 조직을 추가하기 전에는 그다지 의미가 없습니다.  따라서 후속
 [네트워크 가입](/docs/services/blockchain/howto/ibp-console-join-network.html#ibp-console-join-network) 튜토리얼에서
@@ -121,6 +124,11 @@ CA는 조직 자체를 정의하는 것 외에도 조직에 속한 모든 ID 및
 이 튜토리얼에서는 두 개의 조직을 작성합니다. 하나는 피어를 소유하고 다른 하나는 순서 지정자를 소유하게 됩니다. 각 조직이 인증서를 발행하려면 CA가 필요하므로 **두 개의 CA**를 작성해야
 합니다. 이 튜토리얼의 목적을 위해 **한 번에 하나의 CA만 작성할 것입니다**.
 
+피어의 조직 및 피어를 작성하는 프로세스에 대해 알아보려면 다음 동영상을 시청하십시오.
+
+<iframe class="embed-responsive-item" id="youtubeplayer" title="IBM Blockchain Platform 무료 2.0 베타 - 배치 튜토리얼" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/JZj43n_JKIY" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>  
+*동영상 1. 피어의 조직 및 피어 작성*
+
 ### 피어 조직 CA 작성
 {: #ibp-console-build-network-create-CA-org1CA}
 
@@ -132,13 +140,13 @@ CA는 조직 자체를 정의하는 것 외에도 조직에 속한 모든 ID 및
 
 콘솔에서 다음 단계 수행:
 
-1. 왼쪽의 **노드** 탭으로 이동하여 **인증 기관 추가**를 클릭하십시오. 4단계
-패널을 사용하여 작성할 CA를 사용자 정의할 수 있으며 이 CA가 키를 발행할 조직을 사용자 정의할 수 있습니다.
+1. 왼쪽의 **노드** 탭으로 이동하여 **인증 기관 추가**를 클릭하십시오. 사이드 패널을 사용하여 작성할 CA를 사용자 정의할 수 있으며 이 CA가 키를 발행할 조직을 사용자 정의할 수 있습니다.
 2. **인증 기관 작성** 아래의 **{{site.data.keyword.cloud_notm}}**를 클릭하고 **다음**을 클릭하십시오.
 3. 두 번째 사이드 패널을 사용하여 CA의 **표시 이름**을 제공하십시오. 이 CA에 대한 권장 값은 `Org1 CA`입니다.
 4. 다음 패널에서 `admin`의 **관리자 ID**를 지정하고 원하는 시크릿을 제공하여 CA 관리자 인증 정보를
 제공하십시오. 이 튜토리얼을 참조하는 데 도움이 되도록 `adminpw`를 사용하도록 권장합니다.
-5. **다음**을 클릭한 후 **인증 기관 추가**를 클릭하십시오. 
+5. 유료 클러스터를 사용 중인 하는 경우 노드에 대한 리소스 할당을 구성할 수 있는 기회가 제공됩니다. 이 튜토리얼의 목적에 따라 모든 기본값을 허용하고 **다음**을 클릭하십시오. 리소스를 노드에 할당하는 방법을 알아보려면 [리소스 할당](/docs/services/blockchain?topic=blockchain-ibp-console-govern#ibp-console-govern-allocate-resources)에 대한 주제를 참조하십시오. 무료 클러스터를 사용 중인 경우 **요약** 페이지가 이미 표시되어 있습니다. 
+6. 요약 페이지를 검토한 다음 **인증 기관 추가**를 클릭하십시오.
 
 **태스크: 피어 조직 CA 작성**
 
@@ -146,10 +154,12 @@ CA는 조직 자체를 정의하는 것 외에도 조직에 속한 모든 ID 및
   | ------------------------- |-----------|-----------|-----------|
   | **CA 작성** | Org1 CA  | admin | adminpw |
 
-*그림 3. 피어 조직 CA 작성*
+  *그림 3. 피어 조직 CA 작성*
 
 CA를 배치한 후에 조직 MSP를 작성하고 사용자를 등록하고 네트워크, **peer**에
-시작점을 작성할 때 이를 사용할 것입니다.
+시작점을 작성할 때 이를 사용할 것입니다.  
+
+고급 사용자에게 자체 CA가 이미 제공되었을 수 있으며 콘솔에 새 CA를 작성하지 않으려고 할 수 있습니다. 기존 CA에서 `X.509` 형식으로 된 인증서를 발행할 수 있는 경우 여기서 새 CA를 작성하는 대신 자체 외부 CA를 사용할 수 있습니다. 자세한 정보는 [피어 또는 순서 지정자로 외부 CA에서 인증서 사용](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-third-party-ca)에 대한 주제를 참조하십시오. 
 
 ### ID를 등록하기 위해 CA 사용
 {: #ibp-console-build-network-use-CA-org1}
@@ -159,15 +169,16 @@ CA를 배치한 후에 조직 MSP를 작성하고 사용자를 등록하고 네�
 * **조직 관리자**. 이 ID를 사용하면 플랫폼 콘솔을 사용하여 노드를 작동할 수 있습니다.
 * **피어 ID**. 이 ID를 사용하면 피어를 배치할 수 있습니다.
 
+클러스터 유형에 따라 CA 배치에 최대 10분이 소요될 수 있습니다. CA 타일의 녹색 사각형은 CA 배치가 "실행 중"이며 ID를 등록하는 데 사용될 수 있음을 나타냅니다. ID를 등록하기 위해 아래의 단계로 진행하기 전에 CA 상태가 "실행 중"이 될 때까지 기다려야 합니다.
+{:important}
+
 이러한 인증서를 생성하려면 다음 단계를 완료해야 합니다.
 
-1. 콘솔에서 **노드** 탭을 사용하여 사용자가 작성한 `Org1 CA`로 이동하십시오.
-2. 사용자의 CA를 선택한 후에 피어 자체에 대한 ID 외에 관리자를 첫 번째 조직인 `org1`에 등록해야 합니다. 이미
-이 페이지에 ID가 표시되어야 하며 해당 ID는 사용자가 CA에 대해 작성한 관리자입니다. 새 사용자를 등록하려면
+1. 콘솔에서 **노드** 탭을 클릭하십시오. `Org1 CA`의 오른쪽 상단 구석에 있는 상태 표시기가 녹색으로 표시되고 `Running`인 경우 타일을 클릭하여 여십시오. 
+2. CA를 선택한 후, 계속 진행하기 전에 CA에 대해 작성한 `admin` ID가 테이블에 표시되는지 확인하십시오. 피어 자체에 대한 ID 외에 다른 관리자 ID를 첫 번째 조직인 `org1`에 등록해야 합니다. 새 사용자를 등록하려면
 **사용자 등록** 단추를 클릭하십시오.
 3. 조직 관리자의 경우, 등록 ID인 `org1admin`을 제공하십시오. 임의의 시크릿을 사용할 수 있으나 이해를 돕기 위해 `org1adminpw`를 사용하도록 권장합니다. **다음**을 클릭하십시오.
-4. 다음 단계에서는 이 ID의 유형을 `client`로 설정하고
-드롭 다운 목록에서 소속된 조직을 선택하십시오. 소식 필드는 고급 사용자용이며 이 튜토리얼에서는 사용하지 않습니다. 목록의 항목은 Fabric CA의 기본 소속입니다. Fabric CA가
+4. 다음 단계에서는 이 ID의 유형을 `client`로 설정하십시오. 드롭 다운 목록의 소속된 조직 중에서 선택해야 합니다. 소속 필드는 고급 사용자용이며 이 튜토리얼에서는 사용되지 않지만 패널의 경우 필수 필드입니다. 목록의 항목은 Fabric CA의 기본 소속입니다. Fabric CA가
 소속을 사용하는 방법에 대한 자세한 정보는 [새 ID 등록 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/users-guide.html#registering-a-new-identity)에 대한
 주제를 참조하십시오. 이제 목록에서 `org1` 등의 임의의 소속을 선택하고 **다음**을 클릭하십시오.
 5. **최대 등록 수** 및 **속성 추가** 필드는 공백으로 둘 수 있습니다. 두 필드는
@@ -184,7 +195,7 @@ CA를 배치한 후에 조직 MSP를 작성하고 사용자를 등록하고 네�
   | **사용자 등록** |  Org1 admin | org1admin | org1adminpw |
   | | 피어 ID |  peer1 | peer1pw |
 
-*그림 4. CA를 사용하여 사용자 등록*
+  *그림 4. CA를 사용하여 사용자 등록*
 
 ### 피어 조직 MSP 정의 작성
 {: #ibp-console-build-network-create-peers-org1}
@@ -200,13 +211,13 @@ CA를 배치한 후에 조직 MSP를 작성하고 사용자를 등록하고 네�
 사용자 고유의 MSP ID를 지정하려면 도구 팁에서 이 이름에 대한 제한사항 스펙을 확인하십시오.
 3. **루트 인증 기관 세부사항** 아래에서 사용자의 조직에 대한 루트 CA로 작성한 피어 CA를 지정하십시오. 이 튜토리얼을 처음 사용하는 경우에는 `Org1 CA`만 표시되어야 합니다.
 4. 이 아래의 **등록 ID** 및 **등록 시크릿** 필드가
-사용자가 CA를 사용하여 작성한 첫 번째 사용자의 등록 ID 및 시크릿으로 자동으로 채워집니다. 이러한 값을 사용할 수는 있지만, CA 관리자 ID를 조직 관리자로 사용하는 것은 권장하지 않습니다. 대신, 보안을 위해 조직 관리자용으로 작성한 별도의 등록 ID 및 시크릿(`org1admin` 및 `org1adminpw`)을 입력하는 것이 좋습니다. 그런 다음,
+사용자가 CA를 사용하여 작성한 첫 번째 사용자의 등록 ID 및 시크릿으로 자동으로 채워집니다. 이러한 값을 사용할 수는 있지만, CA 관리자 ID를 조직 관리자로 사용하는 것은 권장하지 않습니다.  대신, 보안을 위해 조직 관리자용으로 작성한 별도의 등록 ID 및 시크릿(`org1admin` 및 `org1adminpw`)을 입력하는 것이 좋습니다. 그런 다음,
 이 ID에 대해 표시 이름인 `Org1 Admin`를 제공하십시오.
 5. **생성** 단추를
 클릭하여 이 ID를 조직의 관리자로 등록하고 ID를 지갑으로 내보내십시오.
 사용자가 피어 및 채널을 작성할 때 사용됩니다.
 6. **내보내기**를 클릭하여 파일을 관리할 수 있도록 관리자 인증서를 파일 시스템으로 내보내십시오. 위에서 설명한 대로
-이 ID는 클러스터에 저장되거나 {{site.data.keyword.IBM_notm}}에 의해 관리되지 않습니다. 사용자의 브라우저에만 저장됩니다. 브라우저를 변경한 경우에는 이 ID를 콘솔 지갑으로 가져와야 피어를 관리할 수 있습니다. 
+이 ID는 클러스터에 저장되거나 {{site.data.keyword.IBM_notm}}에 의해 관리되지 않습니다. 사용자의 브라우저에만 저장됩니다. 브라우저를 변경한 경우에는 이 ID를 콘솔 지갑으로 가져와야 피어를 관리할 수 있습니다.
 7. **MSP 정의 작성**을 클릭하십시오.
 
 **태스크: 피어 조직 MSP 작성**
@@ -278,8 +289,9 @@ MSP로 `Org1 MSP`를 선택하고 **다음**을 클릭하십시오.
   - **TLS CSR 호스트 이름**은 고급 사용자가
 피어 엔드포인트를 처리하기 위해 사용할 수 있는 사용자 정의 도메인 이름을 지정하기 위한 것입니다. 지금은 **TLS CSR 호스트 이름**을
 공백으로 두십시오. 이 튜토리얼에서는 사용하지 않습니다.
-6. 마지막 사이드 패널에서는 **ID 연관**을 요청하여 이를 피어의 관리자로 만듭니다. 피어 관리자 ID인 `Org1 Admin`을 선택하십시오.
-7. 요약 내용을 검토하고 **피어 추가**를 클릭하십시오. 
+6. 다음 사이드 패널에서는 **ID 연관**을 요청하여 이를 피어의 관리자로 만듭니다. 피어 관리자 ID인 `Org1 Admin`을 선택하십시오.
+7. 유료 클러스터를 사용 중인 하는 경우 다음 패널에서 노드에 대한 리소스 할당을 구성할 수 있는 기회가 제공됩니다. 이 튜토리얼의 목적에 따라 모든 기본값을 허용하고 **다음**을 클릭하십시오. 리소스를 노드에 할당하는 방법을 알아보려면 [리소스 할당](/docs/services/blockchain?topic=blockchain-ibp-console-govern#ibp-console-govern-allocate-resources)에 대한 주제를 참조하십시오. 무료 클러스터를 사용 중인 경우 **요약** 페이지가 표시되어 있습니다. 
+8. 요약 내용을 검토하고 **피어 추가**를 클릭하십시오.
 
 **태스크: 피어 배치**
 
@@ -314,6 +326,11 @@ MSP로 `Org1 MSP`를 선택하고 **다음**을 클릭하십시오.
 
 피어와 마찬가지로 순서 지정자를 작성하기 전에 CA를 작성하여 순서 지정자 조직의 ID 및 MSP를 제공해야 합니다.
 
+순서 지정자의 조직 및 순서 지정자를 작성하는 프로세스에 대해 알아보려면 다음 동영상을 시청하십시오.
+
+<iframe class="embed-responsive-item" id="youtubeplayer" title="IBM Blockchain Platform 무료 2.0 베타 - 배치 튜토리얼" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/Gomkn-JtNe8" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>  
+*동영상 2. 순서 지정자의 조직 및 순서 지정자 작성*
+
 ### 콘솔에서 순서 지정하기
 {: #ibp-console-build-network-ordering-console}
 
@@ -335,7 +352,10 @@ MSP로 `Org1 MSP`를 선택하고 **다음**을 클릭하십시오.
 3. 이 CA에 고유한 표시 이름인 `Orderer CA`를 제공하십시오.
 4. 기타 CA에 제공한 **등록 ID**인 `admin`을 재사용할 수 있으며 원하는 시크릿을
 지정할 수 있지만 `adminpw`를 권장합니다.
-5. **다음**을 클릭한 후 **인증 기관 추가**를 클릭하십시오. 
+5. 유료 클러스터를 사용 중인 하는 경우 다음 패널에서 노드에 대한 리소스 할당을 구성할 수 있는 기회가 제공됩니다. 이 튜토리얼의 목적에 따라 모든 기본값을 허용하고 **다음**을 클릭하십시오. 리소스를 노드에 할당하는 방법을 알아보려면 [리소스 할당](/docs/services/blockchain?topic=blockchain-ibp-console-govern#ibp-console-govern-allocate-resources)에 대한 주제를 참조하십시오. 무료 클러스터를 사용 중인 경우 **요약** 페이지가 이미 표시되어 있습니다. 
+6. 요약 페이지를 검토한 다음 **인증 기관 추가**를 클릭하십시오.
+
+다시 한 번, 고급 사용자에게 자체 CA가 이미 제공되었을 수 있으며 콘솔에 새 CA를 작성하지 않으려고 할 수 있습니다. 기존 CA에서 `X.509` 형식으로 된 인증서를 발행할 수 있는 경우 여기서 새 CA를 작성하는 대신 자체 외부 CA를 사용할 수 있습니다. 자세한 정보는 [피어 또는 순서 지정자로 외부 CA에서 인증서 사용](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-third-party-ca)에 대한 주제를 참조하십시오. 
 
 ### CA를 사용하여 순서 지정자 및 순서 지정자 관리자 ID 등록
 {: #ibp-console-build-network-use-CA-orderer}
@@ -343,11 +363,13 @@ MSP로 `Org1 MSP`를 선택하고 **다음**을 클릭하십시오.
 피어에 대해 작업한 것처럼 순서 지정자 CA에 두 개의 ID를 등록해야 합니다.  사용자의 CA를 선택한 후에 순서 지정자 자체에 대한 ID 외에 관리자를 순서 지정자 조직에 등록해야 합니다. 이전과
 마찬가지로 `Orderer CA` 탭에 ID가 표시되어야 하며 해당 ID는 사용자가 CA에 대해 작성한 관리자입니다.
 
-1. 콘솔에서 **노드** 탭을 클릭하고 사용자가 작성한 `Orderer CA`를 클릭하십시오.
-2. 방금 작성한 관리자 ID가 테이블에 표시되면  **사용자 등록** 단추를 클릭하여 새 사용자를 등록하십시오.
+클러스터 유형에 따라 CA 배치에 최대 10분이 소요될 수 있습니다. CA 타일의 녹색 사각형은 CA 배치가 "실행 중"이며 ID를 등록하는 데 사용될 수 있음을 나타냅니다. ID를 등록하기 위해 아래의 단계로 진행하기 전에 CA 상태가 "실행 중"이 될 때까지 기다려야 합니다.
+{:important}
+
+1. 콘솔에서 **노드** 탭을 클릭하십시오. `Orderer CA`의 오른쪽 상단 구석에 있는 상태 표시기가 녹색으로 표시되고 `Running`인 경우 타일을 클릭하여 여십시오. 
+2. 방금 작성한 `admin` ID가 테이블에 표시될 때까지 기다린 후 **사용자 등록** 단추를 클릭하여 새 사용자를 등록하십시오.
 3. 조직 관리자의 경우, 등록 ID인 `ordereradmin`을 제공하십시오. `ordereradminpw` 시크릿을 권장합니다.
-4. 다음 단계에서는 이 ID의 유형을 `client`로 설정하고
-드롭 다운 목록에서 소속된 조직을 선택하십시오. 소식 필드는 고급 사용자용이며 이 튜토리얼에서는 사용하지 않습니다. 목록의 항목은 Fabric CA의 기본 소속입니다. Fabric CA가
+4. 다음 단계에서는 이 ID의 유형을 `client`로 설정하십시오. 드롭 다운 목록의 소속된 조직 중에서 선택해야 합니다. 소속 필드는 고급 사용자용이며 이 튜토리얼에서는 사용되지 않지만 패널의 경우 필수 필드입니다. 목록의 항목은 Fabric CA의 기본 소속입니다. Fabric CA가
 소속을 사용하는 방법에 대한 자세한 정보는 [새 ID 등록 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/users-guide.html#registering-a-new-identity)에 대한
 주제를 참조하십시오. 이제 목록에서 임의의 소속을 선택하고 **다음**을 클릭하십시오.
 5. **최대 등록 수** 및 **속성 추가** 필드는 공백으로 둘 수 있습니다. 두 필드는
@@ -360,11 +382,11 @@ MSP로 `Org1 MSP`를 선택하고 **다음**을 클릭하십시오.
 
   | **필드** | **설명** | **등록 ID** | **시크릿** |
   | ------------------------- |-----------|-----------|-----------|-----------|
-  | **CA 작성** | 순서 지정자 CA | admin | adminpw |
+  | **CA 작성** | Orderer CA | admin | adminpw |
   | **사용자 등록** | 순서 지정자 관리자 | ordereradmin | ordereradminpw |
   |  | 순서 지정자 ID |  orderer1 | orderer1pw |
 
-  *그림 8. CA 작성 및 사용자 등록*
+*그림 8. CA 작성 및 사용자 등록*
 
 ### 순서 지정자 조직 MSP 정의 작성
 {: #ibp-console-build-network-create-orderer-org-msp}
@@ -377,12 +399,12 @@ MSP ID를 작성하고 조직의 관리자로 등록한 `ordereradmin` 사용자
 도구 팁에서 이 이름에 대한 제한사항 스펙을 준수하십시오.
 3. **루트 인증 기관 세부사항** 아래에서 작성한 `Orderer CA`를 선택하십시오.
 4. 이 아래의 **등록 ID** 및 **등록 시크릿**이
-사용자가 CA를 사용하여 작성한 첫 번째 사용자의 등록 ID 및 시크릿으로 자동으로 채워집니다. 이러한 값을 사용할 수는 있지만, CA 관리자 ID를 조직 관리자로 사용하는 것은 권장하지 않습니다. 대신, 보안을 위해 조직 관리자용으로 작성한 별도의 등록 ID 및 시크릿(`ordereradmin` 및 `ordereradminpw`)을 입력하는 것이 좋습니다. 그런 다음, 이 ID에 대해 `Orderer Admin`과 같은 표시 이름을 제공하십시오.
+사용자가 CA를 사용하여 작성한 첫 번째 사용자의 등록 ID 및 시크릿으로 자동으로 채워집니다. 이러한 값을 사용할 수는 있지만, CA 관리자 ID를 조직 관리자로 사용하는 것은 권장하지 않습니다.  대신, 보안을 위해 조직 관리자용으로 작성한 별도의 등록 ID 및 시크릿(`ordereradmin` 및 `ordereradminpw`)을 입력하는 것이 좋습니다. 그런 다음, 이 ID에 대해 `Orderer Admin`과 같은 표시 이름을 제공하십시오.
 5. **생성** 단추를
 클릭하여 이 ID를 조직의 관리자로 등록하고 ID를 콘솔 지갑에 추가하십시오.
 순서 지정자를 작성할 때 사용됩니다.
 6. **내보내기**를 클릭하여 순서 지정자 조직 관리자 ID를 파일 시스템으로 내보내십시오. 위에서 설명한 대로
-이 ID는 클러스터에 저장되거나 {{site.data.keyword.IBM_notm}}에 의해 관리되지 않습니다. 사용자의 브라우저의 로컬 스토리지에만 저장됩니다.  브라우저를 변경한 경우에는 이 ID를 콘솔 지갑으로 가져와야 순서 지정자를 관리할 수 있습니다. 
+이 ID는 클러스터에 저장되거나 {{site.data.keyword.IBM_notm}}에 의해 관리되지 않습니다. 사용자의 브라우저의 로컬 스토리지에만 저장됩니다.  브라우저를 변경한 경우에는 이 ID를 콘솔 지갑으로 가져와야 순서 지정자를 관리할 수 있습니다.
 7. **MSP 정의 작성**을 클릭하십시오.
 
 **태스크: 순서 지정자 조직 MSP 정의 작성**
@@ -428,7 +450,8 @@ MSP로 `Orderer MSP`를 선택하고 **다음**을 클릭하십시오.
 순서 지정자 엔드포인트를 처리하기 위해 사용할 수 있는 사용자 정의 도메인 이름을 지정하기 위한 것입니다. 지금은 **TLS CSR 호스트 이름**을
 공백으로 두십시오. 이 튜토리얼에서는 사용하지 않습니다.
 6. **ID 연관** 단계를 통해 순서 지정자에 대한 관리자를 선택할 수 있습니다. 앞에서와 같이 `Orderer Admin`을 선택하고 **다음**을 클릭하십시오.
-7. 요약 내용을 검토하고 **순서 지정자 추가**를 클릭하십시오. 
+7. 유료 클러스터를 사용 중인 하는 경우 다음 패널에서 노드에 대한 리소스 할당을 구성할 수 있는 기회가 제공됩니다. 이 튜토리얼의 목적에 따라 모든 기본값을 허용하고 **다음**을 클릭하십시오. 리소스를 노드에 할당하는 방법을 알아보려면 [리소스 할당](/docs/services/blockchain?topic=blockchain-ibp-console-govern#ibp-console-govern-allocate-resources)에 대한 주제를 참조하십시오. 무료 클러스터를 사용 중인 경우 **요약** 페이지가 이미 표시되어 있습니다. 
+7. 요약 페이지를 검토하고 **순서 지정자 추가**를 클릭하십시오.
 
 **태스크: 순서 지정자 작성**
 
@@ -456,13 +479,18 @@ MSP로 `Orderer MSP`를 선택하고 **다음**을 클릭하십시오.
 
 순서 지정자 관리자만이 피어 조직을 컨소시엄에 추가할 수 있으므로
 사용자가 순서 지정자 관리자 **이거나** MSP 정보를 순서 지정자 관리자에게 **전송**해야 합니다.
-<!-- More on the latter at the LINK. -->
+
+조직을 컨소시엄에 추가하고, 채널을 작성하고, 피어를 채널에 가입시키는 프로세스에 대해 알아보려면 다음 동영상을 시청하십시오.
+
+<iframe class="embed-responsive-item" id="youtubeplayer" title="IBM Blockchain Platform 무료 2.0 베타 - 배치 튜토리얼" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/jO3V4K9DYpY" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>  
+*동영상 3. 조직을 컨소시엄에 추가, 채널 작성 및 피어를 채널에 가입*               
+
 사용자가 순서 지정자 관리자이므로 이 프로세스는 상대적으로 간단합니다.
 1. **노드** 탭으로 이동하십시오.
-2. 작성한 순서 지정자까지 아래로 스크롤한 다음 이를 클릭하여 여십시오. 
+2. 작성한 순서 지정자까지 아래로 스크롤한 다음 이를 클릭하여 여십시오.
 3. **컨소시엄 구성원** 아래에서 **조직 추가**를 클릭하십시오.
 4. 드롭 다운 목록에서 피어의 `org1`을 나타내는 MSP인 `Org1 MSP`를 선택하십시오.
-5. **조직 추가**를 클릭하십시오. 
+5. **조직 추가**를 클릭하십시오.
 
 이 프로세스가 완료되면 `org1`이 `Orderer`에서 호스팅되는 채널을 작성하거나 가입할 수 있습니다.
 
@@ -488,6 +516,9 @@ MSP로 `Orderer MSP`를 선택하고 **다음**을 클릭하십시오.
 수행하여 나중에 조직을 추가할 수 있습니다.
 
 채널 및 채널 사용 방법에 대한 자세한 정보는 [Hyperledger Fabric 문서![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/channels.html)를 참조하십시오.
+
+채널을 작성하고 피어를 채널에 가입시키는 프로세스에 대해 알아보려면 위의 동영상 3을 시청하십시오.
+
 
 <!--
 Note that even though the {{site.data.keyword.blockchainfull_notm}} Platform 2.0 uses Hyperledger Fabric v1.4 binaries, because the [gossip protocol ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/gossip.html) is not being used with the console, Fabric functionalities that leverage gossip, such as [Private Data ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/private-data/private-data.html)] and [Service Discovery ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/discovery-overview.html)], are not available.
@@ -525,7 +556,7 @@ Note that even though the {{site.data.keyword.blockchainfull_notm}} Platform 2.0
 채널을 작성하는 중이며 모든 채널이 한 명 이상의 운영자를
 가지므로 조직을 **Operator**로 설정하십시오.
 
-준비가 되었으면 **채널 작성**을 클릭하십시오. 채널 탭으로 다시 이동해야 합니다.
+준비가 되었으면 **채널 작성**을 클릭하십시오. 채널 탭으로 다시 이동해야 합니다. 그러면 방금 작성한 채널의 보류 중인 타일을 볼 수 있습니다.
 
 **태스크: 채널 작성**
 
@@ -539,10 +570,6 @@ Note that even though the {{site.data.keyword.blockchainfull_notm}} Platform 2.0
 
 *그림 12. 채널 작성*
 
-채널을 작성하고 피어를 채널에 가입시키는 것은 두 단추 뒤의 흐름에 의해 처리되는
-별도의 두 단계이므로 피어를 채널에 가입시키기 전에는 이 화면에서 작성된 채널을 볼 수 없습니다.
-{:note}
-
 다음 단계는 피어를 이 채널에 가입시키는 것입니다.
 
 ## 5단계: 채널에 피어 가입
@@ -553,11 +580,9 @@ Note that even though the {{site.data.keyword.blockchainfull_notm}} Platform 2.0
 
 콘솔에서 다음 단계 수행:
 
-1. **채널 가입**을 클릭하여 사이드 패널을 실행하십시오.
-2. `Orderer`를 선택하고 **다음**을 클릭하십시오.
-3. 방금 작성한 채널 이름인 `channel1`을 입력하고 **다음**을 클릭하십시오.
-4. 채널에 가입시킬 피어를 선택하십시오. 이 튜토리얼의 목적에 따라 `Peer Org1`을 클릭하십시오.
-5. **채널 가입**을 클릭하십시오. 
+1. `channel1`에 대한 보류 중인 타일을 클릭하여 사이드 패널을 실행하십시오.
+2. 채널에 가입시킬 피어를 선택하십시오. 이 튜토리얼의 목적에 따라 `Peer Org1`을 클릭하십시오.
+3. **채널 가입**을 클릭하십시오.
 
 ## 다음 단계
 {: #ibp-console-build-network-next-steps}
@@ -575,3 +600,48 @@ Note that even though the {{site.data.keyword.blockchainfull_notm}} Platform 2.0
 또한 [네트워크 가입 튜토리얼](/docs/services/blockchain/howto/ibp-console-join-network.html#ibp-console-join-network-structure)을
 사용하는 방법으로 다른 피어 조직을 작성할 수 있습니다. 채널에 두 번째
 조직을 추가하여 단일 채널 원장을 공유하는 두 개의 피어가 있는 분산 네트워크를 시뮬레이션할 수 있습니다.
+
+## 피어 또는 순서 지정자로 외부 CA에서 인증서 사용
+{: #ibp-console-build-network-third-party-ca}
+
+CA의 피어 또는 순서 지정자로 {{site.data.keyword.blockchainfull_notm}} Platform 인증 기관을 사용하는 대신, CA에서 [X.509 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/identity/identity.html#digital-certificates "디지털 인증서") 형식으로 된 인증서를 발행하는 한 {{site.data.keyword.IBM_notm}}에서 호스팅하지 않는 외부 CA에서 인증서를 사용할 수 있습니다. 
+
+### 시작하기 전에
+{: #ibp-console-build-network-third-party-ca-prereq}
+
+1. 다음 인증서 정보를 수집하고 이를 콘솔에 업로드할 수 있는 개별 파일에 저장해야 합니다.    
+**참고:** 파일 내부의 인증서는 `PEM` 형식 또는 `base64 encoded` 형식으로 되어 있을 수 있습니다. 
+ * **피어 또는 순서 지정자 ID 인증서** 피어 또는 순서 지정자가 사용할 외부 CA의 공용 서명 인증서입니다. 
+ * **피어 또는 순서 지정자 ID 개인 키** 이 피어 또는 순서 지정자가 사용할 서드파티 CA에서 서명된 인증서에 해당하는 개인 키입니다. 
+ * **피어 또는 순서 지정자 조직 MSP 정의** [수동으로 MSP JSON 파일 빌드](/docs/services/blockchain/howto/ibp-console-organizations.html#console-organizations-build-msp)에 제공된 지시사항을 사용하여 이 파일을 수동으로 생성해야 합니다. 
+ * **TLS CA 인증서** 피어 또는 순서 지정자에서 사용할 외부 TLS CA가 작성한 공용 서명 인증서입니다. 
+  * **TLS CA 개인 키** 네트워크에서 기타 멤버와의 보안 통신을 위해 이 피어 또는 순서 지정자에서 사용할 TLS CA에서 서명된 인증서에 해당하는 개인 키입니다. 
+ * **TLS CA 루트 인증서**(선택사항) 외부 TLS CA의 루트 인증서입니다. TLS CA 루트 인증서 또는 중간 TLS CA 인증서를 제공해야 하며, 둘 다 제공할 수도 있습니다. 
+ * **중간 TLS 인증서**(선택사항) TLS 인증서가 중간 TLS CA에서 발행된 경우의 TLS 인증서입니다. 중간 TLS CA 인증서를 업로드하십시오. TLS CA 루트 인증서 또는 중간 TLS CA 인증서를 제공해야 하며, 둘 다 제공할 수도 있습니다. 
+ * **피어 또는 순서 지정자 관리자 ID 인증서** 이 피어 또는 순서 지정자의 관리자 ID가 사용할 외부 CA의 공용 서명 인증서입니다. 이 인증서는 피어 또는 순서 지정자 관리자 ID 공개 키라고도 합니다. 
+ * **피어 또는 순서 지정자 관리자 ID 개인 키** 이 피어 또는 순서 지정자의 관리자 ID가 사용할 외부 CA의 서명된 인증서에 해당하는 개인 키입니다. 
+
+2. **조직** 탭을 클릭한 후 **Import MSP 정의 가져오기**를 클릭하여 생성된 피어 조직 MSP 정의 파일을 콘솔로 가져오십시오. 
+
+### 외부 CA의 인증서를 사용하여 새 피어 또는 순서 지정자 작성
+{: #ibp-console-build-network-create-peer-orderer-third-party-ca-}
+
+이제 모든 필수 인증서를 수집했음에 따라 해당 인증서를 사용하는 피어 또는 순서 지정자를 작성할 준비가 되었습니다. 다음 지시사항에 따라 피어 또는 순서 지정자 노드를 작성하십시오. 
+
+1. **노드** 탭에서 **피어 추가** 또는 **순서 지정자 추가**를 클릭하십시오.
+2. 노드의 표시 이름을 입력한 후 옵션을 선택하여 외부 CA를 사용하십시오. 
+3. 패널의 단계를 따라 수집한 인증서 정보에 해당하는 파일을 업로드하십시오. 
+4. 드롭 다운 목록에서 콘솔에 가져온 피어 또는 순서 지정자 조직 MSP 정의를 선택했는지 확인하십시오. 
+5. 마지막 단계에서 ID를 피어 또는 순서 지정자와 연관시키도록 요청된 경우 **새 ID**를 클릭해야 합니다.
+6. 이 ID에 적합한 **표시 이름**으로 값을 지정하십시오. 표시 이름은 노드를 작성한 후 콘솔에 표시됩니다. 
+7. **인증서** 필드에서 **피어 또는 순서 지정자 관리자 ID 인증서**가 포함된 파일을 업로드하십시오. 
+8. **개인 키** 필드에서 **피어 또는 순서 지정자 관리자 ID 개인 키**가 포함된 파일을 업로드하십시오. 
+9. 요약 페이지의 정보를 검토하고 **피어 추가** 또는 **순서 지정자 추가**를 클릭하십시오.
+
+### 다음에 수행할 작업
+{: #ibp-console-build-network-third-party-ca-next}
+
+작성된 조직 MSP 정의 및 작성된 노드에 해당하는 서드파티 CA에서 모든 피어 또는 순서 지정자 인증서를 수집했습니다. 튜토리얼을 따라 진행하는 경우 다음 단계로 돌아갈 수 있습니다. 
+- 피어 노드를 작성한 경우 다음 단계는 [트랜잭션을 순서 지정하는 노드 작성](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-create-orderer)입니다.
+- 기존 네트워크에 참여하기 위해 노드를 작성한 경우 다음 단계는 [트랜잭션을 수행할 수 있는 조직의 목록에 조직 추가](/docs/services/blockchain/howto/ibp-console-join-network.html#ibp-console-join-network-add-org2)입니다.
+- 순서 지정자 노드를 작성한 경우 다음 단계는 [채널 작성](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-create-channel)입니다.

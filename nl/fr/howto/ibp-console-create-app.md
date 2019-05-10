@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-03-20"
 
 subcollection: blockchain
 
@@ -72,9 +72,9 @@ A compter de la version 1.4 de Fabric, les utilisateurs peuvent bénéficier d'u
 
 **API de logiciel SDK Fabric de niveau inférieur**
 
-Si vous voulez continuer à utiliser votre contrat intelligent et votre code d'application existants, ou utiliser d'autres langages de logiciel Fabric fournis par la communauté Hyperledger, vous pouvez utiliser les  [API de logiciel SDK Fabric de niveau inférieur](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-low-level) pour la connexion à votre réseau.
+Si vous voulez continuer à utiliser votre contrat intelligent et votre code d'application existants, ou utiliser d'autres langages de logiciel Fabric fournis par la communauté Hyperledger, vous pouvez utiliser les [API de logiciel SDK Fabric de niveau inférieur](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-low-level) pour la connexion à votre réseau.
 
-## Enregistrement d'une identité d'application 
+## Enregistrement d'une identité d'application
 {: #ibp-console-app-identities}
 
 Les applications doivent signer les transactions qu'elles soumettent aux noeuds {{site.data.keyword.blockchainfull_notm}}, et elles doivent joindre une clé publique qui est utilisée par les noeuds pour vérifier que les transactions sont envoyées à la partie appropriée. Cela garantit que les transactions sont soumises par les organisations qui ont le droit de participer.
@@ -96,7 +96,7 @@ Les applications peuvent soumettre des transactions uniquement pour les contrats
 
 Hyperledger Fabric [Flux de transactions![Icône de lien externe](../images/external_link.svg "Icône de lien externe")]( https://hyperledger-fabric.readthedocs.io/en/release-1.4/txflow.html "Flux de transactions"){:new_window} s'étend sur plusieurs composants, les applications client collectant les adhésions des homologues et envoyant les transactions validées au service de tri. Le profil de connexion fournit à votre application les noeuds finaux des homologues et les noeuds de service de tri auxquels il doit soumettre une transaction. Il contient également des informations sur votre organisation, comme vos autorités de certification et votre ID MSP. Les logiciels SDK Fabric peuvent lire le profil de connexion directement, sans avoir à écrire du code qui gère le flux de transaction et de validation.
 
-Si vous avez configuré des homologues d'ancrage lors de la création d'un canal, vous pouvez bénéficier de la fonction [Reconnaissance de service ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/discovery-overview.html "Reconnaissance de service") d'Hyperledger Fabric. La reconnaissance de service permet à votre application de détecter les homologues sur le canal à l'extérieur de votre organisation qui doivent valider une transaction. Sans la reconnaissance de service, vous devez obtenir les informations de noeud final de ces homologues hors bande à partir d'autres organisations et les ajouter à votre profil de connexion. Pour plus d'informations sur la configuration des homologues d'ancrage, voir l'étape 3 de la [rubrique relative aux données privées](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-private-data) dans le tutoriel Déployer un contrat intelligent.
+Pour bénéficier du service de la fonction [Reconnaissance de service ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/discovery-overview.html "Reconnaissance de service") d'Hyperledger Fabric, vous devez configurer des homologues d'ancrage. La reconnaissance de service permet à votre application de détecter les homologues sur le canal à l'extérieur de votre organisation qui doivent valider une transaction. Sans la reconnaissance de service, vous devez obtenir les informations de noeud final de ces homologues hors bande à partir d'autres organisations et les ajouter à votre profil de connexion. Pour plus d'informations sur la configuration des homologues d'ancrage, voir l'étape 3 de la [rubrique relative aux données privées](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-private-data) dans le tutoriel Déployer un contrat intelligent.
 
 Accédez à l'onglet Contrats intelligents sur la console de votre plateforme. En regard de chaque contrat intelligent instancié, accédez au menu déroulant dynamique. Cliquez sur le bouton nommé **Se connecter à l'aide de SDK**. Un panneau latéral s'affiche qui vous permet de générer et de télécharger votre profil de connexion. Tout d'abord, vous devez sélectionner l'autorité de certification de votre organisation que vous avez utilisé pour enregistrer votre identité d'application. Vous devrez également sélectionner la définition MSP de votre organisation. Vous pourrez ensuite télécharger le profil de connexion que vous pouvez utiliser pour générer des certificats et appeler le contrat intelligent.
 
@@ -142,7 +142,7 @@ Une fois que l'opérateur réseau a fournit l'ID inscription et le secret de l'i
       // Enroll the admin user, and import the new identity into the wallet.
       const enrollment = await ca.enroll({ enrollmentID: '<app_enroll_id>', enrollmentSecret: '<app_enroll_secret>' });
       const identity = X509WalletMixin.createIdentity('<msp_id>', enrollment.certificate, enrollment.key.toBytes());
-      wallet.import('user1', identity);
+      await wallet.import('user1', identity);
       console.log('Successfully enrolled client "user1" and imported it into the wallet');
 
       } catch (error) {
@@ -156,10 +156,10 @@ Une fois que l'opérateur réseau a fournit l'ID inscription et le secret de l'i
     {:codeblock}
 
 3. Editez `enrollUser.js` afin de remplace les valeurs suivantes :
-  - Remplacez ``<CA_Name>`` par le nom de l'autorité de certification de vitre organisation. Vous pouvez trouver le nom de votre autorité de certification dans la section "organizations" de votre profil de connexion sous "Certificate Authorities". N'utilisez pas le "caName" dans la section "Certificate Authorities".
-  - Remplacez ``<app_enroll_id>`` par l'ID d'inscription de l'application fourni par votre opérateur réseau.
-  - Remplacez ``<app_enroll_secret>`` par le secret d'inscrption de l'application fourni par votre opérateur réseau.
-  - Remplacez ``<msp_id>``par l'ID MSP de votre organisation. Vous pouvez trouver votre ID MSP sous la section "organizations" de votre profil de connexion.
+  - Remplacez ``<CA_Name>`` par le nom de l'autorité de certification de vos organisations. Vous pouvez trouver le nom de votre autorité de certification dans la section "organizations" de votre profil de connexion sous "Certificate Authorities". N'utilisez pas le "caName" dans la section "Certificate Authorities".
+  - Remplacez ``<app_enroll_id>`` par l'ID d'inscription d'application fourni par votre opérateur réseau.
+  - Remplacez ``<app_enroll_secret>`` par le secret d'inscription d'application fourni par votre opérateur réseau.
+  - Remplacez ``<msp_id>`` par l'ID MSP de votre organisation. Vous pouvez trouver votre ID MSP sous la section "organizations" de votre profil de connexion.
 4. Accédez à `enrollUser.js` à partir d'un terminal et exécutez `node enrollUser.js`. Si la commande s'exécute correctement, vous devez voir le résultat suivant :
 
   ```
@@ -226,7 +226,7 @@ Une fois que vous avez généré l'application la clé publique et privée de l'
     {:codeblock}
 
 2. Editez `invoke.js` afin de remplace les valeurs suivantes :
-  - Remplacez ``<channel_name>`` par le nom du canal sur lequel le contrat intelligent a été instancié. Vous pouvez trouver le nom de votre autorité de certification sous la section "Certificate Authorities" de votre profil de connexion.
+  - Remplacez  ``<channel_name>`` par le nom du canal sur lequel le contrat intelligent a été instancié. Vous pouvez trouver le nom de votre autorité de certification sous la section "Certificate Authorities" de votre profil de connexion.
   - Remplacez ``<smart_contract_name>`` par le nom du contrat intelligent installé. Vous pouvez obtenir cette valeur auprès de votre opérateur réseau.
   - Editez le contenu de `submitTransaction` afin d'appeler une fonction au sein de votre contrat intelligent. Le fichier `invoke.js` est écrit pour appeler le [Contrat intelligent fabcar ![Icône de lien externe](../images/external_link.svg "Icône de lien externe")](https://github.com/hyperledger/fabric-samples/tree/release-1.4/chaincode/fabcar). Si vous souhaitez exécuter le fichier ci-dessous pour soumettre une transaction, installez fabcar et instanciez le contrat intelligent sur l'un de vos canaux.
 
@@ -239,7 +239,7 @@ Une fois que vous avez généré l'application la clé publique et privée de l'
   Si vous accédez à votre canal à partir de la console, vous pourrez voir un autre bloc ajouté par la transaction.
 
 
-## Connexion avec l'extension {{site.data.keyword.blockchainfull_notm}} VScode 
+## Connexion avec l'extension {{site.data.keyword.blockchainfull_notm}} VScode
 {: #ibp-console-app-vscode}
 
 L'extension Visual Studio Code de {{site.data.keyword.blockchainfull_notm}} Platform fournit un environnement au sein de Visual Studio Code pour le développement, le packaging et le déploiement de packages de contrat intelligent. Assurez-vous d'avoir votre profil de connexion et l'ensemble des fichiers de clés générés à l'aide de votre autorité de certification. Vous pouvez ensuite utiliser l'extension VScode pour la connexion à un réseau que vous gérez depuis votre console.
@@ -285,7 +285,7 @@ git clone https://github.com/hyperledger/fabric-samples.git
 ```
 {:codeblock}
 
-Une fois que vous avez téléchargé les exemples Fabric, exécutez les commandes suivantes pour vérifier que vous utilisez la version d'exemples compatible avec la version 4.1 de Fabric.
+Une fois que vous avez téléchargé les exemples Fabric, exécutez les commandes suivantes pour vérifier que vous utilisez la version d'exemples compatible avec la version 1.4 de Fabric.
 
 ```
 cd fabric-samples
@@ -379,7 +379,7 @@ Accédez au répertoire `/magnetocorp/application` et sauvegardez le bloc de cod
         // Enroll the admin user, and import the new identity into the wallet.
         const enrollment = await ca.enroll({ enrollmentID: '<app_enroll_id>', enrollmentSecret: '<app_enroll_secret>' });
         const identity = X509WalletMixin.createIdentity('<msp_id>', enrollment.certificate, enrollment.key.toBytes());
-        wallet.import('user1', identity);
+        await wallet.import('user1', identity);
         console.log('Successfully enrolled client "user1" and imported it into the wallet');
 
         } catch (error) {
@@ -418,9 +418,9 @@ console.log('Successfully enrolled client "user1" and imported it into the walle
 {:codeblock}
 
 **Editez ** `enrollUser.js` afin de remplacer les valeurs suivantes :
-- Remplacez `'<CA_Name>'` par le nom de l'autorité de certification de vos organisations. Vous pouvez trouver le nom de votre autorité de certification dans la section "organizations" de votre profil de connexion sous "Certificate Authorities". N'utilisez pas le "caName" dans la section "Certificate Authorities".
-- Remplacez `'<app_enroll_id>` par l'ID d'inscription de l'application fourni par votre opérateur réseau.
-- Remplacez `'<app_enroll_secret>'` par le secret d'inscription de l'application fourni par votre opérateur réseau.
+- Remplacez  `'<CA_Name>'` par le nom de l'autorité de certification de vos organisations. Vous pouvez trouver le nom de votre autorité de certification dans la section "organizations" de votre profil de connexion sous "Certificate Authorities". N'utilisez pas le "caName" dans la section "Certificate Authorities".
+- Remplacez `'<app_enroll_id>` par l'ID d'inscription d'application fourni par votre opérateur réseau. 
+- Remplacez `'<app_enroll_secret>'` par le secret d'inscription d'application fourni par votre opérateur réseau.
 - Remplacez `'<msp_id>'` par l'ID MSP de votre organisation. Vous pouvez trouver cet ID MSP sous la section "organizations" de votre profil de connexion.
 
 Sauvegardez `enrollUser.js` et fermez-le. Dans le répertoire `magnetocorp`, exécutez la commande suivante :
@@ -466,9 +466,9 @@ const wallet = new FileSystemWallet('../identity/user/isabella/wallet');
 {:codeblock}
 
 Une fois votre portefeuille importé, utilisez le code suivant pour transmettre votre profil de connexion et votre portefeuille à la nouvelle passerelle. Vous devrez apporter les **Modifications** suivantes au code afin qu'il soit similaire au fragment de code ci-dessous. Les lignes qui impriment les journaux ont été retirées afin de diminuer le volume de code.
-- Mettez à jour la section `userName` afin qu'elle corresponde à la valeur que vous avez sélectionnée pour votre `identityLabel` dans `enrollUser.js`. 
+- Mettez à jour la section `userName` afin qu'elle corresponde à la valeur que vous avez sélectionnée pour votre `identityLabel` dans `enrollUser.js`.
 - Mettez à jour les options de reconnaissance pour bénéficier de la reconnaissance de service sur votre réseau. Définissez `discovery: { enabled: true, asLocalhost: false }`.  
-- Mettez à jour la section relative à l'importation de votre profil de connexion. Le profil de connexion de la console est un fichier au format JSON et non un fichier YAML.   
+- Mettez à jour la section relative à l'importation de votre profil de connexion. Le profil de connexion de la console est un fichier au format JSON et non un fichier YAML.  
 
 ```
 const userName = 'user1';
@@ -476,7 +476,7 @@ const userName = 'user1';
 // Load connection profile; will be used to locate a gateway
 const ccpPath = path.resolve(__dirname, '../gateway/connection.json');
 const ccpJSON = fs.readFileSync(ccpPath, 'utf8');
-const ccp = JSON.parse(ccpJSON);
+const connectionProfile = JSON.parse(ccpJSON);
 
 // Set connection options; identity and wallet
 let connectionOptions = {
@@ -542,7 +542,7 @@ Issue program complete.
 
 ### Etape 6 : Utiliser l'exemple digibank
 
-Après avoir utilisé le document commercial avec l'exemple magnetocorp, vous pouvez acheter et échanger ce document commercial avec l'exemple de tutoriel digibank. Vous pouvez utiliser le code d'application digibank avec la même organisation que magnetocorp, ou utiliser l'autorité de certification, les homologues et le profil de connexion d'une autre organisation. Si vous avez terminé le  [tutoriel Générer un réseau](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network), c'est l'occasion d'utiliser le tutoriel avec Org2.
+Après avoir utilisé le document commercial avec l'exemple magnetocorp, vous pouvez acheter et échanger ce document commercial avec l'exemple de tutoriel digibank. Vous pouvez utiliser le code d'application digibank avec la même organisation que magnetocorp, ou utiliser l'autorité de certification, les homologues et le profil de connexion d'une autre organisation. Si vous avez terminé le [tutoriel Générer un réseau](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network), c'est l'occasion d'utiliser le tutoriel avec Org2.
 
 Accédez au répertoire `digibank/application`. Vous pouvez suivre les instructions de l'**étape 3** pour créer et générer les certificats et le portefeuille qui vont signer la transaction avec digibank. Vous pouvez ensuite utiliser le fichier `buy.js` pour acheter le document commercial auprès de magnetocorp, puis utiliser le fichier `redeem.js` pour échanger le document. Vous pouvez suivre l'**étape 4** et l'**étape 5** pour éditer ces fichiers de sorte qu'ils pointent sur le profil de connexion, le canal et le contrat intelligent corrects.
 
@@ -564,9 +564,10 @@ fabric_client.createUser({
 ```
 {:codeblock}
 
-Si vous utiliser des API de logiciel SDK de niveau inférieur pour la connexion à votre réseau, des étapes supplémentaires sont nécessaires pour gérer les performances et la disponibilité de votre application. Pour plus d'informations, voir [Meilleures pratiques pour la connectivité et la disponibilité des applications](/docs/services/blockchain/v10_application.html#dev-app-connectivity-availability).
+Si vous utiliser des API de logiciel SDK de niveau inférieur pour la connexion à votre réseau, des étapes supplémentaires sont nécessaires pour gérer les performances et la disponibilité de votre application. Pour plus d'informations, voir [Meilleures pratiques pour la connectivité et la disponibilité des applications](/docs/services/blockchain/best_practices.html#best-practices-app-connectivity-availability).
+
 
 ## Utilisation des index avec CouchDB
 {: #console-app-couchdb}
 
-Si vous utilisez CouchDB comme base de données d'état, vous pouvez exécuter des requêtes de données JSON depuis vos contrats intelligents sur les données d'état du canal. Nous vous recommandons fortement de créer des index pour vos requêtes JSON et de les utiliser dans les contrats intelligents. Les index permettent à vos applications d'extraire les données de manière aussi efficace que votre réseau ajoute des blocs de transaction et des entrées supplémentaires dans le World State. Pour savoir comment utiliser les index avec vos contrats intelligents et vos applications, voir [Meilleures pratiques lors de l'utilisation de CouchDB](/docs/services/blockchain/v10_application.html#dev-app-couchdb-indices).
+Si vous utilisez CouchDB comme base de données d'état, vous pouvez exécuter des requêtes de données JSON depuis vos contrats intelligents sur les données d'état du canal. Nous vous recommandons fortement de créer des index pour vos requêtes JSON et de les utiliser dans les contrats intelligents. Les index permettent à vos applications d'extraire les données de manière aussi efficace que votre réseau ajoute des blocs de transaction et des entrées supplémentaires dans le World State. Pour savoir comment utiliser les index avec vos contrats intelligents et vos applications, voir [Meilleures pratiques lors de l'utilisation de CouchDB](/docs/services/blockchain/best_practices.html#best-practices-app-couchdb-indices).

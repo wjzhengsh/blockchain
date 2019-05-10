@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -33,6 +33,7 @@ subcollection: blockchain
 
 | **Angebote** | **Inhalt** | **Abrechnungsmodell** | **Cloudplattform** |
 | ------------------------- |-----------|-----------|-----------|-----------|
+| [**{{site.data.keyword.blockchainfull_notm}} Platform Extension für VSCode**](/docs/services/blockchain?topic=blockchain-develop-vscode#develop-vscode) | Entwickler können mit der IDE beginnen, die einen Explorer und Befehle bereitstellt, die für die schnelle Entwicklung von Smart Contracts über die Befehlspalette zugänglich sind. | Kostenlos | Wird auf dem lokalen System ausgeführt |
 | [**Starter Plan**](/docs/services/blockchain/starter_plan.html#starter-plan-about) | {{site.data.keyword.IBM_notm}}-verwaltetes Netz mit grundlegender Service-Level-, Entwicklungs- und Testumgebung | Monatliches Abonnement | {{site.data.keyword.cloud_notm}} |
 | [**Enterprise Plan**](/docs/services/blockchain/enterprise_plan.html#enterprise-plan-about) | {{site.data.keyword.IBM_notm}}-verwaltetes Netz mit erweiterter Service-Level-, Entwicklungs- und Testumgebung | Monatliches Abonnement | {{site.data.keyword.cloud_notm}} |
 | [**{{site.data.keyword.blockchainfull_notm}} Platform Free 2.0 Beta**](/docs/services/blockchain/howto/ibp-console.html#ibp-console-overview) | {{site.data.keyword.blockchainfull_notm}} Platform-Konsole zum Bereitstellen und Verwalten von Blockchain-Komponenten in Ihrem {{site.data.keyword.cloud_notm}} Kubernetes-Cluster | Kostenlose Betaversion | {{site.data.keyword.cloud_notm}} |
@@ -49,17 +50,21 @@ Verwenden Sie weder den Starter Plan noch die kostenlose 2.0 Beta-Version für d
 
 Stellen Sie sicher, dass Sie über das Cloud-Konto oder die PPA-Lizenz verfügen, um ein {{site.data.keyword.blockchainfull_notm}} Platform-Angebot zu erhalten.
 
+* **{{site.data.keyword.blockchainfull_notm}} Platform Extension für VSCode**
+
+  Diese VSCode-Extension steht unter [Visual Studio Marketplace ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://marketplace.visualstudio.com/items?itemName=IBMBlockchain.ibm-blockchain-platform "{{site.data.keyword.blockchainfull_notm}} Platform Extension für VSCode") kostenlos zur Verfügung und kann zur Entwicklung, zum Debugging und Testen von Smart Contracts für die letztliche Bereitstellung in {{site.data.keyword.blockchainfull_notm}} verwendet werden.
+
 * **Starter Plan**, **Enterprise Plan** und **{{site.data.keyword.blockchainfull_notm}} Platform Free 2.0 Beta**
 
-  Diese Angebote sind in {{site.data.keyword.cloud_notm}} verfügbar, und Sie können sie im [Katalog-Dashboard ![External link icon](images/external_link.svg "External link icon")](https://cloud.ibm.com/catalog "Catalog") von {{site.data.keyword.cloud_notm}} finden.
+  Diese Angebote sind in {{site.data.keyword.cloud_notm}} verfügbar, und Sie können sie im [Katalog-Dashboard ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://cloud.ibm.com/catalog "Catalog") von {{site.data.keyword.cloud_notm}} finden.
 
 * **{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private**
 
-  Dieses Angebot wird als bereitstellbares Helm-Diagramm geliefert und hat sowohl eine kostenpflichtige Edition als auch eine kostenlose Community-Edition. Sie können die Enterprise Edition von [Passport Advantage Online![External link icon](images/external_link.svg "External link icon")](https://www.ibm.com/software/passportadvantage/pao_customer.html) oder die kostenlose Community-Edition von [GitHub ![External link icon](images/external_link.svg "External link icon")](https://github.com/IBM/charts/blob/master/repo/stable/ibm-blockchain-platform-dev-1.0.0.tgz) herunterladen.
+  Dieses Angebot wird als bereitstellbares Helm-Diagramm geliefert und hat sowohl eine kostenpflichtige Edition als auch eine kostenlose Community-Edition. Sie können die Enterprise Edition von [Passport Advantage Online![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://www.ibm.com/software/passportadvantage/pao_customer.html) oder die kostenlose Community-Edition von [GitHub ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://github.com/IBM/charts/blob/master/repo/stable/ibm-blockchain-platform-dev-1.0.2.tgz) herunterladen.
 
 * **{{site.data.keyword.blockchainfull_notm}} Platform for AWS**
 
-  Dieses Angebot ist in AWS verfügbar und Sie können einen Blockchain-Peer in AWS mithilfe der [Schnelleinstiegsvorlage ![External link icon](images/external_link.svg "External link icon")](https://aws.amazon.com/quickstart/architecture/ibm-blockchain-platform/) bereitstellen.
+  Dieses Angebot ist in AWS verfügbar und Sie können einen Blockchain-Peer in AWS mithilfe der [Schnelleinstiegsvorlage ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://aws.amazon.com/quickstart/architecture/ibm-blockchain-platform/) bereitstellen.
 
 ## Schritt 2: Stellen Sie {{site.data.keyword.blockchainfull_notm}} Platform bereit
 {: #get-started-ibp-step2}
@@ -70,11 +75,11 @@ Stellen Sie sicher, dass Sie über das Cloud-Konto oder die PPA-Lizenz verfügen
 
 * **{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private**
 
-  Bevor Sie ein Netz bereitstellen, müssen Sie das [Helm-Diagramm in {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/howto/helm_install_icp.html#helm-install) importieren. Anschließend können Sie [{{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/howto/ibp-console-deploy-icp.html#ibp-console-deploy-icp) konfigurieren und installieren.
+  Bevor Sie ein Netz bereitstellen, müssen Sie das [Helm-Diagramm in {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/howto/helm_install_icp.html#helm-install) importieren. Anschließend können Sie [von einer Zertifizierungsstelle aus Ihre Netzkomponenten bereitstellen](/docs/services/blockchain/ibp_for_icp_deployment_guide.html#step-three-set-up-your-cas), um so Ihr Netz aufzubauen.
 
 * **{{site.data.keyword.blockchainfull_notm}} Platform for AWS**
 
-  Dieses Angebot ist in AWS verfügbar und Sie können einen Blockchain-Peer in AWS mithilfe der [Schnelleinstiegsvorlage ![External link icon](images/external_link.svg "External link icon")](https://aws.amazon.com/quickstart/architecture/ibm-blockchain-platform/) bereitstellen.
+  Dieses Angebot ist in AWS verfügbar und Sie können einen Blockchain-Peer in AWS mithilfe der [Schnelleinstiegsvorlage ![Symbol für externen Link](images/external_link.svg "Symbol für externen Link")](https://aws.amazon.com/quickstart/architecture/ibm-blockchain-platform/) bereitstellen.
 
 ## Nächste Schritte
 {: #get-started-ibp-next-steps}

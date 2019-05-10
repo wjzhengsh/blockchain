@@ -1,8 +1,8 @@
 ---
 
 copyright:
-  years: 2017, 2019
-lastupdated: "2019-03-05"
+  years: 2018, 2019
+lastupdated: "2019-04-23"
 
 subcollection: blockchain
 
@@ -35,7 +35,7 @@ subcollection: blockchain
 | コンポーネント | vCPU | RAM | データ・ストレージ用ディスク |
 |-----------|------|-----|-----------------------|
 | ピア | 2 | 2 GB | 50 GB (拡張可能であること) |
-| ピア用 CouchDB | 2| 2 GB |50 GB (拡張可能であること) |
+| ピア用 CouchDB<br>(CouchDB を使用する場合だけに該当) | 2| 2 GB | 50 GB (拡張可能であること) |
 
  **注:**
  - vCPU は仮想マシンに割り当てられる仮想コアであるか、サーバーが仮想マシン用にパーティション化されていない場合は物理プロセッサー・コアです。 {{site.data.keyword.cloud_notm}} Private でのデプロイメントの仮想プロセッサー・コア (VPC) を決定する場合は、vCPU 要件を考慮する必要があります。 VPC は IBM 製品のライセンス交付コストを決定する単位です。 VPC を決定するシナリオについて詳しくは、[仮想プロセッサー・コア (VPC) ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/en/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_virtual_processor_core_licenses.html) を参照してください。
@@ -57,13 +57,13 @@ subcollection: blockchain
 
 1. {{site.data.keyword.cloud_notm}} Private にピアをインストールするには、その前に[{{site.data.keyword.cloud_notm}} Private をインストール](/docs/services/blockchain/ICP_setup.html#icp-setup)し、[{{site.data.keyword.blockchainfull_notm}} Platform Helm チャートをインストール](/docs/services/blockchain/howto/helm_install_icp.html#helm-install)する必要があります。
 
-2. Community Edition を使用しており、インターネットに接続されていない {{site.data.keyword.cloud_notm}} Private クラスター上でこの Helm チャートを実行する場合は、アーカイブを {{site.data.keyword.cloud_notm}} Private クラスターにインストールするためには、インターネットに接続されたマシン上でそれらのアーカイブを事前に作成する必要があります。 詳しくは、[インターネット接続がないクラスターへのフィーチャー・アプリケーションの追加 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_package_offline.html "インターネット接続がないクラスターへのフィーチャー・アプリケーションの追加"){:new_window} を参照してください。 仕様ファイル manifest.yaml は、Helm チャート内の ibm-blockchain-platform-dev/ibm_cloud_pak にあります。
+2. Community Edition を使用しており、インターネットに接続されていない {{site.data.keyword.cloud_notm}} Private クラスター上でこの Helm チャートを実行する場合は、アーカイブを {{site.data.keyword.cloud_notm}} Private クラスターにインストールするためには、インターネットに接続されたマシン上でそれらのアーカイブを事前に作成する必要があります。 詳しくは、[インターネット接続がないクラスターへのフィーチャー・アプリケーションの追加 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/app_center/add_package_offline.html "インターネット接続がないクラスターへのフィーチャー・アプリケーションの追加"){:new_window} を参照してください。 仕様ファイル manifest.yaml は、Helm チャート内の ibm-blockchain-platform-dev/ibm_cloud_pak にあります。
 
 3. {{site.data.keyword.cloud_notm}} のスターター・プランまたはエンタープライズ・プラン・ネットワークのメンバーである組織が必要です。 ピアは、{{site.data.keyword.blockchainfull_notm}} Platform のネットワークの API エンドポイント、Hyperledger Fabric CA、および順序付けサービスを利用して作動します。 ブロックチェーン・ネットワークのメンバーではない場合は、ネットワークを作成するか、ネットワークに参加する必要があります。 詳しくは、[ネットワークの作成](/docs/services/blockchain/get_start.html#getting-started-with-enterprise-plan-create-network)または[ネットワークへの参加](/docs/services/blockchain/get_start.html#getting-started-with-enterprise-plan-join-nw)を参照してください。
 
 4. まず {{site.data.keyword.cloud_notm}} Private に [CA をデプロイ](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy)する必要があります。 この CA を TLS CA として使用します。 ピアをデプロイする前に、{{site.data.keyword.cloud_notm}} Private 上で CA を操作するための[前提条件となる手順](/docs/services/blockchain/howto/CA_operate.html#ca-operate-prerequisites)を実行してください。 これらの手順以外の操作を実行する必要はありません。
 
-5. {{site.data.keyword.cloud_notm}} Private コンソールから、TLS CA のクラスター・プロキシー IP アドレスの値を取得します。 **注:** プロキシー IP にアクセスするには、[クラスター管理者 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/user_management/assign_role.html "クラスター管理者役割とアクション") である必要があります。 {{site.data.keyword.cloud_notm}} Private クラスターにログインします。 左側のナビゲーション・パネルで**「プラットフォーム」**、**「ノード」**の順にクリックし、クラスターで定義されているノードを表示します。 `proxy` 役割を持つノードをクリックし、テーブルから`「ホスト IP」`の値をコピーします。 **重要:** この値を保存して、Helm チャートの`「プロキシー IP (Proxy IP)」`フィールドを構成する際に使用します。
+5. {{site.data.keyword.cloud_notm}} Private コンソールから、TLS CA のクラスター・プロキシー IP アドレスの値を取得します。 **注:** プロキシー IP にアクセスするには、[クラスター管理者 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/user_management/assign_role.html "クラスター管理者役割とアクション") である必要があります。 {{site.data.keyword.cloud_notm}} Private クラスターにログインします。 左側のナビゲーション・パネルで**「プラットフォーム」**、**「ノード」**の順にクリックし、クラスターで定義されているノードを表示します。 `proxy` 役割を持つノードをクリックし、テーブルから`「ホスト IP」`の値をコピーします。 **重要:** この値を保存して、Helm チャートの`「プロキシー IP (Proxy IP)」`フィールドを構成する際に使用します。
 
 6. ピアの構成ファイルを作成して、Kubernetes 秘密として {{site.data.keyword.cloud_notm}} Private に保管します。 このファイルを作成する手順については、[次のセクション](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-config-file)を参照してください。
 
@@ -246,14 +246,14 @@ subcollection: blockchain
 5. 使用するサービス・プラン、ロケーション、およびクラスターに応じて {{site.data.keyword.cloud_notm}} から TLS 証明書をダウンロードします。 認証局 URL (例: `us01.blockchain.ibm.com:31011` や `us02.blockchain.ibm.com:31011`) のドメイン名に基づいてクラスターを見つけることができます。
 
   - スターター・プラン用の TLS 証明書
-    - 米国: [us01.blockchain.ibm.com.cert ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://blockchain-certs.mybluemix.net/us01.blockchain.ibm.com.cert "us01.blockchain.ibm.com.cert"); [us02.blockchain.ibm.com.cert ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://blockchain-certs.mybluemix.net/us02.blockchain.ibm.com.cert "us02.blockchain.ibm.com.cert");
-    [us03.blockchain.ibm.com.cert ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://blockchain-certs.mybluemix.net/us03.blockchain.ibm.com.cert "us03.blockchain.ibm.com.cert"); [us04.blockchain.ibm.com.cert ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://blockchain-certs.mybluemix.net/us04.blockchain.ibm.com.cert "us04.blockchain.ibm.com.cert");
-    [us05.blockchain.ibm.com.cert ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://blockchain-certs.mybluemix.net/us05.blockchain.ibm.com.cert "us05.blockchain.ibm.com.cert"); [us06.blockchain.ibm.com.cert ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://blockchain-certs.mybluemix.net/us06.blockchain.ibm.com.cert "us06.blockchain.ibm.com.cert");
-    [us07.blockchain.ibm.com.cert ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://blockchain-certs.mybluemix.net/us07.blockchain.ibm.com.cert "us07.blockchain.ibm.com.cert"); [us08.blockchain.ibm.com.cert ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://blockchain-certs.mybluemix.net/us08.blockchain.ibm.com.cert "us08.blockchain.ibm.com.cert")
-    - 英国: [uk01.blockchain.ibm.com.cert ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://blockchain-certs.mybluemix.net/uk01.blockchain.ibm.com.cert "uk01.blockchain.ibm.com.cert"); [uk02.blockchain.ibm.com.cert ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://blockchain-certs.mybluemix.net/uk02.blockchain.ibm.com.cert "uk02.blockchain.ibm.com.cert");
-    [uk03.blockchain.ibm.com.cert ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://blockchain-certs.mybluemix.net/uk03.blockchain.ibm.com.cert "uk03.blockchain.ibm.com.cert"); [uk04.blockchain.ibm.com.cert ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://blockchain-certs.mybluemix.net/uk04.blockchain.ibm.com.cert "uk04.blockchain.ibm.com.cert")
-    - シドニー: [aus01.blockchain.ibm.com.cert ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://blockchain-certs.mybluemix.net/aus01.blockchain.ibm.com.cert "aus01.blockchain.ibm.com.cert");
-  - [エンタープライズ・プラン用の TLS 証明書 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://blockchain-certs.mybluemix.net/3.secure.blockchain.ibm.com.rootcert)
+    - 米国: [us01.blockchain.ibm.com.cert ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/us01.blockchain.ibm.com.cert "us01.blockchain.ibm.com.cert"); [us02.blockchain.ibm.com.cert ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/us02.blockchain.ibm.com.cert "us02.blockchain.ibm.com.cert");
+    [us03.blockchain.ibm.com.cert ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/us03.blockchain.ibm.com.cert "us03.blockchain.ibm.com.cert"); [us04.blockchain.ibm.com.cert ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/us04.blockchain.ibm.com.cert "us04.blockchain.ibm.com.cert");
+    [us05.blockchain.ibm.com.cert ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/us05.blockchain.ibm.com.cert "us05.blockchain.ibm.com.cert"); [us06.blockchain.ibm.com.cert ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/us06.blockchain.ibm.com.cert "us06.blockchain.ibm.com.cert");
+    [us07.blockchain.ibm.com.cert ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/us07.blockchain.ibm.com.cert "us07.blockchain.ibm.com.cert"); [us08.blockchain.ibm.com.cert ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/us08.blockchain.ibm.com.cert "us08.blockchain.ibm.com.cert")
+    - 英国: [uk01.blockchain.ibm.com.cert ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/uk01.blockchain.ibm.com.cert "uk01.blockchain.ibm.com.cert"); [uk02.blockchain.ibm.com.cert ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/uk02.blockchain.ibm.com.cert "uk02.blockchain.ibm.com.cert");
+    [uk03.blockchain.ibm.com.cert ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/uk03.blockchain.ibm.com.cert "uk03.blockchain.ibm.com.cert"); [uk04.blockchain.ibm.com.cert ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/uk04.blockchain.ibm.com.cert "uk04.blockchain.ibm.com.cert")
+    - シドニー: [aus01.blockchain.ibm.com.cert ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/aus01.blockchain.ibm.com.cert "aus01.blockchain.ibm.com.cert");
+  - [エンタープライズ・プラン用の TLS 証明書 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/3.secure.blockchain.ibm.com.rootcert)
 
   後で実行するコマンドで参照できるディレクトリーに内容を保存します。
 
@@ -364,7 +364,7 @@ export FABRIC_CA_CLIENT_HOME=$HOME/fabric-ca-client/tlsca-admin
   ```
   {:codeblock}
 
-  コマンドの `<enroll_id>` および `<enroll_password>` は、認証局のデプロイ時に Kubernetes 秘密に渡した [CA 管理者ユーザー名とパスワード](/docs/services/blockchain/CA_deploy.html#ca-deploy-admin-secret)です。 `<ca_url_with_port>` 内に [CA URL](/docs/services/blockchain/howto/CA_operate.html#ca-operate-url) を挿入します。 先頭の `http://` は省略します。 `<tls_ca_name>` は、[CA の構成](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-configuration-parms)時に指定した値です。
+  このコマンドの `<enroll_id>` および `<enroll_password>` は、認証局のデプロイ時に Kubernetes シークレットに渡した [CA 管理者ユーザーの名前とパスワード](/docs/services/blockchain/howto/CA_deploy.html#ca-deploy-admin-secret)です。`<ca_url_with_port>` 内に [CA URL](/docs/services/blockchain/howto/CA_operate.html#ca-operate-url) を挿入します。 先頭の `http://` は省略します。 `<tls_ca_name>` は、[CA の構成](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-configuration-parms)時に指定した値です。
 
   `<ca_tls_cert_file>` は、[CA TLS 証明書](/docs/services/blockchain/howto/CA_operate.html#ca-operate-tls)のファイル名と絶対パスです。
 
@@ -447,6 +447,8 @@ tree
 │   └── msp
 │       ├── cacerts
 │       │   └── 9-12-19-115-31873-SampleOrgCA.pem
+│       ├── IssuerPublicKey
+│       ├── IssuerRevocationPublicKey
 │       ├── keystore
 │       │   └── c44ec1e708f84b6d0359f58ce2c9c8a289919ba81f2cf4bb5187c4ad5a43cbb0_sk
 │       └── signcerts
@@ -472,6 +474,8 @@ tree
     └── msp
         ├── cacerts
         │   └── 9-30-250-70-30395-tlsca.pem
+        ├── IssuerPublicKey
+        ├── IssuerRevocationPublicKey
         ├── keystore
         │   └── bd57fa20283dfc76ada83f989ee0f62ce23e98c94dbd26f6cd23202d8084e38e_sk
         ├── signcerts
@@ -589,7 +593,7 @@ TLS CA をデプロイしたのと同じ {{site.data.keyword.cloud_notm}} Privat
 
 3. **「一般」**タブで、以下のフィールドに次のように入力します。
   - **名前:** 秘密にクラスター内で固有の名前を付けます。 この名前は、ピアのデプロイ時に使用します。 名前はすべて小文字でなければなりません。  
-  **注:** ピアをデプロイすると、デプロイメントによって `<helm_release_name>-secret` という名前で新規秘密が自動的に生成されます。 したがって、秘密には、`<helm_release_name>-secret` とは異なる名前を指定するようにしてください。 そうしないと、作成しようとする秘密が既に存在するため Helm チャートのデプロイメントが失敗します。
+  **注:** ピアをデプロイすると、デプロイメントによって `<helm release name you intend to use>-secret` という名前で新規秘密が自動的に生成されます。 したがって、この秘密には、`<helm release name you intend to use>-secret` とは異なる名前を指定するようにしてください。 そうしないと、作成しようとする秘密が既に存在するため Helm チャートのデプロイメントが失敗します。
   - **名前空間:** 秘密を追加する名前空間。 ピアのデプロイ先となる `namespace` を選択します。
   - **タイプ:** 値`「不透明 (Opaque)」`を入力します。
 
@@ -634,8 +638,10 @@ TLS CA をデプロイしたのと同じ {{site.data.keyword.cloud_notm}} Privat
 
 |  パラメーター     | 説明    | デフォルト  | 必須 |
 | --------------|-----------------|-------|------- |
+|**一般パラメーター**| Helm チャートを構成するパラメーター | | |
 | `Helm リリース名 (Helm release name)`| Helm リリースの名前。 小文字で始まり、任意の英数字で終わる必要があり、ハイフンと小文字の英数字のみを含む必要があります。 コンポーネントのインストールを試行するたびに固有の Helm リリース名を使用する必要があります。 **重要:** この値は、[JSON 秘密ファイル](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-csr-hosts)の「hosts」フィールドで「サービス・ホスト名」を生成する際に使用した値と一致する必要があります。 | なし | はい  |
 | `ターゲット名前空間 (Target namespace)`| Helm チャートをインストールする Kubernetes 名前空間を選択します。 | なし | はい |
+| `ターゲット名前空間のポリシー (Target namespace policies)`| 選択した名前空間のポッド・セキュリティー・ポリシーが表示されます。**`ibm-privileged-psp`** ポリシーが含まれているはずです。そうでない場合は、その名前空間に [PodSecurityPolicy をバインド](/docs/services/blockchain?topic=blockchain-icp-setup#icp-setup-psp)してください。| なし | いいえ |
 |**グローバル構成 (Global configuration)**| Helm チャート内のすべてのコンポーネントに適用されるパラメーター|||
 | `サービス・アカウント名 (Service account name)`| ポッドの実行に使用する[サービス・アカウント ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/ "ポッドのサービス・アカウントの構成") の名前を入力します。 | デフォルト | いいえ |
 
@@ -648,9 +654,9 @@ TLS CA をデプロイしたのと同じ {{site.data.keyword.cloud_notm}} Privat
 | `ピアのインストール (Install Peer)` | ピアをインストールするために選択します。|チェック・マークなし | はい (ピアをインストールする場合) |
 | `ピア・ワーカー・ノード・アーキテクチャー (Peer worker node architecture)`| クラウド・プラットフォーム・アーキテクチャーを選択します (AMD64 または S390x)| AMD64 | はい |
 | `ピア・イメージ・リポジトリー (Peer image repository)`| ピア Helm チャートの場所。 このフィールドにはインストール・パスが自動入力されます。 Community Edition を使用しており、インターネットにアクセスできない場合は、このフィールドでは、Fabric ピアのイメージをダウンロードしたディレクトリーを指定する必要があります。 | ibmcom/ibp-fabric-peer | はい |
-| `ピア Docker イメージ・タグ (Peer Docker image tag)`|ピア・イメージに関連付けられたタグの値 |1.2.1 (正しい値が自動入力されます)|はい|
-| `ピア構成 (Peer configuration)`|独自の `core.yaml` 構成ファイルをこのフィールドに貼り付けることで、ピアの構成をカスタマイズできます。 サンプルの `core.yaml` ファイルを表示するには、[`core.yaml` のサンプル構成 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://github.com/hyperledger/fabric/blob/release-1.2/sampleconfig/core.yaml "hyperledger/fabric/core.yaml") を参照してください。**上級者専用**。 |なし|いいえ|
-| `ピア構成の秘密 (Peer configuration secret) (必須)`| {{site.data.keyword.cloud_notm}} Private 内で作成した[ピア構成の秘密](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-config-file-ibp)の名前。  |なし|はい|
+| `ピア Docker イメージ・タグ (Peer Docker image tag)`|ピア・イメージに関連付けられたタグの値 |1.4.0 (正しい値が自動入力されます)|はい|
+| `ピア構成 (Peer configuration)`|独自の `core.yaml` 構成ファイルをこのフィールドに貼り付けることで、ピアの構成をカスタマイズできます。 サンプルの `core.yaml` ファイルを表示するには、[`core.yaml` のサンプル構成 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://github.com/hyperledger/fabric/blob/release-1.4/sampleconfig/core.yaml "hyperledger/fabric/core.yaml") を参照してください。**上級者専用**。 |なし|いいえ|
+| `ピア構成の秘密 (Peer configuration secret) (必須)`| {{site.data.keyword.cloud_notm}} Private 内で作成した[ピア構成の秘密](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-config-file-ibp)の名前。 | なし | はい |
 |`組織 MSP (Organization MSP) (必須)`|この値は、「概要」画面の「リモート・ピアの構成」をクリックして、ネットワーク・モニター (スターター・プランおよびエンタープライズ・プラン UI) で確認できます。  |なし|はい|
 |`ピア・サービス・タイプ (Peer service type)`| ピアで[外部ポートを公開 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types "公開サービス - サービス・タイプ") するかどうかを指定するために使用します。 ポートを外部に対して公開する場合は NodePort を選択し (推奨)、ポートを公開しない場合は ClusterIP を選択します。 LoadBalancer および ExternalName はこのリリースではサポートされていません。 | NodePort |はい|
 | `状態データベース`| チャネル台帳の保管に使用される[状態データベース](/docs/services/blockchain/glossary.html#glossary-state-database)。 ピアは、[ブロックチェーン・ネットワーク](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-network-preferences)と同じデータベースを使用する必要があります。 | LevelDB | はい |
@@ -674,6 +680,14 @@ TLS CA をデプロイしたのと同じ {{site.data.keyword.cloud_notm}} Privat
 | `状態データベースのボリューム・クレーム・サイズ (State database volume claim size)`| 使用するディスクのサイズを選択します。 | 8Gi | はい |
 | `CouchDB - データの永続性が有効 (CouchDB - Data persistence enabled)`| CouchDB コンテナーの場合は、コンテナーの再始動時に台帳データが使用可能になります。 *チェック・マークを外すと、フェイルオーバーやポッドの再始動の場合にすべてのデータが失われます。*| オン | いいえ |
 | `CouchDB - 動的プロビジョニングを使用 (CouchDB - Use dynamic provisioning)`| CouchDB コンテナーの場合は、Kubernetes 動的ストレージを使用します。| オン | いいえ |
+| `Docker-in-Docker CPU 要求 (Docker-in-Docker CPU request)`| チェーンコードを実行するコンテナーに割り振る CPU の最小数を指定します。| 1 | はい |
+| `Docker-in-Docker CPU 制限 (Docker-in-Docker CPU limit)`| チェーンコードを実行するコンテナーに割り振る CPU の最大数を指定します。| 2 | はい |
+| `Docker-in-Docker メモリー要求 (Docker-in-Docker memory request)`| チェーンコードを実行するコンテナーに割り振るメモリーの最小量を指定します。| 1Gi | はい |
+| `Docker-in-Docker メモリー制限 (Docker-in-Docker memory limit)`| チェーンコードを実行するコンテナーに割り振るメモリーの最大量を指定します。| 4Gi | はい |
+| `gRPC Web プロキシー CPU 要求 (gRPC web proxy CPU request)`| gRPC Web プロキシーに割り振る CPU の最小数 (millicpu (m) 単位) を指定します。| 100m | はい |
+| `gRPC Web プロキシー CPU 制限 (gRPC web proxy CPU limit)`| gRPC Web プロキシーに割り振る CPU の最大数 (millicpu (m) 単位) を指定します。| 200m | はい |
+| `gRPC Web プロキシー・メモリー要求 (gRPC web proxy memory request)`| gRPC Web プロキシーに割り振る最小メモリー量を指定します。 | 100Mi | はい |
+| `gRPC Web プロキシー・メモリー制限 (gRPC web proxy memory limit)`| gRPC Web プロキシーに割り振る最大メモリー量を指定します。 | 200Mi | はい |
 | `ピア CPU 要求 (Peer CPU request)` | ピアに割り当てる CPU の最小数。 | 1 | はい |
 | `ピア CPU 制限 (Peer CPU limit)` | ピアに割り当てる CPU の最大数。| 2 | はい |
 | `ピア・メモリー要求 (Peer Memory request)` | ピアに割り当てるメモリーの最小量。 | 1Gi | はい |
@@ -700,7 +714,7 @@ processes. This container has two volume mounts, one for the Peer PVC and the se
 ### Helm コマンド・ラインを使用した Helm リリースのインストール
 {: #ibp-peer-deploy-helm-cli}
 
-また、Helm CLI を使用して Helm リリースをインストールすることもできます。 `helm install` コマンドを実行する前に、[Helm CLI 環境にクラスターの Helm リポジトリーを追加 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.0/app_center/add_int_helm_repo_to_cli.html "Helm CLI への内部 Helm リポジトリーの追加") してください。
+また、Helm CLI を使用して Helm リリースをインストールすることもできます。 `helm install` コマンドを実行する前に、[Helm CLI 環境にクラスターの Helm リポジトリーを追加 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/app_center/add_int_helm_repo_to_cli.html "Helm CLI への内部 Helm リポジトリーの追加") してください。
 
 インストールに必要なパラメーターを設定するには、`yaml` ファイルを作成し、以下の `helm install` コマンドにこれを渡します。
 
