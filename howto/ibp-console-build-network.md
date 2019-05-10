@@ -84,7 +84,7 @@ Throughout this tutorial we supply **recommended values** for some of the fields
 
 For each organization that you want to create with the console, you should deploy at least one CA. A CA is the node that issues certificates to all network participants (peers, orderers, clients, and so on). These certificates, which include a public and private key pair, allow network participants to communicate, authenticate, and ultimately transact. These CAs will create all of the identities and certificates that belong to your organization, in addition to defining the organization itself. You can then use those identities to deploy nodes, operate your network, and submit transactions to the blockchain. For more information about your CA and the identities that you will need to create, see [Managing identities](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities).
 
-In this tutorial, we create two organizations, one which will own a peer and another which will own an orderer. Each organization needs a CA to issue it's certificates, therefore we need to create **two CAs**. For the purpose of this tutorial, **we will create only one CA at a time**.
+In this tutorial, we create two organizations, one which will own a peer and another which will own an orderer. Each organization needs a CA to issue its certificates, therefore we need to create **two CAs**. For the purpose of this tutorial, **we will create only one CA at a time**.
 
 Watch the following video to learn about the process to create the peer's organization and the peer.
 
