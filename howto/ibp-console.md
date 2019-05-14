@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-04-18"
+lastupdated: "2019-05-14"
 
 subcollection: blockchain
 
@@ -33,7 +33,7 @@ This latest release is tailored to experienced {{site.data.keyword.blockchainful
 The {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta release includes the following key features:
 
 **Integrated developer experience**
-- **Easily code** your smart contracts in Node.js, Golang, or Java, write client applications using the new {{site.data.keyword.blockchainfull_notm}} VSCode extension, leverage **SDK integration** with the console, and learn from our rich tutorials and samples.
+- **Easily code** your smart contracts in Node.js, or Golang, write client applications using the new {{site.data.keyword.blockchainfull_notm}} VSCode extension, leverage **SDK integration** with the console, and learn from our rich tutorials and samples.
 - **Simplified DevOps** allows you to move from development to test to production in a single environment by scaling up your Kubernetes resources to add more components.
 - **Up-to-date Fabric key features.** Leverage the latest features of Hyperledger Fabric v1.4:
   - [**Private data** collections](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-private-data) that provide increased data privacy by ensuring that ledger data is shared to only authorized peers via the gossip protocol.
