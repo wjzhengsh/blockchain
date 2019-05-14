@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-04-23"
+lastupdated: "2019-05-14"
 
 subcollection: blockchain
 
@@ -125,7 +125,7 @@ Save the resulting output for Step 4 below.
     ```
     {:code_block}
 
-  2. In the **Name** field, enter the value `couchdbuser`. In the corresponding **Value** field, enter the result of `echo -n 'couch' | base64 $FLAG` from step one above.
+  2. In the **Name** field, enter the value `couchdbusr`. In the corresponding **Value** field, enter the result of `echo -n 'couch' | base64 $FLAG` from step one above.
   3. Click the **Add data** button to add a second key value pair.
   4. In the second **Name** field, enter the value `couchdbpwd`. In the corresponding **Value** field, enter the result of `echo -n 'couchpw' | base64 $FLAG` from step one above.
 
