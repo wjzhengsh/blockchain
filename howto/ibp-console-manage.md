@@ -37,7 +37,7 @@ When you [use IAM to invite users](/docs/iam?topic=iam-iamuserinv#iamuserinv){: 
  1. From the menu bar, click  **Manage** > **Access (IAM)** and then select **Users**.
  2. Click **Invite User**.
  3. Type in the email address of the user or users.
- 4. From the **Services** drop-down list, select **Blockchain Platform 2.0**.
+ 4. From the **Services** drop-down list, select **Blockchain Platform**.
  5. Scroll down to **Select roles**.
  6. Under **Assign service access roles**, choose a role for the user, which can be **Manager**, **Writer**, and **Reader**.
  7. Click **Invite users**.

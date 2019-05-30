@@ -40,7 +40,7 @@ The following diagram illustrates the three elements of the {{site.data.keyword.
 ![{{site.data.keyword.blockchainfull_notm}} Platform](../images/IBP-Diagram.png "The {{site.data.keyword.blockchainfull_notm}} Platform components")
 **Figure 1: The {{site.data.keyword.blockchainfull_notm}} Platform components**
 
-- **[{{site.data.keyword.blockchainfull_notm}} Console (UI)**: This is the console that allows you create and manage your blockchain components. After you provision a service instance in {{site.data.keyword.cloud_notm}}, you can deploy an instance of the {{site.data.keyword.blockchainfull_notm}} console and link it to your{{site.data.keyword.cloud_notm}} Kubernetes cluster. Then you can use the console to create an manage you blockchain components in your Kubernetes cluster. There is no charge for the console.
+- **{{site.data.keyword.blockchainfull_notm}} Console (UI)**: This is the console that allows you create and manage your blockchain components. After you provision a service instance in {{site.data.keyword.cloud_notm}}, you can deploy an instance of the {{site.data.keyword.blockchainfull_notm}} console and link it to your{{site.data.keyword.cloud_notm}} Kubernetes cluster. Then you can use the console to create an manage you blockchain components in your Kubernetes cluster. There is no charge for the console.
 
 - **Hyperledger Fabric Components**: The console is used to create and manage blockchain components that are based on Hyperledger Fabric v1.4.1 Certificate Authority, peer, and ordering service images.  These components are deployed into your kubernetes cluster and storage is provisioned for them using the `default` storage class when they are deployed.
 
