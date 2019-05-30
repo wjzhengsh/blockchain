@@ -2,14 +2,16 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-05-09"
+lastupdated: "2019-05-31"
+
+keywords: APIs, build a network, authentication, service credentials, API key, API endpoint, IAM access token, Fabric CA client, import a network, generate certificates
 
 subcollection: blockchain
 
 ---
 
 
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:shortdesc: .shortdesc}
 {:screen: .screen}
 {:codeblock: .codeblock}
@@ -23,12 +25,12 @@ subcollection: blockchain
 # Building a network with APIs
 {: #ibp-v2-apis}
 
-The {{site.data.keyword.blockchainfull}} Platform 2.0 exposes RESTful APIs for you to create, import, edit, and delete your blockchain components, as well as to manage logging, notifications, and console settings. You can use the APIs, and the corresponding SDKs, to develop applications that interact with your blockchain network.
+The {{site.data.keyword.blockchainfull}} Platform exposes RESTful APIs for you to create, import, edit, and delete your blockchain components, as well as to manage logging, notifications, and console settings. You can use the APIs, and the corresponding SDKs, to develop applications that interact with your blockchain network.
 {: shortdesc}
 
-This tutorial introduces the generic flow to build a blockchain network with {{site.data.keyword.blockchainfull_notm}} Platform APIs. For more information about each API, see [{{site.data.keyword.blockchainfull_notm}} Platform API reference doc ![External link icon](../images/external_link.svg "External link icon")](/apidocs/blockchain "{{site.data.keyword.blockchainfull_notm}} Platform API reference doc"){: new_window}.
+This tutorial introduces the generic flow to build a blockchain network with {{site.data.keyword.blockchainfull_notm}} Platform APIs. For more information about each API, see [{{site.data.keyword.blockchainfull_notm}} Platform API reference doc](/apidocs/blockchain){: external}.
 
-These APIs are compatible with the {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta v0.1.77 or higher only. To check the version, browse to `https://[your_console_url]/version.txt`, where *`[your_console_url]`* is the URL of your {{site.data.keyword.blockchainfull_notm}} Platform console. For example: https://1ee1869ffa6496d6bc1ce4b-optools.bp01.blockchain.cloud.ibm.com/version.txt
+These APIs are compatible with the {{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}} v0.1.77 or higher only. To check the version, browse to `https://[your_console_url]/version.txt`, where *`[your_console_url]`* is the URL of your {{site.data.keyword.blockchainfull_notm}} Platform console. For example: https://1ee1869ffa6496d6bc1ce4b-optools.bp01.blockchain.cloud.ibm.com/version.txt
 {:note}
 
 ## Before you begin
@@ -46,11 +48,11 @@ In order to use the APIs to access your blockchain network that you create with 
 
 You need a basic authentication credential to ensure that you have access to your {{site.data.keyword.blockchainfull_notm}} Platform service instance on {{site.data.keyword.cloud_notm}}.
 
-1. In your [{{site.data.keyword.cloud_notm}} resource list ![External link icon](../images/external_link.svg "External link icon")](https://cloud.ibm.com/resources), open the blockchain service instance that you created.
+1. In your [{{site.data.keyword.cloud_notm}} resource list](https://cloud.ibm.com/resources){: external}, open the blockchain service instance that you created.
 2. Click **Service credentials** from the left navigator.
-3. Click the "New Credential" button on the **Service credentials** page to create a new credential.
+3. Click the **New Credential** button on the **Service credentials** page to create a new credential.
   1. Give the credential a name, for example, *UseAPIs*.
-  2. You can leave the "Add inline configuration parameter" field blank.
+  2. You can leave the **Add inline configuration parameter** field blank.
   3. Click the **Add** button.
 4. After the new credential is created, click **View credentials** under the **ACTIONS** header of this credential. The contents of the credential looks similar to the following example:
 
@@ -66,7 +68,7 @@ You need a basic authentication credential to ensure that you have access to you
   }
   ```
 
-In the service credential, you can find the **API key** (`apikey`) and **API endpoint** (`api_endpoint`) that you need to retrieve an {{site.data.keyword.iamshort}} (IAM) access token.
+In the service credential, you can find the **API key** (`apikey`) and **API endpoint** (`api_endpoint`) that you need to retrieve a {{site.data.keyword.iamshort}} (IAM) access token.
 
 ### Retrieving an access token
 {: #ibp-v2-apis-retrieve-token}
@@ -77,7 +79,7 @@ Call the {{site.data.keyword.iamshort}} API to retrieve your access token.
 
 ```cURL
 curl -X POST \
-  "https://iam.bluemix.net/identity/token" \
+  "https://iam.cloud.ibm.com/identity/token" \
   -H "Content-Type: application/x-www-form-urlencoded" \
   -H "Accept: application/json" \
   -d "grant_type=urn%3Aibm%3Aparams%3Aoauth%3Agrant-type%3Aapikey&apikey=<API_KEY>" \
@@ -117,14 +119,14 @@ curl -X <API method> \
 ```
 {: codeblock}
 
-Example curl commands are provided for each API in the [{{site.data.keyword.blockchainfull_notm}} Platform API reference doc ![External link icon](../images/external_link.svg "External link icon")](/apidocs/blockchain "{{site.data.keyword.blockchainfull_notm}} Platform API reference doc").
+Example curl commands are provided for each API in the [{{site.data.keyword.blockchainfull_notm}} Platform API reference doc](/apidocs/blockchain){: external}.
 
-Also, you can use the **Try it out** function in the API Reference doc to test your API calls before you add them to your applications.
+Also, you can use the **Try it out** function in the API Reference doc to test your API calls before you add them to your applications. You need to be logged in to {{site.data.keyword.cloud_notm}} in order to use the **Try it out** function. You can select any service instance from the drop-down list. All API requests are sent to the network specified in the API endpoint.
 
 ## Limitations
 {: #ibp-v2-apis-limitations}
 
-You can import only existing CA, peer, and orderer nodes from other {{site.data.keyword.blockchainfull_notm}} Platform free v2.0 beta networks.
+You can import only existing CA, peer, and orderer nodes from other {{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}} networks.
 
 ## Building a network by using APIs
 {: #ibp-v2-apis-build-with-apis}
@@ -138,7 +140,7 @@ You can use APIs to create blockchain components in your instance of the {{site.
 
   You need to wait for the CA to start. It might take several minutes depending on environment. You can call `GET <ca_url>/cainfo` API to check your CA status. You will get repeated errors, then a `200` status code, which means you can proceed to the next step. Note that this API call times out after one minute.
 
-2. Use your CA to register your component and administrator identities and generate the necessary certificates. You can use the Fabric CA client to complete the following steps:
+2. Use your CA to register your component and administrator identities, and generate the necessary certificates. You can use the Fabric CA client to complete the following steps:
 
   - [Set up the Fabric CA client](#ibp-v2-apis-config-fabric-ca-client).
   - [Generate certificates with your CA admin](#ibp-v2-apis-enroll-ca-admin).
@@ -146,7 +148,7 @@ You can use APIs to create blockchain components in your instance of the {{site.
   - You also need to [register an organization administrator](#ibp-v2-apis-config-register-admin) and then [generate certificates for the admin](#ibp-v2-apis-config-enroll-admin) inside an MSP folder. You do not have to complete this step if you have already registered your admin identity.
   - [Register the new component with your TLS CA](#ibp-v2-apis-config-register-component-tls).
 
-  You can also complete these steps by using your {{site.data.keyword.blockchainfull_notm}} Platform console. For more information, see [Creating and managing identities](/docs/services/blockchain/reference?topic=blockchain-ibp-console-identities.html#ibp-console-identities).
+  You can also complete these steps by using your {{site.data.keyword.blockchainfull_notm}} Platform console. For more information, see [Creating and managing identities](/docs/services/blockchain/howto/ibp-console-identities.html).
 
 3. [Create an MSP definition for your organization](#ibp-v2-apis-msp) by calling [`POST /ak/api/v1/components/msp`](/apidocs/blockchain?#import-a-membership-service-provide-msp).
 
@@ -166,7 +168,7 @@ The service credential that is used for API authentication must have the `Manage
 ## Import a network by using APIs
 {: #ibp-v2-apis-import-with-apis}
 
-You can also use the APIs to import {{site.data.keyword.blockchainfull_notm}} components created by using the APIs or the {{site.data.keyword.blockchainfull_notm}} Platform console into another service instance of the {{site.data.keyword.blockchainfull_notm}} Platform 2.0.
+You can also use the APIs to import {{site.data.keyword.blockchainfull_notm}} components created by using the APIs or the {{site.data.keyword.blockchainfull_notm}} Platform console into another service instance of the {{site.data.keyword.blockchainfull_notm}} Platform.
 
 1. Import a CA by calling [`POST /ak/api/v1/components/ca`](/apidocs/blockchain?code=try#import-a-ca).
 
@@ -196,9 +198,9 @@ You can use the Fabric CA client to operate your CAs. Run the following Fabric C
 ### Set up the Fabric CA client
 {: #ibp-v2-apis-setup-fabric-ca-client}
 
-1. Download the [Fabric CA client ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/users-guide.html#fabric-ca-client "Download Fabric CA client") to your local file system.
+1. Download the [Fabric CA client](https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/users-guide.html#fabric-ca-client){: external} to your local file system.
 
-  The easiest way to get the Fabric CA client is to download all of the Fabric tool binaries directly. Navigate to a directory where you would like to download the binaries with your command line, and fetch them by running the following [Curl ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/prereqs.html#install-curl "Curl") command.
+  The easiest way to get the Fabric CA client is to download all of the Fabric tool binaries directly. Navigate to a directory where you would like to download the binaries with your command line, and fetch them by running the following [Curl](https://hyperledger-fabric.readthedocs.io/en/release-1.4/prereqs.html#install-curl){: external} command.
 
   ```
   curl -sSL http://bit.ly/2ysbOFE | bash -s 1.4.0 1.4.0 -d -s
@@ -472,7 +474,7 @@ tree
         └── user
 ```
 
-You will need return to this folder when you create your organization MSP definition and configuration files.
+You will need to return to this folder when you create your organization MSP definition and configuration files.
 {: important}
 
 ### Registering the component identity with the TLS CA
@@ -546,7 +548,7 @@ You can use the APIs to create an organization MSP definition by calling [`POST 
   ```
   LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tDQpNSUlFbERDQ0EzeWdBd0lCQWdJUUFmMmo2MjdLZGNpSVE0dHlTOCs4a1RBTkJna3Foa2lHOXcwQkFRc0ZBREJoDQpNUXN3Q1FZRFZRUUdFd0pWVXpFVk1CTUdBMVVFQ2hNTVJHbG5hVU5sY25RZ1NXNWpNUmt3RndZRFZRUUxFeEIzDQpkM2N1WkdsbmFXTmxjblF1WTI5dE1TQXdIZ1lEVlFRREV4ZEVhV2RwUTJWeWRDQkhiRzlpWVd3Z1VtOXZkQ0JEDQpRVEFlRncweE16QXpNRGd4TWpBd01EQmFGdzB5TXpBek1EZ3hNakF3TURCYU1FMHhDekFKQmdOVkJBWVRBbFZUDQpNUlV3RXdZRFZRUUtFd3hFYVdkcFEyVnlkQ0JKYm1NeEp6QWxCZ05WQkFNVEhrUnBaMmxEWlhKMElGTklRVElnDQpVMlZqZFhKbElGTmxjblpsY2lC
   ```
-  not like this:
+  Not like this:
 
   ```
   LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tDQpNSUlFbERDQ0EzeWdBd0lCQWdJUUFmMmo2MjdL
@@ -718,7 +720,7 @@ cat $HOME/<path-to-peer-admin>/msp/signcerts/cert.pem | base64 $FLAG
 ```
 LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tDQpNSUlFbERDQ0EzeWdBd0lCQWdJUUFmMmo2MjdLZGNpSVE0dHlTOCs4a1RBTkJna3Foa2lHOXcwQkFRc0ZBREJoDQpNUXN3Q1FZRFZRUUdFd0pWVXpFVk1CTUdBMVVFQ2hNTVJHbG5hVU5sY25RZ1NXNWpNUmt3RndZRFZRUUxFeEIzDQpkM2N1WkdsbmFXTmxjblF1WTI5dE1TQXdIZ1lEVlFRREV4ZEVhV2RwUTJWeWRDQkhiRzlpWVd3Z1VtOXZkQ0JEDQpRVEFlRncweE16QXpNRGd4TWpBd01EQmFGdzB5TXpBek1EZ3hNakF3TURCYU1FMHhDekFKQmdOVkJBWVRBbFZUDQpNUlV3RXdZRFZRUUtFd3hFYVdkcFEyVnlkQ0JKYm1NeEp6QWxCZ05WQkFNVEhrUnBaMmxEWlhKMElGTklRVElnDQpVMlZqZFhKbElGTmxjblpsY2lC
 ```
-not like this:
+Not like this:
 
 ```
 LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tDQpNSUlFbERDQ0EzeWdBd0lCQWdJUUFmMmo2MjdL
@@ -758,6 +760,7 @@ You have the option of providing a custom domain to your component using the `"c
 This section is provided for advanced users to specify a custom host name that can be used to address the peer endpoint. Most users can leave this section blank.
 
 ### Completing the configuration file
+{: #ibp-v2-apis-config-file}
 
 After you completed all the steps above, your updated configuration file might look similar to the following example:
 

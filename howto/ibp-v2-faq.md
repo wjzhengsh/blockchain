@@ -2,14 +2,15 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-05-13"
+lastupdated: "2019-05-31"
+
+keywords: FAQs, can I, upgrade, what version, peer ledger database, supported languages, why do I, regions
 
 subcollection: blockchain
 
 ---
 
-
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:shortdesc: .shortdesc}
 {:screen: .screen}
 {:codeblock: .codeblock}
@@ -22,69 +23,71 @@ subcollection: blockchain
 # FAQs
 {: #ibp-v2-faq}
 
-- [What version of Hyperledger Fabric is being used with {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta?](#ibp-v2-faq-fabric-version)
-- [Do I need to pay anything for the {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta?](#ibp-v2-faq-cost)
-- [Can I use my existing {{site.data.keyword.cloud_notm}} Kubernetes Service cluster?](#ibp-v2-faq-existing-cluster)
-- [What database do the Peers use for their ledger?](#ibp-v2-faq-couchDB)
-- [What languages are supported for smart contracts?](#ibp-v2-faq-cc-langs)
-- [Can I migrate from the V2.0 beta to v2.0 GA?](#ibp-v2-faq-migrate)
-- [Do we have access to logging services and what logs are available to me?](#ibp-v2-faq-logs)
-- [What is the value of using {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta over native Hyperledger Fabric?](#ibp-v2-faq-native-fabric)
-- [How can I maximize performance and scale my {{site.data.keyword.blockchainfull_notm}} Platform solution?](#ibp-v2-faq-perf-scale)
+- [What database do the peers use for their ledger?](#ibp-v2-faq-v2-IBP-Overview-1-3)
+- [What languages are supported for smart contracts?](#ibp-v2-faq-v2-IBP-Overview-1-4)
+- [Can I upgrade from V1.0 to the new {{site.data.keyword.blockchainfull_notm}} Platform?](#ibp-v2-faq-v2-IBP-Overview-1-5)
+- [What is the value of using {{site.data.keyword.blockchainfull_notm}} Platform over native Hyperledger Fabric?](#ibp-v2-faq-v2-IBP-Overview-1-7)
+- [What happens when I delete my {{site.data.keyword.blockchainfull_notm}} Platform service?](#ibp-v2-faq-v2-IBP-Overview-1-8)
+- [What regions are available for the blockchain service running on the {{site.data.keyword.cloud_notm}}?](#ibp-v2-faq-v2-IBP-Overview-1-9)
+- [What version of Hyperledger Fabric is being used with {{site.data.keyword.blockchainfull_notm}} Platform?](#ibp-v2-faq-v2-Hyperledger-Fabric-3-1)
+- [Can I use my existing {{site.data.keyword.cloud_notm}} Kubernetes Service cluster?](#ibp-v2-faq-v2-Infrastructure-4-2)
+- [Do we have access to logging services and what logs are available to me?](#ibp-v2-faq-v2-Logging-and-Monitoring-11-6)
 
-## What version of Hyperledger Fabric is being used with {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta?
-{: #ibp-v2-faq-fabric-version}
+
+## What database do the peers use for their ledger?
+{: #ibp-v2-faq-v2-IBP-Overview-1-3}
 {: faq}
 
-The {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta uses Hyperledger Fabric v1.4 and includes support for gossip, service discovery and private data.
-
-## Do I need to pay anything for the {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta?
-{: #ibp-v2-faq-cost}
-{: faq}
-
-The beta release is free. But you may still incur charges for your {{site.data.keyword.cloud_notm}} Kubernetes cluster, unless you selected a free cluster.  However, be aware that the free cluster is automatically deleted after 30 days per {{site.data.keyword.cloud_notm}} Kubernetes service policy and performance and capacity are limited.  If you want to persist your service beyond 30 days, you need to pay for a standard instance of the Kubernetes service. 
-
-## Can I use my existing {{site.data.keyword.cloud_notm}} Kubernetes Service cluster?
-{: #ibp-v2-faq-existing-cluster}
-{: faq}
-
-Your existing Kubernetes cluster will work with the {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta as long as it satisfies the following conditions:
-- It is in the {{site.data.keyword.cloud_notm}} Dallas region.
-- It is running Kubernetes v1.11 or higher. See these instructions for information on how to [upgrade the Kubernetes version of your cluster](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks-updating-kubernetes).
-- There are enough available resources in the cluster. See this topic on [minimum resource requirements](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks-resources-required) for more information.
-
-## What database do the Peers use for their ledger?
-{: #ibp-v2-faq-couchDB}
-{: faq}
-
-All peers are deployed with the {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta use CouchDB database. It is not possible to query the CouchDB directly though.
+All peers that are deployed with the {{site.data.keyword.blockchainfull_notm}} Platform use CouchDB as database for the ledger.
 
 ## What languages are supported for smart contracts?
-{: #ibp-v2-faq-cc-langs}
+{: #ibp-v2-faq-v2-IBP-Overview-1-4}
 {: faq}
 
-{{site.data.keyword.blockchainfull_notm}} Platform supports smart contracts written in Go, Node.js, and Java. The new Hyperledger Fabric programming model currently only supports Node.js, more are coming soon. If you are interested in preserving your existing application code, or using Fabric SDKs for languages other than Node.js, you can still connect to your {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta network using lower level Fabric SDK API's.
+The {{site.data.keyword.blockchainfull_notm}} Platform supports smart contracts that are written in Go, Node.js. The new Hyperledger Fabric programming model currently supports only Node.js, but more are coming soon. If you are interested in preserving your existing application code, or using Fabric SDKs for languages other than Node.js, you can still connect to your {{site.data.keyword.blockchainfull_notm}} Platform network by using lower-level Fabric SDK APIs.
 
-## Can I migrate from the V2.0 beta to v2.0 GA? 
-{: #ibp-v2-faq-migrate}
+## Can I upgrade from V1.0 to the new {{site.data.keyword.blockchainfull_notm}} Platform?
+{: #ibp-v2-faq-v2-IBP-Overview-1-5}
 {: faq}
 
-You will not be able to migrate your 2.0 beta offering to the 2.0 GA offering.
+Not for Starter Plan. You cannot upgrade from Starter Plan to the new  {{site.data.keyword.blockchainfull_notm}} Platform.
+For Enterprise Plan, you will be able  to upgrade to the new  {{site.data.keyword.blockchainfull_notm}} Platform  in the future. You will receive an email to the account owner from the {{site.data.keyword.blockchainfull_notm}} Platform team to assist.
+
+## What is the value of using {{site.data.keyword.blockchainfull_notm}} Platform over native Hyperledger Fabric?
+{: #ibp-v2-faq-v2-IBP-Overview-1-7}
+{: faq}
+
+The {{site.data.keyword.blockchainfull_notm}} Platform enables clients to easily deploy a customized blockchain network. You can use an intuitive console UI to quickly deploy your network, easily install and instantiate smart contracts, and monitor your transactions.
+
+## What happens when I delete my {{site.data.keyword.blockchainfull_notm}}  Platform service?
+{: #ibp-v2-faq-v2-IBP-Overview-1-8}
+{: faq}
+
+When you delete an {{site.data.keyword.blockchainfull_notm}} Platform service instance, all of the blockchain CAs, peers and ordering nodes are deleted along with their associated storage.
+
+## What regions are available for the blockchain service running on the {{site.data.keyword.cloud_notm}}?
+{: #ibp-v2-faq-v2-IBP-Overview-1-9}
+{: faq}
+
+The available regions for {{site.data.keyword.blockchainfull_notm}} Platform are listed in [{{site.data.keyword.blockchainfull_notm}} Platform locations](/docs/services/blockchain?topic=blockchain-ibp-regions-locations). Note that you must create an {{site.data.keyword.cloud_notm}} Kubernetes Service cluster in the same region as the blockchain service to recognize the cluster. Additional regions will be available soon.
+
+## What version of Hyperledger Fabric is being used with {{site.data.keyword.blockchainfull_notm}} Platform?
+{: #ibp-v2-faq-v2-Hyperledger-Fabric-3-1}
+{: faq}
+
+As of Feb 2019, the beta was launched by using Hyperledger Fabric 1.4.0.
+As of May 29, 2019, the GA was launched by using Hyperledger Fabric 1.4.1. Hyperledger Fabric 1.4.0 is not supported in the GA product.
+
+## Can I use my existing {{site.data.keyword.cloud_notm}} Kubernetes Service cluster?
+{: #ibp-v2-faq-v2-Infrastructure-4-2}
+{: faq}
+
+Your existing Kubernetes cluster will work with the {{site.data.keyword.blockchainfull_notm}} Platform as long as it satisfies the following conditions:
+- It is running Kubernetes v1.11 or a higher stable version.
+- There are enough available resources in the cluster.
 
 ## Do we have access to logging services and what logs are available to me?
-{: #ibp-v2-faq-logs}
+{: #ibp-v2-faq-v2-Logging-and-Monitoring-11-6}
 {: faq}
 
-With {{site.data.keyword.blockchainfull_notm}} Platform 2.0, you can now directly access your peer, CA and orderer logs from your Kubernetes dashboard. We recommend you take advantage of the [{{site.data.keyword.cloud_notm}} LogDNA ![External link icon](../images/external_link.svg "External link icon")](https://cloud.ibm.com/docs/services/Log-Analysis-with-LogDNA?topic=LogDNA-kube#kube "Managing Kubernetes cluster logs with IBM Log Analysis with LogDNA") service which allows you to easily parse the logs in real-time.
-
-## What is the value of using {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta over native Hyperledger Fabric?
-{: #ibp-v2-faq-native-fabric}
-{: faq}
-
-{{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta enables clients to easily deploy a custom blockchain network. The platform includes an intuitive console for quick deployment of a network and the ability to easily install and instantiate smart contracts. With the platform you also receive support from experts at {{site.data.keyword.IBM_notm}} to help you with developing your smart contract and building your network.
-
-## How can I maximize performance and scale my {{site.data.keyword.blockchainfull_notm}} Platform solution?
-{: #ibp-v2-faq-perf-scale}
-{: faq}
-
-Check out this [blog series ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/blogs/blockchain/2019/01/answering-your-questions-on-hyperledger-fabric-performance-and-scale/ "Answering your questions on Hyperledger Fabric performance and scale") for factors that affect performance of your solution and information on how blockchain can scale.
+With {{site.data.keyword.blockchainfull_notm}} Platform, you can now directly access your peer, CA, and orderer logs from your Kubernetes dashboard. It is recommend that you take advantage of the {{site.data.keyword.cloud_notm}} LogDNA service that allows you to easily parse the logs in real time.
