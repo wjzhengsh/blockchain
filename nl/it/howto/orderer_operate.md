@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-04-23"
+lastupdated: "2019-05-16"
+
+keywords: command line, orderer system channel, IBM Blockchain Platform, orderer, IBM Cloud Private, operate an orderer
 
 subcollection: blockchain
 
@@ -146,7 +148,7 @@ Devi scaricare il tuo certificato TLS dell'ordinante e trasmetterlo ai tuoi coma
   {:codeblock}
 
 ### Gestione dei certificati sul tuo sistema locale
-{: #manage-certs}
+{: #orderer-operate-manage-certs}
 
 Passa alla directory in cui viene generata la cartella MSP di gestione dell'ordinante. A seconda di come hai seguito le istruzioni di esempio in questa documentazione o di quanti componenti stai distribuendo, puoi trovare la cartella MSP in `$HOME/fabric-ca-client/orderer-admin/msp` o `$HOME/fabric-ca-client/peer-admin/msp`
 
@@ -283,6 +285,19 @@ Richiama il flusso di livello superiore per formare un consorzio:
 
 1. Il canale del sistema ordinante è formato con solo l'organizzazione ordinante come membro del canale del sistema. Tale organizzazione può effettuare degli aggiornamenti senza richiedere ulteriori firme.
 2. L'amministratore dell'organizzazione ordinante riceve le definizioni dell'organizzazione dai membri che vogliono aderire al consorzio. Le organizzazioni ordinanti utilizzano le definizioni dell'organizzazione per aggiornare la configurazione del canale del sistema ordinante.
+
+**Nota:** se il tuo peer viene distribuito in un cluster {{site.data.keyword.cloud_notm}} Private diverso rispetto all'ordinante, devi [completare ulteriori passi](#icp-orderer-operate-consortium-multi-cluster) per assicurarti che l'indirizzo dell'ordinante nel canale di sistema sia aggiornato con i propri indirizzo IP proxy e porta del nodo. Ad esempio:
+  ```
+  "OrdererAddresses": {
+    "mod_policy": "/Channel/Orderer/Admins",
+    "value": {
+      "addresses": [
+        "9.12.19.49:30576"
+      ]
+    },
+    "version": "0"
+  }
+  ```
 
 ### Ottenimento delle definizioni dell'organizzazione
 
@@ -481,6 +496,50 @@ Questo comando firma simultaneamente la richiesta di aggiornamento e la invia al
 ```
 
 È possibile includere più definizioni dell'organizzazione in un solo aggiornamento di configurazione del canale del sistema ordinante, ma è una prassi consigliata aggiornare il canale con un'organizzazione alla volta e verificare che gli aggiornamenti abbiano avuto esito positivo.
+
+### Aggiornamento del canale di sistema per distribuzioni multicluster
+{: #icp-orderer-operate-consortium-multi-cluster}
+
+Se distribuisci il tuo peer in un altro cluster {{site.data.keyword.cloud_notm}} Private rispetto all'ordinante, il tuo peer non può comunicare con l'ordinante con le informazioni della release Helm dell'ordinante. Dopo aver aggiunto la tua organizzazione al canale di sistema, devi aggiornare il canale di sistema in modo che utilizzi le [informazioni endpoint dell'ordinante](#icp-orderer-operate-orderer-endpoint), ossia, i propri indirizzo IP proxy e numero di porta invece delle informazioni della release Helm. Immetti il seguente comando per aggiornare l'indirizzo dell'ordinante con `genesis-config.json`.
+
+1. Converti il blocco di genesi nel formato JSON.
+
+  ```
+  cd configupdate
+  configtxlator proto_decode --input genesis.pb --type common.Block --output ./config_block.json
+  jq .data.data[0].payload.data.config ./config_block.json  > config.json
+  ```
+  {:codeblock}
+
+2. Immetti i seguenti comandi per convertire il file `modified_config.json` con l'aggiornamento della configurazione nel formato JSON.
+
+  ```
+  configtxlator proto_encode --input config.json --type common.Config --output config.pb 
+  configtxlator proto_encode --input modified_config.json --type common.Config --output modified_config.pb 
+  configtxlator compute_update --channel_id $CHANNEL_NAME --original config.pb --updated modified_config.pb --output config_update.pb 
+  configtxlator proto_decode --input config_update.pb --type common.ConfigUpdate --output config_update.json
+  ```
+  {:codeblock}
+
+3. Inserisci un envelope in `config_update`.
+
+  ```
+  echo '{"payload":{"header":{"channel_header":{"channel_id":"'$CHANNEL_NAME'", "type":2}},"data":{"config_update":'$(cat config_update.json)'}}}' | jq . > config_update_in_envelope.json
+  ```
+  {:codeblock}
+
+4. Immetti il seguente comando per riportare l'aggiornamento della configurazione al formato protobuf.
+
+  ```
+  configtxlator proto_encode --input config_update_in_envelope.json --type common.Envelope --output ./config_update_in_envelope.pb
+  ```
+  {:codeblock}
+
+5. Invia l'aggiornamento al canale del sistema.
+  ```
+  peer channel update -f update_in_envelope.pb -c $CHANNEL_NAME -o $ORDERER_URL --tls --cafile $ORDERER_TLS_CERTIFICATE
+  ```
+  {:codeblock}
 
 ## Visualizzazione dei log dell'ordinante
 {: #icp-orderer-operate-orderer-view-logs}

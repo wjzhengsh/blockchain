@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-04-23"
+lastupdated: "2019-05-16"
+
+keywords: command line, orderer system channel, IBM Blockchain Platform, orderer, IBM Cloud Private, operate an orderer
 
 subcollection: blockchain
 
@@ -146,7 +148,7 @@ subcollection: blockchain
   {:codeblock}
 
 ### 証明書のローカル・システムでの管理
-{: #manage-certs}
+{: #orderer-operate-manage-certs}
 
 順序付けプログラム管理者の MSP フォルダーが生成されたディレクトリーに移動します。 この資料のサンプル・ステップにどのように従ったか、またはデプロイしているコンポーネントの数に応じて、MSP フォルダーは `$HOME/fabric-ca-client/orderer-admin/msp` または `$HOME/fabric-ca-client/peer-admin/msp` にあります。
 
@@ -283,6 +285,19 @@ tree
 
 1. 順序付けプログラムのシステム・チャネルは、システム・チャネルのメンバーとして順序付けプログラム組織のみを使用して形成されます。 その組織は、追加の署名を必要なしで更新を行うことができます。
 2. 順序付けプログラムの組織管理は、共同事業体に参加を希望するメンバーから組織定義を受け取ります。 順序付けプログラム組織はその組織定義を使用して、順序付けプログラムのシステム・チャネルの構成を更新します。
+
+**注:** 順序付けプログラムとは異なる {{site.data.keyword.cloud_notm}} Private クラスターにピアがデプロイされている場合は、システム・チャネルの順序付けプログラムのアドレスが、そのプロキシー IP アドレスとノード・ポートで更新されるように、[追加の手順を実行](#icp-orderer-operate-consortium-multi-cluster)する必要があります。例えば、次のようにします。
+  ```
+  "OrdererAddresses": {
+    "mod_policy": "/Channel/Orderer/Admins",
+    "value": {
+      "addresses": [
+        "9.12.19.49:30576"
+      ]
+    },
+    "version": "0"
+  }
+  ```
 
 ### 組織定義の取得
 
@@ -481,6 +496,50 @@ peer channel update -f config_update_in_envelope.pb -c $CHANNEL_NAME -o $PROXY:$
 ```
 
 順序付けプログラムのシステム・チャネルの単一の構成の更新に複数の組織定義を含めることは可能ですが、一度に 1 つの組織でチャネルを更新し、更新が正常に行われたことを確認するのがベスト・プラクティスです。
+
+### マルチクラスター・デプロイメントのシステム・チャネルの更新
+{: #icp-orderer-operate-consortium-multi-cluster}
+
+順序付けプログラムとは異なる {{site.data.keyword.cloud_notm}} Private クラスターにピアをデプロイした場合、ピアが、その順序付けプログラムの Helm リリース情報を使用して順序付けプログラムと通信することはできません。システム・チャネルに組織が追加されたら、[順序付けプログラムのエンドポイント情報](#icp-orderer-operate-orderer-endpoint)を使用するように (つまり、Helm リリース情報ではなく、そのプロキシー IP アドレスとポート番号を使用するように)、システム・チャネルを更新する必要があります。以下のコマンドを実行して、`genesis-config.json` の順序付けプログラムのアドレスを更新します。
+
+1. 起源ブロックを JSON フォーマットに変換します。
+
+  ```
+  cd configupdate
+  configtxlator proto_decode --input genesis.pb --type common.Block --output ./config_block.json
+  jq .data.data[0].payload.data.config ./config_block.json  > config.json
+  ```
+  {:codeblock}
+
+2. 以下のコマンドを実行して、`modified_config.json` ファイルを JSON フォーマットの構成の更新に変換します。
+
+  ```
+  configtxlator proto_encode --input config.json --type common.Config --output config.pb 
+  configtxlator proto_encode --input modified_config.json --type common.Config --output modified_config.pb 
+  configtxlator compute_update --channel_id $CHANNEL_NAME --original config.pb --updated modified_config.pb --output config_update.pb 
+  configtxlator proto_decode --input config_update.pb --type common.ConfigUpdate --output config_update.json
+  ```
+  {:codeblock}
+
+3. `config_update` にエンベロープを配置します。
+
+  ```
+  echo '{"payload":{"header":{"channel_header":{"channel_id":"'$CHANNEL_NAME'", "type":2}},"data":{"config_update":'$(cat config_update.json)'}}}' | jq . > config_update_in_envelope.json
+  ```
+  {:codeblock}
+
+4. 以下のコマンドを実行して、構成の更新を変換して protobuf フォーマットに戻します。
+
+  ```
+  configtxlator proto_encode --input config_update_in_envelope.json --type common.Envelope --output ./config_update_in_envelope.pb
+  ```
+  {:codeblock}
+
+5. システム・チャネルへ更新を送信します。
+  ```
+  peer channel update -f update_in_envelope.pb -c $CHANNEL_NAME -o $ORDERER_URL --tls --cafile $ORDERER_TLS_CERTIFICATE
+  ```
+  {:codeblock}
 
 ## 順序付けプログラムのログの表示
 {: #icp-orderer-operate-orderer-view-logs}

@@ -4,6 +4,8 @@ copyright:
   years: 2017, 2019
 lastupdated: "2019-03-20"
 
+keywords: Network Monitor, peer nodes, resources, channels, smart contract
+
 subcollection: blockchain
 
 ---
@@ -79,7 +81,7 @@ un qualsiasi peer da cui necessitano di una risposta.
 
 I membri della rete distribuiscono i [peer](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview-peer) per archiviare le loro copie del libro mastro di rete e per eseguire il chaincode per eseguire query del libro mastro o per aggiornarlo. Se la politica di approvazione definisce un peer come peer di approvazione, il peer restituisce anche i risultati dell'approvazione alle applicazioni.
 
-Fai clic sul pulsante **Aggiungi peer** nella parte superiore destra per aggiungere dei nodi peer alla tua rete. Nel pannello "Aggiungi peer" a comparsa, seleziona il numero e la dimensione dei nodi peer che vuoi aggiungere. Puoi aggiungere altri peer per le tue organizzazioni in base ai tuoi requisiti. Potresti trovarti in scenari differenti in cui hai bisogno di più peer. Ad esempio, potresti volere più peer che si uniscono allo stesso canale per la ridondanza. Ogni peer elabora le transazioni del canale e scrive nelle loro rispettive copie nel libro mastro. In caso di malfunzionamento di uno dei peer, l'altro peer (o molteplici altri peer) possono continuare ad elaborare transazioni e richieste dell'applicazione. Puoi anche bilanciare simmetricamente il carico di tutte le richieste di applicazione tra i peer o potresti indicare come obiettivo peer differenti per funzioni differenti. Puoi ad esempio usare un peer per eseguire query del libro mastro e utilizzare un altro peer per elaborare le approvazioni per gli aggiornamenti del libro mastro.
+Fai clic sul pulsante **Aggiungi peer** nella parte superiore destra per aggiungere dei nodi peer alla tua rete. Nel pannello "Aggiungi peer" a comparsa, seleziona il numero e la dimensione dei nodi peer che vuoi aggiungere. Puoi aggiungere altri peer per le tue organizzazioni in base ai tuoi requisiti. Potresti trovarti in scenari differenti in cui hai bisogno di più peer. Ad esempio, potresti volere più peer che si uniscono allo stesso canale per la ridondanza. Ogni peer elabora le transazioni del canale e scrive nelle loro rispettive copie nel libro mastro. In caso di malfunzionamento di uno dei peer, l'altro peer (o molteplici altri peer) può continuare ad elaborare transazioni e richieste dell'applicazione. Puoi anche bilanciare simmetricamente il carico di tutte le richieste di applicazione tra i peer o potresti indicare come obiettivo peer differenti per funzioni differenti. Puoi ad esempio usare un peer per eseguire query del libro mastro e utilizzare un altro peer per elaborare le approvazioni per gli aggiornamenti del libro mastro.
 
 Il **piano Starter** crea un peer per ciascuna delle due organizzazioni formate quando la rete viene avviata per impostazione predefinita.
 
@@ -186,7 +188,7 @@ Fai clic sul pulsante **Aggiungi utente** per registrare una nuova identità nel
   - **Segreto di iscrizione:** questa sarà la password della tua identità, a volte indicato come `enroll Secret`. **Salva questo valore**; devi utilizzarlo quando configuri un peer remoto o iscrivi una nuova applicazione.
   - **Tipo:** seleziona il tipo di identità che vuoi registrare, peer o applicazione client.
   - **Affiliazione:** questa sarà l'affiliazione all'interno della tua organizzazione, ad esempio `org1`, a cui appartiene l'identità.
-  - **Registrazioni massime:** utilizza questo campo per limitare il numero di volte in cui puoi iscrivere o generare certificati con questa identità. Se lasci il campo vuoto, il valore predefinito è un numero illimitato di registrazioni.
+  - **Numero massimo di iscrizioni:** utilizza questo campo per limitare il numero di volte in cui puoi iscrivere o generare certificati con questa identità. Se lasci il campo vuoto, il valore predefinito è un numero illimitato di registrazioni.
 
 Per ulteriori informazioni sulla tua CA, consulta l'esercitazione [Gestione dei certificati su {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/certificates.html#managing-certificates).
 
@@ -253,7 +255,7 @@ La **Figura 13** visualizza le informazioni nella scheda "Supporto" iniziale:
 
 Utilizza le risorse nella scheda "Supporto" per risolvere i problemi e richiedere assistenza da {{site.data.keyword.IBM_notm}} e dalla community di Fabric. Per ulteriori informazioni sui link nella scheda "Supporto", vedi [Risorse e forum di supporto](/docs/services/blockchain/ibmblockchain_support.html#blockchain-support-resources) in [Richiedi assistenza](/docs/services/blockchain/ibmblockchain_support.html#blockchain-support).
 
-[IBM dWAnswers ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://developer.ibm.com/answers/smartspace/blockchain/index.html) è un forum della community per gli utenti di {{site.data.keyword.blockchainfull_notm}} Platform e Hyperledger Fabric ed è monitorato dagli esperti IBM. Puoi cercare risposte a domande fatte in precedenza o inoltrare una nuova domanda. Se non riesci a eseguire il debug del tuo problema o a trovare una risposta alla tua domanda, inoltra un caso di supporto nel portale del servizio {{site.data.keyword.cloud_notm}}. Per ulteriori informazioni, vedi [Inoltro di casi di supporto](/docs/services/blockchain/ibmblockchain_support.html#blockchain-support-cases).
+[{{site.data.keyword.IBM_notm}} dWAnswers ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://developer.ibm.com/answers/smartspace/blockchain/index.html){:new_window} è un forum della community per gli utenti di {{site.data.keyword.blockchainfull_notm}} Platform e Hyperledger Fabric ed è monitorato dagli esperti IBM. Puoi cercare risposte a domande fatte in precedenza o inoltrare una nuova domanda. Se non riesci a eseguire il debug del tuo problema o a trovare una risposta alla tua domanda, inoltra un caso di supporto nel portale del servizio {{site.data.keyword.cloud_notm}}. Per ulteriori informazioni, vedi [Inoltro di casi di supporto](/docs/services/blockchain/ibmblockchain_support.html#blockchain-support-cases).
 
 
 ### Note sulla release di Fabric
@@ -299,7 +301,7 @@ Le **reti piano Enterprise** ti consentono di abilitare il TLS reciproco per pro
 
 Il pulsante TLS reciproco è impostato su **Off** per impostazione predefinita. Se abiliti il TLS reciproco, devi aggiornare le tue applicazioni per supportare questa funzione. Altrimenti, le tue applicazioni non saranno in grado di comunicare con la tua rete.
 
-Per una rete piano Fabric 1.1 Enterprise, ogni organizzazione ha la propria autorità di certificazione (CA) del TLS reciproco. Le informazioni necessarie per il collegamento alla CA del TLS reciproco sono disponibili nel [profilo di connessione ](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-connection-profile) accessibile dalla tua schermata **Panoramica** nel Monitoraggio della rete facendo clic sul pulsante **Profilo connessione**. Il profilo di connessione contiene le informazioni necessarie per il collegamento al CA e sull'ottenimento dei certificati di cui hai bisogno per collegarti alla tua rete.
+Per una rete piano Fabric 1.1 Enterprise, ogni organizzazione ha la propria autorità di certificazione (CA) del TLS reciproco. Le informazioni necessarie per il collegamento alla CA TLS reciproco sono disponibili nel [profilo di connessione ](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-connection-profile) accessibile dalla tua schermata **Panoramica** nel Monitoraggio della rete facendo clic sul pulsante **Profilo connessione**. Il profilo di connessione contiene le informazioni necessarie per il collegamento al CA e sull'ottenimento dei certificati di cui hai bisogno per collegarti alla tua rete.
 
 Nel profilo di connessione, individua la sezione `certificateAuthorities` dove troverai i seguenti attributi necessari per registrare ed ottenere i certificati per comunicare con la tua rete utilizzando il TLS reciproco.
 

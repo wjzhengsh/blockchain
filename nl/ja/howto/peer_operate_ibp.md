@@ -4,6 +4,8 @@ copyright:
   years: 2017, 2019
 lastupdated: "2019-04-23"
 
+keywords: command line, peer, operate peers, peer TLS certificate, IBM Cloud
+
 subcollection: blockchain
 
 ---
@@ -177,10 +179,10 @@ npm install fabric-client@1.4.0
 ピアは、ピア管理者の署名付き証明書を組み込むようにデプロイされます。 これにより、ピア管理者の証明書および MSP フォルダーを使用してピアを操作できるようになります。
 
 [ピア管理者の登録](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-enroll-admin)時に作成した証明書を見つけます。 コマンド例を使用した場合、ピア管理者の MSP フォルダーは `$HOME/fabric-ca-client/peer-admin` にあります。
-  - MSP フォルダー内の署名付き証明書 (公開鍵) および秘密鍵を使用して、SDK でピア管理者のユーザー・コンテキストを作成できます。 これらのキーは、以下の場所にあります。
+  - MSP フォルダー内の署名付き証明書および秘密鍵を使用して、SDK でピア管理者のユーザー・コンテキストを作成できます。 これらのキーは、以下の場所にあります。
     - 署名付き証明書は、**signcerts** フォルダー (`$HOME/fabric-ca-client/peer-admin/msp/signcerts`) 内にあります。
     - 秘密鍵は、**keystore:** フォルダー (`$HOME/fabric-ca-client/peer-admin/msp/keystore`) 内にあります。
-    公開鍵と秘密鍵のみを使用し、ユーザー・コンテキストを作成して SDK を操作する方法の例については、[アプリケーションの開発チュートリアルのこのセクション](/docs/services/blockchain/v10_application.html#dev-app-enroll-panel)を参照してください。
+    署名証明書と秘密鍵のみを使用し、ユーザー・コンテキストを作成して SDK を操作する方法の例については、[アプリケーションの開発チュートリアルのこのセクション](/docs/services/blockchain/v10_application.html#dev-app-enroll-panel)を参照してください。
 
 また、SDK で、スターター・プランまたはエンタープライズ・プランでの CA のエンドポイント情報および [ピア管理者のユーザー名とパスワード](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-register-admin)を使用して、ピア管理者の署名付き証明書および秘密鍵を生成することもできます。
 
@@ -252,7 +254,7 @@ You need to specify a `ssl-target-name-override` of `<something>.blockchain.com`
 ### Fabric ピア・クライアントのダウンロード
 {: #ibp-peer-operate-download-fabric-client}
 
-ピア・クライアントを入手するには、Hyperledger からすべての Fabric ツール・バイナリーをダウンロードする方法が最も簡単です。 コマンド・ラインでバイナリーをダウンロードするディレクトリーにナビゲートし、次のコマンドを発行して、これらのバイナリーをフェッチします。 [Curl ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/prereqs.html#install-curl "Curl") をインストールしていない場合は、最初にインストールする必要があります。
+ピア・クライアントを入手するには、Hyperledger からすべての Fabric ツール・バイナリーをダウンロードする方法が最も簡単です。コマンド・ラインでバイナリーをダウンロードするディレクトリーにナビゲートし、次のコマンドを発行して、これらのバイナリーをフェッチします。 [Curl ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/prereqs.html#install-curl "Curl") をインストールしていない場合は、最初にインストールする必要があります。
 
 ```
 curl -sSL http://bit.ly/2ysbOFE | bash -s 1.4.0 1.4.0 -d -s
@@ -287,7 +289,7 @@ export FABRIC_CFG_PATH=$HOME/config
 
 
 ### 証明書のローカル・システムでの管理
-{: #manage-certs}
+{: #peer-operate-manage-certs}
 
 ピア管理者の MSP フォルダーが生成されるディレクトリーに切り替えます。 この資料のステップ例に従う場合、MSP フォルダーは次のようなディレクトリーにあります。
 

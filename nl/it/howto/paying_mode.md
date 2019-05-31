@@ -1,8 +1,10 @@
 ---
 
 copyright:
-  years: 2018,2019
-lastupdated: "2019-03-05"
+  years: 2018, 2019
+lastupdated: "2019-05-16"
+
+keywords: IBM Cloud accounts, IBM Blockchain Platform, pay your own fees, pay for others
 
 subcollection: blockchain
 
@@ -28,7 +30,7 @@ Nota che, quando diverse organizzazioni creano un consorzio, si consiglia che le
 ## Prerequisiti
 {: #paying-mode-prereq}
 
-Ogni membro della rete deve avere un account {{site.data.keyword.cloud_notm}} a pagamento, ad esempio un account con **Pagamento a consumo**, in modo che possano creare istanze del servizio {{site.data.keyword.blockchainfull_notm}} Platform su {{site.data.keyword.cloud_notm}}. Se non hai un account, [registrane](https://cloud.ibm.com/registration/) uno ed eseguine l'upgrade a un account a pagamento. Per eseguire l'upgrade del tuo account a un tipo Pagamento a consumo, vai a **Gestisci** > **Fatturazione e utilizzo** > **Fatturazione** nella console {{site.data.keyword.cloud_notm}} e fai clic su **Aggiungi carta di credito**.
+Ogni membro della rete deve avere un account {{site.data.keyword.cloud_notm}} a pagamento, ad esempio un account con **Pagamento a consumo**, in modo che possano creare istanze del servizio {{site.data.keyword.blockchainfull_notm}} Platform su {{site.data.keyword.cloud_notm}}. Se non hai un account, [registrane](https://cloud.ibm.com/registration) uno ed eseguine l'upgrade a un account a pagamento. Per eseguire l'upgrade del tuo account a un tipo Pagamento a consumo, vai a **Gestisci** > **Fatturazione e utilizzo** > **Fatturazione** nella console {{site.data.keyword.cloud_notm}} e fai clic su **Aggiungi carta di credito**.
 
 
 ## Pagamento solo dei tuoi costi
@@ -61,7 +63,7 @@ Un membro della rete può coprire le spese per uno o più altri membri della ret
       3. Fai clic su **Invita utenti**.  
    **Nota**: se il pagatore paga per più di un membro, dovrà ripetere questo passo per invitare altri membri e assegnare l'accesso per ciascuno di essi.
 3. Il pagatore crea una rete blockchain {{site.data.keyword.blockchainfull_notm}} Platform e invita altri membri alla rete blockchain nel Monitoraggio della rete della rete. Per ulteriori informazioni sull'invito di membri della rete, vedi [Membri](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-members).
-4. Ogni membro riceve quindi una email di notifica che contiene un invito ad aderire alla rete. Il membro può completare la seguente procedura per aderire alla rete.
+4. Ogni membro riceve quindi un'email di notifica che contiene un invito ad aderire alla rete. Il membro può completare la seguente procedura per aderire alla rete.
    1. Fai clic sul pulsante "Procedi" nella email di notifica; verrai così reindirizzato alla pagina del servizio blockchain in {{site.data.keyword.cloud_notm}}.
    2. Accedi a {{site.data.keyword.cloud_notm}} e assicurati di utilizzare l'organizzazione e lo spazio {{site.data.keyword.cloud_notm}} corretti, a cui ti aggiunge il pagatore.
       1. Nella console {{site.data.keyword.cloud_notm}}, fai clic sull'avatar del profilo nell'angolo superiore destro.
@@ -94,7 +96,7 @@ In alternativa all'aggiunta di account di altri membri all'account del pagatore,
   5. Scegli **Gestore di fatturazione** come **Ruoli organizzazione**.
   6. Configura di conseguenza gli altri campi, quindi fai clic su **Invita utenti**.  
 3. Il pagatore invita gli altri membri alla rete blockchain nel Monitoraggio della rete della rete. Per ulteriori informazioni sull'invito di membri della rete, vedi [Membri](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-members).
-4. Ogni membro riceve quindi una email di notifica che contiene un invito ad aderire alla rete. Il membro può quindi aderire alla rete. Per ulteriori informazioni, vedi il **passo 4** in [Pagamento per altri membri della rete](/docs/services/blockchain/howto/paying_mode.html#paying-mode-pay-for-others).
+4. Ogni membro riceve quindi un'email di notifica che contiene un invito ad aderire alla rete. Il membro può quindi aderire alla rete. Per ulteriori informazioni, vedi il **passo 4** in [Pagamento per altri membri della rete](/docs/services/blockchain/howto/paying_mode.html#paying-mode-pay-for-others).
 
 ### Limitazione nota
 {: #paying-mode-let-other-pay-limitation}

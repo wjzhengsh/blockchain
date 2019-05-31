@@ -4,6 +4,8 @@ copyright:
   years: 2017, 2019
 lastupdated: "2019-03-05"
 
+keywords: IBM Blockchain offerings, Linux Foundation, Hyperledger Fabric, open source, community contribution
+
 subcollection: blockchain
 
 ---
@@ -28,12 +30,12 @@ subcollection: blockchain
 {{site.data.keyword.IBM}}은 오랜 시간 혁신의 선두 자리를 지켜왔으며 {{site.data.keyword.cloud_notm}}의 {{site.data.keyword.blockchainfull_notm}} Platform 오퍼링을 통해 여전히 그 역할을 계속하고 있습니다. 블록체인은 금융 산업, 로컬 및 글로벌 공급 체인과 많은 비즈니스 영역에서 업무 조직에 관한 지원을 중단하도록 보호되는 기술입니다. 다양한 조기 도입 프로그램을 통해 {{site.data.keyword.IBM_notm}} 고객 및 비즈니스 파트너는 산업용 솔루션으로서 블록체인을 활발하게 이용해 오고 있습니다. {{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}}가 그러한 프로그램 중 하나입니다. **다른 새 기술의 경우와 같이 {{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}} 사용자는 신속하고 근본적인 변화의 가능성에 대해 인지하고 있어야 합니다.**
 {:shortdesc}
 
-{{site.data.keyword.blockchainfull_notm}}을 뒷받침하는 아키텍처는 Linux Foundation의 Hyperledger Fabric 프로젝트입니다. 각 오픈 소스 커뮤니티의 기여를 통해 Hyperledger Fabric이 개선되지만 적용에 어려움이 있을 수 있습니다. **{{site.data.keyword.IBM_notm}}은 Hyperledger Fabric 블록체인 네트워크에서 금융 자산을 직접 정의하거나 교환하는 것에 대해 경고하고 있습니다**.
+{{site.data.keyword.blockchainfull_notm}}을 뒷받침하는 아키텍처는 Linux Foundation의 Hyperledger Fabric 프로젝트입니다. 각 오픈 소스 커뮤니티 컨트리뷰션은 Hyperledger Fabric을 개선하지만 적용에 어려움이 있을 수 있습니다. **{{site.data.keyword.IBM_notm}}은 Hyperledger Fabric 블록체인 네트워크에서 금융 자산을 직접 정의하거나 교환하는 것에 대해 경고하고 있습니다**.
 
 {{site.data.keyword.IBM_notm}}은 Composer CLI, JavaScript API, REST 서버 및 웹 플레이그라운드를 포함하여 프로덕션에서 Hyperledger Composer를 사용하는 네트워크를 지원하지 않습니다.
 {:note}
 
-## 오픈 소스 설명
+## 오픈 소스 명령문
 {: #disclaimer-open-source-statement}
 
 {{site.data.keyword.cloud_notm}}의 {{site.data.keyword.blockchainfull_notm}} 오퍼링 플랜은 Linux Foundation의 Hyperledger Fabric 스택을 기반으로 빌드되었습니다. {{site.data.keyword.IBM_notm}}을 포함한 Hyperledger 프로젝트 멤버는 Hyperledger 보호 아래 다양한 하위 프로젝트에 계속 기여합니다.  모든 컨트리뷰션은 커뮤니티에서 검토, 조사하고 테스트합니다.

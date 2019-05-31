@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-04-03"
+lastupdated: "2019-05-16"
+
+keywords: Fabric SDKs, client application, enroll, register, chaincode
 
 subcollection: blockchain
 
@@ -42,7 +44,7 @@ de una red del Plan inicial](/docs/services/blockchain/get_start_starter_plan.ht
 
 - Instale las herramientas necesarias para descargar los ejemplos de Hyperledger Fabric y para utilizar el SDK de nodo.
   * [Curl ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/prereqs.html#install-curl "Curl") o [Git ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git "Git"){:new_window}
-  * [Node.js ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/latest/prereqs.html#node-js-runtime-and-npm "Node.js"){:new_window}
+  * [Node.js ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/prereqs.html#node-js-runtime-and-npm "Node.js"){:new_window}
 
 - Instale los ejemplos de Hyperledger Fabric descargando el directorio `fabric-samples`. Puede seguir la
 [guía de iniciación
@@ -124,7 +126,7 @@ Desde el directorio `fabcar` de la carpeta `fabric-samples`, abra el archivo `en
   ```
   {:codeblock}
 
-2. Luego el archivo crea un almacén de claves y valores (KVS) para gestionar los certificados. El SDK utiliza la clase [KeyValueStore ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://fabric-sdk-node.github.io/module-api.KeyValueStore.html "KeyValueStore"){:new_window} para crear el  almacén de claves y valores y la clase [CryptoSuite ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://fabric-sdk-node.github.io/module-api.CryptoSuite.html "CryptoSuite"){:new_window} para realizar los cálculos criptográficos. A continuación encontrará el bloque de código correspondiente.
+2. Luego el archivo crea un almacén de claves y valores (KVS) para gestionar los certificados. El SDK utiliza la clase [KeyValueStore ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://fabric-sdk-node.github.io/module-api.KeyValueStore.html "KeyValueStore"){:new_window} para crear el almacén de claves y valores y la clase [CryptoSuite ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://fabric-sdk-node.github.io/module-api.CryptoSuite.html "CryptoSuite"){:new_window} para realizar los cálculos criptográficos. A continuación encontrará el bloque de código correspondiente.
   ```
   # create the key value store as defined in the fabric-client/config/default.json 'key-value-store' setting
   Fabric_Client.newDefaultKeyValueStore({ path: store_path
@@ -356,7 +358,7 @@ Para obtener más información sobre la aplicación fabcar y las funciones que u
 
 En lugar de importar la información de punto final a la red manualmente, puede hacer que el SDK se conecte a la red utilizando el **Perfil de conexión** desde la pantalla **Visión general** del supervisor de red. Esto agiliza el proceso de conectar con la entidad emisora de certificados para el proceso de inscripción y registro. También elimina la necesidad de definir la red fabric antes de enviar una transacción. El SDK encontrará los iguales y clasificadores en el canal relevante directamente desde el perfil de conexión. Encontrará información sobre cómo utilizar un perfil de conexión en la [documentación del SDK de nodo ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://fabric-sdk-node.github.io/tutorial-network-config.html "guía de aprendizaje del perfil de conexión"){:new_window}.
 
-Podemos utilizar el archivo `invoke.js` como ejemplo para ver la eficacia de utilizar un perfil de conexión en lugar de puntos finales manuales. Puede establecer una nueva instancia del cliente de fabric utilizando la clase `loadFromConfig`. Sustituya `var fabric_client = new Fabric_Client();` por el código siguiente.
+Podemos utilizar el archivo `invoke.js` como ejemplo para ver la eficacia de utilizar un perfil de conexión en lugar de puntos finales manuales. Puede establecer una nueva instancia del cliente de Fabric utilizando la clase `loadFromConfig`. Sustituya `var fabric_client = new Fabric_Client();` por el código siguiente.
 ```
 var fabric_client = Fabric_Client.loadFromConfig(path.join(__dirname, './connection-profile.json'));
 ```
@@ -369,7 +371,7 @@ var channel = fabric_client.newChannel('defaultchannel');
 ```
 {:codeblock}
 
-A continuación, el SDK añade los iguales y el servicio de ordenación que definidos en el canal utilizando el perfil de conexión. Esto hace que la escritura de aplicaciones sea más eficientes y facilita la actualización de las aplicaciones a medida que los miembros de la red se unen, se marchan e inician nuevos canales. Consulte la [guía de aprendizaje del perfil de conexión ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://fabric-sdk-node.github.io/tutorial-network-config.html "guía de aprendizaje del perfil de conexión"){:new_window} de la documentación del SDK de nodo para obtener más información sobre los pasos adicionales a seguir. Puede utilizar esta [versión de la guía de aprendizaje de fabcar ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/developerworks/cloud/library/cl-deploy-fabcar-sample-application-ibm-blockchain-starter-plan/index.html){:new_window} que utiliza un perfil de conexión en lugar de conexiones de punto final manuales.
+A continuación, el SDK añade los iguales y el servicio de ordenación que definidos en el canal utilizando el perfil de conexión. Esto hace que la escritura de aplicaciones sea más eficientes y facilita la actualización de las aplicaciones a medida que los miembros de la red se unen, se marchan e inician nuevos canales. Consulte la [guía de aprendizaje del perfil de conexión ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://fabric-sdk-node.github.io/tutorial-network-config.html "guía de aprendizaje del perfil de conexión"){:new_window} de la documentación del SDK de nodo para obtener más información sobre los pasos adicionales a seguir. Puede utilizar esta [versión de la guía de aprendizaje de fabcar ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://developer.ibm.com/tutorials/cl-deploy-fabcar-sample-application-ibm-blockchain-starter-plan/){:new_window} que utiliza un perfil de conexión en lugar de conexiones de punto final manuales.
 
 [Service Discovery ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/discovery-overview.html "Service Discovery") para una política de aprobación en Hyperledger Fabric no recibe soporte para el Plan inicial ni para el Plan empresarial. Sin embargo, puede enviar transacciones a iguales que están fuera de su organización para su aprobación editando el perfil de conexión. El perfil de conexión ya contiene la información de punto final y los certificados TLS de los iguales de otras organizaciones de la red de la plataforma {{site.data.keyword.blockchainfull_notm}}. Añada el nombre del igual al canal relevante en la sección "channels" del perfil para añadir el igual al canal. Se tendrá que poner en contacto con los administradores de las otras organizaciones para saber qué iguales se han unido a canales particulares.
 

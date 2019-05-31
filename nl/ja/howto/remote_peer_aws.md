@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-20"
+lastupdated: "2019-05-16"
+
+keywords: IBM Blockchain Platform, remote peer, AWS peer, AWS peers, multi-cloud
 
 subcollection: blockchain
 
@@ -39,7 +41,7 @@ AWS について詳しくは、[AWS の概要ドキュメント ![外部リン�
 ## 前提条件
 {: #remote-peer-aws-prerequisites}
 
-{{site.data.keyword.blockchainfull_notm}} Platform for AWS ピア (リモート・ピア) を使用するには、IBM Blockchain Platform 上でホストされているブロックチェーン・ネットワークのメンバーである組織が必要です。 IBM Cloud 上のネットワーク・モニターを使用して、ネットワーク資格情報およびネットワークの API エンドポイントにアクセスする必要があります。 ブロックチェーン・ネットワークのメンバーではない場合は、ネットワークを作成するか、ネットワークに参加する必要があります。 詳しくは、[ネットワークの作成](/docs/services/blockchain/get_start.html#getting-started-with-enterprise-plan-create-network)または[ネットワークへの参加](/docs/services/blockchain/get_start.html#getting-started-with-enterprise-plan-join-nw)を参照してください。
+{{site.data.keyword.blockchainfull_notm}} Platform for AWS ピア (リモート・ピア) を使用するには、{{site.data.keyword.blockchainfull_notm}} Platform 上でホストされているブロックチェーン・ネットワークのメンバーである組織が必要です。 IBM Cloud 上のネットワーク・モニターを使用して、ネットワーク資格情報およびネットワークの API エンドポイントにアクセスする必要があります。 ブロックチェーン・ネットワークのメンバーではない場合は、ネットワークを作成するか、ネットワークに参加する必要があります。 詳しくは、[ネットワークの作成](/docs/services/blockchain/get_start.html#getting-started-with-enterprise-plan-create-network)または[ネットワークへの参加](/docs/services/blockchain/get_start.html#getting-started-with-enterprise-plan-join-nw)を参照してください。
 
 ピアのデフォルト VPC インスタンス・タイプは `m4.xlarge` です。  CPU、メモリー、およびストレージの要件に基づいて、選択するインスタンス・タイプを最適化する必要があります。 ピアには、少なくとも以下が必要です。  
 -	2 基の CPU
@@ -114,7 +116,7 @@ echo -e "<CERT>" > admin.pem
   - **機密事項の登録:** ピア用に使用することを希望するパスワードであり、ピアの構成時には`登録機密事項`と呼ばれます。 今後使用するため、**この値を保存します**。
   - **タイプ:** このフィールドには `peer` を選択します。
   - **所属 (Affiliation):** これは `org1` など、ピアが属する組織での所属です。 新しい所属を指定することも、既存の所属を使用することもできます。
-  - **最大エンロール回数 (Maximum Enrollments):** このフィールドを使用すると、この ID を使用してエンロールする回数、つまり、証明書を生成する回数を制限できます。 指定しない場合、値はデフォルトで無制限の登録に設定されます。
+  - **最大登録数:** このフィールドを使用して、この ID を使用した証明書のエンロールまたは生成の回数を制限できます。指定しない場合、値はデフォルトで無制限の登録に設定されます。
 
   フィールドに入力した後に、**「送信」**をクリックしてピアを登録します。 登録されたピアは、ネットワーク上の ID としてテーブルに表示されます。 セキュリティー対策として、各 ID および付随する登録 ID と機密事項を使用してデプロイするピアは 1 つのみにします。 ピア ID とパスワードは再使用しないでください。
 
@@ -123,7 +125,7 @@ echo -e "<CERT>" > admin.pem
 
 このクイック・スタート・リファレンス・デプロイメントを実行する際に使用する AWS サービスのコストはユーザー側で負担します。 このクイック・スタートを使用するための追加コストは発生しません。 詳細については、このクイック・スタートで使用する必要がある各 AWS サービスの価格設定ページを参照してください。 価格は変更される場合があります。
 
-1. 次のいずれかのオプションを選択して、AWS CloudFormation テンプレートを自身の AWS アカウント内に起動します。 オプションを選択するための参考情報については、このガイドで既出のデプロイメント・オプションを参照してください。 各デプロイメントの完了には約 10 分かかります。  
+1. 次のいずれかのオプションを選択して、AWS CloudFormation テンプレートを自身の AWS アカウント内に起動します。 オプションを選択するための参考情報については、このガイドで既出のデプロイメント・オプションを参照してください。各デプロイメントの完了には約 10 分かかります。  
 
   * [{{site.data.keyword.blockchainfull_notm}} Platform for AWS を AWS 上の新規 VPC にデプロイします ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://fwd.aws/v43nk "{{site.data.keyword.blockchainfull_notm}} Platform for AWS を AWS 上の新規 VPC にデプロイします")。  
 
@@ -164,20 +166,20 @@ echo -e "<CERT>" > admin.pem
 | `InstanceType` | ピア・インスタンス用の EC2 インスタンスのタイプ。 | m4.xlarge |
 | `KeyPairName` | AWS 地域内の既存の EC2 鍵ペアの名前。 ユーザー側でこれを生成する必要があります。 | |
 | | | |
-|** IBM Blockchian の構成** | |
-| `IBMBlockchainVersion` | デプロイする IBM Blockchain のバージョン。 | 1.2.1 |
+|** {{site.data.keyword.blockchainfull_notm}}構成** | |
+| `IBMBlockchainVersion` | デプロイする {{site.data.keyword.blockchainfull_notm}} のバージョン。 | 1.2.1 |
 | `StateDatabase` | ブロックチェーン状態の保管に使用するデータベースのタイプ。 ここで選択する値は、ネットワークの残り部分で使用される状態データベース・タイプと一致する必要があります。 | CouchDB|
 | `PeerVolumeSize` | ピアの永続データ (台帳、状態データベース、MSP) を保管するために使用される EBS ボリューム (GB 単位)。 | 100 |
-| `ピア 1 登録 ID (Peer 1 enroll ID)`| 1 つ目のピアの IBM Blockchain Platform UI の「認証局」パネルに入力した登録 ID。 |  |
-| `ピア 1 登録機密事項 (Peer 1 enroll secret)` | 1 つ目のピアの IBM Blockchain Platform UI の「認証局」パネルに入力した登録機密事項。 | |
-| `ピア 2 登録 ID (Peer 2 enroll ID)` | 2 つ目のピアの IBM Blockchain Platform UI の「認証局」パネルに入力した登録 ID。 | |
-| `ピア 2 登録機密事項 (Peer 2 enroll secret)` | 2 つ目のピアの IBM Blockchain Platform UI の「認証局」パネルに入力した登録機密事項。 | |
+| `ピア 1 登録 ID (Peer 1 enroll ID)`| 1 つ目のピアの {{site.data.keyword.blockchainfull_notm}} Platform UI の「認証局」パネルに入力した登録 ID。 |  |
+| `ピア 1 登録機密事項 (Peer 1 enroll secret)` | 1 つ目のピアの {{site.data.keyword.blockchainfull_notm}} Platform UI の「認証局」パネルに入力した登録機密事項。 | |
+| `ピア 2 登録 ID (Peer 2 enroll ID)` | 2 つ目のピアの {{site.data.keyword.blockchainfull_notm}} Platform UI の「認証局」パネルに入力した登録 ID。 | |
+| `ピア 2 登録機密事項 (Peer 2 enroll secret)` | 2 つ目のピアの {{site.data.keyword.blockchainfull_notm}} Platform UI の「認証局」パネルに入力した登録機密事項。 | |
 | | | |
 |**IBM Blockchain サービス資格情報 (IBM Blockchain Service Credentials)**| | |
-| `組織 MSP (Organization MSP)` | この値は、IBM Blockchain Platform UI で確認できます。 「概要」パネルの「リモート・ピアの構成」ボタンをクリックして、この情報をコピーしてここに貼り付けます。 | |
-| `認証局 (CA) 名 (Certificate Authority (CA) Name)` | この値は、IBM Blockchain Platform UI で確認できます。 「概要」パネルの「リモート・ピアの構成」ボタンをクリックして、この情報をコピーしてここに貼り付けます。| |
-| `認証局 (CA) URL (Certificate Authority (CA) URL)` | この値は、IBM Blockchain Platform UI で確認できます。 「概要」パネルの「リモート・ピアの構成」ボタンをクリックして、この情報 (ポートを含む) をコピーしてここに貼り付けます。 指定していない場合、デフォルトのポートは 443 です。 | |
-| `認証局 (CA) TLS 証明書 (Certificate Authority (CA) TLS Certificate)`| この値は、IBM Blockchain Platform UI で確認できます。 「概要」パネルの「リモート・ピアの構成」ボタンをクリックして、この情報をコピーしてここに貼り付けます。| |
+| `組織 MSP (Organization MSP)` | この値は、{{site.data.keyword.blockchainfull_notm}} Platform UI で確認できます。 「概要」パネルの「リモート・ピアの構成」ボタンをクリックして、この情報をコピーしてここに貼り付けます。 | |
+| `認証局 (CA) 名 (Certificate Authority (CA) Name)` | この値は、{{site.data.keyword.blockchainfull_notm}} Platform UI で確認できます。 「概要」パネルの「リモート・ピアの構成」ボタンをクリックして、この情報をコピーしてここに貼り付けます。| |
+| `認証局 (CA) URL (Certificate Authority (CA) URL)` | この値は、{{site.data.keyword.blockchainfull_notm}} Platform UI で確認できます。 「概要」パネルの「リモート・ピアの構成」ボタンをクリックして、この情報 (ポートを含む) をコピーしてここに貼り付けます。 指定していない場合、デフォルトのポートは 443 です。 | |
+| `認証局 (CA) TLS 証明書 (Certificate Authority (CA) TLS Certificate)`| この値は、{{site.data.keyword.blockchainfull_notm}} Platform UI で確認できます。 「概要」パネルの「リモート・ピアの構成」ボタンをクリックして、この情報をコピーしてここに貼り付けます。| |
 | | | |
 |**他のパラメーター**| | |
 | `QSS3BucketName` | クイック・スタート・アセット用の S3 バケット名。 クイック・スタート・バケット名には、数字、小文字、大文字、およびハイフン (-) を使用できます。 先頭や末尾にハイフン (-) を使用することはできません。 | `aws-quickstart` |
@@ -201,7 +203,7 @@ echo -e "<CERT>" > admin.pem
 
  - ご使用の VPC が、データベース・インスタンス用の異なるアベイラビリティー・ゾーン内の 2 つのプライベート・サブネットを有していることを確認します。 これらのサブネットの経路テーブル内には、NAT ゲートウェイまたは NAT インスタンスが含まれている必要があります。その結果として、インスタンスをインターネットに公開することなく、インスタンスがパッケージとソフトウェアをダウンロードすることが可能になります。
 
- - [Amazon VPC の資料 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_DHCP_Options.html "DHCP オプション・セット") の説明に従って、DHCP オプションでドメイン名オプションを構成してください。  
+ - [Amazon VPC の資料 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_DHCP_Options.html "DHCP オプション・セット") の説明に従って、DHCP オプションでドメイン名オプションを構成してください。  
 
 - 既存の VPC に関連付けられたセキュリティー・グループを作成し、ポート 22 および 7051 のインバウンド・ルールをこのセキュリティー・グループに追加してください。 ポート 22 上の TCP 接続は、生成されたインスタンスへの SSH アクセスを可能にする一方で、ポート 7051 上の TCP 接続は、ピア・インスタンスへの外部 gRPC アクセスを可能にします (Fabric ツール CLI および Fabric SDK を使用してピアを操作するために必要)。 クイック・スタートを起動するときに、これらの VPC 設定の入力を求めるプロンプトが出されます。
 
@@ -255,7 +257,7 @@ AWS CloudFormation テンプレートによってスタックが正常に作成�
    ash-zbc07b.4.secure.blockchain.ibm.com:21239
    ```
 
-   - **organizations** を検索して、組織の名前を見つけます。 この組織はピアの登録に使用した組織と同じである必要があります。 組織の名前をその関連 `mspid` とともに見つけることができます。 この値は、ネットワーク・モニターの「概要」パネルにも表示されます。 **「リモート・ピアの構成」**ボタンをクリックします。 この値は、`「組織 MSP」`に表示されます。 `mspid` の値をメモしておきます。
+   - **organizations** を検索して、組織の名前を見つけます。 この組織はピアの登録に使用した組織と同じである必要があります。 組織の名前をその関連 `mspid` とともに見つけることができます。 この値は、ネットワーク・モニターの「概要」パネルにも表示されます。**「リモート・ピアの構成」**ボタンをクリックします。 この値は、`「組織 MSP」`に表示されます。 `mspid` の値をメモしておきます。
 
    - まだの場合は、`docker exec -it peer sh` を実行して、ピア・コンテナー内でシェル・セッションを作成します。
 
@@ -349,7 +351,7 @@ AWS CloudFormation テンプレートによってスタックが正常に作成�
   AWS 料金が引き続き発生します。 トラブルシューティングが終了したら、必ずこのスタックを削除してください。 詳しくは、AWS の Web サイトで [Troubleshooting AWS CloudFormation ![External linkicon](../images/external_link.svg "外部リンク・アイコン")](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/troubleshooting.html "Troubleshooting AWS CloudFormation") を参照してください。
 
 * **Q**. AWS CloudFormation テンプレートをデプロイしたときに、サイズ制限のエラーが発生しました。
-* **A**. IBM 側で提供されている場所からまたは別の S3 バケットからクイック・スタート・テンプレートを起動することをお勧めします。 ご使用のコンピューター上のローカル・コピーからまたは S3 以外の場所からテンプレートをデプロイする場合、スタックの作成時にテンプレート・サイズの制限が適用される可能性があります。 AWS CloudFormation の制限について詳しくは、[AWS の資料 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cloudformation-limits.html "AWS CloudFormation の制限") を参照してください。
+* **A**. IBM 側で提供されている場所からまたは別の S3 バケットからクイック・スタート・テンプレートを起動することをお勧めします。 ご使用のコンピューター上のローカル・コピーからまたは S3 以外の場所からテンプレートをデプロイする場合、スタックの作成時にテンプレート・サイズの制限が適用される可能性があります。 AWS CloudFormation の制限について詳しくは、[AWS の資料 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cloudformation-limits.html "AWS CloudFormation の制限") を参照してください。
 
 ## 次の作業
 {: #remote-peer-aws-whats-next}
@@ -422,7 +424,7 @@ In {{site.data.keyword.blockchainfull_notm}} Platform when a private key is crea
 #### メンバーシップ・サービス・プロバイダーの構成
 {: #remote-peer-aws-security-MSP}
 
-IBM Blockchain Platform のコンポーネントは、メンバーシップ・サービス・プロバイダー (MSP) を介して ID を使用します。 MSP は、CA から発行された証明書をネットワークおよびチャネルの役割に関連付けます。 MSP とピアの連係について詳しくは、こちらの[トピック](/docs/services/blockchain/certificates.html#managing-certificates-msp)を参照してください。
+{{site.data.keyword.blockchainfull_notm}} Platform のコンポーネントは、メンバーシップ・サービス・プロバイダー (MSP) を介して ID を使用します。 MSP は、CA から発行された証明書をネットワークおよびチャネルの役割に関連付けます。 MSP とピアの連係について詳しくは、こちらの[トピック](/docs/services/blockchain/certificates.html#managing-certificates-msp)を参照してください。
 
 #### アプリケーション・セキュリティー
 {: #remote-peer-aws-security-appl}

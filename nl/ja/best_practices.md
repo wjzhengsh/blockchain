@@ -2,7 +2,9 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-03-20"
+lastupdated: "2019-03-22"
+
+keywords: best practices, develop applications, connectivity, availability, mutual TLS, CouchDB
 
 subcollection: blockchain
 
@@ -26,7 +28,7 @@ subcollection: blockchain
 ## アプリケーションの接続と可用性
 {: #best-practices-app-connectivity-availability}
 
-Hyperledger Fabric の[トランザクション・フロー ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/txflow.html "トランザクション・フロー"){:new_window} には複数のコンポーネントが関わり、その中でクライアント・アプリケーションはユニークな役割を果たします。 SDK は、承認を受けるためにトランザクション提案をピアに送信します。 その後、SDK は、承認された提案を収集して順序付けサービスに送信します。すると、順序付けサービスが、トランザクションのブロックをチャネル台帳に追加するためにピアに送信します。 実動アプリケーションの開発者は、SDK とネットワークの間の対話を管理して効率性と可用性を確保しておく必要があります。
+Hyperledger Fabric の[トランザクション・フロー ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/txflow.html "トランザクション・フロー"){:new_window} には複数のコンポーネントが関わり、その中でクライアント・アプリケーションはユニークな役割を果たします。 SDK は、承認を受けるためにトランザクション提案をピアに送信します。 その後、SDK は、承認された提案を収集して順序付けサービスに送信します。すると、順序付けサービスが、トランザクションのブロックをチャネル台帳に追加するためにピアに送信します。 実動アプリケーションの開発者は、SDK とネットワークの間の対話を管理して効率性と可用性を確保しておく必要があります。
 
 ### トランザクションの管理
 {: #best-practices-app-managing-transactions}
@@ -158,7 +160,7 @@ channel.sendInstantiateProposal(request, 300000);
 
 状態データベースに CouchDB を使用している場合、チェーンコードからチャネルの状態データに対する JSON データ照会を実行できます。 JSON 照会用に索引を作成してチェーンコードで使用することを強くお勧めします。 索引があれば、ネットワークがトランザクションとエントリーの追加ブロックをワールド・ステートに追加するときに、アプリケーションで効率的にデータを取得できます。
 
-CouchDB について、および索引をセットアップする方法について詳しくは、Hyperledger Fabric の資料で [CouchDB as the State Database ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/couchdb_as_state_database.html "CouchDB as the State Database"){:new_window} を参照してください。 [Fabric CouchDB チュートリアル ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/couchdb_tutorial.html) にも、索引をチェーンコードで使用する例があります。
+CouchDB について、および索引をセットアップする方法について詳しくは、Hyperledger Fabric の資料で [CouchDB as the State Database ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/couchdb_as_state_database.html "CouchDB as the State Database"){:new_window} を参照してください。 [Fabric CouchDB チュートリアル ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/couchdb_tutorial.html) にも、索引をチェーンコードで使用する例があります。
 
 CouchDB データベース全体をスキャンする照会にはチェーンコードを使用しないでください。 完全なデータベース・スキャンでは、応答時間が長くなり、ネットワークのパフォーマンスが低下します。 次のような手順により、長時間かかる照会を防止および対処できます。
 - チェーンコードを使用して索引をセットアップします。
@@ -166,7 +168,7 @@ CouchDB データベース全体をスキャンする照会にはチェーンコ
 - 照会が複雑になると、パフォーマンスが低下し、索引を使用する可能性も低くなります。
 - テーブルや索引の完全スキャンが発生する演算子 (`$or`、`$in`、`$regex` など) の使用は避けてください。
 
-照会で索引を使用する例や、最適なパフォーマンスが得られる照会のタイプについては、Fabric CouchDB チュートリアル ![外部リンク・アイコン](https://hyperledger-fabric.readthedocs.io/en/release-1.2/couchdb_tutorial.html#use-best-practices-for-queries-and-indexes) を参照してください。
+照会で索引を使用する例や、最適なパフォーマンスが得られる照会のタイプについては、Fabric CouchDB チュートリアル ![外部リンク・アイコン](https://hyperledger-fabric.readthedocs.io/en/release-1.4/couchdb_tutorial.html#use-best-practices-for-queries-and-indexes) を参照してください。
 
 {{site.data.keyword.blockchainfull_notm}} Platform 上のピアには queryLimit が設定されているため、状態データベースから返されるエントリー数は 10,000 個に制限されます。 1 つの照会で queryLimit に達する場合は、複数の照会を使用することで残りの結果を取得できます。 範囲照会の結果を追加で取得する必要がある場合には、前の照会で返された最後のキーを使用して次の照会を開始します。 JSON 照会の結果がさらに必要な場合は、データ内のいずれかの変数で照会をソートしてから、前の照会で返された最後の値を次の照会の「より大」フィルターで使用します。
 

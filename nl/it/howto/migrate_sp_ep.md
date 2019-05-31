@@ -1,8 +1,10 @@
 ---
 
 copyright:
-  years: 2018,2019
-lastupdated: "2019-04-17"
+  years: 2018, 2019
+lastupdated: "2019-05-16"
+
+keywords: Starter Plan network, Starter Plan, Enterprise Plan network, Enterprise Plan, migration
 
 subcollection: blockchain
 
@@ -76,8 +78,7 @@ Puoi ricreare la configurazione di organizzazioni (membri), canali e peer della 
 ### Migra il chaincode
 {: #migrate_starter_to_enterprise_cc}
 
-Il chaincode viene sviluppato esternamente nel tuo ambiente locale e viene richiamato dalle tue applicazioni client. Per installare e istanziare il chaincode, che è stato testato nella tua rete piano Starter, su peer selezionati nella tua rete piano Enterprise, attieniti alle istruzioni in [Installazione, istanziazione e aggiornamento di un chaincode](/docs/services/blockchain
-/howto/install_instantiate_chaincode.html#install-instantiate-chaincode-install-cc).
+Il chaincode viene sviluppato esternamente nel tuo ambiente locale e viene richiamato dalle tue applicazioni client. Per installare e istanziare il chaincode, che è stato testato nella tua rete piano Starter, sui peer selezionati nella tua rete piano Enterprise, segui le istruzioni riportate in [Installazione, istanziazione e aggiornamento di un chaincode](/docs/services/blockchain/howto/install_instantiate_chaincode.html#install-instantiate-chaincode-install-cc "Installazione, istanziazione e aggiornamento di un chaincode").
 
 ### Aggiorna le applicazioni client
 {: #migrate_starter_to_enterprise_app}

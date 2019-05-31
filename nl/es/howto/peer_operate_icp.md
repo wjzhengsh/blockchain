@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-04-23"
+lastupdated: "2019-05-16"
+
+keywords: command line, peer, operate peers, use context, Fabric SDKs, IBM Cloud Private 
 
 subcollection: blockchain
 
@@ -183,7 +185,7 @@ Se recomienda utilizar la versión 1.4.0 de Node SDK.
 El igual se ha desplegado con el signCert del administrador de igual incluido. Esto le permitirá utilizar los certificados del administrador de igual y la carpeta de MSP para trabajar con el igual.
 
 Localice los certificados que ha creado al [inscribir el administrador de igual](/docs/services/blockchain/howto/CA_operate.html#ca-operate-enroll-admin). Si ha utilizado los mandatos de ejemplo, puede encontrar la carpeta de MSP del administrador de igual en `$HOME/fabric-ca-client/peer-admin`.
-  - Puede crear el contexto de usuario del administrador de igual con el SDK utilizando el signCert (clave pública) y la clave privada en la carpeta de MSP. Puede encontrar dichas claves en las ubicaciones siguientes:
+  - Puede crear el contexto de usuario del administrador de igual con el SDK utilizando el signCert y la clave privada en la carpeta de MSP. Puede encontrar dichas claves en las ubicaciones siguientes:
     - El signCert se puede encontrar en la carpeta **signcerts**: `$HOME/fabric-ca-client/peer-admin/msp/signcerts`
     - La clave privada se puede encontrar en la carpeta **keystore**: `$HOME/fabric-ca-client/peer-admin/msp/keystore`
 

@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-04-03"
+lastupdated: "2019-05-16"
+
+keywords: TLS, TLS certificates, client applications, digital certificates, certificate authority, intermediate certificate, client-side certificate, generate certificates, manage certificates
 
 subcollection: blockchain
 
@@ -40,11 +42,11 @@ Hyperledger Fabric をベースとする {{site.data.keyword.blockchainfull}} Pl
   - **所属団体名 (Affiliation):** ID を所属させる組織内の団体名 (`org1` など) です。
   - **最大エンロール回数 (Maximum Enrollments):** このフィールドを使用すると、この ID を使用してエンロールする回数、つまり、証明書を生成する回数を制限できます。 このフィールドをブランクのままにすると、エンロール回数はデフォルト値の無制限になります。
 
-[リモート・ピア](/docs/services/blockchain/howto/remote_peer.html#remote-peer-aws-about)をデプロイする場合は、このパネルを使用して、新しいピア ID を登録できます。 一方、トランザクションをネットワークに送信できるアプリケーションを開発する場合は、クライアントを登録できます。 プラットフォームで Fabric SDK を使用する方法について詳しくは、[アプリケーションの開発チュートリアル](/docs/services/blockchain/v10_application.html#dev-app)を参照してください。
+[リモート・ピア](/docs/services/blockchain/howto/remote_peer.html#remote-peer-aws-about)をデプロイする場合は、このパネルを使用して、新しいピア ID を登録できます。 一方、トランザクションをネットワークに送信できるアプリケーションを開発する場合は、クライアントを登録できます。プラットフォームで Fabric SDK を使用する方法について詳しくは、[アプリケーションの開発チュートリアル](/docs/services/blockchain/v10_application.html#dev-app)を参照してください。
 
 ### クライアント・サイド証明書の生成 (エンロール)
 {: #managing-certificates-enrollment}
-サード・パーティーのクライアントを {{site.data.keyword.blockchainfull_notm}} Platform に接続するには、その前に認証される必要があります。 必要な証明書、秘密鍵、および公開証明書 (エンロール証明書または署名付き証明書とも呼ばれる) を生成するプロセスをエンロールと呼びます。 クライアントがネットワークと通信する際には、必ずこれらの証明書が必要になります。 ネットワークに対して呼び出しを送信するクライアントは、秘密鍵を使用してペイロードに署名し、正しい署名のある x509 証明書を付加する必要があります。
+サード・パーティーのクライアントを {{site.data.keyword.blockchainfull_notm}} Platform に接続するには、その前に認証される必要があります。 必要な証明書、秘密鍵および証明書 (エンロール証明書または署名付き証明書とも呼ばれる) を生成するプロセスをエンロールと呼びます。クライアントがネットワークと通信する際には、必ずこれらの証明書が必要になります。 ネットワークに対して呼び出しを送信するクライアントは、秘密鍵を使用してペイロードに署名し、正しい署名のある x509 証明書を付加する必要があります。
 
 [Fabric Node SDK を使用してエンロールする](/docs/services/blockchain/v10_application.html#dev-app)方法について詳しくは、[「アプリケーションの開発」のチュートリアル](/docs/services/blockchain/v10_application.html#dev-app-enroll-sdk)を参照してください。 SDK を使用してエンロールすると、秘密鍵、署名付き証明書、および署名付き証明書の作成に使用された公開鍵の 3 つの別個の項目が生成されます。
 
@@ -57,7 +59,7 @@ Hyperledger Fabric をベースとする {{site.data.keyword.blockchainfull}} Pl
 ### ネットワーク・モニターを使用した証明書の生成
 {: #managing-certificates-certs-panel}
 
-ネットワーク・モニターを使用すると、管理者 ID を使用して証明書を生成して、それらの証明書を SDK に直接渡すことができます。 管理者 ID の横にある**「証明書の生成」**ボタンをクリックして、CA から新しい署名付き証明書と秘密鍵を取得します。 **「証明書」**フィールドには、署名付き証明書が含まれており、**「秘密鍵」**のすぐ上にあります。 各フィールドの端にあるコピー・アイコンをクリックすると、そのフィールドの値をコピーできます。 その後、アプリケーションにインポートできる場所にこれらの証明書を保存する必要があります。 詳しくは、[アプリケーションの開発チュートリアル](/docs/services/blockchain/v10_application.html#dev-app-enroll-panel)を参照してください。 {{site.data.keyword.blockchainfull_notm}} Platform にはそれらの証明書が保管されないことに**注意してください**。 ユーザーがそれらを安全に保存して保管する必要があります。
+ネットワーク・モニターでは、管理者 ID を使用して証明書を生成し、それらの証明書を SDK に直接渡すことができます。 管理者 ID の横にある**「証明書の生成」**ボタンをクリックして、CA から新しい署名付き証明書と秘密鍵を取得します。 **「証明書」**フィールドには、署名付き証明書が含まれており、**「秘密鍵」**のすぐ上にあります。 各フィールドの端にあるコピー・アイコンをクリックすると、そのフィールドの値をコピーできます。 その後、アプリケーションにインポートできる場所にこれらの証明書を保存する必要があります。詳しくは、[アプリケーションの開発チュートリアル](/docs/services/blockchain/v10_application.html#dev-app-enroll-panel)を参照してください。 {{site.data.keyword.blockchainfull_notm}} Platform にはそれらの証明書が保管されないことに**注意してください**。 ユーザーがそれらを安全に保存して保管する必要があります。
 
 ### 署名付き証明書の {{site.data.keyword.blockchainfull_notm}} Platform へのアップロード
 {: #managing-certificates-upload-certs}
@@ -172,7 +174,7 @@ Fabric の MSP フォルダーには、定義済みの構造があります。 F
 
 - **cacerts:** このフォルダーには、ネットワークのルート CA のルート証明書が含まれます。
 - **intermediatecerts:** ネットワークの中間 CA の証明書があります。 これらの中間 CA は、ルート CA にリンクされ、トラスト・チェーンを形成します。 フェイルオーバーと高可用性を実現するために、中間 CA はエンタープライズ・プラン組織ごとに 2 つあります。
-- **signcerts:** このフォルダーには、署名付き公開証明書 (署名付き証明書またはエンロール証明書とも呼ばれる) が含まれます。 この証明書は、コマンド・ラインから MSP ディレクトリーを参照したり、SDK を使用してユーザー・コンテキスト・オブジェクトを作成したりする際に、ネットワークに対する呼び出し (チェーンコード呼び出しなど) に付加されます。 SDK またはコマンド・ラインからネットワークを操作する場合は、この証明書をプラットフォームにアップロードします。
+- **signcerts:** このフォルダーには、署名証明書 (署名付き証明書またはエンロール証明書とも呼ばれる) が含まれます。この証明書は、コマンド・ラインから MSP ディレクトリーを参照したり、SDK を使用してユーザー・コンテキスト・オブジェクトを作成したりする際に、ネットワークに対する呼び出し (チェーンコード呼び出しなど) に付加されます。 SDK またはコマンド・ラインからネットワークを操作する場合は、この証明書をプラットフォームにアップロードします。
 - **keystore:** このフォルダーには秘密鍵が含まれます。 この鍵は、コマンド・ラインから MSP ディレクトリーを参照したり、SDK を使用してユーザー・コンテキスト・オブジェクトを作成したりする際に、ネットワークに対する呼び出しに署名するために使用されます。 ネットワークやデータを保護するために、この鍵を安全に保管してください。
 
 ネットワーク・モニターや Swagger API を使用して、Fabric CA クライアントが参照できる MSP フォルダーを作成することもできます。

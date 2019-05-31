@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-04-03"
+lastupdated: "2019-05-16"
+
+keywords: IBM Cloud Private, data storage CA, cluster ICP, configuration
 
 subcollection: blockchain
 
@@ -29,10 +31,10 @@ Prima di distribuire i componenti {{site.data.keyword.blockchainfull}} Platform 
 Completa i seguenti prerequisiti e prepara il tuo ambiente per installare {{site.data.keyword.cloud_notm}} Private.
 
 ### Docker
-{{site.data.keyword.cloud_notm}} Private richiede che sia installato Docker. Attieniti alle istruzioni correlate in [Installing {{site.data.keyword.cloud_notm}} Private ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/installing/install.html "Installing {{site.data.keyword.cloud_notm}} Private") per installare Docker.
+{{site.data.keyword.cloud_notm}} Private richiede che sia installato Docker. Attieniti alle istruzioni correlate in [Installing {{site.data.keyword.cloud_notm}} Private ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/installing/install.html "Installing {{site.data.keyword.cloud_notm}} Private") per installare Docker.
 
 ### Impostazioni di {{site.data.keyword.cloud_notm}} Private
-Prima di installare {{site.data.keyword.cloud_notm}} Private, i seguenti suggerimenti sono utili per preparare i tuoi nodi per l'installazione di {{site.data.keyword.cloud_notm}} Private. Ulteriori prerequisiti di {{site.data.keyword.cloud_notm}} Private sono disponibili nella [{{site.data.keyword.cloud_notm}}documentazione di {{site.data.keyword.cloud_notm}} Private![Icona link esterno](images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/installing/prep.html "Preparing your cluster for installation").
+Prima di installare {{site.data.keyword.cloud_notm}} Private, i seguenti suggerimenti sono utili per preparare i tuoi nodi per l'installazione di {{site.data.keyword.cloud_notm}} Private. Ulteriori prerequisiti di {{site.data.keyword.cloud_notm}} Private possono essere trovati nella [documentazione {{site.data.keyword.cloud_notm}} Private ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/installing/prep.html "Preparing your cluster for installation").
 
 #### Aggiorna l'impostazione `vm.max_map_count`
 {{site.data.keyword.cloud_notm}} Private utilizza Elastic Search per la registrazione e la misurazione. Per evitare eccezioni di memoria esaurita, Elastic Search richiede che sia configurata la proprietà di sistema `vm.max_map_count`. Prima di installare {{site.data.keyword.cloud_notm}} Private, vedi le [Istruzioni di configurazione di Elastic Search ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://www.elastic.co/guide/en/elasticsearch/reference/current/vm-max-map-count.html "Memoria virtuale") per configurare questa proprietà su ciascun nodo. Puoi utilizzare i seguenti comandi per impostare questa proprietà permanentemente:
@@ -45,9 +47,9 @@ echo "vm.max_map_count=262144” | tee -a /etc/sysctl.conf
 
 #### Configura il file `/etc/hosts` su ciascun nodo nel tuo cluster
 
-- {{site.data.keyword.cloud_notm}} Private utilizza [Kubernetes ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://kubernetes.io/docs/tutorials/kubernetes-basics/ "Informazioni sui principi di base di Kubernetes") per gestire le applicazioni inserite nel contenitore. Il DNS (Domain Name Server) Kubernetes non riesce se i nomi host non sono configurati nel file `/etc/hosts` su ciascun nodo. [Inserisci indirizzo IP, nome host e nome breve di ciascun nodo nel tuo cluster ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/installing/prep_cluster.html "Configurazione del tuo cluster") nel file `/etc/hosts` su ciascun nodo.
+- {{site.data.keyword.cloud_notm}} Private utilizza [Kubernetes ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://kubernetes.io/docs/tutorials/kubernetes-basics/ "Informazioni sui principi di base di Kubernetes") per gestire le applicazioni inserite nel contenitore. Il DNS (Domain Name Server) Kubernetes non riesce se i nomi host non sono configurati nel file `/etc/hosts` su ciascun nodo. [Inserisci indirizzo IP, nome host e nome breve di ciascun nodo nel tuo cluster ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/installing/prep_cluster.html "Configurazione del tuo cluster") nel file `/etc/hosts` su ciascun nodo.
 
-- [IPv6 non è supportato da {{site.data.keyword.cloud_notm}} Private ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/getting_started/known_issues.html#ipv6 "IPv6 non è supportato"). Per evitare problemi con il servizio DNS in un cluster {{site.data.keyword.cloud_notm}} Private, disabilita le impostazioni IPv6 nel file `/etc/hosts` su ciascun nodo indicando come commento la seguente riga con un carattere `#` all'inizio della riga:
+- [IPv6 non è supportato da {{site.data.keyword.cloud_notm}} Private ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/getting_started/known_issues.html#ipv6 "IPv6 non è supportato"). Per evitare problemi con il servizio DNS in un cluster {{site.data.keyword.cloud_notm}} Private, disabilita le impostazioni IPv6 nel file `/etc/hosts` su ciascun nodo indicando come commento la seguente riga con un carattere `#` all'inizio della riga:
   ```
   #::1  localhost ip6-localhost ip6-loopback
   ```
@@ -63,7 +65,7 @@ Assicurati che il tuo sistema {{site.data.keyword.cloud_notm}} Private soddisfi 
 | CA | 1 |192 MB | 1 GB |
 | Ordinante | 2 | 512 MB | 100 GB con capacità di espansione |
 | Peer | 2 | 2 GB | 50 GB con capacità di espansione. |
-| CouchDB per ogni peer | 2| 2 GB |50 GB con capacità di espansione. |
+| CouchDB for Peer<br>(Applicabile solo se utilizzi CouchDB) | 2| 2 GB | 50 GB con capacità di espansione. |
 
  **Note:**
  - Una CPU virtuale è un core virtuale assegnato a una macchina virtuale o un core di processore fisico se il server non è partizionato per le macchine virtuali. Devi considerare i requisiti di CPU virtuale quando decidi il VPC (virtual processor core) per la tua distribuzione in {{site.data.keyword.cloud_notm}} Private. VPC è un'unità di misura per determinare il costo di licenza dei prodotti {{site.data.keyword.IBM_notm}}. Per ulteriori informazioni sugli scenari per decidere il VPC, vedi [Virtual processor core (VPC) ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/en/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_virtual_processor_core_licenses.html).
@@ -93,18 +95,18 @@ Assicurati che il tuo sistema {{site.data.keyword.cloud_notm}} Private soddisfi 
 
 Completa la seguente procedura per installare e configurare {{site.data.keyword.cloud_notm}} Private nel tuo ambiente.
 
-1. Installa un cluster [{{site.data.keyword.cloud_notm}} Private ![Icona link esterno](images/external_link.svg "Icona link esterno") ](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/kc_welcome_containers.html) alla versione 3.1.0. Se vuoi utilizzare il grafico Helm per sviluppo, test o sperimentazione, puoi installare [{{site.data.keyword.cloud_notm}} Private Community Edition versione 3.1.0 ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/kc_welcome_containers.html "{{site.data.keyword.cloud_notm}} Private-CE versione 3.1.0") gratuitamente.
+1. Installa un cluster [{{site.data.keyword.cloud_notm}} Private ![Icona link esterno](images/external_link.svg "Icona link esterno") ](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/kc_welcome_containers.html) alla versione 3.1.2. Se vuoi utilizzare il grafico Helm per sviluppo, test o sperimentazione, puoi installare [{{site.data.keyword.cloud_notm}} Private Community Edition versione 3.1.2 ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/kc_welcome_containers.html "{{site.data.keyword.cloud_notm}} Private-CE versione 3.1.2") gratuitamente.
 
-2. Installa la CLI di {{site.data.keyword.cloud_notm}} Private [3.1.0 ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/manage_cluster/install_cli.html) per installare e gestire la CA.
+2. Installa la CLI di {{site.data.keyword.cloud_notm}} Private [3.1.2 ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/manage_cluster/install_cli.html) per installare e gestire la CA.
 
-3. Configura la politica di sicurezza del pod per lo spazio dei nomi di destinazione. Le istruzioni sono fornite nella [prossima sezione](/docs/services/blockchain/howto/ICP_setup.html#icp-setup-psp).
+3. Configura la politica di sicurezza del pod per lo spazio dei nomi di destinazione. Le istruzioni sono fornite nella [prossima sezione](#icp-setup-psp).
 
 Dopo che hai installato {{site.data.keyword.cloud_notm}} Private e associato una politica di sicurezza del pod a uno spazio dei nomi di destinazione, puoi continuare a [importare il grafico Helm {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/howto/helm_install_icp.html#helm-install) nel tuo cluster {{site.data.keyword.cloud_notm}} Private.
 
 ## Requisiti PodSecurityPolicy
 {: #icp-setup-psp}
 
-Prima di poter distribuire dei componenti utilizzando il grafico Helm, devi creare un nuovo spazio dei nomi di destinazione e associare ad esso una [politica di sicurezza del pod![Iconal link esterno](images/external_link.svg "Icona link esterno")](https://kubernetes.io/docs/concepts/policy/pod-security-policy/ "Politiche di sicurezza del pod"). Scegli una PodSecurityPolicy predefinita o chiedi al tuo amministratore del cluster di crearti una PodSecurityPolicy personalizzata:
+Prima di poter distribuire dei componenti utilizzando il grafico Helm, devi creare un nuovo spazio dei nomi di destinazione e associare ad esso una [politica di sicurezza del pod![Iconal link esterno](images/external_link.svg "Icona link esterno")](https://kubernetes.io/docs/concepts/policy/pod-security-policy/ "Politiche di sicurezza del pod").  Scegli una PodSecurityPolicy predefinita o chiedi al tuo amministratore del cluster di crearti una PodSecurityPolicy personalizzata:
 - Nome PodSecurityPolicy predefinita: [`ibm-privileged-psp`](https://ibm.biz/cpkspec-psp)
 - Definizione della PodSecurityPolicy personalizzata:
   ```

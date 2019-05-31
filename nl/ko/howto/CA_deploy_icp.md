@@ -4,6 +4,8 @@ copyright:
   years: 2018, 2019
 lastupdated: "2019-04-23"
 
+keywords: IBM Cloud Private, Certificate Authority, deploy CA, CA admin secret, CA logs, Helm chart, on-prem
+
 subcollection: blockchain
 
 ---
@@ -128,11 +130,11 @@ CA 관리자 시크릿을 작성하면 CA를 구성하고 설치하기 위한 �
 
 |매개변수     |설명    | 기본값  | 필수 |
 | --------------|-----------------|-------|------- |
-|**일반 매개변수**| Helm 차트를 구성하는 매개변수입니다.| | |
+|**일반 매개변수**| Helm 차트를 구성하는 매개변수입니다. | | |
 | `Helm release name`| Helm 릴리스의 이름입니다. 소문자로 시작하고 영숫자 문자로 끝나야 하며 하이픈과 소문자의 영숫자 문자만 포함해야 합니다. 컴포넌트를 설치하려고 할 때마다 고유한 Helm 릴리스 이름을 사용해야 합니다. | 없음 | 예 |
 | `Target namespace`| Helm 차트를 설치할 Kubernetes 네임스페이스를 선택합니다. | 없음 | 예 |
-| `Target namespace policies`| 선택한 네임스페이스의 팟(Pod) 보안 정책을 표시하며, 여기에는 **`ibm-privileged-psp`** 정책을 포함해야 합니다. 그렇지 않으면 네임스페이스에 [PodSecurityPolicy를 바인드](/docs/services/blockchain?topic=blockchain-icp-setup#icp-setup-psp)하십시오.| 없음 | 아니오 |
-|**글로벌 구성**| Helm 차트의 모든 컴포넌트에 적용하는 매개변수입니다.| | |
+| `Target namespace policies`| 선택한 네임스페이스의 팟(Pod) 보안 정책을 표시하며, 여기에는 **`ibm-privileged-psp`** 정책을 포함해야 합니다. 그렇지 않으면 네임스페이스에 [PodSecurityPolicy를 바인드](/docs/services/blockchain?topic=blockchain-icp-setup#icp-setup-psp)하십시오. | 없음 | 아니오 |
+|**글로벌 구성**| Helm 차트의 모든 컴포넌트에 적용하는 매개변수입니다. | | |
 | `Service account name`|팟(Pod)을 실행하는 데 사용할 [서비스 계정 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/ "팟(Pod)의 서비스 계정 구성")의 이름을 입력합니다. | 기본값 | 아니오 |
 
 #### CA 구성 매개변수

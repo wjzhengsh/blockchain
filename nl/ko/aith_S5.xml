@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with AI Text Handler 1.0.0 -->
+<ExtractedAITHs>
+<ExtractedAITH file="/images/blockchain_network_2-01.ai">
+<text>합의 &amp;
+순서 지정 클러스터</text>
+<text>구성원</text>
+<text>채널 2</text>
+<text>채널 1</text>
+<text>은행 D
+구성원 </text>
+<text>피어</text>
+<text>은행 C
+구성원 및
+운영자</text>
+<text>은행 A
+구성원, 개시자
+및 운영자</text>
+<text>은행 B
+구성원 및
+운영자</text>
+<text>IBM Cloud
+블록체인 비즈니스 네트워크</text>
+</ExtractedAITH>
+<ExtractedAITH file="/images/ibp_regions.ai">
+<text>댈러스</text>
+<text>스타터 플랜</text>
+<text>상파울루</text>
+<text>런던</text>
+<text>프랑크푸르트</text>
+<text>엔터프라이즈 플랜</text>
+<text>도쿄</text>
+<text>토론토</text>
+<text>시드니</text>
+<text>멜버른</text>
+<text></text>
+</ExtractedAITH>
+<ExtractedAITH file="/images/ibp_v2_regions.ai">
+<text>댈러스</text>
+<text>싱가포르</text>
+<text>상파울루</text>
+<text>암스테르담</text>
+<text>프랑크푸르트</text>
+<text>IBM Blockchain Platform 2.0</text>
+<text>도쿄</text>
+<text>서울</text>
+<text>오슬로</text>
+<text>파리</text>
+<text></text>
+<text>밀라노</text>
+<text>첸나이</text>
+<text>홍콩</text>
+<text>휴스턴</text>
+<text>산호세</text>
+</ExtractedAITH>
+<ExtractedAITH file="/images/k8s-archi-diagram.ai">
+<text>인터넷</text>
+<text>etcd</text>
+<text>kubelet</text>
+<text>제어기
+관리자</text>
+<text>스케줄러</text>
+<text>API 서버</text>
+<text>마스터 노드</text>
+<text>kubelet</text>
+<text>프록시</text>
+<text>작업자 노드</text>
+<text>컨테이너</text>
+<text>팟(Pod)</text>
+<text>팟(Pod)</text>
+<text>클라우드</text>
+<text>......</text>
+<text>......</text>
+<text>......</text>
+<text>......</text>
+<text>팟(Pod)</text>
+<text>팟(Pod)</text>
+<text>컨테이너</text>
+<text>작업자 노드</text>
+<text>프록시</text>
+<text>제어기
+관리자</text>
+</ExtractedAITH>
+<ExtractedAITH file="/images/remote_peer_AWS_flow.ai">
+<text>수행해야 할 작업</text>
+<text>배치하기 전에 </text>
+<text>원격 피어를 </text>
+<text>전제조건</text>
+<text>조직 구성원을</text>
+<text>배치하기 위해 </text>
+<text>&gt;</text>
+<text>원격 피어를 </text>
+<text>조작</text>
+<text>배치</text>
+<text>수행해야 할 작업</text>
+<text>배치한 후 </text>
+<text>원격 피어를 </text>
+<text>수행해야 할 작업</text>
+<text>&gt;</text>
+<text>IBM Cloud에서</text>
+<text> AWS</text>
+<text></text>
+<text>각 VPC마다 한 번씩
+원격 피어 ID를
+두 번 등록
+</text>
+<text>등록</text>
+<text>AWS에서</text>
+<text>채널에 가입</text>
+<text>구성 또는 액세스</text>
+<text>키 쌍 작성</text>
+<text>원격 피어 검색</text>
+<text>구성 정보</text>
+<text>네트워크 작성/가입</text>
+<text>IBM Blockchain 네트워크</text>
+<text>작성 또는 가입</text>
+<text>채널에 가입</text>
+<text>검색</text>
+<text>AWS에 로그인하여
+새 계정 작성</text>
+<text>키 쌍 작성</text>
+<text>선호하는 지역에서</text>
+<text>링크 클릭</text>
+<text>AWS 빠른 시작 템플리트
+링크 클릭
+</text>
+<text></text>
+<text>구성</text>
+<text>원격 피어 인스턴스
+구성</text>
+<text>Fabric 도구 CLI 사용</text>
+<text>Fabric 도구 CLI를 사용하여</text>
+<text>원격 피어 조작</text>
+<text>Fabric SDK 사용</text>
+<text>SDK가 있는 클라이언트 애플리케이션을</text>
+<text>사용하여 원격 피어 조작</text>
+<text>* 권장되는 접근법</text>
+<text>* 대체 접근법</text>
+<text>배치 확인</text>
+<text>확인</text>
+</ExtractedAITH>
+</ExtractedAITHs>

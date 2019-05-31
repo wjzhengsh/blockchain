@@ -4,6 +4,8 @@ copyright:
   years: 2017, 2019
 lastupdated: "2019-03-05"
 
+keywords: channel update policy, endorsement policy, Network Monitor, number of channel operators
+
 subcollection: blockchain
 
 ---
@@ -16,7 +18,6 @@ subcollection: blockchain
 
 # チャネルの作成または更新
 {: #ibp-create-channel}
-
 
 チャネルは、データのパーティショニングおよび分離のための非常に強力なメカニズムであり、データのプライバシーのための主要な基盤を提供します。 同じチャネルのメンバーだけが、このチャネルのデータにアクセスできます。
 {:shortdesc}

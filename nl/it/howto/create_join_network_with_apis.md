@@ -4,6 +4,8 @@ copyright:
   years: 2017, 2019
 lastupdated: "2019-03-20"
 
+keywords: Swagger APIs, create a network, join a network, authentication credential
+
 subcollection: blockchain
 
 ---
@@ -146,7 +148,7 @@ Il membro invitato riceverà un invito email con le istruzioni su come unirsi al
 
 ## Adesione a una rete
 
-Se vieni invitato ad aderire a una rete blockchain, riceverai una email di invito alla rete che include `location_id` e `network id`.
+Se vieni invitato ad aderire a una rete blockchain, riceverai un'email di invito alla rete che include `location_id` e `network id`.
 
 1. Prima di aderire a una rete devi creare un'istanza del servizio {{site.data.keyword.blockchainfull_notm}} Platform e richiamare i tuoi token e ID istanza del servizio come password e nome utente di autenticazione di base. Per ulteriori informazioni, vedi [Richiamo delle informazioni di autenticazione di base per la API](/docs/services/blockchain/howto/create_join_network_with_apis.html#swagger-network-retrieve-id-token).
 

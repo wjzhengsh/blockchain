@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-04-23"
+lastupdated: "2019-05-16"
+
+keywords: command line, peer, operate peers, use context, Fabric SDKs, IBM Cloud Private 
 
 subcollection: blockchain
 
@@ -177,7 +179,7 @@ npm install fabric-client@1.4.0
 ピアは、ピア管理者の署名付き証明書を組み込むようにデプロイされています。 これにより、ピア管理者の証明書および MSP フォルダーを使用してピアを操作できるようになります。
 
 [ピア管理者の登録](/docs/services/blockchain/howto/CA_operate.html#ca-operate-enroll-admin)時に作成した証明書を見つけます。 コマンド例を使用した場合、ピア管理者の MSP フォルダーは `$HOME/fabric-ca-client/peer-admin` にあります。
-  - MSP フォルダー内の署名付き証明書 (公開鍵) および秘密鍵を使用して、SDK でピア管理者のユーザー・コンテキストを作成できます。 これらのキーは、以下の場所にあります。
+  - MSP フォルダー内の署名付き証明書および秘密鍵を使用して、SDK でピア管理者のユーザー・コンテキストを作成できます。 これらのキーは、以下の場所にあります。
     - 署名付き証明書は、**signcerts** フォルダー (`$HOME/fabric-ca-client/peer-admin/msp/signcerts`) 内にあります。
     - 秘密鍵は、**keystore:** フォルダー (`$HOME/fabric-ca-client/peer-admin/msp/keystore`) 内にあります。
 

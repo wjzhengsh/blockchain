@@ -1,8 +1,10 @@
 ---
 
 copyright:
-  years: 2018,2019
-lastupdated: "2019-04-17"
+  years: 2018, 2019
+lastupdated: "2019-05-16"
+
+keywords: Starter Plan network, Starter Plan, Enterprise Plan network, Enterprise Plan, migration
 
 subcollection: blockchain
 
@@ -77,8 +79,7 @@ Puede volver a crear la configuración de las organizaciones (miembros), canales
 ### Migrar código de encadenamiento
 {: #migrate_starter_to_enterprise_cc}
 
-El código de encadenamiento se desarrolla externamente en el entorno local y se invoca mediante las aplicaciones cliente. Para instalar y crear instancias del código de encadenamiento, que se ha probado en la red del Plan inicial y en iguales seleccionados de la red del Plan empresarial, siga las instrucciones del apartado [Instalación, creación de instancias y actualización de un código de encadenamiento](/docs/services/blockchain
-/howto/install_instantiate_chaincode.html#install-instantiate-chaincode-install-cc).
+El código de encadenamiento se desarrolla externamente en el entorno local y se invoca mediante las aplicaciones cliente. Para instalar y crear una instancia de código de encadenamiento, que se ha probado en su red del Plan inicial, en los iguales seleccionados de su red del Plan empresarial, siga las instrucciones de [Instalación, creación de instancias y actualización de un código de encadenamiento](/docs/services/blockchain/howto/install_instantiate_chaincode.html#install-instantiate-chaincode-install-cc "Instalación, creación de instancias y actualización de un código de encadenamiento").
 
 ### Actualizar aplicaciones cliente
 {: #migrate_starter_to_enterprise_app}

@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-05-16"
+
+keywords: business network, Starter Plan, Enterprise Plan, developer environment, certificate authority card, admin business network card, BNA, business network archive
 
 subcollection: blockchain
 
@@ -186,7 +188,7 @@ composer network ping -c admin@vehicle-manufacture-network
 
 {{site.data.keyword.blockchainfull_notm}} Platform의 엔터프라이즈 플랜 인스턴스에 대한 액세스 권한이 있어야 하며 사전에 피어를 작성해야 합니다. {{site.data.keyword.blockchainfull_notm}} Platform 엔터프라이즈 플랜에 대한 자세한 정보는 [엔터프라이즈 플랜 개요](/docs/services/blockchain/enterprise_plan.html#enterprise-plan-about)를 참조하십시오.
 
-### 1단계: IBM Blockchain Platform에 대한 연결 프로파일 작성
+### 1단계: {{site.data.keyword.blockchainfull_notm}} Platform에 대한 연결 프로파일 작성
 {: #deploying-a-business-network-create-connection-profile}
 
 1. 연결 세부사항을 저장할 디렉토리를 작성하십시오. 예를 들어, 다음과 같습니다.

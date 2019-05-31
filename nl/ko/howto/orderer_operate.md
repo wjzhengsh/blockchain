@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-04-23"
+lastupdated: "2019-05-16"
+
+keywords: command line, orderer system channel, IBM Blockchain Platform, orderer, IBM Cloud Private, operate an orderer
 
 subcollection: blockchain
 
@@ -146,7 +148,7 @@ subcollection: blockchain
   {:codeblock}
 
 ### 로컬 시스템에서 인증서 관리
-{: #manage-certs}
+{: #orderer-operate-manage-certs}
 
 순서 지정자 관리자 MSP 폴더가 생성되는 디렉토리로 전환하십시오. 이 문서의 예제 단계를 수행한 방법 또는 배치하는 컴포넌트의 수에 따라 `$HOME/fabric-ca-client/orderer-admin/msp` 또는 `$HOME/fabric-ca-client/peer-admin/msp`에서 MSP 폴더를 찾을 수 있습니다.
 
@@ -284,6 +286,19 @@ tree
 1. 순서 지정자 시스템 채널은 시스템 채널의 구성원인 순서 지정자 조직으로만 구성되어 있습니다. 해당 조직은 추가적인 서명 없이 업데이트할 수 있습니다.
 2. 순서 지정자 조직 관리자는 컨소시엄에 가입하려는 구성원으로부터 조직 정의를 수신합니다. 순서 지정자 조직은 조직 정의를 사용하여 순서 지정자 시스템 채널의 구성을 업데이트합니다.
 
+**참고:** 피어가 순서 지정자와 다른 {{site.data.keyword.cloud_notm}} Private 클러스터에 배치된 경우 [추가 단계를 완료](#icp-orderer-operate-consortium-multi-cluster)하여 시스템 채널의 순서 지정자 주소가 해당 프록시 IP 주소 및 노드 포트로 업데이트되었는지 확인해야 합니다. 예를 들어, 다음과 같습니다.
+  ```
+  "OrdererAddresses": {
+    "mod_policy": "/Channel/Orderer/Admins",
+    "value": {
+      "addresses": [
+        "9.12.19.49:30576"
+      ]
+    },
+    "version": "0"
+  }
+  ```
+
 ### 조직 정의 가져오기
 
 순서 지정자는 컨소시엄에 가입하려는 구성원으로부터 [조직 정의](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-organization-definition)를 수신해야 합니다. 이 작업은 해당 MSP ID 및 압호화 자료가 포함된 JSON 파일을 전송하는 다른 구성원과의 대역 외 오퍼레이션에서 완료해야 합니다. 참고로 아래의 명령에서는 `org-definitions`로 이름 지정된 폴더를 작성하여 관련된 모든 파일을 해당 디렉토리에 배치한 것으로 가정합니다.
@@ -379,7 +394,7 @@ tree
 ### 시스템 채널 업데이트 작성
 {: #icp-orderer-operate-system-channel-update}
 
-다운로드된 [Fabric 도구](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-get-fabric-tools)(`configtxtlator`)는 protobuf 형식의 채널 구성을 JSON 형식으로 변환하거나 반대로 변환합니다.
+다운로드된 [Fabric 도구](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-get-fabric-tools)(`configtxtlator`)는 protobuf 형식의 채널 구성을 JSON 형식으로 변환하거나 그 반대로 변환합니다.
 
 다음 단계는 [블록을 JSON 형식으로 변환 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")]( https://hyperledger-fabric.readthedocs.io/en/release-1.4/channel_update_tutorial.html#convert-the-configuration-to-json-and-trim-it-down "구성을 JSON으로 변환하여 크기 줄이기")하는 작업과 관련된 채널 업데이트 튜토리얼의 일반 플로우를 수행합니다. 애플리케이션 채널이 아닌 순서 지정자 시스템 채널을 업데이트하고 있다는 사실을 반영하려면 튜토리얼에 있는 명령을 일부 변경해야 합니다. 해당 튜토리얼을 방문하여 이 프로세스에 대한 자세한 정보를 확인할 수 있습니다. 이 절에서는 단순히 사용자를 위한 명령만 제공합니다.
 
@@ -481,6 +496,50 @@ peer channel update -f config_update_in_envelope.pb -c $CHANNEL_NAME -o $PROXY:$
 ```
 
 하나의 순서 지정자 시스템 채널 구성 업데이트에 복수의 조직 정의를 포함시킬 수 있지만 한 번에 하나의 조직과 관련된 채널을 업데이트한 후 업데이트가 정상적으로 완료되었는지 확인하는 것이 좋습니다.
+
+### 다중 클러스터 배치를 위해 시스템 채널 업데이트
+{: #icp-orderer-operate-consortium-multi-cluster}
+
+순서 지정자와 다른 {{site.data.keyword.cloud_notm}} Private 클러스터에 피어를 배치하는 경우 피어가 순서 지정자의 Helm 릴리스 정보와 통신할 수 없습니다. 조직이 시스템 채널에 추가된 후 Helm 릴리스 정보 대신 [순서 지정자의 엔드포인트 정보](#icp-orderer-operate-orderer-endpoint)(즉, 해당 프록시 IP 주소 및 포트 번호)를 사용하도록 시스템 채널을 업데이트해야 합니다. 다음 명령을 실행하여 `genesis-config.json`에서 순서 지정자 주소를 업데이트하십시오.
+
+1. 최초 블록을 JSON 형식으로 변환하십시오.
+
+  ```
+  cd configupdate
+  configtxlator proto_decode --input genesis.pb --type common.Block --output ./config_block.json
+  jq .data.data[0].payload.data.config ./config_block.json  > config.json
+  ```
+  {:codeblock}
+
+2. `modified_config.json` 파일을 JSON 형식의 구성 업데이트로 변환하려면 다음 명령을 실행하십시오.
+
+  ```
+  configtxlator proto_encode --input config.json --type common.Config --output config.pb 
+  configtxlator proto_encode --input modified_config.json --type common.Config --output modified_config.pb 
+  configtxlator compute_update --channel_id $CHANNEL_NAME --original config.pb --updated modified_config.pb --output config_update.pb 
+  configtxlator proto_decode --input config_update.pb --type common.ConfigUpdate --output config_update.json
+  ```
+  {:codeblock}
+
+3. `config_update`에 엔벨로프를 배치하십시오.
+
+  ```
+  echo '{"payload":{"header":{"channel_header":{"channel_id":"'$CHANNEL_NAME'", "type":2}},"data":{"config_update":'$(cat config_update.json)'}}}' | jq . > config_update_in_envelope.json
+  ```
+  {:codeblock}
+
+4. 구성 업데이트를 다시 protobuf 형식으로 변환하려면 다음 명령을 실행하십시오.
+
+  ```
+  configtxlator proto_encode --input config_update_in_envelope.json --type common.Envelope --output ./config_update_in_envelope.pb
+  ```
+  {:codeblock}
+
+5. 시스템 채널로 업데이트를 전송하십시오.
+  ```
+  peer channel update -f update_in_envelope.pb -c $CHANNEL_NAME -o $ORDERER_URL --tls --cafile $ORDERER_TLS_CERTIFICATE
+  ```
+  {:codeblock}
 
 ## 순서 지정자 로그 보기
 {: #icp-orderer-operate-orderer-view-logs}

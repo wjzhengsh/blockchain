@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-20"
+lastupdated: "2019-05-16"
+
+keywords: IBM Blockchain Platform, remote peer, AWS peer, AWS peers, multi-cloud
 
 subcollection: blockchain
 
@@ -39,7 +41,7 @@ AWS에 대한 자세한 정보는 [AWS 개요 문서 ![외부 링크 아이콘](
 ## 전제조건
 {: #remote-peer-aws-prerequisites}
 
-{{site.data.keyword.blockchainfull_notm}} Platform for AWS 피어(원격 피어)를 사용하려면 IBM Blockchain Platform에서 호스팅되는 블록체인 네트워크의 구성원인 조직이 있어야 합니다. 네트워크 인증 정보 및 네트워크의 API 엔드포인트에 액세스하려면 IBM Cloud에서 네트워크 모니터를 사용해야 합니다. 블록체인 네트워크의 구성원이 아니면 네트워크를 작성하거나 참여해야 합니다. 자세한 정보는 [네트워크 작성](/docs/services/blockchain/get_start.html#getting-started-with-enterprise-plan-create-network) 또는 [네트워크에 가입](/docs/services/blockchain/get_start.html#getting-started-with-enterprise-plan-join-nw)을 참조하십시오.
+{{site.data.keyword.blockchainfull_notm}} Platform for AWS 피어(원격 피어)를 사용하려면 {{site.data.keyword.blockchainfull_notm}} Platform에서 호스팅되는 블록체인 네트워크의 구성원인 조직이 있어야 합니다. 네트워크 인증 정보 및 네트워크의 API 엔드포인트에 액세스하려면 IBM Cloud에서 네트워크 모니터를 사용해야 합니다. 블록체인 네트워크의 구성원이 아니면 네트워크를 작성하거나 가입해야 합니다. 자세한 정보는 [네트워크 작성](/docs/services/blockchain/get_start.html#getting-started-with-enterprise-plan-create-network) 또는 [네트워크에 가입](/docs/services/blockchain/get_start.html#getting-started-with-enterprise-plan-join-nw)을 참조하십시오.
 
 피어에 대한 기본 VPC 인스턴스 유형은 `m4.xlarge`입니다.  CPU, 메모리 및 스토리지 요구사항에 따라 선택한 인스턴스 유형을 최적화해야 합니다. 피어를 사용하려면 최소 다음과 같은 항목이 필요합니다.  
 -	2x CPU
@@ -104,7 +106,7 @@ echo -e "<CERT>" > admin.pem
 ## 3단계: {{site.data.keyword.blockchainfull_notm}} Platform for AWS 피어 등록
 {: #remote-peer-aws-register-peer}
 
-{{site.data.keyword.blockchainfull_notm}} Platform for AWS 피어를 네트워크에 참여시키려면 먼저 {{site.data.keyword.blockchainfull_notm}} Platform의 네트워크에 새 피어 ID를 추가해야 합니다. 피어를 등록하려면 다음 단계를 완료하십시오.
+{{site.data.keyword.blockchainfull_notm}} Platform for AWS 피어를 네트워크에 가입시키려면 먼저 {{site.data.keyword.blockchainfull_notm}} Platform의 네트워크에 새 피어 ID를 추가해야 합니다. 피어를 등록하려면 다음 단계를 완료하십시오.
 
 **참고:** 고가용성의 경우 빠른 시작 템플리트에서 두 개의 가용성 구역에 두 개의 피어 노드를 작성합니다. 따라서 두 개의 등록 ID 및 시크릿이 필요합니다. **이 프로세스를 두 번 반복하여 두 개의 등록 ID 및 시크릿을 생성하십시오.**
 
@@ -117,7 +119,7 @@ echo -e "<CERT>" > admin.pem
   - **등록 시크릿:** 피어를 구성할 때 `enroll Secret`으로 참조되는 피어에 사용할 비밀번호입니다. 나중에 사용하기 위해 **이 값을 저장**하십시오.
   - **유형:** 이 필드의 `peer`를 선택하십시오.
   - **소속:** 사용자 조직(예: `org1`)에서 피어가 속할 소속입니다. 새 소속을 지정하거나 기존 소속을 사용할 수 있습니다.
-  - **최대 등록 수:** 이 ID를 사용하여 인증서를 등록하거나 생성할 수 있는 횟수를 제한하는 데 이 필드를 사용할 수 있습니다. 값을 지정하지 않으면 무제한 등록으로 기본값이 지정됩니다.
+  - **최대 등록 수:** 이 필드를 사용하여 이 ID로 인증서를 등록하거나 생성할 수 있는 횟수를 제한할 수 있습니다. 값을 지정하지 않으면 무제한 등록으로 기본값이 지정됩니다.
 
   필드를 채운 후 **제출**을 클릭하여 피어를 등록하십시오. 이제 등록된 피어가 네트워크 상의 ID로 테이블에 나열됩니다. 보안 조치로 각 ID 및 수반하는 enrollID 및 secret을 사용하여 하나의 피어만 배치하십시오. 피어 ID 및 비밀번호를 재사용하지 마십시오.
 
@@ -126,7 +128,7 @@ echo -e "<CERT>" > admin.pem
 
 이 빠른 시작 참조 배치를 실행하는 동안에 사용되는 AWS 서비스의 비용에 대해서는 사용자에게 책임이 있습니다. 이 빠른 시작을 사용하기 위한 추가 비용은 존재하지 않습니다. 자세한 정보는 이 빠른 시작에서 사용할 각각의 AWS 서비스에 대한 가격 페이지를 참조하십시오. 가격은 변경될 수 있습니다.
 
-1. 다음 옵션 중 하나를 선택하여 AWS CloudFormation 템플리트를 AWS 계정으로 실행하십시오. 옵션을 선택하는 데 도움이 되는 정보는 이 안내서의 전반에 있는 배치 옵션을 참조하십시오. 각각의 배치를 완료하기 위해 약 10분 정도가 소요됩니다.  
+1. 다음 옵션 중 하나를 선택하여 AWS CloudFormation 템플리트를 AWS 계정으로 실행하십시오. 옵션 선택에 대한 도움말은 이 안내서의 전반에 있는 배치 옵션을 참조하십시오. 각각의 배치를 완료하기 위해 약 10분 정도가 소요됩니다.  
 
   * [{{site.data.keyword.blockchainfull_notm}} Platform for AWS를 AWS의 새 VPC에 배치 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://fwd.aws/v43nk " {{site.data.keyword.blockchainfull_notm}} Platform for AWS를 AWS의 새 VPC에 배치")합니다.  
 
@@ -135,7 +137,7 @@ echo -e "<CERT>" > admin.pem
   **중요:**     
   {{site.data.keyword.blockchainfull_notm}} Platform for AWS를 기존 VPC에 배치하는 경우 VPC에서 데이터베이스 인스턴스에 대한 서로 다른 가용성 구역에 두 개의 공용 서브넷이 있어야 합니다. 이러한 서브넷의 경우 인스턴스가 인터넷에 노출되지 않은 상태로 패키지 및 소프트웨어를 다운로드할 수 있도록 해당 라우트 테이블에 NAT 게이트웨이 또는 NAT 인스턴스가 있어야 합니다. Amazon VPC 문서에서 설명하는 것처럼 DHCP 옵션에 도메인 이름 옵션도 구성되어 있어야 합니다.  
 
-  또한 기존 VPC에 연결된 보안 그룹을 작성한 후 이 보안 그룹에 포트 22 및 7051에 대한 인바운드 규칙을 추가해야 합니다. 포트 22의 TCP 연결은 SSH에서 생성된 인스턴스에 액세스할 수 있도록 해주며, 포트 7051의 TCP 연결은 외부 gRPC에서 피어 인스턴스에 액세스할 수 있도록 해줍니다(Fabric 도구 CLI 및 Fabric SDK를 사용하여 피어를 작동시키는 경우에 필요함). 빠른 시작을 실행할 때 이러한 VPC 설정을 요청하는 프롬프트가 표시됩니다.
+  또한 기존 VPC에 연결된 보안 그룹을 작성한 후 이 보안 그룹에 포트 22 및 7051에 대한 인바운드 규칙을 추가해야 합니다. 포트 22의 TCP 연결은 SSH에서 생성된 인스턴스에 액세스할 수 있도록 해주며 포트 7051의 TCP 연결은 외부 gRPC에서 피어 인스턴스에 액세스할 수 있도록 해줍니다(Fabric 도구 CLI 및 Fabric SDK를 사용하여 피어를 작동시키는 경우에 필요함). 빠른 시작을 실행할 때 이러한 VPC 설정을 요청하는 프롬프트가 표시됩니다.
 
 2. 탐색줄의 오른쪽 상단 구성에 표시된 지역을 확인한 후 필요에 따라 변경하십시오. 이 지역은 피어를 위한 네트워크 인프라가 빌드될 위치입니다. 템플리트는 기본적으로 미국 동부(오하이오) 지역에서 실행됩니다.
 
@@ -167,20 +169,20 @@ echo -e "<CERT>" > admin.pem
 | `InstanceType` | 피어 인스턴스를 위한 EC2 인스턴스 유형입니다. | m4.xlarge |
 | `KeyPairName` |AWS 지역 내에 있는 기존 EC2 키 쌍의 이름입니다. 이 항목은 반드시 생성해야 합니다. | |
 | | | |
-|** IBM Blockchian 구성** | |
-| `IBMBlockchainVersion` | 배치할 IBM Blockchain 버전입니다. | 1.2.1 |
+|** {{site.data.keyword.blockchainfull_notm}} 구성** | |
+| `IBMBlockchainVersion` | 배치할 {{site.data.keyword.blockchainfull_notm}} 버전입니다. | 1.2.1 |
 | `StateDatabase` | 블록체인 상태를 저장하기 위해 사용할 데이터베이스의 유형입니다. 이 선택사항은 나머지 네트워크에서 사용되는 상태 데이터베이스 유형과 일치해야 합니다. |CouchDB|
 | `PeerVolumeSize` | 피어를 위한 지속적 데이터(원장, 상태 데이터베이스, MSP)를 저장하기 위해 사용되는 EBS 볼륨의 크기(GB)입니다. | 100 |
-| `Peer 1 enroll ID`| IBM Blockchain Platform UI 인증 기관 패널에서 첫 번째 피어에 대해 입력한 등록 ID입니다. |  |
-| `Peer 1 enroll secret` | IBM Blockchain Platform UI 인증 기관 패널에서 첫 번째 피어에 대해 입력한 등록 시크릿입니다. | |
-| `Peer 2 enroll ID` | IBM Blockchain Platform UI 인증 기관 패널에서 두 번째 피어에 대해 입력한 등록 ID입니다. | |
-| `Peer 2 enroll secret` | IBM Blockchain Platform UI 인증 기관 패널에서 두 번째 피어에 대해 입력한 등록 시크릿입니다. | |
+| `Peer 1 enroll ID`| {{site.data.keyword.blockchainfull_notm}} Platform UI 인증 기관 패널에서 첫 번째 피어에 대해 입력한 등록 ID입니다. |  |
+| `Peer 1 enroll secret` | {{site.data.keyword.blockchainfull_notm}} Platform UI 인증 기관 패널에서 첫 번째 피어에 대해 입력한 등록 시크릿입니다. | |
+| `Peer 2 enroll ID` | {{site.data.keyword.blockchainfull_notm}} Platform UI 인증 기관 패널에서 두 번째 피어에 대해 입력한 등록 ID입니다. | |
+| `Peer 2 enroll secret` | {{site.data.keyword.blockchainfull_notm}} Platform UI 인증 기관 패널에서 두 번째 피어에 대해 입력한 등록 시크릿입니다. | |
 | | | |
 |**IBM Blockchain 서비스 인증 정보**| | |
-| `Organization MSP` | 이 값은 IBM Blockchain Platform UI에서 찾을 수 있습니다. 개요 패널에서 원격 피어 구성 단추를 클릭한 후 해당 정보를 복사하여 여기에 붙여넣으십시오. | |
-| `Certificate Authority (CA) Name` | 이 값은 IBM Blockchain Platform UI에서 찾을 수 있습니다. 개요 패널에서 원격 피어 구성 단추를 클릭한 후 해당 정보를 복사하여 여기에 붙여넣으십시오.| |
-| `Certificate Authority (CA) URL` | 이 값은 IBM Blockchain Platform UI에서 찾을 수 있습니다. 개요 패널에서 원격 피어 구성 단추를 클릭한 후 해당 정보를 복사하여 여기에 붙여넣으십시오(포트 포함). 지정되지 않은 경우 기본 포트는 443입니다. | |
-| `Certificate Authority (CA)  TLS Certificate`| 이 값은 IBM Blockchain Platform UI에서 찾을 수 있습니다. 개요 패널에서 원격 피어 구성 단추를 클릭한 후 해당 정보를 복사하여 여기에 붙여넣으십시오.| |
+| `Organization MSP` | 이 값은 {{site.data.keyword.blockchainfull_notm}} Platform UI에서 찾을 수 있습니다. 개요 패널에서 원격 피어 구성 단추를 클릭한 후 해당 정보를 복사하여 여기에 붙여넣으십시오. | |
+| `Certificate Authority (CA) Name` | 이 값은 {{site.data.keyword.blockchainfull_notm}} Platform UI에서 찾을 수 있습니다. 개요 패널에서 원격 피어 구성 단추를 클릭한 후 해당 정보를 복사하여 여기에 붙여넣으십시오.| |
+| `Certificate Authority (CA) URL` | 이 값은 {{site.data.keyword.blockchainfull_notm}} Platform UI에서 찾을 수 있습니다. 개요 패널에서 원격 피어 구성 단추를 클릭한 후 해당 정보를 복사하여 여기에 붙여넣으십시오(포트 포함). 지정되지 않은 경우 기본 포트는 443입니다. | |
+| `Certificate Authority (CA)  TLS Certificate`| 이 값은 {{site.data.keyword.blockchainfull_notm}} Platform UI에서 찾을 수 있습니다. 개요 패널에서 원격 피어 구성 단추를 클릭한 후 해당 정보를 복사하여 여기에 붙여넣으십시오.| |
 | | | |
 |**기타 매개변수**| | |
 | `QSS3BucketName` | 빠른 시작 자산을 위한 S3 버킷 이름입니다. 빠른 시작 버킷 이름에는 숫자, 소문자, 대문자 및 하이픈(-)을 포함시킬 수 있습니다. 하이픈(-)으로 시작되거나 끝나서는 안됩니다. | `aws-quickstart` |
@@ -204,11 +206,11 @@ echo -e "<CERT>" > admin.pem
 
  - VPC에서 데이터베이스 인스턴스에 대한 서로 다른 가용성 구역에 두 개의 개인용 서브넷이 있어야 합니다. 이러한 서브넷의 경우 인스턴스가 인터넷에 노출되지 않은 상태로 패키지 및 소프트웨어를 다운로드할 수 있도록 해당 라우트 테이블에 NAT 게이트웨이 또는 NAT 인스턴스가 있어야 합니다.
 
- - [Amazon VPC 문서 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_DHCP_Options.html "DHCP 옵션 세트")의 설명에 따라 DHCP 옵션에 도메인 이름 옵션을 구성하십시오.  
+ - [Amazon VPC 문서 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_DHCP_Options.html "DHCP 옵션 세트")의 설명에 따라 DHCP 옵션에 도메인 이름 옵션을 구성하십시오.  
 
-- 기존 VPC에 연결된 보안 그룹을 작성한 후 이 보안 그룹에 포트 22 및 7051에 대한 인바운드 규칙을 추가하십시오. 포트 22의 TCP 연결은 SSH에서 생성된 인스턴스에 액세스할 수 있도록 해주며, 포트 7051의 TCP 연결은 외부 gRPC에서 피어 인스턴스에 액세스할 수 있도록 해줍니다(Fabric 도구 CLI 및 Fabric SDK를 사용하여 피어를 작동시키는 경우에 필요함). 빠른 시작을 실행할 때 이러한 VPC 설정을 요청하는 프롬프트가 표시됩니다.
+- 기존 VPC에 연결된 보안 그룹을 작성한 후 이 보안 그룹에 포트 22 및 7051에 대한 인바운드 규칙을 추가하십시오. 포트 22의 TCP 연결은 SSH에서 생성된 인스턴스에 액세스할 수 있도록 해주며 포트 7051의 TCP 연결은 외부 gRPC에서 피어 인스턴스에 액세스할 수 있도록 해줍니다(Fabric 도구 CLI 및 Fabric SDK를 사용하여 피어를 작동시키는 경우에 필요함). 빠른 시작을 실행할 때 이러한 VPC 설정을 요청하는 프롬프트가 표시됩니다.
 
- {{site.data.keyword.blockchainfull_notm}} Platform for AWS 피어를 기존 VPC에 배치하는 경우 다음 매개변수가 [상기](/docs/services/blockchain/howto/remote_peer_aws.html#remote-peer-aws-parameters-newvpc) 해당 섹션의 매개변수를 대체합니다.
+ {{site.data.keyword.blockchainfull_notm}} Platform for AWS 피어를 기존 VPC에 배치하는 경우 다음 매개변수가 [위의](/docs/services/blockchain/howto/remote_peer_aws.html#remote-peer-aws-parameters-newvpc) 해당 섹션에 있는 매개변수를 대체합니다.
 
 |매개변수    |설명 | 기본값 |
 | --------------|-------------|---------|
@@ -313,7 +315,7 @@ AWS CloudFormation 템플리트에서 정상적으로 스택을 작성하면 AWS
 
 4. 다음 피어 CLI 명령을 실행하여 채널의 최초 블록을 페치하십시오.
 
-   **중요:** 다음 명령에서 표시되는 각각의 `<PEER_ENROLL_ID>`를 빠른 시작 템플리트에 지정되어 있는 해당 피어 인스턴스와 연관된 등록 ID로 대체하십시오. 이 값은 `ls /etc/hyperledger/` 명령을 실행하여 찾을 수 있습니다. 두 개의 폴더가 나열됩니다. 하나는 `fabric`이고, 다른 하나는 `<PEER_ENROLL_ID>`입니다.
+   **중요:** 다음 명령에서 표시되는 각각의 `<PEER_ENROLL_ID>`를 빠른 시작 템플리트에서 지정된 해당 피어 인스턴스와 연관된 등록 ID로 대체하십시오. 이 값은 `ls /etc/hyperledger/` 명령을 실행하여 찾을 수 있습니다. 두 개의 폴더가 나열됩니다. 하나는 `fabric`이고, 다른 하나는 `<PEER_ENROLL_ID>`입니다.
 
    ```
    CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/<PEER_ENROLL_ID>/tls/ca.crt CORE_PEER_TLS_ENABLED=true CORE_PEER_ADDRESS=${PEERADDR} CORE_PEER_LOCALMSPID=${ORGID} CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/<PEER_ENROLL_ID>/msp/ GOPATH=/ peer channel fetch 0 -o ${ORDERER_1} -c ${CHANNEL} --cafile /etc/hyperledger/<PEER_ENROLL_ID>/orderer_tlscacert.pem --tls
@@ -350,10 +352,10 @@ AWS CloudFormation 템플리트에서 정상적으로 스택을 작성하면 AWS
 * **A**. AWS CloudFormation에서 스택을 작성하는 데 실패하는 경우 실패 시 롤백을 `No`로 설정한 상태로 템플리트를 재실행할 것을 권장합니다. (이 설정은 AWS CloudFormation 콘솔의 옵션 페이지에 있는 고급 아래에 있습니다.) 이 설정을 사용하는 경우 스택의 상태가 유지되고 인스턴스가 실행 중인 상태로 유지되므로 문제를 해결할 수 있습니다. (`%ProgramFiles%\Amazon\EC2ConfigService` 및 `C:\cfn\log`에 있는 로그 파일을 확인하십시오.)
 
   - 실패 시 롤백을 `No`로 설정하는 경우 이 스택에 대한
-  AWS 비용이 계속 발생합니다. 문제점이 해결된 후에는 스택을 삭제해야 합니다. 추가 정보는 AWS 웹 사이트의 [AWS CloudFormation 문제점 해결 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/troubleshooting.html "AWS CloudFormation 문제점 해결")을 참조하십시오.
+  AWS 비용이 계속 발생합니다. 문제점이 해결된 후에는 스택을 삭제해야 합니다. 자세한 정보는 AWS 웹 사이트의 [AWS CloudFormation 문제점 해결 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/troubleshooting.html "AWS CloudFormation 문제점 해결")을 참조하십시오.
 
 * **Q**. AWS Cloudformation 템플리트를 배치할 때 크기 제한 오류가 발생합니다.
-* **A**. IBM에서 제공한 위치 또는 다른 S3 버킷에서 빠른 시작 템플리트를 실행할 것을 권장합니다. 컴퓨터의 로컬 사본에서 또는 비S3 위치에서 템플리트를 배치하는 경우 스택을 작성할 때 템플리트 크기 제한사항이 발생할 수 있습니다. AWS CloudFormation 제한사항에 대한 자세한 정보는 [AWS 문서 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cloudformation-limits.html "AWS CloudFormation 제한사항")을 참조하십시오.
+* **A**. IBM에서 제공한 위치 또는 다른 S3 버킷에서 빠른 시작 템플리트를 실행할 것을 권장합니다. 컴퓨터의 로컬 사본에서 또는 비S3 위치에서 템플리트를 배치하는 경우 스택을 작성할 때 템플리트 크기 제한사항이 발생할 수 있습니다. AWS CloudFormation 제한사항에 대한 자세한 정보는 [AWS 문서 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cloudformation-limits.html "AWS CloudFormation 제한사항")을 참조하십시오.
 
 ## 다음에 수행할 작업
 {: #remote-peer-aws-whats-next}
@@ -426,7 +428,7 @@ In {{site.data.keyword.blockchainfull_notm}} Platform when a private key is crea
 #### Membership Services Provider 구성
 {: #remote-peer-aws-security-MSP}
 
-IBM Blockchain Platform의 컴포넌트는 MSP(Membership Service Provider)를 통해 ID를 이용합니다. MSP는 CA에서 발행하는 인증서를 네트워크 및 채널 역할과 연관시킵니다. 피어에서 MSP가 작동하는 방법에 대한 자세한 정보는 이 [주제](/docs/services/blockchain/certificates.html#managing-certificates-msp)를 참조하십시오.
+{{site.data.keyword.blockchainfull_notm}} Platform의 컴포넌트에서는 MSP(Membership Services Provider)를 통해 ID를 이용합니다. MSP는 CA에서 발행하는 인증서를 네트워크 및 채널 역할과 연관시킵니다. 피어에서 MSP가 작동하는 방법에 대한 자세한 정보는 이 [주제](/docs/services/blockchain/certificates.html#managing-certificates-msp)를 참조하십시오.
 
 #### 애플리케이션 보안
 {: #remote-peer-aws-security-appl}

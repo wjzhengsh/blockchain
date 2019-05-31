@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-04-17"
+lastupdated: "2019-05-16"
 
 subcollection: blockchain
 
@@ -20,7 +20,7 @@ subcollection: blockchain
 # Kubernetes
 {: #k8s-overview}
 
-{{site.data.keyword.blockchainfull_notm}} Platform 2.0 無料ベータ版のコンソールを Kubernetes クラスターにデプロイする時には、{{site.data.keyword.cloud_notm}} Kubernetes Service を使用します。 Kubernetes は、コンテナー化されたアプリケーションの自動デプロイ、自動スケーリング、および自動管理を行うためのオープン・ソース・システムです。
+{{site.data.keyword.blockchainfull_notm}} Platform により、{{site.data.keyword.cloud_notm}} Kubernetes クラスターにブロックチェーン・コンポーネントをプロビジョンできます。Kubernetes は、コンテナー化されたアプリケーションの自動デプロイ、自動スケーリング、および自動管理を行うためのオープン・ソース・システムです。
 {:shortdesc}
 
 Kubernetes では、コンテナーを中心にした管理環境を利用できます。 この環境を利用して、ユーザー・ワークロードのための、コンピューティング・インフラストラクチャー、ネットワーク・インフラストラクチャー、ストレージ・インフラストラクチャーのオーケストレーションを行います。 Platform as a Service (PaaS) のシンプルな環境に Infrastructure as a Service (IaaS) の柔軟性を組み合わせることによって、インフラストラクチャー・プロバイダー間のポータビリティーを実現しています。

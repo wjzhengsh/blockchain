@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-04-23"
+lastupdated: "2019-05-16"
+
+keywords: TLS CA, IBM Blockchain Platform, peer, deploy peers, CouchDB container use Kubernetes, IBM Cloud
 
 subcollection: blockchain
 
@@ -364,7 +366,7 @@ export FABRIC_CA_CLIENT_HOME=$HOME/fabric-ca-client/tlsca-admin
   ```
   {:codeblock}
 
-  このコマンドの `<enroll_id>` および `<enroll_password>` は、認証局のデプロイ時に Kubernetes シークレットに渡した [CA 管理者ユーザーの名前とパスワード](/docs/services/blockchain/howto/CA_deploy.html#ca-deploy-admin-secret)です。`<ca_url_with_port>` 内に [CA URL](/docs/services/blockchain/howto/CA_operate.html#ca-operate-url) を挿入します。 先頭の `http://` は省略します。 `<tls_ca_name>` は、[CA の構成](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-configuration-parms)時に指定した値です。
+  このコマンドの `<enroll_id>` および `<enroll_password>` は、認証局のデプロイ時に Kubernetes シークレットに渡した [CA 管理者ユーザーの名前とパスワード](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-admin-secret)です。 `<ca_url_with_port>` 内に [CA URL](/docs/services/blockchain/howto/CA_operate.html#ca-operate-url) を挿入します。 先頭の `http://` は省略します。 `<tls_ca_name>` は、[CA の構成](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-configuration-parms)時に指定した値です。
 
   `<ca_tls_cert_file>` は、[CA TLS 証明書](/docs/services/blockchain/howto/CA_operate.html#ca-operate-tls)のファイル名と絶対パスです。
 
@@ -489,6 +491,7 @@ tree
 ピアをデプロイするための CSR ホスト名を指定する必要があります。 CSR ホスト名には、コンポーネントのデプロイ先となるクラスターのプロキシー IP アドレスと、Helm チャートのホスト名となる`サービス・ホスト名`が含まれます。
 
 #### クラスター・プロキシー IP アドレスの値の取得
+{: #ibp-peer-deploy-cluster-proxy-ip}
 
 TLS CA をデプロイしたのと同じ {{site.data.keyword.cloud_notm}} Private クラスターにピアをデプロイする場合は、[TLS CA 向けに構成](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-configuration-parms)したときに使用したものと同じプロキシー IP を入力します。 コンポーネントを別のクラスターにデプロイする場合は、{{site.data.keyword.cloud_notm}} Private コンソールからクラスター・プロキシー IP アドレスの値を取得できます。 ピアのデプロイ先となる {{site.data.keyword.cloud_notm}} Private クラスターのクラスター管理者役割が必要です。
 
@@ -557,7 +560,7 @@ TLS CA をデプロイしたのと同じ {{site.data.keyword.cloud_notm}} Privat
 ```
 {:codeblock}
 
-このファイルへの入力が完了したら、このファイルを JSON 形式で保存して、Kurbernetes 秘密としてピア・デプロイメントに渡す必要があります。 [次のセクション](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-config-file-ibp)の手順に従って、この秘密を作成します。
+このファイルへの入力が完了したら、このファイルを JSON 形式で保存して、Kubernetes 秘密としてピア・デプロイメントに渡す必要があります。 [次のセクション](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-config-file-ibp)の手順に従って、この秘密を作成します。
 
 ## 構成の秘密の作成
 {: #ibp-peer-deploy-config-file-ibp}
@@ -607,7 +610,7 @@ TLS CA をデプロイしたのと同じ {{site.data.keyword.cloud_notm}} Privat
     ```
     {:code_block}
 
-   2. **「名前」**フィールドに、`couchdbuser` という値を入力します。 対応する**「値」**フィールドに、上記のステップ 1 で実行した `echo -n 'couch' | base64 $FLAG` の結果を入力します。
+   2. **「名前」**フィールドに、`couchdbusr` という値を入力します。 対応する**「値」**フィールドに、上記のステップ 1 で実行した `echo -n 'couch' | base64 $FLAG` の結果を入力します。
    3. **「データの追加」**ボタンをクリックして、2 番目のキーと値のペアを追加します。
    4. 2 つ目の**「名前」**フィールドに、`couchdbpwd` という値を入力します。 対応する**「値」**フィールドに、上記のステップ 1 で実行した `echo -n 'couchpw' | base64 $FLAG` の結果を入力します。
 
@@ -641,7 +644,7 @@ TLS CA をデプロイしたのと同じ {{site.data.keyword.cloud_notm}} Privat
 |**一般パラメーター**| Helm チャートを構成するパラメーター | | |
 | `Helm リリース名 (Helm release name)`| Helm リリースの名前。 小文字で始まり、任意の英数字で終わる必要があり、ハイフンと小文字の英数字のみを含む必要があります。 コンポーネントのインストールを試行するたびに固有の Helm リリース名を使用する必要があります。 **重要:** この値は、[JSON 秘密ファイル](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-csr-hosts)の「hosts」フィールドで「サービス・ホスト名」を生成する際に使用した値と一致する必要があります。 | なし | はい  |
 | `ターゲット名前空間 (Target namespace)`| Helm チャートをインストールする Kubernetes 名前空間を選択します。 | なし | はい |
-| `ターゲット名前空間のポリシー (Target namespace policies)`| 選択した名前空間のポッド・セキュリティー・ポリシーが表示されます。**`ibm-privileged-psp`** ポリシーが含まれているはずです。そうでない場合は、その名前空間に [PodSecurityPolicy をバインド](/docs/services/blockchain?topic=blockchain-icp-setup#icp-setup-psp)してください。| なし | いいえ |
+| `ターゲット名前空間のポリシー (Target namespace policies)`| 選択した名前空間のポッド・セキュリティー・ポリシーが表示されます。**`ibm-privileged-psp`** ポリシーが含まれているはずです。 そうでない場合は、その名前空間に [PodSecurityPolicy をバインド](/docs/services/blockchain?topic=blockchain-icp-setup#icp-setup-psp)してください。 | なし | いいえ |
 |**グローバル構成 (Global configuration)**| Helm チャート内のすべてのコンポーネントに適用されるパラメーター|||
 | `サービス・アカウント名 (Service account name)`| ポッドの実行に使用する[サービス・アカウント ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/ "ポッドのサービス・アカウントの構成") の名前を入力します。 | デフォルト | いいえ |
 
@@ -680,12 +683,12 @@ TLS CA をデプロイしたのと同じ {{site.data.keyword.cloud_notm}} Privat
 | `状態データベースのボリューム・クレーム・サイズ (State database volume claim size)`| 使用するディスクのサイズを選択します。 | 8Gi | はい |
 | `CouchDB - データの永続性が有効 (CouchDB - Data persistence enabled)`| CouchDB コンテナーの場合は、コンテナーの再始動時に台帳データが使用可能になります。 *チェック・マークを外すと、フェイルオーバーやポッドの再始動の場合にすべてのデータが失われます。*| オン | いいえ |
 | `CouchDB - 動的プロビジョニングを使用 (CouchDB - Use dynamic provisioning)`| CouchDB コンテナーの場合は、Kubernetes 動的ストレージを使用します。| オン | いいえ |
-| `Docker-in-Docker CPU 要求 (Docker-in-Docker CPU request)`| チェーンコードを実行するコンテナーに割り振る CPU の最小数を指定します。| 1 | はい |
-| `Docker-in-Docker CPU 制限 (Docker-in-Docker CPU limit)`| チェーンコードを実行するコンテナーに割り振る CPU の最大数を指定します。| 2 | はい |
-| `Docker-in-Docker メモリー要求 (Docker-in-Docker memory request)`| チェーンコードを実行するコンテナーに割り振るメモリーの最小量を指定します。| 1Gi | はい |
-| `Docker-in-Docker メモリー制限 (Docker-in-Docker memory limit)`| チェーンコードを実行するコンテナーに割り振るメモリーの最大量を指定します。| 4Gi | はい |
-| `gRPC Web プロキシー CPU 要求 (gRPC web proxy CPU request)`| gRPC Web プロキシーに割り振る CPU の最小数 (millicpu (m) 単位) を指定します。| 100m | はい |
-| `gRPC Web プロキシー CPU 制限 (gRPC web proxy CPU limit)`| gRPC Web プロキシーに割り振る CPU の最大数 (millicpu (m) 単位) を指定します。| 200m | はい |
+| `Docker-in-Docker CPU 要求 (Docker-in-Docker CPU request)`| チェーンコードを実行するコンテナーに割り振る CPU の最小数を指定します。 | 1 | はい |
+| `Docker-in-Docker CPU 制限 (Docker-in-Docker CPU limit)`| チェーンコードを実行するコンテナーに割り振る CPU の最大数を指定します。 | 2 | はい |
+| `Docker-in-Docker メモリー要求 (Docker-in-Docker memory request)`| チェーンコードを実行するコンテナーに割り振るメモリーの最小量を指定します。 | 1Gi | はい |
+| `Docker-in-Docker メモリー制限 (Docker-in-Docker memory limit)`| チェーンコードを実行するコンテナーに割り振るメモリーの最大量を指定します。 | 4Gi | はい |
+| `gRPC Web プロキシー CPU 要求 (gRPC web proxy CPU request)`| gRPC Web プロキシーに割り振る CPU の最小数 (millicpu (m) 単位) を指定します。 | 100m | はい |
+| `gRPC Web プロキシー CPU 制限 (gRPC web proxy CPU limit)`| gRPC Web プロキシーに割り振る CPU の最大数 (millicpu (m) 単位) を指定します。 | 200m | はい |
 | `gRPC Web プロキシー・メモリー要求 (gRPC web proxy memory request)`| gRPC Web プロキシーに割り振る最小メモリー量を指定します。 | 100Mi | はい |
 | `gRPC Web プロキシー・メモリー制限 (gRPC web proxy memory limit)`| gRPC Web プロキシーに割り振る最大メモリー量を指定します。 | 200Mi | はい |
 | `ピア CPU 要求 (Peer CPU request)` | ピアに割り当てる CPU の最小数。 | 1 | はい |
@@ -778,6 +781,8 @@ helm install --name jnchart2 mycluster/ibm-blockchain-platform \
 ```
 
 ### **解決策:**
+{: #ibp-peer-deploy-ca-enroll-error-solution}
+
 特殊文字をコード表現するか、URL を単一引用符で囲む必要があります。 例えば、`!` を `%21` にするか、コマンドを次のように入力します。
 
 ```

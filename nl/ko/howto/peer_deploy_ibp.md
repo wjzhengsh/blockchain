@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-04-23"
+lastupdated: "2019-05-16"
+
+keywords: TLS CA, IBM Blockchain Platform, peer, deploy peers, CouchDB container use Kubernetes, IBM Cloud
 
 subcollection: blockchain
 
@@ -61,7 +63,7 @@ amd64 또는 s390x 플랫폼에 피어를 배치하도록 선택할 수 있습�
 
 2. Community Edition을 사용하고 인터넷 연결 없이 {{site.data.keyword.cloud_notm}} Private 클러스터에 이 Helm 차트를 실행하려면 아카이브를 {{site.data.keyword.cloud_notm}} Private 클러스터에 설치하기 전에 인터넷에 연결된 시스템에서 아카이브를 작성해야 합니다. 자세한 정보는 [인터넷 연결 없이 클러스터에 주요 애플리케이션 추가 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/app_center/add_package_offline.html "인터넷 연결 없이 클러스터에 주요 애플리케이션 추가"){:new_window}를 참조하십시오. Helm 차트의 ibm-blockchain-platform-dev/ibm_cloud_pak 아래에서 스펙 파일인 manifest.yaml을 찾을 수 있습니다.
 
-3. {{site.data.keyword.cloud_notm}}에서 스타터 플랜 또는 엔터프라이즈 플랜 네트워크의 멤버인 조직이 있어야 합니다. 피어에서는 {{site.data.keyword.blockchainfull_notm}} Platform 네트워크의 순서 지정 서비스, Hyperledger Fabric CA 및 API 엔드포인트를 활용하여 운영합니다. 블록체인 네트워크의 구성원이 아니면 네트워크를 작성하거나 참여해야 합니다. 자세한 정보는 [네트워크 작성](/docs/services/blockchain/get_start.html#getting-started-with-enterprise-plan-create-network) 또는 [네트워크에 가입](/docs/services/blockchain/get_start.html#getting-started-with-enterprise-plan-join-nw)을 참조하십시오.
+3. {{site.data.keyword.cloud_notm}}에서 스타터 플랜 또는 엔터프라이즈 플랜 네트워크의 멤버인 조직이 있어야 합니다. 피어에서는 {{site.data.keyword.blockchainfull_notm}} Platform 네트워크의 순서 지정 서비스, Hyperledger Fabric CA 및 API 엔드포인트를 활용하여 운영합니다. 블록체인 네트워크의 구성원이 아니면 네트워크를 작성하거나 가입해야 합니다. 자세한 정보는 [네트워크 작성](/docs/services/blockchain/get_start.html#getting-started-with-enterprise-plan-create-network) 또는 [네트워크에 가입](/docs/services/blockchain/get_start.html#getting-started-with-enterprise-plan-join-nw)을 참조하십시오.
 
 4. 먼저 {{site.data.keyword.cloud_notm}} Private에 [CA를 배치](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy)해야 합니다. TLS CA로 이 CA를 사용합니다. 피어를 배치하기 전에 {{site.data.keyword.cloud_notm}} Private에서 CA를 운영하기 위한 [전제조건 단계](/docs/services/blockchain/howto/CA_operate.html#ca-operate-prerequisites)를 따라야 합니다. 이 단계 이상으로 진행할 필요가 없습니다.
 
@@ -295,7 +297,7 @@ amd64 또는 s390x 플랫폼에 피어를 배치하도록 선택할 수 있습�
    ```
    LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tDQpNSUlFbERDQ0EzeWdBd0lCQWdJUUFmMmo2MjdLZGNpSVE0dHlTOCs4a1RBTkJna3Foa2lHOXcwQkFRc0ZBREJoDQpNUXN3Q1FZRFZRUUdFd0pWVXpFVk1CTUdBMVVFQ2hNTVJHbG5hVU5sY25RZ1NXNWpNUmt3RndZRFZRUUxFeEIzDQpkM2N1WkdsbmFXTmxjblF1WTI5dE1TQXdIZ1lEVlFRREV4ZEVhV2RwUTJWeWRDQkhiRzlpWVd3Z1VtOXZkQ0JEDQpRVEFlRncweE16QXpNRGd4TWpBd01EQmFGdzB5TXpBek1EZ3hNakF3TURCYU1FMHhDekFKQmdOVkJBWVRBbFZUDQpNUlV3RXdZRFZRUUtFd3hFYVdkcFEyVnlkQ0JKYm1NeEp6QWxCZ05WQkFNVEhrUnBaMmxEWlhKMElGTklRVElnDQpVMlZqZFhKbElGTmxjblpsY2lC
    ```
- 다음과 같이 표시되어서는 안됩니다.
+   다음과 같이 표시되어서는 안됩니다.
 
    ```
    LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tDQpNSUlFbERDQ0EzeWdBd0lCQWdJUUFmMmo2MjdL
@@ -349,7 +351,7 @@ Fabric CA 클라이언트를 사용하여 {{site.data.keyword.cloud_notm}} Priva
   ```
   {:codeblock}
 
-2. TLS CA의 관리자를 사용하여 등록해야 합니다. `$FABRIC_CA_CLIENT_HOME`를 TLS CA 관리자 인증서를 저장할 디렉토리로 변경하십시오.
+2. TLS CA의 관리자를 사용하여 등록해야 합니다. `$FABRIC_CA_CLIENT_HOME`을 TLS CA 관리자 인증서가 저장될 디렉토리로 변경하십시오.
 
   ```
   cd $HOME/fabric-ca-client
@@ -365,7 +367,7 @@ Fabric CA 클라이언트를 사용하여 {{site.data.keyword.cloud_notm}} Priva
   ```
   {:codeblock}
 
-  명령의 `<enroll_id>` 및 `<enroll_password>`는 인증 기관을 배치했을 때 Kubernetes 시크릿에 전달한 [CA 관리자 및 비밀번호](/docs/services/blockchain/howto/CA_deploy.html#ca-deploy-admin-secret)입니다. `<ca_url_with_port>` 내부에 [CA URL](/docs/services/blockchain/howto/CA_operate.html#ca-operate-url)을 삽입하십시오. 시작 부분에 `http://`를 포함하지 않아야 합니다. `<tls_ca_name>`은 [CA 구성](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-configuration-parms) 중에 지정된 값입니다.
+  명령의 `<enroll_id>` 및 `<enroll_password>`는 인증 기관을 배치했을 때 Kubernetes 시크릿에 전달한 [CA 관리자 및 비밀번호](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-admin-secret)입니다. `<ca_url_with_port>` 내부에 [CA URL](/docs/services/blockchain/howto/CA_operate.html#ca-operate-url)을 삽입하십시오. 시작 부분에 `http://`를 포함하지 않아야 합니다. `<tls_ca_name>`은 [CA 구성](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-configuration-parms) 중에 지정된 값입니다.
 
   `<ca_tls_cert_file>`은 전체 경로가 포함된 [CA TLS 인증서](/docs/services/blockchain/howto/CA_operate.html#ca-operate-tls) 파일입니다.
 
@@ -490,6 +492,7 @@ tree
 피어를 배치하려면 CSR 호스트 이름을 제공해야 합니다. CSR 호스트 이름에는 Helm 차트 호스트 이름이 될 `service host name`을 비롯하여 컴포넌트를 배치하는 클러스터의 프록시 IP 주소가 포함됩니다.
 
 #### 클러스터 프록시 IP 주소의 값 찾기
+{: #ibp-peer-deploy-cluster-proxy-ip}
 
 TLS CA를 배치한 동일한 {{site.data.keyword.cloud_notm}} Private 클러스터에 피어를 배치할 경우 동일한 [TLS CA에 대해 구성](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-configuration-parms)할 때 사용한 동일한 프록시 IP를 입력하십시오. 다른 클러스터에 컴포넌트를 배치할 경우 {{site.data.keyword.cloud_notm}} Private 콘솔에서 클러스터 프록시 IP 주소의 값을 검색할 수 있습니다. 사용자는 피어가 배치될 {{site.data.keyword.cloud_notm}} Private 클러스터의 클러스터 관리자 역할이 필요합니다.
 
@@ -558,7 +561,7 @@ TLS CA를 배치한 동일한 {{site.data.keyword.cloud_notm}} Private 클러스
 ```
 {:codeblock}
 
-이 파일의 채우기를 완료한 후 JSON 형식으로 이 파일을 저장하고 Kurbernetes 시크릿으로 이를 피어 배치에 전달해야 합니다. [다음 섹션](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-config-file-ibp)에 있는 단계를 사용하여 시크릿을 작성하십시오.
+이 파일의 채우기를 완료한 후 JSON 형식으로 이 파일을 저장하고 Kubernetes 시크릿으로 피어 배치에 전달해야 합니다. [다음 섹션](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-config-file-ibp)에 있는 단계를 사용하여 시크릿을 작성하십시오.
 
 ## 구성 시크릿 작성
 {: #ibp-peer-deploy-config-file-ibp}
@@ -578,7 +581,7 @@ TLS CA를 배치한 동일한 {{site.data.keyword.cloud_notm}} Private 클러스
    ```
    LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tDQpNSUlFbERDQ0EzeWdBd0lCQWdJUUFmMmo2MjdLZGNpSVE0dHlTOCs4a1RBTkJna3Foa2lHOXcwQkFRc0ZBREJoDQpNUXN3Q1FZRFZRUUdFd0pWVXpFVk1CTUdBMVVFQ2hNTVJHbG5hVU5sY25RZ1NXNWpNUmt3RndZRFZRUUxFeEIzDQpkM2N1WkdsbmFXTmxjblF1WTI5dE1TQXdIZ1lEVlFRREV4ZEVhV2RwUTJWeWRDQkhiRzlpWVd3Z1VtOXZkQ0JEDQpRVEFlRncweE16QXpNRGd4TWpBd01EQmFGdzB5TXpBek1EZ3hNakF3TURCYU1FMHhDekFKQmdOVkJBWVRBbFZUDQpNUlV3RXdZRFZRUUtFd3hFYVdkcFEyVnlkQ0JKYm1NeEp6QWxCZ05WQkFNVEhrUnBaMmxEWlhKMElGTklRVElnDQpVMlZqZFhKbElGTmxjblpsY2lC
    ```
- 다음과 같이 표시되어서는 안됩니다.
+   다음과 같이 표시되어서는 안됩니다.
 
    ```
    LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tDQpNSUlFbERDQ0EzeWdBd0lCQWdJUUFmMmo2MjdL
@@ -608,7 +611,7 @@ TLS CA를 배치한 동일한 {{site.data.keyword.cloud_notm}} Private 클러스
     ```
     {:code_block}
 
-   2. **이름** 필드에 `couchdbuser` 값을 입력하십시오. 해당 **값** 필드에 위의 1단계로 생성된 `echo -n 'couch' | base64 $FLAG`의 결과를 입력하십시오.
+   2. **이름** 필드에 `couchdbusr` 값을 입력하십시오. 해당 **값** 필드에 위의 1단계로 생성된 `echo -n 'couch' | base64 $FLAG`의 결과를 입력하십시오.
    3. **데이터 추가** 단추를 클릭하여 두 번째 키 값 쌍을 추가하십시오.
    4. 두 번째 **이름** 필드에 `couchdbpwd` 값을 입력하십시오. 해당 **값** 필드에 위의 1단계로 생성된 `echo -n 'couchpw' | base64 $FLAG`의 결과를 입력하십시오.
 
@@ -639,10 +642,10 @@ TLS CA를 배치한 동일한 {{site.data.keyword.cloud_notm}} Private 클러스
 
 |매개변수     |설명    | 기본값  | 필수 |
 | --------------|-----------------|-------|------- |
-|**일반 매개변수**| Helm 차트를 구성하는 매개변수입니다.| | |
+|**일반 매개변수**| Helm 차트를 구성하는 매개변수입니다. | | |
 | `Helm release name`| Helm 릴리스의 이름입니다. 소문자로 시작하고 영숫자 문자로 끝나야 하며 하이픈과 소문자의 영숫자 문자만 포함해야 합니다. 컴포넌트를 설치하려고 할 때마다 고유한 Helm 릴리스 이름을 사용해야 합니다. **중요:** 이 값은 [JSON 시크릿 파일](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-csr-hosts)의 "호스트" 필드에 대한 '서비스 호스트 이름'을 생성하는 데 사용한 값과 일치해야 합니다. | 없음 | 예  |
 | `Target namespace`| Helm 차트를 설치할 Kubernetes 네임스페이스를 선택합니다. | 없음 | 예 |
-| `Target namespace policies`| 선택한 네임스페이스의 팟(Pod) 보안 정책을 표시하며, 여기에는 **`ibm-privileged-psp`** 정책을 포함해야 합니다. 그렇지 않으면 네임스페이스에 [PodSecurityPolicy를 바인드](/docs/services/blockchain?topic=blockchain-icp-setup#icp-setup-psp)하십시오.| 없음 | 아니오 |
+| `Target namespace policies`| 선택한 네임스페이스의 팟(Pod) 보안 정책을 표시하며, 여기에는 **`ibm-privileged-psp`** 정책을 포함해야 합니다. 그렇지 않으면 네임스페이스에 [PodSecurityPolicy를 바인드](/docs/services/blockchain?topic=blockchain-icp-setup#icp-setup-psp)하십시오. | 없음 | 아니오 |
 |**글로벌 구성**| Helm 차트의 모든 컴포넌트에 적용하는 매개변수입니다.|||
 | `Service account name`| 팟(Pod)을 실행하는 데 사용할 [서비스 계정 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/ "팟(Pod)의 서비스 계정 구성")의 이름을 입력합니다. | 기본값 | 아니오 |
 
@@ -779,6 +782,8 @@ helm install --name jnchart2 mycluster/ibm-blockchain-platform \
 ```
 
 ### **솔루션:**
+{: #ibp-peer-deploy-ca-enroll-error-solution}
+
 특수 문자를 인코딩하거나 작은따옴표로 url을 묶어야 합니다. 예를 들어, `!`가 `%21`이 되거나 다음과 유사하게 표시됩니다.
 
 ```

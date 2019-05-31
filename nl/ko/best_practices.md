@@ -2,7 +2,9 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-03-20"
+lastupdated: "2019-03-22"
+
+keywords: best practices, develop applications, connectivity, availability, mutual TLS, CouchDB
 
 subcollection: blockchain
 
@@ -26,7 +28,7 @@ subcollection: blockchain
 ## 애플리케이션 연결성 및 가용성
 {: #best-practices-app-connectivity-availability}
 
-Hyperledger Fabric [트랜잭션 플로우 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/txflow.html "트랜잭션 플로우"){:new_window}는 고유한 역할을 수행하는 클라이언트 애플리케이션과 함께 여러 컴포넌트를 포함합니다. SDK에서는 인증을 위해 피어에 트랜잭션 제안을 제출합니다. 그런 다음 순서 지정 서비스에 보낼 인증된 제안을 수집한 후 채널 원장에 추가할 피어에 트랜잭션 블록을 보냅니다. 프로덕션 애플리케이션 개발자는 효율성과 가용성을 위해 SDK와 네트워크 사이의 상호작용을 관리하도록 준비해야 합니다.
+Hyperledger Fabric [트랜잭션 플로우 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/txflow.html "트랜잭션 플로우"){:new_window}는 고유한 역할을 수행하는 클라이언트 애플리케이션과 함께 여러 컴포넌트를 포함합니다. SDK에서는 인증을 위해 피어에 트랜잭션 제안을 제출합니다. 그런 다음 순서 지정 서비스에 보낼 인증된 제안을 수집한 후 채널 원장에 추가할 피어에 트랜잭션 블록을 보냅니다. 프로덕션 애플리케이션 개발자는 효율성과 가용성을 위해 SDK와 네트워크 사이의 상호작용을 관리하도록 준비해야 합니다.
 
 ### 트랜잭션 관리
 {: #best-practices-app-managing-transactions}
@@ -158,7 +160,7 @@ channel.sendInstantiateProposal(request, 300000);
 
 CouchDB를 상태 데이터베이스로 사용하는 경우, 채널의 상태 데이터에 대해 체인코드에서 JSON 데이터 조회를 시작할 수 있습니다. JSON 조회를 위한 색인을 작성한 후 체인코드에서 해당 색인을 사용할 것을 적극 권장합니다. 색인을 사용하는 경우 네트워크에서 트랜잭션 및 항목의 추가 블록을 세계 상태로 추가할 때 애플리케이션에서 효율적으로 데이터를 검색할 수 있습니다.
 
-CouchDB에 대한 자세한 정보 및 색인을 설정하는 방법은 Hyperledger Fabric 문서의 [상태 데이터베이스로서의 CouchDB![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/couchdb_as_state_database.html "상태 데이터베이스로서의 CouchDB"){:new_window}을 참조하십시오. [Fabric CouchDB 튜토리얼 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/couchdb_tutorial.html)에서 체인코드의 색인을 사용하는 예제도 찾을 수 있습니다.
+CouchDB에 관한 자세한 정보와 인덱스 작성 방법은 Hyperledger Fabric 문서에서 [상태 데이터베이스로서의 CouchDB![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/couchdb_as_state_database.html "상태 데이터베이스로서의 CouchDB"){:new_window}를 참조하십시오. [Fabric CouchDB 튜토리얼 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/couchdb_tutorial.html)에서 체인코드의 색인을 사용하는 예제도 찾을 수 있습니다.
 
 전체 CouchDB 데이터베이스 스캔을 유발하는 조회를 위해 체인코드를 사용하지 마십시오. 전체 데이터베이스 스캔을 실행하면 긴 응답 시간이 필요하게 되어 네트워크의 성능이 저하됩니다. 다음 단계 중 일부를 수행하여 대형 조회를 방지할 수 있습니다.
 - 체인코드의 색인을 설정하십시오.
@@ -166,7 +168,7 @@ CouchDB에 대한 자세한 정보 및 색인을 설정하는 방법은 Hyperled
 - 조회가 복잡할수록 성능이 더 저하되고 색인을 사용할 가능성이 줄어듭니다.
 - 전체 테이블 스캔 또는 전체 색인 스캔을 유발하는 연산자(예: `$or`, `$in` 및 `$regex`)를 사용하지 않도록 해야 합니다.
 
-[Fabric CouchDB 튜토리얼] ![외부 링크 아이콘](https://hyperledger-fabric.readthedocs.io/en/release-1.2/couchdb_tutorial.html#use-best-practices-for-queries-and-indexes)에서 조회가 색인을 사용하는 방법과 최상의 성능을 제공하는 조회의 유형을 보여주는 예제를 찾을 수 있습니다.
+[Fabric CouchDB 튜토리얼] ![외부 링크 아이콘](https://hyperledger-fabric.readthedocs.io/en/release-1.4/couchdb_tutorial.html#use-best-practices-for-queries-and-indexes)에서 조회가 색인을 사용하는 방법과 최상의 성능을 제공하는 조회의 유형을 보여주는 예제를 찾을 수 있습니다.
 
 {{site.data.keyword.blockchainfull_notm}} Platform의 피어에는 queryLimit가 설정되어
 있으며 상태 데이터베이스에서 10,000개의 항목만 리턴합니다. 조회가 queryLimit에 도달하면

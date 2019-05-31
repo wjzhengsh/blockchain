@@ -2,7 +2,9 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-04-23"
+lastupdated: "2019-05-16"
+
+keywords: troubleshooting, debug, why, what does this mean, how can I, when I 
 
 subcollection: blockchain
 
@@ -36,7 +38,7 @@ Estado no detectable, ¿qué significa esto?](#ibp-v2-troubleshooting-status-und
 - [Mi canal, los contratos inteligentes y las identidades han desaparecido de la consola. ¿Cómo puedo recuperarlos?](/docs/services/blockchain/howto/ibp-v2-troubleshooting.html#ibp-v2-troubleshooting-browser-storage)
 - [¿Por qué recibo el error `Se ha producido un error al actualizar el canal` al intentar añadir una organización a mi canal?](/docs/services/blockchain/howto/ibp-v2-troubleshooting.html#ibp-v2-troubleshooting-update-channel)
 - [Mi clúster de Kubernetes ha caducado. ¿Qué quiere decir esto?](/docs/services/blockchain/howto/ibp-v2-troubleshooting.html#ibp-v2-troubleshooting-cluster-expired)
-- [¿Por qué fallan las transacciones que envío desde VSCode?](/docs/services/blockchain/howto/ibp-v2-troubleshooting.html#ibp-v2-troubleshooting-anchor-peer)
+- [¿Por qué fallan las transacciones que envío desde VS Code?](/docs/services/blockchain/howto/ibp-v2-troubleshooting.html#ibp-v2-troubleshooting-anchor-peer)
 
 ## Cuando paso el puntero del ratón sobre mi nodo, el estado es
 `Estado no disponible`, ¿qué significa esto?
@@ -139,7 +141,7 @@ Siga estas instrucciones para [ver los registros del contenedor](/docs/services/
 ## Mi canal, los contratos inteligentes y las identidades han desaparecido de la consola. ¿Cómo puedo recuperarlos?
 {: #ibp-v2-troubleshooting-browser-storage}
 
-Las identidades de la cartera de la consola constan de un par de claves pública y privada que le permiten gestionar los componentes de blockchain, pero solo se almacenan en el almacenamiento local del navegador. Usted es el responsable de proteger y gestionar estas identidades. Le recomendamos que las exporte al sistema de archivos después de crearlas. Siempre que crea un nodo nuevo, asocia una identidad de la cartera de la consola al nodo. Esta identidad de administrador es lo que le permite gestionar el nodo. Cuando cambia de navegador navegadores o cambia a un navegador en otra máquina, estas identidades ya no se encuentran en la cartera. Por lo tanto, no puede gestionar los componentes.
+Las identidades de la cartera de la consola constan de un certificado para firmas y una clave privada que le permiten gestionar los componentes de blockchain, pero solo se almacenan en el almacenamiento local del navegador. Usted es el responsable de proteger y gestionar estas identidades. Le recomendamos que las exporte al sistema de archivos después de crearlas. Siempre que crea un nodo nuevo, asocia una identidad de la cartera de la consola al nodo. Esta identidad de administrador es lo que le permite gestionar el nodo. Cuando cambia de navegador navegadores o cambia a un navegador en otra máquina, estas identidades ya no se encuentran en la cartera. Por lo tanto, no puede gestionar los componentes.
 {: tsSymptoms}
 
 Una de las características nuevas de {{site.data.keyword.blockchainfull_notm}} Platform 2.0 es que ahora usted es el responsable de proteger y gestionar los certificados. Por lo tanto, solo se mantienen en el almacenamiento local del navegador para permitirle gestionar el componente. Si utiliza una ventana de navegador privada y cambia luego a otro navegador o a una ventana de navegador que no sea privada, las identidades que haya creado desaparecerán de la cartera de la consola en la nueva sesión de navegador. Por lo tanto, es necesario que exporte las identidades de la cartera de la consola de la sesión de navegador privada en el sistema de archivos. A continuación, puede importarlas en la sesión de navegador que no es privada si es necesario. De lo contrario, no hay forma de recuperarlas.
@@ -183,10 +185,10 @@ No es posible migrar de un clúster gratuito a un clúster de pago. Después de 
 [Caducidad de clústeres de Kubernetes](/docs/services/blockchain/howto/ibp-console-manage.html#ibp-console-manage-console-cluster-expiration) para obtener información sobre lo que ocurre y lo que puede hacer al respecto.
 {: tsResolve}
 
-## ¿Por qué fallan las transacciones que envío desde VSCode?
+## ¿Por qué fallan las transacciones que envío desde VS Code?
 {: #ibp-v2-troubleshooting-anchor-peer}
 
-Las transacciones enviadas desde VSCode fallan con un error similar a:
+Las transacciones enviadas desde VS Code fallan con un error similar a:
 ```
 Error al enviar la transacción; no hay ningún plan de aprobación disponible para {"chaincodes":[{"name":"hello-world"}]}
 ```

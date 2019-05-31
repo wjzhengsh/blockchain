@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-04-03"
+lastupdated: "2019-05-16"
+
+keywords: Fabric SDKs, client application, enroll, register, chaincode
 
 subcollection: blockchain
 
@@ -40,7 +42,7 @@ Prima di utilizzare l'esercitazione **Writing Your First Application** su {{site
 
 - Installa gli strumenti richiesti per scaricare gli esempi di Fabric Hyperledger e per utilizzare l'SDK Node.
   * [Curl ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/prereqs.html#install-curl "Curl") o [Git ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git "Git"){:new_window}
-  * [Node.js ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/latest/prereqs.html#node-js-runtime-and-npm "Node.js"){:new_window}
+  * [Node.js ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/prereqs.html#node-js-runtime-and-npm "Node.js"){:new_window}
 
 - Installa gli esempi di Hyperledger Fabric scaricando la directory `fabric-samples`. Puoi attenerti a quanto indicato nella [guida Getting Started ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/install.html "guida Getting Started"){:new_window} nella documentazione di Hyperledger Fabric.
 
@@ -190,7 +192,7 @@ Se vuoi [gestire la tua rete utilizzando l'SDK](/docs/services/blockchain/v10_ap
 ## Registrazione della tua applicazione
 {: #dev-app-register}
 
-Dopo aver generato i certificati lato client. devi registrare la tua applicazione con l'Autorità di certificazione della rete. La registrazione aggiunge la tua applicazione all'elenco dei componenti che la rete può riconoscere. Una procedura ottimale è registrare la tua applicazione come identità separata piuttosto che utilizzare `admin` per firmare le richieste.
+Dopo aver generato i certificati lato client, devi registrare la tua applicazione con l'Autorità di certificazione della rete. La registrazione aggiunge la tua applicazione all'elenco dei componenti che la rete può riconoscere. Una procedura ottimale è registrare la tua applicazione come identità separata piuttosto che utilizzare `admin` per firmare le richieste.
 
 ### Registrazione utilizzando l'SDK
 {: #dev-app-register-sdk}
@@ -359,7 +361,7 @@ var channel = fabric_client.newChannel('defaultchannel');
 ```
 {:codeblock}
 
-L'SDK aggiunge quindi i peer e il servizio ordini definiti sul canale utilizzando il profilo di connessione. Ciò rende più efficienti le applicazioni di scrittura e semplifica l'aggiornamento delle applicazioni man mano che i membri della rete si uniscono, escono e avviano nuovi canali. Fai riferimento all'[esercitazione sul profilo di connessione ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://fabric-sdk-node.github.io/tutorial-network-config.html "esercitazione sul profilo di connessione"){:new_window} nella documentazione di SDK Node per conoscere i passi aggiuntivi coinvolti. Puoi utilizzare questa [versione dell'esercitazione di fabcar ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://www.ibm.com/developerworks/cloud/library/cl-deploy-fabcar-sample-application-ibm-blockchain-starter-plan/index.html){:new_window} che usa un profilo di connessione anziché connessioni endpoint manuali.
+L'SDK aggiunge quindi i peer e il servizio ordini definiti sul canale utilizzando il profilo di connessione. Ciò rende più efficienti le applicazioni di scrittura e semplifica l'aggiornamento delle applicazioni man mano che i membri della rete si uniscono, escono e avviano nuovi canali. Fai riferimento all'[esercitazione sul profilo di connessione ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://fabric-sdk-node.github.io/tutorial-network-config.html "esercitazione sul profilo di connessione"){:new_window} nella documentazione di SDK Node per conoscere i passi aggiuntivi coinvolti. Puoi utilizzare questa [versione dell'esercitazione di fabcar ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://developer.ibm.com/tutorials/cl-deploy-fabcar-sample-application-ibm-blockchain-starter-plan/){:new_window} che usa un profilo di connessione anziché connessioni endpoint manuali.
 
 [Il rilevamento dei servizi (Service Discovery) ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/discovery-overview.html "Rilevamento dei servizi") per una politica di approvazione in Hyperledger Fabric non è supportato per il piano Starter o il piano Enterprise. Tuttavia, puoi inviare le transazioni ai peer al di fuori della tua organizzazione per l'approvazione modificando il tuo profilo di connessione. Il profilo di connessione contiene già le informazioni sull'endpoint e i certificati TLS di peer delle altre organizzazioni sulla tua rete {{site.data.keyword.blockchainfull_notm}} Platform. Aggiungi il nome del peer al canale pertinente nella sezione "channels" del profilo per aggiungere il peer al canale. Dovrai contattare gli amministratori delle altre organizzazioni in merito a quali peer hanno unito a determinati canali.
 

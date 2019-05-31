@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-05-16"
+
+keywords: blockchain network, Starter Plan, getting started tutorial
 
 subcollection: blockchain
 
@@ -23,7 +25,7 @@ subcollection: blockchain
 
 스타터 플랜을 사용하면 {{site.data.keyword.blockchainfull_notm}} Platform에 대한 기술을 학습하고 개발하며 샘플 애플리케이션을 실행하고 고유 애플리케이션을 테스트하고 다중 조직 시나리오를 시뮬레이션할 수 있습니다. 이 시작하기 튜토리얼은 스타터 플랜을 사용하여 블록체인 네트워크에서 개발 및 트랜잭션을 시작하는 방법을 안내합니다.
 
-{{site.data.keyword.blockchainfull_notm}} Platform 및 블록체인을 처음 사용하는 경우 오픈 소스인 [Hyperledger Fabric](/docs/services/blockchain/reference/v10_fabric.html#hyperledger-fabric)에 빌드된 네트워크의 [기본 컴포넌트 개요](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview)를 검토하여 블록체인에 대한 자세한 정보를 확인할 수 있습니다. 또한 [Hyperledger Fabric 문서 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](http://hyperledger-fabric.readthedocs.io/en/release-1.2/blockchain.html "블록체인 소개")를 검토할 수 있습니다.
+{{site.data.keyword.blockchainfull_notm}} Platform 및 블록체인을 처음 사용하는 경우 오픈 소스인 [Hyperledger Fabric](/docs/services/blockchain/reference/v10_fabric.html#hyperledger-fabric)에 빌드된 네트워크의 [기본 컴포넌트 개요](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview)를 검토하여 블록체인에 대해 자세히 알아볼 수 있습니다. 또한 [Hyperledger Fabric 문서 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/blockchain.html "블록체인 소개")를 검토할 수 있습니다.
 
 **참고**: {{site.data.keyword.blockchainfull_notm}} Platform 스타터 플랜은 개발 및 테스트 환경이며 프로덕션 워크로드에는 적합하지 않습니다. 프로덕션 환경이 필요한 경우 [엔터프라이즈 플랜 정보](/docs/services/blockchain/enterprise_plan.html#enterprise-plan-about)를 참조하십시오.
 
@@ -38,7 +40,7 @@ subcollection: blockchain
 - [조직을 네트워크에 초대](/docs/services/blockchain/get_start_starter_plan.html#getting-started-with-starter-plan-inviting-members)
 - [스타터 플랜 네트워크에 가입](/docs/services/blockchain/get_start_starter_plan.html#getting-started-with-starter-plan-joining-a-network)
 
-네트워크에 참여한 조직의 컨소시엄 내에서 채널을 작성하여 개인적으로 해당 조직 세트와 관련된 트랜잭션을 수행할 수 있습니다.
+네트워크에 가입한 조직의 컨소시엄 내에서 채널을 작성하여 개인적으로 해당 조직 세트와 관련된 트랜잭션을 수행할 수 있습니다.
 
 - [채널 작성](/docs/services/blockchain/get_start_starter_plan.html#getting-started-with-starter-plan-create-channels)
 
@@ -47,11 +49,6 @@ subcollection: blockchain
 컨소시엄을 구성한 후에는 네트워크의 비즈니스 로직이 포함되고 블록체인 원장의 데이터와 상호작용할 수 있도록 해주는 체인코드(스마트 계약이라고도 함)를 작성해야 합니다. 그런 다음 해당 스마트 계약과 함께 Fabric SDK를 사용하여 클라이언트 측 애플리케이션에서 네트워크로 트랜잭션을 제출해야 합니다.
 
 - [체인코드 개발](/docs/services/blockchain/get_start_starter_plan.html#getting-started-with-starter-plan-develop-chaincode)
-- [Fabric SDK를 사용하여 애플리케이션 개발](/docs/services/blockchain/get_start_starter_plan.html#getting-started-with-starter-plan-develop-apps)
-
-{{site.data.keyword.blockchainfull_notm}} Platform은 몇 번의 클릭만으로 스타터 플랜 네트워크에 배치할 수 있는 샘플 애플리케이션을 제공합니다.
-
-- [샘플 애플리케이션 배치](/docs/services/blockchain/get_start_starter_plan.html#getting-started-with-starter-plan-sample-applications)
 
 **네트워크 작동 및 관리**
 
@@ -75,7 +72,7 @@ subcollection: blockchain
 2. 네트워크를 작성할 {{site.data.keyword.cloud_notm}}의 지역을 선택하십시오.
 3. 네트워크를 작성할 Cloud Foundry 조직 및 영역을 선택하십시오.
 4. 가격 플랜 테이블에서 **스타터 멤버십 플랜**을 선택하십시오.
-5. **작성** 단추를 클릭하십시오. 네트워크에 참여하도록 초대되면 팝업 환영 패널을 볼 수 있습니다. 네트워크를 작성하려면 **네트워크 진행**을 선택하고 **계속**을 클릭하십시오. 네트워크에 참여하려면 [네트워크 참여](/docs/services/blockchain/get_start_starter_plan.html#getting-started-with-starter-plan-joining-a-network)의 5단계를 참조하십시오.
+5. **작성** 단추를 클릭하십시오. 네트워크에 가입하도록 초대되면 팝업 환영 패널을 볼 수 있습니다. 네트워크를 작성하려면 **네트워크 진행**을 선택하고 **계속**을 클릭하십시오. 네트워크에 가입하려면 [네트워크 가입](/docs/services/blockchain/get_start_starter_plan.html#getting-started-with-starter-plan-joining-a-network)의 5단계를 참조하십시오.
   이제 기본 구성의 스타터 플랜 네트워크를 사용할 준비가 되었습니다. 네트워크는 하나의 순서 지정자("SOLO" 순서 지정 서비스로 알려짐), 두 개의 조직, 하나의 CA 및 각 조직당 하나의 피어와 함께 실행됩니다. 기본 채널도 작성됩니다.
 6. **실행** 단추를 클릭하십시오.
 
@@ -85,29 +82,28 @@ subcollection: blockchain
 ## 구성원 초대
 {: #getting-started-with-starter-plan-inviting-members}
 
-스타터 플랜 네트워크에 [구성원](/docs/services/blockchain/glossary.html#glossary-member)으로 참여하도록 다른 [조직](/docs/services/blockchain/glossary.html#glossary-organization)을 초대하여 서로 [트랜잭션](/docs/services/blockchain/glossary.html#glossary-transaction)을 수행할 수 있게 합니다. 또한 스타터 플랜을 학습 및 테스트용으로 사용하려는 경우 네트워크에 스스로 구성원을 추가하여 다중 조직 네트워크를 시뮬레이션할 수 있습니다.
+스타터 플랜 네트워크에 [구성원](/docs/services/blockchain/glossary.html#glossary-member)으로 가입하도록 다른 [조직](/docs/services/blockchain/glossary.html#glossary-organization)을 초대하여 서로 [트랜잭션](/docs/services/blockchain/glossary.html#glossary-transaction)을 수행할 수 있게 합니다. 또한 스타터 플랜을 학습 및 테스트용으로 사용하려는 경우 네트워크에 스스로 구성원을 추가하여 다중 조직 네트워크를 시뮬레이션할 수 있습니다.
 
 1. 네트워크 모니터의 "구성원" 화면에서 **구성원 초대** 단추를 클릭하십시오.
 2. "구성원 초대" 창이 열립니다.
-    - 다른 조직을 초대하려는 경우 "구성원 초대"를 선택하십시오.  초대할 조직의 이름 및 운영자 이메일 주소를 지정하십시오.  또한 "참고 추가" 필드에 초대에 포함할 추가 정보를 입력할 수 있습니다.  **초대 전송** 단추를 클릭하십시오.  초대된 조직은 초대 이메일을 수신한 다음 이메일의 지시사항에 따라 네트워크에 참여할 수 있습니다.
+    - 다른 조직을 초대하려는 경우 "구성원 초대"를 선택하십시오.  초대할 조직의 이름 및 운영자 이메일 주소를 지정하십시오.  또한 "참고 추가" 필드에 초대에 포함할 추가 정보를 입력할 수 있습니다.  **초대 전송** 단추를 클릭하십시오.  초대된 조직은 초대 이메일을 수신한 다음 이메일의 지시사항에 따라 네트워크에 가입할 수 있습니다.
     - 채널에 추가할 수 있는 조직을 추가하려면 "구성원 추가"를 선택하십시오.  새 조직의 이름을 지정하십시오. 선택적으로 새 조직에 피어를 추가하거나 네트워크 모니터에서 나중에 수행할 수 있습니다.  **작성** 단추를 클릭하십시오. 새 조직의 피어를 추가하는 경우 피어를 보려면 이 새 조직으로 전환해야 합니다. 상단 오른쪽 모서리를 클릭하여 다른 조직으로 전환하고 **조직 전환** 섹션 아래의 드롭 다운 목록에서 대상 조직을 선택할 수 있습니다.
 
 
 ## 네트워크 가입
 {: #getting-started-with-starter-plan-joining-a-network}
 
-네트워크 개시자에게 초대된 경우 네트워크 참여 방법에 대한 지시사항이 포함된 이메일 알림을 수신합니다. 이메일의 지시사항을 따르십시오. 그러면 네트워크의 구성원 중 하나가 됩니다.
+네트워크 개시자에게 초대된 경우 네트워크 가입 방법에 대한 지시사항이 포함된 이메일 알림을 수신합니다. 이메일의 지시사항을 따르십시오. 그러면 네트워크의 구성원 중 하나가 됩니다.
 
 {{site.data.keyword.cloud_notm}}에서 스타터 플랜 멤버십 옵션을 사용하여 [{{site.data.keyword.blockchainfull_notm}} Platform 서비스 인스턴스![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://cloud.ibm.com/catalog/services/ibm-blockchain-5-prod)를 작성해야 합니다.
 
 1. {{site.data.keyword.cloud_notm}} 계정으로 로그인하십시오. 계정이 없는 경우, **회원가입하기** 단추를 클릭하십시오.
 2. {{site.data.keyword.blockchain}} 네트워크를 저장할 Cloud Foundry 조직을 선택하십시오.
 3. 가격 플랜 테이블에서 **스타터 멤버십 플랜**을 선택하십시오.
-4. **작성** 단추를 클릭하십시오. 서비스 인스턴스 페이지는 팝업 환영 패널에서 열립니다. 네트워크에 참여하거나 계속 고유 네트워크를 작성하도록 선택할 수 있습니다. 네트워크를 작성하려면 [네트워크 작성](/docs/services/blockchain/get_start_starter_plan.html#getting-started-with-starter-plan-creating-a-network)의 4단계를 참조하십시오.
-5. 환영 패널에서 **기존 네트워크 참여**를 선택하고 드롭 다운 목록에서 참여할 네트워크를 선택한 다음 **계속**을 클릭하십시오.
+4. **작성** 단추를 클릭하십시오. 서비스 인스턴스 페이지는 팝업 환영 패널에서 열립니다. 네트워크에 가입하거나 계속 고유 네트워크를 작성하도록 선택할 수 있습니다. 네트워크를 작성하려면 [네트워크 작성](/docs/services/blockchain/get_start_starter_plan.html#getting-started-with-starter-plan-creating-a-network)의 4단계를 참조하십시오.
+5. 환영 패널에서 **기존 네트워크 가입**를 선택하고 드롭 다운 목록에서 가입할 네트워크를 선택한 다음 **계속**을 클릭하십시오.
 
 [{{site.data.keyword.cloud_notm}} 서비스 대시보드 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://cloud.ibm.com/resources "{{site.data.keyword.cloud_notm}} 서비스 대시보드")에서 블록체인 서비스 인스턴스를 찾을 수 있습니다.
-
 
 ## 채널 작성
 {: #getting-started-with-starter-plan-create-channels}
@@ -127,23 +123,7 @@ subcollection: blockchain
 {: #getting-started-with-starter-plan-install-instantiate-chaincode}
 채널에 가입하고 비즈니스 로직을 개발한 후에는 네트워크의 피어에 체인코드를 설치해야 합니다. 네트워크 모니터를 사용하여 체인코드를 조직의 피어에 설치 및 인스턴스화하고 지속적인 개발을 위해 체인코드를 업데이트할 수 있습니다.
 
-사전 빌드된 샘플에 대한 자세한 정보는 [체인코드 설치, 인스턴스화 및 업데이트](/docs/services/blockchain/howto/install_instantiate_chaincode.html#install-instantiate-chaincode)를 참조하십시오.
-
-
-## Fabric SDK를 사용하여 애플리케이션 개발
-{: #getting-started-with-starter-plan-develop-apps}
-
-{{site.data.keyword.blockchainfull_notm}} Platform은 Fabric SDK를 사용하여 연결할 수 있는 API 엔드포인트를 제공합니다. 이 SDK를 사용하여 애플리케이션에서 체인코드를 호출하고 블록체인 네트워크에 트랜잭션을 제출할 수 있습니다.
-
-자세한 정보는 [애플리케이션 개발](/docs/services/blockchain/v10_application.html#dev-app) 튜토리얼을 참조하십시오.
-
-
-## 샘플 애플리케이션 배치
-{: #getting-started-with-starter-plan-sample-applications}
-
-스타터 플랜을 사용하면 몇 번의 클릭만으로 네트워크에 샘플 애플리케이션을 배치할 수 있습니다. 이러한 샘플을 사용하여 체인코드에 대한 자세한 정보를 확인하고 해당 샘플을 자체 개발을 위한 시작점으로 사용할 수 있습니다.
-
-자세한 정보는 [샘플 애플리케이션 배치](/docs/services/blockchain/howto/prebuilt_samples.html#deploying-sample-applications)를 참조하십시오.
+체인코드 설치 및 인스턴스화에 대한 자세한 정보는 [체인코드 설치, 인스턴스화 및 업데이트](/docs/services/blockchain/howto/install_instantiate_chaincode.html#install-instantiate-chaincode)를 참조하십시오.
 
 
 ## 네트워크 리소스 모니터링
@@ -196,16 +176,10 @@ subcollection: blockchain
 
 스타터 및 엔터프라이즈 플랜 네트워크 간에 체인코드 및 애플리케이션만 마이그레이션할 수 있으며 데이터는 마이그레이션할 수 없습니다.
 
-<!--
-As you can see in [Deploying sample applications](/docs/services/blockchain/howto/prebuilt_samples.html#deploying-sample-applications), Starter Plan makes it easy to get a sample application integrated with your network by using Toolchain. This setup also allows for continuous integration by automatically updating your sample application whenever your forked application repo is changed. If you want to deploy this application into an Enterprise Plan network, you can copy your forked application repo into a new repo and then follow the instructions in [Deploying sample applications manually](/docs/services/blockchain/howto/prebuilt_samples.html#deploying-sample-applications#deploy_sample_applications_manually).
--->
-
-스타터 플랜 네트워크에 샘플 애플리케이션을 배치하고 이 애플리케이션을 엔터프라이즈 플랜 네트워크에 배치하려는 경우, 새 저장소에 분기(fork)된 애플리케이션 저장소를 복사한 다음 샘플 애플리케이션의 지시사항을 따라 엔터프라이즈 플랜 네트워크에 배치합니다.
-
-
 ## 네트워크 삭제 또는 나가기
 {: #getting-started-with-starter-plan-delete-network}
 
 네트워크를 삭제하거나 나가려는 경우, {{site.data.keyword.cloud_notm}} 대시보드에서 블록체인 서비스 인스턴스를 삭제할 수 있습니다.
 
-네트워크를 나가기 전에 네트워크 내의 채널의 구성원이 아닌지 확인하십시오. 구성원이면 네트워크를 나갈 때 오류가 발생합니다. 채널 업데이트 프로세스를 완료하려면 채널 구성원을 제거해야 합니다. 채널 업데이트 프로세스에 대한 자세한 정보는 [채널 업데이트](/docs/services/blockchain/howto/create_channel.html#ibp-create-channel-updating-a-channel)를 참조하십시오.{:note}
+네트워크를 나가기 전에 네트워크 내의 채널의 구성원이 아닌지 확인하십시오. 구성원이면 네트워크를 나갈 때 오류가 발생합니다. 채널 업데이트 프로세스를 완료하려면 채널 구성원을 제거해야 합니다. 채널 업데이트 프로세스에 대한 자세한 정보는 [채널 업데이트](/docs/services/blockchain/howto/create_channel.html#ibp-create-channel-updating-a-channel)를 참조하십시오.
+{:note}

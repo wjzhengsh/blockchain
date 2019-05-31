@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-04-23"
+lastupdated: "2019-05-16"
+
+keywords: TLS CA, IBM Blockchain Platform, peer, deploy peers, CouchDB container use Kubernetes, IBM Cloud
 
 subcollection: blockchain
 
@@ -187,7 +189,7 @@ Per unire i tuoi peer ai canali e installare e istanziare il chaincode, devi pri
   - **Segreto di registrazione:** la password del tuo peer, a cui si fa riferimento come `enroll Secret` quando configuri il peer. **Salva questo valore** per il file di configurazione.
   - **Tipo:** seleziona `Peer` per questo campo.
   - **Affiliazione:** si tratta dell'affiliazione sotto la tua organizzazione, ad esempio `org1`, a cui apparterrà il tuo peer. Seleziona un'affiliazione esistente dall'elenco a discesa o immettine una nuova.
-  - **Iscrizioni massime:** puoi utilizzare questo campo per limitare il numero di volte in cui puoi registrare o generare certificati utilizzando questa identità. Se non specificato, il valore predefinito è di registrazioni illimitate.
+  - **Numero massimo di iscrizioni:** puoi utilizzare questo campo per limitare il numero di volte in cui puoi registrare o generare certificati utilizzando questa identità. Se non specificato, il valore predefinito è di registrazioni illimitate.
 
   Dopo aver completato questi campi, fai clic su **Invia** per registrare il peer. Il peer registrato viene quindi elencato nella tabella come identità nella tua organizzazione. Come misura di sicurezza, utilizza ogni identità e l'enrollID e il segreto di accompagnamento, per distribuire solo un peer. Non riutilizzare le password e gli ID del peer.
 
@@ -212,7 +214,7 @@ Devi creare solo un'identità amministratore per i componenti che appartengono a
   - **Segreto di registrazione:** la password del tuo amministratore del peer, a cui si fa riferimento come `enroll Secret` quando configuri il peer. **Salva questo valore** per quando generi la cartella MSP di gestione.
   - **Tipo:** seleziona `Peer` per questo campo.
   - **Affiliazione:** si tratta dell'affiliazione sotto la tua organizzazione, ad esempio `org1`, a cui apparterrà il tuo peer. Seleziona un'affiliazione esistente dall'elenco a discesa o immettine una nuova.
-  - **Iscrizioni massime:** puoi utilizzare questo campo per limitare il numero di volte in cui puoi registrare o generare certificati utilizzando questa identità. Se non specificato, il valore predefinito è di registrazioni illimitate.
+  - **Numero massimo di iscrizioni:** puoi utilizzare questo campo per limitare il numero di volte in cui puoi registrare o generare certificati utilizzando questa identità. Se non specificato, il valore predefinito è di registrazioni illimitate.
 
   Dopo aver immesso questi campi, fai clic su **Invia** per creare l'amministratore. L'amministratore creato viene quindi elencato nella tabella come un'identità nella tua organizzazione.
 
@@ -248,7 +250,7 @@ Dopo aver registrato l'identità di gestione, devi generare il signCert e la car
   - Certificato TLS per piano Starter
     - US: [us01.blockchain.ibm.com.cert ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/us01.blockchain.ibm.com.cert "us01.blockchain.ibm.com.cert"); [us02.blockchain.ibm.com.cert ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/us02.blockchain.ibm.com.cert "us02.blockchain.ibm.com.cert");
   [us03.blockchain.ibm.com.cert ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/us03.blockchain.ibm.com.cert "us03.blockchain.ibm.com.cert"); [us04.blockchain.ibm.com.cert ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/us04.blockchain.ibm.com.cert "us04.blockchain.ibm.com.cert");
-  [us05.blockchain.ibm.com.cert ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/us05.blockchain.ibm.com.cert "us05.blockchain.ibm.com.cert"); [us06.blockchain.ibm.com.cert ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/us06.blockchain.ibm.com.cert "us06.blockchain.ibm.com.cert");
+    [us05.blockchain.ibm.com.cert ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/us05.blockchain.ibm.com.cert "us05.blockchain.ibm.com.cert"); [us06.blockchain.ibm.com.cert ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/us06.blockchain.ibm.com.cert "us06.blockchain.ibm.com.cert");
   [us07.blockchain.ibm.com.cert ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/us07.blockchain.ibm.com.cert "us07.blockchain.ibm.com.cert"); [us08.blockchain.ibm.com.cert ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/us08.blockchain.ibm.com.cert "us08.blockchain.ibm.com.cert")
     - UK: [uk01.blockchain.ibm.com.cert ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/uk01.blockchain.ibm.com.cert "uk01.blockchain.ibm.com.cert"); [uk02.blockchain.ibm.com.cert ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/uk02.blockchain.ibm.com.cert "uk02.blockchain.ibm.com.cert");
     [uk03.blockchain.ibm.com.cert ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/uk03.blockchain.ibm.com.cert "uk03.blockchain.ibm.com.cert"); [uk04.blockchain.ibm.com.cert ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://public-certs.us-south.ibm-blockchain-5-prod.cloud.ibm.com/uk04.blockchain.ibm.com.cert "uk04.blockchain.ibm.com.cert")
@@ -294,7 +296,7 @@ cat $HOME/fabric-ca-client/peer-admin/msp/signcerts/cert.pem | base64 $FLAG
    ```
    LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tDQpNSUlFbERDQ0EzeWdBd0lCQWdJUUFmMmo2MjdLZGNpSVE0dHlTOCs4a1RBTkJna3Foa2lHOXcwQkFRc0ZBREJoDQpNUXN3Q1FZRFZRUUdFd0pWVXpFVk1CTUdBMVVFQ2hNTVJHbG5hVU5sY25RZ1NXNWpNUmt3RndZRFZRUUxFeEIzDQpkM2N1WkdsbmFXTmxjblF1WTI5dE1TQXdIZ1lEVlFRREV4ZEVhV2RwUTJWeWRDQkhiRzlpWVd3Z1VtOXZkQ0JEDQpRVEFlRncweE16QXpNRGd4TWpBd01EQmFGdzB5TXpBek1EZ3hNakF3TURCYU1FMHhDekFKQmdOVkJBWVRBbFZUDQpNUlV3RXdZRFZRUUtFd3hFYVdkcFEyVnlkQ0JKYm1NeEp6QWxCZ05WQkFNVEhrUnBaMmxEWlhKMElGTklRVElnDQpVMlZqZFhKbElGTmxjblpsY2lC
    ```
-   non simile a questa:
+   Non simile a questa:
 
    ```
    LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tDQpNSUlFbERDQ0EzeWdBd0lCQWdJUUFmMmo2MjdL
@@ -334,10 +336,10 @@ I campi `"tls"` nel file di configurazione richiedono le informazioni dalla CA c
     "cacert": "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUVsRENDQTN5Z0F3SUJBZ0lRQWYyajYyN0tkY2lJUTR0eVM4KzhrVEFOQmdrcWhraUc5dzBCQVFzRkFBkOHRiUWsKQ0FVdzdDMjlDNzlGdjFDNXFmUHJtQUVTcmNpSXhwZzBYNDBLUE1icDFaV1ZiZDQ9Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0KCg=="
   ```
 
-### Registrazione del peer con la CA del TLS
+### Registrazione del peer con la CA TLS
 {: #ibp-peer-deploy-tls-register-peer}
 
-Devi registrare il tuo peer con la CA del TLS su {{site.data.keyword.cloud_notm}} Private utilizzando il client CA Fabric.
+Devi registrare il tuo peer con la CA TLS su {{site.data.keyword.cloud_notm}} Private utilizzando il client CA Fabric.
 
 1. Al momento, dovresti avere il file del certificato TLS `tls.pem` nella cartella `$HOME/fabric-ca-client/catls`. Se non è così, puoi copiare il certificato TLS che hai [scaricato da {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/howto/CA_operate.html#ca-operate-tls) in una directory a cui puoi fare riferimento in comandi futuri. Assicurati di essere nella tua directory `$HOME/fabric-ca-client`.
 
@@ -348,7 +350,7 @@ Devi registrare il tuo peer con la CA del TLS su {{site.data.keyword.cloud_notm}
   ```
   {:codeblock}
 
-2. Devi eseguire l'iscrizione utilizzando l'amministratore della CA del TLS. Modifica `$FABRIC_CA_CLIENT_HOME` con una directory in cui vuoi archiviare i tuoi certificati di gestione della CA del TLS.
+2. Devi eseguire l'iscrizione utilizzando l'amministratore della CA TLS. Modifica `$FABRIC_CA_CLIENT_HOME` con una directory in cui vuoi archiviare i tuoi certificati di gestione della CA TLS.
 
   ```
   cd $HOME/fabric-ca-client
@@ -357,16 +359,16 @@ export FABRIC_CA_CLIENT_HOME=$HOME/fabric-ca-client/tlsca-admin
   ```
   {:codeblock}
 
-3. Immetti il seguente comando per generare i certificati con l'amministratore della CA del TLS.
+3. Immetti il seguente comando per generare i certificati con l'amministratore della CA TLS.
 
   ```
   fabric-ca-client enroll -u https://<enroll_id>:<enroll_password>@<ca_url_with_port> --caname <tls_ca_name> --tls.certfiles <ca_tls_cert_file>
   ```
   {:codeblock}
 
-  `<enroll_id>` e `<enroll_password>` nel comando sono [il nome utente e la password dell'amministratore CA](/docs/services/blockchain/howto/CA_deploy.html#ca-deploy-admin-secret) che hai passato al segreto Kubernetes quando hai distribuito la CA (Certificate Authority). Inserisci l'[URL della CA](/docs/services/blockchain/howto/CA_operate.html#ca-operate-url) in `<ca_url_with_port>`. Tralascia il `http://` all'inizio. `<tls_ca_name>` è quello che hai specificato durante la [configurazione della CA](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-configuration-parms).
+  `<enroll_id>` e `<enroll_password>` nel comando sono [il nome utente e la password dell'amministratore CA](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-admin-secret) che hai passato al segreto Kubernetes quando hai distribuito la CA (Certificate Authority). Inserisci l'[URL della CA](/docs/services/blockchain/howto/CA_operate.html#ca-operate-url) in `<ca_url_with_port>`. Tralascia il `http://` all'inizio. `<tls_ca_name>` è quello che hai specificato durante la [configurazione della CA](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-configuration-parms).
 
-  `<ca_tls_cert_file>` è il tuo nome del file del [certificato TLS CA](/docs/services/blockchain/howto/CA_operate.html#ca-operate-tls) con il suo percorso completo.
+  `<ca_tls_cert_file>` è il nome del file del [certificato TLS CA](/docs/services/blockchain/howto/CA_operate.html#ca-operate-tls) con il suo percorso completo.
 
   Una chiamata reale potrebbe essere simile al seguente esempio:
 
@@ -375,7 +377,7 @@ export FABRIC_CA_CLIENT_HOME=$HOME/fabric-ca-client/tlsca-admin
   ```
   {:codeblock}
 
-  Dopo aver eseguito l'iscrizione, disponi dei certificati necessari per registrare il peer con la CA del TLS.
+  Dopo aver eseguito l'iscrizione, disponi dei certificati necessari per registrare il peer con la CA TLS.
 
 4. Immetti il seguente comando per trovare il nome della tua affiliazione e della tua organizzazione.
 
@@ -407,7 +409,7 @@ export FABRIC_CA_CLIENT_HOME=$HOME/fabric-ca-client/tlsca-admin
   ```
   {:codeblock}
 
-  Devi utilizzare il tuo nome della CA del TLS nel campo `--caname`.  Crea un nome e una password per il peer e utilizzali per sostituire `name` e `secret`. **Importante:** prendi nota di queste informazioni. Devi immettere per `name` e `secret` i valori `"enrollid"` e `"enrollsecret"` nella sezione `"tls"` del file di configurazione.
+  Devi utilizzare il tuo nome della CA TLS nel campo `--caname`.  Crea un nome e una password per il peer e utilizzali per sostituire `name` e `secret`. **Importante:** prendi nota di queste informazioni. Devi immettere per `name` e `secret` i valori `"enrollid"` e `"enrollsecret"` nella sezione `"tls"` del file di configurazione.
 
   Un comando di esempio sarà simile al seguente:
 
@@ -489,6 +491,7 @@ tree
 Devi fornire i nomi host CSR per distribuire un peer. I nomi host CSR includono l'indirizzo IP proxy del cluster in cui distribuirai il componente nonché il nome host del servizio (`service host name`) che sarà il tuo nome host del grafico Helm.
 
 #### Individuazione del valore dell'indirizzo IP proxy del cluster
+{: #ibp-peer-deploy-cluster-proxy-ip}
 
 Se vuoi distribuire un peer sullo stesso cluster {{site.data.keyword.cloud_notm}} Private su cui hai distribuito la tua CA TLS, immetti lo stesso IP proxy che hai utilizzato quando hai [configurato la tua CA TLS](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-configuration-parms). Se vuoi distribuire il componente su un cluster diverso, puoi richiamare il valore dell'indirizzo IP proxy del cluster dalla console {{site.data.keyword.cloud_notm}} Private. Devi avere il ruolo di amministratore del cluster {{site.data.keyword.cloud_notm}} Private in cui sarà distribuito il peer.
 
@@ -557,7 +560,7 @@ Dopo aver completato tutti i passi, il tuo file di configurazione aggiornato sar
 ```
 {:codeblock}
 
-Dopo aver terminato di compilare questo file, devi salvarlo nel formato JSON e passarlo alla tua distribuzione del peer come un segreto Kurbernetes. Crea il segreto utilizzando la procedura nella [prossima sezione](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-config-file-ibp).
+Dopo aver terminato di compilare questo file, devi salvarlo nel formato JSON e passarlo alla tua distribuzione del peer come un segreto Kubernetes. Crea il segreto utilizzando la procedura nella [prossima sezione](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-config-file-ibp).
 
 ## Creazione del segreto di configurazione
 {: #ibp-peer-deploy-config-file-ibp}
@@ -577,7 +580,7 @@ Un [segreto Kubernetes ![Icona link esterno](../images/external_link.svg "Icona 
    ```
    LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tDQpNSUlFbERDQ0EzeWdBd0lCQWdJUUFmMmo2MjdLZGNpSVE0dHlTOCs4a1RBTkJna3Foa2lHOXcwQkFRc0ZBREJoDQpNUXN3Q1FZRFZRUUdFd0pWVXpFVk1CTUdBMVVFQ2hNTVJHbG5hVU5sY25RZ1NXNWpNUmt3RndZRFZRUUxFeEIzDQpkM2N1WkdsbmFXTmxjblF1WTI5dE1TQXdIZ1lEVlFRREV4ZEVhV2RwUTJWeWRDQkhiRzlpWVd3Z1VtOXZkQ0JEDQpRVEFlRncweE16QXpNRGd4TWpBd01EQmFGdzB5TXpBek1EZ3hNakF3TURCYU1FMHhDekFKQmdOVkJBWVRBbFZUDQpNUlV3RXdZRFZRUUtFd3hFYVdkcFEyVnlkQ0JKYm1NeEp6QWxCZ05WQkFNVEhrUnBaMmxEWlhKMElGTklRVElnDQpVMlZqZFhKbElGTmxjblpsY2lC
    ```
-   non simile a questa:
+   Non simile a questa:
 
    ```
    LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tDQpNSUlFbERDQ0EzeWdBd0lCQWdJUUFmMmo2MjdL
@@ -607,7 +610,7 @@ Un [segreto Kubernetes ![Icona link esterno](../images/external_link.svg "Icona 
     ```
     {:code_block}
 
-   2. Nel campo **Nome**, immetti il valore `couchdbuser`. Nel campo **Valore** corrispondente, immetti `echo -n 'couch' | base64 $FLAG` dal passo precedente.
+   2. Nel campo **Nome**, immetti il valore `couchdbusr`. Nel campo **Valore** corrispondente, immetti `echo -n 'couch' | base64 $FLAG` dal passo precedente.
    3. Fai clic sul pulsante **Aggiungi dati** per aggiungere una seconda coppia chiave/valore.
    4. Nel secondo campo **Nome**, immetti il valore `couchdbpwd`. Nel campo **Valore** corrispondente, immetti `echo -n 'couchpw' | base64 $FLAG` dal passo precedente.
 
@@ -778,6 +781,8 @@ avrà esito negativo e produrrà il seguente errore:
 ```
 
 ### **Soluzione:**
+{: #ibp-peer-deploy-ca-enroll-error-solution}
+
 Devi codificare il carattere speciale o racchiudere l'URL tra virgolette singole. Ad esempio, `!` diventa `%21` o il comando è simile a:
 
 ```

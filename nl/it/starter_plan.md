@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-04-23"
+lastupdated: "2019-05-16"
+
+keywords: blockchain network, Starter Plan, getting started
 
 subcollection: blockchain
 
@@ -30,7 +32,7 @@ Il **piano Starter** è un ambiente per coloro che desiderano iniziare a lavorar
 
 **Note:**
 - {{site.data.keyword.blockchainfull_notm}} Platform piano Starter è un ambiente di sviluppo e test  non è adatto per i carichi di lavoro di produzione. Se ti serve un ambiente di produzione, vedi [Informazioni sul piano Enterprise](/docs/services/blockchain/enterprise_plan.html#enterprise-plan-about).
-- {{site.data.keyword.blockchainfull_notm}} Platform è un servizio di piattaforma su {{site.data.keyword.cloud_notm}} e tutte le offerte di adesione rispettano i termini dei servizi [{{site.data.keyword.cloud_notm}} termini dei servizi ![Icona link esterno](images/external_link.svg "Icona link esterno")](http://www-03.ibm.com/software/sla/sladb.nsf/sla/bm "{{site.data.keyword.cloud_notm}}") negli SLA (service level agreement). Il provisioning dei piani Starter viene eseguito in un data center in una singola area geografica. Per un elenco delle aree geografiche disponibili, vedi [Ubicazioni di {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain?topic=blockchain-ibp-regions-locations#ibp-regions-locations).
+- {{site.data.keyword.blockchainfull_notm}} Platform è un servizio di piattaforma su {{site.data.keyword.cloud_notm}} e tutte le offerte di adesione rispettano i termini dei servizi [{{site.data.keyword.cloud_notm}} termini dei servizi ![Icona link esterno](images/external_link.svg "Icona link esterno")](http://www-03.ibm.com/software/sla/sladb.nsf/sla/bm "{{site.data.keyword.cloud_notm}}") negli SLA (service level agreement). Il provisioning del piano Starter viene eseguito in un data center in una singola area geografica. Per un elenco delle aree geografiche disponibili, vedi [Ubicazioni di {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain?topic=blockchain-ibp-regions-locations#ibp-regions-locations).
 
 ## Cosa offre il piano Starter
 {: #starter-plan-about-what-starter-plan-offers}
@@ -76,7 +78,7 @@ Piano Starter è un punto d'ingresso a {{site.data.keyword.blockchainfull_notm}}
     - le funzioni di [rilevamento dei servizi ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/discovery-overview.html "rilevamento dei servizi") e [dati privati ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/private-data/private-data.html "dati privati") di Hyperledger Fabric v1.2 non sono supportate nel piano Starter.
     - Se [reimposti](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-reset-network) una rete piano Starter meno recente che è a Fabric V1.1.0, la tua nuova rete sarà al livello Fabric V1.2. Se reimposti la tua rete, devi installare il tuo chaincode o i file .bna sulla nuova rete e invitare nuovamente i membri della tua vecchia rete.
 - **Limitazione delle risorse di rete**
-    Il piano Starter assegna 1 CPU e 4 Gi di RAM per ciascun peer e  20 Gi di archiviazione per ogni istanza del servizio {{site.data.keyword.cloud_notm}}, compresi i peer. I contenitori chaincode e i blocchi del libro mastro sono i componenti di rete più ricchi di risorse. Gli utenti che hanno molti peer sulla loro rete, che generano molti blocchi o che utilizzano file chaincode di grandi dimensioni, potrebbero riscontrare l'effetto delle limitazioni di risorse sulle prestazioni. Puoi visualizzare l'utilizzo di archiviazione delle tue reti nella [schermata "Panoramica" del tuo Monitoraggio della rete](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-storage).
+    Il piano Starter assegna 1 CPU e 4 Gi di RAM per ciascun peer e  20 Gi di archiviazione per ogni istanza del servizio {{site.data.keyword.cloud_notm}}, compresi i peer. I contenitori chaincode e i blocchi del libro mastro sono i componenti di rete che utilizzano più risorse. Gli utenti che hanno molti peer sulla loro rete, che generano molti blocchi o che utilizzano file chaincode di grandi dimensioni, potrebbero riscontrare l'effetto delle limitazioni di risorse sulle prestazioni. Puoi visualizzare l'utilizzo di archiviazione delle tue reti nella [schermata "Panoramica" del tuo Monitoraggio della rete](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-storage).
 - **Manutenzione e upgrade**
     Gli aggiornamenti di manutenzione e di rete di piano Starter sono eseguiti in base a una pianificazione fissa. Durante il periodo di manutenzione, non puoi eseguire il provisioning di nuove reti e potresti notare dei brevi periodi di interruzione della rete.
 - **Conservazione dei dati**

@@ -2,7 +2,9 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-03-20"
+lastupdated: "2019-05-16"
+
+keywords: client application, Commercial Paper, SDK, wallet, generate a certificate, generate a private key, fabric gateway, APIs, smart contract
 
 subcollection: blockchain
 
@@ -28,17 +30,7 @@ Después de instalar contratos inteligentes y de desplegar nodos, puede utilizar
 ## Recursos de aprendizaje
 {: #ibp-console-app-learning-resources}
 
-Puede obtener más información sobre cómo funcionan juntos las aplicaciones y los contratos inteligentes si visita el [tema sobre desarrollo de aplicaciones ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/developapps/developing_applications.html "desarrollo de aplicaciones") de la documentación de Hyperledger Fabric. El tema explora un caso de uso hipotético en el que los bancos y las empresas intercambian un documento comercial y describe cómo se codifican las transacciones en los contratos inteligentes. La [guía de aprendizaje del documento comercial ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/tutorial/commercial_paper.html "guía de aprendizaje de documento comercial") amplía este tema y le permite desplegar los contratos inteligentes en la red de Fabric y utilizar el código de aplicación de ejemplo para crear y transferir el documento comercial entre los miembros de la red.
-
-**Ejemplos de aplicaciones y guías de aprendizaje**
-
-|  Ejemplo  |  Descripción    |  Dificultad    | Lenguaje | Ubicación |
-| -----------------|---------|---------|---------|
-| [FabCar ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://developer.ibm.com/patterns/write-a-smart-contract-for-the-fabcarcommercial-paper-or-iks-cluster-with-saas-v2-beta-network-think/ "Blockchain")| Utilización de un clúster IKS para desplegar un contrato inteligente sencillo de la red Fabric en Blockchain Platform. | Intermedia | Node.js | Documentación de DeveloperWorks|
-| [Documento comercial ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/tutorial/commercial_paper.html "Documento comercial")| Utilización de un contrato inteligente de documento comercial para comercializar en una instancia local de Hyperledger Fabric. | Intermedia | Node.js | Documentación de Hyperledger Fabric|
-| **Próximamente:** Documento comercial avanzado.  | Muestra avanzada con prácticas recomendadas sobre propiedad y privacidad utilizando colecciones de datos privados y recomendaciones basadas en estado. | Avanzada | Node.js | Documentación de Hyperledger Fabric|
-| [Ejecución de un contrato inteligente de documento comercial con la extensión VSCode de {{site.data.keyword.blockchainfull_notm}} ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://developer.ibm.com/tutorials/run-commercial-paper-smart-contract-with-ibm-blockchain-vscode-extension/ "Ejecución de un contrato inteligente de documento comercial con VSCode")|  Aprenda a utilizar la extensión VScode para instalar e invocar el contrato inteligente de documento comercial en una instancia local de Hyperledger Fabric. | Intermedia | Node.js | IBM Developer|
-| [ejecución de una muestra de documento comercial en {{site.data.keyword.blockchainfull_notm}} Platform gratuita 2.0 beta](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-commercial-paper)| Aprenda a desplegar e invocar el contrato de documento comercial en una red de {{site.data.keyword.blockchainfull_notm}} Platform 2.0. | Intermedia |  Node.js | Documentación de {{site.data.keyword.blockchainfull_notm}} Platform|  
+Puede obtener más información sobre el funcionamiento conjunto de las aplicaciones y los contratos inteligentes en el ejemplo de Documento comercial. Visite el tema sobre cómo [Ejecutar el ejemplo de documento comercial en {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-commercial-paper), donde puede aprender a desplegar e invocar el contrato del documento comercial.
 
 El desarrollo de una aplicación puede requerir la coordinación entre dos usuarios distintos de la red, el operador de la red y el desarrollador de aplicaciones:
 - **El operador de la red** es el administrador que utiliza la consola de {{site.data.keyword.blockchainfull_notm}} Platform para desplegar los nodos de la organización e instala los contratos inteligentes en la red.
@@ -54,8 +46,11 @@ Si es el **operador de la red**, tendrá que seguir los siguientes pasos para qu
   - El nombre del canal en el que se ha creado la instancia del contrato inteligente.  
 
 Si es el **desarrollador de aplicaciones**, utilice la información proporcionada por el operador de la red para completar los pasos siguientes:
-1. Genere un par de claves pública y privada utilizando el ID y el secreto de inscripción de la identidad de la aplicación, junto con la información de punto final de CA dentro del perfil de conexión.
+1. Genere un certificado y una clave privada utilizando el ID y el secreto de inscripción de la identidad de la aplicación, junto con la información de punto final de CA dentro del perfil de conexión.
 2. Utilice el perfil de conexión, el nombre de canal, el nombre del contrato inteligente y las claves de la aplicación para invocar el contrato inteligente.  
+
+El perfil de conexión descargado desde la consola de {{site.data.keyword.blockchainfull_notm}} Platform solo se puede utilizar para conectarse a la red utilizando los SDK de Fabric de Node.js (JavaScript y TypeScript) y Java.
+{: note}
 
 El desarrollador de aplicaciones puede utilizar dos modelos de programación para interactuar con la red:
 
@@ -65,9 +60,7 @@ A partir de Fabric v1.4, los usuarios pueden beneficiarse de una aplicación sim
 
 - [Genere certificados para la aplicación](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-enroll) utilizando el SDK.
 - [Invoque un contrato inteligente desde el SDK](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-invoke).
-- Utilice la [extensión de VScode de IBM Blockchain](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-vscode) para escribir, desplegar y desarrollar y probar de forma iterativa sus contratos inteligentes.
 - Dispondrá de más información sobre el desarrollo de aplicaciones si despliega la [guía de aprendizaje de documento comercial](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-commercial-paper) en los nodos gestionados desde la consola. En esta guía de aprendizaje se proporciona más información sobre cómo utilizar pasarelas y carteras de Fabric.
-
 
 **API de SDK de Fabric de bajo nivel**
 
@@ -76,9 +69,9 @@ Si desea seguir utilizando su contrato inteligente y su código de aplicación e
 ## Registro de una identidad de aplicación
 {: #ibp-console-app-identities}
 
-Las aplicaciones deben firmar las transacciones que envían a los nodos de {{site.data.keyword.blockchainfull_notm}} y adjuntar una clave pública que utilizan los nodos para verificar que las transacciones están siendo enviadas por la parte adecuada. Esto garantiza que envían transacciones las organizaciones que tienen permiso para participar.
+Las aplicaciones deben firmar las transacciones que envían a los nodos de {{site.data.keyword.blockchainfull_notm}} y adjuntar un certificado para firmas que utilizan los nodos para verificar que las transacciones están siendo enviadas por la parte adecuada. Esto garantiza que envían transacciones las organizaciones que tienen permiso para participar.
 
-El operador de la red debe utilizar la CA de la organización para registrar una identidad de aplicación, que el desarrollador de aplicaciones puede utilizar para generar una clave pública y privada. El operador puede proporcionar el ID y el secreto de inscripción de la identidad, junto con la información de punto final de CA, que utilizará el SDK para generar certificados. Mediante la inscripción en el lado del cliente, el desarrollador de aplicaciones garantiza que ninguna otra parte tiene acceso a la clave privada de la aplicación. Durante el registro, el operador de la red puede establecer un límite de inscripción de uno para reforzar la seguridad. Una vez que el desarrollador de aplicaciones se inscribe, no se puede utilizar el ID ni el secreto de inscripción para generar otra clave privada.
+El operador de red necesita utilizar la CA de la organización para [registrar una identidad de aplicación](/docs/services/blockchain/howto?topic=blockchain-ibp-console-identities#ibp-console-identities-register), que luego podrá utilizar el desarrollador de aplicaciones para generar un certificado y una clave privada. El operador puede proporcionar el ID y el secreto de inscripción de la identidad, junto con la información de punto final de CA, que utilizará el SDK para generar certificados. Mediante la inscripción en el lado del cliente, el desarrollador de aplicaciones garantiza que ninguna otra parte tiene acceso a la clave privada de la aplicación. Durante el registro, el operador de la red puede establecer un límite de inscripción de uno para reforzar la seguridad. Una vez que el desarrollador de aplicaciones se inscribe, no se puede utilizar el ID ni el secreto de inscripción para generar otra clave privada.
 
 Si no está tan preocupado por la seguridad, el operador de la red puede inscribir una identidad de aplicación utilizando el [separador CA](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-enroll). A continuación, el operador puede descargar la identidad o exportarla a la cartera de la consola. Para poder utilizar los certificados del SDK, las claves se deben decodificar de base64 en formato PEM. Puede decodificar certificados con el mandato siguiente en la máquina local:
 
@@ -92,6 +85,9 @@ echo <base64_string> | base64 --decode $FLAG > <key>.pem
 {: #ibp-console-app-profile}
 
 Las aplicaciones solo pueden enviar transacciones a los contratos inteligentes de los que se han creado instancias en los canales. Como resultado, la información que necesita para conectar e interactuar con un contrato inteligente se encuentra en la lista de contratos inteligentes de los que se han creado instancias en la consola. Esto significa que ya debe haber instalado y creado una instancia del contrato inteligente.
+
+El perfil de conexión descargado desde la consola de {{site.data.keyword.blockchainfull_notm}} Platform solo se puede utilizar para conectarse a la red utilizando los SDK de Fabric de Node.js (JavaScript y TypeScript) y Java.
+{: note}
 
 El [flujo de transacciones ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")]( https://hyperledger-fabric.readthedocs.io/en/release-1.4/txflow.html "Flujo de transacciones"){:new_window} de Hyperledger Fabric abarca varios componentes; las aplicaciones cliente recopilan aprobaciones de los iguales y envían transacciones aprobadas al servicio de ordenación. El perfil de conexión proporciona a la aplicación los puntos finales de los iguales y los nodos de ordenación que necesita para enviar una transacción. También contiene información sobre la organización, como las entidades emisoras de certificados y el ID de MSP. Los SDK de Fabric pueden leer el perfil de conexión directamente, sin tener que escribir código que gestione el flujo de transacciones y aprobaciones.
 
@@ -172,7 +168,7 @@ Las carteras que utilizan los SDK de Fabric son distintas de la cartera de la co
 ## Invocación de un contrato inteligente mediante el SDK
 {: #ibp-console-app-invoke}
 
-Después de haber generado la clave pública y privada de la aplicación y de haberlas almacenado en una cartera, estará listo para enviar una transacción. Debe conocer el nombre del contrato inteligente y el nombre del canal en el que se ha creado la instancia. Puede seguir los pasos siguientes para invocar un contrato inteligente mediante el [SDK de Fabric para Node.js ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://fabric-sdk-node.github.io/ "SDK de Fabric para Node.js").
+Después de haber generado el certificado para firmas y la clave privada de la aplicación y de haberlas almacenado en una cartera, estará listo para enviar una transacción. Debe conocer el nombre del contrato inteligente y el nombre del canal en el que se ha creado la instancia. Puede seguir los pasos siguientes para invocar un contrato inteligente mediante el [SDK de Fabric para Node.js ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://fabric-sdk-node.github.io/ "SDK de Fabric para Node.js").
 
 
 1. Guarde el archivo siguiente en la máquina local como `invoke.js`. Guarde el archivo en el mismo directorio que `enrollUser.js`.
@@ -227,8 +223,7 @@ Después de haber generado la clave pública y privada de la aplicación y de ha
 2. Edite `invoke.js` para sustituir los valores siguientes:
   - Sustituya ``<channel_name>`` por el nombre del canal en el que se ha creado la instancia del contrato inteligente. Encontrará el nombre de su CA en la sección "Certificate Authorities" del perfil de conexión.
   - Sustituya ``<smart_contract_name>`` por el nombre del contrato inteligente del que se ha creado una instancia. Obtenga este valor del operador de la red.
-  - Edite el contenido de `submitTransaction` para invocar una función dentro de su contrato inteligente. El archivo `invoke.js`
-se ha escrito para invocar el [contrato inteligente fabcar ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://github.com/hyperledger/fabric-samples/tree/release-1.4/chaincode/fabcar). Si desea ejecutar el archivo siguiente para enviar una transacción, instale fabcar y cree una instancia del contrato inteligente en uno de los canales.
+  - Edite el contenido de `submitTransaction` para invocar una función dentro de su contrato inteligente. El archivo `invoke.js` se ha escrito para invocar el [contrato inteligente fabcar ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://github.com/hyperledger/fabric-samples/tree/release-1.4/chaincode/fabcar). Si desea ejecutar el archivo siguiente para enviar una transacción, instale fabcar y cree una instancia del contrato inteligente en uno de los canales.
 
 3. Vaya a `invoke.js` utilizando un terminal y ejecute `node invoke.js`. Si el mandato se ejecuta correctamente, debería ver la salida siguiente:
 
@@ -237,27 +232,6 @@ se ha escrito para invocar el [contrato inteligente fabcar ![Icono de enlace ext
   ```
   {:codeblock}
   Si accede al canal mediante la consola, podrá ver otro bloque añadido por la transacción.
-
-
-## Conexión con la extensión VScode de {{site.data.keyword.blockchainfull_notm}}
-{: #ibp-console-app-vscode}
-
-La extensión de Visual Studio Code de {{site.data.keyword.blockchainfull_notm}} Platform proporciona un entorno dentro de Visual Studio Code para desarrollar, empaquetar y desplegar paquetes de contratos inteligentes. Asegúrese de que tiene el perfil de conexión y el conjunto de archivos de claves generados mediante la CA. Luego puede utilizar la extensión VScode para conectarse a una red que esté gestionando mediante la consola.
-
-Siga las instrucciones para descargar la [extensión VScode ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://marketplace.visualstudio.com/items?itemName=IBMBlockchain.ibm-blockchain-platform#overview "extensión VScode") en Visual Studio Code Marketplace. Una vez que se haya instalado la extensión, abra VScode y podrá acceder a la extensión pulsando **Ver > Paleta de mandatos**. Especifique el mandato *IBM Blockchain Platform: Create Smart Contract Project* para crear un nuevo proyecto de contrato inteligente.
-
-Una vez que haya creado el nuevo proyecto, puede conectarse directamente a la red desde el código de Visual Studio utilizando la información del contrato inteligente del que ha creado una instancia desde la consola. Utilice la tabla **Contratos inteligentes instanciados** en el separador Contratos inteligentes para descargar el [perfil de conexión](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-profile) en el sistema de archivos local. A continuación, [cree una identidad de aplicación](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-identities) y utilice la CA para crear y descargar un certificado (clave pública) y una clave privada. Siga las instrucciones anteriores para convertir la clave privada y el certificado al formato PEM. Una vez que haya descargado el perfil de conexión y las claves, siga los pasos siguientes para conectarse a la red.
-
-1. Abra el separador _{{site.data.keyword.blockchainfull_notm}} Platform_ en Visual Studio Code.
-2. En el panel _{{site.data.keyword.blockchainfull_notm}} Platform_, pulse **Añadir conexión nueva**.
-3. Especifique el nombre de la conexión. Este nombre se visualizará en el panel _{{site.data.keyword.blockchainfull_notm}} Platform_.
-4. Especifique la vía de acceso de archivo completa del perfil de conexión.
-5. Especifique la vía de acceso de archivo completa del certificado (clave pública) en formato PEM.
-6. Especifique la vía de acceso de archivo completa de la clave privada en formato PEM.
-7. La conexión debería aparecer en la lista de conexiones bajo `local_fabric`. Realice una doble pulsación sobre el nombre de conexión para conectarse.
-
-Una vez que esté conectado desde VScode, podrá ver la lista de iguales de la organización y los canales a los que se han unido en el panel de conexiones de blockchain. Podrá ver la lista de contratos inteligentes instalados bajo cada uno de los iguales. Para instalar un nuevo contrato inteligente desde el proyecto de la red, pulse en primer lugar con el botón derecho del ratón sobre un igual y seleccione **Instalar contrato inteligente**. Luego puede crear una instancia de dicho contrato inteligente pulsando con el botón derecho del ratón en un canal y seleccionando **Instalar contrato inteligente**. Encontrará más información sobre cómo utilizar la extensión de {{site.data.keyword.blockchainfull_notm}} Platform si visita la documentación de [Visual Studio Code Marketplace ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://marketplace.visualstudio.com/items?itemName=IBMBlockchain.ibm-blockchain-platform#overview "extensión de VScode").
-
 
 ## Ejecución del ejemplo de documento comercial
 {: #ibp-console-app-commercial-paper}
@@ -289,7 +263,7 @@ Una vez que haya descargado los ejemplos de Fabric, ejecute los siguientes manda
 
 ```
 cd fabric-samples
-git checkout v1.4.0
+git checkout v1.4.1
 ```
 {:codeblock}
 
@@ -326,9 +300,9 @@ npm install
 
 ### Paso dos: instalar y crear una instancia de un contrato inteligente
 
-Encontrará el contrato inteligente del documento comercial dentro de la carpeta `contract` del directorio `digibank` y del directorio `magnetocorp`. Debe instalar este contrato inteligente en todos los iguales de las organizaciones siguiendo la guía de aprendizaje. A continuación, tendrá que crear una instancia del contrato del documento comercial en un canal. El contrato inteligente se debe empaquetar en [formato .cds ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/latest/chaincode4noah.html#packaging "empaquetado de contratos inteligentes") para que se pueda instalar mediante la consola.
+Encontrará el contrato inteligente del documento comercial dentro de la carpeta `contract` del directorio `digibank` y del directorio `magnetocorp`. Debe instalar este contrato inteligente en todos los iguales de las organizaciones siguiendo la guía de aprendizaje. A continuación, tendrá que crear una instancia del contrato del documento comercial en un canal. El contrato inteligente se debe empaquetar en [formato .cds ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/chaincode4noah.html#packaging "empaquetado de contratos inteligentes") para que se pueda instalar mediante la consola.
 
-Puede utilizar la [extensión VScode de IBM Blockchain](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-vscode) para empaquetar el contrato inteligente. Después de instalar la extensión, utilice Visual Studio Code para abrir la carpeta `contracts` en el espacio de trabajo. Abra el separador _{{site.data.keyword.blockchainfull_notm}} Platform_. En el panel _{{site.data.keyword.blockchainfull_notm}} Platform_, vaya a la sección de paquetes de contratos inteligentes y pulse **Empaquetar un proyecto de contrato inteligente**. La extensión VScode utilizará los archivos de la carpeta `contracts` para crear un nuevo paquete llamado `papernet-js@.0.0.1.cds`. Pulse con el botón derecho del ratón en este paquete para exportarlo al sistema de archivos local. Luego podrá utilizar la consola para [instalar los contratos inteligentes en sus iguales](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-install) y, a continuación, [crear una instancia del contrato inteligente en un canal](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-instantiate).
+Puede utilizar la [extensión de VS Code de IBM Blockchain](/docs/services/blockchain/vscode-extension.html) para empaquetar el contrato inteligente. Después de instalar la extensión, utilice Visual Studio Code para abrir la carpeta `contracts` en el espacio de trabajo. Abra el separador _{{site.data.keyword.blockchainfull_notm}} Platform_. En el panel _{{site.data.keyword.blockchainfull_notm}} Platform_, vaya a la sección de paquetes de contratos inteligentes y pulse **Empaquetar un proyecto de contrato inteligente**. La extensión de VS Code utilizará los archivos de la carpeta `contracts` para crear un nuevo paquete llamado `papernet-js@.0.0.1.cds`. Pulse con el botón derecho del ratón en este paquete para exportarlo al sistema de archivos local. Luego podrá utilizar la consola para [instalar los contratos inteligentes en sus iguales](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-install) y, a continuación, [crear una instancia del contrato inteligente en un canal](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-instantiate).
 
 ### Paso tres: generar certificados para la cartera
 
@@ -406,7 +380,7 @@ const wallet = new FileSystemWallet('../identity/user/isabella/wallet')
 ```
 {:codeblock}
 
-Después de crear la cartera, el fragmento de código utiliza el ID y el secreto de inscripción para realizar la inscripción utilizando la CA de la organización. Luego crea una identidad para el par de claves privada y pública y las importa en la cartera. Observe cómo el archivo también pasa el ID de MSP de la organización a la cartera.
+Después de crear la cartera, el fragmento de código utiliza el ID y el secreto de inscripción para realizar la inscripción utilizando la CA de la organización. Luego crea una identidad para el certificado para firmas y la clave privada y los importa en la cartera. Observe cómo el archivo también pasa el ID de MSP de la organización a la cartera.
 
 ```
 // Inscribir el usuario administrador e importar la nueva identidad en la cartera.
@@ -466,8 +440,7 @@ const wallet = new FileSystemWallet('../identity/user/isabella/wallet');
 {:codeblock}
 
 Después de importar la cartera, utilice el código siguiente para pasar el perfil de conexión y la cartera a la nueva pasarela. Necesitará realizar las siguientes **ediciones** en el código para que se parezca al fragmento de código siguiente. Las líneas que muestran registros se han eliminado para abreviar.
-- Actualice el valor de `userName` para que coincida con el valor que ha seleccionado para `identityLabel`
-en `enrollUser.js`.
+- Actualice el valor de `userName` para que coincida con el valor que ha seleccionado para `identityLabel` en `enrollUser.js`.
 - Actualice las opciones de descubrimiento para aprovechar la función de descubrimiento de servicios en la red. Establezca `discovery: { enabled: true, asLocalhost: false }`.  
 - Actualice la sección que importa el perfil de conexión. El perfil de conexión de la consola está en formato JSON en lugar de en un archivo YAML utilizado en el ejemplo.  
 
@@ -494,8 +467,7 @@ Este fragmento de código utiliza la pasarela para abrir las conexiones de GRPC 
 
 ### Paso cinco: invocar el contrato inteligente
 
-Después de configurar la pasarela para conectarse a la red gestionada por la consola, editaremos la parte del archivo `issue.js` que
-se conecta con el contrato inteligente del documento comercial. Tendrá que proporcionar a la pasarela el nombre del contrato y el canal en el que ha creado la instancia del contrato inteligente.
+Después de configurar la pasarela para conectarse a la red gestionada por la consola, editaremos la parte del archivo `issue.js` que se conecta con el contrato inteligente del documento comercial. Tendrá que proporcionar a la pasarela el nombre del contrato y el canal en el que ha creado la instancia del contrato inteligente.
 
 **Edite** la línea siguiente, sustituyendo `mychannel` por el nombre del canal.
 
@@ -511,8 +483,7 @@ const contract = await network.getContract('papercontract-js', 'org.papernet.com
 ```
 {:codeblock}
 
-Ahora la pasarela tiene toda la información que necesita para enviar una transacción. En la línea siguiente se invoca la función `issue`
-en el contrato del documento comercial, con los argumentos que definen el nuevo activo del documento comercial.
+Ahora la pasarela tiene toda la información que necesita para enviar una transacción. En la línea siguiente se invoca la función `issue` en el contrato del documento comercial, con los argumentos que definen el nuevo activo del documento comercial.
 
 ```
 const issueResponse = await contract.submitTransaction('issue', 'MagnetoCorp', '00001', '2020-05-31', '2020-11-30', '5000000');
@@ -554,7 +525,7 @@ Vaya al directorio `digibank/application`. Siga las directrices del **Paso tres*
 
 Si está interesado en conservar el código de aplicación existente o en utilizar los SDK de Fabric para lenguajes que no sean Node.js, aún puede conectarse a la red utilizando las API de SDK de Fabric de bajo nivel. Utilice la consola para [descargar el perfil de conexión](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-profile). A continuación, puede importar los puntos finales de los iguales y de los nodos de ordenación del canal directamente desde el perfil de conexión, o puede utilizar la información de punto final de nodo para añadir manualmente objetos de igual y de clasificador. También tendrá que utilizar la CA para [crear una identidad de aplicación](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-identities) y, a continuación, utilizar la información de punto final de CA del lado del cliente, o bien generar certificados utilizando la consola.
 
-La documentación del [SDK de nodo de Fabric ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://fabric-sdk-node.github.io "SDK de nodo de Fabric") contiene una guía de aprendizaje sobre cómo [conectar con la red utilizando un perfil de conexión ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://fabric-sdk-node.github.io/tutorial-network-config.html "guía de aprendizaje de perfil de conexión"){:new_window}. En la guía de aprendizaje se utiliza la información de punto final de CA en el perfil de conexión para generar claves utilizando el SDK. También puede utilizar la consola para generar una clave pública y privada y convertir las claves al formato PEM. Luego puede establecer un contexto de usuario pasando las claves directamente a la [clase de cliente de Fabric ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://fabric-sdk-node.github.io/Client.html "clase de cliente de Fabric") del SDK con el código siguiente:
+La documentación del [SDK de nodo de Fabric ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://fabric-sdk-node.github.io "SDK de nodo de Fabric") contiene una guía de aprendizaje sobre cómo [conectar con la red utilizando un perfil de conexión ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://fabric-sdk-node.github.io/tutorial-network-config.html "guía de aprendizaje de perfil de conexión"){:new_window}. En la guía de aprendizaje se utiliza la información de punto final de CA en el perfil de conexión para generar claves utilizando el SDK. También puede utilizar la consola para generar un certificado para firmas y una clave privada y convertir las claves al formato PEM. A continuación, puede establecer un contexto de usuario pasando las claves directamente a la [clase de cliente de Fabric ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://fabric-sdk-node.github.io/Client.html "clase de cliente de Fabric") de los SDK con el código siguiente:
 
 ```
 fabric_client.createUser({

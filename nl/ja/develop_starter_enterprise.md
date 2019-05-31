@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-05-16"
+
+keywords: business network, Starter Plan, Enterprise Plan, developer environment, certificate authority card, admin business network card, BNA, business network archive
 
 subcollection: blockchain
 
@@ -186,7 +188,7 @@ Fabric のバージョンは、ネットワーク・モニターで[「ネット
 
 {{site.data.keyword.blockchainfull_notm}} Platform のエンタープライズ・プラン・インスタンスに対するアクセス権限が必要であり、事前にピアを作成しておく必要があります。 {{site.data.keyword.blockchainfull_notm}} Platform エンタープライズ・プランについて詳しくは、[エンタープライズ・プランの概説](/docs/services/blockchain/enterprise_plan.html#enterprise-plan-about)を参照してください。
 
-### ステップ 1: IBM Blockchain Platform の接続プロファイルの作成
+### ステップ 1: {{site.data.keyword.blockchainfull_notm}} Platform の接続プロファイルの作成
 {: #deploying-a-business-network-create-connection-profile}
 
 1. 接続の詳細を保管するディレクトリーを作成します。以下に例を示します。

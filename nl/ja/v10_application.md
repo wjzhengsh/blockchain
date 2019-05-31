@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-04-03"
+lastupdated: "2019-05-16"
+
+keywords: Fabric SDKs, client application, enroll, register, chaincode
 
 subcollection: blockchain
 
@@ -40,7 +42,7 @@ subcollection: blockchain
 
 - Hyperledger Fabric のサンプルをダウンロードするため、および Node SDK を使用するために必要なツールをインストールします。
   * [Curl ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/prereqs.html#install-curl "Curl") または [Git ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git "Git"){:new_window}
-  * [Node.js ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/latest/prereqs.html#node-js-runtime-and-npm "Node.js"){:new_window}
+  * [Node.js ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/prereqs.html#node-js-runtime-and-npm "Node.js"){:new_window}
 
 - `fabric-samples` ディレクトリーをダウンロードして Hyperledger Fabric のサンプルをインストールします。 Hyperledger Fabric の資料の [Getting Started ガイド ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/install.html "Getting Started ガイド"){:new_window} に従うことができます。
 
@@ -359,7 +361,7 @@ var channel = fabric_client.newChannel('defaultchannel');
 ```
 {:codeblock}
 
-これにより、SDK が、接続プロファイルを使用してチャネルに定義されているピアと順序付けサービスを追加します。 これを利用すると、アプリケーションの作成効率が高まるため、ネットワーク・メンバーの参加や離脱、新しいチャネルの開始などのためのアプリケーションの更新が簡単になります。 関連する他の手順について詳しくは、Node SDK 資料の[接続プロファイルのチュートリアル ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://fabric-sdk-node.github.io/tutorial-network-config.html "接続プロファイルのチュートリアル"){:new_window} を参照してください。 手動のエンドポイント接続ではなく接続プロファイルを使用する、この[fabcar チュートリアルのバージョン ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/developerworks/cloud/library/cl-deploy-fabcar-sample-application-ibm-blockchain-starter-plan/index.html){:new_window} を使用できます。
+これにより、SDK が、接続プロファイルを使用してチャネルに定義されているピアと順序付けサービスを追加します。 これを利用すると、アプリケーションの作成効率が高まるため、ネットワーク・メンバーの参加や離脱、新しいチャネルの開始などのためのアプリケーションの更新が簡単になります。 関連する他の手順について詳しくは、Node SDK 資料の[接続プロファイルのチュートリアル ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://fabric-sdk-node.github.io/tutorial-network-config.html "接続プロファイルのチュートリアル"){:new_window} を参照してください。 手動のエンドポイント接続ではなく接続プロファイルを使用する、この[fabcar チュートリアルのバージョン ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://developer.ibm.com/tutorials/cl-deploy-fabcar-sample-application-ibm-blockchain-starter-plan/){:new_window} を使用できます。
 
 Hyperledger Fabric のエンドースメント・ポリシーの [ サービス・ディスカバリー ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/discovery-overview.html "Service discovery") は、スターター・プランでもエンタープライズ・プランでもサポートされていません。 ただし、接続プロファイルを編集して、組織外のピアにトランザクションを送信して承認を受けることができます。 接続プロファイルには、{{site.data.keyword.blockchainfull_notm}} Platform ネットワーク上に存在する他の組織のピアのエンドポイント情報と TLS 証明書が既に含まれています。 ピアをチャネルに追加するには、プロファイルの「channels」セクションで、ピアの名前を該当するチャネルに追加します。 どのピアがどのチャネルに参加しているかについて、他の組織の管理者に問い合わせる必要があります。
 
@@ -476,7 +478,7 @@ var request = {
 ```
 {:codeblock}
 
-この要求を、現在ファイル内にある `return channel.sendTransactionProposal(request);` ではなく、`return channel.sendInstantiateProposal(request);` に送信します。 インスタンス化要求をチャネルに送信した後に、承認された提案をトランザクションとして順序付けサービスに送信する必要があります。 これにはトランザクションの送信と同じ方式が使用されるので、ファイルの他の部分を変更する必要はありません。 インスタンス化提案で、[タイムアウト値を大きくする](/docs/services/blockchain/best_practices.html#best-practices-set-timeout-in-sdk)ことができます。 そうしないと、プラットフォームがチェーンコード・コンテナーを開始する前に要求がタイムアウトになる可能性があります。
+この要求を、現在ファイル内にある `return channel.sendTransactionProposal(request);` ではなく、`return channel.sendInstantiateProposal(request);` に送信します。 インスタンス化要求をチャネルに送信した後に、承認された提案をトランザクションとして順序付けサービスに送信する必要があります。 これにはトランザクションの送信と同じ方式が使用されるので、ファイルの他の部分を変更する必要はありません。 インスタンス化提案で、[タイムアウト値を大きくする](/docs/services/blockchain/best_practices.html#best-practices-set-timeout-in-sdk)ことができます。そうしないと、プラットフォームがチェーンコード・コンテナーを開始する前に要求がタイムアウトになる可能性があります。
 
 チェーンコードをインスタンス化するには、まず、署名付き証明書をチャネルに追加する必要があります。 チャネルに参加した後に証明書を生成した場合は、署名付き証明書をプラットフォームにアップロードしてから、「チャネル」画面で**「証明書の同期」**ボタンをクリックする必要があります。 チャネル同期が完了するまで数分待ってから、チェーンコードのインスタンス化コマンドを実行する必要がある場合があります。 詳しくは、[証明書の管理](/docs/services/blockchain/certificates.html#managing-certificates)チュートリアルの[署名付き証明書の {{site.data.keyword.blockchainfull_notm}} Platform へのアップロード](/docs/services/blockchain/certificates.html#managing-certificates-upload-certs)を参照してください。
 

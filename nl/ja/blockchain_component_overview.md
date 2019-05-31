@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-04-23"
+lastupdated: "2019-05-16"
 
 keywords: blockchain components, ca, certificate authorities, peer, ordering service, orderer, channel, smart contract, applications
 
@@ -41,12 +41,14 @@ Fabric に基づくブロックチェーン・ネットワークの基礎とな�
 
 {{site.data.keyword.blockchainfull_notm}} Platform CA は、[Hyperledger Fabric-CA ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/ "Hyperledger Fabric CA") をベースとしています。ただし、x.509 証明書に基づく PKI を使用している限り、他の CA も使用可能です。 複数レベルの CA が存在する場合があり、通常は、そうあるべきです。 ネットワークの「ルート CA」は通常、「中間 CA」に証明書を提供する場合以外は公開されません。中間 CA は、証明書をユーザーおよびコンポーネントに直接発行したり、さらに多くの中間 CA 層に発行したりします。 認証局を使用して ID およびメンバーシップを確立する方法について詳しくは、[ID についての Hyperledger Fabric の資料 ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/identity/identity.html) および[メンバーシップについての資料 ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/membership/membership.html) を参照してください。
 
-## 順序付けプログラム
+## 順序付けサービス
 {: #blockchain-component-overview-orderer}
 
 順序付けサービスはよくネットワークの「心臓」と呼ばれますが、その機能は実際には非常に単純です。ピアによって検証されたトランザクションを順序付けしてブロックに入れ、台帳に書き込むためにピアに戻すだけです。 前のバージョンの Fabric では、この機能はピア内部に組み込まれていましたが、Fabric v1.0 からは、ピアのパフォーマンスを向上させ、フォーク状態を引き起こす異常を回避するために、別個のコンポーネントとして切り離されました。
 
-物理レベルでは、通常、この順序付け機能には一連の順序付けプログラム (まとめて「順序付けサービス」と呼ばれる) が必要ですが、テスト環境または POC 環境では単一ノード (SOLO 順序付けプログラムと呼ばれる) を使用できます。
+物理レベルでは、通常、この順序付け機能には、まとめて「順序付けサービス」と呼ばれる一連の順序付けプログラムが必要です。
+
+順序付けサービスについて詳しくは、[The Ordering Service ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/orderer/ordering_service.html) を参照してください。
 
 ## ピア
 {: #blockchain-component-overview-peer}
@@ -74,9 +76,7 @@ Fabric に基づくブロックチェーン・ネットワークの基礎とな�
 
 {{site.data.keyword.blockchainfull_notm}} Platform などの Fabric ベースのネットワーク内のクライアント・アプリケーションは、API、SDK、およびスマート・コントラクトなどの基礎となるインフラストラクチャーを活用して、高レベルの抽象化でクライアントの対話 (呼び出しおよび照会) を可能にします。
 
-アプリケーションと Fabric ベースのネットワークの対話方法については、[初めてのアプリケーション作成のための資料 ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/write_first_app.html "Writing Your First Application") を参照してください。  また、この領域には Fabric v1.4 で大幅な改善が行われていますが、それらの改善機能を {{site.data.keyword.blockchainfull_notm}} Platform 2.0 で利用できる点にも注意してください。 詳しくは、Hyperledger Fabric の[アプリケーションの開発 ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/developapps/developing_applications.html "Developing Applications") に関するトピックを参照してください。  Contract クラスなどの直接的な機能には、Fabric v1.2 (スターター・プランの現行バージョン) との互換性はありませんが、アプリケーション設計で考慮する価値がある概念的な情報や有用なヒントが含まれており、将来のための準備に役立ちます。
-
-アプリケーションと Fabric ベースのネットワークの対話方法については、[アプリケーションの作成方法](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app)に関する資料を参照してください。
+アプリケーションと Fabric ベースのネットワークの対話方法については、Hyperledger Fabric の資料で、[Developing Applications ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/developapps/developing_applications.html "Developing Applications") のトピックを参照してください。[アプリケーションの作成](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app)のトピックを参照して、アプリケーションを {{site.data.keyword.blockchainfull_notm}} Platform に接続する方法を学習することもできます。
 
 ## ネットワークの例
 {: #blockchain-component-overview-example-network}

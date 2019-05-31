@@ -1,8 +1,10 @@
 ---
 
 copyright:
-  years: 2018,2019
-lastupdated: "2019-03-05"
+  years: 2018, 2019
+lastupdated: "2019-05-16"
+
+keywords: IBM Cloud accounts, IBM Blockchain Platform, pay your own fees, pay for others
 
 subcollection: blockchain
 
@@ -28,7 +30,7 @@ subcollection: blockchain
 ## 前提条件
 {: #paying-mode-prereq}
 
-すべてのネットワーク・メンバーは、{{site.data.keyword.cloud_notm}} で {{site.data.keyword.blockchainfull_notm}} Platform サービス・インスタンスを作成できるようにするため、**従量課金 (PAYG)** アカウントなどの有料 {{site.data.keyword.cloud_notm}} アカウントを持っている必要があります。 アカウントがない場合は[登録](https://cloud.ibm.com/registration/)し、そのアカウントを有料アカウントにアップグレードします。 アカウントを従量課金タイプにアップグレードするには、{{site.data.keyword.cloud_notm}} コンソールで**「管理」** > **「請求および使用量」** > **「請求処理」**に移動し、**「クレジット・カードの追加」**をクリックします。
+すべてのネットワーク・メンバーは、{{site.data.keyword.cloud_notm}} で {{site.data.keyword.blockchainfull_notm}} Platform サービス・インスタンスを作成できるようにするため、**従量課金 (PAYG)** アカウントなどの有料 {{site.data.keyword.cloud_notm}} アカウントを持っている必要があります。 アカウントがない場合は[登録](https://cloud.ibm.com/registration)し、そのアカウントを有料アカウントにアップグレードします。 アカウントを従量課金タイプにアップグレードするには、{{site.data.keyword.cloud_notm}} コンソールで**「管理」** > **「請求および使用量」** > **「請求処理」**に移動し、**「クレジット・カードの追加」**をクリックします。
 
 
 ## 独自で料金を支払う場合

@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-20"
+lastupdated: "2019-05-16"
+
+keywords: IBM Blockchain Platform, remote peer, multi-cloud, private data, AWS Cloud
 
 subcollection: blockchain
 
@@ -54,7 +56,7 @@ AWS クラウド内の {{site.data.keyword.blockchainfull_notm}} Platform ピア
 ## AWS ピアのデプロイ
 {: #remote-peer-aws-about-deploy}
 
-AWS [クイック・スタート・テンプレート ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://aws.amazon.com/quickstart/architecture/ibm-blockchain-platform/ "クイック・スタート・テンプレート") を使用して、{{site.data.keyword.blockchainfull_notm}} Platform for AWS を簡単にデプロイできます。 詳しくは、[{{site.data.keyword.blockchainfull_notm}} Platform for AWS Quick Start Deployment Guide ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://s3.amazonaws.com/aws-quickstart/quickstart-ibm-fabric/doc/ibm-blockchain-platform-for-aws.pdf "IBM Blockchain Platform for Platform for AWS Quick Start Reference Deployment") を参照してください。
+AWS [クイック・スタート・テンプレート ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://aws.amazon.com/quickstart/architecture/ibm-blockchain-platform/ "クイック・スタート・テンプレート") を使用して、{{site.data.keyword.blockchainfull_notm}} Platform for AWS を簡単にデプロイできます。 詳しくは、[{{site.data.keyword.blockchainfull_notm}} Platform for AWS Quick Start Deployment Guide ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://s3.amazonaws.com/aws-quickstart/quickstart-ibm-fabric/doc/ibm-blockchain-platform-for-aws.pdf "{{site.data.keyword.blockchainfull_notm}} Platform for AWS Quick Start Reference Deployment") を参照してください。
 
 {{site.data.keyword.blockchainfull_notm}} Platform for AWS のデプロイ方法については、[Amazon Web Services でのピアのデプロイ](/docs/services/blockchain/howto/remote_peer_aws.html#remote-peer-aws)を参照してください。
 
@@ -102,17 +104,17 @@ AWS ピアをデプロイした後に、ピアがネットワークにトラン�
 ![すべてのコンポーネントが同じ国にある場合のデータの常駐](../images/remote_peer_data_res_1.png "すべてのコンポーネントが同じ国にある場合のデータの常駐")  
 *図 3. すべてのコンポーネントが同じ国にある場合のデータの常駐*
 
-次に、**ピア**がいずれかの組織に参加した場合の影響を考えてみましょう。  ピアは、ネットワークの残り部分と同じ領域に配置することも、{{site.data.keyword.blockchainfull_notm}} Platform ネットワーク領域外の任意の場所に配置することもできます。
+次に、**ピア**がいずれかの組織に参加した場合の影響を考えてみましょう。  ピアは、ネットワークの残り部分と同じ地域に配置することも、{{site.data.keyword.blockchainfull_notm}} Platform ネットワーク地域外の任意の場所に配置することもできます。
 
 -	このピアがネットワークの残り部分と同じ国にある場合は、データの常駐は維持されます。 すべての台帳データは、上記の**図 3** で示しているようにドイツ内にとどまります。
 -	このピアが別の国 (米国など) に存在する場合は、ピア台帳上のデータは国境にまたがって共有されるため、データの常駐は維持されなくなります。
 
 この問題を解決するために、**チャネル**を使用してネットワーク上のピアのサブセットに対してデータを分離できます。 {{site.data.keyword.blockchainfull_notm}} Platform ネットワークに、国境にまたがる複数のピアと順序付けプログラムが含まれている場合は、チャネルによって、国境外のピアを有している組織から台帳データが分離されます。  
 
-**注:** 順序付けプログラムは常に、ネットワークをホストするために選択したデータ・センター領域に配置されます。 国境にまたがる複数の順序付けプログラムを保持することはできません。 ただし、ピアは、データ・センターと {{site.data.keyword.cloud_notm}} の外側のリモート・ロケーションのいずれにも配置できます。
+**注:** 順序付けプログラムは常に、ネットワークをホストするために選択したデータ・センター地域に配置されます。 国境にまたがる複数の順序付けプログラムを保持することはできません。 ただし、ピアは、データ・センターと {{site.data.keyword.cloud_notm}} の外側のリモート・ロケーションのいずれにも配置できます。
 
-![IBM Blockchain Platform 領域の国の外にピアが存在する場合のデータの常駐](../images/remote_peer_data_res_2.png "IBM Blockchain Platform 領域の国の外にピアが存在する場合のデータの常駐")  
-*図 4. IBM Blockchain Platform 領域の国の外にピアが存在する場合のデータの常駐*
+![{{site.data.keyword.blockchainfull_notm}} Platform 地域の国の外にピアが存在する場合のデータの常駐](../images/remote_peer_data_res_2.png "{{site.data.keyword.blockchainfull_notm}} Platform 地域の国の外にピアが存在する場合のデータの常駐")  
+*図 4. {{site.data.keyword.blockchainfull_notm}} Platform 地域の国の外にピアが存在する場合のデータの常駐*
 
 **図 4** では、`OrgC` と `OrgD` に対してはデータの常駐は不要です。 実際には、`OrgD` には現在は `OrgD-peer1` と `OrgD-peer2` という 2 つのピアが含まれており、これらのピアは*米国* にあります。 したがって、`OrgA` と `OrgB`、およびこれらの組織のそれぞれのクライアント・アプリケーションとピア (ドイツに存在しているもの) によって、チャネル `X` 上の台帳データが分離されるために、新しいチャネル `Y` が `OrgC` および `OrgD` 用に作成されます。
 
@@ -129,7 +131,7 @@ AWS ピアをデプロイした後に、ピアがネットワークにトラン�
 ## サポートについて
 {: #remote-peer-aws-about-support}
 
-IBM Blockchain Platform では、このオファリングのサポートは提供されていません。 ピアに関する問題が発生した場合は、ブロックチェーン開発者向けの無料のリソースとサポート・フォーラムを利用して、{{site.data.keyword.IBM_notm}} および Fabric コミュニティーから支援を得ることができます。 詳しくは、[ブロックチェーンのリソースおよびサポート・フォーラム](/docs/services/blockchain/ibmblockchain_support.html#blockchain-support-resources)を参照してください。 ネットワーク・モニターの**「ヘルプの利用」**画面でもサポート・リソースを確認できます。
+{{site.data.keyword.blockchainfull_notm}} Platform では、このオファリングのサポートは提供されていません。 ピアに関する問題が発生した場合は、ブロックチェーン開発者向けの無料のリソースとサポート・フォーラムを利用して、{{site.data.keyword.IBM_notm}} および Fabric コミュニティーから支援を得ることができます。 詳しくは、[ブロックチェーンのリソースおよびサポート・フォーラム](/docs/services/blockchain/ibmblockchain_support.html#blockchain-support-resources)を参照してください。 ネットワーク・モニターの**「ヘルプの利用」**画面でもサポート・リソースを確認できます。
 
 - AWS に関連する問題の場合は、[コミュニティーのサポート・フォーラム ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://forums.aws.amazon.com/index.jspa "AWS コミュニティーのサポート・フォーラム") と [AWS プレミアム・サポート ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://aws.amazon.com/premiumsupport/ "AWS プレミアム・サポート") の両方をご利用できます。
 

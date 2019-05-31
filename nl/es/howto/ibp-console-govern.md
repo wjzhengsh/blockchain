@@ -2,7 +2,9 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-04-23"
+lastupdated: "2019-05-16"
+
+keywords: network components, IBM Cloud Kubernetes Service, allocate resources, batch timeout, channel update, reallocate resources
 
 subcollection: blockchain
 
@@ -23,7 +25,9 @@ subcollection: blockchain
 Tras crear CA, iguales, clasificadores, organizaciones y canales, puede utilizar la consola para actualizar estos componentes.
 {:shortdesc}
 
-**Audiencia de destino:** este tema está diseñado para los operadores de red responsables de crear, supervisar y gestionar la red blockchain.  
+Si utiliza la versión de prueba beta de {{site.data.keyword.blockchainfull_notm}} Platform, es probable que algunos paneles de la consola no coincidan con la documentación actual, que se mantiene actualizada con la instancia de servicio con disponibilidad general (GA). Para obtener las ventajas de todas las funciones más recientes, en este momento se recomienda que suministre una nueva instancia de servicio de GA siguiendo las instrucciones de [Iniciación a {{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}}](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks).
+
+**Audiencia de destino:** este tema está diseñado para los operadores de red responsables de crear, supervisar y gestionar la red blockchain.
 
 ## Cómo interactúa el servicio {{site.data.keyword.cloud_notm}} Kubernetes con la consola
 {: #ibp-console-govern-iks-console-interaction}
@@ -40,13 +44,15 @@ Debido a que la instancia de la consola de {{site.data.keyword.blockchainfull_no
 2. **Compruebe si tiene suficientes recursos en el clúster del servicio {{site.data.keyword.cloud_notm}} Kubernetes**. Para supervisar los recursos de Kubernetes, se recomienda que utilice la herramienta [{{site.data.keyword.cloud_notm}} SysDig ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/cloud/sysdig "IBM Cloud Monitoring with Sysdig") junto con el panel de control de {{site.data.keyword.cloud_notm}} Kubernetes. Si no tiene espacio suficiente en el clúster para desplegar o redimensionar recursos, necesitará aumentar el tamaño del clúster del servicio {{site.data.keyword.cloud_notm}} Kubernetes. Para obtener más información sobre cómo aumentar el tamaño de un clúster, consulte [Escalado de clústeres ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](/docs/containers?topic=containers-ca#ca "Escalado de clústeres"). Si tiene espacio suficiente en el clúster, puede continuar con el paso 3.
 3. **Utilice la consola para desplegar o redimensionar el nodo**. Si el nodo trabajador en el que se ejecuta el pod se está quedando sin recursos, puede añadir un nuevo nodo trabajador de mayor tamaño al clúster y suprimir luego el nodo trabajador existente.
 
-| **Componente** (todos los contenedores) | CPU (en milicpus) | CPU (en CPU) | Memoria (en megabytes) | Memoria (en gigabytes) | Almacenamiento (en gigabytes) |
-|--------------------------------|--------------------|---------------|-----------------------|-----------------------|------------------------|
-| **Igual**                       | 1100               | 1,1           | 2200                  | 2,2                   | 200                    |
-| **CA**                         | 300                | 0,3            | 600                   | 0,6                    | 10                     |
-| **Clasificador**                    | 450                | 0,45           | 900                   | 0,9                    | 100                    |
+| **Componente** (todos los contenedores) | CPU  | Memoria (GB) | Almacenamiento (GB) |
+|--------------------------------|---------------|-----------------------|------------------------|
+| **Igual**                       |  1,1          | 2,2                   | 200 (incluye 100GB para el igual y 100GB para CouchDB)|
+| **CA**                         | 0,1            | 0,2                    | 20                     |
+| **Clasificador**                    | 0,45           | 0,9                    | 100                    |
 
 En casos en los que un usuario desee minimizar los cargos sin llegar a desactivar del todo un nodo ni suprimirlo, es posible reducir la escala a un mínimo de 0,001 CPU (1 miliCPU). Tenga en cuenta que el nodo no será funcional cuando utilice esta cantidad de CPU.
+
+Aunque las figuras de este tema tratan de ser precisas, tenga en cuenta que hay veces en las que no se puede desplegar un nodo aunque parezca que tiene espacio suficiente en el clúster. Asegúrese de acceder a su panel de control de Kubernetes para ver cuándo se despliegan los componentes y los mensajes de error cuando no se desplieguen. En los casos en los que no se despliega un componente debido a la falta de recursos, aunque parezca que hay espacio suficiente en el clúster, es probable que tenga que desplegar recursos de clúster adicionales para que se pueda desplegar el componente.
 {:important}
 
 ## Asignación de recursos
@@ -94,7 +100,7 @@ El igual tiene tres contenedores asociados que se pueden ajustar:
 #### Dimensionamiento de un igual durante la creación
 {: #ibp-console-govern-peers-sizing-creation}
 
-Como hemos observado en la sección sobre [cómo interactúa Kubernetes con la consola](#ibp-console-govern-iks-console-interaction), se recomienda utilizar los valores predeterminados para estos contenedores de igual y ajustarlos más adelante cuando se modo de utilización se haga evidente.
+Como hemos observado en la sección sobre [Cómo interactúa el servicio Kubernetes de {{site.data.keyword.cloud_notm}} con la consola](/docs/services/blockchain/howto/ibp-console-govern.html#ibp-console-govern-iks-console-interaction), se recomienda utilizar los valores predeterminados para estos contenedores de igual y ajustarlos más adelante a medida que su modo de utilización se haga evidente.
 
 | Recursos | Condición para aumentar |
 |-----------------|-----------------------|
@@ -114,22 +120,22 @@ Al igual que ocurre con la CA, el clasificador solo tiene un contenedor asociado
 * **El propio clasificador**: encapsula los procesos internos de clasificador (como la validación de transacciones) y el blockchain para todos los canales que aloja.
 
 #### Dimensionamiento de un clasificador durante la creación
-{: #ibp-console-govern-peers-sizing-creation}
+{: #ibp-console-govern-orderer-sizing-creation}
 
-Como hemos observado en la sección sobre [cómo interactúa Kubernetes con la consola](#ibp-console-govern-iks-console-interaction), se recomienda utilizar los valores predeterminados para estos contenedores de clasificador y ajustarlos más adelante cuando se modo de utilización se haga evidente.
+Como hemos observado en la sección sobre [Cómo interactúa el servicio Kubernetes de {{site.data.keyword.cloud_notm}} con la consola](/docs/services/blockchain/howto/ibp-console-govern.html#ibp-console-govern-iks-console-interaction), se recomienda utilizar los valores predeterminados para estos contenedores de clasificador y ajustarlos más adelante a medida que su modo de utilización se haga evidente.
 
 | Recursos | Condición para aumentar |
 |-----------------|-----------------------|
 | **CPU y memoria de contenedor de clasificador** | Cuando se prevé un alto rendimiento de transacciones de inmediato. |
 | **Almacenamiento de clasificador** | Cuando se prevé que este clasificador formará parte de un servicio de ordenación en muchos canales. Recuerde que los clasificadores guardan una copia del blockchain para cada canal del que forman parte. El almacenamiento predeterminado de clasificador es de 100G, igual que para el contenedor del propio igual. |
 
-Hacer que la CPU y la memoria de los nodos de ordenación sea casi el doble del tamaño de los iguales, aunque no es obligatorio, se considera una práctica recomendada. Si se satura un nodo de ordenación Solo, es posible que se agoten los tiempos de espera y que se empiecen a descartar transacciones, lo que requiere que se vuelvan a enviar las transacciones. Esto provoca un daño aún mayor en una red que un solo igual que lucha por mantener el ritmo. En una configuración de servicio de ordenación Raft, un nodo líder saturado podría dejar de enviar mensajes de latido, desencadenando una elección de líder y un cese temporal de la ordenación de transacciones. De la misma manera, un nodo de seguidor podría perder mensajes e intentar desencadenar una elección de líder cuando no se necesita ninguna.
+Hacer que la CPU y la memoria de los nodos de ordenación sea casi el doble del tamaño de los iguales, aunque no es obligatorio, se considera una práctica recomendada. Si se satura un servicio de ordenación, es posible que se agoten los tiempos de espera y que se empiecen a descartar transacciones, lo que requiere que se vuelvan a enviar las transacciones. Esto provoca un daño aún mayor en una red que un solo igual que lucha por mantener el ritmo. En una configuración de servicio de ordenación Raft, un nodo líder saturado podría dejar de enviar mensajes de latido, desencadenando una elección de líder y un cese temporal de la ordenación de transacciones. De la misma manera, un nodo de seguidor podría perder mensajes e intentar desencadenar una elección de líder cuando no se necesita ninguna.
 {:important}
 
 ## Reasignación de recursos
 {: #ibp-console-govern-reallocate-resources}
 
-Tras redimensionar un nodo, es posible que se produzca un retardo antes de que tenga efecto, ya que se tienen que volver a crear los contenedores.
+Tras redimensionar un nodo, es posible que observe un retardo antes de que tenga efecto, ya que se están reconstruyendo los contenedores.
 {:important}
 
 Como se ha indicado anteriormente, se recomienda utilizar la herramienta [{{site.data.keyword.cloud_notm}} SysDig ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/cloud/sysdig "{{site.data.keyword.cloud_notm}} Monitoring with Sysdig") junto con el panel de control de {{site.data.keyword.cloud_notm}} Kubernetes para supervisar el uso de recursos de Kubernetes. Si determina que un nodo trabajador se está quedando sin recursos, puede añadir un nuevo nodo trabajador de mayor tamaño al clúster y suprimir luego el nodo trabajador existente.
@@ -139,16 +145,66 @@ Aunque es más fácil tener bastantes recursos desplegados en el servicio {{site
 
 Puede utilizar uno de los métodos siguientes para reasignar los recursos que asigne a los contenedores asociados con el nodo.
 
-1. **Utilizar el escalador automático del servicio {{site.data.keyword.cloud_notm}} Kubernetes**. El escalador automático aumentará o reducirá la escala de los nodos trabajadores en respuesta a los valores de especificación del pod y a las solicitudes de recursos. Para obtener más información sobre el escalador automático del servicio {{site.data.keyword.cloud_notm}} Kubernetes y cómo configurarlo, consulte [Escalado de clústeres ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](/docs/containers?topic=containers-ca#ca "Escalado de clústeres") en la documentación de IBM {{site.data.keyword.cloud_notm}}. Tenga en cuenta que al permitir que el escalador automático ajuste los recursos puede incurrir en cargos en su cuenta del servicio {{site.data.keyword.cloud_notm}} Kubernetes que variarán según el uso.
+1. **Utilizar el escalador automático del servicio {{site.data.keyword.cloud_notm}} Kubernetes**. El escalador automático aumentará o reducirá la escala de los nodos trabajadores en respuesta a los valores de especificación del pod y a las solicitudes de recursos. Para obtener más información sobre el escalador automático del servicio {{site.data.keyword.cloud_notm}} Kubernetes y cómo configurarlo, consulte [Escalado de clústeres ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](/docs/containers?topic=containers-ca#ca "Escalado de clústeres") en la documentación de {{site.data.keyword.cloud_notm}}. Tenga en cuenta que al permitir que el escalador automático ajuste los recursos puede incurrir en cargos en su cuenta del servicio {{site.data.keyword.cloud_notm}} Kubernetes que variarán según el uso.
 2. **Escalar de forma manual**. Esto implica la supervisión del uso en la consola y en el clúster del servicio {{site.data.keyword.cloud_notm}} Kubernetes. Aunque esto implicará más pasos manuales que utilizar el escalador automático, tiene la ventaja de permitir que el usuario siempre sepa qué se va a cargar en su cuenta del servicio {{site.data.keyword.cloud_notm}} Kubernetes.
 
 Para realizar el escalado manual, pulse el nodo que desee ajustar en la página **Nodos** y, a continuación, pulse el separador **Uso**. Podrá ver un botón denominado **Reasignar**, que mostrará un separador **Asignación de recursos** muy similar al que ha visto al crear el nodo. Si desea reducir la cantidad de recursos disponibles, simplemente proporcione valores más bajos y pulse **Reasignar recursos** en dicho separador y en la página **Resumen** resultante.
 
 Si desea aumentar la CPU y la memoria para un nodo, utilice el separador **Asignación de recursos** para aumentar los valores. El recuadro blanco de la parte inferior de la página añadirá los nuevos valores. Tras pulsar **Reasignar recursos**, la página **Resumen** convertirá este valor en una cantidad **VPC**, que se utilizará para calcular su factura. A continuación, deberá acceder al panel de control del servicio {{site.data.keyword.cloud_notm}} Kubernetes para asegurarse de que el clúster tiene recursos suficientes para esta reasignación. Si es así, puede pulsar **Reasignar recursos**. Si no hay suficientes recursos disponibles, deberá aumentar el tamaño del clúster utilizando el panel de control del servicio {{site.data.keyword.cloud_notm}} Kubernetes.
 
-El método que utilizará para aumentar el almacenamiento dependerá de la clase de almacenamiento que haya elegido para el clúster. Vuelva a consultar la documentación sobre las [opciones de almacenamiento ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](/docs/containers?topic=containers-kube_concepts#kube_concepts "opciones de almacenamiento") para obtener información sobre cómo aumentar el almacenamiento.
+El método que utilizará para aumentar el almacenamiento dependerá de la clase de almacenamiento que haya elegido para el clúster. Vuelva a consultar la documentación sobre las [opciones de almacenamiento ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](/docs/containers?topic=containers-kube_concepts#kube_concepts "opciones de almacenamiento") para obtener información sobre cómo aumentar el almacenamiento. Si está a punto de agotar el almacenamiento en el igual o clasificador, debe desplegar un nuevo igual o clasificador con un sistema de archivos mayor y dejar que se sincronice a través de los demás componentes en los mismos canales.
 
 A diferencia de la CPU y la memoria, que se pueden aumentar utilizando la consola (si tiene recursos disponibles en el clúster del servicio {{site.data.keyword.cloud_notm}} Kubernetes), necesitará utilizar la CLI de {{site.data.keyword.cloud_notm}} para aumentar el almacenamiento de los nodos. Para ver una guía de aprendizaje sobre cómo hacer esto, consulte [Cambiar el tamaño y el IOPS del dispositivo de almacenamiento existente ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](/docs/containers?topic=containers-file_storage#file_change_storage_configuration "Cambiar el tamaño y el IOPS del dispositivo de almacenamiento existente").
+
+## Actualización de la configuración de un canal
+{: #ibp-console-govern-update-channel}
+
+Aunque la creación de un canal y la actualización de un canal tienen el mismo objetivo, al ofrecer a los usuarios la posibilidad de asegurarse de que la configuración de su canal sea la más adecuada posible para su caso de uso, los dos procesos son en realidad muy distintos **como tareas** en la consola. Recuerde que la documentación sobre la [Creación de un canal](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-create-channel) indicaba que se trata de un proceso llevado a cabo por una **única organización**. Siempre que una organización sea miembro del consorcio del servicio de ordenación que pasará a ser el servicio de ordenación de un canal, podrá crear el canal de la manera que desee. Puede proporcionarle cualquier nombre, añadir las organizaciones que quiera (siempre que sean miembros del consorcio), asignar permisos a dichas organizaciones, establecer listas de control de acceso, etc.
+
+Las demás organizaciones tienen la opción de participar en este canal (por ejemplo, uniendo iguales al canal), pero se presupone que el proceso colaborativo de elegir los parámetros del canal ocurrirá fuera de banda, antes de que una organización utilice la consola para crear el canal.
+
+La actualización de un canal es diferente. Ocurre **dentro de la consola** y sigue los procedimientos de control colaborativos que constituyen la base sobre la que funciona {{site.data.keyword.blockchainfull_notm}} Platform. Este proceso colaborativo implica el envío de solicitudes de actualización de la configuración del canal a organizaciones que tienen un rol administrativo en el canal. Estas organizaciones también se conocen como **operadores** del canal.
+
+Para actualizar un canal, pulse sobre el canal dentro del separador **Canales**. Pulse sobre el botón **Valores** situado junto al nombre del canal en la parte superior de la página. Aparecerá un panel que tiene un aspecto muy similar al panel que se utiliza para crear un canal.
+
+### Parámetros de configuración de canal que puede actualizar
+{: #ibp-console-govern-update-channel-available-parameters}
+
+Es posible cambiar algunos, pero no todos, parámetros de configuración de un canal después de que se haya creado el canal. Y solo existe un parámetro que es posible actualizar y que no está disponible durante la creación del canal.
+
+Verá que el **Nombre del canal** está atenuado y no se puede editar. Esto refleja el hecho de que el nombre del canal no se puede cambiar una vez que se haya creado. Además, observe que el nombre de visualización del servicio de ordenación no está presente, ya que el servicio de ordenación de un canal tampoco se puede cambiar una vez que se haya creado el canal.
+
+No obstante, puede cambiar los parámetros de configuración de canal siguientes:
+
+* **Organizaciones**. Esta sección del panel incluye cómo se añaden o eliminan organizaciones de un canal. Las organizaciones que se pueden añadir se pueden ver en la lista desplegable. Tenga en cuenta que una organización debe ser miembro del consorcio del servicio de ordenación para que se pueda añadir a un canal. Para obtener más información sobre cómo añadir una organización al consorcio, consulte [Añadir su organización a la lista de organizaciones que pueden realizar transacciones](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-add-org).
+
+* **Política de actualización del canal**. La política de actualización de un canal especifica cuántas organizaciones (del número total de organizaciones del canal) deben aprobar una actualización en la configuración del canal. Para garantizar un buen equilibrio entre la administración colaborativa y el proceso eficiente de las actualizaciones de configuración del canal, plantéese establecer esta política en un voto por mayoría de administradores. Por ejemplo, si hay cinco administradores en un canal, elija `3 de 5`.
+
+* **Parámetros de corte de bloque**. (Opción avanzada) Debido a que un cambio en los parámetros de corte de bloque predeterminados lo debe firmar un administrador de la organización del servicio de ordenación, estos campos no están presentes en el panel de creación del canal. No obstante, debido a que la configuración de este canal se enviará a todas las organizaciones relevantes del canal, es posible enviar una solicitud de actualización de configuración del canal con cambios en los parámetros de corte de bloque. Estos parámetros determinan las condiciones bajo las cuales el servicio de ordenación corta un nuevo bloque. Para obtener información sobre cómo afecta a estos campos que se corten los bloques, consulte [Parámetros de corte de bloque](/docs/services/blockchain/howto/ibp-console-govern.html#ibp-console-govern-orderer-tuning-batch-size).
+
+* **Listas de control de acceso**. (Opción avanzada) Para especificar un control más preciso sobre los recursos, puede restringir el acceso a un recurso a una organización y un rol dentro de dicha organización. Por ejemplo, el establecimiento del acceso al recurso `ChaincodeExists` en `Application/Admins` implicaría que únicamente el administrador de la aplicación podría acceder al recurso `ChaincodeExists`.
+
+Si restringe el acceso a un recurso a una organización concreta, tenga en cuenta que únicamente dicha organización podrá acceder al recurso. Si desea que otras organizaciones puedan acceder al recurso, deberá añadirlas una por una utilizando los campos que se indican a continuación. Como resultado, piense sus decisiones de control de acceso cuidadosamente. La restricción del acceso a determinados recursos de determinadas maneras puede tener un efecto muy negativo en el funcionamiento del canal.
+{:important}
+
+Debido a que la consola proporciona a un único usuario la posibilidad de poseer y controlar varias organizaciones, debe especificar la organización que esté utilizando al firmar una actualización de canal en la sección **Organización de actualizador de canal**. Si es propietario de más de una organización en este canal, puede elegir cualquiera de las organizaciones de las que sea propietario en el canal para realizar la firma. En función de la **política de actualización de canal** que haya seleccionado, puede recibir una notificación que le solicite firmar la solicitud como una o más de las organizaciones de las que es propietario.
+
+Si intenta cambiar cualquiera de los **Parámetros de corte de bloque** y es propietario de la organización del servicio de ordenación de este canal, verá un campo para la organización del servicio de ordenación. Seleccione el MSP de la organización del servicio de ordenación adecuado en la lista desplegable. Si no es un administrador de la organización del servicio de ordenación, aún así podrá realizar una solicitud para cambiar uno de los parámetros de corte de bloque, pero la solicitud la enviará, y deberá firmarla, un administrador del servicio de ordenación.
+
+### Flujo de recopilación de firmas
+{: #ibp-console-govern-update-channel-signature-collection}
+
+Para que se verifiquen las firmas, las organizaciones de un canal deben exportar los MSP (en formato JSON) que representan sus organizaciones a las demás organizaciones del canal, así como importar los MSP de las otras organizaciones. Para exportar un MSP, pulse el botón de descarga en el MSP (en la pantalla **Organizaciones**) y, a continuación, envíelo a las demás organizaciones fuera de banda. Al recibir un JSON de un MSP, impórtelo utilizando la pantalla **Organizaciones**.
+{: important}
+
+Después de que se haya realizado una solicitud de actualización de la configuración de un canal, se enviará a las organizaciones del canal que tengan el derecho de firmarla. Por ejemplo, si hay cinco operadores (administradores de canal) en un canal, se enviará a los cinco. Para que se apruebe la actualización de la configuración del canal, la deben firmar el número de operadores que aparecen en la **política de actualización del canal**. Si esta política indica `3 de 5`, entonces la actualización de la configuración del canal se enviará a los cinco operadores y, cuando tres de ellos la firmen, la actualización de la configuración del canal entrará en vigor.
+
+Este proceso de conocer cuándo tiene una actualización que firmar, así como de firmarla, se gestiona a través del botón **Notificaciones** (con aspecto de campana) de la parte superior derecha de la consola. Cuando vea un punto azul sobre el botón **Notificaciones**, significa que tiene una solicitud pendiente que evaluar o que tiene una notificación sobre un suceso de actualización de canal.
+
+Al pulsar sobre el botón **Notificaciones**, puede disponer de una o más acciones que puede realizar. Si se ha realizado una solicitud de actualización de la configuración de un canal, tendrá la posibilidad de pulsar sobre `Revisar y actualizar la configuración del canal` y ver los cambios en la actualización de la configuración del canal que se han propuesto o que se han llevado a cabo (si se ha aprobado la nueva configuración del canal). Si es un operador del canal y no se han recopilado firmas suficientes para aprobar la solicitud de actualización de la configuración del canal, tendrá la posibilidad de firmar la solicitud de actualización.
+
+No tiene obligación de firmar una actualización de la configuración del canal, pero no hay manera de firmar **en contra** de la actualización de un canal. Si no aprueba una actualización de configuración del canal, simplemente cierre el panel y póngase en contacto con otros operadores del canal fuera de banda para expresar sus preocupaciones. No obstante, si un número suficiente de operadores del canal para que se satisfaga la política de actualización del canal aprueba la actualización, la nueva configuración entrará en vigor.
+{:note}
 
 ## Ajuste del clasificador
 {: #ibp-console-govern-orderer-tuning}
@@ -157,7 +213,7 @@ El rendimiento de una plataforma blockchain se puede ver afectado por muchas var
 
 Los parámetros siguientes están disponibles en la consola pulsando sobre el nodo clasificador en el separador **Nodos** y, a continuación, pulsando sobre su icono **Valores**. Pulse el botón **Avanzado** para abrir la **Configuración de canal avanzada** para el clasificador.
 
-### Tamaño de lote
+### Parámetros de corte de bloque
 {: #ibp-console-govern-orderer-tuning-batch-size}
 
 Los tres parámetros siguientes se combinan para controlar cuándo se corta un bloque, según una combinación entre establecer el número máximo de transacciones en un bloque y el propio tamaño del bloque.

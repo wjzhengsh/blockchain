@@ -1,8 +1,10 @@
 ---
 
 copyright:
-  years: 2018,2019
-lastupdated: "2019-03-05"
+  years: 2018, 2019
+lastupdated: "2019-05-16"
+
+keywords: view Logs, IBM Cloud Private, logs of a specific network component, monitor blockchain network
 
 subcollection: blockchain
 
@@ -60,27 +62,27 @@ curl: (7) Failed to connect to fft-zbc02b.4.secure.blockchain.ibm.com:20190: Con
 
 ネットワーク・モニターの「概要」画面には、認証局、順序付けサービス、ピアの状況が表示されます。 特定のネットワーク・コンポーネントのログを表示するには、**「アクション」**ヘッダーの下のドロップダウン・リストから**「ログの表示」**をクリックします。 エンタープライズ・プラン・ネットワークを使用している場合は、テキスト・ファイル・フォーマットでコンポーネント・ログを表示できます。 スターター・プラン・ネットワークを使用している場合は、コンポーネント・ログは [{{site.data.keyword.cloud_notm}} Log Analysis サービス ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://cloud.ibm.com/catalog/services/log-analysis) によって収集され、[Kibana](/docs/services/blockchain/howto/monitor_network.html#monitor-blockchain-network-viewing-kibana-logs) でそのログを表示できます。
 
-コンポーネントごとに、さまざまなアクティビティーのログが生成されます。 これは、各コンポーネントが Hyperledger Fabric の[ネットワーク・アーキテクチャー ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/network/network.html) と[トランザクション・フロー ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.1/txflow.html) 内で異なる役割を担っているためです。
+コンポーネントごとに、さまざまなアクティビティーのログが生成されます。 これは、各コンポーネントが Hyperledger Fabric の[ネットワーク・アーキテクチャー ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/network/network.html) と[トランザクション・フロー ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/txflow.html) 内で異なる役割を担っているためです。
 
-- **認証局のログ**
+- **認証局のログ**  
   認証局によってネットワーク内の参加者の ID が管理されます。 認証局のログでは、参加者がネットワークで通信するために公開鍵と秘密鍵を生成 (登録) した時点、または認証局を使用して新規にメンバー、ピア、アプリケーションが登録された時点からのログを表示できます。 認証の検査で問題が発生した場合に、CA ログを使用してデバッグすることもできます。
 
-- **順序付けサービスのログ**
+- **順序付けサービスのログ**  
   順序付けサービスは、ブロックチェーン・ネットワークの共通バインディング・コンポーネントです。 ピア、チャネル更新、ネットワーク・メンバーシップ更新による、すべての承認済みトランザクション・プロポーザルは、検証のために順序付けサービスに送信されます。 したがって、順序付けサービスには、ネットワークが開始された時点からのログが含まれています。 また、正しい組織によって適切に承認されなかったために拒否されたトランザクションについてのログも含まれます。 チャネルが作成または更新された、またはチャネルの更新が失敗した時点からのログも表示できます。
 
 - **ピアのログ**  
   ピアのログには、チェーンコードのインストール、インスタンス化、および呼び出しの結果が含まれます。 チェーンコードの名前とバージョンを検索すると、特定のチェーンコードのログを表示できます。 また、[チャネル・モニターのチェーンコードのセクション](/docs/services/blockchain/howto/monitor_network.html#monitor-blockchain-network-monitor-channel-cc)でも、特定のチェーンコードのログを表示できます。 メッセージ (トランザクション・プロポーザルによって生成されたもの) や、プロポーザル要求でのタイムアウト問題についても、ピアのログに表示されます。 ピア・ログには、[チェーンコードのエンドースメント・ポリシー](/docs/services/blockchain/howto/install_instantiate_chaincode.html#install-instantiate-chaincode-endorsement-policy)を満たしていないために拒否されたトランザクションからのエラーも含まれています。 チャネル結合の要求結果も表示されます。
 
-Hyperledger Fabric では、メッセージの重大度に基づくさまざまな[ロギング・レベル ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.1/logging-control.html "logging control") が提供されます。 {{site.data.keyword.blockchainfull_notm}} Platform でのデフォルト・ロギング・レベルは、`INFO` です。 追加のログを表示するには、[サポート・チケット](/docs/services/blockchain/ibmblockchain_support.html#blockchain-support-cases)を開いて、より詳細な `DEBUG` にロギング・レベルを設定します。 `DEBUG` レベルのログでは、大量のゴシップ・メッセージが表示されるので、フィルタリングが必要かもしれません。 Hyperledger Fabric コンポーネントの問題を検出するには、メッセージ内の `warning` または `error` を検索してください。 コンポーネント・コンテナーが失敗または強制終了したかどうかを検出するには、{{site.data.keyword.cloud_notm}} が送信した `panic` または `killed` のメッセージを検索してください。
+Hyperledger Fabric では、メッセージの重大度に基づくさまざまな[ロギング・レベル ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/logging-control.html "logging control") が提供されます。 {{site.data.keyword.blockchainfull_notm}} Platform でのデフォルト・ロギング・レベルは、`INFO` です。 追加のログを表示するには、[サポート・チケット](/docs/services/blockchain/ibmblockchain_support.html#blockchain-support-cases)を開いて、より詳細な `DEBUG` にロギング・レベルを設定します。 `DEBUG` レベルのログでは、大量のゴシップ・メッセージが表示されるので、フィルタリングが必要かもしれません。Hyperledger Fabric コンポーネントの問題を検出するには、メッセージ内の `warning` または `error` を検索してください。 コンポーネント・コンテナーが失敗または強制終了したかどうかを検出するには、{{site.data.keyword.cloud_notm}} が送信した `panic` または `killed` のメッセージを検索してください。
 
 ## スターター・プランの Kibana でのログ表示
 {: #monitor-blockchain-network-viewing-kibana-logs}
 
-スターター・プラン・ネットワークのログは、[{{site.data.keyword.cloud_notm}} Log Analysis サービス ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://cloud.ibm.com/catalog/services/log-analysis "Log Analysis サービス") によって収集されます。 デフォルトでは、ログは Log Analysis サービスのライト・プランで収集されます。 このプランは無料であり、**ログは 3 日間保管**されてから廃棄されます。 また、**1 日当たりログの最初の 500 MB のみ検索可能**です。 ネットワーク・ログが 500 MB を超えると、Kibana で新規ログを表示することはできません。 ネットワークで 500 MB より大きいログが生成される場合や、3 日を超えてログを保持する場合は、有料版の Log Analysis サービスにアップグレードすることができます。
+スターター・プラン・ネットワークのログは、[{{site.data.keyword.cloud_notm}} Log Analysis サービス ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://cloud.ibm.com/catalog/services/log-analysis "Log Analysis サービス") によって収集されます。 デフォルトでは、ログは Log Analysis サービスのライト・プランで収集されます。 このプランは無料であり、**ログは 3 日間保管**されてから廃棄されます。また、**1 日当たりログの最初の 500 MB のみ検索可能**です。 ネットワーク・ログが 500 MB を超えると、Kibana で新規ログを表示することはできません。 ネットワークで 500 MB より大きいログが生成される場合や、3 日を超えてログを保持する場合は、有料版の Log Analysis サービスにアップグレードすることができます。
 
 Kibana インターフェースで各ネットワーク・コンポーネントのログを開くには、ネットワーク・モニターの「概要」画面で、**「アクション」**ヘッダーの下のドロップダウン・リストから**「ログの表示」**をクリックします。 Kibana が開いて、上部の検索バーによってフィルタリングされたログが表示されます。 例えば、ピアのログをクリックして表示すると、検索はネットワーク ID とピア ID の `NETWORK_ID_str:"nf8389d520c243004bb21ff5d70fc8939" && NODE_NAME_str:"org1-peer1"` によってフィルタリングされています。 さらに具体的なログを表示する場合は、検索バーに追加のフィールドを入力できます。 例えば、`"marbles"` チェーンコードのログを表示するには、`&& "marbles"` を追加します。 特定のコンポーネント条件を削除して、ネットワーク ID でのみ検索すると (例えば、`NETWORK_ID_str:"nf8389d520c243004bb21ff5d70fc8939"`)、すべてのネットワーク・コンポーネントのログが表示されます。
 
-右上隅にある時刻範囲のボタンを使用すると、ログの表示される期間を変更できます。 画面の左側にあるタブを使用すると、検索のフィールドを追加したり削除したりすることができます。 最も重要な表示フィールドは、メッセージ・フィールドです。 タイム・スタンプなしでメッセージを検索すると、メッセージ・ログのすべてのインスタンスが検索されて便利です。 **「保存」**ボタンをクリックすると、現行の検索が保存されて、特定のビューに戻ります。 Kibana でのデータ表示について詳しくは、[Kibana User Guide ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.elastic.co/guide/en/kibana/6.2/index.html "Kibana User Guide") を参照してください。 Log Analysis CLI を使用して、ローカル・ファイル・システムに[ログをダウンロード](https://cloud.ibm.com/docs/services/CloudLogAnalysis/how-to/manage-logs/downloading_logs_cloud.html#downloading_logs)することもできます。
+右上隅にある時刻範囲のボタンを使用すると、ログの表示される期間を変更できます。画面の左側にあるタブを使用すると、検索のフィールドを追加したり削除したりすることができます。 最も重要な表示フィールドは、メッセージ・フィールドです。 タイム・スタンプなしでメッセージを検索すると、メッセージ・ログのすべてのインスタンスが検索されて便利です。 **「保存」**ボタンをクリックすると、現行の検索が保存されて、特定のビューに戻ります。 Kibana でのデータ表示について詳しくは、[Kibana User Guide ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.elastic.co/guide/en/kibana/6.2/index.html "Kibana User Guide") を参照してください。 Log Analysis CLI を使用して、ローカル・ファイル・システムに[ログをダウンロード](https://cloud.ibm.com/docs/services/CloudLogAnalysis/how-to/manage-logs/downloading_logs_cloud.html#downloading_logs)することもできます。
 
 **注:** デフォルトでは、Kibana は30 日間のアクティビティーのログを表示するように事前構成されています。 直近 30 日間にアクティビティーがない場合は、「*No results found*」というメッセージが表示されます。 他のログを表示するには、ユーザー名の下の右上隅にあるタイマー・アイコンをクリックし、*過去 1 年間* などの広い時刻範囲を設定します。
 

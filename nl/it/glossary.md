@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-04-17"
+lastupdated: "2019-05-16"
+
+keywords: IBM Blockchain, IBM Blockchain Platform, terms, Fabric, Raft, CouchDB, consortium
 
 subcollection: blockchain
 
@@ -18,7 +20,7 @@ subcollection: blockchain
 # Glossario
 {: #glossary}
 
-Questo argomento definisce i termini specifici di {{site.data.keyword.blockchainfull}} Platform che compaiono in questa documentazione. Per una comprensione più approfondita dei termini e per un glossario dei termini correlati ai concetti di Hyperledger Fabric, fai riferimento a [Hyperledger Fabric glossary ![Icona link esterno](images/external_link.svg "Icona link esterno")](http://hyperledger-fabric.readthedocs.io/en/release-1.4/glossary.html).
+Questo argomento definisce i termini specifici di {{site.data.keyword.blockchainfull}} Platform che compaiono in questa documentazione. Per una comprensione più approfondita dei termini e per un glossario dei termini correlati ai concetti di Hyperledger Fabric, fai riferimento a [Hyperledger Fabric glossary ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/glossary.html).
 {:shortdesc}
 
 ## Asset
@@ -31,7 +33,7 @@ Un set ordinato di transazioni, che è crittograficamente collegato al precedent
 
 ## CA
 {: #glossary-CA}
-Un'abbreviazione di "Certificate Authority - Autorità di certificazione", si tratta del componente che emette i certificati a tutti i membri partecipanti. Questi certificati rappresentano l'identità di un membro. Tutte le entità nella rete (peer, ordinanti, client ecc.) devono avere un'identità per comunicare, autenticare e, alla fine, interagire con il libro mastro. Queste identità sono richieste per qualsiasi partecipazione diretta nella rete blockchain.
+Un'abbreviazione di "Certificate Authority - Autorità di certificazione", si tratta del componente che emette i certificati a tutti i membri partecipanti. Questi certificati rappresentano l'identità di un membro. Tutte le entità nella rete (peer, ordinanti, client e così via) devono avere un'identità per comunicare, autenticare e, alla fine, interagire con il libro mastro. Queste identità sono richieste per qualsiasi partecipazione diretta nella rete blockchain.
 
 ## Catena
 {: #glossary-chain}
@@ -39,7 +41,6 @@ La catena del libro mastro è un log di transazioni strutturato come blocchi di 
 
 ## Chaincode
 {: #glossary-chaincode}
-
 Noto anche come **smart contract**, il chaincode è un elemento software che contiene una serie di funzioni per eseguire query o aggiornamenti del libro mastro.
 
 ## Canale
@@ -52,11 +53,15 @@ Il client rappresenta l'entità che agisce per conto di un utente. Deve connette
 
 ## Profilo di connessione
 {: #glossary-connection-profile}
-Il profilo di connessione è visibile nella schermata "Panoramica" del Monitoraggio della rete quando si fa clic sul pulsante **Profilo connessione**. Le informazioni sono disponibili in formato JSON e contengono le informazioni sugli endpoint API e gli ID registrazione(enrollID)/i segreti per le tue risorse di rete, ossia peer, ordinanti e CA. La tua applicazione interagisce con le risorse di rete tramite questi endpoint API.
+Il profilo di connessione è visibile nella schermata "Panoramica" del Monitoraggio della rete quando si fa clic sul pulsante **Profilo connessione**. Le informazioni sono disponibili in formato JSON e contengono le informazioni sugli endpoint API e gli ID registrazione (enrollID)/i segreti per le tue risorse di rete, ossia peer, ordinanti e CA. La tua applicazione interagisce con le risorse di rete tramite questi endpoint API.
 
 ## Consenso
 {: #glossary-consensus}
 Un processo collaborativo per mantenere le transazioni del libro mastro sincronizzate nella rete. Il consenso garantisce che i libri mastro vengano aggiornati solo quando gli appropriati partecipanti approvano le transazioni e che i libri mastro vengano aggiornati con le stesse transazioni nello stesso ordine. Ci sono molti modi algoritmici differenti per raggiungere il consenso.
+
+## Console
+{: #glossary-console}
+Il nome dell'interfaccia utente in {{site.data.keyword.blockchainfull_notm}} Platform. La console consente agli utenti di visualizzare, creare e gestire le proprie distribuzioni. Poiché le chiavi pubbliche e private vengono archiviate solo localmente nel browser su cui viene eseguita la console, gli utenti conservano il controllo totale sulle proprie chiavi.
 
 ## Consorzio
 {: #glossary-consortium}
@@ -64,12 +69,11 @@ Il gruppo di organizzazioni non ordinanti elencate sul canale del sistema ordina
 
 ## CouchDB
 {: #glossary-couchdb}
-Un archivio documenti utilizzato per il database dello stato nelle reti piano Starter. CouchDB è anche un'opzione per le reti piano Enterprise, insieme a LevelDB. CouchDB supporta l'utilizzo di indici e consente di emettere query avanzate sui dati sul tuo peer.
+Un archivio documenti che consente query di dati avanzate utilizzato per il database dello stato in {{site.data.keyword.blockchainfull_notm}} Platform e nelle reti piano Starter. CouchDB è anche un'opzione per le reti piano Enterprise, insieme a LevelDB.
 
 ## Stato corrente
 {: #glossary-current-state}
-
-Lo stato corrente del libro mastro rappresenta gli ultimi valori di tutte le chiavi che sono mai state incluse nel suo log di transazione a catena. Poiché lo stato corrente rappresenta tutte le ultime chiavi conosciute del canale, gli viene a volte fatto riferimento come a stato globale. Il chaincode esegue le proposte di transazione nei dati dello stato corrente. Lo stato corrente viene modificato ogni volta che cambia il valore di una chiave o viene aggiunta una nuova chiave. Lo stato corrente è fondamentale per un flusso di transazione perché l'ultima coppia chiave-valore deve essere nota prima di poter essere modificata. I peer eseguono il commit degli ultimi valori allo stato corrente del libro mastro di ogni transazione valida in un blocco. Lo stato corrente viene archiviato in un database dello stato del peer.
+Lo stato corrente del libro mastro rappresenta gli ultimi valori di tutte le chiavi che sono mai state incluse nel suo log di transazione a catena. Poiché lo stato corrente rappresenta tutte le ultime chiavi conosciute del canale, gli viene a volte fatto riferimento come a **stato globale**. Gli smart contract eseguono le proposte di transazione nei dati dello stato corrente. Lo stato corrente viene modificato ogni volta che cambia il valore di una chiave o viene aggiunta una nuova chiave ed è fondamentale per un flusso di transazione perché l'ultima coppia chiave-valore deve essere nota prima di poter essere modificata. I peer eseguono il commit degli ultimi valori allo stato corrente del libro mastro di ogni transazione valida in un blocco. Lo stato corrente viene archiviato nel database dello stato associato a un peer.
 
 ## Adesione dinamica
 {: #glossary-dynamic-memership}
@@ -97,7 +101,7 @@ Hardware Security Module. Fornisce gestione delle chiavi, archiviazione delle ch
 
 ## Hyperledger Fabric
 {: #glossary-hyperledger-fabric}
-[Hyperledger Fabric ![Icona link esterno](images/external_link.svg "Icona link esterno")](http://hyperledger-fabric.readthedocs.io/en/release-1.4/) è un framework blockchain di business ospitato da Linux Foundation che funge da base per lo sviluppo di applicazioni o soluzioni blockchain con un'architettura modulare. I componenti di Hyperledger Fabric quali i servizi di consenso e adesione sono plug-and-play.
+[Hyperledger Fabric ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/) è un framework blockchain di business ospitato da Linux Foundation che funge da base per lo sviluppo di applicazioni o soluzioni blockchain con un'architettura modulare. I componenti di Hyperledger Fabric quali i servizi di consenso e adesione sono plug-and-play.
 
 ## Installare
 {: #glossary-install}
@@ -109,7 +113,7 @@ Il processo di avviare e istanziare un contenitore chaincode su uno specifico ca
 
 ## Kafka
 {: #glossary-kafka}
-L'implementazione di un plugin di consenso per Hyperledger Fabric che dà come risultato un cluster di nodi del servizio ordini nella rete blockchain. Un'implementazione Kafka è concepita per una rete di produzione.
+L'implementazione di un plugin di consenso per Hyperledger Fabric che dà come risultato un cluster di nodi del servizio ordini nella rete blockchain. Le implementazioni Kafka e Raft sono concepite per le reti di produzione. Tuttavia, solo i cluster del servizio di ordinazione Raft sono supportati in modo nativo e possono essere creati utilizzando {{site.data.keyword.blockchainfull_notm}} Platform.
 
 ## Libro mastro
 {: #glossary-ledger}
@@ -121,24 +125,23 @@ Un archivio chiave-valore che è un'opzione per il database dello stato per le r
 
 ## Membro
 {: #glossary-member}
-
 Noti anche come "organizzazioni", i membri in una rete blockchain, analogamente ai membri di qualsiasi gruppo, formano la struttura della rete. Un membro può essere grande quanto una società multinazionale o piccolo come una singola persona. I membri sono registrati nella rete con un certificato che concede loro le autorizzazioni a utilizzare la rete come un fornitore di servizi (ad esempio l'emissione di certificati e la convalida/ordinazione di transazioni) oppure come un consumatore. Nel primo caso fornisce servizi blockchain di base che includono la convalida di transazioni, gli ordini di transazioni e i servizi di gestione dei certificati. I membri consumatore utilizzano la rete per richiamare le transazioni sul libro mastro distribuito. I membri possono avere più peer.
 
 ## MSP
 {: #glossary-msp}
-Membership Service Provider.  Una serie di meccanismi e protocolli crittografici per emettere e convalidare certificati e identità in tutta la rete blockchain. Le identità emesse nell'ambito di un fornitore di servizi di adesione possono essere valutate nell'ambito elle politiche di convalida delle regole del fornitore di servizi di adesione. L'MSP è installato su ciascun peer del canale per garantire che le richieste di transazione emesse al peer abbiano origine da un'identità utente autenticata e autorizzata.
+Un'abbreviazione di **MSP (Membership Service Provider)**, che fornisce la definizione di un'organizzazione, incluso il certificato root della CA che ha emesso i certificati per le entità associate a tale organizzazione, nonché il certificato di firma dell'amministratore di tale organizzazione. Gli MSP esistono anche al livello locale di un peer o di un nodo di ordinazione e sono il meccanismo di autenticazione che verifica gli utenti amministratori del nodo. In {{site.data.keyword.blockchainfull_notm}} Platform, gli MSP possono essere esportati da una console ad un'altra, consentendo agli utenti di creare un'organizzazione in una console, importarla in un'altra console e utilizzarla (ad esempio, per creare un canale). Gli MSP possono inoltre essere importati in un servizio di ordinazione, formando un "consorzio", ovvero l'elenco di organizzazioni che possono creare e unire i canali.
 
 ## Rete
 {: #glossary-network}
 Un'istanza di un servizio {{site.data.keyword.blockchainfull_notm}} Platform su {{site.data.keyword.cloud_notm}}.
 
-## Credenziali di rete
+## Credenziali di rete 
 {: #glossary-network-credentials}
 Visibile dalla schermata "API" del Monitoraggio della rete. Le credenziali includono la tua "chiave" (Nome utente) e il "segreto" (password) nell'IU Swagger. Devi utilizzare queste credenziali di rete per eseguire l'autenticazione prima di provare le API REST.
 
 ## Monitoraggio della rete
 {: #glossary-network-monitor}
-Il dashboard GUI fornito da {{site.data.keyword.blockchainfull_notm}} Platform per visualizzare e gestire la rete blockchain.
+Il dashboard GUI fornito da {{site.data.keyword.blockchainfull_notm}} Platform per le reti Enterprise e Starter, che consente agli utenti di visualizzare e gestire la rete blockchain.
 
 ## Nodo
 {: #glossary-node}
@@ -160,6 +163,10 @@ Qualsiasi organizzazione, individuo, applicazione o dispositivo che interagisce 
 {: #glossary-peer}
 Una risorsa di rete blockchain che fornisce i servizi per eseguire e convalidare le transazioni e mantenere i libri mastro. Il peer esegue il chaincode ed è il detentore della cronologia delle transazioni e dello stato corrente degli asset sui canali della rete, ossia il libro mastro. Appartengono e sono gestiti dalle organizzazioni e vengono uniti ai canali.
 
+## Raft
+{: #glossary-raft}
+Raft è un servizio di ordinazione con tolleranza di errori anomali (CFT) basato su un'implementazione del [protocollo Raft ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://raft.github.io/raft.pdf) in `etcd`. Raft segue un modello “leader e follower”, dove un nodo leader viene eletto (per canale) e le sue decisioni vengono replicate dai follower. I servizi di ordinazione Raft dovrebbero essere più facili da configurare e gestire rispetto ai servizi di ordinazione basati su Kafka e può essere creato un cluster di tali nodi utilizzando {{site.data.keyword.blockchainfull_notm}} Platform.
+
 ## Credenziali del servizio
 {: #glossary-service-credentials}
 Le credenziali del servizio sono in formato JSON e contengono le informazioni sull'endpoint API e gli ID iscrizione(enrollID)/segreti per le tue risorse di rete, ossia le CA, gli ordinanti e i peer. La tua applicazione interagisce con le risorse di rete tramite questi endpoint API.
@@ -176,9 +183,9 @@ Il certificato che ogni entità, che sia un'organizzazione o un amministratore, 
 {: #glossary-smart-contracts}
 Vedi [Chaincode](/docs/services/blockchain/glossary.html#glossary-chaincode).
 
-## SOLO
+## Solo
 {: #glossary-solo}
-L'implementazione di un plugin di consenso per Hyperledger Fabric che dà come risultato un singolo nodo di servizio ordini nella rete blockchain. La rete piano Starter utilizza l'implementazione SOLO. Un'implementazione SOLO non è concepita per una rete di produzione. L'alternativa a SOLO è un cluster Kafka.
+L'implementazione di un plugin di consenso per Hyperledger Fabric che dà come risultato un singolo nodo di servizio ordini nella rete blockchain. La rete piano Starter utilizza l'implementazione Solo. Un'implementazione Solo non è concepita per una rete di produzione. Le alternative a Solo sono i cluster Raft e Kafka.
 
 ## Database dello stato
 {: #glossary-state-database}

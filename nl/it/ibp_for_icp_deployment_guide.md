@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-04-23"
+lastupdated: "2019-05-16"
+
+keywords: root CA, network components, ICP deployment guide, getting started tutorial, IBM Cloud Private
 
 subcollection: blockchain
 
@@ -31,6 +33,7 @@ Il processo per distribuire {{site.data.keyword.blockchainfull_notm}} Platform f
 {:important}
 
 ## Passo uno: Decidi in merito alla tua configurazione di rete
+{: #get-started-icp-step-one-decide-network-config}
 
 La struttura di una rete blockchain deve essere dettata dal caso di utilizzo. Queste decisioni di business fondamentali varieranno in situazioni diverse, ma prendiamone in considerazione qualcuna.
 
@@ -42,16 +45,19 @@ La struttura di una rete blockchain deve essere dettata dal caso di utilizzo. Qu
 
   I componenti di produzione, e le reti di produzione, hanno esigenze diverse rispetto agli ambienti di sviluppo o ai modelli di verifica (PoC, Proof of Concept). In primo luogo, l'alta disponibilità diventa una priorità. Un servizio ordini SOLO, che include solo un singolo ordinante (ed è pertanto un singolo punto di errore) è, per definizione, non destinato alla produzione.
 
-Questa guida alla distribuzione non coprirà ogni iterazione e potenziale configurazione di rete; fornisce invece delle linee guida e regole comuni da prendere in considerazione.{:note}
+Questa guida alla distribuzione non coprirà ogni iterazione e potenziale configurazione di rete; fornisce invece delle linee guida e regole comuni da prendere in considerazione.
+{:note}
 
 ## Passo due: Configura un cluster Kubernetes su {{site.data.keyword.cloud_notm}} Private
+{: #get-started-icp-step-two-set-up-k8s-on-icp}
 
 Dopo che hai deciso la struttura di rete, configura un cluster Kubernetes su {{site.data.keyword.cloud_notm}} Private per soddisfare i tuoi casi di uso. Per ulteriori informazioni, vedi [Configurazione di {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/ICP_setup.html#icp-setup).
 
-Puoi anche utilizzare {{site.data.keyword.IBM_notm}} Secure Service Container come host per {{site.data.keyword.cloud_notm}} Private per avvalerti dei vantaggi della sicurezza di Secure Service Container per progettare dati critici da minacce interne ed esterne. Per ulteriori informazioni, vedi [Utilizzo di {{site.data.keyword.IBM_notm}} Secure Service Container per {{site.data.keyword.cloud_notm}} Private](/docs/services/howto/ibp-ssc-for-icp.html "Utilizzo di {{site.data.keyword.IBM_notm}} Secure Service Container per {{site.data.keyword.cloud_notm}} Private").
+Puoi anche utilizzare {{site.data.keyword.IBM_notm}} Secure Service Container come host per {{site.data.keyword.cloud_notm}} Private per avvalerti dei vantaggi della sicurezza di Secure Service Container per progettare dati critici da minacce interne ed esterne. Per ulteriori informazioni, vedi [Utilizzo di {{site.data.keyword.IBM_notm}} Secure Service Container per {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/howto/ibp-ssc-for-icp.html "Utilizzo di {{site.data.keyword.IBM_notm}} Secure Service Container per {{site.data.keyword.cloud_notm}} Private").
 {:note}
 
 ## Passo tre: Configura le tue CA
+{: #get-started-icp-step-three-set-up-cas}
 
 Nelle reti blockchain basate su Fabric, il primo componente che deve essere distribuito è una CA. Ciò è dovuto al fatto che la configurazione di un componente deve includere almeno una identità utente autorizzata a gestirlo prima che il componente venga distribuito.
 
@@ -66,6 +72,7 @@ Ogni organizzazione deve avere una CA per l'iscrizione e una CA TLS.  Quando dis
 Per ulteriori informazioni su TLS, vedi [Securing Communication With Transport Layer Security (TLS) ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/enable_tls.html "Securing Communication With Transport Layer Security (TLS)") nella documentazione di Hyperledger Fabric
 
 ### Preparazione degli MSP per l'ordinante e i peer
+{: #get-started-icp-prepare-msp-orderer-peer}
 
 Poiché il processo {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private è così elaborato, ti consigliamo di utilizzare una singola identità di utente di gestione come amministratore per tutti i nodi dei componenti di rete durante la configurazione iniziale. Questo dovrebbe ridurre gli errori di distribuzione e di connessione assicurando che un singolo utente possa impostare la configurazione e le connessioni tra i vari componenti per garantire che stiano funzionando correttamente. Tuttavia, è estremamente importante che ogni componente abbia dei certificati diversi. A volte è facile confondersi in merito a questi certificati. L'entità che firma una proposta di transazione non è l'amministratore del peer ma il **peer stesso**. Pertanto, il peer deve essere iscritto e disporre di un certificato che allega a qualsiasi cosa faccia, nonché di una chiave privata che può usare per generare determinati tipi di firme. Per ulteriori informazioni sulle identità e sulle autorizzazioni in una rete blockchain basata su Fabric, vedi [Identity ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/identity/identity.html "Identity") e [Membership ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/membership/membership.html "Membership") nella documentazione di Fabric.
 
@@ -74,6 +81,7 @@ Il client CA Fabric, che dovrebbe essere installato attenendosi alle istruzioni 
 Quando l'ordinante o il peer vengono distribuiti, un contenitore `init` associato agli ordinanti o al peer utilizzerà un oggetto segreto Kubernetes per creare l'MSP per il componente. Per informazioni su come creare un oggetto segreto, vedi [Gestione di una CA](/docs/services/blockchain/howto/CA_operate.html#ca-operate). Come abbiamo detto in precedenza, ricordati che devi configurare una CA e ripetere questo flusso per ciascuna organizzazione.
 
 ## Passo quattro: Distribuisci ordinanti e peer
+{: #get-started-icp-step-four-deploy-order-peer}
 
 Dopo che un segreto Kubernetes è stato creato, sei pronto a distribuire un componente. Se intendi stabilire dei canali, ti consigliamo di distribuire l'ordinante prima di qualsiasi peer. Assicurati di utilizzare nomi organizzazione differenti per tutti i tuoi componenti.
 
@@ -84,6 +92,7 @@ Dopo che un segreto Kubernetes è stato creato, sei pronto a distribuire un comp
 - **[Distribuisci il peer da connettere a una rete {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy)**. Il processo per distribuire un peer e connetterlo a una rete [piano Starter](/docs/services/blockchain/starter_plan.html#starter-plan-about) o [piano Enterprise](/docs/services/blockchain/enterprise_plan.html#enterprise_plan-about) in {{site.data.keyword.cloud_notm}} è diverso perché utilizza i profili di connessione e l'IU Monitoraggio della rete. Nota: l'organizzazione a cui appartiene il peer deve già essere unita a un canale nella rete. Ancora una volta, assicurati che l'ID di MSP dell'organizzazione del peer sia diverso dall'ID di MSP dell'organizzazione dell'ordinante.
 
 ## Passi successivi
+{: #get-started-icp-next-steps}
 
 Dopo che hai distribuito tutti i tuoi nodi, puoi iniziare a utilizzarli e a inoltrare transazioni. Per ulteriori informazioni, vedi i seguenti link:
 
@@ -93,6 +102,7 @@ Dopo che hai distribuito tutti i tuoi nodi, puoi iniziare a utilizzarli e a inol
 - [Utilizzo dei peer su {{site.data.keyword.cloud_notm}} Private con piano Starter o Enterprise](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate)
 
 ## Crescita della tua rete
+{: #get-started-icp-grow-network}
 
 Se il tuo obiettivo è configurare un ambiente di sviluppo o un modello di verifica (PoC, Proof of Concept), dovrai aggiungere le organizzazioni peer al canale del sistema ordinante creato durante la distribuzione dell'ordinante. Questo è un processo articolato in più passi che utilizza ogni componente ed è documentato negli argomenti operativi pertinenti.
 

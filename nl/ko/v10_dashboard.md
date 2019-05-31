@@ -4,6 +4,8 @@ copyright:
   years: 2017, 2019
 lastupdated: "2019-03-20"
 
+keywords: Network Monitor, peer nodes, resources, channels, smart contract
+
 subcollection: blockchain
 
 ---
@@ -20,7 +22,7 @@ subcollection: blockchain
 # 네트워크 모니터 사용
 {: #ibp-dashboard}
 
-{{site.data.keyword.blockchainfull}} Platform에서는 네트워크 리소스, 구성원, 참여된 채널, 트랜잭션 성능 데이터 및 배치된 체인코드를 포함하는 블록체인 환경의 개요를 제공하기 위해 네트워크 모니터를 제공합니다. 또한 네트워크 모니터는 Swagger API를 실행하고 {{site.data.keyword.blockchainfull_notm}} Platform을 사용하여 네트워크를 개발하며 샘플 애플리케이션을 시도하기 위한 시작점을 제공합니다.
+{{site.data.keyword.blockchainfull}} Platform에서는 네트워크 리소스, 구성원, 가입된 채널, 트랜잭션 성능 데이터 및 배치된 체인코드를 포함하는 블록체인 환경의 개요를 제공하기 위해 네트워크 모니터를 제공합니다. 또한 네트워크 모니터는 Swagger API를 실행하고 {{site.data.keyword.blockchainfull_notm}} Platform을 사용하여 네트워크를 개발하며 샘플 애플리케이션을 시도하기 위한 시작점을 제공합니다.
 {:shortdesc}
 
 이 튜토리얼을 사용하여 네트워크 모니터를 통해 엔터프라이즈 플랜 또는 스타터 플랜 네트워크를 작동시키는 방법에 대해 학습할 수 있습니다. 튜토리얼에 있는 스크린샷은 대부분 엔터프라이즈 플랜용이지만 스타터 플랜의 경우에도 해당 지시사항이 유효합니다. 하나의 플랜에 대해서만 특정 기능에 액세스할 수 있는 경우 관련 섹션이 **스타터 플랜 네트워크용** 또는 **엔터프라이즈 플랜 네트워크용**으로 레이블 지정됩니다.
@@ -75,7 +77,7 @@ subcollection: blockchain
 
 네트워크 구성원은 네트워크 원장 사본을 저장하고 체인코드를 실행하여 해당 원장을 조회 또는 업데이트하기 위해 [피어](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview-peer)를 배치합니다. 보증 정책이 피어를 보증 피어로 정의하면 피어가 보증 결과를 애플리케이션으로 리턴합니다.
 
-오른쪽 상단에 있는 **피어 추가** 단추를 클릭하여 네트워크에 피어 노드를 추가하십시오.   팝업 "피어 추가" 패널에서 추가하려는 노드의 수와 크기를 선택하십시오. 고유 요구사항에 따라 조직의 피어를 추가할 수 있습니다. 추가 피어가 필요한 경우 여러 시나리오가 있습니다. 예를 들어, 다중 피어가 중복성을 위해 동일한 채널에 가입하게 할 수 있습니다. 각 피어는 채널의 트랜잭션을 처리하고 원장의 각 사본에 기록합니다. 피어 중 하나가 실패하면 다른 하나의 피어(또는 나머지 여러 개의 피어)가 트랜잭션 및 애플리케이션 요청 처리를 계속할 수 있습니다. 또한 피어에서 모든 애플리케이션 요청을 균형 있게 로드 밸런싱하거나 여러 기능에 대해 서로 다른 피어를 대상으로 지정할 수 있습니다. 예를 들어, 하나의 피어를 사용하여 원장을 조회하고 다른 피어를 사용하여 원장 업데이트에 대한 보증을 처리할 수 있습니다.
+오른쪽 상단에 있는 **피어 추가** 단추를 클릭하여 네트워크에 피어 노드를 추가하십시오.   팝업 "피어 추가" 패널에서 추가하려는 노드의 수와 크기를 선택하십시오. 고유 요구사항에 따라 조직의 피어를 추가할 수 있습니다. 추가 피어가 필요한 경우 여러 시나리오가 있습니다. 예를 들어, 다중 피어가 중복성을 위해 동일한 채널에 가입하게 할 수 있습니다. 각 피어는 채널의 트랜잭션을 처리하고 원장의 각 사본에 기록합니다. 피어 중 하나가 실패하면 다른 하나의 피어(또는 여러 개의 다른 피어)가 트랜잭션 및 애플리케이션 요청 처리를 계속할 수 있습니다. 또한 피어에서 모든 애플리케이션 요청을 균형 있게 로드 밸런싱하거나 여러 기능에 대해 서로 다른 피어를 대상으로 지정할 수 있습니다. 예를 들어, 하나의 피어를 사용하여 원장을 조회하고 다른 피어를 사용하여 원장 업데이트에 대한 보증을 처리할 수 있습니다.
 
 **스타터 플랜**은 기본적으로 네트워크가 시작될 때 구성된 두 개의 조직에 대해 각각 하나씩 피어를 작성합니다.
 
@@ -114,7 +116,7 @@ subcollection: blockchain
 *그림 4. 구성원 추가*
 
 **구성원 추가**를 클릭하면 다음과 같은 두 가지 옵션이 표시됩니다.
-- **구성원 초대**. 네트워크의 구성원이 되도록 다른 조직을 초대할 수 있습니다. 그러면 초대된 조직이 네트워크에 참여하고 사용자와 협업할 수 있습니다.
+- **구성원 초대**. 네트워크의 구성원이 되도록 다른 조직을 초대할 수 있습니다. 그러면 초대된 조직이 네트워크에 가입하고 사용자와 협업할 수 있습니다.
 - **구성원 작성**. 또한 고유 이메일 주소를 사용하여 구성원을 작성할 수 있습니다. 기본적으로 스타터 플랜에서 받은 두 개의 조직의 경우와 같이 이 구성원을 제어할 수 있습니다.
 
 
@@ -201,7 +203,8 @@ CA에서 새 공용 인증서 및 개인 키를 가져오려면 관리자 ID 옆
 ## 코드 개발
 {: #ibp-dashboard-write-code}
 
-{{site.data.keyword.IBM_notm}}은 Composer CLI, JavaScript API, REST 서버 및 웹 플레이그라운드를 포함하여 프로덕션에서 Hyperledger Composer를 사용하는 네트워크를 지원하지 않습니다.{:note}
+{{site.data.keyword.IBM_notm}}은 Composer CLI, JavaScript API, REST 서버 및 웹 플레이그라운드를 포함하여 프로덕션에서 Hyperledger Composer를 사용하는 네트워크를 지원하지 않습니다.
+{:note}
 
 스타터 플랜 및 엔터프라이즈 플랜은 개발 환경에 산업 표준 도구 및 기술을 제공합니다. 네트워크를 개발한 후 이를 네트워크에 배치할 수 있습니다.
 
@@ -249,7 +252,7 @@ CA에서 새 공용 인증서 및 개인 키를 가져오려면 관리자 ID 옆
 
 문제점을 해결하고 {{site.data.keyword.IBM_notm}} 및 Fabric 커뮤니티에서 도움을 받으려면 "지원" 탭의 리소스를 사용하십시오. "지원" 탭에 있는 링크에 대한 자세한 정보는 [지원 받기](/docs/services/blockchain/ibmblockchain_support.html#blockchain-support)의 [리소스 및 지원 포럼](/docs/services/blockchain/ibmblockchain_support.html#blockchain-support-resources)을 참조하십시오.
 
-[IBM dWAnswers ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://developer.ibm.com/answers/smartspace/blockchain/index.html)는 {{site.data.keyword.blockchainfull_notm}} Platform 및 Hyperledger Fabric 사용자를 위한 커뮤니티 포럼이며 IBM 전문가가 모니터합니다. 이전 질문에 대한 답변을 검색하거나 새 질문을 제출할 수 있습니다. 문제를 디버깅하거나 질문에 대한 답변을 확인할 수 없는 경우 {{site.data.keyword.cloud_notm}} 서비스 포털에 지원 케이스를 제출하십시오. 자세한 정보는 [지원 케이스 제출](/docs/services/blockchain/ibmblockchain_support.html#blockchain-support-cases)을 참조하십시오.
+[{{site.data.keyword.IBM_notm}}dWAnswers ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://developer.ibm.com/answers/smartspace/blockchain/index.html){:new_window}는 {{site.data.keyword.blockchainfull_notm}} Platform 및 Hyperledger Fabric 사용자를 위한 커뮤니티 포럼이며 IBM 전문가가 모니터합니다. 이전 질문에 대한 답변을 검색하거나 새 질문을 제출할 수 있습니다. 문제를 디버깅하거나 질문에 대한 답변을 확인할 수 없는 경우 {{site.data.keyword.cloud_notm}} 서비스 포털에 지원 케이스를 제출하십시오. 자세한 정보는 [지원 케이스 제출](/docs/services/blockchain/ibmblockchain_support.html#blockchain-support-cases)을 참조하십시오.
 
 
 ### Fabric 릴리스 정보

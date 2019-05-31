@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-05-16"
+
+keywords: business network, Starter Plan, Enterprise Plan, developer environment, certificate authority card, admin business network card, BNA, business network archive
 
 subcollection: blockchain
 
@@ -186,7 +188,7 @@ Asegúrese de que ha instalado el entorno de desarrollador de {{site.data.keywor
 
 Necesita acceso a una instancia del Plan empresarial de {{site.data.keyword.blockchainfull_notm}} Platform y de tener creados los iguales de antemano. Para obtener más información sobre el Plan empresarial de la plataforma {{site.data.keyword.blockchainfull_notm}}, consulte la [visión general del Plan empresarial](/docs/services/blockchain/enterprise_plan.html#enterprise-plan-about).
 
-### Paso uno: crear un perfil de conexión para IBM Blockchain Platform
+### Paso uno: crear un perfil de conexión para {{site.data.keyword.blockchainfull_notm}} Platform
 {: #deploying-a-business-network-create-connection-profile}
 
 1. Cree un directorio en el que almacenará los detalles de conexión, por ejemplo:

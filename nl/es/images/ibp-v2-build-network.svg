@@ -1,138 +1,458 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 22.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 997 774" style="enable-background:new 0 0 997 774;" xml:space="preserve">
-<style type="text/css">
-	.st0{fill:#DCDCDC;stroke:#DCDCDC;}
-	.st1{fill:#5A6872;}
-	.st2{fill:#011688;stroke:#857B7B;}
-	.st3{fill:#FFFFFF;}
-	.st4{font-family:'IBMPlexSans-Medium';}
-	.st5{font-size:19px;}
-	.st6{fill:#FFFFFF;stroke:#FFFFFF;}
-	.st7{fill:#010F5E;}
-	.st8{font-size:16px;}
-	.st9{filter:url(#Adobe_OpacityMaskFilter);}
-	.st10{mask:url(#mask-2_1_);fill:#0CCAEB;}
-	.st11{filter:url(#Adobe_OpacityMaskFilter_1_);}
-	.st12{mask:url(#mask-4_1_);fill:#0CCAEB;}
-	.st13{font-size:14px;}
-	.st14{fill:#FFFFFF;stroke:#979797;}
-	.st15{fill:#011688;}
-	.st16{filter:url(#Adobe_OpacityMaskFilter_2_);}
-	.st17{mask:url(#mask-6_1_);fill:none;stroke:#001588;}
-	.st18{fill:#001588;}
-	.st19{fill:#C5C5C5;}
-	.st20{fill:#767171;}
-	.st21{stroke:#FFFFFF;}
-</style>
-<title>Build your network</title>
-<desc>Created with Sketch.</desc>
-<rect id="Rectangle" x="62.5" y="113.5" class="st0" width="847" height="548"/>
-<g id="UI-Icon_x2F_checkmark--outline_x2F__x24_ui-05" transform="translate(321.000000, 255.000000)">
-	<path id="Oval-2" class="st1" d="M8,14.5c3.6,0,6.5-2.9,6.5-6.5S11.6,1.5,8,1.5S1.5,4.4,1.5,8S4.4,14.5,8,14.5z M8,16
-		c-4.4,0-8-3.6-8-8s3.6-8,8-8s8,3.6,8,8S12.4,16,8,16z"/>
-	<polygon id="check" class="st1" points="11.3,4.7 12.7,6.1 6.8,12 3.3,8.6 4.7,7.2 6.8,9.2 	"/>
-</g>
-<rect id="Rectangle_1_" x="86.5" y="150.5" class="st2" width="347" height="151"/>
-<text transform="matrix(1 0 0 1 105.206 185)" class="st3 st4 st5">Org 1</text>
-<rect id="Rectangle_2_" x="369.5" y="138.5" class="st6" width="105" height="35"/>
-<text transform="matrix(1 0 0 1 392.176 162)" class="st7 st4 st8">CA de Org1</text>
-<rect id="Rectangle_3_" x="311.5" y="206.5" class="st6" width="105" height="55"/>
-<text transform="matrix(1 0 0 1 326.368 230)" class="st7 st4 st8">Definición de </text>
-<text transform="matrix(1 0 0 1 329.616 250)" class="st7 st4 st8">MSP de Org1</text>
-<rect id="Rectangle_4_" x="84.5" y="471.5" class="st2" width="347" height="151"/>
-<text transform="matrix(1 0 0 1 103.206 506)" class="st3 st4 st5">Org 2</text>
-<rect id="Rectangle_5_" x="103.5" y="529.5" class="st6" width="105" height="61"/>
-<text transform="matrix(1 0 0 1 116.124 566)" class="st7 st4 st8">Org2 igual</text>
-<rect id="Rectangle_6_" x="367.5" y="459.5" class="st6" width="105" height="35"/>
-<text transform="matrix(1 0 0 1 390.176 483)" class="st7 st4 st8">CA de Org2</text>
-<rect id="Rectangle_7_" x="311.5" y="530.5" class="st6" width="105" height="55"/>
-<text transform="matrix(1 0 0 1 326.368 554)" class="st7 st4 st8">Definición de </text>
-<text transform="matrix(1 0 0 1 329.616 574)" class="st7 st4 st8">MSP de Org2</text>
-<rect id="Rectangle_8_" x="107.5" y="204.5" class="st6" width="105" height="61"/>
-<g id="Group-3" transform="translate(208.000000, 227.000000)">
-	<g id="Clip-2">
-	</g>
-	<defs>
-		<filter id="Adobe_OpacityMaskFilter" filterUnits="userSpaceOnUse" x="0.9" y="0" width="51" height="48">
-			<feColorMatrix  type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0"/>
-		</filter>
-	</defs>
-	<mask maskUnits="userSpaceOnUse" x="0.9" y="0" width="51" height="48" id="mask-2_1_">
-		<g class="st9">
-			<polygon id="path-1_1_" class="st3" points="0.9,0 51.9,0 51.9,48 0.9,48 			"/>
-		</g>
-	</mask>
-	<path id="Fill-1" class="st10" d="M0.9,0h51v39c-25.5,0-25.5,14.9-51,6.4V0z"/>
-</g>
-<g id="Group-3-Copy" transform="translate(202.000000, 558.000000)">
-	<g id="Clip-2_1_">
-	</g>
-	<defs>
-		<filter id="Adobe_OpacityMaskFilter_1_" filterUnits="userSpaceOnUse" x="0.9" y="0" width="51" height="48">
-			<feColorMatrix  type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0"/>
-		</filter>
-	</defs>
-	<mask maskUnits="userSpaceOnUse" x="0.9" y="0" width="51" height="48" id="mask-4_1_">
-		<g class="st11">
-			<polygon id="path-3_1_" class="st3" points="0.9,0 51.9,0 51.9,48 0.9,48 			"/>
-		</g>
-	</mask>
-	<path id="Fill-1_1_" class="st12" d="M0.9,0h51v39c-25.5,0-25.5,14.9-51,6.4V0z"/>
-</g>
-<text transform="matrix(1 0 0 1 120.124 241)" class="st7 st4 st8">Org1 igual</text>
-<text transform="matrix(1 0 0 1 213 251)" class="st3 st4 st13">Libro mayor</text>
-<text transform="matrix(1 0 0 1 256.6936 251)" class="st3 st4 st13"> </text>
-<text transform="matrix(1 0 0 1 213 266)" class="st3 st4 st13">X</text>
-<text transform="matrix(1 0 0 1 207 582)" class="st3 st4 st13">Libro mayor</text>
-<text transform="matrix(1 0 0 1 250.6936 582)" class="st3 st4 st13"> </text>
-<text transform="matrix(1 0 0 1 207 597)" class="st3 st4 st13">X</text>
-<ellipse id="Oval" class="st14" cx="323.5" cy="388.5" rx="194.5" ry="51.5"/>
-<text transform="matrix(1 0 0 1 280.7465 400)" class="st7 st4 st5">Canal 1</text>
-<rect id="Rectangle_9_" x="497.5" y="307.5" class="st2" width="347" height="151"/>
-<text transform="matrix(1 0 0 1 517.447 342)" class="st3 st4 st5">Org de clasificador</text>
-<rect id="Rectangle_10_" x="780.5" y="295.5" class="st6" width="105" height="35"/>
-<text transform="matrix(1 0 0 1 791.34 319)" class="st7 st4 st8">CA de clasif.</text>
-<rect id="Rectangle_11_" x="694.5" y="360.5" class="st6" width="124" height="55"/>
-<text transform="matrix(1 0 0 1 711.92 385)" class="st7 st4 st8">Defin. de MSP </text>
-<text transform="matrix(1 0 0 1 725.616 405)" class="st7 st4 st8">de clasificador</text>
-<rect id="Rectangle_12_" x="526" y="402" class="st15" width="10" height="10"/>
-<g id="Group-18" transform="translate(518.000000, 357.000000)">
-	<g id="Group-5">
-		<polygon id="Fill-1_2_" class="st3" points="1.5,1.5 135.5,1.5 135.5,60.5 1.5,60.5 		"/>
-		<g id="Clip-4">
-		</g>
-		<defs>
-			<filter id="Adobe_OpacityMaskFilter_2_" filterUnits="userSpaceOnUse" x="1" y="1" width="135" height="60">
-				<feColorMatrix  type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0"/>
-			</filter>
-		</defs>
-		<mask maskUnits="userSpaceOnUse" x="1" y="1" width="135" height="60" id="mask-6_1_">
-			<g class="st16">
-				<polygon id="path-5_1_" class="st3" points="0,62 137,62 137,0 0,0 				"/>
-			</g>
-		</mask>
-		<polygon id="Stroke-3" class="st17" points="1.5,60.5 135.5,60.5 135.5,1.5 1.5,1.5 		"/>
-	</g>
-	<polygon id="Fill-6" class="st18" points="8,54 46,54 46,37 8,37 	"/>
-	<polygon id="Fill-7" class="st18" points="89,54 127,54 127,37 89,37 	"/>
-	<polygon id="Fill-8" class="st18" points="49,54 86,54 86,37 49,37 	"/>
-	<polygon id="Fill-9" class="st19" points="52,49 59,49 59,41 52,41 	"/>
-	<polygon id="Fill-10" class="st19" points="60,49 67,49 67,41 60,41 	"/>
-	<polygon id="Fill-11" class="st19" points="68,49 75,49 75,41 68,41 	"/>
-	<polygon id="Fill-12" class="st19" points="76,49 83,49 83,41 76,41 	"/>
-	<path id="Fill-13" class="st20" d="M56.5,36.2h0.3l-0.5,0.5v-6.9l0.5,0.5h-0.8v-1h1.3v7.9h-0.8V36.2z M44.9,30.3h8v-1h-8V30.3z
-		 M33.9,30.3h8v-1h-8V30.3z M30.9,30.3h-5.4l0.5-0.5v1.7h-1v-2.2h5.9V30.3z M28.5,30.5l-3,6l-3-6H28.5z"/>
-	<path id="Fill-14" class="st20" d="M112.5,36.2h0.3l-0.5,0.5v-6.9l0.5,0.5h-0.8v-1h1.3v7.9h-0.8V36.2z M100.9,30.3h8v-1h-8V30.3z
-		 M89.9,30.3h8v-1h-8V30.3z M86.9,30.3h-5.4l0.5-0.5v1.7h-1v-2.2h5.9V30.3z M84.5,30.5l-3,6l-3-6H84.5z"/>
-	<polygon id="Fill-15" class="st19" points="93,49 100,49 100,41 93,41 	"/>
-	<polygon id="Fill-16" class="st19" points="101,49 108,49 108,41 101,41 	"/>
-	<polygon id="Fill-17" class="st19" points="109,49 116,49 116,41 109,41 	"/>
-</g>
-<text transform="matrix(1 0 0 1 558.324 379)" class="st7 st4 st8">Clasificador</text>
-<g>
-	<line class="st21" x1="156" y1="265.5" x2="156" y2="360.5"/>
-	<line class="st21" x1="158" y1="415.5" x2="158" y2="526.5"/>
-</g>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="Layer_1"
+   data-name="Layer 1"
+   viewBox="0 0 1018.61 774"
+   version="1.1"
+   sodipodi:docname="ibp-v2-build-network.svg"
+   inkscape:export-filename="F:\jordiserratosa\IBM\BM140\ABD141\S005\spa\SP\images\ibp-v2-build-network.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)">
+  <metadata
+     id="metadata212">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1618"
+     inkscape:window-height="1027"
+     id="namedview210"
+     showgrid="false"
+     inkscape:zoom="1.3183962"
+     inkscape:cx="512.65"
+     inkscape:cy="379.91"
+     inkscape:window-x="54"
+     inkscape:window-y="5"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="Layer_1" />
+  <defs
+     id="defs4">
+    <style
+       id="style2">.cls-1{fill:#dcdcdc;stroke:#dcdcdc;}.cls-2{fill:#5a6872;}.cls-26,.cls-3{fill:#011688;}.cls-3{stroke:#857b7b;}.cls-13,.cls-16,.cls-18,.cls-32,.cls-4,.cls-7{isolation:isolate;font-family:IBMPlexSans-Medium, IBM Plex Sans;font-weight:500;}.cls-18,.cls-4{font-size:19px;}.cls-13,.cls-16,.cls-17,.cls-27,.cls-4,.cls-6{fill:#fff;}.cls-5{letter-spacing:-0.02em;}.cls-29,.cls-6{stroke:#fff;}.cls-7{font-size:16px;}.cls-18,.cls-31,.cls-32,.cls-7{fill:#010f5e;}.cls-8{letter-spacing:-0.02em;}.cls-9{letter-spacing:0em;}.cls-10{letter-spacing:-0.02em;}.cls-11{letter-spacing:0em;}.cls-12{fill:#0ccaeb;}.cls-13,.cls-16{font-size:14px;}.cls-13{letter-spacing:-0.01em;}.cls-14{letter-spacing:0em;}.cls-15{letter-spacing:-0.01em;}.cls-17{stroke:#979797;}.cls-19{letter-spacing:0em;}.cls-20{letter-spacing:0.01em;}.cls-21{letter-spacing:-0.01em;}.cls-22{letter-spacing:0em;}.cls-23{letter-spacing:0.01em;}.cls-24{letter-spacing:-0.01em;}.cls-25{letter-spacing:0em;}.cls-28,.cls-29,.cls-30{fill:none;}.cls-28{stroke:#001588;}.cls-30{stroke:#12c3f4;stroke-width:2px;}.cls-32{font-size:12px;}.cls-33{letter-spacing:0em;}.cls-34{letter-spacing:0.01em;}.cls-35{letter-spacing:-0.01em;}</style>
+  </defs>
+  <title
+     id="title6">ibp-v2-build-network_Raft</title>
+  <rect
+     id="Rectangle"
+     class="cls-1"
+     x="89.15"
+     y="120.09"
+     width="847"
+     height="548" />
+  <g
+     id="UI-Icon_checkmark--outline_ui-05"
+     data-name="UI-Icon/checkmark--outline/$ui-05">
+    <path
+       id="Oval-2"
+       class="cls-2"
+       d="M355.65,276.09a6.5,6.5,0,1,0-6.5-6.5A6.49,6.49,0,0,0,355.65,276.09Zm0,1.5a8,8,0,1,1,8-8A8,8,0,0,1,355.65,277.59Z" />
+    <polygon
+       id="check"
+       class="cls-2"
+       points="358.95 266.29 360.35 267.69 354.45 273.59 350.95 270.19 352.35 268.79 354.45 270.79 358.95 266.29" />
+  </g>
+  <rect
+     id="Rectangle-2"
+     data-name="Rectangle"
+     class="cls-3"
+     x="113.15"
+     y="157.09"
+     width="347"
+     height="151" />
+  <text
+     class="cls-4"
+     transform="translate(131.86 191.59)"
+     id="text17">O<tspan
+   class="cls-5"
+   x="13.53"
+   y="0"
+   id="tspan13">r</tspan>
+<tspan
+   x="20.44"
+   y="0"
+   id="tspan15">g 1</tspan>
+</text>
+  <rect
+     id="Rectangle-3"
+     data-name="Rectangle"
+     class="cls-6"
+     x="396.15"
+     y="145.09"
+     width="105"
+     height="35" />
+  <text
+     class="cls-7"
+     id="text28"
+     style="font-weight:500;font-size:16px;font-family:IBMPlexSans-Medium, 'IBM Plex Sans';isolation:isolate;fill:#010f5e"
+     x="406.82999"
+     y="168.59">CA de Org1<tspan
+   x="456.10999"
+   y="168.59"
+   id="tspan26" />
+</text>
+  <rect
+     id="Rectangle-4"
+     data-name="Rectangle"
+     class="cls-6"
+     x="338.15"
+     y="213.09"
+     width="105"
+     height="55" />
+  <text
+     class="cls-7"
+     id="text35"
+     style="font-weight:500;font-size:16px;font-family:IBMPlexSans-Medium, 'IBM Plex Sans';isolation:isolate;fill:#010f5e"
+     x="343.01999"
+     y="236.59">Definición de<tspan
+   x="360.23999"
+   y="236.59"
+   id="tspan33" />
+</text>
+  <text
+     class="cls-7"
+     id="text37"
+     style="font-weight:500;font-size:16px;font-family:IBMPlexSans-Medium, 'IBM Plex Sans';isolation:isolate;fill:#010f5e"
+     x="344.26999"
+     y="256.59">MSP de Org1</text>
+  <rect
+     id="Rectangle-5"
+     data-name="Rectangle"
+     class="cls-3"
+     x="111.15"
+     y="478.09"
+     width="347"
+     height="151" />
+  <text
+     class="cls-4"
+     transform="translate(129.86 512.59)"
+     id="text44">O<tspan
+   class="cls-5"
+   x="13.53"
+   y="0"
+   id="tspan40">r</tspan>
+<tspan
+   x="20.44"
+   y="0"
+   id="tspan42">g 2</tspan>
+</text>
+  <rect
+     id="Rectangle-6"
+     data-name="Rectangle"
+     class="cls-6"
+     x="130.15"
+     y="536.09"
+     width="105"
+     height="61" />
+  <text
+     class="cls-7"
+     transform="translate(142.77,572.59)"
+     id="text55"
+     style="font-weight:500;font-size:16px;font-family:IBMPlexSans-Medium, 'IBM Plex Sans';isolation:isolate;fill:#010f5e">
+    <tspan
+       class="cls-11"
+       x="9.71"
+       y="0"
+       id="tspan49"
+       style="letter-spacing:0em">Org2 igual</tspan>
+  </text>
+  <rect
+     id="Rectangle-7"
+     data-name="Rectangle"
+     class="cls-6"
+     x="394.15"
+     y="466.09"
+     width="105"
+     height="35" />
+  <text
+     class="cls-7"
+     id="text66"
+     style="font-weight:500;font-size:16px;font-family:IBMPlexSans-Medium, 'IBM Plex Sans';isolation:isolate;fill:#010f5e"
+     x="406.82999"
+     y="489.59">CA de Org2<tspan
+   x="456.10999"
+   y="489.59"
+   id="tspan64" />
+</text>
+  <rect
+     id="Rectangle-8"
+     data-name="Rectangle"
+     class="cls-6"
+     x="338.15"
+     y="537.09"
+     width="105"
+     height="55" />
+  <text
+     class="cls-7"
+     id="text73"
+     style="font-weight:500;font-size:16px;font-family:IBMPlexSans-Medium, 'IBM Plex Sans';isolation:isolate;fill:#010f5e"
+     x="343.01999"
+     y="560.59003">Deficición de<tspan
+   x="360.23999"
+   y="560.59003"
+   id="tspan71" />
+</text>
+  <text
+     class="cls-7"
+     id="text75"
+     style="font-weight:500;font-size:16px;font-family:IBMPlexSans-Medium, 'IBM Plex Sans';isolation:isolate;fill:#010f5e"
+     x="342.26999"
+     y="580.59003">MSP de Org1</text>
+  <rect
+     id="Rectangle-9"
+     data-name="Rectangle"
+     class="cls-6"
+     x="134.15"
+     y="211.09"
+     width="105"
+     height="61" />
+  <g
+     id="Group-3"
+     transform="matrix(1.5322788,0,0,1,-122.1846,0)">
+    <path
+       id="Fill-1"
+       class="cls-12"
+       d="m 235.55,233.59 h 51 v 39 c -25.5,0 -25.5,14.9 -51,6.4 z"
+       inkscape:connector-curvature="0"
+       style="fill:#0ccaeb" />
+  </g>
+  <g
+     id="Group-3-Copy"
+     transform="matrix(1.5322788,0,0,1,-122.1846,0)">
+    <path
+       id="Fill-1-2"
+       data-name="Fill-1"
+       class="cls-12"
+       d="m 229.55,564.59 h 51 v 39 c -25.5,0 -25.5,14.9 -51,6.4 z"
+       inkscape:connector-curvature="0"
+       style="fill:#0ccaeb" />
+  </g>
+  <text
+     class="cls-7"
+     id="text90"
+     style="font-weight:500;font-size:16px;font-family:IBMPlexSans-Medium, 'IBM Plex Sans';isolation:isolate;fill:#010f5e"
+     x="140.77"
+     y="247.59">
+    <tspan
+       class="cls-11"
+       x="150.48"
+       y="247.59"
+       id="tspan84"
+       style="letter-spacing:0em">Org1 igual</tspan>
+  </text>
+  <text
+     class="cls-13"
+     transform="translate(239.65,257.59)"
+     id="text98"
+     style="font-weight:500;font-size:14px;font-family:IBMPlexSans-Medium, 'IBM Plex Sans';letter-spacing:-0.01em;isolation:isolate;fill:#ffffff">Libro mayor<tspan
+   class="cls-14"
+   x="30.549999"
+   y="0"
+   id="tspan96"
+   style="letter-spacing:0em" />
+</text>
+  <text
+     class="cls-16"
+     transform="translate(283.35 257.59)"
+     id="text100" />
+  <text
+     class="cls-16"
+     transform="translate(239.65 272.59)"
+     id="text102">X</text>
+  <text
+     class="cls-13"
+     transform="translate(233.65,588.59)"
+     id="text110"
+     style="font-weight:500;font-size:14px;font-family:IBMPlexSans-Medium, 'IBM Plex Sans';letter-spacing:-0.01em;isolation:isolate;fill:#ffffff">Libro mayor<tspan
+   class="cls-14"
+   x="30.549999"
+   y="0"
+   id="tspan108"
+   style="letter-spacing:0em" />
+</text>
+  <text
+     class="cls-16"
+     transform="translate(277.35 588.59)"
+     id="text112" />
+  <text
+     class="cls-16"
+     transform="translate(233.65 603.59)"
+     id="text114">X</text>
+  <ellipse
+     id="Oval"
+     class="cls-17"
+     cx="350.15"
+     cy="395.09"
+     rx="194.5"
+     ry="51.5" />
+  <text
+     class="cls-18"
+     transform="translate(307.4,406.59)"
+     id="text117"
+     style="font-weight:500;font-size:19px;font-family:IBMPlexSans-Medium, 'IBM Plex Sans';isolation:isolate;fill:#010f5e">Canal 1</text>
+  <rect
+     id="Rectangle-10"
+     data-name="Rectangle"
+     class="cls-3"
+     x="524.15"
+     y="286.59"
+     width="347"
+     height="214.5" />
+  <text
+     class="cls-4"
+     id="text136"
+     style="font-weight:500;font-size:19px;font-family:IBMPlexSans-Medium, 'IBM Plex Sans';isolation:isolate;fill:#ffffff"
+     x="544.09998"
+     y="327.09">Org servicio ordenación<tspan
+   x="713.84003"
+   y="327.09"
+   id="tspan134" />
+</text>
+  <rect
+     id="Rectangle-11"
+     data-name="Rectangle"
+     class="cls-6"
+     x="738.57"
+     y="274.59"
+     width="173.58"
+     height="35" />
+  <text
+     class="cls-7"
+     id="text155"
+     style="font-weight:500;font-size:16px;font-family:IBMPlexSans-Medium, 'IBM Plex Sans';isolation:isolate;fill:#010f5e"
+     x="740.02002"
+     y="298.09">CA servicio ordenación<tspan
+   x="874.17999"
+   y="298.09"
+   id="tspan153" />
+</text>
+  <rect
+     id="Rectangle-12"
+     data-name="Rectangle"
+     class="cls-6"
+     x="716.13971"
+     y="371.64001"
+     width="145.85069"
+     height="55"
+     style="fill:#ffffff;stroke:#ffffff;stroke-width:1.03623056" />
+  <text
+     class="cls-7"
+     id="text170"
+     style="font-weight:500;font-size:16px;font-family:IBMPlexSans-Medium, 'IBM Plex Sans';isolation:isolate;fill:#010f5e"
+     x="740.19"
+     y="395.44">Defición MSP<tspan
+   x="851.58002"
+   y="395.44"
+   id="tspan168" />
+</text>
+  <text
+     class="cls-7"
+     id="text172"
+     style="font-weight:500;font-size:16px;font-family:IBMPlexSans-Medium, 'IBM Plex Sans';isolation:isolate;fill:#010f5e"
+     x="718.89001"
+     y="415.44">servicio ordenación</text>
+  <rect
+     id="Rectangle-13"
+     data-name="Rectangle"
+     class="cls-26"
+     x="552.65"
+     y="408.59"
+     width="10"
+     height="10" />
+  <g
+     id="Group-18">
+    <g
+       id="Group-5">
+      <polygon
+         id="Fill-1-3"
+         data-name="Fill-1"
+         class="cls-27"
+         points="546.15 337.59 705.65 337.59 705.65 474.12 546.15 474.12 546.15 337.59" />
+      <polygon
+         id="Stroke-3"
+         class="cls-28"
+         points="546.15 474.12 705.65 474.12 705.65 337.59 546.15 337.59 546.15 474.12" />
+    </g>
+  </g>
+  <line
+     class="cls-29"
+     x1="182.65"
+     y1="272.09"
+     x2="182.65"
+     y2="367.09"
+     id="line179" />
+  <line
+     class="cls-29"
+     x1="184.65"
+     y1="422.09"
+     x2="184.65"
+     y2="533.09"
+     id="line181" />
+  <circle
+     class="cls-30"
+     cx="625.9"
+     cy="419.09"
+     r="32.14"
+     id="circle183" />
+  <circle
+     class="cls-31"
+     cx="595.04"
+     cy="412.58"
+     r="8.35"
+     id="circle185" />
+  <circle
+     class="cls-31"
+     cx="625.9"
+     cy="389.06"
+     r="8.35"
+     id="circle187" />
+  <circle
+     class="cls-31"
+     cx="656.63"
+     cy="412.58"
+     r="8.35"
+     id="circle189" />
+  <circle
+     class="cls-31"
+     cx="607.67"
+     cy="446.93"
+     r="8.35"
+     id="circle191" />
+  <circle
+     class="cls-31"
+     cx="642.6"
+     cy="446.93"
+     r="8.35"
+     id="circle193" />
+  <text
+     class="cls-32"
+     id="text207"
+     style="font-weight:500;font-size:12px;font-family:IBMPlexSans-Medium, 'IBM Plex Sans';isolation:isolate;fill:#010f5e"
+     x="552.65002"
+     y="363.51999">Nodos servicio ordenación<tspan
+   x="636.19"
+   y="363.51999"
+   id="tspan205" />
+</text>
 </svg>

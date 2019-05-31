@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-04-17"
+lastupdated: "2019-05-16"
 
 subcollection: blockchain
 
@@ -20,7 +20,7 @@ subcollection: blockchain
 # Kubernetes
 {: #k8s-overview}
 
-La console {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta viene distribuita su un cluster Kubernetes tramite il servizio {{site.data.keyword.cloud_notm}} Kubernetes. Kubernetes è un sistema open source per l'automazione di distribuzione, ridimensionamento e gestione delle applicazioni contenute in contenitori.
+{{site.data.keyword.blockchainfull_notm}} Platform ti consente di eseguire il provisioning dei componenti blockchain nel tuo cluster Kubernetes {{site.data.keyword.cloud_notm}}. Kubernetes è un sistema open source per l'automazione di distribuzione, ridimensionamento e gestione delle applicazioni contenute in contenitori.
 {:shortdesc}
 
 Kubernetes fornisce un ambiente di gestione incentrato sul contenitore. Orchestra l'infrastruttura di calcolo, rete e archiviazione al posto dei carichi di lavoro dell'utente. Fornisce molta della semplicità di PaaS (Platform as a Service) con la flessibilità di IaaS (Infrastructure as a Service) e consente la portabilità tra i provider dell'infrastruttura.

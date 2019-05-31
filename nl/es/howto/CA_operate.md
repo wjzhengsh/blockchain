@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-04-23"
+lastupdated: "2019-05-16"
+
+keywords: IBM Cloud Private, Certificate Authority, operate CA, CA admin secret, CA logs, Helm chart, on-prem, CLI, CA TLS cert, CA endpoint, TLS CA
 
 subcollection: blockchain
 
@@ -209,7 +211,7 @@ Puede utilizar el cliente de CA de Fabric para trabajar con la CA. En estas inst
 ### Generación de certificados con el administrador de CA
 {: #ca-operate-enroll-ca-admin}
 
-Antes de desplegar componentes o aplicaciones de cliente con la CA, debe generar certificados que le autentiquen como administrador con capacidad para registrar nuevos usuarios. El proceso de generación de los certificados necesarios, la clave privada y el certificado público (también conocido como certificado de inscripción o signCert), se denomina **inscripción**.
+Antes de desplegar componentes o aplicaciones de cliente con la CA, debe generar certificados que le autentiquen como administrador con capacidad para registrar nuevos usuarios. El proceso de generación de los certificados necesarios, la clave privada y el certificado (también conocido como certificado de inscripción o signCert), se denomina **inscripción**.
 
 Solo puede generar certificados utilizando identidades que se hayan registrado con la entidad emisora de certificados. Proporcione el nombre y el secreto de la identidad para generar certificados. Al desplegar la CA, se registró automáticamente una identidad de **administrador de CA**. Ahora puede utilizar el nombre y contraseña de dicho administrador para emitir un mandato
 `enroll` con el cliente de CA de Fabric para generar una carpeta de MSP con certificados que se utilizarán luego para registrar otras identidades de igual o de clasificador.
@@ -235,7 +237,7 @@ Solo puede generar certificados utilizando identidades que se hayan registrado c
 [URL de CA](/docs/services/blockchain/howto/CA_operate.html#ca-operate-url) dentro de `<ca_url_with_port>`. Excluya la parte de `http://` al principio. `<ca_name>` es el valor que ha proporcionado en el campo
 `CA Name` al desplegar la CA.
 
-  `<ca_tls_cert_path>` es la vía de acceso completa al [certificado TLS de CA](/docs/services/blockchain/howto/CA_operate.html#ca-operate-tls).
+  `<ca_tls_cert_path>` es la vía de acceso completa del [certificado TLS de CA](/docs/services/blockchain/howto/CA_operate.html#ca-operate-tls).
 
   Una llamada real es similar al siguiente mandato de ejemplo:
 
@@ -630,6 +632,7 @@ Copie los valores de `name` y `secret` en `"enrollid"` y
 Debe proporcionar un nombre de host de CSR para desplegar un clasificador o un igual. Este nombre de host incluye la dirección IP de proxy del clúster donde va a desplegar el componente y el `nombre de host de servicio` que se ha generado al desplegar el diagrama de Helm.
 
 #### Localización del valor de la dirección IP de proxy del clúster
+{: #ca-operate-cluster-proxy-ip}
 
 Si desea desplegar un clasificador o un igual en el mismo clúster de {{site.data.keyword.cloud_notm}} Private en el que ha desplegado la CA, asegúrese de tener un rol de
 [administrador de clúster ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/user_management/assign_role.html "Acciones y roles de administrador de clúster") en el clúster de {{site.data.keyword.cloud_notm}} Private donde se va a desplegar el clasificador o el igual. A continuación, especifique la misma IP de proxy que ha utilizado en la [configuración para la CA](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-configuration-parms). Si desea desplegar el clasificador o el igual en un clúster distinto, puede recuperar el valor de la dirección IP de proxy del clúster desde la consola de {{site.data.keyword.cloud_notm}} Private realizando los pasos siguientes:
@@ -678,6 +681,7 @@ Se genera un `nombre de host de servicio` al desplegar un diagrama de Helm. Est�
   {:codeblock}
 
 ### Cómo completar el archivo de configuración
+{: #ca-operate-config-file}
 
 Una vez que haya completado todos los pasos anteriores, el archivo de configuración actualizado puede tener un aspecto similar al del ejemplo siguiente:
 
@@ -735,7 +739,7 @@ Las carpetas de MSP deben tener una estructura definida para que las utilicen lo
 
 - **cacerts:** contiene el certificado de la CA raíz de la red.
 - **intermediatecerts:** son los certificados de las CA intermedias de la cadena de confianza (que vuelve a una o varias CA raíz). Cada organización de plan empresarial tiene dos CA intermedias para la migración tras error y la alta disponibilidad.
-- **signCerts:** esta carpeta contiene el certificado de firma público, también conocido como signCert o certificado de inscripción. Este certificado se adjunta a las llamadas a la red (por ejemplo, una invocación de código de encadenamiento) cuando se hace referencia al directorio MSP desde la línea de mandatos o se crea un objeto de contexto de usuario con los SDK. Puede cargar este certificado en {{site.data.keyword.blockchainfull_notm}} Platform si desea trabajar con una red desde el SDK o desde la línea de mandatos.
+- **signCerts:** esta carpeta contiene el certificado para firmas, también conocido como signCert o certificado de inscripción. Este certificado se adjunta a las llamadas a la red (por ejemplo, una invocación de código de encadenamiento) cuando se hace referencia al directorio MSP desde la línea de mandatos o se crea un objeto de contexto de usuario con los SDK. Puede cargar este certificado en {{site.data.keyword.blockchainfull_notm}} Platform si desea trabajar con una red desde el SDK o desde la línea de mandatos.
 - **keystore:** esta carpeta contiene la clave privada. Esta clave se utiliza para firmar llamadas a la red cuando se hace referencia al directorio MSP desde la línea de mandatos o se crea un objeto de contexto de usuario con los SDK, pero se adjunta a las llamadas del modo en que se adjunta un signCert. Es **vital** que esta clave se mantenga segura. Si se ve comprometida, se puede utilizar para suplantar su identidad.
 
 También puede crear una carpeta de MSP a la que puede hacer referencia el cliente fabric-ca-client utilizando el supervisor de red y las API de Swagger.
@@ -783,7 +787,7 @@ condición se puede producir si {{site.data.keyword.cloud_notm}} Private utiliza
 ## Seguridad
 {: #ca-operate-security}
 
-La CA se puede mantener fuera de línea si solo se emiten un número limitado de certificados, por ejemplo solo iguales, servidor Node.js, aplicaciones cliente, para garantizar una mayor seguridad y no comprometer el material de claves de CA. Sin embargo, la CA debería estar en línea cuando se tengan que emitir solicitudes de certificados bajo demanda a los usuarios. Se recomienda encarecidamente proteger la clave privada del administrador de CA con [HSM](https://console.test.cloud.ibm.com/docs/services/blockchain/glossary.html#glossary-hsm) si es posible.
+Si se emite solo un número limitado de certificados (por ejemplo, solo se emiten certificados de iguales, del servidor Node.js y de las aplicaciones cliente), es posible que se pueda dejar la CA fuera de línea para garantizar una mayor seguridad y evitar que el material de claves de CA se vea comprometido. Sin embargo, la CA debería estar en línea cuando se tengan que emitir solicitudes de certificados bajo demanda a los usuarios. Se recomienda encarecidamente proteger la clave privada del administrador de CA con [HSM](/docs/services/blockchain/glossary.html#glossary-hsm) si es posible.
 
 ## Resolución de problemas
 {: #ca-operate-troubleshooting}
@@ -824,6 +828,8 @@ fallará y generará el error siguiente:
 ```
 
 ### **Solución:**
+{: #ca-operate-enroll-error2-solution}
+
 Debe codificar el carácter especial o especificar el URL entre las comillas simples. Por ejemplo, `!` se convierte en `%21`, o el mandato se parece al siguiente:
 
 ```

@@ -8,21 +8,18 @@ IBM Blockchain Platform
 	{: .topicgroup}
 	시작하기 튜토리얼
 		index.md
-		get_start_starter_plan.md
-		get_start.md
 		howto/ibp-v2-deploy-iks.md
 		ibp_for_icp_deployment_guide.md
 		howto/remote_peer_aws.md
 
 	{: .topicgroup}
 	IBM Blockchain Platform 정보
-		starter_plan.md
-		enterprise_plan.md
 		howto/ibp-console.md
 		ibp-for-icp-about.md
 		howto/remote_peer.md
 
 	whats_new.md
+	howto/pricing-saas.md
 	howto/ibp-v2-faq.md
 	blockchain_component_overview.md
 	needtoknow.md
@@ -31,26 +28,9 @@ IBM Blockchain Platform
 	{: .navgroup id="howto"}
 	{: .topicgroup}
 	스마트 계약 및 애플리케이션 개발
-		howto/develop_chaincode.md
 		vscode-extension.md
+		howto/develop_chaincode.md
 		best_practices.md
-
-
-	{: .topicgroup}
-	스타터 및 엔터프라이즈 플랜
-		v10_dashboard.md
-		develop_starter_enterprise.md
-		howto/prebuilt_samples.md
-		howto/create_channel.md
-		howto/install_instantiate_chaincode.md
-		v10_application.md
-		howto/swagger_apis.md
-		howto/create_join_network_with_apis.md
-		howto/monitor_network.md
-		certificates.md
-		howto/migrate_sp_ep.md
-		howto/pricing.md
-		howto/paying_mode.md
 
 	{: .topicgroup}
 	IBM Blockchain Platform 2.0
@@ -62,6 +42,8 @@ IBM Blockchain Platform
 		howto/ibp-console-govern.md
 		howto/ibp-console-identities.md
 		howto/ibp-console-organizations.md
+		howto/ibp-v2-operations-service.md
+		howto/ibp-v2-apis.md
 		howto/ibp-console-manage.md
 		howto/ibp-v2-troubleshooting.md
 
@@ -92,9 +74,30 @@ IBM Blockchain Platform
 	IBM Blockchain Platform for Amazon Web Services
 		howto/remote_peer_aws.md
 		howto/remote_peer_operate_aws.md
+
+	{: .topicgroup}
+	스타터 및 엔터프라이즈 플랜
+		get_start_starter_plan.md
+		starter_plan.md
+		get_start.md
+		enterprise_plan.md
+		v10_dashboard.md
+		develop_starter_enterprise.md
+		howto/prebuilt_samples.md
+		howto/create_channel.md
+		howto/install_instantiate_chaincode.md
+		v10_application.md
+		howto/swagger_apis.md
+		howto/create_join_network_with_apis.md
+		howto/monitor_network.md
+		certificates.md
+		howto/migrate_sp_ep.md
+		howto/pricing.md
+		howto/paying_mode.md
 	{: .navgroup-end}
 
 	{: .navgroup id="reference"}
+	[API 참조](https://cloud.ibm.com/apidocs/blockchain)
 	glossary.md
 	reference/ibp_regions.md
 	reference/videos.md

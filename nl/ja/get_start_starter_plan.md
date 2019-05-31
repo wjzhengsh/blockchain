@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-05-16"
+
+keywords: blockchain network, Starter Plan, getting started tutorial
 
 subcollection: blockchain
 
@@ -23,7 +25,7 @@ subcollection: blockchain
 
 スターター・プランを使用すると、{{site.data.keyword.blockchainfull_notm}} プラットフォームのスキルを習得し、サンプル・アプリケーションを実行し、独自のアプリケーションをテストし、複数組織のシナリオをシミュレートできます。 この入門チュートリアルは、スターター・プランを使用してブロックチェーン・ネットワークで開発およびトランザクションを開始するステップを案内します。
 
-{{site.data.keyword.blockchainfull_notm}} Platform およびブロックチェーンが初めてという方は、オープン・ソースの [Hyperledger Fabric](/docs/services/blockchain/reference/v10_fabric.html#hyperledger-fabric) 上に構築されたネットワークの[基礎コンポーネントの概要](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview)を参照し、ブロックチェーンについての詳細を確認することができます。 また、[Hyperledger Fabric の資料 ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](http://hyperledger-fabric.readthedocs.io/en/release-1.2/blockchain.html "Blockchain の紹介") も確認してください。
+{{site.data.keyword.blockchainfull_notm}} Platform およびブロックチェーンが初めてという方は、オープン・ソースの [Hyperledger Fabric](/docs/services/blockchain/reference/v10_fabric.html#hyperledger-fabric) 上に構築されたネットワークの[基礎コンポーネントの概要](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview)を参照し、ブロックチェーンについての詳細を確認することができます。 また、[Hyperledger Fabric の資料 ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/blockchain.html "Blockchain の紹介") も確認してください。
 
 **注**: {{site.data.keyword.blockchainfull_notm}} Platform Starter Plan は開発/テスト環境であり、実動ワークロードには適していません。 実稼働環境が必要な場合は、[エンタープライズ・プランについて](/docs/services/blockchain/enterprise_plan.html#enterprise-plan-about)を参照してください。
 
@@ -47,11 +49,6 @@ subcollection: blockchain
 共同事業体を形成したら、チェーンコード (スマート・コントラクトとも呼ばれる) を作成する必要があります。これは、ネットワークのビジネス・ロジックを含み、ブロックチェーン台帳のデータとの対話を可能にするものです。 その後、クライアント・サイド・アプリケーションからネットワークにトランザクションを送信するには、Fabric SDK をこれらのスマート・コントラクトとともに使用することが必要になります。
 
 - [チェーンコードの開発](/docs/services/blockchain/get_start_starter_plan.html#getting-started-with-starter-plan-develop-chaincode)
-- [Fabric SDK を使用したアプリケーションの開発](/docs/services/blockchain/get_start_starter_plan.html#getting-started-with-starter-plan-develop-apps)
-
-{{site.data.keyword.blockchainfull_notm}} Platform には、数クリックのみでスターター・プラン・ネットワークにデプロイできるサンプル・アプリケーションが用意されています。
-
-- [サンプル・アプリケーションのデプロイ](/docs/services/blockchain/get_start_starter_plan.html#getting-started-with-starter-plan-sample-applications)
 
 **ネットワークの運用と管理**
 
@@ -108,7 +105,6 @@ subcollection: blockchain
 
 ブロックチェーン・サービス・インスタンスが、[{{site.data.keyword.cloud_notm}} サービス・ダッシュボード ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://cloud.ibm.com/resources "{{site.data.keyword.cloud_notm}} サービス・ダッシュボード") に表示されます。
 
-
 ## チャネルを作成する
 {: #getting-started-with-starter-plan-create-channels}
 
@@ -127,24 +123,7 @@ subcollection: blockchain
 {: #getting-started-with-starter-plan-install-instantiate-chaincode}
 チャネルに参加し、ビジネス・ロジックを開発した後、チェーンコードをネットワーク内のピアにインストールする必要があります。 ネットワーク・モニターを使用して、組織のピア上でチェーンコードをインストールおよびインスタンス化したり、継続的な開発を促進するためにチェーンコードを更新したりできます。
 
-事前作成されたサンプルのデプロイについて詳しくは、[チェーンコードのインストール、インスタンス化、および更新](/docs/services/blockchain/howto/install_instantiate_chaincode.html#install-instantiate-chaincode)を参照してください。
-
-
-## Fabric SDK を使用したアプリケーションの開発
-{: #getting-started-with-starter-plan-develop-apps}
-
-{{site.data.keyword.blockchainfull_notm}} Platform には、Fabric SDK を使用して接続できる API エンドポイントが用意されています。 SDK を使用して、アプリケーションからチェーンコードを呼び出し、ブロックチェーン・ネットワークにトランザクションを送信できます。
-
-詳しくは、[アプリケーションの開発](/docs/services/blockchain/v10_application.html#dev-app)チュートリアルを参照してください。
-
-
-## サンプル・アプリケーションのデプロイ
-{: #getting-started-with-starter-plan-sample-applications}
-
-スターター・プランを使用すると、数回のクリックだけでサンプル・アプリケーションをネットワークにデプロイできます。 これらのサンプルを使用して、チェーンコードについての詳細を学習し、これらを独自の開発の開始点として使用することができます。
-
-詳しくは、
-[サンプル・アプリケーションのデプロイ](/docs/services/blockchain/howto/prebuilt_samples.html#deploying-sample-applications)を参照してください。
+チェーンコードのインストールおよびインスタンス化について詳しくは、[チェーンコードのインストール、インスタンス化、および更新](/docs/services/blockchain/howto/install_instantiate_chaincode.html#install-instantiate-chaincode)を参照してください。
 
 
 ## ネットワーク・リソースのモニター
@@ -196,13 +175,6 @@ subcollection: blockchain
 スターター・プラン・ネットワークに対してテストする チェーンコードおよびアプリケーションを、エンタープライズ・プラン・ネットワークにデプロイできます。 スターター・プラン・ネットワークでテストするチェーンコードをエンタープライズにデプロイするには、[チェーンコードのインストール、インスタンス化、および更新](/docs/services/blockchain/howto/install_instantiate_chaincode.html#install-instantiate-chaincode-install-cc)の説明に従ってください。
 
 スターター・プラン・ネットワークとエンタープライズ・プラン・ネットワークの間でマイグレーションできるのは、チェーンコードとアプリケーションのみです。データはマイグレーションできません。
-
-<!--
-As you can see in [Deploying sample applications](/docs/services/blockchain/howto/prebuilt_samples.html#deploying-sample-applications), Starter Plan makes it easy to get a sample application integrated with your network by using Toolchain. This setup also allows for continuous integration by automatically updating your sample application whenever your forked application repo is changed. If you want to deploy this application into an Enterprise Plan network, you can copy your forked application repo into a new repo and then follow the instructions in [Deploying sample applications manually](/docs/services/blockchain/howto/prebuilt_samples.html#deploying-sample-applications#deploy_sample_applications_manually).
--->
-
-スターター・プラン・ネットワークにサンプル・アプリケーションをデプロイし、そのアプリケーションをエンタープライズ・プラン・ネットワークにデプロイする場合は、フォークしたアプリケーション・リポジトリーを新規リポジトリーにコピーしてから、サンプル・アプリケーションの説明に従ってエンタープライズ・プラン・ネットワークにデプロイすることができます。
-
 
 ## ネットワークの削除または離脱
 {: #getting-started-with-starter-plan-delete-network}

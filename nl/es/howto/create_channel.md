@@ -4,6 +4,8 @@ copyright:
   years: 2017, 2019
 lastupdated: "2019-03-05"
 
+keywords: channel update policy, endorsement policy, Network Monitor, number of channel operators
+
 subcollection: blockchain
 
 ---
@@ -16,7 +18,6 @@ subcollection: blockchain
 
 # Creación o actualización de un canal
 {: #ibp-create-channel}
-
 
 Los canales constituyen un mecanismo increíblemente potente para dividir y aislar datos y proporcionan la base principal de la privacidad de los datos. Solo los miembros del mismo canal pueden acceder a sus datos.
 {:shortdesc}

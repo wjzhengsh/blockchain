@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-04-23"
+lastupdated: "2019-05-16"
+
+keywords: IBM Blockchain Platform, peer, deploy peers, data storage, peer configuration file, IBM Cloud Private 
 
 subcollection: blockchain
 
@@ -125,7 +127,7 @@ Salva l'output risultante per il seguente passo 4.
     ```
     {:code_block}
 
-  2. Nel campo **Nome**, immetti il valore `couchdbuser`. Nel campo **Valore** corrispondente, immetti `echo -n 'couch' | base64 $FLAG` dal passo precedente.
+  2. Nel campo **Nome**, immetti il valore `couchdbusr`. Nel campo **Valore** corrispondente, immetti `echo -n 'couch' | base64 $FLAG` dal passo precedente.
   3. Fai clic sul pulsante **Aggiungi dati** per aggiungere una seconda coppia chiave/valore.
   4. Nel secondo campo **Nome**, immetti il valore `couchdbpwd`. Nel campo **Valore** corrispondente, immetti `echo -n 'couchpw' | base64 $FLAG` dal passo precedente.
 

@@ -4,6 +4,8 @@ copyright:
   years: 2018, 2019
 lastupdated: "2019-04-23"
 
+keywords: IBM Cloud Private, Certificate Authority, deploy CA, CA admin secret, CA logs, Helm chart, on-prem
+
 subcollection: blockchain
 
 ---

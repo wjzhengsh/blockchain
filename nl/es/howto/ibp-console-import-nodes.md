@@ -4,6 +4,8 @@ copyright:
   years: 2019
 lastupdated: "2019-03-05"
 
+keywords: import nodes, another console, import a CA, import a peer, import admin identities, import an orderering service
+
 subcollection: blockchain
 
 ---
@@ -27,7 +29,7 @@ La consola incluye la opción de importar nodos que se crean utilizando otra con
 
 ## ¿Por qué importar un nodo?
 
-Importe nodos de CA, clasificador e igual desde otras consolas de {{site.data.keyword.blockchainfull_notm}} Platform cuando necesite utilizarlos además de los nodos ya existentes en su consola. Por ejemplo, puede utilizar la opción de importación de un igual si desea unir iguales de organizaciones externas a su consola a canales de su consola. Como los servicios de {{site.data.keyword.blockchainfull_notm}} Platform 2.0 se despliegan entre varios entornos de {{site.data.keyword.cloud_notm}}, es probable que algunas instancias de servicio solo incluyan CA e iguales, mientras que otras alojen servicios de ordenación. La importación de distintos nodos en la consola proporciona una forma de ver y trabajar con estos componentes distribuidos desde una sola interfaz de usuario para que puedan realizar transacciones conjuntamente en blockchain.
+Importe CA, servicios de ordenación e iguales desde otras consolas de {{site.data.keyword.blockchainfull_notm}} Platform cuando necesite utilizarlos además de los nodos ya existentes en su consola. Por ejemplo, puede utilizar la opción de importación de un igual si desea unir iguales de organizaciones externas a su consola a canales de su consola. Como los servicios de {{site.data.keyword.blockchainfull_notm}} Platform 2.0 se despliegan entre varios entornos de {{site.data.keyword.cloud_notm}}, es probable que algunas instancias de servicio solo incluyan CA e iguales, mientras que otras alojen servicios de ordenación. La importación de distintos nodos en la consola proporciona una forma de ver y trabajar con estos componentes distribuidos desde una sola interfaz de usuario para que puedan realizar transacciones conjuntamente en blockchain.
 
 Una vez importe nodos en la consola, dispondrá de un potente conjunto de funciones operativas, como por ejemplo:
 - Añadir nuevas organizaciones al consorcio
@@ -53,9 +55,9 @@ importar la identidad de administrador del componente en la cartera de la consol
 ## Importación de una CA
 {: #ibp-console-import-ca}
 
-Un nodo de CA es el componente de blockchain que emite certificados a todas las entidades de la red (iguales, clasificadores, clientes, etc.) para que dichas entidades se puedan comunicar, autenticar y, en última instancia, realizar transacciones. Cada organización tiene su propia CA que actúa como su raíz de confianza. Debe añadir sus organizaciones si está uniendo o creando un consorcio de blockchain. Encontrará más información sobre las CA en la [visión general de los componentes de blockchain](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview-ca).  
+Un nodo de CA es el componente de blockchain que emite certificados a todas las entidades de la red (iguales, servicios de ordenación, clientes, etc.) para que dichas entidades se puedan comunicar, autenticar y, en última instancia, realizar transacciones. Cada organización tiene su propia CA que actúa como su raíz de confianza. Debe añadir sus organizaciones si está uniendo o creando un consorcio de blockchain. Encontrará más información sobre las CA en la [visión general de los componentes de blockchain](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview-ca).  
 
-Hay varias razones por las que puede desear importar una CA en la consola. Después de importar la CA, puede utilizarla para añadir más iguales a la organización igual pulsando **Registrar usuario**. O bien, puede utilizar la CA para crear identidades de administrador adicionales para un igual o un clasificador.
+Hay varias razones por las que puede desear importar una CA en la consola. Después de importar la CA, puede utilizarla para añadir más iguales a la organización igual pulsando **Registrar usuario**. O bien, puede utilizar la CA para crear identidades de administrador adicionales para un igual o un servicio de ordenación.
 
 Para importar una CA en la consola de {{site.data.keyword.blockchainfull_notm}} Platform y trabajar con la misma, ya debe haber exportado la CA desde otra {{site.data.keyword.blockchainfull_notm}} Platform. El hecho de importar una CA le permite registrar nuevos usuarios e [inscribir identidades](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-enroll).
 
@@ -78,36 +80,37 @@ Una vez que haya importado la CA en la consola, puede utilizar la CA para crear 
 
 ### Importación de identidades de administrador en la cartera de la consola
 
-Cada componente de {{site.data.keyword.blockchainfull_notm}} Platform se despliega con su propia clave pública, el certificado de firma, de un administrador del componente incluida. Cuando el administrador realiza acciones sobre el componente, esta clave pública se adjunta a la transacción y se valida en la configuración del componente. Las claves permiten al administrador trabajar con sus componentes, como por ejemplo registrar nuevos usuarios, crear un nuevo canal o instalar contratos inteligentes en los iguales. Si desea utilizar la consola trabajar con un clasificador o con un igual que se ha creado utilizando otra consola, debe cargar la identidad de administrador asociada en la cartera de la consola. Luego puede asociar el nodo importado con la identidad en la cartera de la consola. Estas identidades se deben exportar desde la consola en la que se han creado y son necesarias cuando se importa el nodo.
+Cada componente de {{site.data.keyword.blockchainfull_notm}} Platform se despliega con su propio certificado para firmas,
+el certificado de firma, de un administrador del componente incluida. Cuando el administrador realiza acciones sobre el componente, este certificado para firmas se adjunta a la transacción y se valida en la configuración del componente. Las claves permiten al administrador trabajar con sus componentes, como por ejemplo registrar nuevos usuarios, crear un nuevo canal o instalar contratos inteligentes en los iguales. Si desea utilizar la consola trabajar con un servicio de ordenación o con un igual que se ha creado utilizando otra consola, debe cargar la identidad de administrador asociada en la cartera de la consola. Luego puede asociar el nodo importado con la identidad en la cartera de la consola. Estas identidades se deben exportar desde la consola en la que se han creado y son necesarias cuando se importa el nodo.
 
 Para importar una nueva identidad, abra el separador **Cartera** y pulse **Añadir identidad**. Pulse **Cargar JSON** para examinar el archivo de identidad JSON que ha exportado el operador de la red desde el lugar en el que se ha creado el nodo.
 
-Después de completar el panel **Añadir identidad** y de pulsar Enviar, puede ver la nueva identidad de administrador en la pantalla de visión general de la cartera. Ahora puede hacer referencia a estas identidades cuando importe los componentes CA, igual o clasificador.
+Después de completar el panel **Añadir identidad** y de pulsar Enviar, puede ver la nueva identidad de administrador en la pantalla de visión general de la cartera. Ahora puede hacer referencia a estas identidades cuando importe los componentes CA, igual o servicio de ordenación.
 
-## Importación de un clasificador
+## Importación de un servicio de ordenación
 {: #ibp-console-import-orderer}
 
-Un nodo clasificador es el componente de blockchain que recopila las transacciones de los miembros de la red, ordena las transacciones y las empaqueta en bloques. El servicio de ordenación, que consta de una colección de clasificadores, es el enlace común de los consorcios de blockchain, y se debe desplegar si crea un consorcio al que se unirán otras organizaciones. Encontrará más información sobre los clasificadores en la [visión general de los componentes de blockchain](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview-orderer).
+Un servicio de ordenación es el componente de blockchain que recopila las transacciones de los miembros de la red, ordena las transacciones y las empaqueta en bloques. Es el enlace común de los consorcios de blockchain y se debe desplegar si va a fundar un consorcio al que se unirán otras organizaciones. Encontrará más información sobre los servicios de ordenación en la [visión general de los componentes de blockchain](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview-orderer).
 
-La importación de un clasificador en la consola le permite crear nuevos canales para que los iguales realicen transacciones en privado.
+La importación de un servicio de ordenación en la consola le permite crear nuevos canales para que los iguales realicen transacciones en privado.
 
 ### Antes de empezar
 {: #ibp-console-import-orderer-before-you-begin}
 
-- Asegúrese de que ya ha importado el archivo JSON de identidad de administrador del clasificador en la cartera de la consola.
-- Asegúrese de que el archivo JSON del clasificador que se ha exportado desde la consola donde se ha creado está disponible.
+- Asegúrese de que ya ha importado el archivo JSON de identidad de administrador del servicio de ordenación en la cartera de la consola.
+- Asegúrese de que el archivo JSON del servicio de ordenación que se ha exportado desde la consola donde se ha creado está disponible.
 
-### Cómo importar un clasificador
-La importación de un clasificador se realiza desde el separador **Nodos**. Pulse **Añadir clasificador** `+` en la sección de clasificador y luego pulse **Importar un clasificador existente**. Siga los pasos del panel lateral que se abre para especificar manualmente la información de conexión.
-- Pulse el botón **Cargar JSON** para omitir la entrada manual de la información y navegar hasta el archivo JSON que se ha exportado desde la consola en la que se ha creado el clasificador.
-- Establezca la identidad de administrador para el clasificador pulsando **Identidad existente** y seleccionando la identidad de administrador del clasificador desde la cartera de la consola.
+### Cómo importar un servicio de ordenación
+La importación de un servicio de ordenación se realiza desde el separador **Nodos**. Pulse **Añadir servicio de ordenación** `+` en la sección de servicio de ordenación y luego pulse **Importar un servicio de ordenación existente**. Siga los pasos del panel lateral que se abre para especificar manualmente la información de conexión.
+- Pulse el botón **Cargar JSON** para omitir la entrada manual de la información y navegar hasta el archivo JSON que se ha exportado desde la consola en la que se ha creado el servicio de ordenación.
+- Establezca la identidad de administrador para el servicio de ordenación pulsando **Identidad existente** y seleccionando la identidad de administrador del servicio de ordenación desde la cartera de la consola.
 
-Una vez que haya importado el clasificador en la consola, puede añadir nuevos miembros de la organización y seleccionar el clasificador al crear nuevos canales.
+Una vez que haya importado el servicio de ordenación en la consola, puede añadir nuevos miembros de la organización y seleccionar el servicio de ordenación al crear nuevos canales.
 
 ## Importación de un igual
 {: #ibp-console-import-peer}
 
-Un nodo igual es el componente blockchain que mantiene un libro mayor y ejecuta un contrato inteligente para realizar las operaciones de consulta y actualización en el libro mayor. Los miembros de la organización poseen y mantienen los iguales.  Cada organización que se une a un consorcio debe desplegar al menos un igual. Encontrará más información sobre los iguales en la [visión general de los componentes de blockchain](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview-peer).  
+Un nodo igual es el componente blockchain que mantiene un libro mayor y ejecuta un contrato inteligente para realizar las operaciones de consulta y actualización en el libro mayor. Los miembros de la organización poseen y mantienen los iguales.  Cada organización que se une a un consorcio debe desplegar al menos un igual. Encontrará más información sobre los iguales en la [visión general de los componentes de blockchain](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview-peer).
 
 Después de importar un igual en la consola, puede instalar contratos inteligentes en el igual y unir el igual a otros canales de su blockchain.
 

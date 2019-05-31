@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-20"
+lastupdated: "2019-05-16"
+
+keywords: IBM Blockchain Platform, remote peer, AWS peer, AWS peers, multi-cloud
 
 subcollection: blockchain
 
@@ -39,7 +41,7 @@ Antes de desplegar iguales de {{site.data.keyword.blockchainfull_notm}} Platform
 ## Requisitos previos
 {: #remote-peer-aws-prerequisites}
 
-Para utilizar un igual de {{site.data.keyword.blockchainfull_notm}} Platform para AWS (igual remoto), debe tener una organización que sea miembro de una red blockchain que esté alojada en la plataforma IBM Blockchain. Es necesario utilizar el supervisor de red en IBM Cloud para acceder a las credenciales de red y a los puntos finales de API de la red. Si no es miembro de ninguna red blockchain, tiene que crear o unirse a una red. Para obtener más información, consulte [Creación de una red](/docs/services/blockchain/get_start.html#getting-started-with-enterprise-plan-create-network) o [Cómo unirse a una red](/docs/services/blockchain/get_start.html#getting-started-with-enterprise-plan-join-nw).
+Para utilizar un igual de {{site.data.keyword.blockchainfull_notm}} Platform para AWS (igual remoto), debe tener una organización que sea miembro de una red blockchain que esté alojada en {{site.data.keyword.blockchainfull_notm}} Platform. Es necesario utilizar el supervisor de red en IBM Cloud para acceder a las credenciales de red y a los puntos finales de API de la red. Si no es miembro de ninguna red blockchain, tiene que crear o unirse a una red. Para obtener más información, consulte [Creación de una red](/docs/services/blockchain/get_start.html#getting-started-with-enterprise-plan-create-network) o [Cómo unirse a una red](/docs/services/blockchain/get_start.html#getting-started-with-enterprise-plan-join-nw).
 
 El tipo de instancia de VPC predeterminado para el igual es `m4.xlarge`.  Debe optimizar el tipo de instancia que elija en función de sus requisitos de CPU, memoria y almacenamiento. El igual necesita al menos:  
 -	2x CPU
@@ -163,20 +165,20 @@ En la tabla siguiente se muestran los parámetros configurables del diagrama de 
 | `InstanceType` | Tipo de instancia EC2 para las instancias de igual. | m4.xlarge |
 | `KeyPairName` | Nombre de un par de claves EC2 existente dentro de la región de AWS. Debe generar esto. | |
 | | | |
-|**Configuración de IBM Blockchain** | |
-| `IBMBlockchainVersion` | Versión de IBM Blockchain a desplegar. | 1.2.1 |
+|** {{site.data.keyword.blockchainfull_notm}}Configuración** | |
+| `IBMBlockchainVersion` | Versión de {{site.data.keyword.blockchainfull_notm}} a desplegar. | 1.2.1 |
 | `StateDatabase` | Tipo de base de datos a utilizar para almacenar el estado de blockchain. Esta selección debe coincidir con el tipo de base de datos de estado utilizado por el resto de la red. | CouchDB|
 | `PeerVolumeSize` | Tamaño del volumen de EBS utilizado para almacenar datos persistentes (libro mayor, base de datos de estado, MSP) para el igual en GB. | 100 |
-| `Peer 1 enroll ID`| ID de inscripción que ha especificado en el panel de entidad emisora de certificados de la interfaz de usuario de la plataforma IBM Blockchain para el primer igual. |  |
-| `Peer 1 enroll secret` | Secreto de inscripción que ha especificado en el panel de entidad emisora de certificados de la interfaz de usuario de la plataforma IBM Blockchain para el primer igual. | |
-| `Peer 2 enroll ID` | ID de inscripción que ha especificado en el panel de entidad emisora de certificados de la interfaz de usuario de la plataforma IBM Blockchain para el segundo igual. | |
-| `Peer 2 enroll secret` | Secreto de inscripción que ha especificado en el panel de entidad emisora de certificados de la interfaz de usuario de la plataforma IBM Blockchain para el segundo igual. | |
+| `Peer 1 enroll ID`| ID de inscripción que ha especificado en el panel de entidad emisora de certificados de la interfaz de usuario de {{site.data.keyword.blockchainfull_notm}} Platform para el primer igual. |  |
+| `Peer 1 enroll secret` | Secreto de inscripción que ha especificado en el panel de entidad emisora de certificados de la interfaz de usuario de {{site.data.keyword.blockchainfull_notm}} Platform para el primer igual. | |
+| `Peer 2 enroll ID` | ID de inscripción que ha especificado en el panel de entidad emisora de certificados de la interfaz de usuario de {{site.data.keyword.blockchainfull_notm}} Platform para el segundo igual. | |
+| `Peer 2 enroll secret` | Secreto de inscripción que ha especificado en el panel de entidad emisora de certificados de la interfaz de usuario de {{site.data.keyword.blockchainfull_notm}} Platform para el segundo igual. | |
 | | | |
 |**Credenciales de servicio de IBM Blockchain**| | |
-| `Organization MSP` | Este valor se puede encontrar en la interfaz de usuario de la plataforma IBM Blockchain. Pulse sobre el botón Configuración de igual remoto del panel Visión general y copie y pegue la información aquí. | |
-| `Certificate Authority (CA) Name` | Este valor se puede encontrar en la interfaz de usuario de la plataforma IBM Blockchain. Pulse sobre el botón Configuración de igual remoto del panel Visión general y copie y pegue la información aquí.| |
-| `Certificate Authority (CA) URL` | Este valor se puede encontrar en la interfaz de usuario de la plataforma IBM Blockchain. Pulse sobre el botón Configuración de igual remoto del panel Visión general y copie y pegue la información aquí, incluyendo el puerto. Si no se especifica, el puerto predeterminado es el 443. | |
-| `Certificate Authority (CA)  TLS Certificate`| Este valor se puede encontrar en la interfaz de usuario de la plataforma IBM Blockchain. Pulse sobre el botón Configuración de igual remoto del panel Visión general y copie y pegue la información aquí.| |
+| `Organization MSP` | Este valor se puede encontrar en la interfaz de usuario de {{site.data.keyword.blockchainfull_notm}} Platform. Pulse sobre el botón Configuración de igual remoto del panel Visión general y copie y pegue la información aquí. | |
+| `Certificate Authority (CA) Name` | Este valor se puede encontrar en la interfaz de usuario de {{site.data.keyword.blockchainfull_notm}} Platform. Pulse sobre el botón Configuración de igual remoto del panel Visión general y copie y pegue la información aquí.| |
+| `Certificate Authority (CA) URL` | Este valor se puede encontrar en la interfaz de usuario de {{site.data.keyword.blockchainfull_notm}} Platform. Pulse sobre el botón Configuración de igual remoto del panel Visión general y copie y pegue la información aquí, incluyendo el puerto. Si no se especifica, el puerto predeterminado es el 443. | |
+| `Certificate Authority (CA)  TLS Certificate`| Este valor se puede encontrar en la interfaz de usuario de {{site.data.keyword.blockchainfull_notm}} Platform. Pulse sobre el botón Configuración de igual remoto del panel Visión general y copie y pegue la información aquí.| |
 | | | |
 |**Otros parámetros**| | |
 | `QSS3BucketName` | Nombre de grupo de S3 para los activos de Inicio rápido. El nombre de grupo de Inicio rápido puede incluir números, letras en minúscula, letras en mayúscula y guiones (-). No puede empezar ni terminar por un guión (-). | `aws-quickstart` |
@@ -200,7 +202,7 @@ Si va a desplegar el igual de {{site.data.keyword.blockchainfull_notm}} Platform
 
  - Asegúrese de que el VPC tiene dos subredes privadas en distintas zonas de disponibilidad para las instancias de la base de datos. Estas subredes requieren pasarelas NAT o instancias de NAT en sus tablas de rutas, para permitir que las instancias puedan descargar paquetes y software sin exponerlos a Internet.
 
- - Configure la opción de nombre de dominio en las opciones de DHCP tal como se describe en la [documentación de VPC de Amazon ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_DHCP_Options.html "Conjuntos de opciones de DHCP").  
+ - Configure la opción de nombre de dominio en las opciones de DHCP tal como se describe en la [documentación de VPC de Amazon ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_DHCP_Options.html "Conjuntos de opciones de DHCP").  
 
 - Cree un grupo de seguridad enlazado con su VPC existente y de añadir reglas de entrada en los puertos 22 y 7051 para este grupo de seguridad. Las conexiones TCP en el puerto 22 permiten el acceso SSH a la instancia generada, mientras que las conexiones TCP en el puerto 7051 permiten el acceso gRPC externo a la instancia del igual (necesario para trabajar con el igual utilizando la CLI de herramientas de Fabric y los SDK de Fabric). Se le solicitarán estos valores de VPC al iniciar el Inicio rápido.
 
@@ -345,11 +347,11 @@ Ejecute el mandato de CLI `peer channel fetch` para recuperar el bloque de orige
 * **P**. He recibido un error CREATE_FAILED al iniciar el Inicio rápido.
 * **R**. Si AWS CloudFormation no ha podido crear la pila, se recomienda que vuelva a iniciar la plantilla con la opción Retrotraer en caso de error (Rollback on failure) establecida en `No`. (Este valor se encuentra en Avanzado en la consola de AWS CloudFormation, en la página Opciones). Con este valor, el estado de la pila se conservará y la instancia se dejará en ejecución, por lo que puede resolver el problema. (Consulte los archivos de registro en `%ProgramFiles%\Amazon\EC2ConfigService` y `C:\cfn\log`).
 
-  - Al establecer Retrotraer en caso de error en `No`, seguirá incurriendo en gastos de AWS para esta pila. Asegúrese de suprimir la pila cuando termine de resolver el problema. Para obtener información adicional, consulte
+  - Al establecer Retrotraer en caso de error en `No`, seguirá incurriendo en gastos de AWS para esta pila. Asegúrese de suprimir la pila cuando termine de resolver el problema. Para obtener más información, consulte
 [Resolución de problemas de AWS CloudFormation ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/troubleshooting.html "Resolución de problemas de AWS CloudFormation") en el sitio web de AWS.
 
 * **P**. He recibido un error de limitación de tamaño al desplegar las plantillas de AWS Cloudformation.
-* **R**. Se recomienda que inicie las plantillas de Inicio rápido desde la ubicación que hemos proporcionado o desde otro grupo de S3. Si despliega las plantillas desde una copia local en su sistema o desde una ubicación que no sea S3, es posible que encuentre limitaciones de tamaño de plantilla al crear la pila. Para obtener más información sobre los límites de AWS CloudFormation, consulte la [documentación de AWS ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cloudformation-limits.html "Límites de AWS CloudFormation").
+* **R**. Se recomienda que inicie las plantillas de Inicio rápido desde la ubicación que hemos proporcionado o desde otro grupo de S3. Si despliega las plantillas desde una copia local en su sistema o desde una ubicación que no sea S3, es posible que encuentre limitaciones de tamaño de plantilla al crear la pila. Para obtener más información sobre los límites de AWS CloudFormation, consulte la [documentación de AWS ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cloudformation-limits.html "Límites de AWS CloudFormation").
 
 ## Qué hacer a continuación
 {: #remote-peer-aws-whats-next}
@@ -423,7 +425,7 @@ In {{site.data.keyword.blockchainfull_notm}} Platform when a private key is crea
 #### Configuración del proveedor de servicios de pertenencia
 {: #remote-peer-aws-security-MSP}
 
-Los componentes de la plataforma IBM Blockchain consumen identidades a través de proveedores de servicios de pertenencia (MSP). Los MSP asocian los certificados que emiten las entidades emisoras de certificados con roles de red y de canal. Consulte este [tema](/docs/services/blockchain/certificates.html#managing-certificates-msp) para obtener más información sobre cómo trabajan los MSP con el igual.
+Los componentes de {{site.data.keyword.blockchainfull_notm}} Platform consumen identidades a través de proveedores de servicios de pertenencia (MSP). Los MSP asocian los certificados que emiten las entidades emisoras de certificados con roles de red y de canal. Consulte este [tema](/docs/services/blockchain/certificates.html#managing-certificates-msp) para obtener más información sobre cómo trabajan los MSP con el igual.
 
 #### Seguridad de las aplicaciones
 {: #remote-peer-aws-security-appl}

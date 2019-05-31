@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-20"
+lastupdated: "2019-05-16"
+
+keywords: IBM Blockchain Platform, remote peer, operate peers, AWS peer, AWS peers, necessary certificates, command line
 
 subcollection: blockchain
 
@@ -46,7 +48,7 @@ Si consiglia di utilizzare la versione 1.2 dell'SDK Node.
 
 Prima di utilizzare l'SDK per gestire il peer, devi generare i certificati necessari (iscrizione) che consentiranno alla tua applicazione di comunicare con la tua rete su {{site.data.keyword.blockchainfull_notm}} Platform e con il tuo peer. Segui la procedura per eseguire l'[iscrizione con l'SDK](/docs/services/blockchain/v10_application.html#dev-app-enroll-sdk) utilizzando la tua identità **admin**. L'esercitazione [Sviluppo di applicazioni](/docs/services/blockchain/v10_application.html#dev-app) esegue anche l'iscrizione come **admin**, pertanto non devi modificare il codice di esempio.
 
-### Caricamento di un certificato di firma su IBM Blockchain Platform
+### Caricamento di un signcert in {{site.data.keyword.blockchainfull_notm}} Platform
 {: #remote-peer-aws-operate-upload-SDK}
 
 Devi caricare il tuo certificato di firma SDK sulla rete in {{site.data.keyword.blockchainfull_notm}} Platform in modo che gli altri membri possano riconoscere la tua firma digitale.
@@ -56,7 +58,7 @@ Devi caricare il tuo certificato di firma SDK sulla rete in {{site.data.keyword.
 ### Caricamento di un certificato di firma sul peer
 {: #remote-peer-aws-operate-upload-signcert}
 
-Devi anche caricare il certificato di firma dell'SDK nel peer remoto e riavviarlo. Devi installare lo stesso certificato di firma che hai [caricato su IBM Blockchain Platform](/docs/services/blockchain/howto/remote_peer_operate_aws.html#remote-peer-aws-operate-upload-SDK) all'interno del contenitore peer remoto.
+Devi anche caricare il certificato di firma dell'SDK nel peer remoto e riavviarlo. Devi installare lo stesso certificato di firma che hai [caricato su {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/howto/remote_peer_operate_aws.html#remote-peer-aws-operate-upload-SDK) all'interno del contenitore peer remoto.
 
 Esegui SSH nella tua istanza VPC selezionando l'istanza nella console AWS (fai clic su **Services > EC2 > Instances**) e facendo quindi clic sul pulsante Connect. Attieniti alle istruzioni da AWS per immettere il comando ssh.
 
@@ -392,7 +394,7 @@ Prima di poter eseguire i comandi della CLI per unire il peer a un canale, è ne
     ```
     {:codeblock}
 
-3. Recupera il blocco genesi del canale per creare il libro mastro del canale sul tuo peer. Esegui prima `cd` alla tua directory root ed esegui quindi il comando per recuperare il blocco genesi.
+3. Recupera il blocco genesi del canale per creare il libro mastro del canale sul tuo peer. Per prima cosa, esegui `cd` nella tua directory root e quindi esegui il comando per recuperare il blocco genesi.
 
   ```
   cd /

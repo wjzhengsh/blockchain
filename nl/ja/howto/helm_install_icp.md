@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-04-23"
+lastupdated: "2019-05-16"
+
+keywords: IBM Blockchain Platform, Helm chart file, local ICP cluster, IBM Cloud Private, upgrade Helm chart
 
 subcollection: blockchain
 
@@ -33,7 +35,7 @@ subcollection: blockchain
 ## Helm チャートをインストールするための前提条件
 {: #helm-install-prereqs}
 
-Helm チャートをインストールする前に、{{site.data.keyword.cloud_notm}} Private クラスターを構成し、ポッド・セキュリティー・ポリシーにバインドされた新しいターゲット名前空間を作成しておく必要があります。[{{site.data.keyword.cloud_notm}} Private クラスターのセットアップおよび構成](/docs/services/blockchain/ICP_setup.html#icp-setup)手順を確認してください。
+Helm チャートをインストールする前に、{{site.data.keyword.cloud_notm}} Private クラスターを構成し、ポッド・セキュリティー・ポリシーにバインドされた新しいターゲット名前空間を作成しておく必要があります。 [{{site.data.keyword.cloud_notm}} Private クラスターのセットアップおよび構成](/docs/services/blockchain/ICP_setup.html#icp-setup)手順を確認してください。
 
 ## ファイアウォールの内側での {{site.data.keyword.blockchainfull_notm}} Platform のインストール
 {: #helm-install-prereqs-firewall}
@@ -53,7 +55,7 @@ Helm チャートをインストールする前に、{{site.data.keyword.cloud_n
 ## {{site.data.keyword.cloud_notm}} Private への Helm チャートのインポート
 {: #helm-install-importing}
 
-1. IBM Blockchain Platform for {{site.data.keyword.cloud_notm}} Private の Helm チャート・ファイルを[パスポート・アドバンテージ・オンライン ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/software/passportadvantage/pao_customer.html "パスポート・アドバンテージ・オンライン") からダウンロードします。無料の Community Edition の場合は、[GitHub ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://github.com/IBM/charts/blob/master/repo/stable/ibm-blockchain-platform-dev-1.0.2.tgz "IBM/charts") からダウンロードします。  この Helm チャート・パッケージには、CA、順序付けプログラム、およびピア用の 3 つのサブ Helm チャートが含まれています。
+1. {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private の Helm チャート・ファイルを[パスポート・アドバンテージ・オンライン ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/software/passportadvantage/pao_customer.html "パスポート・アドバンテージ・オンライン") からダウンロードします。無料の Community Edition の場合は、[GitHub ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://github.com/IBM/charts/blob/master/repo/stable/ibm-blockchain-platform-dev-1.0.2.tgz "IBM/charts") からダウンロードします。この Helm チャート・パッケージには、CA、順序付けプログラム、およびピア用の 3 つのサブ Helm チャートが含まれています。
 
 2. {{site.data.keyword.cloud_notm}} Private クラスターにまだログインしていない場合は、ログインします。
 
@@ -205,7 +207,7 @@ Helm チャートをインストールしたら、{{site.data.keyword.cloud_notm
 ## {{site.data.keyword.cloud_notm}} Private での Helm チャートのアップグレード
 {: #helm-install-upgrading}
 
-{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private v1.0.1 を使用している場合は、{{site.data.keyword.cloud_notm}} Private の資料の [バンドルされた製品のアップグレード ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/installing/upgrade_helm.html "バンドルされた製品のアップグレード") の手順に従い、Helm チャートを {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private v1.0.2 にアップグレードできます。その手順の `helm upgrade` コマンドのほかにも、[{{site.data.keyword.cloud_notm}} Private コンソールを使用して Helm リリースをアップグレードする](/docs/services/blockchain/howto/helm_install_icp.html#helm-install-upgrading-ui)こともできます。
+{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private v1.0.1 を使用している場合は、{{site.data.keyword.cloud_notm}} Private の資料の [バンドルされた製品のアップグレード ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/installing/upgrade_helm.html "バンドルされた製品のアップグレード") の手順に従い、Helm チャートを {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private v1.0.2 にアップグレードできます。 その手順の `helm upgrade` コマンドのほかにも、[{{site.data.keyword.cloud_notm}} Private コンソールを使用して Helm リリースをアップグレードする](/docs/services/blockchain/howto/helm_install_icp.html#helm-install-upgrading-ui)こともできます。
 
 Helm チャートをアップグレードするためには、{{site.data.keyword.cloud_notm}} Private に対する**クラスター管理者**役割または**チーム管理者**役割が必要です。
 {:note}
@@ -232,7 +234,7 @@ Helm リリースを {{site.data.keyword.cloud_notm}} Private コンソールか
 ### ピアをアップグレードするための追加手順の実行
 {: #helm-install-upgrading-peer}
 
-アップグレード・プロセスを完了するためには、ピアをアップグレードした後にいくつかの追加の手順を実行する必要があります。ピアの Helm リリースのページの**「ポッド」**セクションの下に、以下の 2 つのピア・ポッドが表示されています。
+アップグレード・プロセスを完了するためには、ピアをアップグレードした後にいくつかの追加の手順を実行する必要があります。 ピアの Helm リリースのページの**「ポッド」**セクションの下に、以下の 2 つのピア・ポッドが表示されています。
 - 状況が `CrashLoopBackOff` の新しいピア・ポッド
 - 状況が `Running` の元のピア・ポッド
 
@@ -246,13 +248,13 @@ Helm リリースを {{site.data.keyword.cloud_notm}} Private コンソールか
    kubectl get replicaset
    ```
    {:codeblock}
-2. 元のピアに対応するピアのレプリカセットを見つけます。ピアのレプリカセットの名前は、{{site.data.keyword.cloud_notm}} Private コンソールの**「ポッド」**セクションに表示されるピア名の先頭部分と一致している必要があります。
+2. 元のピアに対応するピアのレプリカセットを見つけます。 ピアのレプリカセットの名前は、{{site.data.keyword.cloud_notm}} Private コンソールの**「ポッド」**セクションに表示されるピア名の先頭部分と一致している必要があります。
 3. ピアのレプリカセットを削除します。
    ```
    kubectl delete rs <peer replicaset name>
    ```
    {:codeblock}
-4. 新しいピア・ポッドを削除します。これは UI で状況が `CrashLoopBackOff` のピア・ポッドです。
+4. 新しいピア・ポッドを削除します。 これは UI で状況が `CrashLoopBackOff` のピア・ポッドです。
    ```
    kubectl delete po <new peer pod name>
    ```

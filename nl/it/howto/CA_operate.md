@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-04-23"
+lastupdated: "2019-05-16"
+
+keywords: IBM Cloud Private, Certificate Authority, operate CA, CA admin secret, CA logs, Helm chart, on-prem, CLI, CA TLS cert, CA endpoint, TLS CA
 
 subcollection: blockchain
 
@@ -206,7 +208,7 @@ Puoi utilizzare il client CA Fabric per utilizzare la tua CA. Queste istruzioni 
 ### Generazione dei certificati con il tuo amministratore CA
 {: #ca-operate-enroll-ca-admin}
 
-Prima di distribuire i componenti o le applicazioni client con la tua CA, devi generare i certificati che ti autenticano come un amministratore con la capacità di registrare dei nuovi utenti. Il processo di generazione dei certificati necessari, della tua chiave privata e del tuo certificato pubblico (noto anche come certificato di iscrizione o signCert) viene denominato **iscrizione**.
+Prima di distribuire i componenti o le applicazioni client con la tua CA, devi generare i certificati che ti autenticano come un amministratore con la capacità di registrare dei nuovi utenti. Il processo di generazione dei certificati necessari, della tua chiave privata e del tuo certificato (noto anche come certificato di iscrizione o signCert) viene denominato **iscrizione**.
 
 Puoi generare i certificati solo utilizzando le identità che sono state registrate con la tua CA (Certificate Authority). Fornisci il nome e il segreto dell'identità per generare i certificati. Un'identità **amministratore CA** è stata automaticamente registrata per te quando hai distribuito la tua CA. Puoi ora utilizzare tali nome e password amministratore per emettere un comando `enroll` con il client CA Fabric per generare una cartella MSP con i certificati che vengono poi utilizzati per registrare altre identità ordinanti o peer.
 
@@ -225,7 +227,7 @@ Puoi generare i certificati solo utilizzando le identità che sono state registr
   ```
   {:codeblock}
 
-  `<enroll_id>` e `<enroll_password>` nel comando sono [il nome utente e la password dell'amministratore CA](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-admin-secret) che hai passato al segreto Kubernetes quando hai distribuito la CA (Certificate Authority). Inserisci l'[URL della CA](/docs/services/blockchain/howto/CA_operate.html#ca-operate-url) in `<ca_url_with_port>`. Tralascia il `http://` all'inizio.  `<ca_name>` è il valore che hai fornito al campo `CA Name` quando hai distribuito la CA.
+  `<enroll_id>` e `<enroll_password>` nel comando sono [il nome utente e la password dell'amministratore CA](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-admin-secret) che hai passato al segreto Kubernetes quando hai distribuito la CA (Certificate Authority). Inserisci l'[URL della CA](/docs/services/blockchain/howto/CA_operate.html#ca-operate-url) in `<ca_url_with_port>`. Tralascia il `http://` all'inizio. `<ca_name>` è il valore che hai fornito al campo `CA Name` quando hai distribuito la CA.
 
   `<ca_tls_cert_path>` è il percorso completo del tuo [certificato TLS CA](/docs/services/blockchain/howto/CA_operate.html#ca-operate-tls).
 
@@ -558,10 +560,10 @@ LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUNuRENDQWtPZ0F3SUJBZ0lVTXF5VDhUdnlwY3lY
 
 Copia questa stringa nel campo `"admincerts"` nella sezione del componente nel file di configurazione.
 
-#### Registrazione dell'identità del componente con la CA del TLS
+#### Registrazione dell'identità del componente con la CA TLS
 {: #ca-operate-tls-register-component}
 
-Devi registrare anche l'ordinante o il peer con la CA del TLS. Per far ciò, dovrai prima eseguire l'iscrizione utilizzando l'amministratore della CA del TLS. Modifica `$FABRIC_CA_CLIENT_HOME` con una directory in cui vuoi archiviare i tuoi certificati di amministrazione della CA del TLS.
+Devi registrare anche l'ordinante o il peer con la CA TLS. Per far ciò, dovrai prima eseguire l'iscrizione utilizzando l'amministratore della CA TLS. Modifica `$FABRIC_CA_CLIENT_HOME` con una directory in cui vuoi archiviare i tuoi certificati di amministrazione della CA TLS.
 
 ```
 cd $HOME/fabric-ca-client
@@ -570,7 +572,7 @@ export FABRIC_CA_CLIENT_HOME=$HOME/fabric-ca-client/tlsca-admin
 ```
 {:codeblock}
 
-Immetti il seguente comando per l'iscrizione come amministratore per la CA del TLS. Il comando è lo stesso che hai utilizzato per l'iscrizione come [amministratore della CA](/docs/services/blockchain/howto/CA_operate.html#ca-operate-enroll-ca-admin), soltanto tu utilizzerai il nome dell'istanza della CA del TLS che hai specificato durante la [configurazione della CA.](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-configuration-parms) Assicurati di utilizzare gli stessi `ca-admin-name` e `ca-admin-password` nel tuo segreto della CA.
+Immetti il seguente comando per l'iscrizione come amministratore per la CA TLS. Il comando è lo stesso che hai utilizzato per l'iscrizione come [amministratore della CA](/docs/services/blockchain/howto/CA_operate.html#ca-operate-enroll-ca-admin), soltanto tu utilizzerai il nome dell'istanza della CA TLS che hai specificato durante la [configurazione della CA.](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-configuration-parms) Assicurati di utilizzare gli stessi `ca-admin-name` e `ca-admin-password` nel tuo segreto della CA.
 
 ```
 fabric-ca-client enroll -u https://<enroll_id>:<enroll_password>@<ca_url_with_port> --caname <tls_ca_name> --tls.certfiles <ca_tls_cert_path>
@@ -583,14 +585,14 @@ Una chiamata reale potrebbe essere simile al seguente esempio:
 fabric-ca-client enroll -u https://admin:adminpw@9.30.94.174:30167 --caname org1tlsca --tls.certfiles $HOME/fabric-ca-client/catls/tls.pem
 ```
 
-Dopo aver eseguito l'iscrizione, disponi dei certificati necessari per registrare il tuo componente con la CA del TLS. Immetti il seguente comando per registrare il peer o l'ordinante:
+Dopo aver eseguito l'iscrizione, disponi dei certificati necessari per registrare il tuo componente con la CA TLS. Immetti il seguente comando per registrare il peer o l'ordinante:
 
 ```
 fabric-ca-client register --caname <ca_name> --id.name <name> --id.affiliation org1.department1 --id.type peer --id.secret <password> --tls.certfiles <ca_tls_cert_path>
 ```
 {:codeblock}
 
-Questo comando è simile a quello utilizzato per registrare l'identità del componente con la CA, con l'eccezione di utilizzare il nome della CA del TLS. Se stai distribuendo un ordinante invece di un peer, imposta `--id.type` su `orderer` invece di `peer`. Devi fornire a questa identità un nome utente e una password diversi rispetto a quelli utilizzati con la CA predefinita. Una registrazione reale è simile al seguente comando:
+Questo comando è simile a quello utilizzato per registrare l'identità del componente con la CA, con l'eccezione di utilizzare il nome della CA TLS. Se stai distribuendo un ordinante invece di un peer, imposta `--id.type` su `orderer` invece di `peer`. Devi fornire a questa identità un nome utente e una password diversi rispetto a quelli utilizzati con la CA predefinita. Una registrazione reale è simile al seguente comando:
 
 ```
 fabric-ca-client register --caname tlsca --id.affiliation org1.department1 --id.name peertls --id.secret peertlspw --id.type peer --tls.certfiles $HOME/fabric-ca-client/catls/tls.pem
@@ -611,6 +613,7 @@ Copia i valori di `name` e `secret` con `"enrollid"` e `"enrollsecret"` nella se
 Devi fornire un nome host della CSR per distribuire un ordinante o un peer. Questo nome host include l'indirizzo IP proxy del cluster in cui distribuirai il componente e il nome host del servizio (`service host name`) generato quando viene distribuito il grafico Helm.
 
 #### Individuazione del valore dell'indirizzo IP proxy del cluster
+{: #ca-operate-cluster-proxy-ip}
 
 Se vuoi distribuire un ordinante o un peer sullo stesso cluster {{site.data.keyword.cloud_notm}} Private in cui hai distribuito la tua CA, assicurati di avere il ruolo di [Amministratore del cluster ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/user_management/assign_role.html "Cluster administrator roles and actions") sul cluster {{site.data.keyword.cloud_notm}} Private in cui sarà distribuito il peer o l'ordinante. Successivamente, immetti lo stesso IP proxy che hai utilizzato quando [hai configurato la tua CA](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-configuration-parms). Se vuoi distribuire l'ordinante o il peer su un cluster diverso, puoi richiamare il valore dell'indirizzo IP proxy del cluster dalla console {{site.data.keyword.cloud_notm}} Private completando la seguente procedura:
 
@@ -654,6 +657,7 @@ Viene generato un nome host del servizio (`service host name`) quando viene dist
   {:codeblock}
 
 ### Completamento del file di configurazione
+{: #ca-operate-config-file}
 
 Dopo aver completato tutti i precedenti passi, il tuo file di configurazione aggiornato potrebbe essere simile al seguente esempio:
 
@@ -708,7 +712,7 @@ Le cartelle MSP devono avere una struttura definita in modo da essere utilizzate
 
 - **cacerts:** contiene il certificato della CA root della tua rete.
 - **intermediatecerts:** questi sono i certificati di tutte le CA intermedie nella tua catena di attendibilità (che riconducono a una CA root o alle CA). Ogni organizzazione del piano Enterprise ha due CA intermedie per il failover e l'alta disponibilità.
-- **signCerts:** questa cartella contiene il tuo certificato di firma pubblico, noto anche come signCert o certificato di iscrizione. Questo certificato viene allegato alle chiamate in rete (ad esempio, un richiamo del chaincode) quando fai riferimento alla tua directory MSP dalla riga di comando o crei un oggetto di contesto utente con gli SDK. Puoi caricare questo certificato su {{site.data.keyword.blockchainfull_notm}} Platform se vuoi gestire una rete dall'SDK o dalla riga di comando.
+- **signCerts:** questa cartella contiene il tuo certificato di firma, noto anche come signCert o certificato di iscrizione. Questo certificato viene allegato alle chiamate in rete (ad esempio, un richiamo del chaincode) quando fai riferimento alla tua directory MSP dalla riga di comando o crei un oggetto di contesto utente con gli SDK. Puoi caricare questo certificato su {{site.data.keyword.blockchainfull_notm}} Platform se vuoi gestire una rete dall'SDK o dalla riga di comando.
 - **keystore:** questa cartella contiene la tua chiave privata. Questa chiave viene utilizzata per firmare le chiamate alla rete quando fai riferimento alla tua directory MSP dalla riga di comando o crei un oggetto di contesto utente con gli SDK, ma non viene collegata alle chiamate nel modo di un signCert. È **cruciale** che questa chiave sia tenuta al sicuro. Se viene compromessa, può essere utilizzata per impersonare la tua identità.
 
 Puoi anche creare una cartella MSP a cui il client CA Fabric può fare riferimento utilizzando le API Swagger e il Monitoraggio della rete.
@@ -752,7 +756,7 @@ Per ulteriori informazioni sulla struttura dei MSP, vedi [Membership ![Icona lin
 ## Sicurezza
 {: #ca-operate-security}
 
-La CA può essere tenuta offline se viene emesso solo un numero limitato di certificati, ad esempio solo i peer, il server Node.js, le applicazioni client, per garantire maggiore sicurezza ed evitare di compromettere il materiale chiave della CA. Tuttavia, la CA dovrebbe essere online quando è necessaria l'emissione di certificati su richiesta agli utenti. Ti consigliamo fortemente di proteggere la tua chiave privata di gestione CA con [HSM](https://console.test.cloud.ibm.com/docs/services/blockchain/glossary.html#glossary-hsm) se possibile.
+"Se viene emesso solo un numero limitato di certificati (ad esempio, se vengono emessi certificati di soli peer, server Node.js e applicazioni client), la CA potrebbe venire lasciata offline per garantire maggiore sicurezza ed evitare di compromettere il materiale chiave della CA. Tuttavia, la CA dovrebbe essere online quando è necessaria l'emissione di certificati su richiesta agli utenti. Ti consigliamo fortemente di proteggere la tua chiave privata di gestione CA con [HSM](/docs/services/blockchain/glossary.html#glossary-hsm) se possibile.
 
 ## Risoluzione dei problemi
 {: #ca-operate-troubleshooting}
@@ -793,6 +797,8 @@ avrà esito negativo e produrrà il seguente errore:
 ```
 
 ### **Soluzione:**
+{: #ca-operate-enroll-error2-solution}
+
 Devi codificare il carattere speciale o racchiudere l'URL tra virgolette singole. Ad esempio, `!` diventa `%21` o il comando è simile a:
 
 ```

@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-04-23"
+lastupdated: "2019-05-16"
+
+keywords: IBM Blockchain Platform, Helm chart file, local ICP cluster, IBM Cloud Private, upgrade Helm chart
 
 subcollection: blockchain
 
@@ -40,7 +42,7 @@ Helm 차트를 설치하기 전에 {{site.data.keyword.cloud_notm}} Private 클�
 
 인터넷 연결 없이 방화벽 뒤에 {{site.data.keyword.blockchainfull_notm}} Platform 컴포넌트를 배치할 수 있습니다. PPA 패키지에는 {{site.data.keyword.blockchainfull_notm}} Platform이 사용하는 모든 Fabric 컴포넌트 Docker 이미지가 포함되며, 이에 따라 배치 중에 DockerHub에서 해당 이미지를 다운로드할 필요가 없습니다.
 
-그러나 이 에디션이 배치 중에 DockerHub에서 해당 이미지를 다운로드하도록 구성되어 있으므로 커뮤니티 에디션 Helm 차트에는 필요한 Fabric 컴포넌트 Docker 이미지가 포함되지 않습니다. 인터넷 연결이 불가능하면 배치에 실패합니다. 그러므로 {{site.data.keyword.cloud_notm}} Private 클러스터에 아카이브를 설치하기 전에 인터넷이 연결된 머신에 아카이브를 작성하기 위한 추가 단계를 완료해야 합니다. 다음 이미지가 필요합니다.
+그러나 이 에디션이 배치 중에 DockerHub에서 해당 이미지를 다운로드하도록 구성되어 있으므로 커뮤니티 에디션 Helm 차트에는 필요한 Fabric 컴포넌트 Docker 이미지가 포함되지 않습니다. 인터넷 연결이 불가능하면 배치에 실패합니다. 그러므로 {{site.data.keyword.cloud_notm}} Private 클러스터에 아카이브를 설치하기 전에 인터넷에 연결된 시스템에 아카이브를 작성하기 위한 추가 단계를 완료해야 합니다. 다음 이미지가 필요합니다.
 - [Fabric 피어 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hub.docker.com/r/ibmcom/ibp-fabric-peer/ "Farbic 피어")
 - [Fabric CA ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hub.docker.com/r/ibmcom/ibp-fabric-ca/ "Fabric CA")
 - [Fabric 순서 지정자 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hub.docker.com/r/ibmcom/ibp-fabric-orderer/ "Fabric 순서 지정자")
@@ -53,7 +55,7 @@ Helm 차트를 설치하기 전에 {{site.data.keyword.cloud_notm}} Private 클�
 ## Helm 차트를 {{site.data.keyword.cloud_notm}} Private에 가져오기
 {: #helm-install-importing}
 
-1. [Passport Advantage Online ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/software/passportadvantage/pao_customer.html "Passport Advantage Online")에서 IBM Blockchain Platform for {{site.data.keyword.cloud_notm}} Private의 Helm 차트 파일을 다운로드하거나 [GitHub ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://github.com/IBM/charts/blob/master/repo/stable/ibm-blockchain-platform-dev-1.0.2.tgz "IBM/차트")에서 무료 커뮤니티 에디션의 Helm 차트 파일을 다운로드하십시오.  이 Helm 차트 패키지에는 CA, 순서 지정자 및 피어를 위한 세 가지 하위 Helm이 포함됩니다.
+1. [Passport Advantage Online ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/software/passportadvantage/pao_customer.html "Passport Advantage Online")에서 {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private의 Helm 차트 파일을 다운로드하거나 [GitHub ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://github.com/IBM/charts/blob/master/repo/stable/ibm-blockchain-platform-dev-1.0.2.tgz "IBM/차트")에서 무료 커뮤니티 에디션의 Helm 차트 파일을 다운로드하십시오. 이 Helm 차트 패키지에는 CA, 순서 지정자 및 피어를 위한 세 가지 하위 Helm이 포함됩니다.
 
 2. 아직 로그인하지 않은 경우 {{site.data.keyword.cloud_notm}} Private 클러스터에 로그인하십시오.
 
@@ -200,7 +202,7 @@ Helm 차트를 설치한 후 {{site.data.keyword.cloud_notm}} Private 카탈로�
 
 - 순서 지정자를 배치하는 경우 먼저 순서 지정자의 인증 기관을 설정해야 합니다. CA가 조직의 기타 컴포넌트에서 사용되는 인증서를 생성합니다. 자세한 정보는 [{{site.data.keyword.cloud_notm}} Private에서 {{site.data.keyword.blockchainfull_notm}} Platform 인증 기관 배치](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy)를 참조하십시오. 그런 다음 네트워크의 공통 바인딩이 될 순서 지정자를 배치할 수 있습니다. 자세한 정보는 [{{site.data.keyword.cloud_notm}} Private에서 {{site.data.keyword.blockchainfull_notm}} Platform 순서 지정자 배치](/docs/services/blockchain/howto/orderer_deploy_icp.html#icp-orderer-deploy)를 참조하십시오.
 
-- 피어를 배치하는 경우 먼저 피어의 인증 기관을 설정해야 합니다. CA가 조직의 피어에서 사용되는 인증서를 생성합니다. 자세한 정보는 [{{site.data.keyword.cloud_notm}} Private에서 {{site.data.keyword.blockchainfull_notm}} Platform 인증 기관 배치](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy)를 참조하십시오. 그런 다음 네트워크에 참여할 준비가 되면 채널에 가입하고, 트랜잭션을 보증하고, 데이터를 저장하는 피어를 배치할 수 있습니다. 자세한 정보는 피어가 참여하는 블록체인 네트워크에 따라 [{{site.data.keyword.cloud_notm}} Private에서 {{site.data.keyword.blockchainfull_notm}} 피어 배치](/docs/services/blockchain/howto/peer_deploy_icp.html#icp-peer-deploy) 또는 [스타터 또는 엔터프라이즈 플랜 네트워크를 위한 {{site.data.keyword.blockchainfull_notm}} 피어 배치](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy)를 참조하십시오.
+- 피어를 배치하는 경우 먼저 피어의 인증 기관을 설정해야 합니다. CA가 조직의 피어에서 사용되는 인증서를 생성합니다. 자세한 정보는 [{{site.data.keyword.cloud_notm}} Private에서 {{site.data.keyword.blockchainfull_notm}} Platform 인증 기관 배치](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy)를 참조하십시오. 그런 다음 네트워크에 가입할 준비가 되면 채널에 가입하고, 트랜잭션을 보증하고, 데이터를 저장하는 피어를 배치할 수 있습니다. 자세한 정보는 피어가 가입하는 블록체인 네트워크에 따라 [{{site.data.keyword.cloud_notm}} Private에서 {{site.data.keyword.blockchainfull_notm}} 피어 배치](/docs/services/blockchain/howto/peer_deploy_icp.html#icp-peer-deploy) 또는 [스타터 또는 엔터프라이즈 플랜 네트워크를 위한 {{site.data.keyword.blockchainfull_notm}} 피어 배치](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy)를 참조하십시오.
 
 ## {{site.data.keyword.cloud_notm}} Private의 Helm 차트 업그레이드
 {: #helm-install-upgrading}
@@ -210,7 +212,7 @@ Helm 차트를 설치한 후 {{site.data.keyword.cloud_notm}} Private 카탈로�
 Helm 차트를 업그레이드하려면 {{site.data.keyword.cloud_notm}} Private에서 사용자의 역할은 **클러스터 관리자** 또는 **팀 관리자**여야 합니다.
 {:note}
 
-{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private v1.0.2에서 v1.0.1으로의 롤백은 지원되지 않습니다. 
+{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private v1.0.2에서 v1.0.1으로의 롤백은 지원되지 않습니다.
 
 ### {{site.data.keyword.cloud_notm}} Private 콘솔에서 Helm 릴리스 업그레이드
 {: #helm-install-upgrading-ui}
@@ -218,44 +220,44 @@ Helm 차트를 업그레이드하려면 {{site.data.keyword.cloud_notm}} Private
 {{site.data.keyword.cloud_notm}} Private 콘솔에서 컴포넌트의 Helm 릴리스를 업그레이드하는 경우 `Reuse values`를 확인하고 어떠한 매개변수도 변경하지 않아야 합니다.
 {:important}  
 
-{{site.data.keyword.cloud_notm}} Private 콘솔에서 Helm 릴리스를 업그레이드하려면 다음 단계를 완료하십시오. 
+{{site.data.keyword.cloud_notm}} Private 콘솔에서 Helm 릴리스를 업그레이드하려면 다음 단계를 완료하십시오.
 1. 메뉴 표시줄에서 **워크로드** > **Helm 릴리스**를 클릭하십시오.
-2. 업그레이드할 Helm 릴리스를 선택하십시오. 
-3. **Details and Upgrades** 섹션의 `Available Version` 아래의 버전 번호를 확인하십시오. 
-4. 주요 변경사항을 보려면 버전 번호 아래의 **ReadMe**를 클릭하여 릴리스 정보를 검토하십시오. 
-5. **업그레이드**를 클릭한 후 드롭 다운 목록에서 올바른 저장소 및 버전을 선택하십시오. 
-6. `Reuse values`가 선택되었는지 확인하십시오. 
+2. 업그레이드할 Helm 릴리스를 선택하십시오.
+3. **Details and Upgrades** 섹션의 `Available Version` 아래의 버전 번호를 확인하십시오.
+4. 주요 변경사항을 보려면 버전 번호 아래의 **ReadMe**를 클릭하여 릴리스 정보를 검토하십시오.
+5. **업그레이드**를 클릭한 후 드롭 다운 목록에서 올바른 저장소 및 버전을 선택하십시오.
+6. `Reuse values`가 선택되었는지 확인하십시오.
 7. **업그레이드**를 클릭하십시오.
 
-콘솔의 왼쪽 상단 모서리에 있는 릴리스 이름 옆에 릴리스 상태에 대한 확인 메시지 및 업데이트가 표시될 때까지 기다리십시오. 
+콘솔의 왼쪽 상단 모서리에 있는 릴리스 이름 옆에 릴리스 상태에 대한 확인 메시지 및 업데이트가 표시될 때까지 기다리십시오.
 
 ### 피어 업그레이드를 위한 추가 단계 완료
 {: #helm-install-upgrading-peer}
 
-피어를 업그레이드한 후 업그레이드 프로세스를 완료하는 데 수행해야 할 일부 추가 단계가 있습니다. 피어 Helm 릴리스 페이지에서 **팟(Pod)** 섹션 아래에서 두 개의 피어 팟(Pod)을 볼 수 있습니다. 
+피어를 업그레이드한 후 업그레이드 프로세스를 완료하는 데 수행해야 할 일부 추가 단계가 있습니다. 피어 Helm 릴리스 페이지에서 **팟(Pod)** 섹션 아래에서 두 개의 피어 팟(Pod)을 볼 수 있습니다.
 - 상태가 `CrashLoopBackOff`인 새 피어 팟(Pod)
 - 상태가 `Running`인 원래의 피어 팟(Pod)
 
 연관된 피어 이름을 기록해 두십시오. 아래 단계에서 해당 이름을 사용해야 합니다.
 {:tip}
 
-피어 업그레이드 프로세스를 완료하려면 CLI에서 다음 단계를 완료하십시오. 
-1. {{site.data.keyword.cloud_notm}} Private CLI에서 클러스터에 로그인하고 `kubectl get replicaset` 명령을 실행하십시오. 
+피어 업그레이드 프로세스를 완료하려면 CLI에서 다음 단계를 완료하십시오.
+1. {{site.data.keyword.cloud_notm}} Private CLI에서 클러스터에 로그인하고 `kubectl get replicaset` 명령을 실행하십시오.
    ```
    cloudctl login -a https://<Cluster Master Host>:<Cluster Master API Port> --skip-ssl-validation
    kubectl get replicaset
    ```
    {:codeblock}
-2. 원래 피어에 해당하는 피어 복제 세트를 찾으십시오. 피어 복제 세트의 이름은 {{site.data.keyword.cloud_notm}} Private 콘솔의 **팟(Pod)** 섹션에 있는 피어 이름의 시작 부분과 일치해야 합니다. 
+2. 원래 피어에 해당하는 피어 복제 세트를 찾으십시오. 피어 복제 세트의 이름은 {{site.data.keyword.cloud_notm}} Private 콘솔의 **팟(Pod)** 섹션에 있는 피어 이름의 시작 부분과 일치해야 합니다.
 3. 피어 복제 세트를 삭제하십시오.
    ```
    kubectl delete rs <peer replicaset name>
    ```
    {:codeblock}
-4. 새 피어 팟(Pod)을 삭제하십시오. 이는 UI에서 상태가 `CrashLoopBackOff`인 피어 팟(Pod)입니다. 
+4. 새 피어 팟(Pod)을 삭제하십시오. 이는 UI에서 상태가 `CrashLoopBackOff`인 피어 팟(Pod)입니다.
    ```
    kubectl delete po <new peer pod name>
    ```
    {:codeblock}
 
-새 피어 팟(Pod)이 `Running`의 상태로 작성되었음이 표시되면 피어가 업그레이드된 것입니다. 
+새 피어 팟(Pod)이 `Running`의 상태로 작성되었음이 표시되면 피어가 업그레이드된 것입니다.
