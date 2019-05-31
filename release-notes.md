@@ -24,6 +24,11 @@ Use these release notes that are grouped by date to learn about the latest chang
 {:shortdesc}
 
 
+## 24 May 2019
+{: #05-24-2019}
+
+**Raft consensus protocol** The five node Raft ordering service, recommended for production networks, is now available. In addition, for development and testing purposes, you can deploy a single node Raft ordering service.
+
 ## 9 May 2019
 {: #05-09-2019}
 

@@ -29,17 +29,11 @@ For all {{site.data.keyword.blockchainfull_notm}} Platform offerings, it is reco
 
 If your problem cannot be solved by any of the [free digital support resources](/docs/services/blockchain/ibmblockchain_support.html#blockchain-support-resources), consider the following approaches to get support for the offerings that you use.
 
-- **Starter Plan and Enterprise Plan on {{site.data.keyword.cloud_notm}}**
-  Submit a support case through {{site.data.keyword.cloud_notm}}. For more information, see [Submitting support cases](/docs/services/blockchain/ibmblockchain_support.html#blockchain-support-cases).
-
-- **{{site.data.keyword.blockchainfull_notm}} Platform beta trial**
-  Submit a support case through {{site.data.keyword.cloud_notm}}. **Support will be limited during the beta period.** For more information, see [Submitting support cases](/docs/services/blockchain/ibmblockchain_support.html#blockchain-support-cases).
+- **{{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}}**
+  Submit a support case through {{site.data.keyword.cloud_notm}}. **Support is limited for Beta instances of the platform.** For more information, see [Submitting support cases](/docs/services/blockchain/ibmblockchain_support.html#blockchain-support-cases).
 
 - **{{site.data.keyword.blockchainfull_notm}} Platform Visual Studio Code extension**
     Submit any issues in the [{{site.data.keyword.blockchainfull_notm}} Platform Visual Studio Code extension](https://github.com/IBM-Blockchain/blockchain-vscode-extension/issues){: external}.
-
-- **{{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}}**
-  Submit a support case through {{site.data.keyword.cloud_notm}}. **Support will be limited during the Beta period.** For more information, see [Submitting support cases](/docs/services/blockchain/ibmblockchain_support.html#blockchain-support-cases).
 
 - **{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private**
   If you have purchased an {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private license and you want to contact customer support, see [Accessing the {{site.data.keyword.IBM_notm}} Support Community and opening a support ticket](http://www.ibm.com/support/docview.wss?uid=ibm10740041){: external}.
@@ -60,7 +54,6 @@ If your problem cannot be solved by any of the [free digital support resources](
   <!--[placeholder] Starter Plan and Enterprise Plan are deprecated on May 30. No new Starter Plan and Enterprise Plan networks can be created then. Your existing networks are not affected, but you can use them and get IBM's support on them for only another 30 days. You might consider using {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta instead.
   {: note} -->
 
-
 ## Resources and support forums
 {: #blockchain-support-resources}
 
@@ -69,9 +62,6 @@ If your problem cannot be solved by any of the [free digital support resources](
 
 **{{site.data.keyword.IBM_notm}} dWAnswers**  
   [{{site.data.keyword.IBM_notm}} dWAnswers](https://developer.ibm.com/answers/smartspace/blockchain/index.html){: external} is a community forum for users of {{site.data.keyword.blockchainfull_notm}} Platform and Hyperledger Fabric, which is monitored by experts from {{site.data.keyword.IBM_notm}} among others. You can search for answers to previously posed questions or submit a new question. Be sure to include the keyword **blockchain** in your new question.
-
-**Sample applications**  
-  [Sample applications](https://github.com/ibm-blockchain){: external} under **Blockchain sample applications** provides guidance and sample code snippets to assist in the development of applications.
 
 **Hyperledger Fabric resources**  
   [Hyperledger Fabric documentation](https://hyperledger-fabric.readthedocs.io/en/release-1.4/){: external}, the [Fabric community wiki](https://wiki.hyperledger.org/display/fabric){: external}, and the [Fabric Jira dashboard](https://jira.hyperledger.org/secure/Dashboard.jspa?selectPageId=10104){: external} provide more details about the Fabric stack.
@@ -93,12 +83,7 @@ The response to your support case depends on your [{{site.data.keyword.cloud_not
 
 - If you have purchased **Premium Support** or **Advanced Support**, you can specify a severity level on your ticket from Sev-1 to Sev-4. Sev-1 is the highest level of severity. Support cases with higher severity levels indicates more urgency and will be responded to more quickly by the support team. For more information, see [{{site.data.keyword.cloud_notm}} support plan offerings](https://cloud.ibm.com/docs/get-support/index.html#support-plans){: external}.  
 - If you do not purchase support, your {{site.data.keyword.cloud_notm}} Pay-As-You-Go or Subscription account comes with a free **Basic Support** plan. In this case, your support case will automatically be registered Sev-4.
-<!--
-**Beta offerings** are provided with more limited support than Generally Available releases.
-- Support cases are registered with a lower severity level, usually Sev-4 or Sev-3.
-- Support is provided on a 5x24 basis. No weekend support is provided.
-- For more information, see [{{site.data.keyword.cloud_notm}} support for Beta services](https://cloud.ibm.com/docs/get-support/servicessupport.html#support-different-services){: external}.
--->
+
 Follow these steps to submit a support case.
 
 1. Log in to [{{site.data.keyword.cloud_notm}} Service Portal](https://cloud.ibm.com/unifiedsupport/supportcenter){: external} with your {{site.data.keyword.IBM_notm}} ID.

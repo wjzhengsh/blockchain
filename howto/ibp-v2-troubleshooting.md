@@ -227,4 +227,7 @@ When I try to login to my console, I am unable to access the console from my bro
 Your browser console session times out after **8 hours** of inactivity. If a session becomes inactive, the console will prevent the inactive user from performing any actions.
 {: tsCauses}
 
-If your session has become inactive, you can try simply refreshing your browser. If that does not work, ensure you have saved all of your certificates and identities to your file system. Then close the browser tab and access the URL from a new tab. You may be required to login again.
+If your session has become inactive, you can try simply refreshing your browser. If that does not work, close the browser including **all** tabs and windows. Open the URL again. You will be required to login.
+
+As a best practice, you should have already stored your certificates and identities on your file system. If you happen to be using an incognito window, all the certificates are deleted from the browser local storage when you close the browser. After you log in again you will need to re-import your identities and certificates.
+{: note}

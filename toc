@@ -33,7 +33,7 @@ IBM Blockchain Platform
 		best_practices.md
 
 	{: .topicgroup}
-	IBM Blockchain Platform 2.0
+	IBM Blockchain Platform on IBM Cloud
 		howto/ibp-console-build-network.md
 		howto/ibp-console-join-network.md
 		howto/ibp-console-smart-contracts.md
