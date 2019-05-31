@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-04-23"
+lastupdated: "2019-05-16"
+
+keywords: IBM Blockchain Platform, Helm chart file, local ICP cluster, IBM Cloud Private, upgrade Helm chart
 
 subcollection: blockchain
 
@@ -40,7 +42,7 @@ Before you install the Helm chart, you must have configured an {{site.data.keywo
 
 You can deploy {{site.data.keyword.blockchainfull_notm}} Platform components behind a firewall without Internet connectivity. The PPA package includes all Fabric component Docker images that {{site.data.keyword.blockchainfull_notm}} Platform will use and you don't need to download them from DockerHub during deployment.
 
-However, the Community Edition Helm chart does not include the necessary Fabric component Docker images because this edition is configured to download those images from DockerHub during deployment. The deployment will fail if no Internet connectivity is available. Therefore, you need to complete extra steps to create archives on an Internet-connected machine before you can install the archives on your the {{site.data.keyword.cloud_notm}} Private cluster. The following images are required:
+However, the Community Edition Helm chart does not include the necessary Fabric component Docker images because this edition is configured to download those images from DockerHub during deployment. The deployment will fail if no Internet connectivity is available. Therefore, you need to complete extra steps to create archives on an Internet-connected machine before you can install the archives on your {{site.data.keyword.cloud_notm}} Private cluster. The following images are required:
 - [Fabric peer ![External link icon](../images/external_link.svg "External link icon")](https://hub.docker.com/r/ibmcom/ibp-fabric-peer/ "Farbic peer")
 - [Fabric CA ![External link icon](../images/external_link.svg "External link icon")](https://hub.docker.com/r/ibmcom/ibp-fabric-ca/ "Fabric CA")
 - [Fabric orderer ![External link icon](../images/external_link.svg "External link icon")](https://hub.docker.com/r/ibmcom/ibp-fabric-orderer/ "Fabric orderer")
@@ -53,7 +55,7 @@ For more information about how to use these images, see [Adding featured applica
 ## Importing the Helm chart to {{site.data.keyword.cloud_notm}} Private
 {: #helm-install-importing}
 
-1. Download the Helm chart file of IBM Blockchain Platform for {{site.data.keyword.cloud_notm}} Private from [Passport Advantage Online ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/software/passportadvantage/pao_customer.html "Passport Advantage Online") or for the free Community edition from [GitHub ![External link icon](../images/external_link.svg "External link icon")](https://github.com/IBM/charts/blob/master/repo/stable/ibm-blockchain-platform-dev-1.0.2.tgz "IBM/charts").  This Helm chart package contains three sub Helm charts for the CA, orderer, and peer.
+1. Download the Helm chart file of {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private from [Passport Advantage Online ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/software/passportadvantage/pao_customer.html "Passport Advantage Online") or for the free Community edition from [GitHub ![External link icon](../images/external_link.svg "External link icon")](https://github.com/IBM/charts/blob/master/repo/stable/ibm-blockchain-platform-dev-1.0.2.tgz "IBM/charts").  This Helm chart package contains three sub Helm charts for the CA, orderer, and peer.
 
 2. If you haven't already, log in to your {{site.data.keyword.cloud_notm}} Private cluster.
 
@@ -198,9 +200,9 @@ After you install the Helm chart, click the **ibm-blockchain-platform-prod** or 
 
 Then deploy the individual components:
 
-- If you are deploying an orderer, you first need to setup a Certificate Authority for the orderer. The CA will generate certificates that will be used by other components in your organization. For more information, see [Deploying an {{site.data.keyword.blockchainfull_notm}} Platform Certificate Authority in {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy). Then you can deploy the orderer that will be the common binding of the network. For more information, see [Deploying an {{site.data.keyword.blockchainfull_notm}} Platform orderer in {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/howto/orderer_deploy_icp.html#icp-orderer-deploy)
+- If you are deploying an orderer, you first need to set up a Certificate Authority for the orderer. The CA will generate certificates that will be used by other components in your organization. For more information, see [Deploying an {{site.data.keyword.blockchainfull_notm}} Platform Certificate Authority in {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy). Then you can deploy the orderer that will be the common binding of the network. For more information, see [Deploying an {{site.data.keyword.blockchainfull_notm}} Platform orderer in {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/howto/orderer_deploy_icp.html#icp-orderer-deploy)
 
-- If you are deploying a peer, you first need to setup a Certificate Authority for the peer. The CA will generate certificates that will be used by the peer. For more information, see [Deploying an {{site.data.keyword.blockchainfull_notm}} Platform Certificate Authority in {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy). Then, when you are ready to join a network, you can deploy the peers that will join channels, endorse transactions, and store your data. For more information, see [Deploying an {{site.data.keyword.blockchainfull_notm}} Peer in {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/howto/peer_deploy_icp.html#icp-peer-deploy) or [Deploying an {{site.data.keyword.blockchainfull_notm}} Peer for a Starter or Enterprise Plan network](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy), depending on which blockchain network the peer will join.
+- If you are deploying a peer, you first need to set up a Certificate Authority for the peer. The CA will generate certificates that will be used by the peer. For more information, see [Deploying an {{site.data.keyword.blockchainfull_notm}} Platform Certificate Authority in {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy). Then, when you are ready to join a network, you can deploy the peers that will join channels, endorse transactions, and store your data. For more information, see [Deploying an {{site.data.keyword.blockchainfull_notm}} Peer in {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/howto/peer_deploy_icp.html#icp-peer-deploy) or [Deploying an {{site.data.keyword.blockchainfull_notm}} Peer for a Starter or Enterprise Plan network](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy), depending on which blockchain network the peer will join.
 
 ## Upgrading the Helm chart on {{site.data.keyword.cloud_notm}} Private
 {: #helm-install-upgrading}

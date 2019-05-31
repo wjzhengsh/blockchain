@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-04-23"
+lastupdated: "2019-05-16"
+
+keywords: blockchain network, Starter Plan, getting started
 
 subcollection: blockchain
 
@@ -30,7 +32,7 @@ subcollection: blockchain
 
 **Notes:**
 - {{site.data.keyword.blockchainfull_notm}} Platform Starter Plan is a development and testing environment, and is not suitable for production workloads. If you need a production environment, see [About Enterprise Plan](/docs/services/blockchain/enterprise_plan.html#enterprise-plan-about).
-- {{site.data.keyword.blockchainfull_notm}} Platform is a platform service on {{site.data.keyword.cloud_notm}} and all membership offerings follow the [{{site.data.keyword.cloud_notm}} Services terms ![External link icon](images/external_link.svg "External link icon")](http://www-03.ibm.com/software/sla/sladb.nsf/sla/bm "{{site.data.keyword.cloud_notm}} Services terms") on service level agreements (SLAs). Starter Plan are provisioned in a data center in a single geography. For a list of available geographies, see [{{site.data.keyword.blockchainfull_notm}} Platform locations](/docs/services/blockchain?topic=blockchain-ibp-regions-locations#ibp-regions-locations).
+- {{site.data.keyword.blockchainfull_notm}} Platform is a platform service on {{site.data.keyword.cloud_notm}} and all membership offerings follow the [{{site.data.keyword.cloud_notm}} Services terms ![External link icon](images/external_link.svg "External link icon")](http://www-03.ibm.com/software/sla/sladb.nsf/sla/bm "{{site.data.keyword.cloud_notm}} Services terms") on service level agreements (SLAs). Starter Plan is provisioned in a data center in a single geography. For a list of available geographies, see [{{site.data.keyword.blockchainfull_notm}} Platform locations](/docs/services/blockchain?topic=blockchain-ibp-regions-locations#ibp-regions-locations).
 
 ## What Starter Plan offers
 {: #starter-plan-about-what-starter-plan-offers}
@@ -54,7 +56,7 @@ If you fit into one of the following situations, the Starter Plan is suitable fo
 - **_Building demo solutions on a live network._**
     Starter Plan provides a powerful environment for demonstrating blockchain applications. The ready-to-use blockchain network enables quick presentations to colleagues, management, and partners through the operational and management tools that the Network Monitor provides.
 - **_Moving beyond single organization development._**
-    Starter Plan enables you to act as multiple organizations, which allows you to see how the {{site.data.keyword.blockchainfull_notm}} Platform manages collaborative tasks like channel creation and chaincode instantiation, as well as testing applications and invoking transactions. You can also invite others to collaborate in a Starter Plan network (as in Enterprise plans). This helps you you to build in a more realistic environment, with multiple parties endorsing chaincode and transactions.
+    Starter Plan enables you to act as multiple organizations, which allows you to see how the {{site.data.keyword.blockchainfull_notm}} Platform manages collaborative tasks like channel creation and chaincode instantiation, as well as testing applications and invoking transactions. You can also invite others to collaborate in a Starter Plan network (as in Enterprise plans). This helps you to build in a more realistic environment, with multiple parties endorsing chaincode and transactions.
 - **_Iteratively develop and test blockchain applications._**
     Starter Plan offers you a staging area to continuously develop and test your code on a blockchain network. Moving to cloud allows developers and testers to focus on functionalities and to easily move from unit test to functional test. Starter Plan provides the same blockchain network functionalities as well as operational and management tooling as the Enterprise Plan. After you are ready to push your project to one of the Enterprise plans, you can operate the same way as in Starter Plan, but with more opportunities to grow your network.
 
@@ -76,7 +78,7 @@ Starter Plan is an entry point to {{site.data.keyword.blockchainfull_notm}} Plat
     - The [Service discovery ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/discovery-overview.html "service discovery") and [private data ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/private-data/private-data.html "private data") features of Hyperledger Fabric v1.2 are not supported on Starter Plan.
     - If you [reset](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-reset-network) an older Starter Plan network that is at Fabric V1.1.0, your new network will be at Fabric V1.2 level. If you reset your network, you need to install your chaincode or .bna files on the new network, as well as re-invite members of your old network.
 - **Network resource limitation**
-    Starter Plan assigns 1 CPU and 4 Gi RAM for each peer, and 20 Gi storage for each {{site.data.keyword.cloud_notm}} service instance, including peers. Chaincode containers and ledger blocks are the most resource intensive network components. Users that have many peers on their network, generate a lot of blocks, or use large chaincode files might experience the effect of resource limitations on performance. You can view your networks usage of storage in the ["Overview" screen of your Network Monitor](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-storage).
+    Starter Plan assigns 1 CPU and 4 Gi RAM for each peer, and 20 Gi storage for each {{site.data.keyword.cloud_notm}} service instance, including peers. Chaincode containers and ledger blocks are the most resource-intensive network components. Users that have many peers on their network, generate a lot of blocks, or use large chaincode files might experience the effect of resource limitations on performance. You can view your networks usage of storage in the ["Overview" screen of your Network Monitor](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-storage).
 - **Maintenance and upgrade**
     Starter Plan maintenance and network updates are performed on a fixed schedule. During the maintenance period, you cannot provision new networks and might notice brief periods of network interruption.
 - **Data retention**

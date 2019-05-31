@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-04-23"
+lastupdated: "2019-05-16"
+
+keywords: TLS CA, IBM Blockchain Platform, peer, deploy peers, CouchDB container use Kubernetes, IBM Cloud
 
 subcollection: blockchain
 
@@ -294,7 +296,7 @@ After you register the admin identity, you need to generate the peer admin MSP f
    ```
    LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tDQpNSUlFbERDQ0EzeWdBd0lCQWdJUUFmMmo2MjdLZGNpSVE0dHlTOCs4a1RBTkJna3Foa2lHOXcwQkFRc0ZBREJoDQpNUXN3Q1FZRFZRUUdFd0pWVXpFVk1CTUdBMVVFQ2hNTVJHbG5hVU5sY25RZ1NXNWpNUmt3RndZRFZRUUxFeEIzDQpkM2N1WkdsbmFXTmxjblF1WTI5dE1TQXdIZ1lEVlFRREV4ZEVhV2RwUTJWeWRDQkhiRzlpWVd3Z1VtOXZkQ0JEDQpRVEFlRncweE16QXpNRGd4TWpBd01EQmFGdzB5TXpBek1EZ3hNakF3TURCYU1FMHhDekFKQmdOVkJBWVRBbFZUDQpNUlV3RXdZRFZRUUtFd3hFYVdkcFEyVnlkQ0JKYm1NeEp6QWxCZ05WQkFNVEhrUnBaMmxEWlhKMElGTklRVElnDQpVMlZqZFhKbElGTmxjblpsY2lC
    ```
-   not like this:
+   Not like this:
 
    ```
    LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tDQpNSUlFbERDQ0EzeWdBd0lCQWdJUUFmMmo2MjdL
@@ -348,7 +350,7 @@ You need to register your peer with the TLS CA on {{site.data.keyword.cloud_notm
   ```
   {:codeblock}
 
-2. You need to enroll by using the admin of the TLS CA. Change `$FABRIC_CA_CLIENT_HOME` to a directory where you you want to store your TLS CA admin certificates.
+2. You need to enroll by using the admin of the TLS CA. Change `$FABRIC_CA_CLIENT_HOME` to a directory where you want to store your TLS CA admin certificates.
 
   ```
   cd $HOME/fabric-ca-client
@@ -364,9 +366,9 @@ You need to register your peer with the TLS CA on {{site.data.keyword.cloud_notm
   ```
   {:codeblock}
 
-  The `<enroll_id>`and `<enroll_password>` in the command are the [CA admin user name and password](/docs/services/blockchain/howto/CA_deploy.html#ca-deploy-admin-secret) that you passed to the Kubernetes secret when you deployed the Certificate Authority. Insert the [CA URL](/docs/services/blockchain/howto/CA_operate.html#ca-operate-url) inside the `<ca_url_with_port>`. Leave off the `http://` at the beginning. The `<tls_ca_name>` is that you specified during [CA configuration](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-configuration-parms).
+  The `<enroll_id>`and `<enroll_password>` in the command are the [CA admin user name and password](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-admin-secret) that you passed to the Kubernetes secret when you deployed the Certificate Authority. Insert the [CA URL](/docs/services/blockchain/howto/CA_operate.html#ca-operate-url) inside the `<ca_url_with_port>`. Leave off the `http://` at the beginning. The `<tls_ca_name>` is that you specified during [CA configuration](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-configuration-parms).
 
-  The `<ca_tls_cert_file>` is the your [CA TLS cert](/docs/services/blockchain/howto/CA_operate.html#ca-operate-tls) file name with its full path.
+  The `<ca_tls_cert_file>` is the [CA TLS cert](/docs/services/blockchain/howto/CA_operate.html#ca-operate-tls) file name with its full path.
 
   A real call might look similar to the following example:
 
@@ -489,6 +491,7 @@ tree
 You need to provide the CSR hostnames to deploy a peer. The CSR hostnames include the proxy IP address of the cluster where you will deploy the component as well the `service host name` that will be your Helm chart host name.
 
 #### Locating the value of the cluster proxy IP address
+{: #ibp-peer-deploy-cluster-proxy-ip}
 
 If you want to deploy a peer on the same {{site.data.keyword.cloud_notm}} Private cluster on which you deployed your TLS CA, enter the same proxy IP that you used when you [configured for your TLS CA](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-configuration-parms). If you want to deploy the component on a different cluster, you can retrieve the value of the cluster proxy IP address from the {{site.data.keyword.cloud_notm}} Private console. You need to have the cluster admin role of the {{site.data.keyword.cloud_notm}} Private cluster where the peer will be deployed.
 
@@ -557,7 +560,7 @@ After you have completed all the steps, your updated configuration file will loo
 ```
 {:codeblock}
 
-After you have completed filling in this file, you need to save it in JSON format and pass it to your peer deployment as a Kurbernetes secret. Create the secret using the steps in the [next section](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-config-file-ibp).
+After you have completed filling in this file, you need to save it in JSON format and pass it to your peer deployment as a Kubernetes secret. Create the secret using the steps in the [next section](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-config-file-ibp).
 
 ## Creating the configuration secret
 {: #ibp-peer-deploy-config-file-ibp}
@@ -577,7 +580,7 @@ A [Kubernetes Secret ![External link icon](../images/external_link.svg "External
    ```
    LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tDQpNSUlFbERDQ0EzeWdBd0lCQWdJUUFmMmo2MjdLZGNpSVE0dHlTOCs4a1RBTkJna3Foa2lHOXcwQkFRc0ZBREJoDQpNUXN3Q1FZRFZRUUdFd0pWVXpFVk1CTUdBMVVFQ2hNTVJHbG5hVU5sY25RZ1NXNWpNUmt3RndZRFZRUUxFeEIzDQpkM2N1WkdsbmFXTmxjblF1WTI5dE1TQXdIZ1lEVlFRREV4ZEVhV2RwUTJWeWRDQkhiRzlpWVd3Z1VtOXZkQ0JEDQpRVEFlRncweE16QXpNRGd4TWpBd01EQmFGdzB5TXpBek1EZ3hNakF3TURCYU1FMHhDekFKQmdOVkJBWVRBbFZUDQpNUlV3RXdZRFZRUUtFd3hFYVdkcFEyVnlkQ0JKYm1NeEp6QWxCZ05WQkFNVEhrUnBaMmxEWlhKMElGTklRVElnDQpVMlZqZFhKbElGTmxjblpsY2lC
    ```
-   not like this:
+   Not like this:
 
    ```
    LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tDQpNSUlFbERDQ0EzeWdBd0lCQWdJUUFmMmo2MjdL
@@ -607,7 +610,7 @@ A [Kubernetes Secret ![External link icon](../images/external_link.svg "External
     ```
     {:code_block}
 
-   2. In the **Name** field, enter the value `couchdbuser`. In the corresponding **Value** field, enter the result of `echo -n 'couch' | base64 $FLAG` from step one above.
+   2. In the **Name** field, enter the value `couchdbusr`. In the corresponding **Value** field, enter the result of `echo -n 'couch' | base64 $FLAG` from step one above.
    3. Click the **Add data** button to add a second key value pair.
    4. In the second **Name** field, enter the value `couchdbpwd`. In the corresponding **Value** field, enter the result of `echo -n 'couchpw' | base64 $FLAG` from step one above.
 
@@ -680,7 +683,7 @@ The following table lists the configurable parameters of the {{site.data.keyword
 | `State database volume claim size`| Choose the size of disk to use. | 8Gi | yes |
 | `CouchDB - Data persistence enabled`| For CouchDB container, ledger data will be available when the container restarts. *If unchecked, all data will be lost in the event of a failover or pod restart.*| checked | no |
 | `CouchDB - Use dynamic provisioning`| For CouchDB container use Kubernetes dynamic storage.| checked | no |
-| `Docker-in-Docker CPU request`| Specify the minimum number of CPUs to allocate to the container where the chainode runs. | 1 | yes |
+| `Docker-in-Docker CPU request`| Specify the minimum number of CPUs to allocate to the container where the chaincode runs. | 1 | yes |
 | `Docker-in-Docker CPU limit`| Specify the maximum number of CPUs to allocate to the container where the chaincode runs. | 2 | yes |
 | `Docker-in-Docker memory request`| Specify the minimum amount of memory to allocate to the container where the chaincode runs. | 1Gi | yes |
 | `Docker-in-Docker  memory limit`| Specify the maximum amount of memory to allocate to the container where the chaincode runs. | 4Gi | yes |
@@ -778,6 +781,8 @@ will fail and produce the following error:
 ```
 
 ### **Solution:**
+{: #ibp-peer-deploy-ca-enroll-error-solution}
+
 You need to either encode the special character or surround the url with the single quotes. For example, `!` becomes `%21`, or the command looks like:
 
 ```

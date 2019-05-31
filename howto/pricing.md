@@ -1,8 +1,10 @@
 ---
 
 copyright:
-  years: 2017, 2018
+  years: 2017, 2019
 lastupdated: "2019-03-05"
+
+keywords: Starter Plan, Enterprise Plan, peer fee, membership fee
 
 subcollection: blockchain
 
@@ -54,7 +56,7 @@ Both Starter Plan and Enterprise Plan have two pricing elements:
 
 - **Membership fee** – Covers organization creation, access to ordering service and CA, and is charged on a **per-instance** basis. Included in this pricing element, {{site.data.keyword.blockchainfull_notm}} Platform handles the ordering service and the CA on your network’s behalf. This fee is required to have access to a network built on {{site.data.keyword.blockchainfull_notm}} Platform.
 
-  -	Starter Plan allows for *unlimited* organizations per membership and the ability to switch between organizations in the Network Monitor. Because Starter Plan is designed for development, test, and POC environments, you can simulate in the multi-organization environments. **Note** that the total network storage is capped at 20GB, including the components, chaincode, and ledger data. Your simulated organizations share the 20GB storage in the blockchain network.
+  -	Starter Plan allows for *unlimited* organizations per membership and the ability to switch between organizations in the Network Monitor. Because Starter Plan is designed for development, test, and POC environments, you can simulate in the multi-organization environments. **Note** that the total network storage is capped at 20 GB, including the components, chaincode, and ledger data. Your simulated organizations share the 20-GB storage in the blockchain network.
 
   -	Enterprise allows for a single organization per membership. Because Enterprise is designed for pilot and production environments, you are linked to your specific organization.
 
@@ -139,7 +141,7 @@ You can also remove a peer from the default Starter Plan network configuration. 
 ## Enterprise Plan pricing
 {: #ibp-pricing-enterprise-plan}
 
-{{site.data.keyword.blockchainfull_notm}} Platform doesn't provide default configuration for an Enterprise Plan network. You can choose the configuration that you would like to start with. When you are ready to use Enterprise Plan, you should have a good understanding of what your network configuration should be. As a high availability best practice, we strongly recommend a minimum of two peers per organization to ensure your organization does not experience a network outage.
+{{site.data.keyword.blockchainfull_notm}} Platform doesn't provide default configuration for an Enterprise Plan network. You can choose the configuration that you would like to start with. When you are ready to use Enterprise Plan, you should have a good understanding of what your network configuration should be. As a high availability best practice, we strongly recommend a minimum of two peers per organization to ensure that your organization does not experience a network outage.
 
 If you are in an Enterprise Plan network with the other network member, and each of you add two peers for your organization, each of your bill is reflected in Figure 7.
 

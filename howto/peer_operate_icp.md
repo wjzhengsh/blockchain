@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-04-23"
+lastupdated: "2019-05-16"
+
+keywords: command line, peer, operate peers, use context, Fabric SDKs, IBM Cloud Private 
 
 subcollection: blockchain
 
@@ -177,7 +179,7 @@ It is recommended that you use version 1.4.0 of the Node SDK.
 Your peer was deployed with the signCert of your peer admin inside. This will allow you to use peer admin's certificates and MSP folder to operate the peer.
 
 Locate the certificates that you created when you [enrolled your peer admin](/docs/services/blockchain/howto/CA_operate.html#ca-operate-enroll-admin). If you used the example commands, you can find you peer admin MSP folder at `$HOME/fabric-ca-client/peer-admin`.
-  - You can build the the peer admin user context with the SDK by using the signCert (public key) and private key in the MSP folder. You can find those keys in the following locations:
+  - You can build the peer admin user context with the SDK by using the signCert and private key in the MSP folder. You can find those keys in the following locations:
     - The signCert can be found in the **signcerts** folder: `$HOME/fabric-ca-client/peer-admin/msp/signcerts`
     - The private key can be found in the **keystore:** folder: `$HOME/fabric-ca-client/peer-admin/msp/keystore`
 
@@ -545,7 +547,7 @@ Over time it is likely you need to modify chaincode that is running on the peer.
 
 Complete the following steps to update your chaincode:
 
-1. To update the chaincode on each peer, simply rerun the process you used to install the chaincode on the peers, by using either a client application or a CLI command. Be sure to specify the same chaincode name as was originally used. However, this time increment the chaincode `Version`. All peers need to use the same chaincede name and version.
+1. To update the chaincode on each peer, simply rerun the process you used to install the chaincode on the peers, by using either a client application or a CLI command. Be sure to specify the same chaincode name as was originally used. However, this time increment the chaincode `Version`. All peers need to use the same chaincode name and version.
 
 2. After you install the new chaincode on all the peers in the channel, use the
 [peer chaincode upgrade ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/peerchaincode.html#peer-chaincode-upgrade) command to update the channel to use the new chaincode.
@@ -677,7 +679,7 @@ Organizations:
 ```
 {:codeblock}
 
-This file contains the information that define your organization within the consortium. A more complex version of this file is also available in the `/config` folder of [the fabric peer client that you downloaded](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-fabric-client). You can choose to edit that file, or replace it with the sample above. Note the location of this `/config` folder to set the value of the `FABRIC_CFG_PATH` below. Edit the `Organizations` section of this file and set the following values:
+This file contains the information that defines your organization within the consortium. A more complex version of this file is also available in the `/config` folder of [the fabric peer client that you downloaded](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-fabric-client). You can choose to edit that file, or replace it with the sample above. Note the location of this `/config` folder to set the value of the `FABRIC_CFG_PATH` below. Edit the `Organizations` section of this file and set the following values:
 
 - The `Name:` can be whatever name you wish to use for your organization.
 
@@ -698,7 +700,7 @@ This file contains the information that define your organization within the cons
 
 - The `MSPDir:` is the fully qualified path to your admin MSP, for example: `/Users/chandra/fabric-ca-client/peer-admin/msp`
 
-- The `AnchorPeers:` field is the peer that your organization selects to be the lead peer for inter organization communication by gossip. This is used for features such as private data or service discovery; however, private data and service discovery are not currently supported by the peer Helm chart, although the field is still required. The `Host` and `Port` values are available in the {{site.data.keyword.cloud_notm}} Private peer Helm Release page under the Notes section `#1. Get the application URL by running these commands`. The output will be similar to:
+- The `AnchorPeers:` field is the peer that your organization selects to be the lead peer for inter-organization communication by gossip. This is used for features such as private data or service discovery; however, private data and service discovery are not currently supported by the peer Helm chart, although the field is still required. The `Host` and `Port` values are available in the {{site.data.keyword.cloud_notm}} Private peer Helm Release page under the Notes section `#1. Get the application URL by running these commands`. The output will be similar to:
 
 ```
 http://9.30.250.70:30481
@@ -856,7 +858,7 @@ configtxgen -profile <channel_profile_name> -outputCreateChannelTx ./<channel_pr
 ```
 {:codeblock}
 
-A real command would look similar the to following example:
+A real command would look similar to following example:
 ``` 
 export FABRIC_CFG_PATH=$HOME/config
 configtxgen -profile mychannel -outputCreateChannelTx ./mychannel.tx -channelID mychannel

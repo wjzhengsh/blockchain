@@ -4,6 +4,8 @@ copyright:
   years: 2017, 2019
 lastupdated: "2019-04-23"
 
+keywords: command line, peer, operate peers, peer TLS certificate, IBM Cloud
+
 subcollection: blockchain
 
 ---
@@ -177,10 +179,10 @@ It is recommended that you use version 1.4.0 of the Node SDK.
 Your peer is deployed with the signCert of your peer admin inside. This allows you to use peer admin's certificates and MSP folder to operate the peer.
 
 Locate the certificates you created when you [enrolled your peer admin](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-enroll-admin). If you used the example commands, you can find you peer admin MSP folder at `$HOME/fabric-ca-client/peer-admin`.
-  - You can build the peer admin user context with the SDK by using the signCert (public key) and private key in the MSP folder. You can find those keys in the following locations:
+  - You can build the peer admin user context with the SDK by using the signCert and private key in the MSP folder. You can find those keys in the following locations:
     - The signCert can be found in the **signcerts** folder: `$HOME/fabric-ca-client/peer-admin/msp/signcerts`
     - The private key can be found in the **keystore:** folder: `$HOME/fabric-ca-client/peer-admin/msp/keystore`
-    You can find an example of how to form a user context and operate the SDK by using only the public and private key in [this section of the developing applications tutorial](/docs/services/blockchain/v10_application.html#dev-app-enroll-panel).
+    You can find an example of how to form a user context and operate the SDK by using only the signing certificate and private key in [this section of the developing applications tutorial](/docs/services/blockchain/v10_application.html#dev-app-enroll-panel).
 
 You can also use the SDK to generate the peer admin signCert and private key by using the endpoint information of CA on Starter Plan or Enterprise Plan and your [peer admin username and password](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-register-admin).
 
@@ -189,7 +191,7 @@ You can also use the SDK to generate the peer admin signCert and private key by 
 
 You need to upload the peer administrator signCert to the network on {{site.data.keyword.blockchainfull_notm}} Platform so that your application has permission to operate the network.
 
-- You can find your signCert in the directory your SDK generated your crypto material, in the file named after your peer admin. Copy the certificate inside the quotation marks after the `certificate` field, starting with `-----BEGIN CERTIFICATE-----` and ending with `-----END CERTIFICATE-----`. You can use the CLI to convert the certificate into PEM format by issuing the command `echo -e "<CERT>" > admin.pem`. You can then paste the contents of the certificate into your blockchain network by using the Network Monitor. Log in to the network on {{site.data.keyword.blockchainfull_notm}} Platform. On the "Members" screen of the Network Monitor, click **Certificates** > **Add Certificate**. Specify any name for your certificate and paste the contents in to the **Certificate** field. Click **Restart** when your are asked if you want to restart your peers. This action must be performed before your organization joins the channel.
+- You can find your signCert in the directory your SDK generated your crypto material, in the file named after your peer admin. Copy the certificate inside the quotation marks after the `certificate` field, starting with `-----BEGIN CERTIFICATE-----` and ending with `-----END CERTIFICATE-----`. You can use the CLI to convert the certificate into PEM format by issuing the command `echo -e "<CERT>" > admin.pem`. You can then paste the contents of the certificate into your blockchain network by using the Network Monitor. Log in to the network on {{site.data.keyword.blockchainfull_notm}} Platform. On the "Members" screen of the Network Monitor, click **Certificates** > **Add Certificate**. Specify any name for your certificate and paste the contents into the **Certificate** field. Click **Restart** when your are asked if you want to restart your peers. This action must be performed before your organization joins the channel.
 
 ### Passing your peer's TLS cert to the SDK
 {: #ibp-peer-operate-download-tlscert}
@@ -252,7 +254,7 @@ Your peer was deployed with the signCert of your peer admin inside, allowing tha
 ### Downloading the Fabric peer client
 {: #ibp-peer-operate-download-fabric-client}
 
-The easiest way to to get the peer client is to download all of the Fabric tool binaries from Hyperledger. Navigate to a directory where you would like to download the binaries with your command line and fetch them by issuing the command below. If you haven't installed [Curl ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/prereqs.html#install-curl "Curl"), you'll need to do that first.
+The easiest way to get the peer client is to download all of the Fabric tool binaries from Hyperledger. Navigate to a directory where you would like to download the binaries with your command line and fetch them by issuing the command below. If you haven't installed [Curl ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/prereqs.html#install-curl "Curl"), you'll need to do that first.
 
 ```
 curl -sSL http://bit.ly/2ysbOFE | bash -s 1.4.0 1.4.0 -d -s
@@ -287,7 +289,7 @@ export FABRIC_CFG_PATH=$HOME/config
 
 
 ### Managing the certificates on your local system
-{: #manage-certs}
+{: #peer-operate-manage-certs}
 
 Switch the directory where the peer admin MSP folder is generated. If you followed example steps in this documentation, you can find the MSP folder in a similar directory as below:
 
@@ -607,7 +609,7 @@ If chaincode is already installed and instantiated on a channel before you attem
 
 1. Package chaincode with the [`peer chaincode package`![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/peerchaincode.html?highlight=peer%20chaincode%20package#peer-chaincode-package) command.
 2. Install the chaincode package on the peer that are running on {{site.data.keyword.cloud_notm}} Private by running the `peer chaincode install` command.
-3. If you have the platform specific binaries, you can run the [`peer chaincode upgrade`![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/peerchaincode.html?highlight=peer%20chaincode%20package#peer-chaincode-upgrade) command to upgrade the chaincode that is running on the Starter or Enterprise plan peer, which uses the chaincode package.
+3. If you have the platform-specific binaries, you can run the [`peer chaincode upgrade`![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/peerchaincode.html?highlight=peer%20chaincode%20package#peer-chaincode-upgrade) command to upgrade the chaincode that is running on the Starter or Enterprise plan peer, which uses the chaincode package.
 4. Instantiate the newly-installed chaincode on the channel by using either the Network Monitor UI or the CLI.
 
 The process for upgrading chaincode can also be found in [`Chaincode for Operators`![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/chaincode4noah.html) in Hyperledger Fabric documentation.

@@ -2,7 +2,9 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-05-09"
+lastupdated: "2019-05-16"
+
+keywords: network components, IBM Cloud Kubernetes Service, allocate resources, batch timeout, channel update, reallocate resources
 
 subcollection: blockchain
 
@@ -23,8 +25,7 @@ subcollection: blockchain
 After creating CAs, peers, orderers, organizations, and channels, you can use the console to update these components.
 {:shortdesc}
 
-If you are using the beta version of IBM Blockchain Platform, it is likely that some panels in your console will not match the current documentation, which is kept to date with the generally available service instance. To gain the benefits of all the latest functionality, you are encouraged at this time to provision a new GA service instance. To learn how to do that, see [Getting started with {{site.data.keyword.blockchainfull_notm}} Platform 2.0](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks).
-{: important}
+If you are using the beta trial version of {{site.data.keyword.blockchainfull_notm}} Platform, it is likely that some panels in your console will not match the current documentation, which is kept up to date with the generally available (GA) service instance. To gain the benefits of all the latest functionality, you are encouraged at this time to provision a new GA service instance by following instructions in [Getting started with {{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}}](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks).
 
 **Target audience:** This topic is designed for network operators who are responsible for creating, monitoring, and managing the blockchain network.
 
@@ -119,7 +120,7 @@ Similar to the CA, the orderer has only one associated container that we can adj
 * **The orderer itself**: Encapsulates the internal orderer processes (such as validating transactions) and the blockchain for all of the channels it hosts.
 
 #### Sizing an orderer during creation
-{: #ibp-console-govern-peers-sizing-creation}
+{: #ibp-console-govern-orderer-sizing-creation}
 
 As we noted in our section on [How the {{site.data.keyword.cloud_notm}} Kubernetes Service interacts with the console](/docs/services/blockchain/howto/ibp-console-govern.html#ibp-console-govern-iks-console-interaction), it is recommended to use the defaults for these orderer containers and adjust them later as it becomes apparent how they are being utilized.
 
@@ -128,18 +129,13 @@ As we noted in our section on [How the {{site.data.keyword.cloud_notm}} Kubernet
 | **Orderer container CPU and memory** | When you anticipate a high transaction throughput right away. |
 | **Orderer storage** | When you anticipate that this orderer will be part of an ordering service on many channels. Recall that orderers keep a copy of the blockchain for every channel they're a part of. The orderer default storage is 100G, same as the container for the peer itself. |
 
-Making the CPU and memory of your ordering nodes roughly double the size of your peers, while not mandatory, is considered a best practice. If a Solo ordering node is overstressed, it might hit timeouts and start dropping transactions, requiring transactions to be resubmitted. This causes much greater harm to a network than a single peer struggling to keep up.
+Making the CPU and memory of your ordering nodes roughly double the size of your peers, while not mandatory, is considered a best practice. If an ordering service is overstressed, it might hit timeouts and start dropping transactions, requiring transactions to be resubmitted. This causes much greater harm to a network than a single peer struggling to keep up. In a Raft ordering service configuration, an overstressed leader node might stop sending heartbeat messages, triggering a leader election, and a temporary cessation of transaction ordering. Likewise, a follower node might miss messages and attempt to trigger a leader election where none is needed.
 {:important}
-
-<!--
-Making the CPU and memory of your ordering nodes roughly double the size of your peers, while not mandatory, is considered a best practice. If a Solo ordering node is overstressed, it might hit timeouts and start dropping transactions, requiring transactions to be resubmitted. This causes much greater harm to a network than a single peer struggling to keep up. In a Raft ordering service configuration, an overstressed leader node might stop sending heartbeat messages, triggering a leader election, and a temporary cessation of transaction ordering. Likewise, a follower node might miss messages and attempt to trigger a leader election where none is needed.
-{:important}
--->
 
 ## Reallocating resources
 {: #ibp-console-govern-reallocate-resources}
 
-After resizing a node, you might see a delay before the it takes effect as containers are being rebuilt.
+After resizing a node, you might see a delay before it takes effect because containers are being rebuilt.
 {:important}
 
 As we said above, we recommend using the [{{site.data.keyword.cloud_notm}} SysDig ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/cloud/sysdig "{{site.data.keyword.cloud_notm}} Monitoring with Sysdig") tool in combination with your {{site.data.keyword.cloud_notm}} Kubernetes dashboard to monitor your Kubernetes resource usage. If you determine that a worker node is running out of resources, you can add a new larger worker node to your cluster and then delete the existing working node.
@@ -149,14 +145,14 @@ While it easier to have enough resources deployed to {{site.data.keyword.cloud_n
 
 You can use one of the following ways to reallocate the resources that you assign to the containers that are associated with your node.
 
-1. **Use the {{site.data.keyword.cloud_notm}} Kubernetes Service autoscaler**. The autoscaler will scale your worker nodes up or down in response to your pod spec settings and resource requests. For more information about the {{site.data.keyword.cloud_notm}} Kubernetes Service autoscaler and how to set it up, see [Scaling clusters ![External link icon](../images/external_link.svg "External link icon")](/docs/containers?topic=containers-ca#ca "Scaling clusters") in the IBM {{site.data.keyword.cloud_notm}} documentation. Note that allowing the autoscaler to adjust your resources will result in charges to your {{site.data.keyword.cloud_notm}} Kubernetes Service account that will vary with your usage.
+1. **Use the {{site.data.keyword.cloud_notm}} Kubernetes Service autoscaler**. The autoscaler will scale your worker nodes up or down in response to your pod spec settings and resource requests. For more information about the {{site.data.keyword.cloud_notm}} Kubernetes Service autoscaler and how to set it up, see [Scaling clusters ![External link icon](../images/external_link.svg "External link icon")](/docs/containers?topic=containers-ca#ca "Scaling clusters") in the {{site.data.keyword.cloud_notm}} documentation. Note that allowing the autoscaler to adjust your resources will result in charges to your {{site.data.keyword.cloud_notm}} Kubernetes Service account that will vary with your usage.
 2. **Scale manually**. This involves monitoring your usage in the console and on the {{site.data.keyword.cloud_notm}} Kubernetes Service cluster. While this will involve more manual steps than using the autoscaler, it has the advantage of allowing the user to always be certain what is being charged to their {{site.data.keyword.cloud_notm}} Kubernetes Service account.
 
 To scale manually, click the node that you want to adjust on the **Nodes** page and then click the **Usage** tab. You can see a button called **Reallocate**, which will launch a **Resource allocation** tab that is very similar to the one that you saw when you create the node. If you want to lower the amount of available resources, simply provide lower values and click **Reallocate resources** on that tab and the resulting **Summary** page.
 
 If you want to increase the CPU and memory for a node, use the **Resource allocation** tab to increase the values. The white box at the bottom of the page will add up the new values. After clicking **Reallocate resources**, the **Summary** page will translate this value into a **VPC** amount, which is used to calculate your bill. You'll then need to navigate to your {{site.data.keyword.cloud_notm}} Kubernetes Service dashboard to make sure your cluster has sufficient resources for this reallocation. If it does, you can click **Reallocate resources**. If sufficient resources are not available, you will need to increase the size of your cluster using the {{site.data.keyword.cloud_notm}} Kubernetes Service dashboard.
 
-The method you will use to increase storage will depend on the storage class you chose for your cluster. Refer back to the [storage options ![External link icon](../images/external_link.svg "External link icon")](/docs/containers?topic=containers-kube_concepts#kube_concepts "storage options") documentation for information about increasing your storage.
+The method you will use to increase storage will depend on the storage class you chose for your cluster. Refer back to the [storage options ![External link icon](../images/external_link.svg "External link icon")](/docs/containers?topic=containers-kube_concepts#kube_concepts "storage options") documentation for information about increasing your storage. If you are about to exhaust the storage on your peer or orderer, you must deploy a new peer or orderer with a larger file system and let it sync via your other components on the same channels.
 
 Unlike CPU and memory, which can be increased using the console (if you have resources available in your {{site.data.keyword.cloud_notm}} Kubernetes Service cluster), you will need to use the {{site.data.keyword.cloud_notm}} CLI to increase the storage of your nodes. For a tutorial on how to do this, see [Changing the size and IOPS of your existing storage device ![External link icon](../images/external_link.svg "External link icon")](/docs/containers?topic=containers-file_storage#file_change_storage_configuration "Changing the size and IOPS of your existing storage device").
 
@@ -174,17 +170,17 @@ To update a channel, click on the channel inside the **Channels** tab. Click on 
 ### Channel configuration parameters you can update
 {: #ibp-console-govern-update-channel-available-parameters}
 
-It's possible to change some, but not all, of the configuration parameters of a channel after the channel has been created. And there is one parameter it is possible to update that is not available during channel creation.
+It's possible to change some, but not all, of the configuration parameters of a channel after the channel has been created. And there is only one parameter that is possible to update and is not available during channel creation.
 
 You will see that the **Channel name** is greyed out and cannot be edited. This reflects the fact that a channel name cannot be changed after it has been created. Also, observe that the ordering service display name is not present, as the ordering service of a channel also cannot be changed after the channel has been created.
 
 You can, however, change the following channel configuration parameters:
 
-* **Organizations**. This section of the panel is how organizations are added or removed from a channel. Organizations that can be added can be seen in the drop down list. Note that an organization must be a member of the consortium of the ordering service before it can be added to a channel. To learn how to add an organization to the consortium, see [Add your organization to list of organizations that can transact](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-add-org).
+* **Organizations**. This section of the panel is how organizations are added or removed from a channel. Organizations that can be added can be seen in the drop-down list. Note that an organization must be a member of the consortium of the ordering service before it can be added to a channel. For more information about how to add an organization to the consortium, see [Add your organization to list of organizations that can transact](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-add-org).
 
 * **Channel update policy**. The update policy of a channel specifies how many organizations (out of the total number of organizations in the channel), who must approve of an update to the channel configuration. To ensure a good balance between collaborative administration and efficient processing of channel configuration updates, consider setting this policy to a majority of admins. For example, if there are five admins in a channel, choose `3 out of 5`.
 
-* **Block cutting parameters**. (Advanced option) Because a change to the default block cutting parameters must be signed by an admin of the ordering service organization, these fields are not present in the channel creation panel. However, because this channel configuration will be sent to all of the relevant organizations in the channel, it is possible to send a channel configuration update request with changes to the block cutting parameters. These fields determine the conditions under which the ordering service cuts a new block. For information on how these fields affect when blocks are cut, see [Block cutting parameters]((/docs/services/blockchain/howto/ibp-console-govern.html#ibp-console-govern-orderer-tuning-batch-size).
+* **Block cutting parameters**. (Advanced option) Because a change to the default block cutting parameters must be signed by an admin of the ordering service organization, these fields are not present in the channel creation panel. However, because this channel configuration will be sent to all of the relevant organizations in the channel, it is possible to send a channel configuration update request with changes to the block cutting parameters. These fields determine the conditions under which the ordering service cuts a new block. For information on how these fields affect when blocks are cut, see [Block cutting parameters](/docs/services/blockchain/howto/ibp-console-govern.html#ibp-console-govern-orderer-tuning-batch-size).
 
 * **Access control lists**. (Advanced option) To specify a finer grained control over resources, you can restrict access to a resource to an organization and a role within that organization. For example, setting access to the resource `ChaincodeExists` to `Application/Admins` would mean that only the admin of an application would be able to access the `ChaincodeExists` resource.
 
@@ -193,7 +189,7 @@ If you restrict access to a resource to a particular organization, be aware that
 
 Because the console gives a single user the ability to own and control several organizations, you must specify the organization you are using when you sign a channel update in the **Channel updater organization** section. If you own more than one organization in this channel, you may choose any of the organizations you own in the channel to sign with. Depending on the **channel update policy** you've selected, you may get a notification asking you to sign the request as one or more of the other organizations you own.
 
-If you are attempting to change any of the **Block cutting parameters** and own the ordering service organization of this channel, you will see a field for the ordering service organization. Select the MSP of the relevant ordering service organization from the drop down list. If you are not an admin of the ordering service organization, you can still make a request to change one of the block cutting parameters, but the request will be sent, and will need to be signed, by an ordering service admin.
+If you are attempting to change any of the **Block cutting parameters** and own the ordering service organization of this channel, you will see a field for the ordering service organization. Select the MSP of the relevant ordering service organization from the drop-down list. If you are not an admin of the ordering service organization, you can still make a request to change one of the block cutting parameters, but the request will be sent, and will need to be signed, by an ordering service admin.
 
 ### Signature collection flow
 {: #ibp-console-govern-update-channel-signature-collection}
@@ -228,7 +224,7 @@ The following three parameters work together to control when a block is cut, bas
 - **Max message count**   
   Set this value to the maximum number of transactions that can be included in a single block.
 - **Preferred max bytes**  
-  Set this value to the ideal block size in bytes, but it must be less than `Absolute max bytes`. A minimum transaction size,  one that contains no endorsements, is around 1KB.  If you add 1KB per required endorsement, a typical transaction size is approximately 3-4KB. Therefore, it is recommended to set the value of `Preferred max bytes` to be around `Max message count * expected averaged tx size`. At runtime, whenever possible, blocks will not exceed this size. If a transaction arrives that causes the block to exceed this size, the block is cut and a new block is created for that transaction. But if a transaction arrives that exceeds this value without exceeding the `Absolute max bytes`, the transaction will be included. If a block arrives that is larger than `Preferred max bytes`, then it will only contain a single transaction, and that transaction size can be no larger than `Absolute max bytes`.
+  Set this value to the ideal block size in bytes, but it must be less than `Absolute max bytes`. A minimum transaction size,  one that contains no endorsements, is around 1KB.  If you add 1KB per required endorsement, a typical transaction size is approximately 3-4KB. Therefore, it is recommended to set the value of `Preferred max bytes` to be around `Max message count * expected averaged tx size`. At run time, whenever possible, blocks will not exceed this size. If a transaction arrives that causes the block to exceed this size, the block is cut and a new block is created for that transaction. But if a transaction arrives that exceeds this value without exceeding the `Absolute max bytes`, the transaction will be included. If a block arrives that is larger than `Preferred max bytes`, then it will only contain a single transaction, and that transaction size can be no larger than `Absolute max bytes`.
 
 Together, these parameters can be configured to optimize throughput of your orderer.
 

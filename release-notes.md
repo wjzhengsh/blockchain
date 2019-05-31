@@ -2,7 +2,11 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-05-09"
+lastupdated: "2019-05-16"
+
+keywords: release note, latest changes, Hyperledger Fabric
+
+subcollection: blockchain
 
 ---
 
@@ -16,17 +20,23 @@ lastupdated: "2019-05-09"
 # Release notes
 {: #release-notes-saas-20}
 
-Use these release notes that are grouped by date to learn about the latest changes to {{site.data.keyword.blockchainfull}} Platform free 2.0 beta which is built on Hyperledger Fabric v1.4.0.
+Use these release notes that are grouped by date to learn about the latest changes to {{site.data.keyword.blockchainfull}} Platform on {{site.data.keyword.cloud_notm}} which is built on Hyperledger Fabric v1.4.1.
 {:shortdesc}
 
 
-## 6 May 2019
+## 9 May 2019
+{: #05-09-2019}
 
 **Introducing {{site.data.keyword.blockchainfull_notm}} Platform Console APIs**
 
-APIs are now available to provision, edit, and delete peer, orderer, and CA nodes, making it possible to script the building of your blockchain network. Use the documentation in the [{{site.data.keyword.cloud_notm}} API documentation repository ![External link icon](images/external_link.svg "External link icon")](/apidocs/blockchain#introduction "Introduction") to learn more about the APIs and try them out. In addition, see the topic on [Building a network with APIs](/docs/services/blockchain?topic=blockchain-ibp-v2-apis) for instructions on how to use the APIs to build out your network.
+APIs are now available to provision, edit, and delete peer, orderer, and CA nodes, making it possible to script the building of your blockchain network. Use the documentation in the [{{site.data.keyword.cloud_notm}} API documentation repository ![External link icon](images/external_link.svg "External link icon")](/apidocs/blockchain#introduction "Introduction") to learn more about the APIs and try them out. In addition, see the topic on [Building a network with APIs](/docs/services/blockchain?topic=blockchain-ibp-v2-apis) for instructions on how to use the APIs to build out your network.  
+
+**Channel governance**  
+
+Channel governance updates allow policies to be reconfigured. You can also control which channel members need to sign a channel update and you can orchestrate signature collection.
 
 ## 17 April 2019
+{: #04-17-2019}
 
 **Ability to size and scale node resources**  
 

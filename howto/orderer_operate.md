@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-04-23"
+lastupdated: "2019-05-16"
+
+keywords: command line, orderer system channel, IBM Blockchain Platform, orderer, IBM Cloud Private, operate an orderer
 
 subcollection: blockchain
 
@@ -146,7 +148,7 @@ You need to download your orderer TLS certificate and pass it to your commands t
   {:codeblock}
 
 ### Managing the certificates on your local system
-{: #manage-certs}
+{: #orderer-operate-manage-certs}
 
 Switch to the directory where the orderer admin MSP folder is generated. Depending how you followed example steps in this documentation, or how many components you are deploying, you can find the MSP folder in `$HOME/fabric-ca-client/orderer-admin/msp` or `$HOME/fabric-ca-client/peer-admin/msp`
 
@@ -284,6 +286,19 @@ Recall the high-level flow for forming a consortium:
 1. The orderer system channel is formed with only the orderer organization as a member of the system channel. That organization can make updates without requiring additional signatures.
 2. The orderer organization admin receives organization definitions from members that want to join the consortium. Orderer organization uses the organization definitions to update the configuration of the orderer system channel.
 
+**Note:** If your peer is deployed in a different {{site.data.keyword.cloud_notm}} Private cluster than the orderer, you need to [complete additional steps](#icp-orderer-operate-consortium-multi-cluster) to ensure that the orderer address in system channel is updated with its proxy IP address and node port. For example:
+  ```
+  "OrdererAddresses": {
+    "mod_policy": "/Channel/Orderer/Admins",
+    "value": {
+      "addresses": [
+        "9.12.19.49:30576"
+      ]
+    },
+    "version": "0"
+  }
+  ```
+
 ### Getting the organization definitions
 
 The orderer needs to receive the [organization definitions](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate-organization-definition) from members who want to join the consortium. This needs to be completed in an out of band operation with other members sending you the JSON files that include their MSP ID and crypto material. For reference in the commands below, we assume that you have created a folder that is named `org-definitions` and placed all of the relevant files in that directory.
@@ -379,7 +394,7 @@ The orderer needs to receive the [organization definitions](/docs/services/block
 ### Creating the system channel update
 {: #icp-orderer-operate-system-channel-update}
 
-The downloaded [Fabric tool](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-get-fabric-tools) `configtxtlator` translates the protobuf format of a channel configuration to the JSON format, and vice vera.
+The downloaded [Fabric tool](/docs/services/blockchain/howto/orderer_operate.html#icp-orderer-operate-get-fabric-tools) `configtxtlator` translates the protobuf format of a channel configuration to the JSON format, and vice versa.
 
 These steps follow the general flow of the channel update tutorial about [converting the block into JSON format ![External link icon](../images/external_link.svg "External link icon")]( https://hyperledger-fabric.readthedocs.io/en/release-1.4/channel_update_tutorial.html#convert-the-configuration-to-json-and-trim-it-down "Convert the Configuration to JSON and Trim It Down"). You need to make some changes to the commands in the tutorial to reflect the fact that you are updating the orderer system channel rather than an application channel. You can visit the tutorial for more detail on this process. This section simply provides the commands for you.
 
@@ -445,7 +460,7 @@ These steps follow the general flow of the channel update tutorial about [conver
 
 ### Sending the update to the system channel
 
-Before you complete these steps, ensure that your `FABRIC_CFG_PATH`, `$PROXY`  and `ORDERER_PORT`  is set correctly. Run the following command:
+Before you complete these steps, ensure that your `FABRIC_CFG_PATH`, `$PROXY`  and `ORDERER_PORT` is set correctly. Run the following command:
 
 ```
 export ORDERER_CA=<path and file name of the orderer TLS CA cert>
@@ -481,6 +496,50 @@ This command simultaneously signs the update request and sends it to the orderer
 ```
 
 It is possible to include multiple organization definitions in a single orderer system channel configuration update, but it's a best practice to update the channel with one organization at a time and check to make sure that the update was successful.
+
+### Updating system channel for multi-cluster deployment
+{: #icp-orderer-operate-consortium-multi-cluster}
+
+If you deploy your peer in another {{site.data.keyword.cloud_notm}} Private cluster than the orderer, your peer cannot communicate with the orderer with the orderer's Helm Release information. After your org is added to system channel, you must update the system channel to use the [orderer's endpoint information](#icp-orderer-operate-orderer-endpoint), that is, its proxy IP address and port number instead of the Helm Release information. Run the following command to update the orderer address in `genesis-config.json`.
+
+1. Convert the genesis block into JSON format.
+
+  ```
+  cd configupdate
+  configtxlator proto_decode --input genesis.pb --type common.Block --output ./config_block.json
+  jq .data.data[0].payload.data.config ./config_block.json  > config.json
+  ```
+  {:codeblock}
+
+2. Run the following commands to convert the `modified_config.json` file to the configuration update in JSON format.
+
+  ```
+  configtxlator proto_encode --input config.json --type common.Config --output config.pb 
+  configtxlator proto_encode --input modified_config.json --type common.Config --output modified_config.pb 
+  configtxlator compute_update --channel_id $CHANNEL_NAME --original config.pb --updated modified_config.pb --output config_update.pb 
+  configtxlator proto_decode --input config_update.pb --type common.ConfigUpdate --output config_update.json
+  ```
+  {:codeblock}
+
+3. Put an envelope on the `config_update`.
+
+  ```
+  echo '{"payload":{"header":{"channel_header":{"channel_id":"'$CHANNEL_NAME'", "type":2}},"data":{"config_update":'$(cat config_update.json)'}}}' | jq . > config_update_in_envelope.json
+  ```
+  {:codeblock}
+
+4. Run the following command to convert the configuration update back to the protobuf format.
+
+  ```
+  configtxlator proto_encode --input config_update_in_envelope.json --type common.Envelope --output ./config_update_in_envelope.pb
+  ```
+  {:codeblock}
+
+5. Send the update to the system channel.
+  ```
+  peer channel update -f update_in_envelope.pb -c $CHANNEL_NAME -o $ORDERER_URL --tls --cafile $ORDERER_TLS_CERTIFICATE
+  ```
+  {:codeblock}
 
 ## Viewing the orderer logs
 {: #icp-orderer-operate-orderer-view-logs}
@@ -523,4 +582,4 @@ This error can be caused when the peer is using the same organization MSP ID as 
 
 **Solution:**  
 
-To resolve this problem you need to redeploy your peer specifying an Organization MSP ID that is different then what was used when the orderer was deployed.
+To resolve this problem you need to redeploy your peer specifying an Organization MSP ID that is different than what was used when the orderer was deployed.

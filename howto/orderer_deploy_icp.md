@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-04-23"
+lastupdated: "2019-05-16"
+
+keywords: Helm chart, orderer configuration file, IBM Cloud Private, deploy an orderer, ordering service
 
 subcollection: blockchain
 
@@ -20,7 +22,7 @@ subcollection: blockchain
 Orderers authenticate clients, order transactions, and broadcast transactions in a blockchain network with the orderer component. For more information about orderers and the role that they play in a blockchain network, see [Overview on blockchain components](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview).
 {:shortdesc}
 
-Before you a deploy an ordering service, review the [Considerations and limitations](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-about-considerations).
+Before you deploy an ordering service, review the [Considerations and limitations](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-about-considerations).
 
 ## Resources required
 {: #icp-orderer-deploy-resources-required}
@@ -53,7 +55,7 @@ If you do not use dynamic provisioning, [Persistent Volumes ![External link icon
 
 1. Before you can install an orderer on {{site.data.keyword.cloud_notm}} Private, you must [install {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/ICP_setup.html#icp-setup) and [install the {{site.data.keyword.blockchainfull_notm}} Platform Helm chart](/docs/services/blockchain/howto/helm_install_icp.html#helm-install).
 
-2. If you use the Community Edition and you want to run this Helm chart on an {{site.data.keyword.cloud_notm}} Private cluster without Internet connectivity, you need to create archives on an Internet-connected machine before you can install the archives on your the {{site.data.keyword.cloud_notm}} Private cluster. For more information, see [Adding featured applications to clusters without Internet connectivity ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/app_center/add_package_offline.html "Adding featured applications to clusters without Internet connectivity"){:new_window}. Note that you can find the specification file `manifest.yaml` under ibm-blockchain-platform-dev/ibm_cloud_pak in the Helm chart.
+2. If you use the Community Edition and you want to run this Helm chart on an {{site.data.keyword.cloud_notm}} Private cluster without Internet connectivity, you need to create archives on an Internet-connected machine before you can install the archives on your {{site.data.keyword.cloud_notm}} Private cluster. For more information, see [Adding featured applications to clusters without Internet connectivity ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/app_center/add_package_offline.html "Adding featured applications to clusters without Internet connectivity"){:new_window}. Note that you can find the specification file `manifest.yaml` under ibm-blockchain-platform-dev/ibm_cloud_pak in the Helm chart.
 
 3. Retrieve the value of the cluster Proxy IP address of your CA from the {{site.data.keyword.cloud_notm}} Private console. **Note:** You will need to be a [Cluster administrator ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/user_management/assign_role.html "Cluster administrator roles and actions") to access your proxy IP. Log in to the {{site.data.keyword.cloud_notm}} Private cluster. In the left navigation panel, click **Platform** and then **Nodes** to view the nodes that are defined in the cluster. Click the node with the role `proxy` and then copy the value of the `Host IP` from the table. **Important:** Save this value and you will use it when you configure the `Proxy IP` field of the Helm chart.
 
@@ -90,7 +92,7 @@ After you save the configuration file, you need to encode it in the base64 forma
    ```
    LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tDQpNSUlFbERDQ0EzeWdBd0lCQWdJUUFmMmo2MjdLZGNpSVE0dHlTOCs4a1RBTkJna3Foa2lHOXcwQkFRc0ZBREJoDQpNUXN3Q1FZRFZRUUdFd0pWVXpFVk1CTUdBMVVFQ2hNTVJHbG5hVU5sY25RZ1NXNWpNUmt3RndZRFZRUUxFeEIzDQpkM2N1WkdsbmFXTmxjblF1WTI5dE1TQXdIZ1lEVlFRREV4ZEVhV2RwUTJWeWRDQkhiRzlpWVd3Z1VtOXZkQ0JEDQpRVEFlRncweE16QXpNRGd4TWpBd01EQmFGdzB5TXpBek1EZ3hNakF3TURCYU1FMHhDekFKQmdOVkJBWVRBbFZUDQpNUlV3RXdZRFZRUUtFd3hFYVdkcFEyVnlkQ0JKYm1NeEp6QWxCZ05WQkFNVEhrUnBaMmxEWlhKMElGTklRVElnDQpVMlZqZFhKbElGTmxjblpsY2lC
    ```
-   not like this:
+   Not like this:
 
    ```
    LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tDQpNSUlFbERDQ0EzeWdBd0lCQWdJUUFmMmo2MjdL
@@ -145,7 +147,7 @@ This must be done on the system's where the NFS filesystem is served from.
 ### Configuration parameters
 {: #icp-orderer-configuration-parms}
 
-The following table lists the configurable parameters of the {{site.data.keyword.blockchainfull_notm}} Platform, **specific to the orderer component**, and their default values. **Although the Helm chart UI says no further configuration is required, you need to enter certain parameters to deploy an orderer.**
+The following table lists the configurable parameters of the {{site.data.keyword.blockchainfull_notm}} Platform, **specific to the orderer component**, and their default values. **Although the Helm chart UI says that no further configuration is required, you need to enter certain parameters to deploy an orderer.**
 
 #### General and global configuration parameters
 {: #icp-orderer-deploy-global-parameters}
@@ -153,10 +155,10 @@ The following table lists the configurable parameters of the {{site.data.keyword
 |  Parameter     | Description    | Default  | Required |
 | --------------|-----------------|-------|------- |
 |**General parameters**| Parameters that configure the Helm chart | | |
-| `Helm release name`| The name of your helm release. Must begin with a lowercase letter and end with any alphanumeric character, must only contain hyphens and lowercase alphanumeric characters. You must use a unique Helm release name each time you attempt to install a component. **Important:** This value must match the value that you used to generate the 'service host name' for the "hosts" field in your [JSON secret file.](/docs/services/blockchain/howto/orderer_deploy_icp.html#icp-orderer-deploy-config-file) | none | yes  |
+| `Helm release name`| The name of your helm release. Must begin with a lowercase letter and end with any alphanumeric character, must contain only hyphens and lowercase alphanumeric characters. You must use a unique Helm release name each time you attempt to install a component. **Important:** This value must match the value that you used to generate the 'service host name' for the "hosts" field in your [JSON secret file.](/docs/services/blockchain/howto/orderer_deploy_icp.html#icp-orderer-deploy-config-file) | none | yes  |
 | `Target namespace`| Choose the Kubernetes namespace to install the Helm chart. | none | yes |
 | `Target namespace policies`| Displays the pod security policies of the chosen namespace, which must include an **`ibm-privileged-psp`** policy. Otherwise, [bind a PodSecurityPolicy](/docs/services/blockchain?topic=blockchain-icp-setup#icp-setup-psp) to your namespace. | none | no |
-|**Global configuration**| Parameters which apply to all components in the Helm chart|||
+|**Global configuration**| Parameters that apply to all components in the Helm chart|||
 | `Service account name`| Enter the name of the [service account ![External link icon](../images/external_link.svg "External link icon")](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/) that you will use to run the pod. | default | no |
 
 #### Orderer configuration parameters
@@ -174,7 +176,7 @@ The following table lists the configurable parameters of the {{site.data.keyword
 | `Orderer Docker image tag`| A record of the Docker image. This field is autofilled to the image version. Do not change it.| 1.4.0 | yes |
 | `Orderer consensus type`| The consensus type of the ordering service. | SOLO | yes |
 | `Orderer organization name`| Specify the name you would like to use for the orderer organization. If you also plan to deploy peers, make sure to use a different name than the one you will give to your peers. For example, give your orderer org a name like `ordererOrg` | none | yes |
-| `Orderer Org MSP ID`| Specify the name you want to use for the MSP ID of the orderer organization. This should be the same name you give to your orderer organization, and will be set as an environment variable by the deployment process. Make a note of this value and you will need to reference it later. | none | yes |
+| `Orderer Org MSP ID`| Specify the name that you want to use for the MSP ID of the orderer organization. This should be the same name as what you give to your orderer organization, and will be set as an environment variable by the deployment process. Make a note of this value and you will need to reference it later. | none | yes |
 | `Orderer storage class name`| Specify a storage class name for the orderer. | none | Depends on how the {{site.data.keyword.cloud_notm}} Private cluster is configured. Check with your cluster administrator |
 | `Orderer existing volume claim`| Specify the name of an existing Volume Claim and leave all other fields blank. | none | no |
 | `Orderer selector label`| [Selector label ![External link icon](../images/external_link.svg "External link icon")](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) for your PVC. | none | no |
@@ -197,7 +199,7 @@ The following table lists the configurable parameters of the {{site.data.keyword
 
 Alternatively, you can use the Helm CLI to install the Helm release. Before you run the `helm install` command, ensure that you [add your cluster's Helm repository to the Helm CLI environment ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/app_center/add_int_helm_repo_to_cli.html "Adding the internal Helm repository to Helm CLI").
 
-You can set the parameters required for installation by creating a `yaml` file and passing it to the following `helm install` command.
+You can set the parameters that are required for installation by creating a `yaml` file and passing it to the following `helm install` command.
 
 ```
 helm install --name <helm_release_name>  <helm_chart> \
@@ -228,7 +230,7 @@ You can create a new `yaml` file by editing `values.yaml` included in the downlo
 ## Verifying the orderer installation
 {: #icp-orderer-deploy-verify-install}
 
-After you complete the configuration parameters and click the **Install** button, click the **View Helm Release** button to view your deployment. If it was successful, you should see the value 1 in the `DESIRED`, `CURRENT`, `UP TO DATE`, and `AVAILABLE` fields in the Deployment table. You may need to click refresh and wait for the table to be updated. You can also find the Deployment table by clicking the **Menu** icon in the upper left corner in the {{site.data.keyword.cloud_notm}} Private console. From the menu list, click **Workloads** and then **Helm Releases**.
+After you complete the configuration parameters and click the **Install** button, click the **View Helm Release** button to view your deployment. If it was successful, you should see the value 1 in the `DESIRED`, `CURRENT`, `UP TO DATE`, and `AVAILABLE` fields in the Deployment table. You may need to click refresh and wait for the table to be updated. You can also find the Deployment table by clicking the **Menu** icon in the upper-left corner in the {{site.data.keyword.cloud_notm}} Private console. From the menu list, click **Workloads** and then **Helm Releases**.
 
 ## Viewing the orderer logs
 {: #icp-orderer-deploy-view-logs}

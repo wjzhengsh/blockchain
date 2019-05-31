@@ -4,6 +4,8 @@ copyright:
   years: 2018, 2019
 lastupdated: "2019-04-23"
 
+keywords: IBM Cloud Private, Certificate Authority, deploy CA, CA admin secret, CA logs, Helm chart, on-prem
+
 subcollection: blockchain
 
 ---
@@ -23,7 +25,7 @@ subcollection: blockchain
 After you import the {{site.data.keyword.blockchainfull}} Platform for {{site.data.keyword.cloud_notm}} Private Helm chart, you can deploy the individual components. The Certificate Authority (CA) is the root of trust for your organization and allows you to generate credentials for the other components you will deploy. As a result, you need to deploy a CA before you deploy the other components. Each organization in a multi-cloud blockchain network must deploy its own CA.  For more information about CAs and the role that they play in a blockchain network, see [Certificate Authorities](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview-ca).
 {:shortdesc}
 
-Before you a deploy a Certificate Authority, review the [Considerations and limitations](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-about-considerations).
+Before you deploy a Certificate Authority, review the [Considerations and limitations](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-about-considerations).
 
 ## Resources required
 {: #ca-deploy-resources-required}
@@ -55,7 +57,7 @@ If you do not use dynamic provisioning, [Persistent Volumes ![External link icon
 
 1. Before you can install a CA on {{site.data.keyword.cloud_notm}} Private, you must [install {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/ICP_setup.html#icp-setup) and [install the {{site.data.keyword.blockchainfull_notm}} Platform Helm chart](/docs/services/blockchain/howto/helm_install_icp.html#helm-install).
 
-2. If you use the Community Edition and you want to run this Helm chart on an {{site.data.keyword.cloud_notm}} Private cluster without Internet connectivity, you need to create archives on an Internet-connected machine before you can install the archives on your the {{site.data.keyword.cloud_notm}} Private cluster. For more information, see [Adding featured applications to clusters without Internet connectivity ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/app_center/add_package_offline.html "Adding featured applications to clusters without Internet connectivity"){:new_window}. Note that you can find the specification file manifest.yaml under ibm-blockchain-platform-dev/ibm_cloud_pak in the Helm chart.
+2. If you use the Community Edition and you want to run this Helm chart on an {{site.data.keyword.cloud_notm}} Private cluster without Internet connectivity, you need to create archives on an Internet-connected machine before you can install the archives on your {{site.data.keyword.cloud_notm}} Private cluster. For more information, see [Adding featured applications to clusters without Internet connectivity ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/app_center/add_package_offline.html "Adding featured applications to clusters without Internet connectivity"){:new_window}. Note that you can find the specification file manifest.yaml under ibm-blockchain-platform-dev/ibm_cloud_pak in the Helm chart.
 
 3. Retrieve the value of the cluster Proxy IP address from the {{site.data.keyword.cloud_notm}} Private console. **Note:** You will need to be a [Cluster administrator ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/user_management/assign_role.html "Cluster administrator roles and actions") to access your proxy IP. Log in to the {{site.data.keyword.cloud_notm}} Private cluster. In the left navigation panel, click **Platform** and then **Nodes** to view the nodes that are defined in the cluster. Click the node with the role `proxy` and then copy the value of the `Host IP` from the table.
 
@@ -64,7 +66,7 @@ If you do not use dynamic provisioning, [Persistent Volumes ![External link icon
 
 4. Create the CA admin user name and password and store them inside a secret object in {{site.data.keyword.cloud_notm}} Private. You can find the steps to create the secret in the [next section](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-admin-secret).
 
-## Creating CA admin Secret
+## Creating CA admin secret
 {: #ca-deploy-admin-secret}
 
 When your CA first starts, it contains an admin identity that you create to operate your CA. You need to create a user name and password for this admin identity before you deploy the CA. It is important to make a note of these values. They will be used later when you operate your CA and deploy additional network components. Create a [Kubernetes Secret ![External link icon](../images/external_link.svg "External link icon")](https://kubernetes.io/docs/concepts/configuration/secret/ "Secrets") to store the admin `username` and `password` for your CA deployment. A Kubernetes secret allows you to protect and share information without having to pass it directly to the deployment.

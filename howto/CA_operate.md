@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-04-23"
+lastupdated: "2019-05-16"
+
+keywords: IBM Cloud Private, Certificate Authority, operate CA, CA admin secret, CA logs, Helm chart, on-prem, CLI, CA TLS cert, CA endpoint, TLS CA
 
 subcollection: blockchain
 
@@ -206,7 +208,7 @@ You can use the Fabric CA client to operate your CA. These instructions explain 
 ### Generating certificates with your CA admin
 {: #ca-operate-enroll-ca-admin}
 
-Before you deploy components or client applications with your CA, you need to generate certificates that authenticate you as an administrator with the ability to register new users. The process of generating the necessary certificates, your private key, and your public cert (also known as your enrollment cert or signCert), is called **enrollment**.
+Before you deploy components or client applications with your CA, you need to generate certificates that authenticate you as an administrator with the ability to register new users. The process of generating the necessary certificates, your private key, and your certificate (also known as your enrollment cert or signCert), is called **enrollment**.
 
 You can generate certificates only by using identities that have been registered with your Certificate Authority. Provide the identity's name and secret to generate certificates. A **CA admin** identity was automatically registered for you when you deployed your CA. You can now use that admin name and password to issue an `enroll` command with the Fabric CA client to generate an MSP folder with certificates that are then used to register other peer or orderer identities.
 
@@ -611,6 +613,7 @@ Copy the values of the `name` and `secret` to `"enrollid"` and `"enrollsecret"` 
 You need to provide a CSR hostname to deploy an orderer or peer. This hostname includes the proxy IP address of the cluster where you will deploy the component and the `service host name` that is generated when the Helm chart is deployed.
 
 #### Locating the value of the cluster proxy IP address
+{: #ca-operate-cluster-proxy-ip}
 
 If you want to deploy an orderer or peer on the same {{site.data.keyword.cloud_notm}} Private cluster on which you deployed your CA, ensure that you have a [Cluster administrator ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/user_management/assign_role.html "Cluster administrator roles and actions") role on the {{site.data.keyword.cloud_notm}} Private cluster where the orderer or peer will be deployed. Then, enter the same proxy IP that you used when you [configured for your CA](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-configuration-parms). If you want to deploy the orderer or peer on a different cluster, you can retrieve the value of the cluster proxy IP address from the {{site.data.keyword.cloud_notm}} Private console by completing the following steps:
 
@@ -654,6 +657,7 @@ A `service host name` is generated when a Helm chart is deployed. It is based on
   {:codeblock}
 
 ### Completing the configuration file
+{: #ca-operate-config-file}
 
 After you completed all the steps above, your updated configuration file might look similar to the following example:
 
@@ -708,7 +712,7 @@ MSP folders must have a defined structure to be used by Fabric components. The F
 
 - **cacerts:** Contains the certificate of the root CA of your network.
 - **intermediatecerts:** These are the certificates of any intermediate CAs in your chain of trust (leading back to a root CA or CAs). Each Enterprise Plan organization has two intermediate CAs for failover and high availability.
-- **signCerts:** This folder contains your public signing certificate, also known as your signCert or enrollment certificate. This certificate is attached to your calls to the network (a chaincode invoke, for example) when you reference your MSP directory from the command line or build a user context object with the SDKs. You can upload this certificate to {{site.data.keyword.blockchainfull_notm}} Platform if you want to operate a network from the SDK or command line.
+- **signCerts:** This folder contains your signing certificate, also known as your signCert or enrollment certificate. This certificate is attached to your calls to the network (a chaincode invoke, for example) when you reference your MSP directory from the command line or build a user context object with the SDKs. You can upload this certificate to {{site.data.keyword.blockchainfull_notm}} Platform if you want to operate a network from the SDK or command line.
 - **keystore:** This folder contains your private key. This key is used to sign calls to the network when you reference your MSP directory from the command line or build a user context object with the SDKs, but it is not attached to calls the way a signCert is. It is **crucial** that this key is kept safe. If it becomes compromised, it can be used to impersonate your identity.
 
 You can also build an MSP folder that the fabric-ca-client can reference by using the Network Monitor and the Swagger APIs.
@@ -752,7 +756,7 @@ Component logs can be viewed from the command line by using the [`kubectl CLI co
 ## Security
 {: #ca-operate-security}
 
-The CA may be kept offline if only a limited number of certs are issued, for example just peers, Node.js server, client applications, to ensure further security and prevent compromise of CA key materials. However, the CA should be online when on-demand issuance of certificates to users is required. It is strongly recommended that you secure your CA admin private key with [HSM](https://console.test.cloud.ibm.com/docs/services/blockchain/glossary.html#glossary-hsm) if possible.
+"If only a limited number of certs are issued (for example, certs of only peers, Node.js server, and client applications are issued), the CA might be kept offline to ensure further security and prevent compromise of CA key materials. However, the CA should be online when on-demand issuance of certificates to users is required. It is strongly recommended that you secure your CA admin private key with [HSM](/docs/services/blockchain/glossary.html#glossary-hsm) if possible.
 
 ## Troubleshooting
 {: #ca-operate-troubleshooting}
@@ -793,6 +797,8 @@ will fail and produce the following error:
 ```
 
 ### **Solution:**
+{: #ca-operate-enroll-error2-solution}
+
 You need to either encode the special character or surround the url with the single quotes. For example, `!` becomes `%21`, or the command looks like:
 
 ```

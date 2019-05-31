@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-20"
+lastupdated: "2019-05-16"
+
+keywords: IBM Blockchain Platform, remote peer, operate peers, AWS peer, AWS peers, necessary certificates, command line
 
 subcollection: blockchain
 
@@ -46,7 +48,7 @@ It is recommended that you use version 1.2 of the Node SDK.
 
 Before you use the SDK to operate the peer, you need to generate necessary certificates (enrollment) that will allow your application to communicate with your network on {{site.data.keyword.blockchainfull_notm}} Platform and your peer. Follow the steps to [enroll with the SDK](/docs/services/blockchain/v10_application.html#dev-app-enroll-sdk) using your **admin** identity. The [Developing Applications](/docs/services/blockchain/v10_application.html#dev-app) tutorial also enrolls as the **admin**, so you don't need to modify the sample code.
 
-### Uploading a signcert to the IBM Blockchain Platform
+### Uploading a signcert to the {{site.data.keyword.blockchainfull_notm}} Platform
 {: #remote-peer-aws-operate-upload-SDK}
 
 You need to upload your SDK signing cert to the network on {{site.data.keyword.blockchainfull_notm}} Platform so that other members can recognize your digital signature.
@@ -56,7 +58,7 @@ You need to upload your SDK signing cert to the network on {{site.data.keyword.b
 ### Uploading a signcert to the peer
 {: #remote-peer-aws-operate-upload-signcert}
 
-You also need to upload the SDK's signing cert into the remote peer and restart it. You need to install the same signing cert as the one that you [uploaded to the IBM Blockchain Platform](/docs/services/blockchain/howto/remote_peer_operate_aws.html#remote-peer-aws-operate-upload-SDK) inside the remote peer container.
+You also need to upload the SDK's signing cert into the remote peer and restart it. You need to install the same signing cert as the one that you [uploaded to the {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/howto/remote_peer_operate_aws.html#remote-peer-aws-operate-upload-SDK) inside the remote peer container.
 
 SSH into your VPC instance by selecting the instance in the AWS console (click **Services > EC2 > Instances**) and then clicking the Connect button. Follow the instructions from AWS for issuing the ssh command.
 
@@ -299,7 +301,7 @@ docker pull ibmblockchain/fabric-tools:1.2.1
 
 #### Gathering resources for the container    
 
-We need to setup some folders on your local machine to contain the `fabcar` sample which is used later when we install and instantiate chaincode. Run the following commands to setup the folder structure for the sample chaincode and then download it using Git.
+We need to set up some folders on your local machine to contain the `fabcar` sample which is used later when we install and instantiate chaincode. Run the following commands to set up the folder structure for the sample chaincode and then download it using Git.
 
 ```
 mkdir toolsrc
@@ -393,7 +395,7 @@ Before you can run the CLI commands to join the peer to a channel, your organiza
     ```
     {:codeblock}
 
-3. Fetch the genesis block of the channel to build the channel ledger on your peer. First `cd` to your root directory then run the command to fetch the genesis block.
+3. Fetch the genesis block of the channel to build the channel ledger on your peer. First `cd` to your root directory and then run the command to fetch the genesis block.
 
   ```
   cd /
@@ -441,7 +443,7 @@ Before you can run the CLI commands to join the peer to a channel, your organiza
 ### Using the Fabric tools container to install chaincode on the peer
 {: #aws-toolcontainer-install-cc}
 
-We are now ready to install and instantiate chaincode on the peer. For these instructions, we'll install the `fabcar` chaincode from the Hyperledger `fabric-samples` repository which you should have already downloaded to your local machine when you [setup your Fabric tools container](/docs/services/blockchain/howto/remote_peer_operate_aws.html#remote-peer-aws-operate-cli-operate).  
+We are now ready to install and instantiate chaincode on the peer. For these instructions, we'll install the `fabcar` chaincode from the Hyperledger `fabric-samples` repository which you should have already downloaded to your local machine when you [set up your Fabric tools container](/docs/services/blockchain/howto/remote_peer_operate_aws.html#remote-peer-aws-operate-cli-operate).  
 
 Run the following Peer CLI command to install the `fabcar` chaincode onto the peer.
 
@@ -483,7 +485,7 @@ When this command completes successfully, you should see something similar to:
 You can start, stop, or restart your peer in the environment where you deploy the peer. Whenever a certificate is added to the peer, the peer needs to be restarted in order for the new cert to be recognized. There are multiple ways to do this:
 
 - In the AWS console, reboot the peer VPC instance.
-- From inside your peer container run the following command:
+- From inside your peer container, run the following command:
 
  ```
  docker restart peer
@@ -508,7 +510,7 @@ Over time it is likely that you need to modify chaincode that is running on the 
 
 Complete the following steps to update your chaincode:
 
-1. To update the chaincode on each peer in AWS, simply rerun the process that you used to install the chaincode on the peers by using either a client application or a CLI command. Be sure to specify the same chaincode name as was originally used. However, this time increment the chaincode `Version` number.
+1. To update the chaincode on each peer in AWS, simply rerun the process that you used to install the chaincode on the peers by using either a client application or a CLI command. Be sure to specify the same chaincode name as was originally used. However, this time increments the chaincode `Version` number.
 
 2. After installing the new chaincode on all the peers in the channel, use the Network Monitor or the [peer chaincode upgrade ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/peerchaincode.html#peer-chaincode-upgrade) command to update the channel to use the new chaincode.
 
@@ -529,7 +531,7 @@ Stack creation completes successfully, but Docker logs contain the error:
 **Solution:**  
 This error can be caused by neglecting to specify a port on the CAUrl when the Quick Start template was deployed.
 The CAUrl should look similar to `https://<network>-org1-ca.stage.blockchain.ibm.com:31011`.
-Redeploy the Quick Start template, being careful to specify the proper value for the the CAUrl.
+Redeploy the Quick Start template, being careful to specify the proper value for the CAUrl.
 
 ### **Problem:** Instantiating chaincode fails with error
 {: #remote-peer-aws-operate-problem-2}
@@ -540,4 +542,4 @@ Error: Error endorsing chaincode: rpc error: code = Unknown desc = chaincode err
 ```
 
 **Solution:**   
-Ensure that the after the admin cert has be uploaded to the Network Monitor, that the certificates are then synchronized on the channel. Refer to step five of these [instructions](/docs/services/blockchain/howto/remote_peer_operate_aws.html#remote-peer-aws-operate-manage-certs) for more information. Be aware that it is important to sync the channel certificate before the peer joins the channel.
+Ensure that after the admin cert has been uploaded to the Network Monitor, that the certificates are then synchronized on the channel. Refer to step five of these [instructions](/docs/services/blockchain/howto/remote_peer_operate_aws.html#remote-peer-aws-operate-manage-certs) for more information. Be aware that it is important to sync the channel certificate before the peer joins the channel.

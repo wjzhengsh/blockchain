@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-20"
+lastupdated: "2019-05-16"
+
+keywords: IBM Blockchain Platform, remote peer, multi-cloud, private data, AWS Cloud
 
 subcollection: blockchain
 
@@ -54,7 +56,7 @@ To use an {{site.data.keyword.blockchainfull_notm}} Platform for AWS peer, you m
 ## Deploying an AWS peer
 {: #remote-peer-aws-about-deploy}
 
-Use the AWS [Quick Start template ![External link icon](../images/external_link.svg "External link icon")](https://aws.amazon.com/quickstart/architecture/ibm-blockchain-platform/ "Quick Start Template") to easily deploy {{site.data.keyword.blockchainfull_notm}} Platform for AWS. For more information, see the [{{site.data.keyword.blockchainfull_notm}} Platform for AWS Quick Start Deployment Guide ![External link icon](../images/external_link.svg "External link icon")](https://s3.amazonaws.com/aws-quickstart/quickstart-ibm-fabric/doc/ibm-blockchain-platform-for-aws.pdf "IBM Blockchain Platform for AWS Quick Start Reference Deployment").
+Use the AWS [Quick Start template ![External link icon](../images/external_link.svg "External link icon")](https://aws.amazon.com/quickstart/architecture/ibm-blockchain-platform/ "Quick Start Template") to easily deploy {{site.data.keyword.blockchainfull_notm}} Platform for AWS. For more information, see the [{{site.data.keyword.blockchainfull_notm}} Platform for AWS Quick Start Deployment Guide ![External link icon](../images/external_link.svg "External link icon")](https://s3.amazonaws.com/aws-quickstart/quickstart-ibm-fabric/doc/ibm-blockchain-platform-for-aws.pdf "{{site.data.keyword.blockchainfull_notm}} Platform for AWS Quick Start Reference Deployment").
 
 For instructions on how to deploy {{site.data.keyword.blockchainfull_notm}} Platform for AWS, see [Deploying peers in Amazon Web Services](/docs/services/blockchain/howto/remote_peer_aws.html#remote-peer-aws).
 
@@ -111,8 +113,8 @@ To solve this problem **channels** can be used to segregate data to a subset of 
 
 **Note:** Orderers are always located in the data center region that you selected to host the network. It is not possible to have multiple orderers across country borders. However, peers can be located either in the data center or at a remote location outside {{site.data.keyword.cloud_notm}}.
 
-![Data residency when peers are outside the country of the IBM Blockchain Platform region ](../images/remote_peer_data_res_2.png "Data Residency peers reside outside the country of the IBM Blockchain Platform region")  
-*Figure 4. Data Residency peers reside outside the country of the IBM Blockchain Platform region*
+![Data residency when peers are outside the country of the {{site.data.keyword.blockchainfull_notm}} Platform region ](../images/remote_peer_data_res_2.png "Data Residency peers reside outside the country of the {{site.data.keyword.blockchainfull_notm}} Platform region")  
+*Figure 4. Data Residency peers reside outside the country of the {{site.data.keyword.blockchainfull_notm}} Platform region*
 
 In **Figure 4**, Data residency is not required for `OrgC` and `OrgD`. In fact, `OrgD` now includes two peers, `OrgD-peer1` and `OrgD-peer2`, which reside in the *United States*. Therefore, in order for  `OrgA`, `OrgB` and their respective client applications and peers that reside in Germany to isolate the ledger data on channel `X`, a new channel `Y` is created for `OrgC` and `OrgD`.
 
@@ -129,7 +131,7 @@ You can get more information about these technologies in the white paper about [
 ## Getting support
 {: #remote-peer-aws-about-support}
 
-IBM Blockchain Platform does not provide support for this offering. If you encounter issues that are related to your peer, you can make use of free blockchain developer resources and support forums and get help from {{site.data.keyword.IBM_notm}} and the Fabric community. For more information, see [blockchain resources and support forums](/docs/services/blockchain/ibmblockchain_support.html#blockchain-support-resources). You can also view the support resources on the **Get Help** screen of the Network Monitor.
+{{site.data.keyword.blockchainfull_notm}} Platform does not provide support for this offering. If you encounter issues that are related to your peer, you can make use of free blockchain developer resources and support forums and get help from {{site.data.keyword.IBM_notm}} and the Fabric community. For more information, see [blockchain resources and support forums](/docs/services/blockchain/ibmblockchain_support.html#blockchain-support-resources). You can also view the support resources on the **Get Help** screen of the Network Monitor.
 
 - For issues that are related to AWS, you can use both [community support forums ![External link icon](../images/external_link.svg "External link icon")](https://forums.aws.amazon.com/index.jspa "AWS community support forums") and [AWS premium support ![External link icon](../images/external_link.svg "External link icon")](https://aws.amazon.com/premiumsupport/ "AWS premium support").
 

@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-05-09"
+lastupdated: "2019-05-16"
+
+keywords: vs code extension, Visual Studio Code extension, smart contract, development tools
 
 subcollection: blockchain
 
@@ -25,17 +27,17 @@ The {{site.data.keyword.blockchainfull}} Platform Visual Studio (VS) Code extens
 
 
 ![Typical smart contract development workflow](images/SmartContractflow.png "Typical smart contract development workflow")
-*Figure 1. Typical smart contract development workflow with IBM Blockchain Platform VS Code extension*  
+*Figure 1. Typical smart contract development workflow with {{site.data.keyword.blockchainfull_notm}} Platform VS Code extension*  
 
 <!--
 <img usemap="#home_map1" border="0" class="image" id="image_ztx_crb_f1b2" src="images/SmartContractflow.png" width="750" alt="Click a box to get more details on the process." style="width:750px;" />
 <map name="home_map1" id="home_map1">
-<area href="/docs/services/blockchain/howto/develop-vscode.html#develop-vscode-creating-a-project" alt="Create a Smart contract project" title="Create a Smart contract project" shape="rect" coords="157.05, 52.53, 283.62, 127.11" />
-<area href="/docs/services/blockchain/howto/develop-vscode.html#develop-vscode-creating-a-project" alt="Develop contract code in VS Code" title="Create key pair" shape="rect" coords="300.97, 52.53, 427.54, 127.11" />
-<area href="/docs/services/blockchain/howto/develop-vscode.html#packaging-a-smart-contract" alt="Package the smart contract" title="Package the smart contract" shape="rect" coords="157.05, 131.8, 283.62, 206.37" />
-<area href="/docs/services/blockchain/howto/develop-vscode.html#develop-vscode-deploy" alt="Deploy locally to debug" title="Deploy locally to debug" shape="rect" coords="300.97, 131.8, 427.54, 206.37" />
-<area href="/docs/services/blockchain/howto/develop-vscode.html#develop-vscode-exporting-deleting-smart-contract-package" alt="Export the package" title="Export the package" shape="rect" coords="443.95, 131.8, 570.53, 206.37" />
-<area href="/docs/services/blockchain/howto/develop-vscode.html#develop-vscode-connecting-ibp" alt="Deploy to IBM Cloud" title="Deploy to IBM Cloud" shape="rect" coords="585.53, 131.8, 712.1, 206.37" />
+<area href="/docs/services/blockchain/vscode-extension.html#develop-vscode-creating-a-project" alt="Create a smart contract project" title="Create a Smart contract project" shape="rect" coords="157.05, 52.53, 283.62, 127.11" />
+<area href="/docs/services/blockchain/vscode-extension.html#develop-vscode-creating-a-project" alt="Develop contract code in VS Code" title="Create key pair" shape="rect" coords="300.97, 52.53, 427.54, 127.11" />
+<area href="/docs/services/blockchain/vscode-extension.html#packaging-a-smart-contract" alt="Package the smart contract" title="Package the smart contract" shape="rect" coords="157.05, 131.8, 283.62, 206.37" />
+<area href="/docs/services/blockchain/vscode-extension.html#develop-vscode-deploy" alt="Deploy locally to debug" title="Deploy locally to debug" shape="rect" coords="300.97, 131.8, 427.54, 206.37" />
+<area href="/docs/services/blockchain/vscode-extension.html#develop-vscode-exporting-deleting-smart-contract-package" alt="Export the package" title="Export the package" shape="rect" coords="443.95, 131.8, 570.53, 206.37" />
+<area href="/docs/services/blockchain/vscode-extension.html#develop-vscode-connecting-ibp" alt="Deploy to IBM Cloud" title="Deploy to IBM Cloud" shape="rect" coords="585.53, 131.8, 712.1, 206.37" />
 -->
 
 The {{site.data.keyword.blockchainfull_notm}} Platform extension works seamlessly with any instance of the {{site.data.keyword.blockchainfull_notm}} Platform that uses Hyperledger Fabric versions 1.4 and later.
@@ -52,7 +54,7 @@ Before you install the {{site.data.keyword.blockchainfull_notm}} Platform VS Cod
 - **Install Visual Studio Code**  
   Install the [Visual Studio](https://code.visualstudio.com/) code editor.  
 - **Install Yeoman**  
-  Yeoman is a generator tool that you can used to create skeleton smart contract projects. Install Yeoman by using the following command: `npm install -g yo`.  
+  Yeoman is a generator tool that you can use to create skeleton smart contract projects. Install Yeoman by using the following command: `npm install -g yo`.  
 - **Install Docker**  
   To run the preconfigured instance of Hyperledger Fabric, ensure you have installed [Docker ![External link icon](images/external_link.svg "External link icon")](https://www.docker.com/).  
 - **Operating system requirements**  
@@ -77,7 +79,7 @@ The extension also adds new commands to the Visual Studio Code command palette. 
 You can use the extension to create a new smart contract project in Visual Studio Code. The extension creates a basic smart contract that manages an example asset in the language of your choice. You can use the structure of example as a starting point for developing your own business logic. The extension provides all the dependencies that are required to deploy your smart contract to an instance of Hyperledger Fabric.
 
 1. Open the **{{site.data.keyword.blockchainfull_notm}}** tab. Click the overflow menu in the smart contract packages pane and click **Create Smart Contract Project**.
-2. Select the language that you want to create a smart contract in. The current options are JavaScript, TypeScript, Go, and Java.
+2. Select the language that you want to create a smart contract in. The current options are JavaScript, TypeScript, Go, and Java. **Note:** The {{site.data.keyword.blockchainfull_notm}} Platform does not support Java chaincode.
 3. Select an asset to be managed by the example contract. For example, ***bond***.
 4. Create a folder with the name of your project and open it.
 5. Select how to open your new project. The project folder should now open.
@@ -118,7 +120,7 @@ You can also click **Delete Package** to remove the smart contract package from 
 
 You can use the VS Code to deploy your smart contract to a preconfigured Hyperledger Fabric network that the extension creates on your local machine. This allows you to install, instantiate, and test your smart contract before you deploy it to a live network.
 
-### Deploying the preconfigured network
+### Deploying the preconfigured Hyperledger Fabric network
 {: #develop-vscode-connecting-and-disconnecting}
 
 Use the following steps to deploy the preconfigured network:
@@ -130,7 +132,7 @@ Use the following steps to deploy the preconfigured network:
 
 The VS Code extension creates a basic Fabric network that includes one orderer, one peer, and one certificate authority. The peer is joined to a channel named `mychannel`. You can find the list of nodes, organizations, and channels that belong to the network in the **Local Fabric Ops** pane. Above these nodes, you can find the list of smart contracts that have been installed and instantiated.
 
-### Stopping, restarting, and removing the preconfigured Hyperledger Fabric network
+### Stopping, restarting, and removing the preconfigured network
 {: #develop-vscode-stop-Fabric-runtime}
 
 You can stop or restart the preconfigured network after it has been created:
@@ -140,8 +142,8 @@ You can stop or restart the preconfigured network after it has been created:
 
 The connection details are saved to a directory called **local_fabric** that is contained in your current project directory. You can also select **Teardown Fabric Runtime** to completely remove the local Fabric network. **Note:** This removal will result in the loss of the ledger and world state data.
 
-### Deploying your smart contract the preconfigured network
-{: #develop-vscode-deploy}
+### Deploying your smart contract to the preconfigured network
+{: #develop-vscode-deploy-smart-contract}
 
 You can deploy any packages in the **Smart Contract Packages** pane to a running preconfigured network.
 
@@ -195,7 +197,7 @@ You can then use the Fabric SDKs and the connection profile to enroll your admin
 
 You can run the preconfigured network in **Development Mode** to iteratively develop and debug your smart contracts locally, without having to repackage and upgrade the smart contract after every change. Debugging a smart contract allows you to run through the smart contract transactions with breakpoints and output, ensuring the transactions work as intended.
 
-Use the following steps to to enable development mode on the preconfigured network:
+Use the following steps to enable development mode on the preconfigured network:
 
 1. After the network has started, from the **Local Fabric Ops** pane expand the **Nodes** section.
 2. Right-click the peer and select **Toggle Development Mode**.
@@ -226,7 +228,7 @@ You can generate tests for smart contracts that are instantiated on the networks
 After the test file is built, the tests can be run by clicking the **Run Tests** button in the file.
 
 
-## Step seven: Connect to your IBM Blockchain Platform network
+## Step seven: Connect to your {{site.data.keyword.blockchainfull_notm}} Platform network
 {: #develop-vscode-connecting-ibp}
 
 You can also use the extension to connect to the {{site.data.keyword.blockchainfull_notm}} Platform and invoke any smart contracts that are installed and instantiated by using the {{site.data.keyword.blockchainfull_notm}} Platform console UI.

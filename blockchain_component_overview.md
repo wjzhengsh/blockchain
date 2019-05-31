@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-04-23"
+lastupdated: "2019-05-16"
 
 keywords: blockchain components, ca, certificate authorities, peer, ordering service, orderer, channel, smart contract, applications
 
@@ -41,12 +41,14 @@ The underpinning of a blockchain network based on Fabric is identities and permi
 
 {{site.data.keyword.blockchainfull_notm}} Platform CAs are based on the [Hyperledger Fabric-CA ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/ "Hyperledger Fabric CA"), though it is possible to use another CA as long as it uses a PKI based on x.509 certificates. There can be, and usually should be, multiple levels of CAs. The "root CA" for a network will not usually be exposed except to provide certificates to "intermediate CAs", which will either issue certificates to users and components directly, or to more layers of intermediate CAs. For more details about how certificate authorities are used to establish identity and membership, see [Hyperledger Fabric documentation on identity ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/identity/identity.html) and on [membership ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/membership/membership.html)
 
-## Orderers
+## Ordering services
 {: #blockchain-component-overview-orderer}
 
 While the ordering service is often referred to as the "heart" of a network, its function is actually quite simple: to order transactions that have been validated by the peers into blocks and send them back out to the peers to be written to their ledgers. In the early versions of Fabric, this functionality was bundled inside the peer, but starting with Fabric v1.0, it was separated into a separate component to increase peer performance and avoid aberrations that could result in potential state forks.
 
-At a physical level, this ordering function usually requires a set of orderers that are collectively known as the "ordering service", though in test or POC environments it is possible to use a single node (known as a SOLO orderer).
+At a physical level, this ordering function usually requires a set of orderers that are collectively known as the "ordering service".
+
+For more information about the ordering service, see [The Ordering Service ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/orderer/ordering_service.html).
 
 ## Peers
 {: #blockchain-component-overview-peer}
@@ -74,9 +76,7 @@ Where contracts in the business world are signed and filed with law firms, smart
 
 Client applications in a Fabric-based network like {{site.data.keyword.blockchainfull_notm}} Platform leverage underlying infrastructures such as APIs, SDKs, and smart contracts to allow client interactions (invokes and queries) at a higher level of abstraction.
 
-For a look at how applications interact with a network based on Fabric, check out the [documentation on writing your first application ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/write_first_app.html "Writing Your First Application").  Also, be aware that area is undergoing substantial improvements in Fabric v1.4, that are available in {{site.data.keyword.blockchainfull_notm}} Platform 2.0. See the Hyperledger Fabric topic on [Developing Applications ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/developapps/developing_applications.html "Developing Applications") for more information.  While these direct capabilities, such as the Contract class, are not compatible with Fabric v1.2, which is the current version of Starter Plan, it contains conceptual information and other useful tips that are worth factoring into your application design and prepare you for the future.
-
-For a look at how an application interacts with a network based on Fabric, check out the documentation on [creating applications](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app).
+For a look at how applications interact with a network based on Fabric, check out the [Developing Applications ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/developapps/developing_applications.html "Developing Applications") topic in the Hyperledger Fabric documentation. You can also visit the [creating applications](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app) topic to learn how to connect your applications to {{site.data.keyword.blockchainfull_notm}} Platform.
 
 ## An example network
 {: #blockchain-component-overview-example-network}

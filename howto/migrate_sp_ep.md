@@ -1,8 +1,10 @@
 ---
 
 copyright:
-  years: 2018,2019
-lastupdated: "2019-04-17"
+  years: 2018, 2019
+lastupdated: "2019-05-16"
+
+keywords: Starter Plan network, Starter Plan, Enterprise Plan network, Enterprise Plan, migration
 
 subcollection: blockchain
 
@@ -66,7 +68,7 @@ You need to create an Enterprise Plan network before you migrate. For more infor
 
 You might recreate the configuration of organizations (members), channels, and peers of your Starter Plan network in your Enterprise Plan network. You can use the Network Monitor UI to recreate these network resources by inviting the appropriate organizations (note that you won't be able to **switch** organizations as you can in Starter), create channels, and create peers (again, invited organizations will have to create their own peers).
 
-1. Login to your Enterprise Plan network on {{site.data.keyword.cloud_notm}} and enter the Network Monitor.
+1. Log in to your Enterprise Plan network on {{site.data.keyword.cloud_notm}} and enter the Network Monitor.
 2. Recreate organizations (members) on the "Members" screen, recreate channels on the "Channels" screen, and recreate peers on the "Overview" screen. For more information about creating network resources, see [Using the Network Monitor](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-overview).
 3. Configure channels by adding members and setting channel policies the same way as in your Starter Plan network.
 
@@ -75,8 +77,7 @@ You might recreate the configuration of organizations (members), channels, and p
 ### Migrate chaincode
 {: #migrate_starter_to_enterprise_cc}
 
-Chaincode is developed externally in your local environment and is invoked by your client applications. To install and instantiate chaincode, which was tested in your Starter Plan network, onto selected peers on your Enterprise Plan network, follow the instructions in [Installing, instantiating, and updating a chaincode](/docs/services/blockchain
-/howto/install_instantiate_chaincode.html#install-instantiate-chaincode-install-cc).
+Chaincode is developed externally in your local environment and is invoked by your client applications. To install and instantiate chaincode, which was tested in your Starter Plan network, onto selected peers on your Enterprise Plan network, follow the instructions in [Installing, instantiating, and updating a chaincode](/docs/services/blockchain/howto/install_instantiate_chaincode.html#install-instantiate-chaincode-install-cc "Installing, instantiating, and updating a chaincode").
 
 ### Update client applications
 {: #migrate_starter_to_enterprise_app}

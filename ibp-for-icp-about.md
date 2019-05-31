@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-04-23"
+lastupdated: "2019-05-16"
+
+keywords: IBM Blockchain Platform, IBM Cloud Private, system requirements, Kubernetes Helm chart, behind a firewall
 
 subcollection: blockchain
 
@@ -26,7 +28,7 @@ subcollection: blockchain
 {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private is upgraded to Hyperledger Fabric v1.4.0 on April 23, 2019. However, gossip and private data will not be supported so far.
 {:note}
 
-{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private delivers the components that you need to run a blockchain network on your own infrastructure through {{site.data.keyword.cloud_notm}} Private. The components include Hyperledger Fabric a Certificate Authority (CA), an orderer, and a peer, which you deploy, manage, and set up by using Kubernetes Helm charts. **This offering is intended for customers with advanced Hyperledger Fabric experience.**
+{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private delivers the components that you need to run a blockchain network on your own infrastructure through {{site.data.keyword.cloud_notm}} Private. The components include Hyperledger Fabric Certificate Authority (CA), an orderer, and a peer, which you deploy, manage, and set up by using Kubernetes Helm charts. **This offering is intended for customers with advanced Hyperledger Fabric experience.**
 
 {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private enables blockchain networks to be deployed on a private cloud to address data residency requirements, market regulations, and infrastructure preference. It simplifies the deployment of essential elements of a blockchain network in your own infrastructure through {{site.data.keyword.cloud_notm}} Private, a Kubernetes-based application platform for developing and managing on-premises, containerized applications.
 

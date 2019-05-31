@@ -1,8 +1,10 @@
 ---
 
 copyright:
-  years: 2018,2019
-lastupdated: "2019-03-05"
+  years: 2018, 2019
+lastupdated: "2019-05-16"
+
+keywords: IBM Cloud accounts, IBM Blockchain Platform, pay your own fees, pay for others
 
 subcollection: blockchain
 
@@ -28,7 +30,7 @@ Note that when several organizations build a consortium, it is recommended that 
 ## Prerequisites
 {: #paying-mode-prereq}
 
-Every network member must have a paid {{site.data.keyword.cloud_notm}} account, for example, a **Pay-As-You-Go** account, so that they can create {{site.data.keyword.blockchainfull_notm}} Platform service instances on {{site.data.keyword.cloud_notm}}. If you don't have an account, [register](https://cloud.ibm.com/registration/) one and upgrade it to a paid account. To upgrade your account to a Pay-As-You-Go type, go to **Manage** > **Billing and Usage** > **Billing** in the {{site.data.keyword.cloud_notm}} console, and click **Add Credit Card**.
+Every network member must have a paid {{site.data.keyword.cloud_notm}} account, for example, a **Pay-As-You-Go** account, so that they can create {{site.data.keyword.blockchainfull_notm}} Platform service instances on {{site.data.keyword.cloud_notm}}. If you don't have an account, [register](https://cloud.ibm.com/registration) one and upgrade it to a paid account. To upgrade your account to a Pay-As-You-Go type, go to **Manage** > **Billing and Usage** > **Billing** in the {{site.data.keyword.cloud_notm}} console, and click **Add Credit Card**.
 
 
 ## Paying your own fees
@@ -63,12 +65,12 @@ One member in the network can cover the fees for one or more other network membe
 3. The payer creates a blockchain network {{site.data.keyword.blockchainfull_notm}} Platform and invites other members to the blockchain network in the Network Monitor of the network. For more information about inviting network members, see [Members](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-members).
 4. Each member then receives a notification email that contains an invitation to join the network. The member can complete the following steps to join the network.
    1. Click the "Proceed" button in the notification email, which takes you to the blockchain service page in {{site.data.keyword.cloud_notm}}.
-   2. Log in to {{site.data.keyword.cloud_notm}} and ensure that you use correct {{site.data.keyword.cloud_notm}} organization and space, which the payer add you to.
+   2. Log in to {{site.data.keyword.cloud_notm}} and ensure that you use correct {{site.data.keyword.cloud_notm}} organization and space, which the payer adds you to.
       1. In the {{site.data.keyword.cloud_notm}} console, click the profile avatar in the upper right corner.
       2. Choose the payer's account from the **Account** drop-down list.  Note that the account and organization where you provision the blockchain service instance will be the one that gets charged.  
    3. In the {{site.data.keyword.cloud_notm}} catalog, search for **Blockchain** and create a service instance.
       1. In the **Service Name** field, type in a descriptive name for your future recognition.
-      2. Verify that the organization and space are the ones that the payer add you to.
+      2. Verify that the organization and space are the ones that the payer adds you to.
       3. Select the membership plan with which to create your network instance. Your membership plan must be the same as the one that the payer create the network with.
       4. Click **Create**.
    4. After you create the blockchain service instance, follow the wizard to join the network.  For more information, see [Joining a network](/docs/services/blockchain/get_start.html#getting-started-with-enterprise-plan-join-nw).
@@ -99,7 +101,7 @@ An alternative of adding other members' accounts to the payer's account, other m
 ### Known limitation
 {: #paying-mode-let-other-pay-limitation}
 
-After adding the payer's {{site.data.keyword.cloud_notm}} account as billing manager to other members account and other members purchase any other services by using their account, the payer need to cover those fees too. All members might sign an agreement with trust that they will not create any unauthorized services in their accounts to cause extra cost to the payer's account.  
+After adding the payer's {{site.data.keyword.cloud_notm}} account as billing manager to other members account and other members purchase any other services by using their account, the payer needs to cover those fees too. All members might sign an agreement with trust that they will not create any unauthorized services in their accounts to cause extra cost to the payer's account.  
 
 
 ## Transferring billings to other members

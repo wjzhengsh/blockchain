@@ -2,7 +2,9 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-04-23"
+lastupdated: "2019-05-16"
+
+keywords: IBM Blockchain Platform console, administer a console, add users, remove users, modify a user's role, install patches, Kubernetes cluster expiration
 
 subcollection: blockchain
 
@@ -29,29 +31,27 @@ There are various actions that you can take to manage your console behavior. Thi
 ## Add and remove users from the console
 {: #ibp-console-manage-console-add-remove}
 
-The console authorization process is changing during the beta program. If you have an existing blockchain service instance that used the original {{site.data.keyword.IBM_notm}} ID authentication, you are no longer able to see your users listed in the **Users** tab. You must grant them access to the console by using the IAM process described below.
-{:important}
-
-Every user that accesses the console must be assigned an access policy with an {{site.data.keyword.cloud_notm}} Identity and Access Management (IAM) user role defined. The policy determines what actions the user can perform within the console. The {{site.data.keyword.blockchainfull}} Platform console is provisioned with the email address of the {{site.data.keyword.cloud_notm}} owner as the console administrator.  By default, this {{site.data.keyword.cloud_notm}} user is given the `Manager` role for the Blockchain Platform 2.0 service in IAM. The console administrator can then grant other users access to the console by using the IAM UI. For more information about IAM，see [What is IAM ![External link icon](../images/external_link.svg "External link icon") ](/docs/iam?topic=iam-iamoverview#iamoverview "What is IAM?").  
+Every user that accesses the console must be assigned an access policy with an {{site.data.keyword.cloud_notm}} Identity and Access Management (IAM) user role defined. The policy determines what actions the user can perform within the console. The {{site.data.keyword.blockchainfull}} Platform console is provisioned with the email address of the {{site.data.keyword.cloud_notm}} owner as the console administrator.  By default, this {{site.data.keyword.cloud_notm}} user is given the **Manager** role for the {{site.data.keyword.blockchainfull}} Platform 2.0 service in IAM. The console administrator can then grant other users access to the console by using the IAM UI. For more information about IAM，see [What is IAM ![External link icon](../images/external_link.svg "External link icon") ](/docs/iam?topic=iam-iamoverview#iamoverview "What is IAM?").  
 
 When you [use IAM to invite users ![External link icon](../images/external_link.svg "External link icon")](/docs/iam?topic=iam-iamuserinv#iamuserinv "Use IAM to invite users"), you need to complete the following steps to configure their roles and access to the console:
  1. From the menu bar, click  **Manage** > **Access (IAM)** and then select **Users**.
  2. Click **Invite User**.
  3. Type in the email address of the user or users.
- 4. From the `Services` drop-down list, select `Blockchain Platform 2.0`.
- 5. Scroll down to `Select roles`.
- 6. Under `Assign service access roles`, choose a role for the user, which can be `Manager`, `Writer`, and `Reader`.
+ 4. From the **Services** drop-down list, select **Blockchain Platform 2.0**.
+ 5. Scroll down to **Select roles**.
+ 6. Under **Assign service access roles**, choose a role for the user, which can be **Manager**, **Writer**, and **Reader**.
  7. Click **Invite users**.
 
 | Role | Capabilities |
 |--------|----------|
-| Manager | As a Manager, you have permissions beyond the Writer role. You can do everything a Reader and Writer can do as well as: <ul><li>Add new components.</li><li>Delete provisioned components.</li><li>Change console logging levels.</li></ul> |
-| Writer | As a Writer, you have permissions beyond the Reader role, including: <ul><li>Import components.</li><li>Remove imported components.</li><li>Register users on a CA.</li></ul>  |
-| Reader | As a reader, you can perform read-only actions including: <ul><li>View console UI.</li><li>View console log.</li><li>Export components.</li></ul> | |
+| Manager | As a Manager, you have permissions beyond the Writer role. You can do everything a Reader and Writer can do as well as: <ul><li>Provision new components by using the console or APIs.</li><li>Delete provisioned components by using the console or APIs.</li><li>Change console logging levels by using the console or APIs.</li><li>Restart the console by using an API.</li></ul> |
+| Writer | As a Writer, you have permissions beyond the Reader role, including: <ul><li>Import components by using the console or APIs.</li><li>Remove imported components by using the console or APIs.</li><li>Register users on a CA.</li><li> Add or remove notifications by using the console or APIs.</li></ul>  |
+| Reader | As a reader, you can perform read-only actions including: <ul><li>View console UI.</li><li>View console log.</li><li>Export components.</li><li>Issue any GET API.</li></ul> | |
 
- Permissions are cumulative. If you select a `Manager` role, the user will also be able to perform all `Writer` and `Reader` actions, you are not required to additionally check those roles.   Likewise, a user with the `Writer` role will be able to perform all of the actions in the `Reader` role.  For console access, you only need to select a role under the `Service Access Roles`, you do not need to select anything under the `Platform Access Roles`.
+ Permissions are cumulative. If you select a **Manager** role, the user will also be able to perform all **Writer** and **Reader** actions, you are not required to additionally check those roles.   Likewise, a user with the `Writer` role will be able to perform all of the actions in the **Reader** role. For console access, you need to only select a role under the **Service Access Roles**, you do not need to select anything under the **Platform Access Roles**. Check the corresponding role under **Assign platform access role** when it is important that the service instance is visible in the invited user's {{site.data.keyword.cloud_notm}} dashboard.
 
 ![Update Kubernetes version](../images/AddICPUser.gif)
+
 
 After you add new users to the console, the users might not be able to view all the nodes, channels, or chaincode, which other users deploy. To work with these components, each user needs to import the associated identities into their own console wallet. For more information, see [Storing identities in your console wallet](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-wallet).
 {:important}
@@ -60,9 +60,9 @@ If you need to modify a user's role:
  1. From the menu bar, click  **Manage** > **Access (IAM)** and then select **Users**.
  2. Click the Actions menu next to the user you want to modify and select **Assign access**.
  3. Select the tile **Assign access to resources**.
- 4. From the `Services` drop-down list, select `Blockchain Platform 2.0`.
- 5. Scroll down to `Select roles`.
- 6. Under `Assign service access roles`, choose a role for the user, which can be `Manager`, `Writer`, and `Reader`.
+ 4. From the **Services** drop-down list, select **Blockchain Platform 2.0**.
+ 5. Scroll down to **Select roles**.
+ 6. Under **Assign service access roles**, choose a role for the user, which can be **Manager**, **Writer**, and **Reader**.
  7. Click **Assign**.
 
 When you need to remove a user's access to the console, follow instructions in the [IAM Removing users topic ![External link icon](../images/external_link.svg "External link icon")](/docs/iam?topic=iam-remove#remove "Removing users").
@@ -74,9 +74,9 @@ When you set {{site.data.keyword.cloud_notm}} IAM policies, you can assign roles
 
 <dl>
 <dt>Individual users</dt>
-<dd>You might have a specific user that needs more or less permissions than the rest of your team. You can customize permissions on an individual basis so that each person has the permissions that they need to complete their tasks. You can assign more than one {{site.data.keyword.Bluemix_notm}} IAM role to each user.</dd>
+<dd>You might have a specific user that needs more or less permissions than the rest of your team. You can customize permissions on an individual basis so that each person has the permissions that they need to complete their tasks. You can assign more than one {{site.data.keyword.cloud_notm}} IAM role to each user.</dd>
 <dt>Multiple users in an access group</dt>
-<dd>You can create a group of users and then assign permissions to that group. For example, you can group all team leaders and assign administrator access to the group. Then, you can group all developers and assign only write access to that group. You can assign more than one {{site.data.keyword.Bluemix_notm}} IAM role to each access group. When you assign permissions to a group, any user that is added or removed from that group is affected. If you add a user to the group, then they also have the additional access. If they are removed, their access is revoked.</dd>
+<dd>You can create a group of users and then assign permissions to that group. For example, you can group all team leaders and assign administrator access to the group. Then, you can group all developers and assign only write access to that group. You can assign more than one {{site.data.keyword.cloud_notm}} IAM role to each access group. When you assign permissions to a group, any user that is added or removed from that group is affected. If you add a user to the group, then they also have the additional access. If they are removed, their access is revoked.</dd>
 </dl>
 
 The users that you add in IAM are simply email addresses of users who can log in to the console. They have no relationship to the **Available Organizations** in the Organizations tab or the identities stored by the console wallet.
@@ -96,7 +96,7 @@ When you use the {{site.data.keyword.blockchainfull_notm}} Platform console, you
 ### Viewing your console logs
 {: #ibp-console-manage-console-logs}
 
-You can easily access the console logs if you need to debug problems that you encounter when you use the console or operate your nodes. You can also sett the logging level to increase or decrease the amount of logs that the console collects. The console logs are collected separately from the [node logs](/docs/services/blockchain/howto/ibp-console-manage.html#ibp-console-manage-console-node-logs), which are collected by the {{site.data.keyword.cloud_notm}} Kubernetes Service.
+You can easily access the console logs if you need to debug problems that you encounter when you use the console or operate your nodes. You can also set the logging level to increase or decrease the amount of logs that the console collects. The console logs are collected separately from the [node logs](/docs/services/blockchain/howto/ibp-console-manage.html#ibp-console-manage-console-node-logs), which are collected by the {{site.data.keyword.cloud_notm}} Kubernetes Service.
 
 Navigate to the **Settings** tab in the console browser to change the logging settings. The console logs are collected from two separate sources:
 
@@ -118,7 +118,7 @@ The logs of your peers, orderers, and Certificate Authorities are collected by t
 4. On the left navigation, click **Pods** to view the list of node pods that you have deployed.
 5. Click on a pod. Then click **View logs** on the top menu to open the logs of your node. Above the logs, you can use the drop-down menu after **Logs from** to view the logs from the different containers within the pod. For example, your peer and the state database (CouchDB for example) run in different containers and generate different logs.
 
-By default, the logs of your nodes are collected locally within your cluster. You can also use the {{site.data.keyword.cloud_notm}} Log Analysis service or a third-party service to collect, store, and analyze the logs from your network. For more information, see [Logging and monitoring for the {{site.data.keyword.IBM_notm}} Kubernetes Service ![External link icon](../images/external_link.svg "External link icon")](https://console.cloud.ibm.com/docs/containers?topic=containers-health#health "Logging and Monitoring for the {{site.data.keyword.IBM_notm}} Kubernetes Service"). It is recommended that you take advantage of the [{{site.data.keyword.cloud_notm}} LogDNA ![External link icon](../images/external_link.svg "External link icon")](https://cloud.ibm.com/docs/services/Log-Analysis-with-LogDNA?topic=LogDNA-kube#kube "Managing Kubernetes cluster logs with IBM Log Analysis with LogDNA") service that allows you to easily parse the logs in real time.
+By default, the logs of your nodes are collected locally within your cluster. You can also use the {{site.data.keyword.cloud_notm}} Log Analysis service or a third-party service to collect, store, and analyze the logs from your network. For more information, see [Logging and monitoring for the {{site.data.keyword.IBM_notm}} Kubernetes Service ![External link icon](../images/external_link.svg "External link icon")](https://cloud.ibm.com/docs/containers?topic=containers-health#health "Logging and Monitoring for the {{site.data.keyword.IBM_notm}} Kubernetes Service"). It is recommended that you take advantage of the [{{site.data.keyword.cloud_notm}} LogDNA ![External link icon](../images/external_link.svg "External link icon")](https://cloud.ibm.com/docs/services/Log-Analysis-with-LogDNA?topic=LogDNA-kube#kube "Managing Kubernetes cluster logs with IBM Log Analysis with LogDNA") service that allows you to easily parse the logs in real time.
 
 ### Viewing your smart contract container logs
 {: #ibp-console-manage-console-container-logs}
@@ -129,7 +129,17 @@ If you encounter issues with your smart contract, you can view the smart contrac
 - Click the `exec` link from your dashboard to exec into the pod. By default it points to peer container.
 - Switch to the `dind` container by selecting it from the drop-down list.
 - Run the command `docker ps -a` to see the list of chaincode containers.
-- Run `docker logs <chaincode-container-ID>` replacing <chaincode-container-ID> with the ID of your chaincode container.
+- Run `docker logs <chaincode-container-ID>` by replacing `<chaincode-container-ID>` with the ID of your chaincode container.
+
+## Install patches for your nodes
+{: #ibp-console-manage-patch}
+
+The underlying IBM Hyperledger Fabric docker images for the peer, CA, and orderer nodes might need to be updated over time, for example, with security updates or to a new Fabric point release. The **Patch available** text on a node tile is the indicator that such a patch is available and can be installed on the node whenever you are ready. These patches are optional, but recommended.   
+
+Patches are applied to nodes one at a time. While the patch is being applied, the node is unavailable to process requests or transactions. Therefore, to avoid any disruption of service, whenever possible you should ensure another node of the same type is available to process requests. Installing patches on a node takes about a minute to complete and when the update is complete, the node is ready to process requests.
+{:note}
+
+To apply a patch to a node, open the node tile and click the **Install patch** button.
 
 ## Kubernetes cluster expiration
 {: #ibp-console-manage-console-cluster-expiration}

@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-04-23"
+lastupdated: "2019-05-16"
+
+keywords: root CA, network components, ICP deployment guide, getting started tutorial, IBM Cloud Private
 
 subcollection: blockchain
 
@@ -31,6 +33,7 @@ The process for deploying {{site.data.keyword.blockchainfull_notm}} Platform for
 {:important}
 
 ## Step one: Decide on your network configuration
+{: #get-started-icp-step-one-decide-network-config}
 
 The structure of a blockchain network must be dictated by the use case. These fundamental business decisions will vary in different situations, but let's consider a few.
 
@@ -46,13 +49,15 @@ This deployment guide won't go through every iteration and potential network con
 {:note}
 
 ## Step two: Set up a Kubernetes cluster on {{site.data.keyword.cloud_notm}} Private
+{: #get-started-icp-step-two-set-up-k8s-on-icp}
 
 After you decide the network structure, set up a Kubernetes cluster on {{site.data.keyword.cloud_notm}} Private to accommodate your use cases. For more information, see [Setting up {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/ICP_setup.html#icp-setup).
 
-You can also use {{site.data.keyword.IBM_notm}} Secure Service Container as the host for {{site.data.keyword.cloud_notm}} Private to leverage the Secure Service Container's security advantages to protect critical data from internal and external threats. For more information, see [Using {{site.data.keyword.IBM_notm}} Secure Service Container for {{site.data.keyword.cloud_notm}} Private](/docs/services/howto/ibp-ssc-for-icp.html "Using {{site.data.keyword.IBM_notm}} Secure Service Container for {{site.data.keyword.cloud_notm}} Private").
+You can also use {{site.data.keyword.IBM_notm}} Secure Service Container as the host for {{site.data.keyword.cloud_notm}} Private to leverage the Secure Service Container's security advantages to protect critical data from internal and external threats. For more information, see [Using {{site.data.keyword.IBM_notm}} Secure Service Container for {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/howto/ibp-ssc-for-icp.html "Using {{site.data.keyword.IBM_notm}} Secure Service Container for {{site.data.keyword.cloud_notm}} Private").
 {:note}
 
 ## Step three: Set up your CAs
+{: #get-started-icp-step-three-set-up-cas}
 
 In Fabric-based blockchain networks, the first component that must be deployed is a CA. This is because the configuration of a component must include at least one user identity that is authorized to operate it before the component is deployed.
 
@@ -67,6 +72,7 @@ Every organization must have a CA for enrollment and a TLS CA.  When you deploy 
 For more information about TLS, see [Securing Communication With Transport Layer Security (TLS) ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/enable_tls.html "Securing Communication With Transport Layer Security (TLS)") in Hyperledger Fabric Documentation.
 
 ### Preparing the MSPs for the orderer and peers
+{: #get-started-icp-prepare-msp-orderer-peer}
 
 Because the {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private process is so elaborate, it's recommended to use a single admin user identity as the admin for all network component nodes during initial setup. This should cut down on deployment and connection errors by ensuring that one user can set up the configuration and connections between various components to ensure they're working properly. However, it's extremely important that each component has different certificates. Sometimes the distinction here can be easy to miss. The entity that signs a transaction proposal is not the admin of the peer but the **peer itself**. Therefore, the peer must be enrolled and have a certificate that it attaches to whatever it does, as well as a private key that it can use to generate certain kinds of signatures. For more information about identities and permissions in a Fabric-based blockchain network, see [Identity ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/identity/identity.html "Identity") and [Membership ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/membership/membership.html "Membership") in Fabric Documentation.
 
@@ -75,6 +81,7 @@ The Fabric CA client, which should be installed by following the instructions in
 When the orderer or peer is deployed, an `init` container that is associated with the orderer or peer will use a Kubernetes secret object to create the MSP for the component. To learn how to create a secret object, see [Operating a CA](/docs/services/blockchain/howto/CA_operate.html#ca-operate). As we said above, remember that you need to set up a CA and repeat this flow for each organization.
 
 ## Step four: Deploy orderers and peers
+{: #get-started-icp-step-four-deploy-order-peer}
 
 After a Kubernetes secret is created, you are ready to deploy a component. If your plan is to establish channels, it is recommended to deploy the orderer before any peers. Make sure to use different organization names for all of your components.
 
@@ -85,6 +92,7 @@ After a Kubernetes secret is created, you are ready to deploy a component. If yo
 - **[Deploy the peer to be connected to an {{site.data.keyword.blockchainfull_notm}} Platform network](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy)**. The process for deploying a peer and connecting it to a [Starter Plan](/docs/services/blockchain/starter_plan.html#starter-plan-about) or [Enterprise Plan](/docs/services/blockchain/enterprise_plan.html#enterprise_plan-about) network in {{site.data.keyword.cloud_notm}} is different because it uses Connection Profiles and the Network Monitor UI. Note that the organization that the peer belongs to must already be joined to a channel in the network. Again, be sure the peer's organization MSP ID is different than the orderer's organization MSP ID.
 
 ## Next steps
+{: #get-started-icp-next-steps}
 
 After you deploy all your nodes, you can start to operate them and submit transactions. See the following links for more information:
 
@@ -94,6 +102,7 @@ After you deploy all your nodes, you can start to operate them and submit transa
 - [Operating peers on {{site.data.keyword.cloud_notm}} Private with Starter Plan or Enterprise Plan](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate)
 
 ## Growing your network
+{: #get-started-icp-grow-network}
 
 If your goal is to set up a development environment or proof of concept, you'll need to add peer organizations to the orderer system channel that is created during the deployment of the orderer. This is a multi-step process that utilizes every component and is documented in the relevant operational topics.
 

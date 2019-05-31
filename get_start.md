@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-05-16"
+
+keywords: blockchain network, Enterprise Plan, getting started tutorial
 
 subcollection: blockchain
 
@@ -23,7 +25,7 @@ subcollection: blockchain
 
 **Note**: {{site.data.keyword.blockchainfull_notm}} Platform Enterprise Plan provides a production environment. If you need a development and testing environment, see [About Starter Plan](/docs/services/blockchain/starter_plan.html#starter-plan-about).
 
-This tutorial introduces the prequisites and steps you need to follow to get an Enterprise Plan network that is hosted in {{site.data.keyword.IBM_notm}}'s highly available and secure environment.
+This tutorial introduces the prerequisites and steps you need to follow to get an Enterprise Plan network that is hosted in {{site.data.keyword.IBM_notm}}'s highly available and secure environment.
 
 The following steps indicate the basic flow to launch an Enterprise Plan network with multiple network [members](/docs/services/blockchain/glossary.html#glossary-member):
 1. A **network initiator**, as one special type of network member, creates the network and defines governance policies. The network initiator can then invite other [organizations](/docs/services/blockchain/glossary.html#glossary-organization) to join this network as network members. For more information, see [Creating a network](/docs/services/blockchain/get_start.html#getting-started-with-enterprise-plan-create-network).
@@ -82,9 +84,9 @@ If you are an invited network member, click the **Pending Invite ->** button, se
 ## Configuring network resources and environment
 {: #getting-started-with-enterprise-plan-config}
 
-1. Enter your Network Monitor after you create or join a {{site.data.keyword.blockchain}} network. The Network Monitor is a GUI dashboard where you can manage and track network status information. For more information, see [Network monitor](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard).
+1. Enter your Network Monitor after you create or join a {{site.data.keyword.blockchain}} network. The Network Monitor is a GUI dashboard where you can manage and track network status information. For more information, see [Network Monitor](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard).
 2. Add your own peers to the network. If you have already added enough peers, skip this step. Peers run chaincode and they are the endpoint to interact with your applications. Click **Add Peers** in the "Overview" screen, and select the quantity and size of your peers. For more information, see [Overview](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-overview).
-3. Set up a channel. All members in the same channel are provisioned a channel-specific ledger, which delivers data isolation and confidentiality. For more information about how to create a channel, see [Creating a channel](/docs/services/blockchain/howto/create_channel.html#ibp-create-channel-creating-a-channel). If you are a channel member who are invited to join a channel, you will receive an email notification with a link to the wizard that allows you to join the channel.
+3. Set up a channel. All members in the same channel are provisioned a channel-specific ledger, which delivers data isolation and confidentiality. For more information about how to create a channel, see [Creating a channel](/docs/services/blockchain/howto/create_channel.html#ibp-create-channel-creating-a-channel). If you are a channel member who is invited to join a channel, you will receive an email notification with a link to the wizard that allows you to join the channel.
 4. Join peers to the channel. Only peers that are associated with the channel can access its ledger. For more information, see [Channels](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-channels).
 5. Install and instantiate chaincode. All channel members need to install the same chaincode with the same name and version on every peer that will run the chaincode. After you install the chaincode, you need to instantiate it on the channel before you can use it. For more information, see [Installing, instantiating, and updating a chaincode](/docs/services/blockchain/howto/install_instantiate_chaincode.html#install-instantiate-chaincode).
 

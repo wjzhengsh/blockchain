@@ -2,7 +2,9 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-05-09"
+lastupdated: "2019-05-16"
+
+keywords: APIs, build a network, authentication, service credentials, API key, API endpoint, IAM access token, Fabric CA client, import a network, generate certificates
 
 subcollection: blockchain
 
@@ -23,12 +25,12 @@ subcollection: blockchain
 # Building a network with APIs
 {: #ibp-v2-apis}
 
-The {{site.data.keyword.blockchainfull}} Platform 2.0 exposes RESTful APIs for you to create, import, edit, and delete your blockchain components, as well as to manage logging, notifications, and console settings. You can use the APIs, and the corresponding SDKs, to develop applications that interact with your blockchain network.
+The {{site.data.keyword.blockchainfull}} Platform exposes RESTful APIs for you to create, import, edit, and delete your blockchain components, as well as to manage logging, notifications, and console settings. You can use the APIs, and the corresponding SDKs, to develop applications that interact with your blockchain network.
 {: shortdesc}
 
 This tutorial introduces the generic flow to build a blockchain network with {{site.data.keyword.blockchainfull_notm}} Platform APIs. For more information about each API, see [{{site.data.keyword.blockchainfull_notm}} Platform API reference doc ![External link icon](../images/external_link.svg "External link icon")](/apidocs/blockchain "{{site.data.keyword.blockchainfull_notm}} Platform API reference doc"){: new_window}.
 
-These APIs are compatible with the {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta v0.1.77 or higher only. To check the version, browse to `https://[your_console_url]/version.txt`, where *`[your_console_url]`* is the URL of your {{site.data.keyword.blockchainfull_notm}} Platform console. For example: https://1ee1869ffa6496d6bc1ce4b-optools.bp01.blockchain.cloud.ibm.com/version.txt
+These APIs are compatible with the {{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}} v0.1.77 or higher only. To check the version, browse to `https://[your_console_url]/version.txt`, where *`[your_console_url]`* is the URL of your {{site.data.keyword.blockchainfull_notm}} Platform console. For example: https://1ee1869ffa6496d6bc1ce4b-optools.bp01.blockchain.cloud.ibm.com/version.txt
 {:note}
 
 ## Before you begin
@@ -66,7 +68,7 @@ You need a basic authentication credential to ensure that you have access to you
   }
   ```
 
-In the service credential, you can find the **API key** (`apikey`) and **API endpoint** (`api_endpoint`) that you need to retrieve an {{site.data.keyword.iamshort}} (IAM) access token.
+In the service credential, you can find the **API key** (`apikey`) and **API endpoint** (`api_endpoint`) that you need to retrieve a {{site.data.keyword.iamshort}} (IAM) access token.
 
 ### Retrieving an access token
 {: #ibp-v2-apis-retrieve-token}
@@ -77,7 +79,7 @@ Call the {{site.data.keyword.iamshort}} API to retrieve your access token.
 
 ```cURL
 curl -X POST \
-  "https://iam.bluemix.net/identity/token" \
+  "https://iam.cloud.ibm.com/identity/token" \
   -H "Content-Type: application/x-www-form-urlencoded" \
   -H "Accept: application/json" \
   -d "grant_type=urn%3Aibm%3Aparams%3Aoauth%3Agrant-type%3Aapikey&apikey=<API_KEY>" \
@@ -119,12 +121,12 @@ curl -X <API method> \
 
 Example curl commands are provided for each API in the [{{site.data.keyword.blockchainfull_notm}} Platform API reference doc ![External link icon](../images/external_link.svg "External link icon")](/apidocs/blockchain "{{site.data.keyword.blockchainfull_notm}} Platform API reference doc").
 
-Also, you can use the **Try it out** function in the API Reference doc to test your API calls before you add them to your applications.
+Also, you can use the **Try it out** function in the API Reference doc to test your API calls before you add them to your applications. You need to be logged in to {{site.data.keyword.cloud_notm}} in order to use the **Try it out** function. You can select any service instance from the drop-down list. All API requests are sent to the network specified in the API endpoint.
 
 ## Limitations
 {: #ibp-v2-apis-limitations}
 
-You can import only existing CA, peer, and orderer nodes from other {{site.data.keyword.blockchainfull_notm}} Platform free v2.0 beta networks.
+You can import only existing CA, peer, and orderer nodes from other {{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}} networks.
 
 ## Building a network by using APIs
 {: #ibp-v2-apis-build-with-apis}
@@ -138,7 +140,7 @@ You can use APIs to create blockchain components in your instance of the {{site.
 
   You need to wait for the CA to start. It might take several minutes depending on environment. You can call `GET <ca_url>/cainfo` API to check your CA status. You will get repeated errors, then a `200` status code, which means you can proceed to the next step. Note that this API call times out after one minute.
 
-2. Use your CA to register your component and administrator identities and generate the necessary certificates. You can use the Fabric CA client to complete the following steps:
+2. Use your CA to register your component and administrator identities, and generate the necessary certificates. You can use the Fabric CA client to complete the following steps:
 
   - [Set up the Fabric CA client](#ibp-v2-apis-config-fabric-ca-client).
   - [Generate certificates with your CA admin](#ibp-v2-apis-enroll-ca-admin).
@@ -146,7 +148,7 @@ You can use APIs to create blockchain components in your instance of the {{site.
   - You also need to [register an organization administrator](#ibp-v2-apis-config-register-admin) and then [generate certificates for the admin](#ibp-v2-apis-config-enroll-admin) inside an MSP folder. You do not have to complete this step if you have already registered your admin identity.
   - [Register the new component with your TLS CA](#ibp-v2-apis-config-register-component-tls).
 
-  You can also complete these steps by using your {{site.data.keyword.blockchainfull_notm}} Platform console. For more information, see [Creating and managing identities](/docs/services/blockchain/reference?topic=blockchain-ibp-console-identities.html#ibp-console-identities).
+  You can also complete these steps by using your {{site.data.keyword.blockchainfull_notm}} Platform console. For more information, see [Creating and managing identities](/docs/services/blockchain/howto/ibp-console-identities.html).
 
 3. [Create an MSP definition for your organization](#ibp-v2-apis-msp) by calling [`POST /ak/api/v1/components/msp`](/apidocs/blockchain?#import-a-membership-service-provide-msp).
 
@@ -472,7 +474,7 @@ tree
         └── user
 ```
 
-You will need return to this folder when you create your organization MSP definition and configuration files.
+You will need to return to this folder when you create your organization MSP definition and configuration files.
 {: important}
 
 ### Registering the component identity with the TLS CA
@@ -546,7 +548,7 @@ You can use the APIs to create an organization MSP definition by calling [`POST 
   ```
   LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tDQpNSUlFbERDQ0EzeWdBd0lCQWdJUUFmMmo2MjdLZGNpSVE0dHlTOCs4a1RBTkJna3Foa2lHOXcwQkFRc0ZBREJoDQpNUXN3Q1FZRFZRUUdFd0pWVXpFVk1CTUdBMVVFQ2hNTVJHbG5hVU5sY25RZ1NXNWpNUmt3RndZRFZRUUxFeEIzDQpkM2N1WkdsbmFXTmxjblF1WTI5dE1TQXdIZ1lEVlFRREV4ZEVhV2RwUTJWeWRDQkhiRzlpWVd3Z1VtOXZkQ0JEDQpRVEFlRncweE16QXpNRGd4TWpBd01EQmFGdzB5TXpBek1EZ3hNakF3TURCYU1FMHhDekFKQmdOVkJBWVRBbFZUDQpNUlV3RXdZRFZRUUtFd3hFYVdkcFEyVnlkQ0JKYm1NeEp6QWxCZ05WQkFNVEhrUnBaMmxEWlhKMElGTklRVElnDQpVMlZqZFhKbElGTmxjblpsY2lC
   ```
-  not like this:
+  Not like this:
 
   ```
   LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tDQpNSUlFbERDQ0EzeWdBd0lCQWdJUUFmMmo2MjdL
@@ -718,7 +720,7 @@ cat $HOME/<path-to-peer-admin>/msp/signcerts/cert.pem | base64 $FLAG
 ```
 LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tDQpNSUlFbERDQ0EzeWdBd0lCQWdJUUFmMmo2MjdLZGNpSVE0dHlTOCs4a1RBTkJna3Foa2lHOXcwQkFRc0ZBREJoDQpNUXN3Q1FZRFZRUUdFd0pWVXpFVk1CTUdBMVVFQ2hNTVJHbG5hVU5sY25RZ1NXNWpNUmt3RndZRFZRUUxFeEIzDQpkM2N1WkdsbmFXTmxjblF1WTI5dE1TQXdIZ1lEVlFRREV4ZEVhV2RwUTJWeWRDQkhiRzlpWVd3Z1VtOXZkQ0JEDQpRVEFlRncweE16QXpNRGd4TWpBd01EQmFGdzB5TXpBek1EZ3hNakF3TURCYU1FMHhDekFKQmdOVkJBWVRBbFZUDQpNUlV3RXdZRFZRUUtFd3hFYVdkcFEyVnlkQ0JKYm1NeEp6QWxCZ05WQkFNVEhrUnBaMmxEWlhKMElGTklRVElnDQpVMlZqZFhKbElGTmxjblpsY2lC
 ```
-not like this:
+Not like this:
 
 ```
 LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tDQpNSUlFbERDQ0EzeWdBd0lCQWdJUUFmMmo2MjdL
@@ -758,6 +760,7 @@ You have the option of providing a custom domain to your component using the `"c
 This section is provided for advanced users to specify a custom host name that can be used to address the peer endpoint. Most users can leave this section blank.
 
 ### Completing the configuration file
+{: #ibp-v2-apis-config-file}
 
 After you completed all the steps above, your updated configuration file might look similar to the following example:
 

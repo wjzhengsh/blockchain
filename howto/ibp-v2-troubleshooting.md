@@ -2,7 +2,9 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-04-23"
+lastupdated: "2019-05-16"
+
+keywords: troubleshooting, debug, why, what does this mean, how can I, when I 
 
 subcollection: blockchain
 
@@ -34,7 +36,7 @@ General problems may occur when using the console to manage nodes, channels, or 
 - [My channel, smart contracts, and identities have disappeared from the console. How can I get them back?](/docs/services/blockchain/howto/ibp-v2-troubleshooting.html#ibp-v2-troubleshooting-browser-storage)
 - [Why am I getting the error `An error occurred when updating channel` when I try to add an organization to my channel?](/docs/services/blockchain/howto/ibp-v2-troubleshooting.html#ibp-v2-troubleshooting-update-channel)
 - [My Kubernetes cluster expired. What does this mean?](/docs/services/blockchain/howto/ibp-v2-troubleshooting.html#ibp-v2-troubleshooting-cluster-expired)
-- [Why are the transactions I submit from VSCode failing?](/docs/services/blockchain/howto/ibp-v2-troubleshooting.html#ibp-v2-troubleshooting-anchor-peer)
+- [Why are the transactions I submit from VS Code failing?](/docs/services/blockchain/howto/ibp-v2-troubleshooting.html#ibp-v2-troubleshooting-anchor-peer)
 
 ## When I hover over my node, the status is `Status unavailable`, what does this mean?
 {: #ibp-v2-troubleshooting-status-unavailable}
@@ -56,7 +58,7 @@ If this is a new node, wait a few more minutes for the deployment to complete. I
 The node status in the tile for the peer or orderer node is yellow, meaning the status of the node cannot be detected. Ideally, when you hover over any node, the node status should be `Running`.
 {: tsSymptoms}
 
-This condition only occurs on peer and orderer nodes that were *imported* to the console and the health checker cannot run against the node. This status happens because an `operations_url` was not specified when the node was imported. An operations url is required for the node health checker to run. The node itself is likely `Running`, but because the operations url was not specified, it's status cannot be determined.
+This condition only occurs on peer and orderer nodes that were *imported* to the console and the health checker cannot run against the node. This status happens because an `operations_url` was not specified when the node was imported. An operations url is required for the node health checker to run. The node itself is likely `Running`, but because the operations url was not specified, its status cannot be determined.
 {: tsCauses}
 
 You can resolve this problem by performing the following steps:
@@ -132,20 +134,20 @@ Follow these instructions to [view your container logs](/docs/services/blockchai
 ## My channel, smart contracts, and identities have disappeared from the console. How can I get them back?
 {: #ibp-v2-troubleshooting-browser-storage}
 
-Your console wallet identities consist of a public and private key pair that allow you to manage your blockchain components but they are only stored in your browser local storage. You are responsible for securing and managing these identities. We recommend that you export them to your file system after you create them. Whenever you create a new node, you associate an identity from your console wallet with the node. This admin identity is what allows you to manage the node. When you switch browsers or change to a browser on a different machine, these identities are no longer in your wallet. Therefore, you are unable to manage the components.
+Your console wallet identities consist of a signing certificate and private key that allow you to manage your blockchain components but they are only stored in your browser local storage. You are responsible for securing and managing these identities. We recommend that you export them to your file system after you create them. Whenever you create a new node, you associate an identity from your console wallet with the node. This admin identity is what allows you to manage the node. When you switch browsers or change to a browser on a different machine, these identities are no longer in your wallet. Therefore, you are unable to manage the components.
 {: tsSymptoms}
 
-One of the new features of {{site.data.keyword.blockchainfull_notm}} Platform 2.0 is that you are now responsible for securing and managing your certificates. Therefore, they are only persisted in the browser local storage to allow you to manage the component. If you are using a private browser window and then switch to another browser or non-private browser window, the identities that you created will be gone from your console wallet in the new browser session. Therefore, it is required that you export the identities from the console wallet in your private browser session to your file system. You can then import them into your non-private browser session if thy are needed. Otherwise, there is no way to recover them.
+One of the new features of {{site.data.keyword.blockchainfull_notm}} Platform 2.0 is that you are now responsible for securing and managing your certificates. Therefore, they are only persisted in the browser local storage to allow you to manage the component. If you are using a private browser window and then switch to another browser or non-private browser window, the identities that you created will be gone from your console wallet in the new browser session. Therefore, it is required that you export the identities from the console wallet in your private browser session to your file system. You can then import them into your non-private browser session if they are needed. Otherwise, there is no way to recover them.
 {: tsCauses}
 
-- Any time you create a new organization MSP definition, you generate keys for an identity that is allowed to administer the organization. Therefore, during that process you must click the **Generate** and then **Export** buttons to store the generated identity in your console wallet and then save it to your file system as a JSON file.
+- Anytime when you create a new organization MSP definition, you generate keys for an identity that is allowed to administer the organization. Therefore, during that process you must click the **Generate** and then **Export** buttons to store the generated identity in your console wallet and then save it to your file system as a JSON file.
 - To resolve this problem in your browser, you need to import those identities and associate them with the corresponding node:
   - In the browser where you are experiencing the problem, click the **Wallet** tab followed by **Add identity** to import the JSON file into your wallet.
   - Click **Upload JSON** and browse to the JSON file you exported using the **Add files** button.
   - Click **Submit**.
   - Now open the peer or orderer node that this identity was originally associated to, and click on the **Settings** icon.
   - Click the **Associate identity** button.
-  - Select the identity you just imported to your console wallet from the drop down list.
+  - Select the identity you just imported to your console wallet from the drop-down list.
   - Click **Associate**.
 - Repeat this process for each identity that was in the wallet of the original browser.
 {: tsResolve}
@@ -165,7 +167,7 @@ On the **Update channel** panel, scroll down to the **Channel Updater MSP ID** a
 ## My Kubernetes cluster expired. What does this mean?
 {: #ibp-v2-troubleshooting-cluster-expired}
 
-I received an e-mail that my {{site.data.keyword.IBM_notm}} Kubernetes service cluster is about to expire or it's status is `Expired`. Or,  you are not able to access the console after 30 days.
+I received an e-mail that my {{site.data.keyword.IBM_notm}} Kubernetes service cluster is about to expire or its status is `Expired`. Or,  you are not able to access the console after 30 days.
 {: tsSymptoms}
 
 Free Kubernetes clusters are only valid for 30 days.
@@ -174,10 +176,10 @@ Free Kubernetes clusters are only valid for 30 days.
 It is not possible to migrate from a free cluster to a paid cluster. After 30 days you cannot access the console and all of your nodes and certificates are deleted. See this topic on [Kubernetes cluster expiration](/docs/services/blockchain/howto/ibp-console-manage.html#ibp-console-manage-console-cluster-expiration) for information on what is happening and what you can do.
 {: tsResolve}
 
-## Why are the transactions I submit from VSCode failing?
+## Why are the transactions I submit from VS Code failing?
 {: #ibp-v2-troubleshooting-anchor-peer}
 
-Transactions submitted from VSCode fail with an error similar to:
+Transactions submitted from VS Code fail with an error similar to:
 ```
 Error submitting transaction: No endorsement plan available for {"chaincodes":[{"name":"hello-world"}]}
 ```

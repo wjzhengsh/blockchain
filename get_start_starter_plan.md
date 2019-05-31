@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-05-16"
+
+keywords: blockchain network, Starter Plan, getting started tutorial
 
 subcollection: blockchain
 
@@ -23,7 +25,7 @@ subcollection: blockchain
 
 Starter Plan enables you to learn and develop skills with {{site.data.keyword.blockchainfull_notm}} Platform, run sample applications, test your own applications, and simulate a multi-organization scenario. This getting started tutorial will guide you through how to use Starter Plan to start developing and transacting on a blockchain network.
 
-If you are new to {{site.data.keyword.blockchainfull_notm}} Platform and blockchain, you can learn more about blockchain by reviewing the [overview of fundamental components](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview) of networks built on top of the open source [Hyperledger Fabric](/docs/services/blockchain/reference/v10_fabric.html#hyperledger-fabric). You can also review the [Hyperledger Fabric documentation ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/release-1.2/blockchain.html "Introduction to Blockchain").
+If you are new to {{site.data.keyword.blockchainfull_notm}} Platform and blockchain, you can learn more about blockchain by reviewing the [overview of fundamental components](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview) of networks built on top of the open-source [Hyperledger Fabric](/docs/services/blockchain/reference/v10_fabric.html#hyperledger-fabric). You can also review the [Hyperledger Fabric documentation ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/blockchain.html "Introduction to Blockchain").
 
 **Note**: {{site.data.keyword.blockchainfull_notm}} Platform Starter Plan is a development and testing environment, and is not suitable for production workloads. If you need a production environment, see [About Enterprise Plan](/docs/services/blockchain/enterprise_plan.html#enterprise-plan-about).
 
@@ -47,11 +49,6 @@ Within the consortium of organizations that have joined your networks, you can t
 After you form your consortium, you need to write the chaincode, also known as smart contracts, that will contain the business logic of your network and allow you to interact with data on the blockchain ledger. You will then need to use the Fabric SDKs  along with those smart contracts to submit transactions to your network from your client side application.
 
 - [Developing Chaincode](/docs/services/blockchain/get_start_starter_plan.html#getting-started-with-starter-plan-develop-chaincode)
-- [Developing applications with the Fabric SDKs](/docs/services/blockchain/get_start_starter_plan.html#getting-started-with-starter-plan-develop-apps)
-
-{{site.data.keyword.blockchainfull_notm}} Platform provides sample applications that you can deploy to your Starter Plan network with only a few clicks.
-
-- [Deploying sample applications](/docs/services/blockchain/get_start_starter_plan.html#getting-started-with-starter-plan-sample-applications)
 
 **Operate and govern your network**
 
@@ -108,7 +105,6 @@ You need to create an [{{site.data.keyword.blockchainfull_notm}} Platform servic
 
 You can find your blockchain service instance in the [{{site.data.keyword.cloud_notm}} service dashboard ![External link icon](images/external_link.svg "External link icon")](https://cloud.ibm.com/resources "{{site.data.keyword.cloud_notm}} service dashboard").
 
-
 ## Create channels
 {: #getting-started-with-starter-plan-create-channels}
 
@@ -125,25 +121,9 @@ For more information, see the [developing chaincode](/docs/services/blockchain/h
 
 ## Installing and instantiating your chaincode
 {: #getting-started-with-starter-plan-install-instantiate-chaincode}
-After joining channels and developing your business logic, you need to install chaincode on the peers in the network. You can use the network monitor to install and instantiate chaincode on the peers of your organization, as well as update the chaincode to facilitate continuous development.
+After joining channels and developing your business logic, you need to install chaincode on the peers in the network. You can use the Network Monitor to install and instantiate chaincode on the peers of your organization, as well as update the chaincode to facilitate continuous development.
 
-For more information about deploying pre-built samples, see [Installing, instantiating, and updating a chaincode](/docs/services/blockchain/howto/install_instantiate_chaincode.html#install-instantiate-chaincode).
-
-
-## Developing Applications using the Fabric SDKs
-{: #getting-started-with-starter-plan-develop-apps}
-
-{{site.data.keyword.blockchainfull_notm}} Platform provides API endpoints that you can connect to using the Fabric SDKs. You can use the SDKs to invoke chaincode from your applications and submit transactions to your blockchain network.
-
-For more information, see the [developing applications](/docs/services/blockchain/v10_application.html#dev-app) tutorial.
-
-
-## Deploying sample applications
-{: #getting-started-with-starter-plan-sample-applications}
-
-Starter Plan enables you to deploy sample applications to your network with only a few clicks. You can use these samples to learn more about chaincode, as well as use them as starting points for your own development.
-
-For more information, see [Deploying sample applications](/docs/services/blockchain/howto/prebuilt_samples.html#deploying-sample-applications).
+For more information about installing and instantiating your chaincode, see [Installing, instantiating, and updating a chaincode](/docs/services/blockchain/howto/install_instantiate_chaincode.html#install-instantiate-chaincode).
 
 
 ## Monitoring network resources
@@ -195,13 +175,6 @@ If you want to clean your customized configurations, running chaincode, or deplo
 You can deploy chaincode and applications that you test against a Starter Plan network into an Enterprise Plan network. To deploy a chaincode that you test against a Starter Plan network into Enterprise, follow the instructions in [Installing, instantiating, and updating a chaincode](/docs/services/blockchain/howto/install_instantiate_chaincode.html#install-instantiate-chaincode-install-cc).
 
 Only chaincode and applications can be migrated, data cannot be migrated between Starter and Enterprise Plan networks.
-
-<!--
-As you can see in [Deploying sample applications](/docs/services/blockchain/howto/prebuilt_samples.html#deploying-sample-applications), Starter Plan makes it easy to get a sample application integrated with your network by using Toolchain. This setup also allows for continuous integration by automatically updating your sample application whenever your forked application repo is changed. If you want to deploy this application into an Enterprise Plan network, you can copy your forked application repo into a new repo and then follow the instructions in [Deploying sample applications manually](/docs/services/blockchain/howto/prebuilt_samples.html#deploying-sample-applications#deploy_sample_applications_manually).
--->
-
-If you deploy any sample application on your Starter Plan network and you want to deploy this application on an Enterprise Plan network, you can copy your forked application repo into a new repo and then follow the instructions in the sample applications to deploy them on your Enterprise Plan network.
-
 
 ## Deleting or leaving a network
 {: #getting-started-with-starter-plan-delete-network}
