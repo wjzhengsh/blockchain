@@ -37,8 +37,7 @@ After you link your {{site.data.keyword.blockchainfull_notm}} Platform to your {
 
 The following diagram illustrates the three elements of the {{site.data.keyword.blockchainfull_notm}} Platform:
 
-![{{site.data.keyword.blockchainfull_notm}} Platform](../images/IBP-Diagram.png "The {{site.data.keyword.blockchainfull_notm}} Platform components")
-**Figure 1: The {{site.data.keyword.blockchainfull_notm}} Platform components**
+![{{site.data.keyword.blockchainfull_notm}} Platform](../images/IBP-Diagram.png "The {{site.data.keyword.blockchainfull_notm}} Platform components"){: caption="Figure 1: The {{site.data.keyword.blockchainfull_notm}} Platform components" caption-side="bottom"}
 
 - **{{site.data.keyword.blockchainfull_notm}} Console (UI)**: This is the console that allows you create and manage your blockchain components. After you provision a service instance in {{site.data.keyword.cloud_notm}}, you can deploy an instance of the {{site.data.keyword.blockchainfull_notm}} console and link it to your{{site.data.keyword.cloud_notm}} Kubernetes cluster. Then you can use the console to create an manage you blockchain components in your Kubernetes cluster. There is no charge for the console.
 
@@ -168,8 +167,8 @@ You can follow the guidance to deploy {{site.data.keyword.blockchainfull_notm}} 
 5. The **Launch console** step. After your {{site.data.keyword.blockchainfull_notm}} Platform has been successfully deployed, click **Launch the {{site.data.keyword.blockchainfull_notm}} Platform** to open the {{site.data.keyword.blockchainfull_notm}} Platform console. It might take a few minutes for the button to become enabled while the console is being provisioned.
 
 The following illustration shows how the IBM Blockchain Platform components are deployed to the Kubernetes cluster.
-![{{site.data.keyword.blockchainfull_notm}} Platform and the ](../images/IBP-IKS-Diagram.png "Deploying the IBM Blockchain Platform to the IBM Cloud Kubernetes Service")
-**Figure 2: Deploying the {{site.data.keyword.blockchainfull_notm}} Platform to the {{site.data.keyword.cloud_notm}} Kubernetes Service**
+
+![{{site.data.keyword.blockchainfull_notm}} Platform and the Kubernetes Service](../images/IBP-IKS-Diagram.png "Deploying the IBM Blockchain Platform to the IBM Cloud Kubernetes Service"){: caption="Figure 2: Deploying the {{site.data.keyword.blockchainfull_notm}} Platform to the {{site.data.keyword.cloud_notm}} Kubernetes Service" caption-side="bottom"}
 
 - **Pod**: When each Certificate Authority, peer, or ordering service is deployed, a new Pod is created in a worker node in your cluster.
 - **App containers**: Containers are created inside the pods for each node that is deployed.  
