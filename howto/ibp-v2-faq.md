@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-04-23"
+lastupdated: "2019-05-13"
 
 subcollection: blockchain
 
@@ -27,7 +27,7 @@ subcollection: blockchain
 - [Can I use my existing {{site.data.keyword.cloud_notm}} Kubernetes Service cluster?](#ibp-v2-faq-existing-cluster)
 - [What database do the Peers use for their ledger?](#ibp-v2-faq-couchDB)
 - [What languages are supported for smart contracts?](#ibp-v2-faq-cc-langs)
-- [Can I migrate from the V2.0 beta to v2.0 GA?](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-faq-migrate)
+- [Can I migrate from the V2.0 beta to v2.0 GA?](#ibp-v2-faq-migrate)
 - [Do we have access to logging services and what logs are available to me?](#ibp-v2-faq-logs)
 - [What is the value of using {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta over native Hyperledger Fabric?](#ibp-v2-faq-native-fabric)
 - [How can I maximize performance and scale my {{site.data.keyword.blockchainfull_notm}} Platform solution?](#ibp-v2-faq-perf-scale)
