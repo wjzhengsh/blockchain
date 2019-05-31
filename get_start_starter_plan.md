@@ -2,13 +2,15 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-05-31"
+
+keywords: blockchain network, Starter Plan, getting started tutorial
 
 subcollection: blockchain
 
 ---
 
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:shortdesc: .shortdesc}
 {:screen: .screen}
 {:codeblock: .codeblock}
@@ -18,12 +20,15 @@ subcollection: blockchain
 # Getting started with Starter Plan
 {: #getting-started-with-starter-plan}
 
+<!--[placeholder] Starter Plan is deprecated on May 30. No new Starter Plan networks can be created then. Your existing networks are not affected, but you can use them and get IBM's support on them for only another 30 days. You might consider using {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta instead.
+{: note} -->
+
 {{site.data.keyword.blockchainfull}} Platform Starter Plan offers you a pre-configured blockchain network with a single click. It provisions a permissioned network with the configuration of two [organizations](/docs/services/blockchain/glossary.html#glossary-organization), one [peer](/docs/services/blockchain/glossary.html#glossary-peer) per each organization, and one [channel](/docs/services/blockchain/glossary.html#glossary-channel) by default. After the network is created, you can scale and add more organizations and peers to your network. These networks are intended for novice users who are new to the {{site.data.keyword.blockchainfull_notm}} Platform. <!--Note that it might cause extra cost if you exceed the default resource limits of two organizations and two peers.-->
 {:shortdesc}
 
 Starter Plan enables you to learn and develop skills with {{site.data.keyword.blockchainfull_notm}} Platform, run sample applications, test your own applications, and simulate a multi-organization scenario. This getting started tutorial will guide you through how to use Starter Plan to start developing and transacting on a blockchain network.
 
-If you are new to {{site.data.keyword.blockchainfull_notm}} Platform and blockchain, you can learn more about blockchain by reviewing the [overview of fundamental components](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview) of networks built on top of the open source [Hyperledger Fabric](/docs/services/blockchain/reference/v10_fabric.html#hyperledger-fabric). You can also review the [Hyperledger Fabric documentation ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/release-1.2/blockchain.html "Introduction to Blockchain").
+If you are new to {{site.data.keyword.blockchainfull_notm}} Platform and blockchain, you can learn more about blockchain by reviewing the [overview of fundamental components](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview) of networks that are built based on the open-source [Hyperledger Fabric](/docs/services/blockchain/reference/v10_fabric.html#hyperledger-fabric). You can also review the [Hyperledger Fabric documentation](https://hyperledger-fabric.readthedocs.io/en/release-1.2/blockchain.html){: external}.
 
 **Note**: {{site.data.keyword.blockchainfull_notm}} Platform Starter Plan is a development and testing environment, and is not suitable for production workloads. If you need a production environment, see [About Enterprise Plan](/docs/services/blockchain/enterprise_plan.html#enterprise-plan-about).
 
@@ -47,11 +52,6 @@ Within the consortium of organizations that have joined your networks, you can t
 After you form your consortium, you need to write the chaincode, also known as smart contracts, that will contain the business logic of your network and allow you to interact with data on the blockchain ledger. You will then need to use the Fabric SDKs  along with those smart contracts to submit transactions to your network from your client side application.
 
 - [Developing Chaincode](/docs/services/blockchain/get_start_starter_plan.html#getting-started-with-starter-plan-develop-chaincode)
-- [Developing applications with the Fabric SDKs](/docs/services/blockchain/get_start_starter_plan.html#getting-started-with-starter-plan-develop-apps)
-
-{{site.data.keyword.blockchainfull_notm}} Platform provides sample applications that you can deploy to your Starter Plan network with only a few clicks.
-
-- [Deploying sample applications](/docs/services/blockchain/get_start_starter_plan.html#getting-started-with-starter-plan-sample-applications)
 
 **Operate and govern your network**
 
@@ -70,7 +70,7 @@ After you form your consortium, you need to write the chaincode, also known as s
 
 You can get a Starter Plan [network](/docs/services/blockchain/glossary.html#glossary-network) with the default configuration immediately after you create an {{site.data.keyword.blockchainfull_notm}} Platform service instance.
 
-1. Locate the [Blockchain service ![External link icon](images/external_link.svg "External link icon")](https://cloud.ibm.com/catalog/services/ibm-blockchain-5-prod) in {{site.data.keyword.cloud_notm}} Catalog.
+1. Locate the [Blockchain service](https://cloud.ibm.com/catalog/services/ibm-blockchain-5-prod){: external} in {{site.data.keyword.cloud_notm}} Catalog.
     **Note**: You need to log in with your {{site.data.keyword.cloud_notm}} paid account. If you do not have an account, click the **Sign up to Create** button. After you create a free trial account, upgrade it to a **Pay-As-You-Go** type by going to **Manage** > **Billing and Usage** > **Billing** in the {{site.data.keyword.cloud_notm}} console, and clicking **Add Credit Card**.
 2. Choose the region in {{site.data.keyword.cloud_notm}} to create the network.
 3. Select your Cloud Foundry organization and space to create the network.
@@ -79,7 +79,7 @@ You can get a Starter Plan [network](/docs/services/blockchain/glossary.html#glo
   Now you're ready to use your Starter Plan network with the default configuration. The network is running with one orderer (known as a "SOLO" ordering service), two organizations, one CA, and one peer per each organization. A default channel is also created.
 6. Click the **Launch** button.
 
-You can find your blockchain service instance in your [{{site.data.keyword.cloud_notm}} service dashboard ![External link icon](images/external_link.svg "External link icon")](https://cloud.ibm.com/resources "{{site.data.keyword.cloud_notm}} service dashboard").
+You can find your blockchain service instance in your [{{site.data.keyword.cloud_notm}} service dashboard](https://cloud.ibm.com/resources){: external}.
 
 
 ## Inviting members
@@ -98,7 +98,7 @@ You can invite other [organizations](/docs/services/blockchain/glossary.html#glo
 
 If you are invited by a network initiator, you will receive an email notification with instructions on how to join the network. Follow the instructions in the email, and you will become one of the members in the network.
 
-You need to create an [{{site.data.keyword.blockchainfull_notm}} Platform service instance ![External link icon](images/external_link.svg "External link icon")](https://cloud.ibm.com/catalog/services/ibm-blockchain-5-prod) with Starter Plan membership option in {{site.data.keyword.cloud_notm}}.
+You need to create an [{{site.data.keyword.blockchainfull_notm}} Platform service instance](https://cloud.ibm.com/catalog/services/ibm-blockchain-5-prod){: external} with Starter Plan membership option in {{site.data.keyword.cloud_notm}}.
 
 1. Log in with your {{site.data.keyword.cloud_notm}} account. If you do not have an account, click the **Sign up to Create** button.
 2. Select the Cloud Foundry organization where you want to store your {{site.data.keyword.blockchain}} network.
@@ -106,8 +106,7 @@ You need to create an [{{site.data.keyword.blockchainfull_notm}} Platform servic
 4. Click the **Create** button. The service instance page opens with a pop-up welcome panel. Note that you can choose to join a network or continue to create your own one. To create a network, see step 4 in [Creating a network](/docs/services/blockchain/get_start_starter_plan.html#getting-started-with-starter-plan-creating-a-network).
 5. On the welcome panel, choose **Join existing network**, select the network to join from the drop-down list, and click **Continue**.
 
-You can find your blockchain service instance in the [{{site.data.keyword.cloud_notm}} service dashboard ![External link icon](images/external_link.svg "External link icon")](https://cloud.ibm.com/resources "{{site.data.keyword.cloud_notm}} service dashboard").
-
+You can find your blockchain service instance in the [{{site.data.keyword.cloud_notm}} service dashboard](https://cloud.ibm.com/resources){: external}.
 
 ## Create channels
 {: #getting-started-with-starter-plan-create-channels}
@@ -125,25 +124,9 @@ For more information, see the [developing chaincode](/docs/services/blockchain/h
 
 ## Installing and instantiating your chaincode
 {: #getting-started-with-starter-plan-install-instantiate-chaincode}
-After joining channels and developing your business logic, you need to install chaincode on the peers in the network. You can use the network monitor to install and instantiate chaincode on the peers of your organization, as well as update the chaincode to facilitate continuous development.
+After joining channels and developing your business logic, you need to install chaincode on the peers in the network. You can use the Network Monitor to install and instantiate chaincode on the peers of your organization, as well as update the chaincode to facilitate continuous development.
 
-For more information about deploying pre-built samples, see [Installing, instantiating, and updating a chaincode](/docs/services/blockchain/howto/install_instantiate_chaincode.html#install-instantiate-chaincode).
-
-
-## Developing Applications using the Fabric SDKs
-{: #getting-started-with-starter-plan-develop-apps}
-
-{{site.data.keyword.blockchainfull_notm}} Platform provides API endpoints that you can connect to using the Fabric SDKs. You can use the SDKs to invoke chaincode from your applications and submit transactions to your blockchain network.
-
-For more information, see the [developing applications](/docs/services/blockchain/v10_application.html#dev-app) tutorial.
-
-
-## Deploying sample applications
-{: #getting-started-with-starter-plan-sample-applications}
-
-Starter Plan enables you to deploy sample applications to your network with only a few clicks. You can use these samples to learn more about chaincode, as well as use them as starting points for your own development.
-
-For more information, see [Deploying sample applications](/docs/services/blockchain/howto/prebuilt_samples.html#deploying-sample-applications).
+For more information about installing and instantiating your chaincode, see [Installing, instantiating, and updating a chaincode](/docs/services/blockchain/howto/install_instantiate_chaincode.html#install-instantiate-chaincode).
 
 
 ## Monitoring network resources
@@ -160,7 +143,7 @@ After you create a Starter Plan network in {{site.data.keyword.cloud_notm}}, you
 ### Retrieving from the service instance page
 {: #getting-started-with-starter-plan-retrieve-service-instance}
 
-You are on the service instance page right after you create a service instance. You can also click your service in the [{{site.data.keyword.cloud_notm}} service dashboard ![External link icon](images/external_link.svg "External link icon")](https://cloud.ibm.com/resources "{{site.data.keyword.cloud_notm}} service dashboard") to open your service instance page.
+You are on the service instance page right after you create a service instance. You can also click your service in the [{{site.data.keyword.cloud_notm}} service dashboard](https://cloud.ibm.com/resources){: external} to open your service instance page.
 
 Retrieve your service credentials with the following steps:
 1. On the service instance page, click **Service credentials** in the left navigator to show the "Service credentials" screen.
@@ -195,13 +178,6 @@ If you want to clean your customized configurations, running chaincode, or deplo
 You can deploy chaincode and applications that you test against a Starter Plan network into an Enterprise Plan network. To deploy a chaincode that you test against a Starter Plan network into Enterprise, follow the instructions in [Installing, instantiating, and updating a chaincode](/docs/services/blockchain/howto/install_instantiate_chaincode.html#install-instantiate-chaincode-install-cc).
 
 Only chaincode and applications can be migrated, data cannot be migrated between Starter and Enterprise Plan networks.
-
-<!--
-As you can see in [Deploying sample applications](/docs/services/blockchain/howto/prebuilt_samples.html#deploying-sample-applications), Starter Plan makes it easy to get a sample application integrated with your network by using Toolchain. This setup also allows for continuous integration by automatically updating your sample application whenever your forked application repo is changed. If you want to deploy this application into an Enterprise Plan network, you can copy your forked application repo into a new repo and then follow the instructions in [Deploying sample applications manually](/docs/services/blockchain/howto/prebuilt_samples.html#deploying-sample-applications#deploy_sample_applications_manually).
--->
-
-If you deploy any sample application on your Starter Plan network and you want to deploy this application on an Enterprise Plan network, you can copy your forked application repo into a new repo and then follow the instructions in the sample applications to deploy them on your Enterprise Plan network.
-
 
 ## Deleting or leaving a network
 {: #getting-started-with-starter-plan-delete-network}

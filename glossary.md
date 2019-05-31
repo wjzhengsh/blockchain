@@ -2,13 +2,15 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-04-17"
+lastupdated: "2019-05-31"
+
+keywords: IBM Blockchain, IBM Blockchain Platform, terms, Fabric, Raft, CouchDB, consortium
 
 subcollection: blockchain
 
 ---
 
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:shortdesc: .shortdesc}
 {:screen: .screen}
 {:codeblock: .codeblock}
@@ -18,7 +20,7 @@ subcollection: blockchain
 # Glossary
 {: #glossary}
 
-This topic defines {{site.data.keyword.blockchainfull}} Platform-specific terms that appear in this documentation. For a deeper understanding of terms, and for a glossary of terms that relate to Hyperledger Fabric concepts, refer to the [Hyperledger Fabric glossary ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/release-1.4/glossary.html).
+This topic defines {{site.data.keyword.blockchainfull}} Platform-specific terms that appear in this documentation. For a deeper understanding of terms, and for a glossary of terms that relate to Hyperledger Fabric concepts, refer to the [Hyperledger Fabric glossary](https://hyperledger-fabric.readthedocs.io/en/release-1.4/glossary.html){: external}.
 {:shortdesc}
 
 ## Asset
@@ -31,7 +33,7 @@ An ordered set of transactions, which is cryptographically linked to the precedi
 
 ## CA
 {: #glossary-CA}
-An abbreviation of "Certificate Authority", this is the component that issues certificates to all the participating members. These certificates represent a member’s identity. All entities in the network (peers, orderers, clients, etc.) must have an identity to communicate, authenticate, and ultimately transact. These identities are required for any direct participation in the blockchain network.
+An abbreviation of "Certificate Authority", this is the component that issues certificates to all the participating members. These certificates represent a member’s identity. All entities in the network (peers, orderers, clients, and so on) must have an identity to communicate, authenticate, and ultimately transact. These identities are required for any direct participation in the blockchain network.
 
 ## Chain
 {: #glossary-chain}
@@ -39,7 +41,6 @@ The ledger’s chain is a transaction log structured as hash-linked blocks of tr
 
 ## Chaincode
 {: #glossary-chaincode}
-
 Also known as **smart contracts**, chaincode are the pieces of software that contain a set of functions to query or update the ledger.
 
 ## Channel
@@ -58,18 +59,21 @@ The Connection profile is visible in the "Overview" screen of the Network Monito
 {: #glossary-consensus}
 A collaborative process to keep the ledger transactions synchronized across the network. Consensus ensures that ledgers are updated only when the appropriate participants approve transactions, and that ledgers are updated with the same transactions in the same order. There are many different algorithmic ways of achieving consensus.
 
+## Console
+{: #glossary-console}
+The name of the user interface in the {{site.data.keyword.blockchainfull_notm}} Platform. The console allows users to view, create, and manage their deployments. Because the public and private keys are only stored locally in the browser the console runs on, users maintain total control over their keys.
+
 ## Consortium
 {: #glossary-consortium}
 The group of non-orderer organizations listed on the orderer system channel. These are the only organizations that can create channels. At channel creation time, all organizations added to the channel must be part of a consortium. However, an organization that is not defined in a consortium may be added to an existing channel. While a blockchain network can have multiple consortia, most blockchain networks have a single consortium.
 
 ## CouchDB
 {: #glossary-couchdb}
-A document store that is used for the state database in Starter Plan networks. CouchDB is also an option for Enterprise Plan networks, along with LevelDB. CouchDB supports the use of indexes and allows you to issue rich queries against the data on your peer.
+A document store that allows rich queries of data which is used for the state database in {{site.data.keyword.blockchainfull_notm}} Platform and Starter Plan networks. CouchDB is also an option for Enterprise Plan networks, along with LevelDB.
 
 ## Current state
 {: #glossary-current-state}
-
-The current state of the ledger represents the latest values for all keys that are ever included in its chain transaction log. Because current state represents all latest key values known to the channel, it is sometimes referred to as World State. Chaincode executes transaction proposals against current state data. The current state changes every time when the value of a key changes or a new key is added. The current state is critical to a transaction flow because the latest key-value pair must be known before it can be changed. Peers commit the latest values to the current state of the ledger for each valid transaction in a block. The Current state is stored in a peer's state database
+The current state of the ledger represents the latest values for all keys that are ever included in its chain transaction log. Because current state represents all latest key values known to the channel, it is sometimes referred to as the **world state**. Smart contracts execute transaction proposals against current state data. The current state changes every time when the value of a key changes or a new key is added and is critical to a transaction flow because the latest key-value pair must be known before it can be changed. Peers commit the latest values to the current state of the ledger for each valid transaction in a block. The current state is stored the state database associated with a peer.
 
 ## Dynamic membership
 {: #glossary-dynamic-memership}
@@ -83,21 +87,21 @@ The process by which chaincode transactions are validated. Endorsement rules are
 {: #glossary-endorsement-policy}
 Defines the peer nodes on a channel that must execute transactions that are attached to a specific chaincode application, and the required combination of responses (endorsements). A policy could require that a transaction be endorsed by a minimum number of endorsing peers, a minimum percentage of endorsing peers, or by all endorsing peers that are assigned to a specific chaincode application. Policies can be curated based on the application and the desired level of resilience against misbehavior, whether deliberate or not, by the endorsing peers. A submitted transaction must satisfy the endorsement policy before it is marked as valid by committing peers. A distinct endorsement policy to install and instantiate transactions is also required.
 
-## Genesis Block
+## Genesis block
 {: #glossary-genesis-block}
 The configuration block that initializes a blockchain network or channel, and also serves as the first block on a chain.
 
 ## Gossip
 {: #glossary-gossip}
-Hyperledger Fabric allows peers to gather important network information from each other without having to rely on the ordering service. The [gossip data dissemination protocol ![External link icon](images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/gossip.html) provides a secure, reliable, and scalable way for peers to exchange messages between each other. For example, if peers miss some blocks because of delays, network outages, or other reasons, they can sync up to the current ledger state by using gossip messaging to contact other peers in possession of these missing blocks.
+Hyperledger Fabric allows peers to gather important network information from each other without having to rely on the ordering service. The [gossip data dissemination protocol](https://hyperledger-fabric.readthedocs.io/en/release-1.4/gossip.html){: external} provides a secure, reliable, and scalable way for peers to exchange messages between each other. For example, if peers miss some blocks because of delays, network outages, or other reasons, they can sync up to the current ledger state by using gossip messaging to contact other peers in possession of these missing blocks.
 
 ## HSM
 {: #glossary-hsm}
-Hardware Security Module. Provides on-demand encryption, key management, and key storage as a managed service. HSM is a physical appliance that handles the resource-intensive tasks of cryptography processing and reduce latency to applications. For more information, see [Hardware Security Module ![External link icon](images/external_link.svg "External link icon")](https://www.ibm.com/cloud/hardware-security-module)
+Hardware Security Module. Provides on-demand encryption, key management, and key storage as a managed service. HSM is a physical appliance that handles the resource-intensive tasks of cryptography processing and reduce latency to applications. For more information, see [Hardware Security Module](https://www.ibm.com/cloud/hardware-security-module){: external}.
 
 ## Hyperledger Fabric
 {: #glossary-hyperledger-fabric}
-[Hyperledger Fabric ![External link icon](images/external_link.svg "External link icon")](http://hyperledger-fabric.readthedocs.io/en/release-1.4/) is a business blockchain framework that the Linux Foundation hosts to serve as a foundation for developing blockchain applications or solutions with a modular architecture. Hyperledger Fabric components such as consensus and membership services are plug-and-play.
+[Hyperledger Fabric](https://hyperledger-fabric.readthedocs.io/en/release-1.4/){: external} is a business blockchain framework that the Linux Foundation hosts to serve as a foundation for developing blockchain applications or solutions with a modular architecture. Hyperledger Fabric components such as consensus and membership services are plug-and-play.
 
 ## Install
 {: #glossary-install}
@@ -109,7 +113,7 @@ The process of starting and initializing a chaincode container on a specific cha
 
 ## Kafka
 {: #glossary-kafka}
-A consensus plugin implementation for Hyperledger Fabric that results in a cluster of ordering service nodes in the blockchain network. A Kafka implementation is intended for a production network.
+A consensus plugin implementation for Hyperledger Fabric that results in a cluster of ordering service nodes in the blockchain network. Kafka implementations and Raft implementations are intended for production networks. However, only Raft ordering service clusters are natively supported and can be created using the {{site.data.keyword.blockchainfull_notm}} Platform.
 
 ## Ledger
 {: #glossary-ledger}
@@ -121,28 +125,27 @@ A key-value store that is an option for the state database for Enterprise Plan n
 
 ## Member
 {: #glossary-member}
-
 Also known as "organizations", members in a blockchain network, similar to the members of any group, form the structure of the network. A member can be as large as a multi-national corporation or as small as an individual. Members are enrolled into the network with a certificate that grants them permissions to use the network as either a service provider (for example, issuing certificates, validating/ordering transactions) or as a consumer. The former provides foundational blockchain services that include transaction validation, transaction ordering, and certificate management services. Consumer members use the network to invoke transactions against the distributed ledger. Members can have multiple Peers.
 
 ## MSP
 {: #glossary-msp}
-Membership Service Provider.  A set of cryptographic mechanisms and protocols for issuing and validating certificates and identities throughout the blockchain network. Identities that are issued in the scope of a membership service provider can be evaluated within that membership service provider’s rules validation policies. The MSP is installed on each channel peer to ensure that transaction requests that are issued to the peer originate from an authenticated and authorized user identity.
+An abbreviation of **Membership Service Provider**, which provides the definition of an organization, including the root certificate of the CA issuing certificates for the entities associated with that organization, as well as the sign cert of the admin of that organization. MSPs also exist at the local level of a peer or ordering node, and are the authentication mechanism that verifies the admin users of the node. In the {{site.data.keyword.blockchainfull_notm}} Platform, MSPs can be exported from one console into another, allowing users to create an organization in one console, import it to another console, and operate it (for example, to create a channel). MSPs can also be imported into an ordering service, forming a "consortium", the list of organizations allowed to create and join channels.
 
 ## Network
 {: #glossary-network}
 An instance of an {{site.data.keyword.blockchainfull_notm}} Platform service on {{site.data.keyword.cloud_notm}}.
 
-## Network Credentials
+## Network credentials
 {: #glossary-network-credentials}
 Visible from the "APIs" screen of the Network Monitor. Credentials include your "key" (Username) and "secret" (Password) in the Swagger UI. You need to use these network credentials to authenticate before you try out the REST APIs.
 
 ## Network Monitor
 {: #glossary-network-monitor}
-The GUI dashboard the {{site.data.keyword.blockchainfull_notm}} Platform provides to view and manage the blockchain network.
+The GUI dashboard the {{site.data.keyword.blockchainfull_notm}} Platform for Starter and Enterprise networks, which allows users to view and manage the blockchain network.
 
 ## Node
 {: #glossary-node}
-The communication entity of the blockchain. There are three types of nodes: CA, Peer, and orderer.
+The communication entity of the blockchain. There are three types of nodes: CA, peer, and orderer.
 
 ## Orderer
 {: #glossary-orderer}
@@ -158,7 +161,11 @@ Any organization, individual, application, or device that interact with the bloc
 
 ## Peer
 {: #glossary-peer}
-A blockchain network resource that provides the services to execute and validate transactions, and maintain ledgers. The Peer runs chaincode and is the holder of transaction history and the current state of assets on the network’s channels, that is, the ledger. They are owned and managed by organizations and are joined to channels.
+A blockchain network resource that provides the services to execute and validate transactions, and maintain ledgers. The peer runs chaincode and is the holder of transaction history and the current state of assets on the network’s channels, that is, the ledger. They are owned and managed by organizations and are joined to channels.
+
+## Raft
+{: #glossary-raft}
+Raft is a crash fault tolerant (CFT) ordering service based on an implementation of [Raft protocol](https://raft.github.io/raft.pdf){: external} in `etcd`. Raft follows a “leader and follower” model, where a leader node is elected (per channel) and its decisions are replicated by the followers. Raft ordering services should be easier to set up and manage than Kafka-based ordering services and a cluster of these nodes can be created using the {{site.data.keyword.blockchainfull_notm}} Platform.
 
 ## Service credentials
 {: #glossary-service-credentials}
@@ -166,7 +173,7 @@ Service credentials are in JSON format and contain the API endpoint information 
 
 ## SDK
 {: #glossary-sdk}
-The Hyperledger Fabric supports two Software Development Kits (SDKs). A Node SDK and Java SDK.  The Node SDK can be installed via NPM and the Java SDK via Maven.  The SDKs have their own git repositories, that is, [Fabric Node SDK ![External link icon](images/external_link.svg "External link icon")](https://github.com/hyperledger/fabric-sdk-node) and  [Fabric Java SDK ![External link icon](images/external_link.svg "External link icon")](https://github.com/hyperledger/fabric-sdk-java), with documentation for the available APIs. The Hyperledger Fabric Client SDKs enable interaction between your client application and your blockchain network.
+The Hyperledger Fabric supports two Software Development Kits (SDKs). A Node SDK and Java SDK.  The Node SDK can be installed via NPM and the Java SDK via Maven.  The SDKs have their own git repositories, that is, [Fabric Node SDK](https://github.com/hyperledger/fabric-sdk-node){: external} and  [Fabric Java SDK](https://github.com/hyperledger/fabric-sdk-java){: external}, with documentation for the available APIs. The Hyperledger Fabric Client SDKs enable interaction between your client application and your blockchain network.
 
 ## SignCert
 {: #glossary-sign-cert}
@@ -176,9 +183,9 @@ The certificate that any entities, whether organizations or admins, attach to th
 {: #glossary-smart-contracts}
 See [Chaincode](/docs/services/blockchain/glossary.html#glossary-chaincode).
 
-## SOLO
+## Solo
 {: #glossary-solo}
-A consensus plugin implementation for Hyperledger Fabric that results in a single ordering service node in the blockchain network. The Starter Plan network uses the SOLO implementation. A SOLO implementation is not intended for a production network. The alternative to SOLO is a Kafka cluster.
+A consensus plugin implementation for Hyperledger Fabric that results in a single ordering service node in the blockchain network. The Starter Plan network uses the Solo implementation. A Solo implementation is not intended for a production network. The alternatives to Solo are Raft and Kafka clusters.
 
 ## State database
 {: #glossary-state-database}

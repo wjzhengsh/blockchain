@@ -2,13 +2,15 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-04-03"
+lastupdated: "2019-05-31"
+
+keywords: organizations, MSPs, create an MSP, MSP JSON file, consortium, system channel
 
 subcollection: blockchain
 
 ---
 
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:shortdesc: .shortdesc}
 {:screen: .screen}
 {:codeblock: .codeblock}
@@ -28,11 +30,11 @@ You can also use the console to manage which organizations are members of your n
 
 The {{site.data.keyword.blockchainfull_notm}} Platform is based on Hyperledger Fabric and builds permissioned blockchain networks. Participants need to be known to the network before they can submit transactions and interact with the assets on the ledger. Fabric recognizes identity through a group of invited organizations, known as the consortium. Organizations in the consortium are able to issue valid credentials to their members and let them become participants in the network. The participants can then operate blockchain nodes and submit transactions from client applications.
 
-Each organization in the consortium needs to operate its own Certificate Authority, known as the root CA. This Certificate Authority (or its intermediate CAs) creates all the identities belonging to your organization and issues each identity a public and private key. These keys are signed by the CA and used by the members of your organization to sign and verify their actions. Joining the consortium allows other organizations to recognize your CAs signature, and verify that your peers and applications are valid participants. For more information about membership in Hyperledger Fabric, see the [Membership concept topic ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/membership/membership.html "Membership") in the Fabric documentation.
+Each organization in the consortium needs to operate its own Certificate Authority, known as the root CA. This Certificate Authority (or its intermediate CAs) creates all the identities belonging to your organization and issues each identity a signing certificate and private key. These keys are signed by the CA and used by the members of your organization to sign and verify their actions. Joining the consortium allows other organizations to recognize your CAs signature, and verify that your peers and applications are valid participants. For more information about membership in Hyperledger Fabric, see the [Membership concept topic](https://hyperledger-fabric.readthedocs.io/en/release-1.4/membership/membership.html){: external} in the Fabric documentation.
 
 Before your organization can join a consortium, it needs to create an organization definition known as a **Membership Services Provider (MSP)**. The MSP contains the following information:
 - A certificate signed by your **root Certificate Authority**. This certificate is used to verify the identity of your nodes, channels, and applications.
-- A certificate signed by your **TLS CA**. A root TLS certificate allows your peers to participate in cross organization gossip, which is necessary to take advantage of the [**Private data** collections](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-private-data) and [Service Discovery ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/discovery-overview.html "Service discovery") features of Hyperledger Fabric.
+- A certificate signed by your **TLS CA**. A root TLS certificate allows your peers to participate in cross organization gossip, which is necessary to take advantage of the [**Private data** collections](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-private-data) and [Service Discovery](https://hyperledger-fabric.readthedocs.io/en/release-1.4/discovery-overview.html){: external} features of Hyperledger Fabric.
 - The **MSP ID**. The MSP ID is the formal name of your organization within the consortium. You need to remember the MSP ID for your nodes and applications.
 - **Admin certificates** from your **Peer admin** and **Org Admin** identities. These certificates are passed to the Ordering Service and are used to verify which identities in your organization are allowed to create or edit channels. When you use your console to create an orderer or peer, the admin certificates inside the MSP are deployed within the new node. These certificates can then be used to operate the peers or orderers from your console or a client application.
 
@@ -56,16 +58,16 @@ Use the **Organizations** tab to generate an MSP definition for your organizatio
 
 - You can also use the **Root Certificate Authority details** section to generate one of your organizations admin certificates. Before creating your organization MSP definition, you need to register your org and node admins with your root CA. You then need to complete the following steps in order to use these identities to operate your network:
 
-  1. Create a public and private key pair for each admin identity.
-  2. Provide the public key (certificate) of each admin identity in the MSP definition.
-  3. Add the identity to your console wallet. The nodes or channels created by the console uses the certificates from the MSP to check who is a valid administrator. As a result, the same public private key pair that you used to add an admin cert to the MSP needs to be stored inside your console wallet.
+  1. Create a signing certificate and private key for each admin identity.
+  2. Provide the signing certificate of each admin identity in the MSP definition.
+  3. Add the identity to your console wallet. The nodes or channels created by the console uses the certificates from the MSP to check who is a valid administrator. As a result, the same signing certificate and private key pair that you used to add an admin cert to the MSP needs to be stored inside your console wallet.
 
   You can use the **Create MSP definition** panel to complete these actions for one of your admin identities. After you select your root CA, complete the following steps in the **Generate organization admin certificate** section:
   1. Enter the Enroll ID and Enroll secret of an admin identity registered with your root CA. After you enter the Enroll ID and Enroll secret, choose a name to display the identity in your console wallet.
-  2. Click **Generate**. This will generate a new set of public and private keys and automatically add the keys to your console wallet. You can then find your admin identity in your wallet by using the name you selected on this panel. These keys are only stored in your browser local storage, therefore if you change browsers, they will not be in your console wallet. You will need to export the identity from your original browser and import them into the console wallet of your new browser.
+  2. Click **Generate**. This will generate a certificate and private key and automatically add the keys to your console wallet. You can then find your admin identity in your wallet by using the name you selected on this panel. These keys are only stored in your browser local storage, therefore if you change browsers, they will not be in your console wallet. You will need to export the identity from your original browser and import them into the console wallet of your new browser.
   3. Then click **Export** to download the key pair to your file system and secure them.
 
-- The **Administrators (Optional)** section of the side panel contains the public keys of your admins. The certificate you generated by using the **Generate organization admin certificate** section can be found in the first row of the **admin certificate** field. If you want to use multiple admin identities to operate your network, you can paste the certificates of additional node or organization admins into **admin certificate** fields.
+- The **Administrators (Optional)** section of the side panel contains the signing certificates keys of your admins. The certificate you generated by using the **Generate organization admin certificate** section can be found in the first row of the **admin certificate** field. If you want to use multiple admin identities to operate your network, you can paste the certificates of additional node or organization admins into **admin certificate** fields.
 
 Because your admin certs are passed to your nodes and channels by using the MSP definition, you need ensure that each of your node and org admin certificates are stored in the MSP. When you use the console to create an orderer, peer, or channel, you need to **Associate** one of the identities you exported in your console wallet with the admin certificates that were provided to the MSP definition. When you encounter an **Associate identity** section or panel, select an identity you generated and saved to the wallet when creating the MSP definition.
 
@@ -76,7 +78,21 @@ After you have selected your root CA, MSP ID, and created your admin certs, clic
 
 **This option is for advanced users only who are familiar with how certificates are used in blockchain identity management.**
 
-If you prefer to use certificates for your peer or orderer from an **external CA**, one that is not hosted by {{site.data.keyword.IBM_notm}}, you must build an MSP definition JSON file that represents the peer or orderer organization MSP definition.  Create a JSON file by using the following format:
+If you prefer to use certificates for your peer or ordering service from an **external CA**, one that is not hosted by {{site.data.keyword.IBM_notm}}, you need to build an MSP definition JSON file that represents the peer or ordering service organization MSP definition.
+
+Note that all certificates must be encoded in base64 format.
+{:important}
+
+You can convert the contents of your certificate file, `<cert.pem>` from `PEM` format into a base64 string by running the following command on your local machine:
+
+```
+export FLAG=$(if [ "$(uname -s)" == "Linux" ]; then echo "-w 0"; else echo "-b 0"; fi)
+cat <cert.pem> | base64 $FLAG
+```
+{:codeblock}
+
+
+Create a JSON file by using the following format:
 
 ```
 {
@@ -106,14 +122,14 @@ If you prefer to use certificates for your peer or orderer from an **external CA
 - **organization_id**: Specify an id that is used to represented this MSP internally in the console.
 - **root_certs**: (Optional) Paste in an array that contains one or more root certificates from the external CA in `base64` format. You must provide either a  CA root certificate or an intermediate CA certificate, you may also provide both.
 - **intermediate_certs**: (Optional) Paste in an array that contains one ore more certificates from the external intermediate CA in `base64` format. You must provide either a  CA root certificate or an intermediate CA certificate, you may also provide both.
-- **admins**: Paste in the sign cert of the organization admin in `base64` format.
+- **admins**: Paste in the signing certificate of the organization admin in `base64` format.
 - **tls_root_certs**: (Optional) Paste in an array that contains one or more root certificates from the TLS CA in `base64` format. You must provide either an external TLS CA root certificate or an external intermediate TLS CA certificate, you may also provide both.
 - **tls_intermediate_certs**: (Optional) Paste in an array that contains one or more certificates from the intermediate TLS CA in `base64` format. You must provide either an external TLS CA root certificate or an external intermediate TLS CA certificate, you may also provide both.  
 
 The following additional fields are also available in your MSP definition but are not required:
-- **organizational_unit_identifiers**: A list of Organizational Units (OU) that valid members of this MSP should include in their X.509 certificate. This is an optional configuration parameter that is used when multiple organizations leverage the same root of trust and intermediate CAs, and they have reserved an OU field for their members. An organization is often divided up into multiple organizational units (OUs), each of which has a certain set of responsibilities. For example, the ORG1 organization might have both ORG1-MANUFACTURING and ORG1-DISTRIBUTION OUs to reflect these separate lines of business. When a CA issues X.509 certificates, the OU field in the certificate specifies the line of business to which the identity belongs. See this topic in Fabric documentation on [Identity Classification ![External link icon](../images/external_link.svg "External link icon") ](https://hyperledger-fabric.readthedocs.io/en/latest/msp.html#identity-classification "Identity Classification") for more information.  
-- **fabric_node_OUs**: Fabric-specific OUs that enable identity classification. `NodeOUs` contain information on how to distinguish clients, peers and orderers based on their OU. If the check is enforced, by setting Enabled to true, the MSP will consider an identity valid if it is an identity of a `client`, a `peer` or an `orderer`. An identity should have only one of these special OUs. See this topic for an example of how to specify the `fabric_node_OU` in an MSP in the [Fabric Service Discovery documentation ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/latest/discovery-cli.html#configuration-query).
-- **revocation_list**: A list of certificates that are no longer valid. For X.509-based identities, these identifiers are pairs of strings known as Subject Key Identifier (SKI) and Authority Access Identifier (AKI), and are checked whenever the X.509 certificate is being used to make sure the certificate has not been revoked. See this topic  in the Fabric documentation for more information about [Certificate Revocation Lists ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/users-guide.html?highlight=revocation%20list#revoking-a-certificate-or-identity "Revoking a certificate or identity").
+- **organizational_unit_identifiers**: A list of Organizational Units (OU) that valid members of this MSP should include in their X.509 certificate. This is an optional configuration parameter that is used when multiple organizations leverage the same root of trust and intermediate CAs, and they have reserved an OU field for their members. An organization is often divided up into multiple organizational units (OUs), each of which has a certain set of responsibilities. For example, the ORG1 organization might have both ORG1-MANUFACTURING and ORG1-DISTRIBUTION OUs to reflect these separate lines of business. When a CA issues X.509 certificates, the OU field in the certificate specifies the line of business to which the identity belongs. See this topic in the Fabric documentation on [Identity Classification](https://hyperledger-fabric.readthedocs.io/en/latest/msp.html#identity-classification){: external} for more information.  
+- **fabric_node_OUs**: Fabric-specific OUs that enable identity classification. `NodeOUs` contain information on how to distinguish clients, peers and orderers based on their OU. If the check is enforced, by setting Enabled to true, the MSP will consider an identity valid if it is an identity of a `client`, a `peer` or an `orderer`. An identity should have only one of these special OUs. See this topic for an example of [how to specify the `fabric_node_OU` in an MSP](https://hyperledger-fabric.readthedocs.io/en/latest/discovery-cli.html#configuration-query){: external} in the Fabric Service Discovery documentation.
+- **revocation_list**: A list of certificates that are no longer valid. For X.509-based identities, these identifiers are pairs of strings known as Subject Key Identifier (SKI) and Authority Access Identifier (AKI), and are checked whenever the X.509 certificate is being used to make sure the certificate has not been revoked. See this topic  in the Fabric documentation for more information about [Certificate Revocation Lists](https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/users-guide.html?highlight=revocation%20list#revoking-a-certificate-or-identity){: external}.
 
 For example, your JSON file would look similar to:
 
@@ -135,20 +151,9 @@ For example, your JSON file would look similar to:
 ```
 {:codeblock}
 
-Note that all certificates must be encoded in base64 format.
-{:important}
+Save this definition as your MSP definition `JSON` file.  
 
-You can convert the contents of your certificate file, `<cert.pem>` from `PEM` format into a base64 string by running the following command on your local machine:
-
-```
-export FLAG=$(if [ "$(uname -s)" == "Linux" ]; then echo "-w 0"; else echo "-b 0"; fi)
-cat <cert.pem> | base64 $FLAG
-```
-{:codeblock}
-
-Save this definition as a `JSON` file.  
-
-You have constructed an MSP definition, which defines the organization for your peer or orderer nodes, that uses certificates from an external CA. You can now return to the instructions that describe [How to use certificates from an external CA with your peer or orderer](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-third-party-ca).
+You have constructed an MSP definition, which defines the organization for your peer or ordering service nodes, and uses certificates from an external CA. You can now return to the instructions that describe [How to use certificates from an external CA with your peer or orderer](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-third-party-ca).
 
 ## Importing an MSP
 {: #console-organizations-import-msp}

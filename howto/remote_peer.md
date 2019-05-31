@@ -2,13 +2,15 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-20"
+lastupdated: "2019-05-31"
+
+keywords: IBM Blockchain Platform, remote peer, multi-cloud, private data, AWS Cloud
 
 subcollection: blockchain
 
 ---
 
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:shortdesc: .shortdesc}
 {:screen: .screen}
 {:codeblock: .codeblock}
@@ -36,7 +38,7 @@ The {{site.data.keyword.blockchainfull_notm}} Platform for AWS does not have acc
 - You can connect your {{site.data.keyword.blockchainfull_notm}} Platform for AWS peers only to blockchain networks that are at Fabric level v1.1 or v1.2.1. You can find your Fabric version by opening the [Network Preferences window](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-network-preferences) in your Network Monitor.
 - The database type of the {{site.data.keyword.blockchainfull_notm}} Platform for AWS peer must match the database type of your blockchain network, either LevelDB or CouchDB.
 - The CouchDB Fauxton interface is not available on the AWS peer.
-- [Gossip](/docs/services/blockchain/glossary.html#glossary-gossip) for AWS peers is not currently supported. This implies that Fabric features that depend on gossip, such as [private data ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/private-data-arch.html "private data") and [service discovery ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/discovery-overview.html "service discovery"), are also not supported.
+- [Gossip](/docs/services/blockchain/glossary.html#glossary-gossip) for AWS peers is not currently supported. This implies that Fabric features that depend on gossip, such as [private data](https://hyperledger-fabric.readthedocs.io/en/release-1.2/private-data-arch.html){: external} and [service discovery](https://hyperledger-fabric.readthedocs.io/en/release-1.2/discovery-overview.html){: external}, are also not supported.
 
 ## Prerequisites
 {: #remote-peer-aws-about-prereq}
@@ -54,7 +56,7 @@ To use an {{site.data.keyword.blockchainfull_notm}} Platform for AWS peer, you m
 ## Deploying an AWS peer
 {: #remote-peer-aws-about-deploy}
 
-Use the AWS [Quick Start template ![External link icon](../images/external_link.svg "External link icon")](https://aws.amazon.com/quickstart/architecture/ibm-blockchain-platform/ "Quick Start Template") to easily deploy {{site.data.keyword.blockchainfull_notm}} Platform for AWS. For more information, see the [{{site.data.keyword.blockchainfull_notm}} Platform for AWS Quick Start Deployment Guide ![External link icon](../images/external_link.svg "External link icon")](https://s3.amazonaws.com/aws-quickstart/quickstart-ibm-fabric/doc/ibm-blockchain-platform-for-aws.pdf "IBM Blockchain Platform for AWS Quick Start Reference Deployment").
+Use the AWS [Quick Start template](https://aws.amazon.com/quickstart/architecture/ibm-blockchain-platform/){: external} to easily deploy {{site.data.keyword.blockchainfull_notm}} Platform for AWS. For more information, see the [{{site.data.keyword.blockchainfull_notm}} Platform for AWS Quick Start Deployment Guide](https://s3.amazonaws.com/aws-quickstart/quickstart-ibm-fabric/doc/ibm-blockchain-platform-for-aws.pdf){: external}.
 
 For instructions on how to deploy {{site.data.keyword.blockchainfull_notm}} Platform for AWS, see [Deploying peers in Amazon Web Services](/docs/services/blockchain/howto/remote_peer_aws.html#remote-peer-aws).
 
@@ -90,7 +92,7 @@ Because blockchain networks are oblivious to the type of data that is processed,
 
 To address data residency requirements, it is important to understand the Hyperledger Fabric architecture that underlies {{site.data.keyword.blockchainfull_notm}} Platform. The architecture is centered around three key components: Certificate Authority (CA), orderer, and peer. A peer receives ordered state updates in the form of blocks from the ordering service and maintains the state and the ledger. Therefore, a peer and an orderer have a direct relationship. The ledger contains the latest values for all keys and the data that the transaction logs include.
 
-Additionally, client applications use the [Fabric SDKs](/docs/services/blockchain/v10_application.html#dev-app-fabric-sdks) to send transactions to the peers and ordering service. These transactions include [read-write set ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/readwrite.html "Read-Write set semantics") data, which contains the key-value pairs on the ledger.
+Additionally, client applications use the [Fabric SDKs](/docs/services/blockchain/v10_application.html#dev-app-fabric-sdks) to send transactions to the peers and ordering service. These transactions include [read-write set](https://hyperledger-fabric.readthedocs.io/en/release-1.2/readwrite.html){: external} data, which contains the key-value pairs on the ledger.
 
 If in-country data residency is a requirement for your business, the orderer, peers, and client applications must reside in the same country. When an {{site.data.keyword.blockchainfull_notm}} Platform network is created in {{site.data.keyword.cloud_notm}}, you have the choice of selecting a location for the network. <!--For a Starter Plan network, you can select from US South, United Kingdom, and Sydney. For an Enterprise Plan network, you can select from currently available locations, which include Dallas, Frankfurt, London, Sao Paulo, Tokyo, and Toronto. -->For more information about regions and locations, see [{{site.data.keyword.blockchainfull_notm}} Platform regions and locations](/docs/services/blockchain/reference/ibp_regions.html#ibp-regions-locations). To achieve data residency in one of these countries, your peer should reside in the same country as the {{site.data.keyword.blockchainfull_notm}} Platform network location.
 
@@ -111,26 +113,26 @@ To solve this problem **channels** can be used to segregate data to a subset of 
 
 **Note:** Orderers are always located in the data center region that you selected to host the network. It is not possible to have multiple orderers across country borders. However, peers can be located either in the data center or at a remote location outside {{site.data.keyword.cloud_notm}}.
 
-![Data residency when peers are outside the country of the IBM Blockchain Platform region ](../images/remote_peer_data_res_2.png "Data Residency peers reside outside the country of the IBM Blockchain Platform region")  
-*Figure 4. Data Residency peers reside outside the country of the IBM Blockchain Platform region*
+![Data residency when peers are outside the country of the {{site.data.keyword.blockchainfull_notm}} Platform region](../images/remote_peer_data_res_2.png "Data Residency peers reside outside the country of the {{site.data.keyword.blockchainfull_notm}} Platform region")  
+*Figure 4. Data Residency peers reside outside the country of the {{site.data.keyword.blockchainfull_notm}} Platform region*
 
 In **Figure 4**, Data residency is not required for `OrgC` and `OrgD`. In fact, `OrgD` now includes two peers, `OrgD-peer1` and `OrgD-peer2`, which reside in the *United States*. Therefore, in order for  `OrgA`, `OrgB` and their respective client applications and peers that reside in Germany to isolate the ledger data on channel `X`, a new channel `Y` is created for `OrgC` and `OrgD`.
 
-For a deeper understanding of the flow of data on the {{site.data.keyword.blockchainfull_notm}} Platform network, refer to the [Fabric documentation on transaction flow![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/txflow.html "Transaction Flow").
+For a deeper understanding of the flow of data on the {{site.data.keyword.blockchainfull_notm}} Platform network, refer to the [Fabric documentation on transaction flow](https://hyperledger-fabric.readthedocs.io/en/release-1.2/txflow.html){: external}.
 
-In the future, new technology in Hyperledger Fabric will improve the ability to achieve further data residency by using [Private data collections ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/private-data/private-data.html "Private data collections") and Zero Knowledge Proof.
+In the future, new technology in Hyperledger Fabric will improve the ability to achieve further data residency by using [Private data collections](https://hyperledger-fabric.readthedocs.io/en/release-1.2/private-data/private-data.html){: external} and Zero Knowledge Proof.
 
 - A Private data collection ensures that the private data is shared peer-to-peer (via the gossip protocol) to only the authorized peers to see it, for example, peers that are within the country borders. The data is stored in a private database on the peer.  The ordering service is not involved here and does not see the private data. A hash of that data is written to the ledgers of every peer on the channel. The hash that is used for state validation, serves as evidence of the transaction, and can be used for audit purposes. Private data is available for networks on the {{site.data.keyword.blockchainfull_notm}} Platform that are running on Fabric version 1.2.1. However, the private data feature is not available for remote peers.
 
 - A Zero-Knowledge Proof (ZKP) allows a “prover” to assure a “verifier” that they have knowledge of a secret without revealing the secret itself. It's a way to show that you know something that satisfies a statement without showing what you know.
 
-You can get more information about these technologies in the white paper about [Private and confidential transactions with Hyperledger Fabric ![External link icon](../images/external_link.svg "External link icon")](https://developer.ibm.com/tutorials/cl-blockchain-private-confidential-transactions-hyperledger-fabric-zero-knowledge-proof/ "Private and confidential transactions with Hyperledger Fabric").
+You can get more information about these technologies in the white paper about [Private and confidential transactions with Hyperledger Fabric](https://developer.ibm.com/tutorials/cl-blockchain-private-confidential-transactions-hyperledger-fabric-zero-knowledge-proof/){: external}.
 
 ## Getting support
 {: #remote-peer-aws-about-support}
 
-IBM Blockchain Platform does not provide support for this offering. If you encounter issues that are related to your peer, you can make use of free blockchain developer resources and support forums and get help from {{site.data.keyword.IBM_notm}} and the Fabric community. For more information, see [blockchain resources and support forums](/docs/services/blockchain/ibmblockchain_support.html#blockchain-support-resources). You can also view the support resources on the **Get Help** screen of the Network Monitor.
+{{site.data.keyword.blockchainfull_notm}} Platform does not provide support for this offering. If you encounter issues that are related to your peer, you can make use of free blockchain developer resources and support forums and get help from {{site.data.keyword.IBM_notm}} and the Fabric community. For more information, see [blockchain resources and support forums](/docs/services/blockchain/ibmblockchain_support.html#blockchain-support-resources). You can also view the support resources on the **Get Help** screen of the Network Monitor.
 
-- For issues that are related to AWS, you can use both [community support forums ![External link icon](../images/external_link.svg "External link icon")](https://forums.aws.amazon.com/index.jspa "AWS community support forums") and [AWS premium support ![External link icon](../images/external_link.svg "External link icon")](https://aws.amazon.com/premiumsupport/ "AWS premium support").
+- For issues that are related to AWS, you can use both [community support forums](https://forums.aws.amazon.com/index.jspa){: external} and [AWS premium support](https://aws.amazon.com/premiumsupport/){: external}.
 
 {{site.data.keyword.blockchainfull_notm}} does not support cases that are opened in {{site.data.keyword.cloud_notm}} and are related to {{site.data.keyword.blockchainfull_notm}} Platform for AWS. The Community Edition is meant for exploration, development, and testing, and do not use it for production.
