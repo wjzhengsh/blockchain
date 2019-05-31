@@ -55,13 +55,13 @@ subcollection: blockchain
 - **재해 복구 및 다중 영역 고가용성.** 이 옵션은 컴포넌트의 고가용성(HA) 및 재해 복구(DR)를 사용하여 여러 영역에 걸쳐 Kubernetes 배치를 중복할 수 있게 해줍니다.
 - **어디서나 실행**(지시사항이 곧 제공됨). {{site.data.keyword.blockchainfull_notm}} Platform의 **통합 코드 베이스**를 통해 {{site.data.keyword.cloud_notm}}, {{site.data.keyword.cloud_notm}} Private 및 서드파티 퍼블릭 클라우드에서 컴포넌트를 실행할 수 있습니다.
 
-- {{site.data.keyword.blockchainfull_notm}} Platform 무료 2.0 베타에 대한 자세한 정보는 [{{site.data.keyword.blockchainfull_notm}} Platform 2.0 정보](/docs/services/blockchain/howto/ibp-console.html#ibp-console-overview)에서 제공합니다.
-- 무료 2.0 베타 릴리스를 {{site.data.keyword.IBM_notm}} Kubernetes Service 클러스터에 배치하는 방법에 대한 지시사항은 [{{site.data.keyword.blockchainfull_notm}} Platform 2.0 시작하기](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks)에서 제공합니다.
-- {{site.data.keyword.blockchainfull_notm}} Platform 무료 2.0 베타 사용에 대한 새 튜토리얼은 **HOW TO** 카테고리 아래의 **{{site.data.keyword.blockchainfull_notm}} Platform 2.0** 하위 섹션에서 사용 가능합니다.
+- {{site.data.keyword.blockchainfull_notm}} Platform 대한 자세한 정보는 [{{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}} 정보](/docs/services/blockchain/howto/ibp-console.html#ibp-console-overview)에서 제공합니다.
+- {{site.data.keyword.blockchainfull_notm}} Platform 릴리스를 {{site.data.keyword.IBM_notm}} Kubernetes Service 클러스터에 배치하는 방법에 대한 지시사항은 [{{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}} 시작하기](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks)에서 제공합니다.
+- {{site.data.keyword.blockchainfull_notm}} Platform 사용에 대한 새 튜토리얼은 **HOW TO** 카테고리 아래의 **{{site.data.keyword.blockchainfull_notm}} Platform 2.0** 하위 섹션에서 사용 가능합니다.
   * [네트워크 빌드 튜토리얼](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network)은 순서 지정자 또는 피어를 작성하여 네트워크를 호스팅하는 프로세스를 안내합니다.
   * [네트워크 가입 튜토리얼](/docs/services/blockchain/howto/ibp-console-join-network.html#ibp-console-join-network)은 피어를 작성하고 해당 피어를 채널에 가입시켜 기존 네트워크에 가입시키는 방법에 대해 설명합니다.
   * [네트워크에 스마트 계약 배치](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts)는 스마트 계약을 작성하여 이를 네트워크에 배치하는 방법을 제공합니다.
-- {{site.data.keyword.blockchainfull_notm}} Platform 무료 2.0 베타 오퍼링은 Hyperledger Fabric v1.4.1을 기반으로 하며 피어 투 피어 gossip, 서비스 발견 및 개인용 데이터를 지원합니다. 네트워크에서 개인용 데이터를 구성하는 방법을 학습하려면 이 [주제](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-private-data)를 방문하십시오.
+- {{site.data.keyword.blockchainfull_notm}} Platform 오퍼링은 Hyperledger Fabric v1.4.1을 기반으로 하며 피어 투 피어 gossip, 서비스 발견 및 개인용 데이터를 지원합니다. 네트워크에서 개인용 데이터를 구성하는 방법을 학습하려면 이 [주제](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-private-data)를 방문하십시오.
 
 ## 2019년 5월 9일
 {: #whats-new-5-09-2019}

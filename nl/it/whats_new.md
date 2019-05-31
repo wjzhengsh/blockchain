@@ -25,7 +25,7 @@ subcollection: blockchain
 ## 31 maggio 2019
 {: #whats-new-5-31-2019}
 
-{{site.data.keyword.blockchainfull}} Platform di seconda generazione, ti consente di distribuire, gestire e monitorare la tua rete blockchain poiché diventa generalmente disponibile. Questa release include una nuova console di interfaccia utente che può essere utilizzata per distribuire e gestire i componenti della blockchain nel tuo cluster {{site.data.keyword.IBM_notm}} Kubernetes Service su {{site.data.keyword.cloud_notm}}. 
+{{site.data.keyword.blockchainfull}} Platform di seconda generazione, ti consente di distribuire, gestire e monitorare la tua rete blockchain poiché diventa generalmente disponibile. Questa release include una nuova console di interfaccia utente che può essere utilizzata per distribuire e gestire i componenti della blockchain nel tuo cluster {{site.data.keyword.IBM_notm}} Kubernetes Service su {{site.data.keyword.cloud_notm}}.
 
 Questa release {{site.data.keyword.blockchainfull_notm}} Platform include le seguenti funzioni chiave:
 
@@ -55,13 +55,13 @@ Questa release {{site.data.keyword.blockchainfull_notm}} Platform include le seg
 - **Ripristino di emergenza e alta disponibilità multizona.** Questa opzione duplica la tua distribuzione Kubernetes tra le zone, abilitando l'alta disponibilità (HA, High Availability) dei tuoi componenti e il ripristino di emergenza (DR, Disaster Recovery).
 - **Esegui ovunque** (istruzioni presto disponibili). Grazie alla **base di codice unificata** della console {{site.data.keyword.blockchainfull_notm}} Platform, è possibile eseguire i tuoi componenti su {{site.data.keyword.cloud_notm}}, {{site.data.keyword.cloud_notm}} Private e cloud pubblici di terze parti.
 
-- Ulteriori informazioni su {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta sono disponibili in [Informazioni su {{site.data.keyword.blockchainfull_notm}} Platform 2.0](/docs/services/blockchain/howto/ibp-console.html#ibp-console-overview).
-- Le istruzioni su come distribuire la release 2.0 beta gratuita in un cluster {{site.data.keyword.IBM_notm}} Kubernetes Service sono disponibili in [Introduzione a {{site.data.keyword.blockchainfull_notm}} Platform 2.0](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks).
-- Delle nuove esercitazioni per utilizzare {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta sono disponibili nella sottosezione **{{site.data.keyword.blockchainfull_notm}} Platform 2.0** sotto la categoria **COME**.
+- Ulteriori informazioni su {{site.data.keyword.blockchainfull_notm}} Platform sono disponibili in [Informazioni su {{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}}](/docs/services/blockchain/howto/ibp-console.html#ibp-console-overview).
+- Le istruzioni su come distribuire la release in un cluster {{site.data.keyword.IBM_notm}} Kubernetes Service sono disponibili in [Introduzione a {{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}}](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks).
+- Delle nuove esercitazioni per utilizzare {{site.data.keyword.blockchainfull_notm}} Platform sono disponibili nella sottosezione **{{site.data.keyword.blockchainfull_notm}} Platform 2.0** sotto la categoria **COME**.
   * L'[Esercitazione: crea una rete](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network) ti guida attraverso il processo di hosting di una rete creando un ordinante e un peer.
   * [L'esercitazione relativa all'unione a una rete](/docs/services/blockchain/howto/ibp-console-join-network.html#ibp-console-join-network) spiega come unirsi a una rete esistente creando un peer e unendolo a un canale.
   * [Distribuire uno smart contract sulla rete](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts) fornisce informazioni su come scrivere uno smart contract e distribuirlo sulla tua rete.
-- L'offerta {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta è basata su Hyperledger Fabric v1.4.1 e supporta il gossip peer-to-peer, il rilevamento dei servizi e i dati privati. Visita questo [argomento](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-private-data) per ulteriori informazioni su come configurare i dati privati sulla tua rete.
+- L'offerta {{site.data.keyword.blockchainfull_notm}} Platform è basata su Hyperledger Fabric v1.4.1 e supporta il gossip peer-to-peer, il rilevamento dei servizi e i dati privati. Visita questo [argomento](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-private-data) per ulteriori informazioni su come configurare i dati privati sulla tua rete.
 
 ## 9 maggio 2019
 {: #whats-new-5-09-2019}

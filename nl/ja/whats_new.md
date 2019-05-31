@@ -55,13 +55,13 @@ subcollection: blockchain
 - **災害復旧および複数ゾーンによる高可用性。** このオプションにより、Kubernetes のデプロイメントをゾーン間で複製し、コンポーネントの高可用性（HA）と災害復旧（DR）を実現できます。
 - **どこでも実行可能** (手順は近日公開)。{{site.data.keyword.blockchainfull_notm}} Platform コンソールの**統合コードベース**により、{{site.data.keyword.cloud_notm}}、{{site.data.keyword.cloud_notm}} Private、およびサード・パーティーのパブリック・クラウドでコンポーネントを実行できます。
 
-- {{site.data.keyword.blockchainfull_notm}} Platform 2.0 無料ベータ版については、[{{site.data.keyword.blockchainfull_notm}} Platform 2.0 について](/docs/services/blockchain/howto/ibp-console.html#ibp-console-overview)で詳しく説明しています。
-- 無料の 2.0 ベータ版リリースを {{site.data.keyword.IBM_notm}} Kubernetes サービス・クラスターにデプロイする方法については、[{{site.data.keyword.blockchainfull_notm}} Platform 2.0 の概説](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks)で説明しています。
-- {{site.data.keyword.blockchainfull_notm}} Platform 2.0 無料ベータ版の使用方法を学習するための新しいチュートリアルを、**「方法」**カテゴリーの「**{{site.data.keyword.blockchainfull_notm}} Platform 2.0**」サブセクションに用意しています。
+- {{site.data.keyword.blockchainfull_notm}} Platform については、[{{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}} について](/docs/services/blockchain/howto/ibp-console.html#ibp-console-overview)で詳しく説明しています。
+- 2.0 ベータ版リリースを {{site.data.keyword.IBM_notm}} Kubernetes サービス・クラスターにデプロイする方法については、[{{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}} の概説](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks)で説明しています。
+- {{site.data.keyword.blockchainfull_notm}} Platform の使用方法を学習するための新しいチュートリアルを、**「方法」**カテゴリーの「**{{site.data.keyword.blockchainfull_notm}} Platform 2.0**」サブセクションに用意しています。
   * [ネットワーク構築チュートリアル](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network)では、順序付けプログラムとピアを作成することで、ネットワークをホストするプロセスを学習します。
   * [ネットワーク参加チュートリアル](/docs/services/blockchain/howto/ibp-console-join-network.html#ibp-console-join-network)では、ピアを作成してチャネルに参加させることで、既存のネットワークに参加する方法を学習します。
   * [ネットワークにスマート・コントラクトをデプロイする](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts)では、スマート・コントラクトを作成してネットワークにデプロイする方法を学習します。
-- {{site.data.keyword.blockchainfull_notm}} Platform 2.0 無料ベータ版オファリングは、Hyperledger Fabric v1.4.1 をベースとしており、ピアツーピアのゴシップ、サービス・ディスカバリー、およびプライベート・データをサポートします。 ネットワーク上にプライベート・データを構成する方法については、この[トピック](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-private-data)を参照してください。
+- {{site.data.keyword.blockchainfull_notm}} Platform オファリングは、Hyperledger Fabric v1.4.1 をベースとしており、ピアツーピアのゴシップ、サービス・ディスカバリー、およびプライベート・データをサポートします。 ネットワーク上にプライベート・データを構成する方法については、この[トピック](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-private-data)を参照してください。
 
 ## 2019 年 5 月 9 日
 {: #whats-new-5-09-2019}

@@ -97,7 +97,7 @@ IBM Blockchain Platform
 	{: .navgroup-end}
 
 	{: .navgroup id="reference"}
-	[API 참조](https://test.cloud.ibm.com/apidocs/blockchain)
+	[API 참조](https://cloud.ibm.com/apidocs/blockchain)
 	glossary.md
 	reference/ibp_regions.md
 	reference/videos.md
