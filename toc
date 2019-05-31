@@ -9,20 +9,17 @@ IBM Blockchain Platform
 	Getting started tutorials
 		index.md
 		howto/ibp-v2-deploy-iks.md
-		get-started-console-icp.md
 		ibp_for_icp_deployment_guide.md
 		howto/remote_peer_aws.md
 
 	{: .topicgroup}
 	About IBM Blockchain Platform
 		howto/ibp-console.md
-		console-icp-about.md
 		ibp-for-icp-about.md
 		howto/remote_peer.md
 
 	whats_new.md
 	howto/pricing-saas.md
-	ibp-console-ha.md
 	howto/ibp-v2-faq.md
 	blockchain_component_overview.md
 	needtoknow.md
@@ -48,24 +45,13 @@ IBM Blockchain Platform
 		howto/ibp-v2-operations-service.md
 		howto/ibp-v2-apis.md
 		howto/ibp-console-manage.md
-		howto/ibp-console-ic-ha-howto.md
 		howto/ibp-v2-troubleshooting.md
-
-	{: .topicgroup}
-	IBM Blockchain Platform for Multi-Cloud
-		get-started-console-icp.md
-		ICP_console_setup.md
-		howto/console-helm-install.md
-		howto/console-deploy-icp.md
-		howto/console-icp-manage.md
-		howto/ibp-ssc-for-icp.md
 
 	{: .topicgroup}
 	IBM Blockchain Platform for IBM Cloud Private
 		ibp_for_icp_deployment_guide.md
 		ICP_setup.md
 		howto/helm_install_icp.md
-		howto/ibp-ssc-for-icp.md
 
 	{: .topicgroup}
 	-- Certificate Authorities on IBM Cloud Private
@@ -115,7 +101,6 @@ IBM Blockchain Platform
 	glossary.md
 	reference/ibp_regions.md
 	reference/videos.md
-	reference/at-events.md
 	reference/v10_fabric.md
 	reference/k8s.md
 	{: .navgroup-end}
