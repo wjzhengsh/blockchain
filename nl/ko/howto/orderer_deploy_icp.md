@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-04-23"
+lastupdated: "2019-05-16"
+
+keywords: Helm chart, orderer configuration file, IBM Cloud Private, deploy an orderer, ordering service
 
 subcollection: blockchain
 
@@ -62,7 +64,7 @@ amd64 또는 s390x 플랫폼에 순서 지정자를 배치하도록 선택할 �
 ## 순서 지정자 구성 파일 작성
 {: #icp-orderer-deploy-config-file}
 
-순서 지정자를 배치하기 전에 순서 지정자 ID와 CA에 대한 중요한 정보를 포함하는 구성 파일을 작성해야 합니다. 그런 다음 [Kubernetes 시크릿 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://kubernetes.io/docs/concepts/configuration/secret/) 오브젝트를 사용하여 구성 중에 이 파일을 Helm 차트에 전달해야 합니다. 이 파일을 사용하면 순서 지정자가 블록체인 네트워크에 참여하기 위해 CA로부터 필요한 인증서를 획득할 수 있습니다. 관리자로서 순서 지정자를 운영할 수 있는 관리자 인증서도 포함되어 있습니다. 순서 지정자를 구성하기 전에 [CA를 사용하여 순서 지정자 또는 피어 배치](/docs/services/blockchain/howto/CA_operate.html#ca-operate-deploy-orderer-peer)에 대한 지시사항를 따르십시오.
+순서 지정자를 배치하기 전에 순서 지정자 ID와 CA에 대한 중요한 정보를 포함하는 구성 파일을 작성해야 합니다. 그런 다음 [Kubernetes 시크릿 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://kubernetes.io/docs/concepts/configuration/secret/) 오브젝트를 사용하여 구성 중에 이 파일을 Helm 차트에 전달해야 합니다. 이 파일을 사용하면 순서 지정자가 블록체인 네트워크에 가입하기 위해 CA로부터 필요한 인증서를 획득할 수 있습니다. 관리자로서 순서 지정자를 운영할 수 있는 관리자 인증서도 포함되어 있습니다. 순서 지정자를 구성하기 전에 [CA를 사용하여 순서 지정자 또는 피어 배치](/docs/services/blockchain/howto/CA_operate.html#ca-operate-deploy-orderer-peer)에 대한 지시사항를 따르십시오.
 
 CSR 호스트 이름을 구성 파일에 제공해야 합니다. CSR 호스트 이름에는 Helm 차트 호스트 이름이 될 서비스 호스트 이름을 비롯하여 컴포넌트를 배치하는 클러스터의 프록시 IP 주소가 포함됩니다. `service host name`은 배치 중에 지정하는 `helm release name`을 기반으로 합니다. `service host name`은 끝에 추가된 문자열 `-orderer`로 지정하는 `helm_release_name`입니다. 예를 들어, `orderer1`의 `helm release name`을 지정하려면 다음 값을 파일의 `"csr"` 섹션에 삽입할 수 있습니다.
 
@@ -145,17 +147,17 @@ NFS 파일 시스템이 제공되는 시스템에서 수행해야 합니다.
 ### 구성 매개변수
 {: #icp-orderer-configuration-parms}
 
-다음 표에는 {{site.data.keyword.blockchainfull_notm}} Platform, **순서 지정자 컴포넌트 관련 항목** 및 해당 기본값의 구성 가능한 매개변수가 나열됩니다. **Helm 차트 UI에 더 이상의 구성이 필요 없다고 되어 있지만 순서 지정자를 배치하려면 특정 매개변수를 입력해야 합니다.**
+다음 표에는 {{site.data.keyword.blockchainfull_notm}} Platform, **순서 지정자 컴포넌트 관련 항목** 및 해당 기본값의 구성 가능한 매개변수가 나열됩니다. **Helm 차트 UI에는 추가 구성이 필요하지 않다고 표시되어 있으나 순서 지정자를 배치하려면 특정 매개변수를 입력해야 합니다.**
 
 #### 일반 및 글로벌 구성 매개변수
 {: #icp-orderer-deploy-global-parameters}
 
 |매개변수     |설명    | 기본값  | 필수 |
 | --------------|-----------------|-------|------- |
-|**일반 매개변수**| Helm 차트를 구성하는 매개변수입니다.| | |
+|**일반 매개변수**| Helm 차트를 구성하는 매개변수입니다. | | |
 | `Helm release name`| Helm 릴리스의 이름입니다. 소문자로 시작하고 영숫자 문자로 끝나야 하며 하이픈과 소문자의 영숫자 문자만 포함해야 합니다. 컴포넌트를 설치하려고 할 때마다 고유한 Helm 릴리스 이름을 사용해야 합니다. **중요:** 이 값은 [JSON 시크릿 파일](/docs/services/blockchain/howto/orderer_deploy_icp.html#icp-orderer-deploy-config-file)의 "호스트" 필드에 대한 '서비스 호스트 이름'을 생성하는 데 사용한 값과 일치해야 합니다. | 없음 | 예  |
 | `Target namespace`| Helm 차트를 설치할 Kubernetes 네임스페이스를 선택합니다. | 없음 | 예 |
-| `Target namespace policies`| 선택한 네임스페이스의 팟(Pod) 보안 정책을 표시하며, 여기에는 **`ibm-privileged-psp`** 정책을 포함해야 합니다. 그렇지 않으면 네임스페이스에 [PodSecurityPolicy를 바인드](/docs/services/blockchain?topic=blockchain-icp-setup#icp-setup-psp)하십시오.| 없음 | 아니오 |
+| `Target namespace policies`| 선택한 네임스페이스의 팟(Pod) 보안 정책을 표시하며, 여기에는 **`ibm-privileged-psp`** 정책을 포함해야 합니다. 그렇지 않으면 네임스페이스에 [PodSecurityPolicy를 바인드](/docs/services/blockchain?topic=blockchain-icp-setup#icp-setup-psp)하십시오. | 없음 | 아니오 |
 |**글로벌 구성**| Helm 차트의 모든 컴포넌트에 적용하는 매개변수입니다.|||
 | `Service account name`| 팟(Pod)을 실행하는 데 사용할 [서비스 계정 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/)의 이름을 입력합니다. | 기본값 | 아니오 |
 
@@ -174,7 +176,7 @@ NFS 파일 시스템이 제공되는 시스템에서 수행해야 합니다.
 | `Orderer Docker image tag`| Docker 이미지의 레코드입니다. 이 필드는 이미지 버전으로 자동 완성됩니다. 변경하지 마십시오.| 1.4.0 | 예 |
 | `Orderer consensus type`| 순서 지정 서비스의 합의 유형입니다. |SOLO | 예 |
 | `Orderer organization name`| 순서 지정자 조직에 사용할 이름을 지정합니다. 피어도 배치할 계획이라면 피어에 지정할 이름과 다른 이름을 사용하십시오. 예를 들면, 순서 지정자 조직에 `ordererOrg`와 같은 이름을 지정하십시오. | 없음 | 예 |
-| `Orderer Org MSP ID`| 순서 지정자 조직의 MSP ID에 사용할 이름을 지정합니다. 순서 지정자 조직에 제공한 이름과 같아야 하며 배치 프로세스에 의해 환경 변수로 설정됩니다. 이 값을 기록해 두고 이후에 참조해야 합니다. | 없음 | 예 |
+| `Orderer Org MSP ID`| 순서 지정자 조직의 MSP ID에 사용할 이름을 지정합니다. 순서 지정자 조직에 제공한 이름과 같아야 하며 배치 프로세스에서 환경 변수로 설정됩니다. 이 값을 기록해 두고 이후에 참조해야 합니다. | 없음 | 예 |
 | `Orderer storage class name`| 순서 지정자의 스토리지 클래스 이름을 지정합니다. | 없음 | {{site.data.keyword.cloud_notm}} Private 클러스터가 구성되는 방법에 따라 다릅니다. 클러스터 관리자에게 확인 |
 | `Orderer existing volume claim`| 기존 볼륨 청구의 이름을 지정하고 다른 모든 필드는 공백으로 두십니다. | 없음 | 아니오 |
 | `Orderer selector label`| PVC의 [선택기 레이블 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/)입니다. | 없음 | 아니오 |
@@ -197,7 +199,7 @@ NFS 파일 시스템이 제공되는 시스템에서 수행해야 합니다.
 
 또는 Helm CLI를 사용하여 Helm 릴리스를 설치할 수 있습니다. `helm install` 명령을 실행하기 전에 [Helm CLI 환경에 클러스터의 Helm 저장소를 추가![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/app_center/add_int_helm_repo_to_cli.html "Helm CLI에 내부 Helm 저장소 추가")했는지 확인하십시오.
 
-`yaml` 파일을 작성하고 이 파일을 `helm install` 명령에 전달하여 설치에 필요한 매개변수를 설정할 수 있습니다.
+`yaml` 파일을 작성하고 이 파일을 다음 `helm install` 명령에 전달하여 설치에 필요한 매개변수를 설정할 수 있습니다.
 
 ```
 helm install --name <helm_release_name>  <helm_chart> \

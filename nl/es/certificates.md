@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-04-03"
+lastupdated: "2019-05-16"
+
+keywords: TLS, TLS certificates, client applications, digital certificates, certificate authority, intermediate certificate, client-side certificate, generate certificates, manage certificates
 
 subcollection: blockchain
 
@@ -44,7 +46,7 @@ Puede utilizar este panel para registrar una nueva identidad de igual si está d
 
 ### Generación de certificados del lado del cliente (inscripción)
 {: #managing-certificates-enrollment}
-Para poder conectar un cliente de terceros a la plataforma {{site.data.keyword.blockchainfull_notm}}, es necesario que se autentique. El proceso de generación de los certificados necesarios, la clave privada y el certificado público (también conocido como certificado de inscripción o signCert), se denomina inscripción. Estos certificados se necesitarán siempre que el cliente se comunique con la red. Cualquier cliente que envíe llamadas a la red tendrá que firmar cargas útiles utilizando una clave privada y adjuntar un certificado de x509 correctamente firmado.
+Para poder conectar un cliente de terceros a la plataforma {{site.data.keyword.blockchainfull_notm}}, es necesario que se autentique. El proceso de generación de los certificados necesarios, la clave privada y el certificado (también conocido como certificado de inscripción o signCert), se denomina inscripción. Estos certificados se necesitarán siempre que el cliente se comunique con la red. Cualquier cliente que envíe llamadas a la red tendrá que firmar cargas útiles utilizando una clave privada y adjuntar un certificado de x509 correctamente firmado.
 
 Visite la [guía de aprendizaje de desarrollo de aplicaciones](/docs/services/blockchain/v10_application.html#dev-app) para aprender a [inscribir mediante el SDK de nodo de Fabric](/docs/services/blockchain/v10_application.html#dev-app-enroll-sdk). La inscripción con el SDK genera 3 elementos independientes: una clave privada, un signCert y una clave pública que se ha utilizado para crear el signCert.
 
@@ -178,7 +180,7 @@ Las carpetas de MSP de Fabric tienen una estructura definida. Cuando realiza la 
 
 - **cacerts:** esta carpeta contiene el certificado raíz de la CA raíz de la red.
 - **intermediatecerts:** son los certificados de las CA intermedias de la red. Estas CA intermedias están enlazadas con la CA raíz y forman una cadena de confianza. Cada organización de plan empresarial tiene dos CA intermedias para la migración tras error y la alta disponibilidad.
-- **signcerts:** esta carpeta contiene el certificado de firma público, que también se denomina signCert o certificado de inscripción. Este certificado se adjunta a las llamadas a la red (por ejemplo, una invocación de código de encadenamiento) cuando se hace referencia al directorio MSP desde la línea de mandatos o se crea un objeto de contexto de usuario con los SDK. Puede cargar este certificado en la plataforma si desea trabajar con una red desde el SDK o la línea de mandatos.
+- **signcerts:** esta carpeta contiene el certificado para firmas, que también se denomina signCert o certificado de inscripción. Este certificado se adjunta a las llamadas a la red (por ejemplo, una invocación de código de encadenamiento) cuando se hace referencia al directorio MSP desde la línea de mandatos o se crea un objeto de contexto de usuario con los SDK. Puede cargar este certificado en la plataforma si desea trabajar con una red desde el SDK o la línea de mandatos.
 - **keystore:** esta carpeta contiene la clave privada. Esta clave se utiliza para firmar las llamadas a la red cuando se hace referencia al directorio MSP desde la línea de mandatos o se crea un objeto de contexto de usuario con los SDK. Mantenga esta clave en un lugar seguro para proteger su red y sus datos.
 
 También puede crear una carpeta de MSP a la que puede hacer referencia el cliente de CA de Fabric utilizando el supervisor de red y las API de Swagger.

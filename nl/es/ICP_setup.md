@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-04-03"
+lastupdated: "2019-05-16"
+
+keywords: IBM Cloud Private, data storage CA, cluster ICP, configuration
 
 subcollection: blockchain
 
@@ -31,10 +33,11 @@ Complete los requisitos previos siguientes y prepare el entorno para instalar {{
 
 ### Docker
 {{site.data.keyword.cloud_notm}} Private requiere que Docker esté instalado. Siga las instrucciones relacionadas de
-[Instalación de {{site.data.keyword.cloud_notm}} Private ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/installing/install.html "Instalación de {{site.data.keyword.cloud_notm}} privado") para instalar Docker.
+[Instalación de {{site.data.keyword.cloud_notm}} Private ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/installing/install.html "Instalación de {{site.data.keyword.cloud_notm}} privado") para instalar Docker.
 
 ### Valores de {{site.data.keyword.cloud_notm}} Private
-Antes de instalar {{site.data.keyword.cloud_notm}} Private, las sugerencias siguientes le resultarán útiles para preparar los nodos para la instalación de {{site.data.keyword.cloud_notm}} Private. Encontrará los requisitos previos adicionales de {{site.data.keyword.cloud_notm}} Private en la [documentación de {{site.data.keyword.cloud_notm}} Private ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/installing/prep.html "Preparación del clúster para la instalación").
+Antes de instalar {{site.data.keyword.cloud_notm}} Private, las sugerencias siguientes le resultarán útiles para preparar los nodos para la instalación de {{site.data.keyword.cloud_notm}} Private. Encontrará requisitos previos adicionales de
+{{site.data.keyword.cloud_notm}} Private en la [documentación de {{site.data.keyword.cloud_notm}} Private ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/installing/prep.html "Preparación del clúster para la instalación").
 
 #### Actualización del valor de `vm.max_map_count`
 {{site.data.keyword.cloud_notm}} Private utiliza Elastic Search para el registro y la calibración. Para evitar excepciones de falta de memoria, Elastic Search requiere que se configure la propiedad del sistema `vm.max_map_count`. Antes de instalar {{site.data.keyword.cloud_notm}} Private, consulte las
@@ -49,9 +52,9 @@ echo "vm.max_map_count=262144” | tee -a /etc/sysctl.conf
 #### Configuración del archivo `/etc/hosts` en cada nodo del clúster
 
 - {{site.data.keyword.cloud_notm}} Private utiliza [Kubernetes ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://kubernetes.io/docs/tutorials/kubernetes-basics/ "Información básica de Kubernetes") para gestionar aplicaciones contenerizadas. El servidor de nombres de dominio (DNS) de Kubernetes fallará si no se configuran nombres de hosts en el archivo
-`/etc/hosts` de cada nodo. [Inserte la dirección IP, nombre de host y nombre abreviado de cada nodo en el clúster ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/installing/prep_cluster.html "Configuración del clúster") dentro del archivo `/etc/hosts` de cada nodo.
+`/etc/hosts` de cada nodo. [Inserte la dirección IP, nombre de host y nombre abreviado de cada nodo en el clúster ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/installing/prep_cluster.html "Configuración del clúster") dentro del archivo `/etc/hosts` de cada nodo.
 
-- [No hay soporte para IPv6 en {{site.data.keyword.cloud_notm}} Private ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/getting_started/known_issues.html#ipv6 "No hay soporte para IPv6"). Para evitar problemas con el servicio DNS en un clúster de {{site.data.keyword.cloud_notm}} Private, inhabilite los valores de IPv6 en el archivo `/etc/hosts` de cada nodo comentando la línea siguiente con un signo `#` al principio de la línea:
+- [No hay soporte para IPv6 en {{site.data.keyword.cloud_notm}} Private ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/getting_started/known_issues.html#ipv6 "No hay soporte para IPv6"). Para evitar problemas con el servicio DNS en un clúster de {{site.data.keyword.cloud_notm}} Private, inhabilite los valores de IPv6 en el archivo `/etc/hosts` de cada nodo comentando la línea siguiente con un signo `#` al principio de la línea:
   ```
   #::1  localhost ip6-localhost ip6-loopback
   ```
@@ -67,7 +70,7 @@ Asegúrese de que el sistema {{site.data.keyword.cloud_notm}} Private cumple los
 | CA | 1 |192 MB | 1 GB |
 | Clasificador | 2 | 512 MB | 100 GB con posibilidad de ampliación |
 | Igual | 2 | 2 GB | 50 GB con posibilidad de ampliación |
-| CouchDB para igual | 2| 2 GB |50 GB con posibilidad de ampliación |
+| CouchDB para igual<br>(Aplicable solo si utiliza CouchDB) | 2| 2 GB | 50 GB con posibilidad de ampliación |
 
  **Notas:**
  - Un vCPU es un núcleo virtual que se asigna a una
@@ -100,13 +103,14 @@ para máquinas virtuales. Debe tener en cuenta los requisitos de vCPU cuando dec
 
 Realice los pasos siguientes para instalar y configurar {{site.data.keyword.cloud_notm}} Private en el entorno.
 
-1. Instale un clúster de [{{site.data.keyword.cloud_notm}} Private ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo") ](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/kc_welcome_containers.html) de la versión 3.1.0. Si desea utilizar el diagrama de Helm para desarrollo, prueba o experimentación, puede instalar [{{site.data.keyword.cloud_notm}} Private Community Edition versión 3.1.0 ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/kc_welcome_containers.html "{{site.data.keyword.cloud_notm}} Private-CE versión 3.1.0") de forma gratuita.
+1. Instale un clúster de [{{site.data.keyword.cloud_notm}} Private ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo") ](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/kc_welcome_containers.html) de la versión 3.1.2. Si desea utilizar el diagrama de Helm para desarrollo, pruebas o experimentación, puede instalar
+[{{site.data.keyword.cloud_notm}} Private Community Edition versión 3.1.2 ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/kc_welcome_containers.html "{{site.data.keyword.cloud_notm}} Private-CE versión 3.1.2") de manera gratuita.
 
 2. Instale la CLI de {{site.data.keyword.cloud_notm}} Private
-[3.1.0 ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/manage_cluster/install_cli.html) para instalar y trabajar con la CA.
+[3.1.2 ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/manage_cluster/install_cli.html) para instalar y trabajar con la CA.
 
 3. Configure la política de seguridad de pod para el espacio de nombres de destino. Se proporcionan instrucciones en la
-[sección siguiente](/docs/services/blockchain/howto/ICP_setup.html#icp-setup-psp).
+[sección siguiente](#icp-setup-psp).
 
 Después de instalar {{site.data.keyword.cloud_notm}} Private y enlazar una política de seguridad de pod a un espacio de nombres de destino, puede continuar con la [importación del diagrama de Helm de {{site.data.keyword.blockchainfull_notm}} Platform para {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/howto/helm_install_icp.html#helm-install) en el clúster de {{site.data.keyword.cloud_notm}} Private.
 

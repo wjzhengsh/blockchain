@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-04-03"
+lastupdated: "2019-05-16"
+
+keywords: IBM Cloud Private, data storage CA, cluster ICP, configuration
 
 subcollection: blockchain
 
@@ -29,10 +31,10 @@ subcollection: blockchain
 以下の前提条件を満たし、{{site.data.keyword.cloud_notm}} Private をインストールするための環境を準備します。
 
 ### Docker
-{{site.data.keyword.cloud_notm}} Private では、Docker をインストールする必要があります。 [{{site.data.keyword.cloud_notm}} Private のインストール ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/installing/install.html " {{site.data.keyword.cloud_notm}} Private のインストール") の関連手順に従って、Docker をインストールします。
+{{site.data.keyword.cloud_notm}} Private では、Docker をインストールする必要があります。 [{{site.data.keyword.cloud_notm}} Private のインストール ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/installing/install.html "{{site.data.keyword.cloud_notm}} Private のインストール") の関連手順に従って、Docker をインストールします。
 
 ### {{site.data.keyword.cloud_notm}} Private 設定
-{{site.data.keyword.cloud_notm}} Private をインストールする前に、以下のヒントを参考にして {{site.data.keyword.cloud_notm}} Private インストール用にノードを準備します。 {{site.data.keyword.cloud_notm}} Private の追加の前提条件については、[{{site.data.keyword.cloud_notm}} Private の資料 ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/installing/prep.html "インストールのためのクラスターの準備") を参照してください。
+{{site.data.keyword.cloud_notm}} Private をインストールする前に、以下のヒントを参考にして {{site.data.keyword.cloud_notm}} Private インストール用にノードを準備します。 {{site.data.keyword.cloud_notm}} Private の追加の前提条件については、[{{site.data.keyword.cloud_notm}} Private の資料 ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/installing/prep.html "インストールのためのクラスターの準備") を参照してください。
 
 #### `vm.max_map_count` 設定の更新
 {{site.data.keyword.cloud_notm}} Private は、ロギングおよび計量に Elastic Search を使用します。 メモリー不足例外を回避するには、Elastic Search で `vm.max_map_count` システム・プロパティーを構成する必要があります。 {{site.data.keyword.cloud_notm}} Private をインストールする前に、[Elastic Search configuration instructions ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://www.elastic.co/guide/en/elasticsearch/reference/current/vm-max-map-count.html "Virtual memory") を参照して、各ノードでこのプロパティーを構成してください。 以下のコマンドを使用して、このプロパティーを完全に設定できます。
@@ -45,9 +47,9 @@ echo "vm.max_map_count=262144” | tee -a /etc/sysctl.conf
 
 #### クラスター内の各ノードの `/etc/hosts` ファイルの構成
 
-- {{site.data.keyword.cloud_notm}} Private は [Kubernetes ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://kubernetes.io/docs/tutorials/kubernetes-basics/ "Learn Kubernetes Basics") を使用してコンテナー化アプリケーションを管理します。 各ノードの `/etc/hosts` ファイルでホスト名が構成されていない場合、Kubernetes ドメイン・ネーム・サーバー (DNS) は失敗します。 [クラスター内の各ノードの IP アドレス、ホスト名、および短縮名 ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/installing/prep_cluster.html "クラスターの構成") を各ノードの `/etc/hosts` ファイルに挿入します。
+- {{site.data.keyword.cloud_notm}} Private は [Kubernetes ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://kubernetes.io/docs/tutorials/kubernetes-basics/ "Learn Kubernetes Basics") を使用してコンテナー化アプリケーションを管理します。 各ノードの `/etc/hosts` ファイルでホスト名が構成されていない場合、Kubernetes ドメイン・ネーム・サーバー (DNS) は失敗します。 [クラスター内の各ノードの IP アドレス、ホスト名、および短縮名 ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/installing/prep_cluster.html "クラスターの構成") を各ノードの `/etc/hosts` ファイルに挿入します。
 
-- [IPv6 は {{site.data.keyword.cloud_notm}} Private ではサポートされません ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/getting_started/known_issues.html#ipv6 "IPv6 はサポートされない")。 {{site.data.keyword.cloud_notm}} Private クラスター内の DNS サービスに関する問題を回避するには、以下のように行の先頭に `#` 記号を付けてこの行をコメント化し、各ノードの `/etc/hosts` ファイルの IPv6 設定を無効にします。
+- [IPv6 は {{site.data.keyword.cloud_notm}} Private ではサポートされません ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/getting_started/known_issues.html#ipv6 "IPv6 はサポートされない")。 {{site.data.keyword.cloud_notm}} Private クラスター内の DNS サービスに関する問題を回避するには、以下のように行の先頭に `#` 記号を付けてこの行をコメント化し、各ノードの `/etc/hosts` ファイルの IPv6 設定を無効にします。
   ```
   #::1  localhost ip6-localhost ip6-loopback
   ```
@@ -63,7 +65,7 @@ echo "vm.max_map_count=262144” | tee -a /etc/sysctl.conf
 | CA | 1 |192 MB | 1 GB |
 | 順序付けプログラム | 2 | 512 MB | 100 GB (拡張可能であること) |
 | ピア | 2 | 2 GB | 50 GB (拡張可能であること) |
-| ピア用 CouchDB | 2| 2 GB |50 GB (拡張可能であること) |
+| ピア用 CouchDB<br>(CouchDB を使用する場合だけに該当) | 2| 2 GB | 50 GB (拡張可能であること) |
 
  **注:**
  - vCPU は仮想マシンに割り当てられる仮想コアであるか、サーバーが仮想マシン用にパーティション化されていない場合は物理プロセッサー・コアです。 {{site.data.keyword.cloud_notm}} Private でのデプロイメントの仮想プロセッサー・コア (VPC) を決定する場合は、vCPU 要件を考慮する必要があります。 VPC は {{site.data.keyword.IBM_notm}} 製品のライセンス交付コストを決定する単位です。 VPC を決定するシナリオについて詳しくは、[仮想プロセッサー・コア (VPC) ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/en/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_virtual_processor_core_licenses.html) を参照してください。
@@ -93,18 +95,18 @@ echo "vm.max_map_count=262144” | tee -a /etc/sysctl.conf
 
 以下の手順を実行して、ご使用の環境に {{site.data.keyword.cloud_notm}} Private をインストールし、セットアップします。
 
-1. バージョン 3.1.0 の [{{site.data.keyword.cloud_notm}} Private ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン") ](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/kc_welcome_containers.html) クラスターをインストールします。 Helm チャートを開発、テスト、または実験用に使用する場合は、[{{site.data.keyword.cloud_notm}} Private Community Edition バージョン 3.1.0 ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/kc_welcome_containers.html "{{site.data.keyword.cloud_notm}} Private-CE バージョン 3.1.0") を無料でインストールできます。
+1. バージョン 3.1.2 の [{{site.data.keyword.cloud_notm}} Private ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン") ](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/kc_welcome_containers.html) クラスターをインストールします。 Helm チャートを開発、テスト、または実験用に使用する場合は、[{{site.data.keyword.cloud_notm}} Private Community Edition バージョン 3.1.2 ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/kc_welcome_containers.html "{{site.data.keyword.cloud_notm}} Private-CE バージョン 3.1.2") を無料でインストールできます。
 
-2. {{site.data.keyword.cloud_notm}} Private CLI [3.1.0 ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/manage_cluster/install_cli.html) をインストールして、CA をインストールし、操作します。
+2. {{site.data.keyword.cloud_notm}} Private CLI [3.1.2 ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/manage_cluster/install_cli.html) をインストールして、CA をインストールし、操作します。
 
-3. ターゲット名前空間のポッド・セキュリティー・ポリシーをセットアップします。[次のセクション](/docs/services/blockchain/howto/ICP_setup.html#icp-setup-psp)に説明があります。
+3. ターゲット名前空間のポッド・セキュリティー・ポリシーをセットアップします。 [次のセクション](#icp-setup-psp)に説明があります。
 
 {{site.data.keyword.cloud_notm}} Private をインストールして、ポッド・セキュリティー・ポリシーをターゲット名前空間にバインドしたら、[{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private Helm チャート](/docs/services/blockchain/howto/helm_install_icp.html#helm-install)を {{site.data.keyword.cloud_notm}} Private クラスターにインポートする作業に進むことができます。
 
 ## PodSecurityPolicy の要件
 {: #icp-setup-psp}
 
-Helm チャートを使用してコンポーネントをデプロイする前に、新しいターゲット名前空間を作成し、[PodSecurityPolicy ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://kubernetes.io/docs/concepts/policy/pod-security-policy/ "ポッド・セキュリティー・ポリシー") をその名前空間にバインドする必要があります。事前定義された PodSecurityPolicy を選択するか、クラスター管理者にカスタム PodSecurityPolicy の作成を依頼してください。
+Helm チャートを使用してコンポーネントをデプロイする前に、新しいターゲット名前空間を作成し、[PodSecurityPolicy ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://kubernetes.io/docs/concepts/policy/pod-security-policy/ "ポッド・セキュリティー・ポリシー") をその名前空間にバインドする必要があります。  事前定義された PodSecurityPolicy を選択するか、クラスター管理者にカスタム PodSecurityPolicy の作成を依頼してください。
 - 事前定義された PodSecurityPolicy 名: [`ibm-privileged-psp`](https://ibm.biz/cpkspec-psp)
 - カスタム PodSecurityPolicy 定義:
   ```

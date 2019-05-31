@@ -2,7 +2,9 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-03-20"
+lastupdated: "2019-03-22"
+
+keywords: best practices, develop applications, connectivity, availability, mutual TLS, CouchDB
 
 subcollection: blockchain
 
@@ -26,7 +28,7 @@ Questa guida è pensata per gli utenti che hanno già imparato le basi dello svi
 ## Connettività e disponibilità delle applicazioni
 {: #best-practices-app-connectivity-availability}
 
-Il [Flusso di transazioni ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/txflow.html "Flusso di transazioni"){:new_window} di Hyperledger Fabric si estende su più componenti, dove le applicazioni client svolgono un ruolo unico. L'SDK invia le proposte di transazione ai peer per ottenere l'approvazione. Dopo raccoglie le proposte approvate da inviare al servizio ordini, che quindi invia blocchi di transazioni ai peer da aggiungere ai libri mastro del canale. Gli sviluppatori di applicazioni di produzione devono essere preparati a gestire le interazioni tra l'SDK e le loro reti per l'efficienza e la disponibilità.
+Il [Flusso di transazioni ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/txflow.html "Flusso di transazioni"){:new_window} di Hyperledger Fabric si estende su più componenti, dove le applicazioni client svolgono un ruolo unico. L'SDK invia le proposte di transazione ai peer per ottenere l'approvazione. Dopo raccoglie le proposte approvate da inviare al servizio ordini, che quindi invia blocchi di transazioni ai peer da aggiungere ai libri mastro del canale. Gli sviluppatori di applicazioni di produzione devono essere preparati a gestire le interazioni tra l'SDK e le loro reti per l'efficienza e la disponibilità.
 
 ### Gestione delle transazioni
 {: #best-practices-app-managing-transactions}
@@ -158,7 +160,7 @@ channel.sendInstantiateProposal(request, 300000);
 
 Se utilizzi CouchDB come tuo database dello stato, puoi eseguire le query di dati JSON dal tuo chaincode sui dati di stato del canale. Ti consigliamo vivamente di creare indici per le tue query JSON e di utilizzarli nel tuo chaincode. Gli indici consentono alle tue applicazioni di richiamare in modo efficiente i dati quando la tua rete aggiunge blocchi aggiuntivi di transazioni e voci nello stato globale.
 
-Per ulteriori informazioni su CouchDB e su come configurare gli indici, vedi [CouchDB as the State Database ![Icona link esterno](images/external_link.svg "Icona link esterno")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/couchdb_as_state_database.html "CouchDB as the State Database"){:new_window} nella documentazione di Hyperledger Fabric. Puoi anche trovare un esempio che utilizza un indice con il chaincode nell'[esercitazione di CouchDB di Fabric ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/couchdb_tutorial.html).
+Per ulteriori informazioni su CouchDB e su come configurare gli indici, vedi [CouchDB as the State Database ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/couchdb_as_state_database.html "CouchDB as the State Database"){:new_window} nella documentazione di Hyperledger Fabric. Puoi anche trovare un esempio che utilizza un indice con il chaincode nell'[esercitazione di CouchDB di Fabric ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/couchdb_tutorial.html).
 
 Evita di usare il chaincode per le query che produrranno una scansione dell'intero database CouchDB. Delle scansioni del database complete comporteranno dei tempi di risposta lunghi e ridurranno le prestazioni della tua rete. Per evitare e gestire delle query di grandi dimensioni, puoi eseguire alcuni dei seguenti passi:
 - Configura gli indici con il tuo chaincode.
@@ -166,7 +168,7 @@ Evita di usare il chaincode per le query che produrranno una scansione dell'inte
 - Le query più complesse avranno delle prestazioni inferiori e sarà meno probabile che vengano utilizzate in un indice.
 - Dovresti provare ad evitare gli operatori che comporteranno una scansione dell'intera tabella o dell'intero indice, come ad esempio `$or`, `$in` e `$regex`.
 
-Puoi trovare degli esempi che illustrano come le query utilizzando gli indici e quale tipo di query avrà le prestazioni migliori nell'[Esercitazione Fabric CouchDB ![Icona link esterno](https://hyperledger-fabric.readthedocs.io/en/release-1.2/couchdb_tutorial.html#use-best-practices-for-queries-and-indexes).
+Puoi trovare degli esempi che illustrano come le query utilizzando gli indici e quale tipo di query avrà le prestazioni migliori nell'[Esercitazione Fabric CouchDB ![Icona link esterno](https://hyperledger-fabric.readthedocs.io/en/release-1.4/couchdb_tutorial.html#use-best-practices-for-queries-and-indexes).
 
 I peer su {{site.data.keyword.blockchainfull_notm}} Platform hanno un queryLimit impostato e restituiranno solo 10.000 voci dal database dello stato. Se la tua query raggiunge il queryLimit, puoi utilizzare più query per ottenere i rimanenti risultati. Se hai bisogno di più risultati da una query di intervallo, inizia le query successive con l'ultima chiave restituita dalla query precedente. Se hai bisogno di più risultati dalle query JSON, ordina la tua query utilizzando una delle variabili nei tuoi dati e utilizza quindi l'ultimo valore dalla query precedente in un filtro 'greater than' per la query successiva.
 

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-04-23"
+lastupdated: "2019-05-16"
 
 keywords: blockchain components, ca, certificate authorities, peer, ordering service, orderer, channel, smart contract, applications
 
@@ -41,12 +41,14 @@ La base di una rete blockchain basata su Fabric sono le identità e le autorizza
 
 Le CA di {{site.data.keyword.blockchainfull_notm}} Platform sono basate sulla [CA di Hyperledger Fabric ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/ "CA Hyperledger Fabric"), sebbene sia possibile utilizzare un'altra CA purché utilizzi una PKI basata su certificati x.509. Potrebbero esserci, e di solito ci sono, più livelli di CA. La "CA root" per una rete non sarà normalmente esposta tranne che per fornire i certificati alle "CA intermedie", che emetteranno i certificati direttamente agli utenti e ai componenti o a più livelli di CA intermedie. Per ulteriori dettagli su come vengono utilizzate le autorità di certificazione per stabilire l'identità e l'appartenenza, consulta la [documentazione di Hyperledger Fabric sull'identità ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/identity/identity.html) e sull'[appartenenza ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/membership/membership.html)
 
-## Ordinanti
+## Servizi di ordinazione
 {: #blockchain-component-overview-orderer}
 
 Mentre il servizio ordini viene spesso definito come il "cuore" di una rete, la sua funzione è in realtà piuttosto semplice: ordinare le transazioni che sono state convalidate dai peer in blocchi e rimandarle ai peer per essere scritte nei loro libri mastro. Nelle versioni precedenti di Fabric, questa funzionalità era integrata all'interno del peer, ma a partire da Fabric v1.0, è stata separata in un altro componente per aumentare le prestazioni del peer ed evitare anomalie che potrebbero causare potenziali fork di stato.
 
-A un livello fisico, questa funzione di ordinazione normalmente richiede una serie di ordinanti collettivamente conosciuti come "servizio ordini", anche se negli ambienti di test o POC è possibile utilizzare un nodo singolo (noto come ordinante SOLO).
+A un livello fisico, questa funzione di ordinazione normalmente richiede una serie di ordinanti collettivamente conosciuti come "servizio di ordinazione".
+
+Per ulteriori informazioni sul servizio di ordinazione, vedi [The Ordering Service ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/orderer/ordering_service.html).
 
 ## Peer
 {: #blockchain-component-overview-peer}
@@ -74,9 +76,7 @@ Nel mondo degli affari i contratti sono firmati e depositati tramite studi legal
 
 Le applicazioni client in una rete basata su Fabric come {{site.data.keyword.blockchainfull_notm}} Platform utilizzano infrastrutture sottostanti come API, SDK e smart contract per consentire le interazioni tra i client (richiami e query) a un livello di astrazione più elevato.
 
-Per vedere come le applicazioni interagiscono con una rete basata su Fabric, consulta la [documentazione sulla scrittura della tua prima applicazione![Icona link esterno](images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/write_first_app.html "Writing Your First Application").  Inoltre, tieni presente che l'area sta subendo sostanziali miglioramenti in Fabric v1.4, che sono disponibili in {{site.data.keyword.blockchainfull_notm}} Platform 2.0. Per ulteriori informazioni, consulta l'argomento di Hyperledger Fabric sullo [sviluppo di applicazioni ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/developapps/developing_applications.html "Developing Applications").  Sebbene queste funzionalità dirette, come la classe di contratto, non siano compatibili con Fabric v1.2, che è la versione corrente del piano Starter, sono fornite informazioni concettuali e altri suggerimenti utili che meritano di essere presi in considerazione nella progettazione della tua applicazione e prepararti al futuro.
-
-Per vedere come un'applicazione interagisce con una rete basata su Fabric, consulta la documentazione sulla [creazione di applicazioni](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app).
+Per vedere come le applicazioni interagiscono con una rete basata su Fabric, consulta l'argomento [Developing Applications ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/developapps/developing_applications.html "Developing Applications") nella documentazione Hyperledger Fabric. Puoi anche visitare l'argomento [creazione di applicazioni](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app) per informazioni su come connettere le tue applicazioni a {{site.data.keyword.blockchainfull_notm}} Platform.
 
 ## Una rete di esempio
 {: #blockchain-component-overview-example-network}

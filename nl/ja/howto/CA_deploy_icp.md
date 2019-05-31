@@ -4,6 +4,8 @@ copyright:
   years: 2018, 2019
 lastupdated: "2019-04-23"
 
+keywords: IBM Cloud Private, Certificate Authority, deploy CA, CA admin secret, CA logs, Helm chart, on-prem
+
 subcollection: blockchain
 
 ---
@@ -55,7 +57,7 @@ CA は、AMD64 プラットフォームまたは S390X プラットフォーム�
 
 1. {{site.data.keyword.cloud_notm}} Private に CA をインストールするには、その前に[{{site.data.keyword.cloud_notm}} Private をインストール](/docs/services/blockchain/ICP_setup.html#icp-setup)し、[{{site.data.keyword.blockchainfull_notm}} Platform Helm チャートをインストール](/docs/services/blockchain/howto/helm_install_icp.html#helm-install)する必要があります。
 
-2. Community Edition を使用し、インターネット接続なしでこの Helm チャートを {{site.data.keyword.cloud_notm}} Private クラスター上で実行する場合は、インターネットに接続されたマシン上にアーカイブを作成した後に、アーカイブを {{site.data.keyword.cloud_notm}} Private クラスターにインストールすることができます。 詳しくは、[インターネット接続がないクラスターへのフィーチャー・アプリケーションの追加 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/app_center/add_package_offline.html "インターネット接続がないクラスターへのフィーチャー・アプリケーションの追加"){:new_window} を参照してください。 仕様ファイル manifest.yaml は、Helm チャート内の ibm-blockchain-platform-dev/ibm_cloud_pak にあります。
+2. Community Edition を使用しており、インターネットに接続されていない {{site.data.keyword.cloud_notm}} Private クラスター上でこの Helm チャートを実行する場合は、アーカイブを {{site.data.keyword.cloud_notm}} Private クラスターにインストールするためには、インターネットに接続されたマシン上でそれらのアーカイブを事前に作成する必要があります。 詳しくは、[インターネット接続がないクラスターへのフィーチャー・アプリケーションの追加 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/app_center/add_package_offline.html "インターネット接続がないクラスターへのフィーチャー・アプリケーションの追加"){:new_window} を参照してください。 仕様ファイル manifest.yaml は、Helm チャート内の ibm-blockchain-platform-dev/ibm_cloud_pak にあります。
 
 3. {{site.data.keyword.cloud_notm}} Private コンソールからクラスター・プロキシー IP アドレスの値を取得します。 **注:** プロキシー IP にアクセスするには、[クラスター管理者 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/user_management/assign_role.html "クラスター管理者役割とアクション") である必要があります。 {{site.data.keyword.cloud_notm}} Private クラスターにログインします。 左側のナビゲーション・パネルで**「プラットフォーム」**、**「ノード」**の順にクリックし、クラスターで定義されているノードを表示します。 `proxy` 役割を持つノードをクリックし、テーブルから`「ホスト IP」`の値をコピーします。
 
@@ -131,7 +133,7 @@ CA 管理者秘密を作成したら、以下のステップを使用して CA �
 |**一般パラメーター**| Helm チャートを構成するパラメーター | | |
 | `Helm リリース名 (Helm release name)`| Helm リリースの名前。 小文字で始まり、任意の英数字で終わる必要があり、ハイフンと小文字の英数字のみを含む必要があります。 コンポーネントのインストールを試行するたびに固有の Helm リリース名を使用する必要があります。 | なし | はい |
 | `ターゲット名前空間 (Target namespace)`| Helm チャートをインストールする Kubernetes 名前空間を選択します。 | なし | はい |
-| `ターゲット名前空間のポリシー (Target namespace policies)`| 選択した名前空間のポッド・セキュリティー・ポリシーが表示されます。**`ibm-privileged-psp`** ポリシーが含まれているはずです。そうでない場合は、その名前空間に [PodSecurityPolicy をバインド](/docs/services/blockchain?topic=blockchain-icp-setup#icp-setup-psp)してください。| なし | いいえ |
+| `ターゲット名前空間のポリシー (Target namespace policies)`| 選択した名前空間のポッド・セキュリティー・ポリシーが表示されます。**`ibm-privileged-psp`** ポリシーが含まれているはずです。 そうでない場合は、その名前空間に [PodSecurityPolicy をバインド](/docs/services/blockchain?topic=blockchain-icp-setup#icp-setup-psp)してください。 | なし | いいえ |
 |**グローバル構成 (Global configuration)**| Helm チャート内のすべてのコンポーネントに適用されるパラメーター | | |
 | `サービス・アカウント名 (Service account name)`| ポッドの実行に使用する[サービス・アカウント ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/ "ポッドのサービス・アカウントの構成") の名前を入力します。 | デフォルト | いいえ |
 
@@ -154,7 +156,7 @@ CA 管理者秘密を作成したら、以下のステップを使用して CA �
 | `CA ボリューム・クレーム・サイズ (CA volume claim size)`| 使用するディスクのサイズを選択します。 | 2Gi | はい |
 | `CA イメージ・リポジトリー (CA image repository)`| CA Helm チャートの場所。 | ibmcom/ibp-fabric-ca | はい |
 | `CA Docker イメージ・タグ (CA Docker image tag)`| CA イメージに関連付けられているタグの値。 このフィールドには、イメージ・バージョンが自動入力されます。 | 1.4.0 | はい |
-| `CA Init Docker イメージ・リポジトリー (CA Init Docker image repository)`| CA Init Docker イメージの場所。このフィールドには、イメージの場所が自動入力されます。| ibmcom/ibp-init | はい |
+| `CA Init Docker イメージ・リポジトリー (CA Init Docker image repository)`| CA Init Docker イメージの場所。 このフィールドには、イメージの場所が自動入力されます。 | ibmcom/ibp-init | はい |
 | `CA Init Docker イメージ・タグ (CA Init Docker image tag)`| CA Init Docker イメージに関連付けられているタグの値。 このフィールドには、イメージ・バージョンが自動入力されます。 | 1.4.0 | はい |
 | `CA サービス・タイプ (CA service type)` | ピアで[外部ポートを公開 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types) するかどうかを指定するために使用します。 ポートを外部に対して公開する場合は NodePort を選択し (推奨)、ポートを公開しない場合は ClusterIP を選択します。 LoadBalancer および ExternalName はこのリリースではサポートされていません。 | NodePort | はい |
 | `CA 秘密 (CA secret) (必須)`| `ca-admin-name` および `ca-admin-password` で作成した Kubernetes 秘密オブジェクトの名前を入力します。 | なし | はい |

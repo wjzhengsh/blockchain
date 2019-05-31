@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-04-23"
+lastupdated: "2019-05-16"
+
+keywords: Helm chart, orderer configuration file, IBM Cloud Private, deploy an orderer, ordering service
 
 subcollection: blockchain
 
@@ -94,7 +96,7 @@ Tras guardar el archivo de configuración, deberá codificarlo en el formato bas
    ```
    LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tDQpNSUlFbERDQ0EzeWdBd0lCQWdJUUFmMmo2MjdLZGNpSVE0dHlTOCs4a1RBTkJna3Foa2lHOXcwQkFRc0ZBREJoDQpNUXN3Q1FZRFZRUUdFd0pWVXpFVk1CTUdBMVVFQ2hNTVJHbG5hVU5sY25RZ1NXNWpNUmt3RndZRFZRUUxFeEIzDQpkM2N1WkdsbmFXTmxjblF1WTI5dE1TQXdIZ1lEVlFRREV4ZEVhV2RwUTJWeWRDQkhiRzlpWVd3Z1VtOXZkQ0JEDQpRVEFlRncweE16QXpNRGd4TWpBd01EQmFGdzB5TXpBek1EZ3hNakF3TURCYU1FMHhDekFKQmdOVkJBWVRBbFZUDQpNUlV3RXdZRFZRUUtFd3hFYVdkcFEyVnlkQ0JKYm1NeEp6QWxCZ05WQkFNVEhrUnBaMmxEWlhKMElGTklRVElnDQpVMlZqZFhKbElGTmxjblpsY2lC
    ```
-   y no similar a:
+   Pero no a:
 
    ```
    LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tDQpNSUlFbERDQ0EzeWdBd0lCQWdJUUFmMmo2MjdL
@@ -204,7 +206,8 @@ Como alternativa, puede utilizar la CLI de Helm para instalar el release de Helm
 [añadir el repositorio de Helm del clúster al entorno de CLI de Helm
 ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/app_center/add_int_helm_repo_to_cli.html "Adición del repositorio interno de Helm a la CLI de Helm").
 
-Puede establecer los parámetros necesarios para la instalación creando un archivo `yaml` y pasándolo al mandato `helm install` siguiente.
+Puede establecer los parámetros necesarios para la instalación creando un archivo
+`yaml` y pasándolo al mandato `helm install` siguiente.
 
 ```
 helm install --name <helm_release_name>  <helm_chart> \

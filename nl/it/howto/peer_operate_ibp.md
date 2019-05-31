@@ -4,6 +4,8 @@ copyright:
   years: 2017, 2019
 lastupdated: "2019-04-23"
 
+keywords: command line, peer, operate peers, peer TLS certificate, IBM Cloud
+
 subcollection: blockchain
 
 ---
@@ -177,10 +179,10 @@ Si consiglia di utilizzare la versione 1.4.0 dell'SDK Node.
 Il tuo peer viene distribuito con all'interno il signCert del tuo amministratore del peer. Questo ti consente di utilizzare la cartella MSP e i certificati dell'amministratore del peer per gestirlo.
 
 Localizza i certificati che hai creato quando hai [iscritto il tuo amministratore del peer](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-enroll-admin). Se hai usato i comandi di esempio, puoi trovare la cartella MSP del tuo amministratore peer in `$HOME/fabric-ca-client/peer-admin`.
-  - Puoi creare il contesto utente di gestione del peer con l'SDK utilizzando il signCert (chiave pubblica) e la chiave privata nella cartella MSP. Puoi trovare queste chiavi nelle seguenti ubicazioni:
+  - Puoi creare il contesto utente di gestione del peer con l'SDK utilizzando il signCert e la chiave privata nella cartella MSP. Puoi trovare queste chiavi nelle seguenti ubicazioni:
     - Il signCert è disponibile nella cartella **signcerts**: `$HOME/fabric-ca-client/peer-admin/msp/signcerts`
     - La chiave privata può essere trovata nella cartella **keystore:**: `$HOME/fabric-ca-client/peer-admin/msp/keystore`
-    Puoi trovare un esempio di come creare un contesto utente e gestire l'SDK utilizzando solo la chiave pubblica e privata in [questa sezione dell'esercitazione di sviluppo delle applicazioni](/docs/services/blockchain/v10_application.html#dev-app-enroll-panel).
+    Puoi trovare un esempio di come creare un contesto utente e gestire l'SDK utilizzando solo il certificato di firma e la chiave privata in [questa sezione dell'esercitazione di sviluppo delle applicazioni](/docs/services/blockchain/v10_application.html#dev-app-enroll-panel).
 
 Puoi anche trovare l'SDK per generare la chiave privata e il signCert di gestione del peer utilizzando le informazioni sull'endpoint della CA sul piano Starter o Enterprise e i tuoi [nome utente e password di gestione del peer](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-register-admin).
 
@@ -287,7 +289,7 @@ export FABRIC_CFG_PATH=$HOME/config
 
 
 ### Gestione dei certificati sul tuo sistema locale
-{: #manage-certs}
+{: #peer-operate-manage-certs}
 
 Passa alla directory dove è generata la cartella MSP dell'amministratore peer. Se ti sei attenuto alla procedura di esempio indicata in questa documentazione, puoi trovare la cartella MSP in una directory simile alla seguente:
 
@@ -412,7 +414,7 @@ Dopo aver spostato tutti i nostri certificati nell'ubicazione necessaria, devi i
     - Sostituisci `<ORDERER_URL>` con il nome host e la porta dell'ordinante dal tuo profilo di connessione.
     - Sostituisci `<PATH_TO_ADMIN_MSP>` con il percorso alla cartella MSP del tuo amministratore peer.
     - Sostituisci `<PATH_TO_PEER_TLS_CERT>` con il percorso al certificato TLS del peer che hai scaricato.
-    - Sostituisci `<MSPID_OF_PEER_BEING_USED>` con l'MSPID organizzazione del peer che stai usando per recuperare un blocco di genesi o per unirti a un canale o installare un chaincode. 
+    - Sostituisci `<MSPID_OF_PEER_BEING_USED>` con l'MSPID organizzazione del peer che stai usando per recuperare un blocco di genesi o per unirti a un canale o installare un chaincode.
 
   Ad esempio:
 
@@ -607,7 +609,7 @@ Se il chaincode è già installato e istanziato su un canale prima che tenti di 
 
 1. Impacchetta il chaincode con il comando [`peer chaincode package`![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/peerchaincode.html?highlight=peer%20chaincode%20package#peer-chaincode-package).
 2. Installa il pacchetto chaincode sul peer in esecuzione su {{site.data.keyword.cloud_notm}} Private eseguendo il comando `peer chaincode install`.
-3. Se disponi dei file binari della piattaforma, puoi eseguire il comando [`peer chaincode upgrade`![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/peerchaincode.html?highlight=peer%20chaincode%20package#peer-chaincode-upgrade) per eseguire l'upgrade del chaincode in esecuzione sul peer del piano Starter o Enterprise, che utilizza il pacchetto chaincode.
+3. Se disponi di file binari specifici per la piattaforma, puoi eseguire il comando [`peer chaincode upgrade`![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/peerchaincode.html?highlight=peer%20chaincode%20package#peer-chaincode-upgrade) per eseguire l'upgrade del chaincode in esecuzione sul peer del piano Starter o Enterprise, che utilizza il pacchetto chaincode.
 4. Istanzia il chaincode appena installato sul canale utilizzando la CLI o l'IU del Monitoraggio della rete.
 
 Il processo di upgrade del chaincode può essere trovato in [`Chaincode for Operators`![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/chaincode4noah.html) nella documentazione Hyperledger Fabric.

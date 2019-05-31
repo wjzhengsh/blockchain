@@ -4,6 +4,8 @@ copyright:
   years: 2017, 2019
 lastupdated: "2019-03-20"
 
+keywords: Swagger APIs, create a network, join a network, authentication credential
+
 subcollection: blockchain
 
 ---

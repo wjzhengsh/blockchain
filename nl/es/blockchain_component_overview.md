@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-04-23"
+lastupdated: "2019-05-16"
 
 keywords: blockchain components, ca, certificate authorities, peer, ordering service, orderer, channel, smart contract, applications
 
@@ -47,12 +47,14 @@ Las entidades emisoras de certificados de {{site.data.keyword.blockchainfull_not
 [pertenencia
 ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/membership/membership.html)
 
-## Clasificadores
+## Servicios de ordenación
 {: #blockchain-component-overview-orderer}
 
 Aunque el servicio de ordenación se conoce con frecuencia como el "corazón" de la red, su función es bastante simple en realidad: clasificar las transacciones que han validado los iguales en bloques y enviarlas de vuelta a los iguales para que las escriban en sus libros mayores. En versiones anteriores de Fabric, esta funcionalidad se ha empaquetado dentro del igual, pero a partir de Fabric v1.0, se ha separado en un componente independiente para aumentar el rendimiento del igual y evitar los desvíos que puedan resultar en bifurcaciones de estado potenciales.
 
-A nivel físico, esta función de ordenación requiere habitualmente un conjunto de clasificadores que se conoce colectivamente como "servicio de ordenación", aunque en entornos de prueba o pruebas de concepto es posible utilizar un único nodo (conocido como clasificador SOLO).
+A nivel físico, esta función de ordenación requiere habitualmente un conjunto de clasificadores que se conoce colectivamente como "servicio de ordenación".
+
+Para obtener más información sobre el servicio de ordenación, consulte [El servicio de ordenación ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/orderer/ordering_service.html).
 
 ## Iguales
 {: #blockchain-component-overview-peer}
@@ -81,9 +83,9 @@ Cuando los contratos del mundo empresarial se firman y se rellenan con firmas le
 
 Las aplicaciones cliente de una red basada en Fabric, como {{site.data.keyword.blockchainfull_notm}} Platform, aprovechan infraestructuras subyacentes como las API, los SDK y los contratos inteligentes para permitir interacciones de clientes (invocaciones y consultas) a un mayor nivel de abstracción.
 
-Para ver cómo interactúan las aplicaciones con una red basada en Fabric, consulte la [documentación sobre cómo escribir su primera aplicación ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/write_first_app.html "Cómo escribir su primera aplicación").  Tenga también en cuenta que el área está experimentando mejoras sustanciales en Fabric v1.4, que están disponibles en {{site.data.keyword.blockchainfull_notm}} Platform 2.0. Consulte el tema de Hyperledger Fabric de [Desarrollo de aplicaciones ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/developapps/developing_applications.html "Desarrollo de aplicaciones") para obtener más información.  Aunque estas funciones directas, como la clase de contrato, no son compatibles con Fabric v1.2, que es la versión actual del Plan de inicio, contienen información conceptual y otras sugerencias útiles que valen la pena incluir en el diseño de la aplicación y en la preparación para el futuro.
-
-Para ver cómo interactúa una aplicación con una red basada en Fabric, consulte la documentación sobre la [creación de aplicaciones](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app).
+Para ver cómo interactúan las aplicaciones con una red basada en Fabric, consulte el tema
+[Desarrollo de aplicaciones ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/developapps/developing_applications.html "Desarrollo de aplicaciones") en la documentación de Hyperledger Fabric. También puede consultar el tema sobre
+[creación de aplicaciones](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app) para aprender a conectar sus aplicaciones con {{site.data.keyword.blockchainfull_notm}} Platform.
 
 ## Una red de ejemplo
 {: #blockchain-component-overview-example-network}

@@ -1,8 +1,10 @@
 ---
 
 copyright:
-  years: 2018,2019
-lastupdated: "2019-04-23"
+  years: 2018, 2019
+lastupdated: "2019-05-16"
+
+keywords: chaincode endorsement policy, install chaincode, instantiate chaincode, update chaincode
 
 subcollection: blockchain
 
@@ -18,12 +20,12 @@ subcollection: blockchain
 {: #install-instantiate-chaincode}
 
 
-El código de encadenamiento es un software que combina lógica empresarial e instrucciones transaccionales para crear y modificar activos en libro mayor. El código de encadenamiento puede estar escrito en distintos lenguajes, e {{site.data.keyword.blockchainfull}} Platform da soporte al código de encadenamiento Go y Node.js. Se ejecuta en un contenedor de Docker asociado a cualquier igual que necesite interactuar con el mismo. Para obtener más información sobre el desarrollo de código de encadenamiento, consulte [Guías de aprendizaje de código de encadenamiento ![icono de enlace externo](../images/external_link.svg "icono de enlace externo")](http://hyperledger-fabric.readthedocs.io/en/release-1.2/chaincode.html).
+El código de encadenamiento es un software que combina lógica empresarial e instrucciones transaccionales para crear y modificar activos en libro mayor. El código de encadenamiento puede estar escrito en distintos lenguajes, e {{site.data.keyword.blockchainfull}} Platform da soporte al código de encadenamiento Go y Node.js. Se ejecuta en un contenedor de Docker asociado a cualquier igual que necesite interactuar con el mismo. Para obtener más información sobre el desarrollo de código de encadenamiento, consulte [Guías de aprendizaje de código de encadenamiento ![icono de enlace externo](../images/external_link.svg "icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/chaincode.html).
 {:shortdesc}
 
 El código de encadenamiento se instala en un igual, y luego se crea una instancia en un canal. **Todos los miembros que desean enviar transacciones o leer datos utilizando un código de encadenamiento tienen que instalar el código de encadenamiento en su igual.** Un código de encadenamiento se define por su nombre y versión. Tanto el nombre como la versión del código de encadenamiento instalado deben ser coherentes entre los iguales de un canal.
 
-Una vez se ha instalado el código de encadenamiento en los iguales, un solo miembro de la red crea una instancia del código de encadenamiento en el canal. El miembro de red debe haberse unido al canal para poder realizar esta acción. La creación de la instancia introducirá los datos iniciales utilizados por el código de encadenamiento, y luego iniciará los contenedores de códigos de encadenamiento en los iguales que se hayan unido al canal con el código de encadenamiento instalado. A continuación, los iguales pueden utilizar los contenedores en ejecución para realizar transacciones. **Tenga en cuenta que solo un miembro de red tiene que crear una instancia de un código de encadenamiento.** Si un igual con un código de encadenamiento instalado se une a un canal en el que ya se ha creado una instancia, el contenedor de código de encadenamiento se iniciará automáticamente.
+Una vez se ha instalado el código de encadenamiento en los iguales, un solo miembro de la red crea una instancia del código de encadenamiento en el canal. El miembro de red debe haberse unido al canal para poder realizar esta acción. La creación de la instancia introducirá los datos iniciales que utiliza el código de encadenamiento, y luego iniciará los contenedores de códigos de encadenamiento en los iguales que se unan al canal con el código de encadenamiento instalado. A continuación, los iguales pueden utilizar los contenedores en ejecución para realizar transacciones. **Tenga en cuenta que solo un miembro de red tiene que crear una instancia de un código de encadenamiento.** Si un igual con un código de encadenamiento instalado se une a un canal en el que ya se ha creado una instancia, el contenedor de código de encadenamiento se iniciará automáticamente.
 
 La combinación de **instalación y creación de instancias** es una función muy potente, porque permite a un igual utilizar un solo código de encadenamiento en varios canales. Los iguales pueden unirse a varios canales que utilicen el mismo código de encadenamiento, pero distintos conjuntos de miembros de la red capaces de acceder a los datos. Un igual puede instalar el código de encadenamiento una vez y, a continuación, utilizar el mismo contenedor de código de encadenamiento en cualquier canal en el que se haya creado una instancia. Este enfoque ligero ahorra cálculo y espacio de almacenamiento, y le ayuda a escalar la red.
 
@@ -82,7 +84,7 @@ Cuando utilice el Supervisor de red para establecer la política de aprobación,
 
   ![Política de aprobación avanzada](../images/advanced_endorsement.png "Política de aprobación avanzada")
 
-Las políticas de aprobación no se actualizan automáticamente cuando nuevas organizaciones se unen al canal e instalan el código de encadenamiento. Por ejemplo, si la política requiere que dos de cinco organizaciones aprueben una transacción, la política no se actualizará para que necesite dos de seis organizaciones cuando una nueva organización se una al canal. En su lugar, la nueva organización no aparecerá en la política y no se podrán aprobar las transacciones. Puede añadir una nueva organización a una política de aprobación actualizando el código de encadenamiento correspondiente.
+Las políticas de aprobación no se actualizan automáticamente cuando nuevas organizaciones se unen al canal e instalan el código de encadenamiento. Por ejemplo, si la política requiere que dos de cinco organizaciones aprueben una transacción, la política no se actualizará para que necesite dos de seis organizaciones cuando una nueva organización se una al canal. En su lugar, la nueva organización no aparecerá en la política y no se podrán aprobar las transacciones. Puede añadir otra organización a una política de aprobación actualizando el código de encadenamiento correspondiente.
 
 ## Actualización de un código de encadenamiento
 {: #install-instantiate-chaincode-update-cc}

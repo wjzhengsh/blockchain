@@ -1,8 +1,10 @@
 ---
 
 copyright:
-  years: 2018,2019
-lastupdated: "2019-04-17"
+  years: 2018, 2019
+lastupdated: "2019-05-16"
+
+keywords: Starter Plan network, Starter Plan, Enterprise Plan network, Enterprise Plan, migration
 
 subcollection: blockchain
 
@@ -66,7 +68,7 @@ subcollection: blockchain
 
 엔터프라이즈 플랜 네트워크에서 스타터 플랜 네트워크의 조직(멤버), 채널 및 피어의 구성을 다시 작성할 수 있습니다. 네트워크 모니터 UI를 통해 해당 조직을 초대하여 네트워크 리소스를 다시 작성(스타터에서와 같이 조직을 **전환**할 수 없음에 유의)하고 채널을 작성하며 피어를 작성(다시 초대된 조직이 자체 피어를 작성해야 함)할 수 있습니다.
 
-1. {{site.data.keyword.cloud_notm}}에서 엔터프라이즈 플랜 네트워크에 로그인하고 네트워크 모니터를 입력합니다.
+1. {{site.data.keyword.cloud_notm}}의 엔터프라이즈 플랜 네트워크에 로그인하여 네트워크 모니터에 들어갑니다.
 2. "멤버" 화면에서 조직(멤버)을 다시 작성하고 "채널" 화면에서 채널을 다시 작성하며 "개요" 화면에서 피어를 다시 작성합니다. 네트워크 리소스 작성에 관한 자세한 정보는 [네트워크 모니터 사용](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-overview)을 참조하십시오.
 3. 스타터 플랜 네트워크에서와 동일한 방식으로 구성원을 추가하고 채널 정책을 설정하여 채널을 구성합니다.
 
@@ -75,9 +77,7 @@ subcollection: blockchain
 ### 체인코드 마이그레이션
 {: #migrate_starter_to_enterprise_cc}
 
-체인코드는 로컬 환경에서 외부적으로 개발하고 클라이언트 애플리케이션에서 호출합니다. 스타터 플랜 네트워크에서
-테스트한 체인코드를 엔터프라이즈 플랜 네트워크에서 선택한 피어에 설치하고 인스턴스화하려면 [체인코드 설치, 인스턴스화 및 업데이트](/docs/services/blockchain
-/howto/install_instantiate_chaincode.html#install-instantiate-chaincode-install-cc)의 지시사항을 따르십시오.
+체인코드는 로컬 환경에서 외부적으로 개발하고 클라이언트 애플리케이션에서 호출합니다. 스타터 플랜 네트워크에서 테스트된 체인코드를 엔터프라이즈 플랜 네트워크의 선택한 피어에 설치하고 인스턴스화하려면 [체인코드 설치, 인스턴스화 및 업데이트](/docs/services/blockchain/howto/install_instantiate_chaincode.html#install-instantiate-chaincode-install-cc "체인코드 설치, 인스턴스화 및 업데이트")의 지시사항을 따르십시오.
 
 ### 클라이언트 애플리케이션 업데이트
 {: #migrate_starter_to_enterprise_app}

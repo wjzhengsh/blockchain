@@ -1,8 +1,10 @@
 ---
 
 copyright:
-  years: 2018,2019
-lastupdated: "2019-03-05"
+  years: 2018, 2019
+lastupdated: "2019-05-16"
+
+keywords: IBM Cloud accounts, IBM Blockchain Platform, pay your own fees, pay for others
 
 subcollection: blockchain
 
@@ -28,7 +30,7 @@ Cuando varias organizaciones creen un consorcio, se recomienda que las organizac
 ## Requisitos previos
 {: #paying-mode-prereq}
 
-Cada miembro de red debe tener una cuenta de pago de {{site.data.keyword.cloud_notm}}, por ejemplo, una cuenta de **Pago según uso**, para poder crear instancias de servicio de {{site.data.keyword.blockchainfull_notm}} Platform en {{site.data.keyword.cloud_notm}}. Si no tiene una cuenta, [registre](https://cloud.ibm.com/registration/) una y actualícela a una cuenta de pago. Para actualizar su cuenta a un tipo Pago según uso, vaya a **Gestionar** > **Facturación y uso** > **Facturación** en la consola de {{site.data.keyword.cloud_notm}}, y pulse **Añadir tarjeta de crédito**.
+Cada miembro de red debe tener una cuenta de pago de {{site.data.keyword.cloud_notm}}, por ejemplo, una cuenta de **Pago según uso**, para poder crear instancias de servicio de {{site.data.keyword.blockchainfull_notm}} Platform en {{site.data.keyword.cloud_notm}}. Si no tiene una cuenta, [registre](https://cloud.ibm.com/registration) una y actualícela a una cuenta de pago. Para actualizar su cuenta a un tipo Pago según uso, vaya a **Gestionar** > **Facturación y uso** > **Facturación** en la consola de {{site.data.keyword.cloud_notm}}, y pulse **Añadir tarjeta de crédito**.
 
 
 ## Pago de sus propias cuotas
@@ -63,12 +65,13 @@ Un miembro de la red se puede hacer cargo de las cuotas de uno o varios miembros
 3. El pagador crea una {{site.data.keyword.blockchainfull_notm}} Platform de red de cadena de blockchain e invita a otros miembros a la red de blockchain en el supervisor de red de la red. Para obtener más información sobre cómo invitar a miembros de la red, consulte [Miembros](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-members).
 4. Luego cada miembro recibe una notificación por correo electrónico que contiene una invitación a unirse a la red. El miembro puede seguir los pasos siguientes para unirse a la red.
    1. Pulse el botón "Continuar" en la notificación por correo electrónico, lo que le llevará a la página del servicio blockchain de {{site.data.keyword.cloud_notm}}.
-   2. Inicie una sesión en {{site.data.keyword.cloud_notm}} y asegúrese de utilizar la organización y el espacio de {{site.data.keyword.cloud_notm}} correctos, que ha añadido el pagador.
+   2. Inicie sesión en {{site.data.keyword.cloud_notm}} y asegúrese de utilizar la organización y el espacio de
+{{site.data.keyword.cloud_notm}} correctos, a los que le ha añadido el pagador.
       1. En la consola de {{site.data.keyword.cloud_notm}}, pulse el avatar de perfil de la esquina superior derecha.
       2. Seleccione la cuenta del pagador en la lista desplegable **Cuenta**.  Tenga en cuenta que la cuenta y la organización donde se suministra la instancia del servicio blockchain será la que recibirá el cargo.  
    3. En el catálogo de {{site.data.keyword.cloud_notm}}, busque **Blockchain** y cree una instancia de servicio.
       1. En el campo **Nombre de servicio**, escriba en un nombre descriptivo que reconozca fácilmente en el futuro.
-      2. Compruebe que la organización y el espacio son aquellos a los que ha añadido el pagador.
+      2. Compruebe que la organización y el espacio son aquellos a los que le ha añadido el pagador.
       3. Seleccione el plan de suscripción con el que va a crear su instancia de la red. El plan de pertenencia debe ser el mismo con el que el pagador crea la red.
       4. Pulse **Crear**.
    4. Después de crear la instancia del servicio blockchain, siga las instrucciones del asistente para unirse a la red.  Para obtener más información, consulte [Cómo unirse a una red](/docs/services/blockchain/get_start.html#getting-started-with-enterprise-plan-join-nw).

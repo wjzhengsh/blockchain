@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-04-23"
+lastupdated: "2019-05-16"
+
+keywords: root CA, network components, ICP deployment guide, getting started tutorial, IBM Cloud Private
 
 subcollection: blockchain
 
@@ -38,6 +40,7 @@ subcollection: blockchain
 {:important}
 
 ## 1단계: 네트워크 구성 결정
+{: #get-started-icp-step-one-decide-network-config}
 
 블록체인 네트워크의 구조는 유스 케이스에 의해 결정되어야 합니다. 이러한 근본적인 비즈니스 의사결정은 다양한 상황에 따라 다르지만 몇 가지를 고려하도록 합니다.
 
@@ -53,14 +56,16 @@ subcollection: blockchain
 {:note}
 
 ## 2단계: {{site.data.keyword.cloud_notm}} Private에서 Kubernetes 클러스터 설정
+{: #get-started-icp-step-two-set-up-k8s-on-icp}
 
 네트워크 구조를 결정한 후 유스 케이스에 맞게 {{site.data.keyword.cloud_notm}} Private에 Kubernetes 클러스터를 설정하십시오. 자세한 정보는
 [{{site.data.keyword.cloud_notm}} Private 설정](/docs/services/blockchain/ICP_setup.html#icp-setup)을 참조하십시오.
 
-호스트로서 {{site.data.keyword.cloud_notm}} Private을 위한 {{site.data.keyword.IBM_notm}} Secure Service Container를 사용하여 내부 위협 및 외부 위협으로부터 중요 데이터를 보호하기 위해 Secure Service Container의 보안 장점을 활용할 수도 있습니다. 자세한 정보는 [{{site.data.keyword.cloud_notm}} Private을 위한 {{site.data.keyword.IBM_notm}} Secure Service Container 사용](/docs/services/howto/ibp-ssc-for-icp.html "{{site.data.keyword.cloud_notm}} Private을 위한 {{site.data.keyword.IBM_notm}} Secure Service Container 사용")을 참조하십시오.
+호스트로서 {{site.data.keyword.cloud_notm}} Private을 위한 {{site.data.keyword.IBM_notm}} Secure Service Container를 사용하여 내부 위협 및 외부 위협으로부터 중요 데이터를 보호하기 위해 Secure Service Container의 보안 장점을 활용할 수도 있습니다. 자세한 정보는 [{{site.data.keyword.IBM_notm}} Secure Service Container for {{site.data.keyword.cloud_notm}} Private 사용](/docs/services/blockchain/howto/ibp-ssc-for-icp.html "{{site.data.keyword.IBM_notm}} Secure Service Container for {{site.data.keyword.cloud_notm}} Private 사용")을 참조하십시오.
 {:note}
 
 ## 3단계: CA 설정
+{: #get-started-icp-step-three-set-up-cas}
 
 Fabric 기반 블록체인 네트워크에서 배치해야 할 첫 번째 컴포넌트는 CA입니다. 컴포넌트의 구성에 컴포넌트를 배치하기 전에 해당 컴포넌트를 작동할 권한이 부여된 하나 이상의 사용자 ID를 포함해야 하기 때문입니다.
 
@@ -75,6 +80,7 @@ CA의 무한 회귀(모든 CA가 다른 CA와 계속 링크되어야 하는 경�
 TLS에 대한 자세한 정보는 Hyperledger Fabric 문서에서 [TLS(Transport Layer Security)로 통신 보안 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/enable_tls.html "TLS(Transport Layer Security)로 통신 보안")의 내용을 참조하십시오.
 
 ### 순서 지정자 및 피어의 MSP 준비
+{: #get-started-icp-prepare-msp-orderer-peer}
 
 {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private 프로세스는 매우 정교하므로 초기 설정 동안 모든 네트워크 컴포넌트 노드에 대한 관리자로서 단일 관리자 ID를 사용하는 것이 좋습니다. 이렇게 하면 한 사용자가 다양한 컴포넌트 간에 구성과 연결을 설정하여 올바르게 작동하는지 확인하여 배치 및 연결 오류를 줄일 수 있습니다. 그러나 각 컴포넌트에 서로 다른 인증서가 있어야 하는 것은 매우 중요합니다. 때로는 여기서 구별하기가 쉽지 않을 수 있습니다. 트랜잭션 제안에 서명하는 엔티티는 피어의 관리자가 아니라 **피어 자체**입니다. 따라서 피어는 등록되어 있어야 하며 피어에는 수행하는 모든 작업에 접속하는 인증서와 특정 종류의 서명을 생성하는 데 사용할 수 있는 개인 키가 있어야 합니다. Fabric 기반 블록체인 네트워크의 ID와 권한에 대한 자세한 정보는 Fabric 문서의 [ID ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/identity/identity.html "ID") 및 [멤버십 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/membership/membership.html "멤버십")을 참조하십시오.
 
@@ -83,6 +89,7 @@ TLS에 대한 자세한 정보는 Hyperledger Fabric 문서에서 [TLS(Transport
 순서 지정자 또는 피어가 배치될 때 순서 지정자 또는 피어와 연관된 `init` 컨테이너는 Kubernetes 시크릿 오브젝트를 사용하여 컴포넌트에 대한 MSP를 작성합니다. 시크릿 오브젝트를 작성하는 방법을 알아보려면 [CA 운영](/docs/services/blockchain/howto/CA_operate.html#ca-operate)을 참조하십시오. 위에서 설명한 대로 CA를 설정하고 각 조직에 대해 이 플로우를 반복해야 함을 기억하십시오.
 
 ## 4단계: 순서 지정자 및 피어 배치
+{: #get-started-icp-step-four-deploy-order-peer}
 
 Kubernetes 시크릿이 작성되면 컴포넌트를 배치할 준비가 되었습니다. 채널을 설정하려는 경우 피어 전에 순서 지정자를 배치하도록 권장됩니다. 모든 컴포넌트에 다른 조직 이름을 사용해야 합니다.
 
@@ -93,6 +100,7 @@ Kubernetes 시크릿이 작성되면 컴포넌트를 배치할 준비가 되었�
 - **[{{site.data.keyword.blockchainfull_notm}} Platform 네트워크에 연결될 피어 배치](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy)**. 연결 프로파일과 네트워크 모니터 UI를 사용하므로 피어를 배치하는 프로세스와 {{site.data.keyword.cloud_notm}}의 [스타터 플랜](/docs/services/blockchain/starter_plan.html#starter-plan-about) 또는 [엔터프라이즈 플랜](/docs/services/blockchain/enterprise_plan.html#enterprise_plan-about) 네트워크에 연결하는 프로세스는 다릅니다. 피어가 속한 조직은 이미 네트워크의 채널에 가입되어 있어야 함에 유의하십시오. 다시 한 번 피어의 조직 MSP ID가 순서 지정자의 조직 MSP ID와 다른지 확인하십시오.
 
 ## 다음 단계
+{: #get-started-icp-next-steps}
 
 모든 노드를 배치한 후에 노드를 작동시키고 트랜잭션을 제출할 수 있습니다. 추가 정보는 다음 링크를 참조하십시오.
 
@@ -102,6 +110,7 @@ Kubernetes 시크릿이 작성되면 컴포넌트를 배치할 준비가 되었�
 - [스타터 플랜 또는 엔터프라이즈 플랜으로 {{site.data.keyword.cloud_notm}} Private에서 피어 작동](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate)
 
 ## 네트워크 확장
+{: #get-started-icp-grow-network}
 
 목표가 개발 환경 또는 PoC(proof of concept) 설정인 경우 순서 지정자의 배치 중에 작성되는 순서 지정자 시스템 채널에 피어 조직을 추가해야 합니다. 이는 모든 컴포넌트를 활용하는 다단계 프로세스로 관련 운영 주제에 문서화되어 있습니다.
 

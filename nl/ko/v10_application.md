@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-04-03"
+lastupdated: "2019-05-16"
+
+keywords: Fabric SDKs, client application, enroll, register, chaincode
 
 subcollection: blockchain
 
@@ -40,7 +42,7 @@ subcollection: blockchain
 
 - Hyperledger Fabric 샘플을 다운로드하고 Node SDK를 사용하는 데 필요한 도구를 설치하십시오.
   * [Curl ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/prereqs.html#install-curl "Curl") 또는 [Git ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git "Git"){:new_window}
-  * [Node.js ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/latest/prereqs.html#node-js-runtime-and-npm "Node.js"){:new_window}
+  * [Node.js ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/prereqs.html#node-js-runtime-and-npm "Node.js"){:new_window}
 
 - `fabric-samples` 디렉토리를 다운로드하여 Hyperledger Fabric 샘플을 설치하십시오. Hyperledger Fabric 문서에 있는 [시작하기 안내서 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/install.html "시작하기 안내서"){:new_window}의 내용을 수행할 수 있습니다.
 
@@ -74,8 +76,7 @@ Hyperledger Fabric SDK에서는 애플리케이션에서 블록체인 네트워�
   * "개요" 화면에서 **연결 프로파일**을 클릭하십시오. 연결 프로파일에는 모든 네트워크 리소스의 전체 API 엔드포인트 정보 세트가 포함되어 있습니다.
     ![네트워크 모니터의 연결 프로파일](images/service_credentials.png "네트워크 모니터의 연결 프로파일")
 
-  * 네트워크에서 체인코드를 실행하는 경우 체인코드에 특정한 API 엔드포인트 정보를 얻을 수 있습니다. "채널" 화면에서 체인코드가 실행 중인 채널 행을 클릭하여 특정 채널 화면을 여십시오. Then, locate the chaincode and click the **JSON** button.
-    ![체인코드별 API 엔드포인트](images/channel_chaincode.png "체인코드별 API 엔드포인트")
+  * 네트워크에서 체인코드를 실행하는 경우 체인코드에 특정한 API 엔드포인트 정보를 얻을 수 있습니다. "채널" 화면에서 체인코드가 실행 중인 채널 행을 클릭하여 특정 채널 화면을 여십시오. 그런 다음 체인코드를 찾고 **JSON** 단추를 클릭하십시오. ![체인코드별 API 엔드포인트](images/channel_chaincode.png "체인코드별 API 엔드포인트")
 
 2. 네트워크 리소스의 API 엔드포인트 정보를 찾으십시오. 다음 예에서 `peer1-org1` 행과 비슷합니다.
   ```
@@ -86,7 +87,8 @@ Hyperledger Fabric SDK에서는 애플리케이션에서 블록체인 네트워�
                   ...
   ```
 
-애플리케이션에서 조직 외부의 네트워크 리소스를 대상으로 지정할 수 있습니다. 예를 들어, 체인코드 [보증 정책](/docs/services/blockchain/howto/install_instantiate_chaincode.html#install-instantiate-chaincode-endorsement-policy)에 채널에 있는 다른 조직의 보증이 필요한 경우, 조직의 피어가 정책을 따르기에 충분하도록 트랜잭션을 전송해야 합니다. Hyperledger Fabric의 [서비스 발견 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/discovery-overview.html "서비스 발견")은 스타터 플랜 또는 엔터프라이즈 플랜에 대해서는 지원되지 않습니다. 연결 프로파일의 "피어" 섹션을 사용하여 피어의 엔드포인트 정보 및 기타 조직의 TLS 인증서를 얻어야 합니다. 특정 채널에 가입한 피어에 관해서는 다른 조직의 관리자에게 문의할 수 있습니다.{:note}
+애플리케이션에서 조직 외부의 네트워크 리소스를 대상으로 지정할 수 있습니다. 예를 들어, 체인코드 [보증 정책](/docs/services/blockchain/howto/install_instantiate_chaincode.html#install-instantiate-chaincode-endorsement-policy)에 채널에 있는 다른 조직의 보증이 필요한 경우, 조직의 피어가 정책을 따르기에 충분하도록 트랜잭션을 전송해야 합니다. Hyperledger Fabric의 [서비스 발견 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/discovery-overview.html "서비스 발견")은 스타터 플랜 또는 엔터프라이즈 플랜에 대해서는 지원되지 않습니다. 연결 프로파일의 "피어" 섹션을 사용하여 피어의 엔드포인트 정보 및 기타 조직의 TLS 인증서를 얻어야 합니다. 특정 채널에 가입한 피어에 관해서는 다른 조직의 관리자에게 문의할 수 있습니다.
+{:note}
 
 3. 다음 예제에 표시된 대로 API 엔드포인트 정보를 애플리케이션의 구성 파일에 플러그로 지정하십시오.
   ```
@@ -304,7 +306,7 @@ node enrollAdmin.js
   ```
   {:codeblock}
 
-  샘플에서는 피어 기반 이벤트 서비스를 사용하지만 사용자는 채널 기반 리스너를 사용해야 합니다. [트랜잭션 관리](/docs/services/blockchain/best_practices.html#best-practices-managing-transactions) 섹션과 [Node SDK 문서 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://fabric-sdk-node.github.io/tutorial-channel-events.html "채널 기반 이벤트 서비스"){:new_window}에서 자세히 알아볼 수 있습니다.
+  샘플에서는 피어 기반 이벤트 서비스를 사용하지만 사용자는 채널 기반 리스너를 사용해야 합니다. [트랜잭션 관리](/docs/services/blockchain/best_practices.html#best-practices-managing-transactions) 섹션과 [Node SDK 문서 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://fabric-sdk-node.github.io/tutorial-channel-events.html "채널 기반 서비스"){:new_window}에서 자세히 알아볼 수 있습니다.
 
 5. 기본적으로 `invoke.js`에서 `user1`로 트랜잭션을 제출합니다. 다른 이름을 등록한 경우 `invoke.js` 파일을 편집할 수 있습니다.
 
@@ -359,7 +361,7 @@ var channel = fabric_client.newChannel('defaultchannel');
 ```
 {:codeblock}
 
-그런 다음 SDK에서 연결 프로파일을 사용하여 채널에 정의된 피어와 순서 지정 서비스를 추가합니다. 그러면 애플리케이션을 더 효율적으로 쓸 수 있고, 네트워크 구성원이 새 채널에 가입, 종료 및 시작할 때 애플리케이션을 더 쉽게 업데이트할 수 있습니다. 추가 관련 단계에 관해 알아보려면 Node SDK 문서 [연결 프로파일 튜토리얼 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://fabric-sdk-node.github.io/tutorial-network-config.html "연결 프로파일 튜토리얼"){:new_window}를 참조하십시오. 수동 엔드포인트 연결이 아니라 연결 프로파일을 사용하는 이 [버전의 fabcar 튜토리얼 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/developerworks/cloud/library/cl-deploy-fabcar-sample-application-ibm-blockchain-starter-plan/index.html){:new_window}을 사용할 수 있습니다.
+그런 다음 SDK에서 연결 프로파일을 사용하여 채널에 정의된 피어와 순서 지정 서비스를 추가합니다. 그러면 애플리케이션을 더 효율적으로 쓸 수 있고, 네트워크 구성원이 새 채널에 가입, 종료 및 시작할 때 애플리케이션을 더 쉽게 업데이트할 수 있습니다. 추가 관련 단계에 관해 알아보려면 Node SDK 문서 [연결 프로파일 튜토리얼 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://fabric-sdk-node.github.io/tutorial-network-config.html "연결 프로파일 튜토리얼"){:new_window}를 참조하십시오. 수동 엔드포인트 연결이 아니라 연결 프로파일을 사용하는 이 [버전의 fabcar 튜토리얼 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://developer.ibm.com/tutorials/cl-deploy-fabcar-sample-application-ibm-blockchain-starter-plan/){:new_window}을 사용할 수 있습니다.
 
 Hyperledger Fabric 내의 보증 정책에 대한 [서비스 발견 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/discovery-overview.html "서비스 발견")은 스타터 플랜 또는 엔터프라이즈 플랜에 대해서는 지원되지 않습니다. 그러나 연결 프로파일을 편집하여 인증을 위해 조직 외부에 있는 피어에 트랜잭션을 보낼 수 있습니다. {{site.data.keyword.blockchainfull_notm}} Platform 네트워크의 다른 조직에 있는 피어의 TLS 인증서와 엔드포인트 정보가 이미 연결 프로파일에 포함되어 있습니다. 프로파일의 "채널" 섹션에서 관련 채널에 피어 이름을 추가하여 채널에 피어를 추가하십시오. 특정 채널에 가입한 피어에 관해서는 다른 조직의 관리자에게 문의해야 합니다.
 
@@ -476,7 +478,7 @@ var request = {
 ```
 {:codeblock}
 
-현재 파일에 있는 `return channel.sendTransactionProposal(request);` 대신 `return channel.sendInstantiateProposal(request);`에 이 요청을 보내십시오. 채널에 인스턴스화 요청을 보낸 다음 인증된 제안을 트랜잭션으로 순서 지정 서비스에 보내야 합니다. 여기에서는 트랜잭션을 보낼 때와 동일한 메소드를 사용하므로, 나머지 파일은 변경하지 않은 상태로 유지할 수 있습니다. 인스턴스화 제안에서 [시간제한 초과를 증가](/docs/services/blockchain/best_practices.html#best-practices-set-timeout-in-sdk)시킬 수 있습니다. 그렇지 않으면 플랫폼에서 체인코드 컨테이너를 시작할 수 있기 전에 제한시간이 초과될 수 있습니다.
+현재 파일에 있는 `return channel.sendTransactionProposal(request);` 대신 `return channel.sendInstantiateProposal(request);`에 이 요청을 보내십시오. 채널에 인스턴스화 요청을 보낸 다음 인증된 제안을 트랜잭션으로 순서 지정 서비스에 보내야 합니다. 여기에서는 트랜잭션을 보낼 때와 동일한 메소드를 사용하므로, 나머지 파일은 변경하지 않은 상태로 유지할 수 있습니다. 인스턴스화 제안에서 [제한시간 값을 증가](/docs/services/blockchain/best_practices.html#best-practices-set-timeout-in-sdk)시킬 수 있습니다. 그렇지 않으면 플랫폼에서 체인코드 컨테이너를 시작할 수 있기 전에 제한시간이 초과될 수 있습니다.
 
 체인코드를 인스턴스화하려면 먼저 채널에 signCert를 추가해야 합니다. 채널에 가입한 후에 인증서를 생성한 경우 signCert를 플랫폼에 업로드한 후 "채널" 화면에서 **인증서 동기화** 단추를 클릭하십시오. instantiate chaincode 명령을 실행하기 전에 채널 동기화가 완료될 때까지 몇 분 정도 대기해야 할 수도 있습니다. 자세한 정보는 [인증서 관리](/docs/services/blockchain/certificates.html#managing-certificates) 튜토리얼의 [{{site.data.keyword.blockchainfull_notm}} Platform에 서명 인증서 업로드](/docs/services/blockchain/certificates.html#managing-certificates-upload-certs)를 참조하십시오.
 

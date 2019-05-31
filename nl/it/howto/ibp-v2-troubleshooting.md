@@ -2,7 +2,9 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-04-23"
+lastupdated: "2019-05-16"
+
+keywords: troubleshooting, debug, why, what does this mean, how can I, when I 
 
 subcollection: blockchain
 
@@ -34,7 +36,7 @@ Si possono verificare dei problemi generali quando utilizzi la console per gesti
 - [Il mio canale, gli smart contract e le identità sono scomparsi dalla console. Come posso recuperarli?](/docs/services/blockchain/howto/ibp-v2-troubleshooting.html#ibp-v2-troubleshooting-browser-storage)
 - [Perché sto ricevendo l'errore `An error occurred when updating channel` mentre provo ad aggiungere un'organizzazione al mio canale?](/docs/services/blockchain/howto/ibp-v2-troubleshooting.html#ibp-v2-troubleshooting-update-channel)
 - [Il mio cluster Kubernetes è scaduto. Che significa?](/docs/services/blockchain/howto/ibp-v2-troubleshooting.html#ibp-v2-troubleshooting-cluster-expired)
-- [Perché le transazioni che invio da VSCode hanno esito negativo?](/docs/services/blockchain/howto/ibp-v2-troubleshooting.html#ibp-v2-troubleshooting-anchor-peer)
+- [Perché le transazioni che invio da VS Code hanno esito negativo?](/docs/services/blockchain/howto/ibp-v2-troubleshooting.html#ibp-v2-troubleshooting-anchor-peer)
 
 ## Quando passo il puntatore del mouse sul mio nodo, lo stato è `Status unavailable`, che significa?
 {: #ibp-v2-troubleshooting-status-unavailable}
@@ -43,7 +45,7 @@ Lo stato del nodo nel tile per il mio nodo CA, peer o ordinante è grigio, il ch
 {: tsSymptoms}
 
 Questo problema può verificarsi se il nodo è stato appena creato e il processo di distribuzione non è stato completato. Se il nodo è una CA, è probabile che non sia in esecuzione.
-Se il nodo è un peer o un ordinante, questa condizione si verifica quando il programma di controllo dell'integrità che viene eseguito sui nodi peer od ordinante non riesce a contattare il nodo. La richiesta dello stato può non riuscire con un errore di timeout perché il nodo non ha risposto entro un certo periodo di tempo, il nodo potrebbe essere inattivo oppure la connettività di rete è inattiva.
+Se il nodo è un peer o un ordinante, questa condizione si verifica quando il programma di controllo dell'integrità che viene eseguito sui nodi peer od ordinante non riesce a contattare il nodo.  La richiesta dello stato può non riuscire con un errore di timeout perché il nodo non ha risposto entro un certo periodo di tempo, il nodo potrebbe essere inattivo oppure la connettività di rete è inattiva.
 {: tsCauses}
 
 Se si tratta di un nuovo nodo, attendi qualche minuto che la distribuzione venga completata. Se non il nodo non è nuovo,
@@ -132,7 +134,7 @@ Segui queste istruzioni per [visualizzare i tuoi log del contenitore](/docs/serv
 ## Il mio canale, gli smart contract e le identità sono scomparsi dalla console. Come posso recuperarli?
 {: #ibp-v2-troubleshooting-browser-storage}
 
-Le tue identità del portafoglio della console sono costituite da una coppia di chiavi pubblica e privata che ti permette di gestire i tuoi componenti blockchain ma essi vengono archiviati solo nella tua memoria locale del browser. Sei responsabile per la protezione e la gestione di queste identità. Ti consigliamo di esportarle nel tuo file system dopo averle create. Se crei un nuovo nodo, associa un'identità dal tuo portafoglio della console al nodo. Questa identità amministratore è quella che ti consente di gestire il nodo. Quando passi da un browser a un altro o a un browser su una macchina differente, queste identità non sono più presenti nel tuo portafoglio. Pertanto, non puoi gestire i componenti.
+Le tue identità del portafoglio della console sono costituite da un certificato di firma e una chiave privata che ti permettono di gestire i tuoi componenti blockchain ma essi vengono archiviati solo nella tua memoria locale del browser. Sei responsabile per la protezione e la gestione di queste identità. Ti consigliamo di esportarle nel tuo file system dopo averle create. Se crei un nuovo nodo, associa un'identità dal tuo portafoglio della console al nodo. Questa identità amministratore è quella che ti consente di gestire il nodo. Quando passi da un browser a un altro o a un browser su una macchina differente, queste identità non sono più presenti nel tuo portafoglio. Pertanto, non puoi gestire i componenti.
 {: tsSymptoms}
 
 Una delle nuove funzioni di {{site.data.keyword.blockchainfull_notm}} Platform 2.0 è che ora sei responsabile della protezione e della gestione dei tuoi certificati. Pertanto, vengono conservati solo nella memoria locale del browser per consentirti di gestire il componente. Se stai utilizzando una finestra del browser privata e passi a un altro browser o a una finestra del browser non privata, le identità che hai creato saranno scomparse dal portafoglio della console nella nuova sessione del browser. Pertanto, è necessario che esporti al tuo file system le identità dal portafoglio della console nella tua sessione del browser privata. Puoi quindi importarle nella tua sessione del browser non privata, se occorrono. Altrimenti, non c'è modo di recuperarle.
@@ -165,7 +167,7 @@ Sul pannello **Aggiorna canale**, scorri in basso fino all'**ID MSP del programm
 ## Il mio cluster Kubernetes è scaduto. Cosa significa?
 {: #ibp-v2-troubleshooting-cluster-expired}
 
-Ho ricevuto una email che mi informa che il mio cluster {{site.data.keyword.IBM_notm}} Kubernetes Service sta per scadere o che il suo stato è `Expired`. Oppure, non sei in grado di accedere alla console dopo 30 giorni.
+Ho ricevuto un'email che mi informa che il mio cluster {{site.data.keyword.IBM_notm}} Kubernetes Service sta per scadere o che il suo stato è `Expired`. Oppure, non sei in grado di accedere alla console dopo 30 giorni.
 {: tsSymptoms}
 
 I cluster Kubernetes gratuiti sono validi solo per 30 giorni.
@@ -174,10 +176,10 @@ I cluster Kubernetes gratuiti sono validi solo per 30 giorni.
 Non è possibile eseguire la migrazione da un cluster gratuito a un cluster a pagamento. Dopo 30 giorni, non potrai accedere alla console e tutti i tuoi nodi e certificati verranno eliminati. Vedi questo argomento relativo alla [scadenza dei cluster Kubernetes](/docs/services/blockchain/howto/ibp-console-manage.html#ibp-console-manage-console-cluster-expiration) per informazioni su cosa sta accadendo e cosa puoi fare.
 {: tsResolve}
 
-## Perché le transazioni che invio da VSCode hanno esito negativo?
+## Perché le transazioni che invio da VS Code hanno esito negativo?
 {: #ibp-v2-troubleshooting-anchor-peer}
 
-Le transazioni inviate da VSCode hanno esito negativo con un errore simile a:
+Le transazioni inviate da VS Code hanno esito negativo con un errore simile a:
 ```
 Error submitting transaction: No endorsement plan available for {"chaincodes":[{"name":"hello-world"}]}
 ```

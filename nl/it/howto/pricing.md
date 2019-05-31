@@ -1,8 +1,10 @@
 ---
 
 copyright:
-  years: 2017, 2018
+  years: 2017, 2019
 lastupdated: "2019-03-05"
+
+keywords: Starter Plan, Enterprise Plan, peer fee, membership fee
 
 subcollection: blockchain
 
@@ -40,7 +42,7 @@ Per comprendere i prezzi, dobbiamo iniziare con un'introduzione ai componenti di
 
 -	**Organizzazioni** – Qualsiasi entità che deve mantenere una copia del libro mastro blockchain e deve convalidare le transazioni. Ci possono essere più organizzazioni blockchain per una singola società.
 -	**Peer** – Il nodo associato a un'organizzazione che contiene il libro mastro blockchain e convalida le transazioni. I peer sono associati a una singola organizzazione blockchain.
--	**Servizio ordini** – Composto da un singolo ordinante (SOLO) o da una raccolta di ordinanti. Il servizio ordini mette in sequenza le transazioni, crea blocchi e invia questi blocchi ai peer per la convalida.
+-	**Servizio di ordinazione** – Composto da un singolo ordinante (SOLO) o da una raccolta di ordinanti. Il servizio ordini mette in sequenza le transazioni, crea blocchi e invia questi blocchi ai peer per la convalida.
 -	**CA (Certificate Authority, Autorità di certificazione)** – Emette certificati digitali per scopi di identificazione a qualsiasi componente di rete interattivo.
 
 {{site.data.keyword.blockchainfull_notm}} Platform offre due piani di adesione, il **piano Starter** e il **piano Enterprise**, che puoi scegliere in {{site.data.keyword.cloud_notm}}. Entrambi i piani ti consentono di creare organizzazioni e ti forniscono una CA (Certificate Authority, Autorità di certificazione). I piani differiscono per quanto riguarda peer, CA e servizio ordini.
@@ -54,7 +56,7 @@ Il piano Starter e il piano Enterprise hanno due elementi di prezzo:
 
 - **Costo di adesione** – Copre la creazione dell'organizzazione e l'accesso a servizio ordini e CA e viene addebitato in base alle **singole istanze**. Incluso in questo elemento di prezzi, {{site.data.keyword.blockchainfull_notm}} Platform gestisce il servizio ordini e la CA per conto della tua rete. Questo costo è necessario per avere accesso a una rete creata su {{site.data.keyword.blockchainfull_notm}} Platform.
 
-  -	Il piano Starter ti consente un numero *illimitato* di organizzazioni per ogni singola adesione e la capacità di passare da un'organizzazione all'altra nel monitoraggio della rete. Poiché il piano Starter è progettato per gli ambenti di sviluppo, test e PoC, puoi eseguire una simulazione negli ambienti con più organizzazioni. **Nota** che l'archiviazione di rete totale è limitata a 20GB, compresi componenti, chaincode e dati del libro mastro. Le tue organizzazioni simulate condividono l'archiviazione di 20GB nella rete blockchain.
+  -	Il piano Starter ti consente un numero *illimitato* di organizzazioni per ogni singola adesione e la capacità di passare da un'organizzazione all'altra nel monitoraggio della rete. Poiché il piano Starter è progettato per gli ambenti di sviluppo, test e PoC, puoi eseguire una simulazione negli ambienti con più organizzazioni. **Nota** che l'archiviazione di rete totale è limitata a 20 GB, compresi componenti, chaincode e dati del libro mastro. Le tue organizzazioni simulate condividono l'archiviazione di 20-GB nella rete blockchain.
 
   -	Enterprise consente una singola organizzazione per ogni singola adesione. Poiché Enterprise è progettato per gli ambienti pilota e di produzione, sei collegato alla tua organizzazione specifica.
 
@@ -139,7 +141,7 @@ Puoi anche rimuovere un peer dalla configurazione di rete piano Starter predefin
 ## Prezzi del piano Enterprise
 {: #ibp-pricing-enterprise-plan}
 
-{{site.data.keyword.blockchainfull_notm}} Platform non fornisce una configurazione predefinita per una rete di piano Enterprise. Puoi scegliere la configurazione con la quale ti piacerebbe iniziare. Quando sei pronto a usare il piano Enterprise, dovresti avere una buona comprensione di cosa dovrebbe fare la tua configurazione di rete. Come procedura ottimale per l'alta disponibilità, consigliamo vivamente un minimo di due peer per ogni singola organizzazione per garantire che per la tua organizzazione non si verifichi un'interruzione di rete.
+{{site.data.keyword.blockchainfull_notm}} Platform non fornisce una configurazione predefinita per una rete di piano Enterprise. Puoi scegliere la configurazione con la quale ti piacerebbe iniziare. Quando sei pronto a usare il piano Enterprise, dovresti avere una buona comprensione di cosa dovrebbe fare la tua configurazione di rete. Come procedura ottimale per l'alta disponibilità, consigliamo vivamente un minimo di due peer per ogni organizzazione per garantire che per la tua organizzazione non si verifichi un'interruzione di rete.
 
 Se ti trovi in una rete di piano Enterprise con l'altro membro della rete, e ognuno di voi aggiunge due peer per la propria organizzazione, la fattura di ognuno di voi è riflessa nella Figura 7.
 

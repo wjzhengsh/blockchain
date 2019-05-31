@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-05-16"
+
+keywords: blockchain network, Starter Plan, getting started tutorial
 
 subcollection: blockchain
 
@@ -27,7 +29,7 @@ El Plan inicial le permite aprender y desarrollar habilidades con la plataforma 
 Si es nuevo en {{site.data.keyword.blockchainfull_notm}} Platform y en blockchain, puede obtener más información acerca de blockchain consultando la [visión general de los componentes fundamentales](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview) de las redes creadas sobre
 [Hyperledger Fabric](/docs/services/blockchain/reference/v10_fabric.html#hyperledger-fabric) de código abierto. También puede consultar la
 [documentación de Hyperledger Fabric
-![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](http://hyperledger-fabric.readthedocs.io/en/release-1.2/blockchain.html "Introducción a Blockchain").
+![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/blockchain.html "Introducción a Blockchain").
 
 **Nota**: el Plan inicial de {{site.data.keyword.blockchainfull_notm}} Platform es un entorno de desarrollo y prueba, y no es adecuado para cargas de trabajo de producción. Si necesita un entorno de producción, consulte [Acerca del Plan empresarial](/docs/services/blockchain/enterprise_plan.html#enterprise-plan-about).
 
@@ -51,11 +53,6 @@ Dentro del consorcio de organizaciones que se han unido a las redes, puede reali
 Tras formar el consorcio, debe escribir el código de encadenamiento, también conocido como contratos inteligentes, que contendrá la lógica empresarial de la red y le permitirá interactuar con los datos del libro mayor de blockchain. A continuación, deberá utilizar los SDK de Fabric junto con los contratos inteligentes para enviar transacciones a la red desde su aplicación del lado del cliente.
 
 - [Desarrollo de código de encadenamiento](/docs/services/blockchain/get_start_starter_plan.html#getting-started-with-starter-plan-develop-chaincode)
-- [Desarrollo de aplicaciones con los SDK de Fabric](/docs/services/blockchain/get_start_starter_plan.html#getting-started-with-starter-plan-develop-apps)
-
-La {{site.data.keyword.blockchainfull_notm}} Platform proporciona aplicaciones de ejemplo que puede desplegar en su red de Plan inicial con unas pocas pulsaciones.
-
-- [Despliegue de aplicaciones de ejemplo](/docs/services/blockchain/get_start_starter_plan.html#getting-started-with-starter-plan-sample-applications)
 
 **Operar y controlar la red**
 
@@ -112,7 +109,6 @@ Debe crear una [instancia de servicio de {{site.data.keyword.blockchainfull_notm
 
 Encontrará una instancia de servicio de blockchain en el [panel de control de servicio de {{site.data.keyword.cloud_notm}} ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://cloud.ibm.com/resources "panel de control de servicio de {{site.data.keyword.cloud_notm}}").
 
-
 ## Crear canales
 {: #getting-started-with-starter-plan-create-channels}
 
@@ -132,23 +128,7 @@ Para obtener más información, consulte la guía de aprendizaje de [desarrollo 
 {: #getting-started-with-starter-plan-install-instantiate-chaincode}
 Tras unirse a canales y desarrollar la lógica empresarial, deberá instalar código de encadenamiento en los iguales de la red. Puede utilizar el supervisor de red para instalar y crear una instancia del código de encadenamiento en los iguales de su organización, así como actualizar el código de encadenamiento para facilitar el desarrollo continuo.
 
-Para obtener más información sobre el despliegue de ejemplos precompilados, consulte [Instalación, creación de instancias y actualización de un código de encadenamiento](/docs/services/blockchain/howto/install_instantiate_chaincode.html#install-instantiate-chaincode).
-
-
-## Desarrollo de aplicaciones utilizando los SDK de Fabric
-{: #getting-started-with-starter-plan-develop-apps}
-
-{{site.data.keyword.blockchainfull_notm}} Platform proporciona puntos finales de API a los que puede conectarse utilizando los SDK de Fabric. Puede utilizar los SDK para invocar código de encadenamiento desde sus aplicaciones y enviar transacciones a la red blockchain.
-
-Para obtener más información, consulte la guía de aprendizaje de [desarrollo de aplicaciones](/docs/services/blockchain/v10_application.html#dev-app).
-
-
-## Despliegue de aplicaciones de ejemplo
-{: #getting-started-with-starter-plan-sample-applications}
-
-El Plan inicial le permite desplegar aplicaciones de ejemplo en la red con solo unas pulsaciones. Puede utilizar estos ejemplos para obtener más información sobre el código de encadenamiento y como puntos de partida para su propio desarrollo.
-
-Para obtener más información, consulte [Despliegue de aplicaciones de ejemplo](/docs/services/blockchain/howto/prebuilt_samples.html#deploying-sample-applications).
+Para obtener más información sobre la instalación y creación de instancias de código de encadenamiento, consulte [Instalación, creación de instancias y actualización de un código de encadenamiento](/docs/services/blockchain/howto/install_instantiate_chaincode.html#install-instantiate-chaincode).
 
 
 ## Supervisión de recursos de red
@@ -200,13 +180,6 @@ Si desea borrar las configuraciones personalizadas, el código de encadenamiento
 Puede desplegar un código de encadenamiento y aplicaciones y probarlos en una red del Plan inicial en una red del Plan empresarial. Para desplegar un código de encadenamiento que se prueba en una red del Plan inicial en el Plan empresarial, siga las instrucciones de [Instalación, creación de instancias y actualización de un código de encadenamiento](/docs/services/blockchain/howto/install_instantiate_chaincode.html#install-instantiate-chaincode-install-cc).
 
 Únicamente se puede migrar el código de encadenamiento y las aplicaciones; los datos no se pueden migrar entre las redes de los planes inicial y empresarial.
-
-<!--
-As you can see in [Deploying sample applications](/docs/services/blockchain/howto/prebuilt_samples.html#deploying-sample-applications), Starter Plan makes it easy to get a sample application integrated with your network by using Toolchain. This setup also allows for continuous integration by automatically updating your sample application whenever your forked application repo is changed. If you want to deploy this application into an Enterprise Plan network, you can copy your forked application repo into a new repo and then follow the instructions in [Deploying sample applications manually](/docs/services/blockchain/howto/prebuilt_samples.html#deploying-sample-applications#deploy_sample_applications_manually).
--->
-
-Si despliega cualquier aplicación de ejemplo en la red del Plan inicial y desea desplegar esta aplicación en una red del Plan empresarial, puede copiar el repositorio bifurcado de aplicaciones en un nuevo repositorio y luego seguir las instrucciones de las aplicaciones de ejemplo para desplegarla en la red del Plan empresarial.
-
 
 ## Supresión o abandono de una red
 {: #getting-started-with-starter-plan-delete-network}

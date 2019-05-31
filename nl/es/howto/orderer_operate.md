@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-04-23"
+lastupdated: "2019-05-16"
+
+keywords: command line, orderer system channel, IBM Blockchain Platform, orderer, IBM Cloud Private, operate an orderer
 
 subcollection: blockchain
 
@@ -153,7 +155,7 @@ Necesita descargar el certificado TLS del clasificador y pasarlo a los mandatos 
   {:codeblock}
 
 ### Gestión de los certificados en el sistema local
-{: #manage-certs}
+{: #orderer-operate-manage-certs}
 
 Cambie al directorio donde se genera la carpeta de MSP del administrador de clasificador. En función de cómo haya seguido los pasos de ejemplo de esta documentación, o de cuántos componentes vaya a desplegar, puede encontrar la carpeta de MSP en
 `$HOME/fabric-ca-client/orderer-admin/msp` o en `$HOME/fabric-ca-client/peer-admin/msp`
@@ -294,6 +296,19 @@ Recupere el flujo de alto nivel para formar un consorcio:
 
 1. El canal del sistema del clasificador se forma únicamente con la organización del clasificador como miembro del canal del sistema. Dicha organización puede realizar actualizaciones sin necesidad de firmas adicionales.
 2. El administrador de la organización del clasificador recibe definiciones de organización de los miembros que desean unirse al consorcio. La organización del clasificador utiliza las definiciones de organización para actualizar la configuración del canal del sistema del clasificador.
+
+**Nota:** si el igual se despliega en un clúster de {{site.data.keyword.cloud_notm}} Private distinto al clasificador, deberá [completar pasos adicionales](#icp-orderer-operate-consortium-multi-cluster) para asegurarse de que la dirección del clasificador en el canal del sistema se actualiza con su dirección IP de proxy y puerto de nodo. Por ejemplo:
+  ```
+  "OrdererAddresses": {
+    "mod_policy": "/Channel/Orderer/Admins",
+    "value": {
+      "addresses": [
+        "9.12.19.49:30576"
+      ]
+    },
+    "version": "0"
+  }
+  ```
 
 ### Obtención de las definiciones de organización
 
@@ -499,6 +514,52 @@ Este mandato firma la solicitud de actualización y la envía al clasificador de
 ```
 
 Es posible incluir varias definiciones de organización en una única actualización de configuración de canal del sistema del clasificador, pero se recomienda actualizar el canal con una organización al mismo tiempo y comprobar que la actualización se haya realizado correctamente.
+
+### Actualización del canal del sistema para un despliegue de varios clústeres
+{: #icp-orderer-operate-consortium-multi-cluster}
+
+Si despliega el igual en otro clúster de {{site.data.keyword.cloud_notm}} Private distinto al clasificador, el igual no se podrá comunicar con el clasificador con la información del release de Helm del clasificador. Después de que se añada su organización al canal del sistema, debe actualizar el canal del sistema para que utilice la
+[información de punto final del clasificador](#icp-orderer-operate-orderer-endpoint), es decir, su número de puerto y dirección IP de proxy en lugar de la información del release de Helm. Ejecute el mandato siguiente para actualizar la dirección del clasificador en
+`genesis-config.json`.
+
+1. Convierta el bloque de origen al formato JSON.
+
+  ```
+  cd configupdate
+  configtxlator proto_decode --input genesis.pb --type common.Block --output ./config_block.json
+  jq .data.data[0].payload.data.config ./config_block.json  > config.json
+  ```
+  {:codeblock}
+
+2. Ejecute los mandatos siguientes para convertir el archivo `modified_config.json` de la actualización de la configuración al formato JSON.
+
+  ```
+  configtxlator proto_encode --input config.json --type common.Config --output config.pb 
+  configtxlator proto_encode --input modified_config.json --type common.Config --output modified_config.pb 
+  configtxlator compute_update --channel_id $CHANNEL_NAME --original config.pb --updated modified_config.pb --output config_update.pb 
+  configtxlator proto_decode --input config_update.pb --type common.ConfigUpdate --output config_update.json
+  ```
+  {:codeblock}
+
+3. Coloque un sobre en `config_update`.
+
+  ```
+  echo '{"payload":{"header":{"channel_header":{"channel_id":"'$CHANNEL_NAME'", "type":2}},"data":{"config_update":'$(cat config_update.json)'}}}' | jq . > config_update_in_envelope.json
+  ```
+  {:codeblock}
+
+4. Ejecute el mandato siguiente para volver a convertir la actualización de la configuración al formato protobuf.
+
+  ```
+  configtxlator proto_encode --input config_update_in_envelope.json --type common.Envelope --output ./config_update_in_envelope.pb
+  ```
+  {:codeblock}
+
+5. Envíe la actualización al canal del sistema.
+  ```
+  peer channel update -f update_in_envelope.pb -c $CHANNEL_NAME -o $ORDERER_URL --tls --cafile $ORDERER_TLS_CERTIFICATE
+  ```
+  {:codeblock}
 
 ## Visualización de los registros de clasificador
 {: #icp-orderer-operate-orderer-view-logs}

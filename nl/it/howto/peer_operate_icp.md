@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-04-23"
+lastupdated: "2019-05-16"
+
+keywords: command line, peer, operate peers, use context, Fabric SDKs, IBM Cloud Private 
 
 subcollection: blockchain
 
@@ -177,7 +179,7 @@ Si consiglia di utilizzare la versione 1.4.0 dell'SDK Node.
 Il tuo peer è stato distribuito con il signCert del tuo amministratore peer all'interno. Ciò ti consentirà di utilizzare la cartella MSP e i certificati dell'amministratore peer per gestire il peer.
 
 Individua i certificati che hai creato quando hai [iscritto il tuo amministratore peer](/docs/services/blockchain/howto/CA_operate.html#ca-operate-enroll-admin). Se hai usato i comandi di esempio, puoi trovare la cartella MSP del tuo amministratore peer in `$HOME/fabric-ca-client/peer-admin`.
-  - Puoi creare il contesto di utente amministratore peer con l'SDK utilizzando il signCert (chiave pubblica) e la chiave privata nella cartella MSP. Puoi trovare queste chiavi nelle seguenti ubicazioni:
+  - Puoi creare il contesto utente di gestione del peer con l'SDK utilizzando il signCert e la chiave privata nella cartella MSP. Puoi trovare queste chiavi nelle seguenti ubicazioni:
     - Il signCert è disponibile nella cartella **signcerts**: `$HOME/fabric-ca-client/peer-admin/msp/signcerts`
     - La chiave privata è disponibile nella cartella **keystore:**:`$HOME/fabric-ca-client/peer-admin/msp/keystore`
 

@@ -2,7 +2,9 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-03-20"
+lastupdated: "2019-05-16"
+
+keywords: client application, Commercial Paper, SDK, wallet, generate a certificate, generate a private key, fabric gateway, APIs, smart contract
 
 subcollection: blockchain
 
@@ -30,22 +32,7 @@ subcollection: blockchain
 ## 학습 리소스
 {: #ibp-console-app-learning-resources}
 
-Hyperledger Fabric 문서의 [애플리케이션 개발 주제 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/developapps/developing_applications.html "애플리케이션 개발")를
-방문하여 애플리케이션 및 스마트 계약이 함께 작동하는 방법에 대해 배울 수 있습니다. 이 주제에서는
-은행 및 기업이 상업 어음을 거래하는 가상 유스 케이스를 탐색하고 스마트 계약에서 트랜잭션이
-인코딩되는 방법을 설명합니다. [상업 어음 튜토리얼 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/tutorial/commercial_paper.html "상업 어음 튜토리얼")에서는
-패브릭 네트워크에 스마트 계약을 배치하고 샘플 애플리케이션 코드를 사용하여 네트워크 구성원 사이에서 상업 어음을 작성 및 전송하도록
-허용함으로써 이 주제를 확장합니다.
-
-**애플리케이션 샘플 및 튜토리얼**
-
-|  샘플  |설명    |  난이도    | 언어 | 위치 |
-| -----------------|---------|---------|---------|
-| [FabCar ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://developer.ibm.com/patterns/write-a-smart-contract-for-the-fabcarcommercial-paper-or-iks-cluster-with-saas-v2-beta-network-think/ "Blockchain")| IKS 클러스터를 사용하여 단순 패브릭 네트워크 스마트 계약을 Blockchain Platform에 배치합니다. | 중간 | Node.js | DeveloperWorks 문서|
-| [Commercial Paper ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/tutorial/commercial_paper.html "Commercial Paper")| 상업 어음 스마트 계약을 사용하여 Hyperledger Fabric의 로컬 인스턴스에서 거래합니다. | 중간 | Node.js | Hyperledger Fabric 문서|
-| **제공 예정:** Advanced Commercial Paper  |개인용 데이터 콜렉션 및 상태 기반 보증을 사용하는 소유권 및 개인정보 보호의 우수 사례가 포함된 고급 샘플입니다. | 고급 | Node.js | Hyperledger Fabric 문서|
-| [{{site.data.keyword.blockchainfull_notm}} VSCode 확장으로 상업 어음 스마트 계약 실행 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://developer.ibm.com/tutorials/run-commercial-paper-smart-contract-with-ibm-blockchain-vscode-extension/ "VSCode로 상업 어음 스마트 계약 실행")| VScode 확장을 사용하여 Hyperledger Fabric의 로컬 인스턴스에서 상업 어음 스마트 계약을 설치하고 호출하는 방법에 대해 설명합니다. | 중간 | Node.js | IBM Developer|
-| [{{site.data.keyword.blockchainfull_notm}} Platform 무료 2.0 베타에서 상업 어음 샘플 실행](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-commercial-paper)|{{site.data.keyword.blockchainfull_notm}} Platform 2.0 네트워크에서 상업 어음 계약을 배치하고 호출하는 방법에 대해 설명합니다. | 중간 | Node.js | {{site.data.keyword.blockchainfull_notm}} Platform 문서|  
+상업 어음 샘플에서 애플리케이션 및 스마트 계약이 함께 작동하는 방법에 대해 자세히 알아볼 수 있습니다. [{{site.data.keyword.blockchainfull_notm}} Platform에서 상업 어음 샘플을 실행](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-commercial-paper)하는 방법에 대한 주제를 방문하십시오. 여기서 상업 어음 계약을 배치하고 호출하는 방법을 알아볼 수 있습니다.
 
 애플리케이션을 개발하려면 네트워크의
 구별되는 두 사용자, 즉, 네트워크 운영자 및 애플리케이션 개발자 간의
@@ -66,8 +53,11 @@ Hyperledger Fabric 문서의 [애플리케이션 개발 주제 ![외부 링크 �
   - 스마트 계약이 인스턴스화되는 채널의 이름  
 
 사용자가 **애플리케이션 개발자**인 경우, 네트워크 운영자가 제공하는 정보를 사용하여 다음 단계를 완료하십시오.
-1. 사용자의 연결 프로파일 내의 CA 엔드포인트 정보와 함께 애플리케이션 ID의 등록 ID 및 시크릿을 사용하여 공개 키 및 개인 키 쌍을 생성하십시오.
+1. 연결 프로파일 내의 CA 엔드포인트 정보와 함께 애플리케이션 ID의 등록 ID 및 시크릿을 사용하여 인증서 및 개인 키 쌍을 생성하십시오.
 2. 연결 프로파일, 채널 이름, 스마트 계약 및 애플리케이션 키를 사용하여 스마트 계약을 호출하십시오.  
+
+{{site.data.keyword.blockchainfull_notm}} Platform 콘솔에서 다운로드되는 연결 프로파일은 Node.js(JavaScript 및 TypeScript) 및 Java Fabric SDK를 사용하여 네트워크에 연결하는 데만 사용될 수 있습니다.
+{: note}
 
 애플리케이션 개발자는 두 가지 프로그래밍 모델을 사용하여 네트워크와 상호작용할 수 있습니다.
 
@@ -80,12 +70,9 @@ Fabric v1.4부터는 사용자가 단순화된 애플리케이션 및 스마트 
 
 - SDK를 사용하여 [애플리케이션에 대한 인증서를 생성](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-enroll)하십시오.
 - [SDK에서 스마트 계약을 호출](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-invoke)하십시오.
-- [IBM Blockchain VScode 확장](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-vscode)을
-사용하여 스마트 계약을 작성 및 배치하고 반복적으로 개발 및 테스트하십시오.
 - 콘솔에서 관리되는 노드에 [상업 어음 튜토리얼](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-commercial-paper)을
 배치하여 애플리케이션 개발에 대해 학습하십시오. 이 튜토리얼은
 패브릭 지갑 및 게이트웨이를 사용하는 방법에 대한 더 자세한 백그라운드를 제공합니다.
-
 
 **하위 레벨 Fabric SDK API**
 
@@ -94,13 +81,10 @@ Fabric v1.4부터는 사용자가 단순화된 애플리케이션 및 스마트 
 ## 애플리케이션 ID 등록
 {: #ibp-console-app-identities}
 
-해당 당사자가 전송하는 트랜잭션을 확인하려면
-애플리케이션이 {{site.data.keyword.blockchainfull_notm}} 노드에 제출하는 트랜잭션에
-서명해야 하며 노드에 의해 사용되는 공개 키를 첨부해야 합니다. 그러면
+적절한 당사자가 트랜잭션을 전송하는지 확인하려면 애플리케이션이 {{site.data.keyword.blockchainfull_notm}} 노드에 제출하는 트랜잭션에 서명하고 노드에서 사용되는 서명 인증서를 첨부해야 합니다. 그러면
 트랜잭션을 참여 권한이 있는 조직에 제출할 수 있습니다.
 
-네트워크 운영자가 조직의 CA를 사용하여 애플리케이션 ID를 등록해야 합니다.
-그러면 애플리케이션 개발자가 해당 ID를 사용하여 공개 및 개인 키를 생성할 수 있습니다. 운영자는
+네트워크 운영자가 조직의 CA를 사용하여 [애플리케이션 ID를 등록](/docs/services/blockchain/howto?topic=blockchain-ibp-console-identities#ibp-console-identities-register)해야 합니다. 그러면 애플리케이션 개발자가 해당 ID를 사용하여 인증서 및 개인 키를 생성할 수 있습니다. 운영자는
 CA 엔드포인트 정보와 함께 SDK가 인증서를 생성하기 위해 사용하는
 등록 ID 및 ID의 시크릿을 제공할 수 있습니다. 애플리케이션 개발자는
 클라이언트 측에 등록함으로써 기타 당사자가 애플리케이션의 개인 키에 액세스하지 못하도록 할 수 있습니다. 등록 중 네트워크 운영자가 추가 보안을 위해 등록 한계를 설정할 수 있습니다. 애플리케이션 개발자가 등록한 후에는 등록 ID와 시크릿을 사용하여 다른 개인 키를 생성할 수 없습니다.
@@ -123,6 +107,9 @@ echo <base64_string> | base64 --decode $FLAG > <key>.pem
 애플리케이션은 채널에서 인스턴스화된 스마트 계약에만 트랜잭션을 제출할 수 있습니다. 따라서 스마트 계약과 상호작용하기 위해 연결해야 하는 정보는 콘솔 내의 인스턴스화된 스마트 계약 목록에서 찾을 수 있습니다. 즉,
 이미 스마트 계약을 설치하고 인스턴스화한 상태여야 합니다.
 
+{{site.data.keyword.blockchainfull_notm}} Platform 콘솔에서 다운로드되는 연결 프로파일은 Node.js(JavaScript 및 TypeScript) 및 Java Fabric SDK를 사용하여 네트워크에 연결하는 데만 사용될 수 있습니다.
+{: note}
+
 Hyperledger Fabric [트랜잭션 플로우![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")]( https://hyperledger-fabric.readthedocs.io/en/release-1.4/txflow.html "트랜잭션 플로우"){:new_window}의
 범위는 피어에서 보증을 수집하여 보증된 트랜잭션을 순서 지정 서비스로 전송하는 클라이언트 애플리케이션을 포함하여 다중
 컴포넌트에 걸쳐 있습니다. 연결 프로파일은
@@ -143,7 +130,7 @@ Hyperledger Fabric의 [서비스 발견 ![외부 링크 아이콘](../images/ext
 ## SDK를 사용하여 등록
 {: #ibp-console-app-enroll}
 
-일단 네트워크 운영자가 네트워크 연결 프로파일 및 애플리케이션 ID의 등록 ID 및 시크릿을 제공하면 애플리케이션 개발자가 Fabric SDK 또는 Fabric CA 클라이언트를 사용하여 클라이언트 측 인증서를 생성할 수 있습니다. 다음
+네트워크 운영자가 네트워크 연결 프로파일 및 애플리케이션 ID의 등록 ID 및 시크릿을 제공하면 애플리케이션 개발자가 Fabric SDK 또는 Fabric CA 클라이언트를 사용하여 클라이언트 측 인증서를 생성할 수 있습니다. 다음
 단계에 따라 [Node.js용 Fabric SDK ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://fabric-sdk-node.github.io/ "Node.js용 Fabric SDK")를
 사용하여 애플리케이션 ID를 등록할 수 있습니다.
 
@@ -216,7 +203,7 @@ Fabric SDK에 사용되는 지갑은 {{site.data.keyword.blockchainfull_notm}} P
 ## SDK를 사용하여 스마트 계약 호출
 {: #ibp-console-app-invoke}
 
-애플리케이션 공개 및 개인 키를 생성하여 지갑에 저장했으면 트랜잭션을 제출할 준비가 된 것입니다. 스마트 계약의
+애플리케이션 서명 인증서 및 개인 키를 생성하여 지갑에 저장했으면 트랜잭션을 제출할 준비가 된 것입니다. 스마트 계약의
 이름 및 스마트 계약이 인스턴스화된 채널의 이름을 알아야 합니다. 아래 단계에 따라
 [Node.js용 Fabric SDK![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://fabric-sdk-node.github.io/ "Node.js용 Fabric SDK")를
 사용하여 스마트 계약을 호출할 수 있습니다.
@@ -286,40 +273,6 @@ Fabric SDK에 사용되는 지갑은 {{site.data.keyword.blockchainfull_notm}} P
   {:codeblock}
   콘솔을 사용하여 채널로 이동하는 경우, 트랜잭션이 추가한 다른 블록을 볼 수 있습니다.
 
-
-## {{site.data.keyword.blockchainfull_notm}} VScode 확장과 연결
-{: #ibp-console-app-vscode}
-
-{{site.data.keyword.blockchainfull_notm}} Platform Visual Studio Code 확장은 스마트 계약 패키지의 개발, 패키지 및 배치를 위해 Visual Studio Code 내에 환경을 제공합니다. 연결 프로파일 및 CA를 사용하여 생성된 키 파일 세트가 있는지 확인하십시오. 그런
-다음, VScode 확장을 사용하여 콘솔을 사용하여 관리 중인 네트워크에 연결할 수 있습니다.
-
-지시사항에 따라 Visual Studio Code 마켓플레이스에 [VScode 확장 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://marketplace.visualstudio.com/items?itemName=IBMBlockchain.ibm-blockchain-platform#overview "VScode 확장")을
-다운로드하십시오. 확장이 설치되면 VScode를 열고 **보기 > 명령 팔레트**를 클릭하여 확장에 액세스할 수 있습니다. *IBM Blockchain Platform: Create Smart Contract Project* 명령을
-입력하여 새 스마트 계약 프로젝트를 작성하십시오.
-
-일단 새 프로젝트를 작성한 후에는
-콘솔에서 인스턴스화된 스마트 계약의 정보를 사용하여 Visual Studio 코드에서 네트워크에 직접 연결할 수 있습니다. 스마트
-계약 탭의 **인스턴스화된 스마트 계약** 표를 사용하여
-[연결 프로파일](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-profile)을
-로컬 파일 시스템에 다운로드하십시오. 그런 다음
-[애플리케이션 ID를 작성](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-identities)하고
-CA를 사용하여 인증서(공개 키) 및 개인 키를 작성하고 다운로드하십시오. 앞의 지시사항에 따라
-개인 키 및 인증서를 PEM 형식으로 변환하십시오. 연결 프로파일 및 키를 다운로드한 후에는 다음 단계에 따라 네트워크에 연결하십시오.
-
-1. Visual Studio Code에서 _{{site.data.keyword.blockchainfull_notm}} Platform_ 탭을 여십시오.
-2. _{{site.data.keyword.blockchainfull_notm}} Platform_ 분할창에서 **새 연결 추가**를 클릭하십시오.
-3. 연결의 이름을 입력하십시오. 이름은 _{{site.data.keyword.blockchainfull_notm}} Platform_ 분할창에 표시됩니다.
-4. 연결 프로파일의 완전한 파일 경로를 입력하십시오.
-5. PEM 형식으로 인증서(공개 키)의 완전한 파일 경로를 입력하십시오.
-6. PEM 형식으로 개인 키의 완전한 파일 경로를 입력하십시오.
-7. 이제 연결이 `local_fabric` 아래의 연결 목록에 표시되어야 합니다. 연결할 연결 이름을 두 번 클릭하십시오.
-
-일단 VScode에서 연결되면 조직에서 피어 목록을 볼 수 있으며 블록체인 연결 분할창에서 가입된 채널을 볼 수 있습니다. 각 피어
-아래에서 설치된 스마트 계약의 목록을 볼 수 있습니다. 프로젝트의 새 스마트 계약을 네트워크에 설치하려면 먼저 피어를 마우스 오른쪽 단추로 클릭하고 **스마트 계약 설치**를 클릭하십시오. 그런 다음 채널을 마우스 오른쪽 단추로 클릭하고 **스마트 계약 설치**를 클릭하여 해당 스마트 계약을 인스턴스화하십시오. [Visual Studio Code 마켓플레이스 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://marketplace.visualstudio.com/items?itemName=IBMBlockchain.ibm-blockchain-platform#overview "VScode 확장")의
-문서를 방문하여
-{{site.data.keyword.blockchainfull_notm}} Platform 확장 사용에 대한 자세한 정보를 볼 수 있습니다.
-
-
 ## 상업 어음 샘플 실행
 {: #ibp-console-app-commercial-paper}
 
@@ -347,7 +300,7 @@ Fabric의 로컬 인스턴스에서 자산을 작성 및 거래할 수 있도록
   * [Git ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git "Git"){:new_window}
   * [Node.js ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/prereqs.html#node-js-runtime-and-npm "Node.js"){:new_window}
 
-또한 문서 편집기를 사용하여 샘플의 파일을 편집하고 저장해야 합니다. [Atom ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://atom.io/ "atom"), [Sublime text ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](http://www.sublimetext.com/ "Git") 또는 [Brackets ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](http://brackets.io/ "Brackets") 등의 수많은 고품질 편집기를 무료로 사용할 수 있습니다.
+또한 문서 편집기를 사용하여 샘플의 파일을 편집하고 저장해야 합니다. 무료로 사용 가능한 여러 가지 고품질 편집기(예: [Atom ![외부 링크 아이콘](../images/external_link.svg " 외부 링크 아이콘")](https://atom.io/ "atom"), [Sublime text ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](http://www.sublimetext.com/ "Git") 또는 [Brackets ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](http://brackets.io/ "Brackets"))를 사용할 수 있습니다.
 
 ### 1단계: 샘플 다운로드
 
@@ -362,7 +315,7 @@ git clone https://github.com/hyperledger/fabric-samples.git
 
 ```
 cd fabric-samples
-git checkout v1.4.0
+git checkout v1.4.1
 ```
 {:codeblock}
 
@@ -404,14 +357,11 @@ npm install
 `digibank` 및 `magnetocorp` 디렉토리의 `contract` 폴더에서
 상업 어음 스마트 계약을 찾을 수 있습니다. 튜토리얼을 사용하여 이 스마트 계약을 조직 내의 모든 피어에
 설치해야 합니다. 그런 다음 채널에서 상업 어음 계약을 인스턴스화해야 합니다. 스마트 계약은 콘솔을 사용하여 설치될 수 있도록
-[.cds 형식 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/latest/chaincode4noah.html#packaging "스마트 계약 패키징")으로 패키지되어야 합니다.
+[.cds 형식 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/chaincode4noah.html#packaging "스마트 계약 패키징")으로 패키지되어야 합니다.
 
-[IBM Blockchain VScode 확장](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-vscode)을
-사용하여 스마트 계약을 패키지할 수 있습니다. 확장을 설치한 후 Visual Studio 코드를 사용하여 작업공간에서
+[IBM Blockchain VS Code 확장](/docs/services/blockchain/vscode-extension.html)을 사용하여 스마트 계약을 패키지할 수 있습니다. 확장을 설치한 후 Visual Studio 코드를 사용하여 작업공간에서
 `contracts` 폴더를 여십시오. _{{site.data.keyword.blockchainfull_notm}} Platform_ 탭을 여십시오. _{{site.data.keyword.blockchainfull_notm}} Platform_ 분할창에서
-스마트 계약 패키지 섹션으로 이동하여 **스마트 계약 프로젝트 패키지**를 클릭하십시오. VScode 확장은
-`contracts` 폴더의 파일을 사용하여 `papernet-js@.0.0.1.cds`라는 이름의 새 패키지를 작성합니다. 마우스 오른쪽 단추로
-이 패키지를 클릭하여 로컬 파일 시스템으로 내보내십시오. 그런 다음 콘솔을 사용하여
+스마트 계약 패키지 섹션으로 이동하여 **스마트 계약 프로젝트 패키지**를 클릭하십시오. VS Code 확장은 `contracts` 폴더의 파일을 사용하여 `papernet-js@.0.0.1.cds`라는 이름의 새 패키지를 작성합니다. 이 패키지를 마우스 오른쪽 단추로 클릭하여 로컬 파일 시스템으로 내보내십시오. 그런 다음 콘솔을 사용하여
 [피어에 스마트 계약을 설치](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-install)하고
 [채널에서 스마트 계약을 인스턴스화](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-instantiate)할 수 있습니다.
 
@@ -424,11 +374,9 @@ npm install
 참조하십시오. Fabric SDK에 사용되는 지갑은 {{site.data.keyword.blockchainfull_notm}} Platform 콘솔의 지갑과 다릅니다. 콘솔 지갑에 저장된 ID는 SDK에서 직접 사용할 수 없습니다.
 
 원래 샘플은 `addToWallet.js` 파일을 사용하여
-패브릭 샘플 폴더의 인증서를 사용하는 파일 시스템 지갑을 작성합니다. 여기서는
-SDK를 사용하는 새 파일을 작성하여 클라이언트 측 인증서를 생성하고 직접 새 지갑에 저장할 것입니다.
+패브릭 샘플 폴더의 인증서를 사용하는 파일 시스템 지갑을 작성합니다. 여기서는 SDK를 사용하는 새 파일을 작성하여 클라이언트 측 인증서를 생성하고 직접 새 지갑에 저장합니다.
 
-magnetocorp로서 튜토리얼을 작동하는 데 사용할 조직의 CA를 선택하십시오. 예를 들어 네트워크 빌드 튜토리얼을 완료한 경우,
-Org1을 사용할 수 있습니다. CA를 사용하여 [애플리케이션 ID를 작성](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-identities)하십시오. 등록 ID와 시크릿을 **저장**하십시오.
+magnetocorp로서 튜토리얼을 작동하는 데 사용할 조직의 CA를 선택하십시오. 예를 들어 네트워크 빌드 튜토리얼을 완료한 경우 Org1을 사용할 수 있습니다. CA를 사용하여 [애플리케이션 ID를 작성](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-identities)하십시오. 등록 ID와 시크릿을 **저장**하십시오.
 
 콘솔을 사용하여 [연결 프로파일을 다운로드](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-profile)하십시오. 연결 프로파일을 로컬 파일 시스템에 저장하고 이름을 `connection.json`으로 바꾸십시오. 그 후,
 다음 명령을 사용하여 연결 프로파일을
@@ -501,8 +449,7 @@ const wallet = new FileSystemWallet('../identity/user/isabella/wallet')
 ```
 {:codeblock}
 
-지갑을 작성한 후에 코드 스니펫이 등록 ID 및 시크릿과 함께 조직 CA를 사용하여 등록합니다. 그런 다음 공개 개인 키 쌍에
-대한 ID를 작성하여 지갑으로 가져옵니다. 파일이 조직 MSP ID를 지갑으로 전달하는 방법에 유의하십시오.
+지갑을 작성한 후에 코드 스니펫이 등록 ID 및 시크릿과 함께 조직 CA를 사용하여 등록합니다. 그런 다음 서명 인증서 및 개인 키에 대한 ID를 작성하여 지갑으로 가져옵니다. 파일이 조직 MSP ID를 지갑으로 전달하는 방법에 유의하십시오.
 
 ```
 // Enroll the admin user, and import the new identity into the wallet.
@@ -670,8 +617,7 @@ CA를 사용하여 [애플리케이션 ID를 작성](/docs/services/blockchain/h
 
 [Fabric 노드 SDK ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://fabric-sdk-node.github.io "Fabric 노드 SDK") 문서는
 [연결 프로파일을 사용하여 네트워크에 연결하는 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://fabric-sdk-node.github.io/tutorial-network-config.html "프로파일 연결 튜토리얼"){:new_window} 방법에 대한 프로파일을 제공합니다. 튜토리얼에서는
-연결 프로파일 내의 CA 엔드포인트 정보를 사용하여 SDK를 사용하는 키를 생성합니다. 또한 콘솔을 사용하여
-공개 및 개인 키를 생성하고 해당 키를 PEM 형식으로 변환할 수 있습니다. 그런 다음 아래 코드를 사용하여 키를 직접 SDK의 [Fabric 클라이언트 클래스![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://fabric-sdk-node.github.io/Client.html "Fabric 클라이언트 클래스")로 전달하여 사용자 컨텍스트를 설정할 수 있습니다.
+연결 프로파일 내의 CA 엔드포인트 정보를 사용하여 SDK를 사용하는 키를 생성합니다. 또한 콘솔을 사용하여 서명 인증서 및 개인 키를 생성하고 해당 키를 PEM 형식으로 변환할 수 있습니다. 그런 다음 아래 코드를 사용하여 키를 직접 SDK의 [Fabric 클라이언트 클래스 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://fabric-sdk-node.github.io/Client.html "Fabric 클라이언트 클래스")로 전달하여 사용자 컨텍스트를 설정할 수 있습니다.
 
 ```
 fabric_client.createUser({

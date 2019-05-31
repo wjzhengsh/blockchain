@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-04-23"
+lastupdated: "2019-05-16"
+
+keywords: root CA, network components, ICP deployment guide, getting started tutorial, IBM Cloud Private
 
 subcollection: blockchain
 
@@ -31,6 +33,7 @@ subcollection: blockchain
 {:important}
 
 ## ステップ 1: ネットワーク構成の決定
+{: #get-started-icp-step-one-decide-network-config}
 
 ブロックチェーン・ネットワークの構造は、ユース・ケースで決定する必要があります。 これらの基本的なビジネス上の決定は、状況によって異なりますが、以下の点を考慮してください。
 
@@ -46,13 +49,15 @@ subcollection: blockchain
 {:note}
 
 ## ステップ 2: {{site.data.keyword.cloud_notm}} Private での Kubernetes クラスターのセットアップ
+{: #get-started-icp-step-two-set-up-k8s-on-icp}
 
 ネットワーク構造を決定したら、ユース・ケースに対応するように {{site.data.keyword.cloud_notm}} Private 上に Kubernetes クラスターをセットアップします。 詳しくは、[{{site.data.keyword.cloud_notm}} Private のセットアップ](/docs/services/blockchain/ICP_setup.html#icp-setup)を参照してください。
 
-{{site.data.keyword.IBM_notm}} Secure Service Container を {{site.data.keyword.cloud_notm}} Private のホストとして使用し、Secure Service Container のセキュリティー機能を利用して内部や外部の脅威から重要なデータを保護することもできます。詳しくは、[{{site.data.keyword.IBM_notm}} Secure Service Container for {{site.data.keyword.cloud_notm}} Private の使用](/docs/services/howto/ibp-ssc-for-icp.html "{{site.data.keyword.IBM_notm}} Secure Service Container for {{site.data.keyword.cloud_notm}} Private の使用")を参照してください。
+{{site.data.keyword.IBM_notm}} Secure Service Container を {{site.data.keyword.cloud_notm}} Private のホストとして使用し、Secure Service Container のセキュリティー機能を利用して内部や外部の脅威から重要なデータを保護することもできます。 詳しくは、[{{site.data.keyword.IBM_notm}} Secure Service Container for {{site.data.keyword.cloud_notm}} Private の使用](/docs/services/blockchain/howto/ibp-ssc-for-icp.html "{{site.data.keyword.IBM_notm}} Secure Service Container for {{site.data.keyword.cloud_notm}} Private の使用")を参照してください。
 {:note}
 
 ## ステップ 3: CA のセットアップ
+{: #get-started-icp-step-three-set-up-cas}
 
 Fabric ベースのブロックチェーン・ネットワークでは、デプロイする必要がある最初のコンポーネントは CA です。 これは、コンポーネントのデプロイ前にその操作を許可されたユーザー ID がコンポーネントの構成に少なくとも 1 つ含まれている必要があるためです。
 
@@ -67,6 +72,7 @@ CA の無限回帰 (すべての CA を別の CA に無限にリンクする必�
 TLS について詳しくは、Hyperledger Fabric の資料で [Securing Communication With Transport Layer Security (TLS) ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/enable_tls.html "Securing Communication With Transport Layer Security (TLS)") を参照してください。
 
 ### 順序付けプログラムおよびピア用の MSPS の準備
+{: #get-started-icp-prepare-msp-orderer-peer}
 
 {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private プロセスは非常に複雑であるため、初期セットアップ時にすべてのネットワーク・コンポーネント・ノードの管理者として単一の管理ユーザー ID を使用することをお勧めします。 これにより、1 人のユーザーがさまざまなコンポーネント間の構成および接続をセットアップして、正しく機能することを確認することで、デプロイメントおよび接続エラーを削減できます。 ただし、各コンポーネントに異なる証明書があることが非常に重要です。 ここでの違いは、見落としやすい場合があります。 トランザクション提案に署名するエンティティーはピアの管理者ではなく、**ピア自体**です。 したがって、ピアはエンロールされている必要があり、その操作に付加する証明書と特定の種類の署名を生成するために使用できる秘密鍵を持っている必要があります。 Fabric ベースのブロックチェーン・ネットワークにおける ID および許可について詳しくは、Fabric の資料で [Identity ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/identity/identity.html "Identity") および [Membership ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/membership/membership.html "Membership") を参照してください。
 
@@ -75,6 +81,7 @@ TLS について詳しくは、Hyperledger Fabric の資料で [Securing Communi
 順序付けプログラムまたはピアがデプロイされると、順序付けプログラムまたはピアに関連付けられた `init` コンテナーは、Kubernetes 秘密オブジェクトを使用してコンポーネントの MSP を作成します。 秘密オブジェクトの作成方法については、[CA の操作](/docs/services/blockchain/howto/CA_operate.html#ca-operate)を参照してください。 前述したように、組織ごとに CA をセットアップし、このフローを繰り返す必要があります。
 
 ## ステップ 4: 順序付けプログラムおよびピアのデプロイ
+{: #get-started-icp-step-four-deploy-order-peer}
 
 Kubernetes 秘密が作成されると、コンポーネントをデプロイする準備が整います。 チャネルを確立する場合は、どのピアよりも前に順序付けプログラムをデプロイすることをお勧めします。 すべてのコンポーネントに異なる組織名を使用してください。
 
@@ -85,6 +92,7 @@ Kubernetes 秘密が作成されると、コンポーネントをデプロイす
 - **[{{site.data.keyword.blockchainfull_notm}} Platform ネットワークに接続するピアをデプロイします](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy)**。 ピアをデプロイするプロセスと、それを {{site.data.keyword.cloud_notm}} の[スターター・プラン](/docs/services/blockchain/starter_plan.html#starter-plan-about)または[エンタープライズ・プラン](/docs/services/blockchain/enterprise_plan.html#enterprise_plan-about)・ネットワークに接続するプロセスは、接続プロファイルとネットワーク・モニター UI を使用するため異なります。 ピアが属する組織は、ネットワーク内のチャネルに既に参加している必要があります。 この場合も、ピアの組織 MSP ID が順序付けプログラムの組織 MSP ID と異なることを確認してください。
 
 ## 次のステップ
+{: #get-started-icp-next-steps}
 
 すべてのノードをデプロイしたら、ノードの操作を開始して、トランザクションを送信できます。 詳細については、以下のリンクを参照してください。
 
@@ -94,6 +102,7 @@ Kubernetes 秘密が作成されると、コンポーネントをデプロイす
 - [スターター・プランまたはエンタープライズ・プランを使用した {{site.data.keyword.cloud_notm}} Private でのピアの操作](/docs/services/blockchain/howto/peer_operate_icp.html#icp-peer-operate)
 
 ## ネットワークの拡大
+{: #get-started-icp-grow-network}
 
 開発環境または PoC (概念検証) をセットアップすることが目標である場合は、順序付けプログラムのデプロイメント時に作成される順序付けシステム・チャネルにピア組織を追加する必要があります。 これは、すべてのコンポーネントを使用するマルチステップ・プロセスであり、関連する操作トピックで説明されています。
 

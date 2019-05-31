@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-04-23"
+lastupdated: "2019-05-16"
+
+keywords: IBM Blockchain Platform, peer, deploy peers, data storage, peer configuration file, IBM Cloud Private 
 
 subcollection: blockchain
 
@@ -66,7 +68,7 @@ amd64 또는 s390x 플랫폼에 피어를 배치하도록 선택할 수 있습�
 ## 피어 구성 시크릿 작성
 {: #icp-peer-deploy-config-file}
 
-피어를 배치하려면 피어 ID 및 인증 기관에 대한 중요한 정보가 포함된 구성 파일을 작성해야 합니다. 그런 다음 [Kubernetes 시크릿 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://kubernetes.io/docs/concepts/configuration/secret/) 오브젝트를 사용하여 구성 중에 이 파일을 Helm 차트에 전달해야 합니다. 이 파일을 통해 피어는 블록체인 네트워크에 참여하기 위해 인증 기관에서 필요한 인증서를 가져올 수 있습니다. 이 파일에는 사용자가 피어를 운영할 수 있는 관리자 인증서도 포함됩니다. 피어 구성 전에 [CA를 사용하여 순서 지정자 또는 피어 배치](/docs/services/blockchain/howto/CA_operate.html#ca-operate-deploy-orderer-peer)에 대한 지시사항을 따르십시오.
+피어를 배치하려면 피어 ID 및 인증 기관에 대한 중요한 정보가 포함된 구성 파일을 작성해야 합니다. 그런 다음 [Kubernetes 시크릿 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://kubernetes.io/docs/concepts/configuration/secret/) 오브젝트를 사용하여 구성 중에 이 파일을 Helm 차트에 전달해야 합니다. 이 파일을 통해 피어는 블록체인 네트워크에 가입하기 위해 인증 기관에서 필요한 인증서를 가져올 수 있습니다. 이 파일에는 사용자가 피어를 운영할 수 있는 관리자 인증서도 포함됩니다. 피어 구성 전에 [CA를 사용하여 순서 지정자 또는 피어 배치](/docs/services/blockchain/howto/CA_operate.html#ca-operate-deploy-orderer-peer)에 대한 지시사항을 따르십시오.
 
 CSR 호스트 이름을 구성 파일에 제공해야 합니다. 여기에는 배치 중에 지정하는 `helm release name`과 동일한 값이 되는 `service host name`이 포함됩니다. 예를 들어, `org1peer1`의 `helm release name`을 지정하는 경우 파일의 `"csr"` 섹션에 다음 값을 삽입해야 합니다.
 ```
@@ -125,7 +127,7 @@ WVRBbFZUDQpNUlV3RXdZRFZRUUtFd3hFYVdkcFEyVnlkQ0JKYm1NeEp6QWxCZ05WQkFNVEhrUnBa
     ```
     {:code_block}
 
-  2. **이름** 필드에 `couchdbuser` 값을 입력하십시오. 해당 **값** 필드에 위의 1단계로 생성된 `echo -n 'couch' | base64 $FLAG`의 결과를 입력하십시오.
+  2. **이름** 필드에 `couchdbusr` 값을 입력하십시오. 해당 **값** 필드에 위의 1단계로 생성된 `echo -n 'couch' | base64 $FLAG`의 결과를 입력하십시오.
   3. **데이터 추가** 단추를 클릭하여 두 번째 키 값 쌍을 추가하십시오.
   4. 두 번째 **이름** 필드에 `couchdbpwd` 값을 입력하십시오. 해당 **값** 필드에 위의 1단계로 생성된 `echo -n 'couchpw' | base64 $FLAG`의 결과를 입력하십시오.
 
@@ -157,10 +159,10 @@ WVRBbFZUDQpNUlV3RXdZRFZRUUtFd3hFYVdkcFEyVnlkQ0JKYm1NeEp6QWxCZ05WQkFNVEhrUnBa
 
 |매개변수     |설명    | 기본값  | 필수 |
 | --------------|-----------------|-------|------- |
-|**일반 매개변수**| Helm 차트를 구성하는 매개변수입니다.| | |
+|**일반 매개변수**| Helm 차트를 구성하는 매개변수입니다. | | |
 | `Helm release name`| Helm 릴리스의 이름입니다. 소문자로 시작하고 영숫자 문자로 끝나야 하며 하이픈과 소문자의 영숫자 문자만 포함해야 합니다. 컴포넌트를 설치하려고 할 때마다 고유한 Helm 릴리스 이름을 사용해야 합니다. **중요:** 이 값은 [JSON 시크릿 파일](/docs/services/blockchain/howto/peer_deploy_icp.html#icp-peer-deploy-config-file)의 "호스트" 필드에 대한 '서비스 호스트 이름'을 생성하는 데 사용한 값과 일치해야 합니다. | 없음 | 예 |
 | `Target namespace`| Helm 차트를 설치할 Kubernetes 네임스페이스를 선택합니다. | 없음 | 예 |
-| `Target namespace policies`| 선택한 네임스페이스의 팟(Pod) 보안 정책을 표시하며, 여기에는 **`ibm-privileged-psp`** 정책을 포함해야 합니다. 그렇지 않으면 네임스페이스에 [PodSecurityPolicy를 바인드](/docs/services/blockchain?topic=blockchain-icp-setup#icp-setup-psp)하십시오.| 없음 | 아니오 |
+| `Target namespace policies`| 선택한 네임스페이스의 팟(Pod) 보안 정책을 표시하며, 여기에는 **`ibm-privileged-psp`** 정책을 포함해야 합니다. 그렇지 않으면 네임스페이스에 [PodSecurityPolicy를 바인드](/docs/services/blockchain?topic=blockchain-icp-setup#icp-setup-psp)하십시오. | 없음 | 아니오 |
 |**글로벌 구성**| Helm 차트의 모든 컴포넌트에 적용하는 매개변수입니다.|||
 | `Service account name`| 팟(Pod)을 실행하는 데 사용할 [서비스 계정 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/)의 이름을 입력합니다. | 기본값 | 아니오 |
 

@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-04-23"
+lastupdated: "2019-05-16"
+
+keywords: IBM Cloud Private, Certificate Authority, operate CA, CA admin secret, CA logs, Helm chart, on-prem, CLI, CA TLS cert, CA endpoint, TLS CA
 
 subcollection: blockchain
 
@@ -45,7 +47,7 @@ subcollection: blockchain
 ## 전제조건
 {: #ca-operate-prerequisites}
 
-네트워크를 작성하는지 또는 참여하는지 여부에 관계 없이 CA를 사용하여 조직에 속한 기타 컴포넌트 및 ID를 배치하려면 다음과 같은 전제조건 단계를 완료해야 합니다.
+네트워크를 작성하는지 또는 가입하는지 여부에 관계 없이 CA를 사용하여 조직에 속한 기타 컴포넌트 및 ID를 배치하려면 다음과 같은 전제조건 단계를 완료해야 합니다.
 
 ### CLI 구성
 {: #ca-operate-kubectl-configure}
@@ -206,7 +208,7 @@ Fabric CA 클라이언트를 사용하여 CA를 작동시킬 수 있습니다. �
 ### CA 관리자로 인증서 생성
 {: #ca-operate-enroll-ca-admin}
 
-CA를 사용하여 컴포넌트 또는 클라이언트 애플리케이션을 배치하려면 먼저 사용자를 새 사용자를 등록할 권한이 있는 관리자로 인증하는 인증서를 생성해야 합니다. 필요한 인증서, 개인 키 및 공용 인증서(등록 인증서 또는 signCert라고도 함)를 생성하는 프로세스를 **등록**이라고 합니다.
+CA를 사용하여 컴포넌트 또는 클라이언트 애플리케이션을 배치하려면 먼저 사용자를 새 사용자를 등록할 권한이 있는 관리자로 인증하는 인증서를 생성해야 합니다. 필요한 인증서, 사용자 개인 키 및 사용자 인증서(등록 인증서 또는 signCert라고도 함)를 생성하는 프로세스를 **등록(enrollment)**이라고 합니다.
 
 인증 기관을 사용하여 등록된 ID를 사용해야만 인증서를 생성할 수 있습니다. 인증서를 생성하기 위해 ID의 이름 및 시크릿을 제공하십시오. **CA 관리자** ID는 CA를 배치할 때 자동으로 등록되었습니다. 이제 이후에 다른 피어 또는 순서 지정자 ID를 등록하기 위해 사용되는 인증서가 포함된 MSP 폴더를 생성하기 위해 해당 관리자 이름 및 비밀번호를 사용하여 Fabric CA 클라이언트와 함께 `enroll` 명령을 실행할 수 있습니다.
 
@@ -271,7 +273,7 @@ tree
 ## CA를 사용하여 순서 지정자 또는 피어 배치
 {: #ca-operate-deploy-orderer-peer}
 
-순서 지정자 또는 피어를 배치하려면 먼저 컴포넌트 ID 및 CA에 대한 중요한 정보가 포함된 구성 JSON 파일을 작성해야 합니다. 그런 다음 [Kubernetes 시크릿 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://kubernetes.io/docs/concepts/configuration/secret/) 오브젝트를 사용하여 구성 중에 이 파일을 Helm 차트에 전달해야 합니다. 이 파일을 통해 순서 지정자 또는 피어가 블록체인 네트워크에 참여하기 위해 CA에서 받아야 하는 인증서를 가져올 수 있습니다. 이 파일에는 관리자로 컴포넌트를 작동시킬 수 있도록 해주는 관리자 인증서도 포함되어 있습니다.
+순서 지정자 또는 피어를 배치하려면 먼저 컴포넌트 ID 및 CA에 대한 중요한 정보가 포함된 구성 JSON 파일을 작성해야 합니다. 그런 다음 [Kubernetes 시크릿 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://kubernetes.io/docs/concepts/configuration/secret/) 오브젝트를 사용하여 구성 중에 이 파일을 Helm 차트에 전달해야 합니다. 이 파일을 통해 순서 지정자 또는 피어가 블록체인 네트워크에 가입하기 위해 CA에서 받아야 하는 인증서를 가져올 수 있습니다. 이 파일에는 관리자로 컴포넌트를 작동시킬 수 있도록 해주는 관리자 인증서도 포함되어 있습니다.
 
 다음 지시사항은 편집하여 로컬 파일 시스템에 저장할 수 있는 [템플리트 JSON 구성 파일](/docs/services/blockchain/howto/CA_operate.html#ca-operate-config-file-template)을 제공하며 이 파일을 완성하기 위해 CA를 사용하는 방법에 대해 설명합니다.
 
@@ -611,6 +613,7 @@ fabric-ca-client register --caname tlsca --id.affiliation org1.department1 --id.
 순서 지정자 또는 피어를 배치하려면 CSR 호스트 이름을 제공해야 합니다. 이 호스트 이름에는 컴포넌트를 배치할 클러스터의 프록시 IP 주소 및 Helm 차트를 배치할 때 생성된 `서비스 호스트 이름`이 포함되어 있습니다.
 
 #### 클러스터 프록시 IP 주소의 값 찾기
+{: #ca-operate-cluster-proxy-ip}
 
 순서 지정자 또는 피어를 CA를 배치한 것과 동일한 {{site.data.keyword.cloud_notm}} Private 클러스터에 배치하려는 경우 순서 지정자 또는 피어를 배치할 {{site.data.keyword.cloud_notm}} Private 클러스터에 [클러스터 관리자 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/user_management/assign_role.html "클러스터 관리자 역할 및 조치") 역할이 있는지 확인하십시오. 그런 다음 [CA를 구성](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-configuration-parms)할 때 사용한 것과 동일한 프록시 IP를 입력하십시오. 순서 지정자 또는 피어를 다른 클러스터에 배치하려는 경우 다음 단계를 완료하여 {{site.data.keyword.cloud_notm}} Private 콘솔에서 클러스터 프록시 IP 주소의 값을 검색할 수 있습니다.
 
@@ -654,6 +657,7 @@ fabric-ca-client register --caname tlsca --id.affiliation org1.department1 --id.
   {:codeblock}
 
 ### 구성 파일 완료
+{: #ca-operate-config-file}
 
 상기 단계를 모두 완료한 후 업데이트된 구성 파일은 다음 예제와 유사합니다.
 
@@ -708,7 +712,7 @@ MSP 폴더에는 Fabric 컴포넌트에서 사용할 구조가 정의되어 있�
 
 - **cacerts:** 네트워크의 루트 CA 인증서가 포함되어 있습니다.
 - **intermediatecerts:** 신뢰 체인에 있는 모든 중간 CA의 인증서입니다(루트 CA 또는 CA로 되돌아감). 각각의 엔터프라이즈 플랜 조직에는 장애 복구 및 고가용성을 위해 두 개의 중간 CA가 존재합니다.
-- **signCerts:** 이 폴더에는 signCert 또는 등록 인증서라고도 하는 공용 서명 인증서가 포함되어 있습니다. 이 인증서는 명령행에서 MSP 디렉토리를 참조하거나 SDK에 사용자 컨텍스트 오브젝트를 빌드할 때 네트워크 호출에 첨부됩니다(예: 체인코드 호출). SDK 또는 명령행에서 네트워크를 운영하려는 경우 이 인증서를 {{site.data.keyword.blockchainfull_notm}} Platform에 업로드할 수 있습니다.
+- **signCerts:** 이 폴더에는 signCert 또는 등록 인증서라고도 하는 서명 인증서가 포함되어 있습니다. 이 인증서는 명령행에서 MSP 디렉토리를 참조하거나 SDK에 사용자 컨텍스트 오브젝트를 빌드할 때 네트워크 호출에 첨부됩니다(예: 체인코드 호출). SDK 또는 명령행에서 네트워크를 운영하려는 경우 이 인증서를 {{site.data.keyword.blockchainfull_notm}} Platform에 업로드할 수 있습니다.
 - **keystore:** 이 폴더에는 개인 키가 포함되어 있습니다. 이 키는 명령행에서 MSP 디렉토리를 참조하거나 SDK를 사용하여 사용자 컨텍스트 오브젝트를 빌드하는 경우 네트워크에 대한 호출에 서명하기 위해 사용되지만 signCert와 같은 방법으로 호출에 첨부되지는 않습니다. 이 키를 안전하게 유지하는 것이 **매우 중요**합니다. 손상되는 경우 이 키를 사용하여 ID를 위장할 수 있습니다.
 
 네트워크 모니터 및 Swagger API를 사용하여 fabric-ca-client에서 참조할 MSP 폴더를 빌드할 수도 있습니다.
@@ -752,7 +756,7 @@ MSP의 구조에 관한 자세한 정보는 Hyperledger Fabric 문서에서 [멤
 ## 보안
 {: #ca-operate-security}
 
-추가 보안을 보장하고 CA 키 자료의 손상을 방지하기 위해 제한된 수의 인증서(예: Node.js 서버, 클라이언트 애플리케이션)가 발행된 경우에만 CA를 오프라인으로 유지할 수 있습니다. 그러나 요청 시 사용자에게 인증서를 발행해야 하는 경우에는 CA가 온라인 상태여야 합니다. 가능하면 [HSM](https://console.test.cloud.ibm.com/docs/services/blockchain/glossary.html#glossary-hsm)을 사용하여 CA 관리자 개인 키를 보안 설정할 것을 적극 권장합니다.
+추가 보안을 보장하고 CA 키 자료의 손상을 방지하기 위해 제한된 수의 인증서가 발행된 경우(예: 피어, Node.js 서버, 클라이언트 애플리케이션의 인증서만 발행된 경우)에만 CA를 오프라인으로 유지할 수 있습니다. 그러나 요청 시 사용자에게 인증서를 발행해야 하는 경우에는 CA가 온라인 상태여야 합니다. 가능하면 [HSM](/docs/services/blockchain/glossary.html#glossary-hsm)을 사용하여 CA 관리자 개인 키를 보안 설정할 것을 적극 권장합니다.
 
 ## 문제점 해결
 {: #ca-operate-troubleshooting}
@@ -793,6 +797,8 @@ Error: Failed to read config file at '/Users/chandra/fabric-ca-client/ca-admin/f
 ```
 
 ### **솔루션:**
+{: #ca-operate-enroll-error2-solution}
+
 특수 문자를 인코딩하거나 작은따옴표로 url을 묶어야 합니다. 예를 들어, `!`가 `%21`이 되거나 다음과 유사하게 표시됩니다.
 
 ```

@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-04-23"
+lastupdated: "2019-05-16"
+
+keywords: IBM Blockchain Platform offerings, IBM Cloud Private, AWS, VS code extension, IBM Cloud
 
 subcollection: blockchain
 
@@ -23,7 +25,8 @@ subcollection: blockchain
 {{site.data.keyword.blockchainfull}} Platform には、任意の環境にブロックチェーン・コンポーネントをデプロイできる、フルスタックのマネージド Blockchain as a Service (BaaS) オファリングが用意されています。 {{site.data.keyword.cloud_notm}} 環境にも、{{site.data.keyword.cloud_notm}} Private 経由でオンプレミス環境にも、サード・パーティーのクラウド (Amazon Web Services (AWS) など) 環境にもデプロイできます。 このチュートリアルでは、{{site.data.keyword.blockchainfull_notm}} Platform を使用して基本的なブロックチェーン・ネットワークをセットアップする一般的な方法について順を追って説明します。
 {:shortdesc}
 
-**重要:** {{site.data.keyword.blockchainfull_notm}} Platform オファリングを使用する前に、[特記事項](/docs/services/blockchain/needtoknow.html#disclaimer)のセクションにある技術情報とサポート情報をお読みください。
+{{site.data.keyword.blockchainfull_notm}} Platform オファリングを使用する前に、[特記事項](/docs/services/blockchain/needtoknow.html#disclaimer)のセクションにある技術情報とサポート情報をお読みください。
+{: important}
 
 
 ## 始めに
@@ -33,30 +36,26 @@ subcollection: blockchain
 
 | **オファリング** | **組み込まれている機能** | **請求ポリシー** | **クラウド・プラットフォーム** |
 | ------------------------- |-----------|-----------|-----------|-----------|
-| [**{{site.data.keyword.blockchainfull_notm}} Platform Extension for VSCode**](/docs/services/blockchain?topic=blockchain-develop-vscode#develop-vscode) | 開発者は、スマート・コントラクトを短時間で開発するために、コマンド・パレットからアクセスできるコマンドやエクスプローラーを備えた IDE を使用して作業を開始できます。| 無料 | ローカル・マシンで実行 |
-| [**Starter Plan**](/docs/services/blockchain/starter_plan.html#starter-plan-about) | 基本サービス・レベル、開発/テスト環境の {{site.data.keyword.IBM_notm}} 管理のネットワーク | 月単位のサブスクリプション | {{site.data.keyword.cloud_notm}} |
-| [**Enterprise Plan**](/docs/services/blockchain/enterprise_plan.html#enterprise-plan-about) | 拡張サービス・レベル、エンタープライズ実稼働対応環境の {{site.data.keyword.IBM_notm}} 管理のネットワーク | 月単位のサブスクリプション | {{site.data.keyword.cloud_notm}} |
-| [**{{site.data.keyword.blockchainfull_notm}} Platform 2.0 無料ベータ版**](/docs/services/blockchain/howto/ibp-console.html#ibp-console-overview) | ユーザーの {{site.data.keyword.cloud_notm}} Kubernetes クラスターにブロックチェーン・コンポーネントをデプロイして管理できる {{site.data.keyword.blockchainfull_notm}} Platform コンソール | 無料のベータ版 | {{site.data.keyword.cloud_notm}} |
+| [**{{site.data.keyword.blockchainfull_notm}} Platform の VS Code 用の拡張機能**](/docs/services/blockchain?topic=blockchain-develop-vscode#develop-vscode) | 開発者は、スマート・コントラクトを短時間で開発するために、コマンド・パレットからアクセスできるコマンドやエクスプローラーを備えた IDE を使用して作業を開始できます。 | 無料 | ローカル・マシンで実行 |
+| [**{{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}}**](/docs/services/blockchain/howto/ibp-console.html#ibp-console-overview) | ユーザーの {{site.data.keyword.cloud_notm}} Kubernetes クラスターにブロックチェーン・コンポーネントをデプロイして管理するために使用できる {{site.data.keyword.blockchainfull_notm}} Platform コンソールおよび API | [$0.29 USD/1 時間の VPC である VPC の料金](/docs/services/blockchain/howto/pricing-saas.html) | {{site.data.keyword.cloud_notm}} |
 | [**{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private**](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-about) | デプロイ可能な CA、順序付けプログラム、およびピアの Helm チャート | [VPC 料金](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-about-pricing)および無料の Community Edition | {{site.data.keyword.cloud_notm}} Private |
 | [**{{site.data.keyword.blockchainfull_notm}} Platform for AWS**](/docs/services/blockchain/howto/remote_peer.html#remote-peer-aws-about) | {{site.data.keyword.cloud_notm}} の外部にリモート・ピアをデプロイするための AWS クイック・スタート・テンプレート | 無料 | AWS |
 
 *図 1. {{site.data.keyword.blockchainfull_notm}} Platform オファリング*
 
-実動使用にスターター・プランおよび無料の 2.0 ベータ版を使用しないでください。 これは、開発/テスト環境であり、実動ワークロードには適していません。
-{: important}
 
 ## 手順 1: オファリングを取得する
 {: #get-started-ibp-step1}
 
 {{site.data.keyword.blockchainfull_notm}} Platform オファリングを取得するためのクラウド・アカウントまたは PPA ライセンスを持っていることを確認します。
 
-* **{{site.data.keyword.blockchainfull_notm}} Platform Extension for VSCode**
+* **{{site.data.keyword.blockchainfull_notm}} Platform の VS Code 用の拡張機能**
 
-  この VSCode 拡張機能は、[Visual Studio Marketplace ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://marketplace.visualstudio.com/items?itemName=IBMBlockchain.ibm-blockchain-platform "{{site.data.keyword.blockchainfull_notm}} Platform Extension for VSCode") から無料で入手できます。この拡張機能を使用すれば、最終的に {{site.data.keyword.blockchainfull_notm}} にデプロイするスマート・コントラクトの開発、デバッグ、テストを行えます。
+  この VS Code 拡張機能は、[Visual Studio Marketplace ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://marketplace.visualstudio.com/items?itemName=IBMBlockchain.ibm-blockchain-platform "{{site.data.keyword.blockchainfull_notm}} Platform の VS Code 用の拡張機能") から無料で入手できます。この拡張機能を使用すれば、最終的に {{site.data.keyword.blockchainfull_notm}} にデプロイするスマート・コントラクトの開発、デバッグ、テストを行えます。
 
-* **スターター・プラン**、**エンタープライズ・プラン**、および **{{site.data.keyword.blockchainfull_notm}} Platform 2.0 無料ベータ版**
+* **{{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}}**
 
-  これらのオファリングは {{site.data.keyword.cloud_notm}} で提供されています。{{site.data.keyword.cloud_notm}} の[「カタログ」ダッシュボード ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://cloud.ibm.com/catalog "カタログ") にあります。
+  このオファリングは、{{site.data.keyword.cloud_notm}} の[{{site.data.keyword.cloud_notm}}「カタログ」ダッシュボード ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://cloud.ibm.com/catalog "カタログ") で提供されています。
 
 * **{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private**
 
@@ -69,9 +68,9 @@ subcollection: blockchain
 ## 手順 2: {{site.data.keyword.blockchainfull_notm}} Platform をデプロイする
 {: #get-started-ibp-step2}
 
-* **スターター・プラン**、**エンタープライズ・プラン**、および **{{site.data.keyword.blockchainfull_notm}} Platform 2.0 無料ベータ版**
+* **{{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}}**
 
-  {{site.data.keyword.cloud_notm}} にログインし、オファリングを使用してサービス・インスタンスを作成します。 スターター・プランを使用する場合は、[サービス・インスタンスを作成](/docs/services/blockchain/get_start_starter_plan.html#getting-started-with-starter-plan)するとすぐに、デフォルトの構成のブロックチェーン・ネットワークを利用できます。 エンタープライズ・プランまたは {{site.data.keyword.blockchainfull_notm}} Platform 2.0 無料ベータ版を使用する場合は、ウィザードに従って、ネットワークの初期構成を実行する必要があります。 詳しくは、[エンタープライズ・プラン・ネットワークの作成](/docs/services/blockchain/get_start.html#getting-started-with-enterprise-plan-create-network)または [{{site.data.keyword.cloud_notm}} Kubernetes サービスへの {{site.data.keyword.blockchainfull_notm}} Platform のデプロイ](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks)を参照してください。
+  {{site.data.keyword.cloud_notm}} にログインし、オファリングを使用してサービス・インスタンスを作成します。 ウィザードに従って、ネットワークの初期構成を実行します。詳しくは、[Getting started  {{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}} Kubernetes Service](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks) を参照してください。
 
 * **{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private**
 

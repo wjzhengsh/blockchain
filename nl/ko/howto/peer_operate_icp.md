@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-04-23"
+lastupdated: "2019-05-16"
+
+keywords: command line, peer, operate peers, use context, Fabric SDKs, IBM Cloud Private 
 
 subcollection: blockchain
 
@@ -177,7 +179,7 @@ Node SDK 버전 1.4.0을 사용하는 것이 좋습니다.
 피어가 내부에서 피어 관리자의 signCert로 배치됩니다. 이를 통해 사용자는 피어가 운영되도록 피어 관리자의 인증서 및 MSP 폴더를 사용할 수 있습니다.
 
 [피어 관리자를 등록](/docs/services/blockchain/howto/CA_operate.html#ca-operate-enroll-admin)할 때 작성한 인증서를 찾으십시오. 예제 명령을 사용한 경우 `$HOME/fabric-ca-client/peer-admin`에서 피어 관리자 MSL 폴더를 찾을 수 있습니다.
-  - MSP 폴더의 signCert(공개 키) 및 개인 키를 사용하여 SDK로 피어 관리자 컨텍스트를 빌드할 수 있습니다. 다음 위치에서 해당 키를 찾을 수 있습니다.
+  - MSP 폴더에서 signCert 및 개인 키를 사용하여 SDK로 피어 관리자 컨텍스트를 빌드할 수 있습니다. 다음 위치에서 해당 키를 찾을 수 있습니다.
     - `$HOME/fabric-ca-client/peer-admin/msp/signcerts`의 **signcerts** 폴더에서 signCert를 찾을 수 있습니다.
     - 개인 키는 **키 저장소:** 폴더(`$HOME/fabric-ca-client/peer-admin/msp/keystore`)에 있습니다.
 
@@ -545,7 +547,7 @@ peer chaincode instantiate -o ${ORDERER_1} -C ${CHANNEL} -n ${CC_NAME} -v v0 -c 
 
 체인코드를 업데이트하려면 다음 단계를 완료하십시오.
 
-1. 각 피어에서 체인코드를 업데이트하려면 클라이언트 애플리케이션이나 CLI 명령을 사용하여 피어에 체인코드를 설치하는 데 사용한 프로세스를 다시 실행하기만 하면 됩니다. 원래 사용된 이름과 동일한 체인코드 이름을 지정하십시오. 그러나 이번에는 체인코드 `Version`을 늘르십시오. 모든 피어는 같은 이름과 버전을 사용해야 합니다.
+1. 각 피어에서 체인코드를 업데이트하려면 클라이언트 애플리케이션이나 CLI 명령을 사용하여 피어에 체인코드를 설치하는 데 사용한 프로세스를 다시 실행하기만 하면 됩니다. 원래 사용된 이름과 동일한 체인코드 이름을 지정하십시오. 그러나 이번에는 체인코드 `Version`을 늘르십시오. 모든 피어는 같은 체인코드 이름과 버전을 사용해야 합니다.
 
 2. 채널의 모든 피어에 새 체인코드를 설치한 다음
 [피어 체인코드 업그레이드 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/peerchaincode.html#peer-chaincode-upgrade) 명령을 사용하여 새 체인코드를 사용하도록 채널을 업데이트하십시오.
@@ -565,7 +567,7 @@ peer chaincode instantiate -o ${ORDERER_1} -C ${CHANNEL} -n ${CC_NAME} -v v0 -c 
   4. 팟을 클릭하여 여십시오.
   5. **컨테이너** 탭을 클릭하십시오. 피어 **컨테이너** 이름을 기록해 두십시오.
 
-2. 피어를 다시 시작하려면 명령행에서 `<PEER_POD_NAME>` 및 `<PEER_CONTAINER_NAME>`을 위의 값으로 대체하여 다음 명령을 실행하십시오. 
+2. 피어를 다시 시작하려면 명령행에서 `<PEER_POD_NAME>` 및 `<PEER_CONTAINER_NAME>`을 위의 값으로 대체하여 다음 명령을 실행하십시오.
 
   ```
   kubectl exec <PEER_POD_NAME> -c <PEER_CONTAINER_NAME> /usr/sbin/killall5
@@ -698,7 +700,7 @@ Organizations:
 
 - `MSPDir:`은 관리자 MSP에 대한 관리자 경로입니다(예: `/Users/chandra/fabric-ca-client/peer-admin/msp`).
 
-- `AnchorPeers:` 필드는 조직이 gossip으로 내부 조직 통신을 위해 리드 피어가 되도록 선택하는 피어입니다. 이는 개인 데이터 또는 서비스 검색과 같은 기능에 사용됩니다. 그러나 필드가 계속해서 필요한 경우에도 개인 데이터 및 서비스 검색은 피어 Helm 차트에 현재 지원되지 않습니다. `Host` 및 `Port` 값은 참고 섹션 `#1. Get the application URL by running these commands` 아래의 {{site.data.keyword.cloud_notm}} Private 피어 Helm  릴리스 페이지에서 사용 가능합니다. 출력은 다음과 유사합니다.
+- `AnchorPeers:` 필드는 조직이 gossip으로 조직 간 통신을 위해 리드 피어가 되도록 선택하는 피어입니다. 이는 개인 데이터 또는 서비스 검색과 같은 기능에 사용됩니다. 그러나 필드가 계속해서 필요한 경우에도 개인 데이터 및 서비스 검색은 피어 Helm 차트에 현재 지원되지 않습니다. `Host` 및 `Port` 값은 참고 섹션 `#1. Get the application URL by running these commands` 아래의 {{site.data.keyword.cloud_notm}} Private 피어 Helm  릴리스 페이지에서 사용 가능합니다. 출력은 다음과 유사합니다.
 
 ```
 http://9.30.250.70:30481

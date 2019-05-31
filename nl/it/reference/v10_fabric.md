@@ -4,6 +4,8 @@ copyright:
   years: 2017, 2019
 lastupdated: "2019-03-05"
 
+keywords: Hyperledger Fabric, confidential channels, Membership Service Provider, Linux Foundation, SDKs, modular architecture, permissioned network
+
 subcollection: blockchain
 
 ---
@@ -21,7 +23,7 @@ subcollection: blockchain
 La rete {{site.data.keyword.blockchainfull}} è sviluppata sullo stack Hyperledger Fabric, uno dei progetti blockchain nell'ambito del progetto Hyperledger della Linux Foundation. Si tratta di una rete "con autorizzazioni" in cui tutti gli utenti e i componenti hanno delle identità note. Una logica di firma/verifica è implementata a ogni punto di contatto delle comunicazioni e le transazioni sono consentite tramite una serie di controlli di approvazione e di convalida. In tale senso, è molto diversa dalle implementazioni blockchain tradizionali che promuovono l'anonimato e sono costrette a fare affidamento sulle criptovalute e su pesanti obblighi di elaborazione per convalidare le transazioni.
 {:shortdesc}
 
-Hyperledger Fabric offre un'architettura modulare per estendere la scalabilità e le prestazioni. Questo argomento introduce alcuni componenti chiave in Hyperledger Fabric. Per un'introduzione completa a Hyperledger Fabric, consulta la [documentazione di Hyperledger Fabric ![Icona link esterno](../images/external_link.svg "Icona link esterno")](http://hyperledger-fabric.readthedocs.io/en/release-1.4/){:new_window}.
+Hyperledger Fabric offre un'architettura modulare per estendere la scalabilità e le prestazioni. Questo argomento introduce alcuni componenti chiave in Hyperledger Fabric. Per un'introduzione completa a Hyperledger Fabric, consulta la [documentazione di Hyperledger Fabric ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/){:new_window}.
 
 ## Peer
 {: #hyperledger-fabric-peer}
@@ -47,9 +49,9 @@ Per ulteriori informazioni sul componente Certificate Authority di Hyperledger F
 
 Hyperledger Fabric include un componente **MSP (Membership Service Provider)** per offrire un'astrazione di tutti i protocolli e i meccanismi crittografici dietro all'emissione e alla convalida di certificati e autenticazione utente. L'MSP è installato su ciascun peer del canale per garantire che le richieste di transazione emesse al peer abbiano origine da un'identità utente autenticata e autorizzata.
 
-Per ulteriori informazioni sul componente MSP (Membership Services Provider) di Hyperledger Fabric, vedi [Membership ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/membership/membership.html){:new_window} nella [documentazione di Hyperledger Fabric![Icona link esterno](../images/external_link.svg "Icona link esterno")](http://hyperledger-fabric.readthedocs.io/en/release-1.4/){:new_window}.
+Per ulteriori informazioni sul componente MSP (Membership Services Provider) di Hyperledger Fabric, vedi [Membership ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/membership/membership.html){:new_window} nella [documentazione di Hyperledger Fabric![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/){:new_window}.
 
-## Servizio ordini
+## Servizio di ordinazione
 {: #hyperledger-fabric-ordering-service}
 
 In altre blockchain distribuite, come Ethereum e Bitcoin, non esiste un'autorità centrale che ordini le transazioni e le invii ai peer. Hyperledger Fabric, la blockchain su cui si basa {{site.data.keyword.blockchainfull_notm}} Platform, funziona in modo diverso. Dispone di un nodo chiamato **ordinante**.
@@ -60,7 +62,7 @@ Gli ordinanti sono componenti chiave di una rete perché svolgono alcune funzion
 - Mantengono il **canale del sistema ordinante**, il posto in cui risiede il **consorzio**, l'elenco di organizzazioni peer a cui è consentito creare canali.
 - Eseguono degli importanti controlli di convalida dell'identità. Ad esempio, se un'organizzazione prova a creare un canale quando non è un membro del consorzio dell'ordinante, la richiesta verrà rifiutata. Gli ordinanti eseguono anche una convalida rispetto alle modalità di funzionamento nei canali delle transazioni, come ad esempio le autorizzazioni per modificare una configurazione del canale.
 
-Hyperledger Fabric attualmente supporta entrambe le implementazioni del servizio ordini basato su Kafka e SOLO (un singolo nodo di ordine). Per ulteriori informazioni sul servizio ordini Hyperledger Fabric, vedi [Bringing up a Kafka-based Ordering Service ![Icona link esterno](../images/external_link.svg "Icona link esterno")](http://hyperledger-fabric.readthedocs.io/en/release-1.4/kafka.html){:new_window} nella  [documentazione di Hyperledger Fabric ![Icona link esterno](../images/external_link.svg "Icona link esterno")](http://hyperledger-fabric.readthedocs.io/en/release-1.4/){:new_window}.
+Hyperledger Fabric attualmente supporta entrambe le implementazioni del servizio ordini basato su Kafka e SOLO (un singolo nodo di ordine). Per ulteriori informazioni sul servizio ordini Hyperledger Fabric, vedi [Bringing up a Kafka-based Ordering Service ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/kafka.html){:new_window} nella  [documentazione di Hyperledger Fabric ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/){:new_window}.
 
 ## Gli SDK Fabric
 {: #hyperledger-fabric-fabric-sdks}
@@ -80,7 +82,7 @@ Hyperledger Fabric offre sia un SDK Node.js che un SDK Java e fornisce le seguen
 * Eseguire query del libro mastro per transazioni, blocchi o chiavi specifici
 * Monitorare gli eventi su un canale (ad esempio, la corretta esecuzione del commit di una transazione)
 
-Per ulteriori informazioni sugli SDK Fabric, vedi [Hyperledger Fabric SDKs ![Icona link esterno](../images/external_link.svg "Icona link esterno")](http://hyperledger-fabric.readthedocs.io/en/release-1.4/fabric-sdks.html){:new_window} nella [documentazione di Hyperledger Fabric ![Icona link esterno](../images/external_link.svg "Icona link esterno")](http://hyperledger-fabric.readthedocs.io/en/release-1.4/){:new_window}.
+Per ulteriori informazioni sugli SDK Fabric, vedi [Hyperledger Fabric SDKs ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/fabric-sdks.html){:new_window} nella [documentazione di Hyperledger Fabric ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/){:new_window}.
 
 ## Flusso di transazioni
 {: #hyperledger-fabric-transaction-flow}
@@ -102,7 +104,7 @@ Su una rete Hyperledger Fabric, il flusso di dati per le query e le transazioni 
 	* Le transazioni che non superano il processo di convalida sono contrassegnate come non valide nel blocco e il blocco viene accodato al libro mastro del canale.
 	* Tutte le transazioni valide aggiornano il database dello stato in base alle coppie di chiave/valore modificate.
 
-Il **protocollo di diffusione dei dati gossip** trasmette in modo continuo dati del libro mastro sul canale per garantire dei libri mastri sincronizzati tra i peer. Per ulteriori informazioni, vedi [Gossip data dissemination protocol ![Icona link esterno](../images/external_link.svg "Icona link esterno")](http://hyperledger-fabric.readthedocs.io/en/release-1.4/gossip.html){:new_window} nella
-[documentazione di Hyperledger Fabric ![Icona link esterno](../images/external_link.svg "Icona link esterno")](http://hyperledger-fabric.readthedocs.io/en/release-1.4/){:new_window}.
+Il **protocollo di diffusione dei dati gossip** trasmette in modo continuo dati del libro mastro sul canale per garantire dei libri mastri sincronizzati tra i peer. Per ulteriori informazioni, vedi [Gossip data dissemination protocol ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/gossip.html){:new_window} nella
+[documentazione di Hyperledger Fabric ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/){:new_window}.
 
-Per un'introduzione dettagliata relativa al flusso delle transazioni, vedi [Transaction Flow ![Icona link esterno](../images/external_link.svg "Icona link esterno")](http://hyperledger-fabric.readthedocs.io/en/release-1.4/txflow.html){:new_window} nella [documentazione di Hyperledger Fabric ![Icona link esterno](../images/external_link.svg "Icona link esterno")](http://hyperledger-fabric.readthedocs.io/en/release-1.4/){:new_window}.
+Per un'introduzione dettagliata relativa al flusso delle transazioni, vedi [Transaction Flow ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/txflow.html){:new_window} nella [documentazione di Hyperledger Fabric ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/){:new_window}.

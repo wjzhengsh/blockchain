@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-04-03"
+lastupdated: "2019-05-16"
+
+keywords: TLS, TLS certificates, client applications, digital certificates, certificate authority, intermediate certificate, client-side certificate, generate certificates, manage certificates
 
 subcollection: blockchain
 
@@ -36,7 +38,7 @@ subcollection: blockchain
 {{site.data.keyword.blockchainfull_notm}} Platform Network Monitor를 사용하여 CA에 등록할 ID를 보고 새 ID를 추가할 수 있습니다. 네트워크 모니터의 "인증 기관" 패널로 이동하십시오. 이 패널에는 CA에 등록된 조직 관리자, 피어 및 클라이언트 애플리케이션 등의 모든 ID가 표시됩니다. 조직에 새 ID를 등록하려면 패널에서 **사용자 추가** 단추를 클릭하십시오. 팝업 창이 열리고 새 ID를 등록하는 데 필요한 다음 필드가 표시됩니다.
   - **등록 ID:** 새 ID의 이름이며, 경우에 따라 `enroll ID`라고도 합니다. 원격 피어를 구성하거나 새 애플리케이션을 등록하는 경우를 위해 **이 값을 저장**하십시오.
   - **등록 시크릿:** 새 ID의 비밀번호이며, 경우에 따라 `enroll Secret`라고도 합니다. 원격 피어를 구성하거나 새 애플리케이션을 등록하는 경우를 위해 **이 값을 저장**하십시오.
-  - **유형:** 등록할 ID 유형(피어 또는 클라이언트 애플리케이션)을 선택하십시오.
+  - **유형:** 등록할 ID의 유형(피어 또는 클라이언트 애플리케이션)을 선택하십시오.
   - **소속:** ID가 속할 조직 내 소속(예: `org1`)을 나타냅니다.
   - **최대 등록 수:** 이 ID를 사용하여 인증서를 등록하거나 생성할 수 있는 횟수를 제한하는 데 이 필드를 사용할 수 있습니다. 필드를 공백으로 두면 기본적으로 무제한 등록 수로 값이 지정됩니다.
 
@@ -44,7 +46,7 @@ subcollection: blockchain
 
 ### 클라이언트 측 인증서 생성(등록)
 {: #managing-certificates-enrollment}
-서드파티 클라이언트를 {{site.data.keyword.blockchainfull_notm}} Platform에 연결하려면 먼저 사용자를 인증해야 합니다. 필수 인증서, 개인 키 및 공용 인증서(등록 인증서 또는 signCert라고도 함)를 생성하는 프로세스를 등록이라고 합니다. 해당 인증서는 클라이언트에서 네트워크와 통신할 때마다 필요합니다. 네트워크에 호출을 제출하는 모든 클라이언트에서는 개인 키를 사용하여 페이로드에 서명하고 올바르게 서명된 x509 인증서를 첨부해야 합니다.
+서드파티 클라이언트를 {{site.data.keyword.blockchainfull_notm}} Platform에 연결하려면 먼저 사용자를 인증해야 합니다. 필요한 인증서, 사용자 개인 키 및 사용자 인증서(등록 인증서 또는 signCert라고도 함)를 생성하는 프로세스를 등록(enrollment)이라고 합니다. 해당 인증서는 클라이언트에서 네트워크와 통신할 때마다 필요합니다. 네트워크에 호출을 제출하는 모든 클라이언트에서는 개인 키를 사용하여 페이로드에 서명하고 올바르게 서명된 x509 인증서를 첨부해야 합니다.
 
 [애플리케이션 개발 튜토리얼](/docs/services/blockchain/v10_application.html#dev-app)을 방문하여 [Fabric Node SDK를 사용하여 등록](/docs/services/blockchain/v10_application.html#dev-app-enroll-sdk)하는 방법에 관해 알아보십시오. SDK에 등록하면 세 가지 개별 항목(개인키, signCert, signCert를 작성하는 데 사용한 공개 키)이 생성됩니다.
 
@@ -57,7 +59,7 @@ subcollection: blockchain
 ### 네트워크 모니터를 사용하여 인증서 생성
 {: #managing-certificates-certs-panel}
 
-네트워크 모니터를 사용하여 관리자 ID를 사용하여 인증서를 생성한 후 해당 인증서를 SDK에 직접 전달할 수 있습니다. 관리자 ID 옆에 있는 **인증서 생성** 단추를 클릭하여 CA에서 새 signCert와 개인 키를 가져올 수 있습니다. **인증서** 필드에는 **개인 키** 바로 위에 signCert가 있습니다. 각 필드의 끝에 있는 복사 아이콘을 클릭하여 값을 복사하십시오. 그런 다음 이러한 인증서를 애플리케이션으로 가져올 수 있는 위치에 저장해야 합니다. 자세한 정보는 [애플리케이션 개발 튜토리얼](/docs/services/blockchain/v10_application.html#dev-app-enroll-panel)을 참조하십시오. {{site.data.keyword.blockchainfull_notm}} Platform에서는 이 인증서를 저장하지 않는다는 점에 **유의**하십시오. 인증서를 안정하게 저장하고 보관해야 합니다.
+네트워크 모니터를 사용하여 관리자 ID로 인증서를 생성한 후 해당 인증서를 직접 SDK에 전달할 수 있습니다. 관리자 ID 옆에 있는 **인증서 생성** 단추를 클릭하여 CA에서 새 signCert와 개인 키를 가져올 수 있습니다. **인증서** 필드에는 **개인 키** 바로 위에 signCert가 있습니다. 각 필드의 끝에 있는 복사 아이콘을 클릭하여 값을 복사하십시오. 그런 다음 이러한 인증서를 애플리케이션으로 가져올 수 있는 위치에 저장해야 합니다. 자세한 정보는 [애플리케이션 개발 튜토리얼](/docs/services/blockchain/v10_application.html#dev-app-enroll-panel)을 참조하십시오. {{site.data.keyword.blockchainfull_notm}} Platform에서는 이 인증서를 저장하지 않는다는 점에 **유의**하십시오. 인증서를 안정하게 저장하고 보관해야 합니다.
 
 ### {{site.data.keyword.blockchainfull_notm}} Platform에 서명 인증서 업로드
 {: #managing-certificates-upload-certs}
@@ -172,7 +174,7 @@ Fabric의 MSP 폴더에는 구조가 정의되어 있습니다. Fabric CA client
 
 - **cacerts:** 이 폴더에는 네트워크 루트 CA의 루트 인증서가 포함되어 있습니다.
 - **intermediatecerts:** 네트워크 중간 CA의 인증서입니다. 이 중간 CA는 루트 CA에 연결되어 있으며 신뢰 체인을 형성합니다. 각각의 엔터프라이즈 플랜 조직에는 장애 복구 및 고가용성을 위해 두 개의 중간 CA가 존재합니다.
-- **signcerts:** 이 폴더에는 signCert 또는 등록 인증서라고도 하는 공개 서명 인증서가 들어 있습니다. 이 인증서는 명령행에서 MSP 디렉토리를 참조하거나 SDK에 사용자 컨텍스트 오브젝트를 빌드할 때 네트워크 호출에 첨부됩니다(예: 체인코드 호출). SDK 또는 명령행에서 네트워크를 운영하려는 경우 이 인증서를 플랫폼에 업로드할 수 있습니다.
+- **signcerts:** 이 폴더에는 signCert 또는 등록 인증서라고도 하는 서명 인증서가 포함되어 있습니다. 이 인증서는 명령행에서 MSP 디렉토리를 참조하거나 SDK에 사용자 컨텍스트 오브젝트를 빌드할 때 네트워크 호출에 첨부됩니다(예: 체인코드 호출). SDK 또는 명령행에서 네트워크를 운영하려는 경우 이 인증서를 플랫폼에 업로드할 수 있습니다.
 - **keystore:** 이 폴더에는 개인 키가 포함되어 있습니다. 이 키는 명령행에서 MSP 디렉토리를 참조하거나 SDK에 사용자 컨텍스트 오브젝트를 빌드할 때 네트워크 호출에 서명하는 데 사용됩니다. 네트워크와 데이터를 보호하려면 이 키를 안전하게 보관하십시오.
 
 네트워크 모니터와 Swagger API를 사용하여 Fabric CA client에서 참조할 수 있는 MSP 폴더를 빌드할 수도 있습니다.

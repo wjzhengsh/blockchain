@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-20"
+lastupdated: "2019-05-16"
+
+keywords: IBM Blockchain Platform, remote peer, operate peers, AWS peer, AWS peers, necessary certificates, command line
 
 subcollection: blockchain
 
@@ -46,7 +48,7 @@ npm install fabric-client@1.2
 
 SDK を使用してピアを操作する前に、必要な証明書 (登録) を生成する必要があります。これによりアプリケーションは、{{site.data.keyword.blockchainfull_notm}} Platform 上のネットワークおよびピアと通信することができます。 **管理者** ID を使用して、ステップに従って [SDK に登録](/docs/services/blockchain/v10_application.html#dev-app-enroll-sdk)します。 [アプリケーションの開発](/docs/services/blockchain/v10_application.html#dev-app)チュートリアルでは同様に**管理者**として登録するため、サンプル・コードを変更する必要はありません。
 
-### IBM Blockchain Platform への署名付き証明書のアップロード
+### {{site.data.keyword.blockchainfull_notm}} Platform への署名付き証明書のアップロード
 {: #remote-peer-aws-operate-upload-SDK}
 
 SDK 署名証明書を {{site.data.keyword.blockchainfull_notm}} Platform 上のネットワークにアップロードすることで、自身のデジタル署名を他のメンバーが認識できるようにする必要があります。
@@ -56,7 +58,7 @@ SDK 署名証明書を {{site.data.keyword.blockchainfull_notm}} Platform 上の
 ### ピアへの署名付き証明書のアップロード
 {: #remote-peer-aws-operate-upload-signcert}
 
-SDK の署名証明書をリモート・ピアにアップロードして、リモート・ピアを再始動する必要もあります。 [IBM Blockchain Platform にアップロードした](/docs/services/blockchain/howto/remote_peer_operate_aws.html#remote-peer-aws-operate-upload-SDK)のと同じ署名証明書をリモート・ピア・コンテナー内にインストールする必要があります。
+SDK の署名証明書をリモート・ピアにアップロードして、リモート・ピアを再始動する必要もあります。 [{{site.data.keyword.blockchainfull_notm}} Platform にアップロードした](/docs/services/blockchain/howto/remote_peer_operate_aws.html#remote-peer-aws-operate-upload-SDK)のと同じ署名証明書をリモート・ピア・コンテナー内にインストールする必要があります。
 
 AWS コンソールでインスタンスを選択して (**「サービス」>「EC2」>「インスタンス」**の順にクリック)、「接続」ボタンをクリックすることで、VPC インスタンスに SSH で接続します。 AWS の指示に従って ssh コマンドを実行します。
 

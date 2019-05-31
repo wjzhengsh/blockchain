@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-20"
+lastupdated: "2019-05-16"
+
+keywords: IBM Blockchain Platform, remote peer, multi-cloud, private data, AWS Cloud
 
 subcollection: blockchain
 
@@ -36,11 +38,7 @@ Puede ejecutar el igual de {{site.data.keyword.blockchainfull_notm}} Platform en
 - Puede conectar sus iguales de {{site.data.keyword.blockchainfull_notm}} Platform para AWS únicamente a redes blockchain que tengan el nivel v1.1 o v1.2.1 de Fabric. Puede encontrar la versión de Fabric abriendo la [ventana Preferencias de red](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-network-preferences) en el supervisor de red.
 - El tipo de base de datos del igual de {{site.data.keyword.blockchainfull_notm}} Platform para AWS debe coincidir con el tipo de base de datos de la red blockchain, ya sea LevelDB o CouchDB.
 - La interfaz CouchDB Fauxton no está disponible en el igual de AWS.
-- Actualmente no se da soporte a [gossip (rumor)](/docs/services/blockchain/glossary.html#glossary-gossip) para los iguales de AWS. Esto implica que tampoco hay soporte para las características de Fabric que dependen de rumores (gossip), como
-[datos privados
-![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/private-data-arch.html "datos privados") y
-[descubrimiento de servicios
-![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/discovery-overview.html "descubrimiento de servicios").
+- Actualmente no se da soporte a [gossip (rumor)](/docs/services/blockchain/glossary.html#glossary-gossip) para los iguales de AWS. Esto implica que tampoco hay soporte para las características de Fabric que dependen de rumores (gossip), como [datos privados ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/private-data-arch.html "datos privados") y [descubrimiento de servicios ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/discovery-overview.html "descubrimiento de servicios").
 
 ## Requisitos previos
 {: #remote-peer-aws-about-prereq}
@@ -58,9 +56,7 @@ Para utilizar un igual de {{site.data.keyword.blockchainfull_notm}} Platform par
 ## Despliegue de un igual de AWS
 {: #remote-peer-aws-about-deploy}
 
-Utilice la [Plantilla de inicio rápido ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://aws.amazon.com/quickstart/architecture/ibm-blockchain-platform/ "Plantilla de Inicio rápido") de AWS para desplegar {{site.data.keyword.blockchainfull_notm}} Platform para AWS con facilidad. Para obtener más información, consulte
-[Guía de despliegue del Inicio rápido de {{site.data.keyword.blockchainfull_notm}} Platform para AWS
-![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://s3.amazonaws.com/aws-quickstart/quickstart-ibm-fabric/doc/ibm-blockchain-platform-for-aws.pdf "Despliegue de referencia de Inicio rápido de la plataforma IBM Blockchain para AWS").
+Utilice la [Plantilla de inicio rápido ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://aws.amazon.com/quickstart/architecture/ibm-blockchain-platform/ "Plantilla de Inicio rápido") de AWS para desplegar {{site.data.keyword.blockchainfull_notm}} Platform para AWS con facilidad. Para obtener más información, consulte [Guía de despliegue de inicio rápido de {{site.data.keyword.blockchainfull_notm}} Platform for AWS ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://s3.amazonaws.com/aws-quickstart/quickstart-ibm-fabric/doc/ibm-blockchain-platform-for-aws.pdf "Despliegue de referencia de inicio rápido de {{site.data.keyword.blockchainfull_notm}} Platform for AWS").
 
 Para ver instrucciones sobre cómo desplegar {{site.data.keyword.blockchainfull_notm}} Platform para AWS, consulte el apartado sobre [Despliegue de iguales en Amazon Web Services](/docs/services/blockchain/howto/remote_peer_aws.html#remote-peer-aws).
 
@@ -87,8 +83,7 @@ En el diagrama pulsable a continuación se describe el proceso para desplegar un
 ## Funcionamiento de un igual de AWS
 {: #remote-peer-aws-about-operate-remote-peer}
 
-Después de desplegar el igual de AWS, tiene que completar varios pasos operativos para que el igual pueda enviar transacciones a la red. Los pasos operativos incluyen añadir su organización a un canal, unir el igual al canal, instalar el código de encadenamiento en el igual,
-crear una instancia del código de encadenamiento en el canal y conectar aplicaciones al igual. Para obtener más información, consulte [Funcionamiento de iguales en Amazon Web Services](/docs/services/blockchain/howto/remote_peer_operate_aws.html#remote-peer-aws-operate).
+Después de desplegar el igual de AWS, tiene que completar varios pasos operativos para que el igual pueda enviar transacciones a la red. Los pasos operativos incluyen añadir su organización a un canal, unir el igual al canal, instalar el código de encadenamiento en el igual, crear una instancia del código de encadenamiento en el canal y conectar aplicaciones al igual. Para obtener más información, consulte [Funcionamiento de iguales en Amazon Web Services](/docs/services/blockchain/howto/remote_peer_operate_aws.html#remote-peer-aws-operate).
 
 ## Residencia de datos
 {: #remote-peer-aws-about-data-residency}
@@ -118,17 +113,12 @@ Para resolver este problema, se pueden utilizar **canales** para aislar los dato
 
 **Nota:** las clasificadores siempre están ubicados en la región del centro de datos que haya seleccionado para alojar la red. No es posible tener varios clasificadores entre países. Sin embargo, los iguales pueden estar ubicados en el centro de datos o en una ubicación remota fuera de {{site.data.keyword.cloud_notm}}.
 
-![Residencia de datos cuando los iguales residen fuera del país de la región de la plataforma IBM Blockchain](../images/remote_peer_data_res_2.png "Residencia de datos cuando los iguales residen fuera del país de la región de la plataforma IBM Blockchain")  
-*Figura 4. Residencia de datos cuando los iguales residen fuera del país de la región de la plataforma IBM Blockchain*
+![Residencia de datos cuando los iguales están fuera del país de la región de {{site.data.keyword.blockchainfull_notm}} Platform](../images/remote_peer_data_res_2.png "Los iguales de residencia de datos se encuentran fueran del país de la región de {{site.data.keyword.blockchainfull_notm}}")  
+*Figura 4. Residencia de datos cuando los iguales residen fuera del país de la región de {{site.data.keyword.blockchainfull_notm}} Platform*
 
-En la **Figura 4**, no se requiere residencia de datos para `OrgC` y `OrgD`. De hecho,
-`OrgD` incluye ahora dos iguales, `OrgD-peer1` y `OrgD-peer2`, que residen en *Estados Unidos*. Por lo tanto, para que `OrgA`, `OrgB` y sus respectivas aplicaciones cliente e iguales que residen en Alemania puedan aislar los datos de libro mayor en el canal `X`, se crea un nuevo canal `Y` para
-`OrgC` y `OrgD`.
+En la **Figura 4**, no se requiere residencia de datos para `OrgC` y `OrgD`. De hecho, `OrgD` incluye ahora dos iguales, `OrgD-peer1` y `OrgD-peer2`, que residen en *Estados Unidos*. Por lo tanto, para que `OrgA`, `OrgB` y sus respectivas aplicaciones cliente e iguales que residen en Alemania puedan aislar los datos de libro mayor en el canal `X`, se crea un nuevo canal `Y` para `OrgC` y `OrgD`.
 
-Para estudiar con mayor detalle el flujo de datos en la red de la plataforma
-{{site.data.keyword.blockchainfull_notm}}, consulte la
-[documentación de Fabric sobre el flujo de transacciones
-![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/txflow.html "Flujo de transacciones").
+Para estudiar con mayor detalle el flujo de datos en la red de la plataforma {{site.data.keyword.blockchainfull_notm}}, consulte la [documentación de Fabric sobre el flujo de transacciones ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/txflow.html "Flujo de transacciones").
 
 En el futuro, la nueva tecnología de Hyperledger Fabric mejorará la capacidad de obtener una mejor residencia de datos utilizando [Recopilaciones de datos privados ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/private-data/private-data.html "Recopilaciones de datos privados") y Zero Knowledge Proof.
 
@@ -141,14 +131,8 @@ Puede obtener más información sobre estas tecnologías en el documento técnic
 ## Obtención de soporte
 {: #remote-peer-aws-about-support}
 
-La plataforma IBM Blockchain no proporciona soporte para esta oferta. Si detecta algún problema relacionado con el igual, puede hacer uso de los recursos gratuitos de desarrollador de blockchain y de los foros de soporte para obtener ayuda de la comunidad de Fabric y de
-{{site.data.keyword.IBM_notm}}. Para obtener más información, consulte [Recursos de blockchain y foros de soporte](/docs/services/blockchain/ibmblockchain_support.html#blockchain-support-resources). También puede consultar los recursos de soporte en la pantalla **Obtener ayuda** del supervisor de red.
+{{site.data.keyword.blockchainfull_notm}} Platform no proporciona soporte para esta oferta. Si detecta algún problema relacionado con el igual, puede hacer uso de los recursos gratuitos de desarrollador de blockchain y de los foros de soporte para obtener ayuda de la comunidad de Fabric y de {{site.data.keyword.IBM_notm}}. Para obtener más información, consulte [Recursos de blockchain y foros de soporte](/docs/services/blockchain/ibmblockchain_support.html#blockchain-support-resources). También puede consultar los recursos de soporte en la pantalla **Obtener ayuda** del supervisor de red.
 
-- Para ver los problemas relacionados con AWS, puede utilizar tanto los
-[foros de soporte de la comunidad
-![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://forums.aws.amazon.com/index.jspa "Foros de soporte de la comunidad de AWS") y como el
-[soporte Premium de AWS
-![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://aws.amazon.com/premiumsupport/ "soporte Premium de AWS").
+- Para ver los problemas relacionados con AWS, puede utilizar tanto los [foros de soporte de la comunidad ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://forums.aws.amazon.com/index.jspa "Foros de soporte de la comunidad de AWS") y como el [soporte Premium de AWS ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://aws.amazon.com/premiumsupport/ "soporte Premium de AWS").
 
-{{site.data.keyword.blockchainfull_notm}} no tiene soporte para casos que se hayan abierto en
-{{site.data.keyword.cloud_notm}} y que estén relacionados con {{site.data.keyword.blockchainfull_notm}} Platform para AWS. Community Edition se ha diseñado para fines de exploración, desarrollo y pruebas, y no se utiliza para producción.
+{{site.data.keyword.blockchainfull_notm}} no tiene soporte para casos que se hayan abierto en {{site.data.keyword.cloud_notm}} y que estén relacionados con {{site.data.keyword.blockchainfull_notm}} Platform para AWS. Community Edition se ha diseñado para fines de exploración, desarrollo y pruebas, y no se utiliza para producción.

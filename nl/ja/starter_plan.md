@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-04-23"
+lastupdated: "2019-05-16"
+
+keywords: blockchain network, Starter Plan, getting started
 
 subcollection: blockchain
 
@@ -30,7 +32,7 @@ subcollection: blockchain
 
 **注:**
 - {{site.data.keyword.blockchainfull_notm}} Platform スターター・プランは、開発/テスト環境であり、実動ワークロードには適していません。 実稼働環境が必要な場合は、[エンタープライズ・プランについて](/docs/services/blockchain/enterprise_plan.html#enterprise-plan-about)を参照してください。
-- {{site.data.keyword.blockchainfull_notm}} Platform は {{site.data.keyword.cloud_notm}} のプラットフォーム・サービスであり、すべてのメンバーシップ・オファリングはサービス・レベル・アグリーメント (SLA) に関する [{{site.data.keyword.cloud_notm}} サービスのご利用条件 ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](http://www-03.ibm.com/software/sla/sladb.nsf/sla/bm "{{site.data.keyword.cloud_notm}} サービスのご利用条件") に従っています。 スターター・プランは、単一の地域の 1 つのデータ・センターにプロビジョンされます。使用可能な地域のリストについては、[{{site.data.keyword.blockchainfull_notm}} Platform のロケーション](/docs/services/blockchain?topic=blockchain-ibp-regions-locations#ibp-regions-locations)を参照してください。
+- {{site.data.keyword.blockchainfull_notm}} Platform は {{site.data.keyword.cloud_notm}} のプラットフォーム・サービスであり、すべてのメンバーシップ・オファリングはサービス・レベル・アグリーメント (SLA) に関する [{{site.data.keyword.cloud_notm}} サービスのご利用条件 ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](http://www-03.ibm.com/software/sla/sladb.nsf/sla/bm "{{site.data.keyword.cloud_notm}} サービスのご利用条件") に従っています。 スターター・プランは、単一の地域の 1 つのデータ・センターにプロビジョンされます。 使用可能な地域のリストについては、[{{site.data.keyword.blockchainfull_notm}} Platform のロケーション](/docs/services/blockchain?topic=blockchain-ibp-regions-locations#ibp-regions-locations)を参照してください。
 
 ## スターター・プランでの提供内容
 {: #starter-plan-about-what-starter-plan-offers}

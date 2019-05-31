@@ -4,6 +4,8 @@ copyright:
   years: 2017, 2019
 lastupdated: "2019-03-05"
 
+keywords: IBM Blockchain offerings, Linux Foundation, Hyperledger Fabric, open source, community contribution
+
 subcollection: blockchain
 
 ---
@@ -33,7 +35,7 @@ subcollection: blockchain
 {{site.data.keyword.IBM_notm}} では、実動の Hyperledger Composer を使用するネットワークをサポートしていません。これには Composer CLI、JavaScript API、REST サーバー、および Web Playground が含まれます。
 {:note}
 
-## オープン・ソース・ステートメント
+## オープン・ソースのステートメント
 {: #disclaimer-open-source-statement}
 
 {{site.data.keyword.cloud_notm}} の {{site.data.keyword.blockchainfull_notm}} オファリング・プランは、Linux Foundation の Hyperledger Fabric スタックの上に構築されています。 {{site.data.keyword.IBM_notm}} を含む Hyperledger Project メンバーは継続して Hyperledger の傘下のさまざまなサブプロジェクトにコントリビューションを提供します。  いずれのコントリビューションも、コミュニティーで検討、精査、テストされます。

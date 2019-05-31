@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-04-23"
+lastupdated: "2019-05-16"
+
+keywords: blockchain network, Enterprise Plan, production-ready network
 
 subcollection: blockchain
 
@@ -36,7 +38,7 @@ subcollection: blockchain
 
 **注:**
 - エンタープライズ・プランは実稼働環境を提供します。 開発/テスト用の環境が必要な場合は、[スターター・プランについて](/docs/services/blockchain/starter_plan.html#starter-plan-about)を参照してください。
-- {{site.data.keyword.blockchainfull_notm}} Platform は {{site.data.keyword.cloud_notm}} のプラットフォーム・サービスであり、すべてのメンバーシップ・オファリングはサービス・レベル・アグリーメント (SLA) に関する [{{site.data.keyword.cloud_notm}} サービスのご利用条件 ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](http://www-03.ibm.com/software/sla/sladb.nsf/sla/bm "{{site.data.keyword.cloud_notm}} サービスのご利用条件") に従っています。 エンタープライズ・プランのネットワークは、単一の地域の 1 つのデータ・センターにプロビジョンされます。使用可能な地域のリストについては、[{{site.data.keyword.blockchainfull_notm}} Platform のロケーション](/docs/services/blockchain?topic=blockchain-ibp-regions-locations#ibp-regions-locations)を参照してください。
+- {{site.data.keyword.blockchainfull_notm}} Platform は {{site.data.keyword.cloud_notm}} のプラットフォーム・サービスであり、すべてのメンバーシップ・オファリングはサービス・レベル・アグリーメント (SLA) に関する [{{site.data.keyword.cloud_notm}} サービスのご利用条件 ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](http://www-03.ibm.com/software/sla/sladb.nsf/sla/bm "{{site.data.keyword.cloud_notm}} サービスのご利用条件") に従っています。 エンタープライズ・プランのネットワークは、単一の地域の 1 つのデータ・センターにプロビジョンされます。 使用可能な地域のリストについては、[{{site.data.keyword.blockchainfull_notm}} Platform のロケーション](/docs/services/blockchain?topic=blockchain-ibp-regions-locations#ibp-regions-locations)を参照してください。
 
 ネットワークを始めようとしているメンバーのために、IBM は、ネットワークをセットアップしてプロビジョンするための重要な手順をネットワーク・イニシエーターに案内するグラフィカル・ユーザー・インターフェースを用意しています。 例えば、他のメンバーを招待したり、ガバナンス・ルールを設定したりする手順を案内します。 詳しくは、[エンタープライズ・プラン・ネットワークの管理](/docs/services/blockchain/get_start.html#getting-started-with-enterprise-plan)を参照してください。 ネットワークをデプロイした後、ネットワーク・モニターという対話式グラフィカル・ユーザー・インターフェースを使用すると、ネットワークの正常性とアクティビティーをモニターしたり、主要なネットワーク・アクティビティー (新規デプロイメント、メンバーの追加/削除、チェーンコードのライフサイクル、チャネル管理などの作業) を管理したり、技術サポートを利用したりできます。 詳しくは、[ネットワーク・モニターの使用](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard)を参照してください。
 
@@ -57,7 +59,7 @@ Fabric CA は、エンタープライズ・プランで提供される認証局�
 
 決定する必要がある唯一の点は、ネットワークに必要なピアのサイズです。 これは、必要なチャネルの数、1 チャネルあたりのワークロード、メモリー使用量、ディスク・スペース (ストレージ) に基づいて決定します。
 
-より安定した実動レベルまたは実動に近いレベルのデプロイメントには、エンタープライズ・プランを使用してください。 テストを目的とする場合は、[スターター・プラン](/docs/services/blockchain/starter_plan.html#starter-plan-about)を使用するか、[Docker イメージをローカルにインストール](http://hyperledger-fabric.readthedocs.io/en/release-1.2/build_network.html)します。
+より安定した実動レベルまたは実動に近いレベルのデプロイメントには、エンタープライズ・プランを使用してください。 テストを目的とする場合は、[スターター・プラン](/docs/services/blockchain/starter_plan.html#starter-plan-about)を使用するか、[Docker イメージをローカルにインストール](https://hyperledger-fabric.readthedocs.io/en/release-1.2/build_network.html)します。
 
 <!--- The Enterprise plan provides the ordering service and CA. The membership fee is $1,000, and a per peer fee of $1,000 that is associated with the network. If you want to have high availability (HA), you must purchase an additional peer to provide the HA capabilities. For example, one organization (associated membership fee of $1,000) of two peers ($1,000 X 2 peers) with HA ($1,000 X 2 HA peers) requires a monthly charge of $5,000.  --->
 

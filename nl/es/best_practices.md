@@ -2,7 +2,9 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-03-20"
+lastupdated: "2019-03-22"
+
+keywords: best practices, develop applications, connectivity, availability, mutual TLS, CouchDB
 
 subcollection: blockchain
 
@@ -26,7 +28,7 @@ Esta guía está destinada a usuarios que ya conocen los aspectos básicos del d
 ## Conectividad y disponibilidad de las aplicaciones
 {: #best-practices-app-connectivity-availability}
 
-El [flujo de transacciones ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/txflow.html "flujo de transacciones"){:new_window} de Hyperledger Fabric abarca varios componentes, entre los que las aplicaciones cliente juegan un rol exclusivo. El SDK envía las propuestas de transacción a los iguales para su aprobación. Luego recopila las propuestas aprobadas que se van a enviar al servicio de ordenación, que a continuación envía bloques de transacciones a los iguales para que se añadan a los libros mayores de canal. Los desarrolladores de aplicaciones de producción deben estar preparados para gestionar las interacciones entre el SDK y sus redes para aumentar su eficiencia y disponibilidad.
+El [flujo de transacciones ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/txflow.html "flujo de transacciones"){:new_window} de Hyperledger Fabric abarca varios componentes, entre los que las aplicaciones cliente juegan un rol exclusivo. El SDK envía las propuestas de transacción a los iguales para su aprobación. Luego recopila las propuestas aprobadas que se van a enviar al servicio de ordenación, que a continuación envía bloques de transacciones a los iguales para que se añadan a los libros mayores de canal. Los desarrolladores de aplicaciones de producción deben estar preparados para gestionar las interacciones entre el SDK y sus redes para aumentar su eficiencia y disponibilidad.
 
 ### Gestión de transacciones
 {: #best-practices-app-managing-transactions}
@@ -159,7 +161,7 @@ channel.sendInstantiateProposal(request, 300000);
 Si utiliza CouchDB como base de datos de estado, puede realizar consultas de datos JSON desde su código de encadenamiento sobre los datos de estado del canal. Se recomienda encarecidamente crear índices para las consultas de JSON y utilizarlos en el código de encadenamiento. Los índices permiten que sus aplicaciones puedan recuperar datos de forma eficiente cuando la red añade bloques adicionales de transacciones y entradas en el escenario mundial.
 
 Para obtener más información sobre CouchDB y cómo configurar índices, consulte
-[CouchDB como base de datos de estado ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](http://hyperledger-fabric.readthedocs.io/en/release-1.1/couchdb_as_state_database.html "CouchDB como base de datos de estado"){:new_window} en la documentación de Hyperledger Fabric. También encontrará un ejemplo que utiliza un índice con código de encadenamiento en la [guía de aprendizaje de CouchDB de Fabric ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/couchdb_tutorial.html).
+[CouchDB como base de datos de estado ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/couchdb_as_state_database.html "CouchDB como base de datos de estado"){:new_window} en la documentación de Hyperledger Fabric. También encontrará un ejemplo que utiliza un índice con código de encadenamiento en la [guía de aprendizaje de CouchDB de Fabric ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/couchdb_tutorial.html).
 
 Evite el uso del código de encadenamiento en consultas que vayan a resultar en una exploración de toda la base de datos CouchDB. Las exploraciones de la base de datos de longitud completa tendrán tiempos de respuesta largos y degradarán el rendimiento de la red. Puede realizar algunos de los pasos siguientes para evitar y gestionar consultas largas:
 - Configure índices con el código de encadenamiento.
@@ -167,7 +169,7 @@ Evite el uso del código de encadenamiento en consultas que vayan a resultar en 
 - Las consultas más complejas tendrán un rendimiento inferior y será menos probable que utilicen un índice.
 - Debería intentar evitar los operadores que den como resultado una exploración de tabla completa o una exploración de índice completa, como `$or`, `$in` y `$regex`.
 
-Puede encontrar ejemplos que muestran cómo las consultas utilizan los índices y qué tipo de consultas tendrá el mejor rendimiento en la [guía de aprendizaje de CouchDB de Fabric ![Icono de enlace externo](https://hyperledger-fabric.readthedocs.io/en/release-1.2/couchdb_tutorial.html#use-best-practices-for-queries-and-indexes).
+Puede encontrar ejemplos que muestran cómo las consultas utilizan los índices y qué tipo de consultas tendrá el mejor rendimiento en la [guía de aprendizaje de CouchDB de Fabric ![Icono de enlace externo](https://hyperledger-fabric.readthedocs.io/en/release-1.4/couchdb_tutorial.html#use-best-practices-for-queries-and-indexes).
 
 Los iguales de {{site.data.keyword.blockchainfull_notm}} Platform tienen un conjunto queryLimit establecido y solo devolverán 10.000 entradas de la base de datos de estado. Si la consulta alcanza el queryLimit, puede utilizar varias consultas para obtener los resultados restantes. Si necesita más resultados de una consulta de rango, inicie las consultas posteriores con la última clave devuelta por la consulta anterior. Si necesita más resultados de las consultas JSON, ordene la consulta utilizando una de las variables de los datos y luego utilice el último valor de la consulta anterior en un filtro 'mayor que' para la siguiente consulta.
 

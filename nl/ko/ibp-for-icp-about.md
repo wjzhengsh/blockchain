@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-04-23"
+lastupdated: "2019-05-16"
+
+keywords: IBM Blockchain Platform, IBM Cloud Private, system requirements, Kubernetes Helm chart, behind a firewall
 
 subcollection: blockchain
 
@@ -29,7 +31,7 @@ subcollection: blockchain
 {:note}
 
 {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private은
-{{site.data.keyword.cloud_notm}} Private을 통해 고유한 인프라에서 블록체인 네트워크를 실행해야 하는 컴포넌트를 제공합니다. 컴포넌트에는 Kubernetes Helm 차트를 사용하여 배치하고, 관리하고, 설정하는 Hyperledger Fabric, Certificate Authority (CA), 순서 지정자 및 피어가 포함됩니다. **이 오퍼링은 고급 Hyperledger Fabric 경험이 있는 사용자를 대상으로 합니다.**
+{{site.data.keyword.cloud_notm}} Private을 통해 고유한 인프라에서 블록체인 네트워크를 실행해야 하는 컴포넌트를 제공합니다. 이 컴포넌트에는 Kubernetes Helm 차트를 사용하여 배치, 관리 및 설정하는 Hyperledger Fabric 인증 기관(CA), 순서 지정자 및 피어가 포함됩니다. **이 오퍼링은 고급 Hyperledger Fabric 경험이 있는 사용자를 대상으로 합니다.**
 
 {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private을
 통해 블록체인 네트워크를 프라이빗 클라우드에 배치하여 데이터 중복성 요구사항, 시장 규제 및 인프라 환경 설정을 다룰 수 있습니다. 온프레미스의 컨테이너형 애플리케이션을 개발하고 관리하기 위한 Kubernetes 기반 애플리케이션 플랫폼인 {{site.data.keyword.cloud_notm}} Private를 통해 고유한 인프라에서 블록체인 네트워크의 필수 요소의 개발을 단순화합니다.
@@ -44,11 +46,11 @@ subcollection: blockchain
 
 ## {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private에서 제공하는 기능
 
-{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private을 통해 Hyperledger Fabric 블록체인의 모든 기본 컴포넌트(인증 기관, 순서 지정 서비스 및 피어)를 배치할 수 있습니다. 비즈니스 요구사항에 따라 다양한 컴포넌트를 배치할 수 있도록 유연성을 제공해 줍니다. {{site.data.keyword.blockchainfull_notm}} for {{site.data.keyword.cloud_notm}} Private를 사용하여 블록체인 컨소시엄에서 조직을 함께 바인드하는 순서 지정 서비스를 배치 및 구성함으로써 블록체인 네트워크를 시작할 수 있습니다. 또한 피어를 배치하고 Fabric을 기반으로 한 컴포넌트를 사용하는 다른 네트워크(예: {{site.data.keyword.cloud_notm}} Private 또는 IBM Cloud에서 호스팅되는 스타터 플랜 및 엔터프라이즈 플랜 네트워크를 사용하여 클라우드 전체에 배치된 {{site.data.keyword.blockchainfull_notm}} Platform 네트워크)에 참여할 수 있습니다. Hyperledger Fabric 네트워크의 구성 요소에 대한 자세한 정보는 [블록체인 컴포넌트 개요](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview)를 참조하십시오.
+{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private을 통해 Hyperledger Fabric 블록체인의 모든 기본 컴포넌트(인증 기관, 순서 지정 서비스 및 피어)를 배치할 수 있습니다. 비즈니스 요구사항에 따라 다양한 컴포넌트를 배치할 수 있도록 유연성을 제공해 줍니다. {{site.data.keyword.blockchainfull_notm}} for {{site.data.keyword.cloud_notm}} Private를 사용하여 블록체인 컨소시엄에서 조직을 함께 바인드하는 순서 지정 서비스를 배치 및 구성함으로써 블록체인 네트워크를 시작할 수 있습니다. 또한 피어를 배치하고 Fabric을 기반으로 한 컴포넌트를 사용하는 다른 네트워크(예: {{site.data.keyword.cloud_notm}} Private 또는 IBM Cloud에서 호스팅되는 스타터 플랜 및 엔터프라이즈 플랜 네트워크를 사용하여 클라우드 전체에 배치된 {{site.data.keyword.blockchainfull_notm}} Platform 네트워크)에 가입할 수 있습니다. Hyperledger Fabric 네트워크의 구성 요소에 대한 자세한 정보는 [블록체인 컴포넌트 개요](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview)를 참조하십시오.
 
 ## {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private의 적합성
 
-{{site.data.keyword.blockchainfull_notm}} Platform 컴포넌트를 {{site.data.keyword.cloud_notm}} 외부에서 실행하는 경우 블록체인 네트워크에 참여하거나 확장할 수 있는 유연성이 제공됩니다. 이를 통해 네트워크 시작자는 자신이 선택한 플랫폼을 사용하면서 새 구성원이 참여할 수 있도록 허용하여 자신의 네트워크를 확장할 수 있습니다. 이 경우 블록체인 네트워크에 참여하려는 조직에서 해당 피어를 기존 애플리케이션과 함께 배치하거나 SOR(System of Record)에 통합할 수 있습니다.
+{{site.data.keyword.blockchainfull_notm}} Platform 컴포넌트를 {{site.data.keyword.cloud_notm}} 외부에서 실행하는 경우 블록체인 네트워크에 가입하거나 확장할 수 있는 유연성이 제공됩니다. 이를 통해 네트워크 시작자는 자신이 선택한 플랫폼을 사용하면서 새 구성원이 가입할 수 있도록 허용하여 자신의 네트워크를 확장할 수 있습니다. 이 경우 블록체인 네트워크에 가입하려는 조직에서 해당 피어를 기존 애플리케이션과 함께 배치하거나 SOR(System of Record)에 통합할 수 있습니다.
 
 {{site.data.keyword.cloud_notm}} Private에 {{site.data.keyword.blockchainfull_notm}} Platform을
 배치하는 프로세스는 복잡하고 Fabric에 대한 높은 전문 지식이 필요합니다. Fabric, {{site.data.keyword.cloud_notm}} Private 또는 {{site.data.keyword.blockchainfull_notm}} Platform에 익숙하지 않으며 개발 환경 또는 개념 증명을 설정하는 것이 목표인 경우 [스타터 플랜](/docs/services/blockchain/starter_plan.html#starter-plan-about)을 대신
@@ -136,7 +138,7 @@ Helm 차트 및 필요한 전제조건을 설치하는 방법에 대한 지시�
 정보 및 팁이 필요한 경우 [{{site.data.keyword.cloud_notm}} Private 설정](/docs/services/blockchain/ICP_setup.html#icp-setup)을 참조하십시오.
 
 {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private을
-설치한 후에는 각각의 네트워크 컴포넌트를 개별적으로 배치해야 합니다. 동시에 복수의 컴포넌트를 배치할 수는 없습니다. 블록체인 네트워크를 작성하거나 참여하기 위한 우수 사례에 대해 알아보려면 [{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private 시작하기](/docs/services/blockchain/ibp_for_icp_deployment_guide.html#get-started-icp)를 참조하십시오. 그런 다음 아래의 절에서 개별 컴포넌트를 배치하고 작동시키는 단계를 검토하십시오.
+설치한 후에는 각각의 네트워크 컴포넌트를 개별적으로 배치해야 합니다. 동시에 복수의 컴포넌트를 배치할 수는 없습니다. 블록체인 네트워크를 작성하거나 가입하기 위한 우수 사례에 대해 알아보려면 [{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private 시작하기](/docs/services/blockchain/ibp_for_icp_deployment_guide.html#get-started-icp)를 참조하십시오. 그런 다음 아래의 절에서 개별 컴포넌트를 배치하고 작동시키는 단계를 검토하십시오.
 
 ### 방화벽 뒤에 {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private 설치
 {: #ibp-icp-about-firewall}
@@ -174,7 +176,7 @@ CA는 ID를 유효성 검증하고 네트워크에 배치해야 하는 다른 �
 
 피어는 원장 및 스마트 계약을 호스팅하므로 기본적인 네트워크 요소입니다. 스마트 계약 및 원장은 네트워크에서 공유 프로세스 및 공유 정보를 각각 캡슐화하기 위해 사용됩니다. 피어 및 블록체인 네트워크에서 피어가 수행하는 역할에 대한 자세한 정보는 [블록체인 컴포넌트 개요](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview)를 참조하십시오.
 
-- 네트워크에 참여할 준비가 되면 채널에 가입하고, 트랜잭션을 인증하고, 채널 원장을 저장할 피어를 배치할 수 있습니다. {{site.data.keyword.cloud_notm}} Private에 {{site.data.keyword.cloud_notm}} Private의 다른 컴포넌트에 연결할 피어를 배치하는 방법에 대한 정보는 [{{site.data.keyword.cloud_notm}} Private에 피어 배치](/docs/services/blockchain/howto/peer_deploy_icp.html#icp-peer-deploy)를 참조하십시오. {{site.data.keyword.cloud_notm}} Private에 스타터 또는 엔터프라이즈 플랜 네트워크에 연결할 피어를 배치하는 방법에 대한 정보는 [스타터 또는 엔터프라이즈에 연결할 피어 배치](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy)를 참조하십시오.
+- 네트워크에 가입할 준비가 되면 채널에 가입하고, 트랜잭션을 인증하고, 채널 원장을 저장할 피어를 배치할 수 있습니다. {{site.data.keyword.cloud_notm}} Private에 {{site.data.keyword.cloud_notm}} Private의 다른 컴포넌트에 연결할 피어를 배치하는 방법에 대한 정보는 [{{site.data.keyword.cloud_notm}} Private에 피어 배치](/docs/services/blockchain/howto/peer_deploy_icp.html#icp-peer-deploy)를 참조하십시오. {{site.data.keyword.cloud_notm}} Private에 스타터 또는 엔터프라이즈 플랜 네트워크에 연결할 피어를 배치하는 방법에 대한 정보는 [스타터 또는 엔터프라이즈에 연결할 피어 배치](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy)를 참조하십시오.
 
 - 피어를 설정한 후에는 트랜잭션을 제출하고 블록체인 네트워크에서 분산 원장을 읽어들이기 전에 몇 가지 작업 단계를 완료해야 합니다.
 

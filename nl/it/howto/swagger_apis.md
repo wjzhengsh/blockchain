@@ -1,8 +1,10 @@
 ---
 
 copyright:
-  years: 2018,2019
-lastupdated: "2019-04-03"
+  years: 2018, 2019
+lastupdated: "2019-05-16"
+
+keywords: Swagger APIs, authorize, service credentials, disable API access, IBM Cloud
 
 subcollection: blockchain
 
@@ -83,7 +85,7 @@ La **Figura 6** mostra il comando CURL, l'URL e il corpo della risposta della AP
 ## Disabilitazione dell'accesso API
 {: #ibp-swagger-turn-off}
 
-Per impostazione predefinita, tutti gli utenti con un ruolo non Revisore in IBM Cloud possono visualizzare e utilizzare le **Credenziali di rete** visibili nel pannello API Swagger e possono pertanto gestire la loro rete utilizzando le API. Tuttavia, se preferisci non esporre le tue credenziali di rete API Swagger nell'IU, puoi copiare e proteggere i tuoi valori di chiave e segreto esistenti e generare delle nuove credenziali che non sono valide per l'uso con le API Swagger. Viene fornito un indicatore denominato resetCredentials che ti consente di controllare l'accesso completando la seguente procedura:
+Per impostazione predefinita, tutti gli utenti con un ruolo non Revisore in IBM Cloud possono visualizzare e utilizzare le **Credenziali di rete** visibili nel pannello delle API Swagger e possono pertanto gestire la loro rete utilizzando le API. Tuttavia, se preferisci non esporre le tue credenziali di rete API Swagger nell'IU, puoi copiare e proteggere i tuoi valori di chiave e segreto esistenti e generare delle nuove credenziali che non sono valide per l'uso con le API Swagger. Viene fornito un indicatore denominato resetCredentials che ti consente di controllare l'accesso completando la seguente procedura:
 
 1. Attieniti alla procedura per generare delle nuove credenziali di rete, come descritto nel [dashboard Credenziali del servizio](/docs/services/blockchain/howto/create_join_network_with_apis.html#swagger-network-retrieve-id-token).
 2. Tuttavia, nella casella **Aggiungi parametri di configurazione inline**, incolla il seguente valore:
@@ -95,7 +97,7 @@ Per impostazione predefinita, tutti gli utenti con un ruolo non Revisore in IBM 
    {:codeblock}
 3. Fai clic su **Aggiungi**.
 
-Ora, quando un utente accede al pannello API Swagger dall'IU, le informazioni **Credenziali di rete** nell'IU conterranno un valore di chiave e segreto generico che non è valido per gestire la tua rete. Le eventuali richieste API inoltrate utilizzando queste credenziali non verranno elaborate.  
+Ora, quando un utente accede al pannello delle API Swagger dall'IU, le informazioni **Credenziali di rete** nell'IU conterranno un valore di chiave e segreto generico che non è valido per gestire la tua rete. Le eventuali richieste API inoltrate utilizzando queste credenziali non verranno elaborate.  
 
 Se in un secondo momento desideri esporre delle credenziali di rete valide nell'IU, ti basta ripetere la procedura sopra indicata per generare delle nuove credenziali lasciando però questa volta vuota la casella **Aggiungi parametri di configurazione inline**. Non hai bisogno di specificare alcun parametro.
 

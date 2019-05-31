@@ -4,6 +4,8 @@ copyright:
   years: 2017, 2019
 lastupdated: "2019-03-05"
 
+keywords: channel update policy, endorsement policy, Network Monitor, number of channel operators
+
 subcollection: blockchain
 
 ---
@@ -16,7 +18,6 @@ subcollection: blockchain
 
 # Creazione o aggiornamento di un canale
 {: #ibp-create-channel}
-
 
 I canali rappresentano un meccanismo incredibilmente potente per il partizionamento e l'isolamento dei dati e forniscono il fondamento primario per
 la privacy dei dati. Solo i membri dello stesso canale possono accedere ai dati di questo canale.
@@ -41,7 +42,7 @@ Fai clic sul pulsante **Nuovo canale** nella schermata "Canali" del tuo Monitora
 3. Configura la politica di aggiornamento del canale selezionando il numero di operatori del canale per l'approvazione di una richiesta di aggiornamento del canale e fai clic su **Invia richiesta**.
   ![Creazione di un canale 3](../images/create_channel_3.png "Creazione di un canale pannello 3")
 
-I membri invitati riceveranno una email di invito. Possono anche trovare la richiesta nelle schede secondarie "Tutti" o "In sospeso" nella schermata **Notifiche** di Monitoraggio della rete.
+I membri invitati riceveranno un'email di invito. Possono anche trovare la richiesta nelle schede secondarie "Tutti" o "In sospeso" nella schermata **Notifiche** di Monitoraggio della rete.
 * I membri invitati come operatori del canale possono fare clic sul pulsante **Esamina richiesta** per riesaminare la configurazione del canale e quindi accettare (**Accetta**) o rifiutare (**Rifiuta**) la richiesta. La colonna "Stato personale" visualizza lo stato di voto dell'operatore per la richiesta:
     * _Voto in attesa_: l'operatore non ha gestito la richiesta.
     * _Voto accettato_: l'operatore ha accettato la richiesta.

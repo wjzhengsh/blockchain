@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-04-23"
+lastupdated: "2019-05-16"
+
+keywords: Helm chart, orderer configuration file, IBM Cloud Private, deploy an orderer, ordering service
 
 subcollection: blockchain
 
@@ -53,7 +55,7 @@ subcollection: blockchain
 
 1. {{site.data.keyword.cloud_notm}} Private に順序付けプログラムをインストールするには、その前に[{{site.data.keyword.cloud_notm}} Private をインストール](/docs/services/blockchain/ICP_setup.html#icp-setup)し、[{{site.data.keyword.blockchainfull_notm}} Platform Helm チャートをインストール](/docs/services/blockchain/howto/helm_install_icp.html#helm-install)する必要があります。
 
-2. Community Edition を使用し、インターネット接続なしでこの Helm チャートを {{site.data.keyword.cloud_notm}} Private クラスター上で実行する場合は、インターネットに接続されたマシン上にアーカイブを作成した後に、アーカイブを {{site.data.keyword.cloud_notm}} Private クラスターにインストールすることができます。 詳しくは、[インターネット接続がないクラスターへのフィーチャー・アプリケーションの追加 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/app_center/add_package_offline.html "インターネット接続がないクラスターへのフィーチャー・アプリケーションの追加"){:new_window} を参照してください。 仕様ファイル `manifest.yaml` は、Helm チャート内の ibm-blockchain-platform-dev/ibm_cloud_pak にあります。
+2. Community Edition を使用しており、インターネットに接続されていない {{site.data.keyword.cloud_notm}} Private クラスター上でこの Helm チャートを実行する場合は、アーカイブを {{site.data.keyword.cloud_notm}} Private クラスターにインストールするためには、インターネットに接続されたマシン上でそれらのアーカイブを事前に作成する必要があります。 詳しくは、[インターネット接続がないクラスターへのフィーチャー・アプリケーションの追加 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/app_center/add_package_offline.html "インターネット接続がないクラスターへのフィーチャー・アプリケーションの追加"){:new_window} を参照してください。 仕様ファイル `manifest.yaml` は、Helm チャート内の ibm-blockchain-platform-dev/ibm_cloud_pak にあります。
 
 3. {{site.data.keyword.cloud_notm}} Private コンソールから、CA のクラスター・プロキシー IP アドレスの値を取得します。 **注:** プロキシー IP にアクセスするには、[クラスター管理者 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/user_management/assign_role.html "クラスター管理者役割とアクション") である必要があります。 {{site.data.keyword.cloud_notm}} Private クラスターにログインします。 左側のナビゲーション・パネルで**「プラットフォーム」**、**「ノード」**の順にクリックし、クラスターで定義されているノードを表示します。 `proxy` 役割を持つノードをクリックし、テーブルから`「ホスト IP」`の値をコピーします。 **重要:** この値を保存して、Helm チャートの`「プロキシー IP (Proxy IP)」`フィールドを構成する際に使用します。
 
@@ -155,7 +157,7 @@ subcollection: blockchain
 |**一般パラメーター**| Helm チャートを構成するパラメーター | | |
 | `Helm リリース名 (Helm release name)`| リリースの名前。 小文字で始まり、任意の英数字で終わる必要があり、ハイフンと小文字の英数字のみを含む必要があります。 コンポーネントのインストールを試行するたびに固有の Helm リリース名を使用する必要があります。 **重要:** この値は、[JSON 秘密ファイル](/docs/services/blockchain/howto/orderer_deploy_icp.html#icp-orderer-deploy-config-file)の「hosts」フィールドで「サービス・ホスト名」を生成する際に使用した値と一致する必要があります。 | なし | はい  |
 | `ターゲット名前空間 (Target namespace)`| Helm チャートをインストールする Kubernetes 名前空間を選択します。 | なし | はい |
-| `ターゲット名前空間のポリシー (Target namespace policies)`| 選択した名前空間のポッド・セキュリティー・ポリシーが表示されます。**`ibm-privileged-psp`** ポリシーが含まれているはずです。そうでない場合は、その名前空間に [PodSecurityPolicy をバインド](/docs/services/blockchain?topic=blockchain-icp-setup#icp-setup-psp)してください。| なし | いいえ |
+| `ターゲット名前空間のポリシー (Target namespace policies)`| 選択した名前空間のポッド・セキュリティー・ポリシーが表示されます。**`ibm-privileged-psp`** ポリシーが含まれているはずです。 そうでない場合は、その名前空間に [PodSecurityPolicy をバインド](/docs/services/blockchain?topic=blockchain-icp-setup#icp-setup-psp)してください。 | なし | いいえ |
 |**グローバル構成 (Global configuration)**| Helm チャート内のすべてのコンポーネントに適用されるパラメーター|||
 | `サービス・アカウント名 (Service account name)`| ポッドの実行に使用する[サービス・アカウント ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/) の名前を入力します。 | デフォルト | いいえ |
 
@@ -174,7 +176,7 @@ subcollection: blockchain
 | `順序付けプログラム Docker イメージ・タグ (Orderer Docker image tag)`| Docker イメージのレコード。 このフィールドには、イメージ・バージョンが自動入力されます。 これを変更しないでください。| 1.4.0 | はい |
 | `順序付けプログラム・コンセンサス・タイプ (Orderer consensus type)`| 順序付けサービスのコンセンサス・タイプ。 | SOLO | はい |
 | `順序付けプログラム組織名 (Orderer organization name)`| 順序付けプログラム組織に使用する名前を指定します。 ピアもデプロイする予定の場合は、ピアに指定するものとは異なる名前を使用するようにしてください。 例えば、順序付けプログラム組織に、`ordererOrg` のような名前を指定します。 | なし | はい |
-| `順序付けプログラム組織 MSP ID (Orderer Org MSP ID)`| 順序付けプログラム組織の MSP ID に使用する名前を指定します。 これは順序付けプログラム組織に付けたものと同じ名前である必要があり、デプロイメント・プロセスにより環境変数として設定されます。 この値をメモしておいてください。後で参照する必要があります。 | なし | はい |
+| `順序付けプログラム組織 MSP ID (Orderer Org MSP ID)`| 順序付けプログラム組織の MSP ID に使用する名前を指定します。 これは順序付けプログラム組織に付けたものと同じ名前である必要があり、デプロイメント・プロセスにより環境変数として設定されます。この値をメモしておいてください。後で参照する必要があります。 | なし | はい |
 | `順序付けプログラム・ストレージ・クラス名 (Orderer storage class name)`| 順序付けプログラムのストレージ・クラス名を指定します。 | なし | {{site.data.keyword.cloud_notm}} Private クラスターの構成方法によって異なります。 クラスター管理者に確認してください。 |
 | `順序付けプログラム既存ボリューム・クレーム (Orderer existing volume claim)`| 既存のボリューム・クレームの名前を指定し、他のすべてのフィールドは空のままにします。 | なし | いいえ |
 | `順序付けプログラム・セレクター・ラベル (Orderer selector label)`| PVC の[セレクター・ラベル ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/)。 | なし | いいえ |
@@ -186,8 +188,8 @@ subcollection: blockchain
 | `順序付けプログラム CPU 制限 (Orderer CPU limit)`| 順序付けプログラムに割り振る最大 CPU 数を指定します。 | 2 | はい |
 | `順序付けプログラム・メモリー要求 (Orderer memory request)`| 順序付けプログラムに割り振る最小メモリー量を指定します。 | 1Gi | はい |
 | `順序付けプログラム・メモリー制限 (Orderer memory limit)`| 順序付けプログラムに割り振る最大メモリー量を指定します。 | 2Gi | はい |
-| `gRPC Web プロキシー CPU 要求 (gRPC web proxy CPU request)`| gRPC Web プロキシーに割り振る CPU の最小数 (millicpu (m) 単位) を指定します。| 100 m | はい |
-| `gRPC Web プロキシー CPU 制限 (gRPC web proxy CPU limit)`| gRPC Web プロキシーに割り振る CPU の最大数 (millicpu (m) 単位) を指定します。| 200 m | はい |
+| `gRPC Web プロキシー CPU 要求 (gRPC web proxy CPU request)`| gRPC Web プロキシーに割り振る CPU の最小数 (millicpu (m) 単位) を指定します。 | 100 m | はい |
+| `gRPC Web プロキシー CPU 制限 (gRPC web proxy CPU limit)`| gRPC Web プロキシーに割り振る CPU の最大数 (millicpu (m) 単位) を指定します。 | 200 m | はい |
 | `gRPC Web プロキシー・メモリー要求 (gRPC web proxy memory request)`| gRPC Web プロキシーに割り振る最小メモリー量を指定します。 | 100Mi | はい |
 | `gRPC Web プロキシー・メモリー制限 (gRPC web proxy memory limit)`| gRPC Web プロキシーに割り振る最大メモリー量を指定します。 | 200Mi | はい |
 
@@ -197,7 +199,7 @@ subcollection: blockchain
 
 また、Helm CLI を使用して Helm リリースをインストールすることもできます。 `helm install` コマンドを実行する前に、[Helm CLI 環境にクラスターの Helm リポジトリーを追加 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/app_center/add_int_helm_repo_to_cli.html "Helm CLI への内部 Helm リポジトリーの追加") してください。
 
-インストールに必要なパラメーターを設定するには、`yaml` ファイルを作成し、以下の `helm install` コマンドにこれを渡します。
+`yaml` ファイルを作成して、以下の `helm install` コマンドに渡すことで、インストールに必要なパラメーターを設定できます。
 
 ```
 helm install --name <helm_release_name>  <helm_chart> \

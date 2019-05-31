@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-04-19"
+lastupdated: "2019-05-16"
 
 keywords: smart contract, private data, private data collection, anchor peer
 
@@ -22,8 +22,11 @@ subcollection: blockchain
 # Guía de aprendizaje sobre despliegue de un contrato inteligente en la red
 {: #ibp-console-smart-contracts}
 
-Un contrato inteligente es el código, al que a veces se hace referencia como código de encadenamiento, que le permite leer y actualizar datos en el libro mayor de blockchain. El contrato inteligente puede convertir la lógica empresarial en un programa ejecutable acordado y verificado por todos los miembros de una red blockchain. Esta guía de aprendizaje es la tercera parte de la [serie de guías de aprendizaje de red de ejemplo](/docs/services/blockchain/howto/ibp-console-smart-contracts.md.html#ibp-console-smart-contracts-structure) y en ella se describe cómo desplegar contratos inteligentes para iniciar transacciones en la red blockchain.
+Un contrato inteligente es el código, al que a veces se hace referencia como código de encadenamiento, que le permite leer y actualizar datos en el libro mayor de blockchain. El contrato inteligente puede convertir la lógica empresarial en un programa ejecutable acordado y verificado por todos los miembros de una red blockchain. Esta guía de aprendizaje es la tercera parte de la [serie de guías de aprendizaje de red de ejemplo](#ibp-console-smart-contracts-structure) y en ella se describe cómo desplegar contratos inteligentes para iniciar transacciones en la red blockchain.
 {:shortdesc}
+
+Si utiliza la versión de prueba beta de {{site.data.keyword.blockchainfull_notm}} Platform, es probable que algunos paneles de la consola no coincidan con la documentación actual, que se mantiene actualizada con la instancia de servicio con disponibilidad general (GA). Para obtener las ventajas de todas las funciones más recientes, en este momento se recomienda que suministre una nueva instancia de servicio de GA siguiendo las instrucciones de [Iniciación a {{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}}](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks).
+{: important}
 
 **Audiencia de destino:** este tema está diseñado para los operadores de red responsables de crear, supervisar y gestionar la red blockchain. Además, los desarrolladores de aplicaciones pueden estar interesados en las secciones que hacen referencia a la forma de crear un contrato inteligente.
 
@@ -119,9 +122,7 @@ Después de que se haya creado una instancia de un contrato inteligente en un ca
 
 ### Conexión con SDK
 {: #ibp-console-smart-contracts-connect-to-SDK-panel}
-El separador **Contratos inteligentes** contiene la información que necesita para conectarse a un contrato inteligente del que se ha creado una instancia desde una app cliente. Junto a cada contrato inteligente del que se ha creado una instancia, vaya al menú de desbordamiento. Pulse el botón **Conectar con el SDK**. Se abrirá un panel lateral que proporciona la información que necesita para conectarse a este contrato inteligente: el nombre del contrato, el nombre del canal y el perfil de conexión. Para obtener más información, consulte
-[Creación de
-aplicaciones](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app).
+El separador **Contratos inteligentes** contiene la información que necesita para conectarse a un contrato inteligente del que se ha creado una instancia desde una app cliente. Junto a cada contrato inteligente del que se ha creado una instancia, vaya al menú de desbordamiento. Pulse el botón **Conectar con el SDK**. Se abrirá un panel lateral que proporciona la información que necesita para conectarse a este contrato inteligente: el nombre del contrato, el nombre del canal y el perfil de conexión. Para obtener más información, consulte [Creación de aplicaciones](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app).
 
 ## Especificación de una política de aprobación
 {: #ibp-console-smart-contracts-endorse}
@@ -153,8 +154,7 @@ Cuando un miembro nuevo que va a ejecutar el contrato inteligente se une al cana
 
 - Desplácese hacia abajo hasta la tabla **Contratos inteligentes instanciados**.
 - En la tabla **Contratos inteligentes instanciados**, localice la versión de contrato inteligente y el canal que desea actualizar. Debe aparecer junto al mismo la etiqueta **Actualización disponible**.
-- Pulse el **menú de desbordamiento** en el lado derecho de la fila del contrato inteligente y pulse **Actualizar**
-para realizar los pasos siguientes:  
+- Pulse el **menú de desbordamiento** en el lado derecho de la fila del contrato inteligente y pulse **Actualizar** para realizar los pasos siguientes:  
 
  1. Seleccione la versión del contrato inteligente que desee actualizar en el canal en la lista desplegable.
  2. Actualice la política de aprobación añadiendo o eliminando miembros del canal. También puede pulsar **Avanzado** para pegar en una nueva serie en formato JSON que modifique la política existente.
@@ -189,14 +189,14 @@ Después de actualizar el contrato inteligente, cambiará la versión del contra
 
 Los datos privados son una característica de las redes de Hyperledger Fabric en la versión 1.2 o superior y se utilizan para mantener la información confidencial privada de los miembros de otras organizaciones **en un canal**. La privacidad de los datos se consigue mediante el uso de [recopilaciones de datos privados  ![Icono de enlace externo")](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/private-data/private-data.html#what-is-a-private-data-collection "¿Qué es una recopilación de datos privados?"). Por ejemplo, supongamos que varios mayoristas y un conjunto de agricultores se unen a un solo canal. Si un agricultor y un mayorista desean realizar una transacción en privado, pueden crear un canal para este fin. Pero también pueden optar por crear una recopilación de datos privados en el contrato inteligente que controle sus interacciones empresariales para mantener la privacidad de los aspectos confidenciales de la venta, como por ejemplo el precio, sin tener que crear un canal secundario. Para obtener más información sobre cuándo utilizar datos privados dentro de blockchain, visite el artículo sobre el concepto de [Datos privados ![Icono de enlace externo")](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/private-data/private-data.html#private-data "Datos privados") en la documentación de Fabric.
 
-Para poder utilizar datos privados con {{site.data.keyword.blockchainfull_notm}} Platform gratuita 2.0 beta, se deben cumplir las tres condiciones siguientes:  
+Para poder utilizar datos privados con {{site.data.keyword.blockchainfull_notm}} Platform, se deben cumplir las tres condiciones siguientes:  
 1. **Defina la recopilación de datos privados.** Se puede añadir un archivo de recopilación de datos privado a su contrato inteligente. Luego, en el momento de la ejecución, la aplicación cliente puede utilizar las API del código de encadenamiento específicos de los datos privados para especificar y recuperar datos de la recopilación. Para obtener más información sobre cómo utilizar recopilaciones de datos privados con su contrato inteligente, consulte la guía de aprendizaje de SDK de Fabric sobre [la utilización de datos privados ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://fabric-sdk-node.github.io/tutorial-private-data.html "Cómo utilizar los datos privados") en la documentación de SDK de Fabric.  
 
 2. **Instale y crea una instancia del contrato inteligente.** Una vez que se haya definido la recopilación de datos privados del contrato inteligente, deberá instalar el contrato inteligente en los iguales que son miembros del canal. Cuando cree una instancia del contrato inteligente en el canal utilizando la consola, debe cargar el archivo JSON de configuración de la recopilación. Para obtener más información sobre cómo [crear un archivo JSON de definición de la recopilación ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://fabric-sdk-node.github.io/tutorial-private-data.html "Cómo utilizar datos privados"), consulte el tema de la documentación de SDK de Fabric.
 
   En lugar de utilizar la consola para instalar e instanciar su contrato inteligente con un archivo de configuración de la recopilación, también puede utilizar el SDK de Fabric. Estas instrucciones también están disponibles en la sección [Cómo utilizar datos privados ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://fabric-sdk-node.github.io/release-1.4/tutorial-private-data.html "cómo utilizar datos privados") en la documentación de Node SDK.  
 
-  **Nota:** un cliente debe ser un administrador de su igual para poder instalar o crear una instancia de un contrato inteligente utilizando el SDK. Por lo tanto, tiene que descargar los certificados de la identidad de administrador del igual desde la cartera de la consola y pasar la clave pública y privada del administrador del igual directamente al SDK en lugar de crear una identidad de aplicación. Para ver un ejemplo de cómo pasar un par de claves al SDK, consulte [Conexión a la red utilizando las API de SDK de Fabric SDK de bajo nivel](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-low-level).  
+  **Nota:** un cliente debe ser un administrador de su igual para poder instalar o crear una instancia de un contrato inteligente utilizando el SDK. Por lo tanto, tiene que descargar los certificados de la identidad de administrador del igual desde la cartera de la consola y pasar el certificado para firmas y la clave privada del administrador del igual directamente al SDK en lugar de crear una identidad de aplicación. Para ver un ejemplo de cómo pasar un par de claves al SDK, consulte [Conexión a la red utilizando las API de SDK de Fabric SDK de bajo nivel](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-low-level).  
 
 
 3. **Configure iguales de ancla.** Debido a que el [protocolo gossip ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/gossip.html "Protocolo gossip de diseminación de datos") entre organizaciones debe estar habilitado para que los datos privados funcionen, debe existir un igual de ancla para cada organización de la definición de recopilación. Consulte esta información para saber [cómo configurar iguales de ancla](/docs/services/blockchain/howto/ibp-console-govern.html#ibp-console-govern-channels-anchor-peers) en su red.

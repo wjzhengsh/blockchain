@@ -4,6 +4,8 @@ copyright:
   years: 2017, 2019
 lastupdated: "2019-03-20"
 
+keywords: Network Monitor, peer nodes, resources, channels, smart contract
+
 subcollection: blockchain
 
 ---
@@ -189,7 +191,7 @@ CA について詳しくは、[{{site.data.keyword.blockchainfull_notm}} Platfor
 ## API
 {: #ibp-dashboard-apis}
 
-{{site.data.keyword.blockchainfull_notm}} Platform では多数の REST API を Swagger で公開しており、これらを使用してノード、チャネル、ピア、およびネットワーク・メンバーを管理できます。 アプリケーションではこれらの API を使用して、ネットワーク・モニターを使用せずに重要なネットワーク・リソースを管理できます。
+{{site.data.keyword.blockchainfull_notm}} Platform では多数の REST API を Swagger で公開しており、これらを使用してノード、チャネル、ピア、およびネットワーク・メンバーを管理できます。 アプリケーションではこれらの API を使用して、ネットワーク・モニターを使用せずに重要なネットワーク・リソースを制御できます。
 
 **図 9** に「API」画面を示します。
 
@@ -249,7 +251,7 @@ CA について詳しくは、[{{site.data.keyword.blockchainfull_notm}} Platfor
 
 「サポート」タブのリソースを使用して、問題のトラブルシューティングを行い、{{site.data.keyword.IBM_notm}} および Fabric コミュニティーから支援を受けます。 「サポート」タブのリンクについて詳しくは、[サポートについて](/docs/services/blockchain/ibmblockchain_support.html#blockchain-support)の[リソースおよびサポート・フォーラム](/docs/services/blockchain/ibmblockchain_support.html#blockchain-support-resources)を参照してください。
 
-[IBM dWAnswers ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://developer.ibm.com/answers/smartspace/blockchain/index.html) は {{site.data.keyword.blockchainfull_notm}} Platform と Hyperledger Fabric のユーザー向けのコミュニティー・フォーラムであり、IBM の専門家によって監視されています。 過去に投稿された質問への回答を探したり、新しい質問を送信したりできます。 問題をデバッグできない場合や、疑問点の答を突き止めることができない場合は、{{site.data.keyword.cloud_notm}} サービス・ポータルでサポート Case を送信してください。 詳しくは、[サポート・ケースの送信](/docs/services/blockchain/ibmblockchain_support.html#blockchain-support-cases)を参照してください。
+[{{site.data.keyword.IBM_notm}} dWAnswers ![外部リンク・アイコン](images/external_link.svg "外部リンク・アイコン")](https://developer.ibm.com/answers/smartspace/blockchain/index.html){:new_window} は {{site.data.keyword.blockchainfull_notm}} Platform と Hyperledger Fabric のユーザー向けのコミュニティー・フォーラムであり、IBM の専門家によって監視されています。 過去に投稿された質問への回答を探したり、新しい質問を送信したりできます。 問題をデバッグできない場合や、疑問点の答を突き止めることができない場合は、{{site.data.keyword.cloud_notm}} サービス・ポータルでサポート Case を送信してください。 詳しくは、[サポート・ケースの送信](/docs/services/blockchain/ibmblockchain_support.html#blockchain-support-cases)を参照してください。
 
 
 ### Fabric のリリース・ノート

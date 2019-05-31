@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-04-23"
+lastupdated: "2019-05-16"
+
+keywords: Helm chart, orderer configuration file, IBM Cloud Private, deploy an orderer, ordering service
 
 subcollection: blockchain
 
@@ -20,7 +22,7 @@ subcollection: blockchain
 Gli ordinanti autenticano i client, ordinano le transazioni ed eseguono il broadcast delle transazioni in una rete blockchain con il componente ordinante. Per ulteriori informazioni sugli ordinanti e sul loro ruolo in una rete blockchain, consulta [Panoramica sui componenti blockchain](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview).
 {:shortdesc}
 
-Prima di distribuire un servizio ordini, rivedi [Considerazioni e limitazioni](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-about-considerations).
+Prima di distribuire un servizio di ordinazione, rivedi [Considerazioni e limitazioni](/docs/services/blockchain/ibp-for-icp-about.html#ibp-icp-about-considerations).
 
 ## Risorse richieste
 {: #icp-orderer-deploy-resources-required}
@@ -90,7 +92,7 @@ Dopo aver salvato il file di configurazione, devi codificarlo nel formato base64
    ```
    LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tDQpNSUlFbERDQ0EzeWdBd0lCQWdJUUFmMmo2MjdLZGNpSVE0dHlTOCs4a1RBTkJna3Foa2lHOXcwQkFRc0ZBREJoDQpNUXN3Q1FZRFZRUUdFd0pWVXpFVk1CTUdBMVVFQ2hNTVJHbG5hVU5sY25RZ1NXNWpNUmt3RndZRFZRUUxFeEIzDQpkM2N1WkdsbmFXTmxjblF1WTI5dE1TQXdIZ1lEVlFRREV4ZEVhV2RwUTJWeWRDQkhiRzlpWVd3Z1VtOXZkQ0JEDQpRVEFlRncweE16QXpNRGd4TWpBd01EQmFGdzB5TXpBek1EZ3hNakF3TURCYU1FMHhDekFKQmdOVkJBWVRBbFZUDQpNUlV3RXdZRFZRUUtFd3hFYVdkcFEyVnlkQ0JKYm1NeEp6QWxCZ05WQkFNVEhrUnBaMmxEWlhKMElGTklRVElnDQpVMlZqZFhKbElGTmxjblpsY2lC
    ```
-   non simile a questa:
+   Non simile a questa:
 
    ```
    LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tDQpNSUlFbERDQ0EzeWdBd0lCQWdJUUFmMmo2MjdL
@@ -156,7 +158,7 @@ La seguente tabella elenca i parametri configurabili di {{site.data.keyword.bloc
 | `Helm release name`| Il nome della tua release di helm. Deve iniziare con una lettera minuscola e terminare con un qualsiasi carattere alfanumerico, deve contenere solo trattini e caratteri alfanumerici minuscoli. Devi utilizzare un nome della release Helm univoco ogni volta che tenti di installare un componente. **Importante:** questo valore deve corrispondere a quello utilizzato per generare il 'nome host del servizio' per il campo "hosts" nel tuo [file del segreto JSON.](/docs/services/blockchain/howto/orderer_deploy_icp.html#icp-orderer-deploy-config-file) | nessuno | sì  |
 | `Target namespace`| Scegli lo spazio dei nomi Kubernetes per installare il grafico Helm. | nessuno | sì |
 | `Target namespace policies`| Visualizza le politiche di sicurezza del pod dello spazio dei nomi scelto, che devono includere una politica **`ibm-privileged-psp`**. Altrimenti, [associa una politica di sicurezza del pod](/docs/services/blockchain?topic=blockchain-icp-setup#icp-setup-psp) al tuo spazio dei nomi. | nessuno | no |
-|**Configurazione globale**| Parametri che si applicano a tutti i componenti nel grafico Helm.|||
+|**Configurazione globale**| Parametri che si applicano a tutti i componenti nel grafico Helm|||
 | `Service account name`| Immetti il nome dell'[account del servizio ![Icona link esterno](../images/external_link.svg "Icona link esterno")](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/) che utilizzerai per eseguire il pod. | valore predefinito | no |
 
 #### Parametri di configurazione dell'ordinante

@@ -4,6 +4,8 @@ copyright:
   years: 2017, 2019
 lastupdated: "2019-04-23"
 
+keywords: command line, peer, operate peers, peer TLS certificate, IBM Cloud
+
 subcollection: blockchain
 
 ---
@@ -177,10 +179,9 @@ Node SDK 버전 1.4.0을 사용하는 것이 좋습니다.
 피어는 내부에 피어 관리자의 signCert와 함께 배치됩니다. 이를 통해 피어 관리자의 인증서와 MSP 폴더를 사용하여 피어를 운영할 수 있습니다.
 
 [피어 관리자를 등록](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-enroll-admin)할 때 작성한 인증서를 찾으십시오. 예제 명령을 사용한 경우 `$HOME/fabric-ca-client/peer-admin`에서 피어 관리자 MSL 폴더를 찾을 수 있습니다.
-  - MSP 폴더에서 signCert(공용 키)과 개인 키를 사용하여 SDK로 피어 관리자 컨텍스트를 빌드할 수 있습니다. 다음 위치에서 해당 키를 찾을 수 있습니다.
+  - MSP 폴더에서 signCert 및 개인 키를 사용하여 SDK로 피어 관리자 컨텍스트를 빌드할 수 있습니다. 다음 위치에서 해당 키를 찾을 수 있습니다.
     - `$HOME/fabric-ca-client/peer-admin/msp/signcerts`의 **signcerts** 폴더에서 signCert를 찾을 수 있습니다.
-    - 개인 키는 **키 저장소:** 폴더(`$HOME/fabric-ca-client/peer-admin/msp/keystore`)에 있습니다.
-    공용 및 개인 키만을 사용하여 사용자 컨텍스트를 작성하고 SDK를 작동하는 방법의 예를 [애플리케이션 개발 튜토리얼의 이 섹션](/docs/services/blockchain/v10_application.html#dev-app-enroll-panel)에서 찾을 수 있습니다.
+    - 개인 키는 **키 저장소:** 폴더(`$HOME/fabric-ca-client/peer-admin/msp/keystore`)에 있습니다. 서명 인증서 및 개인 키만을 사용하여 사용자 컨텍스트를 형성하고 SDK를 작동하는 방법의 예를 [애플리케이션 개발 튜토리얼의 이 섹션](/docs/services/blockchain/v10_application.html#dev-app-enroll-panel)에서 찾을 수 있습니다.
 
 또한 SDK를 사용하여 스타터 플랜 또는 엔터프라이즈 플랜의 CA 엔드포인트 정보와 [피어 관리자 사용자 이름 및 비밀번호](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-register-admin)를 사용하여 피어 관리자 signCert 및 개인 키를 생성할 수 있습니다.
 
@@ -252,7 +253,7 @@ Fabric `peer` client를 사용하여 명령행에서 피어를 운영할 수도 
 ### Fabric 피어 클라이언트 다운로드
 {: #ibp-peer-operate-download-fabric-client}
 
-피어 클라이언트를 확보하는 가장 쉬운 방법은 Hyperledger에서 모든 Fabric 도구 바이너리를 다운로드하는 것입니다. 명령행을 사용하여 바이너리를 다운로드할 디렉토리로 이동하고 아래 명령을 실행하여 페치하십시오. [Curl ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/prereqs.html#install-curl "Curl")을 설치하지 않은 경우 먼저 설치해야 합니다.
+피어 클라이언트를 가져오는 가장 쉬운 방법은 Hyperledger에서 모든 Fabric 도구 바이너리를 다운로드하는 것입니다. 명령행을 사용하여 바이너리를 다운로드할 디렉토리로 이동하고 아래 명령을 실행하여 페치하십시오. [Curl ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/prereqs.html#install-curl "Curl")을 설치하지 않은 경우 먼저 설치해야 합니다.
 
 ```
 curl -sSL http://bit.ly/2ysbOFE | bash -s 1.4.0 1.4.0 -d -s
@@ -287,7 +288,7 @@ export FABRIC_CFG_PATH=$HOME/config
 
 
 ### 로컬 시스템에서 인증서 관리
-{: #manage-certs}
+{: #peer-operate-manage-certs}
 
 피어 관리자 MSP 폴더가 생성되는 디렉토리를 전환하십시오. 이 문서에 있는 예제 단계를 따른 경우 아래와 유사한 디렉토리에서 MSP 폴더를 찾을 수 있습니다.
 

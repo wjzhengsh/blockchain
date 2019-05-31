@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-04-03"
+lastupdated: "2019-05-16"
+
+keywords: TLS, TLS certificates, client applications, digital certificates, certificate authority, intermediate certificate, client-side certificate, generate certificates, manage certificates
 
 subcollection: blockchain
 
@@ -44,7 +46,7 @@ Puoi utilizzare questo pannello per registrare una nuova identità peer se stai 
 
 ### Generazione di certificati lato client (iscrizione)
 {: #managing-certificates-enrollment}
-Prima di poter connettere un client di terze parti a {{site.data.keyword.blockchainfull_notm}} Platform, devi essere autenticato. Il processo di generazione dei certificati necessari, della tua chiave privata e del tuo certificato pubblico (noto anche come certificato di iscrizione o signCert) viene denominato iscrizione. Questi certificati saranno necessari ogni volta che il tuo client comunica con la rete. Qualsiasi client che invia chiamate alla rete deve firmare i payload utilizzando una chiave privata e allegare un certificato x509 correttamente firmato.
+Prima di poter connettere un client di terze parti a {{site.data.keyword.blockchainfull_notm}} Platform, devi essere autenticato. Il processo di generazione dei certificati necessari, della tua chiave privata e del tuo certificato (noto anche come certificato di iscrizione o signCert) viene denominato iscrizione. Questi certificati saranno necessari ogni volta che il tuo client comunica con la rete. Qualsiasi client che invia chiamate alla rete deve firmare i payload utilizzando una chiave privata e allegare un certificato x509 correttamente firmato.
 
 Consulta l'[esercitazione sullo sviluppo di applicazioni](/docs/services/blockchain/v10_application.html#dev-app) per informazioni su come effettuare l'[iscrizione utilizzando l'SDK Node Fabric](/docs/services/blockchain/v10_application.html#dev-app-enroll-sdk). L'iscrizione con l'SDK genera 3 elementi separati: una chiave privata, signCert e una chiave pubblica che è stata utilizzata per creare il signCert.
 
@@ -172,7 +174,7 @@ Le cartelle MSP all'interno di Fabric hanno una struttura definita. Quando effet
 
 - **cacerts:** questa cartella contiene il certificato root della CA root della tua rete.
 - **intermediatecerts:** questi sono i certificati delle CA intermedie della tua rete. Queste CA intermedie sono collegate alla CA root e formano una catena di attendibilità. Ogni organizzazione del piano Enterprise ha due CA intermedie per il failover e l'alta disponibilità.
-- **signcerts:** questa cartella contiene il tuo certificato di firma pubblico, chiamato anche signCert o certificato di iscrizione. Questo certificato viene allegato alle chiamate in rete (ad esempio, un richiamo del chaincode) quando fai riferimento alla tua directory MSP dalla riga di comando o crei un oggetto di contesto utente con gli SDK. Puoi caricare questo certificato sulla piattaforma se vuoi gestire una rete dall'SDK o dalla riga di comando.
+- **signcerts:** questa cartella contiene il tuo certificato di firma, chiamato anche signCert o certificato di iscrizione. Questo certificato viene allegato alle chiamate in rete (ad esempio, un richiamo del chaincode) quando fai riferimento alla tua directory MSP dalla riga di comando o crei un oggetto di contesto utente con gli SDK. Puoi caricare questo certificato sulla piattaforma se vuoi gestire una rete dall'SDK o dalla riga di comando.
 - **keystore:** questa cartella contiene la tua chiave privata. Questa chiave viene utilizzata per firmare le tue chiamate alla rete quando fai riferimento alla tua directory MSP dalla riga di comando o crei un oggetto di contesto utente con gli SDK. Tieni questa chiave al sicuro per proteggere la tua rete e i tuoi dati.
 
 Puoi anche creare una cartella MSP a cui il client CA Fabric può fare riferimento utilizzando le API Swagger e il Monitoraggio della rete.

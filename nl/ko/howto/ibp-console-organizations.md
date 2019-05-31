@@ -2,7 +2,9 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-04-03"
+lastupdated: "2019-05-16"
+
+keywords: organizations, MSPs, create an MSP, MSP JSON file, consortium, system channel
 
 subcollection: blockchain
 
@@ -36,8 +38,7 @@ subcollection: blockchain
 조직은 구성원에게 올바른 인증 정보를 제공하고 구성원으로 하여금 네트워크의 참가자가 되도록 할 수 있습니다. 그러면
 참가자가 블록체인 노드를 작동하여 클라이언트 애플리케이션에서 트랜잭션을 제출합니다.
 
-컨소시엄의 각 조직은 루트 CA로 알려진 자체 인증 기관을 운영해야 합니다. 이 인증 기관 또는 중간 인증 기관은
-조직에 속하는 모든 ID를 작성하고 각 ID에 공개 및 개인 키를 발행합니다. 이러한 키는 인증 기관에 의해 서명되고
+컨소시엄의 각 조직은 루트 CA로 알려진 자체 인증 기관을 운영해야 합니다. 이 인증 기관(또는 중간 CA)은 조직에 속하는 모든 ID를 작성하고 각 ID에 설명 인증서 및 개인 키를 발행합니다. 이러한 키는 인증 기관에 의해 서명되고
 조직의 구성원이 조치에 서명 및 확인하는 데 사용합니다. 컨소시엄에 가입하면
 다른 조직에서 사용자의 CA 서명을 인식하고 피어 및 애플리케이션이 올바른 참가자임을 확인할 수 있습니다. Hyperledger Fabric의
 멤버십에 대한 자세한 정보는 Fabric 문서에서 [멤버십 개념 주제 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/membership/membership.html "멤버십")를
@@ -79,21 +80,20 @@ MSP 내의 관리자 인증서가 새 노드 내에 배치됩니다. 그런 다�
 - 또한 **루트 인증 기관 세부사항** 섹션을 사용하여 조직 관리자 인증서 중 하나를 생성할 수 있습니다. 조직
 MSP 정의를 작성하기 전에 루트 CA에 조직 및 노드 관리자를 등록해야 합니다. 그런 다음 이러한 ID를 사용하여 네트워크를 작동시키려면 다음 단계를 완료해야 합니다.
 
-  1. 각 관리자 ID에 대해 공개 및 개인 키 쌍을 작성하십시오.
-  2. MSP 정의 내의 각 관리자 ID의 공개 키(인증서)를 제공하십시오.
+  1. 각 관리자 ID에 대해 서명 인증서 및 개인 키를 작성하십시오.
+  2. MSP 정의 내 각 관리자 ID의 서명 인증서를 제공하십시오.
   3. 콘솔 지갑에 ID를 추가하십시오. 콘솔에 의해 작성된 노드 또는 채널은 MSP의
-인증서를 사용하여 누가 유효한 관리자인지 확인합니다. 결과적으로
-MSP에 관리자 인증서를 추가하는 데 사용한 것과 동일한 공개 개인 키 쌍이 콘솔 지갑에 저장됩니다.
+인증서를 사용하여 누가 유효한 관리자인지 확인합니다. 결과적으로 MSP에 관리자 인증서를 추가하는 데 사용한 것과 동일한 서명 인증서 및 개인 키 쌍이 콘솔 지갑에 저장되어야 합니다.
 
   **MSP 정의 작성** 패널을 사용하여 관리자 ID 중 하나에 대해 해당 조치를 완료할 수 있습니다. 루트 CA를
 선택한 다음 **조직 관리자 인증서 생성** 섹션의 다음 단계를 완료하십시오.
   1. 루트 CA에 등록된 관리자 ID의 등록 ID와 등록 시크릿을 입력하십시오. 등록 ID와 등록 시크릿을 입력한 다음 콘솔 지갑에 ID를 표시할 이름을 선택하십시오.
-  2. **생성**을 클릭하십시오. 그러면 새 공개 및 개인 키 세트가 생성되고 자동으로 키가 콘솔 지갑에 추가됩니다. 그러면
+  2. **생성**을 클릭하십시오. 그러면 인증서 및 개인 키가 생성되고 자동으로 키가 콘솔 지갑에 추가됩니다. 그러면
 사용자가 이 패널에서 선택한 이름을 사용하여 지갑에서 관리자 ID를 찾을 수 있습니다. 이러한 키는 브라우저 로컬 스토리지에만
 저장되므로 브라우저를 변경하면 콘솔 지갑에서 찾을 수 없습니다. 원래 브라우저에서 ID를 내보내고 새 브라우저의 콘솔 지갑으로 가져와야 합니다.
   3. 그런 다음 **내보내기**를 클릭하여 키 쌍을 파일 시스템으로 다운로드하여 보안을 설정하십시오.
 
-- 사이드 패널의 **관리자(선택사항)** 섹션에는 관리자의 공개 키가 있습니다. **조직 관리자 인증서 생성** 섹션을 사용하여 생성된 인증서는 **관리자 인증서** 필드의 첫 번째 행에서 찾을 수 있습니다. 다중 관리자 ID를 사용하여 네트워크를
+- 사이드 패널의 **관리자(선택사항)** 섹션에는 관리자의 서명 인증서 키가 포함되어 있습니다. **조직 관리자 인증서 생성** 섹션을 사용하여 생성된 인증서는 **관리자 인증서** 필드의 첫 번째 행에서 찾을 수 있습니다. 다중 관리자 ID를 사용하여 네트워크를
 운영하려면 추가 노드 또는 조직 관리자의 인증서를 **관리자 인증서** 필드로 붙여넣으십시오.
 
 관리자 인증서가 MSP 정의를 사용하여 노드 및 채널로 전달되므로 각 노드 및 조직 관리자 인증서가
@@ -109,7 +109,21 @@ MSP 정의에 제공된 관리자 인증서를 사용하여 콘솔 지갑에 내
 
 **이 옵션은 인증서가 블록체인 ID 관리에 사용되는 방법에 익숙한 고급 사용자를 대상으로 합니다.**
 
-{{site.data.keyword.IBM_notm}}에서 호스팅되지 않는 **외부 CA**에서 피어 또는 순서 지정자의 인증서를 사용하려는 경우 피어 또는 순서 지정자 조직 MSP 정의를 표시하는 MSP 정의 JSON 파일을 빌드해야 합니다. 다음 형식을 사용하여 JSON 파일을 작성하십시오. 
+{{site.data.keyword.IBM_notm}}에서 호스팅되지 않는 **외부 CA**에서 피어 또는 순서 지정 서비스의 인증서를 사용하려는 경우 피어 또는 순서 지정 서비스 조직 MSP 정의를 표시하는 MSP 정의 JSON 파일을 빌드해야 합니다. 
+
+모든 인증서는 base64 형식으로 인코딩되어야 합니다.
+{:important}
+
+로컬 시스템에서 다음 명령을 실행하여 `PEM` 형식으로 된 인증서 파일 `<cert.pem>`의 컨텐츠를 base64 문자열로 변환할 수 있습니다.
+
+```
+export FLAG=$(if [ "$(uname -s)" == "Linux" ]; then echo "-w 0"; else echo "-b 0"; fi)
+cat <cert.pem> | base64 $FLAG
+```
+{:codeblock}
+
+
+다음 형식을 사용하여 JSON 파일을 작성하십시오.
 
 ```
 {
@@ -137,18 +151,18 @@ MSP 정의에 제공된 관리자 인증서를 사용하여 콘솔 지갑에 내
 
 - **organization_name**: 콘솔에서 이 MSP 정의를 식별하는 데 사용할 이름을 지정합니다.
 - **organization_id**: 콘솔에서 이 MSP를 내부적으로 표시하는 데 사용할 ID를 지정합니다.
-- **root_certs**: (선택사항) `base64` 형식으로 된 외부 CA에서 하나 이상의 루트 인증서가 포함된 배열을 붙여넣습니다. CA 루트 인증서 또는 중간 CA 인증서를 제공해야 하며, 둘 다 제공할 수도 있습니다. 
-- **intermediate_certs**: (선택사항) `base64` 형식으로 된 외부 중간 CA에서 하나 이상의 인증서가 포함된 배열을 붙여넣습니다. CA 루트 인증서 또는 중간 CA 인증서를 제공해야 하며, 둘 다 제공할 수도 있습니다. 
-- **admins**: `base64` 형식으로 된 조직 관리자의 서명 인증서를 붙여넣습니다. 
-- **tls_root_certs**: (선택사항) `base64` 형식으로 된 외부 TLS CA에서 하나 이상의 루트 인증서가 포함된 배열을 붙여넣습니다. 외부 TLS CA 루트 인증서 또는 외부 중간 TLS CA 인증서를 제공해야 하며, 둘 다 제공할 수도 있습니다. 
-- **tls_intermediate_certs**: (선택사항) `base64` 형식으로 된 중간 TLS CA에서 하나 이상의 인증서가 포함된 배열을 붙여넣습니다. 외부 TLS CA 루트 인증서 또는 외부 중간 TLS CA 인증서를 제공해야 하며, 둘 다 제공할 수도 있습니다.   
+- **root_certs**: (선택사항) `base64` 형식으로 된 외부 CA에서 하나 이상의 루트 인증서가 포함된 배열을 붙여넣습니다. CA 루트 인증서 또는 중간 CA 인증서를 제공해야 하며, 둘 다 제공할 수도 있습니다.
+- **intermediate_certs**: (선택사항) `base64` 형식으로 된 외부 중간 CA에서 하나 이상의 인증서가 포함된 배열을 붙여넣습니다. CA 루트 인증서 또는 중간 CA 인증서를 제공해야 하며, 둘 다 제공할 수도 있습니다.
+- **admins**: `base64` 형식으로 된 조직 관리자의 서명 인증서에 붙여넣습니다. 
+- **tls_root_certs**: (선택사항) `base64` 형식으로 된 외부 TLS CA에서 하나 이상의 루트 인증서가 포함된 배열을 붙여넣습니다. 외부 TLS CA 루트 인증서 또는 외부 중간 TLS CA 인증서를 제공해야 하며, 둘 다 제공할 수도 있습니다.
+- **tls_intermediate_certs**: (선택사항) `base64` 형식으로 된 중간 TLS CA에서 하나 이상의 인증서가 포함된 배열을 붙여넣습니다. 외부 TLS CA 루트 인증서 또는 외부 중간 TLS CA 인증서를 제공해야 하며, 둘 다 제공할 수도 있습니다.  
 
-다음 추가 필드가 MSP 정의에도 사용 가능하지만 필수는 아닙니다. 
-- **organizational_unit_identifiers**: 이 MSP의 유효한 멤버가 X.509 인증서에 포함되어야 하는 OU(Organizational Units)의 목록입니다. 이는 다중 조직이 동일한 신뢰 루트 및 중간 CA를 활용할 때 사용되는 선택적 구성 매개변수이고, 다중 조직은 멤버를 위해 OU 필드를 예약했습니다. 조직은 종종 다중 조직 단위로 구분되고 각 조직 단위에는 일련의 책임이 있습니다. 예를 들어, ORG1 조직에는 개별적인 비즈니스 부문을 반영하도록 ORG1-MANUFACTURING 및 ORG1-DISTRIBUTION OU가 모두 포함될 수 있습니다. CA에서 X.509 인증서를 발행하면 인증서의 OU 필드는 ID가 속하는 비즈니스 부문을 지정합니다. 자세한 정보는 [ID 분류![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘") ](https://hyperledger-fabric.readthedocs.io/en/latest/msp.html#identity-classification "ID 분류")에서 Fabric 문서를 참조하십시오.   
-- **fabric_node_OUs**: ID 분류를 사용으로 설정하는 패브릭 특정 OU입니다. `NodeOUs`에는 OU를 기반으로 클라이언트, 피어 및 순서 지정자를 구분하는 방법에 대한 정보가 포함되어 있습니다. 사용을 true로 설정하여 검사가 실행되면 MSP는 ID 유형이 `client`, `peer` 또는 `orderer`인 경우 ID가 유효하다고 간주합니다. ID는 이러한 특수 OU 중 하나여야 합니다. [Fabric Service Discovery 문서 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/latest/discovery-cli.html#configuration-query)에서 MSP의 `fabric_node_OU` 지정 방법에 대한 예는 이 주제를 참조하십시오. 
-- **revocation_list**: 더 이상 유효하지 않은 인증서 목록입니다. X.509 기반 ID의 경우 이 ID는 SKI(Subject Key Identifier) 및 AKI(Authority Access Identifier)로 알려진 문자열의 쌍이며, 인증서가 취소되지 않았는지 확인하기 위해 X.509 인증서를 사용할 때마다 선택됩니다. [인증서 취소 목록 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/users-guide.html?highlight=revocation%20list#revoking-a-certificate-or-identity "인증서 또는 ID 취소")에 대한 자세한 정보는 Fabric 문서의 이 주제를 참조하십시오. 
+다음 추가 필드가 MSP 정의에도 사용 가능하지만 필수는 아닙니다.
+- **organizational_unit_identifiers**: 이 MSP의 유효한 멤버가 X.509 인증서에 포함되어야 하는 OU(Organizational Units)의 목록입니다. 이는 다중 조직이 동일한 신뢰 루트 및 중간 CA를 활용할 때 사용되는 선택적 구성 매개변수이고, 다중 조직은 멤버를 위해 OU 필드를 예약했습니다. 조직은 종종 다중 조직 단위로 구분되고 각 조직 단위에는 일련의 책임이 있습니다. 예를 들어, ORG1 조직에는 개별적인 비즈니스 부문을 반영하도록 ORG1-MANUFACTURING 및 ORG1-DISTRIBUTION OU가 모두 포함될 수 있습니다. CA에서 X.509 인증서를 발행하면 인증서의 OU 필드는 ID가 속하는 비즈니스 부문을 지정합니다. 자세한 정보는 [ID 분류 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/latest/msp.html#identity-classification "ID 분류")의 Fabric 문서에서 이 주제를 참조하십시오.   
+- **fabric_node_OUs**: ID 분류를 사용으로 설정하는 패브릭 특정 OU입니다. `NodeOUs`에는 OU를 기반으로 클라이언트, 피어 및 순서 지정자를 구분하는 방법에 대한 정보가 포함되어 있습니다. 사용을 true로 설정하여 검사가 실행되면 MSP는 ID 유형이 `client`, `peer` 또는 `orderer`인 경우 ID가 유효하다고 간주합니다. ID는 이러한 특수 OU 중 하나여야 합니다. Fabric Service Discovery 문서에서 [MSP에서 `fabric_node_OU`를 지정하는 방법 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/latest/discovery-cli.html#configuration-query "구성 조회")에 대한 예는 이 주제를 참조하십시오. 
+- **revocation_list**: 더 이상 유효하지 않은 인증서 목록입니다. X.509 기반 ID의 경우 이 ID는 SKI(Subject Key Identifier) 및 AKI(Authority Access Identifier)로 알려진 문자열의 쌍이며, 인증서가 취소되지 않았는지 확인하기 위해 X.509 인증서를 사용할 때마다 선택됩니다. [인증서 취소 목록 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/users-guide.html?highlight=revocation%20list#revoking-a-certificate-or-identity "인증서 또는 ID 취소")에 대한 자세한 정보는 Fabric 문서의 이 주제를 참조하십시오.
 
-예를 들어, JSON 파일은 다음과 유사합니다. 
+예를 들어, JSON 파일은 다음과 유사합니다.
 
 ```
 {
@@ -168,20 +182,9 @@ MSP 정의에 제공된 관리자 인증서를 사용하여 콘솔 지갑에 내
 ```
 {:codeblock}
 
-모든 인증서는 base64 형식으로 인코딩되어야 합니다.
-{:important}
+이 정의를 MSP 정의 `JSON` 파일로 저장하십시오.  
 
-로컬 시스템에서 다음 명령을 실행하여 `PEM` 형식으로 된 인증서 파일 `<cert.pem>`의 컨텐츠를 base64 문자열로 변환할 수 있습니다. 
-
-```
-export FLAG=$(if [ "$(uname -s)" == "Linux" ]; then echo "-w 0"; else echo "-b 0"; fi)
-cat <cert.pem> | base64 $FLAG
-```
-{:codeblock}
-
-이 정의를 `JSON` 파일로 저장하십시오.   
-
-외부 CA의 인증서를 사용하는 피어 또는 순서 지정자 노드의 조직을 정의하는 MSP 정의를 구성했습니다. 이제 [피어 또는 순서 지정자로 외부 CA의 인증서를 사용하는 방법](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-third-party-ca)에 설명된 지시사항으로 돌아갈 수 있습니다.
+피어 또는 순서 지정 서비스 노드의 조직을 정의하고 외부 CA의 인증서를 사용하는 MSP 정의를 구성했습니다. 이제 [피어 또는 순서 지정자로 외부 CA의 인증서를 사용하는 방법](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-third-party-ca)에 설명된 지시사항으로 돌아갈 수 있습니다.
 
 ## MSP 가져오기
 {: #console-organizations-import-msp}

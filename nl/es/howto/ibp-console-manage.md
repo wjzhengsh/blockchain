@@ -2,7 +2,9 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-04-23"
+lastupdated: "2019-05-16"
+
+keywords: IBM Blockchain Platform console, administer a console, add users, remove users, modify a user's role, install patches, Kubernetes cluster expiration
 
 subcollection: blockchain
 
@@ -29,29 +31,27 @@ Hay varias acciones que puede realizar para gestionar el comportamiento de la co
 ## Adición y eliminación de usuarios de la consola
 {: #ibp-console-manage-console-add-remove}
 
-El proceso de autorización de la consola cambiará durante el programa beta. Si tiene una instancia de servicio de blockchain existente que haya utilizado la autenticación de ID de {{site.data.keyword.IBM_notm}} original, ya no podrá ver los usuarios listados en el separador **Usuarios**. Debe otorgarles acceso a la consola utilizando el proceso de IAM que se describe a continuación.
-{:important}
-
-Cada usuario que acceda a la consola debe tener asignada una política de acceso con un rol de usuario de {{site.data.keyword.cloud_notm}} Identity and Access Management (IAM) definido. La política determina qué acciones puede realizar el usuario dentro de la consola. La consola de {{site.data.keyword.blockchainfull}} Platform se suministra con la dirección de correo electrónico del propietario de {{site.data.keyword.cloud_notm}} como administrador de la consola.  De forma predeterminada, se otorga a este usuario de {{site.data.keyword.cloud_notm}} el rol de `Gestor` para el servicio Blockchain Platform 2.0 en IAM. A continuación, el administrador de la consola puede otorgar acceso a la consola a otros usuarios mediante la interfaz de usuario de IAM. Para obtener más información sobre acerca de IAM, consulte [¿Qué es IAM? ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo") ](/docs/iam?topic=iam-iamoverview#iamoverview "¿Qué es IAM?").  
+Cada usuario que acceda a la consola debe tener asignada una política de acceso con un rol de usuario de {{site.data.keyword.cloud_notm}} Identity and Access Management (IAM) definido. La política determina qué acciones puede realizar el usuario dentro de la consola. La consola de {{site.data.keyword.blockchainfull}} Platform se suministra con la dirección de correo electrónico del propietario de {{site.data.keyword.cloud_notm}} como administrador de la consola.  De forma predeterminada, se otorga a este usuario de {{site.data.keyword.cloud_notm}} el rol de **Gestor** para el servicio {{site.data.keyword.blockchainfull}} Platform 2.0 en IAM. A continuación, el administrador de la consola puede otorgar acceso a la consola a otros usuarios mediante la interfaz de usuario de IAM. Para obtener más información sobre acerca de IAM, consulte [¿Qué es IAM? ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo") ](/docs/iam?topic=iam-iamoverview#iamoverview "¿Qué es IAM?").  
 
 Cuando [utilice IAM para invitar usuarios ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](/docs/iam?topic=iam-iamuserinv#iamuserinv "Utilizar IAM para invitar usuarios"), necesitará completar los pasos siguientes para configurar sus roles y el acceso a la consola:
  1. En la barra de menús, pulse **Gestionar** > **Acceso (IAM)** y, a continuación, seleccione **Usuarios**.
  2. Pulse **Invitar usuario**.
  3. Escriba la dirección de correo electrónico del usuario o los usuarios.
- 4. En la lista desplegable `Servicios`, seleccione `Blockchain Platform 2.0`.
- 5. Desplácese hacia abajo hasta `Seleccionar roles`.
- 6. En `Asignar roles de acceso al servicio`, elija un rol para el usuario, que puede ser `Gestor`, `Escritor` y `Lector`.
+ 4. En la lista desplegable **Servicios**, seleccione **Blockchain Platform 2.0**.
+ 5. Desplácese hacia abajo hasta **Seleccionar roles**.
+ 6. En **Asignar roles de acceso al servicio**, elija un rol para el usuario, que puede ser **Gestor**, **Escritor** y **Lector**.
  7. Pulse **Invitar a usuarios**.
 
 | Rol | Funciones |
 |--------|----------|
-| Gestor | Como Gestor, tiene permisos más allá del rol Escritor. Puede hacer todo lo que puede hacer un Lector y un Escritor, además de: <ul><li>Añadir nuevos componentes.</li><li>Suprimir componentes suministrados.</li><li>Cambiar niveles de registro de la consola.</li></ul> |
-| Escritor | Como Escritor, tiene permisos más allá del rol Lector, incluyendo: <ul><li>Importar componentes.</li><li>Eliminar componentes importados.</li><li>Registrar usuarios en una CA.</li></ul>  |
-| Lector | Como lector, puede realizar acciones de solo lectura, incluyendo: <ul><li>Ver la interfaz de usuario de la consola.</li><li>Ver el registro de la consola.</li><li>Exportar componentes.</li></ul> | |
+| Gestor | Como Gestor, tiene permisos más allá del rol Escritor. Puede hacer todo lo que puede hacer un Lector y un Escritor, además de: <ul><li>Suministrar nuevos componentes utilizando la consola o las API.</li><li>Suprimir componentes suministrados utilizando la consola o las API.</li><li>Cambiar los niveles de registro de la consola utilizando la consola o las API.</li><li>Reiniciar la consola utilizando una API.</li></ul> |
+| Escritor | Como Escritor, tiene permisos más allá del rol Lector, incluyendo: <ul><li>Importar componentes utilizando la consola o las API.</li><li>Eliminar componentes importados utilizando la consola o las API.</li><li>Registrar usuarios en una CA.</li><li> Añadir o eliminar notificaciones utilizando la consola o las API.</li></ul>  |
+| Lector | Como lector, puede realizar acciones de solo lectura, incluyendo: <ul><li>Ver la interfaz de usuario de la consola.</li><li>Ver el registro de la consola.</li><li>Exportar componentes.</li><li>Emitir cualquier API GET.</li></ul> | |
 
- Los permisos son acumulativos. Si selecciona un rol `Gestor`, el usuario también podrá realizar todas las acciones de `Escritor` y de `Lector` sin que necesite marcar dichos roles de forma adicional.   Del mismo modo, un usuario con el rol `Escritor` podrá realizar todas las acciones del rol `Lector`.  Para el acceso a la consola, solo necesita seleccionar un rol en `Roles de acceso al servicio`; no es necesario que seleccione nada en `Roles de acceso a la plataforma`.
+ Los permisos son acumulativos. Si selecciona un rol **Gestor**, el usuario también podrá realizar todas las acciones de **Escritor** y de **Lector** sin que necesite marcar dichos roles de forma adicional.   Del mismo modo, un usuario con el rol `Escritor` podrá realizar todas las acciones del rol **Lector**. Para el acceso a la consola, solo necesita seleccionar un rol en **Roles de acceso al servicio**; no es necesario que seleccione nada en **Roles de acceso a la plataforma**. Marque el rol correspondiente en **Asignar rol de acceso a la plataforma** cuando sea importante que la instancia de servicio sea visible en el panel de control de {{site.data.keyword.cloud_notm}} del usuario invitado.
 
 ![Actualizar versión de Kubernetes](../images/AddICPUser.gif)
+
 
 Tras añadir nuevos usuarios a la consola, es posible que los usuarios no puedan ver todos los nodos, canales o código de encadenamiento que despliegan otros usuarios. Para trabajar con estos componentes, cada usuario necesita importar las identidades asociadas en su propia cartera de consola. Para obtener más información, consulte [Almacenamiento de identidades en la cartera de la consola](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-wallet).
 {:important}
@@ -60,9 +60,9 @@ Si necesita modificar el rol de un usuario:
  1. En la barra de menús, pulse **Gestionar** > **Acceso (IAM)** y, a continuación, seleccione **Usuarios**.
  2. Pulse el menú Acciones situado junto al usuario que desee modificar y seleccione **Asignar acceso**.
  3. Seleccione el mosaico **Asignar acceso a recursos**.
- 4. En la lista desplegable `Servicios`, seleccione `Blockchain Platform 2.0`.
- 5. Desplácese hacia abajo hasta `Seleccionar roles`.
- 6. En `Asignar roles de acceso al servicio`, elija un rol para el usuario, que puede ser `Gestor`, `Escritor` y `Lector`.
+ 4. En la lista desplegable **Servicios**, seleccione **Blockchain Platform 2.0**.
+ 5. Desplácese hacia abajo hasta **Seleccionar roles**.
+ 6. En **Asignar roles de acceso al servicio**, elija un rol para el usuario, que puede ser **Gestor**, **Escritor** y **Lector**.
  7. Pulse **Asignar**.
 
 Cuando necesite eliminar el acceso a la consola de un usuario, siga las instrucciones del tema [Eliminación de usuarios de IAM ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](/docs/iam?topic=iam-remove#remove "Eliminación de usuarios").
@@ -74,9 +74,9 @@ Cuando establezca políticas de {{site.data.keyword.cloud_notm}} IAM, puede asig
 
 <dl>
 <dt>Usuarios individuales</dt>
-<dd>Es posible que un usuario específico necesite más o menos permisos que el resto de su equipo. Puede personalizar los permisos de forma individual de forma que cada persona tenga los permisos que necesita para realizar sus tareas. Puede asignar más de un rol de {{site.data.keyword.Bluemix_notm}} IAM a cada usuario.</dd>
+<dd>Es posible que un usuario específico necesite más o menos permisos que el resto de su equipo. Puede personalizar los permisos de forma individual de forma que cada persona tenga los permisos que necesita para realizar sus tareas. Puede asignar más de un rol de {{site.data.keyword.cloud_notm}} IAM a cada usuario.</dd>
 <dt>Varios usuarios de un grupo de acceso</dt>
-<dd>Puede crear un grupo de usuarios y luego asignar permisos a dicho grupo. Por ejemplo, puede agrupar a todos los jefes de equipo y asignar acceso de administrador al grupo. A continuación, puede agrupar todos los desarrolladores y asignar solo acceso de escritura a dicho grupo. Puede asignar más de un rol de {{site.data.keyword.Bluemix_notm}} IAM a cada grupo de acceso. Cuando asigne permisos a un grupo, cualquier usuario que se añada o se elimine de dicho grupo se verá afectado. Si añade un usuario al grupo, también recibe el acceso adicional. Si se elimina, su acceso se revoca.</dd>
+<dd>Puede crear un grupo de usuarios y luego asignar permisos a dicho grupo. Por ejemplo, puede agrupar a todos los jefes de equipo y asignar acceso de administrador al grupo. A continuación, puede agrupar todos los desarrolladores y asignar solo acceso de escritura a dicho grupo. Puede asignar más de un rol de {{site.data.keyword.cloud_notm}} IAM a cada grupo de acceso. Cuando asigne permisos a un grupo, cualquier usuario que se añada o se elimine de dicho grupo se verá afectado. Si añade un usuario al grupo, también recibe el acceso adicional. Si se elimina, su acceso se revoca.</dd>
 </dl>
 
 Los usuarios que añada en IAM son simplemente direcciones de correo electrónico de usuarios que pueden iniciar una sesión en la consola. No tienen ninguna relación con las **Organizaciones disponibles** en el separador Organizaciones ni con las identidades almacenadas por la cartera de la consola.
@@ -118,7 +118,7 @@ El servicio {{site.data.keyword.IBM_notm}} Kubernetes recopila los registros de 
 4. En el panel de navegación izquierdo, pulse **Pods** para ver la lista de los pods de nodo que ha desplegado.
 5. Pulse sobre un pod. Luego pulse **Ver registros** en el menú superior para abrir los registros del nodo. Sobre los registros, puede utilizar el menú desplegable que hay después de **Registros de** para ver los registros de los distintos contenedores del pod. Por ejemplo, el igual y la base de datos de estado (CouchDB, por ejemplo) se ejecutan en distintos contenedores y generan registros diferentes.
 
-De forma predeterminada, los registros de los nodos se recopilan localmente dentro del clúster. También puede utilizar el servicio Log Analysis de {{site.data.keyword.cloud_notm}} o un servicio de terceros para recopilar, almacenar y analizar los registros de la red. Para obtener más información, consulte [Registro y supervisión del servicio {{site.data.keyword.IBM_notm}} Kubernetes ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://console.cloud.ibm.com/docs/containers?topic=containers-health#health "Registro y supervisión del servicio {{site.data.keyword.IBM_notm}} Kubernetes"). Se recomienda aprovechar el servicio [{{site.data.keyword.cloud_notm}} LogDNA ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://cloud.ibm.com/docs/services/Log-Analysis-with-LogDNA?topic=LogDNA-kube#kube "Gestión de registros de clúster de Kubernetes con IBM Log Analysis con LogDNA"), que permite analizar fácilmente los registros en tiempo real.
+De forma predeterminada, los registros de los nodos se recopilan localmente dentro del clúster. También puede utilizar el servicio Log Analysis de {{site.data.keyword.cloud_notm}} o un servicio de terceros para recopilar, almacenar y analizar los registros de la red. Para obtener más información, consulte [Registro y supervisión del servicio {{site.data.keyword.IBM_notm}} Kubernetes ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://cloud.ibm.com/docs/containers?topic=containers-health#health "Registro y supervisión del servicio {{site.data.keyword.IBM_notm}} Kubernetes"). Se recomienda aprovechar el servicio [{{site.data.keyword.cloud_notm}} LogDNA ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://cloud.ibm.com/docs/services/Log-Analysis-with-LogDNA?topic=LogDNA-kube#kube "Gestión de registros de clúster de Kubernetes con IBM Log Analysis con LogDNA"), que permite analizar fácilmente los registros en tiempo real.
 
 ### Visualización de los registros de contenedor de contratos inteligentes
 {: #ibp-console-manage-console-container-logs}
@@ -129,7 +129,17 @@ Si detecta problemas con el contrato inteligente, puede consultar los registros 
 - Pulse el enlace `exec` en el panel de control para ejecutar exec sobre el pod. De forma predeterminada, apunta a un contenedor igual.
 - Cambie al contenedor `dind` seleccionándolo en la lista desplegable.
 - Ejecute el mandato `docker ps -a` para ver la lista de contenedores de código de encadenamiento.
-- Ejecute `docker logs <chaincode-container-ID>` replacing <chaincode-container-ID> con el ID del contenedor de código de encadenamiento.
+- Ejecute `docker logs <chaincode-container-ID>` sustituyendo `<chaincode-container-ID>` por el ID de su contenedor de código de encadenamiento.
+
+## Instalar parches para los nodos
+{: #ibp-console-manage-patch}
+
+Es posible que sea necesario actualizar con el tiempo las imágenes de docker subyacentes de IBM Hyperledger Fabric para los nodos de igual, CA y clasificador, por ejemplo, con actualizaciones de seguridad o a un nuevo release puntual de Fabric. El texto **Parche disponible** sobre el mosaico de un nodo es el indicador de que hay un parche disponible y se puede instalar en el nodo siempre que esté preparado. Estos parches son opcionales, pero recomendables.   
+
+Los parches se aplican a los nodos de uno en uno. Mientras se aplica un parche, el nodo no estará disponible para procesar solicitudes ni transacciones. Por lo tanto, para evitar cualquier interrupción del servicio, siempre que sea posible debe asegurarse de que haya otro nodo del mismo tiempo disponible para procesar solicitudes. La instalación de parches en un nodo tarda alrededor de un minuto en completarse y, cuando la actualización haya finalizado, el nodo estará listo para procesar solicitudes.
+{:note}
+
+Para aplicar un parche a un nodo, abra el mosaico del nodo y pulse el botón **Instalar parche**.
 
 ## Caducidad del clúster de Kubernetes
 {: #ibp-console-manage-console-cluster-expiration}

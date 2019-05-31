@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-04-23"
+lastupdated: "2019-05-16"
+
+keywords: IBM Cloud Private, Certificate Authority, operate CA, CA admin secret, CA logs, Helm chart, on-prem, CLI, CA TLS cert, CA endpoint, TLS CA
 
 subcollection: blockchain
 
@@ -206,7 +208,7 @@ Fabric CA クライアントを使用して CA を操作できます。 ここ�
 ### CA 管理者による証明書の生成
 {: #ca-operate-enroll-ca-admin}
 
-CA を使用してコンポーネントまたはクライアント・アプリケーションをデプロイする前に、新規ユーザーを登録する権限を持つ管理者として自分自身を認証する証明書を生成する必要があります。 必要な証明書、秘密鍵、および公開証明書 (エンロール証明書または署名付き証明書とも呼ばれる) を生成するプロセスのことを**エンロール**と呼びます。
+CA を使用してコンポーネントまたはクライアント・アプリケーションをデプロイする前に、新規ユーザーを登録する権限を持つ管理者として自分自身を認証する証明書を生成する必要があります。 必要な証明書、秘密鍵、および証明書 (エンロール証明書または署名付き証明書とも呼ばれる) を生成するプロセスのことを**エンロール**と呼びます。
 
 証明書を生成するには、認証局に登録されている ID を使用する必要があります。 証明書を生成するための ID の名前と秘密鍵を指定します。 **CA 管理者**の ID は、CA のデプロイ時に自動的に登録されています。 ここでその管理者名とパスワードを使用して、Fabric CA クライアントで `enroll` コマンドを実行し、その他のピアまたは順序付けプログラムの ID を登録するために使用される証明書を含む MSP フォルダーを生成できます。
 
@@ -276,7 +278,7 @@ tree
 以下の手順では、編集してローカル・ファイル・システムに保存できる[テンプレート JSON 構成ファイル](/docs/services/blockchain/howto/CA_operate.html#ca-operate-config-file-template)を示します。また、CA を使用してこのファイルを完成させる方法について順を追って説明します。
 
 - {{site.data.keyword.cloud_notm}} Private に順序付けプログラムをデプロイする場合、または {{site.data.keyword.cloud_notm}} Private でホストされている共同事業体に接続するためにピアをデプロイする場合は、以下の手順に従ってください。
-- スターター・プランまたはエンタープライズ・プランに接続するためにピアをデプロイする場合は、代わりに[スターター・プランまたはエンタープライズ・プランに接続するために IBM Cloud Private でピアをデプロイする手順](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy)に従ってください。この手順のステップでは、{{site.data.keyword.blockchainfull_notm}} Platform で CA を使用して {{site.data.keyword.cloud_notm}} Private にピアをデプロイする方法について順を追って説明しています。
+- スターター・プランまたはエンタープライズ・プランに接続するためにピアをデプロイする場合は、代わりに[スターター・プランまたはエンタープライズ・プランに接続するために IBM Cloud Private でピアをデプロイする手順](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy)に従ってください。 この手順のステップでは、{{site.data.keyword.blockchainfull_notm}} Platform で CA を使用して {{site.data.keyword.cloud_notm}} Private にピアをデプロイする方法について順を追って説明しています。
 
 ### 構成ファイル
 {: #ca-operate-config-file-template}
@@ -611,6 +613,7 @@ fabric-ca-client register --caname tlsca --id.affiliation org1.department1 --id.
 順序付けプログラムまたはピアをデプロイするには、CSR ホスト名を指定する必要があります。 このホスト名には、コンポーネントをデプロイするクラスターのプロキシー IP アドレスと、Helm チャートのデプロイ時に生成された`サービス・ホスト名`が含まれます。
 
 #### クラスター・プロキシー IP アドレスの値の取得
+{: #ca-operate-cluster-proxy-ip}
 
 CA をデプロイした同じ {{site.data.keyword.cloud_notm}} Private クラスターに順序付けプログラムまたはピアをデプロイする場合は、順序付けプログラムまたはピアがデプロイされる {{site.data.keyword.cloud_notm}} Private クラスターに対する[クラスター管理者 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/user_management/assign_role.html "クラスター管理者役割とアクション") 役割を持っていることを確認してください。 それから、[CA の構成](/docs/services/blockchain/howto/CA_deploy_icp.html#ca-deploy-configuration-parms)時に使用したものと同じプロキシー IP を入力します。 順序付けプログラムまたはピアを別のクラスターにデプロイする場合は、以下のステップを実行して、{{site.data.keyword.cloud_notm}} Private コンソールからクラスター・プロキシー IP アドレスの値を取得できます。
 
@@ -654,6 +657,7 @@ CA をデプロイした同じ {{site.data.keyword.cloud_notm}} Private クラ�
   {:codeblock}
 
 ### 構成ファイルの完成
+{: #ca-operate-config-file}
 
 上記のすべてのステップを完了すると、更新された構成ファイルは以下の例のようになります。
 
@@ -708,7 +712,7 @@ MSP フォルダーには、Fabric コンポーネントで使用される定義
 
 - **cacerts:** ネットワークのルート CA の証明書が含まれます。
 - **intermediatecerts:** これらは、(ルート CA または CA に戻る) トラスト・チェーン内の中間 CA の証明書です。 フェイルオーバーと高可用性を実現するために、中間 CA はエンタープライズ・プラン組織ごとに 2 つあります。
-- **signCerts:** このフォルダーには、署名付き公開証明書 (署名付き証明書またはエンロール証明書とも呼ばれる) が含まれます。 この証明書は、コマンド・ラインから MSP ディレクトリーを参照したり、SDK を使用してユーザー・コンテキスト・オブジェクトを作成したりする際に、ネットワークに対する呼び出し (チェーンコード呼び出しなど) に付加されます。 SDK またはコマンド・ラインからネットワークを操作する場合は、この証明書を {{site.data.keyword.blockchainfull_notm}} Platform にアップロードします。
+- **signCerts:** このフォルダーには、署名証明書 (署名付き証明書またはエンロール証明書とも呼ばれる) が含まれます。この証明書は、コマンド・ラインから MSP ディレクトリーを参照したり、SDK を使用してユーザー・コンテキスト・オブジェクトを作成したりする際に、ネットワークに対する呼び出し (チェーンコード呼び出しなど) に付加されます。 SDK またはコマンド・ラインからネットワークを操作する場合は、この証明書を {{site.data.keyword.blockchainfull_notm}} Platform にアップロードします。
 - **keystore:** このフォルダーには秘密鍵が含まれます。 この鍵は、コマンド・ラインから MSP ディレクトリーを参照したり、SDK を使用してユーザー・コンテキスト・オブジェクトを作成したりする際に、ネットワークに対する呼び出しに署名するために使用されますが、署名付き証明書のように呼び出しに付加されることはありません。 この鍵は安全に保管することが**重要**です。 漏えいした場合、ご使用の ID になりすますために使用できます。
 
 ネットワーク・モニターや Swagger API を使用して、fabric-ca-client が参照できる MSP フォルダーを作成することもできます。
@@ -753,7 +757,7 @@ MSP の構造について詳しくは、Hyperledger Fabric 資料で[メンバ�
 ## セキュリティー
 {: #ca-operate-security}
 
-発行する証明書の数が限られる場合 (ピア、Node.js サーバー、クライアント・アプリケーションだけなど) は、 CA をオフラインのままにすることにより、セキュリティーを強化し、CA 鍵素材の暗号漏えいを防ぐことができます。 しかし、証明書をユーザーにオンデマンドで発行する必要がある場合は、CA をオンラインにする必要があります。 可能な場合は、[HSM](https://console.test.cloud.ibm.com/docs/services/blockchain/glossary.html#glossary-hsm) を使用して CA 管理者秘密鍵を保護することを強くお勧めします。
+発行する証明書の数が限られる場合 (例えば、ピアのみ、Node.js サーバーのみ、およびクライアント・アプリケーションのみの証明書が発行される場合) は、CA をオフラインのままにして、セキュリティーを強化し、CA 鍵素材の暗号漏えいを防ぐことができます。しかし、証明書をユーザーにオンデマンドで発行する必要がある場合は、CA をオンラインにする必要があります。 可能な場合は、[HSM](/docs/services/blockchain/glossary.html#glossary-hsm) を使用して CA 管理者秘密鍵を保護することを強くお勧めします。
 
 ## トラブルシューティング
 {: #ca-operate-troubleshooting}
@@ -794,6 +798,8 @@ Error: Failed to read config file at '/Users/chandra/fabric-ca-client/ca-admin/f
 ```
 
 ### **解決策:**
+{: #ca-operate-enroll-error2-solution}
+
 特殊文字をコード表現するか、URL を単一引用符で囲む必要があります。 例えば、`!` を `%21` にするか、コマンドを次のように入力します。
 
 ```

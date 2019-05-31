@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-04-23"
+lastupdated: "2019-05-16"
+
+keywords: blockchain network, Enterprise Plan, production-ready network
 
 subcollection: blockchain
 
@@ -17,7 +19,7 @@ subcollection: blockchain
 # 엔터프라이즈 플랜 정보
 {: #enterprise-plan-about}
 
-{{site.data.keyword.blockchainfull}} Platform 엔터프라이즈 플랜은 실제 비즈니스용 블록체인 네트워크를 작성하거나 참여할 조직을 위한 프로덕션 준비가 된 오퍼링입니다. 이 플랜은 보안성이 높고 프로덕션 준비가 된 네트워크를 쉽게 시작하기 위한 도구 및 지원과 함께 핵심 인프라를 제공합니다. 엔터프라이즈 플랜은 2018년 5월 15일에 Hyperledger Fabric V1.0에서 V1.1로 업그레이드되었습니다. 2018년 5월 15일 이후에 작성된 모든 네트워크는 Fabric V1.1 레벨입니다. 그러나 이전에 작성된 네트워크는 Fabric V1.0 레벨로 유지됩니다.
+{{site.data.keyword.blockchainfull}} Platform 엔터프라이즈 플랜은 실제 비즈니스용 블록체인 네트워크를 작성하거나 가입할 조직을 위한 프로덕션 준비가 된 오퍼링입니다. 이 플랜은 보안성이 높고 프로덕션 준비가 된 네트워크를 쉽게 시작하기 위한 도구 및 지원과 함께 핵심 인프라를 제공합니다. 엔터프라이즈 플랜은 2018년 5월 15일에 Hyperledger Fabric V1.0에서 V1.1로 업그레이드되었습니다. 2018년 5월 15일 이후에 작성된 모든 네트워크는 Fabric V1.1 레벨입니다. 그러나 이전에 작성된 네트워크는 Fabric V1.0 레벨로 유지됩니다.
 {:shortdesc}
 
 **엔터프라이즈 플랜**은 상위 레벨의 보안 및 지원을 제공하는 프로덕션 환경입니다. 네트워크를 엔터프라이즈 플랜에 배치하면 다음 기능을 이용할 수 있습니다.
@@ -57,7 +59,7 @@ Fabric CA는 엔터프라이즈 플랜이 제공되는 인증 기관입니다. �
 
 결정해야 하는 유일한 요소는 네트워크에 필요한 피어의 크기입니다. 이 결정은 필요한 채널의 수와 함께 채널당 워크로드, 메모리 사용량 및 디스크 공간(스토리지)을 기반으로 합니다.
 
-안정된 프로덕션 또는 거의 프로덕션 레벨인 배치를 위해 엔터프라이즈 플랜을 사용해야 합니다. 테스트를 위해서는 [스타터 플랜](/docs/services/blockchain/starter_plan.html#starter-plan-about) 또는 [로컬로 Docker 이미지 설치](http://hyperledger-fabric.readthedocs.io/en/release-1.2/build_network.html)를 사용하십시오.
+안정된 프로덕션 또는 거의 프로덕션 레벨인 배치를 위해 엔터프라이즈 플랜을 사용해야 합니다. 테스트를 위해서는 [스타터 플랜](/docs/services/blockchain/starter_plan.html#starter-plan-about) 또는 [로컬로 Docker 이미지 설치](https://hyperledger-fabric.readthedocs.io/en/release-1.2/build_network.html)를 사용하십시오.
 
 <!--- The Enterprise plan provides the ordering service and CA. The membership fee is $1,000, and a per peer fee of $1,000 that is associated with the network. If you want to have high availability (HA), you must purchase an additional peer to provide the HA capabilities. For example, one organization (associated membership fee of $1,000) of two peers ($1,000 X 2 peers) with HA ($1,000 X 2 HA peers) requires a monthly charge of $5,000.  --->
 

@@ -2,7 +2,9 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-03-20"
+lastupdated: "2019-05-16"
+
+keywords: client application, Commercial Paper, SDK, wallet, generate a certificate, generate a private key, fabric gateway, APIs, smart contract
 
 subcollection: blockchain
 
@@ -28,17 +30,7 @@ subcollection: blockchain
 ## 学習用資料
 {: #ibp-console-app-learning-resources}
 
-アプリケーションとスマート・コントラクトがどのように連携するかについては、Hyperledger Fabric 資料の[アプリケーションの開発に関するトピック ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/developapps/developing_applications.html "developing applications") で学習できます。 このトピックでは、銀行と企業がコマーシャル・ペーパーを取引するという仮想のユース・ケースを基に、スマート・コントラクトの中にトランザクションをエンコードする方法について説明しています。 [コマーシャル・ペーパーのチュートリアル ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/tutorial/commercial_paper.html "commercial paper tutorial") は、このトピックを拡張したものであり、ユーザーが Fabric ネットワークにスマート・コントラクトをデプロイし、サンプル・アプリケーション・コードを使用してコマーシャル・ペーパーを作成したりネットワーク・メンバー間で転送したりできるようになっています。
-
-**アプリケーションのサンプルとチュートリアル**
-
-|  サンプル  |  説明    |  難易度    | 言語 | ロケーション |
-| -----------------|---------|---------|---------|
-| [FabCar ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://developer.ibm.com/patterns/write-a-smart-contract-for-the-fabcarcommercial-paper-or-iks-cluster-with-saas-v2-beta-network-think/ "Blockchain")| IKS クラスターを使用して、単純な Fabric ネットワーク・スマート・コントラクトを Blockchain Platform 上にデプロイします。 | 中級 | Node.js | DeveloperWorks 資料|
-| [コマーシャル・ペーパー ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/tutorial/commercial_paper.html "Commercial Paper")| コマーシャル・ペーパーのスマート・コントラクトを使用して、Hyperledger Fabric のローカル・インスタンスで取引します。 | 中級 | Node.js | Hyperledger Fabric の資料|
-| **近日公開:** 上級コマーシャル・ペーパー  | プライベート・データ・コレクションと状態ベースの承認を使用した所有権とプライバシーのベスト・プラクティスがある、上級向けのサンプル。 | 上級 | Node.js | Hyperledger Fabric の資料|
-| [{{site.data.keyword.blockchainfull_notm}} VSCode を使用したコマーシャル・ペーパーのスマート・コントラクトの実行 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://developer.ibm.com/tutorials/run-commercial-paper-smart-contract-with-ibm-blockchain-vscode-extension/ "Run a commercial paper smart contract with VSCode")|  VScode 拡張機能を使用して、Hyperledger Fabric のローカル・インスタンス上でコマーシャル・ペーパーのスマート・コントラクトを呼び出します。 | 中級 | Node.js | IBM Developer|
-| [{{site.data.keyword.blockchainfull_notm}} Platform 2.0 無料ベータ版でのコマーシャル・ペーパーのサンプルの実行](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-commercial-paper)| {{site.data.keyword.blockchainfull_notm}} Platform 2.0 ネットワーク上でコマーシャル・ペーパーのコントラクトをデプロイして呼び出すことについて学習します。 | 中級 |  Node.js | {{site.data.keyword.blockchainfull_notm}} Platform の資料|  
+コマーシャル・ペーパーのサンプルで、アプリケーションとスマート・コントラクトがどのように連携するかを学習できます。[{{site.data.keyword.blockchainfull_notm}} Platform でコマーシャル・ペーパーのサンプルを実行](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-commercial-paper)する方法に関するトピックを参照してください。このトピックでは、コマーシャル・ペーパー契約をデプロイし、起動する方法を確認できます。
 
 アプリケーションを開発するときには、ネットワーク・オペレーターとアプリケーション開発者というまったく異なる 2 人のネットワーク・ユーザー間の調整が必要になる場合があります。
 - **ネットワーク・オペレーター**は、{{site.data.keyword.blockchainfull_notm}} Platform コンソールを使用して組織のノードをデプロイしたり、ネットワークにスマート・コントラクトをインストールしたりする管理者です。
@@ -54,8 +46,11 @@ subcollection: blockchain
   - スマート・コントラクトがインスタンス化されているチャネルの名前。  
 
 **アプリケーション開発者**は、ネットワーク・オペレーターから提供された情報を使用して、以下の手順を実行します。
-1. アプリケーション ID の登録 ID およびシークレットと、接続プロファイル内の CA エンドポイント情報を一緒に使用して、公開鍵と秘密鍵のペアを生成します。
+1. アプリケーション ID の登録 ID および機密事項と、接続プロファイル内の CA エンドポイント情報を一緒に使用して、証明書と秘密鍵を生成します。
 2. 接続プロファイル、チャネル名、スマート・コントラクト名、アプリケーション鍵を使用してスマート・コントラクトを呼び出します。  
+
+{{site.data.keyword.blockchainfull_notm}} Platform コンソールからダウンロードした接続プロファイルは、Node.js (JavaScript および TypeScript) と Java Fabric SDK を使用してネットワークに接続するためにのみ使用できます。
+{: note}
 
 アプリケーション開発者は、以下の 2 つのプログラミング・モデルを使用してネットワークと対話できます。
 
@@ -65,9 +60,7 @@ Fabric v1.4 以降、ユーザーはシンプルになったアプリケーシ�
 
 - SDK を使用して[アプリケーション用の証明書を生成](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-enroll)する。
 - [SDK からスマート・コントラクトを呼び出す](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-invoke)。
-- [IBM Blockchain VScode 拡張機能](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-vscode)を使用して、スマート・コントラクトを作成してデプロイし、開発とテストを繰り返す。
 - コンソールで管理しているノードに[コマーシャル・ペーパーのチュートリアル](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-commercial-paper)をデプロイし、アプリケーションの開発について学習する。 このチュートリアルには、Fabric のウォレットとゲートウェイの使用法に関する詳細な背景情報が記載されています。
-
 
 **低水準の Fabric SDK API**
 
@@ -76,9 +69,9 @@ Fabric v1.4 以降、ユーザーはシンプルになったアプリケーシ�
 ## アプリケーション ID の登録
 {: #ibp-console-app-identities}
 
-アプリケーションは、{{site.data.keyword.blockchainfull_notm}} ノードに送信するトランザクションに署名し、公開鍵を添付する必要があります。ノードは、この公開鍵を使用して、トランザクションを送信しているのが正当な関係者であることを検証します。 これにより、参加権限を持つ組織がトランザクションを送信していることが確認されます。
+アプリケーションは、{{site.data.keyword.blockchainfull_notm}} ノードに送信するトランザクションに署名し、署名証明書を添付する必要があります。ノードは、この署名証明書を使用して、トランザクションを送信しているのが正当な関係者であることを検証します。これにより、参加権限を持つ組織がトランザクションを送信していることが確認されます。
 
-ネットワーク・オペレーターは、組織の CA を使用してアプリケーション ID を登録する必要があります。アプリケーション開発者は、その登録された ID を使用して、公開鍵と秘密鍵を生成できます。 オペレーターは、ID の登録 ID およびシークレットを CA エンドポイント情報と一緒に渡すことができます。SDK でこれらを使用して証明書を生成できます。 アプリケーション開発者がクライアント・サイドでエンロールすれば、他の団体は一切そのアプリケーションの秘密鍵にアクセスできません。 セキュリティーを強化するために、ネットワーク・オペレーターは登録時のエンロール制限を 1 に設定できます。 アプリケーション開発者がエンロールした後に、同じ登録 ID とシークレットを使用して別の秘密鍵を生成することはできません。
+ネットワーク・オペレーターは、組織の CA を使用して[アプリケーション ID を登録](/docs/services/blockchain/howto?topic=blockchain-ibp-console-identities#ibp-console-identities-register)する必要があります。アプリケーション開発者は、その登録された ID を使用して、証明書と秘密鍵を生成できます。オペレーターは、ID の登録 ID およびシークレットを CA エンドポイント情報と一緒に渡すことができます。SDK でこれらを使用して証明書を生成できます。 アプリケーション開発者がクライアント・サイドでエンロールすれば、他の団体は一切そのアプリケーションの秘密鍵にアクセスできません。 セキュリティーを強化するために、ネットワーク・オペレーターは登録時のエンロール制限を 1 に設定できます。 アプリケーション開発者がエンロールした後に、同じ登録 ID とシークレットを使用して別の秘密鍵を生成することはできません。
 
 セキュリティーについてあまり心配していない場合は、ネットワーク・オペレーターが [CA タブ](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-enroll)を使用してアプリケーション ID をエンロールしてもかまいません。 その後、オペレーターは ID をダウンロードするか、コンソール・ウォレットにエクスポートすることができます。 SDK の証明書を使用するには、鍵を base64 形式から PEM 形式にデコードする必要があります。 ローカル・マシン上で以下のコマンドを実行すると、証明書をデコードできます。
 
@@ -92,6 +85,9 @@ echo <base64_string> | base64 --decode $FLAG > <key>.pem
 {: #ibp-console-app-profile}
 
 アプリケーションは、チャネル上でインスタンス化されているスマート・コントラクトだけにトランザクションを送信できます。 そのため、スマート・コントラクトに接続して対話するために必要な情報は、コンソール内のインスタンス化されたスマート・コントラクトのリストにあります。 したがって、スマート・コントラクトが既にインストールされ、インスタンス化されていなければなりません。
+
+{{site.data.keyword.blockchainfull_notm}} Platform コンソールからダウンロードした接続プロファイルは、Node.js (JavaScript および TypeScript) と Java Fabric SDK を使用してネットワークに接続するためにのみ使用できます。
+{: note}
 
 Hyperledger Fabric の[トランザクション・フロー ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")]( https://hyperledger-fabric.readthedocs.io/en/release-1.4/txflow.html "Transaction Flow"){:new_window} には複数のコンポーネントが関わります。その中でクライアント・アプリケーションは複数のピアから承認を収集し、承認されたトランザクションを順序付けサービスに送信します。 接続プロファイルによって、アプリケーションは、トランザクションを送信するために必要なピアと順序付けノードのエンドポイントを取得します。 このプロファイルには、認証局や MSP ID などのユーザー組織に関する情報も含まれています。 Fabric SDK が接続プロファイルを直接読み取るので、ユーザーがトランザクションと承認のフローを管理するコードを作成する必要はありません。
 
@@ -172,7 +168,7 @@ Fabric SDK で使用されるウォレットは、{{site.data.keyword.blockchain
 ## SDK を使用したスマート・コントラクトの呼び出し
 {: #ibp-console-app-invoke}
 
-アプリケーションの公開鍵と秘密鍵を生成してウォレット内に保管したら、トランザクションを送信するための準備は完了です。 スマート・コントラクトの名前と、スマート・コントラクトがインスタンス化されているチャネルの名前を知っている必要があります。 [Node.js 用の Fabric SDK ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://fabric-sdk-node.github.io/ "Node.js 用の Fabric SDK") を使用してスマート・コントラクトを呼び出すには、以下の手順を使用します。
+アプリケーションの署名証明書と秘密鍵を生成してウォレット内に保管したら、トランザクションを送信するための準備は完了です。スマート・コントラクトの名前と、スマート・コントラクトがインスタンス化されているチャネルの名前を知っている必要があります。 [Node.js 用の Fabric SDK ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://fabric-sdk-node.github.io/ "Node.js 用の Fabric SDK") を使用してスマート・コントラクトを呼び出すには、以下の手順を使用します。
 
 
 1. 以下のファイルを `invoke.js` としてローカル・マシンに保存します。 `enrollUser.js` と同じディレクトリー内に保存してください。
@@ -237,27 +233,6 @@ Fabric SDK で使用されるウォレットは、{{site.data.keyword.blockchain
   {:codeblock}
   コンソールを使用してチャネルにナビゲートすると、トランザクションによって別のブロックが追加されていることを確認できます。
 
-
-## {{site.data.keyword.blockchainfull_notm}} VScode 拡張機能を使用した接続
-{: #ibp-console-app-vscode}
-
-{{site.data.keyword.blockchainfull_notm}} Platform Visual Studio Code 拡張機能は、スマート・コントラクト・パッケージを開発、パッケージ化、およびデプロイするための、Visual Studio Code 内の環境を提供します。 接続プロファイルと、CA を使用して生成した一連の鍵ファイルがあることを確認してください。 それから、VScode 拡張機能を使用して、コンソールで管理しているネットワークに接続できます。
-
-Visual Studio Code のマーケットプレイスで説明に従って [VScode 拡張機能 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://marketplace.visualstudio.com/items?itemName=IBMBlockchain.ibm-blockchain-platform#overview "VScode 拡張機能") をダウンロードします。 拡張機能をインストールしたら、VScode を開くと**「表示」>「コマンド パレット」**をクリックして拡張機能にアクセスできます。 *「IBM Blockchain Platform: スマート・コントラクト・プロジェクトの作成 (IBM Blockchain Platform: Create Smart Contract Project)」*コマンドを入力し、新しいスマート・コントラクト・プロジェクトを作成します。
-
-新しいプロジェクトを作成したら、コンソールでインスタンス化したスマート・コントラクトの情報を使用して、Visual Studio Code から直接ネットワークに接続できます。 スマート・コントラクトのタブの**「インスタンス化されたスマート・コントラクト (Instantiated smart contracts)」**テーブルを使用して、[接続プロファイル](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-profile)をローカル・ファイル・システムにダウンロードします。 それから、[アプリケーション ID を作成し](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-identities)、CA を使用して証明書 (公開鍵) と秘密鍵を作成してダウンロードします。 前述の手順に従って、秘密鍵と証明書を PEM 形式に変換します。 接続プロファイルと鍵をダウンロードしたら、以下の手順を使用してネットワークに接続します。
-
-1. Visual Studio Code で_「{{site.data.keyword.blockchainfull_notm}} Platform」_タブを開きます。
-2. _「{{site.data.keyword.blockchainfull_notm}} Platform」_ペインで、**「Add new connection」**をクリックします。
-3. 接続の名前を入力します。 この名前は、_「{{site.data.keyword.blockchainfull_notm}} Platform」_ペインに表示されます。
-4. 接続プロファイルの完全修飾ファイル・パスを入力します。
-5. PEM 形式の証明書 (公開鍵) の完全修飾ファイル・パスを入力します。
-6. PEM 形式の秘密鍵の完全修飾ファイル・パスを入力します。
-7. この時点で、接続が `local_fabric` の下の接続リストに表示されているはずです。 接続する接続名をダブルクリックします。
-
-VScode から接続した場合は、自分の組織のピアと、ブロックチェーン接続ペインでピアが参加したチャネルのリストが表示されます。 各ピアの下に、インストール済みのスマート・コントラクトのリストが表示されます。 プロジェクトからネットワークに新しいスマート・コントラクトをインストールするには、まずピアを右クリックして**「スマート・コントラクトのインストール (Install smart contract)」**を選択します。 その後に、チャネルを右クリックして**「スマート・コントラクトのインストール (Install smart contract)」**を選択することで、スマート・コントラクトをインスタンス化できます。 この {{site.data.keyword.blockchainfull_notm}} Platform 拡張機能の使用方法を詳しく学習したい場合は、[Visual Studio Code のマーケットプレイス ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://marketplace.visualstudio.com/items?itemName=IBMBlockchain.ibm-blockchain-platform#overview "VScode 拡張機能") 内の資料を利用してください。
-
-
 ## コマーシャル・ペーパーのサンプルの実行
 {: #ibp-console-app-commercial-paper}
 
@@ -288,7 +263,7 @@ Fabric サンプルをダウンロードしたら、以下のコマンドを実�
 
 ```
 cd fabric-samples
-git checkout v1.4.0
+git checkout v1.4.1
 ```
 {:codeblock}
 
@@ -325,9 +300,9 @@ npm install
 
 ### 手順 2: スマート・コントラクトをインストールしてインスタンス化する
 
-コマーシャル・ペーパーのスマート・コントラクトは、`digibank` ディレクトリーと `magnetocorp` ディレクトリーの `contract` フォルダー内にあります。 チュートリアルを使用する組織のすべてのピアに、このスマート・コントラクトをインストールする必要があります。 その後に、チャネルでコマーシャル・ペーパーのコントラクトをインスタンス化する必要があります。 コンソールを使用してインストールするには、スマート・コントラクトを [.cds 形式 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/latest/chaincode4noah.html#packaging "packaging smart contracts") でパッケージ化する必要があります。
+コマーシャル・ペーパーのスマート・コントラクトは、`digibank` ディレクトリーと `magnetocorp` ディレクトリーの `contract` フォルダー内にあります。 チュートリアルを使用する組織のすべてのピアに、このスマート・コントラクトをインストールする必要があります。 その後に、チャネルでコマーシャル・ペーパーのコントラクトをインスタンス化する必要があります。 コンソールを使用してインストールするには、スマート・コントラクトを [.cds 形式 ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/chaincode4noah.html#packaging "packaging smart contracts") でパッケージ化する必要があります。
 
-[IBM Blockchain VScode 拡張機能](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-vscode)を使用してスマート・コントラクトをパッケージ化できます。 この拡張機能のインストール後に、Visual Studio Code を使用してワークスペース内で `contracts` フォルダーを開きます。 _「{{site.data.keyword.blockchainfull_notm}} Platform」_タブを開きます。 _「{{site.data.keyword.blockchainfull_notm}} Platform」_ペインで、スマート・コントラクト・パッケージのセクションにナビゲートし、**「スマート・コントラクト・プロジェクトのパッケージ化 (Package a Smart Contract Project)」**をクリックします。 VScode 拡張機能は `contracts` フォルダー内のファイルを使用して、`papernet-js@.0.0.1.cds` という名前の新しいパッケージを作成します。 このパッケージを右クリックして、ローカル・ファイル・システムにエクスポートします。 そして、コンソールを使用して [ピアにスマート・コントラクトをインストール](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-install)してから、[チャネルでスマート・コントラクトをインスタンス化](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-instantiate)できます。
+[IBM Blockchain VS コード拡張機能](/docs/services/blockchain/vscode-extension.html)を使用してスマート・コントラクトをパッケージ化できます。この拡張機能のインストール後に、Visual Studio Code を使用してワークスペース内で `contracts` フォルダーを開きます。 _「{{site.data.keyword.blockchainfull_notm}} Platform」_タブを開きます。 _「{{site.data.keyword.blockchainfull_notm}} Platform」_ペインで、スマート・コントラクト・パッケージのセクションにナビゲートし、**「スマート・コントラクト・プロジェクトのパッケージ化 (Package a Smart Contract Project)」**をクリックします。 VS コード拡張機能は `contracts` フォルダー内のファイルを使用して、`papernet-js@.0.0.1.cds` という名前の新しいパッケージを作成します。このパッケージを右クリックして、ローカル・ファイル・システムにエクスポートします。 そして、コンソールを使用して [ピアにスマート・コントラクトをインストール](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-install)してから、[チャネルでスマート・コントラクトをインスタンス化](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-instantiate)できます。
 
 ### 手順 3: ウォレットの証明書を生成する
 
@@ -405,7 +380,7 @@ const wallet = new FileSystemWallet('../identity/user/isabella/wallet')
 ```
 {:codeblock}
 
-ウォレットを作成した後のコード・スニペットは、登録 ID とシークレットを使用して、組織 CA でエンロールしています。 その次に、公開鍵/秘密鍵のペアの ID を作成し、ウォレットにインポートしています。 このファイルで組織の MSP ID をウォレットに渡していることにも注目してください。
+ウォレットを作成した後のコード・スニペットは、登録 ID とシークレットを使用して、組織 CA でエンロールしています。 その次に、署名証明書と秘密鍵の ID を作成し、ウォレットにインポートしています。このファイルで組織の MSP ID をウォレットに渡していることにも注目してください。
 
 ```
 // Enroll the admin user, and import the new identity into the wallet.
@@ -550,7 +525,7 @@ magnetocorp としてコマーシャル・ペーパーを作成したら、digib
 
 既存のアプリケーション・コードを保持したい場合や、Node.js 以外の言語用の Fabric SDK を使用したい場合には、以前と変わらず低水準の Fabric SDK API を使用してネットワークに接続できます。 コンソールを使用して[接続プロファイルをダウンロード](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-profile)します。 そして、チャネルのピアと順序付けノードのエンドポイントを接続プロファイルから直接インポートするか、ノードのエンドポイント情報を使用してピアと順序付けプログラム・オブジェクトを手動で追加します。 CA を使用して[アプリケーション ID を作成](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-identities)してから、CA エンドポイント情報を使用してクライアント・サイドでエンロールするか、コンソールを使用して証明書を生成する必要もあります。
 
-[Fabric Node SDK ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://fabric-sdk-node.github.io "Fabric Node SDK") の資料には、[接続プロファイルを使用してネットワークに接続する ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://fabric-sdk-node.github.io/tutorial-network-config.html "接続プロファイルのチュートリアル"){:new_window} 方法についてのチュートリアルが記載されています。 このチュートリアルでは、接続プロファイル内の CA エンドポイント情報を使用して、SDK で鍵を生成しています。 コンソールで公開鍵と秘密鍵を生成してから PEM 形式に変換することもできます。 そして、以下のコードを使用して鍵を直接 SDK [Fabric クライアント・クラス ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://fabric-sdk-node.github.io/Client.html "Fabric クライアント・クラス") に渡して、ユーザー・コンテキストを設定できます。
+[Fabric Node SDK ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://fabric-sdk-node.github.io "Fabric Node SDK") の資料には、[接続プロファイルを使用してネットワークに接続する ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://fabric-sdk-node.github.io/tutorial-network-config.html "接続プロファイルのチュートリアル"){:new_window} 方法についてのチュートリアルが記載されています。 このチュートリアルでは、接続プロファイル内の CA エンドポイント情報を使用して、SDK で鍵を生成しています。 コンソールで署名証明書と秘密鍵を生成してから PEM 形式に変換することもできます。そして、以下のコードを使用して鍵を直接 SDK の [Fabric クライアント・クラス ![外部リンク・アイコン](../images/external_link.svg "外部リンク・アイコン")](https://fabric-sdk-node.github.io/Client.html "Fabric クライアント・クラス") に渡して、ユーザー・コンテキストを設定できます。
 
 ```
 fabric_client.createUser({

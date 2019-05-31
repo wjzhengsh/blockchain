@@ -4,6 +4,8 @@ copyright:
   years: 2017, 2019
 lastupdated: "2019-03-05"
 
+keywords: IBM Blockchain offerings, Linux Foundation, Hyperledger Fabric, open source, community contribution
+
 subcollection: blockchain
 
 ---
@@ -33,7 +35,7 @@ L'architettura che sta dietro {{site.data.keyword.blockchainfull_notm}} è il pr
 {{site.data.keyword.IBM_notm}} non fornisce supporto per le reti che utilizzano Hyperledger Composer in produzione, compresi la CLI Composer, le API JavaScript, il server REST e Web Playground.
 {:note}
 
-## Istruzione open source
+## Istruzione open source 
 {: #disclaimer-open-source-statement}
 
 I piani di offerta {{site.data.keyword.blockchainfull_notm}} su {{site.data.keyword.cloud_notm}} sono sviluppati sullo stack Hyperledger Fabric della Linux Foundation. I membri del progetto Hyperledger, compresa {{site.data.keyword.IBM_notm}}, continuano a contribuire ai vari progetti secondari che ricadono nell'ambito di Hyperledger.  Tutti i contributi sono revisionati, controllati e testati dalla community.

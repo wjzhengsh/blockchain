@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-04-17"
+lastupdated: "2019-05-16"
 
 subcollection: blockchain
 
@@ -20,7 +20,7 @@ subcollection: blockchain
 # Kubernetes
 {: #k8s-overview}
 
-{{site.data.keyword.blockchainfull_notm}} Platform 무료 2.0 베타 콘솔은 {{site.data.keyword.cloud_notm}} Kubernetes Service를 통해 Kubernetes 클러스터에 배치됩니다. Kubernetes는 컨테이너화된 애플리케이션의 배치 자동화, 스케일링 및 관리를 위한 오픈 소스 시스템입니다.
+{{site.data.keyword.blockchainfull_notm}} Platform을 사용하여 {{site.data.keyword.cloud_notm}} Kubernetes 클러스터에 블록체인 컴포넌트를 프로비저닝할 수 있습니다. Kubernetes는 컨테이너화된 애플리케이션의 배치 자동화, 스케일링 및 관리를 위한 오픈 소스 시스템입니다.
 {:shortdesc}
 
 Kubernetes는 컨테이너 중심 관리 환경을 제공합니다. 사용자 워크로드를 대신하여 컴퓨팅, 네트워킹 및 스토리지 인프라를 조정합니다. Kubernetes는 IaaS(Infrastructure as a Service)의 유연성과 함께 PaaS(Platform as a Service)의 뛰어난 단순성을 제공하며 인프라 제공자 간의 이식성을 지원합니다.

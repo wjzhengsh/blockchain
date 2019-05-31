@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-04-19"
+lastupdated: "2019-05-16"
 
 keywords: smart contract, private data, private data collection, anchor peer
 
@@ -22,8 +22,11 @@ subcollection: blockchain
 # 네트워크에 스마트 계약 배치 튜토리얼
 {: #ibp-console-smart-contracts}
 
-스마트 계약(체인코드라고도 함)은 블록체인 원장에서 데이터를 읽고 업데이트할 수 있도록 하는 코드입니다. 스마트 계약은 비즈니스 로직을 블록체인 네트워크의 모든 구성원이 승인하고 검증한 실행 가능 프로그램으로 변환할 수 있습니다. 이 튜토리얼은 [샘플 네트워크 튜토리얼 시리즈](/docs/services/blockchain/howto/ibp-console-smart-contracts.md.html#ibp-console-smart-contracts-structure)의 세 번째 부분이며 스마트 계약을 배치하여 블록체인 네트워크에서 트랜잭션을 시작하는 방법에 대해 설명합니다.
+스마트 계약(체인코드라고도 함)은 블록체인 원장에서 데이터를 읽고 업데이트할 수 있도록 하는 코드입니다. 스마트 계약은 비즈니스 로직을 블록체인 네트워크의 모든 구성원이 승인하고 검증한 실행 가능 프로그램으로 변환할 수 있습니다. 이 튜토리얼은 [샘플 네트워크 튜토리얼 시리즈](#ibp-console-smart-contracts-structure)의 세 번째 부분이며 스마트 계약을 배치하여 블록체인 네트워크에서 트랜잭션을 시작하는 방법에 대해 설명합니다.
 {:shortdesc}
+
+{{site.data.keyword.blockchainfull_notm}} Platform 베타 평가판을 사용 중인 경우 콘솔의 일부 패널이 GA(Generally Available) 서비스 인스턴스에 따라 최신 상태로 유지되는 현재 문서와 일치하지 않을 수 있습니다. 모든 최신 기능의 이점을 얻으려면 지금 [{{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}} 시작하기](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks)의 지시사항에 따라 새 GA 서비스 인스턴스를 프로비저닝하는 것이 좋습니다.
+{: important}
 
 **대상 독자:** 이 주제는 블록체인 네트워크를 작성, 모니터링 및 관리할 책임이 있는 네트워크 운영자를 위해 설계되었습니다. 또한 애플리케이션 개발자의 경우 스마트 계약 작성 방법을 참조하는 절에 관심이 있을 수 있습니다.
 
@@ -33,7 +36,7 @@ subcollection: blockchain
 세 개의 파트로 구성된 이 튜토리얼 시리즈는 {{site.data.keyword.blockchainfull_notm}} Platform 2.0 콘솔에서 상대적으로 단순한 다중 노드 Hyperledger Fabric 네트워크를 작성한 후 상호 연결하여 네트워크를 Kubernetes 클러스터에 배치하고 스마트 계약을 설치하고 인스턴스화하는 프로세스를 안내합니다.
 
 * [네트워크 빌드 튜토리얼](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network)은 순서 지정자 또는 피어를 작성하여 네트워크를 호스팅하는 프로세스를 안내합니다.
-* [네트워크 참여 튜토리얼](/docs/services/blockchain/howto/ibp-console-join-network.html#ibp-console-join-network)은 피어를 작성하고 해당 피어를 채널에 가입시켜 기존 네트워크에 참여하는 프로세스를 안내합니다.
+* [네트워크 가입 튜토리얼](/docs/services/blockchain/howto/ibp-console-join-network.html#ibp-console-join-network)은 피어를 작성하고 해당 피어를 채널에 가입시켜 기존 네트워크에 가입하는 프로세스를 안내합니다.
 * **네트워크에 스마트 계약 배치**: 이 현재 튜토리얼은 스마트 계약을 작성하여 이를 네트워크에 배치하는 방법을 제공합니다.
 
 이러한 튜토리얼의 단계를 사용하여 개발 및 테스트 목적의 한 클러스터에 다중 조직이 있는 네트워크를 빌드할 수 있습니다. 순서 지정자 노드를 작성하고 조직을 추가하여 블록체인 컨소시엄을 구성하려는 경우 **네트워크 빌드** 튜토리얼을 참조하십시오. 피어를 네트워크에 연결하려면 **네트워크 가입** 튜토리얼을
@@ -59,7 +62,7 @@ subcollection: blockchain
 
 스마트 계약을 설치하기 전에 다음 사항이 준비되었는지 확인하십시오.
 
-- {{site.data.keyword.blockchainfull_notm}} Platform 콘솔을 사용하여 [네트워크를 빌드](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network)하거나 [네트워크에 참여](/docs/services/blockchain/howto/ibp-console-join-network.html#ibp-console-join-network)해야 합니다.
+- {{site.data.keyword.blockchainfull_notm}} Platform 콘솔을 사용하여 [네트워크를 빌드](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network)하거나 [네트워크에 가입](/docs/services/blockchain/howto/ibp-console-join-network.html#ibp-console-join-network)해야 합니다.
 - 스마트 계약이 피어에 설치되므로 콘솔에 [피어를 추가](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-create-peer-org1)했는지 확인하십시오.  
 - 스마트 계약은 채널에서 인스턴스화됩니다. 따라서 콘솔을 사용하여 [채널을 작성](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-create-channel)하거나 [채널에 가입](/docs/services/blockchain/howto/ibp-console-join-network.html#ibp-console-join-network-join-peer-org2)해야 합니다.
 
@@ -102,7 +105,7 @@ subcollection: blockchain
 
 1. 스마트 계약 탭에 표시되는 피어에 설치된 목록에서 스마트 계약을 찾고 행의 오른쪽에 있는 오버플로우 메뉴에서 **인스턴스화**를 클릭하십시오.
 2. 열리는 사이드 패널에서 스마트 계약을 인스턴스화할 채널을 선택하십시오. 사용자가 작성한 `channel1` 채널을 선택할 수 있습니다. 그런 후 **다음**을 클릭하십시오.
-3. 다음 절에서 설명하는 [스마트 계약에 대한 보증 정책](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-endorse)을 지정하십시오. 다중 조직이 채널의 멤버인 경우 스마트 계약 트랜잭션을 보증하는 데 필요한 조직의 수를 선택할 수 있습니다. 
+3. 다음 절에 설명된 [스마트 계약에 대한 보증 정책](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-endorse)을 지정하십시오. 다중 조직이 채널의 멤버인 경우 스마트 계약 트랜잭션을 보증하는 데 필요한 조직의 수를 선택할 수 있습니다.
 4. 또한 보증 정책에 포함시킬 조직 구성원을 선택해야 합니다. 튜토리얼에 따른 경우, `org1msp`일 것이며 **네트워크 빌드** 및 **네트워크에 가입** 튜토리얼을 둘 다 완료한 경우, `org2msp`일 것입니다.
 5. 스마트 계약에 Fabric 개인용 데이터 콜렉션 정의가 포함된 경우, 연관된 콜렉션 구성 JSON 파일을 업로드해야 합니다. 그렇지 않으면 이 단계를 건너뛸 수 있습니다. [개인용 데이터](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-private-data) 사용에 대한 자세한 정보는 이 주제를 참조하십시오.
 6. 마지막 패널에서 스마트 계약을 시작할 때 실행할 스마트 계약 함수와 해당 함수에 전달할 연관 인수를 함께 지정하도록 프롬프트됩니다.
@@ -159,7 +162,7 @@ JSON 형식으로 정책을 지정하려면 **고급** 단추를 클릭하십시
  3. 개인용 데이터 콜렉션 구성 파일을 스마트 계약과 연관시키려는 경우 JSON 파일을 업로드할 수 있습니다. 또는 기존 콜렉션 구성을 업데이트하려는 경우 JSON 파일을 업로드할 수 있습니다.   
  스마트 계약이 이전에 콜렉션 구성 파일로 인스턴스화된 경우 이 단계 중에 이전 버전 또는 새 버전의 콜렉션 구성 파일을 **반드시** 다시 업로드해야 합니다.  
  {:important}
- 4. (선택사항) 매개변수가 변경된 경우 스마트 계약 초기화 인수 값을 수정하십시오. 확실하지 않은 경우, 스마트 계약 개발자와 함께 확인하십시오. 변경하지 않은 경우 이 필드를 공백으로 둘 수 있습니다.
+ 4. (선택사항) 매개변수가 변경된 경우 스마트 계약 초기화 인수 값을 수정하십시오. 확실하지 않은 경우, 스마트 계약 개발자와 함께 확인하십시오. 변경되지 않은 경우 이 필드를 공백으로 둘 수 있습니다.
 
 스마트 계약을 업그레이드한 후, 채널에서 인스턴스화된 계약의 버전을 변경하고 새 버전을 설치한 모든 피어에 대해 스마트 계약 컨테이너를 변경하십시오. 개인용 데이터 콜렉션을 사용 중인 경우 채널에 앵커 피어를 구성했는지 확인하십시오.
 
@@ -187,14 +190,14 @@ JSON 형식으로 정책을 지정하려면 **고급** 단추를 클릭하십시
 
 개인용 데이터는 버전 1.2 이상의 Hyperledger Fabric 네트워크 기능이며 **채널의** 기타 조직 구성원으로부터 민감한 정보를 비공개로 유지하는 데 사용됩니다. [개인용 데이터 콜렉션 ![외부 링크 아이콘")](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/private-data/private-data.html#what-is-a-private-data-collection "개인용 데이터 콜렉션의 개념")을 사용하여 데이터 개인정보를 보호할 수 있습니다. 예를 들어, 여러 도매업자 및 농부 집단이 단일 채널에 가입할 수 있습니다. 만약 농부와 도매업자가 개인적으로 거래하기를 원한하는 경우, 해당 목적을 위한 채널을 만들 수 있습니다. 그러나 비즈니스 상호작용을 제어하는 스마트 계약에 대한 개인용 데이터 콜렉션을 작성하여 보조 채널을 작성할 필요 없이 가격과 같은 민감한 판매 영역을 비공개로 유지할 수 있습니다. 블록체인 내의 개인용 데이터를 사용하는 시기에 대한 자세한 정보는 Fabric 문서에서 [개인용 데이터 ![외부 링크 아이콘")](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/private-data/private-data.html#private-data "개인용 데이터") 개념에 대한 기사를 참조하십시오.
 
-{{site.data.keyword.blockchainfull_notm}} Platform 무료 2.0 베타와 함께 개인용 데이터를 사용하려면 다음 세 가지 조건이 충족되어야 합니다.  
+{{site.data.keyword.blockchainfull_notm}} Platform에 개인용 데이터를 사용하려면 다음 세 가지 조건이 충족되어야 합니다.  
 1. **개인용 데이터 콜렉션을 정의하십시오.** 개인용 데이터 콜렉션 파일이 스마트 계약에 추가될 수 있습니다. 그런 다음, 런타임 시 클라이언트 애플리케이션이 개인용 데이터별 체인코드 API를 사용하여 콜렉션에서 데이터를 입력하고 검색할 수 있습니다. 스마트 계약과 함께 개인용 데이터 콜렉션을 사용하는 방법에 대한 자세한 정보는 Fabric 문서의 [개인용 데이터 사용 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://fabric-sdk-node.github.io/tutorial-private-data.html "개인용 데이터 사용 방법")에서 Fabric SDK 튜토리얼을 참조하십시오.  
 
 2. **스마트 계약을 설치하고 인스턴스화하십시오.** 스마트 계약 개인용 데이터 콜렉션이 정의된 후에는 채널의 구성원인 피어에 스마트 계약을 설치해야 합니다. 콘솔을 사용하여 채널에서 스마트 계약을 인스턴스화할 때 콜렉션 구성 JSON 파일을 업로드해야 합니다. [콜렉션 정의 JSON 파일 작성 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://fabric-sdk-node.github.io/tutorial-private-data.html "개인용 데이터 사용 방법") 방법에 대한 자세한 정보는 Fabric SDK 문서 주제를 참조하십시오.
 
   콜렉션을 사용하여 콜렉션 구성 파일로 스마트 계약을 설치하고 인스턴스화하는 대신 Fabric SDK를 사용할 수도 있습니다. Node SDK 문서의 [개인용 데이터 사용 방법 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://fabric-sdk-node.github.io/release-1.4/tutorial-private-data.html "개인용 데이터 사용 방법")에서도 해당 지시사항을 볼 수 있습니다.  
 
-  **참고:** SDK를 사용하여 스마트 계약을 설치하거나 인스턴스화하려면 클라이언트가 피어의 관리자여야 합니다. 따라서 사용자는 애플리케이션 ID를 작성하는 대신 콘솔 지갑에서 피어 관리자 ID의 인증서를 다운로드하여 피어 관리자의 공개 및 개인 키를 직접 SDK에 전달해야 합니다. 키 쌍을 SDK에 전달하는 방법에 대한 예를 보려면 [하위 레벨 Fabric SDK API를 사용하여 네트워크에 연결](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-low-level)을 참조하십시오.  
+  **참고:** SDK를 사용하여 스마트 계약을 설치하거나 인스턴스화하려면 클라이언트가 피어의 관리자여야 합니다. 따라서 사용자는 애플리케이션 ID를 작성하는 대신 콘솔 지갑에서 피어 관리자 ID의 인증서를 다운로드하여 피어 관리자의 서명 인증서 및 개인 키를 직접 SDK에 전달해야 합니다. 키 쌍을 SDK에 전달하는 방법에 대한 예를 보려면 [하위 레벨 Fabric SDK API를 사용하여 네트워크에 연결](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-low-level)을 참조하십시오.  
 
 
 3. **앵커 피어를 구성하십시오.** 개인용 데이터가 작동하려면 교차 조직의 [gossip ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/gossip.html "gossip 데이터 분배 프로토콜")을 사용할 수 있어야 하므로 콜렉션 정의 내의 각 조직에 대해 앵커 피어가 존재해야 합니다. 네트워크에서 [앵커 피어를 구성하는 방법](/docs/services/blockchain/howto/ibp-console-govern.html#ibp-console-govern-channels-anchor-peers)은 이 정보를 참조하십시오.

@@ -2,12 +2,13 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-04-23"
+lastupdated: "2019-05-16"
+
+keywords: FAQs, can I, upgrade, what version, peer ledger database, supported languages, why do I, regions
 
 subcollection: blockchain
 
 ---
-
 
 {:new_window: target="_blank"}
 {:shortdesc: .shortdesc}
@@ -22,69 +23,71 @@ subcollection: blockchain
 # FAQ
 {: #ibp-v2-faq}
 
-- [{{site.data.keyword.blockchainfull_notm}} Platform 무료 2.0 베타에서 사용되는 Hyperledger Fabric의 버전은 무엇입니까?](#ibp-v2-faq-fabric-version)
-- [{{site.data.keyword.blockchainfull_notm}} Platform 무료 2.0 베타에 대한 비용을 지불해야 합니까?](#ibp-v2-faq-cost)
-- [기존 {{site.data.keyword.cloud_notm}} Kubernetes Service 클러스터를 사용할 수 있습니까?](#ibp-v2-faq-existing-cluster)
-- [피어 원장에 사용되는 데이터베이스는 무엇입니까? ](#ibp-v2-faq-couchDB)
-- [스마트 계약에 지원되는 언어는 무엇입니까? ](#ibp-v2-faq-cc-langs)
-- [V2.0 베타에서 v2.0 GA로 마이그레이션할 수 있습니까? ](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-faq-migrate)
-- [로깅 서비스에 액세스할 수 있으며 사용 가능한 로그는 무엇입니까? ](#ibp-v2-faq-logs)
-- [기본 Hyperledger Fabric을 기반으로 {{site.data.keyword.blockchainfull_notm}} Platform 무료 2.0 베타를 사용할 때 얻는 가치는 무엇입니까?](#ibp-v2-faq-native-fabric)
-- [성능을 최대화하고 {{site.data.keyword.blockchainfull_notm}} Platform 솔루션을 스케일링할 수 있는 방법은 무엇입니까?](#ibp-v2-faq-perf-scale)
+- [피어 원장에 사용되는 데이터베이스는 무엇입니까?](#ibp-v2-faq-v2-IBP-Overview-1-3)
+- [스마트 계약에 지원되는 언어는 무엇입니까? ](#ibp-v2-faq-v2-IBP-Overview-1-4)
+- [V1.0에서 새 {{site.data.keyword.blockchainfull_notm}} Platform으로 업그레이드할 수 있습니까?](#ibp-v2-faq-v2-IBP-Overview-1-5)
+- [기본 Hyperledger Fabric을 기반으로 {{site.data.keyword.blockchainfull_notm}} Platform을 사용할 때 얻는 가치는 무엇입니까?](#ibp-v2-faq-v2-IBP-Overview-1-7)
+- [내 {{site.data.keyword.blockchainfull_notm}} Platform 서비스를 삭제하면 어떻게 됩니까? ](#ibp-v2-faq-v2-IBP-Overview-1-8)
+- [{{site.data.keyword.cloud_notm}}에서 실행 중인 블록체인 서비스에 사용 가능한 지역은 무엇입니까?](#ibp-v2-faq-v2-IBP-Overview-1-9)
+- [{{site.data.keyword.blockchainfull_notm}} Platform에서 사용되는 Hyperledger Fabric의 버전은 무엇입니까? ](#ibp-v2-faq-v2-Hyperledger-Fabric-3-1)
+- [기존 {{site.data.keyword.cloud_notm}} Kubernetes Service 클러스터를 사용할 수 있습니까?](#ibp-v2-faq-v2-Infrastructure-4-2)
+- [로깅 서비스에 액세스할 수 있으며 사용 가능한 로그는 무엇입니까? ](#ibp-v2-faq-v2-Logging-and-Monitoring-11-6)
 
-## {{site.data.keyword.blockchainfull_notm}} Platform 무료 2.0 베타에서 사용되는 Hyperledger Fabric의 버전은 무엇입니까?
-{: #ibp-v2-faq-fabric-version}
-{: faq}
-
-{{site.data.keyword.blockchainfull_notm}} Platform 무료 2.0 베타는 Hyperledger Fabric v1.4를 사용하며 gossip, 서비스 발견 및 개인용 데이터에 대한 지원을 제공합니다.
-
-## {{site.data.keyword.blockchainfull_notm}} Platform 무료 2.0 베타에 대한 비용을 지불해야 합니까?
-{: #ibp-v2-faq-cost}
-{: faq}
-
-베타 릴리스는 무료입니다. 그러나 무료 클러스터를 선택하지 않을 경우 {{site.data.keyword.cloud_notm}} Kubernetes 클러스터에 대한 비용이 발생할 수 있습니다.  하지만 무료 클러스터는 {{site.data.keyword.cloud_notm}} Kubernetes 서비스 정책에 따라 30일 후에 자동으로 삭제되며 성능과 용량이 제한적입니다.  서비스를 30일 이상 계속 이용하려면 Kubernetes 서비스의 표준 인스턴스에 대한 비용을 지불해야 합니다.
-
-## 기존 {{site.data.keyword.cloud_notm}} Kubernetes Service 클러스터를 사용할 수 있습니까?
-{: #ibp-v2-faq-existing-cluster}
-{: faq}
-
-기존 Kubernetes 클러스터가 다음 조건을 충족할 경우 {{site.data.keyword.blockchainfull_notm}} Platform 무료 2.0 베타에서 작동합니다.
-- {{site.data.keyword.cloud_notm}} 댈러스 지역에 있습니다.
-- Kubernetes v1.11 이상을 실행 중입니다. [클러스터의 Kubernetes 버전을 업그레이드](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks-updating-kubernetes)하는 방법은 다음 지시사항을 참조하십시오.
-- 클러스터에 사용 가능한 리소스가 충분히 있습니다. 자세한 정보는 [최소 리소스 요구사항](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks-resources-required)에 대한 주제를 참조하십시오.
 
 ## 피어 원장에 사용되는 데이터베이스는 무엇입니까?
-{: #ibp-v2-faq-couchDB}
+{: #ibp-v2-faq-v2-IBP-Overview-1-3}
 {: faq}
 
-모든 피어는 {{site.data.keyword.blockchainfull_notm}} Platform 무료 2.0 베타를 사용하여 배치되며 CouchDB 데이터베이스를 사용합니다. 그러나 CouchDB를 직접 조회할 수는 없습니다.
+{{site.data.keyword.blockchainfull_notm}} Platform과 함께 배치된 모든 피어는 CouchDB를 원장 데이터베이스로 사용합니다.
 
 ## 스마트 계약에 지원되는 언어는 무엇입니까?
-{: #ibp-v2-faq-cc-langs}
+{: #ibp-v2-faq-v2-IBP-Overview-1-4}
 {: faq}
 
-{{site.data.keyword.blockchainfull_notm}} Platform은 Go, Node.js 및 Java로 작성된 스마트 계약을 지원합니다. 새 Hyperledger Fabric 프로그래밍 모델은 현재 Node.js만 지원하지만, 조만간 더 많은 언어를 지원할 계획입니다. 기존 애플리케이션 코드를 보존하거나 Node.js 외의 언어에 대해 Fabric SDK를 사용하려는 경우 계속 하위 레벨 Fabric SDK API를 사용하여 {{site.data.keyword.blockchainfull_notm}} Platform 무료 2.0 베타 네트워크에 연결할 수 있습니다.
+{{site.data.keyword.blockchainfull_notm}} Platform은 Go, Node.js로 작성된 스마트 계약을 지원합니다. 새 Hyperledger Fabric 프로그래밍 모델은 현재 Node.js만 지원하지만 곧 더 많은 언어를 지원할 계획입니다. 기존 애플리케이션 코드를 보존하거나 Node.js 이외의 언어로 Fabric SDK를 사용하려는 경우 하위 레벨 Fabric SDK API를 사용하여 {{site.data.keyword.blockchainfull_notm}} Platform 네트워크에 계속 연결할 수 있습니다. 
 
-## V2.0 베타에서 v2.0 GA로 마이그레이션할 수 있습니까?
-{: #ibp-v2-faq-migrate}
+## V1.0에서 새 {{site.data.keyword.blockchainfull_notm}} Platform으로 업그레이드할 수 있습니까?
+{: #ibp-v2-faq-v2-IBP-Overview-1-5}
 {: faq}
 
-2.0 베타 오퍼링을 2.0 GA 오퍼링으로 마이그레이션할 수 없습니다.
+스타터 플랜의 경우 가능하지 않습니다. 스타터 플랜에서 새 {{site.data.keyword.blockchainfull_notm}} Platform으로 업그레이드할 수 없습니다.
+엔터프라이즈 플랜의 경우 향후 새 {{site.data.keyword.blockchainfull_notm}} Platform으로 업그레이드할 수 있습니다. 도움을 주기 위해 {{site.data.keyword.blockchainfull_notm}} Platform 팀에서 계정 소유자에게 전송하는 이메일을 수신합니다.
+
+## 기본 Hyperledger Fabric을 기반으로 {{site.data.keyword.blockchainfull_notm}} Platform을 사용할 때 얻는 가치는 무엇입니까?
+{: #ibp-v2-faq-v2-IBP-Overview-1-7}
+{: faq}
+
+{{site.data.keyword.blockchainfull_notm}} Platform을 사용하면 고객이 사용자 정의된 블록체인 네트워크를 쉽게 배치할 수 있습니다. 직관적인 콘솔 UI를 사용하여 네트워크를 빠르게 배치하고, 스마트 계약을 쉽게 설치하고 인스턴스화하며, 트랜잭션을 모니터할 수 있습니다.
+
+## 내 {{site.data.keyword.blockchainfull_notm}} Platform 서비스를 삭제하면 어떻게 됩니까?
+{: #ibp-v2-faq-v2-IBP-Overview-1-8}
+{: faq}
+
+{{site.data.keyword.blockchainfull_notm}} Platform 서비스 인스턴스를 삭제하면 콘솔만 삭제됩니다. 콘솔을 사용하여 작성된 모든 컴포넌트 및 이와 연관된 스토리지는 삭제되지 않습니다. Kubernetes  클러스터와 가져온 컴포넌트도 삭제되지 않습니다. Kubernetes 대시보드 또는 CLI 명령을 사용하여 직접 삭제할 때까지 Kubernetes 노드 및 스토리지에 대한 비용이 계속 청구됩니다.
+
+## {{site.data.keyword.cloud_notm}}에서 실행 중인 블록체인 서비스에 사용 가능한 지역은 무엇입니까?
+{: #ibp-v2-faq-v2-IBP-Overview-1-9}
+{: faq}
+
+{{site.data.keyword.blockchainfull_notm}} Platform에 사용 가능한 지역은 [{{site.data.keyword.blockchainfull_notm}} Platform 지역](/docs/services/blockchain?topic=blockchain-ibp-regions-locations)에 나열되어 있습니다. 클러스터를 인식하려면 블록체인 서비스와 동일한 지역에 {{site.data.keyword.cloud_notm}} Kubernetes Service 클러스터를 작성해야 합니다. 추가 지역이 곧 사용 가능하게 됩니다.
+
+## {{site.data.keyword.blockchainfull_notm}} Platform에서 사용되는 Hyperledger Fabric의 버전은 무엇입니까?
+{: #ibp-v2-faq-v2-Hyperledger-Fabric-3-1}
+{: faq}
+
+2019년 2월 기준으로, 베타가 Hyperledger Fabric 1.4.0을 사용하여 출시되었습니다.
+2019년 5월 29일 기준으로, GA가 Hyperledger Fabric 1.4.1을 사용하여 출시되었습니다. Hyperledger Fabric 1.4.0은 GA 제품에서는 지원되지 않습니다.
+
+## 기존 {{site.data.keyword.cloud_notm}} Kubernetes Service 클러스터를 사용할 수 있습니까?
+{: #ibp-v2-faq-v2-Infrastructure-4-2}
+{: faq}
+
+기존 Kubernetes 클러스터가 다음 조건을 충족할 경우 {{site.data.keyword.blockchainfull_notm}} Platform에서 작동합니다.
+- Kubernetes v1.11 이상의 안정적인 버전을 실행 중입니다. 
+- 클러스터에 사용 가능한 리소스가 충분히 있습니다.
 
 ## 로깅 서비스에 액세스할 수 있으며 사용 가능한 로그는 무엇입니까?
-{: #ibp-v2-faq-logs}
+{: #ibp-v2-faq-v2-Logging-and-Monitoring-11-6}
 {: faq}
 
-{{site.data.keyword.blockchainfull_notm}} Platform 2.0을 사용할 경우 이제 Kubernetes 대시보드에서 직접 피어, CA 및 순서 지정자에 액세스할 수 있습니다. 로그를 실시간으로 손쉽게 구문 분석해주는 [{{site.data.keyword.cloud_notm}} LogDNA ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://cloud.ibm.com/docs/services/Log-Analysis-with-LogDNA?topic=LogDNA-kube#kube "IBM Log Analysis with LogDNA를 사용하여 Kubernetes 클러스터 로그 관리") 서비스를 사용하는 것이 좋습니다.
-
-## 기본 Hyperledger Fabric을 기반으로 {{site.data.keyword.blockchainfull_notm}} Platform 무료 2.0 베타를 사용할 때 얻는 가치는 무엇입니까?
-{: #ibp-v2-faq-native-fabric}
-{: faq}
-
-{{site.data.keyword.blockchainfull_notm}} Platform 무료 2.0 베타를 사용할 경우 고객이 사용자 정의 블록체인 네트워크를 쉽게 배치할 수 있습니다. 이 플랫폼은 네트워크를 빠르게 배치할 수 있는 직관적인 콘솔과 스마트 계약을 쉽게 설치 및 인스턴화하는 기능을 제공합니다. 이 플랫폼을 사용할 경우, 스마트 계약 개발 및 네트워크 빌드와 관련하여 {{site.data.keyword.IBM_notm}} 전문가의 지원을 받을 수도 있습니다.
-
-## 성능을 최대화하고 {{site.data.keyword.blockchainfull_notm}} Platform 솔루션을 스케일링할 수 있는 방법은 무엇입니까?
-{: #ibp-v2-faq-perf-scale}
-{: faq}
-
-솔루션의 성능에 영향을 주는 요인 및 블록체인 스케일링 방법에 대한 정보는 [블로그 시리즈![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/blogs/blockchain/2019/01/answering-your-questions-on-hyperledger-fabric-performance-and-scale/ "Hyperledger Fabric 성능 및 스케일에 대한 질문에 답하기")를 확인하십시오.
+{{site.data.keyword.blockchainfull_notm}} Platform을 사용할 경우 이제 Kubernetes 대시보드에서 직접 피어, CA 및 순서 지정자 로그에 액세스할 수 있습니다. 로그를 실시간으로 쉽게 구문 분석할 수 있도록 하는 {{site.data.keyword.cloud_notm}} LogDNA 서비스를 활용하는 것이 좋습니다.

@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-05-16"
+
+keywords: blockchain network, Starter Plan, getting started tutorial
 
 subcollection: blockchain
 
@@ -23,7 +25,7 @@ subcollection: blockchain
 
 Piano Starter ti consente di acquisire e sviluppare competenze con {{site.data.keyword.blockchainfull_notm}} Platform, eseguire applicazioni di esempio, testare le tue applicazioni e simulare uno scenario con più organizzazioni. Questa esercitazione introduttiva ti guiderà nell'utilizzo del piano Starter per iniziare a sviluppare e utilizzare una rete blockchain.
 
-Se non hai dimestichezza con {{site.data.keyword.blockchainfull_notm}} Platform e blockchain, puoi trovare ulteriori informazioni su blockchain controllando la [panoramica dei componenti fondamentali](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview) delle reti sviluppate sull'open source [Hyperledger Fabric](/docs/services/blockchain/reference/v10_fabric.html#hyperledger-fabric). Puoi inoltre controllare [Hyperledger Fabric documentation ![Icona link esterno](images/external_link.svg "Icona link esterno")](http://hyperledger-fabric.readthedocs.io/en/release-1.2/blockchain.html "Introduction to Blockchain").
+Se non hai dimestichezza con {{site.data.keyword.blockchainfull_notm}} Platform e blockchain, puoi trovare ulteriori informazioni su blockchain controllando la [panoramica dei componenti fondamentali](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview) delle reti sviluppate sull'open source [Hyperledger Fabric](/docs/services/blockchain/reference/v10_fabric.html#hyperledger-fabric). Puoi inoltre controllare [Hyperledger Fabric documentation ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/blockchain.html "Introduction to Blockchain").
 
 **Nota**: {{site.data.keyword.blockchainfull_notm}} Platform piano Starter è un ambiente di sviluppo e test e non è adatto per i carichi di lavoro di produzione. Se ti serve un ambiente di produzione, vedi [Informazioni sul piano Enterprise](/docs/services/blockchain/enterprise_plan.html#enterprise-plan-about).
 
@@ -47,11 +49,6 @@ All'interno del consorzio delle organizzazioni che hanno aderito alle tue reti, 
 Dopo aver formato il tuo consorzio, devi scrivere il chaincode, noto anche come smart contract, che conterrà la logica di business della tua rete e ti consentirà di interagire con i dati nel libro mastro blockchain. Dovrai poi utilizzare gli SDK Fabric insieme a tali smart contract per inviare le transazioni alla tua rete dalla tua applicazione lato client.
 
 - [Sviluppo del chaincode](/docs/services/blockchain/get_start_starter_plan.html#getting-started-with-starter-plan-develop-chaincode)
-- [Sviluppo di applicazioni con gli SDK Fabric](/docs/services/blockchain/get_start_starter_plan.html#getting-started-with-starter-plan-develop-apps)
-
-{{site.data.keyword.blockchainfull_notm}} Platform fornisce applicazioni di esempio che puoi distribuire alla tua rete del piano Starter con solo pochi clic.
-
-- [Distribuzione di applicazioni di esempio](/docs/services/blockchain/get_start_starter_plan.html#getting-started-with-starter-plan-sample-applications)
 
 **Utilizza e gestisci la tua rete**
 
@@ -89,7 +86,7 @@ Puoi invitare altre [organizzazioni](/docs/services/blockchain/glossary.html#glo
 
 1. Nella schermata "Membri" del tuo Monitoraggio della rete, fai clic sul pulsante **Invita Membri**.
 2. Viene visualizzata la finestra "Invita membro".
-    - Se vuoi invitare un'altra organizzazione, scegli "Invita un membro".  Specifica il nome e l'indirizzo email dell'operatore dell'organizzazione che vuoi invitare.  Puoi anche immettere le informazioni aggiuntive che vuoi includere nel tuo invito nel campo "Aggiungi una nota".  Fai clic sul pulsante **Invia invito**.  L'organizzazione invitata riceverà una email di invito e potrà quindi attenersi alle istruzioni nell'e-mail per aderire alla tua rete.
+    - Se vuoi invitare un'altra organizzazione, scegli "Invita un membro".  Specifica il nome e l'indirizzo email dell'operatore dell'organizzazione che vuoi invitare.  Puoi anche immettere le informazioni aggiuntive che vuoi includere nel tuo invito nel campo "Aggiungi una nota".  Fai clic sul pulsante **Invia invito**.  L'organizzazione invitata riceverà un'email di invito e potrà quindi attenersi alle istruzioni nell'e-mail per aderire alla tua rete.
     - Se vuoi aggiungere delle ulteriori organizzazioni che possono essere aggiunte a un canale, scegli "Aggiungi un membro".  Specifica un nome per la tua nuova organizzazione. Puoi, facoltativamente, aggiungere dei peer alla tua nuova organizzazione o farlo in un secondo momento nel Monitoraggio della rete.  Fai clic sul pulsante **Crea**. Nota: se aggiungi dei peer per la tua nuova organizzazione, devi passare a questa nuova organizzazione per vedere i tuoi peer. Puoi passare a un'altra organizzazione facendo clic sull'angolo superiore destro e selezionando l'organizzazione di destinazione dall'elenco a discesa nella sezione **CAMBIA ORGANIZZAZIONE**.
 
 
@@ -107,7 +104,6 @@ Devi creare un'istanza del servizio [{{site.data.keyword.blockchainfull_notm}} P
 5. Nel pannello di benvenuto, scegli **Unisciti a una rete esistente**, seleziona la rete a cui aderire dall'elenco a discesa e fai clic su **Continua**.
 
 Puoi trovare la tua istanza del servizio blockchain nel [Dashboard del servizio {{site.data.keyword.cloud_notm}} ![Icona link esterno](images/external_link.svg "Icona link esterno")](https://cloud.ibm.com/resources "{{site.data.keyword.cloud_notm}} - Dashboard del servizio").
-
 
 ## Creare canali
 {: #getting-started-with-starter-plan-create-channels}
@@ -127,23 +123,7 @@ Consulta l'esercitazione [sviluppo del chaincode](/docs/services/blockchain/howt
 {: #getting-started-with-starter-plan-install-instantiate-chaincode}
 Dopo aver aderito ai canali e sviluppato la tua logica di business, devi installare il chaincode sui peer nella rete. Puoi utilizzare il monitoraggio della rete per installare ed istanziare il chaincode sui peer della tua organizzazione, nonché aggiornarlo per facilitare lo sviluppo continuo.
 
-Per ulteriori informazioni sulla distribuzione di esempi precostruiti, consulta [Installazione, istanziazione e aggiornamento di un chaincode](/docs/services/blockchain/howto/install_instantiate_chaincode.html#install-instantiate-chaincode).
-
-
-## Sviluppo delle applicazioni utilizzando gli SDK Fabric
-{: #getting-started-with-starter-plan-develop-apps}
-
-{{site.data.keyword.blockchainfull_notm}} Platform fornisce degli endpoint API a cui puoi collegarti utilizzando gli SDK Fabric. Puoi utilizzare gli SDK per richiamare il chaincode dalle tue applicazioni e inviare le transazioni alla tua rete blockchain.
-
-Per ulteriori informazioni, vedi l'esercitazione [sviluppo di applicazioni](/docs/services/blockchain/v10_application.html#dev-app).
-
-
-## Distribuzione di applicazioni di esempio
-{: #getting-started-with-starter-plan-sample-applications}
-
-Piano Starter ti consente di distribuire delle applicazioni di esempio alla tua rete con solo pochi clic. Puoi utilizzare questi esempi per saperne di più sul chaincode e usarli come punti di partenza per il tuo sviluppo.
-
-Per ulteriori informazioni, vedi [Distribuzione di applicazioni di esempio](/docs/services/blockchain/howto/prebuilt_samples.html#deploying-sample-applications).
+Per ulteriori informazioni sull'installazione e l'istanziazione del tuo chaincode, consulta [Installazione, istanziazione e aggiornamento di un chaincode](/docs/services/blockchain/howto/install_instantiate_chaincode.html#install-instantiate-chaincode).
 
 
 ## Monitoraggio delle risorse di rete
@@ -195,13 +175,6 @@ Se vuoi cancellare le tue configurazioni personalizzate, la tua chaincode in ese
 Puoi distribuire il chaincode e le applicazioni di cui esegui il test su una rete piano Starter in una rete piano Enterprise. Per distribuire in Enterprise un chaincode di cui esegui il test su una rete piano Starter, attieniti alle istruzioni in [Installazione, istanziazione e aggiornamento di un chaincode](/docs/services/blockchain/howto/install_instantiate_chaincode.html#install-instantiate-chaincode-install-cc).
 
 Tra le reti del piano Starter ed Enterprise, è possibile migrare solo il chaincode e le applicazioni, non è possibile migrare i dati.
-
-<!--
-As you can see in [Deploying sample applications](/docs/services/blockchain/howto/prebuilt_samples.html#deploying-sample-applications), Starter Plan makes it easy to get a sample application integrated with your network by using Toolchain. This setup also allows for continuous integration by automatically updating your sample application whenever your forked application repo is changed. If you want to deploy this application into an Enterprise Plan network, you can copy your forked application repo into a new repo and then follow the instructions in [Deploying sample applications manually](/docs/services/blockchain/howto/prebuilt_samples.html#deploying-sample-applications#deploy_sample_applications_manually).
--->
-
-Se distribuisci una qualche applicazione di esempio nella tua rete piano Starter e vuoi distribuire questa applicazione in una rete piano Enterprise, puoi copiare il tuo repository di applicazioni duplicato in un nuovo repository e attenerti quindi alle istruzioni nelle applicazioni di esempio per eseguirne la distribuzione sulla tua rete piano Enterprise.
-
 
 ## Eliminazione, o uscita da, una rete
 {: #getting-started-with-starter-plan-delete-network}

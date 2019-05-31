@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-04-23"
+lastupdated: "2019-05-16"
 
 keywords: blockchain components, ca, certificate authorities, peer, ordering service, orderer, channel, smart contract, applications
 
@@ -41,12 +41,14 @@ Fabric 기반 블록체인 네트워크의 기본 요소는 ID 및 권한입니�
 
 {{site.data.keyword.blockchainfull_notm}} Platform CA는 [Hyperledger Fabric-CA ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric-ca.readthedocs.io/en/release-1.4/ "Hyperledger Fabric CA")를 기반으로 하나 x.509 인증서를 기반으로 하는 PKI를 사용하는 한 다른 CA를 사용하는 것도 가능합니다. 다중 레벨의 CA일 수 있으며 일반적으로 다중 레벨의 CA여야 합니다. 일반적으로 네트워크의 "루트 CA"는 "중간 CA"에 인증서를 제공하는 경우를 제외하고는 노출되지 않으며, 인증서가 사용자 및 컴포넌트에 직접 발행되거나 더 많은 계층의 중간 CA에 발행됩니다. 인증 기관이 ID 및 멤버십을 설정하기 위해 사용되는 방법에 대한 자세한 사항은 [ID 관련 Hyperledger Fabric 문서![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/identity/identity.html) 및 [멤버십 관련 Hyperledger Fabric 문서 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/membership/membership.html)를 참조하십시오.
 
-## 순서 지정자
+## 순서 지정 서비스
 {: #blockchain-component-overview-orderer}
 
 순서 지정 서비스가 보통 네트워크의 "핵심"이라고 하지만 실제로 기능은 상당히 단순합니다. 여기에는 피어에 의해 유효성 검증된 트랜잭션을 블록으로 순서를 지정하고 원장에 작성되도록 피어로 다시 보내기 위한 기능이 포함됩니다. Fabric의 초기 버전에서는 이 기능이 피어 내부에 번들화되었으나 Fabric v1.0부터는 잠재적인 상태 분기(fork)가 발생될 수 있는 일탈을 방지하고 피어 성능을 높일 수 있도록 개별 컴포넌트로 분리되었습니다.
 
-실제 레벨에서 일반적으로 이 순서 지정 기능에는 통칭하여 "순서 지정 서비스"라고 하는 순서 지정자 세트가 필요하지만 테스트 또는 POC 환경에서 단일 노드(SOLO 순서 지정자라고 함)를 사용할 수 있습니다.
+실제 레벨에서 일반적으로 이 순서 지정 기능에는 통칭하여 "순서 지정 서비스"라고 하는 순서 지정자 세트가 필요합니다.
+
+순서 지정 서비스에 대한 자세한 정보는 [순서 지정 서비스 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/orderer/ordering_service.html)를 참조하십시오.
 
 ## 피어
 {: #blockchain-component-overview-peer}
@@ -74,9 +76,7 @@ Fabric 기반 블록체인 네트워크의 기본 요소는 ID 및 권한입니�
 
 {{site.data.keyword.blockchainfull_notm}} Platform과 같은 Fabric 기반 네트워크의 클라이언트 애플리케이션은 기본 인프라(예: API, SDK 및 스마트 계약)를 활용하여 더 높은 추상화 레벨에서 클라이언트 상호작용(호출 및 조회)을 허용합니다.
 
-애플리케이션이 Fabric 기반 네트워크와 상호작용하는 방법을 보려면 [첫 번째 애플리케이션 작성과 관련된 문서![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/write_first_app.html "첫 번째 애플리케이션 작성")를 참조하십시오.  또한 Fabric v1.4의 경우, {{site.data.keyword.blockchainfull_notm}} Platform 2.0에서 사용 가능한 영역이 지속적으로 개선되고 있습니다. 자세한 정보는 [애플리케이션 개발![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/developapps/developing_applications.html "애플리케이션 개발")에서 Hyperledger Fabric 주제를 참조하십시오.  계약 클래스와 같은 이러한 직접적인 기능은 Fabric v1.2(Starter Plan의 현재 버전)와 호환되지 않지만, 여기에는 개념적 정보와 애플리케이션 디자인의 요소로 사용할 가치가 있고 미래를 대비할 수 있는 기타 유용한 팁들이 포함되어 있습니다.
-
-애플리케이션이 Fabric 기반 네트워크와 상호작용하는 방법을 보려면 [애플리케이션 작성](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app)을 참조하십시오.
+애플리케이션이 Fabric 기반 네트워크와 상호작용하는 방법을 보려면 Hyperledger Fabric 문서에서 [애플리케이션 개발 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/developapps/developing_applications.html "애플리케이션 개발") 주제를 확인하십시오. [애플리케이션 작성](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app) 주제를 방문하여 애플리케이션을 {{site.data.keyword.blockchainfull_notm}} Platform에 연결하는 방법을 알아볼 수도 있습니다.
 
 ## 네트워크의 예
 {: #blockchain-component-overview-example-network}

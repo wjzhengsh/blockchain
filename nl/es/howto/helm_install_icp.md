@@ -2,7 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-04-23"
+lastupdated: "2019-05-16"
+
+keywords: IBM Blockchain Platform, Helm chart file, local ICP cluster, IBM Cloud Private, upgrade Helm chart
 
 subcollection: blockchain
 
@@ -66,7 +68,7 @@ Para obtener más información sobre cómo utilizar estas imágenes, consulte
 ## Importación del diagrama de Helm en {{site.data.keyword.cloud_notm}} Private
 {: #helm-install-importing}
 
-1. Descargue el archivo del diagrama de Helm en IBM Blockchain Platform para {{site.data.keyword.cloud_notm}} Private desde [Passport Advantage Online ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/software/passportadvantage/pao_customer.html "Passport Advantage Online") o para la edición gratuita Community desde [GitHub ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://github.com/IBM/charts/blob/master/repo/stable/ibm-blockchain-platform-dev-1.0.2.tgz "IBM/charts").  Este paquete de diagramas de Helm contiene tres subdiagramas de Helm para la CA, el clasificador y el igual.
+1. Descargue el archivo del diagrama de Helm en {{site.data.keyword.blockchainfull_notm}} Platform para {{site.data.keyword.cloud_notm}} Private desde [Passport Advantage Online ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://www.ibm.com/software/passportadvantage/pao_customer.html "Passport Advantage Online") o para la edición gratuita Community desde [GitHub ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://github.com/IBM/charts/blob/master/repo/stable/ibm-blockchain-platform-dev-1.0.2.tgz "IBM/charts").  Este paquete de diagramas de Helm contiene tres subdiagramas de Helm para la CA, el clasificador y el igual.
 
 2. Si aún no lo ha hecho, inicie sesión en el clúster de {{site.data.keyword.cloud_notm}} Private.
 

@@ -1,8 +1,10 @@
 ---
 
 copyright:
-  years: 2018.2019
+  years: 2018, 2019
 lastupdated: "2019-03-05"
+
+keywords: IBM Blockchain Platform, sample applications, Javascript application, IBM Cloud
 
 subcollection: blockchain
 

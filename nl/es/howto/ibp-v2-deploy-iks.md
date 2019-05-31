@@ -2,7 +2,9 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-04-23"
+lastupdated: "2019-05-16"
+
+keywords: getting started tutorials, videos, web browsers
 
 subcollection: blockchain
 
@@ -17,15 +19,16 @@ subcollection: blockchain
 {:tip: .tip}
 {:pre: .pre}
 
-# Iniciación a {{site.data.keyword.blockchainfull_notm}} Platform gratuita 2.0 beta
+# Iniciación a {{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}}
 {: #ibp-v2-deploy-iks}
 
-{{site.data.keyword.blockchainfull}} Platform 2.0 es un release beta gratuito que incluye la consola de {{site.data.keyword.blockchainfull_notm}} Platform, una GUI que puede simplificar y acelerar el proceso de despliegue y gestión de componentes de blockchain. En esta guía de aprendizaje se describe cómo empezar a trabajar con {{site.data.keyword.blockchainfull_notm}} Platform 2.0 y cómo utilizar la consola para desplegar y gestionar componentes de blockchain en el clúster del servicio Kubernetes de {{site.data.keyword.cloud_notm}} en {{site.data.keyword.cloud_notm}}. Para obtener más información sobre Kubernetes y {{site.data.keyword.cloud_notm}} Kubernetes Service, consulte [Kubernetes](/docs/services/blockchain/reference/k8s.html "Kubernetes").
+{{site.data.keyword.blockchainfull}} Platform on {{site.data.keyword.cloud_notm}} incluye
+la consola de {{site.data.keyword.blockchainfull_notm}} Platform, una interfaz de usuario que puede simplificar y acelerar el proceso de despliegue y gestión de componentes de blockchain. En esta guía de aprendizaje se describe cómo empezar a trabajar con {{site.data.keyword.blockchainfull_notm}} Platform 2.0 y cómo utilizar la consola para desplegar y gestionar componentes de blockchain en el clúster del servicio Kubernetes de {{site.data.keyword.cloud_notm}} en {{site.data.keyword.cloud_notm}}. Para obtener más información sobre Kubernetes y {{site.data.keyword.cloud_notm}} Kubernetes Service, consulte [Kubernetes](/docs/services/blockchain/reference/k8s.html "Kubernetes").
 {:shortdesc}
 
 **Audiencia de destino:** este tema está diseñado para los administradores de red responsables de configurar un clúster de Kubernetes en {{site.data.keyword.cloud_notm}} y de desplegar {{site.data.keyword.blockchainfull_notm}} Platform.
 
-Después de enlazar {{site.data.keyword.blockchainfull_notm}} Platform al clúster de {{site.data.keyword.cloud_notm}} Kubernetes, puede iniciar la consola para crear y gestionar los componentes de blockchain. El uso de un clúster del servicio Kubernetes para desplegar {{site.data.keyword.blockchainfull_notm}} Platform 2.0 le ofrece las siguientes ventajas importantes:
+Después de enlazar {{site.data.keyword.blockchainfull_notm}} Platform al clúster de {{site.data.keyword.cloud_notm}} Kubernetes, puede iniciar la consola para crear y gestionar los componentes de blockchain y experimentar las ventajas importantes siguientes:
 
 - **Control:** puede controlar y gestionar los componentes de blockchain y los certificados desde una consola central. Despliegue solo los componentes necesarios para su negocio y añada más a medida que crezcan sus necesidades.
 - **Despliegue flexible basado en Kubernetes:** puede aprovechar las opciones de cálculo (CPU, memoria, almacenamiento) del clúster de Kubernetes y las opciones integradas de HA y DR.
@@ -36,22 +39,26 @@ Después de enlazar {{site.data.keyword.blockchainfull_notm}} Platform al clúst
 
 Antes de desplegar la consola, asegúrese de que comprende las consideraciones siguientes:
 
-- {{site.data.keyword.blockchainfull_notm}} Platform gratuita 2.0 beta se basa en Hyperledger Fabric v1.4.
-- Todos los iguales desplegados con la versión beta 2.0 gratuita utilizan CouchDB como base de datos de estado.
-- Tiene la opción de utilizar un clúster de Kubernetes gratuito para la evaluación de la oferta beta; sin embargo, la capacidad y el rendimiento están limitados, no se pueden migrar datos y el clúster se suprime después de 30 días.
+- {{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}} se basa en Hyperledger Fabric v1.4.
+- Todos los iguales desplegados con la consola o las API utilizan CouchDB como base de datos de estado.
+- Tiene la opción de enlazar su instancia de servicio de {{site.data.keyword.blockchainfull_notm}} Platform con un clúster Kubernetes gratuito para la evaluación de la oferta; sin embargo, la capacidad y el rendimiento están limitados, no se pueden migrar datos y el clúster se suprime después de 30 días.
+- Aunque la prueba beta es gratuita, tiene que pagar el clúster de Kubernetes, si elige un clúster de pago.
 - El usuario es responsable de gestionar la supervisión del estado, la seguridad y el registro del clúster de Kubernetes. Consulte esta [información ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://cloud.ibm.com/docs/containers/cs_responsibilities.html#your-responsibilities-by-using-ibm-cloud-kubernetes-service "Responsabilidades de gestión del clúster") para ver detalles sobre lo que gestiona {{site.data.keyword.cloud_notm}} y sobre cuáles son sus responsabilidades.
 - También es responsable de supervisar el uso de recursos del clúster de Kubernetes utilizando el panel de control de Kubernetes. Si tiene que aumentar la capacidad de almacenamiento o el rendimiento del clúster, consulte esta información sobre cómo [modificar el volumen existente ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://cloud.ibm.com/docs/containers/cs_storage_file.html#change_storage_configuration "Cambiar el tamaño y el IOPS del dispositivo de almacenamiento existente").
-- Es responsable de gestionar y proteger sus certificados, sus claves públicas y privadas. IBM no almacena sus certificados en el clúster de Kubernetes.
-- La oferta gratuita 2.0 beta solo está disponible en la región **Dallas** del servicio Kubernetes de {{site.data.keyword.cloud_notm}}. Esta región incluye centros de datos en Dallas, San José, Houston y Brasil. Por lo tanto, todos los componentes de blockchain pueden residir en cualquiera de estos cuatro centros de datos. No se despliegan en ningún otro sitio.
-- Aunque la oferta beta es gratuita, tiene que pagar el clúster de Kubernetes, si elige un clúster de pago.
+- Es responsable de gestionar y proteger sus certificados y sus claves privadas. IBM no almacena sus certificados en el clúster de Kubernetes.
+- {{site.data.keyword.blockchainfull_notm}} Platform está disponible en diversas regiones. Consulte este tema sobre
+[Ubicaciones de {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/howto?topic=blockchain-ibp-regions-locations) para ver una lista actualizada.
 - Kubernetes debe tener la versión 1.11 o superior en el clúster de Kubernetes de {{site.data.keyword.cloud_notm}}. Utilice estas instrucciones para [actualizar los clústeres nuevos y existentes](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks-updating-kubernetes) a esta versión.
+- Debe suministrar almacenamiento para el clúster Kubernetes y convertirlo en la clase de almacenamiento predeterminada del clúster. Este almacenamiento lo utilizarán los nodos de igual, del servicio de ordenación y de la entidad emisora de certificados. Consulte este tema sobre
+[Almacenamiento de Kubernetes
+![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](/docs/containers?topic=containers-kube_concepts "Conceptos básicos del almacenamiento de Kubernetes") para decidir qué tipo de almacenamiento va a suministrar.
 
 ## Vídeo de guía de aprendizaje
 {: #ibp-v2-deploy-video}
 
-Vea el vídeo siguiente para obtener más información sobre {{site.data.keyword.blockchainfull}} Platform gratuita 2.0 beta y sobre cómo empezar a trabajar para desplegar {{site.data.keyword.blockchainfull_notm}} Platform gratuita 2.0 beta.
-
-<iframe class="embed-responsive-item" id="youtubeplayer" title="Vídeo de IBM Blockchain Platform gratuita 2.0 beta - guía de aprendizaje para el despliegue" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/gPnkVQiHRqk" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen> </iframe>
+Vea la [serie de vídeos]( http://ibm.biz/BlockchainPlatformSeries) siguiente para obtener información sobre la consola de
+{{site.data.keyword.blockchainfull_notm}} Platform y cómo puede comenzar a desplegar
+{{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}}.
 
 ## Antes de empezar
 {: #ibp-v2-deploy-iks-prereq}
@@ -88,7 +95,8 @@ Para desplegar la consola de {{site.data.keyword.blockchainfull_notm}} Platform 
 |Tipo de clúster de Kubernetes | Caso de uso | CPU | RAM | Nodos trabajadores |
 |-----------|------|-----|-----------------------|
 |Estándar (recomendado) | Adecuado para MVP | 4 (compartidas) | 16 GB (compartidos)|múltiples|
-|Gratuito | Adecuado para evaluación | 2 | 4 GB | 1 |  
+|Gratuito** | Adecuado para evaluación | 2 | 4 GB | 1 |  
+** Obtenga una vista previa de {{site.data.keyword.blockchainfull_notm}} Platform sin coste alguno durante 30 días al enlazar su instancia de servicio de {{site.data.keyword.blockchainfull_notm}} Platform con un clúster Kubernetes gratuito de {{site.data.keyword.cloud_notm}}. El rendimiento estará limitado por el uso, almacenamiento y funcionalidad. {{site.data.keyword.cloud_notm}} suprimirá el clúster Kubernetes después de 30 días y no se podrán migrar los nodos ni los datos de un clúster gratuito a un clúster de pago.
 
 Estos recursos son suficientes para pruebas y experimentación. La [guía de aprendizaje Crear una red](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network), en la que creará dos iguales, dos CA y un clasificador, consume aproximadamente 1,1 CPU, lo que permite cierto espacio adicional para pruebas (por ejemplo, creando varios canales, cada uno de los cuales tendrá un libro mayor distinto). Si utiliza un clúster de Kubernetes gratuito, tenga en cuenta que el clúster se suprimirá después de la prueba de 30 días y que se eliminarán todos los activos asociados. Además, el rendimiento es significativamente más lento en un clúster gratuito.
 {:note}
@@ -108,13 +116,11 @@ Aunque es más fácil tener suficientes recursos desplegados en el servicio
 
 Para tener una idea de cuánto almacenamiento y potencia de cálculo necesitará en su clúster, consulte este gráfico, que contiene los valores predeterminados actuales para el igual, el clasificador y la CA:
 
-| **Componente** (todos los contenedores) | CPU (en milicpus) | CPU (en CPU) | Memoria (en megabytes) | Memoria (en gigabytes) | Almacenamiento (en gigabytes) |
-|--------------------------------|--------------------|---------------|-----------------------|-----------------------|------------------------|
-| **Igual**                       | 1100               | 1,1           | 2200                  | 2,2                   | 200                    |
-| **CA**                         | 300                | 0,3            | 600                   | 0,6                    | 10                     |
-| **Clasificador**                    | 450                | 0,45           | 900                   | 0,9                    | 100                    |
-
-
+| **Componente** (todos los contenedores) | CPU  | Memoria (GB) | Almacenamiento (GB) |
+|--------------------------------|---------------|-----------------------|------------------------|
+| **Igual**                       |  1,1          | 2,2                   | 200 (incluye 100GB para el igual y 100GB para CouchDB)|
+| **CA**                         | 0,1            | 0,2                    | 20                     |
+| **Clasificador**                    | 0,45           | 0,9                    | 100                    |
 
 ## Paso uno: crear una instancia de servicio en {{site.data.keyword.cloud_notm}}
 {: #ibp-v2-deploy-iks-create-service-instance}
@@ -122,25 +128,25 @@ Para tener una idea de cuánto almacenamiento y potencia de cálculo necesitará
 Siga los pasos siguientes para crear una instancia de servicio de {{site.data.keyword.blockchainfull_notm}} Platform 2.0 en {{site.data.keyword.cloud_notm}}.
 
 1. Localice el [servicio blockchain ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://cloud.ibm.com/catalog/services/blockchain) en el catálogo de {{site.data.keyword.cloud_notm}} o busque `Blockchain` en la página del catálogo de {{site.data.keyword.cloud_notm}}.
-2. Si lo desea, puede cambiar el **Nombre de servicio** de la instancia para reconocerla fácilmente en el futuro.
+2. Se recomienda que cambie el **Nombre de servicio** de su instancia para que pueda reconocerla fácilmente en el futuro.
 3. Para la versión beta, **Dallas** es la única región disponible y no se puede modificar.
 4. Puede dejar si modificar los campos de grupo de recursos y etiquetas.
 5. Pulse **Crear** para suministrar la instancia de servicio.
 
-## Paso dos: desplegar {{site.data.keyword.blockchainfull_notm}} Platform 2.0
+## Paso dos: desplegar {{site.data.keyword.blockchainfull_notm}} Platform
 {: #ibp-v2-deploy-iks-steps}
 
-Puede seguir la guía para desplegar {{site.data.keyword.blockchainfull_notm}} Platform 2.0 inmediatamente después de crear la instancia de servicio.
+Puede seguir la guía para desplegar {{site.data.keyword.blockchainfull_notm}} Platform inmediatamente después de crear la instancia de servicio.
 
 1. El paso de **bienvenida y requisitos previos**. Si ya tiene un clúster del servicio Kubernetes de {{site.data.keyword.IBM_notm}} existente en la región **Dallas** y desea utilizarlo para el servicio de blockchain, marque el recuadro de selección. **Si utiliza un clúster existente, puede omitir el paso siguiente; pero asegúrese de que la versión de Kubernetes sea la v1.11 o posterior**. Pulse **Continuar**.
 2. El paso **Crear clúster**. Si marca el recuadro de selección del paso 1 para utilizar un clúster de Kubernetes existentes, este paso se omite. De lo contrario, pulse **Crear un nuevo clúster**, lo que inicia el panel de control de Kubernetes de {{site.data.keyword.cloud_notm}} para crear un clúster. Para obtener más información, consulte [Iniciación al servicio {{site.data.keyword.cloud_notm}} Kubernetes
-![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](/docs/containers/container_index.html). Este proceso tarda un rato.
+![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](/docs/containers/getting-started.html). Este proceso tarda un rato.
   - Independientemente del tipo de clúster que elija, debe seleccionar la ubicación del clúster de Kubernetes **Dallas** para el release beta.
   - Seleccione **Clúster estándar (recomendado):** si necesita una opción de plazo más largo que incluya varios nodos para alta disponibilidad. **Asegúrese de elegir la versión de Kubernetes v1.11 o posterior.** Para desplegar un clúster de pago, consulte
 [Creación de un clúster estándar
 ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](/docs/containers?topic=containers-clusters#clusters_ui_standard "Creación de un clúster estándar"). Tenga en cuenta que si desea una alta disponibilidad o recuperación tras desastre, necesitará tomar una decisión en relación con la clase de almacenamiento que se va a utilizar. El suministro dinámico utilizará la clase de almacenamiento predeterminada del clúster. Así, los clientes pueden establecer cualquier clase de almacenamiento como predeterminada. Para obtener más información, consulte
 [Cómo decidir la configuración de almacenamiento de archivos ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](/docs/containers?topic=containers-file_storage#file_predefined_storageclass "Cómo decidir la configuración de almacenamiento de archivos").
-  - Seleccione **Clúster gratuito:** si tiene previsto utilizar el clúster durante menos de 30 días. **Tenga en cuenta** que no se puede migrar de un clúster gratuito a un clúster de pago. El tipo de clúster gratuito ofrece un almacenamiento y un rendimiento de transacciones limitados. Para obtener instrucciones sobre qué hacer cuando caduque el clúster de Kubernetes, consulte este tema sobre la
+  - Elija **Clúster gratuito:** si desea obtener una vista previa de la plataforma durante menos de 30 días. **Tenga en cuenta** que no se puede migrar de un clúster gratuito a un clúster de pago. El tipo de clúster gratuito ofrece un almacenamiento y un rendimiento de transacciones limitados. Para obtener instrucciones sobre qué hacer cuando caduque el clúster de Kubernetes, consulte este tema sobre la
 [Caducidad del clúster de Kubernetes](/docs/services/blockchain/howto/ibp-console-manage.html#ibp-console-manage-console-cluster-expiration).
   - Para obtener más información sobre las diferencias entre los clústeres de Kubernetes gratuitos y los de pago en {{site.data.keyword.cloud_notm}}, consulte [Comparación entre clústeres gratuitos y estándares ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://cloud.ibm.com/docs/containers?topic=containers-cluster_types#cluster_types "Comparación entre clústeres gratuitos y estándares").  
 
@@ -168,6 +174,7 @@ De forma predeterminada, la consola utiliza [{{site.data.keyword.cloud_notm}} Id
 {: #ibp-v2-deploy-iks-next-steps}
 
 Ahora que la consola está lista para ser utilizada, puede continuar con la [guía de aprendizaje sobre cómo crear una red](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network).
+Considere la posibilidad de marcar el URL de la consola para poder volver en un momento posterior si es necesario. De no ser así, puede seguir los pasos de las [Instrucciones posteriores a la instalación](#ibp-v2-deploy-iks-post-install) para volver a ella desde el navegador.
 
 ## Actualización de la versión de Kubernetes del clúster
 {: #ibp-v2-deploy-iks-updating-kubernetes}
@@ -197,7 +204,7 @@ Debe esperar a que finalice la actualización para poder [reanudar el despliegue
 El usuario que enlaza la instancia de servicio de blockchain al clúster de Kubernetes debe tener los roles Administrador y Gestor en Kubernetes.
 Para configurar este acceso, debe realizar los pasos siguientes:
    1. En el panel de control de {{site.data.keyword.cloud_notm}}, pulse la lista desplegable **Gestionar** y, a continuación, pulse **Acceso (IAM)**.
-   2. En el menú de navegación de la izquierda, pulse **Usuarios** y pulse el ID del usuario que vaya a enlazar la instancia de servicio con el clúster de Kubernetes.
+   2. En el menú de navegación de la izquierda, pulse **Usuarios** y pulse el ID del usuario que vaya a enlazar la instancia de servicio con el clúster Kubernetes.
    3. Pulse **Políticas de acceso** y luego **Asignar acceso**.
    4. Pulse el mosaico **Asignar acceso a recursos**.
    5. En la lista desplegable **Servicios**, seleccione **Servicio Kubernetes**.
@@ -209,10 +216,34 @@ Para configurar este acceso, debe realizar los pasos siguientes:
 Para obtener más información sobre el control de acceso de Kubernetes, consulte
 [cómo elegir la política de acceso y el rol correctos para los usuarios](/docs/containers?topic=containers-users#access_roles).
 
-## Supresión de una instancia de servicio
+## Instrucciones posteriores a la instalación
+{: #ibp-v2-deploy-iks-post-install}
+
+### Cómo volver a la consola
+{: #ibp-v2-deploy-iks-rtn-to-console}
+
+Si necesita volver a la consola después de desplegar la instancia de servicio, puede hacerlo desde el panel de control de
+{{site.data.keyword.cloud_notm}}.
+1. En el navegador, vaya a https://cloud.ibm.com/resources e inicie sesión.
+2. La instancia de servicio de {{site.data.keyword.blockchainfull_notm}} Platform será visible en el triángulo
+**Servicios**. Localice la instancia de servicio de {{site.data.keyword.blockchainfull_notm}} Platform que ha desplegado y pulse sobre ella.
+3. En el panel posterior, pulse **Iniciar {{site.data.keyword.blockchainfull_notm}} Platform**.
+
+Ahora la consola volverá a ser visible.
+
+### Información sobre tarifas y facturación
+{: #ibp-v2-deploy-iks-pricing-billing}
+
+- Consulte este tema sobre [Tarifas](/docs/services/blockchain/howto?topic=blockchain-ibp-saas-pricing) si necesita volver a ver la información sobre las tarifas de {{site.data.keyword.blockchainfull_notm}} Platform.
+- La información de uso actual de {{site.data.keyword.cloud_notm}} está disponible en el
+[mosaico de uso ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://cloud.ibm.com/billing/ "Facturación y uso") del panel de control de {{site.data.keyword.cloud_notm}} y la factura es visible en la [información de facturación
+![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://cloud.ibm.com/billing/billing-items "Elementos de facturación"). Consulte este tema sobre
+[Facturación](/docs/services/blockchain/howto?topic=blockchain-ibp-saas-pricing#ibp-saas-pricing-billing) para obtener más detalles sobre cómo funciona la facturación de {{site.data.keyword.blockchainfull_notm}} Platform.
+
+### Supresión de una instancia de servicio
 {: #ibp-v2-deploy-iks-delete-service-instance}
 
-Cuando ya no necesite una instancia de servicio, se puede suprimir del clúster de Kubernetes para liberar recursos. Puede utilizar la interfaz de usuario de IBM Cloud para suprimir una instancia de servicio de {{site.data.keyword.blockchainfull_notm}} Platform gratuita 2.0 beta.
+Cuando ya no necesite una instancia de servicio, se puede suprimir del clúster de Kubernetes para liberar recursos. Puede utilizar el panel de control de {{site.data.keyword.cloud_notm}} para suprimir su instancia de servicio de {{site.data.keyword.blockchainfull_notm}} Platform.
 
 1. Vaya al [panel de control de {{site.data.keyword.cloud_notm}} de ![Icono de enlace externo](../images/external_link.svg "Icono de enlace externo")](https://cloud.ibm.com/ "Panel de control").
 2. Localice el mosaico **Resumen de recursos** y pulse **Servicios**.

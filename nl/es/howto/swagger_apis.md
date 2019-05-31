@@ -1,8 +1,10 @@
 ---
 
 copyright:
-  years: 2018,2019
-lastupdated: "2019-04-03"
+  years: 2018, 2019
+lastupdated: "2019-05-16"
+
+keywords: Swagger APIs, authorize, service credentials, disable API access, IBM Cloud
 
 subcollection: blockchain
 
@@ -17,7 +19,7 @@ subcollection: blockchain
 # Cómo interactuar con la red con las API de Swagger
 {: #ibp-swagger}
 
-{{site.data.keyword.blockchainfull_notm}} Platform ofrece varias API REST en Swagger que puede utilizar para gestionar los nodos, canales, iguales y miembros de la red. Las aplicaciones pueden utilizar estas API para controlar los recursos de red importantes sin utilizar el supervisor de red.
+{{site.data.keyword.blockchainfull_notm}} Platform ofrece varias API REST en Swagger que puede utilizar para gestionar los nodos, canales, iguales y miembros de la red. Las aplicaciones pueden utilizar estas API para controlar los recursos de red importantes sin utilizar el Supervisor de red.
 
 {:shortdesc}
 

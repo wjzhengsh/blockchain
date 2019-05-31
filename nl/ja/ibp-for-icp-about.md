@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-04-23"
+lastupdated: "2019-05-16"
+
+keywords: IBM Blockchain Platform, IBM Cloud Private, system requirements, Kubernetes Helm chart, behind a firewall
 
 subcollection: blockchain
 
@@ -23,7 +25,7 @@ subcollection: blockchain
 {{site.data.keyword.blockchainfull}} Platform は、{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private をリリースしました。これは、コンテナー化されたアプリケーションを開発および管理するためのアプリケーション・プラットフォームです。 {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private オファリングは Kubernetes をベースとしています。そのため、ユーザーは、認証局 (CA)、順序付けプログラム、ピアを x86、LinuxONE、IBM Z にデプロイできます。{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private は、Kubernetes Helm チャートを使用してデプロイできます。
 {:shortdesc}
 
-{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private は、2019 年 4 月 23 日に Hyperledger Fabric v1.4.0 にアップグレードされます。ただし、現時点では、ゴシップ・データや個人データがサポートされる予定はありません。
+{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private は、2019 年 4 月 23 日に Hyperledger Fabric v1.4.0 にアップグレードされます。 ただし、現時点では、ゴシップ・データや個人データがサポートされる予定はありません。
 {:note}
 
 {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private は、{{site.data.keyword.cloud_notm}} Private を使用して独自のインフラストラクチャーでブロックチェーン・ネットワークを実行するために必要なコンポーネントを提供します。 コンポーネントには、Kubernetes Helm チャートを使用してデプロイ、管理、セットアップする Hyperledger Fabric、認証局 (CA)、順序付けプログラム、およびピアが含まれます。 **このオファリングは、Hyperledger Fabric の経験が豊富なお客様を対象としています。**
@@ -42,7 +44,7 @@ subcollection: blockchain
 
 ## {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private の使用に適した状況
 
-{{site.data.keyword.cloud_notm}} 外部で {{site.data.keyword.blockchainfull_notm}} Platform コンポーネントを実行すると、ブロックチェーン・ネットワークの拡張や参加をより柔軟に行うことができます。 これを使用すると、新規メンバーが各自のプラットフォームを使用したまま参加できるようになるので、ネットワーク・イニシエーターはネットワークの拡張を促進できます。これにより、ブロックチェーン・ネットワークへの参加に関心のある組織は、ピアを既存のアプリケーションと同じ場所に置いたり、組織の記録システムと統合したりできます。
+{{site.data.keyword.cloud_notm}} 外部で {{site.data.keyword.blockchainfull_notm}} Platform コンポーネントを実行すると、ブロックチェーン・ネットワークの拡張や参加をより柔軟に行うことができます。 これを使用すると、新規メンバーが各自のプラットフォームを使用したまま参加できるようになるので、ネットワーク・イニシエーターはネットワークの拡張を促進できます。 これにより、ブロックチェーン・ネットワークへの参加に関心のある組織は、ピアを既存のアプリケーションと同じ場所に置いたり、組織の記録システムと統合したりできます。
 
 {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private をデプロイするプロセスは複雑であり、Fabric について高度な専門知識があることを想定しています。 Fabric、{{site.data.keyword.cloud_notm}} Private、または {{site.data.keyword.blockchainfull_notm}} Platform を使用するのが初めてで、開発環境や PoC (概念検証) の設定が目標である場合は、代わりに[スターター・プラン](/docs/services/blockchain/starter_plan.html#starter-plan-about)を使用することを検討してください。 また、すべての潜在的なデプロイメント構成が {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private でサポートされるわけではないことにも注意してください。
 {:improtant}
@@ -113,7 +115,7 @@ VPC の使用法の判別方法について詳しくは、{{site.data.keyword.IB
 ## {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private のインストール
 {: #ibp-icp-about-install}
 
-{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private は、ローカル {{site.data.keyword.cloud_notm}} Private クラスターにインストール可能な Helm チャート・ファイルとして提供されます。Helm チャートをインストールすると、{{site.data.keyword.cloud_notm}} Private カタログで {{site.data.keyword.blockchainfull_notm}} Platform をアプリケーションとして見つけることができます。
+{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private は、ローカル {{site.data.keyword.cloud_notm}} Private クラスターにインストール可能な Helm チャート・ファイルとして提供されます。 Helm チャートをインストールすると、{{site.data.keyword.cloud_notm}} Private カタログで {{site.data.keyword.blockchainfull_notm}} Platform をアプリケーションとして見つけることができます。
 
 - {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private は、パスポート・アドバンテージによって提供されます。 [パスポート・アドバンテージ・オンライン](https://www.ibm.com/software/passportadvantage/pao_customer.html)にアクセスするには、そのためのライセンスが必要です。 購入内容には、{{site.data.keyword.blockchainfull_notm}} Platform の技術サポートが含まれています。
 
@@ -123,7 +125,7 @@ Helm チャートのインストール方法に関する手順および必要な
 
 {{site.data.keyword.cloud_notm}} Private の新規ユーザーであり、{{site.data.keyword.cloud_notm}} Private のインストールおよびデプロイに関する情報とヒントが必要な場合は、[{{site.data.keyword.cloud_notm}} Private のセットアップ](/docs/services/blockchain/ICP_setup.html#icp-setup)を参照してください。
 
-{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private をインストールした後、ネットワークの各コンポーネント個別にデプロイする必要があります。 一度に複数のコンポーネントをデプロイすることはできません。 ブロックチェーン・ネットワークの構築またはブロックチェーン・ネットワークへの参加のためのベスト・プラクティスについては、[{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private の概説](/docs/services/blockchain/ibp_for_icp_deployment_guide.html#get-started-icp)を参照してください。その後、以下のセクションで、個別のコンポーネントをデプロイおよび操作するためのステップを確認します。
+{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private をインストールした後、ネットワークの各コンポーネント個別にデプロイする必要があります。 一度に複数のコンポーネントをデプロイすることはできません。 ブロックチェーン・ネットワークの構築またはブロックチェーン・ネットワークへの参加のためのベスト・プラクティスについては、[{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private の概説](/docs/services/blockchain/ibp_for_icp_deployment_guide.html#get-started-icp)を参照してください。 その後、以下のセクションで、個別のコンポーネントをデプロイおよび操作するためのステップを確認します。
 
 ### ファイアウォールの内側での {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private のインストール
 {: #ibp-icp-about-firewall}

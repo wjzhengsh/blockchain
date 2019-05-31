@@ -1,8 +1,10 @@
 ---
 
 copyright:
-  years: 2018,2019
-lastupdated: "2019-04-17"
+  years: 2018, 2019
+lastupdated: "2019-05-16"
+
+keywords: Starter Plan network, Starter Plan, Enterprise Plan network, Enterprise Plan, migration
 
 subcollection: blockchain
 
@@ -75,7 +77,7 @@ subcollection: blockchain
 ### チェーンコードのマイグレーション
 {: #migrate_starter_to_enterprise_cc}
 
-チェーンコードは、外部のローカル環境で開発するものであり、クライアント・アプリケーションによって呼び出されます。 スターター・プラン・ネットワークでテストしたチェーンコードを、エンタープライズ・プラン・ネットワークの特定のピアにインストールしてインスタンス化するには、[チェーンコードのインストール、インスタンス化、および更新](/docs/services/blockchain/howto/install_instantiate_chaincode.html#install-instantiate-chaincode-install-cc) の説明に従ってください。
+チェーンコードは、外部のローカル環境で開発するものであり、クライアント・アプリケーションによって呼び出されます。 スターター・プラン・ネットワークでテストしたチェーンコードを、エンタープライズ・プラン・ネットワーク上の選択したピアにインストールしてインスタンス化するには、[チェーンコードのインストール、インスタンス化、および更新](/docs/services/blockchain/howto/install_instantiate_chaincode.html#install-instantiate-chaincode-install-cc "チェーンコードのインストール、インスタンス化、および更新")の説明に従ってください。
 
 ### クライアント・アプリケーションの更新
 {: #migrate_starter_to_enterprise_app}

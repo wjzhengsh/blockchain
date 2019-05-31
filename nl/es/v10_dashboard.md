@@ -4,6 +4,8 @@ copyright:
   years: 2017, 2019
 lastupdated: "2019-03-20"
 
+keywords: Network Monitor, peer nodes, resources, channels, smart contract
+
 subcollection: blockchain
 
 ---
@@ -192,7 +194,7 @@ Puede obtener más información sobre la CA en la guía de aprendizaje de [Gesti
 ## API
 {: #ibp-dashboard-apis}
 
-{{site.data.keyword.blockchainfull_notm}} Platform ofrece varias API REST en Swagger que puede utilizar para gestionar los nodos, canales, iguales y miembros de la red. Las aplicaciones pueden utilizar estas API para controlar los recursos de red importantes sin utilizar el supervisor de red.
+{{site.data.keyword.blockchainfull_notm}} Platform ofrece varias API REST en Swagger que puede utilizar para gestionar los nodos, canales, iguales y miembros de la red. Las aplicaciones pueden utilizar estas API para controlar los recursos de red importantes sin utilizar el Supervisor de red.
 
 En la **Figura 9** se muestra la pantalla "API":
 
@@ -252,7 +254,7 @@ En la **Figura 13** se muestra la información en el separador "Soporte" inicial
 
 Utilice los recursos del separador "Soporte" para resolver problemas y obtener ayuda de {{site.data.keyword.IBM_notm}} y la comunidad de Fabric. Para obtener más información sobre los enlaces del separador "Soporte", consulte [Recursos y foros de soporte](/docs/services/blockchain/ibmblockchain_support.html#blockchain-support-resources) en [Obtención de soporte](/docs/services/blockchain/ibmblockchain_support.html#blockchain-support).
 
-[IBM dWAnswers ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://developer.ibm.com/answers/smartspace/blockchain/index.html) es un foro de la comunidad para usuarios de {{site.data.keyword.blockchainfull_notm}} Platform y de Hyperledger Fabric y está supervisado por expertos de IBM. Puede buscar respuestas a preguntas realizadas anteriormente o enviar una nueva pregunta. Si no puede depurar su problema ni determinar una respuesta a su pregunta, envíe un caso de soporte en el portal de servicio de {{site.data.keyword.cloud_notm}}. Para obtener más información, consulte
+[{{site.data.keyword.IBM_notm}} dWAnswers ![Icono de enlace externo](images/external_link.svg "Icono de enlace externo")](https://developer.ibm.com/answers/smartspace/blockchain/index.html){:new_window} es un foro de la comunidad para usuarios de {{site.data.keyword.blockchainfull_notm}} Platform y de Hyperledger Fabric y está supervisado por expertos de IBM. Puede buscar respuestas a preguntas realizadas anteriormente o enviar una nueva pregunta. Si no puede depurar su problema ni determinar una respuesta a su pregunta, envíe un caso de soporte en el portal de servicio de {{site.data.keyword.cloud_notm}}. Para obtener más información, consulte
 [Envío de casos de soporte](/docs/services/blockchain/ibmblockchain_support.html#blockchain-support-cases).
 
 

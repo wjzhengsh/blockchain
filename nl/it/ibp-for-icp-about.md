@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-04-23"
+lastupdated: "2019-05-16"
+
+keywords: IBM Blockchain Platform, IBM Cloud Private, system requirements, Kubernetes Helm chart, behind a firewall
 
 subcollection: blockchain
 
@@ -26,7 +28,7 @@ subcollection: blockchain
 In data 23 aprile 2019 viene eseguito l'upgrade di {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private a Hyperledger Fabric v1.4.0. Tuttavia, i dati gossip e privati non sono ancora supportati.
 {:note}
 
-{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private fornisce i componenti di cui hai bisogno per eseguire una rete blockchain sulla tua infrastruttura tramite {{site.data.keyword.cloud_notm}} Private. I componenti includono Hyperledger Fabric, una CA (Certificate Authority, Autorità di certificazione), un ordinante e un peer, che distribuisci, gestisci e configuri utilizzando i grafici Helm Kubernetes. **Questa offerta è progettata per i clienti con un'esperienza avanzata di Hyperledger Fabric.**
+{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private fornisce i componenti di cui hai bisogno per eseguire una rete blockchain sulla tua infrastruttura tramite {{site.data.keyword.cloud_notm}} Private. I componenti includono una CA (Certificate Authority, Autorità di certificazione) Hyperledger Fabric, un ordinante e un peer, che distribuisci, gestisci e configuri utilizzando i grafici Helm Kubernetes. **Questa offerta è progettata per i clienti con un'esperienza avanzata di Hyperledger Fabric.**
 
 {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private consente alle reti blockchain di essere distribuite su un cloud privato per soddisfare i requisiti di residenza dei dati, le regolamentazioni del mercato e la preferenza dell'infrastruttura. Semplifica la distribuzione di elementi essenziali di una rete blockchain nella tua infrastruttura tramite {{site.data.keyword.cloud_notm}} Private, un'applicazione basata su Kubernetes per lo sviluppo e la gestione in loco di applicazioni inserite nei contenitori.
 

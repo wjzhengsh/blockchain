@@ -4,6 +4,8 @@ copyright:
   years: 2017, 2019
 lastupdated: "2019-04-23"
 
+keywords: command line, peer, operate peers, peer TLS certificate, IBM Cloud
+
 subcollection: blockchain
 
 ---
@@ -178,10 +180,10 @@ Se recomienda utilizar la versión 1.4.0 de Node SDK.
 El igual se despliega con el signCert del administrador de igual incluido. Esto le permite utilizar los certificados del administrador de igual y la carpeta de MSP para trabajar con el igual.
 
 Localice los certificados que ha creado al [inscribir el administrador de igual](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-enroll-admin). Si ha utilizado los mandatos de ejemplo, puede encontrar la carpeta de MSP del administrador de igual en `$HOME/fabric-ca-client/peer-admin`.
-  - Puede crear el contexto de usuario del administrador de igual con el SDK utilizando el signCert (clave pública) y la clave privada en la carpeta de MSP. Puede encontrar dichas claves en las ubicaciones siguientes:
+  - Puede crear el contexto de usuario del administrador de igual con el SDK utilizando el signCert y la clave privada en la carpeta de MSP. Puede encontrar dichas claves en las ubicaciones siguientes:
     - El signCert se puede encontrar en la carpeta **signcerts**: `$HOME/fabric-ca-client/peer-admin/msp/signcerts`
     - La clave privada se puede encontrar en la carpeta **keystore**: `$HOME/fabric-ca-client/peer-admin/msp/keystore`
-    Puede ver un ejemplo de cómo formar un contexto de usuario y trabajar con el SDK utilizando únicamente las claves pública y privada en [esta sección de la guía de aprendizaje de desarrollo de aplicaciones](/docs/services/blockchain/v10_application.html#dev-app-enroll-panel).
+    Puede ver un ejemplo de cómo formar un contexto de usuario y trabajar con el SDK utilizando únicamente el certificado para firmas y la clave privada en [esta sección de la guía de aprendizaje de desarrollo de aplicaciones](/docs/services/blockchain/v10_application.html#dev-app-enroll-panel).
 
 También puede utilizar el SDK para generar el signCert del administrador de igual y la clave privada utilizando la información de punto final de la entidad emisora de certificados en el Plan inicial o el Plan empresarial y su [nombre de usuario y contraseña de administrador de igual](/docs/services/blockchain/howto/peer_deploy_ibp.html#ibp-peer-deploy-register-admin).
 
@@ -290,7 +292,7 @@ export FABRIC_CFG_PATH=$HOME/config
 
 
 ### Gestión de los certificados en el sistema local
-{: #manage-certs}
+{: #peer-operate-manage-certs}
 
 Cambie el directorio donde se genera la carpeta de MSP del administrador de igual. Si ha seguido los pasos de ejemplo de esta documentación, podrá encontrar la carpeta de MSP en un directorio similar al que se indica a continuación:
 

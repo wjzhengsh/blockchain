@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-20"
+lastupdated: "2019-05-16"
+
+keywords: IBM Blockchain Platform, remote peer, operate peers, AWS peer, AWS peers, necessary certificates, command line
 
 subcollection: blockchain
 
@@ -46,7 +48,7 @@ Node SDK 버전 1.2를 사용하는 것이 좋습니다.
 
 SDK를 사용하여 피어를 운영하기 전에 애플리케이션이 {{site.data.keyword.blockchainfull_notm}} Platform과 피어에서 네트워크와 통신하는 데 필요한 인증서(등록)를 생성해야 합니다. **admin** ID를 사용하여 [SDK에 등록](/docs/services/blockchain/v10_application.html#dev-app-enroll-sdk)하는 단계를 수행하십시오. [애플리케이션 개발](/docs/services/blockchain/v10_application.html#dev-app) 튜토리얼에서도 **admin**으로 등록하므로 샘플 코드를 수정하지 않아도 됩니다.
 
-### IBM Blockchain Platform에 signcert 업로드
+### {{site.data.keyword.blockchainfull_notm}} Platform에 signcert 업로드
 {: #remote-peer-aws-operate-upload-SDK}
 
 다른 멤버가 디지털 서명을 인식할 수 있도록 {{site.data.keyword.blockchainfull_notm}} Platform에서 네트워크에 SDK 서명 인증서를 업로드해야 합니다.
@@ -56,7 +58,7 @@ SDK를 사용하여 피어를 운영하기 전에 애플리케이션이 {{site.d
 ### 피어에 signcert 업로드
 {: #remote-peer-aws-operate-upload-signcert}
 
-또한 SDK의 서명 인증서를 원격 피어에 업로드한 후 다시 시작해야 합니다. 원격 피어 컨테이너에서 [IBM Blockchain Platform에 업로드](/docs/services/blockchain/howto/remote_peer_operate_aws.html#remote-peer-aws-operate-upload-SDK)한 서명 인증서를 설치해야 합니다.
+또한 SDK의 서명 인증서를 원격 피어에 업로드한 후 다시 시작해야 합니다. 원격 피어 컨테이너 내부의 [{{site.data.keyword.blockchainfull_notm}} Platform에 업로드](/docs/services/blockchain/howto/remote_peer_operate_aws.html#remote-peer-aws-operate-upload-SDK)한 것과 동일한 서명 인증서를 설치해야 합니다.
 
 AWS 콘솔에서 인스턴스를 선택(**서비스 > EC2 > 인스턴스** 클릭)한 다음 연결 단추를 클릭하여 VPC 인스턴스로 SSH를 실행하십시오. ssh 명령을 실행하려면 AWS의 지시사항을 준수하십시오.
 
@@ -445,10 +447,7 @@ docker run -ti --network blockchain.com -v ${PWD}:/mnt -v path/to/toolsrc:/src i
 ### Fabric 도구 컨테이너를 사용하여 피어에 체인코드 설치
 {: #aws-toolcontainer-install-cc}
 
-이제 피어에 체인코드를 설치하고 인스턴스화할 준비가 되었습니다. 이러한 지시사항을 수행하기 위해
-[Fabric 도구 컨테이너를 설정](/docs/services/blockchain/howto/remote_peer_operate_aws.html#remote-peer-aws-operate-cli-operate)할 때
-로컬 시스템에 이미 다운로드했어야 하는 Hyperledger `fabric-samples` 저장소에서
-`fabcar` 체인코드를 설치할 것입니다.  
+이제 피어에 체인코드를 설치하고 인스턴스화할 준비가 되었습니다. 이러한 지시사항을 위해 [Fabric 도구 컨테이너를 설정](/docs/services/blockchain/howto/remote_peer_operate_aws.html#remote-peer-aws-operate-cli-operate)할 때 로컬 시스템에 이미 다운로드했어야 하는 Hyperledger `fabric-samples` 저장소에서 `fabcar` 체인코드를 설치합니다.  
 
 다음 피어 CLI 명령을 실행하여 `fabcar` 체인코드를 피어에 설치하십시오.
 
@@ -490,7 +489,7 @@ CORE_PEER_TLS_ROOTCERT_FILE=/mnt/msp/tls/cacert.pem CORE_PEER_TLS_ENABLED=true C
 피어를 배치한 환경에서 피어를 시작, 중지 또는 재시작할 수 있습니다. 인증서를 피어에 추가할 때마다 새 인증서가 인식되도록 피어를 다시 시작해야 합니다. 이를 수행하는 방법은 여러 가지가 있습니다.
 
 - AWS 콘솔에서 피어 VPC 인스턴스를 다시 부팅하십시오.
-- 피어 컨테이너에서 다음 명령을 실행하십시오.
+- 피어 컨테이너 내부에서 다음 명령을 실행하십시오.
 
  ```
  docker restart peer
@@ -515,7 +514,7 @@ docker logs peer
 
 체인코드를 업데이트하려면 다음 단계를 완료하십시오.
 
-1. AWS의 각 피어에서 체인코드를 업데이트하려면 클라이언트 애플리케이션이나 CLI 명령을 사용하여 피어에 체인코드를 설치하는 데 사용한 프로세스를 다시 실행하기만 하면 됩니다. 원래 사용된 이름과 동일한 체인코드 이름을 지정하십시오. 그러나 이번에는 체인코드 `Version` 번호를 늘립니다.
+1. AWS의 각 피어에서 체인코드를 업데이트하려면 클라이언트 애플리케이션이나 CLI 명령을 사용하여 피어에 체인코드를 설치하는 데 사용한 프로세스를 다시 실행하기만 하면 됩니다. 원래 사용된 이름과 동일한 체인코드 이름을 지정하십시오. 그러나 이번에는 체인코드 `Version` 번호를 증가시킵니다.
 
 2. 채널의 모든 피어에 새 체인코드를 설치한 다음 네트워크 모니터 또는 [피어 체인코드 업그레이드 ![외부 링크 아이콘](../images/external_link.svg "외부 링크 아이콘")](https://hyperledger-fabric.readthedocs.io/en/release-1.2/commands/peerchaincode.html#peer-chaincode-upgrade) 명령을 사용하여 새 체인코드를 사용하도록 채널을 업데이트하십시오.
 
@@ -547,4 +546,4 @@ Error: Error endorsing chaincode: rpc error: code = Unknown desc = chaincode err
 ```
 
 **솔루션:**   
-관리자 인증서가 네트워크 모니터에 업로드된 후 해당 인증서가 채널에서 동기화되는지 확인하십시오. 자세한 정보는 이 [지시사항](/docs/services/blockchain/howto/remote_peer_operate_aws.html#remote-peer-aws-operate-manage-certs)의 5단계를 참조하십시오. 피어가 채널에 가입하기 전에 채널 인증서를 동기화하는 것이 중요하다는 점에 유의하십시오.
+관리자 인증서가 네트워크 모니터에 업로드된 후 해당 인증서가 채널에서 동기화되었는지 확인하십시오. 자세한 정보는 이 [지시사항](/docs/services/blockchain/howto/remote_peer_operate_aws.html#remote-peer-aws-operate-manage-certs)의 5단계를 참조하십시오. 피어가 채널에 가입하기 전에 채널 인증서를 동기화하는 것이 중요하다는 점에 유의하십시오.

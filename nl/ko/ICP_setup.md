@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-04-03"
+lastupdated: "2019-05-16"
+
+keywords: IBM Cloud Private, data storage CA, cluster ICP, configuration
 
 subcollection: blockchain
 
@@ -29,11 +31,11 @@ subcollection: blockchain
 다음 전제조건을 완료한 후 {{site.data.keyword.cloud_notm}} Private을 설치할 환경을 준비하십시오.
 
 ### Docker
-{{site.data.keyword.cloud_notm}} Private을 사용하려면 Docker가 설치되어 있어야 합니다. [{{site.data.keyword.cloud_notm}} Private 설치 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/installing/install.html "{{site.data.keyword.cloud_notm}} Private 설치")의 지시사항에 따라 Docker를 설치하십시오.
+{{site.data.keyword.cloud_notm}} Private을 사용하려면 Docker가 설치되어 있어야 합니다. [{{site.data.keyword.cloud_notm}} Private 설치 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/installing/install.html "{{site.data.keyword.cloud_notm}} Private 설치")의 지시사항에 따라 Docker를 설치하십시오.
 
 ### {{site.data.keyword.cloud_notm}} Private 설정
 {{site.data.keyword.cloud_notm}} Private을 설치하기 전에 {{site.data.keyword.cloud_notm}} Private 설치에 필요한 노드를 준비하기 위해 다음과 같은 팁이 유용합니다. 추가적인
-{{site.data.keyword.cloud_notm}} Private 전제조건은 [{{site.data.keyword.cloud_notm}} Private 문서 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/installing/prep.html "설치할 클러스터 준비")에서 찾을 수 있습니다.
+{{site.data.keyword.cloud_notm}} Private 전제조건은 [{{site.data.keyword.cloud_notm}} Private 문서 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/installing/prep.html "설치할 클러스터 준비")에서 찾을 수 있습니다.
 
 #### `vm.max_map_count` 설정 업데이트
 {{site.data.keyword.cloud_notm}} Private은 로깅 및 측정을 위해 Elastic Search를 사용합니다. Elastic Search의 경우 메모리 부족 예외를 방지하기 위해 `vm.max_map_count` 시스템 특성이 구성되어 있어야 합니다. {{site.data.keyword.cloud_notm}} Private을 설치하기 전에 [Elastic Search 구성 지시사항 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://www.elastic.co/guide/en/elasticsearch/reference/current/vm-max-map-count.html "가상 메모리")을 참조하여 각각의 노드에 이 특성을 구성하십시오. 다음 명령을 사용하여 영구적으로 이 특성을 설정할 수 있습니다.
@@ -46,9 +48,9 @@ echo "vm.max_map_count=262144” | tee -a /etc/sysctl.conf
 
 #### 클러스터에 있는 각각의 노드에 `/etc/hosts` 파일 구성
 
-- {{site.data.keyword.cloud_notm}} Private은 [Kubernetes ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://kubernetes.io/docs/tutorials/kubernetes-basics/ "Kubernetes의 기본 사항 학습")를 사용하여 컨테이너화된 애플리케이션을 관리합니다. 각각의 노드에 있는 `/etc/hosts`에 호스트 이름이 구성되어 있지 않은 경우 Kubernetes 도메인 이름 서버(DNS)가 실패합니다. 각각의 노드에 있는 `/etc/hosts` 파일에 [클러스터에 있는 각각의 노드에 대한 IP 주소, 호스트 이름 및 단축 이름을 삽입![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/installing/prep_cluster.html "클러스터 구성")하십시오.
+- {{site.data.keyword.cloud_notm}} Private은 [Kubernetes ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://kubernetes.io/docs/tutorials/kubernetes-basics/ "Kubernetes의 기본 사항 학습")를 사용하여 컨테이너화된 애플리케이션을 관리합니다. 각각의 노드에 있는 `/etc/hosts`에 호스트 이름이 구성되어 있지 않은 경우 Kubernetes 도메인 이름 서버(DNS)가 실패합니다. 각각의 노드에 있는 `/etc/hosts` 파일에 [클러스터에 있는 각각의 노드에 대한 IP 주소, 호스트 이름 및 단축 이름을 삽입![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/installing/prep_cluster.html "클러스터 구성")하십시오.
 
-- [{{site.data.keyword.cloud_notm}} Private에서는 IPv6이 지원되지 않습니다 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/getting_started/known_issues.html#ipv6 "IPv6은 지원되지 않음"). {{site.data.keyword.cloud_notm}} Private 클러스터에서 DNS 서비스 관련 문제점을 방지하려면 각각의 노드에 있는 `/etc/hosts` 파일에서 다음 행의 시작 부분에 `#` 부호를 사용하여 해당 행을 주석 처리함으로써 IPv6 설정을 사용 안함으로 설정하십시오.
+- [{{site.data.keyword.cloud_notm}} Private에서는 IPv6이 지원되지 않습니다 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/getting_started/known_issues.html#ipv6 "IPv6은 지원되지 않음"). {{site.data.keyword.cloud_notm}} Private 클러스터에서 DNS 서비스 관련 문제점을 방지하려면 각각의 노드에 있는 `/etc/hosts` 파일에서 다음 행의 시작 부분에 `#` 부호를 사용하여 해당 행을 주석 처리함으로써 IPv6 설정을 사용 안함으로 설정하십시오.
   ```
   #::1  localhost ip6-localhost ip6-loopback
   ```
@@ -64,7 +66,7 @@ echo "vm.max_map_count=262144” | tee -a /etc/sysctl.conf
 | CA |1 |192MB | 1GB |
 | 순서 지정자 |2 | 512MB | 100GB(확장 기능 포함) |
 | 피어 |2 |2GB | 50GB(확장 기능 포함) |
-| 피어를 위한 CouchDB |2|2GB | 50GB(확장 기능 포함) |
+| 피어를 위한 CouchDB<br>(CouchDB를 사용하는 경우에만 적용 가능) |2|2GB | 50GB(확장 기능 포함) |
 
  **참고:**
  - vCPU는 서버가 가상 머신에 대해 파티션되지 않은 경우 가상 머신 또는 실제 프로세서 코어에 지정되는 가상 코어입니다. {{site.data.keyword.cloud_notm}} Private에서 배치를 위해 가상 프로세서 코어(VPC)를 결정할 때 vCPU 요구사항을 고려해야 합니다. VPC는 {{site.data.keyword.IBM_notm}} 제품의 라이센싱 비용을 판별하는 측정 단위입니다. VPC를 결정하는 시나리오에 대한 자세한 정보는 [가상 프로세서 코어(VPC) ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/en/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_virtual_processor_core_licenses.html)를 참조하십시오.
@@ -94,18 +96,18 @@ echo "vm.max_map_count=262144” | tee -a /etc/sysctl.conf
 
 사용자 환경에 {{site.data.keyword.cloud_notm}} Private을 설치 및 설정하려면 다음 단계를 완료하십시오.
 
-1. [{{site.data.keyword.cloud_notm}} Private ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘") ](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/kc_welcome_containers.html) 클러스터 버전 3.1.0을 설치하십시오. 개발, 테스트 또는 실험을 위해 Helm 차트를 사용하려는 경우 무료로 [{{site.data.keyword.cloud_notm}} Private Community Edition 버전 3.1.0 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/kc_welcome_containers.html "{{site.data.keyword.cloud_notm}} Private-CE 버전 3.1.0")을 설치할 수 있습니다.
+1. [{{site.data.keyword.cloud_notm}} Private ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘") ](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/kc_welcome_containers.html) 클러스터 버전 3.1.2를 설치하십시오. 개발, 테스트 또는 시범용으로 Helm 차트를 사용하려는 경우 무료로 [{{site.data.keyword.cloud_notm}} Private Community Edition 버전 3.1.2 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/kc_welcome_containers.html "{{site.data.keyword.cloud_notm}} Private-CE 버전 3.1.2")를 설치할 수 있습니다.
 
-2. CA를 설치하고 작동시키기 위해 {{site.data.keyword.cloud_notm}} Private CLI [3.1.0 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.0/manage_cluster/install_cli.html)을 설치하십시오.
+2. CA를 설치하고 작동시키기 위해 {{site.data.keyword.cloud_notm}} Private CLI [3.1.2 ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://www.ibm.com/support/knowledgecenter/en/SSBS6K_3.1.2/manage_cluster/install_cli.html)를 설치하십시오.
 
-3. 대상 네임스페이스에 대한 팟(Pod) 보안 정책을 설정합니다. 지시사항은 [다음 절](/docs/services/blockchain/howto/ICP_setup.html#icp-setup-psp)에서 제공됩니다.
+3. 대상 네임스페이스에 대한 팟(Pod) 보안 정책을 설정합니다. 지시사항은 [다음 절](#icp-setup-psp)에서 제공됩니다.
 
 {{site.data.keyword.cloud_notm}} Private을 설치하고 팟(Pod) 보안 정책을 대상 네임스페이스에 바인드한 후에도 계속 {{site.data.keyword.cloud_notm}} Private 클러스터로 [{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private Helm 차트를 가져올](/docs/services/blockchain/howto/helm_install_icp.html#helm-install) 수 있습니다.
 
 ## PodSecurityPolicy 요구사항
 {: #icp-setup-psp}
 
-Helm 차트를 사용하여 컴포넌트를 배치하려면 새 대상 네임스페이스를 작성하고 [PodSecurityPolicy ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://kubernetes.io/docs/concepts/policy/pod-security-policy/ "Pod Security Policies")를 네임스페이스에 바인드해야 합니다. 사전 정의된 PodSecurityPolicy를 선택하거나 클러스터 관리자가 사용자를 위해 사용자 정의 PodSecurityPolicy를 작성하도록 하십시오.
+Helm 차트를 사용하여 컴포넌트를 배치하려면 새 대상 네임스페이스를 작성하고 [PodSecurityPolicy ![외부 링크 아이콘](images/external_link.svg "외부 링크 아이콘")](https://kubernetes.io/docs/concepts/policy/pod-security-policy/ "Pod Security Policies")를 네임스페이스에 바인드해야 합니다.  사전 정의된 PodSecurityPolicy를 선택하거나 클러스터 관리자가 사용자를 위해 사용자 정의 PodSecurityPolicy를 작성하도록 하십시오.
 - 사전 정의된 PodSecurityPolicy 이름: [`ibm-privileged-psp`](https://ibm.biz/cpkspec-psp)
 - 사용자 정의 PodSecurityPolicy 정의:
   ```

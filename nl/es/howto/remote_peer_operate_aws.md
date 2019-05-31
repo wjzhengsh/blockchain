@@ -2,7 +2,9 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-03-20"
+lastupdated: "2019-05-16"
+
+keywords: IBM Blockchain Platform, remote peer, operate peers, AWS peer, AWS peers, necessary certificates, command line
 
 subcollection: blockchain
 
@@ -47,7 +49,7 @@ Se recomienda utilizar la versión 1.2 de Node SDK.
 
 Antes de utilizar el SDK para trabajar con el igual, debe generar los certificados necesarios (inscripción) que permitirán que la aplicación se comunique con la red en {{site.data.keyword.blockchainfull_notm}} Platform y su igual. Siga los pasos para [inscribir el SDK](/docs/services/blockchain/v10_application.html#dev-app-enroll-sdk) utilizando la identidad **admin**. En la guía de aprendizaje sobre [Desarrollo de aplicaciones](/docs/services/blockchain/v10_application.html#dev-app) también se inscribe como **admin**, de modo que no tiene que modificar el código de ejemplo.
 
-### Carga de un signcert en la plataforma IBM Blockchain
+### Carga de un signcert en la plataforma {{site.data.keyword.blockchainfull_notm}}
 {: #remote-peer-aws-operate-upload-SDK}
 
 Es necesario subir el certificado de firma de SDK a la red en {{site.data.keyword.blockchainfull_notm}} Platform para que los demás miembros puedan reconocer su firma digital.
@@ -57,7 +59,7 @@ Es necesario subir el certificado de firma de SDK a la red en {{site.data.keywor
 ### Carga de un signcert en el igual
 {: #remote-peer-aws-operate-upload-signcert}
 
-También es necesario cargar el certificado de firma del SDK en el igual remoto y reiniciarlo. Debe instalar el mismo certificado de firma que el que haya [cargado en la plataforma IBM Blockchain](/docs/services/blockchain/howto/remote_peer_operate_aws.html#remote-peer-aws-operate-upload-SDK) dentro del contenedor del igual remoto.
+También es necesario cargar el certificado de firma del SDK en el igual remoto y reiniciarlo. Debe instalar el mismo certificado de firma que el que haya [cargado en {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain/howto/remote_peer_operate_aws.html#remote-peer-aws-operate-upload-SDK) dentro del contenedor del igual remoto.
 
 Utilice SSH en la instancia de VPC seleccionando la instancia den la consola de AWS (pulse **Servicios > EC2 > Instancias**) y, a continuación, pulsando el botón Conectar. Siga las instrucciones de AWS para emitir el mandato ssh.
 
