@@ -2,13 +2,15 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-05"
+lastupdated: "2019-05-31"
+
+keywords: business network, Starter Plan, Enterprise Plan, developer environment, certificate authority card, admin business network card, BNA, business network archive
 
 subcollection: blockchain
 
 ---
 
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:shortdesc: .shortdesc}
 {:screen: .screen}
 {:codeblock: .codeblock}
@@ -19,7 +21,7 @@ subcollection: blockchain
 # Deploying business networks on Starter and Enterprise Plan
 {: #deploying-a-business-network}
 
-{{site.data.keyword.IBM}} does not provide support for networks using Hyperledger Composer in production, including the Composer CLI, JavaScript APIs, REST server, and Web Playground.
+{{site.data.keyword.IBM}} does not provide support for networks that use Hyperledger Composer in production, including the Composer CLI, JavaScript APIs, REST server, and Web Playground.
 {:note}
 
 [Business networks](/docs/services/blockchain/glossary.html#glossary-business-network) can be developed and deployed to Starter and Enterprise Plan networks by using the {{site.data.keyword.blockchainfull_notm}} Platform developer environment and Hyperledger Composer developer toolset.
@@ -186,7 +188,7 @@ Ensure that you have installed the {{site.data.keyword.blockchainfull_notm}} dev
 
 You need access to an Enterprise Plan instance of {{site.data.keyword.blockchainfull_notm}} Platform, and to have created your peers beforehand. For more information about {{site.data.keyword.blockchainfull_notm}} Platform Enterprise Plan, see the [Enterprise Plan overview](/docs/services/blockchain/enterprise_plan.html#enterprise-plan-about).
 
-### Step one: Create a connection profile for IBM Blockchain Platform
+### Step one: Create a connection profile for {{site.data.keyword.blockchainfull_notm}} Platform
 {: #deploying-a-business-network-create-connection-profile}
 
 1. Create a directory to store your connection details, for example:

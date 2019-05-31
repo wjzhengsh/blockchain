@@ -2,13 +2,15 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-05-14"
+lastupdated: "2019-05-31"
+
+keywords: key features, build, operate, grow, architecture, multizone clusters
 
 subcollection: blockchain
 
 ---
 
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:shortdesc: .shortdesc}
 {:screen: .screen}
 {:codeblock: .codeblock}
@@ -17,83 +19,85 @@ subcollection: blockchain
 {:tip: .tip}
 {:pre: .pre}
 
-# About {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta
+# About {{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}}
 {: #ibp-console-overview}
 
-The {{site.data.keyword.blockchainfull}} Platform free 2.0 beta is the next generation of {{site.data.keyword.blockchainfull_notm}} Platform offerings, which gives you total control over your deployments and  public and private keys. This free beta includes the new {{site.data.keyword.blockchainfull_notm}} Platform console, a user interface that can simplify and accelerate the process of deploying components into a {{site.data.keyword.cloud_notm}} Kubernetes Service managed and controlled by you. For more information about Kubernetes and {{site.data.keyword.cloud_notm}} Kubernetes Service, see [Kubernetes](/docs/services/blockchain/reference/k8s.html "Kubernetes").
+The {{site.data.keyword.blockchainfull}} Platform on {{site.data.keyword.cloud_notm}} is the next generation of {{site.data.keyword.blockchainfull_notm}} Platform offerings, which gives you total control over your deployments, certificates, and private keys. It includes the new {{site.data.keyword.blockchainfull_notm}} Platform console, a user interface that can simplify and accelerate the process of deploying components into an {{site.data.keyword.cloud_notm}} Kubernetes Service managed and controlled by you. For more information about Kubernetes and {{site.data.keyword.cloud_notm}} Kubernetes Service, see [Kubernetes](/docs/services/blockchain/reference/k8s.html).
 {:shortdesc}
 
-{{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta is now upgraded to Hyperledger Fabric 1.4.0 code base. For more information about Hyperledger Fabric 1.4.0 new features, see [What's new in 1.4 ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/whatsnew.html "What's new in Fabric 1.4"){:new_window}.
+{{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}} is based on Hyperledger Fabric 1.4.1. For more information about Hyperledger Fabric 1.4.1 new features, see [What's new in 1.4](https://hyperledger-fabric.readthedocs.io/en/release-1.4/whatsnew.html){: external}.
 
-## What the new beta offers
+## What the new release offers
 {: #ibp-console-overview-capabilities}
 
-This latest release is tailored to experienced {{site.data.keyword.blockchainfull_notm}} and Hyperledger Fabric users and lets them host networks or create new organizations that can join other {{site.data.keyword.blockchainfull_notm}} 2.0 networks. If you are an existing Starter or Enterprise Plan customer, instead of {{site.data.keyword.IBM_notm}} managing your network, you now have total control with the ability to provision, monitor and manage your your components inside your own Kubernetes cluster.
+This latest release is tailored to experienced {{site.data.keyword.blockchainfull_notm}} and Hyperledger Fabric users and lets them host networks or create new organizations that can join other {{site.data.keyword.blockchainfull_notm}} networks. If you are an existing Starter or Enterprise Plan customer, instead of {{site.data.keyword.IBM_notm}} managing your network, you now have total control with the ability to provision, monitor, and manage your components inside your own Kubernetes cluster.
 
-The {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta release includes the following key features:
+This {{site.data.keyword.blockchainfull_notm}} Platform release includes the following key features:
 
-**Integrated developer experience**
-- **Easily code** your smart contracts in Node.js, or Golang, write client applications using the new {{site.data.keyword.blockchainfull_notm}} VSCode extension, leverage **SDK integration** with the console, and learn from our rich tutorials and samples.
+**BUILD ---- Integrated developer experience**
+- **Easily code** your smart contracts in Node.js, Golang, or Java, write client applications using the new {{site.data.keyword.blockchainfull_notm}} VS Code extension, leverage **SDK integration** with the console, and learn from our rich tutorials and samples.
 - **Simplified DevOps** allows you to move from development to test to production in a single environment by scaling up your Kubernetes resources to add more components.
-- **Up-to-date Fabric key features.** Leverage the latest features of Hyperledger Fabric v1.4:
+- **Up-to-date Fabric key features**. Leverage the latest features of Hyperledger Fabric v1.4.1:
+  -  [Raft ordering service](https://hyperledger-fabric.readthedocs.io/en/release-1.4/orderer/ordering_service.html#raft){: external}
+  - **{{site.data.keyword.cloud_notm}} service integration.** Leverage the built-in {{site.data.keyword.cloud_notm}} services, such as {{site.data.keyword.cloud_notm}} Kubernetes Service Dashboard, {{site.data.keyword.IBM_notm}} Log Analysis with LogDNA, and {{site.data.keyword.cloud_notm}} Identity and Access Management (IAM).
   - [**Private data** collections](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-private-data) that provide increased data privacy by ensuring that ledger data is shared to only authorized peers via the gossip protocol.
-  - [Service Discovery ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/discovery-overview.html "Service discovery"), allowing you to dynamically discover and update how your application interacts with your network.
-  - [Channel Access Control Lists ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/access_control.html "Access Control Lists") that allow you additional control the governance of your channels and smart contracts.
-- **{{site.data.keyword.cloud_notm}} service integration.** Leverage the built in {{site.data.keyword.cloud_notm}} services, such as {{site.data.keyword.cloud_notm}} Kubernetes Service Dashboard, {{site.data.keyword.IBM_notm}} Log Analysis with LogDNA, and {{site.data.keyword.cloud_notm}} Identity and Access Management (IAM).
+  - [Service Discovery](https://hyperledger-fabric.readthedocs.io/en/release-1.4/discovery-overview.html){: external}, allowing you to dynamically discover and update how your application interacts with your network.
+  - [Channel Access Control Lists](https://hyperledger-fabric.readthedocs.io/en/release-1.4/access_control.html){: external} that allow you additional control the governance of your channels and smart contracts.
 
-**Total control of your deployments**
+**OPERATE --- Total control of your deployments**
 - **Deploy only the components you need**. Connect a peer to multiple channels and networks, or host an ordering service that business partners can connect to.
 - **Maintain complete control of your identities**. Store and manage the keys that are used to administer your nodes without storing your private keys on the {{site.data.keyword.cloud_notm}}.
 - **Centralized operation**. The {{site.data.keyword.blockchainfull_notm}} Platform console allows you to deploy and manage all of your organizations and nodes in **one central console** without having to rely on {{site.data.keyword.IBM_notm}} or other vendors to manage your orderers or Certificate Authority. You can also add or remove members from a blockchain consortium, create and join channels, and install and instantiate smart contracts from your console.
 - **Host or join a network**. Deploy peers hosted in your cluster to multiple channels on multiple clouds, or invite other organizations to join your consortium or channels while the organizations manage their nodes independently across infrastructures.
 - **Manage access** of the users who can administer or monitor your nodes.
-- **Direct access to the logs** of your nodes from the {{site.data.keyword.IBM_notm}} Kubernetes service. Use the {{site.data.keyword.cloud_notm}} Log Analysis service or a third party service to extract and analyze your logs.
-- **Interact directly with your node pods** using the Kubernetes Dashboard. Exec into your pods and containers to execute commands and update certificates from the command line.
+- **Direct access to the logs** of your nodes from the {{site.data.keyword.IBM_notm}} Kubernetes service. Use the {{site.data.keyword.cloud_notm}} Log Analysis service or a third-party service to extract and analyze your logs.
+- **Interact directly with your pods** using the Kubernetes Dashboard. Exec into your pods and containers to execute commands and update certificates from the command line.
+- **Dynamic signature collection** that allows better control over collaborative governance over channel configurations.
 
-**Scalability and flexibility**
-- **Chose your compute.** You have the flexibility to decide the amount of CPU, memory, and storage you want to provision in your Kubernetes cluster.
-- **Scale** up and down the resources in your Kubernetes cluster, paying for only what you need.
-- **Disaster recovery and multi-zone high availability.** This option duplicates your Kubernetes deployment across zones, enabling high availability (HA) of your components and disaster recovery (DR).  
+**GROW --- Scalability and flexibility**
+- **Choose your compute**. You have the flexibility to decide the amount of CPU, memory, and storage you want to provision in your Kubernetes cluster. For more information, see [How the {{site.data.keyword.cloud_notm}} Kubernetes Service interacts with the console](/docs/services/blockchain/howto/ibp-console-govern.html#ibp-console-govern-iks-console-interaction).
+- **Scale** up and down the resources in your Kubernetes cluster, paying for only what you need. For more information see [Pricing](/docs/services/blockchain/howto/pricing.html#ibp-pricing).
+- **Disaster recovery and multi-region high availability.** This option duplicates your Kubernetes deployment across regions, enabling high availability (HA) of your components and disaster recovery (DR).
+- **Run Anywhere** (instructions coming soon). Thanks to the **unified codebase** of the {{site.data.keyword.blockchainfull_notm}} Platform console, it is possible to run your components on {{site.data.keyword.cloud_notm}}, {{site.data.keyword.cloud_notm}} Private, and third-party public clouds.
 
-Check out this [blog ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/blogs/blockchain/2019/02/taking-the-next-step-towards-deploying-blockchain-anywhere "Taking the next step towards deploying blockchain for business anywhere") on taking the next step towards deploying blockchain for business anywhere.  
+Check out this [blog](https://www.ibm.com/blogs/blockchain/2019/02/taking-the-next-step-towards-deploying-blockchain-anywhere){: external} on taking the next step towards deploying blockchain for business anywhere.
 
-This offering is for experienced Fabric users who want to build and manage their own networks. The ability to deploy an entire network with a single click is coming soon. In the meantime, to deploy a network with one click that uses a standard configuration, see our documentation about [Starter Plan](/docs/services/blockchain/get_start_starter_plan.html#getting-started-with-starter-plan) instead.
+This offering is intended for experienced Fabric users who want to build and manage their own networks.
 
 ## Considerations
 {: #ibp-console-overview-considerations}
 
 Before you deploy the console, ensure that you understand the following considerations:
 
-- {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta is built with Hyperledger Fabric v1.4.0.
-- All peers deployed with the free 2.0 beta use CouchDB as their state database.
-- You have the option to use a free Kubernetes cluster for evaluation of the beta offering, however capacity and performance are limited, none of your data can be migrated, and the cluster is deleted after 30 days.
-- You are responsible for the management of health monitoring, security, and logging of your Kubernetes cluster. See this [information ![External link icon](../images/external_link.svg "External link icon")](https://cloud.ibm.com/docs/containers/cs_responsibilities.html#your-responsibilities-by-using-ibm-cloud-kubernetes-service "Cluster management responsibilities") for details on what {{site.data.keyword.cloud_notm}} manages and what you are responsible for.
-- You are also responsible for monitoring the resource usage of your Kubernetes cluster by using the Kubernetes dashboard. If you need to increase storage capacity or performance of your cluster, see this information on how to [modify your existing volume ![External link icon](../images/external_link.svg "External link icon")](https://cloud.ibm.com/docs/containers/cs_storage_file.html#change_storage_configuration "Changing the size and IOPS of your existing storage device").
-- You are responsible for managing and securing your certificates, your public and private keys. {{site.data.keyword.IBM_notm}} does not store your certificates in the Kubernetes cluster or in the console. They are only kept in the local storage of your browser. If you switch browsers, you will have to import your created identities into that browser.
-- The free 2.0 beta offering is available in only the **Dallas** region of {{site.data.keyword.cloud_notm}} Kubernetes service. This region includes data centers in Dallas, San Jose, Houston, and Brazil. Therefore, all blockchain components can reside in any of these four data centers. They are not deployed elsewhere.
-- While the {{site.data.keyword.blockchainfull_notm}} Platform 2.0 beta offering is free, if you choose a paid Kubernetes cluster instead of the limited free cluster, you will incur charges to your {{site.data.keyword.cloud_notm}} account.
-- Kubernetes must be version 1.11 or higher in your {{site.data.keyword.cloud_notm}} Kubernetes cluster. Use these instructions to [upgrade your new and existing clusters](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks-updating-kubernetes) to this version.
+- Because the availability of the beta trial and the generally available (GA) release of the {{site.data.keyword.blockchainfull_notm}} Platform will overlap, it is important to make sure you know what version of the {{site.data.keyword.blockchainfull_notm}} Platform you are using. New features and fixes will not be pushed to the beta, but they will be available in the GA version of the {{site.data.keyword.blockchainfull_notm}} Platform. As a result, if you are using the beta version of {{site.data.keyword.blockchainfull_notm}} Platform, it is likely that some panels in your console will not match the current documentation, which is kept up to date with the generally available service instance. To gain the benefits of all the latest functionality, you are encouraged at to provision a new GA service instance. To learn how to do that, see [Getting started with {{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}}](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks).
+- All peers deployed with this release use CouchDB as their state database.
+- You are responsible for the management of health monitoring, security, and logging of your Kubernetes cluster. See this [information](https://cloud.ibm.com/docs/containers/cs_responsibilities.html#your-responsibilities-by-using-ibm-cloud-kubernetes-service){: external} for details on what {{site.data.keyword.cloud_notm}} manages and what you are responsible for.
+- You are also responsible for monitoring the resource usage of your Kubernetes cluster. To monitor your Kubernetes resources, we recommend using the [{{site.data.keyword.cloud_notm}} SysDig](https://www.ibm.com/cloud/sysdig){: external} tool in combination with your {{site.data.keyword.cloud_notm}} Kubernetes dashboard. If you need to increase storage capacity or performance of your cluster, see this information on how to [modify your existing volume](https://cloud.ibm.com/docs/containers/cs_storage_file.html#change_storage_configuration){: external}.
+- You are responsible for managing and securing your certificates and private keys. {{site.data.keyword.IBM_notm}} does not store your certificates in the Kubernetes cluster or in the console. They are only kept in the local storage of your browser. If you switch browsers, you will have to import your created identities into that browser.
+- {{site.data.keyword.blockchainfull_notm}} Platform is available in select regions. Refer to this topic on [{{site.data.keyword.blockchainfull_notm}} Platform locations](/docs/services/blockchain/howto?topic=blockchain-ibp-regions-locations) for an updated list.
+- Kubernetes must be version 1.11 or a higher stable version in your {{site.data.keyword.cloud_notm}} Kubernetes cluster. Use these instructions to [upgrade your new and existing clusters](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks-updating-kubernetes) to this version.
+- If you do not want to use the default Bronze File storage that is pre-selected for you when you provision a Kubernetes cluster in {{site.data.keyword.cloud_notm}}, you can provision storage of your choice. See this topic on [Persistent storage considerations](/docs/services/blockchain?topic=blockchain-ibp-v2-deploy-iks#ibp-console-storage) to learn more.
+- If decide to include {{site.data.keyword.cloud_notm}} multi-zone support in your Kubernetes cluster, you must provision your own storage. See [Using Multizone (MZR) clusters with {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain?topic=blockchain-ibp-v2-deploy-iks#ibp-console-mzr) for more details.
+- You can preview the {{site.data.keyword.blockchainfull_notm}} Platform at no charge for 30 days when you link your {{site.data.keyword.blockchainfull_notm}} Platform service instance to an {{site.data.keyword.cloud_notm}} Kubernetes free cluster.  Performance will be limited by throughput, storage and functionality. {{site.data.keyword.cloud_notm}} will delete your cluster after 30 days and you cannot migrate any nodes or data from a free cluster to a paid cluster. And while the {{site.data.keyword.blockchainfull_notm}} Platform beta trial is free, if you choose a paid Kubernetes cluster instead of the limited free cluster, you will incur charges for the Kubernetes service to your {{site.data.keyword.cloud_notm}} account.
 
 ## Migration
 {: #ibp-console-overview-migration}
 
-You cannot migrate from any {{site.data.keyword.blockchainfull_notm}} platform offering to the {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 **beta**.  
+Currently, migration from any {{site.data.keyword.blockchainfull_notm}} platform offering to the {{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}} is not possible.
 
-All {{site.data.keyword.blockchainfull_notm}} platform free 2.0 beta service instances will not be migrated to the GA version, nor can Starter or Enterprise Plan instances be migrated to the 2.0 GA version.
+All {{site.data.keyword.blockchainfull_notm}} platform beta trial service instances cannot be migrated to the Generally Available (GA) release.
 
 ## License and pricing
 {: #ibp-console-overview-license-and-pricing}
 
-{{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta is free. An instance of the console is included with each deployment of the platform into an {{site.data.keyword.cloud_notm}} Kubernetes Service cluster. You need to pay for the Kubernetes cluster if you choose to deploy the console into a standard cluster of {{site.data.keyword.cloud_notm}} Kubernetes Service.
+{{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}} introduces a new hourly pricing model based on virtual processor core (VPC) usage. The simplified model is based on the amount of CPU (or VPC) that your {{site.data.keyword.blockchainfull_notm}} Platform nodes consume on an hourly basis, at a flat rate of **$0.29 USD/VPC-hour**, where **1 VPC = 1 CPU**. See this topic on [Pricing](/docs/services/blockchain?topic=blockchain-ibp-console-overview) for more details.
 
 ## Getting started
 {: #ibp-console-overview-deploy}
 
-An instance of the console is deployed into an {{site.data.keyword.IBM_notm}} Kubernetes Service cluster as part of the deployment of each instance of the {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta.
+For information about how to deploy {{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}}, see [Getting started with {{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}}](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks).
 
-For more information about deploying the console and platform, see [Getting started with {{site.data.keyword.blockchainfull_notm}} Platform free 2.0 beta](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks).
-
-For more information about how to use the console to start deploying nodes and building consortium, see the [Building your network](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network) tutorial. This tutorial will guide you through the process of using the console to create a sample network with three organizations, one ordering organization, two peer organizations, and a channel with two peers joined to it. You can use the sample network to deploy demos or proofs of concept or adjust and expand the steps in the tutorial to create your own configuration.
+For more information about how to use the console to start deploying nodes and building consortium, see the [Building your network](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network) tutorial. This tutorial guides you through the process of using the console to create a sample network with three organizations, one ordering organization, two peer organizations, and a channel with two peers joined to it. You can use this sample network to for demos or proofs of concept or adjust and expand the steps in the tutorial to create your own custom blockchain configuration.
 
 ## Architecture reference
 {: #ibp-console-overview-architecture}
@@ -104,39 +108,22 @@ The following illustration shows the components of your blockchain network and h
 
 Notice how a single instance of the console, also known as Operational Tooling, is created for each {{site.data.keyword.blockchainfull_notm}} Platform Service Instance. When a peer, orderer or CA node is deployed by using the console, it is deployed into the **Kubernetes Cluster Service Instance**.
 
-| **IBM Blockchain Platform Kubernetes Cluster** | **Description** |
+| **{{site.data.keyword.blockchainfull_notm}} Platform Kubernetes Cluster** | **Description** |
 | ------------------------- |-----------|
-| Operational Tooling | Also known as the `console`, this is your central user interface for operating all of your blockchain components. With this console you can now create CA, peer, and orderer nodes, create channels and install and instantiate smart contracts developed with the Hyperledger Fabric v1.4 VSCode extension. The console is deployed in an {{site.data.keyword.IBM_notm}}-owned cluster.|
+| Operational Tooling | Also known as the `console`, this is your central user interface for operating all of your blockchain components. With this console you can now create CA, peer, and orderer nodes, create channels and install and instantiate smart contracts developed with the Hyperledger Fabric v1.4 VS Code extension. The console is deployed in an {{site.data.keyword.IBM_notm}}-owned cluster. There is no charge for this tooling or the Kubernetes cluster where it runs.|
 
 
 | **Kubernetes Cluster Service Instance** | **Description** |
 | ------------------------- |-----------|-----------|-----------|
-| **Tiller** | Part of the [Helm tooling ![External link icon](../images/external_link.svg "External link icon")](https://docs.helm.sh/glossary/#tiller "Tiller"), the Tiller runs inside the Kubernetes cluster to manage the installations of your peer, CA and orderer Helm charts. |
-| **Ingress** | A [Kubernetes object ![External link icon](../images/external_link.svg "External link icon")](https://kubernetes.io/docs/concepts/services-networking/ingress/ "Ingress") that allows access to the cluster resources from outside the cluster. |
+| **Tiller** | Part of the [Helm tooling](https://docs.helm.sh/glossary/#tiller){: external}, the Tiller runs inside the Kubernetes cluster to manage the installations of your peer, CA and orderer Helm charts. |
+| **Ingress** | A [Kubernetes object](https://kubernetes.io/docs/concepts/services-networking/ingress/){: external} that allows access to the cluster resources from outside the cluster. |
 | **Proxy** | The {{site.data.keyword.blockchainfull_notm}} Platform proxy is responsible for routing traffic to the correct peer, CA and orderer nodes by using host header routing. |
 | **Peers, CAs, Orderers** | These are the nodes that are created by deploying the underlying helm charts. Note: These nodes could also be imported from other Kubernetes Cluster Service Instances. Because the keys are never stored by {{site.data.keyword.IBM_notm}}, every peer and orderer node includes a gRPC web proxy that allows the console to communicate with each node by using the keys in the console wallet. |
-| **RBAC** | Role based access control.  The {{site.data.keyword.blockchainfull_notm}} Platform configures [Kubernetes RBAC ![External link icon](../images/external_link.svg "External link icon")](https://kubernetes.io/docs/reference/access-authn-authz/rbac/ "Using RBAC Authorization") in the cluster which is required to manage blockchain components in the cluster.  |
-
-## High Availability (HA) and Disaster Recovery (DR)
-{: #ibp-console-overview-hadr}
-
-Multi-zone storage must be enabled in your paid IBM Cloud Kubernetes cluster if you require HA and DR. There are a variety of [Kubernetes storage options](https://cloud.ibm.com/docs/containers/cs_storage_planning.html#persistent_storage_overview) available. Coming soon, IBM Cloud will support the Portworx storage solution which is the recommended solution. Until then, if HA and DR are required for your implementation, you will need to bring your own storage solution.  
-
-To add your own storage solution, you will need to create a customized storage class. Read about how to
-[add a storage class](https://cloud.ibm.com/docs/containers/cs_storage_basics.html#storageclasses) for your solution. The {{site.data.keyword.blockchainfull_notm}} Platform uses [dynamic volume provisioning](https://cloud.ibm.com/docs/containers/cs_storage_basics.html#dynamic_provisioning) with the `default` storage class. Therefore,  to change the default storage class, run the following command:
-```
-kubectl patch storageclass <storageclass> -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
-```
-{:codeblock}
-
-Replace ``<storageclass>`` with the name of your storage class.  
-
-Finally, be sure to enable multi-zone regions when you create your paid cluster.
+| **RBAC** | Role based access control.  The {{site.data.keyword.blockchainfull_notm}} Platform configures [Kubernetes RBAC](https://kubernetes.io/docs/reference/access-authn-authz/rbac/){: external} in the cluster which is required to manage blockchain components in the cluster.
 
 ## Getting support
 {: #ibp-console-overview-support}
 
-For more information about how to get support on {{site.data.keyword.blockchainfull_notm}} Platform 2.0, as well as free blockchain developer resources and support forums that you can use to troubleshoot problems, see [Getting support](/docs/services/blockchain/ibmblockchain_support.html#blockchain-support).
+For more information about how to get support on {{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}}, as well as free blockchain developer resources and support forums that you can use to troubleshoot problems, see [Getting support](/docs/services/blockchain/ibmblockchain_support.html#blockchain-support).
 
-Support for the {{site.data.keyword.blockchainfull_notm}} Platform 2.0 will be limited during the beta period.
-{: important}
+Support for the {{site.data.keyword.blockchainfull_notm}} Platform beta trial is limited during the beta period that ends August 3, 2019.

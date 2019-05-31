@@ -2,13 +2,15 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-05-09"
+lastupdated: "2019-05-31"
+
+keywords: network components, IBM Cloud Kubernetes Service, allocate resources, batch timeout, channel update, reallocate resources
 
 subcollection: blockchain
 
 ---
 
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:shortdesc: .shortdesc}
 {:screen: .screen}
 {:codeblock: .codeblock}
@@ -22,6 +24,8 @@ subcollection: blockchain
 
 After creating CAs, peers, orderers, organizations, and channels, you can use the console to update these components.
 {:shortdesc}
+
+If you are using the beta trial version of {{site.data.keyword.blockchainfull_notm}} Platform, it is likely that some panels in your console will not match the current documentation, which is kept up to date with the generally available (GA) service instance. To gain the benefits of all the latest functionality, you are encouraged at this time to provision a new GA service instance by following instructions in [Getting started with {{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}}](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks).
 
 **Target audience:** This topic is designed for network operators who are responsible for creating, monitoring, and managing the blockchain network.
 
@@ -37,14 +41,17 @@ Because your instance of the {{site.data.keyword.blockchainfull_notm}} Platform 
 
   For a sense of how much storage and compute you will need in your cluster, refer to the chart after this list, which contains the current defaults for the peer, orderer, and CA.
 
-2. **Check whether you have enough resources in your {{site.data.keyword.cloud_notm}} Kubernetes Service cluster**. To monitor your Kubernetes resources, we recommend using the [{{site.data.keyword.cloud_notm}} SysDig ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/cloud/sysdig "IBM Cloud Monitoring with Sysdig") tool in combination with your {{site.data.keyword.cloud_notm}} Kubernetes dashboard. If you do not have enough space in your cluster to deploy or resize resources, you need to increase the size of your {{site.data.keyword.cloud_notm}} Kubernetes Service cluster. For more information about how to increase the size of a cluster, see [Scaling clusters ![External link icon](../images/external_link.svg "External link icon")](/docs/containers?topic=containers-ca#ca "Scaling clusters"). If you have enough space in your cluster, you can continue with step 3.
+2. **Check whether you have enough resources in your {{site.data.keyword.cloud_notm}} Kubernetes Service cluster**. To monitor your Kubernetes resources, we recommend using the [{{site.data.keyword.cloud_notm}} SysDig](https://www.ibm.com/cloud/sysdig){: external} tool in combination with your {{site.data.keyword.cloud_notm}} Kubernetes dashboard. If you do not have enough space in your cluster to deploy or resize resources, you need to increase the size of your {{site.data.keyword.cloud_notm}} Kubernetes Service cluster. For more information about how to increase the size of a cluster, see [Scaling clusters](/docs/containers?topic=containers-ca#ca){: external}. If you have enough space in your cluster, you can continue with step 3.
 3. **Use the console to deploy or resize your node**. If the worker node that the pod is running on is running out of resources, you can add a new larger worker node to your cluster and then delete the existing working node.
 
 | **Component** (all containers) | CPU  | Memory (GB) | Storage (GB) |
 |--------------------------------|---------------|-----------------------|------------------------|
-| **Peer**                       |  1.1          | 2.2                   | 200 (includes 100GB for peer and 100GB for CouchDB)|
-| **CA**                         | .1            | .2                    | 20                     |
-| **Orderer**                    | .45           | .9                    | 100                    |
+| **Peer**                       | 1.2           | 2.4                   | 200 (includes 100GB for peer and 100GB for CouchDB)|
+| **CA**                         | 0.1           | 0.2                   | 20                     |
+| **Ordering node**              | 0.45          | 0.9                   | 100                    |
+
+If you plan to deploy a five node Raft ordering service, note that your ordering node deployment will increase by a factor of five. So a total of 2.25 CPU, 4.5 GB of memory, and 500 GB of storage for the five Raft nodes. This makes the five node ordering service larger than a 2 CPU Kubernetes single worker node.
+{:tip}
 
 For cases when a user wants to minimize charges without bringing a node down completely or deleting it, it is possible to scale a node down to a minimum of 0.001 CPU (1 milliCPU). Note that the node will not be functional when using this amount of CPU.
 
@@ -56,11 +63,11 @@ While the figures in this topic endeavor to be precise, be aware that there are 
 
 While users of a free cluster **must use default sizes** for the containers associated with their nodes, users of paid clusters can set these values during the creation of their nodes.
 
-The **Resource allocation** panel in the console provides default values for the various fields that are involved in creating a node. These values are chosen because they represent a good way to get started. However, every use case is different. While this topic will provide guidance for ways to think about these values, it ultimately falls to the user to monitor their nodes and find sizings that work for them. Therefore, barring situations in which users are certain that they will need values different from the defaults, a practical strategy is to use these defaults and adjust these values later. For an overview of performance and scale of Hyperledger Fabric, which the {{site.data.keyword.blockchainfull_notm}} Platform is based on, see [Answering your questions on Hyperledger Fabric performance and scale ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/blogs/blockchain/2019/01/answering-your-questions-on-hyperledger-fabric-performance-and-scale/ "Blog about Hyperledger Fabric performance and scale").
+The **Resource allocation** panel in the console provides default values for the various fields that are involved in creating a node. These values are chosen because they represent a good way to get started. However, every use case is different. While this topic will provide guidance for ways to think about these values, it ultimately falls to the user to monitor their nodes and find sizings that work for them. Therefore, barring situations in which users are certain that they will need values different from the defaults, a practical strategy is to use these defaults and adjust these values later. For an overview of performance and scale of Hyperledger Fabric, which the {{site.data.keyword.blockchainfull_notm}} Platform is based on, see [Answering your questions on Hyperledger Fabric performance and scale](https://www.ibm.com/blogs/blockchain/2019/01/answering-your-questions-on-hyperledger-fabric-performance-and-scale/){: external}.
 
-All of the containers that are associated with a node have **CPU** and **memory**, while certain containers that are associated with the peer, orderer, and CA also have **storage**. For more information about the different storage options that are available to you in {{site.data.keyword.cloud_notm}}, see [storage options ![External link icon](../images/external_link.svg "External link icon")](/docs/containers?topic=containers-kube_concepts#kube_concepts "Kubernetes storage options"). Study the options carefully before you decide on which storage class to use.
+All of the containers that are associated with a node have **CPU** and **memory**, while certain containers that are associated with the peer, orderer, and CA also have **storage**. For more information about storage, see [Persistent storage considerations](/docs/services/blockchain?topic=blockchain-ibp-v2-deploy-iks#ibp-console-storage).
 
-Although CPU and memory can be changed by using the console and {{site.data.keyword.cloud_notm}} Kubernetes Service dashboard, after a node has been created, storage can be changed later only by using the {{site.data.keyword.cloud_notm}} CLI.
+You are responsible for monitoring your CPU, memory and storage consumption in your cluster. If you do happen to request more resources for a blockchain node than are available, the node will not start, but existing nodes are not affected. Although CPU and memory can be changed by using the console and {{site.data.keyword.cloud_notm}} Kubernetes Service dashboard, after a node has been created, storage can be changed later only by using the {{site.data.keyword.cloud_notm}} CLI.
 {:note}
 
 Every node has a gRPC web proxy container that bootstraps the communication layer between the console and a node. This container has fixed resource values and is included on the Resource allocation panel to provide an accurate estimate of how much space is required on your Kubernetes cluster in order for the node to deploy. Because the values for this container cannot be changed, we will not discuss the gRPC web proxy in the following sections.
@@ -91,7 +98,9 @@ The peer has three associated containers that we can adjust:
 
 - **The peer itself**: Encapsulates the internal peer processes (such as validating transactions) and the blockchain (in other words, the transaction history) for all of the channels it belongs to. Note that the storage of the peer also includes the smart contracts installed on the peer.
 - **CouchDB**: Where the state databases of the peer are stored. Recall that each channel has a distinct state database.
-- **Smart contract**: Recall that during a transaction, the relevant smart contract is "invoked" (in other words, run). Note that all smart contracts that you install on the peer will run in a separate container inside your smart contract container, which is known as a Docker-in-Docker container.
+- **Smart contract**: Recall that during a transaction, the relevant smart contract is "invoked" (in other words, run). Note that all smart contracts that you install on the peer will run in a separate container inside your smart contract container, which is known as a Docker-in-Docker container.  
+
+The peer also includes a container for the **Log Collector** that pipes the logs from the smart contract container to the peer container. Similar to the gRPC web proxy container, you cannot adjust the compute for this container.
 
 #### Sizing a peer during creation
 {: #ibp-console-govern-peers-sizing-creation}
@@ -102,7 +111,7 @@ As we noted in our section on [How the {{site.data.keyword.cloud_notm}} Kubernet
 |-----------------|-----------------------|
 | **Peer container CPU and memory** | When you anticipate a high transaction throughput right away. |
 | **Peer storage** | When you anticipate installing many smart contracts on this peer and to join it to many channels. Recall that this storage will also be used to store smart contracts from all channels the peer is joined to. Keep in mind that we estimate a "small" transaction to be in the range of 10,000 bytes (10k). As the default storage is 100G, this means as many as 10 million total transactions will fit in peer storage before it will need to be expanded (as a practical matter, the maximum number will be less than this, as transactions can vary in size and the number does not include smart contracts). While 100G might therefore seem like much more storage than is needed, keep in mind that storage is relatively inexpensive, and that the process for increasing it is more difficult (require command line) than increasing CPU or memory. |
-| **CouchDB container CPU and memory** | When you anticipate a high volume of queries against a large state database. This effect can be mitigated somewhat through the use of [indexes ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/couchdb_as_state_database.html#couchdb-indexes "Hyperledger Fabric indexes documentation"). Nevertheless, high volumes might strain CouchDB, which can lead to query and transaction timeouts. |
+| **CouchDB container CPU and memory** | When you anticipate a high volume of queries against a large state database. This effect can be mitigated somewhat through the use of [indexes](https://hyperledger-fabric.readthedocs.io/en/release-1.4/couchdb_as_state_database.html#couchdb-indexes){: external}. Nevertheless, high volumes might strain CouchDB, which can lead to query and transaction timeouts. |
 | **CouchDB (ledger data) storage** | When you expect high throughput on many channels and don't plan to use indexes. However, like the peer storage, the default CouchDB storage is 100G, which is significant. |
 | **Smart contract container CPU and memory** | When you expect a high throughput on a channel, especially in cases where multiple smart contracts will be invoked at once.|
 
@@ -116,7 +125,7 @@ Similar to the CA, the orderer has only one associated container that we can adj
 * **The orderer itself**: Encapsulates the internal orderer processes (such as validating transactions) and the blockchain for all of the channels it hosts.
 
 #### Sizing an orderer during creation
-{: #ibp-console-govern-peers-sizing-creation}
+{: #ibp-console-govern-orderer-sizing-creation}
 
 As we noted in our section on [How the {{site.data.keyword.cloud_notm}} Kubernetes Service interacts with the console](/docs/services/blockchain/howto/ibp-console-govern.html#ibp-console-govern-iks-console-interaction), it is recommended to use the defaults for these orderer containers and adjust them later as it becomes apparent how they are being utilized.
 
@@ -125,32 +134,32 @@ As we noted in our section on [How the {{site.data.keyword.cloud_notm}} Kubernet
 | **Orderer container CPU and memory** | When you anticipate a high transaction throughput right away. |
 | **Orderer storage** | When you anticipate that this orderer will be part of an ordering service on many channels. Recall that orderers keep a copy of the blockchain for every channel they're a part of. The orderer default storage is 100G, same as the container for the peer itself. |
 
-Making the CPU and memory of your ordering nodes roughly double the size of your peers, while not mandatory, is considered a best practice. If a Solo ordering node is overstressed, it might hit timeouts and start dropping transactions, requiring transactions to be resubmitted. This causes much greater harm to a network than a single peer struggling to keep up.
+Making the CPU and memory of your ordering nodes roughly double the size of your peers, while not mandatory, is considered a best practice. If an ordering service is overstressed, it might hit timeouts and start dropping transactions, requiring transactions to be resubmitted. This causes much greater harm to a network than a single peer struggling to keep up. In a Raft ordering service configuration, an overstressed leader node might stop sending heartbeat messages, triggering a leader election, and a temporary cessation of transaction ordering. Likewise, a follower node might miss messages and attempt to trigger a leader election where none is needed.
 {:important}
 
 ## Reallocating resources
 {: #ibp-console-govern-reallocate-resources}
 
-After resizing a node, you might see a delay before the it takes effect as containers are being rebuilt.
+After resizing a node, you might see a delay before it takes effect because containers are being rebuilt.
 {:important}
 
-As we said above, we recommend using the [{{site.data.keyword.cloud_notm}} SysDig ![External link icon](../images/external_link.svg "External link icon")](https://www.ibm.com/cloud/sysdig "{{site.data.keyword.cloud_notm}} Monitoring with Sysdig") tool in combination with your {{site.data.keyword.cloud_notm}} Kubernetes dashboard to monitor your Kubernetes resource usage. If you determine that a worker node is running out of resources, you can add a new larger worker node to your cluster and then delete the existing working node.
+As we said above, we recommend using the [{{site.data.keyword.cloud_notm}} SysDig](https://www.ibm.com/cloud/sysdig){: external} tool in combination with your {{site.data.keyword.cloud_notm}} Kubernetes dashboard to monitor your Kubernetes resource usage. If you determine that a worker node is running out of resources, you can add a new larger worker node to your cluster and then delete the existing working node.
 {:note}
 
 While it easier to have enough resources deployed to {{site.data.keyword.cloud_notm}} Kubernetes Service and be able to expand your pods and worker nodes as you see fit without having to increase your deployment into {{site.data.keyword.cloud_notm}} Kubernetes Service first, the bigger the deployment in {{site.data.keyword.cloud_notm}} Kubernetes Service, the more it will cost. Users need to consider their options carefully and recognize the tradeoffs that they are making regardless of the option that they choose.
 
 You can use one of the following ways to reallocate the resources that you assign to the containers that are associated with your node.
 
-1. **Use the {{site.data.keyword.cloud_notm}} Kubernetes Service autoscaler**. The autoscaler will scale your worker nodes up or down in response to your pod spec settings and resource requests. For more information about the {{site.data.keyword.cloud_notm}} Kubernetes Service autoscaler and how to set it up, see [Scaling clusters ![External link icon](../images/external_link.svg "External link icon")](/docs/containers?topic=containers-ca#ca "Scaling clusters") in the IBM {{site.data.keyword.cloud_notm}} documentation. Note that allowing the autoscaler to adjust your resources will result in charges to your {{site.data.keyword.cloud_notm}} Kubernetes Service account that will vary with your usage.
+1. **Use the {{site.data.keyword.cloud_notm}} Kubernetes Service autoscaler**. The autoscaler will scale your worker nodes up or down in response to your pod spec settings and resource requests. For more information about the {{site.data.keyword.cloud_notm}} Kubernetes Service autoscaler and how to set it up, see [Scaling clusters](/docs/containers?topic=containers-ca#ca){: external} in the {{site.data.keyword.cloud_notm}} documentation. Note that allowing the autoscaler to adjust your resources will result in charges to your {{site.data.keyword.cloud_notm}} Kubernetes Service account that will vary with your usage.
 2. **Scale manually**. This involves monitoring your usage in the console and on the {{site.data.keyword.cloud_notm}} Kubernetes Service cluster. While this will involve more manual steps than using the autoscaler, it has the advantage of allowing the user to always be certain what is being charged to their {{site.data.keyword.cloud_notm}} Kubernetes Service account.
 
 To scale manually, click the node that you want to adjust on the **Nodes** page and then click the **Usage** tab. You can see a button called **Reallocate**, which will launch a **Resource allocation** tab that is very similar to the one that you saw when you create the node. If you want to lower the amount of available resources, simply provide lower values and click **Reallocate resources** on that tab and the resulting **Summary** page.
 
 If you want to increase the CPU and memory for a node, use the **Resource allocation** tab to increase the values. The white box at the bottom of the page will add up the new values. After clicking **Reallocate resources**, the **Summary** page will translate this value into a **VPC** amount, which is used to calculate your bill. You'll then need to navigate to your {{site.data.keyword.cloud_notm}} Kubernetes Service dashboard to make sure your cluster has sufficient resources for this reallocation. If it does, you can click **Reallocate resources**. If sufficient resources are not available, you will need to increase the size of your cluster using the {{site.data.keyword.cloud_notm}} Kubernetes Service dashboard.
 
-The method you will use to increase storage will depend on the storage class you chose for your cluster. Refer back to the [storage options ![External link icon](../images/external_link.svg "External link icon")](/docs/containers?topic=containers-kube_concepts#kube_concepts "storage options") documentation for information about increasing your storage.
+The method you will use to increase storage will depend on the storage class you chose for your cluster. Refer back to the [storage options](/docs/containers?topic=containers-kube_concepts#kube_concepts){: external} documentation for information about increasing your storage. If you are about to exhaust the storage on your peer or orderer, you must deploy a new peer or orderer with a larger file system and let it sync via your other components on the same channels.
 
-Unlike CPU and memory, which can be increased using the console (if you have resources available in your {{site.data.keyword.cloud_notm}} Kubernetes Service cluster), you will need to use the {{site.data.keyword.cloud_notm}} CLI to increase the storage of your nodes. For a tutorial on how to do this, see [Changing the size and IOPS of your existing storage device ![External link icon](../images/external_link.svg "External link icon")](/docs/containers?topic=containers-file_storage#file_change_storage_configuration "Changing the size and IOPS of your existing storage device").
+Unlike CPU and memory, which can be increased using the console (if you have resources available in your {{site.data.keyword.cloud_notm}} Kubernetes Service cluster), you will need to use the {{site.data.keyword.cloud_notm}} CLI to increase the storage of your nodes. For a tutorial on how to do this, see [Changing the size and IOPS of your existing storage device](/docs/containers?topic=containers-file_storage#file_change_storage_configuration){: external}.
 
 ## Updating a channel configuration
 {: #ibp-console-govern-update-channel}
@@ -166,17 +175,17 @@ To update a channel, click on the channel inside the **Channels** tab. Click on 
 ### Channel configuration parameters you can update
 {: #ibp-console-govern-update-channel-available-parameters}
 
-It's possible to change some, but not all, of the configuration parameters of a channel after the channel has been created. And there is one parameter it is possible to update that is not available during channel creation.
+It's possible to change some, but not all, of the configuration parameters of a channel after the channel has been created. And there is only one parameter that is possible to update and is not available during channel creation.
 
 You will see that the **Channel name** is greyed out and cannot be edited. This reflects the fact that a channel name cannot be changed after it has been created. Also, observe that the ordering service display name is not present, as the ordering service of a channel also cannot be changed after the channel has been created.
 
 You can, however, change the following channel configuration parameters:
 
-* **Organizations**. This section of the panel is how organizations are added or removed from a channel. Organizations that can be added can be seen in the drop down list. Note that an organization must be a member of the consortium of the ordering service before it can be added to a channel. To learn how to add an organization to the consortium, see [Add your organization to list of organizations that can transact](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-add-org).
+* **Organizations**. This section of the panel is how organizations are added or removed from a channel. Organizations that can be added can be seen in the drop-down list. Note that an organization must be a member of the consortium of the ordering service before it can be added to a channel. For more information about how to add an organization to the consortium, see [Add your organization to list of organizations that can transact](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-add-org).
 
 * **Channel update policy**. The update policy of a channel specifies how many organizations (out of the total number of organizations in the channel), who must approve of an update to the channel configuration. To ensure a good balance between collaborative administration and efficient processing of channel configuration updates, consider setting this policy to a majority of admins. For example, if there are five admins in a channel, choose `3 out of 5`.
 
-* **Block cutting parameters**. (Advanced option) Because a change to the default block cutting parameters must be signed by an admin of the ordering service organization, these fields are not present in the channel creation panel. However, because this channel configuration will be sent to all of the relevant organizations in the channel, it is possible to send a channel configuration update request with changes to the block cutting parameters. These fields determine the conditions under which the ordering service cuts a new block. For information on how these fields affect when blocks are cut, see [Block cutting parameters]((/docs/services/blockchain/howto/ibp-console-govern.html#ibp-console-govern-orderer-tuning-batch-size).
+* **Block cutting parameters**. (Advanced option) Because a change to the default block cutting parameters must be signed by an admin of the ordering service organization, these fields are not present in the channel creation panel. However, because this channel configuration will be sent to all of the relevant organizations in the channel, it is possible to send a channel configuration update request with changes to the block cutting parameters. These fields determine the conditions under which the ordering service cuts a new block. For information on how these fields affect when blocks are cut, see [Block cutting parameters](/docs/services/blockchain/howto/ibp-console-govern.html#ibp-console-govern-orderer-tuning-batch-size).
 
 * **Access control lists**. (Advanced option) To specify a finer grained control over resources, you can restrict access to a resource to an organization and a role within that organization. For example, setting access to the resource `ChaincodeExists` to `Application/Admins` would mean that only the admin of an application would be able to access the `ChaincodeExists` resource.
 
@@ -185,7 +194,7 @@ If you restrict access to a resource to a particular organization, be aware that
 
 Because the console gives a single user the ability to own and control several organizations, you must specify the organization you are using when you sign a channel update in the **Channel updater organization** section. If you own more than one organization in this channel, you may choose any of the organizations you own in the channel to sign with. Depending on the **channel update policy** you've selected, you may get a notification asking you to sign the request as one or more of the other organizations you own.
 
-If you are attempting to change any of the **Block cutting parameters** and own the ordering service organization of this channel, you will see a field for the ordering service organization. Select the MSP of the relevant ordering service organization from the drop down list. If you are not an admin of the ordering service organization, you can still make a request to change one of the block cutting parameters, but the request will be sent, and will need to be signed, by an ordering service admin.
+If you are attempting to change any of the **Block cutting parameters** and own the ordering service organization of this channel, you will see a field for the ordering service organization. Select the MSP of the relevant ordering service organization from the drop-down list. If you are not an admin of the ordering service organization, you can still make a request to change one of the block cutting parameters, but the request will be sent, and will need to be signed, by an ordering service admin.
 
 ### Signature collection flow
 {: #ibp-console-govern-update-channel-signature-collection}
@@ -201,6 +210,16 @@ When you click on the **Notifications** button, you may have one or more actions
 
 You are not mandated to sign a channel configuration update, however there is no way to sign **against** a channel update. If you do not approve of a channel configuration update, you can simply close the panel and reach out to other channel operators out of band to voice your concerns. However, if enough operators in the channel approve of the update to satisfy the channel update policy, the new configuration will take effect.
 {:note}
+
+### Configuring anchor peers
+{: #ibp-console-govern-channels-anchor-peers}
+
+Because cross organizational [gossip](https://hyperledger-fabric.readthedocs.io/en/release-1.4/gossip.html){: external} must be enabled for service discovery and private data to work, an anchor peer must exist for each organization. This anchor peer is not a special **type** of peer, but is just the peer that the organization makes known to other organizations and bootstraps cross organizational gossip. Therefore, at least one [anchor peer](https://hyperledger-fabric.readthedocs.io/en/release-1.4/gossip.html#anchor-peers){: external} must be defined for each organization in the collection definition.
+
+To configure a peer to be an anchor peer, click the **Channels** tab and open the channel where the smart contract was instantiated.
+ - Click the **Channel details** tab.
+ - Scroll down to the Anchor peers table and click **Add anchor peer**.
+ - Select at least one peer from each organization in collection definition that you want to serve as the anchor peer for the organization. For redundancy reasons, you can consider selecting more than one peer from each organization in the collection.
 
 ## Tuning your orderer
 {: #ibp-console-govern-orderer-tuning}
@@ -220,7 +239,7 @@ The following three parameters work together to control when a block is cut, bas
 - **Max message count**   
   Set this value to the maximum number of transactions that can be included in a single block.
 - **Preferred max bytes**  
-  Set this value to the ideal block size in bytes, but it must be less than `Absolute max bytes`. A minimum transaction size,  one that contains no endorsements, is around 1KB.  If you add 1KB per required endorsement, a typical transaction size is approximately 3-4KB. Therefore, it is recommended to set the value of `Preferred max bytes` to be around `Max message count * expected averaged tx size`. At runtime, whenever possible, blocks will not exceed this size. If a transaction arrives that causes the block to exceed this size, the block is cut and a new block is created for that transaction. But if a transaction arrives that exceeds this value without exceeding the `Absolute max bytes`, the transaction will be included. If a block arrives that is larger than `Preferred max bytes`, then it will only contain a single transaction, and that transaction size can be no larger than `Absolute max bytes`.
+  Set this value to the ideal block size in bytes, but it must be less than `Absolute max bytes`. A minimum transaction size,  one that contains no endorsements, is around 1KB.  If you add 1KB per required endorsement, a typical transaction size is approximately 3-4KB. Therefore, it is recommended to set the value of `Preferred max bytes` to be around `Max message count * expected averaged tx size`. At run time, whenever possible, blocks will not exceed this size. If a transaction arrives that causes the block to exceed this size, the block is cut and a new block is created for that transaction. But if a transaction arrives that exceeds this value without exceeding the `Absolute max bytes`, the transaction will be included. If a block arrives that is larger than `Preferred max bytes`, then it will only contain a single transaction, and that transaction size can be no larger than `Absolute max bytes`.
 
 Together, these parameters can be configured to optimize throughput of your orderer.
 
@@ -231,16 +250,3 @@ Set the **Timeout** value to the amount of time, in seconds, to wait after the f
 
 When you modify these parameters, you do not affect the behavior of existing channels on the orderer; rather, any changes you make to the orderer configuration apply only to new channels you create on this orderer.
 {:important}
-
-## Modifying channels
-{: #ibp-console-govern-channels}
-
-### Configuring anchor peers
-{: #ibp-console-govern-channels-anchor-peers}
-
-Because cross organizational [gossip ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/gossip.html "Gossip data dissemination protocol") must be enabled for service discovery and private data to work, an anchor peer must exist for each organization. This anchor peer is not a special **type** of peer, but is just the peer that the organization makes known to other organizations and does bootstraps cross organizational gossip. Therefore, at least one [anchor peer ![External link icon](../images/external_link.svg "External link icon")](https://hyperledger-fabric.readthedocs.io/en/release-1.4/gossip.html#anchor-peers "Anchor peers") must be defined for each organization in the collection definition.
-
-To configure a peer to be an anchor peer, click the **Channels** tab and open the channel where the smart contract was instantiated.
- - Click the **Channel details** tab.
- - Scroll down to the Anchor peers table and click **Add anchor peer**.
- - Select at least one peer from each organization in collection definition that you want to serve as the anchor peer for the organization. For redundancy reasons, you can consider selecting more than one peer from each organization in the collection.
