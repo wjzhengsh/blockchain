@@ -121,20 +121,20 @@ The namespace is the first part of the url beginning with the letter `n` and fol
 2. Above the cluster overview screen, click **Kubernetes Dashboard**.
 3. Inside the Kubernetes dashboard, use the left navigation **Namespace** drop-down list to change to the namespace for your {{site.data.keyword.blockchainfull_notm}} Platform service instance that you discovered above.
 4. On the left navigation, click **Pods** to view the list of node pods that you have deployed.
-5. Click on a pod. Then click **View logs** on the top menu to open the logs of your node. Above the logs, you can use the drop-down menu after **Logs from** to view the logs from the different containers within the pod. For example, your peer and the state database (CouchDB for example) run in different containers and generate different logs.
+5. Click on a pod. Then click **Logs** on the top menu to open the logs of your node. Above the logs, you can use the drop-down menu after **Logs from** to view the logs from the different containers within the pod. For example, your peer and the state database (CouchDB for example) run in different containers and generate different logs.
 
-By default, the logs of your nodes are collected locally within your cluster. You can also use the {{site.data.keyword.cloud_notm}} Log Analysis service or a third-party service to collect, store, and analyze the logs from your network. For more information, see [Logging and monitoring for the {{site.data.keyword.IBM_notm}} Kubernetes Service](https://cloud.ibm.com/docs/containers?topic=containers-health#health){: external}. It is recommended that you take advantage of the [{{site.data.keyword.cloud_notm}} LogDNA](https://cloud.ibm.com/docs/services/Log-Analysis-with-LogDNA?topic=LogDNA-kube#kube){: external} service that allows you to easily parse the logs in real time.
+By default, the logs of your nodes are collected locally within your cluster. You can also use {{site.data.keyword.cloud_notm}} services or a third-party service to collect, store, and analyze the logs from your network. For more information, see [Logging and monitoring for the {{site.data.keyword.IBM_notm}} Kubernetes Service](https://cloud.ibm.com/docs/containers?topic=containers-health#health){: external}. It is recommended that you take advantage of the [{{site.data.keyword.cloud_notm}} LogDNA](https://cloud.ibm.com/docs/services/Log-Analysis-with-LogDNA?topic=LogDNA-kube#kube){: external} service that allows you to easily parse the logs in real time.
 
 ### Viewing your smart contract container logs
 {: #ibp-console-manage-console-container-logs}
 
 If you encounter issues with your smart contract, you can view the smart contract, or chaincode, container logs to debug an issue:
 
-- Open your Kubernetes dashboard and click the peer pod where the smart contract is running.
-- Click the `exec` link from your dashboard to exec into the pod. By default it points to peer container.
-- Switch to the `dind` container by selecting it from the drop-down list.
-- Run the command `docker ps -a` to see the list of chaincode containers.
-- Run `docker logs <chaincode-container-ID>` by replacing `<chaincode-container-ID>` with the ID of your chaincode container.
+- Open your Kubernetes dashboard, filter on your [namespace](#ibp-console-manage-console-node-logs), and click the peer pod where the smart contract is running.
+- Click the `Logs` link from your dashboard. By default it points to peer container.
+- Switch to the `fluentd` container by selecting it from the drop-down list.  
+
+All of your smart contract logs are visible in this window and can be downloaded using the download icon on the panel.
 
 ## Installing patches for your nodes
 {: #ibp-console-manage-patch}

@@ -161,6 +161,15 @@ The method you will use to increase storage will depend on the storage class you
 
 Unlike CPU and memory, which can be increased using the console (if you have resources available in your {{site.data.keyword.cloud_notm}} Kubernetes Service cluster), you will need to use the {{site.data.keyword.cloud_notm}} CLI to increase the storage of your nodes. For a tutorial on how to do this, see [Changing the size and IOPS of your existing storage device](/docs/containers?topic=containers-file_storage#file_change_storage_configuration){: external}.
 
+## Updating an organization MSP definition
+{: #ibp-console-govern-update-msp}
+
+Over time you may find the need to update an organization MSP definition, by adding additional organization admins for example, or changing the display name of the MSP in the console.
+
+- Simply export the existing MSP definition from the **Organizations** tab and edit the generated JSON file to modify the display name, the existing certificates, or add new certificates. It is not recommended that you change the `msp_id` field as this could cause breaking changes to your network.
+- Click your MSP definition in the **Organizations** tab to open it and then click **Add file** to upload the new JSON file.
+- Click **Update MSP definition**. The changes are effective immediately.
+
 ## Updating a channel configuration
 {: #ibp-console-govern-update-channel}
 
