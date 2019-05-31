@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-05-22"
+lastupdated: "2019-05-31"
 
 keywords: best practices, develop applications, connectivity, availability, mutual TLS, CouchDB
 
