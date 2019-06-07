@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-05-31"
+lastupdated: "2019-06-07"
 
 keywords: Fabric SDKs, client application, enroll, register, chaincode
 
@@ -36,7 +36,7 @@ When you are ready to scale your application, visit the [Best practices for appl
 
 You need the following prerequisites before you can use the **Writing Your First Application** tutorial on {{site.data.keyword.blockchainfull_notm}} Platform.
 
-- If you don't have a blockchain network on {{site.data.keyword.cloud_notm}}, you need to create one with either a Starter or Enterprise Membership Plan. For more information, see [Creating a Starter Plan network](/docs/services/blockchain/get_start_starter_plan.html#getting-started-with-starter-plan-creating-a-network) or [Creating an Enterprise Plan network](/docs/services/blockchain/get_start.html
+- If you don't have a blockchain network on {{site.data.keyword.cloud_notm}}, you need to create one with either a Starter or Enterprise Membership Plan. For more information, see [Creating a Starter Plan network](/docs/services/blockchain/get_start_starter_plan.html#getting-started-with-starter-plan-creating-a-network) or [Creating an Enterprise Plan network](/docs/services/blockchain?topic=blockchain-getting-started-with-enterprise-plan).
 
   After you enter the Network Monitor of your network, add at least one peer for your organization on the "Overview" screen. Then, create at least one channel in your network. For more information, see [Creating a channel](/docs/services/blockchain/howto/create_channel.html#ibp-create-channel-creating-a-channel). **Note** that if you use a Starter Plan network, your network already has a channel with the name of `defaultchannel` that you can use to deploy chaincode.
 
