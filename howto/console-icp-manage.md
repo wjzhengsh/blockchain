@@ -309,7 +309,7 @@ When you use the {{site.data.keyword.blockchainfull_notm}} Platform console, you
 ### Viewing your console logs
 {: #console-icp-manage-console-logs}
 
-You can easily access the console logs if you need to debug problems that you encounter when you use the console or operate your nodes. You can also set the logging level to increase or decrease the amount of logs that the console collects. The console logs are collected separately from the [node logs](/docs/services/blockchain/howto/ibp-console-manage.html#ibp-v2-apis), which are collected by {{site.data.keyword.cloud_notm}} Private.
+You can easily access the console logs if you need to debug problems that you encounter when you use the console or operate your nodes. You can also set the logging level to increase or decrease the amount of logs that the console collects. The console logs are collected separately from the [node logs](/docs/services/blockchain/howto/ibp-console-manage.html#console-icp-manage-node-logs), which are collected by {{site.data.keyword.cloud_notm}} Private.
 
 Navigate to the **Settings** tab in the console browser to change the logging settings. The console logs are collected from two separate sources:
 
