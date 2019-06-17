@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-05-31"
+lastupdated: "2019-06-18"
 
 keywords: blockchain network, Enterprise Plan, getting started tutorial
 
@@ -43,7 +43,7 @@ The following steps indicate the basic flow to launch an Enterprise Plan network
 
 Before you begin, you need to create a [{{site.data.keyword.blockchain}} Platform service instance](https://cloud.ibm.com/catalog/services/ibm-blockchain-5-prod){: external} on {{site.data.keyword.cloud_notm}}. You need to log in with your {{site.data.keyword.cloud_notm}} ID. If you do not have an ID, click the **Sign up to Create** button. Rename the service and credential names for your instance so you can recognize it easily in the future. Select the {{site.data.keyword.cloud_notm}} region, organization, and space, where you can deploy your {{site.data.keyword.blockchain}} network. Then, select **Enterprise Membership Plan** from the pricing plans table and click the **Create** button.
 
-You can find your {{site.data.keyword.blockchain}} Platform service instance in your [{{site.data.keyword.cloud_notm}} service dashboard](https://cloud.ibm.com/resources "{{site.data.keyword.cloud_notm}}){: external}.
+You can find your {{site.data.keyword.blockchain}} Platform service instance in your [{{site.data.keyword.cloud_notm}} service dashboard](https://cloud.ibm.com/resources){: external}.
 
 If you are a network initiator, click the **Create Network** button to initiate a {{site.data.keyword.blockchain}} network. Follow the wizard to complete the basic configuration of your network and resources.
 ![Create Network wizard](images/create_network_name.png "Create Network wizard")
@@ -119,7 +119,7 @@ You can retrieve the connection profile on the "Overview" screen in your Network
 
 ## Enabling applications to interact with the network
 {: #getting-started-with-enterprise-plan-enable-apps}
-Applications leverage the SDK APIs to interact with your {{site.data.keyword.blockchain}} network resources. You need to add the API endpoint information of your network resources in your application so that the application can ultimately target your peers with transaction requests. You can then add the API endpoint information from the Network Monitor. Applications can be hosted on your local file system or on {{site.data.keyword.cloud_notm}}. For more information, see [Developing applications](/docs/services/blockchain/v10_application.html#dev-app).
+Applications leverage the SDK APIs to interact with your {{site.data.keyword.blockchain}} network resources. You need to add the API endpoint information of your network resources in your application so that the application can ultimately target your peers with transaction requests. You can then add the API endpoint information from the Network Monitor. Applications can be hosted on your local file system or on {{site.data.keyword.cloud_notm}}.
 
 ## Monitoring network resources
 {: #getting-started-with-enterprise-plan-monitor-resources}

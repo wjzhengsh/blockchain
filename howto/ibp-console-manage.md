@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-05-31"
+lastupdated: "2019-06-18"
 
 keywords: IBM Blockchain Platform console, administer a console, add users, remove users, modify a user's role, install patches, Kubernetes cluster expiration
 
@@ -18,6 +18,7 @@ subcollection: blockchain
 {:important: .important}
 {:tip: .tip}
 {:pre: .pre}
+{:gif: data-image-type='gif'}
 
 
 # Administering your console
@@ -50,7 +51,7 @@ When you [use IAM to invite users](/docs/iam?topic=iam-iamuserinv#iamuserinv){: 
 
  Permissions are cumulative. If you select a **Manager** role, the user will also be able to perform all **Writer** and **Reader** actions, you are not required to additionally check those roles.   Likewise, a user with the `Writer` role will be able to perform all of the actions in the **Reader** role. For console access, you need to only select a role under the **Service Access Roles**, you do not need to select anything under the **Platform Access Roles**. Check the corresponding role under **Assign platform access role** when it is important that the service instance is visible in the invited user's {{site.data.keyword.cloud_notm}} dashboard.
 
-![Add users](../images/AddICPUser.gif)
+![Add users](../images/AddICPUser.gif){: gif}
 
 
 After you add new users to the console, the users might not be able to view all the nodes, channels, or chaincode, which other users deploy. To work with these components, each user needs to import the associated identities into their own console wallet. For more information, see [Storing identities in your console wallet](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-wallet).
@@ -110,10 +111,9 @@ You can view only the console logs if you are logged in as a console administrat
 ### Viewing your node logs
 {: #ibp-console-manage-console-node-logs}
 
-The logs of your peers, orderers, and Certificate Authorities are collected by the {{site.data.keyword.IBM_notm}} Kubernetes Service. Use the steps below to view the logs of your nodes from the cluster where you deployed your {{site.data.keyword.blockchainfull_notm}} Platform network.
+The logs of your peers, ordering nodes, and Certificate Authorities are collected by the {{site.data.keyword.IBM_notm}} Kubernetes Service. Use the steps below to view the logs of your nodes from the cluster where you deployed your {{site.data.keyword.blockchainfull_notm}} Platform network.
 
-To more easily locate your node logs, it is useful to filter on the namespace that was used when the nodes were deployed.
-To find the namespace, open any CA node in your console and click the **Settings** icon. View the value of the **Certificate Authority endpoint URL**. For example: `https://n2734d0-paorg10524.ibpv2-cluster.us-south.containers.appdomain.cloud:7054`.
+To more easily locate your node logs, it is recommended to filter on the namespace that was used when the nodes were deployed. To find the namespace, open any CA node in your console and click the **Settings** icon. View the value of the **Certificate Authority endpoint URL**. For example: `https://n2734d0-paorg10524.ibpv2-cluster.us-south.containers.appdomain.cloud:7054`.
 
 The namespace is the first part of the url beginning with the letter `n` and followed by a random string of six alphanumeric characters. So in the example above the value of the namespace is `n2734d0`.
 
@@ -139,12 +139,12 @@ All of your smart contract logs are visible in this window and can be downloaded
 ## Installing patches for your nodes
 {: #ibp-console-manage-patch}
 
-The underlying {{site.data.keyword.IBM_notm}} Hyperledger Fabric docker images for the peer, CA, and orderer nodes might need to be updated over time, for example, with security updates or to a new Fabric point release. The **Patch available** text on a node tile is the indicator that such a patch is available and can be installed on the node whenever you are ready. These patches are optional, but recommended.  You cannot patch nodes that have been imported into the console.
+The underlying {{site.data.keyword.IBM_notm}} Hyperledger Fabric docker images for the peer, CA, and ordering nodes might need to be updated over time, for example, with security updates or to a new Fabric point release. The **Patch available** text on a node tile is the indicator that such a patch is available and can be installed on the node whenever you are ready. These patches are optional, but recommended.  You cannot patch nodes that have been imported into the console.
 
 Patches are applied to nodes one at a time. While the patch is being applied, the node is unavailable to process requests or transactions. Therefore, to avoid any disruption of service, whenever possible you should ensure another node of the same type is available to process requests. Installing patches on a node takes about a minute to complete and when the update is complete, the node is ready to process requests.
 {:note}
 
-To apply a patch to a node, open the node tile and click the **Install patch** button.
+To apply a patch to a node, open the node tile and click the **Install patch** button. You cannot patch nodes that you imported to the console.
 
 ## Kubernetes cluster expiration
 {: #ibp-console-manage-console-cluster-expiration}

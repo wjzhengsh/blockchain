@@ -2,9 +2,9 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-05-31"
+lastupdated: "2019-06-18"
 
-keywords: pricing model, hourly, per hour, VPC, CPU, vCPU, virtual core, cost, scalability, estimation, optimize your cost
+keywords: pricing model, hourly, per hour, VPC, CPU, vCPU, virtual core, cost, scalability, estimation, optimize your cost, billing
 
 subcollection: blockchain
 
@@ -17,15 +17,19 @@ subcollection: blockchain
 {:note: .note}
 {:important: .important}
 {:tip: .tip}
+{:gif: data-image-type='gif'}
 {:pre: .pre}
 
-# Pricing
+# Pricing for {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}}
 {: #ibp-saas-pricing}
 
-This guide helps you understand the pricing model for {{site.data.keyword.blockchainfull}} Platform on {{site.data.keyword.cloud_notm}}, and how much you will pay when you develop and grow your blockchain network of peers, orderers, and Certificate Authorities components, which are based on Hyperledger Fabric v1.4.1.
+This guide helps you understand the pricing model for {{site.data.keyword.blockchainfull}} Platform for {{site.data.keyword.cloud_notm}}, and how much you will pay when you develop and grow your blockchain network of peers, ordering nodes, and Certificate Authorities components, which are based on Hyperledger Fabric v1.4.1.
 {:shortdesc}
 
-_This pricing model is for {{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}} only. If you are using Starter Plan or Enterprise Plan and have questions on pricing, see Starter Plan and Enterprise Plan [pricing](/docs/services/blockchain?topic=blockchain-ibp-pricing)._
+_This pricing model is for {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} only. If you are using Starter Plan or Enterprise Plan and have questions on pricing, see Starter Plan and Enterprise Plan [pricing](/docs/services/blockchain?topic=blockchain-ibp-pricing)._
+
+## Pricing model
+{: #ibp-saas-pricing-model}
 
 {{site.data.keyword.blockchainfull_notm}} Platform introduces a new hourly pricing model that is based on virtual processor core (VPC) usages. This simplified model is based on the amount of CPU (or VPC) that your {{site.data.keyword.blockchainfull_notm}} Platform nodes consume on an hourly basis, at a flat rate of **$0.29 USD/VPC-hour**.
 
@@ -72,7 +76,7 @@ The following table provides two examples of pricing with [default resource allo
 
 | Pricing options** (1 VPC = 1 CPU)| **Test Network** | **Join a Production Network** |
 |-|------------|-----------------------------|
-| **CPU allocation** |  1.85 CPU <br> Includes: <br> - 1 peer <br> - 2 CAs <br> - 1 orderer| 4.9 CPU <br> Includes: <br> - 2 peers (for HA) <br> **(2x default compute)** <br>- 1 CA <br>  |
+| **CPU allocation** |  1.85 CPU <br> Includes: <br> - 1 peer <br> - 2 CAs <br> - 1 ordering node| 4.9 CPU <br> Includes: <br> - 2 peers (for HA) <br> **(2x default compute)** <br>- 1 CA <br>  |
 | **Hourly cost: {{site.data.keyword.blockchainfull_notm}} Platform** | $0.54 USD <br> (1.85 CPU x $0.29 USD/VPC-hr) | $1.42 USD <br> (4.9 CPU x $0.29 USD/VPC-hr ) |
 | **Hourly cost: {{site.data.keyword.cloud_notm}} Kubernetes cluster**    | $0.12 USD <br> (Compute: 2 x 4 tier) <br> (IP Allocation: $16 USD/month) | $0.46 USD <br> (Compute: 8 x 32 tier) <br> (IP Allocation: $16 USD/month) |
 | **Hourly cost: Storage** | $0.07 USD <br> 340GB  <br> [Bronze](https://www.ibm.com/cloud/file-storage/pricing){: external} <br>  2 IOPS/GB | $0.13 USD <br> 420GB <br> [Silver](https://www.ibm.com/cloud/file-storage/pricing){: external} <br> 4 IOPS/GB  |
@@ -93,7 +97,7 @@ The values in the following table are useful to estimate the hourly cost of your
 |--------------------------------|---------------|-----------------------|------------------------|
 | **Peer**                       | 1.2            | 2.4                   | 200 (includes 100GB for peer and 100GB for CouchDB)|
 | **CA**                         | 0.1            | 0.2                    | 20                     |
-| **Orderer**                    | 0.45           | 0.9                    | 100                    |
+| **Ordering node**                    | 0.45           | 0.9                    | 100                    |
 
 
 ## Billing
@@ -101,24 +105,35 @@ The values in the following table are useful to estimate the hourly cost of your
 
 Your billing and usage information for your **Pay as you go** account is available in the {{site.data.keyword.cloud_notm}} dashboard on your [usage](https://cloud.ibm.com/billing/usage) tile. A metering service takes hourly snapshots of your total {{site.data.keyword.blockchainfull_notm}} Platform VPC usage so that the monthly cumulative usage amount is reflected in the **Usage** tile.
 
-When you create a new node, it might take up to an hour for VPC usage to be updated in the {{site.data.keyword.cloud_notm}} dashboard **Usage** tile.
+When you create a new node, it can take up to an hour for VPC usage to be reflected in the {{site.data.keyword.cloud_notm}} dashboard **Usage** tile.
 {:note}
+
+### Monitoring your usage
+{: #ibp-saas-pricing-usage}
+
+Before you get a bill, you can monitor your {{site.data.keyword.blockchainfull_notm}} Platform and Kubernetes cluster costs from your {{site.data.keyword.cloud_notm}} dashboard **Usage** tile. {{site.data.keyword.blockchainfull_notm}} Platform VPC usage is assessed hourly.  **These costs are estimates only.** Actual costs are reflected on your monthly bill.
+
+#### {{site.data.keyword.blockchainfull_notm}} Platform and Kubernetes Service usage
+
+This clip provides a simple example of how to view your charges for an {{site.data.keyword.blockchainfull_notm}} Platform that includes a single CA node.
+
+![Monitoring your usage](../images/usage_monitoring.gif){: gif}
 
 Navigate to **Manage** on the top of your {{site.data.keyword.cloud_notm}} dashboard, click **Billing and Usage**, and then click **Usage** in the left menu. The pie chart under the **Services** subsection gives you a breakdown of your total cost by the types of service offerings that you have used and consumed this month. Use this chart to understand how your {{site.data.keyword.blockchainfull_notm}} Platform, your Kubernetes service, and storage contribute to your total cost.
 
-<!--
-![Usage Tile](../images/pricing1.png "Usage Tile")  
-*Figure 1. View your Usage on the dashboard*-->
+When you scroll down, you can see a similar breakdown by **Type** and **Cost** in a list view. You can find "Kubernetes Service" and "Blockchain Platform" listed along with the other services you have provisioned in your cluster. Click **View plans** next to each of these items to understand your cost breakdown by metric. For example, `VIRTUAL_PROCESSOR_CORE_HOURS` represents the total number of VPC hours that have been assessed so far.  Use this value to see how much you are going to be charged based on the **$0.29 USD/VPC-hour** pricing metric.
 
-When you scroll down, you can see a similar breakdown by **Type** and **Cost** in a list view. You can find "Kubernetes Service", "Block Storage for VPC", or "File Storage for VPC", and "{{site.data.keyword.blockchainfull_notm}} Platform" among others. Click **"view plans"** next to each of these items to understand your cost breakdown by metric. For example, `VIRTUAL_PROCESSOR_CORE_HOURS` will determine the total number of hours the VPCs were used and how much it cost.  Use this to understand how you are going to be charged based on various pricing metrics.
+#### IP Allocation charges
 
-<!--
-![View Plans](../images/pricing2.png "View Plans")  
-*Figure 2. Find out how much cost you're incurring on Blockchain Service, Storage and more*
+When you provision a Kubernetes cluster in {{site.data.keyword.cloud_notm}}, a flat monthly fee is assessed for IP Allocation. This fee is charged by zone, so that if you provision three zones in your cluster, you can multiply this charge by three. The example below shows the charge for a single zone.
 
-![Breakdown by Metrics](../images/pricing3.png "Breakdown by Metrics")  
-*Figure 3. Track how many VPC hours you're utilizing, and more*
--->
+![IP allocation charges](../images/ip_allocation_charge.png "Kubernetes cluster IP allocation charges"){: caption="Figure 1. Kubernetes cluster IP Allocation charges" caption-side="bottom"}
+
+This charge is visible on the **Invoices** tab of the Usage tile. Click the link under **Next Recurring Invoice** to see your charges for IP Allocation.
+
+#### Storage usage
+
+If you are using {{site.data.keyword.cloud_notm}} File storage, the costs are assessed monthly, so an estimate of storage costs is not visible until the end of the month. However, the storage that you have you provisioned throughout the month is listed as line items in the Usage tile under **Sales** > **Orders**. Look in the **Items** column for a description of the storage that was dynamically provisioned when you deployed a peer, CA or ordering node.
 
 ## Optimizing the cost of your nodes
 {: #ibp-saas-pricing-shutdown}
@@ -129,9 +144,9 @@ One of the key benefits of the {{site.data.keyword.blockchainfull_notm}} Platfor
   CPU on individual nodes can be scaled down to 0.001 CPU to completely minimize charges. Taking these actions renders the node non-functional. When the compute is needed later, you can use the reallocation option in the {{site.data.keyword.blockchainfull_notm}} Platform console to scale up to what is required. For more information about how resources can be reallocated, see [Reallocating resources](/docs/services/blockchain?topic=blockchain-ibp-console-govern#ibp-console-govern-reallocate-resources).
 
 - **Delete unused peer and deploy a new one when needed**  
-  Because the ledger is stored on the orderer, when you deploy a new peer and join a channel, the peer receives a copy of the distributed ledger. The drawback to this approach is that you need to generate new certificates and join the peer to the channels again.
+  Because the ledger is stored on the ordering node, when you deploy a new peer and join a channel, the peer receives a copy of the distributed ledger. The drawback to this approach is that you need to generate new certificates and join the peer to the channels again.
 
-  It is not recommended to ever delete a CA node because the data on it can never be recovered. Likewise, if you have only a single orderer node, you should never delete it.  
+  It is not recommended to ever delete a CA node because the data on it can never be recovered. Likewise, if you have only a single ordering node, you should never delete it.  
   {:important}
 
 - **Monitor and adjust your resource allocation based on your needs**  

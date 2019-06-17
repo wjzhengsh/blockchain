@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-05-31"
+lastupdated: "2019-06-18"
 
 keywords: IBM Blockchain Platform, remote peer, operate peers, AWS peer, AWS peers, necessary certificates, command line
 
@@ -28,7 +28,7 @@ After you set up {{site.data.keyword.blockchainfull}} Platform peers in AWS, you
 
 The Hyperledger Fabric SDKs provide a powerful set of APIs that enable applications to interact with and operate blockchain networks. You can find the latest list of supported languages and the complete list of available APIs within the Hyperledger Fabric SDKs in the [Hyperledger Fabric SDK Community documentation](https://hyperledger-fabric.readthedocs.io/en/release-1.2/getting_started.html#hyperledger-fabric-sdks){: external}. You can use the Fabric SDKs to join your peer to a channel on the {{site.data.keyword.blockchainfull_notm}} Platform, install a chaincode on your peer, and instantiate the chaincode on a channel.
 
-The following instructions use the [Fabric Node SDK](https://fabric-sdk-node.github.io/){: external} to operate the peer and assume prior familiarity with the SDK. You can use the [developing applications tutorial](/docs/services/blockchain/v10_application.html#dev-app) to learn how to use the Node SDK before you get started, and as a guide to developing applications with your peer once you are ready to invoke and query chaincode.
+The following instructions use the [Fabric Node SDK](https://fabric-sdk-node.github.io/){: external} to operate the peer and assume prior familiarity with the SDK.
 
 The {{site.data.keyword.blockchainfull_notm}} Platform Peer on AWS Quick Start creates two peers for high availability. Therefore, you need to follow the operations steps once for each peer. Once you are ready to query and invoke chaincode from your application, have your SDK connect to both peers to ensure your [applications are highly available](/docs/services/blockchain/best_practices.html#best-practices-app-ha-app).
 
@@ -46,7 +46,7 @@ It is recommended that you use version 1.2 of the Node SDK.
 ### Preparing the SDK to work with the peer
 {: #remote-peer-aws-operate-sdk}
 
-Before you use the SDK to operate the peer, you need to generate necessary certificates (enrollment) that will allow your application to communicate with your network on {{site.data.keyword.blockchainfull_notm}} Platform and your peer. Follow the steps to [enroll with the SDK](/docs/services/blockchain/v10_application.html#dev-app-enroll-sdk) using your **admin** identity. The [Developing Applications](/docs/services/blockchain/v10_application.html#dev-app) tutorial also enrolls as the **admin**, so you don't need to modify the sample code.
+Before you use the SDK to operate the peer, you need to generate necessary certificates (enrollment) that will allow your application to communicate with your network on {{site.data.keyword.blockchainfull_notm}} Platform and your peer. Use your SDK to enroll using the **admin** identity registered with your Certificate Authority on {{site.data.keyword.cloud_notm}}.
 
 ### Uploading a signcert to the {{site.data.keyword.blockchainfull_notm}} Platform
 {: #remote-peer-aws-operate-upload-SDK}
@@ -114,17 +114,17 @@ As a member of the blockchain network, your organization needs to be added to a 
 
     After your organization is added to a channel, you need to add your peer's signing certificate to the channel so that other members can verify your digital signature during transactions. The peer uploads its signing cert during installation, so that you need to only synchronize the certificate to the channel. On the "Channels" screen of the Network Monitor, locate the channel that your organization joins and select **Sync Certificate** from the drop-down list under the **Action** header. This action synchronizes the certificates across all the peers on the channel. You might need to wait for a few minutes so that the channel sync can complete before you issue join channel commands.
 
-After your organization is part of the channel, follow the instructions of [Joining a channel](/docs/services/blockchain/v10_application.html#dev-app-join-channel-sdk). You need to provide the URL of the ordering service and the channel name.
+After your organization has become a member of a channel, you can use the SDK to [join your peer to a channel](https://fabric-sdk-node.github.io/release-1.4/Channel.html#joinChannel){: external}. You need to provide the URL of the ordering service and the channel name.
 
 ### Using the SDK to install chaincode on the peer
 {: #remote-peer-aws-operate-install-cc-sdk}
 
-Follow the instructions to use the SDK to [install a chaincode](/docs/services/blockchain/v10_application.html#dev-app-install-cc-sdk) on your peer.
+Use the SDK to [install a chaincode](https://fabric-sdk-node.github.io/release-1.4/Client.html#installChaincode){: external} on your peer.
 
 ### Using the SDK to instantiate chaincode on the channel
 {: #remote-peer-aws-operate-instantiate-cc-sdk}
 
-Only one member of the channel needs to instantiate or update chaincode. Therefore, any network member of the channel with peers on {{site.data.keyword.blockchainfull_notm}} Platform can use the Network Monitor to instantiate chaincode and specify endorsement policies. However, if you want to use the peer to instantiate chaincode on a channel, you can use the SDK and follow the instructions to [instantiate a chaincode](/docs/services/blockchain/v10_application.html#dev-app-instantiate-cc-sdk).
+Only one member of the channel needs to instantiate or update chaincode. Therefore, any network member of the channel with peers on {{site.data.keyword.blockchainfull_notm}} Platform can use the Network Monitor to instantiate chaincode and specify endorsement policies. However, if you want to use the peer to instantiate chaincode on a channel, you can use the SDK to [instantiate a chaincode](https://fabric-sdk-node.github.io/release-1.4/Channel.html#sendInstantiateProposal){: external}.
 
 
 ## Using the CLI to operate the peer

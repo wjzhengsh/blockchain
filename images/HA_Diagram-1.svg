@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="2805px" height="1295px" viewBox="0 0 2805 1295" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+    <title>IBP_Deployment 2 Copy</title>
+    <desc>Created with Sketch.</desc>
+    <g id="IBP_Deployment-2-Copy" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect fill="#FFFFFF" x="0" y="0" width="2805" height="1295"></rect>
+        <text id="IBM-Blockchain-Platf" font-family="IBMPlexSans-SemiBold, IBM Plex Sans" font-size="37.07" font-weight="500" fill="#FFFFFF">
+            <tspan x="887.89699" y="409">IBM Blockchain Platform Console (UI)</tspan>
+        </text>
+        <text id="IBM-Blockchain-Platf" font-family="IBMPlexSans-SemiBold, IBM Plex Sans" font-size="37.07" font-weight="500" fill="#FFFFFF">
+            <tspan x="787.3421" y="866">IBM Blockchain Platform Extension for VS Code  </tspan>
+        </text>
+        <g id="Group-5-Copy" transform="translate(862.000000, 9.000000)">
+            <polygon id="XMLID_12_" stroke="#5B6872" stroke-width="1.5" fill="#F2F5F7" points="0 1178.2139 1047.49618 1178.2139 1047.49618 1145 1081 1211.4278 1047.49618 1278 1047.49618 1244.7861 0 1244.7861"></polygon>
+            <text id="Increasing-Blockchai" fill="#000000" font-family="Helvetica" font-size="20" font-weight="normal">
+                <tspan x="280" y="1214">Increasing Blockchain high availability</tspan>
+            </text>
+            <path d="M458.698708,1139 L17.1583058,1139 C7.72123761,1139 0,1131.91245 0,1123.24989 L0,217.750105 C0,209.087547 7.72123761,202 17.1583058,202 L458.841694,202 C468.278762,202 476,209.087547 476,217.750105 L476,1123.24989 C475.857014,1131.91245 468.135777,1139 458.698708,1139 Z" id="XMLID_306_" stroke="#2D3F49" fill="#2D3F49"></path>
+            <path d="M435.817089,1112 L41.1829105,1112 C31.7323097,1112 24,1104.96417 24,1096.36482 L24,287.635179 C24,279.035831 31.7323097,272 41.1829105,272 L435.817089,272 C445.26769,272 453,279.035831 453,287.635179 L453,1096.36482 C453,1104.96417 445.26769,1112 435.817089,1112 Z" id="XMLID_305_" fill="#FFFFFF"></path>
+            <path d="M413.714286,1083 L61.1428571,1083 C51.7142857,1083 44,1075.64784 44,1066.66187 L44,313.338126 C44,304.352157 51.7142857,297 61.1428571,297 L413.857143,297 C423.285714,297 431,304.352157 431,313.338126 L431,1066.66187 C430.857143,1075.64784 423.142857,1083 413.714286,1083 Z" id="XMLID_304_" stroke="#00B39F" stroke-width="2" stroke-dasharray="8"></path>
+            <path d="M384.864583,1049 L90.1354167,1049 C80.7109375,1049 73,1041.25351 73,1031.78559 L73,413.214411 C73,403.746485 80.7109375,396 90.1354167,396 L384.864583,396 C394.289063,396 402,403.746485 402,413.214411 L402,1031.64214 C402,1041.25351 394.289063,1049 384.864583,1049 Z" id="XMLID_303_" stroke="#6182BB" fill="#FFFFFF"></path>
+            <path d="M369.80543,1026 L119.19457,1026 C109.737557,1026 102,1018.27156 102,1008.82569 L102,497.174312 C102,487.72844 109.737557,480 119.19457,480 L369.80543,480 C379.262443,480 387,487.72844 387,497.174312 L387,1008.82569 C387,1018.27156 379.262443,1026 369.80543,1026 Z" id="XMLID_302_" fill="#4278BD"></path>
+            <g id="XMLID_298_" transform="translate(72.000000, 413.000000)">
+                <rect id="XMLID_39_" x="0.428571429" y="9.44092742" width="329.142857" height="33.3293347"></rect>
+                <text id="Worker-Pool" fill="#000000" font-family="Helvetica" font-size="24.0721" font-weight="normal">
+                    <tspan x="70.5398571" y="24.63197">Worker Pool</tspan>
+                </text>
+            </g>
+            <g id="XMLID_292_" transform="translate(85.000000, 212.000000)">
+                <rect id="XMLID_38_" x="0.284651163" y="10.5714286" width="305.430698" height="48.5714286"></rect>
+                <text id="Region-1" fill="#FFFFFF" font-family="Helvetica" font-size="24.0721" font-weight="normal">
+                    <tspan x="86.8186047" y="24">Region</tspan>
+                    <tspan x="163.101773" y="24"> 1</tspan>
+                </text>
+            </g>
+            <rect id="XMLID_291_" x="119" y="599" width="238" height="34"></rect>
+            <text id="XMLID_290_" fill="#FFFFFF" font-family="Helvetica" font-size="24.0721" font-weight="normal">
+                <tspan x="142" y="529">Worker Node</tspan>
+            </text>
+            <text id="Single-Cluster" fill="#000000" font-family="Helvetica" font-size="24.0721" font-weight="normal">
+                <tspan x="138" y="352">Single Cluster</tspan>
+            </text>
+            <path d="M349.945946,642 L278.054054,642 C274.724324,642 272,635.8656 272,628.368 L272,584.632 C272,577.1344 274.724324,571 278.054054,571 L349.945946,571 C353.275676,571 356,577.1344 356,584.632 L356,628.368 C356,635.8656 353.275676,642 349.945946,642 Z" id="XMLID_279_" fill="#FFFFFF"></path>
+            <rect id="XMLID_25_" x="114" y="894" width="235" height="54"></rect>
+            <text id="Ordering-Node-1" fill="#000000" font-family="Helvetica" font-size="10.07" font-weight="normal">
+                <tspan x="292.410703" y="590">Ordering</tspan>
+                <tspan x="294.365208" y="602"> Node 1</tspan>
+                <tspan x="329.634792" y="602" font-size="19.07"></tspan>
+            </text>
+            <path d="M1017.84169,1139 L576.158306,1139 C566.721238,1139 559,1131.80547 559,1123.01217 L559,15.9878348 C559,7.19452568 566.721238,0 576.158306,0 L1017.84169,0 C1027.27876,0 1035,7.19452568 1035,15.9878348 L1035,1122.87893 C1035,1131.80547 1027.27876,1139 1017.84169,1139 Z" id="XMLID_272_" stroke="#2D3F49" fill="#2D3F49"></path>
+            <path d="M995.958401,1112 L601.182832,1112 C591.732274,1112 584,1104.84497 584,1096.09992 L584,98.9000773 C584,90.1550348 591.732274,83 601.182832,83 L995.815211,83 C1005.26577,83 1012.99804,90.1550348 1012.99804,98.9000773 L1012.99804,1096.09992 C1013.14123,1104.84497 1005.40896,1112 995.958401,1112 Z" id="XMLID_271_" fill="#FFFFFF"></path>
+            <path d="M972.857143,1083 L620.142857,1083 C610.714286,1083 603,1075.47516 603,1066.27813 L603,123.721873 C603,114.524843 610.714286,107 620.142857,107 L972.857143,107 C982.285714,107 990,114.524843 990,123.721873 L990,1066.41748 C990,1075.47516 982.285714,1083 972.857143,1083 Z" id="XMLID_270_" stroke="#00B39F" stroke-width="2" stroke-dasharray="8"></path>
+            <path d="M944.864583,1049 L650.135417,1049 C640.710938,1049 633,1041.27315 633,1031.82923 L633,275.170767 C633,265.726845 640.710938,258 650.135417,258 L944.864583,258 C954.289062,258 962,265.726845 962,275.170767 L962,1031.82923 C962,1041.27315 954.289062,1049 944.864583,1049 Z" id="XMLID_269_" stroke="#6182BB" fill="#FFFFFF"></path>
+            <g id="XMLID_265_" transform="translate(632.000000, 266.000000)">
+                <rect id="XMLID_24_" x="0.714285714" y="8.78494624" width="329.142857" height="33.2171147"></rect>
+                <text id="Worker-Pool" fill="#000000" font-family="Helvetica" font-size="24.0721" font-weight="normal">
+                    <tspan x="70.8544286" y="24.0223284">Worker Pool</tspan>
+                </text>
+            </g>
+            <rect id="XMLID_264_" x="656" y="105" width="283" height="49"></rect>
+            <g id="XMLID_259_" transform="translate(643.000000, 20.000000)">
+                <rect id="XMLID_23_" x="0.569302326" y="10.1773567" width="305.430698" height="48.7366375"></rect>
+                <text id="Region-1" fill="#FFFFFF" font-family="Helvetica" font-size="24.0721" font-weight="normal">
+                    <tspan x="81.1255814" y="24">Region 1</tspan>
+                </text>
+            </g>
+            <path d="M923.80543,536 L673.19457,536 C663.737557,536 656,528.307054 656,518.904564 L656,347.095436 C656,337.692946 663.737557,330 673.19457,330 L923.80543,330 C933.262443,330 941,337.692946 941,347.095436 L941,518.904564 C941,528.307054 933.262443,536 923.80543,536 Z" id="XMLID_258_" fill="#4278BD"></path>
+            <rect id="XMLID_257_" x="680" y="451" width="238" height="34"></rect>
+            <text id="XMLID_256_" fill="#FFFFFF" font-family="Helvetica" font-size="24.0721" font-weight="normal">
+                <tspan x="684" y="381">Worker Node 1</tspan>
+            </text>
+            <path d="M747.666667,490 L684.333333,490 C681.4,490 679,483.8656 679,476.368 L679,432.632 C679,425.1344 681.4,419 684.333333,419 L747.666667,419 C750.6,419 753,425.1344 753,432.632 L753,476.368 C753,483.8656 750.6,490 747.666667,490 Z" id="XMLID_255_" fill="#FFFFFF"></path>
+            <path d="M834.162162,490 L764.837838,490 C761.627027,490 759,483.8656 759,476.368 L759,432.632 C759,425.1344 761.627027,419 764.837838,419 L834.162162,419 C837.372973,419 840,425.1344 840,432.632 L840,476.368 C840,483.8656 837.372973,490 834.162162,490 Z" id="XMLID_255_" fill="#FFFFFF"></path>
+            <path d="M923.162162,490 L853.837838,490 C850.627027,490 848,483.8656 848,476.368 L848,432.632 C848,425.1344 850.627027,419 853.837838,419 L923.162162,419 C926.372973,419 929,425.1344 929,432.632 L929,476.368 C929,483.8656 926.372973,490 923.162162,490 Z" id="XMLID_255_" fill="#FFFFFF"></path>
+            <rect id="XMLID_22_" x="681" y="439" width="235" height="54"></rect>
+            <text id="Peer-1" fill="#000000" font-family="Helvetica" font-size="12.07" font-weight="normal">
+                <tspan x="689" y="449">Peer 1</tspan>
+            </text>
+            <text id="Org-1" fill="#000000" opacity="0.517066592" font-family="Helvetica" font-size="9.07" font-weight="normal">
+                <tspan x="698" y="465">Org 1</tspan>
+            </text>
+            <text id="Peers" fill="#000000" opacity="0.517066592" font-family="Helvetica" font-size="9.07" font-weight="normal">
+                <tspan x="782" y="465">Peers</tspan>
+            </text>
+            <path d="M218.666667,642 L155.333333,642 C152.4,642 150,635.8656 150,628.368 L150,584.632 C150,577.1344 152.4,571 155.333333,571 L218.666667,571 C221.6,571 224,577.1344 224,584.632 L224,628.368 C224,635.8656 221.6,642 218.666667,642 Z" id="XMLID_255_" fill="#FFFFFF"></path>
+            <text id="Peer-1" fill="#000000" font-family="Helvetica" font-size="12.07" font-weight="normal">
+                <tspan x="163" y="601">Peer 1</tspan>
+            </text>
+            <text id="Org-1" fill="#000000" opacity="0.517066592" font-family="Helvetica" font-size="9.07" font-weight="normal">
+                <tspan x="170" y="617">Org 1</tspan>
+            </text>
+            <text id="(Raft)" fill="#000000" opacity="0.517066592" font-family="Helvetica" font-size="9.07" font-weight="normal">
+                <tspan x="298" y="625">(Raft)</tspan>
+            </text>
+            <text id="(Raft)" fill="#000000" opacity="0.517066592" font-family="Helvetica" font-size="9.07" font-weight="normal">
+                <tspan x="874" y="471">(Raft)</tspan>
+            </text>
+            <path d="M350.945946,727 L279.054054,727 C275.724324,727 273,720.8656 273,713.368 L273,669.632 C273,662.1344 275.724324,656 279.054054,656 L350.945946,656 C354.275676,656 357,662.1344 357,669.632 L357,713.368 C357,720.8656 354.275676,727 350.945946,727 Z" id="XMLID_279_" fill="#FFFFFF"></path>
+            <text id="Ordering-Node-2" fill="#000000" font-family="Helvetica" font-size="10.07" font-weight="normal">
+                <tspan x="294.410703" y="674">Ordering</tspan>
+                <tspan x="296.365208" y="686"> Node 2</tspan>
+                <tspan x="331.634792" y="686" font-size="19.07"></tspan>
+            </text>
+            <text id="(Raft)" fill="#000000" opacity="0.517066592" font-family="Helvetica" font-size="9.07" font-weight="normal">
+                <tspan x="299" y="709">(Raft)</tspan>
+            </text>
+            <path d="M349.945946,810 L278.054054,810 C274.724324,810 272,803.8656 272,796.368 L272,752.632 C272,745.1344 274.724324,739 278.054054,739 L349.945946,739 C353.275676,739 356,745.1344 356,752.632 L356,796.368 C356,803.8656 353.275676,810 349.945946,810 Z" id="XMLID_279_" fill="#FFFFFF"></path>
+            <text id="Ordering-Node-3" fill="#000000" font-family="Helvetica" font-size="10.07" font-weight="normal">
+                <tspan x="292.410703" y="761">Ordering</tspan>
+                <tspan x="294.365208" y="773"> Node 3</tspan>
+                <tspan x="329.634792" y="773" font-size="19.07"></tspan>
+            </text>
+            <text id="(Raft)" fill="#000000" opacity="0.517066592" font-family="Helvetica" font-size="9.07" font-weight="normal">
+                <tspan x="298" y="794">(Raft)</tspan>
+            </text>
+            <path d="M349.945946,896 L278.054054,896 C274.724324,896 272,889.8656 272,882.368 L272,838.632 C272,831.1344 274.724324,825 278.054054,825 L349.945946,825 C353.275676,825 356,831.1344 356,838.632 L356,882.368 C356,889.8656 353.275676,896 349.945946,896 Z" id="XMLID_279_" fill="#FFFFFF"></path>
+            <text id="Ordering-Node-4" fill="#000000" font-family="Helvetica" font-size="10.07" font-weight="normal">
+                <tspan x="292.410703" y="846">Ordering</tspan>
+                <tspan x="294.365208" y="858"> Node 4</tspan>
+                <tspan x="329.634792" y="858" font-size="19.07"></tspan>
+            </text>
+            <text id="(Raft)" fill="#000000" opacity="0.517066592" font-family="Helvetica" font-size="9.07" font-weight="normal">
+                <tspan x="298" y="880">(Raft)</tspan>
+            </text>
+            <path d="M349.945946,986 L278.054054,986 C274.724324,986 272,979.8656 272,972.368 L272,928.632 C272,921.1344 274.724324,915 278.054054,915 L349.945946,915 C353.275676,915 356,921.1344 356,928.632 L356,972.368 C356,979.8656 353.275676,986 349.945946,986 Z" id="XMLID_279_" fill="#FFFFFF"></path>
+            <text id="Ordering-Node-5" fill="#000000" font-family="Helvetica" font-size="10.07" font-weight="normal">
+                <tspan x="292.410703" y="935">Ordering</tspan>
+                <tspan x="294.365208" y="947"> Node 5</tspan>
+                <tspan x="329.634792" y="947" font-size="19.07"></tspan>
+            </text>
+            <text id="(Raft)" fill="#000000" opacity="0.517066592" font-family="Helvetica" font-size="9.07" font-weight="normal">
+                <tspan x="298" y="970">(Raft)</tspan>
+            </text>
+            <g id="Group-4" transform="translate(150.000000, 656.000000)">
+                <path d="M68.6666667,71 L5.33333333,71 C2.4,71 0,64.8656 0,57.368 L0,13.632 C0,6.1344 2.4,0 5.33333333,0 L68.6666667,0 C71.6,0 74,6.1344 74,13.632 L74,57.368 C74,64.8656 71.6,71 68.6666667,71 Z" id="XMLID_255_" fill="#FFFFFF"></path>
+                <text id="Peer-2" fill="#000000" font-family="Helvetica" font-size="12.07" font-weight="normal">
+                    <tspan x="12.8076923" y="30.88">Peer 2</tspan>
+                </text>
+                <text id="Org-1" fill="#000000" opacity="0.517066592" font-family="Helvetica" font-size="9.07" font-weight="normal">
+                    <tspan x="19.9230769" y="47.34">Org 1</tspan>
+                </text>
+            </g>
+            <g id="Group-2" transform="translate(150.000000, 786.000000)">
+                <path d="M68.6666667,71 L5.33333333,71 C2.4,71 0,64.8656 0,57.368 L0,13.632 C0,6.1344 2.4,0 5.33333333,0 L68.6666667,0 C71.6,0 74,6.1344 74,13.632 L74,57.368 C74,64.8656 71.6,71 68.6666667,71 Z" id="XMLID_255_" fill="#FFFFFF"></path>
+                <text id="CA-1" fill="#000000" font-family="Helvetica" font-size="12.07" font-weight="normal">
+                    <tspan x="19.9230769" y="30.88">CA 1</tspan>
+                </text>
+                <text id="Peers" fill="#000000" opacity="0.517066592" font-family="Helvetica" font-size="9.07" font-weight="normal">
+                    <tspan x="21.3461538" y="47.34">Peers</tspan>
+                </text>
+            </g>
+            <g id="Group-3" transform="translate(150.000000, 870.000000)">
+                <path d="M68.6666667,71 L5.33333333,71 C2.4,71 0,64.8656 0,57.368 L0,13.632 C0,6.1344 2.4,0 5.33333333,0 L68.6666667,0 C71.6,0 74,6.1344 74,13.632 L74,57.368 C74,64.8656 71.6,71 68.6666667,71 Z" id="XMLID_255_" fill="#FFFFFF"></path>
+                <text id="CA-2" fill="#000000" font-family="Helvetica" font-size="12.07" font-weight="normal">
+                    <tspan x="18.5" y="22.36">CA 2</tspan>
+                </text>
+                <text id="Ordering-Service" fill="#000000" opacity="0.517066592" font-family="Helvetica" font-size="8.07" font-weight="normal">
+                    <tspan x="6.72567871" y="39.24">Ordering Service</tspan>
+                </text>
+            </g>
+            <text id="CA-1" fill="#000000" font-family="Helvetica" font-size="12.07" font-weight="normal">
+                <tspan x="779" y="449">CA 1</tspan>
+            </text>
+            <text id="Single-Cluster" fill="#000000" font-family="Helvetica" font-size="24.0721" font-weight="normal">
+                <tspan x="693" y="158">Single Cluster</tspan>
+            </text>
+            <g id="Group" transform="translate(656.000000, 576.000000)">
+                <path d="M267.81407,206.96619 L17.3291457,206.96619 C7.87688442,206.96619 0.14321608,199.258484 0.14321608,189.837954 L0.14321608,17.6991777 C0.14321608,8.27864761 7.87688442,0.570941215 17.3291457,0.570941215 L267.81407,0.570941215 C277.266332,0.570941215 285,8.27864761 285,17.6991777 L285,189.837954 C285,199.258484 277.266332,206.96619 267.81407,206.96619 Z" id="XMLID_248_" fill="#4278BD"></path>
+                <rect id="XMLID_247_" x="23.3442211" y="35.8265612" width="238.454774" height="33.2573257"></rect>
+                <text id="XMLID_246_" fill="#FFFFFF" font-family="Helvetica" font-size="24.0721" font-weight="normal">
+                    <tspan x="26.5628593" y="50.9579886">Worker Node 2</tspan>
+                </text>
+            </g>
+            <path d="M907.531532,741 L854.468468,741 C852.010811,741 850,734.8656 850,727.368 L850,683.632 C850,676.1344 852.010811,670 854.468468,670 L907.531532,670 C909.989189,670 912,676.1344 912,683.632 L912,727.368 C912,734.8656 909.989189,741 907.531532,741 Z" id="XMLID_255_" fill="#FFFFFF"></path>
+            <path d="M750.243243,741 L693.756757,741 C691.140541,741 689,734.8656 689,727.368 L689,683.632 C689,676.1344 691.140541,670 693.756757,670 L750.243243,670 C752.859459,670 755,676.1344 755,683.632 L755,727.368 C755,734.8656 752.859459,741 750.243243,741 Z" id="XMLID_255_" fill="#FFFFFF"></path>
+            <path d="M832.243243,741 L775.756757,741 C773.140541,741 771,734.8656 771,727.368 L771,683.632 C771,676.1344 773.140541,670 775.756757,670 L832.243243,670 C834.859459,670 837,676.1344 837,683.632 L837,727.368 C837,734.8656 834.859459,741 832.243243,741 Z" id="XMLID_255_" fill="#FFFFFF"></path>
+            <path d="M923.80543,1028 L673.19457,1028 C663.737557,1028 656,1020.30705 656,1010.90456 L656,839.095436 C656,829.692946 663.737557,822 673.19457,822 L923.80543,822 C933.262443,822 941,829.692946 941,839.095436 L941,1010.90456 C941,1020.30705 933.262443,1028 923.80543,1028 Z" id="XMLID_240_" fill="#4278BD"></path>
+            <rect id="XMLID_239_" x="680" y="942" width="238" height="34"></rect>
+            <text id="(Raft)" fill="#000000" opacity="0.517066592" font-family="Helvetica" font-size="9.07" font-weight="normal">
+                <tspan x="789" y="723">(Raft)</tspan>
+            </text>
+            <text id="XMLID_238_" fill="#FFFFFF" font-family="Helvetica" font-size="24.0721" font-weight="normal">
+                <tspan x="684" y="871">Worker Node 3</tspan>
+            </text>
+            <text id="Ordering-node-3" fill="#000000" font-family="Helvetica" font-size="9.07" font-weight="normal">
+                <tspan x="864.856016" y="691">Ordering </tspan>
+                <tspan x="868.629277" y="702">node 3  </tspan>
+            </text>
+            <text id="Ordering-node-2" fill="#000000" font-family="Helvetica" font-size="9.07" font-weight="normal">
+                <tspan x="787.356016" y="692">Ordering </tspan>
+                <tspan x="791.129277" y="703">node 2  </tspan>
+            </text>
+            <path d="M837.162162,979 L767.837838,979 C764.627027,979 762,972.8656 762,965.368 L762,921.632 C762,914.1344 764.627027,908 767.837838,908 L837.162162,908 C840.372973,908 843,914.1344 843,921.632 L843,965.368 C843,972.8656 840.372973,979 837.162162,979 Z" id="XMLID_255_" fill="#FFFFFF"></path>
+            <text id="Ordering-node-4" fill="#000000" font-family="Helvetica" font-size="9.07" font-weight="normal">
+                <tspan x="783.856016" y="929">Ordering </tspan>
+                <tspan x="787.629277" y="940">node 4  </tspan>
+            </text>
+            <text id="Ordering-node-1" fill="#000000" font-family="Helvetica" font-size="9.07" font-weight="normal">
+                <tspan x="872.856016" y="441">Ordering </tspan>
+                <tspan x="876.629277" y="452">node 1  </tspan>
+            </text>
+            <rect id="XMLID_22_" x="671" y="778" width="53" height="54"></rect>
+            <text id="Peer-2" fill="#000000" font-family="Helvetica" font-size="11.07" font-weight="normal">
+                <tspan x="699" y="693">Peer 2</tspan>
+            </text>
+            <text id="Org-1" fill="#000000" opacity="0.517066592" font-family="Helvetica" font-size="10.07" font-weight="normal">
+                <tspan x="705" y="712">Org 1</tspan>
+            </text>
+            <text id="(Raft)" fill="#000000" opacity="0.517066592" font-family="Helvetica" font-size="9.07" font-weight="normal">
+                <tspan x="787" y="958">(Raft)</tspan>
+            </text>
+            <path d="M748.162162,979 L678.837838,979 C675.627027,979 673,972.8656 673,965.368 L673,921.632 C673,914.1344 675.627027,908 678.837838,908 L748.162162,908 C751.372973,908 754,914.1344 754,921.632 L754,965.368 C754,972.8656 751.372973,979 748.162162,979 Z" id="XMLID_255_" fill="#FFFFFF"></path>
+            <path d="M924.162162,979 L854.837838,979 C851.627027,979 849,972.8656 849,965.368 L849,921.632 C849,914.1344 851.627027,908 854.837838,908 L924.162162,908 C927.372973,908 930,914.1344 930,921.632 L930,965.368 C930,972.8656 927.372973,979 924.162162,979 Z" id="XMLID_255_" fill="#FFFFFF"></path>
+            <text id="Ordering-Service" fill="#000000" opacity="0.517066592" font-family="Helvetica" font-size="8.07" font-weight="normal">
+                <tspan x="684.225679" y="951">Ordering Service</tspan>
+            </text>
+            <text id="CA-2" fill="#000000" font-family="Helvetica" font-size="15.07" font-weight="normal">
+                <tspan x="690" y="934">CA 2</tspan>
+            </text>
+            <text id="Ordering-node-5" fill="#000000" font-family="Helvetica" font-size="9.07" font-weight="normal">
+                <tspan x="873.856016" y="929">Ordering </tspan>
+                <tspan x="877.629277" y="940">node 5  </tspan>
+            </text>
+            <text id="+-anti-affinity" fill="#000000" font-family="Helvetica-BoldOblique, Helvetica" font-size="21.6649" font-style="italic" font-weight="bold">
+                <tspan x="687" y="204">+ anti-affinity</tspan>
+            </text>
+            <text id="(Raft)" fill="#000000" opacity="0.517066592" font-family="Helvetica" font-size="9.07" font-weight="normal">
+                <tspan x="874" y="957">(Raft)</tspan>
+            </text>
+        </g>
+    </g>
+</svg>

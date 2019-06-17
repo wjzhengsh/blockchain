@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-05-31"
+lastupdated: "2019-06-18"
 
 keywords: IBM Blockchain Platform, release, new features
 
@@ -22,10 +22,57 @@ subcollection: blockchain
 # What's new
 {: #whats-new}
 
+## June 18, 2019
+{: #whats-new-6-18-2019}
+
+The {{site.data.keyword.blockchainfull}} Platform for Multicloud, which enables the use of the second-generation {{site.data.keyword.blockchainfull_notm}} Platform in your own infrastructure and the Kubernetes cloud provider of your choice, becomes generally available. This release allows the user interface console to be used to deploy and manage blockchain components in your own environment using {{site.data.keyword.cloud_notm}} Private. The {{site.data.keyword.blockchainfull_notm}} Platform for Multicloud uses Hyperledger Fabric v1.4.1 code base and supports deployment on {{site.data.keyword.cloud_notm}} Private v3.2.
+
+This {{site.data.keyword.blockchainfull_notm}} Platform release includes the following key features:
+
+**BUILD ---- Integrated developer experience**
+- **Easily code** your smart contracts in Node.js, Golang, or Java, write client applications using the new {{site.data.keyword.blockchainfull_notm}} VS Code extension, leverage **SDK integration** with the user interface console, and learn from our rich tutorials and samples.
+- **Simplified DevOps** allows you to move from development to test to production in a single environment by scaling up your Kubernetes resources to add more components.
+- **Kubernetes service integration.** Leverage services such as Grafana and Prometheus for logging and Kibana for monitoring.
+- **Up-to-date Fabric key features**. Leverage the latest features of Hyperledger Fabric v1.4.1:
+  - [Raft ordering service](https://hyperledger-fabric.readthedocs.io/en/release-1.4/orderer/ordering_service.html#raft){: external}
+  - [Private data collections](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-private-data) that provide increased data privacy by ensuring that ledger data is shared to only authorized peers via the gossip protocol.
+  - [Service discovery](https://hyperledger-fabric.readthedocs.io/en/release-1.4/discovery-overview.html){: external}, allowing you to dynamically discover and update how your application interacts with your network.
+  - [Channel access control lists](https://hyperledger-fabric.readthedocs.io/en/release-1.4/access_control.html){: external} that allow you additional control the governance of your channels and smart contracts.
+
+**OPERATE --- Total control of your deployments**
+- **Deploy only the components you need**. Connect a peer to multiple channels and networks, or host an ordering service that business partners can connect to.
+- **Maintain complete control of your identities**. Store and manage the keys that are used to administer your nodes in your own secure environment.
+- **Unified operation**. The {{site.data.keyword.blockchainfull_notm}} Platform console allows you to deploy and manage all of your organizations and nodes in **one console** without having to rely on {{site.data.keyword.IBM_notm}} or other vendors to manage your orderers or Certificate Authority. You can also add or remove members from a blockchain consortium, create and join channels, and install and instantiate smart contracts from your console.
+- **Host or join a network**. Deploy peers hosted in your cluster to multiple channels on multiple clouds, or invite other organizations to join your consortium or channels while the organizations manage their nodes independently across infrastructures.
+- **Manage access** of the users who can administer or monitor your nodes.
+- **Direct access to the logs** of your nodes from your Kubernetes service. Use any supported third-party service to extract and analyze your logs.
+- **Interact directly with your pods** using your Kubernetes service.
+- **Dynamic signature collection** that allows better control over collaborative governance over channel configurations.
+
+**GROW --- Scalability and flexibility**
+- **Choose your compute**. You have the flexibility to decide the amount of CPU, memory, and storage you want to provision in your Kubernetes cluster. For more information, see [How the console interacts with your Kubernetes cluster](/docs/services/blockchain/howto/ibp-console-govern.html#ibp-console-govern-iks-console-interaction).
+- **Scale** up and down the resources in your Kubernetes cluster, paying for only what you need. For more information see [Pricing](/docs/services/blockchain/howto/pricing.html#ibp-pricing).
+- **Disaster recovery and multizone high availability.** This ability duplicates your Kubernetes deployment across zones, enabling high availability (HA) of your components and disaster recovery (DR).
+- **Run Anywhere**. Thanks to the **unified codebase** of the {{site.data.keyword.blockchainfull_notm}} Platform console, it is possible to run your components on any environment supported by {{site.data.keyword.cloud_notm}} Private.
+
+
+**Instructions for deployment are in [Getting started with {{site.data.keyword.blockchainfull_notm}} Platform for Multicloud](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks).**
+
+- You can find more information in [About {{site.data.keyword.blockchainfull_notm}} Platform 2.0](/docs/services/blockchain/howto/ibp-console.html#ibp-console-overview).
+- Updated tutorials for using the {{site.data.keyword.blockchainfull_notm}} Platform are available in the **{{site.data.keyword.blockchainfull_notm}} Platform console** subsection under the **HOW TO** category.
+  * [Build a network tutorial](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network) guides you through the process of hosting a network by creating CAs, an ordering service, and a peer.
+  * [Join a network tutorial](/docs/services/blockchain/howto/ibp-console-join-network.html#ibp-console-join-network) explains how to join an existing network by creating a peer and joining it to a channel.
+  * [Deploy a smart contract on the network](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts) provides information on how to write a smart contract and deploy it on your network.
+- The {{site.data.keyword.blockchainfull_notm}} Platform offering is based on Hyperledger Fabric v1.4.1 and supports peer-to-peer gossip, service discovery, and private data. Visit this [topic](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-private-data) to learn how to configure private data on your network.
+
+For more information about Hyperledger Fabric v1.4.1, see [Hyperledger Fabric documentation](https://hyperledger-fabric.readthedocs.io/en/release-1.4/){: external}. For more information about {{site.data.keyword.cloud_notm}} Private, see [{{site.data.keyword.cloud_notm}} Private v3.2 documentation](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.2.0/kc_welcome_containers.html){: external}.
+
+The documentation for the previous releases of {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private has been moved to a new location. If you are still using {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private v1.0.1 or v1.0.2, see [{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private documentation](/docs/services/blockchain-icp-102/ibp_for_icp_deployment_guide.html).
+
 ## May 31, 2019
 {: #whats-new-5-31-2019}
 
-The second-generation {{site.data.keyword.blockchainfull}} Platform, which enables you to deploy, operate, and monitor your blockchain network, becomes generally available. This release includes a new user interface console that can be used to deploy and manage blockchain components in your own {{site.data.keyword.IBM_notm}} Kubernetes Service cluster on {{site.data.keyword.cloud_notm}}.
+The second-generation {{site.data.keyword.blockchainfull_notm}} Platform, which enables you to deploy, operate, and monitor your blockchain network, becomes generally available. This release includes a new user interface console that can be used to deploy and manage blockchain components in your own {{site.data.keyword.IBM_notm}} Kubernetes Service cluster on {{site.data.keyword.cloud_notm}}.
 
 This {{site.data.keyword.blockchainfull_notm}} Platform release includes the following key features:
 
@@ -89,7 +136,7 @@ For more information, see [Developing smart contracts with Visual Studio Code ex
 
 If you want to upgrade your existing {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} Private to v1.0.2, see [Upgrading the Helm chart on {{site.data.keyword.cloud_notm}} Private](/docs/services/blockchain/howto/helm_install_icp.html#helm-install-upgrading).
 
-For more information about Hyperledger Fabric v1.4.0, see [Hyperledger Fabric documentation](https://hyperledger-fabric.readthedocs.io/en/release-1.4/){: external}. For more information about {{site.data.keyword.cloud_notm}} Private, see [{{site.data.keyword.cloud_notm}} Private v3.1.2 documentation](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/kc_welcome_containers.html){: external} .
+For more information about Hyperledger Fabric v1.4.0, see [Hyperledger Fabric documentation](https://hyperledger-fabric.readthedocs.io/en/release-1.4/){: external}. For more information about {{site.data.keyword.cloud_notm}} Private, see [{{site.data.keyword.cloud_notm}} Private v3.1.2 documentation](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.1.2/kc_welcome_containers.html){: external}.
 
 ## February 8, 2019
 {: #whats-new-2-08-2019}
@@ -108,7 +155,7 @@ For more information about Hyperledger Fabric v1.4.0, see [Hyperledger Fabric do
 *	Redesigned console lets you manage network components in one place, no matter where they are deployed
 *	Maintain complete control of your identities, ledger, and smart contracts
 
-**Grow distributed networks with ease with newly enabled multi-cloud flexibility**
+**Grow distributed networks with ease with newly enabled multicloud flexibility**
 
 *	Connect to nodes running in any environment (on-premises, public, hybrid clouds)
 *	Easily connect a single peer to multiple industry networks

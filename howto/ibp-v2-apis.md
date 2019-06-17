@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-05-31"
+lastupdated: "2019-06-18"
 
 keywords: APIs, build a network, authentication, service credentials, API key, API endpoint, IAM access token, Fabric CA client, import a network, generate certificates
 
@@ -30,7 +30,7 @@ The {{site.data.keyword.blockchainfull}} Platform exposes RESTful APIs for you t
 
 This tutorial introduces the generic flow to build a blockchain network with {{site.data.keyword.blockchainfull_notm}} Platform APIs. For more information about each API, see [{{site.data.keyword.blockchainfull_notm}} Platform API reference doc](/apidocs/blockchain){: external}.
 
-These APIs are compatible with the {{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}} v0.1.77 or higher only. To check the version, browse to `https://[your_console_url]/version.txt`, where *`[your_console_url]`* is the URL of your {{site.data.keyword.blockchainfull_notm}} Platform console. For example: https://1ee1869ffa6496d6bc1ce4b-optools.bp01.blockchain.cloud.ibm.com/version.txt
+These APIs are compatible with the {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} v0.1.77 or higher only. To check the version, browse to `https://[your_console_url]/version.txt`, where *`[your_console_url]`* is the URL of your {{site.data.keyword.blockchainfull_notm}} Platform console. For example: https://1ee1869ffa6496d6bc1ce4b-optools.bp01.blockchain.cloud.ibm.com/version.txt
 {:note}
 
 ## Before you begin
@@ -126,7 +126,7 @@ Also, you can use the **Try it out** function in the API Reference doc to test y
 ## Limitations
 {: #ibp-v2-apis-limitations}
 
-You can import only existing CA, peer, and orderer nodes from other {{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}} networks.
+You can import only existing CA, peer, and orderer nodes from other {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} networks.
 
 ## Building a network by using APIs
 {: #ibp-v2-apis-build-with-apis}
@@ -152,7 +152,7 @@ You can use APIs to create blockchain components in your instance of the {{site.
 
 3. [Create an MSP definition for your organization](#ibp-v2-apis-msp) by calling [`POST /ak/api/v1/components/msp`](/apidocs/blockchain?#import-a-membership-service-provide-msp).
 
-4. [Build the configuration file](#ibp-v2-apis-config) that is required to create an orderer or peer. You must build a unique configuration file for each orderer or peer that you want to create.
+4. [Build the configuration file](#ibp-v2-apis-config) that is required to create an orderer or peer. You must build a unique configuration file for each orderer or peer that you want to create. If you are deploying multiple ordering nodes, you need to provide a configuration file for each node that you want to create.
 
 5. Create an orderer by calling [`POST /ak/api/v1/kubernetes/components/orderer`](/apidocs/blockchain?code=try#create-an-orderer).
 
@@ -619,7 +619,7 @@ You can use the APIs to create an organization MSP definition by calling [`POST 
 ## Creating a configuration file
 {: #ibp-v2-apis-config}
 
-You need to complete a configuration file in order to create a peer or orderer by using the APIs. This file is provided to the API as the `config` object in the request body of the API call. You need to deploy a CA to your {{site.data.keyword.cloud_notm}} Platform service instance and follow the steps to register and enroll the required identities before completing the file.
+You need to complete a configuration file in order to create a peer or ordering node by using the APIs. This file is provided to the API as the `config` object in the request body of the API call. If you are creating multiple ordering nodes, you need to provide a configuration file for each node that you want to create in an array to the API request. For example, for a five node raft ordering service, you need to create an array of five configuration files. You can provide the same file for each node as long as the enrollID's that you provide have a sufficiently high enrollment limit. You need to deploy a CA to your {{site.data.keyword.cloud_notm}} Platform service instance and follow the steps to register and enroll the required identities before completing the file.
 
 The template for the configuration file can be found below:
 ```

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-05-31"
+lastupdated: "2019-06-18"
 
 keywords: TLS, TLS certificates, client applications, digital certificates, certificate authority, intermediate certificate, client-side certificate, generate certificates, manage certificates
 
@@ -42,24 +42,24 @@ You can use the {{site.data.keyword.blockchainfull_notm}} Platform Network Monit
   - **Affiliation:** This will be the affiliation within your organization, such as `org1` for example, that the identity will belong to.
   - **Maximum Enrollments:** You can use this field to limit the number of times your can enroll or generate certificates using this identity. If you leave the field blank, the value defaults to an unlimited number of enrollments.
 
-You can use this panel to register a new peer identity if you are deploying a [remote peer](/docs/services/blockchain/howto/remote_peer.html#remote-peer-aws-about). Alternatively, you can register a client if you are developing an application that can submit transactions to your network. Visit the [developing applications tutorial](/docs/services/blockchain/v10_application.html#dev-app) to learn more about using the Fabric SDKs with the platform.
+You can use this panel to register a new peer identity if you are deploying a [remote peer](/docs/services/blockchain/howto/remote_peer.html#remote-peer-aws-about). Alternatively, you can register a client if you are developing an application that can submit transactions to your network.
 
 ### Generating client-side certificates (enrollment)
 {: #managing-certificates-enrollment}
 Before you can connect a third-party client to {{site.data.keyword.blockchainfull_notm}} Platform, you need to be authenticated. The process of generating the necessary certificates, your private key and your certificate (also known as your enrollment cert or signCert), is called enrollment. These certificates will be needed anytime your client communicates with the network. Any client that submits calls to the network need to sign payloads by using a private key and attach a properly signed x509 certificate.
 
-Visit the [developing applications tutorial](/docs/services/blockchain/v10_application.html#dev-app) to learn how to [enroll using Fabric Node SDK](/docs/services/blockchain/v10_application.html#dev-app-enroll-sdk). Enrolling with the SDK generates 3 separate items: a private key, signCert, and a public key that was used to create the signCert.
+If you enroll using the Fabric SDKs, the SDK will generate a private key and signCert. The private key and signCert form a user context that can be used to operate the SDK.
 
 You can also generate certificates from the command line by using the [Fabric CA client](/docs/services/blockchain/certificates.html#managing-certificates-enroll-register-caclient). The Fabric CA client returns more complete set of certificates inside a Membership Service Provider (MSP) folder. This folder contains the root certificate that the CA signed, intermediate certificates, a private key, and your signCert. For more information about MSP and what the MSP folder contains, see [Membership Service Providers](/docs/services/blockchain/certificates.html#managing-certificates-msp).
 
 You can generate certificates with only identities that have been registered with your Certificate Authority, by using that identity's name and secret. By default, an **admin** identity is already registered with your CA, and is listed on the "Certificate Authority" screen. You can find the secret of the admin identity in your connection profile by clicking the **Connection Profile** button on the "Overview" screen of your Network Monitor. You can also register a new identity by clicking the [Add User](/docs/services/blockchain/certificates.html#managing-certificates-ca-panel) button on the "Certificate Authority" screen of the Network Monitor, and then generate certificates with the name and secret of the new identity.
 
-**Note:** If you follow the instructions to generate certificates by using the Fabric Node SDK or the Fabric CA client above, you start by enrolling using the admin identity. You then use those certificates to register a new client identity with your CA. If you use the SDK instructions in [Developing applications](/docs/services/blockchain/v10_application.html#dev-app), you will enroll again by using the client identity. You can then use those certificates to submit transactions to the network. <!---You can an illustration of how the developing applications tutorial interacts with your organization CA in the diagram below.--->
+**Note:** If you follow the instructions below to generate certificates by using the Fabric CA client, you start by enrolling using the admin identity. You then use those certificates to register a new client identity with your CA. Then, you have the option of enrolling again by using the client identity. Now you can use those certificates to submit transactions to the network.
 
 ### Generating certificates using the Network Monitor
 {: #managing-certificates-certs-panel}
 
-You can use the Network Monitor to generate certificates using the admin identity, and then pass those certificates directly to the SDK. Click the **Generate Certificate** button next to your admin identity to get a new signCert and private key from your CA. The **Certificate** field contains the signCert, just above the **Private Key**. You can click the copy icon at the end of each field to copy the value. You then need to save these certificates in a place where you can then import them into your application. For more information, see [developing applications tutorial](/docs/services/blockchain/v10_application.html#dev-app-enroll-panel). **Note** that {{site.data.keyword.blockchainfull_notm}} Platform doesn't store these certificates. You need to safely save and store them.
+You can use the Network Monitor to generate certificates using the admin identity, and then pass those certificates directly to the SDK. Click the **Generate Certificate** button next to your admin identity to get a new signCert and private key from your CA. The **Certificate** field contains the signCert, just above the **Private Key**. You can click the copy icon at the end of each field to copy the value. You then need to save these certificates in a place where you can then import them into your application. **Note** that {{site.data.keyword.blockchainfull_notm}} Platform doesn't store these certificates. You need to safely save and store them.
 
 ### Uploading signing certificates to {{site.data.keyword.blockchainfull_notm}} Platform
 {: #managing-certificates-upload-certs}
@@ -77,7 +77,7 @@ Channels also recognize a set of admin certs from the identities that are allowe
 ### Certificate expiration
 {: #managing-certificates-expiration}
 
-Certificates that CAs generate on the {{site.data.keyword.blockchainfull_notm}} Platform will expire after one or three years. The expiration period is the same for certificates that are generated by using the Fabric SDKs, the Fabric CA client, or by using the [Network Monitor](/docs/services/blockchain/v10_application.html#dev-app-enroll-panel). If the certificates expire, your applications can no longer interact with your network. You need to re-enroll to generate new certificates. If you have hit the enrollment limit of a user, you can register a new user and then enroll. You also need to upload the new certificates to the platform if you used the old certificates to operate your network.
+Certificates that CAs generate on the {{site.data.keyword.blockchainfull_notm}} Platform will expire after one or three years. The expiration period is the same for certificates that are generated by using the Fabric SDKs, the Fabric CA client, or by using the Network Monitor. If the certificates expire, your applications can no longer interact with your network. You need to re-enroll to generate new certificates. If you have hit the enrollment limit of a user, you can register a new user and then enroll. You also need to upload the new certificates to the platform if you used the old certificates to operate your network.
 
 You can use your command line to check your certificates expiry date. Run the following command to display your certificates in a human-readable form:
 ```

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-05-31"
+lastupdated: "2019-06-18"
 
 keywords: client application, Commercial Paper, SDK, wallet, generate a certificate, generate a private key, fabric gateway, APIs, smart contract
 
@@ -94,6 +94,10 @@ The Hyperledger Fabric [Transaction Flow](https://hyperledger-fabric.readthedocs
 In order to take advantage of the [Service Discovery](https://hyperledger-fabric.readthedocs.io/en/release-1.4/discovery-overview.html){: external} feature of Hyperledger Fabric, you must configure anchor peers. Service discovery allows your application to learn which peers on the channel outside your organization need to endorse a transaction. Without service discovery, you will need to get the endpoint information of these peers out of band from other organizations and add them to your connection profile. For more information, see [Configuring anchor peers](/docs/services/blockchain/howto/ibp-console-govern.html#ibp-console-govern-channels-anchor-peers).
 
 Navigate to the **Smart contracts** tab in your platform console. Next to each instantiated smart contract, navigate to the overflow menu. Click on the button named **Connect with SDK**. This will open a side panel that will allow you to build and download your connection profile. First, you need to select the CA of your organization that you used to register your application identity. You will also need to select your organization MSP definition. You will then be able to download the connection profile that you can use to generate certificates and invoke the smart contract.
+
+If your nodes are deployed on {{site.data.keyword.cloud_notm}} Private, you need to ensure that the ports used by the Certificate Authorities, Peers, and Orderers in the connection profile are externally exposed to your client applications.
+{: note}
+
 
 ## Enrolling by using the SDK
 {: #ibp-console-app-enroll}
@@ -463,7 +467,7 @@ await gateway.connect(connectionProfile, connectionOptions);
 ```
 {:codeblock}
 
-This code snippet uses the gateway to open GRPC connections to the peer and orderer nodes, and interact with your network.
+This code snippet uses the gateway to open gRPC connections to the peer and orderer nodes, and interact with your network.
 
 ### Step five: Invoke the smart contract
 
@@ -497,7 +501,7 @@ gateway.disconnect();
 ```
 {:codeblock}
 
-This command closes the GRPC connections opened by your gateway. Closing connections will save network resources and improve performance.
+This command closes the gRPC connections opened by your gateway. Closing connections will save network resources and improve performance.
 
 After completing the edits from this step and **Step four**, save `issue.js` and close it. Submit the transaction that creates the new commercial paper using the following command:
 

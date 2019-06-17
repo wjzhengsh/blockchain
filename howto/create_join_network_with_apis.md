@@ -2,17 +2,20 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-03-20"
+lastupdated: "2019-06-18"
+
+keywords: Swagger APIs, create a network, join a network, authentication credential
 
 subcollection: blockchain
 
 ---
 
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:shortdesc: .shortdesc}
 {:screen: .screen}
 {:codeblock: .codeblock}
 {:pre: .pre}
+{:gif: data-image-type='gif'}
 
 # Creating or joining a network with Swagger APIs
 {: #swagger-network}
@@ -24,17 +27,17 @@ subcollection: blockchain
 ## Retrieving basic auth credential for API
 {: #swagger-network-retrieve-id-token}
 
-Before you begin, you need to create an [{{site.data.keyword.blockchainfull_notm}} Platform service instance ![External link icon](../images/external_link.svg "External link icon")](https://cloud.ibm.com/catalog/services/ibm-blockchain-5-prod) with Starter Plan or Enterprise Plan in {{site.data.keyword.cloud_notm}}.
+Before you begin, you need to create an [{{site.data.keyword.blockchainfull_notm}} Platform service instance](https://cloud.ibm.com/catalog/services/ibm-blockchain-5-prod){: external} with Starter Plan or Enterprise Plan in {{site.data.keyword.cloud_notm}}.
 
 To use Swagger APIs to create or join a network, you need a basic authentication credential to ensure that you have access to the service instance in {{site.data.keyword.cloud_notm}}.
 
-1. In your [{{site.data.keyword.cloud_notm}} dashboard ![External link icon](../images/external_link.svg "External link icon")](https://cloud.ibm.com/resources), open the service instance that you created.
+1. In your [{{site.data.keyword.cloud_notm}} dashboard](https://cloud.ibm.com/resources){: external}, open the service instance that you created.
 2. Click **Service credentials** from the left navigator.
 3. Click the "New Credential" button on the **Service credentials** page to create a new credential.
     1. Give the credential a name, for example, *CreateJoin*.
     2. Enter **{"type": "service_instance_token"}** in the "Add inline configuration parameter" field.
     3. Click the **Add** button.
-    ![Retrieve service credentials](../images/service_credentials.gif "Retreive service credentials")
+    ![Retrieve service credentials](../images/service_credentials.gif "Retreive service credentials"){: gif}
 4. After the new credential is created, click **View credentials** under the **ACTIONS** header of this credential. The contents of the credential looks similar to the following example:
 
     ```

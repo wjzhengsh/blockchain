@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-05-31"
+lastupdated: "2019-06-18"
 
 keywords: best practices, develop applications, connectivity, availability, mutual TLS, CouchDB
 
@@ -70,19 +70,19 @@ When you manage the connections between your application and your network, you m
   ```
   {:codeblock}
 
-  You can also find these variables with the recommended settings in the `"peers"` section of your network connection profile. The recommended options will be imported into your application automatically if you use the [connection profile with the SDK](/docs/services/blockchain/v10_application.html#best-practices-app-connection-profile) to connect to your network endpoints.
+  You can also find these variables with the recommended settings in the `"peers"` section of your network connection profile. The recommended options will be imported into your application automatically if you use the connection profile with the SDK to connect to your network endpoints. You can find more information on how to use a Connection Profile in the [Node SDK documentation](https://fabric-sdk-node.github.io/tutorial-network-config.html){: external}.
 
 - When a connection is no longer needed, use the `peer.close()` and `orderer.close()` commands to free up resources and prevent performance degradation. For more information, see the [peer close](https://fabric-sdk-node.github.io/Peer.html#close__anchor){: external} and [orderer close](https://fabric-sdk-node.github.io/Orderer.html#close__anchor){: external} classes in the Node SDK documentation. If you used a connection profile to add peers and orderers to a channel object, you can close all connections that are assigned to that channel by using a `channel.close()` command.
 
 ### Highly available applications
 {: #best-practices-app-ha-app}
 
-As a high availability best practice, it is strongly recommended that you deploy a minimum of two peers per organization for failover. You need to adapt your applications for high availability as well. Install chaincode on both peers and add them to your channels. Then be prepared to submit transaction proposals to both peer endpoints when setting up your network and building your peer target list. Enterprise Plan networks have multiple orderers for failover, which allows your client application to send endorsed transactions to a different orderer if one orderer is not available. If you use your [connection profile](/docs/services/blockchain/v10_application.html#dev-app-connection-profile) instead to add network endpoints manually, ensure that your profile is up to date and that the additional peers and orderers have been added to the relevant channel in the `channels` section of the profile. The SDK can then add the components that are joined on the channel by using the connection profile.
+As a high availability best practice, it is strongly recommended that you deploy a minimum of two peers per organization for failover. You need to adapt your applications for high availability as well. Install chaincode on both peers and add them to your channels. Then be prepared to submit transaction proposals to both peer endpoints when setting up your network and building your peer target list. Enterprise Plan networks have multiple orderers for failover, which allows your client application to send endorsed transactions to a different orderer if one orderer is not available. If you use your connection profile instead to add network endpoints manually, ensure that your profile is up-to-date and that the additional peers and orderers have been added to the relevant channel in the `channels` section of the profile. The SDK can then add the components that are joined on the channel by using the connection profile.
 
 ## Enabling mutual TLS
 {: #best-practices-app-mutual-tls}
 
-If you are running Enterprise Plan networks that is at Fabric V1.1 level, you have the option of [enabling mutual TLS](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-network-preferences) for your applications. If you enable mutual TLS, you need to update your applications to support this function. Otherwise, your applications cannot communicate with your network.
+If you are running Enterprise Plan networks that are at Fabric V1.1 level, you have the option of [enabling mutual TLS](/docs/services/blockchain/v10_dashboard.html#ibp-dashboard-network-preferences) for your applications. If you enable mutual TLS, you need to update your applications to support this function. Otherwise, your applications cannot communicate with your network.
 
 In the Connection Profile, locate the `certificateAuthorities` section where you can find the following attributes that are necessary to enroll and get the certificates to communicate with your network by using mutual TLS.
 
