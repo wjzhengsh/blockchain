@@ -208,7 +208,7 @@ If you are attempting to change any of the **Block cutting parameters** and own 
 ### Signature collection flow
 {: #ibp-console-govern-update-channel-signature-collection}
 
-For signatures to be verified, the organizations on a channel should export the MSPs (in JSON format) representing their organizations to the other organizations on the channel, as well as importing the MSPs of other organizations. To export an MSP, click the download button on your MSP (in the **Organizations** screen), then send it to other organizations out of band. When you receive a JSON of an MSP, import it using the **Organizations** screen.
+For signatures to be verified, the organizations on a channel should export the MSPs (in JSON format) representing their organizations to the other organizations on the channel, as well as importing the MSPs of other organizations. To export an MSP, click the download button on your MSP (on the **Organizations** tab), then send it to other organizations out of band. When you receive a JSON of an MSP, import it using the **Organizations** screen.
 {: important}
 
 After a channel configuration update request has been made, it will be sent to the organizations in the channel that have the right to sign it. For example, if there are five operators (channel admins) in a channel, it will be sent to all five. For the channel configuration update to be approved, the number of channel operators listed in the **channel update policy** must be satisfied. If this policy says `3 out of 5`, then the channel configuration update will be sent to all five operators, and when three of them sign it, the new channel configuration update will take effect.
