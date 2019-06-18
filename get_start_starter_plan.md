@@ -2,7 +2,7 @@
 
 copyright:
   years: 2018, 2019
-lastupdated: "2019-05-31"
+lastupdated: "2019-06-18"
 
 keywords: blockchain network, Starter Plan, getting started tutorial
 
@@ -16,6 +16,7 @@ subcollection: blockchain
 {:codeblock: .codeblock}
 {:pre: .pre}
 {:tip: .tip}
+{:gif: data-image-type='gif'}
 
 # Getting started with Starter Plan
 {: #getting-started-with-starter-plan}
@@ -150,7 +151,7 @@ Retrieve your service credentials with the following steps:
 2. Click **New credential** in the "Service credentials" screen.
 3. In the "Add new credential" screen, give the credential a name and enter **{"type": "service_instance_token"}** in the "Add inline configuration parameter" field. Click **Add**. The new credential is added in the table. You can click **View credentials** under the "ACTIONS" column to view the credential details. This credential contains the API key and secret, which you can use to authorize APIs.
 
-![Retrieving network credentials](images/service_credentials.gif "Retrieving network credentials")
+![Retrieving network credentials](images/service_credentials.gif "Retrieving network credentials"){: gif}
 
 ### Retrieving in the Network Monitor
 {: #getting-started-with-starter-plan-network-creds}

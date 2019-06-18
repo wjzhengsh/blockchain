@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-05-31"
+lastupdated: "2019-06-18"
 
 keywords: import nodes, another console, import a CA, import a peer, import admin identities, import an ordering service node
 
@@ -30,7 +30,7 @@ The console includes the option to import nodes that are created by using anothe
 ## Why import a node?
 {: #ibp-console-import-nodes-why}
 
-Import CAs, ordering services, and peers from other {{site.data.keyword.blockchainfull_notm}} Platform consoles when you need to operate them alongside nodes that already exist in your console. For example, you can use the import peer option when you want to join peers from organizations outside your console to channels in your console. As {{site.data.keyword.blockchainfull_notm}} Platform services are deployed across multiple {{site.data.keyword.cloud_notm}} environments, it is likely that some service instances include only CAs and peers, whereas others host ordering services. Importing the disparate nodes into the console provides a way to view and operate these distributed components from a single user interface so they can transact together on the blockchain.
+Import CAs, ordering services, and peers from other {{site.data.keyword.blockchainfull_notm}} Platform consoles when you need to operate them alongside nodes that already exist in your console. For example, you can use the import peer option when you want to join peers from organizations outside your console to channels in your console. As {{site.data.keyword.blockchainfull_notm}} Platform services are deployed across multiple  environments, it is likely that some service instances include only CAs and peers, whereas others host ordering services. Importing the disparate nodes into the console provides a way to view and operate these distributed components from a single user interface so they can transact together on the blockchain.
 
 After you import nodes in the console, a robust set of operational capability becomes available, for example:
 - Add new organizations to the consortium
@@ -52,6 +52,9 @@ Before you can import nodes into the console, they have to be exported from the 
 
 - You cannot import nodes from Starter plan or Enterprise plan networks.
 - All nodes to be imported must have been deployed by using the {{site.data.keyword.blockchainfull_notm}} Platform console.
+- You cannot patch nodes that you imported into the console.
+- You cannot delete nodes that you imported into the console from the cluster where they were deployed. You can only remove the node from the console.
+- If you are importing a node that is deployed on {{site.data.keyword.cloud_notm}} Private, you must ensure that the gRPC web proxy port used by the component is externally exposed to the console. For more information, see [Importing nodes from {{site.data.keyword.cloud_notm}} Private](#ibp-console-import-icp)
 
 ## Start here: Gathering certificates or credentials
 {: #ibp-console-import-start-here}
@@ -155,3 +158,22 @@ You need to import an organization's MSP definition if the MSP was deployed by u
 - Importing the organization MSP definition is performed from the **Organizations** tab.
 - Click **Import MSP definition** to upload the JSON file
 - (Optional) If you imported the MSP admin identity into your wallet, check the checkbox `I have an administrator identity for the MSP definition`. If you do not select this option, when you subsequently try to create a peer or ordering service, this organization MSP definition will not be listed in the MSP drop-down list.
+
+## Importing nodes from {{site.data.keyword.cloud_notm}} Private
+{: #ibp-console-import-icp}
+
+You can import nodes that were created on {{site.data.keyword.cloud_notm}} Private into consoles that have been deployed on other {{site.data.keyword.cloud_notm}} Private clusters or on {{site.data.keyword.cloud_notm}}. However, you need to ensure that the port used by the gRPC URL of your nodes are exposed from outside the cluster. If you are deploying {{site.data.keyword.cloud_notm}} Private behind a firewall, you need to enable a passthru, by using white listing for example, to allow the console outside the cluster to communicate with your nodes.
+
+As an example, you can find the JSON file of a peer that was exported from {{site.data.keyword.cloud_notm}} Private below. To communicate with the peer from another console, you need to ensure that the `grpcwp_url` port, port 32403 in this example, is open to external traffic.
+
+```
+{
+    "name": "peer",
+    "grpcwp_url": "https://9.30.252.107:32403", \\ensure that port 32403 is externally exposed
+    "api_url": "grpcs://9.30.252.107:30891",
+    "operations_url": "https://9.30.252.107:30222",
+    "type": "fabric-peer",
+    "msp_id": "org1msp",
+    "pem": "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUNGekNDQWI2Z0F3SUJBZ0lVUi9zMGxGTG5ZNmdWRmV1Mlg5ajkrY3JDZFBrd0NnWUlLb1pJemowRUF3SXcKWFRFTE1Ba0dBMVVFQmhNQ1ZWTXhGekFWQmdOVkJBZ1REazV2Y25Sb0lFTmhjbTlzYVc1aE1SUXdFZ1lEVlFRSwpFd3RJZVhCbGNteGxaR2RsY2pFUE1BMEdBMVVFQ3hNR1JtRmljbWxqTVE0d0RBWURWUVFERXdWMGJITmpZVEFlCkZ3MHhPVEEyTVRBeE9USXhNREJhRncwek5EQTJNRFl4T1RJeE1EQmFNRjB4Q3pBSkJnTlZCQVlUQWxWVE1SY3cKRlFZRFZRUUlFdzVPYjNKMGFDQkRZWEp2YkdsdVlURVVNQklHQTFVRUNoTUxTSGx3WlhKc1pXUm5aWEl4RHpBTgpCZ05WQkFzVEJrWmhZbkpwWXpFT01Bd0dBMVVFQXhNRmRHeHpZMkV3V1RBVEJnY3Foa2pPUFFJQkJnZ3Foa2pPClBRTUJCd05DQUFUYUtyN2srUHNYeXFkWkdXUHlJUXlGMGQxUkFFdmdCYlpkVnlsc3hReWZOcUdZS0FZV3A0SFUKVUVaVHVVNmtiRXN5Qi9aOVJQWEY0WVNGbW8reTVmSkhvMXd3V2pBT0JnTlZIUThCQWY4RUJBTUNBUVl3RWdZRApWUjBUQVFIL0JBZ3dCZ0VCL3dJQkFUQWRCZ05WSFE0RUZnUVUrcnBNb2dRc3dDTnZMQzJKNmp2cElQOExwaE13CkZRWURWUjBSQkE0d0RJY0VDUjc4YTRjRXJCRE5DakFLQmdncWhrak9QUVFEQWdOSEFEQkVBaUJGWmpMWU9XZUMKLy92L2RNMHdYNUxZT3NCaHFFNnNQZ1BSWWppOTZqT093QUlnZEppZDU0WmxjR2h0R3dEY3ZoZE02RVlBVFpQNwpmS29IMDZ3ZFhpK3VzVXM9Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K"
+}
+```

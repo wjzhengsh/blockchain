@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-05-31"
+lastupdated: "2019-06-18"
 
 keywords: update data, private data, smart contract, CouchDB indexes, cross chaincode transaction
 
@@ -49,7 +49,7 @@ A smart contract is typically able to validate requests, apply the business rule
 ## Installing Chaincode
 {: #develop-smart-contracts-install}
 
-Because chaincode provides the structure of transactions on a channel, a chaincode needs to be installed on all the peers joined to the channel that want use the chaincode to update or query the channel ledger. Then, one member of the channel can then instantiate the chaincode on a channel and set the chaincode's endorsement policy. Installation and instantiation of chaincode can be performed by using the {{site.data.keyword.blockchainfull_notm}} Platform UI, the Fabric Peer command-line interface, or from a client application by using the [Fabric SDK](/docs/services/blockchain/v10_application.html#dev-app-operate-sdk). If you are using {{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}}, visit the [Deploy a smart contract on the network tutorial](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts) to learn how to deploy a chaincode by using the {{site.data.keyword.blockchainfull_notm}} Platform console. If you are using Starter Plan or Enterprise Plan, see [Installing, instantiating, and updating a chaincode](/docs/services/blockchain/howto/install_instantiate_chaincode.html#install-instantiate-chaincode) to learn how to deploy a chaincode by using the Network Monitor UI.
+Because chaincode provides the structure of transactions on a channel, a chaincode needs to be installed on all the peers joined to the channel that want use the chaincode to update or query the channel ledger. Then, one member of the channel can then instantiate the chaincode on a channel and set the chaincode's endorsement policy. Installation and instantiation of chaincode can be performed by using the {{site.data.keyword.blockchainfull_notm}} Platform UI, the Fabric Peer command-line interface, or from a client application by using the Fabric SDKs. If you are using {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}}, visit the [Deploy a smart contract on the network tutorial](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts) to learn how to deploy a chaincode by using the {{site.data.keyword.blockchainfull_notm}} Platform console. If you are using Starter Plan or Enterprise Plan, see [Installing, instantiating, and updating a chaincode](/docs/services/blockchain/howto/install_instantiate_chaincode.html#install-instantiate-chaincode) to learn how to deploy a chaincode by using the Network Monitor UI.
 
 ## Chaincode and data
 {: #develop-smart-contracts-data}

@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-05-31"
+lastupdated: "2019-06-18"
 
 keywords: IBM Blockchain, IBM Blockchain Platform, terms, Fabric, Raft, CouchDB, consortium
 
@@ -33,7 +33,7 @@ An ordered set of transactions, which is cryptographically linked to the precedi
 
 ## CA
 {: #glossary-CA}
-An abbreviation of "Certificate Authority", this is the component that issues certificates to all the participating members. These certificates represent a member’s identity. All entities in the network (peers, orderers, clients, and so on) must have an identity to communicate, authenticate, and ultimately transact. These identities are required for any direct participation in the blockchain network.
+An abbreviation of "Certificate Authority", this is the component that issues certificates to all the participating members. These certificates represent a member’s identity. All entities in the network (peers, ordering nodes, clients, and so on) must have an identity to communicate, authenticate, and ultimately transact. These identities are required for any direct participation in the blockchain network.
 
 ## Chain
 {: #glossary-chain}
@@ -53,7 +53,7 @@ The client represents the entity that acts on behalf of a user. It must connect 
 
 ## Connection profile
 {: #glossary-connection-profile}
-The Connection profile is visible in the "Overview" screen of the Network Monitor when you click the **Connection Profile** button. The information is available in JSON format and contains the API endpoint information and enrollIDs/secrets for your network resources, that is, peers, orderers, and CAs. Your application interacts with network resources through these API endpoints.
+The Connection profile is visible in the "Overview" screen of the Network Monitor when you click the **Connection Profile** button. The information is available in JSON format and contains the API endpoint information and enrollIDs/secrets for your network resources, that is, peers, ordering nodes, and CAs. Your application interacts with network resources through these API endpoints.
 
 ## Consensus
 {: #glossary-consensus}
@@ -145,11 +145,11 @@ The GUI dashboard the {{site.data.keyword.blockchainfull_notm}} Platform for Sta
 
 ## Node
 {: #glossary-node}
-The communication entity of the blockchain. There are three types of nodes: CA, peer, and orderer.
+The communication entity of the blockchain. There are three types of nodes: CA, peer, and ordering node.
 
-## Orderer
+## Ordering node
 {: #glossary-orderer}
-The node that collects transactions from network members, orders the transactions and bundles them into blocks. These blocks are then distributed to peers, which then verify the blocks and add them to the ledgers on each channel. Orderers contain the cryptographic identity material that is tied to each member and authenticate the identity of clients and peers to access the network. The overall function that an ordering node or collection of nodes provides is known as the **ordering service**.
+The node that collects transactions from network members, orders the transactions and bundles them into blocks. Also known as orderer. These blocks are then distributed to peers, which then verify the blocks and add them to the ledgers on each channel. Ordering nodes contain the cryptographic identity material that is tied to each member and authenticate the identity of clients and peers to access the network. The overall function that an ordering node or collection of nodes provides is known as the **ordering service**.
 
 ## Organization
 {: #glossary-organization}
@@ -169,7 +169,7 @@ Raft is a crash fault tolerant (CFT) ordering service based on an implementation
 
 ## Service credentials
 {: #glossary-service-credentials}
-Service credentials are in JSON format and contain the API endpoint information and enrollIDs/secrets for your network resources, that is, CAs, orderers, and peers. Your application interacts with network resources through these API endpoints.
+Service credentials are in JSON format and contain the API endpoint information and enrollIDs/secrets for your network resources, that is, CAs, ordering nodes, and peers. Your application interacts with network resources through these API endpoints.
 
 ## SDK
 {: #glossary-sdk}

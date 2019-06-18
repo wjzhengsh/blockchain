@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-05-31"
+lastupdated: "2019-06-18"
 
 keywords: Network Monitor, peer nodes, resources, channels, smart contract
 
@@ -18,6 +18,7 @@ subcollection: blockchain
 {:important: .important}
 {:tip: .tip}
 {:external: target="_blank" .external}
+{:gif: data-image-type='gif'}
 
 # Using the Network Monitor
 {: #ibp-dashboard}
@@ -48,8 +49,7 @@ The "Overview" screen displays real-time status information on your blockchain r
 
 **Figure 1** shows the "Overview" screen:
 
-![Overview screen](images/myresources.png "Network overview")
-*Figure 1. Network overview*
+![Overview screen](images/myresources.png "Network overview"){: caption="Figure 1. Network overview" caption-side="bottom"}
 
 ### Node actions
 {: #ibp-dashboard-node-actions}
@@ -86,8 +86,7 @@ Click the **Add Peers** button at the upper right to add peer nodes to your netw
 
 **Figure 2** shows the "Storage" tab that displays your network's storage consumption.
 
-![Storage tab in Overview screen](images/monitor_storage_starter.png "Storage")
-*Figure 2. Storage*
+![Storage tab in Overview screen](images/monitor_storage_starter.png "Storage"){: caption="Figure 2. Storage" caption-side="bottom"}
 
 The "Resources" diagram displays the storage space that peers and certificate authorities use. All the organizations that you create or invite to your network are included in this pool. The organizations that consume resources are listed on the screen in the second bullet.
 
@@ -103,8 +102,7 @@ The "Members" screen contains two tabs to display network member information in 
 
 **Figure 3** shows the initial "Members" screen that displays your network members in the "Members" tab:
 
-![Members tab in Members screen](images/monitor_members.png "Network members")
-*Figure 3. Network members*
+![Members tab in Members screen](images/monitor_members.png "Network members"){: caption="Figure 3. Network members" caption-side="bottom"}
 
 You can invite other members in the "Members" tab to add to those that are initially invited when you create the network. To invite a member to your network, enter the institution name and operator's email address and click **Add Member**. A network can have a total of 15 members (including the network initiator). To remove a member from your network, click the "remove" symbol at the end of the member row.
 
@@ -112,8 +110,7 @@ You can invite other members in the "Members" tab to add to those that are initi
 
 **Figure 4** shows the "Add member" window.
 
-![Add member](images/invite_member_starter.png "Add member")
-*Figure 4. Add member*
+![Add member](images/invite_member_starter.png "Add member"){: caption="Figure 4. Add member" caption-side="bottom"}
 
 When you click **Add Member** you will be presented with two options:
 - **Invite a member**. You can invite other organizations to become members of your network. The invited organizations can then join and collaborate with you in the network.
@@ -125,12 +122,9 @@ When you click **Add Member** you will be presented with two options:
 
 **Figure 5** shows the initial "Members" screen that displays member certificates in the "Certificates" tab:
 
-![Certificates tab in Members screen](images/monitor_certificates.png "Certificates")
-*Figure 5. Certificates*
+![Certificates tab in Members screen](images/monitor_certificates.png "Certificates"){: caption="Figure 5. Certificates" caption-side="bottom"}
 
 Operators can manage the certificates for the members in the same institution in the "Certificates" tab. Click **Add Certificate** to open the "Add Certificate" panel. Give a name to your certificate, paste your client-side certificates in PEM format to the "Key" field, and click **Submit**. You need to restart your peers before the client-side certificates can take effect.
-
-For more information about generating your certificate key, see [Enrolling your application](/docs/services/blockchain/v10_application.html#dev-app-enroll).
 
 ## Channels
 {: #ibp-dashboard-channels}
@@ -139,8 +133,7 @@ Consisting of a subset of network members who want to transact privately, channe
 
 **Figure 6** shows the initial dashboard screen displaying an overview of all channels in your network:
 
-![Channels](images/channels.png "Channels")
-*Figure 6. Channels*
+![Channels](images/channels.png "Channels"){: caption="Figure 6. Channels" caption-side="bottom"}
 
 Creating a channel results in the generation of a channel-specific ledger. For more information, see [Creating a channel](/docs/services/blockchain/howto/create_channel.html#ibp-create-channel).
 
@@ -155,8 +148,7 @@ When you create a channel or are invited to a new channel, a notification appear
 
 **Figure 7** shows the "Notifications" screen:
 
-![Notifications](images/notifications.png "Notifications")
-*Figure 7. Notifications*
+![Notifications](images/notifications.png "Notifications"){: caption="Figure 7. Notifications" caption-side="bottom"}
 
 The requests are grouped into "All", "Pending", and "Completed" subtabs. Numbers after the subtab header indicate the number of requests in each subtab.
    * You can find all your requests in the "All" subtab.
@@ -174,10 +166,9 @@ The table on "Certificate Authority" (CA) screen displays all of the identities 
 
 **Figure 8** shows the "Certificate Authority" screen:
 
-![Certificate Authority](images/CA_screen.png "Certificate Authority")
-*Figure 8. Certificate Authority*
+![Certificate Authority](images/CA_screen.png "Certificate Authority"){: caption="Figure 8. Certificate Authority" caption-side="bottom"}
 
-Click the **Generate Certificate** button next to your admin identity to get a new public certificate and private key from your CA. The **Certificate** field contains the public certificate, also referred to as the signCert or enrollment cert, just above the **Private Key**. You can click the copy icon at the end of each field to copy the value. This panel can be used an alternative way to generate a public and private key pair for a client application which uses the Fabric SDK. To learn more, visit the [developing applications tutorial](/docs/services/blockchain/v10_application.html#dev-app). **Note** that {{site.data.keyword.blockchainfull_notm}} Platform doesn't store these certificates. You need to safely save and store them.
+Click the **Generate Certificate** button next to your admin identity to get a new public certificate and private key from your CA. The **Certificate** field contains the public certificate, also referred to as the signCert or enrollment cert, just above the **Private Key**. You can click the copy icon at the end of each field to copy the value. This panel can be used an alternative way to generate a public and private key pair for a client application which uses the Fabric SDK. **Note** that {{site.data.keyword.blockchainfull_notm}} Platform doesn't store these certificates. You need to safely save and store them.
 
 Click the **Add User** button to register a new identity to your organization. In the **Add User** pop-up window, complete the following fields and then click **Submit**.
   - **Enroll ID:** This will be the name of your new identity that is sometimes referred to as your `enroll ID`. **Save this Value** and you need to use it when you configure a remote peer or enroll a new application.
@@ -195,8 +186,7 @@ You can learn more about your CA by visiting the [Managing certificates on {{sit
 
 **Figure 9** shows the "APIs" screen:
 
-![APIs](images/API_screen.png "APIs")
-*Figure 9. APIs*
+![APIs](images/API_screen.png "APIs"){: caption="Figure 9. APIs" caption-side="bottom"}
 
 Click the **Swagger UI** link to open the Swagger UI. Note that you need to authorize the Swagger UI with your network credentials (which can be found on this APIs page) before you can run the APIs. For more information, see [Interacting with the network using Swagger APIs](/docs/services/blockchain/howto/swagger_apis.html#ibp-swagger).
 
@@ -209,8 +199,7 @@ Starter Plan and Enterprise Plan provide a development environment with industry
 
 **Figure 10** shows the "Develop code" screen:
 
-![Develop code](images/write_code.png "Develop code")
-*Figure 10. Develop code*
+![Develop code](images/write_code.png "Develop code"){: caption="Figure 10. Develop code" caption-side="bottom"}
 
 For more information about developing and deploying your business networks, see [Deploying business networks on Starter and Enterprise Plan](/docs/services/blockchain/develop_starter_enterprise.html#deploying-a-business-network).
 
@@ -221,8 +210,7 @@ Chaincode, which is also known as "smart contract", is pieces of software that c
 
 **Figure 11** shows the "Install code" screen:
 
-![Install code](images/chaincode_install_overview.png "Install code")
-*Figure 11. Install code*
+![Install code](images/chaincode_install_overview.png "Install code"){: caption="Figure 11. Install code" caption-side="bottom"}
 
 A chaincode is first installed on a peer's file system and then instantiated on a channel. For more information, see [Installing, instantiating, and updating a chaincode](/docs/services/blockchain/howto/install_instantiate_chaincode.html#install-instantiate-chaincode).
 
@@ -233,8 +221,7 @@ Sample applications help you to get a better understanding of a blockchain netwo
 
 **Figure 12** shows the "Try samples" screen:
 
-![Try samples](images/sample_overview_ep.png "Try samples")
-*Figure 12. Samples*
+![Try samples](images/sample_overview_ep.png "Try samples"){: caption="Figure 12. Samples" caption-side="bottom"}
 
 ## Get help
 {: #ibp-dashboard-support}
@@ -243,16 +230,14 @@ The "Get help" screen contains a "Support" tab that provides a list of resources
 
 **Figure 13** displays the information in the initial "Support" tab:
 
-![Support](images/support.png "Support")
-*Figure 13. Blockchain support*
+![Support](images/support.png "Support"){: caption="Figure 13. Blockchain support" caption-side="bottom"}
 
 ### Blockchain resources and support forums
 {: #ibp-dashboard-support-forums}
 
 Use the resources in the "Support" tab to troubleshoot problems and get help from {{site.data.keyword.IBM_notm}} and the Fabric community. For more information about the links on the "Support" tab, see [Resources and support forums](/docs/services/blockchain/ibmblockchain_support.html#blockchain-support-resources) in [Getting support](/docs/services/blockchain/ibmblockchain_support.html#blockchain-support).
 
-[{{site.data.keyword.IBM_notm}} dWAnswers](https://developer.ibm.com/answers/smartspace/blockchain/index.html){: external} is a community forum for users of {{site.data.keyword.blockchainfull_notm}} Platform and Hyperledger Fabric and is monitored by {{site.data.keyword.IBM_notm}} experts. You can search for answers to previously posed questions or submit a new question. If you cannot debug your issue or ascertain an answer to your question, submit a support case in the {{site.data.keyword.cloud_notm}} Service Portal. For more information, see [Submitting support cases](/docs/services/blockchain/ibmblockchain_support.html#blockchain-support-cases).
-
+If you cannot debug your issue or ascertain an answer to your question, submit a support case in the {{site.data.keyword.cloud_notm}} Service Portal. For more information, see [Submitting support cases](/docs/services/blockchain/ibmblockchain_support.html#blockchain-support-cases).
 
 ### Fabric release notes
 {: #ibp-dashboard-release-notes}
@@ -261,13 +246,11 @@ The "Release Notes" tab displays the latest features of your network. The "Netwo
 
 **Figure 14** displays the release notes for the Network Monitor UI.
 
-![Release notes helios](images/releasenotes_helios.png "Release notes of Network Monitor UI")
-*Figures 14. Release notes for Network Monitor UI*
+![Release notes helios](images/releasenotes_helios.png "Release notes of Network Monitor UI"){: caption="Figures 14. Release notes for Network Monitor UI" caption-side="bottom"}
 
 **Figure 15** displays the release notes for your networks version of Hyperledger Fabric and the Fabric Certificate Authority.
 
-![Release notes Fabric](images/releasenotes_Fabric.png "Release notes of Fabric")
-*Figures 15. Release notes for Fabric*
+![Release notes Fabric](images/releasenotes_Fabric.png "Release notes of Fabric"){: caption="Figures 15. Release notes for Fabric" caption-side="bottom"}
 
 ## Network preferences
 {: #ibp-dashboard-network-preferences}
@@ -285,8 +268,7 @@ The web inactivity timeout is set to **Off** by default. If you turn the web ina
 
 **Figure 16** shows the "Network preferences" window:
 
-![Network preferences](images/network_preferences.gif "Network preferences")
-*Figure 16. Network preferences*
+![Network preferences](images/network_preferences.gif "Network preferences"){: caption="Figure 16. Network preferences" caption-side="bottom"}{: gif}
 
 ### Mutual TLS (for Enterprise Plan networks)
 {: #ibp-dashboard-mutual-tls}
@@ -325,8 +307,7 @@ If you switch to CouchDB, you need to update your chaincode to take advantage of
 
 **Figure 17** shows the "Network preferences" window:
 
-![Network preferences](images/network_preferences_ep_tmp.png "Network preferences")
-*Figure 17. Network preferences*
+![Network preferences](images/network_preferences_ep_tmp.png "Network preferences"){: caption="Figure 17. Network preferences" caption-side="bottom"}
 
 ## Update network name
 {: #ibp-dashboard-network-name}
@@ -337,8 +318,7 @@ On the top of the left navigator in the Network Monitor, click the network name 
 
 **Figure 18** shows the steps to update the Starter Plan network name from the assigned name to "Starter Plan Network".
 
-![Update network name](images/update_network_name_ep.gif "Update network name")
-*Figure 18. Update network name*
+![Update network name](images/update_network_name_ep.gif "Update network name"){: caption="Figure 18. Update network name" caption-side="bottom"}{: gif}
 
 
 ## Switch between networks (for Starter Plan networks)
@@ -350,8 +330,7 @@ On the top of the left navigator in the Network Monitor, click the arrow icon be
 
 **Figure 19** shows the steps to switch to another Starter Plan network.
 
-![Switch network](images/switch_network.gif "Switch network")
-*Figure 19. Switch network*
+![Switch network](images/switch_network.gif "Switch network"){: caption="Figure 19. Switch network" caption-side="bottom"}{: gif}
 
 
 ## Reset network (for Starter Plan networks)
@@ -365,5 +344,4 @@ Click the upper right corner and opens the drop-down menu. Click the **Reset Net
 
 **Figure 20** shows the "Reset network" function:
 
-![Reset network](images/reset_network.png "Reset Network")
-*Figure 20. Reset network*
+![Reset network](images/reset_network.png "Reset Network"){: caption="Figure 20. Reset network" caption-side="bottom"}

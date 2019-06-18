@@ -1,14 +1,16 @@
 ---
 
 copyright:
-  years: 2017, 2018
-lastupdated: "2019-03-05"
+  years: 2017, 2019
+lastupdated: "2019-06-18"
+
+keywords: Starter Plan, Enterprise Plan, peer fee, membership fee
 
 subcollection: blockchain
 
 ---
 
-{:new_window: target="_blank"}
+{:external: target="_blank" .external}
 {:shortdesc: .shortdesc}
 {:screen: .screen}
 {:codeblock: .codeblock}
@@ -40,7 +42,7 @@ To understand pricing, we need to start with an introduction to basic components
 
 -	**Organizations** – Any entity who needs to maintain a copy of the blockchain ledger and needs to validate transactions. There can be multiple blockchain organizations for a single company.
 -	**Peers** – The node associated with an organization that contains the blockchain ledger and validates transactions. Peers are associated with an individual blockchain organization.
--	**Ordering service** – Composed of a single orderer (SOLO) or a collection of orderers. The ordering service sequences transactions, creates blocks, and sends blocks to peers for validation.
+-	**Ordering service** – Composed of a single ordering node or a collection of ordering nodes. The ordering service sequences transactions, creates blocks, and sends blocks to peers for validation.
 -	**Certificate Authority (CA)** –Issues digital certificates for identification purposes to any interactive network component.
 
 {{site.data.keyword.blockchainfull_notm}} Platform offers two membership plans, the **Starter Plan** and the **Enterprise Plan**, that you can choose in {{site.data.keyword.cloud_notm}}. Both plans allow you to create organizations and provide you with a certificate authority. The plans diverge around the peers, CAs, and the ordering service.
@@ -54,7 +56,7 @@ Both Starter Plan and Enterprise Plan have two pricing elements:
 
 - **Membership fee** – Covers organization creation, access to ordering service and CA, and is charged on a **per-instance** basis. Included in this pricing element, {{site.data.keyword.blockchainfull_notm}} Platform handles the ordering service and the CA on your network’s behalf. This fee is required to have access to a network built on {{site.data.keyword.blockchainfull_notm}} Platform.
 
-  -	Starter Plan allows for *unlimited* organizations per membership and the ability to switch between organizations in the Network Monitor. Because Starter Plan is designed for development, test, and POC environments, you can simulate in the multi-organization environments. **Note** that the total network storage is capped at 20GB, including the components, chaincode, and ledger data. Your simulated organizations share the 20GB storage in the blockchain network.
+  -	Starter Plan allows for *unlimited* organizations per membership and the ability to switch between organizations in the Network Monitor. Because Starter Plan is designed for development, test, and POC environments, you can simulate in the multi-organization environments. **Note** that the total network storage is capped at 20 GB, including the components, chaincode, and ledger data. Your simulated organizations share the 20-GB storage in the blockchain network.
 
   -	Enterprise allows for a single organization per membership. Because Enterprise is designed for pilot and production environments, you are linked to your specific organization.
 
@@ -65,8 +67,7 @@ Both Starter Plan and Enterprise Plan have two pricing elements:
 
 Figure 2 shows an example of network instances, which can help to understand the membership fee. In the figure, the particular {{site.data.keyword.cloud_notm}} account provisions three network instances: one Enterprise Plan instance with the name of *Blockchain-11* and two Starter Plan instances with the name of *Blockchain-cz* and *Blockchain-da*. Each instance requires its own ordering service and CA. In this case, this particular {{site.data.keyword.cloud_notm}} account needs to pay three membership fees, one for each network instance.
 
-![Blockchain network instances](../images/ibp_instance_example.png "Blockchain network instances")  
-*Figure 2. Blockchain network instances*
+![Blockchain network instances](../images/ibp_instance_example.png "Blockchain network instances"){: caption="Figure 2. Blockchain network instances" caption-side="bottom"}
 
 
 ## Starter Plan pricing
@@ -139,7 +140,7 @@ You can also remove a peer from the default Starter Plan network configuration. 
 ## Enterprise Plan pricing
 {: #ibp-pricing-enterprise-plan}
 
-{{site.data.keyword.blockchainfull_notm}} Platform doesn't provide default configuration for an Enterprise Plan network. You can choose the configuration that you would like to start with. When you are ready to use Enterprise Plan, you should have a good understanding of what your network configuration should be. As a high availability best practice, we strongly recommend a minimum of two peers per organization to ensure your organization does not experience a network outage.
+{{site.data.keyword.blockchainfull_notm}} Platform doesn't provide default configuration for an Enterprise Plan network. You can choose the configuration that you would like to start with. When you are ready to use Enterprise Plan, you should have a good understanding of what your network configuration should be. As a high availability best practice, we strongly recommend a minimum of two peers per organization to ensure that your organization does not experience a network outage.
 
 If you are in an Enterprise Plan network with the other network member, and each of you add two peers for your organization, each of your bill is reflected in Figure 7.
 
