@@ -76,7 +76,7 @@ The {{site.data.keyword.blockchainfull_notm}} Platform Helm chart requires speci
     {:codeblock}
 
 2. Create a ClusterRole for the PodSecurityPolicy.
-  - If you created a custom security policy, you can create a security policy using the YAML file below:
+  - If you created a custom security policy, you can create a ClusterRole using the YAML file below:
 
     ```
     apiVersion: rbac.authorization.k8s.io/v1
@@ -108,7 +108,7 @@ The {{site.data.keyword.blockchainfull_notm}} Platform Helm chart requires speci
     ```
     {:codeblock}
 
-  - If you are using a predefined PodSecurityPolicy, you only need to create a ClusterRole policy using the second apiGroups section:
+  - If you are using a predefined PodSecurityPolicy, you only need to create a ClusterRole using the second apiGroups section:
 
     ```
     apiVersion: rbac.authorization.k8s.io/v1
