@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 22.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 1214 932" style="enable-background:new 0 0 1214 932;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#FFFFFF;}
+	.st1{fill:#2D3F49;stroke:#2D3F49;}
+	.st2{fill:none;stroke:#00B39F;stroke-width:2;stroke-dasharray:8;}
+	.st3{fill:#FFFFFF;stroke:#6182BB;}
+	.st4{fill:none;}
+	.st5{font-family:'Helvetica';}
+	.st6{font-size:24.0721px;}
+	.st7{fill:#4278BD;}
+	.st8{font-size:12.07px;}
+	.st9{font-size:9.07px;}
+	.st10{font-size:11.07px;}
+	.st11{font-size:10.07px;}
+	.st12{font-family:'Helvetica-BoldOblique';}
+	.st13{font-size:21.6649px;}
+</style>
+<title>3</title>
+<desc>Created with Sketch.</desc>
+<g id="_x33__1_">
+	<rect class="st0" width="1214" height="932"/>
+	<g id="Group-5" transform="translate(12.000000, 0.000000)">
+		<path id="XMLID_272_" class="st1" d="M346.2,817.5H37.3c-6.6,0-12-5-12-11.2V31.7c0-6.2,5.4-11.2,12-11.2h308.9
+			c6.6,0,12,5,12,11.2v774.5C358.2,812.5,352.8,817.5,346.2,817.5z"/>
+		<path id="XMLID_271_" class="st0" d="M329.6,798H53.9c-6.6,0-12-5-12-11.1V89.1c0-6.1,5.4-11.1,12-11.1h275.6c6.6,0,12,5,12,11.1
+			v697.7C341.6,793,336.2,798,329.6,798z"/>
+		<path id="XMLID_270_" class="st2" d="M315.2,777.9H68.3c-6.6,0-12-5.3-12-11.7V106.6c0-6.4,5.4-11.7,12-11.7h246.9
+			c6.6,0,12,5.3,12,11.7v659.7C327.2,772.6,321.8,777.9,315.2,777.9z"/>
+		<path id="XMLID_269_" class="st3" d="M294.9,754.3H88.5c-6.6,0-12-5.4-12-12V213.5c0-6.6,5.4-12,12-12h206.4c6.6,0,12,5.4,12,12
+			v528.8C306.9,748.9,301.5,754.3,294.9,754.3z"/>
+		<rect id="XMLID_24_" x="76.5" y="213.6" class="st4" width="230.4" height="23.3"/>
+		<text transform="matrix(1 0 0 1 125.5981 231.4535)" class="st5 st6">Worker Pool</text>
+		<rect id="XMLID_264_" x="93.3" y="94.9" class="st4" width="196.9" height="34"/>
+		<rect id="XMLID_23_" x="84.4" y="40.6" class="st4" width="214.6" height="34"/>
+		<text transform="matrix(1 0 0 1 141 57.5)" class="st0 st5 st6">Region 1</text>
+		<path id="XMLID_258_" class="st7" d="M280,396.1H105.1c-6.6,0-12-5.4-12-12V263.5c0-6.6,5.4-12,12-12H280c6.6,0,12,5.4,12,12
+			v120.6C292,390.7,286.6,396.1,280,396.1z"/>
+		<rect id="XMLID_257_" x="109.3" y="336.1" class="st4" width="166.5" height="23.3"/>
+		<text transform="matrix(1 0 0 1 111.5474 293.973)" class="st0 st5 st6">Worker Node 1</text>
+		<path id="XMLID_255_" class="st0" d="M156.3,362.6h-44.5c-2.1,0-3.7-4.3-3.7-9.6v-30.8c0-5.3,1.7-9.6,3.7-9.6h44.5
+			c2.1,0,3.7,4.3,3.7,9.6V353C160,358.3,158.3,362.6,156.3,362.6z"/>
+		<path id="XMLID_1_" class="st0" d="M217.9,362.6h-48.8c-2.3,0-4.1-4.3-4.1-9.6v-30.8c0-5.3,1.8-9.6,4.1-9.6h48.8
+			c2.3,0,4.1,4.3,4.1,9.6V353C222,358.3,220.2,362.6,217.9,362.6z"/>
+		<path id="XMLID_2_" class="st0" d="M279.9,362.6h-48.8c-2.3,0-4.1-4.3-4.1-9.6v-30.8c0-5.3,1.8-9.6,4.1-9.6h48.8
+			c2.3,0,4.1,4.3,4.1,9.6V353C284,358.3,282.2,362.6,279.9,362.6z"/>
+		<rect id="XMLID_22_" x="110.7" y="327.9" class="st4" width="163.6" height="37.7"/>
+		<text transform="matrix(1 0 0 1 117 337.6)" class="st5 st8">Peer 1</text>
+		<text transform="matrix(1 0 0 1 122 348.6)" class="st5 st9">Org 1</text>
+		<text transform="matrix(1 0 0 1 181 348.6)" class="st5 st9">Peers</text>
+		<text transform="matrix(1 0 0 1 245 352.6)" class="st5 st9">(Raft)</text>
+		<text transform="matrix(1 0 0 1 179 337.6)" class="st5 st8">CA 1</text>
+		<text transform="matrix(1 0 0 1 119 137.5)" class="st5 st6">Single Cluster</text>
+		<path id="XMLID_248_" class="st7" d="M280,567.6H105.1c-6.6,0-12-5.4-12-12V435c0-6.6,5.4-12,12-12H280c6.6,0,12,5.4,12,12v120.6
+			C292,562.2,286.6,567.6,280,567.6z"/>
+		<rect id="XMLID_247_" x="109.3" y="447.7" class="st4" width="166.5" height="23.3"/>
+		<text transform="matrix(1 0 0 1 111.5474 465.4867)" class="st0 st5 st6">Worker Node 2</text>
+		<path id="XMLID_3_" class="st0" d="M150.7,536h-39.4c-1.8,0-3.3-4.3-3.3-9.6v-30.8c0-5.3,1.5-9.6,3.3-9.6h39.4
+			c1.8,0,3.3,4.3,3.3,9.6v30.8C154,531.7,152.5,536,150.7,536z"/>
+		<path id="XMLID_240_" class="st7" d="M280,739.1H105.1c-6.6,0-12-5.4-12-12V606.5c0-6.6,5.4-12,12-12H280c6.6,0,12,5.4,12,12
+			v120.6C292,733.7,286.6,739.1,280,739.1z"/>
+		<rect id="XMLID_239_" x="109.3" y="679.1" class="st4" width="166.5" height="23.3"/>
+		<text transform="matrix(1 0 0 1 111.5474 637.0013)" class="st0 st5 st6">Worker Node 3</text>
+		<text transform="matrix(1 0 0 1 238.356 330.6)" class="st5 st9">Ordering </text>
+		<text transform="matrix(1 0 0 1 242.1293 341.6)" class="st5 st9">node 1</text>
+		<path id="XMLID_4_" class="st0" d="M214.9,536h-48.8c-2.3,0-4.1-4.3-4.1-9.6v-30.8c0-5.3,1.8-9.6,4.1-9.6h48.8
+			c2.3,0,4.1,4.3,4.1,9.6v30.8C219,531.7,217.2,536,214.9,536z"/>
+		<text transform="matrix(1 0 0 1 180 526)" class="st5 st9">(Raft)</text>
+		<text transform="matrix(1 0 0 1 173.356 504)" class="st5 st9">Ordering </text>
+		<text transform="matrix(1 0 0 1 177.1293 515)" class="st5 st9">node 2</text>
+		<path id="XMLID_5_" class="st0" d="M276.9,536h-48.8c-2.3,0-4.1-4.3-4.1-9.6v-30.8c0-5.3,1.8-9.6,4.1-9.6h48.8
+			c2.3,0,4.1,4.3,4.1,9.6v30.8C281,531.7,279.2,536,276.9,536z"/>
+		<text transform="matrix(1 0 0 1 242 526)" class="st5 st9">(Raft)</text>
+		<text transform="matrix(1 0 0 1 235.356 504)" class="st5 st9">Ordering </text>
+		<text transform="matrix(1 0 0 1 239.1293 515)" class="st5 st9">node 3</text>
+		<path id="XMLID_6_" class="st0" d="M184.9,715h-48.8c-2.3,0-4.1-4.3-4.1-9.6v-30.8c0-5.3,1.8-9.6,4.1-9.6h48.8
+			c2.3,0,4.1,4.3,4.1,9.6v30.8C189,710.7,187.2,715,184.9,715z"/>
+		<text transform="matrix(1 0 0 1 150 705)" class="st5 st9">(Raft)</text>
+		<text transform="matrix(1 0 0 1 143.356 683)" class="st5 st9">Ordering </text>
+		<text transform="matrix(1 0 0 1 147.1293 694)" class="st5 st9">node 4</text>
+		<path id="XMLID_7_" class="st0" d="M248.9,716h-48.8c-2.3,0-4.1-4.3-4.1-9.6v-30.8c0-5.3,1.8-9.6,4.1-9.6h48.8
+			c2.3,0,4.1,4.3,4.1,9.6v30.8C253,711.7,251.2,716,248.9,716z"/>
+		<text transform="matrix(1 0 0 1 214 706)" class="st5 st9">(Raft)</text>
+		<text transform="matrix(1 0 0 1 207.356 684)" class="st5 st9">Ordering </text>
+		<text transform="matrix(1 0 0 1 211.1293 695)" class="st5 st9">node 5</text>
+		<rect id="XMLID_8_" x="103.7" y="563.8" class="st4" width="37" height="37.7"/>
+		<text transform="matrix(1 0 0 1 114 506)" class="st5 st10">Peer 2</text>
+		<text transform="matrix(1 0 0 1 118 520)" class="st5 st11">Org 1</text>
+		<text transform="matrix(1 0 0 1 115 169.5)" class="st12 st13">+ anti-affinity</text>
+	</g>
+	<g id="Group-5_1_" transform="translate(412.000000, 0.000000)">
+		<path id="XMLID_9_" class="st1" d="M346.2,817.5H37.3c-6.6,0-12-5-12-11.2V31.7c0-6.2,5.4-11.2,12-11.2h308.9c6.6,0,12,5,12,11.2
+			v774.5C358.2,812.5,352.8,817.5,346.2,817.5z"/>
+		<path id="XMLID_10_" class="st0" d="M329.6,798H53.9c-6.6,0-12-5-12-11.1V89.1c0-6.1,5.4-11.1,12-11.1h275.6c6.6,0,12,5,12,11.1
+			v697.7C341.6,793,336.2,798,329.6,798z"/>
+		<path id="XMLID_11_" class="st2" d="M315.2,777.9H68.3c-6.6,0-12-5.3-12-11.7V106.6c0-6.4,5.4-11.7,12-11.7h246.9
+			c6.6,0,12,5.3,12,11.7v659.7C327.2,772.6,321.8,777.9,315.2,777.9z"/>
+		<path id="XMLID_12_" class="st3" d="M294.9,754.3H88.5c-6.6,0-12-5.4-12-12V213.5c0-6.6,5.4-12,12-12h206.4c6.6,0,12,5.4,12,12
+			v528.8C306.9,748.9,301.5,754.3,294.9,754.3z"/>
+		<rect id="XMLID_13_" x="76.5" y="213.6" class="st4" width="230.4" height="23.3"/>
+		<text transform="matrix(1 0 0 1 125.5981 231.4535)" class="st5 st6">Worker Pool</text>
+		<rect id="XMLID_14_" x="93.3" y="94.9" class="st4" width="196.9" height="34"/>
+		<rect id="XMLID_15_" x="84.4" y="40.6" class="st4" width="214.6" height="34"/>
+		<text transform="matrix(1 0 0 1 141 57.5)" class="st0 st5 st6">Region 2</text>
+		<path id="XMLID_16_" class="st7" d="M280,396.1H105.1c-6.6,0-12-5.4-12-12V263.5c0-6.6,5.4-12,12-12H280c6.6,0,12,5.4,12,12v120.6
+			C292,390.7,286.6,396.1,280,396.1z"/>
+		<rect id="XMLID_17_" x="109.3" y="336.1" class="st4" width="166.5" height="23.3"/>
+		<text transform="matrix(1 0 0 1 111.5474 293.973)" class="st0 st5 st6">Worker Node 1</text>
+		<path id="XMLID_19_" class="st0" d="M217.9,362.6h-48.8c-2.3,0-4.1-4.3-4.1-9.6v-30.8c0-5.3,1.8-9.6,4.1-9.6h48.8
+			c2.3,0,4.1,4.3,4.1,9.6V353C222,358.3,220.2,362.6,217.9,362.6z"/>
+		<rect id="XMLID_20_" x="110.7" y="327.9" class="st4" width="163.6" height="37.7"/>
+		<text transform="matrix(1 0 0 1 181 348.6)" class="st5 st9">Peers</text>
+		<text transform="matrix(1 0 0 1 179 337.6)" class="st5 st8">CA 1</text>
+		<text transform="matrix(1 0 0 1 119 137.5)" class="st5 st6">Single Cluster</text>
+		<path id="XMLID_25_" class="st7" d="M280,567.6H105.1c-6.6,0-12-5.4-12-12V435c0-6.6,5.4-12,12-12H280c6.6,0,12,5.4,12,12v120.6
+			C292,562.2,286.6,567.6,280,567.6z"/>
+		<rect id="XMLID_26_" x="109.3" y="447.7" class="st4" width="166.5" height="23.3"/>
+		<text transform="matrix(1 0 0 1 111.5474 465.4867)" class="st0 st5 st6">Worker Node 2</text>
+		<path id="XMLID_28_" class="st0" d="M207.7,537h-39.4c-1.8,0-3.3-4.3-3.3-9.6v-30.8c0-5.3,1.5-9.6,3.3-9.6h39.4
+			c1.8,0,3.3,4.3,3.3,9.6v30.8C211,532.7,209.5,537,207.7,537z"/>
+		<path id="XMLID_29_" class="st7" d="M280,739.1H105.1c-6.6,0-12-5.4-12-12V606.5c0-6.6,5.4-12,12-12H280c6.6,0,12,5.4,12,12v120.6
+			C292,733.7,286.6,739.1,280,739.1z"/>
+		<rect id="XMLID_30_" x="109.3" y="679.1" class="st4" width="166.5" height="23.3"/>
+		<text transform="matrix(1 0 0 1 111.5474 637.0013)" class="st0 st5 st6">Worker Node 3</text>
+		<rect id="XMLID_32_" x="103.7" y="563.8" class="st4" width="37" height="37.7"/>
+		<text transform="matrix(1 0 0 1 171 507)" class="st5 st10">Peer 3</text>
+		<text transform="matrix(1 0 0 1 175 521)" class="st5 st11">Org 1</text>
+		<path id="XMLID_33_" class="st0" d="M208.7,713h-39.4c-1.8,0-3.3-4.3-3.3-9.6v-30.8c0-5.3,1.5-9.6,3.3-9.6h39.4
+			c1.8,0,3.3,4.3,3.3,9.6v30.8C212,708.7,210.5,713,208.7,713z"/>
+		<text transform="matrix(1 0 0 1 172 683)" class="st5 st10">Peer 4</text>
+		<text transform="matrix(1 0 0 1 176 697)" class="st5 st11">Org 1</text>
+		<text transform="matrix(1 0 0 1 115 169.5)" class="st12 st13">+ anti-affinity</text>
+	</g>
+	<g id="Group-5_2_" transform="translate(812.000000, 0.000000)">
+		<path id="XMLID_34_" class="st1" d="M346.2,817.5H37.3c-6.6,0-12-5-12-11.2V31.7c0-6.2,5.4-11.2,12-11.2h308.9c6.6,0,12,5,12,11.2
+			v774.5C358.2,812.5,352.8,817.5,346.2,817.5z"/>
+		<path id="XMLID_35_" class="st0" d="M329.6,798H53.9c-6.6,0-12-5-12-11.1V89.1c0-6.1,5.4-11.1,12-11.1h275.6c6.6,0,12,5,12,11.1
+			v697.7C341.6,793,336.2,798,329.6,798z"/>
+		<path id="XMLID_36_" class="st2" d="M315.2,777.9H68.3c-6.6,0-12-5.3-12-11.7V106.6c0-6.4,5.4-11.7,12-11.7h246.9
+			c6.6,0,12,5.3,12,11.7v659.7C327.2,772.6,321.8,777.9,315.2,777.9z"/>
+		<path id="XMLID_37_" class="st3" d="M294.9,754.3H88.5c-6.6,0-12-5.4-12-12V213.5c0-6.6,5.4-12,12-12h206.4c6.6,0,12,5.4,12,12
+			v528.8C306.9,748.9,301.5,754.3,294.9,754.3z"/>
+		<rect id="XMLID_38_" x="76.5" y="213.6" class="st4" width="230.4" height="23.3"/>
+		<text transform="matrix(1 0 0 1 125.5981 231.4535)" class="st5 st6">Worker Pool</text>
+		<rect id="XMLID_39_" x="93.3" y="94.9" class="st4" width="196.9" height="34"/>
+		<rect id="XMLID_40_" x="84.4" y="40.6" class="st4" width="214.6" height="34"/>
+		<text transform="matrix(1 0 0 1 141 57.5)" class="st0 st5 st6">Region 3</text>
+		<path id="XMLID_41_" class="st7" d="M280,396.1H105.1c-6.6,0-12-5.4-12-12V263.5c0-6.6,5.4-12,12-12H280c6.6,0,12,5.4,12,12v120.6
+			C292,390.7,286.6,396.1,280,396.1z"/>
+		<rect id="XMLID_42_" x="109.3" y="336.1" class="st4" width="166.5" height="23.3"/>
+		<text transform="matrix(1 0 0 1 111.5474 293.973)" class="st0 st5 st6">Worker Node 1</text>
+		<path id="XMLID_44_" class="st0" d="M211.2,361.5h-48.8c-2.3,0-4.1-4.3-4.1-9.6v-30.8c0-5.3,1.8-9.6,4.1-9.6h48.8
+			c2.3,0,4.1,4.3,4.1,9.6v30.8C215.3,357.2,213.5,361.5,211.2,361.5z"/>
+		<rect id="XMLID_45_" x="78" y="323.9" class="st4" width="163.6" height="37.7"/>
+		<text transform="matrix(1 0 0 1 174.3 347.5)" class="st5 st9">Peers</text>
+		<text transform="matrix(1 0 0 1 172.3 336.5)" class="st5 st8">CA 1</text>
+		<text transform="matrix(1 0 0 1 119 137.5)" class="st5 st6">Single Cluster</text>
+		<path id="XMLID_47_" class="st7" d="M280,567.6H105.1c-6.6,0-12-5.4-12-12V435c0-6.6,5.4-12,12-12H280c6.6,0,12,5.4,12,12v120.6
+			C292,562.2,286.6,567.6,280,567.6z"/>
+		<rect id="XMLID_48_" x="109.3" y="447.7" class="st4" width="166.5" height="23.3"/>
+		<text transform="matrix(1 0 0 1 111.5474 465.4867)" class="st0 st5 st6">Worker Node 2</text>
+		<path id="XMLID_50_" class="st0" d="M205.7,536.5h-39.4c-1.8,0-3.3-4.3-3.3-9.6v-30.8c0-5.3,1.5-9.6,3.3-9.6h39.4
+			c1.8,0,3.3,4.3,3.3,9.6v30.8C209,532.2,207.5,536.5,205.7,536.5z"/>
+		<path id="XMLID_51_" class="st7" d="M280,739.1H105.1c-6.6,0-12-5.4-12-12V606.5c0-6.6,5.4-12,12-12H280c6.6,0,12,5.4,12,12v120.6
+			C292,733.7,286.6,739.1,280,739.1z"/>
+		<rect id="XMLID_52_" x="109.3" y="679.1" class="st4" width="166.5" height="23.3"/>
+		<text transform="matrix(1 0 0 1 111.5474 637.0013)" class="st0 st5 st6">Worker Node 3</text>
+		<rect id="XMLID_54_" x="103.7" y="563.8" class="st4" width="37" height="37.7"/>
+		<text transform="matrix(1 0 0 1 169 506.5)" class="st5 st10">Peer 5</text>
+		<text transform="matrix(1 0 0 1 173 520.5)" class="st5 st11">Org 1</text>
+		<path id="XMLID_55_" class="st0" d="M208.7,704.5h-39.4c-1.8,0-3.3-4.3-3.3-9.6v-30.8c0-5.3,1.5-9.6,3.3-9.6h39.4
+			c1.8,0,3.3,4.3,3.3,9.6v30.8C212,700.2,210.5,704.5,208.7,704.5z"/>
+		<text transform="matrix(1 0 0 1 172 674.5)" class="st5 st10">Peer 6</text>
+		<text transform="matrix(1 0 0 1 176 688.5)" class="st5 st11">Org 1</text>
+		<text transform="matrix(1 0 0 1 115 169.5)" class="st12 st13">+ anti-affinity</text>
+	</g>
+	<rect id="XMLID_217_" x="885.5" y="94.4" class="st4" width="196.9" height="34"/>
+</g>
+</svg>

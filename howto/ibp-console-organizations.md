@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-05-31"
+lastupdated: "2019-06-18"
 
 keywords: organizations, MSPs, create an MSP, MSP JSON file, consortium, system channel
 
@@ -36,7 +36,7 @@ Before your organization can join a consortium, it needs to create an organizati
 - A certificate signed by your **root Certificate Authority**. This certificate is used to verify the identity of your nodes, channels, and applications.
 - A certificate signed by your **TLS CA**. A root TLS certificate allows your peers to participate in cross organization gossip, which is necessary to take advantage of the [**Private data** collections](/docs/services/blockchain/howto/ibp-console-smart-contracts.html#ibp-console-smart-contracts-private-data) and [Service Discovery](https://hyperledger-fabric.readthedocs.io/en/release-1.4/discovery-overview.html){: external} features of Hyperledger Fabric.
 - The **MSP ID**. The MSP ID is the formal name of your organization within the consortium. You need to remember the MSP ID for your nodes and applications.
-- **Admin certificates** from your **Peer admin** and **Org Admin** identities. These certificates are passed to the Ordering Service and are used to verify which identities in your organization are allowed to create or edit channels. When you use your console to create an orderer or peer, the admin certificates inside the MSP are deployed within the new node. These certificates can then be used to operate the peers or orderers from your console or a client application.
+- **Admin certificates** from your **Peer admin** and **Org Admin** identities. These certificates are passed to the Ordering Service and are used to verify which identities in your organization are allowed to create or edit channels. When you use your console to create an ordering node or peer, the admin certificates inside the MSP are deployed within the new node. These certificates can then be used to operate the peers or ordering nodes from your console or a client application.
 
 ## Managing MSPs in the console
 

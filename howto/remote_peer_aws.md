@@ -2,9 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-05-31"
+lastupdated: "2019-06-18"
 
-keywords: IBM Blockchain Platform, remote peer, AWS peer, AWS peers, multi-cloud
+keywords: IBM Blockchain Platform, remote peer, AWS peer, AWS peers, multicloud
 
 subcollection: blockchain
 
@@ -77,8 +77,7 @@ The Quick Start provides two deployment options:
 
 You need to provide the API endpoints of your network to your  peer during configuration. These endpoints allow a  peer to find and connect to the network on {{site.data.keyword.blockchainfull_notm}} Platform. On the **Overview** screen of your Network Monitor, click the **Remote Peer Configuration** button.
 
-![Remote Peer Configuration](../images/myresources_starter.png "Remote Peer Configuration")
-*Figure 1. Remote Peer Configuration Panel*
+![Remote Peer Configuration](../images/myresources_starter.png "Remote Peer Configuration"){: caption="Figure 1. Remote Peer Configuration Panel" caption-side="bottom"}
 
 A pop-up window opens and displays the values of the following fields. Save the values of the following fields, they are required when you configure the peer by using the AWS Quick Start template.
 
@@ -108,8 +107,7 @@ You need to add a new peer identity to your network on the {{site.data.keyword.b
 **Note:** For High Availability, the Quick Start template creates two peer nodes across two availability zones. Therefore, two enroll ids and secrets are required. **Repeat this process twice to generate two enroll ids and secrets.**
 
 1. Log in to the Network Monitor of your network on {{site.data.keyword.blockchainfull_notm}} Platform. On the "Certificate Authority" screen of your Network Monitor, you can view all the identities that have been registered with the network, such as your admin or client applications.
-  ![CA screen](../images/CA_screen_starter.png "CA screen")
-  *Figure 2. CA screen*
+  ![CA screen](../images/CA_screen_starter.png "CA screen"){: caption="Figure 2. CA screen" caption-side="bottom"}
 
 2. Click the **Add User** button on the panel. A pop-up screen opens and allows you to register your peer to the network after filling out the fields below. **Save the value of the ID and Secret for later when you configure your peer in the Quick Start template.**
   - **Enroll ID:** The name you want to use for your peer, which is referred to as your `enroll ID` when you configure your peer. **Save this value** for future usage.
@@ -159,7 +157,7 @@ The following table lists the configurable parameters of the AWS chart and their
 | | | |
 | **Network Configuration** | |
 | `Availability Zones` |The two Availability Zones to use for the subnets in the VPC. Note: The logical order is preserved. | |
-| `Allowed SSH access CIDR` | Allowed [CIDR block](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html#vpc-resize){: external} for external SSH access to the {{site.data.keyword.blockchainf_notm}} Peer instances. It can be set to 0.0.0.0/0 to allow access from anywhere (not recommended). | |
+| `Allowed SSH access CIDR` | Allowed [CIDR block](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html#vpc-resize){: external} for external SSH access to the {{site.data.keyword.blockchain_notm}} Peer instances. It can be set to 0.0.0.0/0 to allow access from anywhere (not recommended). | |
 | `PeerEndpointAccessCIDR` | Allowed [CIDR](https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html#vpc-resize){: external} block for external gRPC access to the {{site.data.keyword.blockchainfull_notm}} Peer instances. Typically set to 0.0.0.0/0 to allow access from anywhere (not recommended). | |
 | | | |
 | **Amazon EC2 Configuration** | | |
@@ -228,8 +226,7 @@ If you are deploying the {{site.data.keyword.blockchainfull_notm}} Platform for 
 
 When the AWS CloudFormation template has successfully created the stack, two {{site.data.keyword.blockchainfull_notm}} Platform for AWS peer instances will be running in your AWS account. The instances will be named based on the combination of the `Organization MSP` and the `Peer enroll id` that is specified in the Quick Start template. For example, `org1-remotepeer1`.  
 
-![Peer on AWS EC2 Instances](../images/remote_peer_AWS_EC2_instances.png "Peer on AWS EC2 Instances")  
-*Figure 3. Peer on AWS EC2 instances*
+![Peer on AWS EC2 Instances](../images/remote_peer_AWS_EC2_instances.png "Peer on AWS EC2 Instances"){: caption="Figure 3. Peer on AWS EC2 instances" caption-side="bottom"}
 
 To verify the peer is running:
 

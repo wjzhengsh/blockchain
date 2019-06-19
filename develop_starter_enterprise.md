@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-05-31"
+lastupdated: "2019-06-18"
 
 keywords: business network, Starter Plan, Enterprise Plan, developer environment, certificate authority card, admin business network card, BNA, business network archive
 
@@ -17,6 +17,7 @@ subcollection: blockchain
 {:pre: .pre}
 {:tip: .tip}
 {:note: .note}
+{:gif: data-image-type='gif'}
 
 # Deploying business networks on Starter and Enterprise Plan
 {: #deploying-a-business-network}
@@ -53,7 +54,7 @@ You can find your Fabric version by opening the [Network Preferences window](/do
 
 3. Inside the connection profile, go all the way down until you see 'registrar'. Inside 'registrar', under 'enrollId' there is an **enrollSecret** property. Retrieve the secret and save a copy of it.
 
-    ![Retrieve admin secret](images/get_enroll_secret.gif "Retrieve admin secret")
+    ![Retrieve admin secret](images/get_enroll_secret.gif "Retrieve admin secret"){: gif}
 
 ### Step two: Create a certificate authority card
 {: #deploying-a-business-network-CA-card}
@@ -92,11 +93,11 @@ The certificates must be added to the Starter Plan network. For convenience, you
 
 1. In the Starter Plan Network Monitor, click on the **Members** tab, then **Certificates**, then **Add Certificate**. Go to your `credentials` directory, and copy and paste the contents of the `admin-pub.pem` file in the certificate box. Submit the certificate and restart the peers. Note: restarting the peers takes a minute.
 
-    ![Add certificates](images/add_cert.gif "Add certificates")
+    ![Add certificates](images/add_cert.gif "Add certificates"){: gif}
 
 2. Next, the certificates must be synced on the channel. Click the **Channels** tab, then the **Actions** button, then **Sync Certificate** and **Submit**.
 
-    ![Sync certificates](images/sync_cert.gif "Sync certificates")
+    ![Sync certificates](images/sync_cert.gif "Sync certificates"){: gif}
 
 ### Step four: Create an admin business network card
 {: #deploying-a-business-network-create-admin-card}

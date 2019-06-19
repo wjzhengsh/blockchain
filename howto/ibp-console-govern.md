@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-05-31"
+lastupdated: "2019-06-18"
 
 keywords: network components, IBM Cloud Kubernetes Service, allocate resources, batch timeout, channel update, reallocate resources
 
@@ -22,35 +22,36 @@ subcollection: blockchain
 # Governing components
 {: #ibp-console-govern}
 
-After creating CAs, peers, orderers, organizations, and channels, you can use the console to update these components.
+After creating CAs, peers, ordering nodes, organizations, and channels, you can use the console to update these components.
 {:shortdesc}
 
-If you are using the beta trial version of {{site.data.keyword.blockchainfull_notm}} Platform, it is likely that some panels in your console will not match the current documentation, which is kept up to date with the generally available (GA) service instance. To gain the benefits of all the latest functionality, you are encouraged at this time to provision a new GA service instance by following instructions in [Getting started with {{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}}](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks).
+If you are using the beta trial version of {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}}, it is likely that some panels in your console will not match the current documentation, which is kept up to date with the generally available (GA) service instance. To gain the benefits of all the latest functionality, you are encouraged at this time to provision a new GA service instance by following instructions in [Getting started with {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}}](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks).
 
 **Target audience:** This topic is designed for network operators who are responsible for creating, monitoring, and managing the blockchain network.
 
-## How the {{site.data.keyword.cloud_notm}} Kubernetes Service interacts with the console
+## How the console interacts with your Kubernetes cluster
 {: #ibp-console-govern-iks-console-interaction}
 
 It is the network operator's responsibility to monitor CPU, memory, and storage usage and ensure that adequate resources are available **before** attempting to create or resize a node.
 {:important}
 
-Because your instance of the {{site.data.keyword.blockchainfull_notm}} Platform console and your {{site.data.keyword.cloud_notm}} Kubernetes Service cluster do not communicate directly about the resources that are available in your cluster, the process for deploying or resizing components by using the console must follow this pattern:
+Because your instance of the {{site.data.keyword.blockchainfull_notm}} Platform console and your Kubernetes cluster do not communicate directly about the resources that are available, the process for deploying or resizing components by using the console must follow this pattern:
 
-1. **Size the deployment that you want to make**. The **Resource allocation** panels for the CA, peer, and orderer in the console offer default CPU, memory, and storage allocations for each node. You may need to adjust these values according to your use case. If you are unsure, start with default allocations and adjust them as you understand your needs. Similarly, the **Resource reallocation** panel displays the existing resource allocations.
+1. **Size the deployment that you want to make**. The **Resource allocation** panels for the CA, peer, and ordering node in the console offer default CPU, memory, and storage allocations for each node. You may need to adjust these values according to your use case. If you are unsure, start with default allocations and adjust them as you understand your needs. Similarly, the **Resource reallocation** panel displays the existing resource allocations.
 
   For a sense of how much storage and compute you will need in your cluster, refer to the chart after this list, which contains the current defaults for the peer, orderer, and CA.
 
-2. **Check whether you have enough resources in your {{site.data.keyword.cloud_notm}} Kubernetes Service cluster**. To monitor your Kubernetes resources, we recommend using the [{{site.data.keyword.cloud_notm}} SysDig](https://www.ibm.com/cloud/sysdig){: external} tool in combination with your {{site.data.keyword.cloud_notm}} Kubernetes dashboard. If you do not have enough space in your cluster to deploy or resize resources, you need to increase the size of your {{site.data.keyword.cloud_notm}} Kubernetes Service cluster. For more information about how to increase the size of a cluster, see [Scaling clusters](/docs/containers?topic=containers-ca#ca){: external}. If you have enough space in your cluster, you can continue with step 3.
-3. **Use the console to deploy or resize your node**. If the worker node that the pod is running on is running out of resources, you can add a new larger worker node to your cluster and then delete the existing working node.
+2. **Check whether you have enough resources in your Kubernetes cluster**. If you are using a Kubernetes cluster hosted in {{site.data.keyword.cloud_notm}}, we recommend using the [{{site.data.keyword.cloud_notm}} SysDig](https://www.ibm.com/cloud/sysdig){: external} tool in combination with your {{site.data.keyword.cloud_notm}} Kubernetes dashboard. If you do not have enough space in your cluster to deploy or resize resources, you need to increase the size of your {{site.data.keyword.cloud_notm}} Kubernetes Service cluster. For more information about how to increase the size of a cluster, see [Scaling clusters](/docs/containers?topic=containers-ca#ca){: external}. If you are using a cloud provider other than {{site.data.keyword.cloud_notm}}, you will have to consult their documentation to learn how to scale clusters. If you have enough space in your cluster, you can continue with step 3.
+3. **Use the console to deploy or resize your node**. If your Kubernetes pod is large enough to accommodate the new size of the node, the reallocation should proceed smoothly. If the worker node that the pod is running on is running out of resources, you can add a new larger worker node to your cluster and then delete the existing working node.
 
-| **Component** (all containers) | CPU  | Memory (GB) | Storage (GB) |
+| **Component** (all containers) | CPU**  | Memory (GB) | Storage (GB) |
 |--------------------------------|---------------|-----------------------|------------------------|
 | **Peer**                       | 1.2           | 2.4                   | 200 (includes 100GB for peer and 100GB for CouchDB)|
 | **CA**                         | 0.1           | 0.2                   | 20                     |
 | **Ordering node**              | 0.45          | 0.9                   | 100                    |
+** These values can vary slightly if you are using {{site.data.keyword.cloud_notm}} Private. Actual VPC allocations are visible in the blockchain console when a node is deployed.  
 
-If you plan to deploy a five node Raft ordering service, note that your ordering node deployment will increase by a factor of five. So a total of 2.25 CPU, 4.5 GB of memory, and 500 GB of storage for the five Raft nodes. This makes the five node ordering service larger than a 2 CPU Kubernetes single worker node.
+If you plan to deploy a five node Raft ordering service, note that the total of your deployment will increase by a factor of five. So a total of 2.25 CPU, 4.5 GB of memory, and 500 GB of storage for the five Raft nodes. This makes the five node ordering service larger than a 2 CPU Kubernetes single worker node.
 {:tip}
 
 For cases when a user wants to minimize charges without bringing a node down completely or deleting it, it is possible to scale a node down to a minimum of 0.001 CPU (1 milliCPU). Note that the node will not be functional when using this amount of CPU.
@@ -63,11 +64,11 @@ While the figures in this topic endeavor to be precise, be aware that there are 
 
 While users of a free cluster **must use default sizes** for the containers associated with their nodes, users of paid clusters can set these values during the creation of their nodes.
 
-The **Resource allocation** panel in the console provides default values for the various fields that are involved in creating a node. These values are chosen because they represent a good way to get started. However, every use case is different. While this topic will provide guidance for ways to think about these values, it ultimately falls to the user to monitor their nodes and find sizings that work for them. Therefore, barring situations in which users are certain that they will need values different from the defaults, a practical strategy is to use these defaults and adjust these values later. For an overview of performance and scale of Hyperledger Fabric, which the {{site.data.keyword.blockchainfull_notm}} Platform is based on, see [Answering your questions on Hyperledger Fabric performance and scale](https://www.ibm.com/blogs/blockchain/2019/01/answering-your-questions-on-hyperledger-fabric-performance-and-scale/){: external}.
+The **Resource allocation** panel in the console provides default values for the various fields that are involved in creating a node. These values are chosen because they represent a good way to get started. However, every use case is different. While this topic will provide guidance for ways to think about these values, it ultimately falls to the user to monitor their nodes and find sizings that work for them. Therefore, barring situations in which users are certain that they will need values different from the defaults, a practical strategy is to use these defaults at first and adjust them later. For an overview of performance and scale of Hyperledger Fabric, which the {{site.data.keyword.blockchainfull_notm}} Platform is based on, see [Answering your questions on Hyperledger Fabric performance and scale](https://www.ibm.com/blogs/blockchain/2019/01/answering-your-questions-on-hyperledger-fabric-performance-and-scale/){: external}.
 
-All of the containers that are associated with a node have **CPU** and **memory**, while certain containers that are associated with the peer, orderer, and CA also have **storage**. For more information about storage, see [Persistent storage considerations](/docs/services/blockchain?topic=blockchain-ibp-v2-deploy-iks#ibp-console-storage).
+All of the containers that are associated with a node have **CPU** and **memory**, while certain containers that are associated with the peer, ordering node, and CA also have **storage**. For more information about storage, see [Persistent storage considerations](/docs/services/blockchain?topic=blockchain-ibp-v2-deploy-iks#ibp-console-storage).
 
-You are responsible for monitoring your CPU, memory and storage consumption in your cluster. If you do happen to request more resources for a blockchain node than are available, the node will not start, but existing nodes are not affected. Although CPU and memory can be changed by using the console and {{site.data.keyword.cloud_notm}} Kubernetes Service dashboard, after a node has been created, storage can be changed later only by using the {{site.data.keyword.cloud_notm}} CLI.
+You are responsible for monitoring your CPU, memory and storage consumption in your cluster. If you do happen to request more resources for a blockchain node than are available, the node will not start, but existing nodes are not affected. If you are using {{site.data.keyword.cloud_notm}} as your cloud provider, CPU and memory can be changed by using the console and {{site.data.keyword.cloud_notm}} Kubernetes Service dashboard. However, after a node has been created, storage can be changed later only by using the {{site.data.keyword.cloud_notm}} CLI. For information about how to increase the CPU, memory, and storage in other cloud providers, consult the documentation of those cloud providers.
 {:note}
 
 Every node has a gRPC web proxy container that bootstraps the communication layer between the console and a node. This container has fixed resource values and is included on the Resource allocation panel to provide an accurate estimate of how much space is required on your Kubernetes cluster in order for the node to deploy. Because the values for this container cannot be changed, we will not discuss the gRPC web proxy in the following sections.
@@ -75,7 +76,7 @@ Every node has a gRPC web proxy container that bootstraps the communication laye
 ### Certificate Authorities (CAs)
 {: #ibp-console-govern-CA}
 
-Unlike peers and orderers, which are actively involved in the transaction process, CAs are involved only in the registration and enrollment of identities, and in the creation of an MSP. This means that they require less CPU and memory. To stress a CA, a user would need to overwhelm it with requests (likely using APIs and a script), or have issued so many certificates it runs out of storage. Under typical operations, neither of these things should happen, though as always, these values should reflect the needs of a particular use case.
+Unlike peers and ordering nodes, which are actively involved in the transaction process, CAs are involved only in the registration and enrollment of identities, and in the creation of an MSP. This means that they require less CPU and memory. To stress a CA, a user would need to overwhelm it with requests (likely using APIs and a script), or have issued so many certificates it runs out of storage. Under typical operations, neither of these things should happen, though as always, these values should reflect the needs of a particular use case.
 
 The CA has only one associated container that we can adjust:
 
@@ -105,7 +106,7 @@ The peer also includes a container for the **Log Collector** that pipes the logs
 #### Sizing a peer during creation
 {: #ibp-console-govern-peers-sizing-creation}
 
-As we noted in our section on [How the {{site.data.keyword.cloud_notm}} Kubernetes Service interacts with the console](/docs/services/blockchain/howto/ibp-console-govern.html#ibp-console-govern-iks-console-interaction), it is recommended to use the defaults for these peer containers and adjust them later when it becomes apparent how they are being utilized.
+As we noted in our section on [How the console interacts with your Kubernetes cluster](/docs/services/blockchain/howto/ibp-console-govern.html#ibp-console-govern-iks-console-interaction), it is recommended to use the defaults for these peer containers and adjust them later when it becomes apparent how they are being utilized by your use case.
 
 | Resources | Condition to increase |
 |-----------------|-----------------------|
@@ -118,11 +119,11 @@ As we noted in our section on [How the {{site.data.keyword.cloud_notm}} Kubernet
 ### Ordering nodes
 {: #ibp-console-govern-ordering-nodes}
 
-Because orderers don't maintain the State DB and they don't host smart contracts, they require fewer containers than peers do. But they do host the blockchain (the transaction history) because the blockchain is where the channel configuration is stored, and the orderer must know the latest channel configuration to perform its role.
+Because ordering nodes neither maintain the State DB nor host smart contracts, they require fewer containers than peers do. But they do host the blockchain (the transaction history) because the blockchain is where the channel configuration is stored, and the ordering service must know the latest channel configuration to perform its role.
 
-Similar to the CA, the orderer has only one associated container that we can adjust:
+Similar to the CA, an ordering node has only one associated container that we can adjust (if you are deploying a five-node ordering service, five separate sets of ordering node containers):
 
-* **The orderer itself**: Encapsulates the internal orderer processes (such as validating transactions) and the blockchain for all of the channels it hosts.
+* **The ordering node itself**: Encapsulates the internal orderer processes (such as validating transactions) and the blockchain for all of the channels it hosts.
 
 #### Sizing an orderer during creation
 {: #ibp-console-govern-orderer-sizing-creation}
@@ -131,10 +132,10 @@ As we noted in our section on [How the {{site.data.keyword.cloud_notm}} Kubernet
 
 | Resources | Condition to increase |
 |-----------------|-----------------------|
-| **Orderer container CPU and memory** | When you anticipate a high transaction throughput right away. |
-| **Orderer storage** | When you anticipate that this orderer will be part of an ordering service on many channels. Recall that orderers keep a copy of the blockchain for every channel they're a part of. The orderer default storage is 100G, same as the container for the peer itself. |
+| **Ordering node container CPU and memory** | When you anticipate a high transaction throughput right away. |
+| **Ordering node storage** | When you anticipate that this ordering node will be part of an ordering service on many channels. Recall that the ordering service keeps a copy of the blockchain for every channel they host. The default storage of an ordering node is 100G, same as the container for the peer itself. |
 
-Making the CPU and memory of your ordering nodes roughly double the size of your peers, while not mandatory, is considered a best practice. If an ordering service is overstressed, it might hit timeouts and start dropping transactions, requiring transactions to be resubmitted. This causes much greater harm to a network than a single peer struggling to keep up. In a Raft ordering service configuration, an overstressed leader node might stop sending heartbeat messages, triggering a leader election, and a temporary cessation of transaction ordering. Likewise, a follower node might miss messages and attempt to trigger a leader election where none is needed.
+Ensuring that your ordering nodes have enough CPU and memory is considered a best practice. If an ordering service is overstressed, it might hit timeouts and start dropping transactions, requiring transactions to be resubmitted. This causes much greater harm to a network than a single peer struggling to keep up. In a Raft ordering service configuration, an overstressed leader node might stop sending heartbeat messages, triggering a leader election, and a temporary cessation of transaction ordering. Likewise, a follower node might miss messages and attempt to trigger a leader election where none is needed.
 {:important}
 
 ## Reallocating resources
@@ -143,28 +144,36 @@ Making the CPU and memory of your ordering nodes roughly double the size of your
 After resizing a node, you might see a delay before it takes effect because containers are being rebuilt.
 {:important}
 
-As we said above, we recommend using the [{{site.data.keyword.cloud_notm}} SysDig](https://www.ibm.com/cloud/sysdig){: external} tool in combination with your {{site.data.keyword.cloud_notm}} Kubernetes dashboard to monitor your Kubernetes resource usage. If you determine that a worker node is running out of resources, you can add a new larger worker node to your cluster and then delete the existing working node.
+As we said above, if your cloud provider is {{site.data.keyword.cloud_notm}}, we recommend using the [{{site.data.keyword.cloud_notm}} SysDig](https://www.ibm.com/cloud/sysdig){: external} tool in combination with your {{site.data.keyword.cloud_notm}} Kubernetes dashboard to monitor your Kubernetes resource usage. If you determine that a worker node is running out of resources, you can add a new larger worker node to your cluster and then delete the existing working node.
 {:note}
 
-While it easier to have enough resources deployed to {{site.data.keyword.cloud_notm}} Kubernetes Service and be able to expand your pods and worker nodes as you see fit without having to increase your deployment into {{site.data.keyword.cloud_notm}} Kubernetes Service first, the bigger the deployment in {{site.data.keyword.cloud_notm}} Kubernetes Service, the more it will cost. Users need to consider their options carefully and recognize the tradeoffs that they are making regardless of the option that they choose.
+While it takes less effort to deploy enough resources to your Kubernetes cluster from the start and therefore be able deploy and expand resources without having to increase the resources in your cluster, the bigger the deployment, the more it will cost. Users need to consider their options carefully and recognize the tradeoffs that they are making regardless of the option that they choose.
 
-You can use one of the following ways to reallocate the resources that you assign to the containers that are associated with your node.
+If your cloud provider is {{site.data.keyword.cloud_notm}} or in a different cloud provider (using {{site.data.keyword.cloud_notm}} Private), you can scale your cluster manually, monitoring your nodes and either adding more nodes or larger nodes. While this process can be labor intensive, it has the advantage of allowing the user to always be certain what is being charged to their cloud account.
 
-1. **Use the {{site.data.keyword.cloud_notm}} Kubernetes Service autoscaler**. The autoscaler will scale your worker nodes up or down in response to your pod spec settings and resource requests. For more information about the {{site.data.keyword.cloud_notm}} Kubernetes Service autoscaler and how to set it up, see [Scaling clusters](/docs/containers?topic=containers-ca#ca){: external} in the {{site.data.keyword.cloud_notm}} documentation. Note that allowing the autoscaler to adjust your resources will result in charges to your {{site.data.keyword.cloud_notm}} Kubernetes Service account that will vary with your usage.
-2. **Scale manually**. This involves monitoring your usage in the console and on the {{site.data.keyword.cloud_notm}} Kubernetes Service cluster. While this will involve more manual steps than using the autoscaler, it has the advantage of allowing the user to always be certain what is being charged to their {{site.data.keyword.cloud_notm}} Kubernetes Service account.
+If a user has deployed to {{site.data.keyword.cloud_notm}} using the {{site.data.keyword.cloud_notm}} Kubernetes Service, they also have the ability to use the {{site.data.keyword.cloud_notm}} Kubernetes Service **autoscaler**. The autoscaler will scale your worker nodes up or down in response to your pod spec settings and resource requests. For more information about the {{site.data.keyword.cloud_notm}} Kubernetes Service autoscaler and how to set it up, see [Scaling clusters](/docs/containers?topic=containers-ca#ca){: external} in the {{site.data.keyword.cloud_notm}} documentation. Note that allowing the autoscaler to adjust your resources will result in charges to your {{site.data.keyword.cloud_notm}} Kubernetes Service account that will vary with your usage.
 
-To scale manually, click the node that you want to adjust on the **Nodes** page and then click the **Usage** tab. You can see a button called **Reallocate**, which will launch a **Resource allocation** tab that is very similar to the one that you saw when you create the node. If you want to lower the amount of available resources, simply provide lower values and click **Reallocate resources** on that tab and the resulting **Summary** page.
+To scale manually in the console, click the node that you want to adjust on the **Nodes** page and then click the **Usage** tab. You can see a button called **Reallocate**, which will launch a **Resource allocation** tab that is very similar to the one that you saw when you created the node. If you want to lower the amount of available resources, simply provide lower values and click **Reallocate resources** on that tab and the resulting **Summary** page.
 
-If you want to increase the CPU and memory for a node, use the **Resource allocation** tab to increase the values. The white box at the bottom of the page will add up the new values. After clicking **Reallocate resources**, the **Summary** page will translate this value into a **VPC** amount, which is used to calculate your bill. You'll then need to navigate to your {{site.data.keyword.cloud_notm}} Kubernetes Service dashboard to make sure your cluster has sufficient resources for this reallocation. If it does, you can click **Reallocate resources**. If sufficient resources are not available, you will need to increase the size of your cluster using the {{site.data.keyword.cloud_notm}} Kubernetes Service dashboard.
+If you want to increase the CPU and memory for a node, use the **Resource allocation** tab in the console to increase the values. The white box at the bottom of the page will add up the new values. After clicking **Reallocate resources**, the **Summary** page will translate this value into a **VPC** amount, which is used to calculate your bill. You'll then need to navigate to your Kubernetes cluster to make sure your cluster has sufficient resources for this reallocation. If it does, you can click **Reallocate resources**. If sufficient resources are not available, you will need to increase the size of your cluster.
 
-The method you will use to increase storage will depend on the storage class you chose for your cluster. Refer back to the [storage options](/docs/containers?topic=containers-kube_concepts#kube_concepts){: external} documentation for information about increasing your storage. If you are about to exhaust the storage on your peer or orderer, you must deploy a new peer or orderer with a larger file system and let it sync via your other components on the same channels.
+The method you will use to increase storage will depend on the storage class you chose for your cluster. Refer to the documentation of your cloud provider to learn about this. In {{site.data.keyword.cloud_notm}}, this topic is called [storage options](/docs/containers?topic=containers-kube_concepts#kube_concepts){: external}. Note that in {{site.data.keyword.cloud_notm}}, if you are about to exhaust the storage on your peer or ordering node, you must deploy a new peer or ordering node with a larger file system and let it sync via your other components on the same channels.
 
-Unlike CPU and memory, which can be increased using the console (if you have resources available in your {{site.data.keyword.cloud_notm}} Kubernetes Service cluster), you will need to use the {{site.data.keyword.cloud_notm}} CLI to increase the storage of your nodes. For a tutorial on how to do this, see [Changing the size and IOPS of your existing storage device](/docs/containers?topic=containers-file_storage#file_change_storage_configuration){: external}.
+In {{site.data.keyword.cloud_notm}}, CPU and memory can be increased using the console (if you have resources available in your {{site.data.keyword.cloud_notm}} Kubernetes Service cluster). However, storage must be increased using the {{site.data.keyword.cloud_notm}} CLI. For a tutorial on how to do this, see [Changing the size and IOPS of your existing storage device](/docs/containers?topic=containers-file_storage#file_change_storage_configuration){: external}. If you are using a cloud provider other than {{site.data.keyword.cloud_notm}}, refer to the documentation of that provider for the process on increasing CPU, memory, and storage.
+
+## Updating an organization MSP definition
+{: #ibp-console-govern-update-msp}
+
+Over time you may find the need to update an organization MSP definition, by adding additional organization admins for example, or changing the display name of the MSP in the console.
+
+- Simply export the existing MSP definition from the **Organizations** tab and edit the generated JSON file to modify the display name, the existing certificates, or add new certificates. It is not recommended that you change the `msp_id` field as this could cause breaking changes to your network.
+- Click your MSP definition in the **Organizations** tab to open it and then click **Add file** to upload the new JSON file.
+- Click **Update MSP definition**. The changes are effective immediately.
 
 ## Updating a channel configuration
 {: #ibp-console-govern-update-channel}
 
-While creating a channel and updating a channel have the same goal, giving users the ability to ensure that the configuration of their channel is as well suited as possible to their use case, the two processes are in fact very different **as tasks** in the console. Recall from our documentation on [Creating a channel](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-create-channel) that this is a process undertaken by a **single organization**. As long as an organization is a member of the consortium of the ordering service that will become the ordering service of a channel, they can create the channel in any way they want. They can give it any name, add any organizations (as long as they are a member of the consortium), assign those organizations permissions, set Access Control Lists, and so on.
+While creating a channel and updating a channel have the same goal, giving users the ability to ensure that the configuration of their channel is as well suited as possible to their use case, the two processes are in fact very different **as tasks** in the console. Recall from our documentation on [Creating a channel](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-create-channel) that this is a process undertaken by a **single organization**. As long as an organization is a member of the consortium of the ordering service that will become the ordering service of a channel, they can create the channel in any way they want. They can give it any name, add any organizations (as long as they are a member of the consortium), assign those organizations permissions, set access control lists, and so on.
 
 The other organizations have the choice of whether to participate in this channel (for example, whether to join peers to it), but it is assumed that the collaborative process of choosing channel parameters will happen out of band, before an organization uses the console to create the channel.
 
@@ -199,14 +208,21 @@ If you are attempting to change any of the **Block cutting parameters** and own 
 ### Signature collection flow
 {: #ibp-console-govern-update-channel-signature-collection}
 
-For signatures to be verified, the organizations on a channel should export the MSPs (in JSON format) representing their organizations to the other organizations on the channel, as well as importing the MSPs of other organizations. To export an MSP, click the download button on your MSP (in the **Organizations** screen), then send it to other organizations out of band. When you receive a JSON of an MSP, import it using the **Organizations** screen.
+For signatures to be verified, the organizations on a channel should export the MSPs (in JSON format) representing their organizations to the other organizations on the channel, as well as importing the MSPs of other organizations. To export an MSP, click the download button on your MSP (on the **Organizations** tab), then send it to other organizations out of band. When you receive a JSON of an MSP, import it using the **Organizations** screen.
 {: important}
 
 After a channel configuration update request has been made, it will be sent to the organizations in the channel that have the right to sign it. For example, if there are five operators (channel admins) in a channel, it will be sent to all five. For the channel configuration update to be approved, the number of channel operators listed in the **channel update policy** must be satisfied. If this policy says `3 out of 5`, then the channel configuration update will be sent to all five operators, and when three of them sign it, the new channel configuration update will take effect.
 
 This process of knowing when you have an update to sign, as well as signing it, is handled through the **Notifications** button (which looks like a bell) in the top right of the console. When you see a blue dot on the **Notifications** button, it means that you either have a pending request to evaluate or are being notified of a channel update event.
 
-When you click on the **Notifications** button, you may have one or more actions you have the ability to take. If a channel configuration update request has been made, you will have the ability to click on `Review and update channel configuration` and see the changes to the channel configuration update that are being proposed or have been made (if the new channel configuration has been approved). If you are an operator on the channel, and not enough signatures have been gathered to approve the channel configuration update request, you will have the ability to sign the update request.
+When you click on the **Notifications** button, you may have one or more actions you have the ability to take:
+
+* **Needs attention**: the current user needs to sign the request (as a peer or ordering service organization) or needs to submit the request (if all required signature have already been collected).
+* **Open**: includes everything that **needs attention** as well as requests that have been signed by the user but still need to be signed by one or more other channel members.
+* **Closed**: requests that have been submitted. No actions to be taken on these items. They can only be viewed.
+* **All**: includes both open and closed requests.
+
+If a channel configuration update request has been made, you will have the ability to click on `Review and update channel configuration` and see the changes to the channel configuration update that are being proposed or have been made (if the new channel configuration has been approved). If you are an operator on the channel, and not enough signatures have been gathered to approve the channel configuration update request, you will have the ability to sign the update request.
 
 You are not mandated to sign a channel configuration update, however there is no way to sign **against** a channel update. If you do not approve of a channel configuration update, you can simply close the panel and reach out to other channel operators out of band to voice your concerns. However, if enough operators in the channel approve of the update to satisfy the channel update policy, the new configuration will take effect.
 {:note}

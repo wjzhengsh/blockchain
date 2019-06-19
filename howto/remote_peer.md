@@ -2,9 +2,9 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-05-31"
+lastupdated: "2019-06-18"
 
-keywords: IBM Blockchain Platform, remote peer, multi-cloud, private data, AWS Cloud
+keywords: IBM Blockchain Platform, remote peer, multicloud, multicloud, private data, AWS Cloud
 
 subcollection: blockchain
 
@@ -92,7 +92,7 @@ Because blockchain networks are oblivious to the type of data that is processed,
 
 To address data residency requirements, it is important to understand the Hyperledger Fabric architecture that underlies {{site.data.keyword.blockchainfull_notm}} Platform. The architecture is centered around three key components: Certificate Authority (CA), orderer, and peer. A peer receives ordered state updates in the form of blocks from the ordering service and maintains the state and the ledger. Therefore, a peer and an orderer have a direct relationship. The ledger contains the latest values for all keys and the data that the transaction logs include.
 
-Additionally, client applications use the [Fabric SDKs](/docs/services/blockchain/v10_application.html#dev-app-fabric-sdks) to send transactions to the peers and ordering service. These transactions include [read-write set](https://hyperledger-fabric.readthedocs.io/en/release-1.2/readwrite.html){: external} data, which contains the key-value pairs on the ledger.
+Additionally, client applications use the [Fabric SDKs](https://hyperledger-fabric.readthedocs.io/en/release-1.2/getting_started.html){: external} to send transactions to the peers and ordering service. These transactions include [read-write set](https://hyperledger-fabric.readthedocs.io/en/release-1.2/readwrite.html){: external} data, which contains the key-value pairs on the ledger.
 
 If in-country data residency is a requirement for your business, the orderer, peers, and client applications must reside in the same country. When an {{site.data.keyword.blockchainfull_notm}} Platform network is created in {{site.data.keyword.cloud_notm}}, you have the choice of selecting a location for the network. <!--For a Starter Plan network, you can select from US South, United Kingdom, and Sydney. For an Enterprise Plan network, you can select from currently available locations, which include Dallas, Frankfurt, London, Sao Paulo, Tokyo, and Toronto. -->For more information about regions and locations, see [{{site.data.keyword.blockchainfull_notm}} Platform regions and locations](/docs/services/blockchain/reference/ibp_regions.html#ibp-regions-locations). To achieve data residency in one of these countries, your peer should reside in the same country as the {{site.data.keyword.blockchainfull_notm}} Platform network location.
 
@@ -101,10 +101,9 @@ If in-country data residency is a requirement for your business, the orderer, pe
 
 Consider an {{site.data.keyword.blockchainfull_notm}} Platform network that includes the Orderer and Certificate Authority along with a consortium of four organizations. The organizations have one or more peer nodes. All four organizations are part of a single channel and all components of the network reside in the region (for example Frankfurt) where the {{site.data.keyword.blockchainfull_notm}} Platform network was deployed. Finally, the client applications that interact with the peers also reside within Germany. Data residency is maintained.  
 
-![Data residency when all components are in the same country](../images/remote_peer_data_res_1.png "Data residency when all components are in the same country")  
-*Figure 3. Data Residency when all components are in the same country*
+![Data residency when all components are in the same country](../images/remote_peer_data_res_1.png "Data residency when all components are in the same country"){: caption="Figure 3. Data Residency when all components are in the same country" caption-side="bottom"}
 
-Now let’s consider the implications when a **peer**  joins one of the organizations.  A peer can reside in the same region as the rest of the network or anywhere outside of the {{site.data.keyword.blockchainfull_notm}} Platform network region:
+Now let’s consider the implications when a **peer**  joins one of the organizations. A peer can reside in the same region as the rest of the network or anywhere outside of the {{site.data.keyword.blockchainfull_notm}} Platform network region:
 
 -	If the peer resides in the same country as the rest of the network, data residency is maintained. All ledger data stays within Germany as in **Figure 3** above.
 -	If the peer happens to reside in a different country (such as USA for example), data residency is no longer maintained as data on the peer ledger is shared outside the country's border.
@@ -113,8 +112,7 @@ To solve this problem **channels** can be used to segregate data to a subset of 
 
 **Note:** Orderers are always located in the data center region that you selected to host the network. It is not possible to have multiple orderers across country borders. However, peers can be located either in the data center or at a remote location outside {{site.data.keyword.cloud_notm}}.
 
-![Data residency when peers are outside the country of the {{site.data.keyword.blockchainfull_notm}} Platform region](../images/remote_peer_data_res_2.png "Data Residency peers reside outside the country of the {{site.data.keyword.blockchainfull_notm}} Platform region")  
-*Figure 4. Data Residency peers reside outside the country of the {{site.data.keyword.blockchainfull_notm}} Platform region*
+![Data residency when peers are outside the country of the {{site.data.keyword.blockchainfull_notm}} Platform region](../images/remote_peer_data_res_2.png "Data Residency peers reside outside the country of the {{site.data.keyword.blockchainfull_notm}} Platform region"){: caption="Figure 4. Data Residency peers reside outside the country of the {{site.data.keyword.blockchainfull_notm}} Platform region" caption-side="bottom"}
 
 In **Figure 4**, Data residency is not required for `OrgC` and `OrgD`. In fact, `OrgD` now includes two peers, `OrgD-peer1` and `OrgD-peer2`, which reside in the *United States*. Therefore, in order for  `OrgA`, `OrgB` and their respective client applications and peers that reside in Germany to isolate the ledger data on channel `X`, a new channel `Y` is created for `OrgC` and `OrgD`.
 

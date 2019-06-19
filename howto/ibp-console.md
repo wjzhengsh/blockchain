@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-05-31"
+lastupdated: "2019-06-18"
 
 keywords: key features, build, operate, grow, architecture, multizone clusters
 
@@ -19,13 +19,13 @@ subcollection: blockchain
 {:tip: .tip}
 {:pre: .pre}
 
-# About {{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}}
+# About {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}}
 {: #ibp-console-overview}
 
-The {{site.data.keyword.blockchainfull}} Platform on {{site.data.keyword.cloud_notm}} is the next generation of {{site.data.keyword.blockchainfull_notm}} Platform offerings, which gives you total control over your deployments, certificates, and private keys. It includes the new {{site.data.keyword.blockchainfull_notm}} Platform console, a user interface that can simplify and accelerate the process of deploying components into an {{site.data.keyword.cloud_notm}} Kubernetes Service managed and controlled by you. For more information about Kubernetes and {{site.data.keyword.cloud_notm}} Kubernetes Service, see [Kubernetes](/docs/services/blockchain/reference/k8s.html).
+The {{site.data.keyword.blockchainfull}} Platform for {{site.data.keyword.cloud_notm}} is the next generation of {{site.data.keyword.blockchainfull_notm}} Platform offerings, which gives you total control over your deployments, certificates, and private keys. It includes the new {{site.data.keyword.blockchainfull_notm}} Platform console, a user interface that can simplify and accelerate the process of deploying components into an {{site.data.keyword.cloud_notm}} Kubernetes Service managed and controlled by you. For more information about Kubernetes and {{site.data.keyword.cloud_notm}} Kubernetes Service, see [Kubernetes](/docs/services/blockchain/reference/k8s.html).
 {:shortdesc}
 
-{{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}} is based on Hyperledger Fabric 1.4.1. For more information about Hyperledger Fabric 1.4.1 new features, see [What's new in 1.4](https://hyperledger-fabric.readthedocs.io/en/release-1.4/whatsnew.html){: external}.
+{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} is based on Hyperledger Fabric 1.4.1. For more information about Hyperledger Fabric 1.4.1 new features, see [What's new in 1.4](https://hyperledger-fabric.readthedocs.io/en/release-1.4/whatsnew.html){: external}.
 
 ## What the new release offers
 {: #ibp-console-overview-capabilities}
@@ -69,12 +69,13 @@ This offering is intended for experienced Fabric users who want to build and man
 
 Before you deploy the console, ensure that you understand the following considerations:
 
-- Because the availability of the beta trial and the generally available (GA) release of the {{site.data.keyword.blockchainfull_notm}} Platform will overlap, it is important to make sure you know what version of the {{site.data.keyword.blockchainfull_notm}} Platform you are using. New features and fixes will not be pushed to the beta, but they will be available in the GA version of the {{site.data.keyword.blockchainfull_notm}} Platform. As a result, if you are using the beta version of {{site.data.keyword.blockchainfull_notm}} Platform, it is likely that some panels in your console will not match the current documentation, which is kept up to date with the generally available service instance. To gain the benefits of all the latest functionality, you are encouraged at to provision a new GA service instance. To learn how to do that, see [Getting started with {{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}}](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks).
+- Because the availability of the beta trial and the generally available (GA) release of the {{site.data.keyword.blockchainfull_notm}} Platform will overlap, it is important to make sure you know what version of the {{site.data.keyword.blockchainfull_notm}} Platform you are using. New features and fixes will not be pushed to the beta, but they will be available in the GA version of the {{site.data.keyword.blockchainfull_notm}} Platform. As a result, if you are using the beta version of {{site.data.keyword.blockchainfull_notm}} Platform, it is likely that some panels in your console will not match the current documentation, which is kept up to date with the generally available service instance. To gain the benefits of all the latest functionality, you are encouraged at to provision a new GA service instance. To learn how to do that, see [Getting started with {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}}](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks).
 - All peers deployed with this release use CouchDB as their state database.
 - You are responsible for the management of health monitoring, security, and logging of your Kubernetes cluster. See this [information](https://cloud.ibm.com/docs/containers/cs_responsibilities.html#your-responsibilities-by-using-ibm-cloud-kubernetes-service){: external} for details on what {{site.data.keyword.cloud_notm}} manages and what you are responsible for.
 - You are also responsible for monitoring the resource usage of your Kubernetes cluster. To monitor your Kubernetes resources, we recommend using the [{{site.data.keyword.cloud_notm}} SysDig](https://www.ibm.com/cloud/sysdig){: external} tool in combination with your {{site.data.keyword.cloud_notm}} Kubernetes dashboard. If you need to increase storage capacity or performance of your cluster, see this information on how to [modify your existing volume](https://cloud.ibm.com/docs/containers/cs_storage_file.html#change_storage_configuration){: external}.
 - You are responsible for managing and securing your certificates and private keys. {{site.data.keyword.IBM_notm}} does not store your certificates in the Kubernetes cluster or in the console. They are only kept in the local storage of your browser. If you switch browsers, you will have to import your created identities into that browser.
 - {{site.data.keyword.blockchainfull_notm}} Platform is available in select regions. Refer to this topic on [{{site.data.keyword.blockchainfull_notm}} Platform locations](/docs/services/blockchain/howto?topic=blockchain-ibp-regions-locations) for an updated list.
+- {{site.data.keyword.blockchainfull_notm}} Platform cannot be deployed on OpenShift clusters created using the {{site.data.keyword.IBM_notm}} Kubernetes service.
 - Kubernetes must be version 1.11 or a higher stable version in your {{site.data.keyword.cloud_notm}} Kubernetes cluster. Use these instructions to [upgrade your new and existing clusters](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks-updating-kubernetes) to this version.
 - If you do not want to use the default Bronze File storage that is pre-selected for you when you provision a Kubernetes cluster in {{site.data.keyword.cloud_notm}}, you can provision storage of your choice. See this topic on [Persistent storage considerations](/docs/services/blockchain?topic=blockchain-ibp-v2-deploy-iks#ibp-console-storage) to learn more.
 - If decide to include {{site.data.keyword.cloud_notm}} multi-zone support in your Kubernetes cluster, you must provision your own storage. See [Using Multizone (MZR) clusters with {{site.data.keyword.blockchainfull_notm}} Platform](/docs/services/blockchain?topic=blockchain-ibp-v2-deploy-iks#ibp-console-mzr) for more details.
@@ -83,19 +84,19 @@ Before you deploy the console, ensure that you understand the following consider
 ## Migration
 {: #ibp-console-overview-migration}
 
-Currently, migration from any {{site.data.keyword.blockchainfull_notm}} platform offering to the {{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}} is not possible.
+Currently, migration from any {{site.data.keyword.blockchainfull_notm}} platform offering to the {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} is not possible.
 
 All {{site.data.keyword.blockchainfull_notm}} platform beta trial service instances cannot be migrated to the Generally Available (GA) release.
 
 ## License and pricing
 {: #ibp-console-overview-license-and-pricing}
 
-{{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}} introduces a new hourly pricing model based on virtual processor core (VPC) usage. The simplified model is based on the amount of CPU (or VPC) that your {{site.data.keyword.blockchainfull_notm}} Platform nodes consume on an hourly basis, at a flat rate of **$0.29 USD/VPC-hour**, where **1 VPC = 1 CPU**. See this topic on [Pricing](/docs/services/blockchain?topic=blockchain-ibp-console-overview) for more details.
+{{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}} introduces a new hourly pricing model based on virtual processor core (VPC) usage. The simplified model is based on the amount of CPU (or VPC) that your {{site.data.keyword.blockchainfull_notm}} Platform nodes consume on an hourly basis, at a flat rate of **$0.29 USD/VPC-hour**, where **1 VPC = 1 CPU**. See this topic on [Pricing](/docs/services/blockchain?topic=blockchain-ibp-saas-pricing) for more details.
 
 ## Getting started
 {: #ibp-console-overview-deploy}
 
-For information about how to deploy {{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}}, see [Getting started with {{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}}](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks).
+For information about how to deploy {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}}, see [Getting started with {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}}](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks).
 
 For more information about how to use the console to start deploying nodes and building consortium, see the [Building your network](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network) tutorial. This tutorial guides you through the process of using the console to create a sample network with three organizations, one ordering organization, two peer organizations, and a channel with two peers joined to it. You can use this sample network to for demos or proofs of concept or adjust and expand the steps in the tutorial to create your own custom blockchain configuration.
 
@@ -103,8 +104,7 @@ For more information about how to use the console to start deploying nodes and b
 {: #ibp-console-overview-architecture}
 
 The following illustration shows the components of your blockchain network and how they interact.
-![Sample network structure](../images/IBP_V2_Architecture.png "Archtecture reference")
-*Figure 1. Architecture reference*
+![Sample network structure](../images/IBP_V2_Architecture.svg "Archtecture reference"){: caption="Figure 1. Architecture reference" caption-side="bottom"}
 
 Notice how a single instance of the console, also known as Operational Tooling, is created for each {{site.data.keyword.blockchainfull_notm}} Platform Service Instance. When a peer, orderer or CA node is deployed by using the console, it is deployed into the **Kubernetes Cluster Service Instance**.
 
@@ -124,6 +124,6 @@ Notice how a single instance of the console, also known as Operational Tooling, 
 ## Getting support
 {: #ibp-console-overview-support}
 
-For more information about how to get support on {{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}}, as well as free blockchain developer resources and support forums that you can use to troubleshoot problems, see [Getting support](/docs/services/blockchain/ibmblockchain_support.html#blockchain-support).
+For more information about how to get support on {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}}, as well as free blockchain developer resources and support forums that you can use to troubleshoot problems, see [Getting support](/docs/services/blockchain/ibmblockchain_support.html#blockchain-support).
 
 Support for the {{site.data.keyword.blockchainfull_notm}} Platform beta trial is limited during the beta period that ends August 3, 2019.

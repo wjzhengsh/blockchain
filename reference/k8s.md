@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-05-16"
+lastupdated: "2019-06-18"
 
 subcollection: blockchain
 
@@ -27,8 +27,7 @@ Kubernetes provides a container-centric management environment. It orchestrates 
 
 The following diagram explains the architecture of Kubernetes. For more explanation about nodes, containers, and pod, see the [Key Kubernetes objects](#k8s-overview-key-obj) section below.
 
-![Kubernetes architecture diagram](../images/k8s-archi-diagram.svg "{{site.data.keyword.cloud_notm}} Kubernetes Service architecture")
-*Figure 1. Kubernetes architecture diagram*
+![Kubernetes architecture diagram](../images/k8s-archi-diagram.svg "{{site.data.keyword.cloud_notm}} Kubernetes Service architecture"){: caption="Figure 1. Kubernetes architecture diagram" caption-side="bottom"}
 
 
 ## {{site.data.keyword.cloud_notm}} Kubernetes Service

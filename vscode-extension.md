@@ -2,7 +2,7 @@
 
 copyright:
   years: 2017, 2019
-lastupdated: "2019-05-31"
+lastupdated: "2019-06-18"
 
 keywords: vs code extension, Visual Studio Code extension, smart contract, development tools
 
@@ -25,8 +25,7 @@ subcollection: blockchain
 
 The {{site.data.keyword.blockchainfull}} Platform Visual Studio (VS) Code extension provides an environment within Visual Studio Code for developing, packaging, and testing smart contracts. You can use the extension to create your smart contract project and get started developing your business logic. You can then use VS Code to test your smart contract on your local machine by using a preconfigured instance of Hyperledger Fabric before you deploy the smart contract to the {{site.data.keyword.blockchainfull_notm}} Platform. This tutorial describes how to use the VS Code extension.
 
-![Typical smart contract development workflow](images/SmartContractflow.png "Typical smart contract development workflow")
-*Figure 1. Typical smart contract development workflow with {{site.data.keyword.blockchainfull_notm}} Platform VS Code extension*  
+![Typical smart contract development workflow](images/SmartContractflow.png "Typical smart contract development workflow"){: caption="Figure 1. Typical smart contract development workflow with {{site.data.keyword.blockchainfull_notm}} Platform VS Code extension" caption-side="bottom"}  
 
 <!--
 <img usemap="#home_map1" border="0" class="image" id="image_ztx_crb_f1b2" src="images/SmartContractflow.png" width="750" alt="Click a box to get more details on the process." style="width:750px;" />
@@ -50,16 +49,21 @@ Before you install the {{site.data.keyword.blockchainfull_notm}} Platform VS Cod
 ### Prerequisites
 {: #develop-vscode-prerequisites}
 
-- **Install Visual Studio Code**  
-  Install the [Visual Studio](https://code.visualstudio.com/) code editor.  
-- **Install Yeoman**  
-  Yeoman is a generator tool that you can use to create skeleton smart contract projects. Install Yeoman by using the following command: `npm install -g yo`.  
-- **Install Docker**  
-  To run the preconfigured instance of Hyperledger Fabric, ensure you have installed [Docker](https://www.docker.com/){: external}.  
-- **Operating system requirements**  
-  Currently, this extension is compatible with Mac, Windows, and Linux.  
-- **Hyperledger Fabric version requirements**  
-  This extension is compatible with Hyperledger Fabric versions 1.4.0 and later.  
+- Windows 10, Linux, or Mac OS are currently the supported operating systems.
+- [VS Code version 1.32 or greater](https://code.visualstudio.com/){: external}.
+- [Node v8.x or greater and npm v5.x or greater](https://nodejs.org/en/download/){: external}.
+- [Docker version v17.06.2-ce or greater](https://www.docker.com/get-started){: external}.
+- [Docker Compose v1.14.0 or greater](https://docs.docker.com/compose/install/){: external}.
+- [Go version v1.12 or greater for developing Go contracts](https://golang.org/dl/){: external}.
+
+If you are using Windows, you also must ensure the following:
+
+- Docker for Windows is configured to use Linux containers (this is the default).
+- You have installed the C++ Build Tools for Windows from [windows-build-tools](https://github.com/felixrieseberg/windows-build-tools#windows-build-tools){: external}.
+- You have installed OpenSSL v1.0.2 from [Win32 OpenSSL](http://slproweb.com/products/Win32OpenSSL.html){: external}.
+  - Install the normal version, not the version marked as "light".
+  - Install the Win32 version into C:\OpenSSL-Win32 on 32-bit systems.
+  - Install the Win64 version into C:\OpenSSL-Win64 on 64-bit systems.
 
 ### Install the extension
 {: #develop-vscode-installing-the-extension}
@@ -70,9 +74,7 @@ Before you install the {{site.data.keyword.blockchainfull_notm}} Platform VS Cod
 
 After the installation, you can use the {{site.data.keyword.blockchainfull_notm}} icon on the left side of VS Code to open the {{site.data.keyword.blockchainfull_notm}} Platform panel.
 
-**Figure 1. IBM Blockchain icon in VS Code**
-
-![IBM Blockchain icon](images/vscode-blockchain.png "IBM Blockchain icon")
+![{{site.data.keyword.blockchainfull_notm}} icon](images/vscode-blockchain.png "{{site.data.keyword.blockchainfull_notm}} icon"){: caption="Figure 2. {{site.data.keyword.blockchainfull_notm}} icon in VS Code" caption-side="bottom"}
 
 The extension also adds new commands to the Visual Studio Code command palette. You can use the command palette to complete many of the operations that are explained in details in this guide.
 
@@ -234,11 +236,11 @@ After the test file is built, the tests can be run by clicking the **Run Tests**
 ## Step seven: Connect to your {{site.data.keyword.blockchainfull_notm}} Platform network
 {: #develop-vscode-connecting-ibp}
 
-You can also use the extension to connect to the {{site.data.keyword.blockchainfull_notm}} Platform and invoke any smart contracts that are installed and instantiated by using the {{site.data.keyword.blockchainfull_notm}} Platform console UI.
+You can also use the extension to connect to your {{site.data.keyword.blockchainfull_notm}} Platform that is running on {{site.data.keyword.cloud_notm}} or {{site.data.keyword.cloud_notm}} Private and invoke any smart contracts that are installed and instantiated by using the {{site.data.keyword.blockchainfull_notm}} Platform console UI.
 
 Open the {{site.data.keyword.blockchainfull_notm}} Platform console that is associated with your instance of the {{site.data.keyword.blockchainfull_notm}} Platform. Navigate to the **Smart Contracts** tab. Use the **Instantiated Smart Contracts** table on the smart contracts tab to download your [connection profile](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-profile) to your local file system. Then, [create an application identity](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-identities) by using your CA and save the enrollID and secret. Follow the steps below to connect to the {{site.data.keyword.blockchainfull_notm}} Platform from VS Code.
 
-1. Open the _{{site.data.keyword.blockchainfull_notm}} Platform_ tab.
+1. Open the **{{site.data.keyword.blockchainfull_notm}} Platform** tab.
 2. In the **Fabric Gateways** pane, click **+**.
 3. Enter a name for the connection.
 4. Enter the fully qualified file path of your connection profile. Your connection should now appear in the connections list underneath **local_fabric**.

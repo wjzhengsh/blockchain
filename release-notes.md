@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-05-31"
+lastupdated: "2019-06-18"
 
 keywords: release note, latest changes, Hyperledger Fabric
 
@@ -20,9 +20,14 @@ subcollection: blockchain
 # Release notes
 {: #release-notes-saas-20}
 
-Use these release notes that are grouped by date to learn about the latest changes to {{site.data.keyword.blockchainfull}} Platform on {{site.data.keyword.cloud_notm}} which is built on Hyperledger Fabric v1.4.1.
+Use these release notes that are grouped by date to learn about the latest changes to {{site.data.keyword.blockchainfull}} Platform for {{site.data.keyword.cloud_notm}} which is built on Hyperledger Fabric v1.4.1.
 {:shortdesc}
 
+
+## 24 May 2019
+{: #05-24-2019}
+
+**Raft consensus protocol** The five node Raft ordering service, recommended for production networks, is now available. In addition, for development and testing purposes, you can deploy a single node Raft ordering service.
 
 ## 9 May 2019
 {: #05-09-2019}

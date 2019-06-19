@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-05-31"
+lastupdated: "2019-06-18"
 
 keywords: getting started tutorials, create a CA, enroll, register, create an MSP, wallet, create a peer, create ordering service, Raft
 
@@ -22,24 +22,26 @@ subcollection: blockchain
 # Build a network tutorial
 {: #ibp-console-build-network}
 
-{{site.data.keyword.blockchainfull}} Platform is a blockchain-as-a-service offering that enables you to develop, deploy, and operate blockchain applications and networks. You can learn more about blockchain components and how they work together by visiting the [Blockchain component overview](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview). This tutorial is the first part in the [sample network tutorial series](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-sample-tutorial) and describes how to use the {{site.data.keyword.blockchainfull_notm}} Platform console to build a fully functional network on a single {{site.data.keyword.cloud_notm}} Kubernetes Service.
+{{site.data.keyword.blockchainfull}} Platform is a blockchain-as-a-service offering that enables you to develop, deploy, and operate blockchain applications and networks. You can learn more about blockchain components and how they work together by visiting the [Blockchain component overview](/docs/services/blockchain/blockchain_component_overview.html#blockchain-component-overview). This tutorial is the first part in the [sample network tutorial series](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-sample-tutorial) and describes how to use the {{site.data.keyword.blockchainfull_notm}} Platform console to build a fully functional network on Kubernetes cluster deployed into the cloud infrastructure of our choosing.
 {:shortdesc}
 
-If you are using the beta trial version of {{site.data.keyword.blockchainfull_notm}} Platform, it is likely that some panels in your console will not match the current documentation, which is kept up to date with the generally available (GA) service instance. If you have a beta service instance and want to gain the benefits of all the latest functionality, you are encouraged at this time to provision a GA service instance by following instructions in [Getting started with {{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}}](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks).
+
+If you are using the beta trial version of {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}}, it is likely that some panels in your console will not match the current documentation, which is kept up to date with the generally available (GA) service instance. If you have a beta service instance and want to gain the benefits of all the latest functionality, you are encouraged at this time to provision a GA service instance by following instructions in [Getting started with {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}}](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks).
 {: important}
 
 **Target audience:** This topic is designed for network operators who are responsible for creating, monitoring, and managing the blockchain network.
 
-If you have not already used the {{site.data.keyword.blockchainfull_notm}} Platform console to deploy components to a Kubernetes cluster by using {{site.data.keyword.cloud_notm}} Kubernetes Service, see [Getting started with {{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}}](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks). Note that the console itself does not reside in your cluster. It is a tool you can use to deploy components into your cluster.
+If you have not already used the {{site.data.keyword.blockchainfull_notm}} Platform console to deploy components to a Kubernetes cluster by using {{site.data.keyword.cloud_notm}} Kubernetes Service, see [Getting started with {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}}](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks), if you are using an {{site.data.keyword.cloud_notm}} cluster, or [Getting started with {{site.data.keyword.blockchainfull_notm}} Platform for Multicloud](/docs/services/blockchain/get-started-console-icp.html#get-started-console-icp), if you are using {{site.data.keyword.cloud_notm}} Private to deploy on a cloud provider other than {{site.data.keyword.cloud_notm}}. Note that the console itself does not reside in your cluster. It is a tool you can use to deploy components into your cluster.
 
-
-Whether you deploy components to a paid or free Kubernetes cluster, use the Kubernetes dashboard to pay close attention to the resources at your disposal when you choose to deploy nodes and create channels. It is your responsibility to manage your Kubernetes cluster and deploy additional resources if necessary. While components will successfully deploy to a free cluster, the more components you add, the slower your components will run. For more information about component sizings and how the console interacts with your Kubernetes cluster, see [Allocating resources](/docs/services/blockchain/howto/ibp-console-govern.html#ibp-console-govern-iks-console-interaction).
-{: note}
+Whether you deploy components to a paid or free Kubernetes cluster, pay close attention to the resources at your disposal when you choose to deploy nodes and create channels. It is your responsibility to manage your Kubernetes cluster and deploy additional resources if necessary. While components will successfully deploy to an {{site.data.keyword.cloud_notm}} free cluster, the more components you add, the slower your components will run. For more information about component sizings and how the console interacts with your {{site.data.keyword.cloud_notm}} Kubernetes Service cluster, see [Allocating resources](/docs/services/blockchain/howto/ibp-console-govern.html#ibp-console-govern-iks-console-interaction). If you are using {{site.data.keyword.cloud_notm}} Private to deploy onto a different cloud provider, you will have to consult the documentation for that provider to learn how to monitor your resources there.
 
 ## Sample network tutorial series
 {: #ibp-console-build-network-sample-tutorial}
 
-This three-part tutorial series guides you through the process of creating and interconnecting a relatively simple, multi-node Hyperledger Fabric network by using the {{site.data.keyword.blockchainfull_notm}} Platform console to deploy a network into your Kubernetes cluster and install and instantiate a smart contract. Note that while this tutorial will show how this process works with a paid Kubernetes cluster, the same basic flow applies to free clusters, albeit with a few limitations (for example, you cannot size or resize nodes in a free cluster).
+This three-part tutorial series guides you through the process of creating and interconnecting a relatively simple, multi-node Hyperledger Fabric network by using the {{site.data.keyword.blockchainfull_notm}} Platform console to deploy a network into your Kubernetes cluster and install and instantiate a smart contract. Note that while this tutorial will show how this process works with a paid {{site.data.keyword.cloud_notm}} Kubernetes cluster, the same basic flow applies to free clusters, albeit with a few limitations (for example, you cannot size or resize nodes in a free cluster).
+
+The process for creating and managing components described in these tutorials also applies to deployments on other cloud providers using {{site.data.keyword.cloud_notm}} Private.
+{: important}
 
 * **Build a network tutorial** This tutorial guides you through the process of hosting a network by creating two organizations, one for your peer and another for your ordering service, and a channel. Use this tutorial if you want to form a blockchain consortium by creating an ordering service and adding organizations.
 * [Join a network tutorial](/docs/services/blockchain/howto/ibp-console-join-network.html#ibp-console-join-network) guides you through the process of joining an existing network by creating a peer and joining it to an existing channel. Use this tutorial if you either do not intend to host a network by creating an ordering service, or want to learn the process for joining other networks.
@@ -50,8 +52,8 @@ This three-part tutorial series guides you through the process of creating and i
 {: #ibp-console-build-network-structure}
 
 If you complete all the steps in the **Build a network** and **Join a network** tutorials, your network will resemble the one in the illustration below:
-![Sample basic network structure](../images/ibp-v2-build-network.png "Sample basic network structure")
-*Figure 1. Sample basic network structure*  
+
+![Sample basic network structure](../images/ibp-v2-build-network.svg "Sample basic network structure"){: caption="Figure 1. Sample basic network structure" caption-side="bottom"}
 
 This configuration is sufficient both for testing applications and smart contracts and as a guide for building components and joining production networks that will suit your own use case. The network contains the following components:
 
@@ -71,8 +73,7 @@ This configuration is sufficient both for testing applications and smart contrac
 This configuration isn't mandatory. The {{site.data.keyword.blockchainfull_notm}} Platform is highly customizable. If you have resources available in your Kubernetes cluster, you can use the console to deploy components in an endless array of configurations. This tutorial provides the steps you need to build your own network, with references to topics that provide a deeper dive into the {{site.data.keyword.blockchainfull_notm}} Platform and the console.
 
 In this **Build a network** tutorial, we build only a portion of the network above, a simple network that can be used to host an ordering service and a single peer organization and peer on a single channel. The following illustration shows the portion of the network above that we will build:
-![Simple network structure](../images/ibp2-simple-network.png "Simple network structure")  
-*Figure 2. Simple network structure*  
+![Simple network structure](../images/ibp2-simple-network.svg "Simple network structure"){: caption="Figure 2. Simple network structure" caption-side="bottom"}
 
 This configuration is useful for quickly getting started and testing a smart contract but is not very meaningful until you add other organizations to transact with, creating a truly distributed network. Therefore, in the subsequent [Join a network](/docs/services/blockchain/howto/ibp-console-join-network.html#ibp-console-join-network) tutorial, we show you how to create additional peer organizations and peers, and how to add a new organization to the channel.
 
@@ -84,8 +85,7 @@ Throughout this tutorial we supply **recommended values** for the fields in the 
 
 For each organization that you want to create with the console, you should deploy at least one CA. A CA is the node that issues certificates to all network participants (peers, ordering services, clients, admins, and so on). These certificates, which include a signing certificate and private key, allow network participants to communicate, authenticate, and ultimately transact. These CAs will create all of the identities and certificates that belong to your organization, in addition to defining the organization itself. You can then use those identities to deploy nodes, create admin identities, and submit transactions. For more information about your CA and the identities that you will need to create, see [Managing identities](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities).
 
-In this tutorial, we create two organizations, one of which will own a peer and another will own an ordering service. Each organization needs a CA to issue its certificates, therefore we need to create **two CAs**. For the purpose of this tutorial, **we will create only one CA at a time**.
-
+In this tutorial, we create two organizations, one which will own a peer and another which will own an ordering service. Each organization needs a CA to issue its certificates, therefore we need to create **two CAs**. For the purpose of this tutorial, **we will create only one CA at a time**.
 
 Watch the following [video](http://ibm.biz/BlockchainPlatformSeries2){: external} to learn about the process to create the peer's organization and the peer.
 
@@ -99,10 +99,10 @@ As part of this tutorial, your CA issues the certificates and private keys for y
 To create the CA that will issue certificates for your first organization, perform the following steps in your console:
 
 1. Navigate to the **Nodes** tab on the left and click **Add Certificate Authority**. The side panels will allow you to customize the CA that you want to create and the organization that this CA will issue keys for.
-2. Click **Create an {{site.data.keyword.cloud_notm}} Certificate Authority** and **Next**.
+2. In this tutorial, we're creating nodes, so make sure the option to **Create** a Certificate Authority is selected. Then click **Next**.
 3. Use the second side panel to give your CA a **display name**. Our recommended value for this CA is `Org1 CA`.
 4. On the next panel, give your CA admin credentials by specifying a **CA administrator enroll ID** of `admin` and a secret of `adminpw`. Again, these are **recommended values**.
-5. If you are using a paid cluster, you have the opportunity to configure resource allocation for the node. For purposes of this tutorial, accept all the defaults and click **Next**. If you want to learn more about how to allocate resources to your node, see this topic on [Allocating resources](/docs/services/blockchain?topic=blockchain-ibp-console-govern#ibp-console-govern-allocate-resources). If you are using a free cluster, you will see the **Summary** page.
+5. If you are using a paid cluster, you have the opportunity to configure resource allocation for the node. For purposes of this tutorial, accept all the defaults and click **Next**. If you want to learn more about how to allocate resources in {{site.data.keyword.cloud_notm}} for your node, see this topic on [Allocating resources](/docs/services/blockchain?topic=blockchain-ibp-console-govern#ibp-console-govern-allocate-resources). If you are using a free cluster, you will see the **Summary** page.
 6. Review the Summary page, then click **Add certificate authority**.
 
 **Task: Creating the peer organization CA**
@@ -204,12 +204,12 @@ From a resource allocation perspective, it is possible to join the same peers to
 Use your console to perform the following steps:
 
 1. On the **Nodes** page, click **Add peer**.
-2. Click **Create an {{site.data.keyword.cloud_notm}} peer** and **Next**.
-3. Give your peer a **Display name** of `Peer Org1`.
+2. Make sure the option to **Create** a peer is selected. Then click **Next**.
+3. Give your peer a **Display name** of `Peer Org1`. For the purpose of this tutorial, do not choose to use an external CA for your peer, though if you want more information, see [Using certificates from an external CA](#ibp-console-build-network-third-party-ca). Click **Next**.
 4. On the next screen, select `Org1 CA`, as this is the CA you used to register the peer identity. Select the **Enroll ID** for the peer identity that you created for your peer from the drop-down list, `peer1`, and enter its associated **secret**, `peer1pw`. Then, select `Org1 MSP` from the drop-down list and click **Next**.
 5. The next side panel asks for TLS CA information. When you created the CA, a TLSCA was created alongside it. This CA is used to create certificates for the secure communication layer for nodes. Therefore, select the **Enroll ID** for the peer identity that you created for your peer from the drop-down list, `peer1`, and enter the associated **secret**, `peer1pw`. The **TLS Certificate Signing Request (CSR) hostname** is an option available to advanced users who want specify a custom domain name that can be used to address the peer endpoint. Custom domain names are not a part of this tutorial, so leave the **TLS CSR hostname** blank for now.
-6. The next side panel asks you to **Associate an identity** to make it the admin of your peer. For the purpose of this tutorial, make your organization admin, `Org1 Admin`, the admin of your peer as well. It is possible to register and enroll a different identity with the `Org1 CA` and make that identity the admin of your peer, but this tutorial uses the `Org1 Admin` identity.
-7. If you are using a paid cluster, on the next panel, you have the opportunity to configure resource allocation for the node. For purposes of this tutorial, you can accept all the defaults and click **Next**. If you want to learn more about how to allocate resources to your node, see this topic on [Allocating resources](/docs/services/blockchain?topic=blockchain-ibp-console-govern#ibp-console-govern-allocate-resources). If you are using a free cluster, you see the **Summary** page.
+6. If you are using a paid cluster, on the next panel, you have the opportunity to configure resource allocation for the node. For purposes of this tutorial, you can accept all the defaults and click **Next**. If you want to learn more about how to allocate resources in {{site.data.keyword.cloud_notm}} for your node, see this topic on [Allocating resources](/docs/services/blockchain?topic=blockchain-ibp-console-govern#ibp-console-govern-allocate-resources). If you are using a free {{site.data.keyword.cloud_notm}} cluster, you will see the **Associate an identity** panel.
+7. The last side panel asks you to **Associate an identity** to make it the admin of your peer. For the purpose of this tutorial, make your organization admin, `Org1 Admin`, the admin of your peer as well. It is possible to register and enroll a different identity with the `Org1 CA` and make that identity the admin of your peer, but this tutorial uses the `Org1 Admin` identity.
 8. Review the summary and click **Add peer**.
 
 **Task: Deploying a peer**
@@ -267,10 +267,10 @@ In this tutorial, we will create a five node ordering service.
 The process for creating a CA for an ordering service is identical to creating it for a peer.
 
 1. Navigate to the **Nodes** tab and click **Add Certificate Authority**.
-2. Click **Create an {{site.data.keyword.cloud_notm}} Certificate Authority** and **Next**
+2. In this tutorial, we're creating nodes, so make sure the option to **Create** a Certificate Authority is selected. Then click **Next**
 3. Give this CA a unique display name, `Ordering Service CA`.
 4. You're free to reuse the **CA administrator enroll ID** of `admin` and a secret of `adminpw`. As this is a different CA, this identity is distinct from the CA admin identity for created for the `Org1 CA`, even though the ID and secret are identical.
-5. If you are using a paid cluster, on the next panel, you have the opportunity to configure resource allocation for the CA. For purposes of this tutorial, accept all the defaults and click **Next**. If you want to learn more about how to allocate resources to your node, see this topic on [Allocating resources](/docs/services/blockchain?topic=blockchain-ibp-console-govern#ibp-console-govern-allocate-resources).  If you are using a free cluster, you will see the **Summary** page.
+5. If you are using a paid cluster, on the next panel, you have the opportunity to configure resource allocation for the CA. For purposes of this tutorial, accept all the defaults and click **Next**. If you want to learn more about how to allocate resources to {{site.data.keyword.cloud_notm}} for your node, see this topic on [Allocating resources](/docs/services/blockchain?topic=blockchain-ibp-console-govern#ibp-console-govern-allocate-resources). If you are using a free cluster, you will see the **Summary** page.
 6. Review the Summary page, then click **Add certificate authority**.
 
 As with the peer, advanced users may already have their own CA and not want to create a new CA using the console. If your existing CA can issue certificates in `X.509` format, you can use your own external CA instead of creating a new one here. See this topic on [Using certificates from an external CA with your peer or ordering service](/docs/services/blockchain/howto/ibp-console-build-network.html#ibp-console-build-network-third-party-ca) for more information.
@@ -278,7 +278,7 @@ As with the peer, advanced users may already have their own CA and not want to c
 ### Using your CA to register ordering service node and ordering service admin identities
 {: #ibp-console-build-network-use-CA-orderer}
 
-As we did with the peer, we need to register two identities with our ordering service CA.  After selecting your CA, you will need to register an admin for our ordering service organization and an identity for the ordering service itself. As before, you should see an identity on the `Ordering Service CA` tab; it's the admin that you created for the CA.
+As we did with the peer, we need to register two identities with our ordering service CA. After selecting your CA, you will need to register an admin for our ordering service organization and an identity for the ordering service itself. As before, you should see an identity on the `Ordering Service CA` tab; it's the admin that you created for the CA.
 
 Depending on your cluster type, deployment of the CA can take up to ten minutes. When the CA is first deployed (or when the CA is otherwise unavailable), the box in the tile for the CA will be grey box. When the CA has successfully deployed and is running, this box will be green, indicating that it is "Running" and can be used to register identities. Before proceeding with the steps below to register identities, you must wait until the CA status is "Running".
 {:important}
@@ -288,7 +288,7 @@ Once the CA is running, as indicated by the green box in the tile for the `Order
 1. Click on the `Ordering Service CA` in the **Nodes** tab and ensure the `admin` identity that you created for the CA is visible in the table. Then click the **Register User** button.
 2. First we'll register the organization admin, which we can do by giving an **Enroll ID** of `OSadmin` and a **secret** of `OSadminpw`. Then set the `Type` for this identity as `client` (admin identities should always be registered as `client`, while node identities should always be registered using the `peer` type). You can ignore the **Maximum enrollments** field. If you want to learn more about enrollments, see [Registering identities](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-register). Click **Next**.
 3. For the purpose of this tutorial, we do not need to use **Add Attribute**. If you want to learn more about identity attributes, see [Registering identities](/docs/services/blockchain/howto/ibp-console-identities.html#ibp-console-identities-register).
-4. 5. After the organization admin has been registered, repeat this same process for the identity of the ordering service (also using the `Ordering Service CA`). For the ordering service node identities, give an enroll ID of `OS1` and a secret of `OS1pw`. This is a node identity, so select `peer` as the **Type**. You can ignore the **Maximum enrollments** field and, on the next panel, do not assign any **Attributes**, as before.
+4. After the organization admin has been registered, repeat this same process for the identity of the ordering service (also using the `Ordering Service CA`). For the ordering service node identities, give an enroll ID of `OS1` and a secret of `OS1pw`. This is a node identity, so select `peer` as the **Type**. You can ignore the **Maximum enrollments** field and, on the next panel, do not assign any **Attributes**, as before.
 
 **Task: Create a CA and register users**
 
@@ -348,13 +348,13 @@ Exporting your organization admin identity is important because you are responsi
 Perform the following steps from your console:
 
 1. On the **Nodes** page, click **Add ordering service**.
-2. Click **Create an {{site.data.keyword.cloud_notm}} Ordering service** and click **Next**.
-3. Give your ordering service a **Display name** of `Ordering Service` and, if in a paid cluster, choose whether you want your ordering service to have one node (sufficient for testing) or five nodes (good for production). Choose **five nodes**. And do not choose to use an external CA. This is an advanced option.
-4. On the next panel, select `Ordering Service CA` as your CA. Then, select the **enroll ID** for the node identity that you created for your ordering service from the drop-down list, `OS1`, and enter the associated **secret**, `OS1pw`. Then, select your MSP, `Ordering Service MSP` from the drop-down list. For the purpose of this tutorial, do not choose to use an external CA for your ordering service, though if you want more information, see [Using certificates from an external CA](#ibp-console-build-network-third-party-ca). Click **Next**.
+2. Make sure the option to **Create** an ordering service is selected. Then click **Next**.
+3. Give your ordering service a **Display name** of `Ordering Service` and, if in a paid cluster, choose whether you want your ordering service to have one node (sufficient for testing) or five nodes (good for production). Choose **five nodes**. And do not choose to use an external CA. This is an advanced option. For the purpose of this tutorial, do not choose to use an external CA for your ordering service, though if you want more information, see [Using certificates from an external CA](#ibp-console-build-network-third-party-ca). Click **Next**.
+4. On the next panel, select `Ordering Service CA` as your CA. Then, select the **enroll ID** for the node identity that you created for your ordering service from the drop-down list, `OS1`, and enter the associated **secret**, `OS1pw`. Then, select your MSP, `Ordering Service MSP` from the drop-down list.
 5. The next side panel asks for TLS CA information. When you created the CA, a TLS CA was created alongside it. This CA is used to create certificates for the secure communication layer for nodes. Therefore, select the **enroll ID** for the ordering service identity that you created from the drop-down list, `OS1`, and enter its associated **secret**, `OS1pw`. The **TLS Certificate Signing Request (CSR) hostname** is an option available to advanced users who want specify a custom domain name that can be used to address the ordering service endpoint. Custom domain names are not a part of this tutorial, so leave the **TLS CSR hostname** blank for now.
-6. The **Associate identity** step allows you to choose an admin for your ordering service. Select `Ordering Service Admin` as before and click **Next**.
-7. If you are using a paid cluster, on the next panel, you have the opportunity to configure resource allocation for the node. For purposes of this tutorial, you can accept all the defaults and click **Next**. The selections you make here are applied to all five ordering nodes. If you want to learn more about how to allocate resources to your node, see this topic on [Allocating resources](/docs/services/blockchain?topic=blockchain-ibp-console-govern#ibp-console-govern-allocate-resources).
-7. Review the Summary page and click **Add ordering service**.
+6. If you are using a paid cluster, on the next panel, you have the opportunity to configure resource allocation for the node. For purposes of this tutorial, you can accept all the defaults and click **Next**. The selections you make here are applied to all five ordering nodes. If you want to learn more about how to allocate resources in {{site.data.keyword.cloud_notm}} for your node, see this topic on [Allocating resources](/docs/services/blockchain?topic=blockchain-ibp-console-govern#ibp-console-govern-allocate-resources).
+7. The **Associate identity** step allows you to choose an admin for your ordering service. Select `Ordering Service Admin` as before and click **Next**.
+8. Review the Summary page and click **Add ordering service**.
 
 **Task: Create an ordering service**
 
@@ -518,12 +518,12 @@ Now that you have gathered all the necessary certificates, you are ready to crea
 ### Option 2: Create a five node ordering service using certificates from an external CA
 {: #ibp-console-build-network-create-five-node}
 
-When you have a paid Kubernetes cluster, you have the additional option of deploying a five node ordering service that uses the Raft consensus protocol.  Before you deploy a five node ordering service, you need to build a JSON file that contains all of the certificates for the five nodes.
+When you have a paid {{site.data.keyword.cloud_notm}} Kubernetes Service cluster or are using a cluster hosted on another cloud provider using {{site.data.keyword.cloud_notm}} Private, you have the additional option of deploying a five node ordering service that uses the Raft consensus protocol.  Before you deploy a five node ordering service, you need to build a JSON file that contains all of the certificates for the five nodes by using the following instructions:
 
 #### Create the certificates JSON file
 {: #ibp-console-build-network-create-certs-file}
 
-The required certificates JSON file contains an array of five `msp` entries, where each array element contains the certificates for one of the ordering nodes. Under normal circumstances, each node would use the exact same set of certificates. But, you also have the option to specify different certificates for each node. The certificates in the `component` section represent the certificates for the node itself, while the `tls` section includes the certificates issued by the TLS CA.  
+The required certificates JSON file contains an array of five `msp` entries, where each array element contains the certificates for one of the ordering nodes.  You must specify unique certificates for each node, do not reuse certificates across the different ordering nodes. The certificates in the `component` section represent the certificates for the node itself, while the `tls` section includes the certificates issued by the TLS CA.  
 
 - **keystore**: The private key for this node
 - **signcerts**: The public key (also known as a signing certificate or enrollment certificate) assigned by the CA for this node.

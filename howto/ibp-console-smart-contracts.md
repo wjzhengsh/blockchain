@@ -2,7 +2,7 @@
 
 copyright:
   years: 2019
-lastupdated: "2019-05-31"
+lastupdated: "2019-06-18"
 
 keywords: smart contract, private data, private data collection, anchor peer
 
@@ -25,7 +25,7 @@ subcollection: blockchain
 A smart contract is the code, sometimes referred to as chaincode, that allows you to read and update data on the blockchain ledger. A smart contract can turn business logic into an executable program agreed to and verified by all members of a blockchain network. This tutorial is the third part in the [sample network tutorial series](#ibp-console-smart-contracts-structure) and describes how to deploy smart contracts to start transactions in the blockchain network.
 {:shortdesc}
 
-If you are using the beta trial version of {{site.data.keyword.blockchainfull_notm}} Platform, it is likely that some panels in your console will not match the current documentation, which is kept up to date with the generally available (GA) service instance. To gain the benefits of all the latest functionality, you are encouraged at this time to provision a new GA service instance by following instructions in [Getting started with {{site.data.keyword.blockchainfull_notm}} Platform on {{site.data.keyword.cloud_notm}}](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks).
+If you are using the beta trial version of {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}}, it is likely that some panels in your console will not match the current documentation, which is kept up to date with the generally available (GA) service instance. To gain the benefits of all the latest functionality, you are encouraged at this time to provision a new GA service instance by following instructions in [Getting started with {{site.data.keyword.blockchainfull_notm}} Platform for {{site.data.keyword.cloud_notm}}](/docs/services/blockchain/howto/ibp-v2-deploy-iks.html#ibp-v2-deploy-iks).
 {: important}
 
 **Target audience:** This topic is designed for network operators who are responsible for creating, monitoring, and managing the blockchain network. Additionally, application developers may be interested in the sections that reference how to create a smart contract.
@@ -70,9 +70,10 @@ Before you can install a smart contract, ensure that you have the following thin
 The {{site.data.keyword.blockchainfull_notm}} console manages the *deployment* of smart contracts rather than development. If you are interested in developing smart contracts, you can get started using tutorials provided by the Hyperledger Fabric community and tooling provided by {{site.data.keyword.IBM_notm}}.
 
 - To learn how smart contracts can be used to conduct transactions among multiple parties, see the [Developing applications topic](https://hyperledger-fabric.readthedocs.io/en/release-1.4/developapps/developing_applications.html){: external} in the Hyperledger Fabric documentation.
-- For a complete end-to-end tutorial about using an application to interact with smart contracts, see [Hyperledger Fabric Commercial Paper tutorial](https://hyperledger-fabric.readthedocs.io/en/release-1.4/tutorial/commercial_paper.html){: external}.
+- When you are ready to start building smart contracts, you can use the [{{site.data.keyword.blockchainfull_notm}} Visual Studio code extension](https://marketplace.visualstudio.com/items?itemName=IBMBlockchain.ibm-blockchain-platform){: external} to start building your own smart contract project. You can also use that extension to [connect directly to your network from Visual Studio code](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-vscode) and explore the inline tutorials.
+- For a quick tutorial on developing smart contracts, see [Develop a smart contract with the IBM Blockchain Platform VS Code extension](https://developer.ibm.com/tutorials/ibm-blockchain-platform-vscode-smart-contract/){: external}.
+- For a more in-depth end-to-end tutorial about using an application to interact with smart contracts, see [Hyperledger Fabric Commercial Paper tutorial](https://hyperledger-fabric.readthedocs.io/en/release-1.4/tutorial/commercial_paper.html){: external}.
 - To learn about how to incorporate access control mechanisms into your smart contract, see [Chaincode for Developers](https://hyperledger-fabric.readthedocs.io/en/release-1.4/chaincode4ade.html#chaincode-access-control){: external}.
-- When you are ready to start building smart contracts, you can use the [{{site.data.keyword.blockchainfull_notm}} Visual Studio code extension](https://marketplace.visualstudio.com/items?itemName=IBMBlockchain.ibm-blockchain-platform){: external} to start building your own smart contract project. You can also use that extension to [connect directly to your network from Visual Studio code](/docs/services/blockchain/howto/ibp-console-create-app.html#ibp-console-app-vscode).
 - When you are ready to install, the smart contract must be packaged into [.cds format](https://hyperledger-fabric.readthedocs.io/en/release-1.4/chaincode4noah.html#packaging){: external} so that it can be installed onto the peers. For more information, see [Packaging smart contracts](/docs/services/blockchain/vscode-extension.html#packaging-a-smart-contract). Alternatively, you can use the [peer cli commands](https://hyperledger-fabric.readthedocs.io/en/release-1.4/commands/peerchaincode.html#peer-chaincode-package){: external} to build the package.
 <!-- Update the tutorial link to release1-4 when it is published -->
 
@@ -160,7 +161,6 @@ When a new member that will run the smart contract joins the channel, it is mand
  2. Update the endorsement policy by adding or removing channel members. You can also click **Advanced** to paste in a new JSON formatted string, which modifies the existing policy.
  3. If you want to associate a private data collection configuration file with the smart contract you can upload the JSON file. Or if you want to update an existing collection configuration, you can upload the JSON file.   
  If the smart contract was previously instantiated with a collection configuration file, you **must** again upload the previous version or a new version of the collection configuration file during this step.  
- {:important}
  4. (Optional) Modify the smart contract initialization argument values if the parameters have changed. If you are unsure about it, check with your smart contract developer. If they have not changed, you can leave this field blank.
 
 After you upgrade the smart contract, you will change the version of the contract that is instantiated on the channel, and change the smart contract container for all the peers that have installed the new version. If you are using private data collections, be sure you have configured anchor peers on the channel.
